@@ -39,6 +39,8 @@ CFTC_HISTORY_TEMPLATE = "https://www.cftc.gov/files/dea/history/fut_fin_txt_{yea
 NQ_CFTC_CODE = "209742"
 CBOE = "https://www.cboe.com/us/options/market_statistics/market/"
 SOX = "https://indexes.nasdaq.com/Index/History/SOX"
+SOX_OVERVIEW = "https://beta.indexes.nasdaq.com/Index/Overview/SOX"
+SOX_OVERVIEW_FALLBACK = "https://indexes.nasdaq.com/Index/Overview/SOX"
 SOX_AUX = "https://indexes.nasdaq.com/Index/Weighting/SOX"
 
 
@@ -427,117 +429,65 @@ def parse_cboe():
 
 
 def parse_sox():
-    # Nasdaq's History page is the authoritative source here. The Overview route can
-    # incorrectly show Previous Close == latest and 0.00% after the close, so never
-    # use the Overview-state percentage for alerting.
-    # IMPORTANT: use raw server-rendered History HTML first. Nasdaq's browser-rendered
-    # client state can overwrite Previous Close / percent with a stale 0.00% value.
-    hist_html = get(SOX).text
-    hist_txt = BeautifulSoup(hist_html, "html.parser").get_text(" ", strip=True)
+    """Parse the official Nasdaq SOX close and fail closed on inconsistent fields."""
+    errors = []
+    parsed = None
+    source_url = None
 
-    cur = re.search(
-        r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)\s+([+-]?[\d,]+\.\d+)\s+([+-]?\d+(?:\.\d+)?)%",
-        hist_txt,
-        re.I,
-    )
-    if not cur:
-        hist_html = browser_html(SOX)
-        hist_txt = BeautifulSoup(hist_html, "html.parser").get_text(" ", strip=True)
-        cur = re.search(
-            r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+([\d,]+\.\d+)\s+([+-]?[\d,]+\.\d+)\s+([+-]?\d+(?:\.\d+)?)%",
-            hist_txt,
-            re.I,
-        )
-    if not cur:
-        raise RuntimeError("SOX Nasdaq History headline not found")
-
-    period = cur.group(1)
-    latest = float(cur.group(2).replace(",", ""))
-    displayed_net_change = float(cur.group(3).replace(",", ""))
-    displayed_pct = float(cur.group(4))
-
-    # A material net change with a displayed 0.00% is a stale Nasdaq render.
-    # Do not publish it directly; continue into the existing same-date/close
-    # independent historical-table cross-check below.
-    #
-    # Nasdaq's rendered History DOM can occasionally inherit the stale 0.00% Overview
-    # state even though the completed-session move is nonzero. When that happens,
-    # cross-check a public historical table and only accept it if the same date and
-    # closing level match Nasdaq.
-    if abs(displayed_net_change) > 1 and abs(displayed_pct) < 0.01:
-        fallback_rows = []
-        for inv_url in (
-            "https://www.investing.com/indices/phlx-semiconductor-historical-data",
-            "https://ph.investing.com/indices/phlx-semiconductor-historical-data",
-        ):
-            try:
-                inv_html = get(inv_url).text
-                for t in pd.read_html(StringIO(inv_html)):
-                    tt = t.copy()
-                    tt.columns = [str(x[-1] if isinstance(x, tuple) else x).strip() for x in tt.columns]
-                    date_col = next((x for x in tt.columns if str(x).strip().lower() == "date"), None)
-                    price_col = next((x for x in tt.columns if str(x).strip().lower() in ("price","last","close")), None)
-                    change_col = next((x for x in tt.columns if "change %" in str(x).strip().lower()), None)
-                    if not date_col or not price_col or not change_col:
-                        continue
-                    for _, row in tt.head(10).iterrows():
-                        ds = str(row.get(date_col, "")).strip()
-                        val = parse_num(row.get(price_col))
-                        pct = parse_num(row.get(change_col))
-                        if ds and val is not None and pct is not None:
-                            fallback_rows.append((ds, val, pct))
-                    if fallback_rows:
-                        break
-                if fallback_rows:
-                    break
-            except Exception:
-                continue
-
-        def _norm_date(s):
-            for fmt in ("%b %d, %Y", "%m/%d/%Y", "%d/%m/%Y", "%Y-%m-%d"):
-                try:
-                    return datetime.strptime(s, fmt).strftime("%m/%d/%Y")
-                except Exception:
-                    pass
-            return s
-
-        same = next(
-            ((d, v, p) for d, v, p in fallback_rows
-             if _norm_date(d) == period and abs(v - latest) <= 1.0),
-            None,
-        )
-        if same is None:
-            raise RuntimeError(
-                f"SOX History stale and fallback cross-check failed: "
-                f"net_change={displayed_net_change}, pct={displayed_pct}"
+    for url in (SOX_OVERVIEW, SOX_OVERVIEW_FALLBACK):
+        try:
+            raw = get(url).text
+            txt = BeautifulSoup(raw, "html.parser").get_text(" ", strip=True)
+            cur = re.search(
+                r"DATA AS OF\s+(\d{1,2}/\d{1,2}/20\d{2})\s+"
+                r"([\d,]+\.\d+)\s+([+-]?[\d,]+\.\d+)\s+([+-]?\d+(?:\.\d+)?)%",
+                txt,
+                re.I,
             )
-        displayed_pct = float(same[2])
+            prev_m = re.search(r"Previous Close\s+([\d,]+\.\d+)", txt, re.I)
+            if not cur or not prev_m:
+                raise RuntimeError("Overview headline/previous close missing")
 
-    if abs(displayed_pct) > 25:
-        raise RuntimeError(f"SOX daily pct sanity failed: {displayed_pct}")
+            period = cur.group(1)
+            latest = float(cur.group(2).replace(",", ""))
+            net_change = float(cur.group(3).replace(",", ""))
+            pct = float(cur.group(4))
+            previous_close = float(prev_m.group(1).replace(",", ""))
 
-    prev_m = re.search(r"Previous Close\s+([\d,]+\.\d+)", hist_txt, re.I)
-    previous_close = float(prev_m.group(1).replace(",", "")) if prev_m else None
+            calc_net = latest - previous_close
+            calc_pct = (latest / previous_close - 1.0) * 100.0 if previous_close else None
+            if abs(calc_net - net_change) > 1.0:
+                raise RuntimeError(
+                    f"SOX net-change mismatch: page={net_change}, calc={calc_net:.2f}"
+                )
+            if calc_pct is None or abs(calc_pct - pct) > 0.08:
+                raise RuntimeError(
+                    f"SOX pct mismatch: page={pct}, calc={calc_pct:.2f}"
+                )
+            if abs(pct) > 25:
+                raise RuntimeError(f"SOX daily pct sanity failed: {pct}")
 
-    # If Nasdaq's DOM repeats the latest level as Previous Close, reconstruct a
-    # previous-close estimate from the authoritative History percentage only for
-    # display. The alert direction/percentage still comes directly from History.
-    previous_close_source = "Nasdaq History"
-    if previous_close is None or (abs(displayed_pct) >= 0.01 and abs(previous_close - latest) < 0.01):
-        previous_close = latest / (1.0 + displayed_pct / 100.0)
-        previous_close_source = "Nasdaq History percentage-derived"
+            parsed = (period, latest, net_change, pct, previous_close)
+            source_url = url
+            break
+        except Exception as exc:
+            errors.append(f"{url}: {type(exc).__name__}: {exc}")
 
+    if parsed is None:
+        raise RuntimeError("SOX official Overview validation failed: " + " | ".join(errors))
+
+    period, latest, displayed_net_change, displayed_pct, previous_close = parsed
     metrics = {
         "value": latest,
         "previous_close": previous_close,
-        "previous_close_source": previous_close_source,
+        "previous_close_source": "Nasdaq official Overview",
         "net_change": displayed_net_change,
         "pct": displayed_pct,
         "d1_pct": displayed_pct,
+        "official_overview_url": source_url,
     }
 
-    # Pull recent daily closes from an independent public historical page only to
-    # obtain 3D/5D context. Failure here does not invalidate the official 1D signal.
+    # Optional 3D/5D context only. It never overrides the official Nasdaq 1D close.
     try:
         inv = get("https://www.investing.com/indices/phlx-semiconductor-historical-data").text
         tables = pd.read_html(StringIO(inv))
@@ -549,22 +499,34 @@ def parse_sox():
                 break
         if hist is not None:
             hist.columns = [str(x[-1] if isinstance(x, tuple) else x).strip() for x in hist.columns]
-            pcol = next((x for x in hist.columns if x.lower() in ("price","last","close")), None)
-            if pcol:
-                vals = []
+            date_col = next((x for x in hist.columns if x.lower() == "date"), None)
+            pcol = next((x for x in hist.columns if x.lower() in ("price", "last", "close")), None)
+            if date_col and pcol:
+                rows = []
                 for _, row in hist.head(10).iterrows():
-                    v = parse_num(row.get(pcol))
-                    if v is not None:
-                        vals.append(v)
-                if len(vals) >= 4:
-                    metrics["d3_pct"] = (vals[0] / vals[3] - 1) * 100
-                if len(vals) >= 6:
-                    metrics["d5_pct"] = (vals[0] / vals[5] - 1) * 100
+                    ds = str(row.get(date_col, "")).strip()
+                    val = parse_num(row.get(pcol))
+                    if ds and val is not None:
+                        rows.append((ds, val))
+                if rows:
+                    def _norm_date(s):
+                        for fmt in ("%b %d, %Y", "%m/%d/%Y", "%d/%m/%Y", "%Y-%m-%d"):
+                            try:
+                                return datetime.strptime(s, fmt).strftime("%m/%d/%Y")
+                            except Exception:
+                                pass
+                        return s
+                    if _norm_date(rows[0][0]) == period and abs(rows[0][1] - latest) <= 1.0:
+                        vals = [v for _, v in rows]
+                        if len(vals) >= 4:
+                            metrics["d3_pct"] = (vals[0] / vals[3] - 1) * 100
+                        if len(vals) >= 6:
+                            metrics["d5_pct"] = (vals[0] / vals[5] - 1) * 100
     except Exception:
         pass
 
     core = {"source": "Nasdaq SOX", "kind": "sox", "period": period, "metrics": metrics}
-    return {**core, "url": SOX, "fingerprint": fp(core)}
+    return {**core, "url": source_url, "fingerprint": fp(core)}
 
 
 def explain(cftc, cboe, sox):
