@@ -264,6 +264,79 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertIn("2025 평균 2.24 Mbd", body)
         self.assertIn("완전 정상화는 아닙니다", body)
 
+    def test_distinct_event_not_blocked_by_recent_other_event(self):
+        current = dt.datetime(2026, 9, 29, 6, 0, tzinfo=dt.timezone.utc)
+        old_rows = [MODULE.NewsItem(
+            "Kpler Gulf of Oman STS record 7.2 Mbd as of 2026-09-26; since-war average 3.7 Mbd; 2025 average 0.16 Mbd",
+            "Kpler", "a", current.isoformat(), current.timestamp(), "sts_reroute_expansion"
+        )]
+        new_rows = [MODULE.NewsItem(
+            "Saudi East-West Pipeline transport hits 3.5 million barrels per day",
+            "Reuters", "b", current.isoformat(), current.timestamp(), "east_west_pipeline_recovery"
+        )]
+        old_id = MODULE.event_id("sts_reroute_expansion", old_rows)
+        state = {
+            "last_alert_at_kst": current.astimezone(MODULE.KST).isoformat(),
+            "last_event_id": old_id,
+            "alerted_events": {old_id: current.astimezone(MODULE.KST).isoformat()},
+        }
+        selected, duplicates = MODULE.select_unalerted_event(
+            state,
+            [
+                ("sts_reroute_expansion", old_rows),
+                ("east_west_pipeline_recovery", new_rows),
+            ],
+            current,
+        )
+        self.assertIsNotNone(selected)
+        assert selected is not None
+        self.assertEqual(selected[0], "east_west_pipeline_recovery")
+        self.assertIn("걸프오브오만 STS 우회 물류 급증·병목", duplicates)
+
+    def test_same_event_is_suppressed_but_new_stage_passes(self):
+        current = dt.datetime(2026, 9, 29, 6, 0, tzinfo=dt.timezone.utc)
+        rate35 = [MODULE.NewsItem(
+            "Saudi East-West Pipeline transport hits 3.5 million barrels per day",
+            "Reuters", "a", current.isoformat(), current.timestamp(), "east_west_pipeline_recovery"
+        )]
+        rate40 = [MODULE.NewsItem(
+            "Saudi East-West Pipeline transport hits 4.0 million barrels per day",
+            "Reuters", "b", current.isoformat(), current.timestamp(), "east_west_pipeline_recovery"
+        )]
+        id35 = MODULE.event_id("east_west_pipeline_recovery", rate35)
+        state = {"alerted_events": {id35: current.astimezone(MODULE.KST).isoformat()}}
+        self.assertTrue(MODULE.event_recently_alerted(state, id35, current))
+        selected, _ = MODULE.select_unalerted_event(
+            state,
+            [
+                ("east_west_pipeline_recovery", rate35),
+                ("east_west_pipeline_recovery", rate40),
+            ],
+            current,
+        )
+        self.assertIsNotNone(selected)
+        assert selected is not None
+        self.assertEqual(MODULE.event_id(selected[0], selected[1]), MODULE.event_id("east_west_pipeline_recovery", rate40))
+
+    def test_regional_single_reuters_does_not_confirm(self):
+        now = dt.datetime(2026, 9, 29, 6, 0, tzinfo=dt.timezone.utc)
+        rows = [MODULE.NewsItem(
+            "Middle East crude exports reach 12.8 million bpd, highest since the war",
+            "Reuters", "a", now.isoformat(), now.timestamp(), "regional_export_recovery"
+        )]
+        self.assertIsNone(MODULE.confirm_event(rows))
+
+    def test_regional_single_kpler_primary_can_confirm(self):
+        now = dt.datetime(2026, 9, 29, 6, 0, tzinfo=dt.timezone.utc)
+        rows = [MODULE.NewsItem(
+            "Middle East crude exports reach 12.8 million bpd, highest since the war",
+            "Kpler", "a", now.isoformat(), now.timestamp(), "regional_export_recovery"
+        )]
+        result = MODULE.confirm_event(rows)
+        self.assertIsNotNone(result)
+        assert result is not None
+        self.assertEqual(result[0], "regional_export_recovery")
+
     def test_alert_body_contains_required_market_values(self):
         current = dt.datetime(2026, 8, 2, 12, 0, tzinfo=dt.timezone.utc)
         news = [
