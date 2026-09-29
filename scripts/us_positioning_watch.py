@@ -584,14 +584,20 @@ def explain(cftc, cboe, sox):
         idx_pc = m.get("index_pc_ratio")
         total_pc = m.get("total_pc_ratio")
         if eq_pc is not None:
-            eq_call_put = (1.0 / eq_pc) if eq_pc > 0 else None
+            eq_calls = m.get("equity_calls")
+            eq_puts = m.get("equity_puts")
+            eq_call_put = (
+                eq_calls / eq_puts
+                if eq_calls and eq_puts
+                else (1.0 / eq_pc if eq_pc > 0 else None)
+            )
             if idx_pc is not None:
                 idx_desc = (
                     "거의 1:1"
                     if 0.90 <= idx_pc <= 1.10
-                    else "풋 우위"
+                    else "풋 거래 우위"
                     if idx_pc > 1.10
-                    else "콜 우위"
+                    else "콜 거래 우위"
                 )
                 lines.append(
                     f"• Cboe 옵션: 주식 P/C {eq_pc:.2f}"
@@ -861,7 +867,7 @@ if quality_gate_ok and (updates or force):
         if eq_pc is not None and eq_calls and eq_puts:
             eq_call_share = eq_calls / (eq_calls + eq_puts) * 100.0
             eq_call_put = eq_calls / eq_puts if eq_puts else None
-            eq_desc = "상방 우위" if eq_pc < 0.80 else "중립권" if eq_pc <= 1.0 else "하방·방어 우위"
+            eq_desc = "콜 거래 우위" if eq_pc < 0.80 else "혼재·중립권" if eq_pc <= 1.0 else "풋 거래 우위"
             body.append(
                 f"• 주식옵션: 콜 {eq_calls:,} / 풋 {eq_puts:,} → P/C {eq_pc:.2f} "
                 f"({m.get('equity_time_ct') or '최신'} CT)"
@@ -873,7 +879,7 @@ if quality_gate_ok and (updates or force):
         elif eq_pc is not None:
             body.append(
                 f"• 주식옵션 P/C {eq_pc:.2f} "
-                f"→ {'상방 우위' if eq_pc < 0.80 else '중립권' if eq_pc <= 1.0 else '하방·방어 우위'}"
+                f"→ {'콜 거래 우위' if eq_pc < 0.80 else '혼재·중립권' if eq_pc <= 1.0 else '풋 거래 우위'}"
             )
 
         if idx_pc is not None and idx_calls and idx_puts:
@@ -911,13 +917,13 @@ if quality_gate_ok and (updates or force):
         if eq_pc is not None and idx_pc is not None:
             if eq_pc < 0.80 and 0.90 <= idx_pc <= 1.10:
                 option_combo = (
-                    "개별주에서는 콜 베팅이 우세하지만 지수는 거의 중립 "
-                    "→ 종목별 상승 기대는 있으나 시장 전체가 강한 위험선호로 정렬된 상태는 아님"
+                    "개별주에서는 콜 거래가 우세하지만 지수는 거의 중립 "
+                    "→ 종목별 상방 성향으로 해석할 수 있으나 시장 전체의 확정적 위험선호 신호는 아님"
                 )
             elif eq_pc < 0.80 and idx_pc > 1.10:
                 option_combo = (
-                    "개별주 콜 베팅은 강하지만 지수 풋 헤지도 높음 "
-                    "→ 위를 보면서도 시장 전체 하락 보험을 같이 드는 혼합 신호"
+                    "개별주 콜 거래는 강하지만 지수 풋 거래도 높음 "
+                    "→ 상방 성향과 시장 전체 하락 방어 수요가 함께 나타나는 혼합 신호"
                 )
             elif eq_pc > 1.0 and idx_pc > 1.10:
                 option_combo = (
