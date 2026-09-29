@@ -24,6 +24,7 @@ EXTRA_QUERIES = [
     '(Malaysia OR 말레이시아) 8542323000 HBM (Intel OR ASE OR "TF-AMD" OR MAPC OR packaging)',
     '(Bernstein OR "J.P. Morgan" OR UBS OR Citi OR "Morgan Stanley") HBM (revenue OR 매출 OR share OR 점유율)',
     '(J.P. Morgan OR JPMorgan OR UBS OR Citi OR "Morgan Stanley" OR BofA OR "Goldman Sachs") Samsung HBM (ASP OR "average selling price" OR 8-Hi OR 12-Hi OR 16-Hi OR 평균판매단가 OR 8단 OR 12단 OR 16단)',
+    'TrendForce 2027 HBM (Blended ASP OR 평균판매가격 OR 8-Hi OR 8단 OR per-Gb OR Gb당) (121 OR 10 OR 20)',
     '(TSMC OR ASE) (advanced packaging OR CoWoS OR 후공정) (testing OR tester OR capex OR 설비투자)',
     '(디아이 OR 디지털프론티어 OR 와이씨 OR 엑시콘 OR 인텍플러스 OR 펨트론 OR ISC) HBM (검사 OR 테스트 OR 수주 OR 검증)',
     '(Samsung OR 삼성) HBM4 (base die OR 베이스다이) (4nm OR 4나노) (풀가동 OR 증설 OR 가격 OR capacity)',
@@ -176,6 +177,7 @@ def is_axis_text(text):
         r'HBM.*(?:매출|revenue).*(?:전망|estimate|forecast|regression)|'
         r'(?:Bernstein|번스타인|J[.]?P[.]? Morgan|JPMorgan|UBS|Citi|Morgan\s+Stanley|BofA|Goldman\s+Sachs).*HBM|'
         r'(?:삼성|Samsung).*HBM.*(?:ASP|average\s+selling\s+price|평균판매단가|평균\s+판매단가|8[- ]?Hi|12[- ]?Hi|16[- ]?Hi|8단|12단|16단)|'
+        r'(?:TrendForce|트렌드포스).*HBM.*(?:Blended\s+ASP|평균판매가격|평균판매단가|8[- ]?Hi|12[- ]?Hi|8단|12단|Gb당|per[- ]?Gb)|'
         r'(?:TSMC|ASE|디아이|디지털\s*프론티어|와이씨|엑시콘|인텍플러스|펨트론|ISC|고영|네오셈|넥스틴).*'
         r'(?:CoWoS|후공정|패키징|검사|테스트|tester|수주|품질\s*검증|정식\s*계약|설비투자|capex)|'
         r'(?:삼성|Samsung).*HBM.*(?:베이스\s*다이|base\s*die|4\s*나노|4nm|2\s*나노|2nm).*'
