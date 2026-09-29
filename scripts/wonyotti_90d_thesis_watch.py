@@ -512,6 +512,7 @@ def nvidia_ir_snapshot(old_nv: dict | None = None) -> tuple[dict, list[str]]:
         out["q10_url"] = q10_url
         if q10_url == old_nv.get("q10_url") and old_nv.get("parsed_ok") and int(old_nv.get("parser_version") or 0) >= 3:
             kept = dict(old_nv)
+            kept.pop("stale_due_to_error", None)
             kept["checked_at_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
             return kept, errors
 
@@ -1012,16 +1013,41 @@ def main() -> None:
     errors.extend(part)
     nvidia_sec, part = nvidia_ir_snapshot(old.get("nvidia_sec") or {})
     errors.extend(part)
-    news_items, seen, part = high_signal_news(set(old.get("news_seen") or []))
-    errors.extend(part)
+    news_items, seen, news_errors = high_signal_news(set(old.get("news_seen") or []))
+    errors.extend(news_errors)
+
+    def fresh_date(value: str | None, max_age_days: int = 4) -> bool:
+        if not value:
+            return False
+        try:
+            day = dt.date.fromisoformat(value)
+        except Exception:
+            return False
+        age = (now.date() - day).days
+        return 0 <= age <= max_age_days
+
+    deriv_health = True
+    deriv = crypto.get("derivatives") or {}
+    for symbol in ("BTCUSDT", "ETHUSDT", "SOLUSDT"):
+        item = deriv.get(symbol) or {}
+        if (
+            float(item.get("index_price") or 0.0) <= 0
+            or float(item.get("open_interest_value") or 0.0) <= 0
+            or item.get("funding") is None
+        ):
+            deriv_health = False
 
     health = {
         "crypto_prices": bool(crypto.get("price_verified")),
-        "crypto_derivatives": len(crypto.get("derivatives") or {}) == 3,
-        "btc_etf": bool((crypto.get("btc_etf") or {}).get("date")),
-        "eth_etf": bool((crypto.get("eth_etf") or {}).get("date")),
-        "rates": bool((rates.get("nominal10y") or {}).get("date")) and bool((rates.get("real10y") or {}).get("date")),
-        "nvidia_10q": bool(nvidia_sec.get("parsed_ok")),
+        "crypto_derivatives": deriv_health and len(crypto.get("derivatives") or {}) == 3,
+        "btc_etf": fresh_date((crypto.get("btc_etf") or {}).get("date")),
+        "eth_etf": fresh_date((crypto.get("eth_etf") or {}).get("date")),
+        "rates": (
+            fresh_date((rates.get("nominal10y") or {}).get("date"))
+            and fresh_date((rates.get("real10y") or {}).get("date"))
+        ),
+        "nvidia_10q": bool(nvidia_sec.get("parsed_ok")) and not bool(nvidia_sec.get("stale_due_to_error")),
+        "news_search": len(news_errors) == 0,
     }
     old_streaks = old.get("health_error_streaks") or {}
     health_streaks = {
@@ -1053,6 +1079,7 @@ def main() -> None:
             "eth_etf": "ETH 현물 ETF 자금흐름",
             "rates": "미국 10년 명목·실질금리",
             "nvidia_10q": "NVIDIA 공식 10-Q",
+            "news_search": "빅테크·메모리·주주환원 뉴스 교차검색",
         }
         for key, streak in health_streaks.items():
             old_streak = int(old_health_streaks.get(key) or 0)
