@@ -39,7 +39,7 @@ ALERT_PATH = OUT_DIR / "memory_spot_cycle_watch_telegram.txt"
 STATUS_PATH = OUT_DIR / "memory_spot_cycle_watch_status.md"
 KST = ZoneInfo("Asia/Seoul")
 TREND_RESEARCH_URL = "https://www.trendforce.com/research/memory-storage"
-HBM_MARKET_PRICE_TRACK_VERSION = 1
+HBM_MARKET_PRICE_TRACK_VERSION = 2
 HBM_MARKET_ALERT_FORMAT_VERSION = 1
 HBM_MARKET_PRICE_BASELINE = {
     "period": "2027",
@@ -810,8 +810,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     initialized = bool(state.get("initialized"))
     market_state = dict(state.get("hbm_market_pricing") or {})
     if int(state.get("hbm_market_pricing_track_version") or 0) < HBM_MARKET_PRICE_TRACK_VERSION:
-        if not market_state:
-            market_state = dict(HBM_MARKET_PRICE_BASELINE)
+        market_state = _merge_hbm_market_pricing(market_state, HBM_MARKET_PRICE_BASELINE)
         state["hbm_market_pricing_track_version"] = HBM_MARKET_PRICE_TRACK_VERSION
 
     market_changes: list[str] = []
@@ -826,10 +825,10 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             continue
         merged = _merge_hbm_market_pricing(market_state, obs)
         changes = _hbm_market_pricing_changes(market_state, merged)
+        market_state = merged
         if changes:
             market_changes.extend(changes)
-            market_state = merged
-            market_source_url = obs.get("source_url") or market_source_url
+            market_source_url = market_state.get("source_url") or obs.get("source_url") or market_source_url
 
     if market_format_due and not market_changes:
         market_changes = ["2027 HBM 시장 가격 기준선 정밀화"]

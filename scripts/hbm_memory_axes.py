@@ -17,6 +17,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUT = ROOT / 'out'
 VERSION = 1
 FOUNDRY_TRACK_VERSION = 1
+MARKET_PRICING_TRACK_VERSION = 1
 EXTRA_QUERIES = [
     '(HBM4 OR HBM4E) (24Gb OR 32Gb OR 36GB OR 48GB OR 적층 OR 용량)',
     'DDR5 RDIMM (premium OR spot OR contract OR 현물 OR 고정거래)',
@@ -1075,6 +1076,13 @@ def update_state(state, records, now, seeds=None):
                     state['latest'][r['key']] = copy.deepcopy(r)
                     state['pending'].pop(r['key'], None)
             state['foundry_track_version'] = FOUNDRY_TRACK_VERSION
+        if int(state.get('market_pricing_track_version') or 0) < MARKET_PRICING_TRACK_VERSION:
+            for r in seeds:
+                if r.get('axis') == 'hbm_market_pricing':
+                    state['last_notified'][r['key']] = copy.deepcopy(r)
+                    state['latest'][r['key']] = copy.deepcopy(r)
+                    state['pending'].pop(r['key'], None)
+            state['market_pricing_track_version'] = MARKET_PRICING_TRACK_VERSION
     state['version'] = VERSION
     grouped = {}
     for r in records:

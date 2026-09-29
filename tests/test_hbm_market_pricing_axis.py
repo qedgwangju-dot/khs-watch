@@ -76,6 +76,39 @@ class HBMMarketPricingAxisTests(unittest.TestCase):
         }
         self.assertTrue(any("프리미엄 하단" in x for x in w.comparison(old, new)))
 
+    def test_market_pricing_seed_migration_upgrades_source_without_alert(self):
+        key = "hbm_market_pricing|trendforce|industry|2027"
+        old = {
+            "last_notified": {
+                key: {
+                    "key": key,
+                    "axis": "hbm_market_pricing",
+                    "value": {"blended_asp_yoy_pct": 121.0},
+                    "evidence": "reported",
+                    "as_of": "2026-09-29",
+                    "period": "2027",
+                    "source_url": "https://example.com/republisher",
+                }
+            },
+            "latest": {},
+            "pending": {key: {"dummy": True}},
+            "coverage": {},
+        }
+        seed = {
+            "key": key,
+            "axis": "hbm_market_pricing",
+            "value": {"blended_asp_yoy_pct": 121.0},
+            "evidence": "research",
+            "as_of": "2026-09-29",
+            "period": "2027",
+            "source_url": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
+        }
+        now = w.datetime(2026, 9, 29, 19, 40, tzinfo=w.ZoneInfo("Asia/Seoul"))
+        state = w.update_state(old, [], now, [seed])
+        self.assertEqual(state["last_notified"][key]["evidence"], "research")
+        self.assertIn("trendforce.com/presscenter", state["latest"][key]["source_url"])
+        self.assertNotIn(key, state["pending"])
+
     def test_market_mainstream_8_to_12_alerts(self):
         old = {"axis": "hbm_market_pricing", "value": {"mainstream_layers": 8}}
         new = {"axis": "hbm_market_pricing", "value": {"mainstream_layers": 12}}
