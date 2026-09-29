@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-09-27T18:11:08+09:00",
-  "last_checked_kst": "2026-09-29T17:42:20+09:00",
+  "last_checked_kst": "2026-09-30T00:59:23+09:00",
   "seen": {
     "2b31306619b190498e7f41c7": {
       "title": "[입찰공고] 2026년 AI반도체 지원사업 성과조사분석 및 우수사례 발굴 용역 - 정보통신산업진흥원(NIPA)",
@@ -174,6 +174,24 @@
       "category": "정책·산업 변화",
       "first_seen_kst": "2026-09-29T17:42:20+09:00",
       "suppressed_duplicate": "same_event:퓨리오사AI|정책·산업 변화|일반"
+    },
+    "c9d7654cb8a7cfe91f48d558": {
+      "title": "금융위 \"㈜퓨리오사AI 투자승인은 국민성장펀드 마중물 수행 사례\" - 정책브리핑",
+      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPejF5X3F0NnhBdENCeVF5czVhTUZ2MXg5T3Z4eDN0Q0ZjTE51SXRVNEtJOE1EVU55eklsbVNvMVhaUVU4NVFqZ3FmWEQ0cVQwR1g5QXpEemVyQ25DWTNRbndjcmNpRjE1bUhhYzJ3UndmNjZQdmh4VVpGdmxzNXVYYm9wMWdKdw?oc=5",
+      "event_signature": "퓨리오사AI|정책·산업 변화|일반",
+      "stage": 1,
+      "category": "정책·산업 변화",
+      "first_seen_kst": "2026-09-30T00:59:23+09:00",
+      "suppressed_duplicate": "same_title"
+    },
+    "413472172640d64d19ca0e5f": {
+      "title": "금융위 \"㈜퓨리오사AI 투자승인은 국민성장펀드 마중물 수행 사례\" - 정책브리핑",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBqbnh6NVppRHVwZV9RSlVocmpmWFF5TFRJYkxFSEJpb0NWdnNaZVNjQjdvRWdUSWo3cklISk1UV1NsUHcyZGZtVlVSWDdWSUlrQjdTa3o5Uzlsdnk3SU9kUEx1LW11ak11?oc=5",
+      "event_signature": "퓨리오사AI|정책·산업 변화|일반",
+      "stage": 1,
+      "category": "정책·산업 변화",
+      "first_seen_kst": "2026-09-30T00:59:23+09:00",
+      "suppressed_duplicate": "same_title"
     }
   }
 }
