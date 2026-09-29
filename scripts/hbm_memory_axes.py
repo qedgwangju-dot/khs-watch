@@ -1337,13 +1337,18 @@ def main():
                 '수주', '품질 검증', '정식 계약', '설비투자', 'capex'
             ))
         )
+        structured_market_pricing = (
+            ('trendforce' in text or '트렌드포스' in text)
+            and 'hbm' in text
+            and any(k in text for k in ('blended asp', '평균판매가격', '평균판매단가', '8-hi', '8hi', '8단', 'gb당'))
+        )
         structured_foundry = (
             ('samsung' in text or '삼성' in text)
             and 'hbm' in text
             and any(k in text for k in ('base die', '베이스다이', '베이스 다이', '4nm', '4나노', '2nm', '2나노'))
             and any(k in text for k in ('full utilization', '풀가동', '증설', 'expand', 'price increase', '가격 인상', 'production line', '생산라인', 'investment', '투자'))
         )
-        if structured_revenue or structured_postprocess or structured_foundry:
+        if structured_revenue or structured_postprocess or structured_market_pricing or structured_foundry:
             rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
             return '', '', ''
         if not concrete_state_evidence(e):
@@ -1364,7 +1369,7 @@ def main():
     legacy.TRUSTED += (
         '글로벌이코노믹', 'g-enews', 'dramexchange', 'sk하이닉스', 'micron',
         'futunn', 'futu news', 'bernstein', 'hilo research', 'xxquant',
-        '머니투데이', 'moneytoday', 'mt.co.kr'
+        '머니투데이', 'moneytoday', 'mt.co.kr', '한국경제tv', 'wowtv', 'v.daum.net'
     )
     legacy.relevant = lambda text: original_relevant(text) or is_axis_text(text)
     observed, coverage = [], []
