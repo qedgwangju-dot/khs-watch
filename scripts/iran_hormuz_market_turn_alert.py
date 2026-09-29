@@ -48,6 +48,12 @@ KPLER_STS_URL = (
     "https://www.kpler.com/blog/"
     "saudi-export-rerouting-amid-gulf-of-oman-sts-bottlenecks-amplify-vlcc-intensity-of-meg-flows"
 )
+MIDEAST_EXPORT_SNAPSHOT_URLS = (
+    "https://www.reuters.com/business/energy/"
+    "mideast-oil-exports-rebound-september-saudi-arabia-boosts-shipments-2026-09-28/",
+    "https://in.marketscreener.com/news/"
+    "mideast-oil-exports-rebound-in-september-as-saudi-arabia-boosts-shipments-ce785addd888f724",
+)
 
 NEWS_QUERIES = (
     'Iran ceasefire agreement OR Iran truce agreement OR "US Iran ceasefire" when:3d',
@@ -55,8 +61,9 @@ NEWS_QUERIES = (
     '"Strait of Hormuz reopens" OR "shipping resumes" Hormuz OR "traffic returns to normal" Hormuz when:3d',
     '"Gulf oil exports" recover OR "Middle East oil exports" rebound OR "Saudi crude shipments" September when:3d',
     '"Middle East oil exports" "highest level since" Iran war Kpler when:3d',
-    '"12.8 million barrels per day" Middle East exports Kpler when:3d',
-    '"Hormuz" "7.4 million bpd" Kpler September when:3d',
+    '"Middle East crude exports" Kpler September highest since war when:3d',
+    '"16.328 million barrels per day" Middle East exports Kpler when:3d',
+    '"Hormuz" "9.719 million bpd" Kpler September when:3d',
     '"Saudi Arabia ramps up Gulf oil exports" OR "Aramco to boost Gulf exports" when:7d',
     '"Gulf of Oman" STS record OR "ship-to-ship" Oman Saudi crude when:7d',
     'Kpler "Gulf of Oman" STS bottlenecks VLCC when:7d',
@@ -65,7 +72,7 @@ NEWS_QUERIES = (
     '"East-West Pipeline" pumping 3.5 million bpd Yanbu when:3d',
     '"East-West Pipeline" 4 million bpd Yanbu Saudi when:3d',
     '"Yanbu" crude loadings resume East-West Pipeline when:3d',
-    '"Middle East crude exports" 12.8 million bpd September Kpler Reuters when:3d',
+    '"Middle East crude exports" September Kpler Reuters when:3d',
     '"Hormuz" "80% of prewar" oil flows Kpler when:3d',
     '"Gulf crude" India 1.52 million bpd Kpler September when:7d',
     '"Saudi Arabia resumes oil exports" Yanbu East-West Pipeline when:3d',
@@ -313,10 +320,18 @@ def classify_event(title: str) -> str | None:
         "80% of prewar", "80% of pre-war", "prewar oil flow", "pre-war oil flow",
         "중동 원유 수출", "전쟁 이전 대비", "전쟁 전 대비",
     )
-    if any(term in low for term in regional_export_phrases) and any(
-        term in low for term in ("12.8 million", "12.8 mbd", "80% of prewar", "80% of pre-war", "전쟁 이전", "전쟁 전")
-    ):
-        return "regional_export_recovery"
+    if any(term in low for term in regional_export_phrases):
+        has_volume = re.search(
+            r"\b(?:[1-9]|1[0-9]|2[0-9])(?:\.[0-9]+)?\s*(?:million\s+(?:barrels\s+per\s+day|bpd)|mbd)\b",
+            low,
+            flags=re.I,
+        ) is not None
+        has_recovery_context = any(term in low for term in (
+            "highest since", "rebound", "recover", "recovered", "prewar", "pre-war",
+            "전쟁 이전", "전쟁 전", "전쟁 후 최고", "snapshot"
+        ))
+        if has_volume and has_recovery_context:
+            return "regional_export_recovery"
 
     india_import_phrases = (
         "gulf crude imports to india", "gulf arrivals", "gulf oil supplies to india",
@@ -536,6 +551,96 @@ def parse_kpler_sts_snapshot(raw_html: str, current: dt.datetime) -> NewsItem:
     )
 
 
+def parse_mideast_export_snapshot(raw_html: str, current: dt.datetime, source_url: str) -> NewsItem:
+    text = _visible_text(raw_html)
+
+    current_patterns = (
+        r"rebounded\s+in\s+September\s+to\s+([0-9.]+)\s+million\s+barrels\s+per\s+day",
+        r"rebounded\s+in\s+September\s+to\s+([0-9.]+)\s+million\s+bpd",
+        r"Middle\s+East\s+crude\s+exports.*?([0-9.]+)\s+million\s+(?:barrels\s+per\s+day|bpd)",
+    )
+    hormuz_patterns = (
+        r"Strait\s+of\s+Hormuz.*?(?:about|approximately)?\s*([0-9.]+)\s+million\s+bpd",
+        r"exports\s+via\s+the\s+Strait\s+of\s+Hormuz.*?([0-9.]+)\s+million\s+bpd",
+    )
+    feb_patterns = (
+        r"from\s+([0-9.]+)\s+million\s+bpd\s+in\s+February",
+        r"below\s+the\s+([0-9.]+)\s+million\s+bpd.*?February",
+        r"([0-9.]+)\s+million\s+bpd\s+in\s+February",
+    )
+    saudi_patterns = (
+        r"Saudi\s+Arabia.*?ship\s+about\s+([0-9.]+)\s+million\s+bpd",
+        r"Saudi\s+Arabia.*?exports.*?([0-9.]+)\s+million\s+bpd",
+    )
+    ras_patterns = (
+        r"Ras\s+Tanura.*?about\s+([0-9.]+)\s+million\s+bpd",
+        r"Ras\s+Tanura.*?([0-9.]+)\s+million\s+bpd",
+    )
+
+    def first_number(patterns: tuple[str, ...]) -> float | None:
+        for pattern in patterns:
+            match = re.search(pattern, text, flags=re.I | re.S)
+            if match:
+                return float(match.group(1))
+        return None
+
+    current_mbd = first_number(current_patterns)
+    hormuz_mbd = first_number(hormuz_patterns)
+    feb_mbd = first_number(feb_patterns)
+    saudi_mbd = first_number(saudi_patterns)
+    ras_mbd = first_number(ras_patterns)
+
+    if current_mbd is None or hormuz_mbd is None or feb_mbd is None:
+        raise RuntimeError(
+            f"regional export snapshot metrics missing current={current_mbd} "
+            f"hormuz={hormuz_mbd} feb={feb_mbd}"
+        )
+    if not (5.0 <= current_mbd <= 25.0 and 2.0 <= hormuz_mbd <= 20.0 and 10.0 <= feb_mbd <= 30.0):
+        raise RuntimeError(
+            f"regional export snapshot out of range current={current_mbd} "
+            f"hormuz={hormuz_mbd} feb={feb_mbd}"
+        )
+    if current_mbd > feb_mbd * 1.25:
+        raise RuntimeError(
+            f"regional export snapshot implausible current={current_mbd} feb={feb_mbd}"
+        )
+
+    gap_mbd = feb_mbd - current_mbd
+    recovery_pct = current_mbd / feb_mbd * 100.0 if feb_mbd else 0.0
+    extras = []
+    if saudi_mbd is not None:
+        extras.append(f"Saudi {saudi_mbd:.3f} Mbd")
+    if ras_mbd is not None:
+        extras.append(f"RasTanura {ras_mbd:.3f} Mbd")
+    extra_text = "; " + "; ".join(extras) if extras else ""
+
+    title = (
+        f"Middle East crude exports snapshot {current_mbd:.3f} Mbd; "
+        f"Hormuz {hormuz_mbd:.3f} Mbd; February {feb_mbd:.3f} Mbd; "
+        f"gap {gap_mbd:.3f} Mbd; recovery {recovery_pct:.1f}%"
+        f"{extra_text}; preliminary Kpler data may revise"
+    )
+    return NewsItem(
+        title=title,
+        source="Reuters/Kpler",
+        link=source_url,
+        published_utc=current.isoformat().replace("+00:00", "Z"),
+        published_epoch=current.timestamp(),
+        event_kind="regional_export_recovery",
+    )
+
+
+def fetch_mideast_export_snapshot(current: dt.datetime) -> NewsItem:
+    errors: list[str] = []
+    for url in MIDEAST_EXPORT_SNAPSHOT_URLS:
+        try:
+            raw = fetch_bytes(url, timeout=25, attempts=2).decode("utf-8", errors="replace")
+            return parse_mideast_export_snapshot(raw, current, url)
+        except Exception as exc:
+            errors.append(f"{url}: {type(exc).__name__}: {exc}")
+    raise RuntimeError(" | ".join(errors))
+
+
 def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
     max_age_hours = int(os.getenv("IRAN_HORMUZ_MAX_NEWS_AGE_HOURS", "72"))
     items: list[NewsItem] = []
@@ -551,6 +656,11 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
         items.append(parse_kpler_sts_snapshot(kpler_html, current))
     except Exception as exc:
         errors.append(f"Kpler STS direct: {type(exc).__name__}: {exc}")
+
+    try:
+        items.append(fetch_mideast_export_snapshot(current))
+    except Exception as exc:
+        errors.append(f"Reuters/Kpler regional direct: {type(exc).__name__}: {exc}")
 
     unique: dict[tuple[str, str, str], NewsItem] = {}
     for item in items:
@@ -718,11 +828,11 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
             )
         ]
         max_value = max(values) if values else 0.0
-        volume_band = int(max_value) if max_value > 0 else 0
+        volume_band = round(max_value * 4.0) / 4.0 if max_value > 0 else 0.0
         prewar = "prewar80" if (
             "80% of prewar" in combined or "80% of pre-war" in combined or "80% 회복" in combined
         ) else "no80"
-        basis = f"{kind}|mbd_{volume_band}|{prewar}"
+        basis = f"{kind}|mbd_{volume_band:.2f}|{prewar}"
         return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
     if kind == "india_gulf_import_recovery":
@@ -993,13 +1103,49 @@ def _pipeline_exports_resumed(news_rows: list[NewsItem]) -> bool:
 
 def _extract_regional_export_metrics(news_rows: list[NewsItem]) -> dict[str, float | None]:
     text = " ".join(normalize_text(row.title) for row in news_rows)
+
+    snapshot = re.search(
+        r"middle east crude exports snapshot\s+([0-9.]+)\s+mbd;\s*"
+        r"hormuz\s+([0-9.]+)\s+mbd;\s*"
+        r"february\s+([0-9.]+)\s+mbd;\s*"
+        r"gap\s+([0-9.]+)\s+mbd;\s*recovery\s+([0-9.]+)%",
+        text,
+        flags=re.I,
+    )
+    if snapshot:
+        return {
+            "current_mbd": float(snapshot.group(1)),
+            "hormuz_mbd": float(snapshot.group(2)),
+            "feb_mbd": float(snapshot.group(3)),
+            "gap_mbd": float(snapshot.group(4)),
+            "recovery_pct": float(snapshot.group(5)),
+        }
+
     def find_value(pattern: str):
-        m = re.search(pattern, text, flags=re.I)
-        return float(m.group(1)) if m else None
-    current = find_value(r"(?:middle east|mideast).*?([0-9]+(?:\.[0-9]+)?)\s*(?:million\s+bpd|million\s+barrels\s+per\s+day|mbd)")
-    feb = find_value(r"(?:february|prewar|pre-war).*?([0-9]+(?:\.[0-9]+)?)\s*(?:million\s+bpd|million\s+barrels\s+per\s+day|mbd)")
-    hormuz = find_value(r"hormuz.*?([0-9]+(?:\.[0-9]+)?)\s*(?:million\s+bpd|million\s+barrels\s+per\s+day|mbd)")
-    return {"current_mbd": current, "feb_mbd": feb, "hormuz_mbd": hormuz}
+        match = re.search(pattern, text, flags=re.I)
+        return float(match.group(1)) if match else None
+
+    current = find_value(
+        r"(?:middle east|mideast).*?([0-9]+(?:\.[0-9]+)?)\s*"
+        r"(?:million\s+bpd|million\s+barrels\s+per\s+day|mbd)"
+    )
+    feb = find_value(
+        r"(?:february|prewar|pre-war).*?([0-9]+(?:\.[0-9]+)?)\s*"
+        r"(?:million\s+bpd|million\s+barrels\s+per\s+day|mbd)"
+    )
+    hormuz = find_value(
+        r"hormuz.*?([0-9]+(?:\.[0-9]+)?)\s*"
+        r"(?:million\s+bpd|million\s+barrels\s+per\s+day|mbd)"
+    )
+    gap = feb - current if feb is not None and current is not None else None
+    recovery = current / feb * 100.0 if feb and current is not None else None
+    return {
+        "current_mbd": current,
+        "feb_mbd": feb,
+        "hormuz_mbd": hormuz,
+        "gap_mbd": gap,
+        "recovery_pct": recovery,
+    }
 
 
 def _extract_india_gulf_metrics(news_rows: list[NewsItem]) -> dict[str, float | None]:
@@ -1028,10 +1174,21 @@ def build_physical_flow_alert_body(
     india_gulf = _extract_india_gulf_metrics(news_rows)
 
     if kind == "regional_export_recovery":
+        current_mbd = regional.get("current_mbd")
+        feb_mbd = regional.get("feb_mbd")
+        hormuz_mbd = regional.get("hormuz_mbd")
+        gap_mbd = regional.get("gap_mbd")
+        recovery_pct = regional.get("recovery_pct")
         lines.append("중동 수출     전쟁 후 최고 수준")
-        lines.append("핵심 수치     12.8 Mbd · Reuters/Kpler")
-        lines.append("비교          2월 18.8 Mbd보다 약 6.0 Mbd 낮음")
-        lines.append("해석          회복은 맞지만 전쟁 전 완전 정상화는 아님")
+        if current_mbd is not None:
+            lines.append(f"핵심 수치     {current_mbd:.3f} Mbd · Reuters/Kpler")
+        if hormuz_mbd is not None:
+            lines.append(f"호르무즈      {hormuz_mbd:.3f} Mbd")
+        if feb_mbd is not None and gap_mbd is not None:
+            lines.append(f"비교          2월 {feb_mbd:.3f} Mbd보다 {gap_mbd:.3f} Mbd 낮음")
+        if recovery_pct is not None:
+            lines.append(f"회복률        2월 대비 {recovery_pct:.1f}%")
+        lines.append("해석          잠정 선박추적치는 확인이 붙으며 수정될 수 있음")
     elif kind == "india_gulf_import_recovery":
         lines.append("인도 유입     걸프산 1.52 Mbd")
         lines.append("비교          6월 1.03 → 8월 1.18 → 9월 1.52 Mbd")
@@ -1079,11 +1236,22 @@ def build_physical_flow_alert_body(
 
     lines.extend(["", "[핵심 의미]"])
     if kind == "regional_export_recovery":
-        lines.extend([
-            "중동 주요 산유국의 원유 수출이 전쟁 이후 최고 수준으로 올라왔습니다.",
-            "→ Reuters/Kpler 기준 9월 12.8 Mbd로 회복했지만 2월 18.8 Mbd보다 약 6.0 Mbd 낮습니다.",
-            "→ 따라서 '공급 회복'은 맞지만 '전쟁 전 완전 정상화'로 부르면 안 됩니다.",
-        ])
+        current_mbd = regional.get("current_mbd")
+        feb_mbd = regional.get("feb_mbd")
+        gap_mbd = regional.get("gap_mbd")
+        recovery_pct = regional.get("recovery_pct")
+        lines.append("중동 주요 산유국의 원유 수출이 전쟁 이후 최고 수준으로 올라왔습니다.")
+        if current_mbd is not None and feb_mbd is not None and gap_mbd is not None:
+            lines.append(
+                f"→ 최신 Reuters/Kpler 잠정치 {current_mbd:.3f} Mbd · "
+                f"2월 {feb_mbd:.3f} Mbd보다 {gap_mbd:.3f} Mbd 낮습니다."
+            )
+        if recovery_pct is not None:
+            lines.append(
+                f"→ 현재 회복률은 2월 대비 {recovery_pct:.1f}%입니다. "
+                "최근 14일 선박 데이터는 확인이 붙으며 상향 수정될 수 있습니다."
+            )
+        lines.append("→ 따라서 고정 숫자를 재사용하지 않고 매 실행 최신 잠정치를 다시 읽습니다.")
     elif kind == "india_gulf_import_recovery":
         lines.extend([
             "걸프산 원유가 인도 같은 최종 수요처까지 다시 도착하는 흐름이 강해지고 있습니다.",
