@@ -234,6 +234,36 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertIn("Yanbu 수출     재개 확인", body)
         self.assertIn("실제 수출로 연결되기 시작했습니다", body)
 
+    def test_regional_export_recovery_is_classified(self):
+        title = "Middle East crude exports reach 12.8 million bpd, highest since the war - Reuters"
+        self.assertEqual(MODULE.classify_event(title), "regional_export_recovery")
+
+    def test_india_gulf_import_recovery_is_classified(self):
+        title = "Gulf crude imports to India recover to 1.52 mb/d in September - Kpler"
+        self.assertEqual(MODULE.classify_event(title), "india_gulf_import_recovery")
+
+    def test_regional_recovery_body_does_not_call_it_full_normalization(self):
+        current = dt.datetime(2026, 9, 29, 4, 0, tzinfo=dt.timezone.utc)
+        news = [MODULE.NewsItem(
+            "Middle East crude exports reach 12.8 million bpd, highest since the war",
+            "Reuters", "a", current.isoformat(), current.timestamp(), "regional_export_recovery"
+        )]
+        body = MODULE.build_physical_flow_alert_body("regional_export_recovery", news, None, current)
+        self.assertIn("중동 수출     전쟁 후 최고 수준", body)
+        self.assertIn("12.8 Mbd", body)
+        self.assertIn("전쟁 전 완전 정상화는 아님", body)
+
+    def test_india_flow_body_uses_separate_baseline(self):
+        current = dt.datetime(2026, 9, 29, 4, 0, tzinfo=dt.timezone.utc)
+        news = [MODULE.NewsItem(
+            "Gulf crude imports to India recover to 1.52 mb/d in September",
+            "Kpler", "a", current.isoformat(), current.timestamp(), "india_gulf_import_recovery"
+        )]
+        body = MODULE.build_physical_flow_alert_body("india_gulf_import_recovery", news, None, current)
+        self.assertIn("인도 유입     걸프산 1.52 Mbd", body)
+        self.assertIn("2025 평균 2.24 Mbd", body)
+        self.assertIn("완전 정상화는 아닙니다", body)
+
     def test_alert_body_contains_required_market_values(self):
         current = dt.datetime(2026, 8, 2, 12, 0, tzinfo=dt.timezone.utc)
         news = [
