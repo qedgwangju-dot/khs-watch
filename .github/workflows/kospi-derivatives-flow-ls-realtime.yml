@@ -22,7 +22,7 @@ permissions:
 jobs:
   watch:
     runs-on: ubuntu-latest
-    timeout-minutes: 420
+    timeout-minutes: 430
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
       TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
@@ -66,7 +66,9 @@ jobs:
               active.append((created, int(run["id"]), run.get("status")))
 
           active.sort()
-          leader_id = active[0][1] if active else current
+          running = [x for x in active if x[2] == "in_progress"]
+          queued = [x for x in active if x[2] == "queued"]
+          leader_id = (running[0][1] if running else (queued[0][1] if queued else current))
           should_run = leader_id == current
           with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as fp:
               fp.write(f"RUN_PRODUCTION={'1' if should_run else '0'}\n")
