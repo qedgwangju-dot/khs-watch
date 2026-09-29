@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-09-29T12:34:01+09:00",
+  "last_checked_kst": "2026-09-29T12:39:13+09:00",
   "media_id": null,
   "cftc_date": "September 22, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-09-29T12:34:01+09:00",
+    "checked_kst": "2026-09-29T12:39:13+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "September 22, 2026",
@@ -72,7 +72,7 @@
         "open_interest": 5407726,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 22, 2026)",
         "volume": 0,
-        "market_time": 1790652209,
+        "market_time": 1790652488,
         "source": "https://finance.yahoo.com/quote/ZN%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -90,7 +90,7 @@
         "open_interest": 1887864,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 22, 2026)",
         "volume": 0,
-        "market_time": 1790652209,
+        "market_time": 1790652355,
         "source": "https://finance.yahoo.com/quote/ZB%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -101,14 +101,14 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 104.90625,
-        "settlement": 104.90625,
-        "change": 0.0,
-        "pct_change": 0.0,
+        "last": 104.96875,
+        "settlement": 104.96875,
+        "change": 0.0625,
+        "pct_change": 0.05957700327674509,
         "open_interest": 2476197,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 22, 2026)",
         "volume": 0,
-        "market_time": 1790652169,
+        "market_time": 1790652546,
         "source": "https://finance.yahoo.com/quote/UB%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -156,11 +156,15 @@
         "scope": "CFTC TFF NASDAQ MINI 전체시장 주간"
       },
       "nq_price": {
-        "price": 30471.75,
+        "price": 30472.5,
         "previous_close": 30764.75,
-        "pct_change": -0.952388691603212,
+        "pct_change": -0.949950836590574,
         "source": "Yahoo distributed/delayed NQ=F fallback",
-        "official": false
+        "official": false,
+        "official_errors": [
+          "CME quote API returned no usable NQ row",
+          "CME equity page: RuntimeError: CME equities page active NQ quote not found"
+        ]
       },
       "history_3y": {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
@@ -182,8 +186,10 @@
       "stage": 0,
       "label": "⚪ 채권→Nasdaq 이중 숏 스퀴즈 미확인",
       "treasury_short_present": true,
+      "treasury_fuel": true,
       "treasury_confirmed": false,
       "nq_extreme": false,
+      "nq_fuel": false,
       "nq_history_ready": true,
       "nq_history_fresh": true,
       "nq_price_up": false,
