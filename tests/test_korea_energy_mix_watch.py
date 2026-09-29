@@ -299,3 +299,23 @@ def test_grid_innovation_body_interpretation_separates_target_from_execution():
     assert "10GW 이상" in result
     assert "최대 171GW" in result
     assert "비증설 대안" in result
+
+
+def test_grid_actual_execution_upgrades_event_level():
+    announced = {
+        "title": "10월 1일부터 호남권 계통관리변전소 지정 해제 예정",
+        "publisher": "연합뉴스",
+        "official": False,
+        "published": "Tue, 29 Sep 2026 04:00:00 GMT",
+        "plan_stage": "발표·공개",
+    }
+    effective = {
+        "title": "호남권 계통관리변전소 지정 해제 완료…제도 시행 시작",
+        "publisher": "연합뉴스",
+        "official": False,
+        "published": "Thu, 01 Oct 2026 01:00:00 GMT",
+        "plan_stage": "발표·공개",
+    }
+    assert semantic_event_key(announced) == semantic_event_key(effective)
+    assert semantic_event_level(announced) == 1
+    assert semantic_event_level(effective) == 3
