@@ -326,6 +326,68 @@ def official_page_snapshots() -> dict[str, dict]:
     return out
 
 
+def fetch_openshell_telemetry() -> dict:
+    api = "https://api.github.com/repos/NVIDIA/OpenShell/contents/telemetry?ref=main"
+    payload = json.loads(fetch_bytes(api).decode("utf-8"))
+    reports = []
+    for row in payload if isinstance(payload, list) else []:
+        name = str(row.get("name") or "")
+        if re.fullmatch(r"\d{4}-\d{2}-\d{2}\.md", name):
+            reports.append(row)
+    if not reports:
+        raise RuntimeError("OpenShell telemetry reports not found")
+    latest = sorted(reports, key=lambda x: x["name"])[-1]
+    url = str(latest.get("download_url") or "")
+    if not url:
+        raise RuntimeError("OpenShell telemetry raw URL missing")
+    body = fetch_bytes(url).decode("utf-8", "ignore")
+
+    def metric(label: str) -> str | None:
+        pat = r"\|\s*" + re.escape(label) + r"\s*\|\s*([\d,]+)\s*\|\s*([\d,]+)\s*\|\s*([+-]?[\d.]+%)\s*\|"
+        m = re.search(pat, body, flags=re.I)
+        return m.group(1) if m else None
+
+    created = metric("Sandboxes created")
+    failures = metric("Sandbox creation failures")
+    denied = metric("Actions denied")
+    network = metric("Network activity events")
+    failure_rate = None
+    if created and failures:
+        try:
+            failure_rate = 100.0 * int(failures.replace(",", "")) / int(created.replace(",", ""))
+        except Exception:
+            failure_rate = None
+
+    driver = re.search(r"Kubernetes\s*\(([\d,]+)\).*?Docker\s*\(([\d,]+)\).*?Podman\s*(?:third at\s*)?\(([\d,]+)\)", body, flags=re.I | re.S)
+    providers = re.search(r"\*\*Providers\.\*\*\s*(.+?)(?:\n\n|```)", body, flags=re.I | re.S)
+    policy = re.search(r"Roughly\s*([\d.]+)%\s*of policy decisions were approved", body, flags=re.I)
+
+    summary = []
+    if created:
+        summary.append(f"샌드박스 생성 {created}건")
+    if failure_rate is not None:
+        summary.append(f"생성 실패율 {failure_rate:.1f}%")
+    if denied:
+        summary.append(f"행동 차단 {denied}건")
+    if network:
+        summary.append(f"네트워크 이벤트 {network}건")
+
+    details = []
+    if driver:
+        details.append(f"Kubernetes {driver.group(1)} / Docker {driver.group(2)} / Podman {driver.group(3)}")
+    if providers:
+        details.append("프로바이더: " + " ".join(providers.group(1).split())[:300])
+    if policy:
+        details.append(f"정책 승인율 약 {policy.group(1)}%")
+
+    return {
+        "name": latest["name"],
+        "url": str(latest.get("html_url") or "https://github.com/NVIDIA/OpenShell/tree/main/telemetry"),
+        "digest": hashlib.sha256(body.encode("utf-8")).hexdigest(),
+        "title": " · ".join(summary) if summary else latest["name"],
+        "detail": " | ".join(details),
+    }
+
 def source_official(source: str) -> bool:
     low = source.lower()
     return any(x in low for x in OFFICIAL_SOURCE_HINTS)
@@ -443,12 +505,13 @@ def normalize(item: dict) -> dict:
 
 def load_state() -> dict:
     if not STATE_PATH.exists():
-        return {"initialized": False, "seen": {}, "official_pages": {}}
+        return {"initialized": False, "seen": {}, "official_pages": {}, "openshell_telemetry": {}}
     try:
         obj = json.loads(STATE_PATH.read_text(encoding="utf-8"))
         obj.setdefault("initialized", False)
         obj.setdefault("seen", {})
         obj.setdefault("official_pages", {})
+        obj.setdefault("openshell_telemetry", {})
         return obj
     except Exception:
         return {"initialized": False, "seen": {}, "official_pages": {}}
@@ -624,6 +687,34 @@ def main() -> int:
     except Exception as exc:
         errors.append(f"공식 사업페이지 감시 실패: {type(exc).__name__}: {exc}")
 
+    openshell_telemetry = dict(state.get("openshell_telemetry") or {})
+    try:
+        telemetry = fetch_openshell_telemetry()
+        previous_telemetry = dict(openshell_telemetry)
+        if previous_telemetry and (
+            previous_telemetry.get("name") != telemetry.get("name")
+            or previous_telemetry.get("digest") != telemetry.get("digest")
+        ):
+            new_items.append(normalize({
+                "kind":"official",
+                "query":"OpenShell official telemetry",
+                "title":f"NVIDIA OpenShell 실사용 텔레메트리 {telemetry['name']}: {telemetry['title']}",
+                "description":telemetry.get("detail",""),
+                "source":"NVIDIA",
+                "url":telemetry["url"],
+                "published_at":now.isoformat(),
+            }))
+        openshell_telemetry = {
+            "name": telemetry.get("name"),
+            "digest": telemetry.get("digest"),
+            "url": telemetry.get("url"),
+            "title": telemetry.get("title"),
+            "detail": telemetry.get("detail"),
+            "updated_at": now.isoformat(),
+        }
+    except Exception as exc:
+        errors.append(f"OpenShell 텔레메트리 감시 실패: {type(exc).__name__}: {exc}")
+
     baseline = not bool(state.get("initialized"))
     if baseline:
         new_items = []
@@ -642,6 +733,7 @@ def main() -> int:
         "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
         "seen": seen,
         "official_pages": official_pages,
+        "openshell_telemetry": openshell_telemetry,
         "last_collection": {
             "raw_items":len(raw),
             "material_items":len(current),
@@ -664,6 +756,7 @@ def main() -> int:
         f"- 최초 기준선: {'예' if baseline else '아니오'}",
         f"- 웹 수집: {len(raw)}건",
         f"- 중요 필터 통과: {len(current)}건",
+        f"- OpenShell 텔레메트리 최신: {openshell_telemetry.get('name') or '확인 불가'}",
         f"- 신규 중요 사건: {len(events)}건",
         f"- 오류: {len(errors)}건",
     ]
