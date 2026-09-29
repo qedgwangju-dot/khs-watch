@@ -402,6 +402,13 @@ def build_compact_alert(pending: dict, original_text: str) -> str:
             f" · {float(crcl.get('daily_pct', 0.0)):+.2f}% {html.escape(phase)}"
         )
 
+    lines += [
+        "",
+        "<b>읽는 법</b>",
+        "• <b>SOFR</b> ↑ = 준비금 수익에 유리 / ↓ = 불리 · 단, 실제 실적은 <b>USDC × 준비금 수익률</b> 우선",
+        "• <b>TBX</b> ↑ = 7~10년 국채 가격↓·금리↑ → CRCL 할인율 부담↑ / TBX ↓ = 반대 · <b>실적 직접지표 아님</b>",
+    ]
+
     if fx_rate:
         lines += [
             "",
