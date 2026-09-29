@@ -121,7 +121,9 @@ ACTION_TERMS = (
     "paid support", "enterprise support", "attach rate", "shipment", "shipments",
     "unit", "units", "revenue contribution", "default integration", "default-on",
     "hardware isolation", "mandatory isolation", "insurance", "certification",
-    "active sandbox", "active sandboxes", "telemetry", "deployment", "deployments",
+    "active sandbox", "active sandboxes", "telemetry", "sandboxes created",
+    "sandbox creation failures", "actions denied", "network activity events",
+    "provider profiles", "deployment", "deployments",
     "product launch", "launched", "always-on", "continuous", "24/7", "soc",
     "autonomous security", "security agent", "runtime firewall", "bluefield", "nemotron",
     # Korean.
@@ -152,6 +154,12 @@ CONCRETE_ACTION_TERMS = (
 )
 
 CATEGORY_PATTERNS = [
+    ("OpenShell 실사용·채택 지표", (
+        "openshell telemetry", "sandboxes created", "sandbox creation failures",
+        "actions denied", "network activity events", "provider profiles",
+        "kubernetes", "docker", "policy decisions", "실사용 텔레메트리",
+        "샌드박스 생성", "생성 실패율", "행동 차단",
+    )),
     ("Sentry SKU·가격·라이선스", (
         "sentry", "sku", "standalone", "pricing", "license", "licensing",
         "subscription", "bundle", "bundled", "ai enterprise",
@@ -227,9 +235,9 @@ WATCH_ENTITIES = (
 
 KNOWN_OFFICIAL_PAGES = {
     "NIPA 사이버보안 특화 AI 사업": "https://nipa.kr/home/bsnsAll/00/detail?bsnsDtlsIemNo=909",
-    "NVIDIA OpenShell 지원 에이전트": "https://docs.nvidia.com/openshell/about/supported-agents",
-    "NVIDIA OpenShell 지원정책": "https://docs.nvidia.com/openshell/reference/support-matrix",
-    "NVIDIA OpenShell 릴리스 노트": "https://docs.nvidia.com/openshell/latest/about/release-notes.html",
+    "NVIDIA OpenShell 개요·지원": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/README.md",
+    "NVIDIA OpenShell 지원정책": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/docs/about/support-matrix.mdx",
+    "NVIDIA OpenShell 보안정책": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/SECURITY.md",
 }
 
 
@@ -355,6 +363,7 @@ def detect_entity(text: str) -> str:
         ("NAAIMES", ("naaimes",)),
         ("AI 안전연구소 네트워크", ("ai safety institute", "안전연구소")),
         ("NIST", ("nist",)),
+        ("NVIDIA Sentry/BlueField", ("bluefield-4", "bluefield", "nvidia sentry")),
         ("NVIDIA OpenShell", ("openshell", "open agent safety platform", "nemoclaw")),
         ("Sentry", ("sentry",)),
         ("SAP", ("sap",)),
@@ -510,7 +519,9 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
-        if rep["category"] == "Sentry SKU·가격·라이선스":
+        if rep["category"] == "OpenShell 실사용·채택 지표":
+            lines.append("• <b>의미</b>: 발표·GitHub 관심도가 아니라 실제 샌드박스 사용량·실패율·차단량·프로바이더 믹스로 기업 채택을 확인")
+        elif rep["category"] == "Sentry SKU·가격·라이선스":
             lines.append("• <b>의미</b>: Sentry가 BlueField 부가 기능에 머무는지, 별도 SKU·라이선스·구독매출로 독립 수익화되는지 확인")
         elif rep["category"] == "BlueField 증분 장착·DPU 수익화":
             lines.append("• <b>의미</b>: Rubin 기본탑재 물량과 별개로 비-NVIDIA 서버까지 BlueField 장착이 늘어 실제 증분 DPU 매출이 생기는지 확인")
@@ -542,7 +553,7 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
         ]
         if links:
             lines.append("🔗 " + " · ".join(links))
-    lines += ["", "<b>다음 확인</b>: Sentry 단독 SKU/가격 · BlueField 증분 장착률/출하량 · OpenShell 기본내장/지원범위 · 하드웨어 격리 조달요건 · GPU/AI Enterprise 매출 연결"]
+    lines += ["", "<b>다음 확인</b>: OpenShell 샌드박스/실패율/차단량 · Sentry 단독 SKU/가격 · BlueField 증분 장착률/출하량 · OpenShell 기본내장/지원범위 · 하드웨어 격리 조달요건 · GPU/AI Enterprise 매출 연결"]
     return title, "\n".join(lines)
 
 
