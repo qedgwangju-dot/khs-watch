@@ -189,11 +189,11 @@
       "first_seen_kst": "2026-09-29T19:41:06+09:00"
     }
   },
-  "updated_at_kst": "2026-09-29T19:44:51+09:00",
+  "updated_at_kst": "2026-09-29T20:04:05+09:00",
   "last_scan_count": 11,
   "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
-  "hbm_market_alert_format_version": 1,
+  "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
     "period": "2027",
     "blended_asp_yoy_pct": 121.0,
@@ -207,18 +207,18 @@
     "secondary_source_url": "https://biz.chosun.com/it-science/ict/2026/09/29/4EV5Z6JAR5GCPG7DR7ZBBFMJUQ/",
     "source_rank": 3
   },
-  "last_successful_delivery_kst": "2026-09-29T19:39:21+09:00",
+  "last_successful_delivery_kst": "2026-09-29T20:04:09+09:00",
   "telegram_message_ids": [
-    171
+    172
   ],
-  "telegram_message_id": 171,
+  "telegram_message_id": 172,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      171
+      172
     ],
-    "confirmed_at_kst": "2026-09-29T19:39:21+09:00"
+    "confirmed_at_kst": "2026-09-29T20:04:09+09:00"
   }
 }
