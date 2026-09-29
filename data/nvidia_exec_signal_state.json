@@ -1,11 +1,12 @@
 {
-  "updated_at_kst": "2026-09-29T18:43:05+09:00",
+  "updated_at_kst": "2026-09-30T01:06:39+09:00",
   "seen_ids": [
     "05738ff36f7b6c56288425e7",
     "162bef5431cfeab3494ce984",
     "174b747c5a23191d5a286b2f",
     "1c84301bf79c8d36b83c0259",
     "2565087891ae0a867ab40fc6",
+    "28cb1485f3f72fa06bfd4de6",
     "2b583eab3f05e2f82f49d843",
     "30aac63462e98cc963362aff",
     "323e5acbb87189a4e30a467c",
@@ -107,8 +108,8 @@
     "confirmed_at_kst": "2026-09-29T00:42:23+09:00"
   },
   "schedule_audit_version": 1,
-  "last_run_event": "push",
-  "last_schedule_check_kst": "2026-09-29T18:29:20+09:00",
-  "schedule_gap_minutes": 393.8,
+  "last_run_event": "schedule",
+  "last_schedule_check_kst": "2026-09-30T01:06:39+09:00",
+  "schedule_gap_minutes": 397.3,
   "last_push_check_kst": "2026-09-29T18:43:05+09:00"
 }
