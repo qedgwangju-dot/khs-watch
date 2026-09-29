@@ -872,6 +872,21 @@ def build_pending_state(
     }
 
 
+def select_unalerted_event(
+    state: dict,
+    candidates: list[tuple[str, list[NewsItem]]],
+    current: dt.datetime,
+) -> tuple[tuple[str, list[NewsItem], str] | None, list[str]]:
+    duplicate_labels: list[str] = []
+    for candidate_kind, candidate_rows in candidates:
+        candidate_id = event_id(candidate_kind, candidate_rows)
+        if event_recently_alerted(state, candidate_id, current):
+            duplicate_labels.append(EVENT_LABELS.get(candidate_kind, candidate_kind))
+            continue
+        return (candidate_kind, candidate_rows, candidate_id), duplicate_labels
+    return None, duplicate_labels
+
+
 def clean_outputs() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     for path in (
@@ -1253,15 +1268,9 @@ def run_monitor(current: dt.datetime) -> int:
         write_summary(lines)
         return 0
 
-    selected = None
-    duplicate_labels: list[str] = []
-    for candidate_kind, candidate_rows in confirmed_candidates:
-        candidate_id = event_id(candidate_kind, candidate_rows)
-        if event_recently_alerted(state, candidate_id, current):
-            duplicate_labels.append(EVENT_LABELS.get(candidate_kind, candidate_kind))
-            continue
-        selected = (candidate_kind, candidate_rows, candidate_id)
-        break
+    selected, duplicate_labels = select_unalerted_event(
+        state, confirmed_candidates, current
+    )
 
     if selected is None:
         write_summary(
