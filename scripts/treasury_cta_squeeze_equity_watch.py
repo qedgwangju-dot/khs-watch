@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import io
 import json
+import os
 import re
 import urllib.request
 from datetime import date, datetime, time, timedelta
@@ -706,8 +707,26 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
     iso = d.isocalendar()
     week_key = f"{iso.year}-W{iso.week:02d}"
     date_key = d.isoformat()
-    monday_due = d.weekday() == 0 and current_state.get("last_weekly_report_key") != week_key
-    fomc_due = date_key in FOMC_END_DATES and current_state.get("last_fomc_eve_report") != date_key
+
+    trigger_event = (os.getenv("CTA_TRIGGER_EVENT") or "").strip()
+    trigger_schedule = (os.getenv("CTA_TRIGGER_SCHEDULE") or "").strip()
+
+    # Exact cron-source gating:
+    # - weekly report only from the dedicated Sunday 22:00 UTC cron (= Monday 07:00 KST)
+    # - FOMC eve report only from the dedicated weekday 11:40 UTC cron (= 20:40 KST)
+    # A code push or ordinary 15-minute market poll can never consume these slots.
+    monday_due = (
+        trigger_event == "schedule"
+        and trigger_schedule == "0 22 * * 0"
+        and d.weekday() == 0
+        and current_state.get("last_weekly_report_key") != week_key
+    )
+    fomc_due = (
+        trigger_event == "schedule"
+        and trigger_schedule == "40 11 * * 1-5"
+        and date_key in FOMC_END_DATES
+        and current_state.get("last_fomc_eve_report") != date_key
+    )
     return monday_due, fomc_due, week_key, date_key
 
 
