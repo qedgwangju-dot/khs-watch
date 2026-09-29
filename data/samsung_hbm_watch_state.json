@@ -146,6 +146,7 @@
     "914fababbb9099953512eef6",
     "9348003ee0b889f4cd55f49b",
     "948c3db85e4f53a9d0cd2121",
+    "94b2b1c2ce5c9c2f65c340fc",
     "94cd0744c2c52b59a060e719",
     "956692bf0256368dcfe8ae47",
     "98ba1745001107bfdd028fd7",
@@ -244,7 +245,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-29T08:32:09+09:00",
+  "updated_at_kst": "2026-09-29T18:51:18+09:00",
   "last_event_count": 88,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -266,7 +267,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-29T08:32:09+09:00",
+  "last_successful_official_at_kst": "2026-09-29T18:51:18+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -910,6 +911,30 @@
         "source": "머니투데이",
         "scope": "technology_plan_and_line_investment_separated",
         "excerpt": "HBM5 대응 2나노 신규 생산라인 구축 검토. GAA 2나노와 고집적 TSV, HBM4E 대비 동작속도 50% 이상 향상 목표."
+      },
+      "hbm_market_pricing|trendforce|industry|2027": {
+        "key": "hbm_market_pricing|trendforce|industry|2027",
+        "axis": "hbm_market_pricing",
+        "value": {
+          "blended_asp_yoy_pct": 121,
+          "eight_hi_premium_min_pct": 10,
+          "eight_hi_premium_max_pct": 20,
+          "mainstream_layers": 8,
+          "reference_layers": 12,
+          "stack_bit_change_pct": -33.33333333333333,
+          "gpu_growth_break_even_min_pct": 25,
+          "gpu_growth_break_even_max_pct": 36.36363636363635
+        },
+        "unit": "pct",
+        "period": "2027",
+        "as_of": "2026-09-29",
+        "evidence": "reported",
+        "source_url": "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202609290194&t=NN",
+        "source_title": "한국경제TV, TrendForce 2027 HBM Blended ASP +121%·8단 Gb당 +10~20% 인용",
+        "source": "한국경제TV·TrendForce 인용",
+        "scope": "market_blended_asp_and_stack_mix_not_company_specific",
+        "research_reference_url": "https://www.trendforce.com/research/download/RP260922FJ3",
+        "excerpt": "사용자 제공 2026-09-29 기사 본문 기준. TrendForce 조사 인용: 2027 HBM Blended ASP +121% YoY, 8단 HBM Gb당 판매가격은 12단 대비 +10~20%, 8단 적용 확대 전망. TrendForce 공개 페이지는 가격 전망 상향·8Hi 주류·per-Gb premium 방향을 확인하나 +121%·10~20% 정확 수치는 공개 요약에 없음."
       }
     },
     "latest": {
@@ -1074,7 +1099,7 @@
         "value": 57.833,
         "unit": "USD/chip",
         "period": "2026-09",
-        "as_of": "2026-09-28",
+        "as_of": "2026-09-29",
         "evidence": "research",
         "source_url": "https://www.dramexchange.com/",
         "source_title": "DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격",
@@ -1395,19 +1420,43 @@
         "source": "머니투데이",
         "excerpt": "삼성 HBM5 2나노 베이스다이 기술·투자 단계",
         "scope": "technology_plan_and_line_investment_separated"
+      },
+      "hbm_market_pricing|trendforce|industry|2027": {
+        "key": "hbm_market_pricing|trendforce|industry|2027",
+        "axis": "hbm_market_pricing",
+        "value": {
+          "blended_asp_yoy_pct": 121.0,
+          "eight_hi_premium_min_pct": 10,
+          "eight_hi_premium_max_pct": 20,
+          "mainstream_layers": 8,
+          "reference_layers": 12,
+          "stack_bit_change_pct": -33.33333333333333,
+          "gpu_growth_break_even_min_pct": 25,
+          "gpu_growth_break_even_max_pct": 36.36363636363635
+        },
+        "unit": "pct",
+        "period": "2027",
+        "as_of": "2026-09-29",
+        "evidence": "reported",
+        "source_url": "https://biz.chosun.com/en/en-it/2026/09/29/PYE3ETNDMJB6JKFAOSIA5OXUZE/",
+        "source_title": "HBM prices surge as AI demand and HBM4 shift tighten supply - CHOSUNBIZ - Chosunbiz",
+        "source": "Chosunbiz",
+        "excerpt": "HBM prices surge as AI demand and HBM4 shift tighten supply - CHOSUNBIZ - Chosunbiz HBM prices surge as AI demand and HBM4 shift tighten supply - CHOSUNBIZ Chosunbiz SK hynix's sixth-generation High Bandwidth Memory (HBM), HBM4./Courtesy of News1 With demand for artificial intelligence (AI) servers continuing, a forecast says the average selling price of high bandwidth memory (HBM) next year will rise to more than double this year's level. As the sales share of HBM4, the sixth-generation HBM, grows and HBM and commodity DRAM must keep sharing limited advanced process capacity, the resulting supply shortage is expected to push prices higher. On the 29th, market research firm TrendForce projected that the 2027 HBM average selling price (blended ASP), reflecting the sales mix by product, will",
+        "scope": "market_blended_asp_and_stack_mix_not_company_specific",
+        "research_reference_url": "https://www.trendforce.com/research/download/RP260922FJ3"
       }
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-29T08:32:09+09:00",
+      "last_checked_at_kst": "2026-09-29T18:51:18+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
-      "observations": 2,
+      "observations": 3,
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
-      "non_concrete_generic_evidence_suppressed": 1,
+      "non_concrete_generic_evidence_suppressed": 0,
       "rdimm_quote|dramexchange|32|4800/5600": "지연 원자료: 현재 가격 알림 보류"
     },
     "version": 1,
@@ -1435,6 +1484,17 @@
         "new_stack_gb": 32,
         "capacity_change_pct": -33.33333333333333,
         "gpu_growth_break_even_pct": 50
+      },
+      {
+        "label": "12단 → 8단; Gb당 프리미엄 +10~20% 반영",
+        "old_layers": 12,
+        "new_layers": 8,
+        "stack_bit_change_pct": -33.33333333333333,
+        "eight_hi_premium_min_pct": 10,
+        "eight_hi_premium_max_pct": 20,
+        "gpu_asic_growth_break_even_min_pct": 25,
+        "gpu_asic_growth_break_even_max_pct": 36.36363636363635,
+        "note": "동일 스택 수·동일 다이밀도·다른 조건 동일 가정. 실제 GPU/ASIC별 스택 수·용량·가격계약은 별도 확인."
       }
     ],
     "foundry_track_version": 1
@@ -1453,7 +1513,7 @@
     "payload_hash": "e2a020bc18aab1d529d2638444e5f84b36bd8cda3a364328e6d8ae9a09ac834d"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-29T08:35:04+09:00",
+    "checked_at_kst": "2026-09-29T18:54:39+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
