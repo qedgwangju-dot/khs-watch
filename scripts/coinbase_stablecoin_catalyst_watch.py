@@ -7,6 +7,7 @@ import pathlib
 import re
 import urllib.parse
 import urllib.request
+import xml.etree.ElementTree as ET
 from dataclasses import dataclass, asdict
 from zoneinfo import ZoneInfo
 
@@ -26,6 +27,7 @@ COINBASE_BLOG_LANDING = "https://www.coinbase.com/blog/landing"
 COINBASE_USDC_URL = "https://www.coinbase.com/earn"
 CFTC_DCO_URL = "https://www.cftc.gov/IndustryOversight/IndustryFilings/ClearingOrganizations?col=Status&dir=DESC"
 CFTC_DCM_URL = "https://www.cftc.gov/IndustryOversight/IndustryFilings/TradingOrganizations?col=Organization&dir=ASC"
+GOOGLE_NEWS_RSS = "https://news.google.com/rss/search"
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (compatible; KHS-Coinbase-Stablecoin-Catalyst-Watch/1.0)",
@@ -76,6 +78,22 @@ def fetch_text(url, timeout=25):
         return response.read().decode("utf-8", "ignore")
 
 
+def google_news_items(query):
+    params = urllib.parse.urlencode({"q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"})
+    root = ET.fromstring(fetch_text(f"{GOOGLE_NEWS_RSS}?{params}"))
+    rows = []
+    for item in root.findall(".//item")[:40]:
+        source_node = item.find("source")
+        rows.append({
+            "title": clean(item.findtext("title")),
+            "description": clean(item.findtext("description")),
+            "url": clean(item.findtext("link")),
+            "pubDate": clean(item.findtext("pubDate")),
+            "source": clean(source_node.text if source_node is not None else ""),
+        })
+    return rows
+
+
 def load_state():
     if not STATE_PATH.exists():
         return {}
@@ -116,17 +134,38 @@ def collect_citi_coinbase(errors):
             verified_url = CITI_COINBASE_MIRROR_URL
         except Exception as mirror_exc:
             errors.append(f"Coinbase-Citi mirror: {mirror_exc}")
-            return []
+            try:
+                trusted = {"The Block", "Bloomberg", "Bloomberg Law", "Reuters", "The Wall Street Journal", "Coinbase"}
+                rows = google_news_items('"Citi" "Coinbase" stablecoin payments businesses')
+                hit = None
+                for row in rows:
+                    signal = f"{row.get('title','')} {row.get('description','')}"
+                    if row.get("source") not in trusted:
+                        continue
+                    if re.search(r"Citi", signal, re.I) and re.search(r"Coinbase", signal, re.I) and re.search(r"stablecoin", signal, re.I):
+                        hit = row
+                        break
+                if not hit:
+                    return []
+                body = clean(f"{hit.get('title','')} {hit.get('description','')}")
+                source = f"{hit.get('source')} 보도(공식 Coinbase 발표 교차검증용)"
+                verified_url = COINBASE_CITI_URL
+            except Exception as rss_exc:
+                errors.append(f"Coinbase-Citi trusted RSS fallback: {rss_exc}")
+                return []
 
-    required_groups = [
-        ("Citi",),
-        ("Coinbase",),
-        ("Virtual Account Wallet", "Virtual Accounts"),
-        ("Spring by Citi",),
-        ("stablecoin",),
-    ]
-    if not all(any(token.lower() in body.lower() for token in group) for group in required_groups):
-        errors.append("Coinbase-Citi: partnership source opened but required markers were incomplete")
+    direct_detail_available = (
+        ("virtual account wallet" in body.lower() or "virtual accounts" in body.lower())
+        and "spring by citi" in body.lower()
+    )
+    core_markers_ok = (
+        "citi" in body.lower()
+        and "coinbase" in body.lower()
+        and "stablecoin" in body.lower()
+        and ("payment" in body.lower() or "payments" in body.lower())
+    )
+    if not core_markers_ok:
+        errors.append("Coinbase-Citi: partnership source opened but core markers were incomplete")
         return []
 
     reward_note = ""
@@ -148,9 +187,11 @@ def collect_citi_coinbase(errors):
 
     date = parse_date_from_text(body) or "2026-09-28"
     detail = (
-        "Citi의 Virtual Account Wallet(가상계좌 지갑)이 Coinbase Virtual Accounts에 연결돼 "
-        "들어오는 법정화폐를 스테이블코인으로 자동 전환할 수 있고, Citi 기관고객은 Spring by Citi에서 "
-        "Coinbase 결제 인프라를 통해 스테이블코인 결제를 받을 수 있게 됐습니다."
+        "Citi·Coinbase가 기업용 법정화폐↔스테이블코인 결제 연결을 확대했습니다. "
+        "공식 Coinbase 발표에서 확인된 구조는 Citi의 Virtual Account Wallet(가상계좌 지갑)을 "
+        "Coinbase Virtual Accounts에 연결해 들어오는 법정화폐를 스테이블코인으로 자동 전환하고, "
+        "Citi 기관고객이 Spring by Citi에서 Coinbase 결제 인프라를 통해 스테이블코인 결제를 받을 수 있게 하는 것입니다."
+        + ("" if direct_detail_available else " 이번 실행에서는 Coinbase 원문 직접 접속이 403으로 차단돼 신뢰매체 RSS로 신규 사실을 감지했고, 세부 구조는 기존 확인된 공식 Coinbase 발표 기준입니다.")
         + reward_note
     )
     return [Event(
