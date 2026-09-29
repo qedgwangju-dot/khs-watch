@@ -1,5 +1,6 @@
 {
   "active_event": null,
+  "error": "실질금리 공식 입력 미확인 — 정책반응 감시 상태 유지",
   "initialized": true,
   "last_policy_rates": {
     "boj_policy_rate": 1.25,
@@ -8,5 +9,5 @@
   "new_boj_hike_detected": false,
   "reaction_snapshot": null,
   "recent_policy_events": [],
-  "updated_at_kst": "2026-09-29T21:13:50+09:00"
+  "updated_at_kst": "2026-09-29T22:58:54+09:00"
 }
