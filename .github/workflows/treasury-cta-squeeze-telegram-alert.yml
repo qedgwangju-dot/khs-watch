@@ -31,6 +31,8 @@ jobs:
     timeout-minutes: 10
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "hs88798879887988798879_bot"
+      CTA_TRIGGER_EVENT: ${{ github.event_name }}
+      CTA_TRIGGER_SCHEDULE: ${{ github.event.schedule || '' }}
 
     steps:
       - uses: actions/checkout@v4
