@@ -246,7 +246,7 @@ def _material_facts(row: dict) -> set[str]:
 
     # 원화 환산값은 환율에 따라 움직이므로 상태 변화 판정에서 제외한다.
     for match in re.finditer(
-        r"(\d+(?:\.\d+)?(?:천|백)?)\s*(억|조)\s*달러", low
+        r"(\d+(?:\.\d+)?(?:천|백)?)\s*(억|조)\s*(?:달러|불)", low
     ):
         facts.add(f"usd:{match.group(1)}{match.group(2)}")
     for match in re.finditer(
@@ -285,7 +285,7 @@ def _material_facts(row: dict) -> set[str]:
         ("공식확정", ["공식 확정", "최종 확정", "확정 발표"]),
         ("체결", ["체결", "본계약", "계약 체결", "signed agreement"]),
         ("수주발주", ["수주", "발주", "구매주문", "purchase order"]),
-        ("승인", ["승인", "approved"]),
+        ("승인", ["승인", "approved", "벤더 승인", "vendor approval"]),
         ("허가", ["허가", "permit"]),
         ("착공", ["착공", "groundbreaking", "construction start"]),
         ("최종투자결정", ["최종투자결정", " fid"]),
@@ -331,6 +331,7 @@ def _material_facts(row: dict) -> set[str]:
         ("posco", ["포스코", "posco"]),
         ("kogas", ["한국가스공사", "kogas"]),
         ("glenfarne", ["glenfarne"]),
+        ("kumkang", ["금강공업", "kumkang kind"]),
         ("ercot", ["ercot"]),
     ]
     for label, terms in parties:
@@ -393,7 +394,7 @@ def _official_status_fact(row: dict) -> str:
 
 def _korean_usd_tokens(low: str) -> list[str]:
     out: list[str] = []
-    for match in re.finditer(r"(\d+(?:\.\d+)?(?:천|백)?)\s*(억|조)\s*달러", low):
+    for match in re.finditer(r"(\d+(?:\.\d+)?(?:천|백)?)\s*(억|조)\s*(?:달러|불)", low):
         out.append(f"{match.group(1)}{match.group(2)}")
     for match in re.finditer(r"\$\s*(\d+(?:\.\d+)?)\s*(billion|million|trillion)?", low):
         out.append(f"{match.group(1)}{match.group(2) or ''}")
@@ -425,7 +426,7 @@ def _explicit_total_nuclear_units(low: str) -> set[str]:
 
 def _money_near_anchor(low: str, anchors: tuple[str, ...]) -> set[str]:
     out: set[str] = set()
-    for match in re.finditer(r"(\d+(?:\.\d+)?(?:천|백)?)\s*(억|조)\s*달러", low):
+    for match in re.finditer(r"(\d+(?:\.\d+)?(?:천|백)?)\s*(억|조)\s*(?:달러|불)", low):
         start, end = match.span()
         window = low[max(0, start - 45): min(len(low), end + 45)]
         if any(anchor in window for anchor in anchors):
@@ -531,6 +532,13 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
             for value in _korean_usd_tokens(low):
                 facts.add(f"alaska_project_usd:{value}")
         facts |= stages
+        # 금강공업의 API 5L X70 인증 연관성만으로 프로젝트 공급사 상태를 올리지 않는다.
+        # 공급계약/선정/승인/공식확정처럼 프로젝트 단계가 실제 상승한 경우에만 당사자로 채택한다.
+        if "party:kumkang" in parties and not any(
+            stage in stages
+            for stage in ["stage:수주발주", "stage:체결", "stage:선정", "stage:승인", "stage:공식확정"]
+        ):
+            parties.discard("party:kumkang")
         return facts | parties
 
     if family == "ercot_large_load":
@@ -573,6 +581,7 @@ def _fact_slot(family: str, fact: str) -> str:
         "stake_percent:", "funding_amount_usd:", "funding_date:", "funding_wait:",
         "repayment_horizon:", "package_nuclear_units:", "package_usd:",
         "encinal_total_gw:", "encinal_phase1_gw:", "encinal_phase2_gw:", "encinal_project_usd:",
+        "alaska_project_usd:",
         "ercot_request_gw:", "semiconductor_investment_usd:", "ppa_years:",
         "official_status:",
     )
@@ -758,6 +767,7 @@ def _human_fact(value: str) -> str:
         "party:posco": "포스코",
         "party:kogas": "한국가스공사",
         "party:glenfarne": "Glenfarne",
+        "party:kumkang": "금강공업",
         "party:ercot": "ERCOT",
     }
     return party_names.get(value, value)
@@ -1119,6 +1129,27 @@ def _self_test() -> int:
     accepted, _ = _accepted_facts_for_group("ercot_large_load", ercot)
     if "ercot_request_gw:474" not in accepted or any("474기" in x for x in accepted):
         raise RuntimeError(f"ERCOT unit contamination regression: {accepted}")
+
+    if "540억" not in _korean_usd_tokens("알래스카 LNG에 한국 540억불 투자 발표 가능성"):
+        raise RuntimeError("억불 parser regression")
+
+    kumkang_candidate_rows = [
+        {
+            "title": "금강공업, 알래스카 LNG API 5L X70 공급 자격 확보",
+            "source": "데이터투자",
+            "link": "https://example.com/kumkang-a",
+            "published": "2026-09-28T03:13:00+00:00",
+        },
+        {
+            "title": "금강공업 알래스카 LNG X70 공급 참여 가능성",
+            "source": "뉴스1",
+            "link": "https://example.com/kumkang-b",
+            "published": "2026-09-28T04:00:00+00:00",
+        },
+    ]
+    accepted, _ = _accepted_facts_for_group("alaska_lng", kumkang_candidate_rows)
+    if "party:kumkang" in accepted:
+        raise RuntimeError(f"kumkang candidate was promoted without project award: {accepted}")
 
     print("state_event_guard_self_test=passed")
     return 0

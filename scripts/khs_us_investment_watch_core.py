@@ -46,6 +46,9 @@ QUERIES = [
     '"Alaska LNG" offtake OR FID OR financing when:7d',
     '"Alaska LNG" 13 MTPA OR 16 MTPA when:7d',
     '"Alaska LNG" tax OR property tax OR pipeline when:7d',
+    '"알래스카 LNG" 금강공업 API 5L X70 when:14d',
+    '"금강공업" "Alaska LNG" 공급계약 OR 벤더 OR 수주 when:14d',
+    '"KUMKANG KIND" "Alaska LNG" "API 5L" when:14d',
     '"대미투자" 수익배분 OR "위험 통합" OR risk-pooling when:3d',
     '"대미투자" "프로젝트별 손익" OR 손실분담 OR 원리금 when:3d',
     '"대미투자" "45영업일" OR "선정 통지" OR 송금 when:3d',
@@ -60,6 +63,7 @@ TRUSTED = [
     "글로벌경제신문", "GetNews", "Reuters", "Wall Street Journal", "WSJ", "Yahoo",
     "Inside Climate News", "San Antonio Express-News", "Global Energy Monitor", "Pipeline & Gas Journal",
     "Bloomberg", "Utility Dive", "Glenfarne", "Alaska's News Source", "ERCOT", "PUCT", "Texas Governor",
+    "데이터투자", "DataTooza",
 ]
 
 MATERIAL = [
@@ -68,6 +72,7 @@ MATERIAL = [
     "현장발전", "데이터센터", "반도체", "원전", "8기", "LNG", "관세", "301조", "232조", "제외", "포함",
     "압박", "참여", "최종투자결정", "FID", "금융종결", "오프테이크", "구매계약", "SPA", "HOA",
     "MTPA", "세제", "재산세", "파이프라인", "Glenfarne", "POSCO", "포스코", "KOGAS", "한국가스공사",
+    "금강공업", "KUMKANG KIND", "API 5L", "X70", "HFW", "라인파이프", "가스강관", "벤더", "vendor",
     "수익배분", "손실분담", "위험 통합", "risk-pooling", "프로젝트별 손익", "원리금", "상위 SPV",
     "투자 SPV", "손실 상계", "45영업일", "45일 안전판", "선정 통지", "자금 납입", "송금", "조기 송금",
     "조기송금", "조기 납입", "조기집행", "MOU 무시", "확정된 바 없습니다", "첫 집행", "첫 납입",
@@ -258,6 +263,7 @@ def _tags(title: str, source: str = "") -> list[str]:
         ("원전", ["원전", "ap1000", "apr1400", "8기", "westinghouse", "웨스팅하우스"]),
         ("알래스카 LNG 압박", ["압박", "참여하라", "참여 촉구", "빨리", "서둘러"]),
         ("알래스카 LNG 실질진전", ["fid", "최종투자결정", "financial close", "금융종결", "offtake", "오프테이크", "spa", "hoa", "mtpa", "재산세"]),
+        ("알래스카 LNG 강관 공급망", ["금강공업", "kumkang kind", "api 5l", "x70", "라인파이프", "가스강관", "corinth", "europipe"]),
         ("알래스카 LNG", ["알래스카", "alaska lng"]),
         ("관세", ["301조", "232조", "관세"]),
         ("사업비", ["사업비", "증액", "감액", "22.3 billion", "223억", "220억", "1천억달러", "100 billion"]),
@@ -304,6 +310,8 @@ def _meaning(tags: list[str]) -> str:
         return "노형·기수·사업 주도권에 따라 한국의 시공·기자재·운영 몫이 달라집니다."
     if "알래스카 LNG 실질진전" in tags:
         return "구속력 있는 장기구매계약·FID·금융종결·한국 투자액이 실제 착공과 매출을 결정합니다."
+    if "알래스카 LNG 강관 공급망" in tags:
+        return "API 5L X70 인증 보유와 Alaska LNG 프로젝트 공급사 선정은 별개입니다. 금강공업은 후보 근거로 추적하되 벤더 승인·공급계약·물량이 확인될 때만 확정 단계로 올립니다."
     if "알래스카 LNG 압박" in tags:
         return "단순 참여 압박 반복은 제외하고 새 시한·금액·당사자·계약이 붙을 때만 단계 상승으로 봅니다."
     if "알래스카 LNG" in tags:
@@ -438,6 +446,15 @@ def _alaska_lng_block() -> list[str]:
         "• 일정 기준선: 가스관 기계적 완공 2028년 · 첫 가스 2029년 · LNG 수출 목표 2031년",
         "• 사업비 차이: 한국 협상 보도 <b>670억달러 ≈ 89조9,167억원</b> vs Reuters 8월 보도 약 <b>500억달러 ≈ 67조1,020억원</b>",
         "└ 차이 <b>170억달러 ≈ 22조8,147억원</b>의 산정 범위 확인 필요",
+        "",
+        "<b>🇰🇷 금강공업 강관 후보 추적</b>",
+        "• 데이터투자 2026-09-28: 금강공업 API 5L 라이선스 <b>5L-0864</b>의 HFW·PSL1 인증범위에 <b>X70</b>이 포함된 사실을 확인",
+        "• 이 기사는 <b>Alaska LNG 공급계약·벤더 승인·수주 확정이 아니라 향후 공급 참여 가능성</b>을 제기한 단계",
+        "• 금강공업 공식 공개 생산범위는 언양공장 HFW <b>1/2~8인치</b>, Alaska LNG Phase One 주배관은 <b>42인치·약 70만톤 API 5L X70</b>",
+        "• Glenfarne 공식 기준 Corinth Pipeworks+Europipe가 전체 강관의 약 <b>2/3 예비 공급</b>, POSCO International은 강관용 강재 일부 공급",
+        "• 금강공업 공개 API 인증서의 표시 유효기간은 <b>2026-06-02까지</b>여서 최신 API Active 상태를 별도 재확인",
+        "• 현재 등급: <b>후보/규격 연관성</b> · 공급사 확정으로 승격 금지",
+        "• 승격 조건: <b>최신 API Active + 프로젝트 vendor approval/공급계약 + 물량·규격·납기</b>, 또는 32~42인치 대구경 생산·협력 구조 공식 확인",
         "",
         "<b>알림 승격 조건</b>",
         "• 한국 투자액·배정액 확정 / SPA 체결 또는 HOA→SPA 전환·물량 변화 / FID·금융종결",
