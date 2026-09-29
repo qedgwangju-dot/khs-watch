@@ -152,7 +152,7 @@ jobs:
           from zoneinfo import ZoneInfo
 
           now = dt.datetime.now(ZoneInfo("Asia/Seoul"))
-          if now.weekday() >= 5 or not (dt.time(8, 50) <= now.time() <= dt.time(15, 20)):
+          if now.weekday() >= 5 or not (dt.time(8, 20) <= now.time() <= dt.time(15, 20)):
               print("kospi_realtime_watchdog=outside_market_window")
               raise SystemExit(0)
 
