@@ -1,18 +1,21 @@
 {
-  "last_alert_at_kst": "2026-09-28T20:34:19+09:00",
-  "last_event_kind": "sts_reroute_expansion",
-  "last_event_id": "sts_reroute_expansion:a5a5b34c0694d3fd",
+  "last_alert_at_kst": "2026-09-29T19:49:06+09:00",
+  "last_event_kind": "regional_export_recovery",
+  "last_event_id": "regional_export_recovery:66183575fab99015",
+  "alerted_events": {
+    "regional_export_recovery:66183575fab99015": "2026-09-29T19:49:06+09:00"
+  },
   "last_market": {
     "oil": {
       "symbol": "BZ=F",
       "label": "Brent",
       "unit": "달러/배럴",
-      "price": 100.55,
-      "previous_close": 103.08,
-      "change": -2.530000000000001,
-      "change_pct": -2.454404346138922,
-      "timestamp_utc": "2026-09-28T11:24:25Z",
-      "timestamp_epoch": 1790594665.0
+      "price": 97.39,
+      "previous_close": 97.83,
+      "change": -0.4399999999999977,
+      "change_pct": -0.44975978738628,
+      "timestamp_utc": "2026-09-29T10:39:14Z",
+      "timestamp_epoch": 1790678354.0
     }
   }
 }
