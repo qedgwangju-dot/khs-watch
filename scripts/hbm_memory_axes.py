@@ -697,6 +697,84 @@ def parse_foundry_hbm_records(item, body):
     return rows
 
 
+def hbm_stack_revenue_break_even(old_layers=12, new_layers=8, premium_min_pct=0.0, premium_max_pct=0.0):
+    if min(old_layers, new_layers) <= 0:
+        raise ValueError("stack layers must be positive")
+    if premium_min_pct < -100 or premium_max_pct < -100 or premium_min_pct > premium_max_pct:
+        raise ValueError("invalid premium range")
+    bit_ratio = float(new_layers) / float(old_layers)
+    low_revenue_ratio = bit_ratio * (1.0 + float(premium_min_pct) / 100.0)
+    high_revenue_ratio = bit_ratio * (1.0 + float(premium_max_pct) / 100.0)
+    if min(low_revenue_ratio, high_revenue_ratio) <= 0:
+        raise ValueError("invalid revenue ratio")
+    return {
+        "stack_bit_change_pct": (bit_ratio - 1.0) * 100.0,
+        "gpu_growth_break_even_min_pct": (1.0 / high_revenue_ratio - 1.0) * 100.0,
+        "gpu_growth_break_even_max_pct": (1.0 / low_revenue_ratio - 1.0) * 100.0,
+    }
+
+
+def parse_hbm_market_pricing(item, body):
+    text = re.sub(r"\s+", " ", f"{item.get('title','')} {item.get('description','')} {body or ''}").strip()
+    low = text.lower()
+    if "hbm" not in low or "2027" not in text:
+        return []
+    if "trendforce" not in low and "트렌드포스" not in text:
+        return []
+
+    blended = None
+    for pat in (
+        r"(?:Blended\s+ASP|평균판매가격|평균판매단가|혼합\s*ASP)[^%]{0,140}?(?:전년\s*대비\s*)?(?:\+|상승\s*)?([0-9]{2,3}(?:\.[0-9]+)?)\s*%",
+        r"2027[^.]{0,180}?HBM[^.]{0,180}?(?:Blended\s+ASP|평균판매가격|평균판매단가)[^%]{0,100}?([0-9]{2,3}(?:\.[0-9]+)?)\s*%",
+    ):
+        m = re.search(pat, text, re.I)
+        if m:
+            blended = float(m.group(1))
+            break
+
+    pmin = pmax = None
+    for pat in (
+        r"8\s*(?:단|[- ]?Hi)[^.]{0,160}?12\s*(?:단|[- ]?Hi)[^.]{0,160}?([0-9]{1,2}(?:\.[0-9]+)?)\s*(?:~|∼|[-–—]|to)\s*([0-9]{1,2}(?:\.[0-9]+)?)\s*%[^.]{0,80}?(?:높|premium|비싸)",
+        r"8\s*(?:단|[- ]?Hi)[^.]{0,160}?(?:Gb당|per[- ]?Gb)[^.]{0,100}?([0-9]{1,2}(?:\.[0-9]+)?)\s*(?:~|∼|[-–—]|to)\s*([0-9]{1,2}(?:\.[0-9]+)?)\s*%",
+    ):
+        m = re.search(pat, text, re.I)
+        if m:
+            pmin, pmax = float(m.group(1)), float(m.group(2))
+            break
+
+    mainstream = None
+    if re.search(r"8\s*(?:단|[- ]?Hi)[^.]{0,150}?(?:주류|우선\s*적용|lead(?:s|ing)?\s+shipments|mainstream|비중도\s*확대)", text, re.I):
+        mainstream = 8
+    elif re.search(r"12\s*(?:단|[- ]?Hi)[^.]{0,150}?(?:주류|우선\s*적용|lead(?:s|ing)?\s+shipments|mainstream)", text, re.I):
+        mainstream = 12
+
+    if blended is None and pmin is None and mainstream is None:
+        return []
+
+    value = {
+        "blended_asp_yoy_pct": blended,
+        "eight_hi_premium_min_pct": pmin,
+        "eight_hi_premium_max_pct": pmax,
+        "mainstream_layers": mainstream,
+        "reference_layers": 12 if mainstream == 8 or pmin is not None else None,
+    }
+    if pmin is not None and pmax is not None:
+        value.update(hbm_stack_revenue_break_even(12, 8, pmin, pmax))
+
+    record = make_record(
+        "hbm_market_pricing",
+        ["trendforce", "industry", "2027"],
+        value,
+        "pct",
+        "2027",
+        item,
+        text,
+        scope="market_blended_asp_and_stack_mix_not_company_specific",
+        research_reference_url="https://www.trendforce.com/research/download/RP260922FJ3",
+    )
+    return [record]
+
+
 def parse_records(item, body):
     records, gaps = [], []
     published = item.get('published_at_kst', '')
@@ -704,6 +782,7 @@ def parse_records(item, body):
     if malaysia:
         records.append(malaysia)
     records.extend(parse_hbm_revenue_estimates(item, body))
+    records.extend(parse_hbm_market_pricing(item, body))
     records.extend(parse_postprocess_records(item, body))
     records.extend(parse_foundry_hbm_records(item, body))
     paragraphs = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body) if p.strip()]
