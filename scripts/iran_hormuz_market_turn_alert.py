@@ -559,7 +559,7 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
     return sorted(unique.values(), key=lambda item: item.published_epoch, reverse=True), errors
 
 
-def confirm_event(items: list[NewsItem], minimum_sources: int = 2) -> tuple[str, list[NewsItem]] | None:
+def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tuple[str, list[NewsItem]]]:
     by_kind: dict[str, list[NewsItem]] = {}
     for item in items:
         by_kind.setdefault(item.event_kind, []).append(item)
@@ -570,33 +570,30 @@ def confirm_event(items: list[NewsItem], minimum_sources: int = 2) -> tuple[str,
         for row in sorted(rows, key=lambda item: item.published_epoch, reverse=True):
             source_rows.setdefault(normalize_text(row.source), row)
         selected = list(source_rows.values())
+
         has_primary_data = kind in ("oil_flow_recovery", "sts_reroute_expansion") and any(
             any(alias in normalize_text(row.source) for alias in DATA_PROVIDER_ALIASES)
             for row in selected
         )
         regional_primary = kind in ("regional_export_recovery", "india_gulf_import_recovery") and any(
-            any(alias in normalize_text(row.source) for alias in ("kpler", "reuters"))
+            "kpler" in normalize_text(row.source)
             for row in selected
         )
-        pipeline_official = kind == "east_west_pipeline_recovery" and any(
-            any(alias in normalize_text(row.source) for alias in (
-                "saudi ministry of energy", "ministry of energy saudi arabia",
-                "saudi aramco", "aramco"
-            ))
-            for row in selected
-        )
-        pipeline_cross_checked = len(selected) >= minimum_sources
-        if (
-            len(selected) >= minimum_sources
-            or has_primary_data
-            or regional_primary
-            or (pipeline_official and pipeline_cross_checked)
-        ):
+        pipeline_cross_checked = kind == "east_west_pipeline_recovery" and len(selected) >= minimum_sources
+
+        if len(selected) >= minimum_sources or has_primary_data or regional_primary or pipeline_cross_checked:
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
-    if not candidates:
-        return None
-    _, kind, selected = max(candidates, key=lambda value: value[0])
-    return kind, sorted(selected, key=lambda item: item.published_epoch, reverse=True)[:3]
+
+    candidates.sort(key=lambda value: value[0], reverse=True)
+    return [
+        (kind, sorted(selected, key=lambda item: item.published_epoch, reverse=True)[:3])
+        for _, kind, selected in candidates
+    ]
+
+
+def confirm_event(items: list[NewsItem], minimum_sources: int = 2) -> tuple[str, list[NewsItem]] | None:
+    events = confirm_events(items, minimum_sources)
+    return events[0] if events else None
 
 
 def last_finite_point(timestamps: list, closes: list) -> tuple[float, float] | None:
@@ -693,6 +690,7 @@ def load_state(path: pathlib.Path = STATE_PATH) -> dict:
 
 def event_id(kind: str, rows: list[NewsItem]) -> str:
     combined = " ".join(normalize_text(row.title) for row in rows)
+
     if kind == "regional_export_recovery":
         values = [
             float(value)
@@ -703,31 +701,28 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
             )
         ]
         max_value = max(values) if values else 0.0
-        if max_value >= 12.5:
-            band = "12_5plus"
-        elif max_value >= 10.0:
-            band = "10plus"
-        else:
-            band = "recovery"
-        prewar = "prewar80" if ("80% of prewar" in combined or "80% of pre-war" in combined) else "no80"
-        digest = hashlib.sha256(f"{kind}|{band}|{prewar}".encode("utf-8")).hexdigest()[:16]
-        return f"{kind}:{digest}"
+        volume_band = int(max_value) if max_value > 0 else 0
+        prewar = "prewar80" if (
+            "80% of prewar" in combined or "80% of pre-war" in combined or "80% 회복" in combined
+        ) else "no80"
+        basis = f"{kind}|mbd_{volume_band}|{prewar}"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
+
     if kind == "india_gulf_import_recovery":
-        digest = hashlib.sha256(f"{kind}|1_52_mbd".encode("utf-8")).hexdigest()[:16]
-        return f"{kind}:{digest}"
-    if kind == "regional_export_recovery":
-        lines.extend([
-            "중동 주요 산유국 원유 수출이 전쟁 이후 최고 수준으로 회복됐습니다.",
-            "→ 그러나 12.8 Mbd는 2월 18.8 Mbd보다 약 6 Mbd 낮아 '전쟁 전 정상화'로 부르면 안 됩니다.",
-            "→ 호르무즈·우회로·재고방출을 합친 회복과 실제 생산능력 정상화는 분리해서 봅니다.",
-        ])
-    elif kind == "india_gulf_import_recovery":
-        lines.extend([
-            "걸프산 원유가 인도 같은 최종 수요처까지 다시 도착하는 흐름이 강해지고 있습니다.",
-            "→ 공급망 회복의 말단 확인 신호지만 2025 평균 2.24 Mbd와 비교하면 아직 완전 정상화는 아닙니다.",
-            "→ 러시아산 감소와 걸프산 대체가 동시에 진행되는지 확인합니다.",
-        ])
-    elif kind == "east_west_pipeline_recovery":
+        values = [
+            float(value)
+            for value in re.findall(
+                r"\b([0-9]+(?:\.[0-9]+)?)\s*(?:mb/d|mbd|million\s+bpd|million\s+barrels\s+per\s+day)\b",
+                combined,
+                flags=re.I,
+            )
+        ]
+        max_value = max(values) if values else 0.0
+        volume_band = int(max_value * 4) / 4.0 if max_value > 0 else 0.0
+        basis = f"{kind}|mbd_{volume_band:.2f}"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
+
+    if kind == "east_west_pipeline_recovery":
         exports_resumed = any(
             phrase in combined
             for phrase in (
@@ -757,12 +752,10 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
         else:
             band = "restart"
         yanbu = "yanbu" if "yanbu" in combined else "no_yanbu"
-        digest = hashlib.sha256(f"{kind}|{band}|{yanbu}".encode("utf-8")).hexdigest()[:16]
-        return f"{kind}:{digest}"
-    if kind in (
-        "oil_flow_recovery", "sts_reroute_expansion", "east_west_pipeline_recovery",
-        "regional_export_recovery", "india_gulf_import_recovery"
-    ):
+        basis = f"{kind}|{band}|{yanbu}"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
+
+    if kind in ("oil_flow_recovery", "sts_reroute_expansion"):
         markers = []
         marker_terms = (
             ("saudi_export_ramp", ("saudi", "aramco", "ras tanura")),
@@ -772,6 +765,7 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
             ("yanbu_restart", ("yanbu", "east-west pipeline", "east west pipeline")),
             ("vlcc_bottleneck", ("vlcc", "bottleneck", "capacity")),
         )
+
         def marker_match(term: str) -> bool:
             if term.isalnum() and len(term) <= 4:
                 return re.search(rf"\b{re.escape(term)}\b", combined) is not None
@@ -780,37 +774,85 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
         for name, terms in marker_terms:
             if any(marker_match(term) for term in terms):
                 markers.append(name)
+
         volumes = [
             float(value)
             for value in re.findall(r"\b([0-9]+(?:\.[0-9]+)?)\s*mbd\b", combined, flags=re.I)
         ]
         if volumes:
             max_volume = max(volumes)
-            if kind == "sts_reroute_expansion":
-                markers.append(f"sts_mbd_{int(max_volume)}")
-            else:
-                markers.append(f"flow_mbd_{int(max_volume)}")
+            markers.append(
+                f"sts_mbd_{int(max_volume)}" if kind == "sts_reroute_expansion"
+                else f"flow_mbd_{int(max_volume)}"
+            )
         if not markers:
             markers = [kind]
-        digest = hashlib.sha256(f"{kind}|{'|'.join(sorted(set(markers)))}".encode("utf-8")).hexdigest()[:16]
-        return f"{kind}:{digest}"
-    day = dt.datetime.fromtimestamp(max(row.published_epoch for row in rows), tz=UTC).astimezone(KST).date().isoformat()
+        basis = f"{kind}|{'|'.join(sorted(set(markers)))}"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
+
+    day = dt.datetime.fromtimestamp(
+        max(row.published_epoch for row in rows), tz=UTC
+    ).astimezone(KST).date().isoformat()
     sources = ",".join(sorted(normalize_text(row.source) for row in rows))
     digest = hashlib.sha256(f"{kind}|{day}|{sources}".encode("utf-8")).hexdigest()[:16]
     return f"{kind}:{day}:{digest}"
 
 
-def cooldown_active(state: dict, current: dt.datetime, hours: int = 24) -> bool:
-    raw = state.get("last_alert_at_kst")
+def _parse_kst_timestamp(raw: object) -> dt.datetime | None:
     if not raw:
-        return False
+        return None
     try:
-        previous = dt.datetime.fromisoformat(str(raw))
-        if previous.tzinfo is None:
-            previous = previous.replace(tzinfo=KST)
+        value = dt.datetime.fromisoformat(str(raw))
     except ValueError:
-        return False
-    return (current.astimezone(KST) - previous.astimezone(KST)).total_seconds() < hours * 3600
+        return None
+    if value.tzinfo is None:
+        value = value.replace(tzinfo=KST)
+    return value.astimezone(KST)
+
+
+def event_recently_alerted(
+    state: dict,
+    current_event_id: str,
+    current: dt.datetime,
+    hours: int = 336,
+) -> bool:
+    alerted = state.get("alerted_events")
+    if isinstance(alerted, dict):
+        previous = _parse_kst_timestamp(alerted.get(current_event_id))
+        if previous is not None:
+            return (current.astimezone(KST) - previous).total_seconds() < hours * 3600
+
+    if state.get("last_event_id") == current_event_id:
+        previous = _parse_kst_timestamp(state.get("last_alert_at_kst"))
+        if previous is None:
+            return True
+        return (current.astimezone(KST) - previous).total_seconds() < hours * 3600
+    return False
+
+
+def build_pending_state(
+    state: dict,
+    current_event_id: str,
+    kind: str,
+    current: dt.datetime,
+    market: dict,
+) -> dict:
+    alerted = dict(state.get("alerted_events") or {})
+    now_kst = current.astimezone(KST)
+    cutoff = now_kst - dt.timedelta(days=45)
+    cleaned: dict[str, str] = {}
+    for key, raw in alerted.items():
+        stamp = _parse_kst_timestamp(raw)
+        if stamp is not None and stamp >= cutoff:
+            cleaned[str(key)] = stamp.isoformat(timespec="seconds")
+    cleaned[current_event_id] = now_kst.isoformat(timespec="seconds")
+    return {
+        "last_alert_at_kst": now_kst.isoformat(timespec="seconds"),
+        "last_event_kind": kind,
+        "last_event_id": current_event_id,
+        "alerted_events": cleaned,
+        "last_market": market,
+    }
 
 
 def clean_outputs() -> None:
