@@ -69,8 +69,13 @@ jobs:
           assert snap.get("선물") is not None, snap
           assert snap.get("프로그램") is not None, snap
           pgm=snap["프로그램"]
-          assert all(k in pgm for k in ("전체","차익","비차익","베이시스")), pgm
-          print("ls_rest_runtime_valid=true", price, "backfill_rows=", d.get("backfill_rows"), "program=", pgm)
+          assert all(k in pgm for k in ("전체","차익","비차익","베이시스","표본시차초","차익비차익합","전체대비차이")), pgm
+          assert snap.get("sample_span_sec") is not None and snap["sample_span_sec"] < 30, snap
+          assert pgm.get("표본시차초") is not None and pgm["표본시차초"] <= 5.0, pgm
+          print("ls_rest_runtime_valid=true", price, "backfill_rows=", d.get("backfill_rows"),
+                "flow_sample_span_sec=", round(snap.get("sample_span_sec"), 3),
+                "program_sample_span_sec=", round(pgm.get("표본시차초"), 3),
+                "program_identity_gap=", pgm.get("전체대비차이"), "program=", pgm)
           PY
 
       - name: Upload test artifacts
