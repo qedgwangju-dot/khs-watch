@@ -9,6 +9,7 @@ import json
 import pathlib
 import re
 import time
+import statistics
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -251,18 +252,134 @@ def farside_flow(url: str) -> dict:
     }
 
 
+def coingecko_prices() -> dict:
+    raw = fetch_json(COINGECKO)
+    return {
+        "BTC": {
+            "price": float(raw["bitcoin"]["usd"]),
+            "change24": float(raw["bitcoin"].get("usd_24h_change") or 0.0),
+            "volume24": float(raw["bitcoin"].get("usd_24h_vol") or 0.0),
+        },
+        "ETH": {
+            "price": float(raw["ethereum"]["usd"]),
+            "change24": float(raw["ethereum"].get("usd_24h_change") or 0.0),
+            "volume24": float(raw["ethereum"].get("usd_24h_vol") or 0.0),
+        },
+        "SOL": {
+            "price": float(raw["solana"]["usd"]),
+            "change24": float(raw["solana"].get("usd_24h_change") or 0.0),
+            "volume24": float(raw["solana"].get("usd_24h_vol") or 0.0),
+        },
+    }
+
+
+def gate_spot_prices() -> dict:
+    result = {}
+    for coin in ("BTC", "ETH", "SOL"):
+        pair = f"${coin}_USDT"
+        rows = fetch_json(
+            "https://api.gateio.ws/api/v4/spot/tickers?"
+            + urllib.parse.urlencode({"currency_pair": pair})
+        )
+        if not isinstance(rows, list) or not rows:
+            raise RuntimeError(f"Gate.io spot ticker empty: ${pair}")
+        row = rows[0]
+        result[coin] = {
+            "price": float(row["last"]),
+            "change24": float(row.get("change_percentage") or 0.0),
+            "volume24": float(row.get("quote_volume") or 0.0),
+        }
+    return result
+
+
+def coinbase_prices() -> dict:
+    result = {}
+    for coin in ("BTC", "ETH", "SOL"):
+        raw = fetch_json(
+            "https://api.coinbase.com/v2/exchange-rates?"
+            + urllib.parse.urlencode({"currency": coin})
+        )
+        rates = ((raw.get("data") or {}).get("rates") or {})
+        if "USD" not in rates:
+            raise RuntimeError(f"Coinbase USD rate missing: ${coin}")
+        result[coin] = {"price": float(rates["USD"])}
+    return result
+
+
+def combine_spot_prices(source_map: dict[str, dict]) -> dict:
+    combined = {}
+    all_verified = True
+    source_names = sorted(source_map)
+    for coin in ("BTC", "ETH", "SOL"):
+        quotes = []
+        details = {}
+        for source, values in source_map.items():
+            row = values.get(coin) or {}
+            price = row.get("price")
+            if price is None:
+                continue
+            value = float(price)
+            if value <= 0:
+                continue
+            quotes.append(value)
+            details[source] = value
+
+        if not quotes:
+            all_verified = False
+            continue
+
+        consensus = float(statistics.median(quotes))
+        dispersion_pct = (
+            (max(quotes) - min(quotes)) / consensus * 100.0
+            if len(quotes) >= 2 and consensus > 0
+            else None
+        )
+        verified = len(quotes) >= 2 and dispersion_pct is not None and dispersion_pct <= 0.75
+        all_verified = all_verified and verified
+
+        change24 = None
+        volume24 = None
+        for preferred in ("Gate.io Spot", "CoinGecko"):
+            row = (source_map.get(preferred) or {}).get(coin) or {}
+            if row.get("change24") is not None and change24 is None:
+                change24 = float(row["change24"])
+            if row.get("volume24") is not None and volume24 is None:
+                volume24 = float(row["volume24"])
+
+        combined[coin] = {
+            "usd": consensus,
+            "change24": change24,
+            "volume24": volume24,
+            "verified": verified,
+            "source_count": len(quotes),
+            "sources": details,
+            "dispersion_pct": dispersion_pct,
+        }
+
+    return {
+        "prices": combined,
+        "price_verified": all_verified and len(combined) == 3,
+        "price_sources": source_names,
+    }
+
+
 def crypto_snapshot() -> tuple[dict, list[str]]:
     result = {}
     errors = []
-    try:
-        raw = fetch_json(COINGECKO)
-        result["prices"] = {
-            "BTC": {"usd": float(raw["bitcoin"]["usd"]), "change24": float(raw["bitcoin"].get("usd_24h_change") or 0.0), "volume24": float(raw["bitcoin"].get("usd_24h_vol") or 0.0)},
-            "ETH": {"usd": float(raw["ethereum"]["usd"]), "change24": float(raw["ethereum"].get("usd_24h_change") or 0.0), "volume24": float(raw["ethereum"].get("usd_24h_vol") or 0.0)},
-            "SOL": {"usd": float(raw["solana"]["usd"]), "change24": float(raw["solana"].get("usd_24h_change") or 0.0), "volume24": float(raw["solana"].get("usd_24h_vol") or 0.0)},
-        }
-    except Exception as exc:
-        errors.append(f"CoinGecko: {exc}")
+    price_sources = {}
+    for source_name, loader in (
+        ("CoinGecko", coingecko_prices),
+        ("Gate.io Spot", gate_spot_prices),
+        ("Coinbase", coinbase_prices),
+    ):
+        try:
+            price_sources[source_name] = loader()
+        except Exception as exc:
+            errors.append(f"{source_name}: {exc}")
+
+    combined = combine_spot_prices(price_sources)
+    result.update(combined)
+    result["price_trigger_ready"] = bool(combined.get("price_verified"))
 
     deriv = {}
     for coin in ("BTC", "ETH", "SOL"):
@@ -608,7 +725,12 @@ def build_signals(old: dict, new: dict, news_items: list[dict]) -> list[tuple]:
     old_crypto, new_crypto = old.get("crypto") or {}, new.get("crypto") or {}
     old_btc = (((old_crypto.get("prices") or {}).get("BTC") or {}).get("usd"))
     new_btc = (((new_crypto.get("prices") or {}).get("BTC") or {}).get("usd"))
-    if old_btc and new_btc and (old_btc - BTC_LINE) * (new_btc - BTC_LINE) <= 0 and old_btc != new_btc:
+    if (
+        old_btc and new_btc
+        and bool(new_crypto.get("price_trigger_ready"))
+        and (old_btc - BTC_LINE) * (new_btc - BTC_LINE) <= 0
+        and old_btc != new_btc
+    ):
         direction = "상향 돌파" if new_btc > BTC_LINE else "하향 이탈"
         signals.append(("암호화폐", f"BTC가 85,000달러 기준선을 {direction}", f"${old_btc:,.0f} → ${new_btc:,.0f}", "가격 기준선 변화가 실제 주목도 유입·이탈로 이어지는지 ETF와 파생 흐름 확인", "BTC·ETH ETF 5영업일 흐름과 펀딩·미결제약정", None))
 
@@ -783,7 +905,10 @@ def build_alert(signals: list[tuple], now: dt.datetime, snapshot: dict) -> str:
     prices = crypto.get("prices") or {}
     if prices.get("BTC"):
         btc, eth, sol = prices["BTC"], prices.get("ETH") or {}, prices.get("SOL") or {}
+        quality = "교차검증 정상" if crypto.get("price_verified") else "가격 교차검증 불충분·판정 보류"
+        srcs = ", ".join(crypto.get("price_sources") or [])
         lines.append(f"• BTC ${btc['usd']:,.0f} ({fmt_pct(btc.get('change24'))}) · ETH ${eth.get('usd',0):,.0f} ({fmt_pct(eth.get('change24'))}) · SOL ${sol.get('usd',0):,.2f} ({fmt_pct(sol.get('change24'))})")
+        lines.append(f"• 암호화폐 현물가격: {quality} · 원천 {html.escape(srcs or '확인 불가')}")
     for key, label in (("btc_etf", "BTC ETF"), ("eth_etf", "ETH ETF")):
         flow = crypto.get(key) or {}
         if flow:
@@ -880,7 +1005,7 @@ def main() -> None:
     errors.extend(part)
 
     health = {
-        "crypto_prices": bool((crypto.get("prices") or {}).get("BTC")),
+        "crypto_prices": bool(crypto.get("price_verified")),
         "crypto_derivatives": len(crypto.get("derivatives") or {}) == 3,
         "btc_etf": bool((crypto.get("btc_etf") or {}).get("date")),
         "eth_etf": bool((crypto.get("eth_etf") or {}).get("date")),
@@ -925,7 +1050,7 @@ def main() -> None:
                     f"{labels.get(key, key)} 원천이 2회 연속 조회 실패",
                     "해당 축은 복구 전까지 투자판정 알림을 보류",
                     "데이터 공백을 시장 변화로 오인하지 않도록 기술 경보만 송출",
-                    "다음 30분 실행에서 원천 복구 여부",
+                    "다음 15분 실행 또는 독립 감시자 재호출에서 원천 복구 여부",
                     None,
                 ))
 
