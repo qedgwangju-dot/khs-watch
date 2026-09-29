@@ -35,10 +35,12 @@ class CoinbaseStablecoinCatalystWatchTest(unittest.TestCase):
             "법정화폐가 스테이블코인으로 자동 전환되고 Citi 기관고객은 스테이블코인 결제를 받을 수 있습니다.",
         )
         rendered = MOD.build_alert([event])
-        self.assertIn("한마디로", rendered)
+        self.assertIn("<b>🧩 핵심</b>", rendered)
         self.assertIn("기업 결제망", rendered)
-        self.assertIn("반복 수익 경로", rendered)
-        self.assertIn("USDC 직접 수혜는 아직 확정이 아닙니다", rendered)
+        self.assertIn("반복수익 경로", rendered)
+        self.assertIn("USDC 사용 비중", rendered)
+        self.assertIn("<b>⚠️ 실패 경로</b>", rendered)
+        self.assertNotIn("핵심 한 줄 요약", rendered)
 
     def test_dco_alert_explains_exchange_broker_clearing_stack(self):
         event = MOD.Event(
@@ -50,10 +52,11 @@ class CoinbaseStablecoinCatalystWatchTest(unittest.TestCase):
             "CFTC가 Coinbase Clearing LLC를 DCO(파생상품청산기관)로 등록했습니다.",
         )
         rendered = MOD.build_alert([event])
-        self.assertIn("청산은 거래가 끝난 뒤 돈·담보·포지션을 실제로 맞춰주는 핵심 인프라", rendered)
-        self.assertIn("거래소(DCM)·중개(FCM)·청산(DCO)", rendered)
-        self.assertIn("USDC 담보·24/7 결제", rendered)
-        self.assertIn("CFTC 등록목록 요약 자체는 이를 확인하지 않습니다", rendered)
+        self.assertIn("거래소(DCM)·중개(FCM)", rendered)
+        self.assertIn("청산(DCO)", rendered)
+        self.assertIn("실제 상품의 자체 DCO 이전·USDC 담보·24/7 청산 적용은 별도 확인 필요", rendered)
+        self.assertIn("Coinbase 자체 DCO 청산 거래량", rendered)
+        self.assertNotIn("핵심 한 줄 요약", rendered)
 
 
 if __name__ == "__main__":
