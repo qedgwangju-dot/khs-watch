@@ -29,7 +29,7 @@ permissions:
 
 concurrency:
   group: iran-hormuz-market-turn-alert
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   monitor:
@@ -85,9 +85,11 @@ jobs:
         run: |
           python - <<'PY'
           import datetime as dt
+          import html
           import json
           import os
           import pathlib
+          import re
           import urllib.parse
           import urllib.request
           from zoneinfo import ZoneInfo
@@ -114,9 +116,29 @@ jobs:
 
           title = pathlib.Path("out/iran_hormuz_market_turn_title.txt").read_text(encoding="utf-8").strip()
           body = pathlib.Path("out/iran_hormuz_market_turn_alert.md").read_text(encoding="utf-8").strip()
-          text = f"{title}\n\n{body}"[:4096]
+
+          rendered_lines = []
+          for line in body.splitlines():
+              if line.startswith("원문: "):
+                  url = line.split("원문: ", 1)[1].strip()
+                  rendered_lines.append(
+                      f'<a href="{html.escape(url, quote=True)}">원문</a>'
+                  )
+              elif re.fullmatch(r"\[[^\]\n]+\]", line):
+                  rendered_lines.append(f"<b>{html.escape(line)}</b>")
+              else:
+                  rendered_lines.append(html.escape(line))
+          text = f"<b>{html.escape(title)}</b>\n\n" + "\n".join(rendered_lines)
+          if len(text) > 4096:
+              raise RuntimeError(f"Telegram message too long after compact formatting: {len(text)} chars")
+
           payload = urllib.parse.urlencode(
-              {"chat_id": chat_id, "text": text, "disable_web_page_preview": "true"}
+              {
+                  "chat_id": chat_id,
+                  "text": text,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }
           ).encode("utf-8")
           request = urllib.request.Request(
               f"https://api.telegram.org/bot{token}/sendMessage",
@@ -168,6 +190,16 @@ jobs:
             echo "이란·호르무즈 시장 전환 상태 변경 없음"
           else
             git commit -m "Update Iran Hormuz market turn state"
-            git pull --rebase origin main
-            git push
+            for attempt in 1 2 3; do
+              git fetch origin main
+              if git rebase origin/main && git push origin HEAD:main; then
+                echo "이란·호르무즈 상태 저장 성공"
+                exit 0
+              fi
+              git rebase --abort >/dev/null 2>&1 || true
+              echo "상태 저장 충돌 재시도: ${attempt}/3"
+              sleep $((attempt * 2))
+            done
+            echo "이란·호르무즈 상태 저장 3회 실패"
+            exit 1
           fi

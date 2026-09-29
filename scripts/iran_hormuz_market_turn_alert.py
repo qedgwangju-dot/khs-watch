@@ -1163,6 +1163,111 @@ def _extract_india_gulf_metrics(news_rows: list[NewsItem]) -> dict[str, float | 
     return {"current_mbd": current}
 
 
+
+def _build_sts_compact_alert_body(
+    news_rows: list[NewsItem],
+    oil: Quote | None,
+    current: dt.datetime,
+    fx: Quote | None,
+    metrics: dict[str, object],
+) -> str:
+    lines = [
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
+        "",
+        "[한눈에]",
+        "원유 공급     회복 ↑",
+        "물류 효율     병목 심화 ↓",
+        (
+            f"GoO STS       {float(metrics['current_mbd']):.1f} Mbd · "
+            f"전쟁 후 평균 {float(metrics['since_war_mbd']):.1f} · "
+            f"2025 평균 {float(metrics['baseline_2025_mbd']):.2f}"
+        ),
+    ]
+    if metrics.get("vs_war_avg") is not None and metrics.get("vs_2025_avg") is not None:
+        lines.append(
+            f"현재 강도     전쟁 후 평균의 {float(metrics['vs_war_avg']):.1f}배 · "
+            f"2025 평균의 {float(metrics['vs_2025_avg']):.0f}배"
+        )
+    if metrics.get("vlcc_low") is not None:
+        lines.append(
+            f"VLCC 수요     Saudi +{float(metrics['saudi_increment_mbd']):.0f} Mbd 처리 시 "
+            f"+{int(metrics['vlcc_low'])}~{int(metrics['vlcc_high'])}척"
+        )
+
+    market_bits: list[str] = []
+    if oil is not None:
+        direction = "↓" if oil.change < 0 else "↑" if oil.change > 0 else "→"
+        market_bits.append(f"Brent USD {oil.price:.2f} · {oil.change_pct:+.2f}% {direction}")
+    if fx is not None:
+        won = "약세" if fx.change > 0 else "강세" if fx.change < 0 else "보합"
+        market_bits.append(f"원·달러 {fx.price:,.2f}원 · {fx.change_pct:+.2f}% · 원화 {won}")
+    if market_bits:
+        lines.append("시장          " + " | ".join(market_bits))
+
+    lines.extend([
+        "",
+        "[핵심 의미]",
+        "원유는 회복 중이지만 정상 항로 복귀가 아니라 GoO STS 우회입니다.",
+        "→ 유가 하방 가능 / VLCC 운임·물류비 상방 가능 · 수출 회복 ≠ 물류 정상화",
+        "",
+        "[한국 전이]",
+    ])
+    if oil is not None and fx is not None:
+        if oil.change < 0 and fx.change <= 0:
+            lines.append("현재          유가 ↓ + 원화 강세/안정 → 수입물가·에너지 원가·금리 부담 완화")
+        elif oil.change < 0 and fx.change > 0:
+            lines.append("현재          유가 ↓ + 원화 약세 → 수입원가 완화 효과 일부 상쇄")
+        elif oil.change > 0 and fx.change > 0:
+            lines.append("현재          유가 ↑ + 원화 약세 → 수입물가·금리·기업 원가 부담 확대")
+        else:
+            lines.append("현재          유가·환율 신호 엇갈림 → 업종별 실적 영향 차별화")
+    elif oil is not None:
+        lines.append("현재          유가 방향 확인 · 원·달러 검증값 부재로 국내 전이 숫자 판정 보류")
+    else:
+        lines.append("현재          유가·원·달러 동시 검증 부재 · 국내 전이는 정성 판단만 유지")
+
+    if fx is not None and fx.change < 0:
+        lines.append("실적          원화 강세는 달러 매출 환산에 부담 · 유가 하락은 항공·전력/가스·운송·석유화학 원가에 완화")
+    elif fx is not None and fx.change > 0:
+        lines.append("실적          원화 약세는 달러 매출 환산에 우호적 · 원가 민감 업종은 수입비용 부담 확인")
+    else:
+        lines.append("실적          달러 매출 수출기업과 항공·전력/가스·운송·석유화학 원가 민감 업종을 분리 확인")
+    lines.append("다음          원·달러 → 수입물가/CPI → 국고채 금리 → 3분기 실적 가이던스")
+
+    lines.extend([
+        "",
+        "[병목]",
+        "핵심          Fujairah·Sohar 처리능력 · STS 슬롯/예인선/파일럿/검사 · VLCC 회전율",
+        "확대 시       서인도 → 말레이시아로 이송거리 확대 · Kpler 최대 58척 시나리오",
+        "",
+        "[다음 체크]",
+        "실물          호르무즈 통과량 · Saudi Gulf/Red Sea 선적 · GoO STS 7일 평균",
+        "우회/시장     East-West 3.0→3.5→4.0 Mbd · Yanbu 선적 · VLCC 운임 · Brent · 원·달러",
+        "한국          수입물가/CPI · 국고채 금리 · 3분기 기업 실적 가이던스",
+        "",
+        "[근거]",
+    ])
+
+    for row in news_rows[:2]:
+        published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
+        if "kpler" in normalize_text(row.source):
+            lines.append(
+                f"Kpler · 기준 {metrics['source_date']} · STS {float(metrics['current_mbd']):.1f} Mbd"
+            )
+        else:
+            lines.append(f"{row.source} · {published:%m-%d %H:%M KST}")
+        if row.link:
+            lines.append(f"원문: {row.link}")
+
+    lines.extend([
+        "",
+        "[주의]",
+        "STS는 같은 배럴이 여러 번 이송될 수 있어 호르무즈 통과량·중동 전체 수출량과 합산하지 않습니다.",
+        "정책 발언 처리: 실물 물량·통항 데이터 없이 '정상화'로 판정하지 않습니다.",
+    ])
+    return "\n".join(lines).strip() + "\n"
+
+
 def build_physical_flow_alert_body(
     kind: str,
     news_rows: list[NewsItem],
@@ -1171,6 +1276,9 @@ def build_physical_flow_alert_body(
     fx: Quote | None = None,
 ) -> str:
     metrics = _extract_kpler_sts_metrics(news_rows)
+    if kind == "sts_reroute_expansion" and metrics:
+        return _build_sts_compact_alert_body(news_rows, oil, current, fx, metrics)
+
     lines = [
         current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
         "",

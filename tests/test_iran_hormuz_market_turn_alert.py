@@ -143,6 +143,10 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertIn("[병목]", body)
         self.assertIn("[다음 체크]", body)
         self.assertNotIn("Kpler Gulf of Oman STS record 7.2 Mbd as of", body)
+        self.assertLessEqual(len(body.splitlines()), 36)
+        self.assertIn("시장          Brent USD 100.55", body)
+        self.assertIn("실물          호르무즈 통과량", body)
+        self.assertIn("원문: https://example.com/kpler", body)
 
     def test_east_west_pipeline_recovery_is_classified(self):
         title = "Saudi East-West Pipeline transport hits 3.5 million barrels per day - Reuters"
