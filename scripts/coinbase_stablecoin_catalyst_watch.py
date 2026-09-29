@@ -21,6 +21,7 @@ ALERT_PATH = OUT_DIR / "coinbase_stablecoin_catalyst_telegram.txt"
 STATUS_PATH = OUT_DIR / "coinbase_stablecoin_catalyst_status.md"
 
 COINBASE_CITI_URL = "https://www.coinbase.com/blog/coinbase-brings-bank-grade-fiat-and-stablecoin-payments-to-businesses-in-collaboration-with-citi"
+CITI_COINBASE_MIRROR_URL = "https://www.publicnow.com/view/D682EA4A264447E4504E93A8E4808992D0FEAF4E"
 COINBASE_BLOG_LANDING = "https://www.coinbase.com/blog/landing"
 COINBASE_USDC_URL = "https://www.coinbase.com/earn"
 CFTC_DCO_URL = "https://www.cftc.gov/IndustryOversight/IndustryFilings/ClearingOrganizations?col=Status&dir=DESC"
@@ -101,40 +102,63 @@ def parse_date_from_text(text):
 
 
 def collect_citi_coinbase(errors):
+    body = ""
+    source = ""
+    verified_url = COINBASE_CITI_URL
     try:
         body = clean(BeautifulSoup(fetch_text(COINBASE_CITI_URL), "html.parser").get_text(" ", strip=True))
+        source = "Coinbase 공식 발표"
     except Exception as exc:
-        errors.append(f"Coinbase-Citi: {exc}")
-        return []
-    required = [
-        "Citi", "Virtual Account Wallet", "Coinbase Virtual Accounts",
-        "Spring by Citi", "automatically convert",
+        errors.append(f"Coinbase-Citi official direct: {exc}")
+        try:
+            body = clean(BeautifulSoup(fetch_text(CITI_COINBASE_MIRROR_URL), "html.parser").get_text(" ", strip=True))
+            source = "Citigroup 보도자료 재게시본(PublicNow, 원문 미편집 표기)"
+            verified_url = CITI_COINBASE_MIRROR_URL
+        except Exception as mirror_exc:
+            errors.append(f"Coinbase-Citi mirror: {mirror_exc}")
+            return []
+
+    required_groups = [
+        ("Citi",),
+        ("Coinbase",),
+        ("Virtual Account Wallet", "Virtual Accounts"),
+        ("Spring by Citi",),
+        ("stablecoin",),
     ]
-    if not all(x.lower() in body.lower() for x in required):
-        errors.append("Coinbase-Citi: official page opened but required partnership markers were incomplete")
+    if not all(any(token.lower() in body.lower() for token in group) for group in required_groups):
+        errors.append("Coinbase-Citi: partnership source opened but required markers were incomplete")
         return []
+
     reward_note = ""
-    try:
-        earn = clean(BeautifulSoup(fetch_text(COINBASE_USDC_URL), "html.parser").get_text(" ", strip=True))
-        if re.search(r"3\.75\s*%.*USDC|USDC.*3\.75\s*%", earn, re.I):
-            reward_note = (
-                " Coinbase 공개 Earn 페이지는 현재 USDC 3.75% 보상을 표시하지만, "
-                "Citi 연계 기업계정에 동일 조건이 자동 적용되는지는 공식 협업 발표에 명시되지 않았습니다."
-            )
-    except Exception as exc:
-        errors.append(f"Coinbase-USDC reward crosscheck: {exc}")
+    for reward_url in (
+        COINBASE_USDC_URL,
+        "https://www.coinbase.com/en-gb/usdc",
+        "https://www.coinbase.com/en-ca/usdc",
+    ):
+        try:
+            earn = clean(BeautifulSoup(fetch_text(reward_url), "html.parser").get_text(" ", strip=True))
+            if re.search(r"3\.75\s*%.*USDC|USDC.*3\.75\s*%", earn, re.I):
+                reward_note = (
+                    " Coinbase 공개 USDC 페이지는 현재 3.75% 보상을 표시하지만, "
+                    "Citi 연계 기업계정에 동일 조건이 자동 적용되는지는 공식 협업 발표에 명시되지 않았습니다."
+                )
+                break
+        except Exception:
+            continue
+
     date = parse_date_from_text(body) or "2026-09-28"
     detail = (
-        "Coinbase가 Citi의 Virtual Account Wallet(가상계좌 지갑)을 Coinbase Virtual Accounts에 연결해 "
-        "들어오는 법정화폐를 스테이블코인으로 자동 전환하고, Citi 기관고객은 Spring by Citi에서 "
-        "Coinbase 결제 인프라를 통해 스테이블코인 결제를 받을 수 있게 됐습니다." + reward_note
+        "Citi의 Virtual Account Wallet(가상계좌 지갑)이 Coinbase Virtual Accounts에 연결돼 "
+        "들어오는 법정화폐를 스테이블코인으로 자동 전환할 수 있고, Citi 기관고객은 Spring by Citi에서 "
+        "Coinbase 결제 인프라를 통해 스테이블코인 결제를 받을 수 있게 됐습니다."
+        + reward_note
     )
     return [Event(
         "citi_coinbase_stablecoin_payments",
         "Citi·Coinbase, 기업 결제망과 스테이블코인 결제 인프라 직접 연결",
-        COINBASE_CITI_URL,
+        verified_url,
         date,
-        "Coinbase 공식 발표",
+        source,
         detail,
     )]
 
