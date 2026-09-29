@@ -65,6 +65,9 @@ NEWS_QUERIES = (
     '"East-West Pipeline" pumping 3.5 million bpd Yanbu when:3d',
     '"East-West Pipeline" 4 million bpd Yanbu Saudi when:3d',
     '"Yanbu" crude loadings resume East-West Pipeline when:3d',
+    '"Middle East crude exports" 12.8 million bpd September Kpler Reuters when:3d',
+    '"Hormuz" "80% of prewar" oil flows Kpler when:3d',
+    '"Gulf crude" India 1.52 million bpd Kpler September when:7d',
     '"Saudi Arabia resumes oil exports" Yanbu East-West Pipeline when:3d',
     '"East-West pipeline starts exports" Saudi Yanbu when:3d',
     '"overseas shipments have now resumed" Saudi East-West Pipeline when:3d',
@@ -161,6 +164,8 @@ EVENT_LABELS = {
     "oil_flow_recovery": "중동 원유 수출·호르무즈 물류 회복",
     "sts_reroute_expansion": "걸프오브오만 STS 우회 물류 급증·병목",
     "east_west_pipeline_recovery": "사우디 East-West Pipeline 실물 회복",
+    "regional_export_recovery": "중동 원유 수출 회복 단계 상향",
+    "india_gulf_import_recovery": "인도 걸프산 원유 유입 회복",
 }
 DATA_PROVIDER_ALIASES = ("kpler", "vortexa", "jodi")
 
@@ -301,6 +306,26 @@ def classify_event(title: str) -> str | None:
     )
     if has_iran and has_us and any(phrase in low for phrase in attack_end_phrases):
         return "us_attack_end"
+
+    regional_export_phrases = (
+        "middle east crude exports", "mideast oil exports", "middle east oil exports",
+        "highest since the war", "highest since the iran war", "highest since february",
+        "80% of prewar", "80% of pre-war", "prewar oil flow", "pre-war oil flow",
+        "중동 원유 수출", "전쟁 이전 대비", "전쟁 전 대비",
+    )
+    if any(term in low for term in regional_export_phrases) and any(
+        term in low for term in ("12.8 million", "12.8 mbd", "80% of prewar", "80% of pre-war", "전쟁 이전", "전쟁 전")
+    ):
+        return "regional_export_recovery"
+
+    india_import_phrases = (
+        "gulf crude imports to india", "gulf arrivals", "gulf oil supplies to india",
+        "india imports from middle east", "india's middle east imports", "인도 걸프산", "인도 중동산",
+    )
+    if any(term in low for term in india_import_phrases) and any(
+        term in low for term in ("1.52", "recover", "recovered", "surge", "rise", "회복", "증가")
+    ):
+        return "india_gulf_import_recovery"
 
     pipeline_export_resume_phrases = (
         "resumes oil exports",
@@ -549,6 +574,10 @@ def confirm_event(items: list[NewsItem], minimum_sources: int = 2) -> tuple[str,
             any(alias in normalize_text(row.source) for alias in DATA_PROVIDER_ALIASES)
             for row in selected
         )
+        regional_primary = kind in ("regional_export_recovery", "india_gulf_import_recovery") and any(
+            any(alias in normalize_text(row.source) for alias in ("kpler", "reuters"))
+            for row in selected
+        )
         pipeline_official = kind == "east_west_pipeline_recovery" and any(
             any(alias in normalize_text(row.source) for alias in (
                 "saudi ministry of energy", "ministry of energy saudi arabia",
@@ -560,6 +589,7 @@ def confirm_event(items: list[NewsItem], minimum_sources: int = 2) -> tuple[str,
         if (
             len(selected) >= minimum_sources
             or has_primary_data
+            or regional_primary
             or (pipeline_official and pipeline_cross_checked)
         ):
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
@@ -663,7 +693,41 @@ def load_state(path: pathlib.Path = STATE_PATH) -> dict:
 
 def event_id(kind: str, rows: list[NewsItem]) -> str:
     combined = " ".join(normalize_text(row.title) for row in rows)
-    if kind == "east_west_pipeline_recovery":
+    if kind == "regional_export_recovery":
+        values = [
+            float(value)
+            for value in re.findall(
+                r"\b([0-9]+(?:\.[0-9]+)?)\s*(?:million\s+(?:barrels\s+per\s+day|bpd)|mbd)\b",
+                combined,
+                flags=re.I,
+            )
+        ]
+        max_value = max(values) if values else 0.0
+        if max_value >= 12.5:
+            band = "12_5plus"
+        elif max_value >= 10.0:
+            band = "10plus"
+        else:
+            band = "recovery"
+        prewar = "prewar80" if ("80% of prewar" in combined or "80% of pre-war" in combined) else "no80"
+        digest = hashlib.sha256(f"{kind}|{band}|{prewar}".encode("utf-8")).hexdigest()[:16]
+        return f"{kind}:{digest}"
+    if kind == "india_gulf_import_recovery":
+        digest = hashlib.sha256(f"{kind}|1_52_mbd".encode("utf-8")).hexdigest()[:16]
+        return f"{kind}:{digest}"
+    if kind == "regional_export_recovery":
+        lines.extend([
+            "중동 주요 산유국 원유 수출이 전쟁 이후 최고 수준으로 회복됐습니다.",
+            "→ 그러나 12.8 Mbd는 2월 18.8 Mbd보다 약 6 Mbd 낮아 '전쟁 전 정상화'로 부르면 안 됩니다.",
+            "→ 호르무즈·우회로·재고방출을 합친 회복과 실제 생산능력 정상화는 분리해서 봅니다.",
+        ])
+    elif kind == "india_gulf_import_recovery":
+        lines.extend([
+            "걸프산 원유가 인도 같은 최종 수요처까지 다시 도착하는 흐름이 강해지고 있습니다.",
+            "→ 공급망 회복의 말단 확인 신호지만 2025 평균 2.24 Mbd와 비교하면 아직 완전 정상화는 아닙니다.",
+            "→ 러시아산 감소와 걸프산 대체가 동시에 진행되는지 확인합니다.",
+        ])
+    elif kind == "east_west_pipeline_recovery":
         exports_resumed = any(
             phrase in combined
             for phrase in (
@@ -695,7 +759,10 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
         yanbu = "yanbu" if "yanbu" in combined else "no_yanbu"
         digest = hashlib.sha256(f"{kind}|{band}|{yanbu}".encode("utf-8")).hexdigest()[:16]
         return f"{kind}:{digest}"
-    if kind in ("oil_flow_recovery", "sts_reroute_expansion", "east_west_pipeline_recovery"):
+    if kind in (
+        "oil_flow_recovery", "sts_reroute_expansion", "east_west_pipeline_recovery",
+        "regional_export_recovery", "india_gulf_import_recovery"
+    ):
         markers = []
         marker_terms = (
             ("saudi_export_ramp", ("saudi", "aramco", "ras tanura")),
@@ -850,6 +917,24 @@ def _pipeline_exports_resumed(news_rows: list[NewsItem]) -> bool:
     return any(phrase in text for phrase in phrases)
 
 
+def _extract_regional_export_metrics(news_rows: list[NewsItem]) -> dict[str, float | None]:
+    text = " ".join(normalize_text(row.title) for row in news_rows)
+    def find_value(pattern: str):
+        m = re.search(pattern, text, flags=re.I)
+        return float(m.group(1)) if m else None
+    current = find_value(r"(?:middle east|mideast).*?([0-9]+(?:\.[0-9]+)?)\s*(?:million\s+bpd|million\s+barrels\s+per\s+day|mbd)")
+    feb = find_value(r"(?:february|prewar|pre-war).*?([0-9]+(?:\.[0-9]+)?)\s*(?:million\s+bpd|million\s+barrels\s+per\s+day|mbd)")
+    hormuz = find_value(r"hormuz.*?([0-9]+(?:\.[0-9]+)?)\s*(?:million\s+bpd|million\s+barrels\s+per\s+day|mbd)")
+    return {"current_mbd": current, "feb_mbd": feb, "hormuz_mbd": hormuz}
+
+
+def _extract_india_gulf_metrics(news_rows: list[NewsItem]) -> dict[str, float | None]:
+    text = " ".join(normalize_text(row.title) for row in news_rows)
+    nums = [float(v) for v in re.findall(r"\b([0-9]+(?:\.[0-9]+)?)\s*(?:mb/d|mbd|million\s+bpd)", text)]
+    current = max(nums) if nums else None
+    return {"current_mbd": current}
+
+
 def build_physical_flow_alert_body(
     kind: str,
     news_rows: list[NewsItem],
@@ -865,8 +950,19 @@ def build_physical_flow_alert_body(
 
     pipeline_rate, pipeline_yanbu = _extract_pipeline_rate(news_rows)
     pipeline_exports_resumed = _pipeline_exports_resumed(news_rows)
+    regional = _extract_regional_export_metrics(news_rows)
+    india_gulf = _extract_india_gulf_metrics(news_rows)
 
-    if kind == "east_west_pipeline_recovery":
+    if kind == "regional_export_recovery":
+        lines.append("중동 수출     전쟁 후 최고 수준")
+        lines.append("핵심 수치     12.8 Mbd · Reuters/Kpler")
+        lines.append("비교          2월 18.8 Mbd보다 약 6.0 Mbd 낮음")
+        lines.append("해석          회복은 맞지만 전쟁 전 완전 정상화는 아님")
+    elif kind == "india_gulf_import_recovery":
+        lines.append("인도 유입     걸프산 1.52 Mbd")
+        lines.append("비교          6월 1.03 → 8월 1.18 → 9월 1.52 Mbd")
+        lines.append("해석          아시아 실수요처까지 물량 회복이 연결되는지 확인")
+    elif kind == "east_west_pipeline_recovery":
         if pipeline_rate is not None:
             lines.append(f"East-West     {pipeline_rate:.1f} Mbd")
             lines.append(f"vs 4Mbd      약 {pipeline_rate / 4.0 * 100:.0f}% 회복")
