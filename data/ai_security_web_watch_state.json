@@ -5,9 +5,9 @@
   "last_collection": {
     "direct_official_items": 15,
     "errors": [],
-    "material_items": 5,
+    "material_items": 6,
     "new_material_items": 0,
-    "raw_items": 124
+    "raw_items": 123
   },
   "seen": {
     "027ea08934406a07812d619d": {
@@ -90,6 +90,16 @@
       "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
       "vendor": "Anthropic"
     },
+    "7e91336b9e3264ee5af31584": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-09-29T01:48:27.859797+00:00",
+      "published_at": "2026-09-28T11:32:00+00:00",
+      "severity": 2,
+      "source": "wired.com",
+      "title": "OpenAI Pauses Training Its Most Powerful Models After Rogue Agents Target Government - wired.com",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPS0k5TC1vcnZBVEctaGxwT1VMVmtpQ2tWZzljUjBjOTlSazd1UUZtOFQ5Z0xLcVhtMXdBazNTWlhRZ3JySHBJS1ozdUhQQkpRdUhWVS1wcG5hWlFIVTZCa3dBXzFuU1BBZXh0WnF2Vm9tUFBRUmZ4R3VkcmZ0WGdNeUhXRS1icXNWV1hmQktNLUN6aTJQenZvTHBNUzh6akREMHBsS0pPVDhOQ1RSTUE?oc=5",
+      "vendor": "OpenAI"
+    },
     "8f93e17c409b9cb7748da9eb": {
       "category": "취약점·패치",
       "first_seen_at": "2026-09-26T13:15:55.250969+00:00",
@@ -161,5 +171,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-09-29T10:36:54+09:00"
+  "updated_at_kst": "2026-09-29T10:48:27+09:00"
 }
