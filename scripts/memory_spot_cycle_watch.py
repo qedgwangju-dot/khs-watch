@@ -40,6 +40,7 @@ STATUS_PATH = OUT_DIR / "memory_spot_cycle_watch_status.md"
 KST = ZoneInfo("Asia/Seoul")
 TREND_RESEARCH_URL = "https://www.trendforce.com/research/memory-storage"
 HBM_MARKET_PRICE_TRACK_VERSION = 1
+HBM_MARKET_ALERT_FORMAT_VERSION = 1
 HBM_MARKET_PRICE_BASELINE = {
     "period": "2027",
     "blended_asp_yoy_pct": 121.0,
@@ -697,6 +698,21 @@ def _extract_hbm_market_pricing(item: dict) -> dict | None:
     }
 
 
+def _hbm_market_break_even_summary(state: dict) -> str:
+    if int(state.get("mainstream_layers") or 0) != 8:
+        return ""
+    pmin = state.get("eight_hi_premium_min_pct")
+    pmax = state.get("eight_hi_premium_max_pct")
+    if pmin is None or pmax is None:
+        return ""
+    bit_ratio = 8.0 / 12.0
+    low_revenue_ratio = bit_ratio * (1.0 + float(pmin) / 100.0)
+    high_revenue_ratio = bit_ratio * (1.0 + float(pmax) / 100.0)
+    be_min = (1.0 / high_revenue_ratio - 1.0) * 100.0
+    be_max = (1.0 / low_revenue_ratio - 1.0) * 100.0
+    return f"12단→8단 스택당 비트 -33.3% · 8단 Gb당 프리미엄 반영 시 기존 12단 매출 상쇄에 필요한 GPU·ASIC 출하 +{be_min:.1f}~{be_max:.1f}%"
+
+
 def _merge_hbm_market_pricing(old: dict, obs: dict) -> dict:
     merged = dict(old or {})
     for key, value in obs.items():
@@ -745,6 +761,10 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     market_changes: list[str] = []
     market_source_url = ""
+    market_format_due = (
+        int(state.get("hbm_market_alert_format_version") or 0) < HBM_MARKET_ALERT_FORMAT_VERSION
+        and market_state.get("blended_asp_yoy_pct") is not None
+    )
     for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
         obs = _extract_hbm_market_pricing(item)
         if not obs:
@@ -755,6 +775,10 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             market_changes.extend(changes)
             market_state = merged
             market_source_url = obs.get("source_url") or market_source_url
+
+    if market_format_due and not market_changes:
+        market_changes = ["2027 HBM 시장 가격 기준선 정밀화"]
+        market_source_url = market_state.get("source_url") or ""
 
     seen_titles = {
         _normalize_title(str(meta.get("title") or ""))
@@ -793,6 +817,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "last_scan_count": len(items),
         "last_new_count": len(new_items),
         "hbm_market_pricing_track_version": HBM_MARKET_PRICE_TRACK_VERSION,
+        "hbm_market_alert_format_version": HBM_MARKET_ALERT_FORMAT_VERSION if market_changes else int(state.get("hbm_market_alert_format_version") or 0),
         "hbm_market_pricing": market_state,
     }
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -824,8 +849,23 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         lines.append("• <b>HBM 시장 가격 상태 변화</b>")
         for change in market_changes:
             lines.append("  " + html.escape(change))
+        if market_state.get("blended_asp_yoy_pct") is not None:
+            lines.append(f"  2027 Blended ASP: <b>+{float(market_state['blended_asp_yoy_pct']):.0f}% YoY</b> → 2026=100이면 2027=221")
+        if market_state.get("mainstream_layers") is not None:
+            lines.append(f"  주류 적층 전망: <b>{int(market_state['mainstream_layers'])}단</b>")
+        if market_state.get("eight_hi_premium_min_pct") is not None:
+            lines.append(
+                f"  8단 HBM Gb당 판매가격: 12단 대비 <b>+{float(market_state['eight_hi_premium_min_pct']):.0f}~{float(market_state['eight_hi_premium_max_pct']):.0f}%</b>"
+            )
+        be = _hbm_market_break_even_summary(market_state)
+        if be:
+            lines.append("  매출 연결: " + html.escape(be))
+        lines.append("  ※ 시장 전체 TrendForce Blended ASP이며 삼성전자·SK하이닉스·Micron 개별 ASP와 별도")
         if market_source_url:
-            lines.append('  <a href="' + html.escape(market_source_url, quote=True) + '">원문</a>')
+            lines.append('  <a href="' + html.escape(market_source_url, quote=True) + '">기사 원문</a>')
+        ref = market_state.get("research_reference_url")
+        if ref:
+            lines.append('  <a href="' + html.escape(ref, quote=True) + '">TrendForce 보고서</a>')
     for item in report_items:
         label = classify(item["title"])
         raw_title = compact_title(item["title"], item.get("source", ""))
