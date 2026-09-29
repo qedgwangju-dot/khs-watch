@@ -291,133 +291,213 @@ def detailed_judgement(source_text: str) -> str | None:
     return "\n".join(lines)
 
 
-def format_alert(text: str) -> str:
-    raw_lines = text.splitlines()
-    out: list[str] = []
-    in_trigger_block = False
-    inserted_trigger_heading = False
-    is_partial = "잠정 집계" in text
+def compact_judgement(state: dict) -> tuple[str, str]:
+    rates = state.get("rates") or {}
+    etf = state.get("btc_etf") or {}
+    if not rates or not etf:
+        return "판정 보류", "핵심 데이터가 부족해 종합 방향을 확정하지 않음"
 
+    flow = float(etf.get("total_usd_m", 0.0) or 0.0)
+    last5 = etf.get("last5_usd_m")
+    prev5 = etf.get("prev5_usd_m")
+    last5 = float(last5) if last5 is not None else None
+    prev5 = float(prev5) if prev5 is not None else None
+    r10 = float(rates.get("daily_10y_bp", 0.0) or 0.0)
+    r30 = float(rates.get("daily_30y_bp", 0.0) or 0.0)
+    same_date = str(rates.get("date") or "") == str(etf.get("date") or "")
+
+    if not same_date:
+        return "판정 보류", (
+            f"미 국채({rates.get('date', 'N/A')})와 ETF({etf.get('date', 'N/A')}) 기준일이 달라 "
+            "같은 날의 종합 방향으로 묶지 않음"
+        )
+
+    flow_score = 1 if flow > 0 else -1 if flow < 0 else 0
+    five_score = 0
+    if last5 is not None and prev5 is not None:
+        if last5 > prev5:
+            five_score = 1
+        elif last5 < prev5:
+            five_score = -1
+
+    if r10 > 0 and r30 > 0 and max(abs(r10), abs(r30)) >= 3:
+        rate_score = -1
+    elif r10 < 0 and r30 < 0 and max(abs(r10), abs(r30)) >= 3:
+        rate_score = 1
+    else:
+        rate_score = 0
+
+    score = flow_score + five_score + rate_score
+    if score >= 2:
+        overall = "우호적"
+    elif score == 1:
+        overall = "소폭 우호적"
+    elif score == 0:
+        overall = "중립·혼조"
+    elif score == -1:
+        overall = "소폭 불리"
+    else:
+        overall = "불리"
+
+    if flow > 0:
+        day_text = "당일 ETF 순유입"
+    elif flow < 0:
+        day_text = "당일 ETF 순유출"
+    else:
+        day_text = "당일 ETF 수급 중립"
+
+    if r10 > 0 and r30 > 0:
+        rate_text = "장기금리 상승"
+    elif r10 < 0 and r30 < 0:
+        rate_text = "장기금리 하락"
+    else:
+        rate_text = "장기금리 혼조"
+
+    if last5 is not None and prev5 is not None:
+        if last5 > prev5:
+            five_text = "5거래일 누적 흐름은 개선"
+        elif last5 < prev5:
+            five_text = "5거래일 누적 흐름은 둔화"
+        else:
+            five_text = "5거래일 누적 흐름은 보합"
+    else:
+        five_text = "5거래일 비교는 확인 불가"
+
+    if flow < 0 and r10 > 0 and r30 > 0:
+        reason = f"{day_text}과 {rate_text}은 부담. 다만 {five_text}."
+    elif flow > 0 and r10 < 0 and r30 < 0:
+        reason = f"{day_text}과 {rate_text}이 우호적. {five_text}."
+    else:
+        reason = f"{day_text} · {rate_text}. {five_text}."
+
+    if str(etf.get("status") or "") != "complete":
+        overall += " · 잠정"
+    return overall, reason
+
+
+def source_link(text: str, source_label: str, display: str) -> str | None:
+    pattern = rf'• {re.escape(source_label)}:\s*<a href="([^"]+)">원문</a>'
+    m = re.search(pattern, text)
+    if not m:
+        return None
+    return f'<a href="{m.group(1)}">{display}</a>'
+
+
+def format_alert(text: str) -> str:
+    state = load_pending_state()
+    rates = state.get("rates") or {}
+    etf = state.get("btc_etf") or {}
+    fx_rate = extract_fx_rate(text)
+    is_partial = str(etf.get("status") or "") != "complete"
+
+    raw_lines = text.splitlines()
+    out: list[str] = ["<b>크립토 유동성 변화</b>"]
+
+    lookup = ""
     for line in raw_lines:
         stripped = line.strip()
-
-        if stripped == "[크립토 유동성 변화 감지]":
-            out.append("<b>크립토 유동성 변화 감지</b>")
-            continue
-
         if stripped.startswith("조회시각(KST):"):
-            value = stripped.split(":", 1)[1].strip()
-            out.append(f"<code>조회 {value}</code>")
-            in_trigger_block = True
-            continue
+            lookup = stripped.split(":", 1)[1].strip()
+            break
+        if stripped.startswith("<code>조회 ") and stripped.endswith("</code>"):
+            lookup = stripped.removeprefix("<code>조회 ").removesuffix("</code>").strip()
+            break
+    if lookup:
+        out.append(f"<code>{lookup}</code>")
 
-        if in_trigger_block and stripped.startswith("• "):
-            if not inserted_trigger_heading:
-                if out and out[-1] != "":
-                    out.append("")
-                out.append("<b>핵심 변화</b>")
-                inserted_trigger_heading = True
-            out.extend(format_trigger(stripped, is_partial=is_partial))
+    trigger_lines: list[str] = []
+    capture = False
+    known_trigger_prefixes = (
+        "• BTC 현물 ETF",
+        "• 미 국채 장기금리 큰 변동:",
+        "• 미 재무부 공식 바이백",
+    )
+    for line in raw_lines:
+        stripped = line.strip()
+        if stripped.startswith("조회시각(KST):"):
+            capture = True
             continue
-
-        if stripped.startswith("미 국채 — 미 재무부 공식 수익률곡선 기준일"):
-            in_trigger_block = False
-            date = stripped.rsplit(" ", 1)[-1]
-            if out and out[-1] != "":
-                out.append("")
-            out.append(f"<b>미 국채</b> · 공식 기준일 <code>{date}</code>")
+        if not capture:
             continue
+        if stripped.startswith("<b>BTC 자금 위치</b>") or stripped.startswith("미 국채 —"):
+            break
+        if stripped.startswith(known_trigger_prefixes):
+            trigger_lines.extend(format_trigger(stripped, is_partial=is_partial))
 
-        m_rate = re.match(
-            r"• (10Y|30Y) ([\d.]+)% \| 직전 공식일\(([^)]+)\) 대비 ([+-][\d.]+bp) \| 5거래일 ([+-][\d.]+bp)",
-            stripped,
+    if trigger_lines:
+        out += ["", "<b>무엇이 바뀌었나</b>", *trigger_lines]
+
+    out += ["", "<b>지금 숫자</b>"]
+
+    if etf:
+        flow = float(etf.get("total_usd_m", 0.0) or 0.0)
+        status_text = ""
+        reported = int(etf.get("reported_funds", 0) or 0)
+        missing = int(etf.get("missing_funds", 0) or 0)
+        total_funds = reported + missing
+        if is_partial:
+            status_text = (
+                f" · 잠정 {reported}/{total_funds} 반영"
+                if total_funds
+                else " · 잠정"
+            )
+        out.append(
+            f"• ETF {etf.get('date', 'N/A')} · <b>{fmt_usd_m(flow, fx_rate)}</b>{status_text}"
         )
-        if m_rate:
-            out.append(f"• <b>{m_rate.group(1)} {m_rate.group(2)}%</b> | 직전({m_rate.group(3)}) {m_rate.group(4)} | 5거래일 {m_rate.group(5)}")
-            continue
 
-        if stripped.startswith("※ 미 재무부 일일 수익률은"):
-            out.append(stripped)
-            continue
+        last5 = etf.get("last5_usd_m")
+        prev5 = etf.get("prev5_usd_m")
+        five_pct = etf.get("five_day_change_pct")
+        if last5 is not None and prev5 is not None:
+            last5f = float(last5)
+            prev5f = float(prev5)
+            comparison = ""
+            if five_pct is not None:
+                comparison = f" · 이전5 대비 {fmt_pct(float(five_pct))}"
+            elif last5f * prev5f < 0:
+                comparison = " · 이전5 대비 부호 전환"
+            out.append(
+                f"• 최근5 · <b>{fmt_usd_m(last5f, fx_rate)}</b>{comparison}"
+            )
 
-        if stripped.startswith("BTC 현물 ETF — Farside 기준 최신 유효일"):
-            date = stripped.rsplit(" ", 1)[-1]
-            if out and out[-1] != "":
-                out.append("")
-            out.append(f"<b>BTC 현물 ETF</b> · Farside <code>{date}</code>")
-            continue
+    if rates:
+        out.append(
+            f"• 금리 · 10Y <b>{float(rates.get('10y', 0.0)):.2f}%</b>"
+            f" ({float(rates.get('daily_10y_bp', 0.0)):+.1f}bp)"
+            f" | 30Y <b>{float(rates.get('30y', 0.0)):.2f}%</b>"
+            f" ({float(rates.get('daily_30y_bp', 0.0)):+.1f}bp)"
+        )
 
-        if stripped.startswith("• 최신:"):
-            body = stripped.removeprefix("• 최신:").strip()
-            m = re.match(r"(\d{4}-\d{2}-\d{2})\s+(.+?)\s+\((잠정 집계|현재 집계 완료[^,)]*)(.*)\)$", body)
-            if m:
-                out.append(f"• <b>최신 {m.group(2)}</b>")
-                status_text = m.group(3)
-                if status_text == "잠정 집계":
-                    status_text += " · 일부 ETF 미보고"
-                out.append(f"  {m.group(1)} · {status_text}{m.group(4)}")
-            else:
-                out.append(f"• <b>최신</b> {body}")
-            continue
+    overall, reason = compact_judgement(state)
+    out += ["", f"<blockquote><b>판정 · {overall}</b>\n{reason}</blockquote>"]
 
-        if stripped.startswith("• 직전:"):
-            out.append(stripped.replace("• 직전:", "• 직전  ", 1))
-            continue
+    fx_match = re.search(
+        r"원화 환산 기준:\s*1달러=([\d,]+(?:\.\d+)?)원\s*\|\s*기준일\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|",
+        text,
+    )
+    if fx_match:
+        out += [
+            "",
+            f"• 환율 · 1달러={fx_match.group(1)}원 · {fx_match.group(2).strip()} · {fx_match.group(3).strip()}",
+        ]
 
-        if stripped.startswith("• 전일 대비:"):
-            label = "전일 대비 · 잠정" if is_partial else "전일 대비"
-            out.append(f"• <b>{label}</b>  {stripped.split(':', 1)[1].strip()}")
-            continue
+    links: list[str] = []
+    for label, display in (
+        ("BTC 현물 ETF", "Farside"),
+        ("미 국채 금리", "미 재무부"),
+        ("원/달러 환율", "ECOS"),
+    ):
+        link = source_link(text, label, display)
+        if link:
+            links.append(link)
 
-        if stripped.startswith("• 최근 5거래일("):
-            label = "최근 5거래일 · 잠정" if is_partial else "최근 5거래일"
-            out.append(f"• <b>{label}</b> {stripped.split('):', 1)[0].split('(', 1)[1]} · {stripped.split('):', 1)[1].strip()}")
-            continue
+    if any("바이백" in x for x in trigger_lines):
+        buyback = source_link(text, "미 재무부 바이백", "바이백")
+        if buyback:
+            links.insert(1, buyback)
 
-        if stripped.startswith("• 이전 5거래일("):
-            out.append(f"• 이전 5거래일 {stripped.split('):', 1)[0].split('(', 1)[1]} · {stripped.split('):', 1)[1].strip()}")
-            continue
-
-        if stripped.startswith("• 5거래일 구간 대비:"):
-            label = "5거래일 구간 대비 · 잠정" if is_partial else "5거래일 구간 대비"
-            out.append(f"• <b>{label}</b>  {stripped.split(':', 1)[1].strip()}")
-            continue
-
-        if stripped.startswith("• 5거래일 변화율:"):
-            label = "5거래일 변화율 · 잠정" if is_partial else "5거래일 변화율"
-            out.append(f"• {label}  {stripped.split(':', 1)[1].strip()}")
-            continue
-
-        if stripped.startswith("※ ") and "미보고" in stripped:
-            out.append(stripped)
-            continue
-
-        if stripped.startswith("판단:"):
-            detailed = detailed_judgement(text)
-            body = detailed or stripped.split(":", 1)[1].strip()
-            if out and out[-1] != "":
-                out.append("")
-            out.append(f"<blockquote><b>판단</b>\n{body}</blockquote>")
-            continue
-
-        if stripped.startswith("원화 환산 기준:"):
-            if out and out[-1] != "":
-                out.append("")
-            out.extend(format_fx_line(stripped))
-            continue
-
-        if stripped == "공식·데이터 원천:":
-            if out and out[-1] != "":
-                out.append("")
-            out.append("<b>원문</b>")
-            continue
-
-        if stripped.startswith("※ CLARITY Act"):
-            out.append("")
-            out.append(stripped)
-            continue
-
-        out.append(line)
+    if links:
+        out += ["<b>원문</b> · " + " · ".join(links)]
 
     compact: list[str] = []
     for line in out:
@@ -426,8 +506,7 @@ def format_alert(text: str) -> str:
         compact.append(line)
 
     formatted = "\n".join(compact).strip() + "\n"
-    return ensure_krw_for_bare_usd(formatted, extract_fx_rate(text))
-
+    return ensure_krw_for_bare_usd(formatted, fx_rate)
 
 def main() -> None:
     if not ALERT_PATH.exists():
