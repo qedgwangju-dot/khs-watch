@@ -10,10 +10,14 @@ Delivery policy:
 """
 from __future__ import annotations
 
+import io
 import json
 import re
+import urllib.request
 from datetime import date, datetime, time, timedelta
 from zoneinfo import ZoneInfo
+
+from pypdf import PdfReader
 
 import treasury_cta_squeeze_audited_watch as audited
 
@@ -46,6 +50,7 @@ FED_FOMC_URL = "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
 CTA_SECONDARY_URL = "https://a.foresightnews.pro/article/detail/99813"
 CME_NQ_URL = "https://www.cmegroup.com/markets/equities/nasdaq/e-mini-nasdaq-100.html"
 CME_EQUITIES_URL = "https://www.cmegroup.com/markets/equities.html"
+CME_NQ_BULLETIN = "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf"
 YAHOO_NQ_URL = "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=5d&interval=1d"
 US_POSITIONING_STATE = watcher.DATA / "us_positioning_state.json"
 _CROSS_CACHE = None
@@ -118,6 +123,84 @@ def _nq_cftc_weekly() -> dict:
     }
 
 
+def _cme_daily_bulletin_nq() -> dict:
+    """Official previous-trade-date NQ settlement direction from CME PG11.
+
+    The PDF can split the final settlement decimal digit across layout lines.
+    Direction and point change are nevertheless in dedicated columns, so the
+    parser uses the signed point-change field and only uses settlement for an
+    approximate percentage calculation.
+    """
+    req = urllib.request.Request(
+        CME_NQ_BULLETIN,
+        headers={"User-Agent": "Mozilla/5.0 khs-watch/cta-squeeze", "Accept": "application/pdf,*/*"},
+    )
+    with urllib.request.urlopen(req, timeout=30) as response:
+        raw = response.read()
+    if not raw.startswith(b"%PDF"):
+        raise RuntimeError("CME PG11 did not return a PDF")
+
+    reader = PdfReader(io.BytesIO(raw))
+    text = "\n".join(
+        (page.extract_text(extraction_mode="layout") or page.extract_text() or "")
+        for page in reader.pages
+    )
+    if "EMINI NASD FUT" not in text:
+        raise RuntimeError("CME PG11 EMINI NASD FUT block missing")
+
+    date_m = re.search(
+        r"\b(?:Mon|Tue|Wed|Thu|Fri),\s+([A-Z][a-z]{2})\s+(\d{1,2}),\s+(20\d{2})\b",
+        text,
+    )
+    trade_date = None
+    if date_m:
+        trade_date = datetime.strptime(
+            f"{date_m.group(1)} {date_m.group(2)} {date_m.group(3)}",
+            "%b %d %Y",
+        ).date().isoformat()
+
+    block = text.split("EMINI NASD FUT", 1)[1].split("TOTAL EMINI NASD FUT", 1)[0]
+    # Front listed quarterly contract. PG11 columns:
+    # CONTRACT, GLOBEX OPEN/HIGH/LOW, SETT.PRICE, +/- POINT CHANGE, volumes, OI...
+    row_re = re.compile(
+        r"(?m)^\s*([A-Z]{3}\d{2})\s+"
+        r"(?:----|[0-9,.]+[AB]?)\s+"
+        r"(?:----|[0-9,.]+[AB]?)\s+"
+        r"(?:----|[0-9,.]+[AB]?)\s+"
+        r"([0-9,.]+)\s+([+-])\s+([0-9]+)\b"
+    )
+    rows = list(row_re.finditer(block))
+    if not rows:
+        raise RuntimeError("CME PG11 NQ settlement row parse failed")
+
+    m = rows[0]
+    month = m.group(1)
+    settle = float(m.group(2).replace(",", ""))
+    sign = 1.0 if m.group(3) == "+" else -1.0
+    # CME PG11 equity-index point changes are printed in hundredths without
+    # the decimal point (e.g. 34650 = 346.50 index points).
+    change_points = sign * (float(m.group(4)) / 100.0)
+    prior = settle - change_points
+    pct = (change_points / prior * 100.0) if prior else None
+
+    if pct is None or abs(pct) > 20:
+        raise RuntimeError(
+            f"CME PG11 NQ percentage sanity failed: settle={settle}, change={change_points}, pct={pct}"
+        )
+    return {
+        "price": settle,
+        "previous_close": prior,
+        "pct_change": pct,
+        "change_points": change_points,
+        "source": "CME Daily Bulletin PG11 official settlement",
+        "official": True,
+        "basis": "previous trade date settlement",
+        "trade_date": trade_date,
+        "month": month,
+        "url": CME_NQ_BULLETIN,
+    }
+
+
 def _nq_price() -> dict:
     """Use official CME NQ price first; Yahoo is display-only fallback."""
     official_errors = []
@@ -135,6 +218,11 @@ def _nq_price() -> dict:
         official_errors.append("CME quote API returned no usable NQ row")
     except Exception as exc:
         official_errors.append(f"CME quote API: {type(exc).__name__}: {exc}")
+
+    try:
+        return _cme_daily_bulletin_nq()
+    except Exception as exc:
+        official_errors.append(f"CME Daily Bulletin PG11: {type(exc).__name__}: {exc}")
 
     # The public CME equity-index page contains a server-rendered active NQ quote.
     # This provides an official fallback when the internal quote endpoint blocks
@@ -633,7 +721,7 @@ def scheduled_main() -> int:
             "• ZN 가격↑·동일범위 OI↓ + NQ 가격↑·CFTC NQ OI↓ + NQ 순숏 축소가 겹치면 이중 스퀴즈 확인으로 격상합니다.",
             "• CFTC는 주간 후행 자료이므로 장중 가격만으로 확정하지 않습니다.",
             "",
-            f'<a href="{CFTC_URL}">CFTC 포지션</a> · <a href="{CME_NQ_URL}">CME NQ</a> · <a href="{TREASURY_URL}">미 재무부 금리</a>',
+            f'<a href="{CFTC_URL}">CFTC 포지션</a> · <a href="{CME_NQ_URL}">CME NQ</a> · <a href="{CME_NQ_BULLETIN}">CME 공식 일일결제</a> · <a href="{TREASURY_URL}">미 재무부 금리</a>',
         ])
     else:
         title, body = _scheduled_report(snapshot, previous, reasons, fx=fx, fx_date=fx_date)
