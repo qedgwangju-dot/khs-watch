@@ -14,6 +14,7 @@ import csv
 import html
 import io
 import json
+import math
 import os
 import urllib.parse
 import urllib.request
@@ -26,21 +27,30 @@ STATE_PATH=ROOT/'data/warsh_energy_shock_watch_state.json'
 PCE_STATE=ROOT/'data/warsh_pce_trend_watch_state.json'
 CRED_STATE=ROOT/'data/warsh_credibility_pretightening_watch_state.json'
 CREDIT_STATE=ROOT/'data/warsh_new_axes_watch_state.json'
+POLICY_STATE=ROOT/'data/warsh_policy_path_watch_state.json'
 TOKEN=(os.getenv('TELEGRAM_BOT_TOKEN') or '').strip()
 CHAT_ID=(os.getenv('TELEGRAM_CHAT_ID') or '').strip()
 EXPECTED_BOT=(os.getenv('EXPECTED_BOT_USERNAME') or 'khs8879887988798879_bot').strip().lstrip('@')
 FORCE_NOTIFY=os.getenv('FORCE_NOTIFY','0')=='1'
 BRENT_LEVEL=float(os.getenv('WARSH_ENERGY_BRENT_USD','100'))
 BRENT_20D_PCT=float(os.getenv('WARSH_ENERGY_20D_PCT','15'))
+OIL10Y_CORR_WARN=float(os.getenv('WARSH_OIL10Y_CORR_WARN','0.50'))
+OIL10Y_CORR_STRONG=float(os.getenv('WARSH_OIL10Y_CORR_STRONG','0.60'))
+OIL10Y_BETA_ALERT=float(os.getenv('WARSH_OIL10Y_BETA_BP_PER_1PCT','1.0'))
+OIL10Y_LOOKBACK=max(40,int(os.getenv('WARSH_OIL10Y_LOOKBACK','63')))
+OIL10Y_MOVE_DAYS=max(1,int(os.getenv('WARSH_OIL10Y_MOVE_DAYS','5')))
 UA='Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)'
 
-YAHOO_CHART='https://query1.finance.yahoo.com/v8/finance/chart/{}?range=2mo&interval=1d&includePrePost=false'
+YAHOO_CHART='https://query1.finance.yahoo.com/v8/finance/chart/{}?range=6mo&interval=1d&includePrePost=false'
 FRED_CSV='https://fred.stlouisfed.org/graph/fredgraph.csv?id={}'
 JEFFERSON_URL='https://www.federalreserve.gov/newsevents/speech/jefferson20260716a.htm'
 BRENT_PAGE='https://finance.yahoo.com/quote/BZ=F/'
 FRED_BRENT='https://fred.stlouisfed.org/series/DCOILBRENTEU'
 FRED_BEI='https://fred.stlouisfed.org/series/T5YIE'
 FRED_REAL_PCE='https://fred.stlouisfed.org/series/PCEC96'
+WTI_PAGE='https://finance.yahoo.com/quote/CL=F/'
+FRED_DGS10='https://fred.stlouisfed.org/series/DGS10'
+CBOE_OIL_RATES='https://www.cboe.com/insights/posts/week-of-9-21-2026-oil-rates-correlation-jumps-to-a-35-year-high'
 
 
 def fetch(url):
@@ -124,6 +134,104 @@ def brent_snapshot():
         'measurement_basis':'최근 완료 거래일 종가'
     }
 
+def _pearson(xs,ys):
+    if len(xs)!=len(ys) or len(xs)<3:return None
+    mx=sum(xs)/len(xs); my=sum(ys)/len(ys)
+    vx=sum((x-mx)**2 for x in xs); vy=sum((y-my)**2 for y in ys)
+    if vx<=0 or vy<=0:return None
+    return sum((x-mx)*(y-my) for x,y in zip(xs,ys))/math.sqrt(vx*vy)
+
+
+def _slope(xs,ys):
+    if len(xs)!=len(ys) or len(xs)<3:return None
+    mx=sum(xs)/len(xs); my=sum(ys)/len(ys)
+    den=sum((x-mx)**2 for x in xs)
+    if den<=0:return None
+    return sum((x-mx)*(y-my) for x,y in zip(xs,ys))/den
+
+
+def oil_rates_snapshot():
+    # Cboe의 2026-09-21 자료는 'WTI 가격 ↔ 미국 10년물 금리' 3개월 이동상관을 제시했습니다.
+    # 여기서는 동일 개념을 실시간 감시에 맞게 자체 재계산합니다:
+    # ① 완료된 WTI 선물 일봉 수준 vs FRED DGS10 수준의 최근 63개 공통 거래일 상관
+    # ② 같은 공통 거래일의 WTI 일간 %변화 1%당 DGS10 일간 변화(bp) 회귀 민감도.
+    rows,_=yahoo_series('CL=F')
+    ny_today=datetime.now(ZoneInfo('America/New_York')).date().isoformat()
+    wti={r['date']:float(r['close']) for r in rows if r['date'] < ny_today}
+    d10={d:float(v) for d,v in fred_series('DGS10')}
+    dates=sorted(set(wti).intersection(d10))
+    if len(dates)<OIL10Y_LOOKBACK:
+        raise RuntimeError(f'WTI-DGS10 aligned history too short: {len(dates)} < {OIL10Y_LOOKBACK}')
+    dates=dates[-OIL10Y_LOOKBACK:]
+    oils=[wti[d] for d in dates]; yields=[d10[d] for d in dates]
+    corr=_pearson(oils,yields)
+
+    oil_ret=[]; y_bp=[]
+    for i in range(1,len(dates)):
+        if oils[i-1] <= 0:continue
+        oil_ret.append((oils[i]/oils[i-1]-1)*100.0)
+        y_bp.append((yields[i]-yields[i-1])*100.0)
+    beta=_slope(oil_ret,y_bp)
+
+    n=min(OIL10Y_MOVE_DAYS,len(dates)-1)
+    oil_move=(oils[-1]/oils[-1-n]-1)*100.0 if oils[-1-n] > 0 else None
+    y_move=(yields[-1]-yields[-1-n])*100.0
+    if corr is None:
+        band='확인 불가'
+    elif corr>=OIL10Y_CORR_STRONG:
+        band='강한 경보'
+    elif corr>=OIL10Y_CORR_WARN:
+        band='경계'
+    else:
+        band='일반'
+    return {
+        'date':dates[-1],'observations':len(dates),'corr_3m':corr,'corr_band':band,
+        'beta_bp_per_1pct':beta,'beta_hot':bool(beta is not None and beta>=OIL10Y_BETA_ALERT),
+        'wti':oils[-1],'wti_move_pct':oil_move,'dgs10':yields[-1],'dgs10_move_bp':y_move,
+        'move_days':n,
+        'measurement_basis':'WTI 선물 완료 일봉·FRED DGS10 공통 거래일 자체 계산',
+        'wti_url':WTI_PAGE,'dgs10_url':FRED_DGS10,'cboe_url':CBOE_OIL_RATES,
+    }
+
+
+def policy_snapshot():
+    state=load_json(POLICY_STATE)
+    meetings=state.get('meetings') or []
+    cls=state.get('classification') or {}
+    first=meetings[0] if meetings else {}
+    return {
+        'date':state.get('updated_at_utc'),
+        'meeting_date':first.get('date'),
+        'hike25_prob':first.get('hike25_prob'),
+        'extra_bp':cls.get('extra_bp'),
+        'verdict':cls.get('verdict'),
+        'source':state.get('source'),
+        'source_status':state.get('source_status'),
+    }
+
+
+def oil_rates_verdict(orate,policy):
+    corr=orate.get('corr_3m')
+    oil=orate.get('wti_move_pct')
+    yld=orate.get('dgs10_move_bp')
+    prob=policy.get('hike25_prob')
+    if corr is None:
+        return '유가·10년물 연결 확인 불가'
+    if oil is not None and yld is not None and oil < 0 and yld > 0:
+        return '유가와 10년물 분리 — 재정·실질금리·기간프리미엄 등 비유가 요인 우세'
+    aligned_up=(oil is not None and yld is not None and oil > 0 and yld > 0)
+    policy_hawk=(prob is not None and float(prob) >= 60.0)
+    if corr>=OIL10Y_CORR_STRONG and aligned_up and policy_hawk:
+        if orate.get('beta_hot'):
+            return '유가발 긴축 강경보 — 상관·민감도·시장 추가인상 기대 동시 확인'
+        return '유가발 긴축 강경보 — 상관·방향·시장 추가인상 기대 동시 확인'
+    if corr>=OIL10Y_CORR_STRONG and aligned_up:
+        return '유가발 금리 전이 강함 — 추가인상 기대 동반 여부 확인'
+    if corr>=OIL10Y_CORR_WARN:
+        return '유가·장기금리 연결 경계 — 단순 동행인지 정책 전이인지 확인'
+    return '유가·장기금리 상관 일반 범위'
+
+
 def macro_snapshot():
     pce=load_json(PCE_STATE); cred=load_json(CRED_STATE); credit=load_json(CREDIT_STATE)
     real=fred_series('PCEC96')
@@ -175,18 +283,27 @@ def send(text):
     with urllib.request.urlopen(req,timeout=20) as r:
         out=json.loads(r.read().decode())
     if not out.get('ok'):raise RuntimeError(f'Telegram send failed: {out}')
+    return (out.get('result') or {}).get('message_id')
 
 
-def message(br,ma,v):
+def message(br,ma,v,orate,policy,oil_v):
     pce3='확인 불가' if ma.get('core_3m_ann') is None else f"{ma['core_3m_ann']:.2f}%"
     pce6='확인 불가' if ma.get('core_6m_ann') is None else f"{ma['core_6m_ann']:.2f}%"
     real='확인 불가' if ma.get('real_pce_3m_ann') is None else f"{ma['real_pce_3m_ann']:+.1f}%"
     bei='확인 불가' if ma.get('bei5y_10d_bp') is None else f"{ma['bei5y_10d_bp']:+.0f}bp"
     emp='약화' if ma.get('employment_soft') else '급랭 미확인'
+    corr='확인 불가' if orate.get('corr_3m') is None else f"{orate['corr_3m']*100:.1f}%"
+    beta='확인 불가' if orate.get('beta_bp_per_1pct') is None else f"{orate['beta_bp_per_1pct']:+.2f}bp"
+    wti_move='확인 불가' if orate.get('wti_move_pct') is None else f"{orate['wti_move_pct']:+.1f}%"
+    y10_move='확인 불가' if orate.get('dgs10_move_bp') is None else f"{orate['dgs10_move_bp']:+.0f}bp"
+    hike_prob='확인 불가' if policy.get('hike25_prob') is None else f"{float(policy['hike25_prob']):.0f}%"
+    extra_bp='확인 불가' if policy.get('extra_bp') is None else f"{float(policy['extra_bp']):+.1f}bp"
     return '\n'.join([
         '[Warsh 에너지 공급충격 판정]',
         f"기준: {br['date']}", '',
-        '<b>핵심 판정</b>', f"• <b>{html.escape(v)}</b>", '',
+        '<b>핵심 판정</b>',
+        f"• <b>{html.escape(v)}</b>",
+        f"• <b>유가↔10년물</b>: {html.escape(oil_v)}", '',
         '<b>현재 숫자</b>',
         f"• 브렌트유: {br['value']:.2f}달러/배럴 · 최근 20거래일 {br['d20_pct']:+.1f}%",
         f"• 기준시점: {html.escape(br.get('measurement_basis') or '최근 완료 거래일 종가')} · {html.escape(br.get('quality_note') or '정상')}",
@@ -194,14 +311,27 @@ def message(br,ma,v):
         f"• 5년 기대인플레이션: {ma['bei5y']:.2f}% · 최근 10거래일 {bei}",
         f"• 실질 개인소비: 최근 3개월 연율 {real}",
         f"• 고용: {emp}" + (f" · 비농업 고용 {ma['payroll_change_k']:+.0f}천명 · 실업률 {ma['unemployment_rate']:.1f}%" if ma.get('payroll_change_k') is not None and ma.get('unemployment_rate') is not None else ''),
-        f"• 신용: H.8 {ma.get('h8') or '확인 불가'} · SLOOS {ma.get('sloos') or '확인 불가'}", '',
+        f"• 신용: H.8 {ma.get('h8') or '확인 불가'} · SLOOS {ma.get('sloos') or '확인 불가'}",
+        '',
+        '<b>유가 → 10년물 → 추가인상 경로</b>',
+        f"• WTI: {orate['wti']:.2f}달러/배럴 · 최근 {orate['move_days']}거래일 {wti_move}",
+        f"• 미국 10년물: {orate['dgs10']:.2f}% · 최근 {orate['move_days']}거래일 {y10_move}",
+        f"• 3개월 이동상관: <b>{corr}</b> · 판정 {html.escape(orate.get('corr_band') or '확인 불가')} · 경계 {OIL10Y_CORR_WARN*100:.0f}% / 강경보 {OIL10Y_CORR_STRONG*100:.0f}%",
+        f"• 금리 민감도: WTI 일간 +1%당 10년물 {beta} · 민감도 경보 기준 +{OIL10Y_BETA_ALERT:.1f}bp",
+        f"• 다음 FOMC +25bp 인상 확률: {hike_prob} · 연말 누적 추가긴축 기대 {extra_bp}",
+        f"• 계산 기준: {html.escape(orate.get('measurement_basis') or '')}",
+        '',
         '<b>해석</b>',
         '• 유가 상승만으로 금리인상을 판정하지 않습니다. 근원물가·기대인플레이션으로 번지는지와 실질소비·고용·신용이 먼저 약해지는지를 분리합니다.',
         '• 물가 전이가 우세하면 추가긴축 논리가 강해지고, 수요 파괴가 우세하면 같은 시점의 추가인상은 경기하강을 키울 위험이 커집니다.',
-        '• 이는 Jefferson 부의장이 설명한 공급충격의 물가·고용 상충 구조를 최신 데이터에 대입한 해석입니다.', '',
+        '• 이는 Jefferson 부의장이 설명한 공급충격의 물가·고용 상충 구조를 최신 데이터에 대입한 해석입니다.',
+        '• 상관은 인과관계 자체가 아닙니다. 유가가 내려가는데 10년물이 오르면 재정·실질금리·기간프리미엄 등 비유가 요인을 우선합니다.',
+        '• Cboe는 2026년 9월 21일 WTI와 미국 10년물의 3개월 이동상관이 65%로 35년 최고라고 제시했습니다. 이 값은 역사적 비교 기준이고, 위 숫자는 매 실행마다 자체 재계산합니다.', '',
         '<b>원천</b>',
         f"{link(br['source'],br['url'])} · {link('연준 Jefferson 공식 발언',JEFFERSON_URL)}",
         f"{link('FRED 5년 기대인플레이션',FRED_BEI)} · {link('FRED 실질 개인소비',FRED_REAL_PCE)}",
+        f"{link('WTI 선물',WTI_PAGE)} · {link('FRED 미국 10년물',FRED_DGS10)} · {link('Cboe 3개월 상관 65% 기준',CBOE_OIL_RATES)}",
+        (f"{link('연방기금금리 선물 경로',policy.get('source'))}" if policy.get('source') else '연방기금금리 선물 경로: 확인 불가'),
     ])
 
 
@@ -219,8 +349,32 @@ def main():
         return
 
     ma=macro_snapshot(); v=verdict(br,ma)
-    new={'schema_version':3,'brent':br,'macro':ma,'verdict':v}; first=not bool(old)
+    try:
+        orate=oil_rates_snapshot()
+    except Exception as exc:
+        print(json.dumps({
+            'first_run':not bool(old),'sent':False,'oil_rates_valid':False,
+            'error':f'{type(exc).__name__}: {exc}',
+            'rule':'WTI-10Y 상관 계산 실패 → 기존 에너지 판정은 유지하되 유가발 긴축 신규 경보는 발송 금지'
+        },ensure_ascii=False))
+        orate=(old.get('oil_rates') or {})
+    policy=policy_snapshot()
+    oil_v=oil_rates_verdict(orate,policy) if orate else '유가·10년물 연결 확인 불가'
+
+    new={'schema_version':4,'brent':br,'macro':ma,'verdict':v,'oil_rates':orate,'policy':policy,'oil_rates_verdict':oil_v}; first=not bool(old)
     changed=(old.get('brent',{}).get('active') not in (None,br['active']) or old.get('verdict') not in (None,v))
+
+    old_or=(old.get('oil_rates') or {})
+    if not changed and orate:
+        if old.get('oil_rates_verdict') not in (None,oil_v):
+            changed=True
+        elif old_or.get('corr_band') not in (None,orate.get('corr_band')):
+            changed=True
+        elif old_or.get('beta_hot') not in (None,orate.get('beta_hot')):
+            changed=True
+
+    upgrade=bool(old) and int(old.get('schema_version') or 1)<4
+    upgrade_signal=upgrade and orate and orate.get('corr_band') in ('경계','강한 경보')
 
     correction=False
     old_br=(old.get('brent') or {})
@@ -230,7 +384,8 @@ def main():
         if old_basis!='최근 완료 거래일 종가' or (isinstance(ov,(int,float)) and abs(float(ov)-float(br['value']))>=2.0):
             correction=True
 
-    if FORCE_NOTIFY or correction or (not first and changed):
+    sent_message_id=None
+    if FORCE_NOTIFY or correction or upgrade_signal or (not first and changed):
         if correction:
             oldv=old_br.get('value')
             oldtxt=f'{float(oldv):.2f}달러' if isinstance(oldv,(int,float)) else '이전값'
@@ -241,16 +396,17 @@ def main():
                 '• 앞으로 이 거시 경보는 현재 진행 중 일봉·현물가격으로 대체하지 않고 브렌트 선물의 완료된 거래일 종가만 사용합니다.',
                 ''
             ])
-            send(correction_head+message(br,ma,v))
+            sent_message_id=send(correction_head+message(br,ma,v,orate,policy,oil_v))
         else:
-            send(message(br,ma,v))
+            sent_message_id=send(message(br,ma,v,orate,policy,oil_v))
 
     save_json(STATE_PATH,new)
     print(json.dumps({
-        'first_run':first,'sent':bool(FORCE_NOTIFY or correction or (not first and changed)),
+        'first_run':first,'sent':bool(sent_message_id),'message_id':sent_message_id,
         'data_valid':True,'date':br['date'],'active':br['active'],'brent':br['value'],
         'd20_pct':br['d20_pct'],'verdict':v,'basis':br.get('measurement_basis'),
-        'correction':correction
+        'correction':correction,'upgrade_signal':bool(upgrade_signal),'oil_rates_verdict':oil_v,
+        'oil_rates':orate,'policy':policy
     },ensure_ascii=False))
 
 if __name__=='__main__':main()
