@@ -340,13 +340,18 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         and float(treasury10.get("short_share_oi_pct") or 0) >= 35.0
     )
 
-    pctile = hist.get("short_extreme_percentile_3y")
+    net_pctile = hist.get("net_short_percentile_3y")
+    gross_pctile = hist.get("gross_short_percentile_3y")
+    if not isinstance(net_pctile, (int, float)):
+        net_pctile = hist.get("short_extreme_percentile_3y")
     nq_history_ready = (
-        isinstance(pctile, (int, float))
+        isinstance(net_pctile, (int, float))
+        and isinstance(gross_pctile, (int, float))
         and int(hist.get("sample_n") or 0) >= 150
     )
-    # Never infer a historical extreme from one week's absolute short/OI.
-    nq_extreme = nq_history_ready and float(pctile) >= 90.0
+    nq_net_extreme = nq_history_ready and float(net_pctile) >= 90.0
+    nq_gross_extreme = nq_history_ready and float(gross_pctile) >= 90.0
+    nq_extreme = nq_net_extreme or nq_gross_extreme
 
     try:
         report_iso = datetime.strptime(str(nq.get("report_date") or ""), "%B %d, %Y").date().isoformat()
@@ -415,6 +420,8 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         "treasury_fuel": treasury_fuel,
         "treasury_confirmed": treasury_confirmed,
         "nq_extreme": nq_extreme,
+        "nq_net_extreme": nq_net_extreme,
+        "nq_gross_extreme": nq_gross_extreme,
         "nq_fuel": nq_fuel,
         "nq_history_ready": nq_history_ready,
         "nq_history_fresh": nq_history_fresh,
@@ -450,17 +457,25 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, compact: bool = 
 
     nq_pct = price.get("pct_change")
     nq_pct_text = f"{float(nq_pct):+.2f}%" if nq_pct is not None else "가격 확인 불가"
-    pctile = hist.get("short_extreme_percentile_3y")
-    pctile_text = f"{float(pctile):.0f}백분위" if isinstance(pctile, (int, float)) else "백분위 재조회 대기"
-    unwind = hist.get("unwind_from_peak_pct")
-    unwind_text = f"{float(unwind):.1f}%" if isinstance(unwind, (int, float)) else "확인 불가"
+    net_pctile = hist.get("net_short_percentile_3y")
+    if not isinstance(net_pctile, (int, float)):
+        net_pctile = hist.get("short_extreme_percentile_3y")
+    gross_pctile = hist.get("gross_short_percentile_3y")
+    net_pctile_text = f"{float(net_pctile):.0f}백분위" if isinstance(net_pctile, (int, float)) else "재조회 대기"
+    gross_pctile_text = f"{float(gross_pctile):.0f}백분위" if isinstance(gross_pctile, (int, float)) else "재조회 대기"
+    net_unwind = hist.get("net_short_unwind_from_peak_pct")
+    if not isinstance(net_unwind, (int, float)):
+        net_unwind = hist.get("unwind_from_peak_pct")
+    gross_unwind = hist.get("gross_short_unwind_from_peak_pct")
+    net_unwind_text = f"{float(net_unwind):.1f}%" if isinstance(net_unwind, (int, float)) else "확인 불가"
+    gross_unwind_text = f"{float(gross_unwind):.1f}%" if isinstance(gross_unwind, (int, float)) else "확인 불가"
 
     if compact:
         return (
             "<b>📈 채권→Nasdaq 전이</b>\n"
             f"• {cross['label']}\n"
             f"• 10Y LF 순 {int(treasury10.get('leveraged_net') or 0):+,}계약 · "
-            f"NQ LF 순 {int(nq.get('leveraged_net') or 0):+,}계약 ({pctile_text})\n"
+            f"NQ LF 순 {int(nq.get('leveraged_net') or 0):+,}계약 (순숏 {net_pctile_text} / 총숏 {gross_pctile_text})\n"
             f"• NQ {nq_pct_text} · CFTC NQ OI 주간 {int(nq.get('open_interest_wow') or 0):+,} · "
             f"순포지션 {int(nq.get('leveraged_net_wow') or 0):+,}\n"
         )
@@ -470,7 +485,8 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, compact: bool = 
         f"• 판정: <b>{cross['label']}</b>\n"
         f"• 10Y Leveraged Funds 순포지션 {int(treasury10.get('leveraged_net') or 0):+,}계약\n"
         f"• NQ E-mini Leveraged Funds 순포지션 {int(nq.get('leveraged_net') or 0):+,}계약"
-        f" · 3년 순숏 {pctile_text} · 최대 순숏 대비 청산 {unwind_text}\n"
+        f" · 3년 순숏 {net_pctile_text} · 총숏 {gross_pctile_text}\n"
+        f"• 3년 극단 대비 청산률: 순숏 {net_unwind_text} · 총숏 {gross_unwind_text}\n"
         f"• NQ {nq_pct_text} ({price.get('source') or '가격 소스 확인 불가'})"
         f" · CFTC 동일범위 OI 주간 {int(nq.get('open_interest_wow') or 0):+,}계약"
         f" · 순포지션 주간 {int(nq.get('leveraged_net_wow') or 0):+,}계약\n"
