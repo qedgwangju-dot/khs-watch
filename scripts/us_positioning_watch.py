@@ -433,6 +433,8 @@ def parse_cboe():
         "equity_puts": equity["puts"] if equity else None,
         "equity_time_ct": equity["time_ct"] if equity else None,
         "index_pc_ratio": index_opt["pc_ratio"] if index_opt else None,
+        "index_calls": index_opt["calls"] if index_opt else None,
+        "index_puts": index_opt["puts"] if index_opt else None,
         "index_time_ct": index_opt["time_ct"] if index_opt else None,
     }
     core = {"source": "Cboe", "kind": "options", "period": period, "metrics": metrics}
@@ -578,16 +580,33 @@ def explain(cftc, cboe, sox):
 
     if cboe:
         m = cboe["metrics"]
-        if m.get("equity_pc_ratio") is not None:
-            lines.append(
-                f"• Cboe 주식옵션 풋/콜 {m['equity_pc_ratio']:.2f} "
-                f"({m.get('equity_time_ct') or '최신'} CT) | "
-                f"전체 {m['total_pc_ratio']:.2f}"
-                if m.get("total_pc_ratio") is not None
-                else f"• Cboe 주식옵션 풋/콜 {m['equity_pc_ratio']:.2f}"
-            )
-        elif m.get("total_pc_ratio") is not None:
-            lines.append(f"• Cboe 전체 풋/콜 {m['total_pc_ratio']:.2f}")
+        eq_pc = m.get("equity_pc_ratio")
+        idx_pc = m.get("index_pc_ratio")
+        total_pc = m.get("total_pc_ratio")
+        if eq_pc is not None:
+            eq_call_put = (1.0 / eq_pc) if eq_pc > 0 else None
+            if idx_pc is not None:
+                idx_desc = (
+                    "거의 1:1"
+                    if 0.90 <= idx_pc <= 1.10
+                    else "풋 우위"
+                    if idx_pc > 1.10
+                    else "콜 우위"
+                )
+                lines.append(
+                    f"• Cboe 옵션: 주식 P/C {eq_pc:.2f}"
+                    f"({'콜이 풋의 ' + format(eq_call_put, '.2f') + '배' if eq_call_put else '비율 확인'})"
+                    f" / 지수 P/C {idx_pc:.2f}({idx_desc})"
+                    + (f" / 전체 {total_pc:.2f}" if total_pc is not None else "")
+                )
+            else:
+                lines.append(
+                    f"• Cboe 주식옵션 P/C {eq_pc:.2f} "
+                    f"({m.get('equity_time_ct') or '최신'} CT)"
+                    + (f" / 전체 {total_pc:.2f}" if total_pc is not None else "")
+                )
+        elif total_pc is not None:
+            lines.append(f"• Cboe 전체 풋/콜 {total_pc:.2f}")
 
     sox_up = bool(sox and sox["metrics"].get("d1_pct", 0) > 0)
     lev_improving = bool(
@@ -693,6 +712,12 @@ def validate_critical_sources(cftc_obj, cboe_obj, sox_obj):
             if abs(calc - m["equity_pc_ratio"]) > 0.03:
                 problems.append(
                     f"Cboe 주식옵션 풋/콜 검산 불일치: 계산 {calc:.3f} vs 표 {m['equity_pc_ratio']:.3f}"
+                )
+        if m.get("index_calls") and m.get("index_puts") and m.get("index_pc_ratio") is not None:
+            calc = m["index_puts"] / m["index_calls"]
+            if abs(calc - m["index_pc_ratio"]) > 0.03:
+                problems.append(
+                    f"Cboe 지수옵션 풋/콜 검산 불일치: 계산 {calc:.3f} vs 표 {m['index_pc_ratio']:.3f}"
                 )
 
     if sox_obj:
@@ -822,16 +847,100 @@ if quality_gate_ok and (updates or force):
     if cboe:
         m = cboe["metrics"]
         body += ["<b>Cboe 옵션 해석</b>"]
-        if m.get("equity_pc_ratio") is not None:
+
+        eq_pc = m.get("equity_pc_ratio")
+        eq_calls = m.get("equity_calls")
+        eq_puts = m.get("equity_puts")
+        idx_pc = m.get("index_pc_ratio")
+        idx_calls = m.get("index_calls")
+        idx_puts = m.get("index_puts")
+        total_pc = m.get("total_pc_ratio")
+        total_calls = m.get("total_calls")
+        total_puts = m.get("total_puts")
+
+        if eq_pc is not None and eq_calls and eq_puts:
+            eq_call_share = eq_calls / (eq_calls + eq_puts) * 100.0
+            eq_call_put = eq_calls / eq_puts if eq_puts else None
+            eq_desc = "상방 우위" if eq_pc < 0.80 else "중립권" if eq_pc <= 1.0 else "하방·방어 우위"
             body.append(
-                f"• 주식옵션 풋/콜 {m['equity_pc_ratio']:.2f} "
-                f"({m.get('equity_time_ct') or '최신'} CT) "
-                f"→ {'콜 우위' if m['equity_pc_ratio'] < 0.80 else '중립권' if m['equity_pc_ratio'] <= 1.0 else '풋 우위'}"
+                f"• 주식옵션: 콜 {eq_calls:,} / 풋 {eq_puts:,} → P/C {eq_pc:.2f} "
+                f"({m.get('equity_time_ct') or '최신'} CT)"
             )
-        if m.get("index_pc_ratio") is not None:
-            body.append(f"• 지수옵션 풋/콜 {m['index_pc_ratio']:.2f}")
-        if m.get("total_pc_ratio") is not None:
-            body.append(f"• 전체 풋/콜 {m['total_pc_ratio']:.2f}")
+            body.append(
+                f"  → 콜이 풋의 {eq_call_put:.2f}배 · 콜+풋 거래량 중 콜 {eq_call_share:.1f}% "
+                f"→ <b>{eq_desc}</b>"
+            )
+        elif eq_pc is not None:
+            body.append(
+                f"• 주식옵션 P/C {eq_pc:.2f} "
+                f"→ {'상방 우위' if eq_pc < 0.80 else '중립권' if eq_pc <= 1.0 else '하방·방어 우위'}"
+            )
+
+        if idx_pc is not None and idx_calls and idx_puts:
+            idx_call_share = idx_calls / (idx_calls + idx_puts) * 100.0
+            if 0.90 <= idx_pc <= 1.10:
+                idx_desc = "콜·풋이 거의 1:1 → 지수 전체 방향성·헤지는 중립권"
+            elif idx_pc > 1.10:
+                idx_desc = "풋 우위 → 지수 하락 방어·헤지 수요가 상대적으로 강함"
+            else:
+                idx_desc = "콜 우위 → 지수 상방 수요가 상대적으로 강함"
+            body.append(
+                f"• 지수옵션: 콜 {idx_calls:,} / 풋 {idx_puts:,} → P/C {idx_pc:.2f} "
+                f"({m.get('index_time_ct') or '최신'} CT)"
+            )
+            body.append(f"  → 콜 비중 {idx_call_share:.1f}% · {idx_desc}")
+        elif idx_pc is not None:
+            body.append(
+                f"• 지수옵션 P/C {idx_pc:.2f} "
+                f"→ {'거의 1:1·중립권' if 0.90 <= idx_pc <= 1.10 else '풋 우위·헤지 강화' if idx_pc > 1.10 else '콜 우위'}"
+            )
+
+        if total_pc is not None and total_calls and total_puts:
+            total_call_share = total_calls / (total_calls + total_puts) * 100.0
+            total_call_put = total_calls / total_puts if total_puts else None
+            body.append(
+                f"• 전체 옵션: 콜 {total_calls:,} / 풋 {total_puts:,} → P/C {total_pc:.2f} "
+                f"({m.get('total_time_ct') or '최신'} CT)"
+            )
+            body.append(
+                f"  → 콜이 풋의 {total_call_put:.2f}배 · 콜 비중 {total_call_share:.1f}%"
+            )
+        elif total_pc is not None:
+            body.append(f"• 전체 풋/콜 {total_pc:.2f}")
+
+        if eq_pc is not None and idx_pc is not None:
+            if eq_pc < 0.80 and 0.90 <= idx_pc <= 1.10:
+                option_combo = (
+                    "개별주에서는 콜 베팅이 우세하지만 지수는 거의 중립 "
+                    "→ 종목별 상승 기대는 있으나 시장 전체가 강한 위험선호로 정렬된 상태는 아님"
+                )
+            elif eq_pc < 0.80 and idx_pc > 1.10:
+                option_combo = (
+                    "개별주 콜 베팅은 강하지만 지수 풋 헤지도 높음 "
+                    "→ 위를 보면서도 시장 전체 하락 보험을 같이 드는 혼합 신호"
+                )
+            elif eq_pc > 1.0 and idx_pc > 1.10:
+                option_combo = (
+                    "개별주와 지수 모두 풋 우위 "
+                    "→ 옵션 수급만 보면 하방 경계가 강한 편"
+                )
+            else:
+                option_combo = "개별주와 지수 옵션 방향이 뚜렷하게 한쪽으로 정렬되지 않음"
+            body.append(f"• <b>옵션 조합</b>: {option_combo}")
+
+        if cftc:
+            cm = cftc["metrics"]
+            asset_dir = "기관 순롱 확대" if cm["asset_net_wow"] > 0 else "기관 순롱 축소" if cm["asset_net_wow"] < 0 else "기관 변화 제한"
+            lev_dir = "헤지펀드성 포지션 개선" if cm["lev_net_wow"] > 0 else "헤지펀드성 포지션 악화" if cm["lev_net_wow"] < 0 else "헤지펀드성 변화 제한"
+            body.append(
+                f"• <b>CFTC와 연결</b>: {asset_dir} + {lev_dir} "
+                "→ 옵션 방향과 선물 포지션이 같은 쪽인지까지 확인해야 함"
+            )
+
+        body.append(
+            "• 주의: 풋/콜은 거래량 비율이라 콜·풋의 실제 매수/매도 방향을 구분하지 않음. "
+            "콜 거래가 많아도 콜 매도가 섞일 수 있어 단독 강세·약세 확정 신호로 쓰지 않음"
+        )
         body.append("")
 
     body += [
