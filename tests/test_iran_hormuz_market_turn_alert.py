@@ -337,6 +337,58 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         assert result is not None
         self.assertEqual(result[0], "regional_export_recovery")
 
+    def test_reuters_kpler_revised_snapshot_parser(self):
+        current = dt.datetime(2026, 9, 29, 10, 0, tzinfo=dt.timezone.utc)
+        html = """
+        <html><body>
+        Crude oil exports from key Middle East producers rebounded in September to
+        16.328 million barrels per day (bpd), the highest since the war began.
+        Exports via the Strait of Hormuz were set to hit about 9.719 million bpd this month.
+        Regional exports were still about 3.2 million bpd down from 19.513 million bpd in February.
+        Saudi Arabia was on track to ship about 5.4 million bpd this month.
+        September shipments from Ras Tanura jumped to about 3.25 million bpd.
+        </body></html>
+        """
+        item = MODULE.parse_mideast_export_snapshot(html, current, "https://example.com/reuters")
+        self.assertEqual(item.event_kind, "regional_export_recovery")
+        self.assertIn("16.328 Mbd", item.title)
+        self.assertIn("9.719 Mbd", item.title)
+        self.assertIn("19.513 Mbd", item.title)
+        self.assertIn("83.7%", item.title)
+
+    def test_regional_body_uses_revised_snapshot_not_hardcoded_old_value(self):
+        current = dt.datetime(2026, 9, 29, 10, 0, tzinfo=dt.timezone.utc)
+        news = [MODULE.NewsItem(
+            "Middle East crude exports snapshot 16.328 Mbd; Hormuz 9.719 Mbd; February 19.513 Mbd; gap 3.185 Mbd; recovery 83.7%; Saudi 5.400 Mbd; RasTanura 3.250 Mbd; preliminary Kpler data may revise",
+            "Reuters/Kpler",
+            "https://example.com/reuters",
+            current.isoformat(),
+            current.timestamp(),
+            "regional_export_recovery",
+        )]
+        body = MODULE.build_physical_flow_alert_body("regional_export_recovery", news, None, current)
+        self.assertIn("16.328 Mbd", body)
+        self.assertIn("9.719 Mbd", body)
+        self.assertIn("19.513 Mbd", body)
+        self.assertIn("83.7%", body)
+        self.assertNotIn("12.8 Mbd", body)
+        self.assertNotIn("18.8 Mbd", body)
+
+    def test_regional_revision_creates_new_stage(self):
+        current = dt.datetime(2026, 9, 29, 10, 0, tzinfo=dt.timezone.utc)
+        old = [MODULE.NewsItem(
+            "Middle East crude exports snapshot 12.800 Mbd; Hormuz 7.400 Mbd; February 18.800 Mbd; gap 6.000 Mbd; recovery 68.1%; preliminary Kpler data may revise",
+            "Reuters/Kpler", "a", current.isoformat(), current.timestamp(), "regional_export_recovery"
+        )]
+        revised = [MODULE.NewsItem(
+            "Middle East crude exports snapshot 16.328 Mbd; Hormuz 9.719 Mbd; February 19.513 Mbd; gap 3.185 Mbd; recovery 83.7%; preliminary Kpler data may revise",
+            "Reuters/Kpler", "b", current.isoformat(), current.timestamp(), "regional_export_recovery"
+        )]
+        self.assertNotEqual(
+            MODULE.event_id("regional_export_recovery", old),
+            MODULE.event_id("regional_export_recovery", revised),
+        )
+
     def test_alert_body_contains_required_market_values(self):
         current = dt.datetime(2026, 8, 2, 12, 0, tzinfo=dt.timezone.utc)
         news = [
