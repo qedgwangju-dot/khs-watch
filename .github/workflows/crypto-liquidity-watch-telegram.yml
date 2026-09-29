@@ -13,6 +13,7 @@ on:
       - "scripts/coin_alert_korean_terms.py"
       - "scripts/coinbase_stablecoin_catalyst_watch.py"
       - "tests/test_coinbase_stablecoin_catalyst_watch.py"
+      - "tests/test_coin_alert_korean_terms.py"
       - "data/coinbase_stablecoin_catalyst_state.json"
       - "data/crypto_liquidity_watch_state.json"
       - "data/samsung_wallet_stablecoin_watch_state.json"
@@ -59,7 +60,7 @@ jobs:
           python scripts/verify_samsung_wallet_stablecoin_state.py
           python -m py_compile scripts/coin_alert_korean_terms.py
           python -m py_compile scripts/coinbase_stablecoin_catalyst_watch.py
-          python -m unittest tests/test_coinbase_stablecoin_catalyst_watch.py -v
+          python -m unittest tests/test_coinbase_stablecoin_catalyst_watch.py tests/test_coin_alert_korean_terms.py -v
 
       - name: Validate exact Telegram bot route without sending
         env:
