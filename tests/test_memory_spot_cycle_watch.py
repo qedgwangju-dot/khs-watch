@@ -59,6 +59,24 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertEqual(obs["eight_hi_premium_max_pct"], 20.0)
         self.assertEqual(obs["mainstream_layers"], 8)
 
+    def test_official_trendforce_source_is_not_overwritten_by_republisher(self):
+        old = dict(w.HBM_MARKET_PRICE_BASELINE)
+        republisher = {
+            "period": "2027",
+            "blended_asp_yoy_pct": 121.0,
+            "source": "조선비즈",
+            "source_url": "https://biz.chosun.com/test",
+            "source_rank": 2,
+            "as_of": "2026-09-29",
+        }
+        merged = w._merge_hbm_market_pricing(old, republisher)
+        self.assertEqual(merged["source"], "TrendForce")
+        self.assertIn("trendforce.com/presscenter", merged["source_url"])
+
+    def test_trendforce_press_date_parses_official_url(self):
+        d = w._trendforce_press_date("https://www.trendforce.com/presscenter/news/20260929-13255.html")
+        self.assertEqual(d.date().isoformat(), "2026-09-29")
+
     def test_hbm_market_pricing_thresholds(self):
         old = dict(w.HBM_MARKET_PRICE_BASELINE)
         small = dict(old, blended_asp_yoy_pct=128.0)

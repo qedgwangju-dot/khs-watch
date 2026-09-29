@@ -47,11 +47,16 @@ HBM_MARKET_PRICE_BASELINE = {
     "eight_hi_premium_min_pct": 10.0,
     "eight_hi_premium_max_pct": 20.0,
     "mainstream_layers": 8,
-    "source": "한국경제TV·TrendForce 인용",
-    "source_url": "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202609290194&t=NN",
+    "source": "TrendForce",
+    "source_url": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
     "research_reference_url": "https://www.trendforce.com/research/download/RP260922FJ3",
+    "secondary_source_url": "https://biz.chosun.com/it-science/ict/2026/09/29/4EV5Z6JAR5GCPG7DR7ZBBFMJUQ/",
+    "source_rank": 3,
     "as_of": "2026-09-29",
 }
+TREND_PINNED_PRESS_URLS = [
+    "https://www.trendforce.com/presscenter/news/20260929-13255.html",
+]
 TREND_PINNED_REPORT_URLS = [
     # Seed the latest quarterly forecast explicitly; it is removed naturally by the
     # rolling cutoff once stale, but guarantees paid-research summaries are not missed
@@ -319,10 +324,13 @@ def collect() -> tuple[list[dict], list[str]]:
             errors.append(f"{lang}:{query}: {type(exc).__name__}: {exc}")
 
     direct_items, direct_errors = _collect_trendforce_research(cutoff)
+    press_items, press_errors = _collect_trendforce_press(cutoff)
     search_items, search_errors = _collect_trendforce_search(cutoff)
     items.extend(direct_items)
+    items.extend(press_items)
     items.extend(search_items)
     errors.extend(direct_errors)
+    errors.extend(press_errors)
     errors.extend(search_errors)
 
     by_fp: dict[str, dict] = {}
@@ -370,6 +378,44 @@ def _trendforce_url_date(url: str) -> dt.datetime | None:
         return dt.datetime(year, month, day, 9, 0, tzinfo=KST)
     except Exception:
         return None
+
+
+def _trendforce_press_date(url: str) -> dt.datetime | None:
+    match = re.search(r"/news/(20\d{2})(\d{2})(\d{2})-", url, flags=re.IGNORECASE)
+    if not match:
+        return None
+    try:
+        return dt.datetime(int(match.group(1)), int(match.group(2)), int(match.group(3)), 9, 0, tzinfo=KST)
+    except Exception:
+        return None
+
+
+def _collect_trendforce_press(cutoff: dt.datetime) -> tuple[list[dict], list[str]]:
+    items: list[dict] = []
+    errors: list[str] = []
+    for url in TREND_PINNED_PRESS_URLS:
+        pub = _trendforce_press_date(url)
+        if pub and pub < cutoff:
+            continue
+        try:
+            raw = _fetch(url).decode("utf-8", errors="ignore")
+            detail = _clean(raw)[:20000]
+            title_m = re.search(r"<title[^>]*>(.*?)</title>", raw, re.I | re.S)
+            title = _clean(title_m.group(1)) if title_m else "TrendForce HBM 2027 가격 전망"
+            item = {
+                "title": title,
+                "link": url,
+                "description": detail,
+                "source": "TrendForce",
+                "published_kst": pub.isoformat(timespec="seconds") if pub else None,
+                "query": "direct:trendforce-press",
+            }
+            item["score"] = max(12, _score(item))
+            item["fingerprint"] = _fingerprint(item)
+            items.append(item)
+        except Exception as exc:
+            errors.append(f"TrendForce press {url}: {type(exc).__name__}: {exc}")
+    return items, errors
 
 
 def _collect_trendforce_search(cutoff: dt.datetime) -> tuple[list[dict], list[str]]:
@@ -686,14 +732,18 @@ def _extract_hbm_market_pricing(item: dict) -> dict | None:
 
     if blended is None and premium_min is None and mainstream is None:
         return None
+    source = item.get("source") or ""
+    source_url = item.get("link") or ""
+    source_rank = 3 if "trendforce.com" in urllib.parse.urlparse(source_url).netloc.lower() else (3 if source.lower().startswith("trendforce") else 2)
     return {
         "period": "2027",
         "blended_asp_yoy_pct": blended,
         "eight_hi_premium_min_pct": premium_min,
         "eight_hi_premium_max_pct": premium_max,
         "mainstream_layers": mainstream,
-        "source": item.get("source") or "",
-        "source_url": item.get("link") or "",
+        "source": source,
+        "source_url": source_url,
+        "source_rank": source_rank,
         "as_of": (item.get("published_kst") or "")[:10],
     }
 
@@ -715,9 +765,14 @@ def _hbm_market_break_even_summary(state: dict) -> str:
 
 def _merge_hbm_market_pricing(old: dict, obs: dict) -> dict:
     merged = dict(old or {})
+    old_rank = int(merged.get("source_rank") or 0)
+    new_rank = int(obs.get("source_rank") or 0)
     for key, value in obs.items():
-        if value not in (None, ""):
-            merged[key] = value
+        if value in (None, ""):
+            continue
+        if key in ("source", "source_url", "as_of", "source_rank") and old_rank > new_rank:
+            continue
+        merged[key] = value
     return merged
 
 
@@ -869,7 +924,10 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             lines.append('  <a href="' + html.escape(market_source_url, quote=True) + '">기사 원문</a>')
         ref = market_state.get("research_reference_url")
         if ref:
-            lines.append('  <a href="' + html.escape(ref, quote=True) + '">TrendForce 보고서</a>')
+            lines.append('  <a href="' + html.escape(ref, quote=True) + '">TrendForce HBM 보고서</a>')
+        secondary = market_state.get("secondary_source_url")
+        if secondary:
+            lines.append('  <a href="' + html.escape(secondary, quote=True) + '">국내 보도</a>')
     for item in report_items:
         label = classify(item["title"])
         raw_title = compact_title(item["title"], item.get("source", ""))

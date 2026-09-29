@@ -185,6 +185,10 @@ jobs:
           state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
           PY
 
+      - name: Persist memory no-alert state
+        if: success() && hashFiles('out/memory_spot_cycle_watch_telegram.txt') == '' && hashFiles('out/memory_spot_cycle_watch_pending_state.json') != ''
+        run: cp out/memory_spot_cycle_watch_pending_state.json data/memory_spot_cycle_watch_state.json
+
       - name: Persist Apple memory state after confirmed Telegram delivery
         if: success() && hashFiles('out/memory_spot_cycle_watch_telegram.txt') != '' && hashFiles('out/memory_spot_cycle_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_memory_procurement_watch_pending_state.json') != ''
         run: cp out/apple_memory_procurement_watch_pending_state.json data/apple_memory_procurement_watch_state.json

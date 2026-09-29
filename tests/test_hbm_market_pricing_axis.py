@@ -11,8 +11,8 @@ class HBMMarketPricingAxisTests(unittest.TestCase):
         return {
             "title": "TrendForce 2027 HBM Blended ASP outlook",
             "description": "",
-            "source": "한국경제TV",
-            "direct_link": "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202609290194&t=NN",
+            "source": "TrendForce",
+            "direct_link": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
             "published_at_kst": "2026-09-29T18:00:00+09:00",
         }
 
