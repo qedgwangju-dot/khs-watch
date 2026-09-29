@@ -1,6 +1,6 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "f95b44fee348ab2a1240313b499785176450f8586fdb45eefa796c48c385e987",
+    "Nasdaq SOX|sox": "ff64a33d4cc222681bf7ef2c83d19f167148ea7abb7d53ac0300f3d226163b8d",
     "Cboe|options": "6cc44965194627250d1c229eeac2441d1649070cd950cf07c24d81f8ff9fba3c",
     "CFTC|cot": "4b1e773466ddc4a7be9d5e8f0d153ac93e6b0bbf9e17f5211e81063c0c4498f0"
   },
@@ -20,12 +20,12 @@
         "official_overview_url": "https://beta.indexes.nasdaq.com/Index/Overview/SOX",
         "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=10d&interval=1d",
         "crosscheck_same_date": true,
-        "crosscheck_close_diff": -0.0012109375002182787,
-        "d3_pct": -0.5508019686324306,
-        "d5_pct": 0.25794941486381173
+        "crosscheck_close_diff": -0.00023437500021827873,
+        "d3_pct": -0.5508097597658579,
+        "d5_pct": 0.2579415603704893
       },
       "url": "https://beta.indexes.nasdaq.com/Index/Overview/SOX",
-      "fingerprint": "f95b44fee348ab2a1240313b499785176450f8586fdb45eefa796c48c385e987"
+      "fingerprint": "ff64a33d4cc222681bf7ef2c83d19f167148ea7abb7d53ac0300f3d226163b8d"
     },
     "Cboe|options": {
       "source": "Cboe",
@@ -88,9 +88,14 @@
         "sample_n": 157,
         "start_date": "2023-09-26",
         "end_date": "2026-09-22",
+        "net_short_percentile_3y": 39.490445859872615,
+        "gross_short_percentile_3y": 57.324840764331206,
         "short_extreme_percentile_3y": 39.490445859872615,
         "short_share_oi_percentile_3y": 43.31210191082803,
         "peak_net_short_contracts_3y": 89125,
+        "peak_gross_short_contracts_3y": 135430,
+        "net_short_unwind_from_peak_pct": 65.57307152875175,
+        "gross_short_unwind_from_peak_pct": 37.446651406630735,
         "unwind_from_peak_pct": 65.57307152875175,
         "leveraged_short_1w_change": 25649,
         "leveraged_short_4w_change": -8357,
@@ -101,5 +106,5 @@
       }
     }
   },
-  "updated_at_kst": "2026-09-29T12:36:45.675122+09:00"
+  "updated_at_kst": "2026-09-29T14:31:14.207265+09:00"
 }
