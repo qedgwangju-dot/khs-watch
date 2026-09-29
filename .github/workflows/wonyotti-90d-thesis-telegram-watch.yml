@@ -81,7 +81,7 @@ jobs:
           rm -f out/wonyotti_90d_thesis_alert.html out/wonyotti_90d_thesis_status.md out/wonyotti_90d_thesis_pending_state.json
           python -m py_compile scripts/wonyotti_90d_thesis_watch.py
           python - <<'PY'
-          from scripts.wonyotti_90d_thesis_watch import build_signals
+          from scripts.wonyotti_90d_thesis_watch import build_signals, combine_spot_prices
 
           old = {
               "crypto": {
@@ -121,6 +121,68 @@ jobs:
           }
           rate_signals = build_signals(old, changed, [])
           assert any(item[0] == "나스닥 할인율" for item in rate_signals), rate_signals
+
+          close_sources = combine_spot_prices({
+              "Coinbase": {
+                  "BTC": {"price": 84000.0},
+                  "ETH": {"price": 2700.0},
+                  "SOL": {"price": 120.0},
+              },
+              "Gate.io Futures Index": {
+                  "BTC": {"price": 84042.0},
+                  "ETH": {"price": 2705.0},
+                  "SOL": {"price": 120.12},
+              },
+          })
+          assert close_sources["price_verified"] is True, close_sources
+
+          one_source = combine_spot_prices({
+              "Coinbase": {
+                  "BTC": {"price": 84000.0},
+                  "ETH": {"price": 2700.0},
+                  "SOL": {"price": 120.0},
+              },
+          })
+          assert one_source["price_verified"] is False, one_source
+
+          divergent = combine_spot_prices({
+              "Coinbase": {
+                  "BTC": {"price": 84000.0},
+                  "ETH": {"price": 2700.0},
+                  "SOL": {"price": 120.0},
+              },
+              "Gate.io Futures Index": {
+                  "BTC": {"price": 86000.0},
+                  "ETH": {"price": 2800.0},
+                  "SOL": {"price": 125.0},
+              },
+          })
+          assert divergent["price_verified"] is False, divergent
+
+          price_old = {
+              "crypto": {
+                  "prices": {"BTC": {"usd": 85500.0}},
+                  "price_trigger_ready": True,
+              },
+              "rates": {},
+          }
+          unverified_new = {
+              "crypto": {
+                  "prices": {"BTC": {"usd": 84000.0}},
+                  "price_trigger_ready": False,
+              },
+              "rates": {},
+          }
+          assert not any("85,000" in item[1] for item in build_signals(price_old, unverified_new, []))
+
+          verified_new = {
+              "crypto": {
+                  "prices": {"BTC": {"usd": 84000.0}},
+                  "price_trigger_ready": True,
+              },
+              "rates": {},
+          }
+          assert any("85,000" in item[1] for item in build_signals(price_old, verified_new, []))
           print("wonyotti_regression_tests=pass")
           PY
           python scripts/wonyotti_90d_thesis_watch.py
@@ -139,7 +201,7 @@ jobs:
           <b>송출 경로</b>
           • 수신 봇: <b>@khs887900887900008879_bot</b>
           • GitHub Actions → Python 웹감시 → Telegram Bot API
-          • 확인 주기: <b>30분</b> · 매시 17분/47분
+          • 기본 확인 주기: <b>15분</b> · 매시 02/17/32/47분 + 독립 감시자 재호출
           • 신규 의미 변화만 송출 · 무변화 무알림 · 상태 저장으로 중복 차단
 
           <b>감시 축</b>
