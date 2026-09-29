@@ -1,6 +1,6 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "9d5ced785dc3a1aeebbf77f17358589bd9d7886b13883eb2c33e1dea11817568",
+    "Nasdaq SOX|sox": "f95b44fee348ab2a1240313b499785176450f8586fdb45eefa796c48c385e987",
     "Cboe|options": "6cc44965194627250d1c229eeac2441d1649070cd950cf07c24d81f8ff9fba3c",
     "CFTC|cot": "4b1e773466ddc4a7be9d5e8f0d153ac93e6b0bbf9e17f5211e81063c0c4498f0"
   },
@@ -11,16 +11,21 @@
       "period": "09/28/2026",
       "metrics": {
         "value": 12465.24,
-        "previous_close": 12465.24,
-        "previous_close_source": "Nasdaq official Overview",
-        "net_change": 0.0,
-        "net_change_source": "Nasdaq Last minus Previous Close derived; displayed Net Change stale",
-        "pct": 0.0,
-        "d1_pct": 0.0,
-        "official_overview_url": "https://beta.indexes.nasdaq.com/Index/Overview/SOX"
+        "previous_close": 12668.9296875,
+        "previous_close_source": "Yahoo daily close cross-check",
+        "net_change": -203.68968750000022,
+        "net_change_source": "Nasdaq official close minus Yahoo prior daily close",
+        "pct": -1.6077892333791532,
+        "d1_pct": -1.6077892333791532,
+        "official_overview_url": "https://beta.indexes.nasdaq.com/Index/Overview/SOX",
+        "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=10d&interval=1d",
+        "crosscheck_same_date": true,
+        "crosscheck_close_diff": -0.0012109375002182787,
+        "d3_pct": -0.5508019686324306,
+        "d5_pct": 0.25794941486381173
       },
       "url": "https://beta.indexes.nasdaq.com/Index/Overview/SOX",
-      "fingerprint": "9d5ced785dc3a1aeebbf77f17358589bd9d7886b13883eb2c33e1dea11817568"
+      "fingerprint": "f95b44fee348ab2a1240313b499785176450f8586fdb45eefa796c48c385e987"
     },
     "Cboe|options": {
       "source": "Cboe",
@@ -96,5 +101,5 @@
       }
     }
   },
-  "updated_at_kst": "2026-09-29T12:33:28.544683+09:00"
+  "updated_at_kst": "2026-09-29T12:36:45.675122+09:00"
 }
