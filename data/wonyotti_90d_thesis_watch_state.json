@@ -1,27 +1,27 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-09-29T15:41:54+09:00",
+  "updated_at_kst": "2026-09-29T15:47:29+09:00",
   "crypto": {
     "derivatives": {
       "BTCUSDT": {
         "funding": 6e-06,
-        "open_interest": 519291368.0,
-        "open_interest_value": 4357420605.11112,
-        "turnover24h": 666018547011.0,
+        "open_interest": 520536088.0,
+        "open_interest_value": 4362977328.7896,
+        "turnover24h": 666019955699.0,
         "source": "Gate.io Futures API"
       },
       "ETHUSDT": {
-        "funding": 4.9e-05,
-        "open_interest": 81081064.0,
-        "open_interest_value": 2185945485.44,
-        "turnover24h": 181288950400.0,
+        "funding": 4.7e-05,
+        "open_interest": 81157396.0,
+        "open_interest_value": 2188027743.3788,
+        "turnover24h": 181289697110.0,
         "source": "Gate.io Futures API"
       },
       "SOLUSDT": {
-        "funding": -1.7e-05,
-        "open_interest": 6975012.0,
-        "open_interest_value": 830514678.84,
-        "turnover24h": 4428187966.0,
+        "funding": -1.4e-05,
+        "open_interest": 6970872.0,
+        "open_interest_value": 828557845.92,
+        "turnover24h": 4428197392.0,
         "source": "Gate.io Futures API"
       }
     },
@@ -39,7 +39,7 @@
         "2026-09-25",
         "2026-09-28"
       ],
-      "stable_obs": 11,
+      "stable_obs": 12,
       "trigger_ready": true
     },
     "eth_etf": {
@@ -56,7 +56,7 @@
         "2026-09-25",
         "2026-09-28"
       ],
-      "stable_obs": 11,
+      "stable_obs": 12,
       "trigger_ready": true
     }
   },
@@ -88,7 +88,7 @@
     "equity_investments_b": 99.0,
     "equity_commitments_b": 25.0,
     "customer_finance_language": true,
-    "checked_at_kst": "2026-09-29T15:42:39+09:00"
+    "checked_at_kst": "2026-09-29T15:48:13+09:00"
   },
   "news_seen": [
     "66e158e8ecb032f4a3cf5675",
@@ -103,7 +103,7 @@
     "nvidia_10q": true
   },
   "health_error_streaks": {
-    "crypto_prices": 2,
+    "crypto_prices": 3,
     "crypto_derivatives": 0,
     "btc_etf": 0,
     "eth_etf": 0,
