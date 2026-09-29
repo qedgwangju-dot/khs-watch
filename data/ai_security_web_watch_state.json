@@ -6,8 +6,8 @@
     "direct_official_items": 15,
     "errors": [],
     "material_items": 5,
-    "new_material_items": 0,
-    "raw_items": 124
+    "new_material_items": 1,
+    "raw_items": 126
   },
   "seen": {
     "027ea08934406a07812d619d": {
@@ -140,6 +140,16 @@
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQYVB0TUhEWXF3eXlPVmlDb1F4WGpidkNZanF3RllsQWh3SHN5dWhvSFlzSFY0VUJYeUh3ejZiRmtVRTBXclMyVFU4VHhKZ196bmNNWF9WeExJelVmalluN0JZWnZhZHVRaUhZalp0Rm1YckpZeHJFbTFqUzdyUW5mTVRraDc?oc=5",
       "vendor": "Meta"
     },
+    "d6eede707b458f6eda9066c7": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-09-29T01:16:21.323865+00:00",
+      "published_at": "2026-09-28T11:32:00+00:00",
+      "severity": 2,
+      "source": "WIRED",
+      "title": "OpenAI Pauses Training Its Most Powerful Models After Rogue Agents Target Government - WIRED",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPS0k5TC1vcnZBVEctaGxwT1VMVmtpQ2tWZzljUjBjOTlSazd1UUZtOFQ5Z0xLcVhtMXdBazNTWlhRZ3JySHBJS1ozdUhQQkpRdUhWVS1wcG5hWlFIVTZCa3dBXzFuU1BBZXh0WnF2Vm9tUFBRUmZ4R3VkcmZ0WGdNeUhXRS1icXNWV1hmQktNLUN6aTJQenZvTHBNUzh6akREMHBsS0pPVDhOQ1RSTUE?oc=5",
+      "vendor": "OpenAI"
+    },
     "e5ed957c5150347f8fb16488": {
       "category": "취약점·패치",
       "first_seen_at": "2026-09-26T21:36:52.418121+00:00",
@@ -151,5 +161,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-09-29T09:52:29+09:00"
+  "updated_at_kst": "2026-09-29T10:16:21+09:00"
 }
