@@ -116,14 +116,25 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/treasury_cta_squeeze_state.json
-          if git diff --cached --quiet; then
-            echo "상태 변경 없음"
-          else
+          cp data/treasury_cta_squeeze_state.json /tmp/treasury_cta_squeeze_state.json
+          for attempt in 1 2 3 4; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/treasury_cta_squeeze_state.json data/treasury_cta_squeeze_state.json
+            git add data/treasury_cta_squeeze_state.json
+            if git diff --cached --quiet; then
+              echo "상태 변경 없음"
+              exit 0
+            fi
             git commit -m "Update Treasury CTA squeeze state"
-            git pull --rebase origin main
-            git push
-          fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "CTA state push race detected; retry $attempt/4"
+            sleep $((attempt * 3))
+          done
+          echo "CTA 상태 저장을 4회 재시도했지만 실패했습니다." >&2
+          exit 1
 
       - name: Upload CTA verification artifacts
         if: always()
