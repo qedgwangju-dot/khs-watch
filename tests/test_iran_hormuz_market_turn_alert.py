@@ -250,8 +250,9 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         )]
         body = MODULE.build_physical_flow_alert_body("regional_export_recovery", news, None, current)
         self.assertIn("중동 수출     전쟁 후 최고 수준", body)
-        self.assertIn("12.8 Mbd", body)
-        self.assertIn("전쟁 전 완전 정상화는 아님", body)
+        self.assertIn("12.800 Mbd", body)
+        self.assertIn("잠정 선박추적치는 확인이 붙으며 수정될 수 있음", body)
+        self.assertIn("고정 숫자를 재사용하지 않고", body)
 
     def test_india_flow_body_uses_separate_baseline(self):
         current = dt.datetime(2026, 9, 29, 4, 0, tzinfo=dt.timezone.utc)
