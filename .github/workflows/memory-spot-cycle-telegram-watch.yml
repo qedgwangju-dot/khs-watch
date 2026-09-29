@@ -26,7 +26,9 @@ permissions:
 
 concurrency:
   group: memory-spot-cycle-telegram-watch
-  cancel-in-progress: true
+  # Never cancel a run after Telegram may have accepted a message but before
+  # the confirmed state is checkpointed.
+  cancel-in-progress: false
 
 jobs:
   monitor:
@@ -164,6 +166,24 @@ jobs:
       - name: Persist state only after confirmed Telegram delivery
         if: success() && hashFiles('out/memory_spot_cycle_watch_telegram.txt') != '' && hashFiles('out/memory_spot_cycle_watch_telegram_confirmed.json') != '' && hashFiles('out/memory_spot_cycle_watch_pending_state.json') != ''
         run: cp out/memory_spot_cycle_watch_pending_state.json data/memory_spot_cycle_watch_state.json
+
+      - name: Persist confirmed memory delivery receipt
+        if: success() && hashFiles('out/memory_spot_cycle_watch_telegram_confirmed.json') != '' && hashFiles('data/memory_spot_cycle_watch_state.json') != ''
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          state_path = pathlib.Path("data/memory_spot_cycle_watch_state.json")
+          receipt_path = pathlib.Path("out/memory_spot_cycle_watch_telegram_confirmed.json")
+          state = json.loads(state_path.read_text(encoding="utf-8"))
+          receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+          ids = receipt.get("message_ids") or []
+          state["last_successful_delivery_kst"] = receipt["confirmed_at_kst"]
+          state["telegram_message_ids"] = ids
+          state["telegram_message_id"] = ids[-1] if ids else None
+          state["bot_username"] = receipt["bot_username"]
+          state["delivery_receipt"] = receipt
+          state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
 
       - name: Persist Apple memory state after confirmed Telegram delivery
         if: success() && hashFiles('out/memory_spot_cycle_watch_telegram.txt') != '' && hashFiles('out/memory_spot_cycle_watch_telegram_confirmed.json') != '' && hashFiles('out/apple_memory_procurement_watch_pending_state.json') != ''
