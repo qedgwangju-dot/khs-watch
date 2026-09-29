@@ -57,6 +57,26 @@ def fmt_clock(ts: float | None) -> str:
     return dt.datetime.fromtimestamp(ts, KST).strftime("%H:%M:%S")
 
 
+def market_clock_epoch(value: Any, fallback_ts: float | None = None) -> float | None:
+    digits = "".join(ch for ch in str(value or "") if ch.isdigit())
+    if len(digits) < 4:
+        return fallback_ts
+    digits = (digits + "000000")[:6]
+    try:
+        now = dt.datetime.now(KST)
+        point = dt.datetime(now.year, now.month, now.day,
+                            int(digits[:2]), int(digits[2:4]), int(digits[4:6]),
+                            tzinfo=KST)
+        ts = point.timestamp()
+        # 장중 API 시각이 비정상적으로 미래/과거면 조회시각을 사용한다.
+        ref = fallback_ts if fallback_ts is not None else time.time()
+        if abs(ts - ref) > 6 * 60 * 60:
+            return fallback_ts
+        return ts
+    except Exception:
+        return fallback_ts
+
+
 def fmt_duration(seconds: float) -> str:
     seconds = max(0, int(seconds))
     h, rem = divmod(seconds, 3600)
@@ -152,7 +172,9 @@ def investor_current(token: str, market: str, upcode: str) -> dict[str, Any] | N
     row = _latest_time_row(d.get("t1602OutBlock1"))
     if not row:
         return None
-    return {"time": row.get("time"), "개인": fnum(row.get("sv_08")),
+    fetched_ts = time.time()
+    return {"time": row.get("time"), "sample_ts": market_clock_epoch(row.get("time"), fetched_ts),
+            "개인": fnum(row.get("sv_08")),
             "외국인": fnum(row.get("sv_17")), "기관": fnum(row.get("sv_18"))}
 
 
@@ -194,6 +216,7 @@ def program_current(token: str) -> dict[str, Any] | None:
         "표본시차초": (max(fetch_times) - min(fetch_times)) if len(fetch_times) >= 2 else None,
         "차익비차익합": component_sum,
         "전체대비차이": identity_gap,
+        "sample_ts": ((min(fetch_times) + max(fetch_times)) / 2.0) if fetch_times else time.time(),
     }
 
 
@@ -486,22 +509,55 @@ class Watch:
             return max(prior, key=lambda x: float(x.get("ts", 0))) if prior else None
         return min(rows, key=lambda x: abs(float(x.get("ts", 0)) - ts))
 
+    def _flow_channel_near(self, ts: float, channel: str) -> tuple[dict[str, Any], float] | None:
+        candidates: list[tuple[dict[str, Any], float]] = []
+        for snap in self.flows:
+            block = snap.get(channel)
+            if not isinstance(block, dict):
+                continue
+            sample_ts = fnum(block.get("sample_ts"))
+            if sample_ts is None:
+                sample_ts = fnum(snap.get("ts"))
+            if sample_ts is None or sample_ts > ts:
+                continue
+            candidates.append((block, sample_ts))
+        return max(candidates, key=lambda x: x[1]) if candidates else None
+
     def attribution(self, start_ts: float, end_ts: float) -> dict[str, Any]:
-        a = self._flow_near(start_ts, True); b = self._flow_near(end_ts, True)
-        if not a or not b:
-            return {"available": False, "reason": "사건 시작 또는 종료 이전 수급 스냅샷 없음"}
-        start_gap = max(0.0, start_ts - float(a.get("ts", 0)))
-        end_gap = max(0.0, end_ts - float(b.get("ts", 0)))
+        spot_a = self._flow_channel_near(start_ts, "현물")
+        spot_b = self._flow_channel_near(end_ts, "현물")
+        fut_a = self._flow_channel_near(start_ts, "선물")
+        fut_b = self._flow_channel_near(end_ts, "선물")
+        pgm_a = self._flow_channel_near(start_ts, "프로그램")
+        pgm_b = self._flow_channel_near(end_ts, "프로그램")
+        if not spot_a or not spot_b or not fut_a or not fut_b:
+            return {"available": False, "reason": "사건 시작 또는 종료 이전 현물·선물 수급 스냅샷 없음"}
+
+        spot_start_gap = max(0.0, start_ts - spot_a[1])
+        spot_end_gap = max(0.0, end_ts - spot_b[1])
+        fut_start_gap = max(0.0, start_ts - fut_a[1])
+        fut_end_gap = max(0.0, end_ts - fut_b[1])
+        start_gap = max(spot_start_gap, fut_start_gap)
+        end_gap = max(spot_end_gap, fut_end_gap)
         if start_gap > MAX_FLOW_ALIGNMENT_SEC or end_gap > MAX_FLOW_ALIGNMENT_SEC:
             return {
                 "available": False,
-                "reason": f"수급 기준점 시간 정렬 초과(시작 {start_gap:.1f}초, 종료 {end_gap:.1f}초; 허용 {MAX_FLOW_ALIGNMENT_SEC}초)",
+                "reason": f"현물·선물 기준점 시간 정렬 초과(시작 최대 {start_gap:.1f}초, 종료 최대 {end_gap:.1f}초; 허용 {MAX_FLOW_ALIGNMENT_SEC}초)",
                 "start_alignment_sec": start_gap,
                 "end_alignment_sec": end_gap,
             }
-        spot = _actor_delta(a.get("현물"), b.get("현물"))
-        fut = _actor_delta(a.get("선물"), b.get("선물"))
-        pgm = _program_delta(a.get("프로그램"), b.get("프로그램"))
+
+        spot = _actor_delta(spot_a[0], spot_b[0])
+        fut = _actor_delta(fut_a[0], fut_b[0])
+        pgm_start_gap = max(0.0, start_ts - pgm_a[1]) if pgm_a else None
+        pgm_end_gap = max(0.0, end_ts - pgm_b[1]) if pgm_b else None
+        pgm_aligned = bool(
+            pgm_a and pgm_b
+            and pgm_start_gap is not None and pgm_end_gap is not None
+            and pgm_start_gap <= MAX_FLOW_ALIGNMENT_SEC
+            and pgm_end_gap <= MAX_FLOW_ALIGNMENT_SEC
+        )
+        pgm = _program_delta(pgm_a[0], pgm_b[0]) if pgm_aligned else {"전체": None, "차익": None, "비차익": None, "베이시스": None}
         def dominant_seller(block: dict[str, float | None]) -> tuple[str | None, float | None]:
             sellers = [(actor, val) for actor, val in block.items() if val is not None and float(val) < 0]
             return min(sellers, key=lambda x: float(x[1])) if sellers else (None, None)
@@ -513,14 +569,13 @@ class Watch:
                          and float(spot[actor]) < 0 and float(fut[actor]) < 0]
         pgm_neg = pgm.get("전체") is not None and float(pgm["전체"]) < 0
         pgm_spans = [
-            fnum(((snap.get("프로그램") or {}).get("표본시차초")))
-            for snap in (a, b)
+            fnum(block.get("표본시차초"))
+            for block in ((pgm_a[0] if pgm_a else {}), (pgm_b[0] if pgm_b else {}))
         ]
         pgm_spans = [x for x in pgm_spans if x is not None]
         max_pgm_span = max(pgm_spans) if pgm_spans else None
         pgm_identity_checks = []
-        for snap in (a, b):
-            p = snap.get("프로그램") or {}
+        for p in ((pgm_a[0] if pgm_a else {}), (pgm_b[0] if pgm_b else {})):
             gap = fnum(p.get("전체대비차이"))
             total = fnum(p.get("전체"))
             if gap is None or total is None:
@@ -530,7 +585,8 @@ class Watch:
         max_identity_gap = max((x[0] for x in pgm_identity_checks), default=None)
         identity_quality = bool(pgm_identity_checks and all(gap <= tol for gap, tol in pgm_identity_checks))
         program_quality = bool(
-            max_pgm_span is not None
+            pgm_aligned
+            and max_pgm_span is not None
             and max_pgm_span <= MAX_PROGRAM_SNAPSHOT_SKEW_SEC
             and identity_quality
         )
@@ -568,13 +624,16 @@ class Watch:
                 pgm_kind = "프로그램 매수"
             else:
                 pgm_kind = "중립"
-        return {"available": True, "start_ts": a.get("ts"), "end_ts": b.get("ts"),
+        return {"available": True, "start_ts": start_ts, "end_ts": end_ts,
                 "spot": spot, "futures": fut, "program": pgm,
                 "spot_leader": spot_leader, "spot_leader_value": spot_leader_val,
                 "futures_leader": fut_leader, "futures_leader_value": fut_leader_val,
                 "cross_sellers": cross_sellers,
                 "verdict": verdict, "confidence": confidence, "program_kind": pgm_kind,
                 "start_alignment_sec": start_gap, "end_alignment_sec": end_gap,
+                "spot_start_alignment_sec": spot_start_gap, "spot_end_alignment_sec": spot_end_gap,
+                "futures_start_alignment_sec": fut_start_gap, "futures_end_alignment_sec": fut_end_gap,
+                "program_start_alignment_sec": pgm_start_gap, "program_end_alignment_sec": pgm_end_gap,
                 "program_sample_span_sec": max_pgm_span,
                 "program_identity_gap_max": max_identity_gap,
                 "program_quality": program_quality}
@@ -686,26 +745,27 @@ class Watch:
             if not hit:
                 return
 
-            start_flow = self._flow_near(float(info["peak_ts"]), True)
-            if not start_flow:
+            start_ts = float(info["peak_ts"])
+            start_channels = {
+                key: self._flow_channel_near(start_ts, key)
+                for key in ("현물", "선물", "프로그램")
+            }
+            if any(start_channels[key] is None for key in ("현물", "선물", "프로그램")):
                 # 재기동 전에 시작된 사건은 정확한 시작 수급이 없으므로 원인 알림을 소급 생성하지 않는다.
                 self.raw["suppressed_historical_trigger"] = {
                     "peak_ts": info["peak_ts"], "peak": info["peak"],
                     "cur_ts": info["cur_ts"], "cur": info["cur"],
-                    "drop": info["drop"], "reason": "no flow snapshot at/before event start",
+                    "drop": info["drop"], "reason": "missing channel snapshot at/before event start",
                 }
                 return
-            if any(start_flow.get(k) is None for k in ("현물", "선물", "프로그램")):
-                self.raw["suppressed_incomplete_flow_trigger"] = {
-                    "peak_ts": info["peak_ts"], "reason": "incomplete start flow snapshot",
-                }
-                return
-            start_gap = float(info["peak_ts"]) - float(start_flow.get("ts", 0))
-            if start_gap > MAX_FLOW_ALIGNMENT_SEC:
+            channel_gaps = {
+                key: start_ts - float(start_channels[key][1])
+                for key in ("현물", "선물", "프로그램")
+            }
+            if any(gap > MAX_FLOW_ALIGNMENT_SEC for gap in channel_gaps.values()):
                 self.raw["suppressed_stale_flow_trigger"] = {
-                    "peak_ts": info["peak_ts"], "flow_ts": start_flow.get("ts"),
-                    "alignment_sec": start_gap,
-                    "reason": f"start flow alignment exceeds {MAX_FLOW_ALIGNMENT_SEC}s",
+                    "peak_ts": info["peak_ts"], "channel_alignment_sec": channel_gaps,
+                    "reason": f"start channel alignment exceeds {MAX_FLOW_ALIGNMENT_SEC}s",
                 }
                 return
 
