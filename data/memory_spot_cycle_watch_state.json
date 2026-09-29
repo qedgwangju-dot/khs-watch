@@ -175,36 +175,36 @@
       "source": "TrendForce",
       "published_kst": "2026-09-29T09:00:00+09:00",
       "first_seen_kst": "2026-09-29T19:39:18+09:00"
+    },
+    "066a84551ec2844cc1f8095a": {
+      "title": "“내년 HBM 평균판매가격 121% 오른다…공급 부족 현상” - mk.co.kr",
+      "source": "mk.co.kr",
+      "published_kst": "2026-09-29T19:02:42+09:00",
+      "first_seen_kst": "2026-09-29T19:41:06+09:00"
+    },
+    "0db3f3b380968b216086b9ce": {
+      "title": "“내년 HBM 평균판매가 121% 오른다… AI 수요에 공급 부족 지속” - 조선비즈 - biz.chosun.com",
+      "source": "biz.chosun.com",
+      "published_kst": "2026-09-29T18:14:00+09:00",
+      "first_seen_kst": "2026-09-29T19:41:06+09:00"
     }
   },
-  "updated_at_kst": "2026-09-29T19:39:18+09:00",
+  "updated_at_kst": "2026-09-29T19:41:06+09:00",
   "last_scan_count": 11,
-  "last_new_count": 2,
-  "hbm_market_pricing_track_version": 1,
+  "last_new_count": 0,
+  "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 1,
   "hbm_market_pricing": {
     "period": "2027",
-    "blended_asp_yoy_pct": 121,
-    "eight_hi_premium_min_pct": 10,
-    "eight_hi_premium_max_pct": 20,
+    "blended_asp_yoy_pct": 121.0,
+    "eight_hi_premium_min_pct": 10.0,
+    "eight_hi_premium_max_pct": 20.0,
     "mainstream_layers": 8,
-    "source": "한국경제TV·TrendForce 인용",
-    "source_url": "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202609290194&t=NN",
+    "source": "TrendForce",
+    "source_url": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
     "research_reference_url": "https://www.trendforce.com/research/download/RP260922FJ3",
-    "as_of": "2026-09-29"
-  },
-  "last_successful_delivery_kst": "2026-09-29T19:39:21+09:00",
-  "telegram_message_ids": [
-    171
-  ],
-  "telegram_message_id": 171,
-  "bot_username": "khs88798879887988798879_bot",
-  "delivery_receipt": {
-    "status": "confirmed",
-    "bot_username": "khs88798879887988798879_bot",
-    "message_ids": [
-      171
-    ],
-    "confirmed_at_kst": "2026-09-29T19:39:21+09:00"
+    "as_of": "2026-09-29",
+    "secondary_source_url": "https://biz.chosun.com/it-science/ict/2026/09/29/4EV5Z6JAR5GCPG7DR7ZBBFMJUQ/",
+    "source_rank": 3
   }
 }
