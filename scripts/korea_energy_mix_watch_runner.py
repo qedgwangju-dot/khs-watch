@@ -121,6 +121,16 @@ def semantic_event_level(row: dict[str, Any]) -> int:
     if key == "12th-plan|nuclear-opinion":
         return 0
 
+    # 2030 재생에너지 100GW 목표는 5월 공식 계획에서 이미 확정된 기준선이다.
+    # 목표 재인용만으로는 재알림하지 않고, 실행 제도·수치가 실제 바뀐 경우만 통과시킨다.
+    if "100gw" in title and "재생" in title and key.startswith("12th-plan|renewable-capacity|"):
+        change_markers = (
+            "전력망 혁신대책", "상향", "하향", "변경", "확정", "의결",
+            "계통관리변전소", "접속권", "회수", "비증설", "유연접속",
+        )
+        if not any(marker in title for marker in change_markers):
+            return 0
+
     if key in {"12th-plan|nuclear-general", "12th-plan|renewable-general"}:
         material_markers = (
             "확정", "의결", "정부안", "최종안", "공청회", "공론화", "숙의",
