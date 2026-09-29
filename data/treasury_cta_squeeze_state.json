@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-09-29T14:36:18+09:00",
+  "last_checked_kst": "2026-09-30T01:59:46+09:00",
   "media_id": null,
   "cftc_date": "September 22, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-09-29T14:36:18+09:00",
+    "checked_kst": "2026-09-30T01:59:46+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "September 22, 2026",
@@ -65,10 +65,10 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 104.328125,
-        "settlement": 104.328125,
-        "change": -0.15625,
-        "pct_change": -0.14954389113204236,
+        "last": 104.25,
+        "settlement": 104.25,
+        "change": -0.234375,
+        "pct_change": -0.22431583669807464,
         "open_interest": 5407726,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 22, 2026)",
         "volume": 0,
@@ -83,10 +83,10 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 103.65625,
-        "settlement": 103.65625,
-        "change": -0.09375,
-        "pct_change": -0.09036144578312699,
+        "last": 103.09375,
+        "settlement": 103.09375,
+        "change": -0.65625,
+        "pct_change": -0.6325301204819223,
         "open_interest": 1887864,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 22, 2026)",
         "volume": 0,
@@ -101,10 +101,10 @@
         "display_symbol": "WN/UB",
         "ticker": "UB=F",
         "month": "",
-        "last": 104.8125,
-        "settlement": 104.8125,
-        "change": -0.09375,
-        "pct_change": -0.08936550491510653,
+        "last": 104.09375,
+        "settlement": 104.09375,
+        "change": -0.8125,
+        "pct_change": -0.7745010425975529,
         "open_interest": 2476197,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 22, 2026)",
         "volume": 0,
@@ -125,19 +125,19 @@
     },
     "repo": {
       "SOFR": {
-        "date": "2026-09-25",
+        "date": "2026-09-28",
         "rate": 3.9,
-        "volume_bn": 2914
+        "volume_bn": 2964
       },
       "BGCR": {
-        "date": "2026-09-25",
+        "date": "2026-09-28",
         "rate": 3.89,
-        "volume_bn": 1231
+        "volume_bn": 1220
       },
       "TGCR": {
-        "date": "2026-09-25",
+        "date": "2026-09-28",
         "rate": 3.89,
-        "volume_bn": 1191
+        "volume_bn": 1172
       }
     },
     "format_revision": 10,
@@ -156,14 +156,14 @@
         "scope": "CFTC TFF NASDAQ MINI 전체시장 주간"
       },
       "nq_price": {
-        "price": 30889.25,
-        "previous_close": 30766.75,
-        "pct_change": 0.3981571014163017,
-        "change_points": 122.5,
+        "price": 30566.25,
+        "previous_close": 30889.25,
+        "pct_change": -1.0456712286636936,
+        "change_points": -323.0,
         "source": "CME Daily Bulletin PG11 official settlement",
         "official": true,
         "basis": "previous trade date settlement",
-        "trade_date": "2026-09-25",
+        "trade_date": "2026-09-28",
         "month": "DEC26",
         "url": "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf"
       },
@@ -200,9 +200,9 @@
       "nq_fuel": false,
       "nq_history_ready": true,
       "nq_history_fresh": true,
-      "nq_price_up": true,
+      "nq_price_up": false,
       "nq_price_official": true,
-      "nq_price_fresh": false,
+      "nq_price_fresh": true,
       "nq_price_expected_session": "2026-09-28",
       "nq_oi_down": true,
       "nq_short_cover": false,
@@ -224,7 +224,8 @@
     "stage": 0,
     "oi_scope_fixes": [
       "ZN OI 10→5,407,726로 동일 범위 교체",
-      "ZB OI 10→1,887,864로 동일 범위 교체"
+      "ZB OI 10→1,887,864로 동일 범위 교체",
+      "UB OI 10→2,476,197로 동일 범위 교체"
     ]
   },
   "last_fomc_eve_report": "2026-09-16",
