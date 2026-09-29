@@ -78,6 +78,16 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertIn("스택당 비트 -33.3%", text)
         self.assertIn("+25.0~36.4%", text)
 
+    def test_market_pricing_republisher_is_typed_not_generic(self):
+        item = {
+            "title": "내년 HBM 평균판매가 121% 오른다… AI 수요에 공급 부족 지속",
+            "description": "TrendForce says 2027 HBM Blended ASP rises 121% and 8-Hi leads shipments.",
+            "source": "조선비즈",
+            "link": "https://example.com/repub",
+            "published_kst": "2026-09-29T18:14:00+09:00",
+        }
+        self.assertIsNotNone(w._extract_hbm_market_pricing(item))
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
