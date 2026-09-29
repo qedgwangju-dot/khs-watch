@@ -304,6 +304,30 @@ def _cross_raw() -> dict:
     return out
 
 
+def _previous_business_day(day: date) -> date:
+    d = day - timedelta(days=1)
+    while d.weekday() >= 5:
+        d -= timedelta(days=1)
+    return d
+
+
+def _latest_completed_us_session_date() -> date:
+    """Expected latest completed U.S. regular-session trade date.
+
+    This is deliberately stricter than CME bulletin publication timing. If the
+    official bulletin has not caught up yet, the confirmation gate stays closed.
+    """
+    now_ny = datetime.now(NY)
+    if now_ny.weekday() >= 5:
+        d = now_ny.date()
+        while d.weekday() >= 5:
+            d -= timedelta(days=1)
+        return d
+    if now_ny.time() >= time(16, 15):
+        return now_ny.date()
+    return _previous_business_day(now_ny.date())
+
+
 def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
     raw = _cross_raw()
     nq = raw.get("nq_cftc") or {}
@@ -332,11 +356,23 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
 
     nq_price_up = (price.get("pct_change") is not None and float(price["pct_change"]) > 0.20)
     nq_price_official = bool(price.get("official"))
+    expected_session = _latest_completed_us_session_date().isoformat()
+    price_trade_date = str(price.get("trade_date") or "")
+    # Intraday CME quote API has no settlement trade_date and is considered fresh.
+    # Daily Bulletin fallback must match the latest completed U.S. session exactly.
+    nq_price_fresh = bool(
+        nq_price_official
+        and (
+            not price_trade_date
+            or price_trade_date == expected_session
+        )
+    )
     nq_oi_down = (nq.get("open_interest_wow") is not None and int(nq["open_interest_wow"]) < 0)
     nq_short_cover = (nq.get("leveraged_net_wow") is not None and int(nq["leveraged_net_wow"]) > 0)
     # "Confirmed" is fail-closed: official CME price + fresh same-week CFTC history required.
     nq_confirmed = (
         nq_price_official
+        and nq_price_fresh
         and nq_history_ready
         and nq_history_fresh
         and nq_price_up
@@ -384,6 +420,8 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         "nq_history_fresh": nq_history_fresh,
         "nq_price_up": nq_price_up,
         "nq_price_official": nq_price_official,
+        "nq_price_fresh": nq_price_fresh,
+        "nq_price_expected_session": expected_session,
         "nq_oi_down": nq_oi_down,
         "nq_short_cover": nq_short_cover,
         "nq_confirmed": nq_confirmed,
@@ -439,7 +477,7 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, compact: bool = 
         f"• NQ 순숏 명목금액: {_nq_notional_krw(nq, price, fx)}"
         " (NQ 지수×$20×순계약수×환율, 실제 증거금·손익 아님)\n"
         "• 확정은 ZN 가격↑·동일범위 OI↓와 NQ 가격↑·CFTC 주간 OI↓·NQ 순숏 축소가 함께 붙을 때만 합니다.\n"
-        "※ CFTC OI·포지션은 주간 후행자료입니다. CME 공식 NQ 가격과도 같은 시점 자료가 아니므로 ‘동시 장중 신호’로 과장하지 않습니다.\n"
+        "※ CFTC OI·포지션은 주간 후행자료입니다. CME 공식 NQ 결제값도 최신 완료 미국 거래일과 일치할 때만 확인 신호에 사용합니다. 시점이 다르면 자동으로 확정 판정을 막습니다.\n"
     )
 
 
