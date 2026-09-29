@@ -48,7 +48,8 @@ def koreanize_segment(segment: str, seen: set[str] | None = None) -> str:
     out = segment
     seen = seen if seen is not None else set()
     for source, replacement in TERM_MAP:
-        if source in seen:
+        seen_key = source.casefold()
+        if seen_key in seen:
             continue
         # Keep the original identifier and add the Korean gloss only once per alert.
         # If the first visible occurrence already has a parenthetical explanation,
@@ -56,12 +57,12 @@ def koreanize_segment(segment: str, seen: set[str] | None = None) -> str:
         existing = re.search(re.escape(source) + r"\s*\(", out)
         first = re.search(re.escape(source), out)
         if first and existing and existing.start() == first.start():
-            seen.add(source)
+            seen.add(seen_key)
             continue
         pattern = re.compile(re.escape(source) + r"(?!\s*\()")
         out, count = pattern.subn(replacement, out, count=1)
         if count:
-            seen.add(source)
+            seen.add(seen_key)
     return out
 
 
