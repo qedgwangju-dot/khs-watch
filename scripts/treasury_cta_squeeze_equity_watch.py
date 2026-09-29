@@ -182,12 +182,16 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
     )
 
     pctile = hist.get("short_extreme_percentile_3y")
-    nq_extreme = (
-        isinstance(pctile, (int, float)) and float(pctile) >= 90.0
-    ) or (
-        (nq.get("leveraged_net") or 0) < 0
-        and float(nq.get("short_share_oi_pct") or 0) >= 25.0
-    )
+    if isinstance(pctile, (int, float)):
+        # When official three-year history is available, it outranks a simple
+        # one-week short/OI threshold. This prevents a large absolute short from
+        # being mislabeled as historically extreme.
+        nq_extreme = float(pctile) >= 90.0
+    else:
+        nq_extreme = (
+            (nq.get("leveraged_net") or 0) < 0
+            and float(nq.get("short_share_oi_pct") or 0) >= 25.0
+        )
 
     nq_price_up = (price.get("pct_change") is not None and float(price["pct_change"]) > 0.20)
     nq_oi_down = (nq.get("open_interest_wow") is not None and int(nq["open_interest_wow"]) < 0)
@@ -273,7 +277,7 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, compact: bool = 
         f"• 판정: <b>{cross['label']}</b>\n"
         f"• 10Y Leveraged Funds 순포지션 {int(treasury10.get('leveraged_net') or 0):+,}계약\n"
         f"• NQ E-mini Leveraged Funds 순포지션 {int(nq.get('leveraged_net') or 0):+,}계약"
-        f" · 3년 숏 극단 {pctile_text} · 최대 순숏 대비 청산 {unwind_text}\n"
+        f" · 3년 순숏 {pctile_text} · 최대 순숏 대비 청산 {unwind_text}\n"
         f"• NQ {nq_pct_text} ({price.get('source') or '가격 소스 확인 불가'})"
         f" · CFTC 동일범위 OI 주간 {int(nq.get('open_interest_wow') or 0):+,}계약"
         f" · 순포지션 주간 {int(nq.get('leveraged_net_wow') or 0):+,}계약\n"
