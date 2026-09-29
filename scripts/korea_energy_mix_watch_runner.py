@@ -148,6 +148,18 @@ def resolve_article_url(url: str) -> str:
     url = str(url or "").strip()
     if not url or "news.google.com" not in url:
         return url
+
+    # googlenewsdecoder 0.2.x API (2026-09 current stable)
+    try:
+        from googlenewsdecoder import gnewsdecoder
+
+        result = gnewsdecoder(url, interval=0.2, timeout=15.0)
+        if isinstance(result, dict) and result.get("success") and result.get("decoded_url"):
+            return str(result["decoded_url"]).strip()
+    except Exception as exc:  # noqa: BLE001
+        print(f"google_news_decode_v2_failed={type(exc).__name__}")
+
+    # Backward-compatible fallback for older package versions.
     try:
         from googlenewsdecoder import new_decoderv1
 
@@ -155,7 +167,8 @@ def resolve_article_url(url: str) -> str:
         if isinstance(result, dict) and result.get("status") and result.get("decoded_url"):
             return str(result["decoded_url"]).strip()
     except Exception as exc:  # noqa: BLE001
-        print(f"google_news_decode_failed={type(exc).__name__}")
+        print(f"google_news_decode_legacy_failed={type(exc).__name__}")
+
     try:
         response = requests.get(url, headers=_HEADERS, timeout=15, allow_redirects=True)
         response.raise_for_status()
