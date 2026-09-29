@@ -785,11 +785,15 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         for meta in seen.values()
         if isinstance(meta, dict)
     }
-    new_items = [
-        x for x in items
-        if x["fingerprint"] not in seen
-        and _normalize_title(x["title"]) not in seen_titles
-    ]
+    new_items = []
+    for x in items:
+        if x["fingerprint"] in seen or _normalize_title(x["title"]) in seen_titles:
+            continue
+        # Market-pricing republishers are not separate alerts. They feed the
+        # typed numeric state above; only an actual numeric/state change alerts.
+        if _extract_hbm_market_pricing(x):
+            continue
+        new_items.append(x)
     force_notify = os.getenv("FORCE_NOTIFY", "").strip().lower() in {"1", "true", "yes"}
     if force_notify:
         report_items = items[:5]
