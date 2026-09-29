@@ -918,6 +918,28 @@ def public_spot_quotes(raw, checked):
 
 def comparison(old, new):
     a, b = old['value'], new['value']
+    if new['axis'] == 'hbm_market_pricing':
+        reasons = []
+        av, bv = a.get('blended_asp_yoy_pct'), b.get('blended_asp_yoy_pct')
+        if av is not None and bv is not None and abs(float(bv) - float(av)) >= 10:
+            reasons.append(f"시장 Blended ASP 전망 {float(av):+.0f}%→{float(bv):+.0f}% YoY ({float(bv)-float(av):+.0f}%p)")
+        elif av is None and bv is not None:
+            reasons.append(f"시장 Blended ASP 전망 {float(bv):+.0f}% YoY 신규 확인")
+        for field, label in (
+            ('eight_hi_premium_min_pct','8단 Gb당 프리미엄 하단'),
+            ('eight_hi_premium_max_pct','8단 Gb당 프리미엄 상단'),
+        ):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and abs(float(bv) - float(av)) >= 5:
+                reasons.append(f"{label} {float(av):.0f}%→{float(bv):.0f}%")
+            elif av is None and bv is not None:
+                reasons.append(f"{label} {float(bv):.0f}% 신규 확인")
+        av, bv = a.get('mainstream_layers'), b.get('mainstream_layers')
+        if av is not None and bv is not None and int(av) != int(bv):
+            reasons.append(f"시장 주류 적층 {int(av)}단→{int(bv)}단")
+        elif av is None and bv is not None:
+            reasons.append(f"시장 주류 적층 {int(bv)}단 신규 확인")
+        return reasons
     if new['axis'] == 'foundry_base_die_allocation':
         reasons = []
         aw, bw = a.get('total_capacity_wpm'), b.get('total_capacity_wpm')
@@ -1061,7 +1083,7 @@ def update_state(state, records, now, seeds=None):
         if r['as_of'][:10] > now.date().isoformat():
             continue
         grouped.setdefault(r['key'], []).append(r)
-    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm'}
+    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'hbm_market_pricing'}
     for key, rows in grouped.items():
         rows.sort(key=lambda x: (x['as_of'], RANK.get(x['evidence'], 0)))
         prior = state['latest'].get(key) or state['last_notified'].get(key)
@@ -1117,6 +1139,7 @@ def render(change, rate=None):
              'carrier_cleaning': 'HBM 유리 지지판 세정 처리량', 'fab_stage': 'P5 Fab1 공급 일정',
              'malaysia_hsk10_export': '한국→말레이시아 HBM 관련 HSK10 수출',
              'hbm_revenue_estimate': '기관 HBM 분기 매출 추정 변화',
+             'hbm_market_pricing': '시장 HBM 평균판매단가·8단/12단 구조 변화',
              'postprocess_capex': 'HBM 후공정 설비투자·병목 변화',
              'postprocess_order': 'HBM 후공정 장비 수주 변화',
              'postprocess_stage': 'HBM 후공정 고객 검증·양산 단계 변화',
@@ -1193,6 +1216,15 @@ def render(change, rate=None):
                 'mass_production':'양산'
             }
             return labels.get(v.get('stage'), v.get('stage',''))
+        if record['axis'] == 'hbm_market_pricing':
+            parts = []
+            if v.get('blended_asp_yoy_pct') is not None:
+                parts.append(f"2027 Blended ASP {v['blended_asp_yoy_pct']:+.0f}% YoY")
+            if v.get('mainstream_layers') is not None:
+                parts.append(f"주류 {int(v['mainstream_layers'])}단")
+            if v.get('eight_hi_premium_min_pct') is not None:
+                parts.append(f"8단 Gb당 프리미엄 {v['eight_hi_premium_min_pct']:.0f}~{v['eight_hi_premium_max_pct']:.0f}%")
+            return " / ".join(parts)
         if record['axis'] == 'hbm_revenue_estimate':
             amount = v.get('estimate_usd') or 0
             text = f"분기 추정 {amount/1e9:.1f}십억달러"
@@ -1253,6 +1285,17 @@ def render(change, rate=None):
         lines.append('• 기사 관심종목이 아니라 고객·금액이 확인된 실제 수주만 상태값으로 올립니다.')
     if r['axis'] == 'postprocess_stage':
         lines.append('• 파일럿→품질검증→정식 발주→장비 반입→양산의 단계 상승만 신규 상태로 봅니다.')
+    if r['axis'] == 'hbm_market_pricing':
+        v = r['value']
+        if v.get('stack_bit_change_pct') is not None:
+            lines.append(f"• 12단→8단 동일 스택 수 가정: 스택당 비트 {v['stack_bit_change_pct']:+.1f}%")
+        if v.get('gpu_growth_break_even_min_pct') is not None:
+            lines.append(
+                f"• 8단 Gb당 프리미엄을 반영하면 기존 12단 매출 상쇄에 필요한 GPU·ASIC 출하 증가는 "
+                f"약 {v['gpu_growth_break_even_min_pct']:.1f}~{v['gpu_growth_break_even_max_pct']:.1f}%"
+            )
+        lines.append("• 시장 전체 TrendForce 전망이며 삼성전자·SK하이닉스·Micron 개별 ASP와 합치지 않습니다.")
+        lines.append("• +121%는 2026년=100일 때 2027년 가격 레벨 221을 뜻하며, 계약가 범위와 Blended ASP는 별도 상태입니다.")
     if r['axis'] == 'hbm_revenue_estimate':
         method_labels = {'regression_proxy':'수출 회귀식 대용지표', 'formal_forecast':'기관 공식 전망', 'reported_estimate':'보도 추정'}
         lines.append('• 성격: ' + method_labels.get(r['value'].get('method'), r['value'].get('method','')) + '이며 회사 확정 매출이 아닙니다.')
