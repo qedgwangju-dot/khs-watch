@@ -228,6 +228,19 @@ def _context_numbers(flags: dict[str, bool], records: list[dict]) -> list[str]:
     return lines[:5]
 
 
+def _alaska_kumkang_context() -> list[str]:
+    return [
+        "<b>🇰🇷 금강공업 강관 후보 추적</b>",
+        "• 2026-09-28 데이터투자: API 5L <b>5L-0864</b> · HFW·PSL1 기준 최대 <b>X70</b> 인증범위 확인",
+        "• <b>Alaska LNG 공급계약·벤더 승인·수주 확정은 아님</b> · 현재는 규격 연관성 기반 후보 단계",
+        "• 금강공업 공식 공개 생산범위 <b>1/2~8인치 HFW</b> ↔ Phase One 주배관 <b>42인치·약 70만톤 API 5L X70</b>",
+        "• Glenfarne 공식: Corinth Pipeworks+Europipe가 강관 약 <b>2/3 예비 공급</b> · POSCO International은 강관용 강재 일부 공급",
+        "• 공개 API 인증서 표시 유효기간은 <b>2026-06-02까지</b> · 최신 API Active 상태 재확인 필요",
+        "• 승격 조건: <b>API Active + vendor approval/공급계약 + 물량·규격·납기</b> 또는 32~42인치 대구경 생산·협력 구조 공식 확인",
+        '• 근거: <a href="https://m.datatooza.com/article/202609281204524261e80ea65769_80">데이터투자</a> · <a href="https://www.kumkangkind.com/eng/company/network_eonyang.asp">금강공업 언양공장</a> · <a href="https://glenfarnegroup.com/glenfarne-announces-major-phase-one-alaska-lng-milestones-with-construction-line-pipe-supply-and-in-state-gas-agreements/">Glenfarne</a>',
+    ]
+
+
 def _next_checks(flags: dict[str, bool]) -> list[str]:
     checks: list[str] = []
     if flags["pyro"]:
@@ -246,7 +259,10 @@ def _next_checks(flags: dict[str, bool]) -> list[str]:
     if flags["ercot"]:
         checks += ["계통연계 승인·전원 인가·실제 가동"]
     if flags["alaska"]:
-        checks += ["SPA·FID·금융종결·한국 투자액"]
+        checks += [
+            "SPA·FID·금융종결·한국 투자액",
+            "금강공업 API Active·vendor approval/공급계약·대구경 생산/협력 여부",
+        ]
     out: list[str] = []
     for item in checks:
         if item not in out:
@@ -306,6 +322,9 @@ def _compact_generic(text: str, core, lookup_time: str) -> str | None:
     context = _context_numbers(flags, records)
     if context:
         parts += ["<b>📌 이번 변화 핵심</b>"] + context + [""]
+
+    if flags["alaska"]:
+        parts += _alaska_kumkang_context() + [""]
 
     baseline = _current_state_block(flags)
     if baseline:
