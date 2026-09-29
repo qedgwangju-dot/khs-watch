@@ -96,6 +96,26 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertIn("스택당 비트 -33.3%", text)
         self.assertIn("+25.0~36.4%", text)
 
+    def test_partial_121pct_republisher_without_trendforce_name_is_suppressed(self):
+        item = {
+            "title": "“내년 HBM 가격 121% 오른다…AI發 공급부족 지속”",
+            "description": "",
+            "source": "v.daum.net",
+            "link": "https://example.com/repub",
+            "published_kst": "2026-09-29T19:03:13+09:00",
+        }
+        self.assertTrue(w._is_hbm_market_pricing_republisher(item))
+
+    def test_partial_average_price_republisher_is_suppressed(self):
+        item = {
+            "title": "“내년 HBM 평균판매가격 121% 오른다…공급 부족 현상”",
+            "description": "",
+            "source": "매일경제",
+            "link": "https://example.com/repub2",
+            "published_kst": "2026-09-29T19:02:42+09:00",
+        }
+        self.assertTrue(w._is_hbm_market_pricing_republisher(item))
+
     def test_market_pricing_republisher_is_typed_not_generic(self):
         item = {
             "title": "내년 HBM 평균판매가 121% 오른다… AI 수요에 공급 부족 지속",

@@ -748,6 +748,25 @@ def _extract_hbm_market_pricing(item: dict) -> dict | None:
     }
 
 
+def _is_hbm_market_pricing_republisher(item: dict) -> bool:
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    if "hbm" not in low:
+        return False
+    published = str(item.get("published_kst") or "")
+    next_year = ""
+    if re.match(r"20\d{2}", published):
+        next_year = str(int(published[:4]) + 1)
+    period_match = "2027" in text or ("내년" in text and next_year == "2027")
+    exact_price = bool(re.search(r"(?:121\s*%|평균판매가|평균판매가격|평균판매단가|blended\s+asp)", text, re.I))
+    stack_price = bool(
+        re.search(r"8\s*(?:단|[- ]?Hi)", text, re.I)
+        and re.search(r"12\s*(?:단|[- ]?Hi)", text, re.I)
+        and re.search(r"(?:10\s*(?:~|∼|[-–—]|to)\s*20\s*%|Gb당|per[- ]?Gb)", text, re.I)
+    )
+    return bool(period_match and (exact_price or stack_price))
+
+
 def _hbm_market_break_even_summary(state: dict) -> str:
     if int(state.get("mainstream_layers") or 0) != 8:
         return ""
@@ -845,7 +864,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             continue
         # Market-pricing republishers are not separate alerts. They feed the
         # typed numeric state above; only an actual numeric/state change alerts.
-        if _extract_hbm_market_pricing(x):
+        if _extract_hbm_market_pricing(x) or _is_hbm_market_pricing_republisher(x):
             continue
         new_items.append(x)
     force_notify = os.getenv("FORCE_NOTIFY", "").strip().lower() in {"1", "true", "yes"}
@@ -878,6 +897,15 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "hbm_market_alert_format_version": HBM_MARKET_ALERT_FORMAT_VERSION if market_changes else int(state.get("hbm_market_alert_format_version") or 0),
         "hbm_market_pricing": market_state,
     }
+    for key in (
+        "last_successful_delivery_kst",
+        "telegram_message_ids",
+        "telegram_message_id",
+        "bot_username",
+        "delivery_receipt",
+    ):
+        if state.get(key) is not None:
+            pending[key] = state[key]
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     status_lines = [

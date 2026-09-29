@@ -196,9 +196,9 @@
   "hbm_market_alert_format_version": 1,
   "hbm_market_pricing": {
     "period": "2027",
-    "blended_asp_yoy_pct": 121.0,
-    "eight_hi_premium_min_pct": 10.0,
-    "eight_hi_premium_max_pct": 20.0,
+    "blended_asp_yoy_pct": 121,
+    "eight_hi_premium_min_pct": 10,
+    "eight_hi_premium_max_pct": 20,
     "mainstream_layers": 8,
     "source": "TrendForce",
     "source_url": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
@@ -206,5 +206,19 @@
     "as_of": "2026-09-29",
     "secondary_source_url": "https://biz.chosun.com/it-science/ict/2026/09/29/4EV5Z6JAR5GCPG7DR7ZBBFMJUQ/",
     "source_rank": 3
+  },
+  "last_successful_delivery_kst": "2026-09-29T19:39:21+09:00",
+  "telegram_message_ids": [
+    171
+  ],
+  "telegram_message_id": 171,
+  "bot_username": "khs88798879887988798879_bot",
+  "delivery_receipt": {
+    "status": "confirmed",
+    "bot_username": "khs88798879887988798879_bot",
+    "message_ids": [
+      171
+    ],
+    "confirmed_at_kst": "2026-09-29T19:39:21+09:00"
   }
 }
