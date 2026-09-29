@@ -563,8 +563,14 @@ def explain(cftc, cboe, sox):
         nq = cftc.get("nq_mini") or {}
         hist = cftc.get("history_3y") or {}
         if nq:
-            pct = hist.get("short_extreme_percentile_3y")
-            pct_txt = f" · 3년 순숏 {pct:.0f}백분위" if isinstance(pct, (int, float)) else ""
+            net_pct = hist.get("net_short_percentile_3y")
+            gross_pct = hist.get("gross_short_percentile_3y")
+            bits = []
+            if isinstance(net_pct, (int, float)):
+                bits.append(f"순숏 {net_pct:.0f}백분위")
+            if isinstance(gross_pct, (int, float)):
+                bits.append(f"총숏 {gross_pct:.0f}백분위")
+            pct_txt = (" · 3년 " + " / ".join(bits)) if bits else ""
             lines.append(
                 f"• NQ E-mini Leveraged Funds: 순포지션 {int(nq.get('leveraged_net') or 0):+,}계약"
                 f" | 주간 {int(nq.get('leveraged_net_wow') or 0):+,}계약{pct_txt}"
@@ -802,12 +808,12 @@ if quality_gate_ok and (updates or force):
                 f"• 주간 순포지션 변화 {int(nq.get('leveraged_net_wow') or 0):+,}계약 · OI 변화 {int(nq.get('open_interest_wow') or 0):+,}계약",
                 f"• 숏/OI {float(nq.get('short_share_oi_pct') or 0):.1f}%",
             ]
-            if isinstance(hist.get("short_extreme_percentile_3y"), (int, float)):
+            if isinstance(hist.get("net_short_percentile_3y"), (int, float)):
                 body += [
-                    f"• 최근 3년 순숏 백분위: <b>{hist['short_extreme_percentile_3y']:.0f}백분위</b> · 숏/OI {hist.get('short_share_oi_percentile_3y', 0):.0f}백분위",
-                    f"• 3년 최대 순숏 대비 청산률: {hist.get('unwind_from_peak_pct', 0):.1f}%",
+                    f"• 최근 3년 순숏: <b>{hist['net_short_percentile_3y']:.0f}백분위</b> · 총 숏 계약수 {hist.get('gross_short_percentile_3y', 0):.0f}백분위 · 숏/OI {hist.get('short_share_oi_percentile_3y', 0):.0f}백분위",
+                    f"• 3년 극단 대비 청산률: 순숏 {hist.get('net_short_unwind_from_peak_pct', 0):.1f}% · 총숏 {hist.get('gross_short_unwind_from_peak_pct', 0):.1f}%",
                     f"• 숏 계약 변화: 1주 {int(hist.get('leveraged_short_1w_change') or 0):+,} · 4주 {int(hist.get('leveraged_short_4w_change') or 0):+,}",
-                    "※ 3년 백분위는 CFTC TFF NASDAQ MINI futures-only 공식 연간 압축자료로 계산. Goldman/BofA PB 독자 모델과 동일하지 않습니다.",
+                    "※ 순숏·총숏·숏/OI는 서로 다른 지표입니다. CFTC futures-only와 Goldman/BofA PB 독자 모델도 같은 모집단이 아닙니다.",
                 ]
             elif hist.get("error"):
                 body.append("• 3년 백분위: 공식 압축자료 재조회 대기")
