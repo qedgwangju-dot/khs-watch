@@ -1,11 +1,13 @@
 {
-  "updated_at_kst": "2026-09-30T01:06:39+09:00",
+  "updated_at_kst": "2026-09-30T05:43:48+09:00",
   "seen_ids": [
     "05738ff36f7b6c56288425e7",
     "162bef5431cfeab3494ce984",
     "174b747c5a23191d5a286b2f",
     "1c84301bf79c8d36b83c0259",
+    "2360223de49a52cc5a8f9187",
     "2565087891ae0a867ab40fc6",
+    "2815434096668ee8dffc493a",
     "28cb1485f3f72fa06bfd4de6",
     "2b583eab3f05e2f82f49d843",
     "30aac63462e98cc963362aff",
@@ -79,7 +81,7 @@
     "nvidia_demand_b0db6b8218",
     "nvidia_demand_b9dff9a4c6"
   ],
-  "last_event_count": 19,
+  "last_event_count": 20,
   "last_new_event_count": 0,
   "alert_generated": false,
   "format_version": 3,
@@ -109,7 +111,7 @@
   },
   "schedule_audit_version": 1,
   "last_run_event": "schedule",
-  "last_schedule_check_kst": "2026-09-30T01:06:39+09:00",
-  "schedule_gap_minutes": 397.3,
+  "last_schedule_check_kst": "2026-09-30T05:43:48+09:00",
+  "schedule_gap_minutes": 277.2,
   "last_push_check_kst": "2026-09-29T18:43:05+09:00"
 }
