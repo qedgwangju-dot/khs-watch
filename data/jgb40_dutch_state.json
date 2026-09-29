@@ -1,17 +1,17 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-09-29T10:09:21+09:00",
+  "updated_at_kst": "2026-09-29T15:54:55+09:00",
   "snapshot": {
-    "date": "7/22/2026",
-    "url": "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/eresul/eresul20260722.htm",
-    "bids_bn_yen": 846.7,
-    "accepted_bn_yen": 299.8,
-    "btc": 2.8242161440960643,
-    "highest_accepted_yield": 3.865,
-    "prev_date": "5/27/2026",
-    "prev_btc": 2.701602136181575,
-    "btc_drop_pct": 4.538566440719172,
-    "highest_yield_change_bp": 2.5000000000000355,
+    "date": "9/29/2026",
+    "url": "https://www.mof.go.jp/english/policy/jgbs/auction/calendar/eresul/eresul20260929.htm",
+    "bids_bn_yen": 928.0,
+    "accepted_bn_yen": 299.7,
+    "btc": 3.0964297630964297,
+    "highest_accepted_yield": 4.125,
+    "prev_date": "7/22/2026",
+    "prev_btc": 2.8242161440960643,
+    "btc_drop_pct": 9.638554739141325,
+    "highest_yield_change_bp": 25.99999999999998,
     "auction_method": "Dutch-style yield competitive; average yield/tail not published"
   }
 }
