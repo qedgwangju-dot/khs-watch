@@ -154,27 +154,33 @@ class HTMLBalance(HTMLParser):
         self.stack.pop()
 
 
+MESSAGE_BREAK = "<<<TELEGRAM_MESSAGE_BREAK>>>"
+
 def chunks(text, limit=3600):
-    """Keep nested anchors/expandable quotes balanced across chunk boundaries."""
+    """Keep Telegram HTML balanced and honor explicit independent-alert boundaries."""
     if not text.strip():
         return []
-    parser, result, current = HTMLBalance(), [], ''
-    for line in text.splitlines():
-        if len(line.encode('utf-16-le')) // 2 > limit - 180:
-            raise ValueError('single alert line exceeds safe Telegram length; not truncated')
-        closing = ''.join('</' + tag + '>' for tag, _ in reversed(parser.stack))
-        candidate = current + ('\n' if current else '') + line
-        if len((candidate + closing).encode('utf-16-le')) // 2 > limit:
-            result.append(current + closing)
-            current = ''.join(raw for _, raw in parser.stack) + line
-        else:
-            current = candidate
-        parser.feed(line)
-    parser.close()
-    if parser.stack:
-        raise ValueError('unclosed Telegram HTML')
-    if current.strip():
-        result.append(current)
+    result = []
+    for segment in text.split(MESSAGE_BREAK):
+        if not segment.strip():
+            continue
+        parser, current = HTMLBalance(), ''
+        for line in segment.strip().splitlines():
+            if len(line.encode('utf-16-le')) // 2 > limit - 180:
+                raise ValueError('single alert line exceeds safe Telegram length; not truncated')
+            closing = ''.join('</' + tag + '>' for tag, _ in reversed(parser.stack))
+            candidate = current + ('\n' if current else '') + line
+            if len((candidate + closing).encode('utf-16-le')) // 2 > limit:
+                result.append(current + closing)
+                current = ''.join(raw for _, raw in parser.stack) + line
+            else:
+                current = candidate
+            parser.feed(line)
+        parser.close()
+        if parser.stack:
+            raise ValueError('unclosed Telegram HTML')
+        if current.strip():
+            result.append(current)
     for part in result:
         if len(part.encode('utf-16-le')) // 2 > 4096:
             raise ValueError('Telegram chunk too large')

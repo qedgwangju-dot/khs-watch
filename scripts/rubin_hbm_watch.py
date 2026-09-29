@@ -53,7 +53,11 @@ QUERIES = [
     ),
     (
         "hbm_2027_contract",
-        '2027 HBM (contract OR price OR pricing OR LTA OR supply OR allocation OR volume) (Samsung OR "SK hynix" OR Micron OR NVIDIA)',
+        '2027 HBM (contract OR price OR pricing OR LTA OR supply OR allocation OR volume OR negotiation OR agreement) (Samsung OR "SK hynix" OR Micron OR NVIDIA)',
+    ),
+    (
+        "hbm_wafer_economics",
+        '(HBM AND DDR5) (wafer revenue OR profitability OR economics OR "64GB RDIMM" OR 웨이퍼 매출 OR 수익성 OR 채산성) (TrendForce OR contract OR pricing OR allocation)',
     ),
     (
         "memory_migration",
@@ -70,7 +74,8 @@ CATEGORY_KO = {
     "hbm4e_validation": "HBM4E 고객 검증·양산",
     "rubin_shipments": "Rubin Ultra·NVL576 실제 출하",
     "hbm_2027_contract": "2027 HBM 계약가격·물량",
-    "memory_migration": "HBM 용량·KV 캐시·DDR5·eSSD 이동",
+    "hbm_wafer_economics": "HBM↔DDR5 웨이퍼 경제성",
+    "memory_migration": "별도 알림 · HBM 용량 축소→KV 캐시 외부 메모리 전환",
 }
 
 OFFICIAL_SOURCE_HINTS = (
@@ -121,11 +126,13 @@ def relevant(category: str, text: str) -> bool:
     if category == "rubin_spec":
         return "rubin ultra" in low and any(k in low for k in ("hbm", "192gb", "288gb", "768gb", "1tb", "8-hi", "8hi", "12-hi", "12hi"))
     if category == "hbm4e_validation":
-        return "hbm4e" in low and any(k in low for k in ("samsung", "sk hynix", "sk하이닉스", "micron")) and any(k in low for k in ("qualification", "validation", "sample", "mass production", "production", "양산", "검증", "샘플"))
+        return "hbm4e" in low and any(k in low for k in ("samsung", "sk hynix", "sk하이닉스", "micron")) and any(k in low for k in ("qualification", "validation", "sample", "mass production", "production", "yield", "수율", "양산", "검증", "샘플"))
     if category == "rubin_shipments":
         return ("rubin ultra" in low or "nvl576" in low) and any(k in low for k in ("shipment", "ship", "production", "deployment", "order", "ramp", "customer", "출하", "양산", "도입", "주문"))
     if category == "hbm_2027_contract":
-        return "2027" in low and "hbm" in low and any(k in low for k in ("contract", "price", "pricing", "lta", "supply", "allocation", "volume", "계약", "가격", "공급", "물량"))
+        return "2027" in low and "hbm" in low and any(k in low for k in ("contract", "price", "pricing", "lta", "supply", "allocation", "volume", "agreement", "negotiation", "계약", "가격", "공급", "물량", "협상", "타결"))
+    if category == "hbm_wafer_economics":
+        return "hbm" in low and "ddr5" in low and any(k in low for k in ("wafer revenue", "profitability", "economics", "64gb rdimm", "웨이퍼 매출", "수익성", "채산성"))
     if category == "memory_migration":
         return any(k in low for k in ("rubin", "hbm")) and any(k in low for k in ("ddr5", "socamm2", "essd", "enterprise ssd", "kv cache", "offload", "pooling", "오프로드", "풀링"))
     return False
@@ -347,6 +354,20 @@ def make_fact(event: dict) -> dict | None:
             headline = f"{company}, HBM4E 고객 검증 완료 신호"
             bullets.append("• 확인된 사실: 기사에서 HBM4E 고객 검증·인증 완료를 명시했습니다.")
             verdict = "🟢 가장 중요한 강세 조건 중 하나인 고객 인증 완료에 해당합니다. 실제 양산 개시일과 계약물량을 다음으로 확인해야 합니다."
+        elif any(k in low for k in ("yield", "수율")):
+            ym = re.search(r"(?:yield|수율)[^%]{0,80}?([0-9]{1,3}(?:\.[0-9]+)?)\s*%", text, re.I)
+            if not ym:
+                ym = re.search(r"([0-9]{1,3}(?:\.[0-9]+)?)\s*%[^.]{0,80}?(?:yield|수율)", text, re.I)
+            state = "개선" if any(k in low for k in ("improve", "improved", "ramp", "개선", "상승")) else "병목" if any(k in low for k in ("low yield", "bottleneck", "constraint", "낮은 수율", "병목", "제약")) else "변화"
+            suffix = f"_{ym.group(1).replace('.','p')}pct" if ym else f"_{state}"
+            fact_key = f"{company}_hbm4e_yield{suffix}"
+            headline = f"{company}, HBM4E 수율 {state} 신호"
+            if ym:
+                bullets.append(f"• 수율: 기사에서 HBM4E 수율 {ym.group(1)}%가 제시됐습니다.")
+            else:
+                bullets.append(f"• 수율: 기사에서 HBM4E 수율 {state}가 명시됐습니다.")
+            bullets.append("• 구분: 수율 변화는 고객 인증·양산 물량과 별도 상태로 추적합니다.")
+            verdict = "🟡 수율이 개선되면 Rubin Ultra 공급 병목 완화 신호이고, 낮은 수율·병목이면 고객 승인과 양산 램프 지연 위험 신호입니다."
         elif any(k in low for k in ("mass production", "volume production", "양산")):
             year = next(iter(re.findall(r"20\d{2}", text)), "")
             q = ""
@@ -369,15 +390,25 @@ def make_fact(event: dict) -> dict | None:
 
     elif cat == "rubin_spec" and "rubin ultra" in low:
         capacities = [x for x in ("192GB", "288GB", "768GB", "1TB") if x.lower() in low]
-        if not capacities:
+        layers = []
+        if "8-hi" in low or "8hi" in low or "8단" in low:
+            layers.append("8hi")
+        if "12-hi" in low or "12hi" in low or "12단" in low:
+            layers.append("12hi")
+        if not capacities and not layers:
             return None
+        final_spec = any(k in low for k in ("final specification", "final spec", "finalized", "confirmed specification", "사양 확정", "최종 사양", "확정 사양"))
+        stage = "final" if final_spec else "evaluation"
+        key_bits = [stage] + [x.lower() for x in capacities] + layers
+        fact_key = "rubin_ultra_spec_" + "_".join(key_bits)
         cap = "/".join(capacities)
-        fact_key = "rubin_ultra_spec_" + "_".join(x.lower() for x in capacities)
-        headline = f"Rubin Ultra HBM 사양 변화 감지 — {cap}"
-        bullets.append(f"• 확인된 사양 후보: {cap}")
-        if "8-hi" in low or "8hi" in low:
+        headline = f"Rubin Ultra HBM {'최종 사양 확정' if final_spec else '사양 변화 감지'}" + (f" — {cap}" if cap else "")
+        if capacities:
+            bullets.append(f"• 확인된 사양 후보: {cap}")
+        bullets.append(f"• 단계: {'최종 사양 확정' if final_spec else '평가·검토 단계'}로 분리해 저장합니다.")
+        if "8hi" in layers:
             bullets.append("• 적층 후보: 8단 HBM 구성이 언급됐습니다.")
-        if "12-hi" in low or "12hi" in low:
+        if "12hi" in layers:
             bullets.append("• 적층 후보: 12단 HBM 구성이 언급됐습니다.")
         bw = re.findall(r"\d+(?:\.\d+)?\s*TB/s", text, re.I)
         if bw:
@@ -385,6 +416,8 @@ def make_fact(event: dict) -> dict | None:
         if "192gb" in low:
             bullets.append(f"• 숫자: 288GB→192GB면 GPU당 HBM은 -33.3%, 총 비트 수요 상쇄에는 GPU 출하 +{BREAKEVEN_GPU_GROWTH*100:.0f}%가 필요합니다.")
             verdict = "🟡 192GB만으로 수요 붕괴 판정 금지. 최종 사양·대역폭·GPU 총출하를 함께 확인해야 합니다."
+        elif final_spec:
+            verdict = "🟢 Rubin Ultra 최종 HBM 적층·용량 사양이 확정된 신호입니다. 공급사 고객 승인과 양산 물량을 다음 단계로 확인합니다."
         else:
             verdict = "🟡 공급망 사양 정보입니다. NVIDIA 공식 확정 여부를 별도로 확인합니다."
 
@@ -403,16 +436,44 @@ def make_fact(event: dict) -> dict | None:
     elif cat == "hbm_2027_contract" and "2027" in low and "hbm" in low:
         pcts = pct_tokens(text)
         has_price = any(k in low for k in ("price", "pricing", "asp", "가격", "판가"))
-        has_volume = any(k in low for k in ("volume", "allocation", "supply", "contract", "lta", "물량", "공급", "계약"))
-        if not (has_price or has_volume) or not pcts:
+        has_volume = any(k in low for k in ("volume", "allocation", "supply", "contract", "lta", "agreement", "물량", "공급", "계약"))
+        signed = any(k in low for k in ("contract signed", "agreement signed", "agreement finalized", "deal finalized", "negotiations concluded", "계약 체결", "협상 타결", "가격 확정", "계약 확정"))
+        stalled = any(k in low for k in ("stalled", "unresolved", "deadlock", "협상 교착", "미타결", "협상 난항"))
+        if not (has_price or has_volume or signed or stalled):
             return None
-        fact_key = "hbm_2027_contract_" + "_".join(p.replace("%", "pct") for p in pcts[:3])
-        headline = f"2027 HBM 계약가격·물량 변화 — {' / '.join(pcts[:3])}"
-        if has_price:
+        if not pcts and not (signed or stalled):
+            return None
+        stage = "signed" if signed else "stalled" if stalled else "quoted"
+        key_parts = [stage] + [p.replace("%", "pct") for p in pcts[:3]]
+        fact_key = "hbm_2027_contract_" + "_".join(key_parts)
+        suffix = f" — {' / '.join(pcts[:3])}" if pcts else ""
+        headline = f"2027 HBM 계약가격·물량 변화 ({'체결·확정' if signed else '협상 교착' if stalled else '가격 제시'}){suffix}"
+        if pcts and has_price:
             bullets.append(f"• 가격: 기사에서 2027년 HBM 가격·평균판매단가 관련 수치 {' / '.join(pcts[:3])}가 제시됐습니다.")
+        if signed:
+            bullets.append("• 계약 단계: 협상 전망이 아니라 계약 체결·가격 확정 단계로 올라갔습니다.")
+        elif stalled:
+            bullets.append("• 계약 단계: 2027년 공급·가격 협상이 아직 타결되지 않은 상태입니다.")
         if has_volume:
             bullets.append("• 물량: 계약물량·공급배정이 유지 또는 증가하는지 반드시 가격과 함께 판정합니다.")
-        verdict = "🟢 가격 상승과 계약물량 유지·증가가 동시에 확인되면 강한 호재. 가격만 오르고 물량이 줄면 별도 계산합니다."
+        verdict = "🟢 가격 상승과 계약물량 유지·증가가 동시에 확인되면 강한 신호입니다." if signed else "🟡 협상 단계에서는 전망치와 실제 계약가격·물량을 분리합니다."
+
+    elif cat == "hbm_wafer_economics" and "hbm" in low and "ddr5" in low:
+        if not any(k in low for k in ("wafer revenue", "profitability", "economics", "64gb rdimm", "웨이퍼 매출", "수익성", "채산성")):
+            return None
+        hbm_below = any(k in low for k in ("overtaken by ddr5", "fell below", "lower than ddr5", "ddr5 overtook", "ddr5가 추월", "ddr5보다 낮"))
+        hbm_above = any(k in low for k in ("hbm overtook", "hbm surpassed", "hbm higher than", "hbm이 추월", "hbm이 상회"))
+        state = "hbm_below_ddr5" if hbm_below else "hbm_above_ddr5" if hbm_above else "economics_update"
+        fact_key = "hbm_ddr5_wafer_economics_" + state
+        headline = "HBM↔DDR5 웨이퍼 경제성 변화"
+        if hbm_below:
+            bullets.append("• 현재 방향: HBM의 웨이퍼당 매출·수익성이 DDR5 64GB RDIMM보다 낮아진 신호입니다.")
+        elif hbm_above:
+            bullets.append("• 현재 방향: HBM의 웨이퍼당 매출·수익성이 DDR5보다 다시 높아진 신호입니다.")
+        else:
+            bullets.append("• 현재 방향: HBM과 DDR5의 웨이퍼당 매출·수익성 비교가 새로 갱신됐습니다.")
+        bullets.append("• 의미: 이 격차가 HBM 가격 협상과 DRAM 웨이퍼 배분의 경제적 기준이 됩니다.")
+        verdict = "🟡 HBM 경제성이 DDR5보다 낮으면 HBM 가격 인상 압력·배분 제약이 커지고, 다시 상회하면 HBM 증산 유인이 개선됩니다."
 
     elif cat == "memory_migration":
         if (
@@ -691,10 +752,12 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
         grouped.setdefault(e["category"], []).append(e)
 
     n = 1
-    for category in ("rubin_spec", "hbm4e_validation", "rubin_shipments", "hbm_2027_contract", "memory_migration"):
+    for category in ("rubin_spec", "hbm4e_validation", "rubin_shipments", "hbm_2027_contract", "hbm_wafer_economics", "memory_migration"):
         group = grouped.get(category) or []
         if not group:
             continue
+        if category == "memory_migration" and n > 1:
+            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 HBM 용량 축소→KV 캐시 외부 메모리 전환", ""]
         lines += ["", f"■ {CATEGORY_KO[category]}"]
         for e in group[:5]:
             full_text = compact_fact_text(e)
