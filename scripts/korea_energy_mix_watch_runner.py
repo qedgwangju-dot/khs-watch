@@ -39,6 +39,18 @@ def semantic_event_key(row: dict[str, Any]) -> str:
     if any(term in title for term in ("최종 확정", "최종안", "정부안", "의결")):
         return "12th-plan|final"
 
+    # 전력망 실행정책은 기존 재생에너지 100GW 목표와 별도 사건으로 관리한다.
+    if "전력망 혁신대책" in title:
+        return "12th-plan|grid-innovation|policy-announcement"
+    if "계통관리변전소" in title and "해제" in title:
+        return "12th-plan|grid-innovation|management-substation-release"
+    if "접속권" in title and any(term in title for term in ("회수", "재배분", "재할당")):
+        return "12th-plan|grid-innovation|access-right-recovery"
+    if ("비증설" in title or "nwa" in title) and any(term in title for term in ("전력망", "계통", "ess")):
+        return "12th-plan|grid-innovation|nwa-ess"
+    if "171gw" in title and any(term in title for term in ("수용", "전력망", "계통")):
+        return "12th-plan|grid-innovation|hosting-capacity-171gw"
+
     # LNG 기사 제목에 비교 표현으로 '원전 1기급'이 들어가도 원전 사건으로 오분류하지 않는다.
     if ("lng" in title or "가스발전" in title) and any(term in title for term in ("용량시장", "신규 용량", "발전시장")):
         nums = re.findall(r"\d+(?:\.\d+)?\s*(?:gw|mw)?", title)
