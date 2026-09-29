@@ -44,20 +44,32 @@ TERM_MAP = [
 TAG_SPLIT = re.compile(r"(<[^>]+>)")
 
 
-def koreanize_segment(segment: str) -> str:
+def koreanize_segment(segment: str, seen: set[str] | None = None) -> str:
     out = segment
+    seen = seen if seen is not None else set()
     for source, replacement in TERM_MAP:
-        # Do not append another Korean gloss when the source is already immediately
-        # followed by a parenthetical explanation.
+        if source in seen:
+            continue
+        # Keep the original identifier and add the Korean gloss only once per alert.
+        # If the first visible occurrence already has a parenthetical explanation,
+        # treat that term as already explained and leave later occurrences compact.
+        existing = re.search(re.escape(source) + r"\s*\(", out)
+        first = re.search(re.escape(source), out)
+        if first and existing and existing.start() == first.start():
+            seen.add(source)
+            continue
         pattern = re.compile(re.escape(source) + r"(?!\s*\()")
-        out = pattern.sub(replacement, out)
+        out, count = pattern.subn(replacement, out, count=1)
+        if count:
+            seen.add(source)
     return out
 
 
 def koreanize_html_visible_text(text: str) -> str:
     parts = TAG_SPLIT.split(text)
+    seen: set[str] = set()
     for i in range(0, len(parts), 2):
-        parts[i] = koreanize_segment(parts[i])
+        parts[i] = koreanize_segment(parts[i], seen)
     return "".join(parts)
 
 
