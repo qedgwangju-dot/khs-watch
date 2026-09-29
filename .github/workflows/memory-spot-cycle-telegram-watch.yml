@@ -196,21 +196,54 @@ jobs:
       - name: Commit watcher state
         if: success()
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/memory_spot_cycle_watch_state.json data/apple_memory_procurement_watch_state.json
+
+          # Keep Apple state out of the critical memory-delivery checkpoint.
+          # A concurrent Apple-state update must never make a confirmed memory
+          # Telegram delivery look failed or cause it to be resent.
+          if [ -f data/apple_memory_procurement_watch_state.json ]; then
+            cp data/apple_memory_procurement_watch_state.json /tmp/apple_memory_procurement_watch_state.json
+            git checkout -- data/apple_memory_procurement_watch_state.json 2>/dev/null || true
+          fi
+
+          git add data/memory_spot_cycle_watch_state.json
           if git diff --cached --quiet; then
             echo "Memory watch state unchanged"
           else
             git commit -m "Update memory spot cycle watch state"
+            pushed=false
             for attempt in 1 2 3; do
               if git pull --rebase origin main && git push; then
-                exit 0
+                pushed=true
+                break
               fi
               git rebase --abort 2>/dev/null || true
               sleep $((attempt * 3))
             done
-            exit 1
+            if [ "$pushed" != "true" ]; then
+              echo "Critical memory delivery state checkpoint failed"
+              exit 1
+            fi
+          fi
+
+          # Apple no-alert state is best-effort. If another run already advanced
+          # that file, keep the newer remote state instead of failing this run.
+          if [ -f /tmp/apple_memory_procurement_watch_state.json ]; then
+            cp /tmp/apple_memory_procurement_watch_state.json data/apple_memory_procurement_watch_state.json
+            git add data/apple_memory_procurement_watch_state.json
+            if ! git diff --cached --quiet; then
+              git commit -m "Update Apple memory procurement watch state"
+              if git pull --rebase origin main && git push; then
+                echo "Apple memory state checkpointed"
+              else
+                git rebase --abort 2>/dev/null || true
+                git fetch origin main
+                git reset --hard origin/main
+                echo "Apple memory state advanced concurrently; kept newer remote state"
+              fi
+            fi
           fi
 
       - name: Upload verification artifacts
