@@ -41,6 +41,38 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertTrue(any("새 등락률·단가 범위 미제시" in x for x in details))
         self.assertTrue(any("8단 HBM" in x for x in details))
 
+    def test_hbm_market_pricing_extracts_121_and_8hi_premium(self):
+        item = {
+            "title": "TrendForce 2027 HBM Blended ASP outlook",
+            "description": (
+                "트렌드포스는 2027년 HBM의 제품별 판매 비중을 반영한 평균판매가격(Blended ASP)이 "
+                "전년 대비 121% 상승할 것으로 봤다. 8단 HBM의 Gb당 판매가격은 12단 제품보다 "
+                "약 10~20% 높게 형성될 전망이며 8단 제품을 우선 적용할 것으로 예상된다."
+            ),
+            "source": "한국경제TV",
+            "link": "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202609290194",
+            "published_kst": "2026-09-29T18:00:00+09:00",
+        }
+        obs = w._extract_hbm_market_pricing(item)
+        self.assertEqual(obs["blended_asp_yoy_pct"], 121.0)
+        self.assertEqual(obs["eight_hi_premium_min_pct"], 10.0)
+        self.assertEqual(obs["eight_hi_premium_max_pct"], 20.0)
+        self.assertEqual(obs["mainstream_layers"], 8)
+
+    def test_hbm_market_pricing_thresholds(self):
+        old = dict(w.HBM_MARKET_PRICE_BASELINE)
+        small = dict(old, blended_asp_yoy_pct=128.0)
+        big = dict(old, blended_asp_yoy_pct=132.0)
+        self.assertFalse(any("Blended ASP" in x for x in w._hbm_market_pricing_changes(old, small)))
+        self.assertTrue(any("Blended ASP" in x for x in w._hbm_market_pricing_changes(old, big)))
+        premium = dict(old, eight_hi_premium_min_pct=15.0)
+        self.assertTrue(any("프리미엄 하단" in x for x in w._hbm_market_pricing_changes(old, premium)))
+
+    def test_hbm_market_pricing_stack_regime_change_alerts(self):
+        old = dict(w.HBM_MARKET_PRICE_BASELINE)
+        new = dict(old, mainstream_layers=12)
+        self.assertTrue(any("8단→12단" in x for x in w._hbm_market_pricing_changes(old, new)))
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
