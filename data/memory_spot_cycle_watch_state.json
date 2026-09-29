@@ -138,9 +138,28 @@
       "source": "TrendForce Research",
       "published_kst": "2026-09-21T09:00:00+09:00",
       "first_seen_kst": "2026-09-27T00:10:35+09:00"
+    },
+    "seed_hbm_market_20270929_121": {
+      "title": "[속보] 반도체 개미 귀 '쫑긋'…\"HBM 가격, 2배 이상 더 뛴다\"",
+      "source": "한국경제TV",
+      "published_kst": "2026-09-29T18:00:00+09:00",
+      "first_seen_kst": "2026-09-29T18:19:00+09:00",
+      "seeded_reason": "사용자 제공 기사 기준선; 동일 기사 재배포 역송출 차단"
     }
   },
   "updated_at_kst": "2026-09-27T00:10:35+09:00",
   "last_scan_count": 6,
-  "last_new_count": 6
+  "last_new_count": 6,
+  "hbm_market_pricing_track_version": 1,
+  "hbm_market_pricing": {
+    "period": "2027",
+    "blended_asp_yoy_pct": 121,
+    "eight_hi_premium_min_pct": 10,
+    "eight_hi_premium_max_pct": 20,
+    "mainstream_layers": 8,
+    "source": "한국경제TV·TrendForce 인용",
+    "source_url": "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202609290194&t=NN",
+    "research_reference_url": "https://www.trendforce.com/research/download/RP260922FJ3",
+    "as_of": "2026-09-29"
+  }
 }
