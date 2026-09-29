@@ -298,40 +298,62 @@ def message(br,ma,v,orate,policy,oil_v):
     y10_move='확인 불가' if orate.get('dgs10_move_bp') is None else f"{orate['dgs10_move_bp']:+.0f}bp"
     hike_prob='확인 불가' if policy.get('hike25_prob') is None else f"{float(policy['hike25_prob']):.0f}%"
     extra_bp='확인 불가' if policy.get('extra_bp') is None else f"{float(policy['extra_bp']):+.1f}bp"
+
+    if '분리' in oil_v:
+        rate_read='최근 10년물 상승은 유가보다 비유가 요인 우세'
+    elif '강경보' in oil_v:
+        rate_read='유가 상승이 장기금리·추가인상 기대로 전이되는 신호'
+    elif '전이 강함' in oil_v:
+        rate_read='유가와 장기금리의 동행이 강해지는 구간'
+    else:
+        rate_read=oil_v
+
+    if '2차 물가 전이 우세' in v:
+        energy_read='고유가의 2차 물가 전이 압력 유지'
+    elif '수요 파괴 우세' in v:
+        energy_read='고유가보다 수요 둔화·과잉긴축 위험 우세'
+    elif '스태그플레이션형' in v:
+        energy_read='물가 전이와 수요 약화가 동시에 진행'
+    else:
+        energy_read=v
+
+    policy_read=policy.get('verdict') or '금리경로 확인 필요'
     return '\n'.join([
-        '[Warsh 에너지 공급충격 판정]',
-        f"기준: {br['date']}", '',
-        '<b>핵심 판정</b>',
-        f"• <b>{html.escape(v)}</b>",
-        f"• <b>유가↔10년물</b>: {html.escape(oil_v)}", '',
-        '<b>현재 숫자</b>',
-        f"• 브렌트유: {br['value']:.2f}달러/배럴 · 최근 20거래일 {br['d20_pct']:+.1f}%",
-        f"• 기준시점: {html.escape(br.get('measurement_basis') or '최근 완료 거래일 종가')} · {html.escape(br.get('quality_note') or '정상')}",
-        f"• 근원 PCE 추세: 3개월 연율 {pce3} · 6개월 연율 {pce6}",
-        f"• 5년 기대인플레이션: {ma['bei5y']:.2f}% · 최근 10거래일 {bei}",
-        f"• 실질 개인소비: 최근 3개월 연율 {real}",
-        f"• 고용: {emp}" + (f" · 비농업 고용 {ma['payroll_change_k']:+.0f}천명 · 실업률 {ma['unemployment_rate']:.1f}%" if ma.get('payroll_change_k') is not None and ma.get('unemployment_rate') is not None else ''),
-        f"• 신용: H.8 {ma.get('h8') or '확인 불가'} · SLOOS {ma.get('sloos') or '확인 불가'}",
+        '<b>[Warsh | 유가 → 금리 → 추가인상]</b>',
+        f"기준 {br['date']} · 완료 종가 기준",
         '',
-        '<b>유가 → 10년물 → 추가인상 경로</b>',
-        f"• WTI: {orate['wti']:.2f}달러/배럴 · 최근 {orate['move_days']}거래일 {wti_move}",
-        f"• 미국 10년물: {orate['dgs10']:.2f}% · 최근 {orate['move_days']}거래일 {y10_move}",
-        f"• 3개월 이동상관: <b>{corr}</b> · 판정 {html.escape(orate.get('corr_band') or '확인 불가')} · 경계 {OIL10Y_CORR_WARN*100:.0f}% / 강경보 {OIL10Y_CORR_STRONG*100:.0f}%",
-        f"• 금리 민감도: WTI 일간 +1%당 10년물 {beta} · 민감도 경보 기준 +{OIL10Y_BETA_ALERT:.1f}bp",
-        f"• 다음 FOMC +25bp 인상 확률: {hike_prob} · 연말 누적 추가긴축 기대 {extra_bp}",
-        f"• 계산 기준: {html.escape(orate.get('measurement_basis') or '')}",
+        '<b>한눈에 보기</b>',
+        f"• <b>에너지</b> | 브렌트 {br['value']:.2f}달러 · 20일 {br['d20_pct']:+.1f}% → {html.escape(energy_read)}",
+        f"• <b>금리</b> | WTI 5일 {wti_move} vs 10년물 {y10_move} → {html.escape(rate_read)}",
+        f"• <b>Fed</b> | 다음 회의 +25bp {hike_prob} · 연말 {extra_bp} → {html.escape(policy_read)}",
         '',
-        '<b>해석</b>',
-        '• 유가 상승만으로 금리인상을 판정하지 않습니다. 근원물가·기대인플레이션으로 번지는지와 실질소비·고용·신용이 먼저 약해지는지를 분리합니다.',
-        '• 물가 전이가 우세하면 추가긴축 논리가 강해지고, 수요 파괴가 우세하면 같은 시점의 추가인상은 경기하강을 키울 위험이 커집니다.',
-        '• 이는 Jefferson 부의장이 설명한 공급충격의 물가·고용 상충 구조를 최신 데이터에 대입한 해석입니다.',
-        '• 상관은 인과관계 자체가 아닙니다. 유가가 내려가는데 10년물이 오르면 재정·실질금리·기간프리미엄 등 비유가 요인을 우선합니다.',
-        '• Cboe는 2026년 9월 21일 WTI와 미국 10년물의 3개월 이동상관이 65%로 35년 최고라고 제시했습니다. 이 값은 역사적 비교 기준이고, 위 숫자는 매 실행마다 자체 재계산합니다.', '',
+        '<b>핵심 숫자</b>',
+        f"• 유가 | Brent {br['value']:.2f}달러 ({br['d20_pct']:+.1f}%/20일) · WTI {orate['wti']:.2f}달러 ({wti_move}/5일)",
+        f"• 금리 | 미국 10년물 {orate['dgs10']:.2f}% ({y10_move}/5일)",
+        f"• 연결 | 3개월 상관 <b>{corr}</b> · WTI +1%당 10년물 {beta}",
+        f"• 물가 | 근원 PCE 3개월 {pce3} · 6개월 {pce6} · 5년 기대인플레 {ma['bei5y']:.2f}% ({bei}/10일)",
+        f"• 경기 | 실질소비 {real}/3개월 · 고용 {emp}" + (f" · NFP {ma['payroll_change_k']:+.0f}천명 · 실업률 {ma['unemployment_rate']:.1f}%" if ma.get('payroll_change_k') is not None and ma.get('unemployment_rate') is not None else ''),
+        f"• 신용 | H.8 {ma.get('h8') or '확인 불가'} · SLOOS {ma.get('sloos') or '확인 불가'}",
+        '',
+        '<b>판정</b>',
+        f"① 중기 연결: 3개월 상관 {corr} → {html.escape(orate.get('corr_band') or '확인 불가')}",
+        f"② 단기 방향: WTI {wti_move} / 10년물 {y10_move} → {html.escape(rate_read)}",
+        f"③ 정책 경로: +25bp {hike_prob} · 연말 {extra_bp} → {html.escape(policy_read)}",
+        '',
+        '<b>경보선</b>',
+        f"• 상관 {OIL10Y_CORR_WARN*100:.0f}% = 경계 · {OIL10Y_CORR_STRONG*100:.0f}% = 강경보",
+        f"• WTI +1%당 10년물 +{OIL10Y_BETA_ALERT:.1f}bp 이상 = 민감도 경보",
+        '• 유가↑ + 10년물↑ + 추가인상확률↑ 동시 확인 시 → 유가발 긴축',
+        '',
+        '<b>한 줄 해석</b>',
+        f"• {html.escape(energy_read)}. 다만 {html.escape(rate_read)}.",
+        '• 상관은 인과관계가 아닙니다. Cboe의 65%는 역사적 비교 기준이고, 위 상관은 매 실행마다 63개 공통 거래일로 다시 계산합니다.',
+        '',
         '<b>원천</b>',
-        f"{link(br['source'],br['url'])} · {link('연준 Jefferson 공식 발언',JEFFERSON_URL)}",
-        f"{link('FRED 5년 기대인플레이션',FRED_BEI)} · {link('FRED 실질 개인소비',FRED_REAL_PCE)}",
-        f"{link('WTI 선물',WTI_PAGE)} · {link('FRED 미국 10년물',FRED_DGS10)} · {link('Cboe 3개월 상관 65% 기준',CBOE_OIL_RATES)}",
-        (f"{link('연방기금금리 선물 경로',policy.get('source'))}" if policy.get('source') else '연방기금금리 선물 경로: 확인 불가'),
+        f"{link('Brent',BRENT_PAGE)} · {link('WTI',WTI_PAGE)} · {link('미 10년물',FRED_DGS10)} · {link('Cboe',CBOE_OIL_RATES)}",
+        f"{link('5년 기대인플레',FRED_BEI)} · {link('실질소비',FRED_REAL_PCE)} · " +
+        (f"{link('금리선물 경로',policy.get('source'))}" if policy.get('source') else '금리선물 경로 확인 불가'),
+        f"{link('연준 Jefferson',JEFFERSON_URL)}",
     ])
 
 
@@ -361,7 +383,7 @@ def main():
     policy=policy_snapshot()
     oil_v=oil_rates_verdict(orate,policy) if orate else '유가·10년물 연결 확인 불가'
 
-    new={'schema_version':4,'brent':br,'macro':ma,'verdict':v,'oil_rates':orate,'policy':policy,'oil_rates_verdict':oil_v}; first=not bool(old)
+    new={'schema_version':5,'brent':br,'macro':ma,'verdict':v,'oil_rates':orate,'policy':policy,'oil_rates_verdict':oil_v}; first=not bool(old)
     changed=(old.get('brent',{}).get('active') not in (None,br['active']) or old.get('verdict') not in (None,v))
 
     old_or=(old.get('oil_rates') or {})
@@ -373,7 +395,7 @@ def main():
         elif old_or.get('beta_hot') not in (None,orate.get('beta_hot')):
             changed=True
 
-    upgrade=bool(old) and int(old.get('schema_version') or 1)<4
+    upgrade=bool(old) and int(old.get('schema_version') or 1)<5
     upgrade_signal=upgrade and orate and orate.get('corr_band') in ('경계','강한 경보')
 
     correction=False
