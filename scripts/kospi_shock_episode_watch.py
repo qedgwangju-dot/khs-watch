@@ -384,9 +384,17 @@ def _actor_delta(start: dict[str, Any] | None, end: dict[str, Any] | None) -> di
 
 def _program_delta(start: dict[str, Any] | None, end: dict[str, Any] | None) -> dict[str, float | None]:
     out: dict[str, float | None] = {}
-    for k in ("전체", "차익", "비차익", "베이시스"):
+    for k in ("차익", "비차익", "베이시스"):
         a = fnum((start or {}).get(k)); b = fnum((end or {}).get(k))
         out[k] = (b - a) if a is not None and b is not None else None
+    a_total = fnum((start or {}).get("전체")); b_total = fnum((end or {}).get("전체"))
+    direct_total = (b_total - a_total) if a_total is not None and b_total is not None else None
+    calc_total = None
+    if out.get("차익") is not None and out.get("비차익") is not None:
+        calc_total = float(out["차익"]) + float(out["비차익"])
+    out["전체"] = calc_total
+    out["전체직접"] = direct_total
+    out["검산차이"] = (direct_total - calc_total) if direct_total is not None and calc_total is not None else None
     return out
 
 
@@ -587,21 +595,18 @@ class Watch:
         ]
         pgm_spans = [x for x in pgm_spans if x is not None]
         max_pgm_span = max(pgm_spans) if pgm_spans else None
-        pgm_identity_checks = []
-        for p in ((pgm_a[0] if pgm_a else {}), (pgm_b[0] if pgm_b else {})):
-            gap = fnum(p.get("전체대비차이"))
-            total = fnum(p.get("전체"))
-            if gap is None or total is None:
-                continue
-            tol = max(5.0, abs(total) * 0.0005)
-            pgm_identity_checks.append((abs(gap), tol))
-        max_identity_gap = max((x[0] for x in pgm_identity_checks), default=None)
-        identity_quality = bool(pgm_identity_checks and all(gap <= tol for gap, tol in pgm_identity_checks))
+        calc_total = fnum(pgm.get("전체"))
+        direct_total = fnum(pgm.get("전체직접"))
+        crosscheck_gap = fnum(pgm.get("검산차이"))
+        direction_consistent = bool(
+            calc_total is not None and direct_total is not None
+            and (calc_total == 0 or direct_total == 0 or (calc_total < 0) == (direct_total < 0))
+        )
         program_quality = bool(
             pgm_aligned
             and max_pgm_span is not None
             and max_pgm_span <= MAX_PROGRAM_SNAPSHOT_SKEW_SEC
-            and identity_quality
+            and direction_consistent
         )
 
         # '두 시장 모두 음수'와 '두 시장을 주도'를 구분한다.
@@ -648,7 +653,8 @@ class Watch:
                 "futures_start_alignment_sec": fut_start_gap, "futures_end_alignment_sec": fut_end_gap,
                 "program_start_alignment_sec": pgm_start_gap, "program_end_alignment_sec": pgm_end_gap,
                 "program_sample_span_sec": max_pgm_span,
-                "program_identity_gap_max": max_identity_gap,
+                "program_crosscheck_gap": crosscheck_gap,
+                "program_direct_total": direct_total,
                 "program_quality": program_quality}
 
     def option_move(self, start_ts: float, end_ts: float) -> tuple[str, float] | None:
@@ -683,10 +689,11 @@ class Watch:
                       f"• 현물 최다매도: <b>{html.escape(str(att.get('spot_leader') or '없음'))}</b> {fmt_eok(att.get('spot_leader_value'))}",
                       f"• 선물 최다매도: <b>{html.escape(str(att.get('futures_leader') or '없음'))}</b> {fmt_eok(att.get('futures_leader_value'))}",
                       f"• 양시장 동시매도: <b>{html.escape(cross)}</b>",
-                      f"• 프로그램 전체 <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS t1640 누적값 변화)</i>",
+                      f"• 프로그램 전체(차익+비차익) <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS t1640 사건구간 변화)</i>",
+                      f"• LS 전체 직접값 변화 <b>{fmt_raw(p.get('전체직접'))}</b> · 계산합계와 차이 <b>{fmt_raw(p.get('검산차이'))}</b>",
                       f"• 프로그램 방향: <b>{html.escape(str(att.get('program_kind')))}</b>",
                       f"• 수급 기준점 시차: 시작 <b>{float(att.get('start_alignment_sec') or 0):.1f}초</b> · 종료 <b>{float(att.get('end_alignment_sec') or 0):.1f}초</b> · 프로그램 3종 조회시차 최대 <b>{float(att.get('program_sample_span_sec') or 0):.1f}초</b>",
-                      f"• 프로그램 합계 검산: 전체-(차익+비차익) 표본 오차 최대 <b>{fmt_raw(att.get('program_identity_gap_max'))}</b>", "",
+                      f"• 프로그램 방향 교차검증: <b>{'일치' if att.get('program_quality') else '시차·방향 재확인 필요'}</b>", "",
                       "<b>판정</b>", f"• <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
         else:
             lines += [f"• 주체 판정 보류 — {html.escape(str(att.get('reason') or '수급 스냅샷 부족'))}"]
@@ -696,7 +703,7 @@ class Watch:
         lines += ["", "<b>읽는 법</b>",
                   "• 하루 누적 수급이 아니라 <b>급락 시작 직전 → 현재</b> 변화량만 비교합니다.",
                   "• 현물·선물·프로그램이 같은 방향으로 겹칠 때만 특정 주체를 급락 주도 후보로 올립니다.",
-                  "• 프로그램은 LS t1640 누적 스냅샷(전체·차익·비차익)의 사건 시작→현재 변화로 계산하며, 단위는 임의 환산하지 않습니다.", "",
+                  "• 프로그램 전체는 차익 변화+비차익 변화로 계산하고 LS 전체 직접값 변화와 방향을 교차검증합니다. t1640 3종은 순차 조회라 조회시차를 함께 표시하며 단위는 임의 환산하지 않습니다.", "",
                   "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(NEWS_URL,"급락 뉴스"), link(LS_URL,"LS OpenAPI")])]
         return "\n".join(lines)
 
@@ -718,9 +725,10 @@ class Watch:
                       f"• 현물 최다매도: <b>{html.escape(str(att.get('spot_leader') or '없음'))}</b> {fmt_eok(att.get('spot_leader_value'))}",
                       f"• 선물 최다매도: <b>{html.escape(str(att.get('futures_leader') or '없음'))}</b> {fmt_eok(att.get('futures_leader_value'))}",
                       f"• 양시장 동시매도: <b>{html.escape(cross)}</b>",
-                      f"• 프로그램: 전체 <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS t1640 누적값 변화)</i>",
+                      f"• 프로그램 전체(차익+비차익) <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS t1640 사건구간 변화)</i>",
+                      f"• LS 전체 직접값 변화 <b>{fmt_raw(p.get('전체직접'))}</b> · 계산합계와 차이 <b>{fmt_raw(p.get('검산차이'))}</b>",
                       f"• 수급 기준점 시차: 시작 <b>{float(att.get('start_alignment_sec') or 0):.1f}초</b> · 저점 <b>{float(att.get('end_alignment_sec') or 0):.1f}초</b> · 프로그램 3종 조회시차 최대 <b>{float(att.get('program_sample_span_sec') or 0):.1f}초</b>",
-                      f"• 프로그램 합계 검산: 전체-(차익+비차익) 표본 오차 최대 <b>{fmt_raw(att.get('program_identity_gap_max'))}</b>",
+                      f"• 프로그램 방향 교차검증: <b>{'일치' if att.get('program_quality') else '시차·방향 재확인 필요'}</b>",
                       f"• 최종 판정: <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
         else:
             lines += [f"• 가격 구간만 확정 — {html.escape(str(att.get('reason') or '수급 스냅샷 부족'))}"]
