@@ -114,6 +114,43 @@ def proxy_rates(pending: dict) -> tuple[str, str, int]:
 
 def discount_view(pending: dict) -> tuple[str, str, int]:
     treasury = pending.get("treasury") or {}
+    crcl = pending.get("crcl") or {}
+    tbx = pending.get("tbx") or {}
+
+    treasury_date = str(treasury.get("date") or "")
+    crcl_date = str(crcl.get("date") or "")
+    tbx_date = str(tbx.get("date") or "")
+
+    if (
+        treasury_date
+        and crcl_date
+        and tbx_date
+        and treasury_date < crcl_date
+        and tbx_date == crcl_date
+        and tbx.get("daily_pct") is not None
+    ):
+        p = float(tbx.get("daily_pct") or 0.0)
+        phase = quote_phase(pending, "tbx")
+        latest_official = (
+            f"최신 공식 10년 {float(treasury.get('ten_year', 0.0)):.2f}%"
+            f" · {treasury_date}"
+        )
+        if p > 0:
+            return (
+                "불리",
+                f"TBX {p:+.2f}% {phase} → 7~10년 국채 가격 하락·금리 상승 신호"
+                f" · {latest_official}",
+                -1,
+            )
+        if p < 0:
+            return (
+                "우호적",
+                f"TBX {p:+.2f}% {phase} → 7~10년 국채 가격 상승·금리 하락 신호"
+                f" · {latest_official}",
+                1,
+            )
+        return "중립", f"TBX 보합 {phase} · {latest_official}", 0
+
     t10 = float(treasury.get("daily_10y_bp", 0.0) or 0.0)
     prev = treasury.get("prev_ten_year")
     now = treasury.get("ten_year")
@@ -209,36 +246,199 @@ def build_summary(pending: dict) -> tuple[str, str]:
     return top, judgment
 
 
+def _fmt_krw_from_usd_m(value_usd_m: float, rate: float) -> str:
+    eok = value_usd_m * rate / 100.0
+    sign = "-" if eok < 0 else "+" if eok > 0 else ""
+    rounded = int(round(abs(eok)))
+    jo, rem = divmod(rounded, 10000)
+    if jo:
+        body = f"{jo:,}조{rem:,}억원" if rem else f"{jo:,}조원"
+    else:
+        body = f"{rounded:,}억원"
+    return f"약 {sign}{body}"
+
+
+def _extract_changes(text: str) -> list[str]:
+    m = re.search(
+        r"<b>핵심 변화</b>\s*(.*?)(?=\n\s*<b>돈 버는 능력|\n\s*<b>할인율|\n\s*<blockquote|\Z)",
+        text,
+        flags=re.S,
+    )
+    if not m:
+        return []
+    changes = []
+    for line in m.group(1).splitlines():
+        line = line.strip()
+        if line.startswith("• "):
+            changes.append(line)
+    return changes[:4]
+
+
+def _source_href(text: str, label_fragment: str) -> str | None:
+    for line in text.splitlines():
+        if label_fragment not in line:
+            continue
+        m = re.search(r'href="([^"]+)"', line)
+        if m:
+            return m.group(1)
+    return None
+
+
+def _direct_proxy_pct(pending: dict) -> float | None:
+    circle = pending.get("circle") or {}
+    usdxx = pending.get("usdxx") or {}
+    cp = circle.get("_previous_distinct") or {}
+    up = usdxx.get("_previous_distinct") or {}
+    vals = (
+        circle.get("circulation_usd_b"),
+        cp.get("circulation_usd_b"),
+        usdxx.get("sec_yield_7d"),
+        up.get("sec_yield_7d"),
+    )
+    if any(v is None for v in vals):
+        return None
+    c_now, c_prev, y_now, y_prev = map(float, vals)
+    prev_proxy = c_prev * y_prev
+    if not prev_proxy:
+        return None
+    return (c_now * y_now / prev_proxy - 1.0) * 100.0
+
+
+def build_compact_alert(pending: dict, original_text: str) -> str:
+    direct_label, _, direct_score = direct_earnings(pending)
+    proxy_label, _, proxy_score = proxy_rates(pending)
+    disc_label, disc_text, disc_score = discount_view(pending)
+    verdict = verdict_label(direct_score, proxy_score, disc_score)
+
+    if direct_score > 0 and disc_score < 0:
+        take = "본업 개선은 맞지만 장기금리 상승이 밸류에이션을 누르는 구간"
+    elif direct_score > 0 and disc_score > 0:
+        take = "본업과 할인율이 함께 개선돼 현재는 우호 신호가 우세"
+    elif direct_score < 0 and disc_score < 0:
+        take = "본업과 할인율이 함께 악화돼 현재는 부담이 우세"
+    elif direct_score < 0 and proxy_score > 0:
+        take = "현재 본업은 약하지만 단기금리 선행지표는 개선 중"
+    else:
+        take = f"본업 {direct_label} · 단기금리 {proxy_label} · 할인율 {disc_label}"
+
+    updated = str(pending.get("updated_at_kst") or "")
+    lines = [
+        "<b>CRCL · USDC 변화</b>",
+        f"<code>조회 {html.escape(updated)}</code>" if updated else "",
+        "",
+        f"<blockquote><b>판정 · {html.escape(verdict)}</b>\n{html.escape(take)}</blockquote>",
+    ]
+
+    changes = _extract_changes(original_text)
+    if changes:
+        lines += ["", "<b>이번 변화</b>", *changes]
+
+    circle = pending.get("circle") or {}
+    usdxx = pending.get("usdxx") or {}
+    sofr = pending.get("sofr") or {}
+    treasury = pending.get("treasury") or {}
+    crcl = pending.get("crcl") or {}
+    fx = pending.get("fx") or {}
+    fx_rate = float(fx.get("rate", 0.0) or 0.0)
+
+    cp = circle.get("_previous_distinct") or {}
+    up = usdxx.get("_previous_distinct") or {}
+
+    lines += ["", "<b>핵심 숫자</b>"]
+
+    c_now = circle.get("circulation_usd_b")
+    c_prev = cp.get("circulation_usd_b")
+    y_now = usdxx.get("sec_yield_7d")
+    y_prev = up.get("sec_yield_7d")
+    if c_now is not None:
+        c_now_f = float(c_now)
+        if c_prev is not None:
+            c_prev_f = float(c_prev)
+            c_pct = ((c_now_f / c_prev_f) - 1.0) * 100 if c_prev_f else 0.0
+            usdc_text = f"USDC {c_prev_f:.1f}→{c_now_f:.1f}십억달러 ({c_pct:+.2f}%)"
+        else:
+            usdc_text = f"USDC {c_now_f:.1f}십억달러"
+        if fx_rate:
+            usdc_text += f" · {_fmt_krw_from_usd_m(c_now_f * 1000.0, fx_rate)}"
+
+        reserve_text = ""
+        if y_now is not None:
+            if y_prev is not None:
+                y_bp = (float(y_now) - float(y_prev)) * 100.0
+                reserve_text = f" | 준비금 {float(y_prev):.2f}→{float(y_now):.2f}% ({y_bp:+.1f}bp)"
+            else:
+                reserve_text = f" | 준비금 {float(y_now):.2f}%"
+
+        proxy_pct = _direct_proxy_pct(pending)
+        proxy_text = f" | 이익 프록시 {proxy_pct:+.2f}%" if proxy_pct is not None else ""
+        lines.append(f"• <b>본업</b> · {html.escape(usdc_text + reserve_text + proxy_text)}")
+
+    if sofr or treasury:
+        s_text = (
+            f"SOFR {float(sofr.get('rate', 0.0)):.2f}% ({float(sofr.get('daily_bp', 0.0)):+.1f}bp)"
+            if sofr else "SOFR 확인 불가"
+        )
+        t3_text = (
+            f"3M {float(treasury.get('three_month', 0.0)):.2f}% ({float(treasury.get('daily_3m_bp', 0.0)):+.1f}bp)"
+            if treasury else "3M 확인 불가"
+        )
+        lines.append(f"• <b>단기금리</b> · {html.escape(s_text)} | {html.escape(t3_text)}")
+
+    if treasury:
+        treasury_date = str(treasury.get("date") or "")
+        crcl_date = str(crcl.get("date") or "")
+        if treasury_date and crcl_date and treasury_date < crcl_date and "TBX" in disc_text:
+            lines.append(f"• <b>할인율</b> · {html.escape(disc_text)}")
+        else:
+            lines.append(
+                f"• <b>할인율</b> · 10Y {float(treasury.get('ten_year', 0.0)):.2f}%"
+                f" ({float(treasury.get('daily_10y_bp', 0.0)):+.1f}bp)"
+            )
+
+    if crcl and crcl.get("close") is not None:
+        phase = quote_phase(pending, "crcl")
+        lines.append(
+            f"• <b>CRCL</b> · ${float(crcl.get('close')):.2f}"
+            f" · {float(crcl.get('daily_pct', 0.0)):+.2f}% {html.escape(phase)}"
+        )
+
+    if fx_rate:
+        lines += [
+            "",
+            f"• 환율 · 1달러={fx_rate:,.2f}원 · {html.escape(str(fx.get('date') or ''))}"
+            f" · {html.escape(str(fx.get('source') or ''))}",
+        ]
+
+    links = []
+    for frag, label in (
+        ("Circle USDC", "Circle"),
+        ("Circle Reserve Fund", "BlackRock"),
+        ("SOFR", "NY Fed"),
+        ("미 국채 금리", "미 재무부"),
+        ("Circle 2Q26 10-Q", "SEC"),
+    ):
+        href = _source_href(original_text, frag)
+        if href:
+            links.append(f'<a href="{href}">{label}</a>')
+    if links:
+        lines.append("<b>원문</b> · " + " · ".join(links))
+
+    compact: list[str] = []
+    for line in lines:
+        if not line and compact and compact[-1] == "":
+            continue
+        compact.append(line)
+    return "\n".join(compact).strip() + "\n"
+
+
 def main() -> None:
     if not ALERT_PATH.exists() or not PENDING_PATH.exists():
         return
-    text = ALERT_PATH.read_text(encoding="utf-8")
+    original_text = ALERT_PATH.read_text(encoding="utf-8")
     pending = load_json(PENDING_PATH)
     if not pending:
         return
-
-    top, judgment = build_summary(pending)
-
-    # Replace exactly one current-conclusion block. The previous two-pass replacement
-    # could replace its own output and duplicate the fixed SOFR explainer.
-    text, replaced = re.subn(
-        r"<blockquote><b>현재 결론</b>.*?</blockquote>\n*",
-        top,
-        text,
-        count=1,
-        flags=re.S,
-    )
-    if replaced == 0:
-        text = re.sub(
-            r"<blockquote><b>현재 결론 · .*?</blockquote>\n*",
-            top,
-            text,
-            count=1,
-            flags=re.S,
-        )
-
-    text = re.sub(r"<blockquote><b>판단</b>.*?</blockquote>", judgment, text, count=1, flags=re.S)
-    ALERT_PATH.write_text(text, encoding="utf-8")
+    ALERT_PATH.write_text(build_compact_alert(pending, original_text), encoding="utf-8")
 
 
 if __name__ == "__main__":
