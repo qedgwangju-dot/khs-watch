@@ -236,17 +236,22 @@ def cftc_nq_history_3y(current_nq=None, current_period=None):
 
     df["_net"] = df["Lev_Money_Positions_Long_All"] - df["Lev_Money_Positions_Short_All"]
     df["_short_severity"] = (-df["_net"]).clip(lower=0)
+    df["_gross_short"] = df["Lev_Money_Positions_Short_All"]
     df["_short_share"] = (
         df["Lev_Money_Positions_Short_All"] / df["Open_Interest_All"] * 100.0
     )
 
     cur = df.iloc[-1]
     severity = float(cur["_short_severity"])
+    gross_short = float(cur["_gross_short"])
     short_share = float(cur["_short_share"])
     severity_pct = float((df["_short_severity"] <= severity).mean() * 100.0)
+    gross_short_pct = float((df["_gross_short"] <= gross_short).mean() * 100.0)
     short_share_pct = float((df["_short_share"] <= short_share).mean() * 100.0)
     peak = float(df["_short_severity"].max())
+    gross_peak = float(df["_gross_short"].max())
     unwind = ((peak - severity) / peak * 100.0) if peak > 0 else None
+    gross_unwind = ((gross_peak - gross_short) / gross_peak * 100.0) if gross_peak > 0 else None
 
     def diff(col, weeks):
         if len(df) <= weeks:
@@ -258,9 +263,14 @@ def cftc_nq_history_3y(current_nq=None, current_period=None):
         "sample_n": int(len(df)),
         "start_date": df.iloc[0]["_date"].strftime("%Y-%m-%d"),
         "end_date": df.iloc[-1]["_date"].strftime("%Y-%m-%d"),
+        "net_short_percentile_3y": severity_pct,
+        "gross_short_percentile_3y": gross_short_pct,
         "short_extreme_percentile_3y": severity_pct,
         "short_share_oi_percentile_3y": short_share_pct,
         "peak_net_short_contracts_3y": int(round(peak)),
+        "peak_gross_short_contracts_3y": int(round(gross_peak)),
+        "net_short_unwind_from_peak_pct": unwind,
+        "gross_short_unwind_from_peak_pct": gross_unwind,
         "unwind_from_peak_pct": unwind,
         "leveraged_short_1w_change": int(round(diff("Lev_Money_Positions_Short_All", 1))) if diff("Lev_Money_Positions_Short_All", 1) is not None else None,
         "leveraged_short_4w_change": int(round(diff("Lev_Money_Positions_Short_All", 4))) if diff("Lev_Money_Positions_Short_All", 4) is not None else None,
@@ -657,8 +667,10 @@ def validate_critical_sources(cftc_obj, cboe_obj, sox_obj):
                 problems.append("CFTC NQ Leveraged Funds 순포지션 산술 불일치")
             if nq.get("open_interest_wow") is None:
                 problems.append("CFTC NQ 동일범위 OI 주간변화 확인 불가")
-        if not isinstance(hist.get("short_extreme_percentile_3y"), (int, float)):
+        if not isinstance(hist.get("net_short_percentile_3y"), (int, float)):
             problems.append("CFTC NQ 3년 순숏 백분위 확인 불가")
+        if not isinstance(hist.get("gross_short_percentile_3y"), (int, float)):
+            problems.append("CFTC NQ 3년 총숏 백분위 확인 불가")
         if int(hist.get("sample_n") or 0) < 150:
             problems.append("CFTC NQ 3년 표본 부족")
 
