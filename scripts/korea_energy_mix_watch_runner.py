@@ -291,7 +291,7 @@ def _interpret_grid_innovation(body: str) -> list[str]:
         "• <b>2030년 재생에너지 100GW 목표 자체가 새로 생긴 것이 아니라</b>, 그 목표를 막던 계통 접속 병목을 실제 제도 변경으로 풀기 시작한 실행대책",
     ]
     if _has_any(lower, "10월 1일", "다음달 1일", "다음 달 1일") and "호남" in lower and "계통관리변전소" in lower and "해제" in lower:
-        lines.append("• <b>호남권 계통관리변전소 지정 해제</b>가 다음달 1일부터 시행될 예정으로, 신규 재생에너지의 접속 제한 방식이 실제로 바뀌는 일정이 생김")
+        lines.append("• <b>10월 1일부터 호남권 계통관리변전소 지정 해제</b>가 시행될 예정으로, 신규 재생에너지의 접속 제한 방식이 실제로 바뀌는 일정이 생김")
     if "10gw" in lower and "접속권" in lower and "회수" in lower:
         lines.append("• 장기 지연사업의 접속권을 회수해 <b>호남에서 2030년까지 10GW 이상</b>을 실제 추진사업에 다시 배분하는 것이 핵심")
     if "171gw" in lower and ("수용량" in lower or "수용" in lower):
