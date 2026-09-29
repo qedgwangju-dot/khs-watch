@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-29T22:09:10+09:00",
+  "updated_at_kst": "2026-09-30T03:43:28+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
@@ -49,6 +49,7 @@
     "a1f202951bc6ed71f25e0b03",
     "ad831c0a9b75057895ffb73a",
     "adca27d662f4cb51e531edfd",
+    "b4862a8df904bf88d04f0bd6",
     "b7a9ea191f0d39046caeeb6d",
     "bc36972bfd79436e7ad41fd1",
     "c1d173fd17a8a8cd17f5cd5b",
@@ -91,13 +92,13 @@
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1357.93,
-    "date": "2026-09-28 일일 기준 · ECB/Frankfurter · 조회 2026-09-29 22:09 KST · 보조 API 2026-09-29 · 차이 0.08% · 일중 기준시각 차이 가능",
+    "rate": 1353.36,
+    "date": "2026-09-29 일일 기준 · ECB/Frankfurter · 조회 2026-09-30 03:43 KST · 보조 API 2026-09-29 · 차이 0.41% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
   "errors": [
-    "핵심 사실 자동추출 실패로 발송 제외: v.daum.net | HBM에 DDR5까지⋯삼성·SK 3분기 수익성 고공행진 - v.daum.net"
+    "핵심 사실 자동추출 실패로 발송 제외: 이투데이 | HBM에 DDR5까지⋯삼성·SK 3분기 수익성 고공행진 - 이투데이"
   ],
   "ai_component_leadtime": {
     "as_of": "2026-09-21",
@@ -147,13 +148,13 @@
       "https://insights.trendforce.com/p/weekly-radar-002",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-09-29T22:09:19+09:00",
+    "last_checked_at_kst": "2026-09-30T03:43:36+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 1,
   "delivery_check": {
-    "checked_at_kst": "2026-09-29T22:16:30+09:00",
+    "checked_at_kst": "2026-09-30T03:48:56+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-09-29T21:12:56+09:00",
@@ -222,8 +223,8 @@
       "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
-    "last_validation_cutoff": "2026-09-29",
-    "last_checked_at_kst": "2026-09-29T22:10:12+09:00"
+    "last_validation_cutoff": "2026-09-30",
+    "last_checked_at_kst": "2026-09-30T03:44:13+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -258,8 +259,8 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10461",
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
-    "last_checked_cutoff": "2026-09-29",
-    "last_checked_at_kst": "2026-09-29T22:15:14+09:00",
+    "last_checked_cutoff": "2026-09-30",
+    "last_checked_at_kst": "2026-09-30T03:47:48+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -303,7 +304,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-09-29T22:15:46+09:00",
+    "last_checked_at_kst": "2026-09-30T03:48:15+09:00",
     "candidate_count": 0,
     "event_count": 0
   }
