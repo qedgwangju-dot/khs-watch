@@ -212,6 +212,7 @@ SYMBOLS = {
     "dxy": SymbolSpec("DX-Y.NYB", "달러인덱스", ""),
     "wti": SymbolSpec("CL=F", "WTI", "달러/배럴"),
     "brent": SymbolSpec("BZ=F", "Brent", "달러/배럴"),
+    "usdkrw": SymbolSpec("KRW=X", "원·달러", "원/달러"),
 }
 
 
@@ -1028,6 +1029,13 @@ def fmt_quote_line(quote: Quote) -> str:
             f"- {quote.label}: {quote.price:.2f} (전 거래일 {quote.previous_close:.2f}, "
             f"{fmt_signed(quote.change_pct, 2, '%')}, {direction})"
         )
+    if quote.symbol == "KRW=X":
+        won = "원화 약세" if quote.change > 0 else "원화 강세" if quote.change < 0 else "보합"
+        return (
+            f"- {quote.label}: {quote.price:,.2f}원 "
+            f"(전 거래일 {quote.previous_close:,.2f}원, "
+            f"{fmt_signed(quote.change_pct, 2, '%')}, {won})"
+        )
     direction = "하락" if quote.change < 0 else "상승" if quote.change > 0 else "보합"
     return (
         f"- {quote.label}: ${quote.price:.2f}/배럴 (전 거래일 ${quote.previous_close:.2f}, "
@@ -1160,6 +1168,7 @@ def build_physical_flow_alert_body(
     news_rows: list[NewsItem],
     oil: Quote | None,
     current: dt.datetime,
+    fx: Quote | None = None,
 ) -> str:
     metrics = _extract_kpler_sts_metrics(news_rows)
     lines = [
@@ -1233,6 +1242,11 @@ def build_physical_flow_alert_body(
         lines.append(
             f"Brent         USD {oil.price:.2f}/배럴 · {oil.change_pct:+.2f}% {direction}"
         )
+    if fx is not None:
+        won = "약세" if fx.change > 0 else "강세" if fx.change < 0 else "보합"
+        lines.append(
+            f"원·달러       {fx.price:,.2f}원 · {fx.change_pct:+.2f}% · 원화 {won}"
+        )
 
     lines.extend(["", "[핵심 의미]"])
     if kind == "regional_export_recovery":
@@ -1280,6 +1294,28 @@ def build_physical_flow_alert_body(
             "→ 유가에는 하방 압력, VLCC 운임·물류비에는 상방 압력이 동시에 생길 수 있습니다.",
             "→ '수출 회복'과 '물류 정상화'를 같은 의미로 보면 안 됩니다.",
         ])
+
+    lines.extend(["", "[한국 전이]"])
+    if oil is not None and fx is not None:
+        if oil.change < 0 and fx.change <= 0:
+            lines.append("유가 ↓ + 원화 강세/안정 → 수입물가·에너지 원가·금리 부담 완화 방향")
+        elif oil.change < 0 and fx.change > 0:
+            lines.append("유가 ↓ 하지만 원화 약세 → 국내 수입원가 완화 속도는 느려질 수 있음")
+        elif oil.change > 0 and fx.change > 0:
+            lines.append("유가 ↑ + 원화 약세 → 수입물가·금리·기업 원가 부담이 동시에 커지는 조합")
+        else:
+            lines.append("유가·환율 신호가 엇갈림 → 국내 실적 영향은 업종별로 갈릴 가능성")
+    elif oil is not None:
+        lines.append("유가 방향은 확인됐지만 원·달러 검증값이 없어 국내 환율 전이는 숫자 판정 보류")
+    else:
+        lines.append("유가·원·달러 동시 검증이 없어 국내 전이는 정성 판단만 유지")
+
+    lines.extend([
+        "실적 시즌    달러 매출 비중이 큰 수출기업은 원화 약세가 원화 환산 매출에 우호적일 수 있음",
+        "원가 민감    항공·전력/가스·운송·석유화학 등은 유가·달러 동반 상승 시 비용 부담 확대",
+        "금리 경로    고유가·원화 약세가 수입물가를 끌어올리면 한국은행의 완화 여지가 줄 수 있음",
+        "다음 확인    원·달러 → 수입물가/CPI → 국고채 금리 → 3분기 실적 가이던스",
+    ])
 
     lines.extend(["", "[병목]"])
     if kind == "regional_export_recovery":
@@ -1329,6 +1365,9 @@ def build_physical_flow_alert_body(
         "Fujairah·Sohar 병목",
         "VLCC 운임·가용선복",
         "Brent",
+        "원·달러",
+        "한국 수입물가·CPI·국고채 금리",
+        "3분기 기업 실적 가이던스",
     ])
 
     lines.extend(["", "[근거]"])
@@ -1455,7 +1494,7 @@ def run_monitor(current: dt.datetime) -> int:
 
     market_errors: list[str] = []
     quotes: dict[str, Quote] = {}
-    for key in ("us2y", "dxy", "wti", "brent"):
+    for key in ("us2y", "dxy", "wti", "brent", "usdkrw"):
         try:
             quotes[key] = fetch_quote(SYMBOLS[key])
         except Exception as exc:
@@ -1477,7 +1516,10 @@ def run_monitor(current: dt.datetime) -> int:
             if candidate is not None and quote_is_fresh(candidate, current, max_age_minutes):
                 oil = candidate
                 break
-        body = build_physical_flow_alert_body(kind, news_rows, oil, current)
+        fx = quotes.get("usdkrw")
+        if fx is not None and not quote_is_fresh(fx, current, max_age_minutes):
+            fx = None
+        body = build_physical_flow_alert_body(kind, news_rows, oil, current, fx)
         title = "중동 원유 흐름 회복·우회 물류 변화"
         alert = {
             "test_mode": False,
@@ -1486,7 +1528,10 @@ def run_monitor(current: dt.datetime) -> int:
             "event_label": EVENT_LABELS[kind],
             "event_id": current_event_id,
             "news": [asdict(row) for row in news_rows],
-            "market": {"oil": asdict(oil) if oil else None},
+            "market": {
+                "oil": asdict(oil) if oil else None,
+                "usdkrw": asdict(fx) if fx else None,
+            },
         }
         pending_state = build_pending_state(
             state, current_event_id, kind, current, alert["market"]
