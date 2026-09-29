@@ -22,6 +22,7 @@ KST = ZoneInfo("Asia/Seoul")
 BASE = "https://openapi.ls-sec.co.kr:8080"
 STATUS = Path("out/kospi_shock_episode_status.md")
 RAW = Path("out/kospi_shock_episode_raw.json")
+DELIVERY_LOG = Path("out/kospi_shock_delivery_log.jsonl")
 KOSPI_URL = "https://m.stock.naver.com/domestic/index/KOSPI/total"
 LS_URL = "https://openapi.ls-sec.co.kr/apiservice"
 NEWS_URL = "https://search.naver.com/search.naver?where=news&query=" + urllib.parse.quote("코스피 급락")
@@ -31,6 +32,8 @@ FLOW_LOOKBACK_SEC = 4 * 60 * 60
 FLOW_INTERVAL_SEC = 10
 NEW_LOW_CONFIRM_SEC = 240
 MAX_EPISODE_SEC = 3 * 60 * 60
+MAX_FLOW_ALIGNMENT_SEC = 30
+MAX_PROGRAM_SNAPSHOT_SKEW_SEC = 5.0
 
 
 def fnum(v: Any) -> float | None:
@@ -88,7 +91,9 @@ def telegram_send(text: str) -> int:
         out = json.loads(r.read().decode("utf-8"))
     if not out.get("ok"):
         raise RuntimeError(f"Telegram rejected message: {out}")
-    return int(out["result"]["message_id"])
+    message_id = int(out["result"]["message_id"])
+    print(f"telegram_delivery_confirmed=true bot=@{actual} message_id={message_id}", flush=True)
+    return message_id
 
 
 def get_token() -> str:
@@ -155,7 +160,11 @@ def _program_mini(token: str, gubun: str) -> dict[str, Any] | None:
     # t1640: 11=거래소 전체, 12=거래소 차익, 13=거래소 비차익.
     d = ls_post(token, "/stock/program", "t1640", {"t1640InBlock": {"gubun": gubun, "exchgubun": "K"}})
     row = d.get("t1640OutBlock")
-    return row if isinstance(row, dict) and row else None
+    if not isinstance(row, dict) or not row:
+        return None
+    out = dict(row)
+    out["_fetched_ts"] = time.time()
+    return out
 
 
 def program_current(token: str) -> dict[str, Any] | None:
@@ -168,18 +177,29 @@ def program_current(token: str) -> dict[str, Any] | None:
     nonarb = _program_mini(token, "13")
     if not total and not arb and not nonarb:
         return None
+    total_val = fnum((total or {}).get("value"))
+    arb_val = fnum((arb or {}).get("value"))
+    nonarb_val = fnum((nonarb or {}).get("value"))
+    fetch_times = [fnum((x or {}).get("_fetched_ts")) for x in (total, arb, nonarb)]
+    fetch_times = [x for x in fetch_times if x is not None]
+    component_sum = (arb_val + nonarb_val) if arb_val is not None and nonarb_val is not None else None
+    identity_gap = (total_val - component_sum) if total_val is not None and component_sum is not None else None
     return {
         "time": dt.datetime.now(KST).strftime("%H%M%S"),
-        "전체": fnum((total or {}).get("value")),
-        "차익": fnum((arb or {}).get("value")),
-        "비차익": fnum((nonarb or {}).get("value")),
+        "전체": total_val,
+        "차익": arb_val,
+        "비차익": nonarb_val,
         "베이시스": fnum((total or {}).get("basis")),
         "전체_순매수증감": fnum((total or {}).get("sunvaldiff") or (total or {}).get("sundiff")),
+        "표본시차초": (max(fetch_times) - min(fetch_times)) if len(fetch_times) >= 2 else None,
+        "차익비차익합": component_sum,
+        "전체대비차이": identity_gap,
     }
 
 
 def fetch_flow_snapshot(token: str) -> dict[str, Any]:
-    snap: dict[str, Any] = {"ts": time.time(), "errors": {}}
+    started_ts = time.time()
+    snap: dict[str, Any] = {"ts": started_ts, "ts_start": started_ts, "errors": {}}
     for key, market, upcode in (("현물", "1", "001"), ("선물", "4", "900")):
         try:
             snap[key] = investor_current(token, market, upcode)
@@ -192,6 +212,10 @@ def fetch_flow_snapshot(token: str) -> dict[str, Any]:
     except Exception as exc:
         snap["프로그램"] = None
         snap["errors"]["프로그램"] = f"{type(exc).__name__}: {exc}"
+    ended_ts = time.time()
+    snap["ts_end"] = ended_ts
+    snap["ts"] = (started_ts + ended_ts) / 2.0
+    snap["sample_span_sec"] = ended_ts - started_ts
     return snap
 
 
@@ -465,7 +489,16 @@ class Watch:
     def attribution(self, start_ts: float, end_ts: float) -> dict[str, Any]:
         a = self._flow_near(start_ts, True); b = self._flow_near(end_ts, True)
         if not a or not b:
-            return {"available": False}
+            return {"available": False, "reason": "사건 시작 또는 종료 이전 수급 스냅샷 없음"}
+        start_gap = max(0.0, start_ts - float(a.get("ts", 0)))
+        end_gap = max(0.0, end_ts - float(b.get("ts", 0)))
+        if start_gap > MAX_FLOW_ALIGNMENT_SEC or end_gap > MAX_FLOW_ALIGNMENT_SEC:
+            return {
+                "available": False,
+                "reason": f"수급 기준점 시간 정렬 초과(시작 {start_gap:.1f}초, 종료 {end_gap:.1f}초; 허용 {MAX_FLOW_ALIGNMENT_SEC}초)",
+                "start_alignment_sec": start_gap,
+                "end_alignment_sec": end_gap,
+            }
         spot = _actor_delta(a.get("현물"), b.get("현물"))
         fut = _actor_delta(a.get("선물"), b.get("선물"))
         pgm = _program_delta(a.get("프로그램"), b.get("프로그램"))
@@ -479,15 +512,25 @@ class Watch:
                          if spot.get(actor) is not None and fut.get(actor) is not None
                          and float(spot[actor]) < 0 and float(fut[actor]) < 0]
         pgm_neg = pgm.get("전체") is not None and float(pgm["전체"]) < 0
+        pgm_spans = [
+            fnum(((snap.get("프로그램") or {}).get("표본시차초")))
+            for snap in (a, b)
+        ]
+        pgm_spans = [x for x in pgm_spans if x is not None]
+        max_pgm_span = max(pgm_spans) if pgm_spans else None
+        program_quality = bool(max_pgm_span is not None and max_pgm_span <= MAX_PROGRAM_SNAPSHOT_SKEW_SEC)
 
         # '두 시장 모두 음수'와 '두 시장을 주도'를 구분한다.
         # 현물/선물의 최다 매도자가 같을 때만 단일 주체 주도로 올린다.
         if spot_leader and spot_leader == fut_leader:
-            if pgm_neg:
-                verdict = f"{spot_leader}가 현물·선물 모두 최다 매도이고 프로그램 매도도 동반 — 주도 가능성 높음"
+            if pgm_neg and program_quality:
+                verdict = f"{spot_leader}: 현물·선물 모두 최다 매도 + 프로그램 매도 동반 — 주도 가능성 높음"
                 confidence = "높음"
+            elif pgm_neg:
+                verdict = f"{spot_leader}: 현물·선물 모두 최다 매도, 프로그램 매도 방향도 확인 — 프로그램 표본 시차 때문에 확신도 상향 보류"
+                confidence = "중간"
             else:
-                verdict = f"{spot_leader}가 현물·선물 모두 최다 매도 — 주도 후보지만 프로그램 동조는 약함"
+                verdict = f"{spot_leader}: 현물·선물 모두 최다 매도 — 주도 후보지만 프로그램 동조는 약함"
                 confidence = "중간"
         elif spot_leader and fut_leader and spot_leader != fut_leader:
             verdict = f"현물은 {spot_leader}, 선물은 {fut_leader}가 최다 매도 — 주체 분산, 단일 주도자 확정 보류"
@@ -515,7 +558,9 @@ class Watch:
                 "spot_leader": spot_leader, "spot_leader_value": spot_leader_val,
                 "futures_leader": fut_leader, "futures_leader_value": fut_leader_val,
                 "cross_sellers": cross_sellers,
-                "verdict": verdict, "confidence": confidence, "program_kind": pgm_kind}
+                "verdict": verdict, "confidence": confidence, "program_kind": pgm_kind,
+                "start_alignment_sec": start_gap, "end_alignment_sec": end_gap,
+                "program_sample_span_sec": max_pgm_span, "program_quality": program_quality}
 
     def option_move(self, start_ts: float, end_ts: float) -> tuple[str, float] | None:
         best = None
@@ -541,8 +586,6 @@ class Watch:
                  f"• KOSPI <b>{float(ep['start_price']):,.2f}</b> → <b>{end_price:,.2f}</b> · <b>{drop:+.2f}%</b>",
                  f"• 현재 구간 저점 <b>{float(ep['low_price']):,.2f}</b> ({fmt_clock(ep['low_ts'])})", "",
                  "<b>그 구간에서 누가 팔았나</b>"]
-        if float(ep["start_ts"]) - self.monitor_started_ts < 15 * 60:
-            lines += ["⚠️ <b>감시 시작 직후 포착</b> — 실제 급락 시작점이 이보다 앞설 수 있어 시작시각 확신도를 낮춥니다.", ""]
         if att.get("available"):
             s, f, p = att["spot"], att["futures"], att["program"]
             cross = ", ".join(att.get("cross_sellers") or []) or "없음"
@@ -552,10 +595,11 @@ class Watch:
                       f"• 선물 최다매도: <b>{html.escape(str(att.get('futures_leader') or '없음'))}</b> {fmt_eok(att.get('futures_leader_value'))}",
                       f"• 양시장 동시매도: <b>{html.escape(cross)}</b>",
                       f"• 프로그램 전체 <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS t1640 누적값 변화)</i>",
-                      f"• 프로그램 방향: <b>{html.escape(str(att.get('program_kind')))}</b>", "",
+                      f"• 프로그램 방향: <b>{html.escape(str(att.get('program_kind')))}</b>",
+                      f"• 수급 기준점 시차: 시작 <b>{float(att.get('start_alignment_sec') or 0):.1f}초</b> · 종료 <b>{float(att.get('end_alignment_sec') or 0):.1f}초</b> · 프로그램 3종 조회시차 최대 <b>{float(att.get('program_sample_span_sec') or 0):.1f}초</b>", "",
                       "<b>판정</b>", f"• <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
         else:
-            lines += ["• 사건 시작 직전 수급 스냅샷이 부족해 주체 판정 보류"]
+            lines += [f"• 주체 판정 보류 — {html.escape(str(att.get('reason') or '수급 스냅샷 부족'))}"]
         opt = self.option_move(float(ep["start_ts"]), end_ts)
         if opt:
             lines += ["", "<b>파생 증폭 확인</b>", f"• 근접 위클리 풋 <b>{html.escape(opt[0])}</b> · 사건 시작 대비 <b>{opt[1]:.1f}배</b>"]
@@ -585,9 +629,10 @@ class Watch:
                       f"• 선물 최다매도: <b>{html.escape(str(att.get('futures_leader') or '없음'))}</b> {fmt_eok(att.get('futures_leader_value'))}",
                       f"• 양시장 동시매도: <b>{html.escape(cross)}</b>",
                       f"• 프로그램: 전체 <b>{fmt_raw(p.get('전체'))}</b> · 차익 <b>{fmt_raw(p.get('차익'))}</b> · 비차익 <b>{fmt_raw(p.get('비차익'))}</b> <i>(LS t1640 누적값 변화)</i>",
+                      f"• 수급 기준점 시차: 시작 <b>{float(att.get('start_alignment_sec') or 0):.1f}초</b> · 저점 <b>{float(att.get('end_alignment_sec') or 0):.1f}초</b> · 프로그램 3종 조회시차 최대 <b>{float(att.get('program_sample_span_sec') or 0):.1f}초</b>",
                       f"• 최종 판정: <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
         else:
-            lines += ["• 수급 스냅샷 부족 — 가격 구간만 확정"]
+            lines += [f"• 가격 구간만 확정 — {html.escape(str(att.get('reason') or '수급 스냅샷 부족'))}"]
         lines += ["", "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(NEWS_URL,"관련 뉴스")])]
         return "\n".join(lines)
 
@@ -636,11 +681,21 @@ class Watch:
                     "peak_ts": info["peak_ts"], "reason": "incomplete start flow snapshot",
                 }
                 return
+            start_gap = float(info["peak_ts"]) - float(start_flow.get("ts", 0))
+            if start_gap > MAX_FLOW_ALIGNMENT_SEC:
+                self.raw["suppressed_stale_flow_trigger"] = {
+                    "peak_ts": info["peak_ts"], "flow_ts": start_flow.get("ts"),
+                    "alignment_sec": start_gap,
+                    "reason": f"start flow alignment exceeds {MAX_FLOW_ALIGNMENT_SEC}s",
+                }
+                return
 
             self.episode = {"start_ts": info["peak_ts"], "start_price": info["peak"],
                             "low_ts": now_t, "low_price": cur, "sent_drop": abs(float(info["drop"])),
                             "alerted": True, "trigger": info}
-            self.msg_ids.append(await asyncio.to_thread(telegram_send, self.build_alert("start", self.episode, now_t, cur)))
+            msg_id = await asyncio.to_thread(telegram_send, self.build_alert("start", self.episode, now_t, cur))
+            self.msg_ids.append(msg_id)
+            self._record_delivery("start", msg_id, self.episode, now_t)
             return
         ep = self.episode
         if cur < float(ep["low_price"]):
@@ -648,7 +703,9 @@ class Watch:
         total_drop = abs(pct(float(ep["start_price"]), cur) or 0.0)
         if total_drop >= float(ep.get("sent_drop", 0.0)) + 0.50:
             ep["sent_drop"] = total_drop
-            self.msg_ids.append(await asyncio.to_thread(telegram_send, self.build_alert("expand", ep, now_t, cur)))
+            msg_id = await asyncio.to_thread(telegram_send, self.build_alert("expand", ep, now_t, cur))
+            self.msg_ids.append(msg_id)
+            self._record_delivery("expand", msg_id, ep, now_t)
         low_age = now_t - float(ep["low_ts"])
         full_drop = abs(pct(float(ep["start_price"]), float(ep["low_price"])) or 0.0)
         rebound = pct(float(ep["low_price"]), cur) or 0.0
@@ -660,8 +717,26 @@ class Watch:
                  (low_age >= 120 and recovery_ratio >= 0.45) or
                  (now_t - float(ep["start_ts"]) >= MAX_EPISODE_SEC and low_age >= 600))
         if ended:
-            self.msg_ids.append(await asyncio.to_thread(telegram_send, self.build_end(ep, now_t, cur)))
+            msg_id = await asyncio.to_thread(telegram_send, self.build_end(ep, now_t, cur))
+            self.msg_ids.append(msg_id)
+            self._record_delivery("end", msg_id, ep, now_t)
             self.episode = None
+
+    def _record_delivery(self, stage: str, message_id: int, ep: dict[str, Any], observed_ts: float) -> None:
+        DELIVERY_LOG.parent.mkdir(parents=True, exist_ok=True)
+        record = {
+            "logged_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
+            "stage": stage,
+            "message_id": message_id,
+            "event_start_ts": ep.get("start_ts"),
+            "event_start_kst": fmt_clock(ep.get("start_ts")),
+            "event_low_ts": ep.get("low_ts"),
+            "event_low_kst": fmt_clock(ep.get("low_ts")),
+            "observed_ts": observed_ts,
+            "observed_kst": fmt_clock(observed_ts),
+        }
+        with DELIVERY_LOG.open("a", encoding="utf-8") as fp:
+            fp.write(json.dumps(record, ensure_ascii=False) + "\n")
 
     def seed_backfill(self) -> None:
         try:
