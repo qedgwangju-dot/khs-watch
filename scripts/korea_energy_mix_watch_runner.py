@@ -276,6 +276,37 @@ def _generic_extract(body: str) -> list[str]:
     return [html.escape(x[2]) for x in sorted(best, key=lambda x: -x[1])]
 
 
+def _interpret_grid_innovation(body: str) -> list[str]:
+    lower = body.lower()
+    if not (
+        "전력망 혁신대책" in lower
+        or ("계통관리변전소" in lower and "해제" in lower)
+        or ("접속권" in lower and "회수" in lower)
+        or ("비증설" in lower and "ess" in lower)
+    ):
+        return []
+
+    lines = [
+        "<b>원문이 말하는 핵심</b>",
+        "• <b>2030년 재생에너지 100GW 목표 자체가 새로 생긴 것이 아니라</b>, 그 목표를 막던 계통 접속 병목을 실제 제도 변경으로 풀기 시작한 실행대책",
+    ]
+    if "10월 1일" in lower and "호남" in lower and "계통관리변전소" in lower and "해제" in lower:
+        lines.append("• <b>10월 1일부터 호남권 계통관리변전소 지정 해제</b>가 예고돼 신규 재생에너지의 접속 제한 방식이 실제로 바뀌는 일정이 생김")
+    if "10gw" in lower and "접속권" in lower and "회수" in lower:
+        lines.append("• 장기 지연사업의 접속권을 회수해 <b>호남에서 2030년까지 10GW 이상</b>을 실제 추진사업에 다시 배분하는 것이 핵심")
+    if "171gw" in lower and ("수용량" in lower or "수용" in lower):
+        lines.append("• 기사상 전국 계통 수용능력 목표는 <b>최대 171GW</b>로 제시되며, 이는 실제 설치량이 아니라 전력망이 받아들일 수 있는 상한 개념")
+    if "ess" in lower and ("비증설" in lower or "기존 전력망" in lower):
+        lines.append("• 송·배전선 신설만 기다리지 않고 <b>ESS 등 전력망 비증설 대안</b>으로 기존 망의 활용률을 높이는 방향이 실행 단계로 이동")
+    lines.extend([
+        "",
+        "<b>쉽게 풀면</b>",
+        "• 기존에는 '재생에너지 100GW를 깔겠다'가 목표였다면, 이번에는 <b>누가 언제 접속할 수 있는지와 빈 계통용량을 어떻게 다시 배분할지</b>를 바꾼 것",
+        "• 직접 변화 축은 <b>배전망 ESS·PCS·VPP·계통운영 소프트웨어·변압기·개폐기·전력망 보강</b> 쪽이 더 선명함",
+    ])
+    return lines
+
+
 def _interpret_renewable(body: str) -> list[str]:
     lower = body.lower()
     if not ("재생" in lower and "220gw" in lower):
@@ -428,7 +459,8 @@ def interpret_article_body(row: dict[str, Any], body: str, error: str) -> str:
         ])
 
     specialized = (
-        _interpret_nuclear_deliberation(body)
+        _interpret_grid_innovation(body)
+        or _interpret_nuclear_deliberation(body)
         or _interpret_nuclear_coal_lng(body)
         or _interpret_renewable(body)
     )
