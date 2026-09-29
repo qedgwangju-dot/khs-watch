@@ -2,7 +2,7 @@
 import os, re, json, hashlib, html
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
-from io import StringIO
+from io import StringIO, BytesIO
 
 import requests
 import pandas as pd
@@ -35,6 +35,8 @@ S.headers.update({
 })
 
 CFTC = "https://www.cftc.gov/dea/futures/financial_lf.htm"
+CFTC_HISTORY_TEMPLATE = "https://www.cftc.gov/files/dea/history/fut_fin_txt_{year}.zip"
+NQ_CFTC_CODE = "209742"
 CBOE = "https://www.cboe.com/us/options/market_statistics/market/"
 SOX = "https://indexes.nasdaq.com/Index/History/SOX"
 SOX_AUX = "https://indexes.nasdaq.com/Index/Weighting/SOX"
@@ -104,6 +106,166 @@ def parse_num(x):
 def int_list(text):
     vals = re.findall(r"[-+]?(?:\d{1,3}(?:,\d{3})+|\d+)", text)
     return [int(x.replace(",", "")) for x in vals]
+
+
+def parse_cftc_nq_mini(plain):
+    """Parse the official NASDAQ MINI (NQ) TFF block separately from Consolidated."""
+    start = plain.find("NASDAQ MINI -")
+    if start < 0:
+        return None
+    block = plain[start : start + 7000]
+
+    oi_m = re.search(r"Open Interest is\s+([\d,]+)", block, re.I)
+    pos_m = re.search(r"Positions\s+([\s\S]*?)\s+Changes from:", block, re.I)
+    ch_m = re.search(
+        r"Changes from:\s*([A-Za-z]+\s+\d{1,2},\s+20\d{2}).*?"
+        r"Total Change is:\s*([-+]?\s*[\d,]+)\s+([\s\S]*?)\s+Percent of Open Interest",
+        block,
+        re.I,
+    )
+    if not oi_m or not pos_m or not ch_m:
+        return None
+
+    pos = int_list(pos_m.group(1))[:14]
+    changes = int_list(ch_m.group(3))[:14]
+    if len(pos) < 14 or len(changes) < 14:
+        return None
+
+    oi = int(oi_m.group(1).replace(",", ""))
+    oi_wow = int(ch_m.group(2).replace(" ", "").replace(",", ""))
+    lev_long, lev_short = pos[6], pos[7]
+    lev_long_wow, lev_short_wow = changes[6], changes[7]
+    return {
+        "contract": "NASDAQ MINI",
+        "cftc_code": NQ_CFTC_CODE,
+        "open_interest": oi,
+        "open_interest_wow": oi_wow,
+        "leveraged_long": lev_long,
+        "leveraged_short": lev_short,
+        "leveraged_net": lev_long - lev_short,
+        "leveraged_long_wow": lev_long_wow,
+        "leveraged_short_wow": lev_short_wow,
+        "leveraged_net_wow": lev_long_wow - lev_short_wow,
+        "short_share_oi_pct": (lev_short / oi * 100.0) if oi else None,
+        "previous_period": ch_m.group(1),
+        "scope": "CFTC TFF NASDAQ MINI 전체시장 주간",
+    }
+
+
+def cftc_nq_history_3y(current_nq=None, current_period=None):
+    """Build a three-year NQ leveraged-fund distribution from official CFTC history."""
+    year = datetime.now(timezone.utc).year
+    frames = []
+    errors = []
+    for y in range(year - 3, year + 1):
+        url = CFTC_HISTORY_TEMPLATE.format(year=y)
+        try:
+            raw = get(url, timeout=50).content
+            df = pd.read_csv(BytesIO(raw), compression="zip", low_memory=False)
+            df.columns = [str(x).strip() for x in df.columns]
+            frames.append(df)
+        except Exception as exc:
+            errors.append(f"{y}:{type(exc).__name__}")
+
+    if not frames:
+        raise RuntimeError("CFTC TFF 3년 압축자료 조회 실패: " + ", ".join(errors))
+
+    df = pd.concat(frames, ignore_index=True)
+    code_col = "CFTC_Contract_Market_Code"
+    if code_col not in df.columns:
+        raise RuntimeError("CFTC history code column missing")
+
+    codes = (
+        df[code_col].astype(str)
+        .str.replace('"', "", regex=False)
+        .str.strip()
+        .str.replace(r"\.0$", "", regex=True)
+    )
+    df = df[codes == NQ_CFTC_CODE].copy()
+    if df.empty:
+        raise RuntimeError("CFTC history NASDAQ MINI rows missing")
+
+    date_col = next(
+        (x for x in ("Report_Date_as_YYYY-MM-DD", "Report_Date_as_MM_DD_YYYY") if x in df.columns),
+        None,
+    )
+    needed = [
+        "Open_Interest_All",
+        "Lev_Money_Positions_Long_All",
+        "Lev_Money_Positions_Short_All",
+    ]
+    if not date_col or any(x not in df.columns for x in needed):
+        raise RuntimeError("CFTC history required columns missing")
+
+    df["_date"] = pd.to_datetime(df[date_col], errors="coerce")
+    for col in needed:
+        df[col] = pd.to_numeric(df[col], errors="coerce")
+    df = df.dropna(subset=["_date", *needed]).sort_values("_date")
+    df = df.drop_duplicates(subset=["_date"], keep="last")
+
+    if current_nq and current_period:
+        try:
+            d = pd.to_datetime(current_period)
+            if df.empty or d > df["_date"].max():
+                df = pd.concat(
+                    [
+                        df,
+                        pd.DataFrame(
+                            [{
+                                "_date": d,
+                                "Open_Interest_All": current_nq["open_interest"],
+                                "Lev_Money_Positions_Long_All": current_nq["leveraged_long"],
+                                "Lev_Money_Positions_Short_All": current_nq["leveraged_short"],
+                            }]
+                        ),
+                    ],
+                    ignore_index=True,
+                )
+        except Exception:
+            pass
+
+    df = df.sort_values("_date").drop_duplicates(subset=["_date"], keep="last")
+    latest = df["_date"].max()
+    cutoff = latest - pd.Timedelta(days=1096)
+    df = df[df["_date"] >= cutoff].tail(160).copy()
+    if len(df) < 52:
+        raise RuntimeError(f"CFTC history sample too short: {len(df)}")
+
+    df["_net"] = df["Lev_Money_Positions_Long_All"] - df["Lev_Money_Positions_Short_All"]
+    df["_short_severity"] = (-df["_net"]).clip(lower=0)
+    df["_short_share"] = (
+        df["Lev_Money_Positions_Short_All"] / df["Open_Interest_All"] * 100.0
+    )
+
+    cur = df.iloc[-1]
+    severity = float(cur["_short_severity"])
+    short_share = float(cur["_short_share"])
+    severity_pct = float((df["_short_severity"] <= severity).mean() * 100.0)
+    short_share_pct = float((df["_short_share"] <= short_share).mean() * 100.0)
+    peak = float(df["_short_severity"].max())
+    unwind = ((peak - severity) / peak * 100.0) if peak > 0 else None
+
+    def diff(col, weeks):
+        if len(df) <= weeks:
+            return None
+        return float(df.iloc[-1][col] - df.iloc[-1 - weeks][col])
+
+    return {
+        "basis": "CFTC TFF NASDAQ MINI futures-only",
+        "sample_n": int(len(df)),
+        "start_date": df.iloc[0]["_date"].strftime("%Y-%m-%d"),
+        "end_date": df.iloc[-1]["_date"].strftime("%Y-%m-%d"),
+        "short_extreme_percentile_3y": severity_pct,
+        "short_share_oi_percentile_3y": short_share_pct,
+        "peak_net_short_contracts_3y": int(round(peak)),
+        "unwind_from_peak_pct": unwind,
+        "leveraged_short_1w_change": int(round(diff("Lev_Money_Positions_Short_All", 1))) if diff("Lev_Money_Positions_Short_All", 1) is not None else None,
+        "leveraged_short_4w_change": int(round(diff("Lev_Money_Positions_Short_All", 4))) if diff("Lev_Money_Positions_Short_All", 4) is not None else None,
+        "leveraged_net_1w_change": int(round(diff("_net", 1))) if diff("_net", 1) is not None else None,
+        "leveraged_net_4w_change": int(round(diff("_net", 4))) if diff("_net", 4) is not None else None,
+        "history_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm",
+        "download_errors": errors,
+    }
 
 
 def parse_cftc():
@@ -181,8 +343,22 @@ def parse_cftc():
         "lev_net_wow": lev_long_wow - lev_short_wow,
         "previous_period": prev_period,
     }
+    nq_mini = parse_cftc_nq_mini(plain)
+    try:
+        history_3y = cftc_nq_history_3y(nq_mini, period) if nq_mini else None
+    except Exception as exc:
+        history_3y = {"error": f"{type(exc).__name__}: {exc}"}
+
+    # Keep the existing fingerprint limited to the original current-report core.
+    # The NQ/3Y enrichment must not create a fake "new positioning" alert by itself.
     core = {"source": "CFTC", "kind": "cot", "period": period, "metrics": metrics}
-    return {**core, "url": CFTC, "fingerprint": fp(core)}
+    return {
+        **core,
+        "url": CFTC,
+        "fingerprint": fp(core),
+        "nq_mini": nq_mini,
+        "history_3y": history_3y,
+    }
 
 
 def parse_cboe_section(text, heading, next_heading=None):
@@ -419,6 +595,15 @@ def explain(cftc, cboe, sox):
             f"• 헤지펀드성(Leveraged Funds): 순포지션 {m['lev_net']:+,}계약 | "
             f"주간 {m['lev_net_wow']:+,}계약"
         )
+        nq = cftc.get("nq_mini") or {}
+        hist = cftc.get("history_3y") or {}
+        if nq:
+            pct = hist.get("short_extreme_percentile_3y")
+            pct_txt = f" · 3년 숏 극단 {pct:.0f}백분위" if isinstance(pct, (int, float)) else ""
+            lines.append(
+                f"• NQ E-mini Leveraged Funds: 순포지션 {int(nq.get('leveraged_net') or 0):+,}계약"
+                f" | 주간 {int(nq.get('leveraged_net_wow') or 0):+,}계약{pct_txt}"
+            )
 
     if cboe:
         m = cboe["metrics"]
@@ -493,7 +678,6 @@ for name, fn in [("CFTC", parse_cftc), ("Cboe", parse_cboe), ("SOX", parse_sox)]
 # Never send a partial "new change" alert with missing CFTC/Cboe/SOX values.
 required_kinds = {"cot", "options", "sox"}
 present_kinds = {x.get("kind") for x in results}
-quality_gate_ok = required_kinds.issubset(present_kinds) and not validation_problems
 
 def validate_critical_sources(cftc_obj, cboe_obj, sox_obj):
     problems = []
@@ -548,6 +732,8 @@ validation_problems = validate_critical_sources(
 )
 if validation_problems:
     errors.extend("검산: " + p for p in validation_problems)
+
+quality_gate_ok = required_kinds.issubset(present_kinds) and not validation_problems
 
 updates = []
 for x in results:
@@ -624,8 +810,27 @@ if quality_gate_ok and (updates or force):
             f"• Leveraged Funds: 롱 {m['lev_long']:,} / 숏 {m['lev_short']:,} → 순 {m['lev_net']:+,}계약",
             f"• 전주 대비 순포지션 {m['lev_net_wow']:+,}계약 "
             f"→ {'헤지펀드성 포지션 개선' if m['lev_net_wow'] > 0 else '헤지펀드성 포지션 악화' if m['lev_net_wow'] < 0 else '변화 제한'}",
-            "",
         ]
+        nq = cftc.get("nq_mini") or {}
+        hist = cftc.get("history_3y") or {}
+        if nq:
+            body += [
+                "",
+                "<b>Nasdaq NQ E-mini 숏 극단 추적</b>",
+                f"• Leveraged Funds: 롱 {int(nq.get('leveraged_long') or 0):,} / 숏 {int(nq.get('leveraged_short') or 0):,} → 순 {int(nq.get('leveraged_net') or 0):+,}계약",
+                f"• 주간 순포지션 변화 {int(nq.get('leveraged_net_wow') or 0):+,}계약 · OI 변화 {int(nq.get('open_interest_wow') or 0):+,}계약",
+                f"• 숏/OI {float(nq.get('short_share_oi_pct') or 0):.1f}%",
+            ]
+            if isinstance(hist.get("short_extreme_percentile_3y"), (int, float)):
+                body += [
+                    f"• 최근 3년 순숏 극단: <b>{hist['short_extreme_percentile_3y']:.0f}백분위</b> · 숏/OI {hist.get('short_share_oi_percentile_3y', 0):.0f}백분위",
+                    f"• 3년 최대 순숏 대비 청산률: {hist.get('unwind_from_peak_pct', 0):.1f}%",
+                    f"• 숏 계약 변화: 1주 {int(hist.get('leveraged_short_1w_change') or 0):+,} · 4주 {int(hist.get('leveraged_short_4w_change') or 0):+,}",
+                    "※ 3년 백분위는 CFTC TFF NASDAQ MINI futures-only 공식 연간 압축자료로 계산. Goldman/BofA PB 독자 모델과 동일하지 않습니다.",
+                ]
+            elif hist.get("error"):
+                body.append("• 3년 백분위: 공식 압축자료 재조회 대기")
+        body.append("")
 
     if cboe:
         m = cboe["metrics"]
@@ -676,3 +881,30 @@ else:
         print("us_positioning_alert_ready=false quality_gate_failed=true")
     else:
         print("us_positioning_alert_ready=false unchanged=true")
+
+        # Persist NQ/3Y enrichment silently when the core CFTC fingerprint is unchanged.
+        # This lets the CTA watcher consume the upgraded weekly positioning state
+        # without manufacturing a user-facing "new change" alert.
+        current_cftc = next((x for x in results if x.get("kind") == "cot"), None)
+        prior_cftc = (state.get("values", {}) or {}).get("CFTC|cot")
+        enrichment_changed = bool(
+            current_cftc
+            and (
+                not prior_cftc
+                or prior_cftc.get("nq_mini") != current_cftc.get("nq_mini")
+                or prior_cftc.get("history_3y") != current_cftc.get("history_3y")
+            )
+        )
+        if enrichment_changed:
+            ns = state
+            ns.setdefault("seen", {})
+            ns.setdefault("values", {})
+            key = "CFTC|cot"
+            ns["seen"][key] = current_cftc["fingerprint"]
+            ns["values"][key] = current_cftc
+            ns["updated_at_kst"] = datetime.now(timezone(timedelta(hours=9))).isoformat()
+            PENDING.write_text(
+                json.dumps(ns, ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            print("us_positioning_enrichment_state_ready=true")
