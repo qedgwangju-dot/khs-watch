@@ -252,10 +252,10 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-29T19:19:55+09:00",
-  "last_event_count": 98,
-  "last_fresh_new_count": 1,
-  "last_send_event_count": 1,
+  "updated_at_kst": "2026-09-29T19:45:39+09:00",
+  "last_event_count": 85,
+  "last_fresh_new_count": 0,
+  "last_send_event_count": 0,
   "monthly_due": false,
   "compare_version": 4,
   "official_month": "202608",
@@ -274,7 +274,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-29T19:19:55+09:00",
+  "last_successful_official_at_kst": "2026-09-29T19:45:39+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -1460,7 +1460,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-29T19:19:55+09:00",
+      "last_checked_at_kst": "2026-09-29T19:45:39+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -1525,8 +1525,8 @@
     "payload_hash": "2b0b625a1b03c203d6718421ec70968fbb2f085ce45449e2a7f4d242eae7033e"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-29T19:23:33+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-09-29T19:48:44+09:00",
+    "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
   "state_corrections": [
