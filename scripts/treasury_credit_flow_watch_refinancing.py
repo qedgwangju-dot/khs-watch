@@ -228,6 +228,27 @@ def get_repo_stress():
     )
 
 
+def _jpm_30y_signal(y30):
+    if y30 is None:
+        return "JPM 30년 기술선: 확인 대기 | 공식 30년 금리 조회 실패"
+    if y30 >= 6.00:
+        state = "6.00% 이상 → 장기금리 극단 스트레스"
+    elif y30 >= 5.78:
+        state = "5.78% 이상 → JPM Equal Swings 약세 목표 구간"
+    elif y30 >= 5.59:
+        state = "5.59% 상향 돌파 → 채권 약세 추세 재확인"
+    elif y30 > 5.25:
+        state = "5.59% 아래·5.25% 위 → 반전 미확인"
+    elif y30 > 5.15:
+        state = "5.25% 하향 돌파 → 숏커버·CTA 매수전환 후보"
+    else:
+        state = "5.15% 이하 → 채권 반전 신호 강화"
+    return (
+        f"JPM 30년 기술선: 현재 {y30:.2f}% | {state} | "
+        "상단 5.59→5.78→6.00 / 하단 5.25→5.15"
+    )
+
+
 def _inflow(s):
     return "순유입" in s
 
@@ -275,6 +296,7 @@ def _compact_report(raw_text):
 
     y10, y30 = _yield_value(raw_text, "10년"), _yield_value(raw_text, "30년")
     tech_head, tech_reason = stress._market_stress(y10, y30)
+    jpm_30y_line = _jpm_30y_signal(y30)
 
     try:
         repo_line = get_repo_stress()
@@ -329,6 +351,7 @@ def _compact_report(raw_text):
         "",
         f"시장 기술압력: {tech_head}",
         f"→ {tech_reason}",
+        f"{jpm_30y_line}",
         f"{repo_line}",
         f"{gr_line}",
         f"{refi_line}",
@@ -345,7 +368,7 @@ def _compact_report(raw_text):
         "다음 경보: 10년물 5% 돌파·Repo 스트레스·HYG OAS 재확대·R>G 전환 여부",
         "",
         f"기준: ETF·미 재무부 {treasury_date} | MSPD {refi_date}",
-        "출처: iShares · U.S. Treasury · Treasury FiscalData · OFR/NY Fed · BEA",
+        "출처: iShares · U.S. Treasury · Treasury FiscalData · OFR/NY Fed · BEA · JPM 기술기준(사용자 제공 2026-09-29 자료)",
     ]
     return "\n".join(lines)
 
@@ -355,7 +378,7 @@ def _format_html(chunk):
     bold_prefixes = (
         "전체 방향:", "국채 자금:", "회사채 자금:", "신용 위험:",
         "금리:", "커브:", "오늘의 주도축:", "시장 기술압력:",
-        "Repo:", "G-R:", "차환:", "다음 경보:",
+        "JPM 30년 기술선:", "Repo:", "G-R:", "차환:", "다음 경보:",
     )
     for line in chunk.splitlines():
         escaped = html.escape(line, quote=False)
