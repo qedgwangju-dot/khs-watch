@@ -1543,7 +1543,7 @@
   "last_broker_forecast_alert_count": 0,
   "_delivery": {
     "id": "88566d0b0e56ef1a1154d01a24786635308ee9b426da1ecb094fa38432221ac8",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-09-29T19:23:28+09:00",
     "chunks": [
       "🚨 <b>HBM 상태 변화</b>\n━━━━━━━━━━━━━━━━\n<b>신규 변화 1건</b> · 2026-09-29 19:19 KST\n\n<b>1.</b>\n<b>삼성 HBM 생산능력·증산 계획 변화</b>\n• 상태 판정: <b>신뢰 보도 단계</b>\n• 변화 구분: 생산능력·증산\n• 핵심 숫자: <b>30% / 20%</b>\n• 감지 근거: trendforce.com · 2026-09-29T19:16:59+09:00\n• 근거 제목(한국어): 삼성 HBM 생산능력·증산 계획 변화 관련 보도 · <a href=\"https://www.trendforce.com/news/2026/09/29/news-samsung-sees-hbm-taking-nearly-30-of-industry-dram-capacity-in-2027-up-from-20-currently/\">원문</a>"
@@ -3105,6 +3105,7 @@
       },
       "last_broker_forecast_observation_count": 0,
       "last_broker_forecast_alert_count": 0
-    }
+    },
+    "attempt_at_kst": "2026-09-29T19:23:29+09:00"
   }
 }
