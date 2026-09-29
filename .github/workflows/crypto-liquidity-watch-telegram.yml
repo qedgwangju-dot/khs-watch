@@ -61,6 +61,38 @@ jobs:
           python -m py_compile scripts/coin_alert_korean_terms.py
           python -m py_compile scripts/coinbase_stablecoin_catalyst_watch.py
           python -m unittest tests/test_coinbase_stablecoin_catalyst_watch.py tests/test_coin_alert_korean_terms.py -v
+          python - <<'PY'
+          import pathlib
+          from scripts import crypto_alert_format as fmt
+
+          fmt.PENDING_STATE_PATH = pathlib.Path("data/crypto_liquidity_watch_state.json")
+          sample = """[크립토 유동성 변화 감지]
+          조회시각(KST): 2026-09-29T09:48:56+09:00
+
+          • BTC 현물 ETF 당일 합계 수정(잠정 집계): -12.9백만달러 (약 -174억원) → -23.8백만달러 (약 -322억원)
+
+          <b>BTC 자금 위치</b>
+          • River 잠재 순유입 · $1.3T~$5.3T
+          • BlackRock 1~2%
+
+          미 국채 — 미 재무부 공식 수익률곡선 기준일 2026-09-28
+          원화 환산 기준: 1달러=1,352.00원 | 기준일 2026-09-28 | 한국은행 ECOS 원/미국달러(매매기준율) | 교차검증: 접근 불가 | 조회 2026-09-29T09:49:36+09:00
+          공식·데이터 원천:
+          • 원/달러 환율: <a href="https://ecos.bok.or.kr/">원문</a>
+          • 미 국채 금리: <a href="https://home.treasury.gov/">원문</a>
+          • BTC 현물 ETF: <a href="https://farside.co.uk/btc/">원문</a>
+          """
+          rendered = fmt.format_alert(sample)
+          assert "<b>무엇이 바뀌었나</b>" in rendered
+          assert "<b>지금 숫자</b>" in rendered
+          assert "<blockquote><b>판정 ·" in rendered
+          assert "River" not in rendered
+          assert "BlackRock" not in rendered
+          assert "구조적 수요 맥락" not in rendered
+          assert len(rendered) < 1800, len(rendered)
+          print("compact_crypto_alert_layout_valid=true")
+          print(rendered)
+          PY
 
       - name: Validate exact Telegram bot route without sending
         env:
