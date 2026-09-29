@@ -42,6 +42,8 @@ def semantic_event_key(row: dict[str, Any]) -> str:
     # 전력망 실행정책은 기존 재생에너지 100GW 목표와 별도 사건으로 관리한다.
     if "전력망 혁신대책" in title:
         return "12th-plan|grid-innovation|policy-announcement"
+    if "수용능력" in title and ("전력망" in title or "계통" in title or "기존 전력망" in title):
+        return "12th-plan|grid-innovation|policy-announcement"
     if "계통관리변전소" in title and "해제" in title:
         return "12th-plan|grid-innovation|management-substation-release"
     if "접속권" in title and any(term in title for term in ("회수", "재배분", "재할당")):
