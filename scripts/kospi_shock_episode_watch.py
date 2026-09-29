@@ -29,7 +29,7 @@ NEWS_URL = "https://search.naver.com/search.naver?where=news&query=" + urllib.pa
 
 PRICE_LOOKBACK_SEC = 3 * 60 * 60
 FLOW_LOOKBACK_SEC = 4 * 60 * 60
-FLOW_INTERVAL_SEC = 10
+FLOW_INTERVAL_SEC = 15
 NEW_LOW_CONFIRM_SEC = 240
 MAX_EPISODE_SEC = 3 * 60 * 60
 MAX_FLOW_ALIGNMENT_SEC = 30
@@ -134,19 +134,32 @@ def get_token() -> str:
 
 
 def ls_post(token: str, path: str, tr: str, body: dict[str, Any]) -> dict[str, Any]:
-    r = requests.post(
-        BASE + path,
-        headers={"content-type": "application/json; charset=utf-8",
-                 "authorization": "Bearer " + token, "tr_cd": tr,
-                 "tr_cont": "N", "tr_cont_key": ""},
-        data=json.dumps(body), timeout=20)
-    if not r.ok:
-        raise RuntimeError(f"{tr} HTTP {r.status_code}: {(r.text or '')[:250]}")
-    d = r.json()
-    code = str(d.get("rsp_cd") or "")
-    if code and code not in {"00000", "0000"}:
-        raise RuntimeError(f"{tr} rejected {code}: {d.get('rsp_msg')}")
-    return d
+    last_error = ""
+    for attempt in range(4):
+        r = requests.post(
+            BASE + path,
+            headers={"content-type": "application/json; charset=utf-8",
+                     "authorization": "Bearer " + token, "tr_cd": tr,
+                     "tr_cont": "N", "tr_cont_key": ""},
+            data=json.dumps(body), timeout=20)
+        text = r.text or ""
+        retryable_http = r.status_code in {429, 500, 502, 503, 504}
+        if not r.ok:
+            last_error = f"{tr} HTTP {r.status_code}: {text[:250]}"
+            if attempt < 3 and (retryable_http and ("IGW00201" in text or r.status_code == 429)):
+                time.sleep(1.5 * (2 ** attempt))
+                continue
+            raise RuntimeError(last_error)
+        d = r.json()
+        code = str(d.get("rsp_cd") or "")
+        if code and code not in {"00000", "0000"}:
+            last_error = f"{tr} rejected {code}: {d.get('rsp_msg')}"
+            if attempt < 3 and code == "IGW00201":
+                time.sleep(1.5 * (2 ** attempt))
+                continue
+            raise RuntimeError(last_error)
+        return d
+    raise RuntimeError(last_error or f"{tr} request failed after retries")
 
 
 def _latest_time_row(rows: Any) -> dict[str, Any] | None:
