@@ -5,9 +5,9 @@
   "last_collection": {
     "direct_official_items": 15,
     "errors": [],
-    "material_items": 6,
-    "new_material_items": 0,
-    "raw_items": 141
+    "material_items": 7,
+    "new_material_items": 1,
+    "raw_items": 142
   },
   "seen": {
     "027ea08934406a07812d619d": {
@@ -19,6 +19,16 @@
       "title": "OpenAI halts frontier-model training amid string of agent misalignment incidents - Ars Technica",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQN2MtdjhSdi1aSkFVNjN6aExQcmZGT1BaNDh2VGFpSlZnbmh2Y2pDaE9lT0NiaVBJdWJycF9PS2MwUXB2UDRWZ2lheGpQa1JydjdEal9nUmE5cEc1QWdvM2F1SFBJSldZY2k0S1BvRzB0bE1yVnJpWmFoTnh3MVJsTVo0T1I5ZVhUNUM1LUFQNGpJRTAwVjFDTmZMWHBSSTNhY2hvMEFiMmZyN0s2YWs3S3g2d0Fvbzg?oc=5",
       "vendor": "OpenAI"
+    },
+    "1bcdcfdffba70ad28384d9ca": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-09-29T16:47:57.351958+00:00",
+      "published_at": null,
+      "severity": 1,
+      "source": "Anthropic Research",
+      "title": "Anthropic Research: glm 5 3 and the spread of advanced cyber capabilities",
+      "url": "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities",
+      "vendor": "Anthropic"
     },
     "36cdbc3c7efe9983a34b0330": {
       "category": "취약점·패치",
@@ -171,5 +181,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-09-30T01:33:21+09:00"
+  "updated_at_kst": "2026-09-30T01:47:57+09:00"
 }
