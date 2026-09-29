@@ -622,9 +622,8 @@ def parse_yahoo_payload(payload: dict, spec: SymbolSpec) -> Quote:
     if price is None and last_point:
         price = last_point[1]
     previous_close = (
-        finite_number(meta.get("chartPreviousClose"))
+        finite_number(meta.get("regularMarketPreviousClose"))
         or finite_number(meta.get("previousClose"))
-        or finite_number(meta.get("regularMarketPreviousClose"))
     )
     timestamp = finite_number(meta.get("regularMarketTime"))
     if timestamp is None and last_point:
@@ -656,14 +655,32 @@ def fetch_quote(spec: SymbolSpec) -> Quote:
             "events": "div,splits",
         }
     )
+    parsed: list[Quote] = []
     errors: list[str] = []
     for base in YAHOO_BASES:
         url = f"{base}/{urllib.parse.quote(spec.symbol, safe='')}?{params}"
         try:
-            return parse_yahoo_payload(fetch_json(url), spec)
+            parsed.append(parse_yahoo_payload(fetch_json(url), spec))
         except Exception as exc:
             errors.append(str(exc))
-    raise RuntimeError(f"{spec.symbol} 조회 실패: {' | '.join(errors)}")
+
+    if len(parsed) != 2:
+        raise RuntimeError(
+            f"{spec.symbol} 2개 Yahoo 엔드포인트 교차검증 실패: {' | '.join(errors)}"
+        )
+
+    first, second = parsed
+    price_gap = abs(first.price - second.price) / max(abs(first.price), abs(second.price), 1e-9)
+    prev_gap = abs(first.previous_close - second.previous_close) / max(
+        abs(first.previous_close), abs(second.previous_close), 1e-9
+    )
+    time_gap = abs(first.timestamp_epoch - second.timestamp_epoch)
+    if price_gap > 0.002 or prev_gap > 0.002 or time_gap > 300:
+        raise RuntimeError(
+            f"{spec.symbol} Yahoo 불일치 "
+            f"price={price_gap:.3%} prev={prev_gap:.3%} time={time_gap:.0f}s"
+        )
+    return first
 
 
 def age_minutes(quote: Quote, current: dt.datetime) -> float:
@@ -1223,8 +1240,8 @@ def run_monitor(current: dt.datetime) -> int:
 
     state = load_state()
     news_items, news_errors = fetch_news(current)
-    confirmed = confirm_event(news_items)
-    if confirmed is None:
+    confirmed_candidates = confirm_events(news_items)
+    if not confirmed_candidates:
         lines = [
             "# 이란·호르무즈 시장 전환 감시",
             current.astimezone(KST).strftime("확인 시각: %Y-%m-%d %H:%M KST"),
@@ -1236,18 +1253,28 @@ def run_monitor(current: dt.datetime) -> int:
         write_summary(lines)
         return 0
 
-    kind, news_rows = confirmed
-    current_event_id = event_id(kind, news_rows)
-    if state.get("last_event_id") == current_event_id or cooldown_active(state, current, 24):
+    selected = None
+    duplicate_labels: list[str] = []
+    for candidate_kind, candidate_rows in confirmed_candidates:
+        candidate_id = event_id(candidate_kind, candidate_rows)
+        if event_recently_alerted(state, candidate_id, current):
+            duplicate_labels.append(EVENT_LABELS.get(candidate_kind, candidate_kind))
+            continue
+        selected = (candidate_kind, candidate_rows, candidate_id)
+        break
+
+    if selected is None:
         write_summary(
             [
                 "# 이란·호르무즈 시장 전환 감시",
                 current.astimezone(KST).strftime("확인 시각: %Y-%m-%d %H:%M KST"),
-                f"사건: {EVENT_LABELS[kind]}",
-                "결과: 이미 알린 사건 또는 24시간 중복 방지 구간이어서 알리지 않음",
+                "결과: 확인된 사건은 모두 최근에 이미 알린 동일 단계여서 중복 발송하지 않음",
+                *[f"- 중복: {label}" for label in duplicate_labels],
             ]
         )
         return 0
+
+    kind, news_rows, current_event_id = selected
 
     market_errors: list[str] = []
     quotes: dict[str, Quote] = {}
@@ -1259,7 +1286,14 @@ def run_monitor(current: dt.datetime) -> int:
 
     max_age_minutes = int(os.getenv("IRAN_HORMUZ_MARKET_MAX_AGE_MINUTES", "240"))
 
-    if kind in ("oil_flow_recovery", "sts_reroute_expansion"):
+    physical_kinds = {
+        "oil_flow_recovery",
+        "sts_reroute_expansion",
+        "east_west_pipeline_recovery",
+        "regional_export_recovery",
+        "india_gulf_import_recovery",
+    }
+    if kind in physical_kinds:
         oil = None
         for key in ("brent", "wti"):
             candidate = quotes.get(key)
@@ -1277,12 +1311,9 @@ def run_monitor(current: dt.datetime) -> int:
             "news": [asdict(row) for row in news_rows],
             "market": {"oil": asdict(oil) if oil else None},
         }
-        pending_state = {
-            "last_alert_at_kst": current.astimezone(KST).isoformat(timespec="seconds"),
-            "last_event_kind": kind,
-            "last_event_id": current_event_id,
-            "last_market": alert["market"],
-        }
+        pending_state = build_pending_state(
+            state, current_event_id, kind, current, alert["market"]
+        )
         TITLE_PATH.write_text(title + "\n", encoding="utf-8")
         BODY_PATH.write_text(body, encoding="utf-8")
         ALERT_JSON_PATH.write_text(json.dumps(alert, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -1360,12 +1391,9 @@ def run_monitor(current: dt.datetime) -> int:
             "oil": asdict(oil) if oil else None,
         },
     }
-    pending_state = {
-        "last_alert_at_kst": current.astimezone(KST).isoformat(timespec="seconds"),
-        "last_event_kind": kind,
-        "last_event_id": current_event_id,
-        "last_market": alert["market"],
-    }
+    pending_state = build_pending_state(
+        state, current_event_id, kind, current, alert["market"]
+    )
     TITLE_PATH.write_text(title + "\n", encoding="utf-8")
     BODY_PATH.write_text(body, encoding="utf-8")
     ALERT_JSON_PATH.write_text(json.dumps(alert, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
