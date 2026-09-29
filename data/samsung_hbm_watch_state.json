@@ -252,8 +252,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-29T19:45:39+09:00",
-  "last_event_count": 85,
+  "updated_at_kst": "2026-09-29T20:08:21+09:00",
+  "last_event_count": 90,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -274,7 +274,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-29T19:45:39+09:00",
+  "last_successful_official_at_kst": "2026-09-29T20:08:21+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -940,13 +940,14 @@
         "unit": "pct",
         "period": "2027",
         "as_of": "2026-09-29",
-        "evidence": "reported",
-        "source_url": "https://www.wowtv.co.kr/NewsCenter/News/Read?articleId=A202609290194&t=NN",
-        "source_title": "한국경제TV, TrendForce 2027 HBM Blended ASP +121%·8단 Gb당 +10~20% 인용",
-        "source": "한국경제TV·TrendForce 인용",
+        "evidence": "research",
+        "source_url": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
+        "source_title": "TrendForce 2027 HBM Blended ASP +121%·8단 Gb당 +10~20% 전망",
+        "source": "TrendForce",
         "scope": "market_blended_asp_and_stack_mix_not_company_specific",
         "research_reference_url": "https://www.trendforce.com/research/download/RP260922FJ3",
-        "excerpt": "사용자 제공 2026-09-29 기사 본문 기준. TrendForce 조사 인용: 2027 HBM Blended ASP +121% YoY, 8단 HBM Gb당 판매가격은 12단 대비 +10~20%, 8단 적용 확대 전망. TrendForce 공개 페이지는 가격 전망 상향·8Hi 주류·per-Gb premium 방향을 확인하나 +121%·10~20% 정확 수치는 공개 요약에 없음."
+        "excerpt": "TrendForce 2026-09-29 공식 Press Center 기준: 2027 HBM Blended ASP +121% YoY, 8단 HBM Gb당 판매가격은 12단 대비 +10~20%, 8단 채택 확대 전망. 2026-09-22 HBM Market Bulletin의 가격 상향·8Hi 주류·per-Gb premium 방향과 일치.",
+        "secondary_source_url": "https://biz.chosun.com/it-science/ict/2026/09/29/4EV5Z6JAR5GCPG7DR7ZBBFMJUQ/"
       }
     },
     "latest": {
@@ -1437,7 +1438,7 @@
         "key": "hbm_market_pricing|trendforce|industry|2027",
         "axis": "hbm_market_pricing",
         "value": {
-          "blended_asp_yoy_pct": 121.0,
+          "blended_asp_yoy_pct": 121,
           "eight_hi_premium_min_pct": 10,
           "eight_hi_premium_max_pct": 20,
           "mainstream_layers": 8,
@@ -1449,18 +1450,19 @@
         "unit": "pct",
         "period": "2027",
         "as_of": "2026-09-29",
-        "evidence": "reported",
-        "source_url": "https://biz.chosun.com/en/en-it/2026/09/29/PYE3ETNDMJB6JKFAOSIA5OXUZE/",
-        "source_title": "HBM prices surge as AI demand and HBM4 shift tighten supply - CHOSUNBIZ - Chosunbiz",
-        "source": "Chosunbiz",
-        "excerpt": "HBM prices surge as AI demand and HBM4 shift tighten supply - CHOSUNBIZ - Chosunbiz HBM prices surge as AI demand and HBM4 shift tighten supply - CHOSUNBIZ Chosunbiz SK hynix's sixth-generation High Bandwidth Memory (HBM), HBM4./Courtesy of News1 With demand for artificial intelligence (AI) servers continuing, a forecast says the average selling price of high bandwidth memory (HBM) next year will rise to more than double this year's level. As the sales share of HBM4, the sixth-generation HBM, grows and HBM and commodity DRAM must keep sharing limited advanced process capacity, the resulting supply shortage is expected to push prices higher. On the 29th, market research firm TrendForce projected that the 2027 HBM average selling price (blended ASP), reflecting the sales mix by product, will",
+        "evidence": "research",
+        "source_url": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
+        "source_title": "TrendForce 2027 HBM Blended ASP +121%·8단 Gb당 +10~20% 전망",
+        "source": "TrendForce",
         "scope": "market_blended_asp_and_stack_mix_not_company_specific",
-        "research_reference_url": "https://www.trendforce.com/research/download/RP260922FJ3"
+        "research_reference_url": "https://www.trendforce.com/research/download/RP260922FJ3",
+        "excerpt": "TrendForce 2026-09-29 공식 Press Center 기준: 2027 HBM Blended ASP +121% YoY, 8단 HBM Gb당 판매가격은 12단 대비 +10~20%, 8단 채택 확대 전망. 2026-09-22 HBM Market Bulletin의 가격 상향·8Hi 주류·per-Gb premium 방향과 일치.",
+        "secondary_source_url": "https://biz.chosun.com/it-science/ict/2026/09/29/4EV5Z6JAR5GCPG7DR7ZBBFMJUQ/"
       }
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-29T19:45:39+09:00",
+      "last_checked_at_kst": "2026-09-29T20:08:21+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -1469,7 +1471,8 @@
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "non_concrete_generic_evidence_suppressed": 0,
-      "rdimm_quote|dramexchange|32|4800/5600": "지연 원자료: 현재 가격 알림 보류"
+      "rdimm_quote|dramexchange|32|4800/5600": "지연 원자료: 현재 가격 알림 보류",
+      "hbm_market_pricing|trendforce|industry|2027": "하위 증거는 기존 확정값을 덮어쓰지 않음"
     },
     "version": 1,
     "reference_capture": {
@@ -1509,7 +1512,8 @@
         "note": "동일 스택 수·동일 다이밀도·다른 조건 동일 가정. 실제 GPU/ASIC별 스택 수·용량·가격계약은 별도 확인."
       }
     ],
-    "foundry_track_version": 1
+    "foundry_track_version": 1,
+    "market_pricing_track_version": 1
   },
   "memory_axes_version": 1,
   "telegram_message_ids": [
@@ -1525,7 +1529,7 @@
     "payload_hash": "2b0b625a1b03c203d6718421ec70968fbb2f085ce45449e2a7f4d242eae7033e"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-29T19:48:44+09:00",
+    "checked_at_kst": "2026-09-29T20:11:23+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
