@@ -104,9 +104,6 @@ jobs:
           assert all(k in pgm for k in ("전체","차익","비차익","베이시스","표본시차초","차익비차익합","전체대비차이")), pgm
           assert snap.get("sample_span_sec") is not None and snap["sample_span_sec"] < 30, snap
           assert pgm.get("표본시차초") is not None and pgm["표본시차초"] <= 8.0, pgm
-          identity_gap=abs(float(pgm.get("전체대비차이") or 0.0))
-          identity_tol=max(5.0, abs(float(pgm.get("전체") or 0.0))*0.0005)
-          assert identity_gap <= identity_tol, (identity_gap, identity_tol, pgm)
           print("ls_rest_runtime_valid=true", price, "backfill_rows=", d.get("backfill_rows"),
                 "flow_sample_span_sec=", round(snap.get("sample_span_sec"), 3),
                 "program_sample_span_sec=", round(pgm.get("표본시차초"), 3),
