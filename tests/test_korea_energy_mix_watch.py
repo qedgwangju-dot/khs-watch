@@ -5,6 +5,8 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+import scripts.korea_energy_mix_watch_runner as energy_runner
+
 from scripts.korea_energy_mix_watch import (
     classify,
     collapse_events,
@@ -319,3 +321,62 @@ def test_grid_actual_execution_upgrades_event_level():
     assert semantic_event_key(announced) == semantic_event_key(effective)
     assert semantic_event_level(announced) == 1
     assert semantic_event_level(effective) == 3
+
+
+def test_grid_policy_headlines_collapse_to_same_event():
+    a = {
+        "title": "2030년까지 재생에너지 100GW 달성…정부, 전력망 혁신대책 발표 - 연합뉴스TV",
+        "publisher": "연합뉴스TV",
+        "official": False,
+        "published": "Tue, 29 Sep 2026 04:00:00 GMT",
+        "plan_stage": "발표·공개",
+    }
+    b = {
+        "title": "2030년 재생에너지 수용능력 52GW 늘린다…기존 전력망 최대 활용 - 뉴스1",
+        "publisher": "뉴스1",
+        "official": False,
+        "published": "Tue, 29 Sep 2026 04:00:00 GMT",
+        "plan_stage": "전기본 관련",
+    }
+    assert semantic_event_key(a) == "12th-plan|grid-innovation|policy-announcement"
+    assert semantic_event_key(b) == "12th-plan|grid-innovation|policy-announcement"
+
+
+def test_multirow_render_has_one_article_interpretation_per_row(monkeypatch):
+    monkeypatch.setattr(
+        energy_runner,
+        "fetch_article_body",
+        lambda url: (url, "", "본문 추출량 부족"),
+    )
+    rows = [
+        {
+            "title": "2030년까지 재생에너지 100GW 달성…정부, 전력망 혁신대책 발표 - 연합뉴스TV",
+            "publisher": "연합뉴스TV",
+            "official": False,
+            "url": "https://example.com/a",
+            "published": "Tue, 29 Sep 2026 04:00:00 GMT",
+            "category": "전력망·계통 수용력",
+            "plan_stage": "발표·공개",
+            "stage": 6,
+            "id": "a",
+        },
+        {
+            "title": "2030년 재생에너지 수용능력 52GW 늘린다…기존 전력망 최대 활용 - 뉴스1",
+            "publisher": "뉴스1",
+            "official": False,
+            "url": "https://example.com/b",
+            "published": "Tue, 29 Sep 2026 04:00:00 GMT",
+            "category": "전력망·계통 수용력",
+            "plan_stage": "발표·공개",
+            "stage": 6,
+            "id": "b",
+        },
+    ]
+    body = energy_runner.render_with_linked_source(rows)
+    assert body.count("<b>원문 본문 해석</b>") == 2
+    first_start = body.index("<b>1.")
+    second_start = body.index("<b>2.")
+    first_section = body[first_start:second_start]
+    second_section = body[second_start:]
+    assert first_section.count("<b>원문 본문 해석</b>") == 1
+    assert second_section.count("<b>원문 본문 해석</b>") == 1
