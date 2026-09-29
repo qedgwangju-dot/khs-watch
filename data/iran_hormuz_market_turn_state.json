@@ -1,21 +1,33 @@
 {
-  "last_alert_at_kst": "2026-09-29T19:49:06+09:00",
-  "last_event_kind": "regional_export_recovery",
-  "last_event_id": "regional_export_recovery:66183575fab99015",
+  "last_alert_at_kst": "2026-09-29T20:06:00+09:00",
+  "last_event_kind": "sts_reroute_expansion",
+  "last_event_id": "sts_reroute_expansion:a5a5b34c0694d3fd",
   "alerted_events": {
-    "regional_export_recovery:66183575fab99015": "2026-09-29T19:49:06+09:00"
+    "regional_export_recovery:66183575fab99015": "2026-09-29T19:49:06+09:00",
+    "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-09-29T20:06:00+09:00"
   },
   "last_market": {
     "oil": {
       "symbol": "BZ=F",
       "label": "Brent",
       "unit": "달러/배럴",
-      "price": 97.39,
+      "price": 97.12,
       "previous_close": 97.83,
-      "change": -0.4399999999999977,
-      "change_pct": -0.44975978738628,
-      "timestamp_utc": "2026-09-29T10:39:14Z",
-      "timestamp_epoch": 1790678354.0
+      "change": -0.7099999999999937,
+      "change_pct": -0.7257487478278583,
+      "timestamp_utc": "2026-09-29T10:56:02Z",
+      "timestamp_epoch": 1790679362.0
+    },
+    "usdkrw": {
+      "symbol": "KRW=X",
+      "label": "원·달러",
+      "unit": "원/달러",
+      "price": 1354.48,
+      "previous_close": 1358.72,
+      "change": -4.240000000000009,
+      "change_pct": -0.31205840791333084,
+      "timestamp_utc": "2026-09-29T11:06:13Z",
+      "timestamp_epoch": 1790679973.0
     }
   }
 }
