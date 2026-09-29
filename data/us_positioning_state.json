@@ -1,7 +1,7 @@
 {
   "seen": {
     "Nasdaq SOX|sox": "ff64a33d4cc222681bf7ef2c83d19f167148ea7abb7d53ac0300f3d226163b8d",
-    "Cboe|options": "6cc44965194627250d1c229eeac2441d1649070cd950cf07c24d81f8ff9fba3c",
+    "Cboe|options": "d648249e152ba83f450174238237bda67184a49676c33a43672e4e0ddaf4bff0",
     "CFTC|cot": "4b1e773466ddc4a7be9d5e8f0d153ac93e6b0bbf9e17f5211e81063c0c4498f0"
   },
   "values": {
@@ -41,10 +41,12 @@
         "equity_puts": 1938639,
         "equity_time_ct": "03:15 PM",
         "index_pc_ratio": 0.99,
+        "index_calls": 1044987,
+        "index_puts": 1038889,
         "index_time_ct": "03:15 PM"
       },
       "url": "https://www.cboe.com/us/options/market_statistics/market/",
-      "fingerprint": "6cc44965194627250d1c229eeac2441d1649070cd950cf07c24d81f8ff9fba3c"
+      "fingerprint": "d648249e152ba83f450174238237bda67184a49676c33a43672e4e0ddaf4bff0"
     },
     "CFTC|cot": {
       "source": "CFTC",
@@ -106,5 +108,5 @@
       }
     }
   },
-  "updated_at_kst": "2026-09-29T14:31:14.207265+09:00"
+  "updated_at_kst": "2026-09-29T17:52:04.081624+09:00"
 }
