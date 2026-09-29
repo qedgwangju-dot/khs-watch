@@ -503,7 +503,7 @@ def interpret_article_body(row: dict[str, Any], body: str, error: str) -> str:
 
 def render_with_linked_source(rows: list[dict[str, Any]]) -> str:
     body = _ORIGINAL_RENDER(rows)
-    for row in rows[:5]:
+    for idx, row in enumerate(rows[:5], 1):
         original_url = str(row.get("url", ""))
         resolved_url, article_body, fetch_error = fetch_article_body(original_url)
 
@@ -521,8 +521,11 @@ def render_with_linked_source(rows: list[dict[str, Any]]) -> str:
 
         explanation = interpret_article_body(row, article_body, fetch_error)
         marker = "\n<b>투자 판단 포인트</b>"
-        replacement = f"\n{explanation}\n\n<b>투자 판단 포인트</b>"
-        body = body.replace(marker, replacement, 1)
+        title_marker = f"<b>{idx}. {html.escape(str(row.get('title', '')))}</b>"
+        row_start = body.find(title_marker)
+        marker_pos = body.find(marker, max(row_start, 0))
+        if marker_pos >= 0:
+            body = body[:marker_pos] + f"\n{explanation}\n" + body[marker_pos:]
 
     return body
 
