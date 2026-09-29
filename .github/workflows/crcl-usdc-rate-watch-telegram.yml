@@ -79,10 +79,13 @@ jobs:
           assert "<b>CRCL · USDC 변화</b>" in rendered
           assert "<b>이번 변화</b>" in rendered
           assert "<b>핵심 숫자</b>" in rendered
-          assert "SOFR 방향 읽는 법" not in rendered
+          assert "<b>읽는 법</b>" in rendered
+          assert "<b>SOFR</b> ↑ = 준비금 수익에 유리 / ↓ = 불리" in rendered
+          assert "<b>TBX</b> ↑ = 7~10년 국채 가격↓·금리↑" in rendered
+          assert "SOFR 방향 읽는 법 — 고정" not in rendered
           assert "TBX → CRCL 쉽게 해석" not in rendered
           assert "<b>고정 기준</b>" not in rendered
-          assert len(rendered) < 1800, len(rendered)
+          assert len(rendered) < 1900, len(rendered)
 
           lag = copy.deepcopy(state)
           lag["treasury"]["date"] = "2026-09-25"
