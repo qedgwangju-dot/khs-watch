@@ -339,7 +339,7 @@ def combine_spot_prices(source_map: dict[str, dict]) -> dict:
 
         change24 = None
         volume24 = None
-        for preferred in ("Gate.io Spot", "CoinGecko"):
+        for preferred in ("CoinGecko",):
             row = (source_map.get(preferred) or {}).get(coin) or {}
             if row.get("change24") is not None and change24 is None:
                 change24 = float(row["change24"])
@@ -369,17 +369,12 @@ def crypto_snapshot() -> tuple[dict, list[str]]:
     price_sources = {}
     for source_name, loader in (
         ("CoinGecko", coingecko_prices),
-        ("Gate.io Spot", gate_spot_prices),
         ("Coinbase", coinbase_prices),
     ):
         try:
             price_sources[source_name] = loader()
         except Exception as exc:
             errors.append(f"{source_name}: {exc}")
-
-    combined = combine_spot_prices(price_sources)
-    result.update(combined)
-    result["price_trigger_ready"] = bool(combined.get("price_verified"))
 
     deriv = {}
     for coin in ("BTC", "ETH", "SOL"):
@@ -393,6 +388,9 @@ def crypto_snapshot() -> tuple[dict, list[str]]:
             stat = stats[-1] if isinstance(stats, list) and stats else {}
             deriv[f"{coin}USDT"] = {
                 "funding": float(info.get("funding_rate") or 0.0),
+                "index_price": float(info.get("index_price") or 0.0),
+                "mark_price": float(info.get("mark_price") or 0.0),
+                "last_price": float(info.get("last_price") or 0.0),
                 "open_interest": float(stat.get("open_interest") or info.get("position_size") or 0.0),
                 "open_interest_value": float(stat.get("open_interest_usd") or 0.0),
                 "turnover24h": float(info.get("trade_size") or 0.0),
@@ -401,6 +399,19 @@ def crypto_snapshot() -> tuple[dict, list[str]]:
         except Exception as exc:
             errors.append(f"Gate.io {contract}: {exc}")
     result["derivatives"] = deriv
+
+    gate_index = {}
+    for coin in ("BTC", "ETH", "SOL"):
+        item = deriv.get(f"{coin}USDT") or {}
+        value = float(item.get("index_price") or 0.0)
+        if value > 0:
+            gate_index[coin] = {"price": value}
+    if len(gate_index) == 3:
+        price_sources["Gate.io Futures Index"] = gate_index
+
+    combined = combine_spot_prices(price_sources)
+    result.update(combined)
+    result["price_trigger_ready"] = bool(combined.get("price_verified"))
 
     for key, url in (("btc_etf", FARSIDE_BTC), ("eth_etf", FARSIDE_ETH)):
         try:
