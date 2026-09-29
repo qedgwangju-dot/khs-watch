@@ -84,3 +84,42 @@ assert "KOSPI REST price stale >15s" in src
 assert "KOSPI200 futures REST price stale >20s" in src
 assert "flow snapshot stale >120s" in src
 print("feed_health_regression=true")
+
+# Regression: 사건 시작/종료 기준점과 수급 스냅샷이 30초 넘게 어긋나면
+# 매도주체를 확정하지 않는다.
+w4 = Watch.__new__(Watch)
+w4.flows = deque([
+    {"ts": 900.0,
+     "현물": {"외국인": 0.0, "기관": 0.0, "개인": 0.0},
+     "선물": {"외국인": 0.0, "기관": 0.0, "개인": 0.0},
+     "프로그램": {"전체": 0.0, "차익": 0.0, "비차익": 0.0, "베이시스": 0.0, "표본시차초": 2.0}},
+    {"ts": 1995.0,
+     "현물": {"외국인": -1000.0, "기관": 100.0, "개인": 100.0},
+     "선물": {"외국인": -1200.0, "기관": 100.0, "개인": 100.0},
+     "프로그램": {"전체": -500.0, "차익": -100.0, "비차익": -400.0, "베이시스": 0.0, "표본시차초": 2.0}},
+], maxlen=2500)
+att4 = Watch.attribution(w4, 1000.0, 2000.0)
+assert not att4["available"], att4
+assert "시간 정렬 초과" in att4["reason"], att4
+print("flow_alignment_regression=true")
+
+# Regression: t1640 전체/차익/비차익 3종 조회 시차가 품질 한도를 넘으면
+# 프로그램 매도가 보여도 확신도를 '높음'으로 올리지 않는다.
+w5 = Watch.__new__(Watch)
+w5.flows = deque([
+    {"ts": 990.0,
+     "현물": {"외국인": 0.0, "기관": 0.0, "개인": 0.0},
+     "선물": {"외국인": 0.0, "기관": 0.0, "개인": 0.0},
+     "프로그램": {"전체": 100.0, "차익": 40.0, "비차익": 60.0, "베이시스": 0.0, "표본시차초": 6.0}},
+    {"ts": 1995.0,
+     "현물": {"외국인": -1000.0, "기관": 100.0, "개인": 50.0},
+     "선물": {"외국인": -1400.0, "기관": 200.0, "개인": 80.0},
+     "프로그램": {"전체": -500.0, "차익": -100.0, "비차익": -400.0, "베이시스": -0.2, "표본시차초": 6.0}},
+], maxlen=2500)
+att5 = Watch.attribution(w5, 1000.0, 2000.0)
+assert att5["available"], att5
+assert att5["spot_leader"] == "외국인" and att5["futures_leader"] == "외국인", att5
+assert att5["confidence"] == "중간", att5
+assert att5["program_quality"] is False, att5
+assert "외국인가" not in att5["verdict"], att5
+print("program_skew_regression=true")
