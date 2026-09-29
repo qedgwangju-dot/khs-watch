@@ -305,41 +305,56 @@ def collect_recent_coinbase_blog(errors, today):
 def event_summary(event):
     if event.kind == "citi_coinbase_stablecoin_payments":
         return (
-            "한마디로: 스테이블코인이 거래소 안의 자산을 넘어 Citi의 기업 결제망과 직접 연결된 상용화 단계입니다. "
-            "Coinbase에는 결제 인프라·법정화폐↔스테이블코인 전환·기업고객 관계라는 반복 수익 경로가 넓어질 수 있고, "
-            "Circle에는 실제 결제에 USDC가 얼마나 쓰이는지가 핵심입니다."
+            "Citi 기업 결제망에 Coinbase의 법정화폐↔스테이블코인 전환이 붙었습니다. "
+            "거래소 안의 코인을 넘어 기업 결제 인프라로 실제 상용화 범위가 넓어진 것입니다."
         )
     if event.kind == "coinbase_clearing_dco_registered":
         return (
-            "한마디로: Coinbase가 파생상품 거래를 연결하는 중개 기능뿐 아니라 거래소와 청산까지 CFTC 규제권 안에서 직접 통제할 수 있는 기반을 갖춘 것입니다. "
-            "청산은 거래가 끝난 뒤 돈·담보·포지션을 실제로 맞춰주는 핵심 인프라라, 제3자 청산 의존도를 낮추고 상품 출시·담보·결제 구조를 더 직접 설계할 수 있게 됩니다."
+            "Coinbase가 거래소(DCM)·중개(FCM)에 이어 청산(DCO)까지 갖출 기반을 확보했습니다. "
+            "파생상품 거래의 마지막 정산 단계까지 그룹 안에서 더 직접 통제할 수 있게 된 것입니다."
         )
-    return (
-        "한마디로: Coinbase의 규제 인프라·결제·기관사업이 실제 상용화 단계에서 넓어진 변화입니다. "
-        "현재 매출 발생 여부와 반복 수익 구조를 다음 실적에서 확인해야 합니다."
-    )
+    return "Coinbase의 결제·스테이블코인·규제 인프라 사업 범위가 실제로 넓어진 변화입니다."
+
+
+def fact_lines(event):
+    if event.kind == "citi_coinbase_stablecoin_payments":
+        return [
+            "Citi Virtual Account Wallet ↔ Coinbase Virtual Accounts 연결, 들어온 법정화폐를 스테이블코인으로 자동 전환.",
+            "Spring by Citi 기관고객이 Coinbase 인프라를 통해 스테이블코인 결제를 받을 수 있게 됨.",
+            "3.75%는 Coinbase USDC 보상 페이지 수치이며 Citi 연계 고객 일괄 적용은 공식 미확정.",
+        ]
+    if event.kind == "coinbase_clearing_dco_registered":
+        return [
+            "CFTC 등록일 2026-09-28. 완전담보 선물·선물옵션·스왑 청산 가능.",
+            "Coinbase Derivatives는 DCM(지정계약시장), Coinbase Financial Markets는 FCM(선물중개업자) 구조.",
+            "실제 상품의 자체 DCO 이전·USDC 담보·24/7 청산 적용은 별도 확인 필요.",
+        ]
+    return [event.detail]
 
 
 def investment_lines(event):
     if event.kind == "citi_coinbase_stablecoin_payments":
         return [
-            "돈 버는 능력: Coinbase의 거래수수료 외 수익원인 결제·전환·기업 인프라 사용량이 늘어날 수 있습니다.",
-            "Circle/USDC: 공식 발표는 특정 스테이블코인을 고정하지 않았으므로 USDC 직접 수혜는 아직 확정이 아닙니다. 실제 결제·보관 잔액에서 USDC 비중을 확인해야 합니다.",
-            "시간표: 미국에서 먼저 출시하며 추가 기능을 앞으로 수개월 동안 확대한다고 양사가 밝혔습니다.",
-            "실패 경로: 기업 고객 채택이 느리거나 보상률·규제·회계·세무 부담 때문에 스테이블코인 잔액이 실제로 늘지 않으면 매출 효과가 제한됩니다.",
+            "COIN: 거래수수료 외 결제·전환·기업 인프라 반복수익 경로 확대 가능.",
+            "CRCL: 실제 결제·보관 잔액에서 USDC 사용 비중이 확인돼야 직접 수혜로 볼 수 있음.",
         ]
     if event.kind == "coinbase_clearing_dco_registered":
         return [
-            "돈 버는 능력: 거래소(DCM)·중개(FCM)·청산(DCO)을 한 그룹 안에서 연결하면 외부 청산 의존도를 줄이고 파생상품 거래량에서 더 많은 경제성을 내부화할 가능성이 생깁니다.",
-            "시간표: DCO 등록은 2026년 9월 28일 완료됐지만, 실제 Coinbase 상품이 새 청산소로 이전되는 시점과 상품별 승인은 별도로 확인해야 합니다.",
-            "USDC: 사용자 제공 보도에는 USDC 담보·24/7 결제가 언급됐지만 CFTC 등록목록 요약 자체는 이를 확인하지 않습니다. 공식 규정·회사 원문을 추가 확인해야 합니다.",
-            "실패 경로: 청산소 등록만 있고 거래량 이전·신상품·담보 효율 개선이 늦으면 단기 실적 기여는 작을 수 있습니다.",
+            "COIN: 거래소·중개·청산을 연결해 파생상품 경제성을 더 많이 내부화할 가능성.",
+            "다음 숫자: Coinbase 자체 DCO 청산 거래량, 상품 이전, 신규 파생상품 출시.",
         ]
     return [
-        "돈 버는 능력: 실제 고객·거래량·잔액·수수료가 늘어나는지 확인합니다.",
-        "시간표: 발표와 실제 출시·매출 인식을 분리합니다.",
-        "실패 경로: 발표만 있고 고객 채택·거래량이 따라오지 않는 경우입니다.",
+        "실제 고객·거래량·잔액·수수료가 늘어나는지 확인.",
+        "발표와 실제 출시·매출 인식을 분리해서 판단.",
     ]
+
+
+def risk_line(event):
+    if event.kind == "citi_coinbase_stablecoin_payments":
+        return "기업 채택·결제량·스테이블코인 잔액이 늘지 않으면 매출 효과는 제한적."
+    if event.kind == "coinbase_clearing_dco_registered":
+        return "등록만 완료되고 거래량 이전이 늦으면 단기 실적 기여는 작을 수 있음."
+    return "고객 채택과 실제 거래량이 따라오지 않으면 발표 효과에 그칠 수 있음."
 
 
 def build_alert(events):
@@ -348,31 +363,27 @@ def build_alert(events):
         lines.extend([
             f"<b>{idx}. {html.escape(event.title)}</b>",
             "",
-            f"<b>🧩 한마디로</b>",
-            html.escape(event_summary(event)),
+            "<b>🧩 핵심</b>",
+            "• " + html.escape(event_summary(event)),
             "",
-            "<b>✅ 확인된 사실</b>",
-            "• " + html.escape(event.detail),
-            "",
-            "<b>💰 투자 의미</b>",
+            "<b>📌 확인</b>",
         ])
+        for item in fact_lines(event):
+            lines.append("• " + html.escape(item))
+        lines.extend(["", "<b>💰 투자 의미</b>"])
         for item in investment_lines(event):
             lines.append("• " + html.escape(item))
         lines.extend([
             "",
-            "<b>⏱ 날짜</b>",
-            f"• {html.escape(event.date)}",
+            "<b>⚠️ 실패 경로</b>",
+            "• " + html.escape(risk_line(event)),
             "",
             "<b>🔎 근거</b>",
-            f"• {html.escape(event.source)}",
-            f'• <a href="{html.escape(event.url, quote=True)}">원문</a>',
-            "",
+            f"• {html.escape(event.date)} · {html.escape(event.source)} · "
+            f'<a href="{html.escape(event.url, quote=True)}">원문</a>',
         ])
-    lines.extend([
-        "<b>🎯 핵심 한 줄 요약</b>",
-        "Coinbase는 현물거래소 한 곳에서 결제·스테이블코인·파생상품·청산까지 금융 인프라를 넓히고 있으며, "
-        "이번 Citi 결제 연결과 CFTC DCO 등록은 실제 사업 범위가 넓어진 사건입니다. 다만 발표·등록 자체와 실제 거래량·USDC 잔액·수수료 매출은 분리해서 확인합니다.",
-    ])
+        if idx != len(events):
+            lines.extend(["", "━━━━━━━━━━━━━━━━━━", ""])
     return "\n".join(lines).strip() + "\n"
 
 
