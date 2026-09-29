@@ -18,8 +18,9 @@ from zoneinfo import ZoneInfo
 import treasury_cta_squeeze_audited_watch as audited
 
 watcher = audited.watcher
-# Keep revision 9 so a readability-only edit does not itself force an alert.
-watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 9)
+# Revision 10 adds the official NQ/CFTC cross-asset squeeze lane.
+# The audited gate still prevents a formatting-only push from becoming an event alert.
+watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 10)
 _base_format = audited.format_alert
 _base_main = watcher.main
 
@@ -43,6 +44,10 @@ CFTC_URL = "https://www.cftc.gov/dea/futures/financial_lf.htm"
 NYFED_URL = "https://markets.newyorkfed.org/api/rates/secured/sofr/last/1.json"
 FED_FOMC_URL = "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
 CTA_SECONDARY_URL = "https://a.foresightnews.pro/article/detail/99813"
+CME_NQ_URL = "https://www.cmegroup.com/markets/equities/nasdaq/e-mini-nasdaq-100.html"
+YAHOO_NQ_URL = "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=5d&interval=1d"
+US_POSITIONING_STATE = watcher.DATA / "us_positioning_state.json"
+_CROSS_CACHE = None
 
 # CME contract face amounts. These convert CFTC contract counts into an intuitive
 # face-value notional only; they are not margin, P/L, market value or DV01.
@@ -53,6 +58,230 @@ CONTRACT_FACE_USD = {
     "BOND": 100_000,
     "ULTRABOND": 100_000,
 }
+
+
+def _ints(text: str) -> list[int]:
+    return [
+        int(x.replace(",", ""))
+        for x in re.findall(r"[-+]?(?:\d{1,3}(?:,\d{3})+|\d+)", text or "")
+    ]
+
+
+def _nq_cftc_weekly() -> dict:
+    """Official NASDAQ MINI weekly TFF lane; OI and positioning are same-scope."""
+    raw = watcher.fetch(CFTC_URL)
+    plain = watcher.strip_tags(raw).replace("\xa0", " ")
+    report_m = re.search(
+        r"Positions\s+as\s+of\s+([A-Za-z]+\s+\d{1,2},\s+20\d{2})",
+        plain,
+        re.I,
+    )
+    report_date = report_m.group(1) if report_m else "확인 불가"
+    start = plain.find("NASDAQ MINI -")
+    if start < 0:
+        raise RuntimeError("CFTC NASDAQ MINI block not found")
+    block = plain[start : start + 7000]
+
+    oi_m = re.search(r"Open Interest is\s+([\d,]+)", block, re.I)
+    pos_m = re.search(r"Positions\s+([\s\S]*?)\s+Changes from:", block, re.I)
+    ch_m = re.search(
+        r"Changes from:\s*([A-Za-z]+\s+\d{1,2},\s+20\d{2}).*?"
+        r"Total Change is:\s*([-+]?\s*[\d,]+)\s+([\s\S]*?)\s+Percent of Open Interest",
+        block,
+        re.I,
+    )
+    if not oi_m or not pos_m or not ch_m:
+        raise RuntimeError("CFTC NASDAQ MINI weekly fields missing")
+
+    pos = _ints(pos_m.group(1))[:14]
+    changes = _ints(ch_m.group(3))[:14]
+    if len(pos) < 14 or len(changes) < 14:
+        raise RuntimeError("CFTC NASDAQ MINI positions parse failed")
+
+    oi = int(oi_m.group(1).replace(",", ""))
+    oi_wow = int(ch_m.group(2).replace(" ", "").replace(",", ""))
+    lev_long, lev_short = pos[6], pos[7]
+    lev_long_wow, lev_short_wow = changes[6], changes[7]
+    return {
+        "report_date": report_date,
+        "previous_period": ch_m.group(1),
+        "open_interest": oi,
+        "open_interest_wow": oi_wow,
+        "leveraged_long": lev_long,
+        "leveraged_short": lev_short,
+        "leveraged_net": lev_long - lev_short,
+        "leveraged_net_wow": lev_long_wow - lev_short_wow,
+        "leveraged_short_wow": lev_short_wow,
+        "short_share_oi_pct": (lev_short / oi * 100.0) if oi else None,
+        "scope": "CFTC TFF NASDAQ MINI 전체시장 주간",
+    }
+
+
+def _nq_price() -> dict:
+    """Delayed/distributed NQ price lane. Never use Yahoo OI in this watcher."""
+    data = watcher.fetch_json(YAHOO_NQ_URL)
+    result = (((data or {}).get("chart") or {}).get("result") or [None])[0]
+    if not result:
+        raise RuntimeError("Yahoo NQ chart result missing")
+    meta = result.get("meta") or {}
+    quote = (((result.get("indicators") or {}).get("quote") or [{}])[0])
+    closes = [float(x) for x in (quote.get("close") or []) if x is not None]
+    price = meta.get("regularMarketPrice")
+    prev = meta.get("chartPreviousClose") or meta.get("previousClose")
+    if price is None and closes:
+        price = closes[-1]
+    if prev is None and len(closes) >= 2:
+        prev = closes[-2]
+    price = float(price) if price is not None else None
+    prev = float(prev) if prev is not None else None
+    pct = ((price / prev - 1.0) * 100.0) if price is not None and prev not in (None, 0) else None
+    return {
+        "price": price,
+        "previous_close": prev,
+        "pct_change": pct,
+        "source": "Yahoo distributed/delayed NQ=F",
+    }
+
+
+def _positioning_history_enrichment() -> dict:
+    try:
+        state = json.loads(US_POSITIONING_STATE.read_text(encoding="utf-8"))
+        cftc = ((state.get("values") or {}).get("CFTC|cot") or {})
+        return cftc.get("history_3y") or {}
+    except Exception:
+        return {}
+
+
+def _cross_raw() -> dict:
+    global _CROSS_CACHE
+    if _CROSS_CACHE is not None:
+        return _CROSS_CACHE
+    out = {"nq_cftc": None, "nq_price": None, "history_3y": _positioning_history_enrichment(), "errors": []}
+    try:
+        out["nq_cftc"] = _nq_cftc_weekly()
+    except Exception as exc:
+        out["errors"].append(f"CFTC NQ: {type(exc).__name__}: {exc}")
+    try:
+        out["nq_price"] = _nq_price()
+    except Exception as exc:
+        out["errors"].append(f"NQ price: {type(exc).__name__}: {exc}")
+    _CROSS_CACHE = out
+    return out
+
+
+def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
+    raw = _cross_raw()
+    nq = raw.get("nq_cftc") or {}
+    price = raw.get("nq_price") or {}
+    hist = raw.get("history_3y") or {}
+
+    treasury10 = ((snapshot.get("cftc") or {}).get("markets") or {}).get("10Y") or {}
+    treasury_short_present = bool(
+        (treasury10.get("leveraged_net") or 0) < 0
+        and float(treasury10.get("short_share_oi_pct") or 0) >= 35.0
+    )
+
+    pctile = hist.get("short_extreme_percentile_3y")
+    nq_extreme = (
+        isinstance(pctile, (int, float)) and float(pctile) >= 90.0
+    ) or (
+        (nq.get("leveraged_net") or 0) < 0
+        and float(nq.get("short_share_oi_pct") or 0) >= 25.0
+    )
+
+    nq_price_up = (price.get("pct_change") is not None and float(price["pct_change"]) > 0.20)
+    nq_oi_down = (nq.get("open_interest_wow") is not None and int(nq["open_interest_wow"]) < 0)
+    nq_short_cover = (nq.get("leveraged_net_wow") is not None and int(nq["leveraged_net_wow"]) > 0)
+    nq_confirmed = nq_price_up and nq_oi_down and nq_short_cover
+
+    treasury_evidence = bool(watcher.squeeze_evidence(snapshot, previous))
+    repo_ok, repo_worse = audited._repo_not_worse(snapshot, previous)
+    y = snapshot.get("yield10") or {}
+    treasury_confirmed = treasury_evidence and repo_ok and float(y.get("z20") or 0) <= -1.0
+
+    treasury_price_up = audited._price_up_count(snapshot) >= 1
+    prepared = bool(
+        treasury_short_present
+        and nq_extreme
+        and repo_ok
+        and (treasury_price_up or nq_price_up)
+    )
+
+    if treasury_confirmed and nq_confirmed:
+        stage = 2
+        label = "🔥 채권→Nasdaq 이중 숏 스퀴즈 확인"
+    elif prepared:
+        stage = 1
+        label = "🟡 채권→Nasdaq 이중 숏 스퀴즈 준비"
+    else:
+        stage = 0
+        label = "⚪ 채권→Nasdaq 이중 숏 스퀴즈 미확인"
+
+    return {
+        **raw,
+        "stage": stage,
+        "label": label,
+        "treasury_short_present": treasury_short_present,
+        "treasury_confirmed": treasury_confirmed,
+        "nq_extreme": nq_extreme,
+        "nq_price_up": nq_price_up,
+        "nq_oi_down": nq_oi_down,
+        "nq_short_cover": nq_short_cover,
+        "nq_confirmed": nq_confirmed,
+        "repo_ok": repo_ok,
+        "repo_worse": repo_worse,
+    }
+
+
+def _nq_notional_krw(nq: dict, price: dict, fx) -> str:
+    try:
+        contracts = abs(int(nq.get("leveraged_net") or 0))
+        index_price = float(price.get("price"))
+        rate = float(fx)
+        won = contracts * index_price * 20.0 * rate
+        return _fmt_krw_amount(won)
+    except Exception:
+        return "원화 명목금액 확인 불가"
+
+
+def _cross_asset_block(snapshot: dict, previous: dict, fx=None, compact: bool = False) -> str:
+    cross = _cross_asset_snapshot(snapshot, previous)
+    nq = cross.get("nq_cftc") or {}
+    price = cross.get("nq_price") or {}
+    hist = cross.get("history_3y") or {}
+    treasury10 = ((snapshot.get("cftc") or {}).get("markets") or {}).get("10Y") or {}
+
+    nq_pct = price.get("pct_change")
+    nq_pct_text = f"{float(nq_pct):+.2f}%" if nq_pct is not None else "가격 확인 불가"
+    pctile = hist.get("short_extreme_percentile_3y")
+    pctile_text = f"{float(pctile):.0f}백분위" if isinstance(pctile, (int, float)) else "백분위 재조회 대기"
+    unwind = hist.get("unwind_from_peak_pct")
+    unwind_text = f"{float(unwind):.1f}%" if isinstance(unwind, (int, float)) else "확인 불가"
+
+    if compact:
+        return (
+            "<b>📈 채권→Nasdaq 전이</b>\n"
+            f"• {cross['label']}\n"
+            f"• 10Y LF 순 {int(treasury10.get('leveraged_net') or 0):+,}계약 · "
+            f"NQ LF 순 {int(nq.get('leveraged_net') or 0):+,}계약 ({pctile_text})\n"
+            f"• NQ {nq_pct_text} · CFTC NQ OI 주간 {int(nq.get('open_interest_wow') or 0):+,} · "
+            f"순포지션 {int(nq.get('leveraged_net_wow') or 0):+,}\n"
+        )
+
+    return (
+        "<b>📈 채권→Nasdaq 전이</b>\n"
+        f"• 판정: <b>{cross['label']}</b>\n"
+        f"• 10Y Leveraged Funds 순포지션 {int(treasury10.get('leveraged_net') or 0):+,}계약\n"
+        f"• NQ E-mini Leveraged Funds 순포지션 {int(nq.get('leveraged_net') or 0):+,}계약"
+        f" · 3년 숏 극단 {pctile_text} · 최대 순숏 대비 청산 {unwind_text}\n"
+        f"• NQ {nq_pct_text} ({price.get('source') or '가격 소스 확인 불가'})"
+        f" · CFTC 동일범위 OI 주간 {int(nq.get('open_interest_wow') or 0):+,}계약"
+        f" · 순포지션 주간 {int(nq.get('leveraged_net_wow') or 0):+,}계약\n"
+        f"• NQ 순숏 명목금액: {_nq_notional_krw(nq, price, fx)}"
+        " (NQ 지수×$20×순계약수×환율, 실제 증거금·손익 아님)\n"
+        "• 확정은 ZN 가격↑·동일범위 OI↓와 NQ 가격↑·CFTC 주간 OI↓·NQ 순숏 축소가 함께 붙을 때만 합니다.\n"
+        "※ CFTC 주간 OI와 Yahoo 지연가격은 시점이 달라 ‘동시 장중 신호’로 과장하지 않습니다.\n"
+    )
 
 
 def _equity_impact(snapshot: dict, previous: dict, reasons: list[str]) -> tuple[str, str]:
@@ -119,7 +348,7 @@ def _easy_read_block(snapshot: dict, previous: dict, reasons: list[str]) -> str:
 def format_alert(snapshot, previous, fx, fx_date, reasons):
     title, body = _base_format(snapshot, previous, fx, fx_date, reasons)
     body = _compact_duplicates(body)
-    body = _easy_read_block(snapshot, previous, reasons) + body
+    body = _easy_read_block(snapshot, previous, reasons) + _cross_asset_block(snapshot, previous, fx=fx, compact=True) + "\n" + body
 
     impact, path = _equity_impact(snapshot, previous, reasons)
     block = (
@@ -130,6 +359,16 @@ def format_alert(snapshot, previous, fx, fx_date, reasons):
     marker = "<b>한 줄 결론</b>"
     if "🧭 주식시장 해석" not in body:
         body = body.replace(marker, block + marker, 1) if marker in body else body + "\n\n" + block.rstrip()
+
+    # Keep event alerts below Telegram's hard limit. The cross-asset lane is
+    # preserved; the secondary Goldman explainer is the first removable block.
+    if len(title) + 2 + len(body) > 4050:
+        body = re.sub(
+            r"<b>1️⃣ Goldman CTA DV01 — 스퀴즈의 연료</b>[\s\S]*?(?=<b>2️⃣ CFTC 공식 포지션)",
+            "",
+            body,
+            count=1,
+        )
     return title, body
 
 
@@ -182,6 +421,7 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=Non
     cftc_date = (snapshot.get("cftc") or {}).get("report_date", "확인 불가")
     cme = snapshot.get("cme") or {}
     repo = snapshot.get("repo") or {}
+    cross_block = _cross_asset_block(snapshot, previous, fx=fx, compact=False)
 
     if any("FOMC 전날 점검" in r for r in reasons):
         title = "🚨 미 국채 CTA · FOMC 전날 점검"
@@ -201,6 +441,8 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=Non
         f"• SOFR {(repo.get('SOFR') or {}).get('rate', '확인 불가')}% · BGCR {(repo.get('BGCR') or {}).get('rate', '확인 불가')}% · TGCR {(repo.get('TGCR') or {}).get('rate', '확인 불가')}%",
         f"• 원화는 계약수×CME 계약 액면×환율 기준 ({fx_date or '환율일 확인 불가'}, 1달러={float(fx):,.2f}원)" if fx is not None else "• 원화 환산: 환율 확인 불가",
         "※ 2Y는 계약당 20만달러, 5Y·10Y·Bond·Ultra는 10만달러 액면 기준. 실제 투입자금·손익·DV01이 아닙니다.",
+        "",
+        cross_block,
     ]
 
     if any("FOMC 전날 점검" in r for r in reasons):
@@ -263,8 +505,21 @@ def scheduled_main() -> int:
         return rc
 
     next_state = json.loads(watcher.NEXT_STATE.read_text(encoding="utf-8"))
+    snapshot = next_state.get("snapshot") or {}
+    previous = current_state.get("snapshot") or {}
+    cross = _cross_asset_snapshot(snapshot, previous)
+    snapshot["nasdaq_cross_asset"] = cross
+    next_state["snapshot"] = snapshot
+
+    prev_stage = int(current_state.get("nasdaq_cross_asset_stage", 0) or 0)
+    stage = int(cross.get("stage", 0) or 0)
+    cross_due = stage >= 1 and stage > prev_stage
+    next_state["nasdaq_cross_asset_stage"] = stage
+
     monday_due, fomc_due, week_key, date_key = _scheduled_due(current_state, next_state)
-    if not (monday_due or fomc_due):
+    base_alert_exists = watcher.ALERT.exists()
+    if not (monday_due or fomc_due or cross_due):
+        watcher.NEXT_STATE.write_text(json.dumps(next_state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         return rc
 
     reasons: list[str] = []
@@ -278,15 +533,39 @@ def scheduled_main() -> int:
         reasons.append("월요일 정기점검")
     if fomc_due:
         reasons.append("FOMC 전날 점검")
+    if cross_due:
+        reasons.append("채권→Nasdaq 이중 숏 스퀴즈 " + ("확인" if stage >= 2 else "준비"))
     reasons = list(dict.fromkeys(reasons))
 
-    snapshot = next_state.get("snapshot") or {}
-    previous = current_state.get("snapshot") or {}
+    # If the audited Treasury gate already produced an event alert, format_alert()
+    # has already embedded the cross-asset block. Do not overwrite it unless this is
+    # a mandatory scheduled report.
+    if base_alert_exists and not (monday_due or fomc_due):
+        watcher.NEXT_STATE.write_text(json.dumps(next_state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        with watcher.STATUS.open("a", encoding="utf-8") as f:
+            f.write(f"- 채권→Nasdaq 전이 단계: {stage} ({cross.get('label')})\n")
+        return rc
+
     try:
         fx, fx_date = watcher.latest_fx()
     except Exception:
         fx, fx_date = None, None
-    title, body = _scheduled_report(snapshot, previous, reasons, fx=fx, fx_date=fx_date)
+    if cross_due and not (monday_due or fomc_due):
+        title = "🔥 채권→Nasdaq 이중 숏 스퀴즈 감시" if stage >= 2 else "🟡 채권→Nasdaq 이중 숏 스퀴즈 준비"
+        body = "\n".join([
+            "<b>👀 지금 쉽게 보면</b>",
+            f"• <b>{cross.get('label')}</b>",
+            "• 채권 숏과 Nasdaq 숏이 함께 쌓인 상태에서 실제 청산이 같은 방향으로 번지는지 확인합니다.",
+            "",
+            _cross_asset_block(snapshot, previous, fx=fx, compact=False),
+            "<b>🚦 다음 확인</b>",
+            "• ZN 가격↑·동일범위 OI↓ + NQ 가격↑·CFTC NQ OI↓ + NQ 순숏 축소가 겹치면 이중 스퀴즈 확인으로 격상합니다.",
+            "• CFTC는 주간 후행 자료이므로 장중 가격만으로 확정하지 않습니다.",
+            "",
+            f'<a href="{CFTC_URL}">CFTC 포지션</a> · <a href="{CME_NQ_URL}">CME NQ</a> · <a href="{TREASURY_URL}">미 재무부 금리</a>',
+        ])
+    else:
+        title, body = _scheduled_report(snapshot, previous, reasons, fx=fx, fx_date=fx_date)
     if len(title) + 2 + len(body) > 4096:
         raise RuntimeError(f"Telegram scheduled report too long: {len(title)+2+len(body)}")
 
@@ -317,6 +596,8 @@ def scheduled_main() -> int:
             f.write("- 예약 발송: 월요일 주간 점검\n")
         if fomc_due:
             f.write("- 예약 발송: FOMC 전날 점검\n")
+        if cross_due:
+            f.write(f"- 채권→Nasdaq 전이 단계 상승: {prev_stage}→{stage} ({cross.get('label')})\n")
     return rc
 
 
