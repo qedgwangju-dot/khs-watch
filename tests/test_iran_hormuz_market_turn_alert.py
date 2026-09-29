@@ -390,6 +390,29 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
             MODULE.event_id("regional_export_recovery", revised),
         )
 
+    def test_usdkrw_format_marks_won_direction(self):
+        now = dt.datetime(2026, 9, 29, 10, 0, tzinfo=dt.timezone.utc).timestamp()
+        fx = MODULE.Quote("KRW=X", "원·달러", "원/달러", 1360.0, 1340.0, 20.0, 1.4925, "", now)
+        text = MODULE.fmt_quote_line(fx)
+        self.assertIn("1,360.00원", text)
+        self.assertIn("원화 약세", text)
+
+    def test_korea_transmission_block_oil_down_won_weak(self):
+        current = dt.datetime(2026, 9, 29, 10, 0, tzinfo=dt.timezone.utc)
+        news = [MODULE.NewsItem(
+            "Middle East crude exports snapshot 16.328 Mbd; Hormuz 9.719 Mbd; February 19.513 Mbd; gap 3.185 Mbd; recovery 83.7%; preliminary Kpler data may revise",
+            "Reuters/Kpler", "https://example.com/reuters",
+            current.isoformat(), current.timestamp(), "regional_export_recovery"
+        )]
+        oil = MODULE.Quote("BZ=F", "Brent", "달러/배럴", 100.0, 103.0, -3.0, -2.91, "", current.timestamp())
+        fx = MODULE.Quote("KRW=X", "원·달러", "원/달러", 1360.0, 1340.0, 20.0, 1.49, "", current.timestamp())
+        body = MODULE.build_physical_flow_alert_body("regional_export_recovery", news, oil, current, fx)
+        self.assertIn("[한국 전이]", body)
+        self.assertIn("유가 ↓ 하지만 원화 약세", body)
+        self.assertIn("실적 시즌", body)
+        self.assertIn("원가 민감", body)
+        self.assertIn("금리 경로", body)
+
     def test_alert_body_contains_required_market_values(self):
         current = dt.datetime(2026, 8, 2, 12, 0, tzinfo=dt.timezone.utc)
         news = [
