@@ -456,10 +456,6 @@ def parse_sox():
 
             calc_net = latest - previous_close
             calc_pct = (latest / previous_close - 1.0) * 100.0 if previous_close else None
-            if abs(calc_net - net_change) > 1.0:
-                raise RuntimeError(
-                    f"SOX net-change mismatch: page={net_change}, calc={calc_net:.2f}"
-                )
             if calc_pct is None or abs(calc_pct - pct) > 0.08:
                 raise RuntimeError(
                     f"SOX pct mismatch: page={pct}, calc={calc_pct:.2f}"
@@ -467,7 +463,16 @@ def parse_sox():
             if abs(pct) > 25:
                 raise RuntimeError(f"SOX daily pct sanity failed: {pct}")
 
-            parsed = (period, latest, net_change, pct, previous_close)
+            # Nasdaq's SOX page can publish a stale Net Change field while Last,
+            # Previous Close and Net Change(%) are internally consistent. In that
+            # exact case, derive the net change arithmetically and record that fact
+            # instead of silently accepting the inconsistent field.
+            net_change_source = "Nasdaq official Overview"
+            if abs(calc_net - net_change) > 1.0:
+                net_change = calc_net
+                net_change_source = "Nasdaq Last minus Previous Close derived; displayed Net Change stale"
+
+            parsed = (period, latest, net_change, pct, previous_close, net_change_source)
             source_url = url
             break
         except Exception as exc:
@@ -476,12 +481,13 @@ def parse_sox():
     if parsed is None:
         raise RuntimeError("SOX official Overview validation failed: " + " | ".join(errors))
 
-    period, latest, displayed_net_change, displayed_pct, previous_close = parsed
+    period, latest, displayed_net_change, displayed_pct, previous_close, net_change_source = parsed
     metrics = {
         "value": latest,
         "previous_close": previous_close,
         "previous_close_source": "Nasdaq official Overview",
         "net_change": displayed_net_change,
+        "net_change_source": net_change_source,
         "pct": displayed_pct,
         "d1_pct": displayed_pct,
         "official_overview_url": source_url,
@@ -558,7 +564,7 @@ def explain(cftc, cboe, sox):
         hist = cftc.get("history_3y") or {}
         if nq:
             pct = hist.get("short_extreme_percentile_3y")
-            pct_txt = f" · 3년 숏 극단 {pct:.0f}백분위" if isinstance(pct, (int, float)) else ""
+            pct_txt = f" · 3년 순숏 {pct:.0f}백분위" if isinstance(pct, (int, float)) else ""
             lines.append(
                 f"• NQ E-mini Leveraged Funds: 순포지션 {int(nq.get('leveraged_net') or 0):+,}계약"
                 f" | 주간 {int(nq.get('leveraged_net_wow') or 0):+,}계약{pct_txt}"
@@ -651,6 +657,20 @@ def validate_critical_sources(cftc_obj, cboe_obj, sox_obj):
             problems.append("CFTC Asset Manager 주간변화 산술 불일치")
         if m["lev_net_wow"] != m["lev_long_wow"] - m["lev_short_wow"]:
             problems.append("CFTC Leveraged Funds 주간변화 산술 불일치")
+
+        nq = cftc_obj.get("nq_mini") or {}
+        hist = cftc_obj.get("history_3y") or {}
+        if not nq or nq.get("cftc_code") != NQ_CFTC_CODE:
+            problems.append("CFTC NASDAQ MINI 공식 코드/포지션 확인 불가")
+        else:
+            if nq.get("leveraged_net") != nq.get("leveraged_long", 0) - nq.get("leveraged_short", 0):
+                problems.append("CFTC NQ Leveraged Funds 순포지션 산술 불일치")
+            if nq.get("open_interest_wow") is None:
+                problems.append("CFTC NQ 동일범위 OI 주간변화 확인 불가")
+        if not isinstance(hist.get("short_extreme_percentile_3y"), (int, float)):
+            problems.append("CFTC NQ 3년 순숏 백분위 확인 불가")
+        if int(hist.get("sample_n") or 0) < 150:
+            problems.append("CFTC NQ 3년 표본 부족")
 
     if cboe_obj:
         m = cboe_obj["metrics"]
@@ -775,14 +795,14 @@ if quality_gate_ok and (updates or force):
         if nq:
             body += [
                 "",
-                "<b>Nasdaq NQ E-mini 숏 극단 추적</b>",
+                "<b>Nasdaq NQ E-mini 3년 포지션 추적</b>",
                 f"• Leveraged Funds: 롱 {int(nq.get('leveraged_long') or 0):,} / 숏 {int(nq.get('leveraged_short') or 0):,} → 순 {int(nq.get('leveraged_net') or 0):+,}계약",
                 f"• 주간 순포지션 변화 {int(nq.get('leveraged_net_wow') or 0):+,}계약 · OI 변화 {int(nq.get('open_interest_wow') or 0):+,}계약",
                 f"• 숏/OI {float(nq.get('short_share_oi_pct') or 0):.1f}%",
             ]
             if isinstance(hist.get("short_extreme_percentile_3y"), (int, float)):
                 body += [
-                    f"• 최근 3년 순숏 극단: <b>{hist['short_extreme_percentile_3y']:.0f}백분위</b> · 숏/OI {hist.get('short_share_oi_percentile_3y', 0):.0f}백분위",
+                    f"• 최근 3년 순숏 백분위: <b>{hist['short_extreme_percentile_3y']:.0f}백분위</b> · 숏/OI {hist.get('short_share_oi_percentile_3y', 0):.0f}백분위",
                     f"• 3년 최대 순숏 대비 청산률: {hist.get('unwind_from_peak_pct', 0):.1f}%",
                     f"• 숏 계약 변화: 1주 {int(hist.get('leveraged_short_1w_change') or 0):+,} · 4주 {int(hist.get('leveraged_short_4w_change') or 0):+,}",
                     "※ 3년 백분위는 CFTC TFF NASDAQ MINI futures-only 공식 연간 압축자료로 계산. Goldman/BofA PB 독자 모델과 동일하지 않습니다.",
