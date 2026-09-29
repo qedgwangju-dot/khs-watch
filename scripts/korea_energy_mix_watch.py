@@ -41,7 +41,33 @@ RSS_SOURCES = (
             "https://news.google.com/rss/search?q=%28%22%EC%A0%9C12%EC%B0%A8+%EC%A0%84%EB%A0%A5%EC%88%98%EA%B8%89%EA%B8%B0%EB%B3%B8%EA%B3%84%ED%9A%8D%22+OR+"
             "%2212%EC%B0%A8+%EC%A0%84%EA%B8%B0%EB%B3%B8%22+OR+"
             "%22%EC%A0%84%EB%A0%A5%EC%88%98%EA%B8%89%EA%B8%B0%EB%B3%B8%EA%B3%84%ED%9A%8D%22+OR+"
-            "%22%EC%A0%84%EA%B8%B0%EB%B3%B8%22%29+when%3A7d"
+            "%22%EC%A0%84%EB%A8%B9%EB%B3%B8%22%29+when%3A7d"
+            "&hl=ko&gl=KR&ceid=KR%3Ako"
+        ),
+    },
+    {
+        "name": "전력망 혁신정책 공식",
+        "official": True,
+        "url": (
+            "https://news.google.com/rss/search?q=site%3Amcee.go.kr+%28"
+            "%22%EC%A0%84%EB%A0%A5%EB%A7%9D+%ED%98%81%EC%8B%A0%EB%8C%80%EC%B1%85%22+OR+"
+            "%22%EA%B3%84%ED%86%B5%EA%B4%80%EB%A6%AC%EB%B3%80%EC%A0%84%EC%86%8C%22+OR+"
+            "%22%EC%A0%91%EC%86%8D%EA%B6%8C%22+OR+"
+            "%22%EB%B9%84%EC%A6%9D%EC%84%A4+%EB%8C%80%EC%95%88%22+OR+"
+            "%22%EC%9E%AC%EC%83%9D%EC%97%90%EB%84%88%EC%A7%80+100GW%22%29+when%3A30d"
+            "&hl=ko&gl=KR&ceid=KR%3Ako"
+        ),
+    },
+    {
+        "name": "전력망 혁신정책 언론",
+        "official": False,
+        "url": (
+            "https://news.google.com/rss/search?q=%28"
+            "%22%EC%A0%84%EB%A0%A5%EB%A7%9D+%ED%98%81%EC%8B%A0%EB%8C%80%EC%B1%85%22+OR+"
+            "%22%EA%B3%84%ED%86%B5%EA%B4%80%EB%A6%AC%EB%B3%80%EC%A0%84%EC%86%8C%22+OR+"
+            "%22%EC%A0%91%EC%86%8D%EA%B6%8C%22+OR+"
+            "%22%EB%B9%84%EC%A6%9D%EC%84%A4+%EB%8C%80%EC%95%88%22+OR+"
+            "%22%EC%9E%AC%EC%83%9D%EC%97%90%EB%84%88%EC%A7%80+100GW%22%29+when%3A7d"
             "&hl=ko&gl=KR&ceid=KR%3Ako"
         ),
     },
@@ -73,6 +99,7 @@ PLAN_TERMS = (
 ENERGY_TERMS = (
     "재생에너지", "태양광", "해상풍력", "육상풍력", "풍력", "220gw", "236gw",
     "원전", "원자력", "신규 원전", "에너지믹스", "전력수요", "석탄", "lng", "ess",
+    "전력망", "계통관리변전소", "접속권", "비증설", "유연접속",
 )
 
 
@@ -137,6 +164,8 @@ def classify(title: str) -> tuple[str, int]:
         return "전기본 확정·의결", 7
     if any(x in lower for x in ("원전", "원자력")):
         return "원전·전원믹스", 6
+    if any(x in lower for x in ("전력망 혁신대책", "계통관리변전소", "접속권", "비증설", "유연접속")):
+        return "전력망·계통 수용력", 6
     if any(x in lower for x in ("재생에너지", "재생e", "태양광", "해상풍력", "육상풍력", "풍력", "220gw", "236gw")):
         return "재생에너지·전원믹스", 6
     if "전력수요" in lower:
@@ -314,6 +343,8 @@ def meaning(category: str) -> str:
         return "잠정 논의가 정부의 실제 전원·전력망 투자 기준으로 넘어가는 핵심 확정 이벤트"
     if category == "재생에너지·전원믹스":
         return "발전원 구성과 송전망·ESS·태양광·풍력 설비투자 시간표를 직접 바꿈"
+    if category == "전력망·계통 수용력":
+        return "기존 전력망의 접속권·수용량·ESS 활용과 실제 재생에너지 사업 진입 시점을 직접 바꿈"
     if category == "원전·전원믹스":
         return "신규 원전·계속운전·기저전원 투자와 장기 전력공급 시간표를 바꿈"
     if category == "전력수요 전망":
@@ -334,6 +365,8 @@ def next_checkpoint(stage: str, category: str) -> str:
         return "신규 원전 기수·용량·부지·준공연도와 계속운전 여부"
     if category == "재생에너지·전원믹스":
         return "원별 GW·연도별 보급량·계통 접속·ESS·해상풍력 인허가"
+    if category == "전력망·계통 수용력":
+        return "호남 계통관리변전소 해제·접속권 회수 실적·ESS 발주·실제 추가 접속 MW"
     if category == "전력수요 전망":
         return "최대전력수요·설비예비율·데이터센터·반도체 부하 반영치"
     return "정부안·공청회·국회 보고·최종 확정으로 단계가 올라가는지"
