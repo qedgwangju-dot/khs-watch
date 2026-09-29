@@ -1004,7 +1004,19 @@ def build_physical_flow_alert_body(
         )
 
     lines.extend(["", "[핵심 의미]"])
-    if kind == "east_west_pipeline_recovery":
+    if kind == "regional_export_recovery":
+        lines.extend([
+            "중동 주요 산유국의 원유 수출이 전쟁 이후 최고 수준으로 올라왔습니다.",
+            "→ Reuters/Kpler 기준 9월 12.8 Mbd로 회복했지만 2월 18.8 Mbd보다 약 6.0 Mbd 낮습니다.",
+            "→ 따라서 '공급 회복'은 맞지만 '전쟁 전 완전 정상화'로 부르면 안 됩니다.",
+        ])
+    elif kind == "india_gulf_import_recovery":
+        lines.extend([
+            "걸프산 원유가 인도 같은 최종 수요처까지 다시 도착하는 흐름이 강해지고 있습니다.",
+            "→ 6월 1.03 → 8월 1.18 → 9월 1.52 Mbd로 회복했습니다.",
+            "→ 다만 2025 평균 2.24 Mbd보다 낮아 완전 정상화는 아닙니다.",
+        ])
+    elif kind == "east_west_pipeline_recovery":
         lines.extend([
             "East-West Pipeline 유량 회복은 호르무즈를 우회하는 Red Sea 공급축이 되살아나는 신호입니다.",
             "→ 3.5Mbd가 확인되면 Reuters가 언급한 전쟁 전후 우회 운송 약 4Mbd의 약 88% 수준입니다.",
@@ -1028,7 +1040,21 @@ def build_physical_flow_alert_body(
         ])
 
     lines.extend(["", "[병목]"])
-    if kind == "east_west_pipeline_recovery":
+    if kind == "regional_export_recovery":
+        lines.extend([
+            "1) 호르무즈 실제 통과량이 회복세를 유지하는지",
+            "2) Ras Tanura·Yanbu 양쪽 선적이 동시에 유지되는지",
+            "3) GoO STS 비용과 VLCC 운임이 낮아지는지",
+            "4) 이란·후티 공격 재개로 우회망이 다시 흔들리는지",
+        ])
+    elif kind == "india_gulf_import_recovery":
+        lines.extend([
+            "1) 인도 도착 기준 1.52 Mbd가 월말까지 유지되는지",
+            "2) Iraq·UAE·Kuwait·Saudi 물량 회복이 지속되는지",
+            "3) STS·운임·보험 비용이 구매단가를 다시 끌어올리는지",
+            "4) 러시아산 감소를 걸프산이 얼마나 대체하는지",
+        ])
+    elif kind == "east_west_pipeline_recovery":
         lines.extend([
             "1) 손상 펌핑스테이션 우회·복구 안정성",
             "2) Yanbu 저장탱크 재충전",
