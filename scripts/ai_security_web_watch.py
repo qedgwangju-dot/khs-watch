@@ -80,6 +80,10 @@ NEWS_QUERIES = [
     '(NVIDIA OpenShell OR OpenShell OR NemoClaw) security vulnerability sandbox escape policy bypass credential',
     '(NVIDIA OpenShell OR OpenShell) data exfiltration network policy bypass unauthorized access',
     '("agent safety runtime" OR "secure agent runtime") vulnerability sandbox escape credential leak',
+    '(OpenAI OR Anthropic OR Google OR Meta) model release cancelled delayed postponed restricted rollout safety evaluation',
+    '(OpenAI OR Anthropic OR Google OR Meta) deployment blocked safety gate failed alignment evaluation',
+    '(OpenAI OR Anthropic OR Google OR Meta) limited release restricted deployment safeguards model',
+    '(OpenAI OR Anthropic) "blocking alignment evaluation" failed passed deployment',
 ]
 
 AI_TERMS = (
@@ -112,6 +116,12 @@ SECURITY_TERMS = (
     "openshell", "agent safety runtime", "secure agent runtime",
     "policy bypass", "sandbox policy bypass", "network policy bypass",
     "credential leak", "secret exposure",
+    "release cancelled", "release canceled", "launch cancelled", "launch canceled",
+    "release delayed", "launch delayed", "release postponed", "launch postponed",
+    "deployment blocked", "blocked deployment", "restricted rollout",
+    "restricted deployment", "limited release", "limited rollout",
+    "safety gate failed", "failed safety evaluation", "failed alignment evaluation",
+    "blocking alignment evaluation", "deployment restriction",
     "training paused", "training resumed", "evaluation paused", "evaluation resumed",
     "inference paused", "inference resumed", "tool use paused", "tool-use paused",
     "tool use resumed", "tool-use resumed", "run was killed", "human reviewer",
@@ -128,6 +138,8 @@ HARD_SECURITY_TERMS = (
     "unauthorized communication", "critical cybersecurity capability",
     "critical cyber capability", "critical threshold",
     "training paused", "inference paused", "evaluation paused", "tool-use paused",
+    "release cancelled", "release canceled", "launch cancelled", "launch canceled",
+    "deployment blocked", "safety gate failed", "failed alignment evaluation",
 )
 
 TRUSTED_SOURCE_HINTS = (
@@ -171,6 +183,14 @@ VENDOR_PATTERNS = [
 ]
 
 CATEGORY_PATTERNS = [
+    ("출시 게이트·배포 제한", (
+        "release cancelled", "release canceled", "launch cancelled", "launch canceled",
+        "release delayed", "launch delayed", "release postponed", "launch postponed",
+        "deployment blocked", "blocked deployment", "restricted rollout",
+        "restricted deployment", "limited release", "limited rollout",
+        "safety gate failed", "failed safety evaluation", "failed alignment evaluation",
+        "blocking alignment evaluation", "deployment restriction",
+    )),
     ("에이전트 안전 런타임 실패", (
         "openshell", "agent safety runtime", "secure agent runtime",
         "sandbox policy bypass", "network policy bypass", "policy bypass",
@@ -627,6 +647,14 @@ def source_label(source: str) -> str:
 
 def incident_fact(item: dict) -> str | None:
     text = f" {item.get('title','')} {item.get('description','')} ".lower()
+    if any(x in text for x in ("release cancelled", "release canceled", "launch cancelled", "launch canceled")):
+        return "신규 모델 출시 취소·철회"
+    if any(x in text for x in ("release delayed", "launch delayed", "release postponed", "launch postponed")):
+        return "신규 모델 출시 연기"
+    if any(x in text for x in ("restricted rollout", "restricted deployment", "limited release", "limited rollout")):
+        return "안전성 우려에 제한 출시·배포"
+    if any(x in text for x in ("deployment blocked", "safety gate failed", "failed safety evaluation", "failed alignment evaluation")):
+        return "안전 게이트 미통과로 배포 차단"
     if ("training" in text or "evaluation" in text or "inference" in text) and ("paused" in text or "suspended" in text):
         return "최고 성능 모델의 학습·평가·추론 또는 도구사용 중단"
     if ("training" in text or "evaluation" in text or "inference" in text) and ("resumed" in text or "restart" in text):
@@ -679,6 +707,8 @@ def event_heading(cluster: list[dict]) -> str:
 
 def event_impact(cluster: list[dict]) -> str:
     cats = " ".join(item.get("category", "") for item in cluster)
+    if "출시 게이트·배포 제한" in cats:
+        return "모델 성능이 아니라 안전·정렬 평가가 실제 출시 일정과 배포 범위를 제한하는지가 핵심입니다."
     if "에이전트 안전 런타임 실패" in cats:
         return "에이전트 실행환경의 샌드박스·네트워크·자격증명 정책이 실제로 우회되는지가 핵심입니다."
     if "모델 운영중단·재개" in cats:
@@ -750,7 +780,7 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str, str]:
 
     lines += [
         "",
-        "<b>다음 확인</b>: 실제 사고/모의평가 구분 · 성공률/분모 · 탐지→확인→강제종료 시간 · 중단/재개 · 패치/완화책",
+        "<b>다음 확인</b>: 공식 출시일/변경일 · 안전게이트 통과 여부 · 제한배포 범위 · 실제 사고/모의평가 구분 · 탐지→강제종료 시간 · 중단/재개 · 패치/완화책",
     ]
     return title, "\n".join(lines)
 
