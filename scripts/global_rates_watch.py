@@ -473,9 +473,69 @@ def main() -> int:
             events.append({"type": "clear", "metric": metric, "label": label, "level": level, "value": value})
         active[key] = is_now
 
+    def eval_jpm30_up(level: float, label: str, meaning: str, rearm_bp: float = 5.0) -> None:
+        value = points["ust30"].value
+        prev = to_float(last_values.get("ust30"))
+        key = f"ust30:jpm_up:{level}:latched"
+        default_latched = prev is not None and prev >= level
+        latched = bool(active.get(key, default_latched))
+        if not latched and value >= level:
+            events.append({
+                "type": "trigger",
+                "metric": "ust30_jpm",
+                "direction": "up",
+                "label": label,
+                "level": level,
+                "value": value,
+                "meaning": meaning,
+            })
+            latched = True
+        elif latched and value <= level - rearm_bp / 100.0:
+            latched = False
+        active[key] = latched
+
+    def eval_jpm30_down(level: float, label: str, meaning: str, rearm_bp: float = 5.0) -> None:
+        value = points["ust30"].value
+        prev = to_float(last_values.get("ust30"))
+        key = f"ust30:jpm_down:{level}:latched"
+        default_latched = prev is not None and prev <= level
+        latched = bool(active.get(key, default_latched))
+        if not latched and value <= level:
+            events.append({
+                "type": "trigger",
+                "metric": "ust30_jpm",
+                "direction": "down",
+                "label": label,
+                "level": level,
+                "value": value,
+                "meaning": meaning,
+            })
+            latched = True
+        elif latched and value >= level + rearm_bp / 100.0:
+            latched = False
+        active[key] = latched
+
+    def jpm30_zone(value: float) -> str:
+        if value >= 6.00:
+            return "6.00% 이상 → 장기금리 극단 스트레스"
+        if value >= 5.78:
+            return "5.78% 이상 → JPM Equal Swings 약세 목표 구간"
+        if value >= 5.59:
+            return "5.59% 상향 돌파 → 채권 약세 추세 재확인"
+        if value > 5.25:
+            return "5.59% 아래·5.25% 위 → 반전 미확인"
+        if value > 5.15:
+            return "5.25% 하향 돌파 → 숏커버·CTA 매수전환 후보"
+        return "5.15% 이하 → 채권 반전 신호 강화"
+
     eval_above("jgb10", [3.00], "일본 10년 JGB")
     eval_above("ust10", [4.50, 4.70, 4.75], "미국 10년 국채")
     eval_above("ust30", [5.00, 5.30], "미국 30년 국채")
+    eval_jpm30_up(5.59, "미국 30년 JPM 1차 약세선", "5.59% 상향 돌파 → 채권 약세 추세 재확인")
+    eval_jpm30_up(5.78, "미국 30년 JPM 2차 약세선", "5.78% 상향 돌파 → Equal Swings 약세 목표 구간")
+    eval_jpm30_up(6.00, "미국 30년 JPM 장기 스트레스선", "6.00% 진입 → 장기금리 극단 스트레스")
+    eval_jpm30_down(5.25, "미국 30년 JPM 반전 1차선", "5.25% 하향 돌파 → 숏커버·CTA 매수전환 후보")
+    eval_jpm30_down(5.15, "미국 30년 JPM 반전 2차선", "5.15% 하향 돌파 → 채권 반전 신호 강화")
     eval_below("usdjpy", 155.0, "USD/JPY")
 
     usd_day_change = None
@@ -555,6 +615,7 @@ def main() -> int:
         f"- 일본 2년 JGB: **{points['jgb2'].value:.3f}%** ({points['jgb2'].date})",
         f"- 미국 10년 국채: **{points['ust10'].value:.3f}%** ({points['ust10'].date})",
         f"- 미국 30년 국채: **{points['ust30'].value:.3f}%** ({points['ust30'].date})",
+        f"- JPM 30년 기술선: **{jpm30_zone(points['ust30'].value)}** · 상단 5.59→5.78→6.00 / 하단 5.25→5.15",
         f"- 미국 2년 국채: **{points['ust2'].value:.3f}%** ({points['ust2'].date})",
         f"- 미·일 2년 금리차: **{spread_2y:.3f}%p**" + (f" ({spread_change:+.3f}%p vs 저장값)" if spread_change is not None else ""),
         f"- USD/JPY: **{points['usdjpy'].value:.3f}** ({points['usdjpy'].date})" + (f", 1일 {usd_day_change:+.2f}%" if usd_day_change is not None else ""),
@@ -582,6 +643,12 @@ def main() -> int:
         metric = e["metric"]
         if metric == "boe_mpc_decision":
             event_lines.append(f"- {e['label']}")
+            continue
+        if metric == "ust30_jpm":
+            direction_ko = "상향 돌파" if e.get("direction") == "up" else "하향 돌파"
+            event_lines.append(
+                f"- {e['label']} {direction_ko}: {e['value']:.3f}% (기준 {e['level']:.2f}%) → {e['meaning']}"
+            )
             continue
         state_ko = "돌파/진입" if e["type"] == "trigger" else "해제/이탈"
         if metric == "usdjpy_daily_change":
@@ -617,6 +684,7 @@ def main() -> int:
         "정확한 의미",
         "- 일본 10년 3.0%: 엔캐리 자동 청산선이나 BOJ 공식 방어선이 아니라 FY2026 일본 정부 예산의 국채 이자비용 계산 가정금리와 겹치는 재정 경계선.",
         "- 미국 10년 4.7%: 공식 'TACO선'이 아님. 4.5%·30년 5.0% 부근은 과거 정책 후퇴 때 시장이 주목했던 경험적 고통구간으로만 취급.",
+        "- JPM 30년 5.59·5.78·6.00%와 5.25·5.15%: 공식 정책선이 아니라 사용자 제공 2026-09-29 JPM 기술분석의 매매 기준. 5bp 이상 반대편으로 이탈해야 같은 선의 재경보를 다시 허용.",
         "- 엔캐리 청산: JGB 3% 하나로 단정하지 않고 USD/JPY 급락 + 미·일 단기금리차 축소가 같이 확인될 때 위험 강화를 판정.",
     ]
     if boe:
@@ -630,6 +698,7 @@ def main() -> int:
         "",
         "시장 연결",
         "- 할인율: 미국 장기금리 상승은 Nasdaq·SOX·XBI·고PER 성장주에 부담.",
+        "- 30년 5.59% 이상은 장기채 약세·할인율 부담 강화, 5.25% 이하로 내려오면 숏커버·CTA 매수전환 후보, 5.15% 이하는 반전 확인 강화를 점검.",
         "- 수급: 일본 금리 상승과 엔화 강세가 겹치면 일본 자금의 해외채권 환류 가능성을 점검.",
         "- 시간표: 일본 MOF JGB 금리는 15시 시장 마감값을 다음 영업일 09:30에 공식 공표하므로 실시간 시세가 아닌 공식 일일 확인치.",
     ]
