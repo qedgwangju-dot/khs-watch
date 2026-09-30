@@ -124,7 +124,7 @@ def _aggregate_flags(records: list[dict], text: str) -> dict[str, bool]:
         "cap": any(x in blob for x in ["전략투자 한도 압박", "2천억달러", "200 billion", "한도 초과"]),
         "supply": any(x in blob for x in ["가스터빈·hrsg 공급망", "두산에너빌리티", "비에이치아이", "hrsg"]),
         "funding": any(x in blob for x in ["송금절차", "45영업일", "첫 투자금", "송금 임박", "조기송금"]),
-        "energy": any(x in blob for x in ["대미투자 첫사업", "에너지 패키지", "1천억달러", "1000억달러", "원전 최대 8기"]),
+        "energy": any(x in blob for x in ["대미투자 첫사업", "에너지 패키지", "1천억달러", "1000억달러", "2천억달러", "2000억달러", "200 billion", "원전 최대 8기"]),
         "ercot": any(x in blob for x in ["474gw", "batch zero", "ercot 신청", "계통연계"]),
         "encinal": any(x in blob for x in ["encinal", "엔시날", "6.3gw", "1.4gw", "4.9gw"]),
         "nuclear": "원전" in blob or "ap1000" in blob or "apr1400" in blob,
@@ -134,12 +134,13 @@ def _aggregate_flags(records: list[dict], text: str) -> dict[str, bool]:
 
 def _official_line(flags: dict[str, bool] | None = None) -> str:
     state = _load_state()
-    if flags and flags.get("alaska"):
-        alaska = ((state.get("event_states") or {}).get("alaska_lng") or {})
-        facts = {str(x) for x in (alaska.get("facts") or [])}
-        if "stage:발표실행" in facts:
+    if flags and (flags.get("alaska") or flags.get("energy")):
+        states = state.get("event_states") or {}
+        alaska_facts = {str(x) for x in ((states.get("alaska_lng") or {}).get("facts") or [])}
+        package_facts = {str(x) for x in ((states.get("energy_package") or {}).get("facts") or [])}
+        if "stage:발표실행" in alaska_facts or "stage:발표실행" in package_facts:
             return "🏛 <b>미국측 발표 확인 · 한국측 실제 집행확정 별도 관리</b>"
-        if "stage:발표예정" in facts:
+        if "stage:발표예정" in alaska_facts or "stage:발표예정" in package_facts:
             return "🏛 <b>미국측 발표 예정/확인 보도 · 한국측 집행확정 별도 관리</b>"
     status = (state.get("official_status") or {}).get("status")
     if status == "confirmed":
@@ -240,9 +241,12 @@ def _context_numbers(flags: dict[str, bool], records: list[dict]) -> list[str]:
 
 def _alaska_kumkang_context() -> list[str]:
     state = _load_state()
-    alaska = ((state.get("event_states") or {}).get("alaska_lng") or {})
+    states = state.get("event_states") or {}
+    alaska = states.get("alaska_lng") or {}
+    package = states.get("energy_package") or {}
     facts = {str(x) for x in (alaska.get("facts") or [])}
-    announced = "stage:발표실행" in facts
+    package_facts = {str(x) for x in (package.get("facts") or [])}
+    announced = "stage:발표실행" in facts or "stage:발표실행" in package_facts
     if announced:
         status_lines = [
             "<b>🧊 9월 30일 미국측 발표 확인</b>",
