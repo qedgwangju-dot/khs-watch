@@ -1044,6 +1044,15 @@ def semantic_policy_event_key(item: dict) -> str:
             for key in ("title", "description", "link", "source")
         )
     ).lower()
+    if (
+        "securing national security systems from chinese optical transceivers act" in text
+        or (
+            "innolight" in text
+            and "eoptolink" in text
+            and "national security systems" in text
+        )
+    ):
+        return "us-congress-chinese-optical-transceiver-2026-09-25"
     if "polysilicon" in text and "11052" in text:
         if (
             "measures to restrict stockpiling" in text
