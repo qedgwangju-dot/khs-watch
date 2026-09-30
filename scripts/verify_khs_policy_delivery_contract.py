@@ -1651,18 +1651,46 @@ def assert_congress_chinese_optical_transceiver_bill_is_monitored() -> None:
     )
     if not khs_trusted_policy_news_watch.has_required_terms(senate_title, rule):
         raise AssertionError("Official Senate optical-transceiver bill headline was not detected")
-    for marker in ("InnoLight", "Eoptolink", "5년", "발의 단계", "시행 확정 전"):
-        if marker not in rule.core:
-            raise AssertionError(f"Congress optical-transceiver core missing: {marker}")
-    if "모든 상업용" not in rule.counter or "5년 전환기간" not in rule.counter:
-        raise AssertionError("Congress optical-transceiver scope/transition guard is missing")
+
+    combined_rule = " ".join([rule.core, rule.point, rule.counter, rule.follow_up])
+    for marker in (
+        "InnoLight", "Eoptolink", "펌웨어", "소프트웨어", "부품", "5년",
+        "Section 1260H", "미국·동맹국 생산능력", "갱신 가능한 면제", "의회 보고",
+    ):
+        if marker not in combined_rule:
+            raise AssertionError(f"Congress optical-transceiver alert detail missing: {marker}")
+
     official_item = {
+        "title": "SENATORS MCCORMICK, GALLEGO, CORNYN, FETTERMAN INTRODUCE BILL TO KEEP CHINESE TRANSCEIVERS OUT OF U.S. NATIONAL SECURITY SYSTEMS",
+        "description": (
+            "Securing National Security Systems from Chinese Optical Transceivers Act covers InnoLight and Eoptolink "
+            "and national security systems."
+        ),
         "source": "U.S. Senate (Sen. Dave McCormick)",
         "link": "https://www.mccormick.senate.gov/news/press-releases/example/",
+        "published_kst": "2026-09-25T09:00:00+09:00",
     }
     status, detail = khs_trusted_policy_news_watch.alert_confirmation_status(rule, [official_item])
     if status != "공식 확인" or "공식 보도자료" not in detail:
         raise AssertionError("Official Senate optical-transceiver source was not upgraded to 공식 확인")
+
+    semantic = khs_trusted_policy_news_watch.semantic_policy_event_key(official_item)
+    if semantic != "us-congress-chinese-optical-transceiver-2026-09-25":
+        raise AssertionError(f"Congress optical-transceiver semantic key mismatch: {semantic}")
+
+    profile = khs_trusted_policy_news_watch.item_story_profile(rule, [official_item]) or {}
+    rendered = khs_trusted_policy_news_watch.render_alert(rule, [official_item], dt.datetime(2026, 9, 30, 9, 0, tzinfo=ZoneInfo("Asia/Seoul")))
+    for marker in (
+        "2026년 6월 InnoLight Section 1260H",
+        "펌웨어·소프트웨어·부품",
+        "Commerce가 미국·동맹국 생산능력",
+        "갱신 가능한 면제",
+        "의회에 보고",
+        "전체 상업용 데이터센터",
+    ):
+        if marker not in (rendered + " " + str(profile)):
+            raise AssertionError(f"Rendered Congress optical-transceiver alert missing: {marker}")
+
 
 
 def assert_boem_arctic_drilling_is_source_faithful() -> None:
