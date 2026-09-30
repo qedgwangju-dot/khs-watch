@@ -254,8 +254,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-30T08:12:13+09:00",
-  "last_event_count": 91,
+  "updated_at_kst": "2026-09-30T11:19:53+09:00",
+  "last_event_count": 97,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -276,7 +276,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-30T08:12:13+09:00",
+  "last_successful_official_at_kst": "2026-09-30T11:19:53+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -1464,12 +1464,12 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-30T08:12:13+09:00",
+      "last_checked_at_kst": "2026-09-30T11:19:53+09:00",
       "gaps": [
         "원문 확인 실패: investing.com / HTTPError",
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
-      "observations": 2,
+      "observations": 3,
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
@@ -1532,7 +1532,7 @@
     "payload_hash": "2b0b625a1b03c203d6718421ec70968fbb2f085ce45449e2a7f4d242eae7033e"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-30T08:15:39+09:00",
+    "checked_at_kst": "2026-09-30T11:23:01+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
