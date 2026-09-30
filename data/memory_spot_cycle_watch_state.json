@@ -217,10 +217,34 @@
       "source": "TrendForce Research",
       "published_kst": "2026-09-30T09:00:00+09:00",
       "first_seen_kst": "2026-09-30T16:31:30+09:00"
+    },
+    "d995e193e51a54872886bc96": {
+      "title": "HBM blended ASP forecast to jump 121% in 2027 - 매일경제",
+      "source": "매일경제",
+      "published_kst": "2026-09-30T10:52:14+09:00",
+      "first_seen_kst": "2026-09-30T17:25:45+09:00"
+    },
+    "deac0f036d55cfac4cb05542": {
+      "title": "Specialty DRAM Price Sep. 2026",
+      "source": "TrendForce Research",
+      "published_kst": "2026-09-30T09:00:00+09:00",
+      "first_seen_kst": "2026-09-30T17:25:45+09:00"
+    },
+    "241ea82194ab85cb3821dcb6": {
+      "title": "Memory Supercycle Intensifies: Bernstein Sees DRAM, NAND Prices Up Nearly 20% This Quarter - finance.biggo.com",
+      "source": "finance.biggo.com",
+      "published_kst": "2026-09-30T00:35:00+09:00",
+      "first_seen_kst": "2026-09-30T17:25:45+09:00"
+    },
+    "e525cf31e4ad2ee5e952cc9c": {
+      "title": "Memory chip market remains robust! Bernstein: DRAM and NAND prices may rise nearly 20% in Q3; cycle expected to begin \"normalizing\" by 2028 - 富途牛牛",
+      "source": "富途牛牛",
+      "published_kst": "2026-09-29T23:46:54+09:00",
+      "first_seen_kst": "2026-09-30T17:25:45+09:00"
     }
   },
-  "updated_at_kst": "2026-09-30T16:31:30+09:00",
-  "last_scan_count": 13,
+  "updated_at_kst": "2026-09-30T17:25:45+09:00",
+  "last_scan_count": 16,
   "last_new_count": 2,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
@@ -237,18 +261,30 @@
     "secondary_source_url": "https://biz.chosun.com/it-science/ict/2026/09/29/4EV5Z6JAR5GCPG7DR7ZBBFMJUQ/",
     "source_rank": 3
   },
-  "last_successful_delivery_kst": "2026-09-30T16:31:41+09:00",
+  "bernstein_memory_cycle_track_version": 1,
+  "bernstein_memory_cycle": {
+    "q3_2026_price_band": "mid-teens~20%",
+    "q4_2026_price_band": "high-single-digit",
+    "shortage_through_year": 2027,
+    "normalization_year": 2028,
+    "lta_caps_price_increases": true,
+    "source": "富途牛牛",
+    "source_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPNFdrSDB0QlZNSmRraUF4ejZuY0Y4RTAyX2MtWGh5NVppZXFycFJTdU11YTh1dldkSVZQNjYwYzlrQTNhOWNEbmIwSFhzZXhtYzAyRzRyaDQxbjhxTExzYmZKMU5aVnV0SmszWllZSDFDRFNFb1RtR1BsZHFIZGktazE5UkI4ZFhsdmtvbHFuakU5YTFPMDlic1N0elM3Y1NGVmY0TjEtT0F2N0U?oc=5",
+    "source_rank": 2,
+    "as_of": "2026-09-29"
+  },
+  "last_successful_delivery_kst": "2026-09-30T17:25:51+09:00",
   "telegram_message_ids": [
-    177
+    178
   ],
-  "telegram_message_id": 177,
+  "telegram_message_id": 178,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      177
+      178
     ],
-    "confirmed_at_kst": "2026-09-30T16:31:41+09:00"
+    "confirmed_at_kst": "2026-09-30T17:25:51+09:00"
   }
 }
