@@ -79,6 +79,11 @@ NEWS_QUERIES = [
     '"hardware isolation" AI agents procurement insurance regulation DPU BlueField',
     '("Open Agent Safety Platform" OR OpenShell OR Sentry) partner customer production deployment contract paid',
     '("BlueField-4" OR Sentry) Rubin included baseline incremental deployment x86 Arm customer',
+    '(OpenAI OR Anthropic OR Google OR Meta) "Safety Case" training approval gate senior leadership veto',
+    '(OpenAI OR Anthropic OR Google OR Meta) frontier AI independent audit external evaluator safety case',
+    '(OpenAI OR Anthropic OR Google OR Meta) safety case procurement insurance certification requirement',
+    '(OpenAI OR Anthropic OR Google OR Meta) safety case adopted implementation frontier training',
+    'government procurement insurance "Safety Case" frontier AI training',
 ]
 
 OFFICIAL_SOURCE_HINTS = (
@@ -128,6 +133,9 @@ ACTION_TERMS = (
     "provider profiles", "deployment", "deployments",
     "product launch", "launched", "always-on", "continuous", "24/7", "soc",
     "autonomous security", "security agent", "runtime firewall", "bluefield", "nemotron",
+    "safety case", "training approval gate", "senior leadership veto",
+    "independent review", "independent audit", "external evaluator",
+    "external evaluation", "governance gate", "fail-closed", "fail closed",
     # Korean.
     "표준", "의무", "규제", "법안", "법률", "사고보고", "감사", "인증",
     "평가", "벤치마크", "프레임워크", "예산", "지원", "gpu", "선정",
@@ -137,6 +145,8 @@ ACTION_TERMS = (
     "수량", "매출 기여", "하드웨어 격리", "의무화", "보험", "인증",
     "유료 지원", "기업 지원", "배포", "활성 샌드박스", "텔레메트리",
     "제품 출시", "출시", "상시", "24시간", "보안관제", "자율형 보안", "컨소시엄", "참여사", "협력", "협약",
+    "세이프티 케이스", "학습 승인", "학습 거부권", "독립 검토", "독립 감사",
+    "외부 평가", "거버넌스 게이트", "조달 요건", "보험 요건",
 )
 
 LOW_VALUE_SPEECH_TERMS = (
@@ -151,11 +161,32 @@ CONCRETE_ACTION_TERMS = (
     "launched", "product launch", "arr", "annual recurring revenue", "bookings",
     "subscription", "customer", "paid", "revenue", "license", "pricing",
     "paid support", "enterprise support", "deployment",
+    "safety case", "training approval gate", "senior leadership veto",
+    "independent review", "independent audit", "external evaluator",
+    "procurement requirement", "insurance requirement", "certification requirement",
     "표준 제정", "공고", "선정", "계약", "수주", "조달", "입찰",
     "예산", "지원", "실증", "착수", "중간평가", "상용화",
 )
 
 CATEGORY_PATTERNS = [
+    ("Safety Case 실제 학습 승인 게이트", (
+        "safety case", "training approval gate", "governance gate",
+        "senior leadership veto", "training veto", "fail-closed", "fail closed",
+        "세이프티 케이스", "학습 승인", "학습 거부권",
+    )),
+    ("Safety Case 독립감사·외부평가", (
+        "independent review", "independent audit", "external evaluator",
+        "external evaluation", "third-party audit", "독립 검토", "독립 감사", "외부 평가",
+    )),
+    ("Safety Case 조달·보험·인증 편입", (
+        "procurement requirement", "insurance requirement", "certification requirement",
+        "government procurement", "regulated industry",
+        "조달 요건", "보험 요건", "인증 요건", "공공 조달",
+    )),
+    ("Safety Case 업계 채택", (
+        "adopted safety case", "safety case adopted", "implemented safety case",
+        "safety case framework", "세이프티 케이스 도입", "세이프티 케이스 채택",
+    )),
     ("파트너→유료고객·운영전환", (
         "production deployment", "production use", "paid customer", "customer deployment",
         "enterprise deployment", "contract", "purchase", "order", "rolled out",
@@ -241,6 +272,7 @@ WATCH_ENTITIES = (
 )
 
 KNOWN_OFFICIAL_PAGES = {
+    "OpenAI 프런티어 학습 Safety Case": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training/",
     "NIPA 사이버보안 특화 AI 사업": "https://nipa.kr/home/bsnsAll/00/detail?bsnsDtlsIemNo=909",
     "NVIDIA OpenShell 개요·지원": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/README.md",
     "NVIDIA OpenShell 지원정책": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/docs/about/support-matrix.mdx",
@@ -319,7 +351,7 @@ def official_page_snapshots() -> dict[str, dict]:
         text = strip_html(raw)
         # Limit noise from volatile layout but retain policy numbers/terms.
         material = " ".join(re.findall(
-            r".{0,70}(?:B200|H200|256장|32노드|2026|2027|10개월|사업예산|추진일정|중간평가|GPU|OpenShell|Sentry|BlueField-4|BlueField|pricing|price|license|subscription|AI Enterprise|partner|customer|supported agents|Full coverage|Partial coverage|No coverage|production use|security release|Codex|Claude Code|OpenCode).{0,140}",
+            r".{0,70}(?:B200|H200|256장|32노드|2026|2027|10개월|사업예산|추진일정|중간평가|GPU|OpenShell|Sentry|BlueField-4|BlueField|pricing|price|license|subscription|AI Enterprise|partner|customer|supported agents|Full coverage|Partial coverage|No coverage|production use|security release|Codex|Claude Code|OpenCode|Safety Case|training approval|senior leadership|veto|independent review|audit|external evaluator|procurement|insurance|certification|fail-closed).{0,140}",
             text,
             flags=re.I,
         ))
