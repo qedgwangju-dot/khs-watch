@@ -49,12 +49,16 @@ base.QUERIES.extend([
     '("U.S. Energy Storage Coalition" OR "US Energy Storage Coalition" OR "Energy Storage Coalition" OR ESC) ("energy storage" OR ESS) (225 GW OR 1 TWh OR 2032 OR terawatt-hour) (target OR goal OR pace OR revised OR raised OR lowered OR 목표 OR 상향 OR 하향 OR 연기)',
     '(미국 OR "United States" OR "U.S.") (ESS OR "energy storage" OR BESS) (forecast OR outlook OR 전망) (revised OR raised OR lowered OR upgraded OR downgraded OR 상향 OR 하향 OR 수정) (GWh OR TWh OR GW)',
     '(미국 OR "United States" OR "U.S.") (ESS OR "energy storage" OR BESS) (FEOC OR "tax credit" OR 세액공제 OR tariff OR 관세 OR interconnection OR 계통접속 OR "fire code" OR 화재규정 OR permitting OR 인허가) (final rule OR rule change OR enacted OR effective OR 승인 OR 확정 OR 시행 OR 변경)',
+    '(CATL OR 宁德时代) (Debrecen OR 德布勒森 OR 데브레첸 OR 헝가리 OR Hungary) (cell OR 电芯 OR 배터리셀 OR battery cell) (trial production OR 试生产 OR series production OR mass production OR 正式量产 OR 양산 OR 시험생산 OR 출하 OR shipment OR utilization OR 가동률 OR 100GWh OR 100 GWh OR 중단 OR shutdown OR permit OR 许可)',
+    '(이수스페셜티케미컬 OR "ISU Specialty Chemical") (황화리튬 OR Li2S OR "lithium sulfide") (상업생산 OR commercial production OR 양산 OR 생산 OR 가동 OR 납품 OR shipment OR 공급계약 OR contract OR 고객 OR sample OR 샘플 OR 150톤 OR 150t OR 500톤 OR 500t OR 증설 OR 확대 OR 지연 OR 연기 OR 황화수소 OR H2S OR 안전 OR 사고)',
 ])
 
 base.TRUSTED.update({
     'Energy-Storage.News', 'ESS News', 'Benchmark Mineral Intelligence',
     'Reuters', 'Caixin', '전자신문', '이데일리', '연합뉴스', '한국경제',
     'Wood Mackenzie', 'Utility Dive', 'Canary Media',
+    '한국경제TV', 'WOWTV', '뉴시스', 'Newsis', 'TrendForce', '集邦咨询',
+    '中国基金报', '中国基金报社', '中国基金报·机会宝',
 })
 base.OFFICIAL_OR_PRIMARY.update({
     '국가세무총국', '중국 재정부', 'Ministry of Finance of China',
@@ -65,6 +69,8 @@ base.OFFICIAL_OR_PRIMARY.update({
     'SEIA', 'Solar Energy Industries Association',
     'U.S. Energy Storage Coalition', 'US Energy Storage Coalition', 'Energy Storage Coalition',
     'American Clean Power Association', 'ACP',
+    'CATL', '宁德时代', 'CATL Debrecen',
+    '이수스페셜티케미컬', 'ISU Specialty Chemical', '이수그룹',
     'SK온', 'SK On', '엘앤에프', 'L&F', 'DART', '금융감독원 전자공시시스템',
 })
 
@@ -155,6 +161,81 @@ US_FORECAST_CHANGE = re.compile(r'revis|raise|lower|upgrade|downgrade|increase|d
 US_POLICY = re.compile(r'FEOC|foreign\s+entity|tax\s+credit|세액공제|tariff|관세|interconnection|계통\s*접속|fire\s+code|화재\s*규정|permitting|인허가|domestic\s+content|현지\s*조달', re.I)
 US_POLICY_CHANGE = re.compile(r'final\s+rule|rule\s+change|effective|enacted|adopted|approved|확정|시행|발효|개정|변경|승인', re.I)
 
+CATL_DEB_ID = re.compile(r'(?:CATL|宁德时代).{0,120}(?:Debrecen|德布勒森|데브레첸|Hungary|헝가리)|(?:Debrecen|德布勒森|데브레첸|Hungary|헝가리).{0,120}(?:CATL|宁德时代)', re.I)
+CATL_DEB_TRIAL = re.compile(r'trial\s*(?:production|operation|run)|test\s*production|试生产|试运行|시험\s*생산|시운전|생산\s*검증', re.I)
+CATL_DEB_KNOWN_REWRITE = re.compile(
+    r'100\s*GWh.{0,180}(?:73\.4\s*亿欧元|7\.34\s*billion\s*euros?|73\.4\s*억\s*유로|73억|221\s*(?:hectare|ha|公顷|헥타르))|'
+    r'(?:73\.4\s*亿欧元|7\.34\s*billion\s*euros?|73\.4\s*억\s*유로|73억|221\s*(?:hectare|ha|公顷|헥타르)).{0,180}100\s*GWh',
+    re.I,
+)
+CATL_DEB_SERIES = re.compile(
+    r'series\s*production\s*(?:started|began|commenced)|mass\s*production\s*(?:started|began|commenced)|'
+    r'commercial\s*production\s*(?:started|began|commenced)|正式量产|量产(?:正式)?(?:开始|启动)|'
+    r'양산\s*(?:개시|시작|돌입)|상업\s*생산\s*(?:개시|시작)',
+    re.I,
+)
+CATL_DEB_SHIPMENT = re.compile(
+    r'(?:cell|battery\s*cell|电芯|배터리셀).{0,100}(?:first\s*shipment|shipment\s*(?:started|began)|delivered|delivery\s*(?:started|began)|首批交付|开始交付|첫\s*출하|출하\s*(?:시작|개시)|납품\s*(?:시작|개시))',
+    re.I,
+)
+CATL_DEB_RAMP = re.compile(
+    r'(?:utilization|run[-\s]*rate|yield|output|产能利用率|良率|实际产量|가동률|수율|실제\s*생산량).{0,80}\d[\d,.]*\s*(?:%|GWh|MWh)|'
+    r'\d[\d,.]*\s*(?:%|GWh|MWh).{0,80}(?:utilization|run[-\s]*rate|yield|output|产能利用率|良率|实际产量|가동률|수율|실제\s*생산량)',
+    re.I,
+)
+CATL_DEB_EXPANSION = re.compile(
+    r'(?:phase\s*(?:2|II|3|III)|二期|三期|2단계|3단계).{0,100}(?:construction|start|capacity|GWh|착공|증설|생산능력)|'
+    r'(?:expansion|capacity\s*increase|扩产|증설).{0,100}\d[\d,.]*\s*GWh',
+    re.I,
+)
+CATL_DEB_STOP = re.compile(
+    r'(?:production|operation|cell\s*plant|电芯|공장|생산).{0,100}(?:shutdown|halt|suspend|stop|permit\s*(?:revoked|suspended)|停产|暂停|停工|中止|가동\s*중단|생산\s*중단|허가\s*(?:취소|정지)|안전\s*사고|nickel\s*exposure|니켈\s*노출)|'
+    r'(?:shutdown|halt|suspend|停产|暂停|가동\s*중단|생산\s*중단|허가\s*(?:취소|정지)).{0,100}(?:Debrecen|德布勒森|데브레첸)',
+    re.I,
+)
+
+ISU_LI2S_ID = re.compile(r'(?:이수스페셜티케미컬|ISU\s*Specialty\s*Chemical).{0,120}(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide)|(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide).{0,120}(?:이수스페셜티케미컬|ISU\s*Specialty\s*Chemical)', re.I)
+ISU_LI2S_BASELINE = re.compile(
+    r'(?:10월|October).{0,80}(?:넷째\s*주|fourth\s*week).{0,100}(?:상업\s*생산|commercial\s*production|가동).{0,40}(?:예정|계획|목표|expected|planned)|'
+    r'(?:상업\s*생산|commercial\s*production).{0,80}(?:다음\s*달|next\s*month|10월).{0,50}(?:예정|계획|expected|planned)|'
+    r'(?:준공|completed).{0,100}(?:150\s*(?:톤|t|ton)).{0,100}(?:시운전|quality\s*stabilization|품질\s*안정화)',
+    re.I,
+)
+ISU_LI2S_COMMERCIAL = re.compile(
+    r'(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide).{0,120}(?:상업\s*생산|commercial\s*production|양산).{0,40}(?:개시|시작|돌입|started|began|commenced)|'
+    r'(?:상업\s*생산|commercial\s*production|양산).{0,40}(?:개시|시작|돌입|started|began|commenced).{0,120}(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide)',
+    re.I,
+)
+ISU_LI2S_SHIPMENT = re.compile(
+    r'(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide).{0,120}(?:첫\s*납품|초도\s*납품|납품\s*(?:시작|개시)|공급\s*(?:시작|개시)|first\s*shipment|deliveries?\s*(?:started|began)|shipment\s*(?:started|began))',
+    re.I,
+)
+ISU_LI2S_CONTRACT = re.compile(
+    r'(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide).{0,140}(?:공급\s*계약|본계약|장기\s*계약|수주|customer\s*(?:selected|named)|supply\s*contract|purchase\s*order)|'
+    r'(?:공급\s*계약|본계약|장기\s*계약|수주|supply\s*contract|purchase\s*order).{0,140}(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide)',
+    re.I,
+)
+ISU_LI2S_CAPACITY = re.compile(
+    r'(?:증설|capacity\s*expansion|확대|expansion).{0,100}(?:500\s*(?:톤|t|ton)|\d[\d,.]*\s*(?:톤|t|ton))|'
+    r'(?:500\s*(?:톤|t|ton)).{0,100}(?:착공|투자\s*결정|증설|확대|construction\s*start|investment\s*approved)',
+    re.I,
+)
+ISU_LI2S_RAMP = re.compile(
+    r'(?:가동률|수율|실제\s*생산량|출하량|판매량|utilization|yield|actual\s*output|shipments?|sales\s*volume).{0,80}\d[\d,.]*\s*(?:%|톤|t|ton)|'
+    r'\d[\d,.]*\s*(?:톤|t|ton).{0,80}(?:가동률|수율|실제\s*생산량|출하량|판매량|utilization|yield|actual\s*output|shipments?|sales\s*volume)',
+    re.I,
+)
+ISU_LI2S_DELAY = re.compile(
+    r'(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide).{0,120}(?:지연|연기|중단|delay|postpon|suspend|halt|shutdown|가동\s*중단|생산\s*중단)|'
+    r'(?:지연|연기|중단|delay|postpon|suspend|halt|shutdown).{0,120}(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide)',
+    re.I,
+)
+ISU_LI2S_SAFETY = re.compile(
+    r'(?:황화수소|H2S|hydrogen\s*sulfide).{0,120}(?:누출|leak|폭발|explosion|화재|fire|사고|incident|방폭|permit|인허가|shutdown|중단)|'
+    r'(?:누출|leak|폭발|explosion|화재|fire|사고|incident|shutdown|중단).{0,120}(?:황화수소|H2S|hydrogen\s*sulfide)',
+    re.I,
+)
+
 
 def _extract_us_target(text: str) -> tuple[float | None, float | None, int | None]:
     twh = None
@@ -203,6 +284,50 @@ def _us_ess_stage(text: str, source: str = '') -> str:
     if US_POLICY.search(text) and US_POLICY_CHANGE.search(text):
         return 'us_policy_change'
     return ''
+
+
+def _catl_debrecen_stage(text: str, source: str = '') -> str:
+    if not CATL_DEB_ID.search(text):
+        return ''
+    if CATL_DEB_STOP.search(text):
+        return 'regulatory_or_operational_stop'
+    if CATL_DEB_SHIPMENT.search(text):
+        return 'first_commercial_shipment'
+    if CATL_DEB_SERIES.search(text):
+        return 'series_production_start'
+    if CATL_DEB_EXPANSION.search(text):
+        return 'capacity_expansion'
+    if CATL_DEB_RAMP.search(text):
+        return 'ramp_metrics'
+    if CATL_DEB_TRIAL.search(text):
+        return 'trial_production_baseline'
+    if CATL_DEB_KNOWN_REWRITE.search(text):
+        return 'trial_production_baseline'
+    return 'background'
+
+
+def _isu_li2s_stage(text: str, source: str = '') -> str:
+    if not ISU_LI2S_ID.search(text):
+        return ''
+    if ISU_LI2S_SAFETY.search(text):
+        return 'safety_or_permit_risk'
+    if ISU_LI2S_DELAY.search(text):
+        return 'schedule_delay'
+    if ISU_LI2S_SHIPMENT.search(text):
+        return 'first_customer_shipment'
+    if ISU_LI2S_CONTRACT.search(text) and not re.search(r'\bMOU\b|업무협약|협약', text, re.I):
+        return 'customer_contract'
+    if ISU_LI2S_COMMERCIAL.search(text) and not re.search(r'예정|계획|목표|expected|planned|next\s*month|다음\s*달', text, re.I):
+        return 'commercial_production_start'
+    if ISU_LI2S_CAPACITY.search(text):
+        return 'capacity_expansion'
+    if ISU_LI2S_RAMP.search(text):
+        return 'ramp_metrics'
+    if ISU_LI2S_BASELINE.search(text):
+        return 'commercial_production_plan_baseline'
+    if re.search(r'150\s*(?:톤|t|ton)', text, re.I) and re.search(r'준공|completed|마더\s*플랜트|mother\s*plant', text, re.I):
+        return 'commercial_production_plan_baseline'
+    return 'background'
 
 
 def _ess3_stage(text: str, source: str = '') -> str:
@@ -333,6 +458,10 @@ def _is_ess_battery(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _catl_debrecen_stage(text):
+        return 'global_battery_capacity'
+    if _isu_li2s_stage(text):
+        return 'solid_state_material'
     if _is_ess_battery(text):
         return 'ess_battery'
     return _orig_topic_group(text)
@@ -341,10 +470,48 @@ def topic_group(text: str) -> str | None:
 def score(item: dict) -> int:
     title = item.get('title', '')
     text = f"{title} {item.get('description','')} {item.get('source','')}"
-    if topic_group(text) != 'ess_battery':
+    group = topic_group(text)
+    source = item.get('source') or ''
+
+    if group == 'global_battery_capacity':
+        stage = _catl_debrecen_stage(text, source)
+        if stage in {'trial_production_baseline', 'background'}:
+            return 0
+        s = 20
+        s += {
+            'series_production_start': 16,
+            'first_commercial_shipment': 16,
+            'ramp_metrics': 12,
+            'capacity_expansion': 12,
+            'regulatory_or_operational_stop': 15,
+        }.get(stage, 0)
+        if base.NUMERIC.search(text): s += 3
+        if source in base.OFFICIAL_OR_PRIMARY: s += 7
+        elif source in base.TRUSTED: s += 3
+        return s
+
+    if group == 'solid_state_material':
+        stage = _isu_li2s_stage(text, source)
+        if stage in {'commercial_production_plan_baseline', 'background'}:
+            return 0
+        s = 20
+        s += {
+            'commercial_production_start': 16,
+            'first_customer_shipment': 16,
+            'customer_contract': 17,
+            'ramp_metrics': 12,
+            'capacity_expansion': 13,
+            'schedule_delay': 14,
+            'safety_or_permit_risk': 16,
+        }.get(stage, 0)
+        if base.NUMERIC.search(text): s += 3
+        if source in base.OFFICIAL_OR_PRIMARY: s += 7
+        elif source in base.TRUSTED: s += 3
+        return s
+
+    if group != 'ess_battery':
         return _orig_score(item)
 
-    source = item.get('source') or ''
     us_stage = _us_ess_stage(text, source)
     sdi_stage = _sdi_ess_stage(text, source)
     if sdi_stage in {'earnings_forecast', 'earnings_unconfirmed', 'synergy_baseline'}:
@@ -458,6 +625,28 @@ def _raw_cat(text: str) -> str:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'global_battery_capacity':
+        stage = _catl_debrecen_stage(text)
+        raw = {
+            'series_production_start': 'CATL Debrecen 셀 양산 개시',
+            'first_commercial_shipment': 'CATL Debrecen 첫 상업 출하',
+            'ramp_metrics': 'CATL Debrecen 가동률·수율·실생산',
+            'capacity_expansion': 'CATL Debrecen 후속 증설',
+            'regulatory_or_operational_stop': 'CATL Debrecen 규제·가동중단',
+        }.get(stage, 'CATL Debrecen 시험생산 기준선')
+        return f"글로벌 배터리 생산능력 · {raw}"
+    if group == 'solid_state_material':
+        stage = _isu_li2s_stage(text)
+        raw = {
+            'commercial_production_start': '이수스페셜티 황화리튬 상업생산 개시',
+            'first_customer_shipment': '이수스페셜티 황화리튬 첫 고객 납품',
+            'customer_contract': '이수스페셜티 황화리튬 공급계약',
+            'ramp_metrics': '이수스페셜티 황화리튬 가동률·출하',
+            'capacity_expansion': '이수스페셜티 황화리튬 증설',
+            'schedule_delay': '이수스페셜티 황화리튬 일정 지연',
+            'safety_or_permit_risk': '이수스페셜티 황화리튬 안전·인허가 리스크',
+        }.get(stage, '이수스페셜티 황화리튬 상업생산 계획 기준선')
+        return f"전고체 소재 · {raw}"
     if group == 'ess_battery':
         return f"ESS 배터리 · {_raw_cat(text)}"
     return _orig_category(text, group)
@@ -465,6 +654,30 @@ def category(text: str, group: str) -> str:
 
 def meaning(cat: str) -> str:
     raw = cat.split(' · ', 1)[-1]
+    if raw == 'CATL Debrecen 셀 양산 개시':
+        return '9월 22일 첫 2개 라인의 시험생산과 구분해 실제 series/mass production이 시작되는 단계입니다. 100GWh는 완공 후 계획 생산능력이므로 현재 실가동 GWh·수율·고객 출하를 따로 확인합니다.'
+    if raw == 'CATL Debrecen 첫 상업 출하':
+        return '시험생산·양산 개시가 실제 유럽 완성차 고객 매출로 전환되는 단계입니다. 고객 실명·셀 물량·납기·매출 인식과 반복 출하를 확인합니다.'
+    if raw == 'CATL Debrecen 가동률·수율·실생산':
+        return '명목 100GWh가 아니라 실제 가동률·수율·GWh 생산량으로 유럽 현지 생산기지의 실효 생산능력을 확인하는 신호입니다.'
+    if raw == 'CATL Debrecen 후속 증설':
+        return 'Debrecen의 후속 단계·라인 증설이 실제 착공·장비반입·생산능력 증가로 이어지는 신호입니다. 100GWh 최종계획과 현재 가동 캐파를 분리합니다.'
+    if raw == 'CATL Debrecen 규제·가동중단':
+        return '환경·산업안전·허가 문제가 생산 일정과 유럽 고객 공급에 직접 영향을 주는 역방향 신호입니다. 중단 범위·기간·재가동 조건을 확인합니다.'
+    if raw == '이수스페셜티 황화리튬 상업생산 개시':
+        return '6월 준공·시운전과 10월 넷째 주 상업생산 계획을 넘어 황화리튬이 실제 상업생산으로 전환되는 단계입니다. 초기 150톤 생산능력보다 양품 생산량·수율·고객 납품을 우선 확인합니다.'
+    if raw == '이수스페셜티 황화리튬 첫 고객 납품':
+        return '샘플 테스트가 실제 유상 납품과 매출 인식으로 넘어가는 첫 상업화 신호입니다. 고객 실명·톤수·단가·반복 주문을 확인합니다.'
+    if raw == '이수스페셜티 황화리튬 공급계약':
+        return '10여개 고객 샘플 테스트 중 일부가 실제 공급계약으로 전환되는 단계입니다. 계약 물량·기간·단가·전고체 셀 고객의 양산 일정까지 연결해 봅니다.'
+    if raw == '이수스페셜티 황화리튬 가동률·출하':
+        return '연 150톤 명목 생산능력이 실제 판매량·가동률·수율로 매출화되는지 보는 신호입니다. 올해 20톤 안팎 판매 추정과 실제 출하를 구분합니다.'
+    if raw == '이수스페셜티 황화리튬 증설':
+        return '초기 150톤에서 최대 500톤 설계능력으로 넘어가는 실제 증설 결정·착공 신호입니다. 고객계약보다 설비가 앞서면 감가상각·가동률 부담이 커질 수 있습니다.'
+    if raw == '이수스페셜티 황화리튬 일정 지연':
+        return '10월 상업생산 또는 고객검증 일정이 뒤로 밀리는 역방향 신호입니다. 공정 수율·품질 안정화·고객 승인·설비 문제 중 원인을 분리합니다.'
+    if raw == '이수스페셜티 황화리튬 안전·인허가 리스크':
+        return '황화수소 취급·방폭·안전·인허가 문제가 상업생산과 출하를 지연시킬 수 있는 공정 리스크입니다. 사고·허가정지·중단 기간과 재가동 조건을 추적합니다.'
     if raw == '미국 실설치·수요':
         return '미국 ESS의 실제 분기 신규 설치 GWh와 누적 설치량이 바뀌는 수요 확인 신호입니다. 업계 목표나 증권사 전망보다 실제 설치량을 우선하고, 전년동기 성장률·분기 신기록 여부를 한국 배터리 3사의 북미 생산능력·수주·가동률과 연결해 추적합니다.'
     if raw == '미국 2032 목표 변경':
@@ -504,6 +717,10 @@ def meaning(cat: str) -> str:
 
 def risk(cat: str) -> str:
     raw = cat.split(' · ', 1)[-1]
+    if raw.startswith('CATL Debrecen'):
+        return '중국 매체의 “정식 생산” 표현을 그대로 양산으로 승격하지 않습니다. CATL 공식자료는 9월 22일 첫 2개 라인이 시험생산에 들어갔다고 명시하며 100GWh는 전체 시설 완공 후 계획치입니다. 먼저 볼 지표는 series production 공식 발표·실제 GWh·수율·첫 고객 출하입니다.'
+    if raw.startswith('이수스페셜티 황화리튬'):
+        return '준공·시운전·상업생산 계획과 실제 유상 판매는 다릅니다. 황화리튬은 고순도·수율·황화수소 안전·고객 인증이 병목이며, kg당 약 700달러 현 가격은 양산 확대 시 하락할 수 있어 150톤×현 단가를 확정 매출로 보지 않습니다.'
     if raw == '미국 실설치·수요':
         return '분기 설치량 신기록이 곧 한국 배터리 3사의 매출을 뜻하지 않습니다. 중국산·미국산 공급 비중, 프로젝트 지연, 셀 가격, 고객별 계약과 실제 가동률을 분리해야 합니다. 먼저 볼 지표는 다음 분기 GWh, 전년동기 성장률, 북미 공장 가동률입니다.'
     if raw == '미국 2032 목표 변경':
@@ -542,9 +759,23 @@ def risk(cat: str) -> str:
 
 
 def verification(item: dict, group: str, text: str) -> str:
+    source = item.get('source') or ''
+    if group == 'global_battery_capacity':
+        stage = _catl_debrecen_stage(text, source)
+        if stage == 'trial_production_baseline':
+            return 'CATL 공식자료 기준 2026-09-22 첫 2개 라인 시험생산 · 100GWh는 전체 완공 후 계획 생산능력 · 정식 양산 아님'
+        if source in base.OFFICIAL_OR_PRIMARY:
+            return 'CATL 공식자료 · 시험생산/series production/출하/가동률 단계 직접 확인'
+        return '보도 단계 · CATL 공식자료와 헝가리 허가·가동 상태 교차확인'
+    if group == 'solid_state_material':
+        stage = _isu_li2s_stage(text, source)
+        if stage == 'commercial_production_plan_baseline':
+            return '2026-06 준공 150톤·최대 500톤 설계 + 2026-10 넷째 주 상업생산 계획 기준선 · 실제 상업생산/납품 전'
+        if source in base.OFFICIAL_OR_PRIMARY:
+            return '이수스페셜티케미컬·공시 1차자료 · 상업생산/고객/물량/증설 직접 확인'
+        return '한국경제TV·뉴시스 등 보도 · 회사 공시/고객사 공식자료 교차확인'
     if group != 'ess_battery':
         return _orig_verification(item, group, text)
-    source = item.get('source') or ''
     us_stage = _us_ess_stage(text, source)
     if us_stage == 'us_install_actual':
         if source in base.OFFICIAL_OR_PRIMARY:
@@ -601,10 +832,26 @@ def _numbers(text: str) -> set[str]:
 def _same_event(a: dict, b: dict) -> bool:
     if _orig_same_event(a, b):
         return True
-    if a.get('group') != 'ess_battery' or b.get('group') != 'ess_battery':
+    if a.get('group') != b.get('group'):
         return False
     ta = f"{a.get('title','')} {a.get('description','')}"
     tb = f"{b.get('title','')} {b.get('description','')}"
+    if a.get('group') == 'global_battery_capacity':
+        sa = _catl_debrecen_stage(ta, a.get('source') or '')
+        sb = _catl_debrecen_stage(tb, b.get('source') or '')
+        if sa != sb:
+            return False
+        na, nb = _numbers(ta), _numbers(tb)
+        return bool((not na and not nb) or (na & nb))
+    if a.get('group') == 'solid_state_material':
+        sa = _isu_li2s_stage(ta, a.get('source') or '')
+        sb = _isu_li2s_stage(tb, b.get('source') or '')
+        if sa != sb:
+            return False
+        na, nb = _numbers(ta), _numbers(tb)
+        return bool((not na and not nb) or (na & nb))
+    if a.get('group') != 'ess_battery':
+        return False
     if ESS_LIFETIME_RULE.search(ta) and ESS_LIFETIME_RULE.search(tb):
         return True
 
@@ -662,9 +909,16 @@ def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     import hashlib
     source = item.get('source') or ''
+    group = topic_group(text)
+    catl_stage = _catl_debrecen_stage(text, source)
+    isu_stage = _isu_li2s_stage(text, source)
     us_stage = _us_ess_stage(text, source)
     sdi_stage = _sdi_ess_stage(text, source)
     stage3 = _ess3_stage(text, source)
+    if group == 'global_battery_capacity' and catl_stage:
+        return hashlib.sha256(f'catl|debrecen|{catl_stage}'.encode()).hexdigest()
+    if group == 'solid_state_material' and isu_stage:
+        return hashlib.sha256(f'isu-specialty|li2s|{isu_stage}'.encode()).hexdigest()
     if us_stage:
         nums = sorted(_numbers(text))
         q = re.search(r'\bQ[1-4]\b|[1-4]분기|상반기|하반기|first\s+half|second\s+half', text, re.I)
