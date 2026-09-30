@@ -2,7 +2,7 @@
   "seen": {
     "ICI|mmf": "0fc80ab5f6b9feb7fa734023f812e89da42e92c6a92f09b303d4e07bff7a4685",
     "FINRA|margin": "8655636a0708abc68f71ddd7a8febfc428dbeaf45d54c8d809c6c5280ea4c65e",
-    "ICI|combined": "728a130ea6b788d212c6badaee534cc42327547377e1ba57ff9d2edbdfde4a7a",
+    "ICI|combined": "caad4d872e529dbe116a0fec5e93ef6fda1615be9408bec0f2085028316dd7a2",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
     "Federal Reserve Z.1|household_balance_sheet": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64"
   },
@@ -36,19 +36,19 @@
     "ICI|combined": {
       "source": "ICI",
       "kind": "combined",
-      "period": "September 16, 2026",
-      "published": "September 23, 2026",
+      "period": "September 23, 2026",
+      "published": "September 30, 2026",
       "url": "https://www.ici.org/research/stats/combined_flows",
       "metrics": {
         "equity": null,
-        "domestic": -12.15,
-        "world": -1.15,
-        "bond": 3.24,
-        "hybrid": -2.17,
-        "total": -10.1
+        "domestic": 5.78,
+        "world": 7.09,
+        "bond": 8.16,
+        "hybrid": -1.86,
+        "total": 20.14
       },
       "domestic_4w": null,
-      "fingerprint": "728a130ea6b788d212c6badaee534cc42327547377e1ba57ff9d2edbdfde4a7a"
+      "fingerprint": "caad4d872e529dbe116a0fec5e93ef6fda1615be9408bec0f2085028316dd7a2"
     },
     "JPMorganChase Institute|household_withdrawals": {
       "source": "JPMorganChase Institute",
@@ -81,13 +81,13 @@
       "fingerprint": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64"
     }
   },
-  "updated_at_kst": "2026-09-29T07:35:30.140330+09:00",
+  "updated_at_kst": "2026-10-01T03:01:43.379146+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
-    "sp500_last_date": "2026-09-28",
-    "sp500_last_value": 7683.68994140625,
+    "sp500_last_date": "2026-09-30",
+    "sp500_last_value": 7701.77978515625,
     "sp500_peak_date": "2026-08-13",
     "sp500_peak_value": 7798.990234375,
-    "sp500_drawdown_pct": -1.48
+    "sp500_drawdown_pct": -1.25
   }
 }
