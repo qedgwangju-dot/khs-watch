@@ -565,6 +565,90 @@ def clean_snippet(text: str, limit: int = 320) -> str:
     return value
 
 
+HANGUL_RE = re.compile(r"[가-힣]")
+LATIN_WORD_RE = re.compile(r"[A-Za-z]{2,}")
+TRANSLATE_GOOGLE = "https://translate.googleapis.com/translate_a/single"
+TRANSLATE_MYMEMORY = "https://api.mymemory.translated.net/get"
+ALERT_IDENTIFIER_TERMS = (
+    "OpenAI", "Anthropic", "Claude", "ChatGPT", "Codex", "Gemini",
+    "Microsoft", "Copilot", "Meta", "Grok", "xAI", "AWS", "GitHub",
+    "NVIDIA", "OpenShell", "NemoClaw", "Sentry", "BlueField-4", "BlueField",
+)
+
+
+def _needs_korean_translation(text: str) -> bool:
+    value = strip_html(text)
+    return not HANGUL_RE.search(value) and len(LATIN_WORD_RE.findall(value)) >= 3
+
+
+def _preserve_identifiers(original: str, translated: str) -> str:
+    found: list[str] = []
+    low = original.lower()
+    for term in ALERT_IDENTIFIER_TERMS:
+        if term.lower() in low and term.lower() not in translated.lower():
+            found.append(term)
+    for token in re.findall(r"\\b(?:CVE-\\d{4}-\\d+|GLM-\\d+(?:\\.\\d+)*(?:-[A-Za-z0-9]+)?)\\b", original, flags=re.I):
+        if token.lower() not in translated.lower() and token.lower() not in {x.lower() for x in found}:
+            found.append(token)
+    if found:
+        return " · ".join(found) + " · " + translated
+    return translated
+
+
+def _translate_google(text: str) -> str:
+    params = urllib.parse.urlencode({
+        "client": "gtx",
+        "sl": "auto",
+        "tl": "ko",
+        "dt": "t",
+        "q": text,
+    })
+    req = urllib.request.Request(
+        TRANSLATE_GOOGLE + "?" + params,
+        headers={"User-Agent": USER_AGENT, "Accept": "application/json,text/plain,*/*"},
+    )
+    with urllib.request.urlopen(req, timeout=20) as resp:
+        payload = json.loads(resp.read().decode("utf-8"))
+    chunks = payload[0] if isinstance(payload, list) and payload else []
+    return "".join(str(part[0]) for part in chunks if isinstance(part, list) and part and part[0]).strip()
+
+
+def _translate_mymemory(text: str) -> str:
+    params = urllib.parse.urlencode({"q": text, "langpair": "en|ko"})
+    req = urllib.request.Request(
+        TRANSLATE_MYMEMORY + "?" + params,
+        headers={"User-Agent": USER_AGENT, "Accept": "application/json"},
+    )
+    with urllib.request.urlopen(req, timeout=20) as resp:
+        payload = json.loads(resp.read().decode("utf-8"))
+    return str((payload.get("responseData") or {}).get("translatedText") or "").strip()
+
+
+def translate_alert_text(text: str) -> str:
+    """Translate user-visible English alert prose to Korean.
+
+    Product/company/model identifiers are preserved. If external translation
+    services are unavailable, callers should use a Korean-only category fallback
+    rather than sending the raw English headline.
+    """
+    value = clean_snippet(text, limit=500)
+    if not _needs_korean_translation(value):
+        return value
+
+    errors: list[str] = []
+    for translator in (_translate_google, _translate_mymemory):
+        for _attempt in range(2):
+            try:
+                translated = clean_snippet(translator(value), limit=500)
+                if translated and HANGUL_RE.search(translated):
+                    return _preserve_identifiers(value, translated)
+                errors.append(f"{translator.__name__}: no Hangul in result")
+            except Exception as exc:
+                errors.append(f"{translator.__name__}: {type(exc).__name__}: {exc}")
+
+    raise RuntimeError("Korean translation failed: " + " | ".join(errors[-4:]))
+
+
 def event_token_set(text: str) -> set[str]:
     words = re.findall(r"[a-z0-9][a-z0-9+._-]{2,}", text.lower())
     normalized = set()
@@ -748,9 +832,25 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str, str]:
             if fact and fact not in facts:
                 facts.append(fact)
         if not facts:
-            headline = clean_snippet(rep.get("title", ""), limit=110)
+            headline = clean_snippet(rep.get("title", ""), limit=220)
+            headline = re.sub(
+                r"^(?:Anthropic Research|OpenAI Alignment)\\s*:\\s*",
+                "",
+                headline,
+                flags=re.I,
+            ).strip()
             if headline:
-                facts.append(headline)
+                try:
+                    translated_headline = translate_alert_text(headline)
+                except Exception as exc:
+                    print(f"ai_security_translation_fallback={type(exc).__name__}: {exc}")
+                    translated_headline = ""
+                if translated_headline and HANGUL_RE.search(translated_headline):
+                    facts.append(clean_snippet(translated_headline, limit=110))
+                else:
+                    facts.append(
+                        f"{rep['vendor']} 관련 {rep.get('category') or '중요 보안 변화'} 공식 업데이트"
+                    )
         for fact in facts[:3]:
             lines.append(f"• {html.escape(fact)}")
 
