@@ -52,10 +52,10 @@
   },
   "rate_signal_upgrade": {
     "version": 4,
-    "updated_at_kst": "2026-09-30T09:23:08+09:00",
-    "risk_score": 5,
-    "grade_emoji": "🟠",
-    "grade_label": "인상 압력 높음",
+    "updated_at_kst": "2026-09-30T15:38:52+09:00",
+    "risk_score": 4,
+    "grade_emoji": "🟡",
+    "grade_label": "추가인상 가능성 유지",
     "next_mpc_date": "2026-10-22",
     "next_mpc_source": "https://www.bok.or.kr/portal/singl/crncyPolicyDrcMtg/listYear.do?menuNo=200755&mtgSe=A",
     "components": {
@@ -84,8 +84,8 @@
       "housing": null,
       "oil": {
         "date": "2026-09-30",
-        "brent_usd": 96.11,
-        "change_5d_pct": -3.16,
+        "brent_usd": 96.24,
+        "change_5d_pct": -6.64,
         "source": "Yahoo Finance BZ=F",
         "source_tier": "시장자료",
         "stale": false
