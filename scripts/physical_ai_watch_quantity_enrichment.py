@@ -122,6 +122,13 @@ def _largest_qty(block: str, unit: str) -> int | None:
     return max(vals) if vals else None
 
 
+def _korean_man_qty(block: str, unit: str) -> int | None:
+    m = re.search(rf"(?<![\d.])(\d+(?:\.\d+)?)\s*만\s*{re.escape(unit)}", block)
+    if not m:
+        return None
+    return int(round(float(m.group(1)) * 10_000))
+
+
 def _qty_summary(block: str) -> str:
     found: list[str] = []
     seen: set[tuple[int, str]] = set()
@@ -139,9 +146,25 @@ def _qty_summary(block: str) -> str:
 def _microduck_block(block: str, rate: float, prices: dict[str, float], fresh: dict[str, bool]) -> str | None:
     if not re.search(r"마이크로덕|Microduck", block, re.I):
         return None
-    qty = _largest_qty(block, "대")
+
+    qty = _largest_qty(block, "대") or _korean_man_qty(block, "대")
     if not qty:
         return None
+
+    # For a production-plan / supplier-demand alert, do not turn public retail
+    # prices into a fake OEM revenue estimate. The investment-relevant bridge is
+    # planned robot units × confirmed actuator count per robot; actual ROBOTIS
+    # order quantity and OEM unit price remain separate confirmation gates.
+    if re.search(r"계획|목표|planning|planned|plan\b|생산\s*목표|수요", block, re.I) and re.search(r"XL330|액추에이터|모터", block, re.I):
+        motor_count = qty * 15
+        return "\n".join([
+            "💰 <b>물량 연결</b>",
+            f"• <b>마이크로덕 생산 목표</b>  {qty:,}대 — 설립자 계획이며 실제 완성·출하 물량은 아직 별도 확인",
+            "• <b>공식 구조</b>  XL330 계열 서보 15개/대",
+            f"• <b>조건부 최대 액추에이터 수요</b>  {qty:,}대 × 15개 = {motor_count:,}개",
+            "• <b>로보티즈 확정 발주</b>  공개자료상 아직 미확인",
+            "• <b>단가·매출</b>  대량 OEM 계약단가가 공개되지 않아 소매가로 로보티즈 매출을 추정하지 않음",
+        ])
 
     p = prices["microduck"]
     unit_krw = p * rate
@@ -168,7 +191,6 @@ def _microduck_block(block: str, rate: float, prices: dict[str, float], fresh: d
             "• <b>주의</b>  XL330 소매가 단순환산은 대량 OEM 납품단가·로보티즈 실제 매출이 아닙니다. 완제품 판매가와 비교해 경제적으로 맞지 않으면 실제 OEM 단가는 훨씬 낮다고 봐야 합니다.",
         ])
     return "\n".join(lines)
-
 
 def _reachy_block(block: str, rate: float, prices: dict[str, float], fresh: dict[str, bool]) -> str | None:
     if not re.search(r"리치\s*미니|Reachy\s*Mini", block, re.I):
