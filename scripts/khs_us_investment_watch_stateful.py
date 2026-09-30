@@ -286,6 +286,7 @@ def _material_facts(row: dict) -> set[str]:
 
     milestones = [
         ("공식확정", ["공식 확정", "최종 확정", "확정 발표"]),
+        ("발표실행", ["발표했다", "공개했다", "공식 발표했다", "unveils", "unveiled", "announced"]),
         ("발표예정", ["발표 가능성", "발표 예상", "발표 예정", "expected to announce", "set to announce", "could announce"]),
         ("체결", ["체결", "본계약", "계약 체결", "signed agreement"]),
         ("수주발주", ["수주", "발주", "구매주문", "purchase order"]),
@@ -404,11 +405,13 @@ def _korean_usd_tokens(low: str) -> list[str]:
         out.append(f"{match.group(1)}{match.group(2) or ''}")
     return list(dict.fromkeys(out))
 
-def _usd_billion_values(low: str) -> list[str]:
-    values: list[float] = []
+def _usd_billion_mentions(low: str) -> list[tuple[str, int, int]]:
+    out: list[tuple[str, int, int]] = []
     for match in re.finditer(r"(\d+(?:\.\d+)?)\s*(억|조)\s*(?:달러|불)", low):
         number = float(match.group(1))
-        values.append(number / 10.0 if match.group(2) == "억" else number * 1000.0)
+        value = number / 10.0 if match.group(2) == "억" else number * 1000.0
+        normalized = f"{value:.3f}".rstrip("0").rstrip(".")
+        out.append((normalized, match.start(), match.end()))
     for match in re.finditer(r"\$?\s*(\d+(?:\.\d+)?)\s*(billion|million|trillion)\b", low):
         number = float(match.group(1))
         unit = match.group(2)
@@ -416,12 +419,62 @@ def _usd_billion_values(low: str) -> list[str]:
             number /= 1000.0
         elif unit == "trillion":
             number *= 1000.0
-        values.append(number)
+        normalized = f"{number:.3f}".rstrip("0").rstrip(".")
+        out.append((normalized, match.start(), match.end()))
+    dedup: list[tuple[str, int, int]] = []
+    seen: set[tuple[str, int, int]] = set()
+    for item in out:
+        if item not in seen:
+            dedup.append(item)
+            seen.add(item)
+    return dedup
+
+
+def _usd_billion_values(low: str) -> list[str]:
     out: list[str] = []
-    for value in values:
-        normalized = f"{value:.3f}".rstrip("0").rstrip(".")
-        if normalized not in out:
-            out.append(normalized)
+    for value, _, _ in _usd_billion_mentions(low):
+        if value not in out:
+            out.append(value)
+    return out
+
+
+def _alaska_specific_usd_values(low: str) -> list[str]:
+    out: list[str] = []
+    broad_terms = (
+        "대미투자", "대미 투자", "전략투자", "전략 투자", "전략적 투자",
+        "investment plan", "strategic investment", "investment package", "total investment",
+    )
+    for value, start, end in _usd_billion_mentions(low):
+        before = low[max(0, start - 60):start]
+        after = low[end:min(len(low), end + 70)]
+        specific = False
+        if "알래스카" in before[-40:] or "alaska lng" in before[-60:]:
+            specific = True
+        if re.search(r"(?:investment|funding|spending|use).{0,28}alaska(?:\s+lng)?", after):
+            specific = True
+        alaska_pos = after.find("알래스카")
+        if 0 <= alaska_pos <= 45:
+            bridge = after[:alaska_pos]
+            if not any(term in bridge for term in broad_terms):
+                specific = True
+        if specific and value not in out:
+            out.append(value)
+    return out
+
+
+def _overall_investment_usd_values(low: str) -> list[str]:
+    alaska_values = set(_alaska_specific_usd_values(low))
+    out: list[str] = []
+    broad_terms = (
+        "대미투자", "대미 투자", "전략투자", "전략 투자", "전략적 투자",
+        "investment plan", "strategic investment", "investment package", "total investment",
+    )
+    for value, start, end in _usd_billion_mentions(low):
+        if value in alaska_values:
+            continue
+        window = low[max(0, start - 45):min(len(low), end + 45)]
+        if any(term in window for term in broad_terms) and value not in out:
+            out.append(value)
     return out
 
 
@@ -530,9 +583,8 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
     if family == "energy_package":
         for value in _explicit_total_nuclear_units(low):
             facts.add(f"package_nuclear_units:{value}")
-        if any(term in low for term in ["패키지", "대미투자", "첫 사업", "첫사업", "합의"]):
-            for value in _korean_usd_tokens(low):
-                facts.add(f"package_usd:{value}")
+        for value in _overall_investment_usd_values(low):
+            facts.add(f"package_overall_usd_b:{value}")
         facts |= stages
         return facts | parties
 
@@ -553,21 +605,18 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
     if family == "alaska_lng":
         for match in re.finditer(r"(\d+(?:\.\d+)?)\s*mtpa\b", low):
             facts.add(f"alaska_mtpa:{match.group(1)}")
-        usd_billions = _usd_billion_values(low)
+        alaska_usd = _alaska_specific_usd_values(low)
         if any(term in low for term in ["사업비", "총사업비", "project cost", "estimated cost", "project costs"]):
-            for value in usd_billions:
+            for value in alaska_usd:
                 facts.add(f"alaska_project_cost_usd_b:{value}")
         if (
             any(term in low for term in ["한국", "south korea", "korean"])
             and any(term in low for term in ["투자", "investment"])
         ):
-            for value in usd_billions:
+            for value in alaska_usd:
                 if _is_official(row) and official_status == "official_status:confirmed":
                     facts.add(f"alaska_korea_investment_usd_b:{value}")
                 else:
-                    # Reuters/Bloomberg 등 보도에서 54B를 '한국 투자액'으로 표현하는 반면
-                    # 일부 국내 기사에서는 '프로젝트 규모'로 설명한다.
-                    # 백악관/한국정부 공식문서가 성격을 확정하기 전에는 중립 보도수치로 관리한다.
                     facts.add(f"alaska_reported_amount_usd_b:{value}")
         facts |= stages
         # 금강공업의 API 5L X70 인증 연관성만으로 프로젝트 공급사 상태를 올리지 않는다.
@@ -617,7 +666,7 @@ def _fact_slot(family: str, fact: str) -> str:
     fixed_prefixes = (
         "nuclear_total_units:", "ap1000_units:", "apr1400_units:",
         "stake_percent:", "funding_amount_usd:", "funding_date:", "funding_wait:",
-        "repayment_horizon:", "package_nuclear_units:", "package_usd:",
+        "repayment_horizon:", "package_nuclear_units:", "package_overall_usd_b:",
         "encinal_total_gw:", "encinal_phase1_gw:", "encinal_phase2_gw:", "encinal_project_usd:",
         "alaska_project_cost_usd_b:", "alaska_korea_investment_usd_b:", "alaska_reported_amount_usd_b:",
         "ercot_request_gw:", "semiconductor_investment_usd:", "ppa_years:",
@@ -744,7 +793,7 @@ def _human_fact(value: str) -> str:
         "funding_amount_usd:": "첫 자금 집행 ",
         "funding_date:": "자금 집행일 ",
         "package_nuclear_units:": "패키지 원전 ",
-        "package_usd:": "에너지 패키지 ",
+        "package_overall_usd_b:": "대미투자 전체/전략 규모 ",
         "encinal_total_gw:": "Encinal 총 ",
         "encinal_phase1_gw:": "Encinal 1단계 ",
         "encinal_phase2_gw:": "Encinal 후속 ",
@@ -881,6 +930,27 @@ def _migrate_alaska_investment_semantics(state: dict) -> None:
     state["alaska_investment_semantics_version"] = 2
 
 
+def _migrate_amount_scope_guard(state: dict) -> None:
+    if int(state.get("amount_scope_guard_version") or 0) >= 1:
+        return
+    buckets = state.setdefault("event_states", {})
+    package = buckets.get("energy_package") or {}
+    if package:
+        package["facts"] = sorted(set(str(x) for x in (package.get("facts") or []) if not str(x).startswith("package_usd:")))
+        package["slots"] = {str(k): str(v) for k, v in (package.get("slots") or {}).items() if str(k) != "energy_package|package_usd"}
+        package["last_source"] = str(package.get("last_source") or "") + " · amount-scope-corrected"
+    alaska = buckets.get("alaska_lng") or {}
+    if alaska:
+        bad = "alaska_reported_amount_usd_b:200"
+        alaska["facts"] = sorted(set(str(x) for x in (alaska.get("facts") or []) if str(x) != bad))
+        slots = {str(k): str(v) for k, v in (alaska.get("slots") or {}).items()}
+        if slots.get("alaska_lng|alaska_reported_amount_usd_b") == bad:
+            slots.pop("alaska_lng|alaska_reported_amount_usd_b", None)
+        alaska["slots"] = slots
+        alaska["last_source"] = str(alaska.get("last_source") or "") + " · total-vs-alaska-corrected"
+    state["amount_scope_guard_version"] = 1
+
+
 def _load() -> dict:
     global _SHARED_STATE, _BOOTSTRAP_GUARD
     state = _ORIG_LOAD()
@@ -888,6 +958,7 @@ def _load() -> dict:
     _BOOTSTRAP_GUARD = old_version < GUARD_VERSION
     state.setdefault("event_states", {})
     _migrate_alaska_investment_semantics(state)
+    _migrate_amount_scope_guard(state)
     if _BOOTSTRAP_GUARD:
         state["event_state_guard_version"] = GUARD_VERSION
         state["event_state_guard_started_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
@@ -1229,6 +1300,32 @@ def _self_test() -> int:
         raise RuntimeError(f"Alaska reported amount parsing regression: {accepted}")
     if "alaska_korea_investment_usd_b:54" in accepted or "alaska_project_cost_usd_b:54" in accepted:
         raise RuntimeError(f"Alaska 54B was over-classified before official confirmation: {accepted}")
+
+    bad_package_rows = [
+        {"title": "백악관, 한국 대미투자 발표에 알래스카 LNG 540억달러·원전 8기 포함 확인", "source": "MBC 뉴스", "link": "https://example.com/package-bad-a", "published": "2026-10-01T00:00:00+00:00"},
+        {"title": "한국 대미투자 발표에 알래스카 LNG 540억달러와 원전 8기 포함", "source": "디지털타임스", "link": "https://example.com/package-bad-b", "published": "2026-10-01T00:01:00+00:00"},
+    ]
+    accepted, _ = _accepted_facts_for_group("energy_package", bad_package_rows)
+    if "package_overall_usd_b:54" in accepted or any(x.startswith("package_usd:") for x in accepted):
+        raise RuntimeError(f"Alaska 54B leaked into package total: {accepted}")
+    if "package_nuclear_units:8" not in accepted:
+        raise RuntimeError(f"package nuclear units lost while filtering amount: {accepted}")
+
+    bad_alaska_rows = [
+        {"title": "백악관 트럼프, 한국 2000억 달러 대미 투자 곧 공개…알래스카 LNG 포함", "source": "뉴스핌", "link": "https://example.com/alaska-bad-a", "published": "2026-10-01T00:02:00+00:00"},
+        {"title": "한국 2000억달러 대미투자 계획 공개, 알래스카 LNG 포함", "source": "연합뉴스", "link": "https://example.com/alaska-bad-b", "published": "2026-10-01T00:03:00+00:00"},
+    ]
+    accepted, _ = _accepted_facts_for_group("alaska_lng", bad_alaska_rows)
+    if any(x.endswith(":200") and x.startswith("alaska_") for x in accepted):
+        raise RuntimeError(f"overall 200B leaked into Alaska amount: {accepted}")
+
+    good_alaska_rows = [
+        {"title": "백악관, 한국 대미투자에 알래스카 LNG 540억달러 포함", "source": "MBC 뉴스", "link": "https://example.com/alaska-good-a", "published": "2026-10-01T00:04:00+00:00"},
+        {"title": "한국 대미투자에 알래스카 LNG 540억달러 포함", "source": "디지털타임스", "link": "https://example.com/alaska-good-b", "published": "2026-10-01T00:05:00+00:00"},
+    ]
+    accepted, _ = _accepted_facts_for_group("alaska_lng", good_alaska_rows)
+    if "alaska_reported_amount_usd_b:54" not in accepted:
+        raise RuntimeError(f"direct Alaska 54B amount not captured: {accepted}")
 
     kumkang_candidate_rows = [
         {
