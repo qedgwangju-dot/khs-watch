@@ -1092,6 +1092,40 @@ def _bernstein_memory_cycle_changes(old: dict, new: dict) -> list[str]:
     return changes
 
 
+def _prepare_report_item(item: dict) -> dict | None:
+    label = classify(item["title"])
+    raw_title = compact_title(item["title"], item.get("source", ""))
+    translated = _translate_to_ko(raw_title)
+    title = _polish_alert_title(raw_title, translated)
+    detail_blob = str(item.get("description") or "")
+    price_details = _price_change_details(raw_title, detail_blob)
+    signal_details = _market_signal_details(raw_title, detail_blob)
+    if _is_sparse_price_sheet(raw_title, price_details, signal_details):
+        return None
+    if item.get("source") == "TrendForce Research" and "memory price forecast" in raw_title.lower():
+        title = (
+            "TrendForce 4Q26 메모리 가격 전망: AI 서버·HBM 우선배정으로 소비자 DRAM 공급 축소, "
+            "QLC 기업용 SSD는 KV 캐시 수요로 강세…LTA가 DRAM 인상폭 제한"
+        )
+    core = ""
+    for detail in price_details + signal_details:
+        if detail and not detail.startswith("가격 유형:"):
+            core = detail
+            break
+    if not core:
+        core = title
+    return {
+        "item": item,
+        "label": label,
+        "raw_title": raw_title,
+        "title": title,
+        "detail_blob": detail_blob,
+        "price_details": price_details,
+        "signal_details": signal_details,
+        "core": core,
+    }
+
+
 def write_outputs(items: list[dict], errors: list[str]) -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     state = load_state()
@@ -1167,6 +1201,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         report_items = new_items[:5]
     else:
         report_items = []
+    prepared_items = [p for p in (_prepare_report_item(x) for x in report_items) if p is not None]
 
     for item in items:
         seen[item["fingerprint"]] = {
@@ -1209,7 +1244,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- 조회시각(KST): {now.isoformat(timespec='seconds')}",
         f"- 유효 후보: {len(items)}건",
         f"- 신규 후보: {len(new_items)}건",
-        f"- Telegram 대상 신규: {len(report_items)}건",
+        f"- Telegram 대상 신규: {len(prepared_items)}건",
         f"- HBM 시장 가격 숫자 변화: {len(market_changes)}건",
         f"- Bernstein 가격 사이클 상태 변화: {len(bernstein_changes)}건",
         f"- 원천 오류: {len(errors)}건",
@@ -1220,16 +1255,22 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not report_items and not market_changes and not bernstein_changes:
+    if not prepared_items and not market_changes and not bernstein_changes:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
     typed_changes = len(market_changes) + len(bernstein_changes)
-    if typed_changes:
-        suffix = f" · 기타 신규 {len(report_items)}건" if report_items else ""
-        lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 상태 변화 {typed_changes}건{suffix}")
-    else:
-        lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 신규 {len(report_items)}건")
+    total_visible = typed_changes + len(prepared_items)
+    lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
+    if market_changes:
+        one = market_changes[0]
+        lines.append("한눈에: <b>" + html.escape(one) + "</b>")
+    elif bernstein_changes:
+        one = bernstein_changes[0]
+        lines.append("한눈에: <b>" + html.escape(one) + "</b>")
+    elif prepared_items:
+        p0 = prepared_items[0]
+        lines.append("한눈에: <b>" + html.escape(f"{p0['label']} · {p0['core']}") + "</b>")
     if market_changes:
         lines.append("• <b>HBM 시장 가격 상태 변화</b>")
         for change in market_changes:
@@ -1272,23 +1313,14 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         if bernstein_source_url:
             lines.append('  <a href="' + html.escape(bernstein_source_url, quote=True) + '">근거 기사</a>')
     emitted = 0
-    for item in report_items:
-        label = classify(item["title"])
-        raw_title = compact_title(item["title"], item.get("source", ""))
-        translated = _translate_to_ko(raw_title)
-        title = _polish_alert_title(raw_title, translated)
-        detail_blob = str(item.get("description") or "")
-        price_details = _price_change_details(raw_title, detail_blob)
-        signal_details = _market_signal_details(raw_title, detail_blob)
-        # A monthly paid price-sheet title without a public number or public narrative
-        # is not actionable. Do not send a one-line 'price type: contract' alert.
-        if _is_sparse_price_sheet(raw_title, price_details, signal_details):
-            continue
-        if item.get("source") == "TrendForce Research" and "memory price forecast" in raw_title.lower():
-            title = (
-                "TrendForce 4Q26 메모리 가격 전망: AI 서버·HBM 우선배정으로 소비자 DRAM 공급 축소, "
-                "QLC 기업용 SSD는 KV 캐시 수요로 강세…LTA가 DRAM 인상폭 제한"
-            )
+    for prepared in prepared_items:
+        item = prepared["item"]
+        label = prepared["label"]
+        raw_title = prepared["raw_title"]
+        title = prepared["title"]
+        detail_blob = prepared["detail_blob"]
+        price_details = prepared["price_details"]
+        signal_details = prepared["signal_details"]
         pub = item.get("published_kst")
         date_text = ""
         if pub:
