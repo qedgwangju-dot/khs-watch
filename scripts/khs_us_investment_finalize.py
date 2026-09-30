@@ -102,6 +102,8 @@ def _short_judgment(title: str, tags: str) -> str:
     if "원전" in blob:
         return "부지·노형·기수·발주주체 공식 확인 전까지 후보 단계."
     if "알래스카 lng" in blob:
+        if any(x in blob for x in ["540억", "54 billion", "발표예정", "발표 가능성", "발표 예상"]):
+            return "한국 전략투자 540억달러 배정 보도 단계. 프로젝트 총사업비와 분리하고 백악관·한국 정부 공식 발표 전에는 확정 투자로 승격하지 않음."
         return "SPA·FID·금융종결·한국 실제 투자액이 붙을 때 단계 상승."
     return "기사 반복이 아니라 사업 상태·금액·당사자·일정의 실제 변화만 추적."
 
@@ -230,6 +232,11 @@ def _context_numbers(flags: dict[str, bool], records: list[dict]) -> list[str]:
 
 def _alaska_kumkang_context() -> list[str]:
     return [
+        "<b>🧊 9월 30일 발표 대기 상태</b>",
+        "• Reuters 2026-09-29: 트럼프가 30일 한국 대미투자 첫 사업군을 공개하며 <b>알래스카 LNG 관련 540억달러 한국 전략투자</b>를 발표할 수 있다는 보도",
+        "• <b>540억달러 = 한국 전략투자 배정액 보도</b> · 기존 670억달러 프로젝트 총사업비 보도와 분리",
+        "• 백악관·한국 정부 공식 발표 전에는 <b>발표 예정/보도 단계</b> · 공식 발표문에서 금액·투자구조·집행주체·일정 확인 시 단계 상승",
+        "",
         "<b>🇰🇷 금강공업 강관 후보 추적</b>",
         "• 2026-09-28 데이터투자: API 5L <b>5L-0864</b> · HFW·PSL1 기준 최대 <b>X70</b> 인증범위 확인",
         "• <b>Alaska LNG 공급계약·벤더 승인·수주 확정은 아님</b> · 현재는 규격 연관성 기반 후보 단계",
@@ -260,6 +267,7 @@ def _next_checks(flags: dict[str, bool]) -> list[str]:
         checks += ["계통연계 승인·전원 인가·실제 가동"]
     if flags["alaska"]:
         checks += [
+            "백악관·한국 정부 540억달러 공식 발표 여부·투자구조·집행주체",
             "SPA·FID·금융종결·한국 투자액",
             "금강공업 API Active·vendor approval/공급계약·대구경 생산/협력 여부",
         ]

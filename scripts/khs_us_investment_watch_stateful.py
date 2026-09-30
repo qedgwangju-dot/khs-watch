@@ -65,6 +65,8 @@ def _is_official(row: dict) -> bool:
             "ercot",
             "puct",
             "texas governor",
+            "white house",
+            "백악관",
             "sec",
         ]
     )
@@ -153,6 +155,7 @@ def _family(row: dict) -> str:
             "eight nuclear",
             "첫 사업",
             "첫사업",
+            "첫 사업군",
             "first project",
             "합의 임박",
             "합의 근접",
@@ -283,6 +286,7 @@ def _material_facts(row: dict) -> set[str]:
 
     milestones = [
         ("공식확정", ["공식 확정", "최종 확정", "확정 발표"]),
+        ("발표예정", ["발표 가능성", "발표 예상", "발표 예정", "expected to announce", "set to announce", "could announce"]),
         ("체결", ["체결", "본계약", "계약 체결", "signed agreement"]),
         ("수주발주", ["수주", "발주", "구매주문", "purchase order"]),
         ("승인", ["승인", "approved", "벤더 승인", "vendor approval"]),
@@ -387,7 +391,7 @@ def _official_status_fact(row: dict) -> str:
     if _is_official(row) and any(term in low for term in _NEGATION_TERMS):
         return "official_status:unconfirmed"
     if _is_official(row) and any(
-        term in low for term in ["공식 확정", "최종 확정", "확정 발표", "공식 발표", "approved", "signed"]
+        term in low for term in ["공식 확정", "최종 확정", "확정 발표", "공식 발표", "announces", "announced", "fact sheet", "approved", "signed"]
     ):
         return "official_status:confirmed"
     return ""
@@ -399,6 +403,27 @@ def _korean_usd_tokens(low: str) -> list[str]:
     for match in re.finditer(r"\$\s*(\d+(?:\.\d+)?)\s*(billion|million|trillion)?", low):
         out.append(f"{match.group(1)}{match.group(2) or ''}")
     return list(dict.fromkeys(out))
+
+def _usd_billion_values(low: str) -> list[str]:
+    values: list[float] = []
+    for match in re.finditer(r"(\d+(?:\.\d+)?)\s*(억|조)\s*(?:달러|불)", low):
+        number = float(match.group(1))
+        values.append(number / 10.0 if match.group(2) == "억" else number * 1000.0)
+    for match in re.finditer(r"\$?\s*(\d+(?:\.\d+)?)\s*(billion|million|trillion)\b", low):
+        number = float(match.group(1))
+        unit = match.group(2)
+        if unit == "million":
+            number /= 1000.0
+        elif unit == "trillion":
+            number *= 1000.0
+        values.append(number)
+    out: list[str] = []
+    for value in values:
+        normalized = f"{value:.3f}".rstrip("0").rstrip(".")
+        if normalized not in out:
+            out.append(normalized)
+    return out
+
 
 def _explicit_model_units(low: str, model: str) -> set[str]:
     values: set[str] = set()
@@ -528,9 +553,16 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
     if family == "alaska_lng":
         for match in re.finditer(r"(\d+(?:\.\d+)?)\s*mtpa\b", low):
             facts.add(f"alaska_mtpa:{match.group(1)}")
-        if any(term in low for term in ["사업비", "투자", "project cost"]):
-            for value in _korean_usd_tokens(low):
-                facts.add(f"alaska_project_usd:{value}")
+        usd_billions = _usd_billion_values(low)
+        if any(term in low for term in ["사업비", "총사업비", "project cost", "estimated cost", "project costs"]):
+            for value in usd_billions:
+                facts.add(f"alaska_project_cost_usd_b:{value}")
+        if (
+            any(term in low for term in ["한국", "south korea", "korean"])
+            and any(term in low for term in ["투자", "investment"])
+        ):
+            for value in usd_billions:
+                facts.add(f"alaska_korea_investment_usd_b:{value}")
         facts |= stages
         # 금강공업의 API 5L X70 인증 연관성만으로 프로젝트 공급사 상태를 올리지 않는다.
         # 공급계약/선정/승인/공식확정처럼 프로젝트 단계가 실제 상승한 경우에만 당사자로 채택한다.
@@ -581,7 +613,7 @@ def _fact_slot(family: str, fact: str) -> str:
         "stake_percent:", "funding_amount_usd:", "funding_date:", "funding_wait:",
         "repayment_horizon:", "package_nuclear_units:", "package_usd:",
         "encinal_total_gw:", "encinal_phase1_gw:", "encinal_phase2_gw:", "encinal_project_usd:",
-        "alaska_project_usd:",
+        "alaska_project_cost_usd_b:", "alaska_korea_investment_usd_b:",
         "ercot_request_gw:", "semiconductor_investment_usd:", "ppa_years:",
         "official_status:",
     )
@@ -713,7 +745,8 @@ def _human_fact(value: str) -> str:
         "encinal_project_usd:": "Encinal 사업비 ",
         "ercot_request_gw:": "ERCOT 요청 ",
         "semiconductor_investment_usd:": "반도체 대미투자 ",
-        "alaska_project_usd:": "알래스카 LNG 사업비 ",
+        "alaska_project_cost_usd_b:": "알래스카 LNG 총사업비 ",
+        "alaska_korea_investment_usd_b:": "알래스카 LNG 한국 전략투자 ",
         "alaska_mtpa:": "알래스카 LNG ",
         "equipment_contract_usd:": "설비 계약 ",
         "equipment_capacity_gw:": "설비 용량 ",
@@ -734,6 +767,12 @@ def _human_fact(value: str) -> str:
                 suffix = "MW"
             elif prefix.endswith("_mtpa:"):
                 suffix = "MTPA"
+            elif prefix.endswith("_usd_b:"):
+                try:
+                    raw = f"{float(raw) * 10:g}억"
+                except Exception:
+                    pass
+                suffix = "달러"
             elif "_usd:" in prefix:
                 suffix = "달러"
             return f"{label}{raw}{suffix}"
@@ -807,12 +846,33 @@ def _migration_seed(state: dict) -> None:
         "evidence": [],
     }
 
+def _migrate_alaska_investment_semantics(state: dict) -> None:
+    if int(state.get("alaska_investment_semantics_version") or 0) >= 1:
+        return
+    bucket = (state.setdefault("event_states", {}).get("alaska_lng") or {})
+    facts = [str(x) for x in (bucket.get("facts") or [])]
+    slots = {str(k): str(v) for k, v in (bucket.get("slots") or {}).items()}
+    evidence = bucket.get("evidence") or []
+    evidence_text = _norm(" ".join(str(x.get("title") or "") for x in evidence if isinstance(x, dict)))
+    old_fact = slots.get("alaska_lng|alaska_project_usd")
+    if old_fact == "alaska_project_usd:540억" and "540억" in evidence_text and any(x in evidence_text for x in ["한국", "korea", "korean"]):
+        facts = [x for x in facts if x != old_fact]
+        facts.append("alaska_korea_investment_usd_b:54")
+        slots.pop("alaska_lng|alaska_project_usd", None)
+        slots["alaska_lng|alaska_korea_investment_usd_b"] = "alaska_korea_investment_usd_b:54"
+        bucket["facts"] = sorted(set(facts))
+        bucket["slots"] = slots
+        bucket["last_source"] = str(bucket.get("last_source") or "") + " · semantics-corrected"
+    state["alaska_investment_semantics_version"] = 1
+
+
 def _load() -> dict:
     global _SHARED_STATE, _BOOTSTRAP_GUARD
     state = _ORIG_LOAD()
     old_version = int(state.get("event_state_guard_version") or 0)
     _BOOTSTRAP_GUARD = old_version < GUARD_VERSION
     state.setdefault("event_states", {})
+    _migrate_alaska_investment_semantics(state)
     if _BOOTSTRAP_GUARD:
         state["event_state_guard_version"] = GUARD_VERSION
         state["event_state_guard_started_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
@@ -1132,6 +1192,26 @@ def _self_test() -> int:
 
     if "540억" not in _korean_usd_tokens("알래스카 LNG에 한국 540억불 투자 발표 가능성"):
         raise RuntimeError("억불 parser regression")
+    canonical = _usd_billion_values("알래스카 LNG에 한국 540억불 투자, Reuters $54 billion")
+    if canonical != ["54"]:
+        raise RuntimeError(f"Alaska investment canonicalization regression: {canonical}")
+    reported_rows = [
+        {
+            "title": "트럼프, 알래스카 LNG 사업에 한국 540억불 투자 발표 가능성",
+            "source": "연합뉴스",
+            "link": "https://example.com/alaska-report-a",
+            "published": "2026-09-30T00:10:00+00:00",
+        },
+        {
+            "title": "Trump set to announce $54 billion Korean investment in Alaska LNG",
+            "source": "Reuters",
+            "link": "https://example.com/alaska-report-b",
+            "published": "2026-09-30T00:11:00+00:00",
+        },
+    ]
+    accepted, _ = _accepted_facts_for_group("alaska_lng", reported_rows)
+    if "alaska_korea_investment_usd_b:54" not in accepted or "alaska_project_cost_usd_b:54" in accepted:
+        raise RuntimeError(f"Alaska investment/project-cost semantic regression: {accepted}")
 
     kumkang_candidate_rows = [
         {

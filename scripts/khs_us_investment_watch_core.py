@@ -38,7 +38,10 @@ QUERIES = [
     '"대미투자" 원전 OR AP1000 OR APR1400 when:3d',
     '"대미투자" "8기" 원전 when:3d',
     '"대미투자" "1천억달러" OR "100 billion" when:3d',
-    '"대미투자" "합의 임박" OR "첫 사업" when:3d',
+    '"대미투자" "합의 임박" OR "첫 사업" OR "첫 사업군" when:3d',
+    '"알래스카 LNG" "540억불" OR "540억달러" OR "54 billion" when:3d',
+    '"트럼프" "알래스카 LNG" "30일" 발표 when:3d',
+    '"White House" "Alaska LNG" Korea investment when:3d',
     '"대미투자" "20억달러" OR "2 billion" OR "첫 집행" when:3d',
     '"대미투자" "알래스카 LNG" when:3d',
     '"알래스카 LNG" 한국 참여 OR 투자 OR 압박 when:3d',
@@ -63,7 +66,7 @@ TRUSTED = [
     "글로벌경제신문", "GetNews", "Reuters", "Wall Street Journal", "WSJ", "Yahoo",
     "Inside Climate News", "San Antonio Express-News", "Global Energy Monitor", "Pipeline & Gas Journal",
     "Bloomberg", "Utility Dive", "Glenfarne", "Alaska's News Source", "ERCOT", "PUCT", "Texas Governor",
-    "데이터투자", "DataTooza",
+    "데이터투자", "DataTooza", "YTN", "동아일보", "한겨레", "White House", "백악관",
 ]
 
 MATERIAL = [
@@ -73,6 +76,8 @@ MATERIAL = [
     "압박", "참여", "최종투자결정", "FID", "금융종결", "오프테이크", "구매계약", "SPA", "HOA",
     "MTPA", "세제", "재산세", "파이프라인", "Glenfarne", "POSCO", "포스코", "KOGAS", "한국가스공사",
     "금강공업", "KUMKANG KIND", "API 5L", "X70", "HFW", "라인파이프", "가스강관", "벤더", "vendor",
+    "540억불", "540억달러", "54 billion", "73조원", "첫 사업군", "발표 가능성", "발표 예상", "발표 예정",
+    "White House", "백악관",
     "수익배분", "손실분담", "위험 통합", "risk-pooling", "프로젝트별 손익", "원리금", "상위 SPV",
     "투자 SPV", "손실 상계", "45영업일", "45일 안전판", "선정 통지", "자금 납입", "송금", "조기 송금",
     "조기송금", "조기 납입", "조기집행", "MOU 무시", "확정된 바 없습니다", "첫 집행", "첫 납입",
@@ -95,6 +100,7 @@ HARD_PROGRESS_TERMS = [
 ALASKA_PRESSURE_TERMS = ["압박", "빨리", "서둘러", "참여하라", "참여 요구", "참여 촉구", "pressure", "urge", "urges"]
 OFFICIAL_SOURCE_TERMS = [
     "정책브리핑", "산업통상", "재정경제부", "기획재정부", "대한민국 정책브리핑", "ercot", "puct", "texas governor",
+    "white house", "백악관",
 ]
 SAFEGUARD_TERMS = [
     "수익배분", "손실분담", "위험 통합", "risk-pooling", "리스크 풀링", "프로젝트별 손익", "원리금",
@@ -106,7 +112,7 @@ FUNDING_GUARD_TERMS = [
 ]
 FUNDING_CONFLICT_TERMS = ["45일 안전판", "45영업일", "조기 송금", "조기송금", "조기 납입", "조기집행", "MOU 무시", "no less than"]
 ENERGY_PACKAGE_TERMS = [
-    "1천억달러", "100 billion", "합의 임박", "agreement", "8기", "eight nuclear", "첫 사업", "첫사업", "first project",
+    "1천억달러", "100 billion", "합의 임박", "agreement", "8기", "eight nuclear", "첫 사업", "첫사업", "첫 사업군", "first project",
 ]
 ERCOT_QUEUE_TERMS = [
     "474gw", "438gw", "batch zero", "large load", "계통연계", "interconnection", "energized", "approval", "approved", "audit", "감사",
@@ -446,6 +452,9 @@ def _alaska_lng_block() -> list[str]:
         "• 일정 기준선: 가스관 기계적 완공 2028년 · 첫 가스 2029년 · LNG 수출 목표 2031년",
         "• 사업비 차이: 한국 협상 보도 <b>670억달러 ≈ 89조9,167억원</b> vs Reuters 8월 보도 약 <b>500억달러 ≈ 67조1,020억원</b>",
         "└ 차이 <b>170억달러 ≈ 22조8,147억원</b>의 산정 범위 확인 필요",
+        "• Reuters 2026-09-29: 트럼프가 30일 한국 대미투자 첫 사업군을 공개하며 <b>알래스카 LNG 관련 한국 전략투자 540억달러</b>를 발표할 수 있다는 보도",
+        "└ <b>540억달러는 한국 전략투자 배정액 보도</b>로, 기존 670억달러 프로젝트 총사업비 보도와 분리 관리",
+        "• 공식 승격 조건: 백악관·한국 정부 발표문에서 <b>540억달러·투자구조·집행주체·일정</b> 확인",
         "",
         "<b>🇰🇷 금강공업 강관 후보 추적</b>",
         "• 데이터투자 2026-09-28: 금강공업 API 5L 라이선스 <b>5L-0864</b>의 HFW·PSL1 인증범위에 <b>X70</b>이 포함된 사실을 확인",
