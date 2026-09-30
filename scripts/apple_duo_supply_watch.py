@@ -187,12 +187,13 @@ def _fingerprint(item: dict) -> str:
 
 
 def _source_rank(source: str) -> int:
+    raw = _clean(source).lower()
     low = _normalize(source)
-    if any(x in low for x in HIGH_SOURCES):
+    if any(x in raw or x in low for x in HIGH_SOURCES):
         return 3
-    if any(x in low for x in MID_SOURCES):
+    if any(x in raw or x in low for x in MID_SOURCES):
         return 2
-    if any(x in low for x in LOW_SOURCES):
+    if any(x in raw or x in low for x in LOW_SOURCES):
         return 0
     return 1
 
@@ -435,10 +436,6 @@ def _meaningful(item: dict, state: dict) -> tuple[bool, str, str]:
     if not reasons and rank >= 3 and change_word and topics & {"finished", "daily", "hinge", "assembly", "panel"}:
         reasons.append("고신뢰 출처에서 생산·출하·수율 변화 표현 감지")
         verdict = "고신뢰 생산 변화"
-
-    if not reasons and rank == 2 and change_word and (units_m or daily or percentages):
-        reasons.append("공급망 매체의 구체 숫자 포함 변화 보도")
-        verdict = "공급망 보도 단계"
 
     if not reasons:
         return False, "", ""
