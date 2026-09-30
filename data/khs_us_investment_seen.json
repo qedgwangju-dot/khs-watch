@@ -559,7 +559,7 @@
       "slots": {
         "energy_package|package_nuclear_units": "package_nuclear_units:8",
         "energy_package|package_overall_usd_b": "package_overall_usd_b:200",
-        "energy_package|stage:발표실행": "stage:발표실행"
+        "energy_package|stage:announcement": "stage:발표실행"
       },
       "initialized_at": "2026-09-23T10:11:17.011383+00:00",
       "updated_at": "2026-09-30T22:27:42.917499+00:00",
@@ -653,13 +653,11 @@
     "alaska_lng": {
       "facts": [
         "alaska_reported_amount_usd_b:54",
-        "stage:발표실행",
-        "stage:발표예정"
+        "stage:발표실행"
       ],
       "slots": {
         "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:54",
-        "alaska_lng|stage:발표실행": "stage:발표실행",
-        "alaska_lng|stage:발표예정": "stage:발표예정"
+        "alaska_lng|stage:announcement": "stage:발표실행"
       },
       "initialized_at": "2026-09-29T23:10:16.076895+00:00",
       "updated_at": "2026-09-30T22:27:42.911887+00:00",
@@ -703,5 +701,6 @@
   "event_state_guard_started_at": "2026-09-21T13:18:18.976218+00:00",
   "event_state_guard_baselined_at": "2026-09-21T13:18:34.529808+00:00",
   "alaska_investment_semantics_version": 2,
-  "amount_scope_guard_version": 1
+  "amount_scope_guard_version": 1,
+  "announcement_stage_guard_version": 1
 }
