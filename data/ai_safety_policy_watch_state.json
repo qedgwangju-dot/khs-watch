@@ -3,29 +3,29 @@
   "last_collection": {
     "errors": [],
     "material_items": 1,
-    "new_articles": 0,
-    "new_events": 0,
+    "new_articles": 1,
+    "new_events": 1,
     "raw_items": 25
   },
   "official_pages": {
     "NIPA 사이버보안 특화 AI 사업": {
       "digest": "a878f15df757e00887993353fa12b37528af61ad90adc743963335f227672d28",
-      "updated_at": "2026-09-30T14:37:41.164760+00:00",
+      "updated_at": "2026-09-30T14:43:48.560644+00:00",
       "url": "https://nipa.kr/home/bsnsAll/00/detail?bsnsDtlsIemNo=909"
     },
     "NVIDIA OpenShell 개요·지원": {
       "digest": "08332ea3b8e2d3bb511d702e825174231f3357515101879f359e5b5ba5dc32f0",
-      "updated_at": "2026-09-30T14:37:41.164760+00:00",
+      "updated_at": "2026-09-30T14:43:48.560644+00:00",
       "url": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/README.md"
     },
     "NVIDIA OpenShell 보안정책": {
       "digest": "172efba937a4421fbb0a09484dd1f1c29a635638854011f53f6d1c35b3f876cc",
-      "updated_at": "2026-09-30T14:37:41.164760+00:00",
+      "updated_at": "2026-09-30T14:43:48.560644+00:00",
       "url": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/SECURITY.md"
     },
     "NVIDIA OpenShell 지원정책": {
       "digest": "33cf7d088e1556591a36e4a469dfa865015d7378819ae68683bcc21fe4ba7c72",
-      "updated_at": "2026-09-30T14:37:41.164760+00:00",
+      "updated_at": "2026-09-30T14:43:48.560644+00:00",
       "url": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/docs/about/support-matrix.mdx"
     }
   },
@@ -34,7 +34,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-09-30T14:37:41.164760+00:00",
+    "updated_at": "2026-09-30T14:43:48.560644+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -64,7 +64,16 @@
       "source": "매일경제",
       "title": "단호한 트럼프 \"AI규제 안 만든다 … 기업 '셀프 제재'로 충분\" - 매일경제",
       "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBWUHZ6OHZtR2VXWmNoRnEzQ2ROV3dDRG9KWEM0a1cxVnJGNE5yaFVzMEtQeUFEYnk1cnlLNTBoZmF2NUdaTFE?oc=5"
+    },
+    "ef69717d7372f63293bcdad3": {
+      "category": "법규·의무 보고·감사",
+      "entity": "AI 안전·보안 생태계",
+      "first_seen_at": "2026-09-30T14:43:48.560644+00:00",
+      "published_at": "2026-09-30T14:39:23+00:00",
+      "source": "매일경제",
+      "title": "AI속도조절론 거리두는 트럼프…“규제 만드는 대신 기업에 맡길것” - 매일경제",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1nUGFNdklnZVhSemdadTI5cXB6R0NocDk1SjBUbEVfZk51YlVrOEhoc2hyeWJwSXZ5OE9UbU1pcGRpRER3RVF5cVk2SDhWUQ?oc=5"
     }
   },
-  "updated_at_kst": "2026-09-30T23:37:41+09:00"
+  "updated_at_kst": "2026-09-30T23:43:48+09:00"
 }
