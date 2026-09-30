@@ -86,6 +86,11 @@ NEWS_QUERIES = [
     '(OpenAI OR Anthropic OR Google OR Meta) deployment blocked safety gate failed alignment evaluation',
     '(OpenAI OR Anthropic OR Google OR Meta) limited release restricted deployment safeguards model',
     '(OpenAI OR Anthropic) "blocking alignment evaluation" failed passed deployment',
+    '(OpenAI OR Anthropic OR Google OR Meta) "Safety Case" frontier training reinforcement learning',
+    '(OpenAI OR Anthropic OR Google OR Meta) "eval awareness" OR metagaming monitoring safety',
+    '(OpenAI OR Anthropic OR Google OR Meta) monitorability threshold automatic stop fail-closed training',
+    '(OpenAI OR Anthropic OR Google OR Meta) regression test postmortem misalignment incident',
+    '(OpenAI OR Anthropic OR Google OR Meta) tool-use training evaluation inference resumed paused frontier model',
 ]
 
 AI_TERMS = (
@@ -129,6 +134,10 @@ SECURITY_TERMS = (
     "inference paused", "inference resumed", "tool use paused", "tool-use paused",
     "tool use resumed", "tool-use resumed", "run was killed", "human reviewer",
     "time to detection", "response time", "restart training", "resume training",
+    "safety case", "eval awareness", "metagaming", "monitorability",
+    "fail-closed", "fail closed", "automatic stop", "auto-stop", "auto stop",
+    "regression test", "postmortem", "post-mortem", "root cause",
+    "senior leadership veto", "training veto",
 )
 
 HARD_SECURITY_TERMS = (
@@ -143,6 +152,8 @@ HARD_SECURITY_TERMS = (
     "training paused", "inference paused", "evaluation paused", "tool-use paused",
     "release cancelled", "release canceled", "launch cancelled", "launch canceled",
     "deployment blocked", "safety gate failed", "failed alignment evaluation",
+    "tool-use paused", "tool use paused", "tool-use resumed", "tool use resumed",
+    "fail-closed", "fail closed", "automatic stop", "auto-stop",
 )
 
 TRUSTED_SOURCE_HINTS = (
@@ -193,6 +204,19 @@ CATEGORY_PATTERNS = [
         "restricted deployment", "limited release", "limited rollout",
         "safety gate failed", "failed safety evaluation", "failed alignment evaluation",
         "blocking alignment evaluation", "deployment restriction",
+    )),
+    ("Safety Case·학습 승인 게이트", (
+        "safety case", "training veto", "senior leadership veto",
+        "fail-closed", "fail closed", "automatic stop", "auto-stop", "auto stop",
+        "monitorability threshold",
+    )),
+    ("평가 인식·모니터 회피", (
+        "eval awareness", "evaluation awareness", "metagaming",
+        "monitor avoidance", "monitor evasion", "aware of being evaluated",
+    )),
+    ("사고 사후분석·회귀검사", (
+        "regression test", "postmortem", "post-mortem", "root cause",
+        "incident review", "lessons learned",
     )),
     ("에이전트 안전 런타임 실패", (
         "openshell", "agent safety runtime", "secure agent runtime",
@@ -484,6 +508,9 @@ def material(item: dict) -> bool:
         "third-party impact", "third party impact", "undesirable behavior",
         "improper activity", "rogue agent", "rogue agents", "rogue activity",
         "leaked images", "unintended behavior", "broke containment",
+        "safety case", "eval awareness", "metagaming", "monitorability",
+        "fail-closed", "fail closed", "automatic stop", "auto-stop",
+        "regression test", "postmortem", "post-mortem",
     ))
 
 
@@ -794,6 +821,12 @@ def event_heading(cluster: list[dict]) -> str:
 
 def event_impact(cluster: list[dict]) -> str:
     cats = " ".join(item.get("category", "") for item in cluster)
+    if "Safety Case·학습 승인 게이트" in cats:
+        return "프런티어 강화학습을 계속하기 전에 위험·격리·모니터링 증거가 실제 학습 승인 게이트로 작동하는지가 핵심입니다."
+    if "평가 인식·모니터 회피" in cats:
+        return "모델이 평가·감시 상황을 인식해 행동을 바꾸거나 모니터를 회피하는 능력이 실제로 증가하는지가 핵심입니다."
+    if "사고 사후분석·회귀검사" in cats:
+        return "비정렬 사고 원인이 학습 과정까지 역추적되고 동일 행동이 향후 회귀검사에 실제 반영되는지가 핵심입니다."
     if "출시 게이트·배포 제한" in cats:
         return "모델 성능이 아니라 안전·정렬 평가가 실제 출시 일정과 배포 범위를 제한하는지가 핵심입니다."
     if "에이전트 안전 런타임 실패" in cats:
