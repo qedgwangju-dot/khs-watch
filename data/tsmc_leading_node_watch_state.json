@@ -10,14 +10,14 @@
         "max": null,
         "evidence_state": "supply_chain_report",
         "source_url": "https://money.udn.com/money/story/5612/9780512",
-        "source_name": "money.udn.com"
+        "source_name": "經濟日報"
       },
       "N3|2026Q4": {
         "value": 180000,
         "min": null,
         "max": null,
         "evidence_state": "supply_chain_report",
-        "source_url": "https://udn.com/news/story/7240/9780512?from=udn_ch2_menu_v2_main_cate",
+        "source_url": "https://udn.com/news/story/7240/9780512?list_ch2_index",
         "source_name": "UDN"
       },
       "N3|2027": {
@@ -45,7 +45,7 @@
       ],
       "evidence_state": "supply_chain_report",
       "source_url": "https://money.udn.com/money/story/5612/9780512",
-      "source_name": "money.udn.com"
+      "source_name": "經濟日報"
     },
     "n2_fabs_2026": 5,
     "n2_first_year_vs_n3_pct": 45,
@@ -86,8 +86,8 @@
     },
     "last_evidence_state": "supply_chain_report",
     "last_source_url": "https://money.udn.com/money/story/5612/9780512",
-    "last_source_name": "money.udn.com",
-    "last_source_published_at_kst": "2026-09-28T18:00:00+09:00"
+    "last_source_name": "經濟日報",
+    "last_source_published_at_kst": "2026-09-29T18:00:00+09:00"
   },
   "baseline_sources": [
     "https://money.udn.com/money/story/5612/9780512",
@@ -95,11 +95,11 @@
     "https://investor.tsmc.com/static/annualReports/2025/english/index.html",
     "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf"
   ],
-  "last_checked_at_kst": "2026-09-30T11:26:14+09:00",
+  "last_checked_at_kst": "2026-09-30T17:43:31+09:00",
   "last_evidence_url": "https://money.udn.com/money/story/5612/9780512",
-  "last_evidence_published_at_kst": "2026-09-28T18:00:00+09:00",
+  "last_evidence_published_at_kst": "2026-09-29T18:00:00+09:00",
   "delivery_check": {
-    "checked_at_kst": "2026-09-30T11:28:16+09:00",
+    "checked_at_kst": "2026-09-30T17:45:56+09:00",
     "status": "no_message_due"
   }
 }
