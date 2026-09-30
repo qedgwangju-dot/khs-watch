@@ -17,21 +17,21 @@
     "measurement_basis": "최근 완료 거래일 종가"
   },
   "macro": {
-    "core_3m_ann": 3.0477755322693367,
-    "core_6m_ann": 3.4594071030808804,
-    "core_yoy": 3.3441430040338282,
+    "core_3m_ann": 2.046398408308314,
+    "core_6m_ann": 2.7442711148223387,
+    "core_yoy": 3.0075959761856064,
     "employment_soft": false,
     "payroll_change_k": 162.0,
     "unemployment_rate": 4.1,
     "h8": "중립",
     "sloos": "신용 완화",
-    "real_pce_3m_ann": 3.3288622136696366,
-    "real_pce_date": "2026-07-01",
+    "real_pce_3m_ann": 4.130494340236046,
+    "real_pce_date": "2026-08-01",
     "bei5y": 2.34,
     "bei5y_10d_bp": -7.000000000000028,
     "bei_date": "2026-09-29"
   },
-  "verdict": "2차 물가 전이 우세 — 추가긴축 논리 강화",
+  "verdict": "판정 유보 — 유가 충격은 크지만 물가 전이와 수요 파괴의 우열 불명확",
   "oil_rates": {
     "date": "2026-09-28",
     "observations": 63,
@@ -59,5 +59,5 @@
     "source_status": "실시간 조회"
   },
   "oil_rates_verdict": "유가와 10년물 분리 — 재정·실질금리·기간프리미엄 등 비유가 요인 우세",
-  "updated_at_utc": "2026-09-30T06:57:01.743873+00:00"
+  "updated_at_utc": "2026-09-30T13:59:36.830702+00:00"
 }
