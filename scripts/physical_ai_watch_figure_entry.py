@@ -134,7 +134,9 @@ def _make_figure_item(status_id: str, text: str, published: dt.datetime | None) 
     if FIGURE_ACTUAL_REVEAL.search(text):
         title = 'Figure AI, Helix 2.5 실제 공개…휴머노이드 스케일링 법칙 확인'
     elif FIGURE_PREANNOUNCE.search(text) and FIGURE_BREAKTHROUGH.search(text):
-        title = 'Figure AI, AI 돌파구 공개 예고…익일 발표 예정'
+        title = 'Figure AI, AI 돌파구 공개 예고…후속 발표 예정'
+    elif FIGURE_PREANNOUNCE.search(text):
+        title = 'Figure AI, 공식 공개 예고…후속 발표 예정'
     elif FIGURE_BREAKTHROUGH.search(text):
         title = 'Figure AI, 신규 AI 돌파구·성능 업데이트 공개'
     elif FIGURE_COMMERCIAL.search(text):
