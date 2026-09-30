@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "initial_alert_sent": false,
+  "seen": [],
+  "metrics": {
+    "iphone18pro_china_yoy_pct": 12,
+    "apple_china_week38_share_pct": 33,
+    "counterpoint_duo_forecast_m": 6,
+    "trendforce_duo_forecast_m": 5
+  },
+  "confirmations": {
+    "iphone18pro_china": "사용자 제공 Counterpoint 유료 주간 트래커 숫자·공개 원표 미열람",
+    "counterpoint_duo": "Reuters가 Counterpoint 전망 약 600만대 인용",
+    "trendforce_duo": "TrendForce 공식 2026 출하 약 500만대"
+  },
+  "last_scan_items": 0,
+  "last_signal_count": 0,
+  "last_alert": null
+}\n
