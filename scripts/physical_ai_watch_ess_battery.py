@@ -50,7 +50,7 @@ base.QUERIES.extend([
     '(미국 OR "United States" OR "U.S.") (ESS OR "energy storage" OR BESS) (forecast OR outlook OR 전망) (revised OR raised OR lowered OR upgraded OR downgraded OR 상향 OR 하향 OR 수정) (GWh OR TWh OR GW)',
     '(미국 OR "United States" OR "U.S.") (ESS OR "energy storage" OR BESS) (FEOC OR "tax credit" OR 세액공제 OR tariff OR 관세 OR interconnection OR 계통접속 OR "fire code" OR 화재규정 OR permitting OR 인허가) (final rule OR rule change OR enacted OR effective OR 승인 OR 확정 OR 시행 OR 변경)',
     '(CATL OR 宁德时代) (Debrecen OR 德布勒森 OR 데브레첸 OR 헝가리 OR Hungary) (cell OR 电芯 OR 배터리셀 OR battery cell) (trial production OR 试生产 OR series production OR mass production OR 正式量产 OR 양산 OR 시험생산 OR 출하 OR shipment OR utilization OR 가동률 OR 100GWh OR 100 GWh OR 중단 OR shutdown OR permit OR 许可)',
-    '(이수스페셜티케미컬 OR "ISU Specialty Chemical") (황화리튬 OR Li2S OR "lithium sulfide") (상업생산 OR commercial production OR 양산 OR 생산 OR 가동 OR 납품 OR shipment OR 공급계약 OR contract OR 고객 OR sample OR 샘플 OR 150톤 OR 150t OR 500톤 OR 500t OR 증설 OR 확대 OR 지연 OR 연기 OR 황화수소 OR H2S OR 안전 OR 사고)',
+    '(이수스페셜티케미컬 OR "ISU Specialty Chemical") (황화리튬 OR Li2S OR "lithium sulfide") (상업생산 OR commercial production OR 양산 OR 생산 OR 가동 OR 납품 OR shipment OR 공급계약 OR contract OR 고객 OR sample OR 샘플 OR 150톤 OR 150t OR 500톤 OR 500t OR 증설 OR 확대 OR 지연 OR 연기 OR 황화수소 OR H2S OR 안전 OR 사고 OR IR OR 기업설명회 OR "Analyst Day")',
 ])
 
 base.TRUSTED.update({
@@ -201,14 +201,16 @@ CATL_DEB_STOP = re.compile(
 
 ISU_LI2S_ID = re.compile(r'(?:이수스페셜티케미컬|ISU\s*Specialty\s*Chemical).{0,120}(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide)|(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide).{0,120}(?:이수스페셜티케미컬|ISU\s*Specialty\s*Chemical)', re.I)
 ISU_LI2S_BASELINE = re.compile(
-    r'(?:10월|October).{0,80}(?:넷째\s*주|fourth\s*week).{0,100}(?:상업\s*생산|commercial\s*production|가동).{0,40}(?:예정|계획|목표|expected|planned)|'
-    r'(?:상업\s*생산|commercial\s*production).{0,80}(?:다음\s*달|next\s*month|10월).{0,50}(?:예정|계획|expected|planned)|'
-    r'(?:준공|completed).{0,100}(?:150\s*(?:톤|t|ton)).{0,100}(?:시운전|quality\s*stabilization|품질\s*안정화)',
+    r'(?:10월|October).{0,140}(?:상업\s*생산|commercial\s*production|공장\s*가동|plant\s*operation|생산\s*돌입)|'
+    r'(?:상업\s*생산|commercial\s*production).{0,100}(?:다음\s*달|next\s*month|10월|넷째\s*주|fourth\s*week)|'
+    r'(?:준공|completed).{0,100}(?:150\s*(?:톤|t|ton)).{0,100}(?:시운전|quality\s*stabilization|품질\s*안정화)|'
+    r'(?:150\s*(?:톤|t|ton)).{0,120}(?:500\s*(?:톤|t|ton)).{0,120}(?:마더\s*플랜트|mother\s*plant|상업화\s*공장)',
     re.I,
 )
 ISU_LI2S_COMMERCIAL = re.compile(
-    r'(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide).{0,120}(?:상업\s*생산|commercial\s*production|양산).{0,40}(?:개시|시작|돌입|started|began|commenced)|'
-    r'(?:상업\s*생산|commercial\s*production|양산).{0,40}(?:개시|시작|돌입|started|began|commenced).{0,120}(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide)',
+    r'(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide).{0,140}(?:상업\s*생산|commercial\s*production|양산).{0,50}(?:개시했다|시작했다|돌입했다|가동에\s*들어갔다|started|began|commenced)|'
+    r'(?:상업\s*생산|commercial\s*production|양산).{0,50}(?:개시했다|시작했다|돌입했다|가동에\s*들어갔다|started|began|commenced).{0,140}(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide)|'
+    r'(?:공장|plant).{0,80}(?:가동을\s*시작했다|가동에\s*들어갔다|started\s*operations).{0,100}(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide)',
     re.I,
 )
 ISU_LI2S_SHIPMENT = re.compile(
