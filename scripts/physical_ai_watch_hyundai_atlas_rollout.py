@@ -94,6 +94,7 @@ FUNDING = re.compile(r'funding|fundraise|capital\s+raise|자금\s*조달|증자|
 EXTERNAL_CUSTOMER = re.compile(r'external\s+customers?|outside\s+customers?|외부\s*고객|고객\s*실명|customer|customers|order|orders|주문|수주|sales|판매|commercial\s+sale|상용\s*판매', re.I)
 CAPITAL = re.compile(r'\bIPO\b|pre[-\s]?IPO|프리\s*IPO|상장\s*전\s*투자\s*유치|initial\s+public\s+offering|기업공개|상장|\bS-1\b|registration\s+statement|prospectus|underwriter|주관사|상장예비심사|valuation|기업\s*가치|loss(?:es)?|손실|적자|unprofitable|profitability|수익성|흑자|funding|fundraise|capital\s+raise|자금\s*조달|SoftBank|소프트뱅크|ownership|지분|stake|완전\s*자회사', re.I)
 ATLAS_CATEGORY_PREFIX = '현대차그룹 · 아틀라스 '
+MOBIS_ACTUATOR = re.compile(r'(?:현대모비스|Hyundai\s*Mobis).{0,160}(?:액추에이터|actuator)|(?:액추에이터|actuator).{0,160}(?:현대모비스|Hyundai\s*Mobis)', re.I)
 
 
 def _query_boston_rmac_recovery() -> list[dict]:
@@ -160,6 +161,14 @@ def _is_boston_capital_or_commercial(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    # Hyundai Mobis actuator commercialization has its own finer-grained gate.
+    # Defer before the broader Boston Dynamics/Atlas rollout classifier so a
+    # new Mobis order/PPAP/SOP/first-shipment event is not swallowed as a
+    # generic external-customer rollout story.
+    if MOBIS_ACTUATOR.search(text):
+        prior = _orig_topic_group(text)
+        if prior == 'hyundai_mobis_atlas':
+            return prior
     if _is_rmac_operational(text): return 'hyundai_atlas_rollout'
     if _is_boston_capital_or_commercial(text) or _is_atlas_rollout(text): return 'hyundai_atlas_rollout'
     return _orig_topic_group(text)
