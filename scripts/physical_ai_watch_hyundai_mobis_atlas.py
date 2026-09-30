@@ -92,7 +92,7 @@ PROCEEDS = re.compile(r'매각\s*대금|현금\s*유입|대금\s*수령|proceeds
 DISPOSAL_RESULT = re.compile(r'처분\s*(?:이익|손실)|매각\s*(?:이익|손실)|disposal\s*(?:gain|loss)|gain\s+on\s+sale|loss\s+on\s+sale', re.I)
 REINVEST_TARGET = re.compile(r'차량용\s*반도체|automotive\s*semiconductor|로보틱스|robotics|전동화|electrification', re.I)
 REINVEST_ACTION = re.compile(r'투자\s*(?:결정|공시|집행|확정|착수)|신규\s*시설|시설\s*투자|설비\s*투자|capex|investment\s*(?:approved|announced|committed)', re.I)
-ADVERSE = re.compile(r'가처분.{0,40}(?:신청(?:했다|함|접수)|제기(?:했다|됨|됐다)|인용|기각|각하)|injunction.{0,40}(?:filed|granted|denied|blocked)|소송.{0,40}(?:제기(?:했다|됨|됐다)|접수)|litigation.{0,40}(?:filed|commenced)|(?:일정|종결|closing).{0,40}(?:연기|지연|postpone|delay)|조건부\s*승인|conditional\s+approval|가격\s*(?:조정|인하)|purchase\s*price\s*adjust|해지|termination|terminated|철회|withdraw|불승인|rejected|blocked', re.I)
+ADVERSE = re.compile(r'가처분.{0,80}(?:신청|소송).{0,40}(?:접수|제기|냈|신청했다|인용|기각|각하)|가처분.{0,40}(?:인용|기각|각하)|injunction.{0,40}(?:filed|granted|denied|blocked)|소송.{0,60}(?:제기(?:했다|됨|됐다)|접수(?:했다|됨|됐다)|filed)|litigation.{0,40}(?:filed|commenced)|(?:일정|종결|closing).{0,40}(?:연기|지연|postpone|delay)|조건부\s*승인|conditional\s+approval|가격\s*(?:조정|인하)|purchase\s*price\s*adjust|해지|termination|terminated|철회|withdraw|불승인|rejected|blocked', re.I)
 
 
 def _atlas_stage(text: str) -> str:
