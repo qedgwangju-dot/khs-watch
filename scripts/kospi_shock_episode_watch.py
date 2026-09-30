@@ -18,6 +18,8 @@ from zoneinfo import ZoneInfo
 
 import requests
 
+from kospi_shock_enrichment import build_enrichment
+
 KST = ZoneInfo("Asia/Seoul")
 BASE = "https://openapi.ls-sec.co.kr:8080"
 STATUS = Path("out/kospi_shock_episode_status.md")
@@ -177,10 +179,10 @@ def _latest_time_row(rows: Any) -> dict[str, Any] | None:
     return max(valid, key=lambda x: x[0])[1] if valid else None
 
 
-def investor_current(token: str, market: str, upcode: str) -> dict[str, Any] | None:
+def investor_current(token: str, market: str, upcode: str, exchgubun: str = "K") -> dict[str, Any] | None:
     body = {"t1602InBlock": {"market": market, "upcode": upcode,
             "gubun1": "2", "gubun2": "0", "cts_time": "", "cts_idx": 0,
-            "cnt": 100, "gubun3": "", "exchgubun": "K"}}
+            "cnt": 100, "gubun3": "", "exchgubun": exchgubun}}
     d = ls_post(token, "/stock/investor", "t1602", body)
     row = _latest_time_row(d.get("t1602OutBlock1"))
     if not row:
@@ -193,7 +195,7 @@ def investor_current(token: str, market: str, upcode: str) -> dict[str, Any] | N
 
 def _program_mini(token: str, gubun: str) -> dict[str, Any] | None:
     # t1640: 11=거래소 전체, 12=거래소 차익, 13=거래소 비차익.
-    d = ls_post(token, "/stock/program", "t1640", {"t1640InBlock": {"gubun": gubun, "exchgubun": "K"}})
+    d = ls_post(token, "/stock/program", "t1640", {"t1640InBlock": {"gubun": gubun, "exchgubun": "U"}})
     row = d.get("t1640OutBlock")
     if not isinstance(row, dict) or not row:
         return None
@@ -236,9 +238,12 @@ def program_current(token: str) -> dict[str, Any] | None:
 def fetch_flow_snapshot(token: str) -> dict[str, Any]:
     started_ts = time.time()
     snap: dict[str, Any] = {"ts": started_ts, "ts_start": started_ts, "errors": {}}
-    for key, market, upcode in (("현물", "1", "001"), ("선물", "4", "900")):
+    for key, market, upcode, exchgubun in (
+        ("현물", "1", "001", "U"),
+        ("선물", "4", "900", "K"),
+    ):
         try:
-            snap[key] = investor_current(token, market, upcode)
+            snap[key] = investor_current(token, market, upcode, exchgubun)
         except Exception as exc:
             snap[key] = None
             snap["errors"][key] = f"{type(exc).__name__}: {exc}"
@@ -419,7 +424,9 @@ class Watch:
         self.flows: deque[dict[str, Any]] = deque(maxlen=2500)
         self.front_future = front_future; self.episode: dict[str, Any] | None = None
         self.last_flow_poll = 0.0; self.flow_task: asyncio.Task | None = None
-        self.msg_ids: list[int] = []; self.raw: dict[str, Any] = {}
+        self.msg_ids: list[int] = []; self.enrichment_msg_ids: list[int] = []; self.raw: dict[str, Any] = {}
+        self.enrichment_tasks: set[asyncio.Task] = set()
+        self.enrichment_sem = asyncio.Semaphore(1)
         self.monitor_started_ts = time.time()
         self.last_idx_tick_ts: float | None = None
         self.last_fut_tick_ts: float | None = None
@@ -684,7 +691,7 @@ class Watch:
         if att.get("available"):
             s, f, p = att["spot"], att["futures"], att["program"]
             cross = ", ".join(att.get("cross_sellers") or []) or "없음"
-            lines += [f"• 현물: 외국인 <b>{fmt_eok(s.get('외국인'))}</b> · 기관 <b>{fmt_eok(s.get('기관'))}</b> · 개인 <b>{fmt_eok(s.get('개인'))}</b>",
+            lines += [f"• 현물(통합): 외국인 <b>{fmt_eok(s.get('외국인'))}</b> · 기관 <b>{fmt_eok(s.get('기관'))}</b> · 개인 <b>{fmt_eok(s.get('개인'))}</b>",
                       f"• KOSPI200 선물: 외국인 <b>{fmt_eok(f.get('외국인'))}</b> · 기관 <b>{fmt_eok(f.get('기관'))}</b> · 개인 <b>{fmt_eok(f.get('개인'))}</b>",
                       f"• 현물 최다매도: <b>{html.escape(str(att.get('spot_leader') or '없음'))}</b> {fmt_eok(att.get('spot_leader_value'))}",
                       f"• 선물 최다매도: <b>{html.escape(str(att.get('futures_leader') or '없음'))}</b> {fmt_eok(att.get('futures_leader_value'))}",
@@ -702,6 +709,7 @@ class Watch:
             lines += ["", "<b>파생 증폭 확인</b>", f"• 근접 위클리 풋 <b>{html.escape(opt[0])}</b> · 사건 시작 대비 <b>{opt[1]:.1f}배</b>"]
         lines += ["", "<b>읽는 법</b>",
                   "• 하루 누적 수급이 아니라 <b>급락 시작 직전 → 현재</b> 변화량만 비교합니다.",
+                  "• 현물·프로그램은 <b>KRX+NXT 통합</b>, KOSPI200 선물은 KRX 기준입니다.",
                   "• 현물·선물·프로그램이 같은 방향으로 겹칠 때만 특정 주체를 급락 주도 후보로 올립니다.",
                   "• 프로그램 전체는 차익 변화+비차익 변화로 계산하고 LS 전체 직접값 변화와 방향을 교차검증합니다. t1640 3종은 순차 조회라 조회시차를 함께 표시하며 단위는 임의 환산하지 않습니다.", "",
                   "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(NEWS_URL,"급락 뉴스"), link(LS_URL,"LS OpenAPI")])]
@@ -720,7 +728,7 @@ class Watch:
         if att.get("available"):
             s, f, p = att["spot"], att["futures"], att["program"]
             cross = ", ".join(att.get("cross_sellers") or []) or "없음"
-            lines += [f"• 현물: 외국인 <b>{fmt_eok(s.get('외국인'))}</b> · 기관 <b>{fmt_eok(s.get('기관'))}</b> · 개인 <b>{fmt_eok(s.get('개인'))}</b>",
+            lines += [f"• 현물(통합): 외국인 <b>{fmt_eok(s.get('외국인'))}</b> · 기관 <b>{fmt_eok(s.get('기관'))}</b> · 개인 <b>{fmt_eok(s.get('개인'))}</b>",
                       f"• KOSPI200 선물: 외국인 <b>{fmt_eok(f.get('외국인'))}</b> · 기관 <b>{fmt_eok(f.get('기관'))}</b> · 개인 <b>{fmt_eok(f.get('개인'))}</b>",
                       f"• 현물 최다매도: <b>{html.escape(str(att.get('spot_leader') or '없음'))}</b> {fmt_eok(att.get('spot_leader_value'))}",
                       f"• 선물 최다매도: <b>{html.escape(str(att.get('futures_leader') or '없음'))}</b> {fmt_eok(att.get('futures_leader_value'))}",
@@ -732,8 +740,33 @@ class Watch:
                       f"• 최종 판정: <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
         else:
             lines += [f"• 가격 구간만 확정 — {html.escape(str(att.get('reason') or '수급 스냅샷 부족'))}"]
-        lines += ["", "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(NEWS_URL,"관련 뉴스")])]
+        lines += ["", "• 현물·프로그램은 <b>KRX+NXT 통합</b>, KOSPI200 선물은 KRX 기준",
+                  "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(NEWS_URL,"관련 뉴스")])]
         return "\n".join(lines)
+
+    async def _run_enrichment(self, ep: dict[str, Any], att: dict[str, Any]) -> None:
+        async with self.enrichment_sem:
+            try:
+                leader = str(att.get("spot_leader") or "") if att.get("available") else ""
+                text, detail = await asyncio.to_thread(
+                    build_enrichment, self.token, ep, leader or None
+                )
+                msg_id = await asyncio.to_thread(telegram_send, text)
+                self.enrichment_msg_ids.append(msg_id)
+                self._record_delivery("enrichment", msg_id, ep, float(ep.get("low_ts") or time.time()))
+                self.raw["last_enrichment"] = {
+                    "generated_at_kst": detail.get("generated_at_kst"),
+                    "market_basis": detail.get("market_basis"),
+                    "stock_count": len(detail.get("stocks") or []),
+                    "industry_count": len(detail.get("industries") or []),
+                    "theme_count": len(detail.get("themes") or []),
+                    "etf_count": len(detail.get("etfs") or []),
+                    "errors": detail.get("errors") or [],
+                    "message_id": msg_id,
+                }
+            except Exception as exc:
+                self.raw["last_enrichment_error"] = f"{type(exc).__name__}: {exc}"
+                print(f"kospi_enrichment_error={type(exc).__name__}: {exc}", flush=True)
 
     async def maybe_flow(self) -> None:
         now = time.time()
@@ -817,9 +850,14 @@ class Watch:
                  (low_age >= 120 and recovery_ratio >= 0.45) or
                  (now_t - float(ep["start_ts"]) >= MAX_EPISODE_SEC and low_age >= 600))
         if ended:
+            final_att = self.attribution(float(ep["start_ts"]), float(ep["low_ts"]))
             msg_id = await asyncio.to_thread(telegram_send, self.build_end(ep, now_t, cur))
             self.msg_ids.append(msg_id)
             self._record_delivery("end", msg_id, ep, now_t)
+            ep_copy = json.loads(json.dumps(ep))
+            task = asyncio.create_task(self._run_enrichment(ep_copy, final_att))
+            self.enrichment_tasks.add(task)
+            task.add_done_callback(self.enrichment_tasks.discard)
             self.episode = None
 
     def _record_delivery(self, stage: str, message_id: int, ep: dict[str, Any], observed_ts: float) -> None:
@@ -912,6 +950,14 @@ class Watch:
                 await asyncio.wait_for(self.flow_task, timeout=8)
             except Exception:
                 pass
+        if self.enrichment_tasks:
+            try:
+                await asyncio.wait_for(
+                    asyncio.gather(*list(self.enrichment_tasks), return_exceptions=True),
+                    timeout=180,
+                )
+            except Exception as exc:
+                self.raw["enrichment_shutdown_error"] = f"{type(exc).__name__}: {exc}"
 
 
 def write_status(w: Watch, started: dt.datetime, status: str) -> None:
@@ -922,6 +968,7 @@ def write_status(w: Watch, started: dt.datetime, status: str) -> None:
         f"- KOSPI 틱: {len(w.idx)}", f"- 선물 틱: {len(w.fut)}", f"- 수급 스냅샷: {len(w.flows)}",
         f"- 최근월물 선물: {w.front_future or '미확인'}", f"- 구독 풋옵션: {len(w.put_defs)}",
         f"- 진행 중 사건: {'있음' if w.episode else '없음'}", f"- 텔레그램 ID: {w.msg_ids}",
+        f"- 정밀분해 텔레그램 ID: {w.enrichment_msg_ids}",
     ]) + "\n", encoding="utf-8")
     RAW.write_text(json.dumps(w.raw, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
