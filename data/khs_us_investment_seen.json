@@ -323,7 +323,9 @@
     "stateevt_a28472edccc822fdca47": "2026-09-23T10:10:59.097546+00:00",
     "stateevt_74b63417d6ff2ee889b6": "2026-09-24T05:19:40.631100+00:00",
     "stateevt_9ebce96fac8948a3e834": "2026-09-29T23:10:01.687655+00:00",
-    "stateevt_75f2a641f5d1175155cb": "2026-09-30T00:03:56.579072+00:00"
+    "stateevt_75f2a641f5d1175155cb": "2026-09-30T00:03:56.579072+00:00",
+    "stateevt_0f76b4c0d00086048fb8": "2026-09-30T20:22:59.177575+00:00",
+    "stateevt_73ba8d8d78ec4beaa3a0": "2026-09-30T20:22:59.177575+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -338,7 +340,9 @@
     "eventstate_texas_ai_power_a28472edccc822fdca47": "2026-09-23T10:10:59.097546+00:00",
     "eventstate_legacy_funding_media_74b63417d6ff2ee889b6": "2026-09-24T05:19:40.631100+00:00",
     "eventstate_alaska_lng_9ebce96fac8948a3e834": "2026-09-29T23:10:01.687655+00:00",
-    "eventstate_alaska_lng_75f2a641f5d1175155cb": "2026-09-30T00:03:56.579072+00:00"
+    "eventstate_alaska_lng_75f2a641f5d1175155cb": "2026-09-30T00:03:56.579072+00:00",
+    "eventstate_energy_package_0f76b4c0d00086048fb8": "2026-09-30T20:22:59.177575+00:00",
+    "eventstate_alaska_lng_73ba8d8d78ec4beaa3a0": "2026-09-30T20:22:59.177575+00:00"
   },
   "official_status": {
     "status": "official_seen",
@@ -542,45 +546,29 @@
     },
     "energy_package": {
       "facts": [
-        "package_nuclear_units:8"
+        "package_nuclear_units:8",
+        "package_usd:540억"
       ],
       "slots": {
-        "energy_package|package_nuclear_units": "package_nuclear_units:8"
+        "energy_package|package_nuclear_units": "package_nuclear_units:8",
+        "energy_package|package_usd": "package_usd:540억"
       },
       "initialized_at": "2026-09-23T10:11:17.011383+00:00",
-      "updated_at": "2026-09-23T10:11:17.011383+00:00",
-      "last_title": "美 원전 8기 뜬다···두산에너빌리티·현대건설 ‘대미투자 수혜주’ 부상 - seoulfn.com",
-      "last_source": "seoulfn.com",
+      "updated_at": "2026-09-30T20:23:15.215767+00:00",
+      "last_title": "\"백악관, 한국 대미투자 발표에 '알래스카 LNG·원전 8기 포함' 확인\" - MBC 뉴스",
+      "last_source": "MBC 뉴스",
       "evidence": [
         {
-          "source": "seoulfn.com",
-          "title": "美 원전 8기 뜬다···두산에너빌리티·현대건설 ‘대미투자 수혜주’ 부상 - seoulfn.com",
-          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5KUHN3T3NPTjctUDZxbzgxMHVYSm9KSUYzSUNia1Y5b2JTRHBNLXZxVVRDRHNXZlZaQWMxOGptVGJFeGIzTFB2aWdPbU95MzJFbzFVOWh0RzV5LXJfM01QZEFZTmw3VWhhTXc?oc=5",
-          "published": "2026-09-23T06:22:16+00:00"
+          "source": "v.daum.net",
+          "title": "백악관 “韓 대미투자에 알래스카 540억달러 포함”… 원전 8기·텍사스 발전시설도 - v.daum.net",
+          "link": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFBBVGlRdVdCcGpFNnZydllXOU9aakNtSHVsc1psWENHWXRxdW1ySnQxOTVFT2FmZFBZc0htYUdieXZWaGNHbmc?oc=5",
+          "published": "2026-09-30T17:25:14+00:00"
         },
         {
-          "source": "매일경제",
-          "title": "[단독] 대미투자펀드로 美원전 8기 짓는다…추가건설땐 기당 20억弗 - 매일경제",
-          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBhdkZ3dDNsQ2JCYzVoNkY5TmtZX1ItMXBQSjFsZFgtTFBYTHdsSkRicnJCTmt6VjNkYk13dTVxNkFjRkFQUzFlbnJES0VkOG9wdXJVRw?oc=5",
-          "published": "2026-09-22T04:11:50+00:00"
-        },
-        {
-          "source": "매일경제",
-          "title": "[단독] 韓, 미국에 원전 8기 건설 …'한국형' 2기는 웨스팅에 로열티낼듯 - 매일경제",
-          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1vVV94ZGlSXzZyYXpPT0hfRE5wR1VaLU5XTEF6LXZhYmJiaVhOUGJZSFpfVVdqRkxjYU1zQUF5cWluQ1ROalZMa3FKc3o3Uk04V1JmOQ?oc=5",
-          "published": "2026-09-22T08:45:33+00:00"
-        },
-        {
-          "source": "서울경제",
-          "title": "대미투자 1호는 美텍사스 가스발전…원전 8기·알래스카 LNG도 추진 - 서울경제",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBXLUJxTWwzT2dDb1R3c2cyVFd4Nkw2b0IxdmxwLXFVd2tCU0UyeVRjMm9aQm5sLTZ4TFg2S0s3dVlFczMzeEQxLU9VZ1M0QUlnZVHSAVNBVV95cUxNZHlBaXZhYmVaR0NCZFB5dGNESHV4Q19QVDNHMkRtMGFWOUhNcG5oNE5GSUNlejc0WW80blBXTnJXTm9ac2ZCMl9MdjRpVUNhQUxQcw?oc=5",
-          "published": "2026-09-22T02:20:08+00:00"
-        },
-        {
-          "source": "매일경제 마켓",
-          "title": "[단독] 韓, 미국에 원전 8기 건설 …'한국형' 2기는 웨스팅에 로열티낼듯 - 매일경제 마켓",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE16OGJJaVJiS0hsOTRNYXZpWnNFNHlTdWJqSDJWRmNtcVl6MmZMMHFaQVBuYnNEWW5RTE15SzZkSVFpRFh4V1k5RHkxSmdIRXBwbGc?oc=5",
-          "published": "2026-09-22T08:45:33+00:00"
+          "source": "dt.co.kr",
+          "title": "백악관 “韓 대미투자에 알래스카 540억달러 포함”… 원전 8기·텍사스 발전시설도 - dt.co.kr",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1QM0VWc3NxSTY0Y3ZCcVVFRzVXamFIWTl2THpRM2tuMVE2R2ppalpBVUhsVFoySGlSY2MwUXFKVTh1T2ZrWFVFdGkyS1hEZw?oc=5",
+          "published": "2026-09-30T17:23:28+00:00"
         }
       ]
     },
@@ -638,47 +626,23 @@
     },
     "alaska_lng": {
       "facts": [
-        "alaska_reported_amount_usd_b:54",
+        "alaska_reported_amount_usd_b:200",
         "stage:발표예정"
       ],
       "slots": {
-        "alaska_lng|stage:발표예정": "stage:발표예정",
-        "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:54"
+        "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:200",
+        "alaska_lng|stage:발표예정": "stage:발표예정"
       },
       "initialized_at": "2026-09-29T23:10:16.076895+00:00",
-      "updated_at": "2026-09-30T00:04:13.250162+00:00",
-      "last_title": "[종합] 트럼프, 韓 540억달러 알래스카 LNG 투자 발표 예고 - 뉴스핌",
-      "last_source": "뉴스핌 · amount-role-unconfirmed",
+      "updated_at": "2026-09-30T20:23:15.214474+00:00",
+      "last_title": "백악관 \"트럼프, 韓 2000억 달러 대미 투자 곧 공개…알래스카 LNG 포함\" - 뉴스핌",
+      "last_source": "뉴스핌",
       "evidence": [
         {
-          "source": "연합뉴스",
-          "title": "\"트럼프, 30일 알래스카 LNG사업에 韓540억불 투자 발표 예상\"(종합) - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1UTXVkR3B3c0haWmptVEdDcG5UR3BGWi1KSVpod0lKRWU3VnRSRS1ZaVlnMVJNemYwRlJvQVUweUJ4ZGtzMm1ueUhhQkpZRkRmS1FFcVkwQmE2VEowcnJWWtIBYEFVX3lxTE1UTXVkR3B3c0haWmptVEdDcG5UR3BGWi1KSVpod0lKRWU3VnRSRS1ZaVlnMVJNemYwRlJvQVUweUJ4ZGtzMm1ueUhhQkpZRkRmS1FFcVkwQmE2VEowcnJWWg?oc=5",
-          "published": "2026-09-29T22:28:02+00:00"
-        },
-        {
-          "source": "연합뉴스",
-          "title": "\"트럼프, 이르면 30일 알래스카 LNG사업에 韓투자 발표 가능성\" - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9LVGc1M3ZBZzJCSllsWjVTb1FsZVJEeU5nTnAxMkVKWXJDaHJ1MWVab0thYzZtX0ZzemhjVFZOV09OUXlVTC1QQWJoNXliNmYyWU9CbFdSejNZY1nSAWBBVV95cUxNZl9fdXpBVWEwYUNqWlAzeXVSNElnQlE3OUJZZVk2Wmt4NGh5cEV4dzhnaFQxMnBNVlVKdURZX2FYblVKVUF0aHFpdlJuWkY0UF9qNUx0aHNkNkJ2OHg5MHY?oc=5",
-          "published": "2026-09-29T21:31:37+00:00"
-        },
-        {
-          "source": "연합뉴스TV",
-          "title": "[속보] \"트럼프, 알래스카 LNG 사업에 韓540억불 투자 발표 가능성\" - 연합뉴스TV",
-          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE8zVkczeWRyRmRFeXJOc3NabzNCVjNjc2x4Z1dVNUY4RlhlR0pFemVtajF3MG9NS2NKRTdvdHFsbzZDd280QjE0ZkpuU1dWUHFfcnFjYnc1a1hQWVFrYVJkR3RFb0EzWGs?oc=5",
-          "published": "2026-09-29T21:21:00+00:00"
-        },
-        {
-          "source": "연합뉴스",
-          "title": "[속보] \"트럼프, 알래스카 LNG 사업에 韓540억불 투자 발표 가능성\" - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBwNF9CR05PT2dNbDcxZjBfdEhXdjVLVS1nZFlGdEZMcFRGaXp1Y0JTeVYxSFRWSndUM2VidDZDZHRtVjdpa3V0cHFfNWstTzl5cEU3UUpNdU4tdV9Ya0FkddIBYEFVX3lxTFBwNF9CR05PT2dNbDcxZjBfdEhXdjVLVS1nZFlGdEZMcFRGaXp1Y0JTeVYxSFRWSndUM2VidDZDZHRtVjdpa3V0cHFfNWstTzl5cEU3UUpNdU4tdV9Ya0FkdQ?oc=5",
-          "published": "2026-09-29T21:15:18+00:00"
-        },
-        {
-          "source": "머니투데이",
-          "title": "[속보]\"트럼프, 알래스카 LNG 사업에 韓 540억불 투자 발표 가능성\" - 머니투데이 - 머니투데이",
-          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE54MW0ybVdjaU5zSEp1YzBJOEV1OHVNa3RscUhtQ21RdmtWNzB0TzRKeWltVnBjakstTWJjR0RpaHY2QUJVaE92M0FFRDR1OWh6blJ4ckw2ZHVoVXp1bkU1T0xQUlNaUkJ30gFuQVVfeXFMUEJ6b1IyY3lZQ0xLSFBNVHZpaDJ5NXZWenJYQzhRZUhCdTRmUHpnNmtJOC1tdThtYkctZUJ1Nzc1WFZHR2JSNXZpdGJOMG9vRXFfU0dEX3Q1MjZ6TlhTVzJzclg0LS0zRkpPUVUxUnc?oc=5",
-          "published": "2026-09-29T21:19:57+00:00"
+          "source": "뉴스핌",
+          "title": "백악관 \"트럼프, 韓 2000억 달러 대미 투자 곧 공개…알래스카 LNG 포함\" - 뉴스핌",
+          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5aNHpUMVZNcE9qRHkxUzYxRjVfcWlsMDJESTRsUXVGWnNhM3JIYU5jM1JZaHpNY3U0VXZMSWtydlBmQ2VkRUM1R25GM0JEUXdrcG8tOTJ5cng2bTlC?oc=5",
+          "published": "2026-09-30T17:15:00+00:00"
         }
       ]
     }
