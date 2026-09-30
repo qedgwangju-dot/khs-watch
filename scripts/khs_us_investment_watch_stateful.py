@@ -1072,6 +1072,23 @@ def _apply_state(family: str, evidence_row: dict, facts: set[str], evidence_map:
         bucket["evidence"] = refs
     return changed
 
+def _source_quality(row: dict) -> int:
+    blob = _norm(f"{row.get('source', '')} {row.get('link', '')}")
+    top = [
+        "reuters", "bloomberg", "연합뉴스", "뉴스1", "뉴시스", "mbc",
+        "산업통상", "정책브리핑", "white house", "백악관",
+    ]
+    solid = [
+        "한국경제", "머니투데이", "한겨레", "서울경제", "매일경제",
+        "한국일보", "조선비즈", "전자신문", "뉴스핌", "ytn", "동아일보",
+    ]
+    if any(token in blob for token in top):
+        return 2
+    if any(token in blob for token in solid):
+        return 1
+    return 0
+
+
 def _pick_evidence_row(changed: set[str], evidence_map: dict[str, list[dict]], fallback: list[dict]) -> dict:
     candidates: list[dict] = []
     seen = set()
@@ -1087,6 +1104,7 @@ def _pick_evidence_row(changed: set[str], evidence_map: dict[str, list[dict]], f
     candidates.sort(
         key=lambda r: (
             1 if _is_official(r) else 0,
+            _source_quality(r),
             _published_key(r),
         ),
         reverse=True,
