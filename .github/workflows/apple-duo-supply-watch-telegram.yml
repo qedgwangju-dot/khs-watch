@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/apple-duo-supply-watch-telegram.yml"
       - "scripts/apple_duo_supply_watch.py"
+      - "scripts/test_apple_duo_supply_watch.py"
       - "scripts/apple_duo_panel_leading_watch.py"
       - "scripts/apple_duo_demand_competition_watch.py"
       - "scripts/test_apple_duo_demand_competition_watch.py"
@@ -51,6 +52,8 @@ jobs:
       - name: Validate watcher
         run: |
           python -m py_compile scripts/apple_duo_supply_watch.py
+          python -m py_compile scripts/test_apple_duo_supply_watch.py
+          python scripts/test_apple_duo_supply_watch.py
           python -m py_compile scripts/apple_duo_panel_leading_watch.py
           python -m py_compile scripts/apple_duo_demand_competition_watch.py
           python -m py_compile scripts/test_apple_duo_demand_competition_watch.py
