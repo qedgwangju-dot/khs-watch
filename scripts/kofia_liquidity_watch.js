@@ -84,6 +84,20 @@ function assertRange(label, rawMillionWon, minTrillion, maxTrillion) {
   }
 }
 
+function criticalDatesAligned(dates) {
+  const required = ['deposit', 'mmf', 'cma', 'credit'];
+  const vals = required.map(k => String((dates || {})[k] || ''));
+  return vals.every(v => /^\d{8}$/.test(v)) && new Set(vals).size === 1;
+}
+
+// Production guard self-test: a mixed-date snapshot must never be considered aligned.
+if (
+  !criticalDatesAligned({ deposit: '20260929', mmf: '20260929', cma: '20260929', credit: '20260929' }) ||
+  criticalDatesAligned({ deposit: '20260929', mmf: '20260928', cma: '20260929', credit: '20260929' })
+) {
+  throw new Error('critical date-alignment guard self-test failed');
+}
+
 (async () => {
   ensureDirs();
   const exe = ['/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium','/usr/bin/chromium-browser'].find(p => fs.existsSync(p));
@@ -234,6 +248,8 @@ function assertRange(label, rawMillionWon, minTrillion, maxTrillion) {
       : '신용융자 5D 감소 → 대기자금 증가와 레버리지 확대는 분리';
 
   const dates = Object.fromEntries(Object.entries(metrics).slice(0,4).map(([k,v]) => [k, v.date]));
+  const alignmentReady = criticalDatesAligned(dates);
+  const snapshotDate = alignmentReady ? dates.deposit : null;
   const sameDatesAsState = priorState && JSON.stringify(priorState.dates || {}) === JSON.stringify(dates);
   const eventLabel = !priorState ? '초기 기준 확정' : sameDatesAsState ? '동일 기준일 수정치' : '신규 공식값';
   const signal = strongMove ? '예탁금↑ + MMF↓ 동시 신호 강함' : big1d ? '당일 큰 변동 감지' : '공식값 갱신';
@@ -251,6 +267,7 @@ function assertRange(label, rawMillionWon, minTrillion, maxTrillion) {
   const message = [
     `📊 <b>[국내 증시 대기자금 추적 | ${esc(eventLabel)}]</b>`,
     `KOFIA FreeSIS 공식 원자료 직접 조회`,
+    `• 핵심 4개 지표 기준일 동기화: <b>${snapshotDate ? fmtDate(snapshotDate) : '미완료'}</b>`,
     ``,
     `<b>무엇이 달라졌나</b>`,
     `• 투자자예탁금 <b>${fmtTrillion(metrics.deposit.value)}</b> (${fmtDate(metrics.deposit.date)}) | 1D ${fmtDelta(metrics.deposit.d1)} | 5D ${fmtDelta(metrics.deposit.d5)}`,
@@ -266,8 +283,9 @@ function assertRange(label, rawMillionWon, minTrillion, maxTrillion) {
     ``,
     `<b>검증</b>`,
     `• 동일 KOFIA 공식 원천·백만원 단위 원값으로 계산`,
+    `• 투자자예탁금·MMF·CMA·신용융자 기준일이 모두 같은 날일 때만 종합 알림 전송`,
     `• MMF 1D는 공식 전일대비증감과 재계산값 일치 확인`,
-    `• 신규 기준일 또는 동일 기준일 수정치가 있을 때만 재알림`,
+    `• 신규 동기화 기준일 또는 동일 기준일 수정치가 있을 때만 재알림`,
   ].join('\n');
 
   const status = [
@@ -281,16 +299,32 @@ function assertRange(label, rawMillionWon, minTrillion, maxTrillion) {
     `- fingerprint ${fp}`,
     `- prior fingerprint ${priorState ? priorState.fingerprint : 'none'}`,
     `- changed ${changed}`,
+    `- alignment_selftest true`,
+    `- alignment_ready ${alignmentReady}`,
+    `- snapshot_date ${snapshotDate || 'none'}`,
+    `- critical_dates deposit=${dates.deposit} mmf=${dates.mmf} cma=${dates.cma} credit=${dates.credit}`,
     `- force_send ${forceSend}`,
     `- signal ${signal}`,
     `- source https://freesis.kofia.or.kr/stat/main.do`,
   ].join('\n');
   fs.writeFileSync(STATUS_FILE, status + '\n', 'utf8');
 
+  // Fail closed on mixed reference dates. FORCE_SEND can bypass duplicate suppression,
+  // but never this data-quality gate.
+  if (!alignmentReady) {
+    console.log(
+      `kofia_liquidity_alert_ready=false alignment_pending=true ` +
+      `deposit=${dates.deposit} mmf=${dates.mmf} cma=${dates.cma} credit=${dates.credit}`
+    );
+    return;
+  }
+
   if (changed || forceSend) {
     fs.writeFileSync(ALERT_FILE, message + '\n', 'utf8');
     const nextState = {
       fingerprint: fp,
+      snapshot_date: snapshotDate,
+      alignment_ready: true,
       dates,
       values: fpPayload,
       last_event: eventLabel,
@@ -298,9 +332,9 @@ function assertRange(label, rawMillionWon, minTrillion, maxTrillion) {
       source_url: 'https://freesis.kofia.or.kr/stat/main.do',
     };
     fs.writeFileSync(PENDING_FILE, JSON.stringify(nextState, null, 2) + '\n', 'utf8');
-    console.log(`kofia_liquidity_alert_ready=true event=${eventLabel} fingerprint=${fp}`);
+    console.log(`kofia_liquidity_alert_ready=true event=${eventLabel} snapshot_date=${snapshotDate} fingerprint=${fp}`);
   } else {
-    console.log(`kofia_liquidity_alert_ready=false unchanged=true fingerprint=${fp}`);
+    console.log(`kofia_liquidity_alert_ready=false unchanged=true snapshot_date=${snapshotDate} fingerprint=${fp}`);
   }
 })().catch(err => {
   ensureDirs();
