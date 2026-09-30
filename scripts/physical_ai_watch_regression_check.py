@@ -648,21 +648,23 @@ assert c.endswith("아틀라스 액추에이터 양산·검증 지연"), c
 assert s >= 11, s
 
 
-# 20) Figure founder teasers: different X status ids for the same generic
-# preannouncement on the same publication day must collapse to one semantic key.
-figure_teaser_a = make(
+# 20) Figure founder teasers: the alert unit is the promised reveal,
+# not the X post id. Same-event Oct-1 follow-ups must dedupe, while a Sep-30
+# teaser promising an Oct-1 reveal remains separate from Oct-1 posts promising
+# an Oct-2 reveal.
+figure_teaser_prior_day = make(
     "Figure AI, AI 돌파구 공개 예고",
     "Major robotics AI breakthrough reveal tomorrow.",
     "Brett Adcock (Figure AI/X)",
 )
-figure_teaser_a.update({
+figure_teaser_prior_day.update({
     "x_status_id": "2105138104009199977",
     "direct_primary": True,
     "published": "2026-09-30T03:30:00+00:00",
 })
 figure_teaser_b = make(
     "Figure AI, AI·휴머노이드 핵심 업데이트",
-    "Robotics AI update in the morning. See you in the AM.",
+    "Robotics AI update tomorrow. See you in the AM.",
     "Brett Adcock (Figure AI/X)",
 )
 figure_teaser_b.update({
@@ -672,7 +674,7 @@ figure_teaser_b.update({
 })
 figure_teaser_c = make(
     "Figure AI, AI·휴머노이드 핵심 업데이트",
-    "AI robotics announcement in the morning.",
+    "AI robotics announcement tomorrow morning.",
     "Brett Adcock (Figure AI/X)",
 )
 figure_teaser_c.update({
@@ -680,16 +682,20 @@ figure_teaser_c.update({
     "direct_primary": True,
     "published": "2026-09-30T15:42:55.072000+00:00",
 })
-g1, s1, c1, k1 = classify(figure_teaser_a)
+g0, s0, c0, k0 = classify(figure_teaser_prior_day)
 g2, s2, c2, k2 = classify(figure_teaser_b)
 g3t, s3t, c3t, k3t = classify(figure_teaser_c)
-assert g1 == g2 == g3t == "figure_ai", (g1, g2, g3t, c1, c2, c3t)
-assert c1.endswith("공식 사전예고·공개 시간표"), c1
+assert g0 == g2 == g3t == "figure_ai", (g0, g2, g3t, c0, c2, c3t)
+assert c0.endswith("공식 사전예고·공개 시간표"), c0
 assert c2.endswith("공식 사전예고·공개 시간표"), c2
 assert c3t.endswith("공식 사전예고·공개 시간표"), c3t
-assert k1 == k2 == k3t, (
-    "cross-midnight Figure teaser follow-ups must share one promised-reveal key",
-    k1, k2, k3t,
+assert k2 == k3t, (
+    "same Oct-2 Figure reveal teasers must dedupe across post ids",
+    k2, k3t,
+)
+assert k0 != k2, (
+    "different promised reveal days must remain separate events",
+    k0, k2,
 )
 
 figure_actual = make(
@@ -699,7 +705,7 @@ figure_actual = make(
 )
 g3, s3, c3, k3 = classify(figure_actual)
 assert g3 == "figure_ai", (g3, s3, c3)
-assert k3 != k1, ("actual reveal must remain independent from teaser", k3, k1)
+assert k3 != k2, ("actual reveal must remain independent from teaser", k3, k2)
 
 # 21) Korean display must not leave a duplicated English tail after Pollen Robotics.
 rendered_pollen = base.esc_text("Pollen Robotics의 실제 생산 목표")
