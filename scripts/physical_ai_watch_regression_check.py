@@ -457,6 +457,15 @@ assert g == "solid_state_material", (g, s, c)
 assert s < 11, ("Li2S Oct commercial-production plan baseline must stay silent", s, c)
 
 isu_plan_rewrite = make(
+    "이수스페셜티케미컬, 10월 황화리튬 상업생산 돌입…전고체 배터리 '원가 장벽' 깬다",
+    "지난 6월 공장을 준공한 뒤 시운전과 품질 안정화 작업을 진행 중이며 10월 넷째 주 공장 가동식을 열고 본격적인 상업생산에 들어갈 예정이다. 초기 생산능력은 연간 150톤이며 최대 500톤까지 확대할 계획이다.",
+    "리드경제",
+)
+g, s, c, k = classify(isu_plan_rewrite)
+assert g == "solid_state_material", (g, s, c)
+assert s < 11, ("future-tense Li2S 'commercial production' rewrite must stay silent", s, c)
+
+isu_plan_rewrite = make(
     "이수스페셜티케미컬, 10월 황화리튬 상업생산 돌입…전고체 배터리 원가 장벽 깬다",
     "10월 넷째 주 공장 가동식을 열고 본격적인 상업생산에 들어갈 예정이다. 연산 150톤 생산설비를 갖췄고 최대 500톤까지 확장 가능하다.",
     "리드경제",
