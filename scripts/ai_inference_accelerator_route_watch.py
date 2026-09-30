@@ -273,7 +273,13 @@ def official_page_snapshots() -> dict[str, dict]:
         r"tokens? per second|tokens?/s|service[_ -]?tier|batch(?: size)?|pricing|price|capacity|inference stack)"
     )
     for name, url in OFFICIAL_PAGES.items():
-        raw = fetch_bytes(url).decode("utf-8", "ignore")
+        try:
+            raw = fetch_bytes(url).decode("utf-8", "ignore")
+        except Exception as exc:
+            # OpenAI/Cerebras pages can sometimes block automated fetches.
+            # Keep monitoring the remaining official pages and news sources.
+            print(f"ai_inference_route_official_page_skip={name}: {type(exc).__name__}: {exc}")
+            continue
         text = strip_html(raw)
         pieces = []
         for m in keyword.finditer(text):
@@ -289,7 +295,6 @@ def official_page_snapshots() -> dict[str, dict]:
             "material": material_text[:2200],
         }
     return out
-
 
 def load_state() -> dict:
     if not STATE_PATH.exists():
