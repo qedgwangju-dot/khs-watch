@@ -84,12 +84,22 @@ NEWS_QUERIES = [
     '(OpenAI OR Anthropic OR Google OR Meta) safety case procurement insurance certification requirement',
     '(OpenAI OR Anthropic OR Google OR Meta) safety case adopted implementation frontier training',
     'government procurement insurance "Safety Case" frontier AI training',
+    '"Joint Commitment on Frontier Responsibilities" AI',
+    '"White House Accord on Super Intelligence" AI',
+    '"Frontier Responsibilities" Google Anthropic Meta OpenAI xAI NVIDIA',
+    '"morally binding" AI accord signatory auditor board committee',
+    '"AI accord" signatory added withdrew external auditor board oversight',
+    '"frontier AI" common standards best practices external audit board committee',
+    '"AI safety" independent board committee external audit requirement',
+    '"AI accord" codified law regulation procurement insurance certification',
+    '"super intelligence" accord law regulation audit procurement insurance',
 ]
 
 OFFICIAL_SOURCE_HINTS = (
     "openai", "nipa", "과학기술정보통신부", "msit", "kisa", "한국인터넷진흥원",
     "nists", "nist", "cisa", "gov.uk", "aisi", "european commission",
     "europa.eu", "oecd", "white house", "commerce department", "ntia",
+    "associated press", "ap news",
     "naver", "lg cns", "s2w", "샌즈랩", "palo alto", "unit 42",
     "crowdstrike", "ibm", "nvidia", "microsoft", "openshell",
     "nemoclaw", "sentry", "sap", "canonical", "red hat",
@@ -101,6 +111,7 @@ TRUSTED_SOURCE_HINTS = (
     "매일경제", "한국경제", "머니투데이", "이데일리", "조선비즈",
     "서울경제", "디지털데일리", "디지털타임스", "the verge",
     "techcrunch", "wired", "securityweek", "palo alto", "unit 42",
+    "associated press", "ap news", "guardian", "cbs news", "wall street journal", "wsj",
     "crowdstrike", "ibm", "nvidia", "microsoft",
 )
 
@@ -108,7 +119,10 @@ AI_TOPIC_TERMS = (
     "ai safety", "artificial intelligence", "frontier model", "frontier ai",
     "recursive self-improvement", "rsi", "cybersecurity ai", "ai cybersecurity",
     "ai security", "foundation model", "preparedness framework", "model evaluation",
+    "joint commitment on frontier responsibilities", "white house accord on super intelligence",
+    "frontier responsibilities", "super intelligence", "superintelligence",
     "인공지능", "ai", "사이버보안", "보안 ai", "파운데이션 모델", "안전연구소",
+    "프런티어 책임", "공동 서약", "공동 합의", "감독위원회",
 )
 
 ACTION_TERMS = (
@@ -136,6 +150,9 @@ ACTION_TERMS = (
     "safety case", "training approval gate", "senior leadership veto",
     "independent review", "independent audit", "external evaluator",
     "external evaluation", "governance gate", "fail-closed", "fail closed",
+    "joint commitment", "accord", "signatory", "signatories", "oversight board",
+    "board committee", "independent board", "self-police", "self-regulation",
+    "codify", "codified", "best practices", "common standards",
     # Korean.
     "표준", "의무", "규제", "법안", "법률", "사고보고", "감사", "인증",
     "평가", "벤치마크", "프레임워크", "예산", "지원", "gpu", "선정",
@@ -147,6 +164,8 @@ ACTION_TERMS = (
     "제품 출시", "출시", "상시", "24시간", "보안관제", "자율형 보안", "컨소시엄", "참여사", "협력", "협약",
     "세이프티 케이스", "학습 승인", "학습 거부권", "독립 검토", "독립 감사",
     "외부 평가", "거버넌스 게이트", "조달 요건", "보험 요건",
+    "공동 서약", "공동 합의", "서명 기업", "서명자", "감독위원회",
+    "이사회 위원회", "독립 이사회", "공통 표준", "모범 사례", "성문화",
 )
 
 LOW_VALUE_SPEECH_TERMS = (
@@ -164,11 +183,43 @@ CONCRETE_ACTION_TERMS = (
     "safety case", "training approval gate", "senior leadership veto",
     "independent review", "independent audit", "external evaluator",
     "procurement requirement", "insurance requirement", "certification requirement",
+    "joint commitment", "accord", "signed", "signatory", "oversight board",
+    "board committee", "independent board", "common standards", "best practices",
+    "codified", "codify", "법제화", "성문화", "감독위원회", "이사회 위원회",
     "표준 제정", "공고", "선정", "계약", "수주", "조달", "입찰",
     "예산", "지원", "실증", "착수", "중간평가", "상용화",
 )
 
 CATEGORY_PATTERNS = [
+    ("프런티어 AI 공동 서약·서명기업 변화", (
+        "joint commitment on frontier responsibilities",
+        "white house accord on super intelligence",
+        "frontier responsibilities", "signatory", "signatories",
+        "signed accord", "morally binding", "공동 서약", "공동 합의",
+        "서명 기업", "서명자",
+    )),
+    ("공동 안전표준·모범사례", (
+        "common standards", "safety standards", "best practices",
+        "shared standards", "joint standards", "common framework",
+        "공통 표준", "공동 표준", "모범 사례",
+    )),
+    ("외부감사 규격·감사기관", (
+        "independent auditor", "external auditor", "external audit",
+        "third-party auditor", "auditor qualification", "audit frequency",
+        "audit scope", "auditor access", "감사기관", "외부 감사",
+        "감사 주기", "감사 범위", "감사 자격",
+    )),
+    ("독립 이사회·감독위원회", (
+        "oversight board", "board committee", "independent board",
+        "independent committee", "oversight committee", "10-person oversight",
+        "ten-member oversight", "감독위원회", "이사회 위원회", "독립 이사회",
+    )),
+    ("자율서약→법·조달·보험 성문화", (
+        "codified into law", "codify into law", "codified", "legislation",
+        "regulation", "procurement requirement", "insurance requirement",
+        "certification requirement", "법제화", "성문화", "조달 요건",
+        "보험 요건", "인증 요건",
+    )),
     ("Safety Case 실제 학습 승인 게이트", (
         "safety case", "training approval gate", "governance gate",
         "senior leadership veto", "training veto", "fail-closed", "fail closed",
@@ -263,7 +314,9 @@ CATEGORY_PATTERNS = [
 ]
 
 WATCH_ENTITIES = (
-    "openai", "anthropic", "google", "meta", "microsoft", "nvidia",
+    "openai", "anthropic", "google", "meta", "microsoft", "nvidia", "xai",
+    "white house", "trump", "joint commitment on frontier responsibilities",
+    "white house accord on super intelligence",
     "palo alto", "unit 42", "crowdstrike", "ibm", "openshell",
     "nemoclaw", "sentry", "sap", "canonical", "red hat",
     "naver", "네이버클라우드", "lg cns", "lg ai", "s2w", "샌즈랩",
@@ -457,6 +510,11 @@ def detect_category(text: str) -> str:
 def detect_entity(text: str) -> str:
     low = text.lower()
     mapping = (
+        ("백악관·프런티어 AI 공동서약", (
+            "joint commitment on frontier responsibilities",
+            "white house accord on super intelligence",
+            "morally binding", "oversight board", "super intelligence",
+        )),
         ("네이버클라우드", ("네이버클라우드", "naver cloud")),
         ("OpenAI", ("openai",)),
         ("NIPA", ("nipa", "정보통신산업진흥원")),
@@ -715,7 +773,17 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
-        if rep["category"] == "파트너→유료고객·운영전환":
+        if rep["category"] == "프런티어 AI 공동 서약·서명기업 변화":
+            lines.append("• <b>의미</b>: 자율 서약의 참여 범위가 넓어지거나 축소되는지, 특정 기업의 가입·탈퇴가 공동 안전기준의 사실상 적용 범위를 바꾸는지 확인")
+        elif rep["category"] == "공동 안전표준·모범사례":
+            lines.append("• <b>의미</b>: 선언적 원칙이 실제 공통 기술표준·평가항목·운영절차로 구체화되는 첫 전환점인지 확인")
+        elif rep["category"] == "외부감사 규격·감사기관":
+            lines.append("• <b>의미</b>: 감사기관 자격·접근권·주기·범위가 정해져 반복 감사시장과 실제 기업 준수비용으로 연결되는지 확인")
+        elif rep["category"] == "독립 이사회·감독위원회":
+            lines.append("• <b>의미</b>: 독립 감독기구가 실제 설치되고 감사결과·학습·배포 중단 권한을 행사하는지 확인")
+        elif rep["category"] == "자율서약→법·조달·보험 성문화":
+            lines.append("• <b>의미</b>: 자율 원칙이 법률·규정·연방조달·보험·인증 조건으로 바뀌어 강제 지출과 준수비용을 만드는지 확인")
+        elif rep["category"] == "파트너→유료고객·운영전환":
             lines.append("• <b>의미</b>: 단순 생태계 참여가 실제 상용 배포·본계약·유료고객으로 전환됐는지 확인")
         elif rep["category"] == "OpenShell 실사용·채택 지표":
             lines.append("• <b>의미</b>: 발표·GitHub 관심도가 아니라 실제 샌드박스 사용량·실패율·차단량·프로바이더 믹스로 기업 채택을 확인")
@@ -751,7 +819,7 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
         ]
         if links:
             lines.append("🔗 " + " · ".join(links))
-    lines += ["", "<b>다음 확인</b>: 파트너→유료고객 전환 · OpenShell 샌드박스/실패율/차단량 · Sentry 단독 SKU/가격 · Rubin 기본물량 제외 BlueField 증분 장착률/출하량 · OpenShell 기본내장/지원범위 · 하드웨어 격리 조달요건 · GPU/AI Enterprise 매출 연결"]
+    lines += ["", "<b>다음 확인</b>: 공동서약 서명기업 가입·탈퇴 · 첫 공동 안전표준·모범사례 · 외부감사기관 자격/접근권/주기/범위 · 독립 이사회·감독위원회 설치 · 법률·규정·연방조달·보험·인증 성문화 · Safety Case 실제 학습 승인 · 파트너→유료고객 전환 · OpenShell/Sentry/BlueField 실사용·수익화"]
     return title, "\n".join(lines)
 
 
