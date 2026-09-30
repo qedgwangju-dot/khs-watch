@@ -121,17 +121,20 @@ jobs:
               raise RuntimeError("Telegram alert is empty")
 
           def split_message(value, limit=3900):
-              chunks, current = [], ""
-              for line in value.splitlines():
-                  candidate = line if not current else current + "\n" + line
-                  if len(candidate) <= limit:
-                      current = candidate
-                  else:
-                      if current:
-                          chunks.append(current)
-                      current = line
-              if current:
-                  chunks.append(current)
+              marker = "<<<TELEGRAM_MESSAGE_BREAK>>>"
+              chunks = []
+              for segment in value.split(marker):
+                  current = ""
+                  for line in segment.strip().splitlines():
+                      candidate = line if not current else current + "\n" + line
+                      if len(candidate) <= limit:
+                          current = candidate
+                      else:
+                          if current:
+                              chunks.append(current)
+                          current = line
+                  if current:
+                      chunks.append(current)
               return chunks
 
           ids = []

@@ -166,6 +166,52 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         }
         self.assertTrue(w._is_bernstein_memory_cycle_item(item))
 
+    def test_nand_divergence_baseline_and_thresholds(self):
+        old = dict(w.NAND_DIVERGENCE_BASELINE)
+        self.assertEqual(old["enterprise_direction"], "up")
+        self.assertEqual(old["consumer_direction"], "weak")
+        self.assertEqual(w._nand_divergence_changes(old, dict(old)), [])
+        self.assertTrue(any("소비자 SSD/UFS 방향" in x for x in w._nand_divergence_changes(old, dict(old, consumer_direction="recovery"))))
+
+    def test_nand_divergence_extracts_official_4q26_structure(self):
+        item = {
+            "title": "4Q26 Memory Price Forecast",
+            "description": (
+                "Enterprise SSD surge 23-28% QoQ. Consumer segments see only minimal compensatory increases. "
+                "Overall NAND Flash up 15-20% QoQ. QLC enterprise SSD expands on KV cache offloading."
+            ),
+            "source": "TrendForce Research",
+            "link": "https://www.trendforce.com/research/download/RP260924PL",
+            "published_kst": "2026-09-24T09:00:00+09:00",
+        }
+        obs = w._extract_nand_divergence(item)
+        self.assertEqual(obs["enterprise_direction"], "up")
+        self.assertEqual(obs["consumer_direction"], "weak")
+        self.assertEqual(obs["enterprise_ssd_q4_min_pct"], 23.0)
+        self.assertTrue(obs["kv_cache_qlc"])
+
+    def test_legacy_dram_unverified_edgewater_is_not_promoted(self):
+        item = {
+            "title": "Edgewater says Samsung may extend LP4X support to 2028",
+            "description": "SK Hynix plans LP4 EOL in 2027; second-tier fulfillment 50%.",
+            "source": "Edgewater",
+            "link": "https://example.com/edgewater",
+            "published_kst": "2026-09-30T09:00:00+09:00",
+        }
+        self.assertIsNone(w._extract_legacy_dram_state(item))
+
+    def test_legacy_dram_official_confirmation_promotes(self):
+        item = {
+            "title": "Samsung LPDDR4X support extension",
+            "description": "Samsung LPDDR4X support extended through 2028.",
+            "source": "Samsung",
+            "link": "https://news.samsung.com/example",
+            "published_kst": "2026-10-01T09:00:00+09:00",
+        }
+        obs = w._extract_legacy_dram_state(item)
+        self.assertEqual(obs["samsung_lp4x_support_end_year"], 2028)
+        self.assertTrue(any("신규 확인" in x for x in w._legacy_dram_changes({}, obs)))
+
     def test_nand_wafer_contract_title_is_not_misclassified_as_dram_capa(self):
         self.assertEqual(w.classify("NAND Flash Wafer Contract Price Sep. 2026"), "NAND/eSSD")
         with patch.object(w, "_fetch", side_effect=RuntimeError("offline")):

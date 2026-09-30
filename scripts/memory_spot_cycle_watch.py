@@ -59,6 +59,22 @@ HBM_MARKET_PRICE_BASELINE = {
     "source_rank": 3,
     "as_of": "2026-09-29",
 }
+NAND_DIVERGENCE_TRACK_VERSION = 1
+NAND_DIVERGENCE_BASELINE = {
+    "enterprise_direction": "up",
+    "consumer_direction": "weak",
+    "enterprise_ssd_q4_min_pct": 23.0,
+    "enterprise_ssd_q4_max_pct": 28.0,
+    "overall_nand_q4_min_pct": 15.0,
+    "overall_nand_q4_max_pct": 20.0,
+    "kv_cache_qlc": True,
+    "source": "TrendForce",
+    "source_url": "https://www.trendforce.com/research/download/RP260924PL",
+    "secondary_source_url": "https://www.trendforce.com/presscenter/news/20260921-13246.html",
+    "source_rank": 3,
+    "as_of": "2026-09-24",
+}
+LEGACY_DRAM_TRACK_VERSION = 1
 BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION = 1
 BERNSTEIN_MEMORY_CYCLE_BASELINE = {
     "q3_2026_price_band": "mid-teens~20%",
@@ -99,6 +115,8 @@ QUERIES = [
     ("ko", 'HBM 2027 Blended ASP 121 8단 Gb당 10 20 트렌드포스'),
     ("ko", 'Bernstein DRAM NAND 3분기 20% 4분기 한 자릿수 공급부족 2027 2028 정상화 LTA'),
     ("ko", 'Bernstein 메모리 2028 정상화 2027 공급부족 장기계약 LTA 가격 상한'),
+    ("ko", 'LPDDR4X LP4X EOL 생산종료 지원 연장 2027 2028 삼성전자 SK하이닉스 마이크론'),
+    ("ko", 'DDR4 생산종료 EOL 증설 공급배정 2군 메모리 이행률 fulfillment 삼성 SK하이닉스 마이크론'),
     # DRAM physical capacity / wafer-start / new-fab cycle: do not miss supply expansion.
     ("ko", 'DRAM 생산능력 웨이퍼 투입량 월 생산량 증설 삼성전자 P4 SK하이닉스 M15X 마이크론'),
     ("ko", '어플라이드 머티어리얼즈 Citi TMT DRAM 생산능력 웨이퍼 160만 200만 40만'),
@@ -112,6 +130,8 @@ QUERIES = [
     ("en", 'TrendForce 2027 HBM blended ASP 121% 8-Hi 12-Hi premium 10 20'),
     ("en", 'Bernstein DRAM NAND Q3 mid-teens 20% Q4 high-single-digit shortage 2027 normalize 2028 LTA'),
     ("en", 'Bernstein memory 2028 normalization 2027 shortage long-term agreements cap price increases'),
+    ("en", 'LPDDR4X LP4X EOL end of life support extension 2027 2028 Samsung SK hynix Micron'),
+    ("en", 'DDR4 EOL capacity expansion supply allocation second-tier memory fulfillment 50% Samsung SK hynix Micron'),
     ("en", 'Applied Materials Citi TMT DRAM wafer starts capacity 1.6 million 2 million 400000'),
     ("en", 'DRAM wafer starts greenfield fab capacity expansion Samsung P4 SK hynix M15X Micron'),
     ("en", 'DRAM capacity 300000 400000 wafer starts per month Applied Materials'),
@@ -125,10 +145,12 @@ CHANGE_MARKERS = {
     "spot", "contract", "price", "asp", "shortage", "supply", "capacity", "capa",
     "inventory", "lta", "commitment", "allocation", "raise", "increase", "forecast",
     "outlook", "revised", "revision", "normalize", "normalization", "wafer", "wafer start", "wafer starts", "wspm",
+    "eol", "end of life", "end-of-life", "support extension", "fulfillment",
     "greenfield", "fab", "factory", "ramp", "ramp-up", "equipment investment",
     "현물", "고정가", "계약가", "가격", "부족", "공급", "재고", "증설", "인상",
     "상향", "전망", "확약", "배정", "수급", "웨이퍼", "생산능력", "투입량",
     "신규 팹", "그린필드", "램프업", "가동", "장비투자", "설비투자",
+    "생산종료", "지원 연장", "이행률",
 }
 HIGH_SIGNAL = {
     "bofa", "bank of america", "bernstein", "trendforce", "dram exchange", "dramexchange", "omdia",
@@ -1112,6 +1134,158 @@ def _bernstein_memory_cycle_changes(old: dict, new: dict) -> list[str]:
     return changes
 
 
+
+def _merge_typed_state(old: dict, obs: dict) -> dict:
+    if old.get("as_of") and obs.get("as_of") and obs["as_of"] < old["as_of"]:
+        return dict(old)
+    merged = dict(old or {})
+    old_rank = int(merged.get("source_rank") or 0)
+    new_rank = int(obs.get("source_rank") or 0)
+    for key, value in obs.items():
+        if value in (None, ""):
+            continue
+        if key in ("source", "source_url", "secondary_source_url", "as_of", "source_rank") and old_rank > new_rank:
+            continue
+        merged[key] = value
+    return merged
+
+
+def _extract_nand_divergence(item: dict) -> dict | None:
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    if not (("enterprise ssd" in low or "essd" in low) and any(k in low for k in ("consumer", "client", "ufs", "mobile", "소비자", "클라이언트", "모바일"))):
+        return None
+    obs: dict = {}
+    if any(k in low for k in ("enterprise ssd surge", "enterprise ssd demand", "orders", "upward trend", "raise", "increase", "stronger", "상향", "증가", "강세")):
+        obs["enterprise_direction"] = "up"
+    elif any(k in low for k in ("enterprise ssd slowdown", "enterprise ssd decline", "기업용 ssd 둔화", "기업용 ssd 감소")):
+        obs["enterprise_direction"] = "down"
+    if any(k in low for k in ("consumer segments see only minimal", "consumer weakness", "consumer demand weak", "client ssd slowdown", "ufs slowdown", "purchases slowed", "demand destruction", "소비자 약세", "구매 둔화", "수요 파괴")):
+        obs["consumer_direction"] = "weak"
+    if any(k in low for k in ("consumer recovery", "client ssd recovery", "ufs recovery", "소비자 회복", "구매 회복")):
+        obs["consumer_direction"] = "recovery"
+    essd = _pct_range(text, (
+        r"Enterprise\s+SSD[^0-9%]{0,180}(\d{1,3})\s*[-~–—]\s*(\d{1,3})\s*%",
+        r"enterprise\s+ssd[^0-9%]{0,180}(\d{1,3})\s*(?:to|~|[-–—])\s*(\d{1,3})\s*%",
+    ))
+    nand = _pct_range(text, (
+        r"(?:Overall\s+)?NAND\s+Flash[^0-9%]{0,180}(\d{1,3})\s*[-~–—]\s*(\d{1,3})\s*%",
+        r"overall\s+nand[^0-9%]{0,180}(\d{1,3})\s*(?:to|~|[-–—])\s*(\d{1,3})\s*%",
+    ))
+    if essd:
+        obs["enterprise_ssd_q4_min_pct"] = float(essd[0])
+        obs["enterprise_ssd_q4_max_pct"] = float(essd[1])
+    if nand:
+        obs["overall_nand_q4_min_pct"] = float(nand[0])
+        obs["overall_nand_q4_max_pct"] = float(nand[1])
+    if "kv cache" in low and ("qlc" in low or "enterprise ssd" in low):
+        obs["kv_cache_qlc"] = True
+    if not obs:
+        return None
+    obs.update({
+        "source": item.get("source") or "출처 미표시",
+        "source_url": item.get("link") or "",
+        "source_rank": 3 if "trendforce" in (item.get("source") or "").lower() else 2,
+        "as_of": (item.get("published_kst") or "")[:10],
+    })
+    return obs
+
+
+def _nand_divergence_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+    for key, label in (("enterprise_direction", "기업용 eSSD 방향"), ("consumer_direction", "소비자 SSD/UFS 방향")):
+        a, b = old.get(key), new.get(key)
+        if a and b and a != b:
+            changes.append(f"{label}: {a}→{b}")
+    for key, label in (
+        ("enterprise_ssd_q4_min_pct", "기업용 SSD 가격 하단"),
+        ("enterprise_ssd_q4_max_pct", "기업용 SSD 가격 상단"),
+        ("overall_nand_q4_min_pct", "전체 NAND 가격 하단"),
+        ("overall_nand_q4_max_pct", "전체 NAND 가격 상단"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if a is not None and b is not None and abs(float(b) - float(a)) >= 5:
+            changes.append(f"{label}: {float(a):.0f}%→{float(b):.0f}%")
+    if old.get("kv_cache_qlc") != new.get("kv_cache_qlc") and new.get("kv_cache_qlc") is not None:
+        changes.append("KV 캐시→QLC 기업용 SSD 연결 상태 변화")
+    return changes
+
+
+def _legacy_source_rank(item: dict) -> int:
+    source = (item.get("source") or "").lower()
+    host = urllib.parse.urlparse(item.get("link") or "").netloc.lower()
+    if any(d in host for d in ("samsung.com", "skhynix.com", "micron.com")):
+        return 3
+    if any(k in source for k in ("reuters", "bloomberg", "trendforce", "digitimes", "citi", "j.p. morgan", "jpmorgan")):
+        return 2
+    return 1
+
+
+def _extract_legacy_dram_state(item: dict) -> dict | None:
+    rank = _legacy_source_rank(item)
+    if rank < 2:
+        return None
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    obs: dict = {}
+    if ("samsung" in low or "삼성" in text) and any(k in low for k in ("lp4x", "lpddr4x")):
+        m = re.search(r"(?:support|지원)[^.]{0,100}?(?:through|until|to|까지)\s*(20\d{2})", low, re.I)
+        if not m:
+            m = re.search(r"(20\d{2})[^.]{0,100}?(?:support|지원)[^.]{0,60}?(?:extend|연장)", low, re.I)
+        if m:
+            obs["samsung_lp4x_support_end_year"] = int(m.group(1))
+    if ("sk hynix" in low or "sk하이닉스" in text) and any(k in low for k in ("lp4", "lpddr4")):
+        m = re.search(r"(?:eol|end[- ]of[- ]life|생산종료)[^.]{0,100}?(20\d{2})", low, re.I)
+        if not m:
+            m = re.search(r"(20\d{2})[^.]{0,100}?(?:eol|end[- ]of[- ]life|생산종료)", low, re.I)
+        if m:
+            obs["skhynix_lp4_eol_year"] = int(m.group(1))
+    if any(k in low for k in ("second-tier", "second tier", "2군", "tier-2")) and any(k in low for k in ("fulfillment", "allocation", "이행률", "공급률")):
+        m = re.search(r"(?:fulfillment|allocation|이행률|공급률)[^%]{0,100}?(\d{1,3}(?:\.\d+)?)\s*%", low, re.I)
+        if m:
+            obs["second_tier_fulfillment_pct"] = float(m.group(1))
+    if "ddr4" in low and any(k in low for k in ("capacity expansion", "expand capacity", "증설")):
+        vendors = []
+        for vendor, aliases in (
+            ("samsung", ("samsung", "삼성")),
+            ("skhynix", ("sk hynix", "sk하이닉스")),
+            ("micron", ("micron", "마이크론")),
+            ("cxmt", ("cxmt", "창신메모리")),
+        ):
+            if any(a in low for a in aliases):
+                vendors.append(vendor)
+        if vendors:
+            obs["ddr4_expansion_vendors"] = ",".join(sorted(set(vendors)))
+    if not obs:
+        return None
+    obs.update({
+        "source": item.get("source") or "출처 미표시",
+        "source_url": item.get("link") or "",
+        "source_rank": rank,
+        "as_of": (item.get("published_kst") or "")[:10],
+    })
+    return obs
+
+
+def _legacy_dram_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+    for key, label in (
+        ("samsung_lp4x_support_end_year", "삼성 LPDDR4X 지원 종료연도"),
+        ("skhynix_lp4_eol_year", "SK하이닉스 LPDDR4 생산종료 연도"),
+        ("second_tier_fulfillment_pct", "2군 메모리 공급 이행률"),
+        ("ddr4_expansion_vendors", "DDR4 증설 공급사"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if b is None or b == "":
+            continue
+        if a is None:
+            changes.append(f"{label}: {b} 신규 확인")
+        elif a != b:
+            if key == "second_tier_fulfillment_pct" and abs(float(b) - float(a)) < 10:
+                continue
+            changes.append(f"{label}: {a}→{b}")
+    return changes
+
 def _prepare_report_item(item: dict) -> dict | None:
     label = classify(item["title"])
     raw_title = compact_title(item["title"], item.get("source", ""))
@@ -1157,6 +1331,15 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         market_state = _merge_hbm_market_pricing(market_state, HBM_MARKET_PRICE_BASELINE)
         state["hbm_market_pricing_track_version"] = HBM_MARKET_PRICE_TRACK_VERSION
 
+    divergence_state = dict(state.get("nand_divergence") or {})
+    if int(state.get("nand_divergence_track_version") or 0) < NAND_DIVERGENCE_TRACK_VERSION:
+        divergence_state = _merge_typed_state(NAND_DIVERGENCE_BASELINE, divergence_state)
+        state["nand_divergence_track_version"] = NAND_DIVERGENCE_TRACK_VERSION
+
+    legacy_state = dict(state.get("legacy_dram") or {})
+    if int(state.get("legacy_dram_track_version") or 0) < LEGACY_DRAM_TRACK_VERSION:
+        state["legacy_dram_track_version"] = LEGACY_DRAM_TRACK_VERSION
+
     bernstein_state = dict(state.get("bernstein_memory_cycle") or {})
     if int(state.get("bernstein_memory_cycle_track_version") or 0) < BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION:
         bernstein_state = _merge_bernstein_memory_cycle(bernstein_state, BERNSTEIN_MEMORY_CYCLE_BASELINE)
@@ -1196,6 +1379,28 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             bernstein_changes.extend(changes)
             bernstein_source_url = bernstein_state.get("source_url") or obs.get("source_url") or bernstein_source_url
 
+    divergence_changes: list[str] = []
+    divergence_source_url = ""
+    legacy_changes: list[str] = []
+    legacy_source_url = ""
+    for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
+        obs = _extract_nand_divergence(item)
+        if obs:
+            merged = _merge_typed_state(divergence_state, obs)
+            changes = _nand_divergence_changes(divergence_state, merged)
+            divergence_state = merged
+            if changes:
+                divergence_changes.extend(changes)
+                divergence_source_url = divergence_state.get("source_url") or divergence_source_url
+        legacy_obs = _extract_legacy_dram_state(item)
+        if legacy_obs:
+            merged_legacy = _merge_typed_state(legacy_state, legacy_obs)
+            changes = _legacy_dram_changes(legacy_state, merged_legacy)
+            legacy_state = merged_legacy
+            if changes:
+                legacy_changes.extend(changes)
+                legacy_source_url = legacy_state.get("source_url") or legacy_source_url
+
     seen_titles = {
         _normalize_title(str(meta.get("title") or ""))
         for meta in seen.values()
@@ -1212,6 +1417,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         # Bernstein price-cycle stories are routed through typed state. A new
         # headline alone must not alert unless a tracked price/year/LTA state changes.
         if _is_bernstein_memory_cycle_item(x):
+            continue
+        if _extract_nand_divergence(x) or _extract_legacy_dram_state(x):
             continue
         new_items.append(x)
     force_notify = os.getenv("FORCE_NOTIFY", "").strip().lower() in {"1", "true", "yes"}
@@ -1246,6 +1453,10 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "hbm_market_pricing": market_state,
         "bernstein_memory_cycle_track_version": BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION,
         "bernstein_memory_cycle": bernstein_state,
+        "nand_divergence_track_version": NAND_DIVERGENCE_TRACK_VERSION,
+        "nand_divergence": divergence_state,
+        "legacy_dram_track_version": LEGACY_DRAM_TRACK_VERSION,
+        "legacy_dram": legacy_state,
     }
     for key in (
         "last_successful_delivery_kst",
@@ -1267,6 +1478,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- Telegram 대상 신규: {len(prepared_items)}건",
         f"- HBM 시장 가격 숫자 변화: {len(market_changes)}건",
         f"- Bernstein 가격 사이클 상태 변화: {len(bernstein_changes)}건",
+        f"- NAND 소비자↔기업용 eSSD 양극화 변화: {len(divergence_changes)}건",
+        f"- 구세대 DRAM EOL·배정 변화: {len(legacy_changes)}건",
         f"- 원천 오류: {len(errors)}건",
     ]
     if errors:
@@ -1275,11 +1488,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not prepared_items and not market_changes and not bernstein_changes:
+    if not prepared_items and not market_changes and not bernstein_changes and not divergence_changes and not legacy_changes:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    typed_changes = len(market_changes) + len(bernstein_changes)
+    typed_changes = len(market_changes) + len(bernstein_changes) + len(divergence_changes) + len(legacy_changes)
     total_visible = typed_changes + len(prepared_items)
     lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
     if market_changes:
@@ -1287,6 +1500,12 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
     elif bernstein_changes:
         one = bernstein_changes[0]
+        lines.append("한눈에: <b>" + html.escape(one) + "</b>")
+    elif divergence_changes:
+        one = divergence_changes[0]
+        lines.append("한눈에: <b>" + html.escape(one) + "</b>")
+    elif legacy_changes:
+        one = legacy_changes[0]
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
     elif prepared_items:
         p0 = prepared_items[0]
@@ -1332,6 +1551,30 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         lines.append("  ※ 기사 제목이 아니라 위 기준 숫자·연도·LTA 상태가 실제로 바뀔 때만 알림")
         if bernstein_source_url:
             lines.append('  <a href="' + html.escape(bernstein_source_url, quote=True) + '">근거 기사</a>')
+
+    if divergence_changes:
+        lines.append("• <b>NAND 소비자↔기업용 eSSD 양극화 변화</b>")
+        for change in list(dict.fromkeys(divergence_changes)):
+            lines.append("  " + html.escape(change))
+        lines.append(
+            "  현재 구조: 기업용 SSD "
+            + html.escape(str(divergence_state.get("enterprise_direction") or "미확인"))
+            + " / 소비자 SSD·UFS "
+            + html.escape(str(divergence_state.get("consumer_direction") or "미확인"))
+        )
+        if divergence_state.get("enterprise_ssd_q4_min_pct") is not None:
+            lines.append(
+                f"  기업용 SSD 4Q26 계약가: <b>+{float(divergence_state['enterprise_ssd_q4_min_pct']):.0f}~{float(divergence_state['enterprise_ssd_q4_max_pct']):.0f}% QoQ</b>"
+            )
+        if divergence_state.get("overall_nand_q4_min_pct") is not None:
+            lines.append(
+                f"  전체 NAND 4Q26 계약가: <b>+{float(divergence_state['overall_nand_q4_min_pct']):.0f}~{float(divergence_state['overall_nand_q4_max_pct']):.0f}% QoQ</b>"
+            )
+        if divergence_state.get("kv_cache_qlc"):
+            lines.append("  구조: KV 캐시 오프로딩→QLC 기업용 SSD 수요 연결 유지")
+        if divergence_source_url:
+            lines.append('  <a href="' + html.escape(divergence_source_url, quote=True) + '">근거 기사</a>')
+
     emitted = 0
     for prepared in prepared_items:
         item = prepared["item"]
@@ -1369,10 +1612,32 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes:
+    if emitted == 0 and not market_changes and not bernstein_changes and not divergence_changes and not legacy_changes:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
+
+    if legacy_changes:
+        has_other_content = bool(market_changes or bernstein_changes or divergence_changes or prepared_items)
+        if has_other_content:
+            lines.append("<<<TELEGRAM_MESSAGE_BREAK>>>")
+        else:
+            lines = []
+        lines.append("<b>[구세대 DRAM EOL·배정 변화]</b>")
+        for change in list(dict.fromkeys(legacy_changes)):
+            lines.append("• " + html.escape(change))
+        if legacy_state.get("samsung_lp4x_support_end_year"):
+            lines.append(f"• 삼성 LPDDR4X 지원 종료 기준: <b>{int(legacy_state['samsung_lp4x_support_end_year'])}년</b>")
+        if legacy_state.get("skhynix_lp4_eol_year"):
+            lines.append(f"• SK하이닉스 LPDDR4 생산종료 기준: <b>{int(legacy_state['skhynix_lp4_eol_year'])}년</b>")
+        if legacy_state.get("second_tier_fulfillment_pct") is not None:
+            lines.append(f"• 2군 메모리 공급 이행률: <b>{float(legacy_state['second_tier_fulfillment_pct']):.0f}%</b>")
+        if legacy_state.get("ddr4_expansion_vendors"):
+            lines.append("• DDR4 증설 확인 공급사: <b>" + html.escape(str(legacy_state["ddr4_expansion_vendors"])) + "</b>")
+        lines.append("• 검증 원칙: 공식자료 또는 Reuters·Bloomberg·TrendForce·DIGITIMES·Citi·J.P.Morgan급 신뢰자료만 상태값으로 승격")
+        if legacy_source_url:
+            lines.append('• <a href="' + html.escape(legacy_source_url, quote=True) + '">근거 원문</a>')
+
     lines.append("※ 가격·수급·LTA·DRAM/HBM CAPA·웨이퍼 생산능력의 신규 변화만 알림")
     ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 

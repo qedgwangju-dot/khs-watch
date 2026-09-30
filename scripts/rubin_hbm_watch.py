@@ -39,6 +39,35 @@ BASE_SYSTEM_GB = BASE_NVLINK_GPU * OFFICIAL_RUBIN_GB
 ULTRA_SYSTEM_GB = ULTRA_NVLINK_GPU * RUMORED_ULTRA_GB
 SYSTEM_HBM_GROWTH = ULTRA_SYSTEM_GB / BASE_SYSTEM_GB - 1
 SEND_FRESHNESS_HOURS = 72
+CITI_HBM_TRACK_VERSION = 1
+CITI_HBM_BASELINE = {
+    "demand_2027_yoy_pct": 62.0,
+    "demand_2027_100m_gb": 752.0,
+    "demand_2028_yoy_pct": 69.0,
+    "demand_2028_100m_gb": 1270.0,
+    "supply_2027_yoy_pct": 64.0,
+    "supply_2027_100m_gb": 593.0,
+    "supply_2028_yoy_pct": 36.0,
+    "supply_2028_100m_gb": 809.0,
+    "deficit_2027_pct": -21.0,
+    "deficit_2028_pct": -36.0,
+    "samsung_2027_wpm": 240000.0,
+    "skhynix_2027_wpm": 270000.0,
+    "micron_2027_wpm": 140000.0,
+    "samsung_2027_capacity_yoy_pct": 50.0,
+    "skhynix_2027_capacity_yoy_pct": 67.0,
+    "micron_2027_capacity_yoy_pct": 52.0,
+    "hbm4_12hi_usd_per_gb_min": 4.0,
+    "hbm4_12hi_usd_per_gb_max": 5.0,
+    "hbm4_12hi_price_yoy_min_pct": 100.0,
+    "hbm4_12hi_price_yoy_max_pct": 150.0,
+    "eight_hi_premium_min_pct": 20.0,
+    "eight_hi_premium_max_pct": 30.0,
+    "source": "Citi 리서치 재인용",
+    "source_url": "https://www.aastocks.com/tc/stocks/news/aafn-con/NOW.1547209/latest-news/AAFN",
+    "secondary_source_url": "https://newsis.com/view/NISX20260930_0003808711",
+    "as_of": "2026-09-30",
+}
 STRUCTURE_BASELINE_VERSION = 3
 KNOWN_STRUCTURE_FACT_KEYS = {
     "hbm_capacity_kv_offload_mainstream_8hi_12hi_niche_4hi",
@@ -74,6 +103,10 @@ QUERIES = [
         '2027 HBM (contract OR price OR pricing OR LTA OR supply OR allocation OR volume OR negotiation OR agreement) (Samsung OR "SK hynix" OR Micron OR NVIDIA)',
     ),
     (
+        "citi_hbm_outlook",
+        'Citi HBM 2027 2028 (demand OR supply OR deficit OR shortage OR wafer OR WPM OR 12-Hi OR 8-Hi OR 752 OR 593 OR 1270 OR 809)',
+    ),
+    (
         "hbm_wafer_economics",
         '(HBM AND DDR5) (wafer revenue OR profitability OR economics OR "64GB RDIMM" OR 웨이퍼 매출 OR 수익성 OR 채산성) (TrendForce OR contract OR pricing OR allocation)',
     ),
@@ -94,6 +127,7 @@ CATEGORY_KO = {
     "hbm4e_validation": "HBM4E 고객 검증·양산",
     "rubin_shipments": "Rubin Ultra·NVL576 실제 출하",
     "hbm_2027_contract": "2027 HBM 계약가격·물량",
+    "citi_hbm_outlook": "Citi HBM 2027~2028 수요·공급·가격",
     "hbm_wafer_economics": "HBM↔DDR5 웨이퍼 경제성",
     "memory_migration": "별도 알림 · HBM 용량 축소→KV 캐시 외부 메모리 전환",
 }
@@ -167,6 +201,13 @@ def relevant(category: str, text: str) -> bool:
         return ("rubin ultra" in low or "nvl576" in low) and any(k in low for k in ("shipment", "ship", "production", "deployment", "order", "ramp", "customer", "출하", "양산", "도입", "주문"))
     if category == "hbm_2027_contract":
         return "2027" in low and "hbm" in low and any(k in low for k in ("contract", "price", "pricing", "lta", "supply", "allocation", "volume", "agreement", "negotiation", "계약", "가격", "공급", "물량", "협상", "타결"))
+    if category == "citi_hbm_outlook":
+        return (
+            ("citi" in low or "citigroup" in low or "씨티" in low or "花旗" in text)
+            and "hbm" in low
+            and any(k in low for k in ("2027", "2028"))
+            and any(k in low for k in ("demand", "supply", "deficit", "shortage", "wafer", "wpm", "12-hi", "12hi", "8-hi", "8hi", "수요", "공급", "부족", "웨이퍼"))
+        )
     if category == "hbm_wafer_economics":
         return "hbm" in low and "ddr5" in low and any(k in low for k in ("wafer revenue", "profitability", "economics", "64gb rdimm", "웨이퍼 매출", "수익성", "채산성"))
     if category == "memory_migration":
@@ -391,6 +432,202 @@ def _bernstein_supplier_relative_signature(text: str) -> str:
         return "bernstein_hbm_supplier_relative_skhynix_down"
     return ""
 
+
+
+def _citi_pct(text: str, year: int, words: tuple[str, ...]) -> float | None:
+    low = clean_text(text).lower()
+    word = "(?:" + "|".join(re.escape(x.lower()) for x in words) + ")"
+    for pat in (
+        rf"{year}[^.%]{{0,140}}?{word}[^.%]{{0,120}}?([+-]?\d{{1,3}}(?:\.\d+)?)\s*%",
+        rf"{word}[^.%]{{0,120}}?{year}[^.%]{{0,120}}?([+-]?\d{{1,3}}(?:\.\d+)?)\s*%",
+    ):
+        m = re.search(pat, low, re.I)
+        if m:
+            return float(m.group(1))
+    return None
+
+
+def _citi_100m_gb(text: str, year: int, words: tuple[str, ...]) -> float | None:
+    low = clean_text(text).lower().replace(",", "")
+    word = "(?:" + "|".join(re.escape(x.lower()) for x in words) + ")"
+    for pat in (
+        rf"{year}[^.]{{0,180}}?{word}[^.]{{0,160}}?(\d+(?:\.\d+)?)\s*(?:억|億)\s*gb",
+        rf"{word}[^.]{{0,160}}?{year}[^.]{{0,160}}?(\d+(?:\.\d+)?)\s*(?:억|億)\s*gb",
+    ):
+        m = re.search(pat, low, re.I)
+        if m:
+            return float(m.group(1))
+    for pat in (
+        rf"{year}[^.]{{0,180}}?{word}[^.]{{0,160}}?(\d+(?:\.\d+)?)\s*billion\s*gb",
+        rf"{word}[^.]{{0,160}}?{year}[^.]{{0,160}}?(\d+(?:\.\d+)?)\s*billion\s*gb",
+    ):
+        m = re.search(pat, low, re.I)
+        if m:
+            return float(m.group(1)) * 10.0
+    return None
+
+
+def _citi_wpm(text: str, aliases: tuple[str, ...]) -> float | None:
+    low = clean_text(text).lower().replace(",", "")
+    alias = "(?:" + "|".join(re.escape(x.lower()) for x in aliases) + ")"
+    for pat in (
+        rf"{alias}[^.]{{0,140}}?(\d+(?:\.\d+)?)\s*만\s*(?:장|wafers?)",
+        rf"{alias}[^.]{{0,140}}?(\d+(?:\.\d+)?)\s*(?:k|thousand)\s*(?:wafers?)",
+        rf"{alias}[^.]{{0,140}}?(\d{{5,6}})\s*(?:wpm|wafers?\s*per\s*month|wafers?/month)",
+    ):
+        m = re.search(pat, low, re.I)
+        if m:
+            value = float(m.group(1))
+            if "만" in m.group(0):
+                return value * 10000.0
+            if re.search(r"(?:k|thousand)", m.group(0), re.I):
+                return value * 1000.0
+            return value
+    return None
+
+
+def extract_citi_hbm_outlook(event: dict) -> dict | None:
+    text = compact_fact_text(event)
+    low = text.lower()
+    if not relevant("citi_hbm_outlook", text):
+        return None
+    obs: dict = {}
+    for year in (2027, 2028):
+        obs[f"demand_{year}_yoy_pct"] = _citi_pct(text, year, ("demand", "수요", "需求"))
+        obs[f"supply_{year}_yoy_pct"] = _citi_pct(text, year, ("supply", "공급", "供給", "供应"))
+        obs[f"deficit_{year}_pct"] = _citi_pct(text, year, ("deficit", "shortage", "공급부족률", "공급 부족률", "缺口", "短缺"))
+        obs[f"demand_{year}_100m_gb"] = _citi_100m_gb(text, year, ("demand", "수요", "需求"))
+        obs[f"supply_{year}_100m_gb"] = _citi_100m_gb(text, year, ("supply", "공급", "供給", "供应"))
+    obs["samsung_2027_wpm"] = _citi_wpm(text, ("samsung", "삼성전자", "삼성"))
+    obs["skhynix_2027_wpm"] = _citi_wpm(text, ("sk hynix", "sk하이닉스", "하이닉스"))
+    obs["micron_2027_wpm"] = _citi_wpm(text, ("micron", "마이크론"))
+    for field, aliases in (
+        ("samsung_2027_capacity_yoy_pct", ("samsung", "삼성전자", "삼성")),
+        ("skhynix_2027_capacity_yoy_pct", ("sk hynix", "sk하이닉스", "하이닉스")),
+        ("micron_2027_capacity_yoy_pct", ("micron", "마이크론")),
+    ):
+        alias = "(?:" + "|".join(re.escape(x.lower()) for x in aliases) + ")"
+        m = re.search(rf"{alias}[^.%]{{0,120}}?2027[^.%]{{0,120}}?([+-]?\d{{1,3}}(?:\.\d+)?)\s*%", low, re.I)
+        if not m:
+            m = re.search(rf"{alias}[^.%]{{0,160}}?([+-]?\d{{1,3}}(?:\.\d+)?)\s*%[^.]{{0,80}}?(?:2027|yoy)", low, re.I)
+        obs[field] = float(m.group(1)) if m else None
+    price = re.search(
+        r"(?:hbm4[^.]{0,80}?12\s*(?:hi|단)|12\s*(?:hi|단)[^.]{0,80}?hbm4)[^$\d]{0,80}?\$?\s*(\d+(?:\.\d+)?)\s*(?:~|[-–—]|to)\s*\$?\s*(\d+(?:\.\d+)?)\s*/?\s*gb",
+        low, re.I,
+    )
+    if price:
+        obs["hbm4_12hi_usd_per_gb_min"] = float(price.group(1))
+        obs["hbm4_12hi_usd_per_gb_max"] = float(price.group(2))
+    price_yoy = re.search(
+        r"(?:hbm4[^.]{0,100}?12\s*(?:hi|단)|12\s*(?:hi|단)[^.]{0,100}?hbm4)[^%]{0,180}?(\d{2,3})\s*(?:~|[-–—]|to)\s*(\d{2,3})\s*%",
+        low, re.I,
+    )
+    if price_yoy:
+        obs["hbm4_12hi_price_yoy_min_pct"] = float(price_yoy.group(1))
+        obs["hbm4_12hi_price_yoy_max_pct"] = float(price_yoy.group(2))
+    premium = re.search(
+        r"8\s*(?:hi|단)[^.]{0,160}?12\s*(?:hi|단)[^.]{0,160}?(\d{1,2})\s*(?:~|[-–—]|to)\s*(\d{1,2})\s*%[^.]{0,80}?(?:higher|premium|높|비싸)",
+        low, re.I,
+    )
+    if premium:
+        obs["eight_hi_premium_min_pct"] = float(premium.group(1))
+        obs["eight_hi_premium_max_pct"] = float(premium.group(2))
+    if not any(v is not None for v in obs.values()):
+        return None
+    obs.update({
+        "source": event.get("origin_source") or event.get("source") or "Citi 관련 보도",
+        "source_url": event.get("direct_link") or event.get("link") or "",
+        "as_of": (event.get("published_at_kst") or "")[:10],
+        "observed_at": event.get("published_at_kst") or "",
+    })
+    return obs
+
+
+def merge_citi_hbm_outlook(old: dict, obs: dict) -> dict:
+    if old.get("as_of") and obs.get("as_of") and obs["as_of"] < old["as_of"]:
+        return dict(old)
+    merged = dict(old or {})
+    for key, value in obs.items():
+        if value is not None and value != "":
+            merged[key] = value
+    return merged
+
+
+def citi_hbm_material_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+    for year in (2027, 2028):
+        for kind, label in (("demand", "수요 증가율"), ("supply", "공급 증가율")):
+            key = f"{kind}_{year}_yoy_pct"
+            a, b = old.get(key), new.get(key)
+            if a is not None and b is not None and abs(float(b) - float(a)) >= 10:
+                changes.append(f"{year}년 {label} {float(a):+.0f}%→{float(b):+.0f}% ({float(b)-float(a):+.0f}%p)")
+        key = f"deficit_{year}_pct"
+        a, b = old.get(key), new.get(key)
+        if a is not None and b is not None and abs(float(b) - float(a)) >= 5:
+            changes.append(f"{year}년 수급 부족률 {float(a):+.0f}%→{float(b):+.0f}% ({float(b)-float(a):+.0f}%p)")
+        for kind, label in (("demand", "수요"), ("supply", "공급")):
+            key = f"{kind}_{year}_100m_gb"
+            a, b = old.get(key), new.get(key)
+            if a and b and abs(float(b) / float(a) - 1.0) >= 0.10:
+                changes.append(f"{year}년 {label} {float(a):,.0f}억→{float(b):,.0f}억 Gb")
+    for key, label in (
+        ("samsung_2027_wpm", "삼성전자"),
+        ("skhynix_2027_wpm", "SK하이닉스"),
+        ("micron_2027_wpm", "Micron"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if a and b and abs(float(b) / float(a) - 1.0) >= 0.10:
+            changes.append(f"{label} 2027 월 웨이퍼 생산능력 {float(a):,.0f}→{float(b):,.0f}장")
+    for key, label in (
+        ("samsung_2027_capacity_yoy_pct", "삼성전자 생산능력 증가율"),
+        ("skhynix_2027_capacity_yoy_pct", "SK하이닉스 생산능력 증가율"),
+        ("micron_2027_capacity_yoy_pct", "Micron 생산능력 증가율"),
+        ("hbm4_12hi_price_yoy_min_pct", "HBM4 12단 가격 상승률 하단"),
+        ("hbm4_12hi_price_yoy_max_pct", "HBM4 12단 가격 상승률 상단"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if a is not None and b is not None and abs(float(b) - float(a)) >= 10:
+            changes.append(f"{label} {float(a):.0f}%→{float(b):.0f}%")
+    for key, label in (
+        ("hbm4_12hi_usd_per_gb_min", "HBM4 12단 가격 하단"),
+        ("hbm4_12hi_usd_per_gb_max", "HBM4 12단 가격 상단"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if a is not None and b is not None and abs(float(b) - float(a)) >= 0.5:
+            changes.append(f"{label} {float(a):.1f}→{float(b):.1f}달러/Gb")
+    for key, label in (
+        ("eight_hi_premium_min_pct", "8단 프리미엄 하단"),
+        ("eight_hi_premium_max_pct", "8단 프리미엄 상단"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if a is not None and b is not None and abs(float(b) - float(a)) >= 5:
+            changes.append(f"{label} {float(a):.0f}%→{float(b):.0f}%")
+    return changes
+
+
+def citi_hbm_change_event(state: dict, changes: list[str]) -> dict:
+    bullets = [
+        f"• 수요: 2027년 +{state.get('demand_2027_yoy_pct', 0):.0f}% · {state.get('demand_2027_100m_gb', 0):,.0f}억 Gb / 2028년 +{state.get('demand_2028_yoy_pct', 0):.0f}% · {state.get('demand_2028_100m_gb', 0):,.0f}억 Gb",
+        f"• 공급: 2027년 +{state.get('supply_2027_yoy_pct', 0):.0f}% · {state.get('supply_2027_100m_gb', 0):,.0f}억 Gb / 2028년 +{state.get('supply_2028_yoy_pct', 0):.0f}% · {state.get('supply_2028_100m_gb', 0):,.0f}억 Gb",
+        f"• 수급 부족률: 2027년 {state.get('deficit_2027_pct', 0):+.0f}% → 2028년 {state.get('deficit_2028_pct', 0):+.0f}%",
+        f"• 2027 월 웨이퍼 생산능력: 삼성전자 {state.get('samsung_2027_wpm', 0):,.0f}장(+{state.get('samsung_2027_capacity_yoy_pct', 0):.0f}%) / SK하이닉스 {state.get('skhynix_2027_wpm', 0):,.0f}장(+{state.get('skhynix_2027_capacity_yoy_pct', 0):.0f}%) / Micron {state.get('micron_2027_wpm', 0):,.0f}장(+{state.get('micron_2027_capacity_yoy_pct', 0):.0f}%)",
+        f"• 8단 Gb당 프리미엄: 12단 대비 +{state.get('eight_hi_premium_min_pct', 0):.0f}~{state.get('eight_hi_premium_max_pct', 0):.0f}%",
+        "• 이번 변화: " + " · ".join(changes),
+    ]
+    return {
+        "id": "typed|citi_hbm_outlook",
+        "category": "citi_hbm_outlook",
+        "headline_ko": "Citi HBM 수급·가격 전망 상태 변화",
+        "fact_bullets": bullets,
+        "verdict": "Citi 전망은 TrendForce 시장 Blended ASP와 별도 관리합니다. 수요·공급·가격·생산능력의 실제 수정만 재알림합니다.",
+        "verification": "Citi 리서치 재인용 상태값",
+        "origin_source": state.get("source") or "Citi",
+        "source": state.get("source") or "Citi",
+        "published_at_kst": state.get("observed_at") or state.get("as_of") or "",
+        "direct_link": state.get("source_url") or "",
+        "article_text": "",
+        "citi_state": state,
+    }
 
 def make_fact(event: dict) -> dict | None:
     e = dict(event)
@@ -757,6 +994,8 @@ def choose_verified_events(fresh_unseen: list[dict], raw_events: list[dict], see
     errors: list[str] = []
     candidates: list[dict] = []
     for raw in fresh_unseen:
+        if raw.get("category") == "citi_hbm_outlook":
+            continue
         source_low = (raw.get("source") or "").lower()
         if any(k in source_low for k in LOW_VALUE_SOURCE_HINTS):
             # 저품질 집계 사이트는 단독 발송 금지. 같은 사실의 더 나은 출처가 있으면 그쪽을 사용한다.
@@ -870,10 +1109,12 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
         grouped.setdefault(e["category"], []).append(e)
 
     n = 1
-    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "rubin_shipments", "hbm_2027_contract", "hbm_wafer_economics", "memory_migration"):
+    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "rubin_shipments", "hbm_2027_contract", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
         group = grouped.get(category) or []
         if not group:
             continue
+        if category == "citi_hbm_outlook" and n > 1:
+            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 Citi HBM 2027~2028 수급·가격 감시", ""]
         if category == "memory_migration" and n > 1:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 HBM 용량 축소→KV 캐시 외부 메모리 전환", ""]
         lines += ["", f"■ {CATEGORY_KO[category]}"]
@@ -885,6 +1126,20 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
                 f"- 공개시각: {e.get('published_at_kst') or '확인 불가'}",
             ]
             lines.extend(e.get("fact_bullets") or [])
+            if category == "citi_hbm_outlook" and e.get("citi_state"):
+                cs = e["citi_state"]
+                lo, hi = cs.get("hbm4_12hi_usd_per_gb_min"), cs.get("hbm4_12hi_usd_per_gb_max")
+                if lo is not None and hi is not None:
+                    if rate is not None:
+                        lines.append(
+                            f"• HBM4 12단 가격: {float(lo):g}~{float(hi):g}달러/Gb "
+                            f"(약 {float(lo)*rate:,.0f}~{float(hi)*rate:,.0f}원/Gb)"
+                        )
+                    else:
+                        lines.append(f"• HBM4 12단 가격: {float(lo):g}~{float(hi):g}달러/Gb (원화 환산 불가)")
+                pymin, pymax = cs.get("hbm4_12hi_price_yoy_min_pct"), cs.get("hbm4_12hi_price_yoy_max_pct")
+                if pymin is not None and pymax is not None:
+                    lines.append(f"• HBM4 12단 가격 상승률 전망: +{float(pymin):.0f}~{float(pymax):.0f}% YoY")
             lines += extract_price_notes(full_text, rate)
             lines.append(f"• 판정: {e.get('verdict')}")
             lines.append(f"- 원문: {e.get('direct_link')}")
@@ -936,6 +1191,32 @@ def main() -> None:
     verified_events, verify_errors = choose_verified_events(fresh_unseen, raw_events, seen_fact_keys)
     errors.extend(verify_errors)
 
+    citi_state = dict(state.get("citi_hbm_outlook") or {})
+    citi_track_version = int(state.get("citi_hbm_track_version") or 0)
+    if citi_track_version < CITI_HBM_TRACK_VERSION:
+        seeded = dict(CITI_HBM_BASELINE)
+        seeded.update({k: v for k, v in citi_state.items() if v not in (None, "")})
+        citi_state = seeded
+        citi_track_version = CITI_HBM_TRACK_VERSION
+
+    citi_changes: list[str] = []
+    for raw in raw_events:
+        if raw.get("category") != "citi_hbm_outlook":
+            continue
+        enriched = enrich_event(raw)
+        if not enriched.get("link_verified"):
+            continue
+        obs = extract_citi_hbm_outlook(enriched)
+        if not obs:
+            continue
+        merged = merge_citi_hbm_outlook(citi_state, obs)
+        changes = citi_hbm_material_changes(citi_state, merged)
+        citi_state = merged
+        if changes:
+            citi_changes.extend(changes)
+    if citi_changes and not first_run:
+        verified_events.append(citi_hbm_change_event(citi_state, list(dict.fromkeys(citi_changes))))
+
     fx = fetch_fx()
     if fx.get("error"):
         errors.append(fx["error"])
@@ -956,6 +1237,8 @@ def main() -> None:
         "seen_ids": sorted((seen_before | current_ids))[-1200:],
         "seen_fact_keys": sorted(seen_fact_keys | new_fact_keys)[-500:],
         "structure_baseline_version": STRUCTURE_BASELINE_VERSION,
+        "citi_hbm_track_version": citi_track_version,
+        "citi_hbm_outlook": citi_state,
         "last_unseen_raw_count": len(unseen_raw),
         "last_verified_event_count": len(verified_events),
         "last_send_event_count": len(send_events),
@@ -981,6 +1264,7 @@ def main() -> None:
         f"- recent_raw_events: {len(raw_events)}",
         f"- unseen_raw_events: {len(unseen_raw)}",
         f"- verified_events: {len(verified_events)}",
+        f"- Citi HBM typed changes: {len(citi_changes)}",
         f"- send_events: {len(send_events)}",
         f"- freshness_hours: {SEND_FRESHNESS_HOURS}",
         f"- break_even_gpu_growth: {BREAKEVEN_GPU_GROWTH*100:.1f}%",

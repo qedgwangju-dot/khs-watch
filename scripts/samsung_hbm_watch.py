@@ -33,7 +33,7 @@ MONTHLY_DAY = 15
 COMPARE_VERSION = 4
 EVENT_STATE_VERSION = 2
 SHARE_TRACK_VERSION = 1
-BROKER_FORECAST_TRACK_VERSION = 1
+BROKER_FORECAST_TRACK_VERSION = 2
 SHARE_REVISION_THRESHOLD_PP = 3.0
 BROKER_ASP_REVISION_THRESHOLD_PP = 5.0
 SHARE_ACTUAL_DEVIATION_THRESHOLD_PP = 5.0
@@ -85,6 +85,7 @@ BROKER_FORECAST_BASELINES = {
         "asp_yoy_pct": 64.0,
         "previous_asp_yoy_pct": 48.0,
         "stack_mainstream": "12hi",
+        "contract_stage": "final_stage",
         "eps_revision_pct": {"2026": -4.0, "2027": -4.6},
         "fx_headwind": True,
         "source": "사용자 제공 J.P. Morgan 2026-09-18 리포트",
@@ -1502,6 +1503,7 @@ def _broker_page_text(e: dict, base_text: str) -> str:
     if not any(k in low for k in (
         "asp", "average selling price", "평균판매단가", "평균 판매단가",
         "8-hi", "8hi", "12-hi", "12hi", "16-hi", "16hi", "8단", "12단", "16단",
+        "negotiation", "agreement", "contract", "협상", "계약", "타결", "확정",
     )):
         return base_text
     url = e.get("direct_link") or ""
@@ -1528,7 +1530,10 @@ def _broker_period(text: str) -> str:
             raw = m.group(1)
             year = int(raw) + 2000 if len(raw) == 2 else int(raw)
             window = text[max(0, m.start()-160):min(len(text), m.end()+160)].lower()
-            if "asp" in window or "average selling price" in window or "평균판매단가" in window or "평균 판매단가" in window:
+            if (
+                "asp" in window or "average selling price" in window or "평균판매단가" in window or "평균 판매단가" in window
+                or "contract" in window or "agreement" in window or "negotiation" in window or "계약" in window or "협상" in window
+            ):
                 return str(year)
     return ""
 
@@ -1576,6 +1581,23 @@ def _extract_stack_mainstream(text: str) -> str:
     return ""
 
 
+def _extract_hbm_contract_stage(text: str) -> str:
+    low = clean(text).lower()
+    if any(k in low for k in (
+        "contract signed", "agreement signed", "pricing agreement finalized", "price finalized",
+        "negotiations concluded", "deal finalized", "계약 체결", "협상 타결", "가격 확정", "계약 확정",
+    )):
+        return "signed"
+    if any(k in low for k in (
+        "final stage", "final stages", "near completion", "close to completion",
+        "마무리 단계", "막바지", "최종 단계",
+    )) and any(k in low for k in ("negotiation", "agreement", "contract", "협상", "계약")):
+        return "final_stage"
+    if any(k in low for k in ("negotiation", "negotiating", "talks", "협상", "논의")):
+        return "negotiation"
+    return ""
+
+
 def _extract_eps_revision_context(text: str) -> dict[str, float]:
     out: dict[str, float] = {}
     low = text.lower()
@@ -1611,13 +1633,15 @@ def extract_broker_hbm_forecasts(e: dict) -> list[dict]:
     if not any(k in low for k in (
         "asp", "average selling price", "평균판매단가", "평균 판매단가",
         "8-hi", "8hi", "12-hi", "12hi", "16-hi", "16hi", "8단", "12단", "16단",
+        "negotiation", "agreement", "contract", "협상", "계약", "타결", "확정",
     )):
         return []
 
     text = _broker_page_text(e, base)
     current_asp, previous_asp = _extract_hbm_asp_forecast(text)
     stack = _extract_stack_mainstream(text)
-    if current_asp is None and not stack:
+    contract_stage = _extract_hbm_contract_stage(text)
+    if current_asp is None and not stack and not contract_stage:
         return []
 
     period = _broker_period(text)
@@ -1638,6 +1662,7 @@ def extract_broker_hbm_forecasts(e: dict) -> list[dict]:
         "asp_yoy_pct": current_asp,
         "previous_asp_yoy_pct": previous_asp,
         "stack_mainstream": stack,
+        "contract_stage": contract_stage,
         "eps_revision_pct": eps_revision,
         "fx_headwind": fx_headwind,
         "source": e.get("source") or "",
@@ -1685,6 +1710,14 @@ def _broker_material_change(old: dict, obs: dict) -> tuple[bool, list[str]]:
     new_stack = obs.get("stack_mainstream") or ""
     if new_stack and old_stack != new_stack:
         reasons.append(f"주력 적층 {_stack_ko(old_stack)}→{_stack_ko(new_stack)}")
+
+    stage_rank = {"negotiation": 1, "final_stage": 2, "signed": 3}
+    old_stage = old.get("contract_stage") or ""
+    new_stage = obs.get("contract_stage") or ""
+    if new_stage and new_stage != old_stage:
+        if not old_stage or stage_rank.get(new_stage, 0) > stage_rank.get(old_stage, 0):
+            labels = {"negotiation": "협상 중", "final_stage": "협상 마무리 단계", "signed": "계약·가격 확정"}
+            reasons.append(f"2027 HBM 계약 단계 {labels.get(old_stage, old_stage or '미확인')}→{labels.get(new_stage, new_stage)}")
     return bool(reasons), reasons
 
 
@@ -1695,6 +1728,8 @@ def _broker_state_candidate(old: dict | None, obs: dict) -> dict:
             candidate[field] = obs.get(field)
     if obs.get("stack_mainstream"):
         candidate["stack_mainstream"] = obs.get("stack_mainstream")
+    if obs.get("contract_stage"):
+        candidate["contract_stage"] = obs.get("contract_stage")
     if obs.get("eps_revision_pct"):
         candidate["eps_revision_pct"] = dict(obs.get("eps_revision_pct") or {})
     if obs.get("fx_headwind"):
@@ -1726,6 +1761,8 @@ def broker_forecast_change_event(obs: dict, old: dict | None, reasons: list[str]
             "report_previous_asp_yoy_pct": obs.get("previous_asp_yoy_pct"),
             "stack_mainstream": obs.get("stack_mainstream") or "",
             "old_stack_mainstream": (old or {}).get("stack_mainstream") or "",
+            "contract_stage": obs.get("contract_stage") or "",
+            "old_contract_stage": (old or {}).get("contract_stage") or "",
             "eps_revision_pct": obs.get("eps_revision_pct") or {},
             "fx_headwind": bool(obs.get("fx_headwind")),
             "reasons": reasons,
@@ -1759,6 +1796,11 @@ def broker_forecast_event_summary(e: dict) -> list[str]:
             lines.append(f"• 제품 혼합: 주력 적층 <b>{old_stack}→{new_stack}</b>")
         else:
             lines.append(f"• 제품 혼합: 주력 적층 <b>{new_stack}</b>")
+    if ch.get("contract_stage"):
+        labels = {"negotiation": "협상 중", "final_stage": "협상 마무리 단계", "signed": "계약·가격 확정"}
+        old_stage = labels.get(ch.get("old_contract_stage") or "", ch.get("old_contract_stage") or "미확인")
+        new_stage = labels.get(ch.get("contract_stage") or "", ch.get("contract_stage") or "미확인")
+        lines.append(f"• 계약 단계: <b>{html.escape(old_stage)}→{html.escape(new_stage)}</b>")
     eps = ch.get("eps_revision_pct") or {}
     if eps:
         parts = [f"{year}E {float(value):+.1f}%" for year, value in sorted(eps.items())]
@@ -2162,7 +2204,9 @@ def main() -> None:
 
     if int(state.get("broker_forecast_track_version") or 0) < BROKER_FORECAST_TRACK_VERSION:
         for key, values in BROKER_FORECAST_BASELINES.items():
-            broker_forecasts.setdefault(key, dict(values))
+            current = broker_forecasts.setdefault(key, {})
+            for field, value in values.items():
+                current.setdefault(field, value)
         state["broker_forecast_track_version"] = BROKER_FORECAST_TRACK_VERSION
 
     if int(state.get("share_track_version") or 0) < SHARE_TRACK_VERSION:

@@ -53,6 +53,45 @@ class RubinHBMUpgradeTests(unittest.TestCase):
         self.assertIn("bernstein_hbm_supplier_relative_samsung_up", r.KNOWN_STRUCTURE_FACT_KEYS)
         self.assertIn("bernstein_hbm_supplier_relative_skhynix_down", r.KNOWN_STRUCTURE_FACT_KEYS)
 
+    def test_citi_baseline_is_locked_without_retro_alert(self):
+        self.assertEqual(r.CITI_HBM_TRACK_VERSION, 1)
+        self.assertEqual(r.CITI_HBM_BASELINE["demand_2027_100m_gb"], 752.0)
+        self.assertEqual(r.CITI_HBM_BASELINE["supply_2027_100m_gb"], 593.0)
+        self.assertEqual(r.citi_hbm_material_changes(r.CITI_HBM_BASELINE, dict(r.CITI_HBM_BASELINE)), [])
+
+    def test_citi_material_thresholds(self):
+        old = dict(r.CITI_HBM_BASELINE)
+        self.assertEqual(r.citi_hbm_material_changes(old, dict(old, demand_2027_yoy_pct=70.0)), [])
+        self.assertTrue(any("수요 증가율" in x for x in r.citi_hbm_material_changes(old, dict(old, demand_2027_yoy_pct=73.0))))
+        self.assertTrue(any("수급 부족률" in x for x in r.citi_hbm_material_changes(old, dict(old, deficit_2028_pct=-41.0))))
+        self.assertTrue(any("삼성전자" in x for x in r.citi_hbm_material_changes(old, dict(old, samsung_2027_wpm=264000.0))))
+        self.assertTrue(any("가격 상승률" in x for x in r.citi_hbm_material_changes(old, dict(old, hbm4_12hi_price_yoy_max_pct=165.0))))
+
+    def test_citi_parser_uses_correct_hundred_million_gb_unit(self):
+        e = self.base_event(
+            "citi_hbm_outlook",
+            "Citi HBM demand 2027 +62% to 752억 Gb, supply 2027 +64% to 593억 Gb; "
+            "deficit 2027 -21%. Samsung 2027 24만 wafers, SK Hynix 27만 wafers, Micron 14만 wafers. "
+            "HBM4 12-Hi $4~5/Gb and 8-Hi versus 12-Hi 20~30% higher premium.",
+        )
+        x = r.extract_citi_hbm_outlook(e)
+        self.assertEqual(x["demand_2027_100m_gb"], 752.0)
+        self.assertEqual(x["supply_2027_100m_gb"], 593.0)
+        self.assertEqual(x["samsung_2027_wpm"], 240000.0)
+        self.assertEqual(x["hbm4_12hi_usd_per_gb_min"], 4.0)
+        self.assertEqual(x["eight_hi_premium_max_pct"], 30.0)
+
+    def test_citi_alert_is_separate_message_when_mixed(self):
+        a = self.base_event("rubin_spec", "NVIDIA Rubin Ultra final specification confirmed with 8-Hi HBM4E")
+        a = r.make_fact(a)
+        a["verification"] = "신뢰자료 확인"
+        c = r.citi_hbm_change_event(dict(r.CITI_HBM_BASELINE, observed_at="2026-09-30T20:00:00+09:00"), ["2028년 수급 부족률 -36%→-41% (-5%p)"])
+        text = r.build_alert(r.datetime(2026,9,30,20,0,tzinfo=r.ZoneInfo("Asia/Seoul")), [a,c], {"rate":1355.0,"date":"test"})
+        parts = d.chunks(text)
+        self.assertGreaterEqual(len(parts), 2)
+        self.assertTrue(any("Citi HBM 2027~2028" in p for p in parts[1:]))
+        self.assertTrue(any("약 5,420~6,775원/Gb" in p for p in parts[1:]))
+
     def test_contract_signed_without_percentage_alerts(self):
         e = self.base_event("hbm_2027_contract", "TrendForce: 2027 HBM contract signed and pricing agreement finalized")
         x = r.make_fact(e)

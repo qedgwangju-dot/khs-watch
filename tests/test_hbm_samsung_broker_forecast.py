@@ -35,6 +35,7 @@ class SamsungHBMBrokerForecastTests(unittest.TestCase):
         self.assertEqual(obs["asp_yoy_pct"], 64.0)
         self.assertEqual(obs["previous_asp_yoy_pct"], 48.0)
         self.assertEqual(obs["stack_mainstream"], "12hi")
+        self.assertEqual(obs["contract_stage"], "final_stage")
         self.assertTrue(obs["fx_headwind"])
 
     def test_current_baseline_does_not_realert_same_jpmorgan_report(self):
@@ -43,6 +44,20 @@ class SamsungHBMBrokerForecastTests(unittest.TestCase):
             "asp_yoy_pct": 64.0,
             "stack_mainstream": "12hi",
         }
+        material, reasons = w._broker_material_change(old, obs)
+        self.assertFalse(material)
+        self.assertEqual(reasons, [])
+
+    def test_contract_final_to_signed_alerts_without_asp_change(self):
+        old = {"asp_yoy_pct": 64.0, "stack_mainstream": "12hi", "contract_stage": "final_stage"}
+        obs = {"asp_yoy_pct": 64.0, "stack_mainstream": "12hi", "contract_stage": "signed"}
+        material, reasons = w._broker_material_change(old, obs)
+        self.assertTrue(material)
+        self.assertTrue(any("협상 마무리 단계→계약·가격 확정" in x for x in reasons))
+
+    def test_contract_regression_does_not_realert(self):
+        old = {"contract_stage": "signed"}
+        obs = {"contract_stage": "negotiation"}
         material, reasons = w._broker_material_change(old, obs)
         self.assertFalse(material)
         self.assertEqual(reasons, [])
