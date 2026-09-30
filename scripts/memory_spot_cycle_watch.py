@@ -31,6 +31,11 @@ from zoneinfo import ZoneInfo
 
 import currency_krw_guard
 
+try:
+    from googlenewsdecoder import gnewsdecoder
+except Exception:  # pragma: no cover - optional runtime dependency
+    gnewsdecoder = None
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE_PATH = ROOT / "data" / "memory_spot_cycle_watch_state.json"
 OUT_DIR = ROOT / "out"
@@ -211,19 +216,37 @@ def _translate_to_ko(text: str) -> str:
                 time.sleep(1.0 + attempt)
 
     lower = text.lower()
-    if "spot" in lower and "price" in lower:
-        return "메모리 현물가격 관련 신규 상승·수급 변화 기사 감지"
-    if "wafer" in lower or "capacity" in lower or "greenfield" in lower:
-        return "DRAM 웨이퍼 생산능력·신규 팹 증설 관련 신규 변화 기사 감지"
-    if "shortage" in lower or "supply" in lower:
-        return "메모리 공급부족·수급 관련 신규 변화 기사 감지"
-    if "hbm" in lower:
-        return "HBM 수요·공급능력 관련 신규 변화 기사 감지"
-    if "dram" in lower:
-        return "DRAM 가격·수급 관련 신규 변화 기사 감지"
+    # Preserve the product layer before generic keywords such as wafer/capacity.
+    # Otherwise "NAND Flash Wafer Contract Price" is incorrectly rendered as a DRAM-capacity alert.
+    if "nand flash wafer contract price" in lower:
+        return "NAND Flash 웨이퍼 계약가 업데이트"
+    if "nand flash contract price" in lower:
+        return "NAND Flash 계약가 업데이트"
+    if "nand flash market bulletin" in lower:
+        return "NAND Flash 시장 수급·가격 업데이트"
+    if "specialty dram price" in lower:
+        return "Specialty DRAM 계약가 업데이트"
+    if "dram market bulletin" in lower:
+        return "DRAM 시장 수급·계약가 업데이트"
+    if "dram contract price" in lower:
+        return "DRAM 계약가 업데이트"
+    if "memory price forecast" in lower:
+        return "메모리 가격 전망 업데이트"
+    if "hbm market bulletin" in lower:
+        return "HBM 시장 가격·수급 업데이트"
     if "nand" in lower or "ssd" in lower:
-        return "NAND·SSD 가격·수급 관련 신규 변화 기사 감지"
-    return "해외 메모리 관련 신규 변화 기사 감지"
+        return "NAND·기업용 SSD 가격·수급 변화"
+    if "hbm" in lower:
+        return "HBM 수요·공급능력 변화"
+    if "dram" in lower:
+        return "DRAM 가격·수급 변화"
+    if "spot" in lower and "price" in lower:
+        return "메모리 현물가격 변화"
+    if "wafer" in lower or "capacity" in lower or "greenfield" in lower:
+        return "메모리 웨이퍼 생산능력·신규 팹 변화"
+    if "shortage" in lower or "supply" in lower:
+        return "메모리 공급부족·수급 변화"
+    return "해외 메모리 관련 신규 변화"
 
 
 def _polish_alert_title(raw_title: str, translated: str) -> str:
@@ -303,6 +326,21 @@ def _score(item: dict) -> int:
     return score
 
 
+def _decode_google_news_link(link: str) -> str:
+    """Best-effort Google News RSS decoding; keep original link on failure."""
+    if "news.google.com" not in (link or "") or gnewsdecoder is None:
+        return link
+    try:
+        result = gnewsdecoder(link, interval=0.2)
+        if isinstance(result, dict) and result.get("status"):
+            decoded = str(result.get("decoded_url") or "").strip()
+            if decoded.startswith("http") and "news.google.com" not in decoded:
+                return decoded
+    except Exception:
+        pass
+    return link
+
+
 def collect() -> tuple[list[dict], list[str]]:
     items: list[dict] = []
     errors: list[str] = []
@@ -315,7 +353,7 @@ def collect() -> tuple[list[dict], list[str]]:
             root = ET.fromstring(_fetch(url))
             for node in root.findall(".//item"):
                 title = _clean(node.findtext("title"))
-                link = _clean(node.findtext("link"))
+                link = _decode_google_news_link(_clean(node.findtext("link")))
                 description = _clean(node.findtext("description"))
                 pub = _parse_date(node.findtext("pubDate"))
                 source_node = node.find("source")
@@ -613,25 +651,29 @@ def load_state() -> dict:
 def classify(title: str) -> str:
     t = title.lower()
     capacity_terms = (
-        "capacity", "capa", "wafer", "greenfield", "fab", "factory", "ramp",
-        "생산능력", "웨이퍼", "증설", "신규 팹", "그린필드", "램프업",
+        "capacity", "capa", "greenfield", "fab", "factory", "ramp",
+        "생산능력", "증설", "신규 팹", "그린필드", "램프업",
     )
     if "memory price forecast" in t or "메모리 가격 전망" in t:
         return "DRAM/NAND"
     if "hbm" in t:
-        return "HBM/CAPA"
+        return "HBM"
+    # Product family takes precedence over generic words such as contract/wafer.
+    if "nand" in t or "낸드" in t or "ssd" in t:
+        return "NAND/eSSD"
+    if "specialty dram" in t:
+        return "Specialty DRAM"
     if "dram" in t or "디램" in t:
         if any(x in t for x in capacity_terms):
             return "DRAM/CAPA"
+        return "DRAM"
     if "spot" in t or "현물" in t:
         return "현물가"
     if "contract" in t or "고정가" in t or "계약가" in t:
         return "계약가"
-    if "nand" in t or "낸드" in t or "ssd" in t:
-        return "NAND/eSSD"
     if "inventory" in t or "재고" in t or "sufficiency" in t:
         return "재고/수급"
-    return "DRAM"
+    return "메모리"
 
 
 def compact_title(title: str, source: str) -> str:
@@ -709,6 +751,90 @@ def _price_change_details(raw_title: str, detail_blob: str) -> list[str]:
     elif "contract" in low or "고정가" in low or "계약가" in low:
         details.append("가격 유형: 계약가")
     return details
+
+
+def _market_signal_details(raw_title: str, detail_blob: str) -> list[str]:
+    """Extract the public summary into user-facing cause/meaning lines.
+
+    Never invent paid-table numbers. Narrative is emitted only when those words
+    are visible on the report/listing page.
+    """
+    low_title = raw_title.lower()
+    blob = _clean(detail_blob)
+    low = blob.lower()
+    out: list[str] = []
+
+    if "dram market bulletin" in low_title:
+        if ("csp" in low or "cloud" in low) and "server dram" in low:
+            out.append("수급: CSP의 서버 DRAM 추가 매수 → 공급사 재고 하락")
+        if "contract price" in low and any(k in low for k in ("push", "rise", "higher", "up")):
+            out.append("가격: 서버 DRAM 계약가 상승 압력 강화")
+        if "spot" in low and any(k in low for k in ("narrow", "range", "fluctuat")):
+            out.append("현물: 거래는 좁은 범위 등락 → 계약가 강세와 현물 강도를 분리해서 봐야 함")
+
+    elif "nand flash market bulletin" in low_title:
+        if any(k in low for k in ("two-tier", "divergence", "structural shortage")):
+            out.append("수급: 기업용 고성능 저장장치 강세와 소비자 NAND 약세가 갈리는 양극화")
+        if ("cloud" in low or "ai" in low) and ("enterprise ssd" in low or "storage" in low):
+            out.append("원인: 클라우드·AI의 기업용 SSD 수요가 공급사 재고와 생산능력을 압박")
+        if "inventory" in low and any(k in low for k in ("low", "tight", "declin")):
+            out.append("재고: 공급사 재고가 낮아 기업용 SSD 가격결정력 유지")
+
+    elif "specialty dram price" in low_title:
+        if "supply" in low and any(k in low for k in ("gap", "shortage", "tight")):
+            out.append("수급: Specialty DRAM 공급 부족 지속")
+        if any(k in low for k in ("upward", "rise", "higher")):
+            out.append("가격: 계약가는 상승 방향 유지")
+        if any(k in low for k in ("moderating", "cost tolerance", "cost pressure")):
+            out.append("역풍: 구매자의 비용 부담 한계로 가격 상승폭은 둔화 가능")
+
+    elif "nand flash wafer contract price" in low_title:
+        if any(k in low for k in ("high price", "high prices", "historic high", "expensive")):
+            out.append("가격: NAND 웨이퍼 고가격이 모듈업체 마진을 압박")
+        if "module" in low and any(k in low for k in ("margin", "profit")):
+            out.append("수익구조: 웨이퍼 가격 상승 → 다운스트림 모듈업체 수익성 악화")
+        if any(k in low for k in ("downgraded", "secondary market", "lower-grade")):
+            out.append("수요 이동: 원가 부담으로 저등급 웨이퍼·2차 시장 대체 수요 증가")
+
+    elif "nand flash contract price" in low_title:
+        if "high-layer" in low or "advanced process" in low or "3d" in low:
+            out.append("공급: 제조사가 고단수 3D NAND로 생산능력을 재배분 → niche NAND 공급 제약")
+        if any(k in low for k in ("hovering at high", "remain high", "high level")):
+            out.append("가격: niche NAND 계약가는 높은 수준 유지")
+        if any(k in low for k in ("cost pressure", "buyer", "supply discrep")):
+            out.append("역풍: 구매자 비용 부담과 품목별 공급 차이로 추가 인상폭은 차별화")
+
+    elif "memory price forecast" in low_title:
+        if "csp" in low and ("dram" in low and "nand" in low):
+            out.append("원인: CSP AI 수요가 DRAM·NAND 가격 상승을 동시에 지지")
+        if "capacity" in low and ("server dram" in low or "hbm" in low):
+            out.append("공급: 생산능력이 서버 DRAM·HBM으로 우선 배분돼 소비자 메모리 공급을 압박")
+        if "qlc" in low and "kv cache" in low:
+            out.append("저장계층: QLC 기업용 SSD가 KV 캐시 수요로 가장 강한 가격축")
+
+    # Keep concise and deterministic.
+    return list(dict.fromkeys(out))[:4]
+
+
+def _meaning_line(raw_title: str, detail_blob: str) -> str:
+    low = f"{raw_title} {detail_blob}".lower()
+    if "enterprise ssd" in low or "qlc" in low or "nand" in low:
+        return "의미: 삼성전자·SK하이닉스/Solidigm·Micron 등 NAND 업체는 기업용 SSD 제품혼합·평균판매단가가 핵심 확인 지표"
+    if "hbm" in low:
+        return "의미: HBM 가격·적층·고객승인·양산물량 변화가 삼성전자·SK하이닉스·Micron 실적에 직접 연결"
+    if "dram" in low:
+        return "의미: conventional/server DRAM 계약가·재고·웨이퍼 배분 변화가 메모리 3사의 평균판매단가와 마진에 직접 연결"
+    return "의미: 가격 자체보다 재고·생산능력·실제 계약가 변화가 실적 연결의 핵심"
+
+
+def _is_sparse_price_sheet(raw_title: str, price_details: list[str], signal_details: list[str]) -> bool:
+    low = raw_title.lower()
+    monthly_sheet = any(k in low for k in (
+        "contract price", "wafer contract price", "specialty dram price", "spot price",
+    )) and "market bulletin" not in low and "memory price forecast" not in low
+    specific_price = any(re.search(r"[+-]?\d+(?:\.\d+)?(?:~|-|–|—)\d+(?:\.\d+)?%", x) for x in price_details)
+    meaningful_signal = len(signal_details) >= 1
+    return bool(monthly_sheet and not specific_price and not meaningful_signal)
 
 
 def _extract_hbm_market_pricing(item: dict) -> dict | None:
@@ -846,9 +972,10 @@ def _is_bernstein_memory_cycle_item(item: dict) -> bool:
     if not any(k in low for k in ("dram", "nand", "memory", "메모리")):
         return False
     return any(k in low for k in (
-        "3q26", "4q26", "third quarter", "fourth quarter", "3분기", "4분기",
+        "3q26", "4q26", "third quarter", "fourth quarter", "this quarter", "3분기", "4분기",
         "2027", "2028", "lta", "long-term agreement", "contract price",
         "high-single-digit", "high single digit", "normalize", "normalization", "가격",
+        "nearly 20%", "almost 20%", "20% this quarter",
     ))
 
 
@@ -859,7 +986,9 @@ def _extract_bernstein_memory_cycle(item: dict) -> dict | None:
         return None
 
     obs: dict = {}
-    q3_context = any(k in low for k in ("3q26", "3q 2026", "third quarter", "3분기"))
+    published = str(item.get("published_kst") or "")
+    this_quarter_is_q3 = ("this quarter" in low) and published.startswith("2026-09")
+    q3_context = any(k in low for k in ("3q26", "3q 2026", "third quarter", "3분기")) or this_quarter_is_q3
     q4_context = any(k in low for k in ("4q26", "4q 2026", "fourth quarter", "4분기"))
 
     if q3_context and re.search(r"(?:mid[- ]?teens?|중반)[^%]{0,80}?20\s*%", text, re.I):
@@ -1142,6 +1271,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         lines.append("  ※ 기사 제목이 아니라 위 기준 숫자·연도·LTA 상태가 실제로 바뀔 때만 알림")
         if bernstein_source_url:
             lines.append('  <a href="' + html.escape(bernstein_source_url, quote=True) + '">근거 기사</a>')
+    emitted = 0
     for item in report_items:
         label = classify(item["title"])
         raw_title = compact_title(item["title"], item.get("source", ""))
@@ -1149,6 +1279,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         title = _polish_alert_title(raw_title, translated)
         detail_blob = str(item.get("description") or "")
         price_details = _price_change_details(raw_title, detail_blob)
+        signal_details = _market_signal_details(raw_title, detail_blob)
+        # A monthly paid price-sheet title without a public number or public narrative
+        # is not actionable. Do not send a one-line 'price type: contract' alert.
+        if _is_sparse_price_sheet(raw_title, price_details, signal_details):
+            continue
         if item.get("source") == "TrendForce Research" and "memory price forecast" in raw_title.lower():
             title = (
                 "TrendForce 4Q26 메모리 가격 전망: AI 서버·HBM 우선배정으로 소비자 DRAM 공급 축소, "
@@ -1164,12 +1299,28 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         safe_title = html.escape(title)
         safe_link = html.escape(item["link"], quote=True)
         lines.append(f"• <b>{label}</b> | {safe_title}")
-        for detail in price_details:
-            lines.append("  가격 변화: " + html.escape(detail))
+        if price_details:
+            for detail in price_details:
+                prefix = "가격: " if not detail.startswith("가격 유형:") else ""
+                lines.append("  " + prefix + html.escape(detail))
+        for detail in signal_details:
+            lines.append("  " + html.escape(detail))
+        lines.append("  " + html.escape(_meaning_line(raw_title, detail_blob)))
+        if item.get("source") == "TrendForce Research":
+            lines.append("  검증: TrendForce 공식 리서치 공개 페이지 · 유료표 내부 숫자는 공개 확인 전 확정값으로 쓰지 않음")
+        else:
+            lines.append("  검증: " + html.escape(str(item.get("source") or "출처 미표시")) + " 보도 · 동일 내용의 숫자/기간 변화만 상태값으로 추적")
         if date_text:
             lines.append(f"  {date_text} · <a href=\"{safe_link}\">원문</a>")
         else:
             lines.append(f"  <a href=\"{safe_link}\">원문</a>")
+        emitted += 1
+
+    # If all generic paid-price sheets were filtered, do not send an empty shell.
+    if emitted == 0 and not market_changes and not bernstein_changes:
+        if ALERT_PATH.exists():
+            ALERT_PATH.unlink()
+        return
     lines.append("※ 가격·수급·LTA·DRAM/HBM CAPA·웨이퍼 생산능력의 신규 변화만 알림")
     ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
