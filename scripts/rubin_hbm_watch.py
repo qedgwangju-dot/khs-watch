@@ -512,21 +512,21 @@ def extract_citi_hbm_outlook(event: dict) -> dict | None:
             m = re.search(rf"{alias}[^.%]{{0,160}}?([+-]?\d{{1,3}}(?:\.\d+)?)\s*%[^.]{{0,80}}?(?:2027|yoy)", low, re.I)
         obs[field] = float(m.group(1)) if m else None
     price = re.search(
-        r"(?:hbm4[^.]{0,80}?12\s*(?:hi|단)|12\s*(?:hi|단)[^.]{0,80}?hbm4)[^$\d]{0,80}?\$?\s*(\d+(?:\.\d+)?)\s*(?:~|[-–—]|to)\s*\$?\s*(\d+(?:\.\d+)?)\s*/?\s*gb",
+        r"(?:hbm4[^.]{0,80}?12\s*[- ]?(?:hi|단)|12\s*[- ]?(?:hi|단)[^.]{0,80}?hbm4)[^$\d]{0,80}?\$?\s*(\d+(?:\.\d+)?)\s*(?:~|[-–—]|to)\s*\$?\s*(\d+(?:\.\d+)?)\s*/?\s*gb",
         low, re.I,
     )
     if price:
         obs["hbm4_12hi_usd_per_gb_min"] = float(price.group(1))
         obs["hbm4_12hi_usd_per_gb_max"] = float(price.group(2))
     price_yoy = re.search(
-        r"(?:hbm4[^.]{0,100}?12\s*(?:hi|단)|12\s*(?:hi|단)[^.]{0,100}?hbm4)[^%]{0,180}?(\d{2,3})\s*(?:~|[-–—]|to)\s*(\d{2,3})\s*%",
+        r"(?:hbm4[^.]{0,100}?12\s*[- ]?(?:hi|단)|12\s*[- ]?(?:hi|단)[^.]{0,100}?hbm4)[^%]{0,180}?(\d{2,3})\s*(?:~|[-–—]|to)\s*(\d{2,3})\s*%",
         low, re.I,
     )
     if price_yoy:
         obs["hbm4_12hi_price_yoy_min_pct"] = float(price_yoy.group(1))
         obs["hbm4_12hi_price_yoy_max_pct"] = float(price_yoy.group(2))
     premium = re.search(
-        r"8\s*(?:hi|단)[^.]{0,160}?12\s*(?:hi|단)[^.]{0,160}?(\d{1,2})\s*(?:~|[-–—]|to)\s*(\d{1,2})\s*%[^.]{0,80}?(?:higher|premium|높|비싸)",
+        r"8\s*[- ]?(?:hi|단)[^.]{0,160}?12\s*[- ]?(?:hi|단)[^.]{0,160}?(\d{1,2})\s*(?:~|[-–—]|to)\s*(\d{1,2})\s*%[^.]{0,80}?(?:higher|premium|높|비싸)",
         low, re.I,
     )
     if premium:
