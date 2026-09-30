@@ -709,7 +709,7 @@ class Watch:
             lines += ["", "<b>파생 증폭 확인</b>", f"• 근접 위클리 풋 <b>{html.escape(opt[0])}</b> · 사건 시작 대비 <b>{opt[1]:.1f}배</b>"]
         lines += ["", "<b>읽는 법</b>",
                   "• 하루 누적 수급이 아니라 <b>급락 시작 직전 → 현재</b> 변화량만 비교합니다.",
-                  "• 현물·프로그램은 <b>KRX+NXT 통합</b>, KOSPI200 선물은 KRX 기준입니다.",
+                  "• 현물·프로그램은 <b>통합 기준</b>, KOSPI200 선물은 파생시장 기준입니다.",
                   "• 현물·선물·프로그램이 같은 방향으로 겹칠 때만 특정 주체를 급락 주도 후보로 올립니다.",
                   "• 프로그램 전체는 차익 변화+비차익 변화로 계산하고 LS 전체 직접값 변화와 방향을 교차검증합니다. t1640 3종은 순차 조회라 조회시차를 함께 표시하며 단위는 임의 환산하지 않습니다.", "",
                   "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(NEWS_URL,"급락 뉴스"), link(LS_URL,"LS OpenAPI")])]
@@ -740,7 +740,7 @@ class Watch:
                       f"• 최종 판정: <b>{html.escape(str(att.get('verdict')))}</b> · 확신도 {html.escape(str(att.get('confidence')))}"]
         else:
             lines += [f"• 가격 구간만 확정 — {html.escape(str(att.get('reason') or '수급 스냅샷 부족'))}"]
-        lines += ["", "• 현물·프로그램은 <b>KRX+NXT 통합</b>, KOSPI200 선물은 KRX 기준",
+        lines += ["", "• 현물·프로그램은 <b>통합 기준</b>, KOSPI200 선물은 파생시장 기준",
                   "• " + " · ".join([link(KOSPI_URL,"KOSPI"), link(NEWS_URL,"관련 뉴스")])]
         return "\n".join(lines)
 
