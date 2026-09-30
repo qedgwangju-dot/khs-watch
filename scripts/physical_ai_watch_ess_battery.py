@@ -214,7 +214,10 @@ ISU_LI2S_COMMERCIAL = re.compile(
     re.I,
 )
 ISU_LI2S_SHIPMENT = re.compile(
-    r'(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide).{0,120}(?:첫\s*납품|초도\s*납품|납품\s*(?:시작|개시)|공급\s*(?:시작|개시)|first\s*shipment|deliveries?\s*(?:started|began)|shipment\s*(?:started|began))',
+    r'(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide).{0,140}(?:첫\s*납품을?\s*(?:시작했다|완료했다)|초도\s*납품을?\s*(?:시작했다|완료했다)|'
+    r'납품을?\s*(?:개시했다|시작했다)|공급을?\s*(?:개시했다|시작했다)|first\s*shipment\s*(?:completed|delivered)|deliveries?\s*(?:started|began)|shipment\s*(?:started|began))|'
+    r'(?:첫\s*납품을?\s*(?:시작했다|완료했다)|초도\s*납품을?\s*(?:시작했다|완료했다)|납품을?\s*(?:개시했다|시작했다)|공급을?\s*(?:개시했다|시작했다)|'
+    r'first\s*shipment\s*(?:completed|delivered)|deliveries?\s*(?:started|began)|shipment\s*(?:started|began)).{0,140}(?:황화리튬|Li2S|Li₂S|lithium\s*sulfide)',
     re.I,
 )
 ISU_LI2S_CONTRACT = re.compile(
@@ -223,8 +226,10 @@ ISU_LI2S_CONTRACT = re.compile(
     re.I,
 )
 ISU_LI2S_CAPACITY = re.compile(
-    r'(?:증설|capacity\s*expansion|확대|expansion).{0,100}(?:500\s*(?:톤|t|ton)|\d[\d,.]*\s*(?:톤|t|ton))|'
-    r'(?:500\s*(?:톤|t|ton)).{0,100}(?:착공|투자\s*결정|증설|확대|construction\s*start|investment\s*approved)',
+    r'(?:증설\s*투자\s*결정|증설\s*(?:착공|시작|개시)|설비\s*(?:발주|반입)|라인\s*증설\s*(?:시작|개시)|'
+    r'capacity\s*expansion\s*(?:approved|started|began)|construction\s*start|investment\s*approved|equipment\s*order).{0,120}(?:500\s*(?:톤|t|ton)|\d[\d,.]*\s*(?:톤|t|ton))|'
+    r'(?:500\s*(?:톤|t|ton)|\d[\d,.]*\s*(?:톤|t|ton)).{0,120}(?:증설\s*투자\s*결정|증설\s*(?:착공|시작|개시)|설비\s*(?:발주|반입)|'
+    r'라인\s*증설\s*(?:시작|개시)|capacity\s*expansion\s*(?:approved|started|began)|construction\s*start|investment\s*approved|equipment\s*order)',
     re.I,
 )
 ISU_LI2S_RAMP = re.compile(
@@ -328,7 +333,7 @@ def _isu_li2s_stage(text: str, source: str = '') -> str:
         return 'commercial_production_start'
     if ISU_LI2S_CAPACITY.search(text):
         return 'capacity_expansion'
-    if ISU_LI2S_RAMP.search(text):
+    if ISU_LI2S_RAMP.search(text) and not re.search(r'추정|전망|예상|안팎|estimate|estimated|forecast|expected|around|approximately', text, re.I):
         return 'ramp_metrics'
     if ISU_LI2S_BASELINE.search(text):
         return 'commercial_production_plan_baseline'
