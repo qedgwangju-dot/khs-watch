@@ -77,6 +77,8 @@ NEWS_QUERIES = [
     '(OpenShell OR Sentry) default integration bundled "AI Enterprise" Microsoft SAP Red Hat Canonical',
     '"BlueField-4" Sentry Arm Intel x86 server deployment non-NVIDIA',
     '"hardware isolation" AI agents procurement insurance regulation DPU BlueField',
+    '("Open Agent Safety Platform" OR OpenShell OR Sentry) partner customer production deployment contract paid',
+    '("BlueField-4" OR Sentry) Rubin included baseline incremental deployment x86 Arm customer',
 ]
 
 OFFICIAL_SOURCE_HINTS = (
@@ -154,6 +156,11 @@ CONCRETE_ACTION_TERMS = (
 )
 
 CATEGORY_PATTERNS = [
+    ("파트너→유료고객·운영전환", (
+        "production deployment", "production use", "paid customer", "customer deployment",
+        "enterprise deployment", "contract", "purchase", "order", "rolled out",
+        "in production", "유료 고객", "상용 배포", "운영 전환", "본계약", "발주",
+    )),
     ("OpenShell 실사용·채택 지표", (
         "openshell telemetry", "sandboxes created", "sandbox creation failures",
         "actions denied", "network activity events", "provider profiles",
@@ -672,12 +679,14 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
-        if rep["category"] == "OpenShell 실사용·채택 지표":
+        if rep["category"] == "파트너→유료고객·운영전환":
+            lines.append("• <b>의미</b>: 단순 생태계 참여가 실제 상용 배포·본계약·유료고객으로 전환됐는지 확인")
+        elif rep["category"] == "OpenShell 실사용·채택 지표":
             lines.append("• <b>의미</b>: 발표·GitHub 관심도가 아니라 실제 샌드박스 사용량·실패율·차단량·프로바이더 믹스로 기업 채택을 확인")
         elif rep["category"] == "Sentry SKU·가격·라이선스":
             lines.append("• <b>의미</b>: Sentry가 BlueField 부가 기능에 머무는지, 별도 SKU·라이선스·구독매출로 독립 수익화되는지 확인")
         elif rep["category"] == "BlueField 증분 장착·DPU 수익화":
-            lines.append("• <b>의미</b>: Rubin 기본탑재 물량과 별개로 비-NVIDIA 서버까지 BlueField 장착이 늘어 실제 증분 DPU 매출이 생기는지 확인")
+            lines.append("• <b>의미</b>: Rubin NVL72 기본 BlueField-4 물량은 기준선으로 제외하고, 비-NVIDIA·기존 서버의 추가 장착만 증분 DPU 수요로 확인")
         elif rep["category"] == "OpenShell 기본내장·지원 확대":
             lines.append("• <b>의미</b>: OpenShell이 선택 설치를 넘어 주요 에이전트·기업 플랫폼의 기본 런타임으로 굳어지는지 확인")
         elif rep["category"] == "하드웨어 격리 의무·조달":
@@ -706,7 +715,7 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
         ]
         if links:
             lines.append("🔗 " + " · ".join(links))
-    lines += ["", "<b>다음 확인</b>: OpenShell 샌드박스/실패율/차단량 · Sentry 단독 SKU/가격 · BlueField 증분 장착률/출하량 · OpenShell 기본내장/지원범위 · 하드웨어 격리 조달요건 · GPU/AI Enterprise 매출 연결"]
+    lines += ["", "<b>다음 확인</b>: 파트너→유료고객 전환 · OpenShell 샌드박스/실패율/차단량 · Sentry 단독 SKU/가격 · Rubin 기본물량 제외 BlueField 증분 장착률/출하량 · OpenShell 기본내장/지원범위 · 하드웨어 격리 조달요건 · GPU/AI Enterprise 매출 연결"]
     return title, "\n".join(lines)
 
 
