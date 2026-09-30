@@ -817,6 +817,11 @@ def run_probe(token: str) -> dict[str, Any]:
         themes = stock_themes(token, "000660")
     except Exception as exc:
         themes = [{"error": f"{type(exc).__name__}: {exc}"}]
+    etf_pdf_probe = None
+    if etfs:
+        etf_code = str(etfs[0].get("shcode") or "").strip()
+        if etf_code:
+            etf_pdf_probe = {"code": etf_code, **etf_pdf_overlap(token, etf_code, {"005930", "000660"})}
     probe = {
         "master_count": len(master),
         "etf_count": len(etfs),
@@ -829,6 +834,7 @@ def run_probe(token: str) -> dict[str, Any]:
         "program_rank_errors": rank_errors,
         "samsung_integrated_price": samsung_price,
         "skhynix_themes": themes[:8],
+        "etf_pdf_probe": etf_pdf_probe,
     }
     PROBE.parent.mkdir(parents=True, exist_ok=True)
     PROBE.write_text(json.dumps(probe, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -838,6 +844,8 @@ def run_probe(token: str) -> dict[str, Any]:
         raise RuntimeError(f"integrated stock chart probe failed: {probe}")
     if not rank:
         raise RuntimeError(f"integrated program rank probe failed: {probe}")
+    if etf_pdf_probe is None or not etf_pdf_probe.get("available"):
+        raise RuntimeError(f"integrated ETF PDF probe failed: {probe}")
     return probe
 
 
