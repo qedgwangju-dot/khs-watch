@@ -173,6 +173,10 @@ NOISE_PATTERNS = [
     r"downgrade[s]? .* stock", r"options activity", r"insider sells?", r"dividend",
     r"investment story", r"investment case", r"why .* stock", r"simply wall st",
     r"futu niu niu", r"stockstory", r"seeking alpha quant",
+    # Market-price/reaction stories are not structural AI-optics events.
+    r"\bshares?\b", r"\bstock\b.{0,40}\b(rise|rises|jump|jumps|gain|gains|surge|surges|rally|rallies)",
+    r"\b(boost|boosts|lift|lifts|send|sends|drive|drives)\b.{0,60}\bshares?\b",
+    r"kucoin", r"marsbit", r"huoxing", r"hyperliquid", r"altcoins?",
 ]
 
 SOURCE_PRIORITY = {
@@ -589,11 +593,12 @@ def main() -> None:
             title = item["title"]
             source = item.get("source") or ""
             score = signal_score(title, source)
-            # Require both a technology/data-movement term and an action/commercial term,
-            # except for especially strong 3.2T/CPO signals.
+            # Require both a technology/data-movement term and a concrete commercial/action term.
+            # CPO mentions alone are not enough: this prevents stock-reaction/commentary articles
+            # from becoming alerts. Only a 3.2T milestone may bypass the action requirement.
             has_high = any(re.search(p, title, re.I) for p in HIGH_SIGNAL_PATTERNS)
             has_action = any(re.search(p, title, re.I) for p in ACTION_PATTERNS)
-            very_strong = bool(re.search(r"\b3\.2\s*[Tt]\b|co[- ]?packaged optics?|\bCPO\b", title, re.I))
+            very_strong = bool(re.search(r"\b3\.2\s*[Tt]\b", title, re.I))
             if score < 7 or not has_high or (not has_action and not very_strong):
                 continue
             key = event_key(company, title, source)
