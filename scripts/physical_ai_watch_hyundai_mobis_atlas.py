@@ -64,7 +64,7 @@ _orig_clean_title = base.clean_title
 _orig_same_event = ext._same_event
 
 MOBIS = re.compile(r'현대모비스|Hyundai\s*Mobis', re.I)
-ATLAS = re.compile(r'아틀라스|\bAtlas\b|Boston\s*Dynamics|보스턴\s*다이내믹스|보스턴다이내믹스', re.I)
+ATLAS = re.compile(r'아틀라스|Atlas(?:용)?|Boston\s*Dynamics|보스턴\s*다이내믹스|보스턴다이내믹스', re.I)
 ACTUATOR = re.compile(r'액추에이터|actuator', re.I)
 TECH_DAY = re.compile(r'R&D\s*테크데이|테크데이|R&D\s*Tech\s*Day|Tech\s*Day|최초\s*공개|첫\s*공개|unveil|reveal', re.I)
 SUPPLY = re.compile(r'공급|supply|supplier|납품|shipment|customer|고객|계약|contract|수주|order|award', re.I)
