@@ -132,8 +132,16 @@ def _aggregate_flags(records: list[dict], text: str) -> dict[str, bool]:
     }
 
 
-def _official_line() -> str:
-    status = (_load_state().get("official_status") or {}).get("status")
+def _official_line(flags: dict[str, bool] | None = None) -> str:
+    state = _load_state()
+    if flags and flags.get("alaska"):
+        alaska = ((state.get("event_states") or {}).get("alaska_lng") or {})
+        facts = {str(x) for x in (alaska.get("facts") or [])}
+        if "stage:발표실행" in facts:
+            return "🏛 <b>미국측 발표 확인 · 한국측 실제 집행확정 별도 관리</b>"
+        if "stage:발표예정" in facts:
+            return "🏛 <b>미국측 발표 예정/확인 보도 · 한국측 집행확정 별도 관리</b>"
+    status = (state.get("official_status") or {}).get("status")
     if status == "confirmed":
         return "🏛 <b>정부 공식단계 상승</b> · 최신 공식문서를 우선해 확정 상태를 갱신합니다."
     if status == "unconfirmed":
@@ -231,15 +239,24 @@ def _context_numbers(flags: dict[str, bool], records: list[dict]) -> list[str]:
 
 
 def _alaska_kumkang_context() -> list[str]:
-    return [
-        "<b>🧊 9월 30일 발표 대기 상태</b>",
-        "• Reuters·Bloomberg 2026-09-29: 트럼프가 30일 한국 대미투자 첫 사업군을 공개하며 <b>알래스카 LNG 관련 540억달러</b>를 포함할 수 있다는 보도",
-        "• <b>540억달러의 성격은 아직 잠금 금지</b>: Reuters/Bloomberg 계열 보도는 한국 전략투자 활용·투입으로 표현하지만, 이데일리는 사업 전체 규모에 가까운 숫자이며 한국 실제 출자액은 미정이라고 설명",
+    state = _load_state()
+    alaska = ((state.get("event_states") or {}).get("alaska_lng") or {})
+    facts = {str(x) for x in (alaska.get("facts") or [])}
+    announced = "stage:발표실행" in facts
+    if announced:
+        status_lines = [
+            "<b>🧊 9월 30일 미국측 발표 확인</b>",
+            "• Reuters 2026-09-30: 트럼프가 한국의 <b>2,000억달러 미국 인프라·에너지 투자계획</b>을 공개했고 <b>알래스카 LNG 540억달러·대형원전 8기·텍사스 6GW 발전시설·807마일 가스관</b>을 포함한다고 보도",
+            "• <b>미국측 발표 ≠ 한국의 즉시 집행 확정</b>: 한국측 실제 자금집행·사업성 검토·투자구조·FID·금융종결은 별도 확인",
+        ]
+    else:
+        status_lines = [
+            "<b>🧊 9월 30일 발표 예정/백악관 확인 보도</b>",
+            "• Reuters·Bloomberg: 한국 대미투자 첫 사업군에 <b>알래스카 LNG 540억달러</b>가 포함될 수 있다고 보도",
+            "• 한국 정부 9월22일 국회 보고 기준 알래스카 LNG는 <b>추후 협의 과제</b>였으므로 미국측 발표와 한국측 실제 집행을 분리 확인",
+        ]
+    return status_lines + [
         "• 한국 대미투자 약속: <b>전략투자 2,000억달러 + 조선협력 1,500억달러 = 총 3,500억달러</b>",
-        "• 한국 정부 9월22일 국회 보고 기준: <b>엔시날 가스발전은 1호 추진</b>, 원전 8기·알래스카 LNG는 <b>추후 협의 과제</b>",
-        "• 백악관은 30일 15:30 ET 오벌오피스에서 트럼프가 러트닉 상무장관과 발표하는 일정을 공지했지만 <b>발표 주제·540억달러 확정 여부는 사전 공개하지 않음</b>",
-        "• Bloomberg 보도 기준 참석 예정: <b>Dan Sullivan·Nick Begich·Mike Dunleavy</b> (추가로 Howard Lutnick·Doug Burgum 등 거론) · 실제 참석은 행사 후 확인",
-        "• 원전 등 다른 에너지 프로젝트도 한국 투자 유치 대상으로 거론됐지만 <b>개별 투자액·사업자·계약은 아직 확정 전</b>",
         "",
         "<b>🇰🇷 금강공업 강관 후보 추적</b>",
         "• 2026-09-28 데이터투자: API 5L <b>5L-0864</b> · HFW·PSL1 기준 최대 <b>X70</b> 인증범위 확인",
@@ -320,7 +337,7 @@ def _compact_generic(text: str, core, lookup_time: str) -> str | None:
         first = text.splitlines()[0] if text.splitlines() else "🇺🇸 대미투자 | 중요 변화"
         title = _clean(first).replace(" | 중요 업데이트", "").replace(" | 최상위 중요 업데이트", "")
 
-    parts = [f"<b>{title}</b>", "", _official_line(), "", "<b>🟧 이번 신규 변화</b>"]
+    parts = [f"<b>{title}</b>", "", _official_line(flags), "", "<b>🟧 이번 신규 변화</b>"]
     for idx, r in enumerate(records, 1):
         timestamp = _source_time(core, r["title"], r["source"], r["link"], lookup_time)
         title_text = re.sub(r"^\d+\.\s*", "", r["title"])
@@ -375,7 +392,7 @@ def _compact_energy_package(text: str, lookup_time: str) -> str | None:
     parts = [
         "<b>🇺🇸 대미투자 | 첫사업·에너지 패키지</b>",
         "",
-        _official_line(),
+        _official_line(flags),
         "",
         "<b>🟧 이번 변화</b>",
         "• WSJ: 한국의 미국 에너지 투자 패키지가 <b>합의에 근접</b>했다는 보도",
