@@ -57,7 +57,10 @@ def _display_ko(value: str) -> str:
         s,
         flags=re.I,
     )
-    s = re.sub(r'\bPollen\s+Robotics\b', '폴렌 로보틱스', s, flags=re.I)
+    # Do not require a trailing ASCII word-boundary here: Korean particles
+    # such as "Pollen Robotics의" are Unicode word characters and previously
+    # produced the broken visible phrase "폴렌 로보틱스 Robotics의".
+    s = re.sub(r'Pollen\s+Robotics', '폴렌 로보틱스', s, flags=re.I)
     s = re.sub(r'\bMicroduck\b', '마이크로덕', s, flags=re.I)
     s = re.sub(r'\bReachy\s+Mini\b', '리치 미니', s, flags=re.I)
     s = re.sub(r'\bPollen\b', '폴렌 로보틱스', s, flags=re.I)
