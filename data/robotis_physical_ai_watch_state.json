@@ -442,8 +442,7 @@
     "4034823d62672d9751bd6da9c5019dd698a8ae46c13908d59f0e8257f3ecdaa8",
     "eb633af2830c67a54ca2de4d4fa93143b0bbae9d24bc95521fc0e4cc7128ce21",
     "a13cf3a39d2cfa9ad8500bb7acaffa64d4ddc8ad729f2d061c9c843f07df1c22",
-    "919c5ac12f6b6d22a678b65a79263cf68ad686ab8b1b03906c2b61ab5a22a85f",
-    "c91997e50132e25181396172bf25cabdf2bc3aee9f065aea9e0c33511d60d4d7"
+    "919c5ac12f6b6d22a678b65a79263cf68ad686ab8b1b03906c2b61ab5a22a85f"
   ],
   "last_selected": [],
   "groups": [
@@ -453,5 +452,6 @@
     "robotis",
     "robotis_excess_demand",
     "tesla"
-  ]
+  ],
+  "note_li2s_false_positive_cleanup": "Removed false-positive Li2S commercial-production key from 2026-09-30 validation; future actual production start remains alertable."
 }
