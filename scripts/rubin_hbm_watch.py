@@ -432,7 +432,7 @@ def make_fact(event: dict) -> dict | None:
 
     # SK hynix Indiana HBM4E: classify it correctly as a packaging/production-base event,
     # not as customer qualification.
-    if cat == "hbm4e_validation" and "hbm4e" in low and "indiana" in low and "2029" in low and ("sk hynix" in low or "sk hynix" in low.replace("-", " ")):
+    elif cat == "hbm4e_validation" and "hbm4e" in low and "indiana" in low and "2029" in low and ("sk hynix" in low or "sk hynix" in low.replace("-", " ")):
         fact_key = "skhynix_indiana_hbm4e_2029"
         headline = "SK하이닉스, 인디애나 HBM4E 첨단 패키징 양산을 2029년 3분기에 시작 계획"
         bullets.append("• 확인된 사실: 미국 인디애나 거점에서 차세대 HBM4E의 첨단 패키징·양산을 2029년 3분기부터 시작할 계획입니다.")
