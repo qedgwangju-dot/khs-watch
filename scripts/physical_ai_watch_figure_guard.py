@@ -47,17 +47,29 @@ def _published(item: dict) -> dt.datetime:
         return dt.datetime.min.replace(tzinfo=dt.timezone.utc)
 
 
-def _published_day_kst(item: dict) -> str:
+def _teaser_event_day_kst(item: dict) -> str:
+    """Resolve the day of the promised reveal, not the day the teaser was scanned."""
     value = _published(item)
     if value == dt.datetime.min.replace(tzinfo=dt.timezone.utc):
-        # Stable fallback: do not use scan time, which would create a new key
-        # when an old teaser is rediscovered the next day.
         sid = str(item.get("x_status_id") or "")
         if sid:
             value = fig.legacy._tweet_time_from_id(sid) or value
     if value == dt.datetime.min.replace(tzinfo=dt.timezone.utc):
         return "unknown"
-    return value.astimezone(base.KST).strftime("%Y-%m-%d")
+
+    local = value.astimezone(base.KST)
+    text = f"{item.get('title','')} {item.get('description','')}"
+    # A Sep-30 "tomorrow" teaser and an Oct-1 "see you in the AM" follow-up
+    # are one Oct-1 reveal event. This is the exact cross-midnight failure that
+    # previously produced three Telegram alerts for one Figure announcement.
+    if re.search(
+        r"coming\s+tomorrow|\btomorrow\b|release\s+(?:it\s+)?tomorrow|"
+        r"reveal\s+tomorrow|announce\s+tomorrow|내일|익일",
+        text,
+        re.I,
+    ):
+        local = local + dt.timedelta(days=1)
+    return local.strftime("%Y-%m-%d")
 
 
 def _teaser_signature(item: dict) -> str:
@@ -89,7 +101,7 @@ def _is_first_party_teaser(item: dict) -> bool:
 
 
 def _teaser_key(item: dict) -> str:
-    day = _published_day_kst(item)
+    day = _teaser_event_day_kst(item)
     sig = _teaser_signature(item)
     return hashlib.sha256(f"figure-ai|first-party-teaser|{day}|{sig}".encode()).hexdigest()
 
@@ -127,7 +139,13 @@ def load_state() -> dict:
     state = _orig_load_state()
     seen = list(state.get("seen", []))
     seen_set = set(seen)
-    if seen_set.intersection(_LEGACY_FIGURE_TEASER_KEYS):
+    legacy_day_keys = {
+        hashlib.sha256(b"figure-ai|first-party-teaser|2026-09-30|generic").hexdigest(),
+        hashlib.sha256(b"figure-ai|first-party-teaser|2026-10-01|generic").hexdigest(),
+    }
+    if seen_set.intersection(_LEGACY_FIGURE_TEASER_KEYS | legacy_day_keys):
+        # Canonical event day is Oct-1 KST: the Sep-30 teaser said "tomorrow",
+        # while the later follow-ups referenced the upcoming morning.
         migrated = hashlib.sha256(
             b"figure-ai|first-party-teaser|2026-10-01|generic"
         ).hexdigest()
