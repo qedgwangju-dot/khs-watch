@@ -16,56 +16,60 @@
     {
       "ts": "2026-09-30T16:19:40+09:00",
       "value": 1352.5
+    },
+    {
+      "ts": "2026-09-30T20:23:16+09:00",
+      "value": 1355.0
     }
   ],
   "sent_level": 0,
   "sent_weakening": false,
   "last_signal": null,
   "latest": {
-    "checked_at": "2026-09-30T16:19:40+09:00",
+    "checked_at": "2026-09-30T20:23:16+09:00",
     "market_phase": "장마감 후",
     "fx": {
-      "value": 1352.5,
+      "value": 1355.0,
       "prev_close": 1350.0,
       "naver_prev_close": 1353.5,
       "date": "2026-09-30",
       "source": "https://api.stock.naver.com/marketindex/exchange/FX_USDKRW/prices?page=1&pageSize=5",
-      "comparison_basis": "서울외환시장 15:30 USD/KRW 종가",
+      "comparison_basis": "서울외환시장 15:30 USD/KRW 종가 · 시장 스트레스 감시 검증값 재사용",
       "prev_close_source": "https://ksureapi.einfomax.co.kr/v2/datafeed/ksure/fxview?id=20260929153539799",
       "basis_error": null,
-      "basis_reused": false
+      "basis_reused": true
     },
     "session_low": 1352.5,
-    "rebound_krw": 0.0,
-    "rebound_pct": 0.0,
-    "daily_krw": 2.5,
-    "daily_pct": 0.18518518518517713,
+    "rebound_krw": 2.5,
+    "rebound_pct": 0.1848428835489857,
+    "daily_krw": 5.0,
+    "daily_pct": 0.37037037037037646,
     "kospi_pct": -0.48,
     "ship": {
-      "avg": 0.8949999999999999,
+      "avg": 1.2750000000000001,
       "positive": 4,
-      "relative": 1.375,
+      "relative": 1.7550000000000001,
       "valid": 4,
       "confirmed": true
     },
     "defense": {
-      "avg": -0.2,
+      "avg": 0.135,
       "positive": 2,
-      "relative": 0.27999999999999997,
+      "relative": 0.615,
       "valid": 4,
       "confirmed": false
     },
     "auto": {
-      "avg": 0.05250000000000005,
+      "avg": 0.4049999999999999,
       "positive": 1,
-      "relative": 0.5325,
+      "relative": 0.8849999999999999,
       "valid": 4,
       "confirmed": false
     },
     "counter": {
-      "avg": 0.505,
+      "avg": 0.29,
       "positive": 2,
-      "relative": 0.985,
+      "relative": 0.77,
       "valid": 4,
       "confirmed": false
     }
