@@ -613,7 +613,7 @@ def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -
         return []
     chosen: list[dict] = []
     used: set[str] = set()
-    priority = ['tesla','xpeng','rfm_general_intelligence','agility_platform','samhyun','lg_robotics','robotis','battery','frontier_ai','wonik','byd_paxini']
+    priority = ['tesla','xpeng','global_battery_capacity','solid_state_material','rfm_general_intelligence','agility_platform','samhyun','lg_robotics','robotis','battery','ess_battery','frontier_ai','wonik','byd_paxini']
     for group in priority:
         for x in candidates:
             if x.get('group') == group and x['key'] not in used:
