@@ -27,13 +27,17 @@ _orig_load_state = base.load_state
 # Two duplicate Figure teasers were already delivered on 2026-10-01 KST with
 # post-id keys before semantic teaser dedupe was hardened. Keep these only as a
 # migration anchor so the already-delivered event cannot fire a third time.
-_LEGACY_FIGURE_TEASER_STATUS_IDS = (
-    "2105322505934410007",
-    "2105316680251650555",
-)
+_LEGACY_FIGURE_TEASER_STATUS_TARGETS = {
+    # Sep-30 teaser promised an Oct-1 reveal.
+    "2105138104009199977": "2026-10-01",
+    # These two Oct-1 posts both promised the same Oct-2 reveal and were
+    # incorrectly delivered as separate post-id alerts before this guard.
+    "2105316680251650555": "2026-10-02",
+    "2105322505934410007": "2026-10-02",
+}
 _LEGACY_FIGURE_TEASER_KEYS = {
-    hashlib.sha256(f"x:adcock_brett:{sid}".encode()).hexdigest()
-    for sid in _LEGACY_FIGURE_TEASER_STATUS_IDS
+    hashlib.sha256(f"x:adcock_brett:{sid}".encode()).hexdigest(): target
+    for sid, target in _LEGACY_FIGURE_TEASER_STATUS_TARGETS.items()
 }
 
 
@@ -139,20 +143,30 @@ def load_state() -> dict:
     state = _orig_load_state()
     seen = list(state.get("seen", []))
     seen_set = set(seen)
-    legacy_day_keys = {
-        hashlib.sha256(b"figure-ai|first-party-teaser|2026-09-30|generic").hexdigest(),
-        hashlib.sha256(b"figure-ai|first-party-teaser|2026-10-01|generic").hexdigest(),
-    }
-    if seen_set.intersection(_LEGACY_FIGURE_TEASER_KEYS | legacy_day_keys):
-        # Canonical event day is Oct-1 KST: the Sep-30 teaser said "tomorrow",
-        # while the later follow-ups referenced the upcoming morning.
+
+    # Migrate old post-id keys to the promised-reveal event key. Do this per
+    # status because Sep-30 and Oct-1 teasers referred to different reveal days.
+    for legacy_key, target_day in _LEGACY_FIGURE_TEASER_KEYS.items():
+        if legacy_key not in seen_set:
+            continue
         migrated = hashlib.sha256(
-            b"figure-ai|first-party-teaser|2026-10-01|generic"
+            f"figure-ai|first-party-teaser|{target_day}|generic".encode()
         ).hexdigest()
         if migrated not in seen_set:
             seen.append(migrated)
             seen_set.add(migrated)
-        state["seen"] = seen[-3500:]
+
+    # Also migrate the two temporary day-based keys created by the first fix.
+    temporary_migrations = {
+        hashlib.sha256(b"figure-ai|first-party-teaser|2026-09-30|generic").hexdigest():
+            hashlib.sha256(b"figure-ai|first-party-teaser|2026-10-01|generic").hexdigest(),
+    }
+    for old_key, migrated in temporary_migrations.items():
+        if old_key in seen_set and migrated not in seen_set:
+            seen.append(migrated)
+            seen_set.add(migrated)
+
+    state["seen"] = seen[-3500:]
     return state
 
 
