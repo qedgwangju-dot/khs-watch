@@ -79,14 +79,19 @@ HIGH_SOURCES = {
 MID_SOURCES = {
     "the elec", "zdnet korea", "zdnet", "서울경제", "seoul economic daily",
     "etnews", "전자신문", "macrumors", "digitimes", "businesskorea", "더구루",
+    "jiemian", "界面新闻",
 }
-LOW_SOURCES = {"wccftech", "ibtimes", "technobezz", "biggo", "note.com"}
+LOW_SOURCES = {
+    "wccftech", "ibtimes", "technobezz", "biggo", "note.com",
+    "jablíčkář", "jablickar", "aob news", "macnews", "secnews", "gate",
+}
 
 BASELINE_TEXT = (
-    "기준선: 최신 공개 완제품 전망 약 500만~700만 대, "
-    "Apple용 폴더블 OLED 준비량 약 800만 장 수준, "
-    "8월 말 완제품 생산은 하루 수백 대 보도, "
-    "9월 10일 전후 힌지 수율·골든샘플 선별이 병목으로 보도됨."
+    "기준선: 2026 완제품 공개 전망 약 500만~700만 대와 별도로, "
+    "界面新闻은 9월 17일 기준 글로벌 비축 목표 약 600만~800만 대를 보도. "
+    "Apple용 폴더블 OLED 준비량은 약 800만 장 수준, "
+    "Foxconn 최종 조립 수율은 9월 17일 기준 60%대 초반으로 보도됐고 "
+    "OLED·힌지 납기/수율 병목도 같은 원보도에서 확인됨."
 )
 
 
@@ -137,10 +142,17 @@ def _load_state() -> dict:
             "metrics": {
                 "finished_units_low_m": 5.0,
                 "finished_units_high_m": 7.0,
+                "stocking_target_low_m": 6.0,
+                "stocking_target_high_m": 8.0,
                 "panel_units_m": 8.0,
                 "daily_output_units": 500,
+                "assembly_yield_pct": 60.0,
                 "hinge_yield_pct": 65.0,
             },
+            "seen_fact_keys": [
+                "assembly_yield_60",
+                "sep17_assembly_bottleneck",
+            ],
             "last_alert": None,
         }
     try:
@@ -149,6 +161,7 @@ def _load_state() -> dict:
             raise ValueError("state is not an object")
         data.setdefault("seen", [])
         data.setdefault("metrics", {})
+        data.setdefault("seen_fact_keys", [])
         return data
     except Exception:
         return {
@@ -156,6 +169,7 @@ def _load_state() -> dict:
             "baseline_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
             "seen": [],
             "metrics": {},
+            "seen_fact_keys": [],
             "last_alert": None,
         }
 
@@ -202,8 +216,10 @@ def _classify(blob: str) -> set[str]:
         topics.add("daily")
     if any(x in low for x in ("panel", "oled", "display", "패널", "디스플레이")):
         topics.add("panel")
-    if any(x in low for x in ("hinge", "yield", "golden sample", "힌지", "수율", "골든 샘플")):
+    if any(x in low for x in ("hinge", "golden sample", "힌지", "골든 샘플")):
         topics.add("hinge")
+    if any(x in low for x in ("yield", "yields", "수율", "양품률")):
+        topics.add("yield")
     if any(x in low for x in ("foxconn", "assembly", "폭스콘", "조립")):
         topics.add("assembly")
     if any(x in low for x in ("dram", "lpddr", "nand", "memory", "메모리", "디램", "낸드")):
@@ -258,6 +274,32 @@ def _extract_percentages(blob: str) -> list[float]:
     ]
 
 
+def _fact_keys(blob: str) -> set[str]:
+    low = blob.lower()
+    topics = _classify(low)
+    keys: set[str] = set()
+    percentages = _extract_percentages(low)
+
+    if "assembly" in topics and "yield" in topics:
+        plausible = [x for x in percentages if 20 <= x <= 100]
+        for value in plausible:
+            keys.add(f"assembly_yield_{int(round(value))}")
+
+    if "hinge" in topics and "yield" in topics:
+        plausible = [x for x in percentages if 20 <= x <= 100]
+        for value in plausible:
+            keys.add(f"hinge_yield_{int(round(value))}")
+
+    if (
+        ("assembly" in topics or "hinge" in topics)
+        and any(x in low for x in ("low yield", "low yields", "yield issue", "yield issues", "수율 저하", "낮은 수율"))
+        and any(x in low for x in ("delay", "delayed", "defect", "defects", "결함", "지연"))
+    ):
+        keys.add("sep17_assembly_bottleneck")
+
+    return keys
+
+
 def _translate_to_ko(text: str) -> str:
     text = _clean(text)
     if not text:
@@ -294,7 +336,9 @@ def _meaningful(item: dict, state: dict) -> tuple[bool, str, str]:
         return False, "", ""
 
     rank = _source_rank(item.get("source", ""))
-    if rank == 0:
+    # Precision-first gate: unknown/low-grade outlets cannot create a production
+    # alert by themselves. They remain searchable context only.
+    if rank <= 1:
         return False, "", ""
 
     topics = _classify(blob)
@@ -306,6 +350,8 @@ def _meaningful(item: dict, state: dict) -> tuple[bool, str, str]:
 
     reasons: list[str] = []
     verdict = "공급망 신규 변화"
+    metric_change = False
+    quantitative_context = bool(units_m or daily or percentages)
 
     if "daily" in topics and daily:
         previous = int(metrics.get("daily_output_units") or 0)
@@ -313,9 +359,11 @@ def _meaningful(item: dict, state: dict) -> tuple[bool, str, str]:
         if previous <= 0 or current >= max(previous * 1.8, previous + 2000):
             reasons.append(f"일 생산량 {previous:,}→{current:,}대 수준 신호")
             verdict = "완제품 생산 램프업"
+            metric_change = True
         elif current <= max(100, int(previous * 0.6)):
             reasons.append(f"일 생산량 둔화 {previous:,}→{current:,}대 수준 신호")
             verdict = "완제품 생산 둔화"
+            metric_change = True
 
     if "finished" in topics and units_m:
         low = float(metrics.get("finished_units_low_m") or 0)
@@ -324,9 +372,11 @@ def _meaningful(item: dict, state: dict) -> tuple[bool, str, str]:
         if current_high >= max(high + 0.5, 7.5):
             reasons.append(f"완제품 전망/목표 상단 {high:g}→{current_high:g}백만대 상향 신호")
             verdict = "완제품 물량 상향"
+            metric_change = True
         elif low and current_high <= low - 0.5:
             reasons.append(f"완제품 전망 {low:g}백만대 기준보다 하향 신호")
             verdict = "완제품 물량 하향"
+            metric_change = True
 
     if "panel" in topics and units_m:
         previous = float(metrics.get("panel_units_m") or 0)
@@ -337,26 +387,48 @@ def _meaningful(item: dict, state: dict) -> tuple[bool, str, str]:
                 direction = "상향" if current > previous else "하향"
                 reasons.append(f"OLED 패널 준비량 {previous:g}→{current:g}백만장 {direction} 신호")
                 verdict = "부품 선행증산" if current > previous else "부품 준비 축소"
+                metric_change = True
 
-    if "hinge" in topics and percentages:
+    if "assembly" in topics and "yield" in topics and percentages:
+        plausible = [x for x in percentages if 20 <= x <= 100]
+        if plausible:
+            current = max(plausible)
+            previous = float(metrics.get("assembly_yield_pct") or 0)
+            if previous <= 0 or abs(current - previous) >= 5:
+                direction = "개선" if current > previous else "악화"
+                reasons.append(f"Foxconn 최종 조립 수율 {previous:g}%→{current:g}% {direction} 신호")
+                verdict = "최종 조립 수율 개선" if current > previous else "최종 조립 수율 악화"
+                metric_change = True
+
+    if "hinge" in topics and "yield" in topics and percentages and "assembly" not in topics:
         plausible = [x for x in percentages if 20 <= x <= 100]
         if plausible:
             current = max(plausible)
             previous = float(metrics.get("hinge_yield_pct") or 0)
             if previous <= 0 or abs(current - previous) >= 5:
                 direction = "개선" if current > previous else "악화"
-                reasons.append(f"힌지/조립 수율 {previous:g}%→{current:g}% {direction} 신호")
+                reasons.append(f"힌지 수율 {previous:g}%→{current:g}% {direction} 신호")
                 verdict = "힌지 병목 개선" if current > previous else "힌지 병목 악화"
+                metric_change = True
 
-    if change_word and ("hinge" in topics or "assembly" in topics):
-        reasons.append("힌지·Foxconn 조립 램프 변화 표현 감지")
-        verdict = "완제품 병목 변화"
+    # A qualitative bottleneck headline without a new number is alertable only
+    # from a high-trust source. Mid-tier or unknown republications cannot
+    # generate a fresh alert merely because the article is newly published.
+    if (
+        not metric_change
+        and not quantitative_context
+        and rank >= 3
+        and change_word
+        and ("hinge" in topics or "assembly" in topics)
+    ):
+        reasons.append("고신뢰 출처에서 생산 램프 병목의 신규 정성 변화 표현 감지")
+        verdict = "생산 램프 병목 변화"
 
-    if change_word and ("memory" in topics or "components" in topics):
+    if rank >= 2 and change_word and ("memory" in topics or "components" in topics):
         reasons.append("메모리·FPCB·카메라 등 부품 발주 변화 신호")
         verdict = "부품 주문 변화"
 
-    if change_word and "panel" in topics and not reasons:
+    if rank >= 2 and change_word and "panel" in topics and not reasons:
         reasons.append("OLED 패널 발주·생산 계획 변화 신호")
         verdict = "부품 선행증산"
 
@@ -371,9 +443,7 @@ def _meaningful(item: dict, state: dict) -> tuple[bool, str, str]:
     if not reasons:
         return False, "", ""
 
-    confidence = "높음" if rank >= 3 else "중간"
-    if rank == 2:
-        confidence += "·추가 교차검증 필요"
+    confidence = "높음" if rank >= 3 else "중간·추가 교차검증 필요"
     return True, verdict, f"{confidence} | " + " / ".join(reasons[:3])
 
 
@@ -442,7 +512,11 @@ def _update_metrics(state: dict, item: dict) -> None:
         panel_vals = [x for x in units_m if x >= 1]
         if panel_vals:
             metrics["panel_units_m"] = max(panel_vals)
-    if "hinge" in topics and percentages:
+    if "assembly" in topics and "yield" in topics and percentages:
+        plausible = [x for x in percentages if 20 <= x <= 100]
+        if plausible:
+            metrics["assembly_yield_pct"] = max(plausible)
+    if "hinge" in topics and "yield" in topics and percentages and "assembly" not in topics:
         plausible = [x for x in percentages if 20 <= x <= 100]
         if plausible:
             metrics["hinge_yield_pct"] = max(plausible)
@@ -496,10 +570,11 @@ def _format_alert(rows: list[dict]) -> str:
         "",
         "<b>투자 의미</b>",
         "• 패널·부품 주문 상향과 Foxconn 완제품 증산은 분리해 판단합니다.",
-        "• 실제 완제품 상향은 Foxconn 일 생산량·힌지 양품률·추가 PO·독립기관 출하전망이 함께 올라갈 때 확인합니다.",
+        "• 실제 완제품 상향은 Foxconn 일 생산량·최종 조립 수율·힌지 양품률·추가 PO·독립기관 출하전망이 함께 올라갈 때 확인합니다.",
+        "• 생산 램프 병목 보도와 출시 일정 변경은 분리합니다. Apple 공식 일정은 현재 10월 16일 사전주문·10월 23일 출시로 유지됩니다.",
         "",
         "<b>다음 확인</b>",
-        "• Foxconn 일 생산량 → 힌지 수율/골든샘플 → Samsung Display 추가 PO → 메모리·FPCB·카메라 동시 발주 → 2026 출하전망 순으로 재검증",
+        "• Foxconn 일 생산량 → 최종 조립 수율 → 힌지 수율/골든샘플 → Samsung Display 추가 PO → 메모리·FPCB·카메라 동시 발주 → 2026 출하전망 순으로 재검증",
     ]
     return "\n".join(lines).strip() + "\n"
 
@@ -510,6 +585,7 @@ def main() -> None:
 
     state = _load_state()
     seen = set(str(x) for x in state.get("seen") or [])
+    seen_fact_keys = set(str(x) for x in state.get("seen_fact_keys") or [])
     baseline = _baseline_dt(state)
     force = str(os.getenv("FORCE_NOTIFY") or "").lower() in {"1", "true", "yes", "on"}
 
@@ -533,11 +609,22 @@ def main() -> None:
             new_seen.append(fp)
             continue
 
+        fact_keys = _fact_keys(f"{item['title']} {item.get('description', '')}")
+        if fact_keys and fact_keys.issubset(seen_fact_keys):
+            new_seen.append(fp)
+            continue
+
         meaningful, verdict, reason = _meaningful(item, state)
         new_seen.append(fp)
         if meaningful:
             row = dict(item)
-            row.update({"verdict": verdict, "reason": reason, "fingerprint": fp})
+            row.update({
+                "verdict": verdict,
+                "reason": reason,
+                "fingerprint": fp,
+                "fact_keys": sorted(fact_keys),
+                "source_rank": _source_rank(item.get("source", "")),
+            })
             candidates.append(row)
 
     if force and not candidates:
@@ -554,7 +641,32 @@ def main() -> None:
                 break
 
     pending = json.loads(json.dumps(state, ensure_ascii=False))
+    # For the same underlying fact, prefer the strongest source before alerting.
+    deduped_candidates: dict[str, dict] = {}
+    passthrough: list[dict] = []
+    for row in candidates:
+        keys = row.get("fact_keys") or []
+        if not keys:
+            passthrough.append(row)
+            continue
+        group = "|".join(keys)
+        current = deduped_candidates.get(group)
+        if current is None or int(row.get("source_rank") or 0) > int(current.get("source_rank") or 0):
+            deduped_candidates[group] = row
+    candidates = list(deduped_candidates.values()) + passthrough
+    candidates.sort(
+        key=lambda x: (int(x.get("source_rank") or 0), x.get("published") or ""),
+        reverse=True,
+    )
+
     pending["seen"] = list(dict.fromkeys(new_seen))[-800:]
+    pending["seen_fact_keys"] = sorted(
+        seen_fact_keys | {
+            key
+            for row in candidates[:4]
+            for key in (row.get("fact_keys") or [])
+        }
+    )[-300:]
     pending["last_scan_kst"] = dt.datetime.now(KST).isoformat(timespec="seconds")
     pending["errors"] = errors[-20:]
     if candidates:
