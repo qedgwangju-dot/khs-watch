@@ -47,9 +47,11 @@ class RubinHBMUpgradeTests(unittest.TestCase):
         self.assertIn("목표주가 변경만으로는 발송하지 않습니다", x["verdict"])
 
     def test_current_bernstein_facts_are_seeded_to_prevent_retro_alert(self):
-        self.assertEqual(r.STRUCTURE_BASELINE_VERSION, 2)
+        self.assertEqual(r.STRUCTURE_BASELINE_VERSION, 3)
         self.assertIn("bernstein_rubin_ultra_model_1024_to_640_8hi50_12hi50", r.KNOWN_STRUCTURE_FACT_KEYS)
         self.assertIn("bernstein_hbm_supplier_relative_samsung_up_skhynix_down", r.KNOWN_STRUCTURE_FACT_KEYS)
+        self.assertIn("bernstein_hbm_supplier_relative_samsung_up", r.KNOWN_STRUCTURE_FACT_KEYS)
+        self.assertIn("bernstein_hbm_supplier_relative_skhynix_down", r.KNOWN_STRUCTURE_FACT_KEYS)
 
     def test_contract_signed_without_percentage_alerts(self):
         e = self.base_event("hbm_2027_contract", "TrendForce: 2027 HBM contract signed and pricing agreement finalized")

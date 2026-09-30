@@ -39,11 +39,13 @@ BASE_SYSTEM_GB = BASE_NVLINK_GPU * OFFICIAL_RUBIN_GB
 ULTRA_SYSTEM_GB = ULTRA_NVLINK_GPU * RUMORED_ULTRA_GB
 SYSTEM_HBM_GROWTH = ULTRA_SYSTEM_GB / BASE_SYSTEM_GB - 1
 SEND_FRESHNESS_HOURS = 72
-STRUCTURE_BASELINE_VERSION = 2
+STRUCTURE_BASELINE_VERSION = 3
 KNOWN_STRUCTURE_FACT_KEYS = {
     "hbm_capacity_kv_offload_mainstream_8hi_12hi_niche_4hi",
     "bernstein_rubin_ultra_model_1024_to_640_8hi50_12hi50",
     "bernstein_hbm_supplier_relative_samsung_up_skhynix_down",
+    "bernstein_hbm_supplier_relative_samsung_up",
+    "bernstein_hbm_supplier_relative_skhynix_down",
 }
 
 QUERIES = [
