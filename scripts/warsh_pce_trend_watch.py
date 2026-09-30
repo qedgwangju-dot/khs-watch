@@ -121,6 +121,7 @@ def send(msg):
         out = json.loads(r.read().decode('utf-8'))
     if not out.get('ok'):
         raise RuntimeError(f'Telegram send failed: {out}')
+    return (out.get('result') or {}).get('message_id')
 
 
 def main():
@@ -135,13 +136,13 @@ def main():
     if FORCE_NOTIFY or (not first_run and new_period and regime_changed):
         msg = [
             '[Warsh 새 정보축] PCE 3개월·6개월 추세',
-            f"기준월: {cur['date']}",
-            f"Headline PCE: 3개월 연율 {cur['headline_3m_ann']:+.2f}% | 6개월 연율 {cur['headline_6m_ann']:+.2f}% | YoY {cur['headline_yoy']:+.2f}%",
-            f"Core PCE: 3개월 연율 {cur['core_3m_ann']:+.2f}% | 6개월 연율 {cur['core_6m_ann']:+.2f}% | YoY {cur['core_yoy']:+.2f}%",
+            f"기준월: {cur['date'][:4]}년 {int(cur['date'][5:7])}월",
+            f"종합 PCE(식품·에너지 포함): 3개월 연율 {cur['headline_3m_ann']:+.2f}% | 6개월 연율 {cur['headline_6m_ann']:+.2f}% | 전년 대비 {cur['headline_yoy']:+.2f}%",
+            f"근원 PCE(식품·에너지 제외): 3개월 연율 {cur['core_3m_ann']:+.2f}% | 6개월 연율 {cur['core_6m_ann']:+.2f}% | 전년 대비 {cur['core_yoy']:+.2f}%",
             f"판정: {cur['regime']}",
             '',
-            "의미: Warsh의 'Trends matter most' 원칙에 맞춰 한 달치 PCE가 아니라 3·6개월 기조가 2%로 충분히 빠르게 내려가는지 확인.",
-            '원천: BEA PCE index via Federal Reserve Bank of St. Louis FRED',
+            "의미: Warsh의 '추세가 가장 중요하다'는 원칙에 맞춰 한 달치 PCE가 아니라 3·6개월 기조가 2%로 충분히 빠르게 내려가는지 확인.",
+            '원천: 미국 경제분석국(BEA) PCE 지수 · 세인트루이스 연은 FRED 재공표',
             'PCEPI: https://fred.stlouisfed.org/series/PCEPI',
             'PCEPILFE: https://fred.stlouisfed.org/series/PCEPILFE',
         ]
