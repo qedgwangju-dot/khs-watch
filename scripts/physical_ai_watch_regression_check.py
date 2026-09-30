@@ -545,6 +545,17 @@ assert g == "mobis_lamp_divestiture", (g, s, c)
 assert c.endswith("거래 종결"), c
 assert s >= 11, s
 
+
+mobis_lamp_closing_no_lamp_word = make(
+    "Hyundai Mobis-OPmobility transaction closing completed",
+    "Hyundai Mobis and OPmobility completed the acquisition transaction after regulatory clearance.",
+    "OPmobility",
+)
+g, s, c, k = classify(mobis_lamp_closing_no_lamp_word)
+assert g == "mobis_lamp_divestiture", (g, s, c)
+assert c.endswith("거래 종결"), c
+assert s >= 11, s
+
 mobis_lamp_injunction = make(
     "현대모비스 램프사업 매각 가처분 신청 접수",
     "노조가 램프사업 분할 및 매각 관련 가처분 신청을 법원에 접수했다.",
@@ -593,6 +604,17 @@ mobis_atlas_validation = make(
 g, s, c, k = classify(mobis_atlas_validation)
 assert g == "hyundai_mobis_atlas", (g, s, c)
 assert c.endswith("고객 승인·신뢰성·양산검증"), c
+assert s >= 11, s
+
+
+mobis_atlas_order = make(
+    "현대모비스, Boston Dynamics Atlas 액추에이터 3만개 양산 공급계약 수주",
+    "현대모비스가 Atlas용 액추에이터 30,000개 양산 공급계약을 체결하고 생산 발주를 확보했다.",
+    "현대모비스",
+)
+g, s, c, k = classify(mobis_atlas_order)
+assert g == "hyundai_mobis_atlas", (g, s, c)
+assert c.endswith("아틀라스 액추에이터 양산계약·수주"), c
 assert s >= 11, s
 
 mobis_atlas_sop = make(
