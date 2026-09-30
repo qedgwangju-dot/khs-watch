@@ -638,17 +638,17 @@
     },
     "alaska_lng": {
       "facts": [
-        "alaska_korea_investment_usd_b:54",
+        "alaska_reported_amount_usd_b:54",
         "stage:발표예정"
       ],
       "slots": {
-        "alaska_lng|alaska_korea_investment_usd_b": "alaska_korea_investment_usd_b:54",
-        "alaska_lng|stage:발표예정": "stage:발표예정"
+        "alaska_lng|stage:발표예정": "stage:발표예정",
+        "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:54"
       },
       "initialized_at": "2026-09-29T23:10:16.076895+00:00",
       "updated_at": "2026-09-30T00:04:13.250162+00:00",
       "last_title": "[종합] 트럼프, 韓 540억달러 알래스카 LNG 투자 발표 예고 - 뉴스핌",
-      "last_source": "뉴스핌",
+      "last_source": "뉴스핌 · amount-role-unconfirmed",
       "evidence": [
         {
           "source": "연합뉴스",
@@ -686,5 +686,5 @@
   "event_state_guard_version": 4,
   "event_state_guard_started_at": "2026-09-21T13:18:18.976218+00:00",
   "event_state_guard_baselined_at": "2026-09-21T13:18:34.529808+00:00",
-  "alaska_investment_semantics_version": 1
+  "alaska_investment_semantics_version": 2
 }
