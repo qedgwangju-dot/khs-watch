@@ -112,6 +112,50 @@ def format_trigger(line: str, is_partial: bool = False) -> list[str]:
     return [line]
 
 
+def five_day_reading(etf: dict, rate: float | None, is_partial: bool) -> list[str]:
+    last5 = etf.get("last5_usd_m")
+    prev5 = etf.get("prev5_usd_m")
+    if last5 is None or prev5 is None:
+        return ["• <b>5거래일 비교</b> · 검증된 비교 구간 부족"]
+
+    last5 = float(last5)
+    prev5 = float(prev5)
+    delta = etf.get("five_day_change_usd_m")
+    delta = float(delta) if delta is not None else last5 - prev5
+    pct = etf.get("five_day_change_pct")
+    pct = float(pct) if pct is not None else None
+
+    last_dates = etf.get("last5_dates") or []
+    prev_dates = etf.get("prev5_dates") or []
+    last_range = (
+        f"{last_dates[0]}~{last_dates[-1]}" if len(last_dates) == 5 else "기간 확인 불가"
+    )
+    prev_range = (
+        f"{prev_dates[0]}~{prev_dates[-1]}" if len(prev_dates) == 5 else "기간 확인 불가"
+    )
+
+    if last5 > 0 and prev5 > 0:
+        direction = "순유입 강도 확대" if last5 > prev5 else "순유입 강도 둔화" if last5 < prev5 else "순유입 강도 동일"
+    elif last5 < 0 and prev5 < 0:
+        direction = "순유출 규모 축소" if last5 > prev5 else "순유출 규모 확대" if last5 < prev5 else "순유출 규모 동일"
+    elif prev5 <= 0 < last5:
+        direction = "순유출 → 순유입 전환"
+    elif prev5 >= 0 > last5:
+        direction = "순유입 → 순유출 전환"
+    else:
+        direction = "흐름 변화 제한"
+
+    heading = "• <b>5거래일 비교 · 잠정</b>" if is_partial else "• <b>5거래일 비교</b>"
+    recent_label = "최근5(잠정)" if is_partial else "최근5"
+    pct_text = f" · {fmt_pct(pct)}" if pct is not None else ""
+    return [
+        heading,
+        f"  {recent_label} {last_range} · <b>{fmt_usd_m(last5, rate)}</b>",
+        f"  이전5 {prev_range} · {fmt_usd_m(prev5, rate)}",
+        f"  → 구간 차이 {fmt_usd_m(delta, rate)}{pct_text} · {direction}",
+    ]
+
+
 def format_fx_line(line: str) -> list[str]:
     body = line.removeprefix("원화 환산 기준:").strip()
     parts = [x.strip() for x in body.split(" | ") if x.strip()]
@@ -422,7 +466,10 @@ def format_alert(text: str) -> str:
         if stripped.startswith("<b>BTC 자금 위치</b>") or stripped.startswith("미 국채 —"):
             break
         if stripped.startswith(known_trigger_prefixes):
-            trigger_lines.extend(format_trigger(stripped, is_partial=is_partial))
+            if stripped.startswith("• BTC 현물 ETF 5거래일 구간 이동:"):
+                trigger_lines.extend(five_day_reading(etf, fx_rate, is_partial))
+            else:
+                trigger_lines.extend(format_trigger(stripped, is_partial=is_partial))
 
     if trigger_lines:
         out += ["", "<b>무엇이 바뀌었나</b>", *trigger_lines]
@@ -447,18 +494,11 @@ def format_alert(text: str) -> str:
 
         last5 = etf.get("last5_usd_m")
         prev5 = etf.get("prev5_usd_m")
-        five_pct = etf.get("five_day_change_pct")
         if last5 is not None and prev5 is not None:
-            last5f = float(last5)
-            prev5f = float(prev5)
-            comparison = ""
-            if five_pct is not None:
-                comparison = f" · 이전5 대비 {fmt_pct(float(five_pct))}"
-            elif last5f * prev5f < 0:
-                comparison = " · 이전5 대비 부호 전환"
-            out.append(
-                f"• 최근5 · <b>{fmt_usd_m(last5f, fx_rate)}</b>{comparison}"
-            )
+            ordered = five_day_reading(etf, fx_rate, is_partial)
+            # "지금 숫자"에서는 제목을 빼고 최근5 → 이전5 → 구간 차이 순서만 표시.
+            for row in ordered[1:]:
+                out.append(f"• {row.strip()}")
 
     if rates:
         out.append(
