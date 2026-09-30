@@ -830,7 +830,7 @@ def _meaning_line(raw_title: str, detail_blob: str) -> str:
 def _is_sparse_price_sheet(raw_title: str, price_details: list[str], signal_details: list[str]) -> bool:
     low = raw_title.lower()
     monthly_sheet = any(k in low for k in (
-        "contract price", "wafer contract price", "specialty dram price", "spot price",
+        "contract price", "wafer contract price", "specialty dram price", "spot price", "datasheet",
     )) and "market bulletin" not in low and "memory price forecast" not in low
     specific_price = any(re.search(r"[+-]?\d+(?:\.\d+)?(?:~|-|–|—)\d+(?:\.\d+)?%", x) for x in price_details)
     meaningful_signal = len(signal_details) >= 1
