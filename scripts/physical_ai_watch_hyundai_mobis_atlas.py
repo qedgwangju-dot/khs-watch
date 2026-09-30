@@ -36,7 +36,9 @@ base.QUERIES.extend([
     '("현대모비스" OR "Hyundai Mobis") (로보틱스 OR robotics OR 휴머노이드 OR humanoid) (그리퍼 OR gripper OR 센서 OR sensor OR 제어기 OR controller OR 배터리팩 OR "battery pack") (공급 OR supply OR 고객 OR customer OR 양산 OR mass production OR 개발 OR development)',
     '("현대모비스" OR "Hyundai Mobis") (액추에이터 OR actuator OR 로봇부품 OR "robot components") (신규 고객 OR "new customer" OR 외부 고객 OR "external customer" OR OEM OR 수주 OR order OR contract OR 계약 OR award) (로봇 OR robot OR humanoid OR 휴머노이드)',
     '("Boston Dynamics" OR 보스턴다이내믹스) (Atlas OR 아틀라스) ("Hyundai Mobis" OR 현대모비스) (actuator OR 액추에이터 OR supply OR 공급 OR production OR 양산 OR validation OR 검증)',
+    '("현대모비스" OR "Hyundai Mobis") (Atlas OR 아틀라스) (액추에이터 OR actuator) (수주 OR 발주 OR order OR "purchase order" OR 계약금액 OR contract OR volume OR 물량 OR ASP OR 단가 OR 첫출하 OR "first shipment")',
     '("현대모비스" OR "Hyundai Mobis") (램프 OR lamp OR lighting OR 조명) ("OPmobility" OR "OP Mobility" OR "Plastic Omnium") (매각 OR sale OR disposal OR divest OR acquisition OR 인수 OR 본계약 OR SPA OR closing OR 종결 OR 완료 OR 분할 OR "spin-off" OR 주주총회 OR 기업결합 OR antitrust OR 가처분 OR injunction OR 소송 OR litigation)',
+    '("현대모비스" OR "Hyundai Mobis") ("OPmobility" OR "OP Mobility") (주주총회 OR shareholder OR 기업결합 OR antitrust OR regulatory OR 분할 OR spin-off OR closing OR 종결 OR 완료 OR 매각대금 OR proceeds OR 처분이익 OR disposal gain OR 지연 OR delay OR 가처분 OR injunction OR termination)',
     'site:opmobility.com ("Hyundai Mobis" OR 현대모비스) (lighting OR lamp) (acquisition OR acquire OR closing OR completion OR regulatory OR 600)',
     'site:mobis.com (OPmobility OR 램프 OR lighting) (매각 OR 분할 OR 주주총회 OR 기업결합 OR 종결 OR 완료 OR 반도체 OR 로보틱스 OR 전동화 OR 설비투자)',
 ])
@@ -78,6 +80,8 @@ PRICE_ONLY = re.compile(r'주가|급등|상한가|특징주|수혜주|목표주�
 FIRST_SHIPMENT = re.compile(r'첫\s*(?:양산\s*)?(?:납품|출하)|초도\s*(?:납품|출하)|first\s+(?:production\s+)?(?:shipment|delivery)', re.I)
 ACTUAL_SOP = re.compile(r'양산\s*(?:개시|시작|돌입|착수)|mass\s*production\s*(?:started|began|commenced)|series\s*production\s*(?:started|began|commenced)|\bSOP\b', re.I)
 ATLAS_DELAY = re.compile(r'(?:양산|SOP|고객\s*승인|신뢰성|수율).{0,50}(?:연기|지연|실패|문제|미달)|(?:production|SOP|qualification|reliability|yield).{0,50}(?:delay|postpone|fail|issue)', re.I)
+ATLAS_FORMAL_ORDER = re.compile(r'수주|발주|purchase\s*order|production\s*order|양산\s*계약|mass\s*production\s*contract|공급\s*계약|supply\s*contract|contract\s*(?:signed|awarded)|계약\s*금액|contract\s*value', re.I)
+ATLAS_ORDER_EVIDENCE = re.compile(r'\d[\d,.]*\s*(?:개|대|억원|억|조원|원|USD|달러|units?|actuators?)|물량|volume|quantity|평균판매단가|ASP|계약\s*금액|contract\s*value|수주|발주|purchase\s*order|production\s*order|양산\s*계약', re.I)
 
 LAMP = re.compile(r'램프|lamp|lighting|조명', re.I)
 OPMOBILITY = re.compile(r'OP\s*mobility|OPmobility|Plastic\s*Omnium|플라스틱\s*옴니엄', re.I)
@@ -102,6 +106,8 @@ def _atlas_stage(text: str) -> str:
         return 'first_shipment'
     if ACTUAL_SOP.search(text) and ACTUATOR.search(text):
         return 'mass_production'
+    if ATLAS_FORMAL_ORDER.search(text) and ATLAS_ORDER_EVIDENCE.search(text) and ACTUATOR.search(text):
+        return 'formal_order'
     if VALIDATION.search(text) and ACTUATOR.search(text):
         return 'validation'
     if CAPACITY.search(text) and ACTUATOR.search(text):
@@ -153,7 +159,11 @@ def _is_mobis_atlas(text: str) -> bool:
 
 
 def _is_mobis_lamp(text: str) -> bool:
-    return bool(MOBIS.search(text) and LAMP.search(text) and (OPMOBILITY.search(text) or DIVEST.search(text) or SPINOFF.search(text)))
+    if not MOBIS.search(text):
+        return False
+    lamp_named = LAMP.search(text) and (OPMOBILITY.search(text) or DIVEST.search(text) or SPINOFF.search(text))
+    deal_named = OPMOBILITY.search(text) and (DIVEST.search(text) or PROCEEDS.search(text) or REINVEST_TARGET.search(text) or ADVERSE.search(text) or CLOSING.search(text))
+    return bool(lamp_named or deal_named)
 
 
 def topic_group(text: str) -> str | None:
@@ -217,6 +227,7 @@ def score(item: dict) -> int:
     s += {
         'validation': 10,
         'capacity': 10,
+        'formal_order': 14,
         'mass_production': 16,
         'first_shipment': 17,
         'external_customer': 13,
@@ -233,6 +244,7 @@ def _subcat(text: str) -> str:
         'baseline_reveal': '아틀라스 액추에이터 실물 공개',
         'validation': '고객 승인·신뢰성·양산검증',
         'capacity': '액추에이터 생산능력·공장 증설',
+        'formal_order': '아틀라스 액추에이터 양산계약·수주',
         'mass_production': '아틀라스 액추에이터 실제 양산 개시',
         'first_shipment': '아틀라스 액추에이터 첫 양산 출하',
         'external_customer': '액추에이터 외부 OEM 신규 고객',
@@ -282,6 +294,8 @@ def meaning(cat: str) -> str:
         return 'PPAP·ISIR·신뢰성 시험·양산라인 검증은 개발품을 양산 매출로 바꾸는 핵심 문턱입니다. 승인 완료일, 초기 수율, 검사 시간과 첫 양산 납품을 추적합니다.'
     if raw == '액추에이터 생산능력·공장 증설':
         return '실제 액추에이터 생산능력 확대로 이동한 신호입니다. Atlas 생산대수와 대당 탑재량, 장비 반입·가동률을 연결합니다.'
+    if raw == '아틀라스 액추에이터 양산계약·수주':
+        return 'CES 공급 협력이라는 기준선에서 실제 양산 발주·수주 또는 계약금액·물량이 확인되는 단계입니다. 물량×단가와 납기, 매출 인식 시점을 추적합니다.'
     if raw == '아틀라스 액추에이터 실제 양산 개시':
         return '공급 합의와 개발 공개를 넘어 실제 SOP가 시작된 단계입니다. 초기 수율·가동률·출하량과 매출 인식 시점을 확인합니다.'
     if raw == '아틀라스 액추에이터 첫 양산 출하':
@@ -313,6 +327,8 @@ def risk(cat: str) -> str:
         return '가장 현실적인 실패 경로는 신뢰성·PPAP 또는 초기 수율 미달로 SOP가 밀리는 경우입니다. 재시험·불량·재작업률이 먼저 악화됩니다.'
     if raw == '액추에이터 생산능력·공장 증설':
         return '생산능력은 실제 출하량이 아닙니다. 주문보다 증설이 앞서면 감가상각·운전자본 부담이 먼저 커질 수 있습니다.'
+    if raw == '아틀라스 액추에이터 양산계약·수주':
+        return '공급 협력 발표와 실제 양산 발주는 다릅니다. 계약 상대·물량·단가·납기 중 최소 하나의 새 증거가 없으면 기준선 반복으로 처리합니다.'
     if raw == '아틀라스 액추에이터 실제 양산 개시':
         return 'SOP와 안정 양산은 다릅니다. 초기 수율·발열·내구성·가동률이 낮으면 매출 램프가 지연될 수 있습니다.'
     if raw == '아틀라스 액추에이터 첫 양산 출하':
@@ -421,6 +437,7 @@ def clean_title(title: str, source: str) -> str:
         return {
             'validation': '현대모비스 Atlas 액추에이터 고객 승인·신뢰성 검증 진전',
             'capacity': '현대모비스 로봇 액추에이터 생산능력 확대',
+            'formal_order': '현대모비스 Atlas 액추에이터 양산계약·수주 확인',
             'mass_production': '현대모비스 Atlas 액추에이터 실제 양산 개시',
             'first_shipment': '현대모비스 Atlas 액추에이터 첫 양산 출하',
             'external_customer': '현대모비스 로봇 액추에이터 외부 OEM 신규 고객 확보',
