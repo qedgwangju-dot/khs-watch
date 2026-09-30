@@ -798,6 +798,87 @@ def build_enrichment(
     return text, raw
 
 
+def latest_kospi_episode(token: str, minutes: int = 10) -> dict[str, Any]:
+    body = {
+        "t8409InBlock": {
+            "shcode": "001", "ncnt": 1, "qrycnt": 400, "nday": "1",
+            "sdate": " ", "stime": "", "edate": "99999999", "etime": "",
+            "cts_date": " ", "cts_time": "", "comp_yn": "N",
+        }
+    }
+    data = ls_post(token, "/indtp/chart", "t8409", body)
+    rows = _rows(data, "t8409OutBlock1")
+    timed = []
+    for row in rows:
+        ts = _epoch(row.get("date"), row.get("time"))
+        close = fnum(row.get("close"))
+        if ts is not None and close is not None:
+            timed.append((ts, close))
+    if len(timed) < 2:
+        raise RuntimeError("KOSPI intraday rows unavailable for smoke window")
+    timed.sort()
+    end_ts, end_price = timed[-1]
+    target = end_ts - minutes * 60
+    start_ts, start_price = min(timed, key=lambda x: abs(x[0] - target))
+    if start_ts >= end_ts:
+        raise RuntimeError("invalid KOSPI smoke window")
+    low_ts, low_price = min(
+        ((ts, price) for ts, price in timed if start_ts <= ts <= end_ts),
+        key=lambda x: x[1],
+    )
+    # 정밀분해 API 경로 검증이 목적이므로 종료시각을 저점으로 사용하되,
+    # 저점이 시작과 같으면 마지막 시각으로 넓힌다.
+    if low_ts <= start_ts:
+        low_ts, low_price = end_ts, end_price
+    return {
+        "start_ts": start_ts,
+        "start_price": start_price,
+        "low_ts": low_ts,
+        "low_price": low_price,
+    }
+
+
+def run_smoke(token: str) -> dict[str, Any]:
+    episode = latest_kospi_episode(token, 10)
+    text, detail = build_enrichment(token, episode, "검증")
+    summary = {
+        "episode": detail.get("event"),
+        "stock_count": len(detail.get("stocks") or []),
+        "industry_count": len(detail.get("industries") or []),
+        "theme_count": len(detail.get("themes") or []),
+        "etf_count": len(detail.get("etfs") or []),
+        "stock_program_available": sum(
+            1 for x in (detail.get("stocks") or [])
+            if (x.get("program") or {}).get("available")
+        ),
+        "stock_price_available": sum(
+            1 for x in (detail.get("stocks") or [])
+            if (x.get("price") or {}).get("available")
+        ),
+        "industry_price_available": sum(
+            1 for x in (detail.get("industries") or [])
+            if (x.get("price") or {}).get("available")
+        ),
+        "etf_price_available": sum(
+            1 for x in (detail.get("etfs") or [])
+            if (x.get("price") or {}).get("available")
+        ),
+        "errors": detail.get("errors") or [],
+        "text_preview": text[:800],
+    }
+    if summary["stock_program_available"] < 1:
+        raise RuntimeError(f"full enrichment has no event stock program interval: {summary}")
+    if summary["stock_price_available"] < 1:
+        raise RuntimeError(f"full enrichment has no integrated stock interval price: {summary}")
+    if summary["theme_count"] < 1:
+        raise RuntimeError(f"full enrichment has no theme mapping: {summary}")
+    if summary["industry_count"] < 1:
+        raise RuntimeError(f"full enrichment has no industry mapping: {summary}")
+    if summary["etf_price_available"] < 1:
+        raise RuntimeError(f"full enrichment has no ETF interval price: {summary}")
+    return summary
+
+
 def run_probe(token: str) -> dict[str, Any]:
     now = time.time()
     start = now - 10 * 60
@@ -852,12 +933,16 @@ def run_probe(token: str) -> dict[str, Any]:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--probe", action="store_true")
+    ap.add_argument("--smoke", action="store_true")
     args = ap.parse_args()
     token = get_token()
     if args.probe:
         print(json.dumps(run_probe(token), ensure_ascii=False, indent=2))
         return 0
-    raise SystemExit("Use as module or run with --probe")
+    if args.smoke:
+        print(json.dumps(run_smoke(token), ensure_ascii=False, indent=2))
+        return 0
+    raise SystemExit("Use as module or run with --probe/--smoke")
 
 
 if __name__ == "__main__":
