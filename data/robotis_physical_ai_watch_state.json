@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-09-30T03:18:57.270172+00:00",
+  "updated_at": "2026-09-30T06:41:12.042100+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -442,11 +442,17 @@
     "4034823d62672d9751bd6da9c5019dd698a8ae46c13908d59f0e8257f3ecdaa8",
     "eb633af2830c67a54ca2de4d4fa93143b0bbae9d24bc95521fc0e4cc7128ce21",
     "a13cf3a39d2cfa9ad8500bb7acaffa64d4ddc8ad729f2d061c9c843f07df1c22",
-    "919c5ac12f6b6d22a678b65a79263cf68ad686ab8b1b03906c2b61ab5a22a85f"
+    "919c5ac12f6b6d22a678b65a79263cf68ad686ab8b1b03906c2b61ab5a22a85f",
+    "37d4d9b28b19a198ea5efdfc48d2d3eff49a6e3aa29bf465233035cb2b1f4e5a",
+    "95b0b906fd366aad34aaf7180388058656798d8f7d6ed2253395e764685d2f97"
   ],
-  "last_selected": [],
+  "last_selected": [
+    "37d4d9b28b19a198ea5efdfc48d2d3eff49a6e3aa29bf465233035cb2b1f4e5a",
+    "95b0b906fd366aad34aaf7180388058656798d8f7d6ed2253395e764685d2f97"
+  ],
   "groups": [
     "ess_battery",
+    "figure_ai",
     "humanoid_component_global",
     "lg_factory_loop",
     "robotis",
