@@ -35,7 +35,6 @@ STATUS = OUT / "wonyotti_90d_thesis_status.md"
 KST = ZoneInfo("Asia/Seoul")
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 BTC_LINE = 85000.0
-BTC_HYSTERESIS_USD = 250.0
 BTC_CONFIRM_OBSERVATIONS = 2
 BTC_CONFIRM_MIN_SECONDS = 180
 
@@ -728,15 +727,19 @@ def high_signal_news(old_seen: set[str]) -> tuple[list[dict], set[str], list[str
     return deduped[:8], all_seen, errors
 
 
-def btc_threshold_zone(price: float | None) -> str | None:
-    if price is None:
+def btc_threshold_zone(crypto: dict) -> str | None:
+    btc = ((crypto.get("prices") or {}).get("BTC") or {})
+    if not bool(btc.get("verified")) or not bool(crypto.get("price_trigger_ready")):
         return None
-    value = float(price)
-    if value >= BTC_LINE + BTC_HYSTERESIS_USD:
+    sources = btc.get("sources") or {}
+    values = [float(v) for v in sources.values() if v is not None and float(v) > 0]
+    if len(values) < 2:
+        return None
+    if all(v > BTC_LINE for v in values):
         return "above"
-    if value <= BTC_LINE - BTC_HYSTERESIS_USD:
+    if all(v < BTC_LINE for v in values):
         return "below"
-    return "band"
+    return "mixed"
 
 
 def _parse_state_dt(value: str | None) -> dt.datetime | None:
@@ -756,7 +759,7 @@ def advance_btc_threshold_state(
     crypto: dict,
     now: dt.datetime,
 ) -> tuple[dict, dict | None]:
-    """Require a true spot quorum plus persistence before confirming a 85k regime change."""
+    """Require a true spot quorum and persistence before confirming an 85k regime change."""
     old_state = old_state or {}
     btc = ((crypto.get("prices") or {}).get("BTC") or {})
     price = btc.get("usd")
@@ -783,26 +786,21 @@ def advance_btc_threshold_state(
         return state, None
 
     price = float(price)
-    zone = btc_threshold_zone(price)
+    zone = btc_threshold_zone(crypto)
     confirmed = state.get("confirmed_side")
 
     if confirmed not in {"above", "below"}:
-        if zone in {"above", "below"}:
-            confirmed = zone
-        elif price > BTC_LINE:
-            confirmed = "above"
-        elif price < BTC_LINE:
-            confirmed = "below"
-        else:
+        if zone not in {"above", "below"}:
             clear_candidate()
             return state, None
+        confirmed = zone
         state["confirmed_side"] = confirmed
         state["last_confirmed_at"] = now.isoformat(timespec="seconds")
         state["last_confirmed_price"] = price
         clear_candidate()
         return state, None
 
-    if zone == "band" or zone is None:
+    if zone == "mixed" or zone is None:
         clear_candidate()
         return state, None
 
@@ -856,7 +854,7 @@ def build_signals(old: dict, new: dict, news_items: list[dict], btc_threshold_ev
         signals.append((
             "암호화폐",
             f"BTC가 85,000달러 기준선을 {direction} — 지속 확인",
-            f"1차 ${first_price:,.0f} → 확인 ${confirmed_price:,.0f} · 현물 교차검증 {observations}회 · {elapsed_min:.1f}분 지속",
+            f"1차 ${first_price:,.0f} → 확인 ${confirmed_price:,.0f} · 현물원천 전부 같은 방향 · 연속 {observations}회 · {elapsed_min:.1f}분 지속",
             "한 번의 기준선 터치가 아니라 복수 현물 원천과 시간 지속성이 확인된 가격 레짐 변화",
             "BTC·ETH ETF 5영업일 흐름과 펀딩·미결제약정이 같은 방향으로 확인되는지",
             None,
@@ -1037,7 +1035,7 @@ def build_alert(signals: list[tuple], now: dt.datetime, snapshot: dict) -> str:
         srcs = ", ".join(crypto.get("price_sources") or [])
         lines.append(f"• BTC ${btc['usd']:,.0f} ({fmt_pct(btc.get('change24'))}) · ETH ${eth.get('usd',0):,.0f} ({fmt_pct(eth.get('change24'))}) · SOL ${sol.get('usd',0):,.2f} ({fmt_pct(sol.get('change24'))})")
         lines.append(f"• 암호화폐 현물가격: {quality} · 원천 {html.escape(srcs or '확인 불가')}")
-        lines.append("• BTC 85,000달러 기준선: ±250달러 확인밴드 밖에서 현물 교차검증 2회·최소 3분 지속 시 확정")
+        lines.append("• BTC 85,000달러 기준선: 현물 원천 2개 이상이 전부 같은 쪽에서 2회 연속·최소 3분 지속할 때만 확정")
     for key, label in (("btc_etf", "BTC ETF"), ("eth_etf", "ETH ETF")):
         flow = crypto.get(key) or {}
         if flow:
