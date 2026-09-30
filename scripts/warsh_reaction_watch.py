@@ -7,6 +7,7 @@ import re
 import sys
 import urllib.parse
 import urllib.request
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -33,23 +34,39 @@ KEYWORDS = {
 
 
 def fetch(url: str) -> tuple[str, str]:
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "en-US,en;q=0.9"})
-    with urllib.request.urlopen(req, timeout=25) as r:
-        raw = r.read().decode("utf-8", errors="replace")
-        final = r.geturl()
-    return raw, final
+    last = None
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept-Language": "en-US,en;q=0.9"})
+            with urllib.request.urlopen(req, timeout=25) as r:
+                raw = r.read().decode("utf-8", errors="replace")
+                final = r.geturl()
+            return raw, final
+        except Exception as exc:
+            last = exc
+            if attempt < 2:
+                time.sleep(2 * (attempt + 1))
+    raise last
 
 
 def post_json(url: str, payload: dict) -> dict:
     body = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(
-        url,
-        data=body,
-        headers={"User-Agent": UA, "Content-Type": "application/json", "Accept": "application/json"},
-        method="POST",
-    )
-    with urllib.request.urlopen(req, timeout=25) as r:
-        return json.loads(r.read().decode("utf-8"))
+    last = None
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(
+                url,
+                data=body,
+                headers={"User-Agent": UA, "Content-Type": "application/json", "Accept": "application/json"},
+                method="POST",
+            )
+            with urllib.request.urlopen(req, timeout=25) as r:
+                return json.loads(r.read().decode("utf-8"))
+        except Exception as exc:
+            last = exc
+            if attempt < 2:
+                time.sleep(2 * (attempt + 1))
+    raise last
 
 
 def clean_text(raw: str) -> str:
