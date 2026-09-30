@@ -102,6 +102,22 @@ jobs:
       - name: Validate watcher
         run: python -m py_compile scripts/ai_security_web_watch.py
 
+      - name: Verify Korean alert translation on push
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          python - <<'PY'
+          import re
+          from scripts.ai_security_web_watch import translate_alert_text
+          sample = "GLM-5.3 and the spread of advanced cyber capabilities"
+          translated = translate_alert_text(sample)
+          print(f"ai_security_translation_sample={translated}")
+          if not re.search(r"[가-힣]", translated):
+              raise RuntimeError("Korean translation smoke test failed")
+          if "GLM-5.3" not in translated:
+              raise RuntimeError("Model identifier was not preserved")
+          PY
+
       - name: Run live web security watch
         run: |
           rm -f out/ai_security_web_watch_alert_title.txt out/ai_security_web_watch_alert.md out/ai_security_web_watch_telegram_confirmed.json
