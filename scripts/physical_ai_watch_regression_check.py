@@ -651,18 +651,18 @@ assert s >= 11, s
 # 20) Figure founder teasers: different X status ids for the same generic
 # preannouncement on the same publication day must collapse to one semantic key.
 figure_teaser_a = make(
-    "Figure AI, AI·휴머노이드 핵심 업데이트",
-    "Robotics AI update tomorrow morning. See you in the AM.",
+    "Figure AI, AI 돌파구 공개 예고",
+    "Major robotics AI breakthrough reveal tomorrow.",
     "Brett Adcock (Figure AI/X)",
 )
 figure_teaser_a.update({
-    "x_status_id": "2105322505934410007",
+    "x_status_id": "2105138104009199977",
     "direct_primary": True,
-    "published": "2026-09-30T15:42:55.072000+00:00",
+    "published": "2026-09-30T03:30:00+00:00",
 })
 figure_teaser_b = make(
     "Figure AI, AI·휴머노이드 핵심 업데이트",
-    "AI robotics announcement tomorrow. See you in the AM.",
+    "Robotics AI update in the morning. See you in the AM.",
     "Brett Adcock (Figure AI/X)",
 )
 figure_teaser_b.update({
@@ -670,12 +670,27 @@ figure_teaser_b.update({
     "direct_primary": True,
     "published": "2026-09-30T15:19:46.121000+00:00",
 })
+figure_teaser_c = make(
+    "Figure AI, AI·휴머노이드 핵심 업데이트",
+    "AI robotics announcement in the morning.",
+    "Brett Adcock (Figure AI/X)",
+)
+figure_teaser_c.update({
+    "x_status_id": "2105322505934410007",
+    "direct_primary": True,
+    "published": "2026-09-30T15:42:55.072000+00:00",
+})
 g1, s1, c1, k1 = classify(figure_teaser_a)
 g2, s2, c2, k2 = classify(figure_teaser_b)
-assert g1 == g2 == "figure_ai", (g1, g2, c1, c2)
+g3t, s3t, c3t, k3t = classify(figure_teaser_c)
+assert g1 == g2 == g3t == "figure_ai", (g1, g2, g3t, c1, c2, c3t)
 assert c1.endswith("공식 사전예고·공개 시간표"), c1
 assert c2.endswith("공식 사전예고·공개 시간표"), c2
-assert k1 == k2, ("same Figure teaser event must dedupe across post ids", k1, k2)
+assert c3t.endswith("공식 사전예고·공개 시간표"), c3t
+assert k1 == k2 == k3t, (
+    "cross-midnight Figure teaser follow-ups must share one promised-reveal key",
+    k1, k2, k3t,
+)
 
 figure_actual = make(
     "Figure AI, Helix 2.5 실제 공개",
