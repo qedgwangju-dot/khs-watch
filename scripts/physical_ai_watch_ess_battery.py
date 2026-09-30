@@ -169,8 +169,13 @@ CATL_DEB_KNOWN_REWRITE = re.compile(
     re.I,
 )
 CATL_DEB_SERIES = re.compile(
-    r'series\s*production\s*(?:started|began|commenced)|mass\s*production\s*(?:started|began|commenced)|'
-    r'commercial\s*production\s*(?:started|began|commenced)|正式量产|量产(?:正式)?(?:开始|启动)|'
+    r'series\s*production\s*(?:starts?|started|begins?|began|commences?|commenced)|'
+    r'(?:starts?|started|begins?|began|commences?|commenced)\s+(?:officially\s+)?series\s*production|'
+    r'mass\s*production\s*(?:starts?|started|begins?|began|commences?|commenced)|'
+    r'(?:starts?|started|begins?|began|commences?|commenced)\s+(?:officially\s+)?mass\s*production|'
+    r'commercial\s*production\s*(?:starts?|started|begins?|began|commences?|commenced)|'
+    r'(?:starts?|started|begins?|began|commences?|commenced)\s+(?:officially\s+)?commercial\s*production|'
+    r'正式量产|量产(?:正式)?(?:开始|启动)|'
     r'양산\s*(?:개시|시작|돌입)|상업\s*생산\s*(?:개시|시작)',
     re.I,
 )
