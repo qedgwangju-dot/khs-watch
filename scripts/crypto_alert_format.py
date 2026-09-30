@@ -81,15 +81,6 @@ def ensure_krw_for_bare_usd(text: str, rate: float | None) -> str:
 def format_trigger(line: str, is_partial: bool = False) -> list[str]:
     text = line.removeprefix("• ").strip()
 
-    if text.startswith("BTC 현물 ETF 5거래일 구간 이동:"):
-        body = text.split(":", 1)[1].strip()
-        if " / 이전5 " in body:
-            recent, previous = body.split(" / 이전5 ", 1)
-            recent = recent.removeprefix("최근5 ")
-            heading = "• <b>5거래일 구간 이동 · 잠정</b>" if is_partial else "• <b>5거래일 구간 이동</b>"
-            recent_label = "최근5(잠정)" if is_partial else "최근5"
-            return [heading, f"  {recent_label}  {recent}", f"  이전5  {previous}"]
-
     if text.startswith("BTC 현물 ETF 새 일간 자금흐름"):
         m = re.match(r"BTC 현물 ETF 새 일간 자금흐름\(([^)]+)\):\s*(.+)", text)
         if m:
@@ -112,6 +103,7 @@ def format_trigger(line: str, is_partial: bool = False) -> list[str]:
     return [line]
 
 
+# Read rolling ETF flow in one fixed order: current 5-day window → prior 5-day window → difference.
 def five_day_reading(etf: dict, rate: float | None, is_partial: bool) -> list[str]:
     last5 = etf.get("last5_usd_m")
     prev5 = etf.get("prev5_usd_m")
