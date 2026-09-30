@@ -405,4 +405,85 @@ assert g == "agility_platform", (g, s, c)
 assert c.endswith("바퀴형 플랫폼 실물 시제품"), c
 assert s >= 11, s
 
+# 16) CATL Debrecen: Sep-22 trial production and syndicated "formal production"
+# rewrites are one baseline. Actual series production / commercial shipment are new.
+catl_trial = make(
+    "CATL Debrecen kicks off trial operations in new cell building",
+    "CATL began trial production on September 22, 2026 on the first two cell lines in Debrecen. The full project is planned for 100 GWh after all facilities are ready.",
+    "CATL",
+)
+g, s, c, k = classify(catl_trial)
+assert g == "global_battery_capacity", (g, s, c)
+assert s < 11, ("CATL Debrecen Sep-22 trial baseline must stay silent", s, c)
+
+catl_rewrite = make(
+    "宁德时代匈牙利德布勒森新电芯工厂正式启动生产，规划产能100GWh",
+    "项目总投资73.4亿欧元，占地约221公顷，建成后年产能100GWh，可为超过100万辆电动车供电。",
+    "中国基金报",
+)
+g, s, c, k = classify(catl_rewrite)
+assert g == "global_battery_capacity", (g, s, c)
+assert s < 11, ("syndicated CATL 100GWh formal-production rewrite must remain trial baseline", s, c)
+
+catl_series = make(
+    "CATL Debrecen begins series production of battery cells",
+    "CATL officially commenced series production at its Debrecen cell plant after completing trial operations.",
+    "CATL",
+)
+g, s, c, k = classify(catl_series)
+assert g == "global_battery_capacity", (g, s, c)
+assert c.endswith("CATL Debrecen 셀 양산 개시"), c
+assert s >= 11, s
+
+catl_ship = make(
+    "CATL Debrecen starts first commercial battery-cell shipments",
+    "Battery cells from CATL's Debrecen plant started first shipments to European automotive customers.",
+    "CATL",
+)
+g, s, c, k = classify(catl_ship)
+assert g == "global_battery_capacity", (g, s, c)
+assert c.endswith("CATL Debrecen 첫 상업 출하"), c
+assert s >= 11, s
+
+# 17) ISU Specialty Chemical Li2S: June completion / Oct production plan are
+# baselines; actual commercial production, paid shipment and supply contracts alert.
+isu_plan = make(
+    "이수스페셜티케미컬 황화리튬 다음 달 상업생산 예정",
+    "6월 준공한 연 150톤 황화리튬 마더플랜트는 시운전과 품질 안정화 중이며 10월 넷째 주 상업생산을 시작할 계획이다. 최대 500톤까지 확장 가능하다.",
+    "한국경제TV",
+)
+g, s, c, k = classify(isu_plan)
+assert g == "solid_state_material", (g, s, c)
+assert s < 11, ("Li2S Oct commercial-production plan baseline must stay silent", s, c)
+
+isu_start = make(
+    "이수스페셜티케미컬 황화리튬 상업생산 개시",
+    "이수스페셜티케미컬이 울산 공장에서 황화리튬 상업생산을 시작했다. 초기 연산 150톤 생산설비가 가동에 들어갔다.",
+    "이수스페셜티케미컬",
+)
+g, s, c, k = classify(isu_start)
+assert g == "solid_state_material", (g, s, c)
+assert c.endswith("이수스페셜티 황화리튬 상업생산 개시"), c
+assert s >= 11, s
+
+isu_contract = make(
+    "이수스페셜티케미컬, A사와 황화리튬 장기 공급계약 체결",
+    "이수스페셜티케미컬이 전고체 배터리 고객과 황화리튬 장기 공급계약을 체결했다.",
+    "이수스페셜티케미컬",
+)
+g, s, c, k = classify(isu_contract)
+assert g == "solid_state_material", (g, s, c)
+assert c.endswith("이수스페셜티 황화리튬 공급계약"), c
+assert s >= 11, s
+
+isu_delay = make(
+    "이수스페셜티케미컬 황화리튬 상업생산 일정 연기",
+    "품질 안정화 지연으로 황화리튬 상업생산 개시 일정이 연기됐다.",
+    "뉴시스",
+)
+g, s, c, k = classify(isu_delay)
+assert g == "solid_state_material", (g, s, c)
+assert c.endswith("이수스페셜티 황화리튬 일정 지연"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
