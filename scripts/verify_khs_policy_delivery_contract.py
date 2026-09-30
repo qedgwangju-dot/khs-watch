@@ -1675,8 +1675,18 @@ def assert_congress_chinese_optical_transceiver_bill_is_monitored() -> None:
         raise AssertionError("Official Senate optical-transceiver source was not upgraded to 공식 확인")
 
     semantic = khs_trusted_policy_news_watch.semantic_policy_event_key(official_item)
-    if semantic != "us-congress-chinese-optical-transceiver-2026-09-25":
+    if semantic != "us-congress-chinese-optical-transceiver-introduced":
         raise AssertionError(f"Congress optical-transceiver semantic key mismatch: {semantic}")
+
+    senate_passed = dict(official_item)
+    senate_passed["title"] = "Senate passes Securing National Security Systems from Chinese Optical Transceivers Act"
+    if khs_trusted_policy_news_watch.semantic_policy_event_key(senate_passed) != "us-congress-chinese-optical-transceiver-senate-passed":
+        raise AssertionError("Senate passage did not become a new semantic event")
+
+    commerce_report = dict(official_item)
+    commerce_report["title"] = "Commerce releases allied optical transceiver production capacity assessment"
+    if khs_trusted_policy_news_watch.semantic_policy_event_key(commerce_report) != "us-congress-chinese-optical-transceiver-commerce-assessment":
+        raise AssertionError("Commerce capacity assessment did not become a new semantic event")
 
     profile = khs_trusted_policy_news_watch.item_story_profile(rule, [official_item]) or {}
     rendered = khs_trusted_policy_news_watch.render_alert(rule, [official_item], dt.datetime(2026, 9, 30, 9, 0, tzinfo=ZoneInfo("Asia/Seoul")))
