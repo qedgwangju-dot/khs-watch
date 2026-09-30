@@ -647,4 +647,63 @@ assert g == "hyundai_mobis_atlas", (g, s, c)
 assert c.endswith("아틀라스 액추에이터 양산·검증 지연"), c
 assert s >= 11, s
 
+
+# 20) Figure founder teasers: different X status ids for the same generic
+# preannouncement on the same publication day must collapse to one semantic key.
+figure_teaser_a = make(
+    "Figure AI, AI·휴머노이드 핵심 업데이트",
+    "Robotics AI update tomorrow morning. See you in the AM.",
+    "Brett Adcock (Figure AI/X)",
+)
+figure_teaser_a.update({
+    "x_status_id": "2105322505934410007",
+    "direct_primary": True,
+    "published": "2026-09-30T15:42:55.072000+00:00",
+})
+figure_teaser_b = make(
+    "Figure AI, AI·휴머노이드 핵심 업데이트",
+    "AI robotics announcement tomorrow. See you in the AM.",
+    "Brett Adcock (Figure AI/X)",
+)
+figure_teaser_b.update({
+    "x_status_id": "2105316680251650555",
+    "direct_primary": True,
+    "published": "2026-09-30T15:19:46.121000+00:00",
+})
+g1, s1, c1, k1 = classify(figure_teaser_a)
+g2, s2, c2, k2 = classify(figure_teaser_b)
+assert g1 == g2 == "figure_ai", (g1, g2, c1, c2)
+assert c1.endswith("공식 사전예고·공개 시간표"), c1
+assert c2.endswith("공식 사전예고·공개 시간표"), c2
+assert k1 == k2, ("same Figure teaser event must dedupe across post ids", k1, k2)
+
+figure_actual = make(
+    "Figure AI, Helix 2.5 실제 공개",
+    "Helix 2.5 zero-shot generalization improved across 30 unseen homes.",
+    "Figure AI",
+)
+g3, s3, c3, k3 = classify(figure_actual)
+assert g3 == "figure_ai", (g3, s3, c3)
+assert k3 != k1, ("actual reveal must remain independent from teaser", k3, k1)
+
+# 21) Korean display must not leave a duplicated English tail after Pollen Robotics.
+rendered_pollen = base.esc_text("Pollen Robotics의 실제 생산 목표")
+assert "폴렌 로보틱스의 실제 생산 목표" in rendered_pollen, rendered_pollen
+assert "Robotics의" not in rendered_pollen, rendered_pollen
+
+# 22) Microduck production-plan quantity view must distinguish plan, per-robot
+# architecture, conditional actuator demand and unconfirmed ROBOTIS orders.
+microduck_value = watcher.qty._microduck_block(
+    "마이크로덕 실제 생산 목표 2만대 계획. XL330 모터 15개/대.",
+    1400.0,
+    {"microduck": 399.0, "reachy_lite": 399.0, "reachy_wireless": 499.0, "xl330": 27.49},
+    {"microduck": False, "reachy_lite": False, "reachy_wireless": False, "xl330": False},
+)
+assert microduck_value is not None
+assert "20,000대" in microduck_value, microduck_value
+assert "300,000개" in microduck_value, microduck_value
+assert "로보티즈 확정 발주" in microduck_value, microduck_value
+assert "아직 미확인" in microduck_value, microduck_value
+assert "소매가로 로보티즈 매출을 추정하지 않음" in microduck_value, microduck_value
+
 print("Physical-AI watcher regression guards: PASS")
