@@ -1793,7 +1793,20 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
                 "증설·고객 인증·장기계약을 앞당길 수 있는 수요 신호입니다."
             ),
             "korea": (
-                "한국장에서는 미국향 광트랜시버·광부품·레이저·DSP·패키징 기업 중 실제 고객 인증·수주가 확인되는 경우만 연결합니다."
+                "국내 보도상 후보는 오이솔루션·빛과전자(구 라이트론) 광트랜시버, 쏠리드 광통신장비, "
+                "LS전선·대한전선 광케이블입니다. 미국 정부 지정·연방조달 수주가 확인된 기업은 아직 없어 기대감 단계로만 구분합니다."
+            ),
+            "korea_candidates": (
+                "직접 제품 후보: 오이솔루션·빛과전자(구 라이트론) / 인접: 쏠리드 / 간접 인프라: LS전선·대한전선 "
+                "— 미국 정부 지정·연방조달 수주 미확정"
+            ),
+            "headwind": (
+                "Reuters 기준 Coherent·Lumentum이 대체품을 공급하지만 중국 업체 물량을 단기간 전면 대체할 생산능력은 부족합니다. "
+                "공급 부족이 심하면 면제 확대·AI 인프라 구축 지연이 먼저 나타날 수 있습니다."
+            ),
+            "scope_note": (
+                "법안은 연방정부 국가안보 시스템 조달 제한이며 미국 전체 민간 데이터센터의 즉시 수입금지가 아닙니다. "
+                "공식 원문은 5년 전환기간을 두며, '5년 내 기존 부품 전면 교체 의무'로 단정하지 않습니다."
             ),
             "impacts": "매출·마진·현금흐름, 수급, 시간표",
             "paths": "연방조달, 공급망, 생산능력, 정책 타임라인",
@@ -2044,6 +2057,9 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
             f"- 실제 내용: {profile.get('actual')}",
             *timeline_lines,
             f"- 왜 중요한가: {profile.get('why')}",
+            *([f"- 국내 관련 기업: {profile.get('korea_candidates')}"] if profile.get("korea_candidates") else []),
+            *([f"- 숨은 역풍: {profile.get('headwind')}"] if profile.get("headwind") else []),
+            *([f"- 범위 주의: {profile.get('scope_note')}"] if profile.get("scope_note") else []),
             f"- 다음 확인: {profile.get('next')}",
         ]
     return [f"- 핵심: {core}"]
