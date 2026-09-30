@@ -184,6 +184,26 @@ def _translate_to_ko(text: str) -> str:
     if hangul >= max(4, latin // 3):
         return text
 
+    # Deterministic Korean labels for recurring TrendForce report titles.
+    # Do this before machine translation so product/process identifiers are not mistranslated.
+    lower = text.lower()
+    if "nand flash wafer contract price" in lower:
+        return "NAND Flash 웨이퍼 계약가 업데이트"
+    if "nand flash contract price" in lower:
+        return "NAND Flash 계약가 업데이트"
+    if "nand flash market bulletin" in lower:
+        return "NAND Flash 시장 수급·가격 업데이트"
+    if "specialty dram price" in lower:
+        return "Specialty DRAM 계약가 업데이트"
+    if "dram market bulletin" in lower:
+        return "DRAM 시장 수급·계약가 업데이트"
+    if "dram contract price" in lower:
+        return "DRAM 계약가 업데이트"
+    if "memory price forecast" in lower:
+        return "메모리 가격 전망 업데이트"
+    if "hbm market bulletin" in lower:
+        return "HBM 시장 가격·수급 업데이트"
+
     params = {
         "client": "gtx",
         "sl": "auto",
