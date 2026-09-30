@@ -166,6 +166,40 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         }
         self.assertTrue(w._is_bernstein_memory_cycle_item(item))
 
+    def test_nand_wafer_contract_title_is_not_misclassified_as_dram_capa(self):
+        self.assertEqual(w.classify("NAND Flash Wafer Contract Price Sep. 2026"), "NAND/eSSD")
+        with patch.object(w, "_fetch", side_effect=RuntimeError("offline")):
+            translated = w._translate_to_ko("NAND Flash Wafer Contract Price Sep. 2026")
+        self.assertIn("NAND Flash 웨이퍼 계약가", translated)
+        self.assertNotIn("DRAM 웨이퍼", translated)
+
+    def test_sparse_monthly_price_sheet_is_suppressed(self):
+        details = w._price_change_details("NAND Flash Contract Price Sep. 2026", "NAND Flash Contract Price Sep. 2026")
+        signals = w._market_signal_details("NAND Flash Contract Price Sep. 2026", "NAND Flash Contract Price Sep. 2026")
+        self.assertTrue(w._is_sparse_price_sheet("NAND Flash Contract Price Sep. 2026", details, signals))
+
+    def test_public_nand_summary_is_substantive_and_not_suppressed(self):
+        blob = (
+            "As original manufacturers shift production capacity to high-layer 3D processes, "
+            "niche NAND Flash prices remain high. Buyer cost pressure and supply discrepancies "
+            "limit further price increases."
+        )
+        details = w._price_change_details("NAND Flash Contract Price Sep. 2026", blob)
+        signals = w._market_signal_details("NAND Flash Contract Price Sep. 2026", blob)
+        self.assertTrue(any("고단수 3D NAND" in x for x in signals))
+        self.assertTrue(any("높은 수준" in x for x in signals))
+        self.assertFalse(w._is_sparse_price_sheet("NAND Flash Contract Price Sep. 2026", details, signals))
+
+    def test_bernstein_this_quarter_headline_routes_to_typed_state(self):
+        item = {
+            "title": "Memory Supercycle Intensifies: Bernstein Sees DRAM, NAND Prices Up Nearly 20% This Quarter",
+            "description": "",
+            "source": "finance.biggo.com",
+            "link": "https://example.com/bernstein",
+            "published_kst": "2026-09-30T00:35:00+09:00",
+        }
+        self.assertTrue(w._is_bernstein_memory_cycle_item(item))
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
