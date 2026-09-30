@@ -75,6 +75,10 @@ NEWS_QUERIES = [
     '(OpenAI OR Anthropic) model behavior guardrail sandbox monitoring unusual problematic',
     '(OpenAI OR Anthropic OR Google OR Meta) "training paused" OR "training resumed" OR "inference paused" OR "evaluation paused"',
     '(OpenAI OR Anthropic OR Google OR Meta) "tool use" paused resumed safety security',
+    '("Joint Commitment on Frontier Responsibilities" OR "White House Accord on Super Intelligence") security audit failure violation',
+    '(OpenAI OR Anthropic OR Google OR Meta OR xAI OR NVIDIA) external audit security control failure frontier AI',
+    '(OpenAI OR Anthropic OR Google OR Meta OR xAI OR NVIDIA) board committee oversight ordered pause training deployment security',
+    'frontier AI independent auditor found sandbox unauthorized access control failure',
     '(OpenAI OR Anthropic) "time to detection" OR "run was killed" OR "human reviewer" security agent',
     '(OpenAI OR Anthropic) unauthorized access incidents transcripts evaluations rate percentage',
     '(NVIDIA OpenShell OR OpenShell OR NemoClaw) security vulnerability sandbox escape policy bypass credential',
@@ -100,6 +104,8 @@ AI_TERMS = (
     " mcp ", "llm", "language model", "agentic", "github copilot", "cursor",
     "windsurf", "openshell", "nemoclaw", "agent safety runtime",
     "secure agent runtime", "nvidia agent toolkit",
+    "frontier ai", "frontier model", "super intelligence", "superintelligence",
+    "joint commitment on frontier responsibilities", "white house accord on super intelligence",
 )
 
 SECURITY_TERMS = (
@@ -135,6 +141,10 @@ SECURITY_TERMS = (
     "tool use resumed", "tool-use resumed", "run was killed", "human reviewer",
     "time to detection", "response time", "restart training", "resume training",
     "safety case", "eval awareness", "metagaming", "monitorability",
+    "audit finding", "audit findings", "external audit", "independent audit",
+    "control failure", "failed control", "security control failure",
+    "accord violation", "noncompliance", "non-compliance",
+    "board ordered pause", "oversight ordered pause", "committee ordered pause",
     "fail-closed", "fail closed", "automatic stop", "auto-stop", "auto stop",
     "regression test", "postmortem", "post-mortem", "root cause",
     "senior leadership veto", "training veto",
@@ -153,6 +163,9 @@ HARD_SECURITY_TERMS = (
     "release cancelled", "release canceled", "launch cancelled", "launch canceled",
     "deployment blocked", "safety gate failed", "failed alignment evaluation",
     "tool-use paused", "tool use paused", "tool-use resumed", "tool use resumed",
+    "audit found unauthorized access", "audit found control failure",
+    "external audit found", "independent audit found",
+    "board ordered pause", "oversight ordered pause",
     "fail-closed", "fail closed", "automatic stop", "auto-stop",
 )
 
@@ -169,12 +182,14 @@ TRUSTED_SOURCE_HINTS = (
     "google", "amazon web services", "aws", "apple", "github",
     "palo alto", "unit 42", "wiz", "trail of bits", "cloudflare",
     "snyk", "mandiant", "nvidia", "openshell",
+    "associated press", "ap news", "guardian", "cbs news", "white house", "whitehouse.gov",
 )
 
 OFFICIAL_SOURCE_HINTS = (
     "cisa", "nist", "cert", "openai", "anthropic", "meta", "google",
     "microsoft", "amazon web services", "aws", "apple", "github",
     "project zero", "google security", "microsoft security", "nvidia", "openshell",
+    "white house", "whitehouse.gov",
 )
 
 DIRECT_OFFICIAL_PAGES = [
@@ -197,6 +212,17 @@ VENDOR_PATTERNS = [
 ]
 
 CATEGORY_PATTERNS = [
+    ("공동서약·외부감사 보안실패", (
+        "joint commitment on frontier responsibilities",
+        "white house accord on super intelligence",
+        "external audit", "independent audit", "audit finding", "audit findings",
+        "control failure", "failed control", "security control failure",
+        "accord violation", "noncompliance", "non-compliance",
+    )),
+    ("이사회·감독기구 중단명령", (
+        "board ordered pause", "oversight ordered pause", "committee ordered pause",
+        "board committee", "oversight committee", "independent board",
+    )),
     ("출시 게이트·배포 제한", (
         "release cancelled", "release canceled", "launch cancelled", "launch canceled",
         "release delayed", "launch delayed", "release postponed", "launch postponed",
@@ -511,6 +537,10 @@ def material(item: dict) -> bool:
         "safety case", "eval awareness", "metagaming", "monitorability",
         "fail-closed", "fail closed", "automatic stop", "auto-stop",
         "regression test", "postmortem", "post-mortem",
+        "audit finding", "audit findings", "external audit", "independent audit",
+        "control failure", "failed control", "security control failure",
+        "accord violation", "noncompliance", "non-compliance",
+        "board ordered pause", "oversight ordered pause", "committee ordered pause",
     ))
 
 
@@ -821,6 +851,10 @@ def event_heading(cluster: list[dict]) -> str:
 
 def event_impact(cluster: list[dict]) -> str:
     cats = " ".join(item.get("category", "") for item in cluster)
+    if "공동서약·외부감사 보안실패" in cats:
+        return "공동 안전서약의 외부감사에서 실제 보안통제 실패·비인가 접근·준수 위반이 확인됐는지가 핵심입니다."
+    if "이사회·감독기구 중단명령" in cats:
+        return "감사 결과를 받은 독립 이사회·감독기구가 실제 학습·배포 중단 권한을 행사했는지가 핵심입니다."
     if "Safety Case·학습 승인 게이트" in cats:
         return "프런티어 강화학습을 계속하기 전에 위험·격리·모니터링 증거가 실제 학습 승인 게이트로 작동하는지가 핵심입니다."
     if "평가 인식·모니터 회피" in cats:
@@ -916,7 +950,7 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str, str]:
 
     lines += [
         "",
-        "<b>다음 확인</b>: 공식 출시일/변경일 · 안전게이트 통과 여부 · 제한배포 범위 · 실제 사고/모의평가 구분 · 탐지→강제종료 시간 · 중단/재개 · 패치/완화책",
+        "<b>다음 확인</b>: 공동서약 외부감사 보안실패·준수위반 · 독립 이사회/감독기구의 실제 중단명령 · 공식 출시일/변경일 · 안전게이트 통과 여부 · 제한배포 범위 · 실제 사고/모의평가 구분 · 탐지→강제종료 시간 · 중단/재개 · 패치/완화책",
     ]
     return title, "\n".join(lines)
 
