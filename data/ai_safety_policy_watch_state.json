@@ -1,7 +1,9 @@
 {
   "initialized": true,
   "last_collection": {
-    "errors": [],
+    "errors": [
+      "OpenShell 텔레메트리 감시 실패: HTTPError: HTTP Error 403: rate limit exceeded"
+    ],
     "material_items": 0,
     "new_articles": 0,
     "new_events": 0,
@@ -10,22 +12,22 @@
   "official_pages": {
     "NIPA 사이버보안 특화 AI 사업": {
       "digest": "a878f15df757e00887993353fa12b37528af61ad90adc743963335f227672d28",
-      "updated_at": "2026-09-30T11:56:19.847967+00:00",
+      "updated_at": "2026-09-30T12:05:22.985355+00:00",
       "url": "https://nipa.kr/home/bsnsAll/00/detail?bsnsDtlsIemNo=909"
     },
     "NVIDIA OpenShell 개요·지원": {
       "digest": "08332ea3b8e2d3bb511d702e825174231f3357515101879f359e5b5ba5dc32f0",
-      "updated_at": "2026-09-30T11:56:19.847967+00:00",
+      "updated_at": "2026-09-30T12:05:22.985355+00:00",
       "url": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/README.md"
     },
     "NVIDIA OpenShell 보안정책": {
       "digest": "172efba937a4421fbb0a09484dd1f1c29a635638854011f53f6d1c35b3f876cc",
-      "updated_at": "2026-09-30T11:56:19.847967+00:00",
+      "updated_at": "2026-09-30T12:05:22.985355+00:00",
       "url": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/SECURITY.md"
     },
     "NVIDIA OpenShell 지원정책": {
       "digest": "33cf7d088e1556591a36e4a469dfa865015d7378819ae68683bcc21fe4ba7c72",
-      "updated_at": "2026-09-30T11:56:19.847967+00:00",
+      "updated_at": "2026-09-30T12:05:22.985355+00:00",
       "url": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/docs/about/support-matrix.mdx"
     }
   },
@@ -57,5 +59,5 @@
       "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE85czZ3RWsxcEw3U05aZ0FWVGh4b3ZTcU0yRmF5YWg5bDEwX21zQjVib1dxeDdrTlI2NHkyRDkzN2Zsc05lTXFpa29oWlI0X1VYYnFaNzB3?oc=5"
     }
   },
-  "updated_at_kst": "2026-09-30T20:56:19+09:00"
+  "updated_at_kst": "2026-09-30T21:05:22+09:00"
 }
