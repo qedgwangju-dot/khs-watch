@@ -546,17 +546,15 @@
     },
     "energy_package": {
       "facts": [
-        "package_nuclear_units:8",
-        "package_usd:540억"
+        "package_nuclear_units:8"
       ],
       "slots": {
-        "energy_package|package_nuclear_units": "package_nuclear_units:8",
-        "energy_package|package_usd": "package_usd:540억"
+        "energy_package|package_nuclear_units": "package_nuclear_units:8"
       },
       "initialized_at": "2026-09-23T10:11:17.011383+00:00",
       "updated_at": "2026-09-30T20:23:15.215767+00:00",
       "last_title": "\"백악관, 한국 대미투자 발표에 '알래스카 LNG·원전 8기 포함' 확인\" - MBC 뉴스",
-      "last_source": "MBC 뉴스",
+      "last_source": "MBC 뉴스 · corrected-540-is-alaska",
       "evidence": [
         {
           "source": "v.daum.net",
@@ -626,17 +624,17 @@
     },
     "alaska_lng": {
       "facts": [
-        "alaska_reported_amount_usd_b:200",
+        "alaska_reported_amount_usd_b:54",
         "stage:발표예정"
       ],
       "slots": {
-        "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:200",
-        "alaska_lng|stage:발표예정": "stage:발표예정"
+        "alaska_lng|stage:발표예정": "stage:발표예정",
+        "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:54"
       },
       "initialized_at": "2026-09-29T23:10:16.076895+00:00",
       "updated_at": "2026-09-30T20:23:15.214474+00:00",
       "last_title": "백악관 \"트럼프, 韓 2000억 달러 대미 투자 곧 공개…알래스카 LNG 포함\" - 뉴스핌",
-      "last_source": "뉴스핌",
+      "last_source": "뉴스핌 · corrected-200-is-overall",
       "evidence": [
         {
           "source": "뉴스핌",
@@ -650,5 +648,6 @@
   "event_state_guard_version": 4,
   "event_state_guard_started_at": "2026-09-21T13:18:18.976218+00:00",
   "event_state_guard_baselined_at": "2026-09-21T13:18:34.529808+00:00",
-  "alaska_investment_semantics_version": 2
+  "alaska_investment_semantics_version": 2,
+  "amount_scope_guard_version": 1
 }
