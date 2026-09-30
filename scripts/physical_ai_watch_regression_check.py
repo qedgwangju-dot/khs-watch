@@ -504,4 +504,125 @@ assert g == "solid_state_material", (g, s, c)
 assert c.endswith("이수스페셜티 황화리튬 일정 지연"), c
 assert s >= 11, s
 
+
+# 18) Hyundai Mobis lighting divestiture: the Sep-30 definitive agreement is
+# the baseline. Legal/approval/spin-off/closing/cash/reinvestment changes alert.
+mobis_lamp_spa = make(
+    "OPmobility to acquire 100% of Hyundai Mobis lighting business for KRW 600 billion",
+    "Hyundai Mobis and OPmobility signed the definitive agreement on September 30, 2026. The lighting business has about KRW 2.5 trillion of annual revenue.",
+    "OPmobility",
+)
+g, s, c, k = classify(mobis_lamp_spa)
+assert g == "mobis_lamp_divestiture", (g, s, c)
+assert s < 11, ("Sep-30 Mobis lamp SPA must be a silent baseline", s, c)
+
+mobis_lamp_plan = make(
+    "현대모비스 램프사업 물적분할 2027년 4월 예정",
+    "현대모비스는 램프사업을 물적분할한 뒤 OPmobility에 매각할 계획이다.",
+    "연합뉴스",
+)
+g, s, c, k = classify(mobis_lamp_plan)
+assert g == "mobis_lamp_divestiture", (g, s, c)
+assert s < 11, ("announced spin-off plan must stay silent until completion", s, c)
+
+mobis_lamp_approval = make(
+    "현대모비스 램프사업 매각 주주총회 승인",
+    "주주총회에서 램프사업 물적분할 및 OPmobility 매각 안건을 승인했다.",
+    "현대모비스",
+)
+g, s, c, k = classify(mobis_lamp_approval)
+assert g == "mobis_lamp_divestiture", (g, s, c)
+assert c.endswith("주주총회 승인"), c
+assert s >= 11, s
+
+mobis_lamp_closing = make(
+    "현대모비스-OPmobility 램프사업 거래 종결 완료",
+    "규제 승인을 모두 마치고 OPmobility의 Hyundai Mobis lighting business acquisition closing was completed.",
+    "OPmobility",
+)
+g, s, c, k = classify(mobis_lamp_closing)
+assert g == "mobis_lamp_divestiture", (g, s, c)
+assert c.endswith("거래 종결"), c
+assert s >= 11, s
+
+mobis_lamp_injunction = make(
+    "현대모비스 램프사업 매각 가처분 신청 접수",
+    "노조가 램프사업 분할 및 매각 관련 가처분 신청을 법원에 접수했다.",
+    "연합뉴스",
+)
+g, s, c, k = classify(mobis_lamp_injunction)
+assert g == "mobis_lamp_divestiture", (g, s, c)
+assert c.endswith("소송·지연·조건변경"), c
+assert s >= 11, s
+
+mobis_lamp_reinvest = make(
+    "현대모비스, 램프 매각재원으로 로보틱스 신규 설비투자 결정",
+    "현대모비스는 램프 사업 매각재원을 활용해 로보틱스 액추에이터 신규 시설 투자 3,000억원을 집행하기로 확정했다.",
+    "현대모비스",
+)
+g, s, c, k = classify(mobis_lamp_reinvest)
+assert g == "mobis_lamp_divestiture", (g, s, c)
+assert c.endswith("미래사업 자금 재배치"), c
+assert s >= 11, s
+
+# 19) Hyundai Mobis Atlas actuator: CES supply and Tech Day reveal are baselines.
+# Customer validation, actual SOP, first shipment, capacity and external OEMs alert.
+mobis_atlas_supply = make(
+    "현대모비스, Boston Dynamics Atlas 액추에이터 공급",
+    "현대모비스는 CES 2026에서 보스턴다이내믹스 차세대 Atlas에 액추에이터를 공급하기로 했다고 밝혔다.",
+    "현대모비스",
+)
+g, s, c, k = classify(mobis_atlas_supply)
+assert g == "hyundai_mobis_atlas", (g, s, c)
+assert s < 11, ("CES Atlas actuator supply must remain the baseline", s, c)
+
+mobis_atlas_reveal = make(
+    "현대모비스 R&D Tech Day, Atlas용 로봇 액추에이터 최초 공개",
+    "현대모비스가 개발 중인 휴머노이드 로봇 액추에이터 실물을 처음 공개했다.",
+    "현대모비스",
+)
+g, s, c, k = classify(mobis_atlas_reveal)
+assert g == "hyundai_mobis_atlas", (g, s, c)
+assert s < 11, ("Sep-2026 actuator reveal must remain the baseline", s, c)
+
+mobis_atlas_validation = make(
+    "현대모비스 Atlas 액추에이터 PPAP 고객 승인 완료",
+    "Boston Dynamics Atlas용 액추에이터가 PPAP와 신뢰성 검증을 완료했다.",
+    "현대모비스",
+)
+g, s, c, k = classify(mobis_atlas_validation)
+assert g == "hyundai_mobis_atlas", (g, s, c)
+assert c.endswith("고객 승인·신뢰성·양산검증"), c
+assert s >= 11, s
+
+mobis_atlas_sop = make(
+    "현대모비스 Atlas 액추에이터 양산 개시",
+    "Hyundai Mobis commenced mass production of actuators for Boston Dynamics Atlas.",
+    "현대모비스",
+)
+g, s, c, k = classify(mobis_atlas_sop)
+assert g == "hyundai_mobis_atlas", (g, s, c)
+assert c.endswith("아틀라스 액추에이터 실제 양산 개시"), c
+assert s >= 11, s
+
+mobis_atlas_ship = make(
+    "현대모비스 Atlas 액추에이터 첫 양산 출하",
+    "현대모비스가 Boston Dynamics에 Atlas용 액추에이터 첫 양산 납품을 시작했다.",
+    "현대모비스",
+)
+g, s, c, k = classify(mobis_atlas_ship)
+assert g == "hyundai_mobis_atlas", (g, s, c)
+assert c.endswith("아틀라스 액추에이터 첫 양산 출하"), c
+assert s >= 11, s
+
+mobis_atlas_delay = make(
+    "현대모비스 Atlas 액추에이터 양산 일정 지연",
+    "초기 수율 문제로 Atlas 액추에이터 SOP 일정이 지연됐다.",
+    "연합뉴스",
+)
+g, s, c, k = classify(mobis_atlas_delay)
+assert g == "hyundai_mobis_atlas", (g, s, c)
+assert c.endswith("아틀라스 액추에이터 양산·검증 지연"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
