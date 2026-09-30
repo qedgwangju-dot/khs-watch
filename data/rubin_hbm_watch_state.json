@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-30T17:56:40+09:00",
+  "updated_at_kst": "2026-09-30T21:51:57+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
@@ -99,7 +99,7 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1353.36,
-    "date": "2026-09-29 일일 기준 · ECB/Frankfurter · 조회 2026-09-30 17:56 KST · 보조 API 2026-09-30 · 차이 0.02% · 일중 기준시각 차이 가능",
+    "date": "2026-09-29 일일 기준 · ECB/Frankfurter · 조회 2026-09-30 21:52 KST · 보조 API 2026-09-30 · 차이 0.02% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -152,13 +152,13 @@
       "https://insights.trendforce.com/p/weekly-radar-002",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-09-30T17:56:48+09:00",
+    "last_checked_at_kst": "2026-09-30T21:52:05+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-09-30T18:03:43+09:00",
+    "checked_at_kst": "2026-09-30T21:57:47+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-09-30T17:33:26+09:00",
@@ -228,7 +228,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-09-30",
-    "last_checked_at_kst": "2026-09-30T17:57:35+09:00"
+    "last_checked_at_kst": "2026-09-30T21:52:53+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -264,7 +264,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-09-30",
-    "last_checked_at_kst": "2026-09-30T18:02:25+09:00",
+    "last_checked_at_kst": "2026-09-30T21:56:42+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -308,8 +308,37 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-09-30T18:02:57+09:00",
+    "last_checked_at_kst": "2026-09-30T21:57:09+09:00",
     "candidate_count": 0,
     "event_count": 0
+  },
+  "citi_hbm_track_version": 1,
+  "citi_hbm_outlook": {
+    "demand_2027_yoy_pct": 62.0,
+    "demand_2027_100m_gb": 752.0,
+    "demand_2028_yoy_pct": 69.0,
+    "demand_2028_100m_gb": 1270.0,
+    "supply_2027_yoy_pct": 64.0,
+    "supply_2027_100m_gb": 593.0,
+    "supply_2028_yoy_pct": 36.0,
+    "supply_2028_100m_gb": 809.0,
+    "deficit_2027_pct": -21.0,
+    "deficit_2028_pct": -36.0,
+    "samsung_2027_wpm": 240000.0,
+    "skhynix_2027_wpm": 270000.0,
+    "micron_2027_wpm": 140000.0,
+    "samsung_2027_capacity_yoy_pct": 50.0,
+    "skhynix_2027_capacity_yoy_pct": 67.0,
+    "micron_2027_capacity_yoy_pct": 52.0,
+    "hbm4_12hi_usd_per_gb_min": 4.0,
+    "hbm4_12hi_usd_per_gb_max": 5.0,
+    "hbm4_12hi_price_yoy_min_pct": 100.0,
+    "hbm4_12hi_price_yoy_max_pct": 150.0,
+    "eight_hi_premium_min_pct": 20.0,
+    "eight_hi_premium_max_pct": 30.0,
+    "source": "Citi 리서치 재인용",
+    "source_url": "https://www.aastocks.com/tc/stocks/news/aafn-con/NOW.1547209/latest-news/AAFN",
+    "secondary_source_url": "https://newsis.com/view/NISX20260930_0003808711",
+    "as_of": "2026-09-30"
   }
 }
