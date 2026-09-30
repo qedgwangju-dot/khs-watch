@@ -1687,6 +1687,15 @@ def assert_congress_chinese_optical_transceiver_bill_is_monitored() -> None:
         "갱신 가능한 면제",
         "의회에 보고",
         "전체 상업용 데이터센터",
+        "오이솔루션",
+        "빛과전자(구 라이트론)",
+        "쏠리드",
+        "LS전선",
+        "대한전선",
+        "Coherent·Lumentum",
+        "면제 확대·AI 인프라 구축 지연",
+        "미국 정부 지정·연방조달 수주 미확정",
+        "5년 전환기간",
     ):
         if marker not in (rendered + " " + str(profile)):
             raise AssertionError(f"Rendered Congress optical-transceiver alert missing: {marker}")
