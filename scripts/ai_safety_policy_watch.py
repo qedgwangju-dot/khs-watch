@@ -347,9 +347,14 @@ def parse_google_news(query: str, now: dt.datetime) -> list[dict]:
 def official_page_snapshots() -> dict[str, dict]:
     out = {}
     for name, url in KNOWN_OFFICIAL_PAGES.items():
-        raw = fetch_bytes(url).decode("utf-8", "ignore")
+        try:
+            raw = fetch_bytes(url).decode("utf-8", "ignore")
+        except Exception as exc:
+            # One vendor page can block automated access (for example HTTP 403).
+            # Do not let that disable all of the other official-page checks.
+            print(f"ai_policy_official_page_skip={name}: {type(exc).__name__}: {exc}")
+            continue
         text = strip_html(raw)
-        # Limit noise from volatile layout but retain policy numbers/terms.
         material = " ".join(re.findall(
             r".{0,70}(?:B200|H200|256장|32노드|2026|2027|10개월|사업예산|추진일정|중간평가|GPU|OpenShell|Sentry|BlueField-4|BlueField|pricing|price|license|subscription|AI Enterprise|partner|customer|supported agents|Full coverage|Partial coverage|No coverage|production use|security release|Codex|Claude Code|OpenCode|Safety Case|training approval|senior leadership|veto|independent review|audit|external evaluator|procurement|insurance|certification|fail-closed).{0,140}",
             text,
@@ -363,7 +368,6 @@ def official_page_snapshots() -> dict[str, dict]:
             "material": material[:1800],
         }
     return out
-
 
 def fetch_openshell_telemetry() -> dict:
     api = "https://api.github.com/repos/NVIDIA/OpenShell/contents/telemetry?ref=main"
