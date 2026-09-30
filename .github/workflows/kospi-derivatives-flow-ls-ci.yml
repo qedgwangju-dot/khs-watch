@@ -13,6 +13,7 @@ on:
       - "scripts/kospi_flow_attribution_ls.py"
       - "scripts/test_kospi_flow_attribution_strict.py"
       - "scripts/kospi_rapid_fallback_watch.py"
+      - "scripts/ls_unified_flow_probe.py"
   workflow_dispatch:
 
 permissions:
@@ -45,7 +46,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check --quiet requests
+        run: python -m pip install --disable-pip-version-check --quiet requests ebest
 
       - name: Compile
         run: |
@@ -152,6 +153,12 @@ jobs:
                 "errors=", len(d.get("errors") or []))
           PY
 
+      - name: Probe unified KRX+NXT realtime flow
+        run: |
+          rm -f out/ls_unified_flow_probe.json
+          python -m py_compile scripts/ls_unified_flow_probe.py
+          python scripts/ls_unified_flow_probe.py
+
       - name: Upload test artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -160,6 +167,7 @@ jobs:
           path: |
             out/kospi_shock_episode_status.md
             out/kospi_shock_episode_raw.json
+            out/ls_unified_flow_probe.json
             out/kospi_shock_enrichment_probe.json
             out/kospi_shock_enrichment_latest.json
           if-no-files-found: ignore
