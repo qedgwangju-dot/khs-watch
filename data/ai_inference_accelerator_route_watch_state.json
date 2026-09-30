@@ -1,15 +1,24 @@
 {
   "initialized": true,
   "last_collection": {
-    "errors": [
-      "공식 페이지 감시 실패: HTTPError: HTTP Error 403: Forbidden"
-    ],
+    "errors": [],
     "material_items": 0,
     "new_articles": 0,
     "new_events": 0,
     "raw_items": 14
   },
-  "official_pages": {},
+  "official_pages": {
+    "OpenAI GPT-6.1 Sol 모델": {
+      "digest": "10b41415af3d94ea7e4b5b7e3fbd3af546f109601dd002c127a5c19248093415",
+      "updated_at": "2026-09-30T04:25:43.763192+00:00",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
+    },
+    "OpenAI Ultrafast 모드": {
+      "digest": "a9195125ae6f76a4229c88113bf9c3524edbb7d82abb2841fd2cbfe0e7454edc",
+      "updated_at": "2026-09-30T04:25:43.763192+00:00",
+      "url": "https://developers.openai.com/api/docs/guides/ultrafast-mode"
+    }
+  },
   "seen": {},
-  "updated_at_kst": "2026-09-30T13:23:59+09:00"
+  "updated_at_kst": "2026-09-30T13:25:43+09:00"
 }
