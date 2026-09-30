@@ -354,6 +354,7 @@ def telegram_send_html(text):
         data = json.loads(r.read().decode("utf-8"))
     if not data.get("ok"):
         raise RuntimeError(f"Telegram sendMessage failed: {data}")
+    return (data.get("result") or {}).get("message_id")
 
 
 base.bls_snapshots = enhanced_bls_snapshots
