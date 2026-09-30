@@ -98,6 +98,22 @@ jobs:
       - name: Validate watcher
         run: python -m py_compile scripts/ai_safety_policy_watch.py
 
+      - name: Verify Korean alert translation on push
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          python - <<'PY'
+          import re
+          from scripts.ai_safety_policy_watch import translate_alert_text
+          sample = "Sentry standalone SKU pricing and BlueField-4 enterprise deployment"
+          translated = translate_alert_text(sample)
+          print(f"ai_policy_translation_sample={translated}")
+          if not re.search(r"[가-힣]", translated):
+              raise RuntimeError("Korean translation smoke test failed")
+          if "Sentry" not in translated or "BlueField-4" not in translated:
+              raise RuntimeError("Product identifiers were not preserved")
+          PY
+
       - name: Run live policy watch
         run: |
           rm -f out/ai_safety_policy_watch_alert_title.txt out/ai_safety_policy_watch_alert.html out/ai_safety_policy_watch_telegram_confirmed.json
