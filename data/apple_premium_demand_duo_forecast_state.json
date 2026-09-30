@@ -1,19 +1,36 @@
 {
   "schema_version": 1,
-  "initial_alert_sent": false,
-  "seen": [],
+  "updated_at_kst": "2026-09-30T13:10:14+09:00",
+  "initial_alert_sent": true,
+  "preorder_at_kst": "2026-10-16T21:00:00+09:00",
+  "launch_date": "2026-10-23",
+  "seen": [
+    "34bc2fdf71f30807f9520968",
+    "3b445693a6903a8f5041ae1f",
+    "3ba97f115e4dcc97f266badc",
+    "68d6a986f2ccc9865bdfd6e9",
+    "8d7225562f19fb251357738e",
+    "a2106bfc6953c1683fb1a90b",
+    "c572f9ec9f6c016634994a37"
+  ],
   "metrics": {
-    "iphone18pro_china_yoy_pct": 12,
-    "apple_china_week38_share_pct": 33,
-    "counterpoint_duo_forecast_m": 6,
-    "trendforce_duo_forecast_m": 5
+    "iphone18pro_china_yoy_pct": 12.0,
+    "apple_china_week38_share_pct": 33.0,
+    "counterpoint_duo_forecast_m": 6.0,
+    "trendforce_duo_forecast_m": 5.0,
+    "iphone18pro_confirmation": "사용자 제공 Counterpoint 유료 주간 트래커 숫자·공개 원표 미열람",
+    "counterpoint_duo_confirmation": "Reuters가 Counterpoint 전망 약 600만대 인용",
+    "trendforce_duo_confirmation": "TrendForce 공식 2026 출하 약 500만대"
   },
   "confirmations": {
     "iphone18pro_china": "사용자 제공 Counterpoint 유료 주간 트래커 숫자·공개 원표 미열람",
     "counterpoint_duo": "Reuters가 Counterpoint 전망 약 600만대 인용",
     "trendforce_duo": "TrendForce 공식 2026 출하 약 500만대"
   },
-  "last_scan_items": 0,
+  "last_scan_items": 7,
   "last_signal_count": 0,
-  "last_alert": null
-}\n
+  "last_alert": {
+    "at_kst": "2026-09-30T13:10:14+09:00",
+    "kind": "baseline"
+  }
+}
