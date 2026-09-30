@@ -5,9 +5,9 @@
   "last_collection": {
     "direct_official_items": 15,
     "errors": [],
-    "material_items": 5,
-    "new_material_items": 0,
-    "raw_items": 143
+    "material_items": 7,
+    "new_material_items": 2,
+    "raw_items": 177
   },
   "seen": {
     "027ea08934406a07812d619d": {
@@ -29,6 +29,16 @@
       "title": "Anthropic Research: glm 5 3 and the spread of advanced cyber capabilities",
       "url": "https://www.anthropic.com/research/glm-5-3-and-the-spread-of-advanced-cyber-capabilities",
       "vendor": "Anthropic"
+    },
+    "324206cc2a9a3e3a15d8f923": {
+      "category": "Safety Case·학습 승인 게이트",
+      "first_seen_at": "2026-09-30T04:21:18.593329+00:00",
+      "published_at": "2026-09-29T06:10:36+00:00",
+      "severity": 1,
+      "source": "OpenAI",
+      "title": "Towards safety cases for frontier AI training - OpenAI",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFA5cm5nT3BoSU9lR283QzQzbGlfQ1FSUGhobEFLc2E4YkxaMEZLb1N6LWlWeG5VYUE5azlyWFZuM1lGdUVaNnRKNjBJUlNYdGIwUGNCMmg5U29IRkZoSjRiUVdVSUo3MThsUUhXM2llaGd5UkMyYlhqNHBydw?oc=5",
+      "vendor": "OpenAI"
     },
     "36cdbc3c7efe9983a34b0330": {
       "category": "취약점·패치",
@@ -99,6 +109,16 @@
       "title": "Anthropic Threat Intelligence: threat intelligence report september 2026",
       "url": "https://www.anthropic.com/threat-intelligence-report-september-2026",
       "vendor": "Anthropic"
+    },
+    "68089fd74ef4533d1ef89795": {
+      "category": "Safety Case·학습 승인 게이트",
+      "first_seen_at": "2026-09-30T04:21:18.593329+00:00",
+      "published_at": "2026-09-29T11:55:22+00:00",
+      "severity": 1,
+      "source": "SecurityWeek",
+      "title": "OpenAI Calls Off GPT-6.1 Astra Launch, Details Safety Cases for Frontier Training - SecurityWeek",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOajFqRHlNMUttN0pzY014QnFwZTlIeDhnaUpuZU9XMjFicHNVUXpOTUFZWUM2Uk94NFdsbVVuNjNWMzNNM29mN3JITnNZY1cydThONGJnZk55dnh0VUNtSHlDSFhGVlpGSFZUVV9iSmpxVUVGejVwUWhVOGstc2FDSWtSSzM2RkJxWkFxS3pqemVKMlFRZDR0SGNERTM1TW1DSmZZcWFXZzNELUZoeDNsc3ZnVUjSAbQBQVVfeXFMTmoxakR5TTFLbTdKc2NNeEJxcGU5SHg4Z2lKbmVPVzIxYnBzVVF6Tk1BWVlDNlJPeDRXbG1VbjYzVjMzTTNvZjdySE5zWWNXMnU4TjRiZ2ZOeXZ4dFVDbUh5Q0hYRlZaRkhWVFVfYkpqcVVFRno1cFFoVThrLXNhQ0lrUkszNkZCcVpBcUt6anplSjJRUWQ0dEhjREUzNU1tQ0pmWXFhV2czRC1GaHgzbHN2Z1VI?oc=5",
+      "vendor": "OpenAI"
     },
     "7e91336b9e3264ee5af31584": {
       "category": "취약점·패치",
@@ -181,5 +201,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-09-30T13:18:01+09:00"
+  "updated_at_kst": "2026-09-30T13:21:18+09:00"
 }
