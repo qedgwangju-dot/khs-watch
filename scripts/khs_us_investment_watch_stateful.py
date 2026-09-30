@@ -686,6 +686,8 @@ def _fact_slot(family: str, fact: str) -> str:
     for prefix in fixed_prefixes:
         if fact.startswith(prefix):
             return f"{family}|{prefix[:-1]}"
+    if fact in {"stage:발표예정", "stage:발표실행"}:
+        return f"{family}|stage:announcement"
     if fact.startswith("stage:") or fact.startswith("party:") or fact.startswith("governance:"):
         return f"{family}|{fact}"
     # 여러 설비 용량·계약금처럼 동시에 존재할 수 있는 값은 값 자체를 슬롯으로 둔다.
@@ -962,6 +964,26 @@ def _migrate_amount_scope_guard(state: dict) -> None:
     state["amount_scope_guard_version"] = 1
 
 
+def _migrate_announcement_stage_guard(state: dict) -> None:
+    if int(state.get("announcement_stage_guard_version") or 0) >= 1:
+        return
+    for family, bucket in (state.setdefault("event_states", {}) or {}).items():
+        facts = [str(x) for x in (bucket.get("facts") or [])]
+        slots = {str(k): str(v) for k, v in (bucket.get("slots") or {}).items()}
+        executed = "stage:발표실행" in facts
+        pending = "stage:발표예정" in facts
+        slots.pop(f"{family}|stage:발표실행", None)
+        slots.pop(f"{family}|stage:발표예정", None)
+        if executed:
+            facts = [x for x in facts if x != "stage:발표예정"]
+            slots[f"{family}|stage:announcement"] = "stage:발표실행"
+        elif pending:
+            slots[f"{family}|stage:announcement"] = "stage:발표예정"
+        bucket["facts"] = sorted(set(facts))
+        bucket["slots"] = slots
+    state["announcement_stage_guard_version"] = 1
+
+
 def _load() -> dict:
     global _SHARED_STATE, _BOOTSTRAP_GUARD
     state = _ORIG_LOAD()
@@ -970,6 +992,7 @@ def _load() -> dict:
     state.setdefault("event_states", {})
     _migrate_alaska_investment_semantics(state)
     _migrate_amount_scope_guard(state)
+    _migrate_announcement_stage_guard(state)
     if _BOOTSTRAP_GUARD:
         state["event_state_guard_version"] = GUARD_VERSION
         state["event_state_guard_started_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
