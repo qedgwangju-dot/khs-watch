@@ -169,9 +169,18 @@ jobs:
           tz = dt.timezone(dt.timedelta(hours=9))
           t0 = dt.datetime(2026, 9, 30, 21, 53, tzinfo=tz)
 
-          def crypto_at(price, verified=True):
+          def crypto_at(price, verified=True, mixed=False):
+              p = float(price)
+              sources = {
+                  "CoinGecko": p,
+                  "Coinbase": p - 8.0,
+                  "Gate.io Spot": p + 8.0,
+              }
+              if mixed:
+                  sources["Coinbase"] = 84990.0
+                  sources["Gate.io Spot"] = 85010.0
               return {
-                  "prices": {"BTC": {"usd": float(price), "verified": verified}},
+                  "prices": {"BTC": {"usd": p, "verified": verified, "sources": sources}},
                   "price_trigger_ready": bool(verified),
               }
 
@@ -184,7 +193,7 @@ jobs:
           cand2, event = advance_btc_threshold_state(cand1, crypto_at(85360), t0 + dt.timedelta(minutes=2))
           assert event is None, (cand2, event)
 
-          reset, event = advance_btc_threshold_state(cand2, crypto_at(85100), t0 + dt.timedelta(minutes=3))
+          reset, event = advance_btc_threshold_state(cand2, crypto_at(85100, mixed=True), t0 + dt.timedelta(minutes=3))
           assert event is None and reset["candidate_side"] is None and reset["candidate_count"] == 0, (reset, event)
 
           cand3, event = advance_btc_threshold_state(reset, crypto_at(85320), t0 + dt.timedelta(minutes=4))
