@@ -15,6 +15,7 @@ CHAT_ID = (os.getenv('TELEGRAM_CHAT_ID') or '').strip()
 EXPECTED_BOT = (os.getenv('EXPECTED_BOT_USERNAME') or 'khs8879887988798879_bot').strip().lstrip('@')
 FORCE_NOTIFY = os.getenv('FORCE_NOTIFY', '0') == '1'
 UA = 'Mozilla/5.0 (compatible; khs-watch/1.1; +https://github.com/qedgwangju-dot/khs-watch)'
+FORMAT_VERSION = 2
 
 
 def fetch_text(url):
@@ -124,32 +125,46 @@ def send(msg):
     return (out.get('result') or {}).get('message_id')
 
 
+def _message(cur):
+    return '\n'.join([
+        '[Warsh 새 정보축] PCE 3개월·6개월 추세',
+        f"기준월: {cur['date'][:4]}년 {int(cur['date'][5:7])}월",
+        f"종합 PCE(식품·에너지 포함): 3개월 연율 {cur['headline_3m_ann']:+.2f}% | 6개월 연율 {cur['headline_6m_ann']:+.2f}% | 전년 대비 {cur['headline_yoy']:+.2f}%",
+        f"근원 PCE(식품·에너지 제외): 3개월 연율 {cur['core_3m_ann']:+.2f}% | 6개월 연율 {cur['core_6m_ann']:+.2f}% | 전년 대비 {cur['core_yoy']:+.2f}%",
+        f"판정: {cur['regime']}",
+        '',
+        "의미: Warsh의 '추세가 가장 중요하다'는 원칙에 맞춰 한 달치 PCE가 아니라 3·6개월 기조가 2%로 충분히 빠르게 내려가는지 확인.",
+        '원천: 미국 경제분석국(BEA) PCE 지수 · 세인트루이스 연은 FRED 재공표',
+        'PCEPI: https://fred.stlouisfed.org/series/PCEPI',
+        'PCEPILFE: https://fred.stlouisfed.org/series/PCEPILFE',
+    ])
+
+
 def main():
     cur = snapshot()
     old = load_state()
     first_run = not bool(old)
     new_period = old.get('date') not in (None, cur['date'])
     regime_changed = old.get('regime') not in (None, cur['regime'])
+    format_upgrade = bool(old) and int(old.get('format_version') or 1) < FORMAT_VERSION
 
-    # Existing PCE watcher reports the monthly release. This sends only a new-information
-    # alert when the 3m/6m trend regime changes, avoiding duplicate PCE alerts.
-    if FORCE_NOTIFY or (not first_run and new_period and regime_changed):
-        msg = [
-            '[Warsh 새 정보축] PCE 3개월·6개월 추세',
-            f"기준월: {cur['date'][:4]}년 {int(cur['date'][5:7])}월",
-            f"종합 PCE(식품·에너지 포함): 3개월 연율 {cur['headline_3m_ann']:+.2f}% | 6개월 연율 {cur['headline_6m_ann']:+.2f}% | 전년 대비 {cur['headline_yoy']:+.2f}%",
-            f"근원 PCE(식품·에너지 제외): 3개월 연율 {cur['core_3m_ann']:+.2f}% | 6개월 연율 {cur['core_6m_ann']:+.2f}% | 전년 대비 {cur['core_yoy']:+.2f}%",
-            f"판정: {cur['regime']}",
-            '',
-            "의미: Warsh의 '추세가 가장 중요하다'는 원칙에 맞춰 한 달치 PCE가 아니라 3·6개월 기조가 2%로 충분히 빠르게 내려가는지 확인.",
-            '원천: 미국 경제분석국(BEA) PCE 지수 · 세인트루이스 연은 FRED 재공표',
-            'PCEPI: https://fred.stlouisfed.org/series/PCEPI',
-            'PCEPILFE: https://fred.stlouisfed.org/series/PCEPILFE',
-        ]
-        send('\n'.join(msg))
+    sent_message_id = None
+    # 월간 발표 자체는 reaction watcher가 담당. 여기서는 3·6개월 추세 체제가 바뀌거나,
+    # 이번 한국어 표기 업그레이드를 한 번만 재표시할 때만 전송합니다.
+    if FORCE_NOTIFY or format_upgrade or (not first_run and new_period and regime_changed):
+        sent_message_id = send(_message(cur))
 
+    cur['format_version'] = FORMAT_VERSION
     save_state(cur)
-    print(json.dumps({'first_run': first_run, 'new_period': new_period, 'regime_changed': regime_changed, **cur}, ensure_ascii=False))
+    print(json.dumps({
+        'first_run': first_run,
+        'new_period': new_period,
+        'regime_changed': regime_changed,
+        'format_upgrade': format_upgrade,
+        'sent': bool(sent_message_id),
+        'message_id': sent_message_id,
+        **cur
+    }, ensure_ascii=False))
 
 
 if __name__ == '__main__':
