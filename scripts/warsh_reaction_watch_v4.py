@@ -10,6 +10,7 @@ import warsh_reaction_watch_v3 as prev
 base = prev.base
 _previous_message_for = base.message_for
 TRANSLATION_MARKER = "fomc_korean_translation_v1"
+PCE_TRANSLATION_MARKER = "pce_korean_translation_v1"
 
 
 EXACT_TRANSLATIONS = {
@@ -157,6 +158,139 @@ def _link(label, url):
     return f'<a href="{html.escape(str(url), quote=True)}">{html.escape(label, quote=False)}</a>'
 
 
+def _month_ko(name):
+    try:
+        return datetime.strptime(str(name), "%B").month
+    except Exception:
+        return None
+
+
+def _pce_values_from_summary(snap):
+    out = {
+        "period_month": None,
+        "dpi_billion": None, "dpi_pct": None,
+        "pce_spend_billion": None, "pce_spend_pct": None,
+        "headline_mom": None, "core_mom": None,
+        "headline_yoy": None, "core_yoy": None,
+    }
+    lines = [_normalize_sentence(x) for x in (snap.get("summary") or [])]
+    for line in lines:
+        m = re.search(
+            r"Disposable personal income.*?increased \$([\d,.]+) billion \(([\d.]+) percent\).*?"
+            r"personal consumption expenditures \(PCE\) increased \$([\d,.]+) billion \(([\d.]+) percent\)",
+            line, re.I,
+        )
+        if m:
+            out["dpi_billion"] = float(m.group(1).replace(",", ""))
+            out["dpi_pct"] = float(m.group(2))
+            out["pce_spend_billion"] = float(m.group(3).replace(",", ""))
+            out["pce_spend_pct"] = float(m.group(4))
+
+        m = re.search(
+            r"From the preceding month, the PCE price index for\s+([A-Za-z]+)\s+(?:increased|decreased)\s+([\d.]+)\s+percent",
+            line, re.I,
+        )
+        if m:
+            out["period_month"] = m.group(1)
+            val = float(m.group(2))
+            out["headline_mom"] = -val if "decreased" in line.lower() else val
+            continue
+
+        m = re.search(
+            r"From the same month one year ago, the PCE price index for\s+([A-Za-z]+)\s+(?:increased|decreased)\s+([\d.]+)\s+percent",
+            line, re.I,
+        )
+        if m:
+            out["period_month"] = out["period_month"] or m.group(1)
+            val = float(m.group(2))
+            out["headline_yoy"] = -val if "decreased" in line.lower() else val
+            continue
+
+        m = re.search(
+            r"Excluding food and energy, the PCE price index\s+(?:increased|decreased)\s+([\d.]+)\s+percent from one year ago",
+            line, re.I,
+        )
+        if m:
+            val = float(m.group(1))
+            out["core_yoy"] = -val if "decreased" in line.lower() else val
+            continue
+
+        m = re.search(
+            r"Excluding food and energy, the PCE price index(?: also)?\s+(?:increased|decreased)\s+([\d.]+)\s+percent",
+            line, re.I,
+        )
+        if m and out["core_mom"] is None:
+            val = float(m.group(1))
+            out["core_mom"] = -val if "decreased" in line.lower() else val
+    return out
+
+
+def _fmt_signed_pct(value):
+    return "확인 불가" if value is None else f"{value:+.1f}%"
+
+
+def _yoy_direction(cur, prev_value):
+    if cur is None or prev_value is None:
+        return ""
+    delta = float(cur) - float(prev_value)
+    if abs(delta) < 0.05:
+        return f" · 전월과 비슷"
+    return f" · 상승률 {'확대' if delta > 0 else '둔화'}"
+
+
+def pce_message_ko(snap):
+    v = _pce_values_from_summary(snap)
+
+    # 이 watcher가 PCE 추세 watcher보다 먼저 실행되므로, 여기의 저장값은 직전월 기준선입니다.
+    prev_state = {}
+    try:
+        prev_state = json.loads(prev.PCE_TREND_STATE.read_text(encoding="utf-8"))
+    except Exception:
+        prev_state = {}
+
+    release_year = None
+    m = re.search(r"(20\d{2})", str(snap.get("key") or ""))
+    if m:
+        release_year = int(m.group(1))
+    if release_year is None:
+        m = re.search(r"/(20\d{2})/", str(snap.get("url") or ""))
+        if m:
+            release_year = int(m.group(1))
+
+    month_num = _month_ko(v.get("period_month"))
+    period_text = f"{release_year}년 {month_num}월" if release_year and month_num else "최신 기준월"
+    release_text = _date_ko(snap.get("key", ""))
+
+    headline_yoy_prev = prev_state.get("headline_yoy")
+    core_yoy_prev = prev_state.get("core_yoy")
+
+    lines = [
+        "[Warsh 반응함수 변화 감지] BEA PCE(개인소비지출 물가지수)",
+        f"기준: {period_text} · 발표 {release_text}",
+        "",
+        "<b>한눈에 보기</b>",
+        f"• <b>종합 PCE</b> | 전월 대비 {_fmt_signed_pct(v.get('headline_mom'))}(상승) · 전년 대비 {_fmt_signed_pct(v.get('headline_yoy'))}"
+        f"{_yoy_direction(v.get('headline_yoy'), headline_yoy_prev)}",
+        f"• <b>근원 PCE</b> | 전월 대비 {_fmt_signed_pct(v.get('core_mom'))}(상승) · 전년 대비 {_fmt_signed_pct(v.get('core_yoy'))}"
+        f"{_yoy_direction(v.get('core_yoy'), core_yoy_prev)}",
+    ]
+
+    if v.get("dpi_pct") is not None or v.get("pce_spend_pct") is not None:
+        dpi = "확인 불가" if v.get("dpi_pct") is None else f"+{v['dpi_pct']:.1f}%"
+        spend = "확인 불가" if v.get("pce_spend_pct") is None else f"+{v['pce_spend_pct']:.1f}%"
+        lines.append(f"• <b>소득·소비</b> | 가처분개인소득 {dpi} · 명목 개인소비지출 {spend}")
+
+    lines += [
+        "",
+        "<b>워시 기준</b>",
+        "• 한 달 수치 하나보다 3개월·6개월 물가 추세가 2% 목표로 충분히 빠르게 내려가는지를 별도로 확인합니다.",
+        "• 이 알림은 BEA 월간 발표의 현재 수치를 번역한 것이며, 3개월·6개월 연율 판정은 뒤의 PCE 추세 감시가 담당합니다.",
+        "",
+        _link("BEA 원문", snap.get("url", "")),
+    ]
+    return "\n".join(lines)
+
+
 def fomc_message_ko(snap):
     translated = []
     for raw in (snap.get("summary") or [])[:7]:
@@ -185,7 +319,41 @@ def fomc_message_ko(snap):
 def message_for_v4(name, snap):
     if name == "fomc":
         return fomc_message_ko(snap)
+    if name == "pce":
+        return pce_message_ko(snap)
     return _previous_message_for(name, snap)
+
+
+def _latest_pce_snapshot():
+    schedule_html, _ = base.fetch(base.URLS["bea_schedule"])
+    url = base.find_latest_pce(schedule_html)
+    if not url:
+        raise RuntimeError("최신 BEA PCE 발표 링크를 찾지 못했습니다.")
+    return base.html_snapshot(url, base.KEYWORDS["pce"])
+
+
+def _send_pce_translation_migration_once():
+    state = base.load_state()
+    if state.get(PCE_TRANSLATION_MARKER):
+        return False
+
+    snap = _latest_pce_snapshot()
+    message_id = base.telegram_send(pce_message_ko(snap))
+    state[PCE_TRANSLATION_MARKER] = {
+        "sent": True,
+        "key": snap.get("key"),
+        "url": snap.get("url"),
+        "message_id": message_id,
+        "sent_at_utc": datetime.now(timezone.utc).isoformat(),
+    }
+    base.save_state(state)
+    print(json.dumps({
+        "pce_korean_translation_correction_sent": True,
+        "message_id": message_id,
+        "key": snap.get("key"),
+        "url": snap.get("url"),
+    }, ensure_ascii=False))
+    return True
 
 
 def _latest_fomc_snapshot():
@@ -221,6 +389,7 @@ base.telegram_send = prev.prev.telegram_send_html
 if __name__ == "__main__":
     try:
         _send_translation_migration_once()
+        _send_pce_translation_migration_once()
         raise SystemExit(base.main())
     except Exception as e:
         print(f"ERROR: {e}", file=sys.stderr)
