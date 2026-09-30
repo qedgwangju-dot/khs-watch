@@ -696,7 +696,7 @@ def build_enrichment(
 
     raw = {
         "generated_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
-        "market_basis": "KRX+NXT 통합(U) 종목 체결·프로그램, 선물은 KRX",
+        "market_basis": "통합(U) 종목 체결·프로그램, 선물은 파생시장",
         "event": {
             "start_ts": start_ts,
             "start_kst": fmt_clock(start_ts),
@@ -725,7 +725,7 @@ def build_enrichment(
         f"<code>{dt.datetime.now(KST):%Y-%m-%d %H:%M:%S} KST</code>",
         "",
         f"• 분석 구간 <b>{fmt_clock(start_ts)} → {fmt_clock(low_ts)}</b>",
-        "• 종목 체결·프로그램은 <b>KRX+NXT 통합</b> 기준 · 선물은 KRX 기준",
+        "• 종목 체결·프로그램·ETF는 <b>통합 기준</b> · 선물은 파생시장 기준",
     ]
     if leader:
         lines.append(f"• 시장 매도 주도 후보: <b>{html.escape(leader)}</b>")
