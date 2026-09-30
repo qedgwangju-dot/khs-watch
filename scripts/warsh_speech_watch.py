@@ -171,6 +171,64 @@ def classify_ai_regime(text: str) -> str:
     return "AI 핵심 체제변화 신호 없음"
 
 
+def speech_title_ko(title: str) -> str:
+    raw = (title or "").strip()
+    low = raw.lower()
+    known = [
+        (r"\bin our time\b", "우리 시대에"),
+        (r"financial innovation.*payments.*policy", "금융혁신이 지급결제와 정책에 미치는 영향"),
+        (r"productivity.*jobs|jobs.*productivity", "생산성과 일자리"),
+        (r"inflation|price stability", "물가안정과 통화정책"),
+        (r"monetary policy", "통화정책"),
+    ]
+    for pat, ko in known:
+        if re.search(pat, low, re.I):
+            return ko
+    if re.search(r"[가-힣]", raw):
+        return raw
+    return "Kevin Warsh 공식 연설 새 게시물"
+
+
+def speech_signals_ko(text: str):
+    low = (text or "").lower()
+    ai = []
+    policy = []
+
+    if "artificial intelligence" in low or " ai " in f" {low} ":
+        ai.append("• AI가 생산성·성장·고용 구조를 바꾸는 경로에 관한 발언이 포함됐습니다.")
+    if "new factor of production" in low or "new variable" in low:
+        ai.append("• AI를 새로운 생산요소 또는 경제의 새로운 변수로 보는 관점이 제시됐습니다.")
+    if "productivity" in low:
+        ai.append("• 생산성 향상이 잠재성장률과 물가 압력에 미치는 영향을 언급했습니다.")
+    if "capital expenditures" in low or "cap-ex" in low or "capital intensity" in low:
+        ai.append("• AI 관련 설비투자와 자본집약도 변화가 단기 수요와 금융여건에 미치는 영향을 언급했습니다.")
+    if "chipmakers" in low or "energy producers" in low or "cloud providers" in low:
+        ai.append("• 반도체·에너지·클라우드 공급망이 AI 투자 확대의 핵심 실물 경로로 언급됐습니다.")
+
+    if "inflation" in low or "prices" in low or "price stability" in low:
+        policy.append("• 물가안정과 인플레이션의 2% 목표 복귀 여부가 정책 판단의 핵심으로 유지됐습니다.")
+    if "financial conditions" in low or "restrictive" in low:
+        policy.append("• 현재 금융여건이 충분히 긴축적인지에 대한 평가가 포함됐습니다.")
+    if "full employment" in low or "labor market" in low or "employment" in low:
+        policy.append("• 완전고용과 노동시장 안정 여부를 정책 판단의 한 축으로 다뤘습니다.")
+    if "forward guidance" in low:
+        policy.append("• 미리 정해진 금리 경로보다 회의별 데이터 판단을 중시하는 소통 원칙이 포함됐습니다.")
+    if any(x in low for x in ["rate hike", "raise rates", "raising rates", "further tightening"]):
+        policy.append("• 추가 금리인상 또는 추가긴축 선택지를 열어두는 문맥이 확인됐습니다.")
+    if any(x in low for x in ["rate cut", "lower rates", "lowering rates"]):
+        policy.append("• 금리인하 가능성을 언급하는 문맥이 확인됐습니다.")
+
+    if not ai:
+        ai.append("• AI·생산성·성장 관련 핵심 체제변화 신호는 새로 확인되지 않았습니다.")
+    if not policy:
+        policy.append("• 물가·고용·금리 경로의 직접적인 새 정책 신호는 제한적입니다.")
+    return ai[:5], policy[:6]
+
+
+def speech_date_ko(dt: datetime) -> str:
+    return f"{dt.year}년 {dt.month}월 {dt.day}일"
+
+
 def get_bot_username() -> str:
     if not TOKEN:
         raise RuntimeError("Telegram token missing")
@@ -197,6 +255,7 @@ def send(text: str):
         data = json.loads(r.read().decode("utf-8"))
     if not data.get("ok"):
         raise RuntimeError(f"Telegram send failed: {data}")
+    return (data.get("result") or {}).get("message_id")
 
 
 def load_state():
@@ -225,35 +284,35 @@ def main():
     first_run = not bool(old.get("last_link"))
     changed = old.get("last_link") not in (None, new_key)
 
+    sent_message_id = None
     if FORCE_NOTIFY or changed:
         raw, final = fetch(link)
         text = clean_text(raw)
-        ai_lines = select_lines(text, AI_KEYWORDS, limit=8)
-        policy_lines = select_lines(text, POLICY_KEYWORDS, limit=7)
         tone, hawk, dove = classify_policy_tone(text)
         ai_regime = classify_ai_regime(text)
+        ai_lines, policy_lines = speech_signals_ko(text)
         msg = [
             "[Kevin Warsh 공식 발언 변화 감지]",
-            f"제목: {title}",
-            f"발표: {pub or dt.isoformat()}",
+            f"제목: {speech_title_ko(title)}",
+            f"발표: {speech_date_ko(dt)}",
             f"정책 톤: {tone} (매파 문맥 {hawk} / 비둘기 문맥 {dove})",
             f"AI 체제판정: {ai_regime}",
-        ]
-        if ai_lines:
-            msg += ["", "[AI·생산성·성장]", *[f"• {x}" for x in ai_lines]]
-        if policy_lines:
-            msg += ["", "[물가·고용·금리]", *[f"• {x}" for x in policy_lines]]
-        msg += [
             "",
-            "오탐 필터: trail/stroll/Kohn/Bernanke 등 등산 문맥의 'hike'는 금리인상 신호에서 제외",
+            "[AI·생산성·성장]",
+            *ai_lines,
+            "",
+            "[물가·고용·금리]",
+            *policy_lines,
+            "",
+            "오탐 필터: 산책·등산·인명 관련 문맥은 금리인상 신호에서 제외합니다.",
             f"원문: {final}",
             "",
-            "판정: AI 생산성·잠재성장률과 단기 CapEx 수요를 분리하고, 물가·금융여건·full employment·추가긴축 선택지와 함께 재확인",
+            "판정: AI 생산성·잠재성장률과 단기 설비투자 수요를 분리하고, 물가·금융여건·완전고용·추가긴축 선택지와 함께 재확인합니다.",
         ]
-        send("\n".join(msg))
+        sent_message_id = send("\n".join(msg))
 
     save_state({"last_link": new_key, "last_title": title, "last_pub_date": pub})
-    print(json.dumps({"first_run": first_run, "changed": changed, "latest": link}, ensure_ascii=False))
+    print(json.dumps({"first_run": first_run, "changed": changed, "sent": bool(sent_message_id), "message_id": sent_message_id, "latest": link}, ensure_ascii=False))
 
 
 if __name__ == "__main__":
