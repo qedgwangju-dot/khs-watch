@@ -132,6 +132,40 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         }
         self.assertIsNotNone(w._extract_hbm_market_pricing(item))
 
+    def test_bernstein_memory_cycle_extracts_current_baseline(self):
+        item = {
+            "title": "Bernstein memory supercycle update",
+            "description": (
+                "Conventional memory prices rise by the mid-teens to 20% in the third quarter, "
+                "followed by a high-single-digit rise in the fourth quarter. "
+                "Shortages persist in 2027 and prices normalize in 2028. "
+                "Long-term agreements cap further price increases."
+            ),
+            "source": "Investing.com",
+            "link": "https://example.com/bernstein",
+            "published_kst": "2026-09-30T01:56:00+09:00",
+        }
+        obs = w._extract_bernstein_memory_cycle(item)
+        self.assertEqual(obs["q3_2026_price_band"], "mid-teens~20%")
+        self.assertEqual(obs["q4_2026_price_band"], "high-single-digit")
+        self.assertEqual(obs["shortage_through_year"], 2027)
+        self.assertEqual(obs["normalization_year"], 2028)
+        self.assertTrue(obs["lta_caps_price_increases"])
+
+    def test_bernstein_memory_cycle_only_alerts_on_state_change(self):
+        old = dict(w.BERNSTEIN_MEMORY_CYCLE_BASELINE)
+        same = dict(old)
+        changed = dict(old, normalization_year=2029)
+        self.assertEqual(w._bernstein_memory_cycle_changes(old, same), [])
+        self.assertTrue(any("2028→2029" in x for x in w._bernstein_memory_cycle_changes(old, changed)))
+
+    def test_bernstein_article_is_typed_not_generic(self):
+        item = {
+            "title": "Memory Supercycle Intensifies: Bernstein Sees DRAM, NAND Prices Up Nearly 20% This Quarter",
+            "description": "Shortages persist in 2027; normalization is expected in 2028 and LTAs cap price increases.",
+        }
+        self.assertTrue(w._is_bernstein_memory_cycle_item(item))
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \

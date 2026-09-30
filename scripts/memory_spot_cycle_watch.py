@@ -54,6 +54,18 @@ HBM_MARKET_PRICE_BASELINE = {
     "source_rank": 3,
     "as_of": "2026-09-29",
 }
+BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION = 1
+BERNSTEIN_MEMORY_CYCLE_BASELINE = {
+    "q3_2026_price_band": "mid-teens~20%",
+    "q4_2026_price_band": "high-single-digit",
+    "shortage_through_year": 2027,
+    "normalization_year": 2028,
+    "lta_caps_price_increases": True,
+    "source": "Bernstein via Investing.com",
+    "source_url": "https://au.investing.com/news/stock-market-news/bernstein-sees-samsung-gaining-hbm-share-cuts-sk-hynix-target-4664570",
+    "source_rank": 2,
+    "as_of": "2026-09-30",
+}
 TREND_PINNED_PRESS_URLS = [
     "https://www.trendforce.com/presscenter/news/20260929-13255.html",
 ]
@@ -80,6 +92,8 @@ QUERIES = [
     ("ko", '2028 HBM 공급확약 브로드컴 엔비디아 구글 AMD'),
     ("ko", 'TrendForce 2027 HBM 평균판매가격 121% 8단 12단 10 20'),
     ("ko", 'HBM 2027 Blended ASP 121 8단 Gb당 10 20 트렌드포스'),
+    ("ko", 'Bernstein DRAM NAND 3분기 20% 4분기 한 자릿수 공급부족 2027 2028 정상화 LTA'),
+    ("ko", 'Bernstein 메모리 2028 정상화 2027 공급부족 장기계약 LTA 가격 상한'),
     # DRAM physical capacity / wafer-start / new-fab cycle: do not miss supply expansion.
     ("ko", 'DRAM 생산능력 웨이퍼 투입량 월 생산량 증설 삼성전자 P4 SK하이닉스 M15X 마이크론'),
     ("ko", '어플라이드 머티어리얼즈 Citi TMT DRAM 생산능력 웨이퍼 160만 200만 40만'),
@@ -91,6 +105,8 @@ QUERIES = [
     ("en", '2028 HBM supply commitment Broadcom NVIDIA Google AMD'),
     ("en", 'HBM trade ratio Micron HBM4E DRAM capacity'),
     ("en", 'TrendForce 2027 HBM blended ASP 121% 8-Hi 12-Hi premium 10 20'),
+    ("en", 'Bernstein DRAM NAND Q3 mid-teens 20% Q4 high-single-digit shortage 2027 normalize 2028 LTA'),
+    ("en", 'Bernstein memory 2028 normalization 2027 shortage long-term agreements cap price increases'),
     ("en", 'Applied Materials Citi TMT DRAM wafer starts capacity 1.6 million 2 million 400000'),
     ("en", 'DRAM wafer starts greenfield fab capacity expansion Samsung P4 SK hynix M15X Micron'),
     ("en", 'DRAM capacity 300000 400000 wafer starts per month Applied Materials'),
@@ -103,14 +119,14 @@ MEMORY_MARKERS = {
 CHANGE_MARKERS = {
     "spot", "contract", "price", "asp", "shortage", "supply", "capacity", "capa",
     "inventory", "lta", "commitment", "allocation", "raise", "increase", "forecast",
-    "outlook", "revised", "revision", "wafer", "wafer start", "wafer starts", "wspm",
+    "outlook", "revised", "revision", "normalize", "normalization", "wafer", "wafer start", "wafer starts", "wspm",
     "greenfield", "fab", "factory", "ramp", "ramp-up", "equipment investment",
     "현물", "고정가", "계약가", "가격", "부족", "공급", "재고", "증설", "인상",
     "상향", "전망", "확약", "배정", "수급", "웨이퍼", "생산능력", "투입량",
     "신규 팹", "그린필드", "램프업", "가동", "장비투자", "설비투자",
 }
 HIGH_SIGNAL = {
-    "bofa", "bank of america", "trendforce", "dram exchange", "dramexchange", "omdia",
+    "bofa", "bank of america", "bernstein", "trendforce", "dram exchange", "dramexchange", "omdia",
     "reuters", "bloomberg", "citi", "ubs", "micron", "samsung", "sk hynix", "sk하이닉스",
     "삼성전자", "nvidia", "엔비디아", "broadcom", "브로드컴", "google", "구글", "amd",
     "applied materials", "amat", "어플라이드 머티어리얼즈", "citi tmt",
@@ -821,6 +837,132 @@ def _hbm_market_pricing_changes(old: dict, new: dict) -> list[str]:
     return changes
 
 
+
+def _is_bernstein_memory_cycle_item(item: dict) -> bool:
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    if "bernstein" not in low and "伯恩斯坦" not in text:
+        return False
+    if not any(k in low for k in ("dram", "nand", "memory", "메모리")):
+        return False
+    return any(k in low for k in (
+        "3q26", "4q26", "third quarter", "fourth quarter", "3분기", "4분기",
+        "2027", "2028", "lta", "long-term agreement", "contract price",
+        "high-single-digit", "high single digit", "normalize", "normalization", "가격",
+    ))
+
+
+def _extract_bernstein_memory_cycle(item: dict) -> dict | None:
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    if not _is_bernstein_memory_cycle_item(item):
+        return None
+
+    obs: dict = {}
+    q3_context = any(k in low for k in ("3q26", "3q 2026", "third quarter", "3분기"))
+    q4_context = any(k in low for k in ("4q26", "4q 2026", "fourth quarter", "4분기"))
+
+    if q3_context and re.search(r"(?:mid[- ]?teens?|중반)[^%]{0,80}?20\s*%", text, re.I):
+        obs["q3_2026_price_band"] = "mid-teens~20%"
+    else:
+        m = re.search(
+            r"(?:3Q26|3Q\s*2026|third quarter|3분기)[^%]{0,140}?"
+            r"(\d+(?:\.\d+)?)\s*(?:%|percent)[^%]{0,60}?"
+            r"(?:to|[-–—~∼]|에서)[^%]{0,30}?(\d+(?:\.\d+)?)\s*(?:%|percent)",
+            text,
+            re.I,
+        )
+        if m:
+            obs["q3_2026_price_band"] = f"{float(m.group(1)):g}~{float(m.group(2)):g}%"
+
+    if q4_context and re.search(r"high[- ]?single[- ]?digit|한\s*자릿수\s*(?:중후반|후반)", text, re.I):
+        obs["q4_2026_price_band"] = "high-single-digit"
+    else:
+        m = re.search(
+            r"(?:4Q26|4Q\s*2026|fourth quarter|4분기)[^%]{0,140}?"
+            r"(\d+(?:\.\d+)?)\s*(?:%|percent)[^%]{0,60}?"
+            r"(?:to|[-–—~∼]|에서)[^%]{0,30}?(\d+(?:\.\d+)?)\s*(?:%|percent)",
+            text,
+            re.I,
+        )
+        if m:
+            obs["q4_2026_price_band"] = f"{float(m.group(1)):g}~{float(m.group(2)):g}%"
+
+    shortage_years = [
+        int(y) for y in re.findall(
+            r"(?:shortage|shortages|undersuppl(?:y|ied)|공급\s*부족)[^.]{0,100}?(20\d{2})",
+            text,
+            re.I,
+        )
+    ]
+    if not shortage_years:
+        shortage_years = [
+            int(y) for y in re.findall(
+                r"(20\d{2})[^.]{0,100}?(?:shortage|shortages|undersuppl(?:y|ied)|공급\s*부족)",
+                text,
+                re.I,
+            )
+        ]
+    if shortage_years:
+        obs["shortage_through_year"] = max(shortage_years)
+
+    norm = re.search(r"(?:normaliz\w*|정상화)[^.]{0,100}?(20\d{2})", text, re.I)
+    if not norm:
+        norm = re.search(r"(20\d{2})[^.]{0,100}?(?:normaliz\w*|정상화)", text, re.I)
+    if norm:
+        obs["normalization_year"] = int(norm.group(1))
+
+    if (
+        any(k in low for k in ("lta", "long-term agreement", "long term agreement", "장기계약"))
+        and any(k in low for k in ("cap", "limit", "restrict", "상한", "제한"))
+    ):
+        obs["lta_caps_price_increases"] = True
+
+    if not obs:
+        return None
+    obs.update({
+        "source": item.get("source") or "Bernstein 관련 보도",
+        "source_url": item.get("link") or "",
+        "source_rank": 2,
+        "as_of": (item.get("published_kst") or "")[:10],
+    })
+    return obs
+
+
+def _merge_bernstein_memory_cycle(old: dict, obs: dict) -> dict:
+    merged = dict(old or {})
+    old_rank = int(merged.get("source_rank") or 0)
+    new_rank = int(obs.get("source_rank") or 0)
+    for key, value in obs.items():
+        if value in (None, ""):
+            continue
+        if key in ("source", "source_url", "as_of", "source_rank") and old_rank > new_rank:
+            continue
+        merged[key] = value
+    return merged
+
+
+def _bernstein_memory_cycle_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+    fields = (
+        ("q3_2026_price_band", "3Q26 conventional DRAM·NAND 가격 전망"),
+        ("q4_2026_price_band", "4Q26 conventional DRAM·NAND 가격 전망"),
+        ("shortage_through_year", "공급부족 지속 연도"),
+        ("normalization_year", "가격 정상화 예상연도"),
+        ("lta_caps_price_increases", "LTA 가격상승 제한"),
+    )
+    for key, label in fields:
+        a, b = old.get(key), new.get(key)
+        if a is not None and b is not None and a != b:
+            if isinstance(a, bool) or isinstance(b, bool):
+                changes.append(f"{label}: {'적용' if a else '미적용'}→{'적용' if b else '미적용'}")
+            else:
+                changes.append(f"{label}: {a}→{b}")
+        elif a is None and b is not None:
+            changes.append(f"{label}: {b} 신규 확인")
+    return changes
+
+
 def write_outputs(items: list[dict], errors: list[str]) -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     state = load_state()
@@ -831,6 +973,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     if int(state.get("hbm_market_pricing_track_version") or 0) < HBM_MARKET_PRICE_TRACK_VERSION:
         market_state = _merge_hbm_market_pricing(market_state, HBM_MARKET_PRICE_BASELINE)
         state["hbm_market_pricing_track_version"] = HBM_MARKET_PRICE_TRACK_VERSION
+
+    bernstein_state = dict(state.get("bernstein_memory_cycle") or {})
+    if int(state.get("bernstein_memory_cycle_track_version") or 0) < BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION:
+        bernstein_state = _merge_bernstein_memory_cycle(bernstein_state, BERNSTEIN_MEMORY_CYCLE_BASELINE)
+        state["bernstein_memory_cycle_track_version"] = BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION
 
     market_changes: list[str] = []
     market_source_url = ""
@@ -853,6 +1000,19 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         market_changes = ["TrendForce 2027 HBM Blended ASP·8단 프리미엄 기준선 확정"]
         market_source_url = market_state.get("source_url") or ""
 
+    bernstein_changes: list[str] = []
+    bernstein_source_url = ""
+    for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
+        obs = _extract_bernstein_memory_cycle(item)
+        if not obs:
+            continue
+        merged = _merge_bernstein_memory_cycle(bernstein_state, obs)
+        changes = _bernstein_memory_cycle_changes(bernstein_state, merged)
+        bernstein_state = merged
+        if changes:
+            bernstein_changes.extend(changes)
+            bernstein_source_url = bernstein_state.get("source_url") or obs.get("source_url") or bernstein_source_url
+
     seen_titles = {
         _normalize_title(str(meta.get("title") or ""))
         for meta in seen.values()
@@ -865,6 +1025,10 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         # Market-pricing republishers are not separate alerts. They feed the
         # typed numeric state above; only an actual numeric/state change alerts.
         if _extract_hbm_market_pricing(x) or _is_hbm_market_pricing_republisher(x):
+            continue
+        # Bernstein price-cycle stories are routed through typed state. A new
+        # headline alone must not alert unless a tracked price/year/LTA state changes.
+        if _is_bernstein_memory_cycle_item(x):
             continue
         new_items.append(x)
     force_notify = os.getenv("FORCE_NOTIFY", "").strip().lower() in {"1", "true", "yes"}
@@ -896,6 +1060,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "hbm_market_pricing_track_version": HBM_MARKET_PRICE_TRACK_VERSION,
         "hbm_market_alert_format_version": HBM_MARKET_ALERT_FORMAT_VERSION if market_changes else int(state.get("hbm_market_alert_format_version") or 0),
         "hbm_market_pricing": market_state,
+        "bernstein_memory_cycle_track_version": BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION,
+        "bernstein_memory_cycle": bernstein_state,
     }
     for key in (
         "last_successful_delivery_kst",
@@ -916,6 +1082,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- 신규 후보: {len(new_items)}건",
         f"- Telegram 대상 신규: {len(report_items)}건",
         f"- HBM 시장 가격 숫자 변화: {len(market_changes)}건",
+        f"- Bernstein 가격 사이클 상태 변화: {len(bernstein_changes)}건",
         f"- 원천 오류: {len(errors)}건",
     ]
     if errors:
@@ -924,13 +1091,14 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not report_items and not market_changes:
+    if not report_items and not market_changes and not bernstein_changes:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    if market_changes:
+    typed_changes = len(market_changes) + len(bernstein_changes)
+    if typed_changes:
         suffix = f" · 기타 신규 {len(report_items)}건" if report_items else ""
-        lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · HBM 가격 변화 {len(market_changes)}건{suffix}")
+        lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 상태 변화 {typed_changes}건{suffix}")
     else:
         lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 신규 {len(report_items)}건")
     if market_changes:
@@ -957,6 +1125,23 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         secondary = market_state.get("secondary_source_url")
         if secondary:
             lines.append('  <a href="' + html.escape(secondary, quote=True) + '">국내 보도</a>')
+    if bernstein_changes:
+        lines.append("• <b>Bernstein 메모리 가격 사이클 상태 변화</b>")
+        for change in bernstein_changes:
+            lines.append("  " + html.escape(change))
+        if bernstein_state.get("q3_2026_price_band"):
+            lines.append("  3Q26 conventional DRAM·NAND: <b>" + html.escape(str(bernstein_state["q3_2026_price_band"])) + "</b> QoQ")
+        if bernstein_state.get("q4_2026_price_band"):
+            lines.append("  4Q26 conventional DRAM·NAND: <b>" + html.escape(str(bernstein_state["q4_2026_price_band"])) + "</b> QoQ")
+        if bernstein_state.get("shortage_through_year"):
+            lines.append(f"  공급부족 지속 기준: <b>{int(bernstein_state['shortage_through_year'])}년</b>")
+        if bernstein_state.get("normalization_year"):
+            lines.append(f"  정상화 기준: <b>{int(bernstein_state['normalization_year'])}년</b>")
+        if bernstein_state.get("lta_caps_price_increases"):
+            lines.append("  LTA: <b>가격 상승폭 제한</b> 조건 유지")
+        lines.append("  ※ 기사 제목이 아니라 위 기준 숫자·연도·LTA 상태가 실제로 바뀔 때만 알림")
+        if bernstein_source_url:
+            lines.append('  <a href="' + html.escape(bernstein_source_url, quote=True) + '">근거 기사</a>')
     for item in report_items:
         label = classify(item["title"])
         raw_title = compact_title(item["title"], item.get("source", ""))

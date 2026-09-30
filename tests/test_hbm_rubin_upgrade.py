@@ -23,6 +23,34 @@ class RubinHBMUpgradeTests(unittest.TestCase):
             "published_at_kst": "2026-09-29T20:00:00+09:00",
         }
 
+    def test_bernstein_rubin_model_1024_to_640_is_distinct_from_official_spec(self):
+        e = self.base_event(
+            "rubin_broker_model",
+            "Bernstein Rubin Ultra HBM assumption cut from 1,024GB to 640GB; half uses 8-Hi and half 12-Hi HBM",
+        )
+        x = r.make_fact(e)
+        self.assertIsNotNone(x)
+        self.assertEqual(x["fact_key"], "bernstein_rubin_ultra_model_1024_to_640_8hi50_12hi50")
+        bullets = " ".join(x["fact_bullets"])
+        self.assertIn("-37.5%", bullets)
+        self.assertIn("+60.0%", bullets)
+        self.assertIn("NVIDIA 공식 최종 사양과 분리", bullets)
+
+    def test_bernstein_supplier_relative_change_uses_hbm_assumption_not_target_only(self):
+        e = self.base_event(
+            "hbm_supplier_relative",
+            "Bernstein sees Samsung gaining HBM share and uses more conservative assumptions on SK Hynix HBM progress and pricing",
+        )
+        x = r.make_fact(e)
+        self.assertIsNotNone(x)
+        self.assertEqual(x["fact_key"], "bernstein_hbm_supplier_relative_samsung_up_skhynix_down")
+        self.assertIn("목표주가 변경만으로는 발송하지 않습니다", x["verdict"])
+
+    def test_current_bernstein_facts_are_seeded_to_prevent_retro_alert(self):
+        self.assertEqual(r.STRUCTURE_BASELINE_VERSION, 2)
+        self.assertIn("bernstein_rubin_ultra_model_1024_to_640_8hi50_12hi50", r.KNOWN_STRUCTURE_FACT_KEYS)
+        self.assertIn("bernstein_hbm_supplier_relative_samsung_up_skhynix_down", r.KNOWN_STRUCTURE_FACT_KEYS)
+
     def test_contract_signed_without_percentage_alerts(self):
         e = self.base_event("hbm_2027_contract", "TrendForce: 2027 HBM contract signed and pricing agreement finalized")
         x = r.make_fact(e)

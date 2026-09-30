@@ -29,19 +29,35 @@ FX_URL = "https://api.frankfurter.dev/v2/rate/USD/KRW"
 OFFICIAL_RUBIN_GB = 288
 RUMORED_ULTRA_GB = 192
 BREAKEVEN_GPU_GROWTH = OFFICIAL_RUBIN_GB / RUMORED_ULTRA_GB - 1
+BERNSTEIN_RUBIN_PREVIOUS_GB = 1024
+BERNSTEIN_RUBIN_CURRENT_GB = 640
+BERNSTEIN_RUBIN_REDUCTION_PCT = (BERNSTEIN_RUBIN_CURRENT_GB / BERNSTEIN_RUBIN_PREVIOUS_GB - 1) * 100
+BERNSTEIN_RUBIN_BREAK_EVEN_GPU_GROWTH = BERNSTEIN_RUBIN_PREVIOUS_GB / BERNSTEIN_RUBIN_CURRENT_GB - 1
 BASE_NVLINK_GPU = 72
 ULTRA_NVLINK_GPU = 576
 BASE_SYSTEM_GB = BASE_NVLINK_GPU * OFFICIAL_RUBIN_GB
 ULTRA_SYSTEM_GB = ULTRA_NVLINK_GPU * RUMORED_ULTRA_GB
 SYSTEM_HBM_GROWTH = ULTRA_SYSTEM_GB / BASE_SYSTEM_GB - 1
 SEND_FRESHNESS_HOURS = 72
-STRUCTURE_BASELINE_VERSION = 1
-KNOWN_STRUCTURE_FACT_KEYS = {"hbm_capacity_kv_offload_mainstream_8hi_12hi_niche_4hi"}
+STRUCTURE_BASELINE_VERSION = 2
+KNOWN_STRUCTURE_FACT_KEYS = {
+    "hbm_capacity_kv_offload_mainstream_8hi_12hi_niche_4hi",
+    "bernstein_rubin_ultra_model_1024_to_640_8hi50_12hi50",
+    "bernstein_hbm_supplier_relative_samsung_up_skhynix_down",
+}
 
 QUERIES = [
     (
         "rubin_spec",
         '"Rubin Ultra" (HBM OR HBM4 OR HBM4E OR 192GB OR 288GB OR 1TB OR 8-Hi OR 12-Hi)',
+    ),
+    (
+        "rubin_broker_model",
+        '"Rubin Ultra" Bernstein (1024GB OR 640GB OR "8-Hi" OR "12-Hi" OR HBM)',
+    ),
+    (
+        "hbm_supplier_relative",
+        'Bernstein HBM Samsung share "SK hynix" progress pricing market share',
     ),
     (
         "hbm4e_validation",
@@ -71,6 +87,8 @@ QUERIES = [
 
 CATEGORY_KO = {
     "rubin_spec": "Rubin Ultra 최종 HBM 사양",
+    "rubin_broker_model": "Bernstein Rubin Ultra HBM 모델 가정",
+    "hbm_supplier_relative": "삼성전자↔SK하이닉스 HBM 상대 변화",
     "hbm4e_validation": "HBM4E 고객 검증·양산",
     "rubin_shipments": "Rubin Ultra·NVL576 실제 출하",
     "hbm_2027_contract": "2027 HBM 계약가격·물량",
@@ -85,6 +103,7 @@ OFFICIAL_SOURCE_HINTS = (
 TRUSTED_SOURCE_HINTS = (
     "trendforce", "reuters", "bloomberg", "the information", "semianalysis", "digitimes",
     "tom's hardware", "toms hardware", "financial times", "wall street journal", "wsj", "cnbc",
+    "investing.com",
     "thelec", "the elec", "연합뉴스", "yonhap",
 )
 LOW_VALUE_SOURCE_HINTS = (
@@ -125,6 +144,21 @@ def relevant(category: str, text: str) -> bool:
     low = text.lower()
     if category == "rubin_spec":
         return "rubin ultra" in low and any(k in low for k in ("hbm", "192gb", "288gb", "768gb", "1tb", "8-hi", "8hi", "12-hi", "12hi"))
+    if category == "rubin_broker_model":
+        return (
+            "rubin ultra" in low
+            and ("bernstein" in low or "伯恩斯坦" in text)
+            and "hbm" in low
+            and any(k in low for k in ("1024gb", "1,024gb", "640gb", "8-hi", "8hi", "12-hi", "12hi"))
+        )
+    if category == "hbm_supplier_relative":
+        return (
+            ("bernstein" in low or "伯恩斯坦" in text)
+            and "hbm" in low
+            and "samsung" in low
+            and any(k in low for k in ("sk hynix", "sk하이닉스"))
+            and any(k in low for k in ("share", "market share", "progress", "pricing", "점유율", "진척", "가격"))
+        )
     if category == "hbm4e_validation":
         return "hbm4e" in low and any(k in low for k in ("samsung", "sk hynix", "sk하이닉스", "micron")) and any(k in low for k in ("qualification", "validation", "sample", "mass production", "production", "yield", "수율", "양산", "검증", "샘플"))
     if category == "rubin_shipments":
@@ -311,6 +345,51 @@ def money_tokens(text: str) -> list[str]:
     return list(dict.fromkeys(re.findall(r"\$\s*\d+(?:\.\d+)?\s*(?:billion|million|B|M)\b", text, re.I)))
 
 
+
+def _bernstein_rubin_model_values(text: str) -> tuple[int | None, int | None, int | None, int | None]:
+    low = clean_text(text).lower().replace(",", "")
+    old_gb = new_gb = None
+    patterns = (
+        r"(?:from|기존|종전|由)\s*(\d{3,4})\s*gb[^.]{0,90}?(?:to|에서|→|하향|下调至|降至)\s*(\d{3,4})\s*gb",
+        r"(\d{3,4})\s*gb\s*(?:→|->|에서)\s*(\d{3,4})\s*gb",
+    )
+    for pat in patterns:
+        m = re.search(pat, low, re.I)
+        if m:
+            old_gb, new_gb = int(m.group(1)), int(m.group(2))
+            break
+    if old_gb is None and "1024gb" in low and "640gb" in low:
+        old_gb, new_gb = 1024, 640
+
+    share_8 = share_12 = None
+    has_8 = any(k in low for k in ("8-hi", "8hi", "8-layer", "8 layer", "8단", "8层"))
+    has_12 = any(k in low for k in ("12-hi", "12hi", "12-layer", "12 layer", "12단", "12层"))
+    half_split = any(k in low for k in ("half", "50%", "50 percent", "절반", "一半"))
+    if has_8 and has_12 and half_split:
+        share_8 = share_12 = 50
+    return old_gb, new_gb, share_8, share_12
+
+
+def _bernstein_supplier_relative_signature(text: str) -> str:
+    low = clean_text(text).lower()
+    if not (("bernstein" in low or "伯恩斯坦" in text) and "hbm" in low and "samsung" in low):
+        return ""
+    if not any(k in low for k in ("sk hynix", "sk하이닉스")):
+        return ""
+    samsung_up = any(k in low for k in ("gaining hbm share", "gain share", "share gain", "점유율 확대", "점유율 상승"))
+    sk_down = (
+        ("sk hynix" in low or "sk하이닉스" in low)
+        and any(k in low for k in ("more conservative", "conservative assumptions", "progress and pricing", "진척", "가격 가정 하향", "목표주가 하향"))
+    )
+    if samsung_up and sk_down:
+        return "bernstein_hbm_supplier_relative_samsung_up_skhynix_down"
+    if samsung_up:
+        return "bernstein_hbm_supplier_relative_samsung_up"
+    if sk_down:
+        return "bernstein_hbm_supplier_relative_skhynix_down"
+    return ""
+
+
 def make_fact(event: dict) -> dict | None:
     e = dict(event)
     text = compact_fact_text(e)
@@ -320,6 +399,36 @@ def make_fact(event: dict) -> dict | None:
     headline = ""
     verdict = ""
     fact_key = ""
+
+    if cat == "rubin_broker_model":
+        old_gb, new_gb, share_8, share_12 = _bernstein_rubin_model_values(text)
+        if old_gb is None or new_gb is None or old_gb <= 0 or new_gb <= 0:
+            return None
+        reduction_pct = (new_gb / old_gb - 1.0) * 100.0
+        break_even = old_gb / new_gb - 1.0
+        split = f"_8hi{share_8}_12hi{share_12}" if share_8 is not None and share_12 is not None else ""
+        fact_key = f"bernstein_rubin_ultra_model_{old_gb}_to_{new_gb}{split}"
+        headline = f"Bernstein Rubin Ultra HBM 모델 가정 {old_gb:,}GB→{new_gb:,}GB"
+        bullets.append(f"• 증권사 모델 가정: 평균 HBM 용량을 {old_gb:,}GB→{new_gb:,}GB로 조정했습니다. NVIDIA 공식 최종 사양과 분리합니다.")
+        bullets.append(f"• 변화율: {reduction_pct:.1f}% · 같은 HBM 비트 수요를 유지하려면 GPU 출하량이 약 +{break_even*100:.1f}% 필요합니다.")
+        if share_8 is not None and share_12 is not None:
+            bullets.append(f"• 적층 가정: 8단 {share_8}% / 12단 {share_12}%로 분리합니다.")
+        if "server dram" in low or "conventional dram" in low:
+            bullets.append("• 대체 경로: 줄어든 HBM 웨이퍼 여력이 conventional server DRAM으로 이동할 수 있다는 가정을 함께 확인합니다.")
+        verdict = "🟡 HBM 비트 수요의 구조 변화 신호이지만 증권사 모델 가정입니다. NVIDIA 최종 사양·GPU 출하량·HBM4 고객 승인을 함께 확인합니다."
+
+    elif cat == "hbm_supplier_relative":
+        fact_key = _bernstein_supplier_relative_signature(text)
+        if not fact_key:
+            return None
+        headline = "Bernstein HBM 공급사 상대가정 변화 — 삼성전자 점유율↑·SK하이닉스 진척/가격 가정↓"
+        if "samsung" in low:
+            bullets.append("• 삼성전자: Bernstein이 HBM 점유율 확대 방향을 반영했습니다.")
+        if "sk hynix" in low or "sk하이닉스" in low:
+            bullets.append("• SK하이닉스: HBM 진척·가격에 더 보수적인 가정을 반영한 신호입니다.")
+        if "3.3 million" in low and "2.7 million" in low:
+            bullets.append("• 목표주가 변화는 결과값으로만 기록하고, 알림 트리거는 HBM 점유율·진척·가격 가정 변화로 제한합니다.")
+        verdict = "🟡 목표주가 변경만으로는 발송하지 않습니다. 공급사별 HBM 점유율·가격·고객 승인·양산 가정이 실제로 바뀐 경우에만 상태 변화로 봅니다."
 
     # SK hynix Indiana HBM4E: classify it correctly as a packaging/production-base event,
     # not as customer qualification.
@@ -601,6 +710,13 @@ def fact_signature_from_raw(event: dict) -> str:
         return "hbm_capacity_kv_offload_" + ("_".join(stacks) if stacks else "shift")
     if "hbm3e" in text and "ddr5" in text and ("3x" in text or "three times" in text or "3배" in text):
         return "hbm3e_wafer_capacity_3x_ddr5"
+    if cat == "rubin_broker_model":
+        old_gb, new_gb, share_8, share_12 = _bernstein_rubin_model_values(text)
+        if old_gb is not None and new_gb is not None:
+            split = f"_8hi{share_8}_12hi{share_12}" if share_8 is not None and share_12 is not None else ""
+            return f"bernstein_rubin_ultra_model_{old_gb}_to_{new_gb}{split}"
+    if cat == "hbm_supplier_relative":
+        return _bernstein_supplier_relative_signature(text)
     if cat == "rubin_spec" and "rubin ultra" in text:
         caps = [x for x in ("192gb", "288gb", "768gb", "1tb") if x in text]
         if caps:
@@ -752,7 +868,7 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
         grouped.setdefault(e["category"], []).append(e)
 
     n = 1
-    for category in ("rubin_spec", "hbm4e_validation", "rubin_shipments", "hbm_2027_contract", "hbm_wafer_economics", "memory_migration"):
+    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "rubin_shipments", "hbm_2027_contract", "hbm_wafer_economics", "memory_migration"):
         group = grouped.get(category) or []
         if not group:
             continue
@@ -780,6 +896,7 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
         "• 기사 제목만 전달하지 않고, 원문에서 확인된 핵심 사실·일정·물량·금액·판정을 함께 적습니다.",
         "• 192GB 확정만으로 HBM 수요 붕괴로 판정하지 않습니다.",
         f"• GPU당 288→192GB(-33.3%)일 때 GPU 출하가 +{BREAKEVEN_GPU_GROWTH*100:.0f}% 이상이면 총 HBM 비트 수요는 상쇄 가능합니다.",
+        f"• Bernstein의 {BERNSTEIN_RUBIN_PREVIOUS_GB:,}→{BERNSTEIN_RUBIN_CURRENT_GB:,}GB는 증권사 모델 가정으로 별도 관리하며, NVIDIA 공식 사양으로 승격하지 않습니다.",
     ]
     return "\n".join(lines).strip() + "\n"
 
