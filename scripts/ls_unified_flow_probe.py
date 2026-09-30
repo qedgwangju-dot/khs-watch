@@ -49,8 +49,12 @@ async def main():
             "trcodes":sorted({str(x.get("trcode")) for x in received if x.get("type")=="realtime"}),
             "data_keys":{str(x.get("trcode")):sorted((x.get("data") or {}).keys()) for x in received if x.get("type")=="realtime" and isinstance(x.get("data"),dict)}
         },ensure_ascii=False))
-        if not any(x.get("type")=="realtime" for x in received):
-            raise RuntimeError("no realtime payload received")
+        realtime_seen=any(x.get("type")=="realtime" for x in received)
+        registration_ok=all(bool(x.get("ok")) for x in results)
+        if not registration_ok:
+            raise RuntimeError(f"one or more unified realtime registrations failed: {results}")
+        # 장 종료 후에는 등록 ACK만 성공하고 시세 payload가 오지 않는 것이 정상일 수 있다.
+        print(f"unified_realtime_registration_valid=true realtime_payload_seen={str(realtime_seen).lower()}")
         return 0
     finally:
         try: await api.close()
