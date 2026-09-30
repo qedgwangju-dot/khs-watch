@@ -35,6 +35,9 @@ STATUS = OUT / "wonyotti_90d_thesis_status.md"
 KST = ZoneInfo("Asia/Seoul")
 UA = "Mozilla/5.0 (compatible; khs-watch/1.0; +https://github.com/qedgwangju-dot/khs-watch)"
 BTC_LINE = 85000.0
+BTC_HYSTERESIS_USD = 250.0
+BTC_CONFIRM_OBSERVATIONS = 2
+BTC_CONFIRM_MIN_SECONDS = 180
 
 COINGECKO = (
     "https://api.coingecko.com/api/v3/simple/price"
@@ -276,7 +279,7 @@ def coingecko_prices() -> dict:
 def gate_spot_prices() -> dict:
     result = {}
     for coin in ("BTC", "ETH", "SOL"):
-        pair = f"${coin}_USDT"
+        pair = f"{coin}_USDT"
         rows = fetch_json(
             "https://api.gateio.ws/api/v4/spot/tickers?"
             + urllib.parse.urlencode({"currency_pair": pair})
@@ -339,7 +342,7 @@ def combine_spot_prices(source_map: dict[str, dict]) -> dict:
 
         change24 = None
         volume24 = None
-        for preferred in ("CoinGecko",):
+        for preferred in ("CoinGecko", "Gate.io Spot"):
             row = (source_map.get(preferred) or {}).get(coin) or {}
             if row.get("change24") is not None and change24 is None:
                 change24 = float(row["change24"])
@@ -370,6 +373,7 @@ def crypto_snapshot() -> tuple[dict, list[str]]:
     for source_name, loader in (
         ("CoinGecko", coingecko_prices),
         ("Coinbase", coinbase_prices),
+        ("Gate.io Spot", gate_spot_prices),
     ):
         try:
             price_sources[source_name] = loader()
@@ -400,18 +404,11 @@ def crypto_snapshot() -> tuple[dict, list[str]]:
             errors.append(f"Gate.io {contract}: {exc}")
     result["derivatives"] = deriv
 
-    gate_index = {}
-    for coin in ("BTC", "ETH", "SOL"):
-        item = deriv.get(f"{coin}USDT") or {}
-        value = float(item.get("index_price") or 0.0)
-        if value > 0:
-            gate_index[coin] = {"price": value}
-    if len(gate_index) == 3:
-        price_sources["Gate.io Futures Index"] = gate_index
-
     combined = combine_spot_prices(price_sources)
     result.update(combined)
-    result["price_trigger_ready"] = bool(combined.get("price_verified"))
+    result["price_trigger_ready"] = bool(
+        ((combined.get("prices") or {}).get("BTC") or {}).get("verified")
+    )
 
     for key, url in (("btc_etf", FARSIDE_BTC), ("eth_etf", FARSIDE_ETH)):
         try:
@@ -731,20 +728,139 @@ def high_signal_news(old_seen: set[str]) -> tuple[list[dict], set[str], list[str
     return deduped[:8], all_seen, errors
 
 
-def build_signals(old: dict, new: dict, news_items: list[dict]) -> list[tuple]:
+def btc_threshold_zone(price: float | None) -> str | None:
+    if price is None:
+        return None
+    value = float(price)
+    if value >= BTC_LINE + BTC_HYSTERESIS_USD:
+        return "above"
+    if value <= BTC_LINE - BTC_HYSTERESIS_USD:
+        return "below"
+    return "band"
+
+
+def _parse_state_dt(value: str | None) -> dt.datetime | None:
+    if not value:
+        return None
+    try:
+        parsed = dt.datetime.fromisoformat(value)
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=KST)
+        return parsed.astimezone(KST)
+    except Exception:
+        return None
+
+
+def advance_btc_threshold_state(
+    old_state: dict | None,
+    crypto: dict,
+    now: dt.datetime,
+) -> tuple[dict, dict | None]:
+    """Require a true spot quorum plus persistence before confirming a 85k regime change."""
+    old_state = old_state or {}
+    btc = ((crypto.get("prices") or {}).get("BTC") or {})
+    price = btc.get("usd")
+    verified = bool(btc.get("verified")) and bool(crypto.get("price_trigger_ready"))
+
+    state = {
+        "confirmed_side": old_state.get("confirmed_side"),
+        "last_confirmed_at": old_state.get("last_confirmed_at"),
+        "last_confirmed_price": old_state.get("last_confirmed_price"),
+        "candidate_side": old_state.get("candidate_side"),
+        "candidate_count": int(old_state.get("candidate_count") or 0),
+        "candidate_first_seen": old_state.get("candidate_first_seen"),
+        "candidate_first_price": old_state.get("candidate_first_price"),
+    }
+
+    def clear_candidate() -> None:
+        state["candidate_side"] = None
+        state["candidate_count"] = 0
+        state["candidate_first_seen"] = None
+        state["candidate_first_price"] = None
+
+    if not verified or price is None:
+        clear_candidate()
+        return state, None
+
+    price = float(price)
+    zone = btc_threshold_zone(price)
+    confirmed = state.get("confirmed_side")
+
+    if confirmed not in {"above", "below"}:
+        if zone in {"above", "below"}:
+            confirmed = zone
+        elif price > BTC_LINE:
+            confirmed = "above"
+        elif price < BTC_LINE:
+            confirmed = "below"
+        else:
+            clear_candidate()
+            return state, None
+        state["confirmed_side"] = confirmed
+        state["last_confirmed_at"] = now.isoformat(timespec="seconds")
+        state["last_confirmed_price"] = price
+        clear_candidate()
+        return state, None
+
+    if zone == "band" or zone is None:
+        clear_candidate()
+        return state, None
+
+    if zone == confirmed:
+        clear_candidate()
+        return state, None
+
+    if state.get("candidate_side") == zone:
+        first_seen = _parse_state_dt(state.get("candidate_first_seen")) or now
+        first_price = float(state.get("candidate_first_price") or price)
+        count = int(state.get("candidate_count") or 0) + 1
+    else:
+        first_seen = now
+        first_price = price
+        count = 1
+
+    state["candidate_side"] = zone
+    state["candidate_count"] = count
+    state["candidate_first_seen"] = first_seen.isoformat(timespec="seconds")
+    state["candidate_first_price"] = first_price
+
+    elapsed = max(0.0, (now - first_seen).total_seconds())
+    if count < BTC_CONFIRM_OBSERVATIONS or elapsed < BTC_CONFIRM_MIN_SECONDS:
+        return state, None
+
+    event = {
+        "from_side": confirmed,
+        "to_side": zone,
+        "first_price": first_price,
+        "confirmed_price": price,
+        "observations": count,
+        "elapsed_seconds": elapsed,
+    }
+    state["confirmed_side"] = zone
+    state["last_confirmed_at"] = now.isoformat(timespec="seconds")
+    state["last_confirmed_price"] = price
+    clear_candidate()
+    return state, event
+
+
+def build_signals(old: dict, new: dict, news_items: list[dict], btc_threshold_event: dict | None = None) -> list[tuple]:
     signals = []
 
     old_crypto, new_crypto = old.get("crypto") or {}, new.get("crypto") or {}
-    old_btc = (((old_crypto.get("prices") or {}).get("BTC") or {}).get("usd"))
-    new_btc = (((new_crypto.get("prices") or {}).get("BTC") or {}).get("usd"))
-    if (
-        old_btc and new_btc
-        and bool(new_crypto.get("price_trigger_ready"))
-        and (old_btc - BTC_LINE) * (new_btc - BTC_LINE) <= 0
-        and old_btc != new_btc
-    ):
-        direction = "상향 돌파" if new_btc > BTC_LINE else "하향 이탈"
-        signals.append(("암호화폐", f"BTC가 85,000달러 기준선을 {direction}", f"${old_btc:,.0f} → ${new_btc:,.0f}", "가격 기준선 변화가 실제 주목도 유입·이탈로 이어지는지 ETF와 파생 흐름 확인", "BTC·ETH ETF 5영업일 흐름과 펀딩·미결제약정", None))
+    if btc_threshold_event:
+        direction = "상향 돌파" if btc_threshold_event.get("to_side") == "above" else "하향 이탈"
+        first_price = float(btc_threshold_event.get("first_price") or 0.0)
+        confirmed_price = float(btc_threshold_event.get("confirmed_price") or 0.0)
+        observations = int(btc_threshold_event.get("observations") or 0)
+        elapsed_min = float(btc_threshold_event.get("elapsed_seconds") or 0.0) / 60.0
+        signals.append((
+            "암호화폐",
+            f"BTC가 85,000달러 기준선을 {direction} — 지속 확인",
+            f"1차 ${first_price:,.0f} → 확인 ${confirmed_price:,.0f} · 현물 교차검증 {observations}회 · {elapsed_min:.1f}분 지속",
+            "한 번의 기준선 터치가 아니라 복수 현물 원천과 시간 지속성이 확인된 가격 레짐 변화",
+            "BTC·ETH ETF 5영업일 흐름과 펀딩·미결제약정이 같은 방향으로 확인되는지",
+            None,
+        ))
 
     for key, label in (("btc_etf", "BTC"), ("eth_etf", "ETH")):
         before, after = old_crypto.get(key) or {}, new_crypto.get(key) or {}
@@ -921,6 +1037,7 @@ def build_alert(signals: list[tuple], now: dt.datetime, snapshot: dict) -> str:
         srcs = ", ".join(crypto.get("price_sources") or [])
         lines.append(f"• BTC ${btc['usd']:,.0f} ({fmt_pct(btc.get('change24'))}) · ETH ${eth.get('usd',0):,.0f} ({fmt_pct(eth.get('change24'))}) · SOL ${sol.get('usd',0):,.2f} ({fmt_pct(sol.get('change24'))})")
         lines.append(f"• 암호화폐 현물가격: {quality} · 원천 {html.escape(srcs or '확인 불가')}")
+        lines.append("• BTC 85,000달러 기준선: ±250달러 확인밴드 밖에서 현물 교차검증 2회·최소 3분 지속 시 확정")
     for key, label in (("btc_etf", "BTC ETF"), ("eth_etf", "ETH ETF")):
         flow = crypto.get(key) or {}
         if flow:
@@ -1016,6 +1133,12 @@ def main() -> None:
     news_items, seen, news_errors = high_signal_news(set(old.get("news_seen") or []))
     errors.extend(news_errors)
 
+    btc_threshold_state, btc_threshold_event = advance_btc_threshold_state(
+        old.get("btc_threshold_state") or {},
+        crypto,
+        now,
+    )
+
     def fresh_date(value: str | None, max_age_days: int = 4) -> bool:
         if not value:
             return False
@@ -1062,6 +1185,7 @@ def main() -> None:
         "rates": rates,
         "nvidia_sec": nvidia_sec,
         "news_seen": sorted(seen)[-5000:],
+        "btc_threshold_state": btc_threshold_state,
         "health": health,
         "health_error_streaks": health_streaks,
     }
@@ -1069,7 +1193,7 @@ def main() -> None:
 
     signals = []
     if old.get("initialized"):
-        signals = build_signals(old, new_state, news_items)
+        signals = build_signals(old, new_state, news_items, btc_threshold_event)
 
         old_health_streaks = old.get("health_error_streaks") or {}
         labels = {
@@ -1113,6 +1237,12 @@ def main() -> None:
         f"- 신규 고신호: {len(signals)}건",
         f"- 교차검증 뉴스 후보: {len(news_items)}건",
         f"- 부분 조회 오류: {len(errors)}건",
+        (
+            "- BTC 85,000달러 확인상태: "
+            f"확정={btc_threshold_state.get('confirmed_side') or '미정'}, "
+            f"후보={btc_threshold_state.get('candidate_side') or '없음'}, "
+            f"연속확인={btc_threshold_state.get('candidate_count') or 0}회"
+        ),
         "- 원천 건강도: " + ", ".join(f"{k}={'정상' if v else '실패'}" for k, v in health.items()),
     ]
     if errors:

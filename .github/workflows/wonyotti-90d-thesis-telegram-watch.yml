@@ -81,7 +81,13 @@ jobs:
           rm -f out/wonyotti_90d_thesis_alert.html out/wonyotti_90d_thesis_status.md out/wonyotti_90d_thesis_pending_state.json
           python -m py_compile scripts/wonyotti_90d_thesis_watch.py
           python - <<'PY'
-          from scripts.wonyotti_90d_thesis_watch import build_signals, combine_spot_prices
+          import datetime as dt
+          from scripts.wonyotti_90d_thesis_watch import (
+              BTC_CONFIRM_MIN_SECONDS,
+              advance_btc_threshold_state,
+              build_signals,
+              combine_spot_prices,
+          )
 
           old = {
               "crypto": {
@@ -128,7 +134,7 @@ jobs:
                   "ETH": {"price": 2700.0},
                   "SOL": {"price": 120.0},
               },
-              "Gate.io Futures Index": {
+              "Gate.io Spot": {
                   "BTC": {"price": 84042.0},
                   "ETH": {"price": 2705.0},
                   "SOL": {"price": 120.12},
@@ -151,7 +157,7 @@ jobs:
                   "ETH": {"price": 2700.0},
                   "SOL": {"price": 120.0},
               },
-              "Gate.io Futures Index": {
+              "Gate.io Spot": {
                   "BTC": {"price": 86000.0},
                   "ETH": {"price": 2800.0},
                   "SOL": {"price": 125.0},
@@ -159,30 +165,42 @@ jobs:
           })
           assert divergent["price_verified"] is False, divergent
 
-          price_old = {
-              "crypto": {
-                  "prices": {"BTC": {"usd": 85500.0}},
-                  "price_trigger_ready": True,
-              },
-              "rates": {},
-          }
-          unverified_new = {
-              "crypto": {
-                  "prices": {"BTC": {"usd": 84000.0}},
-                  "price_trigger_ready": False,
-              },
-              "rates": {},
-          }
-          assert not any("85,000" in item[1] for item in build_signals(price_old, unverified_new, []))
+          tz = dt.timezone(dt.timedelta(hours=9))
+          t0 = dt.datetime(2026, 9, 30, 21, 53, tzinfo=tz)
 
-          verified_new = {
-              "crypto": {
-                  "prices": {"BTC": {"usd": 84000.0}},
-                  "price_trigger_ready": True,
-              },
-              "rates": {},
-          }
-          assert any("85,000" in item[1] for item in build_signals(price_old, verified_new, []))
+          def crypto_at(price, verified=True):
+              return {
+                  "prices": {"BTC": {"usd": float(price), "verified": verified}},
+                  "price_trigger_ready": bool(verified),
+              }
+
+          baseline, event = advance_btc_threshold_state({}, crypto_at(83700), t0)
+          assert baseline["confirmed_side"] == "below" and event is None, (baseline, event)
+
+          cand1, event = advance_btc_threshold_state(baseline, crypto_at(85348), t0 + dt.timedelta(minutes=1))
+          assert event is None and cand1["candidate_side"] == "above" and cand1["candidate_count"] == 1, (cand1, event)
+
+          cand2, event = advance_btc_threshold_state(cand1, crypto_at(85360), t0 + dt.timedelta(minutes=2))
+          assert event is None, (cand2, event)
+
+          reset, event = advance_btc_threshold_state(cand2, crypto_at(85100), t0 + dt.timedelta(minutes=3))
+          assert event is None and reset["candidate_side"] is None and reset["candidate_count"] == 0, (reset, event)
+
+          cand3, event = advance_btc_threshold_state(reset, crypto_at(85320), t0 + dt.timedelta(minutes=4))
+          assert event is None and cand3["candidate_count"] == 1, (cand3, event)
+          confirmed, event = advance_btc_threshold_state(
+              cand3,
+              crypto_at(85420),
+              t0 + dt.timedelta(seconds=4 * 60 + BTC_CONFIRM_MIN_SECONDS),
+          )
+          assert event and event["to_side"] == "above", (confirmed, event)
+
+          reverse1, event = advance_btc_threshold_state(confirmed, crypto_at(84345), t0 + dt.timedelta(minutes=10))
+          assert event is None and reverse1["candidate_side"] == "below", (reverse1, event)
+
+          broken, event = advance_btc_threshold_state(reverse1, crypto_at(84200, verified=False), t0 + dt.timedelta(minutes=11))
+          assert event is None and broken["candidate_side"] is None, (broken, event)
+
           print("wonyotti_regression_tests=pass")
           PY
           python scripts/wonyotti_90d_thesis_watch.py
@@ -205,7 +223,7 @@ jobs:
           • 신규 의미 변화만 송출 · 무변화 무알림 · 상태 저장으로 중복 차단
 
           <b>감시 축</b>
-          • 암호화폐: BTC·ETH·SOL 가격, BTC 85,000달러 기준선, BTC·ETH 현물 ETF 일간/5영업일 자금, 선물 펀딩·미결제약정
+          • 암호화폐: BTC·ETH·SOL 가격, BTC 85,000달러 기준선(현물 교차검증·±250달러 확인밴드·2회/3분 지속 확인), BTC·ETH 현물 ETF 일간/5영업일 자금, 선물 펀딩·미결제약정
           • 나스닥 할인율: 미국 10년 명목금리·실질금리, 빅테크 AI 설비투자·가이던스 변화
           • NVIDIA 수요의 질: SEC 10-Q/10-K, 매출채권 증가율과 분기 매출 증가율, 고객금융·현금회수 위험
           • 메모리: DRAM·HBM·NAND를 분리해 2027~2028년 가격·공급부족·증설·고객인증 변화 추적
