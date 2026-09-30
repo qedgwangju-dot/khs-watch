@@ -62,6 +62,7 @@ jobs:
           python -m py_compile scripts/coinbase_stablecoin_catalyst_watch.py
           python -m unittest tests/test_coinbase_stablecoin_catalyst_watch.py tests/test_coin_alert_korean_terms.py -v
           python - <<'PY'
+          import json
           import pathlib
           from scripts import crypto_alert_format as fmt
 
@@ -92,6 +93,49 @@ jobs:
           assert len(rendered) < 1800, len(rendered)
           print("compact_crypto_alert_layout_valid=true")
           print(rendered)
+
+          partial = json.loads(pathlib.Path("data/crypto_liquidity_watch_state.json").read_text(encoding="utf-8"))
+          partial["btc_etf"].update({
+              "date": "2026-09-29",
+              "total_usd_m": 15.1,
+              "status": "partial",
+              "reported_funds": 11,
+              "missing_funds": 1,
+              "last5_usd_m": 718.2,
+              "last5_dates": ["2026-09-23", "2026-09-24", "2026-09-25", "2026-09-28", "2026-09-29"],
+              "prev5_usd_m": 2010.3,
+              "prev5_dates": ["2026-09-16", "2026-09-17", "2026-09-18", "2026-09-21", "2026-09-22"],
+              "five_day_change_usd_m": -1292.1,
+              "five_day_change_pct": -64.3,
+              "five_day_direction": "순자금흐름 악화",
+          })
+          partial_path = pathlib.Path("/tmp/crypto_liquidity_partial_state.json")
+          partial_path.write_text(json.dumps(partial, ensure_ascii=False), encoding="utf-8")
+          fmt.PENDING_STATE_PATH = partial_path
+          sample5 = """[크립토 유동성 변화 감지]
+          조회시각(KST): 2026-09-30T11:14:35+09:00
+
+          • BTC 현물 ETF 새 일간 자금흐름(잠정 집계): +15.1백만달러
+          • BTC 현물 ETF 5거래일 구간 이동: 최근5 +1,417.8백만달러 → +718.2백만달러 (-699.6백만달러) / 이전5 +845.2백만달러 → +2,010.3백만달러 (+1,165.1백만달러)
+
+          미 국채 — 미 재무부 공식 수익률곡선 기준일 2026-09-29
+          원화 환산 기준: 1달러=1,360.00원 | 기준일 2026-09-29 | 한국은행 ECOS 원/미국달러(매매기준율) | 교차검증: 접근 불가 | 조회 2026-09-30T11:14:50+09:00
+          공식·데이터 원천:
+          • 원/달러 환율: <a href="https://ecos.bok.or.kr/">원문</a>
+          • 미 국채 금리: <a href="https://home.treasury.gov/">원문</a>
+          • BTC 현물 ETF: <a href="https://farside.co.uk/btc/">원문</a>
+          """
+          rendered5 = fmt.format_alert(sample5)
+          assert "<b>5거래일 비교 · 잠정</b>" in rendered5
+          assert "최근5(잠정) 2026-09-23~2026-09-29" in rendered5
+          assert "이전5 2026-09-16~2026-09-22" in rendered5
+          assert "구간 차이 -1,292.1백만달러" in rendered5
+          assert "-64.3%" in rendered5
+          assert "순유입 강도 둔화" in rendered5
+          assert "+1,417.8백만달러" not in rendered5
+          assert "+845.2백만달러" not in rendered5
+          print("five_day_reading_order_valid=true")
+          print(rendered5)
           PY
 
       - name: Validate exact Telegram bot route without sending
