@@ -117,7 +117,23 @@ jobs:
           assert not watch.same_underlying_story(representative, equipment_a), (
               "PhotonLink product news and CPO manufacturing-equipment news must remain separate."
           )
-          print("dedupe_regression_test=passed")
+
+          false_positive_title = "NVIDIA's CPO progress boosts Lumentum shares as AI demand rises"
+          assert watch.is_noise(false_positive_title + " KuCoin"), (
+              "Stock-reaction/crypto commentary must never trigger the structural optics alert."
+          )
+          assert watch.signal_score(false_positive_title, "KuCoin") < 0, (
+              "The exact KuCoin/Lumentum false positive was not blocked."
+          )
+
+          real_signal_title = "Lumentum receives incremental multi-hundred-million-dollar CPO order deliverable in first half 2027"
+          assert watch.signal_score(real_signal_title, "Lumentum") >= 7, (
+              "A real Lumentum CPO commercial order should remain eligible."
+          )
+          assert any(__import__("re").search(p, real_signal_title, __import__("re").I) for p in watch.ACTION_PATTERNS), (
+              "A real commercial order must satisfy the action gate."
+          )
+          print("dedupe_and_quality_regression_test=passed")
           PY
 
       - name: Validate exact requested Telegram route without sending
@@ -201,6 +217,10 @@ jobs:
               "Allring Tech": "올링테크",
               "FitTech": "핏테크",
               "PhotonLink": "포톤링크",
+              "直得": "즈더",
+              "高明鐵": "가오밍톄",
+              "東佑達": "둥유다",
+              "萬潤": "완룬",
           }
 
           def localize_names(value: str) -> str:
@@ -340,89 +360,21 @@ jobs:
               value = re.sub(r"\$([0-9][0-9,]*(?:\.[0-9]+)?)\s*M\b", repl_m, value, flags=re.I)
               return value
 
-          def fallback_korean_title(original: str) -> str:
-              # Deterministic fallback for translation API throttling. Never leak a long English title.
-              text = strip_publisher_suffix(html.unescape(original).strip())
-              company = next((term for term in keep_terms[:8] if re.search(rf"\b{re.escape(term)}\b", text, re.I)), "")
-              fiscal = re.search(r"\bFY\s*20\d{2}\b|\bFY\s*\d{2}\b", text, re.I)
-              pct = re.search(r"\b\d+(?:\.\d+)?\s*%", text)
-              metric = ""
-              if re.search(r"revenue|sales", text, re.I):
-                  metric = "매출"
-              elif re.search(r"backlog", text, re.I):
-                  metric = "수주잔고"
-              elif re.search(r"bookings?|orders?", text, re.I):
-                  metric = "수주"
-              elif re.search(r"guidance|outlook", text, re.I):
-                  metric = "실적 전망"
-              elif re.search(r"shipments?|volume shipment", text, re.I):
-                  metric = "출하"
-              elif re.search(r"capacity|factory|plant|capex", text, re.I):
-                  metric = "생산능력·설비투자"
-              elif re.search(r"pricing|price increase", text, re.I):
-                  metric = "가격"
-
-              trend = ""
-              if pct:
-                  if re.search(r"soar|surge|jump|rise|increase|grow|up\b", text, re.I):
-                      trend = f"{pct.group(0)} 급증"
-                  elif re.search(r"fall|drop|decline|decrease|down\b", text, re.I):
-                      trend = f"{pct.group(0)} 감소"
-                  else:
-                      trend = f"{pct.group(0)} 변화"
-
-              drivers = []
-              if re.search(r"AI", text, re.I):
-                  drivers.append("AI")
-              if re.search(r"data ?center|datacenter", text, re.I):
-                  drivers.append("데이터센터")
-              if re.search(r"optical|fiber|fibre|photonics?|laser|transceiver", text, re.I):
-                  drivers.append("광통신")
-              if re.search(r"PhotonLink|integrated optics?|complete optical solutions?|vertical integration|one[- ]stop", text, re.I):
-                  drivers.append("광 링크 통합")
-              if re.search(r"CPO|co[- ]?packaged optics?", text, re.I):
-                  drivers.append("CPO")
-              if re.search(r"\bNPO\b", text, re.I):
-                  drivers.append("NPO")
-              if re.search(r"silicon photonics|\bSiPh\b|PIC", text, re.I):
-                  drivers.append("실리콘포토닉스")
-              if re.search(r"specialty fiber|polarization[- ]maintaining|mode[- ]matching|multicore fiber", text, re.I):
-                  drivers.append("특수광섬유")
-              if re.search(r"chip[- ]to[- ]chip", text, re.I):
-                  drivers.append("칩 간 광연결")
-              if re.search(r"customer engagement|long[- ]term agreement|anchor customer", text, re.I):
-                  drivers.append("고객·장기계약")
-              if re.search(r"1\.6\s*T", text, re.I):
-                  drivers.append("1.6T")
-              if re.search(r"3\.2\s*T", text, re.I):
-                  drivers.append("3.2T")
-              if re.search(r"PCIe|CXL|retimer|interconnect|fabric", text, re.I):
-                  drivers.append("랙 내부 인터커넥트")
-              if re.search(r"optical coupling|active alignment|alignment|aligner|motion platform|linear motor|FAU", text, re.I):
-                  drivers.append("CPO 정밀정렬·광결합 장비")
-              if re.search(r"order visibility|backlog|orders?", text, re.I):
-                  drivers.append("수주 가시성")
-              if re.search(r"capacity|CAPA|factory|new line|utilization", text, re.I):
-                  drivers.append("생산능력 증설")
-              if re.search(r"OSAT|qualification|validation|verification", text, re.I):
-                  drivers.append("고객 검증·OSAT 도입")
-
-              subject = " ".join(x for x in [company, fiscal.group(0).upper().replace(" ", "") if fiscal else "", metric, trend] if x).strip()
-              driver_text = "·".join(dict.fromkeys(drivers))
-              if re.search(r"demand", text, re.I) and driver_text:
-                  tail = f"{driver_text} 수요가 견인"
-              elif driver_text:
-                  tail = f"{driver_text} 관련 신규 신호"
-              else:
-                  tail = "AI 네트워킹·광통신 관련 신규 신호"
-              result = f"{subject} — {tail}" if subject else tail
-              return re.sub(r"\s+", " ", result).strip()
-
           def translate_to_korean(value: str) -> str:
               original = strip_publisher_suffix(html.unescape(value).strip())
-              protected = original
+
+              # Convert known company/product identifiers to Korean before translation.
+              # This prevents a fallback or machine translation from dropping the actual subject.
+              expected_names = []
+              for raw, ko in sorted(DISPLAY_KO.items(), key=lambda kv: len(kv[0]), reverse=True):
+                  if re.search(re.escape(raw), original, flags=re.I):
+                      expected_names.append(ko)
+              expected_names = list(dict.fromkeys(expected_names))
+
+              protected = localize_names(original)
               replacements = {}
-              for idx, term in enumerate(sorted(keep_terms, key=len, reverse=True)):
+              protected_terms = [term for term in keep_terms if term not in DISPLAY_KO]
+              for idx, term in enumerate(sorted(protected_terms, key=len, reverse=True)):
                   marker = f"ZXKEEP{idx}QZ"
                   if term in protected:
                       protected = protected.replace(term, marker)
@@ -430,7 +382,7 @@ jobs:
 
               translated = ""
               last_error = None
-              for attempt in range(3):
+              for attempt in range(4):
                   try:
                       params = urllib.parse.urlencode({
                           "client": "gtx",
@@ -453,23 +405,36 @@ jobs:
                           break
                   except Exception as exc:
                       last_error = exc
-                      if attempt < 2:
+                      if attempt < 3:
                           time.sleep(2 ** attempt)
 
-              if translated:
-                  for marker, term in replacements.items():
-                      translated = translated.replace(marker, term)
-                  translated = localize_names(translated)
-                  translated = naturalize_dollar_tokens(translated)
-                  translated = re.sub(r"\s+", " ", translated).strip()
+              # No lossy summary fallback. If accurate Korean translation is unavailable,
+              # hold the alert and retry on the next run instead of sending a distorted title.
+              if not translated:
+                  raise RuntimeError(
+                      f"Korean translation unavailable; alert held for retry: {type(last_error).__name__ if last_error else 'empty result'}"
+                  )
 
-              if not translated or not re.search(r"[가-힣]", translated) or re.search(r"[\u3400-\u4DBF\u4E00-\u9FFF]", translated):
-                  translated = localize_names(fallback_korean_title(original))
-                  print(f"translation_fallback=local reason={type(last_error).__name__ if last_error else 'non_korean_or_han_residue'}")
+              for marker, term in replacements.items():
+                  translated = translated.replace(marker, term)
+              translated = localize_names(translated)
+              translated = naturalize_dollar_tokens(translated)
+              translated = re.sub(r"\s+", " ", translated).strip()
+
               if not re.search(r"[가-힣]", translated):
-                  raise RuntimeError(f"Korean translation fallback failed; refusing to send non-Korean title: {original}")
+                  raise RuntimeError(f"No Korean text after translation; refusing to send: {original}")
               if re.search(r"[\u3400-\u4DBF\u4E00-\u9FFF]", translated):
                   raise RuntimeError(f"Chinese/Hanja remained after translation; refusing to send: {translated}")
+
+              # Semantic fidelity guard: every named company/product present in the raw
+              # headline must still be present in the Korean headline.
+              missing = [name for name in expected_names if name not in translated]
+              if missing:
+                  raise RuntimeError(
+                      "Translated title lost named subject(s) "
+                      + ", ".join(missing)
+                      + f"; refusing to send. raw={original} translated={translated}"
+                  )
               return translated
 
           output = []
