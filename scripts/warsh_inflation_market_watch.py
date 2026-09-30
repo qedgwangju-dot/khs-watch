@@ -5,6 +5,7 @@ import json
 import os
 import urllib.parse
 import urllib.request
+import time
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
@@ -34,16 +35,32 @@ SERIES = {
 
 
 def fetch(url: str) -> str:
-    req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept': 'application/xml,text/xml,*/*'})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return r.read().decode('utf-8', errors='replace')
+    last = None
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(url, headers={'User-Agent': UA, 'Accept': 'application/xml,text/xml,*/*'})
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return r.read().decode('utf-8', errors='replace')
+        except Exception as exc:
+            last = exc
+            if attempt < 2:
+                time.sleep(2 * (attempt + 1))
+    raise last
 
 
 def post_json(url: str, payload: dict) -> dict:
     data = json.dumps(payload).encode('utf-8')
-    req = urllib.request.Request(url, data=data, headers={'Content-Type':'application/json','User-Agent':UA}, method='POST')
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.loads(r.read().decode('utf-8'))
+    last = None
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(url, data=data, headers={'Content-Type':'application/json','User-Agent':UA}, method='POST')
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return json.loads(r.read().decode('utf-8'))
+        except Exception as exc:
+            last = exc
+            if attempt < 2:
+                time.sleep(2 * (attempt + 1))
+    raise last
 
 
 def bls_values() -> dict[str, dict[str,float]]:
