@@ -1038,13 +1038,14 @@ def is_polysilicon_11052_base_rehash_text(value: str) -> bool:
 
 
 def semantic_policy_event_key(item: dict) -> str:
+    title_text = clean_text(str(item.get("title") or "")).lower()
     text = clean_text(
         " ".join(
             str(item.get(key) or "")
             for key in ("title", "description", "link", "source")
         )
     ).lower()
-    if (
+    optical_bill = (
         "securing national security systems from chinese optical transceivers act" in text
         or (
             "innolight" in text
@@ -1054,11 +1055,32 @@ def semantic_policy_event_key(item: dict) -> str:
         or (
             "광트랜시버" in text
             and "국가안보" in text
-            and "발의" in text
             and ("중국" in text or "中" in text)
         )
-    ):
-        return "us-congress-chinese-optical-transceiver-2026-09-25"
+    )
+    if optical_bill:
+        stage = "introduced"
+        if any(term in title_text for term in ("signed into law", "president signs", "enacted", "법률 서명", "대통령 서명", "법제화")):
+            stage = "signed"
+        elif any(term in title_text for term in ("house passes", "passed the house", "하원 통과", "하원 가결")):
+            stage = "house-passed"
+        elif any(term in title_text for term in ("senate passes", "passed the senate", "상원 통과", "상원 가결")):
+            stage = "senate-passed"
+        elif (
+            any(term in title_text for term in ("committee", "위원회"))
+            and any(term in title_text for term in ("advances", "approves", "reports", "markup", "통과", "가결", "심사"))
+        ):
+            stage = "committee"
+        elif any(term in title_text for term in ("waiver", "waivers", "면제")):
+            stage = "waiver"
+        elif (
+            any(term in title_text for term in ("commerce", "상무부"))
+            and any(term in title_text for term in ("production capacity", "supply chain strategy", "assessment", "report", "생산능력", "공급망 전략", "평가", "보고서"))
+        ):
+            stage = "commerce-assessment"
+        elif any(term in title_text for term in ("additional companies", "additional vendors", "designates", "designation", "추가 지정", "추가 기업")):
+            stage = "additional-designation"
+        return f"us-congress-chinese-optical-transceiver-{stage}"
     if "polysilicon" in text and "11052" in text:
         if (
             "measures to restrict stockpiling" in text
