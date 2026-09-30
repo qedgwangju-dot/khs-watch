@@ -133,6 +133,25 @@ jobs:
                 "etf_pdf_probe=", d.get("etf_pdf_probe"))
           PY
 
+      - name: Verify full event enrichment path
+        run: |
+          rm -f out/kospi_shock_enrichment_latest.json
+          python scripts/kospi_shock_enrichment.py --smoke
+          python - <<'PY'
+          import json
+          d=json.load(open("out/kospi_shock_enrichment_latest.json", encoding="utf-8"))
+          assert len(d.get("stocks") or []) > 0, d
+          assert len(d.get("themes") or []) > 0, d
+          assert len(d.get("industries") or []) > 0, d
+          assert any((x.get("price") or {}).get("available") for x in (d.get("etfs") or [])), d
+          print("kospi_full_enrichment_valid=true",
+                "stocks=", len(d.get("stocks") or []),
+                "themes=", len(d.get("themes") or []),
+                "industries=", len(d.get("industries") or []),
+                "etfs=", len(d.get("etfs") or []),
+                "errors=", len(d.get("errors") or []))
+          PY
+
       - name: Upload test artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -142,5 +161,6 @@ jobs:
             out/kospi_shock_episode_status.md
             out/kospi_shock_episode_raw.json
             out/kospi_shock_enrichment_probe.json
+            out/kospi_shock_enrichment_latest.json
           if-no-files-found: ignore
           retention-days: 7
