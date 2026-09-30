@@ -1,52 +1,52 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "ff64a33d4cc222681bf7ef2c83d19f167148ea7abb7d53ac0300f3d226163b8d",
-    "Cboe|options": "d648249e152ba83f450174238237bda67184a49676c33a43672e4e0ddaf4bff0",
+    "Nasdaq SOX|sox": "01ea5e659957b249ee4dd887f3863b9e87c6b9bfd2059e60738d11f3bf2706a8",
+    "Cboe|options": "86dea4fc310c62d292caf918f6495952f4eda7843d31037b879f3fb6eb9cfa9b",
     "CFTC|cot": "4b1e773466ddc4a7be9d5e8f0d153ac93e6b0bbf9e17f5211e81063c0c4498f0"
   },
   "values": {
     "Nasdaq SOX|sox": {
       "source": "Nasdaq SOX",
       "kind": "sox",
-      "period": "09/28/2026",
+      "period": "09/29/2026",
       "metrics": {
-        "value": 12465.24,
-        "previous_close": 12668.9296875,
+        "value": 12629.16,
+        "previous_close": 12465.240234375,
         "previous_close_source": "Yahoo daily close cross-check",
-        "net_change": -203.68968750000022,
+        "net_change": 163.91976562499985,
         "net_change_source": "Nasdaq official close minus Yahoo prior daily close",
-        "pct": -1.6077892333791532,
-        "d1_pct": -1.6077892333791532,
+        "pct": 1.315014893760047,
+        "d1_pct": 1.315014893760047,
         "official_overview_url": "https://beta.indexes.nasdaq.com/Index/Overview/SOX",
         "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=10d&interval=1d",
         "crosscheck_same_date": true,
-        "crosscheck_close_diff": -0.00023437500021827873,
-        "d3_pct": -0.5508097597658579,
-        "d5_pct": 0.2579415603704893
+        "crosscheck_close_diff": -0.0011328125001455192,
+        "d3_pct": 1.0936214198457916,
+        "d5_pct": -0.4780144887295834
       },
       "url": "https://beta.indexes.nasdaq.com/Index/Overview/SOX",
-      "fingerprint": "ff64a33d4cc222681bf7ef2c83d19f167148ea7abb7d53ac0300f3d226163b8d"
+      "fingerprint": "01ea5e659957b249ee4dd887f3863b9e87c6b9bfd2059e60738d11f3bf2706a8"
     },
     "Cboe|options": {
       "source": "Cboe",
       "kind": "options",
-      "period": "Monday, September 28, 2026",
+      "period": "Tuesday, September 29, 2026",
       "metrics": {
-        "total_pc_ratio": 0.81,
-        "total_calls": 3677495,
-        "total_puts": 2977528,
+        "total_pc_ratio": 0.78,
+        "total_calls": 3602406,
+        "total_puts": 2795564,
         "total_time_ct": "03:15 PM",
-        "equity_pc_ratio": 0.74,
-        "equity_calls": 2632508,
-        "equity_puts": 1938639,
+        "equity_pc_ratio": 0.64,
+        "equity_calls": 2479634,
+        "equity_puts": 1580259,
         "equity_time_ct": "03:15 PM",
-        "index_pc_ratio": 0.99,
-        "index_calls": 1044987,
-        "index_puts": 1038889,
+        "index_pc_ratio": 1.08,
+        "index_calls": 1122772,
+        "index_puts": 1215305,
         "index_time_ct": "03:15 PM"
       },
       "url": "https://www.cboe.com/us/options/market_statistics/market/",
-      "fingerprint": "d648249e152ba83f450174238237bda67184a49676c33a43672e4e0ddaf4bff0"
+      "fingerprint": "86dea4fc310c62d292caf918f6495952f4eda7843d31037b879f3fb6eb9cfa9b"
     },
     "CFTC|cot": {
       "source": "CFTC",
@@ -108,5 +108,5 @@
       }
     }
   },
-  "updated_at_kst": "2026-09-29T17:52:04.081624+09:00"
+  "updated_at_kst": "2026-09-30T11:07:45.878776+09:00"
 }
