@@ -467,7 +467,8 @@ def format_alert(text: str) -> str:
             break
         if stripped.startswith(known_trigger_prefixes):
             if stripped.startswith("• BTC 현물 ETF 5거래일 구간 이동:"):
-                trigger_lines.extend(five_day_reading(etf, fx_rate, is_partial))
+                label = "• <b>5거래일 비교 갱신 · 잠정</b>" if is_partial else "• <b>5거래일 비교 갱신</b>"
+                trigger_lines.append(label)
             else:
                 trigger_lines.extend(format_trigger(stripped, is_partial=is_partial))
 
@@ -498,7 +499,10 @@ def format_alert(text: str) -> str:
             ordered = five_day_reading(etf, fx_rate, is_partial)
             # "지금 숫자"에서는 제목을 빼고 최근5 → 이전5 → 구간 차이 순서만 표시.
             for row in ordered[1:]:
-                out.append(f"• {row.strip()}")
+                clean = row.strip()
+                if clean.startswith("→ "):
+                    clean = clean[2:]
+                out.append(f"• {clean}")
 
     if rates:
         out.append(
