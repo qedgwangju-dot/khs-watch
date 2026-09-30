@@ -565,8 +565,98 @@ def source_label(source: str) -> str:
     return re.sub(r"^www\.", "", source)[:24] or "원문"
 
 
+HANGUL_RE = re.compile(r"[가-힣]")
+LATIN_WORD_RE = re.compile(r"[A-Za-z]{2,}")
+TRANSLATE_GOOGLE = "https://translate.googleapis.com/translate_a/single"
+TRANSLATE_MYMEMORY = "https://api.mymemory.translated.net/get"
+ALERT_IDENTIFIER_TERMS = (
+    "OpenAI", "Anthropic", "Claude", "ChatGPT", "Codex", "Gemini",
+    "Microsoft", "Copilot", "Meta", "Grok", "xAI", "AWS", "GitHub",
+    "NVIDIA", "OpenShell", "NemoClaw", "Sentry", "BlueField-4", "BlueField",
+    "SAP", "Canonical", "Red Hat", "Palo Alto Networks", "CrowdStrike", "IBM",
+)
+
+
+def _needs_korean_translation(text: str) -> bool:
+    value = strip_html(text)
+    return not HANGUL_RE.search(value) and len(LATIN_WORD_RE.findall(value)) >= 3
+
+
+def _preserve_identifiers(original: str, translated: str) -> str:
+    found: list[str] = []
+    low = original.lower()
+    for term in ALERT_IDENTIFIER_TERMS:
+        if term.lower() in low and term.lower() not in translated.lower():
+            found.append(term)
+    for token in re.findall(r"\\b(?:CVE-\\d{4}-\\d+|GLM-\\d+(?:\\.\\d+)*(?:-[A-Za-z0-9]+)?)\\b", original, flags=re.I):
+        if token.lower() not in translated.lower() and token.lower() not in {x.lower() for x in found}:
+            found.append(token)
+    if found:
+        return " · ".join(found) + " · " + translated
+    return translated
+
+
+def _translate_google(text: str) -> str:
+    params = urllib.parse.urlencode({
+        "client": "gtx",
+        "sl": "auto",
+        "tl": "ko",
+        "dt": "t",
+        "q": text,
+    })
+    req = urllib.request.Request(
+        TRANSLATE_GOOGLE + "?" + params,
+        headers={"User-Agent": USER_AGENT, "Accept": "application/json,text/plain,*/*"},
+    )
+    with urllib.request.urlopen(req, timeout=20) as resp:
+        payload = json.loads(resp.read().decode("utf-8"))
+    chunks = payload[0] if isinstance(payload, list) and payload else []
+    return "".join(str(part[0]) for part in chunks if isinstance(part, list) and part and part[0]).strip()
+
+
+def _translate_mymemory(text: str) -> str:
+    params = urllib.parse.urlencode({"q": text, "langpair": "en|ko"})
+    req = urllib.request.Request(
+        TRANSLATE_MYMEMORY + "?" + params,
+        headers={"User-Agent": USER_AGENT, "Accept": "application/json"},
+    )
+    with urllib.request.urlopen(req, timeout=20) as resp:
+        payload = json.loads(resp.read().decode("utf-8"))
+    return str((payload.get("responseData") or {}).get("translatedText") or "").strip()
+
+
+def translate_alert_text(text: str) -> str:
+    value = " ".join(strip_html(text).split())
+    if not _needs_korean_translation(value):
+        return value
+
+    errors: list[str] = []
+    for translator in (_translate_google, _translate_mymemory):
+        for _attempt in range(2):
+            try:
+                translated = " ".join(strip_html(translator(value)).split())
+                if translated and HANGUL_RE.search(translated):
+                    return _preserve_identifiers(value, translated)
+                errors.append(f"{translator.__name__}: no Hangul in result")
+            except Exception as exc:
+                errors.append(f"{translator.__name__}: {type(exc).__name__}: {exc}")
+
+    raise RuntimeError("Korean translation failed: " + " | ".join(errors[-4:]))
+
+
 def concise_fact(item: dict) -> str:
     title = re.sub(r"\s+-\s+[^-]{1,40}$", "", item.get("title","")).strip()
+    title = re.sub(
+        r"^(?:Anthropic Research|OpenAI Alignment)\\s*:\\s*",
+        "",
+        title,
+        flags=re.I,
+    ).strip()
+    try:
+        title = translate_alert_text(title)
+    except Exception as exc:
+        print(f"ai_policy_translation_fallback={type(exc).__name__}: {exc}")
+        title = f"{item.get('entity') or 'AI 안전·보안 생태계'} 관련 {item.get('category') or '정책·사업화 변화'} 공식 업데이트"
     if len(title) > 105:
         title = title[:104].rstrip() + "…"
     return title
