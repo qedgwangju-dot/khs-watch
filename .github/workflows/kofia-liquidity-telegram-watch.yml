@@ -94,6 +94,14 @@ jobs:
           state = json.loads(state_path.read_text(encoding='utf-8'))
           v = state['values']
 
+          critical_dates = [state['dates'][k] for k in ('deposit','mmf','cma','credit')]
+          if state.get('alignment_ready') is not True or len(set(critical_dates)) != 1:
+              raise RuntimeError(f"KOFIA critical-date quality gate failed before interpretation: {critical_dates}")
+          if state.get('snapshot_date') != critical_dates[0]:
+              raise RuntimeError(
+                  f"KOFIA snapshot_date mismatch: snapshot={state.get('snapshot_date')} dates={critical_dates}"
+              )
+
           def jo(raw_million):
               return raw_million / 1_000_000
 
@@ -262,6 +270,14 @@ jobs:
           if not identity.get('ok') or actual.lower() != expected.lower():
               raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{actual or 'unknown'}")
           text = pathlib.Path('out/kofia_liquidity_alert.html').read_text(encoding='utf-8').strip()
+          state = json.loads(pathlib.Path('out/kofia_liquidity_pending_state.json').read_text(encoding='utf-8'))
+          critical_dates = [state['dates'][k] for k in ('deposit','mmf','cma','credit')]
+          if state.get('alignment_ready') is not True or len(set(critical_dates)) != 1:
+              raise RuntimeError(f"KOFIA critical-date quality gate failed before Telegram send: {critical_dates}")
+          if state.get('snapshot_date') != critical_dates[0]:
+              raise RuntimeError(
+                  f"KOFIA snapshot_date mismatch before Telegram send: snapshot={state.get('snapshot_date')} dates={critical_dates}"
+              )
           payload = urllib.parse.urlencode({
               'chat_id': chat_id,
               'text': text,
