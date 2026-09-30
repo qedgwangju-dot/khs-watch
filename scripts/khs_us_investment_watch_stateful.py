@@ -562,7 +562,13 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
             and any(term in low for term in ["투자", "investment"])
         ):
             for value in usd_billions:
-                facts.add(f"alaska_korea_investment_usd_b:{value}")
+                if _is_official(row) and official_status == "official_status:confirmed":
+                    facts.add(f"alaska_korea_investment_usd_b:{value}")
+                else:
+                    # Reuters/Bloomberg 등 보도에서 54B를 '한국 투자액'으로 표현하는 반면
+                    # 일부 국내 기사에서는 '프로젝트 규모'로 설명한다.
+                    # 백악관/한국정부 공식문서가 성격을 확정하기 전에는 중립 보도수치로 관리한다.
+                    facts.add(f"alaska_reported_amount_usd_b:{value}")
         facts |= stages
         # 금강공업의 API 5L X70 인증 연관성만으로 프로젝트 공급사 상태를 올리지 않는다.
         # 공급계약/선정/승인/공식확정처럼 프로젝트 단계가 실제 상승한 경우에만 당사자로 채택한다.
@@ -613,7 +619,7 @@ def _fact_slot(family: str, fact: str) -> str:
         "stake_percent:", "funding_amount_usd:", "funding_date:", "funding_wait:",
         "repayment_horizon:", "package_nuclear_units:", "package_usd:",
         "encinal_total_gw:", "encinal_phase1_gw:", "encinal_phase2_gw:", "encinal_project_usd:",
-        "alaska_project_cost_usd_b:", "alaska_korea_investment_usd_b:",
+        "alaska_project_cost_usd_b:", "alaska_korea_investment_usd_b:", "alaska_reported_amount_usd_b:",
         "ercot_request_gw:", "semiconductor_investment_usd:", "ppa_years:",
         "official_status:",
     )
@@ -747,6 +753,7 @@ def _human_fact(value: str) -> str:
         "semiconductor_investment_usd:": "반도체 대미투자 ",
         "alaska_project_cost_usd_b:": "알래스카 LNG 총사업비 ",
         "alaska_korea_investment_usd_b:": "알래스카 LNG 한국 전략투자 ",
+        "alaska_reported_amount_usd_b:": "알래스카 LNG 보도수치 ",
         "alaska_mtpa:": "알래스카 LNG ",
         "equipment_contract_usd:": "설비 계약 ",
         "equipment_capacity_gw:": "설비 용량 ",
@@ -847,7 +854,7 @@ def _migration_seed(state: dict) -> None:
     }
 
 def _migrate_alaska_investment_semantics(state: dict) -> None:
-    if int(state.get("alaska_investment_semantics_version") or 0) >= 1:
+    if int(state.get("alaska_investment_semantics_version") or 0) >= 2:
         return
     bucket = (state.setdefault("event_states", {}).get("alaska_lng") or {})
     facts = [str(x) for x in (bucket.get("facts") or [])]
@@ -857,13 +864,21 @@ def _migrate_alaska_investment_semantics(state: dict) -> None:
     old_fact = slots.get("alaska_lng|alaska_project_usd")
     if old_fact == "alaska_project_usd:540억" and "540억" in evidence_text and any(x in evidence_text for x in ["한국", "korea", "korean"]):
         facts = [x for x in facts if x != old_fact]
-        facts.append("alaska_korea_investment_usd_b:54")
         slots.pop("alaska_lng|alaska_project_usd", None)
-        slots["alaska_lng|alaska_korea_investment_usd_b"] = "alaska_korea_investment_usd_b:54"
+
+    # v1에서 54B를 '한국 전략투자 확정액'처럼 저장한 값을 되돌린다.
+    old_korea = slots.get("alaska_lng|alaska_korea_investment_usd_b")
+    if old_korea == "alaska_korea_investment_usd_b:54":
+        facts = [x for x in facts if x != old_korea]
+        slots.pop("alaska_lng|alaska_korea_investment_usd_b", None)
+
+    if "540억" in evidence_text or "54 billion" in evidence_text:
+        facts.append("alaska_reported_amount_usd_b:54")
+        slots["alaska_lng|alaska_reported_amount_usd_b"] = "alaska_reported_amount_usd_b:54"
         bucket["facts"] = sorted(set(facts))
         bucket["slots"] = slots
-        bucket["last_source"] = str(bucket.get("last_source") or "") + " · semantics-corrected"
-    state["alaska_investment_semantics_version"] = 1
+        bucket["last_source"] = str(bucket.get("last_source") or "") + " · amount-role-unconfirmed"
+    state["alaska_investment_semantics_version"] = 2
 
 
 def _load() -> dict:
@@ -1210,8 +1225,10 @@ def _self_test() -> int:
         },
     ]
     accepted, _ = _accepted_facts_for_group("alaska_lng", reported_rows)
-    if "alaska_korea_investment_usd_b:54" not in accepted or "alaska_project_cost_usd_b:54" in accepted:
-        raise RuntimeError(f"Alaska investment/project-cost semantic regression: {accepted}")
+    if "alaska_reported_amount_usd_b:54" not in accepted:
+        raise RuntimeError(f"Alaska reported amount parsing regression: {accepted}")
+    if "alaska_korea_investment_usd_b:54" in accepted or "alaska_project_cost_usd_b:54" in accepted:
+        raise RuntimeError(f"Alaska 54B was over-classified before official confirmation: {accepted}")
 
     kumkang_candidate_rows = [
         {
