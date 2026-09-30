@@ -1,75 +1,75 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-09-30T09:48:19+09:00",
+  "updated_at_kst": "2026-09-30T10:11:29+09:00",
   "crypto": {
     "derivatives": {
       "BTCUSDT": {
-        "funding": 0.0,
-        "index_price": 83420.72,
-        "mark_price": 83375.2,
-        "last_price": 83375.1,
-        "open_interest": 517135040.0,
-        "open_interest_value": 4315067340.93216,
-        "turnover24h": 666485961599.0,
+        "funding": 6e-06,
+        "index_price": 83446.07,
+        "mark_price": 83410.2,
+        "last_price": 83410.2,
+        "open_interest": 517439048.0,
+        "open_interest_value": 4313533345.110976,
+        "turnover24h": 666490735413.0,
         "source": "Gate.io Futures API"
       },
       "ETHUSDT": {
-        "funding": 8.8e-05,
-        "index_price": 2668.75,
-        "mark_price": 2667.57,
-        "last_price": 2667.56,
-        "open_interest": 80474592.0,
-        "open_interest_value": 2148615274.1856,
-        "turnover24h": 181468301262.0,
+        "funding": 8.7e-05,
+        "index_price": 2674.1,
+        "mark_price": 2673.18,
+        "last_price": 2673.18,
+        "open_interest": 80753080.0,
+        "open_interest_value": 2156696733.484,
+        "turnover24h": 181469810387.0,
         "source": "Gate.io Futures API"
       },
       "SOLUSDT": {
-        "funding": -8.6e-05,
-        "index_price": 118.716,
-        "mark_price": 118.64,
-        "last_price": 118.63,
-        "open_interest": 6565512.0,
-        "open_interest_value": 779457584.64,
-        "turnover24h": 4431619333.0,
+        "funding": -6.4e-05,
+        "index_price": 119.15,
+        "mark_price": 119.1,
+        "last_price": 119.1,
+        "open_interest": 6567252.0,
+        "open_interest_value": 781174625.4,
+        "turnover24h": 4431654984.0,
         "source": "Gate.io Futures API"
       }
     },
     "prices": {
       "BTC": {
-        "usd": 83427.83,
+        "usd": 83413.055,
         "change24": null,
         "volume24": null,
         "verified": true,
         "source_count": 2,
         "sources": {
-          "Coinbase": 83434.94,
-          "Gate.io Futures Index": 83420.72
+          "Coinbase": 83380.04,
+          "Gate.io Futures Index": 83446.07
         },
-        "dispersion_pct": 0.017044672023713386
+        "dispersion_pct": 0.07916027053560548
       },
       "ETH": {
-        "usd": 2668.725,
+        "usd": 2671.96,
         "change24": null,
         "volume24": null,
         "verified": true,
         "source_count": 2,
         "sources": {
-          "Coinbase": 2668.7,
-          "Gate.io Futures Index": 2668.75
+          "Coinbase": 2669.82,
+          "Gate.io Futures Index": 2674.1
         },
-        "dispersion_pct": 0.0018735538506283677
+        "dispersion_pct": 0.16018203865326372
       },
       "SOL": {
-        "usd": 118.68299999999999,
+        "usd": 119.08500000000001,
         "change24": null,
         "volume24": null,
         "verified": true,
         "source_count": 2,
         "sources": {
-          "Coinbase": 118.65,
-          "Gate.io Futures Index": 118.716
+          "Coinbase": 119.02,
+          "Gate.io Futures Index": 119.15
         },
-        "dispersion_pct": 0.05561032329818785
+        "dispersion_pct": 0.10916572196331163
       }
     },
     "price_verified": true,
@@ -92,7 +92,7 @@
         "2026-09-28",
         "2026-09-29"
       ],
-      "stable_obs": 3,
+      "stable_obs": 4,
       "trigger_ready": true
     },
     "eth_etf": {
@@ -109,8 +109,8 @@
         "2026-09-28",
         "2026-09-29"
       ],
-      "stable_obs": 1,
-      "trigger_ready": false
+      "stable_obs": 2,
+      "trigger_ready": true
     }
   },
   "rates": {
@@ -141,11 +141,12 @@
     "equity_investments_b": 99.0,
     "equity_commitments_b": 25.0,
     "customer_finance_language": true,
-    "checked_at_kst": "2026-09-30T09:49:03+09:00"
+    "checked_at_kst": "2026-09-30T10:12:15+09:00"
   },
   "news_seen": [
     "66e158e8ecb032f4a3cf5675",
-    "adfe94608514778e4234bc71"
+    "adfe94608514778e4234bc71",
+    "e3222f6a59343808c407ef4d"
   ],
   "health": {
     "crypto_prices": true,
