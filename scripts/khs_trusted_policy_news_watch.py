@@ -1051,6 +1051,12 @@ def semantic_policy_event_key(item: dict) -> str:
             and "eoptolink" in text
             and "national security systems" in text
         )
+        or (
+            "광트랜시버" in text
+            and "국가안보" in text
+            and "발의" in text
+            and ("중국" in text or "中" in text)
+        )
     ):
         return "us-congress-chinese-optical-transceiver-2026-09-25"
     if "polysilicon" in text and "11052" in text:
