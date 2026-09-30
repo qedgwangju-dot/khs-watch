@@ -126,14 +126,16 @@ jobs:
           • BTC 현물 ETF: <a href="https://farside.co.uk/btc/">원문</a>
           """
           rendered5 = fmt.format_alert(sample5)
-          assert "<b>5거래일 비교 · 잠정</b>" in rendered5
+          assert "<b>5거래일 비교 갱신 · 잠정</b>" in rendered5
           assert "최근5(잠정) 2026-09-23~2026-09-29" in rendered5
           assert "이전5 2026-09-16~2026-09-22" in rendered5
-          assert "구간 차이 -1,292.1백만달러" in rendered5
+          assert "• 구간 차이 -1,292.1백만달러" in rendered5
           assert "-64.3%" in rendered5
           assert "순유입 강도 둔화" in rendered5
           assert "+1,417.8백만달러" not in rendered5
           assert "+845.2백만달러" not in rendered5
+          assert rendered5.count("최근5(잠정) 2026-09-23~2026-09-29") == 1
+          assert rendered5.count("이전5 2026-09-16~2026-09-22") == 1
           print("five_day_reading_order_valid=true")
           print(rendered5)
           PY
