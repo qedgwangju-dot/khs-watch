@@ -269,10 +269,12 @@ def canonical_story_key(company: str, title: str) -> str | None:
 
 def source_priority(source: str) -> int:
     source = normalize_text(source)
+    source_lower = source.lower()
     for name, priority in SOURCE_PRIORITY.items():
-        if source.lower() == name.lower():
+        name_lower = name.lower()
+        if source_lower == name_lower or name_lower in source_lower:
             return priority
-    if re.search(r"simply wall|futu|stockstory", source, re.I):
+    if re.search(r"simply wall|futu|stockstory|kucoin|marsbit|huoxing|tradingbeats", source, re.I):
         return 5
     return 50
 
@@ -611,6 +613,20 @@ def main() -> None:
                 "category": category_for(title, company),
             })
             all_relevant.append(item)
+
+    # Source-quality gate: unknown/low-quality sources cannot trigger by themselves.
+    # They are admitted only when a higher-quality source independently reports the same event.
+    def source_is_corroborated(item: dict) -> bool:
+        if source_priority(item.get("source") or "") >= 65:
+            return True
+        return any(
+            other is not item
+            and source_priority(other.get("source") or "") >= 65
+            and same_underlying_story(item, other)
+            for other in all_relevant
+        )
+
+    all_relevant = [item for item in all_relevant if source_is_corroborated(item)]
 
     # Stable order: newest first, then score.
     def sort_key(item: dict):
