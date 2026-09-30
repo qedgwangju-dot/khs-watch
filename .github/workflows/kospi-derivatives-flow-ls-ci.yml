@@ -7,7 +7,9 @@ on:
       - ".github/workflows/kospi-derivatives-flow-ls-ci.yml"
       - ".github/workflows/kospi-derivatives-flow-ls-realtime.yml"
       - "scripts/kospi_shock_episode_watch.py"
+      - "scripts/kospi_shock_enrichment.py"
       - "scripts/test_kospi_shock_episode.py"
+      - "scripts/test_kospi_shock_enrichment.py"
       - "scripts/kospi_flow_attribution_ls.py"
       - "scripts/test_kospi_flow_attribution_strict.py"
       - "scripts/kospi_rapid_fallback_watch.py"
@@ -47,11 +49,12 @@ jobs:
 
       - name: Compile
         run: |
-          python -m py_compile             scripts/kospi_shock_episode_watch.py             scripts/test_kospi_shock_episode.py             scripts/kospi_flow_attribution_ls.py             scripts/test_kospi_flow_attribution_strict.py             scripts/kospi_rapid_fallback_watch.py
+          python -m py_compile             scripts/kospi_shock_episode_watch.py             scripts/kospi_shock_enrichment.py             scripts/test_kospi_shock_episode.py             scripts/test_kospi_shock_enrichment.py             scripts/kospi_flow_attribution_ls.py             scripts/test_kospi_flow_attribution_strict.py             scripts/kospi_rapid_fallback_watch.py
 
       - name: Run regression tests
         run: |
           python scripts/test_kospi_shock_episode.py
+          python scripts/test_kospi_shock_enrichment.py
           python scripts/test_kospi_flow_attribution_strict.py
 
       - name: Verify production leader election API
@@ -110,6 +113,26 @@ jobs:
                 "program_identity_gap=", pgm.get("전체대비차이"), "program=", pgm)
           PY
 
+      - name: Verify integrated sector/theme/stock/ETF enrichment APIs
+        run: |
+          rm -f out/kospi_shock_enrichment_probe.json
+          python scripts/kospi_shock_enrichment.py --probe
+          python - <<'PY'
+          import json
+          d=json.load(open("out/kospi_shock_enrichment_probe.json", encoding="utf-8"))
+          assert d.get("master_count", 0) > 0, d
+          assert d.get("industry_count", 0) > 0, d
+          assert d.get("program_rank_count", 0) > 0, d
+          assert (d.get("samsung_integrated_price") or {}).get("available") is True, d
+          assert (d.get("etf_pdf_probe") or {}).get("available") is True, d
+          print("kospi_enrichment_api_valid=true",
+                "stocks=", d.get("master_count"),
+                "industries=", d.get("industry_count"),
+                "program_candidates=", d.get("program_rank_count"),
+                "etf_count=", d.get("etf_count"),
+                "etf_pdf_probe=", d.get("etf_pdf_probe"))
+          PY
+
       - name: Upload test artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -118,5 +141,6 @@ jobs:
           path: |
             out/kospi_shock_episode_status.md
             out/kospi_shock_episode_raw.json
+            out/kospi_shock_enrichment_probe.json
           if-no-files-found: ignore
           retention-days: 7
