@@ -221,7 +221,7 @@ jobs:
           fi
 
       - name: Build route test
-        if: (github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true') || (github.event_name == 'push' && contains(github.event.head_commit.message, '[telegram-test]'))
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
         run: |
           cat > out/wonyotti_90d_thesis_connection_test.html <<'EOF'
           ✅ <b>워뇨띠 90일 서한 변곡 웹감시 연결 정상</b>
