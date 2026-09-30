@@ -117,7 +117,8 @@ FUNDING_GUARD_TERMS = [
 ]
 FUNDING_CONFLICT_TERMS = ["45일 안전판", "45영업일", "조기 송금", "조기송금", "조기 납입", "조기집행", "MOU 무시", "no less than"]
 ENERGY_PACKAGE_TERMS = [
-    "1천억달러", "100 billion", "합의 임박", "agreement", "8기", "eight nuclear", "첫 사업", "첫사업", "첫 사업군", "first project",
+    "1천억달러", "100 billion", "2천억달러", "2000억달러", "200 billion",
+    "합의 임박", "agreement", "8기", "eight nuclear", "첫 사업", "첫사업", "첫 사업군", "first project",
 ]
 ERCOT_QUEUE_TERMS = [
     "474gw", "438gw", "batch zero", "large load", "계통연계", "interconnection", "energized", "approval", "approved", "audit", "감사",
