@@ -150,6 +150,9 @@ def _family(row: dict) -> str:
         for token in [
             "1천억달러",
             "100 billion",
+            "2천억달러",
+            "2000억달러",
+            "200 billion",
             "원전 8기",
             "원전8기",
             "eight nuclear",
