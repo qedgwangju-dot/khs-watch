@@ -320,6 +320,14 @@ def _material_facts(row: dict) -> set[str]:
         if any(term in low for term in terms):
             facts.add(f"stage:{tag}")
 
+    # 한국어 기사 제목은 실제 발표 후에도 단순히 '발표'라고 쓰는 경우가 많다.
+    # 다만 예정/예고/전망 기사와 혼동하지 않도록 트럼프 직접 발표 문맥 + 미래표현 부재일 때만 실행 단계로 본다.
+    if "트럼프" in low and "발표" in low and not any(
+        term in low
+        for term in ["발표 예정", "발표 예상", "발표 가능성", "발표 전망", "발표 예고", "앞두고", "곧 발표", "발표할", "발표할 듯", "발표할 것으로"]
+    ):
+        facts.add("stage:발표실행")
+
     if "이사회" in low or "board seat" in low:
         facts.add("governance:board")
     if "의결권" in low or "voting right" in low:
@@ -1321,6 +1329,22 @@ def _self_test() -> int:
     accepted, _ = _accepted_facts_for_group("alaska_lng", bad_alaska_rows)
     if any(x.endswith(":200") and x.startswith("alaska_") for x in accepted):
         raise RuntimeError(f"overall 200B leaked into Alaska amount: {accepted}")
+
+    executed_rows = [
+        {"title": "백악관 트럼프, 2000억달러 한국 대미투자 발표…에너지사업 집중", "source": "뉴스1", "link": "https://example.com/executed-a", "published": "2026-10-01T01:00:00+00:00"},
+        {"title": "트럼프, 2000억달러 한국 대미투자 발표…원전·가스 포함", "source": "한국경제", "link": "https://example.com/executed-b", "published": "2026-10-01T01:01:00+00:00"},
+    ]
+    accepted, _ = _accepted_facts_for_group("energy_package", executed_rows)
+    if "stage:발표실행" not in accepted:
+        raise RuntimeError(f"actual Trump announcement was not promoted: {accepted}")
+
+    upcoming_rows = [
+        {"title": "트럼프, 2000억달러 한국 대미투자 발표 예정", "source": "뉴스1", "link": "https://example.com/upcoming-a", "published": "2026-10-01T01:02:00+00:00"},
+        {"title": "트럼프, 2000억달러 한국 대미투자 발표 가능성", "source": "한국경제", "link": "https://example.com/upcoming-b", "published": "2026-10-01T01:03:00+00:00"},
+    ]
+    accepted, _ = _accepted_facts_for_group("energy_package", upcoming_rows)
+    if "stage:발표실행" in accepted:
+        raise RuntimeError(f"upcoming announcement was falsely promoted as executed: {accepted}")
 
     good_alaska_rows = [
         {"title": "백악관, 한국 대미투자에 알래스카 LNG 540억달러 포함", "source": "MBC 뉴스", "link": "https://example.com/alaska-good-a", "published": "2026-10-01T00:04:00+00:00"},
