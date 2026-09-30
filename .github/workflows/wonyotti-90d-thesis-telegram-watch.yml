@@ -25,6 +25,7 @@ permissions:
   contents: write
 
 # production-mode verification marker
+# post-hardening route verification: 2026-10-01
 
 concurrency:
   group: wonyotti-90d-thesis-telegram-watch
