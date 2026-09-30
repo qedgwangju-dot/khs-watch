@@ -106,6 +106,7 @@
     "69add4df92958b0c750a6244",
     "6a48b9f10771440c5bef51f4",
     "6b1903a7719be1a1ee3e52cd",
+    "6b5a840c35ee9d0cc79ce1ce",
     "6b7493588d08d0a48e48daf1",
     "6d34e3fdc1801d86bba242a6",
     "6d45cf56091569c5a90afa2d",
@@ -254,8 +255,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-09-30T11:19:53+09:00",
-  "last_event_count": 97,
+  "updated_at_kst": "2026-09-30T17:35:44+09:00",
+  "last_event_count": 96,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -276,7 +277,7 @@
   "official_api_key_configured": true,
   "official_api_used": true,
   "last_successful_official_month": "202608",
-  "last_successful_official_at_kst": "2026-09-30T11:19:53+09:00",
+  "last_successful_official_at_kst": "2026-09-30T17:35:44+09:00",
   "malaysia_official_month": "202608",
   "malaysia_hsk10_amount_usd": null,
   "malaysia_public_available": false,
@@ -1111,10 +1112,10 @@
       "ddr5_chip_quote|dramexchange|16|4800/5600": {
         "key": "ddr5_chip_quote|dramexchange|16|4800/5600",
         "axis": "ddr5_chip_quote",
-        "value": 57.833,
+        "value": 57.9,
         "unit": "USD/chip",
         "period": "2026-09",
-        "as_of": "2026-09-29",
+        "as_of": "2026-09-30",
         "evidence": "research",
         "source_url": "https://www.dramexchange.com/",
         "source_title": "DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격",
@@ -1464,7 +1465,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-09-30T11:19:53+09:00",
+      "last_checked_at_kst": "2026-09-30T17:35:44+09:00",
       "gaps": [
         "원문 확인 실패: investing.com / HTTPError",
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
@@ -1532,7 +1533,7 @@
     "payload_hash": "2b0b625a1b03c203d6718421ec70968fbb2f085ce45449e2a7f4d242eae7033e"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-09-30T11:23:01+09:00",
+    "checked_at_kst": "2026-09-30T17:39:36+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
