@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-09-30T15:40:53+09:00",
+  "updated_at_kst": "2026-09-30T22:39:52+09:00",
   "circle": {
     "date": "2026-09-24",
     "circulation_usd_b": 75.2,
@@ -29,11 +29,11 @@
     }
   },
   "sofr": {
-    "date": "2026-09-28",
-    "rate": 3.9,
-    "prev_date": "2026-09-25",
+    "date": "2026-09-29",
+    "rate": 3.88,
+    "prev_date": "2026-09-28",
     "prev_rate": 3.9,
-    "daily_bp": 0.0,
+    "daily_bp": -2.0,
     "source": "FRED 재게시·원출처 Federal Reserve Bank of New York",
     "source_url": "https://fred.stlouisfed.org/series/SOFR"
   },
@@ -49,11 +49,11 @@
     "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
   },
   "crcl": {
-    "date": "2026-09-29",
-    "close": 83.69999694824219,
-    "prev_date": "2026-09-28",
-    "prev_close": 85.80000305175781,
-    "daily_pct": -2.45
+    "date": "2026-09-30",
+    "close": 84.19000244140625,
+    "prev_date": "2026-09-29",
+    "prev_close": 83.69999694824219,
+    "daily_pct": 0.59
   },
   "tbx": {
     "date": "2026-09-29",
