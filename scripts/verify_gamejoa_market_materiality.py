@@ -67,6 +67,35 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_preopen_specific_fact_baseline_is_preserved_in_live_selection(self):
+        cases = (
+            ("AI 인프라 기업, 최대 420억달러 금융지원 협상", "AI 인프라 기업은 고객의 데이터센터 투자를 지원하기 위해 최대 420억달러 대출 자금조달 계약을 검토한다."),
+            ("브렌트유, 중동 공급 위험에 4.37% 상승", "12월물 브렌트유는 4.37% 상승한 배럴당 102.31달러로 집계됐다."),
+            ("뉴욕증시, 소폭 상승…나스닥 0.04% 상승", "나스닥지수는 0.04% 상승하며 거래를 마쳤다."),
+        )
+        items = [production.contract.strict.classify({
+            "title": title, "summary": body, "source_body": body, "source_abstract": body,
+            "body_verified": True, "layer": "trusted", "publisher": "연합뉴스", "published": NOW,
+            "link": f"https://www.yna.co.kr/view/preopen-quality-baseline-{index}",
+        }, NOW) for index, (title, body) in enumerate(cases)]
+        self.assertTrue(all(item is not None for item in items[:2]), [(case[0], item is not None) for case, item in zip(cases, items)])
+        # Simulate a weak recap supplied by legacy preselection as well.
+        items[-1] = items[-1] or alert(*cases[-1])
+        items[-1]["score"] = 9999
+        outputs = []
+        for mode in ("preopen", "live"):
+            with patch.dict(radar.os.environ, {"RADAR_RUN_MODE": mode}), patch.object(radar.base, "kst_now", return_value=NOW):
+                selected = radar.quality_display_alerts(copy.deepcopy(items), 2)
+            self.assertEqual({item["source_title"] for item in selected}, {case[0] for case in cases[:2]})
+            cores = {item["source_title"]: radar.verified_alert_core(item, item["news"]) for item in selected}
+            self.assertIn("420억달러", cores[cases[0][0]])
+            self.assertIn("검토", cores[cases[0][0]])
+            self.assertIn("4.37%", cores[cases[1][0]])
+            self.assertIn("102.31달러", cores[cases[1][0]])
+            self.assertTrue(all(radar.core_sentence_is_complete(core) for core in cores.values()))
+            outputs.append(cores)
+        self.assertEqual(outputs[0], outputs[1])
+
     def test_ipo_timing_precedes_historical_revenue_and_retains_early_stage(self):
         title = "앤스로픽, 11월 중순 상장 추진…오픈AI 제치고 IPO 선점하나"
         body = "AI 모델 클로드를 개발한 앤스로픽이 이르면 11월 중순 미국 증시 상장을 추진한다. 앤스로픽의 매출은 지난해 46억달러로 직전해보다 급증했다."

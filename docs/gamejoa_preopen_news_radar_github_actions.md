@@ -117,6 +117,8 @@ The Telegram message should contain only the core news radar:
 - Loan-solicitation advertorials cannot qualify through an introductory IPO/industry paragraph or investor advice. Genuine margin/loan regulation and corporate financing remain eligible. A prior-session "today's market" preview is stale even within the 24-hour discovery window; overnight global news is not excluded by that rule. Buyback-ending summaries preserve the source issuer, deadline and forecast wording.
 - A denial or unconfirmed-investment headline must retain that polarity in its source evidence and compact core. A previous affirmative announcement is background, not a substitute for the new denial; the denying speaker and qualification must remain in the summary.
 - When a headline mentions multiple events, the first event takes precedence over later context. IPO timing cannot be replaced by historical revenue, an NDF move by a bond-yield paragraph, or a mortgage rate change by generic home-cost commentary. Listing plans retain their tentative source stage and remain eligible.
+- The preopen quality baseline also applies to live selection: preserve the new financing amount, commodity move, maturity, counterparty or execution date from the source, including tentative wording. A small index recap with a high legacy keyword score cannot displace a more material financing or supply event before the display limit.
+- This baseline concerns fact specificity and economic priority, not the older preopen presentation. It does not restore commentary, status labels or removed investor fields, and it does not whitelist particular companies or article IDs.
 
 ## Data Center Local Ban Coverage
 
