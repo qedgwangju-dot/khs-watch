@@ -54,8 +54,8 @@ jobs:
       RADAR_RUN_MODE: ${{ github.event_name == 'schedule' && 'live' || github.event.inputs.radar_run_mode || 'preopen' }}
       RADAR_FETCH_TIMEOUT_SECONDS: "10"
       RADAR_QUERY_FETCH_WORKERS: "4"
-      GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT: "96"
-      GAMEJOA_KOREAN_BUSINESS_DETAIL_WORKERS: "8"
+      GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT: "160"
+      GAMEJOA_KOREAN_BUSINESS_DETAIL_WORKERS: "12"
       KHS_SOURCE_PROXY_URL: https://tips-yield-telegram.gustnd1.workers.dev/policy-source/fetch
       KHS_SOURCE_PROXY_FIRST: "true"
       KHS_SOURCE_PROXY_TIMEOUT_SECONDS: "20"
@@ -88,6 +88,7 @@ jobs:
           python scripts/verify_gamejoa_heat_grid_contract.py
           python scripts/verify_gamejoa_cross_market_coverage_contract.py
           python scripts/verify_gamejoa_stock_market_scope.py
+          python scripts/verify_gamejoa_article_detail_queue.py
           python scripts/verify_gamejoa_semisupply_contract.py
           python scripts/verify_high_impact_news_self_audit.py
 
@@ -167,6 +168,34 @@ jobs:
           echo "GAMEJOA radar seen state was not persisted after eight attempts." >&2
           exit 1
 
+      - name: Commit GAMEJOA article retrieval queue
+        if: always() && github.event.inputs.telegram_dry_run != 'true' && hashFiles('out/gamejoa_article_detail_queue_pending.json') != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp out/gamejoa_article_detail_queue_pending.json "$RUNNER_TEMP/gamejoa_detail_pending.json"
+          # This records source attempts only, never sent/seen state. Preserve
+          # progress even when report validation or delivery fails later.
+          for attempt in 1 2 3 4 5 6 7 8; do
+            git fetch origin +refs/heads/main:refs/remotes/origin/main
+            git switch --detach origin/main
+            python scripts/gamejoa_article_detail_queue.py \
+              "$RUNNER_TEMP/gamejoa_detail_pending.json" data/gamejoa_article_detail_queue.json
+            git add data/gamejoa_article_detail_queue.json
+            if git diff --cached --quiet; then
+              echo "GAMEJOA article retrieval queue already present on main."
+              exit 0
+            fi
+            git commit -m "Update GAMEJOA article retrieval queue"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "GAMEJOA retrieval queue push raced with main; retry=$attempt"
+            sleep $((attempt * 2))
+          done
+          echo "GAMEJOA article retrieval queue was not persisted." >&2
+          exit 1
+
       - name: Publish report summary
         if: always()
         run: |
@@ -186,6 +215,8 @@ jobs:
             out/gamejoa_preopen_news_radar.json
             out/gamejoa_preopen_news_radar_title.txt
             out/gamejoa_preopen_news_radar_delivery.json
+            out/gamejoa_article_detail_queue_pending.json
+            data/gamejoa_article_detail_queue.json
             data/gamejoa_preopen_news_radar_seen.json
           if-no-files-found: ignore
 

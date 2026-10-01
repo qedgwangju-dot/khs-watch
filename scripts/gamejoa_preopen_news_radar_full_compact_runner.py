@@ -15,9 +15,10 @@ import urllib.parse
 import urllib.request
 
 import gamejoa_preopen_news_radar_contract_runner as contract
-from khs_article_detail import extract_article_detail
+from khs_article_detail import extract_article_detail, normalized_title_tokens
 from khs_compact_text import concise_text
 import gamejoa_news_coverage_extension as coverage
+import gamejoa_article_detail_queue as detail_queue
 
 
 telegram = contract.telegram
@@ -1394,11 +1395,11 @@ def korean_business_event_date(row: dict) -> str:
 
 KOREAN_BUSINESS_DETAIL_LIMIT = max(
     12,
-    int(os.environ.get("GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT", "96")),
+    int(os.environ.get("GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT", "160")),
 )
 KOREAN_BUSINESS_DETAIL_WORKERS = max(
     2,
-    int(os.environ.get("GAMEJOA_KOREAN_BUSINESS_DETAIL_WORKERS", "8")),
+    int(os.environ.get("GAMEJOA_KOREAN_BUSINESS_DETAIL_WORKERS", "12")),
 )
 KOREAN_BUSINESS_PRIORITY_TERMS = {
     "국부펀드": 12,
@@ -3151,6 +3152,8 @@ def base_korean_business_alert(row: dict, now, *, score: int, impacts: list[str]
         "original_news": title,
         "source_title": title,
         "source_abstract": str(row.get("source_abstract") or row.get("summary") or ""),
+        "article_query_time_kst": row.get("article_query_time_kst") or "",
+        "article_detail_cache_hit": bool(row.get("_article_detail_cache_hit")),
         "policy_plain_summary": article_core,
         "telegram_core_fact": article_core,
         "telegram_investment_fact": article_investment,
@@ -6091,6 +6094,120 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
     return apply_generic_korean_business_profile(alert, row, now)
 
 
+def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
+    candidates = []
+    unique_links = set()
+    live_mode = os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live"
+    seen_entries = list(telegram.load_seen_state().get("seen", {}).values()) if live_mode else []
+    recent_sent = {}
+    sent_links = set()
+    for entry in seen_entries:
+        if not isinstance(entry, dict) or not entry.get("link"):
+            continue
+        sent_links.add(str(entry["link"]))
+        sent_at = detail_queue.parse_time(entry.get("last_seen_kst"))
+        if sent_at and dt.timedelta() <= now - sent_at < dt.timedelta(hours=1):
+            recent_sent.setdefault(str(entry["link"]), []).append(entry)
+    sent_skipped = 0
+    nonmarket_skipped = 0
+    for row in rows:
+        if not is_korean_business_row(row) or not row.get("link"):
+            continue
+        link = str(row["link"])
+        if link in unique_links:
+            continue
+        unique_links.add(link)
+        row["publisher"] = korean_business_publisher(row)
+        if is_nonmarket_business_event(row):
+            row["_detail_skipped_reason"] = "nonmarket_ceremonial_or_sports"
+            nonmarket_skipped += 1
+            continue
+        title_tokens = normalized_title_tokens(str(row.get("title") or ""))
+        if title_tokens and any(
+            normalized_title_tokens(str(entry.get("title") or "")) == title_tokens
+            and (detail_queue.parse_time(row.get("published")) or now) <= detail_queue.parse_time(entry["last_seen_kst"])
+            for entry in recent_sent.get(link, [])
+        ):
+            row["_detail_skipped_reason"] = "recently_delivered_unchanged_title"
+            sent_skipped += 1
+            continue
+        candidates.append(row)
+    candidates = rank_korean_business_detail_candidates(candidates, sent_links, live_mode)
+    selected, pending, stats = detail_queue.plan_details(
+        candidates, detail_queue.load_state(detail_queue.STATE_PATH), now, KOREAN_BUSINESS_DETAIL_LIMIT,
+        respect_cooldown=live_mode,
+    )
+    cache = detail_queue.load_run_cache(now, detail_queue.CACHE_PATH)
+
+    def fetch_detail(row: dict) -> tuple[dict, dict, bool]:
+        cached = detail_queue.cached_receipt(cache, row)
+        if cached:
+            return row, cached, True
+        fetch_url = str(row.get("_fetch_url") or row["link"])
+        detail_html, error = base.fetch(fetch_url, 16)
+        detail = extract_article_detail(detail_html, str(row.get("title") or "")) if detail_html and not error else {}
+        if not error and not detail.get("body_verified"):
+            error = (
+                "title/body mismatch "
+                f"aligned={detail.get('title_aligned')} body_chars={len(str(detail.get('body') or ''))}"
+            )
+        receipt = {
+            "fingerprint": detail_queue.fingerprint(row),
+            "query_time_kst": base.kst_now().isoformat(timespec="seconds"),
+            "detail": detail, "error": str(error or ""),
+        }
+        return row, receipt, False
+
+    with concurrent.futures.ThreadPoolExecutor(
+        max_workers=min(KOREAN_BUSINESS_DETAIL_WORKERS, max(1, len(selected)))
+    ) as executor:
+        results = list(executor.map(fetch_detail, selected))
+    verified = failed = cache_hits = 0
+    for row, receipt, cache_hit in results:
+        cache["receipts"][detail_queue.article_key(row)] = receipt
+        cache_hits += int(cache_hit)
+        detail = receipt["detail"]
+        error = receipt["error"]
+        valid = bool(not error and detail.get("body_verified"))
+        query_time = detail_queue.parse_time(receipt["query_time_kst"]) or now
+        detail_queue.record_attempt(pending, row, query_time, verified=valid, error=error)
+        row["article_query_time_kst"] = receipt["query_time_kst"]
+        row["_article_detail_cache_hit"] = cache_hit
+        if not valid:
+            row["_article_verification_failed"] = error or "empty article"
+            failed += 1
+            continue
+        row["source_title"] = detail.get("title") or row.get("title")
+        row["source_body"] = detail.get("body") or ""
+        row["source_abstract"] = re.sub(
+            r"\s+", " ", f"{detail.get('abstract') or ''} {detail.get('body') or ''}",
+        ).strip()[:16000]
+        row["summary"] = row["source_abstract"]
+        row["body_verified"] = True
+        if detail.get("published_kst"):
+            parsed = base.parse_date(detail["published_kst"])
+            if parsed:
+                row["published"] = parsed
+        verified += 1
+    # Preflight receipts are reusable only inside this GitHub execution. The
+    # durable queue holds retrieval metadata, never bodies or delivery state.
+    pending = detail_queue.merge_state(pending, detail_queue.load_state(detail_queue.PENDING_PATH), now)
+    detail_queue.save_json(detail_queue.PENDING_PATH, pending)
+    detail_queue.save_json(detail_queue.CACHE_PATH, cache)
+    notes = [
+        "Korean business detail: "
+        f"attempted={len(results)} verified={verified} failed={failed} deferred={stats['deferred']} "
+        f"workers={KOREAN_BUSINESS_DETAIL_WORKERS}",
+        "Korean business detail queue: "
+        f"source_fetches={len(results) - cache_hits} cache_hits={cache_hits} "
+        f"fair_slots={stats['fair_slots']} retry_cooldown={stats['cooling']} "
+        f"already_sent_skipped={sent_skipped} nonmarket_skipped={nonmarket_skipped}",
+    ]
+    for note in notes:
+        print(note)
+    return notes
+
+
 def enforce_korean_business_news_contract() -> None:
     original_collect_items = contract.strict.collect_items
 
@@ -6144,86 +6261,15 @@ def enforce_korean_business_news_contract() -> None:
             f"added={direct_added} pinned_existing={direct_pinned}"
         )
 
-        verified = 0
-        failed = 0
-        attempted = 0
-        detail_candidates = []
-        seen_links = set()
-        for row in rows:
-            if not is_korean_business_row(row) or not row.get("link"):
-                continue
-            link = str(row.get("link"))
-            if link in seen_links:
-                continue
-            seen_links.add(link)
-            row["publisher"] = korean_business_publisher(row)
-            detail_candidates.append(row)
-        live_mode = os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live"
-        previously_sent_links = {
-            str(entry.get("link") or "")
-            for entry in telegram.load_seen_state().get("seen", {}).values()
-            if isinstance(entry, dict) and entry.get("link")
-        } if live_mode else set()
-        detail_candidates = rank_korean_business_detail_candidates(
-            detail_candidates, previously_sent_links, live_mode
-        )
-        deferred = max(0, len(detail_candidates) - KOREAN_BUSINESS_DETAIL_LIMIT)
-        selected_candidates = detail_candidates[:KOREAN_BUSINESS_DETAIL_LIMIT]
-
-        def fetch_detail(row: dict) -> tuple[dict, str | None, str | None]:
-            fetch_url = str(row.get("_fetch_url") or row.get("link") or "")
-            detail_html, detail_error = base.fetch(fetch_url, 16)
-            return row, detail_html, detail_error
-
-        with concurrent.futures.ThreadPoolExecutor(
-            max_workers=min(KOREAN_BUSINESS_DETAIL_WORKERS, max(1, len(selected_candidates)))
-        ) as executor:
-            detail_results = list(executor.map(fetch_detail, selected_candidates))
-
-        for row, detail_html, detail_error in detail_results:
-            attempted += 1
-            if detail_error or not detail_html:
-                row["_article_verification_failed"] = detail_error or "empty article"
-                failed += 1
-                continue
-            detail = extract_article_detail(detail_html, str(row.get("title") or ""))
-            if not detail.get("body_verified"):
-                row["_article_verification_failed"] = (
-                    "title/body mismatch "
-                    f"aligned={detail.get('title_aligned')} body_chars={len(str(detail.get('body') or ''))}"
-                )
-                failed += 1
-                continue
-            row["source_title"] = detail.get("title") or row.get("title")
-            row["source_body"] = detail.get("body") or ""
-            row["source_abstract"] = re.sub(
-                r"\s+",
-                " ",
-                f"{detail.get('abstract') or ''} {detail.get('body') or ''}",
-            ).strip()[:16000]
-            row["summary"] = row["source_abstract"]
-            row["body_verified"] = True
-            if detail.get("published_kst"):
-                parsed = base.parse_date(detail["published_kst"])
-                if parsed:
-                    row["published"] = parsed
-            verified += 1
-        notes.append(
-            "Korean business detail: "
-            f"attempted={attempted} verified={verified} failed={failed} deferred={deferred} "
-            f"workers={KOREAN_BUSINESS_DETAIL_WORKERS}"
-        )
-        print(
-            f"korean_business_detail attempted={attempted} "
-            f"verified={verified} failed={failed} deferred={deferred} "
-            f"workers={KOREAN_BUSINESS_DETAIL_WORKERS}"
-        )
+        notes.extend(hydrate_korean_business_details(rows, now))
         return rows, notes
 
     original_classify = contract.strict.classify
 
     def classify(row: dict, now):
         if is_korean_business_row(row):
+            if row.get("_detail_skipped_reason"):
+                return None
             if row.get("_article_verification_failed") or not row.get("body_verified"):
                 return build_title_verified_korean_business_alert(row, now)
             return build_verified_korean_business_alert(row, now)
@@ -7785,6 +7831,43 @@ def is_stale_opening_market_report(alert: dict, now) -> bool:
     )
 
 
+def is_nonmarket_business_event(item: dict) -> bool:
+    title = base.norm(str(item.get("source_title") or item.get("news") or item.get("title") or ""))
+    material_events = (
+        "매출", "영업이익", "순이익", "가이던스", "공급계약", "수주", "발주",
+        "자사주", "주식 매수", "주식매수", "지분", "인수", "합병", "상장",
+        "투자협약", "투자 협약", "투자계약", "투자 계약", "수출통제", "관세",
+    )
+    if has_term(title, material_events):
+        return False
+    sports_election = has_term(title, ("연맹", "체육회", "스포츠협회", "당구")) and has_term(
+        title, ("회장 선거", "회장선거", "후보 당선", "회장 당선")
+    )
+    ceremonial_photo = "포토" in title and has_term(
+        title, ("폐회사", "개회사", "축사", "기념촬영", "기념 촬영")
+    )
+    return sports_election or ceremonial_photo
+
+
+def is_stale_intraday_market_report(alert: dict, now) -> bool:
+    if os.getenv("RADAR_RUN_MODE", "").strip().lower() != "live" or (now.hour, now.minute) < (15, 45):
+        return False
+    title = base.norm(str(alert.get("source_title") or alert.get("news") or ""))
+    if not has_term(title, ("코스피", "코스닥", "한국 증시", "국내 증시")):
+        return False
+    if has_term(title, ("마감", "종가")) or not has_term(
+        title, ("장중", "오전", "상승세 전환", "하락세 전환", "상승 전환", "하락 전환"),
+    ):
+        return False
+    published = detail_queue.parse_time(alert.get("published"))
+    if published and published.astimezone(now.tzinfo).date() == now.date() and (
+        published.astimezone(now.tzinfo).hour, published.astimezone(now.tzinfo).minute
+    ) < (15, 30):
+        return True
+    body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+    return bool(re.search(r"(?:오전\s*(?:9|10|11)|오후\s*(?:12|1|2))\s*시(?:\s*\d+\s*분)?\s*(?:기준|현재)", body))
+
+
 GENERIC_BUSINESS_TITLE_SIGNALS = (
     "주식", "증시", "코스피", "코스닥", "etf", "etn", "채권", "금리", "환율",
     "수출", "수입", "투자", "자사주", "매출", "영업이익", "순이익", "실적",
@@ -7889,11 +7972,17 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
         if is_low_value_market_commentary(alert):
             alert["_exclusion_reason"] = "low_value_market_commentary"
             continue
+        if is_nonmarket_business_event(alert):
+            alert["_exclusion_reason"] = "nonmarket_ceremonial_or_sports"
+            continue
         if is_unanchored_generic_business_alert(alert):
             alert["_exclusion_reason"] = "generic_sector_without_market_title"
             continue
         if is_stale_opening_market_report(alert, now):
             alert["_exclusion_reason"] = "stale_opening_market_report"
+            continue
+        if is_stale_intraday_market_report(alert, now):
+            alert["_exclusion_reason"] = "stale_intraday_market_report"
             continue
         if is_low_impact_admin_alert(alert):
             alert["_exclusion_reason"] = "low_impact_admin_document"

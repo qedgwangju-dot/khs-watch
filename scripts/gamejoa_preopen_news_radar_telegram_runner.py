@@ -515,6 +515,12 @@ def selection_diagnostics(
         if "확인 불가" in note or "HTTPError" in note or "TimeoutError" in note or "URLError" in note
     ]
     detail_coverage = {}
+    detail_queue_stats = {}
+    for note in notes:
+        if note.startswith("Korean business detail queue:"):
+            detail_queue_stats = {
+                name: int(value) for name, value in re.findall(r"(\w+)=(\d+)", note)
+            }
     for note in notes:
         match = re.search(
             r"(?:Korean business detail:|korean_business_detail) attempted=(\d+) verified=(\d+) failed=(\d+) deferred=(\d+)",
@@ -561,6 +567,7 @@ def selection_diagnostics(
         "excluded_alerts": excluded,
         "source_failures": source_failures,
         "detail_coverage": detail_coverage,
+        "detail_queue": detail_queue_stats,
         "coverage_incomplete": bool(detail_coverage.get("failed") or detail_coverage.get("deferred")),
     }
 

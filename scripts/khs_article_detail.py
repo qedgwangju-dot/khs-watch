@@ -79,13 +79,30 @@ class ArticleHTMLParser(HTMLParser):
         self.block_parts: list[str] = []
         self.blocks: list[str] = []
         self.raw_parts: list[str] = []
+        self.target_depth = 0
+        self.target_parts: list[str] = []
+        self.target_bodies: list[str] = []
+        self.ignored_depth = 0
         self.time_values: list[str] = []
         self.json_ld_depth = 0
         self.json_ld_parts: list[str] = []
+        self.json_ld_current: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         tag = tag.lower()
         attr = {str(key).lower(): str(value or "") for key, value in attrs}
+        if self.ignored_depth:
+            if tag not in VOID_TAGS:
+                self.ignored_depth += 1
+            return
+        hidden = (
+            "hidden" in attr or attr.get("aria-hidden", "").lower() == "true"
+            or re.search(r"display\s*:\s*none", attr.get("style", ""), re.I)
+        )
+        if tag in {"aside", "nav", "footer", "form"} or hidden:
+            if tag not in VOID_TAGS:
+                self.ignored_depth = 1
+            return
         if tag == "meta":
             key = clean(attr.get("property") or attr.get("name")).lower()
             value = clean(attr.get("content"))
@@ -98,6 +115,7 @@ class ArticleHTMLParser(HTMLParser):
             self.time_values.append(clean(attr["datetime"]))
         if tag == "script" and "ld+json" in attr.get("type", "").lower():
             self.json_ld_depth = 1
+            self.json_ld_current = []
             return
 
         if tag in SKIP_TAGS:
@@ -107,13 +125,21 @@ class ArticleHTMLParser(HTMLParser):
             return
 
         identity = f"{attr.get('id', '')} {attr.get('class', '')} {attr.get('itemprop', '')}".lower().replace("_", "-")
-        is_target = tag == "article" or any(
+        is_explicit_target = any(
             marker.replace("_", "-") in identity for marker in TARGET_MARKERS
         )
+        if self.target_depth:
+            if tag not in VOID_TAGS:
+                self.target_depth += 1
+        elif is_explicit_target:
+            self.target_depth = 1
+            self.target_parts = []
+        if self.target_depth and tag in BLOCK_TAGS | {"br"}:
+            self.target_parts.append("\n")
         if self.capture_depth:
             if tag not in VOID_TAGS:
                 self.capture_depth += 1
-        elif is_target:
+        elif tag == "article" or is_explicit_target:
             self.capture_depth = 1
 
         if self.capture_depth and tag == "br":
@@ -130,9 +156,15 @@ class ArticleHTMLParser(HTMLParser):
 
     def handle_endtag(self, tag: str) -> None:
         tag = tag.lower()
+        if self.ignored_depth:
+            if tag not in VOID_TAGS:
+                self.ignored_depth -= 1
+            return
         if tag == "title":
             self.in_title = False
         if tag == "script" and self.json_ld_depth:
+            self.json_ld_parts.append("".join(self.json_ld_current))
+            self.json_ld_current = []
             self.json_ld_depth = 0
             return
         if tag in SKIP_TAGS:
@@ -140,6 +172,15 @@ class ArticleHTMLParser(HTMLParser):
             return
         if self.skip_depth:
             return
+
+        if self.target_depth:
+            if tag in BLOCK_TAGS:
+                self.target_parts.append("\n")
+            if tag not in VOID_TAGS:
+                self.target_depth -= 1
+            if self.target_depth == 0:
+                self.target_bodies.append("".join(self.target_parts))
+                self.target_parts = []
 
         if self.capture_depth and tag in BLOCK_TAGS and self.block_depth:
             self.block_depth -= 1
@@ -154,12 +195,16 @@ class ArticleHTMLParser(HTMLParser):
 
     def handle_data(self, data: str) -> None:
         if self.json_ld_depth:
-            self.json_ld_parts.append(data)
+            self.json_ld_current.append(data)
+            return
+        if self.ignored_depth:
             return
         if self.in_title:
             self.title_text.append(data)
         if self.capture_depth and not self.skip_depth:
             self.raw_parts.append(data)
+        if self.target_depth and not self.skip_depth:
+            self.target_parts.append(data)
         if self.capture_depth and self.block_depth and not self.skip_depth:
             self.block_parts.append(data)
 
@@ -196,33 +241,30 @@ def strip_publisher_title_suffix(value: str) -> str:
     return clean(re.sub(rf"\s+-\s+(?:{suffixes}|the white house)\s*$", "", value, flags=re.I))
 
 
-def news_article_json_ld(parts: list[str]) -> dict:
+def news_article_json_ld(parts: list[str], preferred_title: str = "") -> dict:
+    articles = []
+
     def walk(value):
         if isinstance(value, dict):
             article_type = value.get("@type")
             types = article_type if isinstance(article_type, list) else [article_type]
             if any(str(item).lower() in {"article", "newsarticle", "reportagenewsarticle"} for item in types):
                 if value.get("headline") or value.get("articleBody"):
-                    return value
+                    articles.append(value)
             for child in value.values():
-                found = walk(child)
-                if found:
-                    return found
+                walk(child)
         elif isinstance(value, list):
             for child in value:
-                found = walk(child)
-                if found:
-                    return found
-        return {}
+                walk(child)
 
     for part in parts:
         try:
-            found = walk(json.loads(part))
+            walk(json.loads(part))
         except (json.JSONDecodeError, TypeError):
             continue
-        if found:
-            return found
-    return {}
+    if preferred_title:
+        articles = [item for item in articles if titles_align(preferred_title, str(item.get("headline") or ""))]
+    return max(articles, key=lambda item: len(str(item.get("articleBody") or "")), default={})
 
 
 def titles_align(listing_title: str, detail_title: str) -> bool:
@@ -262,7 +304,8 @@ def extract_article_detail(html_text: str, listing_title: str = "") -> dict:
             "body_verified": False,
         }
 
-    structured = news_article_json_ld(parser.json_ld_parts)
+    identity_title = parser.meta.get("og:title") or parser.meta.get("twitter:title") or listing_title
+    structured = news_article_json_ld(parser.json_ld_parts, identity_title)
     title = strip_publisher_title_suffix(
         parser.meta.get("og:title")
         or parser.meta.get("twitter:title")
@@ -284,8 +327,16 @@ def extract_article_detail(html_text: str, listing_title: str = "") -> dict:
     raw_body = re.sub(r"\n{3,}", "\n\n", raw_body).strip()
     if len(raw_body) > len(body) and len(body) < 180:
         body = raw_body
+    target_bodies = [
+        "\n".join(clean(line) for line in value.splitlines() if clean(line))
+        for value in parser.target_bodies
+    ]
+    explicit_body = max(target_bodies, key=len, default="")
     structured_body = clean(structured.get("articleBody"))
-    if len(structured_body) > len(body):
+    # Explicit article text wins over longer publisher navigation/recommendations.
+    if len(explicit_body) >= 180:
+        body = explicit_body
+    elif len(structured_body) >= 180:
         body = structured_body
     body = trim_article_footer(body)
     published = parse_published(

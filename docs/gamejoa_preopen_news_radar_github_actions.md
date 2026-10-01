@@ -4,7 +4,7 @@ This workflow moves the 06:30 KST `GAMEJOA 장전 핵심 뉴스 레이더` from 
 
 ## What It Does
 
-- Runs every day at 06:30 KST (`30 21 * * *` UTC).
+- Receives the 06:30 KST preopen dispatch and has a native live fallback at minutes 07, 27 and 47 of every hour (`7,27,47 * * * *` UTC).
 - Builds a Korean high-impact preopen news radar.
 - Sends a compact Korean-only core radar to Telegram when Telegram secrets are configured.
 - Uploads the Markdown/JSON/title outputs as GitHub Actions artifacts.
@@ -18,7 +18,9 @@ This workflow moves the 06:30 KST `GAMEJOA 장전 핵심 뉴스 레이더` from 
 
 Telegram workflow entrypoint:
 
-`scripts/gamejoa_preopen_news_radar_telegram_runner.py`
+`scripts/gamejoa_preopen_news_radar_fda_quality_runner.py`
+
+The entrypoint applies the full compact renderer and its source/stock-market quality gates before the Telegram delivery runner.
 
 Strict local-policy overlay:
 
@@ -69,6 +71,7 @@ The workflow checks:
 - Official sources: FERC, DOE, USTR, Commerce, BIS, OFAC, SEC, FTC, FDA, Federal Register
 - Company filings: SEC EDGAR watchlist and OpenDART when configured
 - Trusted news RSS via Google News: Reuters/Bloomberg/AP/CNBC/MarketWatch and selected USA Today network local-policy sources
+- Domestic and international stock-market news across earnings, valuation/discount rates, flows, catalysts/timelines, supply chains and market-wide changes; company-name keywords are not the coverage boundary.
 - Discount-rate cross-check: FRED `DFII10` and Trading Economics `United States 10 Year TIPS Yield`
 
 ## Telegram Format Contract
@@ -82,6 +85,17 @@ The Telegram message should contain only the core news radar:
 - Korean display titles for local data-center policy items;
 - local data-center policy articles grouped into one readable cluster when the same theme repeats;
 - clickable source names via Telegram HTML parse mode instead of raw long URLs.
+
+## Article Retrieval Progress
+
+- Each collection can verify up to 160 Korean article bodies using 12 workers. Half the slots follow urgency ranking and half follow the oldest waiting/least attempted URLs, so fixed keyword scores cannot permanently starve other articles.
+- `data/gamejoa_article_detail_queue.json` stores discovery times, attempts, verification status and retry times only. It contains no article bodies and is independent of delivered/seen state.
+- Failed addresses back off for 5, 15, 60 and then 120 minutes. A changed headline/publication fingerprint becomes eligible immediately. Recent unchanged deliveries are skipped for one hour in the live lane; the preopen digest bypasses live retrieval cooldowns.
+- Preflight and send may reuse an exact-fingerprint source receipt only within the same `GITHUB_RUN_ID` and for at most 15 minutes. The original article query time remains in the audit; another execution must fetch the source again.
+- Retrieval metadata is merged and committed even if a subsequent report/delivery check fails. Sent/seen state still requires successful verified delivery. Manual dry runs do not commit either state.
+- A verified `articleBody` region takes precedence over longer navigation/recommended-story nodes. Hidden quote popups, sidebars and footer navigation are not article evidence. Sports-association elections and ceremonial photos without a material corporate event are not market alerts.
+- `selection_diagnostics.detail_coverage` retains failed/deferred counts, and `detail_queue` records fetches, same-run hits, fair slots and skips. A successful workflow is not proof that every source was accessible or every candidate was examined.
+- `verify_gamejoa_article_detail_queue.py` tests progress under continuing urgent arrivals, backoff, updated-story and preopen bypass, same-run expiry, state merging, publisher contamination and non-market false positives.
 
 ## Data Center Local Ban Coverage
 
