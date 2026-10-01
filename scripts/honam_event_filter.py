@@ -40,6 +40,19 @@ def _norm(s):
     return re.sub(r"\s+", " ", str(s or "")).strip()
 
 
+def _item_text(item):
+    return " ".join([
+        _norm(item.get("title")),
+        _norm(item.get("description")),
+        _norm(item.get("body_excerpt")),
+        _norm(item.get("headline")),
+        _norm(item.get("detail")),
+        _norm(item.get("reason")),
+        _norm(item.get("impact")),
+        _norm(item.get("source_status")),
+    ]).strip()
+
+
 def _extract_numbers(text):
     vals = re.findall(r"\d[\d,.]*\s*(?:명|가구|세대|년|월|일|억|조|만평|평|㎡|km|㎞|mw|gw|%|톤/일|만\s*톤/일|만톤/일|t/일)?", text, flags=re.I)
     out = []
@@ -51,10 +64,7 @@ def _extract_numbers(text):
 
 
 def _event_key(item):
-    text = " ".join([
-        _norm(item.get("title")), _norm(item.get("headline")), _norm(item.get("detail")),
-        _norm(item.get("reason")), _norm(item.get("impact"))
-    ]).lower()
+    text = _item_text(item).lower()
     stages = sorted(item.get("stages") or ([item.get("stage")] if item.get("stage") else []))
     entities = sorted({t.lower() for t in ENTITY_TERMS if t.lower() in text})
     states = sorted({t.lower() for t in STATE_TERMS if t.lower() in text})
@@ -66,10 +76,7 @@ def _event_key(item):
 
 
 def _is_material_event(item):
-    text = " ".join([
-        _norm(item.get("title")), _norm(item.get("headline")), _norm(item.get("detail")),
-        _norm(item.get("reason")), _norm(item.get("impact")), _norm(item.get("source_status"))
-    ])
+    text = _item_text(item)
     low = text.lower()
     strong = any(t.lower() in low for t in STRONG_TERMS)
     numbers = bool(_extract_numbers(text))
@@ -98,10 +105,7 @@ EXECUTION_UPGRADE_TERMS = [
 
 
 def _is_known_baseline_only(item):
-    text = " ".join([
-        _norm(item.get("title")), _norm(item.get("description")), _norm(item.get("headline")),
-        _norm(item.get("detail")), _norm(item.get("reason")), _norm(item.get("impact"))
-    ])
+    text = _item_text(item)
     low = text.lower()
 
     # 실제 체결·착공·공급개시·일정변경처럼 실행 상태가 변했으면 반드시 통과시킨다.
@@ -127,10 +131,7 @@ def _is_known_baseline_only(item):
 
 
 def _is_proposal_only(item):
-    text = " ".join([
-        _norm(item.get("title")), _norm(item.get("description")), _norm(item.get("headline")),
-        _norm(item.get("detail"))
-    ]).lower()
+    text = _item_text(item).lower()
     proposal = any(t.lower() in text for t in PROPOSAL_ONLY_TERMS) or ("의원" in text and "제안" in text)
     adopted = any(t.lower() in text for t in PROPOSAL_ADOPTION_TERMS)
     return proposal and not adopted
@@ -151,11 +152,66 @@ def _event_family(item):
     return ""
 
 
+def _verification_level(items):
+    if any(i.get("_kind") == "official" or i.get("source_status") == "공식자료" for i in items):
+        return 3
+    independent = {
+        (_norm(i.get("source")) or _norm(i.get("url"))).lower()
+        for i in items
+        if _norm(i.get("source")) or _norm(i.get("url"))
+    }
+    if len(independent) >= 2:
+        return 2
+    return 1
+
+
+def _verification_status(level):
+    return {
+        3: "공식자료 확인",
+        2: "복수 보도 교차확인",
+        1: "단일 보도·공식 미확정",
+    }.get(int(level or 0), "확인 필요")
+
+
+def _summarize_event(items):
+    text = " ".join(_item_text(i) for i in items)
+    low = text.lower()
+    points = []
+    if "2028년 중순" in low and ("재검토" in low or "당길" in low):
+        points.append("광주 군공항 임시이전 완료시기(2028년 중순)를 더 앞당기도록 재검토 지시")
+    if "계통관리변전소" in low and "10월 1" in low:
+        points.append("호남권 계통관리변전소 지정 10월 1일 해제")
+    if "정주" in low and ("묶어서" in low or "하나의 계획" in low or "동시 진행" in low):
+        points.append("산업단지와 정주여건을 사업 초기부터 함께 추진")
+    if points:
+        return " / ".join(points[:3])
+    for item in items:
+        title = _norm(item.get("title")) or _norm(item.get("headline"))
+        if title:
+            return title
+    return "호남 반도체 관련 상태 변화"
+
+
 def _merge_group(items):
-    first = dict(items[0])
+    ordered = sorted(
+        items,
+        key=lambda i: (
+            0 if (i.get("_kind") == "official" or i.get("source_status") == "공식자료") else 1,
+            _norm(i.get("published")),
+        ),
+    )
+    first = dict(ordered[0])
     evidence = []
     seen = set()
-    for it in items:
+    merged_stages = []
+    merged_labels = []
+    for it in ordered:
+        for stage in it.get("stages", []) or ([it.get("stage")] if it.get("stage") else []):
+            if stage and stage not in merged_stages:
+                merged_stages.append(stage)
+        for label in it.get("stage_labels", []):
+            if label and label not in merged_labels:
+                merged_labels.append(label)
         url = _norm(it.get("url"))
         source = _norm(it.get("source")) or _norm(it.get("source_status")) or "근거자료"
         key = (source, url)
@@ -163,8 +219,18 @@ def _merge_group(items):
             continue
         seen.add(key)
         evidence.append({"source": source, "url": url, "published": _norm(it.get("published"))})
+    level = _verification_level(ordered)
     first["evidence_count"] = len(evidence)
-    first["evidence_sources"] = evidence[:4]
+    first["evidence_sources"] = evidence[:5]
+    first["verification_level"] = level
+    first["verification_status"] = _verification_status(level)
+    first["source_status"] = _verification_status(level)
+    first["stages"] = merged_stages
+    first["stage_labels"] = merged_labels
+    summary = _summarize_event(ordered)
+    if summary:
+        first["title"] = summary
+        first["headline"] = summary
     if len(evidence) > 1:
         first["source"] = " · ".join([e["source"] for e in evidence[:3]]) + (f" 외 {len(evidence)-3}곳" if len(evidence) > 3 else "")
     return first
@@ -179,6 +245,7 @@ def main():
     state = json.loads(STATE_PATH.read_text(encoding="utf-8")) if STATE_PATH.exists() else {}
     pending = json.loads(PENDING_PATH.read_text(encoding="utf-8")) if PENDING_PATH.exists() else dict(state)
     seen_event_keys = set(state.get("seen_event_keys", []))
+    seen_event_levels = {str(k): int(v) for k, v in (state.get("event_status_levels") or {}).items()}
 
     candidates = []
     for item in alert.get("official_changes", []):
@@ -203,12 +270,22 @@ def main():
         all_event_keys.append(key)
         groups.setdefault(key, []).append(item)
 
-    new_groups = {k: v for k, v in groups.items() if k not in seen_event_keys}
+    new_groups = {}
+    current_levels = dict(seen_event_levels)
+    for key, items in groups.items():
+        level = _verification_level(items)
+        previous_level = int(seen_event_levels.get(key, 0))
+        current_levels[key] = max(level, previous_level)
+        # 새로운 사건이거나, 보도단계에서 복수검증/공식확인으로 신뢰등급이 올라간 경우만 재알림.
+        if key not in seen_event_keys or level > previous_level:
+            new_groups[key] = items
+
     final_news, final_official = [], []
     for key, items in new_groups.items():
         merged = _merge_group(items)
         merged["event_key"] = key
-        if any(i.get("_kind") == "official" for i in items):
+        merged["verification_upgrade"] = int(seen_event_levels.get(key, 0)) > 0
+        if any(i.get("_kind") == "official" or i.get("source_status") == "공식자료" for i in items):
             merged.pop("_kind", None)
             final_official.append(merged)
         else:
@@ -216,6 +293,7 @@ def main():
             final_news.append(merged)
 
     pending["seen_event_keys"] = list(dict.fromkeys(all_event_keys + list(seen_event_keys)))[:3000]
+    pending["event_status_levels"] = current_levels
     pending["alert_basis"] = "topic_event_official_state_change"
     pending["article_role"] = "evidence_and_crosscheck_only"
     pending["baseline_guard"] = "suppress_20260922_roadmap_rehash_unless_execution_or_status_changes"
