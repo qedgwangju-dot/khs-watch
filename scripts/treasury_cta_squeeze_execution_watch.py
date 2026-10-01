@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import io
 import re
+import subprocess
 import urllib.request
 from datetime import date, datetime, time, timedelta
 from zoneinfo import ZoneInfo
@@ -64,6 +65,36 @@ def _download_pdf_text() -> str:
             errors.append(f"{url}: non-PDF")
         except Exception as exc:
             errors.append(f"{url}: {type(exc).__name__}: {exc}")
+    if not data:
+        # Some CME CDN edges reject Python urllib from GitHub-hosted runners while
+        # accepting the same public Daily Bulletin through a browser/curl path.
+        # Try curl as a second transport, but keep the source identical and official.
+        for url in urls:
+            try:
+                proc = subprocess.run(
+                    [
+                        "curl", "--fail", "--location", "--compressed",
+                        "--retry", "2", "--connect-timeout", "15", "--max-time", "45",
+                        "-A", headers["User-Agent"],
+                        "-e", "https://www.cmegroup.com/market-data/daily-bulletin.html",
+                        "-H", "Accept: application/pdf,application/octet-stream;q=0.9,*/*;q=0.8",
+                        "-H", "Cache-Control: no-cache",
+                        url,
+                    ],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    check=False,
+                )
+                candidate = proc.stdout
+                if proc.returncode == 0 and candidate.startswith(b"%PDF"):
+                    data = candidate
+                    print("cme_section09_transport=curl_official")
+                    break
+                errors.append(
+                    f"curl {url}: rc={proc.returncode} stderr={proc.stderr.decode('utf-8', errors='replace')[-240:]}"
+                )
+            except Exception as exc:
+                errors.append(f"curl {url}: {type(exc).__name__}: {exc}")
     if not data:
         raise RuntimeError("CME Section09 download failed: " + " | ".join(errors))
 
