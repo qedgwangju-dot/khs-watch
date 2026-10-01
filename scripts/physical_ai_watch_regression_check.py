@@ -1159,4 +1159,44 @@ assert g == "frontier_ai", (g, s, c)
 assert c.endswith("Gemini Robotics 유료계약·상용 배치"), c
 assert s >= 11, s
 
+# 31) Gemini Robotics access-state baseline. ER 2 is already public
+# preview via Google AI Studio / Gemini API, while VLA and On-Device 2 remain
+# private preview / early access. Rewrites of those statuses must stay silent;
+# widening VLA/On-Device access must alert.
+gemini_er2_public_preview_baseline = make(
+    "Gemini Robotics ER 2 public preview",
+    "Google DeepMind says Gemini Robotics ER 2 is in public preview on Google AI Studio and the Gemini API for robotics developers.",
+    "Google DeepMind",
+)
+g, s, c, k = classify(gemini_er2_public_preview_baseline)
+assert s < 11, ("ER 2 public preview is current baseline, not general availability", g, s, c)
+
+gemini_vla_private_preview_baseline = make(
+    "Gemini Robotics 2 private preview",
+    "Google DeepMind says Gemini Robotics 2 VLA is in private preview for robotics trusted testers.",
+    "Google DeepMind",
+)
+g, s, c, k = classify(gemini_vla_private_preview_baseline)
+assert s < 11, ("VLA private preview is current baseline", g, s, c)
+
+gemini_vla_public_preview = make(
+    "Gemini Robotics 2 expands to public preview",
+    "Google DeepMind opened Gemini Robotics 2 VLA to public preview through the Gemini API for robotics developers.",
+    "Google DeepMind",
+)
+g, s, c, k = classify(gemini_vla_public_preview)
+assert g == "frontier_ai", (g, s, c)
+assert c.endswith("Gemini Robotics 모델 공개 범위 확대"), c
+assert s >= 11, s
+
+gemini_ondevice_public_api = make(
+    "Gemini Robotics On-Device 2 expands access",
+    "Google DeepMind opened Gemini Robotics On-Device 2 through a public API for robotics developers.",
+    "Google DeepMind",
+)
+g, s, c, k = classify(gemini_ondevice_public_api)
+assert g == "frontier_ai", (g, s, c)
+assert c.endswith("Gemini Robotics 모델 공개 범위 확대"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
