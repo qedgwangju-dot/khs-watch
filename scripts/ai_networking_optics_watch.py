@@ -696,22 +696,14 @@ def main() -> None:
         "published": item.get("published"),
     } for item in deduped if source_priority(item.get("source") or "") >= 65]
 
-    # Clean legacy state: remove low-quality reaction sources and duplicate records.
+    # Clean legacy state: remove low-quality reaction sources and collapse
+    # syndicated/mirrored records by underlying event, not just exact text.
     merged_story_records = []
-    record_keys = set()
     for record in new_story_records + seen_story_records:
         if source_priority(record.get("source") or "") < 65:
             continue
-        key = (
-            record.get("company"),
-            record.get("category"),
-            record.get("title"),
-            record.get("source"),
-            record.get("published"),
-        )
-        if key in record_keys:
+        if any(same_underlying_story(record, existing) for existing in merged_story_records):
             continue
-        record_keys.add(key)
         merged_story_records.append(record)
         if len(merged_story_records) >= 500:
             break
