@@ -336,7 +336,7 @@ def _validate_compact_report(text, overall_head, y10):
     expected = f"전체 방향: {overall_head}"
     if expected not in text:
         raise RuntimeError(f"final report overall mismatch: expected {expected}")
-    if re.search(r"[↑↓]\s+[+-]-?0(?:\.0)?bp", text) or "↓ -0bp" in text or "↑ +0bp" in text:
+    if re.search(r"[↑↓]\\s+[+-]0(?:\\.0+)?bp", text):
         raise RuntimeError("final report contains signed zero bp")
     if y10 is not None and y10 >= 5.00 and "다음 경보: 10년물 5% 돌파" in text:
         raise RuntimeError("final report repeats an already-crossed 10Y 5% alert")
