@@ -156,22 +156,37 @@ def parse_cftc_nq_mini(plain):
 
 
 def cftc_nq_history_3y(current_nq=None, current_period=None):
-    """Build a three-year NQ leveraged-fund distribution from official CFTC history."""
+    """Build 3Y and 10Y NQ leveraged-fund distributions from official CFTC TFF history.
+
+    Three-year statistics remain the mandatory operational gate. Ten-year values are
+    published only when every required annual file is available, so an incomplete
+    long-history download can never be mislabeled as a full 10-year comparison.
+    """
     year = datetime.now(timezone.utc).year
+    requested_years = list(range(year - 10, year + 1))
     frames = []
     errors = []
-    for y in range(year - 3, year + 1):
+    loaded_years = []
+
+    for y in requested_years:
         url = CFTC_HISTORY_TEMPLATE.format(year=y)
-        try:
-            raw = get(url, timeout=50).content
-            df = pd.read_csv(BytesIO(raw), compression="zip", low_memory=False)
-            df.columns = [str(x).strip() for x in df.columns]
-            frames.append(df)
-        except Exception as exc:
-            errors.append(f"{y}:{type(exc).__name__}")
+        last_exc = None
+        for _attempt in range(2):
+            try:
+                raw = get(url, timeout=50).content
+                df_year = pd.read_csv(BytesIO(raw), compression="zip", low_memory=False)
+                df_year.columns = [str(x).strip() for x in df_year.columns]
+                frames.append(df_year)
+                loaded_years.append(y)
+                last_exc = None
+                break
+            except Exception as exc:
+                last_exc = exc
+        if last_exc is not None:
+            errors.append(f"{y}:{type(last_exc).__name__}")
 
     if not frames:
-        raise RuntimeError("CFTC TFF 3년 압축자료 조회 실패: " + ", ".join(errors))
+        raise RuntimeError("CFTC TFF 압축자료 조회 실패: " + ", ".join(errors))
 
     df = pd.concat(frames, ignore_index=True)
     code_col = "CFTC_Contract_Market_Code"
@@ -248,11 +263,6 @@ def cftc_nq_history_3y(current_nq=None, current_period=None):
 
     df = df.sort_values("_date").drop_duplicates(subset=["_date"], keep="last")
     latest = df["_date"].max()
-    cutoff = latest - pd.Timedelta(days=1096)
-    df = df[df["_date"] >= cutoff].tail(160).copy()
-    if len(df) < 52:
-        raise RuntimeError(f"CFTC history sample too short: {len(df)}")
-
     df["_net"] = df["Lev_Money_Positions_Long_All"] - df["Lev_Money_Positions_Short_All"]
     df["_short_severity"] = (-df["_net"]).clip(lower=0)
     df["_gross_short"] = df["Lev_Money_Positions_Short_All"]
@@ -260,44 +270,144 @@ def cftc_nq_history_3y(current_nq=None, current_period=None):
         df["Lev_Money_Positions_Short_All"] / df["Open_Interest_All"] * 100.0
     )
 
-    cur = df.iloc[-1]
-    severity = float(cur["_short_severity"])
-    gross_short = float(cur["_gross_short"])
-    short_share = float(cur["_short_share"])
-    severity_pct = float((df["_short_severity"] <= severity).mean() * 100.0)
-    gross_short_pct = float((df["_gross_short"] <= gross_short).mean() * 100.0)
-    short_share_pct = float((df["_short_share"] <= short_share).mean() * 100.0)
-    peak = float(df["_short_severity"].max())
-    gross_peak = float(df["_gross_short"].max())
-    unwind = ((peak - severity) / peak * 100.0) if peak > 0 else None
-    gross_unwind = ((gross_peak - gross_short) / gross_peak * 100.0) if gross_peak > 0 else None
+    def _window(years: int):
+        cutoff = latest - pd.DateOffset(years=years)
+        return df[df["_date"] >= cutoff].copy()
 
-    def diff(col, weeks):
-        if len(df) <= weeks:
+    def _stats(frame):
+        frame = frame.sort_values("_date").copy()
+        if frame.empty:
             return None
-        return float(df.iloc[-1][col] - df.iloc[-1 - weeks][col])
+        cur = frame.iloc[-1]
+        severity = float(cur["_short_severity"])
+        gross_short = float(cur["_gross_short"])
+        short_share = float(cur["_short_share"])
+        peak_net_idx = frame["_short_severity"].idxmax()
+        peak_gross_idx = frame["_gross_short"].idxmax()
+        peak_net = float(frame.loc[peak_net_idx, "_short_severity"])
+        peak_gross = float(frame.loc[peak_gross_idx, "_gross_short"])
 
-    return {
+        gross_weekly_add = frame["_gross_short"].diff()
+        net_weekly_build = -frame["_net"].diff()
+        cur_gross_add = float(gross_weekly_add.iloc[-1]) if pd.notna(gross_weekly_add.iloc[-1]) else None
+        cur_net_build = float(net_weekly_build.iloc[-1]) if pd.notna(net_weekly_build.iloc[-1]) else None
+        gross_build_clean = gross_weekly_add.dropna()
+        net_build_clean = net_weekly_build.dropna()
+
+        def _pctile(series, value):
+            if value is None or series.empty:
+                return None
+            return float((series <= value).mean() * 100.0)
+
+        def _max_with_date(series):
+            if series.empty:
+                return None, None
+            idx = series.idxmax()
+            return float(series.loc[idx]), frame.loc[idx, "_date"].strftime("%Y-%m-%d")
+
+        max_gross_build, max_gross_build_date = _max_with_date(gross_build_clean)
+        max_net_build, max_net_build_date = _max_with_date(net_build_clean)
+
+        return {
+            "sample_n": int(len(frame)),
+            "start_date": frame.iloc[0]["_date"].strftime("%Y-%m-%d"),
+            "end_date": frame.iloc[-1]["_date"].strftime("%Y-%m-%d"),
+            "net_short_percentile": float((frame["_short_severity"] <= severity).mean() * 100.0),
+            "gross_short_percentile": float((frame["_gross_short"] <= gross_short).mean() * 100.0),
+            "short_share_oi_percentile": float((frame["_short_share"] <= short_share).mean() * 100.0),
+            "peak_net_short_contracts": int(round(peak_net)),
+            "peak_net_short_date": frame.loc[peak_net_idx, "_date"].strftime("%Y-%m-%d"),
+            "peak_gross_short_contracts": int(round(peak_gross)),
+            "peak_gross_short_date": frame.loc[peak_gross_idx, "_date"].strftime("%Y-%m-%d"),
+            "net_short_unwind_from_peak_pct": ((peak_net - severity) / peak_net * 100.0) if peak_net > 0 else None,
+            "gross_short_unwind_from_peak_pct": ((peak_gross - gross_short) / peak_gross * 100.0) if peak_gross > 0 else None,
+            "gross_short_weekly_change": int(round(cur_gross_add)) if cur_gross_add is not None else None,
+            "net_short_weekly_build": int(round(cur_net_build)) if cur_net_build is not None else None,
+            "gross_short_weekly_build_percentile": _pctile(gross_build_clean, cur_gross_add),
+            "net_short_weekly_build_percentile": _pctile(net_build_clean, cur_net_build),
+            "max_gross_short_weekly_build": int(round(max_gross_build)) if max_gross_build is not None else None,
+            "max_gross_short_weekly_build_date": max_gross_build_date,
+            "max_net_short_weekly_build": int(round(max_net_build)) if max_net_build is not None else None,
+            "max_net_short_weekly_build_date": max_net_build_date,
+            "gross_short_weekly_record": bool(
+                cur_gross_add is not None and max_gross_build is not None and cur_gross_add >= max_gross_build
+            ),
+            "net_short_weekly_record": bool(
+                cur_net_build is not None and max_net_build is not None and cur_net_build >= max_net_build
+            ),
+        }
+
+    df3 = _window(3)
+    if len(df3) < 150:
+        raise RuntimeError(f"CFTC 3년 history sample too short: {len(df3)}")
+    s3 = _stats(df3)
+
+    # A full 10-year statement is allowed only when every annual file covering the
+    # requested interval was loaded. Missing older files do not block the 3Y gate,
+    # but they suppress every 10Y percentile/record claim.
+    ten_year_complete = set(requested_years).issubset(set(loaded_years))
+    df10 = _window(10)
+    s10 = _stats(df10) if ten_year_complete and len(df10) >= 500 else None
+
+    def diff(frame, col, weeks):
+        frame = frame.sort_values("_date")
+        if len(frame) <= weeks:
+            return None
+        return float(frame.iloc[-1][col] - frame.iloc[-1 - weeks][col])
+
+    result = {
         "basis": "CFTC TFF NASDAQ MINI futures-only",
-        "sample_n": int(len(df)),
-        "start_date": df.iloc[0]["_date"].strftime("%Y-%m-%d"),
-        "end_date": df.iloc[-1]["_date"].strftime("%Y-%m-%d"),
-        "net_short_percentile_3y": severity_pct,
-        "gross_short_percentile_3y": gross_short_pct,
-        "short_extreme_percentile_3y": severity_pct,
-        "short_share_oi_percentile_3y": short_share_pct,
-        "peak_net_short_contracts_3y": int(round(peak)),
-        "peak_gross_short_contracts_3y": int(round(gross_peak)),
-        "net_short_unwind_from_peak_pct": unwind,
-        "gross_short_unwind_from_peak_pct": gross_unwind,
-        "unwind_from_peak_pct": unwind,
-        "leveraged_short_1w_change": int(round(diff("Lev_Money_Positions_Short_All", 1))) if diff("Lev_Money_Positions_Short_All", 1) is not None else None,
-        "leveraged_short_4w_change": int(round(diff("Lev_Money_Positions_Short_All", 4))) if diff("Lev_Money_Positions_Short_All", 4) is not None else None,
-        "leveraged_net_1w_change": int(round(diff("_net", 1))) if diff("_net", 1) is not None else None,
-        "leveraged_net_4w_change": int(round(diff("_net", 4))) if diff("_net", 4) is not None else None,
+        "sample_n": s3["sample_n"],
+        "start_date": s3["start_date"],
+        "end_date": s3["end_date"],
+        "net_short_percentile_3y": s3["net_short_percentile"],
+        "gross_short_percentile_3y": s3["gross_short_percentile"],
+        "short_extreme_percentile_3y": s3["net_short_percentile"],
+        "short_share_oi_percentile_3y": s3["short_share_oi_percentile"],
+        "peak_net_short_contracts_3y": s3["peak_net_short_contracts"],
+        "peak_net_short_date_3y": s3["peak_net_short_date"],
+        "peak_gross_short_contracts_3y": s3["peak_gross_short_contracts"],
+        "peak_gross_short_date_3y": s3["peak_gross_short_date"],
+        "net_short_unwind_from_peak_pct": s3["net_short_unwind_from_peak_pct"],
+        "gross_short_unwind_from_peak_pct": s3["gross_short_unwind_from_peak_pct"],
+        "unwind_from_peak_pct": s3["net_short_unwind_from_peak_pct"],
+        "leveraged_short_1w_change": int(round(diff(df3, "_gross_short", 1))) if diff(df3, "_gross_short", 1) is not None else None,
+        "leveraged_short_4w_change": int(round(diff(df3, "_gross_short", 4))) if diff(df3, "_gross_short", 4) is not None else None,
+        "leveraged_net_1w_change": int(round(diff(df3, "_net", 1))) if diff(df3, "_net", 1) is not None else None,
+        "leveraged_net_4w_change": int(round(diff(df3, "_net", 4))) if diff(df3, "_net", 4) is not None else None,
         "history_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm",
         "download_errors": errors,
+        "loaded_years": loaded_years,
+        "ten_year_complete": ten_year_complete,
     }
+
+    if s10 is not None:
+        result.update({
+            "sample_n_10y": s10["sample_n"],
+            "start_date_10y": s10["start_date"],
+            "end_date_10y": s10["end_date"],
+            "net_short_percentile_10y": s10["net_short_percentile"],
+            "gross_short_percentile_10y": s10["gross_short_percentile"],
+            "short_share_oi_percentile_10y": s10["short_share_oi_percentile"],
+            "peak_net_short_contracts_10y": s10["peak_net_short_contracts"],
+            "peak_net_short_date_10y": s10["peak_net_short_date"],
+            "peak_gross_short_contracts_10y": s10["peak_gross_short_contracts"],
+            "peak_gross_short_date_10y": s10["peak_gross_short_date"],
+            "net_short_unwind_from_peak_pct_10y": s10["net_short_unwind_from_peak_pct"],
+            "gross_short_unwind_from_peak_pct_10y": s10["gross_short_unwind_from_peak_pct"],
+            "gross_short_weekly_change_10y": s10["gross_short_weekly_change"],
+            "net_short_weekly_build_10y": s10["net_short_weekly_build"],
+            "gross_short_weekly_build_percentile_10y": s10["gross_short_weekly_build_percentile"],
+            "net_short_weekly_build_percentile_10y": s10["net_short_weekly_build_percentile"],
+            "max_gross_short_weekly_build_10y": s10["max_gross_short_weekly_build"],
+            "max_gross_short_weekly_build_date_10y": s10["max_gross_short_weekly_build_date"],
+            "max_net_short_weekly_build_10y": s10["max_net_short_weekly_build"],
+            "max_net_short_weekly_build_date_10y": s10["max_net_short_weekly_build_date"],
+            "gross_short_weekly_record_10y": s10["gross_short_weekly_record"],
+            "net_short_weekly_record_10y": s10["net_short_weekly_record"],
+        })
+    return result
+
 
 
 def parse_cftc():
