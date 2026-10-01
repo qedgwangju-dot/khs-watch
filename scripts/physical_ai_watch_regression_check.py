@@ -727,4 +727,128 @@ assert "로보티즈 확정 발주" in microduck_value, microduck_value
 assert "아직 미확인" in microduck_value, microduck_value
 assert "소매가로 로보티즈 매출을 추정하지 않음" in microduck_value, microduck_value
 
+
+# 23) Korea 2030 AI-robot policy: Sep-30 200k diffusion / 1,700 public purchase /
+# Daegu-Gyeongbuk cluster is a baseline. Actual procurement, awards, deployment,
+# capex execution and reversals are new events.
+korea_robot_baseline = make(
+    "정부, 2030년까지 AI로봇 20만대 보급…대구·경북 로봇 특화단지",
+    "2027년 정부가 1,700대 이상을 구매하고 2030년까지 민관합동 20만대를 보급한다. 대구·경북 구미·포항을 국가첨단전략산업 특화단지로 지정했다.",
+    "산업통상부",
+)
+g, s, c, k = classify(korea_robot_baseline)
+assert g == "korea_robot_scale_policy", (g, s, c)
+assert s < 11, ("Sep-30 200k robot policy must be a silent baseline", s, c)
+
+korea_robot_tender = make(
+    "소방청, 2027년 AI 재난로봇 120대 조달공고",
+    "정부 AI로봇 보급계획에 따라 소방청이 나라장터에 재난·인명구조 AI로봇 120대 구매 입찰공고를 게시했다. 예산은 240억원이다.",
+    "조달청",
+)
+g, s, c, k = classify(korea_robot_tender)
+assert g == "korea_robot_scale_policy", (g, s, c)
+assert c.endswith("실제 조달공고"), c
+assert s >= 11, s
+
+korea_robot_award = make(
+    "정부 AI로봇 120대 구매계약 체결",
+    "소방청 AI로봇 조달에서 A사가 120대, 228억원 규모 구매계약을 체결했다.",
+    "조달청",
+)
+g, s, c, k = classify(korea_robot_award)
+assert g == "korea_robot_scale_policy", (g, s, c)
+assert c.endswith("낙찰·구매계약"), c
+assert s >= 11, s
+
+korea_robot_plant = make(
+    "구미 휴머노이드 양산공장 착공",
+    "대구·경북 로봇 특화단지에서 선도기업이 휴머노이드 생산라인 설비투자를 확정하고 구미 공장 착공에 들어갔다.",
+    "산업통상부",
+)
+g, s, c, k = classify(korea_robot_plant)
+assert g == "korea_robot_scale_policy", (g, s, c)
+assert c.endswith("대경권·새만금 양산설비 실행"), c
+assert s >= 11, s
+
+korea_robot_reverse = make(
+    "AI로봇 20만대 보급 일정 연기",
+    "정부가 예산 감액으로 2030년 20만대 AI로봇 보급 목표 일정을 1년 연기했다.",
+    "산업통상부",
+)
+g, s, c, k = classify(korea_robot_reverse)
+assert g == "korea_robot_scale_policy", (g, s, c)
+assert c.endswith("목표·예산·일정 후퇴"), c
+assert s >= 11, s
+
+# 24) Samsung Electronics robotics: manufacturing-first/home expansion, 99.99%
+# required reliability, millions-unit potential and WAM/retargeting are baselines.
+# Actual deployment/measurement/scaling/SOP/product/supplier events alert.
+samsung_robot_baseline = make(
+    "삼성전자 로봇 제조현장서 홈으로…수백만대 판매 잠재력",
+    "RX사업추진실은 제조 현장부터 가정으로 확장하고 99.99% 성공률이 필요하다고 설명했다. World Action Models와 Human Motion Retargeting을 유망 기술로 제시했다.",
+    "삼성전자",
+)
+g, s, c, k = classify(samsung_robot_baseline)
+assert g == "samsung_robot_scale", (g, s, c)
+assert s < 11, ("Samsung Sep-30 robotics strategy must be a silent baseline", s, c)
+
+samsung_robot_factory = make(
+    "삼성전자 구미공장 휴머노이드 50대 현장 배치 시작",
+    "삼성전자가 구미 사업장 생산라인에 휴머노이드 로봇 50대를 투입해 조립 공정 파일럿 운영을 시작했다.",
+    "삼성전자",
+)
+g, s, c, k = classify(samsung_robot_factory)
+assert g == "samsung_robot_scale", (g, s, c)
+assert c.endswith("실제 공장 배치"), c
+assert s >= 11, s
+
+samsung_robot_reliability_target = make(
+    "삼성전자 제조 로봇 성공률 99.99% 필요",
+    "Kris Hauser는 제조현장 적용을 위해 성공률 99.99%가 필요하다는 목표를 제시했다.",
+    "Samsung AI Forum",
+)
+g, s, c, k = classify(samsung_robot_reliability_target)
+assert g == "samsung_robot_scale", (g, s, c)
+assert s < 11, ("99.99% requirement is a target baseline, not achieved performance", s, c)
+
+samsung_robot_reliability_actual = make(
+    "삼성전자 제조 로봇 작업 성공률 99.99% 달성",
+    "삼성전자는 구미 생산라인 100만회 작업 시험에서 성공률 99.99%를 측정해 달성했다고 밝혔다.",
+    "삼성전자",
+)
+g, s, c, k = classify(samsung_robot_reliability_actual)
+assert g == "samsung_robot_scale", (g, s, c)
+assert c.endswith("산업 신뢰성 정량 달성"), c
+assert s >= 11, s
+
+samsung_robot_scaling = make(
+    "삼성전자 인간행동 영상 8배 확대, 로봇 제로샷 성공률 31%→62%",
+    "삼성전자는 인간 행동 영상 사전학습 데이터셋을 8배 확대하면서 처음 보는 작업의 zero-shot 성공률이 31%에서 62%로 개선됐다고 공개했다.",
+    "삼성전자",
+)
+g, s, c, k = classify(samsung_robot_scaling)
+assert g == "samsung_robot_scale", (g, s, c)
+assert c.endswith("인간영상 사전학습 정량 스케일링"), c
+assert s >= 11, s
+
+samsung_robot_sop = make(
+    "삼성전자 휴머노이드 로봇 양산 시작",
+    "삼성전자가 구미 로봇 생산라인에서 휴머노이드 로봇 양산을 개시했다.",
+    "삼성전자",
+)
+g, s, c, k = classify(samsung_robot_sop)
+assert g == "samsung_robot_scale", (g, s, c)
+assert c.endswith("실제 양산 개시"), c
+assert s >= 11, s
+
+samsung_robot_supplier = make(
+    "삼성전자 휴머노이드 액추에이터 공급사 선정·발주",
+    "삼성전자가 휴머노이드 로봇 양산용 액추에이터 공급사를 선정하고 5만개 발주 계약을 체결했다.",
+    "삼성전자",
+)
+g, s, c, k = classify(samsung_robot_supplier)
+assert g == "samsung_robot_scale", (g, s, c)
+assert c.endswith("핵심부품 공급사·발주"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
