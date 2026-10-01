@@ -277,6 +277,8 @@ def topic_group(text: str) -> str | None:
         prior = _orig_topic_group(text)
         if prior == 'hyundai_mobis_atlas':
             return prior
+    if _robot_factory_stage(text): return 'hyundai_atlas_rollout'
+    if _robot_channel_stage(text): return 'hyundai_atlas_rollout'
     if _is_rmac_operational(text): return 'hyundai_atlas_rollout'
     if _is_boston_capital_or_commercial(text) or _is_atlas_rollout(text): return 'hyundai_atlas_rollout'
     return _orig_topic_group(text)
@@ -303,6 +305,27 @@ def _ipo_stage(text: str) -> str:
 
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')}"
+    factory_stage = _robot_factory_stage(text)
+    if factory_stage:
+        nums = '|'.join(sorted(set(re.findall(
+            r'\d[\d,.]*\s*(?:robots?|units?|대|million|billion|억원|억\s*원|조원|조\s*원|acre|acres|년|월|일)|\$\s*\d[\d,.]*(?:\s*(?:million|billion|m|bn))?',
+            text,
+            re.I,
+        )))[:6])
+        return hashlib.sha256(f'hmg-robot-factory|{factory_stage}|{nums or "no-number"}'.encode()).hexdigest()
+    channel_stage = _robot_channel_stage(text)
+    if channel_stage:
+        terms = []
+        for name, pat in [
+            ('raas', r'RaaS|Robotics[-\s]*as[-\s]*a[-\s]*Service'),
+            ('capital', r'Hyundai\s*Capital|현대캐피탈'),
+            ('dealer', r'dealer|딜러'),
+            ('subscription', r'subscription|구독'),
+            ('lease', r'lease|리스'),
+        ]:
+            if re.search(pat, text, re.I):
+                terms.append(name)
+        return hashlib.sha256(f'hmg-robot-channel|{channel_stage}|{",".join(terms)}'.encode()).hexdigest()
     rmac_stage = _rmac_stage(text)
     if rmac_stage == 'expansion_completed':
         return hashlib.sha256(b'boston-dynamics|rmac|expansion-completed|10x').hexdigest()
@@ -332,7 +355,13 @@ def key(item: dict) -> str:
 def score(item: dict) -> int:
     title = item.get('title',''); text = f"{title} {item.get('description','')} {item.get('source','')}"
     if topic_group(text) != 'hyundai_atlas_rollout': return _orig_score(item)
-    operational = DISCUSSION.search(text) or PILOT.search(text) or SCHEDULE.search(text) or PROCESS.search(text) or UNITS_CAPEX.search(text) or CAPITAL.search(text) or EXTERNAL_CUSTOMER.search(text)
+    factory_stage = _robot_factory_stage(text)
+    channel_stage = _robot_channel_stage(text)
+    if factory_stage in {'factory_baseline','factory_monitor'}:
+        return 0
+    if channel_stage in {'channel_baseline','channel_monitor'}:
+        return 0
+    operational = DISCUSSION.search(text) or PILOT.search(text) or SCHEDULE.search(text) or PROCESS.search(text) or UNITS_CAPEX.search(text) or CAPITAL.search(text) or EXTERNAL_CUSTOMER.search(text) or bool(factory_stage) or bool(channel_stage)
     if PRICE_ONLY.search(title) and not operational: return -20
     src = item.get('source') or ''; s = 18
     if base.NUMERIC.search(text): s += 3
@@ -357,10 +386,33 @@ def score(item: dict) -> int:
     if LOSS.search(text): s += 5
     if OWNERSHIP.search(text) or FUNDING.search(text): s += 4
     if EXTERNAL_CUSTOMER.search(text): s += 6
+    if factory_stage:
+        s += {
+            'factory_legal_entity': 15,
+            'factory_site': 15,
+            'factory_capex': 13,
+            'factory_construction': 16,
+            'factory_equipment': 16,
+            'factory_sop': 18,
+            'factory_capacity_change': 14,
+            'factory_reverse': 17,
+        }.get(factory_stage, 0)
+    if channel_stage == 'channel_launch':
+        s += 15
     return s
 
 
 def _subcat(text: str) -> str:
+    factory_stage = _robot_factory_stage(text)
+    if factory_stage == 'factory_legal_entity': return '미국 로봇 생산법인 설립·등록'
+    if factory_stage == 'factory_site': return '미국 로봇공장 부지·입지 확정'
+    if factory_stage == 'factory_capex': return '미국 로봇공장 투자액·설비투자 확정'
+    if factory_stage == 'factory_construction': return '미국 로봇공장 착공·인허가'
+    if factory_stage == 'factory_equipment': return '미국 로봇공장 장비반입·생산라인 구축'
+    if factory_stage == 'factory_sop': return '미국 로봇공장 양산개시·첫 생산'
+    if factory_stage == 'factory_capacity_change': return '미국 로봇공장 생산능력·일정 변경'
+    if factory_stage == 'factory_reverse': return '미국 로봇공장 일정·규모 후퇴'
+    if _robot_channel_stage(text) == 'channel_launch': return 'Atlas 판매·RaaS·금융채널 상용화'
     if _rmac_stage(text) == 'expansion_completed': return 'RMAC 10배 확장 완료·가동'
     if _rmac_stage(text) == 'external_industry_pilot': return 'RMAC 타 산업 고객 실증·데이터 확장'
     if _rmac_stage(text) == 'training_operational': return 'RMAC 제조현장 훈련·데이터 플라이휠'
@@ -396,6 +448,15 @@ def meaning(cat: str) -> str:
         '프리IPO 주관사·10억달러+ 자금조달':'보스턴다이내믹스가 단순 상장 기대에서 실제 프리IPO 자금조달 준비로 이동하는 신호입니다. JP모건·골드만삭스 주관사 선정 보도와 최소 10억달러 이상 조달 계획이 사실이면 Atlas 양산·연구개발 재원을 외부 기관자금으로 보강하고 시장 기반 기업가치 검증을 받는 단계입니다. 실제 투자자 모집·확정 밸류에이션·신주 발행조건·희석률을 추적합니다.',
         '프리IPO 주관사 선정':'상장 전 자금유치 준비가 글로벌 투자은행 선정 단계로 이동하는 신호입니다. 실제 투자자 마케팅 개시, 투자확약, 밸류에이션과 신주·구주 구조를 확인합니다.',
         '프리IPO 자금조달':'Atlas 양산·연구개발 자금을 외부 기관투자자로 조달하려는 단계입니다. 희망 조달액과 실제 납입액, 주당 가격과 지분 희석을 분리해 추적합니다.',
+        '미국 로봇 생산법인 설립·등록':'연 3만대 생산능력 계획이 실제 법인·사업주체로 내려오는 첫 실행 신호입니다. 법인명, 지분구조, 출자금, 생산품목과 Boston Dynamics·현대차그룹 간 역할을 확인합니다.',
+        '미국 로봇공장 부지·입지 확정':'미국 로봇공장 계획이 특정 부지·토지계약으로 구체화되는 단계입니다. 면적, 매입·임대금액, 전력·물류·인허가와 착공 일정을 추적합니다.',
+        '미국 로봇공장 투자액·설비투자 확정':'연 3만대 목표가 실제 투자액과 생산설비 예산으로 바뀌는 단계입니다. 건물·라인·장비·자동화·검사·안전설비 지출과 자금조달 주체를 분리합니다.',
+        '미국 로봇공장 착공·인허가':'계획·부지에서 실제 건설 단계로 넘어가는 핵심 시간표 신호입니다. 착공일, 준공 목표, 건축·환경 인허가와 생산라인 장비 반입 일정을 확인합니다.',
+        '미국 로봇공장 장비반입·생산라인 구축':'공장 외형보다 실제 생산 가능한 라인이 만들어지는 단계입니다. 조립·검사·캘리브레이션 장비, 액추에이터 공급, 초기 수율과 시험생산 시점을 확인합니다.',
+        '미국 로봇공장 양산개시·첫 생산':'연 3만대 생산능력 계획이 실제 생산·출하로 전환되는 가장 중요한 매출 시간표 신호입니다. 첫 생산대수, 주간·월간 생산량, 수율, 출하 고객과 평균판매단가를 확인합니다.',
+        '미국 로봇공장 생산능력·일정 변경':'기존 연 3만대·2028년 기준선이 상향·하향되거나 일정이 바뀌는 신호입니다. 생산능력 증감과 2만5천대 내부배치 계획, 외부 고객 물량의 관계를 다시 계산합니다.',
+        '미국 로봇공장 일정·규모 후퇴':'공장·법인·생산능력 계획의 지연·축소는 Atlas 상용화 시간표와 부품사 수요를 함께 늦추는 역방향 신호입니다. 원인이 수요·기술·자금·인허가 중 어디인지 분리합니다.',
+        'Atlas 판매·RaaS·금융채널 상용화':'Atlas가 내부 배치·일회성 장비판매를 넘어 딜러·현대캐피탈·구독·리스·RaaS로 외부 고객에게 판매되는 단계입니다. 월 요금·계약기간·유지보수·소프트웨어·원격관제 포함 범위와 반복매출을 확인합니다.',
         'RMAC 제조현장 훈련·데이터 플라이휠':'RMAC이 실제 제조환경을 재현해 Atlas의 자동차 부품 물류·시퀀싱을 훈련하고 현장 데이터를 축적하는 단계입니다. 2028년 HMGMA 배치 전 검증센터가 실제 가동되는 것이 핵심이며, 이후 조립 공정·타 산업 고객 데이터로 확장되는지 추적합니다.',
         '기업공개 절차 진전':'시장 기대나 관계자 발언을 넘어 실제 기업공개 절차가 시작되는 신호입니다. S-1·SEC 제출, 주관사 선정, 공모 구조와 일정, 신주·구주매출을 확인합니다.',
         '기업공개·기업가치 시간표':'보스턴다이내믹스의 가치 현실화 시점이 실제 현장 배치·외부 고객·수익성 검증과 연결되는 신호입니다. 기업공개 일정만 보지 않고 2027년 외부 고객, 2028년 HMGMA 배치, 연 3만대 생산능력의 실제 출하 전환을 함께 추적합니다.',
@@ -420,6 +481,15 @@ def risk(cat: str) -> str:
         '프리IPO 주관사·10억달러+ 자금조달':'현재 핵심 내용은 투자은행 업계 보도이며 Boston Dynamics·현대차그룹·JP모건·골드만삭스의 공식 발표가 아닙니다. 최소 10억달러는 예상 조달 규모이지 확정 납입액이 아니며, 프리IPO는 S-1 제출이나 본상장 개시와도 다릅니다. Atlas 양산·손실 개선이 늦어지면 밸류에이션이 낮아지거나 추가 자금조달이 필요할 수 있습니다.',
         '프리IPO 주관사 선정':'주관사 선정 보도는 투자유치 완료나 본상장 주관사 최종 확정과 다릅니다. 계약 체결·투자자 모집·확정 밸류에이션을 확인해야 합니다.',
         '프리IPO 자금조달':'희망 조달액과 실제 납입액은 다릅니다. 신주 비중이 크면 기존 주주 지분이 희석되고 대규모 적자가 지속되면 후속 증자가 필요할 수 있습니다.',
+        '미국 로봇 생산법인 설립·등록':'법인 설립은 공장 착공이나 수주가 아닙니다. 출자금·부지·투자액·장비발주가 뒤따르지 않으면 법적 껍데기만 먼저 만들어질 수 있습니다.',
+        '미국 로봇공장 부지·입지 확정':'부지 확보 후에도 전력·건축·환경 인허가와 장비 납기가 밀리면 생산 개시는 지연될 수 있습니다. 토지계약과 실제 착공을 분리합니다.',
+        '미국 로봇공장 투자액·설비투자 확정':'대규모 선행투자 뒤 Atlas 수율·내부배치·외부수요가 늦어지면 감가상각과 저가동률이 총자산이익률을 압박할 수 있습니다.',
+        '미국 로봇공장 착공·인허가':'착공은 양산이 아닙니다. 공사 지연·장비 리드타임·검수·시험생산이 2028년 목표를 밀 수 있어 준공과 SOP를 별도로 확인합니다.',
+        '미국 로봇공장 장비반입·생산라인 구축':'장비 반입 뒤 초기 수율·캘리브레이션·검사시간·핵심 액추에이터 공급이 병목이 될 수 있습니다. 명목 연 3만대와 실제 월 생산량을 분리합니다.',
+        '미국 로봇공장 양산개시·첫 생산':'첫 생산은 안정 양산과 다릅니다. 초기 수율·재작업·부품 불량·현장 반품이 높으면 생산량 확대가 지연될 수 있습니다.',
+        '미국 로봇공장 생산능력·일정 변경':'생산능력 상향이 주문 상향과 같지 않습니다. 내부 2만5천대 배치와 외부 고객 주문이 따라오지 않으면 과잉설비 위험이 커집니다.',
+        '미국 로봇공장 일정·규모 후퇴':'가장 현실적인 실패 경로는 Atlas 작업 신뢰성·원가 또는 수요 검증이 늦어 공장 일정과 공급망 발주가 함께 이연되는 경우입니다.',
+        'Atlas 판매·RaaS·금융채널 상용화':'구독·리스는 초기 진입장벽을 낮추지만 제조사가 잔존가치·정비·가동률 위험을 더 오래 부담할 수 있습니다. 계약당 월수익, 유지보수비, 회수기간과 해지율을 확인합니다.',
         'RMAC 10배 확장 완료·가동':'시설 면적 확대가 곧 Atlas 출하량 증가를 뜻하지는 않습니다. 훈련 슬롯·로봇 대수·작업 성공률과 HMGMA 실제 배치가 따라오지 않으면 설비 확대가 선행비용으로 남을 수 있습니다.',
         'RMAC 타 산업 고객 실증·데이터 확장':'타 산업 데이터 수집이 상용 판매로 연결되지 않을 수 있습니다. 파일럿 반복 여부, 고객별 작업 성공률·가동률·유지보수 비용과 실제 계약을 확인합니다.',
         'RMAC 제조현장 훈련·데이터 플라이휠':'훈련센터 개소와 실제 생산라인 상시 배치는 다릅니다. 먼저 봐야 할 실패 경로는 작업 성공률·사이클타임·안전 검증이 기준을 못 맞춰 2028년 현장 배치가 늦어지는 경우이며, RMAC 확대가 실제 배치대수와 출하로 연결되는지 확인합니다.',
@@ -443,7 +513,11 @@ def verification(item: dict, group: str, text: str) -> str:
     src = item.get('source') or ''
     if PREIPO.search(text): return '매일경제 투자은행 업계 단독 보도 단계 · Boston Dynamics/현대차그룹/JP모건/골드만삭스 공식 확인 전'
     if src in {'Hyundai Motor Manufacturing Czech','HMMC','AutoSAP','Sdružení automobilového průmyslu'}: return '체코 생산법인 책임자 원인터뷰·산업협회 1차자료 · 현대차그룹 공식 일정 교차확인'
-    if src in {'현대자동차','Hyundai Motor','현대자동차그룹','Hyundai Motor Group'}: return '현대차그룹 공식자료 · 공장별 실행 단계와 기업공개 일정 별도 확인'
+    if src in {'현대자동차','Hyundai Motor','현대자동차그룹','Hyundai Motor Group'}:
+        if _robot_factory_stage(text): return '현대차그룹 공식자료 · 연 3만대 생산계획과 법인·부지·투자·착공·장비·양산 실행단계 분리'
+        if _robot_channel_stage(text): return '현대차그룹 공식자료 · RaaS/딜러/금융 검토와 실제 출시·계약 단계 분리'
+        return '현대차그룹 공식자료 · 공장별 실행 단계와 기업공개 일정 별도 확인'
+    if src in {'Hyundai Capital','현대캐피탈'}: return '현대캐피탈 공식자료 · 로봇 금융상품 실제 출시·조건·고객계약 확인'
     if src == 'Boston Dynamics' and _is_rmac_operational(text): return '보스턴다이내믹스 공식자료 · RMAC 실제 훈련·검증 단계, 25,000대 배치·연 30,000대 생산능력은 현대차그룹 공식 계획과 구분'
     if src == 'Boston Dynamics': return '보스턴다이내믹스 공식자료 · 현대차그룹 배치·소유구조 일정 교차확인'
     if src in {'U.S. Securities and Exchange Commission','SEC'}: return '미국 증권거래위원회 공식 상장서류'
@@ -457,6 +531,17 @@ def verification(item: dict, group: str, text: str) -> str:
 def clean_title(title: str, source: str) -> str:
     t = _orig_clean_title(title, source)
     if PREIPO.search(t) and PREIPO_UNDERWRITER.search(t): return '보스턴다이내믹스, 프리IPO 추진…JP모건·골드만삭스 주관사 선정 보도'
+    fs = _robot_factory_stage(f"{t} {source}")
+    if fs == 'factory_legal_entity': return '현대차그룹, 미국 로봇 생산법인 설립·등록 진전'
+    if fs == 'factory_site': return '현대차그룹, 미국 로봇공장 부지·입지 확정'
+    if fs == 'factory_capex': return '현대차그룹, 미국 로봇공장 투자액·설비투자 확정'
+    if fs == 'factory_construction': return '현대차그룹, 미국 로봇공장 착공·인허가 진전'
+    if fs == 'factory_equipment': return '현대차그룹, 미국 로봇공장 장비반입·생산라인 구축'
+    if fs == 'factory_sop': return '현대차그룹, 미국 로봇공장 양산개시·첫 생산'
+    if fs == 'factory_capacity_change': return '현대차그룹, 미국 로봇공장 생산능력·일정 변경'
+    if fs == 'factory_reverse': return '현대차그룹, 미국 로봇공장 일정·규모 후퇴'
+    if _robot_channel_stage(f"{t} {source}") == 'channel_launch':
+        return '현대차그룹, Atlas 판매·RaaS·금융채널 상용화'
     if RMAC.search(t) or re.search(r'Metaplant Application Center|제조 현장 훈련|manufacturing tasks', t, re.I):
         return '보스턴다이내믹스, RMAC서 Atlas 제조 현장 훈련 본격화'
     if BOSTON.search(t):
@@ -475,6 +560,12 @@ def _same_event(a: dict, b: dict) -> bool:
     if a.get('group') != 'hyundai_atlas_rollout' or b.get('group') != 'hyundai_atlas_rollout': return False
     ta = f"{a.get('title','')} {a.get('description','')}"; tb = f"{b.get('title','')} {b.get('description','')}"
     if PREIPO.search(ta) and PREIPO.search(tb): return True
+    factory_a, factory_b = _robot_factory_stage(ta), _robot_factory_stage(tb)
+    if factory_a or factory_b:
+        return bool(factory_a and factory_b and factory_a == factory_b)
+    channel_a, channel_b = _robot_channel_stage(ta), _robot_channel_stage(tb)
+    if channel_a or channel_b:
+        return bool(channel_a and channel_b and channel_a == channel_b)
     rmac_a, rmac_b = _rmac_stage(ta), _rmac_stage(tb)
     if rmac_a and rmac_b:
         return rmac_a == rmac_b
