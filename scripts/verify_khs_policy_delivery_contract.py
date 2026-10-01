@@ -1,3 +1,4 @@
+# retry Upper C-band alert dispatch after Federal Register API fix
 # one-shot Upper C-band alert dispatch verification
 #!/usr/bin/env python3
 """Contract tests for KHS policy Telegram delivery quality.
