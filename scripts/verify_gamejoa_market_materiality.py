@@ -67,6 +67,20 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_orders_and_selling_prices_have_direct_earnings_evidence_in_any_industry(self):
+        for title, body in (
+            ("신산업 기업, 공급계약 체결", "신산업 기업은 해외 고객과 제품 공급계약을 체결했다고 밝혔다."),
+            ("부품업체, 판가 인상", "부품업체는 제품 판가를 12% 인상했다고 밝혔다."),
+        ):
+            audit = materiality.assess(title, body)
+            self.assertEqual(audit["disposition"], "keep")
+            self.assertEqual(audit["priority"], 3)
+            self.assertIn("earnings", audit["axes"])
+            self.assertNotIn("flows", audit["axes"])
+        audit = materiality.assess("신산업 기업, 공급계약 협상", "신산업 기업은 해외 고객과 공급계약을 협상 중이다.")
+        self.assertEqual(audit["disposition"], "keep")
+        self.assertEqual(audit["evidence"][0]["stage"], "early_signal")
+
     def test_tactical_weapon_news_needs_economic_transmission_not_range_or_stock(self):
         title = "우크라, 자체 개발 탄도미사일 첫 실전 투입…러시아 목표물 타격"
         body = "우크라이나가 자체 개발한 탄도미사일을 처음으로 실전에 투입했다. 생산 능력 부족으로 미사일 공급이 지연되고 있다. 러시아 진지를 공격했다."

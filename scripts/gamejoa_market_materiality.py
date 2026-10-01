@@ -109,6 +109,12 @@ def core_focus_aligned(title: str, core: str) -> bool:
 # Each rule needs a subject and a change in the same source-authored sentence.
 # Quantities, counterparties and stages are evidence, not estimates of price impact.
 RULES = (
+    ("commercial_order", ("earnings", "timeline"),
+     r"수주|발주|공급계약|공급\s*계약|납품\s*계약|purchase order|supply contract|procurement contract",
+     r"체결|확정|수주|발주|갱신|취소|파기|해지|협상|추진|서명|sign|secure|award|agree|cancel|negotiat"),
+    ("selling_price_or_cost", ("earnings",),
+     r"판매가격|판매\s*가격|판가|단가|원가|평균판매가격|\basp\b|selling price|unit price|input cost",
+     r"인상|인하|상승|하락|급등|급락|증가|감소|전가|협상|상향|하향|rais|cut|rise|fall|increas|decreas|negotiat"),
     ("earnings_or_guidance", ("earnings",),
      r"매출|영업이익|순이익|마진|실적|가이던스|출하|판매량|시장점유율|revenue|earnings|profit|guidance|shipments",
      r"증가|감소|상승|하락|상회|하회|상향|하향|달성|기록|집계|발표|전망|예상|rise|fall|grow|cut|rais|report|forecast|beat|miss"),
