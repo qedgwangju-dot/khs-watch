@@ -218,24 +218,77 @@ jobs:
             git checkout -- data/apple_memory_procurement_watch_state.json 2>/dev/null || true
           fi
 
-          git add data/memory_spot_cycle_watch_state.json
-          if git diff --cached --quiet; then
-            echo "Memory watch state unchanged"
-          else
-            git commit -m "Update memory spot cycle watch state"
-            pushed=false
-            for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then
-                pushed=true
-                break
-              fi
-              git rebase --abort 2>/dev/null || true
-              sleep $((attempt * 3))
-            done
-            if [ "$pushed" != "true" ]; then
-              echo "Critical memory delivery state checkpoint failed"
-              exit 1
+          if [ -f data/memory_spot_cycle_watch_state.json ]; then
+            cp data/memory_spot_cycle_watch_state.json /tmp/memory_spot_cycle_watch_state.local.json
+          fi
+
+          # Memory delivery state is critical. Rebase-based retries can conflict when
+          # another watcher updates the same JSON between Telegram ACK and checkpoint.
+          # Re-read latest origin/main and semantically merge the state on every retry.
+          pushed=false
+          for attempt in 1 2 3 4; do
+            git rebase --abort 2>/dev/null || true
+            git fetch origin main
+            git reset --hard origin/main
+
+            if [ -f /tmp/memory_spot_cycle_watch_state.local.json ]; then
+              python - <<'PY'
+import json
+import pathlib
+
+remote_path = pathlib.Path("data/memory_spot_cycle_watch_state.json")
+local_path = pathlib.Path("/tmp/memory_spot_cycle_watch_state.local.json")
+remote = json.loads(remote_path.read_text(encoding="utf-8")) if remote_path.exists() else {}
+local = json.loads(local_path.read_text(encoding="utf-8"))
+
+def ts(obj, key):
+    return str(obj.get(key) or "")
+
+local_newer = ts(local, "updated_at_kst") >= ts(remote, "updated_at_kst")
+newer = local if local_newer else remote
+older = remote if local_newer else local
+
+merged = dict(older)
+merged.update(newer)
+
+# Never lose dedupe history from a concurrent run.
+seen = {}
+seen.update(remote.get("seen") or {})
+seen.update(local.get("seen") or {})
+merged["seen"] = seen
+
+# Preserve the latest confirmed Telegram receipt independently of scan timestamp.
+def receipt_time(obj):
+    rec = obj.get("delivery_receipt") or {}
+    return str(rec.get("confirmed_at_kst") or obj.get("last_successful_delivery_kst") or "")
+
+delivery = local if receipt_time(local) >= receipt_time(remote) else remote
+for key in ("last_successful_delivery_kst", "telegram_message_ids", "telegram_message_id", "bot_username", "delivery_receipt"):
+    if delivery.get(key) is not None:
+        merged[key] = delivery[key]
+
+# Keep the later scan timestamp visible.
+merged["updated_at_kst"] = max(ts(local, "updated_at_kst"), ts(remote, "updated_at_kst"))
+remote_path.write_text(json.dumps(merged, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+PY
             fi
+
+            git add data/memory_spot_cycle_watch_state.json
+            if git diff --cached --quiet; then
+              echo "Memory watch state already checkpointed by concurrent run"
+              pushed=true
+              break
+            fi
+            git commit -m "Update memory spot cycle watch state"
+            if git push; then
+              pushed=true
+              break
+            fi
+            sleep $((attempt * 3))
+          done
+          if [ "$pushed" != "true" ]; then
+            echo "Critical memory delivery state checkpoint failed"
+            exit 1
           fi
 
           # Apple no-alert state is best-effort. If another run already advanced
