@@ -222,6 +222,54 @@ class SourceIsolationChecks(unittest.TestCase):
         with patch.dict(os.environ, {"RADAR_RUN_MODE": "preopen"}):
             self.assertFalse(radar.is_stale_intraday_market_report(snapshot, NOW))
 
+    def test_generated_sector_is_not_a_source_market_event(self):
+        cases = (
+            ("오아시스, 90년대 미공개 녹음본 28억 경매에 법적 대응…출품 취소",
+             "영국 밴드 오아시스는 미공개 녹음 테이프 경매에 법적 대응했다. 음원 지식재산권(IP)은 밴드가 보유하고 있다."),
+            ('프락시스 CEO "서울 모처에 디지털국가 대사관 짓겠다"',
+             "프락시스 CEO는 서울에 공동체 공간을 만들겠다고 말했다. 과거 펀드로부터 투자를 받았으며 정부와의 협약은 없는 단계다."),
+        )
+        for title, body in cases:
+            alert = {
+                "source_title": title, "source_abstract": body, "source_body": body,
+                "korean_business_news": True, "body_verified": True,
+                "sectors": ["AI/데이터센터"], "policy_plain_summary": "반도체 실적과 수급을 바꿉니다.",
+            }
+            self.assertFalse(radar.stock_market_channels(alert))
+            self.assertFalse(radar.has_stock_market_link(alert), title)
+            self.assertFalse(radar.quality_display_alerts([alert], 1), title)
+
+    def test_source_market_event_keeps_broad_industries_and_private_investment(self):
+        cases = (
+            ("스타트업, 800억원 투자 유치", "국내 바이오 스타트업이 연구개발을 위해 800억원 투자를 유치했다고 밝혔다."),
+            ("지자체, 앵커기업 투자보조금 조례 제정", "시는 기업의 생산시설 투자를 유치하기 위한 조례를 제정했다."),
+            ("자동차 부품사, 해외 공장 법인 설립", "자동차 부품사는 현지 생산과 고객 지원을 위한 신규 법인을 설립했다."),
+            ("양식장 폭염에 물고기 집단 폐사", "고수온으로 양식장의 생산 피해가 늘며 수산물 공급 차질이 우려된다."),
+            ("제약사, 신약 임상 3상 승인", "제약사는 임상 3상 시험을 승인받았으며 의약품 상용화를 추진한다."),
+            ("최태원 회장, SK하이닉스 주식 3620주 매수", "최태원 회장은 SK하이닉스 주식을 장내 매수했다고 공시했다."),
+            ("해운사 파업에 항만 공급 차질", "해운사 노동자 파업으로 항만 운송과 공급 차질이 확대됐다."),
+            ("전력장비 업체, AI 냉각 신제품 출시", "전력장비 업체는 데이터센터 고객에게 공급할 냉각 제품을 출시했다."),
+        )
+        for title, body in cases:
+            alert = {"source_title": title, "source_body": body, "korean_business_news": True, "body_verified": True}
+            self.assertTrue(radar.has_stock_market_link(alert), title)
+
+    def test_photo_credit_and_obfuscated_email_are_not_core_facts(self):
+        title = "기업, 신규 공장 투자계획 발표"
+        body = (
+            "[서울=뉴시스] 기업 공장. (사진 = 기업 제공) [email protected] *재판매 및 DB 금지 "
+            "[촬영 박수현] (서울=연합뉴스) 박수현 기자 = "
+            "2026.10.1 willow@yna.co.kr 기업은 신규 공장에 1000억원을 투자한다고 발표했다."
+        )
+        core = radar.detailed_article_core(title, body)
+        self.assertIn("1000억원", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        for garbage in ("email protected", "촬영", "DB 금지", "@", "2026.10.1"):
+            self.assertNotIn(garbage, core)
+        self.assertTrue(radar.core_has_ui_garbage("[email protected] 기업이 투자한다고 밝혔다."))
+        self.assertTrue(radar.core_has_ui_garbage("[촬영 박수현] 기업이 투자한다고 밝혔다."))
+        self.assertTrue(radar.core_has_ui_garbage("willow@yna.co.kr 기업이 투자한다고 밝혔다."))
+
     def test_workflow_persists_attempts_separately_from_delivery(self):
         workflow = (queue.ROOT / ".github/workflows/gamejoa-preopen-news-radar.yml").read_text(encoding="utf-8")
         self.assertIn('GAMEJOA_KOREAN_BUSINESS_DETAIL_LIMIT: "160"', workflow)
@@ -337,8 +385,11 @@ def audit_saved_report(path: Path) -> None:
         revised = radar.verified_alert_core({**alert, "telegram_core_fact": draft}, title)
         assert radar.core_sentence_is_complete(revised), f"No complete recovered fact: {title}"
         assert radar.compact_title_summary_aligned(title, revised), f"Recovered title/core mismatch: {title}"
-        assert "이미지 생성" not in revised, f"Image credit leaked into core: {title}"
-        audited.append({"title": title, "previous_core": alert.get("telegram_core_fact"), "recovered_core": revised})
+        assert not radar.core_has_ui_garbage(revised) and "이미지 생성" not in revised, f"Publisher credit leaked into core: {title}"
+        audited.append({
+            "title": title, "previous_core": alert.get("telegram_core_fact"), "recovered_core": revised,
+            "source_market_event": radar.has_stock_market_link(alert),
+        })
     queue.save_json(queue.ROOT / "out/gamejoa_saved_report_core_audit.json", {"status": "passed", "artifact_zip": str(path), "audited": audited})
     print(json.dumps(audited, ensure_ascii=False))
 

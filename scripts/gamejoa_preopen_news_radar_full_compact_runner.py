@@ -1582,6 +1582,11 @@ ARTICLE_SUMMARY_NOISE_PATTERNS = [
     r"(?:fn\s+)?공유(?:\s+공유하기)?(?:\s+글자크기){1,2}\s+설정\s+"
     r"프린트(?:\s+구독){1,2}(?:\s+증권(?:일반)?){0,2}",
     r"페이스북\s+X\(트위터\)\s+메일\s+URL\s+복사\s+작게\s+보통\s+크게",
+    r"\[email\s+protected\]",
+    r"\[(?:촬영|사진|자료사진|제공)\s+[^\]\r\n]{1,60}\]",
+    r"\*?\s*재판매\s*및\s*DB\s*금지\]?",
+    r"\b\d{4}[./]\d{1,2}[./]\d{1,2}\.?(?=\s+[A-Za-z0-9._%+-]+@)",
+    r"(?<![A-Za-z0-9._%+-])[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}",
 ]
 ARTICLE_UI_BOILERPLATE_TERMS = (
     "공유하기", "글자크기 설정", "프린트 구독", "페이스북 X(트위터)",
@@ -1672,7 +1677,7 @@ def clean_article_summary_text(text: str) -> str:
     cleaned = re.sub(r"\(\s*(?:AI\s*)?(?:이미지\s*생성|자료사진)\s*\)", " ", cleaned, flags=re.I)
     cleaned = re.sub(r"^\s*/사진\s*=[^\r\n]+[\r\n]+", "", cleaned)
     cleaned = re.sub(r"\[(?:앵커|기자|리포터)\]\s*(?:네[,，]\s*)?", " ", cleaned)
-    cleaned = re.sub(r"^[\s,;:>|\]·•.\-]+", "", cleaned)
+    cleaned = re.sub(r"^[\s,;:>|\]·•.*\-]+", "", cleaned)
     return re.sub(r"\s+", " ", cleaned).strip()
 
 
@@ -7091,6 +7096,70 @@ STOCK_MARKET_REQUIRED_CONTEXT = {
     ),
 }
 
+# Labels assigned by a classifier are not evidence. These pairs require an
+# event in the source headline and matching market/business facts in the body.
+SOURCE_BUSINESS_MARKET_EVENTS = (
+    (
+        ("주식", "증시", "코스피", "코스닥", "주가", "거래대금", "레버리지", "ipo", "상장", "순매수", "순매도", "etf", "etn"),
+        ("주식", "증시", "코스피", "코스닥", "주가", "거래대금", "etf", "etn", "상장", "투자자", "순매수", "순매도"),
+    ),
+    (
+        ("펀드", "투자유치", "투자 유치", "출자", "자금조달", "회사채", "신용등급", "주주환원", "vc", "벤처", "스타트업", "자본지출", "최대주주", "cb 전환"),
+        ("투자", "출자", "조달", "회사채", "신용등급", "주주환원", "배당", "자사주", "주식", "지분", "증설"),
+    ),
+    (
+        ("인수", "합병", "지분 매각", "지분매각", "공장 매각", "공장매각", "법인 설립", "법인설립"),
+        ("기업", "회사", "법인", "사업", "지분", "공장", "생산", "수주", "인수", "합병", "조달"),
+    ),
+    (
+        ("공장", "생산능력", "생산시설", "생산라인", "증설", "착공", "가동", "공급계약", "상용화", "양산", "장비 개발", "기술 공개", "기술공개"),
+        ("생산", "공장", "공급", "수주", "설비", "장비", "출하", "고객", "상용화", "양산", "제품"),
+    ),
+    (
+        ("투자", "판매", "수출", "출하", "점유율", "가격", "판가", "마진", "흑자", "적자", "영업익", "이익률"),
+        ("기업", "회사", "산업", "시장", "생산", "제품", "매출", "실적", "공급", "수요", "스타트업", "벤처", "시설", "설비", "반도체", "영업이익", "이익률", "협력"),
+    ),
+    (
+        ("회동", "만났다", "협력", "협약", "공동개발", "공동 개발", "신사업", "신제품"),
+        ("공급", "고객", "공장", "설비", "상용화", "양산", "기술", "제조", "제품", "투자계약", "생산", "판매", "반도체", "메모리", "hbm", "파운드리", "인프라", "로봇"),
+    ),
+    (
+        ("보조금", "지원금", "보증", "정책자금", "조례", "규제", "예탁금", "관세", "수출통제", "증시경보"),
+        ("기업", "산업", "투자", "생산", "수출", "수입", "통관", "금융", "증권", "주식", "장비", "인허가"),
+    ),
+    (
+        ("폭염", "폭우", "홍수", "태풍", "정전", "폐사", "가뭄", "산불"),
+        ("전력", "변압기", "과부하", "양식", "농작물", "생산", "공급", "물류", "공장", "항만", "철도", "운항"),
+    ),
+    (
+        ("파업", "노조", "성과급", "임단협", "감원", "감축", "임금"),
+        ("기업", "회사", "생산", "공장", "직원", "노동자", "항만", "운송", "수익", "비용"),
+    ),
+    (
+        ("반도체", "메모리", "칩", "ddr", "hbm", "hbf", "cxl", "엑시노스", "gpu", "ai", "로봇", "임상", "의약품", "데이터센터", "핵심광물"),
+        ("양산", "상용화", "인증", "승인", "공급", "수요", "실적", "수주", "계약", "생산", "가격", "투자", "품목허가", "메모리", "반도체", "hbm", "도입", "제련", "금속"),
+    ),
+)
+SOURCE_BUSINESS_EVENT_ACTIONS = STOCK_MARKET_CHANGE_TERMS + (
+    "설립", "착공", "가동", "도입", "출시", "공개", "개발", "상용화", "양산", "승인", "허가",
+    "매수", "매입", "매각", "인수", "합병", "출자", "유치", "지급", "지출", "조성", "출범",
+    "정전", "폐사", "과부하", "피해", "둔화", "회복", "전망", "협력", "회동", "맞손",
+    "논의", "상장", "구축", "전환", "돌파", "건설", "계획", "시험", "테스트", "나선", "나섰",
+)
+
+
+def has_source_business_market_event(alert: dict) -> bool:
+    title = base.norm(str(alert.get("source_title") or alert.get("original_news") or ""))
+    body = base.norm(str(alert.get("source_body") or alert.get("source_abstract") or ""))
+    if not title or not body or not has_term(f"{title} {body}", SOURCE_BUSINESS_EVENT_ACTIONS):
+        return False
+    if insider_purchase_signal(f"{title} {body}"):
+        return True
+    return any(
+        has_term(title, subjects) and has_term(body, context)
+        for subjects, context in SOURCE_BUSINESS_MARKET_EVENTS
+    )
+
 
 def stock_market_channels(alert: dict) -> list[str]:
     """Find a market subject and change in source text, never generated commentary."""
@@ -7126,11 +7195,7 @@ def has_direct_market_path(text: str, alert: dict) -> bool:
     if alert.get("korean_business_news") and (
         alert.get("body_verified") or alert.get("title_fact_verified")
     ):
-        sectors = [
-            str(value) for value in alert.get("sectors") or []
-            if str(value) not in GENERIC_SECTOR_TERMS
-        ]
-        return bool(alert.get("source_title") and sectors)
+        return has_source_business_market_event(alert)
     if federal_register_profile(alert):
         # The verified UAE EAR rule changes the licensing timetable for
         # advanced-computing and dual-use exports; Korean exposure remains
@@ -8212,6 +8277,9 @@ CORE_UI_GARBAGE_PATTERNS = (
     r"무단\s*전재(?:-?재배포)?\s*금지",
     r"AI\s*학습\s*및\s*활용\s*금지",
     r"저작권자.{0,40}무단\s*전재",
+    r"\[email\s+protected\]",
+    r"\[(?:촬영|사진|자료사진|제공)\s+[^\]\r\n]{1,60}\]",
+    r"(?<![A-Za-z0-9._%+-])[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}",
 )
 
 
@@ -8225,7 +8293,9 @@ def core_has_ui_garbage(value: object) -> bool:
 
 def strip_core_ui_garbage(value: object) -> str:
     """Remove known publisher chrome before sentence ranking, never before direct output."""
-    text = html.unescape(str(value or ""))
+    # Remove bracketed photo credits before the byline pattern can consume
+    # their closing bracket next to a concatenated wire-service dateline.
+    text = clean_article_summary_text(value)
     for pattern in CORE_UI_GARBAGE_PATTERNS:
         text = re.sub(pattern, " ", text, flags=re.IGNORECASE)
     return re.sub(r"\s+", " ", text).strip()
