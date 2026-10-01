@@ -2,9 +2,9 @@
   "failure_streaks": {
     "domestic_stablecoin|fsc.go.kr": {
       "lane": "domestic_stablecoin",
-      "last_seen_kst": "2026-10-01T13:10:46+09:00",
+      "last_seen_kst": "2026-10-01T15:03:24+09:00",
       "source": "Financial Services Commission stablecoin releases",
-      "streak": 1
+      "streak": 2
     }
   },
   "seen": {
@@ -25,6 +25,15 @@
       "logical_failure_count": 1,
       "sources": [
         "Financial Services Commission stablecoin explanations",
+        "Financial Services Commission digital asset releases"
+      ]
+    },
+    "04017ac00a01e43c": {
+      "failure_count": 2,
+      "first_seen_kst": "2026-10-01T15:03:24+09:00",
+      "logical_failure_count": 1,
+      "sources": [
+        "Financial Services Commission stablecoin releases",
         "Financial Services Commission digital asset releases"
       ]
     },
