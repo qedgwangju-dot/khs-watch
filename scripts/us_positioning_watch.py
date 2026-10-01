@@ -675,6 +675,54 @@ for name, fn in [("CFTC", parse_cftc), ("Cboe", parse_cboe), ("SOX", parse_sox)]
 required_kinds = {"cot", "options", "sox"}
 present_kinds = {x.get("kind") for x in results}
 
+def validate_source_freshness(cftc_obj, cboe_obj, sox_obj):
+    """Reject stale cached/report pages before they can advance Telegram state."""
+    today = datetime.now(timezone(timedelta(hours=9))).date()
+    problems = []
+
+    def check(label, raw, max_days, formats):
+        if not raw:
+            problems.append(f"{label} 날짜 없음")
+            return
+        parsed = None
+        text = str(raw).strip()
+        for fmt in formats:
+            try:
+                parsed = datetime.strptime(text, fmt).date()
+                break
+            except ValueError:
+                continue
+        if parsed is None:
+            problems.append(f"{label} 날짜 파싱 실패: {text}")
+            return
+        age = (today - parsed).days
+        if age < 0 or age > max_days:
+            problems.append(f"{label} 자료 지연: {text} ({age}일)")
+
+    if cftc_obj:
+        check(
+            "CFTC",
+            cftc_obj.get("period"),
+            10,
+            ("%B %d, %Y", "%Y-%m-%d"),
+        )
+    if cboe_obj:
+        check(
+            "Cboe",
+            cboe_obj.get("period"),
+            4,
+            ("%A, %B %d, %Y", "%B %d, %Y", "%m/%d/%Y"),
+        )
+    if sox_obj:
+        check(
+            "SOX",
+            sox_obj.get("period"),
+            4,
+            ("%m/%d/%Y", "%Y-%m-%d", "%B %d, %Y"),
+        )
+    return problems
+
+
 def validate_critical_sources(cftc_obj, cboe_obj, sox_obj):
     problems = []
 
@@ -748,10 +796,19 @@ sox_for_gate = next((x for x in results if x.get("kind") == "sox"), None)
 validation_problems = validate_critical_sources(
     cftc_for_gate, cboe_for_gate, sox_for_gate
 )
+freshness_problems = validate_source_freshness(
+    cftc_for_gate, cboe_for_gate, sox_for_gate
+)
 if validation_problems:
     errors.extend("검산: " + p for p in validation_problems)
+if freshness_problems:
+    errors.extend("신선도: " + p for p in freshness_problems)
 
-quality_gate_ok = required_kinds.issubset(present_kinds) and not validation_problems
+quality_gate_ok = (
+    required_kinds.issubset(present_kinds)
+    and not validation_problems
+    and not freshness_problems
+)
 
 updates = []
 for x in results:
@@ -772,6 +829,7 @@ STATUS.write_text(
             f"- parsed sources: {len(results)}",
             f"- updates: {len(updates)}",
             f"- quality_gate_ok: {quality_gate_ok}",
+            f"- freshness_gate_ok: {not freshness_problems}",
             *[
                 f"- {x['source']} {x['period']} {x['fingerprint'][:12]} metrics={json.dumps(x['metrics'], ensure_ascii=False)}"
                 for x in results
