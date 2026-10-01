@@ -456,12 +456,16 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         and nq_short_cover
     )
 
-    treasury_evidence = bool(watcher.squeeze_evidence(snapshot, previous))
+    treasury_evidence_lines = watcher.squeeze_evidence(snapshot, previous)
+    treasury_10y_evidence = any(
+        ("TY/ZN" in line) or line.startswith("ZN ")
+        for line in treasury_evidence_lines
+    )
     repo_ok, repo_worse = audited._repo_not_worse(snapshot, previous)
     data_fresh, stale_reasons = audited._data_freshness(snapshot)
     y = snapshot.get("yield10") or {}
     treasury_confirmed = (
-        treasury_evidence
+        treasury_10y_evidence
         and repo_ok
         and data_fresh
         and float(y.get("z20") or 0) <= -1.0
@@ -472,7 +476,10 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
     treasury_fuel = treasury_short_present
     nq_fuel = nq_extreme
 
-    treasury_price_up = audited._price_up_count(snapshot) >= 1
+    zn = (snapshot.get("cme") or {}).get("ZN") or {}
+    treasury_price_up = (
+        zn.get("pct_change") is not None and float(zn.get("pct_change")) > 0
+    )
     prepared = bool(
         treasury_fuel
         and nq_fuel
@@ -499,6 +506,7 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         "label": label,
         "treasury_short_present": treasury_short_present,
         "treasury_fuel": treasury_fuel,
+        "treasury_10y_evidence": treasury_10y_evidence,
         "treasury_confirmed": treasury_confirmed,
         "nq_extreme": nq_extreme,
         "nq_net_extreme": nq_net_extreme,
