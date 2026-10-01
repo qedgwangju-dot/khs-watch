@@ -1,78 +1,78 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-10-01T22:05:33+09:00",
+  "updated_at_kst": "2026-10-01T22:08:36+09:00",
   "crypto": {
     "derivatives": {
       "BTCUSDT": {
-        "funding": 3.7e-05,
-        "index_price": 83598.09,
-        "mark_price": 83561.46,
-        "last_price": 83554.5,
-        "open_interest": 520253712.0,
-        "open_interest_value": 4354627620.1824,
-        "turnover24h": 667579349636.0,
+        "funding": 3.9e-05,
+        "index_price": 83641.72,
+        "mark_price": 83605.41,
+        "last_price": 83604.0,
+        "open_interest": 519896232.0,
+        "open_interest_value": 4345056674.166672,
+        "turnover24h": 667582029992.0,
         "source": "Gate.io Futures API"
       },
       "ETHUSDT": {
-        "funding": 3.3e-05,
-        "index_price": 2687.95,
-        "mark_price": 2686.88,
-        "last_price": 2686.53,
-        "open_interest": 76492468.0,
-        "open_interest_value": 2058955410.4028,
-        "turnover24h": 181770442055.0,
+        "funding": 3.6e-05,
+        "index_price": 2690.61,
+        "mark_price": 2689.66,
+        "last_price": 2689.28,
+        "open_interest": 76272716.0,
+        "open_interest_value": 2048959733.5376,
+        "turnover24h": 181771291607.0,
         "source": "Gate.io Futures API"
       },
       "SOLUSDT": {
-        "funding": -4.9e-05,
-        "index_price": 117.048,
-        "mark_price": 116.98,
-        "last_price": 116.98,
-        "open_interest": 7806768.0,
-        "open_interest_value": 915499683.36,
-        "turnover24h": 4438377117.0,
+        "funding": -4.6e-05,
+        "index_price": 117.068,
+        "mark_price": 117.0,
+        "last_price": 116.91,
+        "open_interest": 7862280.0,
+        "open_interest_value": 919886760.0,
+        "turnover24h": 4438411332.0,
         "source": "Gate.io Futures API"
       }
     },
     "prices": {
       "BTC": {
-        "usd": 83616.8,
-        "change24": -1.8357672004386396,
-        "volume24": 33333268596.005196,
+        "usd": 83555.86,
+        "change24": -2.036650919567748,
+        "volume24": 33198806059.271835,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 83639.0,
-          "Coinbase": 83607.57,
-          "Gate.io Spot": 83616.8
+          "CoinGecko": 83547.0,
+          "Coinbase": 83555.86,
+          "Gate.io Spot": 83650.6
         },
-        "dispersion_pct": 0.037588140182347345
+        "dispersion_pct": 0.12398890993403194
       },
       "ETH": {
-        "usd": 2688.24,
-        "change24": -1.529463071053018,
-        "volume24": 14071155273.167753,
+        "usd": 2687.93,
+        "change24": -1.5815112969473084,
+        "volume24": 14096469201.631739,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 2688.24,
-          "Coinbase": 2687.06,
-          "Gate.io Spot": 2688.5
+          "CoinGecko": 2686.8,
+          "Coinbase": 2687.93,
+          "Gate.io Spot": 2691.04
         },
-        "dispersion_pct": 0.053566645835195326
+        "dispersion_pct": 0.15774220310795972
       },
       "SOL": {
-        "usd": 117.06,
-        "change24": -4.05714716853512,
-        "volume24": 3714715900.874468,
+        "usd": 117.0,
+        "change24": -4.299053262155199,
+        "volume24": 3712946629.751711,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 117.13,
-          "Coinbase": 117.06,
-          "Gate.io Spot": 117.04
+          "CoinGecko": 116.96,
+          "Coinbase": 117.0,
+          "Gate.io Spot": 117.05
         },
-        "dispersion_pct": 0.07688364941054947
+        "dispersion_pct": 0.07692307692307984
       }
     },
     "price_verified": true,
@@ -145,7 +145,7 @@
     "equity_investments_b": 99.0,
     "equity_commitments_b": 25.0,
     "customer_finance_language": true,
-    "checked_at_kst": "2026-10-01T22:06:19+09:00"
+    "checked_at_kst": "2026-10-01T22:09:23+09:00"
   },
   "news_seen": [
     "66e158e8ecb032f4a3cf5675",
