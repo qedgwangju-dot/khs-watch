@@ -1093,4 +1093,37 @@ assert g == "hyundai_atlas_rollout", (g, s, c)
 assert c.endswith("Atlas 판매·RaaS·금융채널 상용화"), c
 assert s >= 11, s
 
+# 29) Optimus AI5/AI6 onboard-memory lane. The Oct. 1, 2026 Musk
+# statement is a silent baseline because the user already surfaced it; later
+# capacity/type/bandwidth or named-memory-supplier changes must alert.
+optimus_memory_baseline = make(
+    "Elon Musk updates Tesla AI5 and AI6 RAM for Optimus",
+    "Elon Musk: We cut our RAM in half for the Tesla AI5 chip, now 72GB of LP5, and 1/3 for AI6, now 144GB of LP6. This was the only way to have sufficient volume for Optimus production and significantly lowers cost. Memory bandwidth is unchanged.",
+    "Elon Musk (X)",
+)
+g, s, c, k = classify(optimus_memory_baseline)
+assert g == "tesla", (g, s, c)
+assert c == "Optimus AI5·AI6 메모리 사양 기준선", c
+assert s < 11, ("known Oct 1 memory-spec statement must be a silent baseline", s, c)
+
+optimus_memory_change = make(
+    "Elon Musk changes Tesla AI5 RAM for Optimus",
+    "Elon Musk says Tesla changed AI5 RAM for Optimus production to 96GB LP5 while keeping memory bandwidth unchanged to improve local model capacity.",
+    "Elon Musk (X)",
+)
+g, s, c, k = classify(optimus_memory_change)
+assert g == "tesla", (g, s, c)
+assert c == "Optimus AI5·AI6 온디바이스 메모리·대역폭 사양 변경", c
+assert s >= 11, s
+
+optimus_memory_vendor = make(
+    "Tesla selects Samsung for Optimus AI5 memory supply",
+    "Tesla selected Samsung as an AI5 RAM supplier for Optimus under a production contract for 72GB LP5 memory per AI5 system.",
+    "Tesla",
+)
+g, s, c, k = classify(optimus_memory_vendor)
+assert g == "tesla", (g, s, c)
+assert c == "Optimus AI5·AI6 메모리 공급사·물량 확정", c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
