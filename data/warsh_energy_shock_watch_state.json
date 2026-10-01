@@ -27,22 +27,22 @@
     "sloos": "신용 완화",
     "real_pce_3m_ann": 4.130494340236046,
     "real_pce_date": "2026-08-01",
-    "bei5y": 2.34,
-    "bei5y_10d_bp": -7.000000000000028,
-    "bei_date": "2026-09-29"
+    "bei5y": 2.36,
+    "bei5y_10d_bp": 0.9999999999999787,
+    "bei_date": "2026-09-30"
   },
   "verdict": "판정 유보 — 유가 충격은 크지만 물가 전이와 수요 파괴의 우열 불명확",
   "oil_rates": {
-    "date": "2026-09-28",
+    "date": "2026-09-29",
     "observations": 63,
-    "corr_3m": 0.8374354728839111,
+    "corr_3m": 0.7950569988287634,
     "corr_band": "강한 경보",
-    "beta_bp_per_1pct": 0.7410666060236168,
+    "beta_bp_per_1pct": 0.7296431553325659,
     "beta_hot": false,
-    "wti": 92.5999984741211,
-    "wti_move_pct": -3.320108943103417,
-    "dgs10": 5.24,
-    "dgs10_move_bp": 28.000000000000025,
+    "wti": 89.37999725341797,
+    "wti_move_pct": -5.5079810616142755,
+    "dgs10": 5.26,
+    "dgs10_move_bp": 29.999999999999982,
     "move_days": 5,
     "measurement_basis": "WTI 선물 완료 일봉·FRED DGS10 공통 거래일 자체 계산",
     "wti_url": "https://finance.yahoo.com/quote/CL=F/",
@@ -59,5 +59,5 @@
     "source_status": "실시간 조회"
   },
   "oil_rates_verdict": "유가와 10년물 분리 — 재정·실질금리·기간프리미엄 등 비유가 요인 우세",
-  "updated_at_utc": "2026-09-30T14:03:35.912188+00:00"
+  "updated_at_utc": "2026-10-01T00:01:05.041525+00:00"
 }
