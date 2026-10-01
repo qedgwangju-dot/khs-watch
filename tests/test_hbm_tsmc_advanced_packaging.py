@@ -114,6 +114,121 @@ class TSMCAdvancedPackagingTests(unittest.TestCase):
         self.assertIn("메모리", out)
         self.assertIn("NVIDIA", out)
 
+    def test_validation_efficiency_is_not_hbm_or_cowos_easing(self):
+        text = (
+            "TSMC plans a Mini-Loop before equipment enters CoWoS production, "
+            "aiming to improve validation efficiency by 25% to 50%. "
+            "HBM integration is also discussed elsewhere in the article."
+        )
+        self.assertEqual(w.bottleneck_status(text, "cowos"), "")
+        self.assertEqual(w.bottleneck_status(text, "hbm"), "")
+
+    def test_explicit_current_shortage_is_tight(self):
+        self.assertEqual(
+            w.bottleneck_status("TSMC CoWoS capacity remained in short supply in late 3Q26.", "cowos"),
+            "tight",
+        )
+        self.assertEqual(
+            w.bottleneck_status("HBM supply constraints persist and supply remains tight through 2027.", "hbm"),
+            "tight",
+        )
+
+    def test_future_easing_forecast_does_not_replace_current_status(self):
+        self.assertEqual(
+            w.bottleneck_status(
+                "The CoWoS supply-demand gap is expected to narrow by the end of 2026 as capacity expands.",
+                "cowos",
+            ),
+            "",
+        )
+
+    def test_package_material_changes_ignore_bottleneck_only_flip(self):
+        old = {"bottlenecks": {"hbm": {"status": "tight"}}}
+        new = {"bottlenecks": {"hbm": {"status": "easing"}}}
+        self.assertEqual(w.material_changes(old, new), [])
+
+    def test_older_bottleneck_source_cannot_overwrite_newer(self):
+        old = {
+            "bottlenecks": {
+                "hbm": {
+                    "status": "tight",
+                    "evidence_state": "research",
+                    "source_url": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
+                    "source_published_at_kst": "2026-09-29T00:00:00+09:00",
+                }
+            }
+        }
+        patch_value = {
+            "bottlenecks": {
+                "hbm": {
+                    "status": "easing",
+                    "evidence_state": "supply_chain_report",
+                    "source_url": "https://www.trendforce.com/news/2026/09/15/example",
+                    "source_published_at_kst": "2026-09-15T00:00:00+09:00",
+                }
+            }
+        }
+        merged = w.merge_state(old, patch_value)
+        self.assertEqual(merged["bottlenecks"]["hbm"]["status"], "tight")
+
+    def test_same_article_cannot_flip_without_newer_timestamp(self):
+        old = {
+            "bottlenecks": {
+                "hbm": {
+                    "status": "tight",
+                    "evidence_state": "supply_chain_report",
+                    "source_url": "https://example.com/a",
+                    "source_published_at_kst": "2026-09-15T10:00:00+09:00",
+                }
+            }
+        }
+        patch_value = {
+            "bottlenecks": {
+                "hbm": {
+                    "status": "easing",
+                    "evidence_state": "supply_chain_report",
+                    "source_url": "https://example.com/a",
+                    "source_published_at_kst": "2026-09-15T10:00:00+09:00",
+                }
+            }
+        }
+        self.assertEqual(w.merge_state(old, patch_value)["bottlenecks"]["hbm"]["status"], "tight")
+
+    def test_article_text_uses_article_body_not_sidebar(self):
+        raw = b"""
+        <html><body>
+          <aside>HBM shortage easing improve supply</aside>
+          <article><h1>TSMC packaging</h1><p>CoWoS validation hub improves validation efficiency.</p></article>
+          <footer>HBM bottleneck easing</footer>
+        </body></html>
+        """
+        item = event("TSMC packaging", source="DIGITIMES", url="https://example.com/story")
+        with patch.object(w, "fetch", return_value=raw):
+            body = w.article_text(item)
+        self.assertIn("CoWoS validation hub", body)
+        self.assertNotIn("HBM shortage easing", body)
+
+    def test_hbm_alert_cites_bottleneck_source_not_unrelated_ltn(self):
+        package = {
+            "last_source_name": "LTN",
+            "last_source_url": "https://ec.ltn.com.tw/article/paper/1772416",
+            "bottlenecks": {
+                "hbm": {
+                    "status": "tight",
+                    "source_name": "TrendForce",
+                    "source_url": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
+                },
+                "cowos": {"status": "tight"},
+                "substrate": {"status": "tight"},
+            },
+        }
+        out = w.hbm_alert_text(package, ["HBM 병목 easing→tight"], w.now_kst(), {})
+        self.assertIn("20260929-13255", out)
+        self.assertNotIn("paper/1772416", out)
+
+    def test_research_evidence_rank_is_above_supply_chain(self):
+        self.assertGreater(w.EVIDENCE_RANK["research"], w.EVIDENCE_RANK["supply_chain_report"])
+
 
 if __name__ == "__main__":
     unittest.main()
