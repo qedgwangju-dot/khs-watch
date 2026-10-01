@@ -1800,7 +1800,7 @@ def assert_fcc_upper_c_band_auction115_is_monitored() -> None:
         "쏠리드",
         "에치에프알",
         "확정 수주 아님",
-        "FCC 원문",
+        "FCC 공식문서",
         "Reuters",
     ):
         if marker not in combined:
@@ -1818,7 +1818,7 @@ def assert_fcc_upper_c_band_auction115_is_monitored() -> None:
     telegram_html = khs_policy_telegram_formatter.prepare_telegram_html(title, formatted)
     expected_fcc = (
         '<a href="https://www.federalregister.gov/documents/2026/08/03/2026-15725/'
-        'auction-of-flexible-use-licenses-in-the-upper-c-band-for-next-generation-wireless-services-scheduled">FCC 원문</a>'
+        'auction-of-flexible-use-licenses-in-the-upper-c-band-for-next-generation-wireless-services-scheduled">원문</a>'
     )
     expected_reuters = (
         '<a href="https://www.reuters.com/business/media-telecom/'
