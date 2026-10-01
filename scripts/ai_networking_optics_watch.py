@@ -667,6 +667,10 @@ def main() -> None:
         for previous in seen_story_records:
             if previous.get("company") != item.get("company"):
                 continue
+            # Never let a previously-sent low-quality/market-reaction source suppress
+            # a later official or high-quality structural event.
+            if source_priority(previous.get("source") or "") < 65:
+                continue
             try:
                 prev_dt = dt.datetime.fromisoformat(previous.get("published") or "")
                 item_dt = dt.datetime.fromisoformat(item.get("published") or "")
@@ -690,12 +694,32 @@ def main() -> None:
         "title": item.get("title"),
         "source": item.get("source"),
         "published": item.get("published"),
-    } for item in deduped]
-    merged_story_records = (new_story_records + seen_story_records)[:500]
+    } for item in deduped if source_priority(item.get("source") or "") >= 65]
+
+    # Clean legacy state: remove low-quality reaction sources and duplicate records.
+    merged_story_records = []
+    record_keys = set()
+    for record in new_story_records + seen_story_records:
+        if source_priority(record.get("source") or "") < 65:
+            continue
+        key = (
+            record.get("company"),
+            record.get("category"),
+            record.get("title"),
+            record.get("source"),
+            record.get("published"),
+        )
+        if key in record_keys:
+            continue
+        record_keys.add(key)
+        merged_story_records.append(record)
+        if len(merged_story_records) >= 500:
+            break
 
     pending = {
         "initialized": True,
         "dedupe_version": 2,
+        "quality_version": 3,
         "cpo_equipment_version": 2,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "seen_keys": updated_seen,
