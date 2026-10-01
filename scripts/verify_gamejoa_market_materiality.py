@@ -138,6 +138,29 @@ class MaterialityChecks(unittest.TestCase):
         self.assertIn("마이크론", core)
         self.assertTrue(radar.core_sentence_is_complete(core))
 
+    def test_listing_rule_announcement_outweighs_old_earnings_in_core(self):
+        title = "매출 2100억 제조기업도 상폐 걱정…우진플라임, 시총 기준 강화 대응"
+        body = (
+            "1985년 설립돼 2001년 코스닥시장에 상장한 뒤 2006년 유가증권시장으로 이전했다. "
+            "우진플라임은 2분기 매출 558억원, 영업이익 8억원을 기록했다. "
+            "내년 7월 유가증권시장 상장유지 시가총액 기준이 500억원으로 높아지면서 기업가치 제고가 당면 과제로 떠올랐다. "
+            "우진플라임은 이날 기업가치 제고 계획을 공시하고 2028년까지 ROE를 높이겠다고 밝혔다. "
+            "향후 3년간 주당 50원 이상을 배당하고 발행주식의 2% 이상인 자사주 40만주 이상을 매입·소각한다."
+        )
+        item = alert(title, body)
+        item["telegram_core_fact"] = "우진플라임 2분기 영업이익은 8억원입니다."
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("우진플라임", core)
+        self.assertIn("내년 7월", core)
+        self.assertIn("500억원", core)
+        self.assertIn("40만주", core)
+        self.assertIn("계획", core)
+        self.assertNotIn("영업이익은 8억원", core)
+        self.assertEqual(core, radar.detailed_article_core(title, body))
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        audit = materiality.assess(title, body)
+        self.assertNotIn("1985년 설립돼", str(audit["evidence"]))
+
     def test_unverified_body_cannot_establish_materiality(self):
         item = alert(*KEEP[0])
         item["body_verified"] = False

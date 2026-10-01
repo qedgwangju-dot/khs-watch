@@ -16,7 +16,7 @@ HEADLINE_EARLY = re.compile(
     r"consider|propos|draft|forecast|sources say", re.I,
 )
 BACKGROUND = re.compile(
-    r"^(?:한편\s*)?(?:지난해|작년|과거|기존에는|종전에는|previously|last year)\b|"
+    r"^\d{4}년\s+설립|^(?:한편\s*)?(?:지난해|작년|과거|기존에는|종전에는|previously|last year)\b|"
     r"설립된 회사|설립된 기업|설립 이후 누적|창립 이래|has historically", re.I,
 )
 QUANTITY = re.compile(r"\d[\d,.]*\s*(?:%|bp\b|조\s*원|억\s*원|만\s*원|달러|유로|억원|조원|억달러|billion|million)", re.I)
@@ -73,7 +73,7 @@ RULES = (
      r"증설|착공|가동|증가|감소|중단|차질|부족|품귀|지연|연장|매각|검토|확대|축소|상용화|expand|start|halt|disrupt|shortage|delay|consider|launch"),
     ("technology_or_clinical_stage", ("earnings", "timeline"),
      r"메모리|반도체|hbm|hbf|cxl|칩|공정|로봇|신약|임상|fda|의약품|기술|memory|semiconductor|chip|clinical|drug|technology",
-     r"양산|상용화|인증|승인|허가|임상 결과|임상결과|공급|도입|고객|검증|성능|대역폭|수율|전력효율|결과 발표|생산|production|commercial|certif|approv|deploy|customer|validat|performance|bandwidth|yield"),
+     r"양산|상용화|인증|승인|허가|임상 결과|임상결과|공급|도입|검증|성능|대역폭|수율|전력효율|결과 발표|생산|production|commercial|certif|approv|deploy|validat|performance|bandwidth|yield"),
     ("energy_geopolitics_or_supply_risk", ("earnings", "discount_rate"),
      r"원유|유가|천연가스|운임|호르무즈|홍해|이란|이스라엘|우크라이나|러시아|구리|리튬|\boil\b|brent|wti|\bgas\b|hormuz|iran|ukraine|russia|copper|lithium",
      r"공격|공습|휴전|협상|통항|봉쇄|제재|상승|하락|급등|급락|차질|감산|증산|합의|attack|strike|ceasefire|talks|blockade|sanction|rise|fall|disrupt|output"),
@@ -126,7 +126,7 @@ def assess(title: str, body: str) -> dict:
             ):
                 continue
             if kind == "technology_or_clinical_stage" and not re.search(
-                r"양산|상용화|인증|승인|허가|임상|공급|고객|도입|검증|성능|대역폭|수율|전력효율|production|commercial|approv|customer|deploy|performance|bandwidth|yield", sentence, re.I,
+                r"양산|상용화|인증|승인|허가|임상|공급|도입|검증|성능|대역폭|수율|전력효율|production|commercial|approv|deploy|performance|bandwidth|yield", sentence, re.I,
             ):
                 continue
             if kind == "model_operating_specification" and not re.search(

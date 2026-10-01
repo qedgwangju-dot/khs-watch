@@ -2636,6 +2636,27 @@ def unconfirmed_company_action_fact(title: str, body: str) -> str:
     return ""
 
 
+def listing_maintenance_action_fact(title: str, body: str) -> str:
+    if not re.search(r"상폐|상장폐지|상장유지", title):
+        return ""
+    threshold = re.search(
+        r"(내년|올해|20\d{2}년)\s*(\d{1,2})월[^.!?\n]{0,60}?상장유지\s*시가총액\s*기준이\s*([\d,]+억원)으로\s*(?:높아|상향)",
+        body,
+    )
+    issuer = re.search(
+        r"([A-Za-z0-9가-힣·&]{2,30})(?:은|는)\s*(?:이날\s*)?기업가치\s*제고\s*계획을\s*공시",
+        body,
+    )
+    repurchase = re.search(r"자사주\s*([\d,]+만?주)\s*이상을\s*매입[·\s]*소각", body)
+    if not threshold or not issuer or not repurchase or issuer.group(1) not in title:
+        return ""
+    core = (
+        f"{issuer.group(1)}, {threshold.group(1)} {threshold.group(2)}월 상장유지 시총 기준 "
+        f"{threshold.group(3)} 앞두고 자사주 {repurchase.group(1)} 이상 매입·소각 계획을 공시했다."
+    )
+    return core if core_sentence_is_complete(core) else ""
+
+
 def policy_probability_article_fact(title: str, body: str) -> str:
     if "금리" not in title or not has_term(title, ("확률", "가능성")):
         return ""
@@ -2713,6 +2734,9 @@ def detailed_article_core(title: str, body: str) -> str:
     unconfirmed_fact = unconfirmed_company_action_fact(title, body)
     if unconfirmed_fact:
         return unconfirmed_fact
+    listing_fact = listing_maintenance_action_fact(title, body)
+    if listing_fact:
+        return listing_fact
 
     # In a multi-issuer memory article, a contextual revenue number must not
     # replace the headline's HBM supply/price change or lose its issuer.
@@ -8496,6 +8520,10 @@ def verified_alert_core(alert: dict, title: str) -> str:
         return rule_core
 
     if is_business:
+        if alert.get("body_verified"):
+            listing_fact = listing_maintenance_action_fact(source_title or title, str(alert.get("source_body") or ""))
+            if listing_fact:
+                return listing_fact
         candidates.append(str(alert.get("telegram_core_fact") or ""))
         source_body = strip_core_ui_garbage(
             "\n".join(
