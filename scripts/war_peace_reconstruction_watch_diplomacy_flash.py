@@ -1435,11 +1435,56 @@ def _alert_quality_issues(text):
         issues.append('TASS 정례 병력손실 노이즈')
 
     # 항목별 색상과 의미가 충돌하면 헤더가 혼재 상태여도 송출을 막는다.
-    block_matches = list(re.finditer(r'(?m)^(?P<icon>[🔴🟢🟡]?)\s*\[(?:속보|신규|후속)\]\s+\d+\..*$', head))
+    plain_head = re.sub(r'<[^>]+>', '', head)
+    block_matches = list(re.finditer(r'(?m)^(?P<icon>[🔴🟢🟡]?)\s*\[(?:속보|신규|후속)\]\s+\d+\..*
+
+    # 동일 제목이 한 알림 안에서 중복되는 경우 차단.
+    titles = []
+    lines = [re.sub(r'<[^>]+>', '', x).strip() for x in head.splitlines()]
+    for i, line in enumerate(lines):
+        if re.match(r'^(?:🔴 |🟢 |🟡 )?\[(?:속보|신규|후속)\] \d+\.', line) and i + 1 < len(lines):
+            title = re.sub(r'\s+-\s+[^-]{2,40}\Z', '', lines[i + 1]).strip().lower()
+            if title:
+                titles.append(title)
+    if len(titles) != len(set(titles)):
+        issues.append('동일 제목 중복')
+
+    return issues
+
+def _strict_verify_alert(test_mode=False):
+    _prev_verify_alert(test_mode=test_mode)
+    if not watch.ALERT.exists():
+        return
+    text = watch.ALERT.read_text(encoding='utf-8')
+    issues = _alert_quality_issues(text)
+    if issues:
+        raise RuntimeError('WAR_ALERT_QUALITY_GATE: ' + ' | '.join(issues))
+
+
+runner.verify_alert = _strict_verify_alert
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--finalize', action='store_true')
+    ap.add_argument('--telegram-test', action='store_true')
+    args = ap.parse_args()
+    if args.finalize:
+        watch.finalize(); return
+    if args.telegram_test:
+        base._write_inline_test()
+    else:
+        watch.run(test=False)
+    runner.verify_alert(test_mode=False)
+
+
+if __name__ == '__main__':
+    main()
+, plain_head))
     for idx, m in enumerate(block_matches):
         start_pos = m.start()
-        end_pos = block_matches[idx + 1].start() if idx + 1 < len(block_matches) else len(head)
-        block = head[start_pos:end_pos].lower()
+        end_pos = block_matches[idx + 1].start() if idx + 1 < len(block_matches) else len(plain_head)
+        block = plain_head[start_pos:end_pos].lower()
         icon = m.group('icon')
         if icon == '🟢' and any(x in block for x in (' · 확전 ·', '확전위험', '폭격할지', '공습할지', '미사일 공격', '드론 공격', '피격')):
             issues.append('초록 항목과 확전 의미 충돌')
