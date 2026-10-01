@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-10-01T20:48:19+09:00",
+  "last_checked_kst": "2026-10-01T20:50:54+09:00",
   "media_id": null,
   "cftc_date": "September 22, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-10-01T20:48:19+09:00",
+    "checked_kst": "2026-10-01T20:50:54+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "September 22, 2026",
@@ -65,10 +65,10 @@
         "display_symbol": "TY/ZN",
         "ticker": "ZN=F",
         "month": "",
-        "last": 104.25,
-        "settlement": 104.25,
-        "change": 0.046875,
-        "pct_change": 0.04498425551056062,
+        "last": 104.28125,
+        "settlement": 104.28125,
+        "change": 0.078125,
+        "pct_change": 0.0749737591842825,
         "open_interest": 5407726,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 22, 2026)",
         "volume": 0,
@@ -83,10 +83,10 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 102.6875,
-        "settlement": 102.6875,
-        "change": 0.03125,
-        "pct_change": 0.03044140030441511,
+        "last": 102.71875,
+        "settlement": 102.71875,
+        "change": 0.0625,
+        "pct_change": 0.06088280060883022,
         "open_interest": 1887864,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 22, 2026)",
         "volume": 0,
@@ -288,5 +288,6 @@
   "last_weekly_report_key": "2026-W40",
   "nasdaq_cross_asset_stage": 1,
   "short_bias_markets": [],
-  "nasdaq_cross_asset_alerted_stage": 1
+  "nasdaq_cross_asset_alerted_stage": 1,
+  "nasdaq_cross_asset_format_revision": 2
 }
