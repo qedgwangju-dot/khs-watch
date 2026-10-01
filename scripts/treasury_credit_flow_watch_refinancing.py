@@ -272,19 +272,91 @@ def _overall_direction(flows):
 
 
 def _credit_summary(lqd_flow, hyg_flow, lqd_oas, hyg_oas):
-    oas_widen = ("↑" in lqd_oas and "+0bp" not in lqd_oas) or ("↑" in hyg_oas and "+0bp" not in hyg_oas)
+    oas_widen = "↑" in lqd_oas or "↑" in hyg_oas
     if _outflow(lqd_flow) and _outflow(hyg_flow) and not oas_widen:
         return "선제 위험축소·신용경색 미확인", "LQD·HYG 자금은 빠지지만 OAS는 급확대하지 않아 아직 신용경색 단계는 아님"
     if _outflow(hyg_flow) and oas_widen:
         return "신용위험 경계 강화", "HYG 자금유출과 OAS 확대가 겹쳐 기업 신용위험이 실제 가격에 반영되기 시작"
+    if _inflow(lqd_flow) and _inflow(hyg_flow) and oas_widen:
+        return "혼조 — 자금유입·스프레드 확대", "LQD·HYG에는 자금이 유입됐지만 OAS가 확대돼 위험선호와 신용가격 신호가 엇갈림"
+    if _inflow(lqd_flow) and _inflow(hyg_flow):
+        return "신용 위험선호 회복 확인", "LQD·HYG 자금유입과 OAS 안정이 함께 확인됨"
     return "혼조", "자금흐름과 신용스프레드가 같은 방향인지 추가 확인"
+
+
+def _fx_rate_from_line(fx_line):
+    m = re.search(r"1달러=([0-9,]+(?:\.[0-9]+)?)원", fx_line or "")
+    return float(m.group(1).replace(",", "")) if m else None
+
+
+def _fmt_krw_trillion(value_trillion):
+    if value_trillion is None:
+        return "원화 환산 확인 대기"
+    if value_trillion >= 10000:
+        gyeong = int(value_trillion // 10000)
+        jo = int(round(value_trillion - gyeong * 10000))
+        if jo >= 10000:
+            gyeong += 1
+            jo -= 10000
+        return f"약 {gyeong}경{jo:,}조원"
+    if value_trillion >= 1000:
+        return f"약 {value_trillion:,.0f}조원"
+    if value_trillion >= 100:
+        return f"약 {value_trillion:,.1f}조원"
+    return f"약 {value_trillion:,.2f}조원"
+
+
+def _next_alert(y10, y30):
+    parts = []
+    if y10 is not None:
+        if y10 < 5.00:
+            parts.append("10년물 5.00% 상향 돌파")
+        elif y10 < 5.10:
+            parts.append("10년물 5.10% 상향")
+        elif y10 < 5.20:
+            parts.append("10년물 5.20% 상향")
+    if y30 is not None:
+        if y30 < 5.59:
+            parts.append("30년물 JPM 5.59% 상향")
+        elif y30 < 5.78:
+            parts.append("30년물 JPM 5.78% 상향")
+        elif y30 < 6.00:
+            parts.append("30년물 JPM 6.00% 상향")
+        else:
+            parts.append("30년물 JPM 5.25% 하향 반전")
+    parts.extend([
+        "Repo 주의·스트레스 전환",
+        "HYG 자금유출 + OAS 일간 +5bp 이상",
+        "R>G 전환",
+    ])
+    return "다음 경보: " + " · ".join(parts)
+
+
+def _validate_compact_report(text, overall_head, y10):
+    expected = f"전체 방향: {overall_head}"
+    if expected not in text:
+        raise RuntimeError(f"final report overall mismatch: expected {expected}")
+    if re.search(r"[↑↓]\s+[+-]-?0(?:\.0)?bp", text) or "↓ -0bp" in text or "↑ +0bp" in text:
+        raise RuntimeError("final report contains signed zero bp")
+    if y10 is not None and y10 >= 5.00 and "다음 경보: 10년물 5% 돌파" in text:
+        raise RuntimeError("final report repeats an already-crossed 10Y 5% alert")
+    refi = next((line for line in text.splitlines() if line.startswith("차환:")), "")
+    if "$" in refi and "원" not in refi:
+        raise RuntimeError("refinancing foreign amounts are missing KRW conversion")
 
 
 def _compact_report(raw_text):
     flows = {t: _flow(t, raw_text) for t in ("SHY", "IEF", "TLT", "LQD", "HYG")}
     lqd_oas, hyg_oas = _oas("LQD", raw_text), _oas("HYG", raw_text)
-    overall_head, overall_reason = _overall_direction(flows)
+    overall_head, overall_reason = readable._direction_pair("전체 자금 방향", raw_text)
+    treasury_head, treasury_reason = readable._direction_pair("ETF 자금 방향", raw_text)
+    credit_flow_head, credit_flow_reason = readable._direction_pair("신용자금 방향", raw_text)
     credit_head, credit_reason = _credit_summary(flows["LQD"][0], flows["HYG"][0], lqd_oas, hyg_oas)
+    if overall_head == "혼조·추가 확인":
+        overall_reason = (
+            f"국채 {treasury_head} · 회사채 {credit_flow_head} → "
+            "금리·국채와 신용자금 신호가 한 방향으로 정렬되지 않음"
+        )
 
     r2, r10, r30 = _rate("2년", raw_text), _rate("10년", raw_text), _rate("30년", raw_text)
     s210 = _rate("2년-10년 금리차", raw_text)
@@ -309,26 +381,27 @@ def _compact_report(raw_text):
     else:
         gr_line = "G-R: 공식 최신값 조회 실패 → 판정 보류"
 
+    date_line = _m(r"^조회시각\(KST\): ([^\n]+)", raw_text)
+    fx_line = _m(r"^환율: ([^\n]+)", raw_text)
+    fx_rate = _fx_rate_from_line(fx_line)
+
     try:
         refi = get_refinancing_snapshot()
+        next12_krw = _fmt_krw_trillion(refi["next12_t"] * fx_rate if fx_rate else None)
+        bills_krw = _fmt_krw_trillion(refi["bills_t"] * fx_rate if fx_rate else None)
+        plus75_krw = _fmt_krw_trillion(refi["plus75_b"] * fx_rate / 1000.0 if fx_rate else None)
         refi_line = (
-            f"차환: 12개월 ${refi['next12_t']:.2f}T ({refi['next12_share']:.1f}%) | "
-            f"Bills ${refi['bills_t']:.2f}T ({refi['bill_share']:.1f}%) | +75bp 단순 연율 +${refi['plus75_b']:.1f}B"
+            f"차환: 12개월 ${refi['next12_t']:.2f}T ({next12_krw}) ({refi['next12_share']:.1f}%) | "
+            f"Bills ${refi['bills_t']:.2f}T ({bills_krw}) ({refi['bill_share']:.1f}%) | "
+            f"+75bp 단순 연율 +${refi['plus75_b']:.1f}B ({plus75_krw})"
         )
         refi_date = refi["record_date"]
     except Exception:
         refi_line = "차환: MSPD 최신값 조회 실패 → 판정 보류"
         refi_date = "확인 대기"
 
-    date_line = _m(r"^조회시각\(KST\): ([^\n]+)", raw_text)
-    fx_line = _m(r"^환율: ([^\n]+)", raw_text)
-
-    if credit_head.startswith("선제") and "앞단 Fed" in driver:
-        conclusion = "앞단 Fed 압박은 강해졌지만 신용스프레드는 아직 버팀 → 현재는 금리 스트레스 + 선제 위험축소 단계"
-    elif "신용위험 경계" in credit_head:
-        conclusion = "금리 압박이 회사채 신용위험으로 번지는지 경계 강화"
-    else:
-        conclusion = overall_reason
+    conclusion = f"{overall_head} — {overall_reason}"
+    next_alert_line = _next_alert(y10, y30)
 
     lines = [
         "[미 국채·회사채 방향성 일일 보고]",
@@ -365,12 +438,14 @@ def _compact_report(raw_text):
         "",
         "[오늘의 결론]",
         conclusion,
-        "다음 경보: 10년물 5% 돌파·Repo 스트레스·HYG OAS 재확대·R>G 전환 여부",
+        next_alert_line,
         "",
         f"기준: ETF·미 재무부 {treasury_date} | MSPD {refi_date}",
         "출처: iShares · U.S. Treasury · Treasury FiscalData · OFR/NY Fed · BEA · JPM 기술기준(사용자 제공 2026-09-29 자료)",
     ]
-    return "\n".join(lines)
+    report = "\n".join(lines)
+    _validate_compact_report(report, overall_head, y10)
+    return report
 
 
 def _format_html(chunk):
