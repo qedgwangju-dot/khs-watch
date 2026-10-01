@@ -54,7 +54,7 @@ CME_EQUITIES_URL = "https://www.cmegroup.com/markets/equities.html"
 CME_NQ_BULLETIN = "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf"
 YAHOO_NQ_URL = "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=5d&interval=1d"
 US_POSITIONING_STATE = watcher.DATA / "us_positioning_state.json"
-CROSS_FORMAT_REVISION = 2
+CROSS_FORMAT_REVISION = 3
 _CROSS_CACHE = None
 
 # CME contract face amounts. These convert CFTC contract counts into an intuitive
@@ -586,7 +586,7 @@ def _nq_notional_krw(nq: dict, price: dict, fx, field: str = "leveraged_net") ->
         return "원화 명목금액 확인 불가"
 
 
-def _cross_asset_block(snapshot: dict, previous: dict, fx=None, compact: bool = False) -> str:
+def _cross_asset_block(snapshot: dict, previous: dict, fx=None, fx_date=None, compact: bool = False) -> str:
     cross = _cross_asset_snapshot(snapshot, previous)
     nq = cross.get("nq_cftc") or {}
     price = cross.get("nq_price") or {}
@@ -630,7 +630,7 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, compact: bool = 
     return (
         "<b>📈 채권→Nasdaq 전이</b>\n"
         f"• 판정: <b>{cross['label']}</b>\n"
-        f"• 10Y Leveraged Funds 순포지션 {int(treasury10.get('leveraged_net') or 0):+,}계약\n"
+        f"• 10Y Leveraged Funds 순포지션 {_fmt_net_with_krw(treasury10.get('leveraged_net'), '10Y', fx)}\n"
         f"• NQ E-mini Leveraged Funds 순포지션 {int(nq.get('leveraged_net') or 0):+,}계약"
         f" · 3년 순숏 {net_pctile_text} · 총숏 {gross_pctile_text}\n"
         f"• 3년 극단 대비 청산률: 순숏 {net_unwind_text} · 총숏 {gross_unwind_text}\n"
@@ -641,6 +641,7 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, compact: bool = 
             else ""
         )
         + "• 중요: '10년 기록'은 현재 총숏 잔고가 10년 최고라는 뜻이 아니라, <b>이번 주 총숏 증가 속도</b>가 기록적이라는 뜻입니다.\n"
+        + "• 이 10년 기록은 CFTC NASDAQ MINI futures-only 공식 모집단의 별도 검산값이며, Goldman/BofA Prime Brokerage의 $14.9bn 독자 집계와 같은 모집단이라고 보지 않습니다.\n"
         f"• NQ {nq_pct_text} ({price.get('source') or '가격 소스 확인 불가'})"
         f" · CME 일일 총 OI 변화 {int(price.get('oi_change') or 0):+,}계약"
         f" · CFTC 주간 총 OI 변화 {int(nq.get('open_interest_wow') or 0):+,}계약"
@@ -649,7 +650,12 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, compact: bool = 
         f"총숏 {_nq_notional_krw(nq, price, fx, 'leveraged_short')}"
         " (NQ 지수×$20×계약수×환율, 실제 증거금·손익 아님)\n"
         "• 확정은 ZN 공식 같은 거래일 가격↑·OI↓ + NQ 공식 같은 거래일 가격↑·OI↓ + CFTC NQ 순숏 축소가 함께 붙을 때만 합니다.\n"
-        "※ CFTC 포지션은 주간 후행자료입니다. CME 일일 가격·OI는 같은 거래일 자료로만 묶고, 최신 완료 미국 거래일 또는 CFTC·재무부·NY Fed 신선도 기준을 통과하지 못하면 자동으로 확정 판정을 막습니다.\n"
+        + (
+            f"• 환율 기준: {fx_date}, 1달러={float(fx):,.2f}원\n"
+            if fx is not None else
+            "• 환율 기준: 확인 불가 — 원화 명목금액은 확정 표시하지 않음\n"
+        )
+        + "※ CFTC 포지션은 주간 후행자료입니다. CME 일일 가격·OI는 같은 거래일 자료로만 묶고, 최신 완료 미국 거래일 또는 CFTC·재무부·NY Fed 신선도 기준을 통과하지 못하면 자동으로 확정 판정을 막습니다.\n"
     )
 
 
@@ -718,7 +724,7 @@ def _easy_read_block(snapshot: dict, previous: dict, reasons: list[str]) -> str:
 def format_alert(snapshot, previous, fx, fx_date, reasons):
     title, body = _base_format(snapshot, previous, fx, fx_date, reasons)
     body = _compact_duplicates(body)
-    body = _easy_read_block(snapshot, previous, reasons) + _cross_asset_block(snapshot, previous, fx=fx, compact=True) + "\n" + body
+    body = _easy_read_block(snapshot, previous, reasons) + _cross_asset_block(snapshot, previous, fx=fx, fx_date=fx_date, compact=True) + "\n" + body
 
     impact, path = _equity_impact(snapshot, previous, reasons)
     block = (
@@ -791,7 +797,7 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=Non
     cftc_date = (snapshot.get("cftc") or {}).get("report_date", "확인 불가")
     cme = snapshot.get("cme") or {}
     repo = snapshot.get("repo") or {}
-    cross_block = _cross_asset_block(snapshot, previous, fx=fx, compact=False)
+    cross_block = _cross_asset_block(snapshot, previous, fx=fx, fx_date=fx_date, compact=False)
 
     if any("FOMC 전날 점검" in r for r in reasons):
         title = "🚨 미 국채 CTA · FOMC 전날 점검"
@@ -1010,7 +1016,7 @@ def scheduled_main() -> int:
             f"• <b>{cross.get('label')}</b>",
             "• 채권 숏과 Nasdaq 숏이 함께 쌓인 상태에서 실제 청산이 같은 방향으로 번지는지 확인합니다.",
             "",
-            _cross_asset_block(snapshot, previous, fx=fx, compact=False),
+            _cross_asset_block(snapshot, previous, fx=fx, fx_date=fx_date, compact=False),
             "<b>🚦 다음 확인</b>",
             "• ZN 공식 같은 거래일 가격↑·OI↓ + NQ 공식 같은 거래일 가격↑·CME 일일 OI↓ + CFTC NQ 순숏 축소가 겹치면 이중 스퀴즈 확인으로 격상합니다.",
             "• CFTC는 주간 후행 자료이므로 장중 가격이나 CFTC 주간 OI 감소 하나만으로 확정하지 않습니다.",
