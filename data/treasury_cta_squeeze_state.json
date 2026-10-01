@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-10-01T12:11:58+09:00",
+  "last_checked_kst": "2026-10-01T12:12:59+09:00",
   "media_id": null,
   "cftc_date": "September 22, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-10-01T12:11:58+09:00",
+    "checked_kst": "2026-10-01T12:12:59+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "September 22, 2026",
@@ -72,7 +72,7 @@
         "open_interest": 5407726,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 22, 2026)",
         "volume": 0,
-        "market_time": 1790823708,
+        "market_time": 1790823745,
         "source": "https://finance.yahoo.com/quote/ZN%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -90,7 +90,7 @@
         "open_interest": 1887864,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 22, 2026)",
         "volume": 0,
-        "market_time": 1790823692,
+        "market_time": 1790823761,
         "source": "https://finance.yahoo.com/quote/ZB%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -108,7 +108,7 @@
         "open_interest": 2476197,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 22, 2026)",
         "volume": 0,
-        "market_time": 1790823689,
+        "market_time": 1790823763,
         "source": "https://finance.yahoo.com/quote/UB%3DF/",
         "source_type": "Yahoo Finance 지연 가격 (CBOT/CME 파생상품 2차 배포)",
         "oi_comparable": true,
@@ -160,8 +160,8 @@
         "previous_close": 30566.25,
         "pct_change": 0.15376436429068008,
         "change_points": 47.0,
-        "open_interest": null,
-        "oi_change": null,
+        "open_interest": 270554,
+        "oi_change": -1734,
         "oi_scope": "CME EMINI NASD FUT total product daily",
         "source": "CME Daily Bulletin PG11 official settlement/OI",
         "official": true,
@@ -208,7 +208,7 @@
       "nq_price_fresh": false,
       "nq_price_expected_session": "2026-09-30",
       "nq_weekly_oi_down": true,
-      "nq_daily_oi_change": null,
+      "nq_daily_oi_change": -1734,
       "nq_daily_oi_down": false,
       "nq_oi_down": false,
       "nq_short_cover": false,
@@ -230,7 +230,8 @@
     "stage": 0,
     "oi_scope_fixes": [
       "ZN OI 71→5,407,726로 동일 범위 교체",
-      "ZB OI 71→1,887,864로 동일 범위 교체"
+      "ZB OI 71→1,887,864로 동일 범위 교체",
+      "UB OI 71→2,476,197로 동일 범위 교체"
     ]
   },
   "last_fomc_eve_report": "2026-09-16",
