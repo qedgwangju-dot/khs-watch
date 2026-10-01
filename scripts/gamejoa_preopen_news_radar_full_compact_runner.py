@@ -19,6 +19,7 @@ from khs_article_detail import extract_article_detail, normalized_title_tokens
 from khs_compact_text import concise_text
 import gamejoa_news_coverage_extension as coverage
 import gamejoa_article_detail_queue as detail_queue
+import gamejoa_market_materiality as market_materiality
 
 
 telegram = contract.telegram
@@ -8062,6 +8063,14 @@ def is_polysilicon_11052_base_rehash(alert: dict) -> bool:
     return not any(term in text for term in stage_change_terms)
 
 
+def source_market_materiality(alert: dict) -> dict:
+    title = str(alert.get("source_title") or alert.get("original_news") or "")
+    body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+    if not alert.get("body_verified"):
+        body = ""
+    return market_materiality.assess(title, clean_article_summary_text(body))
+
+
 def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     initial = telegram.display_alerts(alerts, min(max(limit * 3, 12), 30))
     candidates = initial + alerts
@@ -8084,9 +8093,22 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             key=lambda alert: str(alert.get("published") or ""),
         )
         candidates = [preferred_iran] + [alert for alert in candidates if not alert.get("iran_hormuz_escalation")]
+    for alert in candidates:
+        alert["market_materiality"] = source_market_materiality(alert)
+    candidates = sorted(
+        candidates,
+        key=lambda alert: (
+            alert["market_materiality"]["priority"],
+            (detail_queue.parse_time(alert.get("published")) or dt.datetime(1970, 1, 1, tzinfo=dt.timezone.utc)).timestamp(),
+        ),
+        reverse=True,
+    )
     selected: list[dict] = []
     seen: set[tuple[str, str]] = set()
     for alert in candidates:
+        if alert["market_materiality"]["disposition"] == "exclude":
+            alert["_exclusion_reason"] = "market_materiality:" + alert["market_materiality"]["reason"]
+            continue
         if is_polysilicon_11052_base_rehash(alert):
             alert["_exclusion_reason"] = "historical_polysilicon_11052_base_rehash"
             continue

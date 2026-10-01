@@ -551,6 +551,7 @@ def selection_diagnostics(
             "reason": alert.get("_exclusion_reason") or alert.get("guardrail_note") or "final_quality_filter",
             "guardrail_note": alert.get("guardrail_note") or "",
             "decision_debug": alert.get("_decision_debug") or {},
+            "market_materiality": alert.get("market_materiality") or {},
         })
     return {
         "collected_rows": len(rows),

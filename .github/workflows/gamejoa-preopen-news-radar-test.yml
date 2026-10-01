@@ -78,6 +78,7 @@ jobs:
       - name: Verify GAMEJOA delivery contract
         run: |
           python scripts/verify_gamejoa_delivery_contract.py
+          python scripts/verify_gamejoa_market_materiality.py
           python scripts/verify_gamejoa_article_detail_queue.py
           python scripts/verify_khs_source_fetch_contract.py
           python scripts/verify_gamejoa_semisupply_contract.py

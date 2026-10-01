@@ -185,6 +185,11 @@ def main() -> int:
                 f"report/JSON selected count mismatch: report={len(blocks)} json={len(json_alerts)}"
             )
         for alert in json_alerts:
+            materiality = prod.runner.source_market_materiality(alert)
+            if materiality["disposition"] == "exclude":
+                errors.append(f"routine/vague article passed materiality gate: {alert.get('news')}")
+            if alert.get("market_materiality") != materiality:
+                errors.append(f"source materiality audit missing or stale: {alert.get('news')}")
             if not prod.runner.source_output_aligned(alert):
                 errors.append(
                     "source/body alignment failed: "
