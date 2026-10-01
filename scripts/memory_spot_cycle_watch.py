@@ -159,11 +159,14 @@ KOREA_MEMORY_EARNINGS_BASELINE = {
     "as_of": "2026-09-30",
     "source_rank": 2,
 }
-MICRON_SUPPLY_COMMITMENT_TRACK_VERSION = 1
+MICRON_SUPPLY_COMMITMENT_TRACK_VERSION = 2
 MICRON_SUPPLY_COMMITMENT_BASELINE = {
     "commitment_year": 2027,
     "output_committed_min_pct": 75.0,
     "sca_revenue_share_2030_pct": 50.0,
+    "memory_shortage_through_year": 2028,
+    "nand_shortage_through_year": 2028,
+    "supply_tighter_2027_2028": True,
     "source": "Micron CEO earnings call via Investing.com",
     "source_kind": "경영진 컨퍼런스콜 발언 재전사 + Micron 공식 실적자료 교차확인",
     "source_url": "https://www.investing.com/news/transcripts/earnings-call-transcript-micron-tops-q4-2026-estimates-as-demand-stays-hot-93CH-4925992",
