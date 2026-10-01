@@ -2042,6 +2042,9 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     elif korea_earnings_changes:
         one = korea_earnings_changes[0]
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
+    elif micron_supply_changes:
+        one = micron_supply_changes[0]
+        lines.append("한눈에: <b>" + html.escape(one) + "</b>")
     elif bernstein_changes:
         one = bernstein_changes[0]
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
@@ -2132,6 +2135,22 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         if korea_earnings_source_url:
             lines.append('  <a href="' + html.escape(korea_earnings_source_url, quote=True) + '">근거 기사</a>')
 
+    if micron_supply_changes:
+        lines.append("• <b>Micron 2027 공급 확약 상태 변화</b>")
+        for change in list(dict.fromkeys(micron_supply_changes)):
+            lines.append("  " + html.escape(change))
+        pct = micron_supply_state.get("output_committed_min_pct")
+        if pct is not None:
+            lines.append(f"  현재 기준: 2027년 Micron 총출력의 <b>{float(pct):.0f}% 이상</b>이 이미 고객에게 확약")
+        lines.append("  범위: SCA 고객 + 비SCA 고객을 합친 전체 고객 기반 기준")
+        lines.append("  의미: 단순 기사 제목보다 실제 확약 비중 상승/하락이 공급 타이트함의 핵심 상태값")
+        lines.append("  검증: CEO 컨퍼런스콜 발언 재전사 + Micron 공식 실적자료의 SCA 구조를 함께 확인")
+        if micron_supply_source_url:
+            lines.append('  <a href="' + html.escape(micron_supply_source_url, quote=True) + '">근거 발언</a>')
+        official = micron_supply_state.get("official_context_url") or MICRON_SUPPLY_COMMITMENT_BASELINE.get("official_context_url")
+        if official:
+            lines.append('  <a href="' + html.escape(str(official), quote=True) + '">Micron 공식 실적자료</a>')
+
     if bernstein_changes:
         lines.append("• <b>Bernstein 메모리 가격 사이클 상태 변화</b>")
         for change in bernstein_changes:
@@ -2210,13 +2229,13 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
+    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
 
     if legacy_changes:
-        has_other_content = bool(market_changes or bernstein_changes or korea_earnings_changes or divergence_changes or prepared_items)
+        has_other_content = bool(market_changes or bernstein_changes or korea_earnings_changes or micron_supply_changes or divergence_changes or prepared_items)
         if has_other_content:
             lines.append("<<<TELEGRAM_MESSAGE_BREAK>>>")
         else:
