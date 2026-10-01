@@ -431,6 +431,35 @@ def main() -> int:
     )
     if market_alias not in legacy_market_state["seen"]:
         errors.append("legacy market alerts did not gain the new cross-link event key")
+    if not compact.is_low_value_market_commentary({
+        "korean_business_news": True,
+        "source_title": "ETF부터 보이스피싱까지…공군 첫 경제 골든벨 열렸다",
+    }):
+        errors.append("unrelated economy quiz was not excluded from the investment radar")
+    if not compact.is_low_value_market_commentary({
+        "korean_business_news": True,
+        "source_title": "[MK시그널] 반도체 장비 수주 기대감으로 추천 후 상승",
+    }):
+        errors.append("sponsored stock-pick article was not excluded")
+    old_run_mode = os.environ.get("RADAR_RUN_MODE")
+    os.environ["RADAR_RUN_MODE"] = "live"
+    try:
+        stale_opening = compact.is_stale_opening_market_report(
+            {"source_title": "삼전·닉스, 마이크론 호실적에도 약세 출발"},
+            dt.datetime.fromisoformat("2026-10-01T16:00:00+09:00"),
+        )
+    finally:
+        if old_run_mode is None:
+            os.environ.pop("RADAR_RUN_MODE", None)
+        else:
+            os.environ["RADAR_RUN_MODE"] = old_run_mode
+    if not stale_opening:
+        errors.append("same-day opening market report survived afternoon live filtering")
+    if compact.compact_title_summary_aligned(
+        "알래스카 LNG 투자 확정 안돼",
+        "웨스팅하우스 지분은 5%에서 10% 수준으로 협상 중입니다.",
+    ):
+        errors.append("Alaska LNG headline accepted an unrelated nuclear-contract core")
     raw_html_regression = (
         '1) 기사 제목\n- 핵심: <질문 1> & 원문 표기\n'
         '- 출처: <a href="https://example.com/article">원문 뉴스보기</a>'

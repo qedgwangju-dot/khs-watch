@@ -7631,6 +7631,8 @@ def is_low_value_market_commentary(alert: dict) -> bool:
     if not alert.get("korean_business_news"):
         return False
     title = base.norm(str(alert.get("source_title") or alert.get("news") or ""))
+    if has_term(title, ("[mk시그널]", "mk시그널 추천", "경제 골든벨")):
+        return True
     if not has_term(title, KOREAN_BUSINESS_LOW_VALUE_COMMENTARY_TERMS):
         return False
     hard_facts = [
@@ -7638,6 +7640,15 @@ def is_low_value_market_commentary(alert: dict) -> bool:
         "증설", "유상증자", "자사주", "순매수", "순매도", "관세", "수출통제",
     ]
     return not has_term(title, hard_facts)
+
+
+def is_stale_opening_market_report(alert: dict, now) -> bool:
+    if os.getenv("RADAR_RUN_MODE", "").strip().lower() != "live" or now.hour < 12:
+        return False
+    title = base.norm(str(alert.get("source_title") or alert.get("news") or ""))
+    return has_term(title, ("약세 출발", "강세 출발", "상승 출발", "하락 출발")) and has_term(
+        title, ("삼성전자", "SK하이닉스", "삼전", "닉스", "코스피", "코스닥", "증시")
+    )
 
 
 def is_space_pv_pia_base_rehash(alert: dict) -> bool:
@@ -7691,6 +7702,7 @@ def is_polysilicon_11052_base_rehash(alert: dict) -> bool:
 def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     initial = telegram.display_alerts(alerts, min(max(limit * 3, 12), 30))
     candidates = initial + alerts
+    now = base.kst_now()
     iran_candidates = [alert for alert in candidates if alert.get("iran_hormuz_escalation")]
     if iran_candidates:
         def iran_source_rank(alert: dict) -> int:
@@ -7720,6 +7732,9 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             continue
         if is_low_value_market_commentary(alert):
             alert["_exclusion_reason"] = "low_value_market_commentary"
+            continue
+        if is_stale_opening_market_report(alert, now):
+            alert["_exclusion_reason"] = "stale_opening_market_report"
             continue
         if is_low_impact_admin_alert(alert):
             alert["_exclusion_reason"] = "low_impact_admin_document"
@@ -8116,6 +8131,10 @@ def compact_gamejoa_prose_lines(body: str) -> tuple[str, int]:
 def compact_title_summary_aligned(title: str, summary: str) -> bool:
     title_low = clean_article_summary_text(title).lower()
     summary_low = clean_article_summary_text(summary).lower()
+    if "알래스카" in title_low and "알래스카" not in summary_low:
+        return False
+    if "lng" in title_low and not has_term(summary_low, ("lng", "액화천연가스")):
+        return False
     event_rules = (
         (("지진", "강진", "쓰나미"), ("지진", "강진", "쓰나미", "대피", "방재", "폭발")),
         (("사이드카", "서킷브레이커"), ("사이드카", "서킷브레이커", "프로그램 매수", "프로그램 매도")),
