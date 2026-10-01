@@ -1534,14 +1534,33 @@ KOREAN_BUSINESS_PRIORITY_TERMS = {
 
 
 def korean_business_detail_priority(row: dict) -> tuple[int, float]:
-    text = f"{row.get('title') or ''} {row.get('summary') or ''}".lower()
-    score = sum(
+    title = str(row.get("title") or "").lower()
+    summary = str(row.get("summary") or "").lower()
+    title_score = sum(
         weight for term, weight in KOREAN_BUSINESS_PRIORITY_TERMS.items()
-        if term in text
+        if term in title
+    )
+    summary_score = sum(
+        weight for term, weight in KOREAN_BUSINESS_PRIORITY_TERMS.items()
+        if term not in title and term in summary
     )
     published = row.get("published")
     timestamp = published.timestamp() if hasattr(published, "timestamp") else 0.0
-    return score, timestamp
+    return title_score * 2 + min(summary_score, 24), timestamp
+
+
+def rank_korean_business_detail_candidates(
+    rows: list[dict], seen_links: set[str], live_mode: bool
+) -> list[dict]:
+    return sorted(
+        rows,
+        key=lambda row: (
+            1 if row.get("_pinned_direct_article") else 0,
+            1 if not live_mode or str(row.get("link") or "") not in seen_links else 0,
+            *korean_business_detail_priority(row),
+        ),
+        reverse=True,
+    )
 
 
 ARTICLE_SUMMARY_NOISE_PATTERNS = [
@@ -6130,12 +6149,14 @@ def enforce_korean_business_news_contract() -> None:
             seen_links.add(link)
             row["publisher"] = korean_business_publisher(row)
             detail_candidates.append(row)
-        detail_candidates.sort(
-            key=lambda row: (
-                1 if row.get("_pinned_direct_article") else 0,
-                *korean_business_detail_priority(row),
-            ),
-            reverse=True,
+        live_mode = os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live"
+        previously_sent_links = {
+            str(entry.get("link") or "")
+            for entry in telegram.load_seen_state().get("seen", {}).values()
+            if isinstance(entry, dict) and entry.get("link")
+        } if live_mode else set()
+        detail_candidates = rank_korean_business_detail_candidates(
+            detail_candidates, previously_sent_links, live_mode
         )
         deferred = max(0, len(detail_candidates) - KOREAN_BUSINESS_DETAIL_LIMIT)
         selected_candidates = detail_candidates[:KOREAN_BUSINESS_DETAIL_LIMIT]
@@ -6602,6 +6623,7 @@ def source_output_aligned(alert: dict) -> bool:
             (oil_up and has_term(rendered_text, ["유가 하락", "유가 급락"]))
             or (oil_down and has_term(rendered_text, ["유가 상승", "유가 급등", "유가 폭등", "유가 돌파"]))
         )
+        direction_conflict = direction_conflict or market_move_direction_conflict(source_title, summary)
         return bool(
             (alert.get("body_verified") or alert.get("title_fact_verified"))
             and source_title
@@ -6612,6 +6634,18 @@ def source_output_aligned(alert: dict) -> bool:
             and korean_title_core_aligned(source_title, summary)
             and not direction_conflict
         )
+    if alert.get("grid_policy_delay"):
+        source_title = base.norm(alert.get("source_title") or alert.get("original_news") or "")
+        grid_subject = has_term(source_title, [
+            "송전망", "송전선", "계통접속", "전력망", "transmission grid",
+            "transmission line", "interconnection", "grid investment",
+        ])
+        policy_action = has_term(source_title, [
+            "승인", "규제", "인허가", "지연", "보류", "접속",
+            "approval", "regulatory", "permitting", "delay", "interconnection",
+        ])
+        if not (grid_subject and policy_action):
+            return False
     profile = federal_register_profile(alert)
     rendered = base.norm(" ".join(
         str(alert.get(key) or "")
@@ -6700,6 +6734,7 @@ def alert_dedup_key(alert: dict) -> tuple[str, str]:
         return ("iran_hormuz_military_escalation", str(alert.get("published") or "")[:10])
     raw_title = str(alert.get("original_news") or alert.get("news") or "")
     raw_title = re.split(r"\s+-\s+", raw_title, maxsplit=1)[0].strip()
+    raw_title = re.sub(r"^(?:\s*\[[^\]]{1,12}\]\s*)+", "", raw_title).strip()
     theme = str(alert.get("supply_chain_theme") or semantic_event_theme(alert) or "")
     if theme:
         return (base.norm(theme), "event")
@@ -7196,7 +7231,7 @@ def korean_title(alert: dict) -> str:
     if is_china_mofcom_control(alert):
         return f"중국 상무부, {china_mofcom_product_label(alert)} {china_mofcom_action_label(alert)} 발표"
     if alert.get("grid_policy_delay"):
-        return "북미 송전망 투자 정책 변수: 정부 승인·규제 지연 리스크"
+        return raw if raw and not mostly_ascii(raw) else "북미 송전망 투자 정책 변수: 정부 승인·규제 지연 리스크"
     if alert.get("memory_antitrust_lawsuit"):
         return "메모리 반독점 소송: 삼성전자·SK하이닉스·Micron DRAM 가격담합 집단소송"
     if alert.get("robotics_execution_filter"):
@@ -8086,6 +8121,18 @@ def compact_title_summary_aligned(title: str, summary: str) -> bool:
     return True
 
 
+def market_move_direction_conflict(title: str, summary: str) -> bool:
+    if not has_term(title.lower(), ["코스피", "코스닥", "kospi", "kosdaq"]):
+        return False
+    title_up = has_term(title, ["↑", "상승", "급등", "올라"])
+    title_down = has_term(title, ["↓", "하락", "급락", "내려"])
+    core_up = has_term(summary, ["↑", "상승", "급등", "올라", "올랐", "오른"])
+    core_down = has_term(summary, ["↓", "하락", "급락", "내려", "내렸", "내린"])
+    return (title_up and not title_down and core_down and not core_up) or (
+        title_down and not title_up and core_up and not core_down
+    )
+
+
 def compact_alert_block_errors(block: str) -> list[str]:
     errors: list[str] = []
     title = ""
@@ -8126,6 +8173,8 @@ def compact_alert_block_errors(block: str) -> list[str]:
         errors.append("headline_repeated_as_summary")
     if title and not compact_title_summary_aligned(title, summary):
         errors.append("title_core_mismatch")
+    if title and market_move_direction_conflict(title, summary):
+        errors.append("market_direction_mismatch")
     if any(term.lower() in summary.lower() for term in ARTICLE_UI_BOILERPLATE_TERMS):
         errors.append("article_ui_boilerplate")
     foreign_amounts = extract_foreign_amounts(summary)

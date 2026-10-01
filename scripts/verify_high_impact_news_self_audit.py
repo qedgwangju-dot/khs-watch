@@ -137,7 +137,7 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
             "preopen_digest_seen_bypass",
             "seen_filter_scope",
             "_preopen_live_seen_bypass",
-            "candidate_limit = max(output_limit * 5, 35)",
+            "deduped = unique_alert_candidates(alerts)",
             "final_alerts_for_output(deduped, output_limit)",
             "record_seen_alerts(final_alerts, now)",
             "selection_diagnostics",

@@ -231,7 +231,7 @@ REQUIRED_TELEGRAM_RUNNER_SNIPPETS = [
     "seen_state_not_recorded",
     "preopen_send_window_open(now)",
     "RADAR_RUN_MODE",
-    "candidate_limit = max(output_limit * 5, 35)",
+    "deduped = unique_alert_candidates(alerts)",
     "final_alerts_for_output(deduped, output_limit)",
     "canonical_alert_for_seen",
     'canonical.get("supply_chain_theme")',

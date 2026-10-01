@@ -1237,6 +1237,74 @@ def main() -> int:
     if radar.quality_display_alerts([title_only_alert], 1):
         failures.append("title_only_summary=published_without_verified_body")
 
+    crowded_alerts = [
+        dict(
+            title_only_alert,
+            news=f"본문 미확인 제목 전용 후보 {index}",
+            source_title=f"본문 미확인 제목 전용 후보 {index}",
+            score=150,
+        )
+        for index in range(35)
+    ]
+    if samsung_fund_alert:
+        crowded_alerts.append(samsung_fund_alert)
+        all_candidates = radar.telegram.unique_alert_candidates(crowded_alerts)
+        if len(all_candidates) != 36:
+            failures.append(f"candidate_recall=truncated_to:{len(all_candidates)}")
+        elif not radar.quality_display_alerts(all_candidates, 1):
+            failures.append("candidate_recall=verified_article_behind_35_rejected")
+
+    noisy_summary_row = {
+        "title": "기업 행사 안내",
+        "summary": " ".join(radar.KOREAN_BUSINESS_PRIORITY_TERMS),
+        "published": now,
+    }
+    hard_event_row = {
+        "title": "SK하이닉스 HBM4 공급계약 체결",
+        "summary": "",
+        "published": now,
+    }
+    if radar.korean_business_detail_priority(noisy_summary_row)[0] >= radar.korean_business_detail_priority(hard_event_row)[0]:
+        failures.append("detail_priority=noisy_summary_outranks_hard_headline")
+    already_sent_row = dict(hard_event_row, link="https://example.com/already-sent")
+    unsent_row = dict(noisy_summary_row, link="https://example.com/not-sent")
+    ranked_live = radar.rank_korean_business_detail_candidates(
+        [already_sent_row, unsent_row], {already_sent_row["link"]}, True
+    )
+    if ranked_live[0] is not unsent_row:
+        failures.append("detail_priority=live_seen_article_uses_verification_slot")
+
+    market_title = "[속보] 코스피 1.95%·코스닥 4.48%↑ | 연합뉴스"
+    market_core = "코스피는 하락 폭을 키웠고 코스닥도 내린 채 거래를 시작했습니다."
+    if not radar.market_move_direction_conflict(market_title, market_core):
+        failures.append("market_direction=opposite_move_not_detected")
+    market_block = f"1) {market_title}\n- 핵심: {market_core}\n"
+    if "market_direction_mismatch" not in radar.compact_alert_block_errors(market_block):
+        failures.append("market_direction=opposite_move_not_blocked")
+    market_first = {"original_news": market_title, "published": "2026-10-01T15:00+09:00"}
+    market_second = {"original_news": market_title.removeprefix("[속보] "), "published": market_first["published"]}
+    if radar.alert_dedup_key(market_first) != radar.alert_dedup_key(market_second):
+        failures.append("market_headline=breaking_prefix_not_deduped")
+
+    unrelated_grid = {
+        "grid_policy_delay": True,
+        "source_title": "블랙록, 데이터센터와 발전사 투자 확대",
+        "original_news": "블랙록, 데이터센터와 발전사 투자 확대",
+        "news": "북미 송전망 투자 정책 변수: 정부 승인·규제 지연 리스크",
+    }
+    if radar.source_output_aligned(unrelated_grid):
+        failures.append("grid_policy=unrelated_source_relabelled")
+
+    for coverage_note in (
+        "Korean business detail: attempted=96 verified=77 failed=19 deferred=1094 workers=8",
+        "korean_business_detail attempted=96 verified=77 failed=19 deferred=1094 workers=8",
+    ):
+        coverage_status = radar.telegram.selection_diagnostics([], [coverage_note], [], [], [], [], True)
+        if not coverage_status["coverage_incomplete"] or coverage_status["detail_coverage"].get("failed") != 19:
+            failures.append("detail_coverage=verification_failures_hidden")
+        if not coverage_status["source_failures"]:
+            failures.append("detail_coverage=failed_sources_reported_as_zero")
+
     if failures:
         print("GAMEJOA news coverage contract failed:")
         for failure in failures:

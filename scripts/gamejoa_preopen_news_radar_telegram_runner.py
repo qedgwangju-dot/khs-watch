@@ -362,6 +362,23 @@ def final_alerts_for_output(alerts: list[dict], limit: int) -> list[dict]:
     return display_alerts(alerts, limit)
 
 
+def unique_alert_candidates(alerts: list[dict]) -> list[dict]:
+    """Keep every unseen candidate until the final source and impact gates run."""
+    deduped: list[dict] = []
+    seen: set[tuple[str, str, str]] = set()
+    for alert in alerts:
+        key = (
+            base.norm(str(alert.get("original_news") or alert.get("news") or "")),
+            base.norm(str(alert.get("publisher") or alert.get("source") or "")),
+            str(alert.get("published") or "")[:10],
+        )
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(alert)
+    return deduped
+
+
 def partition_realtime_policy_alerts(alerts: list[dict], live_mode: bool) -> tuple[list[dict], list[dict]]:
     """Route breaking policy/geopolitical alerts to KHS once, while retaining them for 06:30."""
     if not live_mode:
@@ -392,6 +409,22 @@ def selection_diagnostics(
         note for note in notes
         if "확인 불가" in note or "HTTPError" in note or "TimeoutError" in note or "URLError" in note
     ]
+    detail_coverage = {}
+    for note in notes:
+        match = re.search(
+            r"(?:Korean business detail:|korean_business_detail) attempted=(\d+) verified=(\d+) failed=(\d+) deferred=(\d+)",
+            note,
+        )
+        if match:
+            detail_coverage = dict(zip(
+                ("attempted", "verified", "failed", "deferred"),
+                (int(value) for value in match.groups()),
+            ))
+            if detail_coverage["failed"]:
+                source_failures.append(
+                    f"Korean business article body verification failed={detail_coverage['failed']}"
+                )
+            break
     selected_keys = {alert_identity(alert) for alert in selected}
     excluded = []
     for alert in candidates:
@@ -417,6 +450,8 @@ def selection_diagnostics(
         "selected_alerts": len(selected),
         "excluded_alerts": excluded,
         "source_failures": source_failures,
+        "detail_coverage": detail_coverage,
+        "coverage_incomplete": bool(detail_coverage.get("failed") or detail_coverage.get("deferred")),
     }
 
 
@@ -511,32 +546,8 @@ def main() -> int:
         f"classified={pinned_count} fresh_after_seen={pinned_fresh_count}"
     )
 
-    # Keep a wider candidate pool than the seven-message display limit.  A
-    # source/body mismatch must reject only that item, not silence every valid
-    # lower-ranked article behind it.
     output_limit = max(1, min(7, int(os.getenv("RADAR_DISPLAY_LIMIT", "7"))))
-    candidate_limit = max(output_limit * 5, 35)
-    deduped, seen = [], set()
-    for alert in alerts:
-        key = (base.norm(alert["original_news"]), base.norm(alert["publisher"]), alert["published"][:10])
-        if key in seen:
-            continue
-        seen.add(key)
-        deduped.append(alert)
-        if len(deduped) >= candidate_limit:
-            break
-
-    local_candidates = [a for a in alerts if a.get("local_dc_policy")]
-    for candidate in local_candidates:
-        if sum(1 for a in deduped if a.get("local_dc_policy")) >= min(2, len(local_candidates)):
-            break
-        key = (base.norm(candidate["original_news"]), base.norm(candidate["publisher"]), candidate["published"][:10])
-        if key in seen:
-            continue
-        if len(deduped) < candidate_limit:
-            deduped.append(candidate)
-            seen.add(key)
-
+    deduped = unique_alert_candidates(alerts)
     deduped.sort(key=lambda a: (-a["score"], a["published"]))
     final_alerts = final_alerts_for_output(deduped, output_limit)
     diagnostics = selection_diagnostics(rows, notes, classified, skipped_seen, deduped, final_alerts, live_mode)
@@ -559,13 +570,13 @@ def main() -> int:
         )
     fred, te = base.collect_dfii10(), base.collect_te()
     report = compact_report(final_alerts, fred, te, now)
-    if not final_alerts and diagnostics["source_failures"]:
+    if not final_alerts and (diagnostics["source_failures"] or diagnostics["coverage_incomplete"]):
         report = report.replace(
             "실시간 고충격 뉴스 직접 확인 없음",
-            "실시간 고충격 뉴스 최종 선별 0건 · 일부 소스 확인 불가",
+            "실시간 고충격 뉴스 최종 선별 0건 · 일부 기사 본문 미확인",
         ).replace(
             "장전 고충격 뉴스 직접 확인 없음",
-            "장전 고충격 뉴스 최종 선별 0건 · 일부 소스 확인 불가",
+            "장전 고충격 뉴스 최종 선별 0건 · 일부 기사 본문 미확인",
         )
 
     base.OUT.mkdir(parents=True, exist_ok=True)
