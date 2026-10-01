@@ -1656,6 +1656,65 @@ def _build_sts_compact_alert_body(
     return "\n".join(lines).strip() + "\n"
 
 
+def _build_oil_flow_compact_alert_body(
+    news_rows: list[NewsItem],
+    oil: Quote | None,
+    current: dt.datetime,
+    fx: Quote | None,
+) -> str:
+    lines = [
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
+        "",
+        "[한눈에]",
+        "실물          중동 원유 수출 회복 · 호르무즈 정상화는 아직 아님",
+    ]
+
+    market_bits: list[str] = []
+    if oil is not None:
+        direction = "↓" if oil.change < 0 else "↑" if oil.change > 0 else "→"
+        market_bits.append(f"Brent USD {oil.price:.2f} · {oil.change_pct:+.2f}% {direction}")
+    if fx is not None:
+        won = "약세" if fx.change > 0 else "강세" if fx.change < 0 else "보합"
+        market_bits.append(f"원·달러 {fx.price:,.2f}원 · {fx.change_pct:+.2f}% · 원화 {won}")
+    if market_bits:
+        lines.append("시장          " + " | ".join(market_bits))
+
+    lines.extend(["", "[핵심]"])
+    if oil is not None and fx is not None and oil.change > 0 and fx.change > 0:
+        lines.append("원유 물량은 회복 중이지만 현재 시장가격은 반대로 상승 중입니다.")
+        lines.append("→ 유가 ↑ + 원화 약세 → 한국 수입물가·에너지 원가·금리 부담 확대")
+    elif oil is not None and fx is not None and oil.change < 0 and fx.change <= 0:
+        lines.append("원유 회복과 시장가격 하락이 같은 방향입니다.")
+        lines.append("→ 유가 ↓ + 원화 강세/안정 → 한국 수입원가·물가 부담 완화")
+    elif oil is not None and fx is not None:
+        lines.append("원유 회복과 유가·환율 신호가 엇갈립니다.")
+        lines.append("→ 국내 영향은 원·달러와 정제품 가격까지 함께 확인")
+    else:
+        lines.append("원유는 다시 나오지만 정상 항로·운임까지 정상화된 것은 아닙니다.")
+
+    lines.extend([
+        "",
+        "[다음 확인]",
+        "실물          호르무즈 통과량 · Saudi Gulf/Red Sea 선적 · Yanbu/East-West",
+        "물류          GoO STS · VLCC 운임/가용선복 · 보험",
+        "한국          원·달러 · 수입물가/CPI · 국고채 금리 · 기업 실적",
+        "",
+        "[근거]",
+    ])
+    for row in news_rows[:2]:
+        published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
+        lines.append(f"{row.source} · {published:%m-%d %H:%M KST}")
+        if row.link:
+            lines.append(f"원문: {row.link}")
+
+    lines.extend([
+        "",
+        "[주의]",
+        "수출 회복과 호르무즈·정제품·운임 정상화는 서로 다른 단계로 봅니다.",
+    ])
+    return "\n".join(lines).strip() + "\n"
+
+
 def build_physical_flow_alert_body(
     kind: str,
     news_rows: list[NewsItem],
@@ -1670,6 +1729,8 @@ def build_physical_flow_alert_body(
         return _build_us_diesel_policy_alert_body(news_rows, oil, current, fx)
     if kind == "china_fuel_export_policy":
         return _build_china_fuel_export_policy_alert_body(news_rows, oil, current, fx)
+    if kind == "oil_flow_recovery":
+        return _build_oil_flow_compact_alert_body(news_rows, oil, current, fx)
     if kind == "sts_reroute_expansion" and metrics:
         return _build_sts_compact_alert_body(news_rows, oil, current, fx, metrics)
 
@@ -2031,6 +2092,8 @@ def run_monitor(current: dt.datetime) -> int:
             title = "미국 디젤 수출정책 변화"
         elif kind == "china_fuel_export_policy":
             title = "중국 정제품 수출정책 변화"
+        elif kind == "oil_flow_recovery":
+            title = "중동 원유 흐름 변화"
         else:
             title = "중동 원유 흐름 회복·우회 물류 변화"
         alert = {

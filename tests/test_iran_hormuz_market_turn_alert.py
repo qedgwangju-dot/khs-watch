@@ -101,6 +101,53 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         ]
         self.assertEqual(MODULE.event_id("oil_flow_recovery", rows_a), MODULE.event_id("oil_flow_recovery", rows_b))
 
+    def test_generic_oil_flow_alert_is_compact(self):
+        current = dt.datetime(2026, 10, 1, 15, 40, tzinfo=dt.timezone.utc)
+        news = [
+            MODULE.NewsItem(
+                "Oil prices settle down on signs Middle East exports recovering",
+                "Reuters",
+                "https://example.com/reuters",
+                current.isoformat(),
+                current.timestamp(),
+                "oil_flow_recovery",
+            ),
+            MODULE.NewsItem(
+                "Oil prices settle down on signs Middle East exports recovering",
+                "BNN Bloomberg",
+                "https://example.com/bnn",
+                current.isoformat(),
+                current.timestamp(),
+                "oil_flow_recovery",
+            ),
+        ]
+        oil = MODULE.Quote("BZ=F", "Brent", "달러/배럴", 101.81, 98.03, 3.78, 3.86, "", current.timestamp())
+        fx = MODULE.Quote("KRW=X", "원·달러", "원/달러", 1364.24, 1356.54, 7.70, 0.57, "", current.timestamp())
+        body = MODULE.build_physical_flow_alert_body("oil_flow_recovery", news, oil, current, fx)
+        self.assertIn("[한눈에]", body)
+        self.assertIn("실물          중동 원유 수출 회복", body)
+        self.assertIn("시장          Brent USD 101.81", body)
+        self.assertIn("[핵심]", body)
+        self.assertIn("유가 ↑ + 원화 약세", body)
+        self.assertIn("[다음 확인]", body)
+        self.assertIn("원문: https://example.com/reuters", body)
+        self.assertLessEqual(len(body.splitlines()), 25)
+        self.assertNotIn("[병목]", body)
+        self.assertNotIn("[다음 체크]", body)
+
+    def test_rss_older_than_24h_is_rejected(self):
+        current = dt.datetime(2026, 10, 1, 15, 40, tzinfo=dt.timezone.utc)
+        old = current - dt.timedelta(hours=38)
+        rss = f"""<?xml version="1.0"?>
+        <rss><channel><item>
+          <title>Oil prices settle down on signs Middle East exports recovering - Reuters</title>
+          <link>https://example.com/old</link>
+          <source>Reuters</source>
+          <pubDate>{old.strftime('%a, %d %b %Y %H:%M:%S GMT')}</pubDate>
+        </item></channel></rss>""".encode()
+        rows = MODULE.parse_rss(rss, current, 24)
+        self.assertEqual(rows, [])
+
     def test_physical_flow_body_separates_sts_from_hormuz_volume(self):
         current = dt.datetime(2026, 9, 27, 12, 0, tzinfo=dt.timezone.utc)
         news = [

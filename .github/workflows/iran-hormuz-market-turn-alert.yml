@@ -38,7 +38,7 @@ jobs:
     env:
       TELEGRAM_TEST: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test || 'false' }}
       TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
-      IRAN_HORMUZ_MAX_NEWS_AGE_HOURS: "72"
+      IRAN_HORMUZ_MAX_NEWS_AGE_HOURS: "24"
       IRAN_HORMUZ_MARKET_MAX_AGE_MINUTES: "240"
       IRAN_HORMUZ_YAHOO_INTERVAL: "5m"
       IRAN_HORMUZ_YAHOO_RANGE: "5d"
