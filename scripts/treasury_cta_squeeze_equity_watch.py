@@ -54,6 +54,7 @@ CME_EQUITIES_URL = "https://www.cmegroup.com/markets/equities.html"
 CME_NQ_BULLETIN = "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf"
 YAHOO_NQ_URL = "https://query1.finance.yahoo.com/v8/finance/chart/NQ%3DF?range=5d&interval=1d"
 US_POSITIONING_STATE = watcher.DATA / "us_positioning_state.json"
+CROSS_FORMAT_REVISION = 2
 _CROSS_CACHE = None
 
 # CME contract face amounts. These convert CFTC contract counts into an intuitive
@@ -871,7 +872,7 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
     # - FOMC eve report only from the dedicated weekday 11:40 UTC cron (= 20:40 KST)
     # A code push or ordinary 15-minute market poll can never consume these slots.
     now_kst = datetime.now(KST)
-    weekly_crons = {"59 21 * * 0", "3 22 * * 0", "13 22 * * 0"}
+    weekly_crons = {"0 22 * * 0", "3 22 * * 0", "13 22 * * 0"}
     fomc_crons = {"40 11 * * 1-5", "47 11 * * 1-5"}
 
     monday_due = (
@@ -908,7 +909,11 @@ def _cross_alert_gate(current_state: dict, cross: dict) -> tuple[bool, int, int,
         and not fuel_present
     )
     gate_base = 0 if episode_reset else prev_alerted
-    due = bool(stage >= 1 and stage > gate_base)
+    format_due = bool(
+        stage >= 1
+        and int(current_state.get("nasdaq_cross_asset_format_revision", 0) or 0) < CROSS_FORMAT_REVISION
+    )
+    due = bool(stage >= 1 and (stage > gate_base or format_due))
     next_alerted = stage if due else gate_base
     return due, gate_base, next_alerted, episode_reset
 
@@ -931,8 +936,15 @@ def scheduled_main() -> int:
     cross_due, cross_gate_base, next_alerted_stage, cross_episode_reset = _cross_alert_gate(
         current_state, cross
     )
+    cross_format_due = bool(
+        stage >= 1
+        and int(current_state.get("nasdaq_cross_asset_format_revision", 0) or 0) < CROSS_FORMAT_REVISION
+    )
     next_state["nasdaq_cross_asset_stage"] = stage
     next_state["nasdaq_cross_asset_alerted_stage"] = next_alerted_stage
+    next_state["nasdaq_cross_asset_format_revision"] = (
+        CROSS_FORMAT_REVISION if cross_due else int(current_state.get("nasdaq_cross_asset_format_revision", 0) or 0)
+    )
 
     # Always expose the cross-asset gate in the verification status, even when no
     # Telegram is due. This makes a skipped send auditable rather than silent.
@@ -973,6 +985,8 @@ def scheduled_main() -> int:
         reasons.append("FOMC 전날 점검")
     if cross_due:
         reasons.append("채권→Nasdaq 이중 숏 스퀴즈 " + ("확인" if stage >= 2 else "연료 축적"))
+        if cross_format_due:
+            reasons.append("정정: 10년 기록=주간 총숏 증가 속도 · NQ 확정 OI=CME 같은 거래일 일일 OI")
     reasons = list(dict.fromkeys(reasons))
 
     # If the audited Treasury gate already produced an event alert, format_alert()
