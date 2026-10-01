@@ -1734,7 +1734,7 @@ def assert_fcc_upper_c_band_auction115_is_monitored() -> None:
         "description": (
             "FCC Auction 115 will offer 3,248 licenses in 3.98-4.14 GHz, 160 megahertz in eight 20-megahertz blocks."
         ),
-        "source": "U.S. Federal Register (FCC)",
+        "source": "미 연방관보 FCC",
         "link": "https://www.federalregister.gov/documents/2026/08/03/2026-15725/example",
         "published_kst": "2026-08-03T09:00:00+09:00",
     }
