@@ -318,7 +318,7 @@ STORY_RULES = (
         ),
         counter=(
             "Auction 115 경매는 2027년에 열리지만 FCC 전환 일정상 상위 75개 PEA의 신규 지상 무선 서비스는 "
-            "2020년 12월 31일이 아니라 2030년 12월 31일부터 가능하고, 나머지 지역은 2031년 7월 1일이 기준입니다. "
+            "2030년 12월 31일부터 가능하고, 나머지 지역은 2031년 7월 1일이 기준입니다. "
             "따라서 2027년 경매 직후 전국 장비매출이 즉시 발생한다고 보면 안 됩니다."
         ),
         sectors="통신장비/5G·6G, 기지국 안테나·필터, DAS·중계기, 프론트홀·광전송",
@@ -892,6 +892,18 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
                         published = dt.datetime.strptime(date_match.group(0), "%B %d, %Y").replace(tzinfo=KST)
                     except ValueError:
                         published = None
+                verified = True
+
+            elif (
+                rule.key == "us_fcc_upper_c_band_auction115"
+                and "auction 115" in raw_plain.lower()
+                and "upper c-band" in raw_plain.lower()
+                and "april 27, 2027" in raw_plain.lower()
+                and ("3.98" in raw_plain or "3980" in raw_plain)
+            ):
+                title = expected_plain
+                description = raw_plain[:50000]
+                published = dt.datetime(2026, 8, 3, tzinfo=KST)
                 verified = True
 
         haystack = f"{title} {source_label} {description}"
@@ -1899,6 +1911,11 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
             "scope_note": (
                 "1,000억달러는 Auction 115 한 번의 경매액이 아니라 FCC가 계획한 향후 여러 경매의 누적 가능 수입입니다."
             ),
+            "backfill_note": "기존 공식 공고가 Telegram까지 전달되지 않아 이번에 누락 복구로 1회 전송합니다.",
+            "secondary_source": (
+                "Reuters | https://www.reuters.com/business/media-telecom/"
+                "us-official-says-upcoming-spectrum-auctions-could-generate-more-than-100-billion-2026-09-17/"
+            ),
             "impacts": "매출·마진·현금흐름, 수급, 시간표",
             "paths": "주파수 경매, 통신사 CAPEX, 장비 발주, 망 구축 시간표",
             "sectors": "통신장비/5G·6G, 안테나·필터, DAS·중계기, 프론트홀",
@@ -2207,6 +2224,8 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
             *([f"- 국내 관련 기업: {profile.get('korea_candidates')}"] if profile.get("korea_candidates") else []),
             *([f"- 숨은 역풍: {profile.get('headwind')}"] if profile.get("headwind") else []),
             *([f"- 범위 주의: {profile.get('scope_note')}"] if profile.get("scope_note") else []),
+            *([f"- 알림 상태: {profile.get('backfill_note')}"] if profile.get("backfill_note") else []),
+            *([f"- 보조 출처: {profile.get('secondary_source')}"] if profile.get("secondary_source") else []),
             f"- 다음 확인: {profile.get('next')}",
         ]
     return [f"- 핵심: {core}"]
