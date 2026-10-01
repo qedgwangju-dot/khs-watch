@@ -153,7 +153,8 @@ CONTRACT = re.compile(
     re.I,
 )
 QUANTITY = re.compile(
-    r'\b\d[\d,.]*\s*(?:systems?|units?|drones?|robots?|aircraft|vehicles?|million|billion|%|대|개|억\s*달러|백만\s*달러)\b|'
+    r'\b\d[\d,.]*\s*(?:(?:autonomous|unmanned|robotic|attritable|one[-\s]*way(?:\s+attack)?)\s+)?'
+    r'(?:systems?|units?|drones?|robots?|aircraft|vehicles?|million|billion|%|대|개|억\s*달러|백만\s*달러)\b|'
     r'\$\s*\d[\d,.]*(?:\s*(?:million|billion|m|bn))?',
     re.I,
 )
