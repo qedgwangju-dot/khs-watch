@@ -274,6 +274,37 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertEqual(MODULE.classify_event(considering.title), "us_diesel_export_policy")
         self.assertNotEqual(MODULE.event_id("us_diesel_export_policy", [denied]), MODULE.event_id("us_diesel_export_policy", [considering]))
 
+    def test_china_fuel_export_suspension_classified(self):
+        title = "Chinese refiners suspend October fuel exports, PetroChina cancels cargoes - Reuters"
+        self.assertEqual(MODULE.classify_event(title), "china_fuel_export_policy")
+
+    def test_china_fuel_export_resume_is_new_stage(self):
+        now = dt.datetime(2026, 10, 8, 1, 0, tzinfo=dt.timezone.utc)
+        suspended = MODULE.NewsItem(
+            "Chinese refiners suspend October fuel exports outside Hong Kong and Macau",
+            "Reuters", "a", now.isoformat(), now.timestamp(), "china_fuel_export_policy"
+        )
+        resumed = MODULE.NewsItem(
+            "China resumes refined product exports after Beijing gives green light",
+            "Reuters", "b", now.isoformat(), now.timestamp(), "china_fuel_export_policy"
+        )
+        self.assertNotEqual(
+            MODULE.event_id("china_fuel_export_policy", [suspended]),
+            MODULE.event_id("china_fuel_export_policy", [resumed]),
+        )
+
+    def test_china_fuel_export_body_keeps_official_status_cautious(self):
+        now = dt.datetime(2026, 10, 1, 7, 0, tzinfo=dt.timezone.utc)
+        rows = [MODULE.NewsItem(
+            "Chinese refiners suspend October fuel exports, PetroChina cancels cargoes",
+            "Reuters", "https://example.com/reuters", now.isoformat(), now.timestamp(), "china_fuel_export_policy"
+        )]
+        body = MODULE.build_physical_flow_alert_body("china_fuel_export_policy", rows, None, now)
+        self.assertIn("중국 정책", body)
+        self.assertIn("기존 10월 선적 취소", body)
+        self.assertIn("10월 7일", body)
+        self.assertIn("공식 전면 금지로 표현하지 않습니다", body)
+
     def test_india_gulf_import_recovery_is_classified(self):
         title = "Gulf crude imports to India recover to 1.52 mb/d in September - Kpler"
         self.assertEqual(MODULE.classify_event(title), "india_gulf_import_recovery")

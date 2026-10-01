@@ -90,6 +90,11 @@ NEWS_QUERIES = (
     '"diesel export ban" considering Trump when:3d',
     '"still considering diesel export ban" Trump Reuters when:3d',
     '미국 디젤 수출 금지 검토 백악관 when:3d',
+    '"Chinese refiners suspend" fuel exports PetroChina when:3d',
+    '"China" fuel exports resume PetroChina October 7 when:7d',
+    '"China" refined product exports suspended Beijing green light when:7d',
+    '"China" gasoline jet fuel cargoes cancelled PetroChina when:7d',
+    '중국 정유사 정제품 수출 중단 페트로차이나 when:7d',
     '"Gulf crude" India 1.52 million bpd Kpler September when:7d',
     '"Saudi Arabia resumes oil exports" Yanbu East-West Pipeline when:3d',
     '"East-West pipeline starts exports" Saudi Yanbu when:3d',
@@ -138,6 +143,9 @@ TRUSTED_SOURCE_ALIASES = (
     "livemint",
     "mint",
     "news1",
+    "marketscreener",
+    "s&p global",
+    "platts",
     "kpler",
     "vortexa",
     "saudi ministry of energy",
@@ -195,6 +203,7 @@ EVENT_LABELS = {
     "regional_export_recovery": "중동 원유 수출 회복 단계 상향",
     "crude_product_divergence": "중동 원유 98% 회복·정제품 병목",
     "us_diesel_export_policy": "미국 디젤 수출정책 단계 변화",
+    "china_fuel_export_policy": "중국 정제품 수출정책 단계 변화",
     "india_gulf_import_recovery": "인도 걸프산 원유 유입 회복",
 }
 DATA_PROVIDER_ALIASES = ("kpler", "vortexa", "jodi")
@@ -310,6 +319,23 @@ def classify_event(title: str) -> str | None:
     )
     if diesel_policy_context and us_policy_actor:
         return "us_diesel_export_policy"
+
+    china_context = any(term in low for term in ("china", "chinese", "beijing", "petrochina", "sinopec", "zhejiang petrochemical", "중국", "베이징", "페트로차이나", "시노펙"))
+    china_product_export_context = any(term in low for term in (
+        "fuel exports", "oil product exports", "refined product exports",
+        "gasoline exports", "diesel exports", "jet fuel exports",
+        "product shipments", "fuel shipments",
+        "정제품 수출", "석유제품 수출", "경유 수출", "휘발유 수출", "항공유 수출",
+    ))
+    china_policy_change = any(term in low for term in (
+        "suspend", "suspended", "suspension", "halt", "halts", "halted",
+        "cancel", "cancels", "cancelled", "canceled", "no green light",
+        "restrict", "restriction", "curb", "curbs",
+        "resume", "resumes", "resumed", "reopen", "restart", "allow", "permits", "permitting",
+        "중단", "보류", "취소", "제한", "재개", "허용", "승인",
+    ))
+    if china_context and china_product_export_context and china_policy_change:
+        return "china_fuel_export_policy"
 
     jpmorgan_recovery_context = (
         ("jpmorgan" in low or "jp모건" in low or "jp 모건" in low)
@@ -889,6 +915,11 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
         basis = f"{kind}|{stage}"
         return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
+    if kind == "china_fuel_export_policy":
+        stage = _china_fuel_export_stage(combined)
+        basis = f"{kind}|{stage}"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
+
     if kind == "crude_product_divergence":
         metrics = _extract_crude_product_gap_metrics(rows)
         crude_pct = float(metrics.get("crude_pct") or 0.0)
@@ -1393,6 +1424,78 @@ def _build_us_diesel_policy_alert_body(
     return "\n".join(lines).strip()+"\n"
 
 
+def _china_fuel_export_stage(text_or_rows: str | list[NewsItem]) -> str:
+    text = normalize_text(text_or_rows) if isinstance(text_or_rows, str) else " ".join(normalize_text(row.title) for row in text_or_rows)
+    if any(term in text for term in ("resume", "resumes", "resumed", "reopen", "restart", "allow exports", "permits exports", "green light", "재개", "허용", "승인")):
+        return "resumed"
+    if any(term in text for term in ("extend", "extended", "until further notice", "연장", "무기한")):
+        return "extended"
+    if any(term in text for term in ("cancel", "cancels", "cancelled", "canceled", "취소")):
+        return "cargo_cancelled"
+    if any(term in text for term in ("suspend", "suspended", "suspension", "halt", "halted", "no green light", "중단", "보류")):
+        return "suspended"
+    if any(term in text for term in ("restrict", "restriction", "curb", "curbs", "제한")):
+        return "restricted"
+    return "policy_change"
+
+
+def _build_china_fuel_export_policy_alert_body(
+    news_rows: list[NewsItem], oil: Quote | None, current: dt.datetime, fx: Quote | None,
+) -> str:
+    stage = _china_fuel_export_stage(news_rows)
+    labels = {
+        "resumed": "수출 재개·허용",
+        "extended": "수출 중단·제한 연장",
+        "cargo_cancelled": "기존 10월 선적 취소",
+        "suspended": "홍콩·마카오 외 수출 중단",
+        "restricted": "정제품 수출 제한",
+        "policy_change": "정제품 수출정책 변화",
+    }
+    lines = [
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
+        "",
+        "[한눈에]",
+        f"중국 정책     {labels.get(stage, stage)}",
+    ]
+    if oil is not None:
+        direction = "↓" if oil.change < 0 else "↑" if oil.change > 0 else "→"
+        lines.append(f"Brent         USD {oil.price:.2f} · {oil.change_pct:+.2f}% {direction}")
+    if fx is not None:
+        won = "약세" if fx.change > 0 else "강세" if fx.change < 0 else "보합"
+        lines.append(f"원·달러       {fx.price:,.2f}원 · {fx.change_pct:+.2f}% · 원화 {won}")
+
+    lines.extend([
+        "",
+        "[핵심 의미]",
+        "원유가 회복돼도 중국이 경유·휘발유·항공유 수출을 막으면 글로벌 정제품 공급은 다시 타이트해질 수 있습니다.",
+        "→ 이번 병목은 원유 부족이 아니라 정제·제품 수출정책 쪽에서 생기는 공급 충격입니다.",
+        "",
+        "[한국 전이]",
+        "정유          아시아 디젤·항공유 정제마진 상승 시 한국 정유사의 수출 스프레드에 우호적",
+        "항공·운송     연료비 하락 지연 또는 재상승 위험",
+        "물가·금리     정제품 가격 상승이 수입물가·운송비로 전이되는지 확인",
+        "",
+        "[다음 체크]",
+        "중국          10월 7일 연휴 종료 뒤 수출 허용 여부 · PetroChina 취소 물량 재계약 여부",
+        "제품          디젤·항공유·휘발유 수출량 · 중국 내 재고 · 정유 가동률",
+        "아시아        Singapore gasoil crack · 10~11월 스프레드 · 한국 정유사 수출마진",
+        "동시 변수     러시아 디젤 수출금지 · 미국 디젤 수출제한 검토 · 중동 정제품 회복률",
+        "",
+        "[근거]",
+    ])
+    for row in news_rows[:3]:
+        published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
+        lines.append(f"{row.source} · {published:%m-%d %H:%M KST} · {row.title}")
+        if row.link:
+            lines.append(f"원문: {row.link}")
+    lines.extend([
+        "",
+        "[주의]",
+        "현재 공개 보도는 관계자 전언 기반입니다. 중국 정부의 공개 명령문이 확인되기 전에는 공식 전면 금지로 표현하지 않습니다.",
+    ])
+    return "\n".join(lines).strip() + "\n"
+
+
 def _extract_regional_export_metrics(news_rows: list[NewsItem]) -> dict[str, float | None]:
     text = " ".join(normalize_text(row.title) for row in news_rows)
 
@@ -1564,6 +1667,8 @@ def build_physical_flow_alert_body(
         return _build_crude_product_gap_alert_body(news_rows, oil, current, fx)
     if kind == "us_diesel_export_policy":
         return _build_us_diesel_policy_alert_body(news_rows, oil, current, fx)
+    if kind == "china_fuel_export_policy":
+        return _build_china_fuel_export_policy_alert_body(news_rows, oil, current, fx)
     if kind == "sts_reroute_expansion" and metrics:
         return _build_sts_compact_alert_body(news_rows, oil, current, fx, metrics)
 
@@ -1905,6 +2010,7 @@ def run_monitor(current: dt.datetime) -> int:
         "regional_export_recovery",
         "crude_product_divergence",
         "us_diesel_export_policy",
+        "china_fuel_export_policy",
         "india_gulf_import_recovery",
     }
     if kind in physical_kinds:
@@ -1922,6 +2028,8 @@ def run_monitor(current: dt.datetime) -> int:
             title = "중동 원유 회복·정제품 병목 변화"
         elif kind == "us_diesel_export_policy":
             title = "미국 디젤 수출정책 변화"
+        elif kind == "china_fuel_export_policy":
+            title = "중국 정제품 수출정책 변화"
         else:
             title = "중동 원유 흐름 회복·우회 물류 변화"
         alert = {
