@@ -167,24 +167,21 @@ def _current_state_block(flags: dict[str, bool]) -> list[str]:
     total = value("nuclear_total_units:")
     ap1000 = value("ap1000_units:")
     apr1400 = value("apr1400_units:")
+
+    if "nuclear_framework_status:agreed" in facts:
+        return [
+            "<b>📌 원전 공식 기준</b>",
+            f"• 한미 공동 팩트시트: <b>원전 프레임워크 합의</b> · 전체 {html.escape(total)}기 = AP1000 {html.escape(ap1000)}기 + APR1400 {html.escape(apr1400)}기",
+            "• 재원: <b>최대 1,200억달러</b> = 건설비 1,000억달러 + 예비비 200억달러",
+            "• 다만 <b>개별 원전 부지·사업구조·건설일정은 아직 최종 확정이 아니며</b>, 각 사업별 상업적 합리성 검토·국회 절차 후 추진 여부 결정",
+        ]
+
     official = "미확정" if "official_status:unconfirmed" in facts else (
         "공식확정" if "official_status:confirmed" in facts else "확인 중"
     )
-
-    # 정부가 세부 미확정이라고 밝힌 동안에는 기사에서 반복되는 AP1000/APR1400
-    # 숫자를 현재 기준처럼 표시하지 않는다. 전체 기수 역시 공식 확정치가 아니면
-    # 보도 기준으로만 분리한다.
-    if official == "미확정":
-        return [
-            "<b>📌 현재 기준</b>",
-            "• 대미투자 원전 프로젝트: <b>세부 미확정</b>",
-            "• 보도상 전체 8기 언급은 있으나 <b>AP1000/APR1400 노형별 기수·부지·사업자·투자금은 공식 확정 전</b>",
-            "• 새 기사 반복만으로 기수·노형 변경 알림을 만들지 않고, 정부·당사자 공식 확정 때만 상태를 변경",
-        ]
-
     return [
         "<b>📌 현재 기준</b>",
-        f"• 공식 원전 구성: 전체 <b>{html.escape(total)}기</b> · AP1000 <b>{html.escape(ap1000)}기</b> · APR1400 <b>{html.escape(apr1400)}기</b>",
+        f"• 원전 구성: 전체 {html.escape(total)}기 · AP1000 {html.escape(ap1000)}기 · APR1400 {html.escape(apr1400)}기",
         f"• 정부 공식상태: <b>{official}</b>",
     ]
 
@@ -239,6 +236,17 @@ def _context_numbers(flags: dict[str, bool], records: list[dict]) -> list[str]:
     return lines[:5]
 
 
+def _official_project_status_block() -> list[str]:
+    return [
+        "<b>🏛 한미 공동 팩트시트 공식 단계</b>",
+        "• <b>Project Star</b>: 텍사스 엔시날 가스복합화력 <b>제1호 전략투자 공식 추진</b> · 총사업비 223억달러 · 6,472MW · 2029년 1단계 상업운전 · 2032년 전체 가동 목표",
+        "• <b>Project Power</b>: 미국 대형원전 <b>8기 프레임워크 합의</b> · AP1000 6기 + APR1400 2기 · 최대 1,200억달러",
+        "• <b>Project North</b>: 알래스카 LNG는 <b>투자 확정이 아니라 검토 착수</b> · 상업적 합리성 및 국내법 요건 충족 시 추진 여부 결정",
+        "• 따라서 트럼프의 알래스카 투자 발표와 <b>한미 공동문서의 확정 수준은 구분</b>해서 추적",
+        '<b>공식 원문</b> · <a href="https://www.korea.kr/briefing/pressReleaseView.do?newsId=156783865">산업통상부·정책브리핑 2026-10-01</a>',
+    ]
+
+
 def _alaska_kumkang_context() -> list[str]:
     state = _load_state()
     states = state.get("event_states") or {}
@@ -247,7 +255,15 @@ def _alaska_kumkang_context() -> list[str]:
     facts = {str(x) for x in (alaska.get("facts") or [])}
     package_facts = {str(x) for x in (package.get("facts") or [])}
     announced = "stage:발표실행" in facts or "stage:발표실행" in package_facts
-    if announced:
+    bilateral_review = "alaska_bilateral_status:review_started" in facts
+    if bilateral_review:
+        status_lines = [
+            "<b>🧊 알래스카 LNG 공식 단계</b>",
+            "• 한미 공동 팩트시트: <b>Project North는 검토 착수</b> 단계이며 투자 확정이 아님",
+            "• 추진 조건: <b>상업적 합리성 + 관련 국내법 요건 충족</b>",
+            "• 트럼프는 한국 투자를 기정사실화해 발표했지만, 한국 정부 공식 문서는 검토 후 추진 여부를 결정한다고 명시",
+        ]
+    elif announced:
         status_lines = [
             "<b>🧊 9월 30일 미국측 발표 확인</b>",
             "• Reuters 2026-09-30: 트럼프가 한국의 <b>2,000억달러 미국 인프라·에너지 투자계획</b>을 공개했고 <b>알래스카 LNG 540억달러·대형원전 8기·텍사스 6GW 발전시설·807마일 가스관</b>을 포함한다고 보도",
@@ -356,6 +372,8 @@ def _compact_generic(text: str, core, lookup_time: str) -> str | None:
     if context:
         parts += ["<b>📌 이번 변화 핵심</b>"] + context + [""]
 
+    if flags["energy"] or flags["alaska"]:
+        parts += _official_project_status_block() + [""]
     if flags["alaska"]:
         parts += _alaska_kumkang_context() + [""]
 
@@ -372,9 +390,9 @@ def _compact_generic(text: str, core, lookup_time: str) -> str | None:
             '<b>공식 기준</b> · <a href="https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/171196/view">전략투자 MOU: 총 2,000억달러·연 200억달러</a> · <a href="https://www.motir.go.kr/kor/article/ATCLe0854704d/172177/view">산업통상부: 전략적 투자가 2,000억달러를 초과한다는 것은 사실이 아님</a>',
             "",
         ]
-    elif flags["funding"] or flags["energy"]:
+    elif flags["funding"] or flags["energy"] or flags["alaska"]:
         parts += [
-            '<b>공식 기준</b> · <a href="https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/171196/view">2025-11-14 전략적 투자 MOU</a> · <a href="https://www.korea.kr/briefing/actuallyView.do?newsId=148971518&pWise=sub&pWiseMain=F1">첫 투자금·원전 미확정</a>',
+            '<b>공식 기준</b> · <a href="https://www.korea.kr/briefing/pressReleaseView.do?newsId=156783865">2026-10-01 한미 전략투자 공동 팩트시트</a> · <a href="https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/171196/view">2025-11-14 전략적 투자 MOU</a>',
             "",
         ]
     if flags["supply"]:
@@ -398,10 +416,10 @@ def _compact_energy_package(text: str, lookup_time: str) -> str | None:
         "",
         _official_line(flags),
         "",
-        "<b>🟧 이번 변화</b>",
-        "• WSJ: 한국의 미국 에너지 투자 패키지가 <b>합의에 근접</b>했다는 보도",
-        "• 후보: <b>텍사스 가스발전 + 미국 대형원전 최대 8기</b>",
-        "• 동일 WSJ 재전달 기사는 한 사건으로 묶고 정부 공식 확정은 별도 단계로 관리",
+        "<b>🟧 공식 단계</b>",
+        "• Project Star: <b>텍사스 엔시날 제1호 공식 추진</b> · 223억달러 · 6,472MW",
+        "• Project Power: <b>원전 8기 프레임워크 합의</b> · AP1000 6기 + APR1400 2기 · 최대 1,200억달러",
+        "• Project North: <b>알래스카 LNG 검토 착수</b> · 상업적 합리성·국내법 요건 충족 시 추진 여부 결정",
         "",
     ]
     baseline = _current_state_block(flags)
@@ -413,7 +431,7 @@ def _compact_energy_package(text: str, lookup_time: str) -> str | None:
         "• 원전 부지·노형·기수·발주주체",
         "• 실제 선정 통지일·자금요청·송금일/금액",
         "",
-        '<b>출처</b> · <a href="https://www.wsj.com/world/asia/south-korea-nears-agreement-on-billions-in-u-s-investments-a-win-for-trump-2b58dc4a">WSJ</a> · <a href="https://www.reuters.com/world/asia-pacific/south-korea-nears-agreement-worth-over-100-billion-us-investments-wsj-reports-2026-09-10/">Reuters</a> · <a href="https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/171196/view">산업통상부 MOU</a>',
+        '<b>출처</b> · <a href="https://www.korea.kr/briefing/pressReleaseView.do?newsId=156783865">산업통상부·정책브리핑 공동 팩트시트</a> · <a href="https://www.reuters.com/legal/government/trump-expected-announce-54-billion-south-korea-investment-alaska-lng-sources-say-2026-09-30/">Reuters</a>',
     ]
     if lookup_time:
         parts += ["", f"조회 {lookup_time} · 새 변화 중심 · 핵심 사업비 블록은 고정 표시"]
