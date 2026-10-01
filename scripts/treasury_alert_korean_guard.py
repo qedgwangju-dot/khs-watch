@@ -35,7 +35,7 @@ TREASURY_RELEASE = "https://home.treasury.gov/news/press-releases/sb0607"
 BUYBACK_FAQ = "https://www.treasurydirect.gov/help-center/faqs/buyback-faqs/"
 FRED_SERIES_PAGE = "https://fred.stlouisfed.org/series/{series}"
 FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv"
-EIA_BRENT_PAGE = "https://www.eia.gov/dnav/pet/PET_PRI_SPT_S1_D.htm"
+EIA_BRENT_PAGE = "https://www.eia.gov/dnav/pet/hist/rbrteD.htm"
 TREASURY_NOMINAL_XML = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value={year}"
 TREASURY_REAL_XML = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_real_yield_curve&field_tdr_date_value={year}"
 NYFED_TERM_PREMIA = "https://www.newyorkfed.org/research/data_indicators/term-premia-tabs"
@@ -172,34 +172,56 @@ class _EiaTableParser(HTMLParser):
 
 
 def fetch_eia_brent_rows() -> list[tuple[str, float]]:
+    """Parse EIA's static daily Brent history table without an API key.
+
+    Each history-table row is one Monday-Friday week, for example:
+    "2026 Sep-28 to Oct- 2 | 119.97 | 113.96 | ...".
+    Blank holiday cells are ignored. This endpoint is static HTML and is more
+    reliable on GitHub runners than the FRED mirror that previously timed out.
+    """
     raw = _url_text(EIA_BRENT_PAGE, timeout=15)
     parser = _EiaTableParser()
     parser.feed(raw)
 
-    header_dates: list[str] = []
-    brent_values: list[float] = []
-    for row in parser.rows:
-        dates = [x for cell in row for x in re.findall(r"\b\d{2}/\d{2}/\d{2}\b", cell)]
-        if len(dates) >= 2:
-            header_dates = dates
-        if any("Brent - Europe" in cell for cell in row):
-            for cell in row[1:]:
-                m = re.fullmatch(r"\s*([0-9]{1,3}(?:\.[0-9]+)?)\s*", cell)
-                if m:
-                    brent_values.append(float(m.group(1)))
-            break
-
-    if not header_dates or len(brent_values) < 2:
-        raise RuntimeError("EIA Brent 일일표 파싱 실패")
-
-    n = min(len(header_dates), len(brent_values))
+    months = {
+        "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6,
+        "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12,
+    }
     out: list[tuple[str, float]] = []
-    for d, v in zip(header_dates[:n], brent_values[:n]):
-        mm, dd, yy = [int(x) for x in d.split("/")]
-        out.append((f"{2000 + yy:04d}-{mm:02d}-{dd:02d}", v))
+    pattern = re.compile(
+        r"^(\d{4})\s+([A-Za-z]{3})-\s*(\d{1,2})\s+to\s+([A-Za-z]{3})-\s*(\d{1,2})$"
+    )
+
+    for row in parser.rows:
+        if len(row) < 2:
+            continue
+        label = re.sub(r"\s+", " ", row[0]).strip()
+        m = pattern.match(label)
+        if not m:
+            continue
+        year = int(m.group(1))
+        month = months.get(m.group(2).title())
+        if month is None:
+            continue
+        try:
+            monday = date(year, month, int(m.group(3)))
+        except ValueError:
+            continue
+
+        for offset, cell in enumerate(row[1:6]):
+            raw_value = cell.replace(",", "").strip()
+            if not raw_value or raw_value in ("-", "--", "NA", "W"):
+                continue
+            try:
+                value = float(raw_value)
+            except ValueError:
+                continue
+            observed = monday + timedelta(days=offset)
+            out.append((observed.isoformat(), value))
+
     out.sort(key=lambda x: x[0])
     if len(out) < 2:
-        raise RuntimeError("EIA Brent 유효 관측치 부족")
+        raise RuntimeError("EIA Brent 일일 역사표 파싱 실패")
     return out
 
 
