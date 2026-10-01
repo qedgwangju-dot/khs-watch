@@ -138,11 +138,20 @@ def _is_korea_policy(text: str) -> bool:
         or (PLANT_EXEC.search(text) and re.search(r'대구|경북|구미|포항|새만금|대경권', text, re.I))
         or DATA_MODEL.search(text) or POLICY_REVERSE.search(text)
     )
-    return bool(
-        KOREA_ROBOT.search(text)
-        and execution
-        and re.search(r'정부|산업통상부|국무조정실|조달청|나라장터|소방청|우정|국방|공공|지자체|공기업|특화단지|조달|보급|지원|대구|경북|구미|포항|새만금', text, re.I)
+    explicit_policy_actor = re.search(
+        r'정부|산업통상부|국무조정실|조달청|나라장터|소방청|우정|국방|공공|지자체|공기업|'
+        r'국가첨단전략산업|특화단지|20\s*만\s*대|200,?000|보급\s*계획|구매\s*보조|렌탈\s*지원',
+        text,
+        re.I,
     )
+    # A private company simply operating in Gumi/Daegu-Gyeongbuk is not a
+    # government-policy event. Region names alone are sufficient only when the
+    # text explicitly says cluster/special-zone/mass-production-base execution.
+    regional_policy = bool(
+        re.search(r'대구|경북|구미|포항|새만금|대경권', text, re.I)
+        and re.search(r'특화단지|양산\s*기반|생산\s*거점|국가첨단전략산업|정부\s*지원', text, re.I)
+    )
+    return bool(KOREA_ROBOT.search(text) and execution and (explicit_policy_actor or regional_policy))
 
 
 def _is_samsung_robot(text: str) -> bool:
