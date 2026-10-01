@@ -64,5 +64,82 @@
   "delivery_check": {
     "checked_at_kst": "2026-10-01T09:57:03+09:00",
     "status": "no_message_due"
+  },
+  "_delivery": {
+    "id": "eb24172a11861b719abace73d5e1052c3088b31041b69c055358bdcd5c7850d3",
+    "status": "queued",
+    "created_at_kst": "2026-10-01T14:30:04+09:00",
+    "chunks": [
+      "🚨 <b>TSMC 첨단패키징·자이 상태 변화</b>\n━━━━━━━━━━━━━━━━\n• 이번 변화: <b>CoWoS 병목 tight→easing · HBM 병목 tight→easing</b>\n• 자이 공장 수: <b>총 10개 · 추가 5개</b>\n• 공장 수 확인 수준: 공급망·업계 보도\n• 자이 과학단지 확대 단계: <b>부지 확대 의견수렴</b>\n• 확대 단계 확인 수준: 공식자료\n• 다음 확인: TSMC 공식 투자결정·환경영향평가·착공·장비 발주/반입·시험생산·양산·실제 월 생산능력\n• 중복 방지: 같은 기사 재배포·제목 변경만으로는 다시 알리지 않습니다.\n• 근거: LTN · <a href=\"https://ec.ltn.com.tw/article/paper/1772416\">원문</a>\n• 조회: 2026-10-01 14:25 KST"
+    ],
+    "next_chunk": 0,
+    "message_ids": [],
+    "candidate": {
+      "watch_version": 1,
+      "baseline_seeded_at_kst": "2026-09-27T18:02:00+09:00",
+      "baseline_note": "2026-09-27 LTN 공급망 보도의 嘉義 총 10개·추가 5개를 현재값으로 잠금. 같은 보도의 재배포는 최초 알림으로 역송출하지 않음. 2026-09-24 NSTC의 嘉義園區擴建計畫(二期擴大) 의견수렴은 공식 단계로 별도 잠금.",
+      "current_state": {
+        "chiayi_total_fabs": 10,
+        "chiayi_additional_fabs": 5,
+        "chiayi_phase3_status": "public_comment",
+        "fab_count_evidence_state": "supply_chain_report",
+        "phase3_evidence_state": "official",
+        "last_evidence_state": "supply_chain_report",
+        "last_source_url": "https://ec.ltn.com.tw/article/paper/1772416",
+        "last_source_name": "自由財經",
+        "last_event_title": "嘉科三期擴建起跑 台積電再加碼5座先進封裝廠 - 自由財經",
+        "official_source_url": "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch",
+        "last_source_published_at_kst": "2026-09-28T06:30:00+09:00",
+        "bottlenecks": {
+          "hbm": {
+            "status": "easing",
+            "evidence_state": "supply_chain_report",
+            "source_url": "https://www.digitimes.com/news/a20260915PD214/tsmc-3nm-2nm-capacity-cowos.html"
+          },
+          "cowos": {
+            "status": "easing",
+            "evidence_state": "supply_chain_report",
+            "source_url": "https://www.digitimes.com/news/a20260915PD214/tsmc-3nm-2nm-capacity-cowos.html"
+          },
+          "substrate": {
+            "status": "tight",
+            "evidence_state": "supply_chain_report",
+            "source_url": "https://www.digitimes.com/news/a20260915PD214/tsmc-3nm-2nm-capacity-cowos.html"
+          }
+        }
+      },
+      "baseline_sources": [
+        "https://ec.ltn.com.tw/article/breakingnews/5586843",
+        "https://stock.ltn.com.tw/article/gqpj9vhyk1ku",
+        "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch"
+      ],
+      "last_checked_at_kst": "2026-10-01T14:25:49+09:00",
+      "last_evidence_url": "https://ec.ltn.com.tw/article/paper/1772416",
+      "last_evidence_published_at_kst": "2026-09-28T06:30:00+09:00",
+      "last_alert_reasons": [
+        "CoWoS 병목 tight→easing",
+        "HBM 병목 tight→easing"
+      ],
+      "last_alert_at_kst": "2026-10-01T14:25:49+09:00",
+      "last_successful_delivery_kst": "2026-09-30T22:11:31+09:00",
+      "telegram_message_ids": [
+        184
+      ],
+      "telegram_message_id": 184,
+      "bot_username": "khs88798879887988798879_bot",
+      "delivery_receipt": {
+        "status": "confirmed",
+        "bot_username": "khs88798879887988798879_bot",
+        "message_ids": [
+          184
+        ],
+        "confirmed_at_kst": "2026-09-30T22:11:31+09:00",
+        "payload_hash": "d098eaa35847dd5d332077d847247baa85fadae6dd4108225505f1211a444783"
+      },
+      "delivery_check": {
+        "checked_at_kst": "2026-10-01T09:57:03+09:00",
+        "status": "no_message_due"
+      }
+    }
   }
 }
