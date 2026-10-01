@@ -2066,13 +2066,32 @@ def article_title_restatement(sentence: str, title: str) -> bool:
     )
 
 
+def article_summary_body(text: str) -> str:
+    """Keep article paragraphs, excluding UI chrome and related-story sections."""
+    raw = str(text or "")
+    ui_boundary = re.search(r"URL\s*(?:공유|복사)", raw, flags=re.I)
+    if ui_boundary:
+        raw = raw[ui_boundary.end():]
+    paragraphs = []
+    for line in raw.splitlines():
+        line = line.strip()
+        if re.fullmatch(r"관련\s*뉴스|주요\s*뉴스|.+기자의\s*주요\s*뉴스", line):
+            break
+        if re.fullmatch(r"읽기모드|다크모드|폰트크기|가|기사반응|공유하기|프린트|북마크|가장\s*(?:작게|크게)|작게|기본|크게", line):
+            continue
+        cleaned = strip_core_ui_garbage(line)
+        if cleaned:
+            paragraphs.append(cleaned)
+    return "\n".join(paragraphs)
+
+
 def ranked_article_sentences(
     text: str,
     required: list[str],
     *,
     title: str = "",
 ) -> list[str]:
-    cleaned_text = clean_article_summary_text(text)
+    cleaned_text = article_summary_body(text)
     sentences = [
         re.sub(
             r"^(?:▲[^)]{0,100}\)|\([^)]{0,100}(?:출처|사진)[^)]*\))\s*",
@@ -2082,7 +2101,7 @@ def ranked_article_sentences(
         # Split only at actual punctuation. A bare Hangul "다" also appears
         # inside clauses such as "지난해 같은 기간보다 20.8% 감소", so using
         # it as a boundary drops the result that follows.
-        for sentence in re.split(r"(?<=[.!?。])\s+", cleaned_text)
+        for sentence in re.split(r"(?<=[.!?。])\s+|[\r\n]+", cleaned_text)
         if clean_article_summary_text(sentence)
     ]
     if title:
@@ -2097,6 +2116,16 @@ def ranked_article_sentences(
         for sentence in sentences
         if len(sentence) >= 12 and not article_title_restatement(sentence, title)
     ]
+    if market_materiality.focus_kind(title) == "research_spending":
+        # Bind an amount to the issuer in the preceding source sentence.
+        for index in range(1, len(sentences)):
+            sentence, previous = sentences[index], sentences[index - 1]
+            if not re.match(r"^(?:올해\s*)?(?:상반기|하반기|연간)\s+(?:연구개발비|R&D)", sentence, re.I):
+                continue
+            owner = re.match(r"^([A-Za-z0-9가-힣&·]+(?:\s+[A-Z]{2,5})?)(?:은|는|도)\s+", previous)
+            if owner and re.search(r"연구개발|R&D", previous, re.I):
+                particle = "의" if re.search(r"(?:연구개발비|R&D\s*비용)(?:는|은)", sentence, re.I) else "는"
+                sentences[index] = f"{owner.group(1)}{particle} {sentence}"
     scored: list[tuple[int, int, str]] = []
     for index, sentence in enumerate(sentences):
         lowered = sentence.lower()
@@ -2106,6 +2135,7 @@ def ranked_article_sentences(
         result = any(term in sentence for term in ARTICLE_RESULT_TERMS)
         shareholder = any(term in sentence for term in ARTICLE_SHAREHOLDER_TERMS)
         score = required_hits * 3 + min(material_hits, 4) * 2
+        score += market_materiality.focus_score(title, sentence)
         score += 5 if numeric else 0
         score += 4 if result else 0
         score += 3 if shareholder else 0
@@ -2170,6 +2200,36 @@ def normalized_article_sentence(sentence: str) -> str:
 
 def compact_article_sentence(sentence: str, limit: int = 50) -> str:
     return concise_text(normalized_article_sentence(sentence), limit=limit)
+
+
+def source_focused_article_core(title: str, sentences: list[str]) -> str:
+    """Prefer a complete source fact about the headline, never an unrelated number."""
+    if not market_materiality.focus_kind(title):
+        return ""
+    if market_materiality.focus_kind(title) == "shareholder":
+        insider_fact = insider_purchase_fact(title, sentences)
+        if core_sentence_is_complete(insider_fact):
+            return insider_fact
+    for sentence in sentences:
+        if (
+            not market_materiality.core_focus_aligned(title, sentence)
+            or market_materiality.ASPIRATION.search(sentence)
+            or market_materiality.BACKGROUND.search(sentence)
+            or re.match(r"^(?:또|그리고|한편|이러한|이를|이\s*같은)\s", sentence)
+        ):
+            continue
+        fact = normalized_article_sentence(sentence)
+        if len(fact) > GAMEJOA_CORE_MAX_CHARS:
+            fact = re.sub(r"^[^.!?]{0,180}?(?:자료|통계)에\s*따르면\s*", "", fact, count=1)
+        if (
+            core_sentence_is_complete(fact)
+            and not subjectless_financial_core(fact)
+            and not sentence_has_suspect_financial_amount(fact)
+            and not article_title_restatement(fact, title)
+            and market_materiality.core_focus_aligned(title, fact)
+        ):
+            return fact
+    return ""
 
 
 def suspect_financial_amount(metric: str, amount: str) -> bool:
@@ -2692,7 +2752,7 @@ def detailed_article_core(title: str, body: str) -> str:
             )
             if body_tail.strip():
                 raw_body = body_tail
-    body = strip_core_ui_garbage(raw_body)
+    body = article_summary_body(raw_body)
     normalized_title = title.lower()
     if "sk하이닉스" in normalized_title and any(
         term in normalized_title for term in ("실적", "역대급")
@@ -2737,6 +2797,9 @@ def detailed_article_core(title: str, body: str) -> str:
     listing_fact = listing_maintenance_action_fact(title, body)
     if listing_fact:
         return listing_fact
+    focused_fact = source_focused_article_core(title, sentences)
+    if focused_fact:
+        return focused_fact
 
     # In a multi-issuer memory article, a contextual revenue number must not
     # replace the headline's HBM supply/price change or lose its issuer.
@@ -6815,6 +6878,7 @@ def source_output_aligned(alert: dict) -> bool:
             and korean_business_source_allowed(alert)
             and korean_title_core_aligned(source_title, summary)
             and macro_release_core_aligned(source_title, summary)
+            and market_materiality.core_focus_aligned(source_title, summary)
             and not direction_conflict
         )
     if alert.get("grid_policy_delay"):
@@ -7877,6 +7941,11 @@ def explanation_for(alert: dict) -> dict[str, str]:
 
 def normalize_alert_for_output(alert: dict) -> dict:
     out = dict(alert)
+    if out.get("korean_business_news") and out.get("body_verified"):
+        repaired_core = verified_alert_core(out, str(out.get("source_title") or out.get("news") or ""))
+        if repaired_core:
+            out["telegram_core_fact"] = repaired_core
+            out["policy_plain_summary"] = repaired_core
     macro_theme = telegram.macro_release_theme(out)
     if macro_theme:
         out["supply_chain_theme"] = macro_theme
@@ -8110,7 +8179,7 @@ def source_market_materiality(alert: dict) -> dict:
     body = str(alert.get("source_body") or alert.get("source_abstract") or "")
     if not alert.get("body_verified"):
         body = ""
-    return market_materiality.assess(title, clean_article_summary_text(body))
+    return market_materiality.assess(title, article_summary_body(body))
 
 
 def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
@@ -8141,6 +8210,7 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
         candidates,
         key=lambda alert: (
             alert["market_materiality"]["priority"],
+            alert["market_materiality"].get("focus", 0),
             (detail_queue.parse_time(alert.get("published")) or dt.datetime(1970, 1, 1, tzinfo=dt.timezone.utc)).timestamp(),
         ),
         reverse=True,
@@ -8524,6 +8594,12 @@ def verified_alert_core(alert: dict, title: str) -> str:
             listing_fact = listing_maintenance_action_fact(source_title or title, str(alert.get("source_body") or ""))
             if listing_fact:
                 return listing_fact
+            body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+            focused_fact = source_focused_article_core(source_title or title, ranked_article_sentences(
+                body, korean_business_title_terms(source_title or title), title=source_title or title,
+            ))
+            if focused_fact:
+                return focused_fact
         candidates.append(str(alert.get("telegram_core_fact") or ""))
         source_body = strip_core_ui_garbage(
             "\n".join(
@@ -8551,7 +8627,9 @@ def verified_alert_core(alert: dict, title: str) -> str:
 
     for candidate in candidates:
         core = complete_prose_text(candidate, limit=GAMEJOA_CORE_MAX_CHARS)
-        if core_sentence_is_complete(core) and not subjectless_financial_core(core):
+        if core_sentence_is_complete(core) and not subjectless_financial_core(core) and (
+            not is_business or market_materiality.core_focus_aligned(source_title, core)
+        ):
             return core
     return ""
 
@@ -8665,6 +8743,8 @@ def compact_alert_block_errors(block: str) -> list[str]:
         errors.append("market_direction_mismatch")
     if title and not macro_release_core_aligned(title, summary):
         errors.append("macro_release_mismatch")
+    if title and not market_materiality.core_focus_aligned(title, summary):
+        errors.append("headline_event_or_period_mismatch")
     if any(term.lower() in summary.lower() for term in ARTICLE_UI_BOILERPLATE_TERMS):
         errors.append("article_ui_boilerplate")
     foreign_amounts = extract_foreign_amounts(summary)

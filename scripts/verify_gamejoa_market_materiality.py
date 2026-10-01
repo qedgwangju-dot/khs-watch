@@ -67,6 +67,129 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_tactical_weapon_news_needs_economic_transmission_not_range_or_stock(self):
+        title = "우크라, 자체 개발 탄도미사일 첫 실전 투입…러시아 목표물 타격"
+        body = "우크라이나가 자체 개발한 탄도미사일을 처음으로 실전에 투입했다. 생산 능력 부족으로 미사일 공급이 지연되고 있다. 러시아 진지를 공격했다."
+        self.assertEqual(materiality.assess(title, body)["disposition"], "exclude")
+        item = alert(title, body)
+        self.assertEqual(radar.quality_display_alerts([item], 1), [])
+        commercial = "조선기업은 미국 군함 조선소 고객의 생산라인에 AI 용접 기술을 도입했다."
+        self.assertEqual(materiality.assess("조선기업, 군함 조선소 AI 기술 도입", commercial)["disposition"], "keep")
+        for headline, source in (
+            ("우크라이나, 러시아 에너지 시설 공격", "우크라이나는 러시아 에너지 시설 공격을 확대했다."),
+            ("트럼프, 이란 협상 재개", "트럼프는 이란이 협상을 원한다고 말했다."),
+            ("미국, 중동 병력 증강", "미국은 이란 위협에 대응해 중동 항공모함 배치와 병력 증강을 발표했다."),
+        ):
+            self.assertNotEqual(materiality.assess(headline, source)["disposition"], "exclude")
+
+    def test_hormuz_hit_keeps_reported_uncertainty_and_direct_supply_evidence(self):
+        title = "호르무즈해협서 또 유조선 미확인 발사체에 피격…화재 발생"
+        body = "UKMTO는 호르무즈 해협의 유조선이 미확인 발사체에 맞아 화재가 발생했다는 제3자 보고를 접수했다고 밝혔다. 미국과 이란의 협상은 교착 상태다."
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["priority"], 3)
+        self.assertIn("제3자 보고", audit["evidence"][0]["source_excerpt"])
+        core = radar.verified_alert_core(alert(title, body), title)
+        self.assertIn("제3자 보고", core)
+        self.assertNotIn("유가 상승", core)
+
+    def test_new_financing_precedes_routine_price_recap_without_keyword_score(self):
+        financing = materiality.assess("브로드컴, 앤트로픽 대출 협상", "브로드컴은 앤트로픽에 420억달러 대출을 제공하는 자금조달 계약을 검토한다.")
+        recap = materiality.assess("뉴욕증시 강보합 마감…나스닥 0.04% 상승", "나스닥 주가는 0.04% 상승했다. 다른 기업의 매출은 50% 증가했다.")
+        self.assertGreater(financing["priority"], recap["priority"])
+        self.assertEqual(financing["headline_stage"], "early_signal")
+        self.assertNotIn("flows", materiality.assess("나스닥 상승", "나스닥 주가는 0.04% 상승했다.")["axes"])
+
+    def test_energy_headline_core_does_not_select_unrelated_stock_returns(self):
+        title = "뉴욕증시 강보합…브렌트유 중동 항모 추가에 4% 상승"
+        body = "나이키 주가는 0.71% 하락했고 알파벳은 제미니 공개 후 1.70% 밀렸다. 브렌트유 12월 인도분 종가는 전장 대비 4.4% 급등한 배럴당 102.31달러를 기록했다."
+        item = alert(title, body)
+        item["telegram_core_fact"] = body.split(". 브렌트유")[0] + "."
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("브렌트유", core)
+        self.assertIn("4.4%", core)
+        self.assertNotIn("나이키", core)
+        self.assertNotIn("알파벳", core)
+        bad = "1) " + title + "\n- 핵심: 나이키 주가는 0.71% 하락했다.\n"
+        self.assertIn("headline_event_or_period_mismatch", radar.compact_alert_block_errors(bad))
+
+    def test_bond_yield_core_does_not_substitute_treasury_buyback(self):
+        title = "미·영·프 장기금리 수십년래 최고…글로벌 국채 투매 심화"
+        body = "미국 10년물 국채금리는 장중 5.34%까지 치솟아 24년 최고치를 갱신했다. 영국 30년물 국채금리는 6.029%로 상승했다. 재무부는 463억9000만달러 판매 제안을 받아 60억달러를 매입했다."
+        item = alert(title, body)
+        item["telegram_core_fact"] = "재무부는 60억달러를 매입했다."
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("10년물", core)
+        self.assertIn("5.34%", core)
+        self.assertNotIn("60억달러", core)
+
+    def test_headline_month_and_ownership_fact_beat_background_or_aspiration(self):
+        title = "상승 종목 743곳→265곳 급감…9월 코스피 순환매 꺾였다"
+        body = "5월 코스피 지수는 28.45% 급등했지만 상승 종목 비중은 11.7%였다. 9월 코스피 시장에서 주가가 오른 종목은 265곳으로 전체의 28.1%에 그쳤다."
+        core = radar.verified_alert_core({**alert(title, body), "telegram_core_fact": body.split(". 9월")[0] + "."}, title)
+        self.assertIn("9월", core)
+        self.assertIn("265곳", core)
+        self.assertNotIn("5월", core)
+        self.assertTrue(all("5월" not in e["source_excerpt"] for e in materiality.assess(title, body)["evidence"]))
+        title = "이에이트, 다컴시스템 지분 35% 인수…AIDC 사업 진출"
+        body = "이에이트는 IT장비 공급기업 다컴시스템의 지분 35%를 인수했다고 밝혔다. 이에이트 관계자는 데이터센터를 새로운 성장축으로 키우고 기업가치를 높이겠다고 말했다."
+        item = {**alert(title, body), "telegram_core_fact": "이에이트 관계자는 데이터센터를 새로운 성장축으로 키우고 기업가치를 높이겠다고 말했다."}
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("35%", core)
+        self.assertIn("다컴시스템", core)
+        self.assertNotIn("성장축", core)
+
+    def test_research_spending_core_keeps_issuer_not_subjectless_connector(self):
+        title = "대기업 SI, 상반기 R&D 투자 가장 많이 한 기업은?"
+        body = "포스코DX의 상반기 R&D 비용은 79억6800만원으로 전년 대비 62.1% 증가했다. 또 매출 대비 R&D 비중도 0.86%에서 1.68%로 높아졌다."
+        core = radar.verified_alert_core({**alert(title, body), "telegram_core_fact": "또 매출 대비 R&D 비중은 1.68%로 높아졌다."}, title)
+        self.assertIn("포스코DX", core)
+        self.assertIn("62.1%", core)
+        self.assertLessEqual(materiality.assess(title, body)["priority"], 2)
+        self.assertLessEqual(len(core), 100)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+
+    def test_source_chrome_and_related_story_are_not_article_evidence(self):
+        title = "[속보] 국제유가 급등…브렌트유 4.37% 상승"
+        body = "이투데이\n국제경제\n입력 2026-10-02 06:07\n북마크 되었습니다.\nURL공유\n가장작게\n크게\n국제유가는 급등했다.\n런던 ICE선물거래소에서 12월물 브렌트유는 4.37% 상승한 배럴당 102.31달러로 집계됐다.\n관련 뉴스\n다른 기업은 매출이 500% 증가했다고 발표했다."
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("102.31달러", core)
+        self.assertNotIn("되었습니다", core)
+        self.assertEqual(radar.source_market_materiality(item)["priority"], 3)
+        self.assertNotIn("500%", str(radar.source_market_materiality(item)["evidence"]))
+        title = "이에이트, 다컴시스템 지분 35% 인수"
+        body = "읽기모드\n다크모드\n폰트크기\n가\n기사반응\n이에이트(E8)는 공공조달 IT장비 공급기업 다컴시스템의 지분 35%를 인수했다고 1일 밝혔다."
+        core = radar.verified_alert_core(alert(title, body), title)
+        self.assertIn("35%", core)
+        self.assertNotIn("기사반응", core)
+
+    def test_following_rd_amount_binds_only_to_adjacent_source_issuer(self):
+        title = "대기업 SI, 상반기 R&D 투자 확대"
+        body = "포스코DX는 R&D 투자를 늘렸다.\n올해 상반기 R&D 비용으로 전년 동기 대비 62.1% 늘어난 79억6800만원을 집행한 것이다.\n롯데이노베이트도 R&D 투자를 늘렸다.\n올해 상반기 연구개발비는 86억3800만원으로 전년 동기보다 29.7% 증가했다."
+        sentences = radar.ranked_article_sentences(body, [], title=title)
+        self.assertTrue(any("포스코DX" in s and "79억6800만원" in s for s in sentences))
+        self.assertTrue(any("롯데이노베이트" in s and "86억3800만원" in s for s in sentences))
+        self.assertFalse(any("포스코DX" in s and "86억3800만원" in s for s in sentences))
+
+    def test_royalty_contract_is_cashflow_but_price_recap_is_not_a_flow(self):
+        audit = materiality.assess("바이오기업, 로열티 계약", "바이오기업은 계약 체결 후 시판 7년간 매출의 7%를 로열티로 수령한다.")
+        self.assertEqual(audit["priority"], 3)
+        self.assertIn("earnings", audit["axes"])
+        self.assertNotIn("flows", audit["axes"])
+        recap = materiality.assess("뉴욕증시 소폭 상승…나스닥 0.04%↑", "나스닥 주가는 0.04% 상승했다. 다른 회사 매출은 40% 증가했다.")
+        self.assertLess(recap["priority"], audit["priority"])
+
+    def test_other_fund_or_old_loss_buffer_cannot_replace_current_fund_results(self):
+        title = "뉴딜펀드 만기청산 절반 손실…재정 부담 139억"
+        body = "2일 국회 정무위원회 소속 의원실이 관계 기관으로부터 상세히 제출받은 조사 자료에 따르면 만기청산된 뉴딜 국민참여형펀드 자펀드 17개의 평균 내부수익률은 0.68%로 집계됐다.\n2021년 출시된 뉴딜펀드는 손실이 발생해도 21.5%까지 재정이 우선 부담한다.\n다른 성장펀드의 자펀드는 재정이 손실의 18.8%를 우선 부담한다."
+        core = radar.verified_alert_core(alert(title, body), title)
+        self.assertIn("뉴딜", core)
+        self.assertIn("17개", core)
+        self.assertIn("0.68%", core)
+        self.assertNotIn("21.5%", core)
+        self.assertNotIn("18.8%", core)
+        self.assertLessEqual(len(core), 100)
+
     def test_material_and_early_news_survive_without_signed_contract_or_ticker_list(self):
         for title, body in KEEP:
             with self.subTest(title=title):
@@ -228,7 +351,11 @@ def audit_saved_runs(paths):
                 "stored_core": item.get("telegram_core_fact"),
                 "revalidated_core": radar.verified_alert_core(item, title),
             })
-    print(json.dumps({"read_only_shadow_audit": True, "articles": len(results), "results": results}, ensure_ascii=False))
+    print(json.dumps({"read_only_shadow_audit": True, "articles": len(results),
+                      "changed_cores": sum(r["stored_core"] != r["revalidated_core"] for r in results),
+                      "excluded": sum(r["materiality"]["disposition"] == "exclude" for r in results),
+                      "focus_mismatches": sum(not materiality.core_focus_aligned(r["title"], r["revalidated_core"]) for r in results),
+                      "results": results}, ensure_ascii=False))
 
 
 if __name__ == "__main__":

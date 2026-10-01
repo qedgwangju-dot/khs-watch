@@ -105,11 +105,15 @@ The Telegram message should contain only the core news radar:
 ## Source Materiality Refinement
 
 - Source-verified candidates carry an internal `market_materiality` audit: evidence kind, exact source sentence, early/reported stage, earnings/discount-rate/flow/timeline axes and priority. Generated sectors, watch flags and commentary are not evidence.
-- Results, changes in policy scope, market flows, supply damage and execution stages precede general cooperation announcements before the display limit. Ties use publication time, not keyword score or retrieval time. Priority does not estimate stock-price impact.
+- Results, changes in policy scope, market flows, supply damage and execution stages precede general cooperation announcements before the display limit. Within an economic priority, source event focus precedes publication time; generated keyword scores and retrieval time do not decide priority. Priority does not estimate stock-price impact.
 - Preliminary negotiations, proposed restrictions, research forecasts, client discussions, technology validation, clinical stages and climate supply risks remain eligible without a signed contract, minimum monetary threshold or issuer whitelist.
 - Routine volunteering, awards, promotions, visits and vague cooperation without a new source-grounded business change are excluded. An older revenue figure or another company's background paragraph cannot rescue a promotional headline. Unrecognised events still face the existing broad market/source/summary gates rather than a new whitelist.
 - The audit is internal only. Telegram keeps the aligned title, complete compact core and clickable source. No commentary or decision matrix is restored; delivered/seen keys and retrieval state are not reset.
 - `verify_gamejoa_market_materiality.py` runs in production and test CI. The generated-report guard recomputes the audit from source text before delivery and rejects missing/stale evidence or routine articles that bypass selection.
+- Headline event focus and explicit reporting month now constrain source evidence and compact cores. Related-story sections and publisher UI are removed before assessment. A preceding R&D issuer may qualify the following amount only when the adjacent source sentences establish that relationship.
+- Direct financing, contracts, scoped restrictions, supply disruption and rate/macro changes outrank routine index recaps and retrospective features. Proposed policy or financing retains its early stage without automatically being less material than a reported small index move. Price changes alone never prove investor flows.
+- Tactical weapon deployment without an economic transmission path is excluded; energy/logistics attacks, Hormuz tanker incidents, sanctions, ceasefire/negotiation developments, procurement and major escalation remain eligible. This is not a geopolitical-source shutdown.
+- Saved-run shadow audits are read-only: compare old/new source cores and exclusions without resetting seen state or resending historical Telegram messages. Headline-event/month checks also run in the compact renderer and pre-delivery generated-report guard.
 
 ## Data Center Local Ban Coverage
 
