@@ -194,6 +194,52 @@ class TSMCAdvancedPackagingTests(unittest.TestCase):
         }
         self.assertEqual(w.merge_state(old, patch_value)["bottlenecks"]["hbm"]["status"], "tight")
 
+    def test_newer_supply_chain_article_alone_cannot_reverse_validated_state(self):
+        old = {
+            "bottlenecks": {
+                "cowos": {
+                    "status": "tight",
+                    "evidence_state": "research",
+                    "source_url": "https://www.trendforce.com/presscenter/old",
+                    "source_published_at_kst": "2026-09-18T00:00:00+09:00",
+                }
+            }
+        }
+        patch_value = {
+            "bottlenecks": {
+                "cowos": {
+                    "status": "easing",
+                    "evidence_state": "supply_chain_report",
+                    "source_url": "https://example.com/newer",
+                    "source_published_at_kst": "2026-10-01T00:00:00+09:00",
+                }
+            }
+        }
+        self.assertEqual(w.merge_state(old, patch_value)["bottlenecks"]["cowos"]["status"], "tight")
+
+    def test_newer_research_can_reverse_research_state(self):
+        old = {
+            "bottlenecks": {
+                "cowos": {
+                    "status": "tight",
+                    "evidence_state": "research",
+                    "source_url": "https://www.trendforce.com/presscenter/old",
+                    "source_published_at_kst": "2026-09-18T00:00:00+09:00",
+                }
+            }
+        }
+        patch_value = {
+            "bottlenecks": {
+                "cowos": {
+                    "status": "easing",
+                    "evidence_state": "research",
+                    "source_url": "https://www.trendforce.com/presscenter/new",
+                    "source_published_at_kst": "2026-10-02T00:00:00+09:00",
+                }
+            }
+        }
+        self.assertEqual(w.merge_state(old, patch_value)["bottlenecks"]["cowos"]["status"], "easing")
+
     def test_article_text_uses_article_body_not_sidebar(self):
         raw = b"""
         <html><body>
