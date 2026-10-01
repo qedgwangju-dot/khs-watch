@@ -138,10 +138,14 @@ def _is_proposal_only(item):
 
 
 def _event_family(item):
-    text = " ".join([
-        _norm(item.get("title")), _norm(item.get("description")), _norm(item.get("headline")),
-        _norm(item.get("detail"))
-    ]).lower()
+    text = _item_text(item).lower()
+    # 9/29 메가프로젝트 점검회의와 후속 보도를 하나의 사건군으로 묶는다.
+    if "반도체" in text and (
+        ("메가프로젝트" in text and ("정주" in text or "군공항" in text))
+        or ("계통관리변전소" in text and "10월 1" in text)
+        or ("2028년 중순" in text and ("재검토" in text or "당길" in text))
+    ):
+        return "honam_megaproject_20260929"
     # 같은 기자차담회/로드맵을 제목만 바꿔 쓴 보도는 한 사건으로 묶는다.
     if "반도체" in text and "2030" in text and "양산" in text and any(
         marker in text for marker in ["2027", "2028", "3.1gw", "6.3gw", "15만", "35만", "65만", "106만", "63만평", "208만"]
@@ -150,7 +154,6 @@ def _event_family(item):
     if "입법조사처" in text and "용수" in text and any(marker in text for marker in ["우려", "안정성", "댐", "가뭄"]):
         return "honam_water_supply_risk"
     return ""
-
 
 def _verification_level(items):
     if any(i.get("_kind") == "official" or i.get("source_status") == "공식자료" for i in items):
