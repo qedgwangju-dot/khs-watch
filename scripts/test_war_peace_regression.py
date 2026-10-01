@@ -317,3 +317,37 @@ bad_bear = """<b>전쟁·종전·재건 웹감시</b>
 check("quality-gate-bear", any("비군사 공격" in x for x in mod._alert_quality_issues(bad_bear)))
 
 print("WAR_PEACE_2026_10_01_REGRESSION_OK")
+
+
+# 19) 2026-10-01 live 품질게이트가 잡은 TASS/Axios형: 협상 결과 없음 + 적대행위 재개 가능은 초록이 아니라 노랑.
+stalled_talks = row(
+    "US-Israel attack on Iran — Iran talks yield no result, hostilities may resume",
+    source="TASS",
+)
+check("iran-talks-breakdown-detected", mod._negotiation_breakdown_signal(stalled_talks))
+stalled_marks = mod._marks(stalled_talks)
+check("iran-talks-breakdown-mark", "미이란협상교착재확전위험" in stalled_marks)
+check("iran-talks-breakdown-yellow", mod._final_item_color(stalled_talks) == "yellow")
+check("iran-talks-breakdown-topic", mod.topic_label(stalled_talks) == "이란·미국·이스라엘 · 협상 교착·재확전 위험")
+
+# 20) clean 렌더러도 최종 topic_label을 그대로 사용해야 한다.
+check("clean-topic-wired-gaza", mod.clean_mod.clean_topic_label(gaza_a) == "이스라엘·가자")
+check("clean-topic-wired-bryansk", mod.clean_mod.clean_topic_label(bryansk) == "우크라이나·러시아")
+
+# 21) 공급흐름 회복 + 실제 공격이 섞인 경우 '휴전·종전 동시'로 오판하면 안 된다.
+mixed_semantic_verdict = mod.guard._verdict([record_kr, bryansk])
+check("mixed-flow-attack-verdict", "공급흐름 회복 ≠ 휴전·종전" in mixed_semantic_verdict)
+check("mixed-flow-attack-not-false-peace", "공격·확전과 휴전·종전 신호가 동시에 존재" not in mixed_semantic_verdict)
+
+# 22) 실제 렌더링에서도 conditional threat는 노랑, flow recovery는 초록으로 나와야 한다.
+now = dt.datetime.now(mod.watch.KST)
+for x in (bomb_or_deal, record_kr):
+    score, tags = mod.score_item(x, now)
+    x["score"] = score
+    x["tags"] = tags
+    x["age"] = mod.watch.age_minutes(x, now)
+rendered = mod.watch.build_alert([bomb_or_deal, record_kr], [], now)
+check("render-bomb-or-deal-yellow", "🟡 [신규]" in rendered or "🟡 [속보]" in rendered)
+check("render-record-flow-green", "🟢 [신규]" in rendered or "🟢 [속보]" in rendered)
+
+print("WAR_PEACE_LIVE_SEMANTICS_OK")
