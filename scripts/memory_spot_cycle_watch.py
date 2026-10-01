@@ -478,6 +478,35 @@ def _decode_google_news_link(link: str) -> str:
     return link
 
 
+ARTICLE_DETAIL_HOSTS = (
+    "businesspost.co.kr",
+    "futunn.com",
+    "investing.com",
+    "reuters.com",
+    "trendforce.com",
+)
+
+
+def _enrich_news_description(link: str, description: str, cache: dict[str, str]) -> str:
+    link = (link or "").strip()
+    if not link.startswith("http"):
+        return description
+    host = urllib.parse.urlparse(link).netloc.lower()
+    if not any(host == h or host.endswith("." + h) for h in ARTICLE_DETAIL_HOSTS):
+        return description
+    if link in cache:
+        detail = cache[link]
+    else:
+        try:
+            detail = _clean(_fetch(link).decode("utf-8", errors="ignore"))[:24000]
+        except Exception:
+            detail = ""
+        cache[link] = detail
+    if len(detail) > max(1200, len(description) + 300):
+        return _clean((description or "") + " " + detail)
+    return description
+
+
 def collect() -> tuple[list[dict], list[str]]:
     items: list[dict] = []
     errors: list[str] = []
