@@ -97,6 +97,24 @@ jobs:
           )
           PY
 
+      - name: Record Telegram delivery truth
+        if: always()
+        run: |
+          if [ -f out/treasury_cta_squeeze_telegram_confirmed.json ]; then
+            python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path("out/treasury_cta_squeeze_telegram_confirmed.json")
+          j=json.loads(p.read_text(encoding="utf-8"))
+          status=pathlib.Path("out/treasury_cta_squeeze_status.md")
+          with status.open("a", encoding="utf-8") as f:
+              f.write(f"- 텔레그램 최종 전달: 확인 · bot=@{j.get('bot_username','unknown')} · message_id={j.get('message_id')}\n")
+          PY
+          elif [ -f out/treasury_cta_squeeze_alert.html ]; then
+            echo "- 텔레그램 최종 전달: 미확인 — 알림 파일은 있으나 Telegram 확인 파일 없음" >> out/treasury_cta_squeeze_status.md
+          else
+            echo "- 텔레그램 최종 전달: 발송 조건 미충족" >> out/treasury_cta_squeeze_status.md
+          fi
+
       - name: Finalize CTA state
         if: success() && hashFiles('data/treasury_cta_squeeze_state_next.json') != ''
         run: |
