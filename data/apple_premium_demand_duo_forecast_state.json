@@ -1,10 +1,11 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-01T16:43:20+09:00",
+  "updated_at_kst": "2026-10-01T23:49:27+09:00",
   "initial_alert_sent": true,
   "preorder_at_kst": "2026-10-16T21:00:00+09:00",
   "launch_date": "2026-10-23",
   "seen": [
+    "078097f308aa47d570de5a16",
     "08ee900e67a97c3baa66e7c0",
     "0deccab046baa0654028e226",
     "14e3e01165fea3bf1be26561",
@@ -12,6 +13,7 @@
     "20c65b2b70635146cc77587a",
     "22043fa11193c363fc7e6aea",
     "2fba751e544b2c1eb936f000",
+    "301ecc3616e6cbb5fbd5067f",
     "31246a097aa42a4b8f134e6a",
     "33c8822a08bb94477bd20ed3",
     "34bc2fdf71f30807f9520968",
@@ -37,9 +39,11 @@
     "8dda2520bea630487d60ba4b",
     "943e6087cd9f34806f0ad6a4",
     "961c15c5c04737f896ab398a",
+    "968295d93cb96cb875b07379",
     "96f71dcdc1bd5006834b61ac",
     "9c2d10785d75244a307c1112",
     "a088a5f970fcb994f1db7a0b",
+    "a1685e3cf0b1dd3a227b30a2",
     "a1be4d6ed6941807491af23b",
     "a2106bfc6953c1683fb1a90b",
     "a7bda024448ba5f0eeede9bb",
@@ -53,6 +57,7 @@
     "c479c8ce4d604cfa46b73d7c",
     "c572f9ec9f6c016634994a37",
     "c613506457ae3b81a90f7176",
+    "cb158020e1ba8f2cbd4a841e",
     "cd86e46ceaef44b26ed89864",
     "cdf7f633e838eb0dbc7b8f4c",
     "ce36ac2d75dd8f8dc1935e7a",
@@ -62,12 +67,14 @@
     "d9eeedfbd9dfb49bb8745360",
     "da45ff25c1e3b96837df373f",
     "de7617dc59eb51d51c464dbc",
+    "df4761e72b241055026feae7",
     "dfda7fd3bbc154fcca1dea1e",
     "e04a4407bd2d999b425ecb4e",
     "e28a9f47badf61ea0728bb5c",
     "e5c03f3d60ec6ae85750ab77",
     "e5e4625a43415adf167d70ed",
-    "f2deef37e8a2dbb98cda2986"
+    "f2deef37e8a2dbb98cda2986",
+    "f7c97083f05ae7b065eafae5"
   ],
   "metrics": {
     "iphone18pro_china_yoy_pct": 12.0,
@@ -83,7 +90,7 @@
     "counterpoint_duo": "Reuters가 Counterpoint 전망 약 600만대 인용",
     "trendforce_duo": "TrendForce 공식 2026 출하 약 500만대"
   },
-  "last_scan_items": 32,
+  "last_scan_items": 36,
   "last_signal_count": 0,
   "last_alert": {
     "at_kst": "2026-09-30T13:10:14+09:00",

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-01T16:43:06+09:00",
+  "updated_at_kst": "2026-10-01T23:49:23+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-09-27T17:05:00+09:00",
   "baseline": {
@@ -69,6 +69,7 @@
     "ad3fad7a44a18aabadaa0f27",
     "b44d285d5d9d3a5592b9aaf2",
     "b46686ecb3490b1e8715f39f",
+    "b8620a1a902634f1c2247ff7",
     "b9d3e2f22960d6016fbc7ca2",
     "bac44f57c9ffa75904871a3b",
     "bbd8114733e3a15829b6d105",
@@ -94,15 +95,16 @@
     "f25880acead9249f6bde76b1",
     "f4b70fa369507f8fae2f1ffd",
     "f4c204631c584e174094585c",
+    "f8f4363a5bb5610c38a868db",
     "fa0973e197479179af862309",
     "fcd3079ba4981cd589bcc695",
     "fe3f7c8fc0c54648b261f8b4"
   ],
   "last_fx_bucket": "orange",
   "last_fx": {
-    "latest_rate": 1355.84,
+    "latest_rate": 1361.27,
     "latest_date": "2026-10-01",
-    "latest_source": "ExchangeRate-API https://www.exchangerate-api.com",
+    "latest_source": "ECB/Frankfurter",
     "q2_avg": 1500.48,
     "q3_avg": 1420.2,
     "qoq_pct": -5.35,
