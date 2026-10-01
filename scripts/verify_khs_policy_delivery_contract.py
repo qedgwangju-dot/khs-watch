@@ -1,4 +1,3 @@
-# one-shot spectrum route live verification retry
 #!/usr/bin/env python3
 """Contract tests for KHS policy Telegram delivery quality.
 
