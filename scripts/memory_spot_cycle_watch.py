@@ -102,6 +102,29 @@ TREND_4Q26_CURRENT_BASELINE = {
     "research_url": "https://www.trendforce.com/research/download/RP260924PL",
     "source_rank": 3,
 }
+TREND_3Q4Q_PACE_TRACK_VERSION = 1
+TREND_3Q4Q_PACE_BASELINE = {
+    "q3_conventional_dram_min_pct": 13.0,
+    "q3_conventional_dram_max_pct": 18.0,
+    "q4_conventional_dram_min_pct": 10.0,
+    "q4_conventional_dram_max_pct": 15.0,
+    "q3_hbm_blended_min_pct": 8.0,
+    "q3_hbm_blended_max_pct": 13.0,
+    "q4_hbm_blended_min_pct": 15.0,
+    "q4_hbm_blended_max_pct": 20.0,
+    "q3_total_nand_min_pct": 18.0,
+    "q3_total_nand_max_pct": 23.0,
+    "q4_total_nand_min_pct": 15.0,
+    "q4_total_nand_max_pct": 20.0,
+    "q4_enterprise_ssd_min_pct": 23.0,
+    "q4_enterprise_ssd_max_pct": 28.0,
+    "as_of": "2026-09",
+    "source": "TrendForce",
+    "source_kind": "사용자 제공 TrendForce Sep. 2026 표 + 2026-09-30 공식 4Q26 보도자료 교차확인",
+    "source_url": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
+    "research_url": "https://www.trendforce.com/research/download/RP260924PL",
+    "source_rank": 3,
+}
 LEGACY_DRAM_TRACK_VERSION = 1
 BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION = 1
 BERNSTEIN_MEMORY_CYCLE_BASELINE = {
@@ -1250,6 +1273,55 @@ def _trendforce_4q26_revision_summary(old: dict, new: dict) -> list[str]:
     return out
 
 
+def _trend_3q4q_pace_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+    for key, label in (
+        ("q3_conventional_dram_min_pct", "3Q Conventional DRAM 하단"),
+        ("q3_conventional_dram_max_pct", "3Q Conventional DRAM 상단"),
+        ("q4_conventional_dram_min_pct", "4Q Conventional DRAM 하단"),
+        ("q4_conventional_dram_max_pct", "4Q Conventional DRAM 상단"),
+        ("q3_hbm_blended_min_pct", "3Q HBM Blended 하단"),
+        ("q3_hbm_blended_max_pct", "3Q HBM Blended 상단"),
+        ("q4_hbm_blended_min_pct", "4Q HBM Blended 하단"),
+        ("q4_hbm_blended_max_pct", "4Q HBM Blended 상단"),
+        ("q3_total_nand_min_pct", "3Q Total NAND 하단"),
+        ("q3_total_nand_max_pct", "3Q Total NAND 상단"),
+        ("q4_total_nand_min_pct", "4Q Total NAND 하단"),
+        ("q4_total_nand_max_pct", "4Q Total NAND 상단"),
+        ("q4_enterprise_ssd_min_pct", "4Q Enterprise SSD 하단"),
+        ("q4_enterprise_ssd_max_pct", "4Q Enterprise SSD 상단"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if b is None:
+            continue
+        if a is None:
+            changes.append(f"{label}: {float(b):.0f}% 신규 확인")
+        elif float(a) != float(b):
+            changes.append(f"{label}: {float(a):.0f}%→{float(b):.0f}%")
+    return changes
+
+
+def _trend_3q4q_pace_summary(state: dict) -> list[str]:
+    out: list[str] = []
+    specs = (
+        ("q3_conventional_dram_min_pct", "q3_conventional_dram_max_pct", "q4_conventional_dram_min_pct", "q4_conventional_dram_max_pct", "Conventional DRAM"),
+        ("q3_hbm_blended_min_pct", "q3_hbm_blended_max_pct", "q4_hbm_blended_min_pct", "q4_hbm_blended_max_pct", "HBM Blended"),
+        ("q3_total_nand_min_pct", "q3_total_nand_max_pct", "q4_total_nand_min_pct", "q4_total_nand_max_pct", "Total NAND Flash"),
+    )
+    for q3lo, q3hi, q4lo, q4hi, label in specs:
+        vals = [state.get(q3lo), state.get(q3hi), state.get(q4lo), state.get(q4hi)]
+        if any(v is None for v in vals):
+            continue
+        q3mid = (float(vals[0]) + float(vals[1])) / 2.0
+        q4mid = (float(vals[2]) + float(vals[3])) / 2.0
+        direction = "가속" if q4mid > q3mid else "둔화" if q4mid < q3mid else "유지"
+        out.append(
+            f"{label}: 3Q +{float(vals[0]):.0f}~{float(vals[1]):.0f}%→4Q +{float(vals[2]):.0f}~{float(vals[3]):.0f}% "
+            f"({direction}, 중간값 {q4mid-q3mid:+.1f}%p)"
+        )
+    return out
+
+
 def _merge_typed_state(old: dict, obs: dict) -> dict:
     if old.get("as_of") and obs.get("as_of") and obs["as_of"] < old["as_of"]:
         return dict(old)
@@ -1461,6 +1533,12 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         trend_4q26_state = dict(TREND_4Q26_PRIOR_BASELINE)
         state["trendforce_4q26_revision_track_version"] = TREND_4Q26_REVISION_TRACK_VERSION
 
+    trend_3q4q_state = dict(state.get("trendforce_3q4q_pace") or {})
+    trend_3q4q_first_install = int(state.get("trendforce_3q4q_pace_track_version") or 0) < TREND_3Q4Q_PACE_TRACK_VERSION
+    if trend_3q4q_first_install:
+        trend_3q4q_state = dict(TREND_3Q4Q_PACE_BASELINE)
+        state["trendforce_3q4q_pace_track_version"] = TREND_3Q4Q_PACE_TRACK_VERSION
+
     bernstein_state = dict(state.get("bernstein_memory_cycle") or {})
     if int(state.get("bernstein_memory_cycle_track_version") or 0) < BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION:
         bernstein_state = _merge_bernstein_memory_cycle(bernstein_state, BERNSTEIN_MEMORY_CYCLE_BASELINE)
@@ -1511,6 +1589,12 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         if forced:
             trend_4q26_changes = forced
             trend_4q26_source_url = TREND_4Q26_CURRENT_BASELINE["source_url"]
+
+    trend_3q4q_changes: list[str] = []
+    trend_3q4q_source_url = ""
+    if trend_3q4q_first_install:
+        trend_3q4q_changes = ["TrendForce 3Q26→4Q26 품목별 가격 상승 속도 분화 신규 기준"]
+        trend_3q4q_source_url = TREND_3Q4Q_PACE_BASELINE["source_url"]
 
     bernstein_changes: list[str] = []
     bernstein_source_url = ""
@@ -1603,6 +1687,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "bernstein_memory_cycle": bernstein_state,
         "trendforce_4q26_revision_track_version": TREND_4Q26_REVISION_TRACK_VERSION,
         "trendforce_4q26_revision": trend_4q26_state,
+        "trendforce_3q4q_pace_track_version": TREND_3Q4Q_PACE_TRACK_VERSION,
+        "trendforce_3q4q_pace": trend_3q4q_state,
         "nand_divergence_track_version": NAND_DIVERGENCE_TRACK_VERSION,
         "nand_divergence": divergence_state,
         "legacy_dram_track_version": LEGACY_DRAM_TRACK_VERSION,
@@ -1629,6 +1715,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- HBM 시장 가격 숫자 변화: {len(market_changes)}건",
         f"- Bernstein 가격 사이클 상태 변화: {len(bernstein_changes)}건",
         f"- TrendForce 4Q26 전망 리비전 변화: {len(trend_4q26_changes)}건",
+        f"- TrendForce 3Q→4Q 가격속도 변화: {len(trend_3q4q_changes)}건",
         f"- NAND 소비자↔기업용 eSSD 양극화 변화: {len(divergence_changes)}건",
         f"- 구세대 DRAM EOL·배정 변화: {len(legacy_changes)}건",
         f"- 원천 오류: {len(errors)}건",
@@ -1639,11 +1726,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not prepared_items and not market_changes and not bernstein_changes and not trend_4q26_changes and not divergence_changes and not legacy_changes:
+    if not prepared_items and not market_changes and not bernstein_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    typed_changes = len(market_changes) + len(bernstein_changes) + len(trend_4q26_changes) + len(divergence_changes) + len(legacy_changes)
+    typed_changes = len(market_changes) + len(bernstein_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(legacy_changes)
     total_visible = typed_changes + len(prepared_items)
     lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
     if trend_4q26_changes:
@@ -1654,6 +1741,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             + f"NAND +{TREND_4Q26_PRIOR_BASELINE['overall_nand_min_pct']:.0f}~{TREND_4Q26_PRIOR_BASELINE['overall_nand_max_pct']:.0f}%→+"
             + f"{float(trend_4q26_state.get('overall_nand_min_pct') or 0):.0f}~{float(trend_4q26_state.get('overall_nand_max_pct') or 0):.0f}%</b>"
         )
+    elif trend_3q4q_changes:
+        lines.append("한눈에: <b>3Q→4Q 가격속도 분화 — DRAM·NAND 둔화, HBM 가속, Enterprise SSD +23~28%</b>")
     elif market_changes:
         one = market_changes[0]
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
@@ -1694,6 +1783,19 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         prior_url = TREND_4Q26_PRIOR_BASELINE.get("source_url")
         if prior_url:
             lines.append('  <a href="' + html.escape(str(prior_url), quote=True) + '">7월 기준 교차확인</a>')
+
+    if trend_3q4q_changes:
+        lines.append("• <b>TrendForce 3Q26→4Q26 가격 상승 속도</b>")
+        for summary in _trend_3q4q_pace_summary(trend_3q4q_state):
+            lines.append("  " + html.escape(summary))
+        if trend_3q4q_state.get("q4_enterprise_ssd_min_pct") is not None:
+            lines.append(
+                f"  Enterprise SSD: 4Q <b>+{float(trend_3q4q_state['q4_enterprise_ssd_min_pct']):.0f}~{float(trend_3q4q_state['q4_enterprise_ssd_max_pct']):.0f}% QoQ</b> — 주요 메모리 중 가격 상승폭 가속 축"
+            )
+        lines.append("  해석: 전체 DRAM·NAND 가격 상승률은 3Q보다 다소 둔화하지만, HBM과 기업용 SSD는 AI 수요 때문에 오히려 더 강해지는 양극화")
+        lines.append("  다음 확인: HBM Blended·Enterprise SSD 실제 계약가, CSP 추가주문, LTA 상단, QLC 배정")
+        if trend_3q4q_source_url:
+            lines.append('  <a href="' + html.escape(trend_3q4q_source_url, quote=True) + '">TrendForce 4Q26 공식자료</a>')
 
     if market_changes:
         lines.append("• <b>HBM 시장 가격 상태 변화</b>")
@@ -1797,7 +1899,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes and not trend_4q26_changes and not divergence_changes and not legacy_changes:
+    if emitted == 0 and not market_changes and not bernstein_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
