@@ -564,6 +564,7 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         and nq_history_ready
         and nq_history_fresh
         and nq_crosscheck_match
+        and nq_price_fresh
     )
 
     if treasury_confirmed and nq_confirmed and treasury_fuel and nq_fuel:
