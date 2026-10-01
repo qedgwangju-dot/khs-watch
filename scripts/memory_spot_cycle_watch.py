@@ -1302,7 +1302,7 @@ def _is_korea_memory_earnings_consensus_item(item: dict) -> bool:
     low = text.lower()
     return bool(
         ("삼성전자" in text or "samsung" in low)
-        and ("sk하이닉스" in text or "sk hynix" in low)
+        and ("sk하이닉스" in low or "sk hynix" in low)
         and ("영업이익" in text or "영업익" in text or "operating profit" in low)
         and "hbm" in low
     )
