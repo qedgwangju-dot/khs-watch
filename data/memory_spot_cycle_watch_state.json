@@ -307,11 +307,29 @@
       "source": "sedaily.com",
       "published_kst": "2026-10-01T08:08:39+09:00",
       "first_seen_kst": "2026-10-01T19:31:01+09:00"
+    },
+    "34d3d696c21dcb6d60173664": {
+      "title": "Memory price hikes are not over yet! Goldman Sachs: Q4 ASP forecasts exceed expectations, eSSD adoption accelerates; reiterates \"Buy\" ratings for Samsung Electronics and SK Hynix. - Moomoo",
+      "source": "Moomoo",
+      "published_kst": "2026-10-01T18:57:07+09:00",
+      "first_seen_kst": "2026-10-01T22:42:10+09:00"
+    },
+    "09ac67de7e80e6d133990b6b": {
+      "title": "Micron forecasts tighter memory supply through 2028, lifting Korea chip outlook - CHOSUNBIZ - Chosunbiz",
+      "source": "Chosunbiz",
+      "published_kst": "2026-10-01T11:19:00+09:00",
+      "first_seen_kst": "2026-10-01T22:42:10+09:00"
+    },
+    "df203548de0f5c447084b404": {
+      "title": "Memory chip market remains robust! Bernstein: DRAM and NAND prices may rise nearly 20% in Q3; cycle expected to begin \"normalizing\" by 2028 - news.futunn.com",
+      "source": "news.futunn.com",
+      "published_kst": "2026-09-29T23:46:54+09:00",
+      "first_seen_kst": "2026-10-01T22:42:10+09:00"
     }
   },
-  "updated_at_kst": "2026-10-01T19:58:04+09:00",
+  "updated_at_kst": "2026-10-01T22:42:10+09:00",
   "last_scan_count": 20,
-  "last_new_count": 0,
+  "last_new_count": 2,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -334,7 +352,7 @@
     "shortage_through_year": 2027,
     "normalization_year": 2028,
     "lta_caps_price_increases": true,
-    "source": "富途牛牛",
+    "source": "news.futunn.com",
     "source_url": "https://news.futunn.com/en/post/1000379735/memory-chip-market-remains-robust-bernstein-dram-and-nand-prices",
     "source_rank": 2,
     "as_of": "2026-09-29"
@@ -356,19 +374,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-01T19:31:05+09:00",
+  "last_successful_delivery_kst": "2026-10-01T22:42:17+09:00",
   "telegram_message_ids": [
-    199
+    202
   ],
-  "telegram_message_id": 199,
+  "telegram_message_id": 202,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      199
+      202
     ],
-    "confirmed_at_kst": "2026-10-01T19:31:05+09:00"
+    "confirmed_at_kst": "2026-10-01T22:42:17+09:00",
+    "alert_signature": "9249e35441ac22a455e9dcd6bc6943fd31c13dff8fe3a09e79ffb8bd6ca694ea"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
