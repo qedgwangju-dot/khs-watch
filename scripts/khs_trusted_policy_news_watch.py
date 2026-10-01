@@ -2457,10 +2457,11 @@ def main() -> int:
         report = render_alert_bundle(selected_alerts, now)
         ALERT_PATH.write_text(report, encoding="utf-8")
         top_status, _ = alert_confirmation_status(top["rule"], top["items"])
-        TITLE_PATH.write_text(
-            f"신뢰외신 정책 워치: [상·{top_status}] {story_display_title(top['rule'], top['items'])}{title_suffix}\n",
-            encoding="utf-8",
-        )
+        if len(selected_alerts) == 1 and top["rule"].key == "us_fcc_upper_c_band_auction115":
+            telegram_title = "FCC Auction 115 | 2027.04.27 경매 예정"
+        else:
+            telegram_title = f"신뢰외신 정책 워치: [상·{top_status}] {story_display_title(top['rule'], top['items'])}{title_suffix}"
+        TITLE_PATH.write_text(telegram_title + "\n", encoding="utf-8")
         ALERTS_JSON_PATH.write_text(
             json.dumps(
                 [
