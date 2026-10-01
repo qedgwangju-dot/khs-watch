@@ -412,6 +412,12 @@ def _is_global_component(text: str) -> bool:
         return True
     if _is_hand_architecture(text):
         return True
+    # A named dexterous-hand company + robot-hand product + concrete commercial
+    # milestone is sufficient even when the article omits the generic word
+    # "humanoid". This keeps supplier awards/orders from falling through simply
+    # because the headline says "Atlas hand" rather than "humanoid hand".
+    if HAND_ARCH_COMPANY.search(text) and HAND_ARCH_HAND.search(text) and HAND_COMMERCIAL_STRONG.search(text):
+        return True
     component_hit = GLOBAL_COMPONENT.search(text) or GLOBAL_COMPONENT_ZH.search(text)
     commercial_hit = GLOBAL_COMMERCIAL.search(text) or GLOBAL_COMMERCIAL_ZH.search(text)
     return bool(HUMANOID.search(text) and component_hit and commercial_hit)
