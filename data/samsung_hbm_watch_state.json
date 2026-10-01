@@ -259,8 +259,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-10-01T18:22:04+09:00",
-  "last_event_count": 97,
+  "updated_at_kst": "2026-10-01T18:52:17+09:00",
+  "last_event_count": 90,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -1574,7 +1574,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-01T18:22:04+09:00",
+      "last_checked_at_kst": "2026-10-01T18:52:17+09:00",
       "gaps": [
         "원문 확인 실패: investing.com / HTTPError",
         "RDIMM 32GB: 현물·고정거래 원값/규격/기준기간 미확보",
@@ -1646,8 +1646,8 @@
     "payload_hash": "e101c98b5ecc2679728aec9ea7c97f2719ea60ecc559d573287e8cbefae15cac"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-01T18:25:59+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-10-01T18:55:38+09:00",
+    "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
   "state_corrections": [
