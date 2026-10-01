@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-10-01T20:58:17+09:00",
+  "last_checked_kst": "2026-10-01T20:59:49+09:00",
   "media_id": null,
   "cftc_date": "September 22, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-10-01T20:58:17+09:00",
+    "checked_kst": "2026-10-01T20:59:49+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "September 22, 2026",
@@ -83,10 +83,10 @@
         "display_symbol": "US/ZB",
         "ticker": "ZB=F",
         "month": "",
-        "last": 102.8125,
-        "settlement": 102.8125,
-        "change": 0.15625,
-        "pct_change": 0.15220700152207556,
+        "last": 102.78125,
+        "settlement": 102.78125,
+        "change": 0.125,
+        "pct_change": 0.12176560121766045,
         "open_interest": 1887864,
         "oi_source": "CFTC TFF 주간 전체 시장 OI (September 22, 2026)",
         "volume": 0,
@@ -125,19 +125,19 @@
     },
     "repo": {
       "SOFR": {
-        "date": "2026-09-29",
-        "rate": 3.88,
-        "volume_bn": 2967
+        "date": "2026-09-30",
+        "rate": 3.9,
+        "volume_bn": 3230
       },
       "BGCR": {
-        "date": "2026-09-29",
-        "rate": 3.87,
-        "volume_bn": 1205
+        "date": "2026-09-30",
+        "rate": 3.88,
+        "volume_bn": 1210
       },
       "TGCR": {
-        "date": "2026-09-29",
-        "rate": 3.87,
-        "volume_bn": 1161
+        "date": "2026-09-30",
+        "rate": 3.88,
+        "volume_bn": 1154
       }
     },
     "format_revision": 10,
@@ -229,6 +229,22 @@
         "gross_short_weekly_record_10y": true,
         "net_short_weekly_record_10y": false
       },
+      "stored_nq_cftc": {
+        "contract": "NASDAQ MINI",
+        "cftc_code": "209742",
+        "open_interest": 286321,
+        "open_interest_wow": -39463,
+        "leveraged_long": 54033,
+        "leveraged_short": 84716,
+        "leveraged_net": -30683,
+        "leveraged_long_wow": 1353,
+        "leveraged_short_wow": 25649,
+        "leveraged_net_wow": -24296,
+        "short_share_oi_pct": 29.587770369620113,
+        "previous_period": "September 15, 2026",
+        "scope": "CFTC TFF NASDAQ MINI 전체시장 주간"
+      },
+      "stored_cftc_period": "September 22, 2026",
       "errors": [],
       "stage": 1,
       "label": "🟡 채권→Nasdaq 이중 숏 스퀴즈 연료 축적",
@@ -246,6 +262,8 @@
       "nq_fuel": true,
       "nq_history_ready": true,
       "nq_history_fresh": true,
+      "nq_crosscheck_match": true,
+      "nq_crosscheck_reason": null,
       "nq_price_up": true,
       "nq_price_official": true,
       "nq_price_fresh": true,
