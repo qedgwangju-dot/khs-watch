@@ -1147,7 +1147,14 @@ def item_id(row):
             try:
                 p = urllib.parse.urlparse(raw_url)
                 host = p.netloc.lower().replace('www.', '')
-                path = re.sub(r'/+
+                path = re.sub(r'/+$', '', p.path or '/')
+                if host and path:
+                    return hashlib.sha256(('url|' + host + path.lower()).encode()).hexdigest()[:20]
+            except Exception:
+                pass
+
+        # Google News/재게시가 같은 제목 뒤에 매체명만 다르게 붙이는 경우를 동일 기사로 묶는다.
+        title = (row.get('title_original') or '').strip()
         source = (row.get('source') or '').strip()
         if source:
             suffix = ' - ' + source
