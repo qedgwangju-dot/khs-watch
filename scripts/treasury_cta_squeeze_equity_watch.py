@@ -25,7 +25,7 @@ import treasury_cta_squeeze_audited_watch as audited
 watcher = audited.watcher
 # Revision 10 adds the official NQ/CFTC cross-asset squeeze lane.
 # The audited gate still prevents a formatting-only push from becoming an event alert.
-watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 10)
+watcher.FORMAT_REVISION = max(int(getattr(watcher, "FORMAT_REVISION", 0)), 11)
 _base_format = audited.format_alert
 _base_main = watcher.main
 
@@ -49,6 +49,8 @@ CFTC_URL = "https://www.cftc.gov/dea/futures/financial_lf.htm"
 NYFED_URL = "https://markets.newyorkfed.org/api/rates/secured/sofr/last/1.json"
 FED_FOMC_URL = "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
 CTA_SECONDARY_URL = "https://a.foresightnews.pro/article/detail/99813"
+BESSENT_FEVER_URL = "https://news.bgov.com/bloomberg-government-news/bessent-says-buyback-move-aimed-at-quelling-market-fever-1"
+TREASURY_BUYBACK_RELEASE = "https://home.treasury.gov/news/press-releases/sb0607"
 CME_NQ_URL = "https://www.cmegroup.com/markets/equities/nasdaq/e-mini-nasdaq-100.html"
 CME_EQUITIES_URL = "https://www.cmegroup.com/markets/equities.html"
 CME_NQ_BULLETIN = "https://www.cmegroup.com/daily_bulletin/current/Section11_Equity_And_Index_Futures.pdf"
@@ -760,6 +762,27 @@ def _easy_read_block(snapshot: dict, previous: dict, reasons: list[str]) -> str:
     )
 
 
+def _policy_boundary_block(compact: bool = True) -> str:
+    if compact:
+        return "\n".join([
+            "<b>🏛 정책 목적·경계선</b>",
+            "• Bessent 공식선은 <b>특정 10년·30년 금리 목표가 아니라 시장 ‘fever(과열)’·무질서한 속도 완화</b>입니다.",
+            "• 따라서 CTA 숏 스퀴즈는 재무부의 공식 목표가 아니라 정책 충격 뒤 나타날 수 있는 <b>시장 결과</b>로 분리합니다.",
+            "• 검증 경로: 실제 바이백 → ZN/ZB/UB·동일범위 OI → CFTC 숏 → 10·30년 명목·실질금리 → Nasdaq·AI 할인율.",
+            "• 시장 기능이 정상인데도 특정 금리 수준에 맞춰 매입·발행구조를 반복 조정하면 <b>유동성 지원→사실상 금리관리</b> 경보로 격상합니다.",
+            f'<a href="{BESSENT_FEVER_URL}">Bessent ‘market fever’ 발언</a> · <a href="{TREASURY_BUYBACK_RELEASE}">미 재무부 바이백 공식 발표</a>',
+            "",
+        ])
+    return "\n".join([
+        "<b>🏛 정책 목적·경계선</b>",
+        "• 공식 목적: 특정 수익률·채권가격 고정이 아니라 장기물 시장의 유동성·변동성 과속 완화.",
+        "• CTA·모멘텀 숏커버가 이어질 수는 있지만 이는 시장 결과이며 공식 정책목표로 단정하지 않음.",
+        "• 실제 집행액과 장기 명목·실질금리가 함께 내려가야 성장주 할인율 호재로 격상.",
+        "• 정상 시장에서도 특정 금리 레벨에 맞춘 반복 개입이 나오면 사실상 금리관리 위험을 별도 경보.",
+        "",
+    ])
+
+
 def format_alert(snapshot, previous, fx, fx_date, reasons):
     title, body = _base_format(snapshot, previous, fx, fx_date, reasons)
     body = _compact_duplicates(body)
@@ -771,6 +794,7 @@ def format_alert(snapshot, previous, fx, fx_date, reasons):
         f"• <b>{impact}</b> — {path}.\n"
         "• repo·신용 스트레스형 금리 하락은 위험자산 호재로 보지 않습니다.\n\n"
     )
+    block = _policy_boundary_block(compact=True) + block
     marker = "<b>한 줄 결론</b>"
     if "🧭 주식시장 해석" not in body:
         body = body.replace(marker, block + marker, 1) if marker in body else body + "\n\n" + block.rstrip()
@@ -883,6 +907,11 @@ def _scheduled_report(snapshot: dict, previous: dict, reasons: list[str], fx=Non
         ])
 
     lines.extend([
+        "",
+        "<b>🏛 정책 목적·경계선</b>",
+        "• 공식 목적은 금리 고정이 아니라 시장 과열·무질서한 속도 완화",
+        "• CTA 스퀴즈는 공식 목표가 아니라 시장 결과로 분리",
+        "• 실제 바이백→장기 명목·실질금리→Nasdaq·AI 할인율 순으로 검증",
         "",
         "<b>🧭 주식시장 해석</b>",
         f"• <b>{impact}</b> — {path}.",
@@ -1054,6 +1083,7 @@ def scheduled_main() -> int:
             "<b>👀 지금 쉽게 보면</b>",
             f"• <b>{cross.get('label')}</b>",
             "• 채권 숏과 Nasdaq 숏이 함께 쌓인 상태에서 실제 청산이 같은 방향으로 번지는지 확인합니다.",
+            "• 정책 구분: <b>CTA 스퀴즈는 공식 금리목표가 아니라 시장 결과</b>이며, Bessent의 공식선은 시장 과열·무질서한 속도 완화입니다.",
             "",
             _cross_asset_block(snapshot, previous, fx=fx, fx_date=fx_date, compact=False),
             "<b>🚦 다음 확인</b>",
