@@ -260,11 +260,13 @@ def format_alert(snapshot, previous, fx, fx_date, reasons):
     return title, body
 
 
-def _cftc_short_reduction(current: dict, previous: dict) -> tuple[bool, list[str]]:
+def _cftc_short_reduction(current: dict, previous: dict) -> tuple[set[str], list[str]]:
+    """Return only long-end markets whose leveraged net short actually reduced."""
     curr = (current.get("cftc") or {}).get("markets", {})
     prev = (previous.get("cftc") or {}).get("markets", {})
+    reduced: set[str] = set()
     lines: list[str] = []
-    for key in ("2Y", "5Y", "10Y", "BOND", "ULTRABOND"):
+    for key in ("10Y", "BOND", "ULTRABOND"):
         c = curr.get(key) or {}
         p = prev.get(key) or {}
         c_net = c.get("leveraged_net")
@@ -273,8 +275,21 @@ def _cftc_short_reduction(current: dict, previous: dict) -> tuple[bool, list[str
             continue
         # Less negative / more positive = net-short reduction.
         if int(c_net) > int(p_net):
+            reduced.add(key)
             lines.append(f"{key} 순포지션 {int(p_net):+,}→{int(c_net):+,}계약")
-    return bool(lines), lines
+    return reduced, lines
+
+
+def _evidence_markets(evidence: list[str]) -> set[str]:
+    mapped: set[str] = set()
+    for line in evidence:
+        if "TY/ZN" in line or line.startswith("ZN "):
+            mapped.add("10Y")
+        if "US/ZB" in line or line.startswith("ZB "):
+            mapped.add("BOND")
+        if "WN/UB" in line or line.startswith("UB "):
+            mapped.add("ULTRABOND")
+    return mapped
 
 
 def deduped_main() -> int:
@@ -310,19 +325,25 @@ def deduped_main() -> int:
     if snapshot.get("cta_media"):
         media_id = snapshot["cta_media"].get("link") or snapshot["cta_media"].get("title")
 
-    short_bias_active = bool(state.get("short_bias_active", False))
+    short_bias_markets = set(state.get("short_bias_markets") or [])
     short_reduction_lines: list[str] = []
     if prev_cftc_date and cftc_date != prev_cftc_date:
-        short_bias_active, short_reduction_lines = _cftc_short_reduction(snapshot, prev_snapshot)
+        short_bias_markets, short_reduction_lines = _cftc_short_reduction(snapshot, prev_snapshot)
+    short_bias_active = bool(short_bias_markets)
 
     evidence = watcher.squeeze_evidence(snapshot, prev_snapshot)
+    evidence_markets = _evidence_markets(evidence)
+    matched_short_bias = bool(short_bias_markets & evidence_markets)
     z = float(snapshot["yield10"]["z20"])
     z_active = z <= -1.0
     repo_ok, repo_worsened = _repo_not_worse(snapshot, prev_snapshot)
     data_fresh, stale_reasons = _data_freshness(snapshot)
 
     composite_confirmed = bool(
-        evidence and (short_bias_active or z_active) and repo_ok and data_fresh
+        evidence
+        and (matched_short_bias or z_active)
+        and repo_ok
+        and data_fresh
     )
 
     y = float(snapshot["yield10"]["yield"])
@@ -344,11 +365,14 @@ def deduped_main() -> int:
     reasons: list[str] = []
     if force_correction:
         reasons.append("정정: OI 범위 혼용 제거 및 방향성 판정 업그레이드")
-    if should_alert and short_bias_active:
+    if should_alert and matched_short_bias:
         if short_reduction_lines:
-            reasons.append("CFTC 숏 축소: " + ", ".join(short_reduction_lines))
+            reasons.append("CFTC 동일만기 숏 축소: " + ", ".join(short_reduction_lines))
         else:
-            reasons.append("최근 CFTC 주간 숏 축소 상태 유지")
+            reasons.append(
+                "최근 CFTC 동일만기 숏 축소 상태 유지: "
+                + ", ".join(sorted(short_bias_markets & evidence_markets))
+            )
     if composite_confirmed:
         reasons.append("동일 범위 OI 감소 + 선물 가격 상승 확인")
         if z_active:
@@ -386,11 +410,15 @@ def deduped_main() -> int:
         "snapshot": snapshot,
         "format_revision": watcher.FORMAT_REVISION,
         "short_bias_active": short_bias_active,
+        "short_bias_markets": sorted(short_bias_markets),
         "episode_active": episode_active,
         "episode_stage": episode_stage,
         "last_gate": {
             "futures_price_same_scope_oi": bool(evidence),
             "cftc_short_bias": short_bias_active,
+            "cftc_short_bias_markets": sorted(short_bias_markets),
+            "evidence_markets": sorted(evidence_markets),
+            "matched_short_bias": matched_short_bias,
             "z_below_minus_1": z_active,
             "repo_not_worse": repo_ok,
             "data_fresh": data_fresh,
@@ -435,7 +463,8 @@ def deduped_main() -> int:
         f"- 10년물: {y:.3f}% / {bucket}\n"
         f"- 20일 z: {z:+.2f}σ\n"
         f"- 선물 가격↑·동일범위 OI↓: {'확인' if evidence else '미확인'}\n"
-        f"- 최근 CFTC 숏 축소: {'확인' if short_bias_active else '미확인'}\n"
+        f"- 최근 CFTC 장기물 숏 축소: {'확인 ' + ','.join(sorted(short_bias_markets)) if short_bias_active else '미확인'}\n"
+        f"- 선물 신호와 동일만기 매칭: {'확인' if matched_short_bias else '미확인'}\n"
         f"- repo 비악화: {'확인' if repo_ok else '미확인'}\n"
         f"- 자료 신선도: {'확인' if data_fresh else '미확인 — ' + ', '.join(stale_reasons)}\n"
         f"- 복합 스퀴즈: {'확인' if composite_confirmed else '미확인'} / 단계 {stage}\n"
