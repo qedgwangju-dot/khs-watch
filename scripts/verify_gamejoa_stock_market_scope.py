@@ -144,6 +144,10 @@ def main() -> int:
         remaining, routed = production.telegram.partition_realtime_policy_alerts([marked, ordinary], live_mode)
         if remaining != [marked, ordinary] or routed:
             failures.append(f"policy_news_blackhole:live={live_mode}")
+    if radar.macro_release_core_aligned("PCE 물가 3% 상승", "PCE 물가는 13% 상승했습니다."):
+        failures.append("macro_percent_substring_accepted_as_equal_value")
+    if not radar.macro_release_core_aligned("PCE 물가 3.0% 상승", "개인소비지출 물가는 3% 상승했습니다."):
+        failures.append("macro_equivalent_percent_and_indicator_alias_rejected")
 
     searches = dict(radar.base.trusted_query_plan())
     for name in ("글로벌 금리·물가·고용·유동성", "글로벌 증시 실적·투자·자본행사", "글로벌 통상·제재·원자재 공급"):

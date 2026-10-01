@@ -6631,7 +6631,9 @@ def macro_release_core_aligned(title: str, core: str) -> bool:
         return True
     if not all(has_term(base.norm(core), aliases) for aliases in required):
         return False
-    return all(value in core for value in re.findall(r"\d+(?:\.\d+)?%", title))
+    headline_rates = {float(value) for value in re.findall(r"(\d+(?:\.\d+)?)%", title)}
+    core_rates = {float(value) for value in re.findall(r"(\d+(?:\.\d+)?)%", core)}
+    return headline_rates.issubset(core_rates)
 
 
 def source_output_aligned(alert: dict) -> bool:
