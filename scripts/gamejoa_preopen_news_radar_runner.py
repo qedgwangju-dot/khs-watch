@@ -206,7 +206,11 @@ def fetch(
         UA,
         timeout=timeout,
         attempts=1,
-        accept="application/rss+xml, application/json, text/html, */*",
+        accept=(
+            "text/html,application/xhtml+xml,*/*"
+            if response_validator is not None
+            else "application/rss+xml, application/json, text/html, */*"
+        ),
         response_validator=response_validator,
     )
 

@@ -17,7 +17,7 @@ STATE_PATH = ROOT / "data" / "gamejoa_article_detail_queue.json"
 PENDING_PATH = ROOT / "out" / "gamejoa_article_detail_queue_pending.json"
 CACHE_PATH = ROOT / "out" / "gamejoa_article_detail_run_cache.json"
 RETENTION = dt.timedelta(days=3)
-RESPONSE_VALIDATION_VERSION = 2
+RESPONSE_VALIDATION_VERSION = 3
 
 
 def parse_time(value) -> dt.datetime | None:

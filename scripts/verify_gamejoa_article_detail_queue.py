@@ -182,6 +182,16 @@ class DetailQueueChecks(unittest.TestCase):
 
 
 class SourceIsolationChecks(unittest.TestCase):
+    def test_article_validation_requests_html_not_feed_content(self):
+        validator = lambda text: None
+        with patch.object(radar.base, "fetch_text", return_value=("body", None)) as fetch:
+            radar.base.fetch("https://www.hankyung.com/article/fixture", response_validator=validator)
+            self.assertEqual(fetch.call_args.kwargs["accept"], "text/html,application/xhtml+xml,*/*")
+            self.assertIs(fetch.call_args.kwargs["response_validator"], validator)
+            radar.base.fetch("https://source.example/rss")
+            self.assertIn("application/rss+xml", fetch.call_args.kwargs["accept"])
+            self.assertIsNone(fetch.call_args.kwargs["response_validator"])
+
     def test_fast_invalid_proxy_does_not_hide_valid_direct_article(self):
         import time
         title = "한국 수출 증가 발표"
