@@ -106,6 +106,7 @@ def main() -> int:
     assert_fcc_chinese_optical_transceiver_ban_is_monitored()
     assert_korea_trade_remedy_final_rate_change_is_monitored()
     assert_congress_chinese_optical_transceiver_bill_is_monitored()
+    assert_fcc_upper_c_band_auction115_is_monitored()
     assert_trusted_trump_rate_and_dollar_profiles_are_specific()
     assert_trusted_trump_current_iran_profiles_are_source_faithful()
     assert_trusted_trump_hormuz_open_is_source_faithful_and_deduped()
@@ -1710,6 +1711,70 @@ def assert_congress_chinese_optical_transceiver_bill_is_monitored() -> None:
         if marker not in (rendered + " " + str(profile)):
             raise AssertionError(f"Rendered Congress optical-transceiver alert missing: {marker}")
 
+
+
+def assert_fcc_upper_c_band_auction115_is_monitored() -> None:
+    official = khs_trusted_policy_news_watch.OFFICIAL_DIRECT_STORIES.get(
+        "us_fcc_upper_c_band_auction115", ()
+    )
+    if not any("federalregister.gov/documents/2026/08/03/2026-15725" in row[0] for row in official):
+        raise AssertionError("Official Auction 115 Federal Register source is missing")
+
+    rule = next(
+        rule for rule in khs_trusted_policy_news_watch.STORY_RULES
+        if rule.key == "us_fcc_upper_c_band_auction115"
+    )
+    official_item = {
+        "title": (
+            "Auction of Flexible-Use Licenses in the Upper C-Band for Next-Generation Wireless Services "
+            "Scheduled for April 27, 2027; Comment Sought on Competitive Bidding Procedures for Auction 115"
+        ),
+        "description": (
+            "FCC Auction 115 will offer 3,248 licenses in 3.98-4.14 GHz, 160 megahertz in eight 20-megahertz blocks."
+        ),
+        "source": "U.S. Federal Register (FCC)",
+        "link": "https://www.federalregister.gov/documents/2026/08/03/2026-15725/example",
+        "published_kst": "2026-08-03T09:00:00+09:00",
+    }
+    if not khs_trusted_policy_news_watch.has_required_terms(
+        " ".join([official_item["title"], official_item["description"], official_item["source"]]), rule
+    ):
+        raise AssertionError("Auction 115 official notice was not detected")
+
+    status, detail = khs_trusted_policy_news_watch.alert_confirmation_status(rule, [official_item])
+    if status != "공식 확인" or "Auction 115" not in detail:
+        raise AssertionError("Auction 115 official source was not upgraded to 공식 확인")
+
+    semantic = khs_trusted_policy_news_watch.semantic_policy_event_key(official_item)
+    if semantic != "us-fcc-upper-c-band-auction115-scheduled":
+        raise AssertionError(f"Auction 115 semantic stage mismatch: {semantic}")
+
+    results_item = dict(official_item)
+    results_item["title"] = "FCC announces Auction 115 results and winning bidders for Upper C-Band"
+    if khs_trusted_policy_news_watch.semantic_policy_event_key(results_item) != "us-fcc-upper-c-band-auction115-results":
+        raise AssertionError("Auction 115 results did not become a new semantic stage")
+
+    profile = khs_trusted_policy_news_watch.item_story_profile(rule, [official_item]) or {}
+    rendered = khs_trusted_policy_news_watch.render_alert(
+        rule, [official_item], dt.datetime(2026, 10, 1, 12, 0, tzinfo=ZoneInfo("Asia/Seoul"))
+    )
+    combined = rendered + " " + str(profile)
+    for marker in (
+        "3,248개",
+        "160MHz",
+        "2027년 4월 27일",
+        "1,000억달러",
+        "여러 경매의 누적",
+        "2030년 12월 31일",
+        "2031년 7월 1일",
+        "KMW",
+        "에이스테크",
+        "쏠리드",
+        "에치에프알",
+        "확정 수주 아님",
+    ):
+        if marker not in combined:
+            raise AssertionError(f"Auction 115 rendered alert missing: {marker}")
 
 
 def assert_boem_arctic_drilling_is_source_faithful() -> None:
