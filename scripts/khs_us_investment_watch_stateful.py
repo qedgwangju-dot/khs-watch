@@ -759,14 +759,12 @@ def _accepted_facts_for_group(family: str, rows: list[dict]) -> tuple[set[str], 
             item for item in accepted
             if item.startswith(("nuclear_total_units:", "ap1000_units:", "apr1400_units:"))
         }
+        framework_official = "nuclear_framework_status:agreed" in accepted
         for item in list(quantitative):
             evidence = eligible.get(item, [])
-            official_support = any(
+            official_support = framework_official or any(
                 _is_official(row)
-                and (
-                    _official_status_fact(row) == "official_status:confirmed"
-                    or any(term in _norm(str(row.get("title") or "")) for term in ["원전 프레임워크", "project power"])
-                )
+                and _official_status_fact(row) == "official_status:confirmed"
                 for row in evidence
             )
             if not official_support:
