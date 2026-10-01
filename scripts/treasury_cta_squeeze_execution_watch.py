@@ -39,11 +39,34 @@ MONTH_RE = re.compile(r"^(JAN|FEB|MAR|APR|MAY|JUN|JLY|AUG|SEP|OCT|NOV|DEC)\d{2}$
 
 
 def _download_pdf_text() -> str:
-    req = urllib.request.Request(CME_BULLETIN, headers={"User-Agent": "Mozilla/5.0 khs-watch/cme-bulletin"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        data = r.read()
-    if not data.startswith(b"%PDF"):
-        raise RuntimeError("CME Section09 did not return a PDF")
+    urls = [
+        CME_BULLETIN,
+        CME_BULLETIN + "?download=1",
+        CME_BULLETIN + "?_=" + datetime.now().strftime("%Y%m%d%H"),
+    ]
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/154 Safari/537.36",
+        "Accept": "application/pdf,application/octet-stream;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": "https://www.cmegroup.com/daily-bulletin.html",
+        "Cache-Control": "no-cache",
+    }
+    errors = []
+    data = None
+    for url in urls:
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=30) as r:
+                candidate = r.read()
+            if candidate.startswith(b"%PDF"):
+                data = candidate
+                break
+            errors.append(f"{url}: non-PDF")
+        except Exception as exc:
+            errors.append(f"{url}: {type(exc).__name__}: {exc}")
+    if not data:
+        raise RuntimeError("CME Section09 download failed: " + " | ".join(errors))
+
     reader = PdfReader(io.BytesIO(data))
     pages = []
     for p in reader.pages:
