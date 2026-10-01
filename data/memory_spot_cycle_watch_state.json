@@ -289,10 +289,22 @@
       "source": "TrendForce Research",
       "published_kst": "2026-10-01T09:00:00+09:00",
       "first_seen_kst": "2026-10-01T16:16:02+09:00"
+    },
+    "38da8efa9b24aa85b13e8d8e": {
+      "title": "Storage price hikes are far from over! Goldman Sachs: Q4 ASP forecasts exceed expectations, eSSD adoption is accelerating, and it reaffirms its \"Buy\" ratings for Samsung Electronics and SK Hynix. - 富途牛牛",
+      "source": "富途牛牛",
+      "published_kst": "2026-10-01T18:14:00+09:00",
+      "first_seen_kst": "2026-10-01T19:27:07+09:00"
+    },
+    "dca4b1022a14a71d17e07321": {
+      "title": "삼성전자 SK하이닉스 합산 영업이익 올해 640조서 내년 950조로 50% 증가 전망, HBM 가격 상승이 견인차 - businesspost.co.kr",
+      "source": "businesspost.co.kr",
+      "published_kst": "2026-09-30T17:22:52+09:00",
+      "first_seen_kst": "2026-10-01T19:27:07+09:00"
     }
   },
-  "updated_at_kst": "2026-10-01T16:16:02+09:00",
-  "last_scan_count": 19,
+  "updated_at_kst": "2026-10-01T19:27:07+09:00",
+  "last_scan_count": 20,
   "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
@@ -338,19 +350,19 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-01T16:16:07+09:00",
+  "last_successful_delivery_kst": "2026-10-01T19:27:12+09:00",
   "telegram_message_ids": [
-    193
+    198
   ],
-  "telegram_message_id": 193,
+  "telegram_message_id": 198,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      193
+      198
     ],
-    "confirmed_at_kst": "2026-10-01T16:16:07+09:00"
+    "confirmed_at_kst": "2026-10-01T19:27:12+09:00"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -366,5 +378,28 @@
     "source_url": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
     "source_rank": 3,
     "research_url": "https://www.trendforce.com/research/download/RP260924PL"
+  },
+  "trendforce_3q4q_pace_track_version": 1,
+  "trendforce_3q4q_pace": {
+    "q3_conventional_dram_min_pct": 13.0,
+    "q3_conventional_dram_max_pct": 18.0,
+    "q4_conventional_dram_min_pct": 10.0,
+    "q4_conventional_dram_max_pct": 15.0,
+    "q3_hbm_blended_min_pct": 8.0,
+    "q3_hbm_blended_max_pct": 13.0,
+    "q4_hbm_blended_min_pct": 15.0,
+    "q4_hbm_blended_max_pct": 20.0,
+    "q3_total_nand_min_pct": 18.0,
+    "q3_total_nand_max_pct": 23.0,
+    "q4_total_nand_min_pct": 15.0,
+    "q4_total_nand_max_pct": 20.0,
+    "q4_enterprise_ssd_min_pct": 23.0,
+    "q4_enterprise_ssd_max_pct": 28.0,
+    "as_of": "2026-09",
+    "source": "TrendForce",
+    "source_kind": "사용자 제공 TrendForce Sep. 2026 표 + 2026-09-30 공식 4Q26 보도자료 교차확인",
+    "source_url": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
+    "research_url": "https://www.trendforce.com/research/download/RP260924PL",
+    "source_rank": 3
   }
 }
