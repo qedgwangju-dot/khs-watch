@@ -17,6 +17,8 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUT = ROOT / 'out'
 VERSION = 1
 FOUNDRY_TRACK_VERSION = 1
+FOUNDRY_RECOVERY_TRACK_VERSION = 1
+FOUNDRY_PRICING_RANGE_TRACK_VERSION = 1
 MARKET_PRICING_TRACK_VERSION = 1
 EXTRA_QUERIES = [
     '(HBM4 OR HBM4E) (24Gb OR 32Gb OR 36GB OR 48GB OR 적층 OR 용량)',
@@ -30,6 +32,9 @@ EXTRA_QUERIES = [
     '(디아이 OR 디지털프론티어 OR 와이씨 OR 엑시콘 OR 인텍플러스 OR 펨트론 OR ISC) HBM (검사 OR 테스트 OR 수주 OR 검증)',
     '(Samsung OR 삼성) HBM4 (base die OR 베이스다이) (4nm OR 4나노) (풀가동 OR 증설 OR 가격 OR capacity)',
     '(Samsung OR 삼성) HBM5 (2nm OR 2나노) (base die OR 베이스다이 OR GAA OR TSV OR 생산라인 OR 투자)',
+    '(Samsung OR 삼성) foundry (operating loss OR loss OR 적자 OR 영업손실) (HBM4 OR base die OR 베이스다이 OR 41.8 OR 42)',
+    '(Samsung OR 삼성) foundry (2nm OR 2나노) (design win OR HPC OR CSP OR Taylor OR 테일러 OR tapeout OR qualification OR mass production OR 수주 OR 양산)',
+    '(Samsung OR 삼성) Taylor foundry (mass production OR production OR 2027 OR customer OR contract OR negotiation)',
 ]
 COMPANIES = {'samsung': r'삼성(?:전자)?|Samsung(?: Electronics)?',
              'skhynix': r'SK\s?하이닉스|SK\s*hynix', 'micron': r'마이크론|Micron'}
@@ -182,7 +187,10 @@ def is_axis_text(text):
         r'(?:TSMC|ASE|디아이|디지털\s*프론티어|와이씨|엑시콘|인텍플러스|펨트론|ISC|고영|네오셈|넥스틴).*'
         r'(?:CoWoS|후공정|패키징|검사|테스트|tester|수주|품질\s*검증|정식\s*계약|설비투자|capex)|'
         r'(?:삼성|Samsung).*HBM.*(?:베이스\s*다이|base\s*die|4\s*나노|4nm|2\s*나노|2nm).*'
-        r'(?:풀가동|full\s*utilization|증설|expand|가격\s*인상|price\s*increase|생산라인|production\s*line|투자|investment)',
+        r'(?:풀가동|full\s*utilization|증설|expand|가격\s*인상|price\s*increase|생산라인|production\s*line|투자|investment)|'
+        r'(?:삼성|Samsung).*(?:파운드리|foundry).*(?:영업\s*손실|영업손실|적자|operating\s*loss|41[.]8\s*%|42\s*%).*(?:HBM4|베이스\s*다이|base\s*die|4nm|4\s*나노)|'
+        r'(?:삼성|Samsung).*(?:파운드리|foundry).*(?:2\s*나노|2nm).*(?:design\s*win|HPC|CSP|Taylor|테일러|tapeout|qualification|mass\s*production|수주|양산)|'
+        r'(?:삼성|Samsung).*(?:Taylor|테일러).*(?:foundry|파운드리|mass\s*production|양산|customer|contract|수주|negotiation|협상)',
         text, re.I))
 
 
@@ -596,6 +604,120 @@ def _wpm(text):
     return None
 
 
+def _trillion_krw(text, patterns):
+    for pat in patterns:
+        m = re.search(pat, text, re.I)
+        if m:
+            return float(m.group(1).replace(',', ''))
+    return None
+
+
+def parse_foundry_recovery_records(item, body):
+    text = re.sub(r'\s+', ' ', body or '')
+    if not re.search(r'(?:삼성|Samsung)', text, re.I) or not re.search(r'(?:파운드리|foundry)', text, re.I):
+        return []
+    published = item.get('published_at_kst','')
+    asof = published[:10]
+    rows = []
+
+    if re.search(r'(?:영업\s*손실|영업손실|operating\s*loss|losses?)', text, re.I):
+        loss_2025 = _trillion_krw(text, (
+            r'2025[^.]{0,120}?(?:영업\s*손실|영업손실|operating\s*loss|loss)[^.]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*(?:조원|trillion\s*won)',
+            r'(?:from|지난해|작년)[^.]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*(?:조원|trillion\s*won)[^.]{0,100}?(?:2025|to|에서)',
+        ))
+        loss_2026 = _trillion_krw(text, (
+            r'2026[^.]{0,120}?(?:영업\s*손실|영업손실|operating\s*loss|loss)[^.]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*(?:조원|trillion\s*won)',
+            r'(?:to|올해|금년)[^.]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*(?:조원|trillion\s*won)[^.]{0,100}?(?:2026|this\s*year)',
+        ))
+        pair = re.search(
+            r'([0-9]+(?:\.[0-9]+)?)\s*(?:조원|trillion\s*won)[^.]{0,90}?2025[^.]{0,140}?'
+            r'([0-9]+(?:\.[0-9]+)?)\s*(?:조원|trillion\s*won)[^.]{0,90}?2026',
+            text, re.I)
+        if pair:
+            if loss_2025 is None:
+                loss_2025 = float(pair.group(1))
+            if loss_2026 is None:
+                loss_2026 = float(pair.group(2))
+        shrink = None
+        sm = re.search(r'(?:축소|감소|narrow|shrink|reduc)[^%]{0,100}?([0-9]+(?:\.[0-9]+)?)\s*%', text, re.I)
+        if sm:
+            shrink = float(sm.group(1))
+        if shrink is None and loss_2025 and loss_2026:
+            shrink = (1.0 - loss_2026 / loss_2025) * 100.0
+
+        q3_loss = None
+        q3 = re.search(
+            r'(?:3Q|Q3|3분기)[^.]{0,120}?(?:손실|loss)[^\d]{0,60}?'
+            r'([0-9,]+(?:\.[0-9]+)?)\s*(억원|조원|billion\s*won|trillion\s*won)',
+            text, re.I)
+        if q3:
+            n = float(q3.group(1).replace(',', ''))
+            unit = q3.group(2).lower()
+            if '억원' in unit:
+                q3_loss = n / 10000.0
+            elif 'billion' in unit:
+                q3_loss = n / 1000.0
+            else:
+                q3_loss = n
+
+        if loss_2025 is not None or loss_2026 is not None or shrink is not None or q3_loss is not None:
+            rec = make_record(
+                'foundry_loss_outlook', ['samsung','Foundry_SystemLSI','2026'],
+                {'loss_2025_krw_trn': loss_2025, 'loss_2026e_krw_trn': loss_2026,
+                 'loss_shrink_pct': shrink, 'q3_2026e_loss_krw_trn': q3_loss},
+                'KRW_trillion,pct', '2026', item,
+                '삼성 파운드리+System LSI 합산 영업손실 전망',
+                as_of=asof, scope='broker_estimate_foundry_plus_system_lsi_combined_not_foundry_standalone')
+            if 'trendforce.com/news/' in (item.get('direct_link') or ''):
+                rec['evidence'] = 'reported'
+            rows.append(rec)
+
+    if re.search(r'(?:2\s*나노|2nm)', text, re.I):
+        stage = ''
+        if re.search(r'(?:양산\s*(?:시작|개시)|mass\s*production\s*(?:began|started|commenced)|commenced\s*mass\s*production)', text, re.I):
+            stage = 'mass_production'
+        elif re.search(r'(?:qualification|고객\s*인증|인증\s*완료|검증\s*완료)', text, re.I):
+            stage = 'qualification'
+        elif re.search(r'(?:tape[- ]?out|테이프아웃)', text, re.I):
+            stage = 'tapeout'
+        elif re.search(r'(?:design\s*wins?|secured[^.]{0,80}?projects?|수주[^.]{0,60}?(?:확보|증가)|프로젝트[^.]{0,60}?(?:확보|수주))', text, re.I):
+            stage = 'design_win'
+        elif re.search(r'(?:discussion|negotiation|talks?|협의|논의|협상)', text, re.I):
+            stage = 'discussion'
+        hpc = True if re.search(r'(?:HPC|고성능\s*컴퓨팅)', text, re.I) else None
+        us_orders = True if re.search(r'(?:U[.]?S[.]?|미국)[^.]{0,100}?(?:orders?|수주)[^.]{0,60}?(?:strong|증가|확대|견조)', text, re.I) else None
+        gen2_mobile_plan = True if re.search(r'(?:2nm|2\s*나노)[^.]{0,120}?(?:second[- ]generation|2세대)[^.]{0,100}?(?:mobile|모바일)[^.]{0,100}?(?:ramp|양산|생산)', text, re.I) else None
+        if stage or hpc is not None or us_orders is not None or gen2_mobile_plan is not None:
+            rows.append(make_record(
+                'foundry_external_2nm', ['samsung','external_2nm','current'],
+                {'stage': stage or 'discussion', 'hpc_design_win': hpc,
+                 'us_orders_strong': us_orders, 'gen2_mobile_ramp_plan': gen2_mobile_plan},
+                'stage,direction', 'current', item,
+                '삼성 외부 2나노 AI·HPC 수주·양산 전환 단계',
+                as_of=asof, scope='external_2nm_pipeline_design_win_not_revenue_until_mass_production'))
+
+    if re.search(r'(?:Taylor|테일러)', text, re.I):
+        mp_year = None
+        for pat in (
+            r'(?:Taylor|테일러)[^.]{0,180}?(?:mass\s*production|양산)[^.]{0,80}?(20\d{2})',
+            r'(20\d{2})[^.]{0,100}?(?:Taylor|테일러)[^.]{0,100}?(?:mass\s*production|양산)',
+        ):
+            m = re.search(pat, text, re.I)
+            if m:
+                mp_year = int(m.group(1))
+                break
+        negotiations = True if re.search(r'(?:major\s+tech|customer|고객)[^.]{0,120}?(?:discussion|negotiation|talks|협의|논의|협상)', text, re.I) else None
+        if mp_year is not None or negotiations is not None:
+            rows.append(make_record(
+                'foundry_taylor_schedule', ['samsung','Taylor_Fab1'],
+                {'mass_production_year': mp_year, 'external_customer_negotiations': negotiations},
+                'year,direction', 'Taylor_Fab1', item,
+                '삼성 Taylor Fab1 양산 일정·외부고객 협상 단계',
+                as_of=asof, scope='taylor_schedule_not_customer_2nm_revenue'))
+
+    return rows
+
+
 def parse_foundry_hbm_records(item, body):
     text = re.sub(r'\s+', ' ', body)
     if not re.search(r'(?:삼성|Samsung)', text, re.I) or not re.search(r'HBM', text, re.I):
@@ -653,14 +775,19 @@ def parse_foundry_hbm_records(item, body):
         if re.search(r'(?:베이스\s*다이|base\s*die)[^.]{0,80}?(?:가격\s*(?:인하|하향)|price\s*(?:cut|decrease))', text, re.I):
             base_die_up = False
         pct = None
-        pm = re.search(r'(?:가격\s*인상|price\s*(?:increase|hike))[^%]{0,30}?([0-9]+(?:\.[0-9]+)?)\s*%', text, re.I)
-        if pm:
-            pct = float(pm[1])
-        if new_order_up or base_die_up or pct is not None:
+        pct_min = pct_max = None
+        prm = re.search(r'(?:가격[^.]{0,30}?(?:인상|상승)|price[^.]{0,30}?(?:increase|hike|rose))[^%]{0,40}?([0-9]+(?:\.[0-9]+)?)\s*(?:~|[-–—]|to)\s*([0-9]+(?:\.[0-9]+)?)\s*%', text, re.I)
+        if prm:
+            pct_min, pct_max = float(prm[1]), float(prm[2])
+        else:
+            pm = re.search(r'(?:가격\s*인상|price\s*(?:increase|hike))[^%]{0,30}?([0-9]+(?:\.[0-9]+)?)\s*%', text, re.I)
+            if pm:
+                pct = float(pm[1])
+        if new_order_up or base_die_up or pct is not None or pct_min is not None:
             rows.append(make_record(
                 'foundry_pricing', ['samsung','4nm','HBM4_base_die'],
                 {'new_order_price_up': new_order_up, 'base_die_price_up': base_die_up,
-                 'price_change_pct': pct},
+                 'price_change_pct': pct, 'price_change_pct_min': pct_min, 'price_change_pct_max': pct_max},
                 'direction,pct', 'current', item,
                 '삼성 4나노 신규수주·HBM4 베이스다이 가격 변화',
                 as_of=asof, scope='reported_foundry_pricing'))
@@ -785,6 +912,7 @@ def parse_records(item, body):
     records.extend(parse_hbm_revenue_estimates(item, body))
     records.extend(parse_hbm_market_pricing(item, body))
     records.extend(parse_postprocess_records(item, body))
+    records.extend(parse_foundry_recovery_records(item, body))
     records.extend(parse_foundry_hbm_records(item, body))
     paragraphs = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body) if p.strip()]
     for original in paragraphs:
@@ -941,6 +1069,48 @@ def comparison(old, new):
         elif av is None and bv is not None:
             reasons.append(f"시장 주류 적층 {int(bv)}단 신규 확인")
         return reasons
+    if new['axis'] == 'foundry_loss_outlook':
+        reasons = []
+        for field, label, threshold in (
+            ('loss_2026e_krw_trn','2026E 합산 영업손실',0.5),
+            ('q3_2026e_loss_krw_trn','3Q26E 합산 영업손실',0.2),
+        ):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None:
+                pct = abs(float(bv) / float(av) - 1.0) * 100 if float(av) else 0
+                if abs(float(bv)-float(av)) >= threshold or pct >= 10:
+                    reasons.append(f"{label} {float(av):.3f}조→{float(bv):.3f}조")
+            elif av is None and bv is not None:
+                reasons.append(f"{label} {float(bv):.3f}조 신규 확인")
+        av, bv = a.get('loss_shrink_pct'), b.get('loss_shrink_pct')
+        if av is not None and bv is not None and abs(float(bv)-float(av)) >= 5:
+            reasons.append(f"연간 손실 축소율 {float(av):.1f}%→{float(bv):.1f}%")
+        elif av is None and bv is not None:
+            reasons.append(f"연간 손실 축소율 {float(bv):.1f}% 신규 확인")
+        return reasons
+    if new['axis'] == 'foundry_external_2nm':
+        reasons = []
+        old_stage, new_stage = a.get('stage','discussion'), b.get('stage','discussion')
+        if old_stage != new_stage:
+            reasons.append(f"외부 2나노 단계 {old_stage}→{new_stage}")
+        for field, label in (
+            ('hpc_design_win','2나노 HPC design win'),
+            ('us_orders_strong','미국 고객 수주 강세'),
+            ('gen2_mobile_ramp_plan','2나노 2세대 모바일 램프 계획'),
+        ):
+            if a.get(field) != b.get(field) and b.get(field) is not None:
+                reasons.append(label + (' 확인' if b.get(field) else ' 해소·철회'))
+        return reasons
+    if new['axis'] == 'foundry_taylor_schedule':
+        reasons = []
+        av, bv = a.get('mass_production_year'), b.get('mass_production_year')
+        if av is not None and bv is not None and int(av) != int(bv):
+            reasons.append(f"Taylor Fab1 양산 목표 {int(av)}→{int(bv)}년")
+        elif av is None and bv is not None:
+            reasons.append(f"Taylor Fab1 양산 목표 {int(bv)}년 신규 확인")
+        if a.get('external_customer_negotiations') != b.get('external_customer_negotiations') and b.get('external_customer_negotiations') is not None:
+            reasons.append('Taylor 외부 고객 협상 확인' if b.get('external_customer_negotiations') else 'Taylor 외부 고객 협상 약화·철회')
+        return reasons
     if new['axis'] == 'foundry_base_die_allocation':
         reasons = []
         aw, bw = a.get('total_capacity_wpm'), b.get('total_capacity_wpm')
@@ -969,6 +1139,12 @@ def comparison(old, new):
             reasons.append(f"가격 인상률 {float(bv)-float(av):+.1f}%p")
         elif av is None and bv is not None:
             reasons.append(f"가격 인상률 {float(bv):.1f}% 확인")
+        for field, label in (('price_change_pct_min','가격 인상 범위 하단'),('price_change_pct_max','가격 인상 범위 상단')):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and abs(float(bv)-float(av)) >= 5:
+                reasons.append(f"{label} {float(av):.1f}%→{float(bv):.1f}%")
+            elif av is None and bv is not None:
+                reasons.append(f"{label} {float(bv):.1f}% 신규 확인")
         return reasons
     if new['axis'] == 'foundry_hbm5_2nm':
         reasons = []
@@ -1076,6 +1252,28 @@ def update_state(state, records, now, seeds=None):
                     state['latest'][r['key']] = copy.deepcopy(r)
                     state['pending'].pop(r['key'], None)
             state['foundry_track_version'] = FOUNDRY_TRACK_VERSION
+        if int(state.get('foundry_recovery_track_version') or 0) < FOUNDRY_RECOVERY_TRACK_VERSION:
+            for r in seeds:
+                if r.get('axis') in ('foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule'):
+                    state['last_notified'][r['key']] = copy.deepcopy(r)
+                    state['latest'][r['key']] = copy.deepcopy(r)
+                    state['pending'].pop(r['key'], None)
+            state['foundry_recovery_track_version'] = FOUNDRY_RECOVERY_TRACK_VERSION
+        if int(state.get('foundry_pricing_range_track_version') or 0) < FOUNDRY_PRICING_RANGE_TRACK_VERSION:
+            for r in seeds:
+                if r.get('axis') == 'foundry_pricing':
+                    current = state['last_notified'].get(r['key'])
+                    if current:
+                        merged = copy.deepcopy(current)
+                        merged_value = copy.deepcopy(current.get('value') or {})
+                        for field in ('price_change_pct_min','price_change_pct_max'):
+                            if (r.get('value') or {}).get(field) is not None:
+                                merged_value[field] = r['value'][field]
+                        merged['value'] = merged_value
+                        state['last_notified'][r['key']] = merged
+                        state['latest'][r['key']] = copy.deepcopy(merged)
+                        state['pending'].pop(r['key'], None)
+            state['foundry_pricing_range_track_version'] = FOUNDRY_PRICING_RANGE_TRACK_VERSION
         if int(state.get('market_pricing_track_version') or 0) < MARKET_PRICING_TRACK_VERSION:
             for r in seeds:
                 if r.get('axis') == 'hbm_market_pricing':
@@ -1091,7 +1289,7 @@ def update_state(state, records, now, seeds=None):
         if r['as_of'][:10] > now.date().isoformat():
             continue
         grouped.setdefault(r['key'], []).append(r)
-    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'hbm_market_pricing'}
+    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'hbm_market_pricing'}
     for key, rows in grouped.items():
         rows.sort(key=lambda x: (x['as_of'], RANK.get(x['evidence'], 0)))
         prior = state['latest'].get(key) or state['last_notified'].get(key)
@@ -1151,6 +1349,9 @@ def render(change, rate=None):
              'postprocess_capex': 'HBM 후공정 설비투자·병목 변화',
              'postprocess_order': 'HBM 후공정 장비 수주 변화',
              'postprocess_stage': 'HBM 후공정 고객 검증·양산 단계 변화',
+             'foundry_loss_outlook': '삼성 파운드리+System LSI 손실 축소 전망',
+             'foundry_external_2nm': '삼성 외부 2나노 AI·HPC 수주·양산 전환',
+             'foundry_taylor_schedule': '삼성 Taylor Fab1 양산 일정·외부 고객 협상',
              'foundry_base_die_allocation': '삼성 HBM4 베이스다이 4나노 배정·가동 변화',
              'foundry_node_expansion': '삼성 HBM4 대응 4나노 증설 단계 변화',
              'foundry_pricing': '삼성 4나노·HBM4 베이스다이 가격 변화',
@@ -1168,6 +1369,34 @@ def render(change, rate=None):
         if record['axis'] == 'fab_stage':
             labels = {'plan': '계획', 'delayed': '지연', 'cancelled': '취소', 'reported_operation': '가동 보도'}
             return f"{v['year']}년 · {labels.get(v['stage'], v['stage'])}"
+        if record['axis'] == 'foundry_loss_outlook':
+            parts = []
+            if v.get('loss_2025_krw_trn') is not None:
+                parts.append(f"2025 손실 {v['loss_2025_krw_trn']:.2f}조원")
+            if v.get('loss_2026e_krw_trn') is not None:
+                parts.append(f"2026E {v['loss_2026e_krw_trn']:.2f}조원")
+            if v.get('loss_shrink_pct') is not None:
+                parts.append(f"손실 축소 {v['loss_shrink_pct']:.1f}%")
+            if v.get('q3_2026e_loss_krw_trn') is not None:
+                parts.append(f"3Q26E {v['q3_2026e_loss_krw_trn']:.3f}조원")
+            return " / ".join(parts)
+        if record['axis'] == 'foundry_external_2nm':
+            labels = {'discussion':'협의·논의','design_win':'설계수주·프로젝트 확보','tapeout':'테이프아웃','qualification':'고객 인증','mass_production':'양산'}
+            parts = [labels.get(v.get('stage'), v.get('stage',''))]
+            if v.get('hpc_design_win'):
+                parts.append("2나노 HPC")
+            if v.get('us_orders_strong'):
+                parts.append("미국 고객 수주 강세")
+            if v.get('gen2_mobile_ramp_plan'):
+                parts.append("2나노 2세대 모바일 램프 계획")
+            return " / ".join(x for x in parts if x)
+        if record['axis'] == 'foundry_taylor_schedule':
+            parts = []
+            if v.get('mass_production_year'):
+                parts.append(f"Fab1 양산 목표 {int(v['mass_production_year'])}년")
+            if v.get('external_customer_negotiations'):
+                parts.append("외부 고객 협상")
+            return " / ".join(parts)
         if record['axis'] == 'foundry_base_die_allocation':
             parts = []
             if v.get('total_capacity_wpm'):
@@ -1191,6 +1420,8 @@ def render(change, rate=None):
                 parts.append("HBM4 베이스다이 가격 인상")
             if v.get('price_change_pct') is not None:
                 parts.append(f"{v['price_change_pct']:.1f}%")
+            elif v.get('price_change_pct_min') is not None:
+                parts.append(f"{v['price_change_pct_min']:.1f}~{v['price_change_pct_max']:.1f}%")
             return " / ".join(parts)
         if record['axis'] == 'foundry_hbm5_2nm':
             labels = {'technology_plan':'2나노 기술 적용 계획','mentioned':'신규라인 언급','review':'신규라인 투자 검토','confirmed':'신규라인 투자 확정','equipment_order':'장비 발주','move_in':'장비 반입','trial_production':'시험생산','mass_production':'양산'}
@@ -1279,6 +1510,13 @@ def render(change, rate=None):
         lines.append('• 재사용 세정 처리량이며 웨이퍼 생산·칩 출하·수주금액으로 치환하지 않습니다.')
     if r['axis'] in ('wafer_share', 'bit_share'):
         lines.append('• 연말 전망이며 연간 평균·실제 확정 생산량과 비교하지 않습니다.')
+    if r['axis'] == 'foundry_loss_outlook':
+        lines.append('• 주의: 파운드리 단독 손익이 아니라 파운드리+System LSI 합산 증권사 전망입니다. 회사 확정 실적과 분리합니다.')
+        lines.append('• 2026E 손실 ±0.5조원 또는 10% 이상, 3Q26E ±0.2조원 또는 10% 이상, 손실 축소율 ±5%p 이상을 재알림합니다.')
+    if r['axis'] == 'foundry_external_2nm':
+        lines.append('• 설계수주→테이프아웃→고객 인증→양산을 분리하며, 설계수주를 양산매출로 간주하지 않습니다.')
+    if r['axis'] == 'foundry_taylor_schedule':
+        lines.append('• Taylor 양산 일정과 외부 고객 협상은 삼성전자 공식자료·Reuters 등 확인된 변화만 반영하며 특정 고객을 2나노 양산으로 임의 연결하지 않습니다.')
     if r['axis'] == 'foundry_base_die_allocation':
         lines.append('• 4나노 웨이퍼 배정률은 HBM 완제품 출하량과 동일하지 않으며 수율·베이스다이 크기·패키징 수율을 별도로 봅니다.')
     if r['axis'] == 'foundry_node_expansion':
@@ -1356,7 +1594,18 @@ def main():
             and any(k in text for k in ('base die', '베이스다이', '베이스 다이', '4nm', '4나노', '2nm', '2나노'))
             and any(k in text for k in ('full utilization', '풀가동', '증설', 'expand', 'price increase', '가격 인상', 'production line', '생산라인', 'investment', '투자'))
         )
-        if structured_revenue or structured_postprocess or structured_market_pricing or structured_foundry:
+        structured_foundry_recovery = (
+            ('samsung' in text or '삼성' in text)
+            and ('foundry' in text or '파운드리' in text)
+            and (
+                any(k in text for k in ('operating loss', '영업손실', '영업 손실', '적자', '41.8%', '42%'))
+                or (
+                    any(k in text for k in ('2nm', '2나노', 'taylor', '테일러'))
+                    and any(k in text for k in ('design win', 'hpc', 'csp', 'customer', 'contract', '수주', 'tapeout', 'qualification', 'mass production', '양산', 'negotiation', '협상'))
+                )
+            )
+        )
+        if structured_revenue or structured_postprocess or structured_market_pricing or structured_foundry or structured_foundry_recovery:
             rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
             return '', '', ''
         if not concrete_state_evidence(e):
@@ -1467,14 +1716,25 @@ def main():
     existing = legacy.ALERT.read_text(encoding='utf-8') if legacy.ALERT.exists() else ''
     if chosen:
         rate, basis = legacy.fx_quote()
-        blocks = ['<b>HBM·서버 D램 연계 상태 변화</b>']
+        foundry_axes = {'foundry_loss_outlook','foundry_external_2nm','foundry_taylor_schedule','foundry_base_die_allocation','foundry_node_expansion','foundry_pricing','foundry_hbm5_2nm'}
+        regular = [k for k in chosen if state['pending'][k]['record']['axis'] not in foundry_axes]
+        foundry = [k for k in chosen if state['pending'][k]['record']['axis'] in foundry_axes]
+        sections = []
+        if regular:
+            blocks = ['<b>HBM·서버 D램 연계 상태 변화</b>']
+            blocks.extend(render(state['pending'][key], rate) for key in regular)
+            sections.append('\n\n'.join(blocks))
+        if foundry:
+            blocks = ['<b>삼성 파운드리 HBM4·2나노 회복 감시</b>']
+            blocks.extend(render(state['pending'][key], rate) for key in foundry)
+            sections.append('\n\n'.join(blocks))
+        if rate and sections:
+            sections[-1] += '\n\n환율 기준: ' + html.escape(basis)
+        payload = '\n\n<<<TELEGRAM_MESSAGE_BREAK>>>\n\n'.join(sections)
+        legacy.ALERT.write_text(existing.rstrip() + ('\n\n' if existing else '') + payload + '\n', encoding='utf-8')
         for key in chosen:
-            blocks.append(render(state['pending'][key], rate))
             state['last_notified'][key] = state['pending'][key]['record']
             del state['pending'][key]
-        if rate:
-            blocks.append('환율 기준: ' + html.escape(basis))
-        legacy.ALERT.write_text(existing.rstrip() + ('\n\n' if existing else '') + '\n\n'.join(blocks) + '\n', encoding='utf-8')
     candidate['memory_axes'] = state
     candidate['memory_axes_version'] = VERSION
     legacy.save_state(candidate)
