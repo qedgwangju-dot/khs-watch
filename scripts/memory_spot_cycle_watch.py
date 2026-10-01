@@ -924,6 +924,20 @@ def _price_change_details(raw_title: str, detail_blob: str) -> list[str]:
     return details
 
 
+def _earnings_forecast_details(raw_title: str, detail_blob: str) -> list[str]:
+    text = _clean(f"{raw_title} {detail_blob}")
+    low = text.lower()
+    if not ("hbm" in low and ("영업이익" in text or "영업익" in text)):
+        return []
+    out = []
+    m = re.search(r"올해\s*([0-9]+(?:\.[0-9]+)?)\s*조(?:서|에서)?\s*내년\s*([0-9]+(?:\.[0-9]+)?)\s*조", text)
+    if m:
+        a, b = float(m.group(1)), float(m.group(2))
+        out.append(f"전망치: 올해 합산 영업이익 약 {a:.0f}조원 → 내년 약 {b:.0f}조원")
+        out.append(f"계산: 전년 대비 약 {(b / a - 1) * 100:.1f}% 증가")
+    return out
+
+
 def _market_signal_details(raw_title: str, detail_blob: str) -> list[str]:
     """Extract the public summary into user-facing cause/meaning lines.
 
