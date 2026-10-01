@@ -1669,6 +1669,8 @@ def clean_article_summary_text(text: str) -> str:
     )
     for pattern in ARTICLE_SUMMARY_NOISE_PATTERNS:
         cleaned = re.sub(pattern, " ", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"\(\s*(?:AI\s*)?(?:이미지\s*생성|자료사진)\s*\)", " ", cleaned, flags=re.I)
+    cleaned = re.sub(r"^\s*/사진\s*=[^\r\n]+[\r\n]+", "", cleaned)
     cleaned = re.sub(r"\[(?:앵커|기자|리포터)\]\s*(?:네[,，]\s*)?", " ", cleaned)
     cleaned = re.sub(r"^[\s,;:>|\]·•.\-]+", "", cleaned)
     return re.sub(r"\s+", " ", cleaned).strip()
@@ -2101,6 +2103,7 @@ def ranked_article_sentences(
         score += 5 if numeric else 0
         score += 4 if result else 0
         score += 3 if shareholder else 0
+        score += 3 if re.search(r"(?:발표했다|공시했다|밝혔다|설명했다|공식화했다)[.!?。]?$", sentence) else 0
         if score:
             scored.append((score, index, sentence))
     if not scored:
@@ -2603,6 +2606,44 @@ def tariff_policy_fact(title: str, body: str) -> str:
     return " ".join(parts)
 
 
+def unconfirmed_company_action_fact(title: str, body: str) -> str:
+    headline = re.match(r"^([A-Za-z0-9가-힣·&]+)\s*[,，]\s*(.+?)\s*(?:미정|미확정|확정\s*안\s*돼)", title)
+    if not headline:
+        return ""
+    company, topic = headline.groups()
+    topic = topic.strip(" \"'“”·….")
+    anchor = (korean_business_title_terms(topic) or [""])[0]
+    if not anchor:
+        return ""
+    for sentence in ranked_article_sentences(body, [company, anchor], title=title):
+        if (
+            company in sentence and anchor in sentence
+            and re.search(r"(?:확정|결정)된\s*사항(?:은|이)?\s*없", sentence)
+            and re.search(r"(?:설명했다|밝혔다|공시했다)", sentence)
+        ):
+            core = f"{company}는 {topic}에 대해 확정된 사항은 없다고 설명했다."
+            return core if core_sentence_is_complete(core) else ""
+    return ""
+
+
+def policy_probability_article_fact(title: str, body: str) -> str:
+    if "금리" not in title or not has_term(title, ("확률", "가능성")):
+        return ""
+    if not has_term(body.lower(), ("페드워치", "fedwatch")):
+        return ""
+    match = re.search(
+        r"(\d{1,2})월\s*(?:기준)?금리(?:를|가)?\s*(동결|인상|인하)"
+        r"[^。\n]{0,60}?(?:가능성|확률)[^。\n]{0,25}?(?:전날|기존|종전)\s*"
+        r"(\d+(?:\.\d+)?)%에서\s*(?:이날|현재)?\s*(\d+(?:\.\d+)?)%로",
+        clean_article_summary_text(body),
+    )
+    if not match:
+        return ""
+    month, action, before, after = match.groups()
+    direction = "높아졌다" if float(after) > float(before) else "낮아졌다" if float(after) < float(before) else "유지됐다"
+    return f"CME 페드워치의 {month}월 금리{action} 확률이 {before}%에서 {after}%로 {direction}."
+
+
 def detailed_article_core(title: str, body: str) -> str:
     raw_body = str(body or "")
     if core_has_ui_garbage(raw_body):
@@ -2656,6 +2697,12 @@ def detailed_article_core(title: str, body: str) -> str:
     leverage_fact = single_stock_leverage_kosdaq_fact(title, body)
     if leverage_fact:
         return leverage_fact
+    probability_fact = policy_probability_article_fact(title, body)
+    if probability_fact:
+        return probability_fact
+    unconfirmed_fact = unconfirmed_company_action_fact(title, body)
+    if unconfirmed_fact:
+        return unconfirmed_fact
 
     # An attributed earnings forecast is not a reported result. Preserve the
     # source's forecast and range instead of discarding it as a large actual.
@@ -3152,6 +3199,8 @@ def base_korean_business_alert(row: dict, now, *, score: int, impacts: list[str]
         "original_news": title,
         "source_title": title,
         "source_abstract": str(row.get("source_abstract") or row.get("summary") or ""),
+        "source_body": body[:16000],
+        "source_description": str(row.get("source_description") or ""),
         "article_query_time_kst": row.get("article_query_time_kst") or "",
         "article_detail_cache_hit": bool(row.get("_article_detail_cache_hit")),
         "policy_plain_summary": article_core,
@@ -6179,9 +6228,8 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
             continue
         row["source_title"] = detail.get("title") or row.get("title")
         row["source_body"] = detail.get("body") or ""
-        row["source_abstract"] = re.sub(
-            r"\s+", " ", f"{detail.get('abstract') or ''} {detail.get('body') or ''}",
-        ).strip()[:16000]
+        row["source_description"] = detail.get("abstract") or ""
+        row["source_abstract"] = re.sub(r"\s+", " ", row["source_body"]).strip()[:16000]
         row["summary"] = row["source_abstract"]
         row["body_verified"] = True
         if detail.get("published_kst"):
@@ -8193,6 +8241,13 @@ def core_sentence_is_complete(value: object, limit: int = GAMEJOA_CORE_MAX_CHARS
     # paragraph fragment from a publisher page, not a self-contained summary.
     if re.match(r"^(?:그리고|한편|다만|그러나|이에|이와s*관련해)\s+", text):
         return False
+    if re.match(r"^(?:이\s*과정에서|이러한|이\s*같은|이를\s*통해|그\s*결과)\s+", text):
+        return False
+    if (
+        re.search(r"(?:예상치|전망치|기대치).*?(?:밑돈|웃돈|낮은|높은)\s*(?:수치|수준)(?:다|이다)[.!?。]?$", text)
+        and not re.search(r"PCE|CPI|지수|성장률|매출|이익|가격|금리|환율|실업률|고용", text, re.I)
+    ):
+        return False
     if re.match(r"^(?:을|를|은|는|의)\s+", text) or re.search(r"(?:는데요|거든요|잖아요)[.!?。]?$", text):
         return False
     if re.search(
@@ -8234,10 +8289,7 @@ def complete_prose_text(value: object, *, fallback: object = "", limit: int) -> 
             if core_sentence_is_complete(completed, limit):
                 return completed
 
-    sentences = [
-        match.group(0).strip()
-        for match in re.finditer(r"[^.!?。]{8,}[.!?。]", text)
-    ]
+    sentences = [sentence.strip() for sentence in re.split(r"(?<=[.!?。])\s+", text) if re.search(r"[.!?。]$", sentence)]
     complete = [
         sentence
         for sentence in sentences

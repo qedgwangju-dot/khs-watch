@@ -13,6 +13,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 import urllib.request
+import zipfile
 
 import gamejoa_article_detail_queue as queue
 import gamejoa_preopen_news_radar_full_compact_runner as radar
@@ -102,7 +103,7 @@ class DetailQueueChecks(unittest.TestCase):
     def test_preflight_reuse_and_new_run_rotation_in_real_collector(self):
         rows = [article(index) for index in range(12)]
         body = "<p>회사는 생산시설 확충을 위한 신규 공급계약을 체결했다고 공시했다. 계약 기간은 2027년까지이며 공급 품목은 전력기기다.</p>" * 4
-        pages = {row["link"]: fixture(row["title"], body) for row in rows}
+        pages = {row["link"]: '<meta property="og:description" content="unrelated recommendation preview">' + fixture(row["title"], body) for row in rows}
         calls = []
 
         def fetch(url, timeout):
@@ -126,6 +127,7 @@ class DetailQueueChecks(unittest.TestCase):
             self.assertIn("cache_hits=4", notes[-1])
             verified = [row for row in send_rows if row.get("body_verified")]
             self.assertTrue(all(row["article_query_time_kst"] == NOW.isoformat(timespec="seconds") for row in verified))
+            self.assertTrue(all("unrelated recommendation" not in row["source_abstract"] for row in verified))
             state = queue.load_state(queue.PENDING_PATH)
             self.assertTrue(all(entry["attempts"] == 1 for entry in state["entries"].values() if entry.get("last_attempt_kst")))
             queue.save_json(queue.STATE_PATH, state)
@@ -230,11 +232,68 @@ class SourceIsolationChecks(unittest.TestCase):
         self.assertIn("out/gamejoa_article_detail_queue_pending.json", workflow)
         self.assertIn("data/gamejoa_article_detail_queue.json", workflow)
 
+    def test_probability_core_preserves_actual_market_action(self):
+        title = "美 10월 금리동결 확률 상승, 예상 밑돈 물가"
+        body = (
+            "8월 PCE 물가가 전년 동월 대비 3.4% 올랐다. 다우존스의 전문가 예상치 3.7%를 밑돈 수치다. "
+            "CME 페드워치에 따르면 시장은 연준이 오는 10월 기준금리를 동결할 가능성을 전날 49.1%에서 이날 65.1%로 올려 반영했다."
+        )
+        core = radar.detailed_article_core(title, body)
+        for fact in ("10월 금리동결", "49.1%", "65.1%", "CME 페드워치"):
+            self.assertIn(fact, core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        self.assertFalse(radar.policy_probability_article_fact(title, body.replace("페드워치", "일반 전망")))
+
+    def test_company_statement_wins_over_context_only_background(self):
+        title = "SK하이닉스, 솔리다임 자금조달 방식 미정"
+        body = (
+            "SK하이닉스가 솔리다임의 경쟁력을 강화할 여러 전략을 검토 중이라고 공식화했다. "
+            "이 과정에서 솔리다임이 별도 상장될 경우 SK하이닉스 주주가치가 훼손될 수 있다는 우려가 나왔다. "
+            "솔리다임의 자금조달 방식은 아직 결정되지 않았다."
+        )
+        core = radar.detailed_article_core(title, body)
+        self.assertFalse(core.startswith("이 과정"))
+        self.assertIn("솔리다임", core)
+        self.assertTrue("검토" in core or "결정되지" in core)
+
+    def test_image_credit_not_part_of_financial_fact(self):
+        core = radar.detailed_article_core(
+            "3분기 스타트업 누적 투자액 10조원 돌파",
+            "(AI 이미지 생성)\n3분기 국내 스타트업의 누적 투자액이 10조원을 돌파했다. 투자 회복세는 4년 만이다.",
+        )
+        self.assertIn("10조원", core)
+        self.assertNotIn("이미지 생성", core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+
+    def test_corporate_denial_not_replaced_with_market_speculation(self):
+        title = "SK하이닉스, 솔리다임 자금조달 방식 미정"
+        statement = "SK하이닉스는 솔리다임 관련 보도에 대해 확정된 사항은 없다고 설명했다."
+        rumour = "시장은 SK하이닉스가 솔리다임 투자 재원 마련을 위해 외부자본을 유치할 수 있다는 관측을 제기했다."
+        core = radar.detailed_article_core(title, statement + " " + rumour)
+        self.assertIn("확정된 사항은 없", core)
+        self.assertIn("자금조달 방식", core)
+        self.assertNotIn("관측", core)
+        self.assertFalse(radar.unconfirmed_company_action_fact(title, rumour))
+
+    def test_decimal_values_are_not_treated_as_sentence_boundaries(self):
+        source = "출처 안내문이 길게 붙었다 " * 30 + ". 미국 8월 PCE 물가는 전년 동월 대비 3.4% 상승했다."
+        core = radar.complete_prose_text(source, limit=100)
+        self.assertEqual(core, "미국 8월 PCE 물가는 전년 동월 대비 3.4% 상승했다.")
+
+    def test_forecast_comparison_and_anaphora_need_the_actual_fact(self):
+        for orphan in (
+            "다우존스가 집계한 전문가 예상치 3.7%를 밑돈 수치다.",
+            "이 과정에서 솔리다임이 상장되면 주주가치가 훼손될 수 있다는 우려가 나왔다.",
+        ):
+            self.assertFalse(radar.core_sentence_is_complete(orphan))
+        self.assertTrue(radar.core_sentence_is_complete("KB증권은 내년 기업 매출이 23% 늘어날 것으로 예상했다."))
+
 
 def verify_live_source_boundaries() -> None:
     cases = (
         ("https://biz.heraldcorp.com/article/10891069", "sports", ("강진모",)),
         ("https://core.asiae.co.kr/article/2026100112163454437", "intraday", ("코스피", "코스닥")),
+        ("https://www.etoday.co.kr/news/view/2631400", "company", ("솔리다임", "확정된")),
     )
     results = []
     for url, kind, anchors in cases:
@@ -250,8 +309,11 @@ def verify_live_source_boundaries() -> None:
         if kind == "sports":
             assert radar.is_nonmarket_business_event({"title": detail["title"]}), "Sports election must not become a market alert"
             assert not any(marker in detail["body"] for marker in ("'속보' 확인", "프리미엄콘텐츠", "기사를 더 봅니다"))
-        else:
+        elif kind == "intraday":
             assert "주요종목시세" not in detail["body"] and "출처: 한국거래소" not in detail["body"], "Hidden quote-popup data leaked into body"
+        else:
+            core = radar.detailed_article_core(detail["title"], detail["body"])
+            assert radar.core_sentence_is_complete(core) and "확정된 사항은 없" in core and "자금조달 방식" in core, f"Primary company statement was replaced: {core!r}"
         results.append({
             "url": url, "source_title": detail["title"], "body_chars": len(detail["body"]),
             "explicit_regions": len(parser.target_bodies), "body_verified": detail["body_verified"],
@@ -262,9 +324,30 @@ def verify_live_source_boundaries() -> None:
     print(json.dumps(results, ensure_ascii=False))
 
 
+def audit_saved_report(path: Path) -> None:
+    with zipfile.ZipFile(path) as archive:
+        name = next(name for name in archive.namelist() if name.endswith("gamejoa_preopen_news_radar.json"))
+        report = json.loads(archive.read(name))
+    audited = []
+    for alert in report["alerts"]:
+        if not alert.get("korean_business_news"):
+            continue
+        title = alert.get("source_title") or alert["news"]
+        draft = radar.detailed_article_core(title, alert.get("source_body") or alert.get("source_abstract") or "")
+        revised = radar.verified_alert_core({**alert, "telegram_core_fact": draft}, title)
+        assert radar.core_sentence_is_complete(revised), f"No complete recovered fact: {title}"
+        assert radar.compact_title_summary_aligned(title, revised), f"Recovered title/core mismatch: {title}"
+        assert "이미지 생성" not in revised, f"Image credit leaked into core: {title}"
+        audited.append({"title": title, "previous_core": alert.get("telegram_core_fact"), "recovered_core": revised})
+    queue.save_json(queue.ROOT / "out/gamejoa_saved_report_core_audit.json", {"status": "passed", "artifact_zip": str(path), "audited": audited})
+    print(json.dumps(audited, ensure_ascii=False))
+
+
 if __name__ == "__main__":
     import sys
     if "--live-sources" in sys.argv:
         verify_live_source_boundaries()
+    elif "--audit-report" in sys.argv:
+        audit_saved_report(Path(sys.argv[sys.argv.index("--audit-report") + 1]))
     else:
         unittest.main()
