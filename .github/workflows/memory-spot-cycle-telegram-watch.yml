@@ -233,44 +233,44 @@ jobs:
 
             if [ -f /tmp/memory_spot_cycle_watch_state.local.json ]; then
               python - <<'PY'
-import json
-import pathlib
+          import json
+          import pathlib
 
-remote_path = pathlib.Path("data/memory_spot_cycle_watch_state.json")
-local_path = pathlib.Path("/tmp/memory_spot_cycle_watch_state.local.json")
-remote = json.loads(remote_path.read_text(encoding="utf-8")) if remote_path.exists() else {}
-local = json.loads(local_path.read_text(encoding="utf-8"))
+          remote_path = pathlib.Path("data/memory_spot_cycle_watch_state.json")
+          local_path = pathlib.Path("/tmp/memory_spot_cycle_watch_state.local.json")
+          remote = json.loads(remote_path.read_text(encoding="utf-8")) if remote_path.exists() else {}
+          local = json.loads(local_path.read_text(encoding="utf-8"))
 
-def ts(obj, key):
-    return str(obj.get(key) or "")
+          def ts(obj, key):
+              return str(obj.get(key) or "")
 
-local_newer = ts(local, "updated_at_kst") >= ts(remote, "updated_at_kst")
-newer = local if local_newer else remote
-older = remote if local_newer else local
+          local_newer = ts(local, "updated_at_kst") >= ts(remote, "updated_at_kst")
+          newer = local if local_newer else remote
+          older = remote if local_newer else local
 
-merged = dict(older)
-merged.update(newer)
+          merged = dict(older)
+          merged.update(newer)
 
-# Never lose dedupe history from a concurrent run.
-seen = {}
-seen.update(remote.get("seen") or {})
-seen.update(local.get("seen") or {})
-merged["seen"] = seen
+          # Never lose dedupe history from a concurrent run.
+          seen = {}
+          seen.update(remote.get("seen") or {})
+          seen.update(local.get("seen") or {})
+          merged["seen"] = seen
 
-# Preserve the latest confirmed Telegram receipt independently of scan timestamp.
-def receipt_time(obj):
-    rec = obj.get("delivery_receipt") or {}
-    return str(rec.get("confirmed_at_kst") or obj.get("last_successful_delivery_kst") or "")
+          # Preserve the latest confirmed Telegram receipt independently of scan timestamp.
+          def receipt_time(obj):
+              rec = obj.get("delivery_receipt") or {}
+              return str(rec.get("confirmed_at_kst") or obj.get("last_successful_delivery_kst") or "")
 
-delivery = local if receipt_time(local) >= receipt_time(remote) else remote
-for key in ("last_successful_delivery_kst", "telegram_message_ids", "telegram_message_id", "bot_username", "delivery_receipt"):
-    if delivery.get(key) is not None:
-        merged[key] = delivery[key]
+          delivery = local if receipt_time(local) >= receipt_time(remote) else remote
+          for key in ("last_successful_delivery_kst", "telegram_message_ids", "telegram_message_id", "bot_username", "delivery_receipt"):
+              if delivery.get(key) is not None:
+                  merged[key] = delivery[key]
 
-# Keep the later scan timestamp visible.
-merged["updated_at_kst"] = max(ts(local, "updated_at_kst"), ts(remote, "updated_at_kst"))
-remote_path.write_text(json.dumps(merged, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-PY
+          # Keep the later scan timestamp visible.
+          merged["updated_at_kst"] = max(ts(local, "updated_at_kst"), ts(remote, "updated_at_kst"))
+          remote_path.write_text(json.dumps(merged, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
             fi
 
             git add data/memory_spot_cycle_watch_state.json
