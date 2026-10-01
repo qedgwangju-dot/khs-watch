@@ -6675,6 +6675,9 @@ def semantic_event_theme(alert: dict) -> str:
     bond_theme = telegram.korean_bond_demand_theme(alert)
     if bond_theme:
         return bond_theme
+    ceo_theme = telegram.korean_joint_ceo_theme(alert)
+    if ceo_theme:
+        return ceo_theme
     text = base.norm(
         " ".join(
             str(alert.get(key) or "")
@@ -6749,6 +6752,9 @@ def alert_dedup_key(alert: dict) -> tuple[str, str]:
     bond_theme = telegram.korean_bond_demand_theme(alert)
     if bond_theme:
         return (bond_theme, "event")
+    ceo_theme = telegram.korean_joint_ceo_theme(alert)
+    if ceo_theme:
+        return (ceo_theme, "event")
     raw_title = str(alert.get("original_news") or alert.get("news") or "")
     raw_title = re.split(r"\s+-\s+", raw_title, maxsplit=1)[0].strip()
     raw_title = re.sub(r"^(?:\s*\[[^\]]{1,12}\]\s*)+", "", raw_title).strip()
@@ -7556,6 +7562,9 @@ def normalize_alert_for_output(alert: dict) -> dict:
     bond_theme = telegram.korean_bond_demand_theme(out)
     if bond_theme:
         out["supply_chain_theme"] = bond_theme
+    ceo_theme = telegram.korean_joint_ceo_theme(out)
+    if ceo_theme:
+        out["supply_chain_theme"] = ceo_theme
     if is_china_mofcom_control(out):
         out["china_mofcom_trade_control"] = True
         out["impacts"] = ["돈 버는 능력", "수급", "시간표"]

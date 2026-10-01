@@ -456,6 +456,29 @@ def main() -> int:
     )
     if bond_alias not in bond_state["seen"]:
         errors.append("legacy bond-demand alert did not gain a cross-link event key")
+    ceo_first = {
+        "source_title": "네이버웹툰, 김용수·김규남 공동대표 선임",
+        "news": "네이버웹툰, 김용수·김규남 공동대표 선임",
+        "published": "2026-10-01T09:42:00+09:00",
+        "link": "https://biz.chosun.com/old-ceo-link",
+    }
+    ceo_update = {
+        "source_title": "네이버웹툰, 김용수·김규남 공동대표 선임…한국법인 재편",
+        "news": "네이버웹툰, 김용수·김규남 공동대표 선임…한국법인 재편",
+        "published": "2026-10-01T17:00:00+09:00",
+        "link": "https://www.yna.co.kr/view/new-ceo-link",
+    }
+    if compact.alert_dedup_key(ceo_first) != compact.alert_dedup_key(ceo_update):
+        errors.append("same joint-CEO appointment was repeated across article links")
+    ceo_state = {"seen": {"link:old-ceo-url": {
+        "first_seen_kst": "2026-10-01T16:00:00+09:00", "title": ceo_first["news"],
+    }}}
+    production.telegram.migrate_seen_title_aliases(ceo_state)
+    ceo_alias = "event:" + production.telegram.digest_seen(
+        production.telegram.korean_joint_ceo_theme(ceo_update)
+    )
+    if ceo_alias not in ceo_state["seen"]:
+        errors.append("legacy joint-CEO alert did not gain a cross-link event key")
     if not compact.is_low_value_market_commentary({
         "korean_business_news": True,
         "source_title": "ETF부터 보이스피싱까지…공군 첫 경제 골든벨 열렸다",

@@ -89,6 +89,19 @@ def korean_bond_demand_theme(alert: dict) -> str:
     return f"korea_bond_demand:{published_day}:{base.norm(issuer.group(1))}:{multiple.group(1)}"
 
 
+def korean_joint_ceo_theme(alert: dict) -> str:
+    title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
+    if "공동대표" not in title:
+        return ""
+    company = re.match(r"^\s*([가-힣A-Za-z0-9&·]{2,24})\s*,", title)
+    names = re.search(r"([가-힣]{2,4})\s*[·ㆍ]\s*([가-힣]{2,4})\s*공동대표", title)
+    published_day = str(alert.get("published") or "")[:10]
+    if not company or not names or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", published_day):
+        return ""
+    people = "+".join(sorted((names.group(1), names.group(2))))
+    return f"korea_joint_ceo:{published_day}:{base.norm(company.group(1))}:{people}"
+
+
 def canonical_alert_for_seen(alert: dict) -> dict:
     """Overridden by the final renderer so cross-source stories share a key."""
     return alert
@@ -142,6 +155,12 @@ def migrate_seen_title_aliases(state: dict) -> None:
         })
         if bond_theme:
             seen.setdefault(f"event:{digest_seen(bond_theme)}", dict(entry))
+        ceo_theme = korean_joint_ceo_theme({
+            "source_title": title,
+            "published": entry.get("first_seen_kst"),
+        })
+        if ceo_theme:
+            seen.setdefault(f"event:{digest_seen(ceo_theme)}", dict(entry))
 
 
 def prune_seen_state(state: dict, now) -> None:
