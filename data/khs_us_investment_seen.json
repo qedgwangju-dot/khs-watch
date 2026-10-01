@@ -332,7 +332,8 @@
     "stateevt_b8cf7fee57b98f677383": "2026-10-01T04:00:13.838509+00:00",
     "stateevt_f89998286c7537ffdf40": "2026-10-01T04:00:13.838509+00:00",
     "stateevt_16836cd54dadd738934d": "2026-10-01T04:00:13.838509+00:00",
-    "stateevt_e191e0a210218dc554c1": "2026-10-01T19:00:22.000282+00:00"
+    "stateevt_e191e0a210218dc554c1": "2026-10-01T19:00:22.000282+00:00",
+    "stateevt_644bbd3c3ab5d414d9ea": "2026-10-01T23:05:45.218214+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -356,7 +357,8 @@
     "eventstate_alaska_lng_b8cf7fee57b98f677383": "2026-10-01T04:00:13.838509+00:00",
     "eventstate_encinal_f89998286c7537ffdf40": "2026-10-01T04:00:13.838509+00:00",
     "eventstate_nuclear_build_16836cd54dadd738934d": "2026-10-01T04:00:13.838509+00:00",
-    "eventstate_texas_ai_power_e191e0a210218dc554c1": "2026-10-01T19:00:22.000282+00:00"
+    "eventstate_texas_ai_power_e191e0a210218dc554c1": "2026-10-01T19:00:22.000282+00:00",
+    "eventstate_funding_execution_644bbd3c3ab5d414d9ea": "2026-10-01T23:05:45.218214+00:00"
   },
   "official_status": {
     "status": "confirmed",
@@ -413,16 +415,31 @@
     },
     "funding_execution": {
       "facts": [
+        "funding_amount_usd:24억",
         "official_status:unconfirmed"
       ],
       "slots": {
+        "funding_execution|funding_amount_usd": "funding_amount_usd:24억",
         "funding_execution|official_status": "official_status:unconfirmed"
       },
       "initialized_at": "2026-09-21T13:18:18.976289+00:00",
-      "updated_at": "2026-09-21T13:18:18.976289+00:00",
-      "last_title": "정부 기준선: 송금 규모·시기 미확정",
-      "last_source": "migration-v3",
-      "evidence": []
+      "updated_at": "2026-10-01T23:06:06.084187+00:00",
+      "last_title": "24억달러 첫 송금…韓 대미투자 1호 텍사스 발전소 자재 발주 본격화 - 뉴스1",
+      "last_source": "뉴스1",
+      "evidence": [
+        {
+          "source": "뉴스1",
+          "title": "24억달러 첫 송금…韓 대미투자 1호 텍사스 발전소 자재 발주 본격화 - 뉴스1",
+          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5CdDY2RlBjUkQ0RTg1QjZBcHlkTDB5LXJRdlZZbFdNeHJMUkJJUEwyUkdjUU03ZFpneFVpZnhubnFJeHBMTkZLb0F5OU85SjRUUjE1aNIBWkFVX3lxTE1vcW5pTVl6LXZyNjVJekhROG1Rcm9RWFFPZEpIbmZXb2pTRmhQZnctX1N1RGlwX05wNmsxMFhlZUxURUc2alVvcmdSMkRXek90UjV4eGdyV3dDUQ?oc=5",
+          "published": "2026-10-01T21:00:00+00:00"
+        },
+        {
+          "source": "한국일보",
+          "title": "'우산형 투자기구'로 위험 분산… 24억 달러 대미투자금 첫 송금 - 한국일보",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9qMm9uLVlvLU9MMEl3dEhBdDBxcFRTOWMxa0Y5OGtpR05KWV9iQnNIdDVHMTNFNTZZS2JzRFFuOXFZUml2ajVRZlJyYnlSQmRkZWhyWFlvazdrUVNDbGl5NDVWX1hDcURoYXZONXktdHVpdkHSAXNBVV95cUxPajJvbi1Zby1PTDBJd3RIQXQwcXBUUzljMWtGOThraUdOSllfYkJzSHQ1RzEzRTU2WUtic0RRbjlxWVJpdmo1UWZScmJ5UkJkZGVoclhZb2s3a1FTQ2xpeTQ1Vl9YQ3FEaGF2TjV5LXR1aXZB?oc=5",
+          "published": "2026-10-01T00:18:00+00:00"
+        }
+      ]
     },
     "westinghouse_stake": {
       "facts": [
