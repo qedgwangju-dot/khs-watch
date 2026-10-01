@@ -1,23 +1,23 @@
 {
   "census": {
-    "calculated_mom_pct": 6.234,
-    "calculated_yoy_pct": 57.218,
-    "data_center_saar_musd": 75166,
-    "pdf_sha256": "3e2159cca2009569637a841d96592f4d52983517c2f5ae1c77f3c32eeae88190",
-    "period": "Jul 2026",
-    "period_key": "2026-07",
-    "previous_month_saar_musd": 70755,
-    "release_date": "September 1, 2026",
+    "calculated_mom_pct": 7.522,
+    "calculated_yoy_pct": 73.184,
+    "data_center_saar_musd": 84950,
+    "pdf_sha256": "a155ba0efecde81846154cf8f2b9ecc034b5aa1d585b1292dca3ddcbdc12219d",
+    "period": "Aug 2026",
+    "period_key": "2026-08",
+    "previous_month_saar_musd": 79007,
+    "release_date": "October 1, 2026",
     "release_schedule_url": "https://www.census.gov/construction/c30/release.html",
-    "reported_mom_pct": 6.2,
-    "reported_yoy_pct": 57.2,
-    "retrieved_at_utc": "2026-09-22T18:12:41.439117+00:00",
+    "reported_mom_pct": 7.5,
+    "reported_yoy_pct": 73.2,
+    "retrieved_at_utc": "2026-10-01T15:24:15.170598+00:00",
     "source": "U.S. Census Bureau Construction Spending",
     "url": "https://www.census.gov/construction/c30/pdf/privsa.pdf",
-    "year_ago_saar_musd": 47810
+    "year_ago_saar_musd": 49052
   },
   "dodge": {
-    "article_sha256": "3a9fec3cbb95025b3c0c7066bab7f1f0c20f3238d9567c409b59302cfe174f6f",
+    "article_sha256": "f95051a5c7204276a16b2471047968b6f885821537ce9a28a39e977dd6b23e31",
     "commercial_12m_change_pct": 48.6,
     "commercial_change_pct": -37.6,
     "data_center_mention_count": 4,
@@ -35,7 +35,7 @@
     "nonresidential_change_pct": -32.0,
     "office_dc_change_pct": -31.3,
     "published": "2026-09-21T15:21:49+00:00",
-    "retrieved_at_utc": "2026-09-22T18:12:41.984227+00:00",
+    "retrieved_at_utc": "2026-10-01T15:24:15.917402+00:00",
     "source": "Dodge Construction Network Total Construction Starts",
     "title": "Construction Starts Fall Back 24 8 In August",
     "total_change_pct": -24.8,
@@ -46,11 +46,11 @@
   },
   "format_version": 6,
   "fx": {
-    "basis_kst": "2026-09-21 일일 기준 · ECB/Frankfurter · 조회 2026-09-22 22:34 KST · 보조 API 2026-09-22 · 차이 0.25% · 일중 기준시각 차이 가능",
+    "basis_kst": "2026-10-01 일일 기준 · ECB/Frankfurter · 조회 2026-10-02 00:24 KST · 보조 API 2026-10-01 · 차이 0.40% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
-    "source_type": "일일 기준환율",
-    "usdkrw": 1372.18
+    "source_type": "교차검증 일일 기준환율",
+    "usdkrw": 1361.27
   },
-  "updated_at_utc": "2026-09-22T18:12:40.432096+00:00",
+  "updated_at_utc": "2026-10-01T15:24:14.406704+00:00",
   "watch": "US data center construction starts vs spending"
 }
