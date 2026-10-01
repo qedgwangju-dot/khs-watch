@@ -441,6 +441,84 @@ def auction_lines(op_date: str) -> list[str]:
     ]
 
 
+
+def official_yield_persistence(op_date: str, offset_days: int) -> dict | None:
+    """Official CMT on the +N Treasury business-day observation after a buyback."""
+    try:
+        rows = official_curve_rows(op_date[:4])
+    except Exception:
+        return None
+    idx = next((i for i, row in enumerate(rows) if row["date"] == op_date), None)
+    if idx is None or idx == 0 or idx + offset_days >= len(rows):
+        return None
+    base = rows[idx]
+    pre = rows[idx - 1]
+    target = rows[idx + offset_days]
+    since_op = {
+        key: (target[key] - base[key]) * 100.0
+        for key in ("2y", "10y", "20y", "30y")
+    }
+    since_pre = {
+        key: (target[key] - pre[key]) * 100.0
+        for key in ("2y", "10y", "20y", "30y")
+    }
+    return {
+        "operation_date": op_date,
+        "offset_business_days": offset_days,
+        "target_date": target["date"],
+        "operation": base,
+        "pre_operation": pre,
+        "target": target,
+        "since_operation_bp": since_op,
+        "since_pre_operation_bp": since_pre,
+    }
+
+
+def build_persistence_followup(op_date: str, offset_days: int, reaction: dict) -> tuple[str, str, dict]:
+    target = reaction["target"]
+    since_op = reaction["since_operation_bp"]
+    since_pre = reaction["since_pre_operation_bp"]
+    long_moves = [since_op[k] for k in ("10y", "20y", "30y")]
+    if all(x < 0 for x in long_moves):
+        verdict = "🟢 집행 뒤 장기금리 하락이 유지·확대"
+    elif all(x > 0 for x in long_moves):
+        verdict = "🔴 집행 뒤 장기금리가 다시 상승"
+    else:
+        verdict = "🟡 집행 뒤 장기금리 방향 혼조"
+
+    title = (
+        f"📊 미 재무부 장기물 바이백 +{offset_days}영업일 금리 추적 — "
+        f"10년 {target['10y']:.2f}%·30년 {target['30y']:.2f}%"
+    )
+    body = "\n".join([
+        "<b>🎯 바이백 이후 금리 지속성</b>",
+        f"• 바이백 운영일: {op_date} · 확인일: {reaction['target_date']} (+{offset_days}영업일)",
+        (
+            f"• 현재 CMT: 2년 {target['2y']:.2f}% | 10년 {target['10y']:.2f}% | "
+            f"20년 {target['20y']:.2f}% | 30년 {target['30y']:.2f}%"
+        ),
+        (
+            f"• 운영일 대비: 2년 {since_op['2y']:+.1f}bp | 10년 {since_op['10y']:+.1f}bp | "
+            f"20년 {since_op['20y']:+.1f}bp | 30년 {since_op['30y']:+.1f}bp"
+        ),
+        (
+            f"• 운영 전 영업일 대비 누적: 2년 {since_pre['2y']:+.1f}bp | "
+            f"10년 {since_pre['10y']:+.1f}bp | 20년 {since_pre['20y']:+.1f}bp | "
+            f"30년 {since_pre['30y']:+.1f}bp"
+        ),
+        f"• 판정: <b>{verdict}</b>",
+        "• CMT는 거래소 종가가 아니라 뉴욕연은이 각 거래일 약 오후 3:30 ET에 수집한 지표성 매수호가를 바탕으로 재무부가 산출한 금리입니다.",
+        "• 이 추적은 바이백 뒤 시장 방향의 지속성을 보는 것이며, 금리 변화를 바이백 하나의 인과효과로 단정하지 않습니다.",
+        f'<a href="{TREASURY_YIELD_PAGE}">미 재무부 공식 금리</a>',
+    ])
+    return title, body, {
+        "mode": "yield_persistence_followup",
+        "operation_date": op_date,
+        "offset_business_days": offset_days,
+        "reaction": reaction,
+        "checked_kst": datetime.now(KST).isoformat(timespec="seconds"),
+    }
+
 def build_yield_followup(op_date: str, reaction: dict) -> tuple[str, str, dict]:
     lines, _ = yield_reaction_lines(op_date)
     cur = reaction["current"]
@@ -630,6 +708,20 @@ def main() -> int:
         "results_source": "fiscaldata_buybacks_operations",
     }
 
+    watches = list(state.get("yield_persistence_watches", []) or [])
+    if not any(
+        str(w.get("fingerprint") or "") == fingerprint
+        for w in watches
+        if isinstance(w, dict)
+    ):
+        watches.append({
+            "operation_date": op_date,
+            "fingerprint": fingerprint,
+            "completed_offsets": [],
+        })
+    watches = [w for w in watches if isinstance(w, dict)][-10:]
+    next_state["yield_persistence_watches"] = watches
+
     alert_kind = None
     if should_alert:
         fx, fx_date = latest_fx()
@@ -678,6 +770,41 @@ def main() -> int:
                     f"buyback-yield:{pending_date}:{fingerprint}"
                 ]
                 alert_kind = "yield_followup"
+
+    if not should_alert and alert_kind is None:
+        sent_persistence = False
+        for watch in watches:
+            watch_date = str(watch.get("operation_date") or "")
+            watch_fp = str(watch.get("fingerprint") or "")
+            completed = [int(x) for x in (watch.get("completed_offsets") or [])]
+            for offset_days in (1, 3, 5):
+                if offset_days in completed:
+                    continue
+                reaction = official_yield_persistence(watch_date, offset_days)
+                if not reaction:
+                    continue
+                title, body, detail = build_persistence_followup(
+                    watch_date, offset_days, reaction
+                )
+                if len(title) + 2 + len(body) > 4096:
+                    raise RuntimeError("Telegram persistence-followup message too long")
+                TITLE.write_text(title + "\n", encoding="utf-8")
+                ALERT.write_text(body.rstrip() + "\n", encoding="utf-8")
+                DETAIL.write_text(
+                    json.dumps(detail, ensure_ascii=False, indent=2) + "\n",
+                    encoding="utf-8",
+                )
+                completed.append(offset_days)
+                watch["completed_offsets"] = sorted(set(completed))
+                next_state["yield_persistence_watches"] = watches
+                next_state["pending_items"] = [
+                    f"buyback-yield-persistence:{watch_date}:+{offset_days}:{watch_fp}"
+                ]
+                alert_kind = f"yield_persistence_+{offset_days}"
+                sent_persistence = True
+                break
+            if sent_persistence:
+                break
 
     NEXT_STATE.write_text(
         json.dumps(next_state, ensure_ascii=False, indent=2) + "\n",
