@@ -204,6 +204,8 @@ QUERIES = [
     ("ko", 'Bernstein 메모리 2028 정상화 2027 공급부족 장기계약 LTA 가격 상한'),
     ("ko", 'Goldman Sachs 메모리 4분기 ASP 전망 상향 eSSD 채택 삼성전자 SK하이닉스'),
     ("ko", '골드만삭스 메모리 DRAM NAND 기업용 SSD 4분기 평균판매단가 전망 삼성전자 SK하이닉스'),
+    ("ko", 'Micron CEO 2027 메모리 공급 75% committed 계약 SCA'),
+    ("ko", '마이크론 2027 공급 75% 확약 장기계약 메모리 CEO'),
     ("ko", 'LPDDR4X LP4X EOL 생산종료 지원 연장 2027 2028 삼성전자 SK하이닉스 마이크론'),
     ("ko", 'DDR4 생산종료 EOL 증설 공급배정 2군 메모리 이행률 fulfillment 삼성 SK하이닉스 마이크론'),
     # DRAM physical capacity / wafer-start / new-fab cycle: do not miss supply expansion.
@@ -221,6 +223,8 @@ QUERIES = [
     ("en", 'Bernstein memory 2028 normalization 2027 shortage long-term agreements cap price increases'),
     ("en", 'Goldman Sachs memory Q4 ASP forecast eSSD adoption Samsung SK hynix DRAM NAND'),
     ("en", 'Goldman Sachs storage price eSSD enterprise SSD Q4 ASP Samsung SK hynix'),
+    ("en", 'Micron CEO 2027 output 75% committed memory supply SCA'),
+    ("en", 'Micron 2027 memory supply committed 75 percent strategic customer agreements'),
     ("en", 'LPDDR4X LP4X EOL end of life support extension 2027 2028 Samsung SK hynix Micron'),
     ("en", 'DDR4 EOL capacity expansion supply allocation second-tier memory fulfillment 50% Samsung SK hynix Micron'),
     ("en", 'Applied Materials Citi TMT DRAM wafer starts capacity 1.6 million 2 million 400000'),
