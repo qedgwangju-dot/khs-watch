@@ -337,11 +337,35 @@
       "source": "tech-insider.org",
       "published_kst": "2026-10-02T05:37:43+09:00",
       "first_seen_kst": "2026-10-02T08:30:50+09:00"
+    },
+    "101fb2f0d23c0abe23f2f63c": {
+      "title": "Memory Maker Micron Sees Shortages Worsening Through 2028 - WinBuzzer",
+      "source": "WinBuzzer",
+      "published_kst": "2026-10-02T00:47:34+09:00",
+      "first_seen_kst": "2026-10-02T08:52:43+09:00"
+    },
+    "8b78a841b1ccb62aff09ce91": {
+      "title": "Sandisk remains solid as Micron's Q4 results reveal tight NAND supply through 2028: Citi - Seeking Alpha",
+      "source": "Seeking Alpha",
+      "published_kst": "2026-10-02T00:05:47+09:00",
+      "first_seen_kst": "2026-10-02T08:52:43+09:00"
+    },
+    "fe40474fff0c5f079d25f902": {
+      "title": "‘메모리 풍향계’ 마이크론 “내년이 정점? 2028년 메모리 공급 부족 더 심화”… 삼전닉스 실적 기대감 커져 - 조선비즈 - Chosunbiz",
+      "source": "Chosunbiz",
+      "published_kst": "2026-10-01T11:45:00+09:00",
+      "first_seen_kst": "2026-10-02T08:52:43+09:00"
+    },
+    "944bec5d6180da11bd595de8": {
+      "title": "Micron (MU) Q4 FY2026 Earnings Call: Record Revenue and Tight Memory Supply Outlook - TradingKey",
+      "source": "TradingKey",
+      "published_kst": "2026-10-01T08:30:41+09:00",
+      "first_seen_kst": "2026-10-02T08:52:43+09:00"
     }
   },
-  "updated_at_kst": "2026-10-02T08:44:54+09:00",
-  "last_scan_count": 21,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-10-02T08:52:43+09:00",
+  "last_scan_count": 25,
+  "last_new_count": 4,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -364,7 +388,7 @@
     "shortage_through_year": 2027,
     "normalization_year": 2028,
     "lta_caps_price_increases": true,
-    "source": "富途牛牛",
+    "source": "news.futunn.com",
     "source_url": "https://news.futunn.com/en/post/1000379735/memory-chip-market-remains-robust-bernstein-dram-and-nand-prices",
     "source_rank": 2,
     "as_of": "2026-09-29"
@@ -386,20 +410,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-02T08:30:54+09:00",
+  "last_successful_delivery_kst": "2026-10-02T08:52:52+09:00",
   "telegram_message_ids": [
-    205
+    206
   ],
-  "telegram_message_id": 205,
+  "telegram_message_id": 206,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      205
+      206
     ],
-    "confirmed_at_kst": "2026-10-02T08:30:54+09:00",
-    "alert_signature": "9187beca36d47c93518d113edde42e6dafd8e2a0bdfc08a696a96af9708fb9ba"
+    "confirmed_at_kst": "2026-10-02T08:52:52+09:00",
+    "alert_signature": "51ba96061b137c1591176fcfcf491fb67abc428b270b9f5c9a472b934c939d0e"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -453,10 +477,22 @@
     "hbm_asp_yoy_pct": 121.0,
     "current_driver": "범용 DRAM",
     "next_driver": "HBM 가격·제품혼합 확대",
-    "source": "BusinessPost",
+    "source": "businesspost.co.kr",
     "source_kind": "BusinessPost가 FnGuide 컨센서스와 TrendForce 전망을 인용한 2차 보도",
     "source_url": "https://www.businesspost.co.kr/BP?command=article_view&num=448333",
     "trendforce_url": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
+    "as_of": "2026-09-30",
+    "source_rank": 2
+  },
+  "micron_supply_commitment_track_version": 1,
+  "micron_supply_commitment": {
+    "commitment_year": 2027,
+    "output_committed_min_pct": 75.0,
+    "sca_revenue_share_2030_pct": 50.0,
+    "source": "Micron CEO earnings call via Investing.com",
+    "source_kind": "경영진 컨퍼런스콜 발언 재전사 + Micron 공식 실적자료 교차확인",
+    "source_url": "https://www.investing.com/news/transcripts/earnings-call-transcript-micron-tops-q4-2026-estimates-as-demand-stays-hot-93CH-4925992",
+    "official_context_url": "https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Fiscal-Fourth-Quarter-and-Full-Year-2026-Results/default.aspx",
     "as_of": "2026-09-30",
     "source_rank": 2
   }
