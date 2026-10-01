@@ -274,6 +274,18 @@ def main() -> int:
     TITLE.write_text(title + "\n", encoding="utf-8")
     unwind_text = unwind_risk_line(payload, sections)
 
+    policy_items = bullets(sections.get("미·일 정책공조·시장 영향", []))
+    policy_focus = []
+    for needle in ("정책 단계:", "주식시장:", "정책 경계선:"):
+        item = next((x for x in policy_items if needle in x), None)
+        if item:
+            policy_focus.append(item)
+    policy_focus = policy_focus[:3]
+    policy_block = (
+        ["정책·주식 해석", *[f"• {x}" for x in policy_focus], ""]
+        if policy_focus else []
+    )
+
     change_items = bullets(sections.get("이번 변화", []))[:2]
 
     key_reasons: list[str] = []
@@ -329,6 +341,7 @@ def main() -> int:
         f"▶ 청산 위험 │ {unwind_text}",
         f"▶ 시장 영향 │ {risk_asset}",
         "",
+        *policy_block,
         "이번 변화",
         *([f"• {x}" for x in change_items] if change_items else ["• 새 단계 변화 없음"]),
         "",
