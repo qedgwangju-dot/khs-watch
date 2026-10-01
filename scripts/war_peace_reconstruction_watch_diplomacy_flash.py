@@ -1427,10 +1427,26 @@ def _alert_quality_issues(text):
         issues.append('TASS 정례 병력손실 노이즈')
 
     # 항목별 색상과 의미가 충돌하면 헤더가 혼재 상태여도 송출을 막는다.
-    block_matches = list(re.finditer(r'(?m)^(?P<icon>[🔴🟢🟡]?)\s*\[(?:속보|신규|후속)\]\s+\d+\..*
+    block_matches = list(re.finditer(r'(?m)^(?P<icon>[🔴🟢🟡]?)\s*\[(?:속보|신규|후속)\]\s+\d+\..*$', head))
+    for idx, m in enumerate(block_matches):
+        start_pos = m.start()
+        end_pos = block_matches[idx + 1].start() if idx + 1 < len(block_matches) else len(head)
+        block = head[start_pos:end_pos].lower()
+        icon = m.group('icon')
+        if icon == '🟢' and any(x in block for x in (' · 확전 ·', '확전위험', '폭격할지', '공습할지', '미사일 공격', '드론 공격', '피격')):
+            issues.append('초록 항목과 확전 의미 충돌')
+        if icon == '🔴' and any(x in block for x in ('실물물동량', '원유공급회복', '물동량 회복', '역대 가장 많', '기록·급증·회복')):
+            issues.append('빨강 항목과 공급회복 의미 충돌')
+        if '이스라엘·레바논' in block and any(x in block for x in ('gaza', '가자지구', '가자')):
+            issues.append('가자 사건을 이스라엘·레바논으로 오분류')
+        if any(x in block for x in ('bear population', '곰 개체수', '야생동물')) and any(x in block for x in ('attack', '공격')):
+            issues.append('비군사 공격 오탐')
+
+    # 동일 제목이 한 알림 안에서 중복되는 경우 차단.
+    titles = []
     lines = [re.sub(r'<[^>]+>', '', x).strip() for x in head.splitlines()]
     for i, line in enumerate(lines):
-        if re.match(r'^(?:🔴 |🟢 )?\[(?:속보|신규|후속)\] \d+\.', line) and i + 1 < len(lines):
+        if re.match(r'^(?:🔴 |🟢 |🟡 )?\[(?:속보|신규|후속)\] \d+\.', line) and i + 1 < len(lines):
             title = re.sub(r'\s+-\s+[^-]{2,40}\Z', '', lines[i + 1]).strip().lower()
             if title:
                 titles.append(title)
@@ -1438,7 +1454,6 @@ def _alert_quality_issues(text):
         issues.append('동일 제목 중복')
 
     return issues
-
 
 def _strict_verify_alert(test_mode=False):
     _prev_verify_alert(test_mode=test_mode)
