@@ -1782,6 +1782,19 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         trend_3q4q_changes = ["TrendForce 3Q26→4Q26 품목별 가격 상승 속도 분화 신규 기준"]
         trend_3q4q_source_url = TREND_3Q4Q_PACE_BASELINE["source_url"]
 
+    korea_earnings_changes: list[str] = []
+    korea_earnings_source_url = ""
+    for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
+        obs = _extract_korea_memory_earnings_state(item)
+        if not obs:
+            continue
+        merged = _merge_typed_state(korea_earnings_state, obs)
+        changes = _korea_memory_earnings_changes(korea_earnings_state, merged)
+        korea_earnings_state = merged
+        if changes:
+            korea_earnings_changes.extend(changes)
+            korea_earnings_source_url = korea_earnings_state.get("source_url") or korea_earnings_source_url
+
     bernstein_changes: list[str] = []
     bernstein_source_url = ""
     for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
