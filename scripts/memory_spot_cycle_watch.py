@@ -950,6 +950,17 @@ def _market_signal_details(raw_title: str, detail_blob: str) -> list[str]:
     combined = f"{low_title} {low}"
     out: list[str] = []
 
+    earnings = _earnings_forecast_details(raw_title, detail_blob)
+    if earnings:
+        out.extend(earnings)
+        if "fnguide" in combined or "에프앤가이드" in combined:
+            out.append("성격: 실적 확정치가 아니라 FnGuide 시장 컨센서스 인용치")
+        if "121%" in combined and ("asp" in combined or "평균판매가격" in combined):
+            out.append("HBM 연결: TrendForce 2027 HBM Blended ASP +121% YoY 전망")
+        if "범용" in combined and "d램" in combined:
+            out.append("원인 구분: 올해는 범용 DRAM, 내년은 HBM 가격·제품혼합 확대 기대")
+        return list(dict.fromkeys(out))[:5]
+
     if ("goldman sachs" in combined or "골드만삭스" in combined) and any(
         k in combined for k in ("essd", "enterprise ssd", "storage", "nand", "dram", "memory", "메모리")
     ):
@@ -1018,6 +1029,8 @@ def _market_signal_details(raw_title: str, detail_blob: str) -> list[str]:
 
 def _meaning_line(raw_title: str, detail_blob: str) -> str:
     low = f"{raw_title} {detail_blob}".lower()
+    if _earnings_forecast_details(raw_title, detail_blob):
+        return "의미: 확정 실적이 아니라 시장 컨센서스 변화이며, 범용 DRAM과 HBM의 이익 기여 전환을 분리해서 봐야 함"
     if "goldman sachs" in low or "골드만삭스" in low:
         return "의미: 4Q 가격 리비전과 eSSD 채택이 같이 강해지면 NAND 제품혼합·평균판매단가가 삼성전자·SK하이닉스/Solidigm 실적의 핵심 레버리지"
     if "enterprise ssd" in low or "qlc" in low or "nand" in low:
