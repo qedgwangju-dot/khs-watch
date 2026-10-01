@@ -194,6 +194,7 @@ def _is_lane(text: str) -> bool:
         or AGINCOURT.search(text)
         or DAWG.search(text)
         or SOUTHCOM_AWC.search(text)
+        or (DRONE_BUDGET_BASELINE.search(text) and DEFENSE_CTX.search(text))
         or (MERIDIAN.search(text) and (MUSK_GROUP.search(text) or DEFENSE_CTX.search(text)))
         or (AUTONOMY_POLICY.search(text) and DEFENSE_CTX.search(text))
     )
