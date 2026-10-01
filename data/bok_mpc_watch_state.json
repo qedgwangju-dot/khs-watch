@@ -52,23 +52,23 @@
   },
   "rate_signal_upgrade": {
     "version": 4,
-    "updated_at_kst": "2026-10-02T03:51:14+09:00",
-    "risk_score": 5,
-    "grade_emoji": "🟠",
-    "grade_label": "인상 압력 높음",
+    "updated_at_kst": "2026-10-02T08:08:17+09:00",
+    "risk_score": 3,
+    "grade_emoji": "🟡",
+    "grade_label": "추가인상 가능성 유지",
     "next_mpc_date": "2026-10-22",
     "next_mpc_source": "https://www.bok.or.kr/portal/singl/crncyPolicyDrcMtg/listYear.do?menuNo=200755&mtgSe=A",
     "components": {
       "inflation": {
-        "period": "2026-08",
-        "headline_yoy": 3.1,
-        "core_yoy": 3.4,
-        "source": "https://www.korea.kr/briefing/policyBriefingView.do?newsId=156777515",
+        "period": "2026-09",
+        "headline_yoy": 2.8,
+        "core_yoy": 2.8,
+        "source": "https://mods.go.kr/board.es?mid=b70203010000&bid=213&list_no=447322&act=view&mainXml=Y",
         "source_tier": "공식",
-        "prev_headline_yoy": 2.8,
-        "prev_core_yoy": 2.6,
-        "headline_reaccelerating": true,
-        "core_reaccelerating": true,
+        "prev_headline_yoy": 3.1,
+        "prev_core_yoy": 3.4,
+        "headline_reaccelerating": false,
+        "core_reaccelerating": false,
         "stale": false
       },
       "household": {
@@ -84,8 +84,8 @@
       "housing": null,
       "oil": {
         "date": "2026-10-01",
-        "brent_usd": 102.4,
-        "change_5d_pct": -3.94,
+        "brent_usd": 102.52,
+        "change_5d_pct": -3.83,
         "source": "Yahoo Finance BZ=F",
         "source_tier": "시장자료",
         "stale": false
