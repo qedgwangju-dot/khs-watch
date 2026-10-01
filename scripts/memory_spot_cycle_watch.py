@@ -1455,6 +1455,12 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     if int(state.get("legacy_dram_track_version") or 0) < LEGACY_DRAM_TRACK_VERSION:
         state["legacy_dram_track_version"] = LEGACY_DRAM_TRACK_VERSION
 
+    trend_4q26_state = dict(state.get("trendforce_4q26_revision") or {})
+    trend_4q26_first_install = int(state.get("trendforce_4q26_revision_track_version") or 0) < TREND_4Q26_REVISION_TRACK_VERSION
+    if trend_4q26_first_install:
+        trend_4q26_state = dict(TREND_4Q26_PRIOR_BASELINE)
+        state["trendforce_4q26_revision_track_version"] = TREND_4Q26_REVISION_TRACK_VERSION
+
     bernstein_state = dict(state.get("bernstein_memory_cycle") or {})
     if int(state.get("bernstein_memory_cycle_track_version") or 0) < BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION:
         bernstein_state = _merge_bernstein_memory_cycle(bernstein_state, BERNSTEIN_MEMORY_CYCLE_BASELINE)
@@ -1480,6 +1486,31 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     if market_format_due and not market_changes:
         market_changes = ["TrendForce 2027 HBM Blended ASP·8단 프리미엄 기준선 확정"]
         market_source_url = market_state.get("source_url") or ""
+
+    trend_4q26_changes: list[str] = []
+    trend_4q26_source_url = ""
+    trend_4q26_prior_snapshot = dict(trend_4q26_state)
+    for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
+        obs = _extract_trendforce_4q26_revision(item)
+        if not obs:
+            continue
+        merged = _merge_typed_state(trend_4q26_state, obs)
+        changes = _trendforce_4q26_revision_changes(trend_4q26_state, merged)
+        trend_4q26_state = merged
+        if changes:
+            trend_4q26_changes.extend(changes)
+            trend_4q26_source_url = trend_4q26_state.get("source_url") or trend_4q26_source_url
+
+    # On first install, force one current revision alert even if only part of the
+    # latest official page was discoverable in this run. Current baseline numbers
+    # are locked from TrendForce's 2026-09-30 official release + 2026-09-24 report.
+    if trend_4q26_first_install:
+        merged = _merge_typed_state(trend_4q26_state, TREND_4Q26_CURRENT_BASELINE)
+        forced = _trendforce_4q26_revision_changes(trend_4q26_prior_snapshot, merged)
+        trend_4q26_state = merged
+        if forced:
+            trend_4q26_changes = forced
+            trend_4q26_source_url = TREND_4Q26_CURRENT_BASELINE["source_url"]
 
     bernstein_changes: list[str] = []
     bernstein_source_url = ""
@@ -1533,6 +1564,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         # headline alone must not alert unless a tracked price/year/LTA state changes.
         if _is_bernstein_memory_cycle_item(x):
             continue
+        if _extract_trendforce_4q26_revision(x):
+            continue
         if _extract_nand_divergence(x) or _extract_legacy_dram_state(x):
             continue
         new_items.append(x)
@@ -1568,6 +1601,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "hbm_market_pricing": market_state,
         "bernstein_memory_cycle_track_version": BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION,
         "bernstein_memory_cycle": bernstein_state,
+        "trendforce_4q26_revision_track_version": TREND_4Q26_REVISION_TRACK_VERSION,
+        "trendforce_4q26_revision": trend_4q26_state,
         "nand_divergence_track_version": NAND_DIVERGENCE_TRACK_VERSION,
         "nand_divergence": divergence_state,
         "legacy_dram_track_version": LEGACY_DRAM_TRACK_VERSION,
@@ -1593,6 +1628,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- Telegram 대상 신규: {len(prepared_items)}건",
         f"- HBM 시장 가격 숫자 변화: {len(market_changes)}건",
         f"- Bernstein 가격 사이클 상태 변화: {len(bernstein_changes)}건",
+        f"- TrendForce 4Q26 전망 리비전 변화: {len(trend_4q26_changes)}건",
         f"- NAND 소비자↔기업용 eSSD 양극화 변화: {len(divergence_changes)}건",
         f"- 구세대 DRAM EOL·배정 변화: {len(legacy_changes)}건",
         f"- 원천 오류: {len(errors)}건",
@@ -1603,14 +1639,22 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not prepared_items and not market_changes and not bernstein_changes and not divergence_changes and not legacy_changes:
+    if not prepared_items and not market_changes and not bernstein_changes and not trend_4q26_changes and not divergence_changes and not legacy_changes:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    typed_changes = len(market_changes) + len(bernstein_changes) + len(divergence_changes) + len(legacy_changes)
+    typed_changes = len(market_changes) + len(bernstein_changes) + len(trend_4q26_changes) + len(divergence_changes) + len(legacy_changes)
     total_visible = typed_changes + len(prepared_items)
     lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
-    if market_changes:
+    if trend_4q26_changes:
+        lines.append(
+            "한눈에: <b>TrendForce 4Q26 전망 대폭 상향 — "
+            + f"DRAM +{TREND_4Q26_PRIOR_BASELINE['conventional_dram_min_pct']:.0f}~{TREND_4Q26_PRIOR_BASELINE['conventional_dram_max_pct']:.0f}%→+"
+            + f"{float(trend_4q26_state.get('conventional_dram_min_pct') or 0):.0f}~{float(trend_4q26_state.get('conventional_dram_max_pct') or 0):.0f}%, "
+            + f"NAND +{TREND_4Q26_PRIOR_BASELINE['overall_nand_min_pct']:.0f}~{TREND_4Q26_PRIOR_BASELINE['overall_nand_max_pct']:.0f}%→+"
+            + f"{float(trend_4q26_state.get('overall_nand_min_pct') or 0):.0f}~{float(trend_4q26_state.get('overall_nand_max_pct') or 0):.0f}%</b>"
+        )
+    elif market_changes:
         one = market_changes[0]
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
     elif bernstein_changes:
@@ -1625,6 +1669,32 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     elif prepared_items:
         p0 = prepared_items[0]
         lines.append("한눈에: <b>" + html.escape(f"{p0['label']} · {p0['core']}") + "</b>")
+    if trend_4q26_changes:
+        lines.append("• <b>TrendForce 4Q26 메모리 가격 전망 리비전</b>")
+        for change in list(dict.fromkeys(trend_4q26_changes)):
+            lines.append("  " + html.escape(change))
+        for summary in _trendforce_4q26_revision_summary(TREND_4Q26_PRIOR_BASELINE, trend_4q26_state):
+            lines.append("  리비전 강도: " + html.escape(summary))
+        if trend_4q26_state.get("enterprise_ssd_min_pct") is not None:
+            lines.append(
+                f"  Enterprise SSD: <b>+{float(trend_4q26_state['enterprise_ssd_min_pct']):.0f}~{float(trend_4q26_state['enterprise_ssd_max_pct']):.0f}% QoQ</b>"
+            )
+        lines.append("  원인: 북미 CSP의 AI 서버·agentic AI 투자 확대 → RDIMM·QLC 기업용 SSD 추가 주문")
+        lines.append("  공급: 선단 DRAM 생산능력을 server DRAM·HBM에 우선 배분 → conventional DRAM 공급도 타이트")
+        lines.append("  저장계층: KV 캐시 오프로딩이 QLC 기업용 SSD 수요를 끌어올려 NAND 가격 상승폭 확대")
+        lines.append("  실적 의미: 삼성전자·SK하이닉스·Micron은 DRAM 평균판매단가, 삼성전자·SK하이닉스/Solidigm·Micron·SanDisk는 기업용 SSD 제품혼합이 핵심")
+        lines.append("  역풍: PC·스마트폰은 메모리 원가 상승으로 BOM 부담·출하 감소 위험")
+        lines.append("  다음 확인: 실제 4Q 계약 체결가 · 서버 RDIMM 추가 주문 · enterprise SSD LTA/배정 · 공급사 재고")
+        lines.append("  기준 구분: 7월 수치는 사용자 제공 기준 + TrendForce 인용 리서치 교차확인, 9월 수치는 TrendForce 공식 공개자료")
+        if trend_4q26_source_url:
+            lines.append('  <a href="' + html.escape(trend_4q26_source_url, quote=True) + '">TrendForce 최신 공식자료</a>')
+        research_url = trend_4q26_state.get("research_url") or TREND_4Q26_CURRENT_BASELINE.get("research_url")
+        if research_url:
+            lines.append('  <a href="' + html.escape(str(research_url), quote=True) + '">4Q26 Memory Price Forecast</a>')
+        prior_url = TREND_4Q26_PRIOR_BASELINE.get("source_url")
+        if prior_url:
+            lines.append('  <a href="' + html.escape(str(prior_url), quote=True) + '">7월 기준 교차확인</a>')
+
     if market_changes:
         lines.append("• <b>HBM 시장 가격 상태 변화</b>")
         for change in market_changes:
@@ -1727,7 +1797,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes and not divergence_changes and not legacy_changes:
+    if emitted == 0 and not market_changes and not bernstein_changes and not trend_4q26_changes and not divergence_changes and not legacy_changes:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
