@@ -669,6 +669,17 @@ def merge_state(current, patch):
 
         if new_url and old_url and new_url == old_url and item.get("status") != old.get("status") and new_at <= old_at:
             continue
+
+        status_changed = item.get("status") != old.get("status")
+        # A lower-tier or equal-tier supply-chain article cannot reverse a
+        # validated current state by itself. Reversals require at least a
+        # top-tier source, and may never downgrade an existing evidence rank.
+        if status_changed:
+            if new_rank < old_rank:
+                continue
+            if new_rank <= EVIDENCE_RANK["supply_chain_report"]:
+                continue
+
         if new_at > old_at or (new_at == old_at and new_rank > old_rank):
             bottlenecks[key] = item
         elif item.get("status") == old.get("status") and new_rank > old_rank:
