@@ -689,7 +689,10 @@ def parse_foundry_recovery_records(item, body):
             re.search(r'(?:U[.]?S[.]?|미국)[^.]{0,100}?(?:orders?|수주)[^.]{0,60}?(?:strong|증가|확대|견조)', text, re.I)
             or re.search(r'(?:strong|견조|증가|확대)[^.]{0,60}?(?:orders?|수주)[^.]{0,100}?(?:U[.]?S[.]?|미국)', text, re.I)
         ) else None
-        gen2_mobile_plan = True if re.search(r'(?:2nm|2\s*나노)[^.]{0,120}?(?:second[- ]generation|2세대)[^.]{0,100}?(?:mobile|모바일)[^.]{0,100}?(?:ramp|양산|생산)', text, re.I) else None
+        gen2_mobile_plan = True if (
+            re.search(r'(?:2nm|2\s*나노)[^.]{0,120}?(?:second[- ]generation|2세대)[^.]{0,100}?(?:mobile|모바일)[^.]{0,100}?(?:ramp|양산|생산)', text, re.I)
+            or re.search(r'(?:ramp|양산|생산)[^.]{0,100}?(?:second[- ]generation|2세대)[^.]{0,100}?(?:2nm|2\s*나노)[^.]{0,100}?(?:mobile|모바일)', text, re.I)
+        ) else None
         if stage or hpc is not None or us_orders is not None or gen2_mobile_plan is not None:
             rows.append(make_record(
                 'foundry_external_2nm', ['samsung','external_2nm','current'],
