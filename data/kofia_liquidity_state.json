@@ -1,49 +1,49 @@
 {
-  "fingerprint": "acffb4dc33bbaca34ddd55717d396c81da7b9dc3d862cad134760eaca34bb2c5",
+  "fingerprint": "22856438d4ad958e5658883877bd4ca72ca84c685a56521242e2692d5f295d46",
+  "snapshot_date": "20260930",
+  "alignment_ready": true,
   "dates": {
-    "deposit": "20260929",
-    "mmf": "20260929",
-    "cma": "20260929",
-    "credit": "20260929"
+    "deposit": "20260930",
+    "mmf": "20260930",
+    "cma": "20260930",
+    "credit": "20260930"
   },
   "values": {
     "deposit": {
-      "date": "20260929",
-      "value": 107725670,
-      "d1": 3236436,
-      "d5": 9391022
+      "date": "20260930",
+      "value": 104664400,
+      "d1": -3061270,
+      "d5": 6525787
     },
     "mmf": {
-      "date": "20260929",
-      "value": 238449580,
-      "d1": -6007744,
-      "d5": -17777464
+      "date": "20260930",
+      "value": 231577125,
+      "d1": -6872455,
+      "d5": -21051736
     },
     "cma": {
-      "date": "20260929",
-      "value": 106573689,
-      "d1": -224686,
-      "d5": 4093406
+      "date": "20260930",
+      "value": 106605022,
+      "d1": 31333,
+      "d5": 3533377
     },
     "credit": {
-      "date": "20260929",
-      "value": 32920005,
-      "d1": 61835,
-      "d5": 5381
+      "date": "20260930",
+      "value": 33390129,
+      "d1": 470124,
+      "d5": 334643
     },
     "receivable": {
-      "date": "20260929",
-      "value": 1147997
+      "date": "20260930",
+      "value": 1101967
     },
     "forced": {
-      "date": "20260929",
-      "value": 15227,
-      "ratio": 1.4
+      "date": "20260930",
+      "value": 22696,
+      "ratio": 2
     }
   },
   "last_event": "신규 공식값",
   "source": "KOFIA FreeSIS",
-  "source_url": "https://freesis.kofia.or.kr/stat/main.do",
-  "snapshot_date": "20260929",
-  "alignment_ready": true
+  "source_url": "https://freesis.kofia.or.kr/stat/main.do"
 }
