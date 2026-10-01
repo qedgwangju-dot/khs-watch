@@ -15,10 +15,14 @@ from __future__ import annotations
 import io
 import re
 import urllib.request
+from datetime import date, datetime, time, timedelta
+from zoneinfo import ZoneInfo
 
 from pypdf import PdfReader
 
 import treasury_cta_squeeze_watch as watcher
+
+NY = ZoneInfo("America/New_York")
 
 CME_BULLETIN = "https://www.cmegroup.com/daily_bulletin/current/Section09_Interest_Rate_Futures.pdf"
 
@@ -38,8 +42,17 @@ def _download_pdf_text() -> str:
     req = urllib.request.Request(CME_BULLETIN, headers={"User-Agent": "Mozilla/5.0 khs-watch/cme-bulletin"})
     with urllib.request.urlopen(req, timeout=30) as r:
         data = r.read()
+    if not data.startswith(b"%PDF"):
+        raise RuntimeError("CME Section09 did not return a PDF")
     reader = PdfReader(io.BytesIO(data))
-    return "\n".join((p.extract_text() or "") for p in reader.pages)
+    pages = []
+    for p in reader.pages:
+        try:
+            text = p.extract_text(extraction_mode="layout") or ""
+        except TypeError:
+            text = p.extract_text() or ""
+        pages.append(text)
+    return "\n".join(pages)
 
 
 def _parse_price(raw: str) -> float | None:
@@ -154,10 +167,41 @@ def _parse_row(line: str, symbol: str, label: str, trade_date: str) -> dict | No
     }
 
 
+def _previous_business_day(day: date) -> date:
+    d = day - timedelta(days=1)
+    while d.weekday() >= 5:
+        d -= timedelta(days=1)
+    return d
+
+
+def _expected_completed_us_session() -> date:
+    now = datetime.now(NY)
+    if now.weekday() >= 5:
+        d = now.date()
+        while d.weekday() >= 5:
+            d -= timedelta(days=1)
+        return d
+    if now.time() >= time(16, 15):
+        return now.date()
+    return _previous_business_day(now.date())
+
+
+def _trade_date_iso(raw: str) -> str | None:
+    text = str(raw or "").strip()
+    for fmt in ("%a, %b %d, %Y", "%b %d, %Y", "%Y-%m-%d"):
+        try:
+            return datetime.strptime(text, fmt).date().isoformat()
+        except ValueError:
+            pass
+    return None
+
+
 def official_cme_snapshot() -> dict:
     text = _download_pdf_text()
     date_match = re.search(r"BULLETIN\s+#\s*\d+@\s*([^\n]+?)\s+PG09", text, re.I)
     trade_date = date_match.group(1).strip() if date_match else "확인 불가"
+    trade_iso = _trade_date_iso(trade_date)
+    expected_iso = _expected_completed_us_session().isoformat()
     out = {}
     for symbol, (label, heading) in HEADINGS.items():
         sec = _section(text, heading)
@@ -165,9 +209,18 @@ def official_cme_snapshot() -> dict:
         for raw_line in sec.splitlines():
             row = _parse_row(raw_line.strip(), symbol, label, trade_date)
             if row:
+                row["trade_date_iso"] = trade_iso
+                row["expected_session"] = expected_iso
+                row["fresh_for_confirmation"] = bool(trade_iso and trade_iso == expected_iso)
+                row["source_type"] = "CME official Daily Bulletin"
+                row["oi_source"] = "CME official Daily Bulletin daily OI"
+                row["oi_comparable"] = True
+                row["oi_scope"] = "CME_DAILY_CONTRACT_OI"
                 rows.append(row)
         # Use the most liquid/open-interest contract as active contract.
         out[symbol] = max(rows, key=lambda r: (r.get("open_interest") or 0, r.get("volume") or 0)) if rows else None
+    if not any(out.values()):
+        raise RuntimeError("CME Section09 parsed no ZN/ZB/UB rows")
     return out
 
 
@@ -175,17 +228,19 @@ def official_squeeze_evidence(current: dict, previous: dict) -> list[str]:
     signals = []
     prev_cme = previous.get("cme", {}) if isinstance(previous, dict) else {}
     for symbol, row in (current.get("cme") or {}).items():
-        if not row:
+        if not row or not row.get("fresh_for_confirmation"):
             continue
         prev = prev_cme.get(symbol) or {}
         # Alert only once per new bulletin date rather than every 15 minutes.
-        if prev.get("trade_date") == row.get("trade_date"):
+        if prev.get("trade_date_iso") == row.get("trade_date_iso"):
             continue
         chg = row.get("change")
         oi_chg = row.get("oi_change")
         label = row.get("display_symbol") or symbol
         if chg is not None and chg > 0 and oi_chg is not None and oi_chg < 0:
-            signals.append(f"{label} 가격↑ + OI↓({oi_chg:+,}) = 공식 CME 일일 숏커버 확인 신호")
+            signals.append(
+                f"{label} 공식 CME 같은 거래일 가격↑ + OI↓({oi_chg:+,}) = 일일 숏커버 확인 신호"
+            )
     return signals
 
 
