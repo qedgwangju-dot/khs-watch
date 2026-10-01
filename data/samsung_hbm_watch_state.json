@@ -194,6 +194,7 @@
     "bf36069b039f4887166a44a2",
     "c0014c2ca47fea6d896c3e23",
     "c09ac81c8b75fa07c44ec6c4",
+    "c1059b6f380b041e4b24f020",
     "c20c45a9eb638548b8deb379",
     "c4eeabbe2d4315477133e9fe",
     "c5caa424ac30e0d7227f34f9",
@@ -256,8 +257,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-10-01T14:15:50+09:00",
-  "last_event_count": 91,
+  "updated_at_kst": "2026-10-01T16:25:57+09:00",
+  "last_event_count": 95,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -1457,16 +1458,17 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-01T14:15:50+09:00",
+      "last_checked_at_kst": "2026-10-01T16:25:57+09:00",
       "gaps": [
         "원문 확인 실패: investing.com / HTTPError",
+        "RDIMM 32GB: 현물·고정거래 원값/규격/기준기간 미확보",
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
       "observations": 3,
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
-      "non_concrete_generic_evidence_suppressed": 0,
+      "non_concrete_generic_evidence_suppressed": 1,
       "rdimm_quote|dramexchange|32|4800/5600": "지연 원자료: 현재 가격 알림 보류",
       "hbm_market_pricing|trendforce|industry|2027": "하위 증거는 기존 확정값을 덮어쓰지 않음"
     },
@@ -1525,7 +1527,7 @@
     "payload_hash": "2b0b625a1b03c203d6718421ec70968fbb2f085ce45449e2a7f4d242eae7033e"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-01T14:19:21+09:00",
+    "checked_at_kst": "2026-10-01T16:28:52+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
@@ -1536,7 +1538,7 @@
       "reason": "Bernstein/Futunn의 3Q HBM 매출 성장률 72%를 생산능력 변화로 오분류한 상태를 직전 생산능력 기준선으로 복원"
     }
   ],
-  "broker_forecast_track_version": 2,
+  "broker_forecast_track_version": 3,
   "hbm_broker_forecasts": {
     "jpmorgan|samsung|2027": {
       "asp_yoy_pct": 64.0,
@@ -1550,8 +1552,37 @@
       "source": "사용자 제공 J.P. Morgan 2026-09-18 리포트",
       "observed_at": "baseline",
       "contract_stage": "final_stage"
+    },
+    "kb|samsung|2027": {
+      "asp_yoy_pct": 100.0,
+      "asp_is_floor": true,
+      "hbm4_revenue_mix_current_pct": 40.0,
+      "hbm4_revenue_mix_next_pct": 80.0,
+      "source": "KB증권 2026-10-01 전망 인용",
+      "observed_at": "baseline"
     }
   },
   "last_broker_forecast_observation_count": 0,
-  "last_broker_forecast_alert_count": 0
+  "last_broker_forecast_alert_count": 0,
+  "capital_return_track_version": 1,
+  "capital_return_outlook": {
+    "broker_next_3y_return_krw_trn": 600.0,
+    "broker_prior_3y_return_krw_trn": 140.0,
+    "broker_assumed_fcf_return_pct": 50.0,
+    "broker_2026_op_profit_krw_trn": 368.0,
+    "broker_2027_op_profit_krw_trn": 555.0,
+    "broker_h2_quarterly_op_profit_floor_krw_trn": 100.0,
+    "official_policy_period": "2024-2026",
+    "official_fcf_return_pct": 50.0,
+    "official_annual_dividend_krw_trn": 9.8,
+    "official_2024_2025_return_krw_trn": 29.3,
+    "official_2026_return_min_krw_trn": 90.0,
+    "official_2026_return_max_krw_trn": 110.0,
+    "source": "KB증권 전망 + 삼성전자 공식 주주환원 정책",
+    "source_url": "https://www.hankyung.com/article/2026100162116",
+    "official_source_url": "https://www.samsung.com/sec/ir/stock-information/shareholder-return/",
+    "as_of": "2026-10-01"
+  },
+  "last_capital_return_observation_count": 0,
+  "last_capital_return_alert_count": 0
 }
