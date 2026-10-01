@@ -286,6 +286,27 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertEqual(s["q4_enterprise_ssd_min_pct"], 23.0)
         self.assertEqual(s["q4_enterprise_ssd_max_pct"], 28.0)
 
+    def test_alert_semantic_signature_ignores_only_query_timestamp(self):
+        a = "[메모리 수급 변화 감지]\n조회 2026-10-01 19:27 KST · 핵심 변화 2건\nDRAM +10~15%"
+        b = "[메모리 수급 변화 감지]\n조회 2026-10-01 19:31 KST · 핵심 변화 2건\nDRAM +10~15%"
+        c = "[메모리 수급 변화 감지]\n조회 2026-10-01 19:31 KST · 핵심 변화 2건\nDRAM +15~20%"
+        self.assertEqual(w.alert_semantic_signature(a), w.alert_semantic_signature(b))
+        self.assertNotEqual(w.alert_semantic_signature(a), w.alert_semantic_signature(c))
+
+    def test_goldman_memory_headline_becomes_substantive(self):
+        title = (
+            "Storage Price Hikes Are Far From Over! Goldman Sachs: Q4 ASP Forecast Beats Expectations "
+            "and eSSD Adoption Accelerates, Reaffirms Buy on Samsung and SK Hynix"
+        )
+        details = w._market_signal_details(title, title)
+        joined = " ".join(details)
+        self.assertIn("Goldman Sachs가 4Q 메모리 평균판매단가 전망", joined)
+        self.assertIn("기업용 SSD(eSSD) 채택 가속", joined)
+        self.assertIn("삼성전자·SK하이닉스", joined)
+        self.assertIn("구체 상승률은 확인되지 않아 숫자를 추정하지 않음", joined)
+        meaning = w._meaning_line(title, title)
+        self.assertIn("NAND 제품혼합·평균판매단가", meaning)
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
