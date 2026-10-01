@@ -185,6 +185,9 @@ def main() -> int:
                 f"report/JSON selected count mismatch: report={len(blocks)} json={len(json_alerts)}"
             )
         for alert in json_alerts:
+            run_time = prod.runner.detail_queue.parse_time(data.get("query_time_kst"))
+            if run_time and prod.runner.is_stale_session_preview(alert, run_time):
+                errors.append(f"previous-session daily preview passed freshness gate: {alert.get('news')}")
             materiality = prod.runner.source_market_materiality(alert)
             if materiality["disposition"] == "exclude":
                 errors.append(f"routine/vague article passed materiality gate: {alert.get('news')}")

@@ -53,6 +53,8 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
 ))
 MONTH = re.compile(r"(?<!\d)(1[0-2]|[1-9])월")
 ASPIRATION = re.compile(r"관계자는|기대한다|기대된다|키워나|키워\s*나|키우고|성장축|비전을|최선을|응원|company spokesperson", re.I)
+SOLICITATION_HEADLINE = re.compile(r"잡으려면|활용\s*가능한\s*기회|스탁론|주식자금.{0,20}(?:대출|상담|마련)|투자자금.{0,20}(?:상담|마련)", re.I)
+SOLICITATION_BODY = re.compile(r"스탁론|고객상담|상담센터|주식자금\s*(?:상품|대출)|투자금을\s*준비|신용.{0,8}대환|loan consultation", re.I)
 TACTICAL_HEADLINE = re.compile(r"(?:미사일|무기|드론).{0,25}(?:첫\s*실전|실전\s*투입|시험\s*발사)|(?:진지|전차).{0,15}(?:타격|격파)|격추", re.I)
 ECONOMIC_GEOPOLITICS = re.compile(
     r"에너지\s*시설|정유|유전|송유관|원유|유가|가스|항만|물류|유조선|운임|호르무즈|홍해|통항|봉쇄|"
@@ -100,6 +102,8 @@ def focus_score(title: str, sentence: str) -> int:
         score += 15
     if focus_kind(title) == "ownership" and re.search(r"지분.{0,20}\d+(?:\.\d+)?%", sentence):
         score += 20
+    if focus_kind(title) == "shareholder" and re.search(r"종료|사라|마무리|막바지", title) and re.search(r"종료|마무리|마지막\s*주문", sentence):
+        score += 25
     return score
 
 
@@ -181,6 +185,12 @@ def assess(title: str, body: str) -> dict:
     if not title or not body:
         result["reason"] = "source_evidence_unavailable"
         return result
+    if SOLICITATION_HEADLINE.search(title) and SOLICITATION_BODY.search(body) and (
+        re.search(r"잡으려면|활용\s*가능한\s*기회", title)
+        or not re.search(r"규제|제재|반대매매|손실|예탁금|금리\s*(?:인상|인하)", title)
+    ):
+        result.update(disposition="exclude", priority=0, reason="investment_loan_solicitation_not_market_news")
+        return result
     sentences = [part.strip() for part in re.split(r"(?<!\d)[.!?。](?!\d)\s*|[\r\n]+", body) if part.strip()]
     lead = " ".join(sentences[:3])
     if TACTICAL_HEADLINE.search(title) and not ECONOMIC_GEOPOLITICS.search(f"{title} {lead}"):
@@ -193,6 +203,8 @@ def assess(title: str, body: str) -> dict:
     matches = []
     for index, sentence in enumerate(sentences):
         if BACKGROUND.search(sentence) or not period_matches(title, sentence):
+            continue
+        if re.search(r"추가매수를\s*고려하고\s*있었다면|투자자라면|투자금을\s*준비하는\s*방법|기회를\s*잡으려", sentence):
             continue
         # A numeric company profile or another topic later in the article must
         # not turn today's ceremonial/promotion headline into a market event.

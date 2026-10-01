@@ -114,6 +114,7 @@ The Telegram message should contain only the core news radar:
 - Direct financing, contracts, scoped restrictions, supply disruption and rate/macro changes outrank routine index recaps and retrospective features. Proposed policy or financing retains its early stage without automatically being less material than a reported small index move. Price changes alone never prove investor flows.
 - Tactical weapon deployment without an economic transmission path is excluded; energy/logistics attacks, Hormuz tanker incidents, sanctions, ceasefire/negotiation developments, procurement and major escalation remain eligible. This is not a geopolitical-source shutdown.
 - Saved-run shadow audits are read-only: compare old/new source cores and exclusions without resetting seen state or resending historical Telegram messages. Headline-event/month checks also run in the compact renderer and pre-delivery generated-report guard.
+- Loan-solicitation advertorials cannot qualify through an introductory IPO/industry paragraph or investor advice. Genuine margin/loan regulation and corporate financing remain eligible. A prior-session "today's market" preview is stale even within the 24-hour discovery window; overnight global news is not excluded by that rule. Buyback-ending summaries preserve the source issuer, deadline and forecast wording.
 
 ## Data Center Local Ban Coverage
 

@@ -2210,6 +2210,22 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         insider_fact = insider_purchase_fact(title, sentences)
         if core_sentence_is_complete(insider_fact):
             return insider_fact
+        if re.search(r"종료|사라|마무리|막바지", title):
+            schedules = []
+            for sentence in sentences:
+                ending = re.search(r"([A-Za-z0-9가-힣&·]+)(?:은|는)\s+[^.!?]*(?:마무리|종료|마지막\s*주문)[^.!?]*[.!?]", sentence)
+                if not ending:
+                    continue
+                fact = normalized_article_sentence(ending.group(0))
+                if not re.search(r"\d{1,2}(?:[~∼-]\d{1,2})?일|이날|오늘|오는|내달|내년|예정|완료했다|종료했다", fact):
+                    continue
+                candidate = "자사주 매입: " + " ".join(schedules + [fact])
+                if core_sentence_is_complete(candidate):
+                    schedules.append(fact)
+                if len(schedules) == 2:
+                    break
+            if schedules:
+                return "자사주 매입: " + " ".join(schedules)
     for sentence in sentences:
         if (
             not market_materiality.core_focus_aligned(title, sentence)
@@ -8067,6 +8083,14 @@ def is_stale_opening_market_report(alert: dict, now) -> bool:
     )
 
 
+def is_stale_session_preview(alert: dict, now) -> bool:
+    title = str(alert.get("source_title") or alert.get("news") or "")
+    if not re.search(r"오늘의\s*증시|오늘\s*증시|오늘의\s*시장\s*전망", title):
+        return False
+    published = detail_queue.parse_time(alert.get("published"))
+    return bool(published and published.astimezone(now.tzinfo).date() < now.date())
+
+
 def is_nonmarket_business_event(item: dict) -> bool:
     title = base.norm(str(item.get("source_title") or item.get("news") or item.get("title") or ""))
     material_events = (
@@ -8238,6 +8262,9 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             continue
         if is_stale_opening_market_report(alert, now):
             alert["_exclusion_reason"] = "stale_opening_market_report"
+            continue
+        if is_stale_session_preview(alert, now):
+            alert["_exclusion_reason"] = "stale_session_preview"
             continue
         if is_stale_intraday_market_report(alert, now):
             alert["_exclusion_reason"] = "stale_intraday_market_report"

@@ -67,6 +67,41 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_loan_advertorial_cannot_be_rescued_by_an_ipo_or_supply_paragraph(self):
+        title = "신규 상장주 움직임에 관심…최대 4배까지 활용 가능한 기회 잡으려면"
+        body = "항법 기술 기업이 코스닥에 상장했다. 회사는 방산 제품을 공급하고 양산 확대를 계획한다. 방산 분야의 추가매수를 고려하고 있었다면 필요한 투자금을 준비하는 방법도 검토할 수 있다. 하이스탁론은 최대 4배 주식자금 상품과 신용·미수 대환을 제공한다. 고객상담센터로 연락하면 대출 상담이 가능하다."
+        item = alert(title, body)
+        self.assertEqual(radar.source_market_materiality(item)["disposition"], "exclude")
+        self.assertEqual(radar.quality_display_alerts([item], 1), [])
+        self.assertIn("investment_loan_solicitation", item["_exclusion_reason"])
+        regulatory = materiality.assess("스탁론 담보 규제 강화", "금융당국은 스탁론의 담보 규제를 강화해 시행했다.")
+        self.assertEqual(regulatory["disposition"], "keep")
+
+    def test_previous_session_today_preview_is_stale_even_inside_24_hour_window(self):
+        now = NOW.replace(day=2, hour=7, minute=40)
+        item = alert("[오늘의 증시] 장기금리 부담 속 반등 기대", "미국 국채금리는 5.30%까지 상승했다.")
+        item["published"] = NOW.replace(hour=8, minute=3).isoformat()
+        self.assertTrue(radar.is_stale_session_preview(item, now))
+        with patch.object(radar.base, "kst_now", return_value=now):
+            self.assertEqual(radar.quality_display_alerts([item], 1), [])
+        self.assertEqual(item["_exclusion_reason"], "stale_session_preview")
+        item["published"] = now.isoformat()
+        self.assertFalse(radar.is_stale_session_preview(item, now))
+        item["source_title"] = "뉴욕증시 마감…금리 상승"
+        item["published"] = NOW.replace(hour=23).isoformat()
+        self.assertFalse(radar.is_stale_session_preview(item, now))
+
+    def test_buyback_ending_core_keeps_source_deadlines_and_uncertainty(self):
+        title = "삼전닉스 자사주 방파제 곧 사라진다"
+        body = "증권가는 자사주 매입 종료 후 수급을 주목한다. 지난 8월 5329만주 취득을 공시하고 거래일마다 200만주씩 주문을 낸 삼성전자는 이날 매수를 마무리할 예정이다. 2407만주 취득을 예고하고 하루 60만주씩 사들인 SK하이닉스는 오는 15~17일쯤 마지막 주문을 낼 것으로 점쳐진다."
+        item = {**alert(title, body), "telegram_core_fact": "증권가는 자사주 매입 종료 후 수급을 주목한다."}
+        core = radar.verified_alert_core(item, title)
+        for fact in ("삼성전자", "예정", "SK하이닉스", "15~17일", "점쳐진다"):
+            self.assertIn(fact, core)
+        self.assertLessEqual(len(core), 100)
+        self.assertTrue(materiality.core_focus_aligned(title, core))
+        self.assertTrue(radar.core_sentence_is_complete(core))
+
     def test_orders_and_selling_prices_have_direct_earnings_evidence_in_any_industry(self):
         for title, body in (
             ("신산업 기업, 공급계약 체결", "신산업 기업은 해외 고객과 제품 공급계약을 체결했다고 밝혔다."),
@@ -370,15 +405,18 @@ def audit_saved_runs(paths):
             report = json.loads(archive.read(name))
         for item in report["alerts"]:
             title = item.get("source_title") or item.get("news") or ""
+            run_time = radar.detail_queue.parse_time(report.get("query_time_kst"))
             results.append({
                 "artifact": str(path), "title": title,
                 "materiality": radar.source_market_materiality(item),
                 "stored_core": item.get("telegram_core_fact"),
                 "revalidated_core": radar.verified_alert_core(item, title),
+                "stale_session_preview": bool(run_time and radar.is_stale_session_preview(item, run_time)),
             })
     print(json.dumps({"read_only_shadow_audit": True, "articles": len(results),
                       "changed_cores": sum(r["stored_core"] != r["revalidated_core"] for r in results),
                       "excluded": sum(r["materiality"]["disposition"] == "exclude" for r in results),
+                      "stale_previews": sum(r["stale_session_preview"] for r in results),
                       "focus_mismatches": sum(not materiality.core_focus_aligned(r["title"], r["revalidated_core"]) for r in results),
                       "results": results}, ensure_ascii=False))
 
