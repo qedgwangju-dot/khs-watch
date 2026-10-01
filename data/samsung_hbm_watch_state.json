@@ -262,8 +262,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-10-01T23:46:14+09:00",
-  "last_event_count": 101,
+  "updated_at_kst": "2026-10-02T05:33:21+09:00",
+  "last_event_count": 104,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -1788,7 +1788,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-01T23:46:14+09:00",
+      "last_checked_at_kst": "2026-10-02T05:33:21+09:00",
       "gaps": [
         "원문 확인 실패: investing.com / HTTPError",
         "wafer_share: 연말 분모가 명확하지 않아 비교 보류",
@@ -1863,7 +1863,7 @@
     "payload_hash": "f1530e6ce0d0ac528db6098dd958547e06b0098128c3cfc0ada116eeaf81b9c7"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-01T23:50:45+09:00",
+    "checked_at_kst": "2026-10-02T05:37:30+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
