@@ -12,6 +12,7 @@ import json
 import urllib.parse
 import urllib.request
 import time
+import xml.etree.ElementTree as ET
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -28,7 +29,7 @@ TITLE = OUT / "treasury_buyback_media_title.txt"
 DETAIL = OUT / "treasury_buyback_media_detail.json"
 STATUS = OUT / "treasury_buyback_media_status.md"
 
-FORMAT_REVISION = 11
+FORMAT_REVISION = 12
 
 # Official structured source. The public HTML results page is JS-rendered and
 # previously caused a missed 2026-09-10 result, so execution fingerprints must
@@ -43,9 +44,13 @@ BUYBACK_RESULTS_PAGE = (
 BUYBACK_FAQ = "https://www.treasurydirect.gov/help-center/faqs/buyback-faqs/"
 TREASURY_AUCTION_API = (
     "https://www.treasurydirect.gov/TA_WS/securities/auctioned?"
-    "format=json&type=Bond&day=240"
+    "format=json&days=400"
 )
 TREASURY_AUCTION_QUERY = "https://www.treasurydirect.gov/auctions/auction-query/"
+TREASURY_YIELD_PAGE = (
+    "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/"
+    "TextView?type=daily_treasury_yield_curve"
+)
 
 SEP10_INFOMAX = "https://news.einfomax.co.kr/news/articleView.html?idxno=4434361"
 SEP10_BLOOMBERG = (
@@ -175,7 +180,13 @@ def _share(row: dict, key: str) -> float | None:
     return value / accepted * 100.0
 
 
-def latest_30y_auction_context() -> dict | None:
+def _date10(value) -> str:
+    text = str(value or "").strip()
+    return text[:10]
+
+
+def latest_30y_auction_context(op_date: str) -> dict | None:
+    """Latest official 30Y auction on or before the buyback operation date."""
     try:
         rows = json.loads(fetch_text(TREASURY_AUCTION_API))
     except Exception:
@@ -184,16 +195,22 @@ def latest_30y_auction_context() -> dict | None:
         return None
 
     bonds = [row for row in rows if isinstance(row, dict) and _is_30y_bond(row)]
-    bonds.sort(key=lambda row: str(row.get("auctionDate") or ""), reverse=True)
+    bonds.sort(key=lambda row: _date10(row.get("auctionDate")), reverse=True)
     current = next(
-        (row for row in bonds if str(row.get("auctionDate") or "") == "2026-09-10"),
+        (
+            row for row in bonds
+            if _date10(row.get("auctionDate"))
+            and _date10(row.get("auctionDate")) <= op_date
+        ),
         None,
     )
     if not current:
         return None
 
+    current_date = _date10(current.get("auctionDate"))
     previous = [
-        row for row in bonds if str(row.get("auctionDate") or "") < "2026-09-10"
+        row for row in bonds
+        if _date10(row.get("auctionDate")) < current_date
     ][:6]
 
     def avg(field: str) -> float | None:
@@ -207,6 +224,7 @@ def latest_30y_auction_context() -> dict | None:
         return sum(clean) / len(clean) if clean else None
 
     return {
+        "auction_date": current_date,
         "high_yield": _num(current.get("highYield")),
         "btc": _num(current.get("bidToCoverRatio")),
         "indirect_pct": _share(current, "indirectBidderAccepted"),
@@ -218,6 +236,127 @@ def latest_30y_auction_context() -> dict | None:
         "avg_dealer_pct_6": avg_share("primaryDealerAccepted"),
         "sample_n": len(previous),
     }
+
+
+def _treasury_yield_xml_url(year: str) -> str:
+    return (
+        "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml"
+        f"?data=daily_treasury_yield_curve&field_tdr_date_value={year}"
+    )
+
+
+def official_curve_rows(year: str) -> list[dict]:
+    raw = fetch_text(_treasury_yield_xml_url(year))
+    root = ET.fromstring(raw)
+    rows: list[dict] = []
+    for props in root.findall(".//{*}properties"):
+        row = {"date": None, "2y": None, "10y": None, "20y": None, "30y": None}
+        for child in list(props):
+            name = child.tag.split("}")[-1]
+            text = (child.text or "").strip()
+            if name == "NEW_DATE":
+                row["date"] = text[:10]
+            elif name == "BC_2YEAR" and text:
+                row["2y"] = float(text)
+            elif name == "BC_10YEAR" and text:
+                row["10y"] = float(text)
+            elif name == "BC_20YEAR" and text:
+                row["20y"] = float(text)
+            elif name == "BC_30YEAR" and text:
+                row["30y"] = float(text)
+        if row["date"] and all(row[k] is not None for k in ("2y", "10y", "20y", "30y")):
+            rows.append(row)
+    rows.sort(key=lambda x: x["date"])
+    return rows
+
+
+def official_yield_reaction(op_date: str) -> dict | None:
+    """Official Treasury CMT close for the operation date versus prior business day."""
+    try:
+        rows = official_curve_rows(op_date[:4])
+    except Exception:
+        return None
+    idx = next((i for i, row in enumerate(rows) if row["date"] == op_date), None)
+    if idx is None or idx == 0:
+        return None
+    cur, prev = rows[idx], rows[idx - 1]
+    changes = {
+        key: (cur[key] - prev[key]) * 100.0
+        for key in ("2y", "10y", "20y", "30y")
+    }
+    s210_cur = (cur["10y"] - cur["2y"]) * 100.0
+    s210_prev = (prev["10y"] - prev["2y"]) * 100.0
+    s230_cur = (cur["30y"] - cur["2y"]) * 100.0
+    s230_prev = (prev["30y"] - prev["2y"]) * 100.0
+    return {
+        "date": op_date,
+        "prev_date": prev["date"],
+        "current": cur,
+        "previous": prev,
+        "changes_bp": changes,
+        "d2s10s_bp": s210_cur - s210_prev,
+        "d2s30s_bp": s230_cur - s230_prev,
+    }
+
+
+def _yield_verdict(reaction: dict) -> str:
+    c = reaction["changes_bp"]
+    longs = [c["10y"], c["20y"], c["30y"]]
+    if all(x < 0 for x in longs):
+        return "🟢 장기금리 하락 — 바이백 수급 방향과 같은 쪽"
+    if all(x > 0 for x in longs):
+        return "🔴 장기금리 상승 — 바이백 수급 완충보다 다른 상승 압력이 우세"
+    return "🟡 장기금리 혼조 — 바이백 효과를 한 방향으로 판정하기 어려움"
+
+
+def yield_reaction_lines(op_date: str) -> tuple[list[str], dict | None]:
+    reaction = official_yield_reaction(op_date)
+    if not reaction:
+        return [
+            "<b>집행 당일 금리 결과</b>",
+            "• 미 재무부 공식 일일 CMT가 아직 해당 운영일 종가를 게시하지 않았습니다.",
+            "• 공식값이 게시되면 같은 기존 감시에서 2년·10년·20년·30년 종가와 전일 대비 bp를 1회 후속 전송합니다.",
+            f'<a href="{TREASURY_YIELD_PAGE}">미 재무부 공식 금리</a>',
+        ], None
+
+    cur = reaction["current"]
+    c = reaction["changes_bp"]
+    d210 = reaction["d2s10s_bp"]
+    d230 = reaction["d2s30s_bp"]
+    return [
+        "<b>집행 당일 금리 결과 — 미 재무부 공식 CMT</b>",
+        (
+            f"• 2년 {cur['2y']:.2f}% ({c['2y']:+.1f}bp) | "
+            f"10년 {cur['10y']:.2f}% ({c['10y']:+.1f}bp) | "
+            f"20년 {cur['20y']:.2f}% ({c['20y']:+.1f}bp) | "
+            f"30년 {cur['30y']:.2f}% ({c['30y']:+.1f}bp)"
+        ),
+        f"• 2년-10년 금리차 변화 {d210:+.1f}bp | 2년-30년 금리차 변화 {d230:+.1f}bp",
+        f"• 판정: <b>{_yield_verdict(reaction)}</b>",
+        "• 주의: 같은 날 금리 변화에는 연준 발언·물가·유가·재정·국채 공급 등도 함께 작용하므로 바이백만의 인과효과로 단정하지 않습니다.",
+        f'<a href="{TREASURY_YIELD_PAGE}">미 재무부 공식 금리</a>',
+    ], reaction
+
+
+def next_long_end_operation(after_date: str) -> dict | None:
+    try:
+        rows = _api_rows()
+    except Exception:
+        return None
+    candidates = []
+    for row in rows:
+        if (
+            str(row.get("operation_type") or "").strip().lower() == "liquidity support"
+            and str(row.get("security_type") or "").strip().lower() == "nominal coupons"
+            and str(row.get("maturity_bucket") or "").strip() in LONG_END_BUCKETS
+        ):
+            d = _date10(row.get("operation_date"))
+            if d and d > after_date:
+                candidates.append(row)
+    if not candidates:
+        return None
+    candidates.sort(key=lambda row: _date10(row.get("operation_date")))
+    return candidates[0]
 
 
 def _fmt_cmp(value: float | None, average: float | None, suffix: str = "") -> str:
@@ -237,6 +376,8 @@ def classify_execution(
     if cap_use is None:
         return "⚪", "집행 강도 확인 불가"
 
+    if cap_use >= 99.95:
+        return "🟢", "상한 전액 집행"
     if cap_use >= 95:
         return "🟢", "상한 거의 전액 집행"
     if cap_use >= 80 and offer_cap is not None and offer_cap >= 1.25:
@@ -248,12 +389,12 @@ def classify_execution(
     return "🔴", "확대된 상한 대비 실제 집행·제시 모두 약함"
 
 
-def auction_lines() -> list[str]:
-    auction = latest_30y_auction_context()
+def auction_lines(op_date: str) -> list[str]:
+    auction = latest_30y_auction_context(op_date)
     if not auction:
         return [
-            "<b>30년물 신규 공급 대조군</b>",
-            "• 공식 입찰 API에서 9월 10일 30년물 결과를 아직 읽지 못했습니다. 별도 국채 입찰 알림의 공식 판정을 우선합니다.",
+            "<b>최근 30년물 신규 공급 대조군</b>",
+            "• 공식 TreasuryDirect 결과를 이번 실행에서 결합하지 못했습니다. 별도 미국 국채 입찰 알림의 공식 판정을 우선합니다.",
             f'<a href="{TREASURY_AUCTION_QUERY}">미 재무부 30년물 입찰</a>',
         ]
 
@@ -283,7 +424,7 @@ def auction_lines() -> list[str]:
 
     high_yield = auction.get("high_yield")
     return [
-        "<b>30년물 신규 공급 대조군</b>",
+        f"<b>최근 30년물 신규 공급 대조군 — {auction.get('auction_date')}</b>",
         (
             f"• High Yield: {high_yield:.3f}%"
             if high_yield is not None
@@ -298,8 +439,34 @@ def auction_lines() -> list[str]:
     ]
 
 
+def build_yield_followup(op_date: str, reaction: dict) -> tuple[str, str, dict]:
+    lines, _ = yield_reaction_lines(op_date)
+    cur = reaction["current"]
+    title = (
+        "📉 미 재무부 장기물 바이백 당일 금리 확정 — "
+        f"10년 {cur['10y']:.2f}%·30년 {cur['30y']:.2f}%"
+    )
+    body = "\n".join(
+        [
+            "<b>🎯 바이백 집행 후 공식 종가 확인</b>",
+            f"• 운영일: {op_date}",
+            *lines,
+            "",
+            "<b>해석</b>",
+            "• 이것은 바이백이 금리를 단독으로 움직였다는 인과판정이 아니라, 같은 거래일의 공식 수익률곡선 결과입니다.",
+            "• 이후 +1·+3·+5 영업일 지속성은 기존 금리곡선 감시에서 이어서 확인합니다.",
+        ]
+    )
+    return title, body, {
+        "mode": "yield_followup",
+        "operation_date": op_date,
+        "reaction": reaction,
+        "checked_kst": datetime.now(KST).isoformat(timespec="seconds"),
+    }
+
+
 def build_alert(row: dict, fx: float, fx_date: str) -> tuple[str, str, dict]:
-    op_date = str(row.get("operation_date") or "")
+    op_date = _date10(row.get("operation_date"))
     bucket = str(row.get("maturity_bucket") or "장기물")
     maximum = _num(row.get("max_par_amt_redeemed"))
     offered = _num(row.get("total_par_amt_offered"))
@@ -336,7 +503,7 @@ def build_alert(row: dict, fx: float, fx_date: str) -> tuple[str, str, dict]:
     if unfilled is not None:
         lines.append(f"• 미사용 한도: {fmt_usd_krw(unfilled, fx)}")
     if offer_accept is not None:
-        lines.append(f"• 응찰배율(제시액÷실제 매입액): <b>{offer_accept:.2f}배</b>")
+        lines.append(f"• 매도 제시배율(제시액÷실제 매입액): <b>{offer_accept:.2f}배</b>")
     if offer_cap is not None:
         lines.append(f"• 제시액÷상한: {offer_cap:.2f}배")
     if accept_pct is not None:
@@ -354,35 +521,49 @@ def build_alert(row: dict, fx: float, fx_date: str) -> tuple[str, str, dict]:
             "• 베센트: 최근 10년·30년 입찰 수요가 강했고 국채시장은 양호하다고 평가. 이번에는 장기채 보유자의 매도 의지가 낮아 제시액이 평소보다 적었다는 설명입니다.",
             "• 시장: 사전 80억~100억달러 기대보다 60억달러 상한이 작았고, 실제 매입도 51.87억달러에 그쳐 금리 안정 신호가 약했다는 해석입니다.",
             "• 두 해석은 동시에 가능하지만, 총 제시액만으로 ‘국채 최종수요 악화’ 또는 ‘보유자의 강한 확신’을 단정하지 않습니다.",
-            "",
-            "<b>시장 실제 반응</b>",
-            "• WSJ/Tradeweb 기준 결과 직후 10년물은 4.938% → 4.946%로 소폭 상승했습니다. 전일 4.836%보다도 높은 수준입니다.",
-            "• 다만 유가·인플레이션·재정 공급 압력이 같은 날 함께 작용했으므로 금리 상승을 바이백 한 요인으로만 설명하지 않습니다.",
         ]
 
-    lines += [""] + auction_lines()
+    rate_lines, reaction = yield_reaction_lines(op_date)
+    lines += [""] + rate_lines
+    lines += [""] + auction_lines(op_date)
+
+    next_op = next_long_end_operation(op_date)
+    if next_op:
+        next_text = (
+            f"⑤ 다음 장기물 바이백 — {_date10(next_op.get('operation_date'))} "
+            f"{next_op.get('maturity_bucket')}"
+        )
+    else:
+        next_text = "⑤ 다음 장기물 바이백 — 미 재무부 공식 예정 일정 재확인"
 
     lines += [
         "",
         "<b>다음 판정</b>",
-        "① 집행 후 10·20·30년 금리 — 하루·3일·5일 지속성",
-        "② 30년 신규 입찰 — 간접낙찰·딜러 인수·Bid-to-Cover·별도 WI 꼬리",
-        "③ 결제일 TGA — 실제 현금 감소",
-        "④ 이후 Bill·CMB 공급 — 장기물 부담이 단기물로 이동하는지",
-        "⑤ 9월 24일 20~30년 바이백 — 상한·제시액·실제 매입액 재검증",
+        "① 집행 당일 공식 금리 — 위 CMT 결과",
+        "② +1·+3·+5 영업일 10·20·30년 금리 지속성",
+        "③ 다음 30년 신규 입찰 — 간접낙찰·딜러 인수·Bid-to-Cover·별도 WI 꼬리",
+        "④ 결제일 TGA와 이후 Bill·CMB 공급 — 장기물 부담이 단기물로 이동하는지",
+        next_text,
         "",
         "<b>실패 경로</b>",
         "• 상한을 크게 늘리고 실제 매입도 충분한데 10·30년 금리가 계속 오른다면, 유동성보다 유가·인플레이션·재정 공급·기간 프리미엄이 더 강한 국면으로 판정합니다.",
         "",
         f"환율 기준: {fx_date}, 1달러={fx:,.2f}원",
-        (
-            f'<a href="{BUYBACK_RESULTS_PAGE}">미 재무부 공식 바이백 결과</a> · '
-            f'<a href="{BUYBACK_FAQ}">바이백 규정</a> · '
-            f'<a href="{SEP10_INFOMAX}">연합인포맥스</a> · '
-            f'<a href="{SEP10_BLOOMBERG}">베센트 발언</a> · '
-            f'<a href="{SEP10_REUTERS}">시장 검증</a>'
-        ),
     ]
+
+    source_links = [
+        f'<a href="{BUYBACK_RESULTS_PAGE}">미 재무부 공식 바이백 결과</a>',
+        f'<a href="{BUYBACK_FAQ}">바이백 규정</a>',
+        f'<a href="{TREASURY_YIELD_PAGE}">미 재무부 공식 금리</a>',
+        f'<a href="{TREASURY_AUCTION_QUERY}">미 재무부 국채 입찰</a>',
+    ]
+    if op_date == "2026-09-10":
+        source_links += [
+            f'<a href="{SEP10_INFOMAX}">연합인포맥스</a>',
+            f'<a href="{SEP10_BLOOMBERG}">베센트 발언</a>',
+            f'<a href="{SEP10_REUTERS}">시장 검증</a>',
+        ]
+    lines.append(" · ".join(source_links))
 
     body = "\n".join(lines)
     detail = {
@@ -398,6 +579,7 @@ def build_alert(row: dict, fx: float, fx_date: str) -> tuple[str, str, dict]:
             "unfilled_cap": unfilled,
         },
         "execution_strength": verdict,
+        "official_yield_reaction": reaction,
         "fx": fx,
         "fx_date": fx_date,
         "checked_kst": datetime.now(KST).isoformat(timespec="seconds"),
@@ -418,11 +600,17 @@ def main() -> int:
     row = latest_long_end_result()
     fingerprint = result_fingerprint(row)
     checked = datetime.now(KST).isoformat(timespec="seconds")
-    op_date = str(row.get("operation_date") or "")
+    op_date = _date10(row.get("operation_date"))
 
     old_fingerprint = state.get("latest_long_end_fingerprint")
     is_new = old_fingerprint != fingerprint
-    should_alert = is_new and (old_fingerprint is not None or op_date >= "2026-09-10")
+    force_format_resend = (
+        int(state.get("format_revision", 0) or 0) < FORMAT_REVISION
+        and state.get("latest_long_end_operation_date") == op_date
+    )
+    should_alert = (is_new or force_format_resend) and (
+        old_fingerprint is not None or op_date >= "2026-09-10"
+    )
 
     next_state = {
         **state,
@@ -433,6 +621,7 @@ def main() -> int:
         "results_source": "fiscaldata_buybacks_operations",
     }
 
+    alert_kind = None
     if should_alert:
         fx, fx_date = latest_fx()
         title, body, detail = build_alert(row, fx, fx_date)
@@ -445,9 +634,41 @@ def main() -> int:
             json.dumps(detail, ensure_ascii=False, indent=2) + "\n",
             encoding="utf-8",
         )
+        reaction = detail.get("official_yield_reaction")
+        if reaction:
+            next_state.pop("pending_yield_followup", None)
+            next_state["latest_yield_followup_operation_date"] = op_date
+        else:
+            next_state["pending_yield_followup"] = {
+                "operation_date": op_date,
+                "fingerprint": fingerprint,
+            }
         next_state["pending_items"] = [
-            f"buyback:{op_date}:{row.get('maturity_bucket')}:{fingerprint}"
+            f"buyback:{op_date}:{row.get('maturity_bucket')}:{fingerprint}:fmt{FORMAT_REVISION}"
         ]
+        alert_kind = "execution"
+
+    if not should_alert:
+        pending = state.get("pending_yield_followup") or {}
+        pending_date = str(pending.get("operation_date") or "")
+        if pending_date and pending_date == op_date:
+            reaction = official_yield_reaction(pending_date)
+            if reaction:
+                title, body, detail = build_yield_followup(pending_date, reaction)
+                if len(title) + 2 + len(body) > 4096:
+                    raise RuntimeError("Telegram yield-followup message too long")
+                TITLE.write_text(title + "\n", encoding="utf-8")
+                ALERT.write_text(body.rstrip() + "\n", encoding="utf-8")
+                DETAIL.write_text(
+                    json.dumps(detail, ensure_ascii=False, indent=2) + "\n",
+                    encoding="utf-8",
+                )
+                next_state.pop("pending_yield_followup", None)
+                next_state["latest_yield_followup_operation_date"] = pending_date
+                next_state["pending_items"] = [
+                    f"buyback-yield:{pending_date}:{fingerprint}"
+                ]
+                alert_kind = "yield_followup"
 
     NEXT_STATE.write_text(
         json.dumps(next_state, ensure_ascii=False, indent=2) + "\n",
@@ -459,7 +680,9 @@ def main() -> int:
         f"- 최신 운영일: {op_date}\n"
         f"- 만기구간: {row.get('maturity_bucket')}\n"
         f"- 공식 데이터원: Fiscal Data buybacks_operations\n"
-        f"- 신규 실제 집행: {'예' if should_alert else '아니오'}\n",
+        f"- 신규 실제 집행: {'예' if should_alert else '아니오'}\n"
+        f"- 공식 금리 후속: {'예' if alert_kind == 'yield_followup' else '아니오'}\n"
+        f"- 이번 알림 종류: {alert_kind or '없음'}\n",
         encoding="utf-8",
     )
     return 0
