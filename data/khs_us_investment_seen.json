@@ -369,8 +369,8 @@
         "apr1400_units:2",
         "nuclear_framework_status:agreed",
         "nuclear_framework_usd_b:120",
+        "nuclear_project_status:individual_projects_pending",
         "nuclear_total_units:8",
-        "official_status:unconfirmed",
         "party:kepco",
         "party:westinghouse"
       ],
@@ -380,9 +380,9 @@
         "nuclear_build|nuclear_framework_status": "nuclear_framework_status:agreed",
         "nuclear_build|nuclear_framework_usd_b": "nuclear_framework_usd_b:120",
         "nuclear_build|nuclear_total_units": "nuclear_total_units:8",
-        "nuclear_build|official_status": "official_status:unconfirmed",
         "nuclear_build|party:kepco": "party:kepco",
-        "nuclear_build|party:westinghouse": "party:westinghouse"
+        "nuclear_build|party:westinghouse": "party:westinghouse",
+        "nuclear_build|nuclear_project_status": "nuclear_project_status:individual_projects_pending"
       },
       "initialized_at": "2026-09-21T13:18:18.976289+00:00",
       "updated_at": "2026-10-01T04:00:32.388435+00:00",
@@ -712,5 +712,6 @@
   "event_state_guard_baselined_at": "2026-09-21T13:18:34.529808+00:00",
   "alaska_investment_semantics_version": 2,
   "amount_scope_guard_version": 1,
-  "announcement_stage_guard_version": 1
+  "announcement_stage_guard_version": 1,
+  "joint_fact_sheet_status_version": 1
 }
