@@ -1791,6 +1791,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         korea_earnings_state = _merge_typed_state(KOREA_MEMORY_EARNINGS_BASELINE, korea_earnings_state)
         state["korea_memory_earnings_track_version"] = KOREA_MEMORY_EARNINGS_TRACK_VERSION
 
+    micron_supply_state = dict(state.get("micron_supply_commitment") or {})
+    if int(state.get("micron_supply_commitment_track_version") or 0) < MICRON_SUPPLY_COMMITMENT_TRACK_VERSION:
+        micron_supply_state = _merge_typed_state(MICRON_SUPPLY_COMMITMENT_BASELINE, micron_supply_state)
+        state["micron_supply_commitment_track_version"] = MICRON_SUPPLY_COMMITMENT_TRACK_VERSION
+
     bernstein_state = dict(state.get("bernstein_memory_cycle") or {})
     if int(state.get("bernstein_memory_cycle_track_version") or 0) < BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION:
         bernstein_state = _merge_bernstein_memory_cycle(bernstein_state, BERNSTEIN_MEMORY_CYCLE_BASELINE)
@@ -1860,6 +1865,19 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         if changes:
             korea_earnings_changes.extend(changes)
             korea_earnings_source_url = korea_earnings_state.get("source_url") or korea_earnings_source_url
+
+    micron_supply_changes: list[str] = []
+    micron_supply_source_url = ""
+    for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
+        obs = _extract_micron_supply_commitment(item)
+        if not obs:
+            continue
+        merged = _merge_typed_state(micron_supply_state, obs)
+        changes = _micron_supply_commitment_changes(micron_supply_state, merged)
+        micron_supply_state = merged
+        if changes:
+            micron_supply_changes.extend(changes)
+            micron_supply_source_url = micron_supply_state.get("source_url") or micron_supply_source_url
 
     bernstein_changes: list[str] = []
     bernstein_source_url = ""
