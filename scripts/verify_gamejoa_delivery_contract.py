@@ -1040,7 +1040,7 @@ def assert_compact_live_output_contract(compact, now, errors: list[str]) -> None
     compacted_converted = compact.compact_converted_core(
         fx_alert["telegram_core_fact"],
         conversion,
-        limit=50,
+        limit=compact.GAMEJOA_CORE_MAX_CHARS,
     )
     for marker in (
         "9500억달러(약 1,389조원)",
@@ -1050,10 +1050,12 @@ def assert_compact_live_output_contract(compact, now, errors: list[str]) -> None
             errors.append(f"inline KRW conversion missing: {marker} / {converted}")
         if marker not in compacted_converted:
             errors.append(
-                f"50-char inline KRW conversion missing: {marker} / {compacted_converted}"
+                f"context-preserving inline KRW conversion missing: {marker} / {compacted_converted}"
             )
-    if len(compacted_converted) > 50:
-        errors.append(f"inline KRW conversion exceeded 50 chars: {compacted_converted}")
+    if len(compacted_converted) > compact.GAMEJOA_CORE_MAX_CHARS:
+        errors.append(f"inline KRW conversion exceeded core limit: {compacted_converted}")
+    if not compact.core_sentence_is_complete(compacted_converted) or "투자액" not in compacted_converted:
+        errors.append(f"inline KRW conversion lost the source action: {compacted_converted}")
     if "외화 환산:" in converted or "≈" in converted:
         errors.append(f"legacy currency appendix syntax returned: {converted}")
 
@@ -1115,28 +1117,28 @@ def assert_current_high_impact_article_coverage(production, compact, now, errors
             "“월요일 하닉 들어갑니다”…증권가 “2분기 영업익 64조·이익률 75% 이상”",
             "증권가는 SK하이닉스의 2분기 영업이익을 64조원, 영업이익률을 75~77%로 전망했다. 지난해 4분기 영업이익률은 58%였다.",
             "skhynix_earnings_consensus",
-            ("64조", "75%"),
+            ("64조", "75~77%", "전망했다"),
         ),
         (
             "이투데이",
             "FOMC 앞두고 금리 동결·인상 전망 엇갈려",
             "월가에서는 금리 동결과 인상 전망이 엇갈린다. 관련 기사에는 국제유가와 물가·환율 부담도 언급됐다.",
             "fomc_rate_outlook",
-            ("FOMC", "금리"),
+            ("금리", "동결", "인상"),
         ),
         (
             "뉴스1",
             "K기업들, 엔비디아와 AI 반도체 생태계 협력 확대",
             "국내 기업들이 엔비디아와 AI 반도체·인프라 협력을 넓힌다. 관련 기사에는 이재용과 오픈AI 회동도 소개됐다.",
             "korea_nvidia_ai_ecosystem",
-            ("K기업", "엔비디아"),
+            ("국내 기업", "엔비디아"),
         ),
         (
             "머니투데이",
             "유가 100달러 돌파, AI 수익성 우려까지…나스닥 2.15% 뚝",
             "국제유가 상승으로 유가 100달러를 돌파했고 나스닥은 2.15% 하락했다. 반도체주 차익실현도 확대됐다.",
             "global_semiconductor_market_shock",
-            ("유가 100달러", "나스닥 2.15%"),
+            ("유가 100달러", "나스닥은 2.15%", "하락"),
         ),
         (
             "아시아경제",
@@ -1157,21 +1159,21 @@ def assert_current_high_impact_article_coverage(production, compact, now, errors
             "SK, MS에 메모리 장기 공급…앤트로픽과 데이터센터 추진",
             "SK하이닉스가 마이크로소프트와 HBM4 공동개발 및 장기 공급 계약을 체결했다.",
             "sk_ms_hbm4_supply",
-            ("SK하이닉스", "MS", "HBM4"),
+            ("SK하이닉스", "마이크로소프트", "HBM4"),
         ),
         (
             "디지털타임스",
             "SKT·네이버, 베라 루빈 기반 AI 팩토리 사업 속도",
             "SK텔레콤과 네이버가 엔비디아 DSX와 베라 루빈을 내년 도입해 AI 팩토리를 구축한다.",
             "korea_ai_factory_deployment",
-            ("SKT", "네이버", "베라루빈"),
+            ("SK텔레콤", "네이버", "베라 루빈"),
         ),
         (
             "연합뉴스TV",
             "2주 만에 멈춘 대이란 공습…사우디·후티 충돌",
             "미국과 이란의 공습은 소강에 들어갔지만 사우디와 후티 충돌로 홍해·유조선 위험이 남았다.",
             "middle_east_geopolitical_risk",
-            ("사우디", "후티", "유가"),
+            ("사우디", "후티", "홍해", "유조선"),
         ),
         (
             "뉴스1",
@@ -1234,14 +1236,14 @@ def assert_current_high_impact_article_coverage(production, compact, now, errors
             "변동성에 질렸나, 국내 ETF서 7000억원 자금 유출",
             "국내 ETF에서 4일 만에 7000억원이 빠져나왔으며 단일종목 레버리지 규제 강화 이후 자금 흐름 변화가 관측됐다.",
             "korea_etf_asset_flow",
-            ("ETF", "7000억원", "유출"),
+            ("ETF", "7000억원", "빠져나왔"),
         ),
         (
             "연합뉴스",
             "신성이엔지, 김제공장 신규 라인 가동…태양광 모듈 양산",
             "신성이엔지는 김제공장 신규 생산라인을 가동해 고출력 태양광 모듈 양산을 시작했다.",
             "korea_solar_module_capacity",
-            ("태양광 모듈", "신규 라인", "양산"),
+            ("태양광 모듈", "신규 생산라인", "양산"),
         ),
         (
             "한국경제",
@@ -1339,7 +1341,7 @@ def assert_current_high_impact_article_coverage(production, compact, now, errors
             "외국인, 삼성전자·SK하이닉스 4.5조 순매수",
             "외국인은 삼성전자와 SK하이닉스를 4거래일간 약 4조5000억원 순매수했다.",
             "foreign_semiconductor_flow",
-            ("외국인", "4.5조원"),
+            ("외국인", "4조5000억원", "순매수"),
         ),
     ]
     normalized_by_kind = {}

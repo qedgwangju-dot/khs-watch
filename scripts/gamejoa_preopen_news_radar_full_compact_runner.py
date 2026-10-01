@@ -1592,6 +1592,7 @@ ARTICLE_MATERIAL_TERMS = (
     "매출", "영업이익", "순이익", "당기순이익", "실적", "수주", "계약", "발주",
     "증설", "출하", "가격", "인상", "인하", "증가", "감소", "순매수", "순매도",
     "배당", "자사주", "자기주식", "소각", "취득", "상용화", "양산평가",
+    "투자", "협력", "회동", "공급", "가동", "인허가", "채용", "감원", "감축",
 )
 ARTICLE_RESULT_TERMS = (
     "매출", "영업이익", "순이익", "당기순이익", "실적", "수주", "계약", "출하",
@@ -1667,6 +1668,7 @@ def clean_article_summary_text(text: str) -> str:
     )
     for pattern in ARTICLE_SUMMARY_NOISE_PATTERNS:
         cleaned = re.sub(pattern, " ", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"\[(?:앵커|기자|리포터)\]\s*(?:네[,，]\s*)?", " ", cleaned)
     cleaned = re.sub(r"^[\s,;:>|\]·•.\-]+", "", cleaned)
     return re.sub(r"\s+", " ", cleaned).strip()
 
@@ -1981,44 +1983,13 @@ def apply_krw_conversions(core: str, conversion: dict) -> str:
                 text,
                 count=1,
             )
-        elif original:
-            text = f"{text.rstrip('.')} {replacement}.".strip()
     return text
 
 
-def compact_converted_core(core: str, conversion: dict, limit: int = 50) -> str:
+def compact_converted_core(core: str, conversion: dict, limit: int = GAMEJOA_CORE_MAX_CHARS) -> str:
     converted = apply_krw_conversions(core, conversion)
     if len(converted) <= limit:
         return converted
-
-    amount_chunks: list[str] = []
-    first_position: int | None = None
-    for item in conversion.get("amounts") or []:
-        original = str(item.get("original") or "").strip()
-        krw_text = str(item.get("krw_text") or "원화 환산 확인 불가")
-        chunk = (
-            f"{original}(약 {krw_text})"
-            if item.get("krw_value") is not None
-            else f"{original}({krw_text})"
-        )
-        position = converted.find(chunk)
-        if position < 0 or chunk in amount_chunks:
-            continue
-        if first_position is None:
-            first_position = position
-        amount_chunks.append(chunk)
-
-    if amount_chunks:
-        prefix = converted[: first_position or 0].strip(" ,·;:")
-        prefix_tokens = re.findall(r"[A-Za-z0-9가-힣·]+", prefix)
-        short_prefix = " ".join(prefix_tokens[-2:])
-        joined = ", ".join(amount_chunks)
-        for candidate in (
-            f"{short_prefix} {joined}입니다.".strip(),
-            f"{joined}입니다.",
-        ):
-            if len(candidate) <= limit:
-                return candidate
 
     return complete_prose_text(converted, limit=limit)
 
@@ -2115,7 +2086,7 @@ def ranked_article_sentences(
     sentences = [
         sentence
         for sentence in sentences
-        if len(sentence) >= 25 and not article_title_restatement(sentence, title)
+        if len(sentence) >= 12 and not article_title_restatement(sentence, title)
     ]
     scored: list[tuple[int, int, str]] = []
     for index, sentence in enumerate(sentences):
@@ -2239,9 +2210,13 @@ def financial_result_fact(title: str, sentences: list[str]) -> str:
         metric_start = sentence.find(metric_term) + len(metric_term)
         metric_tail = sentence[metric_start:metric_start + 90]
         amount_match = re.search(KOREAN_WON_AMOUNT_PATTERN, metric_tail)
-        if not amount_match:
+        foreign_amounts = extract_foreign_amounts(metric_tail)
+        amount = amount_match.group(0) if amount_match else (
+            foreign_amounts[0]["raw"] if foreign_amounts else ""
+        )
+        if not amount:
             continue
-        if suspect_financial_amount(metric, amount_match.group(0)):
+        if amount_match and suspect_financial_amount(metric, amount):
             continue
         period_match = re.search(r"([1-4])분기", sentence) or re.search(r"([1-4])분기", title)
         change_match = re.search(
@@ -2250,13 +2225,19 @@ def financial_result_fact(title: str, sentences: list[str]) -> str:
             sentence,
         )
         prefix = f"{period_match.group(1)}분기 " if period_match else ""
-        result = f"{prefix}{metric} {amount_match.group(0).replace(' ', '')}"
+        compact_amount = amount.replace(' ', '') if amount_match else amount
+        result = f"{prefix}{metric}은 {compact_amount}"
+        projected = bool(re.search(r"(?:전망|예상|추정)(?:치|했다|한다|된|된다|됩니다)|가이던스", sentence))
+        if re.search(r"집계(?:됐|되었|돼|되며|된다)|기록(?:했|한)|달성(?:했|한)|거뒀", sentence):
+            projected = False
         if change_match:
             direction = "증가" if change_match.group(2) in {"증가", "늘"} else "감소"
-            result += f", 전년비 {change_match.group(1)}% {direction}"
-        if any(term in title for term in ("사상 최대", "역대 최대")):
-            result += "·역대 최대"
-        return concise_text(result.rstrip(".") + ".", limit=100)
+            particle = "으로" if compact_amount.endswith("원") else "로"
+            result += f"{particle} 전년비 {change_match.group(1)}% {direction}"
+            result += "할 전망입니다." if projected else "했습니다."
+        else:
+            result += " 전망입니다." if projected else "입니다."
+        return concise_text(result, limit=100)
     return ""
 
 
@@ -2674,6 +2655,16 @@ def detailed_article_core(title: str, body: str) -> str:
     leverage_fact = single_stock_leverage_kosdaq_fact(title, body)
     if leverage_fact:
         return leverage_fact
+
+    # An attributed earnings forecast is not a reported result. Preserve the
+    # source's forecast and range instead of discarding it as a large actual.
+    for sentence in sentences:
+        if (
+            sentence_has_suspect_financial_amount(sentence)
+            and re.search(r"(?:전망|예상|추정)(?:했다|한다|된다|됩니다)", sentence)
+            and core_sentence_is_complete(sentence)
+        ):
+            return sentence
 
     preferred = [
         insider_purchase_fact(title, sentences),
@@ -6565,11 +6556,12 @@ def normalize_title_core_token(token: str) -> str:
 
 
 def title_core_alignment_tokens(value: str) -> set[str]:
+    text = re.sub(r"(\d[\d,.]*)\s*만\s*(?:명|개|주)", r"\1만", str(value or ""))
     raw_tokens = re.findall(
         r"[A-Za-z][A-Za-z0-9.-]*|"
-        r"\d[\d,.]*(?:%|조원|억원|만원|달러|만명|명|개)?|"
+        r"\d[\d,.]*(?:%|조원|억원|만원|달러|만|명|개)?|"
         r"[가-힣]{2,}",
-        str(value or ""),
+        text,
     )
     tokens = {
         normalize_title_core_token(token)
@@ -6593,8 +6585,10 @@ def korean_title_core_aligned(title: str, core: str) -> bool:
             if title_token == core_token:
                 matched.add(title_token)
                 break
-            if min(len(title_token), len(core_token)) >= 3 and (
-                title_token in core_token or core_token in title_token
+            if (
+                not any(char.isdigit() for char in title_token + core_token)
+                and min(len(title_token), len(core_token)) >= 3
+                and (title_token in core_token or core_token in title_token)
             ):
                 matched.add(title_token)
                 break
@@ -8110,6 +8104,8 @@ def core_sentence_is_complete(value: object, limit: int = GAMEJOA_CORE_MAX_CHARS
     # paragraph fragment from a publisher page, not a self-contained summary.
     if re.match(r"^(?:그리고|한편|다만|그러나|이에|이와s*관련해)\s+", text):
         return False
+    if re.match(r"^(?:을|를|은|는|의)\s+", text) or re.search(r"(?:는데요|거든요|잖아요)[.!?。]?$", text):
+        return False
     if re.search(
         r"(?:보다|에게|에서|으로|와|과|은|는|이|가|을|를|의|며|고)(?:[.!?。])?$",
         text,
@@ -8349,6 +8345,8 @@ def compact_alert_block_errors(block: str) -> list[str]:
         return errors
     if core_has_ui_garbage(summary):
         errors.append("article_ui_boilerplate")
+    if re.search(r"\[[^\]]{0,60}\s*기자\]", summary):
+        errors.append("article_ui_boilerplate")
     if not core_sentence_is_complete(summary):
         errors.append("incomplete_core")
     if len(summary) > GAMEJOA_CORE_MAX_CHARS:
@@ -8396,6 +8394,7 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
     else:
         core = verified_alert_core(alert, title)
     conversion = alert.get("fx_conversion") or {"amounts": []}
+    title = apply_krw_conversions(title, conversion)
     core = compact_converted_core(core, conversion, limit=GAMEJOA_CORE_MAX_CHARS)
     if not core_sentence_is_complete(core):
         core = ""

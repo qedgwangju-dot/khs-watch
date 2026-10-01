@@ -211,6 +211,13 @@ def enforce_fda_quality_gate() -> None:
                         ),
                         row, now,
                     )
+                if alert:
+                    source_core = runner.detailed_article_core(title, body)
+                    alert["news"] = title
+                    alert["source_title"] = title
+                    alert["telegram_core_fact"] = source_core
+                    alert["policy_plain_summary"] = source_core
+                    alert.pop("headline_override", None)
                 return alert
             return original_classify(row, now)
         text = base.source_content_text(row)

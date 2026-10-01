@@ -228,6 +228,30 @@ def main() -> int:
     if any(term in detail.get("body", "") for term in ("추가 공격", "반독점", "Copyright")):
         failures.append("publisher_footer_or_related_stories_leaked_into_article_body")
 
+    financial_core = radar.financial_result_fact("마이크론 분기 실적 발표", [
+        "마이크론의 4분기 매출은 542억달러로 집계되며 시장 예상치 510억달러를 웃돌았다.",
+    ])
+    if not radar.core_sentence_is_complete(financial_core) or "전망" in financial_core or "542억달러" not in financial_core:
+        failures.append(f"reported_foreign_revenue_lost_or_changed_to_forecast:{financial_core}")
+    conversion = {"amounts": [
+        {"original": "542억달러", "krw_text": "73조원", "krw_value": 73e12},
+        {"original": "33.42달러", "krw_text": "4.5만원", "krw_value": 45000},
+    ]}
+    converted = radar.compact_converted_core(financial_core, conversion)
+    if not radar.core_sentence_is_complete(converted) or "매출" not in converted or "542억달러(약 73조원)" not in converted:
+        failures.append(f"foreign_conversion_lost_metric_context:{converted}")
+    if "33.42달러" in converted:
+        failures.append("unrelated_abstract_amount_appended_to_compact_core")
+    if radar.core_sentence_is_complete("를 넘어섰다 542억달러(약 73조원)입니다."):
+        failures.append("clipped_foreign_amount_fragment_passed_complete_sentence_guard")
+    if radar.core_sentence_is_complete("삼성전자는 그동안 자사주를 매입해왔는데요."):
+        failures.append("broadcast_conversation_fragment_passed_summary_guard")
+    if "기자" in radar.clean_article_summary_text("[기자] 네, 삼성전자가 자사주 매입을 마무리했습니다."):
+        failures.append("broadcast_speaker_label_not_removed_from_summary")
+    bad_block = "1) 자사주 매입 마무리\n- 핵심: [기자] 매입이 마무리됐습니다.\n"
+    if "article_ui_boilerplate" not in radar.compact_alert_block_errors(bad_block):
+        failures.append("per_article_guard_failed_to_block_reporter_label")
+
     searches = dict(radar.base.trusted_query_plan())
     for name in ("글로벌 금리·물가·고용·유동성", "글로벌 증시 실적·투자·자본행사", "글로벌 통상·제재·원자재 공급"):
         if name not in searches:
