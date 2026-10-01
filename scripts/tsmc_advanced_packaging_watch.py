@@ -278,6 +278,10 @@ class _ArticleBodyParser(HTMLParser):
         "articlebody", "article-body", "article_content", "article-content",
         "article_view", "article-view-content-div", "article_txt", "story-body",
     )
+    VOID_TAGS = {
+        "area", "base", "br", "col", "embed", "hr", "img", "input",
+        "link", "meta", "param", "source", "track", "wbr",
+    }
 
     def __init__(self):
         super().__init__(convert_charrefs=True)
@@ -287,19 +291,28 @@ class _ArticleBodyParser(HTMLParser):
         self.skip_depth = 0
 
     def handle_starttag(self, tag, attrs):
-        self.depth += 1
+        tag = tag.lower()
+        is_void = tag in self.VOID_TAGS
+        if not is_void:
+            self.depth += 1
         attrs = {str(k).lower(): str(v or "") for k, v in attrs}
         marker = " ".join((attrs.get("id", ""), attrs.get("class", ""), attrs.get("itemprop", ""))).lower()
         if self.target_depth is None and (
-            tag.lower() == "article"
+            tag == "article"
             or attrs.get("itemprop", "").lower() == "articlebody"
             or any(x in marker for x in self.BODY_MARKERS)
         ):
             self.target_depth = self.depth
-        if self.target_depth is not None and tag.lower() in ("nav", "aside", "footer"):
+        if self.target_depth is not None and tag in ("nav", "aside", "footer"):
             self.skip_depth = self.depth
 
+    def handle_startendtag(self, tag, attrs):
+        return
+
     def handle_endtag(self, tag):
+        tag = tag.lower()
+        if tag in self.VOID_TAGS:
+            return
         if self.skip_depth == self.depth:
             self.skip_depth = 0
         if self.target_depth == self.depth:
