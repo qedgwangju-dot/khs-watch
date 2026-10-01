@@ -148,3 +148,5 @@ def test_stage_change_remains_alertable_with_count_context():
     filtered = verified_alert_events(events)
     assert any(e["type"] == "count_change" for e in filtered)
     assert any(e["type"] == "stage_change" for e in filtered)
+
+# conservative-count-only-regression-v1
