@@ -235,14 +235,16 @@ def _stage(text: str) -> str:
         r'appropriat|approved|authorized|funded|배정|확정|승인', text, re.I
     ):
         return 'funding'
-    if AGINCOURT.search(text) and CONTRACT.search(text) and QUANTITY.search(text):
-        return 'agincourt_contract'
-    if (AUTOWAR.search(text) or DAWG.search(text)) and CONTRACT.search(text) and QUANTITY.search(text):
-        return 'autowar_contract'
+    # Production and deployment are stronger operating milestones than the
+    # award language that may appear in the same article, so classify them first.
     if (AUTOWAR.search(text) or AGINCOURT.search(text) or DAWG.search(text)) and PRODUCTION.search(text) and QUANTITY.search(text):
         return 'production'
     if (AUTOWAR.search(text) or AGINCOURT.search(text) or DAWG.search(text) or SOUTHCOM_AWC.search(text)) and DEPLOYMENT.search(text) and QUANTITY.search(text):
         return 'deployment'
+    if AGINCOURT.search(text) and CONTRACT.search(text) and QUANTITY.search(text):
+        return 'agincourt_contract'
+    if (AUTOWAR.search(text) or DAWG.search(text)) and CONTRACT.search(text) and QUANTITY.search(text):
+        return 'autowar_contract'
     if BASELINE.search(text):
         return 'baseline'
     return 'monitor'
