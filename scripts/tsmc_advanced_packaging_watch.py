@@ -365,7 +365,7 @@ def article_text(event):
         body = clean(" ".join(parser.parts))
     except Exception:
         body = ""
-    return body[:60000] if len(body) >= 80 else ""
+    return body[:60000] if len(body) >= 40 else ""
 
 
 def strong_current_status(text):
