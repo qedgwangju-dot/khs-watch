@@ -1003,6 +1003,12 @@ def score(item: dict) -> int:
 def category(text: str, group: str) -> str:
     if group == 'tesla' and _is_tesla_supply_text(text):
         stage = _stage(text)
+        if stage == 'ai_memory_baseline':
+            return 'Optimus AI5·AI6 메모리 사양 기준선'
+        if stage == 'ai_memory_spec_change':
+            return 'Optimus AI5·AI6 온디바이스 메모리·대역폭 사양 변경'
+        if stage == 'ai_memory_vendor':
+            return 'Optimus AI5·AI6 메모리 공급사·물량 확정'
         if stage == 'berlin_field_training':
             return 'Optimus Giga Berlin · 현장 데이터 수집·파일럿 배치'
         if stage == 'actual_weekly_production':
@@ -1041,6 +1047,15 @@ def category(text: str, group: str) -> str:
 
 
 def meaning(cat: str) -> str:
+    if cat == 'Optimus AI5·AI6 메모리 사양 기준선':
+        return ('2026년 10월 1일 머스크가 AI5를 72GB LP5, AI6를 144GB LP6로 조정했고 Optimus 양산 물량 확보·원가 절감을 이유로 제시한 현재 기준선입니다. '
+                '대역폭은 유지한다고 밝혔으므로 이후에는 용량·메모리 세대·대역폭·공급사·대당 칩 수 변화가 새 이벤트입니다.')
+    if cat == 'Optimus AI5·AI6 온디바이스 메모리·대역폭 사양 변경':
+        return ('Optimus의 로컬 추론 하드웨어가 필요로 하는 메모리 콘텐츠와 원가·공급량을 직접 바꾸는 사양 변화입니다. '
+                'GB/SoC, LPDDR 세대, 대역폭, 대당 AI칩 수와 로봇 생산량을 곱해 총 메모리 비트 수요를 다시 계산합니다.')
+    if cat == 'Optimus AI5·AI6 메모리 공급사·물량 확정':
+        return ('메모리 사양이 실제 Samsung·SK hynix·Micron 등 공급사 선정·계약 물량으로 연결되는 직접 공급망 신호입니다. '
+                '공급사 실명, 용량·세대, 계약기간·수량, 양산일과 실제 출하를 분리해 확인합니다.')
     if cat == 'Optimus Giga Berlin · 현장 데이터 수집·파일럿 배치':
         return ('프리몬트 중심의 Optimus Academy가 유럽 공장 노동자의 실제 작업 동작 데이터까지 넓어지는 지리적 학습 확장 신호입니다. '
                 '베를린에서는 작업자 카메라 데이터 수집이 확인됐고, 로봇 자체의 4680 배터리 셀·내부 물류 파일럿 운용은 보도 단계이므로 둘을 분리해 추적합니다. '
@@ -1098,6 +1113,14 @@ def meaning(cat: str) -> str:
 
 
 def risk(cat: str) -> str:
+    if cat == 'Optimus AI5·AI6 메모리 사양 기준선':
+        return ('AI5 72GB는 이전 계획 대비 절반이라는 발언이 명확하지만, AI6의 "1/3" 표현은 원문 직접 열람이 어려워 "3분의 1로 축소"인지 "3분의 1만큼 축소"인지 단정하지 않습니다. '
+                '현재 확정적으로 잠그는 값은 AI5 72GB LP5, AI6 144GB LP6, 대역폭 유지라는 발언입니다.')
+    if cat == 'Optimus AI5·AI6 온디바이스 메모리·대역폭 사양 변경':
+        return ('메모리 용량 축소는 원가·공급량에는 유리하지만 장문 컨텍스트, 멀티모달 버퍼, 다중 모델 동시실행에서 용량 병목이 뒤늦게 나타날 수 있습니다. '
+                '대역폭 유지가 실제 실리콘·메모리 구성에서도 달성되는지, 작업 성공률·지연·전력과 메모리 부족 오류를 확인합니다.')
+    if cat == 'Optimus AI5·AI6 메모리 공급사·물량 확정':
+        return ('공급사 보도나 샘플 공급은 양산 독점계약과 다릅니다. 멀티벤더 여부, 실제 비트 물량, 평균판매단가와 로봇 생산량을 확인하기 전까지 특정 메모리사의 확정 수혜로 승격하지 않습니다.')
     if cat == 'Optimus Giga Berlin · 현장 데이터 수집·파일럿 배치':
         return ('현장에 Optimus가 전시·포착됐다는 사실과 실제 자율 생산공정 투입은 다른 단계입니다. '
                 'Handelsblatt 계열 보도로 작업자 카메라 기반 데이터 수집은 강하게 확인되지만, 4680 셀 라인·내부 물류에서 Gen 2가 실제 작업한다는 세부는 Tesla의 공개 보도자료로 독립 확인되지 않았습니다. '
@@ -1146,6 +1169,8 @@ def risk(cat: str) -> str:
 
 def verification(item: dict, group: str, text: str) -> str:
     if group == 'tesla' and _is_tesla_supply_text(text):
+        if _stage(text) in {'ai_memory_baseline','ai_memory_spec_change','ai_memory_vendor'} and item.get('source') == MUSK_X_SOURCE:
+            return '일론 머스크 X 1차 발언 · Tesla 공식 제품사양/공급계약 후속 확인'
         if OFFICIAL_CONFIRM.search(text) or item.get('source') == 'Tesla':
             return '테슬라 공식·1차 자료'
         if _stage(text) == 'berlin_field_training':
