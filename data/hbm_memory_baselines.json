@@ -533,6 +533,109 @@
       "source": "Reuters",
       "scope": "taylor_schedule_not_customer_2nm_revenue",
       "excerpt": "Reuters: Taylor 첫 공장 양산은 2027년 예정이며 여러 주요 기술기업과 2나노 수주를 협의 중. 특정 고객 계약을 2나노 양산으로 임의 연결하지 않음."
+    },
+    {
+      "key": "glass_panel_standard|industry|510x515",
+      "axis": "glass_panel_standard",
+      "value": {
+        "width_mm": 510,
+        "height_mm": 515,
+        "supplier_count": 4,
+        "suppliers": [
+          "AGC",
+          "Corning",
+          "NEG",
+          "SCHOTT"
+        ],
+        "tsmc_status": "reported_candidate"
+      },
+      "unit": "mm,count,stage",
+      "period": "current",
+      "as_of": "2026-10-01",
+      "evidence": "reported",
+      "source_url": "https://www.digitimes.com/news/a20261001PD230/ai-chip-tsmc-corning-tgv-agc.html",
+      "source_title": "DIGITIMES: Corning·AGC·NEG·SCHOTT, 차세대 유리기판 510×515mm 규격 수렴",
+      "source": "DIGITIMES",
+      "scope": "industry_convergence_not_tsmc_official_standard",
+      "excerpt": "4개 유리사가 510×515mm에 수렴. DIGITIMES는 TSMC post-2030 glass substrate 플랫폼 후보 규격으로 해석하나 TSMC 공식 채택은 아님.",
+      "official_vendor_sources": [
+        "https://www.corning.com/worldwide/en/products/advanced-optics/product-materials/PrecisionGlassSolutions/advanced-packaging-carriers.html",
+        "https://www.agc.com/en/products/electoric/detail/tgv.html",
+        "https://www.neg.co.jp/en/products/inorganic-core-substrate/index.html",
+        "https://www.schott.com/en-us/products/glass-panels-p1001142/technical-details"
+      ]
+    },
+    {
+      "key": "glass_tsmc_roadmap|tsmc|CoPoS_GlassCore",
+      "axis": "glass_tsmc_roadmap",
+      "value": {
+        "copos_width_mm": 310,
+        "copos_height_mm": 310,
+        "validation_year": 2026,
+        "pilot_year": 2027,
+        "mass_production_year": 2028,
+        "mass_production_half": "H2",
+        "glass_core_commercial_after_year": 2030
+      },
+      "unit": "mm,year,stage",
+      "period": "roadmap",
+      "as_of": "2026-06-17",
+      "evidence": "research",
+      "source_url": "https://www.trendforce.com/presscenter/news/20260617-13107.html",
+      "source_title": "TrendForce: TSMC CoPoS 310×310mm 검증→시험생산→양산 로드맵",
+      "source": "TrendForce",
+      "scope": "trendforce_roadmap_current_copos_310_not_510x515_confirmation",
+      "excerpt": "TrendForce는 CoPoS 310×310mm를 2026 장비·소재 검증, 2027 시험생산, 2028년 하반기 양산으로 보고 Glass Core 상업규모는 2030년 이후로 전망."
+    },
+    {
+      "key": "glass_panel_yield|jntc|current",
+      "axis": "glass_panel_yield",
+      "value": {
+        "yield_pct": 94
+      },
+      "unit": "pct",
+      "period": "current",
+      "as_of": "2026-07-13",
+      "evidence": "reported",
+      "source_url": "https://en.edaily.co.kr/news/eda202607135464/",
+      "source_title": "JNTC, 2.0mm TGV 유리기판 양산 수율 약 94% 주장",
+      "source": "이데일리·JNTC 회사 설명",
+      "scope": "reported_company_claim_mass_production_yield_not_independent_audit",
+      "excerpt": "JNTC는 2.0mm TGV 유리기판 양산 수율 약 94%를 확보했다고 설명. 독립 검증 수율이 아닌 회사 주장 기반."
+    },
+    {
+      "key": "glass_hvm_stage|jntc|current",
+      "axis": "glass_hvm_stage",
+      "value": {
+        "stage": "customer_evaluation",
+        "mass_production_target_year": 2027
+      },
+      "unit": "stage,year",
+      "period": "current",
+      "as_of": "2026-07-13",
+      "evidence": "reported",
+      "source_url": "https://en.edaily.co.kr/news/eda202607135464/",
+      "source_title": "JNTC, 글로벌 고객 평가 진행·2027년 TGV 유리기판 양산 목표",
+      "source": "이데일리·JNTC 회사 설명",
+      "scope": "stage_transition_customer_evaluation_to_hvm",
+      "excerpt": "글로벌 반도체·패키징 고객 평가를 진행 중이며 2027년 양산 개시를 목표. 현재 단계는 고객 평가로 저장."
+    },
+    {
+      "key": "glass_hvm_stage|philoptics|current",
+      "axis": "glass_hvm_stage",
+      "value": {
+        "stage": "po_pending",
+        "mass_production_target_year": null
+      },
+      "unit": "stage,year",
+      "period": "current",
+      "as_of": "2026-09-07",
+      "evidence": "reported",
+      "source_url": "https://www.stockhub.kr/en/news/news_1698c13180d4",
+      "source_title": "필옵틱스 510×515mm·2.0mm TGV 검증 완료, 해외 고객 최종 발주 절차",
+      "source": "이데일리 재전재",
+      "scope": "equipment_customer_validation_po_pending_not_hvm",
+      "excerpt": "510×515mm·2.0mm TGV에서 100만 홀 0ppm을 주장하고 복수 글로벌 고객 검증 완료, 핵심 해외 고객 최종 발주 절차 진행. 전체 패널 수율과 0ppm 홀 불량률은 별도."
     }
   ],
   "user_capture": {
