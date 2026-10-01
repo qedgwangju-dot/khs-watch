@@ -458,8 +458,14 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
 
     treasury_evidence = bool(watcher.squeeze_evidence(snapshot, previous))
     repo_ok, repo_worse = audited._repo_not_worse(snapshot, previous)
+    data_fresh, stale_reasons = audited._data_freshness(snapshot)
     y = snapshot.get("yield10") or {}
-    treasury_confirmed = treasury_evidence and repo_ok and float(y.get("z20") or 0) <= -1.0
+    treasury_confirmed = (
+        treasury_evidence
+        and repo_ok
+        and data_fresh
+        and float(y.get("z20") or 0) <= -1.0
+    )
 
     # Fuel must be present in the current observation. Do not latch an old
     # extreme indefinitely after positioning has normalised.
@@ -471,6 +477,9 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         treasury_fuel
         and nq_fuel
         and repo_ok
+        and data_fresh
+        and nq_history_ready
+        and nq_history_fresh
         and (treasury_price_up or nq_price_up)
     )
 
@@ -509,6 +518,8 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         "nq_confirmed": nq_confirmed,
         "repo_ok": repo_ok,
         "repo_worse": repo_worse,
+        "data_fresh": data_fresh,
+        "stale_reasons": stale_reasons,
     }
 
 
@@ -570,7 +581,7 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, compact: bool = 
         f"총숏 {_nq_notional_krw(nq, price, fx, 'leveraged_short')}"
         " (NQ 지수×$20×계약수×환율, 실제 증거금·손익 아님)\n"
         "• 확정은 ZN 공식 같은 거래일 가격↑·OI↓ + NQ 공식 같은 거래일 가격↑·OI↓ + CFTC NQ 순숏 축소가 함께 붙을 때만 합니다.\n"
-        "※ CFTC 포지션은 주간 후행자료입니다. CME 일일 가격·OI는 같은 거래일 자료로만 묶고, 최신 완료 미국 거래일과 불일치하면 자동으로 확정 판정을 막습니다.\n"
+        "※ CFTC 포지션은 주간 후행자료입니다. CME 일일 가격·OI는 같은 거래일 자료로만 묶고, 최신 완료 미국 거래일 또는 CFTC·재무부·NY Fed 신선도 기준을 통과하지 못하면 자동으로 확정 판정을 막습니다.\n"
     )
 
 
