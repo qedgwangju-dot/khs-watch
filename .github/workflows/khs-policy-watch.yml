@@ -91,7 +91,7 @@ jobs:
           echo "khs_policy_schedule_enable=confirmed"
 
   watch:
-    if: github.event_name != 'push'
+    if: github.event_name != 'push' || contains(github.event.head_commit.message, '[verify-upper-c-band-route]')
     runs-on: ubuntu-latest
     env:
       CREATE_GITHUB_ISSUE: "true"
@@ -113,7 +113,7 @@ jobs:
       KHS_TELEGRAM_DEDUPE_HOURS: "48"
       SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'KHS-policy-watch contact=please-set-secret' }}
       TELEGRAM_TEST: ${{ github.event.inputs.telegram_test || 'false' }}
-      TELEGRAM_DRY_RUN: ${{ github.event_name == 'push' && 'true' || github.event.inputs.telegram_dry_run || 'false' }}
+      TELEGRAM_DRY_RUN: ${{ contains(github.event.head_commit.message, '[verify-upper-c-band-route]') && 'false' || github.event_name == 'push' && 'true' || github.event.inputs.telegram_dry_run || 'false' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -554,7 +554,7 @@ jobs:
               if route in {"westinghouse", "ai_force", "spectrum"}:
                   canonical = f"{route}|{canonical}"
               digest = hashlib.sha256(canonical_message(title, body).encode("utf-8")).hexdigest()[:20]
-              if route in {"westinghouse", "ai_force"}:
+              if route in {"westinghouse", "ai_force", "spectrum"}:
                   digest = hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:20]
               sent_at = parse_utc(str(sent_state.get(digest, {}).get("sent_at_utc") or ""))
               if sent_at and now_utc - sent_at < dt.timedelta(hours=dedupe_hours) and not title.endswith("Telegram test"):
