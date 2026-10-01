@@ -232,7 +232,8 @@ def fetch_treasury_10y_rows(real: bool = False) -> list[tuple[str, float]]:
     out: list[tuple[str, float]] = []
     for entry in re.findall(r"<entry>(.*?)</entry>", raw, flags=re.I | re.S):
         dm = re.search(r"<d:NEW_DATE[^>]*>([^<]+)</d:NEW_DATE>", entry, flags=re.I)
-        ym = re.search(r"<d:BC_10YEAR[^>]*>([^<]+)</d:BC_10YEAR>", entry, flags=re.I)
+        field = "TC_10YEAR" if real else "BC_10YEAR"
+        ym = re.search(rf"<d:{field}[^>]*>([^<]+)</d:{field}>", entry, flags=re.I)
         if not dm or not ym:
             continue
         try:
