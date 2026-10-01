@@ -469,7 +469,7 @@ def deduped_main() -> int:
         f"- 자료 신선도: {'확인' if data_fresh else '미확인 — ' + ', '.join(stale_reasons)}\n"
         f"- 복합 스퀴즈: {'확인' if composite_confirmed else '미확인'} / 단계 {stage}\n"
         f"- OI 범위 보정: {', '.join(oi_fixes) if oi_fixes else '없음'}\n"
-        f"- 텔레그램: {'전송' if should_alert else '미전송'}\n"
+        f"- 기본 국채 CTA 알림: {'전송 대상' if should_alert else '발송 조건 미충족'}\n"
         f"- 억제된 단독 신호: {', '.join(suppressed) if suppressed else '없음'}\n",
         encoding="utf-8",
     )
