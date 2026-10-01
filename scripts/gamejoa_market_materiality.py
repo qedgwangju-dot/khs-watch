@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 2
+VERSION = 3
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should)\b", re.I,
@@ -49,6 +49,9 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("fx", r"환율|약달러|강달러|달러화|원[·/]달러|달러[·/]원|\bndf\b|exchange rate", r"환율|달러화|달러[·/]원|원[·/]달러|\bndf\b|exchange rate|dollar"),
     ("breadth", r"(?:상승|하락)\s*종목|순환매|쏠림", r"(?:오른|내린|상승|하락)\s*종목|순환매|쏠림|순매수|순매도|자금.{0,12}이동"),
     ("research_spending", r"r&d|연구개발", r"r&d|연구개발"),
+    ("industrial_architecture", r"hvdc|\bvdc\b|\bcpo\b|광트랜시버|광\s*인터커넥트|파운데이션\s*모델|foundation model", r"hvdc|\bvdc\b|\bcpo\b|광트랜시버|광\s*인터커넥트|파운데이션\s*모델|foundation model"),
+    ("science_milestone", r"극저온|양자|효소|cryogenic|quantum|enzyme", r"극저온|양자|효소|cryogenic|quantum|enzyme"),
+    ("space_execution", r"위성|궤도|발사한도|발사계약|환경심사|환경영향평가|주파수|satellite|orbital|launch contract|spectrum", r"위성|궤도|발사|환경심사|환경영향평가|주파수|satellite|orbital|launch|spectrum"),
     ("fund_result", r"펀드.{0,20}(?:손실|청산|만기|수익)|(?:손실|청산).{0,20}펀드", r"손실|청산|수익률|loss|liquidat|returns"),
     ("memory", r"hbm|hbf|메모리|낸드|dram", r"hbm|hbf|메모리|낸드|dram"),
     ("earnings", r"매출|영업이익|순이익|실적|가이던스|earnings|guidance", r"매출|영업이익|순이익|실적|가이던스|revenue|profit|earnings|guidance"),
@@ -137,7 +140,7 @@ RULES = (
      r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)",
      r"추진|예정|목표|신청|승인|상장했다|연기|철회|마케팅|등록|plan|aim|file|approv|delay|withdraw|market"),
     ("commercial_order", ("earnings", "timeline"),
-     r"수주|발주|공급계약|공급\s*계약|납품\s*계약|purchase order|supply contract|procurement contract",
+     r"수주|발주|공급계약|공급\s*계약|납품\s*계약|발사\s*계약|purchase order|supply contract|procurement contract|launch (?:contract|agreement)",
      r"체결|확정|수주|발주|갱신|취소|파기|해지|협상|추진|서명|sign|secure|award|agree|cancel|negotiat"),
     ("selling_price_or_cost", ("earnings",),
      r"판매가격|판매\s*가격|판가|단가|원가|평균판매가격|\basp\b|selling price|unit price|input cost",
@@ -158,6 +161,8 @@ RULES = (
      r"매수|매입|취득|매도|처분|buy|purchas|sell|disclos"),
     ("ownership_transfer", ("flows", "timeline"),
      r"주식|지분|shares|stake", r"기부|이전|증여|donat|transfer"),
+    ("corporate_transaction", ("earnings", "timeline"),
+     r"회사|기업|사업|법인|지분|company|business|subsidiar|stake", r"인수|합병|acquir|merger"),
     ("institutional_capital_access", ("earnings", "timeline"),
      r"국민연금|연기금|벤처캐피털|\bvc\b|pension fund|venture capital",
      r"투자\s*기회.{0,8}(?:확대|넓)|출자|투자협력|투자 협력|funding|investment opportunities|commitment"),
@@ -167,12 +172,18 @@ RULES = (
     ("model_operating_specification", ("earnings", "timeline"),
      r"모델|llm|ai model|language model|솔라 미니|gpu|npu",
      r"(?:gpu|npu|가속기)\s*(?:\d+|한|두|세)\s*(?:장|개)|\d+\s*(?:장|개)의?\s*(?:gpu|npu)|(?:메모리|전력|지연시간|추론비용|운용비용).{0,15}\d+(?:\.\d+)?\s*(?:%|gb|w|배)|\d+(?:\.\d+)?\s*(?:배|%)\s*(?:빠르|절감|줄|감소)"),
+    ("industrial_architecture_adoption", ("earnings", "timeline"),
+     r"hvdc|\bvdc\b|\bcpo\b|광트랜시버|광\s*인터커넥트|파운데이션\s*모델|foundation model|co.packaged optics",
+     r"규격|채택|통합|전환|도입|standard|specification|adopt|integrat|deploy"),
     ("rates_fx_or_macro", ("discount_rate",),
      r"기준\s*금리|국채\s*금리|국고채|모기지|주담대|주택담보대출|물가|인플레이션|고용|환율|달러화|유동성|차입|cpi|pce|payroll|mortgage|interest rate|treasury|inflation|exchange rate|borrowing",
      r"인상|인하|동결|상승|하락|둔화|급등|급락|상회|하회|발표|증가|감소|결정|약세|강세|최고|치솟|cut|hike|hold|rise|fall|miss|beat|announc|estimat"),
     ("policy_scope_or_stage", ("timeline",),
-     r"관세|수출통제|수출금지|수입금지|수입 금지|수입 제한|수입제한|제재|보조금|지원금|예탁금|규제|인허가|조례|tariff|export control|import ban|sanction|subsid|licens|\bban(?:s|ned)?\b",
-     r"제안|검토|추진|인상|인하|완화|강화|시행|발효|금지|제한|허가|승인|제정|철회|의견수렴|입법예고|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider"),
+     r"관세|수출통제|수출금지|수입금지|수입 금지|수입 제한|수입제한|제재|보조금|지원금|예탁금|규제|인허가|조례|환경심사|환경영향평가|주파수|tariff|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
+     r"제안|검토|추진|인상|인하|완화|강화|시행|발효|금지|제한|허가|승인|제정|철회|의견수렴|입법예고|면제|배정|의결|착수|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
+    ("public_program_cost_study", ("timeline",),
+     r"방위사업|국방예산|방위예산|조달예산|missile defense|defense budget|procurement budget",
+     r"추산|심의|추정|예산안|cost estimate|cost study|budget proposal"),
     ("market_price_or_flow", (),
      r"주가|증시|코스피|코스닥|etf|etn|순매수|순매도|거래대금|유입|유출|수익률|주식|shares|stocks|equities|inflows|outflows",
      r"급등|급락|상승|하락|순매수|순매도|유입|유출|이동|상장|편입|편출|증가|감소|surge|slump|rise|fall|inflows|outflows|list|rebalance"),
@@ -180,8 +191,12 @@ RULES = (
      r"공장|생산|설비|공급|수요|재고|수율|리드타임|부족|품귀|항만|물류|운송|factory|production|supply|demand|inventory|lead time|port|freight",
      r"증설|착공|가동|증가|감소|중단|차질|부족|품귀|지연|연장|매각|검토|확대|축소|상용화|expand|start|halt|disrupt|shortage|delay|consider|launch"),
     ("technology_or_clinical_stage", ("earnings", "timeline"),
-     r"메모리|반도체|hbm|hbf|cxl|칩|공정|로봇|신약|임상|fda|의약품|기술|memory|semiconductor|chip|clinical|drug|technology",
+     r"메모리|반도체|hbm|hbf|cxl|칩|공정|로봇|신약|임상|fda|의약품|기술|양자|극저온|memory|semiconductor|chip|clinical|drug|technology|quantum|cryogenic",
      r"양산|상용화|인증|승인|허가|임상 결과|임상결과|공급|도입|검증|성능|대역폭|수율|전력효율|결과 발표|생산|production|commercial|certif|approv|deploy|validat|performance|bandwidth|yield"),
+    ("space_execution_stage", ("timeline",),
+     r"위성|궤도|satellite|orbital", r"시험|검증|발사.{0,15}(?:완료|성공)|prototype|orbital test|launch.{0,20}(?:complet|success)"),
+    ("biology_research_discovery", ("timeline",),
+     r"효소|단백질|enzyme|protein", r"발견|규명|discover|characteriz"),
     ("energy_geopolitics_or_supply_risk", ("earnings", "discount_rate"),
      r"원유|유가|브렌트|천연가스|운임|호르무즈|홍해|이란|이스라엘|우크라이나|러시아|구리|리튬|\boil\b|brent|wti|\bgas\b|hormuz|iran|ukraine|russia|copper|lithium",
      r"공격|공습|피격|발사체|화재|휴전|협상|통항|봉쇄|제재|상승|하락|급등|급락|차질|감산|증산|합의|경고|명령|배치|발표|attack|strike|ceasefire|talks|blockade|sanction|rise|fall|disrupt|output|warn|deploy|announc"),
@@ -193,7 +208,7 @@ RULES = (
      r"생산|공장|운송|항만|비용|인상|교섭|협상|주식|지급|중단|감축|production|factory|port|cost|talks|shares|halt|cut"),
     ("customer_discussions", ("earnings", "timeline"),
      r"공급|고객|구매|생산|공동개발|공동 개발|인증|hbm|파운드리|자율주행|데이터센터|ai.{0,4}(?:반도체|인프라)|supply|customer|procurement|co-develop|foundry|autonomous|data center",
-     r"협상|논의|검토|회동|협력|합의|negotiat|discuss|consider|meeting|collaborat|agreement"),
+     r"협상|논의|검토|회동|협력|합의|협약|negotiat|discuss|consider|meeting|collaborat|agreement"),
 )
 COMPILED_RULES = tuple(
     (kind, axes, re.compile(subject, re.I), re.compile(action, re.I))
@@ -249,7 +264,15 @@ def assess(title: str, body: str) -> dict:
             ):
                 continue
             if kind == "technology_or_clinical_stage" and not re.search(
-                r"양산|상용화|인증|승인|허가|임상|공급|도입|검증|성능|대역폭|수율|전력효율|production|commercial|approv|deploy|performance|bandwidth|yield", sentence, re.I,
+                r"양산|상용화|인증|승인|허가|임상|공급|도입|검증|성능|대역폭|수율|전력효율|production|commercial|approv|deploy|validat|performance|bandwidth|yield", sentence, re.I,
+            ):
+                continue
+            if kind == "industrial_architecture_adoption" and not re.search(
+                r"데이터센터|AI\s*클러스터|전력\s*(?:분배|변환)|휴머노이드|로봇|data center|AI cluster|power (?:distribution|conversion)|humanoid|robot", sentence, re.I,
+            ):
+                continue
+            if kind == "biology_research_discovery" and not re.search(
+                r"실험|검증|연구\s*결과|논문|laboratory|experiment|validat|research results|paper", sentence, re.I,
             ):
                 continue
             if kind == "model_operating_specification" and not re.search(
@@ -261,7 +284,7 @@ def assess(title: str, body: str) -> dict:
             if kind == "research_spending_change" and not QUANTITY.search(sentence):
                 continue
             early = bool(EARLY_SIGNAL.search(sentence)) or kind in {"customer_discussions", "institutional_capital_access"}
-            priority = 2 if early or kind in {"technology_or_clinical_stage", "market_infrastructure", "model_operating_specification"} else 3
+            priority = 2 if early or kind in {"technology_or_clinical_stage", "market_infrastructure", "model_operating_specification", "industrial_architecture_adoption", "space_execution_stage", "biology_research_discovery", "public_program_cost_study"} else 3
             if kind == "capital_listing_stage":
                 priority = 3
             if kind in {"earnings_or_guidance", "market_price_or_flow"} and not QUANTITY.search(sentence):

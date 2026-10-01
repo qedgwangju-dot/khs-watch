@@ -57,6 +57,31 @@ DROP = (
     ("Bank unveils brand award", "The bank announced its charity brand award."),
 )
 
+# Synthetic source sentences exercise every event class in the user's industry
+# digest. They are selection fixtures, not verification of that digest's claims.
+INDUSTRY_DRIVER_CASES = (
+    ("robot_foundation_platform", "로봇 모델기업, 외부 하드웨어와 파운데이션 모델 통합", "로봇 모델기업은 외부 휴머노이드 하드웨어에 파운데이션 모델을 통합하는 공동개발 파트너십을 발표했다."),
+    ("satellite_environmental_review", "위성 인허가 환경심사 면제", "통신당국은 위성 인허가의 환경심사를 면제하는 규제 개편을 의결했다."),
+    ("data_center_power_architecture", "AI 데이터센터, 800V HVDC 규격 채택", "데이터센터 사업자는 전력 분배를 800V HVDC 아키텍처로 전환하는 규격을 채택했다고 발표했다."),
+    ("frontier_model_efficiency", "AI 모델기업, 추론비용 절감 모델 공개", "AI 모델기업은 추론비용을 30% 줄인 새 모델의 성능 검증 결과를 공개했다."),
+    ("orbital_compute_test", "궤도 AI 가속기 시험 위성 발사 추진", "우주기업은 궤도 AI 가속기의 방사선 내성과 열관리를 검증하기 위한 시험 위성 발사를 추진한다."),
+    ("ai_customer_financing", "AI 고객사 장비 리스 자금조달 협상", "인프라기업은 고객의 AI 가속기 리스를 지원하는 100억원 대출 자금조달 계약을 협상 중이다."),
+    ("ipo_timing", "AI 기업, 11월 기업공개 추진", "AI 기업은 이르면 11월 미국 증시 기업공개를 추진한다."),
+    ("consumer_earnings_restructuring", "소비재기업 매출 감소·비용 구조조정", "소비재기업은 분기 매출이 4% 감소했다고 발표하고 공급망 비용을 줄이는 조직 감원을 추진한다."),
+    ("memory_customer_commitments", "메모리기업, 장기계약 잔여수주 확대", "메모리기업은 장기 공급계약의 잔여수주가 증가했다고 발표하고 내년 설비투자 확대를 결정했다."),
+    ("power_compute_joint_development", "발전기업·서버기업, AI 데이터센터 공동개발 협약", "발전기업과 서버기업은 400MW AI 데이터센터 공동개발 협약을 맺고 2028년 단계 가동을 계획한다."),
+    ("inference_optimization_acquisition", "클라우드기업, 추론 최적화 회사 인수", "클라우드기업은 GPU 유휴시간과 추론비용을 줄이는 기술을 보유한 회사를 인수했다고 발표했다."),
+    ("cryogenic_quantum_validation", "양자기업, 극저온 인터커넥트 검증", "양자기업은 20mK 환경에서 극저온 인터커넥트의 채널 격리도 100dB 이상과 열 순환 안정성을 검증했다고 발표했다."),
+    ("compound_substrate_cycle", "SiC 기판 공급 부족 전망", "산업 리서치는 AI 전력변환용 SiC 기판 공급 부족과 리드타임 연장을 전망했다."),
+    ("optical_architecture_adoption", "AI 클러스터, 800G·1.6T 광트랜시버·CPO 도입", "통신장비기업은 AI 클러스터에 800G·1.6T 광트랜시버와 CPO를 도입하는 규격을 채택했다고 발표했다."),
+    ("space_compute_execution", "우주기업, 궤도컴퓨팅 시험 위성 발사 성공", "우주기업은 궤도컴퓨팅 시험 탑재체를 실은 위성 발사 임무를 완료했다고 발표했다."),
+    ("commercial_launch_order", "우주기업, 고객과 위성 20회 발사계약 체결", "우주기업은 고객과 위성 20회 발사계약을 체결했다고 발표했다."),
+    ("launch_license_review", "연간 발사한도 확대 환경영향평가 착수", "항공당국은 연간 발사한도를 12회에서 50회로 확대하는 허가를 검토하기 위해 환경영향평가에 착수했다."),
+    ("space_external_financing", "우주기업, 외부 자금조달 검토", "우주기업은 위성통신 사업을 위한 외부 자금조달 계약을 검토한다고 발표했다."),
+    ("defense_cost_scope", "방위사업 예산 추산 비교", "의회는 방위사업 예산의 20년 총비용 추산을 공개하고 국방부의 10년 추산과 산정 범위를 비교했다."),
+    ("ai_biology_discovery", "AI 연구진, 신규 효소 시스템 실험 검증", "AI 연구진은 DNA 데이터에서 신규 효소 시스템을 발견하고 실험실 검증 결과를 공개했다. 기능 규명은 진행 중이다."),
+)
+
 
 def alert(title, body):
     return {"news": title, "source_title": title, "original_news": title,
@@ -67,6 +92,83 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_industry_driver_event_classes_have_source_evidence(self):
+        self.assertEqual(len(INDUSTRY_DRIVER_CASES), 20)
+        for name, title, body in INDUSTRY_DRIVER_CASES:
+            with self.subTest(name=name):
+                audit = materiality.assess(title, body)
+                self.assertEqual(audit["disposition"], "keep", audit)
+                self.assertGreaterEqual(audit["priority"], 2)
+                self.assertTrue(audit["evidence"])
+                self.assertNotIn("flows", audit["axes"] if name != "ipo_timing" else [])
+                with patch.object(radar.base, "kst_now", return_value=NOW):
+                    item = alert(title, body)
+                    selected = radar.quality_display_alerts([item], 1)
+                self.assertEqual(len(selected), 1, item.get("_exclusion_reason"))
+
+    def test_industry_topics_without_a_changed_source_fact_are_not_evidence(self):
+        for title, body in (
+            ("기업, 우주·양자 미래 비전 공개", "기업은 우주와 양자 산업의 미래를 응원하며 비전을 공유했다."),
+            ("기업, CPO·HVDC 혁신 협력 강화", "기업은 CPO와 HVDC 생태계의 혁신 비전을 공유하며 협력을 강화했다."),
+            ("AI 기업, 효소 기술 협력 강화", "AI 기업은 효소와 단백질 기술의 미래 혁신 비전을 공유했다."),
+        ):
+            self.assertEqual(materiality.assess(title, body)["disposition"], "exclude")
+
+    def test_industry_driver_classes_survive_production_candidate_classification(self):
+        for name, title, body in INDUSTRY_DRIVER_CASES:
+            with self.subTest(name=name):
+                item = production.contract.strict.classify({
+                    "title": title, "summary": body, "source_body": body, "source_abstract": body,
+                    "body_verified": True, "layer": "trusted", "publisher": "연합뉴스", "published": NOW,
+                    "link": f"https://www.yna.co.kr/view/industry-driver-{name}",
+                }, NOW)
+                self.assertIsNotNone(item)
+                with patch.object(radar.base, "kst_now", return_value=NOW):
+                    selected = radar.quality_display_alerts([item], 1)
+                self.assertEqual(len(selected), 1, item.get("_exclusion_reason"))
+                core = radar.verified_alert_core(selected[0], selected[0]["news"])
+                self.assertTrue(radar.core_sentence_is_complete(core), core)
+                self.assertLessEqual(len(core), 100)
+
+    def test_industry_discovery_queries_reach_the_active_collector(self):
+        queries = dict(radar.KOREAN_BUSINESS_SEARCH_SOURCES)
+        for name, terms in (
+            ("AI 전력·광통신 아키텍처 채택", ("HVDC", "CPO", "광트랜시버", "SiC")),
+            ("로봇·AI 모델 통합·운용비용 변화", ("휴머노이드", "통합", "추론비용", "인수")),
+            ("위성·궤도컴퓨팅 인허가·상업 발사계약", ("발사계약", "환경영향평가", "주파수")),
+            ("양자·바이오 AI 실험 검증 이정표", ("극저온", "효소", "검증", "발견")),
+        ):
+            self.assertIn(name, queries)
+            self.assertTrue(all(term in queries[name] for term in terms))
+
+    def test_industry_early_stages_are_not_upgraded_to_commercial_execution(self):
+        cases = {name: (title, body) for name, title, body in INDUSTRY_DRIVER_CASES}
+        for name, expected in (
+            ("orbital_compute_test", ("시험", "추진")),
+            ("launch_license_review", ("검토", "환경영향평가")),
+            ("ai_customer_financing", ("협상",)),
+            ("ai_biology_discovery", ("발견", "검증")),
+        ):
+            title, body = cases[name]
+            item = production.contract.strict.classify({
+                "title": title, "summary": body, "source_body": body, "source_abstract": body,
+                "body_verified": True, "layer": "trusted", "publisher": "연합뉴스", "published": NOW,
+                "link": f"https://www.yna.co.kr/view/industry-stage-{name}",
+            }, NOW)
+            core = radar.verified_alert_core(item, title)
+            self.assertTrue(all(term in core for term in expected), core)
+            for invented in ("상업 가동", "확정 수주", "품목허가"):
+                self.assertNotIn(invented, core)
+        self.assertEqual(materiality.assess(*cases["ai_biology_discovery"])["axes"], ["timeline"])
+        self.assertEqual(materiality.assess(*cases["defense_cost_scope"])["axes"], ["timeline"])
+
+    def test_industry_coverage_does_not_bypass_source_body_verification(self):
+        for name, title, body in INDUSTRY_DRIVER_CASES:
+            item = {**alert(title, body), "body_verified": False}
+            self.assertEqual(radar.verified_materiality_axes(item), [], name)
+            with patch.object(radar.base, "kst_now", return_value=NOW):
+                self.assertEqual(radar.quality_display_alerts([item], 1), [], name)
+
     def test_preopen_specific_fact_baseline_is_preserved_in_live_selection(self):
         cases = (
             ("AI 인프라 기업, 최대 420억달러 금융지원 협상", "AI 인프라 기업은 고객의 데이터센터 투자를 지원하기 위해 최대 420억달러 대출 자금조달 계약을 검토한다."),

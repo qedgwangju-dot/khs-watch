@@ -24,6 +24,9 @@ import gamejoa_market_materiality as market_materiality
 
 telegram = contract.telegram
 base = contract.base
+MATERIALITY_IMPACT_NAMES = {
+    "earnings": "돈 버는 능력", "discount_rate": "할인율", "flows": "수급", "timeline": "시간표",
+}
 
 BIOTECH_SECTOR = "바이오/FDA"
 BIOTECH_QUERY = (
@@ -6247,6 +6250,15 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
     if any(term in title.lower() for term in KOREAN_BUSINESS_MARKET_RECAP_TERMS):
         return None
 
+    # Source-backed changes must survive the legacy headline vocabulary gate.
+    source_audit = market_materiality.assess(title, article_summary_body(body))
+    if row.get("body_verified") and source_audit["disposition"] == "keep" and source_audit["priority"] >= 2:
+        impacts = [MATERIALITY_IMPACT_NAMES[axis] for axis in source_audit["axes"] if axis in MATERIALITY_IMPACT_NAMES]
+        alert = base_korean_business_alert(
+            row, now, score=100 if source_audit["priority"] >= 3 else 90, impacts=impacts,
+        )
+        return apply_generic_korean_business_profile(alert, row, now)
+
     title_text = title.lower()
     title_material_terms = [
         term for term in KOREAN_BUSINESS_MATERIAL_TERMS
@@ -7328,6 +7340,8 @@ def has_korea_market_link(alert: dict) -> bool:
 
 def has_direct_market_path(text: str, alert: dict) -> bool:
     text = source_evidence_text(alert) or text
+    if verified_materiality_axes(alert):
+        return True
     if stock_market_channels(alert):
         return True
     if alert.get("korean_business_news") and (
@@ -7459,6 +7473,8 @@ def has_generic_explanation(alert: dict) -> bool:
 
 
 def has_decision_impact(alert: dict) -> bool:
+    if verified_materiality_axes(alert):
+        return True
     labels = set(display_impacts(alert.get("impacts")))
     if not labels or labels == {LIMITED_DECISION_IMPACT}:
         alert["guardrail_note"] = "매출·마진·현금흐름, 밸류에이션/할인율, 수급, 시간표 중 바뀐 축이 없어 제외"
@@ -7998,6 +8014,9 @@ def normalize_alert_for_output(alert: dict) -> dict:
         impacts = [x for x in impacts if x != "의사결정 영향 제한적"]
     if profile:
         impacts = list(profile["impacts"])
+    source_axes = verified_materiality_axes(out)
+    if source_axes:
+        impacts = [MATERIALITY_IMPACT_NAMES[axis] for axis in source_axes if axis in MATERIALITY_IMPACT_NAMES]
     out["impacts"] = impacts
     if profile:
         out["paths"] = list(profile["paths"])
@@ -8147,6 +8166,8 @@ GENERIC_BUSINESS_TITLE_SIGNALS = (
 def is_unanchored_generic_business_alert(alert: dict) -> bool:
     if not alert.get("korean_business_news"):
         return False
+    if verified_materiality_axes(alert):
+        return False
     sectors = [str(item).strip() for item in alert.get("sectors") or []]
     if sectors != ["한국 기업/산업 뉴스"]:
         return False
@@ -8208,6 +8229,14 @@ def source_market_materiality(alert: dict) -> dict:
     if not alert.get("body_verified"):
         body = ""
     return market_materiality.assess(title, article_summary_body(body))
+
+
+def verified_materiality_axes(alert: dict) -> list[str]:
+    """Verified source changes must survive legacy sector/label keyword gates."""
+    audit = source_market_materiality(alert)
+    if audit["disposition"] != "keep" or audit["priority"] < 2:
+        return []
+    return list(audit["axes"])
 
 
 def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:

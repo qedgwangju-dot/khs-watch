@@ -1,0 +1,66 @@
+# Industry Driver Quality Benchmark: 2026-10-02
+
+## Scope
+
+The user's Chart Book reference is a benchmark for source-specific industry
+changes, not permission to turn every supplied statement into a confirmed news
+alert. Combined bullets yield 20 event classes below. None was pinned into
+production as a historical article or sent as a test Telegram message.
+
+Selection fixtures paraphrase those event classes using synthetic companies and
+source sentences. Their passing tests verify code behavior, not the truth of the
+reference digest. Primary-source availability and verification remain separate.
+
+## Complete Reference Audit
+
+| # | Event Class | Selection Rationale and Source Boundary |
+| --- | --- | --- |
+| 1 | Robot foundation-model partnership | Model/hardware integration can change the platform and supplier model. Boston Dynamics/DeepMind's official partnership is dated January 5, 2026; a newly announced October strategy requires a new source, not that older announcement. |
+| 2 | FCC environmental review and spectrum | Changes to licensing scope and frequency availability qualify. The September 30 official agenda and staff draft establish proposed items, not proof of the final vote/order; the released decision must establish the enacted scope. |
+| 3 | 800V HVDC architecture | Adoption changes conversion stages, power density and component requirements. NVIDIA's August 11 update describes an existing roadmap; do not call the original architecture new on October 2 or infer orders for every SiC supplier. |
+| 4 | Frontier model release | Measured operating specifications and release/access stages qualify. Official Gemini 4 Argon discovery was located, but full-page retrieval was unavailable; benchmark counts and input/output token units were not independently certified. |
+| 5 | Orbital AI prototype | The official September 24 Suncatcher article describes a first orbital test and engineering work. This is not a commercial orbital data center entering operation. |
+| 6 | AI customer financing talks | Financing capacity and lease support affect customer deployment. The cited Broadcom/Anthropic claim remains a negotiation/report until its originating report and contractual scope are verified; not confirmed lending or booked revenue. |
+| 7 | AI company IPO timing | Filing, marketing and tentative timing can affect capital access. Keep tentative wording; the digest alone does not prove a scheduled IPO. |
+| 8 | Consumer earnings and restructuring | Nike's October 1 official release gives revenue, margin and EPS and describes an operating-model change. Consensus comparisons and the exact scale of layoffs need separate supporting evidence. |
+| 9 | Memory customer commitments and CAPEX | Micron's official fourth-quarter release supports the operating results. The approximately elevenfold figure concerns Core Data Center Business Unit revenue, not every data-center unit combined. Detailed remaining obligations, customer deposits, allocation and CAPEX claims need the prepared remarks; these measures must never be added into one total. |
+| 10 | Power/computing joint development | JERA/Dell/RHAELM's October 1 announcement is an MoU/framework with planned project terms. The full project investment is not Dell's signed contract value or revenue. |
+| 11 | Inference optimization acquisition | Nebius's October 1 official announcement describes an Inferize acquisition to improve production inference, cold starts and GPU utilization. Consider the actual technology mechanism; transaction terms were not disclosed. |
+| 12 | Cryogenic quantum validation | A defined environment, measured isolation and thermal-cycle results can qualify as a technical milestone. The reference issuer/ticker and primary test/IR record were not independently located; do not certify them from the digest. |
+| 13 | SiC substrate cycle | Pricing, lead times and demand changes qualify when sourced. The DigiTimes headline was located but its full report was unavailable; a headline does not establish the exact cycle or supplier exposure. |
+| 14 | Optical architecture and supply | Concrete 800G/1.6T/CPO adoption and supplier commitments qualify. The digest's generic delivery assurances and grouped InP/GaAs/SiC exposure require actual customer/supplier evidence; those materials are not interchangeable. |
+| 15 | Multiple space launches | Completed missions are execution milestones, but target dates are not completion evidence. The announced NROL-97 target was later than the reference message; the supplied triple-completion assertion was not certified. |
+| 16 | Commercial launch order | Rocket Lab's September 30 official announcement confirms 20 new multi-year Electron missions for Synspective and 47 contracted missions across that customer relationship. Do not infer undisclosed contract prices. |
+| 17 | Launch-license environmental review | FAA discovery supports a proposed annual-cap increase subject to environmental review. An application/review is not a license already authorizing the larger cap. |
+| 18 | Space company external financing | First external fundraising is a capital-access signal when newly reported. No matching October official Blue Origin release was located; an older financing story is not fresh merely because the digest repeats it. |
+| 19 | Defense-program cost scope | CBO's May 12 notional 20-year model and the administration's different time/scope estimate cannot be compared as identical budgets. A fresh hearing or budget action requires its own source/date. |
+| 20 | AI biology discovery | Anthropic's September 23 article describes discovery of an uncharacterized ART system in existing DNA, followed by human laboratory work. The function remains under investigation; this is not de novo enzyme design, drug approval or commercial orders. |
+
+## Primary References
+
+- Robot integration: https://bostondynamics.com/blog/boston-dynamics-google-deepmind-form-new-ai-partnership/
+- FCC meeting agenda: https://public-inspection.federalregister.gov/2026-19920.pdf
+- Power architecture: https://blogs.nvidia.com/blog/800-vdc-power-architecture-ai-factory/
+- Orbital AI test: https://blog.google/innovation-and-ai/models-and-research/google-research/google-project-suncatcher-facts/
+- Nike earnings: https://investors.nike.com/investors/news-events-and-reports/investor-news/investor-news-details/2026/NIKE-Inc--Reports-Fiscal-2027-First-Quarter-Results/default.aspx
+- Micron results: https://micron.gcs-web.com/node/50991
+- Power/computing framework: https://rhaelm.com/news/jera-dell-rhaelm-mou-japan
+- Inference acquisition: https://nebius.com/newsroom/nebius-acquires-inferize-to-strengthen-nebius-token-factorys-production-inference-stack
+- Commercial launch order: https://rocketlabcorp.gcs-web.com/news-releases/news-release-details/rocket-lab-secures-largest-ever-electron-commercial-deal-20
+- FAA review: https://www.faa.gov/space/stakeholderengagement/blue-origin-new-glenn
+- Defense cost model: https://www.cbo.gov/publication/62379
+- AI biology discovery: https://www.anthropic.com/news/claude-discovers-novel-enzyme-system
+
+## Persistent Verification
+
+- Source-only materiality rules retain counterparty, quantity, operating stage,
+  policy scope and experimental evidence where present; no issuer whitelist or
+  minimum contract amount is introduced.
+- Candidate classification and final selection both exercise all 20 classes.
+- Additional tests preserve tentative research/licensing/financing stages,
+  reject vague thematic promotion and unverified bodies, and confirm the four
+  discovery queries are in the active collector.
+- Telegram keeps the previously agreed aligned title, complete compact core
+  and clickable source. Status labels and removed commentary remain absent.
+- Fresh source access, GitHub execution and Telegram receipt must be reported
+  separately from local test results and configuration deployment.

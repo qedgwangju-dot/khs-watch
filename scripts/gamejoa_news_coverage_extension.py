@@ -72,6 +72,34 @@ SEARCH_SOURCES = [
         "OR site:hankyung.com OR site:biz.chosun.com)",
     ),
     (
+        "AI 전력·광통신 아키텍처 채택",
+        "(HVDC OR 800V OR CPO OR 광트랜시버 OR 실리콘포토닉스 OR SiC) "
+        "(데이터센터 OR AI OR 전력변환) (규격 OR 채택 OR 도입 OR 검증 OR 공급 OR 가격) "
+        "(site:yna.co.kr OR site:newsis.com OR site:etnews.com OR site:mk.co.kr "
+        "OR site:hankyung.com OR site:edaily.co.kr OR site:zdnet.co.kr)",
+    ),
+    (
+        "로봇·AI 모델 통합·운용비용 변화",
+        "(로봇 OR 휴머노이드 OR 파운데이션모델 OR 파운데이션 모델 OR 추론비용) "
+        "(통합 OR 공동개발 OR 채택 OR 검증 OR 인수 OR 비용절감 OR 비용 절감) "
+        "(site:yna.co.kr OR site:newsis.com OR site:etnews.com OR site:mk.co.kr "
+        "OR site:hankyung.com OR site:edaily.co.kr OR site:zdnet.co.kr)",
+    ),
+    (
+        "위성·궤도컴퓨팅 인허가·상업 발사계약",
+        "(위성 OR 궤도컴퓨팅 OR 궤도 데이터센터 OR 발사한도 OR 주파수) "
+        "(발사계약 OR 발사 계약 OR 환경심사 OR 환경영향평가 OR 배정 OR 시험 OR 자금조달) "
+        "(site:yna.co.kr OR site:newsis.com OR site:etnews.com OR site:mk.co.kr "
+        "OR site:hankyung.com OR site:edaily.co.kr OR site:zdnet.co.kr)",
+    ),
+    (
+        "양자·바이오 AI 실험 검증 이정표",
+        "(양자 OR 극저온 OR 효소 OR 단백질) (AI OR 인터커넥트 OR 연구) "
+        "(검증 OR 실험 OR 발견 OR 규명 OR 기술이전 OR 상용화) "
+        "(site:yna.co.kr OR site:newsis.com OR site:etnews.com OR site:mk.co.kr "
+        "OR site:hankyung.com OR site:edaily.co.kr OR site:zdnet.co.kr)",
+    ),
+    (
         "단일종목 레버리지 규제 시행효과·거래급감",
         "(단일종목레버리지 OR 단일종목 레버리지 OR 단일레버리지 OR 기본예탁금) "
         "(거래대금 OR 거래량 OR 개인매도 OR 개인 매도 OR 거래급감 OR 거래 급감) "
@@ -1344,6 +1372,9 @@ PRIORITY_TERMS.update({
     "기준금리": 16, "금리 인하": 16, "유럽중앙은행": 16, "일본은행": 16,
     "비농업 고용": 16, "고용지표": 16, "물가상승률": 16, "pce": 16,
     "통상협정": 16, "배당": 14,
+    "hvdc": 11, "광트랜시버": 11, "광 인터커넥트": 10, "환경심사": 10,
+    "환경영향평가": 10, "발사계약": 12, "발사 계약": 12, "발사한도": 10,
+    "궤도컴퓨팅": 10, "극저온": 10, "효소 시스템": 10, "추론비용": 11,
 })
 IMPACT_TERMS["할인율"] = (*IMPACT_TERMS["할인율"],
     "기준금리", "금리 인하", "유럽중앙은행", "일본은행", "비농업 고용",
