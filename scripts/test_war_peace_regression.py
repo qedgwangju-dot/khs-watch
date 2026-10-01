@@ -346,8 +346,9 @@ for x in (bomb_or_deal, record_kr):
     x["score"] = score
     x["tags"] = tags
     x["age"] = mod.watch.age_minutes(x, now)
-rendered = mod.watch.build_alert([bomb_or_deal, record_kr], [], now)
-check("render-bomb-or-deal-yellow", "🟡 [신규]" in rendered or "🟡 [속보]" in rendered)
-check("render-record-flow-green", "🟢 [신규]" in rendered or "🟢 [속보]" in rendered)
+rendered_bomb = mod.watch.build_alert([bomb_or_deal], [], now)
+rendered_flow = mod.watch.build_alert([record_kr], [], now)
+check("render-bomb-or-deal-yellow", "🟡 [신규]" in rendered_bomb or "🟡 [속보]" in rendered_bomb)
+check("render-record-flow-green", "🟢 [신규]" in rendered_flow or "🟢 [속보]" in rendered_flow)
 
 print("WAR_PEACE_LIVE_SEMANTICS_OK")
