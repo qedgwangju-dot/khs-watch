@@ -277,6 +277,15 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertIn("DRAM 밴드 중간값 5.5%→12.5% (+7.0%p)", summary)
         self.assertIn("NAND 밴드 중간값 2.5%→17.5% (+15.0%p)", summary)
 
+    def test_trendforce_3q4q_pace_summary_matches_sep_chart(self):
+        s = dict(w.TREND_3Q4Q_PACE_BASELINE)
+        summary = w._trend_3q4q_pace_summary(s)
+        self.assertIn("Conventional DRAM: 3Q +13~18%→4Q +10~15% (둔화, 중간값 -3.0%p)", summary)
+        self.assertIn("HBM Blended: 3Q +8~13%→4Q +15~20% (가속, 중간값 +7.0%p)", summary)
+        self.assertIn("Total NAND Flash: 3Q +18~23%→4Q +15~20% (둔화, 중간값 -3.0%p)", summary)
+        self.assertEqual(s["q4_enterprise_ssd_min_pct"], 23.0)
+        self.assertEqual(s["q4_enterprise_ssd_max_pct"], 28.0)
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
