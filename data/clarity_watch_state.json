@@ -2,8 +2,8 @@
   "initialized": true,
   "source_version": 2,
   "bill": "H.R. 3633 — Digital Asset Market Clarity Act",
-  "last_checked_kst": "2026-10-02T04:33:45+09:00",
-  "last_checked_et": "2026-10-01T15:33:45-04:00",
+  "last_checked_kst": "2026-10-02T08:54:25+09:00",
+  "last_checked_et": "2026-10-01T19:54:25-04:00",
   "seen_event_keys": [
     "06ee00dbb8854130493bb2e968b1cacab9ca367fe3cc63799c3a34b54881ae9c",
     "084ee027ab8ec15b4074b4fa1b60022844e2dc9f19a270999c1f2f23b0a34a53",
@@ -11,6 +11,7 @@
     "123448820a46616cab71fba5b47aca1af99beefe817950c3da16279e315cab10",
     "1697d0af9e995683356dd012404a4bce42bf606116a9a3e0434e09b4aa7e1f6f",
     "1a9898923f85d4233fb780b2ee1a3d06bdb9c23a6ef435b2330be9be048e7e8f",
+    "1aa312ec29903f1d2a05bfdddfe6512aab1d14aedd812907f42f5d6bfab475cc",
     "1b032a43eb14e30ce6dc095ef33197e30bbd8b0583ff81cd3f652e9724a8d854",
     "1d355762399dc654da475cdf744306118342eca92c2b059ef5f1e7aa70a44bd1",
     "256b77ca21d420ace7c45ede2f144a9b9e9190d0a7d64da9ca74b1bbe0607e04",
@@ -52,6 +53,7 @@
     "8e5fe13307a845d7240cc629030f3cb0561fbe50ee7ef4dde2299abcda3b8859",
     "980559a32469067fb786085741ba2ee65360f95c25d5d642d3e03584772ceedf",
     "99b7e81fda47aa5a677b4e3a9a7df0c89dcd9fe77ba784db071e1a762d1998ab",
+    "9c7ce09116e1ab2b1e86d7b50ddc9fdc1db67bfa5827c0fd1cfb98d94db4e6e1",
     "9dcf4eadd8cb972dcaeb12cb25c7a87f594c10e77803223114988fd6e563d41d",
     "a084c3acfb1f8e72a7e21c29dafd5d36163d98d50854e2499900fb9d5390e226",
     "a3e5ef3b965f0bba547da6022b9f73ab78e821deae04af20f18e03e05366c936",
@@ -68,6 +70,7 @@
     "d7096a998b47ecb8b16dcd6a4c4c0aeddac96b444b90c5728e0dc8fbb0738b7f",
     "d8fb582f541acee13e77019274db70ed8624e1c886b081107a4df8a4fd636b71",
     "e52c5474ff113253be0fff47c38d900f2924f59d61a9edb48084889f2510ebef",
+    "e61a32c056680af3ee153334bd1f8008cb238f22e89f64fa5660de0d290cd9e1",
     "ebce905e0f473a86aa961bf0dc832ebfc5d0614afeb36fa79ba9d8fffadf057b",
     "f1454e650d80adf0cff72bfa587a599f4844ccdf567f7c4272bc3ddee55033e7",
     "f3da7119ccd7085499867fffdc0b3bc5056155e02704c6bc9d1fd2fd41966b0c",
@@ -76,6 +79,17 @@
     "fae400f86e5c7c7497de7708637dc5b3f87d05441c853b65e3742939ae233f84",
     "fe2906beaa0c20857bcf830328fd25f77105af8385b0204d7b2829adad3b2827"
   ],
-  "event_count": 54,
-  "source_errors": []
+  "event_count": 51,
+  "source_errors": [
+    "CFTC Federal Register 제안규칙: Expecting value: line 1 column 1 (char 0)",
+    "CFTC Federal Register 최종규칙: Expecting value: line 1 column 1 (char 0)",
+    "SEC Federal Register 제안규칙: Expecting value: line 1 column 1 (char 0)",
+    "SEC Federal Register 최종규칙: Expecting value: line 1 column 1 (char 0)"
+  ],
+  "last_successful_delivery_kst": "2026-10-02T08:54:46+09:00",
+  "telegram_message_ids": [
+    105
+  ],
+  "bot_username": "khs88790088790000_bot",
+  "telegram_format": "korean_html_v7_negotiation_gate"
 }
