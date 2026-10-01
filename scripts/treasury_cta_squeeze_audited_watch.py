@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import json
 import re
+from datetime import datetime
 
 import treasury_cta_squeeze_watch as watcher
 import treasury_cta_squeeze_market_watch  # noqa: F401  # installs resilient market-data formatter
@@ -70,6 +71,55 @@ def _sanitize_oi_scope(snapshot: dict) -> list[str]:
     return fixes
 
 
+def _data_freshness(snapshot: dict) -> tuple[bool, list[str]]:
+    """Fail closed when official weekly/daily inputs are stale.
+
+    Calendar-day limits deliberately allow normal weekend/holiday publication
+    delays while preventing an old CFTC/Treasury/repo snapshot from confirming
+    a new squeeze episode.
+    """
+    today = datetime.now(watcher.KST).date()
+    stale: list[str] = []
+
+    def age_iso(label: str, raw, max_days: int, fmts: tuple[str, ...]):
+        if not raw:
+            stale.append(f"{label} 날짜 없음")
+            return
+        parsed = None
+        text = str(raw).strip()
+        for fmt in fmts:
+            try:
+                parsed = datetime.strptime(text, fmt).date()
+                break
+            except ValueError:
+                continue
+        if parsed is None:
+            stale.append(f"{label} 날짜 파싱 실패({text})")
+            return
+        age = (today - parsed).days
+        if age < 0 or age > max_days:
+            stale.append(f"{label} {text} · {age}일 경과")
+
+    age_iso(
+        "CFTC",
+        (snapshot.get("cftc") or {}).get("report_date"),
+        10,
+        ("%B %d, %Y", "%Y-%m-%d"),
+    )
+    age_iso(
+        "미 재무부 10년물",
+        (snapshot.get("yield10") or {}).get("date"),
+        4,
+        ("%Y-%m-%d",),
+    )
+    repo = snapshot.get("repo") or {}
+    for key in ("SOFR", "BGCR", "TGCR"):
+        row = repo.get(key) or {}
+        age_iso(f"NY Fed {key}", row.get("date"), 4, ("%Y-%m-%d", "%m/%d/%Y"))
+
+    return (not stale), stale
+
+
 def _repo_not_worse(current: dict, previous: dict) -> tuple[bool, list[str]]:
     curr = current.get("repo") or {}
     prev = previous.get("repo") or {}
@@ -97,10 +147,11 @@ def _direction_label(snapshot: dict, previous: dict, reasons: list[str]) -> tupl
     z = float(y.get("z20") or 0.0)
     evidence = watcher.squeeze_evidence(snapshot, previous)
     repo_ok, _ = _repo_not_worse(snapshot, previous)
+    data_fresh, _ = _data_freshness(snapshot)
     short_bias = any("CFTC 숏 축소" in r or "CFTC 주간 숏 축소" in r for r in reasons)
     prices_up = _price_up_count(snapshot)
 
-    if evidence and (short_bias or z <= -1.0) and repo_ok:
+    if evidence and (short_bias or z <= -1.0) and repo_ok and data_fresh:
         return "🟢 실제 숏 스퀴즈 강화", "채권가격 상승·장기금리 하락 방향이 포지션과 함께 확인되는 단계"
     if (short_bias or prices_up >= 2) and repo_ok and z > -1.0:
         return "🟡 숏 압력 완화·준비 신호", "채권에는 약한 우호지만 장기금리 하락 추세 전환은 아직 미확인"
@@ -268,8 +319,11 @@ def deduped_main() -> int:
     z = float(snapshot["yield10"]["z20"])
     z_active = z <= -1.0
     repo_ok, repo_worsened = _repo_not_worse(snapshot, prev_snapshot)
+    data_fresh, stale_reasons = _data_freshness(snapshot)
 
-    composite_confirmed = bool(evidence and (short_bias_active or z_active) and repo_ok)
+    composite_confirmed = bool(
+        evidence and (short_bias_active or z_active) and repo_ok and data_fresh
+    )
 
     y = float(snapshot["yield10"]["yield"])
     stage = 0
@@ -339,6 +393,8 @@ def deduped_main() -> int:
             "cftc_short_bias": short_bias_active,
             "z_below_minus_1": z_active,
             "repo_not_worse": repo_ok,
+            "data_fresh": data_fresh,
+            "stale_reasons": stale_reasons,
             "composite_confirmed": composite_confirmed,
             "stage": stage,
             "oi_scope_fixes": oi_fixes,
@@ -368,6 +424,8 @@ def deduped_main() -> int:
         suppressed.append("10년물 경보구간 변화 단독")
     if repo_worsened:
         suppressed.append("repo 10bp 이상 악화로 복합 확인 보류")
+    if stale_reasons:
+        suppressed.append("자료 신선도 미충족: " + ", ".join(stale_reasons))
 
     watcher.NEXT_STATE.write_text(json.dumps(next_state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     watcher.STATUS.write_text(
@@ -379,6 +437,7 @@ def deduped_main() -> int:
         f"- 선물 가격↑·동일범위 OI↓: {'확인' if evidence else '미확인'}\n"
         f"- 최근 CFTC 숏 축소: {'확인' if short_bias_active else '미확인'}\n"
         f"- repo 비악화: {'확인' if repo_ok else '미확인'}\n"
+        f"- 자료 신선도: {'확인' if data_fresh else '미확인 — ' + ', '.join(stale_reasons)}\n"
         f"- 복합 스퀴즈: {'확인' if composite_confirmed else '미확인'} / 단계 {stage}\n"
         f"- OI 범위 보정: {', '.join(oi_fixes) if oi_fixes else '없음'}\n"
         f"- 텔레그램: {'전송' if should_alert else '미전송'}\n"
