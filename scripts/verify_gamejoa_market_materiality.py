@@ -67,6 +67,44 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_ipo_timing_precedes_historical_revenue_and_retains_early_stage(self):
+        title = "앤스로픽, 11월 중순 상장 추진…오픈AI 제치고 IPO 선점하나"
+        body = "AI 모델 클로드를 개발한 앤스로픽이 이르면 11월 중순 미국 증시 상장을 추진한다. 앤스로픽의 매출은 지난해 46억달러로 직전해보다 급증했다."
+        item = {**alert(title, body), "telegram_core_fact": "앤스로픽 매출은 46억달러입니다."}
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("11월 중순", core)
+        self.assertIn("추진", core)
+        self.assertNotIn("46억", core)
+        assessment = materiality.assess(title, body)
+        self.assertEqual(assessment["priority"], 3)
+        self.assertIn("timeline", assessment["axes"])
+        self.assertEqual(assessment["evidence"][0]["stage"], "early_signal")
+        self.assertNotEqual(materiality.focus_kind("상장지수펀드 시장 성장"), "capital_listing")
+
+    def test_first_headline_event_precedes_secondary_bond_context(self):
+        title = "원·달러 NDF 0.2원 하락, 미국채 금리 하락 vs 달러인덱스 연 최고"
+        body = "원·달러 역외 NDF 환율은 전장 대비 0.2원 하락했다. 특히 미국채 2년물 금리는 10bp 넘게 급락했다."
+        item = {**alert(title, body), "telegram_core_fact": "특히 미국채 2년물 금리는 10bp 넘게 급락했다."}
+        core = radar.verified_alert_core(item, title)
+        self.assertEqual(materiality.focus_kind(title), "fx")
+        self.assertIn("NDF", core)
+        self.assertIn("0.2원", core)
+        self.assertNotIn("2년물", core)
+        body = "미국채 금리가 하락한 반면 달러화는 연중 최고치를 경신했다. 1일(현지시간) 차액결제선물환(NDF)시장에서 원·달러 1개월물은 1357.3/1357.7원에 최종 호가되며 거래를 마쳤다."
+        core = radar.verified_alert_core(alert(title, body), title)
+        self.assertIn("NDF", core)
+        self.assertIn("1357.3/1357.7원", core)
+
+    def test_mortgage_source_rate_change_precedes_broad_home_cost_commentary(self):
+        title = "美 주담대 금리 7.28%…주택 구매 여력 약화"
+        body = "미국 주택담보대출(모기지) 금리가 7%를 훌쩍 넘어서며 3년 만에 최고 수준으로 치솟았다. 1일(현지시간) 월스트리트저널 등에 따르면 국책 모기지업체 프레디맥이 집계한 미국의 30년 만기 고정금리 모기지 평균 금리는 이번 주 7.28%로 전주 7.03%보다 0.25%포인트 올랐다. 미국 주택 가격과 계약금이 상승한 상황에서 대출 금리마저 7%를 넘어서면서다."
+        item = {**alert(title, body), "telegram_core_fact": "미국 주택 가격과 계약금이 상승한 상황에서 대출 금리마저 7%를 넘어서면서다."}
+        core = radar.verified_alert_core(item, title)
+        for fact in ("미국", "30년", "7.28%", "0.25%포인트"):
+            self.assertIn(fact, core)
+        self.assertLessEqual(len(core), 100)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+
     def test_denial_headline_cannot_reuse_the_previous_announcement_as_core(self):
         title = '한정애 "알래스카 LNG 투자 확정 아냐"'
         body = '더불어민주당 한정애 사무총장은 1일 도널드 트럼프 미국 대통령이 한국의 알래스카 액화천연가스(LNG) 개발 사업 투자를 기정사실로 발표한 데 대해 "확정된 것이 아니다"라고 밝혔다. 앞서 트럼프 대통령은 알래스카 LNG 개발 사업에 한국이 500억 달러 이상을 투자할 것이라고 발표했다.'

@@ -36,15 +36,17 @@ HARD_HEADLINE = re.compile(
     r"earnings|guidance|contract|factory|production|tariff|interest rate|buyback", re.I,
 )
 
-# The first matching event is the headline's focus, not a sector assigned by
+# Prefer the first event mentioned in the headline, not a sector assigned by
 # the classifier. Reuse it for evidence ranking and compact-summary checks.
 HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) for name, head, source in (
     ("ownership", r"지분.{0,25}(?:인수|매각|취득)|인수.{0,25}지분|합병", r"지분|인수|매각|취득|합병|stake|acquir|merger"),
     ("shareholder", r"자사주|자기주식|주주환원|배당", r"자사주|자기주식|주주환원|배당|(?:주식|지분).{0,30}(?:매수|취득|매입|처분)|buyback|dividend"),
+    ("capital_listing", r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|신규\s*상장", r"기업공개|\bipo\b|상장(?!지수)"),
+    ("mortgage_rate", r"주담대|모기지|주택담보대출", r"주담대|모기지|주택담보대출|mortgage"),
     ("macro_release", r"\bcpi\b|\bpce\b|\bppi\b|\bgdp\b|고용|실업률|물가", r"cpi|pce|ppi|gdp|고용|실업|물가|인플레이션|inflation|payroll"),
     ("energy_supply", r"브렌트|유가|원유|천연가스|호르무즈|홍해|유조선|운임|\bbrent\b|\boil\b|hormuz|tanker", r"브렌트|유가|원유|천연가스|호르무즈|홍해|유조선|운임|항행|통항|brent|\boil\b|hormuz|tanker|shipping"),
     ("bond_yield", r"금리|국채.{0,8}(?:투매|수익률)|bond yields|treasury yields", r"금리|국채.{0,8}수익률|bond yields|treasury yields|interest rates"),
-    ("fx", r"환율|약달러|강달러|달러화|exchange rate", r"환율|달러화|달러·원|원·달러|exchange rate|dollar"),
+    ("fx", r"환율|약달러|강달러|달러화|원[·/]달러|달러[·/]원|\bndf\b|exchange rate", r"환율|달러화|달러[·/]원|원[·/]달러|\bndf\b|exchange rate|dollar"),
     ("breadth", r"(?:상승|하락)\s*종목|순환매|쏠림", r"(?:오른|내린|상승|하락)\s*종목|순환매|쏠림|순매수|순매도|자금.{0,12}이동"),
     ("research_spending", r"r&d|연구개발", r"r&d|연구개발"),
     ("fund_result", r"펀드.{0,20}(?:손실|청산|만기|수익)|(?:손실|청산).{0,20}펀드", r"손실|청산|수익률|loss|liquidat|returns"),
@@ -68,13 +70,20 @@ ECONOMIC_GEOPOLITICS = re.compile(
 
 
 def focus_kind(title: str) -> str:
-    return next((kind for kind, headline, _source in HEADLINE_FOCUS if headline.search(title or "")), "")
+    matches = [(match.start(), index, kind) for index, (kind, headline, _source) in enumerate(HEADLINE_FOCUS)
+               if (match := headline.search(title or "")) is not None]
+    return min(matches)[2] if matches else ""
 
 
 def focus_matches(title: str, sentence: str) -> bool:
     if DENIAL_HEADLINE.search(title) and not DENIAL_SOURCE.search(sentence):
         return False
     kind = focus_kind(title)
+    if kind == "mortgage_rate":
+        return bool(re.search(r"주담대|모기지|주택담보대출|mortgage", sentence, re.I)
+                    and re.search(r"금리|rate", sentence, re.I))
+    if kind == "fx" and re.search(r"\bndf\b", title, re.I):
+        return bool(re.search(r"\bndf\b|차액결제선물환|역외환율", sentence, re.I))
     if kind == "energy_supply" and re.search(r"브렌트|\bbrent\b", title, re.I):
         return bool(re.search(r"브렌트|\bbrent\b", sentence, re.I))
     if kind == "fund_result":
@@ -106,6 +115,11 @@ def focus_score(title: str, sentence: str) -> int:
         score -= 15
     if focus_kind(title) and QUANTITY.search(sentence):
         score += 15
+    if focus_matches(title, sentence) and any(
+        re.sub(r"\s+", "", amount.group(0)) in re.sub(r"\s+", "", sentence)
+        for amount in QUANTITY.finditer(title)
+    ):
+        score += 25
     if focus_kind(title) == "ownership" and re.search(r"지분.{0,20}\d+(?:\.\d+)?%", sentence):
         score += 20
     if focus_kind(title) == "shareholder" and re.search(r"종료|사라|마무리|막바지", title) and re.search(r"종료|마무리|마지막\s*주문", sentence):
@@ -119,6 +133,9 @@ def core_focus_aligned(title: str, core: str) -> bool:
 # Each rule needs a subject and a change in the same source-authored sentence.
 # Quantities, counterparties and stages are evidence, not estimates of price impact.
 RULES = (
+    ("capital_listing_stage", ("flows", "timeline"),
+     r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)",
+     r"추진|예정|목표|신청|승인|상장했다|연기|철회|마케팅|등록|plan|aim|file|approv|delay|withdraw|market"),
     ("commercial_order", ("earnings", "timeline"),
      r"수주|발주|공급계약|공급\s*계약|납품\s*계약|purchase order|supply contract|procurement contract",
      r"체결|확정|수주|발주|갱신|취소|파기|해지|협상|추진|서명|sign|secure|award|agree|cancel|negotiat"),
@@ -151,7 +168,7 @@ RULES = (
      r"모델|llm|ai model|language model|솔라 미니|gpu|npu",
      r"(?:gpu|npu|가속기)\s*(?:\d+|한|두|세)\s*(?:장|개)|\d+\s*(?:장|개)의?\s*(?:gpu|npu)|(?:메모리|전력|지연시간|추론비용|운용비용).{0,15}\d+(?:\.\d+)?\s*(?:%|gb|w|배)|\d+(?:\.\d+)?\s*(?:배|%)\s*(?:빠르|절감|줄|감소)"),
     ("rates_fx_or_macro", ("discount_rate",),
-     r"기준\s*금리|국채\s*금리|국고채|물가|인플레이션|고용|환율|달러화|유동성|차입|cpi|pce|payroll|interest rate|treasury|inflation|exchange rate|borrowing",
+     r"기준\s*금리|국채\s*금리|국고채|모기지|주담대|주택담보대출|물가|인플레이션|고용|환율|달러화|유동성|차입|cpi|pce|payroll|mortgage|interest rate|treasury|inflation|exchange rate|borrowing",
      r"인상|인하|동결|상승|하락|둔화|급등|급락|상회|하회|발표|증가|감소|결정|약세|강세|최고|치솟|cut|hike|hold|rise|fall|miss|beat|announc|estimat"),
     ("policy_scope_or_stage", ("timeline",),
      r"관세|수출통제|수출금지|수입금지|수입 금지|수입 제한|수입제한|제재|보조금|지원금|예탁금|규제|인허가|조례|tariff|export control|import ban|sanction|subsid|licens|\bban(?:s|ned)?\b",
@@ -245,6 +262,8 @@ def assess(title: str, body: str) -> dict:
                 continue
             early = bool(EARLY_SIGNAL.search(sentence)) or kind in {"customer_discussions", "institutional_capital_access"}
             priority = 2 if early or kind in {"technology_or_clinical_stage", "market_infrastructure", "model_operating_specification"} else 3
+            if kind == "capital_listing_stage":
+                priority = 3
             if kind in {"earnings_or_guidance", "market_price_or_flow"} and not QUANTITY.search(sentence):
                 priority = 2
             if kind == "research_spending_change":
