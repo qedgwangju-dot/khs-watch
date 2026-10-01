@@ -2354,9 +2354,8 @@ def render_auction115_compact_body(now: dt.datetime) -> str:
         "- 1,000억달러: Auction 115 단일액 아님 · 향후 여러 경매 누적 전망",
         "- 국내: KMW·에이스테크 / 쏠리드 / 에치에프알 — Auction 115 확정 수주 아님",
         "- 역풍: 상위 75개 PEA 2030년 12월 31일, 기타 2031년 7월 1일 → 장비매출 시차",
-        "- 다음: 낙찰자 → 통신사 CAPEX → 삼성전자·Ericsson·Nokia 수주 → 국내 주문",
+        f'- 다음: 낙찰자 → 통신사 CAPEX → 삼성전자·Ericsson·Nokia 수주 → 국내 주문 · <a href="{reuters_url}">Reuters</a>',
         f'- 출처: FCC 공식문서 · <a href="{fcc_url}">원문</a>',
-        f'- 보조: <a href="{reuters_url}">Reuters</a>',
     ]) + "\n"
 
 
