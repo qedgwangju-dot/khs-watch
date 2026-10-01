@@ -9,11 +9,11 @@
     "fab_count_evidence_state": "supply_chain_report",
     "phase3_evidence_state": "official",
     "last_evidence_state": "supply_chain_report",
-    "last_source_url": "https://ec.ltn.com.tw/article/breakingnews/5586843",
-    "last_source_name": "LTN",
-    "last_event_title": "獨家》一共10座！嘉科三期起跑 台積電再加碼5座先進封裝廠 - 自由財經",
+    "last_source_url": "https://ec.ltn.com.tw/article/paper/1772416",
+    "last_source_name": "自由財經",
+    "last_event_title": "嘉科三期擴建起跑 台積電再加碼5座先進封裝廠 - 自由財經",
     "official_source_url": "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch",
-    "last_source_published_at_kst": "2026-09-27T08:00:00+09:00",
+    "last_source_published_at_kst": "2026-09-28T06:30:00+09:00",
     "bottlenecks": {
       "hbm": {
         "status": "easing",
@@ -37,9 +37,9 @@
     "https://stock.ltn.com.tw/article/gqpj9vhyk1ku",
     "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch"
   ],
-  "last_checked_at_kst": "2026-10-01T14:59:51+09:00",
-  "last_evidence_url": "https://ec.ltn.com.tw/article/breakingnews/5586843",
-  "last_evidence_published_at_kst": "2026-09-27T08:00:00+09:00",
+  "last_checked_at_kst": "2026-10-01T16:37:31+09:00",
+  "last_evidence_url": "https://ec.ltn.com.tw/article/paper/1772416",
+  "last_evidence_published_at_kst": "2026-09-28T06:30:00+09:00",
   "last_alert_reasons": [
     "기판 병목 미확인→easing",
     "HBM 병목 미확인→easing",
@@ -62,7 +62,7 @@
     "payload_hash": "479b0f536362c8bb778002fbffc754067563cd3593e8030c6880e251afd0d332"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-01T15:00:56+09:00",
+    "checked_at_kst": "2026-10-01T16:42:08+09:00",
     "status": "no_message_due"
   },
   "foundry_snapshot": {
