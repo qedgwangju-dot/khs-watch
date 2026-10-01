@@ -1,7 +1,8 @@
 {
-  "updated_at_kst": "2026-10-01T09:31:27+09:00",
+  "updated_at_kst": "2026-10-01T14:26:38+09:00",
   "seen_ids": [
     "05738ff36f7b6c56288425e7",
+    "13736d06804f15f7083db8c9",
     "162bef5431cfeab3494ce984",
     "174b747c5a23191d5a286b2f",
     "1c84301bf79c8d36b83c0259",
@@ -112,8 +113,8 @@
     "confirmed_at_kst": "2026-09-29T00:42:23+09:00"
   },
   "schedule_audit_version": 1,
-  "last_run_event": "schedule",
+  "last_run_event": "push",
   "last_schedule_check_kst": "2026-10-01T09:31:27+09:00",
   "schedule_gap_minutes": 205.3,
-  "last_push_check_kst": "2026-09-29T18:43:05+09:00"
+  "last_push_check_kst": "2026-10-01T14:26:38+09:00"
 }
