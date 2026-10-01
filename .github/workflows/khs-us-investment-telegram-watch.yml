@@ -72,6 +72,7 @@ jobs:
             scripts/khs_us_investment_altpower_finalize.py \
             scripts/khs_us_investment_telegram_send.py
           python scripts/khs_us_investment_watch_stateful.py --self-test
+          python scripts/khs_us_investment_telegram_send.py self-test
 
       # Every relevant code push validates the real Telegram bot/chat route.
       # Live monitoring and Telegram delivery still run only on schedule/manual dispatch.
