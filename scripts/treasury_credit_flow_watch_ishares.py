@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 import datetime as dt
+import hashlib
 import html
 import json
+import os
 import re
 import urllib.parse
 import urllib.request
@@ -343,9 +345,9 @@ def main():
         p, flow, flow5 = r.get("nav_change_pct"), r.get("flow_usd"), r.get("flow_5d_usd")
         price = "확인불가" if p is None else f"{arrow(p)} {p:+.2f}%"
         sec = "확인불가" if r.get("sec_yield") is None else f"{r['sec_yield']:.2f}%"
-        oas = "확인불가" if r.get("oas_bps") is None else f"{r['oas_bps']:.0f}bp"
+        oas = "확인불가" if r.get("oas_bps") is None else f"{r['oas_bps']:.1f}bp"
         doas = ldoas if ticker == "LQD" else hdoas
-        doas_text = "비교 대기" if doas is None else f"{arrow(doas)} {doas:+.0f}bp"
+        doas_text = "비교 대기" if doas is None else f"{arrow(doas)} {doas:+.1f}bp"
         lines += [
             f"{ticker} ({r['label']}) — {r['date']}",
             f"• 가격: NAV ${r['nav']:.2f} | 1일 {price} | 30일 SEC {sec}",
@@ -407,14 +409,45 @@ def main():
     text = "\n".join(lines)
     (base.OUT / "treasury_etf_flow_telegram.txt").write_text(text + "\n", encoding="utf-8")
     (base.OUT / "treasury_etf_flow_status.md").write_text("```\n" + text + "\n```\n", encoding="utf-8")
+
+    fingerprint_payload = {
+        "curve_date": curve["date"],
+        "curve": {k: curve.get(k) for k in ("2Y", "10Y", "30Y")},
+        "funds": {
+            ticker: {
+                "date": results[ticker].get("date"),
+                "nav": results[ticker].get("nav"),
+                "shares": results[ticker].get("shares"),
+                "flow_usd": results[ticker].get("flow_usd"),
+                "oas_bps": results[ticker].get("oas_bps"),
+            }
+            for ticker in ("SHY", "IEF", "TLT", "LQD", "HYG")
+        },
+    }
+    data_fingerprint = hashlib.sha256(
+        json.dumps(fingerprint_payload, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+    ).hexdigest()
+    last_delivery = state.get("last_delivery") or {}
+    if (
+        os.getenv("GITHUB_EVENT_NAME", "").strip() == "schedule"
+        and last_delivery.get("data_fingerprint") == data_fingerprint
+    ):
+        base.save_state(state)
+        print(
+            "duplicate_delivery_suppressed=true "
+            f"treasury_date={curve['date']} fingerprint={data_fingerprint[:12]}"
+        )
+        return
+
     username, ids = send_exact(text)
     state["last_delivery"] = {
         "at_kst": now.isoformat(timespec="seconds"), "bot_username": username, "message_ids": ids,
         "overall": o_head, "treasury_flow": t_head, "credit_flow": c_head, "curve_regime": regime,
-        "treasury_date": curve["date"], "format": "treasury-credit-ishares-oas-v1",
+        "treasury_date": curve["date"], "format": "treasury-credit-ishares-oas-v2",
+        "data_fingerprint": data_fingerprint,
     }
     base.save_state(state)
-    print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={ids} overall={o_head} treasury={t_head} credit={c_head} curve={regime}")
+    print(f"telegram_delivery_confirmed=true bot=@{username} message_ids={ids} overall={o_head} treasury={t_head} credit={c_head} curve={regime} fingerprint={data_fingerprint[:12]}")
 
 
 if __name__ == "__main__":
