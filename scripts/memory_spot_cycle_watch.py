@@ -1246,6 +1246,17 @@ def _extract_bernstein_memory_cycle(item: dict) -> dict | None:
     return obs
 
 
+def _is_korea_memory_earnings_consensus_item(item: dict) -> bool:
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    return bool(
+        ("삼성전자" in text or "samsung" in low)
+        and ("sk하이닉스" in text or "sk hynix" in low)
+        and ("영업이익" in text or "영업익" in text or "operating profit" in low)
+        and "hbm" in low
+    )
+
+
 def _merge_bernstein_memory_cycle(old: dict, obs: dict) -> dict:
     merged = dict(old or {})
     old_rank = int(merged.get("source_rank") or 0)
