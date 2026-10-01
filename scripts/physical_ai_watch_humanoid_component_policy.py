@@ -48,6 +48,9 @@ base.QUERIES.extend([
     '("Leader Harmonic Drive" OR Leaderdrive OR "Zhejiang Laifu" OR Laifual OR "Zhongda Leader" OR Inovance OR MOONS OR Orbbec OR RoboSense OR Hesai) (humanoid OR 人形机器人) (order OR backlog OR customer OR supplier OR capacity OR mass production OR yield OR 수주 OR 양산 OR 생산능력 OR 产能 OR 订单)',
     '("LG이노텍" OR "LG Innotek" OR TDK OR 에스비비테크 OR "SBB Tech" OR 에스피지 OR SPG OR 하이젠알앤엠 OR "Higen RNM" OR 삼현 OR "SOS LAB" OR 에스오에스랩) (휴머노이드 OR humanoid) (감속기 OR actuator OR 액추에이터 OR encoder OR 인코더 OR torque sensor OR force sensor OR 촉각 OR tactile OR lidar OR 라이다) (수주 OR 공급 OR 고객 OR 양산 OR 생산능력 OR 수율 OR 검증 OR contract OR order OR mass production OR capacity OR yield OR qualification)',
     '(Unitree OR 유니트리 OR 宇树) (Dex5-S OR "dexterous hand" OR 로봇핸드 OR 灵巧手) (22 DOF OR 22자유도 OR 6500 OR "$6,500" OR backdrivable OR 역구동 OR 출시 OR 공개 OR price)',
+    '(Boston Dynamics OR 보스턴다이내믹스 OR Atlas OR 아틀라스) ("robot hand" OR "robot hands" OR 로봇핸드 OR "dexterous hand" OR tactile OR 촉각) ("13 DOF" OR "13 DoF" OR 13자유도 OR "four finger" OR "4-finger" OR 4지 OR "direct actuation" OR sim2real OR "reinforcement learning" OR "human demonstration")',
+    '("Clone Robotics" OR "Clone Hand" OR Myofiber) (hand OR 로봇핸드 OR "five finger" OR 5지) (hydraulic OR water OR Myofiber OR teleoperation OR autonomous OR "Torso 4" OR launch)',
+    '("원익로보틱스" OR "Wonik Robotics" OR "Allegro Hand" OR 로보티즈 OR ROBOTIS OR 테솔로 OR Tesollo) (로봇핸드 OR "robot hand" OR "dexterous hand" OR tactile OR 촉각) (DOF OR 자유도 OR "direct drive" OR 직접구동 OR 출시 OR 공개 OR launch OR 수주 OR 양산)',
     UNITREE_HAND_SENTINEL,
     '(Toyota OR 토요타 OR トヨタ) (400000 OR 400,000 OR 40만 OR 1조엔 OR "1 trillion yen") (robot OR robotics OR 로봇 OR 자동화 OR automation OR 2028)',
     '("HL만도" OR "HL Mando") (휴머노이드 OR humanoid OR 로봇 OR robot) (액추에이터 OR actuator OR 감속기 OR reducer OR Spot OR 스팟) (양산 OR mass production OR 공급 OR customer OR 고객 OR 북미 OR North America)',
@@ -72,7 +75,8 @@ base.OFFICIAL_OR_PRIMARY.update({
     '과학기술정보통신부', '한국로봇산업진흥원', '국회', '국회예산정책처',
     '로보티즈', 'ROBOTIS', '삼현', '하이젠알앤엠', '에스비비테크',
     '에스피지', '원익로보틱스', '현대모비스', '삼성SDI', 'LG에너지솔루션',
-    'LG이노텍', 'LG Innotek', 'TDK', 'Boston Dynamics', 'Unitree Robotics', 'Unitree Robotics (X)', '유니트리', 'HL만도', 'HL Mando',
+    'LG이노텍', 'LG Innotek', 'TDK', 'Boston Dynamics', 'Clone Robotics', '테솔로', 'Tesollo',
+    'Unitree Robotics', 'Unitree Robotics (X)', '유니트리', 'HL만도', 'HL Mando',
     'Apptronik', 'FCC', 'Federal Communications Commission', 'Schaeffler',
 })
 
@@ -110,6 +114,70 @@ HAND_PRICE = re.compile(r'\$\s*6,?500|6,?500\s*(?:USD|달러)|6500|약\s*900만�
 HAND_DOF = re.compile(r'22\s*(?:DOF|DoF|degrees?\s*of\s*freedom|자유도|自由度)', re.I)
 HAND_BACKDRIVE = re.compile(r'backdriv|역구동|反驱|反驱动', re.I)
 HAND_TORQUE_PROTECT = re.compile(r'impact\s*torque|torque\s*protection|충격\s*토크|토크\s*보호|冲击力矩|力矩保护', re.I)
+
+HAND_ARCH_COMPANY = re.compile(
+    r'Boston\s+Dynamics|보스턴\s*다이내믹스|Clone\s+Robotics|'
+    r'원익로보틱스|Wonik\s+Robotics|ROBOTIS|로보티즈|Tesollo|테솔로',
+    re.I,
+)
+HAND_ARCH_HAND = re.compile(
+    r'robot\s*hands?|dexterous\s*hand|robot\s*hand|로봇\s*핸드|로봇핸드|'
+    r'Atlas.{0,30}hand|hand.{0,30}Atlas|Clone\s*Hand|Allegro\s*Hand|HX5-D20|DG-[45]F|'
+    r'Torso\s*[34].{0,30}hand|hand.{0,30}Torso\s*[34]',
+    re.I,
+)
+HAND_ARCH_EVENT = re.compile(
+    r'new\s+generation|new\s+hand|redesign|unveil|launch|release|introduc|'
+    r'공개|출시|신형|차세대|설계|architecture|아키텍처|prototype|시제품|demo|시연',
+    re.I,
+)
+HAND_ARCH_MARKERS = (
+    re.compile(r'\b\d{1,2}\s*(?:DOF|DoF|degrees?\s*of\s*freedom|자유도)', re.I),
+    re.compile(r'(?:four|five|4|5)[-\s]?(?:finger|fingered)|4\s*지|5\s*지|네\s*손가락|다섯\s*손가락', re.I),
+    re.compile(r'direct\s*actuat|direct[-\s]*drive|직접\s*구동|hydraulic|수압|유압|Myofiber|artificial\s*muscle|인공\s*근육', re.I),
+    re.compile(r'tactile|pressure\s*sensor|촉각|압력\s*센서', re.I),
+    re.compile(r'sim2real|sim[-\s]*to[-\s]*real|reinforcement\s*learning|\bRL\b|강화학습|human\s*demonstration|인간\s*시연|cross[-\s]*embodiment', re.I),
+    re.compile(r'payload|100\s*lb|50\s*kg|tool\s*use|trigger|slip\s*recovery|reorientation|재방향|슬립\s*복구|공구\s*조작', re.I),
+)
+HAND_AUTONOMOUS = re.compile(r'autonomous\s*(?:manipulation|task)|without\s+teleoperation|자율\s*조작|자율\s*작업', re.I)
+HAND_TELEOP = re.compile(r'teleoperation|teleoperat|원격\s*조작|텔레오퍼레이션', re.I)
+HAND_COMMERCIAL_STRONG = re.compile(
+    r'customer|고객|supplier|공급사|order|수주|contract|계약|mass\s*production|양산|shipment|출하|'
+    r'production\s*capacity|생산\s*능력|factory\s*deployment|공장\s*배치',
+    re.I,
+)
+
+
+def _hand_arch_marker_count(text: str) -> int:
+    return sum(bool(p.search(text)) for p in HAND_ARCH_MARKERS)
+
+
+def _is_hand_architecture(text: str) -> bool:
+    return bool(
+        HAND_ARCH_COMPANY.search(text)
+        and HAND_ARCH_HAND.search(text)
+        and HAND_ARCH_EVENT.search(text)
+        and _hand_arch_marker_count(text) >= 2
+    )
+
+
+def _is_atlas_hand_current_baseline(text: str) -> bool:
+    return bool(
+        re.search(r'Boston\s+Dynamics|보스턴\s*다이내믹스', text, re.I)
+        and re.search(r'Atlas|아틀라스', text, re.I)
+        and re.search(r'13\s*(?:DOF|DoF|degrees?\s*of\s*freedom|자유도)', text, re.I)
+        and re.search(r'(?:four|4)[-\s]?(?:finger|fingered)|4\s*지', text, re.I)
+    )
+
+
+def _is_clone_hand_demo_baseline(text: str) -> bool:
+    return bool(
+        re.search(r'Clone\s+Robotics|Clone\s*Hand', text, re.I)
+        and HAND_ARCH_HAND.search(text)
+        and re.search(r'hydraulic|water|Myofiber|수압|유압|인공\s*근육', text, re.I)
+        and (HAND_TELEOP.search(text) or re.search(r'Torso\s*3', text, re.I))
+        and not re.search(r'Torso\s*4|autonomous\s*(?:manipulation|task)|자율\s*조작|수주|계약|양산|출하', text, re.I)
+    )
 
 TOYOTA = re.compile(r'Toyota|토요타|トヨタ', re.I)
 TOYOTA_SCALE = re.compile(r'400,?000|40만|1\s*조\s*엔|1\s*trillion\s*yen|2028', re.I)
@@ -273,6 +341,10 @@ GLOBAL_COMPANY_PATTERNS = [
     ('RoboSense', r'RoboSense|速腾聚创'),
     ('Hesai', r'Hesai|禾赛'),
     ('Unitree', r'Unitree|유니트리|宇树'),
+    ('Boston Dynamics', r'Boston\s+Dynamics|보스턴\s*다이내믹스'),
+    ('Clone Robotics', r'Clone\s+Robotics|Clone\s*Hand'),
+    ('원익로보틱스', r'원익로보틱스|Wonik\s+Robotics|Allegro\s*Hand'),
+    ('테솔로', r'테솔로|Tesollo|Delto\s*Gripper|DG-[45]F'),
     ('HL만도', r'HL\s*Mando|HL만도'),
     ('福莱新材', r'福莱新材|Fulai(?:\\s+New\\s+Material)?'),
     ('汉威科技', r'汉威科技|Hanwei(?:\\s+Technology)?'),
@@ -288,7 +360,7 @@ GLOBAL_COMPANY_PATTERNS = [
 def _component_family(text: str) -> str:
     if GLOBAL_COMPONENT_ZH.search(text):
         return '힘·토크·촉각센서'
-    if DEXTEROUS_HAND.search(text):
+    if DEXTEROUS_HAND.search(text) or _is_hand_architecture(text):
         return '로봇핸드·그리퍼'
     if re.search(r'하모닉|harmonic|谐波|RV\\s*감속기|RV\\s*reducer|롤러\\s*스크루|roller\\s*screw|滚柱丝杠', text, re.I):
         return '감속기·롤러스크루'
@@ -324,6 +396,10 @@ def _component_stage(text: str) -> str:
         return '생산능력·증설'
     if GLOBAL_OPS.search(text):
         return '수율·납기·가격'
+    if _is_hand_architecture(text):
+        if HAND_AUTONOMOUS.search(text):
+            return '자율조작·실물검증'
+        return '핸드설계·제어 아키텍처'
     return '제품화'
 
 
@@ -333,6 +409,8 @@ def _global_companies(text: str) -> set[str]:
 
 def _is_global_component(text: str) -> bool:
     if _is_unitree_hand(text) and (HAND_LAUNCH.search(text) or HAND_PRICE.search(text) or HAND_DOF.search(text)):
+        return True
+    if _is_hand_architecture(text):
         return True
     component_hit = GLOBAL_COMPONENT.search(text) or GLOBAL_COMPONENT_ZH.search(text)
     commercial_hit = GLOBAL_COMMERCIAL.search(text) or GLOBAL_COMMERCIAL_ZH.search(text)
@@ -502,6 +580,11 @@ def score(item: dict) -> int:
         return s
     if group == 'humanoid_component_global':
         source = item.get('source') or ''
+        stage = _component_stage(text)
+        if stage == '핸드설계·제어 아키텍처' and (
+            _is_atlas_hand_current_baseline(text) or _is_clone_hand_demo_baseline(text)
+        ):
+            return 0
         s = 18
         if base.NUMERIC.search(text):
             s += 3
@@ -509,7 +592,6 @@ def score(item: dict) -> int:
             s += 8
         elif source in base.TRUSTED:
             s += 3
-        stage = _component_stage(text)
         s += {
             '고객선정·수주·수주잔고': 12,
             '양산·출하': 11,
@@ -517,6 +599,8 @@ def score(item: dict) -> int:
             '생산능력·증설': 9,
             '수율·납기·가격': 8,
             '제품출시·가격': 12,
+            '핸드설계·제어 아키텍처': 12,
+            '자율조작·실물검증': 14,
             '제품화': 4,
         }.get(stage, 0)
         if _global_companies(text):
@@ -609,7 +693,11 @@ def meaning(cat: str) -> str:
         family = parts[1] if len(parts) > 1 else '핵심부품'
         stage = parts[2] if len(parts) > 2 else '제품화'
         if family == '로봇핸드·그리퍼':
-            return f'22자유도 로봇핸드처럼 손 조작 자유도·역구동성·관절 보호와 공개 가격이 함께 제시되는 {stage} 변화입니다. 완성 휴머노이드의 조작 성능과 대당 부품가치를 동시에 바꾸는 신호이므로 고객 채택·출하량·반복 주문을 추적합니다.'
+            if stage == '핸드설계·제어 아키텍처':
+                return '손가락 수·자유도·구동방식·촉각센서·시뮬레이션/강화학습 구조가 함께 바뀌는 설계 고정 신호입니다. 인간 시연 데이터 호환성과 공구 조작 범위가 넓어지는 대신 액추에이터 수·센서 내구성·원가·수리성을 함께 추적합니다.'
+            if stage == '자율조작·실물검증':
+                return '로봇핸드가 원격조작 시연을 넘어 실제 하드웨어에서 자율 조작·실물 검증으로 넘어가는 단계입니다. 작업 성공률, 슬립 복구, 사람 개입률과 반복성까지 확인합니다.'
+            return f'다관절 로봇핸드의 자유도·역구동성·관절 보호와 공개 가격이 함께 제시되는 {stage} 변화입니다. 완성 휴머노이드의 조작 성능과 대당 부품가치를 동시에 바꾸는 신호이므로 고객 채택·출하량·반복 주문을 추적합니다.'
         if family == '감속기·롤러스크루':
             return f'관절 정밀도·수명·백래시를 좌우하는 구동 핵심부품의 {stage} 변화입니다. 완성 로봇 생산대수보다 고객선정·수주잔고·수율·납기와 실제 양산 전환을 우선 추적합니다.'
         if family == '모터·인코더':
@@ -648,7 +736,9 @@ def risk(cat: str) -> str:
         parts = cat.split(' · ')
         family = parts[1] if len(parts) > 1 else '핵심부품'
         if family == '로봇핸드·그리퍼':
-            return '공개가는 실제 대량 OEM 단가와 다를 수 있고, 22자유도·역구동성은 내구성·촉각 정밀도·그립 성공률을 보장하지 않습니다. 관절 고장률, 충격 보호 개입 빈도, 고객 채택과 실제 출하가 먼저 확인돼야 합니다.'
+            if '핸드설계·제어 아키텍처' in cat or '자율조작·실물검증' in cat:
+                return '핸드 자유도 증가는 액추에이터·센서 수, 발열, 전력, 보정·수리 포인트도 늘릴 수 있습니다. 시뮬레이션 성능이 실제 공구 조작의 수명·촉각 드리프트·슬립 복구 성공률로 이어지는지와 양산 원가를 확인합니다.'
+            return '공개가는 실제 대량 OEM 단가와 다를 수 있고, 높은 자유도·역구동성은 내구성·촉각 정밀도·그립 성공률을 보장하지 않습니다. 관절 고장률, 충격 보호 개입 빈도, 고객 채택과 실제 출하가 먼저 확인돼야 합니다.'
         if family == '감속기·롤러스크루':
             return '가장 현실적인 실패 경로는 OEM 양산 지연 전에 증설이 먼저 진행돼 가동률·총자산이익률이 악화되는 경우입니다. 수명·백래시·온도상승·소음과 고객 승인 지연을 먼저 봅니다.'
         if family == '모터·인코더':
@@ -718,8 +808,8 @@ def _same_event(a: dict, b: dict) -> bool:
         ca, cb = _global_companies(ta), _global_companies(tb)
         if ca and cb and not ca.intersection(cb):
             return False
-        nums_a = set(re.findall(r'\d[\d,.]*\s*(?:억원|억|만원|원|%|개|대|개월|주|일|CNY|RMB|USD|달러|위안)', ta, re.I))
-        nums_b = set(re.findall(r'\d[\d,.]*\s*(?:억원|억|만원|원|%|개|대|개월|주|일|CNY|RMB|USD|달러|위안)', tb, re.I))
+        nums_a = set(re.findall(r'\d[\d,.]*\s*(?:억원|억|만원|원|%|개|대|개월|주|일|CNY|RMB|USD|달러|위안|DOF|DoF|자유도|lb|lbs|kg|N)', ta, re.I))
+        nums_b = set(re.findall(r'\d[\d,.]*\s*(?:억원|억|만원|원|%|개|대|개월|주|일|CNY|RMB|USD|달러|위안|DOF|DoF|자유도|lb|lbs|kg|N)', tb, re.I))
         return bool((not nums_a and not nums_b) or nums_a.intersection(nums_b))
 
     if a.get('group') != 'humanoid_component_policy':
@@ -778,10 +868,14 @@ def key(item: dict) -> str:
         return _orig_key(item)
     family = _component_family(text)
     stage = _component_stage(text)
+    if _is_atlas_hand_current_baseline(text) and stage == '핸드설계·제어 아키텍처':
+        return hashlib.sha256(b'boston-dynamics|atlas-hand|2026-10-01|13dof|4finger').hexdigest()
+    if _is_clone_hand_demo_baseline(text) and stage == '핸드설계·제어 아키텍처':
+        return hashlib.sha256(b'clone-robotics|torso3-hand|2026-10-01|hydraulic-teleop-baseline').hexdigest()
     if _is_unitree_hand(text) and stage == '제품출시·가격':
         return hashlib.sha256(b'unitree|dex5-s|launch|22dof|6500').hexdigest()
     companies = ','.join(sorted(_global_companies(text))) or 'market'
-    nums = sorted(set(re.findall(r'\d[\d,.]*\s*(?:억원|억|만원|원|%|개|대|개월|주|일|CNY|RMB|USD|달러|위안)', text, re.I)))
+    nums = sorted(set(re.findall(r'\d[\d,.]*\s*(?:억원|억|만원|원|%|개|대|개월|주|일|CNY|RMB|USD|달러|위안|DOF|DoF|자유도|lb|lbs|kg|N)', text, re.I)))
     num_sig = '|'.join(nums[:4]) if nums else 'no-number'
     return hashlib.sha256(f'humanoid-component|{family}|{stage}|{companies}|{num_sig}'.encode()).hexdigest()
 
@@ -816,6 +910,11 @@ def clean_title(title: str, source: str) -> str:
         return '토요타, 2028년부터 연 1조엔 공장 자동화 검토…로봇 약 40만대 필요 추산'
     if re.search(r'Unitree|Dex5[- ]?S|宇树', title, re.I) and re.search(r'hand|핸드|灵巧手|22', title, re.I):
         return '유니트리, Dex5-S 22자유도 로봇핸드 공개…가격 6,500달러부터'
+    full = f"{title} {source}"
+    if _is_atlas_hand_current_baseline(full):
+        return '보스턴다이내믹스, Atlas 4지 13자유도 촉각 로봇핸드 공개'
+    if _is_clone_hand_demo_baseline(full):
+        return 'Clone Robotics, 수압 인공근육 로봇핸드 원격조작 시연'
     return _orig_clean_title(title, source)
 
 
