@@ -404,12 +404,13 @@ def _clean_source_url(url: str) -> str:
     return str(url or "").strip().rstrip(".,;:)")
 
 
-def _html_source_link(url: str) -> str:
+def _html_source_link(url: str, label: str = "원문") -> str:
     url = _clean_source_url(url)
     parsed = urllib.parse.urlparse(url)
     if parsed.scheme not in {"http", "https"} or not parsed.netloc:
         return ""
-    return '<a href="' + html.escape(url, quote=True) + '">원문</a>'
+    safe_label = html.escape(_clean(label) or "원문", quote=False)
+    return '<a href="' + html.escape(url, quote=True) + '">' + safe_label + '</a>'
 
 
 def _source_suffix(parts: list[str]) -> str:
@@ -506,7 +507,8 @@ def prepare_telegram_html(title: str, body: str) -> str:
 
     def protect(match: re.Match[str]) -> str:
         url = _clean_source_url(match.group("url"))
-        anchor = _html_source_link(url)
+        label = match.group("label").strip() or "원문"
+        anchor = _html_source_link(url, label)
         if not anchor:
             return ""
         token = f"@@KHS_SOURCE_LINK_{len(anchors)}@@"
