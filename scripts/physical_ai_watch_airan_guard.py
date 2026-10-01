@@ -12,9 +12,10 @@ import datetime as dt
 import hashlib
 import re
 
-import physical_ai_watch_quantity_enrichment as qty
+import physical_ai_watch_korea_robot_scale as korea
 
-base = qty.base
+qty = korea.qty
+base = korea.base
 
 _orig_topic_group = base.topic_group
 _orig_score = base.score
