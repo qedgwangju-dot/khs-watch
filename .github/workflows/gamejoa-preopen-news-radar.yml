@@ -89,6 +89,7 @@ jobs:
           python scripts/verify_gamejoa_cross_market_coverage_contract.py
           python scripts/verify_gamejoa_stock_market_scope.py
           python scripts/verify_gamejoa_article_detail_queue.py
+          python scripts/verify_khs_source_fetch_contract.py
           python scripts/verify_gamejoa_semisupply_contract.py
           python scripts/verify_high_impact_news_self_audit.py
 

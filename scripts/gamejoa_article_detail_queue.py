@@ -17,6 +17,7 @@ STATE_PATH = ROOT / "data" / "gamejoa_article_detail_queue.json"
 PENDING_PATH = ROOT / "out" / "gamejoa_article_detail_queue_pending.json"
 CACHE_PATH = ROOT / "out" / "gamejoa_article_detail_run_cache.json"
 RETENTION = dt.timedelta(days=3)
+RESPONSE_VALIDATION_VERSION = 2
 
 
 def parse_time(value) -> dt.datetime | None:
@@ -78,7 +79,14 @@ def plan_details(
                  "fingerprint": signature, "last_discovered_kst": now.isoformat(timespec="seconds")}
         pending["entries"][key] = entry
         due = parse_time(entry.get("retry_after_kst"))
-        if respect_cooldown and due and due > now:
+        # Retry failures from the old HTTP-only route winner once under the
+        # article-validated race; leave transport failures and sent state alone.
+        revalidate_routes = (
+            entry.get("verification_status") == "failed"
+            and "title/body mismatch" in str(entry.get("last_error") or "")
+            and int(entry.get("response_validation_version") or 0) < RESPONSE_VALIDATION_VERSION
+        )
+        if respect_cooldown and due and due > now and not revalidate_routes:
             cooling += 1
             row["_detail_deferred_reason"] = "retry_cooldown"
             continue
@@ -120,6 +128,7 @@ def record_attempt(state: dict, row: dict, now: dt.datetime, *, verified: bool, 
         "retry_after_kst": (now + dt.timedelta(minutes=minutes)).isoformat(timespec="seconds"),
         "verification_status": "verified" if verified else "failed",
         "last_error": error[:350],
+        "response_validation_version": RESPONSE_VALIDATION_VERSION,
     })
 
 

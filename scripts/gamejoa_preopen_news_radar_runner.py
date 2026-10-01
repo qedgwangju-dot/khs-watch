@@ -16,6 +16,7 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from pathlib import Path
+from typing import Callable
 
 from khs_source_fetch import fetch_text
 from zoneinfo import ZoneInfo
@@ -181,9 +182,12 @@ def source_content_text(row: dict) -> str:
     )
 
 
-def fetch(url: str, timeout: int | None = None) -> tuple[str | None, str | None]:
+def fetch(
+    url: str, timeout: int | None = None, *,
+    response_validator: Callable[[str], str | None] | None = None,
+) -> tuple[str | None, str | None]:
     timeout = FETCH_TIMEOUT_SECONDS if timeout is None else timeout
-    if urllib.parse.urlparse(url).netloc.lower().endswith("bing.com"):
+    if urllib.parse.urlparse(url).netloc.lower().endswith("bing.com") and response_validator is None:
         req = urllib.request.Request(
             url,
             headers={
@@ -203,6 +207,7 @@ def fetch(url: str, timeout: int | None = None) -> tuple[str | None, str | None]
         timeout=timeout,
         attempts=1,
         accept="application/rss+xml, application/json, text/html, */*",
+        response_validator=response_validator,
     )
 
 

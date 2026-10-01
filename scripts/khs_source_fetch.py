@@ -13,6 +13,7 @@ import time
 import urllib.parse
 import urllib.request
 from pathlib import Path
+from typing import Callable
 
 
 OUT_DIR = Path("out")
@@ -28,6 +29,7 @@ def fetch_text(
     timeout: int = 20,
     attempts: int = 2,
     accept: str = DEFAULT_ACCEPT,
+    response_validator: Callable[[str], str | None] | None = None,
 ) -> tuple[str | None, str | None]:
     errors: list[str] = []
     proxy_base = os.getenv("KHS_SOURCE_PROXY_URL", "").strip()
@@ -43,6 +45,7 @@ def fetch_text(
             accept,
             proxy_timeout=proxy_timeout,
             direct_timeout=min(timeout, direct_fallback_cap),
+            response_validator=response_validator,
         )
 
     for attempt in range(1, attempts + 1):
@@ -50,6 +53,7 @@ def fetch_text(
         if proxy_first and proxy_base:
             current_timeout = min(current_timeout, direct_fallback_cap)
         text, error = _fetch_direct(url, user_agent, accept, current_timeout)
+        text, error = _validate_response(text, error, response_validator)
         if error is None:
             return text, None
         errors.append(f"direct attempt={attempt}/{attempts} timeout={current_timeout}s {error}")
@@ -58,6 +62,7 @@ def fetch_text(
 
     if proxy_base and not proxy_first:
         proxy_text, proxy_error = _fetch_proxy(proxy_base, url, user_agent, accept, proxy_timeout)
+        proxy_text, proxy_error = _validate_response(proxy_text, proxy_error, response_validator)
         if proxy_error is None:
             return proxy_text, None
         errors.append(f"proxy timeout={proxy_timeout}s {proxy_error}")
@@ -66,6 +71,20 @@ def fetch_text(
             errors.append("proxy not configured")
 
     return None, " | ".join(errors)
+
+
+def _validate_response(
+    text: str | None,
+    error: str | None,
+    validator: Callable[[str], str | None] | None,
+) -> tuple[str | None, str | None]:
+    if error is not None or validator is None:
+        return text, error
+    try:
+        rejection = validator(text or "")
+    except Exception as exc:
+        rejection = f"{type(exc).__name__}: {exc}"
+    return (None, f"response validation failed: {rejection}") if rejection else (text, None)
 
 
 def record_source_failure(
@@ -126,8 +145,9 @@ def _fetch_proxy_direct_race(
     *,
     proxy_timeout: int,
     direct_timeout: int,
+    response_validator: Callable[[str], str | None] | None = None,
 ) -> tuple[str | None, str | None]:
-    """Return the first successful route without serially paying both timeouts."""
+    """Return the first valid route without serially paying both timeouts."""
 
     results: queue.Queue[tuple[str, int, str | None, str | None]] = queue.Queue()
 
@@ -136,6 +156,7 @@ def _fetch_proxy_direct_race(
             text, error = _fetch_proxy(proxy_base, target_url, user_agent, accept, route_timeout)
         else:
             text, error = _fetch_direct(target_url, user_agent, accept, route_timeout)
+        text, error = _validate_response(text, error, response_validator)
         results.put((label, route_timeout, text, error))
 
     for label, route_timeout in (("proxy", proxy_timeout), ("direct", direct_timeout)):

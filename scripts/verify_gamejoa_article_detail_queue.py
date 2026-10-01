@@ -16,6 +16,7 @@ import urllib.request
 import zipfile
 
 import gamejoa_article_detail_queue as queue
+import khs_source_fetch as source_fetch
 import gamejoa_preopen_news_radar_full_compact_runner as radar
 from khs_article_detail import ArticleHTMLParser, extract_article_detail
 
@@ -35,6 +36,19 @@ def fixture(title: str, body: str) -> str:
 
 
 class DetailQueueChecks(unittest.TestCase):
+    def test_old_http_only_validation_failure_is_rechecked_once(self):
+        row = article(0)
+        selected, state, _ = queue.plan_details([row], {"entries": {}}, NOW, 1)
+        queue.record_attempt(state, row, NOW, verified=False, error="title/body mismatch aligned=None body_chars=0")
+        entry = state["entries"][queue.article_key(row)]
+        entry.pop("response_validation_version")
+        selected, state, _ = queue.plan_details([row], state, NOW + dt.timedelta(seconds=1), 1)
+        self.assertEqual(selected, [row])
+        queue.record_attempt(state, row, NOW + dt.timedelta(seconds=1), verified=False, error="title/body mismatch aligned=None body_chars=0")
+        selected, _, stats = queue.plan_details([row], state, NOW + dt.timedelta(seconds=2), 1)
+        self.assertFalse(selected)
+        self.assertEqual(stats["cooling"], 1)
+
     def test_fair_progress_despite_continuous_urgent_candidates_and_failures(self):
         original = [article(index) for index in range(200)]
         state = {"entries": {}}
@@ -106,8 +120,10 @@ class DetailQueueChecks(unittest.TestCase):
         pages = {row["link"]: '<meta property="og:description" content="unrelated recommendation preview">' + fixture(row["title"], body) for row in rows}
         calls = []
 
-        def fetch(url, timeout):
+        def fetch(url, timeout, *, response_validator=None):
             calls.append(url)
+            self.assertIsNotNone(response_validator)
+            self.assertIsNone(response_validator(pages[url]))
             return pages[url], None
 
         with tempfile.TemporaryDirectory() as folder, patch.dict(os.environ, {"GITHUB_RUN_ID": "test-run", "RADAR_RUN_MODE": "live"}), \
@@ -166,6 +182,58 @@ class DetailQueueChecks(unittest.TestCase):
 
 
 class SourceIsolationChecks(unittest.TestCase):
+    def test_fast_invalid_proxy_does_not_hide_valid_direct_article(self):
+        import time
+        title = "한국 수출 증가 발표"
+        body = "한국 수출이 전년 대비 증가했다. 정부는 수출액과 주요 산업별 실적을 발표했으며 반도체와 자동차 수출이 늘었다. " * 6
+        good = fixture(title, body)
+        bad = '<meta property="og:title" content="한국 수출 증가 발표"><div>본문 없는 동의 화면</div>'
+
+        def direct(*args):
+            time.sleep(0.03)
+            return good, None
+
+        def validate(text):
+            return None if extract_article_detail(text, title)["body_verified"] else "unverified article"
+
+        with patch.object(source_fetch, "_fetch_proxy", return_value=(bad, None)), \
+                patch.object(source_fetch, "_fetch_direct", side_effect=direct), \
+                patch.dict(os.environ, {"KHS_SOURCE_PROXY_URL": "https://proxy.example/fetch", "KHS_SOURCE_PROXY_FIRST": "true"}):
+            text, error = radar.base.fetch("https://www.hankyung.com/article/fixture", 1, response_validator=validate)
+            self.assertIsNone(error)
+            self.assertEqual(text, good)
+            legacy, legacy_error = radar.base.fetch("https://www.hankyung.com/article/fixture", 1)
+            self.assertIsNone(legacy_error)
+            self.assertEqual(legacy, bad)
+
+    def test_both_invalid_routes_stay_failed_with_both_reasons(self):
+        with patch.object(source_fetch, "_fetch_proxy", return_value=("wrong title", None)), \
+                patch.object(source_fetch, "_fetch_direct", return_value=("empty body", None)), \
+                patch.dict(os.environ, {"KHS_SOURCE_PROXY_URL": "https://proxy.example/fetch", "KHS_SOURCE_PROXY_FIRST": "true"}):
+            text, error = source_fetch.fetch_text(
+                "https://www.hankyung.com/article/fixture", "test", timeout=1, attempts=1,
+                response_validator=lambda text: text,
+            )
+            self.assertIsNone(text)
+            self.assertIn("proxy race", error)
+            self.assertIn("wrong title", error)
+            self.assertIn("direct race", error)
+            self.assertIn("empty body", error)
+
+    def test_sequential_validation_uses_fallback_without_changing_defaults(self):
+        with patch.object(source_fetch, "_fetch_direct", return_value=("empty body", None)), \
+                patch.object(source_fetch, "_fetch_proxy", return_value=("verified body", None)), \
+                patch.dict(os.environ, {"KHS_SOURCE_PROXY_URL": "https://proxy.example/fetch", "KHS_SOURCE_PROXY_FIRST": "false"}):
+            text, error = source_fetch.fetch_text(
+                "https://source.example/article", "test", timeout=1, attempts=1,
+                response_validator=lambda text: None if text == "verified body" else "missing body",
+            )
+            self.assertIsNone(error)
+            self.assertEqual(text, "verified body")
+            text, error = source_fetch.fetch_text("https://source.example/article", "test", timeout=1, attempts=1)
+            self.assertEqual(text, "empty body")
+            self.assertIsNone(error)
+
     def test_explicit_body_beats_all_other_article_nodes(self):
         title = "기업 신규 공장 투자계획 발표"
         body = "<p>기업이 신규 공장 투자계획을 발표했다. 생산시설 확충을 통해 공급 능력을 늘리기로 했으며 공장 가동 일정은 내년이다.</p>" * 5

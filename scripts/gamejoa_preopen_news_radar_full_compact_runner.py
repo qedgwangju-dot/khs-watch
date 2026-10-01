@@ -6198,7 +6198,18 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
         if cached:
             return row, cached, True
         fetch_url = str(row.get("_fetch_url") or row["link"])
-        detail_html, error = base.fetch(fetch_url, 16)
+        title = str(row.get("title") or "")
+
+        def validate_article_response(source_html: str) -> str | None:
+            candidate = extract_article_detail(source_html, title)
+            if candidate.get("body_verified"):
+                return None
+            return (
+                f"title/body mismatch aligned={candidate.get('title_aligned')} "
+                f"body_chars={len(str(candidate.get('body') or ''))}"
+            )
+
+        detail_html, error = base.fetch(fetch_url, 16, response_validator=validate_article_response)
         detail = extract_article_detail(detail_html, str(row.get("title") or "")) if detail_html and not error else {}
         if not error and not detail.get("body_verified"):
             error = (
