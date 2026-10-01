@@ -1715,11 +1715,11 @@ def assert_congress_chinese_optical_transceiver_bill_is_monitored() -> None:
 
 
 def assert_fcc_upper_c_band_auction115_is_monitored() -> None:
-    official = khs_trusted_policy_news_watch.OFFICIAL_DIRECT_STORIES.get(
+    official = khs_trusted_policy_news_watch.OFFICIAL_API_STORIES.get(
         "us_fcc_upper_c_band_auction115", ()
     )
-    if not any("federalregister.gov/documents/2026/08/03/2026-15725" in row[0] for row in official):
-        raise AssertionError("Official Auction 115 Federal Register source is missing")
+    if not any(row[1] == "2026-15725" and "federalregister.gov/api/v1/documents.json" in row[0] for row in official):
+        raise AssertionError("Official Auction 115 Federal Register API source is missing")
 
     rule = next(
         rule for rule in khs_trusted_policy_news_watch.STORY_RULES
