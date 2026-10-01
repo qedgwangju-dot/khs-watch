@@ -846,6 +846,12 @@ def _active_attack_signal(row):
     )
     if any(term in title for term in stop_terms):
         return False
+    conditional_terms = (
+        'whether to bomb', 'whether to strike', 'decide whether to bomb', 'decide whether to strike',
+        'bomb or deal', 'strike or deal', '폭격할지', '공습할지', '공격할지',
+    )
+    if any(term in title for term in conditional_terms):
+        return False
     active_terms = (
         'missile attack', 'drone attack', 'airstrike', 'air strike', 'attacked ',
         'attacks ', 'attack on ', 'strike on ', 'struck ', 'hit by missile',
@@ -1386,11 +1392,13 @@ def _final_item_color(row):
     if _obvious_false_positive(row):
         return ''
     marks = _marks(row)
+    if _conditional_escalation_signal(row) or '미국이란군사옵션협상갈림길' in marks:
+        return 'yellow'
     if _emergency_marks(row) or _active_attack_signal(row) or _operational_escalation_signal(row):
         return 'red'
     if any(m in marks for m in ('호르무즈기록물량회복','오만만STS기록급증','사우디원유수출회복','걸프7일평균2천만배럴','호르무즈실물정상화')):
         return 'green'
-    if _conditional_escalation_signal(row) or any(m in marks for m in ('이란중간선거전합의회의','이란선거후확전위험','미국이란군사옵션협상갈림길')):
+    if any(m in marks for m in ('이란중간선거전합의회의','이란선거후확전위험')):
         return 'yellow'
     return _prev_emergency_color(row)
 
