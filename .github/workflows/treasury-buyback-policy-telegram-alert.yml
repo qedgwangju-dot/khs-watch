@@ -36,8 +36,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install PDF parser
-        run: python -m pip install --quiet pypdf
+      - name: Install data parsers
+        run: python -m pip install --quiet pypdf xlrd
 
       - name: Validate watcher
         run: |
