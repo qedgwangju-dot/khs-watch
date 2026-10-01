@@ -142,11 +142,17 @@ def _cme_daily_bulletin_nq() -> dict:
         raise RuntimeError("CME PG11 did not return a PDF")
 
     reader = PdfReader(io.BytesIO(raw))
-    text = "\n".join(
-        (page.extract_text(extraction_mode="layout") or page.extract_text() or "")
-        for page in reader.pages
-    )
-    if "EMINI NASD FUT" not in text:
+    layout_pages = []
+    plain_pages = []
+    for page in reader.pages:
+        try:
+            layout_pages.append(page.extract_text(extraction_mode="layout") or "")
+        except TypeError:
+            layout_pages.append(page.extract_text() or "")
+        plain_pages.append(page.extract_text() or "")
+    text = "\n".join(layout_pages)
+    plain_text = "\n".join(plain_pages)
+    if "EMINI NASD FUT" not in text and "EMINI NASD FUT" not in plain_text:
         raise RuntimeError("CME PG11 EMINI NASD FUT block missing")
 
     date_m = re.search(
@@ -192,13 +198,14 @@ def _cme_daily_bulletin_nq() -> dict:
     # Use the product TOTAL line for daily NQ open interest. This keeps the OI
     # universe consistent across all listed NQ expiries instead of mixing a
     # front-contract price with a single-contract OI.
-    total_m = re.search(
+    total_pattern = (
         r"TOTAL\s+EMINI\s+NASD\s+FUT\s+"
         r"([0-9,]+|----)\s+([0-9,]+|----)\s+([0-9,]+)\s+"
-        r"(?:(UNCH)|([+-])\s*([0-9,]+))",
-        text,
-        re.I,
+        r"(?:(UNCH)|([+-])\s*([0-9,]+))"
     )
+    total_m = re.search(total_pattern, plain_text, re.I | re.S)
+    if not total_m:
+        total_m = re.search(total_pattern, text, re.I | re.S)
     total_oi = None
     total_oi_change = None
     if total_m:
@@ -209,8 +216,11 @@ def _cme_daily_bulletin_nq() -> dict:
             mag = int(total_m.group(6).replace(",", ""))
             total_oi_change = mag if total_m.group(5) == "+" else -mag
     else:
-        pos = text.find("TOTAL EMINI NASD FUT")
-        snippet = re.sub(r"\\s+", " ", text[pos:pos + 300]) if pos >= 0 else "marker-missing"
+        marker = re.search(r"TOTAL\s+EMINI\s+NASD\s+FUT", plain_text, re.I)
+        if marker:
+            snippet = re.sub(r"\s+", " ", plain_text[marker.start():marker.start() + 350])
+        else:
+            snippet = "marker-missing"
         print(f"cme_nq_total_parse_failed snippet={snippet!r}")
 
     return {
