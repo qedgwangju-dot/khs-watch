@@ -1349,6 +1349,56 @@ def _korea_memory_earnings_changes(old: dict, new: dict) -> list[str]:
     return changes
 
 
+def _extract_micron_supply_commitment(item: dict) -> dict | None:
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    if "micron" not in low and "마이크론" not in text:
+        return None
+    if "2027" not in text:
+        return None
+    m = re.search(
+        r"(?:more than\s*)?([0-9]{2,3})\s*%[^.]{0,120}?(?:output|supply|production)[^.]{0,120}?(?:committed|sold out|booked|allocated)",
+        text,
+        re.I,
+    )
+    if not m:
+        m = re.search(
+            r"(?:output|supply|production)[^.]{0,120}?(?:committed|sold out|booked|allocated)[^.]{0,120}?([0-9]{2,3})\s*%",
+            text,
+            re.I,
+        )
+    if not m:
+        return None
+    pct = float(m.group(1))
+    source = item.get("source") or "출처 미표시"
+    link = item.get("link") or ""
+    host = urllib.parse.urlparse(link).netloc.lower()
+    rank = 1
+    if "investing.com" in host or "reuters.com" in host or "barrons.com" in host:
+        rank = 2
+    if "micron.com" in host:
+        rank = 3
+    return {
+        "commitment_year": 2027,
+        "output_committed_min_pct": pct,
+        "source": source,
+        "source_url": link,
+        "as_of": (item.get("published_kst") or "")[:10],
+        "source_rank": rank,
+    }
+
+
+def _micron_supply_commitment_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+    a, b = old.get("output_committed_min_pct"), new.get("output_committed_min_pct")
+    if b is not None:
+        if a is None:
+            changes.append(f"Micron 2027 공급 확약 비중: {float(b):.0f}%+ 신규 확인")
+        elif abs(float(b) - float(a)) >= 5:
+            changes.append(f"Micron 2027 공급 확약 비중: {float(a):.0f}%+→{float(b):.0f}%+")
+    return changes
+
+
 def _merge_bernstein_memory_cycle(old: dict, obs: dict) -> dict:
     merged = dict(old or {})
     old_rank = int(merged.get("source_rank") or 0)
