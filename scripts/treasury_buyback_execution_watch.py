@@ -29,7 +29,7 @@ TITLE = OUT / "treasury_buyback_media_title.txt"
 DETAIL = OUT / "treasury_buyback_media_detail.json"
 STATUS = OUT / "treasury_buyback_media_status.md"
 
-FORMAT_REVISION = 12
+FORMAT_REVISION = 13
 
 # Official structured source. The public HTML results page is JS-rendered and
 # previously caused a missed 2026-09-10 result, so execution fingerprints must
@@ -324,15 +324,17 @@ def yield_reaction_lines(op_date: str) -> tuple[list[str], dict | None]:
     d210 = reaction["d2s10s_bp"]
     d230 = reaction["d2s30s_bp"]
     return [
-        "<b>집행 당일 금리 결과 — 미 재무부 공식 CMT</b>",
+        "<b>집행 당일 금리 결과 — 미 재무부 공식 CMT(약 오후 3:30 ET)</b>",
         (
             f"• 2년 {cur['2y']:.2f}% ({c['2y']:+.1f}bp) | "
             f"10년 {cur['10y']:.2f}% ({c['10y']:+.1f}bp) | "
             f"20년 {cur['20y']:.2f}% ({c['20y']:+.1f}bp) | "
             f"30년 {cur['30y']:.2f}% ({c['30y']:+.1f}bp)"
         ),
+        f"• 비교 기준: 전 영업일({reaction['prev_date']})의 같은 공식 CMT 스냅샷",
         f"• 2년-10년 금리차 변화 {d210:+.1f}bp | 2년-30년 금리차 변화 {d230:+.1f}bp",
         f"• 판정: <b>{_yield_verdict(reaction)}</b>",
+        "• CMT는 거래소 종가가 아니라 뉴욕연은이 각 거래일 약 오후 3:30 ET에 수집한 지표성 매수호가를 바탕으로 재무부가 산출한 금리입니다. 일중 고점·저점은 별도 시장자료로 확인합니다.",
         "• 주의: 같은 날 금리 변화에는 연준 발언·물가·유가·재정·국채 공급 등도 함께 작용하므로 바이백만의 인과효과로 단정하지 않습니다.",
         f'<a href="{TREASURY_YIELD_PAGE}">미 재무부 공식 금리</a>',
     ], reaction
@@ -443,12 +445,12 @@ def build_yield_followup(op_date: str, reaction: dict) -> tuple[str, str, dict]:
     lines, _ = yield_reaction_lines(op_date)
     cur = reaction["current"]
     title = (
-        "📉 미 재무부 장기물 바이백 당일 금리 확정 — "
+        "📉 미 재무부 장기물 바이백 당일 CMT 확인 — "
         f"10년 {cur['10y']:.2f}%·30년 {cur['30y']:.2f}%"
     )
     body = "\n".join(
         [
-            "<b>🎯 바이백 집행 후 공식 종가 확인</b>",
+            "<b>🎯 바이백 집행 후 공식 CMT 확인</b>",
             f"• 운영일: {op_date}",
             *lines,
             "",
@@ -524,6 +526,13 @@ def build_alert(row: dict, fx: float, fx_date: str) -> tuple[str, str, dict]:
         ]
 
     rate_lines, reaction = yield_reaction_lines(op_date)
+    op_start = str(row.get("operation_start_time_est") or "").strip()
+    op_close = str(row.get("operation_close_time_est") or "").strip()
+    if op_start and op_close and reaction:
+        rate_lines.insert(
+            1,
+            f"• 바이백 운영 {op_start}~{op_close} ET 종료 후 약 오후 3:30 ET의 공식 CMT 스냅샷입니다.",
+        )
     lines += [""] + rate_lines
     lines += [""] + auction_lines(op_date)
 
