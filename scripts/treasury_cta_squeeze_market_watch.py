@@ -185,10 +185,21 @@ def resilient_snapshot() -> dict:
 
 
 def squeeze_evidence(current: dict, previous: dict) -> list[str]:
+    """Fail closed on mixed-frequency fallbacks.
+
+    A Yahoo/delayed daily price plus CFTC weekly whole-market OI is useful context,
+    but it is not a same-period price↑+OI↓ confirmation. Only official CME daily
+    contract OI can produce an evidence signal; the execution wrapper installs the
+    exact same-day implementation when Section09 parses successfully.
+    """
     signals = []
     prev_cme = previous.get("cme", {}) if isinstance(previous, dict) else {}
     for symbol, row in (current.get("cme") or {}).items():
         if not row:
+            continue
+        oi_source = str(row.get("oi_source") or "")
+        source_type = str(row.get("source_type") or "")
+        if "CFTC TFF 주간" in oi_source or "Yahoo" in source_type:
             continue
         prev = prev_cme.get(symbol) or {}
         pct = row.get("pct_change")
@@ -196,8 +207,7 @@ def squeeze_evidence(current: dict, previous: dict) -> list[str]:
         prev_oi = prev.get("open_interest")
         label = row.get("display_symbol") or symbol
         if pct is not None and pct > 0 and oi and prev_oi and oi < prev_oi:
-            freq = "주간 " if "CFTC TFF 주간" in str(row.get("oi_source") or "") else ""
-            signals.append(f"{label} 가격↑({pct:+.2f}%) + {freq}OI↓({prev_oi:,}→{oi:,}) = 숏커버 확인 강화")
+            signals.append(f"{label} 공식 동일빈도 가격↑({pct:+.2f}%) + OI↓({prev_oi:,}→{oi:,})")
     return signals
 
 
