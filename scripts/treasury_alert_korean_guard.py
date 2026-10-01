@@ -39,6 +39,7 @@ EIA_BRENT_PAGE = "https://www.eia.gov/dnav/pet/hist/rbrteD.htm"
 TREASURY_NOMINAL_XML = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value={year}"
 TREASURY_REAL_XML = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_real_yield_curve&field_tdr_date_value={year}"
 NYFED_TERM_PREMIA = "https://www.newyorkfed.org/research/data_indicators/term-premia-tabs"
+NYFED_ACM_XLS = "https://www.newyorkfed.org/medialibrary/media/research/data_indicators/ACMTermPremium.xls"
 
 SERIES = {
     "fx": "DEXKOUS",
@@ -246,6 +247,68 @@ def fetch_treasury_10y_rows(real: bool = False) -> list[tuple[str, float]]:
     return out
 
 
+def fetch_nyfed_term_premium_rows() -> list[tuple[str, float]]:
+    """Read the NY Fed ACM daily 10-year term-premium series from its primary XLS."""
+    import xlrd
+
+    raw = _url_bytes(NYFED_ACM_XLS, timeout=20)
+    book = xlrd.open_workbook(file_contents=raw)
+    sheet = None
+    for name in book.sheet_names():
+        if "daily" in name.lower():
+            sheet = book.sheet_by_name(name)
+            break
+    if sheet is None:
+        raise RuntimeError("NY Fed ACM 일별 시트를 찾지 못했습니다.")
+
+    header_row = None
+    date_col = None
+    tp_col = None
+    for r in range(min(sheet.nrows, 20)):
+        headers = [str(sheet.cell_value(r, col)).strip() for col in range(sheet.ncols)]
+        upper = [h.upper() for h in headers]
+        if "DATE" in upper and "ACMTP10" in upper:
+            header_row = r
+            date_col = upper.index("DATE")
+            tp_col = upper.index("ACMTP10")
+            break
+    if header_row is None or date_col is None or tp_col is None:
+        raise RuntimeError("NY Fed ACM DATE/ACMTP10 열을 찾지 못했습니다.")
+
+    rows: list[tuple[str, float]] = []
+    for r in range(header_row + 1, sheet.nrows):
+        dv = sheet.cell_value(r, date_col)
+        tv = sheet.cell_value(r, tp_col)
+        if tv in ("", None):
+            continue
+        try:
+            value = float(tv)
+        except Exception:
+            continue
+
+        d: date | None = None
+        if isinstance(dv, (int, float)) and dv:
+            try:
+                d = xlrd.xldate_as_datetime(float(dv), book.datemode).date()
+            except Exception:
+                d = None
+        else:
+            s = str(dv).strip()
+            for fmt in ("%d-%b-%Y", "%Y-%m-%d", "%m/%d/%Y"):
+                try:
+                    d = datetime.strptime(s, fmt).date()
+                    break
+                except ValueError:
+                    continue
+        if d is not None:
+            rows.append((d.isoformat(), value))
+
+    rows.sort(key=lambda x: x[0])
+    if len(rows) < 2:
+        raise RuntimeError("NY Fed ACM 일별 10년 기간프리미엄 관측치 부족")
+    return rows
+
+
 def latest_two(rows: list[tuple[str, float]]) -> tuple[tuple[str, float], tuple[str, float]]:
     return rows[-2], rows[-1]
 
@@ -376,7 +439,12 @@ def build_causal_snapshot() -> dict:
         "source": NYFED_TERM_PREMIA,
     }
     try:
-        term_rows = fetch_series(SERIES["term10"])
+        try:
+            term_rows = fetch_nyfed_term_premium_rows()
+            term_source = "NY Fed ACM primary XLS"
+        except Exception as primary_exc:
+            term_rows = fetch_series(SERIES["term10"])
+            term_source = f"FRED Kim-Wright fallback; NY Fed ACM failed: {type(primary_exc).__name__}"
         term_prev, term_cur = latest_two(term_rows)
         changes["term_bp"] = bp(term_cur[1], term_prev[1])
         term_latest.update({
@@ -386,6 +454,7 @@ def build_causal_snapshot() -> dict:
             "date": term_cur[0],
             "value": term_cur[1],
             "change_bp": changes["term_bp"],
+            "data_source": term_source,
         })
     except Exception as exc:
         term_latest["error"] = f"{type(exc).__name__}: {exc}"
@@ -448,7 +517,7 @@ def causal_block(snapshot: dict) -> str:
     c = snapshot["common_changes"]
     t = snapshot.get("term_latest") or {}
     if t.get("available") and t.get("value") is not None:
-        term_line = f"• 10년 기간프리미엄(보조): {t['value']:.4f}% ({t['change_bp']:+.1f}bp, {t['date']} 기준)"
+        term_line = f"• 10년 기간프리미엄(보조): {t['value']:.4f}% ({t['change_bp']:+.1f}bp, {t['date']} 기준 · {t.get('data_source','NY Fed ACM')})"
     else:
         term_line = "• 10년 기간프리미엄(보조): 이번 실행 확인 보류 — 핵심 판정은 EIA·미 재무부 원자료로 계속"
     return "\n".join([
