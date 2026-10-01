@@ -294,6 +294,7 @@ def extract_article_detail(html_text: str, listing_title: str = "") -> dict:
     parser = ArticleHTMLParser()
     try:
         parser.feed(html_text or "")
+        parser.close()
     except Exception:
         return {
             "title": "",

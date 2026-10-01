@@ -193,6 +193,7 @@ class SourceIsolationChecks(unittest.TestCase):
         parser = ArticleHTMLParser()
         for start in range(0, len(source), 7):
             parser.feed(source[start:start + 7])
+        parser.close()
         self.assertEqual(len(parser.json_ld_parts), 2)
         detail = extract_article_detail(source, title)
         self.assertTrue(detail["body_verified"])
@@ -242,6 +243,7 @@ def verify_live_source_boundaries() -> None:
             source = response.read().decode(response.headers.get_content_charset() or "utf-8", errors="replace")
         parser = ArticleHTMLParser()
         parser.feed(source)
+        parser.close()
         detail = extract_article_detail(source)
         assert detail["body_verified"] and parser.target_bodies, f"Unverified explicit source body: {url}"
         assert all(anchor in detail["body"] for anchor in anchors), f"Missing article facts: {url}"
