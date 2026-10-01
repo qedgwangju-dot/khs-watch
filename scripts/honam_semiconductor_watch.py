@@ -66,6 +66,13 @@ QUERIES = [
     'site:jeonnam.go.kr "호남권 반도체"',
     'site:molit.go.kr "호남권 반도체"',
     'site:motie.go.kr "호남권 반도체"',
+    'site:president.go.kr "남부권 반도체"',
+    'site:president.go.kr "호남 반도체"',
+    'site:korea.kr "남부권 반도체"',
+    'site:korea.kr "호남권 계통관리변전소"',
+    'site:mcee.go.kr "호남권 계통관리변전소"',
+    'site:mcee.go.kr "호남 반도체"',
+    'site:kepco.co.kr "호남 반도체"',
     'site:me.go.kr "장록습지" 람사르',
     'site:ramsar.org Jangrok Korea wetland',
 ]
@@ -246,12 +253,42 @@ def why_it_matters(stages):
     return "호남 반도체 국가산단 진행상황과 직접 연결"
 
 
+def fetch_article_excerpt(url: str, limit: int = 12000) -> str:
+    if not url or (urllib.parse.urlparse(url).hostname or "").lower() == "news.google.com":
+        return ""
+    try:
+        raw = fetch(url, timeout=20)
+        text = clean_text(raw.decode("utf-8", errors="ignore"))
+        return text[:limit]
+    except Exception:
+        return ""
+
+
 def compact_news_item(item):
     resolved_url, resolved = resolve_google_news_url(item.get("link", ""))
     stages = item.get("stages", [])
     host = (urllib.parse.urlparse(resolved_url).hostname or "").lower()
-    official = any(host == h or host.endswith("." + h) for h in ["lh.or.kr", "gwangju.go.kr", "jeonnam.go.kr", "molit.go.kr", "motie.go.kr", "me.go.kr", "ramsar.org", "korea.kr"])
-    return {"title": item.get("title", ""), "description": item.get("description", ""), "source": identify_publisher(resolved_url, item.get("source", "")), "published": item.get("pubDate", ""), "url": resolved_url, "url_resolved": resolved, "source_status": "공식자료" if official else "보도 단계", "stages": stages, "stage_labels": [STAGE_LABELS.get(s, s) for s in stages], "impact": item.get("impact", "영향 확인 필요"), "reason": why_it_matters(stages)}
+    official_hosts = [
+        "lh.or.kr", "gwangju.go.kr", "jeonnam.go.kr", "molit.go.kr", "motie.go.kr",
+        "me.go.kr", "mcee.go.kr", "president.go.kr", "ramsar.org", "korea.kr",
+        "nars.go.kr", "kepco.co.kr", "kwater.or.kr",
+    ]
+    official = any(host == h or host.endswith("." + h) for h in official_hosts)
+    excerpt = fetch_article_excerpt(resolved_url) if resolved else ""
+    return {
+        "title": item.get("title", ""),
+        "description": item.get("description", ""),
+        "body_excerpt": excerpt,
+        "source": identify_publisher(resolved_url, item.get("source", "")),
+        "published": item.get("pubDate", ""),
+        "url": resolved_url,
+        "url_resolved": resolved,
+        "source_status": "공식자료" if official else "보도 단계",
+        "stages": stages,
+        "stage_labels": [STAGE_LABELS.get(s, s) for s in stages],
+        "impact": item.get("impact", "영향 확인 필요"),
+        "reason": why_it_matters(stages),
+    }
 
 
 def load_state():
