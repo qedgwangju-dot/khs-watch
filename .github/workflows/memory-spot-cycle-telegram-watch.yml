@@ -37,10 +37,11 @@ jobs:
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs88798879887988798879_bot"
     steps:
-      - name: Checkout
+      - name: Checkout latest production main
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: main
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -87,6 +88,73 @@ jobs:
         if: hashFiles('out/memory_spot_cycle_watch_telegram.txt') != ''
         run: python scripts/currency_krw_guard.py out/memory_spot_cycle_watch_telegram.txt
 
+      - name: Suppress already-confirmed semantic duplicate
+        if: hashFiles('out/memory_spot_cycle_watch_telegram.txt') != ''
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import pathlib
+          import re
+          import subprocess
+
+          alert_path = pathlib.Path("out/memory_spot_cycle_watch_telegram.txt")
+          text = alert_path.read_text(encoding="utf-8").strip()
+
+          def semantic_signature(value: str) -> str:
+              value = re.sub(
+                  r"조회\s+\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}\s+KST",
+                  "조회 <TIME> KST",
+                  value,
+              )
+              value = re.sub(r"[ \t]+", " ", value)
+              value = re.sub(r"\n{3,}", "\n\n", value).strip()
+              return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+          sig = semantic_signature(text)
+          pathlib.Path("out/memory_spot_cycle_watch_alert_signature.txt").write_text(
+              sig + "\n", encoding="utf-8"
+          )
+
+          subprocess.run(
+              ["git", "fetch", "--quiet", "origin", "main"],
+              check=True,
+          )
+          try:
+              raw = subprocess.check_output(
+                  ["git", "show", "origin/main:data/memory_spot_cycle_watch_state.json"],
+                  text=True,
+              )
+              remote_state = json.loads(raw)
+          except Exception:
+              remote_state = {}
+
+          receipt = remote_state.get("delivery_receipt") or {}
+          previous_sig = str(receipt.get("alert_signature") or "")
+          if previous_sig and previous_sig == sig:
+              alert_path.unlink(missing_ok=True)
+              pathlib.Path("out/memory_spot_cycle_watch_duplicate_suppressed.json").write_text(
+                  json.dumps(
+                      {
+                          "status": "duplicate_suppressed",
+                          "reason": "same semantic alert already confirmed on origin/main",
+                          "alert_signature": sig,
+                          "existing_message_ids": receipt.get("message_ids") or [],
+                          "existing_confirmed_at_kst": receipt.get("confirmed_at_kst"),
+                      },
+                      ensure_ascii=False,
+                      indent=2,
+                  ) + "\n",
+                  encoding="utf-8",
+              )
+              print(
+                  "memory_semantic_duplicate_suppressed=true "
+                  f"signature={sig} existing_message_ids={receipt.get('message_ids') or []}"
+              )
+          else:
+              print(f"memory_semantic_duplicate_suppressed=false signature={sig}")
+          PY
+
       - name: Send meaningful memory change to Telegram
         if: hashFiles('out/memory_spot_cycle_watch_telegram.txt') != ''
         env:
@@ -95,9 +163,11 @@ jobs:
         run: |
           python - <<'PY'
           import datetime as dt
+          import hashlib
           import json
           import os
           import pathlib
+          import re
           import urllib.parse
           import urllib.request
           from zoneinfo import ZoneInfo
@@ -156,11 +226,21 @@ jobs:
                   raise RuntimeError(f"Telegram rejected message: {result}")
               ids.append((result.get("result") or {}).get("message_id"))
 
+          normalized = re.sub(
+              r"조회\s+\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}\s+KST",
+              "조회 <TIME> KST",
+              text,
+          )
+          normalized = re.sub(r"[ \t]+", " ", normalized)
+          normalized = re.sub(r"\n{3,}", "\n\n", normalized).strip()
+          alert_signature = hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+
           confirmed = {
               "status": "confirmed",
               "bot_username": username,
               "message_ids": ids,
               "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+              "alert_signature": alert_signature,
           }
           pathlib.Path("out/memory_spot_cycle_watch_telegram_confirmed.json").write_text(
               json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
@@ -322,5 +402,7 @@ jobs:
             out/memory_spot_cycle_watch_telegram.txt
             out/memory_spot_cycle_watch_pending_state.json
             out/memory_spot_cycle_watch_telegram_confirmed.json
+            out/memory_spot_cycle_watch_alert_signature.txt
+            out/memory_spot_cycle_watch_duplicate_suppressed.json
           if-no-files-found: ignore
           retention-days: 14
