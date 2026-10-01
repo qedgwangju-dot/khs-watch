@@ -138,6 +138,27 @@ BERNSTEIN_MEMORY_CYCLE_BASELINE = {
     "source_rank": 2,
     "as_of": "2026-09-30",
 }
+KOREA_MEMORY_EARNINGS_TRACK_VERSION = 1
+KOREA_MEMORY_EARNINGS_BASELINE = {
+    "current_year": 2026,
+    "current_combined_op_krw_trn": 640.0,
+    "current_samsung_op_krw_trn": 380.0,
+    "current_skhynix_op_krw_trn": 260.0,
+    "next_year": 2027,
+    "next_combined_op_krw_trn": 950.0,
+    "next_samsung_op_krw_trn": 550.0,
+    "next_skhynix_op_krw_trn": 400.0,
+    "implied_growth_pct": 48.4375,
+    "hbm_asp_yoy_pct": 121.0,
+    "current_driver": "범용 DRAM",
+    "next_driver": "HBM 가격·제품혼합 확대",
+    "source": "BusinessPost",
+    "source_kind": "BusinessPost가 FnGuide 컨센서스와 TrendForce 전망을 인용한 2차 보도",
+    "source_url": "https://www.businesspost.co.kr/BP?command=article_view&num=448333",
+    "trendforce_url": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
+    "as_of": "2026-09-30",
+    "source_rank": 2,
+}
 TREND_PINNED_PRESS_URLS = [
     "https://www.trendforce.com/presscenter/news/20260930-13258.html",
     "https://www.trendforce.com/presscenter/news/20260929-13255.html",
