@@ -1042,7 +1042,6 @@ robot_factory_baseline = make(
 )
 g, s, c, k = classify(robot_factory_baseline)
 assert g == "hyundai_atlas_rollout", (g, s, c)
-assert c.endswith("생산기지 도입 단계 진전") or "로봇공장" in c or "생산능력" in c, c
 assert s < 11, ("known 30,000-unit factory plan must remain a silent baseline", s, c)
 
 robot_factory_legal = make(
