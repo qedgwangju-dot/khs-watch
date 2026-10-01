@@ -54,6 +54,13 @@ MIDEAST_EXPORT_SNAPSHOT_URLS = (
     "https://in.marketscreener.com/news/"
     "mideast-oil-exports-rebound-in-september-as-saudi-arabia-boosts-shipments-ce785addd888f724",
 )
+MIDEAST_PRODUCT_GAP_URLS = (
+    "https://getnews.co.kr/news/articleView.html?idxno=882308",
+    "https://www.moneycontrol.com/news/business/"
+    "mideast-crude-oil-flows-hit-98-of-pre-war-level-jpmorgan-says-14041480.html",
+    "https://www.businesstimes.com.sg/companies-markets/energy-commodities/"
+    "jpmorgan-and-goldman-see-middle-east-oil-flows-near-pre-war-levels/",
+)
 
 NEWS_QUERIES = (
     'Iran ceasefire agreement OR Iran truce agreement OR "US Iran ceasefire" when:3d',
@@ -74,6 +81,14 @@ NEWS_QUERIES = (
     '"Yanbu" crude loadings resume East-West Pipeline when:3d',
     '"Middle East crude exports" September Kpler Reuters when:3d',
     '"Hormuz" "80% of prewar" oil flows Kpler when:3d',
+    '"Middle East crude" 98% pre-war JPMorgan when:3d',
+    '"17.5 million barrels" JPMorgan Middle East oil when:3d',
+    '"product flows" 58% diesel gasoline JPMorgan Middle East when:3d',
+    'JP모건 중동 원유 수출 98% 정제유 58% when:3d',
+    '"diesel export ban" Trump White House when:3d',
+    '"diesel export restrictions" voluntary US when:3d',
+    '"diesel export ban" considering Trump when:3d',
+    '미국 디젤 수출 금지 검토 백악관 when:3d',
     '"Gulf crude" India 1.52 million bpd Kpler September when:7d',
     '"Saudi Arabia resumes oil exports" Yanbu East-West Pipeline when:3d',
     '"East-West pipeline starts exports" Saudi Yanbu when:3d',
@@ -117,6 +132,11 @@ TRUSTED_SOURCE_ALIASES = (
     "ap통신",
     "블룸버그",
     "bbc 코리아",
+    "business times",
+    "moneycontrol",
+    "livemint",
+    "mint",
+    "news1",
     "kpler",
     "vortexa",
     "saudi ministry of energy",
@@ -172,6 +192,8 @@ EVENT_LABELS = {
     "sts_reroute_expansion": "걸프오브오만 STS 우회 물류 급증·병목",
     "east_west_pipeline_recovery": "사우디 East-West Pipeline 실물 회복",
     "regional_export_recovery": "중동 원유 수출 회복 단계 상향",
+    "crude_product_divergence": "중동 원유 98% 회복·정제품 병목",
+    "us_diesel_export_policy": "미국 디젤 수출정책 단계 변화",
     "india_gulf_import_recovery": "인도 걸프산 원유 유입 회복",
 }
 DATA_PROVIDER_ALIASES = ("kpler", "vortexa", "jodi")
@@ -267,7 +289,40 @@ def source_is_trusted(source: str) -> bool:
 
 def classify_event(title: str) -> str | None:
     low = normalize_text(title)
-    if not low or any(phrase in low for phrase in NEGATIVE_OR_TENTATIVE_PHRASES):
+    if not low:
+        return None
+
+    diesel_policy_context = any(
+        term in low
+        for term in (
+            "diesel export ban", "diesel-export ban", "diesel export restriction",
+            "diesel-export restriction", "diesel export cap", "diesel-export cap",
+            "디젤 수출 금지", "디젤 수출 제한", "경유 수출 금지", "경유 수출 제한",
+        )
+    )
+    us_policy_actor = any(
+        term in low
+        for term in (
+            "white house", "trump", "u.s.", "united states", "energy secretary",
+            "백악관", "트럼프", "미국", "에너지장관",
+        )
+    )
+    if diesel_policy_context and us_policy_actor:
+        return "us_diesel_export_policy"
+
+    jpmorgan_recovery_context = (
+        ("jpmorgan" in low or "jp모건" in low or "jp 모건" in low)
+        and any(term in low for term in ("middle east", "mideast", "중동"))
+        and any(term in low for term in ("98% of pre-war", "98% of prewar", "98% 복구", "98% 회복", "17.5 million"))
+    )
+    product_gap_context = (
+        any(term in low for term in ("product flows", "refined product", "diesel and gasoline", "정제유", "정제품"))
+        and any(term in low for term in ("58%", "3 million", "3.0 mbd"))
+    )
+    if jpmorgan_recovery_context or product_gap_context:
+        return "crude_product_divergence"
+
+    if any(phrase in low for phrase in NEGATIVE_OR_TENTATIVE_PHRASES):
         return None
 
     has_iran = "iran" in low or "이란" in low
@@ -663,6 +718,11 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
     except Exception as exc:
         errors.append(f"Reuters/Kpler regional direct: {type(exc).__name__}: {exc}")
 
+    try:
+        items.append(fetch_jpmorgan_product_gap_snapshot(current))
+    except Exception as exc:
+        errors.append(f"JPMorgan crude/product direct: {type(exc).__name__}: {exc}")
+
     unique: dict[tuple[str, str, str], NewsItem] = {}
     for item in items:
         key = (normalize_text(item.source), normalize_text(item.title), item.event_kind)
@@ -690,9 +750,13 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             "kpler" in normalize_text(row.source)
             for row in selected
         )
+        broker_snapshot = kind == "crude_product_divergence" and any(
+            "jpmorgan via bloomberg" in normalize_text(row.source)
+            for row in selected
+        )
         pipeline_cross_checked = kind == "east_west_pipeline_recovery" and len(selected) >= minimum_sources
 
-        if len(selected) >= minimum_sources or has_primary_data or regional_primary or pipeline_cross_checked:
+        if len(selected) >= minimum_sources or has_primary_data or regional_primary or broker_snapshot or pipeline_cross_checked:
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
 
     candidates.sort(key=lambda value: value[0], reverse=True)
@@ -818,6 +882,20 @@ def load_state(path: pathlib.Path = STATE_PATH) -> dict:
 
 def event_id(kind: str, rows: list[NewsItem]) -> str:
     combined = " ".join(normalize_text(row.title) for row in rows)
+
+    if kind == "us_diesel_export_policy":
+        stage = _diesel_policy_stage(combined)
+        basis = f"{kind}|{stage}"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
+
+    if kind == "crude_product_divergence":
+        metrics = _extract_crude_product_gap_metrics(rows)
+        crude_pct = float(metrics.get("crude_pct") or 0.0)
+        product_pct = float(metrics.get("product_pct") or 0.0)
+        crude_band = int(crude_pct // 5 * 5) if crude_pct else 0
+        product_band = int(product_pct // 5 * 5) if product_pct else 0
+        basis = f"{kind}|crude_{crude_band}|products_{product_band}"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
     if kind == "regional_export_recovery":
         values = [
@@ -1109,6 +1187,200 @@ def _pipeline_exports_resumed(news_rows: list[NewsItem]) -> bool:
     return any(phrase in text for phrase in phrases)
 
 
+def parse_jpmorgan_product_gap_snapshot(
+    raw_html: str,
+    current: dt.datetime,
+    source_url: str,
+) -> NewsItem:
+    text = _visible_text(raw_html)
+    crude = re.search(
+        r"(?:shipments\s+of\s+crude\s+oil.*?|crude\s+(?:oil\s+)?(?:flows|shipments).*?)"
+        r"([0-9]+(?:\.[0-9]+)?)\s+million\s+barrels\s+(?:a|per)\s+day.*?"
+        r"([0-9]+(?:\.[0-9]+)?)\s*%\s+of\s+pre-war",
+        text, flags=re.I,
+    )
+    products = re.search(
+        r"(?:flows|shipments)\s+of\s+(?:oil\s+)?products.*?"
+        r"([0-9]+(?:\.[0-9]+)?)\s+million\s+barrels\s+(?:a|per)\s+day.*?"
+        r"([0-9]+(?:\.[0-9]+)?)\s*%",
+        text, flags=re.I,
+    )
+    if not products:
+        products = re.search(
+            r"products\s+such\s+as\s+diesel\s+and\s+(?:gasoline|petrol).*?"
+            r"([0-9]+(?:\.[0-9]+)?)\s+million\s+barrels\s+(?:a|per)\s+day.*?"
+            r"([0-9]+(?:\.[0-9]+)?)\s*%",
+            text, flags=re.I,
+        )
+    overall = re.search(r"overall\s+figure\s+was\s+([0-9]+(?:\.[0-9]+)?)\s*%\s+of\s+2025", text, flags=re.I)
+    hormuz = re.search(
+        r"(?:Hormuz|Strait\s+of\s+Hormuz).*?(?:nearly|about|almost)?\s*"
+        r"([0-9]+(?:\.[0-9]+)?)\s+million\s+barrels\s+(?:a|per)\s+day",
+        text, flags=re.I,
+    )
+    if not crude or not products:
+        raise RuntimeError("JPMorgan crude/product gap metrics not found")
+    crude_mbd = float(crude.group(1))
+    crude_pct = float(crude.group(2))
+    product_mbd = float(products.group(1))
+    product_pct = float(products.group(2))
+    overall_pct = float(overall.group(1)) if overall else None
+    hormuz_mbd = float(hormuz.group(1)) if hormuz else None
+    extra = []
+    if overall_pct is not None:
+        extra.append(f"overall {overall_pct:.0f}% of 2025")
+    if hormuz_mbd is not None:
+        extra.append(f"Hormuz {hormuz_mbd:.1f} Mbd")
+    suffix = "; " + "; ".join(extra) if extra else ""
+    title = (
+        f"JPMorgan Middle East crude/product snapshot crude {crude_mbd:.1f} Mbd "
+        f"{crude_pct:.0f}% pre-war; products {product_mbd:.1f} Mbd "
+        f"{product_pct:.0f}% pre-war{suffix}"
+    )
+    return NewsItem(
+        title=title,
+        source="JPMorgan via Bloomberg",
+        link=source_url,
+        published_utc=current.isoformat().replace("+00:00", "Z"),
+        published_epoch=current.timestamp(),
+        event_kind="crude_product_divergence",
+    )
+
+
+def fetch_jpmorgan_product_gap_snapshot(current: dt.datetime) -> NewsItem:
+    errors: list[str] = []
+    for url in MIDEAST_PRODUCT_GAP_URLS:
+        try:
+            raw = fetch_bytes(url, timeout=25, attempts=2).decode("utf-8", errors="replace")
+            return parse_jpmorgan_product_gap_snapshot(raw, current, url)
+        except Exception as exc:
+            errors.append(f"{url}: {type(exc).__name__}: {exc}")
+    raise RuntimeError(" | ".join(errors))
+
+
+def _extract_crude_product_gap_metrics(news_rows: list[NewsItem]) -> dict[str, float | None]:
+    text = " ".join(normalize_text(row.title) for row in news_rows)
+    def grab(pattern: str) -> float | None:
+        match = re.search(pattern, text, flags=re.I)
+        return float(match.group(1)) if match else None
+    crude_mbd = grab(r"crude\s+([0-9]+(?:\.[0-9]+)?)\s+mbd")
+    crude_pct = grab(r"crude.*?([0-9]+(?:\.[0-9]+)?)%\s+pre-war")
+    if crude_pct is None:
+        crude_pct = grab(r"([0-9]+(?:\.[0-9]+)?)%\s+(?:of\s+)?pre-war")
+    product_mbd = grab(r"products?\s+([0-9]+(?:\.[0-9]+)?)\s+mbd")
+    product_pct = grab(r"products?.*?([0-9]+(?:\.[0-9]+)?)%\s+pre-war")
+    overall_pct = grab(r"overall\s+([0-9]+(?:\.[0-9]+)?)%\s+of\s+2025")
+    hormuz_mbd = grab(r"hormuz\s+([0-9]+(?:\.[0-9]+)?)\s+mbd")
+    return {
+        "crude_mbd": crude_mbd, "crude_pct": crude_pct,
+        "product_mbd": product_mbd, "product_pct": product_pct,
+        "overall_pct": overall_pct, "hormuz_mbd": hormuz_mbd,
+        "gap_pp": crude_pct - product_pct if crude_pct is not None and product_pct is not None else None,
+    }
+
+
+def _diesel_policy_stage(text_or_rows: str | list[NewsItem]) -> str:
+    text = normalize_text(text_or_rows) if isinstance(text_or_rows, str) else " ".join(normalize_text(row.title) for row in text_or_rows)
+    if any(term in text for term in ("takes effect", "effective immediately", "ban effective", "금지 시행", "시행")):
+        return "effective"
+    if any(term in text for term in ("denies", "denied", "rules out", "not considering", "부인", "검토하지")):
+        return "denied"
+    if any(term in text for term in ("withdraw", "drops plan", "abandons", "철회", "백지화")):
+        return "withdrawn"
+    if any(term in text for term in ("announces ban", "announced ban", "imposes ban", "90-day ban", "금지 발표", "금지 결정")):
+        return "announced"
+    if any(term in text for term in ("voluntary restriction", "voluntary cap", "voluntary limit", "자발적 제한", "자율 제한")):
+        return "voluntary"
+    if any(term in text for term in ("supports diesel export ban", "backs the idea", "called for", "지지", "요구")):
+        return "supports"
+    if any(term in text for term in ("considering", "weighs", "weighing", "review", "검토", "논의")):
+        return "considering"
+    return "policy_change"
+
+
+def _build_crude_product_gap_alert_body(
+    news_rows: list[NewsItem], oil: Quote | None, current: dt.datetime, fx: Quote | None,
+) -> str:
+    m = _extract_crude_product_gap_metrics(news_rows)
+    lines = [current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"), "", "[한눈에]"]
+    if m.get("crude_mbd") is not None and m.get("crude_pct") is not None:
+        lines.append(f"원유          {m['crude_mbd']:.1f} Mbd · 전쟁 전의 {m['crude_pct']:.0f}%")
+    if m.get("product_mbd") is not None and m.get("product_pct") is not None:
+        lines.append(f"정제품        {m['product_mbd']:.1f} Mbd · 전쟁 전의 {m['product_pct']:.0f}%")
+    if m.get("gap_pp") is not None:
+        lines.append(f"회복 격차     {m['gap_pp']:.0f}%p · 원유 정상화 ≠ 연료시장 정상화")
+    if m.get("hormuz_mbd") is not None:
+        lines.append(f"호르무즈      약 {m['hormuz_mbd']:.1f} Mbd")
+    if m.get("overall_pct") is not None:
+        lines.append(f"전체 흐름     2025년의 {m['overall_pct']:.0f}%")
+    market=[]
+    if oil is not None:
+        direction="↓" if oil.change<0 else "↑" if oil.change>0 else "→"
+        market.append(f"Brent USD {oil.price:.2f} {oil.change_pct:+.2f}% {direction}")
+    if fx is not None:
+        won="약세" if fx.change>0 else "강세" if fx.change<0 else "보합"
+        market.append(f"원·달러 {fx.price:,.2f}원 {fx.change_pct:+.2f}% · 원화 {won}")
+    if market:
+        lines.append("시장          "+" | ".join(market))
+    lines.extend([
+        "", "[핵심 의미]",
+        "원유 자체의 부족은 크게 완화됐지만 경유·휘발유 등 정제품 회복은 훨씬 느립니다.",
+        "→ 병목이 원유 물량에서 정제시설·정제품·운송·보험으로 이동하는지 확인해야 합니다.",
+        "", "[한국 전이]",
+        "정유          정제품 부족이 지속되면 디젤·항공유 정제마진이 원유보다 강할 수 있음",
+        "항공·운송     Brent가 내려도 실제 연료비가 같은 속도로 내려가지 않을 수 있음",
+        "물가·금리     정제품 가격·원·달러가 높으면 수입물가 완화가 지연될 수 있음",
+        "", "[다음 체크]",
+        "정제품        58% → 70% → 85% → 95% 회복 여부",
+        "실물          호르무즈 약 13 Mbd 유지 · East-West Pipeline 추가 복구",
+        "시장          디젤·항공유 정제마진 · VLCC 운임 · Brent · 원·달러",
+        "정책          미국 디젤 수출 제한·금지 단계 변화",
+        "", "[근거]",
+    ])
+    for row in news_rows[:3]:
+        published=dt.datetime.fromtimestamp(row.published_epoch,tz=UTC).astimezone(KST)
+        lines.append(f"{row.source} · {published:%m-%d %H:%M KST}")
+        if row.link:
+            lines.append(f"원문: {row.link}")
+    lines.extend(["", "[주의]", "JP모건 추정치와 Kpler 선박추적치는 집계 범위·다크 플로우 포함 여부가 달라 직접 치환하지 않습니다."])
+    return "\n".join(lines).strip()+"\n"
+
+
+def _build_us_diesel_policy_alert_body(
+    news_rows: list[NewsItem], oil: Quote | None, current: dt.datetime, fx: Quote | None,
+) -> str:
+    stage=_diesel_policy_stage(news_rows)
+    labels={"effective":"수출 금지·제한 시행","announced":"수출 금지 발표","supports":"대통령 지지·요구","considering":"정부 검토","voluntary":"정유사 자발적 제한 논의","denied":"전면 금지 보도 부인","withdrawn":"계획 철회","policy_change":"정책 단계 변화"}
+    lines=[current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),"","[한눈에]",f"미국 정책     {labels.get(stage,stage)}"]
+    if oil is not None:
+        direction="↓" if oil.change<0 else "↑" if oil.change>0 else "→"
+        lines.append(f"Brent         USD {oil.price:.2f} · {oil.change_pct:+.2f}% {direction}")
+    if fx is not None:
+        won="약세" if fx.change>0 else "강세" if fx.change<0 else "보합"
+        lines.append(f"원·달러       {fx.price:,.2f}원 · {fx.change_pct:+.2f}% · 원화 {won}")
+    lines.extend([
+        "", "[핵심 의미]",
+        "이 사안은 원유 공급이 아니라 글로벌 경유 공급을 직접 바꾸는 정책 변수입니다.",
+        "→ 미국 수출이 줄면 해외 디젤 공급은 타이트해질 수 있지만 미국 내 저장이 차면 정유 가동률이 낮아지는 역효과도 가능합니다.",
+        "", "[한국 전이]",
+        "정유          아시아 디젤 수출 스프레드 확대 가능성 확인",
+        "항공·운송     글로벌 경유·항공유 가격 상승 시 비용 부담 확인",
+        "물가·금리     정제품 가격 상승이 수입물가·운송비로 전이되는지 확인",
+        "", "[다음 체크]",
+        "정책          백악관·DOE 공식문구 · 금지/자발제한/철회 · 기간·물량",
+        "미국          중간유분 수출·재고 · 정유 가동률",
+        "세계          디젤·항공유 가격 · 유럽·중남미 대체조달 · 중국 수출",
+        "", "[근거]",
+    ])
+    for row in news_rows[:3]:
+        published=dt.datetime.fromtimestamp(row.published_epoch,tz=UTC).astimezone(KST)
+        lines.append(f"{row.source} · {published:%m-%d %H:%M KST} · {row.title}")
+        if row.link:
+            lines.append(f"원문: {row.link}")
+    lines.extend(["","[주의]","검토·지지·자발 제한·금지 발표·실제 시행을 서로 다른 단계로 관리합니다."])
+    return "\n".join(lines).strip()+"\n"
+
+
 def _extract_regional_export_metrics(news_rows: list[NewsItem]) -> dict[str, float | None]:
     text = " ".join(normalize_text(row.title) for row in news_rows)
 
@@ -1276,6 +1548,10 @@ def build_physical_flow_alert_body(
     fx: Quote | None = None,
 ) -> str:
     metrics = _extract_kpler_sts_metrics(news_rows)
+    if kind == "crude_product_divergence":
+        return _build_crude_product_gap_alert_body(news_rows, oil, current, fx)
+    if kind == "us_diesel_export_policy":
+        return _build_us_diesel_policy_alert_body(news_rows, oil, current, fx)
     if kind == "sts_reroute_expansion" and metrics:
         return _build_sts_compact_alert_body(news_rows, oil, current, fx, metrics)
 
@@ -1615,6 +1891,8 @@ def run_monitor(current: dt.datetime) -> int:
         "sts_reroute_expansion",
         "east_west_pipeline_recovery",
         "regional_export_recovery",
+        "crude_product_divergence",
+        "us_diesel_export_policy",
         "india_gulf_import_recovery",
     }
     if kind in physical_kinds:
@@ -1628,7 +1906,12 @@ def run_monitor(current: dt.datetime) -> int:
         if fx is not None and not quote_is_fresh(fx, current, max_age_minutes):
             fx = None
         body = build_physical_flow_alert_body(kind, news_rows, oil, current, fx)
-        title = "중동 원유 흐름 회복·우회 물류 변화"
+        if kind == "crude_product_divergence":
+            title = "중동 원유 회복·정제품 병목 변화"
+        elif kind == "us_diesel_export_policy":
+            title = "미국 디젤 수출정책 변화"
+        else:
+            title = "중동 원유 흐름 회복·우회 물류 변화"
         alert = {
             "test_mode": False,
             "created_at_kst": current.astimezone(KST).isoformat(timespec="seconds"),

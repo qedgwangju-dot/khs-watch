@@ -242,6 +242,38 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         title = "Middle East crude exports reach 12.8 million bpd, highest since the war - Reuters"
         self.assertEqual(MODULE.classify_event(title), "regional_export_recovery")
 
+    def test_jpmorgan_98pct_headline_is_classified(self):
+        title = 'JPMorgan says Middle East crude flows hit 98% of pre-war level'
+        self.assertEqual(MODULE.classify_event(title), "crude_product_divergence")
+
+    def test_korean_jpmorgan_98pct_headline_is_classified(self):
+        title = 'JP모건 "중동 원유 수출량, 이란戰 발발 이전 98% 복구"'
+        self.assertEqual(MODULE.classify_event(title), "crude_product_divergence")
+
+    def test_crude_product_gap_event_id_moves_on_product_recovery_band(self):
+        now = dt.datetime(2026, 9, 30, 12, 0, tzinfo=dt.timezone.utc)
+        a = [MODULE.NewsItem("JPMorgan Middle East crude/product snapshot crude 17.5 Mbd 98% pre-war; products 3.0 Mbd 58% pre-war; overall 89% of 2025; Hormuz 13.0 Mbd","JPMorgan via Bloomberg","a",now.isoformat(),now.timestamp(),"crude_product_divergence")]
+        b = [MODULE.NewsItem("JPMorgan Middle East crude/product snapshot crude 17.6 Mbd 99% pre-war; products 3.4 Mbd 66% pre-war; overall 92% of 2025; Hormuz 13.1 Mbd","JPMorgan via Bloomberg","b",now.isoformat(),now.timestamp(),"crude_product_divergence")]
+        self.assertNotEqual(MODULE.event_id("crude_product_divergence", a), MODULE.event_id("crude_product_divergence", b))
+
+    def test_crude_product_gap_body_keeps_crude_and_products_separate(self):
+        now = dt.datetime(2026, 9, 30, 12, 0, tzinfo=dt.timezone.utc)
+        rows = [MODULE.NewsItem("JPMorgan Middle East crude/product snapshot crude 17.5 Mbd 98% pre-war; products 3.0 Mbd 58% pre-war; overall 89% of 2025; Hormuz 13.0 Mbd","JPMorgan via Bloomberg","https://example.com/jpm",now.isoformat(),now.timestamp(),"crude_product_divergence")]
+        body = MODULE.build_physical_flow_alert_body("crude_product_divergence", rows, None, now)
+        self.assertIn("원유          17.5 Mbd · 전쟁 전의 98%", body)
+        self.assertIn("정제품        3.0 Mbd · 전쟁 전의 58%", body)
+        self.assertIn("회복 격차     40%p", body)
+        self.assertIn("원유 정상화 ≠ 연료시장 정상화", body)
+        self.assertIn("정제품        58% → 70% → 85% → 95%", body)
+
+    def test_us_diesel_policy_classification_and_stage_ids(self):
+        now = dt.datetime(2026, 9, 30, 12, 0, tzinfo=dt.timezone.utc)
+        denied = MODULE.NewsItem("White House denies report US is considering a diesel export ban","Reuters","a",now.isoformat(),now.timestamp(),"us_diesel_export_policy")
+        considering = MODULE.NewsItem("Trump says he is still considering diesel export ban","Reuters","b",now.isoformat(),now.timestamp(),"us_diesel_export_policy")
+        self.assertEqual(MODULE.classify_event(denied.title), "us_diesel_export_policy")
+        self.assertEqual(MODULE.classify_event(considering.title), "us_diesel_export_policy")
+        self.assertNotEqual(MODULE.event_id("us_diesel_export_policy", [denied]), MODULE.event_id("us_diesel_export_policy", [considering]))
+
     def test_india_gulf_import_recovery_is_classified(self):
         title = "Gulf crude imports to India recover to 1.52 mb/d in September - Kpler"
         self.assertEqual(MODULE.classify_event(title), "india_gulf_import_recovery")
