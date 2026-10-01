@@ -1950,6 +1950,9 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
     elif market_changes:
         one = market_changes[0]
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
+    elif korea_earnings_changes:
+        one = korea_earnings_changes[0]
+        lines.append("한눈에: <b>" + html.escape(one) + "</b>")
     elif bernstein_changes:
         one = bernstein_changes[0]
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
@@ -2025,6 +2028,21 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         secondary = market_state.get("secondary_source_url")
         if secondary:
             lines.append('  <a href="' + html.escape(secondary, quote=True) + '">국내 보도</a>')
+    if korea_earnings_changes:
+        lines.append("• <b>삼성전자·SK하이닉스 영업이익 시장 컨센서스 변화</b>")
+        for change in list(dict.fromkeys(korea_earnings_changes)):
+            lines.append("  " + html.escape(change))
+        current = korea_earnings_state.get("current_combined_op_krw_trn")
+        nxt = korea_earnings_state.get("next_combined_op_krw_trn")
+        if current is not None and nxt is not None:
+            growth = (float(nxt) / float(current) - 1.0) * 100.0
+            lines.append(f"  계산: <b>약 {float(current):.0f}조→{float(nxt):.0f}조원, +{growth:.1f}%</b>")
+        lines.append("  성격: 확정 실적이 아니라 FnGuide 등 증권사 평균 전망치의 변화")
+        lines.append("  원인 구분: 2026은 범용 DRAM, 2027은 HBM 가격·제품혼합 확대 기대를 분리해서 해석")
+        lines.append("  HBM 연결: TrendForce 2027 HBM Blended ASP +121% YoY 전망은 시장 전체 전망이며 개별 기업 ASP와 별도")
+        if korea_earnings_source_url:
+            lines.append('  <a href="' + html.escape(korea_earnings_source_url, quote=True) + '">근거 기사</a>')
+
     if bernstein_changes:
         lines.append("• <b>Bernstein 메모리 가격 사이클 상태 변화</b>")
         for change in bernstein_changes:
@@ -2103,13 +2121,13 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
+    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
 
     if legacy_changes:
-        has_other_content = bool(market_changes or bernstein_changes or divergence_changes or prepared_items)
+        has_other_content = bool(market_changes or bernstein_changes or korea_earnings_changes or divergence_changes or prepared_items)
         if has_other_content:
             lines.append("<<<TELEGRAM_MESSAGE_BREAK>>>")
         else:
