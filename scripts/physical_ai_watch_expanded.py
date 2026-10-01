@@ -268,9 +268,40 @@ GEMINI_CURRENT_BASELINE = re.compile(
     r'Gemini\s*Robotics\s*2|Gemini\s*Robotics\s*ER\s*2|Gemini\s*Robotics\s*On[-\s]*Device\s*2',
     re.I,
 )
-GEMINI_GA = re.compile(r'general\s+availability|generally\s+available|public\s+API|정식\s*출시|일반\s*공개|공개\s*API', re.I)
+GEMINI_GA = re.compile(r'general\s+availability|generally\s+available|\bGA\b|정식\s*출시|일반\s*공개', re.I)
+GEMINI_PUBLIC_PREVIEW = re.compile(r'public\s+preview|공개\s*프리뷰|퍼블릭\s*프리뷰', re.I)
+GEMINI_PRIVATE_PREVIEW = re.compile(r'private\s+preview|early[-\s]*access|trusted\s*tester|select\s+group|프라이빗\s*프리뷰|얼리\s*액세스|신뢰\s*테스터', re.I)
+GEMINI_PUBLIC_API = re.compile(r'public\s+API|Gemini\s+API|Google\s+AI\s+Studio|공개\s*API', re.I)
+GEMINI_ER2 = re.compile(r'Gemini\s*Robotics\s*ER\s*2', re.I)
+GEMINI_VLA2 = re.compile(r'Gemini\s*Robotics\s*2(?!\s*ER|\s*On[-\s]*Device)', re.I)
+GEMINI_ON_DEVICE2 = re.compile(r'Gemini\s*Robotics\s*On[-\s]*Device\s*2', re.I)
 GEMINI_COMMERCIAL = re.compile(r'pricing|paid|commercial\s+contract|license\s+agreement|customer\s+deployment|production\s+deployment|가격\s*공개|유료|상용\s*계약|사용권\s*계약|고객\s*배치|양산\s*배치', re.I)
 GEMINI_NEW_PARTNER = re.compile(r'new\s+(?:research\s+|hardware\s+)?partner|announc(?:ed|es)?\s+(?:a\s+)?(?:new\s+)?partnership|신규\s*파트너|새\s*파트너|파트너십\s*(?:체결|발표)', re.I)
+
+
+def _gemini_current_preview_baseline(text: str) -> bool:
+    er2_public = bool(
+        GEMINI_ER2.search(text)
+        and (GEMINI_PUBLIC_PREVIEW.search(text) or GEMINI_PUBLIC_API.search(text))
+        and not GEMINI_GA.search(text)
+    )
+    vla_private = bool(GEMINI_VLA2.search(text) and GEMINI_PRIVATE_PREVIEW.search(text))
+    ondevice_private = bool(GEMINI_ON_DEVICE2.search(text) and GEMINI_PRIVATE_PREVIEW.search(text))
+    return er2_public or vla_private or ondevice_private
+
+
+def _gemini_preview_expansion(text: str) -> bool:
+    # Current baseline: ER 2 is already in public preview / Gemini API; the VLA
+    # and On-Device 2 models are still private-preview / early-access. Alert only
+    # when those latter models materially widen access or ER 2 advances beyond
+    # its current public-preview state.
+    if _gemini_current_preview_baseline(text):
+        return False
+    if (GEMINI_VLA2.search(text) or GEMINI_ON_DEVICE2.search(text)) and (
+        GEMINI_PUBLIC_PREVIEW.search(text) or GEMINI_PUBLIC_API.search(text)
+    ):
+        return True
+    return False
 
 
 def _gemini_platform_stage(text: str) -> str:
@@ -280,15 +311,17 @@ def _gemini_platform_stage(text: str) -> str:
         return 'commercial'
     if GEMINI_GA.search(text):
         return 'ga'
+    if _gemini_preview_expansion(text):
+        return 'preview_expansion'
     if GEMINI_NEW_PARTNER.search(text):
         return 'new_partner'
-    if GEMINI_CURRENT_BASELINE.search(text):
+    if _gemini_current_preview_baseline(text) or GEMINI_CURRENT_BASELINE.search(text):
         return 'baseline'
     return 'monitor'
 
 
 def topic_group(text: str) -> str | None:
-    if _gemini_platform_stage(text) in {'new_partner','ga','commercial'}:
+    if _gemini_platform_stage(text) in {'new_partner','preview_expansion','ga','commercial'}:
         return 'frontier_ai'
     if re.search(r'삼현|SAMHYUN', text, re.I) and re.search(r'휴머노이드|humanoid|로봇|robot|액추에이터|actuator', text, re.I):
         return 'samhyun'
@@ -392,8 +425,8 @@ def score(item: dict) -> int:
 
     if group == 'frontier_ai':
         gemini_stage = _gemini_platform_stage(text)
-        if gemini_stage in {'new_partner','ga','commercial'}:
-            s = 18 + {'new_partner': 10, 'ga': 12, 'commercial': 15}[gemini_stage]
+        if gemini_stage in {'new_partner','preview_expansion','ga','commercial'}:
+            s = 18 + {'new_partner': 10, 'preview_expansion': 11, 'ga': 12, 'commercial': 15}[gemini_stage]
             if source in base.OFFICIAL_OR_PRIMARY: s += 7
             elif source in base.TRUSTED: s += 3
             return s
@@ -457,6 +490,8 @@ def _raw_cat(text: str, group: str) -> str:
         gemini_stage = _gemini_platform_stage(text)
         if gemini_stage == 'new_partner':
             return 'Gemini Robotics 신규 하드웨어 파트너'
+        if gemini_stage == 'preview_expansion':
+            return 'Gemini Robotics 모델 공개 범위 확대'
         if gemini_stage == 'ga':
             return 'Gemini Robotics 모델·API 일반 공개'
         if gemini_stage == 'commercial':
@@ -510,6 +545,7 @@ def meaning(cat: str) -> str:
         'AXIUM 고객·수주 전환': 'LG전자가 AXIUM을 기술 공개 단계에서 글로벌 고객 수주 단계로 옮기는 신호입니다. 10월 빅테크 기술·생산 미팅 이후 고객 실명·계약 물량이 나오는지가 핵심입니다.',
         '베어로보틱스 가치·상장 상태': '베어로보틱스의 외부 가치평가·자금조달·상장 상태가 LG전자 로봇 자산의 시장가치 기준점으로 작용할 수 있습니다.',
         'Gemini Robotics 신규 하드웨어 파트너': '기존 Agile Robots·Apptronik·Boston Dynamics 밖의 새 로봇 제조사가 Gemini Robotics를 채택하면 Android식 지능 레이어의 하드웨어 커버리지가 실제로 넓어지는 신호입니다. 로봇 모델명, 탑재 모델, 고객 검증·유료 여부를 확인합니다.',
+        'Gemini Robotics 모델 공개 범위 확대': '현재 ER 2는 Google AI Studio·Gemini API의 공개 프리뷰, VLA와 On-Device 2는 프라이빗 프리뷰·얼리액세스가 기준선입니다. VLA·On-Device가 공개 프리뷰/API로 확대되면 개발자·로봇업체의 접근성이 한 단계 올라가는 신호입니다.',
         'Gemini Robotics 모델·API 일반 공개': '현재 얼리액세스·프라이빗 프리뷰 범위를 넘어 VLA·On-Device·API가 일반 기업에 공개되는 상용화 단계입니다. 가격, 사용권, 온디바이스 요구사양과 반복 사용료 구조를 확인합니다.',
         'Gemini Robotics 유료계약·상용 배치': '연구 파트너십이 실제 고객 계약·생산현장 배치·사용권 매출로 전환되는 가장 중요한 수익화 신호입니다. 고객 실명, 로봇 대수, 계약금액과 반복매출을 확인합니다.',
         '프런티어AI→로봇 지능': '프런티어 모델 자체 성능이 아니라 실제 로봇의 계획·추론·행동모델·현장 배치에 연결되는지를 봅니다. 로봇 성공률·시도비용·지연시간이 개선될 때만 구조 변화로 판단합니다.',
@@ -545,6 +581,7 @@ def risk(cat: str) -> str:
         'AXIUM 고객·수주 전환': '현재는 수주 협의 단계이며 특정 빅테크 계약은 아직 확정되지 않았습니다. 10월 미팅 이후 고객 인증·납품 단가·수량을 확인해야 합니다.',
         '베어로보틱스 가치·상장 상태': '상장 보도와 확정 일정은 구분해야 합니다. LG전자는 해외 상장에 대해 결정된 바 없다고 공시한 만큼 실제 이사회·공시·투자조건을 우선합니다.',
         'Gemini Robotics 신규 하드웨어 파트너': '파트너 발표는 실제 양산 탑재·유료계약과 다릅니다. 센서·제어기 차이와 미세조정 데이터, 안전 검증 때문에 특정 로봇에서 범용성이 약해질 수 있습니다.',
+        'Gemini Robotics 모델 공개 범위 확대': '공개 프리뷰 확대는 정식 상용화와 다릅니다. 가격·서비스수준협약·지연시간·지원 하드웨어·안전 제한이 확정되지 않으면 실제 생산현장 채택은 늦어질 수 있습니다.',
         'Gemini Robotics 모델·API 일반 공개': 'API 공개가 생산로봇 배치를 보장하지 않습니다. 지연시간·온디바이스 연산비·네트워크 의존성·안전 인증이 채택 속도를 제한할 수 있습니다.',
         'Gemini Robotics 유료계약·상용 배치': '초기 고객 배치가 PoC에 그치면 반복매출이 작을 수 있습니다. 계약 갱신·로봇 대수 확대·작업 성공률·사람 개입률을 확인합니다.',
         '프런티어AI→로봇 지능': 'GPT-6 Astra 같은 모델의 일반 추론 성능만으로 로봇 상용화를 확정할 수 없습니다. 실제 로봇 통합·행동 성공률·지연·안전 검증이 없으면 알림하지 않습니다.',
@@ -620,7 +657,7 @@ def same_event(a: dict, b: dict) -> bool:
         return any(re.search(p, ta, re.I) and re.search(p, tb, re.I) for p in actors) or sa in {'cross_embodiment_benchmark','field_pilot','commercial'}
     if g == 'frontier_ai':
         sa, sb = _gemini_platform_stage(ta), _gemini_platform_stage(tb)
-        if sa in {'new_partner','ga','commercial'} or sb in {'new_partner','ga','commercial'}:
+        if sa in {'new_partner','preview_expansion','ga','commercial'} or sb in {'new_partner','preview_expansion','ga','commercial'}:
             return bool(sa and sb and sa == sb)
     if g == 'agility_platform':
         sa, sb = _agility_stage(ta), _agility_stage(tb)
@@ -664,7 +701,7 @@ def key(item: dict) -> str:
         return hashlib.sha256(f'agility|wheeled-platform|{stage}'.encode()).hexdigest()
     if group == 'frontier_ai':
         stage = _gemini_platform_stage(text)
-        if stage in {'new_partner','ga','commercial'}:
+        if stage in {'new_partner','preview_expansion','ga','commercial'}:
             partners = ','.join(sorted(set(re.findall(r'Agility\s*Robotics|Figure\s*AI|Unitree|ROBOTIS|로보티즈|Boston\s*Dynamics|Apptronik|Agile\s*Robots', text, re.I)))) or 'generic'
             return hashlib.sha256(f'gemini-robotics-platform|{stage}|{partners}'.encode()).hexdigest()
     return _orig_key(item)
