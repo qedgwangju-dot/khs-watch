@@ -298,7 +298,12 @@ def as_int(value) -> int | None:
 
 def cme_front(symbol: str) -> dict | None:
     try:
-        slate = fetch_json(CME_SLATE.format(symbol=urllib.parse.quote(symbol)))
+        slate_url = CME_SLATE.format(symbol=urllib.parse.quote(symbol))
+        try:
+            slate = fetch_json(slate_url)
+        except Exception as exc:
+            print(f"cme_slate_error symbol={symbol} {type(exc).__name__}: {exc}")
+            return None
         products = slate.get("products", []) if isinstance(slate, dict) else []
         product = None
         for p in products:
@@ -311,7 +316,11 @@ def cme_front(symbol: str) -> dict | None:
         if product_id is None:
             print(f"cme_front_no_product symbol={symbol} products={len(products)}")
             return None
-        q = fetch_json(CME_QUOTES.format(product_id=product_id))
+        try:
+            q = fetch_json(CME_QUOTES.format(product_id=product_id))
+        except Exception as exc:
+            print(f"cme_quote_error symbol={symbol} product_id={product_id} {type(exc).__name__}: {exc}")
+            return None
         quotes = q.get("quotes", []) if isinstance(q, dict) else []
         candidates = []
         for row in quotes:
