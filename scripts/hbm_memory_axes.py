@@ -19,6 +19,7 @@ VERSION = 1
 FOUNDRY_TRACK_VERSION = 1
 FOUNDRY_RECOVERY_TRACK_VERSION = 1
 FOUNDRY_PRICING_RANGE_TRACK_VERSION = 1
+GLASS_SUBSTRATE_TRACK_VERSION = 1
 MARKET_PRICING_TRACK_VERSION = 1
 EXTRA_QUERIES = [
     '(HBM4 OR HBM4E) (24Gb OR 32Gb OR 36GB OR 48GB OR 적층 OR 용량)',
@@ -35,6 +36,9 @@ EXTRA_QUERIES = [
     '(Samsung OR 삼성) foundry (operating loss OR loss OR 적자 OR 영업손실) (HBM4 OR base die OR 베이스다이 OR 41.8 OR 42)',
     '(Samsung OR 삼성) foundry (2nm OR 2나노) (design win OR HPC OR CSP OR Taylor OR 테일러 OR tapeout OR qualification OR mass production OR 수주 OR 양산)',
     '(Samsung OR 삼성) Taylor foundry (mass production OR production OR 2027 OR customer OR contract OR negotiation)',
+    '("510x515" OR "510×515" OR "515x510" OR "515×510") (glass substrate OR glass core OR TGV OR 유리기판 OR 유리 기판) (TSMC OR CoPoS OR Corning OR AGC OR NEG OR SCHOTT)',
+    '(TSMC OR CoPoS) (glass core OR glass substrate OR 유리기판) (310x310 OR 510x515 OR 2030 OR pilot OR mass production OR 양산)',
+    '(Philoptics OR 필옵틱스 OR JNTC OR Absolics OR GlaSSEM OR 삼성전기) (TGV OR glass substrate OR 유리기판) (yield OR 수율 OR purchase order OR PO OR 양산 OR pilot OR 고객 검증)',
 ]
 COMPANIES = {'samsung': r'삼성(?:전자)?|Samsung(?: Electronics)?',
              'skhynix': r'SK\s?하이닉스|SK\s*hynix', 'micron': r'마이크론|Micron'}
@@ -190,7 +194,10 @@ def is_axis_text(text):
         r'(?:풀가동|full\s*utilization|증설|expand|가격\s*인상|price\s*increase|생산라인|production\s*line|투자|investment)|'
         r'(?:삼성|Samsung).*(?:파운드리|foundry).*(?:영업\s*손실|영업손실|적자|operating\s*loss|41[.]8\s*%|42\s*%).*(?:HBM4|베이스\s*다이|base\s*die|4nm|4\s*나노)|'
         r'(?:삼성|Samsung).*(?:파운드리|foundry).*(?:2\s*나노|2nm).*(?:design\s*win|HPC|CSP|Taylor|테일러|tapeout|qualification|mass\s*production|수주|양산)|'
-        r'(?:삼성|Samsung).*(?:Taylor|테일러).*(?:foundry|파운드리|mass\s*production|양산|customer|contract|수주|negotiation|협상)',
+        r'(?:삼성|Samsung).*(?:Taylor|테일러).*(?:foundry|파운드리|mass\s*production|양산|customer|contract|수주|negotiation|협상)|'
+        r'(?:510\s*[x×]\s*515|515\s*[x×]\s*510).*(?:glass\s*(?:substrate|core|panel)|TGV|유리\s*기판)|'
+        r'(?:TSMC|CoPoS).*(?:glass\s*(?:substrate|core)|유리\s*기판).*(?:310\s*[x×]\s*310|510\s*[x×]\s*515|2030|pilot|mass\s*production|양산)|'
+        r'(?:Philoptics|필옵틱스|JNTC|Absolics|GlaSSEM|삼성전기).*(?:TGV|glass\s*(?:substrate|core)|유리\s*기판).*(?:yield|수율|purchase\s*order|\bPO\b|pilot|mass\s*production|양산|검증)',
         text, re.I))
 
 
@@ -909,6 +916,132 @@ def parse_hbm_market_pricing(item, body):
     return [record]
 
 
+GLASS_TSMC_STATUS_RANK = {
+    'unconfirmed': 0,
+    'reported_candidate': 1,
+    'official_evaluation': 2,
+    'official_adopted': 3,
+}
+GLASS_HVM_STAGE_RANK = {
+    'sample': 0,
+    'customer_evaluation': 1,
+    'po_pending': 2,
+    'po_signed': 3,
+    'pilot': 4,
+    'mass_production': 5,
+}
+
+
+def _glass_entity(text):
+    pairs = (
+        ('philoptics', (r'Philoptics', r'필옵틱스')),
+        ('jntc', (r'\bJNTC\b', r'제이앤티씨')),
+        ('absolics', (r'Absolics', r'앱솔릭스')),
+        ('glassem', (r'GlaSSEM', r'글라스셈')),
+        ('samsung_electromechanics', (r'Samsung\s+Electro[- ]?Mechanics', r'삼성전기')),
+    )
+    found = [name for name, pats in pairs if any(re.search(p, text, re.I) for p in pats)]
+    return found[0] if len(found) == 1 else ''
+
+
+def parse_glass_substrate_records(item, body):
+    text = re.sub(r'\s+', ' ', body or '')
+    low = text.lower()
+    if not re.search(r'glass\s*(?:substrate|core|panel)|through[- ]?glass\s+via|\bTGV\b|유리\s*기판|글라스\s*코어', text, re.I):
+        return []
+    asof = (item.get('published_at_kst') or '')[:10]
+    rows = []
+
+    # Industry convergence: only emit when multiple suppliers are named together,
+    # so a single supplier product page cannot accidentally downgrade the count.
+    if re.search(r'(?:510\s*[x×]\s*515|515\s*[x×]\s*510)', text, re.I):
+        supplier_patterns = {
+            'Corning': (r'Corning', r'코닝'),
+            'AGC': (r'\bAGC\b',),
+            'NEG': (r'Nippon\s+Electric\s+Glass', r'\bNEG\b', r'일본전기초자', r'일본전기유리'),
+            'SCHOTT': (r'\bSCHOTT\b', r'쇼트'),
+        }
+        suppliers = [name for name, pats in supplier_patterns.items() if any(re.search(p, text, re.I) for p in pats)]
+        if len(suppliers) >= 3:
+            status = 'unconfirmed'
+            if re.search(r'(?:TSMC)[^.]{0,180}?(?:officially\s+(?:adopt|standard)|confirmed[^.]{0,50}?(?:510|515)|공식[^.]{0,60}?(?:채택|확정))', text, re.I):
+                status = 'official_adopted'
+            elif re.search(r'(?:TSMC)[^.]{0,180}?(?:evaluate|evaluation|검토|평가)', text, re.I):
+                status = 'official_evaluation' if host(item.get('direct_link','')).endswith('tsmc.com') else 'reported_candidate'
+            elif re.search(r'(?:TSMC|CoPoS)', text, re.I):
+                status = 'reported_candidate'
+            rows.append(make_record(
+                'glass_panel_standard', ['industry','510x515'],
+                {'width_mm':510, 'height_mm':515, 'supplier_count':len(suppliers),
+                 'suppliers':sorted(suppliers), 'tsmc_status':status},
+                'mm,count,stage', 'current', item,
+                '510×515mm 유리기판·TGV 생태계 규격 수렴',
+                as_of=asof, scope='industry_convergence_not_tsmc_official_standard'))
+
+    # TSMC's current public CoPoS roadmap stays separate from the post-2030
+    # 510x515 glass-core inference.
+    if re.search(r'\bTSMC\b', text, re.I) and re.search(r'CoPoS', text, re.I):
+        panel = re.search(r'(310)\s*[x×]\s*(310)', text, re.I)
+        validation = re.search(r'(2026)[^.]{0,80}?(?:validation|검증)', text, re.I)
+        pilot = re.search(r'(2027)[^.]{0,80}?(?:pilot|시험\s*생산|파일럿)', text, re.I)
+        mass = re.search(r'(2028)[^.]{0,100}?(?:mass\s*production|양산)', text, re.I)
+        post2030 = bool(re.search(r'(?:after|post)[ -]?2030|2030\s*년\s*이후', text, re.I))
+        if panel or validation or pilot or mass or post2030:
+            rows.append(make_record(
+                'glass_tsmc_roadmap', ['tsmc','CoPoS_GlassCore'],
+                {'copos_width_mm':310 if panel else None,
+                 'copos_height_mm':310 if panel else None,
+                 'validation_year':2026 if validation else None,
+                 'pilot_year':2027 if pilot else None,
+                 'mass_production_year':2028 if mass else None,
+                 'mass_production_half':'H2' if mass and re.search(r'(?:second\s+half|H2|하반기)[^.]{0,100}?(?:2028|mass\s*production|양산)|2028[^.]{0,100}?(?:second\s+half|H2|하반기)', text, re.I) else None,
+                 'glass_core_commercial_after_year':2030 if post2030 else None},
+                'mm,year,stage', 'roadmap', item,
+                'TSMC CoPoS 현재 패널 규격과 Glass Core 상용화 로드맵',
+                as_of=asof, scope='trendforce_roadmap_current_copos_310_not_510x515_confirmation'))
+
+    entity = _glass_entity(text)
+    if entity:
+        # Whole-panel or explicitly labeled mass-production yield only.
+        ym = re.search(r'(?:mass\s*production\s*yield|panel\s*yield|electrical\s*yield|양산\s*수율|패널\s*수율|전기\s*수율)[^%]{0,80}?([0-9]{1,3}(?:\.[0-9]+)?)\s*%', text, re.I)
+        if not ym:
+            ym = re.search(r'([0-9]{1,3}(?:\.[0-9]+)?)\s*%[^.]{0,80}?(?:mass\s*production\s*yield|panel\s*yield|electrical\s*yield|양산\s*수율|패널\s*수율|전기\s*수율)', text, re.I)
+        if ym:
+            rows.append(make_record(
+                'glass_panel_yield', [entity,'current'],
+                {'yield_pct':float(ym.group(1))},
+                'pct', 'current', item,
+                '유리기판 패널·양산 수율',
+                as_of=asof, scope='reported_panel_or_mass_production_yield_not_tgv_hole_ppm'))
+
+        stage = ''
+        if re.search(r'(?:mass\s*production\s*(?:begins?|starts?|commences?)|양산\s*(?:시작|개시))', text, re.I):
+            stage = 'mass_production'
+        elif re.search(r'(?:pilot\s*(?:production|line)|파일럿\s*(?:생산|라인)|시험\s*생산)', text, re.I):
+            stage = 'pilot'
+        elif re.search(r'(?:purchase\s*order|PO\s*(?:signed|received)|정식\s*수주|발주\s*확정|수주\s*확정)', text, re.I):
+            stage = 'po_signed'
+        elif re.search(r'(?:pending\s*(?:purchase\s*)?order|final\s+purchase[- ]?order\s+process|본계약\s*대기|발주\s*대기|수주\s*대기)', text, re.I):
+            stage = 'po_pending'
+        elif re.search(r'(?:customer\s*(?:validation|evaluation)|고객\s*(?:검증|평가)|신뢰성\s*평가)', text, re.I):
+            stage = 'customer_evaluation'
+        elif re.search(r'(?:sample\s*(?:supply|shipment)|샘플\s*(?:공급|출하))', text, re.I):
+            stage = 'sample'
+        target_year = None
+        tm = re.search(r'(?:mass\s*production|양산)[^.]{0,80}?(20\d{2})|(20\d{2})[^.]{0,80}?(?:mass\s*production|양산)', text, re.I)
+        if tm:
+            target_year = int(tm.group(1) or tm.group(2))
+        if stage or target_year:
+            rows.append(make_record(
+                'glass_hvm_stage', [entity,'current'],
+                {'stage':stage or 'customer_evaluation','mass_production_target_year':target_year},
+                'stage,year', 'current', item,
+                '유리기판 고객검증·장비발주·파일럿·양산 단계',
+                as_of=asof, scope='stage_transition_customer_evaluation_to_hvm'))
+
+    return rows
+
+
 def parse_records(item, body):
     records, gaps = [], []
     published = item.get('published_at_kst', '')
@@ -920,6 +1053,7 @@ def parse_records(item, body):
     records.extend(parse_postprocess_records(item, body))
     records.extend(parse_foundry_recovery_records(item, body))
     records.extend(parse_foundry_hbm_records(item, body))
+    records.extend(parse_glass_substrate_records(item, body))
     paragraphs = [re.sub(r'\s+', ' ', p).strip() for p in re.split(r'\n+|(?<=[.!?])\s+(?=[A-Z가-힣])', body) if p.strip()]
     for original in paragraphs:
         p = resolve_relative_years(original, published)
@@ -1074,6 +1208,55 @@ def comparison(old, new):
             reasons.append(f"시장 주류 적층 {int(av)}단→{int(bv)}단")
         elif av is None and bv is not None:
             reasons.append(f"시장 주류 적층 {int(bv)}단 신규 확인")
+        return reasons
+    if new['axis'] == 'glass_panel_standard':
+        reasons = []
+        if (a.get('width_mm'), a.get('height_mm')) != (b.get('width_mm'), b.get('height_mm')):
+            reasons.append(f"패널 규격 {a.get('width_mm')}×{a.get('height_mm')}→{b.get('width_mm')}×{b.get('height_mm')}mm")
+        av, bv = a.get('supplier_count'), b.get('supplier_count')
+        if av is not None and bv is not None and int(av) != int(bv):
+            reasons.append(f"510×515mm 수렴 소재사 {int(av)}→{int(bv)}곳")
+        old_status, new_status = a.get('tsmc_status','unconfirmed'), b.get('tsmc_status','unconfirmed')
+        if old_status != new_status:
+            reasons.append(f"TSMC 510×515 상태 {old_status}→{new_status}")
+        return reasons
+    if new['axis'] == 'glass_tsmc_roadmap':
+        reasons = []
+        for field, label in (
+            ('validation_year','CoPoS 장비·소재 검증'),
+            ('pilot_year','CoPoS 시험생산'),
+            ('mass_production_year','CoPoS 양산'),
+            ('glass_core_commercial_after_year','Glass Core 상업규모 기준'),
+        ):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and int(av) != int(bv):
+                reasons.append(f"{label} {int(av)}→{int(bv)}년")
+            elif av is None and bv is not None:
+                reasons.append(f"{label} {int(bv)}년 신규 확인")
+        if (a.get('copos_width_mm'),a.get('copos_height_mm')) != (b.get('copos_width_mm'),b.get('copos_height_mm')):
+            reasons.append(f"CoPoS 패널 규격 {a.get('copos_width_mm')}×{a.get('copos_height_mm')}→{b.get('copos_width_mm')}×{b.get('copos_height_mm')}mm")
+        return reasons
+    if new['axis'] == 'glass_panel_yield':
+        av, bv = a.get('yield_pct'), b.get('yield_pct')
+        if av is None or bv is None:
+            return [f"패널·양산 수율 {float(bv):.1f}% 신규 확인"] if bv is not None else []
+        reasons = []
+        if abs(float(bv)-float(av)) >= 5:
+            reasons.append(f"패널·양산 수율 {float(av):.1f}%→{float(bv):.1f}%")
+        for threshold in (85,90):
+            if (float(av) < threshold <= float(bv)) or (float(av) >= threshold > float(bv)):
+                reasons.append(f"수율 {threshold}% 기준 {'상향 돌파' if float(bv)>=threshold else '하향 이탈'}")
+        return reasons
+    if new['axis'] == 'glass_hvm_stage':
+        reasons = []
+        old_stage, new_stage = a.get('stage','sample'), b.get('stage','sample')
+        if old_stage != new_stage:
+            reasons.append(f"양산 전환 단계 {old_stage}→{new_stage}")
+        av, bv = a.get('mass_production_target_year'), b.get('mass_production_target_year')
+        if av is not None and bv is not None and int(av) != int(bv):
+            reasons.append(f"양산 목표 {int(av)}→{int(bv)}년")
+        elif av is None and bv is not None:
+            reasons.append(f"양산 목표 {int(bv)}년 신규 확인")
         return reasons
     if new['axis'] == 'foundry_loss_outlook':
         reasons = []
@@ -1280,6 +1463,13 @@ def update_state(state, records, now, seeds=None):
                         state['latest'][r['key']] = copy.deepcopy(merged)
                         state['pending'].pop(r['key'], None)
             state['foundry_pricing_range_track_version'] = FOUNDRY_PRICING_RANGE_TRACK_VERSION
+        if int(state.get('glass_substrate_track_version') or 0) < GLASS_SUBSTRATE_TRACK_VERSION:
+            for r in seeds:
+                if r.get('axis') in ('glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage'):
+                    state['last_notified'][r['key']] = copy.deepcopy(r)
+                    state['latest'][r['key']] = copy.deepcopy(r)
+                    state['pending'].pop(r['key'], None)
+            state['glass_substrate_track_version'] = GLASS_SUBSTRATE_TRACK_VERSION
         if int(state.get('market_pricing_track_version') or 0) < MARKET_PRICING_TRACK_VERSION:
             for r in seeds:
                 if r.get('axis') == 'hbm_market_pricing':
@@ -1295,7 +1485,7 @@ def update_state(state, records, now, seeds=None):
         if r['as_of'][:10] > now.date().isoformat():
             continue
         grouped.setdefault(r['key'], []).append(r)
-    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'hbm_market_pricing'}
+    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'hbm_market_pricing'}
     for key, rows in grouped.items():
         rows.sort(key=lambda x: (x['as_of'], RANK.get(x['evidence'], 0)))
         prior = state['latest'].get(key) or state['last_notified'].get(key)
@@ -1355,6 +1545,10 @@ def render(change, rate=None):
              'postprocess_capex': 'HBM 후공정 설비투자·병목 변화',
              'postprocess_order': 'HBM 후공정 장비 수주 변화',
              'postprocess_stage': 'HBM 후공정 고객 검증·양산 단계 변화',
+             'glass_panel_standard': '유리기판 510×515mm 규격 수렴·TSMC 채택 상태',
+             'glass_tsmc_roadmap': 'TSMC CoPoS·Glass Core 양산 로드맵',
+             'glass_panel_yield': '유리기판 패널·양산 수율',
+             'glass_hvm_stage': '유리기판 고객검증→발주→HVM 전환 단계',
              'foundry_loss_outlook': '삼성 파운드리+System LSI 손실 축소 전망',
              'foundry_external_2nm': '삼성 외부 2나노 AI·HPC 수주·양산 전환',
              'foundry_taylor_schedule': '삼성 Taylor Fab1 양산 일정·외부 고객 협상',
@@ -1375,6 +1569,31 @@ def render(change, rate=None):
         if record['axis'] == 'fab_stage':
             labels = {'plan': '계획', 'delayed': '지연', 'cancelled': '취소', 'reported_operation': '가동 보도'}
             return f"{v['year']}년 · {labels.get(v['stage'], v['stage'])}"
+        if record['axis'] == 'glass_panel_standard':
+            suppliers = ', '.join(v.get('suppliers') or [])
+            return f"{v.get('width_mm')}×{v.get('height_mm')}mm / 소재사 {v.get('supplier_count')}곳 ({suppliers}) / TSMC {v.get('tsmc_status')}"
+        if record['axis'] == 'glass_tsmc_roadmap':
+            parts = []
+            if v.get('copos_width_mm'):
+                parts.append(f"현 CoPoS {v['copos_width_mm']}×{v['copos_height_mm']}mm")
+            if v.get('validation_year'):
+                parts.append(f"검증 {v['validation_year']}년")
+            if v.get('pilot_year'):
+                parts.append(f"시험생산 {v['pilot_year']}년")
+            if v.get('mass_production_year'):
+                half = v.get('mass_production_half') or ''
+                parts.append(f"양산 {v['mass_production_year']}년{half}")
+            if v.get('glass_core_commercial_after_year'):
+                parts.append(f"Glass Core 상업규모 {v['glass_core_commercial_after_year']}년 이후")
+            return " / ".join(parts)
+        if record['axis'] == 'glass_panel_yield':
+            return f"패널·양산 수율 {v.get('yield_pct'):.1f}%"
+        if record['axis'] == 'glass_hvm_stage':
+            labels = {'sample':'샘플','customer_evaluation':'고객 검증','po_pending':'정식 발주 대기','po_signed':'정식 수주','pilot':'파일럿','mass_production':'양산'}
+            text = labels.get(v.get('stage'),v.get('stage',''))
+            if v.get('mass_production_target_year'):
+                text += f" / 양산 목표 {int(v['mass_production_target_year'])}년"
+            return text
         if record['axis'] == 'foundry_loss_outlook':
             parts = []
             if v.get('loss_2025_krw_trn') is not None:
@@ -1516,6 +1735,15 @@ def render(change, rate=None):
         lines.append('• 재사용 세정 처리량이며 웨이퍼 생산·칩 출하·수주금액으로 치환하지 않습니다.')
     if r['axis'] in ('wafer_share', 'bit_share'):
         lines.append('• 연말 전망이며 연간 평균·실제 확정 생산량과 비교하지 않습니다.')
+    if r['axis'] == 'glass_panel_standard':
+        lines.append('• 510×515mm 규격 수렴과 TSMC 공식 채택은 별개입니다. DIGITIMES의 공급망 추정은 reported_candidate로만 저장합니다.')
+    if r['axis'] == 'glass_tsmc_roadmap':
+        lines.append('• 현재 공개 로드맵은 CoPoS 310×310mm: 2026 검증→2027 시험생산→2028년 하반기 양산, Glass Core 상업규모는 2030년 이후입니다.')
+    if r['axis'] == 'glass_panel_yield':
+        lines.append('• TGV 홀 단일 불량률과 전체 패널 전기수율은 다른 지표입니다. 패널·양산 수율만 이 축에서 비교합니다.')
+        lines.append('• ±5%p 또는 85%·90% 기준선 돌파/이탈 시 재알림합니다.')
+    if r['axis'] == 'glass_hvm_stage':
+        lines.append('• 샘플→고객 검증→정식 발주 대기→정식 수주→파일럿→양산을 구분하며 기사상 기대감을 양산매출로 승격하지 않습니다.')
     if r['axis'] == 'foundry_loss_outlook':
         lines.append('• 주의: 파운드리 단독 손익이 아니라 파운드리+System LSI 합산 증권사 전망입니다. 회사 확정 실적과 분리합니다.')
         lines.append('• 2026E 손실 ±0.5조원 또는 10% 이상, 3Q26E ±0.2조원 또는 10% 이상, 손실 축소율 ±5%p 이상을 재알림합니다.')
@@ -1600,6 +1828,10 @@ def main():
             and any(k in text for k in ('base die', '베이스다이', '베이스 다이', '4nm', '4나노', '2nm', '2나노'))
             and any(k in text for k in ('full utilization', '풀가동', '증설', 'expand', 'price increase', '가격 인상', 'production line', '생산라인', 'investment', '투자'))
         )
+        structured_glass = (
+            any(k in text for k in ('glass substrate','glass core','glass panel','tgv','유리기판','유리 기판','글라스 코어'))
+            and any(k in text for k in ('510x515','510×515','515x510','515×510','copos','yield','수율','purchase order','po ','pilot','양산'))
+        )
         structured_foundry_recovery = (
             ('samsung' in text or '삼성' in text)
             and ('foundry' in text or '파운드리' in text)
@@ -1611,7 +1843,7 @@ def main():
                 )
             )
         )
-        if structured_revenue or structured_postprocess or structured_market_pricing or structured_foundry or structured_foundry_recovery:
+        if structured_revenue or structured_postprocess or structured_market_pricing or structured_foundry or structured_foundry_recovery or structured_glass:
             rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
             return '', '', ''
         if not concrete_state_evidence(e):
@@ -1632,7 +1864,10 @@ def main():
     legacy.TRUSTED += (
         '글로벌이코노믹', 'g-enews', 'dramexchange', 'sk하이닉스', 'micron',
         'futunn', 'futu news', 'bernstein', 'hilo research', 'xxquant',
-        '머니투데이', 'moneytoday', 'mt.co.kr', '한국경제tv', 'wowtv', 'v.daum.net'
+        '머니투데이', 'moneytoday', 'mt.co.kr', '한국경제tv', 'wowtv', 'v.daum.net',
+        'digitimes', 'corning', 'agc', 'nippon electric glass', 'schott',
+        'philoptics', '필옵틱스', 'jntc', '제이앤티씨', 'absolics', '앱솔릭스',
+        'samsung electro-mechanics', '삼성전기', 'edaily', '이데일리'
     )
     legacy.relevant = lambda text: original_relevant(text) or is_axis_text(text)
     observed, coverage = [], []
@@ -1723,8 +1958,10 @@ def main():
     if chosen:
         rate, basis = legacy.fx_quote()
         foundry_axes = {'foundry_loss_outlook','foundry_external_2nm','foundry_taylor_schedule','foundry_base_die_allocation','foundry_node_expansion','foundry_pricing','foundry_hbm5_2nm'}
-        regular = [k for k in chosen if state['pending'][k]['record']['axis'] not in foundry_axes]
+        glass_axes = {'glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage'}
+        regular = [k for k in chosen if state['pending'][k]['record']['axis'] not in foundry_axes | glass_axes]
         foundry = [k for k in chosen if state['pending'][k]['record']['axis'] in foundry_axes]
+        glass = [k for k in chosen if state['pending'][k]['record']['axis'] in glass_axes]
         sections = []
         if regular:
             blocks = ['<b>HBM·서버 D램 연계 상태 변화</b>']
@@ -1733,6 +1970,10 @@ def main():
         if foundry:
             blocks = ['<b>삼성 파운드리 HBM4·2나노 회복 감시</b>']
             blocks.extend(render(state['pending'][key], rate) for key in foundry)
+            sections.append('\n\n'.join(blocks))
+        if glass:
+            blocks = ['<b>유리기판 510×515mm 표준·HVM 전환 감시</b>']
+            blocks.extend(render(state['pending'][key], rate) for key in glass)
             sections.append('\n\n'.join(blocks))
         if rate and sections:
             sections[-1] += '\n\n환율 기준: ' + html.escape(basis)
