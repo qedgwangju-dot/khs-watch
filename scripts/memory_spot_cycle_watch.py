@@ -74,6 +74,34 @@ NAND_DIVERGENCE_BASELINE = {
     "source_rank": 3,
     "as_of": "2026-09-24",
 }
+TREND_4Q26_REVISION_TRACK_VERSION = 1
+TREND_4Q26_PRIOR_BASELINE = {
+    "conventional_dram_min_pct": 3.0,
+    "conventional_dram_max_pct": 8.0,
+    "overall_nand_min_pct": 0.0,
+    "overall_nand_max_pct": 5.0,
+    "enterprise_ssd_min_pct": None,
+    "enterprise_ssd_max_pct": None,
+    "as_of": "2026-07",
+    "source": "TrendForce 4Q26 전망 인용치",
+    "source_kind": "사용자 제공 기준 + Hilo Research의 TrendForce 인용치 교차확인",
+    "source_url": "https://www.xxquant.com/en/institution/institutional-research/563f46f4ba78971a405d0778f6817cd8",
+    "source_rank": 2,
+}
+TREND_4Q26_CURRENT_BASELINE = {
+    "conventional_dram_min_pct": 10.0,
+    "conventional_dram_max_pct": 15.0,
+    "overall_nand_min_pct": 15.0,
+    "overall_nand_max_pct": 20.0,
+    "enterprise_ssd_min_pct": 23.0,
+    "enterprise_ssd_max_pct": 28.0,
+    "as_of": "2026-09-30",
+    "source": "TrendForce",
+    "source_kind": "공식 보도자료·리서치 공개 페이지",
+    "source_url": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
+    "research_url": "https://www.trendforce.com/research/download/RP260924PL",
+    "source_rank": 3,
+}
 LEGACY_DRAM_TRACK_VERSION = 1
 BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION = 1
 BERNSTEIN_MEMORY_CYCLE_BASELINE = {
@@ -88,6 +116,7 @@ BERNSTEIN_MEMORY_CYCLE_BASELINE = {
     "as_of": "2026-09-30",
 }
 TREND_PINNED_PRESS_URLS = [
+    "https://www.trendforce.com/presscenter/news/20260930-13258.html",
     "https://www.trendforce.com/presscenter/news/20260929-13255.html",
 ]
 TREND_PINNED_REPORT_URLS = [
@@ -103,6 +132,8 @@ TREND_SEARCH_QUERIES = [
     'site:trendforce.com/research/download "NAND Flash Market Bulletin" TrendForce',
     'site:trendforce.com/research/download "HBM Market Bulletin" TrendForce',
     'site:trendforce.com/research/download QLC enterprise SSD KV cache TrendForce',
+    'site:trendforce.com 4Q26 Conventional DRAM 10 15 NAND 15 20 Enterprise SSD 23 28',
+    'site:trendforce.com 4Q26 memory price forecast revised DRAM NAND enterprise SSD',
 ]
 
 QUERIES = [
@@ -1133,6 +1164,90 @@ def _bernstein_memory_cycle_changes(old: dict, new: dict) -> list[str]:
             changes.append(f"{label}: {b} 신규 확인")
     return changes
 
+
+
+def _extract_trendforce_4q26_revision(item: dict) -> dict | None:
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    source = str(item.get("source") or "")
+    if "trendforce" not in low and "trendforce" not in source.lower():
+        return None
+    if "4q26" not in low and "fourth quarter" not in low and "4분기" not in text:
+        return None
+
+    def rng(patterns: tuple[str, ...]) -> tuple[float, float] | None:
+        for pat in patterns:
+            m = re.search(pat, text, re.I | re.S)
+            if m:
+                return float(m.group(1)), float(m.group(2))
+        return None
+
+    dram = rng((
+        r"Conventional\s+DRAM[^%]{0,160}?(?:grow|rise|increase|projected)[^%]{0,100}?(\d{1,2})\s*[–—~-]\s*(\d{1,2})\s*%",
+        r"Conventional\s+DRAM[^%]{0,160}?(\d{1,2})\s*(?:to|~|–|—|-)\s*(\d{1,2})\s*%[^.]{0,80}?(?:QoQ|quarter)",
+        r"일반형?\s*DRAM[^%]{0,160}?(\d{1,2})\s*(?:~|∼|–|—|-)\s*(\d{1,2})\s*%",
+    ))
+    nand = rng((
+        r"(?:Overall\s+)?NAND\s+Flash[^%]{0,160}?(?:grow|rise|increase|projected|expected)[^%]{0,100}?(\d{1,2})\s*[–—~-]\s*(\d{1,2})\s*%",
+        r"(?:Overall\s+)?NAND\s+Flash[^%]{0,160}?(\d{1,2})\s*(?:to|~|–|—|-)\s*(\d{1,2})\s*%[^.]{0,80}?(?:QoQ|quarter)",
+        r"전체\s*NAND\s*Flash[^%]{0,160}?(\d{1,2})\s*(?:~|∼|–|—|-)\s*(\d{1,2})\s*%",
+    ))
+    essd = rng((
+        r"Enterprise\s+SSD[^%]{0,200}?(?:surge|rise|increase|projected|expected)[^%]{0,100}?(\d{1,2})\s*[–—~-]\s*(\d{1,2})\s*%",
+        r"Enterprise\s+SSD[^%]{0,200}?(\d{1,2})\s*(?:to|~|–|—|-)\s*(\d{1,2})\s*%[^.]{0,80}?(?:QoQ|quarter)",
+        r"기업용\s*SSD[^%]{0,200}?(\d{1,2})\s*(?:~|∼|–|—|-)\s*(\d{1,2})\s*%",
+    ))
+    if dram is None and nand is None and essd is None:
+        return None
+    obs: dict = {}
+    if dram:
+        obs["conventional_dram_min_pct"], obs["conventional_dram_max_pct"] = dram
+    if nand:
+        obs["overall_nand_min_pct"], obs["overall_nand_max_pct"] = nand
+    if essd:
+        obs["enterprise_ssd_min_pct"], obs["enterprise_ssd_max_pct"] = essd
+    obs.update({
+        "as_of": (item.get("published_kst") or "")[:10] or "2026-09-30",
+        "source": source or "TrendForce",
+        "source_kind": "TrendForce 공식·공개자료" if source.lower().startswith("trendforce") else "TrendForce 인용자료",
+        "source_url": item.get("link") or "",
+        "source_rank": 3 if source.lower().startswith("trendforce") or "trendforce.com" in str(item.get("link") or "") else 2,
+    })
+    return obs
+
+
+def _trendforce_4q26_revision_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+    pairs = (
+        ("conventional_dram_min_pct", "conventional_dram_max_pct", "Conventional DRAM"),
+        ("overall_nand_min_pct", "overall_nand_max_pct", "NAND Flash"),
+        ("enterprise_ssd_min_pct", "enterprise_ssd_max_pct", "Enterprise SSD"),
+    )
+    for lo_key, hi_key, label in pairs:
+        old_lo, old_hi = old.get(lo_key), old.get(hi_key)
+        new_lo, new_hi = new.get(lo_key), new.get(hi_key)
+        if new_lo is None or new_hi is None:
+            continue
+        if old_lo is None or old_hi is None:
+            changes.append(f"{label}: +{float(new_lo):.0f}~{float(new_hi):.0f}% QoQ 신규 기준")
+        elif float(old_lo) != float(new_lo) or float(old_hi) != float(new_hi):
+            changes.append(
+                f"{label}: +{float(old_lo):.0f}~{float(old_hi):.0f}%→+{float(new_lo):.0f}~{float(new_hi):.0f}% QoQ"
+            )
+    return changes
+
+
+def _trendforce_4q26_revision_summary(old: dict, new: dict) -> list[str]:
+    out: list[str] = []
+    for lo_key, hi_key, label in (
+        ("conventional_dram_min_pct", "conventional_dram_max_pct", "DRAM"),
+        ("overall_nand_min_pct", "overall_nand_max_pct", "NAND"),
+    ):
+        if all(v is not None for v in (old.get(lo_key), old.get(hi_key), new.get(lo_key), new.get(hi_key))):
+            old_mid = (float(old[lo_key]) + float(old[hi_key])) / 2.0
+            new_mid = (float(new[lo_key]) + float(new[hi_key])) / 2.0
+            out.append(f"{label} 밴드 중간값 {old_mid:.1f}%→{new_mid:.1f}% ({new_mid-old_mid:+.1f}%p)")
+    return out
 
 
 def _merge_typed_state(old: dict, obs: dict) -> dict:
