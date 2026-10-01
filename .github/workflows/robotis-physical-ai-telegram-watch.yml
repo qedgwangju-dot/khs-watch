@@ -137,8 +137,21 @@ jobs:
             echo "State unchanged."
           else
             git commit -m "Update ROBOTIS physical AI watch state [skip ci]"
-            git pull --rebase origin main
-            git push origin HEAD:main
+            # Retry state push after concurrent repository updates from other watchers.
+            pushed=0
+            for attempt in 1 2 3 4 5; do
+              if git pull --rebase origin main && git push origin HEAD:main; then
+                pushed=1
+                break
+              fi
+              git rebase --abort 2>/dev/null || true
+              echo "State push race detected; retrying attempt $((attempt + 1))/5..."
+              sleep $((attempt * 2))
+            done
+            if [ "$pushed" -ne 1 ]; then
+              echo "State push failed after 5 attempts."
+              exit 1
+            fi
           fi
 
       - name: Upload watcher status
