@@ -10,6 +10,8 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
+from currency_krw_guard import validate_text as validate_currency_krw_text
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 ALERT = ROOT / "out" / "khs_us_investment_alert.html"
 DELIVERY = ROOT / "out" / "khs_us_investment_delivery.json"
@@ -162,6 +164,10 @@ def _validate_alert_contract(text: str) -> None:
     if re.search(r"원전\s*(?:최대\s*)?8\s*기", plain) and "프레임워크" not in plain:
         raise RuntimeError("Nuclear 8-unit alert missing framework qualification")
 
+    # Final delivery gate: every foreign-currency amount must have the
+    # KRW conversion immediately after it in parentheses.
+    validate_currency_krw_text(plain)
+
 
 def self_test_mode() -> int:
     bad_cases = [
@@ -170,6 +176,13 @@ def self_test_mode() -> int:
         "알래스카 LNG\n9월 30일 발표 대기 상태\nProject North 검토 착수",
         "원전 8기 확정",
     ]
+    bad_cases.append(
+        "한미 공동 팩트시트 확인\n"
+        "원전 8기 프레임워크 합의 AP1000 6기 APR1400 2기\n"
+        "알래스카 LNG Project North 검토 착수\n"
+        "540억달러 미국측 발표와 한국측 실제 집행확정 별도 관리"
+    )
+
     for bad in bad_cases:
         try:
             _validate_alert_contract(bad)
@@ -183,7 +196,7 @@ def self_test_mode() -> int:
         "Project Star 제1호 공식 추진\n"
         "원전 8기 프레임워크 합의 AP1000 6기 APR1400 2기\n"
         "알래스카 LNG Project North 검토 착수\n"
-        "540억달러 미국측 발표와 한국측 실제 집행확정 별도 관리"
+        "540억달러(약 73조원) 미국측 발표와 한국측 실제 집행확정 별도 관리"
     )
     _validate_alert_contract(good)
     print("telegram_alert_contract_self_test=passed")
