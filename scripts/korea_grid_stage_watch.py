@@ -552,14 +552,25 @@ def render_report(
         for meaning in meanings[:4]:
             lines.append(f"• {html.escape(meaning)}")
 
+    summary_mismatch = any(
+        isinstance((coverage.get(stage) or {}).get("expected"), int)
+        and isinstance((coverage.get(stage) or {}).get("parsed"), int)
+        and int((coverage.get(stage) or {}).get("expected")) != int((coverage.get(stage) or {}).get("parsed"))
+        for stage in STAGE_ORDER
+    )
+    count_heading = "<b>한국전력 상단 요약 표시</b>" if summary_mismatch else "<b>단계별 현재 건수</b>"
+    count_line = "• " + " · ".join(f"{stage} {counts.get(stage, 0)}건" for stage in STAGE_ORDER)
+    if summary_mismatch:
+        count_line += " <b>(상세 목록과 불일치·단계변화 판정에는 사용하지 않음)</b>"
+
     lines.extend(
         [
             "",
             "<b>다음 확인</b>",
             "• 상세 사업비·노선 km·발주 규격·낙찰사·계약금액·공사기간·전원 인가 시점",
             "",
-            "<b>단계별 현재 건수</b>",
-            "• " + " · ".join(f"{stage} {counts.get(stage, 0)}건" for stage in STAGE_ORDER),
+            count_heading,
+            count_line,
             f"• 확인 시각: {now_kst:%Y년 %m월 %d일 %H:%M} KST",
             f'• 출처: <a href="{html.escape(KEPCO_OVERVIEW_URL, quote=True)}"><b>한국전력 송변전 건설 사업현황</b></a>',
         ]
