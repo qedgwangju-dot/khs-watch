@@ -11,6 +11,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
+from html.parser import HTMLParser
 from zoneinfo import ZoneInfo
 
 try:
@@ -28,7 +29,8 @@ HBM_STATUS = ROOT / "out" / "tsmc_hbm_cross_status.json"
 FOUNDRY_STATE = ROOT / "data" / "tsmc_leading_node_watch_state.json"
 
 UA = "Mozilla/5.0 (compatible; khs-watch/2.0; +https://github.com/qedgwangju-dot/khs-watch)"
-WATCH_VERSION = 1
+WATCH_VERSION = 2
+BOTTLENECK_PARSER_VERSION = 2
 LTN_CANONICAL_URL = "https://ec.ltn.com.tw/article/breakingnews/5586843"
 LTN_ALT_URL = "https://stock.ltn.com.tw/article/gqpj9vhyk1ku"
 NSTC_OFFICIAL_URL = "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch"
@@ -42,6 +44,9 @@ SEARCHES = [
     ('"TSMC" SoIC capacity advanced packaging', "en"),
     ('"TSMC" advanced packaging tester bottleneck shortage', "en"),
     ('"TSMC" CoWoS substrate HBM bottleneck shortage', "en"),
+    ('"HBM" "supply constraints" TrendForce', "en"),
+    ('"CoWoS" "capacity constraints" TrendForce TSMC', "en"),
+    ('"AI substrate" shortage TrendForce Unimicron', "en"),
     ('site:nstc.gov.tw 嘉義園區 擴建', "zh"),
 ]
 
@@ -56,7 +61,35 @@ EVIDENCE_RANK = {
     "reported": 1,
     "supply_chain_report": 2,
     "top_tier_report": 3,
-    "official": 4,
+    "research": 4,
+    "official": 5,
+}
+
+BOTTLENECK_BASELINES = {
+    "hbm": {
+        "status": "tight",
+        "evidence_state": "research",
+        "source_url": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
+        "source_name": "TrendForce",
+        "source_title": "HBM Supply Constraints Persist, 2027 Price Outlook Revised Upward",
+        "source_published_at_kst": "2026-09-29T00:00:00+09:00",
+    },
+    "cowos": {
+        "status": "tight",
+        "evidence_state": "research",
+        "source_url": "https://www.trendforce.com/presscenter/news/20260918-13241.html",
+        "source_name": "TrendForce",
+        "source_title": "AI Chip Packaging Pushes Beyond Reticle Limits",
+        "source_published_at_kst": "2026-09-18T00:00:00+09:00",
+    },
+    "substrate": {
+        "status": "tight",
+        "evidence_state": "supply_chain_report",
+        "source_url": "https://www.trendforce.com/news/2026/09/03/news-tsmc-equipment-demand-reportedly-jumps-90-in-just-over-half-a-year-substrate-capacity-faces-ai-squeeze/",
+        "source_name": "TrendForce News",
+        "source_title": "Substrate Capacity Faces AI Squeeze",
+        "source_published_at_kst": "2026-09-03T00:00:00+09:00",
+    },
 }
 
 PHASE_RANK = {
@@ -174,6 +207,8 @@ def evidence_state(source, url):
     text = ((source or "") + " " + (url or "")).lower()
     if any(x in text for x in ("tsmc.com", "nstc.gov.tw", "stsp.gov.tw")):
         return "official"
+    if "trendforce.com/presscenter/" in text or "trendforce.com/research/" in text:
+        return "research"
     if any(x in text for x in ("reuters", "bloomberg", "cna.com.tw", "中央社")):
         return "top_tier_report"
     if any(x in text for x in ("ec.ltn.com.tw", "stock.ltn.com.tw", "自由時報", "自由財經", "trendforce", "digitimes")):
@@ -200,9 +235,17 @@ def read_events():
             source = clean(source_node.text if source_node is not None and source_node.text else "")
             pub = parse_pub(clean(item.findtext("pubDate") or ""))
             low = (title + " " + desc).lower()
-            if not any(k in low for k in ("tsmc", "台積電", "台积电")):
+            is_tsmc = any(k in low for k in ("tsmc", "台積電", "台积电"))
+            supply_signal = (
+                any(k in low for k in ("hbm", "cowos", "substrate", "abf", "기판"))
+                and any(k in low for k in (
+                    "shortage", "short supply", "supply constraint", "capacity constraint",
+                    "bottleneck", "tight", "不足", "瓶頸", "瓶颈", "供不應求", "供不应求",
+                ))
+            )
+            if not is_tsmc and not supply_signal:
                 continue
-            if not any(k in low for k in (
+            if not supply_signal and not any(k in low for k in (
                 "advanced packaging", "cowos", "soic", "先進封裝", "先进封装",
                 "嘉義", "嘉义", "chiayi", "tester", "substrate", "封測", "封测",
             )):
@@ -230,15 +273,86 @@ def read_events():
     return sorted(rows.values(), key=lambda x: (x.get("published_at_kst") or "", x.get("rank", 0)))
 
 
+class _ArticleBodyParser(HTMLParser):
+    BODY_MARKERS = (
+        "articlebody", "article-body", "article_content", "article-content",
+        "article_view", "article-view-content-div", "article_txt", "story-body",
+    )
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.depth = 0
+        self.target_depth = None
+        self.parts = []
+        self.skip_depth = 0
+
+    def handle_starttag(self, tag, attrs):
+        self.depth += 1
+        attrs = {str(k).lower(): str(v or "") for k, v in attrs}
+        marker = " ".join((attrs.get("id", ""), attrs.get("class", ""), attrs.get("itemprop", ""))).lower()
+        if self.target_depth is None and (
+            tag.lower() == "article"
+            or attrs.get("itemprop", "").lower() == "articlebody"
+            or any(x in marker for x in self.BODY_MARKERS)
+        ):
+            self.target_depth = self.depth
+        if self.target_depth is not None and tag.lower() in ("nav", "aside", "footer"):
+            self.skip_depth = self.depth
+
+    def handle_endtag(self, tag):
+        if self.skip_depth == self.depth:
+            self.skip_depth = 0
+        if self.target_depth == self.depth:
+            self.target_depth = None
+        self.depth = max(0, self.depth - 1)
+
+    def handle_data(self, data):
+        if self.target_depth is not None and not self.skip_depth:
+            value = clean(data)
+            if value:
+                self.parts.append(value)
+
+
+def _jsonld_article_body(raw):
+    for payload in re.findall(
+        r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>',
+        raw, re.I | re.S
+    ):
+        try:
+            value = json.loads(html.unescape(payload))
+        except Exception:
+            continue
+        stack = [value]
+        while stack:
+            node = stack.pop()
+            if isinstance(node, dict):
+                body = node.get("articleBody")
+                if isinstance(body, str) and len(clean(body)) >= 80:
+                    return clean(body)
+                stack.extend(node.values())
+            elif isinstance(node, list):
+                stack.extend(node)
+    return ""
+
+
 def article_text(event):
     url = event.get("direct_link") or ""
     if url == LTN_CANONICAL_URL:
         url = LTN_ALT_URL
     try:
         raw = fetch(url, timeout=16).decode("utf-8", errors="ignore")
-        return clean(raw)[:60000]
     except Exception:
         return ""
+    body = _jsonld_article_body(raw)
+    if body:
+        return body[:60000]
+    parser = _ArticleBodyParser()
+    try:
+        parser.feed(raw)
+        body = clean(" ".join(parser.parts))
+    except Exception:
+        body = ""
+    return body[:60000] if len(body) >= 80 else ""
 
 
 def strong_current_status(text):
@@ -322,22 +436,69 @@ def monthly_capacity(text, tech):
 
 
 def bottleneck_status(text, key):
-    low = text.lower()
     terms = {
         "tester": ("tester", "test equipment", "테스터", "測試機", "测试机"),
         "substrate": ("substrate", "abf", "기판", "載板", "载板"),
         "hbm": ("hbm",),
         "cowos": ("cowos",),
     }[key]
-    if not any(t.lower() in low for t in terms):
-        return ""
-    if re.search(r"shortage|bottleneck|insufficient|tight supply|缺貨|缺货|不足|瓶頸|瓶颈|供不應求|供不应求", low, re.I):
-        return "tight"
-    if re.search(r"easing|ease|improv(?:e|ing)|緩解|缓解|改善|供需平衡", low, re.I):
-        return "easing"
-    if re.search(r"resolved|cleared|解除|消除", low, re.I):
-        return "cleared"
-    return ""
+    chunks = [
+        clean(x) for x in re.split(r"(?<=[.!?。；;])\s+|[\r\n]+", str(text or ""))
+        if clean(x)
+    ]
+    found = set()
+    for chunk in chunks:
+        low = chunk.lower()
+        if not any(t.lower() in low for t in terms):
+            continue
+
+        tight = bool(re.search(
+            r"(?:remain(?:ed|s)?|stay(?:s|ed)?|keep(?:s|ing)?|persist(?:s|ed|ing)?|"
+            r"is|are|was|were|become(?:s|ing)?|turn(?:s|ed|ing)?)?[^.;]{0,60}"
+            r"(?:in\s+short\s+supply|supply[- ]constrained|capacity\s+constraint(?:s)?|"
+            r"supply\s+constraint(?:s)?|shortage(?:s)?|bottleneck(?:s)?|tight\s+supply|"
+            r"tight(?:ening)?\s+(?:capacity|supply)|不足|瓶頸|瓶颈|供不應求|供不应求)",
+            low, re.I
+        ))
+        easing = bool(re.search(
+            r"(?:shortage(?:s)?|bottleneck(?:s)?|supply[- ]demand\s+gap|"
+            r"supply\s+constraint(?:s)?|capacity\s+constraint(?:s)?)[^.;]{0,70}"
+            r"(?:is\s+easing|are\s+easing|has\s+eased|have\s+eased|eased|narrowed|"
+            r"is\s+narrowing|are\s+narrowing|moderated|is\s+moderating|are\s+moderating|"
+            r"緩解|缓解|改善|供需平衡)"
+            r"|(?:is\s+easing|are\s+easing|has\s+eased|have\s+eased|eased|"
+            r"is\s+narrowing|are\s+narrowing|narrowed|緩解|缓解)[^.;]{0,70}"
+            r"(?:shortage(?:s)?|bottleneck(?:s)?|supply[- ]demand\s+gap|"
+            r"supply\s+constraint(?:s)?|capacity\s+constraint(?:s)?)",
+            low, re.I
+        ))
+        cleared = bool(re.search(
+            r"(?:shortage(?:s)?|bottleneck(?:s)?|supply\s+constraint(?:s)?|"
+            r"capacity\s+constraint(?:s)?)[^.;]{0,70}(?:resolved|cleared|eliminated|解除|消除)",
+            low, re.I
+        ))
+
+        future_only = bool(re.search(
+            r"expected\s+to|forecast|projected|likely\s+to|will\s+ease|"
+            r"could\s+ease|by\s+(?:the\s+end\s+of\s+)?20\d{2}|"
+            r"預計|预计|預估|預期|预期|展望",
+            low, re.I
+        ))
+        current_persist = bool(re.search(
+            r"remain|stay|persist|continues?|still|currently|now|目前|仍|持續|持续",
+            low, re.I
+        ))
+        if (easing or cleared) and future_only and not current_persist:
+            easing = cleared = False
+
+        if tight:
+            found.add("tight")
+        if easing:
+            found.add("easing")
+        if cleared:
+            found.add("cleared")
+
+    return next(iter(found)) if len(found) == 1 else ""
 
 
 def extract_patch(event):
@@ -345,9 +506,17 @@ def extract_patch(event):
     page = article_text(event)
     text = (base + " " + page).strip()
     low = text.lower()
-    if not any(k in low for k in ("tsmc", "台積電", "台积电")):
+    is_tsmc = any(k in low for k in ("tsmc", "台積電", "台积电"))
+    supply_signal = (
+        any(k in low for k in ("hbm", "cowos", "substrate", "abf", "기판"))
+        and any(k in low for k in (
+            "shortage", "short supply", "supply constraint", "capacity constraint",
+            "bottleneck", "tight", "不足", "瓶頸", "瓶颈", "供不應求", "供不应求",
+        ))
+    )
+    if not is_tsmc and not supply_signal:
         return {}
-    if not any(k in low for k in (
+    if not supply_signal and not any(k in low for k in (
         "advanced packaging", "cowos", "soic", "先進封裝", "先进封装",
         "嘉義", "嘉义", "chiayi", "tester", "substrate", "封測", "封测",
     )):
@@ -413,7 +582,14 @@ def extract_patch(event):
     for key in ("tester", "substrate", "hbm", "cowos"):
         status = bottleneck_status(text, key)
         if status:
-            b[key] = {"status": status, "evidence_state": ev, "source_url": source_url}
+            b[key] = {
+                "status": status,
+                "evidence_state": ev,
+                "source_url": source_url,
+                "source_name": source_name,
+                "source_title": event.get("title") or "",
+                "source_published_at_kst": event.get("published_at_kst") or "",
+            }
     if b:
         patch["bottlenecks"] = b
     return patch
@@ -468,8 +644,24 @@ def merge_state(current, patch):
     bottlenecks = dict(out.get("bottlenecks") or {})
     for key, item in (patch.get("bottlenecks") or {}).items():
         old = bottlenecks.get(key) or {}
-        if EVIDENCE_RANK.get(item.get("evidence_state"), 0) >= EVIDENCE_RANK.get(old.get("evidence_state"), 0):
+        if not old:
             bottlenecks[key] = item
+            continue
+        old_url = old.get("source_url") or ""
+        new_url = item.get("source_url") or ""
+        old_at = old.get("source_published_at_kst") or ""
+        new_at = item.get("source_published_at_kst") or ""
+        old_rank = EVIDENCE_RANK.get(old.get("evidence_state"), 0)
+        new_rank = EVIDENCE_RANK.get(item.get("evidence_state"), 0)
+
+        if new_url and old_url and new_url == old_url and item.get("status") != old.get("status") and new_at <= old_at:
+            continue
+        if new_at > old_at or (new_at == old_at and new_rank > old_rank):
+            bottlenecks[key] = item
+        elif item.get("status") == old.get("status") and new_rank > old_rank:
+            upgraded = dict(old)
+            upgraded.update(item)
+            bottlenecks[key] = upgraded
     if bottlenecks:
         out["bottlenecks"] = bottlenecks
 
@@ -509,13 +701,8 @@ def material_changes(old, new):
         b = (new_fabs.get(fab) or {}).get("status")
         if a != b and b:
             reasons.append(f"{fab} {PHASE_KO.get(a, a or '미확인')}→{PHASE_KO.get(b, b)}")
-    old_b, new_b = old.get("bottlenecks") or {}, new.get("bottlenecks") or {}
-    labels = {"tester": "테스터", "substrate": "기판", "hbm": "HBM", "cowos": "CoWoS"}
-    for key in sorted(set(old_b) | set(new_b)):
-        a = (old_b.get(key) or {}).get("status")
-        b = (new_b.get(key) or {}).get("status")
-        if a != b and b:
-            reasons.append(f"{labels.get(key,key)} 병목 {a or '미확인'}→{b}")
+    # 병목 방향은 HBM 교차 알림에서만 처리한다. 자이/패키지 알림에
+    # 섞지 않아 같은 병목이 중복 전송되거나 LTN이 잘못된 근거로 표시되는 것을 막는다.
     if (
         old.get("fab_count_evidence_state") != "official"
         and new.get("fab_count_evidence_state") == "official"
@@ -612,6 +799,7 @@ def href(url, label="원문"):
 def evidence_ko(state):
     return {
         "official": "공식자료",
+        "research": "조사기관 공식 리서치",
         "top_tier_report": "주요 통신·중앙사 보도",
         "supply_chain_report": "공급망·업계 보도",
         "reported": "보도 단계",
@@ -664,12 +852,18 @@ def hbm_alert_text(new, reasons, checked, foundry_snapshot=None):
     b = new.get("bottlenecks") or {}
     lines.append("• 후단: CoWoS " + _bottleneck_ko((b.get("cowos") or {}).get("status")) + " · 기판 " + _bottleneck_ko((b.get("substrate") or {}).get("status")))
     lines.append("• 메모리: HBM " + _bottleneck_ko((b.get("hbm") or {}).get("status")))
+    for key, label in (("cowos","CoWoS"),("substrate","기판"),("hbm","HBM")):
+        item = b.get(key) or {}
+        if item.get("source_url"):
+            source_label = source_name_ko(item.get("source_name"), item.get("source_url"))
+            lines.append(f"• {label} 상태 근거: " + html.escape(source_label) + " · " + href(item["source_url"]))
     if new.get("cowos_capacity_wpm"):
         lines.append(f"• CoWoS 월 생산능력: {int(new['cowos_capacity_wpm']):,}장")
     if new.get("soic_capacity_wpm"):
         lines.append(f"• SoIC 월 생산능력: {int(new['soic_capacity_wpm']):,}장")
-    if new.get("last_source_url"):
-        lines.append("• 근거: " + html.escape(source_name_ko(new.get("last_source_name"), new.get("last_source_url"))) + " · " + href(new["last_source_url"]))
+    non_bottleneck_reason = any("병목" not in r for r in reasons)
+    if non_bottleneck_reason and new.get("last_source_url"):
+        lines.append("• 기타 변화 근거: " + html.escape(source_name_ko(new.get("last_source_name"), new.get("last_source_url"))) + " · " + href(new["last_source_url"]))
     lines.append("• 조회: " + checked.strftime("%Y-%m-%d %H:%M KST"))
     return koreanize_alert_text("\n".join(lines) + "\n")
 
@@ -680,6 +874,15 @@ def run(mode):
     alert_path = PACKAGE_ALERT if mode == "package" else HBM_ALERT
     status_path = PACKAGE_STATUS if mode == "package" else HBM_STATUS
     state = load_state(state_path)
+    if int(state.get("bottleneck_parser_version") or 0) < BOTTLENECK_PARSER_VERSION:
+        corrected = dict(state.get("current_state") or {})
+        corrected["bottlenecks"] = json.loads(json.dumps(BOTTLENECK_BASELINES, ensure_ascii=False))
+        state["current_state"] = corrected
+        state["bottleneck_parser_version"] = BOTTLENECK_PARSER_VERSION
+        state["bottleneck_parser_migration_note"] = (
+            "v2: 기사 전체 HTML의 관련기사·사이드바 문구를 병목 방향으로 오인하던 문제를 제거하고 "
+            "명시적 현재 공급상태 기준선으로 재설정."
+        )
     current = dict(state.get("current_state") or {})
     candidate = dict(current)
     last_event = None
