@@ -509,10 +509,31 @@
       "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQd25kSnBuY2ZYZ1ZyOGg4RXM5Tk5GU3NRSXg3SnVHM0x0dWpXUG13WENjQjdoZDlwb0NrMmRhbFlzLW02dFFEOWwtUDBnSlNDR2p5MzZ1cjhMOWF1b3RCcjBteXBobGQya2hweWxrbnl4VGNwUHBUdU5WX0tTYl93U0FObkFjRnI3Y2ZoR2NfZTd3Y09Jc1dCa0dqanVuMUxSQTBfbkE5OGNFMTNCLTBwTzl5MU43aFdC?oc=5",
       "published_utc": "2026-09-30T13:18:13Z",
       "first_seen_kst": "2026-10-01T16:02:19+09:00"
+    },
+    "61e9b9243a48cf2e9c69": {
+      "source": "Arab News",
+      "title": "Tanker attacked in Strait of Hormuz: UK maritime agency - Arab News",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOYUx3c2JLRnUtX21KdkVjanpXcVFTa2w3VUVVbTFPZ3E5V0hGZzZ0V2RVdmE2MjkwRmRUeGYweFFYVUdUVmJ5RXdOYS1BdF9tUkJpOUN0NVFHbFM2cWx0ay0tTDJoWmtfc1JrVEFFdU14aHI5OVlKMWkwTjdTOGhHVHNBelI3ZlROLTE3V2FTZW1HTFd1eWU3RUNtd2RDLTh6?oc=5",
+      "published_utc": "2026-10-01T22:54:21Z",
+      "first_seen_kst": "2026-10-02T08:48:04+09:00"
+    },
+    "47b9264d0b5c5927a89c": {
+      "source": "Anadolu Ajansı",
+      "title": "Tanker struck by unknown projectile in Strait of Hormuz catches fire: UK maritime agency - Anadolu Ajansı",
+      "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQaWVzYjNWeW44a0NIZHBFcUFnZDhreVF2QzR1eW9nT1hyWjRJLVJ6MG5mN2hIc0hRYnlKUm1iZlVsaUxWVVpraEI4RV9hcURJWVZHSUVFeXVNVG03X0FPVno2Vi1fWkU4Y3RUd3g2QnNmeUFMNFBfYmJ4Qm5fQVN3SS04eU9EdEl3ZklrWTFXb1dob3RJQlAwc1BKZTgwaEs5R0JxX2EtaXVLQ1p1cVFmbHl1Nkhvdy1WZXNYclhZY0FrUE1NVXlVVFVDWFA?oc=5",
+      "published_utc": "2026-10-01T20:27:57Z",
+      "first_seen_kst": "2026-10-02T08:48:04+09:00"
+    },
+    "56078557346b83b138f8": {
+      "source": "Anadolu Ajansı",
+      "title": "Supertanker hit, catches fire near Oman in Strait of Hormuz: Report - Anadolu Ajansı",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNRTJadGFRMVhMWkNmanVOMlM2UC15aHYwRzRsMHZCVlljYjhNWGE1THEwT0VCR3JZOFVodUhTcm1pMGdIcXluZlE4OXVGSXhBZ09kbVhTNGdYRlBrZ09tNktvY1VadWVhZ09tM3VRYXlqOC1qU3pGVzE1bmRncjJUZG9IelJrdDl2aUFNOW8yTU5CYUdMWmV1QWxLVDZKb3Q5Mmc2RmpBX2hzejljOXhZ?oc=5",
+      "published_utc": "2026-10-01T20:02:46Z",
+      "first_seen_kst": "2026-10-02T08:48:04+09:00"
     }
   },
   "highest_warning_seen": 124,
-  "last_checked_kst": "2026-10-02T04:46:30+09:00",
+  "last_checked_kst": "2026-10-02T08:48:04+09:00",
   "confirmed_events": {
     "news:2026-08-30:strike:hormuz:1": {
       "warning": null,
@@ -581,6 +602,17 @@
         "Anadolu Ajansı"
       ],
       "first_seen_kst": "2026-09-22T04:40:12+09:00"
+    },
+    "news:2026-10-01:strike:hormuz:1": {
+      "warning": null,
+      "event_kind": "strike",
+      "location": "hormuz",
+      "projectile_count": 1,
+      "sources": [
+        "Arab News",
+        "Anadolu Ajansı"
+      ],
+      "first_seen_kst": "2026-10-02T08:48:04+09:00"
     }
   }
 }
