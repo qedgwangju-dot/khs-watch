@@ -110,7 +110,7 @@ def build_message(data: dict) -> str:
 
     lines = [
         "🚨 <b>호남 반도체 국가산단</b>",
-        f"신규 상태 변화 <b>{total}건</b> · 조회 {esc(fmt_checked(data.get('checked_at_kst', '')))}",
+        f"신규 변화 <b>{total}건</b> · 조회 {esc(fmt_checked(data.get('checked_at_kst', '')))}",
         "• 기준: 주제·사건·공식 상태 변화",
         "• 기사 링크: 감지 근거·교차검증용",
         "",
@@ -140,8 +140,10 @@ def build_message(data: dict) -> str:
             lines.append(f"• 왜 중요: {esc(reason)}")
         lines += [
             f"• 현재 판정: <b>{esc(impact_label(item.get('impact', '')))}</b>",
-            f"• 확인도: {esc(item.get('source_status') or '공식자료')}",
+            f"• 확인도: {esc(item.get('verification_status') or item.get('source_status') or '공식자료')}",
         ]
+        if item.get("verification_upgrade"):
+            lines.append("• 검증 변화: <b>기존 보도 신호 → 더 높은 확인 단계로 승격</b>")
         lines += evidence_lines(item)
 
     for item in news:
@@ -159,8 +161,10 @@ def build_message(data: dict) -> str:
             lines.append(f"• 왜 중요: {esc(reason)}")
         lines += [
             f"• 현재 판정: <b>{esc(impact_label(item.get('impact', '')))}</b>",
-            f"• 확인도: {esc(item.get('source_status') or '보도 단계')}",
+            f"• 확인도: {esc(item.get('verification_status') or item.get('source_status') or '보도 단계')}",
         ]
+        if item.get("verification_upgrade"):
+            lines.append("• 검증 변화: <b>기존 보도 신호 → 더 높은 확인 단계로 승격</b>")
         published = fmt_published(item.get("published", ""))
         if published:
             lines.append(f"• 최초 감지 근거 공개: {esc(published)}")
