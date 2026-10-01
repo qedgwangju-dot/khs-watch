@@ -401,6 +401,25 @@ def main() -> int:
         errors.append("concurrent radar seen-state merge lost live/preopen lane")
     if merged_seen.get("updated_at_kst") != "2026-10-01T16:12:00+09:00":
         errors.append("concurrent radar seen-state merge regressed state timestamp")
+    market_update = {
+        "source_title": "'마이크론·반도체 수출' 훈풍에 7천피 턱밑…코스닥 4.48% 급등(종합)",
+        "news": "'마이크론·반도체 수출' 훈풍에 7천피 턱밑…코스닥 4.48% 급등(종합)",
+        "published": "2026-10-01T16:11:00+09:00",
+        "supply_chain_theme": "korea_monthly_exports:2026-10-01",
+        "link": "https://www.yna.co.kr/view/AKR20261001150200008",
+    }
+    market_flash = {
+        "source_title": "[속보] '마이크론·반도체 수출' 훈풍…코스피 1.95%·코스닥 4.48%↑",
+        "news": "[속보] '마이크론·반도체 수출' 훈풍…코스피 1.95%·코스닥 4.48%↑",
+        "published": "2026-10-01T15:34:00+09:00",
+        "link": "https://www.yna.co.kr/view/AKR20261001142800008",
+    }
+    if compact.alert_dedup_key(market_update) != compact.alert_dedup_key(market_flash):
+        errors.append("same Korean market move was not deduplicated across flash/update links")
+    update_keys = set(production.telegram.alert_seen_keys(market_update))
+    flash_keys = set(production.telegram.alert_seen_keys(market_flash))
+    if not any(key.startswith("event:") for key in update_keys.intersection(flash_keys)):
+        errors.append("same Korean market move did not share a persisted seen-state event key")
     raw_html_regression = (
         '1) 기사 제목\n- 핵심: <질문 1> & 원문 표기\n'
         '- 출처: <a href="https://example.com/article">원문 뉴스보기</a>'
