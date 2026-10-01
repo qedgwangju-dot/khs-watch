@@ -8,8 +8,12 @@ import re
 
 VERSION = 1
 EARLY_SIGNAL = re.compile(
-    r"검토|추진|협상|논의|가능성|전망|예상|관측|소식통|제안|의견수렴|입법예고|"
+    r"검토|추진|협상|논의|가능성|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should)\b", re.I,
+)
+HEADLINE_EARLY = re.compile(
+    r"검토|협상|논의|가능성|관측|소식통|제안|제언|권고|해야|바꿔야|줄여야|늘려야|우려|전망$|예상$|"
+    r"consider|propos|draft|forecast|sources say", re.I,
 )
 BACKGROUND = re.compile(
     r"^(?:한편\s*)?(?:지난해|작년|과거|기존에는|종전에는|previously|last year)\b|"
@@ -139,6 +143,9 @@ def assess(title: str, body: str) -> dict:
                 result["evidence"].append({"kind": kind, "stage": "early_signal" if early else "reported_change", "source_excerpt": sentence})
     if result["evidence"]:
         result.update(disposition="keep", reason="source_change_evidence")
+        if HEADLINE_EARLY.search(title):
+            result["priority"] = min(result["priority"], 2)
+            result["headline_stage"] = "early_signal"
     elif routine or soft:
         result.update(disposition="exclude", priority=0, reason="routine_or_vague_without_market_change")
     else:

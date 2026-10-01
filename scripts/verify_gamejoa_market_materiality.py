@@ -102,6 +102,14 @@ class MaterialityChecks(unittest.TestCase):
         audit = materiality.assess("수상 태양광 신기술 공개", "수상 태양광 기업은 고객 공급을 위해 검증한 신기술을 공개했다.")
         self.assertEqual(audit["disposition"], "keep")
 
+    def test_proposal_not_upgraded_by_background_statistics(self):
+        audit = materiality.assess("증시 경보 체계 바꿔야", "연구위원은 증시 규제를 완화해야 한다고 제언했다. 경보 지정 중 주가 상승률 요건의 비중은 72%로 증가했다.")
+        self.assertEqual(audit["priority"], 2)
+        self.assertEqual(audit["headline_stage"], "early_signal")
+        released = materiality.assess("PCE 물가 3.4% 상승", "PCE 물가는 전년비 3.4% 상승해 예상치 3.7%를 하회했다.")
+        self.assertEqual(released["priority"], 3)
+        self.assertTrue(all(item["stage"] == "reported_change" for item in released["evidence"]))
+
     def test_unverified_body_cannot_establish_materiality(self):
         item = alert(*KEEP[0])
         item["body_verified"] = False
