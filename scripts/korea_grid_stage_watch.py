@@ -411,6 +411,57 @@ def _project_event_line(event: dict[str, Any]) -> str:
     return f"• {name}"
 
 
+def verified_alert_events(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Return only project-identifiable changes suitable for Telegram.
+
+    KEPCO's overview counters and stage-list pages can update at different times.
+    A counter-only delta is therefore evidence of a page update, not by itself
+    evidence that a specific transmission project changed stage.
+    """
+    count_event = next((e for e in events if e.get("type") == "count_change"), None)
+    count_delta: dict[str, int] = {}
+    if count_event:
+        for stage, old_value, new_value in count_event.get("changes", []):
+            count_delta[str(stage)] = int(new_value) - int(old_value)
+
+    detailed = [e for e in events if e.get("type") != "count_change"]
+    verified: list[dict[str, Any]] = []
+
+    # Same normalized project observed in both snapshots with a different stage
+    # is the strongest stage-transition signal.
+    for event in detailed:
+        event_type = event.get("type")
+        if event_type in {"stage_change", "equipment_change"}:
+            verified.append(event)
+
+    # A new/removed project is only alertable when the overview counter moves in
+    # the same direction for that stage. Otherwise it can be list-refresh noise.
+    for event in detailed:
+        event_type = event.get("type")
+        stage = _event_stage(event)
+        if event_type == "stage_entry" and count_delta.get(stage, 0) > 0:
+            verified.append(event)
+        elif event_type == "stage_exit" and count_delta.get(stage, 0) < 0:
+            verified.append(event)
+
+    # Never alert on a count-only change. If project details exist, retain the
+    # count block only as reconciliation context.
+    if not verified:
+        return []
+
+    result: list[dict[str, Any]] = []
+    if count_event:
+        result.append(count_event)
+    seen = set()
+    for event in verified:
+        signature = json.dumps(event, ensure_ascii=False, sort_keys=True)
+        if signature in seen:
+            continue
+        seen.add(signature)
+        result.append(event)
+    return result
+
+
 def render_report(
     events: list[dict[str, Any]],
     counts: dict[str, int],
@@ -420,7 +471,7 @@ def render_report(
     coverage = coverage or {}
     lines = [
         "<b>전력망 사업단계 새 공식 변화</b>",
-        "특정 기사 추적이 아니라 한국전력 송변전 사업현황의 실제 단계·물량 변화 감지",
+        "한국전력 송변전 사업현황에서 개별 사업으로 식별된 단계 변화만 알림",
     ]
 
     count_event = next((e for e in events if e.get("type") == "count_change"), None)
@@ -634,9 +685,17 @@ def main(argv: list[str] | None = None) -> int:
 
     if args.force_notify and not events:
         events = [{"type": "count_change", "changes": []}]
+    elif not args.force_notify:
+        raw_events = list(events)
+        events = verified_alert_events(events)
+        if raw_events and not events:
+            print(
+                "KEPCO 송변전 요약/목록 변화는 감지됐지만 "
+                "개별 사업의 실제 단계 변화를 확정하지 못해 알림 억제"
+            )
 
     if not events:
-        print("KEPCO 송변전 사업단계 신규 변화 없음")
+        print("KEPCO 송변전 사업단계 신규 확정 변화 없음")
         github_output("changed", "false")
         return 0
 
