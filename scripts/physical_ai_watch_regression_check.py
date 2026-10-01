@@ -1032,4 +1032,66 @@ g, s, c, k = classify(robotis_hand_upgrade)
 assert g in {"robotis", "humanoid_component_global"}, (g, s, c)
 assert s >= 11, s
 
+# 28) Hyundai/Boston Dynamics mass-production execution lane. The known
+# 30,000-unit factory plan and financing exploration are baselines; legal entity,
+# site/capex/construction/equipment/SOP and actual Atlas finance/RaaS launch alert.
+robot_factory_baseline = make(
+    "Hyundai Motor Group plans new U.S. robotics facility",
+    "Hyundai Motor Group plans to establish a new robotics facility with annual capacity of 30,000 robots by 2028.",
+    "Hyundai Motor Group",
+)
+g, s, c, k = classify(robot_factory_baseline)
+assert g == "hyundai_atlas_rollout", (g, s, c)
+assert c.endswith("생산기지 도입 단계 진전") or "로봇공장" in c or "생산능력" in c, c
+assert s < 11, ("known 30,000-unit factory plan must remain a silent baseline", s, c)
+
+robot_factory_legal = make(
+    "Hyundai Motor Group establishes Robotics America",
+    "Hyundai Motor Group established and registered Robotics America as a new robot production subsidiary for its U.S. robotics facility and Atlas mass production.",
+    "Hyundai Motor Group",
+)
+g, s, c, k = classify(robot_factory_legal)
+assert g == "hyundai_atlas_rollout", (g, s, c)
+assert c.endswith("미국 로봇 생산법인 설립·등록"), c
+assert s >= 11, s
+
+robot_factory_site = make(
+    "Hyundai selects Georgia site for new robot factory",
+    "Hyundai Motor Group finalized the Georgia site for a robot factory with annual capacity of 30,000 robots and signed the land acquisition agreement.",
+    "Hyundai Motor Group",
+)
+g, s, c, k = classify(robot_factory_site)
+assert g == "hyundai_atlas_rollout", (g, s, c)
+assert c.endswith("미국 로봇공장 부지·입지 확정"), c
+assert s >= 11, s
+
+robot_factory_sop = make(
+    "Hyundai U.S. robot factory starts Atlas mass production",
+    "Hyundai Motor Group started mass production at its U.S. robotics facility and completed the first 100 Atlas robots.",
+    "Hyundai Motor Group",
+)
+g, s, c, k = classify(robot_factory_sop)
+assert g == "hyundai_atlas_rollout", (g, s, c)
+assert c.endswith("미국 로봇공장 양산개시·첫 생산"), c
+assert s >= 11, s
+
+robot_finance_baseline = make(
+    "Hyundai explores robot financing",
+    "Hyundai Capital is exploring the feasibility to finance sales of Atlas robots through Hyundai dealer partners.",
+    "Hyundai Motor",
+)
+g, s, c, k = classify(robot_finance_baseline)
+assert g == "hyundai_atlas_rollout", (g, s, c)
+assert s < 11, ("financing exploration is a baseline, not a launch", s, c)
+
+robot_finance_launch = make(
+    "Hyundai Capital launches Atlas robot financing program",
+    "Hyundai Capital launched a 36-month lease and subscription financing program for Atlas robot sales through dealer partners, with the first customer contract signed.",
+    "Hyundai Capital",
+)
+g, s, c, k = classify(robot_finance_launch)
+assert g == "hyundai_atlas_rollout", (g, s, c)
+assert c.endswith("Atlas 판매·RaaS·금융채널 상용화"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
