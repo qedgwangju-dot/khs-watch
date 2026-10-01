@@ -7,6 +7,7 @@ on:
   schedule:
     - cron: "11 * * * *"
     - cron: "41 * * * *"
+    - cron: "27 * * * *"
   workflow_dispatch:
     inputs:
       force_summary:
