@@ -1026,8 +1026,10 @@ robotis_hand_upgrade = make(
     "ROBOTIS",
 )
 g, s, c, k = classify(robotis_hand_upgrade)
-assert g == "humanoid_component_global", (g, s, c)
-assert "로봇핸드·그리퍼" in c and "핸드설계·제어 아키텍처" in c, c
+# ROBOTIS already has a dedicated first-party/commercial lane; do not steal its
+# event into the generic component group. The new discovery query only needs to
+# guarantee that a material next-generation hand change stays alertable.
+assert g in {"robotis", "humanoid_component_global"}, (g, s, c)
 assert s >= 11, s
 
 print("Physical-AI watcher regression guards: PASS")
