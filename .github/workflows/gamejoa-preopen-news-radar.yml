@@ -130,18 +130,38 @@ jobs:
         run: python scripts/verify_gamejoa_delivery_result.py
 
       - name: Commit GAMEJOA radar seen state
-        if: always() && hashFiles('data/gamejoa_preopen_news_radar_seen.json') != ''
+        if: success() && github.event.inputs.telegram_dry_run != 'true' && hashFiles('data/gamejoa_preopen_news_radar_seen.json') != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp data/gamejoa_preopen_news_radar_seen.json "$RUNNER_TEMP/gamejoa_seen_pending.json"
           git add data/gamejoa_preopen_news_radar_seen.json
           if git diff --cached --quiet; then
             echo "No GAMEJOA radar seen-state changes."
-          else
-            git commit -m "Update GAMEJOA preopen radar seen state"
-            git pull --rebase origin main
-            git push
+            exit 0
           fi
+
+          # Keep the delivered snapshot while another workflow may advance main.
+          git commit -m "Stage GAMEJOA radar seen state"
+          for attempt in 1 2 3 4 5 6 7 8; do
+            git fetch origin +refs/heads/main:refs/remotes/origin/main
+            git switch --detach origin/main
+            python scripts/merge_gamejoa_preopen_news_radar_seen.py \
+              "$RUNNER_TEMP/gamejoa_seen_pending.json" data/gamejoa_preopen_news_radar_seen.json
+            git add data/gamejoa_preopen_news_radar_seen.json
+            if git diff --cached --quiet; then
+              echo "GAMEJOA radar seen state already present on main."
+              exit 0
+            fi
+            git commit -m "Update GAMEJOA preopen radar seen state"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            echo "GAMEJOA radar seen-state push raced with main; retry=$attempt"
+            sleep $((attempt * 2))
+          done
+          echo "GAMEJOA radar seen state was not persisted after eight attempts." >&2
+          exit 1
 
       - name: Publish report summary
         if: always()
@@ -162,6 +182,7 @@ jobs:
             out/gamejoa_preopen_news_radar.json
             out/gamejoa_preopen_news_radar_title.txt
             out/gamejoa_preopen_news_radar_delivery.json
+            data/gamejoa_preopen_news_radar_seen.json
           if-no-files-found: ignore
 
 

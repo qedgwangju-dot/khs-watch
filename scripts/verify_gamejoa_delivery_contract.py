@@ -75,6 +75,9 @@ REQUIRED_WORKFLOW_SNIPPETS = [
 REQUIRED_PRODUCTION_WORKFLOW_SNIPPETS = [
     "Commit GAMEJOA radar seen state",
     "data/gamejoa_preopen_news_radar_seen.json",
+    "python scripts/merge_gamejoa_preopen_news_radar_seen.py",
+    "git switch --detach origin/main",
+    "git push origin HEAD:main",
 ]
 
 FORBIDDEN_WORKFLOW_SNIPPETS = [
@@ -372,6 +375,32 @@ def main() -> int:
     production = importlib.import_module(PRODUCTION_RUNNER)
     compact = importlib.import_module(LOCKED_TELEGRAM_MODULE)
     runtime_delivery = importlib.import_module("verify_gamejoa_delivery_result")
+    seen_merge = importlib.import_module("merge_gamejoa_preopen_news_radar_seen")
+    merged_seen = seen_merge.merge_states(
+        {
+            "updated_at_kst": "2026-10-01T16:12:00+09:00",
+            "seen": {
+                "remote-only": {"first_seen_kst": "2026-10-01T16:12:00+09:00", "lanes": {"live": "2026-10-01T16:12:00+09:00"}},
+                "shared": {"first_seen_kst": "2026-10-01T16:00:00+09:00", "last_seen_kst": "2026-10-01T16:12:00+09:00", "lanes": {"live": "2026-10-01T16:12:00+09:00"}, "title": "remote"},
+            },
+        },
+        {
+            "updated_at_kst": "2026-10-01T16:11:00+09:00",
+            "seen": {
+                "pending-only": {"first_seen_kst": "2026-10-01T16:11:00+09:00", "lanes": {"live": "2026-10-01T16:11:00+09:00"}},
+                "shared": {"first_seen_kst": "2026-10-01T15:59:00+09:00", "last_seen_kst": "2026-10-01T16:11:00+09:00", "lanes": {"preopen": "2026-10-01T16:11:00+09:00"}, "title": "pending"},
+            },
+        },
+    )
+    if set(merged_seen["seen"]) != {"remote-only", "pending-only", "shared"}:
+        errors.append("concurrent radar seen-state merge lost a delivered story")
+    shared_seen = merged_seen["seen"]["shared"]
+    if shared_seen.get("first_seen_kst") != "2026-10-01T15:59:00+09:00" or shared_seen.get("title") != "remote":
+        errors.append("concurrent radar seen-state merge lost chronology or newer metadata")
+    if set(shared_seen.get("lanes") or {}) != {"live", "preopen"}:
+        errors.append("concurrent radar seen-state merge lost live/preopen lane")
+    if merged_seen.get("updated_at_kst") != "2026-10-01T16:12:00+09:00":
+        errors.append("concurrent radar seen-state merge regressed state timestamp")
     raw_html_regression = (
         '1) 기사 제목\n- 핵심: <질문 1> & 원문 표기\n'
         '- 출처: <a href="https://example.com/article">원문 뉴스보기</a>'
