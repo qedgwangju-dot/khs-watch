@@ -1360,16 +1360,17 @@
     ]
   },
   "last_delivery": {
-    "at_kst": "2026-10-01T11:16:43+09:00",
+    "at_kst": "2026-10-01T11:29:52+09:00",
     "bot_username": "khs8879887988798879_bot",
     "message_ids": [
-      397
+      398
     ],
     "overall": "혼조·추가 확인",
     "treasury_flow": "장기채 위험 확대",
     "credit_flow": "신용 위험선호 회복",
     "curve_regime": "커브 트위스트·혼조",
     "treasury_date": "2026-09-30",
-    "format": "treasury-credit-ishares-oas-v1"
+    "format": "treasury-credit-ishares-oas-v2",
+    "data_fingerprint": "38b35abeda34346d559613d6854c4a953955013b72ecb52939c3de89e238c8c5"
   }
 }
