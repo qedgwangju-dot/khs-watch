@@ -111,7 +111,7 @@ REQUIRED_RUNNER_SNIPPETS = [
     "telegram.canonical_alert_for_seen = normalize_alert_for_output",
     "source_output_aligned(normalized)",
     "SOURCE_OUTPUT_ALIGNMENT_THEMES",
-    "korea_market_link_guard",
+    "stock_market_link_guard",
     "federal_register_uae_ear",
     "ALLOW_OFF_WINDOW_TELEGRAM",
     "https://rss.etoday.co.kr/eto/etoday_news_all.xml",
@@ -583,8 +583,9 @@ def main() -> int:
     final_selection_module = getattr(production.telegram.final_alerts_for_output, "__module__", "")
     canonical_seen_module = getattr(production.telegram.canonical_alert_for_seen, "__module__", "")
     query_plan = production.base.trusted_query_plan()
-    if len(query_plan) > 18:
-        errors.append(f"trusted query plan is too large for stable polling: {len(query_plan)} > 18")
+    # Three broad global-market bundles add coverage without unbounded per-topic searches.
+    if len(query_plan) > 21:
+        errors.append(f"trusted query plan is too large for stable polling: {len(query_plan)} > 21")
     required_query_labels = {"트럼프 직접발언/정책", "이란/호르무즈 긴급상황", "반도체/AI/HBM", "K-방산", "국내 정책", "바이오/FDA"}
     query_labels = {name for name, _query in query_plan}
     required_query_labels.add("중국 상무부 수출통제/관세")
@@ -815,8 +816,8 @@ def main() -> int:
         if not ap_title_keys.intersection(reuters_title_keys):
             errors.append("Iran/Hormuz cross-source variants did not share a canonical seen key")
         live_remaining, live_routed = production.telegram.partition_realtime_policy_alerts([normalized_iran], True)
-        if live_remaining or live_routed != [normalized_iran]:
-            errors.append("Iran/Hormuz alert was not single-routed away from live radar duplication")
+        if live_remaining != [normalized_iran] or live_routed:
+            errors.append("Iran/Hormuz market-moving news was lost to a separate policy workflow")
         preopen_remaining, preopen_routed = production.telegram.partition_realtime_policy_alerts([normalized_iran], False)
         if preopen_remaining != [normalized_iran] or preopen_routed:
             errors.append("Iran/Hormuz alert was not retained for the 06:30 radar")

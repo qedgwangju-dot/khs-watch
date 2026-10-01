@@ -32,11 +32,22 @@ Every defect or requested change must follow this sequence:
 
 ## Non-Negotiable Guards
 
+- The core radar covers domestic and international stock-market-moving news,
+  across industries, not only a fixed list of Korean companies or policy topics.
+  Evidence may be a company event or a global transmission channel: interest
+  rates, inflation/employment, FX/liquidity, trade restrictions, energy/materials,
+  transport, geopolitical risk, earnings/investment, or capital flows.
+- A foreign event does not need to name a Korean issuer to change the market's
+  discount rate, costs, demand or risk premium. The channel must come from the
+  source article, never collector query names or generated sector commentary.
+- Policy/geopolitical topic flags never remove an item from the live radar on
+  the assumption that a separate policy workflow delivered it. Normal source,
+  freshness, materiality and duplicate guards still apply.
 - Actions 성공만으로 완료 처리하지 않는다.
 - Headline, summary, source URL, and source body must describe the same event.
-- A visible GAMEJOA news item contains only the heading, `핵심`,
-  `투자 포인트`, and `출처`. Per-item `기준/시각` and `경로/섹터` must not
-  return; the report-level query time is the single news-query timestamp.
+- A visible live radar item contains only the heading, `핵심`, and a clickable
+  `출처`. Investment commentary, importance/status labels, duplicate query time,
+  per-item `기준/시각`, `경로/섹터`, and the disclaimer must not return.
 - `핵심` must preserve the article body's material actors, actions, amounts,
   rates, and next step in complete Korean sentences. It must not fall back to a
   50-character clipping or visible ellipsis.

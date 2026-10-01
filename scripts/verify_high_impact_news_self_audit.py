@@ -111,7 +111,7 @@ def assert_guardrail_hooks(errors: list[str]) -> None:
             "is_actionable_local_dc_policy",
             "source_evidence_text",
             "SOURCE_OUTPUT_ALIGNMENT_THEMES",
-            "korea_market_link_guard",
+            "stock_market_link_guard",
             "countervailing",
             "south korea",
             "decision_matrix",

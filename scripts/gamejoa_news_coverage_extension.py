@@ -58,6 +58,20 @@ DIRECT_ARTICLES = [
 
 SEARCH_SOURCES = [
     (
+        "국내외 증시 금리·물가·고용·정책 변화",
+        "(금리 OR 국채 OR 물가 OR 고용 OR 환율 OR 경기부양 OR 관세 OR 제재) "
+        "(발표 OR 인상 OR 인하 OR 동결 OR 급등 OR 급락 OR 상회 OR 하회 OR 시행 OR 합의) "
+        "(site:yna.co.kr OR site:newsis.com OR site:news1.kr OR site:mk.co.kr "
+        "OR site:hankyung.com OR site:edaily.co.kr)",
+    ),
+    (
+        "전업종 실적·수주·투자·주주환원",
+        "(영업이익 OR 순이익 OR 가이던스 OR 수주 OR 공급계약 OR 설비투자 OR 배당 OR 자사주) "
+        "(발표 OR 증가 OR 감소 OR 상향 OR 하향 OR 체결 OR 취득 OR 소각) "
+        "(site:yna.co.kr OR site:newsis.com OR site:mk.co.kr OR site:edaily.co.kr "
+        "OR site:hankyung.com OR site:biz.chosun.com)",
+    ),
+    (
         "단일종목 레버리지 규제 시행효과·거래급감",
         "(단일종목레버리지 OR 단일종목 레버리지 OR 단일레버리지 OR 기본예탁금) "
         "(거래대금 OR 거래량 OR 개인매도 OR 개인 매도 OR 거래급감 OR 거래 급감) "
@@ -1326,6 +1340,17 @@ for _impact_label, _impact_terms in FULL_ATTACHMENT_IMPACT_TERMS.items():
 
 # Rebuild after every extension. A stale material tuple would score a new lane
 # but then silently discard it during the final material-title quality gate.
+PRIORITY_TERMS.update({
+    "기준금리": 16, "금리 인하": 16, "유럽중앙은행": 16, "일본은행": 16,
+    "비농업 고용": 16, "고용지표": 16, "물가상승률": 16, "pce": 16,
+    "통상협정": 16, "배당": 14,
+})
+IMPACT_TERMS["할인율"] = (*IMPACT_TERMS["할인율"],
+    "기준금리", "금리 인하", "유럽중앙은행", "일본은행", "비농업 고용",
+    "고용지표", "물가상승률", "pce", "유동성",
+)
+IMPACT_TERMS["돈 버는 능력"] = (*IMPACT_TERMS["돈 버는 능력"], "통상협정")
+IMPACT_TERMS["수급"] = (*IMPACT_TERMS["수급"], "배당")
 MATERIAL_TERMS = tuple(PRIORITY_TERMS)
 
 

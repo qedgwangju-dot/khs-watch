@@ -71,6 +71,9 @@ QUERIES = [
 ]
 
 CORE_QUERY_BUNDLES = [
+    ("글로벌 금리·물가·고용·유동성", "(Federal Reserve OR ECB OR Bank of Japan OR inflation OR CPI OR PCE OR payrolls OR unemployment OR liquidity) (decision OR cut OR hike OR surprise OR forecast OR yields) Reuters Bloomberg CNBC Financial Times"),
+    ("글로벌 증시 실적·투자·자본행사", "(earnings OR profit warning OR guidance OR capex OR buyback OR merger OR dividend) (stocks OR shares OR markets) Reuters Bloomberg CNBC Financial Times"),
+    ("글로벌 통상·제재·원자재 공급", "(tariff OR sanctions OR export ban OR oil OR OPEC OR copper OR freight) (agreement OR restriction OR disruption OR surge OR fall OR strike) Reuters Bloomberg AP Financial Times"),
     ("트럼프 직접발언/정책", "Trump (Iran OR Israel OR Hormuz OR tariff OR export control OR defense cost sharing) Reuters Bloomberg CNBC AP"),
     ("미국 정책기관", "(FCC OR DOE OR FERC OR Commerce OR BIS OR USTR OR FTC OR SEC) (ban OR restriction OR rule OR loan OR grant OR export control OR tariff OR investigation) Reuters Bloomberg AP"),
     ("반도체/AI/HBM", "(Nvidia OR Micron OR Broadcom OR AMD OR Intel OR TSMC OR ASML OR HBM4) (guidance OR contract OR price OR supply OR capex) Reuters Bloomberg CNBC TrendForce"),
@@ -117,8 +120,17 @@ TERMS += [
     "retaliation", "retaliatory", "ceasefire", "ship", "vessel", "tanker", "missile",
     "drone", "closure", "closed", "reopen", "war",
 ]
+GLOBAL_DISCOUNT_TERMS = [
+    "federal reserve", "fomc", "ecb", "european central bank", "bank of japan",
+    "inflation", "cpi", "pce", "payrolls", "unemployment", "liquidity",
+    "interest rate", "rate cut", "rate hike", "treasury yields", "bond yields",
+]
+TERMS += GLOBAL_DISCOUNT_TERMS
+TERMS += ["profit warning", "dividend"]
 
 SECTORS = [
+    ("글로벌 금리/환율/유동성", GLOBAL_DISCOUNT_TERMS),
+    ("기업 실적/자본행사", ["earnings", "profit warning", "guidance", "buyback", "merger", "dividend"]),
     (
         "중국 수출통제/핵심소재",
         [
@@ -419,6 +431,10 @@ def classify(row: dict, now: dt.datetime) -> dict | None:
         impacts.append("돈 버는 능력")
     if any(t in matched for t in ["ban", "banned", "banning", "block", "blocked", "city council", "dollar", "fed", "gold", "moratorium", "ordinance", "real yield", "regulation", "tariff", "section 232", "quota", "safeguard", "anti-dumping", "national security", "covered list", "tips", "won", "yield", "zoning"]):
         impacts.append("할인율")
+    if any(t in matched for t in GLOBAL_DISCOUNT_TERMS):
+        impacts.append("할인율")
+    if any(t in matched for t in ["profit warning", "dividend"]):
+        impacts.append("돈 버는 능력")
     if any(t in matched for t in ["buyback", "convertible", "entity list", "export control", "offering", "sanction", "supply", "ban", "inverter", "robotics", "quota", "safeguard", "유상증자", "전환사채", "신주인수권", "자기주식", "최대주주"]):
         impacts.append("수급")
     if any(t in matched for t in ["city council", "court order", "final rule", "injunction", "joint venture", "loi", "merger", "mou", "permit", "planning commission", "public hearing", "residents", "township", "vote", "subsidy", "loan", "low-cost loan", "loan guarantee", "conditional commitment", "funding opportunity", "equipment authorization", "fcc", "doe", "department of energy", "타법인주식", "회사합병", "회사분할", "주요사항보고서", "소송"]):

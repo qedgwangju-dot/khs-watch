@@ -439,12 +439,12 @@ def unique_alert_candidates(alerts: list[dict]) -> list[dict]:
 
 
 def partition_realtime_policy_alerts(alerts: list[dict], live_mode: bool) -> tuple[list[dict], list[dict]]:
-    """Route breaking policy/geopolitical alerts to KHS once, while retaining them for 06:30."""
-    if not live_mode:
-        return alerts, []
-    routed = [alert for alert in alerts if alert.get("realtime_policy_lane")]
-    remaining = [alert for alert in alerts if not alert.get("realtime_policy_lane")]
-    return remaining, routed
+    """Keep market-moving policy news in the radar's verified delivery path.
+
+    A topic marker is not evidence that another workflow delivered the event.
+    The normal source, impact and seen-state gates still apply to every item.
+    """
+    return alerts, []
 
 
 def alert_identity(alert: dict) -> tuple[str, str, str]:
@@ -485,6 +485,10 @@ def selection_diagnostics(
                 )
             break
     selected_keys = {alert_identity(alert) for alert in selected}
+    market_channels: dict[str, int] = {}
+    for alert in selected:
+        for channel in alert.get("stock_market_channels") or []:
+            market_channels[channel] = market_channels.get(channel, 0) + 1
     excluded = []
     for alert in candidates:
         if alert_identity(alert) in selected_keys:
@@ -507,6 +511,7 @@ def selection_diagnostics(
         "seen_filtered_alerts": len(skipped_seen),
         "deduped_candidates": len(candidates),
         "selected_alerts": len(selected),
+        "stock_market_channels": market_channels,
         "excluded_alerts": excluded,
         "source_failures": source_failures,
         "detail_coverage": detail_coverage,
@@ -619,6 +624,9 @@ def main() -> int:
         f"selected={diagnostics['selected_alerts']} "
         f"source_failures={len(diagnostics['source_failures'])}"
     )
+    print("GAMEJOA radar market scope: " + json.dumps(
+        diagnostics["stock_market_channels"], ensure_ascii=False, sort_keys=True
+    ))
     for excluded in diagnostics["excluded_alerts"][:10]:
         print(
             "GAMEJOA radar excluded: "

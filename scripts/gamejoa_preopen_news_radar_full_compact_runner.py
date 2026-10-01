@@ -6914,13 +6914,92 @@ def decision_matrix(impacts: list | tuple | None) -> str:
     )
 
 
-def has_korea_market_link(alert: dict) -> bool:
+STOCK_MARKET_SUBJECTS = {
+    "rates_fx_liquidity": (
+        "연준", "federal reserve", "fomc", "ecb", "유럽중앙은행", "일본은행", "bank of japan",
+        "한국은행", "기준금리", "국채", "국고채", "treasury", "bond yields", "금리",
+        "물가", "인플레이션", "inflation", "cpi", "pce", "미국 고용", "payrolls",
+        "실업률", "unemployment", "환율", "달러", "엔화", "liquidity", "유동성",
+    ),
+    "trade_policy_supply_chain": (
+        "관세", "수출통제", "수입금지", "제재", "통상협정", "tariff", "export control",
+        "import ban", "sanctions", "trade agreement",
+    ),
+    "energy_commodities_transport": (
+        "유가", "원유", "브렌트", "oil", "brent", "wti", "opec", "천연가스",
+        "natural gas", "구리", "copper", "리튬", "lithium", "운임", "freight", "해운",
+    ),
+    "geopolitical_risk": (
+        "이란", "iran", "호르무즈", "hormuz", "홍해", "red sea", "이스라엘", "israel",
+        "우크라이나", "ukraine", "러시아", "russia", "가자", "gaza", "하마스", "hamas",
+    ),
+    "earnings_investment": (
+        "매출", "영업이익", "순이익", "실적", "가이던스", "수주", "공급계약",
+        "설비투자", "earnings", "profit warning", "guidance", "capex", "supply agreement",
+    ),
+    "capital_flows": (
+        "순매수", "순매도", "외국인", "연기금", "etf", "etn", "자사주", "배당",
+        "유상증자", "buyback", "dividend", "fund flows",
+    ),
+}
+STOCK_MARKET_CHANGE_TERMS = (
+    "발표", "상승", "하락", "급등", "급락", "상회", "하회", "증가", "감소", "확대", "축소",
+    "인상", "인하", "동결", "상향", "하향", "체결", "결정", "시행", "발효", "합의",
+    "취득", "소각", "유입", "유출", "중단", "차질", "부족", "공격", "공습", "휴전",
+    "협상", "제한", "금지", "검토", "추진", "announces", "decision", "cut", "cuts",
+    "hike", "hikes", "raises", "rise", "rises", "falls", "drop", "surge", "slump",
+    "surprise", "warning", "agreement", "restriction", "ban", "disruption", "shortage",
+    "attack", "attacks", "airstrikes", "ceasefire", "talks", "inflows", "outflows",
+)
+STOCK_MARKET_REQUIRED_CONTEXT = {
+    "rates_fx_liquidity": (
+        "금리", "물가", "인플레이션", "고용", "국채", "환율", "달러", "엔화", "유동성",
+        "interest rate", "rates", "inflation", "cpi", "pce", "payrolls", "unemployment",
+        "treasury", "bond yields", "liquidity", "monetary policy",
+    ),
+    "geopolitical_risk": (
+        "공격", "공습", "휴전", "미사일", "전쟁", "제재", "원유", "통항", "핵 협상",
+        "attack", "attacks", "airstrikes", "strike", "ceasefire", "missile", "war",
+        "sanctions", "oil", "shipping", "nuclear talks",
+    ),
+    "capital_flows": (
+        "주식", "증시", "순매수", "순매도", "etf", "etn", "자사주", "배당", "유상증자",
+        "shares", "equities", "buyback", "dividend", "fund flows",
+    ),
+}
+
+
+def stock_market_channels(alert: dict) -> list[str]:
+    """Find a market subject and change in source text, never generated commentary."""
+    title = base.norm(str(alert.get("source_title") or alert.get("original_news") or ""))
+    body = base.norm(str(alert.get("source_abstract") or ""))
+    source_text = f"{title} {body}"
+    if not title or not has_term(source_text, STOCK_MARKET_CHANGE_TERMS):
+        return []
+    return [
+        channel for channel, terms in STOCK_MARKET_SUBJECTS.items()
+        if has_term(title, terms)
+        and (
+            channel not in STOCK_MARKET_REQUIRED_CONTEXT
+            or has_term(source_text, STOCK_MARKET_REQUIRED_CONTEXT[channel])
+        )
+    ]
+
+
+def has_stock_market_link(alert: dict) -> bool:
     text = source_evidence_text(alert)
     return has_direct_market_path(text, alert)
 
 
+def has_korea_market_link(alert: dict) -> bool:
+    """Compatibility name; global market transmission need not name a Korean issuer."""
+    return has_stock_market_link(alert)
+
+
 def has_direct_market_path(text: str, alert: dict) -> bool:
     text = source_evidence_text(alert) or text
+    if stock_market_channels(alert):
+        return True
     if alert.get("korean_business_news") and (
         alert.get("body_verified") or alert.get("title_fact_verified")
     ):
@@ -7061,8 +7140,8 @@ def has_decision_impact(alert: dict) -> bool:
     if not labels.intersection(ACTIONABLE_DECISION_LABELS):
         alert["guardrail_note"] = "시장 의사결정 축으로 분류되지 않아 제외"
         return False
-    if not has_korea_market_link(alert):
-        alert["guardrail_note"] = "한국장 업종·밸류체인 연결 근거가 약해 제외"
+    if not has_stock_market_link(alert):
+        alert["guardrail_note"] = "기업 실적·할인율·수급·일정 또는 글로벌 시장 전달 경로 근거가 약해 제외"
         return False
     if labels == {"시간표"} and not has_term(alert_text(alert), TIMELINE_MATERIAL_TERMS):
         alert["guardrail_note"] = "단순 시간표 후보일 뿐 공식 절차 착수·의견수렴·조사·정책 시행·계약 등 추적 가능한 근거가 약해 제외"
@@ -7808,8 +7887,9 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
         if not source_output_aligned(normalized):
             alert["_exclusion_reason"] = "source_body_mismatch"
             continue
-        if not has_korea_market_link(normalized):
-            alert["_exclusion_reason"] = "korea_market_link_guard"
+        normalized["stock_market_channels"] = stock_market_channels(normalized)
+        if not has_stock_market_link(normalized):
+            alert["_exclusion_reason"] = "stock_market_link_guard"
             continue
         key = alert_dedup_key(normalized)
         if key in seen:
