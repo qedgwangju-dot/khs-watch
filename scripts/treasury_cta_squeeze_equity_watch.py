@@ -934,6 +934,26 @@ def scheduled_main() -> int:
     next_state["nasdaq_cross_asset_stage"] = stage
     next_state["nasdaq_cross_asset_alerted_stage"] = next_alerted_stage
 
+    # Always expose the cross-asset gate in the verification status, even when no
+    # Telegram is due. This makes a skipped send auditable rather than silent.
+    with watcher.STATUS.open("a", encoding="utf-8") as f:
+        f.write(f"- 채권→Nasdaq 현재 단계: {stage} ({cross.get('label')})\n")
+        f.write(
+            f"- NQ 연료: {'확인' if cross.get('nq_fuel') else '미확인'}"
+            f" · 10년 주간 숏증가 충격={'확인' if cross.get('nq_build_shock') else '미확인'}"
+            f" · 현재 포지션 극단={'확인' if cross.get('nq_extreme') else '미확인'}\n"
+        )
+        f.write(
+            f"- NQ 실제 청산 확인: {'확인' if cross.get('nq_confirmed') else '미확인'}"
+            f" · CME 가격↑={'예' if cross.get('nq_price_up') else '아니오'}"
+            f" · CME 일일 OI↓={'예' if cross.get('nq_daily_oi_down') else '아니오'}"
+            f" · CFTC 순숏 축소={'예' if cross.get('nq_short_cover') else '아니오'}\n"
+        )
+        f.write(
+            f"- NQ 자료 신선도: CME={'확인' if cross.get('nq_price_fresh') else '미확인'}"
+            f" · CFTC history={'확인' if cross.get('nq_history_fresh') else '미확인'}\n"
+        )
+
     monday_due, fomc_due, week_key, date_key = _scheduled_due(current_state, next_state)
     base_alert_exists = watcher.ALERT.exists()
     if not (monday_due or fomc_due or cross_due):
