@@ -428,10 +428,32 @@ def _title_text(row):
     return str(row.get('title_original', '')).lower()
 
 
+def _display_title_text(row):
+    return ' '.join([
+        str(row.get('title_original', '') or ''),
+        str(row.get('title_ko', '') or ''),
+    ]).lower()
+
+
 def _obvious_false_positive(row):
-    title = _title_text(row)
+    title = _display_title_text(row)
     if _has(title, FALSE_POSITIVE_TITLE_TERMS):
         return True
+
+    # 국가명 + 'attack'만으로 야생동물·환경·범죄 사건이 전쟁으로 들어오는 것을 차단.
+    nonwar_attack_terms = (
+        'bear population', 'bear attack', 'bear attacks', 'bears ', 'wildlife', 'wild animal',
+        'shark attack', 'dog attack', 'wolf attack', 'zoo ', 'animal attack',
+        '곰 개체수', '곰 공격', '야생동물', '동물 공격', '상어 공격', '개 물림',
+    )
+    military_terms = (
+        'military', 'army', 'forces', 'missile', 'drone', 'airstrike', 'air strike',
+        'shelling', 'bombardment', 'troops', 'defence', 'defense',
+        '군 ', '군대', '러시아군', '우크라이나군', '미사일', '드론', '공습', '포격', '폭격',
+    )
+    if any(x in title for x in nonwar_attack_terms) and not any(x in title for x in military_terms):
+        return True
+
     if not _has(title, WAR_TITLE_ACTOR_TERMS) and not _has(title, WAR_TITLE_ACTION_TERMS):
         return True
     return False
@@ -570,6 +592,8 @@ def _iran_war_stage_marks(row):
         marks.append('이란중간선거전합의회의')
     if iran_official_context and midterm_context and post_election_escalation:
         marks.append('이란선거후확전위험')
+    if _conditional_escalation_signal(row):
+        marks.append('미국이란군사옵션협상갈림길')
     if araghchi_stays:
         marks.append('아라치미국체류추가협상')
     if not denial and us_context and iran_official_context and _has(text, DIRECT_CONTACT_TERMS) and _has(text, CONFIRM_TERMS) and _trusted(row):
@@ -595,7 +619,12 @@ def _physical_flow_marks(row):
     # "record amount of oil out of the Hormuz Strait" 같은 직접 물량 문구는
     # flow/exports라는 단어가 없어도 핵심 변화로 잡는다.
     direct_record_amount = _has(text, HORMUZ_TERMS) and _has(text, OIL_FLOW_TERMS) and any(
-        x in text for x in ('record amount', 'record volume', 'record quantity', '기록적인 규모', '기록적 규모', '기록적인 물량', '기록적 물량')
+        x in text for x in (
+            'record amount', 'record volume', 'record quantity',
+            '기록적인 규모', '기록적 규모', '기록적인 물량', '기록적 물량',
+            '역대 가장 많', '역대 최대', '가장 많은 원유', '원유가 가장 많이',
+            '호르무즈 빠져나온 원유', '호르무즈를 빠져나온 원유'
+        )
     )
     if direct_record_amount:
         marks.append('호르무즈기록물량회복')
@@ -827,6 +856,41 @@ def _active_attack_signal(row):
     return any(term in title for term in active_terms)
 
 
+def _operational_escalation_signal(row):
+    """공격 자체뿐 아니라 실제 영공·운항·학교 운영 제한으로 번진 확전 영향을 잡는다."""
+    title = _display_title_text(row)
+    cause = any(x in title for x in (
+        'houthi', 'houthis', 'missile', 'drone', 'attack', 'strikes', 'war', 'escalation',
+        '후티', '미사일', '드론', '공격', '공습', '전쟁', '확전',
+    ))
+    restriction = any(x in title for x in (
+        'airspace advisory', 'avoid saudi airspace', 'avoid airspace', 'no-fly', 'flight ban',
+        'flight restrictions', 'aviation advisory', 'airspace warning',
+        '영공 권고', '영공 회피', '영공 경보', '비행 금지', '운항 제한',
+        '학교 등교 중단', '등교 중단', '원격수업 전환',
+    ))
+    return cause and restriction
+
+
+def _conditional_escalation_signal(row):
+    """'폭격할지 합의할지 결정'처럼 실제 공격 전 단계의 조건부 군사옵션은 노랑으로 분리한다."""
+    title = _display_title_text(row)
+    iran = any(x in title for x in ('iran', 'iranian', 'tehran', '이란', '테헤란'))
+    military_option = any(x in title for x in (
+        'bomb iran', 'bombing iran', 'strike iran', 'military option',
+        'whether to bomb', 'decide whether to bomb', 'decide whether to strike',
+        '이란을 폭격', '이란 폭격', '이란 공습', '폭격할지', '공습할지', '군사 옵션',
+    ))
+    deal_option = any(x in title for x in (
+        'make a deal', 'reach a deal', 'strike a deal', 'deal or',
+        '협상을 타결', '합의할지', '협상 타결', '합의 타결',
+    ))
+    decision = any(x in title for x in (
+        'decide', 'decision', 'soon', '곧 결정', '결정할 것', '결정하겠다',
+    ))
+    return iran and military_option and deal_option and decision
+
+
 def _low_value_tass_battlefield_claim(row):
     """TASS의 정례 전황·병력손실 주장만 있는 기사는 핵심 변화에서 제외한다."""
     src = _source_text(row)
@@ -882,12 +946,18 @@ def score_item(row, now):
             return 0, []
         score, tags = _prev_score(row, now)
         tags = _sanitize_inherited_tags(row, tags)
-        if _active_attack_signal(row):
-            title = _title_text(row)
+        if _active_attack_signal(row) or _operational_escalation_signal(row):
+            title = _display_title_text(row)
             peace_in_title = _has(title, ('ceasefire','truce','peace talks','negotiations','휴전','정전','평화협상','협상'))
             if not peace_in_title:
                 tags = [tag for tag in tags if tag not in ('종전·협상', '휴전·평화', '재건')]
             tags.append('확전')
+            if _operational_escalation_signal(row):
+                tags.append('운영제약')
+            score = max(score, 10)
+        if _conditional_escalation_signal(row):
+            tags = [tag for tag in tags if tag not in ('휴전·평화', '재건')]
+            tags += ['확전위험', '협상갈림길']
             score = max(score, 10)
         return score, sorted(set(tags))
     row['diplomacy_flash_marks'] = marks
@@ -895,7 +965,16 @@ def score_item(row, now):
     row['signals_ko'] = list(dict.fromkeys(_signals(marks) + list(row.get('signals_ko', []))))
     emergency_marks = _emergency_marks(row)
     iran_diplomacy_marks = _iran_newyork_diplomacy_marks(row)
-    tags = ['종전·협상']
+    tags = []
+    flow_mark_names = ('호르무즈기록물량회복', '오만만STS기록급증', '사우디원유수출회복', '걸프7일평균2천만배럴')
+    peace_stage_names = (
+        'IRIB아라치위트코프뉴욕회동보도','아라치위트코프뉴욕회동확인',
+        '호르무즈재개방조건직접협의','이란뉴욕대표단외교전권','뉴욕중재종전합의안협의',
+        '미구체조치시외교재개환영','미국단독종전협상신호','이란직접협상확인',
+        '정식휴전합의','종전합의','호르무즈실물정상화','협상후퇴','아라치미국체류추가협상',
+    )
+    if iran_diplomacy_marks or any(m in marks for m in peace_stage_names):
+        tags += ['종전·협상']
     if iran_diplomacy_marks:
         tags += ['이란전쟁', '뉴욕외교', '외교재개', '중재']
         if any(m in iran_diplomacy_marks for m in ('IRIB아라치위트코프뉴욕회동보도','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의')):
@@ -914,7 +993,7 @@ def score_item(row, now):
         tags += ['이란전쟁', '종전', '평화협정']
     if '호르무즈실물정상화' in marks:
         tags += ['호르무즈', '실물정상화', '에너지위험완화']
-    if any(m in marks for m in ('호르무즈기록물량회복', '오만만STS기록급증', '사우디원유수출회복', '걸프7일평균2천만배럴')):
+    if any(m in marks for m in flow_mark_names):
         tags += ['호르무즈', '실물물동량', '원유공급회복']
     if '협상후퇴' in marks:
         tags += ['이란전쟁', '협상후퇴', '확전위험']
@@ -924,6 +1003,8 @@ def score_item(row, now):
         tags += ['이란전쟁', '선거후확전위험', '협상제약']
     if '아라치미국체류추가협상' in marks:
         tags += ['이란전쟁', '추가협상', '중재채널유지']
+    if '미국이란군사옵션협상갈림길' in marks:
+        tags += ['이란전쟁', '확전위험', '협상갈림길']
     if '이란외무장관중국방문' in marks:
         tags += ['이란·중국', '중동외교']
     if '중국계위성영상제공보도' in marks:
@@ -945,7 +1026,7 @@ def score_item(row, now):
             score = 99
         else:
             score = 100 if 'Reuters직접확인' in iran_diplomacy_marks else 99
-    elif any(m in marks for m in ('이란중간선거전합의회의', '이란선거후확전위험')):
+    elif any(m in marks for m in ('이란중간선거전합의회의', '이란선거후확전위험', '미국이란군사옵션협상갈림길')):
         score = 100
     elif any(m in marks for m in ('종전합의', '정식휴전합의', '호르무즈실물정상화', '협상후퇴')):
         score = 100
@@ -1060,6 +1141,702 @@ def item_id(row):
 
     marks = _marks(row)
     if not marks:
+        # 같은 Reuters/AP/원문 URL의 제목이 업데이트돼도 동일 사건으로 유지한다.
+        raw_url = (row.get('resolved_url') or row.get('link') or '').strip()
+        if raw_url:
+            try:
+                p = urllib.parse.urlparse(raw_url)
+                host = p.netloc.lower().replace('www.', '')
+                path = re.sub(r'/+
+        source = (row.get('source') or '').strip()
+        if source:
+            suffix = ' - ' + source
+            if title.lower().endswith(suffix.lower()):
+                title = title[:-len(suffix)].rstrip()
+        key = re.sub(r"\W+", " ", title.lower()).strip()
+        if key:
+            return hashlib.sha256(key.encode()).hexdigest()[:20]
+        return _prev_item_id(row)
+    emergency_marks = [m for m in marks if m in (
+        '이란Code100확인보도','이란Code100미확인보도','트럼프캠프데이비드조기복귀','미국중동다중보안경보',
+        '네타냐후조기귀국확인보도','네타냐후조기귀국미확인보도','후티리야드미사일위협',
+    )]
+    if emergency_marks:
+        try:
+            pub = watch.parse_pub(row.get('published', ''))
+            day = pub.date().isoformat() if pub else dt.datetime.now(dt.timezone.utc).date().isoformat()
+        except Exception:
+            day = dt.datetime.now(dt.timezone.utc).date().isoformat()
+        key = 'middle-east-emergency|' + day + '|' + '|'.join(sorted(emergency_marks))
+    else:
+        flow_marks = [m for m in marks if m in ('호르무즈기록물량회복','오만만STS기록급증','사우디원유수출회복','걸프7일평균2천만배럴')]
+        stage_marks = [m for m in marks if m in ('IRIB아라치위트코프뉴욕회동보도','직접회동독립확인대기','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의','해상봉쇄해제조건','동결자산지급조건','전전선종전조건','이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영','RTRS중계속보','Reuters직접확인','미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴', '이란중간선거전합의회의', '이란선거후확전위험', '아라치미국체류추가협상', '미국이란군사옵션협상갈림길')]
+        if flow_marks:
+            try:
+                pub = watch.parse_pub(row.get('published', ''))
+                day = pub.date().isoformat() if pub else dt.datetime.now(dt.timezone.utc).date().isoformat()
+            except Exception:
+                day = dt.datetime.now(dt.timezone.utc).date().isoformat()
+            key = 'hormuz-physical-flow|' + day + '|' + '|'.join(sorted(flow_marks))
+        elif stage_marks:
+            key = 'iran-war-peace-stage-2026|' + '|'.join(sorted(stage_marks))
+        elif any(m.startswith('크렘린') for m in marks):
+            key = 'kremlin-energy-diplomacy-2026-09-15|' + '|'.join(marks)
+        else:
+            key = 'iran-china-diplomacy-2026-09-15|' + '|'.join(marks)
+    return hashlib.sha256(key.encode()).hexdigest()[:20]
+
+watch.item_id = item_id
+
+
+def topic_label(row):
+    emarks = _emergency_marks(row)
+    if emarks:
+        return '중동 비상 · 복합확전 경보'
+    title = _display_title_text(row)
+    if any(x in title for x in ('gaza', '가자')) and any(x in title for x in ('israel', 'israeli', '이스라엘')):
+        return '이스라엘·가자'
+    if any(x in title for x in ('lebanon', 'hezbollah', '레바논', '헤즈볼라')) and any(x in title for x in ('israel', 'israeli', '이스라엘')):
+        return '이스라엘·레바논'
+    if _active_attack_signal(row) or _operational_escalation_signal(row):
+        if _has(title, HOUTHI_TERMS) or _has(title, ('saudi','riyadh','사우디','리야드')):
+            return '사우디·후티'
+        if _has(title, UKRAINE_TERMS) or _has(title, ('russia','russian','러시아','bryansk','브랸스크','kyiv','kiev','키이우','키예프')):
+            return '우크라이나·러시아'
+        if _has(title, IRAN_TERMS) or _has(title, HORMUZ_TERMS):
+            return '이란·호르무즈'
+    hmarks = _houthi_diplomacy_marks(row)
+    if hmarks:
+        return '예멘·사우디·오만 · Ansar Allah 휴전중재'
+    marks = _marks(row)
+    if '미국이란군사옵션협상갈림길' in marks:
+        return '이란·미국 · 군사옵션·협상 갈림길'
+    if any(m in marks for m in ('이란중간선거전합의회의','이란선거후확전위험')):
+        return '이란·미국 · 중간선거 전 협상 제약'
+    if any(m in marks for m in ('IRIB아라치위트코프뉴욕회동보도','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의')):
+        return '이란 전쟁 · 아라치–Witkoff 뉴욕 회동'
+    if any(m in marks for m in ('이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영')):
+        return '이란 전쟁 · 뉴욕 외교재개'
+    if any(m in marks for m in ('호르무즈기록물량회복', '오만만STS기록급증', '사우디원유수출회복', '걸프7일평균2천만배럴')):
+        return '호르무즈·걸프 · 원유 물동량 회복'
+    if any(m in marks for m in ('미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴')):
+        return '이란 전쟁 · 협상·휴전·종전·호르무즈'
+    if any(m.startswith('크렘린') for m in marks):
+        return '우크라이나·러시아 · 에너지 휴전·제재'
+    if marks:
+        return '이란·중국 · 중동 외교'
+    return _prev_topic_label(row)
+
+watch.topic_label = topic_label
+
+
+def _verdict(items):
+    # 실제 공격이 하나라도 있으면 외교 문구 때문에 전체를 초록으로 만들지 않는다.
+    if any(_active_attack_signal(x) for x in items):
+        return _prev_verdict(items)
+
+    flash = [x for x in items if _marks(x)]
+    marks = {m for x in flash for m in _marks(x)}
+    emergency_items = [x for x in items if _emergency_marks(x)]
+    emergency_marks = {m for x in emergency_items for m in _emergency_marks(x)}
+    hitems = [x for x in items if _houthi_diplomacy_marks(x)]
+    hmarks = {m for x in hitems for m in _houthi_diplomacy_marks(x)}
+    if not marks and not hmarks and not emergency_marks:
+        return _prev_verdict(items)
+
+    lines = ['<b>투자 판정</b>']
+
+    if '이란중간선거전합의회의' in marks or '이란선거후확전위험' in marks:
+        lines.append('- <b>핵심:</b> 🟡 협상 채널은 유지되지만 이란 당국자들이 11월 3일 전 타결 가능성을 낮게 보고 선거 이후 확전 위험을 더 크게 보는 단계')
+        lines.append('- <b>현재 단계:</b> 협상 제약·시간표 악화 — 실제 공격 재개나 협상 결렬이 확정된 것은 아님')
+        if '아라치미국체류추가협상' in marks:
+            lines.append('- <b>완화요인:</b> 아라치 외무장관이 미국에 머물며 중재국을 통한 추가 논의를 이어가고 있어 외교 채널은 열려 있음')
+        lines.append('- <b>다음:</b> 추가 중재회담 개최 → 수정안 교환 → 11월 3일 전 임시합의 여부 → 선거 이후 실제 군사행동 변화')
+
+    if emergency_marks:
+        confirmed = [m for m in emergency_marks if m not in ('이란Code100미확인보도', '네타냐후조기귀국미확인보도')]
+        unconfirmed = [m for m in emergency_marks if m in ('이란Code100미확인보도', '네타냐후조기귀국미확인보도')]
+        if len(confirmed) >= 2:
+            lines.append('- <b>중동 비상:</b> 🔴 서로 다른 확전 신호가 동시 발생 — 단일 루머가 아니라 복합 경보 단계')
+        else:
+            lines.append('- <b>중동 비상:</b> 🔴 고위험 확전 신호 감지 — 후속 공식 확인과 실제 군사행동을 즉시 추적')
+        if '트럼프캠프데이비드조기복귀' in emergency_marks:
+            lines.append('- <b>미국 일정:</b> 트럼프 Camp David 일정 단축·백악관 조기 복귀 확인. 복귀 사유 자체는 백악관 미설명')
+        if '미국중동다중보안경보' in emergency_marks:
+            lines.append('- <b>미국 경보:</b> 국무부·복수 중동 대사관이 예상치 못한 확전·빠른 군사확대 가능성을 경고')
+        if '후티리야드미사일위협' in emergency_marks:
+            lines.append('- <b>사우디:</b> 후티의 리야드 미사일 공격·요격 신호 — 수도·공항·에너지 인프라 위험 상승')
+        if '이란Code100확인보도' in emergency_marks:
+            lines.append('- <b>이란:</b> Code 100 전군 최고경계가 신뢰 원천에서 확인 보도됨')
+        elif '이란Code100미확인보도' in emergency_marks:
+            lines.append('- <b>이란 미확인:</b> Code 100 최고경계 보도는 공식·주요통신 독립확인 전. 사실일 경우 파급이 커 고위험 신호로 유지')
+        if '네타냐후조기귀국확인보도' in emergency_marks:
+            lines.append('- <b>이스라엘:</b> 네타냐후 미국 일정 단축·조기 귀국 확인 보도')
+        elif '네타냐후조기귀국미확인보도' in emergency_marks:
+            lines.append('- <b>이스라엘 미확인:</b> 네타냐후 조기 귀국 보도는 공식·주요통신 확인 전')
+        lines.append('- <b>다음:</b> 이란 공식 군 경계 공지 → 미·이스라엘 안보회의 → 추가 미사일·공습 → 대사관 운영축소·대피 → 호르무즈·바브엘만데브 실제 통항 변화')
+
+    if hmarks:
+        if '후티휴전거부' in hmarks:
+            lines.append('- <b>예멘 휴전:</b> 🔴 Ansar Allah가 휴전안을 거부하거나 핵심 조건 미충족을 선언 — 협상 후퇴 단계')
+        elif '후티휴전수용' in hmarks:
+            lines.append('- <b>예멘 휴전:</b> 🟢 Ansar Allah의 휴전 수용 확인 — 중재 제안에서 양측 합의 단계로 상승')
+        elif '2주임시휴전안' in hmarks or '주말합의발표목표' in hmarks:
+            lines.append('- <b>예멘 휴전:</b> 🟡 2주 임시휴전·주말 합의 발표 목표가 제시된 협상 진전 단계 — 아직 정식 합의·발효 전')
+        elif '사우디오만중재요청' in hmarks:
+            lines.append('- <b>예멘 휴전:</b> 🟡 사우디가 오만을 통한 Ansar Allah 중재 채널을 가동 — 공식 휴전 합의 전')
+        elif '인도적요구포괄협의' in hmarks:
+            lines.append('- <b>예멘 휴전:</b> 🟡 인도적 요구 전반을 휴전 협상 의제로 묶는 단계 — 세부 조건 공식 확인 필요')
+        trusted = any(houthi_watch._trusted_diplomacy(x) for x in hitems)
+        if trusted:
+            lines.append('- <b>확정 수준:</b> Reuters·AP·오만 외교부·사우디 국영통신·유엔·당사자 계열 원천에서 확인된 보도 포함')
+        else:
+            lines.append('- <b>확정 수준:</b> 2주 기간·인도적 조건·주말 발표 목표는 공식 확인 전 보도 단계 — 확정 휴전으로 표시하지 않음')
+        lines.append('- <b>시장:</b> 합의 진전 시 바브엘만데브·Yanbu 우회수출 경로의 해운·전쟁보험·원유 물류 위험프리미엄 완화 가능 / 결렬 시 반대')
+        lines.append('- <b>다음:</b> 오만·사우디 공식 확인 → Ansar Allah 수용 여부 → 2주 휴전 발효 시각 → 인도적 조건 공개 → 실제 합의 발표')
+
+    if 'IRIB아라치위트코프뉴욕회동보도' in marks or '아라치위트코프뉴욕회동확인' in marks:
+        if '아라치위트코프뉴욕회동확인' in marks:
+            lines.append('- <b>미·이란 뉴욕 회동:</b> 🟢 아라치–Witkoff 직접 회동 확인 — 외교 재개 가능성에서 실제 대면협상 단계로 상승')
+            lines.append('- <b>확정 수준:</b> 독립 신뢰원 확인 단계')
+        else:
+            lines.append('- <b>미·이란 뉴욕 회동:</b> 🟡 IRIB가 아라치–Witkoff 회동을 보도 — Reuters는 협상 지속·이란 대표단 전권을 확인했지만 대면 회동 자체는 공개 기사에서 독립확인 전')
+            lines.append('- <b>확정 수준:</b> IRIB 보도 단계 — 미국 측·Reuters·AP의 대면 회동 독립 확인 대기')
+        conds = []
+        if '해상봉쇄해제조건' in marks:
+            conds.append('해상 봉쇄 해제')
+        if '동결자산지급조건' in marks:
+            conds.append('동결자산 지급/해제')
+        if '전전선종전조건' in marks:
+            conds.append('모든 전선 종전')
+        if conds:
+            lines.append('- <b>호르무즈 조건:</b> ' + ' · '.join(conds))
+        lines.append('- <b>다음:</b> 미국 측 회동 확인 → 공동/각자 회담 결과 → 호르무즈 재개방 조건 문서화 → 실제 통항 회복')
+    elif '이란뉴욕대표단외교전권' in marks or '뉴욕중재종전합의안협의' in marks or '미구체조치시외교재개환영' in marks:
+        parts = []
+        if '이란뉴욕대표단외교전권' in marks:
+            parts.append('대표단 외교 재개 전권')
+        if '뉴욕중재종전합의안협의' in marks:
+            parts.append('중재 통한 적대행위 종식 합의안 세부 협의 가능')
+        if '미구체조치시외교재개환영' in marks:
+            parts.append('미국 구체 조치 시 외교 재개 환영')
+        lines.append('- <b>이란 뉴욕 외교:</b> 🟡 ' + ' · '.join(parts) + ' — 아직 미·이란 최종 합의나 휴전 발효는 아님')
+        if 'RTRS중계속보' in marks and 'Reuters직접확인' not in marks:
+            lines.append('- <b>확정 수준:</b> RTRS 중계 속보 단계 — Reuters 공개 본문·이란 공식 발표를 후속 재확인')
+        elif 'Reuters직접확인' in marks:
+            lines.append('- <b>확정 수준:</b> Reuters 직접 확인 단계')
+        lines.append('- <b>다음:</b> 중재자 실명·접촉 → 미국의 구체 조치 → 미·이란 회담 형식·시각 → 휴전·종전 문안 → 호르무즈 실제 정상화')
+    elif '협상후퇴' in marks:
+        lines.append('- <b>이란 전쟁:</b> 🔴 협상 후퇴 — 직접협상 부인·거부·결렬 신호. 종전 기대를 낮춰야 하는 변화')
+    elif '호르무즈실물정상화' in marks:
+        lines.append('- <b>이란 전쟁:</b> 🟢 호르무즈 실물 정상화 — 재개방 문구가 아니라 유조선·LNG선 등 실제 상선 통항 회복 확인')
+    elif any(m in marks for m in ('호르무즈기록물량회복', '오만만STS기록급증', '사우디원유수출회복', '걸프7일평균2천만배럴')):
+        lines.append('- <b>호르무즈·걸프 실물 물동량:</b> 🟢 공급 경로 회복 신호 — 외교 합의나 완전 정상화와 별도로 물량 변화 자체를 즉시 경보')
+        if '걸프7일평균2천만배럴' in marks:
+            lines.append('- <b>걸프 전체:</b> 7일 평균 2천만 배럴/일 상회 신호. 전체 액체류·지역 수출과 호르무즈 단독 원유 통과량을 혼동하지 않음')
+        if '오만만STS기록급증' in marks:
+            lines.append('- <b>오만만 STS:</b> 기록적 환적 증가 — 우회 물류가 공급을 살리지만 처리능력·VLCC·보험 비용이 병목')
+        if '사우디원유수출회복' in marks:
+            lines.append('- <b>사우디:</b> 원유 수출·선적 회복 신호 — Gulf와 Red Sea 경로를 분리 추적')
+        if '호르무즈기록물량회복' in marks:
+            lines.append('- <b>호르무즈:</b> 기록·급증·회복 물동량 보도 — 공식 재개방 선언 없이도 실물 흐름이 먼저 개선될 수 있음')
+        lines.append('- <b>시장:</b> 공급 회복은 유가 위험프리미엄 하방 요인 / STS 포화·운임·보험·재공격 위험은 잔존')
+        lines.append('- <b>다음:</b> 7일 평균 지속성 → GoO STS 처리능력 → Saudi Gulf loadings → VLCC 운임·보험 → 실제 선박 통항 안전성')
+    elif '종전합의' in marks:
+        lines.append('- <b>이란 전쟁:</b> 🟢 종전 합의 — 휴전보다 높은 단계. 평화협정·적대행위 종료의 실제 조건과 이행 일정 확인 필요')
+    elif '정식휴전합의' in marks:
+        lines.append('- <b>이란 전쟁:</b> 🟢 정식 휴전 — 공격 중단 합의·발효 단계. 실제 이행과 위반 여부 후속 확인')
+    elif '이란직접협상확인' in marks:
+        lines.append('- <b>이란 전쟁:</b> 🟡 양측 확인 — 이란 측도 미국과 직접 협상·접촉을 확인. 아직 휴전·종전 확정은 아님')
+    elif '미국단독종전협상신호' in marks:
+        lines.append('- <b>이란 전쟁:</b> ⚠️ 미국 측 종전·직접접촉 주장 단계 — 이란 공식 확인 전에는 휴전·종전으로 판정하지 않음')
+
+    if any(m in marks for m in ('IRIB아라치위트코프뉴욕회동보도','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의')):
+        lines.append('- <b>이란 단계 추적:</b> 대표단 전권 → 중재 합의안 협의 → 아라치–Witkoff 회동 보도 → 미국 측/독립 확인 → 조건 문서화 → 휴전·종전 → 호르무즈 실제 정상화')
+    elif any(m in marks for m in ('이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영')):
+        lines.append('- <b>이란 단계 추적:</b> 뉴욕 대표단 전권 → 중재 합의안 협의 → 미국 구체 조치 → 회담 재개 → 정식 휴전 → 종전 합의 → 호르무즈 실제 정상화')
+    elif any(m in marks for m in ('미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '협상후퇴')):
+        lines.append('- <b>이란 단계 추적:</b> 미국 측 협상 신호 → 이란 측 확인 → 정식 휴전 → 종전 합의 → 호르무즈 실제 정상화')
+    if '호르무즈실물정상화' in marks:
+        lines.append('- <b>실물 확인:</b> 선박 수·유조선·LNG선 통항량이 지속 회복되는지 별도 추적')
+    if '크렘린에너지휴전긍정평가' in marks:
+        lines.append('- <b>우크라이나:</b> 🟢 크렘린이 트럼프의 에너지 표적 휴전 제안을 긍정 평가 — 러시아 측 수용 가능성이 한 단계 올라감')
+        lines.append('- <b>확정 수준:</b> 긍정 평가이지 정식 휴전 합의·발효 확정은 아님')
+    if '크렘린제재해제에너지가격하락발언' in marks:
+        lines.append('- <b>에너지:</b> 🟡 크렘린이 제재 해제와 세계 에너지 가격 하락을 직접 연결 — 향후 제재 협상이 유가·디젤 완화 촉매가 될 수 있음')
+    if '이란외무장관중국방문' in marks:
+        lines.append('- <b>중동 외교:</b> 🟢 이란 외무장관의 중국 방문·왕이 회담 일정 — 중국 중재채널 확대 여부 확인')
+    if '중국계위성영상제공보도' in marks:
+        lines.append('- <b>미확인 리스크:</b> 🟠 중국계 주체의 이란 위성영상 제공 보도는 중국 정부 직접 관여가 확인되지 않은 단계')
+
+    return '\n'.join(lines)
+
+guard._verdict = _verdict
+
+_prev_emergency_color = guard._enhanced_body_color
+
+def _final_item_color(row):
+    if _obvious_false_positive(row):
+        return ''
+    marks = _marks(row)
+    if _emergency_marks(row) or _active_attack_signal(row) or _operational_escalation_signal(row):
+        return 'red'
+    if any(m in marks for m in ('호르무즈기록물량회복','오만만STS기록급증','사우디원유수출회복','걸프7일평균2천만배럴','호르무즈실물정상화')):
+        return 'green'
+    if _conditional_escalation_signal(row) or any(m in marks for m in ('이란중간선거전합의회의','이란선거후확전위험','미국이란군사옵션협상갈림길')):
+        return 'yellow'
+    return _prev_emergency_color(row)
+
+_emergency_color = _final_item_color
+guard._enhanced_body_color = _final_item_color
+guard.prev._strict_body_color = _final_item_color
+guard.prev.core._body_color = _final_item_color
+
+
+def _alert_quality_issues(text):
+    """Telegram 송출 직전 최종 품질 게이트."""
+    issues = []
+    head = text.split('<b>투자 판정</b>', 1)[0]
+
+    # 신규/후속 알림에서 3시간을 넘은 기사 재등장 금지.
+    for m in re.finditer(r'<b>(\d+)분 전</b>', head):
+        if int(m.group(1)) > FRESH_NEWS_MAX_MINUTES:
+            issues.append(f'노후 기사 재등장:{m.group(1)}분')
+
+    # 초록 헤더인데 실제 공격·피격 제목이 포함되는 방향성 모순 금지.
+    if '🟢 <b>재건·휴전</b>' in head and '🔴 <b>공격·확전</b>' not in head:
+        cleaned = head
+        for stop in ('공격 중단', '공습 중단', '공격을 중단', '휴전', '정전'):
+            cleaned = cleaned.replace(stop, '')
+        hard = (
+            '미사일 공격', '드론 공격', '공습', '피격', '공격 이어', '공격했습니다',
+            '공격으로', '공격받', '폭격', '포격',
+        )
+        if any(term in cleaned for term in hard):
+            issues.append('초록 헤더와 실제 공격 제목 충돌')
+
+    # 정례 전황성 TASS 병력손실 숫자를 핵심 변화로 송출하지 않는다.
+    if 'TASS 원문' in head and any(term in head for term in ('병력을 잃', '병력 손실', 'lost more than', 'troops lost')):
+        issues.append('TASS 정례 병력손실 노이즈')
+
+    # 항목별 색상과 의미가 충돌하면 헤더가 혼재 상태여도 송출을 막는다.
+    block_matches = list(re.finditer(r'(?m)^(?P<icon>[🔴🟢🟡]?)\s*\[(?:속보|신규|후속)\]\s+\d+\..*
+    lines = [re.sub(r'<[^>]+>', '', x).strip() for x in head.splitlines()]
+    for i, line in enumerate(lines):
+        if re.match(r'^(?:🔴 |🟢 )?\[(?:속보|신규|후속)\] \d+\.', line) and i + 1 < len(lines):
+            title = re.sub(r'\s+-\s+[^-]{2,40}\Z', '', lines[i + 1]).strip().lower()
+            if title:
+                titles.append(title)
+    if len(titles) != len(set(titles)):
+        issues.append('동일 제목 중복')
+
+    return issues
+
+
+def _strict_verify_alert(test_mode=False):
+    _prev_verify_alert(test_mode=test_mode)
+    if not watch.ALERT.exists():
+        return
+    text = watch.ALERT.read_text(encoding='utf-8')
+    issues = _alert_quality_issues(text)
+    if issues:
+        raise RuntimeError('WAR_ALERT_QUALITY_GATE: ' + ' | '.join(issues))
+
+
+runner.verify_alert = _strict_verify_alert
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--finalize', action='store_true')
+    ap.add_argument('--telegram-test', action='store_true')
+    args = ap.parse_args()
+    if args.finalize:
+        watch.finalize(); return
+    if args.telegram_test:
+        base._write_inline_test()
+    else:
+        watch.run(test=False)
+    runner.verify_alert(test_mode=False)
+
+
+if __name__ == '__main__':
+    main()
+, '', p.path or '/')
+                if host and path:
+                    return hashlib.sha256(('url|' + host + path.lower()).encode()).hexdigest()[:20]
+            except Exception:
+                pass
+
+        # Google News/재게시가 같은 제목 뒤에 매체명만 다르게 붙이는 경우를 동일 기사로 묶는다.
+        title = (row.get('title_original') or '').strip()
+        source = (row.get('source') or '').strip()
+        if source:
+            suffix = ' - ' + source
+            if title.lower().endswith(suffix.lower()):
+                title = title[:-len(suffix)].rstrip()
+        key = re.sub(r"\W+", " ", title.lower()).strip()
+        if key:
+            return hashlib.sha256(key.encode()).hexdigest()[:20]
+        return _prev_item_id(row)
+    emergency_marks = [m for m in marks if m in (
+        '이란Code100확인보도','이란Code100미확인보도','트럼프캠프데이비드조기복귀','미국중동다중보안경보',
+        '네타냐후조기귀국확인보도','네타냐후조기귀국미확인보도','후티리야드미사일위협',
+    )]
+    if emergency_marks:
+        try:
+            pub = watch.parse_pub(row.get('published', ''))
+            day = pub.date().isoformat() if pub else dt.datetime.now(dt.timezone.utc).date().isoformat()
+        except Exception:
+            day = dt.datetime.now(dt.timezone.utc).date().isoformat()
+        key = 'middle-east-emergency|' + day + '|' + '|'.join(sorted(emergency_marks))
+    else:
+        flow_marks = [m for m in marks if m in ('호르무즈기록물량회복','오만만STS기록급증','사우디원유수출회복','걸프7일평균2천만배럴')]
+        stage_marks = [m for m in marks if m in ('IRIB아라치위트코프뉴욕회동보도','직접회동독립확인대기','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의','해상봉쇄해제조건','동결자산지급조건','전전선종전조건','이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영','RTRS중계속보','Reuters직접확인','미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴', '이란중간선거전합의회의', '이란선거후확전위험', '아라치미국체류추가협상')]
+        if flow_marks:
+            try:
+                pub = watch.parse_pub(row.get('published', ''))
+                day = pub.date().isoformat() if pub else dt.datetime.now(dt.timezone.utc).date().isoformat()
+            except Exception:
+                day = dt.datetime.now(dt.timezone.utc).date().isoformat()
+            key = 'hormuz-physical-flow|' + day + '|' + '|'.join(sorted(flow_marks))
+        elif stage_marks:
+            key = 'iran-war-peace-stage-2026|' + '|'.join(sorted(stage_marks))
+        elif any(m.startswith('크렘린') for m in marks):
+            key = 'kremlin-energy-diplomacy-2026-09-15|' + '|'.join(marks)
+        else:
+            key = 'iran-china-diplomacy-2026-09-15|' + '|'.join(marks)
+    return hashlib.sha256(key.encode()).hexdigest()[:20]
+
+watch.item_id = item_id
+
+
+def topic_label(row):
+    emarks = _emergency_marks(row)
+    if emarks:
+        return '중동 비상 · 복합확전 경보'
+    if _active_attack_signal(row):
+        title = _title_text(row)
+        if _has(title, HOUTHI_TERMS) or _has(title, ('saudi','riyadh','사우디','리야드')):
+            return '사우디·후티'
+        if _has(title, UKRAINE_TERMS) or _has(title, ('russia','russian','러시아')):
+            return '우크라이나·러시아'
+        if _has(title, IRAN_TERMS) or _has(title, HORMUZ_TERMS):
+            return '이란·호르무즈'
+    hmarks = _houthi_diplomacy_marks(row)
+    if hmarks:
+        return '예멘·사우디·오만 · Ansar Allah 휴전중재'
+    marks = _marks(row)
+    if any(m in marks for m in ('이란중간선거전합의회의','이란선거후확전위험')):
+        return '이란·미국 · 중간선거 전 협상 제약'
+    if any(m in marks for m in ('IRIB아라치위트코프뉴욕회동보도','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의')):
+        return '이란 전쟁 · 아라치–Witkoff 뉴욕 회동'
+    if any(m in marks for m in ('이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영')):
+        return '이란 전쟁 · 뉴욕 외교재개'
+    if any(m in marks for m in ('호르무즈기록물량회복', '오만만STS기록급증', '사우디원유수출회복', '걸프7일평균2천만배럴')):
+        return '호르무즈·걸프 · 원유 물동량 회복'
+    if any(m in marks for m in ('미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '호르무즈실물정상화', '협상후퇴')):
+        return '이란 전쟁 · 협상·휴전·종전·호르무즈'
+    if any(m.startswith('크렘린') for m in marks):
+        return '우크라이나·러시아 · 에너지 휴전·제재'
+    if marks:
+        return '이란·중국 · 중동 외교'
+    return _prev_topic_label(row)
+
+watch.topic_label = topic_label
+
+
+def _verdict(items):
+    # 실제 공격이 하나라도 있으면 외교 문구 때문에 전체를 초록으로 만들지 않는다.
+    if any(_active_attack_signal(x) for x in items):
+        return _prev_verdict(items)
+
+    flash = [x for x in items if _marks(x)]
+    marks = {m for x in flash for m in _marks(x)}
+    emergency_items = [x for x in items if _emergency_marks(x)]
+    emergency_marks = {m for x in emergency_items for m in _emergency_marks(x)}
+    hitems = [x for x in items if _houthi_diplomacy_marks(x)]
+    hmarks = {m for x in hitems for m in _houthi_diplomacy_marks(x)}
+    if not marks and not hmarks and not emergency_marks:
+        return _prev_verdict(items)
+
+    lines = ['<b>투자 판정</b>']
+
+    if '이란중간선거전합의회의' in marks or '이란선거후확전위험' in marks:
+        lines.append('- <b>핵심:</b> 🟡 협상 채널은 유지되지만 이란 당국자들이 11월 3일 전 타결 가능성을 낮게 보고 선거 이후 확전 위험을 더 크게 보는 단계')
+        lines.append('- <b>현재 단계:</b> 협상 제약·시간표 악화 — 실제 공격 재개나 협상 결렬이 확정된 것은 아님')
+        if '아라치미국체류추가협상' in marks:
+            lines.append('- <b>완화요인:</b> 아라치 외무장관이 미국에 머물며 중재국을 통한 추가 논의를 이어가고 있어 외교 채널은 열려 있음')
+        lines.append('- <b>다음:</b> 추가 중재회담 개최 → 수정안 교환 → 11월 3일 전 임시합의 여부 → 선거 이후 실제 군사행동 변화')
+
+    if emergency_marks:
+        confirmed = [m for m in emergency_marks if m not in ('이란Code100미확인보도', '네타냐후조기귀국미확인보도')]
+        unconfirmed = [m for m in emergency_marks if m in ('이란Code100미확인보도', '네타냐후조기귀국미확인보도')]
+        if len(confirmed) >= 2:
+            lines.append('- <b>중동 비상:</b> 🔴 서로 다른 확전 신호가 동시 발생 — 단일 루머가 아니라 복합 경보 단계')
+        else:
+            lines.append('- <b>중동 비상:</b> 🔴 고위험 확전 신호 감지 — 후속 공식 확인과 실제 군사행동을 즉시 추적')
+        if '트럼프캠프데이비드조기복귀' in emergency_marks:
+            lines.append('- <b>미국 일정:</b> 트럼프 Camp David 일정 단축·백악관 조기 복귀 확인. 복귀 사유 자체는 백악관 미설명')
+        if '미국중동다중보안경보' in emergency_marks:
+            lines.append('- <b>미국 경보:</b> 국무부·복수 중동 대사관이 예상치 못한 확전·빠른 군사확대 가능성을 경고')
+        if '후티리야드미사일위협' in emergency_marks:
+            lines.append('- <b>사우디:</b> 후티의 리야드 미사일 공격·요격 신호 — 수도·공항·에너지 인프라 위험 상승')
+        if '이란Code100확인보도' in emergency_marks:
+            lines.append('- <b>이란:</b> Code 100 전군 최고경계가 신뢰 원천에서 확인 보도됨')
+        elif '이란Code100미확인보도' in emergency_marks:
+            lines.append('- <b>이란 미확인:</b> Code 100 최고경계 보도는 공식·주요통신 독립확인 전. 사실일 경우 파급이 커 고위험 신호로 유지')
+        if '네타냐후조기귀국확인보도' in emergency_marks:
+            lines.append('- <b>이스라엘:</b> 네타냐후 미국 일정 단축·조기 귀국 확인 보도')
+        elif '네타냐후조기귀국미확인보도' in emergency_marks:
+            lines.append('- <b>이스라엘 미확인:</b> 네타냐후 조기 귀국 보도는 공식·주요통신 확인 전')
+        lines.append('- <b>다음:</b> 이란 공식 군 경계 공지 → 미·이스라엘 안보회의 → 추가 미사일·공습 → 대사관 운영축소·대피 → 호르무즈·바브엘만데브 실제 통항 변화')
+
+    if hmarks:
+        if '후티휴전거부' in hmarks:
+            lines.append('- <b>예멘 휴전:</b> 🔴 Ansar Allah가 휴전안을 거부하거나 핵심 조건 미충족을 선언 — 협상 후퇴 단계')
+        elif '후티휴전수용' in hmarks:
+            lines.append('- <b>예멘 휴전:</b> 🟢 Ansar Allah의 휴전 수용 확인 — 중재 제안에서 양측 합의 단계로 상승')
+        elif '2주임시휴전안' in hmarks or '주말합의발표목표' in hmarks:
+            lines.append('- <b>예멘 휴전:</b> 🟡 2주 임시휴전·주말 합의 발표 목표가 제시된 협상 진전 단계 — 아직 정식 합의·발효 전')
+        elif '사우디오만중재요청' in hmarks:
+            lines.append('- <b>예멘 휴전:</b> 🟡 사우디가 오만을 통한 Ansar Allah 중재 채널을 가동 — 공식 휴전 합의 전')
+        elif '인도적요구포괄협의' in hmarks:
+            lines.append('- <b>예멘 휴전:</b> 🟡 인도적 요구 전반을 휴전 협상 의제로 묶는 단계 — 세부 조건 공식 확인 필요')
+        trusted = any(houthi_watch._trusted_diplomacy(x) for x in hitems)
+        if trusted:
+            lines.append('- <b>확정 수준:</b> Reuters·AP·오만 외교부·사우디 국영통신·유엔·당사자 계열 원천에서 확인된 보도 포함')
+        else:
+            lines.append('- <b>확정 수준:</b> 2주 기간·인도적 조건·주말 발표 목표는 공식 확인 전 보도 단계 — 확정 휴전으로 표시하지 않음')
+        lines.append('- <b>시장:</b> 합의 진전 시 바브엘만데브·Yanbu 우회수출 경로의 해운·전쟁보험·원유 물류 위험프리미엄 완화 가능 / 결렬 시 반대')
+        lines.append('- <b>다음:</b> 오만·사우디 공식 확인 → Ansar Allah 수용 여부 → 2주 휴전 발효 시각 → 인도적 조건 공개 → 실제 합의 발표')
+
+    if 'IRIB아라치위트코프뉴욕회동보도' in marks or '아라치위트코프뉴욕회동확인' in marks:
+        if '아라치위트코프뉴욕회동확인' in marks:
+            lines.append('- <b>미·이란 뉴욕 회동:</b> 🟢 아라치–Witkoff 직접 회동 확인 — 외교 재개 가능성에서 실제 대면협상 단계로 상승')
+            lines.append('- <b>확정 수준:</b> 독립 신뢰원 확인 단계')
+        else:
+            lines.append('- <b>미·이란 뉴욕 회동:</b> 🟡 IRIB가 아라치–Witkoff 회동을 보도 — Reuters는 협상 지속·이란 대표단 전권을 확인했지만 대면 회동 자체는 공개 기사에서 독립확인 전')
+            lines.append('- <b>확정 수준:</b> IRIB 보도 단계 — 미국 측·Reuters·AP의 대면 회동 독립 확인 대기')
+        conds = []
+        if '해상봉쇄해제조건' in marks:
+            conds.append('해상 봉쇄 해제')
+        if '동결자산지급조건' in marks:
+            conds.append('동결자산 지급/해제')
+        if '전전선종전조건' in marks:
+            conds.append('모든 전선 종전')
+        if conds:
+            lines.append('- <b>호르무즈 조건:</b> ' + ' · '.join(conds))
+        lines.append('- <b>다음:</b> 미국 측 회동 확인 → 공동/각자 회담 결과 → 호르무즈 재개방 조건 문서화 → 실제 통항 회복')
+    elif '이란뉴욕대표단외교전권' in marks or '뉴욕중재종전합의안협의' in marks or '미구체조치시외교재개환영' in marks:
+        parts = []
+        if '이란뉴욕대표단외교전권' in marks:
+            parts.append('대표단 외교 재개 전권')
+        if '뉴욕중재종전합의안협의' in marks:
+            parts.append('중재 통한 적대행위 종식 합의안 세부 협의 가능')
+        if '미구체조치시외교재개환영' in marks:
+            parts.append('미국 구체 조치 시 외교 재개 환영')
+        lines.append('- <b>이란 뉴욕 외교:</b> 🟡 ' + ' · '.join(parts) + ' — 아직 미·이란 최종 합의나 휴전 발효는 아님')
+        if 'RTRS중계속보' in marks and 'Reuters직접확인' not in marks:
+            lines.append('- <b>확정 수준:</b> RTRS 중계 속보 단계 — Reuters 공개 본문·이란 공식 발표를 후속 재확인')
+        elif 'Reuters직접확인' in marks:
+            lines.append('- <b>확정 수준:</b> Reuters 직접 확인 단계')
+        lines.append('- <b>다음:</b> 중재자 실명·접촉 → 미국의 구체 조치 → 미·이란 회담 형식·시각 → 휴전·종전 문안 → 호르무즈 실제 정상화')
+    elif '협상후퇴' in marks:
+        lines.append('- <b>이란 전쟁:</b> 🔴 협상 후퇴 — 직접협상 부인·거부·결렬 신호. 종전 기대를 낮춰야 하는 변화')
+    elif '호르무즈실물정상화' in marks:
+        lines.append('- <b>이란 전쟁:</b> 🟢 호르무즈 실물 정상화 — 재개방 문구가 아니라 유조선·LNG선 등 실제 상선 통항 회복 확인')
+    elif any(m in marks for m in ('호르무즈기록물량회복', '오만만STS기록급증', '사우디원유수출회복', '걸프7일평균2천만배럴')):
+        lines.append('- <b>호르무즈·걸프 실물 물동량:</b> 🟢 공급 경로 회복 신호 — 외교 합의나 완전 정상화와 별도로 물량 변화 자체를 즉시 경보')
+        if '걸프7일평균2천만배럴' in marks:
+            lines.append('- <b>걸프 전체:</b> 7일 평균 2천만 배럴/일 상회 신호. 전체 액체류·지역 수출과 호르무즈 단독 원유 통과량을 혼동하지 않음')
+        if '오만만STS기록급증' in marks:
+            lines.append('- <b>오만만 STS:</b> 기록적 환적 증가 — 우회 물류가 공급을 살리지만 처리능력·VLCC·보험 비용이 병목')
+        if '사우디원유수출회복' in marks:
+            lines.append('- <b>사우디:</b> 원유 수출·선적 회복 신호 — Gulf와 Red Sea 경로를 분리 추적')
+        if '호르무즈기록물량회복' in marks:
+            lines.append('- <b>호르무즈:</b> 기록·급증·회복 물동량 보도 — 공식 재개방 선언 없이도 실물 흐름이 먼저 개선될 수 있음')
+        lines.append('- <b>시장:</b> 공급 회복은 유가 위험프리미엄 하방 요인 / STS 포화·운임·보험·재공격 위험은 잔존')
+        lines.append('- <b>다음:</b> 7일 평균 지속성 → GoO STS 처리능력 → Saudi Gulf loadings → VLCC 운임·보험 → 실제 선박 통항 안전성')
+    elif '종전합의' in marks:
+        lines.append('- <b>이란 전쟁:</b> 🟢 종전 합의 — 휴전보다 높은 단계. 평화협정·적대행위 종료의 실제 조건과 이행 일정 확인 필요')
+    elif '정식휴전합의' in marks:
+        lines.append('- <b>이란 전쟁:</b> 🟢 정식 휴전 — 공격 중단 합의·발효 단계. 실제 이행과 위반 여부 후속 확인')
+    elif '이란직접협상확인' in marks:
+        lines.append('- <b>이란 전쟁:</b> 🟡 양측 확인 — 이란 측도 미국과 직접 협상·접촉을 확인. 아직 휴전·종전 확정은 아님')
+    elif '미국단독종전협상신호' in marks:
+        lines.append('- <b>이란 전쟁:</b> ⚠️ 미국 측 종전·직접접촉 주장 단계 — 이란 공식 확인 전에는 휴전·종전으로 판정하지 않음')
+
+    if any(m in marks for m in ('IRIB아라치위트코프뉴욕회동보도','아라치위트코프뉴욕회동확인','호르무즈재개방조건직접협의')):
+        lines.append('- <b>이란 단계 추적:</b> 대표단 전권 → 중재 합의안 협의 → 아라치–Witkoff 회동 보도 → 미국 측/독립 확인 → 조건 문서화 → 휴전·종전 → 호르무즈 실제 정상화')
+    elif any(m in marks for m in ('이란뉴욕대표단외교전권','뉴욕중재종전합의안협의','미구체조치시외교재개환영')):
+        lines.append('- <b>이란 단계 추적:</b> 뉴욕 대표단 전권 → 중재 합의안 협의 → 미국 구체 조치 → 회담 재개 → 정식 휴전 → 종전 합의 → 호르무즈 실제 정상화')
+    elif any(m in marks for m in ('미국단독종전협상신호', '이란직접협상확인', '정식휴전합의', '종전합의', '협상후퇴')):
+        lines.append('- <b>이란 단계 추적:</b> 미국 측 협상 신호 → 이란 측 확인 → 정식 휴전 → 종전 합의 → 호르무즈 실제 정상화')
+    if '호르무즈실물정상화' in marks:
+        lines.append('- <b>실물 확인:</b> 선박 수·유조선·LNG선 통항량이 지속 회복되는지 별도 추적')
+    if '크렘린에너지휴전긍정평가' in marks:
+        lines.append('- <b>우크라이나:</b> 🟢 크렘린이 트럼프의 에너지 표적 휴전 제안을 긍정 평가 — 러시아 측 수용 가능성이 한 단계 올라감')
+        lines.append('- <b>확정 수준:</b> 긍정 평가이지 정식 휴전 합의·발효 확정은 아님')
+    if '크렘린제재해제에너지가격하락발언' in marks:
+        lines.append('- <b>에너지:</b> 🟡 크렘린이 제재 해제와 세계 에너지 가격 하락을 직접 연결 — 향후 제재 협상이 유가·디젤 완화 촉매가 될 수 있음')
+    if '이란외무장관중국방문' in marks:
+        lines.append('- <b>중동 외교:</b> 🟢 이란 외무장관의 중국 방문·왕이 회담 일정 — 중국 중재채널 확대 여부 확인')
+    if '중국계위성영상제공보도' in marks:
+        lines.append('- <b>미확인 리스크:</b> 🟠 중국계 주체의 이란 위성영상 제공 보도는 중국 정부 직접 관여가 확인되지 않은 단계')
+
+    return '\n'.join(lines)
+
+guard._verdict = _verdict
+
+_prev_emergency_color = guard._enhanced_body_color
+
+def _emergency_color(row):
+    if _emergency_marks(row) or _active_attack_signal(row):
+        return 'red'
+    marks = _marks(row)
+    if any(m in marks for m in ('이란중간선거전합의회의','이란선거후확전위험')):
+        return 'yellow'
+    return _prev_emergency_color(row)
+
+guard._enhanced_body_color = _emergency_color
+guard.prev._strict_body_color = _emergency_color
+guard.prev.core._body_color = _emergency_color
+
+
+def _alert_quality_issues(text):
+    """Telegram 송출 직전 최종 품질 게이트."""
+    issues = []
+    head = text.split('<b>투자 판정</b>', 1)[0]
+
+    # 신규/후속 알림에서 3시간을 넘은 기사 재등장 금지.
+    for m in re.finditer(r'<b>(\d+)분 전</b>', head):
+        if int(m.group(1)) > FRESH_NEWS_MAX_MINUTES:
+            issues.append(f'노후 기사 재등장:{m.group(1)}분')
+
+    # 초록 헤더인데 실제 공격·피격 제목이 포함되는 방향성 모순 금지.
+    if '🟢 <b>재건·휴전</b>' in head and '🔴 <b>공격·확전</b>' not in head:
+        cleaned = head
+        for stop in ('공격 중단', '공습 중단', '공격을 중단', '휴전', '정전'):
+            cleaned = cleaned.replace(stop, '')
+        hard = (
+            '미사일 공격', '드론 공격', '공습', '피격', '공격 이어', '공격했습니다',
+            '공격으로', '공격받', '폭격', '포격',
+        )
+        if any(term in cleaned for term in hard):
+            issues.append('초록 헤더와 실제 공격 제목 충돌')
+
+    # 정례 전황성 TASS 병력손실 숫자를 핵심 변화로 송출하지 않는다.
+    if 'TASS 원문' in head and any(term in head for term in ('병력을 잃', '병력 손실', 'lost more than', 'troops lost')):
+        issues.append('TASS 정례 병력손실 노이즈')
+
+    # 동일 제목이 한 알림 안에서 중복되는 경우 차단.
+    titles = []
+    lines = [re.sub(r'<[^>]+>', '', x).strip() for x in head.splitlines()]
+    for i, line in enumerate(lines):
+        if re.match(r'^(?:🔴 |🟢 )?\[(?:속보|신규|후속)\] \d+\.', line) and i + 1 < len(lines):
+            title = re.sub(r'\s+-\s+[^-]{2,40}\Z', '', lines[i + 1]).strip().lower()
+            if title:
+                titles.append(title)
+    if len(titles) != len(set(titles)):
+        issues.append('동일 제목 중복')
+
+    return issues
+
+
+def _strict_verify_alert(test_mode=False):
+    _prev_verify_alert(test_mode=test_mode)
+    if not watch.ALERT.exists():
+        return
+    text = watch.ALERT.read_text(encoding='utf-8')
+    issues = _alert_quality_issues(text)
+    if issues:
+        raise RuntimeError('WAR_ALERT_QUALITY_GATE: ' + ' | '.join(issues))
+
+
+runner.verify_alert = _strict_verify_alert
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--finalize', action='store_true')
+    ap.add_argument('--telegram-test', action='store_true')
+    args = ap.parse_args()
+    if args.finalize:
+        watch.finalize(); return
+    if args.telegram_test:
+        base._write_inline_test()
+    else:
+        watch.run(test=False)
+    runner.verify_alert(test_mode=False)
+
+
+if __name__ == '__main__':
+    main()
+, head))
+    for idx, m in enumerate(block_matches):
+        start = m.start()
+        end = block_matches[idx + 1].start() if idx + 1 < len(block_matches) else len(head)
+        block = head[start:end].lower()
+        icon = m.group('icon')
+        if icon == '🟢' and any(x in block for x in (' · 확전 ·', '확전위험', '폭격할지', '공습할지', '미사일 공격', '드론 공격', '피격')):
+            issues.append('초록 항목과 확전 의미 충돌')
+        if icon == '🔴' and any(x in block for x in ('실물물동량', '원유공급회복', '물동량 회복', '역대 가장 많', '기록·급증·회복')):
+            issues.append('빨강 항목과 공급회복 의미 충돌')
+        if '이스라엘·레바논' in block and any(x in block for x in ('gaza', '가자지구', '가자')):
+            issues.append('가자 사건을 이스라엘·레바논으로 오분류')
+        if any(x in block for x in ('bear population', '곰 개체수', '야생동물')) and any(x in block for x in ('attack', '공격')):
+            issues.append('비군사 공격 오탐')
+
+    # 동일 제목이 한 알림 안에서 중복되는 경우 차단.
+    titles = []
+    lines = [re.sub(r'<[^>]+>', '', x).strip() for x in head.splitlines()]
+    for i, line in enumerate(lines):
+        if re.match(r'^(?:🔴 |🟢 )?\[(?:속보|신규|후속)\] \d+\.', line) and i + 1 < len(lines):
+            title = re.sub(r'\s+-\s+[^-]{2,40}\Z', '', lines[i + 1]).strip().lower()
+            if title:
+                titles.append(title)
+    if len(titles) != len(set(titles)):
+        issues.append('동일 제목 중복')
+
+    return issues
+
+
+def _strict_verify_alert(test_mode=False):
+    _prev_verify_alert(test_mode=test_mode)
+    if not watch.ALERT.exists():
+        return
+    text = watch.ALERT.read_text(encoding='utf-8')
+    issues = _alert_quality_issues(text)
+    if issues:
+        raise RuntimeError('WAR_ALERT_QUALITY_GATE: ' + ' | '.join(issues))
+
+
+runner.verify_alert = _strict_verify_alert
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--finalize', action='store_true')
+    ap.add_argument('--telegram-test', action='store_true')
+    args = ap.parse_args()
+    if args.finalize:
+        watch.finalize(); return
+    if args.telegram_test:
+        base._write_inline_test()
+    else:
+        watch.run(test=False)
+    runner.verify_alert(test_mode=False)
+
+
+if __name__ == '__main__':
+    main()
+, '', p.path or '/')
+                if host and path:
+                    return hashlib.sha256(('url|' + host + path.lower()).encode()).hexdigest()[:20]
+            except Exception:
+                pass
+
         # Google News/재게시가 같은 제목 뒤에 매체명만 다르게 붙이는 경우를 동일 기사로 묶는다.
         title = (row.get('title_original') or '').strip()
         source = (row.get('source') or '').strip()
