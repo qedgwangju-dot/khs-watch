@@ -431,6 +431,29 @@ def main() -> int:
     )
     if market_alias not in legacy_market_state["seen"]:
         errors.append("legacy market alerts did not gain the new cross-link event key")
+    bond_flash = {
+        "source_title": "한국금융지주, 수요예측에 모집액 7배 몰려…고려아연도 3배",
+        "news": "한국금융지주, 수요예측에 모집액 7배 몰려…고려아연도 3배",
+        "published": "2026-10-01T16:49:00+09:00",
+        "link": "https://www.yna.co.kr/view/AKR20261001163500008",
+    }
+    bond_update = {
+        "source_title": "한국금융지주, 회사채 수요예측에 1.8조…모집예정액 7배 넘겨",
+        "news": "한국금융지주, 회사채 수요예측에 1.8조…모집예정액 7배 넘겨",
+        "published": "2026-10-01T16:14:00+09:00",
+        "link": "https://www.yna.co.kr/view/AKR20261001154900008",
+    }
+    if compact.alert_dedup_key(bond_flash) != compact.alert_dedup_key(bond_update):
+        errors.append("same corporate-bond demand event was repeated across article links")
+    bond_state = {"seen": {"link:old-bond-url": {
+        "first_seen_kst": "2026-10-01T16:50:00+09:00", "title": bond_flash["news"],
+    }}}
+    production.telegram.migrate_seen_title_aliases(bond_state)
+    bond_alias = "event:" + production.telegram.digest_seen(
+        production.telegram.korean_bond_demand_theme(bond_update)
+    )
+    if bond_alias not in bond_state["seen"]:
+        errors.append("legacy bond-demand alert did not gain a cross-link event key")
     if not compact.is_low_value_market_commentary({
         "korean_business_news": True,
         "source_title": "ETF부터 보이스피싱까지…공군 첫 경제 골든벨 열렸다",
