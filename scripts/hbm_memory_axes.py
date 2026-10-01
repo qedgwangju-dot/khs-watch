@@ -982,9 +982,18 @@ def parse_glass_substrate_records(item, body):
     # 510x515 glass-core inference.
     if re.search(r'\bTSMC\b', text, re.I) and re.search(r'CoPoS', text, re.I):
         panel = re.search(r'(310)\s*[x×]\s*(310)', text, re.I)
-        validation = re.search(r'(2026)[^.]{0,80}?(?:validation|검증)', text, re.I)
-        pilot = re.search(r'(2027)[^.]{0,80}?(?:pilot|시험\s*생산|파일럿)', text, re.I)
-        mass = re.search(r'(2028)[^.]{0,100}?(?:mass\s*production|양산)', text, re.I)
+        validation = (
+            re.search(r'(2026)[^.]{0,80}?(?:validation|검증)', text, re.I)
+            or re.search(r'(?:validation|검증)[^.]{0,80}?(2026)', text, re.I)
+        )
+        pilot = (
+            re.search(r'(2027)[^.]{0,80}?(?:pilot|시험\s*생산|파일럿)', text, re.I)
+            or re.search(r'(?:pilot|시험\s*생산|파일럿)[^.]{0,80}?(2027)', text, re.I)
+        )
+        mass = (
+            re.search(r'(2028)[^.]{0,100}?(?:mass\s*production|양산)', text, re.I)
+            or re.search(r'(?:mass\s*production|양산)[^.]{0,100}?(2028)', text, re.I)
+        )
         post2030 = bool(re.search(r'(?:after|post)[ -]?2030|2030\s*년\s*이후', text, re.I))
         if panel or validation or pilot or mass or post2030:
             rows.append(make_record(
