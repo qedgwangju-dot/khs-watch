@@ -79,6 +79,38 @@ jobs:
             scripts/fx_api.py
           python scripts/khs_us_investment_watch_stateful.py --self-test
           python scripts/khs_us_investment_telegram_send.py self-test
+          PYTHONPATH=scripts python - <<'PY'
+          import importlib.util
+          from pathlib import Path
+
+          path = Path("scripts/khs_us_investment_finalize.py")
+          spec = importlib.util.spec_from_file_location("khs_us_investment_finalize_selftest", path)
+          if spec is None or spec.loader is None:
+              raise RuntimeError("finalizer self-test load failed")
+          mod = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(mod)
+
+          judgment = mod._short_judgment(
+              "[상태 변화] 대미투자 자금 집행·45영업일 — 첫 자금 집행 24억달러",
+              "송금절차/45영업일",
+          )
+          if "실제 첫 송금 집행 확인" not in judgment:
+              raise RuntimeError(f"funding completion judgment regression: {judgment}")
+          if "아직 승격하지 않음" in judgment:
+              raise RuntimeError(f"stale funding pending wording survived: {judgment}")
+
+          flags = {
+              "pyro": False, "cap": False, "supply": False, "funding": True,
+              "energy": False, "ercot": False, "encinal": True,
+              "nuclear": False, "alaska": False,
+          }
+          checks = mod._next_checks(flags)
+          if any("실제 송금일/금액" in item for item in checks):
+              raise RuntimeError(f"post-transfer next-check regression: {checks}")
+          if not any("후속 자금요청" in item for item in checks):
+              raise RuntimeError(f"post-transfer capital-call follow-up missing: {checks}")
+          print(f"funding_finalize_self_test=passed judgment={judgment}")
+          PY
           python -m unittest discover -s tests -p 'test_hbm_currency_krw_guard.py'
           python -m unittest discover -s tests -p 'test_fx_api.py'
 
