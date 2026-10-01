@@ -1,10 +1,11 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-01T07:20:28+09:00",
+  "updated_at_kst": "2026-10-01T10:28:13+09:00",
   "initial_alert_sent": true,
   "preorder_at_kst": "2026-10-16T21:00:00+09:00",
   "launch_date": "2026-10-23",
   "seen": [
+    "08ee900e67a97c3baa66e7c0",
     "0deccab046baa0654028e226",
     "14e3e01165fea3bf1be26561",
     "1f48ae8cc053e5677ddc19e3",
@@ -41,6 +42,9 @@
     "a088a5f970fcb994f1db7a0b",
     "a1be4d6ed6941807491af23b",
     "a2106bfc6953c1683fb1a90b",
+    "a7bda024448ba5f0eeede9bb",
+    "ad14f5ec7ae6b178a791b072",
+    "b1a731512f51a94751d90538",
     "b5c0388f2a2d5035e1a35e21",
     "b68f28133b4b5f1a382cf5ee",
     "b921f3558df882113d105f27",
@@ -49,6 +53,7 @@
     "c479c8ce4d604cfa46b73d7c",
     "c572f9ec9f6c016634994a37",
     "c613506457ae3b81a90f7176",
+    "ce36ac2d75dd8f8dc1935e7a",
     "d1cfa982458c19fef3b669b8",
     "d662b2c54266e14292fc36a1",
     "d8132edff2642932f41fb281",
@@ -76,7 +81,7 @@
     "counterpoint_duo": "Reuters가 Counterpoint 전망 약 600만대 인용",
     "trendforce_duo": "TrendForce 공식 2026 출하 약 500만대"
   },
-  "last_scan_items": 33,
+  "last_scan_items": 34,
   "last_signal_count": 0,
   "last_alert": {
     "at_kst": "2026-09-30T13:10:14+09:00",
