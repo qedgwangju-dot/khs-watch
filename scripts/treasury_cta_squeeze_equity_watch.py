@@ -360,20 +360,31 @@ def _nq_price() -> dict:
     }
 
 
-def _positioning_history_enrichment() -> dict:
+def _positioning_state_cftc() -> dict:
     try:
         state = json.loads(US_POSITIONING_STATE.read_text(encoding="utf-8"))
-        cftc = ((state.get("values") or {}).get("CFTC|cot") or {})
-        return cftc.get("history_3y") or {}
+        return ((state.get("values") or {}).get("CFTC|cot") or {})
     except Exception:
         return {}
+
+
+def _positioning_history_enrichment() -> dict:
+    return _positioning_state_cftc().get("history_3y") or {}
 
 
 def _cross_raw() -> dict:
     global _CROSS_CACHE
     if _CROSS_CACHE is not None:
         return _CROSS_CACHE
-    out = {"nq_cftc": None, "nq_price": None, "history_3y": _positioning_history_enrichment(), "errors": []}
+    stored_cftc = _positioning_state_cftc()
+    out = {
+        "nq_cftc": None,
+        "nq_price": None,
+        "history_3y": stored_cftc.get("history_3y") or {},
+        "stored_nq_cftc": stored_cftc.get("nq_mini") or {},
+        "stored_cftc_period": stored_cftc.get("period"),
+        "errors": [],
+    }
     try:
         out["nq_cftc"] = _nq_cftc_weekly()
     except Exception as exc:
@@ -457,6 +468,29 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         report_iso = None
     nq_history_fresh = bool(report_iso and hist.get("end_date") == report_iso)
 
+    # Cross-check the live CFTC parse against the independently persisted
+    # US Positioning parse for the same report week. Any same-date disagreement
+    # closes the squeeze gate rather than choosing one silently.
+    stored_nq = raw.get("stored_nq_cftc") or {}
+    stored_period = str(raw.get("stored_cftc_period") or "")
+    live_period = str(nq.get("report_date") or "")
+    nq_crosscheck_match = True
+    nq_crosscheck_reason = None
+    if stored_nq and stored_period == live_period:
+        for key in ("open_interest", "leveraged_long", "leveraged_short", "leveraged_net"):
+            if stored_nq.get(key) != nq.get(key):
+                nq_crosscheck_match = False
+                nq_crosscheck_reason = (
+                    f"CFTC NQ same-date cross-check mismatch: {key} "
+                    f"live={nq.get(key)} stored={stored_nq.get(key)}"
+                )
+                break
+    elif stored_nq:
+        nq_crosscheck_match = False
+        nq_crosscheck_reason = (
+            f"CFTC NQ report-date cross-check mismatch: live={live_period} stored={stored_period}"
+        )
+
     nq_price_up = (price.get("pct_change") is not None and float(price["pct_change"]) > 0.20)
     nq_price_official = bool(price.get("official"))
     expected_session = _latest_completed_us_session_date().isoformat()
@@ -492,6 +526,7 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         and nq_price_fresh
         and nq_history_ready
         and nq_history_fresh
+        and nq_crosscheck_match
         and nq_price_up
         and nq_daily_oi_down
         and nq_short_cover
@@ -528,6 +563,7 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         and data_fresh
         and nq_history_ready
         and nq_history_fresh
+        and nq_crosscheck_match
     )
 
     if treasury_confirmed and nq_confirmed and treasury_fuel and nq_fuel:
@@ -558,6 +594,8 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         "nq_fuel": nq_fuel,
         "nq_history_ready": nq_history_ready,
         "nq_history_fresh": nq_history_fresh,
+        "nq_crosscheck_match": nq_crosscheck_match,
+        "nq_crosscheck_reason": nq_crosscheck_reason,
         "nq_price_up": nq_price_up,
         "nq_price_official": nq_price_official,
         "nq_price_fresh": nq_price_fresh,
