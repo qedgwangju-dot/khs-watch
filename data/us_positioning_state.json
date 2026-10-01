@@ -1,6 +1,6 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "10e733217963b290ad589b35cd5d6c4c8400d8e5be003c429e963896048cf8b1",
+    "Nasdaq SOX|sox": "480bfc405eb9e46c9ad4c16304ea315775dbc7104b87bc585551eb24a2cff27c",
     "Cboe|options": "2ddafc4def42957ebb29cd577b3444b19681f6f603760b2dce42bb38dfd119b6",
     "CFTC|cot": "4b1e773466ddc4a7be9d5e8f0d153ac93e6b0bbf9e17f5211e81063c0c4498f0"
   },
@@ -20,12 +20,12 @@
         "official_overview_url": "https://beta.indexes.nasdaq.com/Index/Overview/SOX",
         "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=10d&interval=1d",
         "crosscheck_same_date": true,
-        "crosscheck_close_diff": -0.004023437499199645,
-        "d3_pct": -0.31814577124276155,
-        "d5_pct": 0.7526858179478513
+        "crosscheck_close_diff": -0.00011718749919964466,
+        "d3_pct": -0.3181766045498913,
+        "d5_pct": 0.7526546534141643
       },
       "url": "https://beta.indexes.nasdaq.com/Index/Overview/SOX",
-      "fingerprint": "10e733217963b290ad589b35cd5d6c4c8400d8e5be003c429e963896048cf8b1"
+      "fingerprint": "480bfc405eb9e46c9ad4c16304ea315775dbc7104b87bc585551eb24a2cff27c"
     },
     "Cboe|options": {
       "source": "Cboe",
@@ -95,7 +95,9 @@
         "short_extreme_percentile_3y": 39.490445859872615,
         "short_share_oi_percentile_3y": 43.31210191082803,
         "peak_net_short_contracts_3y": 89125,
+        "peak_net_short_date_3y": "2026-08-11",
         "peak_gross_short_contracts_3y": 135430,
+        "peak_gross_short_date_3y": "2026-08-04",
         "net_short_unwind_from_peak_pct": 65.57307152875175,
         "gross_short_unwind_from_peak_pct": 37.446651406630735,
         "unwind_from_peak_pct": 65.57307152875175,
@@ -104,9 +106,45 @@
         "leveraged_net_1w_change": -24296,
         "leveraged_net_4w_change": 10549,
         "history_url": "https://www.cftc.gov/MarketReports/CommitmentsofTraders/HistoricalCompressed/index.htm",
-        "download_errors": []
+        "download_errors": [],
+        "loaded_years": [
+          2016,
+          2017,
+          2018,
+          2019,
+          2020,
+          2021,
+          2022,
+          2023,
+          2024,
+          2025,
+          2026
+        ],
+        "ten_year_complete": true,
+        "sample_n_10y": 522,
+        "start_date_10y": "2016-09-27",
+        "end_date_10y": "2026-09-22",
+        "net_short_percentile_10y": 63.984674329501914,
+        "gross_short_percentile_10y": 70.49808429118774,
+        "short_share_oi_percentile_10y": 49.616858237547895,
+        "peak_net_short_contracts_10y": 89125,
+        "peak_net_short_date_10y": "2026-08-11",
+        "peak_gross_short_contracts_10y": 135430,
+        "peak_gross_short_date_10y": "2026-08-04",
+        "net_short_unwind_from_peak_pct_10y": 65.57307152875175,
+        "gross_short_unwind_from_peak_pct_10y": 37.446651406630735,
+        "gross_short_weekly_change_10y": 25649,
+        "net_short_weekly_build_10y": 24296,
+        "gross_short_weekly_build_percentile_10y": 100.0,
+        "net_short_weekly_build_percentile_10y": 98.0806142034549,
+        "max_gross_short_weekly_build_10y": 25649,
+        "max_gross_short_weekly_build_date_10y": "2026-09-22",
+        "max_net_short_weekly_build_10y": 80408,
+        "max_net_short_weekly_build_date_10y": "2016-11-15",
+        "gross_short_weekly_record_10y": true,
+        "net_short_weekly_record_10y": false
       }
     }
   },
-  "updated_at_kst": "2026-10-01T11:09:28.256536+09:00"
+  "updated_at_kst": "2026-10-01T20:32:01.169968+09:00"
 }
