@@ -460,6 +460,13 @@ def main() -> int:
         "웨스팅하우스 지분은 5%에서 10% 수준으로 협상 중입니다.",
     ):
         errors.append("Alaska LNG headline accepted an unrelated nuclear-contract core")
+    caption_core = compact.clean_article_summary_text(
+        "AI 데이터센터 내부 서버실 참고 이미지 (사진=삼성SDI)30일 배터리업계에 따르면 3사가 투자한다."
+    )
+    if not caption_core.startswith("30일 배터리업계"):
+        errors.append("publisher image caption leaked into the Telegram core")
+    if compact.clean_article_summary_text("] LG전자는 미국에 칠러 공장을 짓는다.").startswith("]"):
+        errors.append("publisher bracket residue leaked into the Telegram core")
     raw_html_regression = (
         '1) 기사 제목\n- 핵심: <질문 1> & 원문 표기\n'
         '- 출처: <a href="https://example.com/article">원문 뉴스보기</a>'

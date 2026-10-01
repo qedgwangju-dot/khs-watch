@@ -1660,9 +1660,14 @@ def clean_article_summary_text(text: str) -> str:
         .replace("\xa0", " ")
         .replace("弗", "달러")
     )
+    cleaned = re.sub(
+        r"^.{0,100}?(?:참고\s*이미지|자료사진)\s*\((?:사진|제공)=[^)]+\)\s*",
+        "",
+        cleaned,
+    )
     for pattern in ARTICLE_SUMMARY_NOISE_PATTERNS:
         cleaned = re.sub(pattern, " ", cleaned, flags=re.IGNORECASE)
-    cleaned = re.sub(r"^[\s,;:>|·•.\-]+", "", cleaned)
+    cleaned = re.sub(r"^[\s,;:>|\]·•.\-]+", "", cleaned)
     return re.sub(r"\s+", " ", cleaned).strip()
 
 
