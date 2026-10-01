@@ -153,7 +153,7 @@ def _direction_label(snapshot: dict, previous: dict, reasons: list[str]) -> tupl
 
     if evidence and (short_bias or z <= -1.0) and repo_ok and data_fresh:
         return "🟢 실제 숏 스퀴즈 강화", "채권가격 상승·장기금리 하락 방향이 포지션과 함께 확인되는 단계"
-    if (short_bias or prices_up >= 2) and repo_ok and z > -1.0:
+    if (short_bias or prices_up >= 2) and repo_ok and data_fresh and z > -1.0:
         return "🟡 숏 압력 완화·준비 신호", "채권에는 약한 우호지만 장기금리 하락 추세 전환은 아직 미확인"
     return "⚪ 숏 스퀴즈 미확인", "현재는 단순 반등·포지션 조정과 실제 스퀴즈를 구분해야 하는 단계"
 
