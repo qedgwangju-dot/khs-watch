@@ -92,12 +92,14 @@ def _already_parenthesized(tail: str) -> bool:
 
 
 def _normalize_existing_separate_krw(text: str) -> str:
-    # "150십억달러 · 약 203조원" -> "150십억달러(약 203조원)"
+    # 과거 고정환율로 본문에 박혀 있던 "223억달러 ≈ 29조..." 같은 값을 제거한 뒤
+    # 아래 enforce 단계에서 실행 시점의 검증된 API 환율로 다시 계산한다.
+    # 사용자가 요구한 표기는 항상 "외화금액(약 원화금액)"으로 통일한다.
     pat = re.compile(
         r"(?P<fx>\d[\d,.]*(?:\.\d+)?\s*(?:조|십억|억|백만|천만)?(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드))"
-        r"\s*(?:·|=)\s*(?P<krw>약\s*[\d,]+(?:조[\d,]*억|조|억)?원)"
+        r"\s*(?:·|=|≈|≒)\s*(?:약\s*)?[\d,]+(?:조[\d,]*억|조|억)?원"
     )
-    return pat.sub(lambda m: f"{m.group('fx')}({m.group('krw')})", text)
+    return pat.sub(lambda m: m.group("fx"), text)
 
 
 def enforce_text(text: str) -> str:
