@@ -75,6 +75,7 @@ REQUIRED_WORKFLOW_SNIPPETS = [
 REQUIRED_PRODUCTION_WORKFLOW_SNIPPETS = [
     "Commit GAMEJOA radar seen state",
     "data/gamejoa_preopen_news_radar_seen.json",
+    'RADAR_MAX_AGE_HOURS: "24"',
     "python scripts/merge_gamejoa_preopen_news_radar_seen.py",
     "git switch --detach origin/main",
     "git push origin HEAD:main",
@@ -420,6 +421,16 @@ def main() -> int:
     flash_keys = set(production.telegram.alert_seen_keys(market_flash))
     if not any(key.startswith("event:") for key in update_keys.intersection(flash_keys)):
         errors.append("same Korean market move did not share a persisted seen-state event key")
+    legacy_market_state = {"seen": {"link:old-market-url": {
+        "first_seen_kst": "2026-10-01T16:22:00+09:00",
+        "title": market_update["news"],
+    }}}
+    production.telegram.migrate_seen_title_aliases(legacy_market_state)
+    market_alias = "event:" + production.telegram.digest_seen(
+        production.telegram.korean_market_move_theme(market_update)
+    )
+    if market_alias not in legacy_market_state["seen"]:
+        errors.append("legacy market alerts did not gain the new cross-link event key")
     raw_html_regression = (
         '1) 기사 제목\n- 핵심: <질문 1> & 원문 표기\n'
         '- 출처: <a href="https://example.com/article">원문 뉴스보기</a>'

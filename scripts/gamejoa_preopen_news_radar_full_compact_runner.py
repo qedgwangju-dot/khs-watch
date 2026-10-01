@@ -6663,24 +6663,8 @@ def source_output_aligned(alert: dict) -> bool:
     return True
 
 
-def korean_market_move_theme(alert: dict) -> str:
-    title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
-    if "코스닥" not in title or not any(term in title for term in ("코스피", "천피", "증시")):
-        return ""
-    move = re.search(r"코스닥\s*([+-]?\d+(?:\.\d+)?)\s*%", title)
-    if not move:
-        return ""
-    catalysts = [term for term in ("마이크론", "반도체 수출", "엔비디아", "관세", "유가", "환율", "금리") if term in title]
-    if not catalysts:
-        return ""
-    published_day = str(alert.get("published") or "")[:10]
-    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", published_day):
-        return ""
-    return f"korea_market_move:{published_day}:kosdaq:{move.group(1)}:{'+'.join(catalysts)}"
-
-
 def semantic_event_theme(alert: dict) -> str:
-    market_theme = korean_market_move_theme(alert)
+    market_theme = telegram.korean_market_move_theme(alert)
     if market_theme:
         return market_theme
     text = base.norm(
@@ -6751,7 +6735,7 @@ def semantic_event_theme(alert: dict) -> str:
 def alert_dedup_key(alert: dict) -> tuple[str, str]:
     if alert.get("iran_hormuz_escalation"):
         return ("iran_hormuz_military_escalation", str(alert.get("published") or "")[:10])
-    market_theme = korean_market_move_theme(alert)
+    market_theme = telegram.korean_market_move_theme(alert)
     if market_theme:
         return (market_theme, "event")
     raw_title = str(alert.get("original_news") or alert.get("news") or "")
@@ -7555,7 +7539,7 @@ def explanation_for(alert: dict) -> dict[str, str]:
 
 def normalize_alert_for_output(alert: dict) -> dict:
     out = dict(alert)
-    market_theme = korean_market_move_theme(out)
+    market_theme = telegram.korean_market_move_theme(out)
     if market_theme:
         out["supply_chain_theme"] = market_theme
     if is_china_mofcom_control(out):

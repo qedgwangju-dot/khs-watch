@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      RADAR_MAX_AGE_HOURS: "72"
+      RADAR_MAX_AGE_HOURS: "24"
       RADAR_DISPLAY_LIMIT: "7"
       RADAR_TRENDFORCE_RESEARCH_MAX_AGE_DAYS: "3"
       GAMEJOA_RADAR_SEEN_TTL_DAYS: "14"
