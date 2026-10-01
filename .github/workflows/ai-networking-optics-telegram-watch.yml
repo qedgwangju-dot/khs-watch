@@ -133,6 +133,12 @@ jobs:
           assert any(__import__("re").search(p, real_signal_title, __import__("re").I) for p in watch.ACTION_PATTERNS), (
               "A real commercial order must satisfy the action gate."
           )
+          assert watch.source_priority("KuCoin") < 65, (
+              "KuCoin must remain below the standalone-alert source-quality threshold."
+          )
+          assert watch.source_priority("Lumentum") >= 65, (
+              "Official Lumentum material must remain eligible as a primary source."
+          )
           print("dedupe_and_quality_regression_test=passed")
           PY
 
