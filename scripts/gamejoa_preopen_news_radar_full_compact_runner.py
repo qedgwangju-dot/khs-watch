@@ -7656,6 +7656,28 @@ def is_stale_opening_market_report(alert: dict, now) -> bool:
     )
 
 
+GENERIC_BUSINESS_TITLE_SIGNALS = (
+    "주식", "증시", "코스피", "코스닥", "etf", "etn", "채권", "금리", "환율",
+    "수출", "수입", "투자", "자사주", "매출", "영업이익", "순이익", "실적",
+    "공장", "생산", "판매", "계약", "수주", "발주", "증설", "인수", "매각",
+    "대표", "회장", "ceo", "사장", "기업", "반도체", "ai", "데이터센터",
+    "원전", "전력", "배터리", "관세", "정책", "규제", "유가", "lng",
+    "정전", "폭염", "물가", "물류", "해운", "자동차", "조선", "방산",
+    "바이오", "임상", "fda", "의약품", "화학", "철강", "은행", "보험",
+    "펀드", "재정", "산업", "사업", "상장", "ipo", "무역", "공급망",
+)
+
+
+def is_unanchored_generic_business_alert(alert: dict) -> bool:
+    if not alert.get("korean_business_news"):
+        return False
+    sectors = [str(item).strip() for item in alert.get("sectors") or []]
+    if sectors != ["한국 기업/산업 뉴스"]:
+        return False
+    title = base.norm(str(alert.get("source_title") or alert.get("news") or ""))
+    return not has_term(title, GENERIC_BUSINESS_TITLE_SIGNALS)
+
+
 def is_space_pv_pia_base_rehash(alert: dict) -> bool:
     text = base.norm(
         " ".join(
@@ -7737,6 +7759,9 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             continue
         if is_low_value_market_commentary(alert):
             alert["_exclusion_reason"] = "low_value_market_commentary"
+            continue
+        if is_unanchored_generic_business_alert(alert):
+            alert["_exclusion_reason"] = "generic_sector_without_market_title"
             continue
         if is_stale_opening_market_report(alert, now):
             alert["_exclusion_reason"] = "stale_opening_market_report"

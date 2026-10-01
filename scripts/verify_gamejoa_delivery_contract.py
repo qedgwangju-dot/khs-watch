@@ -455,6 +455,18 @@ def main() -> int:
             os.environ["RADAR_RUN_MODE"] = old_run_mode
     if not stale_opening:
         errors.append("same-day opening market report survived afternoon live filtering")
+    if not compact.is_unanchored_generic_business_alert({
+        "korean_business_news": True,
+        "source_title": "오폐수처리장 태아 시신…산모 찾아도 처벌 어려워",
+        "sectors": ["한국 기업/산업 뉴스"],
+    }):
+        errors.append("unrelated social news passed the generic business-sector fallback")
+    if compact.is_unanchored_generic_business_alert({
+        "korean_business_news": True,
+        "source_title": "바이두, 자사주 59만주 매입",
+        "sectors": ["한국 기업/산업 뉴스"],
+    }):
+        errors.append("generic-sector fallback excluded a concrete company buyback")
     if compact.compact_title_summary_aligned(
         "알래스카 LNG 투자 확정 안돼",
         "웨스팅하우스 지분은 5%에서 10% 수준으로 협상 중입니다.",
