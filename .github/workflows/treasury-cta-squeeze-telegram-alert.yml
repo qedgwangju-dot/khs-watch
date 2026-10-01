@@ -47,8 +47,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install market parsers
-        run: python -m pip install --disable-pip-version-check -q pypdf playwright
+      - name: Install PDF parser
+        run: python -m pip install --disable-pip-version-check -q pypdf
 
       - name: Validate CTA squeeze watcher
         run: |
