@@ -1710,13 +1710,15 @@
   "last_capital_return_alert_count": 1,
   "_delivery": {
     "id": "a0b5a4e7ae3ad63c9576e49f6312e7f3aaf29216e988414967449ce025391f05",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-10-01T22:44:44+09:00",
     "chunks": [
       "🚨 <b>HBM 상태 변화</b>\n━━━━━━━━━━━━━━━━\n<b>신규 변화 1건</b> · 2026-10-01 22:41 KST\n\n<b>1.</b>\n<b>삼성 HBM 생산능력·증산 계획 변화</b>\n• 상태 판정: <b>신뢰 보도 단계</b>\n• 변화 구분: 생산능력·증산\n• 핵심 숫자: <b>2배</b>\n• 감지 근거: edaily.co.kr · 2026-10-01T09:05:34+09:00\n• 근거 제목(한국어): “삼성전자, 내년 HBM 가격 2배 뛴다…D램 공급 부족 장기화” · <a href=\"https://www.edaily.co.kr/News/Read?newsId=02860166645608656&amp;mediaCodeNo=257\">원문</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      203
+    ],
     "candidate": {
       "seen_ids": [
         "017d7560e3afc81111bbcb5c",
