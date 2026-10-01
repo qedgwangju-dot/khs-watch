@@ -188,14 +188,38 @@ def _cme_daily_bulletin_nq() -> dict:
         raise RuntimeError(
             f"CME PG11 NQ percentage sanity failed: settle={settle}, change={change_points}, pct={pct}"
         )
+
+    # Use the product TOTAL line for daily NQ open interest. This keeps the OI
+    # universe consistent across all listed NQ expiries instead of mixing a
+    # front-contract price with a single-contract OI.
+    total_m = re.search(
+        r"TOTAL\s+EMINI\s+NASD\s+FUT\s+"
+        r"([0-9,]+|----)\s+([0-9,]+|----)\s+([0-9,]+)\s+"
+        r"(?:(UNCH)|([+-])\s*([0-9,]+))",
+        text,
+        re.I,
+    )
+    total_oi = None
+    total_oi_change = None
+    if total_m:
+        total_oi = int(total_m.group(3).replace(",", ""))
+        if total_m.group(4):
+            total_oi_change = 0
+        elif total_m.group(5) and total_m.group(6):
+            mag = int(total_m.group(6).replace(",", ""))
+            total_oi_change = mag if total_m.group(5) == "+" else -mag
+
     return {
         "price": settle,
         "previous_close": prior,
         "pct_change": pct,
         "change_points": change_points,
-        "source": "CME Daily Bulletin PG11 official settlement",
+        "open_interest": total_oi,
+        "oi_change": total_oi_change,
+        "oi_scope": "CME EMINI NASD FUT total product daily",
+        "source": "CME Daily Bulletin PG11 official settlement/OI",
         "official": True,
-        "basis": "previous trade date settlement",
+        "basis": "previous trade date settlement + total product daily OI",
         "trade_date": trade_date,
         "month": month,
         "url": CME_NQ_BULLETIN,
@@ -373,16 +397,30 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
             or price_trade_date == expected_session
         )
     )
-    nq_oi_down = (nq.get("open_interest_wow") is not None and int(nq["open_interest_wow"]) < 0)
-    nq_short_cover = (nq.get("leveraged_net_wow") is not None and int(nq["leveraged_net_wow"]) > 0)
-    # "Confirmed" is fail-closed: official CME price + fresh same-week CFTC history required.
+    nq_weekly_oi_down = (
+        nq.get("open_interest_wow") is not None and int(nq["open_interest_wow"]) < 0
+    )
+    nq_short_cover = (
+        nq.get("leveraged_net_wow") is not None and int(nq["leveraged_net_wow"]) > 0
+    )
+    nq_daily_oi_change = price.get("oi_change")
+    nq_daily_oi_down = bool(
+        nq_price_official
+        and nq_price_fresh
+        and nq_daily_oi_change is not None
+        and int(nq_daily_oi_change) < 0
+    )
+    # "Confirmed" is fail-closed:
+    # 1) fresh official CME same-day price↑ + product OI↓
+    # 2) current CFTC week shows leveraged net-short reduction
+    # 3) the three-year history is aligned to the same CFTC report.
     nq_confirmed = (
         nq_price_official
         and nq_price_fresh
         and nq_history_ready
         and nq_history_fresh
         and nq_price_up
-        and nq_oi_down
+        and nq_daily_oi_down
         and nq_short_cover
     )
 
@@ -391,9 +429,10 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
     y = snapshot.get("yield10") or {}
     treasury_confirmed = treasury_evidence and repo_ok and float(y.get("z20") or 0) <= -1.0
 
-    prev_cross = (previous.get("nasdaq_cross_asset") or {}) if isinstance(previous, dict) else {}
-    treasury_fuel = treasury_short_present or bool(prev_cross.get("treasury_short_present"))
-    nq_fuel = nq_extreme or bool(prev_cross.get("nq_extreme"))
+    # Fuel must be present in the current observation. Do not latch an old
+    # extreme indefinitely after positioning has normalised.
+    treasury_fuel = treasury_short_present
+    nq_fuel = nq_extreme
 
     treasury_price_up = audited._price_up_count(snapshot) >= 1
     prepared = bool(
@@ -430,7 +469,10 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         "nq_price_official": nq_price_official,
         "nq_price_fresh": nq_price_fresh,
         "nq_price_expected_session": expected_session,
-        "nq_oi_down": nq_oi_down,
+        "nq_weekly_oi_down": nq_weekly_oi_down,
+        "nq_daily_oi_change": nq_daily_oi_change,
+        "nq_daily_oi_down": nq_daily_oi_down,
+        "nq_oi_down": nq_daily_oi_down,
         "nq_short_cover": nq_short_cover,
         "nq_confirmed": nq_confirmed,
         "repo_ok": repo_ok,
@@ -438,9 +480,9 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
     }
 
 
-def _nq_notional_krw(nq: dict, price: dict, fx) -> str:
+def _nq_notional_krw(nq: dict, price: dict, fx, field: str = "leveraged_net") -> str:
     try:
-        contracts = abs(int(nq.get("leveraged_net") or 0))
+        contracts = abs(int(nq.get(field) or 0))
         index_price = float(price.get("price"))
         rate = float(fx)
         won = contracts * index_price * 20.0 * rate
@@ -477,8 +519,8 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, compact: bool = 
             f"• {cross['label']}\n"
             f"• 10Y LF 순 {int(treasury10.get('leveraged_net') or 0):+,}계약 · "
             f"NQ LF 순 {int(nq.get('leveraged_net') or 0):+,}계약 (순숏 {net_pctile_text} / 총숏 {gross_pctile_text})\n"
-            f"• NQ {nq_pct_text} · CFTC NQ OI 주간 {int(nq.get('open_interest_wow') or 0):+,} · "
-            f"순포지션 {int(nq.get('leveraged_net_wow') or 0):+,}\n"
+            f"• NQ {nq_pct_text} · CME 일일 OI {int(price.get('oi_change') or 0):+,} · "
+            f"CFTC 순포지션 주간 {int(nq.get('leveraged_net_wow') or 0):+,}\n"
         )
 
     return (
@@ -489,12 +531,14 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, compact: bool = 
         f" · 3년 순숏 {net_pctile_text} · 총숏 {gross_pctile_text}\n"
         f"• 3년 극단 대비 청산률: 순숏 {net_unwind_text} · 총숏 {gross_unwind_text}\n"
         f"• NQ {nq_pct_text} ({price.get('source') or '가격 소스 확인 불가'})"
-        f" · CFTC 동일범위 OI 주간 {int(nq.get('open_interest_wow') or 0):+,}계약"
-        f" · 순포지션 주간 {int(nq.get('leveraged_net_wow') or 0):+,}계약\n"
-        f"• NQ 순숏 명목금액: {_nq_notional_krw(nq, price, fx)}"
-        " (NQ 지수×$20×순계약수×환율, 실제 증거금·손익 아님)\n"
-        "• 확정은 ZN 가격↑·동일범위 OI↓와 NQ 가격↑·CFTC 주간 OI↓·NQ 순숏 축소가 함께 붙을 때만 합니다.\n"
-        "※ CFTC OI·포지션은 주간 후행자료입니다. CME 공식 NQ 결제값도 최신 완료 미국 거래일과 일치할 때만 확인 신호에 사용합니다. 시점이 다르면 자동으로 확정 판정을 막습니다.\n"
+        f" · CME 일일 총 OI 변화 {int(price.get('oi_change') or 0):+,}계약"
+        f" · CFTC 주간 총 OI 변화 {int(nq.get('open_interest_wow') or 0):+,}계약"
+        f" · CFTC 순포지션 주간 {int(nq.get('leveraged_net_wow') or 0):+,}계약\n"
+        f"• NQ 명목금액: 순숏 {_nq_notional_krw(nq, price, fx, 'leveraged_net')} · "
+        f"총숏 {_nq_notional_krw(nq, price, fx, 'leveraged_short')}"
+        " (NQ 지수×$20×계약수×환율, 실제 증거금·손익 아님)\n"
+        "• 확정은 ZN 공식 같은 거래일 가격↑·OI↓ + NQ 공식 같은 거래일 가격↑·OI↓ + CFTC NQ 순숏 축소가 함께 붙을 때만 합니다.\n"
+        "※ CFTC 포지션은 주간 후행자료입니다. CME 일일 가격·OI는 같은 거래일 자료로만 묶고, 최신 완료 미국 거래일과 불일치하면 자동으로 확정 판정을 막습니다.\n"
     )
 
 
