@@ -159,6 +159,18 @@ KOREA_MEMORY_EARNINGS_BASELINE = {
     "as_of": "2026-09-30",
     "source_rank": 2,
 }
+MICRON_SUPPLY_COMMITMENT_TRACK_VERSION = 1
+MICRON_SUPPLY_COMMITMENT_BASELINE = {
+    "commitment_year": 2027,
+    "output_committed_min_pct": 75.0,
+    "sca_revenue_share_2030_pct": 50.0,
+    "source": "Micron CEO earnings call via Investing.com",
+    "source_kind": "경영진 컨퍼런스콜 발언 재전사 + Micron 공식 실적자료 교차확인",
+    "source_url": "https://www.investing.com/news/transcripts/earnings-call-transcript-micron-tops-q4-2026-estimates-as-demand-stays-hot-93CH-4925992",
+    "official_context_url": "https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Fiscal-Fourth-Quarter-and-Full-Year-2026-Results/default.aspx",
+    "as_of": "2026-09-30",
+    "source_rank": 2,
+}
 TREND_PINNED_PRESS_URLS = [
     "https://www.trendforce.com/presscenter/news/20260930-13258.html",
     "https://www.trendforce.com/presscenter/news/20260929-13255.html",
