@@ -13,6 +13,10 @@ on:
       - "scripts/khs_us_investment_finalize.py"
       - "scripts/khs_us_investment_altpower_finalize.py"
       - "scripts/khs_us_investment_telegram_send.py"
+      - "scripts/currency_krw_guard.py"
+      - "scripts/fx_api.py"
+      - "tests/test_hbm_currency_krw_guard.py"
+      - "tests/test_fx_api.py"
       - "data/khs_us_investment_watch_config.json"
   schedule:
     # GitHub cron is UTC. 15-minute monitoring, offset from other policy jobs.
@@ -70,9 +74,13 @@ jobs:
             scripts/khs_us_investment_watch_core.py \
             scripts/khs_us_investment_finalize.py \
             scripts/khs_us_investment_altpower_finalize.py \
-            scripts/khs_us_investment_telegram_send.py
+            scripts/khs_us_investment_telegram_send.py \
+            scripts/currency_krw_guard.py \
+            scripts/fx_api.py
           python scripts/khs_us_investment_watch_stateful.py --self-test
           python scripts/khs_us_investment_telegram_send.py self-test
+          python -m unittest discover -s tests -p 'test_hbm_currency_krw_guard.py'
+          python -m unittest discover -s tests -p 'test_fx_api.py'
 
       # Every relevant code push validates the real Telegram bot/chat route.
       # Live monitoring and Telegram delivery still run only on schedule/manual dispatch.
@@ -179,6 +187,10 @@ jobs:
       - name: Add gas-turbine alternative-power baseline
         if: github.event_name != 'push' && hashFiles('out/khs_us_investment_alert.html') != ''
         run: python scripts/khs_us_investment_altpower_finalize.py
+
+      - name: Enforce inline KRW after every foreign-currency amount
+        if: github.event_name != 'push' && hashFiles('out/khs_us_investment_alert.html') != ''
+        run: python scripts/currency_krw_guard.py out/khs_us_investment_alert.html
 
       - name: Publish summary
         if: always()
