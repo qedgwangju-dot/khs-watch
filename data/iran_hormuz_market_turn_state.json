@@ -1,35 +1,36 @@
 {
-  "last_alert_at_kst": "2026-10-01T16:49:04+09:00",
-  "last_event_kind": "us_diesel_export_policy",
-  "last_event_id": "us_diesel_export_policy:7be311130a2ed10f",
+  "last_alert_at_kst": "2026-10-01T17:24:44+09:00",
+  "last_event_kind": "china_fuel_export_policy",
+  "last_event_id": "china_fuel_export_policy:fcc90858a6f733db",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-09-29T19:49:06+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-09-29T20:06:00+09:00",
     "crude_product_divergence:ef9795c46e12d762": "2026-10-01T16:47:45+09:00",
-    "us_diesel_export_policy:7be311130a2ed10f": "2026-10-01T16:49:04+09:00"
+    "us_diesel_export_policy:7be311130a2ed10f": "2026-10-01T16:49:04+09:00",
+    "china_fuel_export_policy:fcc90858a6f733db": "2026-10-01T17:24:44+09:00"
   },
   "last_market": {
     "oil": {
       "symbol": "BZ=F",
       "label": "Brent",
       "unit": "달러/배럴",
-      "price": 99.46,
+      "price": 99.85,
       "previous_close": 98.03,
-      "change": 1.4299999999999926,
-      "change_pct": 1.4587371212893936,
-      "timestamp_utc": "2026-10-01T07:39:20Z",
-      "timestamp_epoch": 1790840360.0
+      "change": 1.8199999999999932,
+      "change_pct": 1.8565745180046853,
+      "timestamp_utc": "2026-10-01T08:15:00Z",
+      "timestamp_epoch": 1790842500.0
     },
     "usdkrw": {
       "symbol": "KRW=X",
       "label": "원·달러",
       "unit": "원/달러",
-      "price": 1362.08,
+      "price": 1362.69,
       "previous_close": 1356.54,
-      "change": 5.539999999999964,
-      "change_pct": 0.4083919383136483,
-      "timestamp_utc": "2026-10-01T07:49:16Z",
-      "timestamp_epoch": 1790840956.0
+      "change": 6.150000000000091,
+      "change_pct": 0.45335928170198386,
+      "timestamp_utc": "2026-10-01T08:25:03Z",
+      "timestamp_epoch": 1790843103.0
     }
   }
 }
