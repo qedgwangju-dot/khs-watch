@@ -132,7 +132,17 @@ SAMSUNG_REVERSE = re.compile(r'(?:로봇|휴머노이드|RX사업).{0,100}(?:연
 
 
 def _is_korea_policy(text: str) -> bool:
-    return bool(KOREA_ROBOT.search(text) and KOREA_POLICY.search(text) and re.search(r'정부|산업통상부|국무조정실|공공|지자체|공기업|특화단지|조달|보급|지원', text, re.I))
+    execution = (
+        KOREA_POLICY.search(text) or PROC_NOTICE.search(text) or PROC_AWARD.search(text)
+        or ACTUAL_DEPLOY.search(text) or PRIVATE_PROGRAM.search(text)
+        or (PLANT_EXEC.search(text) and re.search(r'대구|경북|구미|포항|새만금|대경권', text, re.I))
+        or DATA_MODEL.search(text) or POLICY_REVERSE.search(text)
+    )
+    return bool(
+        KOREA_ROBOT.search(text)
+        and execution
+        and re.search(r'정부|산업통상부|국무조정실|조달청|나라장터|소방청|우정|국방|공공|지자체|공기업|특화단지|조달|보급|지원|대구|경북|구미|포항|새만금', text, re.I)
+    )
 
 
 def _is_samsung_robot(text: str) -> bool:
