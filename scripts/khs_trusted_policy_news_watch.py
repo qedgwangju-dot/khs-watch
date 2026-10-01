@@ -51,10 +51,13 @@ OFFICIAL_DIRECT_STORIES = {
             "U.S. Senate (Sen. Dave McCormick)",
         ),
     ),
+}
+
+OFFICIAL_API_STORIES = {
     "us_fcc_upper_c_band_auction115": (
         (
-            "https://www.federalregister.gov/documents/2026/08/03/2026-15725/auction-of-flexible-use-licenses-in-the-upper-c-band-for-next-generation-wireless-services-scheduled",
-            "Auction of Flexible-Use Licenses in the Upper C-Band for Next-Generation Wireless Services Scheduled for April 27, 2027; Comment Sought on Competitive Bidding Procedures for Auction 115",
+            "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=Auction+115+Upper+C-Band&order=newest&per_page=20",
+            "2026-15725",
             "U.S. Federal Register (FCC)",
         ),
     ),
@@ -856,6 +859,51 @@ def load_seen() -> dict:
 def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
     items: list[dict] = []
     seen_links: set[str] = set()
+
+    # Federal Register JSON metadata is used for official notices whose HTML
+    # layout is not reliably parsed by the generic article-body extractor.
+    for fetch_url, document_number, source_label in OFFICIAL_API_STORIES.get(rule.key, ()):
+        try:
+            payload = json.loads(fetch_text(fetch_url))
+        except Exception as exc:
+            print(f"trusted_policy_news=official_api_failed key={rule.key} error={type(exc).__name__}: {exc}")
+            continue
+        matched_row = next(
+            (
+                row for row in (payload.get("results") or [])
+                if str(row.get("document_number") or "") == document_number
+            ),
+            None,
+        )
+        if not matched_row:
+            print(f"trusted_policy_news=official_api_missing key={rule.key} document={document_number}")
+            continue
+        title = clean_text(str(matched_row.get("title") or ""))
+        description = clean_text(str(matched_row.get("abstract") or matched_row.get("excerpt") or ""))
+        link = clean_text(str(matched_row.get("html_url") or matched_row.get("pdf_url") or fetch_url))
+        published = parse_pub_date(str(matched_row.get("publication_date") or ""))
+        haystack = f"{title} {source_label} {description}"
+        if (
+            not title
+            or not published
+            or (now - published).total_seconds() / 3600 > max_age_hours_for_rule(rule)
+            or not has_required_terms(haystack, rule)
+        ):
+            print(
+                f"trusted_policy_news=official_api_rejected key={rule.key} "
+                f"title={title!r} published={published!r}"
+            )
+            continue
+        seen_links.add(link)
+        items.append({
+            "title": title,
+            "description": description,
+            "link": link,
+            "source": source_label,
+            "published_kst": published.isoformat(timespec="seconds"),
+            "priority": 0,
+        })
+        print(f"trusted_policy_news=official_api_verified key={rule.key} document={document_number} title={title!r}")
 
     # Official first-party pages are fetched directly so a material policy step
     # cannot be missed just because a wire headline uses different agency words.
