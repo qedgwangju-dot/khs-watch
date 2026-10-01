@@ -260,8 +260,16 @@ def _fetch(url: str) -> bytes:
             "Accept": "application/rss+xml,application/xml,text/xml,*/*",
         },
     )
-    with urllib.request.urlopen(req, timeout=25) as response:
-        return response.read()
+    last_error = None
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=25) as response:
+                return response.read()
+        except Exception as exc:
+            last_error = exc
+            if attempt < 2:
+                time.sleep(1.2 * (attempt + 1))
+    raise last_error
 
 
 def _clean(text: str | None) -> str:
