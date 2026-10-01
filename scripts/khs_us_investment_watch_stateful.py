@@ -490,16 +490,22 @@ def _overall_investment_usd_values(low: str) -> list[str]:
 
 
 def _explicit_model_units(low: str, model: str) -> set[str]:
-    values: set[str] = set()
     escaped = re.escape(model)
-    patterns = [
-        rf"{escaped}\s*(?:형|노형)?\s*(\d+)\s*기",
-        rf"(\d+)\s*기\s*(?:의\s*)?{escaped}",
-    ]
-    for pattern in patterns:
-        for match in re.finditer(pattern, low):
-            values.add(match.group(1))
-    return values
+
+    # 같은 제목에 "원전 8기 AP1000 6기 APR1400 2기"처럼 여러 숫자·노형이
+    # 연속으로 나오면 역방향 정규식이 앞 노형의 숫자를 다음 노형에 잘못 붙일 수 있다.
+    # 노형→기수 표기가 있으면 그것만 우선 사용하고, 없을 때만 기수→노형을 허용한다.
+    forward = {
+        match.group(1)
+        for match in re.finditer(rf"{escaped}\s*(?:형|노형)?\s*(\d+)\s*기", low)
+    }
+    if forward:
+        return forward
+
+    return {
+        match.group(1)
+        for match in re.finditer(rf"(?<![a-z0-9])(\d+)\s*기\s*(?:의\s*)?{escaped}\b", low)
+    }
 
 def _explicit_total_nuclear_units(low: str) -> set[str]:
     values: set[str] = set()
@@ -1443,6 +1449,12 @@ def _self_test() -> int:
     accepted, _ = _accepted_facts_for_group("alaska_lng", kumkang_candidate_rows)
     if "party:kumkang" in accepted:
         raise RuntimeError(f"kumkang candidate was promoted without project award: {accepted}")
+
+    split_title = "원전 8기 AP1000 6기 APR1400 2기"
+    if _explicit_model_units(_norm(split_title), "ap1000") != {"6"}:
+        raise RuntimeError("AP1000 unit adjacency regression")
+    if _explicit_model_units(_norm(split_title), "apr1400") != {"2"}:
+        raise RuntimeError("APR1400 unit adjacency regression")
 
     official_rows = _official_project_baseline_rows()
     by_family = {}
