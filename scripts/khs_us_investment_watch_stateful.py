@@ -559,6 +559,7 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
         if _is_official(row) and any(term in low for term in ["원전 프레임워크", "project power"]):
             if any(term in low for term in ["합의", "agreed", "agreement"]):
                 facts.add("nuclear_framework_status:agreed")
+                facts.add("nuclear_project_status:individual_projects_pending")
             for value in _usd_billion_values(low):
                 if value in {"120", "100", "20", "10"}:
                     facts.add(f"nuclear_framework_usd_b:{value}")
@@ -697,7 +698,7 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
 
 def _fact_slot(family: str, fact: str) -> str:
     fixed_prefixes = (
-        "nuclear_total_units:", "ap1000_units:", "apr1400_units:", "nuclear_framework_status:", "nuclear_framework_usd_b:",
+        "nuclear_total_units:", "ap1000_units:", "apr1400_units:", "nuclear_framework_status:", "nuclear_project_status:", "nuclear_framework_usd_b:",
         "stake_percent:", "funding_amount_usd:", "funding_date:", "funding_wait:",
         "repayment_horizon:", "package_nuclear_units:", "package_overall_usd_b:",
         "encinal_total_gw:", "encinal_total_mw:", "encinal_phase1_gw:", "encinal_phase2_gw:",
@@ -822,6 +823,7 @@ def _human_fact(value: str) -> str:
         "official_status:unconfirmed": "정부 공식상태 미확정",
         "official_status:confirmed": "정부 공식확정",
         "nuclear_framework_status:agreed": "한미 원전 프레임워크 합의",
+        "nuclear_project_status:individual_projects_pending": "개별 원전 프로젝트 후속 확정 필요",
         "encinal_status:confirmed_first": "대미투자 1호 공식 확정",
         "alaska_bilateral_status:review_started": "한미 공식상태 검토 착수",
         "funding_wait:45영업일": "선정 통지 후 최소 45영업일",
@@ -1021,6 +1023,22 @@ def _migrate_announcement_stage_guard(state: dict) -> None:
     state["announcement_stage_guard_version"] = 1
 
 
+def _migrate_joint_fact_sheet_status(state: dict) -> None:
+    if int(state.get("joint_fact_sheet_status_version") or 0) >= 1:
+        return
+    nuclear = (state.setdefault("event_states", {}).get("nuclear_build") or {})
+    facts = [str(x) for x in (nuclear.get("facts") or [])]
+    slots = {str(k): str(v) for k, v in (nuclear.get("slots") or {}).items()}
+    if "nuclear_framework_status:agreed" in facts:
+        facts = [x for x in facts if x != "official_status:unconfirmed"]
+        slots.pop("nuclear_build|official_status", None)
+        facts.append("nuclear_project_status:individual_projects_pending")
+        slots["nuclear_build|nuclear_project_status"] = "nuclear_project_status:individual_projects_pending"
+        nuclear["facts"] = sorted(set(facts))
+        nuclear["slots"] = slots
+    state["joint_fact_sheet_status_version"] = 1
+
+
 def _load() -> dict:
     global _SHARED_STATE, _BOOTSTRAP_GUARD
     state = _ORIG_LOAD()
@@ -1030,6 +1048,7 @@ def _load() -> dict:
     _migrate_alaska_investment_semantics(state)
     _migrate_amount_scope_guard(state)
     _migrate_announcement_stage_guard(state)
+    _migrate_joint_fact_sheet_status(state)
     if _BOOTSTRAP_GUARD:
         state["event_state_guard_version"] = GUARD_VERSION
         state["event_state_guard_started_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
