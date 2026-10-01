@@ -197,6 +197,21 @@ def enforce_fda_quality_gate() -> None:
                 heat_alert = heat_grid_outage_alert(row, now, f"{title} {body}".lower())
                 if heat_alert:
                     return heat_alert
+                # Verified article ownership belongs to the source-body layer.
+                # Legacy topic overlays otherwise overwrite it from background
+                # references or recommended stories in the publisher page.
+                alert = runner.build_verified_korean_business_alert(row, now)
+                if alert and not runner.source_output_aligned(runner.normalize_alert_for_output(alert)):
+                    # Re-extract the actual article instead of weakening the
+                    # guard or reusing an unrelated thematic summary.
+                    alert = runner.apply_generic_korean_business_profile(
+                        runner.base_korean_business_alert(
+                            row, now, score=int(alert.get("score") or 100),
+                            impacts=runner.korean_business_impacts(f"{title} {body}", []),
+                        ),
+                        row, now,
+                    )
+                return alert
             return original_classify(row, now)
         text = base.source_content_text(row)
         alert = original_classify(row, now)

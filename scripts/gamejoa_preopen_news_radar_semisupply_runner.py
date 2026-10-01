@@ -498,12 +498,16 @@ def patch_supply_output_helpers() -> None:
         return supply_theme(dummy_row)
 
     def korean_title(alert: dict) -> str:
+        if alert.get("korean_business_news") and alert.get("body_verified"):
+            return original_korean_title(alert)
         theme = theme_from_alert(alert)
         if alert.get(SUPPLY_FLAG) or theme:
             return str(THEME.get(theme or "", {}).get("news") or alert.get("news") or "")
         return original_korean_title(alert)
 
     def curated_sectors(alert: dict) -> list[str]:
+        if alert.get("korean_business_news") and alert.get("body_verified"):
+            return original_curated_sectors(alert)
         theme = theme_from_alert(alert)
         if alert.get(SUPPLY_FLAG) or theme:
             return list(THEME.get(theme or "", {}).get("sectors") or alert.get("sectors") or [])

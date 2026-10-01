@@ -7,6 +7,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import gamejoa_preopen_news_radar_fda_quality_runner as production
+from khs_article_detail import extract_article_detail
 
 radar = production.runner
 NOW = datetime(2026, 10, 1, 17, 0, tzinfo=timezone(timedelta(hours=9)))
@@ -63,6 +64,25 @@ CASES = (
         "외국인의 국내 ETF 순매수가 증가했습니다. 연기금 자금도 유입됐으며 거래대금과 설정액은 별도 지표로 집계했습니다.",
         "capital_flows",
     ),
+    (
+        "원·달러 환율, 5.6원 오른 1358.4원 마감",
+        "원·달러 환율은 5.6원 오른 1358.4원으로 거래를 마무리했다. "
+        "미국과 이란의 협상이 지지부진하며 국제유가가 반등하는 상황도 위험회피 심리를 자극했다.",
+        "rates_fx_liquidity",
+    ),
+    (
+        "증시 조정에 일단 주차…파킹형 ETF 4종에 1.2조 몰렸다",
+        "주요 주식형 상장지수펀드(ETF)가 최근 일주일간 마이너스 수익률을 기록한 가운데 "
+        "파킹형 ETF 4종에 약 1조2000억원이 유입됐다. 증시 방향성을 살피는 투자 대기자금이 모였다.",
+        "capital_flows",
+    ),
+    (
+        "SK하이닉스, 솔리다임 자금조달 방식 미정…주주가치 최우선",
+        "SK하이닉스는 솔리다임의 경쟁력 강화를 위한 여러 방안을 검토하고 있으나 확정된 사항은 없다고 설명했다. "
+        "AI 데이터센터 수요 확대에 따라 생산능력과 기술 경쟁력 확보를 위한 투자를 검토하고 있다. "
+        "고대역폭메모리(HBM), 서버용 D램, eSSD 투자 수요를 고려하되 모든 의사결정에서 주주가치 제고를 우선한다고 밝혔다.",
+        "earnings_investment",
+    ),
 )
 
 
@@ -91,6 +111,8 @@ def main() -> int:
         elif channel not in selected[0].get("stock_market_channels", []):
             failures.append(f"channel_audit_missing:{title}")
         else:
+            if selected[0].get("news") != title:
+                failures.append(f"verified_article_title_overwritten_by_legacy_overlay:{title}")
             block = radar.compact_alert(selected[0], 1, NOW, {}, {})
             block_errors = radar.compact_alert_block_errors(block)
             if block_errors:
@@ -108,6 +130,8 @@ def main() -> int:
                 bad_block = f"1) {title}\n- 핵심: {poisoned['telegram_core_fact']}\n"
                 if "macro_release_mismatch" not in radar.compact_alert_block_errors(bad_block):
                     failures.append("pce_oil_template_passed_final_send_guard")
+            if "솔리다임" in title and "280%" in str(selected[0].get("telegram_core_fact")):
+                failures.append("unrelated_memory_revenue_template_replaced_solidigm_article")
 
     for title, body in (
         ("SNS에서 화제인 요리사", "한 유명 요리사가 새로운 요리법을 공개했습니다."),
@@ -146,8 +170,63 @@ def main() -> int:
             failures.append(f"policy_news_blackhole:live={live_mode}")
     if radar.macro_release_core_aligned("PCE 물가 3% 상승", "PCE 물가는 13% 상승했습니다."):
         failures.append("macro_percent_substring_accepted_as_equal_value")
+    if radar.macro_release_core_aligned("CPI 물가 -0.1%", "소비자물가는 0.1% 변동했습니다."):
+        failures.append("macro_negative_percent_sign_lost")
     if not radar.macro_release_core_aligned("PCE 물가 3.0% 상승", "개인소비지출 물가는 3% 상승했습니다."):
         failures.append("macro_equivalent_percent_and_indicator_alias_rejected")
+
+    release = {
+        "source_title": "美 8월 PCE 물가 전년 대비 3.4% 상승",
+        "published": "2026-10-01T18:08:00+09:00",
+        "link": "https://www.mk.co.kr/news/world/release-fixture",
+    }
+    syndicated = {
+        **release,
+        "source_title": "美 8월 PCE 물가 3.4%↑…전망 밑돌며 10월 금리인상 부담 완화(종합)",
+        "link": "https://www.yna.co.kr/view/release-fixture",
+    }
+    release_key = production.telegram.macro_release_theme(release)
+    if not release_key or release_key != production.telegram.macro_release_theme(syndicated):
+        failures.append("same_macro_release_not_deduplicated_across_publishers")
+    if not set(production.telegram.alert_seen_keys(release)).intersection(
+        production.telegram.alert_seen_keys(syndicated)
+    ):
+        failures.append("same_macro_release_has_no_shared_seen_key")
+    legacy_state = {"seen": {"legacy": {
+        "title": release["source_title"], "first_seen_kst": release["published"],
+    }}}
+    production.telegram.migrate_seen_title_aliases(legacy_state)
+    if f"event:{production.telegram.digest_seen(release_key)}" not in legacy_state["seen"]:
+        failures.append("legacy_macro_release_seen_state_not_migrated")
+    for title in (
+        "美 8월 PCE 물가 3.2% 상승", "美 9월 PCE 물가 3.4% 상승",
+        "美 8월 근원 PCE 물가 3.4% 상승", "중국 8월 CPI 물가 3.4% 상승",
+        "美 8월 PCE 물가 전월 대비 3.4% 상승",
+        "美 8월 PCE 물가 -3.4% 하락",
+    ):
+        if production.telegram.macro_release_theme({**release, "source_title": title}) == release_key:
+            failures.append(f"new_macro_fact_incorrectly_deduplicated:{title}")
+    if production.telegram.macro_release_theme({
+        **release, "source_title": "美 8월 PCE 물가 3.4% 상승 예상",
+    }):
+        failures.append("macro_forecast_treated_as_announced_release")
+
+    article_body = (
+        "신한자산운용은 커버드콜 ETF의 9월 분배금으로 주당 170원을 지급했다고 밝혔다. "
+        "이 상품은 코스피200 구성 종목의 배당수익과 주간 옵션 프리미엄을 재원으로 활용한다. "
+        "지난 3월 상장 후 매달 분배를 이어가고 있으며 이번 월 분배율은 1.43%다. "
+        "일반계좌와 연금계좌의 과세 방식은 다르므로 지급 금액과 수익률은 구분해 집계한다."
+    )
+    fixture_html = (
+        '<meta property="og:title" content="커버드콜 ETF 분배금 지급">'
+        f'<article>{article_body}<br>Copyright © NEWSIS.COM, 무단 전재 및 재배포 금지'
+        '<br>많이 본 뉴스<br>이란 추가 공격 임박, 원전 투자, 메모리 반독점 소송</article>'
+    )
+    detail = extract_article_detail(fixture_html, "커버드콜 ETF 분배금 지급")
+    if not detail.get("body_verified") or "170원" not in detail.get("body", ""):
+        failures.append("real_article_lost_while_trimming_related_stories")
+    if any(term in detail.get("body", "") for term in ("추가 공격", "반독점", "Copyright")):
+        failures.append("publisher_footer_or_related_stories_leaked_into_article_body")
 
     searches = dict(radar.base.trusted_query_plan())
     for name in ("글로벌 금리·물가·고용·유동성", "글로벌 증시 실적·투자·자본행사", "글로벌 통상·제재·원자재 공급"):

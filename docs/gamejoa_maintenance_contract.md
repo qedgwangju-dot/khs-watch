@@ -45,6 +45,15 @@ Every defect or requested change must follow this sequence:
   freshness, materiality and duplicate guards still apply.
 - Actions 성공만으로 완료 처리하지 않는다.
 - Headline, summary, source URL, and source body must describe the same event.
+- Verified Korean article titles and bodies are owned by the source-body layer.
+  Legacy topic overlays must not replace them from background references. An
+  incompatible thematic summary is re-extracted from the article and checked
+  again; it is never published by bypassing source alignment. Related-story
+  footers are not article evidence.
+- Same-country, same-indicator, same-period, same-value macro releases share a
+  seen key across publishers, including migrated historical seen entries.
+  Revised values, other periods, core versus headline, and explicit month-on-
+  month values remain distinct.
 - A visible live radar item contains only the heading, `핵심`, and a clickable
   `출처`. Investment commentary, importance/status labels, duplicate query time,
   per-item `기준/시각`, `경로/섹터`, and the disclaimer must not return.

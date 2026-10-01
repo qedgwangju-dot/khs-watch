@@ -237,6 +237,17 @@ def titles_align(listing_title: str, detail_title: str) -> bool:
     return overlap / max(1, min(len(set(left)), len(set(right)))) >= 0.6
 
 
+def trim_article_footer(body: str) -> str:
+    """A publisher's related-story area is not evidence for the linked article."""
+    footer = re.search(
+        r"(?im)^\s*(?:copyright\s*(?:©|\(c\))|"
+        r"\[?저작권자\s*[©ⓒ]|많이\s*본\s*(?:뉴스|기사|사진)|"
+        r"관련\s*기사\s*$|추천\s*기사\s*$)",
+        body,
+    )
+    return body[:footer.start()].strip() if footer else body.strip()
+
+
 def extract_article_detail(html_text: str, listing_title: str = "") -> dict:
     parser = ArticleHTMLParser()
     try:
@@ -276,6 +287,7 @@ def extract_article_detail(html_text: str, listing_title: str = "") -> dict:
     structured_body = clean(structured.get("articleBody"))
     if len(structured_body) > len(body):
         body = structured_body
+    body = trim_article_footer(body)
     published = parse_published(
         parser.meta.get("article:published_time")
         or parser.meta.get("date")

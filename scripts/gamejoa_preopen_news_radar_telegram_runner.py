@@ -102,6 +102,45 @@ def korean_joint_ceo_theme(alert: dict) -> str:
     return f"korea_joint_ceo:{published_day}:{base.norm(company.group(1))}:{people}"
 
 
+def macro_release_theme(alert: dict) -> str:
+    """Merge same-period, same-value releases, not forecasts or revised values."""
+    title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
+    lowered = title.lower()
+    indicators = {
+        "pce": ("pce", "개인소비지출"),
+        "cpi": ("cpi", "소비자물가"),
+        "ppi": ("ppi", "생산자물가"),
+    }
+    indicator = next((name for name, aliases in indicators.items() if any(
+        re.search(rf"(?<![a-z]){re.escape(alias)}(?![a-z])", lowered) for alias in aliases
+    )), "")
+    countries = {
+        "us": ("미국", "美", "u.s.", "us "),
+        "china": ("중국", "中", "china"),
+        "japan": ("일본", "日", "japan"),
+        "eurozone": ("유로존", "eurozone"),
+        "korea": ("한국", "국내", "korea"),
+    }
+    country = next((name for name, aliases in countries.items() if any(
+        alias.lower() in lowered for alias in aliases
+    )), "")
+    month_match = re.search(r"(?<!\d)(1[0-2]|[1-9])월", title)
+    published = parse_seen_time(str(alert.get("published") or ""))
+    rates = {float(value) for value in re.findall(r"([+-]?\d+(?:\.\d+)?)\s*%", title)}
+    if not (indicator and country and month_match and published and len(rates) == 1):
+        return ""
+    if re.search(r"(?:상승|하락|증가|감소)\s*(?:예상|전망)", title):
+        return ""
+    if not any(term in lowered for term in ("상승", "하락", "발표", "기록", "집계", "↑", "↓", "rose", "fell")):
+        return ""
+    month = int(month_match.group(1))
+    year = published.year - (month > published.month)
+    basis = "core" if "근원" in title or "core" in lowered else "headline"
+    comparison = "mom" if any(term in lowered for term in ("전월", "전달", "mom")) else "headline"
+    rate = format(next(iter(rates)), ".12g")
+    return f"macro_release:{country}:{indicator}:{year}-{month:02d}:{basis}:{comparison}:{rate}"
+
+
 def canonical_alert_for_seen(alert: dict) -> dict:
     """Overridden by the final renderer so cross-source stories share a key."""
     return alert
@@ -127,6 +166,7 @@ def alert_seen_keys(alert: dict) -> list[str]:
         "event",
         str(canonical.get("supply_chain_theme") or alert.get("supply_chain_theme") or ""),
     )
+    add("event", macro_release_theme(canonical))
     add("title", str(canonical.get("news") or alert.get("news") or ""))
     add("original", str(canonical.get("original_news") or alert.get("original_news") or ""))
     return list(dict.fromkeys(keys))
@@ -161,6 +201,12 @@ def migrate_seen_title_aliases(state: dict) -> None:
         })
         if ceo_theme:
             seen.setdefault(f"event:{digest_seen(ceo_theme)}", dict(entry))
+        macro_theme = macro_release_theme({
+            "source_title": title,
+            "published": entry.get("first_seen_kst"),
+        })
+        if macro_theme:
+            seen.setdefault(f"event:{digest_seen(macro_theme)}", dict(entry))
 
 
 def prune_seen_state(state: dict, now) -> None:

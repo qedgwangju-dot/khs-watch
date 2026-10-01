@@ -6631,8 +6631,8 @@ def macro_release_core_aligned(title: str, core: str) -> bool:
         return True
     if not all(has_term(base.norm(core), aliases) for aliases in required):
         return False
-    headline_rates = {float(value) for value in re.findall(r"(\d+(?:\.\d+)?)%", title)}
-    core_rates = {float(value) for value in re.findall(r"(\d+(?:\.\d+)?)%", core)}
+    headline_rates = {float(value) for value in re.findall(r"([+-]?\d+(?:\.\d+)?)%", title)}
+    core_rates = {float(value) for value in re.findall(r"([+-]?\d+(?:\.\d+)?)%", core)}
     return headline_rates.issubset(core_rates)
 
 
@@ -6700,6 +6700,9 @@ def source_output_aligned(alert: dict) -> bool:
 
 
 def semantic_event_theme(alert: dict) -> str:
+    macro_theme = telegram.macro_release_theme(alert)
+    if macro_theme:
+        return macro_theme
     market_theme = telegram.korean_market_move_theme(alert)
     if market_theme:
         return market_theme
@@ -6966,7 +6969,8 @@ STOCK_MARKET_SUBJECTS = {
     ),
     "earnings_investment": (
         "매출", "영업이익", "순이익", "실적", "가이던스", "수주", "공급계약",
-        "설비투자", "earnings", "profit warning", "guidance", "capex", "supply agreement",
+        "설비투자", "자금조달", "자본조달", "earnings", "profit warning", "guidance",
+        "capex", "supply agreement", "financing",
     ),
     "capital_flows": (
         "순매수", "순매도", "외국인", "연기금", "etf", "etn", "자사주", "배당",
@@ -7666,6 +7670,9 @@ def explanation_for(alert: dict) -> dict[str, str]:
 
 def normalize_alert_for_output(alert: dict) -> dict:
     out = dict(alert)
+    macro_theme = telegram.macro_release_theme(out)
+    if macro_theme:
+        out["supply_chain_theme"] = macro_theme
     market_theme = telegram.korean_market_move_theme(out)
     if market_theme:
         out["supply_chain_theme"] = market_theme
