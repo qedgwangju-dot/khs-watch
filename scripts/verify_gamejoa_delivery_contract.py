@@ -75,6 +75,8 @@ REQUIRED_WORKFLOW_SNIPPETS = [
 REQUIRED_PRODUCTION_WORKFLOW_SNIPPETS = [
     "Commit GAMEJOA radar seen state",
     "data/gamejoa_preopen_news_radar_seen.json",
+    "# Queued dispatches must read the seen state committed by the prior run.",
+    "          ref: main",
     'RADAR_MAX_AGE_HOURS: "24"',
     "python scripts/merge_gamejoa_preopen_news_radar_seen.py",
     "git switch --detach origin/main",
