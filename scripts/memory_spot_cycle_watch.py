@@ -2072,6 +2072,10 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 def main() -> int:
     items, errors = collect()
     write_outputs(items, errors)
+    if errors:
+        ALERT_PATH.unlink(missing_ok=True)
+        print(f"memory_watch_incomplete=true source_errors={len(errors)}; Telegram suppressed")
+        return 2
     # Hard gate: every foreign-currency amount that reaches Telegram must have
     # an immediately adjacent KRW conversion. If fresh FX cannot be verified,
     # stop this run rather than send an unconverted or stale amount.
