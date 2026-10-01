@@ -1,10 +1,6 @@
 name: Treasury ETF Fund Flow Telegram
-# temporary live validation trigger; removed after successful verification
 
 on:
-  push:
-    paths:
-      - ".github/workflows/treasury-etf-flow-telegram.yml"
   schedule:
     - cron: "30,35,40 8 * * *"
       timezone: "Asia/Seoul"
