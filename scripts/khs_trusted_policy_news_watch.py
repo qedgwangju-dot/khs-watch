@@ -58,7 +58,7 @@ OFFICIAL_API_STORIES = {
         (
             "https://www.federalregister.gov/api/v1/documents.json?conditions%5Bterm%5D=Auction+115+Upper+C-Band&order=newest&per_page=20",
             "2026-15725",
-            "U.S. Federal Register (FCC)",
+            "미 연방관보 FCC",
         ),
     ),
 }
@@ -331,7 +331,7 @@ STORY_RULES = (
             "최종 입찰절차·최저입찰가, 적격 입찰자, AT&T·Verizon·T-Mobile·신규 사업자 낙찰, 통신사 CAPEX 상향, "
             "삼성전자·Ericsson·Nokia 수주, KMW·에이스테크·쏠리드·에치에프알 실제 주문을 순서대로 추적합니다."
         ),
-        trusted_sources=("U.S. Federal Register (FCC)",),
+        trusted_sources=("미 연방관보 FCC",),
     ),
     StoryRule(
         key="us_fcc_security_import_restriction",
@@ -2286,6 +2286,7 @@ def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, 
         and any(
             "federalregister.gov" in str(item.get("link") or "").lower()
             or "u.s. federal register" in str(item.get("source") or "").lower()
+            or "미 연방관보 fcc" in str(item.get("source") or "").lower()
             for item in items
         )
     ):
