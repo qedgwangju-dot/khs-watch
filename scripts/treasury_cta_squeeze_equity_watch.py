@@ -216,12 +216,30 @@ def _cme_daily_bulletin_nq() -> dict:
             mag = int(total_m.group(6).replace(",", ""))
             total_oi_change = mag if total_m.group(5) == "+" else -mag
     else:
-        marker = re.search(r"TOTAL\s+EMINI\s+NASD\s+FUT", plain_text, re.I)
-        if marker:
-            snippet = re.sub(r"\s+", " ", plain_text[marker.start():marker.start() + 350])
-        else:
-            snippet = "marker-missing"
-        print(f"cme_nq_total_parse_failed snippet={snippet!r}")
+        # PyPDF's plain extraction can reorder PG11's final columns as:
+        #   TOTAL EMINI NASD FUT <OI> <OI-change-magnitude><sign> <Globex volume>
+        # Example observed from the official PDF: "270554 1734- 581241".
+        scrambled = re.search(
+            r"TOTAL\s+EMINI\s+NASD\s+FUT\s+"
+            r"([0-9,]+)\s+([0-9,]+)([+-])\s+([0-9,]+)",
+            plain_text,
+            re.I | re.S,
+        )
+        if scrambled:
+            candidate_oi = int(scrambled.group(1).replace(",", ""))
+            candidate_delta = int(scrambled.group(2).replace(",", ""))
+            if scrambled.group(3) == "-":
+                candidate_delta = -candidate_delta
+            if candidate_oi >= 10_000 and abs(candidate_delta) <= candidate_oi:
+                total_oi = candidate_oi
+                total_oi_change = candidate_delta
+        if total_oi is None:
+            marker = re.search(r"TOTAL\s+EMINI\s+NASD\s+FUT", plain_text, re.I)
+            if marker:
+                snippet = re.sub(r"\s+", " ", plain_text[marker.start():marker.start() + 350])
+            else:
+                snippet = "marker-missing"
+            print(f"cme_nq_total_parse_failed snippet={snippet!r}")
 
     return {
         "price": settle,
