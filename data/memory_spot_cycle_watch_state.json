@@ -331,11 +331,17 @@
       "source": "yna.co.kr",
       "published_kst": "2026-09-29T17:40:10+09:00",
       "first_seen_kst": "2026-10-01T22:48:57+09:00"
+    },
+    "15ac64fbe514a1e4d5ae46d6": {
+      "title": "Micron CEO: Memory Supply 75% Sold Out for 2027 [2026] - tech-insider.org",
+      "source": "tech-insider.org",
+      "published_kst": "2026-10-02T05:37:43+09:00",
+      "first_seen_kst": "2026-10-02T08:30:50+09:00"
     }
   },
-  "updated_at_kst": "2026-10-02T04:54:32+09:00",
-  "last_scan_count": 20,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-10-02T08:30:50+09:00",
+  "last_scan_count": 21,
+  "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -380,20 +386,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-01T22:42:17+09:00",
+  "last_successful_delivery_kst": "2026-10-02T08:30:54+09:00",
   "telegram_message_ids": [
-    202
+    205
   ],
-  "telegram_message_id": 202,
+  "telegram_message_id": 205,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      202
+      205
     ],
-    "confirmed_at_kst": "2026-10-01T22:42:17+09:00",
-    "alert_signature": "9249e35441ac22a455e9dcd6bc6943fd31c13dff8fe3a09e79ffb8bd6ca694ea"
+    "confirmed_at_kst": "2026-10-02T08:30:54+09:00",
+    "alert_signature": "9187beca36d47c93518d113edde42e6dafd8e2a0bdfc08a696a96af9708fb9ba"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
