@@ -1,10 +1,10 @@
 {
-  "last_checked_kst": "2026-10-01T13:17:10+09:00",
+  "last_checked_kst": "2026-10-01T13:20:34+09:00",
   "media_id": null,
   "cftc_date": "September 22, 2026",
   "yield_bucket": "4.50% 초과",
   "snapshot": {
-    "checked_kst": "2026-10-01T13:17:10+09:00",
+    "checked_kst": "2026-10-01T13:20:34+09:00",
     "cta_media": null,
     "cftc": {
       "report_date": "September 22, 2026",
@@ -244,5 +244,6 @@
   "last_fomc_eve_report": "2026-09-16",
   "last_weekly_report_key": "2026-W40",
   "nasdaq_cross_asset_stage": 0,
-  "short_bias_markets": []
+  "short_bias_markets": [],
+  "nasdaq_cross_asset_alerted_stage": 0
 }
