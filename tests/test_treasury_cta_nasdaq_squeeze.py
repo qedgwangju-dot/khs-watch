@@ -176,6 +176,7 @@ def test_cross_alert_latch_does_not_reset_on_stale_gap():
     current_state = {
         "nasdaq_cross_asset_stage": 1,
         "nasdaq_cross_asset_alerted_stage": 1,
+        "nasdaq_cross_asset_format_revision": equity.CROSS_FORMAT_REVISION,
     }
     stale_gap = {
         "stage": 0,
@@ -201,6 +202,29 @@ def test_cross_alert_latch_does_not_reset_on_stale_gap():
         recovered_same_stage,
     )
     assert due is False
+    assert base == 1
+    assert next_alerted == 1
+    assert reset is False
+
+
+def test_old_format_revision_can_force_one_corrected_delivery():
+    current_state = {
+        "nasdaq_cross_asset_stage": 1,
+        "nasdaq_cross_asset_alerted_stage": 1,
+        "nasdaq_cross_asset_format_revision": equity.CROSS_FORMAT_REVISION - 1,
+    }
+    same_stage = {
+        "stage": 1,
+        "treasury_fuel": True,
+        "nq_fuel": True,
+        "data_fresh": True,
+        "nq_history_ready": True,
+        "nq_history_fresh": True,
+    }
+
+    due, base, next_alerted, reset = equity._cross_alert_gate(current_state, same_stage)
+
+    assert due is True
     assert base == 1
     assert next_alerted == 1
     assert reset is False
