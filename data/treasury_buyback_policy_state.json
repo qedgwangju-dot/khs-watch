@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-02T07:43:28+09:00",
+  "last_checked_kst": "2026-10-02T07:47:40+09:00",
   "schedule_sha256": "3461c9a9822dec08b3059d2dd367baadd0d0967193913ce8fe95702f000366d7",
   "long_end_max_bn": {
     "10Y to 20Y": 6.0,
@@ -8,5 +8,5 @@
   "seen_source_ids": [],
   "upgrade_note": "one-time resend armed for upgraded Bessent policy-boundary interpretation",
   "bessent_policy_boundary_revision": 5,
-  "bessent_causal_last_error": "RuntimeError: EIA Brent 일일표 파싱 실패"
+  "bessent_causal_last_error": "RuntimeError: 미 재무부 실질 10년물 XML 파싱 실패"
 }
