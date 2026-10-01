@@ -1199,6 +1199,12 @@ def clean_title(title: str, source: str) -> str:
     text = f'{title} {source}'
     if _is_tesla_supply_text(text):
         stage = _stage(text)
+        if stage == 'ai_memory_baseline':
+            return '일론 머스크, AI5 72GB LP5·AI6 144GB LP6로 조정…Optimus 양산 물량·원가 대응'
+        if stage == 'ai_memory_spec_change':
+            return '테슬라 Optimus, AI5·AI6 온디바이스 메모리·대역폭 사양 신규 변경'
+        if stage == 'ai_memory_vendor':
+            return '테슬라 Optimus, AI5·AI6 메모리 공급사·양산 물량 신규 확정'
         if stage == 'berlin_field_training':
             return '테슬라 Optimus, Giga Berlin 현장 학습 확대…실전 파일럿 운용 보도'
         if stage == 'actual_weekly_production':
@@ -1240,6 +1246,10 @@ def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')}"
     if _is_tesla_supply_text(text):
         stage = _stage(text)
+        if stage == 'ai_memory_baseline':
+            return hashlib.sha256(b'tesla-optimus|ai5-ai6-memory|2026-10-01|72gb-lp5|144gb-lp6|bandwidth-unchanged').hexdigest()
+        if stage in {'ai_memory_spec_change','ai_memory_vendor'}:
+            return hashlib.sha256(f'tesla-optimus|{stage}|{_memory_signature(text)}'.encode()).hexdigest()
         if stage == 'berlin_field_training':
             return hashlib.sha256(b'tesla-optimus|giga-berlin|2026-08|field-training-data-pilot').hexdigest()
         if stage == 'actual_weekly_production':
