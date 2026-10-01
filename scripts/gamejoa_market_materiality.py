@@ -8,7 +8,7 @@ import re
 
 VERSION = 1
 EARLY_SIGNAL = re.compile(
-    r"검토|추진|협상|논의|가능성|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
+    r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should)\b", re.I,
 )
 HEADLINE_EARLY = re.compile(
@@ -31,7 +31,7 @@ ROUTINE_HEADLINE = re.compile(
 )
 HARD_HEADLINE = re.compile(
     r"매출|이익|실적|가이던스|판가|가격|수주|계약|발주|공장|양산|증설|가동|"
-    r"상용화|상장|투자유치|투자 유치|출자|자금조달|자사주|주식 매수|주주환원|"
+    r"상용화|상장|투자유치|투자 유치|출자|자금조달|자사주|주식 매수|주주환원|주식 기부|지분 이전|"
     r"관세|금리|환율|예탁금|순매수|순매도|수출통제|임상|허가|공급부족|코스피|코스닥|증시|"
     r"earnings|guidance|contract|factory|production|tariff|interest rate|buyback", re.I,
 )
@@ -48,12 +48,17 @@ RULES = (
     ("insider_disclosed_trade", ("flows",),
      r"(?:회장|대표|사장|임원|ceo|executive).{0,80}(?:주식|지분|shares|stake)",
      r"매수|매입|취득|매도|처분|buy|purchas|sell|disclos"),
+    ("ownership_transfer", ("flows", "timeline"),
+     r"주식|지분|shares|stake", r"기부|이전|증여|donat|transfer"),
     ("institutional_capital_access", ("earnings", "timeline"),
      r"국민연금|연기금|벤처캐피털|\bvc\b|pension fund|venture capital",
      r"투자\s*기회.{0,8}(?:확대|넓)|출자|투자협력|투자 협력|funding|investment opportunities|commitment"),
     ("market_infrastructure", ("timeline",),
      r"증권계좌|거래시스템|결제망|증권거래소|오픈뱅킹|증권 거래|brokerage account|trading system|payment network",
      r"연결|도입|출시|가동|개편|허용|launch|deploy|connect|reform"),
+    ("model_operating_specification", ("earnings", "timeline"),
+     r"모델|llm|ai model|language model|솔라 미니|gpu|npu",
+     r"(?:gpu|npu|가속기)\s*(?:\d+|한|두|세)\s*(?:장|개)|\d+\s*(?:장|개)의?\s*(?:gpu|npu)|(?:메모리|전력|지연시간|추론비용|운용비용).{0,15}\d+(?:\.\d+)?\s*(?:%|gb|w|배)|\d+(?:\.\d+)?\s*(?:배|%)\s*(?:빠르|절감|줄|감소)"),
     ("rates_fx_or_macro", ("discount_rate",),
      r"기준금리|국채금리|국고채|물가|인플레이션|고용|환율|달러화|유동성|차입|cpi|pce|payroll|interest rate|treasury|inflation|exchange rate|borrowing",
      r"인상|인하|동결|상승|하락|둔화|급등|급락|상회|하회|발표|증가|감소|결정|약세|강세|cut|hike|hold|rise|fall|miss|beat|announc|estimat"),
@@ -124,8 +129,12 @@ def assess(title: str, body: str) -> dict:
                 r"양산|상용화|인증|승인|허가|임상|공급|고객|도입|검증|성능|대역폭|수율|전력효율|production|commercial|approv|customer|deploy|performance|bandwidth|yield", sentence, re.I,
             ):
                 continue
+            if kind == "model_operating_specification" and not re.search(
+                r"구동|동작|실행|추론|운용|가동|배포|메모리|전력|지연시간|추론비용|운용비용|running|inference|deploy|memory|power|latency|cost", sentence, re.I,
+            ):
+                continue
             early = bool(EARLY_SIGNAL.search(sentence)) or kind in {"customer_discussions", "institutional_capital_access"}
-            priority = 2 if early or kind in {"technology_or_clinical_stage", "market_infrastructure"} else 3
+            priority = 2 if early or kind in {"technology_or_clinical_stage", "market_infrastructure", "model_operating_specification"} else 3
             if kind in {"earnings_or_guidance", "market_price_or_flow"} and not QUANTITY.search(sentence):
                 priority = 2
             result["priority"] = max(result["priority"], priority)

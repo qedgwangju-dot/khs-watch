@@ -2234,7 +2234,11 @@ def financial_result_fact(title: str, sentences: list[str]) -> str:
             r"([+-]?\d+(?:\.\d+)?)%\s*(증가|감소|늘|줄)",
             sentence,
         )
-        prefix = f"{period_match.group(1)}분기 " if period_match else ""
+        subject_match = re.match(r"^([A-Za-z0-9가-힣&·.-]{2,30})(?:은|는|의)\s*", sentence)
+        if not subject_match:
+            continue
+        prefix = subject_match.group(1) + " "
+        prefix += f"{period_match.group(1)}분기 " if period_match else ""
         compact_amount = amount.replace(' ', '') if amount_match else amount
         result = f"{prefix}{metric}은 {compact_amount}"
         projected = bool(re.search(r"(?:전망|예상|추정)(?:치|했다|한다|된|된다|됩니다)|가이던스", sentence))
@@ -2709,6 +2713,20 @@ def detailed_article_core(title: str, body: str) -> str:
     unconfirmed_fact = unconfirmed_company_action_fact(title, body)
     if unconfirmed_fact:
         return unconfirmed_fact
+
+    # In a multi-issuer memory article, a contextual revenue number must not
+    # replace the headline's HBM supply/price change or lose its issuer.
+    if "hbm" in title.lower():
+        memory_facts = [normalized_article_sentence(sentence) for sentence in sentences if (
+            "hbm" in sentence.lower()
+            and has_term(sentence, ("가격", "판가", "공급", "수급", "계약", "물량", "수요"))
+            and has_term(sentence, ("상승", "인상", "급등", "부족", "빠듯", "체결", "전망", "예상", "완판"))
+        )]
+        memory_facts.sort(key=lambda sentence: bool(re.search(r"전망했다|예상했다|내다봤|밝혔다", sentence)), reverse=True)
+        for fact in memory_facts:
+            fact = fact.replace("Blended ASP", "ASP")
+            if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact):
+                return fact
 
     # An attributed earnings forecast is not a reported result. Preserve the
     # source's forecast and range instead of discarding it as a large actual.
@@ -8505,7 +8523,7 @@ def verified_alert_core(alert: dict, title: str) -> str:
 
     for candidate in candidates:
         core = complete_prose_text(candidate, limit=GAMEJOA_CORE_MAX_CHARS)
-        if core_sentence_is_complete(core):
+        if core_sentence_is_complete(core) and not subjectless_financial_core(core):
             return core
     return ""
 
@@ -8567,6 +8585,10 @@ def market_move_direction_conflict(title: str, summary: str) -> bool:
     )
 
 
+def subjectless_financial_core(core: str) -> bool:
+    return bool(re.match(r"^(?:(?:[1-4]분기|올해|지난해|분기|연간)\s*)?(?:매출|영업이익|순이익)(?:액|률)?(?:은|이|는|\s)", core))
+
+
 def compact_alert_block_errors(block: str) -> list[str]:
     errors: list[str] = []
     title = ""
@@ -8593,6 +8615,8 @@ def compact_alert_block_errors(block: str) -> list[str]:
         errors.append("article_ui_boilerplate")
     if not core_sentence_is_complete(summary):
         errors.append("incomplete_core")
+    if subjectless_financial_core(summary):
+        errors.append("financial_subject_missing")
     if len(summary) > GAMEJOA_CORE_MAX_CHARS:
         errors.append("core_too_long")
     if "…" in summary or re.search(r"\.{3,}", summary):

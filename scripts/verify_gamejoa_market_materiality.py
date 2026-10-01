@@ -110,6 +110,34 @@ class MaterialityChecks(unittest.TestCase):
         self.assertEqual(released["priority"], 3)
         self.assertTrue(all(item["stage"] == "reported_change" for item in released["evidence"]))
 
+    def test_real_operating_spec_and_share_transfer_are_not_routine_promotions(self):
+        cases = (
+            ("업스테이지, 솔라 미니 4 공개", "업스테이지는 GPU 한 장으로 구동할 수 있는 AI 모델 솔라 미니 4를 공개했다."),
+            ("회장, 재단에 460억원 규모 주식 기부", "회장은 재단에 460억원 규모의 회사 주식을 기부할 계획이라고 밝혔다."),
+        )
+        for title, body in cases:
+            self.assertEqual(materiality.assess(title, body)["disposition"], "keep")
+
+    def test_memory_article_core_keeps_source_forecast_not_subjectless_revenue(self):
+        title = '"내년·내후년 HBM 수급 더 빠듯"…삼전닉스 200조 분기 영업익 시대'
+        body = (
+            "마이크론은 4분기 매출액이 73조5000억원을 기록했다고 밝혔다. "
+            "트렌드포스는 내년 HBM 평균판매가격(Blended ASP)이 올해보다 121% 급등할 것으로 전망했다."
+        )
+        core = radar.detailed_article_core(title, body)
+        self.assertIn("트렌드포스", core)
+        self.assertIn("121%", core)
+        self.assertIn("전망", core)
+        self.assertNotIn("73조", core)
+        recovered = radar.verified_alert_core({**alert(title, body), "telegram_core_fact": "4분기 매출은 73조5000억원입니다."}, title)
+        self.assertEqual(recovered, core)
+        self.assertIn("financial_subject_missing", radar.compact_alert_block_errors("1) 기업 실적 발표\n- 핵심: 4분기 매출은 73조5000억원입니다.\n"))
+
+    def test_financial_compaction_retains_actual_issuer(self):
+        core = radar.financial_result_fact("메모리 업황", ["마이크론은 4분기 매출이 73조5000억원을 기록했다고 밝혔다."])
+        self.assertIn("마이크론", core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+
     def test_unverified_body_cannot_establish_materiality(self):
         item = alert(*KEEP[0])
         item["body_verified"] = False
@@ -170,7 +198,13 @@ def audit_saved_runs(paths):
             name = next(name for name in archive.namelist() if name.endswith("gamejoa_preopen_news_radar.json"))
             report = json.loads(archive.read(name))
         for item in report["alerts"]:
-            results.append({"artifact": str(path), "title": item.get("source_title") or item.get("news"), "materiality": radar.source_market_materiality(item)})
+            title = item.get("source_title") or item.get("news") or ""
+            results.append({
+                "artifact": str(path), "title": title,
+                "materiality": radar.source_market_materiality(item),
+                "stored_core": item.get("telegram_core_fact"),
+                "revalidated_core": radar.verified_alert_core(item, title),
+            })
     print(json.dumps({"read_only_shadow_audit": True, "articles": len(results), "results": results}, ensure_ascii=False))
 
 
