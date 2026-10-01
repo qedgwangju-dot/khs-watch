@@ -387,13 +387,16 @@ def _compact_report(raw_text):
 
     try:
         refi = get_refinancing_snapshot()
-        next12_krw = _fmt_krw_trillion(refi["next12_t"] * fx_rate if fx_rate else None)
-        bills_krw = _fmt_krw_trillion(refi["bills_t"] * fx_rate if fx_rate else None)
-        plus75_krw = _fmt_krw_trillion(refi["plus75_b"] * fx_rate / 1000.0 if fx_rate else None)
+        next12_t_display = round(refi["next12_t"], 2)
+        bills_t_display = round(refi["bills_t"], 2)
+        plus75_b_display = round(refi["plus75_b"], 1)
+        next12_krw = _fmt_krw_trillion(next12_t_display * fx_rate if fx_rate else None)
+        bills_krw = _fmt_krw_trillion(bills_t_display * fx_rate if fx_rate else None)
+        plus75_krw = _fmt_krw_trillion(plus75_b_display * fx_rate / 1000.0 if fx_rate else None)
         refi_line = (
-            f"차환: 12개월 ${refi['next12_t']:.2f}T ({next12_krw}) ({refi['next12_share']:.1f}%) | "
-            f"Bills ${refi['bills_t']:.2f}T ({bills_krw}) ({refi['bill_share']:.1f}%) | "
-            f"+75bp 단순 연율 +${refi['plus75_b']:.1f}B ({plus75_krw})"
+            f"차환: 12개월 ${next12_t_display:.2f}T ({next12_krw}) ({refi['next12_share']:.1f}%) | "
+            f"Bills ${bills_t_display:.2f}T ({bills_krw}) ({refi['bill_share']:.1f}%) | "
+            f"+75bp 단순 연율 +${plus75_b_display:.1f}B ({plus75_krw})"
         )
         refi_date = refi["record_date"]
     except Exception:
