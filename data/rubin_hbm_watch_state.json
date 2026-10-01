@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-01T14:06:37+09:00",
+  "updated_at_kst": "2026-10-01T14:36:24+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
@@ -97,18 +97,37 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 1,
+  "last_unseen_raw_count": 0,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1355.4,
-    "date": "2026-09-30 일일 기준 · ECB/Frankfurter · 조회 2026-10-01 14:06 KST · 보조 API 2026-10-01 · 차이 0.03% · 일중 기준시각 차이 가능",
+    "date": "2026-09-30 일일 기준 · ECB/Frankfurter · 조회 2026-10-01 14:38 KST · 보조 API 2026-10-01 · 차이 0.03% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
   "errors": [
-    "핵심 사실 자동추출 실패로 발송 제외: digitimes | Micron hikes 2027 HBM prices after missing 2026 memory surge on fixed contracts - digitimes"
+    "rubin_spec/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "rubin_spec/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "rubin_broker_model/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "rubin_broker_model/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "hbm_supplier_relative/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "hbm_supplier_relative/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "hbm4e_validation/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "hbm4e_validation/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "rubin_shipments/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "rubin_shipments/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "hbm_2027_contract/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "hbm_2027_contract/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "citi_hbm_outlook/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "citi_hbm_outlook/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "hbm_wafer_economics/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "hbm_wafer_economics/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "memory_migration/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "memory_migration/ko: HTTPError: HTTP Error 503: Service Unavailable",
+    "memory_migration/en: HTTPError: HTTP Error 503: Service Unavailable",
+    "memory_migration/ko: HTTPError: HTTP Error 503: Service Unavailable"
   ],
   "ai_component_leadtime": {
     "as_of": "2026-09-21",
@@ -158,13 +177,15 @@
       "https://insights.trendforce.com/p/weekly-radar-002",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-10-01T14:06:50+09:00",
+    "last_checked_at_kst": "2026-10-01T14:38:44+09:00",
     "candidate_count": 3,
-    "errors": []
+    "errors": [
+      "google_news: HTTPError: HTTP Error 503: Service Unavailable"
+    ]
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-01T14:13:34+09:00",
+    "checked_at_kst": "2026-10-01T14:42:10+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-01T09:43:49+09:00",
@@ -234,7 +255,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-01",
-    "last_checked_at_kst": "2026-10-01T14:07:30+09:00"
+    "last_checked_at_kst": "2026-10-01T14:39:36+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -270,7 +291,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-01",
-    "last_checked_at_kst": "2026-10-01T14:12:18+09:00",
+    "last_checked_at_kst": "2026-10-01T14:40:09+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -314,7 +335,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-01T14:12:51+09:00",
+    "last_checked_at_kst": "2026-10-01T14:40:57+09:00",
     "candidate_count": 0,
     "event_count": 0
   },
