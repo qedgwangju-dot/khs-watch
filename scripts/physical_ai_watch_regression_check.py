@@ -851,4 +851,87 @@ assert g == "samsung_robot_scale", (g, s, c)
 assert c.endswith("핵심부품 공급사·발주"), c
 assert s >= 11, s
 
+
+# 25) U.S. autonomous warfare: Sep-30 AUTOWARCOM / Project Agincourt /
+# Project Meridian announcements are baselines. Legislation, funding, formal
+# stand-up, acquisition authority, contracts, deployments and the Meridian report
+# are new stages.
+autowar_baseline = make(
+    "Pentagon announces Autonomous Warfare Command and Project Meridian",
+    "Defense Secretary Pete Hegseth announced a planned four-star Autonomous Warfare Command (AUTOWARCOM). Project Agincourt is the interim step. Project Meridian will be co-led by Elon Musk, Palmer Luckey and Newt Gingrich to study future warfare.",
+    "Breaking Defense",
+)
+g, s, c, k = classify(autowar_baseline)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert s < 11, ("Sep-30 AUTOWARCOM and Meridian announcements must be baseline", s, c)
+
+autowar_musk_headline = make(
+    "美 국방, 머스크에 전쟁 대비 맡긴다…로봇으로 싸우는 자율전쟁사령부도 신설",
+    "Project Meridian은 일론 머스크, 팔머 럭키, 뉴트 깅리치가 공동으로 미래전 능력 격차와 대안을 연구한다. 국방부는 AUTOWARCOM 창설 계획도 발표했다.",
+    "서울경제",
+)
+g, s, c, k = classify(autowar_musk_headline)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert s < 11, ("syndicated Musk/Autowarcom baseline headline must stay silent", s, c)
+
+autowar_law = make(
+    "Congress passes AUTOWARCOM authorization in FY2027 NDAA",
+    "Congress passed legislation authorizing the Autonomous Warfare Command and its service-like acquisition authorities.",
+    "Congress.gov",
+)
+g, s, c, k = classify(autowar_law)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert c.endswith("AUTOWARCOM 법제화·승인"), c
+assert s >= 11, s
+
+autowar_standup = make(
+    "Pentagon formally activates Autonomous Warfare Command",
+    "The Department of Defense officially established AUTOWARCOM and declared initial operating capability.",
+    "U.S. Department of Defense",
+)
+g, s, c, k = classify(autowar_standup)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert c.endswith("AUTOWARCOM 정식 창설·작전능력"), c
+assert s >= 11, s
+
+autowar_commander = make(
+    "Pentagon names four-star commander for AUTOWARCOM",
+    "The President nominated a four-star commander to lead the Autonomous Warfare Command.",
+    "U.S. Department of Defense",
+)
+g, s, c, k = classify(autowar_commander)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert c.endswith("AUTOWARCOM 사령관 지명·인준"), c
+assert s >= 11, s
+
+agincourt_contract = make(
+    "Project Agincourt awards autonomous drone prototype contracts",
+    "Defense Innovation Unit awarded Project Agincourt prototype agreements for 2,000 autonomous drones worth $450 million.",
+    "Defense Innovation Unit",
+)
+g, s, c, k = classify(agincourt_contract)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert c.endswith("Project Agincourt 시제품·양산계약"), c
+assert s >= 11, s
+
+meridian_report = make(
+    "Project Meridian releases future warfare report",
+    "Project Meridian published its report with recommendations on autonomous systems, robotics and AI procurement.",
+    "U.S. Department of Defense",
+)
+g, s, c, k = classify(meridian_report)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert c.endswith("Project Meridian 보고서·권고"), c
+assert s >= 11, s
+
+autowar_reverse = make(
+    "AUTOWARCOM stand-up delayed",
+    "Congressional authorization delay postponed the Autonomous Warfare Command stand-up beyond October 2027.",
+    "Reuters",
+)
+g, s, c, k = classify(autowar_reverse)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert c.endswith("일정·예산·승인 후퇴"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
