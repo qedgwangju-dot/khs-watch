@@ -85,6 +85,20 @@ def _source_time(core, title: str, source: str, link: str, lookup_time: str) -> 
     return f"{lookup_time} 조회" if lookup_time else "시각 확인 불가"
 
 
+def _funding_state_values() -> tuple[set[str], str, str]:
+    state = _load_state()
+    bucket = ((state.get("event_states") or {}).get("funding_execution") or {})
+    facts = {str(x) for x in (bucket.get("facts") or [])}
+    amount = ""
+    date = ""
+    for fact in facts:
+        if fact.startswith("funding_amount_usd:"):
+            amount = fact.split(":", 1)[1] + "달러"
+        elif fact.startswith("funding_date:"):
+            date = fact.split(":", 1)[1]
+    return facts, amount, date
+
+
 def _short_judgment(title: str, tags: str) -> str:
     blob = f"{title} {tags}".lower()
     if any(x in blob for x in ["사용후핵연료", "파이로", "pyroprocessing", "핵연료주기"]):
@@ -93,8 +107,15 @@ def _short_judgment(title: str, tags: str) -> str:
         return "후보 수혜. Encinal 직접 수주·제조사 확정은 아직 아님."
     if "비에이치아이" in blob or "bhi" in blob:
         return "증권사 추정·후보 수혜. HRSG 실제 공급계약은 아직 미확정."
-    if "송금절차" in blob or "45영업일" in blob or "송금" in blob:
-        return "협의 진전 신호. 실제 송금일·금액 확정으로는 아직 승격하지 않음."
+    if "송금절차" in blob or "45영업일" in blob or "송금" in blob or "첫 자금 집행" in blob:
+        facts, amount, date = _funding_state_values()
+        if "stage:송금집행" in facts:
+            detail = amount or "첫 투자금"
+            when = f" · {date} 집행" if date else ""
+            return f"실제 첫 송금 집행 확인. {detail} 송금 완료{when}. 다음은 수취 SPV·실제 사용처/발주·후속 자금요청을 추적."
+        if "stage:송금예정" in facts:
+            return "송금 예정 단계. 실제 송금 완료·수취 SPV·집행일·금액 확인 전에는 집행 완료로 승격하지 않음."
+        return "자금 집행 관련 변화. 실제 송금 여부·수취 주체·집행일을 교차 확인."
     if "공식정정/정부입장" in blob:
         return "정부 공식상태를 우선. 언론 선행보도와 확정 단계를 분리."
     if "ercot" in blob or "계통연계" in blob:
@@ -242,7 +263,12 @@ def _context_numbers(flags: dict[str, bool], records: list[dict]) -> list[str]:
     if "비에이치아이" in titles:
         lines.append("• 비에이치아이 HRSG <b>8~10기·4,000억~5,000억원</b>은 증권사 추정 · 확정 수주 아님")
     if flags["funding"]:
-        lines.append("• 2025-11-14 MOU: 선정 통지 후 <b>최소 45영업일</b> · 자금요청 방식")
+        facts, amount, date = _funding_state_values()
+        if "stage:송금집행" in facts:
+            detail = amount or "첫 투자금"
+            when = date or "집행일 확인"
+            lines.append(f"• 실제 첫 송금: <b>{detail}</b> · <b>{when}</b> 집행 확인 · 후속 자금은 사업 진척도에 따른 자금요청 방식")
+        lines.append("• 2025-11-14 MOU 원칙: 미국의 투자처 선정 통지 후 <b>최소 45영업일 경과 뒤 납입</b> · 이번 실제 송금과 연결되는 선정 통지일을 별도 확인")
     if flags["ercot"]:
         lines.append("• ERCOT <b>474GW+</b>는 계통연계 요청량 · 승인·전원 인가·실제 가동과 구분")
     return lines[:5]
@@ -313,7 +339,15 @@ def _next_checks(flags: dict[str, bool]) -> list[str]:
     if flags["supply"] or flags["encinal"]:
         checks += ["제조사 실명·구매주문(PO)·실제 기수·납기", "AI 고객 실명·PPA·4.9GW 후속 승인"]
     if flags["funding"]:
-        checks += ["사업 선정일·한국 통보일·자금요청·실제 송금일/금액"]
+        facts, amount, date = _funding_state_values()
+        if "stage:송금집행" in facts:
+            checks += [
+                "첫 송금 수취 SPV·실제 사용처·자재/설비 발주내역",
+                "후속 자금요청(capital call) 규모·시점·2·3단계 집행 일정",
+                "투자처 선정 통지일과 MOU 최소 45영업일 경과 요건의 실제 적용 경로",
+            ]
+        else:
+            checks += ["사업 선정일·한국 통보일·자금요청·실제 송금일/금액"]
     if flags["nuclear"] and not flags["pyro"]:
         checks += ["원전 부지·노형·기수·발주주체·본계약"]
     if flags["ercot"]:
