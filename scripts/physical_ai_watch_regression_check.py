@@ -1126,4 +1126,37 @@ assert g == "tesla", (g, s, c)
 assert c == "Optimus AI5·AI6 메모리 공급사·물량 확정", c
 assert s >= 11, s
 
+# 30) Gemini Robotics platform lane. Current July-2026 partner/model
+# announcements stay as the baseline; new hardware partners, public availability
+# and paid/customer deployments are separate high-signal transitions.
+gemini_new_partner = make(
+    "Google DeepMind announces new Gemini Robotics partnership with Figure AI",
+    "Google DeepMind announced a new partnership with Figure AI to integrate Gemini Robotics into its humanoid robot for customer deployment.",
+    "Google DeepMind",
+)
+g, s, c, k = classify(gemini_new_partner)
+assert g == "frontier_ai", (g, s, c)
+assert c.endswith("Gemini Robotics 신규 하드웨어 파트너"), c
+assert s >= 11, s
+
+gemini_ga = make(
+    "Gemini Robotics On-Device 2 generally available",
+    "Google DeepMind made Gemini Robotics On-Device 2 generally available through a public API for robotics developers.",
+    "Google DeepMind",
+)
+g, s, c, k = classify(gemini_ga)
+assert g == "frontier_ai", (g, s, c)
+assert c.endswith("Gemini Robotics 모델·API 일반 공개"), c
+assert s >= 11, s
+
+gemini_commercial = make(
+    "Gemini Robotics wins first paid production deployment",
+    "Google DeepMind signed a commercial contract to deploy Gemini Robotics on 2,000 humanoid robots at a customer production site.",
+    "Google DeepMind",
+)
+g, s, c, k = classify(gemini_commercial)
+assert g == "frontier_ai", (g, s, c)
+assert c.endswith("Gemini Robotics 유료계약·상용 배치"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
