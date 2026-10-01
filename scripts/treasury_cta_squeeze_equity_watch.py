@@ -487,7 +487,14 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         and data_fresh
         and nq_history_ready
         and nq_history_fresh
-        and (treasury_price_up or nq_price_up)
+        and (
+            treasury_price_up
+            or (
+                nq_price_up
+                and nq_price_official
+                and nq_price_fresh
+            )
+        )
     )
 
     if treasury_confirmed and nq_confirmed and treasury_fuel and nq_fuel:
@@ -599,11 +606,12 @@ def _equity_impact(snapshot: dict, previous: dict, reasons: list[str]) -> tuple[
     z = float(y.get("z20") or 0.0)
     evidence = watcher.squeeze_evidence(snapshot, previous)
     repo_ok, _ = audited._repo_not_worse(snapshot, previous)
+    data_fresh, _ = audited._data_freshness(snapshot)
     prices_up = audited._price_up_count(snapshot)
     short_bias = any("CFTC 숏 축소" in r or "CFTC 주간 숏 축소" in r for r in reasons)
-    if evidence and z <= -1.0 and repo_ok:
+    if evidence and z <= -1.0 and repo_ok and data_fresh:
         return "🟢 성장주 우호 강화", "금리 하락이 포지션 청산과 함께 확인"
-    if (short_bias or prices_up >= 2) and repo_ok:
+    if (short_bias or prices_up >= 2) and repo_ok and data_fresh:
         return "🟡 중립~약한 우호", f"숏 압력 완화 가능성은 있지만 10Y {yld:.3f}%·z={z:+.2f}σ로 추세전환 미확인"
     return "⚪ 중립", f"10Y {yld:.3f}%에서 할인율 완화 신호 미확인"
 
