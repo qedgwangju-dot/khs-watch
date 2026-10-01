@@ -309,6 +309,7 @@ def cme_front(symbol: str) -> dict | None:
             product = products[0]
         product_id = product.get("id") if isinstance(product, dict) else None
         if product_id is None:
+            print(f"cme_front_no_product symbol={symbol} products={len(products)}")
             return None
         q = fetch_json(CME_QUOTES.format(product_id=product_id))
         quotes = q.get("quotes", []) if isinstance(q, dict) else []
@@ -323,6 +324,7 @@ def cme_front(symbol: str) -> dict | None:
                 continue
             candidates.append((oi, vol, row, last))
         if not candidates:
+            print(f"cme_front_no_quotes symbol={symbol} product_id={product_id} quotes={len(quotes)}")
             return None
         candidates.sort(key=lambda x: (x[0], x[1]), reverse=True)
         oi, vol, row, last = candidates[0]
@@ -342,8 +344,11 @@ def cme_front(symbol: str) -> dict | None:
             "open_interest": oi,
             "volume": vol,
             "source": CME_PAGES.get(symbol),
+            "source_type": "CME official quote API",
+            "product_id": product_id,
         }
-    except Exception:
+    except Exception as exc:
+        print(f"cme_front_error symbol={symbol} {type(exc).__name__}: {exc}")
         return None
 
 
