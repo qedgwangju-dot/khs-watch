@@ -934,4 +934,47 @@ assert g == "us_autonomous_warfare", (g, s, c)
 assert c.endswith("일정·예산·승인 후퇴"), c
 assert s >= 11, s
 
+# 26) Distinguish the older SOUTHCOM regional Autonomous Warfare Command from
+# the Pentagon-wide four-star AUTOWARCOM, and treat FY2027 Drone Dominance as a
+# proposal baseline until Congress actually appropriates money.
+southcom_old = make(
+    "Southcom establishes Autonomous Warfare Command",
+    "On April 23, 2026 U.S. Southern Command directed establishment of the Southcom Autonomous Warfare Command for autonomous, semiautonomous and unmanned systems.",
+    "U.S. Southern Command",
+)
+g, s, c, k = classify(southcom_old)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert c.endswith("SOUTHCOM 지역사령부 기준선"), c
+assert s < 11, ("older SOUTHCOM regional command must stay a baseline", s, c)
+
+drone_budget_proposal = make(
+    "FY2027 Drone Dominance Requirement totals $53.6 billion",
+    "The Department of War FY2027 budget request proposes a $53.6 billion Drone Dominance Requirement including Collaborative Autonomy.",
+    "U.S. Department of War",
+)
+g, s, c, k = classify(drone_budget_proposal)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert c.endswith("FY2027 드론예산 제안 기준선"), c
+assert s < 11, ("FY2027 $53.6bn request is not enacted spending", s, c)
+
+autowar_vendor_contract = make(
+    "Defense Autonomous Warfare Group awards Anduril contract",
+    "The Defense Autonomous Warfare Group awarded Anduril a $780 million contract for 4,000 autonomous systems under the Pentagon autonomy initiative.",
+    "U.S. Department of War",
+)
+g, s, c, k = classify(autowar_vendor_contract)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert c.endswith("AUTOWARCOM·DAWG 실제 조달·수주"), c
+assert s >= 11, s
+
+autowar_production = make(
+    "AUTOWARCOM supplier expands drone mass production",
+    "Under an AUTOWARCOM production award, Anduril increased monthly output to 5,000 autonomous drones.",
+    "U.S. Department of War",
+)
+g, s, c, k = classify(autowar_production)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert c.endswith("드론·로봇 양산 확대"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
