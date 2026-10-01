@@ -425,6 +425,8 @@ def score(item: dict) -> int:
 
     if group == 'frontier_ai':
         gemini_stage = _gemini_platform_stage(text)
+        if gemini_stage == 'baseline':
+            return 0
         if gemini_stage in {'new_partner','preview_expansion','ga','commercial'}:
             s = 18 + {'new_partner': 10, 'preview_expansion': 11, 'ga': 12, 'commercial': 15}[gemini_stage]
             if source in base.OFFICIAL_OR_PRIMARY: s += 7
