@@ -583,14 +583,29 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
         if "45영업일" in low:
             facts.add("funding_wait:45영업일")
         if any(term in low for term in ["송금", "납입", "집행", "capital call"]):
-            if any(term in low for term in ["예정", "가능성", "가능", "검토", "협의", "요구"]):
-                facts.add("stage:송금예정")
-            if any(term in low for term in ["송금 완료", "납입 완료", "집행 완료", "송금했다", "납입했다", "집행했다"]):
+            future_terms = [
+                "예정", "가능성", "가능", "검토", "협의", "요구", "임박", "계획",
+                "이달 말", "월말", "곧 송금", "송금할", "납입할", "집행할",
+            ]
+            executed_terms = [
+                "송금 완료", "납입 완료", "집행 완료", "송금했다", "납입했다", "집행했다",
+                "송금됐다", "송금돼", "송금해", "첫 송금", "첫 투자금", "첫 자금 집행",
+                "투자금 송금", "자금 송금",
+            ]
+            future = any(term in low for term in future_terms)
+            executed = any(term in low for term in executed_terms) and not future
+            if executed:
                 facts.add("stage:송금집행")
-            for value in _money_near_anchor(low, ("첫 송금", "첫 납입", "초기 집행", "자금 납입", "capital call")):
+            elif future:
+                facts.add("stage:송금예정")
+
+            for value in _money_near_anchor(
+                low,
+                ("첫 송금", "첫 투자금", "첫 자금 집행", "첫 납입", "초기 집행", "자금 납입", "투자금 송금", "capital call"),
+            ):
                 facts.add(f"funding_amount_usd:{value}")
             for match in re.finditer(r"(20\d{2})[-./년]\s*(\d{1,2})[-./월]\s*(\d{1,2})", low):
-                window = low[max(0, match.start()-40): min(len(low), match.end()+40)]
+                window = low[max(0, match.start()-55): min(len(low), match.end()+55)]
                 if any(anchor in window for anchor in ["송금", "납입", "집행"]):
                     facts.add(f"funding_date:{int(match.group(1)):04d}-{int(match.group(2)):02d}-{int(match.group(3)):02d}")
         facts |= parties
@@ -712,6 +727,8 @@ def _fact_slot(family: str, fact: str) -> str:
             return f"{family}|{prefix[:-1]}"
     if fact in {"stage:발표예정", "stage:발표실행"}:
         return f"{family}|stage:announcement"
+    if family == "funding_execution" and fact in {"stage:송금예정", "stage:송금집행"}:
+        return f"{family}|stage:funding"
     if fact.startswith("stage:") or fact.startswith("party:") or fact.startswith("governance:"):
         return f"{family}|{fact}"
     # 여러 설비 용량·계약금처럼 동시에 존재할 수 있는 값은 값 자체를 슬롯으로 둔다.
@@ -1094,6 +1111,11 @@ def _apply_state(family: str, evidence_row: dict, facts: set[str], evidence_map:
     if not bucket.get("initialized_at"):
         bucket["initialized_at"] = now
 
+    if family == "funding_execution" and "stage:송금집행" in facts:
+        stale = slots.pop("funding_execution|official_status", None)
+        if stale == "official_status:unconfirmed":
+            print("funding_stale_unconfirmed_removed=true")
+
     for fact in sorted(facts):
         slot = _fact_slot(family, fact)
         if slots.get(slot) == fact:
@@ -1475,6 +1497,36 @@ def _self_test() -> int:
     if _explicit_model_units(_norm(split_title), "apr1400") != {"2"}:
         raise RuntimeError("APR1400 unit adjacency regression")
 
+    funding_rows = _verified_funding_baseline_rows()
+    accepted, _ = _accepted_facts_for_group("funding_execution", funding_rows)
+    required_funding = {
+        "funding_amount_usd:24억",
+        "funding_date:2026-10-01",
+        "stage:송금집행",
+    }
+    if not required_funding.issubset(accepted):
+        raise RuntimeError(f"completed first funding baseline failed: {accepted}")
+    if "stage:송금예정" in accepted:
+        raise RuntimeError(f"completed first funding was misclassified as pending: {accepted}")
+
+    planned_funding_rows = [
+        {
+            "title": "2026-10-31 첫 송금 21억~24억달러 예정",
+            "source": "뉴스1",
+            "link": "https://example.com/funding-planned-a",
+            "published": "2026-09-30T00:00:00+00:00",
+        },
+        {
+            "title": "첫 투자금 24억달러 이달 말 송금할 계획",
+            "source": "한국일보",
+            "link": "https://example.com/funding-planned-b",
+            "published": "2026-09-30T00:01:00+00:00",
+        },
+    ]
+    accepted, _ = _accepted_facts_for_group("funding_execution", planned_funding_rows)
+    if "stage:송금집행" in accepted:
+        raise RuntimeError(f"planned funding was falsely promoted as executed: {accepted}")
+
     official_rows = _official_project_baseline_rows()
     by_family = {}
     for row in official_rows:
@@ -1508,6 +1560,23 @@ def _self_test() -> int:
 
     print("state_event_guard_self_test=passed")
     return 0
+
+
+def _verified_funding_baseline_rows() -> list[dict]:
+    return [
+        {
+            "title": "재정경제부 확인 2026-10-01 정부 첫 대미투자금 24억달러 첫 송금 완료 텍사스 엔시날",
+            "source": "뉴스1",
+            "link": "https://www.news1.kr/economy/trend/6307297",
+            "published": "2026-10-01T01:56:00+00:00",
+        },
+        {
+            "title": "재정경제부 확인 2026-10-01 텍사스 엔시날 첫 투자금 24억달러 미국 송금 완료",
+            "source": "아주경제",
+            "link": "https://v.daum.net/v/qxaIoHd8vp",
+            "published": "2026-10-01T05:30:00+00:00",
+        },
+    ]
 
 
 def _official_project_baseline_rows() -> list[dict]:
@@ -1549,6 +1618,7 @@ def _rss(query: str) -> list[dict]:
         return []
 
     _RSS_BUFFER.extend(_official_project_baseline_rows())
+    _RSS_BUFFER.extend(_verified_funding_baseline_rows())
     flushed = _collapse_rows(_RSS_BUFFER)
     _RSS_BUFFER = []
     return flushed
