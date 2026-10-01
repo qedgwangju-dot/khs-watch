@@ -394,8 +394,13 @@ def key(item: dict) -> str:
         ]:
             if re.search(pat, text, re.I):
                 vendors.append(name)
+        nums = '|'.join(sorted(set(re.findall(
+            r'\$?\s*\d[\d,.]*\s*(?:million|billion|m|bn|systems?|units?|drones?|robots?|대|개)?',
+            text,
+            re.I,
+        )))[:6])
         return hashlib.sha256(
-            f'us-autowar|{stage}|{",".join(vendors)}|{_sig_numbers(text) if "_sig_numbers" in globals() else text[:180]}'.encode()
+            f'us-autowar|{stage}|{",".join(vendors)}|{nums}'.encode()
         ).hexdigest()
     if stage == 'deployment':
         return hashlib.sha256(f'us-autowar|deployment|{text[:220]}'.encode()).hexdigest()
