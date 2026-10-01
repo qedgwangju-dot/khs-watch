@@ -977,4 +977,57 @@ assert g == "us_autonomous_warfare", (g, s, c)
 assert c.endswith("드론·로봇 양산 확대"), c
 assert s >= 11, s
 
+# 27) Dexterous-hand architecture lane: current Atlas/Clone demos are baselines,
+# while later supplier awards, autonomous manipulation and new product architecture
+# must alert through the existing humanoid-component route.
+atlas_hand_baseline = make(
+    "Robot Hands for Modern AI and Real Work",
+    "Boston Dynamics unveiled the new generation Atlas robot hand with four fingers, 13 DOF, direct actuation, dense tactile pressure sensors and sim2real reinforcement learning.",
+    "Boston Dynamics",
+)
+g, s, c, k = classify(atlas_hand_baseline)
+assert g == "humanoid_component_global", (g, s, c)
+assert "로봇핸드·그리퍼" in c and "핸드설계·제어 아키텍처" in c, c
+assert s < 11, ("current 2026-10-01 Atlas hand architecture must be a silent baseline", s, c)
+
+atlas_hand_award = make(
+    "Boston Dynamics names Atlas hand supplier",
+    "Boston Dynamics selected a supplier for 20,000 Atlas 13 DOF tactile robot hands under a production contract.",
+    "Boston Dynamics",
+)
+g, s, c, k = classify(atlas_hand_award)
+assert g == "humanoid_component_global", (g, s, c)
+assert c.endswith("고객선정·수주·수주잔고"), c
+assert s >= 11, s
+
+clone_hand_baseline = make(
+    "Clone Robotics shows Torso 3 robotic hand",
+    "Clone Robotics shared a teleoperation demo of the Torso 3 five-finger robot hand using Myofiber water hydraulic artificial muscles.",
+    "Clone Robotics",
+)
+g, s, c, k = classify(clone_hand_baseline)
+assert g == "humanoid_component_global", (g, s, c)
+assert "로봇핸드·그리퍼" in c and "핸드설계·제어 아키텍처" in c, c
+assert s < 11, ("Torso 3 teleoperation demo must remain a silent technology baseline", s, c)
+
+clone_torso4_launch = make(
+    "Clone Robotics launches redesigned Torso 4 hand",
+    "Clone Robotics introduced a new five-finger 27 DOF robot hand using Myofiber hydraulic artificial muscles with autonomous manipulation on real hardware.",
+    "Clone Robotics",
+)
+g, s, c, k = classify(clone_torso4_launch)
+assert g == "humanoid_component_global", (g, s, c)
+assert "자율조작·실물검증" in c, c
+assert s >= 11, s
+
+robotis_hand_upgrade = make(
+    "ROBOTIS unveils next generation dexterous robot hand",
+    "ROBOTIS introduced a new five-finger 24 DOF robot hand with direct drive joints and fingertip tactile sensors for humanoid manipulation.",
+    "ROBOTIS",
+)
+g, s, c, k = classify(robotis_hand_upgrade)
+assert g == "humanoid_component_global", (g, s, c)
+assert "로봇핸드·그리퍼" in c and "핸드설계·제어 아키텍처" in c, c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
