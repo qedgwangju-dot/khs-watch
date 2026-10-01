@@ -33,7 +33,8 @@ MONTHLY_DAY = 15
 COMPARE_VERSION = 4
 EVENT_STATE_VERSION = 2
 SHARE_TRACK_VERSION = 1
-BROKER_FORECAST_TRACK_VERSION = 2
+BROKER_FORECAST_TRACK_VERSION = 3
+CAPITAL_RETURN_TRACK_VERSION = 1
 SHARE_REVISION_THRESHOLD_PP = 3.0
 BROKER_ASP_REVISION_THRESHOLD_PP = 5.0
 SHARE_ACTUAL_DEVIATION_THRESHOLD_PP = 5.0
@@ -91,6 +92,33 @@ BROKER_FORECAST_BASELINES = {
         "source": "사용자 제공 J.P. Morgan 2026-09-18 리포트",
         "observed_at": "baseline",
     },
+    "kb|samsung|2027": {
+        "asp_yoy_pct": 100.0,
+        "asp_is_floor": True,
+        "hbm4_revenue_mix_current_pct": 40.0,
+        "hbm4_revenue_mix_next_pct": 80.0,
+        "source": "KB증권 2026-10-01 전망 인용",
+        "observed_at": "baseline",
+    },
+}
+
+CAPITAL_RETURN_BASELINE = {
+    "broker_next_3y_return_krw_trn": 600.0,
+    "broker_prior_3y_return_krw_trn": 140.0,
+    "broker_assumed_fcf_return_pct": 50.0,
+    "broker_2026_op_profit_krw_trn": 368.0,
+    "broker_2027_op_profit_krw_trn": 555.0,
+    "broker_h2_quarterly_op_profit_floor_krw_trn": 100.0,
+    "official_policy_period": "2024-2026",
+    "official_fcf_return_pct": 50.0,
+    "official_annual_dividend_krw_trn": 9.8,
+    "official_2024_2025_return_krw_trn": 29.3,
+    "official_2026_return_min_krw_trn": 90.0,
+    "official_2026_return_max_krw_trn": 110.0,
+    "source": "KB증권 전망 + 삼성전자 공식 주주환원 정책",
+    "source_url": "https://www.hankyung.com/article/2026100162116",
+    "official_source_url": "https://www.samsung.com/sec/ir/stock-information/shareholder-return/",
+    "as_of": "2026-10-01",
 }
 
 # Structured operating baselines. These are seeded only to prevent a repeat
@@ -116,6 +144,7 @@ EXPORT_UNIT_PRICE_BASELINES = {
 
 SHARE_INSTITUTIONS = {
     "jpmorgan": ("j.p. morgan", "jp morgan", "jpmorgan", "jpm"),
+    "kb": ("kb securities", "kb증권", "kb securities co"),
     "ubs": ("ubs",),
     "morgan_stanley": ("morgan stanley", "모건스탠리"),
     "citi": ("citi", "citigroup", "씨티"),
@@ -165,6 +194,10 @@ QUERIES = [
     '"JP Morgan" Samsung HBM average selling price 2027 mix 12-Hi',
     '"삼성전자" HBM 평균판매단가 J.P. Morgan 12단 2027',
     '"Samsung Electronics" HBM blended ASP FY27 12Hi JPMorgan',
+    '"삼성전자" KB증권 HBM 판매 가격 100% HBM4 매출 비중 40 80',
+    '"Samsung Electronics" "KB Securities" HBM ASP 2027 HBM4 revenue mix',
+    '"삼성전자" 주주환원 600조 FCF 50% KB증권',
+    '"Samsung Electronics" shareholder return FCF 50% 2027 2029 new policy',
     '"UBS" HBM market share Samsung SK hynix Micron',
     '"Morgan Stanley" HBM market share Samsung SK hynix Micron',
     '"Citi" HBM market share Samsung SK hynix Micron',
@@ -183,7 +216,8 @@ TRUSTED = (
     "kita", "한국무역협회", "k-stat", "trass", "한국무역통계진흥원",
     "customs", "관세청", "icheon", "이천시", "intel", "ase", "tf-amd", "tf amd",
     "mapc", "mosti", "mida", "the edge malaysia",
-    "j.p. morgan", "jp morgan", "jpmorgan", "ubs", "morgan stanley", "citi", "bofa", "goldman sachs",
+    "j.p. morgan", "jp morgan", "jpmorgan", "kb securities", "kb증권", "ubs", "morgan stanley", "citi", "bofa", "goldman sachs",
+    "hankyung", "한국경제",
 )
 
 LOW_VALUE = ("aol", "finance.biggo", "24/7 wall st", "247wallst", "cryptobriefing")
@@ -246,8 +280,10 @@ def source_rank(source: str) -> int:
         return 98
     if "reuters" in low:
         return 95
-    if any(x in low for x in ("j.p. morgan", "jp morgan", "jpmorgan", "ubs", "morgan stanley", "citi", "bofa", "goldman sachs")):
+    if any(x in low for x in ("j.p. morgan", "jp morgan", "jpmorgan", "kb securities", "kb증권", "ubs", "morgan stanley", "citi", "bofa", "goldman sachs")):
         return 92
+    if "hankyung" in low or "한국경제" in low:
+        return 82
     if "counterpoint" in low or "trendforce" in low:
         return 90
     if "bloomberg" in low or "digitimes" in low:
@@ -296,7 +332,12 @@ def relevant(text: str) -> bool:
         and any(k in low for k in ("unit price", "export price", "수출단가", "평균 수출단가"))
         and any(k in low for k in ("korea", "한국", "export", "수출", "kita", "한국무역협회"))
     )
-    return (company and hbm and signal) or icheon_proxy or malaysia_proxy or price_proxy
+    capital_proxy = (
+        ("samsung" in low or "삼성전자" in low or "삼성" in low)
+        and any(k in low for k in ("shareholder return", "shareholder-return", "fcf", "free cash flow", "dividend", "buyback", "주주환원", "잉여현금흐름", "배당", "자사주"))
+        and any(k in low for k in ("policy", "program", "return", "50%", "600", "140", "90", "110", "정책", "환원", "소각"))
+    )
+    return (company and hbm and signal) or icheon_proxy or malaysia_proxy or price_proxy or capital_proxy
 
 
 def read_events() -> list[dict]:
@@ -1435,6 +1476,7 @@ def share_change_event(obs: dict, old: dict | None, reasons: list[str]) -> dict:
     kind_label = "실제 점유율" if obs["kind"] == "actual" else "점유율 전망"
     institution_label = {
         "jpmorgan": "J.P. Morgan",
+        "kb": "KB증권",
         "ubs": "UBS",
         "morgan_stanley": "Morgan Stanley",
         "citi": "Citi",
@@ -1504,6 +1546,7 @@ def _broker_page_text(e: dict, base_text: str) -> str:
         "asp", "average selling price", "평균판매단가", "평균 판매단가",
         "8-hi", "8hi", "12-hi", "12hi", "16-hi", "16hi", "8단", "12단", "16단",
         "negotiation", "agreement", "contract", "협상", "계약", "타결", "확정",
+        "revenue mix", "sales mix", "매출 비중", "제품 비중", "판매 가격", "selling price",
     )):
         return base_text
     url = e.get("direct_link") or ""
@@ -1556,7 +1599,8 @@ def _extract_hbm_asp_forecast(text: str) -> tuple[float | None, float | None]:
         r"(?:now\s+forecast|now\s+expect|현재\s*(?:전망|예상))[^%]{0,80}?\+?([0-9]{1,3}(?:\.[0-9]+)?)\s*%[^.]{0,90}?(?:blended\s+)?(?:hbm\s+)?asp",
         r"(?:now\s+forecast|now\s+expect|현재\s*(?:전망|예상))[^%]{0,80}?\+?([0-9]{1,3}(?:\.[0-9]+)?)\s*%[^.]{0,90}?(?:평균판매단가|평균 판매단가)",
         r"(?:hbm\s+)?(?:blended\s+)?asp[^%]{0,100}?\+?([0-9]{1,3}(?:\.[0-9]+)?)\s*%\s*(?:y/y|yoy|year[- ]over[- ]year|전년)",
-        r"(?:hbm\s+)?(?:혼합\s+)?(?:평균판매단가|평균 판매단가)[^%]{0,100}?\+?([0-9]{1,3}(?:\.[0-9]+)?)\s*%",
+        r"(?:hbm\s+)?(?:혼합\s+)?(?:평균판매단가|평균 판매단가|판매\s*가격)[^%]{0,100}?\+?([0-9]{1,3}(?:\.[0-9]+)?)\s*%",
+        r"(?:hbm\s+)?selling\s+price[^%]{0,100}?\+?([0-9]{1,3}(?:\.[0-9]+)?)\s*%",
         r"\+?([0-9]{1,3}(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:blended\s+)?(?:hbm\s+)?asp",
     ]
     for pat in current_patterns:
@@ -1565,6 +1609,33 @@ def _extract_hbm_asp_forecast(text: str) -> tuple[float | None, float | None]:
             current = float(m.group(1))
             break
     return current, previous
+
+
+def _extract_hbm_asp_floor_flag(text: str, value: float | None) -> bool:
+    if value is None:
+        return False
+    low = clean(text).lower()
+    return bool(
+        re.search(rf"{float(value):g}\s*%\s*(?:이상|초과)", low, re.I)
+        or re.search(rf"(?:more\s+than|over|above|at\s+least)\s*{float(value):g}\s*%", low, re.I)
+        or re.search(rf"{float(value):g}\s*%\s*(?:or\s+more|plus)", low, re.I)
+    )
+
+
+def _extract_hbm4_revenue_mix(text: str) -> tuple[float | None, float | None]:
+    value = clean(text)
+    low = value.lower()
+    if "hbm4" not in low:
+        return None, None
+    patterns = (
+        r"(?:hbm4[^.]{0,100}?(?:매출\s*비중|revenue\s*(?:mix|share)))[^%]{0,120}?(?:올해|this\s+year)[^%]{0,50}?(\d{1,3}(?:\.\d+)?)\s*%[^.]{0,120}?(?:내년|next\s+year|2027)[^%]{0,50}?(\d{1,3}(?:\.\d+)?)\s*%",
+        r"(?:올해|this\s+year)[^%]{0,60}?(\d{1,3}(?:\.\d+)?)\s*%[^.]{0,120}?(?:내년|next\s+year|2027)[^%]{0,60}?(\d{1,3}(?:\.\d+)?)\s*%[^.]{0,80}?(?:hbm4|매출\s*비중|revenue\s*(?:mix|share))",
+    )
+    for pat in patterns:
+        m = re.search(pat, value, re.I)
+        if m:
+            return float(m.group(1)), float(m.group(2))
+    return None, None
 
 
 def _extract_stack_mainstream(text: str) -> str:
@@ -1634,17 +1705,26 @@ def extract_broker_hbm_forecasts(e: dict) -> list[dict]:
         "asp", "average selling price", "평균판매단가", "평균 판매단가",
         "8-hi", "8hi", "12-hi", "12hi", "16-hi", "16hi", "8단", "12단", "16단",
         "negotiation", "agreement", "contract", "협상", "계약", "타결", "확정",
+        "revenue mix", "sales mix", "매출 비중", "제품 비중", "판매 가격", "selling price",
     )):
         return []
 
     text = _broker_page_text(e, base)
     current_asp, previous_asp = _extract_hbm_asp_forecast(text)
+    asp_is_floor = _extract_hbm_asp_floor_flag(text, current_asp)
+    mix_current, mix_next = _extract_hbm4_revenue_mix(text)
     stack = _extract_stack_mainstream(text)
     contract_stage = _extract_hbm_contract_stage(text)
-    if current_asp is None and not stack and not contract_stage:
+    if current_asp is None and not stack and not contract_stage and mix_current is None and mix_next is None:
         return []
 
     period = _broker_period(text)
+    if not period and any(k in text.lower() for k in ("내년", "next year")):
+        try:
+            event_year = int((e.get("published_at_kst") or "")[:4])
+            period = str(event_year + 1)
+        except Exception:
+            period = ""
     if not period:
         return []
 
@@ -1660,7 +1740,10 @@ def extract_broker_hbm_forecasts(e: dict) -> list[dict]:
         "company": company,
         "period": period,
         "asp_yoy_pct": current_asp,
+        "asp_is_floor": asp_is_floor,
         "previous_asp_yoy_pct": previous_asp,
+        "hbm4_revenue_mix_current_pct": mix_current,
+        "hbm4_revenue_mix_next_pct": mix_next,
         "stack_mainstream": stack,
         "contract_stage": contract_stage,
         "eps_revision_pct": eps_revision,
@@ -1676,6 +1759,7 @@ def extract_broker_hbm_forecasts(e: dict) -> list[dict]:
 def _broker_label(institution: str) -> str:
     return {
         "jpmorgan": "J.P. Morgan",
+        "kb": "KB증권",
         "ubs": "UBS",
         "morgan_stanley": "Morgan Stanley",
         "citi": "Citi",
@@ -1705,6 +1789,17 @@ def _broker_material_change(old: dict, obs: dict) -> tuple[bool, list[str]]:
             reasons.append("HBM 평균판매단가 방향 반전")
     elif old_asp is None and new_asp is not None:
         reasons.append(f"HBM 혼합 평균판매단가 전망 {float(new_asp):+.1f}% YoY 신규 확인")
+    if old.get("asp_is_floor") != obs.get("asp_is_floor") and obs.get("asp_yoy_pct") is not None:
+        reasons.append("HBM 평균판매단가 전망의 하한/정확값 성격 변화")
+    for field, label in (
+        ("hbm4_revenue_mix_current_pct", "HBM4 올해 매출 비중"),
+        ("hbm4_revenue_mix_next_pct", "HBM4 내년 매출 비중"),
+    ):
+        a, b = old.get(field), obs.get(field)
+        if a is not None and b is not None and abs(float(b) - float(a)) >= 5:
+            reasons.append(f"{label} {float(a):.0f}%→{float(b):.0f}%")
+        elif a is None and b is not None:
+            reasons.append(f"{label} {float(b):.0f}% 신규 확인")
 
     old_stack = old.get("stack_mainstream") or ""
     new_stack = obs.get("stack_mainstream") or ""
@@ -1723,9 +1818,11 @@ def _broker_material_change(old: dict, obs: dict) -> tuple[bool, list[str]]:
 
 def _broker_state_candidate(old: dict | None, obs: dict) -> dict:
     candidate = dict(old or {})
-    for field in ("asp_yoy_pct", "previous_asp_yoy_pct"):
+    for field in ("asp_yoy_pct", "previous_asp_yoy_pct", "hbm4_revenue_mix_current_pct", "hbm4_revenue_mix_next_pct"):
         if obs.get(field) is not None:
             candidate[field] = obs.get(field)
+    if obs.get("asp_yoy_pct") is not None:
+        candidate["asp_is_floor"] = bool(obs.get("asp_is_floor"))
     if obs.get("stack_mainstream"):
         candidate["stack_mainstream"] = obs.get("stack_mainstream")
     if obs.get("contract_stage"):
@@ -1757,8 +1854,13 @@ def broker_forecast_change_event(obs: dict, old: dict | None, reasons: list[str]
             "company": _company_label(obs["company"]),
             "period": obs["period"],
             "asp_yoy_pct": obs.get("asp_yoy_pct"),
+            "asp_is_floor": bool(obs.get("asp_is_floor")),
             "previous_state_asp_yoy_pct": old.get("asp_yoy_pct") if old else None,
             "report_previous_asp_yoy_pct": obs.get("previous_asp_yoy_pct"),
+            "hbm4_revenue_mix_current_pct": obs.get("hbm4_revenue_mix_current_pct"),
+            "hbm4_revenue_mix_next_pct": obs.get("hbm4_revenue_mix_next_pct"),
+            "old_hbm4_revenue_mix_current_pct": (old or {}).get("hbm4_revenue_mix_current_pct"),
+            "old_hbm4_revenue_mix_next_pct": (old or {}).get("hbm4_revenue_mix_next_pct"),
             "stack_mainstream": obs.get("stack_mainstream") or "",
             "old_stack_mainstream": (old or {}).get("stack_mainstream") or "",
             "contract_stage": obs.get("contract_stage") or "",
@@ -1779,7 +1881,8 @@ def broker_forecast_event_summary(e: dict) -> list[str]:
     current = ch.get("asp_yoy_pct")
     previous = ch.get("previous_state_asp_yoy_pct")
     if current is not None:
-        lines.append(f"• HBM 본업: 혼합 평균판매단가 <b>{float(current):+.1f}% YoY</b>")
+        suffix = " 이상" if ch.get("asp_is_floor") else ""
+        lines.append(f"• HBM 본업: 혼합 평균판매단가 <b>{float(current):+.1f}%{suffix} YoY</b>")
     if previous is not None and current is not None:
         delta = float(current) - float(previous)
         level = ((1.0 + float(current)/100.0) / (1.0 + float(previous)/100.0) - 1.0) * 100.0
@@ -1789,6 +1892,13 @@ def broker_forecast_event_summary(e: dict) -> list[str]:
         delta = float(current) - previous_report
         level = ((1.0 + float(current)/100.0) / (1.0 + previous_report/100.0) - 1.0) * 100.0
         lines.append(f"• 리포트 내부 직전치: {previous_report:+.1f}% YoY → <b>{delta:+.1f}%p</b> · 기존 가격 레벨 대비 <b>{level:+.1f}%</b>")
+    if ch.get("hbm4_revenue_mix_current_pct") is not None or ch.get("hbm4_revenue_mix_next_pct") is not None:
+        cur = ch.get("hbm4_revenue_mix_current_pct")
+        nxt = ch.get("hbm4_revenue_mix_next_pct")
+        if cur is not None and nxt is not None:
+            lines.append(f"• HBM4 매출 비중: <b>{float(cur):.0f}%→{float(nxt):.0f}%</b>")
+        elif nxt is not None:
+            lines.append(f"• HBM4 내년 매출 비중: <b>{float(nxt):.0f}%</b>")
     if ch.get("stack_mainstream"):
         old_stack = _stack_ko(ch.get("old_stack_mainstream") or "")
         new_stack = _stack_ko(ch["stack_mainstream"])
@@ -1813,6 +1923,147 @@ def broker_forecast_event_summary(e: dict) -> list[str]:
         f"• 감지 근거: {html.escape(e.get('source') or '미표시')} · {html.escape(e.get('published_at_kst') or '확인 불가')}",
         f"• 근거 제목(한국어): {html.escape(korean_evidence_title(e, 'HBM 평균판매단가·제품혼합 전망 변화'))} · {href(e.get('direct_link') or '', '원문')}",
     ]
+    return lines
+
+
+def _capital_return_page_text(e: dict, base_text: str) -> str:
+    low = base_text.lower()
+    if not any(k in low for k in ("shareholder return", "fcf", "free cash flow", "dividend", "buyback", "주주환원", "잉여현금흐름", "배당", "자사주")):
+        return base_text
+    url = e.get("direct_link") or ""
+    if not url:
+        return base_text
+    try:
+        raw = fetch(url, timeout=12).decode("utf-8", errors="ignore")
+        page = clean(raw)
+        return (base_text + " " + page[:30000]).strip() if page else base_text
+    except Exception:
+        return base_text
+
+
+def _krw_trn_match(text: str, patterns: tuple[str, ...]) -> float | None:
+    for pat in patterns:
+        m = re.search(pat, text, re.I)
+        if m:
+            return float(m.group(1).replace(",", ""))
+    return None
+
+
+def extract_capital_return_observation(e: dict) -> dict | None:
+    base = clean(f"{e.get('title','')} {e.get('description','')}")
+    low = base.lower()
+    if not (
+        ("samsung" in low or "삼성전자" in low or "삼성" in low)
+        and any(k in low for k in ("shareholder return", "fcf", "free cash flow", "dividend", "buyback", "주주환원", "잉여현금흐름", "배당", "자사주"))
+    ):
+        return None
+    text = _capital_return_page_text(e, base)
+    obs: dict = {}
+    obs["broker_next_3y_return_krw_trn"] = _krw_trn_match(text, (
+        r"(?:차기|향후|next)[^.]{0,80}?(?:3개년|3년|three years)[^.]{0,100}?(?:주주환원|shareholder return)[^.]{0,80}?(\d[\d,]*(?:\.\d+)?)\s*조",
+        r"(?:주주환원|shareholder return)[^.]{0,100}?(?:차기|향후|next)[^.]{0,80}?(?:3개년|3년|three years)[^.]{0,80}?(\d[\d,]*(?:\.\d+)?)\s*조",
+    ))
+    obs["broker_prior_3y_return_krw_trn"] = _krw_trn_match(text, (
+        r"(?:최근|직전|previous)[^.]{0,80}?(?:3개년|3년|three years)[^.]{0,100}?(\d[\d,]*(?:\.\d+)?)\s*조",
+    ))
+    fcf = re.search(r"(?:fcf|free cash flow|잉여현금흐름)[^%]{0,100}?(\d{1,3}(?:\.\d+)?)\s*%", text, re.I)
+    low_text = text.lower()
+    if fcf:
+        value = float(fcf.group(1))
+        if any(k in low_text for k in ("가정", "assum", "forecast", "전망")):
+            obs["broker_assumed_fcf_return_pct"] = value
+        if any(k in low_text for k in ("정책", "policy", "program", "공식", "board")):
+            obs["official_fcf_return_pct"] = value
+    obs["broker_2026_op_profit_krw_trn"] = _krw_trn_match(text, (
+        r"(?:올해|2026(?:년|e)?)[^.]{0,120}?(?:연간\s*)?영업이익[^.]{0,60}?(\d[\d,]*(?:\.\d+)?)\s*조",
+        r"(?:영업이익)[^.]{0,80}?(?:올해|2026(?:년|e)?)[^.]{0,60}?(\d[\d,]*(?:\.\d+)?)\s*조",
+    ))
+    obs["broker_2027_op_profit_krw_trn"] = _krw_trn_match(text, (
+        r"(?:내년|2027(?:년|e)?)[^.]{0,120}?(?:연간\s*)?영업이익[^.]{0,60}?(\d[\d,]*(?:\.\d+)?)\s*조",
+        r"(?:영업이익)[^.]{0,80}?(?:내년|2027(?:년|e)?)[^.]{0,60}?(\d[\d,]*(?:\.\d+)?)\s*조",
+    ))
+    obs["broker_h2_quarterly_op_profit_floor_krw_trn"] = _krw_trn_match(text, (
+        r"(?:하반기|2h26)[^.]{0,100}?(?:분기\s*평균)[^.]{0,80}?영업이익[^.]{0,60}?(\d[\d,]*(?:\.\d+)?)\s*조",
+    ))
+    period = re.search(r"(20\d{2})\s*[~\-–—]\s*(20\d{2})[^.]{0,120}?(?:주주환원|shareholder return)", text, re.I)
+    if period:
+        obs["official_policy_period"] = f"{period.group(1)}-{period.group(2)}"
+    annual_div = _krw_trn_match(text, (
+        r"(?:연간|annual)[^.]{0,80}?(?:정규\s*)?배당[^.]{0,60}?(\d[\d,]*(?:\.\d+)?)\s*조",
+        r"(\d[\d,]*(?:\.\d+)?)\s*조[^.]{0,50}?(?:연간|annual)[^.]{0,50}?(?:정규\s*)?배당",
+    ))
+    if annual_div is not None:
+        obs["official_annual_dividend_krw_trn"] = annual_div
+    if not any(v is not None for v in obs.values()):
+        return None
+    obs.update({"source": e.get("source") or "", "source_url": e.get("direct_link") or "", "observed_at": e.get("published_at_kst") or "", "title": e.get("title") or ""})
+    return obs
+
+
+def _capital_return_candidate(old: dict | None, obs: dict) -> dict:
+    candidate = dict(old or {})
+    for key, value in obs.items():
+        if value not in (None, ""):
+            candidate[key] = value
+    return candidate
+
+
+def _capital_return_changes(old: dict, obs: dict) -> list[str]:
+    candidate = _capital_return_candidate(old, obs)
+    changes: list[str] = []
+    for key, label, threshold in (
+        ("broker_next_3y_return_krw_trn", "차기 3년 주주환원 전망", 50.0),
+        ("broker_prior_3y_return_krw_trn", "직전 3년 주주환원 비교값", 20.0),
+        ("broker_2026_op_profit_krw_trn", "2026E 영업이익", 20.0),
+        ("broker_2027_op_profit_krw_trn", "2027E 영업이익", 20.0),
+        ("broker_h2_quarterly_op_profit_floor_krw_trn", "하반기 분기평균 영업이익 하한", 10.0),
+        ("official_2024_2025_return_krw_trn", "2024~2025 공식 주주환원", 10.0),
+        ("official_2026_return_min_krw_trn", "2026 공식 주주환원 하단", 10.0),
+        ("official_2026_return_max_krw_trn", "2026 공식 주주환원 상단", 10.0),
+        ("official_annual_dividend_krw_trn", "연간 정규배당", 1.0),
+    ):
+        a, b = old.get(key), candidate.get(key)
+        if a is not None and b is not None and abs(float(b) - float(a)) >= threshold:
+            changes.append(f"{label} {float(a):,.1f}조→{float(b):,.1f}조")
+        elif a is None and b is not None:
+            changes.append(f"{label} {float(b):,.1f}조 신규 확인")
+    for key, label in (("broker_assumed_fcf_return_pct", "KB FCF 환원율 가정"), ("official_fcf_return_pct", "회사 공식 FCF 환원율")):
+        a, b = old.get(key), candidate.get(key)
+        if a is not None and b is not None and abs(float(b) - float(a)) >= 5:
+            changes.append(f"{label} {float(a):.0f}%→{float(b):.0f}%")
+        elif a is None and b is not None:
+            changes.append(f"{label} {float(b):.0f}% 신규 확인")
+    if candidate.get("official_policy_period") and candidate.get("official_policy_period") != old.get("official_policy_period"):
+        changes.append(f"공식 주주환원 정책기간 {old.get('official_policy_period') or '미확인'}→{candidate.get('official_policy_period')}")
+    return changes
+
+
+def capital_return_change_event(obs: dict, old: dict, reasons: list[str]) -> dict:
+    candidate = _capital_return_candidate(old, obs)
+    return {"id": "capital_return|" + hashlib.sha256((obs.get("title") or obs.get("source_url") or "state").encode()).hexdigest()[:16], "capital_return_change": {"state": candidate, "reasons": reasons}, "capital_return_state_candidate": candidate, "title": obs.get("title") or "삼성전자 주주환원·FCF 전망 변화", "description": "", "source": obs.get("source") or "", "published_at_kst": obs.get("observed_at") or "", "direct_link": obs.get("source_url") or "", "rank": 99}
+
+
+def capital_return_event_summary(e: dict) -> list[str]:
+    ch = e["capital_return_change"]
+    st = ch["state"]
+    lines = ["<b>삼성전자 주주환원·FCF 전망 변화</b>"]
+    if st.get("broker_next_3y_return_krw_trn") is not None:
+        assumed = float(st.get("broker_assumed_fcf_return_pct") or 50.0)
+        implied = float(st["broker_next_3y_return_krw_trn"]) / (assumed / 100.0)
+        lines.append(f"• KB 시나리오: 차기 3년 주주환원 <b>{float(st['broker_next_3y_return_krw_trn']):,.0f}조원</b>" + (f" · 직전 3년 {float(st['broker_prior_3y_return_krw_trn']):,.0f}조원" if st.get("broker_prior_3y_return_krw_trn") is not None else ""))
+        lines.append(f"• FCF {assumed:.0f}% 가정 역산: 차기 3년 FCF 약 <b>{implied:,.0f}조원</b> 필요")
+    parts = []
+    if st.get("broker_2026_op_profit_krw_trn") is not None:
+        parts.append(f"2026E <b>{float(st['broker_2026_op_profit_krw_trn']):,.0f}조원</b>")
+    if st.get("broker_2027_op_profit_krw_trn") is not None:
+        parts.append(f"2027E <b>{float(st['broker_2027_op_profit_krw_trn']):,.0f}조원</b>")
+    if parts:
+        lines.append("• KB 영업이익 가정: " + " / ".join(parts))
+    lines.append(f"• 회사 공식 현재 정책: {html.escape(str(st.get('official_policy_period') or '미확인'))} · FCF <b>{float(st.get('official_fcf_return_pct') or 0):.0f}%</b> 환원 · 연간 정규배당 <b>{float(st.get('official_annual_dividend_krw_trn') or 0):.1f}조원</b>")
+    lines.append("• 구분: <b>600조원은 KB증권 가정</b>이며 회사의 차기 3개년 확정 정책이 아닙니다.")
+    if ch.get("reasons"):
+        lines.append("• 이번 변화: " + html.escape(" · ".join(ch["reasons"])))
+    lines += [f"• 감지 근거: {html.escape(e.get('source') or '미표시')} · {html.escape(e.get('published_at_kst') or '확인 불가')}", f"• {href(e.get('direct_link') or '', '근거 원문')}"]
     return lines
 
 
@@ -1996,6 +2247,8 @@ def operating_event_summary(e: dict) -> list[str]:
 
 
 def event_summary(e: dict) -> list[str]:
+    if e.get("capital_return_change"):
+        return capital_return_event_summary(e)
     if e.get("broker_forecast_change"):
         return broker_forecast_event_summary(e)
     if e.get("ops_change"):
@@ -2160,17 +2413,26 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
 
 
 def build_event_alert(events: list[dict], now: datetime) -> str:
-    lines = [
-        "🚨 <b>HBM 상태 변화</b>",
-        "━━━━━━━━━━━━━━━━",
-        f"<b>신규 변화 {len(events)}건</b> · {now.strftime('%Y-%m-%d %H:%M KST')}",
-        "",
-    ]
-    for i, e in enumerate(events[:4], 1):
-        lines.append(f"<b>{i}.</b>")
-        lines.extend(event_summary(e))
-        if i < min(len(events), 4):
-            lines.append("")
+    selected = events[:4]
+    hbm_events = [e for e in selected if not e.get("capital_return_change")]
+    capital_events = [e for e in selected if e.get("capital_return_change")]
+    lines: list[str] = []
+    if hbm_events:
+        lines += ["🚨 <b>HBM 상태 변화</b>", "━━━━━━━━━━━━━━━━", f"<b>신규 변화 {len(hbm_events)}건</b> · {now.strftime('%Y-%m-%d %H:%M KST')}", ""]
+        for i, e in enumerate(hbm_events, 1):
+            lines.append(f"<b>{i}.</b>")
+            lines.extend(event_summary(e))
+            if i < len(hbm_events):
+                lines.append("")
+    if capital_events:
+        if lines:
+            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", ""]
+        lines += ["💰 <b>삼성전자 주주환원·FCF 변화</b>", "━━━━━━━━━━━━━━━━", f"<b>신규 변화 {len(capital_events)}건</b> · {now.strftime('%Y-%m-%d %H:%M KST')}", ""]
+        for i, e in enumerate(capital_events, 1):
+            lines.append(f"<b>{i}.</b>")
+            lines.extend(event_summary(e))
+            if i < len(capital_events):
+                lines.append("")
     return "\n".join(lines).strip() + "\n"
 
 
@@ -2187,6 +2449,7 @@ def main() -> None:
     share_forecasts = dict(state.get("hbm_share_forecasts") or {})
     share_actuals = dict(state.get("hbm_share_actuals") or {})
     broker_forecasts = dict(state.get("hbm_broker_forecasts") or {})
+    capital_return_state = dict(state.get("capital_return_outlook") or {})
     ops_metrics = dict(state.get("hbm_ops_metrics") or {})
     export_unit_prices = dict(state.get("hbm_export_unit_prices") or {})
 
@@ -2208,6 +2471,12 @@ def main() -> None:
             for field, value in values.items():
                 current.setdefault(field, value)
         state["broker_forecast_track_version"] = BROKER_FORECAST_TRACK_VERSION
+
+    if int(state.get("capital_return_track_version") or 0) < CAPITAL_RETURN_TRACK_VERSION:
+        seeded_capital = dict(CAPITAL_RETURN_BASELINE)
+        seeded_capital.update({k: v for k, v in capital_return_state.items() if v not in (None, "")})
+        capital_return_state = seeded_capital
+        state["capital_return_track_version"] = CAPITAL_RETURN_TRACK_VERSION
 
     if int(state.get("share_track_version") or 0) < SHARE_TRACK_VERSION:
         for key, values in SHARE_FORECAST_BASELINES.items():
@@ -2318,6 +2587,29 @@ def main() -> None:
             broker_forecast_change_event(obs, None, ["신규 증권사 HBM 평균판매단가·제품혼합 전망"])
         )
 
+    structured_capital_event_ids = set()
+    latest_capital_obs: dict | None = None
+    for e in events:
+        try:
+            dt = datetime.fromisoformat(e.get("published_at_kst") or "")
+        except Exception:
+            continue
+        if not (cutoff <= dt <= now + timedelta(minutes=10)):
+            continue
+        obs = extract_capital_return_observation(e)
+        if not obs:
+            continue
+        structured_capital_event_ids.add(e.get("id") or "")
+        if latest_capital_obs is None or obs.get("observed_at", "") > latest_capital_obs.get("observed_at", ""):
+            latest_capital_obs = obs
+    capital_alert_events: list[dict] = []
+    if latest_capital_obs:
+        capital_changes = _capital_return_changes(capital_return_state, latest_capital_obs)
+        if capital_changes:
+            capital_alert_events.append(capital_return_change_event(latest_capital_obs, capital_return_state, capital_changes))
+        else:
+            capital_return_state = _capital_return_candidate(capital_return_state, latest_capital_obs)
+
     # Structured operating metrics: yield and HBM-related export unit price.
     structured_ops_event_ids = set()
     latest_ops_obs: dict[str, dict] = {}
@@ -2420,7 +2712,7 @@ def main() -> None:
     if int(state.get("event_state_version") or 0) < EVENT_STATE_VERSION:
         migrated: dict[str, dict] = {}
         for e in events:
-            if e.get("id") in structured_share_event_ids or e.get("id") in structured_broker_event_ids or e.get("id") in structured_ops_event_ids:
+            if e.get("id") in structured_share_event_ids or e.get("id") in structured_broker_event_ids or e.get("id") in structured_capital_event_ids or e.get("id") in structured_ops_event_ids:
                 continue
             if e.get("id") not in seen:
                 continue
@@ -2444,7 +2736,7 @@ def main() -> None:
     latest_by_topic: dict[str, dict] = {}
     fresh_new = []
     for e in events:
-        if e.get("id") in structured_share_event_ids or e.get("id") in structured_broker_event_ids or e.get("id") in structured_ops_event_ids:
+        if e.get("id") in structured_share_event_ids or e.get("id") in structured_broker_event_ids or e.get("id") in structured_capital_event_ids or e.get("id") in structured_ops_event_ids:
             continue
         try:
             dt = datetime.fromisoformat(e.get("published_at_kst") or "")
@@ -2471,7 +2763,7 @@ def main() -> None:
             fresh_new.append(e)
 
     send_events = sorted(
-        fresh_new + share_alert_events + broker_alert_events + ops_alert_events,
+        fresh_new + share_alert_events + broker_alert_events + capital_alert_events + ops_alert_events,
         key=lambda x: x.get("published_at_kst") or "",
     )[:4]
 
@@ -2513,6 +2805,9 @@ def main() -> None:
     elif send_events:
         ALERT.write_text(build_event_alert(send_events, now), encoding="utf-8")
         for e in send_events:
+            if e.get("capital_return_change"):
+                capital_return_state = dict(e.get("capital_return_state_candidate") or capital_return_state)
+                continue
             if e.get("broker_forecast_change"):
                 obs = e.get("broker_observation") or {}
                 if obs:
@@ -2568,6 +2863,8 @@ def main() -> None:
         "topic_states": topic_states,
         "share_track_version": SHARE_TRACK_VERSION,
         "broker_forecast_track_version": BROKER_FORECAST_TRACK_VERSION,
+        "capital_return_track_version": CAPITAL_RETURN_TRACK_VERSION,
+        "capital_return_outlook": capital_return_state,
         "ops_track_version": OPS_TRACK_VERSION,
         "hbm_ops_metrics": ops_metrics,
         "hbm_export_unit_prices": export_unit_prices,
@@ -2578,6 +2875,8 @@ def main() -> None:
         "hbm_broker_forecasts": broker_forecasts,
         "last_broker_forecast_observation_count": len(latest_broker_obs),
         "last_broker_forecast_alert_count": len([e for e in send_events if e.get("broker_forecast_change")]),
+        "last_capital_return_observation_count": 1 if latest_capital_obs else 0,
+        "last_capital_return_alert_count": len([e for e in send_events if e.get("capital_return_change")]),
         "last_share_observation_count": len(latest_share_obs),
         "last_share_alert_count": len([e for e in send_events if e.get("share_change")]),
         "last_event_count": len(events),
@@ -2608,6 +2907,7 @@ def main() -> None:
         f"- topic_state_count: {len(topic_states)}\n"
         f"- share_track_version: {SHARE_TRACK_VERSION}\n"
         f"- broker_forecast_track_version: {BROKER_FORECAST_TRACK_VERSION}\n"
+        f"- capital_return_track_version: {CAPITAL_RETURN_TRACK_VERSION}\n"
         f"- ops_track_version: {OPS_TRACK_VERSION}\n"
         f"- ops_metric_state_count: {len(ops_metrics)}\n"
         f"- export_unit_price_months: {len(export_unit_prices)}\n"
@@ -2618,6 +2918,8 @@ def main() -> None:
         f"- broker_forecast_state_count: {len(broker_forecasts)}\n"
         f"- broker_forecast_observations: {len(latest_broker_obs)}\n"
         f"- broker_forecast_alerts: {len([e for e in send_events if e.get('broker_forecast_change')])}\n"
+        f"- capital_return_observations: {1 if latest_capital_obs else 0}\n"
+        f"- capital_return_alerts: {len([e for e in send_events if e.get('capital_return_change')])}\n"
         f"- share_observations: {len(latest_share_obs)}\n"
         f"- share_alerts: {len([e for e in send_events if e.get('share_change')])}\n"
         f"- fresh_new: {len(fresh_new)}\n"
