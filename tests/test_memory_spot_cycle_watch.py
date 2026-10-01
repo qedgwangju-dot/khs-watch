@@ -246,6 +246,37 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         }
         self.assertTrue(w._is_bernstein_memory_cycle_item(item))
 
+    def test_trendforce_4q26_revision_extracts_latest_official_ranges(self):
+        item = {
+            "title": "AI Server Demand Sustains Memory Contract Price Increases in 4Q26, While Consumer-Side Pressure Persists, Says TrendForce",
+            "description": (
+                "Conventional DRAM contract prices are projected to grow 10-15% QoQ in 4Q26, "
+                "while NAND Flash contract prices are expected to increase 15-20%. "
+                "Enterprise SSD contract prices surge 23-28% QoQ."
+            ),
+            "source": "TrendForce",
+            "link": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
+            "published_kst": "2026-09-30T09:00:00+09:00",
+        }
+        obs = w._extract_trendforce_4q26_revision(item)
+        self.assertEqual(obs["conventional_dram_min_pct"], 10.0)
+        self.assertEqual(obs["conventional_dram_max_pct"], 15.0)
+        self.assertEqual(obs["overall_nand_min_pct"], 15.0)
+        self.assertEqual(obs["overall_nand_max_pct"], 20.0)
+        self.assertEqual(obs["enterprise_ssd_min_pct"], 23.0)
+        self.assertEqual(obs["enterprise_ssd_max_pct"], 28.0)
+
+    def test_trendforce_4q26_revision_compares_july_to_september(self):
+        old = dict(w.TREND_4Q26_PRIOR_BASELINE)
+        new = dict(w.TREND_4Q26_CURRENT_BASELINE)
+        changes = w._trendforce_4q26_revision_changes(old, new)
+        self.assertIn("Conventional DRAM: +3~8%→+10~15% QoQ", changes)
+        self.assertIn("NAND Flash: +0~5%→+15~20% QoQ", changes)
+        self.assertIn("Enterprise SSD: +23~28% QoQ 신규 기준", changes)
+        summary = w._trendforce_4q26_revision_summary(old, new)
+        self.assertIn("DRAM 밴드 중간값 5.5%→12.5% (+7.0%p)", summary)
+        self.assertIn("NAND 밴드 중간값 2.5%→17.5% (+15.0%p)", summary)
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
