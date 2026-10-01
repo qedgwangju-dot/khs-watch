@@ -1130,8 +1130,8 @@ assert s >= 11, s
 # announcements stay as the baseline; new hardware partners, public availability
 # and paid/customer deployments are separate high-signal transitions.
 gemini_new_partner = make(
-    "Google DeepMind announces new Gemini Robotics partnership with Figure AI",
-    "Google DeepMind announced a new partnership with Figure AI to integrate Gemini Robotics into its humanoid robot for customer deployment.",
+    "Google DeepMind announces new Gemini Robotics partnership with NEURA Robotics",
+    "Google DeepMind announced a new partnership with NEURA Robotics to integrate Gemini Robotics into a humanoid robot platform.",
     "Google DeepMind",
 )
 g, s, c, k = classify(gemini_new_partner)
