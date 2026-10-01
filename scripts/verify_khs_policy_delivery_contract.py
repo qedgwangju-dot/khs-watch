@@ -1772,6 +1772,8 @@ def assert_fcc_upper_c_band_auction115_is_monitored() -> None:
         "쏠리드",
         "에치에프알",
         "확정 수주 아님",
+        "누락 복구",
+        "Reuters | https://www.reuters.com/business/media-telecom/",
     ):
         if marker not in combined:
             raise AssertionError(f"Auction 115 rendered alert missing: {marker}")
