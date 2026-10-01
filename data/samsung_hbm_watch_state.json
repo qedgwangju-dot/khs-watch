@@ -1706,7 +1706,7 @@
   "last_capital_return_alert_count": 0,
   "_delivery": {
     "id": "f8be61b619f88940bdb5d9bf09b5715dd57c19e82a2f9c10db2cc1ea09b36331",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-10-01T22:08:20+09:00",
     "chunks": [
       "💰 <b>삼성전자 주주환원·FCF 변화</b>\n━━━━━━━━━━━━━━━━\n<b>신규 변화 1건</b> · 2026-10-01 22:04 KST\n\n<b>1.</b>\n<b>삼성전자 주주환원·FCF 전망 변화</b>\n• KB 시나리오: 차기 3년 주주환원 <b>140조원</b> · 직전 3년 140조원\n• FCF 50% 가정 역산: 차기 3년 FCF 약 <b>280조원</b> 필요\n• KB 영업이익 가정: 2026E <b>100조원</b> / 2027E <b>555조원</b>\n• 회사 공식 현재 정책: 2024-2026 · FCF <b>50%</b> 환원 · 연간 정규배당 <b>9.8조원</b>\n• 구분: <b>600조원은 KB증권 가정</b>이며 회사의 차기 3개년 확정 정책이 아닙니다.\n• 이번 변화: 차기 3년 주주환원 전망 600.0조→140.0조 · 2026E 영업이익 368.0조→100.0조\n• 감지 근거: edaily.co.kr · 2026-10-01T09:05:34+09:00\n• <a href=\"https://www.edaily.co.kr/News/Read?newsId=02860166645608656&amp;mediaCodeNo=257\">근거 원문</a>"
@@ -3423,6 +3423,7 @@
       },
       "last_capital_return_observation_count": 1,
       "last_capital_return_alert_count": 1
-    }
+    },
+    "attempt_at_kst": "2026-10-01T22:08:22+09:00"
   }
 }
