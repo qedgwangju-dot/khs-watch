@@ -6,7 +6,7 @@
     "stage": "bank_bakeoff",
     "target_year": 2027,
     "valuation_max_usd": 150000000000.0,
-    "raise_target_usd": 15000000000.0,
+    "raise_target_usd": 3000000000.0,
     "evidence_state": "top_tier_report",
     "source_url": "https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/",
     "source_name": "Reuters",
@@ -18,14 +18,14 @@
     "us_fab_link": "considering",
     "pre_ipo_raise_usd": 3600000000.0
   },
-  "last_checked_at_kst": "2026-10-01T16:28:54+09:00",
-  "last_alert_at_kst": "2026-10-01T01:13:15+09:00",
+  "last_checked_at_kst": "2026-10-01T18:26:01+09:00",
+  "last_alert_at_kst": "2026-10-01T18:26:01+09:00",
   "last_alert_reasons": [
-    "기업가치 +50.0%"
+    "조달 규모 -80.0%"
   ],
   "delivery_check": {
-    "checked_at_kst": "2026-10-01T16:32:01+09:00",
-    "status": "no_message_due"
+    "checked_at_kst": "2026-10-01T18:30:00+09:00",
+    "status": "confirmed"
   },
   "false_positive_audit": {
     "message_id": 149,
@@ -33,95 +33,25 @@
     "cause": "secondary-page text contamination and lower-tier evidence overwrite",
     "corrected": true
   },
-  "last_successful_delivery_kst": "2026-10-01T01:16:42+09:00",
+  "last_successful_delivery_kst": "2026-10-01T18:30:00+09:00",
   "telegram_message_ids": [
-    186
+    196
   ],
-  "telegram_message_id": 186,
+  "telegram_message_id": 196,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      186
+      196
     ],
-    "confirmed_at_kst": "2026-10-01T01:16:42+09:00",
-    "payload_hash": "814818d39c0322bb66c7d080e224bf6f12417e8fbaa14aa156d03be5dbd2afff"
+    "confirmed_at_kst": "2026-10-01T18:30:00+09:00",
+    "payload_hash": "0eb06424f437505c2a06d3fccb4f1bc45c2effbfc9f4079cef6c2d756bb84aa7"
   },
-  "last_evidence_url": "https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/",
-  "last_evidence_published_at_kst": "2026-09-27T16:00:00+09:00",
+  "last_evidence_url": "https://en.sedaily.com/finance/2026/10/01/sk-hynix-says-shareholder-value-comes-first-amid-solidigm",
+  "last_evidence_published_at_kst": "2026-10-01T11:14:25+09:00",
   "historical_context": {
     "pre_ipo_raise_usd": 3600000000,
     "note": "별도 선행 보도에서 검토된 Pre-IPO 규모. 현재 IPO 본공모 조달액과 합산하지 않음."
-  },
-  "_delivery": {
-    "id": "c1a68f585b3b298bd69bed96da4036e5b611e6026321e2dea3bd52a37e57586c",
-    "status": "partial",
-    "created_at_kst": "2026-10-01T18:29:55+09:00",
-    "chunks": [
-      "🚨 <b>Solidigm IPO 상태 변화</b>\n━━━━━━━━━━━━━━━━\n• 현재 단계: <b>주관사 선정 경쟁(피치 미팅)</b>\n• 확인 수준: <b>Reuters 복수 관계자 보도 단계</b>\n• 목표 시점: <b>이르면 2027년</b>\n• 거론 기업가치: <b>최대 1,500억달러(약 203조3,100억원)</b>\n• 조달 가능 규모: <b>30억달러(약 4조662억원)</b>\n• Pre-IPO 별도 검토액: 36억달러(약 4조8,794억원)\n• 공모 구조: 신주 포함\n• 이번 변화: <b>조달 규모 -80.0%</b>\n• 다음 확인: 대표주관사 선정 · SEC 비공개/공개 신고 · 공모가 밴드 · 신주/구주 비중 · SK하이닉스 잔여지분 · 자금용도\n• 근거: Reuters · <a href=\"https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/\">원문</a>\n• 주의: 기업가치·조달액·일정은 현재 확정값이 아니라 보도 단계이며 시장 상황에 따라 변경될 수 있습니다.\n• 환율: 2026-09-30 일일 기준 · ECB/Frankfurter · 조회 2026-10-01 18:29 KST · 보조 API 2026-10-01 · 차이 0.03% · 일중 기준시각 차이 가능\n• 조회: 2026-10-01 18:26 KST"
-    ],
-    "next_chunk": 1,
-    "message_ids": [
-      196
-    ],
-    "candidate": {
-      "watch_version": 1,
-      "topic": "Solidigm IPO",
-      "baseline_as_of": "2026-09-25",
-      "current_state": {
-        "stage": "bank_bakeoff",
-        "target_year": 2027,
-        "valuation_max_usd": 150000000000.0,
-        "raise_target_usd": 3000000000.0,
-        "evidence_state": "top_tier_report",
-        "source_url": "https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/",
-        "source_name": "Reuters",
-        "source_published_at_kst": "2026-09-27T16:00:00+09:00",
-        "underwriters": [],
-        "primary_secondary_mix": "primary_included",
-        "parent_post_ipo_stake_pct": null,
-        "use_of_proceeds": [],
-        "us_fab_link": "considering",
-        "pre_ipo_raise_usd": 3600000000.0
-      },
-      "last_checked_at_kst": "2026-10-01T18:26:01+09:00",
-      "last_alert_at_kst": "2026-10-01T18:26:01+09:00",
-      "last_alert_reasons": [
-        "조달 규모 -80.0%"
-      ],
-      "delivery_check": {
-        "checked_at_kst": "2026-10-01T16:32:01+09:00",
-        "status": "no_message_due"
-      },
-      "false_positive_audit": {
-        "message_id": 149,
-        "observed_stage": "postponed",
-        "cause": "secondary-page text contamination and lower-tier evidence overwrite",
-        "corrected": true
-      },
-      "last_successful_delivery_kst": "2026-10-01T01:16:42+09:00",
-      "telegram_message_ids": [
-        186
-      ],
-      "telegram_message_id": 186,
-      "bot_username": "khs88798879887988798879_bot",
-      "delivery_receipt": {
-        "status": "confirmed",
-        "bot_username": "khs88798879887988798879_bot",
-        "message_ids": [
-          186
-        ],
-        "confirmed_at_kst": "2026-10-01T01:16:42+09:00",
-        "payload_hash": "814818d39c0322bb66c7d080e224bf6f12417e8fbaa14aa156d03be5dbd2afff"
-      },
-      "last_evidence_url": "https://en.sedaily.com/finance/2026/10/01/sk-hynix-says-shareholder-value-comes-first-amid-solidigm",
-      "last_evidence_published_at_kst": "2026-10-01T11:14:25+09:00",
-      "historical_context": {
-        "pre_ipo_raise_usd": 3600000000,
-        "note": "별도 선행 보도에서 검토된 Pre-IPO 규모. 현재 IPO 본공모 조달액과 합산하지 않음."
-      }
-    },
-    "attempt_at_kst": "2026-10-01T18:29:56+09:00"
   }
 }
