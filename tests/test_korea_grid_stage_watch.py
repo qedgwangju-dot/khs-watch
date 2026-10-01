@@ -11,6 +11,7 @@ from scripts.korea_grid_stage_watch import (
     parse_overview_counts,
     parse_stage_rows,
     render_report,
+    verified_alert_events,
 )
 
 
@@ -116,3 +117,34 @@ def test_render_report_calls_out_unreconciled_count_change():
     assert "대응 사업명을 아직 확정하지 못함" in report
     assert "전수 확인 아님" in report
     assert "목록 갱신 시차 확인 필요" in report
+
+
+def test_count_only_change_is_not_alertable():
+    events = [
+        {"type": "count_change", "changes": [("계획확정", 397, 396)]},
+    ]
+    assert verified_alert_events(events) == []
+
+
+def test_stage_change_remains_alertable_with_count_context():
+    events = [
+        {"type": "count_change", "changes": [("사업승인", 195, 194), ("공사착수", 131, 132)]},
+        {
+            "type": "stage_change",
+            "previous": {
+                "name": "154kV 테스트변전소 건설사업",
+                "stage": "사업승인",
+                "stage_order": 2,
+                "equipment": "변전",
+            },
+            "current": {
+                "name": "154kV 테스트변전소 건설사업",
+                "stage": "공사착수",
+                "stage_order": 3,
+                "equipment": "변전",
+            },
+        },
+    ]
+    filtered = verified_alert_events(events)
+    assert any(e["type"] == "count_change" for e in filtered)
+    assert any(e["type"] == "stage_change" for e in filtered)
