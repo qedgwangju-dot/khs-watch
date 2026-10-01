@@ -99,12 +99,16 @@ def _short_judgment(title: str, tags: str) -> str:
         return "정부 공식상태를 우선. 언론 선행보도와 확정 단계를 분리."
     if "ercot" in blob or "계통연계" in blob:
         return "신청량보다 승인·전원 인가·실제 가동 단계 상승을 우선."
+    if "원전 프레임워크" in blob or "project power" in blob:
+        return "한미 공동 팩트시트상 원전 8기 프레임워크 합의. AP1000 6기·APR1400 2기는 공식 프레임워크 수치지만 개별 부지·사업구조·일정은 후속 확정."
     if "원전" in blob:
-        return "부지·노형·기수·발주주체 공식 확인 전까지 후보 단계."
-    if "알래스카 lng" in blob:
+        return "원전 관련 보도는 한미 공동 팩트시트의 프레임워크 범위와 개별 프로젝트 확정 수준을 구분."
+    if "알래스카 lng" in blob or "project north" in blob:
+        if "검토 착수" in blob or "project north" in blob:
+            return "한미 공동 팩트시트상 Project North는 검토 착수 단계. 상업적 합리성·국내법 요건 충족 후 추진 여부를 결정하므로 한국의 투자 확정으로 표시하지 않음."
         if any(x in blob for x in ["540억", "54 billion", "발표예정", "발표 가능성", "발표 예상"]):
-            return "540억달러 보도수치의 성격이 매체별로 엇갈립니다. 한국 전략투자 활용액인지 프로젝트 총사업비인지 백악관·한국 정부 공식문서 전에는 확정 분류하지 않음."
-        return "SPA·FID·금융종결·한국 실제 투자액이 붙을 때 단계 상승."
+            return "미국측 540억달러 발표와 한미 공동 팩트시트의 검토 착수 수준을 분리. 한국 실제 투자 집행은 아직 별도 확정 필요."
+        return "Project North 공식 상태·FID·금융종결·한국 실제 투자액 변화를 우선 추적."
     return "기사 반복이 아니라 사업 상태·금액·당사자·일정의 실제 변화만 추적."
 
 
@@ -136,7 +140,15 @@ def _official_line(flags: dict[str, bool] | None = None) -> str:
     state = _load_state()
     if flags and (flags.get("alaska") or flags.get("energy")):
         states = state.get("event_states") or {}
+        encinal_facts = {str(x) for x in ((states.get("encinal") or {}).get("facts") or [])}
+        nuclear_facts = {str(x) for x in ((states.get("nuclear_build") or {}).get("facts") or [])}
         alaska_facts = {str(x) for x in ((states.get("alaska_lng") or {}).get("facts") or [])}
+        if (
+            "encinal_status:confirmed_first" in encinal_facts
+            and "nuclear_framework_status:agreed" in nuclear_facts
+            and "alaska_bilateral_status:review_started" in alaska_facts
+        ):
+            return "🏛 <b>한미 공동 팩트시트 확인 · Star 1호 확정 / Power 프레임워크 합의 / North 검토 착수</b>"
         package_facts = {str(x) for x in ((states.get("energy_package") or {}).get("facts") or [])}
         if "stage:발표실행" in alaska_facts or "stage:발표실행" in package_facts:
             return "🏛 <b>미국측 발표 확인 · 한국측 실제 집행확정 별도 관리</b>"
