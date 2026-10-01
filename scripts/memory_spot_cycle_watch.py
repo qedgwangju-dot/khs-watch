@@ -1720,6 +1720,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         trend_3q4q_state = dict(TREND_3Q4Q_PACE_BASELINE)
         state["trendforce_3q4q_pace_track_version"] = TREND_3Q4Q_PACE_TRACK_VERSION
 
+    korea_earnings_state = dict(state.get("korea_memory_earnings") or {})
+    if int(state.get("korea_memory_earnings_track_version") or 0) < KOREA_MEMORY_EARNINGS_TRACK_VERSION:
+        korea_earnings_state = _merge_typed_state(KOREA_MEMORY_EARNINGS_BASELINE, korea_earnings_state)
+        state["korea_memory_earnings_track_version"] = KOREA_MEMORY_EARNINGS_TRACK_VERSION
+
     bernstein_state = dict(state.get("bernstein_memory_cycle") or {})
     if int(state.get("bernstein_memory_cycle_track_version") or 0) < BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION:
         bernstein_state = _merge_bernstein_memory_cycle(bernstein_state, BERNSTEIN_MEMORY_CYCLE_BASELINE)
