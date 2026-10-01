@@ -53,6 +53,8 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
 ))
 MONTH = re.compile(r"(?<!\d)(1[0-2]|[1-9])월")
 ASPIRATION = re.compile(r"관계자는|기대한다|기대된다|키워나|키워\s*나|키우고|성장축|비전을|최선을|응원|company spokesperson", re.I)
+DENIAL_HEADLINE = re.compile(r"확정.{0,8}(?:아냐|아니|않)|미확정|부인|사실무근|denies|not final", re.I)
+DENIAL_SOURCE = re.compile(r"확정[^.!?]{0,20}(?:아냐|아니|않|없)|미확정|부인|사실무근|denies|not final", re.I)
 SOLICITATION_HEADLINE = re.compile(r"잡으려면|활용\s*가능한\s*기회|스탁론|주식자금.{0,20}(?:대출|상담|마련)|투자자금.{0,20}(?:상담|마련)", re.I)
 SOLICITATION_BODY = re.compile(r"스탁론|고객상담|상담센터|주식자금\s*(?:상품|대출)|투자금을\s*준비|신용.{0,8}대환|loan consultation", re.I)
 TACTICAL_HEADLINE = re.compile(r"(?:미사일|무기|드론).{0,25}(?:첫\s*실전|실전\s*투입|시험\s*발사)|(?:진지|전차).{0,15}(?:타격|격파)|격추", re.I)
@@ -70,6 +72,8 @@ def focus_kind(title: str) -> str:
 
 
 def focus_matches(title: str, sentence: str) -> bool:
+    if DENIAL_HEADLINE.search(title) and not DENIAL_SOURCE.search(sentence):
+        return False
     kind = focus_kind(title)
     if kind == "energy_supply" and re.search(r"브렌트|\bbrent\b", title, re.I):
         return bool(re.search(r"브렌트|\bbrent\b", sentence, re.I))
@@ -87,6 +91,8 @@ def period_matches(title: str, sentence: str) -> bool:
 
 def focus_score(title: str, sentence: str) -> int:
     score = (40 if focus_matches(title, sentence) else -40) if focus_kind(title) else 0
+    if DENIAL_HEADLINE.search(title):
+        score += 45 if DENIAL_SOURCE.search(sentence) else -60
     months, source_months = set(MONTH.findall(title or "")), set(MONTH.findall(sentence or ""))
     if months and source_months:
         score += 16 if months & source_months else -60
@@ -212,7 +218,7 @@ def assess(title: str, body: str) -> dict:
         adjacent = index > 0 and any(token in sentences[index - 1].lower() for token in tokens)
         if (routine or soft) and not anchored and not adjacent:
             continue
-        if focus_kind(title) and not focus_matches(title, sentence):
+        if (focus_kind(title) or DENIAL_HEADLINE.search(title)) and not focus_matches(title, sentence):
             continue
         for kind, axes, subject, action in COMPILED_RULES:
             if not subject.search(sentence) or not action.search(sentence):

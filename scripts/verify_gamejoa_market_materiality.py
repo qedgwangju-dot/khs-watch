@@ -67,6 +67,20 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_denial_headline_cannot_reuse_the_previous_announcement_as_core(self):
+        title = '한정애 "알래스카 LNG 투자 확정 아냐"'
+        body = '더불어민주당 한정애 사무총장은 1일 도널드 트럼프 미국 대통령이 한국의 알래스카 액화천연가스(LNG) 개발 사업 투자를 기정사실로 발표한 데 대해 "확정된 것이 아니다"라고 밝혔다. 앞서 트럼프 대통령은 알래스카 LNG 개발 사업에 한국이 500억 달러 이상을 투자할 것이라고 발표했다.'
+        item = {**alert(title, body), "telegram_core_fact": "트럼프 대통령은 한국이 알래스카 LNG에 500억 달러를 투자할 것이라고 발표했다."}
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("한정애", core)
+        self.assertIn("LNG", core)
+        self.assertIn("확정된 것이 아니다", core)
+        self.assertNotIn("500억", core)
+        self.assertLessEqual(len(core), 100)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        bad = "1) " + title + "\n- 핵심: 한국은 알래스카 LNG에 500억 달러를 투자한다고 발표했다.\n"
+        self.assertIn("headline_event_or_period_mismatch", radar.compact_alert_block_errors(bad))
+
     def test_loan_advertorial_cannot_be_rescued_by_an_ipo_or_supply_paragraph(self):
         title = "신규 상장주 움직임에 관심…최대 4배까지 활용 가능한 기회 잡으려면"
         body = "항법 기술 기업이 코스닥에 상장했다. 회사는 방산 제품을 공급하고 양산 확대를 계획한다. 방산 분야의 추가매수를 고려하고 있었다면 필요한 투자금을 준비하는 방법도 검토할 수 있다. 하이스탁론은 최대 4배 주식자금 상품과 신용·미수 대환을 제공한다. 고객상담센터로 연락하면 대출 상담이 가능하다."

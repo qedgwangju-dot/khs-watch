@@ -2204,7 +2204,7 @@ def compact_article_sentence(sentence: str, limit: int = 50) -> str:
 
 def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
-    if not market_materiality.focus_kind(title):
+    if not market_materiality.focus_kind(title) and not market_materiality.DENIAL_HEADLINE.search(title):
         return ""
     if market_materiality.focus_kind(title) == "shareholder":
         insider_fact = insider_purchase_fact(title, sentences)
@@ -2235,6 +2235,10 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         ):
             continue
         fact = normalized_article_sentence(sentence)
+        if market_materiality.DENIAL_HEADLINE.search(title):
+            fact = re.sub(r"액화천연가스\s*\(LNG\)", "LNG", fact, flags=re.I)
+            fact = re.sub(r"((?:은|는)\s+)(?:\d{1,2}일\s+)?[^.!?]{1,30}(?:대통령|총리|장관)이\s+", r"\1", fact)
+            fact = re.sub(r"(투자|계약|수주|매각|인수)(?:를|을)\s*(?:기정사실로\s*)?발표한\s*데\s*대해", r"\1에 대해", fact)
         if len(fact) > GAMEJOA_CORE_MAX_CHARS:
             fact = re.sub(r"^[^.!?]{0,180}?(?:자료|통계)에\s*따르면\s*", "", fact, count=1)
         if (
