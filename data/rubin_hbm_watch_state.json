@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-01T21:56:49+09:00",
+  "updated_at_kst": "2026-10-01T22:33:34+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
@@ -104,7 +104,7 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1355.4,
-    "date": "2026-09-30 일일 기준 · ECB/Frankfurter · 조회 2026-10-01 21:56 KST · 보조 API 2026-10-01 · 차이 0.03% · 일중 기준시각 차이 가능",
+    "date": "2026-09-30 일일 기준 · ECB/Frankfurter · 조회 2026-10-01 22:33 KST · 보조 API 2026-10-01 · 차이 0.03% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -157,13 +157,13 @@
       "https://insights.trendforce.com/p/weekly-radar-002",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-10-01T21:56:56+09:00",
+    "last_checked_at_kst": "2026-10-01T22:33:41+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-01T22:02:44+09:00",
+    "checked_at_kst": "2026-10-01T22:39:32+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-01T09:43:49+09:00",
@@ -233,7 +233,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-01",
-    "last_checked_at_kst": "2026-10-01T21:57:36+09:00"
+    "last_checked_at_kst": "2026-10-01T22:34:47+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -269,7 +269,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-01",
-    "last_checked_at_kst": "2026-10-01T22:01:38+09:00",
+    "last_checked_at_kst": "2026-10-01T22:38:29+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -313,7 +313,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-01T22:02:06+09:00",
+    "last_checked_at_kst": "2026-10-01T22:38:55+09:00",
     "candidate_count": 0,
     "event_count": 0
   },
