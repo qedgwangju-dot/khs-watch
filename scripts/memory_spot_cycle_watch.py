@@ -1611,6 +1611,8 @@ def _prepare_report_item(item: dict) -> dict | None:
     detail_blob = str(item.get("description") or "")
     price_details = _price_change_details(raw_title, detail_blob)
     signal_details = _market_signal_details(raw_title, detail_blob)
+    if _earnings_forecast_details(raw_title, detail_blob):
+        title = "시장 컨센서스 변화 · 삼성전자·SK하이닉스 영업이익 전망과 HBM 연결"
     if _is_sparse_price_sheet(raw_title, price_details, signal_details):
         return None
     if item.get("source") == "TrendForce Research" and "memory price forecast" in raw_title.lower():
