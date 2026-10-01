@@ -496,6 +496,10 @@ def assert_workflow_delivery_dedupe() -> None:
         "validate_final_policy_message(title, body)",
         "prepare_telegram_html(title, body)",
         '"parse_mode": "HTML"',
+        '"spectrum": {',
+        '"expected_username": "khs88798879_bot"',
+        'topic=upper_c_band_auction115 route={route}',
+        'if route in {"westinghouse", "ai_force", "spectrum"}',
     ]
     for marker in required:
         if marker not in workflow:
