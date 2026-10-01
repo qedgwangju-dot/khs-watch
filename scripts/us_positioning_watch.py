@@ -694,14 +694,20 @@ def explain(cftc, cboe, sox):
         nq = cftc.get("nq_mini") or {}
         hist = cftc.get("history_3y") or {}
         if nq:
-            net_pct = hist.get("net_short_percentile_3y")
-            gross_pct = hist.get("gross_short_percentile_3y")
+            net_pct3 = hist.get("net_short_percentile_3y")
+            gross_pct3 = hist.get("gross_short_percentile_3y")
+            net_pct10 = hist.get("net_short_percentile_10y")
+            gross_pct10 = hist.get("gross_short_percentile_10y")
             bits = []
-            if isinstance(net_pct, (int, float)):
-                bits.append(f"순숏 {net_pct:.0f}백분위")
-            if isinstance(gross_pct, (int, float)):
-                bits.append(f"총숏 {gross_pct:.0f}백분위")
-            pct_txt = (" · 3년 " + " / ".join(bits)) if bits else ""
+            if isinstance(net_pct3, (int, float)):
+                bits.append(f"3년 순숏 {net_pct3:.0f}백분위")
+            if isinstance(gross_pct3, (int, float)):
+                bits.append(f"3년 총숏 {gross_pct3:.0f}백분위")
+            if isinstance(net_pct10, (int, float)):
+                bits.append(f"10년 순숏 {net_pct10:.0f}백분위")
+            if isinstance(gross_pct10, (int, float)):
+                bits.append(f"10년 총숏 {gross_pct10:.0f}백분위")
+            pct_txt = (" · " + " / ".join(bits)) if bits else ""
             lines.append(
                 f"• NQ E-mini Leveraged Funds: 순포지션 {int(nq.get('leveraged_net') or 0):+,}계약"
                 f" | 주간 {int(nq.get('leveraged_net_wow') or 0):+,}계약{pct_txt}"
@@ -881,6 +887,16 @@ def validate_critical_sources(cftc_obj, cboe_obj, sox_obj):
             problems.append("CFTC NQ 3년 총숏 백분위 확인 불가")
         if int(hist.get("sample_n") or 0) < 150:
             problems.append("CFTC NQ 3년 표본 부족")
+        if hist.get("ten_year_complete"):
+            for key in (
+                "net_short_percentile_10y",
+                "gross_short_percentile_10y",
+                "short_share_oi_percentile_10y",
+                "gross_short_weekly_build_percentile_10y",
+                "net_short_weekly_build_percentile_10y",
+            ):
+                if not isinstance(hist.get(key), (int, float)):
+                    problems.append(f"CFTC NQ 10년 검산값 누락: {key}")
 
     if cboe_obj:
         m = cboe_obj["metrics"]
@@ -1031,10 +1047,21 @@ if quality_gate_ok and (updates or force):
                     f"• 최근 3년 순숏: <b>{hist['net_short_percentile_3y']:.0f}백분위</b> · 총 숏 계약수 {hist.get('gross_short_percentile_3y', 0):.0f}백분위 · 숏/OI {hist.get('short_share_oi_percentile_3y', 0):.0f}백분위",
                     f"• 3년 극단 대비 청산률: 순숏 {hist.get('net_short_unwind_from_peak_pct', 0):.1f}% · 총숏 {hist.get('gross_short_unwind_from_peak_pct', 0):.1f}%",
                     f"• 숏 계약 변화: 1주 {int(hist.get('leveraged_short_1w_change') or 0):+,} · 4주 {int(hist.get('leveraged_short_4w_change') or 0):+,}",
-                    "※ 순숏·총숏·숏/OI는 서로 다른 지표입니다. CFTC futures-only와 Goldman/BofA PB 독자 모델도 같은 모집단이 아닙니다.",
                 ]
+                if hist.get("ten_year_complete") and isinstance(hist.get("net_short_percentile_10y"), (int, float)):
+                    gross_record = "예" if hist.get("gross_short_weekly_record_10y") else "아니오"
+                    net_record = "예" if hist.get("net_short_weekly_record_10y") else "아니오"
+                    body += [
+                        f"• 최근 10년 순숏 {hist['net_short_percentile_10y']:.0f}백분위 · 총숏 {hist.get('gross_short_percentile_10y', 0):.0f}백분위 · 숏/OI {hist.get('short_share_oi_percentile_10y', 0):.0f}백분위",
+                        f"• 이번 주 총숏 증가 {int(hist.get('gross_short_weekly_change_10y') or 0):+,}계약 = 10년 {hist.get('gross_short_weekly_build_percentile_10y', 0):.0f}백분위 · 10년 주간 최고 여부 {gross_record}",
+                        f"• 이번 주 순숏 확대 {int(hist.get('net_short_weekly_build_10y') or 0):+,}계약 = 10년 {hist.get('net_short_weekly_build_percentile_10y', 0):.0f}백분위 · 10년 주간 최고 여부 {net_record}",
+                        f"• 10년 최대 주간 총숏 증가 {int(hist.get('max_gross_short_weekly_build_10y') or 0):+,}계약 ({hist.get('max_gross_short_weekly_build_date_10y') or '날짜 확인 불가'})",
+                    ]
+                else:
+                    body.append("• 10년 기록 판정: 공식 연도별 압축자료 일부 재조회 대기 — 10년 최고/백분위 단정 보류")
+                body.append("※ 순숏·총숏·숏/OI·주간 숏 증가는 서로 다른 지표입니다. CFTC futures-only와 Goldman/BofA PB 독자 모델도 같은 모집단이 아닙니다.")
             elif hist.get("error"):
-                body.append("• 3년 백분위: 공식 압축자료 재조회 대기")
+                body.append("• 백분위: 공식 압축자료 재조회 대기")
         body.append("")
 
     if cboe:
