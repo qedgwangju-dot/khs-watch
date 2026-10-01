@@ -170,3 +170,71 @@ def test_equity_impact_is_neutral_when_inputs_are_stale(monkeypatch):
 
     assert impact == "⚪ 중립"
     assert "할인율 완화 신호 미확인" in reason
+
+
+def test_cross_alert_latch_does_not_reset_on_stale_gap():
+    current_state = {
+        "nasdaq_cross_asset_stage": 1,
+        "nasdaq_cross_asset_alerted_stage": 1,
+    }
+    stale_gap = {
+        "stage": 0,
+        "treasury_fuel": True,
+        "nq_fuel": True,
+        "data_fresh": False,
+        "nq_history_ready": True,
+        "nq_history_fresh": True,
+    }
+    due, base, next_alerted, reset = equity._cross_alert_gate(current_state, stale_gap)
+    assert due is False
+    assert base == 1
+    assert next_alerted == 1
+    assert reset is False
+
+    recovered_same_stage = {
+        **stale_gap,
+        "stage": 1,
+        "data_fresh": True,
+    }
+    due, base, next_alerted, reset = equity._cross_alert_gate(
+        {**current_state, "nasdaq_cross_asset_stage": 0},
+        recovered_same_stage,
+    )
+    assert due is False
+    assert base == 1
+    assert next_alerted == 1
+    assert reset is False
+
+
+def test_cross_alert_latch_resets_only_after_fresh_fuel_disappears():
+    current_state = {
+        "nasdaq_cross_asset_stage": 2,
+        "nasdaq_cross_asset_alerted_stage": 2,
+    }
+    ended = {
+        "stage": 0,
+        "treasury_fuel": True,
+        "nq_fuel": False,
+        "data_fresh": True,
+        "nq_history_ready": True,
+        "nq_history_fresh": True,
+    }
+    due, base, next_alerted, reset = equity._cross_alert_gate(current_state, ended)
+    assert due is False
+    assert base == 0
+    assert next_alerted == 0
+    assert reset is True
+
+    new_episode = {
+        **ended,
+        "stage": 1,
+        "nq_fuel": True,
+    }
+    due, base, next_alerted, reset = equity._cross_alert_gate(
+        {"nasdaq_cross_asset_alerted_stage": next_alerted},
+        new_episode,
+    )
+    assert due is True
+    assert base == 0
+    assert next_alerted == 1
+    assert reset is False
