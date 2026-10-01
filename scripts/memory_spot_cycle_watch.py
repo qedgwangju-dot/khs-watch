@@ -1292,6 +1292,47 @@ def _is_korea_memory_earnings_consensus_item(item: dict) -> bool:
     )
 
 
+def _extract_korea_memory_earnings_state(item: dict) -> dict | None:
+    if not _is_korea_memory_earnings_consensus_item(item):
+        return None
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    m = re.search(
+        r"올해\s*([0-9]+(?:\.[0-9]+)?)\s*조(?:서|에서)?\s*내년\s*([0-9]+(?:\.[0-9]+)?)\s*조",
+        text,
+    )
+    if not m:
+        return None
+    current = float(m.group(1))
+    nxt = float(m.group(2))
+    return {
+        "current_year": 2026,
+        "current_combined_op_krw_trn": current,
+        "next_year": 2027,
+        "next_combined_op_krw_trn": nxt,
+        "implied_growth_pct": (nxt / current - 1.0) * 100.0,
+        "source": item.get("source") or "출처 미표시",
+        "source_url": item.get("link") or "",
+        "as_of": (item.get("published_kst") or "")[:10],
+        "source_rank": 2,
+    }
+
+
+def _korea_memory_earnings_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+    for key, label in (
+        ("current_combined_op_krw_trn", "2026 합산 영업이익 컨센서스"),
+        ("next_combined_op_krw_trn", "2027 합산 영업이익 컨센서스"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if b is None:
+            continue
+        if a is None:
+            changes.append(f"{label}: 약 {float(b):.0f}조원 신규 확인")
+        elif abs(float(b) - float(a)) >= 10:
+            changes.append(f"{label}: 약 {float(a):.0f}조→{float(b):.0f}조원")
+    return changes
+
+
 def _merge_bernstein_memory_cycle(old: dict, obs: dict) -> dict:
     merged = dict(old or {})
     old_rank = int(merged.get("source_rank") or 0)
