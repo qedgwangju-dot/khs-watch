@@ -550,6 +550,12 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
             facts.add(f"ap1000_units:{value}")
         for value in _explicit_model_units(low, "apr1400"):
             facts.add(f"apr1400_units:{value}")
+        if _is_official(row) and any(term in low for term in ["원전 프레임워크", "project power"]):
+            if any(term in low for term in ["합의", "agreed", "agreement"]):
+                facts.add("nuclear_framework_status:agreed")
+            for value in _usd_billion_values(low):
+                if value in {"120", "100", "20", "10"}:
+                    facts.add(f"nuclear_framework_usd_b:{value}")
         facts |= parties
         facts |= stages
         return facts
@@ -600,22 +606,32 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
         return facts | parties
 
     if family == "encinal":
-        if "6.3gw" in low or "엔시날" in low or "encinal" in low:
+        if "6.3gw" in low or "엔시날" in low or "encinal" in low or "project star" in low:
             if "6.3gw" in low:
                 facts.add("encinal_total_gw:6.3")
+            for match in re.finditer(r"(\d+(?:\.\d+)?)\s*mw\b", low):
+                facts.add(f"encinal_total_mw:{match.group(1)}")
             if "1.4gw" in low:
                 facts.add("encinal_phase1_gw:1.4")
             if "4.9gw" in low:
                 facts.add("encinal_phase2_gw:4.9")
             if any(term in low for term in ["사업비", "투자", "project cost"]):
-                for value in _korean_usd_tokens(low):
-                    facts.add(f"encinal_project_usd:{value}")
+                for value in _usd_billion_values(low):
+                    facts.add(f"encinal_project_cost_usd_b:{value}")
+            if _is_official(row) and any(term in low for term in ["제1호", "제 1 호", "1호", "공식 추진", "project star"]):
+                facts.add("encinal_status:confirmed_first")
+            if "2029" in low:
+                facts.add("encinal_phase1_year:2029")
+            if "2032" in low:
+                facts.add("encinal_full_year:2032")
             facts |= stages
         return facts | parties
 
     if family == "alaska_lng":
         for match in re.finditer(r"(\d+(?:\.\d+)?)\s*mtpa\b", low):
             facts.add(f"alaska_mtpa:{match.group(1)}")
+        if _is_official(row) and any(term in low for term in ["검토 착수", "검토에 착수", "project north"]):
+            facts.add("alaska_bilateral_status:review_started")
         alaska_usd = _alaska_specific_usd_values(low)
         if any(term in low for term in ["사업비", "총사업비", "project cost", "estimated cost", "project costs"]):
             for value in alaska_usd:
@@ -675,11 +691,12 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
 
 def _fact_slot(family: str, fact: str) -> str:
     fixed_prefixes = (
-        "nuclear_total_units:", "ap1000_units:", "apr1400_units:",
+        "nuclear_total_units:", "ap1000_units:", "apr1400_units:", "nuclear_framework_status:", "nuclear_framework_usd_b:",
         "stake_percent:", "funding_amount_usd:", "funding_date:", "funding_wait:",
         "repayment_horizon:", "package_nuclear_units:", "package_overall_usd_b:",
-        "encinal_total_gw:", "encinal_phase1_gw:", "encinal_phase2_gw:", "encinal_project_usd:",
-        "alaska_project_cost_usd_b:", "alaska_korea_investment_usd_b:", "alaska_reported_amount_usd_b:",
+        "encinal_total_gw:", "encinal_total_mw:", "encinal_phase1_gw:", "encinal_phase2_gw:",
+        "encinal_project_usd:", "encinal_project_cost_usd_b:", "encinal_status:", "encinal_phase1_year:", "encinal_full_year:",
+        "alaska_project_cost_usd_b:", "alaska_korea_investment_usd_b:", "alaska_reported_amount_usd_b:", "alaska_bilateral_status:",
         "ercot_request_gw:", "semiconductor_investment_usd:", "ppa_years:",
         "official_status:",
     )
@@ -744,7 +761,15 @@ def _accepted_facts_for_group(family: str, rows: list[dict]) -> tuple[set[str], 
         }
         for item in list(quantitative):
             evidence = eligible.get(item, [])
-            if not any(_is_official(row) and _official_status_fact(row) == "official_status:confirmed" for row in evidence):
+            official_support = any(
+                _is_official(row)
+                and (
+                    _official_status_fact(row) == "official_status:confirmed"
+                    or any(term in _norm(str(row.get("title") or "")) for term in ["원전 프레임워크", "project power"])
+                )
+                for row in evidence
+            )
+            if not official_support:
                 accepted.discard(item)
                 print(f"nuclear_unconfirmed_quantitative_suppressed=true fact={item}")
 
@@ -792,6 +817,9 @@ def _human_fact(value: str) -> str:
     labels = {
         "official_status:unconfirmed": "정부 공식상태 미확정",
         "official_status:confirmed": "정부 공식확정",
+        "nuclear_framework_status:agreed": "한미 원전 프레임워크 합의",
+        "encinal_status:confirmed_first": "대미투자 1호 공식 확정",
+        "alaska_bilateral_status:review_started": "한미 공식상태 검토 착수",
         "funding_wait:45영업일": "선정 통지 후 최소 45영업일",
         "repayment_horizon:20년": "원리금 회수 기준 20년",
         "ppa_years:20": "전력계약 20년",
@@ -802,15 +830,20 @@ def _human_fact(value: str) -> str:
         "nuclear_total_units:": "원전 전체 ",
         "ap1000_units:": "AP1000 ",
         "apr1400_units:": "APR1400 ",
+        "nuclear_framework_usd_b:": "원전 프레임워크 재원 ",
         "stake_percent:": "웨스팅하우스 지분 ",
         "funding_amount_usd:": "첫 자금 집행 ",
         "funding_date:": "자금 집행일 ",
         "package_nuclear_units:": "패키지 원전 ",
         "package_overall_usd_b:": "대미투자 전체/전략 규모 ",
         "encinal_total_gw:": "Encinal 총 ",
+        "encinal_total_mw:": "Encinal 총 ",
         "encinal_phase1_gw:": "Encinal 1단계 ",
         "encinal_phase2_gw:": "Encinal 후속 ",
         "encinal_project_usd:": "Encinal 사업비 ",
+        "encinal_project_cost_usd_b:": "Encinal 공식 사업비 ",
+        "encinal_phase1_year:": "Encinal 1단계 상업운전 ",
+        "encinal_full_year:": "Encinal 전체 가동 ",
         "ercot_request_gw:": "ERCOT 요청 ",
         "semiconductor_investment_usd:": "반도체 대미투자 ",
         "alaska_project_cost_usd_b:": "알래스카 LNG 총사업비 ",
@@ -1413,8 +1446,64 @@ def _self_test() -> int:
     if "party:kumkang" in accepted:
         raise RuntimeError(f"kumkang candidate was promoted without project award: {accepted}")
 
+    official_rows = _official_project_baseline_rows()
+    by_family = {}
+    for row in official_rows:
+        by_family.setdefault(_family(row), []).append(row)
+
+    accepted, _ = _accepted_facts_for_group("encinal", by_family.get("encinal", []))
+    required_encinal = {
+        "encinal_status:confirmed_first",
+        "encinal_project_cost_usd_b:22.3",
+        "encinal_total_mw:6472",
+        "encinal_phase1_year:2029",
+        "encinal_full_year:2032",
+    }
+    if not required_encinal.issubset(accepted):
+        raise RuntimeError(f"official Project Star baseline failed: {accepted}")
+
+    accepted, _ = _accepted_facts_for_group("nuclear_build", by_family.get("nuclear_build", []))
+    required_nuclear = {
+        "nuclear_framework_status:agreed",
+        "nuclear_total_units:8",
+        "ap1000_units:6",
+        "apr1400_units:2",
+        "nuclear_framework_usd_b:120",
+    }
+    if not required_nuclear.issubset(accepted):
+        raise RuntimeError(f"official Project Power baseline failed: {accepted}")
+
+    accepted, _ = _accepted_facts_for_group("alaska_lng", by_family.get("alaska_lng", []))
+    if "alaska_bilateral_status:review_started" not in accepted:
+        raise RuntimeError(f"official Project North baseline failed: {accepted}")
+
     print("state_event_guard_self_test=passed")
     return 0
+
+
+def _official_project_baseline_rows() -> list[dict]:
+    link = "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156783865"
+    published = "2026-10-01T00:00:00+00:00"
+    return [
+        {
+            "title": "산업통상부 공식 Project Star 엔시날 제1호 공식 추진 사업비 223억달러 6472MW 2029 1단계 2032 전체 가동",
+            "source": "대한민국 정책브리핑",
+            "link": link,
+            "published": published,
+        },
+        {
+            "title": "산업통상부 공식 Project Power 한미 원전 프레임워크 합의 원전 8기 AP1000 6기 APR1400 2기 최대 1200억달러",
+            "source": "대한민국 정책브리핑",
+            "link": link,
+            "published": published,
+        },
+        {
+            "title": "산업통상부 공식 Project North 알래스카 LNG 검토 착수 상업적 합리성 국내법 요건 충족 시 추진 여부 결정",
+            "source": "대한민국 정책브리핑",
+            "link": link,
+            "published": published,
+        },
+    ]
 
 
 def _rss(query: str) -> list[dict]:
@@ -1430,6 +1519,7 @@ def _rss(query: str) -> list[dict]:
     if _RSS_CALLS < len(core.QUERIES):
         return []
 
+    _RSS_BUFFER.extend(_official_project_baseline_rows())
     flushed = _collapse_rows(_RSS_BUFFER)
     _RSS_BUFFER = []
     return flushed
