@@ -1,3 +1,4 @@
+# one-shot Upper C-band alert dispatch verification
 #!/usr/bin/env python3
 """Contract tests for KHS policy Telegram delivery quality.
 
