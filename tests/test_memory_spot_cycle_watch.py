@@ -307,6 +307,32 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         meaning = w._meaning_line(title, title)
         self.assertIn("NAND 제품혼합·평균판매단가", meaning)
 
+    def test_korea_earnings_consensus_is_typed_not_generic(self):
+        item = {
+            "title": "삼성전자 SK하이닉스 합산 영업이익 올해 640조서 내년 950조로 50% 증가 전망, HBM 가격 상승이 견인차",
+            "description": "FnGuide 시장 컨센서스",
+            "source": "비즈니스포스트",
+            "link": "https://example.com/korea-memory",
+            "published_kst": "2026-09-30T17:22:52+09:00",
+        }
+        obs = w._extract_korea_memory_earnings_state(item)
+        self.assertEqual(obs["current_combined_op_krw_trn"], 640.0)
+        self.assertEqual(obs["next_combined_op_krw_trn"], 950.0)
+        self.assertAlmostEqual(obs["implied_growth_pct"], 48.4375)
+
+    def test_micron_75pct_supply_is_typed_state(self):
+        item = {
+            "title": "Micron CEO: More than 75% of 2027 output already committed",
+            "description": "Memory supply is committed across SCA and non-SCA customers.",
+            "source": "Investing.com",
+            "link": "https://www.investing.com/example",
+            "published_kst": "2026-10-02T05:37:00+09:00",
+        }
+        obs = w._extract_micron_supply_commitment(item)
+        self.assertEqual(obs["commitment_year"], 2027)
+        self.assertEqual(obs["output_committed_min_pct"], 75.0)
+        self.assertEqual(w._micron_supply_commitment_changes(w.MICRON_SUPPLY_COMMITMENT_BASELINE, obs), [])
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
