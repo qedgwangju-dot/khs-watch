@@ -1260,17 +1260,28 @@ def fetch_jpmorgan_product_gap_snapshot(current: dt.datetime) -> NewsItem:
 
 def _extract_crude_product_gap_metrics(news_rows: list[NewsItem]) -> dict[str, float | None]:
     text = " ".join(normalize_text(row.title) for row in news_rows)
+
+    crude_pair = re.search(
+        r"\bcrude\s+([0-9]+(?:\.[0-9]+)?)\s+mbd\s+([0-9]+(?:\.[0-9]+)?)%\s+pre-war",
+        text,
+        flags=re.I,
+    )
+    product_pair = re.search(
+        r"\bproducts\s+([0-9]+(?:\.[0-9]+)?)\s+mbd\s+([0-9]+(?:\.[0-9]+)?)%\s+pre-war",
+        text,
+        flags=re.I,
+    )
+
     def grab(pattern: str) -> float | None:
         match = re.search(pattern, text, flags=re.I)
         return float(match.group(1)) if match else None
-    crude_mbd = grab(r"crude\s+([0-9]+(?:\.[0-9]+)?)\s+mbd")
-    crude_pct = grab(r"crude.*?([0-9]+(?:\.[0-9]+)?)%\s+pre-war")
-    if crude_pct is None:
-        crude_pct = grab(r"([0-9]+(?:\.[0-9]+)?)%\s+(?:of\s+)?pre-war")
-    product_mbd = grab(r"products?\s+([0-9]+(?:\.[0-9]+)?)\s+mbd")
-    product_pct = grab(r"products?.*?([0-9]+(?:\.[0-9]+)?)%\s+pre-war")
-    overall_pct = grab(r"overall\s+([0-9]+(?:\.[0-9]+)?)%\s+of\s+2025")
-    hormuz_mbd = grab(r"hormuz\s+([0-9]+(?:\.[0-9]+)?)\s+mbd")
+
+    crude_mbd = float(crude_pair.group(1)) if crude_pair else grab(r"\bcrude\s+([0-9]+(?:\.[0-9]+)?)\s+mbd")
+    crude_pct = float(crude_pair.group(2)) if crude_pair else grab(r"([0-9]+(?:\.[0-9]+)?)%\s+(?:of\s+)?pre-war")
+    product_mbd = float(product_pair.group(1)) if product_pair else grab(r"\bproducts\s+([0-9]+(?:\.[0-9]+)?)\s+mbd")
+    product_pct = float(product_pair.group(2)) if product_pair else None
+    overall_pct = grab(r"\boverall\s+([0-9]+(?:\.[0-9]+)?)%\s+of\s+2025")
+    hormuz_mbd = grab(r"\bhormuz\s+([0-9]+(?:\.[0-9]+)?)\s+mbd")
     return {
         "crude_mbd": crude_mbd, "crude_pct": crude_pct,
         "product_mbd": product_mbd, "product_pct": product_pct,
