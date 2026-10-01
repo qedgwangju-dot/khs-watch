@@ -1,0 +1,172 @@
+from __future__ import annotations
+
+import sys
+from datetime import date
+from pathlib import Path
+
+import pytest
+
+ROOT = Path(__file__).resolve().parents[1]
+SCRIPTS = ROOT / "scripts"
+if str(SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS))
+
+import treasury_cta_squeeze_equity_watch as equity  # noqa: E402
+
+
+def _snapshot(*, z20=-0.5, zn_pct=0.0):
+    return {
+        "cftc": {
+            "markets": {
+                "10Y": {
+                    "leveraged_net": -1_900_000,
+                    "short_share_oi_pct": 44.0,
+                }
+            }
+        },
+        "cme": {"ZN": {"pct_change": zn_pct}},
+        "yield10": {"z20": z20},
+        "repo": {},
+    }
+
+
+def _raw(
+    *,
+    price_pct=0.6,
+    trade_date="2026-09-30",
+    official=True,
+    oi_change=-1_000,
+    net_wow=-1_000,
+    net_pct=95.0,
+    gross_pct=95.0,
+    report_date="September 22, 2026",
+    history_end="2026-09-22",
+):
+    return {
+        "nq_cftc": {
+            "report_date": report_date,
+            "open_interest": 300_000,
+            "open_interest_wow": -20_000,
+            "leveraged_long": 50_000,
+            "leveraged_short": 90_000,
+            "leveraged_net": -40_000,
+            "leveraged_net_wow": net_wow,
+            "leveraged_short_wow": 10_000,
+            "short_share_oi_pct": 30.0,
+        },
+        "nq_price": {
+            "price": 30_000.0,
+            "pct_change": price_pct,
+            "official": official,
+            "trade_date": trade_date,
+            "oi_change": oi_change,
+            "source": "test",
+        },
+        "history_3y": {
+            "sample_n": 157,
+            "end_date": history_end,
+            "net_short_percentile_3y": net_pct,
+            "gross_short_percentile_3y": gross_pct,
+        },
+        "errors": [],
+    }
+
+
+def _patch_common(monkeypatch, raw, *, data_fresh=True, repo_ok=True, evidence=None):
+    monkeypatch.setattr(equity, "_cross_raw", lambda: raw)
+    monkeypatch.setattr(equity, "_latest_completed_us_session_date", lambda: date(2026, 9, 30))
+    monkeypatch.setattr(
+        equity.audited,
+        "_repo_not_worse",
+        lambda current, previous: (repo_ok, [] if repo_ok else ["SOFR"]),
+    )
+    monkeypatch.setattr(
+        equity.audited,
+        "_data_freshness",
+        lambda snapshot: (data_fresh, [] if data_fresh else ["stale"]),
+    )
+    monkeypatch.setattr(
+        equity.watcher,
+        "squeeze_evidence",
+        lambda current, previous: list(evidence or []),
+    )
+
+
+def test_low_3y_percentile_overrides_large_absolute_short(monkeypatch):
+    raw = _raw(net_pct=39.5, gross_pct=57.3)
+    _patch_common(monkeypatch, raw)
+
+    result = equity._cross_asset_snapshot(_snapshot(zn_pct=0.2), {})
+
+    assert result["nq_extreme"] is False
+    assert result["nq_fuel"] is False
+    assert result["stage"] == 0
+
+
+def test_stale_nq_price_cannot_trigger_preparation(monkeypatch):
+    raw = _raw(trade_date="2026-09-29", price_pct=1.0)
+    _patch_common(monkeypatch, raw)
+
+    result = equity._cross_asset_snapshot(_snapshot(zn_pct=0.0), {})
+
+    assert result["nq_price_fresh"] is False
+    assert result["stage"] == 0
+
+
+def test_fresh_official_nq_price_can_only_prepare_without_short_cover(monkeypatch):
+    raw = _raw(net_wow=-5_000)
+    _patch_common(monkeypatch, raw)
+
+    result = equity._cross_asset_snapshot(_snapshot(zn_pct=0.0), {})
+
+    assert result["nq_price_fresh"] is True
+    assert result["nq_confirmed"] is False
+    assert result["stage"] == 1
+
+
+def test_stage2_requires_zn_evidence_not_other_treasury_contract(monkeypatch):
+    raw = _raw(net_wow=5_000)
+
+    _patch_common(monkeypatch, raw, evidence=["ZB 공식 CME 같은 거래일 가격↑ + OI↓"])
+    without_zn = equity._cross_asset_snapshot(_snapshot(z20=-1.2, zn_pct=0.3), {})
+    assert without_zn["nq_confirmed"] is True
+    assert without_zn["treasury_10y_evidence"] is False
+    assert without_zn["stage"] == 1
+
+    _patch_common(monkeypatch, raw, evidence=["ZN 공식 CME 같은 거래일 가격↑ + OI↓"])
+    with_zn = equity._cross_asset_snapshot(_snapshot(z20=-1.2, zn_pct=0.3), {})
+    assert with_zn["treasury_10y_evidence"] is True
+    assert with_zn["treasury_confirmed"] is True
+    assert with_zn["stage"] == 2
+
+
+def test_stale_global_inputs_fail_closed(monkeypatch):
+    raw = _raw(net_wow=5_000)
+    _patch_common(
+        monkeypatch,
+        raw,
+        data_fresh=False,
+        evidence=["ZN 공식 CME 같은 거래일 가격↑ + OI↓"],
+    )
+
+    result = equity._cross_asset_snapshot(_snapshot(z20=-1.2, zn_pct=0.3), {})
+
+    assert result["data_fresh"] is False
+    assert result["treasury_confirmed"] is False
+    assert result["stage"] == 0
+
+
+def test_equity_impact_is_neutral_when_inputs_are_stale(monkeypatch):
+    monkeypatch.setattr(equity.watcher, "squeeze_evidence", lambda current, previous: ["ZN evidence"])
+    monkeypatch.setattr(equity.audited, "_repo_not_worse", lambda current, previous: (True, []))
+    monkeypatch.setattr(equity.audited, "_data_freshness", lambda snapshot: (False, ["stale"]))
+    monkeypatch.setattr(equity.audited, "_price_up_count", lambda snapshot: 3)
+
+    impact, reason = equity._equity_impact(
+        _snapshot(z20=-1.5, zn_pct=0.5),
+        {},
+        ["CFTC 숏 축소"],
+    )
+
+    assert impact == "⚪ 중립"
+    assert "할인율 완화 신호 미확인" in reason
