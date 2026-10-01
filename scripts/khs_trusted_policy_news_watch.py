@@ -2339,7 +2339,30 @@ def render_alert_section(rule: StoryRule, items: list[dict], now: dt.datetime, i
     ]
 
 
+def render_auction115_compact_body(now: dt.datetime) -> str:
+    fcc_url = (
+        "https://www.federalregister.gov/documents/2026/08/03/2026-15725/"
+        "auction-of-flexible-use-licenses-in-the-upper-c-band-for-next-generation-wireless-services-scheduled"
+    )
+    reuters_url = (
+        "https://www.reuters.com/business/media-telecom/"
+        "us-official-says-upcoming-spectrum-auctions-could-generate-more-than-100-billion-2026-09-17/"
+    )
+    return "\n".join([
+        f"{now:%Y년 %m월 %d일 %H:%M KST} · FCC 공식 확인",
+        "",
+        "• 경매: 2027년 4월 27일 · 3.98~4.14GHz · 160MHz · 3,248개 면허",
+        "• 1,000억달러: Auction 115 단일액 아님 · 향후 여러 경매 누적 전망",
+        "• 국내: KMW·에이스테크 / 쏠리드 / 에치에프알 — Auction 115 확정 수주 아님",
+        "• 역풍: 상위 75개 PEA 2030년 12월 31일, 기타 2031년 7월 1일 서비스 가능 → 장비매출 시차",
+        "• 다음: 낙찰자 → 통신사 CAPEX → 삼성전자·Ericsson·Nokia 수주 → 국내 주문",
+        f'• 링크: <a href="{fcc_url}">FCC 원문</a> · <a href="{reuters_url}">Reuters</a>',
+    ]) + "\n"
+
+
 def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
+    if rule.key == "us_fcc_upper_c_band_auction115":
+        return render_auction115_compact_body(now)
     status_label, _ = alert_confirmation_status(rule, items)
     header = "공식 확인 정책 뉴스 1건 확인" if status_label == "공식 확인" else "공식 문서 확인 전 정책 뉴스 1건 확인"
     lines = [
@@ -2354,6 +2377,12 @@ def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
 
 def render_alert_bundle(alerts: list[dict], now: dt.datetime, limit: int = 3) -> str:
     selected = alerts[:limit]
+    if (
+        len(selected) == 1
+        and selected[0].get("rule")
+        and selected[0]["rule"].key == "us_fcc_upper_c_band_auction115"
+    ):
+        return render_auction115_compact_body(now)
     statuses = [alert_confirmation_status(alert["rule"], alert["items"])[0] for alert in selected]
     if selected and all(status == "공식 확인" for status in statuses):
         header = f"공식 확인 정책 뉴스 {len(selected)}건 확인"
