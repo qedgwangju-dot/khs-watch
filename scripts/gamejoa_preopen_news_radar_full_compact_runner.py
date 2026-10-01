@@ -3875,12 +3875,15 @@ def build_korea_oil_fx_inflation_alert(row: dict, now, text: str) -> dict | None
     title = str(row.get("source_title") or row.get("title") or "").lower()
     macro_hits = sum(term in text for term in ("물가", "환율", "금리"))
     if not (
-        any(term in title for term in ("국제유가", "유가 불안", "유가 상승", "물가", "환율"))
+        any(term in title for term in ("국제유가", "유가 불안", "유가 상승"))
         and any(term in text for term in ("국제유가", "유가 불안", "유가 상승"))
         and macro_hits >= 2
     ):
         return None
-    core = "중동발 유가 불안이 국내 물가·환율·금리 부담으로 번지고 있습니다."
+    core = detailed_article_core(
+        str(row.get("source_title") or row.get("title") or ""),
+        str(row.get("source_body") or row.get("source_abstract") or ""),
+    )
     alert = base_korean_business_alert(
         row,
         now,
@@ -5968,6 +5971,16 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
     body = str(row.get("source_body") or row.get("source_abstract") or "")
     text = f"{title} {body}".lower()
 
+    # A macro release owns its headline; background oil/Fed references must
+    # not replace the announced indicator with a thematic policy template.
+    if has_term(title_text, (
+        "pce", "cpi", "ppi", "gdp", "고용지표", "비농업 고용", "비농업고용", "실업률",
+    )):
+        alert = base_korean_business_alert(
+            row, now, score=110, impacts=korean_business_impacts(text, ["할인율"])
+        )
+        return apply_generic_korean_business_profile(alert, row, now)
+
     if "외국인" in title_text and "순매수" in title_text and all(
         term in title_text for term in ("삼성전자", "sk하이닉스")
     ):
@@ -6606,6 +6619,21 @@ def korean_title_core_aligned(title: str, core: str) -> bool:
     return any(term in title.lower() and term in core.lower() for term in event_terms)
 
 
+def macro_release_core_aligned(title: str, core: str) -> bool:
+    indicators = {
+        "pce": ("pce", "개인소비지출"),
+        "cpi": ("cpi", "소비자물가"),
+        "ppi": ("ppi", "생산자물가"),
+        "gdp": ("gdp", "국내총생산"),
+    }
+    required = [aliases for indicator, aliases in indicators.items() if has_term(base.norm(title), [indicator])]
+    if not required:
+        return True
+    if not all(has_term(base.norm(core), aliases) for aliases in required):
+        return False
+    return all(value in core for value in re.findall(r"\d+(?:\.\d+)?%", title))
+
+
 def source_output_aligned(alert: dict) -> bool:
     """Reject rendered themes that are not supported by source-authored text."""
     if alert.get("korean_business_news"):
@@ -6637,6 +6665,7 @@ def source_output_aligned(alert: dict) -> bool:
             and not core_has_ui_garbage(summary)
             and korean_business_source_allowed(alert)
             and korean_title_core_aligned(source_title, summary)
+            and macro_release_core_aligned(source_title, summary)
             and not direction_conflict
         )
     if alert.get("grid_policy_delay"):
@@ -8331,6 +8360,8 @@ def compact_alert_block_errors(block: str) -> list[str]:
         errors.append("title_core_mismatch")
     if title and market_move_direction_conflict(title, summary):
         errors.append("market_direction_mismatch")
+    if title and not macro_release_core_aligned(title, summary):
+        errors.append("macro_release_mismatch")
     if any(term.lower() in summary.lower() for term in ARTICLE_UI_BOILERPLATE_TERMS):
         errors.append("article_ui_boilerplate")
     foreign_amounts = extract_foreign_amounts(summary)

@@ -27,6 +27,13 @@ CASES = (
         "rates_fx_liquidity",
     ),
     (
+        "美 8월 PCE 물가 전년 대비 3.4% 상승",
+        "국제유가 변동성으로 미국 국채금리가 급등하는 가운데 미 물가지수가 상승폭을 줄였습니다. "
+        "8월 개인소비지출(PCE) 물가지수는 전년 대비 3.4% 상승하며 예상치 3.7%를 밑돌았습니다. "
+        "전달 대비로는 0.3% 상승했습니다. 근원PCE는 3.0% 올랐습니다.",
+        "rates_fx_liquidity",
+    ),
+    (
         "중국, 유럽산 자동차 관세 인상 검토",
         "중국 정부는 유럽산 자동차의 수입 관세 인상을 검토 중입니다. 적용 범위와 시행일은 아직 확정하지 않았습니다.",
         "trade_policy_supply_chain",
@@ -88,6 +95,19 @@ def main() -> int:
             block_errors = radar.compact_alert_block_errors(block)
             if block_errors:
                 failures.append(f"rendered_summary_invalid:{title}:{block_errors}")
+            if "8월 PCE" in title:
+                core = selected[0].get("telegram_core_fact") or ""
+                if not all(term in core for term in ("PCE", "3.4%", "3.7%")):
+                    failures.append(f"macro_release_lost_indicator_and_comparison:{core}")
+                if "중동발" in core or "국내 물가" in core:
+                    failures.append(f"macro_release_replaced_by_oil_template:{core}")
+                poisoned = dict(selected[0])
+                poisoned["telegram_core_fact"] = "중동발 유가 불안이 국내 물가·환율·금리 부담으로 번지고 있습니다."
+                if radar.source_output_aligned(poisoned):
+                    failures.append("pce_oil_template_passed_source_alignment")
+                bad_block = f"1) {title}\n- 핵심: {poisoned['telegram_core_fact']}\n"
+                if "macro_release_mismatch" not in radar.compact_alert_block_errors(bad_block):
+                    failures.append("pce_oil_template_passed_final_send_guard")
 
     for title, body in (
         ("SNS에서 화제인 요리사", "한 유명 요리사가 새로운 요리법을 공개했습니다."),
