@@ -1764,7 +1764,7 @@ def assert_fcc_upper_c_band_auction115_is_monitored() -> None:
         "160MHz",
         "2027년 4월 27일",
         "1,000억달러",
-        "여러 경매의 누적",
+        "여러 경매 누적",
         "2030년 12월 31일",
         "2031년 7월 1일",
         "KMW",
@@ -1772,11 +1772,36 @@ def assert_fcc_upper_c_band_auction115_is_monitored() -> None:
         "쏠리드",
         "에치에프알",
         "확정 수주 아님",
-        "누락 복구",
-        "Reuters | https://www.reuters.com/business/media-telecom/",
+        "FCC 원문",
+        "Reuters",
     ):
         if marker not in combined:
             raise AssertionError(f"Auction 115 rendered alert missing: {marker}")
+
+    title, formatted = khs_policy_telegram_formatter.format_policy_message(
+        "신뢰외신 정책 워치: [상·공식 확인] 미 FCC, Upper C-band Auction 115 확정: 2027년 4월 27일 입찰 예정",
+        rendered,
+        rates={"USD": 1361.15},
+        now=dt.datetime(2026, 10, 1, 12, 0, tzinfo=ZoneInfo("Asia/Seoul")),
+    )
+    nonempty = [line for line in formatted.splitlines() if line.strip()]
+    if len(nonempty) > 7:
+        raise AssertionError(f"Auction 115 compact body is too long: {len(nonempty)} lines")
+    telegram_html = khs_policy_telegram_formatter.prepare_telegram_html(title, formatted)
+    expected_fcc = (
+        '<a href="https://www.federalregister.gov/documents/2026/08/03/2026-15725/'
+        'auction-of-flexible-use-licenses-in-the-upper-c-band-for-next-generation-wireless-services-scheduled">FCC 원문</a>'
+    )
+    expected_reuters = (
+        '<a href="https://www.reuters.com/business/media-telecom/'
+        'us-official-says-upcoming-spectrum-auctions-could-generate-more-than-100-billion-2026-09-17/">Reuters</a>'
+    )
+    for anchor in (expected_fcc, expected_reuters):
+        if anchor not in telegram_html:
+            raise AssertionError(f"Auction 115 clickable link missing: {anchor}")
+    visible_without_links = telegram_html.replace(expected_fcc, "").replace(expected_reuters, "")
+    if "https://www.federalregister.gov/" in visible_without_links or "https://www.reuters.com/" in visible_without_links:
+        raise AssertionError("Auction 115 Telegram output exposes a raw URL")
 
 
 def assert_boem_arctic_drilling_is_source_faithful() -> None:
