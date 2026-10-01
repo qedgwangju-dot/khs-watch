@@ -209,7 +209,24 @@ def cftc_nq_history_3y(current_nq=None, current_period=None):
     if current_nq and current_period:
         try:
             d = pd.to_datetime(current_period)
-            if df.empty or d > df["_date"].max():
+            same = df[df["_date"] == d]
+            if not same.empty:
+                row = same.iloc[-1]
+                checks = {
+                    "Open_Interest_All": int(current_nq["open_interest"]),
+                    "Lev_Money_Positions_Long_All": int(current_nq["leveraged_long"]),
+                    "Lev_Money_Positions_Short_All": int(current_nq["leveraged_short"]),
+                }
+                mismatches = []
+                for col, expected in checks.items():
+                    actual = int(row[col])
+                    if actual != expected:
+                        mismatches.append(f"{col} history={actual} live={expected}")
+                if mismatches:
+                    raise RuntimeError(
+                        "CFTC live/history same-date mismatch: " + " | ".join(mismatches)
+                    )
+            elif df.empty or d > df["_date"].max():
                 df = pd.concat(
                     [
                         df,
@@ -224,8 +241,10 @@ def cftc_nq_history_3y(current_nq=None, current_period=None):
                     ],
                     ignore_index=True,
                 )
-        except Exception:
-            pass
+        except RuntimeError:
+            raise
+        except Exception as exc:
+            raise RuntimeError(f"CFTC current-period alignment failed: {exc}") from exc
 
     df = df.sort_values("_date").drop_duplicates(subset=["_date"], keep="last")
     latest = df["_date"].max()
