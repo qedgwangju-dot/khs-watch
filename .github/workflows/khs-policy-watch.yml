@@ -379,6 +379,11 @@ jobs:
                   "chat_id": (os.environ.get("KHS_POLICY_TELEGRAM_CHAT_ID") or "").strip(),
                   "expected_username": "khs88798879_bot",
               },
+              "spectrum": {
+                  "token": (os.environ.get("KHS_AI_POLICY_TELEGRAM_BOT_TOKEN") or "").strip(),
+                  "chat_id": (os.environ.get("KHS_POLICY_TELEGRAM_CHAT_ID") or "").strip(),
+                  "expected_username": "khs88798879_bot",
+              },
               "westinghouse": {
                   "token": (os.environ.get("KHS887900_BOT_TOKEN") or "").strip(),
                   "chat_id": (os.environ.get("KHS887900_CHAT_ID") or "").strip(),
@@ -408,6 +413,28 @@ jobs:
               # 정책/Westinghouse 경로는 해당 내용을 근거로 활용할 수 있지만
               # 별도 Telegram 알림을 만들지 않는다.
               raw_combined = f"{title}\n{body}".lower()
+
+              # Auction 115 / Upper C-band alerts have a dedicated Telegram owner.
+              # Keep generic policy alerts on @hs8879_bot; route only this spectrum
+              # event family and its follow-up stages to @khs88798879_bot.
+              if (
+                  body_file.name == "khs_trusted_policy_news_alert.md"
+                  and any(
+                      marker in raw_combined
+                      for marker in (
+                          "auction 115",
+                          "upper c-band",
+                          "upper c band",
+                      )
+                  )
+              ):
+                  route = "spectrum"
+                  print(
+                      "telegram_route_override=true "
+                      f"topic=upper_c_band_auction115 route={route} "
+                      "bot=@khs88798879_bot"
+                  )
+
               us_investment_topic = any(
                   marker in raw_combined
                   for marker in (
@@ -524,7 +551,7 @@ jobs:
           skipped = []
           for title, body, route in messages:
               canonical = canonical_message(title, body)
-              if route in {"westinghouse", "ai_force"}:
+              if route in {"westinghouse", "ai_force", "spectrum"}:
                   canonical = f"{route}|{canonical}"
               digest = hashlib.sha256(canonical_message(title, body).encode("utf-8")).hexdigest()[:20]
               if route in {"westinghouse", "ai_force"}:
