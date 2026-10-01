@@ -12,6 +12,7 @@ The official Treasury watcher owns policy detection. This layer:
 from __future__ import annotations
 
 import csv
+import html as html_lib
 import io
 import json
 import re
@@ -19,6 +20,7 @@ import urllib.parse
 import urllib.request
 from datetime import date, timedelta
 from pathlib import Path
+from html.parser import HTMLParser
 
 ROOT = Path(__file__).resolve().parents[1]
 ALERT = ROOT / "out" / "treasury_buyback_policy_alert.html"
@@ -28,24 +30,24 @@ STATE = ROOT / "data" / "treasury_buyback_policy_state.json"
 NEXT_STATE = ROOT / "data" / "treasury_buyback_policy_state_next.json"
 
 BESSENT_REUTERS = "https://www.reuters.com/business/bessent-pushes-back-fears-over-us-debt-market-strains-2026-08-31/"
-BESSENT_FEVER = "https://news.bloomberglaw.com/bloomberg-government-news/bessent-says-buyback-move-aimed-at-quelling-market-fever-1"
+BESSENT_FEVER = "https://news.bgov.com/bloomberg-government-news/bessent-says-buyback-move-aimed-at-quelling-market-fever-1"
 TREASURY_RELEASE = "https://home.treasury.gov/news/press-releases/sb0607"
 BUYBACK_FAQ = "https://www.treasurydirect.gov/help-center/faqs/buyback-faqs/"
 FRED_SERIES_PAGE = "https://fred.stlouisfed.org/series/{series}"
 FRED_CSV = "https://fred.stlouisfed.org/graph/fredgraph.csv"
+EIA_BRENT_PAGE = "https://www.eia.gov/dnav/pet/PET_PRI_SPT_S1_D.htm"
+TREASURY_NOMINAL_XML = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value={year}"
+TREASURY_REAL_XML = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_real_yield_curve&field_tdr_date_value={year}"
+NYFED_TERM_PREMIA = "https://www.newyorkfed.org/research/data_indicators/term-premia-tabs"
 
 SERIES = {
     "fx": "DEXKOUS",
-    "brent": "DCOILBRENTEU",
-    "bei10": "T10YIE",
-    "real10": "DFII10",
     "term10": "THREEFYTP10",
-    "nom10": "DGS10",
 }
 
 UPGRADE_MARKER = "<b>정책 목적·경계선</b>"
 UPGRADE_REVISION = 5
-UA = "Mozilla/5.0 khs-watch-treasury-bessent-verifier/3.0"
+UA = "Mozilla/5.0 khs-watch-treasury-bessent-verifier/4.0"
 
 EXACT_TITLES = {
     "Treasury Announces Increased Sizes of Nominal Long-End Liquidity Support Buybacks Beginning September 9":
@@ -139,6 +141,88 @@ def fetch_series(series_id: str, lookback_days: int = 120) -> list[tuple[str, fl
     raise RuntimeError(f"FRED {series_id} 조회 실패: {' | '.join(errors)}")
 
 
+class _EiaTableParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.rows: list[list[str]] = []
+        self._row: list[str] | None = None
+        self._cell: list[str] | None = None
+
+    def handle_starttag(self, tag: str, attrs) -> None:
+        tag = tag.lower()
+        if tag == "tr":
+            self._row = []
+        elif tag in ("td", "th") and self._row is not None:
+            self._cell = []
+
+    def handle_data(self, data: str) -> None:
+        if self._cell is not None:
+            self._cell.append(data)
+
+    def handle_endtag(self, tag: str) -> None:
+        tag = tag.lower()
+        if tag in ("td", "th") and self._cell is not None and self._row is not None:
+            self._row.append(re.sub(r"\s+", " ", html_lib.unescape(" ".join(self._cell))).strip())
+            self._cell = None
+        elif tag == "tr" and self._row is not None:
+            if self._row:
+                self.rows.append(self._row)
+            self._row = None
+            self._cell = None
+
+
+def fetch_eia_brent_rows() -> list[tuple[str, float]]:
+    raw = _url_text(EIA_BRENT_PAGE, timeout=15)
+    parser = _EiaTableParser()
+    parser.feed(raw)
+
+    header_dates: list[str] = []
+    brent_values: list[float] = []
+    for row in parser.rows:
+        dates = [x for cell in row for x in re.findall(r"\b\d{2}/\d{2}/\d{2}\b", cell)]
+        if len(dates) >= 2:
+            header_dates = dates
+        if any("Brent - Europe" in cell for cell in row):
+            for cell in row[1:]:
+                m = re.fullmatch(r"\s*([0-9]{1,3}(?:\.[0-9]+)?)\s*", cell)
+                if m:
+                    brent_values.append(float(m.group(1)))
+            break
+
+    if not header_dates or len(brent_values) < 2:
+        raise RuntimeError("EIA Brent 일일표 파싱 실패")
+
+    n = min(len(header_dates), len(brent_values))
+    out: list[tuple[str, float]] = []
+    for d, v in zip(header_dates[:n], brent_values[:n]):
+        mm, dd, yy = [int(x) for x in d.split("/")]
+        out.append((f"{2000 + yy:04d}-{mm:02d}-{dd:02d}", v))
+    out.sort(key=lambda x: x[0])
+    if len(out) < 2:
+        raise RuntimeError("EIA Brent 유효 관측치 부족")
+    return out
+
+
+def fetch_treasury_10y_rows(real: bool = False) -> list[tuple[str, float]]:
+    year = date.today().year
+    url = (TREASURY_REAL_XML if real else TREASURY_NOMINAL_XML).format(year=year)
+    raw = _url_text(url, timeout=15)
+    out: list[tuple[str, float]] = []
+    for entry in re.findall(r"<entry>(.*?)</entry>", raw, flags=re.I | re.S):
+        dm = re.search(r"<d:NEW_DATE[^>]*>([^<]+)</d:NEW_DATE>", entry, flags=re.I)
+        ym = re.search(r"<d:BC_10YEAR[^>]*>([^<]+)</d:BC_10YEAR>", entry, flags=re.I)
+        if not dm or not ym:
+            continue
+        try:
+            out.append((dm.group(1)[:10], float(ym.group(1))))
+        except ValueError:
+            continue
+    out.sort(key=lambda x: x[0])
+    if len(out) < 2:
+        raise RuntimeError(f"미 재무부 {'실질' if real else '명목'} 10년물 XML 파싱 실패")
+    return out
+
+
 def latest_two(rows: list[tuple[str, float]]) -> tuple[tuple[str, float], tuple[str, float]]:
     return rows[-2], rows[-1]
 
@@ -221,34 +305,73 @@ def translate_title(title: str) -> str:
 
 
 def build_causal_snapshot() -> dict:
-    raw = {key: fetch_series(series_id) for key, series_id in SERIES.items() if key != "fx"}
+    # Fast causal verdict uses first-party sources that are reliable on GitHub runners:
+    # EIA Brent + U.S. Treasury nominal/real 10Y. The inflation component is the
+    # same-day nominal-minus-real Treasury curve spread, used as a transparent proxy.
+    brent_rows = fetch_eia_brent_rows()
+    nom_rows = fetch_treasury_10y_rows(real=False)
+    real_rows = fetch_treasury_10y_rows(real=True)
 
-    # Fast verdict uses a truly common date across Brent, BEI, real 10Y and nominal 10Y.
-    # The Kim-Wright term premium is intentionally kept as a separate lagged model confirmation.
-    fast_keys = ("brent", "bei10", "real10", "nom10")
-    maps = {key: dict(raw[key]) for key in fast_keys}
-    common_dates = sorted(set.intersection(*(set(maps[key]) for key in fast_keys)))
+    maps = {
+        "brent": dict(brent_rows),
+        "nom10": dict(nom_rows),
+        "real10": dict(real_rows),
+    }
+    common_dates = sorted(set(maps["brent"]) & set(maps["nom10"]) & set(maps["real10"]))
     if len(common_dates) < 2:
-        raise RuntimeError("Brent·BEI·실질금리·명목금리 공통 비교일이 2개 미만입니다.")
+        raise RuntimeError("EIA Brent·미 재무부 명목/실질 10년물 공통 비교일이 2개 미만입니다.")
     prev_date, cur_date = common_dates[-2], common_dates[-1]
 
-    cur = {key: maps[key][cur_date] for key in fast_keys}
-    prev = {key: maps[key][prev_date] for key in fast_keys}
+    prev = {
+        "brent": maps["brent"][prev_date],
+        "nom10": maps["nom10"][prev_date],
+        "real10": maps["real10"][prev_date],
+    }
+    cur = {
+        "brent": maps["brent"][cur_date],
+        "nom10": maps["nom10"][cur_date],
+        "real10": maps["real10"][cur_date],
+    }
+    prev["bei10"] = prev["nom10"] - prev["real10"]
+    cur["bei10"] = cur["nom10"] - cur["real10"]
+
     changes = {
         "brent_pct": pct(cur["brent"], prev["brent"]),
         "bei_bp": bp(cur["bei10"], prev["bei10"]),
         "real_bp": bp(cur["real10"], prev["real10"]),
         "nom_bp": bp(cur["nom10"], prev["nom10"]),
+        "term_bp": None,
     }
 
-    term_prev, term_cur = latest_two(raw["term10"])
-    changes["term_bp"] = bp(term_cur[1], term_prev[1])
+    term_latest = {
+        "available": False,
+        "prev_date": None,
+        "prev": None,
+        "date": None,
+        "value": None,
+        "change_bp": None,
+        "source": NYFED_TERM_PREMIA,
+    }
+    try:
+        term_rows = fetch_series(SERIES["term10"])
+        term_prev, term_cur = latest_two(term_rows)
+        changes["term_bp"] = bp(term_cur[1], term_prev[1])
+        term_latest.update({
+            "available": True,
+            "prev_date": term_prev[0],
+            "prev": term_prev[1],
+            "date": term_cur[0],
+            "value": term_cur[1],
+            "change_bp": changes["term_bp"],
+        })
+    except Exception as exc:
+        term_latest["error"] = f"{type(exc).__name__}: {exc}"
 
     oil_d = direction(changes["brent_pct"], 0.5)
     bei_d = direction(changes["bei_bp"], 1.0)
     real_d = direction(changes["real_bp"], 2.0)
     nom_d = direction(changes["nom_bp"], 2.0)
-    term_d = direction(changes["term_bp"], 2.0)
+    term_d = direction(changes["term_bp"], 2.0) if changes["term_bp"] is not None else 0
 
     if oil_d < 0 and bei_d < 0 and nom_d < 0:
         verdict_key = "energy_disinflation_support"
@@ -266,25 +389,29 @@ def build_causal_snapshot() -> dict:
         verdict_key = "mixed"
         verdict = "⚪ 혼조 — 현재 하루 움직임만으로 에너지·인플레이션 또는 재정·기간프리미엄 단일 원인을 확정하기 어려움"
 
-    latest = {}
-    for key, rows in raw.items():
-        p, c = latest_two(rows)
-        latest[key] = {
-            "prev_date": p[0], "prev": p[1], "date": c[0], "value": c[1],
-            "change": pct(c[1], p[1]) if key == "brent" else bp(c[1], p[1]),
-        }
+    latest = {
+        "brent": {"date": brent_rows[-1][0], "value": brent_rows[-1][1]},
+        "nom10": {"date": nom_rows[-1][0], "value": nom_rows[-1][1]},
+        "real10": {"date": real_rows[-1][0], "value": real_rows[-1][1]},
+    }
 
     return {
         "common_prev_date": prev_date,
         "common_date": cur_date,
         "common_values": cur,
         "common_changes": changes,
-        "term_latest": {"prev_date": term_prev[0], "prev": term_prev[1], "date": term_cur[0], "value": term_cur[1], "change_bp": changes["term_bp"]},
+        "term_latest": term_latest,
         "latest": latest,
         "verdict_key": verdict_key,
         "verdict": verdict,
+        "sources": {
+            "brent": "EIA Brent Europe spot price",
+            "nominal10": "U.S. Treasury Daily Par Yield Curve",
+            "real10": "U.S. Treasury Daily Real Par Yield Curve",
+            "bei10": "U.S. Treasury nominal-real 10Y spread proxy",
+            "term10": "New York Fed term premium page / FRED mirror when available",
+        },
     }
-
 
 def causal_block(snapshot: dict) -> str:
     if not snapshot.get("available", True):
@@ -296,19 +423,22 @@ def causal_block(snapshot: dict) -> str:
         ])
     v = snapshot["common_values"]
     c = snapshot["common_changes"]
-    t = snapshot["term_latest"]
+    t = snapshot.get("term_latest") or {}
+    if t.get("available") and t.get("value") is not None:
+        term_line = f"• 10년 기간프리미엄(보조): {t['value']:.4f}% ({t['change_bp']:+.1f}bp, {t['date']} 기준)"
+    else:
+        term_line = "• 10년 기간프리미엄(보조): 이번 실행 확인 보류 — 핵심 판정은 EIA·미 재무부 원자료로 계속"
     return "\n".join([
         "<b>Bessent 금리상승 원인설 자동 검증</b>",
         f"• 공통 비교일: {snapshot['common_prev_date']} → {snapshot['common_date']}",
-        f"• Brent: ${v['brent']:.2f}/배럴 ({c['brent_pct']:+.2f}%)",
-        f"• 10년 기대인플레이션: {v['bei10']:.2f}% ({c['bei_bp']:+.1f}bp)",
-        f"• 10년 실질금리: {v['real10']:.2f}% ({c['real_bp']:+.1f}bp)",
-        f"• 10년 명목금리: {v['nom10']:.2f}% ({c['nom_bp']:+.1f}bp)",
-        f"• 10년 기간프리미엄(Kim-Wright): {t['value']:.4f}% ({t['change_bp']:+.1f}bp, {t['date']} 기준)",
+        f"• Brent(EIA): ${v['brent']:.2f}/배럴 ({c['brent_pct']:+.2f}%)",
+        f"• 10년 기대인플레이션 프록시(미 재무부 명목-실질): {v['bei10']:.2f}% ({c['bei_bp']:+.1f}bp)",
+        f"• 10년 실질금리(미 재무부): {v['real10']:.2f}% ({c['real_bp']:+.1f}bp)",
+        f"• 10년 명목금리(미 재무부): {v['nom10']:.2f}% ({c['nom_bp']:+.1f}bp)",
+        term_line,
         f"• 판정: <b>{snapshot['verdict']}</b>",
-        "• 기간프리미엄은 모형 추정치라 업데이트 시차가 있어 별도 확인지표로 사용합니다. 실질금리+기대인플레이션과 기간프리미엄을 단순 합산하지 않습니다.",
+        "• 기대인플레이션 프록시는 같은 날짜의 미 재무부 명목 10년물-실질 10년물 차이입니다. 기간프리미엄은 모형 추정치라 보조 확인에만 사용합니다.",
     ])
-
 
 def stock_market_block(snapshot: dict) -> str:
     if not snapshot.get("available", True):
@@ -374,13 +504,11 @@ def source_links() -> str:
         f'<a href="{BESSENT_FEVER}">Bessent ‘market fever’ 발언</a>',
         f'<a href="{TREASURY_RELEASE}">미 재무부 공식 발표</a>',
         f'<a href="{BUYBACK_FAQ}">바이백 공식 설명</a>',
-        f'<a href="{FRED_SERIES_PAGE.format(series=SERIES["brent"])}">Brent</a>',
-        f'<a href="{FRED_SERIES_PAGE.format(series=SERIES["bei10"])}">10년 기대인플레이션</a>',
-        f'<a href="{FRED_SERIES_PAGE.format(series=SERIES["real10"])}">10년 실질금리</a>',
-        f'<a href="{FRED_SERIES_PAGE.format(series=SERIES["term10"])}">10년 기간프리미엄</a>',
-        f'<a href="{FRED_SERIES_PAGE.format(series=SERIES["nom10"])}">10년 명목금리</a>',
+        f'<a href="{EIA_BRENT_PAGE}">EIA Brent</a>',
+        f'<a href="{TREASURY_NOMINAL_XML.format(year=date.today().year)}">미 재무부 명목금리</a>',
+        f'<a href="{TREASURY_REAL_XML.format(year=date.today().year)}">미 재무부 실질금리</a>',
+        f'<a href="{NYFED_TERM_PREMIA}">뉴욕연은 기간프리미엄</a>',
     ])
-
 
 def one_time_alert(fx: float, fx_date: str, snapshot: dict) -> str:
     return "\n".join([
