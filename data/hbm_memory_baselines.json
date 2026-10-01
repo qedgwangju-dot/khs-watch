@@ -446,17 +446,19 @@
       "value": {
         "new_order_price_up": true,
         "base_die_price_up": true,
-        "price_change_pct": null
+        "price_change_pct": null,
+        "price_change_pct_min": 10,
+        "price_change_pct_max": 15
       },
       "unit": "direction,pct",
       "period": "current",
-      "as_of": "2026-09-21",
+      "as_of": "2026-09-30",
       "evidence": "reported",
-      "source_url": "https://www.mt.co.kr/index.php/industry/2026/09/21/2026092114333425215",
-      "source_title": "HBM에 웃는 삼성 파운드리…첨단 공정 생산능력 확대 채비",
-      "source": "머니투데이",
+      "source_url": "https://www.trendforce.com/news/2026/09/30/news-samsung-foundry-loss-reportedly-seen-shrinking-42-yoy-in-2026-as-hbm4-base-die-4nm-demand-rises/",
+      "source_title": "TrendForce News: 삼성 일부 선단공정 가격 10~15% 상승 보도",
+      "source": "TrendForce News·iNews24 재인용",
       "scope": "reported_foundry_pricing",
-      "excerpt": "4나노 신규 수주 물량 가격 인상 및 HBM4용 베이스다이 가격 인상 보도. 인상률은 미공개."
+      "excerpt": "HBM4 베이스다이와 선단공정 주문 강세로 삼성 4나노 신규수주 가격 인상, 일부 선단공정 가격 10~15% 상승 보도. 실제 회사 ASP와 구분."
     },
     {
       "key": "foundry_hbm5_2nm|samsung|2nm|HBM5",
@@ -476,6 +478,61 @@
       "source": "머니투데이",
       "scope": "technology_plan_and_line_investment_separated",
       "excerpt": "HBM5 대응 2나노 신규 생산라인 구축 검토. GAA 2나노와 고집적 TSV, HBM4E 대비 동작속도 50% 이상 향상 목표."
+    },
+    {
+      "key": "foundry_loss_outlook|samsung|Foundry_SystemLSI|2026",
+      "axis": "foundry_loss_outlook",
+      "value": {
+        "loss_2025_krw_trn": 6.74,
+        "loss_2026e_krw_trn": 3.92,
+        "loss_shrink_pct": 41.84,
+        "q3_2026e_loss_krw_trn": 0.777
+      },
+      "unit": "KRW_trillion,pct",
+      "period": "2026",
+      "as_of": "2026-09-30",
+      "evidence": "reported",
+      "source_url": "https://www.trendforce.com/news/2026/09/30/news-samsung-foundry-loss-reportedly-seen-shrinking-42-yoy-in-2026-as-hbm4-base-die-4nm-demand-rises/",
+      "source_title": "TrendForce News: 삼성 파운드리+System LSI 합산 손실 6.74조원→3.92조원 전망",
+      "source": "TrendForce News·Kiwoom Securities estimate",
+      "scope": "broker_estimate_foundry_plus_system_lsi_combined_not_foundry_standalone",
+      "excerpt": "TrendForce News가 Digital Today·Kiwoom Securities 추정을 인용. 2025년 6.74조원→2026년 3.92조원, 41.8% 축소, 3Q26 7,770억원 전망. TrendForce Research 자체 추정이 아님."
+    },
+    {
+      "key": "foundry_external_2nm|samsung|external_2nm|current",
+      "axis": "foundry_external_2nm",
+      "value": {
+        "stage": "design_win",
+        "hpc_design_win": true,
+        "us_orders_strong": true,
+        "gen2_mobile_ramp_plan": true
+      },
+      "unit": "stage,direction",
+      "period": "current",
+      "as_of": "2026-07-30",
+      "evidence": "official",
+      "source_url": "https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results",
+      "source_title": "Samsung 2Q26: 2nm HPC design wins 확대·미국 고객 수주 강세·2나노 2세대 램프 계획",
+      "source": "Samsung Electronics",
+      "scope": "external_2nm_pipeline_design_win_not_revenue_until_mass_production",
+      "excerpt": "삼성전자 2Q26 공식자료: HBM base-die 수요와 미국 고객 수주로 파운드리 실적 개선, 주요 고객 2nm HPC design wins 확대, H2 2nm 2세대 모바일 램프 계획."
+    },
+    {
+      "key": "foundry_taylor_schedule|samsung|Taylor_Fab1",
+      "axis": "foundry_taylor_schedule",
+      "value": {
+        "mass_production_year": 2027,
+        "external_customer_negotiations": true
+      },
+      "unit": "year,direction",
+      "period": "Taylor_Fab1",
+      "as_of": "2026-04-30",
+      "evidence": "reported",
+      "source_url": "https://www.reuters.com/legal/litigation/samsung-electronics-expects-win-more-customers-advanced-logic-chips-2026-04-30/",
+      "source_title": "Reuters: 삼성 Taylor Fab1 2027년 양산 예정·2나노 외부 고객 협의",
+      "source": "Reuters",
+      "scope": "taylor_schedule_not_customer_2nm_revenue",
+      "excerpt": "Reuters: Taylor 첫 공장 양산은 2027년 예정이며 여러 주요 기술기업과 2나노 수주를 협의 중. 특정 고객 계약을 2나노 양산으로 임의 연결하지 않음."
     }
   ],
   "user_capture": {
