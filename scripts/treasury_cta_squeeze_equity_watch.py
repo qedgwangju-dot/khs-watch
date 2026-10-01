@@ -952,7 +952,7 @@ def scheduled_main() -> int:
     if fomc_due:
         reasons.append("FOMC 전날 점검")
     if cross_due:
-        reasons.append("채권→Nasdaq 이중 숏 스퀴즈 " + ("확인" if stage >= 2 else "준비"))
+        reasons.append("채권→Nasdaq 이중 숏 스퀴즈 " + ("확인" if stage >= 2 else "연료 축적"))
     reasons = list(dict.fromkeys(reasons))
 
     # If the audited Treasury gate already produced an event alert, format_alert()
@@ -978,8 +978,8 @@ def scheduled_main() -> int:
             "",
             _cross_asset_block(snapshot, previous, fx=fx, compact=False),
             "<b>🚦 다음 확인</b>",
-            "• ZN 가격↑·동일범위 OI↓ + NQ 가격↑·CFTC NQ OI↓ + NQ 순숏 축소가 겹치면 이중 스퀴즈 확인으로 격상합니다.",
-            "• CFTC는 주간 후행 자료이므로 장중 가격만으로 확정하지 않습니다.",
+            "• ZN 공식 같은 거래일 가격↑·OI↓ + NQ 공식 같은 거래일 가격↑·CME 일일 OI↓ + CFTC NQ 순숏 축소가 겹치면 이중 스퀴즈 확인으로 격상합니다.",
+            "• CFTC는 주간 후행 자료이므로 장중 가격이나 CFTC 주간 OI 감소 하나만으로 확정하지 않습니다.",
             "",
             f'<a href="{CFTC_URL}">CFTC 포지션</a> · <a href="{CME_NQ_URL}">CME NQ</a> · <a href="{CME_NQ_BULLETIN}">CME 공식 일일결제</a> · <a href="{TREASURY_URL}">미 재무부 금리</a>',
         ])
