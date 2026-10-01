@@ -35,13 +35,15 @@ base.QUERIES.extend([
     BOSTON_CAPITAL_EN_SENTINEL,
     '("Boston Dynamics" OR 보스턴다이내믹스) (RMAC OR "Robot Metaplant Application Center") (Atlas OR 아틀라스) (training OR 훈련 OR sequencing OR 시퀀싱 OR data OR 데이터 OR manufacturing OR 제조)',
     '("Boston Dynamics" OR 보스턴다이내믹스 OR "Hyundai Motor Group" OR 현대차그룹) (RMAC OR "Robot Metaplant Application Center") (10배 OR tenfold OR 2027 OR 이전 OR 확장 OR expansion OR new building OR 신축)',
+    '("Hyundai Motor Group" OR 현대차그룹 OR "Boston Dynamics") ("robotics facility" OR "robot factory" OR "robotics factory" OR "robot manufacturing" OR 로봇공장 OR 로봇 생산시설 OR 로봇 생산법인 OR "Robotics America") (30000 OR 30,000 OR 3만대 OR site OR 부지 OR 법인 OR subsidiary OR 착공 OR construction OR equipment OR 장비 OR SOP OR 양산 OR production)',
+    '("Hyundai Motor Group" OR 현대차그룹 OR "Hyundai Capital" OR 현대캐피탈 OR "Boston Dynamics") (Atlas OR 아틀라스 OR robotics OR 로보틱스) (RaaS OR "Robotics-as-a-Service" OR subscription OR 구독 OR financing OR finance OR 금융 OR lease OR 리스 OR dealer OR 딜러) (launch OR 출시 OR available OR 개시 OR first customer OR 첫 고객 OR contract OR 계약 OR price OR 가격 OR term OR 조건)',
     BOSTON_RMAC_SENTINEL,
 ])
 
 base.TRUSTED.update({'뉴시스','Newsis','연합뉴스','전자신문','서울경제','한국경제','매일경제','머니투데이','조선비즈','Reuters','AutoSAP'})
 base.OFFICIAL_OR_PRIMARY.update({
     '현대자동차','Hyundai Motor','현대자동차그룹','Hyundai Motor Group',
-    'Boston Dynamics','Hyundai Motor Manufacturing Czech','HMMC','AutoSAP',
+    'Boston Dynamics','Hyundai Motor Manufacturing Czech','HMMC','AutoSAP','Hyundai Capital','현대캐피탈',
     'Sdružení automobilového průmyslu','U.S. Securities and Exchange Commission','SEC',
 })
 
@@ -95,6 +97,112 @@ EXTERNAL_CUSTOMER = re.compile(r'external\s+customers?|outside\s+customers?|외�
 CAPITAL = re.compile(r'\bIPO\b|pre[-\s]?IPO|프리\s*IPO|상장\s*전\s*투자\s*유치|initial\s+public\s+offering|기업공개|상장|\bS-1\b|registration\s+statement|prospectus|underwriter|주관사|상장예비심사|valuation|기업\s*가치|loss(?:es)?|손실|적자|unprofitable|profitability|수익성|흑자|funding|fundraise|capital\s+raise|자금\s*조달|SoftBank|소프트뱅크|ownership|지분|stake|완전\s*자회사', re.I)
 ATLAS_CATEGORY_PREFIX = '현대차그룹 · 아틀라스 '
 MOBIS_ACTUATOR = re.compile(r'(?:현대모비스|Hyundai\s*Mobis).{0,160}(?:액추에이터|actuator)|(?:액추에이터|actuator).{0,160}(?:현대모비스|Hyundai\s*Mobis)', re.I)
+
+ROBOT_FACTORY_CTX = re.compile(
+    r'robotics\s*(?:facility|factory|plant)|robot\s*(?:factory|plant|manufacturing\s*facility)|'
+    r'로봇\s*(?:공장|생산시설|생산\s*기지|생산법인)|북미\s*로봇\s*공장|'
+    r'Robotics\s+America|연간\s*3만\s*대|30,?000\s*(?:robots?|units?)',
+    re.I,
+)
+ROBOT_FACTORY_BASELINE = re.compile(
+    r'plan(?:s|ned)?\s+to|aim(?:s|ed)?\s+to|will\s+(?:build|establish)|to\s+be\s+established|'
+    r'계획|목표|예정|신설\s*계획|구축\s*계획',
+    re.I,
+)
+ROBOT_FACTORY_LEGAL = re.compile(
+    r'(?:Robotics\s+America|로봇\s*생산법인|robotics\s+subsidiary|robot\s+production\s+subsidiary|'
+    r'new\s+subsidiary|new\s+entity|법인).{0,80}'
+    r'(?:incorporat|register|form(?:ed|ation)?|establish(?:ed|ment)?|launch(?:ed)?|설립|등록|출범|신설)|'
+    r'(?:incorporat|register|form(?:ed|ation)?|establish(?:ed|ment)?|launch(?:ed)?|설립|등록|출범|신설).{0,80}'
+    r'(?:Robotics\s+America|로봇\s*생산법인|robotics\s+subsidiary|robot\s+production\s+subsidiary|법인)',
+    re.I,
+)
+ROBOT_FACTORY_SITE = re.compile(
+    r'site\s*(?:selected|selection|finalized)|location\s*(?:selected|finalized)|land\s*(?:purchase|acquisition|deal|lease)|'
+    r'부지\s*(?:선정|확정|매입|취득|계약)|입지\s*(?:선정|확정)',
+    re.I,
+)
+ROBOT_FACTORY_CAPEX = re.compile(
+    r'(?:capex|investment|facility\s+investment|설비\s*투자|시설\s*투자|투자액|투자\s*결정).{0,60}'
+    r'(?:\$\s*\d|\d[\d,.]*\s*(?:million|billion|억\s*원|억원|조\s*원|조원))|'
+    r'(?:\$\s*\d|\d[\d,.]*\s*(?:million|billion|억\s*원|억원|조\s*원|조원)).{0,60}'
+    r'(?:capex|investment|설비\s*투자|시설\s*투자|투자액)',
+    re.I,
+)
+ROBOT_FACTORY_CONSTRUCTION = re.compile(
+    r'groundbreak|construction\s*(?:start|began|begin|underway)|permit\s*(?:approved|issued)|'
+    r'착공|공사\s*(?:시작|개시)|건축\s*허가|인허가\s*(?:완료|승인)',
+    re.I,
+)
+ROBOT_FACTORY_EQUIPMENT = re.compile(
+    r'equipment\s*(?:order|installation|move[- ]?in)|production\s+line\s*(?:installation|equipment)|'
+    r'장비\s*(?:발주|반입|설치)|생산라인\s*(?:설치|구축)|설비\s*(?:발주|반입|설치)',
+    re.I,
+)
+ROBOT_FACTORY_SOP = re.compile(
+    r'start(?:ed|s|ing)?\s+(?:mass\s+)?production|production\s+(?:start|began|commenced)|'
+    r'first\s+(?:unit|robot|shipment)|SOP|양산\s*(?:개시|시작)|생산\s*(?:개시|시작)|'
+    r'첫\s*(?:생산|출하|로봇)',
+    re.I,
+)
+ROBOT_FACTORY_CHANGE = re.compile(
+    r'(?:capacity|생산\s*능력|생산량|연간\s*생산).{0,80}(?:increase|raise|expand|reduce|cut|revise|상향|확대|하향|축소|변경)|'
+    r'(?:increase|raise|expand|reduce|cut|revise|상향|확대|하향|축소|변경).{0,80}(?:capacity|생산\s*능력|생산량|연간\s*생산)',
+    re.I,
+)
+ROBOT_FACTORY_REVERSE = re.compile(
+    r'(?:robotics\s*(?:facility|factory|plant)|robot\s*(?:factory|plant)|로봇\s*(?:공장|생산시설|생산법인)|Robotics\s+America).{0,100}'
+    r'(?:delay|postpone|cancel|suspend|scale\s*down|reduce|cut|연기|지연|취소|중단|축소|감액)|'
+    r'(?:delay|postpone|cancel|suspend|scale\s*down|연기|지연|취소|중단|축소).{0,100}'
+    r'(?:robotics\s*(?:facility|factory|plant)|robot\s*(?:factory|plant)|로봇\s*(?:공장|생산시설|생산법인)|Robotics\s+America)',
+    re.I,
+)
+ROBOT_FACTORY_NUMERIC = re.compile(r'\b\d[\d,.]*\s*(?:robots?|units?|대|million|billion|acre|acres|sq\.?\s*ft|㎡|평)\b|\$\s*\d', re.I)
+
+ROBOT_CHANNEL = re.compile(r'RaaS|Robotics[-\s]*as[-\s]*a[-\s]*Service|subscription|구독|dealer|딜러|Hyundai\s*Capital|현대캐피탈|financ(?:e|ing)|금융|lease|리스', re.I)
+ROBOT_CHANNEL_BASELINE = re.compile(r'explor(?:e|ing)|feasibility|potential\s+distribution|plan(?:s|ned)?\s+to|consider|검토|가능성|계획|추진', re.I)
+ROBOT_CHANNEL_EXEC = re.compile(
+    r'launch(?:ed)?|available|rollout|introduced|first\s+customer|first\s+contract|signed|contract|'
+    r'pricing|monthly\s+fee|subscription\s+plan|finance\s+program|lease\s+program|dealer\s+sales|'
+    r'출시|개시|도입|첫\s*고객|첫\s*계약|계약\s*체결|가격|월\s*요금|구독\s*요금|금융\s*프로그램|리스\s*프로그램|딜러\s*판매',
+    re.I,
+)
+
+
+def _robot_factory_stage(text: str) -> str:
+    if not ((HMG.search(text) or BOSTON.search(text)) and ROBOT_FACTORY_CTX.search(text)):
+        return ''
+    if ROBOT_FACTORY_REVERSE.search(text):
+        return 'factory_reverse'
+    if ROBOT_FACTORY_SOP.search(text):
+        return 'factory_sop'
+    if ROBOT_FACTORY_EQUIPMENT.search(text):
+        return 'factory_equipment'
+    if ROBOT_FACTORY_CONSTRUCTION.search(text):
+        return 'factory_construction'
+    if ROBOT_FACTORY_SITE.search(text):
+        return 'factory_site'
+    if ROBOT_FACTORY_LEGAL.search(text):
+        return 'factory_legal_entity'
+    if ROBOT_FACTORY_CAPEX.search(text):
+        return 'factory_capex'
+    if ROBOT_FACTORY_CHANGE.search(text) and ROBOT_FACTORY_NUMERIC.search(text):
+        return 'factory_capacity_change'
+    if ROBOT_FACTORY_BASELINE.search(text) and re.search(r'30,?000|3만\s*대|2028', text, re.I):
+        return 'factory_baseline'
+    return 'factory_monitor'
+
+
+def _robot_channel_stage(text: str) -> str:
+    if not ((HMG.search(text) or BOSTON.search(text) or re.search(r'Hyundai\s*Capital|현대캐피탈', text, re.I)) and ROBOT_CHANNEL.search(text)):
+        return ''
+    if not re.search(r'Atlas|아틀라스|Boston\s*Dynamics|보스턴\s*다이내믹스|robotics|로보틱스|robot\s+sales|로봇\s*판매', text, re.I):
+        return ''
+    if ROBOT_CHANNEL_EXEC.search(text):
+        return 'channel_launch'
+    if ROBOT_CHANNEL_BASELINE.search(text):
+        return 'channel_baseline'
+    return 'channel_monitor'
 
 
 def _query_boston_rmac_recovery() -> list[dict]:
