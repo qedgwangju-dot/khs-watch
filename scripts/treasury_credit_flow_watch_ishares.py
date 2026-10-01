@@ -347,7 +347,12 @@ def main():
         sec = "확인불가" if r.get("sec_yield") is None else f"{r['sec_yield']:.2f}%"
         oas = "확인불가" if r.get("oas_bps") is None else f"{r['oas_bps']:.1f}bp"
         doas = ldoas if ticker == "LQD" else hdoas
-        doas_text = "비교 대기" if doas is None else f"{arrow(doas)} {doas:+.1f}bp"
+        if doas is None:
+            doas_text = "비교 대기"
+        elif abs(doas) < 0.05:
+            doas_text = "→ 0.0bp"
+        else:
+            doas_text = f"{arrow(doas)} {doas:+.1f}bp"
         lines += [
             f"{ticker} ({r['label']}) — {r['date']}",
             f"• 가격: NAV ${r['nav']:.2f} | 1일 {price} | 30일 SEC {sec}",
