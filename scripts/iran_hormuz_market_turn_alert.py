@@ -88,6 +88,7 @@ NEWS_QUERIES = (
     '"diesel export ban" Trump White House when:3d',
     '"diesel export restrictions" voluntary US when:3d',
     '"diesel export ban" considering Trump when:3d',
+    '"still considering diesel export ban" Trump Reuters when:3d',
     '미국 디젤 수출 금지 검토 백악관 when:3d',
     '"Gulf crude" India 1.52 million bpd Kpler September when:7d',
     '"Saudi Arabia resumes oil exports" Yanbu East-West Pipeline when:3d',
