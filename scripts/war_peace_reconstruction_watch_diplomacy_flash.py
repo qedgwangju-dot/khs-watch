@@ -1375,6 +1375,115 @@ guard.prev._strict_body_color = _final_item_color
 guard.prev.core._body_color = _final_item_color
 
 
+
+_prev_semantic_build_alert = watch.build_alert
+
+
+def _semantic_output_fix(text):
+    """최종 렌더링된 각 항목을 내용 기준으로 다시 색상·주제 정합화한다."""
+    lines = (text or '').splitlines()
+    item_re = re.compile(r'^(?:[🔴🟢🟡]\s+)?\[(?:속보|신규|후속)\]\s+<b>(\d+)\.\s+([^<]+)</b>')
+    item_positions = [i for i, line in enumerate(lines) if item_re.search(line)]
+    rendered = []
+
+    for n, i in enumerate(item_positions):
+        end = item_positions[n + 1] if n + 1 < len(item_positions) else len(lines)
+        for j in range(i + 1, end):
+            if lines[j] in ('<b>시장 파급</b>', '<b>시장 반응</b>', '<b>투자 판정</b>'):
+                end = j
+                break
+        block = '\n'.join(lines[i:end])
+        plain = re.sub(r'<[^>]+>', '', block).lower()
+        m = item_re.search(lines[i])
+        if not m:
+            continue
+        idx = m.group(1)
+        topic = m.group(2).strip()
+        marker = ''
+
+        is_flow = any(x in plain for x in (
+            '실물물동량', '원유공급회복', '호르무즈 석유 물동량',
+            '역대 가장 많', '기록·급증·회복', 'sts기록', '2천만배럴',
+        ))
+        is_conditional = (
+            any(x in plain for x in ('폭격할지', '공습할지', 'whether to bomb', 'decide whether to bomb'))
+            and any(x in plain for x in ('협상을 타결', '합의할지', 'deal', '협상'))
+        )
+        is_breakdown = any(x in plain for x in (
+            '협상교착', '재확전위험', '협상 진전을 내지 못', '협상 결과 없음',
+            '적대행위 재개 가능', '적대 행위 재개 가능', 'talks yield no result',
+        ))
+        is_gaza = any(x in plain for x in ('gaza', '가자지구', '가자')) and any(x in plain for x in ('israel', 'israeli', '이스라엘'))
+        is_bryansk = any(x in plain for x in ('bryansk', '브랸스크')) and any(x in plain for x in ('ukrain', '우크라이나'))
+        is_houthi_ops = any(x in plain for x in ('houthi', '후티')) and any(x in plain for x in ('airspace', '영공', '항공청', '운항 제한', '학교', '등교'))
+        stop_context = any(x in plain for x in ('공격 중단', '공습 중단', '휴전 합의', '정전 합의'))
+        active_attack = (not stop_context) and any(x in plain for x in (
+            '미사일 공격', '드론 공격', '공습', '피격', '포격', '폭격',
+            'attack on ', 'attacked ', 'air strikes', 'airstrikes', 'missile attack',
+            '12명 부상', '사망', '부상',
+        ))
+
+        if is_flow:
+            marker = '🟢'
+            topic = '호르무즈·걸프 · 원유 물동량 회복'
+        elif is_conditional:
+            marker = '🟡'
+            topic = '이란·미국 · 군사옵션·협상 갈림길'
+        elif is_breakdown:
+            marker = '🟡'
+            topic = '이란·미국·이스라엘 · 협상 교착·재확전 위험'
+        elif is_gaza:
+            marker = '🔴'
+            topic = '이스라엘·가자'
+        elif is_bryansk:
+            marker = '🔴'
+            topic = '우크라이나·러시아'
+        elif is_houthi_ops:
+            marker = '🔴'
+            topic = '사우디·후티'
+        elif active_attack:
+            marker = '🔴'
+
+        if marker:
+            prefix = re.match(r'^(?:[🔴🟢🟡]\s+)?\[(?:속보|신규|후속)\]\s+', lines[i])
+            level = re.search(r'\[(속보|신규|후속)\]', lines[i])
+            if prefix and level:
+                lines[i] = f"{marker} [{level.group(1)}] <b>{idx}. {topic}</b>"
+                rendered.append((marker, plain))
+
+    # 상단 범례는 의미 기준으로 다시 만든다. 공급회복을 휴전으로 부르지 않는다.
+    has_red = any(m == '🔴' for m, _ in rendered)
+    has_yellow = any(m == '🟡' for m, _ in rendered)
+    has_flow_green = any(m == '🟢' and any(x in b for x in ('실물물동량','원유공급회복','물동량')) for m, b in rendered)
+    has_peace_green = any(m == '🟢' and any(x in b for x in ('휴전','종전','평화협상','재건')) for m, b in rendered)
+
+    badges = []
+    if has_red:
+        badges.append('🔴 <b>공격·확전</b>')
+    if has_peace_green:
+        badges.append('🟢 <b>재건·휴전</b>')
+    if has_flow_green:
+        badges.append('🟢 <b>실물 공급회복</b>')
+    if has_yellow:
+        badges.append('🟡 <b>협상 제약·불확실성</b>')
+
+    lines = [line for line in lines if not (
+        '<b>공격·확전</b>' in line or '<b>재건·휴전</b>' in line or
+        '<b>실물 공급회복</b>' in line or '<b>협상 제약·불확실성</b>' in line
+    )]
+    if badges and lines:
+        lines.insert(1, '  |  '.join(badges))
+    return '\n'.join(lines)
+
+
+def _semantic_build_alert(items, markets, now):
+    text = _prev_semantic_build_alert(items, markets, now)
+    return _semantic_output_fix(text).strip()[:4000] + '\n'
+
+
+watch.build_alert = _semantic_build_alert
+
+
 def _alert_quality_issues(text):
     """Telegram 송출 직전 최종 품질 게이트."""
     issues = []
