@@ -179,8 +179,8 @@ def resilient_snapshot() -> dict:
         official_data = official.official_cme_snapshot()
         if any(official_data.values()):
             return official_data
-    except Exception:
-        pass
+    except Exception as exc:
+        print(f"cme_treasury_official_parse_failed={type(exc).__name__}: {exc}")
     return yahoo_snapshot()
 
 
