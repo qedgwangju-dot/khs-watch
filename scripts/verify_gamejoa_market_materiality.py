@@ -92,6 +92,17 @@ class MaterialityChecks(unittest.TestCase):
         self.assertIn("제3자 보고", core)
         self.assertNotIn("유가 상승", core)
 
+    def test_major_war_escalation_survives_without_already_observed_oil_reaction(self):
+        for title, body in (
+            ("트럼프, 이란 추가 공격 임박 경고", "트럼프는 이란에 대한 추가 공격이 임박했다고 경고했다."),
+            ("미국, 중동 항공모함 추가 배치", "미국은 이란 위협에 대응해 중동 항공모함 추가 배치와 병력 증강을 발표했다."),
+            ("러시아, 핵무기 사용 위협", "러시아는 전쟁 확대에 대해 핵무기 사용으로 대응할 수 있다고 경고했다."),
+        ):
+            audit = materiality.assess(title, body)
+            self.assertEqual(audit["disposition"], "keep", audit)
+            self.assertGreaterEqual(audit["priority"], 2)
+            self.assertIn("discount_rate", audit["axes"])
+
     def test_new_financing_precedes_routine_price_recap_without_keyword_score(self):
         financing = materiality.assess("브로드컴, 앤트로픽 대출 협상", "브로드컴은 앤트로픽에 420억달러 대출을 제공하는 자금조달 계약을 검토한다.")
         recap = materiality.assess("뉴욕증시 강보합 마감…나스닥 0.04% 상승", "나스닥 주가는 0.04% 상승했다. 다른 기업의 매출은 50% 증가했다.")
