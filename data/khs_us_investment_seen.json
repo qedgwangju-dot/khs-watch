@@ -333,7 +333,9 @@
     "stateevt_f89998286c7537ffdf40": "2026-10-01T04:00:13.838509+00:00",
     "stateevt_16836cd54dadd738934d": "2026-10-01T04:00:13.838509+00:00",
     "stateevt_e191e0a210218dc554c1": "2026-10-01T19:00:22.000282+00:00",
-    "stateevt_644bbd3c3ab5d414d9ea": "2026-10-01T23:05:45.218214+00:00"
+    "stateevt_644bbd3c3ab5d414d9ea": "2026-10-01T23:05:45.218214+00:00",
+    "stateevt_bf7b8b20b6d6b143e7b8": "2026-10-01T23:15:40.460578+00:00",
+    "stateevt_05055f763ef19bc3ab75": "2026-10-01T23:15:40.460578+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -358,13 +360,15 @@
     "eventstate_encinal_f89998286c7537ffdf40": "2026-10-01T04:00:13.838509+00:00",
     "eventstate_nuclear_build_16836cd54dadd738934d": "2026-10-01T04:00:13.838509+00:00",
     "eventstate_texas_ai_power_e191e0a210218dc554c1": "2026-10-01T19:00:22.000282+00:00",
-    "eventstate_funding_execution_644bbd3c3ab5d414d9ea": "2026-10-01T23:05:45.218214+00:00"
+    "eventstate_funding_execution_644bbd3c3ab5d414d9ea": "2026-10-01T23:05:45.218214+00:00",
+    "eventstate_funding_execution_bf7b8b20b6d6b143e7b8": "2026-10-01T23:15:40.460578+00:00",
+    "eventstate_encinal_05055f763ef19bc3ab75": "2026-10-01T23:15:40.460578+00:00"
   },
   "official_status": {
-    "status": "confirmed",
-    "title": "[상태 변화] 텍사스 엔시날 발전사업 — Encinal 전체 가동 2032 · Encinal 1단계 상업운전 2029 · Encinal 공식 사업비 223억달러 · 대미투자 1호 공식 확정 · Encinal 총 6472MW",
+    "status": "official_seen",
+    "title": "[상태 변화] 텍사스 엔시날 발전사업 — Encinal 공식 사업비 24억달러 · 송금집행",
     "source": "대한민국 정책브리핑",
-    "updated_at": "2026-10-01T04:00:32.394297+00:00"
+    "updated_at": "2026-10-01T23:16:02.298960+00:00"
   },
   "event_states": {
     "nuclear_build": {
@@ -416,28 +420,30 @@
     "funding_execution": {
       "facts": [
         "funding_amount_usd:24억",
-        "official_status:unconfirmed"
+        "funding_date:2026-10-01",
+        "stage:송금집행"
       ],
       "slots": {
         "funding_execution|funding_amount_usd": "funding_amount_usd:24억",
-        "funding_execution|official_status": "official_status:unconfirmed"
+        "funding_execution|funding_date": "funding_date:2026-10-01",
+        "funding_execution|stage:funding": "stage:송금집행"
       },
       "initialized_at": "2026-09-21T13:18:18.976289+00:00",
-      "updated_at": "2026-10-01T23:06:06.084187+00:00",
-      "last_title": "24억달러 첫 송금…韓 대미투자 1호 텍사스 발전소 자재 발주 본격화 - 뉴스1",
+      "updated_at": "2026-10-01T23:16:02.287139+00:00",
+      "last_title": "재정경제부 확인 2026-10-01 정부 첫 대미투자금 24억달러 첫 송금 완료 텍사스 엔시날",
       "last_source": "뉴스1",
       "evidence": [
+        {
+          "source": "뉴스1",
+          "title": "재정경제부 확인 2026-10-01 정부 첫 대미투자금 24억달러 첫 송금 완료 텍사스 엔시날",
+          "link": "https://www.news1.kr/economy/trend/6307297",
+          "published": "2026-10-01T01:56:00+00:00"
+        },
         {
           "source": "뉴스1",
           "title": "24억달러 첫 송금…韓 대미투자 1호 텍사스 발전소 자재 발주 본격화 - 뉴스1",
           "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5CdDY2RlBjUkQ0RTg1QjZBcHlkTDB5LXJRdlZZbFdNeHJMUkJJUEwyUkdjUU03ZFpneFVpZnhubnFJeHBMTkZLb0F5OU85SjRUUjE1aNIBWkFVX3lxTE1vcW5pTVl6LXZyNjVJekhROG1Rcm9RWFFPZEpIbmZXb2pTRmhQZnctX1N1RGlwX05wNmsxMFhlZUxURUc2alVvcmdSMkRXek90UjV4eGdyV3dDUQ?oc=5",
           "published": "2026-10-01T21:00:00+00:00"
-        },
-        {
-          "source": "한국일보",
-          "title": "'우산형 투자기구'로 위험 분산… 24억 달러 대미투자금 첫 송금 - 한국일보",
-          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9qMm9uLVlvLU9MMEl3dEhBdDBxcFRTOWMxa0Y5OGtpR05KWV9iQnNIdDVHMTNFNTZZS2JzRFFuOXFZUml2ajVRZlJyYnlSQmRkZWhyWFlvazdrUVNDbGl5NDVWX1hDcURoYXZONXktdHVpdkHSAXNBVV95cUxPajJvbi1Zby1PTDBJd3RIQXQwcXBUUzljMWtGOThraUdOSllfYkJzSHQ1RzEzRTU2WUtic0RRbjlxWVJpdmo1UWZScmJ5UkJkZGVoclhZb2s3a1FTQ2xpeTQ1Vl9YQ3FEaGF2TjV5LXR1aXZB?oc=5",
-          "published": "2026-10-01T00:18:00+00:00"
         }
       ]
     },
@@ -673,27 +679,35 @@
       "facts": [
         "encinal_full_year:2032",
         "encinal_phase1_year:2029",
-        "encinal_project_cost_usd_b:22.3",
+        "encinal_project_cost_usd_b:2.4",
         "encinal_status:confirmed_first",
-        "encinal_total_mw:6472"
+        "encinal_total_mw:6472",
+        "stage:송금집행"
       ],
       "slots": {
         "encinal|encinal_full_year": "encinal_full_year:2032",
         "encinal|encinal_phase1_year": "encinal_phase1_year:2029",
-        "encinal|encinal_project_cost_usd_b": "encinal_project_cost_usd_b:22.3",
+        "encinal|encinal_project_cost_usd_b": "encinal_project_cost_usd_b:2.4",
         "encinal|encinal_status": "encinal_status:confirmed_first",
-        "encinal|encinal_total_mw": "encinal_total_mw:6472"
+        "encinal|encinal_total_mw": "encinal_total_mw:6472",
+        "encinal|stage:송금집행": "stage:송금집행"
       },
       "initialized_at": "2026-10-01T04:00:32.379678+00:00",
-      "updated_at": "2026-10-01T04:00:32.379678+00:00",
+      "updated_at": "2026-10-01T23:16:02.281275+00:00",
       "last_title": "산업통상부 공식 Project Star 엔시날 제1호 공식 추진 사업비 223억달러 6472MW 2029 1단계 2032 전체 가동",
       "last_source": "대한민국 정책브리핑",
       "evidence": [
         {
-          "source": "대한민국 정책브리핑",
-          "title": "산업통상부 공식 Project Star 엔시날 제1호 공식 추진 사업비 223억달러 6472MW 2029 1단계 2032 전체 가동",
-          "link": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156783865",
-          "published": "2026-10-01T00:00:00+00:00"
+          "source": "뉴스1",
+          "title": "[문답]대미투자 1호 엔시날…美정부 PPA 수요처 주선, 9월말 21억~24억불 송금 - 뉴스1",
+          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE51UDBpc3M2ekpmYm5JZjlybWtkelQ2UTFkODlkeXo5enU3M0sycU5fazg1QV8zZ0x2QXVydWhGMFNRYy1lWXZhVU9yY19wT0hseEQzcFE3emlnSjFRcFp3VmNkYi3SAWRBVV95cUxOdVAwaXNzNnpKZmJuSWY5cm1rZHpUNlExZDg5ZHl6OXp1NzNLMnFOX2s4NUFfM2dMdkF1cnVoRjBTUWMtZVl2YVVPcmNfcE9IbHhEM3BRN3ppZ0oxUXBad1ZjZGIt?oc=5",
+          "published": "2026-09-30T21:51:25+00:00"
+        },
+        {
+          "source": "아주경제",
+          "title": "재정경제부 확인 2026-10-01 텍사스 엔시날 첫 투자금 24억달러 미국 송금 완료",
+          "link": "https://v.daum.net/v/qxaIoHd8vp",
+          "published": "2026-10-01T05:30:00+00:00"
         }
       ]
     }
