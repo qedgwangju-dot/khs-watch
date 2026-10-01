@@ -103,9 +103,7 @@
     ],
     "recent_30d": []
   },
-  "errors": [
-    "민간 JGB 흡수: RuntimeError: proxy race timeout=20s HTTPError: HTTP Error 403: Forbidden | direct race timeout=10s HTTPError: HTTP Error 503: Service Unavailable"
-  ],
+  "errors": [],
   "initialized": true,
   "market_stress": {
     "jgb10": 3.057,
@@ -129,7 +127,39 @@
     ],
     "newer_than_baseline": []
   },
-  "private_absorption": null,
+  "private_absorption": {
+    "boj_change_same_quarter_trillion_yen": -12.52721762200008,
+    "current_period": "202602",
+    "note": "선택된 민간부문의 중앙정부증권·FILP 채권 보유증가 ÷ 같은 분기 BOJ JGS 보유감소. 자산범위가 완전히 같지 않은 프록시이며 신규발행·기타 보유주체 때문에 100% 초과 가능.",
+    "prior_period": "202601",
+    "private_absorption_ratio": 0.5320894232965167,
+    "private_change_trillion_yen": 6.6655999999999835,
+    "private_current_trillion_yen": 349.4904,
+    "private_prior_trillion_yen": 342.82480000000004,
+    "selected_groups": {
+      "depository_corporations": {
+        "change_trillion_yen": 8.17270000000002,
+        "current_trillion_yen": 143.2769,
+        "prior_trillion_yen": 135.1042,
+        "series_code": "FOF_FFAS120A311",
+        "series_name": "Assets/-Central government securities and FILP bonds/Depository corporations/Stock"
+      },
+      "households": {
+        "change_trillion_yen": 1.9061000000000021,
+        "current_trillion_yen": 21.9434,
+        "prior_trillion_yen": 20.0373,
+        "series_code": "FOF_FFAS430A311",
+        "series_name": "Assets/-Central government securities and FILP bonds/Households/Stock"
+      },
+      "insurance_pensions": {
+        "change_trillion_yen": -3.413199999999989,
+        "current_trillion_yen": 184.2701,
+        "prior_trillion_yen": 187.6833,
+        "series_code": "FOF_FFAS130A311",
+        "series_name": "Assets/-Central government securities and FILP bonds/Insurance and pension funds/Stock"
+      }
+    }
+  },
   "purchase": {
     "actual_plan_ratio": 0.9284800000000001,
     "actual_trillion_yen": 2.3212,
@@ -147,5 +177,5 @@
     "plan_revision": false,
     "weak_private_absorption": false
   },
-  "updated_at_kst": "2026-10-01T11:29:56+09:00"
+  "updated_at_kst": "2026-10-01T18:22:26+09:00"
 }
