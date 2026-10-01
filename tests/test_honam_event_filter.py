@@ -7,7 +7,12 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scripts.honam_event_filter import _is_known_baseline_only, _is_proposal_only
+from scripts.honam_event_filter import (
+    _event_family,
+    _is_known_baseline_only,
+    _is_proposal_only,
+    _merge_group,
+)
 
 
 class HonamEventFilterRegressionTest(unittest.TestCase):
@@ -52,6 +57,52 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
             "description": "5분 자유발언에서 정책 제안",
         }
         self.assertTrue(_is_proposal_only(item))
+
+    def test_megaproject_followup_articles_share_one_family(self):
+        item = {
+            "title": "호남 반도체 클러스터 조성 가속도",
+            "description": "전력 용수 정주 여건 마련 동시 진행",
+            "body_excerpt": "메가프로젝트 점검회의에서 광주 군공항 임시이전 완료시기 2028년 중순은 늦다며 재검토를 지시했다. 호남권 계통관리변전소는 10월 1일 해제한다.",
+        }
+        self.assertEqual(_event_family(item), "honam_megaproject_20260929")
+
+    def test_single_report_is_not_labeled_official(self):
+        item = {
+            "title": "호남 반도체 새 변화",
+            "source": "테스트뉴스",
+            "url": "https://example.com/news",
+            "source_status": "보도 단계",
+            "_kind": "news",
+            "stages": ["6_산단투자_기업일정"],
+            "stage_labels": ["⑥ 산단·기업투자·팹 일정"],
+        }
+        merged = _merge_group([item])
+        self.assertEqual(merged["verification_level"], 1)
+        self.assertEqual(merged["verification_status"], "단일 보도·공식 미확정")
+
+    def test_official_evidence_promotes_verification(self):
+        news = {
+            "title": "호남 반도체 메가프로젝트",
+            "source": "테스트뉴스",
+            "url": "https://example.com/news",
+            "source_status": "보도 단계",
+            "_kind": "news",
+            "stages": ["4_정주주거_배후도시", "6_산단투자_기업일정"],
+            "stage_labels": ["④ 정주·주거·배후도시", "⑥ 산단·기업투자·팹 일정"],
+        }
+        official = {
+            "title": "메가프로젝트 제3차 민관합동 점검회의",
+            "source": "대한민국 청와대",
+            "url": "https://www.president.go.kr/briefings/test",
+            "source_status": "공식자료",
+            "_kind": "official",
+            "stages": ["4_정주주거_배후도시", "6_산단투자_기업일정"],
+            "stage_labels": ["④ 정주·주거·배후도시", "⑥ 산단·기업투자·팹 일정"],
+        }
+        merged = _merge_group([news, official])
+        self.assertEqual(merged["verification_level"], 3)
+        self.assertEqual(merged["verification_status"], "공식자료 확인")
+        self.assertEqual(merged["evidence_count"], 2)
 
 
 if __name__ == "__main__":
