@@ -132,14 +132,48 @@ def _cme_daily_bulletin_nq() -> dict:
     parser uses the signed point-change field and only uses settlement for an
     approximate percentage calculation.
     """
-    req = urllib.request.Request(
+    stamp = datetime.now(NY).strftime("%Y%m%d%H")
+    urls = [
+        CME_NQ_BULLETIN + "?download=1&_=" + stamp,
+        CME_NQ_BULLETIN + "?_=" + stamp,
         CME_NQ_BULLETIN,
-        headers={"User-Agent": "Mozilla/5.0 khs-watch/cta-squeeze", "Accept": "application/pdf,*/*"},
-    )
-    with urllib.request.urlopen(req, timeout=30) as response:
-        raw = response.read()
-    if not raw.startswith(b"%PDF"):
-        raise RuntimeError("CME PG11 did not return a PDF")
+    ]
+    candidates = []
+    errors = []
+    headers = {
+        "User-Agent": "Mozilla/5.0 khs-watch/cta-squeeze",
+        "Accept": "application/pdf,*/*",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+        "Referer": "https://www.cmegroup.com/market-data/daily-bulletin.html",
+    }
+    for url in urls:
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=30) as response:
+                data = response.read()
+            if not data.startswith(b"%PDF"):
+                errors.append(f"{url}: non-PDF")
+                continue
+            probe = PdfReader(io.BytesIO(data))
+            probe_text = "\n".join((p.extract_text() or "") for p in probe.pages[:1])
+            dm = re.search(
+                r"\b(?:Mon|Tue|Wed|Thu|Fri),\s+([A-Z][a-z]{2})\s+(\d{1,2}),\s+(20\d{2})\b",
+                probe_text,
+            )
+            d = None
+            if dm:
+                d = datetime.strptime(
+                    f"{dm.group(1)} {dm.group(2)} {dm.group(3)}",
+                    "%b %d %Y",
+                ).date()
+            candidates.append((d, data, url))
+        except Exception as exc:
+            errors.append(f"{url}: {type(exc).__name__}: {exc}")
+    if not candidates:
+        raise RuntimeError("CME PG11 download failed: " + " | ".join(errors))
+    candidates.sort(key=lambda x: (x[0] or date.min), reverse=True)
+    _, raw, bulletin_url = candidates[0]
 
     reader = PdfReader(io.BytesIO(raw))
     layout_pages = []
@@ -254,28 +288,18 @@ def _cme_daily_bulletin_nq() -> dict:
         "basis": "previous trade date settlement + total product daily OI",
         "trade_date": trade_date,
         "month": month,
-        "url": CME_NQ_BULLETIN,
+        "url": bulletin_url,
     }
 
 
 def _nq_price() -> dict:
-    """Use official CME NQ price first; Yahoo is display-only fallback."""
-    official_errors = []
-    try:
-        row = watcher.cme_front("NQ")
-        if row and row.get("last") is not None and row.get("pct_change") is not None:
-            return {
-                "price": float(row["last"]),
-                "previous_close": None,
-                "pct_change": float(row["pct_change"]),
-                "source": "CME official NQ quote API",
-                "official": True,
-                "month": row.get("month") or "",
-            }
-        official_errors.append("CME quote API returned no usable NQ row")
-    except Exception as exc:
-        official_errors.append(f"CME quote API: {type(exc).__name__}: {exc}")
+    """Use dated official CME settlement/OI first; Yahoo is display-only fallback.
 
+    The internal CME quote endpoint is excluded from production because it returns
+    404 for NQ on GitHub-hosted runners. The Daily Bulletin is the confirmation
+    source because settlement direction and OI change are in one dated CME file.
+    """
+    official_errors = []
     try:
         return _cme_daily_bulletin_nq()
     except Exception as exc:
@@ -410,6 +434,22 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
     nq_gross_extreme = nq_history_ready and float(gross_pctile) >= 90.0
     nq_extreme = nq_net_extreme or nq_gross_extreme
 
+    # Distinguish POSITION LEVEL from FLOW SHOCK. The Goldman/PB "record week"
+    # thesis can be directionally supported by CFTC even when the current stock of
+    # shorts is not at a 90th-percentile extreme. Only a complete 10Y official
+    # history and a >=99th-percentile positive gross-short weekly build qualify.
+    nq_build_pctile_10y = hist.get("gross_short_weekly_build_percentile_10y")
+    nq_build_record_10y = bool(hist.get("gross_short_weekly_record_10y"))
+    nq_build_change_10y = hist.get("gross_short_weekly_change_10y")
+    nq_build_shock = bool(
+        nq_history_ready
+        and hist.get("ten_year_complete")
+        and isinstance(nq_build_pctile_10y, (int, float))
+        and isinstance(nq_build_change_10y, (int, float))
+        and float(nq_build_pctile_10y) >= 99.0
+        and int(nq_build_change_10y) > 0
+    )
+
     try:
         report_iso = datetime.strptime(str(nq.get("report_date") or ""), "%B %d, %Y").date().isoformat()
     except Exception:
@@ -474,7 +514,7 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
     # Fuel must be present in the current observation. Do not latch an old
     # extreme indefinitely after positioning has normalised.
     treasury_fuel = treasury_short_present
-    nq_fuel = nq_extreme
+    nq_fuel = nq_extreme or nq_build_shock
 
     zn = (snapshot.get("cme") or {}).get("ZN") or {}
     treasury_price_up = (
@@ -487,14 +527,6 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         and data_fresh
         and nq_history_ready
         and nq_history_fresh
-        and (
-            treasury_price_up
-            or (
-                nq_price_up
-                and nq_price_official
-                and nq_price_fresh
-            )
-        )
     )
 
     if treasury_confirmed and nq_confirmed and treasury_fuel and nq_fuel:
@@ -502,7 +534,7 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         label = "🔥 채권→Nasdaq 이중 숏 스퀴즈 확인"
     elif prepared:
         stage = 1
-        label = "🟡 채권→Nasdaq 이중 숏 스퀴즈 준비"
+        label = "🟡 채권→Nasdaq 이중 숏 스퀴즈 연료 축적"
     else:
         stage = 0
         label = "⚪ 채권→Nasdaq 이중 숏 스퀴즈 미확인"
@@ -518,6 +550,10 @@ def _cross_asset_snapshot(snapshot: dict, previous: dict) -> dict:
         "nq_extreme": nq_extreme,
         "nq_net_extreme": nq_net_extreme,
         "nq_gross_extreme": nq_gross_extreme,
+        "nq_build_shock": nq_build_shock,
+        "nq_build_pctile_10y": nq_build_pctile_10y,
+        "nq_build_record_10y": nq_build_record_10y,
+        "nq_build_change_10y": nq_build_change_10y,
         "nq_fuel": nq_fuel,
         "nq_history_ready": nq_history_ready,
         "nq_history_fresh": nq_history_fresh,
@@ -568,6 +604,9 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, compact: bool = 
     if not isinstance(net_unwind, (int, float)):
         net_unwind = hist.get("unwind_from_peak_pct")
     gross_unwind = hist.get("gross_short_unwind_from_peak_pct")
+    build_pct10 = hist.get("gross_short_weekly_build_percentile_10y")
+    build_change10 = hist.get("gross_short_weekly_change_10y")
+    build_record10 = bool(hist.get("gross_short_weekly_record_10y"))
     net_unwind_text = f"{float(net_unwind):.1f}%" if isinstance(net_unwind, (int, float)) else "확인 불가"
     gross_unwind_text = f"{float(gross_unwind):.1f}%" if isinstance(gross_unwind, (int, float)) else "확인 불가"
 
@@ -579,6 +618,12 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, compact: bool = 
             f"NQ LF 순 {int(nq.get('leveraged_net') or 0):+,}계약 (순숏 {net_pctile_text} / 총숏 {gross_pctile_text})\n"
             f"• NQ {nq_pct_text} · CME 일일 OI {int(price.get('oi_change') or 0):+,} · "
             f"CFTC 순포지션 주간 {int(nq.get('leveraged_net_wow') or 0):+,}\n"
+            + (
+                f"• NQ 총숏 주간 {int(build_change10):+,}계약 · 10년 {float(build_pct10):.0f}백분위"
+                f"{' · 10년 주간 최고' if build_record10 else ''}\n"
+                if isinstance(build_change10, (int, float)) and isinstance(build_pct10, (int, float))
+                else ""
+            )
         )
 
     return (
@@ -588,6 +633,13 @@ def _cross_asset_block(snapshot: dict, previous: dict, fx=None, compact: bool = 
         f"• NQ E-mini Leveraged Funds 순포지션 {int(nq.get('leveraged_net') or 0):+,}계약"
         f" · 3년 순숏 {net_pctile_text} · 총숏 {gross_pctile_text}\n"
         f"• 3년 극단 대비 청산률: 순숏 {net_unwind_text} · 총숏 {gross_unwind_text}\n"
+        + (
+            f"• 이번 주 NQ 총숏 증가 {int(build_change10):+,}계약 = 10년 {float(build_pct10):.0f}백분위"
+            f"{' · <b>10년 주간 최고</b>' if build_record10 else ''}\n"
+            if isinstance(build_change10, (int, float)) and isinstance(build_pct10, (int, float))
+            else ""
+        )
+        + "• 중요: '10년 기록'은 현재 총숏 잔고가 10년 최고라는 뜻이 아니라, <b>이번 주 총숏 증가 속도</b>가 기록적이라는 뜻입니다.\n"
         f"• NQ {nq_pct_text} ({price.get('source') or '가격 소스 확인 불가'})"
         f" · CME 일일 총 OI 변화 {int(price.get('oi_change') or 0):+,}계약"
         f" · CFTC 주간 총 OI 변화 {int(nq.get('open_interest_wow') or 0):+,}계약"
@@ -918,7 +970,7 @@ def scheduled_main() -> int:
     except Exception:
         fx, fx_date = None, None
     if cross_due and not (monday_due or fomc_due):
-        title = "🔥 채권→Nasdaq 이중 숏 스퀴즈 감시" if stage >= 2 else "🟡 채권→Nasdaq 이중 숏 스퀴즈 준비"
+        title = "🔥 채권→Nasdaq 이중 숏 스퀴즈 감시" if stage >= 2 else "🟡 채권→Nasdaq 이중 숏 스퀴즈 연료 축적"
         body = "\n".join([
             "<b>👀 지금 쉽게 보면</b>",
             f"• <b>{cross.get('label')}</b>",
