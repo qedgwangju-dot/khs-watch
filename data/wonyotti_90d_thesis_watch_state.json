@@ -1,78 +1,78 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-10-01T19:14:07+09:00",
+  "updated_at_kst": "2026-10-01T19:18:01+09:00",
   "crypto": {
     "derivatives": {
       "BTCUSDT": {
-        "funding": 1.8e-05,
-        "index_price": 83680.69,
-        "mark_price": 83653.1,
-        "last_price": 83653.2,
+        "funding": 1.7e-05,
+        "index_price": 83630.28,
+        "mark_price": 83605.5,
+        "last_price": 83605.6,
         "open_interest": 512808040.0,
         "open_interest_value": 4288769019.35612,
-        "turnover24h": 667518527963.0,
+        "turnover24h": 667520249388.0,
         "source": "Gate.io Futures API"
       },
       "ETHUSDT": {
-        "funding": 9e-06,
-        "index_price": 2686.66,
-        "mark_price": 2685.83,
-        "last_price": 2685.84,
+        "funding": 1.2e-05,
+        "index_price": 2686.31,
+        "mark_price": 2685.3,
+        "last_price": 2685.3,
         "open_interest": 76714240.0,
         "open_interest_value": 2060843671.936,
-        "turnover24h": 181747645171.0,
+        "turnover24h": 181747930657.0,
         "source": "Gate.io Futures API"
       },
       "SOLUSDT": {
         "funding": -3.1e-05,
-        "index_price": 117.528,
-        "mark_price": 117.47,
-        "last_price": 117.48,
+        "index_price": 117.35,
+        "mark_price": 117.33,
+        "last_price": 117.34,
         "open_interest": 7848612.0,
         "open_interest_value": 921427048.8,
-        "turnover24h": 4437895978.0,
+        "turnover24h": 4437907995.0,
         "source": "Gate.io Futures API"
       }
     },
     "prices": {
       "BTC": {
-        "usd": 83630.92,
-        "change24": -0.11623872859787888,
-        "volume24": 37311639648.33051,
+        "usd": 83601.0,
+        "change24": -0.07475490126214226,
+        "volume24": 37882881602.10503,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 83623.0,
-          "Coinbase": 83630.92,
-          "Gate.io Spot": 83693.3
+          "CoinGecko": 83601.0,
+          "Coinbase": 83578.82,
+          "Gate.io Spot": 83630.7
         },
-        "dispersion_pct": 0.08405981902387648
+        "dispersion_pct": 0.06205667396321827
       },
       "ETH": {
-        "usd": 2685.59,
-        "change24": -0.18394882566860957,
-        "volume24": 15511738576.39945,
+        "usd": 2683.75,
+        "change24": -0.14520004424226948,
+        "volume24": 15508520323.912096,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 2685.53,
-          "Coinbase": 2685.59,
-          "Gate.io Spot": 2686.65
+          "CoinGecko": 2683.75,
+          "Coinbase": 2682.81,
+          "Gate.io Spot": 2685.62
         },
-        "dispersion_pct": 0.04170405758138401
+        "dispersion_pct": 0.10470423847228488
       },
       "SOL": {
-        "usd": 117.43,
-        "change24": -1.596577339103674,
-        "volume24": 4212406923.5622506,
+        "usd": 117.36,
+        "change24": -1.5694902445143124,
+        "volume24": 4289089506.48117,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 117.43,
+          "CoinGecko": 117.39,
           "Coinbase": 117.36,
-          "Gate.io Spot": 117.54
+          "Gate.io Spot": 117.35
         },
-        "dispersion_pct": 0.15328280677851214
+        "dispersion_pct": 0.03408316291752408
       }
     },
     "price_verified": true,
@@ -96,7 +96,7 @@
         "2026-09-29",
         "2026-09-30"
       ],
-      "stable_obs": 44,
+      "stable_obs": 45,
       "trigger_ready": true
     },
     "eth_etf": {
@@ -113,7 +113,7 @@
         "2026-09-29",
         "2026-09-30"
       ],
-      "stable_obs": 56,
+      "stable_obs": 57,
       "trigger_ready": true
     }
   },
@@ -145,7 +145,7 @@
     "equity_investments_b": 99.0,
     "equity_commitments_b": 25.0,
     "customer_finance_language": true,
-    "checked_at_kst": "2026-10-01T19:14:56+09:00"
+    "checked_at_kst": "2026-10-01T19:18:51+09:00"
   },
   "news_seen": [
     "66e158e8ecb032f4a3cf5675",
