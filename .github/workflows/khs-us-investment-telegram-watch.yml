@@ -82,6 +82,32 @@ jobs:
           python -m unittest discover -s tests -p 'test_hbm_currency_krw_guard.py'
           python -m unittest discover -s tests -p 'test_fx_api.py'
 
+      - name: Validate live USD-KRW conversion route
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          from currency_krw_guard import enforce_text, validate_text
+          from fx_api import daily_krw
+
+          quote = daily_krw("USD")
+          sample = (
+              "Project Star 223억달러 · "
+              "Project Power 최대 1,200억달러 · "
+              "전략투자 2,000억달러 · "
+              "Alaska LNG 540억달러"
+          )
+          rendered = enforce_text(sample)
+          validate_text(rendered)
+          for token in ("223억달러(", "1,200억달러(", "2,000억달러(", "540억달러("):
+              if token not in rendered:
+                  raise RuntimeError(f"inline KRW conversion missing: {token}")
+          print(
+              f"krw_fx_route_valid=true rate={quote.rate:.4f} "
+              f"date={quote.date} source={quote.source}"
+          )
+          print(f"krw_inline_sample={rendered}")
+          PY
+
       # Every relevant code push validates the real Telegram bot/chat route.
       # Live monitoring and Telegram delivery still run only on schedule/manual dispatch.
       - name: Validate exact Telegram route
