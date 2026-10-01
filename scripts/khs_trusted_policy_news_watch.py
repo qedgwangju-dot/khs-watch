@@ -51,6 +51,13 @@ OFFICIAL_DIRECT_STORIES = {
             "U.S. Senate (Sen. Dave McCormick)",
         ),
     ),
+    "us_fcc_upper_c_band_auction115": (
+        (
+            "https://www.federalregister.gov/documents/2026/08/03/2026-15725/auction-of-flexible-use-licenses-in-the-upper-c-band-for-next-generation-wireless-services-scheduled",
+            "Auction of Flexible-Use Licenses in the Upper C-Band for Next-Generation Wireless Services Scheduled for April 27, 2027; Comment Sought on Competitive Bidding Procedures for Auction 115",
+            "U.S. Federal Register (FCC)",
+        ),
+    ),
 }
 
 DIRECT_STORY_URLS = {
@@ -65,6 +72,15 @@ TITLE_PATH = OUT_DIR / "khs_trusted_policy_news_title.txt"
 ALERTS_JSON_PATH = OUT_DIR / "khs_trusted_policy_news_alerts.json"
 
 MAX_AGE_HOURS = int(os.getenv("KHS_TRUSTED_NEWS_MAX_AGE_HOURS", "72"))
+RULE_MAX_AGE_HOURS = {
+    # One-time recovery lane for the already-official Auction 115 schedule plus
+    # the later FCC Chair $100B multi-auction context that was missed on Telegram.
+    "us_fcc_upper_c_band_auction115": 24 * 75,
+}
+
+def max_age_hours_for_rule(rule: "StoryRule") -> int:
+    return RULE_MAX_AGE_HOURS.get(rule.key, MAX_AGE_HOURS)
+
 FORMAT_VERSION = "trusted-policy-news-v1"
 
 TRUSTED_SOURCES = {
@@ -276,6 +292,43 @@ STORY_RULES = (
             "Commerce의 미국·동맹국 생산능력 평가와 공급망 전략, Coherent·Lumentum·Applied Optoelectronics 등 대체 공급사의 증설·납기도 확인합니다."
         ),
         trusted_sources=("Dave McCormick", "Senator Dave McCormick", "U.S. Senate"),
+    ),
+    StoryRule(
+        key="us_fcc_upper_c_band_auction115",
+        title="미 FCC, Upper C-band Auction 115 2027 경매 일정·대역 확정",
+        google_queries=(
+            '"Auction 115" "Upper C-Band" FCC April 27 2027',
+            '"upcoming spectrum auctions" "$100 billion" Brendan Carr Reuters',
+            '"Upper C-Band" 160 megahertz 3248 licenses FCC Reuters',
+            '"Auction of Flexible-Use Licenses" "Auction 115"',
+        ),
+        required_groups=(
+            ("auction 115", "upper c-band", "upper c band"),
+            ("fcc", "federal communications commission", "federal register"),
+            ("2027", "april 27", "3.98", "3980", "160 megahertz", "160 mhz"),
+        ),
+        core=(
+            "FCC는 Auction 115에서 3.98~4.14GHz Upper C-band 160MHz를 20MHz×8블록으로 나눠 "
+            "미 본토 406개 PEA에 총 3,248개 면허를 공급하고, 입찰 개시를 2027년 4월 27일로 잠정 예정했습니다."
+        ),
+        impact="미국 통신장비·5G/차세대 무선망, 기지국 안테나·필터·중계기·프론트홀 | 돈 버는 능력·수급·시간표",
+        point=(
+            "Brendan Carr FCC 위원장이 향후 수년간 여러 주파수 경매의 누적 수입이 1,000억달러를 넘을 수 있다고 밝혔습니다. "
+            "이는 Auction 115 단일 경매액이 아니라 후속 경매까지 합친 전망이며, 실제 장비매출은 통신사 낙찰 후 CAPEX·발주로 연결돼야 합니다."
+        ),
+        counter=(
+            "Auction 115 경매는 2027년에 열리지만 FCC 전환 일정상 상위 75개 PEA의 신규 지상 무선 서비스는 "
+            "2020년 12월 31일이 아니라 2030년 12월 31일부터 가능하고, 나머지 지역은 2031년 7월 1일이 기준입니다. "
+            "따라서 2027년 경매 직후 전국 장비매출이 즉시 발생한다고 보면 안 됩니다."
+        ),
+        sectors="통신장비/5G·6G, 기지국 안테나·필터, DAS·중계기, 프론트홀·광전송",
+        impacts=("돈 버는 능력", "수급", "시간표"),
+        paths=("주파수 경매", "통신사 CAPEX", "장비 발주", "망 구축 시간표"),
+        follow_up=(
+            "최종 입찰절차·최저입찰가, 적격 입찰자, AT&T·Verizon·T-Mobile·신규 사업자 낙찰, 통신사 CAPEX 상향, "
+            "삼성전자·Ericsson·Nokia 수주, KMW·에이스테크·쏠리드·에치에프알 실제 주문을 순서대로 추적합니다."
+        ),
+        trusted_sources=("U.S. Federal Register (FCC)",),
     ),
     StoryRule(
         key="us_fcc_security_import_restriction",
@@ -845,7 +898,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
         if (
             not verified
             or not published
-            or (now - published).total_seconds() / 3600 > MAX_AGE_HOURS
+            or (now - published).total_seconds() / 3600 > max_age_hours_for_rule(rule)
             or not has_required_terms(haystack, rule)
         ):
             print(
@@ -1081,6 +1134,23 @@ def semantic_policy_event_key(item: dict) -> str:
         elif any(term in title_text for term in ("additional companies", "additional vendors", "designates", "designation", "추가 지정", "추가 기업")):
             stage = "additional-designation"
         return f"us-congress-chinese-optical-transceiver-{stage}"
+    if (
+        "auction 115" in text
+        and ("upper c-band" in text or "upper c band" in text)
+    ):
+        title_low = clean_text(str(item.get("title") or "")).lower()
+        stage = "scheduled"
+        if any(term in title_low for term in ("results", "winning bidders", "auction closes", "낙찰 결과", "낙찰자", "경매 종료")):
+            stage = "results"
+        elif any(term in title_low for term in ("bidding begins", "bidding opens", "auction begins", "입찰 개시", "경매 개시")):
+            stage = "bidding-open"
+        elif any(term in title_low for term in ("qualified bidders", "accepted applicants", "적격 입찰자", "참가자 확정")):
+            stage = "qualified-bidders"
+        elif any(term in title_low for term in ("final procedures", "final bidding procedures", "최종 입찰 절차", "최종 경매 절차")):
+            stage = "final-procedures"
+        elif any(term in title_low for term in ("minimum opening bid", "upfront payment", "최저 입찰가", "선납금")):
+            stage = "pricing-terms"
+        return f"us-fcc-upper-c-band-auction115-{stage}"
     if "polysilicon" in text and "11052" in text:
         if (
             "measures to restrict stockpiling" in text
@@ -1786,6 +1856,61 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
             "counter": "중국의 명확한 수용이나 공동문서가 아직 없고, 안전 협의가 첨단칩 규제 완화로 직결된다는 근거도 없습니다.",
             "failure": "정상회담 공동문구, 후속 실무협의, BIS·백악관 규정 변화가 없으면 외교 협의 수준에서 끝납니다.",
         }
+    if rule.key == "us_fcc_upper_c_band_auction115":
+        return {
+            "revision": "us-fcc-upper-c-band-auction115-ko-v1",
+            "event_date": "2026년 8월 3일",
+            "title": "미 FCC, Upper C-band Auction 115 확정: 2027년 4월 27일 입찰 예정",
+            "core": "FCC가 3.98~4.14GHz 160MHz를 20MHz×8블록, 총 3,248개 면허로 경매하는 Auction 115 일정을 공식화했습니다.",
+            "stage": "경매 준비 단계 — 입찰 개시는 2027년 4월 27일 잠정 예정이며 실제 장비 발주는 낙찰·CAPEX 이후입니다.",
+            "actual": (
+                "미 본토 406개 PEA에 3,248개 면허를 공급합니다. Brendan Carr FCC 위원장의 1,000억달러 발언은 "
+                "Auction 115 단일 금액이 아니라 향후 수년간 여러 주파수 경매의 누적 수입 전망입니다."
+            ),
+            "timeline": (
+                "2026년 8월 3일 Auction 115 절차 공고 → 2026년 9월 17일 Carr 1,000억달러+ 다중경매 전망 → "
+                "2027년 4월 27일 입찰 개시 예정 → 2030년 12월 31일 상위 75개 PEA 서비스 개시 가능 → "
+                "2031년 7월 1일 나머지 지역 서비스 개시 기준"
+            ),
+            "why": (
+                "주파수 확보가 통신사 CAPEX·기지국 증설의 선행조건이라는 점은 긍정적이지만, 2027년 경매와 실제 전국 서비스 개시 사이에 "
+                "3~4년의 전환·항공고도계·위성사업자 정리 시차가 있다는 점이 핵심입니다."
+            ),
+            "next": (
+                "최종 입찰절차·최저입찰가 → 적격 입찰자 → 낙찰자·낙찰액 → AT&T·Verizon·T-Mobile CAPEX → "
+                "삼성전자·Ericsson·Nokia 장비수주 → 국내 부품사 실제 주문"
+            ),
+            "investment": (
+                "국내 통신장비주는 경매액이 아니라 미국 통신사 CAPEX와 글로벌 장비사 발주가 실적 촉발 요인입니다. "
+                "낙찰 이후 기지국·안테나·필터·DAS·프론트홀 발주가 확인될 때 실적 재평가가 강해집니다."
+            ),
+            "korea": (
+                "직접 후보는 KMW·에이스테크·쏠리드·에치에프알입니다. 다만 FCC 경매 자체는 이들 기업의 수주가 아니며, "
+                "삼성전자·Ericsson·Nokia 및 미국 통신사향 고객 승인·발주가 확인돼야 확정 매출로 구분합니다."
+            ),
+            "korea_candidates": (
+                "직접 장비 후보: KMW·에이스테크 / 미국 매출 기반: 쏠리드 / 프론트홀·무선망 후보: 에치에프알 "
+                "— 현재 Auction 115 관련 확정 수주 아님"
+            ),
+            "headwind": (
+                "최대 역풍은 시간표입니다. 상위 75개 PEA도 신규 지상 무선서비스 개시는 2030년 12월 31일부터 가능하며 "
+                "나머지 지역은 2031년 7월 1일 기준이라 2027년 경매 직후 전국 장비수요가 한꺼번에 발생하지 않습니다."
+            ),
+            "scope_note": (
+                "1,000억달러는 Auction 115 한 번의 경매액이 아니라 FCC가 계획한 향후 여러 경매의 누적 가능 수입입니다."
+            ),
+            "impacts": "매출·마진·현금흐름, 수급, 시간표",
+            "paths": "주파수 경매, 통신사 CAPEX, 장비 발주, 망 구축 시간표",
+            "sectors": "통신장비/5G·6G, 안테나·필터, DAS·중계기, 프론트홀",
+            "priced_in": "중간. 경매 일정과 1,000억달러 전망은 알려졌지만 낙찰자·통신사 CAPEX·장비 발주는 아직 미확정입니다.",
+            "counter": (
+                "경매 규모가 커도 사업자가 주파수 확보 뒤 CAPEX를 늦추거나 기존 장비 재활용 비중을 높이면 국내 장비사 매출 증가는 제한될 수 있습니다."
+            ),
+            "failure": (
+                "낙찰 후 6~12개월 내 통신사 CAPEX 상향·삼성전자/Ericsson/Nokia 수주·국내 부품사 고객승인이 나오지 않으면 "
+                "테마성 기대가 실적으로 이어지지 않습니다."
+            ),
+        }
     if rule.key == "us_congress_chinese_optical_transceiver_restriction":
         return {
             "revision": "us-congress-chinese-optical-transceiver-ko-v2",
@@ -2089,6 +2214,15 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
 
 def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, str]:
     """Return a conservative status, upgrading only first-party verified events."""
+    if (
+        rule.key == "us_fcc_upper_c_band_auction115"
+        and any(
+            "federalregister.gov" in str(item.get("link") or "").lower()
+            or "u.s. federal register" in str(item.get("source") or "").lower()
+            for item in items
+        )
+    ):
+        return "공식 확인", "미 연방관보 FCC Auction 115 원문 확인 완료"
     if (
         rule.key == "us_congress_chinese_optical_transceiver_restriction"
         and any(
