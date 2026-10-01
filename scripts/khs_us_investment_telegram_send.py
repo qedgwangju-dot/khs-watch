@@ -147,6 +147,48 @@ def _validate_alert_contract(text: str) -> None:
     if re.search(r"APR1400[^\\n]{0,80}2\s*기\s*(?:→|->|에서)\s*8\s*기", plain, re.I):
         raise RuntimeError("Blocked unsupported APR1400 2-to-8 state transition")
 
+    if re.search(r"에너지\s*패키지[^\n]{0,80}540\s*억\s*달러", plain):
+        raise RuntimeError("Blocked Alaska 54B leakage into energy-package amount")
+
+    if re.search(r"알래스카\s*LNG\s*보도수치\s*2[, ]?000\s*억\s*달러", plain, re.I):
+        raise RuntimeError("Blocked overall 200B leakage into Alaska amount")
+
+    if "9월 30일 발표 대기 상태" in plain:
+        raise RuntimeError("Blocked stale pre-announcement Alaska status")
+
+    if "알래스카 LNG" in plain and "검토 착수" not in plain and "Project North" not in plain:
+        raise RuntimeError("Alaska alert missing official Project North review-stage baseline")
+
+    if re.search(r"원전\s*(?:최대\s*)?8\s*기", plain) and "프레임워크" not in plain:
+        raise RuntimeError("Nuclear 8-unit alert missing framework qualification")
+
+
+def self_test_mode() -> int:
+    bad_cases = [
+        "대미투자 에너지 패키지 — 에너지 패키지 540억달러",
+        "알래스카 LNG 보도수치 2000억달러",
+        "알래스카 LNG\n9월 30일 발표 대기 상태\nProject North 검토 착수",
+        "원전 8기 확정",
+    ]
+    for bad in bad_cases:
+        try:
+            _validate_alert_contract(bad)
+        except RuntimeError:
+            pass
+        else:
+            raise RuntimeError(f"semantic contract failed to block: {bad}")
+
+    good = (
+        "한미 공동 팩트시트 확인\n"
+        "Project Star 제1호 공식 추진\n"
+        "원전 8기 프레임워크 합의 AP1000 6기 APR1400 2기\n"
+        "알래스카 LNG Project North 검토 착수\n"
+        "540억달러 미국측 발표와 한국측 실제 집행확정 별도 관리"
+    )
+    _validate_alert_contract(good)
+    print("telegram_alert_contract_self_test=passed")
+    return 0
+
 
 def send_mode() -> int:
     if not ALERT.exists() or not ALERT.read_text(encoding="utf-8").strip():
@@ -157,6 +199,7 @@ def send_mode() -> int:
     username, chat = _resolve()
     text = ALERT.read_text(encoding="utf-8").strip()
     _validate_alert_contract(text)
+    print("telegram_alert_semantic_contract=passed")
     chunks = _split_html(text)
     message_ids: list[int] = []
 
@@ -188,9 +231,13 @@ def send_mode() -> int:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("mode", choices=["resolve", "send"])
+    parser.add_argument("mode", choices=["resolve", "send", "self-test"])
     args = parser.parse_args()
-    return resolve_mode() if args.mode == "resolve" else send_mode()
+    if args.mode == "resolve":
+        return resolve_mode()
+    if args.mode == "self-test":
+        return self_test_mode()
+    return send_mode()
 
 
 if __name__ == "__main__":
