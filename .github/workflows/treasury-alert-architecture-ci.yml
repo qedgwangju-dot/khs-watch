@@ -5,10 +5,17 @@ on:
     paths:
       - "scripts/treasury_auction_final_demand_watch.py"
       - "scripts/treasury_net_liquidity_watch.py"
+      - "scripts/treasury_cta_squeeze_watch.py"
+      - "scripts/treasury_cta_squeeze_execution_watch.py"
+      - "scripts/treasury_cta_squeeze_market_watch.py"
+      - "scripts/treasury_cta_squeeze_audited_watch.py"
+      - "scripts/treasury_cta_squeeze_equity_watch.py"
+      - "scripts/us_positioning_watch.py"
       - ".github/workflows/treasury-auction-final-demand-telegram-alert.yml"
       - ".github/workflows/treasury-net-liquidity-telegram-alert.yml"
       - ".github/workflows/treasury-alert-architecture-ci.yml"
       - "tests/test_treasury_alert_architecture.py"
+      - "tests/test_treasury_cta_nasdaq_squeeze.py"
       - "docs/treasury-alert-architecture.md"
   workflow_dispatch:
 
@@ -25,10 +32,18 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install parser dependencies
-        run: python -m pip install --quiet beautifulsoup4 pypdf pytest
-      - name: Compile new Treasury watchers
+        run: python -m pip install --quiet beautifulsoup4 pypdf pytest pandas requests playwright lxml
+      - name: Compile Treasury watchers
         run: |
           python -m py_compile scripts/treasury_auction_final_demand_watch.py
           python -m py_compile scripts/treasury_net_liquidity_watch.py
-      - name: Run architecture smoke tests
-        run: pytest -q tests/test_treasury_alert_architecture.py
+          python -m py_compile scripts/treasury_cta_squeeze_watch.py
+          python -m py_compile scripts/treasury_cta_squeeze_execution_watch.py
+          python -m py_compile scripts/treasury_cta_squeeze_market_watch.py
+          python -m py_compile scripts/treasury_cta_squeeze_audited_watch.py
+          python -m py_compile scripts/treasury_cta_squeeze_equity_watch.py
+          python -m py_compile scripts/us_positioning_watch.py
+      - name: Run architecture and squeeze fail-closed tests
+        run: |
+          pytest -q tests/test_treasury_alert_architecture.py
+          pytest -q tests/test_treasury_cta_nasdaq_squeeze.py
