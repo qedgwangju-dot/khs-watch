@@ -1933,6 +1933,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             continue
         if _extract_korea_memory_earnings_state(x):
             continue
+        if _extract_micron_supply_commitment(x):
+            continue
         if _extract_trendforce_4q26_revision(x):
             continue
         if _extract_nand_divergence(x) or _extract_legacy_dram_state(x):
@@ -1972,6 +1974,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "bernstein_memory_cycle": bernstein_state,
         "korea_memory_earnings_track_version": KOREA_MEMORY_EARNINGS_TRACK_VERSION,
         "korea_memory_earnings": korea_earnings_state,
+        "micron_supply_commitment_track_version": MICRON_SUPPLY_COMMITMENT_TRACK_VERSION,
+        "micron_supply_commitment": micron_supply_state,
         "trendforce_4q26_revision_track_version": TREND_4Q26_REVISION_TRACK_VERSION,
         "trendforce_4q26_revision": trend_4q26_state,
         "trendforce_3q4q_pace_track_version": TREND_3Q4Q_PACE_TRACK_VERSION,
@@ -2002,6 +2006,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- HBM 시장 가격 숫자 변화: {len(market_changes)}건",
         f"- Bernstein 가격 사이클 상태 변화: {len(bernstein_changes)}건",
         f"- 삼성전자·SK하이닉스 영업이익 컨센서스 변화: {len(korea_earnings_changes)}건",
+        f"- Micron 2027 공급 확약 변화: {len(micron_supply_changes)}건",
         f"- TrendForce 4Q26 전망 리비전 변화: {len(trend_4q26_changes)}건",
         f"- TrendForce 3Q→4Q 가격속도 변화: {len(trend_3q4q_changes)}건",
         f"- NAND 소비자↔기업용 eSSD 양극화 변화: {len(divergence_changes)}건",
@@ -2014,11 +2019,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
+    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(legacy_changes)
+    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(legacy_changes)
     total_visible = typed_changes + len(prepared_items)
     lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
     if trend_4q26_changes:
