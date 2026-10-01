@@ -1920,7 +1920,7 @@
   "last_capital_return_alert_count": 0,
   "_delivery": {
     "id": "ade0f8fe59d3b6c4623cad85a802d5e717f45ab20a89ad3296fec43e2d79a4dd",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-10-01T23:11:27+09:00",
     "chunks": [
       "🚨 <b>HBM 상태 변화</b>\n━━━━━━━━━━━━━━━━\n<b>신규 변화 1건</b> · 2026-10-01 23:07 KST\n\n<b>1.</b>\n<b>삼성 HBM 관련 신규 변화</b>\n• 상태 판정: <b>신뢰 보도 단계</b>\n• 변화 구분: 기타\n• 핵심 숫자: <b>121%</b>\n• 감지 근거: 서울경제 · 2026-10-01T17:56:14+09:00\n• 근거 제목(한국어): “내년 HBM 평균판매가 121% 오를 것”…삼성·SK, 가격 협상 청신호 · <a href=\"https://m.sedaily.com/amparticle/20097309\">원문</a>"
@@ -3852,6 +3852,7 @@
       },
       "last_capital_return_observation_count": 0,
       "last_capital_return_alert_count": 0
-    }
+    },
+    "attempt_at_kst": "2026-10-01T23:11:28+09:00"
   }
 }
