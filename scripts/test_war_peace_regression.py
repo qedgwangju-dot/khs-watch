@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import war_peace_reconstruction_watch_diplomacy_flash as mod
 
 
-def row(title, *, source="국내 재게시", description="", article_text="", minutes_ago=10, deep_signal=False):
+def row(title, *, source="국내 재게시", description="", article_text="", minutes_ago=10, deep_signal=False, link="https://example.com/test"):
     now = dt.datetime.now(mod.watch.KST)
     pub = now - dt.timedelta(minutes=minutes_ago)
     return {
@@ -27,7 +27,7 @@ def row(title, *, source="국내 재게시", description="", article_text="", mi
         "description": description,
         "article_text": article_text,
         "source": source,
-        "link": "https://example.com/test",
+        "link": link,
         "published": format_datetime(pub),
         "deep_signal": deep_signal,
         "signals_ko": [],
@@ -222,3 +222,98 @@ mixed_alert = """<b>전쟁·종전·재건 웹감시</b>
 check("quality-gate-mixed-header-allowed", not any("초록 헤더" in x for x in mod._alert_quality_issues(mixed_alert)))
 
 print("WAR_PEACE_MIDTERM_RISK_OK")
+
+
+# 11) 2026-10-01 실제 오탐: 러시아 곰 개체수·치명적 동물 공격은 전쟁 경보가 아니다.
+bear_story = row(
+    "Russia draws up measures to control bear population after spate of deadly attacks",
+    source="Reuters",
+    link="https://www.reuters.com/business/environment/russia-draws-up-measures-control-bear-population-after-spate-deadly-attacks-2026-09-30/",
+)
+check("wildlife-bear-false-positive", mod._obvious_false_positive(bear_story))
+bear_score, bear_tags = mod.score_item(bear_story, dt.datetime.now(mod.watch.KST))
+check("wildlife-bear-score-zero", bear_score == 0 and bear_tags == [])
+
+# 12) 같은 Reuters 원문 URL은 제목이 바뀌어도 한 번만 알린다.
+ukr_url = "https://www.reuters.com/world/europe/russian-air-strikes-kill-one-injure-five-around-kyiv-officials-say-2026-09-30/"
+ukr_a = row("Russia launches major attack on Ukraine energy grid as winter nears", source="Reuters", link=ukr_url)
+ukr_b = row("Russia hits Ukraine energy grid, cutting power as winter approaches", source="Reuters", link=ukr_url)
+check("same-reuters-url-one-id-ukraine", mod.item_id(ukr_a) == mod.item_id(ukr_b))
+
+gaza_url = "https://www.reuters.com/world/middle-east/israeli-strikes-kill-five-people-gaza-medics-say-2026-09-30/"
+gaza_a = row("Israeli strikes kill six people in Gaza, medics say", source="Reuters", link=gaza_url)
+gaza_b = row("Israeli strikes kill seven people in Gaza", source="Reuters", link=gaza_url)
+check("same-reuters-url-one-id-gaza", mod.item_id(gaza_a) == mod.item_id(gaza_b))
+check("gaza-topic-not-lebanon", mod.topic_label(gaza_a) == "이스라엘·가자")
+
+# 13) 후티 공격 이후 EASA 사우디 영공 권고는 실제 운영 제약이므로 방향성 미확인이 아니라 확전 영향이다.
+easa = row(
+    "EU aviation agency issues Saudi airspace advisory after Houthi attacks",
+    source="Reuters",
+    link="https://www.reuters.com/world/middle-east/eu-aviation-agency-issues-saudi-airspace-advisory-after-houthi-attacks-2026-09-30/",
+)
+check("easa-operational-escalation", mod._operational_escalation_signal(easa))
+check("easa-red", mod._final_item_color(easa) == "red")
+easa_verdict = mod.guard._verdict([easa])
+check("easa-red-verdict", "공격·확전" in easa_verdict or "군사행동·확전" in easa_verdict)
+
+# 14) '폭격할지 협상을 타결할지 곧 결정'은 평화 초록이 아니라 조건부 군사옵션 노랑이다.
+bomb_or_deal = row("트럼프 \"이란을 폭격할지 아니면 협상을 타결할지 곧 결정할 것\" - 프리진뉴스")
+check("bomb-or-deal-conditional-risk", mod._conditional_escalation_signal(bomb_or_deal))
+check("bomb-or-deal-yellow", mod._final_item_color(bomb_or_deal) == "yellow")
+bomb_marks = mod._marks(bomb_or_deal)
+check("bomb-or-deal-stage-mark", "미국이란군사옵션협상갈림길" in bomb_marks)
+bomb_score, bomb_tags = mod.score_item(bomb_or_deal, dt.datetime.now(mod.watch.KST))
+check("bomb-or-deal-tags", "확전위험" in bomb_tags and "협상갈림길" in bomb_tags)
+
+# 15) '사흘간 호르무즈 빠져나온 원유 역대 가장 많아'는 실물 공급회복 신호이며 빨강이 아니다.
+record_kr = row("트럼프 “사흘간 호르무즈 빠져나온 원유 역대 가장 많아”", source="한겨레")
+record_marks = mod._physical_flow_marks(record_kr)
+check("korean-record-flow-detected", "호르무즈기록물량회복" in record_marks)
+check("korean-record-flow-green", mod._final_item_color(record_kr) == "green")
+
+# 16) 같은 날 Walter 속보와 국내 재인용의 물동량 이벤트는 동일 사건 id로 묶는다.
+record_en = row(
+    "Last night we took a record amount of oil out of the Hormuz Strait, more than before the war",
+    source="Walter Bloomberg",
+)
+check("same-day-flow-one-id", mod.item_id(record_kr) == mod.item_id(record_en))
+
+# 17) 브랸스크의 우크라이나 공격은 종전·협상이 아니라 우크라이나·러시아 전쟁 사건이다.
+bryansk = row("In brief: 12 people including a student injured in Ukrainian attack on Bryansk region", source="TASS")
+check("bryansk-topic", mod.topic_label(bryansk) == "우크라이나·러시아")
+check("bryansk-red", mod._final_item_color(bryansk) == "red")
+
+# 18) 2026-10-01 실제 잘못된 색상 조합은 송출 직전 품질 게이트에서 거부한다.
+bad_mixed = """<b>전쟁·종전·재건 웹감시</b>
+🔴 <b>공격·확전</b>  |  🟢 <b>재건·휴전</b>
+<b>핵심 변화</b>
+🟢 [신규] <b>1. 이란·호르무즈</b>
+트럼프 \"이란을 폭격할지 아니면 협상을 타결할지 곧 결정할 것\"
+09:53 KST · 🟨 <b>91분 전</b> · 확전
+🔴 [신규] <b>2. 이란·호르무즈</b>
+트럼프 “사흘간 호르무즈 빠져나온 원유 역대 가장 많아”
+09:15 KST · 🟨 <b>129분 전</b> · 실물물동량 · 원유공급회복
+<b>투자 판정</b>
+"""
+bad_issues = mod._alert_quality_issues(bad_mixed)
+check("quality-gate-green-escalation-item", any("초록 항목" in x for x in bad_issues))
+check("quality-gate-red-flow-item", any("빨강 항목" in x for x in bad_issues))
+
+bad_gaza = """<b>전쟁·종전·재건 웹감시</b>
+<b>핵심 변화</b>
+[신규] <b>1. 이스라엘·레바논</b>
+이스라엘, 가자지구 공습으로 7명 사망
+<b>투자 판정</b>
+"""
+check("quality-gate-gaza-topic", any("가자 사건" in x for x in mod._alert_quality_issues(bad_gaza)))
+
+bad_bear = """<b>전쟁·종전·재건 웹감시</b>
+<b>핵심 변화</b>
+[신규] <b>1. 우크라이나·러시아</b>
+러시아는 치명적인 공격을 가한 후 곰 개체수를 통제하기 위한 대책을 마련한다.
+<b>투자 판정</b>
+"""
+check("quality-gate-bear", any("비군사 공격" in x for x in mod._alert_quality_issues(bad_bear)))
+
+print("WAR_PEACE_2026_10_01_REGRESSION_OK")
