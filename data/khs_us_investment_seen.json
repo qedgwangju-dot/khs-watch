@@ -331,7 +331,8 @@
     "stateevt_c297059e1975e46bbfc1": "2026-09-30T22:27:23.984775+00:00",
     "stateevt_b8cf7fee57b98f677383": "2026-10-01T04:00:13.838509+00:00",
     "stateevt_f89998286c7537ffdf40": "2026-10-01T04:00:13.838509+00:00",
-    "stateevt_16836cd54dadd738934d": "2026-10-01T04:00:13.838509+00:00"
+    "stateevt_16836cd54dadd738934d": "2026-10-01T04:00:13.838509+00:00",
+    "stateevt_e191e0a210218dc554c1": "2026-10-01T19:00:22.000282+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -354,7 +355,8 @@
     "eventstate_alaska_lng_c297059e1975e46bbfc1": "2026-09-30T22:27:23.984775+00:00",
     "eventstate_alaska_lng_b8cf7fee57b98f677383": "2026-10-01T04:00:13.838509+00:00",
     "eventstate_encinal_f89998286c7537ffdf40": "2026-10-01T04:00:13.838509+00:00",
-    "eventstate_nuclear_build_16836cd54dadd738934d": "2026-10-01T04:00:13.838509+00:00"
+    "eventstate_nuclear_build_16836cd54dadd738934d": "2026-10-01T04:00:13.838509+00:00",
+    "eventstate_texas_ai_power_e191e0a210218dc554c1": "2026-10-01T19:00:22.000282+00:00"
   },
   "official_status": {
     "status": "confirmed",
@@ -580,27 +582,23 @@
     },
     "texas_ai_power": {
       "facts": [
+        "stage:발표실행",
         "stage:선정"
       ],
       "slots": {
+        "texas_ai_power|stage:announcement": "stage:발표실행",
         "texas_ai_power|stage:선정": "stage:선정"
       },
       "initialized_at": "2026-09-23T10:11:17.018743+00:00",
-      "updated_at": "2026-09-23T10:11:17.018743+00:00",
-      "last_title": "산업통상부, 대미투자 1호로 텍사스 가스발전소 선정…223억달러 규모 - 시선뉴스",
-      "last_source": "시선뉴스",
+      "updated_at": "2026-10-01T19:00:40.845836+00:00",
+      "last_title": "트럼프·러트닉 백악관 발표, \"한국, 텍사스 발전소에 220억 달러 투자\"(음성서비스) - Korean Journal Houston",
+      "last_source": "Korean Journal Houston",
       "evidence": [
         {
-          "source": "한겨레",
-          "title": "‘대미 투자 1호’ 텍사스 발전소 선정…올해 21.9억달러 송금 - 한겨레",
-          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1LdWpBZXlyNWpxbkpvMmpVZUdTS2ZaR0JoMnVNSDRvY2ZsdG1xV1Bub2toanlOVktEVjJjb1RlSjlxUUp1b3gxS21hazBaTEJ0RVJZUVFxaW1UcjkteTRtS2kzendDalM2dHJ6N001LTI0Zw?oc=5",
-          "published": "2026-09-22T13:13:00+00:00"
-        },
-        {
-          "source": "시선뉴스",
-          "title": "산업통상부, 대미투자 1호로 텍사스 가스발전소 선정…223억달러 규모 - 시선뉴스",
-          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFBPd3dEQmw0R3BsM19tUFdEd1dEVWtMWUhUaUUzYjhsOFM4ZUFtSGU3Qi0wT1VrZV92VGpmYUVuMzhRNkFNV0JldkNLSHQ3OEwyTDJuQU55TGxkOU9pOHZpS1RER3BSTzBhY0RZRm530gFyQVVfeXFMTWJISGhaWHQ1cWVKRzlZUHBNaHVCbS1rMGo5S0FoSTdtWEhIdnZ1UVBqWnFtNktBT0ZFd29WNW9sTVk5ZG5QbkRoN194V0I4bHl1cFlqb2FjcVZ3NzlhQlpvZ1FUYXVxUkc3dE5PZlRQUjlB?oc=5",
-          "published": "2026-09-22T08:53:16+00:00"
+          "source": "Korean Journal Houston",
+          "title": "트럼프·러트닉 백악관 발표, \"한국, 텍사스 발전소에 220억 달러 투자\"(음성서비스) - Korean Journal Houston",
+          "link": "https://news.google.com/rss/articles/CBMiugJBVV95cUxQd3NtdjRxVklpOURfdlVaaDBFNnlPZWEwMEhEMTJsb3ZFX3QxZjg3MERPWWZGRFNaa21DSGZzYWR6NlpXcnhhcnRVWHVERWM3WklaZmZtanVMWl80XzZsY0lFNjl6QlA3NERoWnU2czhMSDdHQ0JFQlRrcGYyNUdHbEV2cjl1ZllwdTQzbnRKUmhsVkdVdXNrRUZjR3kzdmNhS1l4UU9lTXBqR05XSlhVTXB0VEFibDRYeFBrTEptSlloMUpJbVE2ZEFMenEtcHZMRUVSRVJDdTdXckRrSVcybGNHV3lqUWR1TERWeUJmeHNyU09pbUhreFVpVmFWR0JqdFBUVHRfRjMyRk05bExKTkNKX3dmU2w3YkFoSnBoVTVNTnpmcThqVjBmUklxUXgtTGkxX3JGby0yZw?oc=5",
+          "published": "2026-10-01T13:21:00+00:00"
         }
       ]
     },
