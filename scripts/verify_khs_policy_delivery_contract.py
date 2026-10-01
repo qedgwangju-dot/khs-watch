@@ -79,6 +79,7 @@ def main() -> int:
     assert_policy_source_links_are_html_safe()
     assert_policy_timeline_dates_are_bold_and_source_is_clickable()
     assert_ai_force_has_exclusive_telegram_route()
+    assert_upper_c_band_has_dedicated_telegram_route()
     assert_trusted_policy_bundle_dedupes_and_dates_are_source_faithful()
     assert_domestic_telecom_title_gate_and_semantic_dedupe()
     assert_router_explains_current_fcc_documents()
@@ -252,6 +253,32 @@ def assert_ai_force_has_exclusive_telegram_route() -> None:
         raise AssertionError("AI Force alert is not classified into the dedicated route")
     if khs_trusted_policy_news_watch.is_ai_force_alert(non_ai_alert):
         raise AssertionError("Non-AI Trump policy alert leaked into the AI Force route")
+
+
+def assert_upper_c_band_has_dedicated_telegram_route() -> None:
+    workflow = POLICY_WORKFLOW.read_text(encoding="utf-8")
+    required = [
+        '"spectrum": {',
+        '"token": (os.environ.get("KHS_AI_POLICY_TELEGRAM_BOT_TOKEN") or "").strip()',
+        '"expected_username": "khs88798879_bot"',
+        'body_file.name == "khs_trusted_policy_news_alert.md"',
+        '"auction 115"',
+        '"upper c-band"',
+        'route = "spectrum"',
+        'topic=upper_c_band_auction115',
+        'route in {"westinghouse", "ai_force", "spectrum"}',
+    ]
+    for marker in required:
+        if marker not in workflow:
+            raise AssertionError(f"Upper C-band Telegram route missing: {marker}")
+    if '"KHS trusted policy news alert", "spectrum"' in workflow:
+        raise AssertionError("All trusted policy news was incorrectly moved to the spectrum bot")
+    if (
+        'pathlib.Path("out/khs_trusted_policy_news_title.txt"), '
+        'pathlib.Path("out/khs_trusted_policy_news_alert.md"), '
+        '"KHS trusted policy news alert", "policy"'
+    ) not in workflow:
+        raise AssertionError("General trusted-policy route must remain on the policy bot")
 
 
 def assert_trusted_policy_bundle_dedupes_and_dates_are_source_faithful() -> None:
