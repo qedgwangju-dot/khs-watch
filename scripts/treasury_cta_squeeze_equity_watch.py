@@ -208,6 +208,10 @@ def _cme_daily_bulletin_nq() -> dict:
         elif total_m.group(5) and total_m.group(6):
             mag = int(total_m.group(6).replace(",", ""))
             total_oi_change = mag if total_m.group(5) == "+" else -mag
+    else:
+        pos = text.find("TOTAL EMINI NASD FUT")
+        snippet = re.sub(r"\\s+", " ", text[pos:pos + 300]) if pos >= 0 else "marker-missing"
+        print(f"cme_nq_total_parse_failed snippet={snippet!r}")
 
     return {
         "price": settle,
