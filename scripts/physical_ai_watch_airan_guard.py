@@ -12,10 +12,10 @@ import datetime as dt
 import hashlib
 import re
 
-import physical_ai_watch_korea_robot_scale as korea
+import physical_ai_watch_us_autowarcom as defense
 
-qty = korea.qty
-base = korea.base
+qty = defense.qty
+base = defense.base
 
 _orig_topic_group = base.topic_group
 _orig_score = base.score
@@ -226,7 +226,7 @@ def _finalize_airan_criteria() -> None:
         return
     text = base.ALERT_PATH.read_text(encoding='utf-8')
     old = '공식 사전예고·신규 AI 모델/성능 공개·천 단위 공급망 발주·공급업체 심사·수주·고객 실명·배치 발주·양산/출하·생산 수율·생산능력·현장 배치·대당 부품 탑재가치·배터리 소재 채택·촉각/데이터 사업화·기관 지분 변화처럼 돈 버는 능력·기술 재평가·수급·시간표를 바꾸는 내용만 알림.'
-    new = '공식 사전예고·신규 AI 모델/성능 공개·천 단위 공급망 발주·공급업체 심사·수주·고객 실명·배치 발주·양산/출하·생산 수율·생산능력·현장 배치·관절·감속기·모터·인코더·힘/토크·촉각·비전 센서의 고객선정·수주·양산·수율·납기·가격 변화·정부 로봇 조달공고·낙찰·실제 보급·특화단지 설비집행·삼성전자 로봇 공장배치·산업 신뢰성·인간영상 스케일링·학습비 절감·대당 부품 탑재가치·배터리 소재 채택·촉각/데이터 사업화·AI-RAN Physical AI 실증·상용계약·기관 지분 변화처럼 돈 버는 능력·기술 재평가·수급·시간표를 바꾸는 내용만 알림.'
+    new = '공식 사전예고·신규 AI 모델/성능 공개·천 단위 공급망 발주·공급업체 심사·수주·고객 실명·배치 발주·양산/출하·생산 수율·생산능력·현장 배치·관절·감속기·모터·인코더·힘/토크·촉각·비전 센서의 고객선정·수주·양산·수율·납기·가격 변화·정부 로봇 조달공고·낙찰·실제 보급·특화단지 설비집행·삼성전자 로봇 공장배치·산업 신뢰성·인간영상 스케일링·학습비 절감·미 AUTOWARCOM 법제화·예산·정식창설·획득권한·Project Agincourt 계약·Project Meridian 보고서·자율전력 실제배치·대당 부품 탑재가치·배터리 소재 채택·촉각/데이터 사업화·AI-RAN Physical AI 실증·상용계약·기관 지분 변화처럼 돈 버는 능력·기술 재평가·수급·시간표를 바꾸는 내용만 알림.'
     text = text.replace(old, new)
     base.ALERT_PATH.write_text(text, encoding='utf-8')
 
