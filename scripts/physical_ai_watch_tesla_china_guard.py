@@ -49,6 +49,8 @@ TESLA_BERLIN_FIELD_SOURCE = '더구루'
 MUSK_X_SENTINEL = 'DIRECT_ELON_MUSK_OPTIMUS_X'
 MUSK_X_TIMELINE = 'https://syndication.twitter.com/srv/timeline-profile/screen-name/elonmusk'
 MUSK_X_SOURCE = 'Elon Musk (X)'
+MUSK_AI_MEMORY_SENTINEL = 'DIRECT_ELON_MUSK_AI5_AI6_MEMORY_20261001'
+
 
 TESLA_OPT = re.compile(r'Tesla|特斯拉|테슬라', re.I)
 OPTIMUS = re.compile(r'Optimus|擎天柱|옵티머스', re.I)
@@ -183,6 +185,18 @@ APP_HOME_STACK = re.compile(r'Tesla\\s*app|테슬라\\s*앱|app\\s*code|앱\\s*�
 APP_GEN_ASSET = re.compile(r'Optimus\\s*(?:Gen(?:eration)?\\s*)?3|Optimus\\s*Gen\\s*2\\.5|Gen\\s*2\\.5.{0,40}Gen\\s*3|Gen\\s*3.{0,40}Gen\\s*2\\.5|옵티머스\\s*(?:Gen\\s*)?3|Gen\\s*3\\s*(?:이미지|자산|render|asset)|第三代.{0,20}Optimus|Optimus.{0,20}第三代|2\\.5代.{0,30}第三代|第三代.{0,30}2\\.5代', re.I)
 APP_APK_CONTEXT = re.compile(r'APK|Android\\s*app|안드로이드\\s*앱|app\\s*asset|image\\s*asset|render|resource|asset\\s*package|4\\.60\\.5[- ]4573|v4\\.60\\.5[- ]4573|安卓.{0,12}(?:App|应用)|应用程序包|数字资产|素材|渲染图|设计.{0,12}(?:泄露|曝光)|泄露.{0,12}设计', re.I)
 MUSK_EXEC_ACTOR = re.compile(r'Elon\\s*Musk|일론\\s*머스크|머스크', re.I)
+AI_MEMORY_EVENT = re.compile(r'\bAI\s*5\b|\bAI5\b|\bAI\s*6\b|\bAI6\b', re.I)
+AI_MEMORY_RAM = re.compile(r'\bRAM\b|memory\s*(?:capacity|storage)?|메모리|LP5|LP6|LPDDR5|LPDDR6', re.I)
+AI_MEMORY_CAPACITY = re.compile(r'\b\d{2,4}\s*(?:GB|GiB)\b|\d{2,4}\s*기가바이트', re.I)
+AI_MEMORY_CHANGE = re.compile(r'cut|reduce|reduced|halve|half|third|increase|raise|double|trim|lower|축소|감소|절반|3분의\s*1|1/3|증가|확대|변경', re.I)
+AI_MEMORY_BANDWIDTH = re.compile(r'bandwidth|대역폭', re.I)
+AI_MEMORY_SUPPLY = re.compile(r'sufficient\s+volume|enough\s+volume|supply|availability|shortage|constraint|production|cost|원가|물량|공급|부족|생산|양산', re.I)
+AI_MEMORY_VENDOR = re.compile(r'Samsung|삼성전자|SK\s*hynix|SK하이닉스|Micron|마이크론', re.I)
+AI_MEMORY_CONTRACT = re.compile(r'contract|order|supplier|selected|nomination|award|supply\s+agreement|계약|수주|공급사|선정|발주', re.I)
+MEM_72_LP5 = re.compile(r'72\s*GB.{0,24}(?:LP5|LPDDR5)|(?:LP5|LPDDR5).{0,24}72\s*GB', re.I)
+MEM_144_LP6 = re.compile(r'144\s*GB.{0,24}(?:LP6|LPDDR6)|(?:LP6|LPDDR6).{0,24}144\s*GB', re.I)
+MEM_BW_UNCHANGED = re.compile(r'bandwidth.{0,40}(?:unchanged|same|constant|maintain)|(?:unchanged|same|constant|maintain).{0,40}bandwidth|대역폭.{0,40}(?:유지|동일|변함없)|(?:유지|동일).{0,40}대역폭', re.I)
+
 OPTIMUS_V3 = re.compile(r'Optimus\\s*3|옵티머스\\s*3|V3\\s*Optimus|Optimus\\s*V3', re.I)
 OPTIMUS_V4 = re.compile(r'Optimus\\s*4|옵티머스\\s*4|V4\\s*Optimus|Optimus\\s*V4', re.I)
 EXEC_FINAL_STAGE = re.compile(r'final\\s+stages?|almost\\s+ready|completion|완성\\s*마지막\\s*단계|마지막\\s*단계|거의\\s*완성', re.I)
@@ -232,6 +246,12 @@ if TESLA_APP_X_SENTINEL not in base.QUERIES:
     base.QUERIES.append(TESLA_APP_X_SENTINEL)
 if MUSK_X_SENTINEL not in base.QUERIES:
     base.QUERIES.append(MUSK_X_SENTINEL)
+if MUSK_AI_MEMORY_SENTINEL not in base.QUERIES:
+    base.QUERIES.append(MUSK_AI_MEMORY_SENTINEL)
+_TESLA_AI_MEMORY_QUERY = '(Tesla OR "Elon Musk" OR 테슬라 OR 머스크) (AI5 OR AI6) (RAM OR memory OR LP5 OR LP6 OR LPDDR5 OR LPDDR6 OR 메모리) (Optimus OR 옵티머스 OR production OR 생산 OR bandwidth OR 대역폭)'
+if _TESLA_AI_MEMORY_QUERY not in base.QUERIES:
+    base.QUERIES.append(_TESLA_AI_MEMORY_QUERY)
+
 _TEXAS_FACTORY_QUERY = '(Tesla OR 테슬라) (Optimus OR 옵티머스) ("Giga Texas" OR "Gigafactory Texas" OR 텍사스) (construction OR factory OR steel OR concrete OR rebar OR 철골 OR 콘크리트 OR 철근 OR 장비설치 OR tooling)'
 if _TEXAS_FACTORY_QUERY not in base.QUERIES:
     base.QUERIES.append(_TEXAS_FACTORY_QUERY)
@@ -286,6 +306,48 @@ base.TRUSTED.update({
 })
 base.OFFICIAL_OR_PRIMARY.add(MUSK_X_SOURCE)
 
+
+
+def _is_ai_memory_event(text: str) -> bool:
+    actor = TESLA_OPT.search(text) or MUSK_EXEC_ACTOR.search(text)
+    return bool(
+        actor
+        and OPTIMUS.search(text)
+        and AI_MEMORY_EVENT.search(text)
+        and AI_MEMORY_RAM.search(text)
+        and (AI_MEMORY_CAPACITY.search(text) or AI_MEMORY_BANDWIDTH.search(text))
+        and (AI_MEMORY_CHANGE.search(text) or AI_MEMORY_SUPPLY.search(text) or AI_MEMORY_CONTRACT.search(text))
+    )
+
+
+def _is_ai_memory_baseline(text: str) -> bool:
+    return bool(
+        _is_ai_memory_event(text)
+        and re.search(r'AI\s*5|AI5', text, re.I)
+        and re.search(r'AI\s*6|AI6', text, re.I)
+        and MEM_72_LP5.search(text)
+        and MEM_144_LP6.search(text)
+        and (MEM_BW_UNCHANGED.search(text) or re.search(r'negligible.{0,50}Optimus|미미.{0,50}옵티머스', text, re.I))
+    )
+
+
+def _is_ai_memory_vendor_event(text: str) -> bool:
+    return bool(_is_ai_memory_event(text) and AI_MEMORY_VENDOR.search(text) and AI_MEMORY_CONTRACT.search(text))
+
+
+def _memory_signature(text: str) -> str:
+    caps = sorted(set(re.findall(r'\d{2,4}\s*(?:GB|GiB|기가바이트)', text, re.I)))
+    types = sorted(set(re.findall(r'LP(?:DDR)?[56]', text, re.I)))
+    vendors = []
+    for name, pat in [
+        ('samsung', r'Samsung|삼성전자'),
+        ('skhynix', r'SK\s*hynix|SK하이닉스'),
+        ('micron', r'Micron|마이크론'),
+    ]:
+        if re.search(pat, text, re.I):
+            vendors.append(name)
+    bw = 'bw-change' if AI_MEMORY_BANDWIDTH.search(text) and not MEM_BW_UNCHANGED.search(text) else 'bw-same'
+    return '|'.join(caps + types + vendors + [bw]) or 'memory-change'
 
 
 def _is_exec_guidance(text: str) -> bool:
@@ -357,6 +419,8 @@ def load_state() -> dict:
 
 
 def topic_group(text: str) -> str | None:
+    if _is_ai_memory_event(text):
+        return 'tesla'
     if _is_exec_guidance(text):
         return 'tesla'
     if TESLA_OPT.search(text) and KOREA_LOCATIONS.search(text) and KOREA_SUPPLIER_SCOUT.search(text) and KOREA_COMPONENT_SCOPE.search(text):
@@ -610,6 +674,36 @@ def _query_tesla_app_x() -> list[dict]:
 
 
 
+_MUSK_AI_MEMORY_RECOVERY = {
+    '2105747471045370250': (
+        'Elon Musk We cut our RAM in half for the Tesla AI5 chip (now 72GB of LP5) and 1/3 for AI6 '
+        '(now 144GB of LP6). This was the only way to have sufficient volume for Optimus production '
+        'and it significantly lowers cost. We think this will have a negligible effect on Optimus performance '
+        'because memory bandwidth is a bigger limiting factor than total memory storage capacity and bandwidth is unchanged.'
+    ),
+}
+
+
+def _make_musk_memory_item(status_id: str, text: str, published: dt.datetime | None) -> dict | None:
+    text = base.norm(text)
+    if not status_id or not _is_ai_memory_event(text):
+        return None
+    if published is None:
+        published = _x_time_from_id(status_id)
+    cutoff = base.NOW - dt.timedelta(hours=120)
+    if published is None or published < cutoff or published > base.NOW + dt.timedelta(minutes=10):
+        return None
+    return {
+        'title': '일론 머스크, Optimus용 AI5·AI6 메모리 사양 변경',
+        'link': f'https://x.com/elonmusk/status/{status_id}',
+        'description': text,
+        'published': published.isoformat(),
+        'source': MUSK_X_SOURCE,
+        'x_status_id': status_id,
+        'direct_ai_memory_statement': True,
+    }
+
+
 def _query_elon_x() -> list[dict]:
     try:
         raw = base.fetch(MUSK_X_TIMELINE).decode('utf-8', errors='ignore')
@@ -630,6 +724,11 @@ def _query_elon_x() -> list[dict]:
             published = base.parse_date(tweet.get('created_at'))
             if not status_id or not text or not published or published < cutoff:
                 continue
+            if _is_ai_memory_event(text):
+                item = _make_musk_memory_item(status_id, f'Elon Musk {text}', published)
+                if item:
+                    out.append(item)
+                continue
             if not (OPTIMUS.search(text) and (EXEC_PROD_START.search(text) or EXEC_HIGH_VOLUME.search(text) or EXEC_DESIGN_CADENCE.search(text) or EXEC_SCALE.search(text) or EXEC_FINAL_STAGE.search(text))):
                 continue
             out.append({
@@ -641,6 +740,10 @@ def _query_elon_x() -> list[dict]:
                 'x_status_id': status_id,
                 'direct_exec_statement': True,
             })
+        for status_id, memory_text in _MUSK_AI_MEMORY_RECOVERY.items():
+            item = _make_musk_memory_item(status_id, memory_text, _x_time_from_id(status_id))
+            if item and not any(x.get('x_status_id') == status_id for x in out):
+                out.append(item)
         return out
     except Exception:
         return []
@@ -714,7 +817,7 @@ def query_news(q: str) -> list[dict]:
         return _query_joe_x()
     if q == TESLA_APP_X_SENTINEL:
         return _query_tesla_app_x()
-    if q == MUSK_X_SENTINEL:
+    if q in {MUSK_X_SENTINEL, MUSK_AI_MEMORY_SENTINEL}:
         return _query_elon_x()
     return _orig_query_news(q)
 
@@ -735,6 +838,7 @@ def _is_tesla_supply_text(text: str) -> bool:
     ramp_bottleneck = _is_ramp_bottleneck_event(text)
     berlin_field = _is_berlin_field_event(text)
     exec_guidance = _is_exec_guidance(text)
+    memory_event = _is_ai_memory_event(text)
     actor = TESLA_OPT.search(text) or MUSK_EXEC_ACTOR.search(text)
     robot_term = OPTIMUS.search(text) or (TESLA_OPT.search(text) and TESLA_HUMANOID.search(text))
     return bool(
@@ -753,6 +857,7 @@ def _is_tesla_supply_text(text: str) -> bool:
                     or gen3_asset
                     or ramp_bottleneck
                     or exec_guidance
+                    or memory_event
                 )
             )
         )
@@ -775,6 +880,12 @@ def _stage(text: str) -> str:
     actual_weekly = bool(ACTUAL_WEEKLY.search(text))
     weekly_target = bool(WEEKLY_TARGET.search(text))
     audit_started = bool(AUDIT_STARTED.search(text))
+    if _is_ai_memory_event(text):
+        if _is_ai_memory_baseline(text):
+            return 'ai_memory_baseline'
+        if _is_ai_memory_vendor_event(text):
+            return 'ai_memory_vendor'
+        return 'ai_memory_spec_change'
     if _is_berlin_field_event(text):
         return 'berlin_field_training'
     if actual_weekly:
@@ -838,6 +949,12 @@ def score(item: dict) -> int:
     stage = _stage(text)
     if not stage:
         return 0
+    if stage == 'ai_memory_baseline':
+        return 0
+    if stage == 'ai_memory_spec_change':
+        s += 16
+    if stage == 'ai_memory_vendor':
+        s += 18
     if stage == 'berlin_field_training':
         s += 16
     if stage == 'executive_production_timeline':
