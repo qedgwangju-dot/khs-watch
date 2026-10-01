@@ -512,6 +512,7 @@ def collect() -> tuple[list[dict], list[str]]:
     errors: list[str] = []
     now = dt.datetime.now(KST)
     cutoff = now - dt.timedelta(days=10)
+    article_cache: dict[str, str] = {}
 
     for lang, query in QUERIES:
         url = _rss_url(lang, query)
@@ -538,6 +539,10 @@ def collect() -> tuple[list[dict], list[str]]:
                 }
                 item["score"] = _score(item)
                 if item["score"] >= 8:
+                    item["description"] = _enrich_news_description(
+                        item["link"], item.get("description") or "", article_cache
+                    )
+                    item["score"] = _score(item)
                     item["fingerprint"] = _fingerprint(item)
                     items.append(item)
         except Exception as exc:
