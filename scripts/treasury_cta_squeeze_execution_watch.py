@@ -13,6 +13,7 @@ User-facing legacy labels are mapped as:
 from __future__ import annotations
 
 import io
+import os
 import re
 import urllib.request
 from datetime import date, datetime, time, timedelta
@@ -36,6 +37,56 @@ HEADINGS = {
 }
 
 MONTH_RE = re.compile(r"^(JAN|FEB|MAR|APR|MAY|JUN|JLY|AUG|SEP|OCT|NOV|DEC)\d{2}$")
+
+
+def _download_pdf_via_browser() -> bytes:
+    """Use a real CME same-origin browser session only after direct PDF access fails."""
+    from playwright.sync_api import sync_playwright
+
+    exe = next(
+        (
+            p
+            for p in (
+                "/usr/bin/google-chrome",
+                "/usr/bin/google-chrome-stable",
+                "/usr/bin/chromium",
+                "/usr/bin/chromium-browser",
+            )
+            if os.path.exists(p)
+        ),
+        None,
+    )
+    if not exe:
+        raise RuntimeError("system Chrome/Chromium not found for CME fallback")
+
+    with sync_playwright() as pw:
+        browser = pw.chromium.launch(
+            executable_path=exe,
+            headless=True,
+            args=["--no-sandbox", "--disable-dev-shm-usage"],
+        )
+        context = browser.new_context(
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/154 Safari/537.36",
+            locale="en-US",
+        )
+        page = context.new_page()
+        page.goto(
+            "https://www.cmegroup.com/daily-bulletin.html",
+            wait_until="domcontentloaded",
+            timeout=60000,
+        )
+        page.wait_for_timeout(1200)
+        response = context.request.get(
+            CME_BULLETIN,
+            headers={"Accept": "application/pdf,*/*", "Referer": page.url},
+            timeout=60000,
+        )
+        body = response.body()
+        status = response.status
+        browser.close()
+    if status != 200 or not body.startswith(b"%PDF"):
+        raise RuntimeError(f"CME browser PDF fallback failed: HTTP {status}, bytes={len(body)}")
+    return body
 
 
 def _download_pdf_text() -> str:
@@ -64,6 +115,12 @@ def _download_pdf_text() -> str:
             errors.append(f"{url}: non-PDF")
         except Exception as exc:
             errors.append(f"{url}: {type(exc).__name__}: {exc}")
+    if not data:
+        try:
+            data = _download_pdf_via_browser()
+            print("cme_section09_browser_fallback=success")
+        except Exception as exc:
+            errors.append(f"browser: {type(exc).__name__}: {exc}")
     if not data:
         raise RuntimeError("CME Section09 download failed: " + " | ".join(errors))
 
