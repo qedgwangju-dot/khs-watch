@@ -169,6 +169,8 @@ QUERIES = [
     ("ko", 'HBM 2027 Blended ASP 121 8단 Gb당 10 20 트렌드포스'),
     ("ko", 'Bernstein DRAM NAND 3분기 20% 4분기 한 자릿수 공급부족 2027 2028 정상화 LTA'),
     ("ko", 'Bernstein 메모리 2028 정상화 2027 공급부족 장기계약 LTA 가격 상한'),
+    ("ko", 'Goldman Sachs 메모리 4분기 ASP 전망 상향 eSSD 채택 삼성전자 SK하이닉스'),
+    ("ko", '골드만삭스 메모리 DRAM NAND 기업용 SSD 4분기 평균판매단가 전망 삼성전자 SK하이닉스'),
     ("ko", 'LPDDR4X LP4X EOL 생산종료 지원 연장 2027 2028 삼성전자 SK하이닉스 마이크론'),
     ("ko", 'DDR4 생산종료 EOL 증설 공급배정 2군 메모리 이행률 fulfillment 삼성 SK하이닉스 마이크론'),
     # DRAM physical capacity / wafer-start / new-fab cycle: do not miss supply expansion.
@@ -184,6 +186,8 @@ QUERIES = [
     ("en", 'TrendForce 2027 HBM blended ASP 121% 8-Hi 12-Hi premium 10 20'),
     ("en", 'Bernstein DRAM NAND Q3 mid-teens 20% Q4 high-single-digit shortage 2027 normalize 2028 LTA'),
     ("en", 'Bernstein memory 2028 normalization 2027 shortage long-term agreements cap price increases'),
+    ("en", 'Goldman Sachs memory Q4 ASP forecast eSSD adoption Samsung SK hynix DRAM NAND'),
+    ("en", 'Goldman Sachs storage price eSSD enterprise SSD Q4 ASP Samsung SK hynix'),
     ("en", 'LPDDR4X LP4X EOL end of life support extension 2027 2028 Samsung SK hynix Micron'),
     ("en", 'DDR4 EOL capacity expansion supply allocation second-tier memory fulfillment 50% Samsung SK hynix Micron'),
     ("en", 'Applied Materials Citi TMT DRAM wafer starts capacity 1.6 million 2 million 400000'),
@@ -207,7 +211,7 @@ CHANGE_MARKERS = {
     "생산종료", "지원 연장", "이행률",
 }
 HIGH_SIGNAL = {
-    "bofa", "bank of america", "bernstein", "trendforce", "dram exchange", "dramexchange", "omdia",
+    "bofa", "bank of america", "bernstein", "goldman", "goldman sachs", "trendforce", "dram exchange", "dramexchange", "omdia",
     "reuters", "bloomberg", "citi", "ubs", "micron", "samsung", "sk hynix", "sk하이닉스",
     "삼성전자", "nvidia", "엔비디아", "broadcom", "브로드컴", "google", "구글", "amd",
     "applied materials", "amat", "어플라이드 머티어리얼즈", "citi tmt",
@@ -244,6 +248,22 @@ def _clean(text: str | None) -> str:
     value = re.sub(r"<[^>]+>", " ", value)
     value = re.sub(r"\s+", " ", value).strip()
     return value
+
+
+def alert_semantic_signature(value: str) -> str:
+    """Stable signature for duplicate-delivery protection.
+
+    Query timestamps are intentionally ignored; substantive content, numbers,
+    source links and event details remain part of the signature.
+    """
+    normalized = re.sub(
+        r"조회\s+\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}\s+KST",
+        "조회 <TIME> KST",
+        value or "",
+    )
+    normalized = re.sub(r"[ \t]+", " ", normalized)
+    normalized = re.sub(r"\n{3,}", "\n\n", normalized).strip()
+    return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
 
 
 def _translate_to_ko(text: str) -> str:
@@ -858,7 +878,22 @@ def _market_signal_details(raw_title: str, detail_blob: str) -> list[str]:
     low_title = raw_title.lower()
     blob = _clean(detail_blob)
     low = blob.lower()
+    combined = f"{low_title} {low}"
     out: list[str] = []
+
+    if ("goldman sachs" in combined or "골드만삭스" in combined) and any(
+        k in combined for k in ("essd", "enterprise ssd", "storage", "nand", "dram", "memory", "메모리")
+    ):
+        if any(k in combined for k in ("q4 asp", "asp forecast", "price forecast", "평균판매단가", "asp 전망")):
+            out.append("기관 리비전: Goldman Sachs가 4Q 메모리 평균판매단가 전망을 기존 기대보다 강하게 제시")
+        if any(k in combined for k in ("essd adoption", "enterprise ssd adoption", "essd 채택", "기업용 ssd 채택", "adoption accelerat")):
+            out.append("수요: 기업용 SSD(eSSD) 채택 가속을 핵심 근거로 제시")
+        if ("samsung" in combined or "삼성전자" in combined) and ("sk hynix" in combined or "sk하이닉스" in combined):
+            if any(k in combined for k in ("reaffirm", "buy", "매수", "유지")):
+                out.append("기업 판단: 삼성전자·SK하이닉스에 대한 긍정적 투자의견 유지 보도")
+        if not re.search(r"(?:q4|4분기)[^%]{0,100}\d+(?:\.\d+)?\s*%", combined, re.I):
+            out.append("정량 한계: 공개 2차 보도에서 4Q ASP의 구체 상승률은 확인되지 않아 숫자를 추정하지 않음")
+        return list(dict.fromkeys(out))[:4]
 
     if "dram market bulletin" in low_title:
         if ("csp" in low or "cloud" in low) and "server dram" in low:
@@ -914,6 +949,8 @@ def _market_signal_details(raw_title: str, detail_blob: str) -> list[str]:
 
 def _meaning_line(raw_title: str, detail_blob: str) -> str:
     low = f"{raw_title} {detail_blob}".lower()
+    if "goldman sachs" in low or "골드만삭스" in low:
+        return "의미: 4Q 가격 리비전과 eSSD 채택이 같이 강해지면 NAND 제품혼합·평균판매단가가 삼성전자·SK하이닉스/Solidigm 실적의 핵심 레버리지"
     if "enterprise ssd" in low or "qlc" in low or "nand" in low:
         return "의미: 삼성전자·SK하이닉스/Solidigm·Micron 등 NAND 업체는 기업용 SSD 제품혼합·평균판매단가가 핵심 확인 지표"
     if "hbm" in low:
