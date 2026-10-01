@@ -1,6 +1,10 @@
 name: Yen carry unwind Telegram alert
 
 on:
+  push:
+    paths:
+      - ".github/workflows/yen-carry-alert.yml"
+      - "scripts/yen_carry_policy_equity_enrich.py"
   schedule:
     # GitHub cron is UTC. Check every 5 minutes, offset from crowded minute 0.
     - cron: "3,8,13,18,23,28,33,38,43,48,53,58 * * * *"
@@ -45,7 +49,7 @@ jobs:
     timeout-minutes: 10
     env:
       TELEGRAM_TEST: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.telegram_test || 'false' }}
-      TELEGRAM_DRY_RUN: ${{ github.event_name == 'pull_request' && 'true' || 'false' }}
+      TELEGRAM_DRY_RUN: ${{ (github.event_name == 'pull_request' || github.event_name == 'push') && 'true' || 'false' }}
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
       YEN_CARRY_MAX_DATA_AGE_MINUTES: "240"
       YEN_CARRY_CASH_FRESH_MINUTES: "150"
