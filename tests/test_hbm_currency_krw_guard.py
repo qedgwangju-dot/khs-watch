@@ -30,6 +30,18 @@ class CurrencyKRWGuardTests(unittest.TestCase):
         self.assertIn("1,500억달러(", out)
         self.assertIn("약 202조5,000억원", out)
 
+    def test_us_investment_alert_all_dollar_amounts_get_immediate_krw_parentheses(self):
+        sample = (
+            "Project Star: 텍사스 엔시날 제1호 공식 추진 · 223억달러 · 6,472MW\n"
+            "Project Power: 원전 8기 프레임워크 합의 · 최대 1,200억달러\n"
+            "한국 대미 전략투자 2,000억달러 · 알래스카 LNG 540억달러"
+        )
+        with patch.object(g, "_rate", side_effect=self.fake_rate):
+            out = g.enforce_text(sample)
+        for token in ("223억달러", "1,200억달러", "2,000억달러", "540억달러"):
+            self.assertIn(token + "(", out)
+        g.validate_text(out)
+
     def test_usd_billion_symbol_gets_immediate_krw_parentheses(self):
         with patch.object(g, "_rate", side_effect=self.fake_rate):
             out = g.enforce_text("could raise $15 billion")
