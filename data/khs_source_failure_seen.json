@@ -1,5 +1,12 @@
 {
-  "failure_streaks": {},
+  "failure_streaks": {
+    "domestic_stablecoin|fsc.go.kr": {
+      "lane": "domestic_stablecoin",
+      "last_seen_kst": "2026-10-01T13:10:46+09:00",
+      "source": "Financial Services Commission stablecoin releases",
+      "streak": 1
+    }
+  },
   "seen": {
     "01b1be5328fba78e": {
       "failure_count": 4,
