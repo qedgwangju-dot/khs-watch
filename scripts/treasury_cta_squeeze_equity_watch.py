@@ -838,6 +838,29 @@ def _scheduled_due(current_state: dict, next_state: dict) -> tuple[bool, bool, s
     return monday_due, fomc_due, week_key, date_key
 
 
+def _cross_alert_gate(current_state: dict, cross: dict) -> tuple[bool, int, int, bool]:
+    """Deduplicate a squeeze episode without letting stale data reset the alert latch."""
+    stage = int(cross.get("stage", 0) or 0)
+    prev_alerted = int(
+        current_state.get(
+            "nasdaq_cross_asset_alerted_stage",
+            current_state.get("nasdaq_cross_asset_stage", 0),
+        )
+        or 0
+    )
+    fuel_present = bool(cross.get("treasury_fuel") and cross.get("nq_fuel"))
+    episode_reset = bool(
+        cross.get("data_fresh")
+        and cross.get("nq_history_ready")
+        and cross.get("nq_history_fresh")
+        and not fuel_present
+    )
+    gate_base = 0 if episode_reset else prev_alerted
+    due = bool(stage >= 1 and stage > gate_base)
+    next_alerted = stage if due else gate_base
+    return due, gate_base, next_alerted, episode_reset
+
+
 def scheduled_main() -> int:
     current_state = watcher.load_state()
     rc = _base_main()
@@ -853,8 +876,11 @@ def scheduled_main() -> int:
 
     prev_stage = int(current_state.get("nasdaq_cross_asset_stage", 0) or 0)
     stage = int(cross.get("stage", 0) or 0)
-    cross_due = stage >= 1 and stage > prev_stage
+    cross_due, cross_gate_base, next_alerted_stage, cross_episode_reset = _cross_alert_gate(
+        current_state, cross
+    )
     next_state["nasdaq_cross_asset_stage"] = stage
+    next_state["nasdaq_cross_asset_alerted_stage"] = next_alerted_stage
 
     monday_due, fomc_due, week_key, date_key = _scheduled_due(current_state, next_state)
     base_alert_exists = watcher.ALERT.exists()
@@ -884,6 +910,7 @@ def scheduled_main() -> int:
         watcher.NEXT_STATE.write_text(json.dumps(next_state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         with watcher.STATUS.open("a", encoding="utf-8") as f:
             f.write(f"- 채권→Nasdaq 전이 단계: {stage} ({cross.get('label')})\n")
+            f.write(f"- 채권→Nasdaq 알림 래치: {cross_gate_base}→{next_alerted_stage} · 에피소드 리셋={'예' if cross_episode_reset else '아니오'}\n")
         return rc
 
     try:
@@ -937,7 +964,9 @@ def scheduled_main() -> int:
         if fomc_due:
             f.write("- 예약 발송: FOMC 전날 점검\n")
         if cross_due:
-            f.write(f"- 채권→Nasdaq 전이 단계 상승: {prev_stage}→{stage} ({cross.get('label')})\n")
+            f.write(f"- 채권→Nasdaq 전이 단계 상승: {cross_gate_base}→{stage} ({cross.get('label')})\n")
+        elif cross_episode_reset:
+            f.write("- 채권→Nasdaq 이중 스퀴즈 에피소드 종료 확인 · 알림 래치 0으로 재설정\n")
     return rc
 
 
