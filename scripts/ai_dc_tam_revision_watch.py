@@ -122,7 +122,7 @@ def article_text(url: str) -> str:
 
 def collect(now: datetime) -> list[dict]:
     out = []
-    cutoff = now - timedelta(days=45)
+    cutoff = now - timedelta(days=90)
     for query in QUERIES:
         try:
             root = ET.fromstring(fetch(gnews_url(query), 20))
@@ -197,20 +197,20 @@ def extract_metrics(text: str) -> dict:
 
     patterns = [
         ("ai_dc_system_tam_2030_usd_t", [
-            r"(?:2030[^.]{0,120}?)?\$?([0-9]+(?:\.[0-9]+)?)\s*trillion[^.]{0,120}?(?:data center systems|ai data center|data-center systems)",
-            r"(?:data center systems|ai data center|data-center systems)[^.]{0,120}?\$?([0-9]+(?:\.[0-9]+)?)\s*trillion[^.]{0,80}?2030",
+            r"(?:2030[^.]{0,120}?)?\$?([0-9]+(?:\.[0-9]+)?)\s*(?:trillion|tn|t)[^.]{0,120}?(?:data center systems|ai data center|data-center systems)",
+            r"(?:data center systems|ai data center|data-center systems)[^.]{0,120}?\$?([0-9]+(?:\.[0-9]+)?)\s*(?:trillion|tn|t)[^.]{0,80}?2030",
         ], 0.5, 5.0),
         ("server_cpu_tam_2030_usd_b", [
             r"(?:server cpu|cpu)[^.]{0,120}?(?:2030[^.]{0,80}?)?\$?([0-9]{2,4}(?:\.[0-9]+)?)\s*(?:billion|bn)",
             r"\$?([0-9]{2,4}(?:\.[0-9]+)?)\s*(?:billion|bn)[^.]{0,120}?(?:server cpu|cpu)[^.]{0,80}?2030",
         ], 50, 600),
         ("cloud_capex_2026_usd_t", [
-            r"2026[^.]{0,100}?(?:capex|capital spending)[^.]{0,80}?\$?([0-9]+(?:\.[0-9]+)?)\s*trillion",
-            r"(?:capex|capital spending)[^.]{0,80}?2026[^.]{0,80}?\$?([0-9]+(?:\.[0-9]+)?)\s*trillion",
+            r"2026[^.]{0,100}?(?:capex|capital spending)[^.]{0,80}?\$?([0-9]+(?:\.[0-9]+)?)\s*(?:trillion|tn|t)",
+            r"(?:capex|capital spending)[^.]{0,80}?2026[^.]{0,80}?\$?([0-9]+(?:\.[0-9]+)?)\s*(?:trillion|tn|t)",
         ], 0.3, 3.0),
         ("cloud_capex_2027_usd_t", [
-            r"2027[^.]{0,100}?(?:capex|capital spending)[^.]{0,80}?\$?([0-9]+(?:\.[0-9]+)?)\s*trillion",
-            r"(?:capex|capital spending)[^.]{0,80}?2027[^.]{0,80}?\$?([0-9]+(?:\.[0-9]+)?)\s*trillion",
+            r"2027[^.]{0,100}?(?:capex|capital spending)[^.]{0,80}?\$?([0-9]+(?:\.[0-9]+)?)\s*(?:trillion|tn|t)",
+            r"(?:capex|capital spending)[^.]{0,80}?2027[^.]{0,80}?\$?([0-9]+(?:\.[0-9]+)?)\s*(?:trillion|tn|t)",
         ], 0.3, 4.0),
     ]
     for key, pats, lo, hi in patterns:
