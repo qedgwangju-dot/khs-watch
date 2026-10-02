@@ -42,6 +42,17 @@ BASELINE = {
         "transmission_345kv_plus_miles_2024": 888.0,
         "bushing_lead_low_weeks_secondary": 135.0,
         "bushing_lead_high_weeks_secondary": 145.0,
+        "ms_it_power_2025_gw": 9.19,
+        "ms_it_power_2026_gw": 17.96,
+        "ms_it_power_2027_gw": 35.46,
+        "ms_it_power_2028_gw": 52.31,
+        "ms_it_power_2029_gw": 78.57,
+        "ms_new_power_need_2026_2028_gw": 97.0,
+        "ms_under_construction_gw": 21.0,
+        "ms_grid_available_gw": 19.0,
+        "ms_gross_gap_gw": 57.0,
+        "ms_mitigation_gw": 24.0,
+        "ms_residual_gap_gw": 33.0,
     },
     "sources": {
         "dc_demand": {
@@ -89,6 +100,8 @@ SEARCHES = [
     ("google", 'LS ELECTRIC data center transformer order United States 2026'),
     ("google", 'Hyosung Heavy Industries US transformer data center 2026'),
     ("google", 'HD Hyundai Electric US transformer data center 2026'),
+    ("google", '"Morgan Stanley" data center 78.57 GW 2029 97 GW power shortfall'),
+    ("google", '"Morgan Stanley" data center power 57 GW 33 GW 2026 2028'),
 ]
 
 OFFICIAL_DOMAINS = (
@@ -100,7 +113,8 @@ OFFICIAL_DOMAINS = (
 
 TRUSTED_DOMAINS = (
     "reuters.com", "utilitydive.com", "datacenterdynamics.com", "cleanenergygrid.org",
-    "woodmac.com", "spglobal.com", "bloomberg.com",
+    "woodmac.com", "spglobal.com", "bloomberg.com", "ft.com",
+    "finance.yahoo.com", "investing.com",
 )
 
 MATERIAL_TERMS = (
@@ -281,6 +295,37 @@ def parse_metrics(text: str) -> dict:
             if v and 50 <= v <= 5000:
                 out["transmission_345kv_plus_miles_latest"] = v
 
+    if "morgan stanley" in low and ("data center" in low or "datacenter" in low):
+        year_patterns = {
+            2025: "ms_it_power_2025_gw",
+            2026: "ms_it_power_2026_gw",
+            2027: "ms_it_power_2027_gw",
+            2028: "ms_it_power_2028_gw",
+            2029: "ms_it_power_2029_gw",
+        }
+        for year, key_name in year_patterns.items():
+            m = re.search(rf"{year}[^.{{0,120}}]*?([0-9]{{1,3}}(?:\.[0-9]+)?)\s*GW", text, re.I)
+            if not m:
+                m = re.search(rf"([0-9]{{1,3}}(?:\.[0-9]+)?)\s*GW[^.{{0,120}}]*?{year}", text, re.I)
+            if m:
+                v = num(m.group(1))
+                if v and 0.1 <= v <= 200:
+                    out[key_name] = v
+
+        patterns = [
+            ("ms_new_power_need_2026_2028_gw", r"97\s*GW", 40, 160),
+            ("ms_under_construction_gw", r"21\s*GW[^.]{0,80}(?:under construction|construction)", 5, 80),
+            ("ms_grid_available_gw", r"19\s*GW[^.]{0,100}(?:grid|available)", 5, 80),
+            ("ms_gross_gap_gw", r"57\s*GW[^.]{0,100}(?:gap|shortfall|deficit)", 10, 120),
+            ("ms_residual_gap_gw", r"33\s*GW[^.]{0,100}(?:gap|shortfall|deficit|residual)", 5, 100),
+        ]
+        for key_name, pat, lo, hi in patterns:
+            m = re.search(pat, text, re.I)
+            if m:
+                v = num(re.search(r"([0-9]+(?:\.[0-9]+)?)", m.group(0)).group(1))
+                if v is not None and lo <= v <= hi:
+                    out[key_name] = v
+
     return out
 
 
@@ -299,6 +344,10 @@ def material_metric_changes(old: dict, new: dict) -> list[dict]:
         "queue_projects": ("계통연결 대기 프로젝트", "pct", 10.0),
         "queue_gw": ("계통연결 대기 용량", "pct", 10.0),
         "transmission_345kv_plus_miles_latest": ("345kV+ 송전선 연간 준공", "pct", 25.0),
+        "ms_it_power_2029_gw": ("Morgan Stanley 2029 데이터센터 IT 전력", "pct", 10.0),
+        "ms_new_power_need_2026_2028_gw": ("Morgan Stanley 2026~2028 신규 전력 필요량", "abs", 10.0),
+        "ms_gross_gap_gw": ("Morgan Stanley 1차 전력 부족분", "abs", 5.0),
+        "ms_residual_gap_gw": ("Morgan Stanley 대체전원 반영 후 부족분", "abs", 5.0),
     }
     out = []
     for key, (label, mode, threshold) in rules.items():
@@ -344,6 +393,8 @@ def format_metric(key: str, value: float) -> str:
         return f"{value:,.0f}GW"
     if "miles" in key:
         return f"{value:,.0f}마일"
+    if key.endswith("_gw") or "_gw" in key:
+        return f"{value:,.2f}GW" if abs(value - round(value)) > 1e-6 else f"{value:,.0f}GW"
     return f"{value:,.1f}"
 
 
@@ -380,6 +431,12 @@ def build_alert(changes: list[dict], events: list[dict], state: dict) -> str:
         f"{format_metric('queue_gw', float(m.get('queue_gw') or 0))}",
         f"• 345kV+ 송전선 최신 기준: "
         f"{format_metric('transmission_345kv_plus_miles_2024', float(m.get('transmission_345kv_plus_miles_latest') or m.get('transmission_345kv_plus_miles_2024') or 0))}",
+        f"• Morgan Stanley IT 전력 경로: 2025 {float(m.get('ms_it_power_2025_gw') or 0):.2f}GW → "
+        f"2026 {float(m.get('ms_it_power_2026_gw') or 0):.2f}GW → 2027 {float(m.get('ms_it_power_2027_gw') or 0):.2f}GW → "
+        f"2028 {float(m.get('ms_it_power_2028_gw') or 0):.2f}GW → 2029 {float(m.get('ms_it_power_2029_gw') or 0):.2f}GW",
+        f"• Morgan Stanley 전력 수급 스트레스: 2026~2028 신규 필요 {float(m.get('ms_new_power_need_2026_2028_gw') or 0):.0f}GW "
+        f"→ 건설 중 {float(m.get('ms_under_construction_gw') or 0):.0f}GW + 전력망 가용 {float(m.get('ms_grid_available_gw') or 0):.0f}GW "
+        f"→ 1차 부족 {float(m.get('ms_gross_gap_gw') or 0):.0f}GW → 대체전원 반영 후 약 {float(m.get('ms_residual_gap_gw') or 0):.0f}GW",
         "",
         "<b>2단계 미래 재평가 요인 발굴</b>",
         "• 전력수요 ↑ + 변압기 납기 ↑ + 계통대기 ↑가 동시에 나오면 AI 데이터센터 전원 인가 지연 위험이 커집니다.",
@@ -497,6 +554,8 @@ def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     state = load_json(STATE_PATH) or copy.deepcopy(BASELINE)
     previous_metrics = copy.deepcopy(state.get("metrics") or BASELINE["metrics"])
+    for k, v in BASELINE["metrics"].items():
+        previous_metrics.setdefault(k, v)
     seen_urls = set(state.get("seen_urls") or [])
 
     observations, events = discover(now, seen_urls)
