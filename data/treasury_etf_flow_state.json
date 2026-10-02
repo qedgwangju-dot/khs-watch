@@ -280,6 +280,20 @@
         "net_assets": 26281537530.0,
         "source": "https://www.ishares.com/us/products/239452/ishares-13-year-treasury-bond-etf",
         "flow_usd": -48714000.0
+      },
+      {
+        "ticker": "SHY",
+        "label": "미 국채 1~3년",
+        "date": "2026-10-01",
+        "nav_date": "2026-10-01",
+        "shares_date": "2026-10-01",
+        "nav": 81.09,
+        "shares": 324600000.0,
+        "sec_yield": 4.53,
+        "nav_change_pct": null,
+        "net_assets": 26320665241.0,
+        "source": "https://www.ishares.com/us/products/239452/ishares-13-year-treasury-bond-etf",
+        "flow_usd": 72981000.0
       }
     ],
     "IEF": [
@@ -576,6 +590,20 @@
         "net_assets": 41556895854.0,
         "source": "https://www.ishares.com/us/products/239456/ishares-7-10-year-treasury-bond-etf",
         "flow_usd": 330447000.0
+      },
+      {
+        "ticker": "IEF",
+        "label": "미 국채 7~10년",
+        "date": "2026-10-01",
+        "nav_date": "2026-10-01",
+        "shares_date": "2026-10-01",
+        "nav": 89.27,
+        "shares": 464700000.0,
+        "sec_yield": 4.94,
+        "nav_change_pct": null,
+        "net_assets": 41485646358.0,
+        "source": "https://www.ishares.com/us/products/239456/ishares-7-10-year-treasury-bond-etf",
+        "flow_usd": -53562000.0
       }
     ],
     "TLT": [
@@ -872,6 +900,20 @@
         "net_assets": 46233323004.0,
         "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
         "flow_usd": 38915000.0
+      },
+      {
+        "ticker": "TLT",
+        "label": "미 국채 20년 이상",
+        "date": "2026-10-01",
+        "nav_date": "2026-10-01",
+        "shares_date": "2026-10-01",
+        "nav": 77.68,
+        "shares": 599500000.0,
+        "sec_yield": 5.53,
+        "nav_change_pct": null,
+        "net_assets": 46569130202.0,
+        "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
+        "flow_usd": 427240000.00000006
       }
     ],
     "LQD": [
@@ -1114,6 +1156,21 @@
         "source": "https://www.ishares.com/us/products/239566/ishares-iboxx-investment-grade-corporate-bond-etf",
         "oas_bps": 87.71,
         "flow_usd": 643986000.0
+      },
+      {
+        "ticker": "LQD",
+        "label": "미 투자등급 회사채",
+        "date": "2026-10-01",
+        "nav_date": "2026-10-01",
+        "shares_date": "2026-10-01",
+        "nav": 101.98,
+        "shares": 269100000.0,
+        "sec_yield": 5.97,
+        "nav_change_pct": null,
+        "net_assets": 27442544036.0,
+        "source": "https://www.ishares.com/us/products/239566/ishares-iboxx-investment-grade-corporate-bond-etf",
+        "oas_bps": 86.23,
+        "flow_usd": -764850000.0
       }
     ],
     "HYG": [
@@ -1356,21 +1413,36 @@
         "source": "https://www.ishares.com/us/products/239565/ishares-iboxx-high-yield-corporate-bond-etf",
         "oas_bps": 279.36,
         "flow_usd": 246976000.00000003
+      },
+      {
+        "ticker": "HYG",
+        "label": "미 고수익 회사채",
+        "date": "2026-10-01",
+        "nav_date": "2026-10-01",
+        "shares_date": "2026-10-01",
+        "nav": 76.67,
+        "shares": 224000000.0,
+        "sec_yield": 6.99,
+        "nav_change_pct": null,
+        "net_assets": 17173626931.0,
+        "source": "https://www.ishares.com/us/products/239565/ishares-iboxx-high-yield-corporate-bond-etf",
+        "oas_bps": 280.97,
+        "flow_usd": 506022000.0
       }
     ]
   },
   "last_delivery": {
-    "at_kst": "2026-10-01T11:32:30+09:00",
+    "at_kst": "2026-10-02T11:21:51+09:00",
     "bot_username": "khs8879887988798879_bot",
     "message_ids": [
-      401
+      405
     ],
     "overall": "혼조·추가 확인",
     "treasury_flow": "장기채 위험 확대",
-    "credit_flow": "신용 위험선호 회복",
-    "curve_regime": "커브 트위스트·혼조",
-    "treasury_date": "2026-09-30",
+    "credit_flow": "신용시장 혼조",
+    "curve_regime": "불 스티프닝",
+    "treasury_date": "2026-10-01",
     "format": "treasury-credit-ishares-oas-v2",
-    "data_fingerprint": "38b35abeda34346d559613d6854c4a953955013b72ecb52939c3de89e238c8c5"
+    "data_fingerprint": "29b4ae7b7f8bdeedbc21d7fc4cf7f1baa893bc66c898189a979581b330a25f88"
   }
 }
