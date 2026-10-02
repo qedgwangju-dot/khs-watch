@@ -171,6 +171,19 @@ jobs:
           aaoi_ramp = "Applied Optoelectronics expands 1.6T transceiver capacity for hyperscaler shipments"
           assert watch.signal_score(aaoi_ramp, "Applied Optoelectronics") >= 7, "AAOI capacity/shipments must trigger"
           assert watch.category_for(aaoi_ramp, "Applied Optoelectronics") == "1.6T 전환"
+
+          inp_capacity = "AXT and Lumentum sign six-year InP substrate capacity reservation with $87 million deposits for AI optical links"
+          assert watch.signal_score(inp_capacity, "AXT") >= 7, "InP capacity reservation must trigger"
+          assert watch.category_for(inp_capacity, "AXT") == "InP 기판 장기계약·생산능력"
+
+          gaas_optical = "WIN Semiconductors expands GaAs optical communications capacity as 1.6T demand accelerates"
+          assert watch.signal_score(gaas_optical, "DIGITIMES") >= 7, "GaAs optical capacity story must trigger"
+          assert watch.category_for(gaas_optical, "GaAs Optical Supply Chain") == "GaAs 광통신 기판·파운드리"
+
+          power_only = "SiC 6-inch substrate demand recovers as 800V HVDC data center power conversion accelerates"
+          assert not __import__("re").search(r"\bInP\b|indium phosphide|\bGaAs\b|gallium arsenide|砷化鎵|optical|transceiver|CPO|1\.6T|3\.2T|laser|photodiode", power_only, __import__("re").I), (
+              "Power-only SiC/HVDC story must stay outside the optical-material alert."
+          )
           print("dedupe_and_quality_regression_test=passed")
           PY
 
@@ -232,6 +245,8 @@ jobs:
               "FY27", "FY28", "FCC", "Covered List", "Buy American", "InP", "AXT", "AXTI",
               "AAOI", "Applied Optoelectronics", "Innolight", "Eoptolink", "HBOM", "SBOM",
               "Morgan Stanley", "Marc Lehman", "Sumitomo Electric", "IQE",
+              "GaAs", "gallium arsenide", "WIN Semiconductors", "WIN Semi",
+              "VPEC", "Visual Photonics Epitaxy", "Casela", "AXT-Tongmei", "Tongmei",
               "AVGO", "NVDA", "ANET", "MRVL", "LITE", "COHR", "ALAB", "GLW", "005930.KS",
           ]
 
@@ -261,6 +276,11 @@ jobs:
               "高明鐵": "가오밍톄",
               "東佑達": "둥유다",
               "萬潤": "완룬",
+              "WIN Semiconductors": "윈 세미컨덕터스",
+              "WIN Semi": "윈 세미",
+              "Visual Photonics Epitaxy": "VPEC",
+              "Casela": "카셀라",
+              "Sumitomo Electric": "스미토모전기공업",
           }
 
           def localize_names(value: str) -> str:
