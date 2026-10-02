@@ -36,6 +36,16 @@ BASELINE = {
     "behind_meter_share_pct": 30.0,
     "iea_2030_twh": 426.0,
     "incremental_gas_bcf_day": 4.0,
+    "ms_new_power_need_2026_2028_gw": 97.0,
+    "ms_under_construction_gw": 21.0,
+    "ms_available_grid_gw": 19.0,
+    "ms_initial_shortfall_gw": 57.0,
+    "ms_alternative_supply_gw": 24.0,
+    "ms_residual_shortfall_gw": 33.0,
+    "gs_us_2030_power_gw": 108.0,
+    "gs_global_growth_2025_2030_pct": 170.0,
+    "gs_btm_gas_capacity_2030_gw": 30.0,
+    "gs_btm_power_delivery_2030_gw": 20.0,
 }
 
 VERIFIED_GEV = {
@@ -63,7 +73,7 @@ NEWS_QUERIES = (
 )
 
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
-FORMAT_VERSION = 1
+FORMAT_VERSION = 2
 
 
 def fetch(url: str, timeout: int = 30):
@@ -338,6 +348,25 @@ if should_alert:
     )
     msg.append(f"• <b>데이터센터 직접부담</b> │ 최대 150억달러 = <b>{krw_from_usd_b(b['dc_direct_cost_usd_b'], fx)}</b>")
 
+    msg += ["", "<b>⚡ 전력부족·현장발전 기준선</b>"]
+    msg.append(
+        f"• <b>Morgan Stanley 2026~2028 신규 필요</b> │ {b['ms_new_power_need_2026_2028_gw']:g}GW"
+        f" = 건설 중 {b['ms_under_construction_gw']:g}GW + 가용 전력망 {b['ms_available_grid_gw']:g}GW"
+        f" + 초기 부족 {b['ms_initial_shortfall_gw']:g}GW"
+    )
+    msg.append(
+        f"• <b>대체전원 반영 후 잔여 부족</b> │ {b['ms_residual_shortfall_gw']:g}GW"
+        f" │ 현장 가스·연료전지·직접원전 등 {b['ms_alternative_supply_gw']:g}GW 반영"
+    )
+    msg.append(
+        f"• <b>Goldman Sachs 2030 미국 데이터센터 전력</b> │ {b['gs_us_2030_power_gw']:g}GW"
+        f" │ 2025→2030 글로벌 전력수요 +{b['gs_global_growth_2025_2030_pct']:g}%"
+    )
+    msg.append(
+        f"• <b>Goldman Sachs 현장 가스발전</b> │ 2030 {b['gs_btm_gas_capacity_2030_gw']:g}GW 설비"
+        f" → 실제 전력공급 {b['gs_btm_power_delivery_2030_gw']:g}GW+"
+    )
+
     msg += ["", "<b>🏭 가스터빈 공급 병목</b>"]
     msg.append(f"• <b>GE Vernova 계약·슬롯</b> │ 글로벌 <b>{gev['gas_contract_slot_gw']:g}GW</b> │ 2026년말 목표 {gev['year_end_target_gw']:g}GW+")
     msg.append(f"• <b>연간 생산능력</b> │ 2026 {gev['output_2026_gw']:g}GW → 2028 {gev['output_2028_gw']:g}GW → 2030 {gev['output_2030_gw']:g}GW")
@@ -372,6 +401,7 @@ if should_alert:
     msg.append("• <b>실행순서</b> │ 필요 GW → 계약·터빈슬롯 → 금융종결 → 착공 → 연료·송전 연결 → 상업운전")
     msg.append("• <b>매출 연결</b> │ 발표 MW가 아니라 장비 발주·착공·상업운전 단계로 내려올 때 실적 전환으로 봅니다.")
     msg.append("• <b>분리 이유</b> │ 계통접속 감시는 ‘전기를 받을 수 있나’, 발전설비 감시는 ‘그 전기를 실제 만들 수 있나’를 추적합니다.")
+    msg.append("• <b>조기경보</b> │ 신규 전력수요 전망이 커지는데 실제 가용 전력망·발전 착공·상업운전 MW가 따라오지 않으면 병목 악화로 봅니다.")
 
     msg += ["", "<b>💱 환율</b>"]
     msg.append(f"• <b>1달러 = {fx:,.2f}원</b> │ {h(fx_source)} │ {h(fx_checked)} UTC")
