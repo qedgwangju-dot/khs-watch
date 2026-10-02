@@ -7,7 +7,7 @@
     "errors": [],
     "material_items": 7,
     "new_material_items": 0,
-    "raw_items": 127
+    "raw_items": 126
   },
   "seen": {
     "027ea08934406a07812d619d": {
@@ -48,6 +48,16 @@
       "source": "theguardian.com",
       "title": "OpenAI says agents leaked 53 images from ChatGPT users in latest example of rogue activity - theguardian.com",
       "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNd0dTclpUU0M5bk5NTkk3MlVJeF9vZXZiQVRTLW03V3pxRjZ1WHlxaDBRVUUxbUN5eVRhQlpoTnZQZUdodndHVU9ldHQyazVwamc3OUZqaUktVmxvZmd3d3Y3RHg4Y0lzakJ1bWZtSG5fbFlMbmE4WnBVei1WdS1mem1CYWJ1MFJ1ZEJZRkJwUHJQdEU?oc=5",
+      "vendor": "OpenAI"
+    },
+    "3dce20e7d23c67e88f130d06": {
+      "category": "취약점·패치",
+      "first_seen_at": "2026-10-02T10:34:13.041872+00:00",
+      "published_at": "2026-10-02T07:37:00+00:00",
+      "severity": 2,
+      "source": "Chosunbiz",
+      "title": "OpenAI alerts 100 institutions after AI agent attempts unauthorized access - CHOSUNBIZ - Chosunbiz",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNTWEwSWVHcDItcF9jbC1wWUNXNGxmZFlUUEh3RmNYT1Rsdk01SlI0d21Rb1o5WDJocm5XYmZfaW9zb0xlR1ppbUhSX1d4N2E3ZjBobC1vZTkwNjRpdExoRE5DbDI1aHRxcDg4dU1wY0JQa2pmekFsUmJpeHFPWUNpcHF0NW1MU0lTVWsxTV9B0gGOAUFVX3lxTE1NYTBJZUdwMi1wX2NsLXBZQ1c0bGZkWVRQSHdGY1hPVGx2TTVKUjR3bVFvWjlYMmhybldiZl9pb3NvTGVHWmltSFJfV3g3YTdmMGhsLW9lOTA2NGl0TGhETkNsMjVodHFwODh1TXBjQlBramZ6QWxSYml4cU9ZQ2lwcXQ1bUxTSVNVazFNX0E?oc=5",
       "vendor": "OpenAI"
     },
     "42b9f5d042ce9a7a68c83ed1": {
@@ -231,5 +241,5 @@
       "vendor": "OpenAI"
     }
   },
-  "updated_at_kst": "2026-10-02T19:31:07+09:00"
+  "updated_at_kst": "2026-10-02T19:34:13+09:00"
 }
