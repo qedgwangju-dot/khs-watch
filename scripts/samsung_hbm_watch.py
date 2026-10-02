@@ -35,6 +35,7 @@ EVENT_STATE_VERSION = 2
 SHARE_TRACK_VERSION = 1
 BROKER_FORECAST_TRACK_VERSION = 3
 CAPITAL_RETURN_TRACK_VERSION = 1
+SAMSUNG_HBM4_PRICE_TRACK_VERSION = 1
 SHARE_REVISION_THRESHOLD_PP = 3.0
 BROKER_ASP_REVISION_THRESHOLD_PP = 5.0
 SHARE_ACTUAL_DEVIATION_THRESHOLD_PP = 5.0
@@ -100,6 +101,20 @@ BROKER_FORECAST_BASELINES = {
         "source": "KB증권 2026-10-01 전망 인용",
         "observed_at": "baseline",
     },
+}
+
+SAMSUNG_HBM4_PRICE_BASELINE = {
+    "price_multiple_vs_2026": 3.0,
+    "price_yoy_pct": 200.0,
+    "contract_stage": "headline_reported",
+    "stack_height": "unspecified",
+    "usd_per_gb": None,
+    "customer": "",
+    "body_verified": False,
+    "source": "매일경제 단독 제목",
+    "source_url": "https://www.mk.co.kr/news/business/12167164",
+    "as_of": "2026-10-02",
+    "note": "제목의 3배는 가격 수준 3.0배, 즉 전년 대비 +200%로 저장. 기사 본문 미확보 상태이므로 제시가·협상가·체결가로 승격하지 않음.",
 }
 
 CAPITAL_RETURN_BASELINE = {
@@ -198,6 +213,10 @@ QUERIES = [
     '"Samsung Electronics" "KB Securities" HBM ASP 2027 HBM4 revenue mix',
     '"삼성전자" 주주환원 600조 FCF 50% KB증권',
     '"Samsung Electronics" shareholder return FCF 50% 2027 2029 new policy',
+    '"삼성" HBM4 내년 가격 3배',
+    '"삼성전자" HBM4 2027 가격 협상 계약 3배',
+    '"Samsung" HBM4 2027 price triple negotiation contract',
+    '"Samsung Electronics" HBM4 2027 price agreement per Gb',
     '"UBS" HBM market share Samsung SK hynix Micron',
     '"Morgan Stanley" HBM market share Samsung SK hynix Micron',
     '"Citi" HBM market share Samsung SK hynix Micron',
@@ -217,7 +236,7 @@ TRUSTED = (
     "customs", "관세청", "icheon", "이천시", "intel", "ase", "tf-amd", "tf amd",
     "mapc", "mosti", "mida", "the edge malaysia",
     "j.p. morgan", "jp morgan", "jpmorgan", "kb securities", "kb증권", "ubs", "morgan stanley", "citi", "bofa", "goldman sachs",
-    "hankyung", "한국경제",
+    "hankyung", "한국경제", "mk.co.kr", "매일경제",
 )
 
 LOW_VALUE = ("aol", "finance.biggo", "24/7 wall st", "247wallst", "cryptobriefing")
@@ -283,6 +302,8 @@ def source_rank(source: str) -> int:
     if any(x in low for x in ("j.p. morgan", "jp morgan", "jpmorgan", "kb securities", "kb증권", "ubs", "morgan stanley", "citi", "bofa", "goldman sachs")):
         return 92
     if "hankyung" in low or "한국경제" in low:
+        return 82
+    if "mk.co.kr" in low or "매일경제" in low:
         return 82
     if "counterpoint" in low or "trendforce" in low:
         return 90
@@ -2067,6 +2088,210 @@ def capital_return_event_summary(e: dict) -> list[str]:
     return lines
 
 
+HBM4_PRICE_STAGE_RANK = {
+    "headline_reported": 0,
+    "proposed": 1,
+    "negotiating": 2,
+    "final_stage": 3,
+    "agreed": 4,
+    "contract_signed": 5,
+}
+
+
+def _article_body_text(url: str) -> str:
+    if not url:
+        return ""
+    try:
+        raw = fetch(url, timeout=12).decode("utf-8", errors="ignore")
+    except Exception:
+        return ""
+    for payload in re.findall(r'<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', raw, re.I | re.S):
+        try:
+            node = json.loads(html.unescape(payload))
+        except Exception:
+            continue
+        stack = [node]
+        while stack:
+            cur = stack.pop()
+            if isinstance(cur, dict):
+                body = cur.get("articleBody")
+                if isinstance(body, str) and len(clean(body)) >= 80:
+                    return clean(body)[:30000]
+                stack.extend(cur.values())
+            elif isinstance(cur, list):
+                stack.extend(cur)
+    m = re.search(r"<article\b[^>]*>(.*?)</article>", raw, re.I | re.S)
+    if m:
+        body = clean(m.group(1))
+        if len(body) >= 80:
+            return body[:30000]
+    return ""
+
+
+def _hbm4_contract_stage(text: str) -> str:
+    low = clean(text).lower()
+    if re.search(r"(?:계약\s*체결|공급계약\s*체결|lta\s*(?:signed|executed)|contract\s*(?:signed|executed))", low, re.I):
+        return "contract_signed"
+    if re.search(r"(?:가격\s*확정|가격\s*합의|합의\s*완료|agreement\s*(?:finalized|reached)|price\s*(?:agreed|finalized))", low, re.I):
+        return "agreed"
+    if re.search(r"(?:협상\s*막바지|협상\s*마무리|최종\s*협상|final\s*stage\s*of\s*negotiations?|negotiations?\s*near\s*completion)", low, re.I):
+        return "final_stage"
+    if re.search(r"(?:가격\s*협상|공급가\s*협상|협의\s*중|negotiat(?:e|ing|ion)|in\s*discussions?)", low, re.I):
+        return "negotiating"
+    if re.search(r"(?:가격\s*(?:제시|요구)|인상\s*요구|asking\s*price|proposed\s*price|seeking\s*(?:a\s*)?price)", low, re.I):
+        return "proposed"
+    return "headline_reported"
+
+
+def _hbm4_price_multiple(text: str) -> float | None:
+    value = clean(text)
+    patterns = (
+        r"(?:HBM4)[^.]{0,100}?(?:가격|판매가|공급가|price)[^.]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*배",
+        r"(?:가격|판매가|공급가|price)[^.]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*배[^.]{0,100}?(?:HBM4)",
+        r"(?:HBM4)[^.]{0,100}?([0-9]+(?:\.[0-9]+)?)\s*(?:times|x)\b[^.]{0,80}?(?:price|pricing)",
+    )
+    for pat in patterns:
+        m = re.search(pat, value, re.I)
+        if m:
+            n = float(m.group(1))
+            if 1.0 <= n <= 10.0:
+                return n
+    return None
+
+
+def _hbm4_usd_per_gb(text: str) -> float | None:
+    value = clean(text)
+    pats = (
+        r"(?:HBM4)[^.]{0,120}?(?:US\$|\$)\s*([0-9]+(?:\.[0-9]+)?)\s*(?:/\s*Gb|per\s+Gb)",
+        r"(?:US\$|\$)\s*([0-9]+(?:\.[0-9]+)?)\s*(?:/\s*Gb|per\s+Gb)[^.]{0,120}?(?:HBM4)",
+    )
+    for pat in pats:
+        m = re.search(pat, value, re.I)
+        if m:
+            n = float(m.group(1))
+            if 0.1 <= n <= 20:
+                return n
+    return None
+
+
+def _hbm4_stack_height(text: str) -> str:
+    low = clean(text).lower()
+    hits = []
+    for layer in (8, 12, 16, 20):
+        if re.search(rf"\b{layer}\s*[- ]?(?:hi|단)\b", low, re.I):
+            hits.append(layer)
+    return f"{hits[0]}hi" if len(hits) == 1 else "unspecified"
+
+
+def extract_samsung_hbm4_price_observation(e: dict) -> dict | None:
+    base = clean(f"{e.get('title','')} {e.get('description','')} {e.get('source','')}")
+    low = base.lower()
+    if not (("samsung" in low or "삼성" in base) and "hbm4" in low and any(k in low for k in ("가격","판매가","공급가","price","pricing","배"))):
+        return None
+    body = _article_body_text(e.get("direct_link") or "")
+    text = clean(base + " " + body)
+    multiple = _hbm4_price_multiple(text)
+    usd_per_gb = _hbm4_usd_per_gb(text)
+    stage = _hbm4_contract_stage(text if body else base)
+    stack = _hbm4_stack_height(text)
+    if multiple is None and usd_per_gb is None and stage == "headline_reported":
+        return None
+    return {
+        "price_multiple_vs_2026": multiple,
+        "price_yoy_pct": (multiple - 1.0) * 100.0 if multiple is not None else None,
+        "contract_stage": stage,
+        "stack_height": stack,
+        "usd_per_gb": usd_per_gb,
+        "customer": "",
+        "body_verified": bool(body),
+        "source": e.get("source") or "",
+        "source_url": e.get("direct_link") or "",
+        "observed_at": e.get("published_at_kst") or "",
+        "title": e.get("title") or "",
+    }
+
+
+def _hbm4_price_candidate(old: dict | None, obs: dict) -> dict:
+    candidate = dict(old or {})
+    for key, value in obs.items():
+        if value not in (None, ""):
+            candidate[key] = value
+    if "body_verified" in obs:
+        candidate["body_verified"] = bool(obs.get("body_verified"))
+    return candidate
+
+
+def _hbm4_price_changes(old: dict, obs: dict) -> list[str]:
+    new = _hbm4_price_candidate(old, obs)
+    reasons = []
+    a, b = old.get("price_multiple_vs_2026"), new.get("price_multiple_vs_2026")
+    if a is not None and b is not None and abs(float(b)-float(a)) >= 0.25:
+        reasons.append(f"가격 수준 {float(a):.2f}배→{float(b):.2f}배")
+    elif a is None and b is not None:
+        reasons.append(f"가격 수준 {float(b):.2f}배 신규 확인")
+    a, b = old.get("usd_per_gb"), new.get("usd_per_gb")
+    if a is not None and b is not None:
+        pct = (float(b)/float(a)-1.0)*100 if float(a) else 0.0
+        if abs(float(b)-float(a)) >= 0.25 or abs(pct) >= 10:
+            reasons.append(f"HBM4 가격 {float(a):.2f}→{float(b):.2f}달러/Gb ({pct:+.1f}%)")
+    elif a is None and b is not None:
+        reasons.append(f"HBM4 가격 {float(b):.2f}달러/Gb 신규 확인")
+    old_stage = old.get("contract_stage") or "headline_reported"
+    new_stage = new.get("contract_stage") or "headline_reported"
+    if old_stage != new_stage:
+        reasons.append(f"계약 단계 {old_stage}→{new_stage}")
+    if old.get("stack_height") != new.get("stack_height") and new.get("stack_height") not in (None,"","unspecified"):
+        reasons.append(f"가격 기준 적층 {old.get('stack_height') or '미확인'}→{new.get('stack_height')}")
+    if not old.get("body_verified") and new.get("body_verified"):
+        reasons.append("기사 본문 직접 확인")
+    return reasons
+
+
+def samsung_hbm4_price_change_event(obs: dict, old: dict, reasons: list[str]) -> dict:
+    candidate = _hbm4_price_candidate(old, obs)
+    return {
+        "id": "samsung_hbm4_price|" + hashlib.sha256(((obs.get("title") or "") + "|" + (obs.get("source_url") or "")).encode()).hexdigest()[:16],
+        "samsung_hbm4_price_change": {"state": candidate, "reasons": reasons},
+        "samsung_hbm4_price_state_candidate": candidate,
+        "title": obs.get("title") or "삼성 HBM4 2027 계약가격 변화",
+        "description": "",
+        "source": obs.get("source") or "",
+        "published_at_kst": obs.get("observed_at") or "",
+        "direct_link": obs.get("source_url") or "",
+        "rank": 100,
+    }
+
+
+def samsung_hbm4_price_event_summary(e: dict) -> list[str]:
+    ch = e["samsung_hbm4_price_change"]
+    st = ch["state"]
+    labels = {
+        "headline_reported":"제목 보도·본문 미확정",
+        "proposed":"제시·요구가격",
+        "negotiating":"가격 협상",
+        "final_stage":"협상 마무리",
+        "agreed":"가격 합의·확정",
+        "contract_signed":"계약 체결",
+    }
+    lines = ["<b>삼성 HBM4 2027 계약가격 변화</b>"]
+    if st.get("price_multiple_vs_2026") is not None:
+        lines.append(f"• 가격 수준: 2026년=1.0 기준 <b>{float(st['price_multiple_vs_2026']):.2f}배</b>")
+        lines.append(f"• 전년 대비 환산: <b>+{float(st.get('price_yoy_pct') or 0):.0f}%</b> — 3배는 +200%이며 +300%가 아닙니다.")
+    if st.get("usd_per_gb") is not None:
+        lines.append(f"• 확인 가격: <b>{float(st['usd_per_gb']):.2f}달러/Gb</b>")
+    lines.append(f"• 계약 단계: <b>{labels.get(st.get('contract_stage'), st.get('contract_stage') or '미확인')}</b>")
+    lines.append(f"• 적층 기준: <b>{st.get('stack_height') or '미확인'}</b>")
+    lines.append(f"• 본문 직접 확인: <b>{'예' if st.get('body_verified') else '아니오'}</b>")
+    lines.append("• 구분: 제목의 3배만으로 실제 고객 체결가격·LTA 가격으로 승격하지 않습니다.")
+    if ch.get("reasons"):
+        lines.append("• 이번 변화: " + html.escape(" · ".join(ch["reasons"])))
+    lines += [
+        f"• 감지 근거: {html.escape(e.get('source') or '미표시')} · {html.escape(e.get('published_at_kst') or '확인 불가')}",
+        f"• {href(e.get('direct_link') or '', '원문')}",
+    ]
+    return lines
+
+
 def _ops_page_text(e: dict, base_text: str) -> str:
     low = base_text.lower()
     if not any(k in low for k in ("yield", "수율", "unit price", "export price", "수출단가", "평균 수출단가")):
@@ -2247,6 +2472,8 @@ def operating_event_summary(e: dict) -> list[str]:
 
 
 def event_summary(e: dict) -> list[str]:
+    if e.get("samsung_hbm4_price_change"):
+        return samsung_hbm4_price_event_summary(e)
     if e.get("capital_return_change"):
         return capital_return_event_summary(e)
     if e.get("broker_forecast_change"):
@@ -2414,7 +2641,8 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
 
 def build_event_alert(events: list[dict], now: datetime) -> str:
     selected = events[:4]
-    hbm_events = [e for e in selected if not e.get("capital_return_change")]
+    price_events = [e for e in selected if e.get("samsung_hbm4_price_change")]
+    hbm_events = [e for e in selected if not e.get("capital_return_change") and not e.get("samsung_hbm4_price_change")]
     capital_events = [e for e in selected if e.get("capital_return_change")]
     lines: list[str] = []
     if hbm_events:
@@ -2423,6 +2651,15 @@ def build_event_alert(events: list[dict], now: datetime) -> str:
             lines.append(f"<b>{i}.</b>")
             lines.extend(event_summary(e))
             if i < len(hbm_events):
+                lines.append("")
+    if price_events:
+        if lines:
+            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", ""]
+        lines += ["💵 <b>삼성 HBM4 2027 계약가격 감시</b>", "━━━━━━━━━━━━━━━━", f"<b>신규 변화 {len(price_events)}건</b> · {now.strftime('%Y-%m-%d %H:%M KST')}", ""]
+        for i, e in enumerate(price_events, 1):
+            lines.append(f"<b>{i}.</b>")
+            lines.extend(event_summary(e))
+            if i < len(price_events):
                 lines.append("")
     if capital_events:
         if lines:
@@ -2449,6 +2686,7 @@ def main() -> None:
     share_forecasts = dict(state.get("hbm_share_forecasts") or {})
     share_actuals = dict(state.get("hbm_share_actuals") or {})
     broker_forecasts = dict(state.get("hbm_broker_forecasts") or {})
+    samsung_hbm4_price_state = dict(state.get("samsung_hbm4_price_outlook") or {})
     capital_return_state = dict(state.get("capital_return_outlook") or {})
     ops_metrics = dict(state.get("hbm_ops_metrics") or {})
     export_unit_prices = dict(state.get("hbm_export_unit_prices") or {})
@@ -2471,6 +2709,12 @@ def main() -> None:
             for field, value in values.items():
                 current.setdefault(field, value)
         state["broker_forecast_track_version"] = BROKER_FORECAST_TRACK_VERSION
+
+    if int(state.get("samsung_hbm4_price_track_version") or 0) < SAMSUNG_HBM4_PRICE_TRACK_VERSION:
+        seeded_price = dict(SAMSUNG_HBM4_PRICE_BASELINE)
+        seeded_price.update({k: v for k, v in samsung_hbm4_price_state.items() if v not in (None, "")})
+        samsung_hbm4_price_state = seeded_price
+        state["samsung_hbm4_price_track_version"] = SAMSUNG_HBM4_PRICE_TRACK_VERSION
 
     if int(state.get("capital_return_track_version") or 0) < CAPITAL_RETURN_TRACK_VERSION:
         seeded_capital = dict(CAPITAL_RETURN_BASELINE)
@@ -2586,6 +2830,30 @@ def main() -> None:
         broker_alert_events.append(
             broker_forecast_change_event(obs, None, ["신규 증권사 HBM 평균판매단가·제품혼합 전망"])
         )
+
+    structured_hbm4_price_event_ids = set()
+    latest_hbm4_price_obs: dict | None = None
+    for e in events:
+        try:
+            dt = datetime.fromisoformat(e.get("published_at_kst") or "")
+        except Exception:
+            continue
+        if not (cutoff <= dt <= now + timedelta(minutes=10)):
+            continue
+        obs = extract_samsung_hbm4_price_observation(e)
+        if not obs:
+            continue
+        structured_hbm4_price_event_ids.add(e.get("id") or "")
+        if latest_hbm4_price_obs is None or obs.get("observed_at","") > latest_hbm4_price_obs.get("observed_at",""):
+            latest_hbm4_price_obs = obs
+
+    hbm4_price_alert_events: list[dict] = []
+    if latest_hbm4_price_obs:
+        hbm4_price_changes = _hbm4_price_changes(samsung_hbm4_price_state, latest_hbm4_price_obs)
+        if hbm4_price_changes:
+            hbm4_price_alert_events.append(samsung_hbm4_price_change_event(latest_hbm4_price_obs, samsung_hbm4_price_state, hbm4_price_changes))
+        else:
+            samsung_hbm4_price_state = _hbm4_price_candidate(samsung_hbm4_price_state, latest_hbm4_price_obs)
 
     structured_capital_event_ids = set()
     latest_capital_obs: dict | None = None
@@ -2712,7 +2980,7 @@ def main() -> None:
     if int(state.get("event_state_version") or 0) < EVENT_STATE_VERSION:
         migrated: dict[str, dict] = {}
         for e in events:
-            if e.get("id") in structured_share_event_ids or e.get("id") in structured_broker_event_ids or e.get("id") in structured_capital_event_ids or e.get("id") in structured_ops_event_ids:
+            if e.get("id") in structured_share_event_ids or e.get("id") in structured_broker_event_ids or e.get("id") in structured_hbm4_price_event_ids or e.get("id") in structured_capital_event_ids or e.get("id") in structured_ops_event_ids:
                 continue
             if e.get("id") not in seen:
                 continue
@@ -2736,7 +3004,7 @@ def main() -> None:
     latest_by_topic: dict[str, dict] = {}
     fresh_new = []
     for e in events:
-        if e.get("id") in structured_share_event_ids or e.get("id") in structured_broker_event_ids or e.get("id") in structured_capital_event_ids or e.get("id") in structured_ops_event_ids:
+        if e.get("id") in structured_share_event_ids or e.get("id") in structured_broker_event_ids or e.get("id") in structured_hbm4_price_event_ids or e.get("id") in structured_capital_event_ids or e.get("id") in structured_ops_event_ids:
             continue
         try:
             dt = datetime.fromisoformat(e.get("published_at_kst") or "")
@@ -2763,7 +3031,7 @@ def main() -> None:
             fresh_new.append(e)
 
     send_events = sorted(
-        fresh_new + share_alert_events + broker_alert_events + capital_alert_events + ops_alert_events,
+        fresh_new + share_alert_events + broker_alert_events + hbm4_price_alert_events + capital_alert_events + ops_alert_events,
         key=lambda x: x.get("published_at_kst") or "",
     )[:4]
 
@@ -2805,6 +3073,9 @@ def main() -> None:
     elif send_events:
         ALERT.write_text(build_event_alert(send_events, now), encoding="utf-8")
         for e in send_events:
+            if e.get("samsung_hbm4_price_change"):
+                samsung_hbm4_price_state = dict(e.get("samsung_hbm4_price_state_candidate") or samsung_hbm4_price_state)
+                continue
             if e.get("capital_return_change"):
                 capital_return_state = dict(e.get("capital_return_state_candidate") or capital_return_state)
                 continue
@@ -2863,6 +3134,8 @@ def main() -> None:
         "topic_states": topic_states,
         "share_track_version": SHARE_TRACK_VERSION,
         "broker_forecast_track_version": BROKER_FORECAST_TRACK_VERSION,
+        "samsung_hbm4_price_track_version": SAMSUNG_HBM4_PRICE_TRACK_VERSION,
+        "samsung_hbm4_price_outlook": samsung_hbm4_price_state,
         "capital_return_track_version": CAPITAL_RETURN_TRACK_VERSION,
         "capital_return_outlook": capital_return_state,
         "ops_track_version": OPS_TRACK_VERSION,
@@ -2875,6 +3148,8 @@ def main() -> None:
         "hbm_broker_forecasts": broker_forecasts,
         "last_broker_forecast_observation_count": len(latest_broker_obs),
         "last_broker_forecast_alert_count": len([e for e in send_events if e.get("broker_forecast_change")]),
+        "last_samsung_hbm4_price_observation_count": 1 if latest_hbm4_price_obs else 0,
+        "last_samsung_hbm4_price_alert_count": len([e for e in send_events if e.get("samsung_hbm4_price_change")]),
         "last_capital_return_observation_count": 1 if latest_capital_obs else 0,
         "last_capital_return_alert_count": len([e for e in send_events if e.get("capital_return_change")]),
         "last_share_observation_count": len(latest_share_obs),
@@ -2907,6 +3182,7 @@ def main() -> None:
         f"- topic_state_count: {len(topic_states)}\n"
         f"- share_track_version: {SHARE_TRACK_VERSION}\n"
         f"- broker_forecast_track_version: {BROKER_FORECAST_TRACK_VERSION}\n"
+        f"- samsung_hbm4_price_track_version: {SAMSUNG_HBM4_PRICE_TRACK_VERSION}\n"
         f"- capital_return_track_version: {CAPITAL_RETURN_TRACK_VERSION}\n"
         f"- ops_track_version: {OPS_TRACK_VERSION}\n"
         f"- ops_metric_state_count: {len(ops_metrics)}\n"
@@ -2918,6 +3194,8 @@ def main() -> None:
         f"- broker_forecast_state_count: {len(broker_forecasts)}\n"
         f"- broker_forecast_observations: {len(latest_broker_obs)}\n"
         f"- broker_forecast_alerts: {len([e for e in send_events if e.get('broker_forecast_change')])}\n"
+        f"- samsung_hbm4_price_observations: {1 if latest_hbm4_price_obs else 0}\n"
+        f"- samsung_hbm4_price_alerts: {len([e for e in send_events if e.get('samsung_hbm4_price_change')])}\n"
         f"- capital_return_observations: {1 if latest_capital_obs else 0}\n"
         f"- capital_return_alerts: {len([e for e in send_events if e.get('capital_return_change')])}\n"
         f"- share_observations: {len(latest_share_obs)}\n"
