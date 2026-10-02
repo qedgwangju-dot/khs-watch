@@ -475,3 +475,37 @@ mismatches. It neither sends historical articles nor resets seen keys.
 All 11 local contract scripts passed, including 89 materiality tests, 95
 coverage cases and 26 retrieval-queue tests. Fresh production-environment
 validation is recorded separately below after the new artifact is reread.
+
+## Version 19: Reject Remaining Foreground and Caption Errors
+
+Run `36971757912` completed successfully with version 18. Its report at
+`15:08:26 KST` verified 133 bodies, failed 27 and deferred 573. ZIP SHA-256:
+`4CC241713874CA2308F64169D8E3F9D44E4581E9D6B39F660B91E8D5EB7E3B38`.
+The independent technical guard still missed a spaced photo-caption verb,
+an employee reward using regulatory background, personnel changes using an
+August supply contract, a duplicated joint NPU test and a security follow-up
+where data leakage was incorrectly matched to investor outflows. The fresh
+report was therefore not accepted unchanged.
+
+The principal headline event now determines whether personnel/reward stories
+are eligible. A separate, explicit earnings/ownership/capacity change in the
+headline remains eligible. Floating solar is not an award. Photo descriptions
+are excluded from both evidence selection and core generation, including
+remaining `(사진=...)` credits. An adjacent source-authored contract amount
+can accompany the actual order sentence when both fit the existing limit;
+a cumulative headline total is not substituted for the incremental contract.
+Investor-flow evidence requires financial context, not the bare word `유출`.
+
+Joint validation announcements share a persisted semantic theme only when
+the verified bodies have the same named technical marker, participant group,
+publication day and announcement stage. New result stages, headline quantities
+or participant groups stay separate. This is a deliberately narrow high-
+confidence deduplication rule, not a claim to identify all related stories.
+
+Read-only replay of 46 rows retains 28, removes 18 weak/duplicate selections,
+repairs nine cores and reports zero headline/core focus mismatches. The last
+seven-row artifact becomes three genuine implementation/order/test stories.
+The order core reports the actual additional contract of approximately
+1871억원 rather than a photo caption. All 11 local scripts passed again,
+including 93 materiality tests, 95 coverage cases and 26 queue tests. Final
+fresh-run evidence follows after deployment and artifact review.

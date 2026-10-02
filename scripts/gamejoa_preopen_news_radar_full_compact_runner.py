@@ -2925,6 +2925,19 @@ def detailed_article_core(title: str, body: str) -> str:
         fact = normalized_article_sentence(evidence["source_excerpt"].rstrip(".") + ".")
         if len(fact) > GAMEJOA_CORE_MAX_CHARS:
             fact = re.sub(r"^\d{1,2}일\s+[^.!?]{1,30}에\s*따르면\s*", "", fact)
+        if evidence["kind"] == "commercial_order":
+            source_sentences = market_materiality.source_sentences(body)
+            for index, sentence in enumerate(source_sentences[:-1]):
+                if sentence != evidence["source_excerpt"]:
+                    continue
+                following = source_sentences[index + 1]
+                amount = re.search(rf"^계약금액(?:은|이)\s*[^.!?]{{0,100}}?({KOREAN_WON_AMOUNT_PATTERN})", following)
+                if amount:
+                    approximate = "약 " if re.search(r"약\s*" + re.escape(amount.group(1)), following) else ""
+                    candidate = fact + f" 계약금액은 {approximate}{amount.group(1)}이다."
+                    if core_sentence_is_complete(candidate):
+                        fact = candidate
+                break
         if core_sentence_is_complete(fact) and not article_title_restatement(fact, title):
             return fact
 
@@ -7061,7 +7074,31 @@ def bond_yield_threshold_theme(alert: dict) -> str:
     return f"bond_yield_threshold:{country}:{int(tenor)}:{float(threshold):.12g}:{direction}:{day}"
 
 
+def joint_validation_event_theme(alert: dict) -> str:
+    """Deduplicate a named joint test, not every story about the same sector."""
+    if not alert.get("body_verified"):
+        return ""
+    title = str(alert.get("source_title") or alert.get("news") or "")
+    body = str(alert.get("source_body") or "")
+    if not re.search(r"검증|실증|validation|field test", title, re.I) or not re.search(r"업무협약|MOU|joint agreement", body, re.I):
+        return ""
+    parties = re.search(r"(?m)^([A-Za-z0-9가-힣&]{2,30}(?:[·ㆍ][A-Za-z0-9가-힣&]{2,30}){2,3})(?=\s)", body)
+    markers = sorted(set(re.findall(r"[\"'‘“]([A-Za-z][A-Za-z0-9-]{2,30})[\"'’”]", body)))
+    markers = [marker.lower() for marker in markers if marker.lower() not in {"mou", "gpu", "npu", "tta", "cpu", "aws"}]
+    published = detail_queue.parse_time(alert.get("published"))
+    if not parties or not markers or not published:
+        return ""
+    participant_key = "+".join(sorted(re.split(r"[·ㆍ]", parties.group(1).lower())))
+    day = published.astimezone(dt.timezone(dt.timedelta(hours=9))).date().isoformat()
+    stage = "result" if re.search(r"결과|성공|달성|개선|results|success", title, re.I) else "start"
+    quantities = "+".join(sorted(re.sub(r"\s+", "", match.group(0)) for match in market_materiality.QUANTITY.finditer(title)))
+    return f"joint_validation:{participant_key}:{'+'.join(markers)}:{stage}:{quantities}:{day}"
+
+
 def semantic_event_theme(alert: dict) -> str:
+    joint_theme = joint_validation_event_theme(alert)
+    if joint_theme:
+        return joint_theme
     yield_theme = bond_yield_threshold_theme(alert)
     if yield_theme:
         return yield_theme
@@ -8603,7 +8640,8 @@ def display_news(alert: dict) -> str:
 
 CORE_UI_GARBAGE_PATTERNS = (
     r'[^.!?\r\n"“”]*?(?:시공|시연|촬영)하고\s*있다\s*\(사진\s*=[^)]*\)',
-    r'[^.!?\r\n"“”]*?(?:발언|연설|질문에\s*답|기념촬영을)하고\s*있다\.',
+    r'[^.!?\r\n"“”]*?(?:발언|연설|질문에\s*답|기념촬영을)\s*하고\s*있다\.',
+    r"\((?:사진|사진제공|촬영|자료사진)\s*(?:=|:)[^)]{1,100}\)",
     r"\b등록\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}(?::\d{2})?)?"
     r"(?:\s*수정\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}(?::\d{2})?)?)?",
     r"\b(?:입력|등록)\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}(?::\d{2})?)?"
@@ -8853,6 +8891,8 @@ def source_core_fact_errors(alert: dict) -> list[str]:
             errors.append("core_without_market_change_evidence")
     if core.count("“") != core.count("”"):
         errors.append("orphaned_source_quote")
+    if market_materiality.PHOTO_DESCRIPTION.search(core):
+        errors.append("photo_description_not_news_core")
     if re.search(r"하고\s*있다\s+(?:[A-Za-z0-9가-힣·&()]+\s+){0,8}[A-Za-z0-9가-힣·&()]+(?:은|는)\s+", core):
         errors.append("concatenated_photo_caption")
     target = analyst_research_target(title, source)

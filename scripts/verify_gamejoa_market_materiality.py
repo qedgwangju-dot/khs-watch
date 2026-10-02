@@ -96,6 +96,53 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_principal_personnel_and_reward_events_cannot_borrow_contracts_or_policy(self):
+        for title, body in (
+            ("방산기업, 조기 선제 인사로 수출 확대", "지난 8월 공급 계약을 체결했다. 이번 정기 인사는 해외 수출 확대에 초점을 맞췄다."),
+            ("금융위, 규제 개선한 공무원 1800만원 포상", "금융위는 망분리 규제 완화를 추진한 직원에게 1800만원의 포상금을 지급했다."),
+        ):
+            with self.subTest(title=title):
+                self.assertEqual(materiality.assess(title, body)["disposition"], "exclude")
+        actual = materiality.assess("기업, 인사와 함께 영업이익 전망 20% 상향", "기업은 영업이익 전망을 20% 상향했다고 밝혔다.")
+        self.assertEqual(actual["disposition"], "keep")
+
+    def test_photo_cannot_be_order_evidence_or_the_core(self):
+        title = "전력기업, 영국 해상풍력 추가 수주"
+        caption = "전력기업 관계자가 수주 계약 서명식에서 기념촬영을 하고 있다."
+        body = caption + " (사진=전력기업) 전력기업은 영국 해상풍력 공사를 추가 수주했다고 공시했다. 계약금액은 1871억원이다."
+        item = alert(title, body)
+        item["telegram_core_fact"] = caption
+        self.assertIn("photo_description_not_news_core", radar.source_core_fact_errors(item))
+        core = radar.verified_alert_core(item, title)
+        self.assertNotIn("기념촬영", core)
+        self.assertNotIn("사진=", core)
+        self.assertIn("추가 수주", core)
+        self.assertIn("1871억원", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertFalse(any("기념촬영" in entry["source_excerpt"] for entry in materiality.assess(title, body)["evidence"]))
+
+    def test_data_leak_is_not_investor_fund_outflow(self):
+        title = "서비스기업, 개인정보 유출 후 보안체계 고도화"
+        body = "서비스기업은 보안체계를 개선한다. 앞서 약 3954만개의 계정 정보가 유출된 사실이 확인됐다."
+        audit = materiality.assess(title, body)
+        self.assertFalse(any(entry["kind"] == "market_price_or_flow" for entry in audit["evidence"]))
+        flows = materiality.assess("주식펀드 자금 유출", "주식펀드에서 1000억원의 자금이 유출됐다.")
+        self.assertEqual(flows["disposition"], "keep")
+
+    def test_named_joint_validation_merges_publishers_but_keeps_new_results(self):
+        body = "전력사·반도체사·검증기관 기술협력\n세 기관은 'K-Perf' 기반 AI 반도체 성능검증 업무협약(MOU)을 체결했다."
+        first = alert("전력사, 국산 AI 반도체 현장 성능검증 착수", body)
+        second = alert("국산 AI반도체 지표 'K-Perf', 전력사서 첫 실증", body)
+        result = alert("전력사, 국산 AI 반도체 성능검증 결과 20% 개선", body)
+        other = alert("다른기관, 국산 AI 반도체 현장 성능검증 착수", body.replace("전력사", "다른기관"))
+        first_key = radar.joint_validation_event_theme(first)
+        self.assertTrue(first_key)
+        self.assertEqual(first_key, radar.joint_validation_event_theme(second))
+        self.assertNotEqual(first_key, radar.joint_validation_event_theme(result))
+        self.assertNotEqual(first_key, radar.joint_validation_event_theme(other))
+        first["body_verified"] = False
+        self.assertEqual(radar.joint_validation_event_theme(first), "")
+
     def test_rendered_core_must_explain_a_market_change_not_background_words(self):
         cases = (
             ("항공사 회장 경영자상 수상", "회장이 경영자상을 수상했다. 과거 여객 수요가 급감하자 화물 사업을 확대했다.", "회장이 경영자상을 수상했다."),
@@ -636,8 +683,8 @@ class MaterialityChecks(unittest.TestCase):
             ("명동 패션 매장 고객 10명 중 7명 외국인…쇼핑 뜬다", "패션기업은 명동 플래그십 스토어의 외국인 매출이 열흘간 전년 대비 40% 증가했다고 밝혔다."),
             ("그룹, 사장단 인사…건설사 이사회 의장 내정", "그룹은 사장단 인사를 발표했다. 계열사의 기존 자산 매각 계약이 체결됐고 해외 공장 가동이 늘었다."),
         )
-        for title, body in weak:
-            self.assertEqual(materiality.assess(title, body)["priority"], 1)
+        for (title, body), priority in zip(weak, (1, 1, 1, 1, 0)):
+            self.assertEqual(materiality.assess(title, body)["priority"], priority)
         strong = [INDUSTRY_DRIVER_CASES[index][1:] for index in (0, 2, 10)]
         items = [alert(title, body) for title, body in (*weak, *strong)]
         for item in items[:len(weak)]:
