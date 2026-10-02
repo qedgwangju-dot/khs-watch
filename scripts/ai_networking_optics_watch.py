@@ -105,6 +105,30 @@ COMPANIES = {
         "aliases": ["Applied Optoelectronics", "AOI", "AAOI"],
         "query": '"Applied Optoelectronics" (800G OR 1.6T OR 3.2T OR transceiver OR optical OR hyperscaler OR customer OR capacity OR shipment OR FCC OR China)',
     },
+    "Opticore": {
+        "ticker": "380540.KQ",
+        "aliases": ["옵티코어", "Opticore"],
+        "queries": [
+            '"옵티코어" ("광트랜시버" OR "400G" OR "800G" OR "1.6T") (수주 OR 공급계약 OR 발주 OR 검수 OR 납품 OR 계약기간 OR 정정 OR "AI 데이터센터")',
+            '"Opticore" ("optical transceiver" OR 400G OR 800G OR 1.6T) (order OR contract OR shipment OR qualification OR "data center")',
+        ],
+        "locales": [
+            {"hl": "ko", "gl": "KR", "ceid": "KR:ko"},
+            {"hl": "en-US", "gl": "US", "ceid": "US:en"},
+        ],
+    },
+    "OE Solutions": {
+        "ticker": "138080.KQ",
+        "aliases": ["오이솔루션", "OE Solutions"],
+        "queries": [
+            '"오이솔루션" (800G OR 1.6T OR ELSFP OR EML OR 광트랜시버) (샘플 OR 검증 OR 인증 OR 양산 OR 수주 OR 공급 OR 출하 OR 고객)',
+            '"OE Solutions" (800G OR 1.6T OR ELSFP OR EML OR transceiver) (sample OR qualification OR certification OR shipment OR production OR customer OR order)',
+        ],
+        "locales": [
+            {"hl": "ko", "gl": "KR", "ceid": "KR:ko"},
+            {"hl": "en-US", "gl": "US", "ceid": "US:en"},
+        ],
+    },
     "Astera Labs": {
         "ticker": "ALAB",
         "aliases": ["Astera Labs", "Astera"],
@@ -162,6 +186,8 @@ DISPLAY_NAMES_KO = {
     "InP Supply Chain": "InP 기판 공급망",
     "GaAs Optical Supply Chain": "GaAs 광통신 기판 공급망",
     "Applied Optoelectronics": "어플라이드 옵토일렉트로닉스",
+    "Opticore": "옵티코어",
+    "OE Solutions": "오이솔루션",
     "Astera Labs": "아스테라 랩스",
     "Corning": "코닝",
     "Samsung Electronics": "삼성전자",
@@ -172,7 +198,9 @@ TRUSTED_SOURCES = {
     "Reuters", "Bloomberg", "Financial Times", "The Wall Street Journal", "CNBC",
     "DigiTimes", "DIGITIMES", "Investing.com", "Barron's", "MarketWatch",
     "NVIDIA Blog", "NVIDIA Newsroom", "Broadcom", "Arista Networks", "Marvell",
-    "Lumentum", "Coherent", "AXT", "WIN Semiconductors", "VPEC", "Applied Optoelectronics", "Federal Communications Commission", "FCC",
+    "Lumentum", "Coherent", "AXT", "WIN Semiconductors", "VPEC", "Applied Optoelectronics",
+    "Opticore", "옵티코어", "OE Solutions", "오이솔루션", "KIND", "KRX", "한국거래소",
+    "연합뉴스", "전자신문", "ETNews", "Federal Communications Commission", "FCC",
     "U.S. Senate", "Congress.gov", "Astera Labs", "Corning",
     "TrendForce", "MoneyDJ", "Economic Daily News", "UDN", "經濟日報",
     "GMT GLOBAL INC.", "TOYO Automation", "Chieftek Precision",
@@ -204,6 +232,8 @@ HIGH_SIGNAL_PATTERNS = [
     r"domestic content", r"domestic end product", r"Buy American",
     r"\b65\s*%\b", r"\b75\s*%\b", r"exempt(?:ion|ions)?", r"restrictions?",
     r"national security systems?", r"Inn[o]?light", r"Eoptolink",
+    r"광트랜시버", r"AI 데이터센터", r"ELSFP", r"EML",
+    r"공급계약", r"수주", r"검수", r"납품", r"계약기간", r"샘플", r"양산", r"출하",
     r"optical coupling", r"active alignment", r"alignment modules?", r"aligners?",
     r"motion platforms?", r"linear motors?", r"6[- ]axis", r"nanometer", r"50\s*nm",
     r"\bFAU\b", r"\bOSAT\b", r"order visibility", r"delivery visibility",
@@ -230,6 +260,8 @@ ACTION_PATTERNS = [
     r"domestic content", r"domestic end product", r"buy american", r"exempt(?:ion|ions)?",
     r"export licen[cs]e", r"capacity reservation", r"prepayment", r"deposit",
     r"long[- ]term supply", r"crystal growth", r"pilot production",
+    r"공급계약", r"단일판매", r"수주", r"발주서", r"검수", r"납품", r"계약기간",
+    r"정정", r"샘플", r"고객.{0,12}(검증|평가|인증)", r"양산", r"출하", r"생산능력", r"증설",
     r"訂單", r"能見度", r"出貨", r"量產", r"擴產", r"產能", r"產能利用率",
     r"驗證", r"認證", r"導入", r"光耦合", r"對位", r"線性馬達", r"六軸",
 ]
@@ -243,12 +275,16 @@ NOISE_PATTERNS = [
     r"\bshares?\b", r"\bstock\b.{0,40}\b(rise|rises|jump|jumps|gain|gains|surge|surges|rally|rallies)",
     r"\b(boost|boosts|lift|lifts|send|sends|drive|drives)\b.{0,60}\bshares?\b",
     r"kucoin", r"marsbit", r"huoxing", r"hyperliquid", r"altcoins?",
+    r"관련주", r"테마주", r"주가.{0,30}(급등|상승|강세)", r"(급등|상한가).{0,30}주가",
 ]
 
 SOURCE_PRIORITY = {
     "Coherent": 100, "NVIDIA Blog": 100, "NVIDIA Newsroom": 100,
     "Broadcom": 100, "Arista Networks": 100, "Marvell": 100,
-    "Lumentum": 100, "AXT": 100, "Applied Optoelectronics": 100, "Federal Communications Commission": 100, "FCC": 100,
+    "Lumentum": 100, "AXT": 100, "Applied Optoelectronics": 100,
+    "Opticore": 100, "옵티코어": 100, "OE Solutions": 100, "오이솔루션": 100,
+    "KIND": 100, "KRX": 100, "한국거래소": 100, "연합뉴스": 90, "전자신문": 85, "ETNews": 85,
+    "Federal Communications Commission": 100, "FCC": 100,
     "U.S. Senate": 100, "Congress.gov": 100, "Astera Labs": 100, "Corning": 100,
     "Samsung Electronics": 100, "Samsung Global Newsroom": 100,
     "Reuters": 95, "Bloomberg": 94, "Financial Times": 93,
@@ -307,7 +343,7 @@ def event_key(company: str, title: str, source: str) -> str:
 def story_tokens(title: str) -> set[str]:
     value = html.unescape(title or "").lower()
     value = re.sub(r"\s+-\s+[^-]{2,80}$", " ", value)
-    value = re.sub(r"[^a-z0-9.]+", " ", value)
+    value = re.sub(r"[^a-z0-9.\uac00-\ud7a3\u4e00-\u9fff]+", " ", value)
     tokens = {
         token for token in value.split()
         if len(token) >= 3 and token not in STORY_STOPWORDS
@@ -547,6 +583,16 @@ def stage_for(title: str) -> str:
         return "법안 발의·입법"
     if re.search(r"export licen[cs]e|export restriction", title, re.I):
         return "수출허가·공급망 규제"
+    if re.search(r"계약기간.{0,20}(변경|연장)|검수.{0,20}(지연|조정|변경)|납품.{0,20}(지연|조정|변경)|정정", title, re.I):
+        return "납기·검수 변경"
+    if re.search(r"공급계약|단일판매|수주|발주서|\bPO\b", title, re.I):
+        return "수주·가시성"
+    if re.search(r"샘플|고객.{0,20}(검증|평가|인증)|검증|인증", title, re.I):
+        return "고객 검증·양산 도입"
+    if re.search(r"양산|출하", title, re.I):
+        return "양산·출하"
+    if re.search(r"증설|생산능력", title, re.I):
+        return "설비투자"
     if re.search(r"驗證|認證|導入|\bOSAT\b|qualification|validation|verification|passes?.{0,40}certification", title, re.I):
         return "고객 검증·양산 도입"
     if re.search(r"訂單|能見度|order visibility|delivery visibility|backlog|orders?|bookings?", title, re.I):
@@ -589,6 +635,18 @@ def category_for(title: str, company: str) -> str:
         return "InP 기판 병목"
     if company == "GaAs Optical Supply Chain":
         return "GaAs 광통신 기판·파운드리"
+    if company == "Opticore":
+        if re.search(r"계약기간|검수|납품.{0,20}(지연|조정)|정정", title, re.I):
+            return "국내 AI 광트랜시버 납기·검수"
+        if re.search(r"공급계약|단일판매|수주|발주서|\bPO\b|400G|800G", title, re.I):
+            return "국내 AI 광트랜시버 수주"
+        return "국내 AI 광트랜시버"
+    if company == "OE Solutions":
+        if re.search(r"1\.6\s*T|ELSFP|EML", title, re.I) and re.search(r"샘플|sample|검증|qualification|certification|고객", title, re.I):
+            return "국내 1.6T 고객검증·샘플"
+        if re.search(r"수주|공급|order|shipment|양산|출하", title, re.I):
+            return "국내 광통신 수주·양산"
+        return "국내 광통신"
     if company == "CPO Equipment Supply Chain":
         if re.search(r"驗證|認證|導入|\bOSAT\b|qualification|validation|verification|certif", title, re.I):
             return "CPO 장비 고객검증·도입"
@@ -638,6 +696,12 @@ def meaning_for(category: str) -> str:
         "InP 기판 장기계약·생산능력": "Coherent·Lumentum 같은 광부품사가 6인치 InP 생산능력을 선지급·예약하면 1.6T·3.2T·CPO용 레이저 기판 수요가 단순 전망에서 실제 장기 발주로 넘어갔다는 강한 검증 신호입니다.",
         "InP 수출허가·공급망": "InP 수출허가·원산지·납기 변화는 광레이저와 1.6T·3.2T 광모듈의 실제 출하량을 좌우하는 상류 공급망 신호입니다.",
         "GaAs 광통신 기판·파운드리": "1.6T·CPO 전환으로 GaAs 기반 광소자·포토다이오드·레이저·파운드리 수요가 늘면 InP 병목을 보완하는 단거리 광링크와 광통신 소재 공급망의 별도 매출축이 커지는 신호입니다.",
+        "국내 AI 광트랜시버 수주": "옵티코어의 400G·800G AI 데이터센터 광트랜시버가 실제 PO·공급계약으로 확인되면 국내 광통신 테마가 아니라 현재 매출로 연결되는 직접 신호입니다.",
+        "국내 AI 광트랜시버 납기·검수": "납품·검수 일정 변경은 수주금액 자체보다 매출 인식 시점을 바꾸므로 계약기간 연장·검수 완료 여부를 별도 추적해야 합니다.",
+        "국내 AI 광트랜시버": "국내 AI 데이터센터용 400G·800G 광트랜시버의 고객·수주·양산 연결을 확인하는 신호입니다.",
+        "국내 1.6T 고객검증·샘플": "오이솔루션의 ELSFP·EML 샘플이 고객 검증을 거쳐 양산 채택되면 1.6T AI 네트워킹 매출이 개발 단계에서 실제 주문 단계로 넘어가는 신호입니다.",
+        "국내 광통신 수주·양산": "국내 광통신 신제품이 실제 수주·출하·양산으로 전환되는지 확인하는 매출 검증 신호입니다.",
+        "국내 광통신": "국내 광통신 업체의 800G·1.6T 제품 개발이 고객 검증·주문으로 연결되는지 확인하는 신호입니다.",
         "3.2T 전환": "차세대 광링크가 시제품에서 고객 검증·양산으로 넘어가면 광 DSP·레이저·모듈의 다음 매출 사이클 선행신호입니다.",
         "CPO·실리콘 포토닉스": "스위치와 광학을 더 가깝게 결합해 전력·대역폭 병목을 줄이는 구조 변화로, 기존 플러거블 광모듈의 가치 배분까지 바꿀 수 있습니다.",
         "1.6T 전환": "800G에서 1.6T로 실제 출하가 이동하는 신호로, 광 DSP·레이저·고밀도 연결부품의 현재 매출 증가와 직접 연결됩니다.",
@@ -670,6 +734,12 @@ def risk_for(category: str) -> str:
         "InP 기판 장기계약·생산능력": "선지급·예약 계약이 있어도 6인치 결정성장 수율·파일럿→양산 전환·수출허가가 지연되면 고객의 예약 물량을 실제 출하하지 못할 수 있습니다.",
         "InP 수출허가·공급망": "허가 완화가 공급 정상화로 이어지면 가격·리드타임 프리미엄이 빠르게 축소될 수 있고, 반대로 규제 강화 시 출하 자체가 막힐 수 있습니다.",
         "GaAs 광통신 기판·파운드리": "GaAs 수요가 1.6T 광통신이 아니라 스마트폰·위성 등 다른 응용에 더 크게 좌우되면 AI 데이터센터 수혜 민감도를 과대평가할 수 있습니다.",
+        "국내 AI 광트랜시버 수주": "반복 PO가 이어지지 않거나 고객 집중도가 높으면 단일 계약의 매출 기여가 일회성에 그칠 수 있습니다.",
+        "국내 AI 광트랜시버 납기·검수": "검수 지연이 반복되면 매출 인식이 뒤로 밀리고 재고·운전자본 부담이 먼저 커질 수 있습니다.",
+        "국내 AI 광트랜시버": "고객 실명·반복수주·검수 완료가 확인되지 않으면 실제 AI 데이터센터 매출 민감도를 과대평가할 수 있습니다.",
+        "국내 1.6T 고객검증·샘플": "샘플 출하가 고객 인증·양산 PO로 이어지지 않거나 ELSFP 열·신뢰성 검증이 늦어지면 매출 시점이 지연될 수 있습니다.",
+        "국내 광통신 수주·양산": "초기 수주가 반복계약으로 이어지지 않거나 가격 하락이 빠르면 외형 증가 대비 마진 개선이 제한될 수 있습니다.",
+        "국내 광통신": "제품 발표만 있고 고객 검증·수주가 없으면 투자 기대가 실제 매출보다 앞설 수 있습니다.",
         "3.2T 전환": "고객 인증·대량생산 수율이 지연되면 매출 시점이 뒤로 밀릴 수 있습니다.",
         "CPO·실리콘 포토닉스": "레이저 신뢰성·수율·현장 교체 난도와 플러거블 대비 경제성이 핵심 실패 경로입니다.",
         "1.6T 전환": "물량 증가보다 평균판매단가 하락이 빠르면 매출 성장 폭이 제한될 수 있습니다.",
@@ -866,6 +936,7 @@ def main() -> None:
         "optical_material_version": 1,
         "cpo_equipment_version": 2,
         "optical_policy_version": 2,
+        "korea_optics_version": 1,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "seen_keys": updated_seen,
         "seen_story_keys": updated_story_keys,
@@ -888,13 +959,22 @@ def main() -> None:
             new_items = [item for item in new_items if item.get("company") not in {"US Optical Policy", "AXT"}]
         if optical_policy_version < 2:
             new_items = [item for item in new_items if item.get("company") != "InP Supply Chain"]
+        korea_optics_version = int(state.get("korea_optics_version") or 0)
+        if korea_optics_version < 1:
+            new_items = [item for item in new_items if item.get("company") not in {"Opticore", "OE Solutions"}]
         alert_items = new_items[:8] if initialized else []
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
 
     if alert_items:
         policy_only = all(item.get("company") == "US Optical Policy" for item in alert_items)
-        alert_header = "🚨 <b>미국 광트랜시버 규제 변화 감지</b>" if policy_only else "🚨 <b>AI 네트워킹·광통신 구조 변화 감지</b>"
+        korea_optics_only = all(item.get("company") in {"Opticore", "OE Solutions"} for item in alert_items)
+        if policy_only:
+            alert_header = "🚨 <b>미국 광트랜시버 규제 변화 감지</b>"
+        elif korea_optics_only:
+            alert_header = "🚨 <b>국내 AI 광통신 수주·검증 변화 감지</b>"
+        else:
+            alert_header = "🚨 <b>AI 네트워킹·광통신 구조 변화 감지</b>"
         lines = [
             alert_header,
             f"조회시각(KST): {html.escape(dt.datetime.now(KST).strftime('%Y-%m-%d %H:%M:%S'))}",
@@ -922,7 +1002,7 @@ def main() -> None:
             ])
         lines.extend([
             "<b>감시 기준</b>",
-            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / AAOI 800G·1.6T·3.2T 생산능력·고객·출하 / FCC 중국산 광트랜시버 최종규칙·3.2T 적용세대·미국산 콘텐츠 65%·75%·예외·시행일 / 상원·의회 국가안보시스템 광트랜시버 법안 범위 / InP 기판 공급부족·수출허가·증설·가격 / 엔비디아 CPO 실제 배치 / 코히런트 포톤링크 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027년 2분기 가시성·생산능력 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030년 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·수주잔고 / 코닝 광통신·유리기판 신규 AI 매출 경로",
+            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / AAOI 800G·1.6T·3.2T 생산능력·고객·출하 / FCC 중국산 광트랜시버 최종규칙·3.2T 적용세대·미국산 콘텐츠 65%·75%·예외·시행일 / 상원·의회 국가안보시스템 광트랜시버 법안 범위 / InP 기판 공급부족·수출허가·증설·가격 / 옵티코어 400G·800G 신규 PO·계약금액·검수·납기변경 / 오이솔루션 1.6T ELSFP·EML 샘플·고객검증·양산 PO / 엔비디아 CPO 실제 배치 / 코히런트 포톤링크 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027년 2분기 가시성·생산능력 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030년 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·수주잔고 / 코닝 광통신·유리기판 신규 AI 매출 경로",
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
