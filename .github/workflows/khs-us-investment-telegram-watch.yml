@@ -79,13 +79,14 @@ jobs:
             scripts/fx_api.py
           python scripts/khs_us_investment_watch_stateful.py --self-test
           python scripts/khs_us_investment_telegram_send.py self-test
-          if grep -Eq '^[[:space:]]*delegated_families[[:space:]]*=[[:space:]]*\{"westinghouse_stake"\}' .github/workflows/khs-us-investment-telegram-watch.yml; then
-            echo "Westinghouse equity is still delegated away from the verified US-investment route"
-            exit 1
-          fi
           PYTHONPATH=scripts python - <<'PY'
           import importlib.util
           from pathlib import Path
+
+          workflow_text = Path(".github/workflows/khs-us-investment-telegram-watch.yml").read_text(encoding="utf-8")
+          delegated_assignment = 'delegated_families = ' + '{"westinghouse_stake"}'
+          if delegated_assignment in workflow_text:
+              raise RuntimeError("Westinghouse equity is still delegated away from the verified US-investment route")
 
           path = Path("scripts/khs_us_investment_finalize.py")
           spec = importlib.util.spec_from_file_location("khs_us_investment_finalize_selftest", path)
