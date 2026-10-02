@@ -636,6 +636,45 @@
       "source": "이데일리 재전재",
       "scope": "equipment_customer_validation_po_pending_not_hvm",
       "excerpt": "510×515mm·2.0mm TGV에서 100만 홀 0ppm을 주장하고 복수 글로벌 고객 검증 완료, 핵심 해외 고객 최종 발주 절차 진행. 전체 패널 수율과 0ppm 홀 불량률은 별도."
+    },
+    {
+      "key": "hbm_generation_pricing|semianalysis|2027",
+      "axis": "hbm_generation_pricing",
+      "value": {
+        "broad_step_up_2027": true,
+        "generation_count": 4,
+        "generations_mentioned": [
+          "HBM3",
+          "HBM3E",
+          "HBM4",
+          "HBM4E"
+        ],
+        "legacy_generation_price_visible": true,
+        "price_usd_per_gb": {},
+        "exact_numeric_public_text": false,
+        "reference_only": true
+      },
+      "unit": "USD/Gb,stage",
+      "period": "2027",
+      "as_of": "2026-10-02",
+      "evidence": "user_capture",
+      "source_url": "https://semianalysis.com/memory-model/",
+      "source_title": "사용자 제공 SemiAnalysis 캡처 — Every HBM generation steps up together in 2027",
+      "source": "사용자 제공 SemiAnalysis 캡처",
+      "scope": "user_capture_reference_only_exact_chart_numbers_not_publicly_indexed",
+      "excerpt": "캡처는 2027년에 HBM3·HBM3E·HBM4·HBM4E 가격이 함께 상승하는 방향을 제시. 캡처 해상도상 세대별 정확한 $/Gb 값은 기준선에 저장하지 않고 공개 원문으로 재확인될 때만 숫자 상태로 승격.",
+      "cross_checks": [
+        {
+          "source": "TrendForce",
+          "url": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
+          "fact": "2027 HBM Blended ASP +121% YoY, 공급 제약 지속"
+        },
+        {
+          "source": "Micron Q4 FY26 earnings call",
+          "url": "https://stockanalysis.com/stocks/mu/transcripts/699706-q4-2026/",
+          "fact": "2027 HBM 대량 물량 계약 완료, 2026보다 훨씬 높은 가격"
+        }
+      ]
     }
   ],
   "user_capture": {
