@@ -2225,6 +2225,33 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     if not market_materiality.focus_kind(title) and not market_materiality.DENIAL_HEADLINE.search(title):
         return ""
+    if market_materiality.focus_kind(title) == "export_results":
+        for sentence in sentences:
+            if not market_materiality.focus_matches(title, sentence) or not market_materiality.QUANTITY.search(sentence):
+                continue
+            fact = normalized_article_sentence(sentence)
+            fact = re.sub(r"^[^.!?]{0,100}?에\s*따르면\s*", "", fact, count=1)
+            if not core_sentence_is_complete(fact):
+                continue
+            headline_amounts = [re.sub(r"\s+", "", match.group(0)) for match in market_materiality.QUANTITY.finditer(title)]
+            for related in sentences:
+                if related == sentence or not market_materiality.focus_matches(title, related):
+                    continue
+                if not any(amount in re.sub(r"\s+", "", related) for amount in headline_amounts):
+                    continue
+                other_fact = normalized_article_sentence(related)
+                expanded = fact + " " + other_fact
+                if core_sentence_is_complete(other_fact) and core_sentence_is_complete(expanded):
+                    fact = expanded
+            if re.search(r"수출.{0,20}1위", title):
+                for ranking in sentences:
+                    country = re.search(r"국가별로는[^.!?]{0,60}?([가-힣A-Za-z]+)(이|가)\s*1위를\s*기록했다", ranking)
+                    if country:
+                        expanded = fact + f" {country.group(1)}{country.group(2)} 수출 1위다."
+                        if core_sentence_is_complete(expanded):
+                            fact = expanded
+                        break
+            return fact
     if market_materiality.focus_kind(title) == "financing":
         for sentence in sentences:
             audit = market_materiality.assess(title, sentence)

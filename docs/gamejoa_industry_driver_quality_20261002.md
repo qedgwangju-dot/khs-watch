@@ -802,3 +802,42 @@ exclusions and reject loan-product advertising. Read-only replay of the same
 and records zero headline/core focus mismatches. No historical delivery or
 duplicate state was reset. Version-27 deployment and a fresh remote source
 run are still required and will be recorded separately.
+
+## Version 28: Export Data Must Not Become Agency Publicity
+
+Version 27 was deployed in revision
+`6eae0ecad2e9dab258e9d387a15d87f262507451`. Fresh dry run `36993855623`
+completed successfully at `2026-10-02T10:14:28Z`, passed all 116 regressions
+and the generated-report guard, and queried at `19:11:59 KST`. It selected
+zero articles, attempted 33 bodies, verified 18, failed 15 and deferred 577.
+Coverage remained incomplete; no Telegram send or seen/queue commit occurred.
+Artifact ZIP SHA-256:
+`8F2A4700FA0665CCD6777BC7A8015E2DCF1E1F3DB6F7399E5062E38651992E01`.
+
+During this verification, actual production run `36993501394` recorded
+delivery status `sent` and exposed another summary defect. The Herald
+article `https://biz.heraldcorp.com/article/10892265` reported cosmetics
+exports, but the delivered core used a regulator's generic cooperation
+statement. The version-26 guard had recognized that side statement as the
+article's economic event. Actual delivery, not test success, exposed it.
+
+Version 28 adds quantity-backed export-results evidence and headline focus.
+A verified export-statistics headline must summarize actual export results,
+not certification consulting or general regulatory cooperation. The source
+period, year-on-year change and value are retained. When the source explicitly
+identifies the leading export destination, that fact is kept too. Additional
+export figures explicitly present in the headline can be retained within the
+existing complete-sentence limit, preserving the national monthly-export
+contract's total and semiconductor results. Import/export bans remain policy
+events, not export-results statistics. No plain support slogan or numeric-free
+export aspiration receives this evidence type.
+
+All three original articles were fetched again using the existing extractor.
+Their recovered cores pass source-fact guards; the cosmetics core retains
+the 1-3 quarter period, 31.1% increase, USD 11.1 billion and the US ranking.
+The 11 local contracts passed, now with 118 materiality tests and the existing
+95 coverage cases. Read-only replay of seven actual run archives reviews 13
+article rows, retains nine and removes four. The retained cosmetics article
+has a corrected statistical core, not a new forced send. Historical delivery
+records, seen state and retrieval queues were not reset. Version-28 deployment
+and a fresh remote source run remain separate verification requirements.

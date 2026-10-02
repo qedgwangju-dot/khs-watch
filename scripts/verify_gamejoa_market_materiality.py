@@ -113,6 +113,33 @@ DELIVERED_LOCAL_ADMINISTRATION = (
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_actual_export_delivery_uses_statistics_not_regulator_aspiration(self):
+        title = "K-뷰티 수출 1위, 중국 아닌 ‘이 나라’였다"
+        body = ("올해 1~3분기 수출액 111억 달러\n"
+                "2일 식품의약품안전처에 따르면 1~3분기 화장품 수출액은 전년 동기 대비 31.1% 증가한 111억달러(15조원)를 기록했다.\n"
+                "국가별로는 23억5000만달러로 미국이 1위를 기록했다.\n"
+                "식약처 관계자는 ‘K-뷰티의 위상이 더 높아질 수 있도록 규제기관 간 협력을 강화할 것’이라며 ‘국가별 규제정보 제공, 할랄 인증 컨설팅 지원 등을 추진하겠다’고 말했다.")
+        item = {**alert(title, body), "link": "https://biz.heraldcorp.com/article/10892265",
+                "telegram_core_fact": "식약처 관계자는 국가별 규제정보 제공, 할랄 인증 컨설팅 지원 등을 추진하겠다고 말했다."}
+        core = radar.verified_alert_core(item, title)
+        for term in ("1~3분기", "화장품 수출액", "31.1%", "111억달러", "미국", "1위"):
+            self.assertIn(term, core)
+        self.assertNotIn("컨설팅", core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        self.assertFalse(materiality.core_focus_aligned(title, item["telegram_core_fact"]))
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 7)), 1, item.get("_exclusion_reason"))
+
+    def test_export_results_need_source_quantity_and_do_not_reclassify_export_bans(self):
+        for title, body in (
+            ("화장품 수출액 증가 기대", "관계자는 화장품 수출액 증가를 기대하며 협력을 강화하겠다고 말했다."),
+            ("수출 컨설팅 지원 확대", "기관은 수출 컨설팅 지원을 확대하겠다고 말했다."),
+        ):
+            audit = materiality.assess(title, body)
+            self.assertNotIn("export_results", [item["kind"] for item in audit["evidence"]])
+        self.assertNotEqual(materiality.focus_kind("트럼프, 디젤 수출 금지 경고"), "export_results")
+
     def test_new_source_ai_financing_core_keeps_agreement_amount_and_reporting_attribution(self):
         title = "AI 속도조절론에도 대규모 자금 투입 '가속'"
         body = ("AI 모델 개발회사를 향한 대규모 자금 투입이 이어지고 있다.\n"
