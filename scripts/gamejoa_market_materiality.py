@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 21
+VERSION = 22
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|목표|보인다|나서야|시급|밑돌\s*듯|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
@@ -419,6 +419,11 @@ def assess(title: str, body: str) -> dict:
         return result
     if re.search(r"투자\s*이민|EB-?5", title, re.I) and re.search(r"상담|설명회|세미나", title):
         result.update(disposition="exclude", priority=0, reason="consumer_immigration_consultation_not_equity_news")
+        return result
+    if re.search(r"민자적격성조사|(?:경기도|지방정부|지자체).{0,50}(?:기후위성|관측위성)", title) and not re.search(
+        r"수주|발주|공급\s*계약|우선협상|시공사\s*선정|금융\s*종결|민간\s*투자\s*확정|상장사.{0,25}매출", body,
+    ):
+        result.update(disposition="exclude", priority=0, reason="local_public_project_without_business_execution")
         return result
     if SOLICITATION_HEADLINE.search(title) and SOLICITATION_BODY.search(body) and (
         re.search(r"잡으려면|활용\s*가능한\s*기회", title)

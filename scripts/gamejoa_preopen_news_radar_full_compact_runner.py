@@ -2182,6 +2182,7 @@ def article_sentences(
 def normalized_article_sentence(sentence: str) -> str:
     text = clean_article_summary_text(sentence)
     replacements = (
+        (r"^[가-힣]{2,5}\s*(?:기자|특파원)(?:\s+[가-힣]{2,5}\s*(?:기자|특파원))*\s*=\s*", ""),
         (r"^[▲△▶]\s*", ""),
         (
             r"([A-Za-z가-힣·&]+)\s*\(\s*[\d,]+원\s*[▲▼+-]\s*[\d,]+\s*"
@@ -2277,6 +2278,16 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
             fact = re.sub(r"^([가-힣]{2,10}(?:이|은|는))\s+\d{1,2}일\s*\(현지\s*시간\)\s*", r"\1 ", fact)
             fact = fact.replace("대(對)", "대")
             fact = re.sub(r"액화천연가스\s*\(LNG\)", "LNG", fact, flags=re.I)
+            if not re.search(r"\d{4}년", fact):
+                if not core_sentence_is_complete(fact) or article_title_restatement(fact, title):
+                    continue
+                for provision in sentences:
+                    expiry = re.search(r"(\d{4}년\s*\d{1,2}월\s*\d{1,2}일)까지\s*제재를\s*면제", provision)
+                    if expiry:
+                        expanded = fact + f" 기한은 {expiry.group(1)}까지다."
+                        if core_sentence_is_complete(expanded):
+                            fact = expanded
+                        break
         if market_materiality.focus_kind(title) == "project_buildout":
             fact = re.sub(
                 r"^.*?([A-Za-z0-9가-힣&·]+)의\s+(?:글로벌\s*)?최고경영자\s*\(CEO\)"
@@ -2335,6 +2346,39 @@ def analyst_research_target(title: str, source: str) -> str:
     quoted = re.search(r'(?:증권|리서치|research)\s*["\'“‘]\s*([A-Za-z0-9가-힣&·.-]{2,30})(?=[,，\s])', title, re.I)
     if quoted and re.search(rf"{re.escape(quoted.group(1))}(?:의|은|는|에\s*대해)", source):
         return quoted.group(1)
+    return ""
+
+
+def financial_headline_subject(title: str, source: str) -> str:
+    if not re.search(r"분기|매출|영업이익|순이익|순익|영업익|판매|실적|최다", title):
+        return ""
+    head = re.sub(r"^(?:\[[^\]]+\]\s*)+", "", title)
+    match = re.match(r"^([A-Za-z0-9가-힣&·.-]{2,30})[,，\s]", head)
+    if match and re.search(rf"{re.escape(match.group(1))}(?:은|는|이|가|의)\s", source):
+        return match.group(1)
+    return ""
+
+
+def headline_financial_fact(title: str, body: str) -> str:
+    subject = financial_headline_subject(title, body)
+    if not subject or market_materiality.focus_kind(title) not in {"", "earnings"}:
+        return ""
+    sentences = market_materiality.source_sentences(body)
+    for index, sentence in enumerate(sentences):
+        if subject not in sentence or not re.search(r"(?:매출|판매량|영업이익|순이익).{0,80}(?:집계|기록|증가|감소|달성)", sentence):
+            continue
+        if market_materiality.BACKGROUND.search(sentence):
+            continue
+        fact = normalized_article_sentence(sentence)
+        if not core_sentence_is_complete(fact):
+            continue
+        if index + 1 < len(sentences):
+            change = re.match(r"전년\s*동기\s*대비\s*(\d+(?:\.\d+)?)%\s*(증가|감소)한\s*것이다", sentences[index + 1])
+            if change:
+                expanded = fact + f" 전년비 {change.group(1)}% {change.group(2)}했다."
+                if core_sentence_is_complete(expanded):
+                    fact = expanded
+        return fact
     return ""
 
 
@@ -2907,6 +2951,9 @@ def detailed_article_core(title: str, body: str) -> str:
     revision_fact = financial_revision_fact(title, sentences, body)
     if revision_fact:
         return revision_fact
+    financial_fact = headline_financial_fact(title, body)
+    if financial_fact:
+        return financial_fact
     long_term_supply_fact = long_term_supply_article_fact(title, body)
     if long_term_supply_fact:
         return long_term_supply_fact
@@ -7125,7 +7172,7 @@ def sanctions_exemption_event_theme(alert: dict) -> str:
     body = str(alert.get("source_body") or "")
     if market_materiality.focus_kind(title) != "sanctions_exemption":
         return ""
-    authority = re.match(r"^(영국|英|미국|美|유럽연합|EU|일본|日|캐나다)(?:\s*정부)?[,，\s]", title)
+    authority = re.search(r"이어\s*(영국|英|미국|美|유럽연합|EU|일본|日|캐나다)(?:도|[,，\s])", title) or re.match(r"^(영국|英|미국|美|유럽연합|EU|일본|日|캐나다)(?:\s*정부)?[,，\s]", title)
     if not authority or not all(term in body for term in ("한국", "러시아", "LNG")):
         return ""
     if not re.search(r"사할린[\s-]*(?:Ⅱ|II|2)", body, re.I):
@@ -8216,6 +8263,9 @@ def normalize_alert_for_output(alert: dict) -> dict:
         out["source_title"] = out.get("original_news") or out.get("news")
     if not out.get("original_news"):
         out["original_news"] = out.get("source_title") or out.get("news")
+    exemption_theme = sanctions_exemption_event_theme(out)
+    if exemption_theme:
+        out["supply_chain_theme"] = exemption_theme
     if not out.get("supply_chain_theme"):
         inferred_theme = semantic_event_theme(out)
         if inferred_theme:
@@ -8882,6 +8932,9 @@ def verified_alert_core(alert: dict, title: str) -> str:
             revision_fact = financial_revision_fact(source_title or title, ranked_article_sentences(body, [], title=source_title or title), body)
             if revision_fact:
                 return revision_fact
+            financial_fact = headline_financial_fact(source_title or title, article_summary_body(body))
+            if financial_fact:
+                return financial_fact
             focused_fact = source_focused_article_core(source_title or title, ranked_article_sentences(
                 body, korean_business_title_terms(source_title or title), title=source_title or title,
             ))
@@ -8941,8 +8994,9 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         errors.append("photo_description_not_news_core")
     if re.search(r"하고\s*있다\s+(?:[A-Za-z0-9가-힣·&()]+\s+){0,8}[A-Za-z0-9가-힣·&()]+(?:은|는)\s+", core):
         errors.append("concatenated_photo_caption")
-    target = analyst_research_target(title, source)
-    if target and re.search(r"영업이익|순이익|매출", core) and target not in core:
+    target = analyst_research_target(title, source) or financial_headline_subject(title, source)
+    subjects = re.split(r"[·ㆍ]", target) if target else []
+    if subjects and re.search(r"영업이익|순이익|매출|판매량", core) and not any(subject in core for subject in subjects):
         errors.append("financial_subject_mismatch")
     revision = financial_revision_fact(title, ranked_article_sentences(source, [], title=title), source)
     if revision:

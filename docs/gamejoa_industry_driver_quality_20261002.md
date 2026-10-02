@@ -575,3 +575,37 @@ supply-policy events. All 11 local contract scripts passed, including 98
 materiality tests, 95 coverage cases and 26 retrieval-queue tests. No old
 article was resent, and no delivery/seen record was reset. Final fresh-run
 proof is recorded separately after deployment.
+
+## Version 22: Primary Financial Subject and Follow-Up Jurisdiction
+
+Run `36977399521` completed at `2026-10-02T07:16:51Z`; its report queried at
+`16:13:35 KST` with version 21, 122 verified bodies, 38 failures and 603
+deferred candidates. ZIP SHA-256:
+`11F7ABFE7D198058B6D3889F5672036C33543B554A8BFC2F80C438F17224AEF3`.
+Full source inspection identified another distinct failure mode: a Hyundai/
+Kia sales headline selected Ford's forecast because the period and metric
+overlapped. An `EU followed by UK` headline was incorrectly keyed to the EU;
+a two-reporter byline survived cleaning. Local public-project milestones
+without a committed supplier/financing change also occupied core-news slots.
+
+Primary headline financial subjects must be source-attested, not guessed from
+a company dictionary. Their actual results take precedence over comparator
+forecasts. Independent core validation rejects competitor-only numbers;
+broker research still resolves the analyzed company separately. A adjacent
+source-reported year-on-year change may accompany the actual result within
+the complete-sentence limit. Multiple reporter bylines are removed without
+removing the reporting institution or quoted speaker.
+
+The operative follow-up authority in a sanctions headline overrides its
+historical prefix and any stale preassigned theme. Exact expiry may accompany
+an already complete exemption fact, never turn a subtitle into a sentence.
+Local feasibility reviews and municipal climate-observation launches require
+business execution before publication; actual supplier selection, orders or
+committed financing remain eligible.
+
+Read-only replay of ten artifacts reviews 65 rows, retains 40, removes 25
+weak/duplicate selections and regenerates 15 cores, with zero headline/core
+focus mismatches. The latest seven-row report becomes four meaningful
+macro/supply/defense/sales events. All 11 local contract scripts passed; the
+latest targeted suite contains 101 passing materiality tests. Fresh production
+validation and external-delivery boundaries follow separately below.

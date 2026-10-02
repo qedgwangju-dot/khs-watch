@@ -96,6 +96,42 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_primary_sales_issuer_not_competitor_forecast_owns_core_numbers(self):
+        title = "현대차·기아, 3분기 美 역대 최다 기록…포드 제치고 빅3 눈앞"
+        body = "현대차·기아는 3분기 합산 판매량이 50만6200대로 집계됐다고 2일 밝혔다. 전년 동기 대비 5.4% 증가한 것이다.\n포드는 아직 9월 판매 실적을 발표하지 않았는데 콕스는 포드의 3분기 판매량이 7.1% 감소한 50만4172대로 전망된다고 밝혔다."
+        item = alert(title, body)
+        item["telegram_core_fact"] = body.split("\n")[-1]
+        self.assertIn("financial_subject_mismatch", radar.source_core_fact_errors(item))
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("현대차·기아", core)
+        self.assertIn("50만6200대", core)
+        self.assertIn("5.4% 증가", core)
+        self.assertNotIn("50만4172대", core)
+        self.assertNotIn("전망", core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        self.assertEqual(radar.quality_display_alerts([item], 1)[0]["telegram_core_fact"], core)
+
+    def test_multiple_reporter_byline_does_not_enter_reader_core(self):
+        sentence = "신창용 기자 김계연 특파원 = 영국 정부가 한국의 러시아산 LNG 장기 계약 물량에 대해 제재를 면제하기로 했다."
+        core = radar.normalized_article_sentence(sentence)
+        self.assertTrue(core.startswith("영국 정부"))
+        self.assertNotIn("기자", core)
+        self.assertNotIn("특파원", core)
+        body = "영국, 한국 러시아산 LNG 수입 제재 면제\n" + sentence + "\n이에 따라 한국은 기존 장기 계약 물량에 대해 2028년 3월 31일까지 제재를 면제받는다."
+        core = radar.verified_alert_core(alert("EU 이어 영국도 한국의 러시아산 LNG 수입 제재 면제", body), "EU 이어 영국도 한국의 러시아산 LNG 수입 제재 면제")
+        self.assertIn("2028년 3월 31일", core)
+        self.assertNotIn("특파원", core)
+        self.assertIn("영국 정부", core)
+
+    def test_local_public_milestones_need_business_execution(self):
+        for title, body in (
+            ("제2용인-서울고속도로 민자적격성조사 통과", "국토부는 민자적격성조사를 통과해 후속 환경영향평가에 착수한다고 밝혔다. 2031년 착공이 목표다."),
+            ("경기도, 기후위성 2호기 발사 성공", "경기도는 온실가스 관측용 위성 발사에 성공했다. 기존 예산 외 추가 비용은 들지 않는다."),
+        ):
+            self.assertEqual(materiality.assess(title, body)["disposition"], "exclude")
+        actual = materiality.assess("제2용인-서울고속도로 민자적격성조사 통과·시공사 선정", "시공사는 3000억원 공급 계약을 체결했다.")
+        self.assertEqual(actual["disposition"], "keep")
+
     def test_consumer_visa_consultation_cannot_borrow_cpi_and_capital_words(self):
         item = alert("이민업체, 미국투자이민 상담…EB-5 수수료 조정", "EB-5 수수료는 물가상승률에 따라 조정된다. 업체는 투자금 상환과 가족 영주권 신청을 위한 개별상담을 운영한다.")
         self.assertEqual(radar.source_market_materiality(item)["disposition"], "exclude")
@@ -120,7 +156,10 @@ class MaterialityChecks(unittest.TestCase):
         second["link"] = "https://www.yna.co.kr/view/another-exemption"
         second["published"] = "2026-10-01T23:50:00+09:00"
         self.assertEqual(radar.semantic_event_theme(first), radar.semantic_event_theme(second))
+        self.assertEqual(radar.semantic_event_theme(first), radar.semantic_event_theme({**second, "source_title": "EU 이어 영국도 한국의 러시아산 LNG 수입 제재 면제"}))
         self.assertEqual(len(radar.quality_display_alerts([first, second], 7)), 1)
+        stale = {**second, "source_title": "EU 이어 영국도 한국의 러시아산 LNG 수입 제재 면제", "news": "EU 이어 영국도 한국의 러시아산 LNG 수입 제재 면제", "supply_chain_theme": "sanctions_exemption:eu:russia:sakhalin-2:korea:2028-03-31"}
+        self.assertEqual(len(radar.quality_display_alerts([first, stale], 7)), 1)
         self.assertNotEqual(radar.semantic_event_theme(first), radar.semantic_event_theme({**second, "source_body": second["source_body"].replace("2028년 3월31일", "2029년 3월31일")}))
         self.assertNotEqual(radar.semantic_event_theme(first), radar.semantic_event_theme({**second, "source_title": second["source_title"].replace("영국", "미국")}))
         self.assertEqual(radar.semantic_event_theme({**first, "body_verified": False}), "")
