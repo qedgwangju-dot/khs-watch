@@ -681,7 +681,7 @@
       "facts": [
         "encinal_full_year:2032",
         "encinal_phase1_year:2029",
-        "encinal_project_cost_usd_b:2.4",
+        "encinal_project_cost_usd_b:22.3",
         "encinal_status:confirmed_first",
         "encinal_total_mw:6472",
         "stage:송금집행"
@@ -689,7 +689,7 @@
       "slots": {
         "encinal|encinal_full_year": "encinal_full_year:2032",
         "encinal|encinal_phase1_year": "encinal_phase1_year:2029",
-        "encinal|encinal_project_cost_usd_b": "encinal_project_cost_usd_b:2.4",
+        "encinal|encinal_project_cost_usd_b": "encinal_project_cost_usd_b:22.3",
         "encinal|encinal_status": "encinal_status:confirmed_first",
         "encinal|encinal_total_mw": "encinal_total_mw:6472",
         "encinal|stage:송금집행": "stage:송금집행"
@@ -697,7 +697,7 @@
       "initialized_at": "2026-10-01T04:00:32.379678+00:00",
       "updated_at": "2026-10-01T23:16:02.281275+00:00",
       "last_title": "산업통상부 공식 Project Star 엔시날 제1호 공식 추진 사업비 223억달러 6472MW 2029 1단계 2032 전체 가동",
-      "last_source": "대한민국 정책브리핑",
+      "last_source": "대한민국 정책브리핑 · project-cost-vs-funding-corrected",
       "evidence": [
         {
           "source": "뉴스1",
@@ -723,5 +723,6 @@
   "joint_fact_sheet_status_version": 1,
   "official_evidence_cleanup_version": 1,
   "westinghouse_framework_equity_version": 1,
-  "project_power_funding_roles_version": 1
+  "project_power_funding_roles_version": 1,
+  "encinal_project_cost_role_version": 1
 }
