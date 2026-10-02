@@ -1,9 +1,9 @@
 {
   "risk_level": 0,
   "risk_label": "관찰",
-  "market_direction": "↗ 캐리 유지 우세 / 구조 부담↑",
-  "market_direction_reason": "엔화 약세 + 금리차 급축소·전염 없음, 다만 JGB 상승은 청산 부담",
-  "updated_at_kst": "2026-10-02T09:15:06+09:00",
+  "market_direction": "↔ 혼조 — 구조적 청산 부담↑",
+  "market_direction_reason": "엔화는 강세지만 금리차 급축소·위험자산 전염은 아직 미확인",
+  "updated_at_kst": "2026-10-02T12:17:53+09:00",
   "signals": {
     "jgb10_3": true,
     "jgb_curve_up": false,
