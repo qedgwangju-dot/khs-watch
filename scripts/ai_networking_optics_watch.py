@@ -410,19 +410,118 @@ def story_tokens(title: str) -> set[str]:
     return tokens
 
 
+def _money_tokens(text: str) -> list[str]:
+    tokens: list[str] = []
+    for amount, unit in re.findall(
+        r"\\$?\\s*(\\d+(?:\\.\\d+)?)\\s*(million|billion|mn|bn|m|b)\\b",
+        text or "",
+        flags=re.I,
+    ):
+        normalized = amount.rstrip("0").rstrip(".") if "." in amount else amount
+        suffix = "b" if unit.lower() in {"billion", "bn", "b"} else "m"
+        token = f"{normalized}{suffix}"
+        if token not in tokens:
+            tokens.append(token)
+    return tokens
+
+
+KNOWN_PHOTONIC_BASELINE_KEYS = {
+    "volantis|funding|series-a",
+    "lightmatter|passage|sampling|1.6tbps-per-fiber",
+    "lightmatter|nvlink-fusion|ecosystem",
+    "ayar|funding|2026-primary-650m",
+    "ayar|wiwynn|strategic-investment",
+    "ayar|nvlink-fusion|ecosystem",
+    "marvell|celestial|acquisition-complete",
+    "marvell|celestial|revenue-guidance|v1",
+}
+
+
+def preserve_delivery_metadata(previous: dict, pending: dict) -> dict:
+    # Silent checks must not erase proof of the most recent confirmed Telegram send.
+    for key in ("last_successful_delivery_kst", "telegram_message_ids", "bot_username"):
+        if previous.get(key) is not None:
+            pending[key] = previous[key]
+    return pending
+
+
 def canonical_story_key(company: str, title: str) -> str | None:
     text = html.unescape(title or "").lower()
+    money = _money_tokens(text)
+
     if company == "Volantis":
-        if re.search(r"series\s*a|\$?88\s*m|funding|financing", text, re.I):
+        # Preserve the already-seen $88M Series A key, but do not collapse every
+        # future financing round into that old event.
+        if re.search(r"series\\s*a", text, re.I) or re.search(r"\\b88\\s*(?:m|million)\\b", text, re.I):
             return "volantis|funding|series-a"
+        series = re.search(r"series\\s*([b-z])", text, re.I)
+        if series and re.search(r"funding|financing|raises?|capital", text, re.I):
+            suffix = "-" + "-".join(money) if money else ""
+            return f"volantis|funding|series-{series.group(1).lower()}{suffix}"
+        if re.search(r"funding|financing|raises?|capital", text, re.I):
+            suffix = "-".join(money) if money else "generic"
+            return f"volantis|funding|other|{suffix}"
         if re.search(r"customer sampling|customer delivery|customer deployment|integrated inference engines?", text, re.I):
             return "volantis|a1|customer"
-        if re.search(r"silicon|tape[- ]?out|benchmark|measured|prototype|240\s*tb/s|10\s*tb|1\s*pj/bit|tokens? per second|tok/s", text, re.I):
+        if re.search(r"silicon|tape[- ]?out|benchmark|measured|prototype|240\\s*tb/s|10\\s*tb|1\\s*pj/bit|tokens? per second|tok/s", text, re.I):
             return "volantis|a1|silicon-performance"
         if re.search(r"vcsel|micro[- ]?vcsel|foundry|wafer|laser|supply chain", text, re.I):
             return "volantis|a1|vcsel-supply"
         if re.search(r"a-1|photonic memory|optical memory|memory wall|optical fabric|memory pooling", text, re.I):
             return "volantis|a1|architecture"
+
+    if company == "Lightmatter":
+        if re.search(r"nvlink fusion", text, re.I):
+            return "lightmatter|nvlink-fusion|ecosystem"
+        if re.search(r"passage", text, re.I) and re.search(r"sampl|customer qualification|customer validation", text, re.I):
+            if re.search(r"1\\.?6\\s*tbps|1\\.?6\\s*t", text, re.I):
+                return "lightmatter|passage|sampling|1.6tbps-per-fiber"
+            return "lightmatter|passage|customer-sampling"
+        if re.search(r"passage", text, re.I) and re.search(r"production|shipment|deployment|mass production|volume production", text, re.I):
+            return "lightmatter|passage|production-deployment"
+        if re.search(r"funding|financing|raises?|strategic investment", text, re.I):
+            suffix = "-".join(money) if money else "generic"
+            return f"lightmatter|funding|{suffix}"
+
+    if company == "Ayar Labs":
+        if re.search(r"funding|financing|raises?|capital", text, re.I):
+            # Sep-2026 additional $150M brought 2026 primary capital to $650M.
+            # Reprints that quote either number are one event, not new alerts.
+            if re.search(r"2026", text) and (
+                re.search(r"\\b150\\s*(?:m|million)\\b", text, re.I)
+                or re.search(r"\\b650\\s*(?:m|million)\\b", text, re.I)
+            ):
+                return "ayar|funding|2026-primary-650m"
+            suffix = "-".join(money) if money else "generic"
+            return f"ayar|funding|{suffix}"
+        if re.search(r"wiwynn", text, re.I) and re.search(r"invest|strategic", text, re.I):
+            return "ayar|wiwynn|strategic-investment"
+        if re.search(r"nvlink fusion", text, re.I):
+            return "ayar|nvlink-fusion|ecosystem"
+        if re.search(r"high[- ]volume manufacturing|volume production|mass production|customer deployment|shipments?", text, re.I):
+            return "ayar|hvm|production-deployment"
+        if re.search(r"customer sampling|qualification|validation", text, re.I):
+            return "ayar|customer-validation"
+
+    if company == "Marvell" and re.search(r"celestial ai|photonic fabric", text, re.I):
+        if re.search(r"completed? (?:the )?acquisition|acquisition (?:is )?complete|closes? (?:the )?acquisition|acquires? celestial", text, re.I):
+            return "marvell|celestial|acquisition-complete"
+        if re.search(r"revenue|run[- ]?rate|guidance|fiscal 2028|fy28|fiscal 2029|fy29", text, re.I):
+            # Marvell's original acquisition guidance: H2 FY28 revenue start,
+            # $500M annualized run-rate in Q4 FY28 and $1B in Q4 FY29.
+            old_v1 = (
+                (re.search(r"(?:fiscal\\s*)?2028|fy28", text, re.I) and re.search(r"\\b500\\s*(?:m|million)\\b", text, re.I))
+                or (re.search(r"(?:fiscal\\s*)?2029|fy29", text, re.I) and re.search(r"\\b1\\s*(?:b|billion)\\b", text, re.I))
+            )
+            if old_v1:
+                return "marvell|celestial|revenue-guidance|v1"
+            suffix = "-".join(money) if money else re.sub(r"[^a-z0-9]+", "-", text)[:80].strip("-")
+            return f"marvell|celestial|revenue-guidance|{suffix or 'generic'}"
+        if re.search(r"production|shipment|mass production|volume production", text, re.I):
+            return "marvell|celestial|production-shipment"
+        if re.search(r"customer|design win|qualification|validation|milestone", text, re.I):
+            return "marvell|celestial|customer-validation"
+
     if company == "US Optical Policy":
         if re.search(r"senate|congress|bill|legislation|national security systems?", text, re.I):
             if re.search(r"signed|enacted|becomes? law", text, re.I):
@@ -436,13 +535,13 @@ def canonical_story_key(company: str, title: str) -> str | None:
             return "us-optical-policy|fcc|final"
         if re.search(r"proposed rule|rulemaking|notice|comment|draft|consider", text, re.I):
             return "us-optical-policy|fcc|proposal"
-        if re.search(r"3\.2\s*t|65\s*%|75\s*%|domestic content|buy american|exempt", text, re.I):
+        if re.search(r"3\\.2\\s*t|65\\s*%|75\\s*%|domestic content|buy american|exempt", text, re.I):
             parts = []
-            if re.search(r"3\.2\s*t", text, re.I):
+            if re.search(r"3\\.2\\s*t", text, re.I):
                 parts.append("3.2t")
-            if re.search(r"65\s*%", text, re.I):
+            if re.search(r"65\\s*%", text, re.I):
                 parts.append("65")
-            if re.search(r"75\s*%", text, re.I):
+            if re.search(r"75\\s*%", text, re.I):
                 parts.append("75")
             if re.search(r"domestic content|domestic end product|buy american", text, re.I):
                 parts.append("domestic")
@@ -450,27 +549,28 @@ def canonical_story_key(company: str, title: str) -> str | None:
                 parts.append("exemption")
             return "us-optical-policy|fcc|content-scenario|" + "-".join(parts or ["generic"])
         return None
-    if company in {"AXT", "InP Supply Chain"} and re.search(r"\binp\b|indium phosphide", text, re.I):
+
+    if company in {"AXT", "InP Supply Chain"} and re.search(r"\\binp\\b|indium phosphide", text, re.I):
         if re.search(r"export licen[cs]e|restriction|china", text, re.I):
             return "axt|inp|export-policy"
         if re.search(r"shortage|tight|capacity|expand|substrate", text, re.I):
             return "axt|inp|capacity-shortage"
+
     if company == "Coherent" and "photonlink" in text:
-        if re.search(r"customer engagements?|long[- ]term(?:\s+\w+){0,6}\s+agreements?|anchor customers?|design win|secures?.{0,60}agreements?", text, re.I):
+        if re.search(r"customer engagements?|long[- ]term(?:\\s+\\w+){0,6}\\s+agreements?|anchor customers?|design win|secures?.{0,60}agreements?", text, re.I):
             return "coherent|photonlink|customer-contract"
-        if re.search(r"content opportunity|content per|100\s*tbps|15,?000", text, re.I):
+        if re.search(r"content opportunity|content per|100\\s*tbps|15,?000", text, re.I):
             return "coherent|photonlink|content-value"
         if re.search(r"chip[- ]to[- ]chip", text, re.I):
             return "coherent|photonlink|chip-to-chip"
         if re.search(r"specialty fibers?|polarization[- ]maintaining|mode[- ]matching|multicore fibers?", text, re.I):
             return "coherent|photonlink|specialty-fiber"
-        if re.search(r"\binp\b.*(?:capacity|expand)|(?:capacity|expand).*\binp\b", text, re.I):
+        if re.search(r"\\binp\\b.*(?:capacity|expand)|(?:capacity|expand).*\\binp\\b", text, re.I):
             return "coherent|photonlink|inp-capacity"
         if re.search(r"revenue|guidance|mass production|volume production|shipments?|production ramp|ramp(?:ing)?", text, re.I):
             return "coherent|photonlink|commercial-ramp"
         return "coherent|photonlink|launch"
     return None
-
 
 def source_priority(source: str) -> int:
     source = normalize_text(source)
@@ -734,8 +834,14 @@ def category_for(title: str, company: str) -> str:
             return "광컴퓨팅 상용화·고객검증"
         return "광컴퓨팅·스케일업 인터커넥트"
     if company == "Marvell" and re.search(r"Celestial AI|Photonic Fabric", title, re.I):
-        if re.search(r"revenue|run[- ]rate|ramp|customer|production|shipment|milestone|fiscal 2028|FY28", title, re.I):
+        if re.search(r"completed? (?:the )?acquisition|acquisition (?:is )?complete|closes? (?:the )?acquisition|acquires? Celestial", title, re.I):
+            return "Photonic Fabric 인수·통합"
+        if re.search(r"revenue|run[- ]rate|guidance|fiscal 2028|FY28|fiscal 2029|FY29", title, re.I):
             return "Photonic Fabric 매출 램프"
+        if re.search(r"production|shipment|mass production|volume production", title, re.I):
+            return "Photonic Fabric 양산·출하"
+        if re.search(r"customer|design win|qualification|validation|milestone", title, re.I):
+            return "Photonic Fabric 고객검증·수주"
         return "Photonic Fabric 광스케일업"
     if company == "US Optical Policy":
         if re.search(r"senate|congress|bill|legislation|national security systems?", title, re.I):
@@ -811,7 +917,10 @@ def meaning_for(category: str) -> str:
         "VCSEL 광메모리 공급망": "볼란티스처럼 InP 외부레이저 대신 GaAs 기반 micro-VCSEL을 쓰는 구조가 양산되면 VCSEL 에피·레이저·패키징 공급망에 새로운 AI 매출 경로가 열릴 수 있습니다.",
         "광컴퓨팅 투자·양산확대": "자금조달이 고용 확대가 아니라 실제 고용량 생산·테스트·패키징·고객 배치 능력 확장에 쓰이면 광인터커넥트가 연구개발에서 양산 인프라 단계로 이동하는 신호입니다.",
         "광컴퓨팅 상용화·고객검증": "라이트매터·아야르 랩스·엑스케이프 등에서 샘플링·고객검증·생산·배치가 확인되면 광인터커넥트가 기술 시연에서 실제 AI 시스템 매출로 이동하는 신호입니다.",
-        "Photonic Fabric 매출 램프": "마벨이 Celestial AI의 Photonic Fabric에서 실제 고객·출하·매출 램프를 확인하면 비상장 광인터커넥트 기술이 상장사 데이터센터 매출로 전환되는 직접 검증 신호입니다.",
+        "Photonic Fabric 매출 램프": "마벨이 Celestial AI의 Photonic Fabric에서 실제 매출 개시·연환산 매출 가이던스를 확인하거나 상향하면 비상장 광인터커넥트 기술이 상장사 데이터센터 매출로 전환되는 직접 검증 신호입니다.",
+        "Photonic Fabric 고객검증·수주": "고객 실명·설계 채택·검증 통과가 확인되면 기존 인수 발표와 매출 가이던스 사이의 실질적인 고객 관문을 통과했다는 신호입니다.",
+        "Photonic Fabric 양산·출하": "Photonic Fabric의 생산·출하가 실제로 시작되면 인수 당시의 기술·매출 목표가 물량으로 전환되는 단계 변화입니다.",
+        "Photonic Fabric 인수·통합": "Celestial AI 인수 완료 자체는 매출 발생이 아니라 Marvell 데이터센터 사업 안으로 기술·인력·개발비가 편입된 사건으로 분리해 봅니다.",
         "Photonic Fabric 광스케일업": "Celestial AI의 광 I/O를 패키지·시스템·랙까지 확장하는 구조는 전기식 스케일업 인터커넥트의 전력·거리 한계를 낮추는 마벨의 중장기 광연결 축입니다.",
         "광컴퓨팅·스케일업 인터커넥트": "GPU·XPU·메모리 사이 데이터 이동 병목을 광링크로 줄이는 구조가 확산되면 AI 인프라 가치가 연산칩에서 광엔진·레이저·패키징까지 넓어지는 신호입니다.",
         "FCC 광트랜시버 규제": "완제품 국적보다 부품 원산지·가치비중까지 규제가 내려오면 3.2T 세대의 공급사 선정과 레이저·InP·DSP 가치배분이 직접 바뀌는 정책 신호입니다.",
@@ -860,6 +969,9 @@ def risk_for(category: str) -> str:
         "광컴퓨팅 투자·양산확대": "대규모 자금이 있어도 고용량 생산수율·패키징·레이저 수명·테스트 시간이 해결되지 않으면 설비 확장이 매출보다 먼저 비용 부담으로 나타날 수 있습니다.",
         "광컴퓨팅 상용화·고객검증": "고객검증·패키징 수율·레이저 신뢰성·표준화 일정이 늦어지면 대량배치가 지연될 수 있습니다.",
         "Photonic Fabric 매출 램프": "인수 당시 제시된 매출 시점·연환산 매출 목표가 고객 일정 또는 양산수율 때문에 늦어지면 마벨의 광스케일업 재평가 시점도 함께 밀릴 수 있습니다.",
+        "Photonic Fabric 고객검증·수주": "고객 발표가 설계 검토나 평가 단계에 머물고 실제 주문·검증 통과로 이어지지 않으면 매출 시점이 늦어질 수 있습니다.",
+        "Photonic Fabric 양산·출하": "초기 출하가 고객 인증·수율·패키징 문제로 반복 양산에 이어지지 않으면 출하 뉴스가 일회성 검증에 그칠 수 있습니다.",
+        "Photonic Fabric 인수·통합": "인수 완료 이후 통합 비용은 발생하지만 고객·제품 통합과 매출 개시가 늦어지면 단기 비용이 먼저 나타날 수 있습니다.",
         "Photonic Fabric 광스케일업": "스케일업 표준 경쟁, 패키징 수율, 외부 레이저·광엔진 비용이 기대보다 높으면 대량 채택 속도가 늦어질 수 있습니다.",
         "광컴퓨팅·스케일업 인터커넥트": "광링크가 구리 대비 비용·전력·유지보수 우위를 충분히 입증하지 못하거나 표준 경쟁이 길어지면 채택 속도가 늦어질 수 있습니다.",
         "FCC 광트랜시버 규제": "3.2T·65% 같은 시장 시나리오가 최종 규정에서 바뀌거나, 미국 제조요건이 더 엄격해지면 예상 수혜기업과 공급망 구조가 달라질 수 있습니다.",
@@ -1101,7 +1213,7 @@ def main() -> None:
 
     initialized = bool(state.get("initialized"))
     dedupe_version = int(state.get("dedupe_version") or 0)
-    seen_story_keys = set(state.get("seen_story_keys") or [])
+    seen_story_keys = set(state.get("seen_story_keys") or []) | set(KNOWN_PHOTONIC_BASELINE_KEYS)
     seen_story_records = list(state.get("seen_story_records") or [])
 
     for item in deduped:
@@ -1173,6 +1285,7 @@ def main() -> None:
         "relevant_item_count": len(deduped),
         "source_errors": errors,
     }
+    pending = preserve_delivery_metadata(state, pending)
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     # One-time migration: establish the semantic/event baseline silently so the
