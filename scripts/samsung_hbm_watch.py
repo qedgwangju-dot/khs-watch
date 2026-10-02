@@ -2639,6 +2639,15 @@ def build_monthly(now: datetime, rate: float | None, fx_basis: str, official: di
 
 
 
+def select_send_events(events: list[dict], limit: int = 4) -> list[dict]:
+    ordered = sorted(events, key=lambda x: x.get("published_at_kst") or "")
+    price_priority = [e for e in ordered if e.get("samsung_hbm4_price_change")]
+    others = [e for e in ordered if not e.get("samsung_hbm4_price_change")]
+    chosen_price = price_priority[-1:] if price_priority else []
+    remaining = max(0, int(limit) - len(chosen_price))
+    return sorted(chosen_price + others[-remaining:], key=lambda x: x.get("published_at_kst") or "")
+
+
 def build_event_alert(events: list[dict], now: datetime) -> str:
     selected = events[:4]
     price_events = [e for e in selected if e.get("samsung_hbm4_price_change")]
@@ -3030,17 +3039,10 @@ def main() -> None:
         if stored.get("signature") != e.get("state_signature"):
             fresh_new.append(e)
 
-    all_send_events = sorted(
+    send_events = select_send_events(
         fresh_new + share_alert_events + broker_alert_events + hbm4_price_alert_events + capital_alert_events + ops_alert_events,
-        key=lambda x: x.get("published_at_kst") or "",
+        limit=4,
     )
-    # Dedicated Samsung HBM4 contract-price changes are never allowed to be
-    # displaced by four unrelated same-run events. Keep the latest such event,
-    # then fill the remaining slots with the newest other changes.
-    price_priority = [e for e in all_send_events if e.get("samsung_hbm4_price_change")]
-    other_events = [e for e in all_send_events if not e.get("samsung_hbm4_price_change")]
-    chosen_price = price_priority[-1:] if price_priority else []
-    send_events = sorted(chosen_price + other_events[-(4-len(chosen_price)):], key=lambda x: x.get("published_at_kst") or "")
 
     rate, fx_basis = fx_quote()
     official, official_errors = fetch_official_hbm_pack(now) if now.day >= MONTHLY_DAY else (None, [])
