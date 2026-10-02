@@ -384,3 +384,34 @@ cases and 26 detail-queue tests. No historical article was sent, no seen key
 reset and no queue state committed by this replay. These are bounded
 regressions, not a claim of universal semantic accuracy or complete coverage.
 Fresh production-environment dry-run evidence is recorded below once available.
+
+## Version 16: Reject the Fresh Run's Semantic Failures
+
+Run `36967831066` generated a version-15 dry-run report at `14:11:45 KST`.
+The technical checks passed, but manual source/core review found five more
+weak foreground stories: an unnamed blockchain-partner roadmap, a local
+housing interview, committee membership changes, exhibition attendance and a
+neighborhood house-price vignette. This report is not accepted as quality
+completion. It verified 134 bodies, failed 26 and deferred 614; source coverage
+was incomplete. ZIP SHA-256:
+`006E9420F047687D9B86EC9C62A362F05024CBCFF3038F9BE1700F3A0EFEABBD`.
+
+Version 16 prevents `대출자` from matching equity-capital `출자` and
+`생산자` participation from matching production. Existing system connections
+and waiting for regulatory clarity are not new deployment or policy actions.
+Exhibition attendance, administrative membership changes and local housing
+commentary cannot borrow unrelated background economics to fill a core slot.
+Actual exhibition contracts, new clinical results, tariff-rate decisions and
+approved capacity investment are retained by positive regressions.
+
+A customer-implementation headline keeps its first-phase construction fact,
+not earlier highway deliveries. The current site/stage is shared by evidence
+selection, core generation and the independent headline/core guard. Leading
+photo markers are removed without deleting source-authored implementation facts.
+
+Read-only replay of the seven-row report retains the eurozone PMI release and
+SG's Onyang implementation, removes the other five and repairs SG's core.
+All 11 local scripts passed again, including the expanded 84-test materiality
+suite. The fresh version-16 execution must still be checked below. Prior
+Telegram delivery state and the user's disabled separate policy watch remain
+untouched.

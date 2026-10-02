@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 15
+VERSION = 16
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|목표|보인다|나서야|시급|밑돌\s*듯|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
@@ -73,6 +73,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("monetary_guidance", r"(?:연준|ECB|한국은행).{0,15}(?:의장|총재)", r"(?:금리|통화|정책).{0,90}(?:밝혔|말했|강조|신중|시사|필요)"),
     ("nuclear_warning", r"핵\s*(?:대응|사용|공격|위협)|nuclear.{0,12}(?:threat|response)", r"(?:핵|특별한\s*수단|모든\s*무기).{0,80}(?:대응|사용|경고|위협|준비|불가피)"),
     ("trading_status", r"거래\s*재개|액면병합|주식병합", r"거래.{0,12}재개|재개.{0,12}거래|액면병합|주식병합"),
+    ("customer_implementation", r"1차\s*시공|초도\s*납품", r"1차\s*시공|초도\s*납품"),
     ("industrial_program", r"(?:SMR|원전|양자|반도체|로봇).{0,16}상용화", r"(?:상용화|사업화).{0,50}(?:출범|지원|시행|추진)|(?:출범|지원|시행|추진).{0,50}(?:상용화|사업화)"),
     ("ownership", r"지분.{0,25}(?:인수|매각|취득)|인수.{0,25}지분|합병(?!원)", r"지분|인수|매각|취득|합병(?!원)|stake|acquir|merger"),
     ("shareholder", r"자사주|자기주식|주주환원|배당", r"자사주|자기주식|주주환원|배당|(?:주식|지분).{0,30}(?:매수|취득|매입|처분)|buyback|dividend"),
@@ -199,7 +200,7 @@ RULES = (
      r"수주|발주|공급계약|공급\s*계약|납품\s*계약|발사\s*계약|purchase order|supply contract|procurement contract|launch (?:contract|agreement)",
      r"체결|확정|수주|발주|갱신|취소|파기|해지|협상|추진|서명|sign|secure|award|agree|cancel|negotiat"),
     ("customer_supply_start", ("earnings", "timeline"),
-     r"고객|공급|납품|customer|supply|deliver", r"첫\s*(?:공급|납품)|공급(?:했다|한다|하기로)|납품(?:했다|한다)|first delivery|began supplying"),
+     r"고객|공급|납품|시공|customer|supply|deliver", r"첫\s*(?:공급|납품)|공급(?:했다|한다|하기로)|납품(?:했다|한다)|(?:1차\s*시공|초도\s*납품).{0,15}완료|first delivery|began supplying"),
     ("procurement_execution_stage", ("earnings", "timeline"),
      r"입찰|시공사|우선협상|procurement|bid|preferred bidder",
      r"제출|선정|선택|낙찰|철회|탈락|확보|submit|select|award|withdraw"),
@@ -215,7 +216,7 @@ RULES = (
      r"로열티|선급금|마일스톤|기술이전|royalty|upfront|milestone|licens",
      r"체결|계약|수령|수취|받|합의|서명|sign|agreement|receiv"),
     ("capital_or_shareholder_action", ("earnings", "timeline"),
-     r"투자(?=\s*(?:\d|를|한다|한다고|하는|하고|해|했다|할|하겠|금|액|규모|계획|협약|계약|자금)|.{0,12}유치)|capex|자본지출|출자|자금\s*조달|자본\s*조달|회사채|주주환원|배당|자사주|자기주식|지분|funding|financing|buyback|dividend|bond issuance|stake",
+     r"투자(?=\s*(?:\d|를|한다|한다고|하는|하고|해|했다|할|하겠|금|액|규모|계획|협약|계약|자금)|.{0,12}유치)|capex|자본지출|(?<!대)출자|자금\s*조달|자본\s*조달|회사채|주주환원|배당|자사주|자기주식|지분|funding|financing|buyback|dividend|bond issuance|stake",
      r"체결|유치|출자|발행|증액|삭감|확대|축소|매입|매수|취득|소각|매각|인수|검토|추진|결정|발표|승인|raise|issu|buy|repurchas|sell|acquir|announc|consider|approv"),
     ("financing_infrastructure", ("earnings", "timeline"),
      r"금융플랫폼|금융\s*플랫폼|투자\s*자금\s*조달|financing platform|investment financing",
@@ -263,7 +264,7 @@ RULES = (
      r"주가|증시|코스피|코스닥|etf|etn|순매수|순매도|거래대금|유입|유출|수익률|주식|shares|stocks|equities|inflows|outflows",
      r"급등|급락|상승|하락|순매수|순매도|유입|유출|이동|상장|편입|편출|증가|감소|surge|slump|rise|fall|inflows|outflows|list|rebalance"),
     ("physical_supply_or_capacity", ("earnings", "timeline"),
-     r"공장|생산|설비|공급|수요|재고|수율|리드타임|부족|품귀|항만|물류|운송|데이터센터|AI\s*팩토리|factory|production|supply|demand|inventory|lead time|port|freight|data cent(?:er|re)",
+     r"공장|생산(?!자)|설비|공급|수요|재고|수율|리드타임|부족|품귀|항만|물류|운송|데이터센터|AI\s*팩토리|factory|production|supply|demand|inventory|lead time|port|freight|data cent(?:er|re)",
      r"증설|착공|가동|증가|감소|중단|차질|부족|품귀|지연|연장|매각|검토|확대|축소|상용화|구축|건설\s*(?:하|할|을|에|계획|계약|추진)|신설|짓고|짓는다|도입|생산할|늘고|늘었|expand|start|halt|disrupt|shortage|delay|consider|launch|build|deploy"),
     ("sector_demand_outlook", ("earnings",),
      r"반도체|메모리|데이터센터|출하량|semiconductor|memory|data center|shipments", r"호황|불황|수요.{0,20}(?:전망|늘|줄)|boom|bust|demand outlook"),
@@ -326,6 +327,10 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
             r"(?:투자|출자).{0,20}(?:계약\s*체결|유치했다|집행했다)|funding (?:secured|committed)", sentence, re.I,
         ):
             return False
+    if kind == "policy_scope_or_stage" and re.search(r"규제\s*명확성|규제.{0,15}명확해질|출발선", sentence):
+        return bool(re.search(r"입법예고|시행일|제정|개정|발효|행정명령|규제안|법안", sentence))
+    if kind == "market_infrastructure" and re.search(r"연결돼\s*있|연결되어\s*있|기반으로\s*작동", sentence):
+        return bool(re.search(r"새로|처음|신규|도입했다|가동했다|출시했다", sentence))
     if kind == "technology_or_clinical_stage" and re.search(r"기대한다|기대된다|역량을|전문성을|소개하는\s*계기|학회.{0,20}(?:선정|채택)", sentence):
         return bool(re.search(r"임상\s*[1-3]상|\d+(?:\.\d+)?\s*(?:%|배|mK|dB)|인증\s*(?:획득|취득)|허가\s*(?:신청|승인)", sentence, re.I))
     if kind == "physical_supply_or_capacity" and re.search(
@@ -555,6 +560,21 @@ def assess(title: str, body: str) -> dict:
         if re.search(r"계란|달걀|한우|돼지고기|egg prices", title, re.I) and kinds <= {"physical_supply_or_capacity", "rates_fx_or_macro", "sector_demand_outlook"}:
             result["priority"] = 1
             result["scope_note"] = "single_consumer_price_without_industry_change"
+        if re.search(r"전시회|단독\s*부스|공동\s*부스|박람회|exhibition booth", headline_lead, re.I) and kinds <= {
+            "physical_supply_or_capacity", "technology_or_clinical_stage", "customer_discussions", "market_price_or_flow",
+        } and not re.search(r"임상\s*[1-3]상.{0,20}결과|(?:대역폭|수율|전력효율|반응률).{0,20}\d+(?:\.\d+)?\s*(?:%|배)", body, re.I):
+            result["priority"] = 1
+            result["scope_note"] = "exhibition_attendance_without_new_business_event"
+        if re.search(r"심의회|위원회", title) and re.search(r"격상|구성|참여\s*확대", title) and kinds <= {
+            "physical_supply_or_capacity", "customer_discussions", "market_price_or_flow",
+        }:
+            result["priority"] = 1
+            result["scope_note"] = "administrative_membership_not_economic_policy_change"
+        if re.search(r"르포|인터뷰", title) and re.search(r"집값|주택|공원|개발", title) and kinds <= {
+            "physical_supply_or_capacity", "rates_fx_or_macro", "policy_scope_or_stage", "customer_discussions", "market_price_or_flow",
+        }:
+            result["priority"] = 1
+            result["scope_note"] = "local_housing_commentary_without_business_execution"
         if HEADLINE_EARLY.search(title):
             result["headline_stage"] = "early_signal"
             if re.search(r"제언|권고|해야|바꿔야|줄여야|늘려야", title):

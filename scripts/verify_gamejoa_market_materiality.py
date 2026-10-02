@@ -96,6 +96,44 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_fresh_run_administrative_and_exhibition_fillers_do_not_pass(self):
+        cases = (
+            ("리알로, 파트너와 함께 메인넷 연다", "리알로는 은행이 온체인에서 대출을 제공하려면 대출자의 온체인 자산과 신용정보를 확인할 필요가 있다고 말했다. 리알로가 뉴욕증권거래소와 연결돼 있다고 설명했다. 한국 기관들이 규제 명확성이 생기기를 기다리며 기회를 검토하고 있다고 말했다."),
+            ("농산물무역정책심의회 법정위 격상…생산자 참여 확대", "농산물무역정책심의회 법정위 격상…생산자 참여 확대. 이날 회의에서는 사료와 가공식품 원료 등 국내 생산이 부족한 품목을 대상으로 일정 물량에 저율 수입 관세를 부과하는 내년도 운영계획안을 논의했다."),
+            ("삼천당제약, CPHI 첫 단독부스…글로벌 협력 확대", "삼천당제약은 전시회에 처음으로 단독부스를 마련한다. 유럽과 북미에 공급 중인 점안제와 바이오시밀러를 전시하고 기술이전과 공동개발 논의를 통해 글로벌 사업 확대에 나선다는 계획이다."),
+            ('구청장 "공원 개발 반대"[인터뷰]', "장관은 공원의 일부 부지에 주택을 공급하도록 검토하자는 입장인 것으로 알려져 있다. 구청장은 개발 반대 입장을 밝혔다."),
+            ("[르포] 강북 집값 숨고르기…대출 부담", "서울 주택 공급 부족으로 집값이 올랐지만 이제 높아진 가격이 매수자에게 부담으로 작용한다. 최근 기준금리 인상으로 주택담보대출 이자 부담이 커졌다."),
+        )
+        for title, body in cases:
+            with self.subTest(title=title):
+                assessed = materiality.assess(title, body)
+                self.assertTrue(assessed["disposition"] != "keep" or assessed["priority"] < 2, assessed)
+                with patch.object(radar.base, "kst_now", return_value=NOW):
+                    self.assertEqual(radar.quality_display_alerts([alert(title, body)], 7), [])
+
+    def test_new_business_event_survives_exhibition_and_committee_context(self):
+        for title, body in (
+            ("바이오기업, 전시회서 기술이전 계약", "바이오기업은 글로벌 고객과 신약 기술이전 계약을 체결했다."),
+            ("바이오기업, 전시회서 임상 3상 결과 발표", "바이오기업은 임상 3상 결과 반응률이 30% 개선됐다고 발표했다."),
+            ("정책위원회, 수입 관세율 인하 의결", "정책위원회는 수입 관세율을 20%에서 5%로 인하하는 개정안을 의결했다."),
+            ("공장 투자위원회, 생산설비 투자 승인", "기업 투자위원회는 300억원을 투자해 생산설비를 증설하기로 승인했다."),
+        ):
+            with self.subTest(title=title):
+                assessed = materiality.assess(title, body)
+                self.assertEqual(assessed["disposition"], "keep", assessed)
+                self.assertGreaterEqual(assessed["priority"], 2, assessed)
+
+    def test_current_customer_implementation_displaces_other_sites_background(self):
+        title = "SG, 삼성전자 온양캠퍼스에 에코스틸아스콘 1차 시공"
+        body = "▲SG는 삼성전자 온양캠퍼스에 에코스틸아스콘 1차 시공을 완료했다고 밝혔다. 공공 인프라에서는 서울시 도로에서 성능을 검증한 데 이어 고속도로 현장에도 납품했다."
+        core = radar.detailed_article_core(title, body)
+        self.assertIn("온양캠퍼스", core)
+        self.assertIn("1차 시공을 완료", core)
+        self.assertNotIn("고속도로", core)
+        self.assertNotIn("▲", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertFalse(materiality.core_focus_aligned(title, "고속도로 현장에도 납품했다."))
+
     def test_actual_delivery_publicity_is_not_promoted_by_service_keywords(self):
         cases = (
             ("지평, 방사청 출신 변호사 영입…방산 법률자문 강화", "법무법인 지평은 방사청 출신 변호사를 영입했다고 밝혔다. 국방 조달 및 수출 통제, 해외 투자 및 인수합병(M&A), 기술 이전을 아우르는 법률 솔루션을 제공하고 있다."),

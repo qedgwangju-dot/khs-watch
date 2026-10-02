@@ -2182,6 +2182,7 @@ def article_sentences(
 def normalized_article_sentence(sentence: str) -> str:
     text = clean_article_summary_text(sentence)
     replacements = (
+        (r"^[▲△▶]\s*", ""),
         (
             r"([A-Za-z가-힣·&]+)\s*\(\s*[\d,]+원\s*[▲▼+-]\s*[\d,]+\s*"
             r"(?:[+-]\d+(?:\.\d+)?%)?\s*\)",
