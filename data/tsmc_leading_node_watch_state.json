@@ -35,14 +35,12 @@
       "customers": [
         "AMD",
         "Apple",
-        "Broadcom",
         "MediaTek",
         "NVIDIA",
         "Qualcomm"
       ],
       "ai_hbm_customers": [
         "AMD",
-        "Broadcom",
         "NVIDIA"
       ],
       "evidence_state": "supply_chain_report",
@@ -97,12 +95,12 @@
     "https://investor.tsmc.com/static/annualReports/2025/english/index.html",
     "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf"
   ],
-  "last_checked_at_kst": "2026-10-02T17:36:59+09:00",
+  "last_checked_at_kst": "2026-10-02T18:44:46+09:00",
   "last_evidence_url": "https://money.udn.com/money/story/5612/9780512",
   "last_evidence_published_at_kst": "2026-09-30T18:00:00+09:00",
   "delivery_check": {
-    "checked_at_kst": "2026-10-02T17:39:09+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-10-02T18:46:46+09:00",
+    "status": "no_message_due"
   },
   "last_alert_reasons": [
     "추가 예약 고객 확대: Broadcom"
