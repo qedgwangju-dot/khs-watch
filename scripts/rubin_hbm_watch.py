@@ -54,6 +54,23 @@ SAMSUNG_HBM4_PRICE_BASELINE = {
     "as_of": "2026-10-02",
     "note": "4달러대 중후반은 기사 표현 그대로 보존. 정확한 상·하단 가격으로 임의 환산하지 않음.",
 }
+SAMSUNG_HBM4E_THERMAL_TRACK_VERSION = 1
+SAMSUNG_HBM4E_THERMAL_BASELINE = {
+    "industry_current_interposer_reticle_x": 5.5,
+    "reported_future_interposer_reticle_x": 40.0,
+    "reported_future_interposer_stage": "industry_projection",
+    "tsmc_official_2028_cowos_reticle_x": 14.0,
+    "hbm4e_thermal_resistance_improvement_pct": 14.0,
+    "hcb_thermal_resistance_improvement_pct": 20.0,
+    "hcb_stage": "technology_showcase",
+    "hpb_stage": "hbm4e_validation",
+    "hpb_target_generation": "hbm5",
+    "package_system_cooling_stage": "reported_review",
+    "source": "조선비즈 + 삼성전자 공식자료 + TSMC 공식자료",
+    "source_url": "https://biz.chosun.com/it-science/ict/2026/10/02/MHAFNCALYJDI5P3MKV3F3MXINE/?outputType=amp",
+    "as_of": "2026-10-02",
+    "note": "40배는 장비업계의 장기 전망으로 저장하고 삼성 HBM4E 확정 로드맵으로 승격하지 않음. TSMC 공식 CoWoS 로드맵은 2028년 14배, 2029년 14배 초과이며 40배는 SoW-X 별도 구조.",
+}
 CITI_HBM_TRACK_VERSION = 1
 CITI_HBM_BASELINE = {
     "demand_2027_yoy_pct": 62.0,
@@ -110,6 +127,10 @@ QUERIES = [
         'HBM4E (qualification OR validation OR sample OR mass production OR production) (Samsung OR "SK hynix" OR Micron)',
     ),
     (
+        "hbm4e_thermal_package",
+        'Samsung HBM4E (thermal OR heat OR cooling OR HCB OR HPB OR "hybrid bonding" OR interposer OR reticle OR package OR 발열 OR 냉각 OR 하이브리드본딩 OR 하이브리드 본딩 OR 인터포저 OR 열저항 OR 패키지)',
+    ),
+    (
         "rubin_shipments",
         '"Rubin Ultra" (NVL576 OR shipment OR production OR deployment OR order OR ramp OR customer)',
     ),
@@ -144,6 +165,7 @@ CATEGORY_KO = {
     "rubin_broker_model": "Bernstein Rubin Ultra HBM 모델 가정",
     "hbm_supplier_relative": "삼성전자↔SK하이닉스 HBM 상대 변화",
     "hbm4e_validation": "HBM4E 고객 검증·양산",
+    "hbm4e_thermal_package": "삼성 HBM4E 발열·인터포저·패키징 병목",
     "rubin_shipments": "Rubin Ultra·NVL576 실제 출하",
     "samsung_hbm4_price": "삼성전자 2027 HBM4 계약가격",
     "hbm_2027_contract": "2027 HBM 계약가격·물량",
@@ -217,6 +239,16 @@ def relevant(category: str, text: str) -> bool:
         )
     if category == "hbm4e_validation":
         return "hbm4e" in low and any(k in low for k in ("samsung", "sk hynix", "sk하이닉스", "micron")) and any(k in low for k in ("qualification", "validation", "sample", "mass production", "production", "yield", "수율", "양산", "검증", "샘플"))
+    if category == "hbm4e_thermal_package":
+        return (
+            ("samsung" in low or "삼성전자" in low or "삼성" in low)
+            and "hbm4e" in low
+            and any(k in low for k in (
+                "thermal", "heat", "cooling", "hcb", "hpb", "hybrid bonding",
+                "interposer", "reticle", "package", "발열", "냉각", "열저항",
+                "하이브리드 본딩", "하이브리드본딩", "인터포저", "패키지",
+            ))
+        )
     if category == "rubin_shipments":
         return ("rubin ultra" in low or "nvl576" in low) and any(k in low for k in ("shipment", "ship", "production", "deployment", "order", "ramp", "customer", "출하", "양산", "도입", "주문"))
     if category == "samsung_hbm4_price":
@@ -800,6 +832,165 @@ def samsung_hbm4_price_event(state: dict, reasons: list[str]) -> dict:
     }
 
 
+def extract_samsung_hbm4e_thermal_package(event: dict) -> dict | None:
+    text = compact_fact_text(event)
+    low = text.lower()
+    if not relevant("hbm4e_thermal_package", text):
+        return None
+
+    obs: dict = {}
+
+    current = re.search(
+        r"(?:현재|current(?:ly)?)[^.]{0,100}?(?:interposer|인터포저)[^.]{0,100}?([0-9]+(?:\.[0-9]+)?)\s*(?:배|x|times)",
+        text, re.I,
+    )
+    if not current:
+        current = re.search(
+            r"(?:interposer|인터포저)[^.]{0,100}?(?:현재|current(?:ly)?)[^.]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*(?:배|x|times)",
+            text, re.I,
+        )
+    if current:
+        obs["industry_current_interposer_reticle_x"] = float(current.group(1))
+
+    future = re.search(
+        r"(?:interposer|인터포저)[^.]{0,180}?(?:까지|as\s+much\s+as|up\s+to)[^0-9]{0,20}?([0-9]+(?:\.[0-9]+)?)\s*(?:배|x|times)",
+        text, re.I,
+    )
+    if not future:
+        future = re.search(
+            r"([0-9]+(?:\.[0-9]+)?)\s*(?:배|x|times)[^.]{0,80}?(?:interposer|인터포저)",
+            text, re.I,
+        )
+    if future:
+        obs["reported_future_interposer_reticle_x"] = float(future.group(1))
+        if any(k in low for k in ("보인다", "전망", "예상", "looks set", "expected", "projected")):
+            obs["reported_future_interposer_stage"] = "industry_projection"
+
+    tm = re.search(
+        r"(?:hbm4e)[^.]{0,160}?(?:열\s*저항|thermal\s+resistance)[^%]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*%",
+        text, re.I,
+    )
+    if tm:
+        obs["hbm4e_thermal_resistance_improvement_pct"] = float(tm.group(1))
+
+    hm = re.search(
+        r"(?:hcb|hybrid\s+copper\s+bonding|하이브리드\s*구리\s*본딩)[^.]{0,180}?(?:열\s*저항|thermal\s+resistance)[^%]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*%",
+        text, re.I,
+    )
+    if hm:
+        obs["hcb_thermal_resistance_improvement_pct"] = float(hm.group(1))
+
+    if any(k in low for k in ("hcb", "hybrid copper bonding", "하이브리드 구리 본딩", "하이브리드 본딩")):
+        if (
+            "hbm4e" in low
+            and any(k in low for k in ("양산 적용", "양산에 적용", "mass production adoption", "adopted for mass production"))
+        ):
+            obs["hcb_stage"] = "hbm4e_mass_production"
+        elif (
+            "hbm4e" in low
+            and any(k in low for k in ("일부 사업화", "partial commercialization", "commercialization starting"))
+        ):
+            obs["hcb_stage"] = "hbm4e_partial_commercialization"
+        elif any(k in low for k in ("customer sample", "샘플을 고객", "고객사에 보냈")):
+            obs["hcb_stage"] = "customer_sample"
+        elif any(k in low for k in ("gtc 2026", "소개했다", "showcase", "showcased", "공개했다")):
+            obs["hcb_stage"] = "technology_showcase"
+
+    if "hpb" in low or "heat path block" in low or "히트패스블록" in low:
+        if (
+            "hbm4e" in low
+            and any(k in low for k in ("양산 적용", "양산에 적용", "mass production adoption", "adopted for mass production"))
+        ):
+            obs["hpb_stage"] = "hbm4e_mass_production"
+        elif "hbm4e" in low and any(k in low for k in ("검증 중", "검증중", "validating", "validation")):
+            obs["hpb_stage"] = "hbm4e_validation"
+        if "hbm5" in low and any(k in low for k in ("적용 계획", "적용할 계획", "plans to adopt", "planned for")):
+            obs["hpb_target_generation"] = "hbm5"
+
+    package_system = (
+        ("패키지" in text and ("시스템" in text or "server" in low))
+        and ("냉각" in text or "cooling" in low)
+    )
+    if package_system:
+        if any(k in low for k in ("도입했다", "도입한다", "adopted", "deployed", "in production")):
+            obs["package_system_cooling_stage"] = "adopted"
+        elif any(k in low for k in ("검토", "가능성", "consider", "under review", "possibility")):
+            obs["package_system_cooling_stage"] = "reported_review"
+
+    if not obs:
+        return None
+    obs.update({
+        "source": event.get("origin_source") or event.get("source") or "",
+        "source_url": event.get("direct_link") or "",
+        "observed_at": event.get("published_at_kst") or "",
+    })
+    return obs
+
+
+def merge_samsung_hbm4e_thermal_package(old: dict, obs: dict) -> dict:
+    out = dict(old or {})
+    for key, value in obs.items():
+        if value not in (None, ""):
+            out[key] = value
+    return out
+
+
+def samsung_hbm4e_thermal_changes(old: dict, new: dict) -> list[str]:
+    reasons: list[str] = []
+
+    for field, label, threshold in (
+        ("industry_current_interposer_reticle_x", "현재 인터포저 면적", 0.5),
+        ("reported_future_interposer_reticle_x", "장기 인터포저 전망", 2.0),
+        ("hbm4e_thermal_resistance_improvement_pct", "HBM4E 열저항 개선", 2.0),
+        ("hcb_thermal_resistance_improvement_pct", "HCB 열저항 개선", 2.0),
+    ):
+        a, b = old.get(field), new.get(field)
+        if a is not None and b is not None and abs(float(b) - float(a)) >= threshold:
+            suffix = "배" if "reticle" in field else "%p"
+            reasons.append(f"{label} {float(a):g}→{float(b):g}{suffix}")
+        elif a is None and b is not None:
+            suffix = "배" if "reticle" in field else "%"
+            reasons.append(f"{label} {float(b):g}{suffix} 신규 확인")
+
+    for field, label in (
+        ("hcb_stage", "HCB 단계"),
+        ("hpb_stage", "HPB 단계"),
+        ("hpb_target_generation", "HPB 목표 세대"),
+        ("package_system_cooling_stage", "패키지·시스템 냉각 단계"),
+    ):
+        a, b = old.get(field), new.get(field)
+        if a != b and b:
+            reasons.append(f"{label} {a or '미확인'}→{b}")
+
+    return reasons
+
+
+def samsung_hbm4e_thermal_event(state: dict, reasons: list[str]) -> dict:
+    advanced = any(
+        state.get(k) in ("hbm4e_mass_production", "adopted")
+        for k in ("hcb_stage", "hpb_stage", "package_system_cooling_stage")
+    )
+    return {
+        "category": "hbm4e_thermal_package",
+        "fact_key": "samsung_hbm4e_thermal_" + (state.get("observed_at") or state.get("as_of") or ""),
+        "headline_ko": "삼성 HBM4E 발열·인터포저·패키징 병목 변화",
+        "fact_bullets": reasons,
+        "verdict": (
+            "HBM4E 양산 열관리 수단의 실제 채택 단계가 올라갔습니다. 수율·신뢰성·고객 승인과 함께 확인해야 합니다."
+            if advanced else
+            "발열·패키징 구조의 상태 변화입니다. 장기 인터포저 전망과 실제 HBM4E 양산 적용을 분리해 봅니다."
+        ),
+        "verification": "상태값 변화",
+        "quality": "공식자료·신뢰보도 교차",
+        "origin_source": state.get("source") or "",
+        "source": state.get("source") or "",
+        "published_at_kst": state.get("observed_at") or state.get("as_of") or "",
+        "direct_link": state.get("source_url") or "",
+        "article_text": "",
+        "hbm4e_thermal_state": state,
+    }
+
+
 def make_fact(event: dict) -> dict | None:
     e = dict(event)
     text = compact_fact_text(e)
@@ -1165,7 +1356,7 @@ def choose_verified_events(fresh_unseen: list[dict], raw_events: list[dict], see
     errors: list[str] = []
     candidates: list[dict] = []
     for raw in fresh_unseen:
-        if raw.get("category") in ("citi_hbm_outlook", "samsung_hbm4_price"):
+        if raw.get("category") in ("citi_hbm_outlook", "samsung_hbm4_price", "hbm4e_thermal_package"):
             continue
         source_low = (raw.get("source") or "").lower()
         if any(k in source_low for k in LOW_VALUE_SOURCE_HINTS):
@@ -1280,10 +1471,12 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
         grouped.setdefault(e["category"], []).append(e)
 
     n = 1
-    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "rubin_shipments", "samsung_hbm4_price", "hbm_2027_contract", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
+    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "hbm4e_thermal_package", "rubin_shipments", "samsung_hbm4_price", "hbm_2027_contract", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
         group = grouped.get(category) or []
         if not group:
             continue
+        if category == "hbm4e_thermal_package" and n > 1:
+            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 삼성 HBM4E 발열·패키징 병목 감시", ""]
         if category == "samsung_hbm4_price" and n > 1:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 삼성전자 2027 HBM4 계약가격 감시", ""]
         if category == "citi_hbm_outlook" and n > 1:
@@ -1318,6 +1511,21 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
                 if ss.get("target_close_month"):
                     lines.append(f"• 협상 마무리 목표: {ss['target_close_month']}")
                 lines.append("• 구분: 제시가격·협상가격과 실제 체결가격을 절대 같은 값으로 취급하지 않습니다.")
+            if category == "hbm4e_thermal_package" and e.get("hbm4e_thermal_state"):
+                ts = e["hbm4e_thermal_state"]
+                if ts.get("industry_current_interposer_reticle_x") is not None:
+                    lines.append(f"• 현재 인터포저 면적: reticle 기준 약 {float(ts['industry_current_interposer_reticle_x']):g}배")
+                if ts.get("reported_future_interposer_reticle_x") is not None:
+                    lines.append(
+                        f"• 장기 전망: 최대 {float(ts['reported_future_interposer_reticle_x']):g}배 "
+                        f"({ts.get('reported_future_interposer_stage') or '단계 미확인'})"
+                    )
+                lines.append(
+                    f"• HCB: {ts.get('hcb_stage') or '미확인'} · "
+                    f"HPB: {ts.get('hpb_stage') or '미확인'} · "
+                    f"패키지·시스템 냉각: {ts.get('package_system_cooling_stage') or '미확인'}"
+                )
+                lines.append("• 구분: 40배는 장기 업계 전망이며 삼성 HBM4E 확정 양산 로드맵으로 승격하지 않습니다.")
             if category == "citi_hbm_outlook" and e.get("citi_state"):
                 cs = e["citi_state"]
                 lo, hi = cs.get("hbm4_12hi_usd_per_gb_min"), cs.get("hbm4_12hi_usd_per_gb_max")
@@ -1409,6 +1617,32 @@ def main() -> None:
     if samsung_price_changes and not first_run:
         verified_events.append(samsung_hbm4_price_event(samsung_price_state, list(dict.fromkeys(samsung_price_changes))))
 
+    thermal_state = dict(state.get("samsung_hbm4e_thermal_package") or {})
+    thermal_track_version = int(state.get("samsung_hbm4e_thermal_track_version") or 0)
+    if thermal_track_version < SAMSUNG_HBM4E_THERMAL_TRACK_VERSION:
+        seeded = dict(SAMSUNG_HBM4E_THERMAL_BASELINE)
+        seeded.update({k: v for k, v in thermal_state.items() if v not in (None, "")})
+        thermal_state = seeded
+        thermal_track_version = SAMSUNG_HBM4E_THERMAL_TRACK_VERSION
+
+    thermal_changes: list[str] = []
+    for raw in raw_events:
+        if raw.get("category") != "hbm4e_thermal_package":
+            continue
+        enriched = enrich_event(raw)
+        if not enriched.get("link_verified"):
+            continue
+        obs = extract_samsung_hbm4e_thermal_package(enriched)
+        if not obs:
+            continue
+        merged = merge_samsung_hbm4e_thermal_package(thermal_state, obs)
+        changes = samsung_hbm4e_thermal_changes(thermal_state, merged)
+        thermal_state = merged
+        if changes:
+            thermal_changes.extend(changes)
+    if thermal_changes and not first_run:
+        verified_events.append(samsung_hbm4e_thermal_event(thermal_state, list(dict.fromkeys(thermal_changes))))
+
     citi_state = dict(state.get("citi_hbm_outlook") or {})
     citi_track_version = int(state.get("citi_hbm_track_version") or 0)
     if citi_track_version < CITI_HBM_TRACK_VERSION:
@@ -1457,6 +1691,8 @@ def main() -> None:
         "structure_baseline_version": STRUCTURE_BASELINE_VERSION,
         "samsung_hbm4_price_track_version": samsung_price_track_version,
         "samsung_hbm4_price": samsung_price_state,
+        "samsung_hbm4e_thermal_track_version": thermal_track_version,
+        "samsung_hbm4e_thermal_package": thermal_state,
         "citi_hbm_track_version": citi_track_version,
         "citi_hbm_outlook": citi_state,
         "last_unseen_raw_count": len(unseen_raw),
@@ -1485,6 +1721,7 @@ def main() -> None:
         f"- unseen_raw_events: {len(unseen_raw)}",
         f"- verified_events: {len(verified_events)}",
         f"- Samsung HBM4 price typed changes: {len(samsung_price_changes)}",
+        f"- Samsung HBM4E thermal/package typed changes: {len(thermal_changes)}",
         f"- Citi HBM typed changes: {len(citi_changes)}",
         f"- send_events: {len(send_events)}",
         f"- freshness_hours: {SEND_FRESHNESS_HOURS}",
