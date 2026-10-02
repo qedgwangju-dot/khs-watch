@@ -23,7 +23,7 @@ STATUS = OUT / "epoch_ai_dc_execution_status.md"
 
 KST = ZoneInfo("Asia/Seoul")
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
-FORMAT_VERSION = 3
+FORMAT_VERSION = 4
 
 
 def fetch_text(url: str, timeout: int = 40) -> str:
@@ -77,7 +77,7 @@ def pct_change(new: float, old: float) -> float:
 
 
 def ko_visible(value: str) -> str:
-    text = str(value or "").strip()
+    text = re.sub(r"#(?:confident|likely|speculative)\b", "", str(value or ""), flags=re.I).strip()
     if not text:
         return ""
     if not re.search(r"[A-Za-z]", text):
@@ -87,7 +87,7 @@ def ko_visible(value: str) -> str:
         "Microsoft": "마이크로소프트", "Amazon": "아마존", "AWS": "아마존웹서비스",
         "Meta": "메타", "Google": "구글", "OpenAI": "오픈AI", "Oracle": "오라클",
         "Anthropic": "앤트로픽", "xAI": "엑스AI", "QTS": "큐티에스",
-        "Vantage": "밴티지", "CoreWeave": "코어위브", "Stargate": "스타게이트",
+        "Vantage": "밴티지", "CoreWeave": "코어위브", "SoftBank": "소프트뱅크", "Softbank": "소프트뱅크", "Stargate": "스타게이트",
         "Data Center": "데이터센터", "Data center": "데이터센터",
         "Hyperscale": "하이퍼스케일", "Fairwater": "페어워터",
         "Hyperion": "하이페리온", "Prometheus": "프로메테우스", "Colossus": "콜로서스",
