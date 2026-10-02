@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "format_version": 3,
+  "format_version": 4,
   "baseline": {
     "need_generation_gw": 45.0,
     "gas_min_gw": 30.0,
@@ -27,7 +27,20 @@
     "hd_hyundai_delivery_year": 2028.0,
     "ls_bloom_dc_order_krw_eok": 3190.0,
     "ls_apr_dc_order_krw_eok": 1703.0,
-    "ls_may_dc_order_krw_eok": 1050.0
+    "ls_may_dc_order_krw_eok": 1050.0,
+    "ms_new_power_need_2026_2028_gw": 97.0,
+    "ms_under_construction_gw": 21.0,
+    "ms_available_grid_gw": 19.0,
+    "ms_initial_shortfall_gw": 57.0,
+    "ms_alternative_supply_gw": 24.0,
+    "ms_residual_shortfall_gw": 33.0,
+    "ms_residual_shortfall_2029_gw": 72.0,
+    "gs_us_2030_power_gw": 108.0,
+    "gs_us_prior_2030_power_gw": 83.0,
+    "gs_global_growth_2025_2030_pct": 170.0,
+    "gs_global_prior_growth_pct": 117.0,
+    "gs_btm_gas_capacity_2030_gw": 30.0,
+    "gs_btm_power_delivery_2030_gw": 20.0
   },
   "gev_metrics": {
     "gas_contract_slot_gw": 116.0,
@@ -55,9 +68,23 @@
     "IEA grid supply: HTTPError",
     "IEA AI questions: HTTPError"
   ],
+  "pwc_metrics": {
+    "pwc_total_2026_2050_usd_t": 31.6,
+    "pwc_upside_usd_t": 50.0,
+    "pwc_annual_2026_usd_b": 800.0,
+    "pwc_annual_2030_usd_b": 1100.0,
+    "pwc_annual_2050_usd_b": 1800.0,
+    "pwc_ict_share_2026_pct": 70.0,
+    "pwc_ict_share_2050_pct": 93.0,
+    "pwc_refresh_low_years": 4.0,
+    "pwc_refresh_high_years": 6.0,
+    "pwc_rounds_low": 3.0,
+    "pwc_rounds_high": 5.0
+  },
+  "pwc_source_errors": [],
   "seen_ids": [],
-  "last_fx_krw_per_usd": 1386.744186,
+  "last_fx_krw_per_usd": 1360.202164,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-09-20T04:18:46+00:00",
-  "updated_at_utc": "2026-09-20T04:18:57+00:00"
+  "fx_checked_utc": "2026-10-02T09:23:28+00:00",
+  "updated_at_utc": "2026-10-02T09:23:41+00:00"
 }
