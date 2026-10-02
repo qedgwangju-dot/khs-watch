@@ -297,7 +297,16 @@ def _ev46_known_baseline(text: str, source: str = '') -> bool:
     # User already surfaced the Mercedes 46100 / Poland 2027-line / 2028-supply
     # report. Keep the media report silent, but allow a later official Mercedes
     # or LGES confirmation to advance the state.
-    if EV46_MERCEDES_BASE.search(text) and not official:
+    if (
+        EV46_MERCEDES_BASE.search(text)
+        and not official
+        and not EV46_BMA_EXEC.search(text)
+        and not EV46_FORMAT_CONFIRM.search(text)
+        and not EV46_CONTRACT.search(text)
+        and not EV46_SOP.search(text)
+        and not EV46_SHIPMENT.search(text)
+        and not EV46_RAMP.search(text)
+    ):
         return True
     if EV46_INDIGO_BASE.search(text) and EV46_MOU.search(text):
         return True
