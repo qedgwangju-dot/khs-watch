@@ -13,7 +13,18 @@
     "queue_gw": 2060.0,
     "transmission_345kv_plus_miles_2024": 888.0,
     "bushing_lead_low_weeks_secondary": 135.0,
-    "bushing_lead_high_weeks_secondary": 145.0
+    "bushing_lead_high_weeks_secondary": 145.0,
+    "ms_it_power_2025_gw": 9.19,
+    "ms_it_power_2026_gw": 17.96,
+    "ms_it_power_2027_gw": 35.46,
+    "ms_it_power_2028_gw": 52.31,
+    "ms_it_power_2029_gw": 78.57,
+    "ms_new_power_need_2026_2028_gw": 97.0,
+    "ms_under_construction_gw": 21.0,
+    "ms_grid_available_gw": 19.0,
+    "ms_gross_gap_gw": 57.0,
+    "ms_mitigation_gw": 24.0,
+    "ms_residual_gap_gw": 33.0
   },
   "sources": {
     "dc_demand": {
@@ -38,7 +49,7 @@
     }
   },
   "seen_urls": [],
-  "last_checked_at_kst": "2026-10-02T07:53:49+09:00",
+  "last_checked_at_kst": "2026-10-02T12:09:41+09:00",
   "metric_observation_count": 0,
   "event_count": 0,
   "latest_evidence_urls": []
