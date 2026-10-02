@@ -39,6 +39,21 @@ BASE_SYSTEM_GB = BASE_NVLINK_GPU * OFFICIAL_RUBIN_GB
 ULTRA_SYSTEM_GB = ULTRA_NVLINK_GPU * RUMORED_ULTRA_GB
 SYSTEM_HBM_GROWTH = ULTRA_SYSTEM_GB / BASE_SYSTEM_GB - 1
 SEND_FRESHNESS_HOURS = 72
+SAMSUNG_HBM4_PRICE_TRACK_VERSION = 1
+SAMSUNG_HBM4_PRICE_BASELINE = {
+    "stage": "negotiation",
+    "offered_price_band": "mid_to_high_4_usd_per_gb",
+    "offered_price_usd_per_gb_min": None,
+    "offered_price_usd_per_gb_max": None,
+    "reference_hbm3e_usd_per_gb": 1.5,
+    "price_multiple_floor": 3.0,
+    "volume_stage": "largely_agreed",
+    "target_close_month": "2026-10",
+    "source": "매일경제 단독",
+    "source_url": "https://www.mk.co.kr/news/business/12167164",
+    "as_of": "2026-10-02",
+    "note": "4달러대 중후반은 기사 표현 그대로 보존. 정확한 상·하단 가격으로 임의 환산하지 않음.",
+}
 CITI_HBM_TRACK_VERSION = 1
 CITI_HBM_BASELINE = {
     "demand_2027_yoy_pct": 62.0,
@@ -99,6 +114,10 @@ QUERIES = [
         '"Rubin Ultra" (NVL576 OR shipment OR production OR deployment OR order OR ramp OR customer)',
     ),
     (
+        "samsung_hbm4_price",
+        'Samsung HBM4 2027 (price OR pricing OR contract OR negotiation OR annual supply OR 4 dollars OR 3x OR triple OR 가격 OR 협상 OR 공급가)',
+    ),
+    (
         "hbm_2027_contract",
         '2027 HBM (contract OR price OR pricing OR LTA OR supply OR allocation OR volume OR negotiation OR agreement) (Samsung OR "SK hynix" OR Micron OR NVIDIA)',
     ),
@@ -126,6 +145,7 @@ CATEGORY_KO = {
     "hbm_supplier_relative": "삼성전자↔SK하이닉스 HBM 상대 변화",
     "hbm4e_validation": "HBM4E 고객 검증·양산",
     "rubin_shipments": "Rubin Ultra·NVL576 실제 출하",
+    "samsung_hbm4_price": "삼성전자 2027 HBM4 계약가격",
     "hbm_2027_contract": "2027 HBM 계약가격·물량",
     "citi_hbm_outlook": "Citi HBM 2027~2028 수요·공급·가격",
     "hbm_wafer_economics": "HBM↔DDR5 웨이퍼 경제성",
@@ -140,7 +160,7 @@ TRUSTED_SOURCE_HINTS = (
     "trendforce", "reuters", "bloomberg", "the information", "semianalysis", "digitimes",
     "tom's hardware", "toms hardware", "financial times", "wall street journal", "wsj", "cnbc",
     "investing.com",
-    "thelec", "the elec", "연합뉴스", "yonhap",
+    "thelec", "the elec", "연합뉴스", "yonhap", "매일경제", "mk.co.kr",
 )
 LOW_VALUE_SOURCE_HINTS = (
     "finance.biggo", "aol", "24/7 wall st", "247wallst", "cryptobriefing",
@@ -199,6 +219,13 @@ def relevant(category: str, text: str) -> bool:
         return "hbm4e" in low and any(k in low for k in ("samsung", "sk hynix", "sk하이닉스", "micron")) and any(k in low for k in ("qualification", "validation", "sample", "mass production", "production", "yield", "수율", "양산", "검증", "샘플"))
     if category == "rubin_shipments":
         return ("rubin ultra" in low or "nvl576" in low) and any(k in low for k in ("shipment", "ship", "production", "deployment", "order", "ramp", "customer", "출하", "양산", "도입", "주문"))
+    if category == "samsung_hbm4_price":
+        return (
+            ("samsung" in low or "삼성전자" in low or "삼성" in low)
+            and "hbm4" in low
+            and any(k in low for k in ("2027", "내년", "next year"))
+            and any(k in low for k in ("price", "pricing", "contract", "negotiation", "annual supply", "가격", "공급가", "협상", "계약"))
+        )
     if category == "hbm_2027_contract":
         return "2027" in low and "hbm" in low and any(k in low for k in ("contract", "price", "pricing", "lta", "supply", "allocation", "volume", "agreement", "negotiation", "계약", "가격", "공급", "물량", "협상", "타결"))
     if category == "citi_hbm_outlook":
@@ -628,6 +655,144 @@ def citi_hbm_change_event(state: dict, changes: list[str]) -> dict:
         "article_text": "",
         "citi_state": state,
     }
+
+SAMSUNG_HBM4_STAGE_RANK = {
+    "reported_offer": 0,
+    "negotiation": 1,
+    "final_stage": 2,
+    "signed": 3,
+}
+
+
+def _relative_month_from_event(event: dict) -> str:
+    stamp = event.get("published_at_kst") or ""
+    try:
+        dt = datetime.fromisoformat(stamp)
+        return f"{dt.year:04d}-{dt.month:02d}"
+    except Exception:
+        return ""
+
+
+def extract_samsung_hbm4_price(event: dict) -> dict | None:
+    text = compact_fact_text(event)
+    low = text.lower()
+    if not relevant("samsung_hbm4_price", text):
+        return None
+
+    obs: dict = {}
+    if any(k in low for k in ("계약 체결", "가격 확정", "협상 타결", "contract signed", "price finalized", "pricing finalized", "negotiations concluded")):
+        obs["stage"] = "signed"
+    elif any(k in low for k in ("마무리 수순", "final stages", "nearing completion", "close to finalizing")):
+        # '마무리 수순' is still not a signed contract.
+        obs["stage"] = "final_stage"
+    elif any(k in low for k in ("협상", "negotiation", "negotiating")):
+        obs["stage"] = "negotiation"
+    elif any(k in low for k in ("제시", "offered", "quoted")):
+        obs["stage"] = "reported_offer"
+    else:
+        return None
+
+    # Exact range only when the article gives explicit endpoints.
+    pm = re.search(
+        r"(?:hbm4[^.]{0,120}?)(?:\$|미화\s*)?([0-9]+(?:\.[0-9]+)?)\s*(?:~|[-–—]|to)\s*(?:\$|미화\s*)?([0-9]+(?:\.[0-9]+)?)\s*(?:/\s*)?gb",
+        low, re.I,
+    )
+    if pm:
+        obs["offered_price_usd_per_gb_min"] = float(pm.group(1))
+        obs["offered_price_usd_per_gb_max"] = float(pm.group(2))
+
+    if re.search(r"4\s*달러대\s*중후반|mid[- ]?to[- ]?high\s*\$?4", text, re.I):
+        obs["offered_price_band"] = "mid_to_high_4_usd_per_gb"
+
+    ref = re.search(r"(?:hbm3e)[^.]{0,100}?([0-9]+(?:\.[0-9]+)?)\s*(?:달러|\$)[^.]{0,30}?(?:/\s*)?gb", low, re.I)
+    if not ref:
+        ref = re.search(r"(?:hbm3e)[^.]{0,100}?(?:gb당|per\s+gb)[^0-9]{0,30}?([0-9]+(?:\.[0-9]+)?)\s*(?:달러|\$)", low, re.I)
+    if ref:
+        obs["reference_hbm3e_usd_per_gb"] = float(ref.group(1))
+
+    mult = re.search(r"([0-9]+(?:\.[0-9]+)?)\s*배\s*이상|(?:more\s+than|over|at\s+least)\s*([0-9]+(?:\.[0-9]+)?)\s*(?:times|x)", text, re.I)
+    if mult:
+        obs["price_multiple_floor"] = float(mult.group(1) or mult.group(2))
+
+    if any(k in low for k in ("물량이 상당 부분", "물량 상당 부분", "substantial portion of volume", "most volume")) and any(k in low for k in ("협의가 끝", "agreed", "settled")):
+        obs["volume_stage"] = "largely_agreed"
+    elif any(k in low for k in ("물량 확정", "volume finalized", "volume contracted")):
+        obs["volume_stage"] = "finalized"
+
+    if any(k in low for k in ("이달 중", "this month")) and any(k in low for k in ("마무리", "finaliz", "conclud")):
+        obs["target_close_month"] = _relative_month_from_event(event)
+
+    if not any(k in obs for k in ("offered_price_band", "offered_price_usd_per_gb_min", "price_multiple_floor", "stage")):
+        return None
+    obs.update({
+        "source": event.get("origin_source") or event.get("source") or "",
+        "source_url": event.get("direct_link") or "",
+        "observed_at": event.get("published_at_kst") or "",
+    })
+    return obs
+
+
+def merge_samsung_hbm4_price(old: dict, obs: dict) -> dict:
+    out = dict(old or {})
+    for key, value in obs.items():
+        if value not in (None, ""):
+            out[key] = value
+    return out
+
+
+def samsung_hbm4_price_changes(old: dict, new: dict) -> list[str]:
+    reasons: list[str] = []
+    old_stage, new_stage = old.get("stage"), new.get("stage")
+    if old_stage != new_stage and new_stage:
+        reasons.append(f"계약가격 단계 {old_stage or '미확인'}→{new_stage}")
+
+    for field, label in (
+        ("offered_price_usd_per_gb_min", "제시가격 하단"),
+        ("offered_price_usd_per_gb_max", "제시가격 상단"),
+    ):
+        a, b = old.get(field), new.get(field)
+        if a is not None and b is not None:
+            pct = (float(b) / float(a) - 1.0) * 100 if float(a) else 0
+            if abs(float(b)-float(a)) >= 0.20 or abs(pct) >= 5:
+                reasons.append(f"{label} {float(a):.2f}→{float(b):.2f}달러/Gb")
+        elif a is None and b is not None:
+            reasons.append(f"{label} {float(b):.2f}달러/Gb 신규 확인")
+
+    if old.get("offered_price_band") != new.get("offered_price_band") and new.get("offered_price_band"):
+        reasons.append(f"제시가격 밴드 {old.get('offered_price_band') or '미확인'}→{new.get('offered_price_band')}")
+
+    a, b = old.get("reference_hbm3e_usd_per_gb"), new.get("reference_hbm3e_usd_per_gb")
+    if a is not None and b is not None and abs(float(b)-float(a)) >= 0.10:
+        reasons.append(f"HBM3E 비교가격 {float(a):.2f}→{float(b):.2f}달러/Gb")
+
+    a, b = old.get("price_multiple_floor"), new.get("price_multiple_floor")
+    if a is not None and b is not None and abs(float(b)-float(a)) >= 0.25:
+        reasons.append(f"HBM3E 대비 가격배수 하한 {float(a):.2f}배→{float(b):.2f}배")
+
+    if old.get("volume_stage") != new.get("volume_stage") and new.get("volume_stage"):
+        reasons.append(f"물량 협의 단계 {old.get('volume_stage') or '미확인'}→{new.get('volume_stage')}")
+    if old.get("target_close_month") != new.get("target_close_month") and new.get("target_close_month"):
+        reasons.append(f"가격협상 마무리 목표 {old.get('target_close_month') or '미확인'}→{new.get('target_close_month')}")
+    return reasons
+
+
+def samsung_hbm4_price_event(state: dict, reasons: list[str]) -> dict:
+    return {
+        "category": "samsung_hbm4_price",
+        "fact_key": "samsung_hbm4_price_" + (state.get("stage") or "state") + "_" + (state.get("observed_at") or state.get("as_of") or ""),
+        "headline_ko": "삼성전자 2027 HBM4 계약가격 변화",
+        "fact_bullets": reasons,
+        "verdict": "🟢 계약 체결·가격 확정이면 실제 2027 ASP에 직접 연결됩니다." if state.get("stage") == "signed" else "🟡 현재는 제시·협상 가격입니다. 고객과 확정된 체결가격으로 승격하지 않습니다.",
+        "verification": "상태값 변화",
+        "quality": "신뢰 리서치·보도",
+        "origin_source": state.get("source") or "",
+        "source": state.get("source") or "",
+        "published_at_kst": state.get("observed_at") or state.get("as_of") or "",
+        "direct_link": state.get("source_url") or "",
+        "article_text": "",
+        "samsung_hbm4_price_state": state,
+    }
+
 
 def make_fact(event: dict) -> dict | None:
     e = dict(event)
@@ -1109,10 +1274,12 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
         grouped.setdefault(e["category"], []).append(e)
 
     n = 1
-    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "rubin_shipments", "hbm_2027_contract", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
+    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "rubin_shipments", "samsung_hbm4_price", "hbm_2027_contract", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
         group = grouped.get(category) or []
         if not group:
             continue
+        if category == "samsung_hbm4_price" and n > 1:
+            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 삼성전자 2027 HBM4 계약가격 감시", ""]
         if category == "citi_hbm_outlook" and n > 1:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 Citi HBM 2027~2028 수급·가격 감시", ""]
         if category == "memory_migration" and n > 1:
@@ -1126,6 +1293,25 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
                 f"- 공개시각: {e.get('published_at_kst') or '확인 불가'}",
             ]
             lines.extend(e.get("fact_bullets") or [])
+            if category == "samsung_hbm4_price" and e.get("samsung_hbm4_price_state"):
+                ss = e["samsung_hbm4_price_state"]
+                band = ss.get("offered_price_band")
+                if band == "mid_to_high_4_usd_per_gb":
+                    lines.append("• 삼성 제시가격: 1Gb당 4달러대 중후반(기사 표현 그대로, 임의 범위 환산 안 함)")
+                lo, hi = ss.get("offered_price_usd_per_gb_min"), ss.get("offered_price_usd_per_gb_max")
+                if lo is not None and hi is not None:
+                    if rate is not None:
+                        lines.append(f"• 확정 공개 숫자: {float(lo):.2f}~{float(hi):.2f}달러/Gb (약 {float(lo)*rate:,.0f}~{float(hi)*rate:,.0f}원/Gb)")
+                    else:
+                        lines.append(f"• 확정 공개 숫자: {float(lo):.2f}~{float(hi):.2f}달러/Gb")
+                if ss.get("reference_hbm3e_usd_per_gb") is not None:
+                    lines.append(f"• 비교 HBM3E: 약 {float(ss['reference_hbm3e_usd_per_gb']):.2f}달러/Gb")
+                if ss.get("price_multiple_floor") is not None:
+                    lines.append(f"• 가격배수: HBM3E 대비 {float(ss['price_multiple_floor']):.1f}배 이상")
+                lines.append(f"• 계약 단계: {ss.get('stage') or '미확인'} · 물량 단계: {ss.get('volume_stage') or '미확인'}")
+                if ss.get("target_close_month"):
+                    lines.append(f"• 협상 마무리 목표: {ss['target_close_month']}")
+                lines.append("• 구분: 제시가격·협상가격과 실제 체결가격을 절대 같은 값으로 취급하지 않습니다.")
             if category == "citi_hbm_outlook" and e.get("citi_state"):
                 cs = e["citi_state"]
                 lo, hi = cs.get("hbm4_12hi_usd_per_gb_min"), cs.get("hbm4_12hi_usd_per_gb_max")
@@ -1191,6 +1377,32 @@ def main() -> None:
     verified_events, verify_errors = choose_verified_events(fresh_unseen, raw_events, seen_fact_keys)
     errors.extend(verify_errors)
 
+    samsung_price_state = dict(state.get("samsung_hbm4_price") or {})
+    samsung_price_track_version = int(state.get("samsung_hbm4_price_track_version") or 0)
+    if samsung_price_track_version < SAMSUNG_HBM4_PRICE_TRACK_VERSION:
+        seeded = dict(SAMSUNG_HBM4_PRICE_BASELINE)
+        seeded.update({k: v for k, v in samsung_price_state.items() if v not in (None, "")})
+        samsung_price_state = seeded
+        samsung_price_track_version = SAMSUNG_HBM4_PRICE_TRACK_VERSION
+
+    samsung_price_changes: list[str] = []
+    for raw in raw_events:
+        if raw.get("category") != "samsung_hbm4_price":
+            continue
+        enriched = enrich_event(raw)
+        if not enriched.get("link_verified"):
+            continue
+        obs = extract_samsung_hbm4_price(enriched)
+        if not obs:
+            continue
+        merged = merge_samsung_hbm4_price(samsung_price_state, obs)
+        changes = samsung_hbm4_price_changes(samsung_price_state, merged)
+        samsung_price_state = merged
+        if changes:
+            samsung_price_changes.extend(changes)
+    if samsung_price_changes and not first_run:
+        verified_events.append(samsung_hbm4_price_event(samsung_price_state, list(dict.fromkeys(samsung_price_changes))))
+
     citi_state = dict(state.get("citi_hbm_outlook") or {})
     citi_track_version = int(state.get("citi_hbm_track_version") or 0)
     if citi_track_version < CITI_HBM_TRACK_VERSION:
@@ -1237,6 +1449,8 @@ def main() -> None:
         "seen_ids": sorted((seen_before | current_ids))[-1200:],
         "seen_fact_keys": sorted(seen_fact_keys | new_fact_keys)[-500:],
         "structure_baseline_version": STRUCTURE_BASELINE_VERSION,
+        "samsung_hbm4_price_track_version": samsung_price_track_version,
+        "samsung_hbm4_price": samsung_price_state,
         "citi_hbm_track_version": citi_track_version,
         "citi_hbm_outlook": citi_state,
         "last_unseen_raw_count": len(unseen_raw),
@@ -1264,6 +1478,7 @@ def main() -> None:
         f"- recent_raw_events: {len(raw_events)}",
         f"- unseen_raw_events: {len(unseen_raw)}",
         f"- verified_events: {len(verified_events)}",
+        f"- Samsung HBM4 price typed changes: {len(samsung_price_changes)}",
         f"- Citi HBM typed changes: {len(citi_changes)}",
         f"- send_events: {len(send_events)}",
         f"- freshness_hours: {SEND_FRESHNESS_HOURS}",
