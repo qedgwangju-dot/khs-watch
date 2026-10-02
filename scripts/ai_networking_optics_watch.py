@@ -72,15 +72,32 @@ COMPANIES = {
     },
     "AXT": {
         "ticker": "AXTI",
-        "aliases": ["AXT", "AXT Inc."],
-        "query": 'AXT (InP OR "indium phosphide") (substrate OR shortage OR "export license" OR capacity OR "data center" OR optical)',
+        "aliases": ["AXT", "AXT Inc.", "AXT-Tongmei", "Tongmei"],
+        "queries": [
+            'AXT (InP OR "indium phosphide") (substrate OR shortage OR "export license" OR capacity OR "data center" OR optical)',
+            'AXT ("6-inch InP" OR "6 inch InP") (Coherent OR Lumentum OR Casela OR "capacity reservation" OR prepayment OR "long-term supply")',
+            'AXT InP (capacity reservation OR deposit OR prepayment OR "crystal growth" OR pilot OR yield OR "mass production")',
+        ],
     },
     "InP Supply Chain": {
         "ticker": "InP 공급망",
-        "aliases": ["InP", "indium phosphide", "Sumitomo Electric", "IQE"],
+        "aliases": ["InP", "indium phosphide", "Sumitomo Electric", "IQE", "Casela"],
         "queries": [
-            '"indium phosphide" substrate ("data center" OR optical OR transceiver) (shortage OR "lead time" OR capacity OR price OR export)',
-            '"InP substrate" (shortage OR capacity OR "export license" OR "lead time") (laser OR transceiver OR AI)',
+            '"indium phosphide" substrate ("data center" OR optical OR transceiver OR CPO OR 1.6T OR 3.2T) (shortage OR "lead time" OR capacity OR price OR export)',
+            '"InP substrate" (shortage OR capacity OR "export license" OR "lead time" OR "capacity reservation" OR prepayment) (laser OR transceiver OR AI OR CPO)',
+            '("6-inch InP" OR "6 inch InP") (Coherent OR Lumentum OR Casela OR capacity OR agreement OR prepayment)',
+        ],
+    },
+    "GaAs Optical Supply Chain": {
+        "ticker": "GaAs 광통신",
+        "aliases": ["GaAs", "gallium arsenide", "WIN Semiconductors", "WIN Semi", "VPEC", "Visual Photonics Epitaxy"],
+        "queries": [
+            '("GaAs" OR "gallium arsenide" OR "WIN Semiconductors" OR "WIN Semi" OR VPEC) ("1.6T" OR "3.2T" OR CPO OR optical OR transceiver OR photodiode OR laser) (capacity OR shipment OR demand OR order OR shortage OR pricing OR qualification)',
+            '("砷化鎵" OR "穩懋" OR "全新") ("光通訊" OR "1.6T" OR CPO) (出貨 OR 產能 OR 訂單 OR 需求 OR 漲價 OR 驗證)',
+        ],
+        "locales": [
+            {"hl": "en-US", "gl": "US", "ceid": "US:en"},
+            {"hl": "zh-TW", "gl": "TW", "ceid": "TW:zh-Hant"},
         ],
     },
     "Applied Optoelectronics": {
@@ -143,6 +160,7 @@ DISPLAY_NAMES_KO = {
     "US Optical Policy": "미국 광트랜시버 정책",
     "AXT": "AXT",
     "InP Supply Chain": "InP 기판 공급망",
+    "GaAs Optical Supply Chain": "GaAs 광통신 기판 공급망",
     "Applied Optoelectronics": "어플라이드 옵토일렉트로닉스",
     "Astera Labs": "아스테라 랩스",
     "Corning": "코닝",
@@ -154,7 +172,7 @@ TRUSTED_SOURCES = {
     "Reuters", "Bloomberg", "Financial Times", "The Wall Street Journal", "CNBC",
     "DigiTimes", "DIGITIMES", "Investing.com", "Barron's", "MarketWatch",
     "NVIDIA Blog", "NVIDIA Newsroom", "Broadcom", "Arista Networks", "Marvell",
-    "Lumentum", "Coherent", "AXT", "Applied Optoelectronics", "Federal Communications Commission", "FCC",
+    "Lumentum", "Coherent", "AXT", "WIN Semiconductors", "VPEC", "Applied Optoelectronics", "Federal Communications Commission", "FCC",
     "U.S. Senate", "Congress.gov", "Astera Labs", "Corning",
     "TrendForce", "MoneyDJ", "Economic Daily News", "UDN", "經濟日報",
     "GMT GLOBAL INC.", "TOYO Automation", "Chieftek Precision",
@@ -177,6 +195,9 @@ HIGH_SIGNAL_PATTERNS = [
     r"content opportunity", r"content per", r"100\s*Tbps", r"specialty fibers?",
     r"polarization[- ]maintaining", r"mode[- ]matching", r"multicore fibers?",
     r"\bInP\b", r"indium phosphide", r"InP substrate", r"export licen[cs]e",
+    r"\bGaAs\b", r"gallium arsenide", r"砷化鎵",
+    r"6[- ]inch InP", r"capacity reservation", r"prepayment", r"deposit",
+    r"long[- ]term supply", r"crystal growth", r"pilot production", r"wafer substrate",
     r"\bSiPh\b", r"photonics foundry", r"design win",
     r"\bFCC\b", r"Federal Communications Commission", r"Covered List",
     r"equipment authorization", r"Chinese[- ]made", r"China[- ]based",
@@ -207,7 +228,8 @@ ACTION_PATTERNS = [
     r"restrict(?:s|ed|ion|ions)?", r"ban(?:s|ned)?", r"prohibit(?:s|ed|ion)?",
     r"introduc(?:es|ed)? bill", r"legislation", r"covered list", r"equipment authorization",
     r"domestic content", r"domestic end product", r"buy american", r"exempt(?:ion|ions)?",
-    r"export licen[cs]e",
+    r"export licen[cs]e", r"capacity reservation", r"prepayment", r"deposit",
+    r"long[- ]term supply", r"crystal growth", r"pilot production",
     r"訂單", r"能見度", r"出貨", r"量產", r"擴產", r"產能", r"產能利用率",
     r"驗證", r"認證", r"導入", r"光耦合", r"對位", r"線性馬達", r"六軸",
 ]
@@ -473,8 +495,10 @@ def signal_score(title: str, source: str) -> int:
         score += 5
     if re.search(r"specialty fibers?|polarization[- ]maintaining|mode[- ]matching|multicore fibers?", text, re.I):
         score += 4
-    if re.search(r"\bInP\b|indium phosphide|InP substrate|\bSiPh\b|photonics foundry|design win", text, re.I):
+    if re.search(r"\bInP\b|indium phosphide|InP substrate|\bGaAs\b|gallium arsenide|砷化鎵|\bSiPh\b|photonics foundry|design win", text, re.I):
         score += 4
+    if re.search(r"6[- ]inch InP|capacity reservation|prepayment|deposit|long[- ]term supply|crystal growth|pilot production|wafer substrate", text, re.I):
+        score += 5
     if re.search(r"\bFCC\b|Federal Communications Commission|Covered List|equipment authorization", text, re.I):
         score += 7
     if re.search(r"Chinese[- ]made|China[- ]based|domestic content|domestic end product|Buy American|\b65\s*%\b|\b75\s*%\b|Inn[o]?light|Eoptolink", text, re.I):
@@ -557,8 +581,14 @@ def category_for(title: str, company: str) -> str:
         if re.search(r"senate|congress|bill|legislation|national security systems?", title, re.I):
             return "미국 광트랜시버 규제·법안"
         return "FCC 광트랜시버 규제"
-    if company in {"AXT", "InP Supply Chain"} and re.search(r"\bInP\b|indium phosphide|substrate|export licen[cs]e", title, re.I):
+    if company in {"AXT", "InP Supply Chain"} and re.search(r"capacity reservation|prepayment|deposit|long[- ]term supply|agreement", title, re.I):
+        return "InP 기판 장기계약·생산능력"
+    if company in {"AXT", "InP Supply Chain"} and re.search(r"export licen[cs]e|export restriction", title, re.I):
+        return "InP 수출허가·공급망"
+    if company in {"AXT", "InP Supply Chain"} and re.search(r"\bInP\b|indium phosphide|substrate|6[- ]inch", title, re.I):
         return "InP 기판 병목"
+    if company == "GaAs Optical Supply Chain":
+        return "GaAs 광통신 기판·파운드리"
     if company == "CPO Equipment Supply Chain":
         if re.search(r"驗證|認證|導入|\bOSAT\b|qualification|validation|verification|certif", title, re.I):
             return "CPO 장비 고객검증·도입"
@@ -605,6 +635,9 @@ def meaning_for(category: str) -> str:
         "FCC 광트랜시버 규제": "완제품 국적보다 부품 원산지·가치비중까지 규제가 내려오면 3.2T 세대의 공급사 선정과 레이저·InP·DSP 가치배분이 직접 바뀌는 정책 신호입니다.",
         "미국 광트랜시버 규제·법안": "FCC 상업시장 규제와 연방 국가안보시스템 조달 제한은 범위가 다르므로, 법안 통과·적용대상 확대 여부가 중국 광모듈의 실제 미국 매출 접근성을 바꾸는 신호입니다.",
         "InP 기판 병목": "InP 기판 수급·수출허가·증설은 EML·CW 레이저와 1.6T·3.2T 광모듈 출하량의 상류 한계를 결정해 LITE·COHR·AXTI의 물량·가격·가동률에 직접 연결됩니다.",
+        "InP 기판 장기계약·생산능력": "Coherent·Lumentum 같은 광부품사가 6인치 InP 생산능력을 선지급·예약하면 1.6T·3.2T·CPO용 레이저 기판 수요가 단순 전망에서 실제 장기 발주로 넘어갔다는 강한 검증 신호입니다.",
+        "InP 수출허가·공급망": "InP 수출허가·원산지·납기 변화는 광레이저와 1.6T·3.2T 광모듈의 실제 출하량을 좌우하는 상류 공급망 신호입니다.",
+        "GaAs 광통신 기판·파운드리": "1.6T·CPO 전환으로 GaAs 기반 광소자·포토다이오드·레이저·파운드리 수요가 늘면 InP 병목을 보완하는 단거리 광링크와 광통신 소재 공급망의 별도 매출축이 커지는 신호입니다.",
         "3.2T 전환": "차세대 광링크가 시제품에서 고객 검증·양산으로 넘어가면 광 DSP·레이저·모듈의 다음 매출 사이클 선행신호입니다.",
         "CPO·실리콘 포토닉스": "스위치와 광학을 더 가깝게 결합해 전력·대역폭 병목을 줄이는 구조 변화로, 기존 플러거블 광모듈의 가치 배분까지 바꿀 수 있습니다.",
         "1.6T 전환": "800G에서 1.6T로 실제 출하가 이동하는 신호로, 광 DSP·레이저·고밀도 연결부품의 현재 매출 증가와 직접 연결됩니다.",
@@ -634,6 +667,9 @@ def risk_for(category: str) -> str:
         "FCC 광트랜시버 규제": "3.2T·65% 같은 시장 시나리오가 최종 규정에서 바뀌거나, 미국 제조요건이 더 엄격해지면 예상 수혜기업과 공급망 구조가 달라질 수 있습니다.",
         "미국 광트랜시버 규제·법안": "연방 국가안보시스템 조달 제한을 전체 상업용 데이터센터 금지로 확대해석하면 실적 민감도를 과대평가할 수 있습니다.",
         "InP 기판 병목": "중국 수출허가·원산지 규제가 강화되면 InP 가격 상승의 수혜보다 공급중단·고객 이원화가 먼저 나타날 수 있습니다.",
+        "InP 기판 장기계약·생산능력": "선지급·예약 계약이 있어도 6인치 결정성장 수율·파일럿→양산 전환·수출허가가 지연되면 고객의 예약 물량을 실제 출하하지 못할 수 있습니다.",
+        "InP 수출허가·공급망": "허가 완화가 공급 정상화로 이어지면 가격·리드타임 프리미엄이 빠르게 축소될 수 있고, 반대로 규제 강화 시 출하 자체가 막힐 수 있습니다.",
+        "GaAs 광통신 기판·파운드리": "GaAs 수요가 1.6T 광통신이 아니라 스마트폰·위성 등 다른 응용에 더 크게 좌우되면 AI 데이터센터 수혜 민감도를 과대평가할 수 있습니다.",
         "3.2T 전환": "고객 인증·대량생산 수율이 지연되면 매출 시점이 뒤로 밀릴 수 있습니다.",
         "CPO·실리콘 포토닉스": "레이저 신뢰성·수율·현장 교체 난도와 플러거블 대비 경제성이 핵심 실패 경로입니다.",
         "1.6T 전환": "물량 증가보다 평균판매단가 하락이 빠르면 매출 성장 폭이 제한될 수 있습니다.",
@@ -699,6 +735,16 @@ def main() -> None:
                 continue
             title = item["title"]
             source = item.get("source") or ""
+
+            # Optical-material alert is intentionally separate from power semiconductors.
+            # Exclude SiC/800V-HVDC-only stories unless they also contain a direct
+            # optical-transceiver / InP / GaAs / CPO / 1.6T / 3.2T connection.
+            if company in {"AXT", "InP Supply Chain", "GaAs Optical Supply Chain"}:
+                power_only = bool(re.search(r"\bSiC\b|silicon carbide|800V|HVDC|power semiconductor", title, re.I))
+                optical_link = bool(re.search(r"\bInP\b|indium phosphide|\bGaAs\b|gallium arsenide|砷化鎵|optical|transceiver|CPO|1\.6T|3\.2T|laser|photodiode", title, re.I))
+                if power_only and not optical_link:
+                    continue
+
             score = signal_score(title, source)
             # Require both a technology/data-movement term and a concrete commercial/action term.
             # CPO mentions alone are not enough: this prevents stock-reaction/commentary articles
@@ -817,6 +863,7 @@ def main() -> None:
         "initialized": True,
         "dedupe_version": 2,
         "quality_version": 3,
+        "optical_material_version": 1,
         "cpo_equipment_version": 2,
         "optical_policy_version": 2,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
