@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-02T09:57:02+09:00",
+  "updated_at_kst": "2026-10-02T15:32:16+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
@@ -13,6 +13,7 @@
     "20a5c84026d1bbe9b4f60398",
     "21e84f4d7bcbfa46a6b63dee",
     "2d27da4b09baa1d0f61ace3d",
+    "2d9314e7dce8075fefab9289",
     "2dfd1c86ac0599c056567928",
     "2febb8d3e788181bbf878d83",
     "30e12d5e09347c31afe9bbbf",
@@ -47,6 +48,7 @@
     "879690aaf1650f4535c5fa3b",
     "89dfc6e2a5f58fd54f926dca",
     "959562dc71d2a106144c7eab",
+    "96aeca25517239df73a1fe98",
     "97cd9aa32a1e0bc1defa7483",
     "9a0fac710d6f4969c12eccb0",
     "9ccd14cf2278388157bd44a6",
@@ -57,6 +59,7 @@
     "b2ce67f50c4396a824d19973",
     "b4862a8df904bf88d04f0bd6",
     "b7a9ea191f0d39046caeeb6d",
+    "bb3a941f15a9af91d4135098",
     "bc36972bfd79436e7ad41fd1",
     "c1d173fd17a8a8cd17f5cd5b",
     "c1ede00bdbacc4e73f3e3732",
@@ -108,14 +111,14 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1361.27,
-    "date": "2026-10-01 일일 기준 · ECB/Frankfurter · 조회 2026-10-02 09:57 KST · 보조 API 2026-10-01 · 차이 0.40% · 일중 기준시각 차이 가능",
+    "date": "2026-10-01 일일 기준 · ECB/Frankfurter · 조회 2026-10-02 15:32 KST · 보조 API 2026-10-02 · 차이 0.08% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
   "errors": [
-    "교차검증 부족으로 발송 제외: v.daum.net | HBM 다음은 eSSD…AI 메모리 투자전쟁 속 솔리다임의 '성장 방정식' - v.daum.net",
     "교차검증 부족으로 발송 제외: v.daum.net | HBM 다음은 eSSD…AI 메모리 투자 전쟁 속 솔리다임 '성장 방정식' 주목 - v.daum.net",
-    "교차검증 부족으로 발송 제외: 스마트비즈 | HBM 이어 eSSD로 확장되는 AI 메모리 시장···솔리다임의 美 투자·성장 전략 - 스마트비즈"
+    "교차검증 부족으로 발송 제외: 뉴스포스트 | HBM 다음은 eSSD…AIDC 투자 경쟁 속 '솔리다임' 역할 커진다 - 뉴스포스트",
+    "교차검증 부족으로 발송 제외: ebn.co.kr | AI 메모리 투자전쟁, HBM서 eSSD로…솔리다임 다음 수는 - ebn.co.kr"
   ],
   "ai_component_leadtime": {
     "as_of": "2026-09-21",
@@ -165,13 +168,13 @@
       "https://insights.trendforce.com/p/weekly-radar-002",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-10-02T09:57:17+09:00",
+    "last_checked_at_kst": "2026-10-02T15:32:30+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-02T10:03:55+09:00",
+    "checked_at_kst": "2026-10-02T15:39:00+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-01T09:43:49+09:00",
@@ -241,7 +244,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-02",
-    "last_checked_at_kst": "2026-10-02T09:57:56+09:00"
+    "last_checked_at_kst": "2026-10-02T15:33:08+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -277,7 +280,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-02",
-    "last_checked_at_kst": "2026-10-02T10:02:40+09:00",
+    "last_checked_at_kst": "2026-10-02T15:37:44+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -321,7 +324,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-02T10:03:13+09:00",
+    "last_checked_at_kst": "2026-10-02T15:38:17+09:00",
     "candidate_count": 0,
     "event_count": 0
   },
