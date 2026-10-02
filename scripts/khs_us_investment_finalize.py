@@ -120,6 +120,13 @@ def _short_judgment(title: str, tags: str) -> str:
         return "정부 공식상태를 우선. 언론 선행보도와 확정 단계를 분리."
     if "ercot" in blob or "계통연계" in blob:
         return "신청량보다 승인·전원 인가·실제 가동 단계 상승을 우선."
+    if (
+        ("원전" in blob or "project power" in blob)
+        and any(x in blob for x in ["선지급", "먼저 지급", "upfront payment", "advance payment", "prepayment"])
+    ):
+        if any(x in blob for x in ["지급 완료", "송금 완료", "집행 완료", "paid", "transferred", "disbursed"]):
+            return "Project Power 선지급의 실제 집행 단계 상승. 수취주체·집행액·장주기 품목 구매주문·공급사·납기를 다음 확인 대상으로 전환."
+        return "Project Power 최대 100억달러 선지급은 상업적 합리성 검토·국회보고 등 조건부 협의 단계. 실제 지급·구매주문 전에는 집행으로 승격하지 않음."
     if "원전 프레임워크" in blob or "project power" in blob:
         return "한미 원전 8기 프레임워크는 정부·Westinghouse·Cameco 측 공식 확인 단계. 다만 조건은 비구속이며 최종계약·부지·규제·금융·2025 타협협정 예외·개별 발주가 후속 확정."
     if "원전" in blob:
@@ -152,7 +159,7 @@ def _aggregate_flags(records: list[dict], text: str) -> dict[str, bool]:
         "energy": any(x in blob for x in ["대미투자 첫사업", "에너지 패키지", "1천억달러", "1000억달러", "2천억달러", "2000억달러", "200 billion", "원전 최대 8기"]),
         "ercot": any(x in blob for x in ["474gw", "batch zero", "ercot 신청", "계통연계"]),
         "encinal": any(x in blob for x in ["encinal", "엔시날", "6.3gw", "1.4gw", "4.9gw"]),
-        "nuclear": "원전" in blob or "ap1000" in blob or "apr1400" in blob,
+        "nuclear": any(x in blob for x in ["원전", "ap1000", "apr1400", "project power", "westinghouse", "웨스팅하우스"]),
         "alaska": "알래스카 lng" in blob or "alaska lng" in blob,
     }
 
@@ -188,8 +195,10 @@ def _current_state_block(flags: dict[str, bool]) -> list[str]:
         return []
 
     state = _load_state()
-    nuclear = ((state.get("event_states") or {}).get("nuclear_build") or {})
+    states = state.get("event_states") or {}
+    nuclear = (states.get("nuclear_build") or {})
     facts = {str(x) for x in (nuclear.get("facts") or [])}
+    stake_facts = {str(x) for x in ((states.get("westinghouse_stake") or {}).get("facts") or [])}
 
     def value(prefix: str) -> str:
         for fact in facts:
@@ -208,6 +217,18 @@ def _current_state_block(flags: dict[str, bool]) -> list[str]:
         ]
         if "nuclear_counterparty_confirmation:official" in facts:
             lines.append("• <b>Westinghouse·Cameco 측 공식 확인</b>까지 완료 · 단순 언론보도 단계 아님")
+        if (
+            "nuclear_construction_cost_usd_b:100" in facts
+            and "nuclear_contingency_usd_b:20" in facts
+        ):
+            lines.append("• 재원 분해: <b>최대 1,200억달러 = 건설비 1,000억달러 + 예비비 200억달러</b> · 서로 다른 금액 역할로 별도 추적")
+        if "nuclear_upfront_payment_usd_b:10" in facts:
+            if "nuclear_upfront_payment_status:executed" in facts:
+                lines.append("• 선지급: <b>최대 100억달러 실제 집행 확인</b> · 수취주체·실제 발주·장주기 품목 PO를 후속 추적")
+            else:
+                lines.append("• 선지급: <b>연말까지 최대 100억달러</b> 방안은 상업적 합리성 검토·국회보고 등 국내법 요건을 전제로 한 협의 단계 · 아직 실제 집행 아님")
+        if "nuclear_longlead_order_status:ordered" in facts:
+            lines.append("• 장주기 품목: <b>구매주문·발주 단계 상승 확인</b> · 원자로용기·증기발생기·원자로냉각재펌프 등 실제 공급사·금액·납기를 추적")
         if "nuclear_framework_binding:nonbinding" in facts or "nuclear_definitive_agreement_status:pending" in facts:
             lines.append("• 법적 단계: <b>비구속 프레임워크</b> · 최종계약·특정부지·규제승인·금융조달은 아직 후속 조건")
         if "nuclear_initial_ap1000_units:2" in facts:
@@ -218,6 +239,15 @@ def _current_state_block(flags: dict[str, bool]) -> list[str]:
             lines.append("• Westinghouse 예상 가치: <b>APR1400 1기당 약 20억달러</b> · IP·엔지니어링/조달·하도급·장기 핵연료 가공을 합친 예상가치이며 현재 인식매출 아님")
         if "nuclear_korean_ap1000_supply_chain:included" in facts:
             lines.append("• AP1000 6기에도 <b>한국 시공·기자재 기업 참여 방향</b>이 공식 문서에 포함 · 개별 공급사 PO·수주금액은 아직 미확정")
+        stake_range = next(
+            (x.split(":", 1)[1] for x in stake_facts if x.startswith("stake_range_percent:")),
+            None,
+        )
+        if stake_range:
+            if "equity_closing_status:completed" in stake_facts:
+                lines.append(f"• Westinghouse 지분: <b>{html.escape(stake_range)}% 인수 종결 확인</b> · 실제 납입금액·지분가치·의결권을 후속 추적")
+            else:
+                lines.append(f"• Westinghouse 지분: <b>{html.escape(stake_range)}% 잠재 지분투자</b> · 최종계약·실사·회사승인·규제승인 전이므로 아직 인수 완료 아님")
         return lines
 
     official = "미확정" if "official_status:unconfirmed" in facts else (
@@ -362,6 +392,7 @@ def _next_checks(flags: dict[str, bool]) -> list[str]:
     if flags["nuclear"] and not flags["pyro"]:
         checks += [
             "한미·Westinghouse·KEPCO·KHNP 최종계약 서명과 2025 타협협정 일회성 예외계약 체결",
+            "연말 최대 100억달러 선지급의 실제 자금요청·지급일·수취주체와 장주기 품목 구매주문(PO)·공급사·납기",
             "첫 AP1000 2기 개별 부지·EPC 계약·장납기 기자재 구매주문(PO)",
             "AP1000 한국 시공·기자재 업체 실명 수주·물량·납기",
             "Westinghouse 5~10% 지분투자 최종계약·실사·규제승인·종결",
