@@ -158,6 +158,16 @@ jobs:
           assert watch.canonical_story_key("US Optical Policy", fcc_final) == "us-optical-policy|fcc|final"
           assert watch.canonical_story_key("US Optical Policy", senate_bill) == "us-optical-policy|congress|bill"
 
+          scenario_65 = "Morgan Stanley sees FCC 3.2T optical transceiver restrictions with 65% domestic content exemption"
+          scenario_75 = "FCC optical transceiver proposal moves domestic-content threshold to 75%"
+          assert watch.canonical_story_key("US Optical Policy", scenario_65) != watch.canonical_story_key("US Optical Policy", scenario_75), (
+              "A 65% to 75% content-threshold change must become a new alert stage."
+          )
+
+          generic_inp = "InP substrate lead times extend as indium phosphide capacity tightens for AI optical transceivers"
+          assert watch.signal_score(generic_inp, "Reuters") >= 7, "Generic InP supply bottleneck must trigger"
+          assert watch.category_for(generic_inp, "InP Supply Chain") == "InP 기판 병목"
+
           aaoi_ramp = "Applied Optoelectronics expands 1.6T transceiver capacity for hyperscaler shipments"
           assert watch.signal_score(aaoi_ramp, "Applied Optoelectronics") >= 7, "AAOI capacity/shipments must trigger"
           assert watch.category_for(aaoi_ramp, "Applied Optoelectronics") == "1.6T 전환"
@@ -221,6 +231,7 @@ jobs:
               "GPU", "XPU", "AI", "1.6T", "3.2T", "800G", "100Tbps", "FY25", "FY26",
               "FY27", "FY28", "FCC", "Covered List", "Buy American", "InP", "AXT", "AXTI",
               "AAOI", "Applied Optoelectronics", "Innolight", "Eoptolink", "HBOM", "SBOM",
+              "Morgan Stanley", "Marc Lehman", "Sumitomo Electric", "IQE",
               "AVGO", "NVDA", "ANET", "MRVL", "LITE", "COHR", "ALAB", "GLW", "005930.KS",
           ]
 
