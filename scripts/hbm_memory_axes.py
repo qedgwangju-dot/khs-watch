@@ -20,6 +20,7 @@ FOUNDRY_TRACK_VERSION = 1
 FOUNDRY_RECOVERY_TRACK_VERSION = 1
 FOUNDRY_PRICING_RANGE_TRACK_VERSION = 1
 GLASS_SUBSTRATE_TRACK_VERSION = 1
+HBM_GENERATION_PRICE_TRACK_VERSION = 1
 MARKET_PRICING_TRACK_VERSION = 1
 EXTRA_QUERIES = [
     '(HBM4 OR HBM4E) (24Gb OR 32Gb OR 36GB OR 48GB OR 적층 OR 용량)',
@@ -39,6 +40,8 @@ EXTRA_QUERIES = [
     '("510x515" OR "510×515" OR "515x510" OR "515×510") (glass substrate OR glass core OR TGV OR 유리기판 OR 유리 기판) (TSMC OR CoPoS OR Corning OR AGC OR NEG OR SCHOTT)',
     '(TSMC OR CoPoS) (glass core OR glass substrate OR 유리기판) (310x310 OR 510x515 OR 2030 OR pilot OR mass production OR 양산)',
     '(Philoptics OR 필옵틱스 OR JNTC OR Absolics OR GlaSSEM OR 삼성전기) (TGV OR glass substrate OR 유리기판) (yield OR 수율 OR purchase order OR PO OR 양산 OR pilot OR 고객 검증)',
+    '(SemiAnalysis OR TrendForce OR Micron OR Citi OR JPMorgan OR "J.P. Morgan" OR BofA) 2027 (HBM3E OR HBM4 OR HBM4E) (price OR pricing OR ASP OR "$/Gb" OR "per Gb" OR 가격)',
+    '"HBM3E" "HBM4" "HBM4E" 2027 (price OR ASP OR "$/Gb")',
 ]
 COMPANIES = {'samsung': r'삼성(?:전자)?|Samsung(?: Electronics)?',
              'skhynix': r'SK\s?하이닉스|SK\s*hynix', 'micron': r'마이크론|Micron'}
@@ -72,6 +75,8 @@ STAGE_RANK = {
 }
 
 INSTITUTIONS = {
+    'semianalysis': (r'SemiAnalysis', r'semianalysis'),
+    'micron': (r'\bMicron\b', r'마이크론'),
     'bernstein': (r'Bernstein', r'번스타인'),
     'jpmorgan': (r'J[.]?P[.]?\s*Morgan', r'JP\s*Morgan', r'제이피모건'),
     'ubs': (r'\bUBS\b',),
@@ -99,7 +104,7 @@ def evidence(url):
     h = host(url)
     if h in OFFICIAL:
         return 'official'
-    if h in ('trendforce.com', 'dramexchange.com', 'counterpointresearch.com'):
+    if h in ('trendforce.com', 'dramexchange.com', 'counterpointresearch.com', 'semianalysis.com', 'newsletter.semianalysis.com'):
         return 'research'
     return 'reported'
 
@@ -197,7 +202,8 @@ def is_axis_text(text):
         r'(?:삼성|Samsung).*(?:Taylor|테일러).*(?:foundry|파운드리|mass\s*production|양산|customer|contract|수주|negotiation|협상)|'
         r'(?:510\s*[x×]\s*515|515\s*[x×]\s*510).*(?:glass\s*(?:substrate|core|panel)|TGV|유리\s*기판)|'
         r'(?:TSMC|CoPoS).*(?:glass\s*(?:substrate|core)|유리\s*기판).*(?:310\s*[x×]\s*310|510\s*[x×]\s*515|2030|pilot|mass\s*production|양산)|'
-        r'(?:Philoptics|필옵틱스|JNTC|Absolics|GlaSSEM|삼성전기).*(?:TGV|glass\s*(?:substrate|core)|유리\s*기판).*(?:yield|수율|purchase\s*order|\bPO\b|pilot|mass\s*production|양산|검증)',
+        r'(?:Philoptics|필옵틱스|JNTC|Absolics|GlaSSEM|삼성전기).*(?:TGV|glass\s*(?:substrate|core)|유리\s*기판).*(?:yield|수율|purchase\s*order|\bPO\b|pilot|mass\s*production|양산|검증)|'
+        r'(?:SemiAnalysis|TrendForce|Micron|Citi|J[.]?P[.]?\s*Morgan|BofA).*(?:2027|27E).*(?:HBM3E|HBM4|HBM4E).*(?:price|pricing|ASP|\$/Gb|per\s+Gb|가격)',
         text, re.I))
 
 
@@ -916,6 +922,87 @@ def parse_hbm_market_pricing(item, body):
     return [record]
 
 
+HBM_GENERATIONS = ("HBM2E", "HBM3", "HBM3E", "HBM4", "HBM4E")
+
+
+def _generation_price_source(text, item):
+    combined = " ".join((item.get('source',''), item.get('title',''), item.get('direct_link',''), text[:800]))
+    inst = _institution(combined)
+    if inst:
+        return inst
+    h = host(item.get('direct_link',''))
+    if 'semianalysis' in h:
+        return 'semianalysis'
+    if 'micron' in h:
+        return 'micron'
+    if 'trendforce' in h:
+        return 'trendforce'
+    return re.sub(r'[^a-z0-9]+', '_', h.split('.')[0].lower()).strip('_') or 'unknown'
+
+
+def _generation_price_points(text):
+    out = {}
+    for gen in HBM_GENERATIONS:
+        gen_pat = re.escape(gen)
+        # Keep stack height in the key when stated. 8-Hi and 12-Hi prices are not interchangeable.
+        patterns = (
+            rf'\b{gen_pat}\b[^.\n]{{0,100}}?(?:(8|12|16|20)\s*[- ]?(?:Hi|단)[^.\n]{{0,60}}?)?(?:US\$|\$)?\s*([0-9]+(?:\.[0-9]+)?)\s*(?:US\$\s*/\s*Gb|\$\s*/\s*Gb|/\s*Gb|per\s+Gb)',
+            rf'(?:US\$|\$)?\s*([0-9]+(?:\.[0-9]+)?)\s*(?:US\$\s*/\s*Gb|\$\s*/\s*Gb|/\s*Gb|per\s+Gb)[^.\n]{{0,100}}?\b{gen_pat}\b(?:[^.\n]{{0,50}}?(8|12|16|20)\s*[- ]?(?:Hi|단))?',
+        )
+        m = re.search(patterns[0], text, re.I)
+        if m:
+            layer, price = m.group(1), float(m.group(2))
+        else:
+            m = re.search(patterns[1], text, re.I)
+            if not m:
+                continue
+            price, layer = float(m.group(1)), m.group(2)
+        if not (0.1 <= float(price) <= 20):
+            continue
+        key = gen + (f'_{int(layer)}Hi' if layer else '_stack_unspecified')
+        out[key] = float(price)
+    return out
+
+
+def parse_hbm_generation_pricing(item, body):
+    text = re.sub(r'\s+', ' ', f"{item.get('title','')} {item.get('description','')} {body or ''}").strip()
+    low = text.lower()
+    if 'hbm' not in low or not re.search(r'\b2027\b|\b27E\b', text, re.I):
+        return []
+    if not re.search(r'HBM(?:2E|3|3E|4|4E)', text, re.I):
+        return []
+
+    source = _generation_price_source(text, item)
+    if source == 'unknown':
+        return []
+
+    points = _generation_price_points(text)
+    explicit_breadth = bool(re.search(
+        r'(?:every|all|across|multiple)[^.]{0,50}?HBM[^.]{0,80}?(?:generation|세대)[^.]{0,80}?(?:rise|step(?:s|ped)?\s+up|increase|reset|상승|인상|리셋)'
+        r'|(?:HBM[^.]{0,50}?(?:전\s*세대|모든\s*세대))[^.]{0,80}?(?:상승|인상|리셋)',
+        text, re.I
+    ))
+    mentioned = [g for g in HBM_GENERATIONS if re.search(rf'\b{re.escape(g)}\b', text, re.I)]
+    broad = explicit_breadth or len(points) >= 3
+    legacy = any(k.startswith('HBM3_') or k.startswith('HBM3E_') for k in points)
+    if not points and not explicit_breadth:
+        return []
+
+    value = {
+        'broad_step_up_2027': broad,
+        'generation_count': len({k.split('_')[0] for k in points}) if points else len(mentioned),
+        'generations_mentioned': mentioned,
+        'legacy_generation_price_visible': legacy,
+        'price_usd_per_gb': points,
+        'exact_numeric_public_text': bool(points),
+    }
+    return [make_record(
+        'hbm_generation_pricing', [source, '2027'], value, 'USD/Gb,stage', '2027',
+        item, text,
+        scope='institution_specific_generation_curve_stack_height_preserved_not_blended_asp'
+    )]
+
+
 GLASS_TSMC_STATUS_RANK = {
     'unconfirmed': 0,
     'reported_candidate': 1,
@@ -1059,6 +1146,7 @@ def parse_records(item, body):
         records.append(malaysia)
     records.extend(parse_hbm_revenue_estimates(item, body))
     records.extend(parse_hbm_market_pricing(item, body))
+    records.extend(parse_hbm_generation_pricing(item, body))
     records.extend(parse_postprocess_records(item, body))
     records.extend(parse_foundry_recovery_records(item, body))
     records.extend(parse_foundry_hbm_records(item, body))
@@ -1217,6 +1305,25 @@ def comparison(old, new):
             reasons.append(f"시장 주류 적층 {int(av)}단→{int(bv)}단")
         elif av is None and bv is not None:
             reasons.append(f"시장 주류 적층 {int(bv)}단 신규 확인")
+        return reasons
+    if new['axis'] == 'hbm_generation_pricing':
+        reasons = []
+        amap, bmap = a.get('price_usd_per_gb') or {}, b.get('price_usd_per_gb') or {}
+        for key in sorted(set(amap) | set(bmap)):
+            av, bv = amap.get(key), bmap.get(key)
+            if av is not None and bv is not None:
+                pct = (float(bv) / float(av) - 1.0) * 100 if float(av) else 0
+                if abs(float(bv)-float(av)) >= 0.20 or abs(pct) >= 10:
+                    reasons.append(f"{key} {float(av):.2f}→{float(bv):.2f}달러/Gb ({pct:+.1f}%)")
+            elif av is None and bv is not None:
+                reasons.append(f"{key} {float(bv):.2f}달러/Gb 신규 확인")
+        if a.get('broad_step_up_2027') != b.get('broad_step_up_2027') and b.get('broad_step_up_2027') is not None:
+            reasons.append('2027 전 세대 동반 가격상승 신호 ' + ('확인' if b.get('broad_step_up_2027') else '해제'))
+        if a.get('legacy_generation_price_visible') != b.get('legacy_generation_price_visible') and b.get('legacy_generation_price_visible'):
+            reasons.append('HBM3/HBM3E 구세대 가격상승 숫자 확인')
+        av, bv = a.get('generation_count'), b.get('generation_count')
+        if av is not None and bv is not None and int(av) != int(bv):
+            reasons.append(f"가격 곡선 확인 세대 수 {int(av)}→{int(bv)}개")
         return reasons
     if new['axis'] == 'glass_panel_standard':
         reasons = []
@@ -1479,6 +1586,13 @@ def update_state(state, records, now, seeds=None):
                     state['latest'][r['key']] = copy.deepcopy(r)
                     state['pending'].pop(r['key'], None)
             state['glass_substrate_track_version'] = GLASS_SUBSTRATE_TRACK_VERSION
+        if int(state.get('hbm_generation_price_track_version') or 0) < HBM_GENERATION_PRICE_TRACK_VERSION:
+            for r in seeds:
+                if r.get('axis') == 'hbm_generation_pricing':
+                    state['last_notified'][r['key']] = copy.deepcopy(r)
+                    state['latest'][r['key']] = copy.deepcopy(r)
+                    state['pending'].pop(r['key'], None)
+            state['hbm_generation_price_track_version'] = HBM_GENERATION_PRICE_TRACK_VERSION
         if int(state.get('market_pricing_track_version') or 0) < MARKET_PRICING_TRACK_VERSION:
             for r in seeds:
                 if r.get('axis') == 'hbm_market_pricing':
@@ -1494,7 +1608,7 @@ def update_state(state, records, now, seeds=None):
         if r['as_of'][:10] > now.date().isoformat():
             continue
         grouped.setdefault(r['key'], []).append(r)
-    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'hbm_market_pricing'}
+    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'hbm_generation_pricing', 'hbm_market_pricing'}
     for key, rows in grouped.items():
         rows.sort(key=lambda x: (x['as_of'], RANK.get(x['evidence'], 0)))
         prior = state['latest'].get(key) or state['last_notified'].get(key)
@@ -1554,6 +1668,7 @@ def render(change, rate=None):
              'postprocess_capex': 'HBM 후공정 설비투자·병목 변화',
              'postprocess_order': 'HBM 후공정 장비 수주 변화',
              'postprocess_stage': 'HBM 후공정 고객 검증·양산 단계 변화',
+             'hbm_generation_pricing': 'HBM 세대별 2027 가격 리셋',
              'glass_panel_standard': '유리기판 510×515mm 규격 수렴·TSMC 채택 상태',
              'glass_tsmc_roadmap': 'TSMC CoPoS·Glass Core 양산 로드맵',
              'glass_panel_yield': '유리기판 패널·양산 수율',
@@ -1578,6 +1693,18 @@ def render(change, rate=None):
         if record['axis'] == 'fab_stage':
             labels = {'plan': '계획', 'delayed': '지연', 'cancelled': '취소', 'reported_operation': '가동 보도'}
             return f"{v['year']}년 · {labels.get(v['stage'], v['stage'])}"
+        if record['axis'] == 'hbm_generation_pricing':
+            parts = []
+            points = v.get('price_usd_per_gb') or {}
+            if points:
+                parts.append(' · '.join(f"{k} {float(val):.2f}달러/Gb" for k,val in sorted(points.items())))
+            if v.get('broad_step_up_2027'):
+                parts.append("전 세대 동반상승 신호")
+            if v.get('legacy_generation_price_visible'):
+                parts.append("HBM3/HBM3E 구세대 포함")
+            if not points:
+                parts.append("정확한 세대별 숫자 공개 확인 전")
+            return " / ".join(parts)
         if record['axis'] == 'glass_panel_standard':
             suppliers = ', '.join(v.get('suppliers') or [])
             return f"{v.get('width_mm')}×{v.get('height_mm')}mm / 소재사 {v.get('supplier_count')}곳 ({suppliers}) / TSMC {v.get('tsmc_status')}"
@@ -1744,6 +1871,10 @@ def render(change, rate=None):
         lines.append('• 재사용 세정 처리량이며 웨이퍼 생산·칩 출하·수주금액으로 치환하지 않습니다.')
     if r['axis'] in ('wafer_share', 'bit_share'):
         lines.append('• 연말 전망이며 연간 평균·실제 확정 생산량과 비교하지 않습니다.')
+    if r['axis'] == 'hbm_generation_pricing':
+        lines.append('• 기관별 가격곡선을 서로 합치지 않습니다. 동일 기관·동일 세대·동일 적층 조건만 전후 비교합니다.')
+        lines.append('• 8단·12단 등 적층 높이가 다르면 별도 가격으로 저장하며 Blended ASP와 세대별 $/Gb를 합치지 않습니다.')
+        lines.append('• 사용자 캡처는 방향 기준선일 뿐, 판독이 모호한 숫자는 저장하지 않습니다. 공개 원문에서 확인되는 숫자만 가격 상태값으로 승격합니다.')
     if r['axis'] == 'glass_panel_standard':
         lines.append('• 510×515mm 규격 수렴과 TSMC 공식 채택은 별개입니다. DIGITIMES의 공급망 추정은 reported_candidate로만 저장합니다.')
     if r['axis'] == 'glass_tsmc_roadmap':
@@ -1837,6 +1968,12 @@ def main():
             and any(k in text for k in ('base die', '베이스다이', '베이스 다이', '4nm', '4나노', '2nm', '2나노'))
             and any(k in text for k in ('full utilization', '풀가동', '증설', 'expand', 'price increase', '가격 인상', 'production line', '생산라인', 'investment', '투자'))
         )
+        structured_generation_pricing = (
+            any(k in text for k in ('semianalysis','trendforce','micron','citi','j.p. morgan','jpmorgan','bofa'))
+            and ('2027' in text or '27e' in text)
+            and any(k in text for k in ('hbm3e','hbm4','hbm4e'))
+            and any(k in text for k in ('$/gb','per gb','price','pricing','asp','가격'))
+        )
         structured_glass = (
             any(k in text for k in ('glass substrate','glass core','glass panel','tgv','유리기판','유리 기판','글라스 코어'))
             and any(k in text for k in ('510x515','510×515','515x510','515×510','copos','yield','수율','purchase order','po ','pilot','양산'))
@@ -1852,7 +1989,7 @@ def main():
                 )
             )
         )
-        if structured_revenue or structured_postprocess or structured_market_pricing or structured_foundry or structured_foundry_recovery or structured_glass:
+        if structured_revenue or structured_postprocess or structured_market_pricing or structured_generation_pricing or structured_foundry or structured_foundry_recovery or structured_glass:
             rejected_generic.append(e.get('id') or fingerprint(e.get('title', '')))
             return '', '', ''
         if not concrete_state_evidence(e):
@@ -1874,7 +2011,7 @@ def main():
         '글로벌이코노믹', 'g-enews', 'dramexchange', 'sk하이닉스', 'micron',
         'futunn', 'futu news', 'bernstein', 'hilo research', 'xxquant',
         '머니투데이', 'moneytoday', 'mt.co.kr', '한국경제tv', 'wowtv', 'v.daum.net',
-        'digitimes', 'corning', 'agc', 'nippon electric glass', 'schott',
+        'digitimes', 'semianalysis', 'newsletter.semianalysis', 'corning', 'agc', 'nippon electric glass', 'schott',
         'philoptics', '필옵틱스', 'jntc', '제이앤티씨', 'absolics', '앱솔릭스',
         'samsung electro-mechanics', '삼성전기', 'edaily', '이데일리'
     )
@@ -1968,9 +2105,11 @@ def main():
         rate, basis = legacy.fx_quote()
         foundry_axes = {'foundry_loss_outlook','foundry_external_2nm','foundry_taylor_schedule','foundry_base_die_allocation','foundry_node_expansion','foundry_pricing','foundry_hbm5_2nm'}
         glass_axes = {'glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage'}
-        regular = [k for k in chosen if state['pending'][k]['record']['axis'] not in foundry_axes | glass_axes]
+        generation_price_axes = {'hbm_generation_pricing'}
+        regular = [k for k in chosen if state['pending'][k]['record']['axis'] not in foundry_axes | glass_axes | generation_price_axes]
         foundry = [k for k in chosen if state['pending'][k]['record']['axis'] in foundry_axes]
         glass = [k for k in chosen if state['pending'][k]['record']['axis'] in glass_axes]
+        generation_price = [k for k in chosen if state['pending'][k]['record']['axis'] in generation_price_axes]
         sections = []
         if regular:
             blocks = ['<b>HBM·서버 D램 연계 상태 변화</b>']
@@ -1983,6 +2122,10 @@ def main():
         if glass:
             blocks = ['<b>유리기판 510×515mm 표준·HVM 전환 감시</b>']
             blocks.extend(render(state['pending'][key], rate) for key in glass)
+            sections.append('\n\n'.join(blocks))
+        if generation_price:
+            blocks = ['<b>HBM 전 세대 가격 리셋 감시</b>']
+            blocks.extend(render(state['pending'][key], rate) for key in generation_price)
             sections.append('\n\n'.join(blocks))
         if rate and sections:
             sections[-1] += '\n\n환율 기준: ' + html.escape(basis)
