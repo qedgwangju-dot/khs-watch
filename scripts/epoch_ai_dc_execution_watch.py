@@ -4,6 +4,7 @@ from __future__ import annotations
 import csv
 import io
 import json
+import re
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -22,7 +23,7 @@ STATUS = OUT / "epoch_ai_dc_execution_status.md"
 
 KST = ZoneInfo("Asia/Seoul")
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
-FORMAT_VERSION = 1
+FORMAT_VERSION = 2
 
 
 def fetch_text(url: str, timeout: int = 40) -> str:
@@ -73,6 +74,51 @@ def load_state() -> dict:
 
 def pct_change(new: float, old: float) -> float:
     return (new / old - 1) * 100 if old else 0.0
+
+
+def ko_visible(value: str) -> str:
+    text = str(value or "").strip()
+    if not text:
+        return ""
+    if not re.search(r"[A-Za-z]", text):
+        return text
+
+    known = {
+        "Microsoft": "마이크로소프트", "Amazon": "아마존", "AWS": "아마존웹서비스",
+        "Meta": "메타", "Google": "구글", "OpenAI": "오픈AI", "Oracle": "오라클",
+        "Anthropic": "앤트로픽", "xAI": "엑스AI", "QTS": "큐티에스",
+        "Vantage": "밴티지", "CoreWeave": "코어위브", "Stargate": "스타게이트",
+        "Data Center": "데이터센터", "Data center": "데이터센터",
+        "Hyperscale": "하이퍼스케일", "Fairwater": "페어워터",
+        "Hyperion": "하이페리온", "Prometheus": "프로메테우스", "Colossus": "콜로서스",
+        "Wisconsin": "위스콘신", "Michigan": "미시간", "New Mexico": "뉴멕시코",
+        "Texas": "텍사스", "Louisiana": "루이지애나", "Indiana": "인디애나",
+        "Ohio": "오하이오", "Georgia": "조지아", "Atlanta": "애틀랜타", "Abilene": "애빌린",
+    }
+    translated = text
+    for src, dst in sorted(known.items(), key=lambda kv: len(kv[0]), reverse=True):
+        translated = translated.replace(src, dst)
+    if not re.search(r"[A-Za-z]", translated):
+        return translated
+
+    try:
+        r = requests.get(
+            "https://translate.googleapis.com/translate_a/single",
+            params={"client":"gtx","sl":"auto","tl":"ko","dt":"t","q":text},
+            headers=HEADERS,
+            timeout=12,
+        )
+        r.raise_for_status()
+        data = r.json()
+        out = "".join(seg[0] for seg in (data[0] or []) if isinstance(seg,list) and seg and isinstance(seg[0],str)).strip()
+        if out and re.search(r"[가-힣]", out):
+            return out
+    except Exception:
+        pass
+
+    cleaned = re.sub(r"\b[A-Za-z][A-Za-z0-9._&+\-/]*\b", "", translated)
+    cleaned = re.sub(r"\s{2,}", " ", cleaned).strip(" ·-/")
+    return cleaned or "해외 데이터센터 프로젝트"
 
 
 def build_snapshot() -> dict:
@@ -151,6 +197,8 @@ def material_changes(old: dict, new: dict) -> list[str]:
     if not old:
         return ["기준선 설정"]
     changes = []
+    if int(old.get("format_version", 0) or 0) < FORMAT_VERSION:
+        changes.append("한국어 표기·가독성 형식 업그레이드")
     old_current = float(old.get("current_it_mw") or 0)
     new_current = float(new.get("current_it_mw") or 0)
     old_plan = float(old.get("planned_it_mw_2030") or 0)
@@ -203,16 +251,18 @@ def build_alert(new: dict, changes: list[str], first: bool) -> str:
         "■ 미가동 전력 상위 프로젝트",
     ]
     for row in new.get("top_remaining_sites", [])[:6]:
-        own = f" · {row['owner']}" if row.get("owner") else ""
+        project_name = ko_visible(row.get("name", ""))
+        owner_name = ko_visible(row.get("owner", ""))
+        own = f" · {owner_name}" if owner_name else ""
         lines.append(
-            f"• {row['name']}{own}: 현재 {row['current_mw']:,.0f}MW / 계획 {row['planned_mw']:,.0f}MW "
+            f"• {project_name}{own}: 현재 {row['current_mw']:,.0f}MW / 계획 {row['planned_mw']:,.0f}MW "
             f"→ 잔여 {row['gap_mw']:,.0f}MW"
         )
 
     lines += [
         "",
         "■ 주의",
-        "• Epoch AI는 고해상도 위성영상·허가·공시·공개자료와 자체 모델을 결합한 독립 추정치입니다.",
+        "• 에포크AI는 고해상도 위성영상·허가·공시·공개자료와 자체 모델을 결합한 독립 추정치입니다.",
         "• 전력회사 공식 전원 인가 MW나 기업 공시 확정치와 동일한 통계가 아니므로 방향·실행 속도 확인용으로 사용합니다.",
         f"원문: {SOURCE_URL}",
     ]
