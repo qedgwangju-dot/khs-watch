@@ -2,8 +2,8 @@
   "initialized": true,
   "version": 2,
   "dataset_updated": "Oct 2, 2026",
-  "source_hash": "d0a4a3e043706570bfa836d80eb10249dfc03fd9b55a815b9917249adbb1aec2",
-  "snapshot_hash": "834c86b169d5e39f60f24949d5f8d746849846bd88884583a507822e111bc9b7",
+  "source_hash": "80575b06c7ce7ee8e11d5d7cd4b24e59347102a5e42ebb01df2622a3b71fee52",
+  "snapshot_hash": "d2d10afadcbaef957bbf0d1e6727fc2123d410cf788339fa9e7ba7ba75365f92",
   "projects": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -158,12 +158,12 @@
       "owner": "Meta",
       "users": "Meta",
       "investors": "미기재",
-      "current_mw": 496.0,
+      "current_mw": 471.0,
       "planned_mw": 1022.0,
-      "progress": 48.5,
+      "progress": 46.1,
       "completion_date": "2028-07-01",
       "completion": "2028.3Q",
-      "stage": "부분 가동·가동 확대",
+      "stage": "부분 가동·지붕·외피 공사",
       "risk": false,
       "mw_quality": "부분 가동·현재 가용 용량",
       "energy_site": "AEP Ohio/PJM 계통전력 · Meta의 Vistra 원전 계약이 Prometheus를 포함한 지역 운영을 지원하나 전용 직결선은 아님",
@@ -319,7 +319,9 @@
       ]
     }
   ],
-  "last_changes": [],
+  "last_changes": [
+    "Meta Prometheus (OH) 공정 부분 가동·가동 확대→부분 가동·지붕·외피 공사"
+  ],
   "source_errors": [],
-  "updated_at_utc": "2026-10-02T16:55:19+00:00"
+  "updated_at_utc": "2026-10-02T18:32:35+00:00"
 }
