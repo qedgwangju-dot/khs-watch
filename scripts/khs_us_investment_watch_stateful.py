@@ -68,6 +68,13 @@ def _is_official(row: dict) -> bool:
             "white house",
             "백악관",
             "sec",
+            "westinghouse",
+            "cameco",
+            "brookfield",
+            "한국전력",
+            "한국수력원자력",
+            "kepco",
+            "khnp",
         ]
     )
 
@@ -563,17 +570,71 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
             for value in _usd_billion_values(low):
                 if value in {"120", "100", "20", "10"}:
                     facts.add(f"nuclear_framework_usd_b:{value}")
+        if _is_official(row):
+            source_low = _norm(str(row.get("source") or ""))
+            if any(term in low for term in ["non-binding", "nonbinding", "비구속"]):
+                facts.add("nuclear_framework_binding:nonbinding")
+            if any(term in low for term in ["definitive agreements pending", "definitive agreement pending", "subject to definitive agreements", "final negotiations pending", "최종 협상 필요", "본계약 후속 확정"]):
+                facts.add("nuclear_definitive_agreement_status:pending")
+            if any(term in low for term in ["federal sites planned", "federal sites designated", "연방정부 부지 예정", "연방정부 지정 부지"]):
+                facts.add("nuclear_federal_site_status:planned")
+            if (
+                "ap1000" in low
+                and any(term in low for term in ["beginning with ap1000 2기", "starting with ap1000 2기", "ap1000 2기부터", "1단계 ap1000 2기"])
+            ):
+                facts.add("nuclear_initial_ap1000_units:2")
+            if (
+                "waiver" in low
+                and "2025" in low
+                and any(term in low for term in ["contemplated", "would allow", "예외 적용 검토", "일회성 예외"])
+            ):
+                facts.add("nuclear_settlement_waiver_status:contemplated")
+            if (
+                "apr1400" in low
+                and "westinghouse" in low
+                and any(term in low for term in ["20억달러", "$2 billion", "us$2 billion", "2 billion"])
+                and any(term in low for term in ["per apr1400", "reactor당", "기당", "per reactor"])
+            ):
+                facts.add("nuclear_apr1400_wh_value_per_unit_usd_b:2")
+            if (
+                "ap1000" in low
+                and any(term in low for term in ["한국 시공사", "한국 건설사", "korean construction"])
+                and any(term in low for term in ["기자재", "equipment", "supply chain"])
+                and any(term in low for term in ["참여", "include", "participat"])
+            ):
+                facts.add("nuclear_korean_ap1000_supply_chain:included")
+            if any(term in source_low for term in ["westinghouse", "cameco", "brookfield"]):
+                facts.add("nuclear_counterparty_confirmation:official")
         facts |= parties
         facts |= stages
         return facts
 
     if family == "westinghouse_stake":
+        for match in re.finditer(r"(\d+(?:\.\d+)?)\s*(?:~|-|to)\s*(\d+(?:\.\d+)?)\s*%", low):
+            facts.add(f"stake_range_percent:{match.group(1)}~{match.group(2)}")
         for pattern in [
             r"(?:지분(?:율)?|stake)\D{0,18}(\d+(?:\.\d+)?)\s*%",
             r"(\d+(?:\.\d+)?)\s*%\D{0,18}(?:지분(?:율)?|stake)",
         ]:
             for match in re.finditer(pattern, low):
                 facts.add(f"stake_percent:{match.group(1)}")
+        if _is_official(row):
+            if any(term in low for term in ["cornerstone equity investment", "potential equity investment", "지분 투자 예정", "지분 투자 검토"]):
+                facts.add("stake_status:contemplated")
+            if any(term in low for term in ["subject to definitive agreements", "definitive agreements pending", "최종 계약 필요", "본계약 후속 확정"]):
+                facts.add("equity_definitive_agreement_status:pending")
+            if "due diligence" in low or "실사 필요" in low:
+                facts.add("equity_due_diligence_status:pending")
+            if any(term in low for term in ["regulatory approvals", "regulatory approval", "규제 승인 필요"]):
+                facts.add("equity_regulatory_approval_status:pending")
+            if any(term in low for term in ["definitive agreement signed", "definitive agreements signed", "최종 계약 체결"]):
+                facts.add("equity_definitive_agreement_status:signed")
+            if any(term in low for term in ["due diligence completed", "실사 완료"]):
+                facts.add("equity_due_diligence_status:completed")
+            if any(term in low for term in ["regulatory approval obtained", "regulatory approvals obtained", "규제 승인 완료"]):
+                facts.add("equity_regulatory_approval_status:approved")
+            if any(term in low for term in ["equity investment closed", "transaction closed", "지분 취득 완료", "투자 종결"]):
+                facts.add("equity_closing_status:completed")
         facts |= {x for x in raw if x.startswith("governance:")}
         facts |= parties
         facts |= stages
@@ -712,9 +773,15 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
     return stages | parties | ({official_status} if official_status else set())
 
 def _fact_slot(family: str, fact: str) -> str:
+    if family == "westinghouse_stake" and fact.startswith(("stake_percent:", "stake_range_percent:")):
+        return f"{family}|stake_equity_percent"
     fixed_prefixes = (
         "nuclear_total_units:", "ap1000_units:", "apr1400_units:", "nuclear_framework_status:", "nuclear_project_status:", "nuclear_framework_usd_b:",
-        "stake_percent:", "funding_amount_usd:", "funding_date:", "funding_wait:",
+        "nuclear_framework_binding:", "nuclear_definitive_agreement_status:", "nuclear_federal_site_status:",
+        "nuclear_initial_ap1000_units:", "nuclear_settlement_waiver_status:", "nuclear_apr1400_wh_value_per_unit_usd_b:",
+        "nuclear_korean_ap1000_supply_chain:", "nuclear_counterparty_confirmation:",
+        "stake_percent:", "stake_range_percent:", "stake_status:", "equity_definitive_agreement_status:",
+        "equity_due_diligence_status:", "equity_regulatory_approval_status:", "equity_closing_status:", "funding_amount_usd:", "funding_date:", "funding_wait:",
         "repayment_horizon:", "package_nuclear_units:", "package_overall_usd_b:",
         "encinal_total_gw:", "encinal_total_mw:", "encinal_phase1_gw:", "encinal_phase2_gw:",
         "encinal_project_usd:", "encinal_project_cost_usd_b:", "encinal_status:", "encinal_phase1_year:", "encinal_full_year:",
@@ -841,6 +908,21 @@ def _human_fact(value: str) -> str:
         "official_status:confirmed": "정부 공식확정",
         "nuclear_framework_status:agreed": "한미 원전 프레임워크 합의",
         "nuclear_project_status:individual_projects_pending": "개별 원전 프로젝트 후속 확정 필요",
+        "nuclear_framework_binding:nonbinding": "프레임워크 비구속",
+        "nuclear_definitive_agreement_status:pending": "최종 계약 후속 협상 필요",
+        "nuclear_federal_site_status:planned": "연방정부 부지 배치 예정·개별 부지 미확정",
+        "nuclear_initial_ap1000_units:2": "1단계 AP1000 2기",
+        "nuclear_settlement_waiver_status:contemplated": "2025 타협협정 일회성 예외 검토",
+        "nuclear_korean_ap1000_supply_chain:included": "AP1000 한국 시공·기자재 참여 방향 포함",
+        "nuclear_counterparty_confirmation:official": "Westinghouse·Cameco 측 공식 확인",
+        "stake_status:contemplated": "Westinghouse 지분투자 프레임워크 포함·미종결",
+        "equity_definitive_agreement_status:pending": "지분 최종계약 미체결",
+        "equity_due_diligence_status:pending": "지분투자 실사 필요",
+        "equity_regulatory_approval_status:pending": "지분투자 규제승인 필요",
+        "equity_definitive_agreement_status:signed": "지분 최종계약 체결",
+        "equity_due_diligence_status:completed": "지분투자 실사 완료",
+        "equity_regulatory_approval_status:approved": "지분투자 규제승인 완료",
+        "equity_closing_status:completed": "지분투자 종결",
         "encinal_status:confirmed_first": "대미투자 1호 공식 확정",
         "alaska_bilateral_status:review_started": "한미 공식상태 검토 착수",
         "funding_wait:45영업일": "선정 통지 후 최소 45영업일",
@@ -854,7 +936,9 @@ def _human_fact(value: str) -> str:
         "ap1000_units:": "AP1000 ",
         "apr1400_units:": "APR1400 ",
         "nuclear_framework_usd_b:": "원전 프레임워크 재원 ",
+        "nuclear_apr1400_wh_value_per_unit_usd_b:": "APR1400 1기당 Westinghouse 예상 가치 ",
         "stake_percent:": "웨스팅하우스 지분 ",
+        "stake_range_percent:": "웨스팅하우스 지분 범위 ",
         "funding_amount_usd:": "첫 자금 집행 ",
         "funding_date:": "자금 집행일 ",
         "package_nuclear_units:": "패키지 원전 ",
@@ -1056,6 +1140,27 @@ def _migrate_joint_fact_sheet_status(state: dict) -> None:
     state["joint_fact_sheet_status_version"] = 1
 
 
+def _migrate_westinghouse_framework_equity(state: dict) -> None:
+    if int(state.get("westinghouse_framework_equity_version") or 0) >= 1:
+        return
+    bucket = (state.setdefault("event_states", {}).get("westinghouse_stake") or {})
+    if bucket:
+        stale = {"stake_percent:10", "stage:의결", "governance:board", "governance:voting"}
+        bucket["facts"] = sorted(set(str(x) for x in (bucket.get("facts") or []) if str(x) not in stale))
+        bucket["slots"] = {
+            str(k): str(v) for k, v in (bucket.get("slots") or {}).items()
+            if str(v) not in stale and str(k) not in {
+                "westinghouse_stake|stake_percent",
+                "westinghouse_stake|stake_equity_percent",
+                "westinghouse_stake|stage:의결",
+                "westinghouse_stake|governance:board",
+                "westinghouse_stake|governance:voting",
+            }
+        }
+        bucket["last_source"] = str(bucket.get("last_source") or "") + " · official-framework-reset"
+    state["westinghouse_framework_equity_version"] = 1
+
+
 def _load() -> dict:
     global _SHARED_STATE, _BOOTSTRAP_GUARD
     state = _ORIG_LOAD()
@@ -1066,6 +1171,7 @@ def _load() -> dict:
     _migrate_amount_scope_guard(state)
     _migrate_announcement_stage_guard(state)
     _migrate_joint_fact_sheet_status(state)
+    _migrate_westinghouse_framework_equity(state)
     if _BOOTSTRAP_GUARD:
         state["event_state_guard_version"] = GUARD_VERSION
         state["event_state_guard_started_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
@@ -1550,9 +1656,28 @@ def _self_test() -> int:
         "ap1000_units:6",
         "apr1400_units:2",
         "nuclear_framework_usd_b:120",
+        "nuclear_framework_binding:nonbinding",
+        "nuclear_definitive_agreement_status:pending",
+        "nuclear_federal_site_status:planned",
+        "nuclear_initial_ap1000_units:2",
+        "nuclear_settlement_waiver_status:contemplated",
+        "nuclear_apr1400_wh_value_per_unit_usd_b:2",
+        "nuclear_korean_ap1000_supply_chain:included",
+        "nuclear_counterparty_confirmation:official",
     }
     if not required_nuclear.issubset(accepted):
         raise RuntimeError(f"official Project Power baseline failed: {accepted}")
+
+    accepted, _ = _accepted_facts_for_group("westinghouse_stake", by_family.get("westinghouse_stake", []))
+    required_stake = {
+        "stake_range_percent:5~10",
+        "stake_status:contemplated",
+        "equity_definitive_agreement_status:pending",
+        "equity_due_diligence_status:pending",
+        "equity_regulatory_approval_status:pending",
+    }
+    if not required_stake.issubset(accepted):
+        raise RuntimeError(f"official Westinghouse equity baseline failed: {accepted}")
 
     accepted, _ = _accepted_facts_for_group("alaska_lng", by_family.get("alaska_lng", []))
     if "alaska_bilateral_status:review_started" not in accepted:
@@ -1600,6 +1725,24 @@ def _official_project_baseline_rows() -> list[dict]:
             "source": "대한민국 정책브리핑",
             "link": link,
             "published": published,
+        },
+        {
+            "title": "Cameco 공식 Project Power 원전 프레임워크 원전 8기 AP1000 6기 APR1400 2기 최대 1200억달러 terms non-binding definitive agreements pending federal sites planned beginning with AP1000 2기 2025 settlement agreement one-time waiver contemplated APR1400 reactor당 20억달러 Westinghouse value",
+            "source": "Cameco",
+            "link": "https://www.cameco.com/media/news/cameco-acknowledges-united-states-and-republic-of-korea-announcement-of-framework-for",
+            "published": "2026-09-30T12:00:00+00:00",
+        },
+        {
+            "title": "Westinghouse Brookfield 공식 한국 Westinghouse cornerstone equity investment 5~10% potential equity investment terms non-binding subject to definitive agreements due diligence regulatory approvals pending",
+            "source": "Westinghouse",
+            "link": "https://info.westinghousenuclear.com/news/u.s.-korea-framework-advances-deployment-of-westinghouse-nuclear-technology-in-the-united-states",
+            "published": "2026-10-01T12:00:00+00:00",
+        },
+        {
+            "title": "산업통상부 공식 Project Power AP1000 6기 한국 시공사 기자재기업 참여 확대 한미 원전 프레임워크 합의",
+            "source": "산업통상부",
+            "link": "https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/172253/view",
+            "published": "2026-10-01T00:00:00+00:00",
         },
     ]
 
