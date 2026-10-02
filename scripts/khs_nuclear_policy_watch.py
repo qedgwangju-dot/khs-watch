@@ -86,6 +86,17 @@ WEC_RSS_QUERIES = [
     ("웨스팅하우스 지분·공식입장 추적", "웨스팅하우스 산업통상부 한국전력 공식 발표 미확정 when:14d"),
 ]
 
+WEC_OFFICIAL_DIRECT_SOURCES = [
+    {
+        "name": "Westinghouse",
+        "url": "https://info.westinghousenuclear.com/news/u.s.-korea-framework-advances-deployment-of-westinghouse-nuclear-technology-in-the-united-states",
+    },
+    {
+        "name": "Cameco",
+        "url": "https://www.cameco.com/media/news/cameco-acknowledges-united-states-and-republic-of-korea-announcement-of-framework-for",
+    },
+]
+
 SMR_RSS_QUERIES = [
     ("SMR 법·제도", "SMR 소형모듈원자로 특별법 시행령 과학기술정보통신부 연구개발특구 when:14d"),
     ("SMR 사업화·실증", "SMR 소형모듈원자로 상세설계 실증 사업화 민관 공동출자 SPC 특구 when:14d"),
@@ -306,8 +317,12 @@ def _wec_state_facts(title: str, outlet: str = "") -> tuple[str, ...]:
         facts.append("status:unconfirmed")
     elif any(term in low for term in ("최종 확정", "공식 확정", "확정 발표", "signed agreement", "officially confirmed")):
         facts.append("status:confirmed")
+    elif any(term in low for term in ("non-binding", "nonbinding", "비구속")):
+        facts.append("status:framework_nonbinding")
 
-    if any(term in low for term in ("실사", "due diligence")):
+    if any(term in low for term in ("subject to definitive agreements", "definitive agreements", "final negotiations", "최종 계약 필요", "본계약 후속")):
+        facts.append("stage:definitive_agreement_pending")
+    elif any(term in low for term in ("실사", "due diligence")):
         facts.append("stage:due_diligence")
     elif any(term in low for term in ("loi", "mou", "양해각서", "term sheet", "텀시트")):
         facts.append("stage:pre_contract")
@@ -315,6 +330,15 @@ def _wec_state_facts(title: str, outlet: str = "") -> tuple[str, ...]:
         facts.append("stage:negotiation")
     elif any(term in low for term in ("계약 체결", "합의 체결", "취득 완료", "인수 완료")):
         facts.append("stage:contracted")
+
+    if any(term in low for term in ("due diligence", "실사 필요")) and not any(term in low for term in ("due diligence completed", "실사 완료")):
+        facts.append("approval:due_diligence_pending")
+    if any(term in low for term in ("regulatory approvals", "regulatory approval", "규제 승인 필요")):
+        facts.append("approval:regulatory_pending")
+    if any(term in low for term in ("corporate approvals", "corporate approval", "회사 승인 필요")):
+        facts.append("approval:corporate_pending")
+    if any(term in low for term in ("cornerstone equity investment", "potential equity investment")):
+        facts.append("transaction:cornerstone_equity")
 
     return tuple(sorted(dict.fromkeys(facts)))
 
@@ -352,6 +376,21 @@ def _self_test_material_filter() -> None:
         raise RuntimeError("Westinghouse generic-stake-wording regression")
     if not _is_material_westinghouse("웨스팅하우스 지분 5~10% 인수…의결권 가능", "한국경제"):
         raise RuntimeError("Westinghouse concrete-stake-range regression")
+    official_framework = _wec_state_key(
+        "Westinghouse 공식 한국 지분 5~10% cornerstone equity investment terms non-binding subject to definitive agreements due diligence corporate approvals regulatory approvals",
+        "Westinghouse",
+    )
+    for expected_fact in (
+        "stake_range:5~10",
+        "status:framework_nonbinding",
+        "stage:definitive_agreement_pending",
+        "approval:due_diligence_pending",
+        "approval:corporate_pending",
+        "approval:regulatory_pending",
+        "transaction:cornerstone_equity",
+    ):
+        if expected_fact not in official_framework:
+            raise RuntimeError(f"Westinghouse official framework parsing regression: {expected_fact} missing from {official_framework}")
     wec_a = _wec_state_key("웨스팅하우스 지분 5~10% 인수…의결권 가능", "한국경제")
     wec_b = _wec_state_key("웨스팅하우스 지분 5∼10% 협의, 의결권 행사 가능", "뉴시스")
     if wec_a != wec_b:
@@ -422,6 +461,8 @@ def _wec_status(title: str, outlet: str = "") -> str:
     low = title.lower()
     if any(term in low for term in ("사실과 다르", "공식 부인", "부인", "denies", "not true")):
         return "공식 부인·정정" if _is_official_outlet(outlet) or "공식" in low else "부인 보도"
+    if any(term in low for term in ("non-binding", "nonbinding", "비구속")) and any(term in low for term in ("definitive agreement", "final negotiation", "최종 계약", "본계약")):
+        return "공식 프레임워크·최종계약 미체결"
     if any(term in low for term in ("계약", "합의", "agreement", "contract")):
         return "계약·합의 단계"
     if any(term in low for term in ("loi", "mou", "양해각서", "term sheet", "텀시트")):
@@ -472,6 +513,14 @@ def _wec_fact_slot(fact: str) -> str:
         return "stage"
     if fact.startswith(("price:", "pricing:")):
         return "pricing"
+    if fact.startswith("approval:due_diligence"):
+        return "due_diligence"
+    if fact.startswith("approval:regulatory"):
+        return "regulatory_approval"
+    if fact.startswith("approval:corporate"):
+        return "corporate_approval"
+    if fact.startswith("transaction:"):
+        return "transaction_type"
     return fact
 
 
@@ -492,6 +541,43 @@ def _wec_merge_state(previous_key: str, current_key: str) -> tuple[bool, str]:
 def collect_westinghouse_stake_items(now: dt.datetime) -> list[dict]:
     rows: list[dict] = []
     seen_story: set[str] = set()
+
+    for source in WEC_OFFICIAL_DIRECT_SOURCES:
+        try:
+            raw = fetch_text(source["url"])
+        except Exception as exc:
+            print(f"westinghouse_official_error={source['name']} {exc}")
+            continue
+        body = clean_text(raw)
+        low = body.lower()
+        if "westinghouse" not in low or not any(term in low for term in ["5% and 10%", "5% to 10%", "5%~10%", "5-10%", "potential equity investment", "cornerstone equity investment"]):
+            continue
+        published = parse_date(body) or now
+        if (now - published).total_seconds() / 3600 > WEC_MAX_SOURCE_AGE_HOURS:
+            continue
+        normalized = (
+            "Westinghouse 공식 한국 지분 5~10% cornerstone equity investment "
+            "terms non-binding subject to definitive agreements due diligence corporate approvals regulatory approvals"
+        )
+        state_text = normalized + " " + body
+        story_key = f"official|{source['name'].lower()}|2026-09-30|westinghouse-equity-framework"
+        if story_key in seen_story:
+            continue
+        seen_story.add(story_key)
+        pub_utc = published.astimezone(UTC)
+        rows.append({
+            "kind": "westinghouse_stake",
+            "source": source["name"],
+            "title": normalized,
+            "link": source["url"],
+            "published_kst": pub_utc.astimezone(KST).isoformat(timespec="seconds"),
+            "published_utc": pub_utc.isoformat(timespec="seconds"),
+            "state_key": _wec_state_key(state_text, source["name"]),
+            "status": _wec_status(state_text, source["name"]),
+            "matched": ["westinghouse", "stake", "korea", "official", "5~10", "non-binding"],
+            "official": True,
+        })
+
     for source_name, query in WEC_RSS_QUERIES:
         try:
             root = ET.fromstring(fetch_text(_google_news_url(query)))
@@ -523,6 +609,7 @@ def collect_westinghouse_stake_items(now: dt.datetime) -> list[dict]:
                 "kind": "westinghouse_stake", "source": outlet or source_name, "title": title[:500], "link": link,
                 "published_kst": published.astimezone(KST).isoformat(timespec="seconds"), "published_utc": published.isoformat(timespec="seconds"),
                 "state_key": _wec_state_key(title, outlet), "status": _wec_status(title, outlet), "matched": ["westinghouse", "stake", "korea"],
+                "official": _is_official_outlet(outlet),
             })
     rows.sort(key=lambda item: item.get("published_utc", ""), reverse=True)
     return rows[:20]
@@ -905,9 +992,24 @@ def _render_direct(item: dict, idx: int, now: dt.datetime) -> list[str]:
 
 def _render_westinghouse_stake(item: dict, idx: int, now: dt.datetime) -> list[str]:
     status = item.get("status") or "추가 확인 필요"
-    unconfirmed = status not in {"계약·합의 단계", "지분 거래 확정 신호", "공식 부인·정정"}
+    official = bool(item.get("official")) or _is_official_outlet(str(item.get("source") or ""))
+    final = status in {"지분 거래 확정 신호"}
+    label = "확정" if final else ("공식·미종결" if official else "보도")
     numbers = _wec_numbers(item.get("title") or "")
     numbers_text = " · ".join(numbers) if numbers else "지분율·가격·출자액 미확정"
+    if official and status == "공식 프레임워크·최종계약 미체결":
+        return [
+            f"## {idx}. [{label}] 한국의 Westinghouse 지분 참여",
+            "- 핵심 변화: Westinghouse/Brookfield·Cameco 공식자료에서 한국의 Westinghouse 지분 5~10% 투자가 프레임워크 조건으로 직접 확인됐습니다.",
+            "- 숫자: 지분 5~10% · 다만 투자금액·최종 취득지분·종결일은 아직 미확정",
+            "- 확정 수준: 프레임워크 조건은 공식 확인됐지만 비구속이며, 최종계약·실사·회사 승인·규제 승인이 남아 있습니다.",
+            "- 한국 기업·매출 연결: 지분투자 자체와 AP1000 설계·조달·시공·기자재 수주는 별개입니다. 개별 사업권·공급계약이 나와야 한국 기업 매출로 승격합니다.",
+            "- 병목·실패모드: 최종협상에서 지분율·가격·거버넌스 권리가 바뀌거나 거래가 종결되지 않을 수 있습니다.",
+            f"- 출처: [{item['source']}]({item['link']}) · {item['published_kst']}",
+            "- 다음 확인: 최종계약 체결 → 실사 완료 → 회사·규제 승인 → 지분 취득 종결 → 사업권·조달권 별도 계약",
+            "",
+        ]
+    unconfirmed = status not in {"계약·합의 단계", "지분 거래 확정 신호", "공식 부인·정정"}
     return [
         f"## {idx}. [{'보도' if unconfirmed else '확정'}] 한국의 Westinghouse 지분 참여",
         f"- 핵심 변화: {item['title']}",
