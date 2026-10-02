@@ -52,6 +52,13 @@ _extend_unique(core.QUERIES, [
     '"Westinghouse" Korea stake acquisition when:14d',
     '"Westinghouse" KHNP KEPCO stake when:14d',
     '"Westinghouse" Korea minority stake when:14d',
+    '"Project Power" Westinghouse Cameco Brookfield AP1000 APR1400 when:7d',
+    '"Framework for the Deployment of Nuclear Power" Korea Westinghouse when:14d',
+    '"APR1400" waiver Westinghouse KEPCO KHNP when:14d',
+    '"Westinghouse" Korea "5%" "10%" equity when:14d',
+    '"Westinghouse" "$2 billion" APR1400 when:14d',
+    '"AP1000" Korea supply chain EPC Westinghouse when:14d',
+    '"한미 원전 프레임워크" 웨스팅하우스 카메코 지분 5 10 when:14d',
 ])
 _extend_unique(core.TRUSTED, [
     "뉴스핌",
@@ -73,6 +80,11 @@ _extend_unique(core.TRUSTED, [
     "산업통상부",
     "과학기술정보통신부",
     "과기정통부",
+    "Westinghouse",
+    "Cameco",
+    "Brookfield",
+    "한국전력",
+    "한국수력원자력",
 ])
 _extend_unique(core.MATERIAL, [
     "두산에너빌리티",
@@ -138,6 +150,24 @@ _extend_unique(core.MATERIAL, [
     "한전",
     "한국전력",
     "KEPCO",
+    "Framework for the Deployment of Nuclear Power",
+    "definitive agreement",
+    "definitive agreements",
+    "non-binding",
+    "waiver",
+    "settlement agreement",
+    "cornerstone equity investment",
+    "upfront payment",
+    "fuel fabrication",
+    "federal site",
+    "federal sites",
+    "guaranteed scope",
+    "long-lead",
+    "long lead",
+    "장납기",
+    "선지급",
+    "Team Korea",
+    "팀코리아",
 ])
 if hasattr(core, "HARD_PROGRESS_TERMS"):
     _extend_unique(core.HARD_PROGRESS_TERMS, [
@@ -148,6 +178,7 @@ if hasattr(core, "HARD_PROGRESS_TERMS"):
 if hasattr(core, "OFFICIAL_SOURCE_TERMS"):
     _extend_unique(core.OFFICIAL_SOURCE_TERMS, [
         "과학기술정보통신부", "과기정통부",
+        "Westinghouse", "Cameco", "Brookfield", "한국전력", "한국수력원자력", "KEPCO", "KHNP",
     ])
 
 _ORIG_KEY = core._key
