@@ -343,9 +343,21 @@ def build_alert(metrics: dict, changes: list[dict], evidence: list[dict], fx: di
         f"• 출처: {fx.get('source','확인 불가')} · {fx.get('quality','')}",
     ]
     if evidence:
+        source_ko = {
+            "Yahoo Finance": "야후 파이낸스",
+            "Investing.com": "인베스팅닷컴",
+            "Finvaulta": "핀볼타",
+            "StreetSignal": "스트리트시그널",
+            "Reuters": "로이터",
+            "Bloomberg": "블룸버그",
+            "CNBC": "CNBC",
+            "Financial Times": "파이낸셜타임스",
+            "Barron's": "배런스",
+            "MarketWatch": "마켓워치",
+        }
         lines += ["", "■ 확인 자료"]
         for row in evidence[:4]:
-            lines.append(f"• {row['source']}: {row['title']}")
+            lines.append(f"• {source_ko.get(row['source'], '신뢰 자료')}: 전망 변경 근거 확인")
             if row.get("url"):
                 lines.append(f"원문: {row['url']}")
     return "\n".join(lines) + "\n"
