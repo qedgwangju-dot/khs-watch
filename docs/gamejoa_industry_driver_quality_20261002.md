@@ -268,3 +268,23 @@ removes two nonmarket stories and one duplicate, changes two cores, and has
 zero core-focus mismatches. The 70-test materiality suite and all 11 regression
 scripts pass locally. No historical article, delivery key or report output
 was sent or reset. A fresh version-12 runtime artifact remains to be checked.
+
+Run `36957160368` passed at `2026-10-02T02:49:48Z`. Its `11:46:32 KST`
+artifact had 125 verified bodies, 35 failures and 382 deferred candidates;
+three electronic-industry feeds were inaccessible. ZIP SHA-256:
+`918010BAAFB9AEAA0BCFFD67CB455EB31F4BF7A3446D17A5B0152146E6BB17B3`.
+
+Manual review found a photograph description chosen for a conditional nuclear
+warning, numeric bond-market background chosen for central-bank guidance,
+and a cooling-shelter announcement promoted as operational climate damage.
+Version 13 removes descriptive photo-caption sentences, binds those statements
+to their headline topic and preserves the warning's stated condition. Climate
+events require actual damage, deaths, outages or operating disruption;
+public-service expansion cannot serve as physical supply evidence. Verified
+trade keys now preserve decimal values and signs in corrected facts.
+
+The 73-test materiality suite passes. Read-only replay of version 12 removes
+the shelter announcement, repairs both statement cores and reports zero focus
+mismatches. Actual warning text and policy guidance are retained without
+inventing a policy decision or actual nuclear use. Final runtime verification
+is recorded below after the complete suite and fresh-source run.

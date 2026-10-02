@@ -96,6 +96,40 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_weather_shelter_publicity_requires_actual_operational_damage(self):
+        title = "항만공사, 비즈니스 라운지 무더위·한파 쉼터 지정"
+        body = "비즈니스 라운지는 폭염과 한파 시기 시민과 항만 근로자의 쉼터 역할을 한다. 항만공사 사장은 공공서비스를 확대해 나갈 것이라고 말했다."
+        self.assertNotEqual(materiality.assess(title, body)["disposition"], "keep")
+        for headline, source in (
+            ("폭염에 항만 정전", "폭염으로 변압기 과부하와 항만 정전이 발생해 화물 처리에 차질이 발생했다."),
+            ("폭염 속 사망자 증가", "폭염으로 온열질환 사망자가 증가했다."),
+        ):
+            self.assertEqual(materiality.assess(headline, source)["disposition"], "keep")
+
+    def test_photo_caption_is_removed_without_removing_following_warning(self):
+        title = "푸틴, 칼리닌그라드 피격시 핵 대응 시사"
+        body = '[모스크바=AP/뉴시스] 블라디미르 푸틴 러시아 대통령(왼쪽)이 모스크바에서 열린 발다이 국제토론클럽에서 발언하고 있다. [서울=뉴시스] 기자 = 블라디미르 푸틴 러시아 대통령은 1일(현지 시간) 발트해 연안 역외 영토 칼리닌그라드가 공격받을 경우 "특별한 수단"을를 포함한 모든 무기를 사용할 준비가 돼 있다고 경고했다.'
+        self.assertTrue(radar.core_has_ui_garbage("푸틴이 토론클럽에서 발언하고 있다."))
+        sentences = radar.ranked_article_sentences(body, [], title=title)
+        self.assertFalse(any("발언하고 있다" in sentence for sentence in sentences))
+        core = radar.source_focused_article_core(title, sentences)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertIn("공격받을 경우", core)
+        self.assertIn("준비", core)
+        self.assertNotIn("왼쪽", core)
+        self.assertNotIn("을를", core)
+        self.assertFalse(materiality.core_focus_aligned(title, "러시아는 우크라이나의 정유시설을 공격했다고 밝혔다."))
+
+    def test_central_bank_guidance_core_keeps_statement_over_numeric_background(self):
+        title = '"더 시간이 필요할 수도"…연준 부의장, 추가 금리인상 신중론'
+        body = '미국 국채 수익률은 지난달 5%에서 5.25%로 상승했다. 필립 제퍼슨 연방준비제도 부의장은 "금리를 다시 인상할지 결정하기 전에 더 많은 시간이 필요할 수 있다"고 밝혔다.'
+        core = radar.source_focused_article_core(title, radar.ranked_article_sentences(body, [], title=title))
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertIn("제퍼슨", core)
+        self.assertIn("시간", core)
+        self.assertNotIn("5.25%", core)
+        self.assertEqual(materiality.assess(title, body)["disposition"], "keep")
+
     def test_campaign_rhetoric_and_personnel_disputes_are_not_macro_or_labor_events(self):
         cases = (
             ("트럼프-밴스, 공화당 지지지역 유세 지원", '밴스는 일자리 100만 개가 미국인에게 돌아갔다고 주장했다. 야당은 트럼프와 밴스가 이란전 비용으로 물가를 치솟게 만든 장본인이라고 비판했다.'),
@@ -139,6 +173,8 @@ class MaterialityChecks(unittest.TestCase):
         self.assertTrue(set(telegram.alert_seen_keys(items[0])) & set(telegram.alert_seen_keys(items[1])))
         changed = {**items[1], "source_body": items[1]["source_body"].replace("21만8718주", "25만8718주")}
         self.assertNotEqual(telegram.verified_trade_theme(items[0]), telegram.verified_trade_theme(changed))
+        revised = {**items[0], "telegram_core_fact": core.replace("99%", "9.9%")}
+        self.assertNotEqual(telegram.verified_trade_theme(items[0]), telegram.verified_trade_theme(revised))
         self.assertEqual(telegram.verified_trade_theme({**items[0], "body_verified": False}), "")
 
     def test_trading_resumption_core_does_not_replace_event_with_old_contract(self):

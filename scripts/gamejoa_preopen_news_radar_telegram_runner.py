@@ -174,7 +174,8 @@ def verified_trade_theme(alert: dict) -> str:
     )))
     if not amounts:
         return ""
-    fact = re.sub(r"[^a-z0-9가-힣%]", "", core.lower())
+    fact = re.sub(r"(?<=\d)\.(?=\d)", "decimal", core.lower())
+    fact = re.sub(r"[^a-z0-9가-힣%+\-]", "", fact)
     return f"verified_trade:{day}:{fact}:{'+'.join(amounts)}"
 
 

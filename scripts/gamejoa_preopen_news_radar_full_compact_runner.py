@@ -2245,6 +2245,15 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         ):
             continue
         fact = normalized_article_sentence(sentence)
+        if market_materiality.focus_kind(title) == "nuclear_warning":
+            speaker = re.match(r"^([A-Za-z가-힣]{2,20})\s*[,，]", title)
+            if speaker and speaker.group(1) in fact[:60]:
+                fact = re.sub(
+                    rf"^.*?{re.escape(speaker.group(1))}\s+[^.!?]{{0,20}}대통령(?:은|는)\s+", speaker.group(1) + ": ", fact,
+                )
+                fact = re.sub(r"^([^:]+:\s*)\d{1,2}일\s*\(현지\s*시간\)\s*", r"\1", fact)
+                fact = fact.replace("발트해 연안 역외 영토 ", "")
+                fact = re.sub(r"(을|를)(?:을|를)(?=\s)", r"\1", fact)
         if market_materiality.focus_kind(title) == "industrial_program":
             fact = re.sub(r"소형모듈원자로\s*\(SMR\)", "SMR", fact, flags=re.I)
             fact = fact.replace("SMR는", "SMR은")
@@ -8513,6 +8522,7 @@ def display_news(alert: dict) -> str:
 
 
 CORE_UI_GARBAGE_PATTERNS = (
+    r'[^.!?\r\n"“”]*?(?:발언|연설|질문에\s*답|기념촬영을)하고\s*있다\.',
     r"\b등록\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}(?::\d{2})?)?"
     r"(?:\s*수정\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}(?::\d{2})?)?)?",
     r"\b(?:입력|등록)\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}(?::\d{2})?)?"
