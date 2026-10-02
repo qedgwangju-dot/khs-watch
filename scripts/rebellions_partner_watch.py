@@ -48,7 +48,8 @@ KNOWN_KOREAN_PARTNERS = [
     "엘리스그룹", "이노뎁", "루닛", "워트인텔리전스", "cck솔루션", "에코피스",
     "베슬ai", "엑셈", "시즐", "라이너", "kb금융", "가비아", "제이디원",
     "아이에이", "아이에이클라우드", "몬드리안에이아이", "스퀴즈비츠", "비투엔", "모레",
-    "한국정보통신기술협회", "한국컴퓨팅산업협회"
+    "한국정보통신기술협회", "tta", "한국컴퓨팅산업협회",
+    "한국전력", "한국전력공사", "한전", "kepco"
 ]
 
 GOOGLE_QUERIES = [
@@ -109,19 +110,19 @@ def canonical_url(value):
 
 
 def event_signature(title, summary=""):
-    """High-confidence underlying-event key used only for recent duplicate suppression."""
+    """Underlying business-event key. Action wording is intentionally excluded to cluster same-event coverage."""
     text = (norm_text(title) + " " + norm_text(summary)).lower()
 
+    # Primary counterparty. Put end-customers / adopters before validators and ecosystem bodies.
     partner_aliases = [
+        ("kepco", ["한국전력공사", "한국전력", "한전", "kepco"]),
         ("skt", ["sk텔레콤", "skt"]),
         ("ktcloud", ["kt cloud", "kt클라우드"]),
         ("navercloud", ["네이버클라우드"]),
         ("nhncloud", ["nhn클라우드"]),
         ("samsung", ["삼성전자"]),
-        ("semifive", ["세미파이브"]),
-        ("adtechnology", ["에이디테크놀로지"]),
-        ("coasisemi", ["코아시아세미"]),
-        ("qrt", ["큐알티"]),
+        ("kb", ["kb금융"]),
+        ("gabia", ["가비아"]),
         ("konan", ["코난테크놀로지"]),
         ("kolonbenit", ["코오롱베니트"]),
         ("igloo", ["이글루코퍼레이션"]),
@@ -138,48 +139,94 @@ def event_signature(title, summary=""):
         ("exem", ["엑셈"]),
         ("sizl", ["시즐"]),
         ("liner", ["라이너"]),
-        ("kb", ["kb금융"]),
-        ("gabia", ["가비아"]),
         ("jdone", ["제이디원"]),
         ("ia", ["아이에이클라우드", "아이에이그룹", "아이에이"]),
         ("mondrian", ["몬드리안에이아이"]),
         ("squeezebits", ["스퀴즈비츠"]),
         ("b2en", ["비투엔"]),
         ("moreh", ["모레"]),
+        ("semifive", ["세미파이브"]),
+        ("adtechnology", ["에이디테크놀로지"]),
+        ("coasisemi", ["코아시아세미"]),
+        ("qrt", ["큐알티"]),
+        ("tta", ["한국정보통신기술협회", "tta"]),
     ]
     partner = next((name for name, aliases in partner_aliases if any(a in text for a in aliases)), None)
     if not partner:
         return None
 
-    if any(x in text for x in ["수주", "공급계약", "공급 계약", "납품", "발주"]):
-        action = "supply"
-    elif any(x in text for x in ["도입", "채택", "탑재", "상용", "적용", "가동", "서비스"]):
-        action = "deploy"
-    elif any(x in text for x in ["mou", "업무협약", "전략적 제휴", "파트너십", "공동개발", "공동 개발", "공동사업", "공동 사업", "협력"]):
-        action = "partner"
-    elif any(x in text for x in ["투자", "출자", "지분", "인수", "합병"]):
-        action = "capital"
-    elif any(x in text for x in ["실증", "poc", "검증", "테스트"]):
-        action = "validate"
-    else:
-        return None
-
     if any(x in text for x in ["리벨100", "rebel100", "rebel 100"]):
         product = "rebel100"
-    elif any(x in text for x in ["아톰맥스", "atom-max", "atom max", "아톰", " atom ", "npu"]):
-        product = "npu_atom"
+    elif any(x in text for x in ["아톰맥스", "atom-max", "atom max"]):
+        product = "atommax"
     elif any(x in text for x in ["리벨랙", "rebelrack"]):
         product = "rebelrack"
     elif any(x in text for x in ["리벨서버", "rebelserver", "ai 서버", "ai server"]):
         product = "server"
-    elif "cctv" in text:
-        product = "cctv"
-    elif "클라우드" in text or "cloud" in text:
-        product = "cloud"
+    elif any(x in text for x in ["아톰", " atom ", "npu", "ai반도체", "ai 반도체"]):
+        product = "npu"
+    elif any(x in text for x in ["칩렛", "chiplet"]):
+        product = "chiplet"
     else:
         product = "general"
 
-    return f"{partner}|{action}|{product}"
+    # Application/project context prevents unrelated deals with the same counterparty from colliding.
+    if any(x in text for x in ["변전소", "전력 현장", "전력분야", "전력 분야", "영상분석", "영상 분석", "영상 관제", "ai 관제"]):
+        context = "power_video"
+    elif any(x in text for x in ["cctv", "관제센터", "관제 센터"]):
+        context = "cctv"
+    elif any(x in text for x in ["금융", "은행"]):
+        context = "finance"
+    elif any(x in text for x in ["의료", "병원", "헬스케어"]):
+        context = "healthcare"
+    elif any(x in text for x in ["클라우드", "cloud", "npuass", "npu as a service"]):
+        context = "cloud"
+    elif any(x in text for x in ["특허", "patent"]):
+        context = "patent"
+    elif any(x in text for x in ["데이터센터", "data center", "aidc"]):
+        context = "datacenter"
+    elif any(x in text for x in ["로봇", "robot"]):
+        context = "robot"
+    elif any(x in text for x in ["보안", "security"]):
+        context = "security"
+    else:
+        context = "general"
+
+    return f"{partner}|{product}|{context}"
+
+
+def material_stage(title, summary=""):
+    """Material stage used only to avoid suppressing a true commercial step-up."""
+    text = (norm_text(title) + " " + norm_text(summary)).lower()
+    if any(x in text for x in [
+        "수주", "공급계약", "공급 계약", "구매계약", "구매 계약", "발주",
+        "납품 완료", "납품한다", "정식 공급", "계약금액", "계약 금액"
+    ]):
+        return 5
+    if any(x in text for x in [
+        "상용화", "상용 서비스", "정식 도입", "전면 도입", "양산 시작", "양산 개시",
+        "실제 도입", "운영 개시"
+    ]):
+        return 4
+    if any(x in text for x in ["실증 완료", "검증 완료", "poc 완료", "시범운영 완료"]):
+        return 3
+    if any(x in text for x in ["실증", "검증", "poc", "시범운영", "시범 운영", "현장 적용", "현장 투입"]):
+        return 2
+    if any(x in text for x in ["mou", "업무협약", "파트너십", "공동개발", "공동 개발", "협력", "제휴"]):
+        return 1
+    return 0
+
+
+def source_rank(source, official=False):
+    if official:
+        return 100
+    text = norm_text(source).lower()
+    high = [
+        "연합뉴스", "뉴시스", "전자신문", "지디넷", "zdnet", "이데일리", "조선비즈",
+        "한국경제", "매일경제", "머니투데이", "서울경제", "뉴스핌", "아시아경제",
+        "파이낸셜뉴스", "디지털데일리", "아이뉴스24", "블로터", "thelec", "디일렉"
+    ]
+    return 80 if any(x in text for x in high) else 50
 
 
 def seen_time(entry):
@@ -193,11 +240,12 @@ def seen_time(entry):
         return None
 
 
-def find_duplicate_event(item, seen, now, semantic_hours=96):
-    """Return duplicate reason when this is coverage of an already-alerted event."""
+def find_duplicate_event(item, seen, now, semantic_hours=72):
+    """Return duplicate reason when this is another article about the same already-seen event."""
     item_url = canonical_url(item.get("url"))
     item_title = norm_title(item.get("title"))
     item_sig = event_signature(item.get("title"), item.get("summary", ""))
+    item_stage = material_stage(item.get("title"), item.get("summary", ""))
 
     for prior in seen.values():
         prior_url = canonical_url(prior.get("url"))
@@ -211,14 +259,21 @@ def find_duplicate_event(item, seen, now, semantic_hours=96):
 
     cutoff = now - dt.timedelta(hours=semantic_hours)
     for prior in seen.values():
-        if not prior.get("alerted"):
+        if not (prior.get("alerted") or prior.get("pending_alert")):
             continue
         when = seen_time(prior)
         if not when or when < cutoff:
             continue
-        prior_sig = event_signature(prior.get("title"), "")
-        if prior_sig == item_sig:
-            return f"same_event:{item_sig}"
+        prior_sig = prior.get("event_signature") or event_signature(prior.get("title"), prior.get("summary", ""))
+        if prior_sig != item_sig:
+            continue
+
+        # A genuinely stronger commercial event is allowed through.
+        prior_stage = int(prior.get("material_stage") or material_stage(prior.get("title"), prior.get("summary", "")))
+        if item_stage >= 4 and item_stage > prior_stage:
+            return None
+        return f"same_event:{item_sig}"
+
     return None
 
 
@@ -258,13 +313,19 @@ def domestic_candidate(title, summary=""):
 
 def classify(title, summary=""):
     text = (norm_text(title) + " " + norm_text(summary)).lower()
-    if any(x in text for x in ["수주", "공급계약", "공급 계약", "계약 체결", "contract", "order"]):
+    has_mou = any(x in text for x in ["mou", "업무협약", "협력", "파트너", "공동개발", "공동 개발", "제휴"])
+    has_validation = any(x in text for x in ["실증", "검증", "poc", "시범운영", "시범 운영", "현장 투입"])
+    if any(x in text for x in ["수주", "공급계약", "공급 계약", "구매계약", "구매 계약", "납품", "발주", "contract", "order"]):
         return "수주·공급·계약"
     if any(x in text for x in ["도입", "채택", "상용", "출시", "deployment", "adoption"]):
         return "도입·상용화"
     if any(x in text for x in ["양산", "생산", "mass production"]):
         return "양산·생산"
-    if any(x in text for x in ["mou", "업무협약", "협력", "파트너", "공동개발", "공동 개발"]):
+    if has_mou and has_validation:
+        return "협력·MOU·실증"
+    if has_validation:
+        return "실증·검증"
+    if has_mou:
         return "협력·MOU·공동개발"
     if any(x in text for x in ["투자", "지분", "인수", "합병"]):
         return "투자·지분·인수"
@@ -379,13 +440,23 @@ def main():
             deduped[k] = item
 
     ordered = list(deduped.items())
-    ordered.sort(key=lambda kv: (not kv[1]["official"], kv[1].get("published_kst") or ""), reverse=False)
+    ordered.sort(
+        key=lambda kv: (
+            1 if kv[1]["official"] else 0,
+            source_rank(kv[1].get("source", ""), kv[1]["official"]),
+            kv[1].get("published_kst") or "",
+        ),
+        reverse=True,
+    )
 
     if not state.get("initialized"):
         for k, item in ordered:
             seen[k] = {
                 "title": item["title"],
                 "url": item["url"],
+                "summary": item.get("summary", ""),
+                "event_signature": event_signature(item["title"], item.get("summary", "")),
+                "material_stage": material_stage(item["title"], item.get("summary", "")),
                 "first_seen_kst": now.isoformat(timespec="seconds"),
             }
         pending = {
@@ -411,19 +482,25 @@ def main():
 
     fresh = []
     duplicate_suppressed = 0
+    dedupe_seen = dict(seen)
     for k, item in ordered:
         if k in seen:
             continue
 
-        duplicate_reason = find_duplicate_event(item, seen, now)
+        duplicate_reason = find_duplicate_event(item, dedupe_seen, now)
         if duplicate_reason:
             duplicate_suppressed += 1
-            seen[k] = {
+            duplicate_entry = {
                 "title": item["title"],
                 "url": item["url"],
+                "summary": item.get("summary", ""),
+                "event_signature": event_signature(item["title"], item.get("summary", "")),
+                "material_stage": material_stage(item["title"], item.get("summary", "")),
                 "first_seen_kst": now.isoformat(timespec="seconds"),
                 "suppressed_duplicate": duplicate_reason,
             }
+            seen[k] = duplicate_entry
+            dedupe_seen[k] = duplicate_entry
             continue
 
         pub = None
@@ -442,6 +519,16 @@ def main():
             }
             continue
         fresh.append((k, item))
+        # Reserve the event immediately so a second publisher in this very same run is suppressed.
+        dedupe_seen[k] = {
+            "title": item["title"],
+            "url": item["url"],
+            "summary": item.get("summary", ""),
+            "event_signature": event_signature(item["title"], item.get("summary", "")),
+            "material_stage": material_stage(item["title"], item.get("summary", "")),
+            "first_seen_kst": now.isoformat(timespec="seconds"),
+            "pending_alert": True,
+        }
 
     if fresh:
         lines = [
@@ -469,7 +556,9 @@ def main():
                 "title": item["title"],
                 "url": item["url"],
                 "direct_url": direct_url,
+                "summary": item.get("summary", ""),
                 "event_signature": event_signature(item["title"], item.get("summary", "")),
+                "material_stage": material_stage(item["title"], item.get("summary", "")),
                 "first_seen_kst": now.isoformat(timespec="seconds"),
                 "alerted": True,
             }
