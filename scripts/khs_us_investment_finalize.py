@@ -121,7 +121,7 @@ def _short_judgment(title: str, tags: str) -> str:
     if "ercot" in blob or "계통연계" in blob:
         return "신청량보다 승인·전원 인가·실제 가동 단계 상승을 우선."
     if "원전 프레임워크" in blob or "project power" in blob:
-        return "한미 공동 팩트시트상 원전 8기 프레임워크 합의. AP1000 6기·APR1400 2기는 공식 프레임워크 수치지만 개별 부지·사업구조·일정은 후속 확정."
+        return "한미 원전 8기 프레임워크는 정부·Westinghouse·Cameco 측 공식 확인 단계. 다만 조건은 비구속이며 최종계약·부지·규제·금융·2025 타협협정 예외·개별 발주가 후속 확정."
     if "원전" in blob:
         return "원전 관련 보도는 한미 공동 팩트시트의 프레임워크 범위와 개별 프로젝트 확정 수준을 구분."
     if "알래스카 lng" in blob or "project north" in blob:
@@ -202,12 +202,23 @@ def _current_state_block(flags: dict[str, bool]) -> list[str]:
     apr1400 = value("apr1400_units:")
 
     if "nuclear_framework_status:agreed" in facts:
-        return [
+        lines = [
             "<b>📌 원전 공식 기준</b>",
-            f"• 한미 공동 팩트시트: <b>원전 프레임워크 합의</b> · 전체 {html.escape(total)}기 = AP1000 {html.escape(ap1000)}기 + APR1400 {html.escape(apr1400)}기",
-            "• 재원: <b>최대 1,200억달러</b> = 건설비 1,000억달러 + 예비비 200억달러",
-            "• 다만 <b>개별 원전 부지·사업구조·건설일정은 아직 최종 확정이 아니며</b>, 각 사업별 상업적 합리성 검토·국회 절차 후 추진 여부 결정",
+            f"• 한미 프레임워크: <b>전체 {html.escape(total)}기 = AP1000 {html.escape(ap1000)}기 + APR1400 {html.escape(apr1400)}기</b> · 최대 1,200억달러",
         ]
+        if "nuclear_counterparty_confirmation:official" in facts:
+            lines.append("• <b>Westinghouse·Cameco 측 공식 확인</b>까지 완료 · 단순 언론보도 단계 아님")
+        if "nuclear_framework_binding:nonbinding" in facts or "nuclear_definitive_agreement_status:pending" in facts:
+            lines.append("• 법적 단계: <b>비구속 프레임워크</b> · 최종계약·특정부지·규제승인·금융조달은 아직 후속 조건")
+        if "nuclear_initial_ap1000_units:2" in facts:
+            lines.append("• 실행 순서: <b>AP1000 2기부터 시작</b> · 연방정부 부지는 방향만 확인됐고 개별 부지는 아직 미확정")
+        if "nuclear_settlement_waiver_status:contemplated" in facts:
+            lines.append("• APR1400: <b>2025 Westinghouse-KEPCO-KHNP 타협협정의 일회성 예외를 적용하는 구조</b> · 예외계약 자체는 아직 미체결")
+        if "nuclear_apr1400_wh_value_per_unit_usd_b:2" in facts:
+            lines.append("• Westinghouse 예상 가치: <b>APR1400 1기당 약 20억달러</b> · IP·엔지니어링/조달·하도급·장기 핵연료 가공을 합친 예상가치이며 현재 인식매출 아님")
+        if "nuclear_korean_ap1000_supply_chain:included" in facts:
+            lines.append("• AP1000 6기에도 <b>한국 시공·기자재 기업 참여 방향</b>이 공식 문서에 포함 · 개별 공급사 PO·수주금액은 아직 미확정")
+        return lines
 
     official = "미확정" if "official_status:unconfirmed" in facts else (
         "공식확정" if "official_status:confirmed" in facts else "확인 중"
@@ -349,7 +360,12 @@ def _next_checks(flags: dict[str, bool]) -> list[str]:
         else:
             checks += ["사업 선정일·한국 통보일·자금요청·실제 송금일/금액"]
     if flags["nuclear"] and not flags["pyro"]:
-        checks += ["원전 부지·노형·기수·발주주체·본계약"]
+        checks += [
+            "한미·Westinghouse·KEPCO·KHNP 최종계약 서명과 2025 타협협정 일회성 예외계약 체결",
+            "첫 AP1000 2기 개별 부지·EPC 계약·장납기 기자재 구매주문(PO)",
+            "AP1000 한국 시공·기자재 업체 실명 수주·물량·납기",
+            "Westinghouse 5~10% 지분투자 최종계약·실사·규제승인·종결",
+        ]
     if flags["ercot"]:
         checks += ["계통연계 승인·전원 인가·실제 가동"]
     if flags["alaska"]:
@@ -438,7 +454,7 @@ def _compact_generic(text: str, core, lookup_time: str) -> str | None:
         ]
     elif flags["funding"] or flags["energy"] or flags["alaska"]:
         parts += [
-            '<b>공식 기준</b> · <a href="https://www.korea.kr/briefing/pressReleaseView.do?newsId=156783865">2026-10-01 한미 전략투자 공동 팩트시트</a> · <a href="https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/171196/view">2025-11-14 전략적 투자 MOU</a>',
+            '<b>공식 기준</b> · <a href="https://www.korea.kr/briefing/pressReleaseView.do?newsId=156783865">한미 전략투자 공동 팩트시트</a> · <a href="https://www.cameco.com/media/news/cameco-acknowledges-united-states-and-republic-of-korea-announcement-of-framework-for">Cameco 공식</a> · <a href="https://info.westinghousenuclear.com/news/u.s.-korea-framework-advances-deployment-of-westinghouse-nuclear-technology-in-the-united-states">Westinghouse/Brookfield 공식</a>',
             "",
         ]
     if flags["supply"]:
