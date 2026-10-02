@@ -30,7 +30,7 @@ class SamsungHBM4PriceWatchTests(unittest.TestCase):
         )
         obs = w.extract_samsung_hbm4_price(self.event(text))
         self.assertIsNotNone(obs)
-        self.assertEqual(obs["stage"], "final_stage")
+        self.assertEqual(obs["stage"], "negotiation")
         self.assertEqual(obs["offered_price_band"], "mid_to_high_4_usd_per_gb")
         self.assertEqual(obs["reference_hbm3e_usd_per_gb"], 1.5)
         self.assertEqual(obs["price_multiple_floor"], 3.0)
@@ -46,6 +46,13 @@ class SamsungHBM4PriceWatchTests(unittest.TestCase):
         self.assertEqual(obs["offered_price_band"], "mid_to_high_4_usd_per_gb")
         self.assertIsNone(obs.get("offered_price_usd_per_gb_min"))
         self.assertIsNone(obs.get("offered_price_usd_per_gb_max"))
+
+    def test_current_final_stage_without_future_wording(self):
+        obs = w.extract_samsung_hbm4_price(self.event(
+            "삼성전자의 2027 HBM4 가격 협상이 현재 마무리 수순에 들어갔다. "
+            "HBM4는 고객사와 연간 공급 가격을 협상 중이다."
+        ))
+        self.assertEqual(obs["stage"], "final_stage")
 
     def test_signed_contract_upgrades_stage(self):
         obs = w.extract_samsung_hbm4_price(self.event(
