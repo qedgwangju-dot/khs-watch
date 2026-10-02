@@ -146,6 +146,18 @@ class MaterialityChecks(unittest.TestCase):
         self.assertEqual(telegram.macro_release_theme({**base_item, "source_title": "10월 물가 3% 상승 예상", "telegram_core_fact": "한국은행은 10월 소비자물가가 3% 내외로 상승할 것으로 예상했다."}), "")
         self.assertEqual(telegram.macro_release_theme({**base_item, "body_verified": False}), "")
 
+    def test_generated_report_guard_rejects_duplicate_source_events(self):
+        import verify_gamejoa_generated_report as guard
+
+        core = "국가데이터처가 발표한 9월 소비자물가는 2.9% 상승했다."
+        items = [alert(title, core) for title in ("9월 물가 2.9%↑(종합)", "9월 물가 2.9%↑(2보)")]
+        for item in items:
+            item.update(telegram_core_fact=core, published="2026-10-02T09:33:00+09:00")
+        self.assertEqual(len(guard.duplicate_event_errors(items, radar)), 1)
+        revised = {**items[1], "source_title": "9월 물가 3.0%↑(수정)",
+                   "telegram_core_fact": core.replace("2.9%", "3.0%")}
+        self.assertEqual(guard.duplicate_event_errors([items[0], revised], radar), [])
+
     def test_retail_fx_benefits_are_not_macro_rate_changes(self):
         title = "백화점, 中 국경절 관광객 공략…K패션 행사"
         body = "백화점이 중국 국경절 연휴 관광객 공략에 나선다. 300만원 이상 결제하면 10만원을 즉시 할인하고 환율 우대 혜택을 적용한다."

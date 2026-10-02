@@ -149,9 +149,11 @@ omitted country or counterfactual second headline rate; actual period, value,
 core/headline and comparison bases remain distinct from forecasts/revisions.
 That macro key is shared by final selection and delivered-state checks.
 
-Four persistent regression tests bring the total to 54. Read-only rechecking
+Five persistent regression tests bring the total to 55. Read-only rechecking
 of the actual 7-body artifact confirmed all three nonmarket/publicity
 exclusions, zero changed cores and zero focus mismatches. Synthetic final
 selection and delivered-key checks confirm the two CPI editions merge, while
-forecasts and revised values/periods remain distinct. The amended patch must
-still pass the complete suite and a new production-environment dry run.
+forecasts and revised values/periods remain distinct. The final generated-report
+guard independently rejects duplicate source event keys, even if a future
+selection change accidentally lets two editions through. The amended patch
+must still pass the complete suite and a new production-environment dry run.

@@ -88,6 +88,17 @@ def value_after(line: str, marker: str) -> str:
     return line.split(marker, 1)[1].strip() if marker in line else ""
 
 
+def duplicate_event_errors(alerts: list[dict], runner) -> list[str]:
+    seen = set()
+    errors = []
+    for alert in alerts:
+        key = runner.alert_dedup_key(alert)
+        if key in seen:
+            errors.append(f"duplicate source event in generated report: {alert.get('news')}")
+        seen.add(key)
+    return errors
+
+
 def assert_item_quality(title: str, block: list[str], errors: list[str]) -> None:
     clean_title = normalize_title(title)
     if mostly_ascii(clean_title):
@@ -184,6 +195,7 @@ def main() -> int:
             errors.append(
                 f"report/JSON selected count mismatch: report={len(blocks)} json={len(json_alerts)}"
             )
+        errors.extend(duplicate_event_errors(json_alerts, prod.runner))
         for alert in json_alerts:
             run_time = prod.runner.detail_queue.parse_time(data.get("query_time_kst"))
             if run_time and prod.runner.is_stale_session_preview(alert, run_time):
