@@ -879,3 +879,35 @@ New positive controls retain the primary earnings article, a security
 certificate accompanied by a new supply contract, the macro result and the
 technical result. The materiality suite now has 123 tests. All 11 local
 contracts passed; deployment and a final fresh remote run follow separately.
+
+## Version 30: Preserve Approval and Research Milestones
+
+Version 29 was deployed in revision
+`37661f0cedcc92aebd57e6483371d819a9ae227e`. Fresh dry run `36997022668`
+completed at `2026-10-02T10:47:02Z` with 123 passing regressions and a saved
+report guard PASS. It queried at `19:44:40 KST`, attempted 58 bodies,
+verified 50, failed eight and deferred 502. No Telegram delivery, seen commit
+or queue commit occurred. ZIP SHA-256:
+`59A322BF7D935850C003FE8002D54AC6CA14399C26E705B35E0ADE48B991BBFE`.
+
+Both selected source bodies were read. Their cores were source-attested but
+still missed the primary event: a smelter's environmental assessment decision
+became a recycling plan; a biology platform research announcement became a
+generic statement that clinical validation was underway. This was not accepted
+as satisfactory merely because the technical guard passed.
+
+The approval headline now focuses on the completed final assessment and FONSI
+decision, retaining the source's `last month, day 11` event date. It does not
+claim that all subsequent permits have been granted or the plant has started
+operating. The research headline now retains its reported benchmark result:
+AI codon optimization and a greater-than-50% translation-efficiency gain.
+This is not presented as patient efficacy or a newly completed clinical trial.
+Quantity-backed research-validation evidence remains below commercial-order
+priority, and an unquantified clinical-background statement cannot substitute
+for the research result. New core logic still runs through source-fact guards.
+
+The same 20 actual delivery rows still retain 14 and exclude six. Separately,
+the two version-29 dry-run articles retain both with corrected complete cores,
+zero source-fact errors and their original links. No historic sends were
+reissued. The materiality suite contains 125 tests. Final deployment, all local
+contracts and a fresh production-environment source run are verified separately.

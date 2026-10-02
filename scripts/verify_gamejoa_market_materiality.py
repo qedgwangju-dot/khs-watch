@@ -113,6 +113,29 @@ DELIVERED_LOCAL_ADMINISTRATION = (
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_new_source_environmental_approval_core_is_the_decision_not_recycling_plan(self):
+        title = "고려아연 '프로젝트 크루서블' 美 환경평가 통과…친환경 제련소 구축 탄력"
+        body = ("2일 업계에 따르면 미국 전쟁부는 지난달 11일(현지시간) 미국 국가환경정책법(NEPA)에 따라 프로젝트 크루서블의 최종 환경평가(Final EA)를 완료하고 '중대한 환경영향 없음(FONSI)' 결정을 내렸다.\n"
+                "평가서에 따르면 고려아연은 연간 약 35만t의 주요 공정 잔재·부산물 가운데 약 96%인 33만5000t을 재활용할 계획이다.")
+        item = {**alert(title, body), "telegram_core_fact": "고려아연은 공정 잔재 96%를 재활용할 계획이다."}
+        core = radar.verified_alert_core(item, title)
+        for term in ("미국 전쟁부", "지난달 11일", "크루서블", "최종 환경평가", "FONSI", "결정"):
+            self.assertIn(term, core)
+        self.assertNotIn("96%", core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+
+    def test_new_source_biology_research_core_keeps_benchmark_result_not_generic_clinical_background(self):
+        title = "GC녹십자, 국내외 학회 참가해 독자 mRNA-LNP 플랫폼 연구 성과 공개"
+        body = ("GC녹십자는 자체 플랫폼 연구 성과를 발표했다.\n"
+                "회사는 자체 개발한 비번역영역(UTR) 서열과 폴리A 구조에 AI 기반 코돈 최적화 기술을 적용해 벤치마크 대비 단백질 번역 효율을 50% 이상 향상시켰다.\n"
+                "GC녹십자의 독자 mRNA-LNP 플랫폼은 현재 임상 단계에서도 검증이 진행되고 있다.")
+        item = {**alert(title, body), "telegram_core_fact": "GC녹십자의 독자 mRNA-LNP 플랫폼은 현재 임상 단계에서도 검증이 진행되고 있다."}
+        core = radar.verified_alert_core(item, title)
+        for term in ("GC녹십자", "코돈 최적화", "벤치마크", "단백질 번역 효율", "50% 이상"):
+            self.assertIn(term, core)
+        self.assertNotIn("임상", core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+
     def test_actual_construction_spending_delivery_keeps_period_basis_and_change(self):
         title = "미국 8월 건설지출 0.9% 증가…비주거용이 견인"
         body = ("미국 부동산 시황을 파악할 수 있는 2026년 8월 건설지출은 연율 환산으로 전월 대비 0.9% 증가했다고 마켓워치와 RTT 뉴스, MSN이 2일 보도했다.\n"

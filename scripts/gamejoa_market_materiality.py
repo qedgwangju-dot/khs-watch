@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 29
+VERSION = 30
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -86,6 +86,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("trading_status", r"거래\s*재개|액면병합|주식병합", r"거래.{0,12}재개|재개.{0,12}거래|액면병합|주식병합"),
     ("customer_implementation", r"1차\s*시공|초도\s*납품", r"1차\s*시공|초도\s*납품"),
     ("industrial_program", r"(?:SMR|원전|양자|반도체|로봇).{0,16}상용화", r"(?:상용화|사업화).{0,50}(?:출범|지원|시행|추진)|(?:출범|지원|시행|추진).{0,50}(?:상용화|사업화)"),
+    ("environmental_approval", r"환경(?:영향)?평가.{0,15}(?:통과|완료|면제)", r"최종\s*환경평가|FONSI|환경영향평가서.{0,35}(?:없이|면제)"),
     ("ownership", r"지분.{0,25}(?:인수|매각|취득)|인수.{0,25}지분|합병(?!원)", r"지분|인수|매각|취득|합병(?!원)|stake|acquir|merger"),
     ("shareholder", r"자사주|자기주식|주주환원|배당", r"자사주|자기주식|주주환원|배당|(?:주식|지분).{0,30}(?:매수|취득|매입|처분)|buyback|dividend"),
     ("capital_listing", r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|신규\s*상장", r"기업공개|\bipo\b|상장(?!지수)"),
@@ -100,6 +101,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("production_capacity", r"증설|캐파|생산능력|착공|가동\s*(?:중단|시작)|생산\s*중단|production capacity|capacity expansion|production halt", r"증설|캐파|생산능력|착공|가동|생산|production capacity|capacity|construction|production"),
     ("project_buildout", r"데이터센터\s*(?:구축|건설)|data cent(?:er|re).{0,15}(?:build|construction)", r"데이터센터[^.!?]{0,80}(?:구축|건설)|(?:구축|건설).{0,30}데이터센터|data cent(?:er|re).{0,80}(?:build|construction)|(?:build|construction).{0,30}data cent(?:er|re)"),
     ("research_spending", r"r&d|연구개발", r"r&d|연구개발"),
+    ("research_result", r"연구\s*성과|실험\s*결과|벤치마크", r"벤치마크|실험\s*결과|연구\s*결과"),
     ("model_efficiency", r"토큰\s*(?:처리량|량)|추론\s*(?:속도|비용).{0,15}\d", r"토큰\s*(?:처리량|량).{0,35}\d|추론\s*(?:속도|비용).{0,35}\d"),
     ("analyst_revision", r"목표주가|목표가|투자의견|\[美특징주\].{0,60}(?:전망|평가)", r"목표주가|목표가|투자의견"),
     ("industrial_architecture", r"hvdc|\bvdc\b|\bcpo\b|광트랜시버|광\s*인터커넥트|파운데이션\s*모델|foundation model", r"hvdc|\bvdc\b|\bcpo\b|광트랜시버|광\s*인터커넥트|파운데이션\s*모델|foundation model"),
@@ -289,6 +291,8 @@ RULES = (
      r"증가|감소|상승|하락|최대|최저|기록|집계|발표"),
     ("research_spending_change", ("earnings", "timeline"),
      r"r&d|연구개발", r"증가|감소|늘|줄|투자|지출|비용|rise|fall|spend|invest"),
+    ("research_validation_result", ("earnings", "timeline"),
+     r"벤치마크|benchmark", r"\d+(?:\.\d+)?\s*(?:%|배).{0,15}(?:향상|개선|증가|감소|절감)"),
     ("licensing_cashflow", ("earnings", "timeline"),
      r"로열티|선급금|마일스톤|기술이전|royalty|upfront|milestone|licens",
      r"체결|계약|수령|수취|받|합의|서명|sign|agreement|receiv"),
@@ -340,6 +344,8 @@ RULES = (
     ("policy_scope_or_stage", ("timeline",),
      r"관세|법인세|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
      r"제안|검토|추진|인상|인하|올리|올렸|상향|하향|완화|강화|시행|발효|금지|제한|허가|승인|제정|개정|철회|의견수렴|입법예고|면제|배정|의결|착수|발표|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
+    ("environmental_approval", ("timeline",),
+     r"최종\s*환경평가|FONSI|환경영향평가서", r"완료|결정을\s*내렸|작성\s*없이|면제"),
     ("export_control_scope", ("earnings", "timeline"),
      r"country group|trade authorization|export administration|수출관리규정|수출허가",
      r"remov|add|available|amend|change|변경|제외|허용"),
@@ -451,11 +457,11 @@ def news_value_rank(evidence: list[dict]) -> int:
     kinds = {item["kind"] for item in evidence}
     if kinds & {"commercial_order", "order_backlog_level", "customer_supply_start", "procurement_execution_stage", "selling_price_or_cost",
                 "earnings_or_guidance", "export_results", "licensing_cashflow", "corporate_transaction", "corporate_ownership_execution", "export_control_scope",
-                "policy_scope_or_stage", "industrial_architecture_adoption", "physical_supply_or_capacity",
+                "policy_scope_or_stage", "environmental_approval", "industrial_architecture_adoption", "physical_supply_or_capacity",
                 "launch_turnaround_bottleneck", "sector_demand_outlook"}:
         return 4
     if kinds & {"technology_or_clinical_stage", "space_execution_stage", "space_thermal_validation",
-                "cryogenic_propellant_storage", "biology_research_discovery", "model_operating_specification",
+                "cryogenic_propellant_storage", "biology_research_discovery", "research_validation_result", "model_operating_specification",
                 "customer_discussions", "industrial_partnership_execution", "corporate_action_clarification", "capital_or_shareholder_action", "capital_listing_stage",
                 "customer_financing_commitment", "public_program_cost_study", "energy_geopolitics_or_supply_risk"}:
         return 3
@@ -662,7 +668,7 @@ def assess(title: str, body: str) -> dict:
             if kind == "research_spending_change" and not QUANTITY.search(sentence):
                 continue
             early = bool(EARLY_SIGNAL.search(sentence)) or kind in {"customer_discussions", "institutional_capital_access"}
-            priority = 2 if early or kind in {"technology_or_clinical_stage", "market_infrastructure", "model_operating_specification", "industrial_architecture_adoption", "space_execution_stage", "space_thermal_validation", "cryogenic_propellant_storage", "biology_research_discovery", "public_program_cost_study", "sector_demand_outlook", "market_outlook", "fund_assets_level", "financing_infrastructure"} else 3
+            priority = 2 if early or kind in {"technology_or_clinical_stage", "research_validation_result", "market_infrastructure", "model_operating_specification", "industrial_architecture_adoption", "space_execution_stage", "space_thermal_validation", "cryogenic_propellant_storage", "biology_research_discovery", "public_program_cost_study", "sector_demand_outlook", "market_outlook", "fund_assets_level", "financing_infrastructure"} else 3
             if kind == "capital_listing_stage":
                 priority = 3
             if kind in {"earnings_or_guidance", "market_price_or_flow"} and not QUANTITY.search(sentence):

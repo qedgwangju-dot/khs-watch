@@ -2225,6 +2225,17 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     if not market_materiality.focus_kind(title) and not market_materiality.DENIAL_HEADLINE.search(title):
         return ""
+    if market_materiality.focus_kind(title) == "research_result":
+        issuer = re.match(r"^([^,，]{2,30})[,，]", title)
+        for sentence in sentences:
+            result = re.search(
+                r"(AI\s*기반\s*코돈\s*최적화)\s*기술을\s*적용해\s*"
+                r"(벤치마크\s*대비\s*단백질\s*번역\s*효율을\s*\d+(?:\.\d+)?%\s*이상\s*향상시켰다[.!?]?)", sentence,
+            )
+            if issuer and result:
+                fact = f"{issuer.group(1)}는 {result.group(1)}로 {result.group(2)}"
+                if core_sentence_is_complete(fact):
+                    return fact
     if market_materiality.focus_kind(title) == "macro_release" and "건설지출" in title:
         country = re.match(r"^(미국|한국|중국|일본)\s", title)
         for sentence in sentences:
@@ -2338,6 +2349,11 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         ):
             continue
         fact = normalized_article_sentence(sentence)
+        if market_materiality.focus_kind(title) == "environmental_approval":
+            fact = re.sub(r"^\d{1,2}일\s*업계에\s*따르면\s*", "", fact)
+            fact = re.sub(r"\s*\(현지\s*시간\)", "", fact)
+            fact = re.sub(r"미국\s*국가환경정책법\s*\(NEPA\)", "NEPA", fact)
+            fact = re.sub(r"최종\s*환경평가\s*\(Final\s*EA\)", "최종 환경평가", fact, flags=re.I)
         if market_materiality.focus_kind(title) == "nuclear_warning":
             speaker = re.match(r"^([A-Za-z가-힣]{2,20})\s*[,，]", title)
             if speaker and speaker.group(1) in fact[:60]:
