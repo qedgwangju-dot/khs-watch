@@ -109,6 +109,22 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
         rendered = "\n".join(MOD.build_readable([event]))
         self.assertIn("CLARITY 법안 Watch", rendered)
 
+    def test_custody_final_rule_card_shows_effective_date(self):
+        event = {
+            "source": "SEC Federal Register 최종규칙",
+            "event_type": "SEC·CFTC 공식 규칙·해석·집행지침",
+            "federal_register_type": "Final Rule",
+            "title": "Adviser and Regulated Fund Custody Rules; Crypto Custody Rules",
+            "url": "https://www.federalregister.gov/final",
+            "date": "2027-03-01",
+            "detail": "Document Number: 2027-12345 | Publication Date: 2027-03-01 | Effective Date: 2027-04-01",
+        }
+        rendered = "\n".join(MOD.build_readable([event]))
+        self.assertIn("Final Rule(최종규칙)", rendered)
+        self.assertIn("2027-04-01", rendered)
+        self.assertIn("미국 암호자산 규제 Watch", rendered)
+        self.assertNotIn("Proposed Rule(제안규칙) — 공식 초안", rendered)
+
     def test_multiple_distinct_events_keep_short_overview(self):
         events = [
             {
