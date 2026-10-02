@@ -57,24 +57,19 @@ def build_gate_block(gate):
         nays = roll.get("nays")
         nv = roll.get("not_voting")
         vote_time = _pretty_kst(roll.get("vote_time_kst"), "미 상원 공식 표결 완료")
-        current_stage = str(gate.get("current_stage") or "")
         next_vote = str(gate.get("next_vote_status") or "공식 새 CLARITY 표결 일정 미확인")
         reconsideration = gate.get("reconsideration") or {}
 
         lines = [
             "<b>⏱ 현재 의회 상태</b>",
-            f"• 절차 │ {html.escape(_procedure_ko(gate.get('procedure')))}",
-            f"• 완료 표결 │ {html.escape(vote_time)}",
-            f"• 결과 │ {html.escape(result)} — {yeas if yeas is not None else '확인 중'} / {nays if nays is not None else '확인 중'} / {nv if nv is not None else '확인 중'}",
-            f"• 필요표 │ {int(gate.get('votes_required') or 60)}표",
-            f"• 현재 단계 │ {html.escape(current_stage or '공식 절차 상태 확인 중')}",
+            f"• {html.escape(vote_time)} │ cloture(토론종결) {html.escape(result)} {yeas if yeas is not None else '확인 중'} / {nays if nays is not None else '확인 중'} / {nv if nv is not None else '확인 중'} · 필요 60표",
+            "• 현재 │ 본회의 심의 진입 실패 — 법안 최종 부결은 아님",
         ]
         if reconsideration.get("entered") is True:
-            lines.append("• 후속 절차 │ Thom Tillis가 부결된 cloture(토론종결) 표결의 motion to reconsider(재고동의)를 제출")
+            lines.append("• 후속 │ Tillis가 motion to reconsider(재고동의) 제출")
         elif reconsideration.get("entered") is None:
-            lines.append("• 후속 절차 │ 재고동의 원문 확인 상태를 재점검 중")
-        lines.append(f"• 다음 CLARITY 표결 │ {html.escape(next_vote)}")
-        lines.append("• 표시 원칙 │ 완료된 9월 16일 표결은 과거 결과로만 표시하고 새 공식 일정이 확인되기 전에는 예정 관문으로 재노출하지 않음")
+            lines.append("• 후속 │ 재고동의 공식 원문 재확인 중")
+        lines.append(f"• 다음 표결 │ {html.escape(next_vote)}")
     else:
         time_kst = str(gate.get("official_time_kst") or "")
         pretty_kst = "2026년 9월 16일 03:15 KST" if time_kst.startswith("2026-09-16T03:15") else html.escape(time_kst)
