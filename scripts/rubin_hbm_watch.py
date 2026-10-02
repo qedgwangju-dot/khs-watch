@@ -57,6 +57,8 @@ SAMSUNG_HBM4_PRICE_BASELINE = {
     "industry_standard_gbps": 8.0,
     "stack_bandwidth_tbps": 3.3,
     "customer_requirement_tbps": 3.0,
+    "industry_hbm_dram_wafer_share_current_band": "20s_pct_reported",
+    "industry_hbm_dram_wafer_share_2027_pct": 30.0,
     "source": "매일경제 단독 + 삼성전자 공식자료",
     "source_url": "https://www.mk.co.kr/news/business/12167164",
     "premium_source_url": "https://www.mk.co.kr/news/business/12167424",
@@ -80,6 +82,16 @@ SAMSUNG_HBM4E_THERMAL_BASELINE = {
     "source_url": "https://biz.chosun.com/it-science/ict/2026/10/02/MHAFNCALYJDI5P3MKV3F3MXINE/?outputType=amp",
     "as_of": "2026-10-02",
     "note": "40배는 장비업계의 장기 전망으로 저장하고 삼성 HBM4E 확정 로드맵으로 승격하지 않음. TSMC 공식 CoWoS 로드맵은 2028년 14배, 2029년 14배 초과이며 40배는 SoW-X 별도 구조.",
+}
+RUBIN_ULTRA_HBM_OPTIONS_TRACK_VERSION = 1
+RUBIN_ULTRA_HBM_OPTIONS_BASELINE = {
+    "stage": "reported_evaluation",
+    "candidate_options": ["HBM4E_12hi", "HBM4E_8hi", "HBM4_12hi", "HBM4_8hi"],
+    "original_reported_option": "HBM4E_12hi",
+    "source": "매일경제",
+    "source_url": "https://www.mk.co.kr/news/business/12167424",
+    "as_of": "2026-10-02",
+    "note": "Rubin Ultra의 HBM4E/HBM4 8단·12단 선택지 확대는 업계 보도상 평가 단계. NVIDIA 공식 최종 사양·확정 탑재로 승격하지 않음.",
 }
 SAMSUNG_NEXTGEN_HBM_TRACK_VERSION = 1
 SAMSUNG_NEXTGEN_HBM_BASELINE = {
@@ -160,6 +172,10 @@ QUERIES = [
         '"Rubin Ultra" (NVL576 OR shipment OR production OR deployment OR order OR ramp OR customer)',
     ),
     (
+        "rubin_hbm_option_set",
+        '("Rubin Ultra" OR 루빈 울트라) (HBM4E OR HBM4) (8-Hi OR 8Hi OR 12-Hi OR 12Hi OR 8단 OR 12단 OR evaluation OR evaluating OR final OR 확정 OR 평가 OR 검토)',
+    ),
+    (
         "samsung_hbm4_price",
         'Samsung HBM4 2027 (price OR pricing OR contract OR negotiation OR annual supply OR sold out OR pricing power OR premium OR 4 dollars OR 3x OR triple OR 가격 OR 협상 OR 공급가 OR 완판 OR 협상력 OR 프리미엄)',
     ),
@@ -196,6 +212,7 @@ CATEGORY_KO = {
     "hbm4e_validation": "HBM4E 고객 검증·양산",
     "hbm4e_thermal_package": "삼성 HBM4E 발열·인터포저·패키징 병목",
     "rubin_shipments": "Rubin Ultra·NVL576 실제 출하",
+    "rubin_hbm_option_set": "별도 알림 · Rubin Ultra HBM4/HBM4E 옵션 변화",
     "samsung_hbm4_price": "삼성전자 2027 HBM4 계약가격·협상력",
     "samsung_nextgen_hbm": "별도 알림 · 삼성 HBM5·zHBM 맞춤형 로드맵",
     "hbm_2027_contract": "2027 HBM 계약가격·물량",
@@ -281,6 +298,13 @@ def relevant(category: str, text: str) -> bool:
         )
     if category == "rubin_shipments":
         return ("rubin ultra" in low or "nvl576" in low) and any(k in low for k in ("shipment", "ship", "production", "deployment", "order", "ramp", "customer", "출하", "양산", "도입", "주문"))
+    if category == "rubin_hbm_option_set":
+        return (
+            ("rubin ultra" in low or "루빈 울트라" in low)
+            and ("hbm4e" in low or "hbm4" in low)
+            and any(k in low for k in ("8-hi", "8hi", "12-hi", "12hi", "8단", "12단"))
+            and any(k in low for k in ("evaluation", "evaluating", "consider", "final", "selected", "평가", "검토", "확정", "선택"))
+        )
     if category == "samsung_hbm4_price":
         return (
             ("samsung" in low or "삼성전자" in low or "삼성" in low)
@@ -846,6 +870,14 @@ def extract_samsung_hbm4_price(event: dict) -> dict | None:
     if requirement:
         obs["customer_requirement_tbps"] = float(requirement.group(1))
 
+    wafer_share = re.search(
+        r"(?:hbm)[^.]{0,220}?(?:웨이퍼\s*생산능력|wafer\s+capacity)[^.]{0,140}?(?:현재|current)[^0-9]{0,30}?20\s*%\s*대[^.]{0,160}?(?:내년|2027|next\s+year)[^0-9]{0,30}?([0-9]+(?:\.[0-9]+)?)\s*%",
+        low, re.I,
+    )
+    if wafer_share:
+        obs["industry_hbm_dram_wafer_share_current_band"] = "20s_pct_reported"
+        obs["industry_hbm_dram_wafer_share_2027_pct"] = float(wafer_share.group(1))
+
     if any(k in low for k in ("이달 중", "this month")) and any(k in low for k in ("마무리", "finaliz", "conclud")):
         obs["target_close_month"] = _relative_month_from_event(event)
 
@@ -911,13 +943,14 @@ def samsung_hbm4_price_changes(old: dict, new: dict) -> list[str]:
         ("industry_standard_gbps", "HBM4 업계표준 속도", 0.2),
         ("stack_bandwidth_tbps", "HBM4 스택 대역폭", 0.1),
         ("customer_requirement_tbps", "고객 요구 대역폭", 0.1),
+        ("industry_hbm_dram_wafer_share_2027_pct", "2027 HBM의 D램 웨이퍼 생산능력 비중", 2.0),
     ):
         a, b = old.get(field), new.get(field)
         if a is not None and b is not None and abs(float(b) - float(a)) >= threshold:
-            unit = "Gbps" if "gbps" in field else "TB/s"
+            unit = "Gbps" if "gbps" in field else "%" if "share" in field else "TB/s"
             reasons.append(f"{label} {float(a):g}→{float(b):g}{unit}")
         elif a is None and b is not None:
-            unit = "Gbps" if "gbps" in field else "TB/s"
+            unit = "Gbps" if "gbps" in field else "%" if "share" in field else "TB/s"
             reasons.append(f"{label} {float(b):g}{unit} 신규 확인")
 
     if old.get("target_close_month") != new.get("target_close_month") and new.get("target_close_month"):
@@ -940,6 +973,85 @@ def samsung_hbm4_price_event(state: dict, reasons: list[str]) -> dict:
         "direct_link": state.get("source_url") or "",
         "article_text": "",
         "samsung_hbm4_price_state": state,
+    }
+
+
+def extract_rubin_ultra_hbm_options(event: dict) -> dict | None:
+    text = compact_fact_text(event)
+    low = text.lower()
+    if not relevant("rubin_hbm_option_set", text):
+        return None
+
+    options: list[str] = []
+    for product in ("hbm4e", "hbm4"):
+        for layers in (12, 8):
+            pats = (
+                rf"{layers}\s*[- ]?(?:hi|단)[^.]{0,50}?{product}",
+                rf"{product}[^.]{{0,50}}?{layers}\s*[- ]?(?:hi|단)",
+            )
+            if any(re.search(p, low, re.I) for p in pats):
+                options.append(f"{product.upper()}_{layers}hi")
+
+    if not options:
+        return None
+
+    source_low = ((event.get("origin_source") or event.get("source") or "") + " " + text).lower()
+    if any(k in low for k in ("최종 확정", "final specification", "officially selected", "탑재 확정")):
+        stage = "official_final" if "nvidia" in source_low else "reported_final"
+    elif any(k in low for k in ("평가 중", "평가중", "검토", "evaluation", "evaluating", "considering", "선택지를 넓혀")):
+        stage = "reported_evaluation"
+    else:
+        stage = "reported_options"
+
+    return {
+        "stage": stage,
+        "candidate_options": sorted(set(options)),
+        "source": event.get("origin_source") or event.get("source") or "",
+        "source_url": event.get("direct_link") or "",
+        "observed_at": event.get("published_at_kst") or "",
+    }
+
+
+def merge_rubin_ultra_hbm_options(old: dict, obs: dict) -> dict:
+    out = dict(old or {})
+    for key, value in obs.items():
+        if value not in (None, ""):
+            out[key] = value
+    return out
+
+
+def rubin_ultra_hbm_options_changes(old: dict, new: dict) -> list[str]:
+    reasons: list[str] = []
+    if old.get("stage") != new.get("stage") and new.get("stage"):
+        reasons.append(f"Rubin Ultra HBM 옵션 단계 {old.get('stage') or '미확인'}→{new.get('stage')}")
+
+    old_opts = sorted(old.get("candidate_options") or [])
+    new_opts = sorted(new.get("candidate_options") or [])
+    if old_opts != new_opts and new_opts:
+        reasons.append("HBM 후보 조합 " + ", ".join(old_opts or ["미확인"]) + "→" + ", ".join(new_opts))
+    return reasons
+
+
+def rubin_ultra_hbm_options_event(state: dict, reasons: list[str]) -> dict:
+    final = state.get("stage") == "official_final"
+    return {
+        "category": "rubin_hbm_option_set",
+        "fact_key": "rubin_hbm_options_" + (state.get("stage") or "state") + "_" + (state.get("observed_at") or state.get("as_of") or ""),
+        "headline_ko": "Rubin Ultra HBM4/HBM4E 후보 조합 변화",
+        "fact_bullets": reasons,
+        "verdict": (
+            "NVIDIA 공식 최종 HBM 조합으로 확인됐습니다. GPU당 HBM 용량·스택 수·공급사 물량을 다시 계산해야 합니다."
+            if final else
+            "현재는 업계 보도상 평가 후보입니다. 8단·12단, HBM4·HBM4E 선택지 확대를 NVIDIA 최종 사양으로 승격하지 않습니다."
+        ),
+        "verification": "상태값 변화",
+        "quality": "공식자료·신뢰보도 교차",
+        "origin_source": state.get("source") or "",
+        "source": state.get("source") or "",
+        "published_at_kst": state.get("observed_at") or state.get("as_of") or "",
+        "direct_link": state.get("source_url") or "",
+        "article_text": "",
+        "rubin_hbm_options_state": state,
     }
 
 
@@ -1601,7 +1713,7 @@ def choose_verified_events(fresh_unseen: list[dict], raw_events: list[dict], see
     errors: list[str] = []
     candidates: list[dict] = []
     for raw in fresh_unseen:
-        if raw.get("category") in ("citi_hbm_outlook", "samsung_hbm4_price", "hbm4e_thermal_package", "samsung_nextgen_hbm"):
+        if raw.get("category") in ("citi_hbm_outlook", "samsung_hbm4_price", "hbm4e_thermal_package", "samsung_nextgen_hbm", "rubin_hbm_option_set"):
             continue
         source_low = (raw.get("source") or "").lower()
         if any(k in source_low for k in LOW_VALUE_SOURCE_HINTS):
@@ -1716,12 +1828,14 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
         grouped.setdefault(e["category"], []).append(e)
 
     n = 1
-    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "hbm4e_thermal_package", "rubin_shipments", "samsung_hbm4_price", "samsung_nextgen_hbm", "hbm_2027_contract", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
+    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "hbm4e_thermal_package", "rubin_shipments", "rubin_hbm_option_set", "samsung_hbm4_price", "samsung_nextgen_hbm", "hbm_2027_contract", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
         group = grouped.get(category) or []
         if not group:
             continue
         if category == "hbm4e_thermal_package" and n > 1:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 삼성 HBM4E 발열·패키징 병목 감시", ""]
+        if category == "rubin_hbm_option_set" and n > 1:
+            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 Rubin Ultra HBM4/HBM4E 옵션 감시", ""]
         if category == "samsung_hbm4_price" and n > 1:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 삼성전자 2027 HBM4 계약가격·협상력 감시", ""]
         if category == "samsung_nextgen_hbm" and n > 1:
@@ -1739,6 +1853,11 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
                 f"- 공개시각: {e.get('published_at_kst') or '확인 불가'}",
             ]
             lines.extend(e.get("fact_bullets") or [])
+            if category == "rubin_hbm_option_set" and e.get("rubin_hbm_options_state"):
+                rs = e["rubin_hbm_options_state"]
+                lines.append(f"• 단계: {rs.get('stage') or '미확인'}")
+                lines.append("• 후보 조합: " + ", ".join(rs.get("candidate_options") or ["미확인"]))
+                lines.append("• 구분: 업계 평가 후보와 NVIDIA 공식 최종 사양을 분리합니다.")
             if category == "samsung_hbm4_price" and e.get("samsung_hbm4_price_state"):
                 ss = e["samsung_hbm4_price_state"]
                 band = ss.get("offered_price_band")
@@ -1769,6 +1888,11 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
                     lines.append(
                         f"• 스택 대역폭: 최대 {float(ss['stack_bandwidth_tbps']):g}TB/s · "
                         f"고객 요구 {float(ss.get('customer_requirement_tbps') or 0):g}TB/s"
+                    )
+                if ss.get("industry_hbm_dram_wafer_share_2027_pct") is not None:
+                    lines.append(
+                        f"• HBM의 D램 웨이퍼 생산능력 비중: 현재 20%대 보도 → "
+                        f"2027년 약 {float(ss['industry_hbm_dram_wafer_share_2027_pct']):g}% 전망"
                     )
                 if ss.get("target_close_month"):
                     lines.append(f"• 협상 마무리 목표: {ss['target_close_month']}")
@@ -1867,6 +1991,35 @@ def main() -> None:
 
     verified_events, verify_errors = choose_verified_events(fresh_unseen, raw_events, seen_fact_keys)
     errors.extend(verify_errors)
+
+    rubin_options_state = dict(state.get("rubin_ultra_hbm_options") or {})
+    rubin_options_track_version = int(state.get("rubin_ultra_hbm_options_track_version") or 0)
+    if rubin_options_track_version < RUBIN_ULTRA_HBM_OPTIONS_TRACK_VERSION:
+        seeded = dict(RUBIN_ULTRA_HBM_OPTIONS_BASELINE)
+        seeded.update({k: v for k, v in rubin_options_state.items() if v not in (None, "")})
+        rubin_options_state = seeded
+        rubin_options_track_version = RUBIN_ULTRA_HBM_OPTIONS_TRACK_VERSION
+
+    rubin_options_changes: list[str] = []
+    for raw in raw_events:
+        if raw.get("category") != "rubin_hbm_option_set":
+            continue
+        enriched = enrich_event(raw)
+        if not enriched.get("link_verified"):
+            continue
+        quality = source_quality(enriched.get("origin_source") or enriched.get("source") or "")
+        if quality == "일반 보도":
+            continue
+        obs = extract_rubin_ultra_hbm_options(enriched)
+        if not obs:
+            continue
+        merged = merge_rubin_ultra_hbm_options(rubin_options_state, obs)
+        changes = rubin_ultra_hbm_options_changes(rubin_options_state, merged)
+        rubin_options_state = merged
+        if changes:
+            rubin_options_changes.extend(changes)
+    if rubin_options_changes and not first_run:
+        verified_events.append(rubin_ultra_hbm_options_event(rubin_options_state, list(dict.fromkeys(rubin_options_changes))))
 
     samsung_price_state = dict(state.get("samsung_hbm4_price") or {})
     samsung_price_track_version = int(state.get("samsung_hbm4_price_track_version") or 0)
@@ -1995,6 +2148,8 @@ def main() -> None:
         "seen_ids": sorted((seen_before | current_ids))[-1200:],
         "seen_fact_keys": sorted(seen_fact_keys | new_fact_keys)[-500:],
         "structure_baseline_version": STRUCTURE_BASELINE_VERSION,
+        "rubin_ultra_hbm_options_track_version": rubin_options_track_version,
+        "rubin_ultra_hbm_options": rubin_options_state,
         "samsung_hbm4_price_track_version": samsung_price_track_version,
         "samsung_hbm4_price": samsung_price_state,
         "samsung_nextgen_hbm_track_version": nextgen_track_version,
@@ -2028,6 +2183,7 @@ def main() -> None:
         f"- recent_raw_events: {len(raw_events)}",
         f"- unseen_raw_events: {len(unseen_raw)}",
         f"- verified_events: {len(verified_events)}",
+        f"- Rubin Ultra HBM option typed changes: {len(rubin_options_changes)}",
         f"- Samsung HBM4 price typed changes: {len(samsung_price_changes)}",
         f"- Samsung next-gen HBM typed changes: {len(nextgen_changes)}",
         f"- Samsung HBM4E thermal/package typed changes: {len(thermal_changes)}",
