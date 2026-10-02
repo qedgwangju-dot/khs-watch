@@ -977,11 +977,14 @@ def parse_hbm_generation_pricing(item, body):
         return []
 
     points = _generation_price_points(text)
-    explicit_breadth = bool(re.search(
-        r'(?:every|all|across|multiple)[^.]{0,50}?HBM[^.]{0,80}?(?:generation|세대)[^.]{0,80}?(?:rise|step(?:s|ped)?\s+up|increase|reset|상승|인상|리셋)'
-        r'|(?:HBM[^.]{0,50}?(?:전\s*세대|모든\s*세대))[^.]{0,80}?(?:상승|인상|리셋)',
-        text, re.I
-    ))
+    explicit_breadth = (
+        source == 'semianalysis'
+        and bool(re.search(
+            r'(?:every|all|across|multiple)[^.]{0,50}?HBM[^.]{0,80}?(?:generation|세대)[^.]{0,80}?(?:rise|step(?:s|ped)?\s+up|increase|reset|상승|인상|리셋)'
+            r'|(?:HBM[^.]{0,50}?(?:전\s*세대|모든\s*세대))[^.]{0,80}?(?:상승|인상|리셋)',
+            text, re.I
+        ))
+    )
     mentioned = [g for g in HBM_GENERATIONS if re.search(rf'\b{re.escape(g)}\b', text, re.I)]
     broad = explicit_breadth or len(points) >= 3
     legacy = any(k.startswith('HBM3_') or k.startswith('HBM3E_') for k in points)
