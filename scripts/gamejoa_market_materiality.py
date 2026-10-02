@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 31
+VERSION = 32
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -90,7 +90,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("ownership", r"지분.{0,25}(?:인수|매각|취득)|인수.{0,25}지분|합병(?!원)|주식.{0,8}(?:판다|매도|매각)", r"지분|인수|매각|매도|취득|거래계획|합병(?!원)|stake|acquir|merger"),
     ("labor_negotiation", r"임단협|임금.{0,12}(?:협상|합의)|단체협약", r"임단협|임금|단체협약|잠정합의안|교섭"),
     ("shareholder", r"자사주|자기주식|주주환원|배당", r"자사주|자기주식|주주환원|배당|(?:주식|지분).{0,30}(?:매수|취득|매입|처분)|buyback|dividend"),
-    ("capital_listing", r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|신규\s*상장", r"기업공개|\bipo\b|상장(?!지수)"),
+    ("capital_listing", r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|신규\s*상장|ETF.{0,15}(?:출시|상장)", r"기업공개|\bipo\b|상장(?!지수)|ETF.{0,80}출시"),
     ("financing", r"자금.{0,12}(?:투입|조달|유입)|대출|funding|financing|loan", r"자금|대출|투자(?!자)|조달|전환사채|출자|납입|증자|확정된\s*사항|funding|financing|loan|convertible debt"),
     ("mortgage_rate", r"주담대|모기지|주택담보대출", r"주담대|모기지|주택담보대출|mortgage"),
     ("macro_release", r"\bcpi\b|\bpce\b|\bppi\b|\bgdp\b|고용|실업률|물가|건설지출", r"cpi|pce|ppi|gdp|고용|실업|물가|건설지출|인플레이션|inflation|payroll"),
@@ -186,6 +186,8 @@ def focus_kind(title: str) -> str:
     # A scoped tax treatment is the event; oil is only its subject.
     if HEADLINE_FOCUS[0][1].search(title or ""):
         return "tax_relief"
+    if re.search(r"ETF.{0,15}(?:출시|상장)", title or "", re.I):
+        return "capital_listing"
     matches = [(match.start(), index, kind) for index, (kind, headline, _source) in enumerate(HEADLINE_FOCUS)
                if (match := headline.search(title or "")) is not None]
     return min(matches)[2] if matches else ""
@@ -269,8 +271,8 @@ RULES = (
      r"거래\s*재개|매매\s*재개|액면병합|주식병합|거래정지|매매정지",
      r"재개|결정|발표|완료|정지"),
     ("capital_listing_stage", ("flows", "timeline"),
-     r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)",
-     r"추진|예정|목표|신청|승인|상장했다|연기|철회|마케팅|등록|plan|aim|file|approv|delay|withdraw|market"),
+     r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|ETF",
+     r"추진|예정|목표|신청|승인|상장(?:했다|한다고|한다|할)|연기|철회|마케팅|등록|출시|plan|aim|file|approv|delay|withdraw|market"),
     ("commercial_order", ("earnings", "timeline"),
      r"수주|발주|공급계약|공급\s*계약|납품\s*계약|발사\s*계약|purchase order|supply contract|procurement contract|launch (?:contract|agreement)",
      r"체결|확정|수주|발주|갱신|취소|파기|해지|협상|추진|서명|sign|secure|award|agree|cancel|negotiat"),
@@ -405,6 +407,12 @@ COMPILED_RULES = tuple(
 
 def evidence_is_new_event(kind: str, sentence: str) -> bool:
     """Do not promote service descriptions or event support into transactions."""
+    if re.search(r"체험해\s*보고|미리\s*체험|솔루션.{0,30}(?:탐색|찾아볼|검색)|카탈로그.{0,30}(?:분류|제공)", sentence) and not re.search(
+        r"(?:공급|납품)\s*계약.{0,20}체결|수주했다|(?:성능|전력|비용).{0,20}\d+(?:\.\d+)?%", sentence,
+    ):
+        return False
+    if kind == "capital_listing_stage" and "ETF" in sentence.upper() and not re.search(r"기업공개|\bipo\b", sentence, re.I):
+        return bool(re.search(r"(?:ETF.{0,80}(?:출시|상장)|(?:출시|상장).{0,80}ETF)", sentence, re.I))
     if re.search(r"논의해\s*나가겠다|해소될\s*수\s*있도록|최선을\s*다하겠다", sentence) and not re.search(
         r"고시.{0,12}개정|법안.{0,12}(?:발의|제출)|계약.{0,12}체결|시행일.{0,15}확정", sentence,
     ):
@@ -445,6 +453,10 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
     ):
         return bool(re.search(r"\d[\d,.]*\s*(?:GW|MW|조\s*원|억\s*원|톤|대)|계약\s*체결|착공했다|가동을\s*시작", sentence, re.I))
     if kind == "market_price_or_flow" and re.search(r"법률\s*(?:솔루션|자문)|투자유치\s*가이드|회수\s*전략", sentence):
+        return False
+    if kind == "market_price_or_flow" and re.search(r"투자할\s*수|투자가\s*가능|추종하는", sentence) and not re.search(
+        r"순매수|순매도|유입|유출|거래대금|수익률|주가.{0,20}\d", sentence,
+    ):
         return False
     if kind == "market_price_or_flow" and re.search(r"유의할|주의할|유의해야|주의해야|변동성.{0,15}(?:지적|유의)", sentence):
         return False
@@ -610,6 +622,10 @@ def assess(title: str, body: str) -> dict:
                 r"주가|증시|코스피|코스닥|etf|etn|순매수|순매도|거래대금|수익률|주식|자금|자본|투자금|shares|stocks|equities|capital|fund flows", sentence, re.I,
             ):
                 continue
+            if kind == "market_price_or_flow" and re.search(r"ETF.{0,80}(?:상장|출시)", sentence, re.I) and not re.search(
+                r"순매수|순매도|유입|유출|거래대금|주가|수익률|올랐|내렸|상승|하락", sentence,
+            ):
+                continue
             if kind == "earnings_or_guidance" and not re.search(
                 r"매출|영업(?:이익|익)|순(?:이익|익)|마진|가이던스|출하|판매(?:량|실적|는|가)|시장점유율|주당순이익|"
                 r"실적.{0,20}(?:어닝|상회|하회|흑자|적자)|\beps\b|revenue|earnings|profit|guidance|shipments", sentence, re.I,
@@ -671,6 +687,8 @@ def assess(title: str, body: str) -> dict:
             if kind == "research_spending_change" and not QUANTITY.search(sentence):
                 continue
             early = bool(EARLY_SIGNAL.search(sentence)) or kind in {"customer_discussions", "institutional_capital_access"}
+            if kind == "capital_listing_stage" and re.search(r"오는\s*\d{1,2}일|출시한다고|출시할|상장할", sentence):
+                early = True
             priority = 2 if early or kind in {"technology_or_clinical_stage", "research_validation_result", "market_infrastructure", "model_operating_specification", "industrial_architecture_adoption", "space_execution_stage", "space_thermal_validation", "cryogenic_propellant_storage", "biology_research_discovery", "public_program_cost_study", "sector_demand_outlook", "market_outlook", "fund_assets_level", "financing_infrastructure"} else 3
             if kind == "capital_listing_stage":
                 priority = 3

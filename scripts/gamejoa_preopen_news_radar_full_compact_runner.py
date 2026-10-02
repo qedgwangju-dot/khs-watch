@@ -2228,6 +2228,15 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     if not market_materiality.focus_kind(title) and not market_materiality.DENIAL_HEADLINE.search(title):
         return ""
+    if market_materiality.focus_kind(title) == "capital_listing" and "ETF" in title.upper():
+        for sentence in sentences:
+            issuer = re.match(r"^([가-힣A-Za-z0-9·&]+)(?:은|는)\s", sentence)
+            fund = re.search(r"['‘]([^'’]{3,60})['’]\s*(?:상장지수펀드\s*\(ETF\)|ETF)", sentence, re.I)
+            schedule = re.search(r"((?:오는\s*)?\d{1,2}일)\s*((?:유가증권|코스닥)시장에\s*)?(상장|출시)(?:한다고|할\s*예정이라고)\s*밝혔다", sentence)
+            if issuer and fund and schedule:
+                fact = f"{issuer.group(1)}은 '{fund.group(1)}' ETF를 {schedule.group(1)} {schedule.group(2) or ''}{schedule.group(3)}한다고 밝혔다."
+                if core_sentence_is_complete(fact):
+                    return fact
     if market_materiality.focus_kind(title) == "labor_negotiation":
         for sentence in sentences:
             if market_materiality.focus_matches(title, sentence) and re.search(r"임단협|임금|단체협약|잠정합의안", sentence):

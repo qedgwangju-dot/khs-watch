@@ -211,6 +211,43 @@ class MaterialityChecks(unittest.TestCase):
         self.assertNotIn("자료사진", cleaned)
         self.assertIn("기업이 지분 매각 계획을 공시했다.", cleaned)
 
+    def test_ai_exploration_catalog_is_not_customer_adoption(self):
+        title = "해양산업 AI 전환 지원…해진공 AX 사이트 개통"
+        body = ("한국해양진흥공사가 해운·항만·물류 기업의 AI 전환을 지원하기 위해 AI 체험 및 솔루션 카탈로그 서비스를 개시했다.\n"
+                "이 서비스는 해양산업 실무자들이 현장 업무에서 적용할 수 있는 AI 기술을 체험해보고 자사에 필요한 솔루션과 공급 기업을 탐색할 수 있도록 지원한다.\n"
+                "솔루션 카탈로그는 19개 사의 36개 솔루션을 분류했다.\n"
+                "이용자들은 용선계약서 조항 검토와 터미널 추가 비용 산출을 미리 체험해 볼 수 있다.")
+        self.assertNotEqual(materiality.assess(title, body)["disposition"], "keep")
+        self.assertEqual(materiality.assess(title, body)["evidence"], [])
+        real_contract = body + "\nAI 기업은 해운사와 AI 솔루션 공급 계약을 체결했다."
+        self.assertEqual(materiality.assess(title, real_contract)["disposition"], "keep")
+
+    def test_new_semiconductor_etf_launch_is_a_listing_stage_not_realized_inflow(self):
+        title = "신한운용, 오는 7일 'SOL 글로벌DRAM반도체플러스' ETF 출시"
+        body = "신한자산운용은 오는 7일 SOL 글로벌DRAM반도체플러스 ETF를 출시한다고 밝혔다."
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "keep")
+        self.assertEqual(audit["evidence"][0]["kind"], "capital_listing_stage")
+        self.assertEqual(audit["evidence"][0]["stage"], "early_signal")
+        self.assertNotIn("market_price_or_flow", {row["kind"] for row in audit["evidence"]})
+        self.assertFalse(materiality.evidence_is_new_event("capital_listing_stage", "반도체 ETF 시장이 성장하면서 지난해 자금 유입이 확대됐다."))
+        self.assertFalse(materiality.evidence_is_new_event("market_price_or_flow", "연금 계좌에서도 글로벌 메모리 밸류체인에 투자할 수 있다."))
+
+    def test_source_etf_listing_core_preserves_name_and_schedule_not_portfolio_description(self):
+        title = "신한운용 'SOL 글로벌DRAM반도체플러스' ETF 7일 상장"
+        body = ("신한자산운용은 2일 글로벌 메모리 반도체 핵심 기업과 장비 업체에 집중 투자하는 'SOL 글로벌DRAM반도체 플러스' 상장지수펀드(ETF)를 오는 7일 유가증권시장에 상장한다고 밝혔다.\n"
+                "포트폴리오의 약 90%는 '메모리7' 기업으로 채운다.")
+        item = {**alert(title, body), "telegram_core_fact": "포트폴리오의 약 90%는 '메모리7' 기업으로 채운다."}
+        core = radar.verified_alert_core(item, title)
+        for term in ("신한자산운용", "SOL", "7일", "유가증권시장", "상장한다고"):
+            self.assertIn(term, core)
+        self.assertNotIn("90%", core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        self.assertTrue(radar.source_output_aligned({**item, "telegram_core_fact": core}))
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["evidence"][0]["kind"], "capital_listing_stage")
+        self.assertNotIn("market_price_or_flow", {row["kind"] for row in audit["evidence"]})
+
     def test_earnings_abbreviation_remains_primary_ahead_of_secondary_analyst_revision(self):
         title = "HL디앤아이한라, 상반기 영업익 34%↑…증권가도 목표주가 상향"
         self.assertEqual(materiality.focus_kind(title), "earnings")

@@ -943,3 +943,31 @@ replay reviewed 20 actual-delivery rows, retaining 14 and excluding six;
 four additional dry-run article rows remain eligible with corrected complete
 cores and zero source-fact errors. Original links are unchanged. Seen history,
 retrieval queues and prior delivery records were not reset or rewritten.
+
+## Version 32: Exclude Exploration Portals, Retain New ETF Listings
+
+Version 31 was deployed as `c3ef46c48b545f89056e23f4a5fd4e98ec3f8137`.
+Fresh dry run `37000521850` completed at `2026-10-02T11:25:24Z`, checked
+out `2c59a877fa14abf9c925a24dd96a44b3870701ef` and queried at
+`20:21:27 KST`. All 128 materiality regressions and the generated-report
+guard passed. It attempted 160 bodies, verified 129, failed 31 and deferred
+491. Coverage remained incomplete and no Telegram send occurred. ZIP SHA-256:
+`8D240A459341E9EA58A4B135C3471DF0BB1E975006F436588507AA9D7C9C9C51`.
+
+Reading the only selected source body exposed another false positive: an AI
+exploration/catalog site was classified as technical adoption. A source
+sentence about trying, searching or browsing solutions is no longer adoption
+evidence without an actual commercial commitment or quantified technical
+result. A positive control retains a real new supply contract in such coverage.
+The existing 20 actual-delivery rows and four earlier dry-run article rows are
+also replayed, without any forced resend or state reset.
+
+The same fresh run excluded a new semiconductor ETF launch. New ETF launches
+and dated listings now retain their listing stage even when a sector word
+appears earlier in the headline. Fund composition and investment eligibility
+cannot replace the actual listing schedule or be treated as realized inflow.
+The original YNA article `AKR20261002031300008` was fetched again: its title
+and body aligned, the saved core retained issuer, fund, day 7, exchange venue
+and future listing, and source-fact errors were zero. Three further regression
+cases bring the materiality suite to 131 tests. Final deployment and fresh-run
+verification are recorded separately below.
