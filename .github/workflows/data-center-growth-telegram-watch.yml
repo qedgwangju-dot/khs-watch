@@ -14,6 +14,8 @@ on:
       - "scripts/us_data_center_generation_buildout_watch.py"
       - "scripts/us_data_center_cancellation_risk_watch.py"
       - "scripts/us_ai_data_center_buildout_watch.py"
+      - "scripts/epoch_ai_dc_execution_watch.py"
+      - "scripts/ai_dc_tam_revision_watch.py"
       - "scripts/us_hyperscaler_company_risk_watch.py"
       - "scripts/remove_telegram_italics.py"
       - "scripts/korea_aidc_policy_watch.py"
@@ -175,6 +177,12 @@ jobs:
       - name: Check Epoch AI major US data-center buildout
         run: python scripts/us_ai_data_center_buildout_watch.py
 
+      - name: Check Epoch AI aggregate US execution ratio
+        run: python scripts/epoch_ai_dc_execution_watch.py
+
+      - name: Check AI data-center TAM and cloud-capex revisions
+        run: python scripts/ai_dc_tam_revision_watch.py
+
       - name: Force regular Telegram font
         run: python scripts/remove_telegram_italics.py
 
@@ -200,6 +208,8 @@ jobs:
               pathlib.Path("out/us_data_center_generation_buildout_alert.txt"),
               pathlib.Path("out/us_data_center_cancellation_risk_alert.txt"),
               pathlib.Path("out/us_ai_data_center_buildout_alert.txt"),
+              pathlib.Path("out/epoch_ai_dc_execution_alert.txt"),
+              pathlib.Path("out/ai_dc_tam_revision_alert.txt"),
               pathlib.Path("out/us_hyperscaler_company_risk_alert.txt"),
           ]
           sent = 0
@@ -400,6 +410,8 @@ jobs:
           cp out/us_data_center_generation_buildout_pending_state.json "$tmpdir/us_data_center_generation_buildout_state.json"
           cp out/us_data_center_cancellation_risk_pending_state.json "$tmpdir/us_data_center_cancellation_risk_state.json"
           cp out/us_ai_data_center_buildout_pending_state.json "$tmpdir/us_ai_data_center_buildout_state.json"
+          cp out/epoch_ai_dc_execution_pending_state.json "$tmpdir/epoch_ai_dc_execution_state.json"
+          cp out/ai_dc_tam_revision_pending_state.json "$tmpdir/ai_dc_tam_revision_state.json"
           cp out/us_hyperscaler_company_risk_pending_state.json "$tmpdir/us_hyperscaler_company_risk_state.json"
 
           git config user.name "github-actions[bot]"
@@ -417,6 +429,8 @@ jobs:
             cp "$tmpdir/us_data_center_generation_buildout_state.json" data/us_data_center_generation_buildout_state.json
             cp "$tmpdir/us_data_center_cancellation_risk_state.json" data/us_data_center_cancellation_risk_state.json
             cp "$tmpdir/us_ai_data_center_buildout_state.json" data/us_ai_data_center_buildout_state.json
+            cp "$tmpdir/epoch_ai_dc_execution_state.json" data/epoch_ai_dc_execution_state.json
+            cp "$tmpdir/ai_dc_tam_revision_state.json" data/ai_dc_tam_revision_state.json
             cp "$tmpdir/us_hyperscaler_company_risk_state.json" data/us_hyperscaler_company_risk_state.json
 
             git add data/data_center_growth_state.json \
@@ -426,6 +440,8 @@ jobs:
                     data/us_data_center_generation_buildout_state.json \
                     data/us_data_center_cancellation_risk_state.json \
                     data/us_ai_data_center_buildout_state.json \
+                    data/epoch_ai_dc_execution_state.json \
+                    data/ai_dc_tam_revision_state.json \
                     data/us_hyperscaler_company_risk_state.json
 
             if git diff --cached --quiet; then
@@ -477,6 +493,12 @@ jobs:
             out/us_ai_data_center_buildout_status.md
             out/us_ai_data_center_buildout_alert.txt
             out/us_ai_data_center_buildout_pending_state.json
+            out/epoch_ai_dc_execution_status.md
+            out/epoch_ai_dc_execution_alert.txt
+            out/epoch_ai_dc_execution_pending_state.json
+            out/ai_dc_tam_revision_status.md
+            out/ai_dc_tam_revision_alert.txt
+            out/ai_dc_tam_revision_pending_state.json
             out/us_hyperscaler_company_risk_status.md
             out/us_hyperscaler_company_risk_alert.txt
             out/us_hyperscaler_company_risk_pending_state.json
