@@ -52,6 +52,44 @@ class ClarityFormatterTest(unittest.TestCase):
         self.assertIn("발행회사", rendered)
         self.assertIn("2026년 9월 17일 21:55 KST", rendered)
 
+    def test_sec_crypto_custody_release_and_statements_dedupe_to_one_primary_event(self):
+        events = [
+            {
+                "source": "SEC 발언·성명",
+                "event_type": "SEC·CFTC 공식 규칙·해석·집행지침",
+                "title": "Roller Coaster Ride: Statement on Proposed Adviser and Regulated Fund Custody Rules; Crypto Custody Rules",
+                "url": "https://www.sec.gov/newsroom/speeches-statements/peirce-statement-proposed-amendments-custody-rules-100126",
+                "date": "Thu, 01 Oct 2026 15:59:13 -0400",
+                "detail": "Commissioner Hester M. Peirce",
+            },
+            {
+                "source": "SEC 발언·성명",
+                "event_type": "SEC·CFTC 공식 규칙·해석·집행지침",
+                "title": "Statement on Proposal to Address the Custody of Crypto Assets Under the Investment Advisers Act and the Investment Company Act",
+                "url": "https://www.sec.gov/newsroom/speeches-statements/atkins-crypto-custody-100126-statement-proposal-address-custody-crypto-assets-under-investment-advisers-act-investment-company",
+                "date": "Thu, 01 Oct 2026 16:00:02 -0400",
+                "detail": "Chairman Paul S. Atkins",
+            },
+            {
+                "source": "SEC 보도자료",
+                "event_type": "SEC·CFTC 공식 규칙·해석·집행지침",
+                "title": "SEC Proposal Would Address How Investment Advisers and Funds Can Custody Crypto Assets Under the Federal Securities Laws",
+                "url": "https://www.sec.gov/newsroom/press-releases/2026-100-sec-proposal-would-address-how-investment-advisers-funds-can-custody-crypto-assets-under-federal",
+                "date": "Thu, 01 Oct 2026 12:16:07 -0400",
+                "detail": "The Securities and Exchange Commission today proposed new rules and amendments to provide a tailored framework for the custody of crypto assets for registered investment advisers and regulated funds.",
+            },
+        ]
+        now = dt.datetime(2026, 10, 2, 8, 0, tzinfo=ZoneInfo("America/New_York"))
+        filtered = MOD.filter_alertable_events(events, now=now)
+        self.assertEqual(len(filtered), 1)
+        self.assertEqual(filtered[0]["source"], "SEC 보도자료")
+        self.assertEqual(filtered[0]["semantic_event"], "sec_crypto_custody_s7_2026_35")
+        title, body = MOD.localize_event(filtered[0])
+        self.assertIn("암호자산 수탁 규칙 개정안", title)
+        self.assertIn("self-custody(자체 수탁)", body)
+        self.assertIn("S7-2026-35", body)
+        self.assertNotIn("롤러코스터", title)
+
     def test_date_only_is_shown_in_korean_calendar_format(self):
         event = {
             "source": "상원 은행위원회",
