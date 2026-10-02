@@ -690,3 +690,33 @@ source rows remain eligible. The 11 local contract scripts and whitespace
 guard passed; the materiality suite now contains 105 passing tests. Primary
 CPI, actual climate damage and a new tariff rule are explicit positive
 controls, not inferred coverage guarantees.
+
+## Final Production-Environment Reverification
+
+Version 25 was pushed in code revision
+`1584b5f13b1bcdcacbdd98e08395b2866529151e` and confirmed to remain an
+ancestor of current `origin/main`. After rebasing on concurrent state-only
+changes, all 11 local scripts passed again, with 105 materiality tests and
+26 queue tests. Existing untracked output files were left untouched.
+
+New-source run `36983504748` completed successfully at
+`2026-10-02T08:27:29Z`. The actual checkout recorded in its logs was
+`3eeb20ff9c06d6edef0151e40dd296457347709a`; its saved report queried at
+`2026-10-02T17:24:24+09:00` and contains materiality version 25. The run
+passed all 105 regression tests and the independent generated-report guard.
+Artifact ZIP SHA-256:
+`922B232A7D47B62BDF8726FC92BB14BCB99F39EF25ED899153263307986705DB`.
+
+It attempted 160 article bodies, verified 122, failed 38 and deferred 672.
+The sole selected source was reviewed in full: Samsung C&T's solo second
+tender participation, not a signed construction order. The Korean title,
+complete source-authored core and original EToday link agree; the source's
+prospective contract stage is not upgraded to a confirmed award.
+
+The active radar workflow remains enabled. This verification intentionally
+did not send Telegram: build/send, runtime delivery verification, seen-state
+commit and retrieval-queue commit steps were skipped under dry-run mode.
+There was no forced resend of historical articles and no reset of duplicate
+or delivery state. No claim of external Telegram receipt, exhaustive news
+coverage or perfect future selection follows from this test. The earlier
+71-row shadow audit and new-source test are separate evidence scopes.
