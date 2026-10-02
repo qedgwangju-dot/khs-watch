@@ -64,6 +64,7 @@ base.TRUSTED.update({
     'Wood Mackenzie', 'Utility Dive', 'Canary Media',
     '한국경제TV', 'WOWTV', '뉴시스', 'Newsis', 'TrendForce', '集邦咨询',
     '中国基金报', '中国基金报社', '中国基金报·机会宝',
+    '디일렉', 'TheElec', 'THE ELEC',
 })
 base.OFFICIAL_OR_PRIMARY.update({
     '국가세무총국', '중국 재정부', 'Ministry of Finance of China',
