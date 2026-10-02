@@ -503,7 +503,7 @@ def parse_cftc():
     }
 
 
-def parse_cboe_section(text, heading, next_heading=None):
+def parse_cboe_section(text, heading, next_heading=None, required_time="03:15 PM"):
     start = text.find(heading)
     if start < 0:
         return None
@@ -512,7 +512,6 @@ def parse_cboe_section(text, heading, next_heading=None):
         end = len(text)
     block = text[start:end]
 
-    # Cboe publishes cumulative intraday rows. Take the latest row that has actual values.
     rows = re.findall(
         r"(\d{1,2}:\d{2}\s*[AP]M)\s+([\d,]+)\s+([\d,]+)\s+([\d,]+)\s+(\d+(?:\.\d+)?)",
         block,
@@ -520,14 +519,20 @@ def parse_cboe_section(text, heading, next_heading=None):
     )
     if not rows:
         return None
-    t, calls, puts, total, ratio = rows[-1]
-    return {
-        "time_ct": t.upper().replace("  ", " "),
-        "calls": int(calls.replace(",", "")),
-        "puts": int(puts.replace(",", "")),
-        "total": int(total.replace(",", "")),
-        "pc_ratio": float(ratio),
-    }
+
+    normalized_required = required_time.upper().replace("  ", " ")
+    for row in rows:
+        t, calls, puts, total, ratio = row
+        normalized_time = t.upper().replace("  ", " ")
+        if normalized_time == normalized_required:
+            return {
+                "time_ct": normalized_time,
+                "calls": int(calls.replace(",", "")),
+                "puts": int(puts.replace(",", "")),
+                "total": int(total.replace(",", "")),
+                "pc_ratio": float(ratio),
+            }
+    return None
 
 
 def parse_cboe():
@@ -545,12 +550,14 @@ def parse_cboe():
 
     report_start = text.find("Cboe Exchange Market Statistics for")
     report_text = text[report_start:] if report_start >= 0 else text
-    total = parse_cboe_section(report_text, "Total", "Index Options")
-    index_opt = parse_cboe_section(report_text, "Index Options", "Equity Options")
-    equity = parse_cboe_section(report_text, "Equity Options")
+    total = parse_cboe_section(report_text, "Total", "Index Options", required_time="03:15 PM")
+    index_opt = parse_cboe_section(report_text, "Index Options", "Equity Options", required_time="03:15 PM")
+    equity = parse_cboe_section(report_text, "Equity Options", required_time="03:15 PM")
 
-    if not total and not equity:
-        raise RuntimeError("Cboe current market-statistics rows not found")
+    if not (total and index_opt and equity):
+        raise RuntimeError(
+            "Cboe final 03:15 PM CT rows are not all available yet; intraday snapshot suppressed"
+        )
 
     metrics = {
         "total_pc_ratio": total["pc_ratio"] if total else None,
@@ -565,6 +572,7 @@ def parse_cboe():
         "index_calls": index_opt["calls"] if index_opt else None,
         "index_puts": index_opt["puts"] if index_opt else None,
         "index_time_ct": index_opt["time_ct"] if index_opt else None,
+        "final_snapshot": True,
     }
     core = {"source": "Cboe", "kind": "options", "period": period, "metrics": metrics}
     return {**core, "url": CBOE, "fingerprint": fp(core)}
@@ -629,9 +637,9 @@ def parse_sox():
         raise RuntimeError(
             f"SOX source date mismatch: Nasdaq={nasdaq['period']}, Yahoo={yahoo_date}"
         )
-    if abs(yahoo_latest - nasdaq["latest"]) > 2.0:
+    if abs(yahoo_latest - nasdaq["latest"]) > 0.10:
         raise RuntimeError(
-            f"SOX source close mismatch: Nasdaq={nasdaq['latest']:.2f}, Yahoo={yahoo_latest:.2f}"
+            f"SOX final-close mismatch: Nasdaq={nasdaq['latest']:.2f}, Yahoo={yahoo_latest:.2f}"
         )
 
     latest = nasdaq["latest"]
@@ -653,6 +661,7 @@ def parse_sox():
         "crosscheck_url": SOX_YAHOO,
         "crosscheck_same_date": True,
         "crosscheck_close_diff": latest - yahoo_latest,
+        "final_close_confirmed": True,
     }
 
     # The same verified Yahoo daily series supplies 3D/5D context.
@@ -750,6 +759,15 @@ def explain(cftc, cboe, sox):
             lines.append(f"• Cboe 전체 풋/콜 {total_pc:.2f}")
 
     sox_up = bool(sox and sox["metrics"].get("d1_pct", 0) > 0)
+    cftc_lag_days = None
+    if cftc and sox:
+        try:
+            cftc_date = datetime.strptime(cftc["period"], "%B %d, %Y").date()
+            sox_date = datetime.strptime(sox["period"], "%m/%d/%Y").date()
+            cftc_lag_days = (sox_date - cftc_date).days
+        except Exception:
+            cftc_lag_days = None
+
     lev_improving = bool(
         cftc
         and cftc["metrics"].get("lev_net_wow") is not None
@@ -763,28 +781,41 @@ def explain(cftc, cboe, sox):
     equity_pc = cboe["metrics"].get("equity_pc_ratio") if cboe else None
     calls_favored = bool(equity_pc is not None and equity_pc < 0.80)
 
+    lag_note = (
+        f"CFTC는 {cftc['period']} 기준으로 SOX보다 {cftc_lag_days}일 느린 주간 자료"
+        if cftc and isinstance(cftc_lag_days, int) and cftc_lag_days > 0
+        else "CFTC는 주간 자료"
+    )
+
     if sox_up and lev_improving and calls_favored:
         overall = (
-            "SOX 상승 + 헤지펀드 순포지션 개선 + 주식옵션 콜 우위가 동시에 확인됨 "
-            "→ 상방 추격 신호가 강해진 조합"
+            "SOX 마감 강세 + Cboe 주식옵션 콜 거래 우위가 확인됨. "
+            f"{lag_note}이며, 당시 헤지펀드성 순포지션은 개선 방향 "
+            "→ 상방 신호는 우호적이지만 당일 선물 포지션 동행으로 단정하지 않음"
         )
     elif sox_up and lev_improving:
         overall = (
-            "SOX가 오르고 헤지펀드 순포지션도 크게 개선 "
-            "→ 가격 상승을 숏커버·롱 추가가 따라붙는 방향"
+            "SOX는 마감 기준 상승. "
+            f"{lag_note}에서 헤지펀드성 순포지션은 개선됐지만 "
+            "당일 가격 상승과 같은 시점의 포지션 변화로 볼 수는 없음"
         )
     elif sox_up and not lev_improving:
         overall = (
-            "SOX는 강하지만 헤지펀드 포지션이 따라붙는 확인이 부족 "
-            "→ 만기수급·일시 반등 가능성도 남음"
+            "SOX는 마감 기준 강세지만 "
+            f"{lag_note}에서 헤지펀드성 순포지션은 순숏 확대 방향 "
+            "→ 현재 상승에 헤지펀드가 동행했는지는 다음 CFTC 갱신 전까지 미확인"
         )
     elif (not sox_up) and lev_improving:
         overall = (
-            "가격은 약하지만 헤지펀드 포지션은 개선 "
-            "→ 선행 포지셔닝인지 실패 신호인지 다음 거래일 확인 필요"
+            "SOX는 마감 기준 약세. "
+            f"{lag_note}에서는 헤지펀드성 순포지션이 개선됐으나 "
+            "시점이 달라 선행 신호로 단정하지 않음"
         )
     else:
-        overall = "가격·기관 포지션·옵션 수요가 아직 한 방향으로 정렬되지 않음"
+        overall = (
+            "SOX·Cboe 옵션과 CFTC 주간 포지션의 시점·방향이 완전히 정렬되지 않아 "
+            "상방 추격 신호를 확정하지 않음"
+        )
 
     # Extra nuance: asset managers and leveraged funds can move in opposite directions.
     if cftc and lev_improving and not asset_improving:
@@ -900,6 +931,10 @@ def validate_critical_sources(cftc_obj, cboe_obj, sox_obj):
 
     if cboe_obj:
         m = cboe_obj["metrics"]
+        if m.get("final_snapshot") is not True:
+            problems.append("Cboe 최종 03:15 PM CT 스냅샷 미확인")
+        if not all(m.get(k) == "03:15 PM" for k in ("total_time_ct","equity_time_ct","index_time_ct")):
+            problems.append("Cboe Total/Equity/Index 최종 시각 불일치")
         if m.get("total_calls") and m.get("total_puts") and m.get("total_pc_ratio") is not None:
             calc = m["total_puts"] / m["total_calls"]
             if abs(calc - m["total_pc_ratio"]) > 0.03:
@@ -921,6 +956,12 @@ def validate_critical_sources(cftc_obj, cboe_obj, sox_obj):
 
     if sox_obj:
         m = sox_obj["metrics"]
+        if m.get("final_close_confirmed") is not True:
+            problems.append("SOX 최종 종가 교차검증 미확인")
+        if abs(float(m.get("crosscheck_close_diff", 999))) > 0.10:
+            problems.append(
+                f"SOX Nasdaq/Yahoo 최종 종가 차이 과대: {m.get('crosscheck_close_diff')}"
+            )
         if abs(m.get("net_change", 0)) > 1 and abs(m.get("d1_pct", 0)) < 0.01:
             problems.append("SOX 순변동은 큰데 등락률이 0.00%로 모순")
         prev = m.get("previous_close")
@@ -930,6 +971,17 @@ def validate_critical_sources(cftc_obj, cboe_obj, sox_obj):
                 problems.append(
                     f"SOX 등락률 검산 불일치: 계산 {calc_pct:.2f}% vs 표 {m['d1_pct']:.2f}%"
                 )
+
+    if cboe_obj and sox_obj:
+        try:
+            cboe_date = datetime.strptime(cboe_obj["period"], "%A, %B %d, %Y").date()
+            sox_date = datetime.strptime(sox_obj["period"], "%m/%d/%Y").date()
+            if cboe_date != sox_date:
+                problems.append(
+                    f"Cboe/SOX 기준 거래일 불일치: Cboe={cboe_date} SOX={sox_date}"
+                )
+        except Exception as exc:
+            problems.append(f"Cboe/SOX 거래일 검증 실패: {exc}")
 
     return problems
 
@@ -1017,7 +1069,7 @@ if quality_gate_ok and (updates or force):
             "<b>SOX 확인</b>",
             f"• 전일 {sox['metrics']['previous_close']:,.2f} → {sox['metrics']['value']:,.2f} "
             f"({sox['metrics']['d1_pct']:+.2f}%)",
-            "• Nasdaq 공식 종가를 Yahoo 일별 종가와 같은 날짜·같은 수준으로 교차검증한 뒤 1D·3D·5D를 계산",
+            "• 미국 장 마감 후 Nasdaq 공식 종가와 Yahoo 일별 종가를 같은 날짜·0.10포인트 이내로 교차검증한 뒤 1D·3D·5D를 계산",
             "",
         ]
 
@@ -1030,7 +1082,8 @@ if quality_gate_ok and (updates or force):
             f"→ {'기관 순롱 확대' if m['asset_net_wow'] > 0 else '기관 순롱 축소' if m['asset_net_wow'] < 0 else '변화 제한'}",
             f"• Leveraged Funds: 롱 {m['lev_long']:,} / 숏 {m['lev_short']:,} → 순 {m['lev_net']:+,}계약",
             f"• 전주 대비 순포지션 {m['lev_net_wow']:+,}계약 "
-            f"→ {'헤지펀드성 포지션 개선' if m['lev_net_wow'] > 0 else '헤지펀드성 포지션 악화' if m['lev_net_wow'] < 0 else '변화 제한'}",
+            f"→ {'헤지펀드성 순숏 축소·순포지션 개선' if m['lev_net_wow'] > 0 else '헤지펀드성 순숏 확대·순포지션 약화' if m['lev_net_wow'] < 0 else '변화 제한'}",
+            f"• 기준일: {html.escape(cftc['period'])} — CFTC TFF는 주간 자료이므로 현재 SOX/Cboe 거래일과 시차가 있을 수 있음",
         ]
         nq = cftc.get("nq_mini") or {}
         hist = cftc.get("history_3y") or {}
@@ -1119,7 +1172,7 @@ if quality_gate_ok and (updates or force):
             total_call_share = total_calls / (total_calls + total_puts) * 100.0
             total_call_put = total_calls / total_puts if total_puts else None
             body.append(
-                f"• 전체 옵션: 콜 {total_calls:,} / 풋 {total_puts:,} → P/C {total_pc:.2f} "
+                f"• Cboe 전체 옵션: 콜 {total_calls:,} / 풋 {total_puts:,} → P/C {total_pc:.2f} "
                 f"({m.get('total_time_ct') or '최신'} CT)"
             )
             body.append(
