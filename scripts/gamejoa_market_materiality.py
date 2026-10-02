@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 13
+VERSION = 14
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|목표|보인다|나서야|시급|밑돌\s*듯|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
@@ -314,7 +314,7 @@ def assess(title: str, body: str) -> dict:
     lead = " ".join(sentences[:3])
     headline_lead = f"{title} {lead}"
     electoral = bool(re.search(r"유세|선거운동|지지\s*(?:호소|결집)|campaign rally|election campaign", title, re.I))
-    if OFFICE_PUBLICITY.search(title) and not OFFICE_ECONOMIC_CHANGE.search(headline_lead):
+    if OFFICE_PUBLICITY.search(headline_lead) and not OFFICE_ECONOMIC_CHANGE.search(headline_lead):
         result.update(disposition="exclude", priority=0, reason="office_publicity_without_business_economics")
         return result
     if SPORTS_OWNERSHIP.search(headline_lead) and not PUBLIC_MARKET_BUSINESS_LINK.search(headline_lead):
@@ -338,6 +338,8 @@ def assess(title: str, body: str) -> dict:
     matches = []
     for index, sentence in enumerate(sentences):
         if BACKGROUND.search(sentence) or re.match(r"^한편[,\s]", sentence) or not period_matches(title, sentence):
+            continue
+        if re.search(r"\d+\s*년간.{0,20}(?:이어온|추진해\s*온|투자유치\s*노력)|(?:이어온|쌓아온).{0,12}투자유치\s*노력", sentence) and not QUANTITY.search(sentence):
             continue
         if re.search(r"추가매수를\s*고려하고\s*있었다면|투자자라면|투자금을\s*준비하는\s*방법|기회를\s*잡으려", sentence):
             continue

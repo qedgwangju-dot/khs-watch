@@ -96,6 +96,17 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_vision_headline_cannot_hide_office_publicity_or_historical_fundraising(self):
+        title = "금융그룹 회장 새로운 금융의 길 열겠다"
+        body = '금융그룹 회장은 헤드쿼터 개관식에서 새로운 100년을 열겠다고 말했다. 시장은 축사에서 "15년간 이어온 투자유치 노력이 타운의 완성으로 결실을 맺었다"고 말했다.'
+        self.assertEqual(materiality.assess(title, body)["disposition"], "exclude")
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([alert(title, body)], 7), [])
+        historical = materiality.assess("금융그룹 새로운 100년", '시장은 "15년간 이어온 투자유치 노력이 결실을 맺었다"고 말했다.')
+        self.assertNotEqual(historical["disposition"], "keep")
+        actual = materiality.assess("기업 본사 이전, 자금조달 계약", "기업은 본사 이전과 함께 신규 투자자에게 300억원 투자를 유치했다고 발표했다.")
+        self.assertEqual(actual["disposition"], "keep")
+
     def test_weather_shelter_publicity_requires_actual_operational_damage(self):
         title = "항만공사, 비즈니스 라운지 무더위·한파 쉼터 지정"
         body = "비즈니스 라운지는 폭염과 한파 시기 시민과 항만 근로자의 쉼터 역할을 한다. 항만공사 사장은 공공서비스를 확대해 나갈 것이라고 말했다."

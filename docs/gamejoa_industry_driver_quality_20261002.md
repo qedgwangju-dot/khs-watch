@@ -288,3 +288,16 @@ the shelter announcement, repairs both statement cores and reports zero focus
 mismatches. Actual warning text and policy guidance are retained without
 inventing a policy decision or actual nuclear use. Final runtime verification
 is recorded below after the complete suite and fresh-source run.
+
+Run `36958050414` passed at `2026-10-02T03:02:00Z`, including the full
+73-test suite and generated-report guard. The `11:58:33 KST` artifact had
+137 verified bodies, 23 failures and 456 deferred candidates; all seven cores
+were complete (maximum 100 characters) and all seven source anchors valid.
+ZIP SHA-256: `72DAA29EA5F33B02CDBBBF252A4F46BDA764FDE522A6CD942B8091663792E005`.
+
+Manual review confirmed statement-focus repairs and found a final office-PR
+variant whose headline quoted a vision instead of naming the new headquarters.
+Version 14 checks the headline and source introduction together for that
+context. Unquantified recollections of years of fundraising effort cannot be
+new financing evidence. A new quantified investment with office economics
+remains eligible. The persistent suite now has 74 tests.
