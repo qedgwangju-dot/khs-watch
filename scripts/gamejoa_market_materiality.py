@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 33
+VERSION = 34
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -708,7 +708,9 @@ def assess(title: str, body: str) -> dict:
             ):
                 evidence_axes.append("flows")
             if kind == "market_price_or_flow" and "flows" not in evidence_axes:
-                listing = bool(re.search(r"etf|etn", sentence, re.I) and re.search(r"상장|list", sentence, re.I))
+                listing = bool(re.search(r"etf|etn", sentence, re.I) and re.search(
+                    r"상장(?:했다|한다고|한다|할|\s*예정)|(?:newly\s*listed|will\s*list)", sentence, re.I,
+                ))
                 priority = 2 if focus_kind(title) == "breadth" or listing else 1
                 if listing:
                     evidence_axes.append("timeline")

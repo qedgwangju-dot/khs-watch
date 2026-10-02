@@ -278,6 +278,18 @@ class MaterialityChecks(unittest.TestCase):
         real_change = "사브가 신임 대표이사를 선임했다. 새 대표는 분기 매출 가이던스를 15% 상향한다고 밝혔다."
         self.assertEqual(materiality.assess(title, real_change)["disposition"], "keep")
 
+    def test_etf_product_name_is_not_new_listing_evidence(self):
+        title = 'ETF 27종 토큰화…"진짜 경쟁은 유통시장"'
+        body = "토큰화 시장은 국채와 머니마켓펀드(MMF)를 넘어 주식·상장지수펀드(ETF), 사모대출 등으로 빠르게 확장되고 있다."
+        audit = materiality.assess(title, body)
+        self.assertLess(audit["priority"], 2)
+        self.assertNotIn("timeline", audit["axes"])
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([alert(title, body)], 7), [])
+        real_listing = materiality.assess("신규 ETN 상장 예정", "새 ETN은 오는 7일 상장한다고 밝혔다.")
+        self.assertEqual(real_listing["disposition"], "keep")
+        self.assertGreaterEqual(real_listing["priority"], 2)
+
     def test_earnings_abbreviation_remains_primary_ahead_of_secondary_analyst_revision(self):
         title = "HL디앤아이한라, 상반기 영업익 34%↑…증권가도 목표주가 상향"
         self.assertEqual(materiality.focus_kind(title), "earnings")

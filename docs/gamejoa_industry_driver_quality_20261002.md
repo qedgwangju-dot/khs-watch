@@ -1003,3 +1003,28 @@ including the corrected orbital execution core. All 11 local contracts passed
 with 134 materiality regressions. Historical sends, original URLs and seen state
 were not rewritten or forced into another send. Final deployment and remote
 verification follow separately.
+
+## Version 34: ETF Product Names Are Not Listing Events
+
+Version 33 was deployed as `3473d36c1d5d0cf39ca87afddbf357b666c86af3`.
+Actual production run `37003201159` completed at `2026-10-02T12:00:44Z`,
+checked out `4b0802ffac49163f195e9083db1caec25e5d450e` and queried at
+`20:57:56 KST`. The 134 regressions, generated-report guard and delivery
+verification passed. Telegram returned `status=sent`, message ID `2029`,
+one attempt and no error. It attempted 160 bodies, verified 142, failed 18
+and deferred 421; coverage remained incomplete. ZIP SHA-256:
+`5A096DE8C23B785CAE833158D76C75B55481AC0E41C7714579820D4AF021FB0B`.
+
+Its only source body was read. The general tokenization-market explanation
+incorrectly gained listing priority because the Korean product name for ETF
+contains the word listing. Only an actual listing verb or announced listing
+schedule now qualifies; dated new ETF/ETN listings remain eligible. The new
+regression checks the production display filter, not just assessment metadata.
+The complete materiality suite now has 135 tests and all 11 local contracts pass.
+
+Read-only replay now covers 25 actual-delivery rows and six dry-run rows.
+Seventeen actual rows remain eligible and eight weak actual rows are excluded;
+four dry-run rows retain corrected cores and two are excluded. The just-sent
+generic tokenization explanation no longer passes. Original URLs, historical
+sends, seen history and retrieval queues were not rewritten or reset. Deployment
+and fresh version-34 execution proof are recorded separately below.
