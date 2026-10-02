@@ -1159,7 +1159,7 @@ def choose_verified_events(fresh_unseen: list[dict], raw_events: list[dict], see
     errors: list[str] = []
     candidates: list[dict] = []
     for raw in fresh_unseen:
-        if raw.get("category") == "citi_hbm_outlook":
+        if raw.get("category") in ("citi_hbm_outlook", "samsung_hbm4_price"):
             continue
         source_low = (raw.get("source") or "").lower()
         if any(k in source_low for k in LOW_VALUE_SOURCE_HINTS):
