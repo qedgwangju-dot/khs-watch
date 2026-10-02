@@ -56,6 +56,8 @@ QUERIES = (
 SEED_URLS = (
     ("Yahoo Finance", "https://ca.finance.yahoo.com/news/ai-spending-will-fuel-wins-for-micron-nvidia-intel-and-other-chip-stocks-bofa-analyst-193925832.html"),
     ("Investing.com", "https://www.investing.com/news/stock-market-news/bofa-lifts-server-cpu-tam-to-210bn-on-the-rise-of-ai-agents-4857499?ampMode=1"),
+    ("Finvaulta", "https://finvaulta.com/research/bank-of-america/rise-of-the-agents-raising-cpu-tam-again-to-210bn-2026-08-12"),
+    ("StreetSignal", "https://streetsignal.substack.com/p/streetsignal-morning-call-9302026-09e"),
 )
 
 TRUSTED = (
