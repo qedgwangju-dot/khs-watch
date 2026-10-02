@@ -1675,6 +1675,9 @@ def clean_article_summary_text(text: str) -> str:
         .replace("弗", "달러")
     )
     cleaned = re.sub(
+        r"^[^.!?\r\n]{0,140}\[[^\]\r\n]{0,40}자료사진\]\s*", "", cleaned,
+    )
+    cleaned = re.sub(
         r"^.{0,100}?(?:참고\s*이미지|자료사진)\s*\((?:사진|제공)=[^)]+\)\s*",
         "",
         cleaned,
@@ -2225,6 +2228,12 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     if not market_materiality.focus_kind(title) and not market_materiality.DENIAL_HEADLINE.search(title):
         return ""
+    if market_materiality.focus_kind(title) == "labor_negotiation":
+        for sentence in sentences:
+            if market_materiality.focus_matches(title, sentence) and re.search(r"임단협|임금|단체협약|잠정합의안", sentence):
+                fact = normalized_article_sentence(sentence)
+                if core_sentence_is_complete(fact):
+                    return fact
     if market_materiality.focus_kind(title) == "research_result":
         issuer = re.match(r"^([^,，]{2,30})[,，]", title)
         for sentence in sentences:
@@ -2296,8 +2305,15 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
                 fact = normalized_article_sentence(sentence)
                 if core_sentence_is_complete(fact):
                     return fact
-    if market_materiality.focus_kind(title) == "ownership" and re.search(r"매각|처분", title):
+    if market_materiality.focus_kind(title) == "ownership" and re.search(r"매각|매도|처분|주식.{0,8}판다", title):
         for sentence in sentences:
+            if re.search(r"거래계획보고서", sentence) and re.search(r"[\d,만억]+주.{0,20}매도", sentence):
+                fact = normalized_article_sentence(sentence)
+                owner = re.search(r"([가-힣]{2,5})\s*[,，]", title)
+                if owner and owner.group(1) in " ".join(sentences):
+                    fact = re.sub(rf"{re.escape(owner.group(1)[0])}\s*회장", f"{owner.group(1)} 회장", fact, count=1)
+                if core_sentence_is_complete(fact):
+                    return fact
             if (
                 market_materiality.core_focus_aligned(title, sentence)
                 and re.search(r"주식\s*[\d,만억]+주", sentence)
@@ -8847,6 +8863,7 @@ def display_news(alert: dict) -> str:
 
 
 CORE_UI_GARBAGE_PATTERNS = (
+    r"^[^.!?\r\n]{0,140}\[[^\]\r\n]{0,40}자료사진\]\s*",
     r'[^.!?\r\n"“”]*?(?:시공|시연|촬영)하고\s*있다\s*\(사진\s*=[^)]*\)',
     r'[^.!?\r\n"“”]*?(?:발언|연설|질문에\s*답|기념촬영을)\s*하고\s*있다\.',
     r"\((?:사진|사진제공|촬영|자료사진)\s*(?:=|:)[^)]{1,100}\)",

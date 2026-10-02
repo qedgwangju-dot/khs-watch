@@ -911,3 +911,35 @@ the two version-29 dry-run articles retain both with corrected complete cores,
 zero source-fact errors and their original links. No historic sends were
 reissued. The materiality suite contains 125 tests. Final deployment, all local
 contracts and a fresh production-environment source run are verified separately.
+
+## Version 31: Preserve Rejected Agreements and Remove Photo Prefixes
+
+Version 30 was deployed as `1a7292f2adeaae5e57641553abbf7ab1950ca65a`.
+Fresh dry run `36998639343` completed at `2026-10-02T11:05:13Z`, checked
+out `6ab6d47bc6ff743b05bdda91d0f0bfa6bc2f61bb` and queried at
+`20:02:24 KST`. Its generated-report guard passed. It collected 1,026
+rows, attempted 95 bodies, verified 77, failed 18 and deferred 652.
+Coverage remained incomplete; there was no Telegram send or state commit.
+Artifact ZIP SHA-256:
+`63A919CCC41D31C1D9AC30256BE647A2273E33EAD4F1D5C179255430416E0B9C`.
+
+Both selected bodies were read. A rejected labor agreement was summarized
+using proposed payments, omitting rejection. An insider share-sale article
+retained a concatenated photo description ahead of the actual news lead.
+These were treated as failures despite the technical guard PASS.
+
+Labor negotiation headlines now retain the agreement's rejection stage;
+proposed payments and prospective hiring cannot displace that primary event.
+An insider-sale headline phrased as selling shares is treated as an ownership
+event. Its planned transaction filing and disclosed share count are preferred
+to personal background. A bounded leading photo-credit prefix is removed
+before sentence ranking. This does not promote planned trades into completed
+sales. Three new regressions cover the two original failures and caption
+cleaning, bringing the materiality suite to 128 tests. Deployment and final
+remote verification are recorded separately below.
+
+All 11 local contracts passed with the 128-test materiality suite. Read-only
+replay reviewed 20 actual-delivery rows, retaining 14 and excluding six;
+four additional dry-run article rows remain eligible with corrected complete
+cores and zero source-fact errors. Original links are unchanged. Seen history,
+retrieval queues and prior delivery records were not reset or rewritten.

@@ -172,6 +172,45 @@ class MaterialityChecks(unittest.TestCase):
         self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
         self.assertTrue(radar.source_output_aligned({**item, "telegram_core_fact": core}))
 
+    def test_actual_labor_rejection_core_keeps_rejection_not_proposed_payments(self):
+        title = "기본급 12만원 인상에도…HD현대重 임단협 합의안 부결"
+        payment = "기본급 외에 산업전환 특별협약 체결 축하금 500만원, 생산성 향상 격려금 300만원을 지급하는 내용도 포함됐다."
+        body = ("HD현대중공업 노사의 올해 임금·단체협약 잠정합의안이 조합원 찬반투표에서 부결됐다.\n"
+                + payment + "\n이번 부결로 노사는 임금·복지 등 쟁점을 놓고 추가 교섭에 나설 것으로 보인다.")
+        item = {**alert(title, body), "telegram_core_fact": payment}
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("HD현대중공업", core)
+        self.assertIn("부결", core)
+        self.assertNotIn("500만원", core)
+        self.assertFalse(materiality.core_focus_aligned(title, payment))
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        self.assertEqual({row["kind"] for row in materiality.assess(title, body)["evidence"]}, {"labor_cost_or_execution"})
+
+    def test_actual_insider_trade_keeps_planned_share_count_not_photo_caption(self):
+        title = '"최태원, 노소영에 9440억 현금으로 줘야"…결국 SK주식 판다'
+        body = ("최태원 SK그룹 회장(왼쪽)과 노소영 아트센터 나비 관장_[연합뉴스 자료사진][이데일리 박민웅 기자] "
+                "최태원 SK그룹 회장이 재산분할 소송 관련 개인 자금 마련을 위해 SK㈜ 지분 일부를 매각한다.\n"
+                "SK㈜는 최대주주인 최 회장이 보유한 회사 주식 가운데 165만3924주를 매도하는 내용의 임원·주요주주 특정증권 등 거래계획보고서를 2일 공시했다.\n"
+                "실제 거래는 공시 한 달 뒤 진행될 예정이다.")
+        item = {**alert(title, body), "telegram_core_fact": body.split("\n")[0]}
+        core = radar.verified_alert_core(item, title)
+        for term in ("SK㈜", "165만3924주", "거래계획", "공시"):
+            self.assertIn(term, core)
+        self.assertNotIn("자료사진", core)
+        self.assertNotIn("왼쪽", core)
+        self.assertIn("최태원", core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        self.assertTrue(radar.source_output_aligned({**item, "telegram_core_fact": core}))
+
+    def test_concatenated_photo_prefix_is_removed_before_sentence_ranking(self):
+        value = "회장(왼쪽)과 대표_[연합뉴스 자료사진][이데일리 기자] 기업이 지분 매각 계획을 공시했다."
+        self.assertTrue(radar.core_has_ui_garbage(value))
+        cleaned = radar.strip_core_ui_garbage(value)
+        self.assertNotIn("왼쪽", cleaned)
+        self.assertNotIn("자료사진", cleaned)
+        self.assertIn("기업이 지분 매각 계획을 공시했다.", cleaned)
+
     def test_earnings_abbreviation_remains_primary_ahead_of_secondary_analyst_revision(self):
         title = "HL디앤아이한라, 상반기 영업익 34%↑…증권가도 목표주가 상향"
         self.assertEqual(materiality.focus_kind(title), "earnings")

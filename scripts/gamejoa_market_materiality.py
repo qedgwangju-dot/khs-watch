@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 30
+VERSION = 31
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -87,7 +87,8 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("customer_implementation", r"1차\s*시공|초도\s*납품", r"1차\s*시공|초도\s*납품"),
     ("industrial_program", r"(?:SMR|원전|양자|반도체|로봇).{0,16}상용화", r"(?:상용화|사업화).{0,50}(?:출범|지원|시행|추진)|(?:출범|지원|시행|추진).{0,50}(?:상용화|사업화)"),
     ("environmental_approval", r"환경(?:영향)?평가.{0,15}(?:통과|완료|면제)", r"최종\s*환경평가|FONSI|환경영향평가서.{0,35}(?:없이|면제)"),
-    ("ownership", r"지분.{0,25}(?:인수|매각|취득)|인수.{0,25}지분|합병(?!원)", r"지분|인수|매각|취득|합병(?!원)|stake|acquir|merger"),
+    ("ownership", r"지분.{0,25}(?:인수|매각|취득)|인수.{0,25}지분|합병(?!원)|주식.{0,8}(?:판다|매도|매각)", r"지분|인수|매각|매도|취득|거래계획|합병(?!원)|stake|acquir|merger"),
+    ("labor_negotiation", r"임단협|임금.{0,12}(?:협상|합의)|단체협약", r"임단협|임금|단체협약|잠정합의안|교섭"),
     ("shareholder", r"자사주|자기주식|주주환원|배당", r"자사주|자기주식|주주환원|배당|(?:주식|지분).{0,30}(?:매수|취득|매입|처분)|buyback|dividend"),
     ("capital_listing", r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|신규\s*상장", r"기업공개|\bipo\b|상장(?!지수)"),
     ("financing", r"자금.{0,12}(?:투입|조달|유입)|대출|funding|financing|loan", r"자금|대출|투자(?!자)|조달|전환사채|출자|납입|증자|확정된\s*사항|funding|financing|loan|convertible debt"),
@@ -194,6 +195,8 @@ def focus_matches(title: str, sentence: str) -> bool:
     if DENIAL_HEADLINE.search(title) and not DENIAL_SOURCE.search(sentence):
         return False
     kind = focus_kind(title)
+    if kind == "labor_negotiation" and "부결" in title and not re.search(r"부결|타결.{0,12}(?:못|않)|추가\s*교섭", sentence):
+        return False
     if kind == "nuclear_warning":
         condition = re.search(r"([가-힣A-Za-z]{2,20})\s*(?:피격|공격)(?:시|받)", title)
         if condition and condition.group(1) not in sentence:
@@ -389,7 +392,7 @@ RULES = (
      r"전력|변압기|과부하|폐사|양식|농작물|생산|공급|항만|물류|공장|피해|사망|power|transformer|crop|production|supply|port|factory|damage|death"),
     ("labor_cost_or_execution", ("earnings", "timeline"),
      r"파업|노조|성과급|임단협|(?<!금)감원|(?:인력|인원|일자리).{0,20}감축|임금|strike|union|layoff|wage",
-     r"생산|공장|운송|항만|비용|인상|교섭|협상|주식|지급|중단|감축|production|factory|port|cost|talks|shares|halt|cut"),
+     r"생산|공장|운송|항만|비용|인상|교섭|협상|부결|타결|주식|지급|중단|감축|production|factory|port|cost|talks|shares|halt|cut"),
     ("customer_discussions", ("earnings", "timeline"),
      r"공급|고객|구매|생산|공동개발|공동 개발|인증|hbm|파운드리|자율주행|데이터센터|ai.{0,4}(?:반도체|인프라)|supply|customer|procurement|co-develop|foundry|autonomous|data center",
      r"협상|논의|검토|회동|협력(?!사)|합의|협약|negotiat|discuss|consider|meeting|collaborat|agreement"),
@@ -613,7 +616,7 @@ def assess(title: str, body: str) -> dict:
             ):
                 continue
             if kind == "labor_cost_or_execution" and not re.search(
-                r"파업|임단협|임금.{0,20}(?:인상|인하|교섭|협상)|성과급.{0,25}(?:주식|지급|변경)|"
+                r"파업|임단협|단체협약|임금.{0,25}(?:인상|인하|교섭|협상|부결|타결)|성과급.{0,25}(?:주식|지급|변경)|"
                 r"(?<!금)감원|(?:인력|인원|일자리).{0,20}감축|(?:생산|공장|운송|항만).{0,25}(?:중단|차질)|"
                 r"strike|layoff|wage.{0,20}(?:talk|rais|cut)|(?:worker|job|labor|labour).{0,20}(?:cut|reduc)", sentence, re.I,
             ):
