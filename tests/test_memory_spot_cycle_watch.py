@@ -333,6 +333,15 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertEqual(obs["output_committed_min_pct"], 75.0)
         self.assertEqual(w._micron_supply_commitment_changes(w.MICRON_SUPPLY_COMMITMENT_BASELINE, obs), [])
 
+    def test_trendforce_relative_spread_summary_flags_hbm_regime_flip(self):
+        s = dict(w.TREND_3Q4Q_PACE_BASELINE)
+        lines = w._trend_relative_spread_summary(s)
+        joined = " ".join(lines)
+        self.assertIn("3Q -5.0%p→4Q +5.0%p", joined)
+        self.assertIn("+10.0%p 스윙", joined)
+        self.assertIn("전체 NAND보다 +8.0%p", joined)
+        self.assertIn("국면 전환", joined)
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
