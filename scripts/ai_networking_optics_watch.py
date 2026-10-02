@@ -60,6 +60,20 @@ COMPANIES = {
         "aliases": ["Coherent"],
         "query": 'Coherent (PhotonLink OR "integrated optics" OR "complete optical solution" OR "end-to-end" OR "vertical integration" OR CPO OR NPO OR "chip-to-chip" OR "silicon photonics" OR SiPh OR InP OR "specialty fiber" OR "polarization-maintaining fiber" OR "mode-matching fiber" OR "multicore fiber" OR "customer engagement" OR "long-term agreement" OR "content opportunity" OR 800G OR 1.6T OR 3.2T)',
     },
+    "US Optical Policy": {
+        "ticker": "FCC/의회",
+        "aliases": ["FCC", "Federal Communications Commission", "U.S. Senate", "Congress"],
+        "queries": [
+            '"optical transceiver" (FCC OR "Federal Communications Commission") (China OR Chinese OR restriction OR rule OR "Covered List" OR 3.2T OR "domestic content" OR 65% OR 75%)',
+            '"optical transceiver" (Senate OR Congress OR "national security systems") (China OR Chinese OR Innolight OR Eoptolink)',
+            '"optical transceiver" ("Buy American" OR "domestic end product" OR HBOM OR SBOM)',
+        ],
+    },
+    "AXT": {
+        "ticker": "AXTI",
+        "aliases": ["AXT", "AXT Inc."],
+        "query": 'AXT (InP OR "indium phosphide") (substrate OR shortage OR "export license" OR capacity OR "data center" OR optical)',
+    },
     "Astera Labs": {
         "ticker": "ALAB",
         "aliases": ["Astera Labs", "Astera"],
@@ -112,6 +126,8 @@ DISPLAY_NAMES_KO = {
     "Marvell": "마벨",
     "Lumentum": "루멘텀",
     "Coherent": "코히런트",
+    "US Optical Policy": "미국 광트랜시버 정책",
+    "AXT": "AXT",
     "Astera Labs": "아스테라 랩스",
     "Corning": "코닝",
     "Samsung Electronics": "삼성전자",
@@ -122,7 +138,8 @@ TRUSTED_SOURCES = {
     "Reuters", "Bloomberg", "Financial Times", "The Wall Street Journal", "CNBC",
     "DigiTimes", "DIGITIMES", "Investing.com", "Barron's", "MarketWatch",
     "NVIDIA Blog", "NVIDIA Newsroom", "Broadcom", "Arista Networks", "Marvell",
-    "Lumentum", "Coherent", "Astera Labs", "Corning",
+    "Lumentum", "Coherent", "AXT", "Federal Communications Commission", "FCC",
+    "U.S. Senate", "Congress.gov", "Astera Labs", "Corning",
     "TrendForce", "MoneyDJ", "Economic Daily News", "UDN", "經濟日報",
     "GMT GLOBAL INC.", "TOYO Automation", "Chieftek Precision",
 }
@@ -143,7 +160,13 @@ HIGH_SIGNAL_PATTERNS = [
     r"customer engagements?", r"long[- ]term agreements?", r"anchor customers?",
     r"content opportunity", r"content per", r"100\s*Tbps", r"specialty fibers?",
     r"polarization[- ]maintaining", r"mode[- ]matching", r"multicore fibers?",
-    r"\bInP\b", r"\bSiPh\b", r"photonics foundry", r"design win",
+    r"\bInP\b", r"indium phosphide", r"InP substrate", r"export licen[cs]e",
+    r"\bSiPh\b", r"photonics foundry", r"design win",
+    r"\bFCC\b", r"Federal Communications Commission", r"Covered List",
+    r"equipment authorization", r"Chinese[- ]made", r"China[- ]based",
+    r"domestic content", r"domestic end product", r"Buy American",
+    r"\b65\s*%\b", r"\b75\s*%\b", r"exempt(?:ion|ions)?", r"restrictions?",
+    r"national security systems?", r"Inn[o]?light", r"Eoptolink",
     r"optical coupling", r"active alignment", r"alignment modules?", r"aligners?",
     r"motion platforms?", r"linear motors?", r"6[- ]axis", r"nanometer", r"50\s*nm",
     r"\bFAU\b", r"\bOSAT\b", r"order visibility", r"delivery visibility",
@@ -164,6 +187,11 @@ ACTION_PATTERNS = [
     r"FAU", r"OSAT", r"order visibility", r"delivery visibility", r"new line",
     r"assembly line", r"factory expansion", r"capacity", r"CAPA", r"utilization",
     r"qualification", r"validation", r"verification",
+    r"final rule", r"proposed rule", r"rulemaking", r"adopt(?:s|ed)?", r"effective",
+    r"restrict(?:s|ed|ion|ions)?", r"ban(?:s|ned)?", r"prohibit(?:s|ed|ion)?",
+    r"introduc(?:es|ed)? bill", r"legislation", r"covered list", r"equipment authorization",
+    r"domestic content", r"domestic end product", r"buy american", r"exempt(?:ion|ions)?",
+    r"export licen[cs]e",
     r"訂單", r"能見度", r"出貨", r"量產", r"擴產", r"產能", r"產能利用率",
     r"驗證", r"認證", r"導入", r"光耦合", r"對位", r"線性馬達", r"六軸",
 ]
@@ -182,7 +210,8 @@ NOISE_PATTERNS = [
 SOURCE_PRIORITY = {
     "Coherent": 100, "NVIDIA Blog": 100, "NVIDIA Newsroom": 100,
     "Broadcom": 100, "Arista Networks": 100, "Marvell": 100,
-    "Lumentum": 100, "Astera Labs": 100, "Corning": 100,
+    "Lumentum": 100, "AXT": 100, "Federal Communications Commission": 100, "FCC": 100,
+    "U.S. Senate": 100, "Congress.gov": 100, "Astera Labs": 100, "Corning": 100,
     "Samsung Electronics": 100, "Samsung Global Newsroom": 100,
     "Reuters": 95, "Bloomberg": 94, "Financial Times": 93,
     "The Wall Street Journal": 93, "CNBC": 88, "DigiTimes": 85, "DIGITIMES": 85,
@@ -250,6 +279,23 @@ def story_tokens(title: str) -> set[str]:
 
 def canonical_story_key(company: str, title: str) -> str | None:
     text = html.unescape(title or "").lower()
+    if company == "US Optical Policy":
+        if re.search(r"senate|congress|bill|legislation|national security systems?", text, re.I):
+            if re.search(r"pass(?:es|ed)?|signed|enacted|law", text, re.I):
+                return "us-optical-policy|congress|enacted"
+            return "us-optical-policy|congress|bill"
+        if re.search(r"final rule|adopt(?:s|ed)?|effective|takes? effect", text, re.I):
+            return "us-optical-policy|fcc|final"
+        if re.search(r"proposed rule|rulemaking|notice|comment|draft|consider", text, re.I):
+            return "us-optical-policy|fcc|proposal"
+        if re.search(r"3\.2\s*t|65\s*%|75\s*%|domestic content|buy american|exempt", text, re.I):
+            return "us-optical-policy|fcc|content-threshold-scenario"
+        return "us-optical-policy|fcc|other"
+    if company == "AXT" and re.search(r"\binp\b|indium phosphide", text, re.I):
+        if re.search(r"export licen[cs]e|restriction|china", text, re.I):
+            return "axt|inp|export-policy"
+        if re.search(r"shortage|tight|capacity|expand|substrate", text, re.I):
+            return "axt|inp|capacity-shortage"
     if company == "Coherent" and "photonlink" in text:
         if re.search(r"customer engagements?|long[- ]term(?:\s+\w+){0,6}\s+agreements?|anchor customers?|design win|secures?.{0,60}agreements?", text, re.I):
             return "coherent|photonlink|customer-contract"
@@ -396,8 +442,16 @@ def signal_score(title: str, source: str) -> int:
         score += 5
     if re.search(r"specialty fibers?|polarization[- ]maintaining|mode[- ]matching|multicore fibers?", text, re.I):
         score += 4
-    if re.search(r"\bInP\b|\bSiPh\b|photonics foundry|design win", text, re.I):
+    if re.search(r"\bInP\b|indium phosphide|InP substrate|\bSiPh\b|photonics foundry|design win", text, re.I):
         score += 4
+    if re.search(r"\bFCC\b|Federal Communications Commission|Covered List|equipment authorization", text, re.I):
+        score += 7
+    if re.search(r"Chinese[- ]made|China[- ]based|domestic content|domestic end product|Buy American|\b65\s*%\b|\b75\s*%\b|Inn[o]?light|Eoptolink", text, re.I):
+        score += 4
+    if re.search(r"final rule|proposed rule|rulemaking|restrict(?:ion|ions)?|ban|prohibit|legislation|national security systems?", text, re.I):
+        score += 5
+    if re.search(r"export licen[cs]e", text, re.I):
+        score += 5
     if re.search(r"optical coupling|active alignment|alignment modules?|aligners?|motion platforms?|linear motors?|6[- ]axis|nanometer|50\s*nm|\bFAU\b", text, re.I):
         score += 5
     if re.search(r"\bOSAT\b|qualification|validation|verification", text, re.I):
@@ -430,6 +484,14 @@ def signal_score(title: str, source: str) -> int:
 
 
 def stage_for(title: str) -> str:
+    if re.search(r"final rule|adopt(?:s|ed)?|effective|takes? effect|signed|enacted", title, re.I):
+        return "최종 규칙·시행"
+    if re.search(r"proposed rule|rulemaking|notice|comment period|draft rule|considering", title, re.I):
+        return "규칙 제안·검토"
+    if re.search(r"senate|congress|introduc(?:es|ed)? bill|legislation", title, re.I):
+        return "법안 발의·입법"
+    if re.search(r"export licen[cs]e|export restriction", title, re.I):
+        return "수출허가·공급망 규제"
     if re.search(r"驗證|認證|導入|\bOSAT\b|qualification|validation|verification|passes?.{0,40}certification", title, re.I):
         return "고객 검증·양산 도입"
     if re.search(r"訂單|能見度|order visibility|delivery visibility|backlog|orders?|bookings?", title, re.I):
@@ -460,6 +522,12 @@ def stage_for(title: str) -> str:
 
 
 def category_for(title: str, company: str) -> str:
+    if company == "US Optical Policy":
+        if re.search(r"senate|congress|bill|legislation|national security systems?", title, re.I):
+            return "미국 광트랜시버 규제·법안"
+        return "FCC 광트랜시버 규제"
+    if company == "AXT" and re.search(r"\bInP\b|indium phosphide|substrate|export licen[cs]e", title, re.I):
+        return "InP 기판 병목"
     if company == "CPO Equipment Supply Chain":
         if re.search(r"驗證|認證|導入|\bOSAT\b|qualification|validation|verification|certif", title, re.I):
             return "CPO 장비 고객검증·도입"
@@ -503,6 +571,9 @@ def category_for(title: str, company: str) -> str:
 
 def meaning_for(category: str) -> str:
     mapping = {
+        "FCC 광트랜시버 규제": "완제품 국적보다 부품 원산지·가치비중까지 규제가 내려오면 3.2T 세대의 공급사 선정과 레이저·InP·DSP 가치배분이 직접 바뀌는 정책 신호입니다.",
+        "미국 광트랜시버 규제·법안": "FCC 상업시장 규제와 연방 국가안보시스템 조달 제한은 범위가 다르므로, 법안 통과·적용대상 확대 여부가 중국 광모듈의 실제 미국 매출 접근성을 바꾸는 신호입니다.",
+        "InP 기판 병목": "InP 기판 수급·수출허가·증설은 EML·CW 레이저와 1.6T·3.2T 광모듈 출하량의 상류 한계를 결정해 LITE·COHR·AXTI의 물량·가격·가동률에 직접 연결됩니다.",
         "3.2T 전환": "차세대 광링크가 시제품에서 고객 검증·양산으로 넘어가면 광 DSP·레이저·모듈의 다음 매출 사이클 선행신호입니다.",
         "CPO·실리콘 포토닉스": "스위치와 광학을 더 가깝게 결합해 전력·대역폭 병목을 줄이는 구조 변화로, 기존 플러거블 광모듈의 가치 배분까지 바꿀 수 있습니다.",
         "1.6T 전환": "800G에서 1.6T로 실제 출하가 이동하는 신호로, 광 DSP·레이저·고밀도 연결부품의 현재 매출 증가와 직접 연결됩니다.",
@@ -529,6 +600,9 @@ def meaning_for(category: str) -> str:
 
 def risk_for(category: str) -> str:
     mapping = {
+        "FCC 광트랜시버 규제": "3.2T·65% 같은 시장 시나리오가 최종 규정에서 바뀌거나, 미국 제조요건이 더 엄격해지면 예상 수혜기업과 공급망 구조가 달라질 수 있습니다.",
+        "미국 광트랜시버 규제·법안": "연방 국가안보시스템 조달 제한을 전체 상업용 데이터센터 금지로 확대해석하면 실적 민감도를 과대평가할 수 있습니다.",
+        "InP 기판 병목": "중국 수출허가·원산지 규제가 강화되면 InP 가격 상승의 수혜보다 공급중단·고객 이원화가 먼저 나타날 수 있습니다.",
         "3.2T 전환": "고객 인증·대량생산 수율이 지연되면 매출 시점이 뒤로 밀릴 수 있습니다.",
         "CPO·실리콘 포토닉스": "레이저 신뢰성·수율·현장 교체 난도와 플러거블 대비 경제성이 핵심 실패 경로입니다.",
         "1.6T 전환": "물량 증가보다 평균판매단가 하락이 빠르면 매출 성장 폭이 제한될 수 있습니다.",
@@ -713,6 +787,7 @@ def main() -> None:
         "dedupe_version": 2,
         "quality_version": 3,
         "cpo_equipment_version": 2,
+        "optical_policy_version": 1,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "seen_keys": updated_seen,
         "seen_story_keys": updated_story_keys,
@@ -730,13 +805,18 @@ def main() -> None:
         equipment_version = int(state.get("cpo_equipment_version") or 0)
         if equipment_version < 2:
             new_items = [item for item in new_items if item.get("company") != "CPO Equipment Supply Chain"]
+        optical_policy_version = int(state.get("optical_policy_version") or 0)
+        if optical_policy_version < 1:
+            new_items = [item for item in new_items if item.get("company") not in {"US Optical Policy", "AXT"}]
         alert_items = new_items[:8] if initialized else []
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
 
     if alert_items:
+        policy_only = all(item.get("company") == "US Optical Policy" for item in alert_items)
+        alert_header = "🚨 <b>미국 광트랜시버 규제 변화 감지</b>" if policy_only else "🚨 <b>AI 네트워킹·광통신 구조 변화 감지</b>"
         lines = [
-            "🚨 <b>AI 네트워킹·광통신 구조 변화 감지</b>",
+            alert_header,
             f"조회시각(KST): {html.escape(dt.datetime.now(KST).strftime('%Y-%m-%d %H:%M:%S'))}",
             f"신규 변화: <b>{len(alert_items)}건</b>",
             "",
@@ -762,7 +842,7 @@ def main() -> None:
             ])
         lines.extend([
             "<b>감시 기준</b>",
-            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / 엔비디아 CPO 실제 배치 / 코히런트 포톤링크 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027년 2분기 가시성·생산능력 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030년 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·수주잔고 / 코닝 광통신·유리기판 신규 AI 매출 경로",
+            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / FCC 중국산 광트랜시버 최종규칙·3.2T 적용세대·미국산 콘텐츠 65%·75%·예외·시행일 / 상원·의회 국가안보시스템 광트랜시버 법안 범위 / InP 기판 공급부족·수출허가·증설·가격 / 엔비디아 CPO 실제 배치 / 코히런트 포톤링크 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027년 2분기 가시성·생산능력 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030년 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·수주잔고 / 코닝 광통신·유리기판 신규 AI 매출 경로",
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
