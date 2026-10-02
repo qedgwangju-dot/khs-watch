@@ -333,15 +333,31 @@ def federal_register_document_number(event):
     m = re.search(r"Document Number:\s*([^|]+)", detail, re.I)
     return clean(m.group(1)) if m else ""
 
+def federal_register_effective_date(event):
+    detail = clean(event.get("detail", ""))
+    m = re.search(r"Effective Date:\s*(\d{4}-\d{2}-\d{2})", detail, re.I)
+    return m.group(1) if m else ""
+
+
 def special_translation(event):
     title = clean(event.get("title", ""))
     detail = clean(event.get("detail", ""))
     signal = f"{title} {detail}".lower()
     if is_sec_crypto_custody_2026(event):
+        stage = rule_stage(event)
         due = federal_register_comments_close(event)
-        due_text = f" 의견수렴 마감일은 {due}입니다." if due else " 의견 제출기한은 Federal Register(연방관보) 게재 후 60일입니다."
+        effective = federal_register_effective_date(event)
         doc = federal_register_document_number(event)
         doc_text = f" Federal Register 문서번호는 {doc}입니다." if doc else ""
+        if stage == "final":
+            effective_text = f" 시행일은 {effective}입니다." if effective else " 시행일·준수기한은 Federal Register 원문에서 확인해야 합니다."
+            return (
+                "SEC, 투자자문사·펀드의 암호자산 수탁 최종규칙 확정",
+                "SEC가 등록 투자자문사와 규제 펀드의 암호자산 수탁 규칙을 최종 확정했습니다. "
+                "핵심 적용범위와 self-custody(자체 수탁), state trust company(주 신탁회사) 수탁 조건은 최종 문안 기준으로 판단해야 합니다. "
+                "File No. S7-2026-35 계열 규칙입니다." + doc_text + effective_text,
+            )
+        due_text = f" 의견수렴 마감일은 {due}입니다." if due else " 의견 제출기한은 Federal Register(연방관보) 게재 후 60일입니다."
         return (
             "SEC, 투자자문사·펀드의 암호자산 수탁 규칙 개정안 제안",
             "SEC는 등록 투자자문사와 규제 펀드의 암호자산 수탁 규칙을 새로 제안했습니다. "
@@ -454,10 +470,17 @@ def investment_lines(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
     if is_sec_crypto_custody_2026(event):
+        if stage == "final":
+            return [
+                "COIN: 최종규칙이 state trust company(주 신탁회사)를 허용하면 Coinbase Custody Trust Company의 규제 적합성이 더 명확해질 수 있습니다. 실제 수탁자산·기관고객 증가가 매출 확인 지표입니다.",
+                "CRCL: Circle Internet Trust Company LLC도 NYDFS limited purpose trust company(제한목적 신탁회사) 인가를 보유합니다. 실제 제3자 기관 수탁 서비스 제공·매출 발생 여부는 별도 확인해야 합니다.",
+                "BTC·ETH: 최종규칙의 적용 자산 범위에 따라 기관의 직접 보유·수탁 경로가 달라집니다. 자금 유입은 실제 펀드 보유량으로 확인해야 합니다.",
+                "시간표: 시행일·전환기간·준수기한과 기관별 실제 수탁 개시를 추적합니다.",
+            ]
         return [
             "COIN: Coinbase Custody Trust Company는 뉴욕주 limited purpose trust company(제한목적 신탁회사)라 최종 규칙의 state trust company 수탁 경로와 연결될 가능성이 있습니다. 다만 self-custody(자체 수탁) 허용은 외부 수탁 수요를 일부 상쇄할 수 있습니다.",
-            "BTC·ETH: 이번 규칙이 모든 암호자산에 자동 적용되는 것은 아니므로 ‘BTC·ETH 기관자금 유입 확정’으로 해석하면 안 됩니다. 실제 적용 범위와 최종 문구를 확인해야 합니다.",
             "CRCL: Circle Internet Trust Company LLC도 NYDFS limited purpose trust company(제한목적 신탁회사) 인가를 보유해 제도상 연결 가능성이 있습니다. 다만 제3자 기관자산 수탁 서비스의 실제 제공·매출 연결은 아직 공식 확인이 필요합니다.",
+            "BTC·ETH: 이번 규칙이 모든 암호자산에 자동 적용되는 것은 아니므로 ‘BTC·ETH 기관자금 유입 확정’으로 해석하면 안 됩니다. 실제 적용 범위와 최종 문구를 확인해야 합니다.",
             "시간표: Federal Register 게재 → 60일 의견수렴 → 수정·Final Rule(최종규칙) 채택 여부를 확인합니다.",
         ]
     if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
@@ -550,10 +573,15 @@ def core_summary(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
     if is_sec_crypto_custody_2026(event):
+        if stage == "final":
+            return (
+                "SEC 암호자산 수탁 규칙이 최종 확정되면 COIN·CRCL의 신탁회사 수탁 경로와 기관의 직접 수탁 선택지가 실제 제도권 규칙으로 바뀐 것이므로, "
+                "이후 핵심은 시행일·적용 자산·기관 수탁자산 증가와 실제 수탁 매출입니다."
+            )
         return (
             "SEC의 S7-2026-35는 CLARITY 법안 자체 변경이 아니라 별도 행정규칙 경로에서 기관의 암호자산 수탁 규칙을 넓히려는 제안입니다. "
             "COIN에는 state trust company 수탁 경로가 기회가 될 수 있지만 self-custody(자체 수탁)가 외부 수탁 수요를 일부 상쇄할 수 있고, "
-            "BTC·ETH는 적용 범위가 자산의 법적 성격에 따라 달라져 직접 기관자금 유입으로 단정할 수 없습니다."
+            "CRCL도 Circle New York Trust를 통해 제도상 연결 가능성이 있으나 실제 제3자 수탁 매출은 미확정이며, BTC·ETH는 적용 범위가 자산의 법적 성격에 따라 달라집니다."
         )
     if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
         return "CFTC RIN 3038-AF80은 CLARITY 부결 뒤 의회 입법과 별개인 행정 규칙 경로가 실제 백악관 OIRA 검토에 들어갔다는 시간표 변화지만, 현재는 Pending Review(검토 중)·Prerule(사전규칙 단계)이고 규칙 본문도 비공개라 COIN·CRCL의 돈 버는 능력이 즉시 바뀐 단계는 아니며, 다음 핵심은 OIRA 검토 종료와 CFTC의 공개 문안입니다."
