@@ -853,17 +853,17 @@ def extract_samsung_hbm4e_thermal_package(event: dict) -> dict | None:
         obs["industry_current_interposer_reticle_x"] = float(current.group(1))
 
     future = re.search(
-        r"(?:interposer|인터포저)[^.]{0,180}?(?:as\\s+much\\s+as|up\\s+to)[^0-9]{0,20}?([0-9]+(?:\\.[0-9]+)?)\\s*(?:배|x|times)",
+        r"(?:interposer|인터포저)[^.]{0,180}?(?:as\s+much\s+as|up\s+to)[^0-9]{0,20}?([0-9]+(?:\.[0-9]+)?)\s*(?:배|x|times)",
         text, re.I,
     )
     if not future:
         future = re.search(
-            r"(?:interposer|인터포저)[^.]{0,180}?([0-9]+(?:\\.[0-9]+)?)\\s*(?:배|x|times)\\s*까지",
+            r"(?:interposer|인터포저)[^.]{0,180}?([0-9]+(?:\.[0-9]+)?)\s*(?:배|x|times)\s*까지",
             text, re.I,
         )
     if not future:
         future = re.search(
-            r"([0-9]+(?:\\.[0-9]+)?)\\s*(?:배|x|times)[^.]{0,80}?(?:interposer|인터포저)",
+            r"([0-9]+(?:\.[0-9]+)?)\s*(?:배|x|times)[^.]{0,80}?(?:interposer|인터포저)",
             text, re.I,
         )
     if future:
