@@ -54,9 +54,8 @@ QUERIES = (
 )
 
 SEED_URLS = (
-    ("Investing.com", "https://www.investing.com/news/stock-market-news/these-5-ai-chip-stocks-are-mustown-into-q4-bofa-says-4927145"),
-    ("Yahoo Finance", "https://sg.finance.yahoo.com/news/ai-spending-will-fuel-wins-for-micron-nvidia-intel-and-other-chip-stocks-bofa-analyst-193925832.html"),
-    ("Investing.com", "https://uk.investing.com/news/stock-market-news/bofa-lifts-server-cpu-tam-to-210bn-on-the-rise-of-ai-agents-4830073"),
+    ("Yahoo Finance", "https://ca.finance.yahoo.com/news/ai-spending-will-fuel-wins-for-micron-nvidia-intel-and-other-chip-stocks-bofa-analyst-193925832.html"),
+    ("Investing.com", "https://www.investing.com/news/stock-market-news/bofa-lifts-server-cpu-tam-to-210bn-on-the-rise-of-ai-agents-4857499?ampMode=1"),
 )
 
 TRUSTED = (
@@ -246,6 +245,37 @@ def pct(new: float, old: float) -> float:
     return (new / old - 1) * 100 if old else 0.0
 
 
+def fetch_fx() -> dict:
+    from fx_api import daily_krw, historical_krw
+    try:
+        q = daily_krw()
+        quality = "교차검증 일일 기준환율"
+    except Exception as exc:
+        target = datetime.now(timezone.utc).astimezone(KST).date()
+        q = historical_krw("USD", target)
+        quality = f"ECB 일일 기준환율 · 보조 검증 실패 대체 ({type(exc).__name__})"
+    return {
+        "usdkrw": float(q.rate),
+        "basis": q.basis,
+        "source": q.source,
+        "quality": quality,
+    }
+
+
+def krw_from_usd_t(value_t: float, fx: float) -> str:
+    won = value_t * 1_000_000_000_000 * fx
+    eok = int(round(won / 100_000_000))
+    jo, rem = divmod(eok, 10000)
+    return f"약 {jo:,}조{rem:,}억원" if rem else f"약 {jo:,}조원"
+
+
+def krw_from_usd_b(value_b: float, fx: float) -> str:
+    won = value_b * 1_000_000_000 * fx
+    eok = int(round(won / 100_000_000))
+    jo, rem = divmod(eok, 10000)
+    return f"약 {jo:,}조{rem:,}억원" if jo and rem else (f"약 {jo:,}조원" if jo else f"약 {eok:,}억원")
+
+
 def material_changes(old: dict, new: dict) -> list[dict]:
     rules = {
         "ai_dc_system_tam_2030_usd_t": ("2030 AI 데이터센터 시스템 시장", "pct", 5.0),
@@ -266,11 +296,13 @@ def material_changes(old: dict, new: dict) -> list[dict]:
     return out
 
 
-def fmt(key: str, value: float) -> str:
+def fmt(key: str, value: float, fx: float | None = None) -> str:
     if key.endswith("_usd_t"):
-        return f"{value:.2f}조달러"
+        base = f"{value:.2f}조달러"
+        return f"{base} ({krw_from_usd_t(value, fx)})" if fx else base
     if key.endswith("_usd_b"):
-        return f"{value:,.1f}억달러" if value < 100 else f"{value:,.0f}억달러"
+        base = f"{value:,.1f}억달러" if value < 100 else f"{value:,.0f}억달러"
+        return f"{base} ({krw_from_usd_b(value, fx)})" if fx else base
     if key.endswith("_pct"):
         return f"{value:.1f}%"
     if "cpu_per_gpu" in key:
@@ -278,29 +310,35 @@ def fmt(key: str, value: float) -> str:
     return f"{value:g}"
 
 
-def build_alert(metrics: dict, changes: list[dict], evidence: list[dict]) -> str:
+def build_alert(metrics: dict, changes: list[dict], evidence: list[dict], fx: dict) -> str:
+    rate = float(fx["usdkrw"])
     lines = [
-        "🚨 AI 데이터센터 TAM·클라우드 설비투자 전망 변경",
+        "🚨 AI 데이터센터 시장규모·클라우드 설비투자 전망 변경",
         "",
         "▶ 핵심",
     ]
     for ch in changes[:6]:
         unit = "%p" if ch["mode"] == "pp" else ("개" if ch["mode"] == "abs" else "%")
-        lines.append(f"• {ch['label']}: {fmt(ch['key'], ch['before'])} → {fmt(ch['key'], ch['after'])} ({ch['delta']:+.1f}{unit})")
+        lines.append(f"• {ch['label']}: {fmt(ch['key'], ch['before'], rate)} → {fmt(ch['key'], ch['after'], rate)} ({ch['delta']:+.1f}{unit})")
 
     lines += [
         "",
         "■ 현재 기준",
-        f"• 2030 AI 데이터센터 시스템 시장: {metrics['ai_dc_system_tam_2030_usd_t']:.2f}조달러",
-        f"• 2030 서버 CPU 시장: {metrics['server_cpu_tam_2030_usd_b']:,.1f}억달러",
-        f"• 2026 클라우드 설비투자: {metrics['cloud_capex_2026_usd_t']:.2f}조달러",
-        f"• 2027 클라우드 설비투자: {metrics['cloud_capex_2027_usd_t']:.2f}조달러",
+        f"• 2030 AI 데이터센터 시스템 시장: {fmt('ai_dc_system_tam_2030_usd_t', metrics['ai_dc_system_tam_2030_usd_t'], rate)}",
+        f"• 2030 서버 CPU 시장: {fmt('server_cpu_tam_2030_usd_b', metrics['server_cpu_tam_2030_usd_b'], rate)}",
+        f"• 2026 클라우드 설비투자: {fmt('cloud_capex_2026_usd_t', metrics['cloud_capex_2026_usd_t'], rate)}",
+        f"• 2027 클라우드 설비투자: {fmt('cloud_capex_2027_usd_t', metrics['cloud_capex_2027_usd_t'], rate)}",
         f"• 에이전틱 AI: GPU 1개당 CPU {metrics['agentic_cpu_per_gpu']:.2f}개 기준",
         "",
         "■ 의미",
         "• 이 알림은 데이터센터 건설 GW가 아니라 GPU·CPU·메모리·네트워크에 실제로 들어갈 시스템 지출 전망이 상향·하향되는지를 추적합니다.",
         "• 전력 병목 감시와 분리해 수요 측 전망 자체가 꺾이는지 먼저 확인합니다.",
         "• BofA 리포트 원문이 공개되지 않는 경우 신뢰 보도에 나온 수치를 증권사 추정으로만 표시합니다.",
+        "",
+        "■ 원화 환산 기준",
+        f"• 1달러 = {rate:,.2f}원",
+        f"• 기준: {fx.get('basis','확인 불가')}",
+        f"• 출처: {fx.get('source','확인 불가')} · {fx.get('quality','')}",
     ]
     if evidence:
         lines += ["", "■ 확인 자료"]
@@ -324,6 +362,12 @@ def main() -> int:
         if k in {"source", "as_of"}:
             continue
         metrics.setdefault(k, v)
+
+    try:
+        fx = fetch_fx()
+    except Exception as exc:
+        fx = {}
+        print(f"ai_dc_tam_fx_error={type(exc).__name__}: {exc}")
 
     rows = collect(now)
     seen = set(old.get("seen_ids") or [])
@@ -365,6 +409,7 @@ def main() -> int:
         "baseline_source": BASELINE["source"],
         "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
         "seen_ids": list(dict.fromkeys(list(seen) + [r["id"] for r in rows]))[-1000:],
+        "fx": fx,
         "last_collection": {
             "trusted_rows": len(rows),
             "new_rows": len(new_rows),
@@ -375,7 +420,10 @@ def main() -> int:
     PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     if notify and not first:
-        ALERT.write_text(build_alert(proposed, changes, list({r["id"]: r for r in evidence}.values())), encoding="utf-8")
+        if not fx.get("usdkrw"):
+            print("ai_dc_tam_alert_blocked_no_krw=true")
+        else:
+            ALERT.write_text(build_alert(proposed, changes, list({r["id"]: r for r in evidence}.values()), fx), encoding="utf-8")
 
     STATUS.write_text(
         "# AI 데이터센터 TAM·설비투자 전망 감시\n\n"
