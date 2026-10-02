@@ -720,3 +720,44 @@ There was no forced resend of historical articles and no reset of duplicate
 or delivery state. No claim of external Telegram receipt, exhaustive news
 coverage or perfect future selection follows from this test. The earlier
 71-row shadow audit and new-source test are separate evidence scopes.
+
+## Version 26: Review Actual Deliveries, Not Only Synthetic Fixtures
+
+The next review inspected six actual production runs, not the preceding
+dry-run outputs: `36984426606`, `36984895962`, `36985840156`,
+`36986545656`, `36986642918` and `36987748099`. Five recorded delivery
+status `sent`; one recorded `skipped_empty`. There were 12 selected rows.
+Version 25 still admitted four local administrative stories as high-value
+events. Its preceding technical PASS did not establish satisfactory selection.
+
+| Delivered story | Source-attested event | Version-26 disposition |
+| --- | --- | --- |
+| Gangwon local-power regulatory meeting | Requested central-government notice amendments | Below publication priority |
+| Goseong tourism/economic-zone application | Tourism investment MOU; conditional designation benefits | Below publication priority |
+| Provincial councillor airport-resident support | Proposed livelihood allowance, not an approved budget | Below publication priority |
+| Gyeonggi housing strategy | Local strategy and working-level discussion | Below publication priority |
+
+Local authority, foreground topic and execution evidence are checked together.
+A notional project budget or investment MOU cannot alone rescue administrative
+advocacy. Actual supplier orders, tender execution, industrial permits,
+enacted industrial rules, construction starts, financing close and climate
+operating damage remain eligible. This is not an issuer allowlist or a
+confirmed-news-only rule: overseas trade threats, draft import bans, pricing
+negotiations and customer-financing talks remain positive controls.
+
+The Gyeonggi story also exposed a lexical error: `유가` matched inside
+`여유가`, creating false energy-risk evidence. Shared oil-price token boundaries
+now reject `여유가`, `보유가`, `공유가` and `유가증권`, while retaining actual
+oil-price terms. A request to amend a notice is not treated as its enactment.
+The independent saved-report guard recomputes this evidence rather than
+trusting a stored priority from an earlier version.
+
+Read-only replay retains eight of the 12 delivered rows and removes the four
+listed above. Orders, the corporate capital contract, tender participation,
+national rates/FX/CPI and the diesel-export threat remain. There are zero
+headline/core focus mismatches; one core is regenerated. The original
+archives, delivery records and seen state are untouched. All 11 local
+contract scripts passed, including 113 materiality tests. New regressions
+include real-delivery negatives and early/industrial positive counterchecks.
+These examples do not prove exhaustive recall, perfect precision or model
+retraining. Deployment and fresh source-run verification follow separately.

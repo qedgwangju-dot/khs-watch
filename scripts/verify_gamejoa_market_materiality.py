@@ -95,7 +95,104 @@ def alert(title, body):
             "link": "https://www.yna.co.kr/view/materiality-fixture"}
 
 
+# Source excerpts from actual deliveries on 2026-10-02, not sector-label fixtures.
+DELIVERED_LOCAL_ADMINISTRATION = (
+    ("강원도, 지역 생산 전력 활용법 찾는다…현안 6건 돌파구 모색 | 연합뉴스",
+     "강원특별자치도가 송전망 제약으로 지역에서 생산한 전력을 제대로 활용하지 못하는 문제를 개선하기 위해 직접 전력거래와 분산에너지 대상 확대 등을 모색하고 나섰다.\n강릉시는 송전제약지역에서 발전사업자가 생산한 전력을 수요처에 직접 공급할 수 있도록 정부 고시 마련과 개정을 건의했다.",
+     "https://www.yna.co.kr/view/AKR20261002150900062"),
+    ("강원 고성군, 평화경제특구 도전…화진포·대진 관광 거점 조성 | 연합뉴스",
+     "호반그룹과 6천800억 투자협약 체결\n군은 군사 규제로 인한 개발 제약과 금강산 육로 관광 중단에 따른 지역경제 피해를 극복하기 위한 대안으로 평화경제특구 조성을 추진한다.",
+     "https://www.yna.co.kr/view/AKR20261002155100062"),
+    ("최태림 경북도의원 \"대구경북통합신공항 6년 표류, 의성 편입지역 실질 지원하라\"",
+     "최태림 경북도의원은 편입지역 주민 지원을 촉구했다.\n기약 없는 이주와 재산권 침해로 고통받는 편입지역 주민들을 위해 경북도 차원의 특별생계지원금 지급이 필요하다며 공식적인 지원 방안을 제안했다.",
+     "https://www.etoday.co.kr/news/view/2632202"),
+    ("추미애 \"일자리와 주거 연결해야\"…경기도형 특화전략 제시 | 연합뉴스",
+     "정부가 수도권 주택공급 확대를 추진하는 가운데 추미애 경기도지사가 지역의 산업·일자리와 주거를 함께 설계하는 경기도형 주택공급 전략을 제시하고 나섰다.\n서울 집값 상승에 따른 공급 대책이 세워지면 이에 대한 신규택지 공급을 경기도가 떠안게 되고 그러다보니 경기도 나름의 도시계획 비전을 전개할 여유가 없다고 덧붙였다.",
+     "https://www.yna.co.kr/view/AKR20261002161400061"),
+)
+
+
 class MaterialityChecks(unittest.TestCase):
+    def test_actual_local_administration_deliveries_do_not_fill_core_news_slots(self):
+        for title, body, link in DELIVERED_LOCAL_ADMINISTRATION:
+            with self.subTest(link=link):
+                audit = materiality.assess(title, body)
+                self.assertLess(audit["priority"], 2, audit)
+                item = {**alert(title, body), "link": link}
+                with patch.object(radar.base, "kst_now", return_value=NOW):
+                    self.assertEqual(radar.quality_display_alerts([item], 7), [])
+
+    def test_oil_price_evidence_requires_the_actual_word_not_korean_substrings(self):
+        for word in ("여유가", "보유가", "공유가", "유가증권"):
+            with self.subTest(word=word):
+                audit = materiality.assess("지역 주택 공급 전략", f"경기도는 주택 공급 확대를 발표했지만 계획을 전개할 {word} 없다고 설명했다.")
+                self.assertNotIn("energy_geopolitics_or_supply_risk", [item["kind"] for item in audit["evidence"]])
+                self.assertNotEqual(materiality.focus_kind(word + " 상승"), "energy_supply")
+        for word in ("유가", "국제유가", "고유가"):
+            audit = materiality.assess(word + " 상승", word + " 상승으로 원유 공급 비용이 늘었다.")
+            self.assertIn("energy_geopolitics_or_supply_risk", [item["kind"] for item in audit["evidence"]])
+
+    def test_request_for_rule_change_is_not_an_executed_rule_change(self):
+        for verb in ("건의했다", "요청했다", "촉구했다"):
+            body = f"강릉시는 발전 전력 직접 공급을 위한 정부 고시 개정을 {verb}."
+            self.assertFalse(materiality.evidence_is_new_event("policy_scope_or_stage", body))
+        enacted = "강릉시의회는 데이터센터 인허가 조례를 개정했다."
+        self.assertTrue(materiality.evidence_is_new_event("policy_scope_or_stage", enacted))
+
+    def test_early_cross_border_industry_signals_survive_local_scope_filter(self):
+        for title, body in (
+            KEEP[2], KEEP[3], KEEP[4], KEEP[7],
+            ("트럼프, 유럽에 디젤 수출금지 경고", "트럼프 대통령은 비축유 방출에 응하지 않으면 미국산 디젤 수출을 금지할 수 있다고 경고했다."),
+            ("트럼프, 유럽에 디젤 수출금지 경고", "트럼프 대통령은 비축유 방출을 요구하며 불응 시 미국산 디젤 수출을 금지할 수 있다고 경고했다."),
+            INDUSTRY_DRIVER_CASES[5][1:],
+        ):
+            with self.subTest(title=title):
+                audit = materiality.assess(title, body)
+                self.assertEqual(audit["disposition"], "keep", audit)
+                self.assertGreaterEqual(audit["priority"], 2, audit)
+
+    def test_local_industrial_execution_survives_without_issuer_allowlist(self):
+        for title, body in (
+            ("지역 데이터센터 조례 개편", "시의회는 데이터센터 인허가 조례를 개편하고 전력 공급 규제를 완화했다."),
+            ("강릉시, 전력 제약 해소…데이터센터 건설 허가", "강릉시는 지역 전력 제약 해소를 위해 200MW 데이터센터 건설을 허가했다."),
+            ("강원도, 산업단지 현안 해소…반도체 공장 착공", "강원도는 지역 산업단지의 반도체 공장 착공식을 열고 생산 설비 증설을 시작했다."),
+            ("고성군, 관광 거점 조성…시공사 공급계약 체결", "고성군 관광 거점 조성을 위해 시공사는 3000억원 공급계약을 체결했다."),
+            ("경기도, 지역 전력 문제 해소…발전소 금융 종결", "경기도 발전소 신설 사업은 금융 종결을 마치고 투자 자금 조달을 완료했다."),
+            ("경기도, 폭염에 양식장 공급 피해", "경기도는 폭염으로 양식장 어류 3만마리가 폐사해 생산과 공급에 피해가 발생했다고 밝혔다."),
+        ):
+            with self.subTest(title=title):
+                audit = materiality.assess(title, body)
+                self.assertEqual(audit["disposition"], "keep", audit)
+                self.assertGreaterEqual(audit["priority"], 2, audit)
+
+    def test_nominal_local_project_budget_cannot_rescue_administrative_proposal(self):
+        title, body, _link = DELIVERED_LOCAL_ADMINISTRATION[1]
+        body += "\n관광특구 예상 사업비는 1조6000억원이며 지정되면 세제 혜택과 금융 지원을 받을 수 있다."
+        self.assertLess(materiality.assess(title, body)["priority"], 2)
+
+    def test_actual_orders_and_capital_contract_precede_local_mou(self):
+        items = [alert(title, body) for title, body, _link in DELIVERED_LOCAL_ADMINISTRATION]
+        strong = (
+            ("삼성중공업 LNGC 6722억 수주", "삼성중공업이 액화천연가스 운반선 2척을 6722억원에 수주했다."),
+            ("CJ제일제당, ADM과 출자계약 체결", "CJ제일제당은 미국 ADM과 합작법인 설립을 위한 출자계약을 체결했다."),
+        )
+        items.extend(alert(title, body) for title, body in strong)
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            selected = radar.quality_display_alerts(items, 7)
+        self.assertEqual({item["source_title"] for item in selected}, {title for title, _body in strong})
+
+    def test_saved_report_guard_rechecks_local_scope_instead_of_trusting_old_priority(self):
+        import verify_gamejoa_generated_report as guard
+        for title, body, link in DELIVERED_LOCAL_ADMINISTRATION:
+            item = {**alert(title, body), "link": link,
+                    "market_materiality": {"version": 25, "disposition": "keep", "priority": 3}}
+            errors = guard.source_materiality_errors(item, radar)
+            self.assertTrue(any("without source market-change evidence" in error for error in errors), errors)
+            self.assertTrue(any("audit missing or stale" in error for error in errors), errors)
+        item = alert("조선기업, LNG선 2척 수주", "조선기업은 LNG선 2척을 6722억원에 수주했다.")
+        item["market_materiality"] = radar.source_market_materiality(item)
+        self.assertEqual(guard.source_materiality_errors(item, radar), [])
+
     def test_price_component_commentary_cannot_outrank_primary_cpi_or_supply_shock(self):
         title = "전체 물가 2.9% 오를 때 농축산물 1.0%↓…축산물은 상승폭 확대"
         body = "지난달 전체 소비자물가가 2.9% 오른 가운데 농축산물 물가는 1.0% 하락했다.\n농식품부는 추석 성수품을 평시 대비 1.6배 확대 공급하고 유통기업이 할인행사를 진행한 점이 물가 부담을 낮추는 데 도움이 됐다고 설명했다."

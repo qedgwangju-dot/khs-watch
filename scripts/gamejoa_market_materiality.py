@@ -6,10 +6,15 @@ from __future__ import annotations
 import re
 
 
-VERSION = 25
+VERSION = 26
+OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
+ENERGY_SUBJECT = (
+    rf"원유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|이란|이스라엘|우크라이나|러시아|구리|리튬|"
+    r"\boil\b|brent|wti|\bgas\b|hormuz|iran|ukraine|russia|copper|lithium"
+)
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
-    r"해야|권고|제언|우려|필요|목표|보인다|나서야|시급|밑돌\s*듯|합의\s*(?:안\s*(?:됐|되)|하지\s*않)|미합의|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
+    r"건의|요청|요구|제시|모색|촉구|해야|권고|제언|우려|필요|목표|보인다|나서야|시급|밑돌\s*듯|합의\s*(?:안\s*(?:됐|되)|하지\s*않)|미합의|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
 )
 HEADLINE_EARLY = re.compile(
     r"검토|협상|논의|가능성|관측|소식통|제안|제언|권고|해야|바꿔야|줄여야|늘려야|우려|전망$|예상$|"
@@ -86,7 +91,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("capital_listing", r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|신규\s*상장", r"기업공개|\bipo\b|상장(?!지수)"),
     ("mortgage_rate", r"주담대|모기지|주택담보대출", r"주담대|모기지|주택담보대출|mortgage"),
     ("macro_release", r"\bcpi\b|\bpce\b|\bppi\b|\bgdp\b|고용|실업률|물가", r"cpi|pce|ppi|gdp|고용|실업|물가|인플레이션|inflation|payroll"),
-    ("energy_supply", r"브렌트|유가|원유|천연가스|호르무즈|홍해|유조선|운임|\bbrent\b|\boil\b|hormuz|tanker", r"브렌트|유가|원유|천연가스|호르무즈|홍해|유조선|운임|항행|통항|brent|\boil\b|hormuz|tanker|shipping"),
+    ("energy_supply", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|\bbrent\b|\boil\b|hormuz|tanker", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|항행|통항|brent|\boil\b|hormuz|tanker|shipping"),
     ("bond_yield", r"금리|국채.{0,8}(?:투매|수익률)|bond yields|treasury yields", r"금리|국채.{0,8}수익률|bond yields|treasury yields|interest rates"),
     ("fx", r"환율|약달러|강달러|달러화|원[·/]달러|달러[·/]원|\bndf\b|exchange rate", r"환율|달러화|달러[·/]원|원[·/]달러|\bndf\b|exchange rate|dollar"),
     ("breadth", r"(?:상승|하락)\s*종목|순환매|쏠림", r"(?:오른|내린|상승|하락)\s*종목|순환매|쏠림|순매수|순매도|자금.{0,12}이동"),
@@ -110,12 +115,64 @@ SOLICITATION_HEADLINE = re.compile(r"잡으려면|활용\s*가능한\s*기회|�
 SOLICITATION_BODY = re.compile(r"스탁론|고객상담|상담센터|주식자금\s*(?:상품|대출)|투자금을\s*준비|신용.{0,8}대환|loan consultation", re.I)
 TACTICAL_HEADLINE = re.compile(r"(?:미사일|무기|드론).{0,25}(?:첫\s*실전|실전\s*투입|시험\s*발사)|(?:진지|전차).{0,15}(?:타격|격파)|격추", re.I)
 ECONOMIC_GEOPOLITICS = re.compile(
-    r"에너지\s*시설|정유|유전|송유관|원유|유가|가스|항만|물류|유조선|운임|호르무즈|홍해|통항|봉쇄|"
+    rf"에너지\s*시설|정유|유전|송유관|원유|{OIL_PRICE}|가스|항만|물류|유조선|운임|호르무즈|홍해|통항|봉쇄|"
     r"수출|수입|제재|국방\s*예산|방위\s*예산|조달|수주|공급계약|휴전|협상|접촉|"
     r"확전|전면전|전쟁\s*(?:선포|확대)|핵(?:무기)?\s*(?:사용|위협|공격)|핵전쟁|참전|"
     r"추가\s*(?:공격|공습)|공격\s*임박|항공\s*모함|항공모함|병력\s*증강|"
     r"energy|refiner|pipeline|oil|gas|port|shipping|tanker|hormuz|blockade|sanction|procurement|contract|ceasefire|talks|negotiat|escalat", re.I,
 )
+LOCAL_AUTHORITY = re.compile(
+    r"도지사|도의원|시의원|군의원|구의원|시의회|군의회|구의회|지방정부|지자체|지방자치단체|"
+    r"(?:경기|강원|경북|경남|충북|충남|전북|전남|제주)(?:특별자치)?도|"
+    r"(?<![가-힣])[가-힣]{2,8}(?:시|군|구)(?:청)?(?:은|는|이|가|[,\s])", re.I,
+)
+LOCAL_ADMINISTRATIVE_TOPIC = re.compile(
+    r"(?:평화경제|관광)특구|관광\s*(?:거점|개발)|주민|편입지역|생계지원|주거|주택공급\s*(?:전략|구상)|"
+    r"도시계획|지역특화|지역경제|규제\s*개선|규제개선|지역\s*생산\s*전력|"
+    r"현안|건의|요청|제안|전략.{0,8}제시|돌파구|모색|지정\s*신청", re.I,
+)
+POLICY_ADVOCACY = re.compile(r"건의|요청|요구|촉구|과제로\s*제시|의견이\s*나왔다|논의해\s*나가겠다|해소될\s*수\s*있도록")
+FORMAL_POLICY_EXECUTION = re.compile(
+    r"입법예고(?:했다|한다)|법안.{0,12}(?:발의했다|제출했다|통과했다)|"
+    r"(?:고시|조례|규제|규정).{0,20}(?:개정했다|개정한다|제정했다|시행한다|의결했다|완화했다)|"
+    r"시행일.{0,15}확정|행정명령.{0,15}서명|(?:인허가|허가|승인).{0,10}(?:완료|획득|결정)|"
+    r"(?:허가|승인)했다|enacted|permit approved", re.I,
+)
+INDUSTRIAL_ASSET = re.compile(
+    r"공장|생산|설비|반도체|데이터센터|전력|발전소|송전|배전|항만|물류|산업단지|"
+    r"factory|production|data center|power|port|industrial park", re.I,
+)
+
+
+def local_administration_without_execution(title: str, lead: str, evidence: list[dict]) -> bool:
+    """A local proposal or notional project budget is not a business commitment."""
+    foreground = f"{title} {lead}"
+    if not LOCAL_AUTHORITY.search(foreground) or not LOCAL_ADMINISTRATIVE_TOPIC.search(foreground):
+        return False
+    direct_kinds = {
+        "commercial_order", "customer_supply_start", "procurement_execution_stage", "earnings_or_guidance",
+        "licensing_cashflow", "corporate_ownership_execution", "climate_operational_damage",
+    }
+    for item in evidence:
+        sentence, kind = item["source_excerpt"], item["kind"]
+        if kind in direct_kinds:
+            return False
+        if POLICY_ADVOCACY.search(sentence) or not INDUSTRIAL_ASSET.search(sentence):
+            continue
+        if kind == "policy_scope_or_stage" and FORMAL_POLICY_EXECUTION.search(sentence):
+            return False
+        if kind == "physical_supply_or_capacity" and re.search(
+            r"착공했다|착공한다|착공식을|가동을\s*시작|가동했다|생산을\s*중단|건설\s*계약.{0,10}체결|"
+            r"(?:공장|데이터센터|발전소|산업단지).{0,40}(?:허가했다|승인했다|승인받|허가받)|"
+            r"construction started|production halted", sentence, re.I,
+        ):
+            return False
+        if kind == "capital_or_shareholder_action" and re.search(
+            r"출자계약.{0,12}체결|금융\s*종결|자금.{0,12}납입|대출.{0,12}승인|"
+            r"투자.{0,12}집행했다|financing closed|funding disbursed", sentence, re.I,
+        ):
+            return False
+    return True
 
 
 def focus_kind(title: str) -> str:
@@ -228,7 +285,7 @@ RULES = (
      r"체결|계약|수령|수취|받|합의|서명|sign|agreement|receiv"),
     ("capital_or_shareholder_action", ("earnings", "timeline"),
      r"투자(?=\s*(?:\d|를|한다|한다고|하는|하고|해|했다|할|하겠|금|액|규모|계획|협약|계약|자금|라운드)|.{0,12}유치)|전략투자|capex|자본지출|(?<!대)출자|자금\s*조달|자본\s*조달|회사채|주주환원|배당|자사주|자기주식|지분|funding|financing|buyback|dividend|bond issuance|stake",
-     r"체결|유치|출자|발행|증액|삭감|확대|축소|매입|매수|취득|소각|매각|인수|검토|추진|결정|발표|승인|투입|투자\s*라운드.{0,10}참여|raise|issu|buy|repurchas|sell|acquir|announc|consider|approv"),
+     r"체결|유치|출자|발행|증액|삭감|확대|축소|매입|매수|취득|소각|매각|인수|검토|추진|결정|발표|승인|투입|금융\s*종결|납입|집행|투자\s*라운드.{0,10}참여|raise|issu|buy|repurchas|sell|acquir|announc|consider|approv|financing closed|funding disbursed"),
     ("financing_infrastructure", ("earnings", "timeline"),
      r"금융플랫폼|금융\s*플랫폼|투자\s*자금\s*조달|financing platform|investment financing",
      r"구축|설립|출범|조성|지원|build|establish|launch|support"),
@@ -307,7 +364,7 @@ RULES = (
     ("biology_research_discovery", ("timeline",),
      r"효소|단백질|enzyme|protein", r"발견|규명|discover|characteriz"),
     ("energy_geopolitics_or_supply_risk", ("earnings", "discount_rate"),
-     r"원유|유가|브렌트|천연가스|운임|호르무즈|홍해|이란|이스라엘|우크라이나|러시아|구리|리튬|\boil\b|brent|wti|\bgas\b|hormuz|iran|ukraine|russia|copper|lithium",
+     ENERGY_SUBJECT,
      r"공격|공습|피격|발사체|화재|휴전|협상|통항|봉쇄|제재|상승|하락|오른|내린|급등|급락|차질|감산|증산|합의|경고|명령|배치|발표|attack|strike|ceasefire|talks|blockade|sanction|rise|fall|disrupt|output|warn|deploy|announc"),
     ("climate_operational_damage", ("earnings", "timeline"),
      r"폭염|폭우|홍수|태풍|정전|가뭄|산불|heatwave|flood|outage|drought|wildfire",
@@ -348,8 +405,9 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
             r"(?:투자|출자).{0,20}(?:계약\s*체결|유치했다|집행했다)|funding (?:secured|committed)", sentence, re.I,
         ):
             return False
-    if kind == "policy_scope_or_stage" and re.search(r"과제로\s*제시|의견이\s*나왔다|논의해\s*나가겠다|해소될\s*수\s*있도록", sentence):
-        return bool(re.search(r"고시.{0,12}(?:개정|제정)(?:한다|하기로)|법안.{0,12}(?:발의|제출)|시행일.{0,15}확정|행정명령.{0,15}서명", sentence))
+    if kind == "policy_scope_or_stage" and POLICY_ADVOCACY.search(sentence):
+        trade_threat = re.search(r"(?:수출|수입).{0,30}(?:금지|제한).{0,35}(?:경고|위협)|(?:관세|제재).{0,25}(?:부과|강화).{0,25}(?:경고|위협)", sentence)
+        return bool(FORMAL_POLICY_EXECUTION.search(sentence) or trade_threat)
     if kind == "policy_scope_or_stage" and re.search(r"규제\s*명확성|규제.{0,15}명확해질|출발선", sentence):
         return bool(re.search(r"입법예고|시행일|제정|개정|발효|행정명령|규제안|법안", sentence))
     if kind == "market_infrastructure" and re.search(r"연결돼\s*있|연결되어\s*있|기반으로\s*작동", sentence):
@@ -371,7 +429,7 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
         return False
     if kind == "energy_geopolitics_or_supply_risk":
         without_quotes = re.sub(r"(?:S-?Oil|SK이노베이션)\s*\([^)]*\)", "", sentence, flags=re.I)
-        if not re.search(r"원유|유가|브렌트|천연가스|운임|호르무즈|홍해|이란|이스라엘|우크라이나|러시아|구리|리튬|\boil\b|brent|wti|\bgas\b|hormuz|iran|ukraine|russia|copper|lithium", without_quotes, re.I):
+        if not re.search(ENERGY_SUBJECT, without_quotes, re.I):
             return False
     return True
 
@@ -591,7 +649,7 @@ def assess(title: str, body: str) -> dict:
             # Certainty and economic materiality are separate. A scoped import
             # ban or financing negotiation can outrank a routine index recap.
             if early and kind in {"policy_scope_or_stage", "capital_or_shareholder_action", "physical_supply_or_capacity", "energy_geopolitics_or_supply_risk"} and re.search(
-                r"수입|수출|관세|보조금|자금조달|대출|공장|생산|공급|호르무즈|유조선|유가|import|export|tariff|loan|funding|factory|supply|hormuz|tanker|oil", sentence, re.I,
+                rf"수입|수출|관세|보조금|자금조달|대출|공장|생산|공급|호르무즈|유조선|{OIL_PRICE}|import|export|tariff|loan|funding|factory|supply|hormuz|tanker|oil", sentence, re.I,
             ):
                 priority = 3
             evidence_axes = list(axes)
@@ -624,6 +682,9 @@ def assess(title: str, body: str) -> dict:
         result.update(disposition="keep", reason="source_change_evidence")
         result["news_value_rank"] = news_value_rank(result["evidence"])
         kinds = {item["kind"] for item in result["evidence"]}
+        if local_administration_without_execution(title, lead, result["evidence"]):
+            result["priority"] = 1
+            result["scope_note"] = "local_administrative_proposal_without_business_execution"
         if (
             focus_kind(title) == "macro_release"
             and re.search(r"농축산물|농산물|축산물|외식|식품|채소|과일", title)

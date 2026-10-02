@@ -99,6 +99,18 @@ def duplicate_event_errors(alerts: list[dict], runner) -> list[str]:
     return errors
 
 
+def source_materiality_errors(alert: dict, runner) -> list[str]:
+    materiality = runner.source_market_materiality(alert)
+    errors = []
+    if materiality["disposition"] == "exclude":
+        errors.append(f"routine/vague article passed materiality gate: {alert.get('news')}")
+    if materiality["disposition"] != "keep" or materiality["priority"] < 2:
+        errors.append(f"article without source market-change evidence filled a core-news slot: {alert.get('news')}")
+    if alert.get("market_materiality") != materiality:
+        errors.append(f"source materiality audit missing or stale: {alert.get('news')}")
+    return errors
+
+
 def assert_item_quality(title: str, block: list[str], errors: list[str]) -> None:
     clean_title = normalize_title(title)
     if mostly_ascii(clean_title):
@@ -200,13 +212,7 @@ def main() -> int:
             run_time = prod.runner.detail_queue.parse_time(data.get("query_time_kst"))
             if run_time and prod.runner.is_stale_session_preview(alert, run_time):
                 errors.append(f"previous-session daily preview passed freshness gate: {alert.get('news')}")
-            materiality = prod.runner.source_market_materiality(alert)
-            if materiality["disposition"] == "exclude":
-                errors.append(f"routine/vague article passed materiality gate: {alert.get('news')}")
-            if materiality["disposition"] != "keep" or materiality["priority"] < 2:
-                errors.append(f"article without source market-change evidence filled a core-news slot: {alert.get('news')}")
-            if alert.get("market_materiality") != materiality:
-                errors.append(f"source materiality audit missing or stale: {alert.get('news')}")
+            errors.extend(source_materiality_errors(alert, prod.runner))
             for fact_error in prod.runner.source_core_fact_errors(alert):
                 errors.append(f"source fact validation failed ({fact_error}): {alert.get('news')}")
             if not prod.runner.source_output_aligned(alert):
