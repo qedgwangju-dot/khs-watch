@@ -670,8 +670,144 @@ t = t.replace(gen_cap_old, gen_cap_new, 1)
 print("US generation watcher freshness + ordered dedupe guard inserted")
 
 t = t.replace("FORMAT_VERSION = 3", "FORMAT_VERSION = 4", 1)
+
+# Add the latest IEA Electricity 2026 grid-investment and timing mismatch
+# baselines to the SAME generation-buildout watcher.  These are global grid
+# execution metrics, not awarded data-center projects.
+grid_const_anchor = 'EIA_STEO = "https://www.eia.gov/outlooks/steo/report/elec_coal_renew.php"\n'
+grid_const_new = grid_const_anchor + '''IEA_ELECTRICITY_2026_EXEC = "https://www.iea.org/reports/electricity-2026/executive-summary"\nIEA_ELECTRICITY_2026_GRIDS = "https://www.iea.org/reports/electricity-2026/grids"\n'''
+if grid_const_anchor not in t:
+    raise SystemExit("generation Electricity 2026 constants insertion point not found")
+t = t.replace(grid_const_anchor, grid_const_new, 1)
+
+grid_defaults_old = '''    "power_electronics_bottleneck": True,
+}'''
+grid_defaults_new = '''    "power_electronics_bottleneck": True,
+    "global_grid_investment_usd_b": 400.0,
+    "global_grid_investment_growth_2030_pct": 50.0,
+    "global_grid_queue_gw": 2500.0,
+    "grid_build_low_years": 5.0,
+    "grid_build_high_years": 15.0,
+    "data_center_build_low_years": 1.0,
+    "data_center_build_high_years": 3.0,
+}'''
+if grid_defaults_old not in t:
+    raise SystemExit("generation Electricity 2026 defaults insertion point not found")
+t = t.replace(grid_defaults_old, grid_defaults_new, 1)
+
+grid_parse_anchor = '''    return metrics, errors
+
+
+def detect_power_changes'''
+grid_parse_block = r'''    try:
+        text = _page_text(IEA_ELECTRICITY_2026_EXEC)
+        if re.search(r"USDs*400s*billion", text, re.I):
+            metrics["global_grid_investment_usd_b"] = 400.0
+        m = re.search(r"increase by roughlys+([0-9.]+)%s+by 2030", text, re.I)
+        if m:
+            metrics["global_grid_investment_growth_2030_pct"] = float(m.group(1))
+        m = re.search(r"more thans+([0-9][0-9,s]*)s+gigawatts", text, re.I)
+        if m:
+            metrics["global_grid_queue_gw"] = float(re.sub(r"[^0-9.]", "", m.group(1)))
+    except Exception as exc:
+        errors.append(f"IEA Electricity 2026 executive: {type(exc).__name__}")
+
+    try:
+        text = _page_text(IEA_ELECTRICITY_2026_GRIDS)
+        m = re.search(r"anywhere froms+([0-9.]+)s+tos+([0-9.]+)s+years", text, re.I)
+        if m:
+            metrics["grid_build_low_years"] = float(m.group(1))
+            metrics["grid_build_high_years"] = float(m.group(2))
+        m = re.search(r"([0-9.]+)s*-s*([0-9.]+)s+years for data centres", text, re.I)
+        if m:
+            metrics["data_center_build_low_years"] = float(m.group(1))
+            metrics["data_center_build_high_years"] = float(m.group(2))
+    except Exception as exc:
+        errors.append(f"IEA Electricity 2026 grids: {type(exc).__name__}")
+
+    return metrics, errors
+
+
+def detect_power_changes'''
+if grid_parse_anchor not in t:
+    raise SystemExit("generation Electricity 2026 parser insertion point not found")
+t = t.replace(grid_parse_anchor, grid_parse_block, 1)
+
+grid_checks_old = '''        ("gas_turbine_order_growth_pct", 10.0, "IEA 가스터빈 주문 증가율", "%"),
+    )'''
+grid_checks_new = '''        ("gas_turbine_order_growth_pct", 10.0, "IEA 가스터빈 주문 증가율", "%"),
+        ("global_grid_investment_usd_b", 25.0, "IEA 글로벌 연간 전력망 투자", "십억달러"),
+        ("global_grid_investment_growth_2030_pct", 5.0, "IEA 2030 전력망 투자 필요 증가율", "%p"),
+        ("global_grid_queue_gw", 250.0, "IEA 글로벌 계통접속 대기열", "GW"),
+        ("grid_build_high_years", 1.0, "IEA 전력망 구축기간 상단", "년"),
+    )'''
+if grid_checks_old not in t:
+    raise SystemExit("generation Electricity 2026 change checks insertion point not found")
+t = t.replace(grid_checks_old, grid_checks_new, 1)
+
+grid_msg_anchor = '''    msg.append(f"• <b>가스터빈 주문</b> │ IEA 2025년 <b>+{pm['gas_turbine_order_growth_pct']:g}%</b> │ 전력전자 공급망 병목={'확인' if pm.get('power_electronics_bottleneck') else '미확인'}")
+
+    if power_changes:'''
+grid_msg_new = '''    msg.append(f"• <b>가스터빈 주문</b> │ IEA 2025년 <b>+{pm['gas_turbine_order_growth_pct']:g}%</b> │ 전력전자 공급망 병목={'확인' if pm.get('power_electronics_bottleneck') else '미확인'}")
+
+    grid_change = any(
+        any(k in ch for k in ("전력망 투자", "계통접속 대기열", "전력망 구축기간"))
+        for ch in power_changes
+    )
+    if baseline_run or format_upgrade or grid_change:
+        current_grid = pm['global_grid_investment_usd_b']
+        required_grid = current_grid * (1 + pm['global_grid_investment_growth_2030_pct'] / 100)
+        extra_grid = required_grid - current_grid
+        msg += ["", "<b>🌐 전력망 투자·접속 병목</b>"]
+        msg.append(
+            f"• <b>현재 연간 전력망 투자</b> │ 약 {current_grid:,.0f}십억달러 = "
+            f"<b>{krw_from_usd_b(current_grid, fx)}</b>"
+        )
+        msg.append(
+            f"• <b>2030 필요 수준</b> │ 현재 대비 +{pm['global_grid_investment_growth_2030_pct']:g}% → "
+            f"약 {required_grid:,.0f}십억달러 = <b>{krw_from_usd_b(required_grid, fx)}</b> "
+            f"│ 추가 연간 투자 약 {extra_grid:,.0f}십억달러 = <b>{krw_from_usd_b(extra_grid, fx)}</b>"
+        )
+        msg.append(
+            f"• <b>계통접속 대기</b> │ 전 세계 <b>{pm['global_grid_queue_gw']:,.0f}GW+</b> "
+            f"재생에너지·저장장치·데이터센터 등 대형부하 프로젝트"
+        )
+        msg.append(
+            f"• <b>시간표 불일치</b> │ 전력망 {pm['grid_build_low_years']:g}~{pm['grid_build_high_years']:g}년 "
+            f"vs 데이터센터 {pm['data_center_build_low_years']:g}~{pm['data_center_build_high_years']:g}년"
+        )
+        msg.append("• <b>판정:</b> 수요 전망 증가보다 계통접속·변전소·송전선 실제 착공과 전원 인가가 늦으면 데이터센터 매출 인식의 병목이 더 커집니다.")
+
+    if power_changes:'''
+if grid_msg_anchor not in t:
+    raise SystemExit("generation Electricity 2026 message insertion point not found")
+t = t.replace(grid_msg_anchor, grid_msg_new, 1)
+
+grid_status_anchor = '''    f"- 대형 전력변압기 최대 조달기간: **{power_metrics['transformer_lead_max_years']}년**\n"
+    f"- PwC 2026~2050 누적 자본투자 기준:'''
+grid_status_new = '''    f"- 대형 전력변압기 최대 조달기간: **{power_metrics['transformer_lead_max_years']}년**\n"
+    f"- IEA 글로벌 연간 전력망 투자: **{power_metrics['global_grid_investment_usd_b']}십억달러**\n"
+    f"- IEA 2030 전력망 투자 필요 증가율: **+{power_metrics['global_grid_investment_growth_2030_pct']}%**\n"
+    f"- IEA 글로벌 계통접속 대기열: **{power_metrics['global_grid_queue_gw']}GW+**\n"
+    f"- IEA 전력망/데이터센터 구축기간: **{power_metrics['grid_build_low_years']}~{power_metrics['grid_build_high_years']}년 / {power_metrics['data_center_build_low_years']}~{power_metrics['data_center_build_high_years']}년**\n"
+    f"- PwC 2026~2050 누적 자본투자 기준:'''
+if grid_status_anchor not in t:
+    raise SystemExit("generation Electricity 2026 status insertion point not found")
+t = t.replace(grid_status_anchor, grid_status_new, 1)
+
+grid_links_anchor = '''    msg.append(f"• {a('GE Vernova 가스터빈 공급능력', GEV_Q2_2026)}")
+    msg.append(f"• {a('PwC 글로벌 데이터센터 반복투자 전망','''
+grid_links_new = '''    msg.append(f"• {a('GE Vernova 가스터빈 공급능력', GEV_Q2_2026)}")
+    msg.append(f"• {a('IEA Electricity 2026 전력망 투자·접속 병목', IEA_ELECTRICITY_2026_EXEC)}")
+    msg.append(f"• {a('IEA Electricity 2026 전력망 구축기간', IEA_ELECTRICITY_2026_GRIDS)}")
+    msg.append(f"• {a('PwC 글로벌 데이터센터 반복투자 전망','''
+if grid_links_anchor not in t:
+    raise SystemExit("generation Electricity 2026 links insertion point not found")
+t = t.replace(grid_links_anchor, grid_links_new, 1)
+
+t = t.replace("FORMAT_VERSION = 4", "FORMAT_VERSION = 5", 1)
 g.write_text(t, encoding="utf-8")
-print("US generation watcher recurring-capex + power-gap + Korean supplier-order guard inserted")
+print("US generation watcher recurring-capex + power-gap + global-grid guard inserted")
 
 # Extend the existing time-to-power watcher with flexible-load / demand-response
 # signals.  This remains part of the same watcher and state file: no new alert
@@ -1066,5 +1202,368 @@ if ercot_rows_old not in s:
 s = s.replace(ercot_rows_old, ercot_rows_new, 1)
 print("ERCOT archive freshness + execution-quality guard inserted")
 
+# Extend the existing 800V-DC branch with wide-bandgap power-semiconductor
+# execution signals.  Keep the same workflow, state file and Telegram route.
+s = s.replace("FORMAT_VERSION = 3", "FORMAT_VERSION = 4", 1)
+
+semi_const_anchor = 'GRIDUNITY_AEMA = "https://www.gridunity.com/resources/gridunity-selected-as-founding-board-member-of-new-ai-energy-management-alliance"\n'
+semi_const_new = semi_const_anchor + '''NVIDIA_800V_ARCH = "https://developer.nvidia.com/blog/nvidia-800-v-hvdc-architecture-will-power-the-next-generation-of-ai-factories"\nNVIDIA_800V_ROADMAP = "https://blogs.nvidia.com/blog/800-vdc-power-architecture-ai-factory/"\nOCP_800V_STANDARD = "https://www.opencompute.org/index.php/blog/powering-the-next-era-of-ai-how-google-microsoft-and-nvidia-are-standardizing-and-accelerating-the-industry-transition-to-lvdc"\nINFINEON_SIC_BBU = "https://www.infineon.com/technology-news/2026/infpss202606-093"\nINFINEON_EATON_SST = "https://www.infineon.com/press-release/2026/infpr202609-146"\nWOLFSPEED_LITEON_800V = "https://investor.wolfspeed.com/news/news-details/2026/Wolfspeed-and-LITEON-Partner-to-Support-Hyperscale-AI-Data-Center-Deployments-with-800-VDC-Power-Solutions/default.aspx"\nDIGITIMES_SIC_RESEARCH = "https://apps.digitimes.com/reports/item.php?id=20260929RS400"\n'''
+if semi_const_anchor not in s:
+    raise SystemExit("800V SiC constants insertion point not found")
+s = s.replace(semi_const_anchor, semi_const_new, 1)
+
+semi_official_old = '''    "aema.ai", "blog.google", "gridunity.com", "epri.com", "pjm.com",
+)'''
+semi_official_new = '''    "aema.ai", "blog.google", "gridunity.com", "epri.com", "pjm.com",
+    "infineon.com", "wolfspeed.com", "liteon.com", "opencompute.org", "rohm.com",
+    "st.com", "onsemi.com",
+)'''
+if semi_official_old not in s:
+    raise SystemExit("800V SiC official domains insertion point not found")
+s = s.replace(semi_official_old, semi_official_new, 1)
+
+semi_trusted_old = '''    "datacenterdynamics.com", "publicpower.org",
+)'''
+semi_trusted_new = '''    "datacenterdynamics.com", "publicpower.org", "digitimes.com",
+)'''
+if semi_trusted_old not in s:
+    raise SystemExit("800V SiC trusted domains insertion point not found")
+s = s.replace(semi_trusted_old, semi_trusted_new, 1)
+
+semi_queries_old = '''    'Google data center demand response utility contract flexible load',
+)'''
+semi_queries_new = '''    'Google data center demand response utility contract flexible load',
+    '800V VDC AI data center SiC GaN Infineon Wolfspeed LiteOn power semiconductor',
+    'AI data center solid state transformer SiC Eaton Infineon 800 VDC',
+    '6-inch SiC substrate price rebound AI data center 800V HVDC 2027 DIGITIMES',
+)'''
+if semi_queries_old not in s:
+    raise SystemExit("800V SiC queries insertion point not found")
+s = s.replace(semi_queries_old, semi_queries_new, 1)
+
+semi_source_old = '''        ("aema", "AEMA"), ("blog.google", "Google"), ("gridunity", "GridUnity"),
+    )'''
+semi_source_new = '''        ("aema", "AEMA"), ("blog.google", "Google"), ("gridunity", "GridUnity"),
+        ("infineon", "Infineon"), ("wolfspeed", "Wolfspeed"), ("liteon", "LITEON"),
+        ("opencompute", "OCP"), ("rohm", "ROHM"), ("st.com", "STMicroelectronics"),
+        ("onsemi", "onsemi"), ("digitimes", "DIGITIMES"),
+    )'''
+if semi_source_old not in s:
+    raise SystemExit("800V SiC source labels insertion point not found")
+s = s.replace(semi_source_old, semi_source_new, 1)
+
+semi_classify_old = '''    if "800v" in low and any(k in low for k in ("dc", "direct current", "data center", "data centre", "rack")):
+        return "800V DC"'''
+semi_classify_new = '''    wide_bandgap = bool(
+        re.search(r"\\b(?:sic|gan)\\b", low)
+        or "silicon carbide" in low
+        or "gallium nitride" in low
+        or "wide-bandgap" in low
+        or "wide bandgap" in low
+    )
+    if (
+        any(k in low for k in ("800v", "800 v", "hvdc", "high-voltage direct current"))
+        or wide_bandgap
+    ) and any(k in low for k in (
+        "data center", "data centre", "ai factory", "ai server", "rack",
+        "power sidecar", "solid-state transformer", "solid state transformer", "power supply",
+    )):
+        return "800V DC"'''
+if semi_classify_old not in s:
+    raise SystemExit("800V SiC classifier insertion point not found")
+s = s.replace(semi_classify_old, semi_classify_new, 1)
+
+semi_meaning_old = '''    if theme == "800V DC":
+        return any(k in text for k in (
+            "customer", "adopt", "deploy", "contract", "order", "supply", "production",
+            "validation", "validated", "certif", "launch", "reference design", "commercial",
+            "파트너", "수주", "공급", "양산", "인증", "검증",
+        ))'''
+semi_meaning_new = '''    if theme == "800V DC":
+        execution = any(k in text for k in (
+            "customer", "adopt", "deploy", "contract", "order", "supply", "production",
+            "validation", "validated", "qualification", "qualified", "certif", "launch",
+            "reference design", "commercial", "mass production", "partnership",
+            "파트너", "수주", "공급", "양산", "인증", "검증",
+        ))
+        sic_market_turn = (
+            any(k in text for k in ("silicon carbide", "sic substrate", "sic substrates"))
+            and any(k in text for k in (
+                "price", "rebound", "recover", "tight", "shortage", "capacity",
+                "yield", "6-inch", "6 inch", "8-inch", "8 inch", "200mm",
+            ))
+        )
+        return execution or sic_market_turn'''
+if semi_meaning_old not in s:
+    raise SystemExit("800V SiC meaningful gate insertion point not found")
+s = s.replace(semi_meaning_old, semi_meaning_new, 1)
+
+semi_func_anchor = '''def detect_metric_changes(old: dict, metrics: dict, projects: dict) -> list[str]:
+'''
+semi_func_block = r'''
+POWER_SEMI_DEFAULTS = {
+    # Verified public reference points. DIGITIMES values remain research
+    # estimates; official product/qualification facts are kept separately.
+    "nvidia_full_scale_year": 2027.0,
+    "nvidia_row_power_center_mw": 2.0,
+    "nvidia_partner_count_min": 80.0,
+    "infineon_bbu_kw": 24.0,
+    "infineon_bbu_efficiency_pct": 99.0,
+    "infineon_bbu_density_w_in3": 450.0,
+    "digitimes_ev_share_2026_pct": 65.0,
+    "digitimes_sic_6in_rebound_year": 2027.0,
+    "digitimes_hvdc_start_year": 2027.0,
+    "digitimes_hvdc_end_year": 2028.0,
+    "wolfspeed_liteon_200mm_qualified": True,
+    "infineon_eaton_sst_apac": True,
+}
+
+
+def _semi_page_text(url: str) -> str:
+    return normalize(BeautifulSoup(fetch(url, 25).text, "html.parser").get_text(" "))
+
+
+def parse_power_semiconductor_metrics(previous: dict | None = None) -> tuple[dict, list[str]]:
+    previous = previous or {}
+    metrics = dict(POWER_SEMI_DEFAULTS)
+    errors = []
+    for key, value in previous.items():
+        if key in metrics and value is not None:
+            metrics[key] = value
+
+    try:
+        text = _semi_page_text(NVIDIA_800V_ROADMAP)
+        m = re.search(r"up tos+([0-9.]+)s+megawatts?s+per row", text, re.I)
+        if m:
+            metrics["nvidia_row_power_center_mw"] = float(m.group(1))
+        m = re.search(r"more thans+([0-9,]+)s+(?:equipment manufacturers|ecosystem companies|partners)", text, re.I)
+        if m:
+            metrics["nvidia_partner_count_min"] = float(m.group(1).replace(",", ""))
+    except Exception as exc:
+        errors.append(f"NVIDIA 800V roadmap: {type(exc).__name__}")
+
+    try:
+        text = _semi_page_text(NVIDIA_800V_ARCH)
+        m = re.search(r"full-scale production.*?(20[0-9]{2})", text, re.I)
+        if m:
+            metrics["nvidia_full_scale_year"] = float(m.group(1))
+    except Exception as exc:
+        errors.append(f"NVIDIA 800V architecture: {type(exc).__name__}")
+
+    try:
+        text = _semi_page_text(INFINEON_SIC_BBU)
+        m = re.search(r"([0-9.]+)s*kWs+battery backup unit", text, re.I)
+        if m:
+            metrics["infineon_bbu_kw"] = float(m.group(1))
+        m = re.search(r"([0-9.]+)s*W/in", text, re.I)
+        if m:
+            metrics["infineon_bbu_density_w_in3"] = float(m.group(1))
+        m = re.search(r"efficiency exceedings+([0-9.]+)s*percent", text, re.I)
+        if m:
+            metrics["infineon_bbu_efficiency_pct"] = float(m.group(1))
+    except Exception as exc:
+        errors.append(f"Infineon SiC BBU: {type(exc).__name__}")
+
+    try:
+        text = _semi_page_text(WOLFSPEED_LITEON_800V)
+        metrics["wolfspeed_liteon_200mm_qualified"] = bool(
+            re.search(r"successful qualification", text, re.I)
+            and re.search(r"200mm silicon carbide", text, re.I)
+        )
+    except Exception as exc:
+        errors.append(f"Wolfspeed-LITEON 800V: {type(exc).__name__}")
+
+    try:
+        text = _semi_page_text(INFINEON_EATON_SST)
+        metrics["infineon_eaton_sst_apac"] = bool(
+            re.search(r"silicon carbide", text, re.I)
+            and re.search(r"APAC", text, re.I)
+            and re.search(r"solid-state transformer|SST", text, re.I)
+        )
+    except Exception as exc:
+        errors.append(f"Infineon-Eaton SST: {type(exc).__name__}")
+
+    try:
+        text = _semi_page_text(DIGITIMES_SIC_RESEARCH)
+        m = re.search(r"EVs are estimated to account fors+([0-9.]+)%", text, re.I)
+        if m:
+            metrics["digitimes_ev_share_2026_pct"] = float(m.group(1))
+        if re.search(r"6-inch SiC substrate prices.*?rebound ins+2027", text, re.I):
+            metrics["digitimes_sic_6in_rebound_year"] = 2027.0
+        m = re.search(r"800V HVDC architecture,s*(20[0-9]{2})s*[-–]s*(20[0-9]{2})", text, re.I)
+        if m:
+            metrics["digitimes_hvdc_start_year"] = float(m.group(1))
+            metrics["digitimes_hvdc_end_year"] = float(m.group(2))
+    except Exception as exc:
+        errors.append(f"DIGITIMES SiC research: {type(exc).__name__}")
+
+    return metrics, errors
+
+
+def detect_power_semiconductor_changes(old: dict, now: dict) -> list[str]:
+    oldm = old.get("power_semiconductor_metrics") or {}
+    if not oldm:
+        return ["800V DC·SiC/GaN 실행 기준선 신규 연결"]
+    changes = []
+    checks = (
+        ("nvidia_full_scale_year", 1.0, "NVIDIA 800V DC 본격 양산 연도", "년"),
+        ("nvidia_row_power_center_mw", 0.5, "NVIDIA 800V 행 단위 전력센터 규모", "MW"),
+        ("nvidia_partner_count_min", 10.0, "800V DC 생태계 기업 수 하한", "개"),
+        ("infineon_bbu_kw", 5.0, "Infineon SiC BBU 출력", "kW"),
+        ("infineon_bbu_efficiency_pct", 0.5, "Infineon SiC BBU 효율", "%"),
+        ("infineon_bbu_density_w_in3", 25.0, "Infineon SiC BBU 전력밀도", "W/in³"),
+        ("digitimes_ev_share_2026_pct", 5.0, "DIGITIMES 2026 SiC EV 응용 비중", "%"),
+        ("digitimes_sic_6in_rebound_year", 1.0, "DIGITIMES 6인치 SiC 가격 반등 예상연도", "년"),
+    )
+    for key, threshold, label, unit in checks:
+        ov, nv = oldm.get(key), now.get(key)
+        if ov is None or nv is None:
+            continue
+        try:
+            if abs(float(nv) - float(ov)) >= threshold:
+                changes.append(f"{label}: {float(ov):g}{unit} → {float(nv):g}{unit}")
+        except Exception:
+            pass
+    for key, label in (
+        ("wolfspeed_liteon_200mm_qualified", "Wolfspeed-LITEON 200mm SiC 800V DC 검증"),
+        ("infineon_eaton_sst_apac", "Infineon-Eaton SiC SST APAC 공급"),
+    ):
+        if key in oldm and bool(oldm.get(key)) != bool(now.get(key)):
+            changes.append(f"{label}: {bool(oldm.get(key))} → {bool(now.get(key))}")
+    return changes
+
+
+'''
+if semi_func_anchor not in s:
+    raise SystemExit("800V SiC metrics function insertion point not found")
+s = s.replace(semi_func_anchor, semi_func_block + semi_func_anchor, 1)
+
+semi_runtime_old = '''flexible_load_metrics, flexible_load_errors = parse_flexible_load_metrics(old.get("flexible_load_metrics") or {})
+errors.extend(flexible_load_errors)
+
+items: list[dict] = []'''
+semi_runtime_new = '''flexible_load_metrics, flexible_load_errors = parse_flexible_load_metrics(old.get("flexible_load_metrics") or {})
+errors.extend(flexible_load_errors)
+power_semiconductor_metrics, power_semiconductor_errors = parse_power_semiconductor_metrics(
+    old.get("power_semiconductor_metrics") or {}
+)
+errors.extend(power_semiconductor_errors)
+
+items: list[dict] = []'''
+if semi_runtime_old not in s:
+    raise SystemExit("800V SiC runtime insertion point not found")
+s = s.replace(semi_runtime_old, semi_runtime_new, 1)
+
+semi_change_old = '''metric_changes = detect_metric_changes(old, miso_metrics, miso_projects)
+flexible_load_changes = detect_flexible_load_changes(old, flexible_load_metrics)
+baseline_run = not old.get("initialized")
+format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
+should_alert = baseline_run or format_upgrade or bool(new_items) or bool(metric_changes) or bool(flexible_load_changes)'''
+semi_change_new = '''metric_changes = detect_metric_changes(old, miso_metrics, miso_projects)
+flexible_load_changes = detect_flexible_load_changes(old, flexible_load_metrics)
+power_semiconductor_changes = detect_power_semiconductor_changes(old, power_semiconductor_metrics)
+baseline_run = not old.get("initialized")
+format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
+should_alert = (
+    baseline_run or format_upgrade or bool(new_items) or bool(metric_changes)
+    or bool(flexible_load_changes) or bool(power_semiconductor_changes)
+)'''
+if semi_change_old not in s:
+    raise SystemExit("800V SiC change gate insertion point not found")
+s = s.replace(semi_change_old, semi_change_new, 1)
+
+semi_pending_old = '''    "flexible_load_metrics": flexible_load_metrics,
+    "flexible_load_source_errors": flexible_load_errors,
+    "seen_ids": seen,'''
+semi_pending_new = '''    "flexible_load_metrics": flexible_load_metrics,
+    "flexible_load_source_errors": flexible_load_errors,
+    "power_semiconductor_metrics": power_semiconductor_metrics,
+    "power_semiconductor_source_errors": power_semiconductor_errors,
+    "seen_ids": seen,'''
+if semi_pending_old not in s:
+    raise SystemExit("800V SiC pending-state insertion point not found")
+s = s.replace(semi_pending_old, semi_pending_new, 1)
+
+semi_msg_old = '''    msg.append("• <b>800V DC</b> · 기사량이 아니라 고객 채택·양산·수주·인증·검증만 알림")
+
+    fm = flexible_load_metrics'''
+semi_msg_new = '''    msg.append("• <b>800V DC</b> · 고객 채택·양산·수주·인증·검증 + SiC/GaN 기판·소자 가격·수급 전환만 알림")
+
+    semi_item = any(x.get("theme") == "800V DC" for x in new_items)
+    if baseline_run or format_upgrade or power_semiconductor_changes or semi_item:
+        sm = power_semiconductor_metrics
+        msg += ["", "<b>🔌 800V DC·SiC/GaN 실행판</b>"]
+        msg.append(
+            f"• <b>NVIDIA 시간표</b> · 800V DC 본격 양산 <b>{int(sm['nvidia_full_scale_year'])}년</b> "
+            f"· 행 단위 전력센터 최대 <b>{sm['nvidia_row_power_center_mw']:g}MW</b> "
+            f"· 생태계 <b>{int(sm['nvidia_partner_count_min'])}개+</b>"
+        )
+        msg.append(
+            f"• <b>Infineon SiC BBU</b> · <b>{sm['infineon_bbu_kw']:g}kW</b> "
+            f"· 효율 <b>{sm['infineon_bbu_efficiency_pct']:g}%+</b> "
+            f"· 전력밀도 <b>{sm['infineon_bbu_density_w_in3']:g}W/in³</b>"
+        )
+        msg.append(
+            "• <b>공식 공급 검증</b> · Wolfspeed 200mm SiC → LITEON 800V DC 전력 사이드카·컴퓨트 랙 PSU 검증 "
+            f"<b>{'확인' if sm.get('wolfspeed_liteon_200mm_qualified') else '미확인'}</b> "
+            f"· Infineon SiC → Eaton APAC MVSST <b>{'확인' if sm.get('infineon_eaton_sst_apac') else '미확인'}</b>"
+        )
+        msg.append(
+            f"• <b>DIGITIMES Research</b> · 2026 SiC 응용 중 EV <b>{sm['digitimes_ev_share_2026_pct']:g}%</b> 추정 "
+            f"· 6인치 기판 가격 <b>{int(sm['digitimes_sic_6in_rebound_year'])}년</b> 초기 반등 전망 "
+            f"· 800V HVDC 구조 <b>{int(sm['digitimes_hvdc_start_year'])}~{int(sm['digitimes_hvdc_end_year'])}</b> 수요 촉매"
+        )
+        msg.append("• <b>증거등급:</b> NVIDIA·OCP·Infineon·Wolfspeed는 공식 실행 사실, DIGITIMES의 응용 비중·가격 반등 연도는 리서치 전망으로 분리합니다.")
+        msg.append("• <b>조기경보:</b> 2027 양산 일정 지연, 6인치 가격 재하락, 200mm 수율·고객검증 지연, GaN/Si 대체, 안전·인증 지연을 먼저 봅니다.")
+
+    if power_semiconductor_changes:
+        msg += ["", "<b>🔄 800V DC·SiC/GaN 기준 변경</b>"]
+        for ch in power_semiconductor_changes[:6]:
+            msg.append(f"• <b>{h(ch)}</b>")
+
+    fm = flexible_load_metrics'''
+if semi_msg_old not in s:
+    raise SystemExit("800V SiC message insertion point not found")
+s = s.replace(semi_msg_old, semi_msg_new, 1)
+
+semi_scope_old = '''        msg.append("• 800V DC는 고객 채택·수주·양산·인증 단계 전환만 알림")'''
+semi_scope_new = '''        msg.append("• 800V DC는 고객 채택·수주·양산·인증 + SiC/GaN 기판·소자 가격·수급 전환만 알림")'''
+if semi_scope_old not in s:
+    raise SystemExit("800V SiC baseline scope insertion point not found")
+s = s.replace(semi_scope_old, semi_scope_new, 1)
+
+semi_status_old = '''    f"- 최대 부하감축: **{flexible_load_metrics.get('emerald_max_reduction_pct')}%**\n"
+    f"- 신규 의미자료: **{len(new_items)}건**\n"'''
+semi_status_new = '''    f"- 최대 부하감축: **{flexible_load_metrics.get('emerald_max_reduction_pct')}%**\n"
+    f"- NVIDIA 800V DC 본격 양산 연도: **{int(power_semiconductor_metrics.get('nvidia_full_scale_year', 0))}**\n"
+    f"- NVIDIA 800V 행 단위 전력센터: **{power_semiconductor_metrics.get('nvidia_row_power_center_mw')} MW**\n"
+    f"- DIGITIMES 6인치 SiC 가격 반등 예상: **{int(power_semiconductor_metrics.get('digitimes_sic_6in_rebound_year', 0))}년**\n"
+    f"- 신규 의미자료: **{len(new_items)}건**\n"'''
+if semi_status_old not in s:
+    raise SystemExit("800V SiC status insertion point not found")
+s = s.replace(semi_status_old, semi_status_new, 1)
+
+semi_print_old = '''    f"gia={miso_metrics.get('gia_gw')}GW new={len(new_items)} changes={len(metric_changes)} "
+    f"flex_changes={len(flexible_load_changes)} alert={should_alert}"'''
+semi_print_new = '''    f"gia={miso_metrics.get('gia_gw')}GW new={len(new_items)} changes={len(metric_changes)} "
+    f"flex_changes={len(flexible_load_changes)} power_semi_changes={len(power_semiconductor_changes)} "
+    f"alert={should_alert}"'''
+if semi_print_old not in s:
+    raise SystemExit("800V SiC print insertion point not found")
+s = s.replace(semi_print_old, semi_print_new, 1)
+
+semi_links_old = '''    msg.append(f"• {a('NVIDIA·Emerald AI 유연부하 실증', NVIDIA_EMERALD)}")'''
+semi_links_new = '''    msg.append(f"• {a('NVIDIA·Emerald AI 유연부하 실증', NVIDIA_EMERALD)}")
+    if baseline_run or format_upgrade or power_semiconductor_changes or semi_item:
+        msg.append(f"• {a('NVIDIA 800V DC 양산 로드맵', NVIDIA_800V_ARCH)}")
+        msg.append(f"• {a('OCP Google·Microsoft·NVIDIA 800V DC 표준화', OCP_800V_STANDARD)}")
+        msg.append(f"• {a('Infineon 24kW SiC BBU', INFINEON_SIC_BBU)}")
+        msg.append(f"• {a('Infineon·Eaton SiC SST', INFINEON_EATON_SST)}")
+        msg.append(f"• {a('Wolfspeed·LITEON 800V DC SiC 검증', WOLFSPEED_LITEON_800V)}")
+        msg.append(f"• {a('DIGITIMES SiC 기판 회복 연구', DIGITIMES_SIC_RESEARCH)}")'''
+if semi_links_old not in s:
+    raise SystemExit("800V SiC official links insertion point not found")
+s = s.replace(semi_links_old, semi_links_new, 1)
+
 p.write_text(s, encoding="utf-8")
-print("US time-to-power flexible-load + demand-response guard inserted")
+print("US time-to-power flexible-load + 800V SiC/GaN guard inserted")
