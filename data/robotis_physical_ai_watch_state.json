@@ -1,6 +1,6 @@
 {
   "seeded": true,
-  "updated_at": "2026-10-02T02:18:26.852980+00:00",
+  "updated_at": "2026-10-02T04:06:41.773634+00:00",
   "seen": [
     "f4aceecfa860281f7d5cf8854c3c2e3181bf7482da1498d694d7560f59b48097",
     "976eda5c80eb8fd24c236166d94e9b27dd65698da3d3c5c0c67929aab77e70b9",
@@ -463,10 +463,11 @@
     "de48078f0fa9a67827a237414288926f7604537f4be2aee9d09f129815b7ca95",
     "cb09468dd7c9618dea57a99cdea437bf34370dcdd5c019bb0b53b17e4810756f",
     "8bfb8b607aab1c94527cf0588315fa2adfefd6a2528dc7c6a22fb39c0e4c694e",
-    "fa5576fa49b7d07436e45a91d3e76d334a4cf78a612239cefebfc8984271e324"
+    "fa5576fa49b7d07436e45a91d3e76d334a4cf78a612239cefebfc8984271e324",
+    "20f4786094d4edc31faf0dec1493efe24a79eec46764a9e8bd33ba8d2bcdbfd9"
   ],
   "last_selected": [
-    "fa5576fa49b7d07436e45a91d3e76d334a4cf78a612239cefebfc8984271e324"
+    "20f4786094d4edc31faf0dec1493efe24a79eec46764a9e8bd33ba8d2bcdbfd9"
   ],
   "groups": [
     "ess_battery",
@@ -474,7 +475,6 @@
     "humanoid_component_global",
     "lg_factory_loop",
     "robotis",
-    "robotis_excess_demand",
-    "tesla"
+    "robotis_excess_demand"
   ]
 }
