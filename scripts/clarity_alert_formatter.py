@@ -150,9 +150,9 @@ def is_oira_prerule(event):
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
     if is_sec_crypto_custody_2026(event):
         return (
-            "쉽게 말하면, 미국 투자자문사·펀드가 암호자산을 다루고 싶어도 ‘어디에 어떻게 맡겨야 합법인지’ 애매했던 부분에 "
-            "SEC가 새 통로를 제안한 것입니다. 최종 확정되면 기관의 암호자산 투자·수탁 선택지가 넓어질 수 있지만, "
-            "아직 Proposed Rule(제안규칙)이라 즉시 효력이 생긴 것은 아닙니다."
+            "쉽게 말하면, SEC가 기관의 암호자산 보관 규칙을 현실에 맞게 넓히려는 제안입니다. "
+            "특정 조건에서는 외부 수탁기관 없이 자체 수탁도 허용하고 주 신탁회사도 수탁 경로로 인정하려는 방향이지만, "
+            "모든 코인에 자동 적용되는 규칙은 아니고 아직 Proposed Rule(제안규칙)이라 즉시 효력도 없습니다."
         )
     return ("oira" in signal or "reginfo" in signal) and ("prerule" in signal or "pre-rule" in signal)
 
@@ -329,10 +329,12 @@ def special_translation(event):
     if is_sec_crypto_custody_2026(event):
         return (
             "SEC, 투자자문사·펀드의 암호자산 수탁 규칙 개정안 제안",
-            "SEC는 등록 투자자문사와 규제 펀드가 암호자산을 보관할 수 있는 별도 규제 틀을 제안했습니다. "
+            "SEC는 등록 투자자문사와 규제 펀드의 암호자산 수탁 규칙을 새로 제안했습니다. "
             "핵심은 제한적 self-custody(자체 수탁), 조건부 state trust company(주 신탁회사) 수탁 허용, "
-            "수탁·기록보관·공시 규칙 현대화입니다. File No. S7-2026-35, Release No. IA-7023 / IC-36353이며 "
-            "의견 제출기한은 Federal Register(연방관보) 게재 후 60일입니다.",
+            "기록보관·공시 규칙 현대화입니다. 다만 모든 암호자산에 자동 적용되는 것은 아니며, "
+            "투자자문사 규칙은 해당 암호자산이 funds or securities(자금 또는 증권)에 해당하는 범위, "
+            "규제 펀드는 securities or similar investments(증권 또는 유사 투자자산)에 해당하는 범위가 핵심입니다. "
+            "File No. S7-2026-35, Release No. IA-7023 / IC-36353이며 의견 제출기한은 Federal Register(연방관보) 게재 후 60일입니다.",
         )
     if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
         return (
@@ -438,10 +440,10 @@ def investment_lines(event):
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
     if is_sec_crypto_custody_2026(event):
         return [
-            "COIN: 기관 수탁 규칙이 명확해지면 Coinbase Custody 같은 수탁 사업의 규제 불확실성이 낮아질 수 있습니다. 다만 제한적 self-custody(자체 수탁) 허용은 외부 수탁 수요를 일부 줄일 수 있습니다.",
-            "BTC·ETH: 규제 펀드·자문사의 합법적 보유 경로가 넓어질 수 있다는 점은 기관 접근성에 긍정적이지만, 아직 제안 단계라 실제 자금 유입은 미확정입니다.",
-            "CRCL: 직접 적용 대상은 스테이블코인 발행 규칙이 아니라 수탁 규칙이어서 직접 실적 영향은 제한적입니다.",
-            "시간표: Federal Register 게재 → 60일 의견수렴 → 수정·최종규칙 채택 여부를 확인합니다.",
+            "COIN: Coinbase Custody Trust Company는 뉴욕주 limited purpose trust company(제한목적 신탁회사)라 최종 규칙의 state trust company 수탁 경로와 연결될 가능성이 있습니다. 다만 self-custody(자체 수탁) 허용은 외부 수탁 수요를 일부 상쇄할 수 있습니다.",
+            "BTC·ETH: 이번 규칙이 모든 암호자산에 자동 적용되는 것은 아니므로 ‘BTC·ETH 기관자금 유입 확정’으로 해석하면 안 됩니다. 실제 적용 범위와 최종 문구를 확인해야 합니다.",
+            "CRCL: 스테이블코인 발행 규칙이 아니라 수탁 규칙이어서 직접 실적 영향은 제한적입니다.",
+            "시간표: Federal Register 게재 → 60일 의견수렴 → 수정·Final Rule(최종규칙) 채택 여부를 확인합니다.",
         ]
     if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
         return [
@@ -534,9 +536,9 @@ def core_summary(event):
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
     if is_sec_crypto_custody_2026(event):
         return (
-            "SEC의 S7-2026-35는 CLARITY 법안 자체 변경이 아니라 별도 행정규칙 경로에서 기관의 암호자산 수탁 통로를 넓히려는 제안으로, "
-            "COIN에는 수탁 규제 불확실성 완화 가능성이 있지만 self-custody(자체 수탁) 허용이 외부 수탁 수요를 일부 상쇄할 수 있고, "
-            "BTC·ETH에는 기관 접근성 개선 기대가 생기지만 실제 효과는 최종규칙 채택 뒤 확인해야 합니다."
+            "SEC의 S7-2026-35는 CLARITY 법안 자체 변경이 아니라 별도 행정규칙 경로에서 기관의 암호자산 수탁 규칙을 넓히려는 제안입니다. "
+            "COIN에는 state trust company 수탁 경로가 기회가 될 수 있지만 self-custody(자체 수탁)가 외부 수탁 수요를 일부 상쇄할 수 있고, "
+            "BTC·ETH는 적용 범위가 자산의 법적 성격에 따라 달라져 직접 기관자금 유입으로 단정할 수 없습니다."
         )
     if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
         return "CFTC RIN 3038-AF80은 CLARITY 부결 뒤 의회 입법과 별개인 행정 규칙 경로가 실제 백악관 OIRA 검토에 들어갔다는 시간표 변화지만, 현재는 Pending Review(검토 중)·Prerule(사전규칙 단계)이고 규칙 본문도 비공개라 COIN·CRCL의 돈 버는 능력이 즉시 바뀐 단계는 아니며, 다음 핵심은 OIRA 검토 종료와 CFTC의 공개 문안입니다."
