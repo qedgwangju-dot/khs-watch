@@ -2134,7 +2134,7 @@ def _hbm4_contract_stage(text: str) -> str:
         return "contract_signed"
     if re.search(r"(?:가격\s*확정|가격\s*합의|합의\s*완료|agreement\s*(?:finalized|reached)|price\s*(?:agreed|finalized))", low, re.I):
         return "agreed"
-    if re.search(r"(?:협상\s*막바지|협상\s*마무리|최종\s*협상|final\s*stage\s*of\s*negotiations?|negotiations?\s*near\s*completion)", low, re.I):
+    if re.search(r"(?:협상[^.]{0,20}?막바지|협상[^.]{0,20}?마무리|최종[^.]{0,20}?협상|final\s*stage\s*of\s*negotiations?|negotiations?\s*near\s*completion)", low, re.I):
         return "final_stage"
     if re.search(r"(?:가격\s*협상|공급가\s*협상|협의\s*중|negotiat(?:e|ing|ion)|in\s*discussions?)", low, re.I):
         return "negotiating"
