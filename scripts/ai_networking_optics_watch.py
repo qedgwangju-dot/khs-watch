@@ -15,6 +15,9 @@ import html
 import json
 import pathlib
 import re
+import os
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -345,16 +348,32 @@ STORY_STOPWORDS = {
 }
 
 
-def fetch(url: str, timeout: int = 25) -> bytes:
+def fetch(url: str, timeout: int = 20) -> bytes:
     req = urllib.request.Request(
         url,
         headers={
             "User-Agent": "Mozilla/5.0 khs-watch/1.0",
             "Accept": "application/rss+xml, application/xml, text/xml, */*",
+            "Accept-Language": "en-US,en;q=0.9",
         },
     )
-    with urllib.request.urlopen(req, timeout=timeout) as response:
-        return response.read()
+    last_error: Exception | None = None
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as response:
+                return response.read()
+        except urllib.error.HTTPError as exc:
+            last_error = exc
+            if exc.code not in {429, 500, 502, 503, 504} or attempt == 2:
+                raise
+            time.sleep(2 * (attempt + 1))
+        except urllib.error.URLError as exc:
+            last_error = exc
+            if attempt == 2:
+                raise
+            time.sleep(2 * (attempt + 1))
+    assert last_error is not None
+    raise last_error
 
 
 def parse_date(value: str | None) -> dt.datetime | None:
@@ -897,12 +916,39 @@ def main() -> None:
     (ROOT / "data").mkdir(parents=True, exist_ok=True)
 
     state = load_state()
+
+    # workflow_run is only a redundant backup trigger. If a successful check was
+    # already performed recently, skip the duplicate query burst to avoid
+    # throttling Google News and other sources.
+    if os.getenv("GITHUB_EVENT_NAME", "").strip() == "workflow_run":
+        last_checked = state.get("last_checked_kst")
+        if last_checked:
+            try:
+                last_dt = dt.datetime.fromisoformat(last_checked).astimezone(KST)
+                age = dt.datetime.now(KST) - last_dt
+                if age < dt.timedelta(minutes=15):
+                    STATUS_PATH.parent.mkdir(parents=True, exist_ok=True)
+                    STATUS_PATH.write_text(
+                        "# AI 네트워킹·광통신 감시 상태\n\n"
+                        f"- 조회 생략: 최근 정상 조회 후 {int(age.total_seconds() // 60)}분 경과\n"
+                        "- 사유: workflow_run 백업 트리거 중복 방지\n",
+                        encoding="utf-8",
+                    )
+                    print("backup_trigger_skipped_recent_check=true")
+                    return
+            except Exception:
+                pass
+
     seen = set(state.get("seen_keys") or [])
     all_relevant: list[dict] = []
     errors: list[str] = []
+    successful_company_queries = 0
+    attempted_company_queries = 0
+    consecutive_service_failures = 0
 
     cutoff = NOW - dt.timedelta(days=7)
     for company, meta in COMPANIES.items():
+        attempted_company_queries += 1
         try:
             feed_items = []
             locales = meta.get("locales") or [{"hl": "en-US", "gl": "US", "ceid": "US:en"}]
@@ -917,7 +963,14 @@ def main() -> None:
                     ))
         except Exception as exc:
             errors.append(f"{company}: {type(exc).__name__}: {exc}")
+            is_service_failure = isinstance(exc, urllib.error.HTTPError) and getattr(exc, "code", None) in {429, 500, 502, 503, 504}
+            consecutive_service_failures = consecutive_service_failures + 1 if is_service_failure else 0
+            if consecutive_service_failures >= 3:
+                errors.append("Google News circuit breaker: repeated service failures; remaining queries aborted")
+                break
             continue
+        successful_company_queries += 1
+        consecutive_service_failures = 0
         for item in feed_items:
             published = dt.datetime.fromisoformat(item["published"]) if item.get("published") else None
             if published and published < cutoff:
@@ -953,6 +1006,29 @@ def main() -> None:
                 "category": category_for(title, company),
             })
             all_relevant.append(item)
+
+    # Fail closed when the discovery layer is unhealthy. Never advance baselines
+    # or silently report "no change" after a broad upstream outage.
+    required_successes = max(3, (len(COMPANIES) + 1) // 2)
+    if successful_company_queries < required_successes:
+        if PENDING_PATH.exists():
+            PENDING_PATH.unlink()
+        if ALERT_PATH.exists():
+            ALERT_PATH.unlink()
+        STATUS_PATH.parent.mkdir(parents=True, exist_ok=True)
+        status_lines = [
+            "# AI 네트워킹·광통신 감시 상태",
+            "",
+            f"- 소스 상태: 실패 — 정상 조회 {successful_company_queries}/{attempted_company_queries}",
+            f"- 최소 정상 소스 기준: {required_successes}",
+            "- 상태 기준선: 갱신하지 않음",
+            "- Telegram: 송출하지 않음",
+        ]
+        if errors:
+            status_lines.extend(["", "## 소스 오류"] + [f"- {e}" for e in errors])
+        STATUS_PATH.write_text("\n".join(status_lines).strip() + "\n", encoding="utf-8")
+        print(f"source_health_failed=true successful={successful_company_queries} attempted={attempted_company_queries} errors={len(errors)}")
+        raise RuntimeError("Discovery sources unhealthy; state intentionally not advanced")
 
     # Source-quality gate: unknown/low-quality sources cannot trigger by themselves.
     # They are admitted only when a higher-quality source independently reports the same event.
@@ -1067,7 +1143,7 @@ def main() -> None:
         "initialized": True,
         "dedupe_version": 2,
         "quality_version": 3,
-        "photonic_compute_version": 4,
+        "photonic_compute_version": 5,
         "optical_material_version": 1,
         "cpo_equipment_version": 2,
         "optical_policy_version": 2,
@@ -1098,7 +1174,7 @@ def main() -> None:
         if korea_optics_version < 1:
             new_items = [item for item in new_items if item.get("company") not in {"Opticore", "OE Solutions"}]
         photonic_compute_version = int(state.get("photonic_compute_version") or 0)
-        if photonic_compute_version < 4:
+        if photonic_compute_version < 5:
             new_items = [item for item in new_items if item.get("company") not in {"Volantis", "Lightmatter", "Ayar Labs", "Xscape Photonics"}]
         alert_items = new_items[:8] if initialized else []
     if ALERT_PATH.exists():
