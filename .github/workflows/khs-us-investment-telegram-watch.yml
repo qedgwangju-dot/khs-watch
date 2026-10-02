@@ -57,15 +57,6 @@ jobs:
           gh api -X PUT "/repos/${GITHUB_REPOSITORY}/actions/workflows/khs-us-investment-telegram-watch.yml/enable"
           echo "existing_schedule_enable=confirmed"
 
-      - name: One-time enable and verify Westinghouse policy support lane
-        if: github.event_name == 'push'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api -X PUT "/repos/${GITHUB_REPOSITORY}/actions/workflows/khs-policy-watch.yml/enable"
-          gh workflow run khs-policy-watch.yml --ref main -f telegram_test=false -f telegram_dry_run=false
-          echo "westinghouse_policy_live_verification_dispatch=created"
-
       - name: Trigger one live verification dispatch
         if: github.event_name == 'push'
         env:
@@ -88,6 +79,10 @@ jobs:
             scripts/fx_api.py
           python scripts/khs_us_investment_watch_stateful.py --self-test
           python scripts/khs_us_investment_telegram_send.py self-test
+          if grep -Fq 'delegated_families = {"westinghouse_stake"}' .github/workflows/khs-us-investment-telegram-watch.yml; then
+            echo "Westinghouse equity is still delegated away from the verified US-investment route"
+            exit 1
+          fi
           PYTHONPATH=scripts python - <<'PY'
           import importlib.util
           from pathlib import Path
@@ -219,10 +214,10 @@ jobs:
                   watcher.core.MATERIAL.append(term)
 
           original_collapse = watcher._collapse_rows
-          # Westinghouse 지분/거버넌스는 전용 원전 watcher 한 곳만 Telegram 송출한다.
-          # 최대 8기·AP1000/APR1400·발주/NRC 등 미국 원전 구성·발주 변화는
-          # 대미투자 energy/nuclear-build 상태축에서 계속 추적·송출한다.
-          delegated_families = {"westinghouse_stake"}
+          # Project Power 및 Westinghouse 한국 지분 참여의 Telegram 단일 소유권은
+          # 실제 송출·상태저장·중복억제가 검증된 이 대미투자 watcher가 갖는다.
+          # 정책 watcher는 동일 사실을 참고/상태추적할 수 있지만 Telegram은 이 경로로 위임한다.
+          delegated_families = set()
 
           def collapse_with_single_nuclear_owner(rows):
               collapsed = original_collapse(rows)
