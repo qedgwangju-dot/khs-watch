@@ -322,11 +322,26 @@ def filter_alertable_events(events, now=None, freshness_days=7):
     return output
 
 
+def federal_register_comments_close(event):
+    detail = clean(event.get("detail", ""))
+    m = re.search(r"Comments Close:\\s*(\\d{4}-\\d{2}-\\d{2})", detail, re.I)
+    return m.group(1) if m else ""
+
+
+def federal_register_document_number(event):
+    detail = clean(event.get("detail", ""))
+    m = re.search(r"Document Number:\\s*([^|]+)", detail, re.I)
+    return clean(m.group(1)) if m else ""
+
 def special_translation(event):
     title = clean(event.get("title", ""))
     detail = clean(event.get("detail", ""))
     signal = f"{title} {detail}".lower()
     if is_sec_crypto_custody_2026(event):
+        due = federal_register_comments_close(event)
+        due_text = f" 의견수렴 마감일은 {due}입니다." if due else " 의견 제출기한은 Federal Register(연방관보) 게재 후 60일입니다."
+        doc = federal_register_document_number(event)
+        doc_text = f" Federal Register 문서번호는 {doc}입니다." if doc else ""
         return (
             "SEC, 투자자문사·펀드의 암호자산 수탁 규칙 개정안 제안",
             "SEC는 등록 투자자문사와 규제 펀드의 암호자산 수탁 규칙을 새로 제안했습니다. "
@@ -334,7 +349,7 @@ def special_translation(event):
             "기록보관·공시 규칙 현대화입니다. 다만 모든 암호자산에 자동 적용되는 것은 아니며, "
             "투자자문사 규칙은 해당 암호자산이 funds or securities(자금 또는 증권)에 해당하는 범위, "
             "규제 펀드는 securities or similar investments(증권 또는 유사 투자자산)에 해당하는 범위가 핵심입니다. "
-            "File No. S7-2026-35, Release No. IA-7023 / IC-36353이며 의견 제출기한은 Federal Register(연방관보) 게재 후 60일입니다.",
+            "File No. S7-2026-35, Release No. IA-7023 / IC-36353입니다." + doc_text + due_text,
         )
     if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
         return (
@@ -442,7 +457,7 @@ def investment_lines(event):
         return [
             "COIN: Coinbase Custody Trust Company는 뉴욕주 limited purpose trust company(제한목적 신탁회사)라 최종 규칙의 state trust company 수탁 경로와 연결될 가능성이 있습니다. 다만 self-custody(자체 수탁) 허용은 외부 수탁 수요를 일부 상쇄할 수 있습니다.",
             "BTC·ETH: 이번 규칙이 모든 암호자산에 자동 적용되는 것은 아니므로 ‘BTC·ETH 기관자금 유입 확정’으로 해석하면 안 됩니다. 실제 적용 범위와 최종 문구를 확인해야 합니다.",
-            "CRCL: 스테이블코인 발행 규칙이 아니라 수탁 규칙이어서 직접 실적 영향은 제한적입니다.",
+            "CRCL: Circle Internet Trust Company LLC도 NYDFS limited purpose trust company(제한목적 신탁회사) 인가를 보유해 제도상 연결 가능성이 있습니다. 다만 제3자 기관자산 수탁 서비스의 실제 제공·매출 연결은 아직 공식 확인이 필요합니다.",
             "시간표: Federal Register 게재 → 60일 의견수렴 → 수정·Final Rule(최종규칙) 채택 여부를 확인합니다.",
         ]
     if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
