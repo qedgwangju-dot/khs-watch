@@ -536,28 +536,115 @@ def parse_cboe_section(text, heading, next_heading=None, required_time="03:15 PM
     return None
 
 
-def fetch_cboe_daily_ratio_crosscheck(period):
+def _parse_cboe_daily_volume_section(text, heading, next_heading=None):
+    start = text.find(heading)
+    if start < 0:
+        return None
+    end = text.find(next_heading, start + len(heading)) if next_heading else len(text)
+    if end < 0:
+        end = len(text)
+    section = text[start:end]
+    m = re.search(
+        r"\bVOLUME\s+([\d,]+)\s+([\d,]+)\s+([\d,]+)",
+        section,
+        re.I,
+    )
+    if not m:
+        return None
+    calls = int(m.group(1).replace(",", ""))
+    puts = int(m.group(2).replace(",", ""))
+    total = int(m.group(3).replace(",", ""))
+    if calls + puts != total:
+        raise RuntimeError(
+            f"Cboe daily {heading} volume arithmetic mismatch: "
+            f"calls={calls} puts={puts} total={total}"
+        )
+    return {"calls": calls, "puts": puts, "total": total}
+
+
+def fetch_cboe_daily_snapshot(period):
+    """Use Cboe's date-specific Daily Market Statistics as the canonical EOD source.
+
+    The live Market Statistics page is cumulative intraday and can surface inconsistent
+    cached snapshots. The date-specific Daily page is treated as the end-of-day source
+    for total/index/equity put-call ratios and call/put volumes.
+    """
     d = datetime.strptime(period, "%A, %B %d, %Y").date()
     url = CBOE_DAILY_TEMPLATE.format(date=d.isoformat())
     h = browser_html(url)
     text = re.sub(r"\s+", " ", BeautifulSoup(h, "html.parser").get_text(" ", strip=True))
-    pats = {
+
+    ratio_patterns = {
         "total": r"TOTAL PUT/CALL RATIO\s+([0-9]+(?:\.[0-9]+)?)",
         "index": r"INDEX PUT/CALL RATIO\s+([0-9]+(?:\.[0-9]+)?)",
         "equity": r"EQUITY PUT/CALL RATIO\s+([0-9]+(?:\.[0-9]+)?)",
     }
     ratios = {}
-    for key, pat in pats.items():
+    for key, pat in ratio_patterns.items():
         m = re.search(pat, text, re.I)
-        if m:
-            ratios[key] = float(m.group(1))
-    if len(ratios) != 3:
-        raise RuntimeError(f"Cboe official daily ratio cross-check unavailable for {d.isoformat()}")
-    return {"date": d.isoformat(), "url": url, **ratios}
+        if not m:
+            raise RuntimeError(f"Cboe Daily Market Statistics ratio missing: {key} {d.isoformat()}")
+        ratios[key] = float(m.group(1))
+
+    total = _parse_cboe_daily_volume_section(
+        text, "SUM OF ALL PRODUCTS", "INDEX OPTIONS"
+    )
+    index_opt = _parse_cboe_daily_volume_section(
+        text, "INDEX OPTIONS", "EXCHANGE TRADED PRODUCTS"
+    )
+    equity = _parse_cboe_daily_volume_section(
+        text, "EQUITY OPTIONS"
+    )
+    if not (total and index_opt and equity):
+        raise RuntimeError(
+            f"Cboe Daily Market Statistics EOD volume rows unavailable for {d.isoformat()}"
+        )
+
+    sections = {"total": total, "index": index_opt, "equity": equity}
+    mismatches = []
+    for key, sec in sections.items():
+        calc = sec["puts"] / sec["calls"] if sec["calls"] else None
+        if calc is None or abs(calc - ratios[key]) > 0.015:
+            mismatches.append(
+                f"{key}: volume-calc={calc if calc is not None else 'none'} "
+                f"published={ratios[key]:.2f}"
+            )
+    if mismatches:
+        raise RuntimeError(
+            "Cboe Daily Market Statistics ratio/volume cross-check failed | "
+            + " | ".join(mismatches)
+        )
+
+    metrics = {
+        "total_pc_ratio": ratios["total"],
+        "total_calls": total["calls"],
+        "total_puts": total["puts"],
+        "total_time_ct": "일별 마감",
+        "equity_pc_ratio": ratios["equity"],
+        "equity_calls": equity["calls"],
+        "equity_puts": equity["puts"],
+        "equity_time_ct": "일별 마감",
+        "index_pc_ratio": ratios["index"],
+        "index_calls": index_opt["calls"],
+        "index_puts": index_opt["puts"],
+        "index_time_ct": "일별 마감",
+        "snapshot_type": "cboe_daily_eod",
+        "final_snapshot": True,
+        "daily_ratio_crosscheck": {
+            "date": d.isoformat(),
+            "total": ratios["total"],
+            "index": ratios["index"],
+            "equity": ratios["equity"],
+            "url": url,
+        },
+    }
+    core = {"source": "Cboe", "kind": "options", "period": period, "metrics": metrics}
+    return {**core, "url": url, "fingerprint": fp(core)}
 
 
 def parse_cboe():
-    # Browser rendering is needed because the current-statistics tables are JS-backed.
+    # Discover only the latest Cboe session date from the live page.
+    # All numeric option data comes from the date-specific Daily Market Statistics page.
     h = browser_html(CBOE)
     text = BeautifulSoup(h, "html.parser").get_text("\n", strip=True)
     text = re.sub(r"[ \t]+", " ", text)
@@ -567,61 +654,11 @@ def parse_cboe():
         text,
         re.I,
     )
-    period = period_m.group(1) if period_m else "latest"
+    if not period_m:
+        raise RuntimeError("Cboe latest market-statistics session date not found")
+    period = period_m.group(1)
 
-    report_start = text.find("Cboe Exchange Market Statistics for")
-    report_text = text[report_start:] if report_start >= 0 else text
-    total = parse_cboe_section(report_text, "Total", "Index Options", required_time="03:15 PM")
-    index_opt = parse_cboe_section(report_text, "Index Options", "Equity Options", required_time="03:15 PM")
-    equity = parse_cboe_section(report_text, "Equity Options", required_time="03:15 PM")
-
-    if not (total and index_opt and equity):
-        raise RuntimeError(
-            "Cboe final 03:15 PM CT rows are not all available yet; intraday snapshot suppressed"
-        )
-
-    daily = fetch_cboe_daily_ratio_crosscheck(period)
-    ratio_pairs = {
-        "total": (total["pc_ratio"], daily["total"]),
-        "index": (index_opt["pc_ratio"], daily["index"]),
-        "equity": (equity["pc_ratio"], daily["equity"]),
-    }
-    mismatches = [
-        f"{k}: intraday-final={a:.2f} daily={b:.2f}"
-        for k, (a, b) in ratio_pairs.items()
-        if abs(a - b) > 0.01
-    ]
-    if mismatches:
-        raise RuntimeError(
-            "Cboe final snapshot conflicts with official daily ratios; suppressing alert | "
-            + " | ".join(mismatches)
-        )
-
-    metrics = {
-        "total_pc_ratio": total["pc_ratio"] if total else None,
-        "total_calls": total["calls"] if total else None,
-        "total_puts": total["puts"] if total else None,
-        "total_time_ct": total["time_ct"] if total else None,
-        "equity_pc_ratio": equity["pc_ratio"] if equity else None,
-        "equity_calls": equity["calls"] if equity else None,
-        "equity_puts": equity["puts"] if equity else None,
-        "equity_time_ct": equity["time_ct"] if equity else None,
-        "index_pc_ratio": index_opt["pc_ratio"] if index_opt else None,
-        "index_calls": index_opt["calls"] if index_opt else None,
-        "index_puts": index_opt["puts"] if index_opt else None,
-        "index_time_ct": index_opt["time_ct"] if index_opt else None,
-        "final_snapshot": True,
-        "daily_ratio_crosscheck": {
-            "date": daily["date"],
-            "total": daily["total"],
-            "index": daily["index"],
-            "equity": daily["equity"],
-            "url": daily["url"],
-        },
-    }
-    core = {"source": "Cboe", "kind": "options", "period": period, "metrics": metrics}
-    return {**core, "url": CBOE, "fingerprint": fp(core)}
-
+    return fetch_cboe_daily_snapshot(period)
 
 def parse_sox():
     """Cross-check Nasdaq's official SOX level with Yahoo daily closes.
@@ -797,7 +834,7 @@ def explain(cftc, cboe, sox):
             else:
                 lines.append(
                     f"• Cboe 주식옵션 P/C {eq_pc:.2f} "
-                    f"({m.get('equity_time_ct') or '최신'} CT)"
+                    f"({m.get('equity_time_ct') or '일별 마감'})"
                     + (f" / 전체 {total_pc:.2f}" if total_pc is not None else "")
                 )
         elif total_pc is not None:
@@ -976,17 +1013,15 @@ def validate_critical_sources(cftc_obj, cboe_obj, sox_obj):
 
     if cboe_obj:
         m = cboe_obj["metrics"]
-        if m.get("final_snapshot") is not True:
-            problems.append("Cboe 최종 03:15 PM CT 스냅샷 미확인")
-        if not all(m.get(k) == "03:15 PM" for k in ("total_time_ct","equity_time_ct","index_time_ct")):
-            problems.append("Cboe Total/Equity/Index 최종 시각 불일치")
+        if m.get("final_snapshot") is not True or m.get("snapshot_type") != "cboe_daily_eod":
+            problems.append("Cboe 일별 마감 공식 스냅샷 미확인")
         daily = m.get("daily_ratio_crosscheck") or {}
         for key, metric_key in (("total","total_pc_ratio"),("index","index_pc_ratio"),("equity","equity_pc_ratio")):
             if not isinstance(daily.get(key), (int, float)):
-                problems.append(f"Cboe 일별 공식비율 교차검증 누락: {key}")
+                problems.append(f"Cboe 일별 공식비율 검산 누락: {key}")
             elif abs(float(m.get(metric_key)) - float(daily.get(key))) > 0.01:
                 problems.append(
-                    f"Cboe 최종/일별 공식비율 불일치 {key}: {m.get(metric_key)} vs {daily.get(key)}"
+                    f"Cboe 일별 공식비율 내부 불일치 {key}: {m.get(metric_key)} vs {daily.get(key)}"
                 )
         if m.get("total_calls") and m.get("total_puts") and m.get("total_pc_ratio") is not None:
             calc = m["total_puts"] / m["total_calls"]
@@ -1212,7 +1247,7 @@ if quality_gate_ok and (updates or force):
                 idx_desc = "콜 우위 → 지수 상방 수요가 상대적으로 강함"
             body.append(
                 f"• 지수옵션: 콜 {idx_calls:,} / 풋 {idx_puts:,} → P/C {idx_pc:.2f} "
-                f"({m.get('index_time_ct') or '최신'} CT)"
+                f"({m.get('index_time_ct') or '일별 마감'})"
             )
             body.append(f"  → 콜 비중 {idx_call_share:.1f}% · {idx_desc}")
         elif idx_pc is not None:
@@ -1226,7 +1261,7 @@ if quality_gate_ok and (updates or force):
             total_call_put = total_calls / total_puts if total_puts else None
             body.append(
                 f"• Cboe 전체 옵션: 콜 {total_calls:,} / 풋 {total_puts:,} → P/C {total_pc:.2f} "
-                f"({m.get('total_time_ct') or '최신'} CT)"
+                f"({m.get('total_time_ct') or '일별 마감'})"
             )
             body.append(
                 f"  → 콜이 풋의 {total_call_put:.2f}배 · 콜 비중 {total_call_share:.1f}%"
@@ -1263,6 +1298,9 @@ if quality_gate_ok and (updates or force):
                 "→ 옵션 방향과 선물 포지션이 같은 쪽인지까지 확인해야 함"
             )
 
+        body.append(
+            "• 기준: Cboe의 날짜별 Daily Market Statistics 마감 통계만 사용. 장중 누적값은 알림에 사용하지 않음"
+        )
         body.append(
             "• 주의: 풋/콜은 거래량 비율이라 콜·풋의 실제 매수/매도 방향을 구분하지 않음. "
             "콜 거래가 많아도 콜 매도가 섞일 수 있어 단독 강세·약세 확정 신호로 쓰지 않음"
