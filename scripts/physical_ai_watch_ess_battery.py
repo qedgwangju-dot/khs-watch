@@ -628,7 +628,8 @@ def _is_ess_battery(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
-    if _ev46_stage(text):
+    ev46_stage = _ev46_stage(text)
+    if ev46_stage and ev46_stage != 'background':
         return 'ev_46_series'
     if _catl_debrecen_stage(text):
         return 'global_battery_capacity'
