@@ -7040,6 +7040,9 @@ def semantic_event_theme(alert: dict) -> str:
 def alert_dedup_key(alert: dict) -> tuple[str, str]:
     if alert.get("iran_hormuz_escalation"):
         return ("iran_hormuz_military_escalation", str(alert.get("published") or "")[:10])
+    macro_theme = telegram.macro_release_theme(alert)
+    if macro_theme:
+        return (macro_theme, "event")
     market_theme = telegram.korean_market_move_theme(alert)
     if market_theme:
         return (market_theme, "event")

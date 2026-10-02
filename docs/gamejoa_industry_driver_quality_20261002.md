@@ -68,7 +68,7 @@ reference digest. Primary-source availability and verification remain separate.
   minimum contract amount is introduced.
 - Candidate classification and final selection both exercise all 24 classes.
 - Additional tests preserve tentative research/licensing/financing stages,
-  reject vague thematic promotion and unverified bodies, and confirm the four
+  reject vague thematic promotion and unverified bodies, and confirm the six
   discovery queries are in the active collector.
 - Telegram keeps the previously agreed aligned title, complete compact core
   and clickable source. Status labels and removed commentary remain absent.
@@ -128,7 +128,30 @@ Materiality version 6 adds source-specific turnaround damage/delay evidence,
 thermal-protection validation and cryogenic propellant-storage validation.
 Six industry discovery queries replace the previous four. Existing contracts
 continue to handle qualified space-material supply; no named-company list is
-used. Fifty local materiality tests passed, including all 24 event classes,
+used. Fifty initial materiality tests passed, including all 24 event classes,
 research-versus-operational axes, English source evidence, tentative-stage
-preservation and rejection of capability-only beneficiary claims. This patch
-still requires the complete regression suite and a fresh GitHub dry run.
+preservation and rejection of capability-only beneficiary claims.
+
+Run `36948797948` completed successfully at `2026-10-02T01:04:31Z` with all
+50 materiality tests and the generated-report guard. All 11 local regression
+scripts also passed. The saved `10:01:22 KST` artifact contained 7 verified
+article bodies, materiality version 6, correct original-link anchors and
+complete cores. Collection had 160 attempts, 144 verified bodies, 16 failures,
+311 deferred rows and four source failures. Actual Telegram send was skipped.
+
+Manual rereading still exposed a duplicated domestic CPI release, private
+football-club ownership, municipal tree-planting publicity and cumulative
+consumer-product sales PR. A green technical guard was not accepted as proof
+of the requested selection quality. Version 7 excludes those publicity and
+nonmarket transactions while preserving actual enterprise earnings, supply
+contracts and listed-club transactions. A verified macro core can resolve an
+omitted country or counterfactual second headline rate; actual period, value,
+core/headline and comparison bases remain distinct from forecasts/revisions.
+That macro key is shared by final selection and delivered-state checks.
+
+Four persistent regression tests bring the total to 54. Read-only rechecking
+of the actual 7-body artifact confirmed all three nonmarket/publicity
+exclusions, zero changed cores and zero focus mismatches. Synthetic final
+selection and delivered-key checks confirm the two CPI editions merge, while
+forecasts and revised values/periods remain distinct. The amended patch must
+still pass the complete suite and a new production-environment dry run.

@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 6
+VERSION = 7
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should)\b", re.I,
@@ -38,6 +38,15 @@ RETAIL_PRODUCT_METRIC = re.compile(
     r"쇼핑|플래그십\s*스토어|sales per store|kids.{0,20}sales", re.I,
 )
 ROUTINE_PERSONNEL = re.compile(r"사장단\s*인사|임원\s*인사|이사회\s*의장.{0,15}내정", re.I)
+SPORTS_OWNERSHIP = re.compile(r"구단주|축구\s*구단|야구\s*구단|프로\s*(?:축구|야구)|football club|soccer club|club owner", re.I)
+LOCAL_CEREMONY = re.compile(r"나무\s*심기|식목|선포식|기념식|지역\s*축제|tree planting|proclamation ceremony", re.I)
+PUBLIC_MARKET_BUSINESS_LINK = re.compile(
+    r"상장사|상장\s*기업|상장\s*구단|증시\s*상장|코스피|코스닥|나스닥|뉴욕증권거래소|"
+    r"영업이익|순이익|가이던스|연결\s*실적|공급\s*계약|납품\s*계약|수주|발주|"
+    r"listed company|public company|listed club|nasdaq|nyse|operating profit|guidance|supply contract", re.I,
+)
+CUMULATIVE_PRODUCT_PR = re.compile(r"누적\s*(?:매출|판매)|cumulative (?:sales|revenue)", re.I)
+RETAIL_PRODUCT_CONTEXT = re.compile(r"세탁|화장품|스킨케어|신발|커피|패션|생활용품|laundry|cosmetics|skincare|footwear|coffee", re.I)
 ENTERPRISE_CHANGE = re.compile(
     r"영업이익|순이익|가이던스|실적|분기|연결|마진|현금흐름|수주|공급계약|납품계약|공장|양산|인수|합병|규제|관세|주주환원|"
     r"상장|기업공개|자사주|배당|지분|주식\s*(?:매수|매각)|자금조달|유상증자|\bipo\b|"
@@ -257,6 +266,18 @@ def assess(title: str, body: str) -> dict:
         return result
     sentences = [part.strip() for part in re.split(r"(?<!\d)[.!?。](?!\d)\s*|[\r\n]+", body) if part.strip()]
     lead = " ".join(sentences[:3])
+    headline_lead = f"{title} {lead}"
+    if SPORTS_OWNERSHIP.search(headline_lead) and not PUBLIC_MARKET_BUSINESS_LINK.search(headline_lead):
+        result.update(disposition="exclude", priority=0, reason="sports_ownership_without_market_business_link")
+        return result
+    if LOCAL_CEREMONY.search(title) and re.search(
+        r"(?:[가-힣]{2,8}(?:시|구|군)\s*[ ('’]|구청|지자체|지방자치단체)|municipality|city council", headline_lead, re.I,
+    ) and not PUBLIC_MARKET_BUSINESS_LINK.search(headline_lead):
+        result.update(disposition="exclude", priority=0, reason="local_ceremony_without_market_business_change")
+        return result
+    if CUMULATIVE_PRODUCT_PR.search(title) and RETAIL_PRODUCT_CONTEXT.search(headline_lead) and not PUBLIC_MARKET_BUSINESS_LINK.search(headline_lead):
+        result.update(disposition="exclude", priority=0, reason="cumulative_consumer_product_publicity")
+        return result
     if TACTICAL_HEADLINE.search(title) and not ECONOMIC_GEOPOLITICS.search(f"{title} {lead}"):
         result.update(disposition="exclude", priority=0, reason="tactical_military_without_economic_transmission")
         return result

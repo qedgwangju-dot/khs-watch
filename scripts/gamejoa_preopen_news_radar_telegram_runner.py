@@ -127,9 +127,21 @@ def macro_release_theme(alert: dict) -> str:
     month_match = re.search(r"(?<!\d)(1[0-2]|[1-9])월", title)
     published = parse_seen_time(str(alert.get("published") or ""))
     rates = {float(value) for value in re.findall(r"([+-]?\d+(?:\.\d+)?)\s*%", title)}
-    if not (indicator and country and month_match and published and len(rates) == 1):
-        return ""
     if re.search(r"(?:상승|하락|증가|감소)\s*(?:예상|전망)", title):
+        return ""
+    if not (indicator and country and month_match and published and len(rates) == 1):
+        # A headline can omit Korea or quote a counterfactual second rate.
+        # Only a verified released-value core may resolve that ambiguity.
+        core = str(alert.get("telegram_core_fact") or "")
+        if alert.get("body_verified") and core and re.search(
+            r"발표|기록|집계|상승했다|하락했다|rose|fell|reported", core, re.I,
+        ) and not re.search(r"예상|전망|내외|것으로|forecast|expect", core, re.I):
+            core_country = country
+            if not core_country and re.search(r"국가데이터처|통계청|한국은행", core):
+                core_country = "korea"
+            if core_country and not re.search(r"부산|대구|인천|광주|대전|울산|세종|충북|충남|전북|전남|경북|경남|제주", title):
+                resolved = {"source_title": f"{core_country} {core}", "published": alert.get("published")}
+                return macro_release_theme(resolved)
         return ""
     if not any(term in lowered for term in ("상승", "하락", "발표", "기록", "집계", "↑", "↓", "rose", "fell")):
         return ""

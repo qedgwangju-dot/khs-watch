@@ -96,6 +96,56 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_actual_run_nonmarket_ownership_ceremony_and_product_pr_are_excluded(self):
+        cases = (
+            ("메시, 스페인 2부 엘덴세 지분 전량 인수…두 번째 구단주 행보", "메시는 투자그룹이 보유한 엘덴세 지분 전량을 인수했다. 축구 구단주가 됐다."),
+            ("마포구 '다시 500만그루 나무심기' 본격화", "서울 마포구는 나무 심기 선포식을 연다고 밝혔다. 식재 공간이 부족하면 이동형 화분을 사용한다."),
+            ("생활용품 기업, 출시 2년 만에 누적 매출 600억원 돌파", "기업은 세탁 제품의 누적 매출이 600억원을 돌파했다고 밝혔다. 올해 8월 매출은 8.6% 증가했다."),
+        )
+        for title, body in cases:
+            item = alert(title, body)
+            self.assertEqual(materiality.assess(title, body)["disposition"], "exclude")
+            with patch.object(radar.base, "kst_now", return_value=NOW):
+                self.assertEqual(radar.quality_display_alerts([item], 7), [])
+
+    def test_scoped_exclusions_preserve_actual_earnings_and_listed_club_transactions(self):
+        cases = (
+            ("상장 축구 구단 지분 인수 결정", "상장 구단의 최대주주는 지분 25% 인수를 결정했다."),
+            ("생활용품 기업 누적 매출 증가…영업이익 가이던스 상향", "세탁 제품 기업은 영업이익 가이던스를 20% 상향했다고 발표했다."),
+            ("부산시 전력장비 공급계약 체결", "부산시는 전력장비 100억원 공급계약을 기업과 체결했다."),
+        )
+        for title, body in cases:
+            self.assertEqual(materiality.assess(title, body)["disposition"], "keep")
+
+    def test_domestic_cpi_editions_use_verified_actual_not_counterfactual_rate(self):
+        core = "국가데이터처가 발표한 2026년 9월 소비자물가지수는 전년 동월보다 2.9% 상승했다."
+        titles = (
+            "9월 물가 2.9%↑…정부 최고가격제 없었다면 3.5%(종합)",
+            "9월 물가 2.9%↑…통신료 기저효과 종료(2보)",
+        )
+        items = [alert(title, core) for title in titles]
+        for index, item in enumerate(items):
+            item.update(telegram_core_fact=core, published="2026-10-02T09:33:00+09:00", link=f"https://www.newsis.com/view/cpi-edition-{index}")
+        themes = [production.contract.telegram.macro_release_theme(item) for item in items]
+        self.assertTrue(themes[0])
+        self.assertEqual(themes[0], themes[1])
+        self.assertTrue(set(production.contract.telegram.alert_seen_keys(items[0])) & set(production.contract.telegram.alert_seen_keys(items[1])))
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            selected = radar.quality_display_alerts(items, 7)
+        self.assertEqual(len(selected), 1)
+
+    def test_macro_core_fallback_keeps_forecasts_revisions_and_periods_distinct(self):
+        telegram = production.contract.telegram
+        base_item = {**alert("9월 물가 2.9%↑(종합)", "국가데이터처가 발표한 9월 소비자물가는 2.9% 상승했다."),
+                     "published": "2026-10-02T09:33:00+09:00", "telegram_core_fact": "국가데이터처가 발표한 9월 소비자물가는 2.9% 상승했다."}
+        base_key = telegram.macro_release_theme(base_item)
+        self.assertTrue(base_key)
+        for core in ("국가데이터처가 발표한 9월 소비자물가는 3.0% 상승했다.",
+                     "국가데이터처가 발표한 8월 소비자물가는 2.9% 상승했다."):
+            self.assertNotEqual(telegram.macro_release_theme({**base_item, "telegram_core_fact": core}), base_key)
+        self.assertEqual(telegram.macro_release_theme({**base_item, "source_title": "10월 물가 3% 상승 예상", "telegram_core_fact": "한국은행은 10월 소비자물가가 3% 내외로 상승할 것으로 예상했다."}), "")
+        self.assertEqual(telegram.macro_release_theme({**base_item, "body_verified": False}), "")
+
     def test_retail_fx_benefits_are_not_macro_rate_changes(self):
         title = "백화점, 中 국경절 관광객 공략…K패션 행사"
         body = "백화점이 중국 국경절 연휴 관광객 공략에 나선다. 300만원 이상 결제하면 10만원을 즉시 할인하고 환율 우대 혜택을 적용한다."
