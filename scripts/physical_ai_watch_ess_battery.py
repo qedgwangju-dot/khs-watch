@@ -51,6 +51,11 @@ base.QUERIES.extend([
     '(미국 OR "United States" OR "U.S.") (ESS OR "energy storage" OR BESS) (FEOC OR "tax credit" OR 세액공제 OR tariff OR 관세 OR interconnection OR 계통접속 OR "fire code" OR 화재규정 OR permitting OR 인허가) (final rule OR rule change OR enacted OR effective OR 승인 OR 확정 OR 시행 OR 변경)',
     '(CATL OR 宁德时代) (Debrecen OR 德布勒森 OR 데브레첸 OR 헝가리 OR Hungary) (cell OR 电芯 OR 배터리셀 OR battery cell) (trial production OR 试生产 OR series production OR mass production OR 正式量产 OR 양산 OR 시험생산 OR 출하 OR shipment OR utilization OR 가동률 OR 100GWh OR 100 GWh OR 중단 OR shutdown OR permit OR 许可)',
     '(이수스페셜티케미컬 OR "ISU Specialty Chemical") (황화리튬 OR Li2S OR "lithium sulfide") (상업생산 OR commercial production OR 양산 OR 생산 OR 가동 OR 납품 OR shipment OR 공급계약 OR contract OR 고객 OR sample OR 샘플 OR 150톤 OR 150t OR 500톤 OR 500t OR 증설 OR 확대 OR 지연 OR 연기 OR 황화수소 OR H2S OR 안전 OR 사고 OR IR OR 기업설명회 OR "Analyst Day")',
+    '("46시리즈" OR "46 시리즈" OR "46-series" OR "46 series" OR 4680 OR 4695 OR 46100 OR 46120) (LG에너지솔루션 OR "LG Energy Solution" OR 삼성SDI OR "Samsung SDI" OR Tesla OR Rivian OR BMW OR Mercedes-Benz OR Mercedes OR 벤츠 OR Chery OR 체리 OR Volvo OR 볼보 OR indiGOtech) (수주 OR 계약 OR 공급 OR GWh OR 고객 OR 양산 OR SOP OR 생산능력 OR capacity OR 공장 OR line OR 라인 OR 장비 OR equipment OR 모듈 OR BMA OR 지연 OR 취소)',
+    '(LG에너지솔루션 OR "LG Energy Solution") ("46시리즈" OR "46-series" OR 4680 OR 4695 OR 46100 OR 46120) (440GWh OR 100GWh OR 수주잔고 OR backlog OR 신규수주 OR new orders OR 퀸크릭 OR Queen Creek OR 애리조나 OR Arizona OR 폴란드 OR Poland OR 브로츠와프 OR Wroclaw OR 오창 OR Ochang) (양산 OR SOP OR equipment OR 장비 OR line OR 라인 OR GWh OR yield OR 수율 OR utilization OR 가동률)',
+    '(삼성SDI OR "Samsung SDI") ("46시리즈" OR "46-series" OR 4680 OR 4695 OR 46100 OR 46120) (EV OR 전기차 OR 고객 OR customer OR supply OR 공급 OR order OR 수주 OR production OR 양산 OR capacity OR GWh OR BMW OR KGM)',
+    '(Volvo OR 볼보 OR Mercedes-Benz OR Mercedes OR 벤츠 OR BMW OR Rivian OR 리비안 OR Chery OR 체리 OR Tesla OR 테슬라) ("46 mm" OR 46mm OR "46시리즈" OR "46-series" OR 4680 OR 4695 OR 46100 OR 46120) (confirm OR confirmed OR contract OR supplier OR supply OR award OR 채택 OR 확정 OR 계약 OR 공급사 OR 수주)',
+    '(에코프로비엠 OR "EcoPro BM" OR 케이엔에스 OR KNS OR 엠오티 OR MOT OR "Wonik PNE" OR 원익피앤이) ("46시리즈" OR "46-series" OR 4680 OR 4695 OR 46100 OR 46120) (수주 OR 공급 OR contract OR order OR 장비 OR equipment OR 양극재 OR cathode OR 고객 OR customer)',
 ])
 
 base.TRUSTED.update({
@@ -72,6 +77,9 @@ base.OFFICIAL_OR_PRIMARY.update({
     'CATL', '宁德时代', 'CATL Debrecen',
     '이수스페셜티케미컬', 'ISU Specialty Chemical', '이수그룹',
     'SK온', 'SK On', '엘앤에프', 'L&F', 'DART', '금융감독원 전자공시시스템',
+    'LG에너지솔루션', 'LG Energy Solution', '삼성SDI', 'Samsung SDI',
+    'BMW Group', 'BMW', 'Rivian', 'Tesla', 'Mercedes-Benz', 'Chery Automobile',
+    'Chery', 'indiGOtech', '에코프로비엠', 'EcoPro BM',
 })
 
 _orig_topic_group = base.topic_group
@@ -81,6 +89,7 @@ _orig_meaning = base.meaning
 _orig_risk = base.risk
 _orig_verification = base.verification
 _orig_key = base.key
+_orig_select_diverse = base.select_diverse
 _orig_same_event = ext._same_event
 
 ESS_RE = re.compile(r'\bESS\b|\bBESS\b|energy storage|battery storage|에너지저장|에너지 저장|에너지저장장치|储能', re.I)
@@ -93,6 +102,35 @@ MLCC_CAPACITY = re.compile(r'증설|생산\s*능력|capacity|가동률|utilizati
 MLCC_RELIEF = re.compile(r'이중\s*조달|dual\s*sourcing|재고\s*조정|inventory\s*correction|공급\s*정상화|normalization|가격\s*하락|price\s*cut|lead\s*time.*shorten|납기.*단축', re.I)
 MLCC_RELIABILITY = re.compile(r'고전압|high\s*voltage|고신뢰성|high\s*reliability|고온|high\s*temperature|검사|test|수율|yield|절연|insulation', re.I)
 HUMANOID_RE = re.compile(r'휴머노이드|humanoid|로봇용 배터리|robot battery|robotics battery', re.I)
+
+EV46_RE = re.compile(r'46\s*시리즈|46시리즈|46[-\s]*series|46\s*mm|46mm|\b4680\b|\b4695\b|\b46100\b|\b46120\b|46파이', re.I)
+EV46_CELLMAKER = re.compile(r'LG에너지솔루션|LG\s*Energy\s*Solution|삼성SDI|Samsung\s*SDI|Tesla|테슬라|SK온|SK\s*On', re.I)
+EV46_OEM = re.compile(r'Rivian|리비안|BMW|Mercedes[-\s]*Benz|Mercedes|벤츠|Chery|체리|Volvo|볼보|indiGOtech|인디고테크|Tesla|테슬라|KGM|KG\s*Mobility', re.I)
+EV46_GWH = re.compile(r'\d[\d,.]*\s*GWh', re.I)
+EV46_CONTRACT = re.compile(r'공급\s*계약|계약\s*체결|수주|본계약|supply\s*(?:agreement|contract)|contract|purchase\s*order|award|order', re.I)
+EV46_MOU = re.compile(r'\bMOU\b|업무\s*협약|양해\s*각서|nonbinding|non[-\s]*binding|explore|협의', re.I)
+EV46_FORMAT_CONFIRM = re.compile(r'(?:adopt|adopted|confirmed|confirm|selected|채택|확정|선정).{0,80}(?:4680|4695|46100|46120|46\s*mm|46mm|46시리즈|46[-\s]*series)|(?:4680|4695|46100|46120|46\s*mm|46mm|46시리즈|46[-\s]*series).{0,80}(?:adopt|adopted|confirmed|confirm|selected|채택|확정|선정)', re.I)
+EV46_BACKLOG = re.compile(r'수주\s*잔고|수주잔고|order\s*backlog|backlog|신규\s*수주|new\s*orders?', re.I)
+EV46_BASELINE_BACKLOG = re.compile(r'(?:440\s*GWh|100\s*GWh).{0,100}(?:수주|order|backlog)|(?:수주|order|backlog).{0,100}(?:440\s*GWh|100\s*GWh)', re.I)
+EV46_RIVIAN_BASE = re.compile(r'(?:Rivian|리비안).{0,140}(?:4695).{0,140}(?:67\s*GWh|5\s*년|five\s*years?)|(?:67\s*GWh).{0,180}(?:Rivian|리비안)', re.I)
+EV46_CHERY_BASE = re.compile(r'(?:Chery|체리).{0,140}(?:46[-\s]*series|46시리즈).{0,140}(?:8\s*GWh|6\s*년|six\s*years?)|(?:8\s*GWh).{0,180}(?:Chery|체리)', re.I)
+EV46_BMW_BASE = re.compile(r'(?:BMW).{0,180}(?:46\s*mm|46mm).{0,180}(?:95\s*mm|120\s*mm)|(?:95\s*mm|120\s*mm).{0,180}(?:BMW).{0,180}(?:46\s*mm|46mm)', re.I)
+EV46_TESLA_BASE = re.compile(r'(?:Tesla|테슬라).{0,180}(?:4680).{0,180}(?:40\s*GWh|production|양산)|(?:40\s*GWh).{0,180}(?:4680)', re.I)
+EV46_SDI_BASE = re.compile(r'(?:Samsung\s*SDI|삼성SDI).{0,180}(?:4695).{0,180}(?:micro\s*mobility|마이크로\s*모빌리티|first\s*shipment|초도\s*공급|양산)|(?:4695).{0,180}(?:삼성SDI|Samsung\s*SDI)', re.I)
+EV46_MERCEDES_BASE = re.compile(r'(?:Mercedes[-\s]*Benz|Mercedes|벤츠).{0,180}(?:46100).{0,180}(?:2028|Poland|폴란드|Wroclaw|브로츠와프)|(?:46100).{0,180}(?:Mercedes[-\s]*Benz|Mercedes|벤츠)', re.I)
+EV46_INDIGO_BASE = re.compile(r'(?:indiGOtech|인디고테크).{0,180}(?:46[-\s]*series|46시리즈).{0,180}(?:2027|2030|MOU|협의|nonbinding)|(?:46[-\s]*series|46시리즈).{0,180}(?:indiGOtech|인디고테크)', re.I)
+EV46_ARIZONA_PLAN = re.compile(r'(?:Queen\s*Creek|퀸크릭|Arizona|애리조나).{0,180}(?:4680|4695|46100|46120|46[-\s]*series|46시리즈).{0,160}(?:2026|year[-\s]*end|연말|plan|예정|계획)', re.I)
+EV46_POLAND_PLAN = re.compile(r'(?:Poland|폴란드|Wroclaw|브로츠와프|Ochang|오창).{0,180}(?:46100).{0,160}(?:line|라인|build|구축|convert|개조|2027|2028)', re.I)
+EV46_EQUIPMENT = re.compile(r'장비\s*(?:발주|반입|설치)|설비\s*(?:발주|반입|설치)|equipment\s*(?:order|move[-\s]*in|install)|tooling\s*(?:order|install)|생산라인\s*(?:설치|구축)|line\s*(?:installation|build[-\s]*out)', re.I)
+EV46_CONSTRUCTION = re.compile(r'착공|공사\s*(?:시작|개시)|groundbreak|construction\s*(?:start|began|underway)|인허가\s*(?:승인|완료)|permit\s*(?:approved|issued)', re.I)
+EV46_SOP = re.compile(r'양산\s*(?:개시|시작|돌입)|상업\s*생산\s*(?:개시|시작)|mass\s*production\s*(?:started|began|commenced)|commercial\s*production\s*(?:started|began)|SOP\s*(?:started|began|개시|시작)', re.I)
+EV46_SHIPMENT = re.compile(r'첫\s*출하|초도\s*출하|납품\s*(?:시작|개시)|first\s*shipment|shipments?\s*(?:started|began)|delivery\s*(?:started|began)', re.I)
+EV46_RAMP = re.compile(r'(?:가동률|수율|실제\s*생산량|월\s*생산량|출하량|utilization|yield|actual\s*output|monthly\s*output).{0,80}\d[\d,.]*\s*(?:%|GWh|MWh|개|대)|\d[\d,.]*\s*(?:%|GWh|MWh).{0,80}(?:가동률|수율|실제\s*생산량|utilization|yield|output)', re.I)
+EV46_BMA = re.compile(r'BMA|battery\s*module\s*assembly|배터리\s*모듈\s*어셈블리|모듈\s*조립|module\s*assembly', re.I)
+EV46_BMA_EXEC = re.compile(r'(?:BMA|battery\s*module\s*assembly|배터리\s*모듈\s*어셈블리|모듈\s*조립).{0,120}(?:투자\s*확정|investment\s*(?:approved|confirmed)|장비\s*발주|equipment\s*order|설치|install|양산|production)|(?:투자\s*확정|장비\s*발주|equipment\s*order|install|양산).{0,120}(?:BMA|battery\s*module\s*assembly|배터리\s*모듈\s*어셈블리|모듈\s*조립)', re.I)
+EV46_COMPONENT = re.compile(r'에코프로비엠|EcoPro\s*BM|케이엔에스|\bKNS\b|엠오티|\bMOT\b|원익피앤이|Wonik\s*PNE|양극재|cathode|리벳|rivet|용접|weld|검사\s*장비|inspection\s*equipment', re.I)
+EV46_COMPONENT_ORDER = re.compile(r'수주|공급\s*계약|계약|order|contract|award|납품|shipment|장비\s*발주|equipment\s*order', re.I)
+EV46_REVERSE = re.compile(r'(?:46[-\s]*series|46시리즈|4680|4695|46100|46120).{0,140}(?:cancel|terminate|delay|postpone|cut|reduce|중단|취소|해지|지연|연기|축소|감산)|(?:cancel|terminate|delay|postpone|중단|취소|해지|지연|연기|축소).{0,140}(?:46[-\s]*series|46시리즈|4680|4695|46100|46120)', re.I)
 SDI_RE = re.compile(r'삼성SDI|Samsung\s*SDI', re.I)
 SDI_STORAGE_RE = re.compile(r'\bESS\b|\bBESS\b|energy\s*storage|에너지저장|\bUPS\b|\bBBU\b|무정전전원장치|배터리백업유닛', re.I)
 SDI_ESS_MIX_MARGIN = re.compile(r'매출\s*비중|revenue\s*mix|sales\s*mix|영업이익률|operating\s*margin|margin|AMPC|관세\s*환급|tariff\s*refund|본업\s*(?:흑자|이익)', re.I)
