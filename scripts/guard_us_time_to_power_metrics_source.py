@@ -1528,21 +1528,17 @@ if semi_scope_old not in s:
     raise SystemExit("800V SiC baseline scope insertion point not found")
 s = s.replace(semi_scope_old, semi_scope_new, 1)
 
-semi_status_old = '''    f"- 최대 부하감축: **{flexible_load_metrics.get('emerald_max_reduction_pct')}%**\n"
-    f"- 신규 의미자료: **{len(new_items)}건**\n"'''
-semi_status_new = '''    f"- 최대 부하감축: **{flexible_load_metrics.get('emerald_max_reduction_pct')}%**\n"
-    f"- NVIDIA 800V DC 본격 양산 연도: **{int(power_semiconductor_metrics.get('nvidia_full_scale_year', 0))}**\n"
-    f"- NVIDIA 800V 행 단위 전력센터: **{power_semiconductor_metrics.get('nvidia_row_power_center_mw')} MW**\n"
-    f"- DIGITIMES 6인치 SiC 가격 반등 예상: **{int(power_semiconductor_metrics.get('digitimes_sic_6in_rebound_year', 0))}년**\n"
-    f"- 신규 의미자료: **{len(new_items)}건**\n"'''
-if semi_status_old not in s:
+semi_status_marker = '''    f"- 신규 의미자료: **{len(new_items)}건**'''
+semi_status_prefix = '''    f"- NVIDIA 800V DC 본격 양산 연도: **{int(power_semiconductor_metrics.get('nvidia_full_scale_year', 0))}**\\n"
+    f"- NVIDIA 800V 행 단위 전력센터: **{power_semiconductor_metrics.get('nvidia_row_power_center_mw')} MW**\\n"
+    f"- DIGITIMES 6인치 SiC 가격 반등 예상: **{int(power_semiconductor_metrics.get('digitimes_sic_6in_rebound_year', 0))}년**\\n"
+'''
+if semi_status_marker not in s:
     raise SystemExit("800V SiC status insertion point not found")
-s = s.replace(semi_status_old, semi_status_new, 1)
+s = s.replace(semi_status_marker, semi_status_prefix + semi_status_marker, 1)
 
-semi_print_old = '''    f"gia={miso_metrics.get('gia_gw')}GW new={len(new_items)} changes={len(metric_changes)} "
-    f"flex_changes={len(flexible_load_changes)} alert={should_alert}"'''
-semi_print_new = '''    f"gia={miso_metrics.get('gia_gw')}GW new={len(new_items)} changes={len(metric_changes)} "
-    f"flex_changes={len(flexible_load_changes)} power_semi_changes={len(power_semiconductor_changes)} "
+semi_print_old = '''f"flex_changes={len(flexible_load_changes)} alert={should_alert}"'''
+semi_print_new = '''f"flex_changes={len(flexible_load_changes)} power_semi_changes={len(power_semiconductor_changes)} "
     f"alert={should_alert}"'''
 if semi_print_old not in s:
     raise SystemExit("800V SiC print insertion point not found")
