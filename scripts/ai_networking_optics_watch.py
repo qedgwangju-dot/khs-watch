@@ -145,12 +145,12 @@ COMPANIES = {
     "Lightmatter": {
         "ticker": "비상장",
         "aliases": ["Lightmatter", "Passage"],
-        "query": 'Lightmatter (Passage OR photonic OR optical OR CPO OR NPO OR "NVLink Fusion") (sampling OR customer OR deployment OR production OR shipment OR validation OR benchmark OR partnership)',
+        "query": 'Lightmatter (Passage OR Guide OR photonic OR optical OR CPO OR NPO OR CPX OR "NVLink Fusion") (sampling OR customer OR deployment OR production OR shipment OR validation OR benchmark OR partnership OR funding OR financing OR manufacturing)',
     },
     "Ayar Labs": {
         "ticker": "비상장",
         "aliases": ["Ayar Labs", "TeraPHY", "SuperNova"],
-        "query": '"Ayar Labs" (TeraPHY OR SuperNova OR optical OR CPO OR "NVLink Fusion" OR "extended memory") (customer OR deployment OR production OR shipment OR validation OR qualification OR sampling OR partnership)',
+        "query": '"Ayar Labs" (TeraPHY OR SuperNova OR optical OR CPO OR "NVLink Fusion" OR "extended memory") (customer OR deployment OR production OR shipment OR validation OR qualification OR sampling OR partnership OR funding OR financing OR "high-volume manufacturing" OR Wiwynn)',
     },
     "Xscape Photonics": {
         "ticker": "비상장",
@@ -661,6 +661,8 @@ def signal_score(title: str, source: str) -> int:
 
 
 def stage_for(title: str) -> str:
+    if re.search(r"funding|financing|raises?|series\s+[abc]|strategic investment", title, re.I):
+        return "투자·개발자금"
     if re.search(r"customer delivery|customer deployment|integrated inference engines?", title, re.I):
         return "고객 샘플·배치"
     if re.search(r"silicon validation|silicon demonstrates?|tape[- ]?out|benchmark|measured|prototype", title, re.I):
@@ -716,6 +718,8 @@ def stage_for(title: str) -> str:
 
 def category_for(title: str, company: str) -> str:
     if company == "Volantis":
+        if re.search(r"funding|financing|raises?|series\s+[abc]", title, re.I):
+            return "광메모리 투자·개발자금"
         if re.search(r"customer sampling|customer delivery|customer deployment|integrated inference engines?", title, re.I):
             return "광메모리 고객검증·상용화"
         if re.search(r"silicon|tape[- ]?out|benchmark|measured|prototype|240\s*TB/s|10\s*TB|1\s*pJ/bit|tokens? per second|tok/s", title, re.I):
@@ -724,9 +728,15 @@ def category_for(title: str, company: str) -> str:
             return "VCSEL 광메모리 공급망"
         return "광메모리·추론 아키텍처"
     if company in {"Lightmatter", "Ayar Labs", "Xscape Photonics"}:
+        if re.search(r"funding|financing|raises?|series\s+[abc]|strategic investment", title, re.I) and re.search(r"production|manufacturing|capacity|deployment|commercial", title, re.I):
+            return "광컴퓨팅 투자·양산확대"
         if re.search(r"customer|deployment|production|shipment|sampling|qualification|validation", title, re.I):
             return "광컴퓨팅 상용화·고객검증"
         return "광컴퓨팅·스케일업 인터커넥트"
+    if company == "Marvell" and re.search(r"Celestial AI|Photonic Fabric", title, re.I):
+        if re.search(r"revenue|run[- ]rate|ramp|customer|production|shipment|milestone|fiscal 2028|FY28", title, re.I):
+            return "Photonic Fabric 매출 램프"
+        return "Photonic Fabric 광스케일업"
     if company == "US Optical Policy":
         if re.search(r"senate|congress|bill|legislation|national security systems?", title, re.I):
             return "미국 광트랜시버 규제·법안"
@@ -794,11 +804,15 @@ def category_for(title: str, company: str) -> str:
 
 def meaning_for(category: str) -> str:
     mapping = {
+        "광메모리 투자·개발자금": "대규모 자금조달은 광메모리 아키텍처의 개발·인력·테이프아웃·고객 샘플 비용을 감당할 수 있게 하지만, 그 자체가 성능 검증이나 양산 수주를 의미하지는 않습니다.",
         "광메모리·추론 아키텍처": "광학을 랙 간 네트워크가 아니라 가속기와 메모리 사이까지 끌어오면 HBM 용량·대역폭의 물리적 한계를 우회할 수 있어 추론 시스템 구조 자체를 바꾸는 신호입니다.",
         "광메모리 고객검증·상용화": "설계 목표를 넘어 실제 고객 샘플·통합 추론엔진·배치 일정이 확인되면 광메모리 아키텍처가 연구단계에서 매출 가능 단계로 넘어가는 핵심 검증 신호입니다.",
         "광메모리 성능·검증": "토큰 처리량·메모리 대역폭·용량·비트당 에너지가 실제 실리콘 또는 독립 벤치마크로 확인되면 광메모리의 경제성이 검증되는 신호입니다.",
         "VCSEL 광메모리 공급망": "볼란티스처럼 InP 외부레이저 대신 GaAs 기반 micro-VCSEL을 쓰는 구조가 양산되면 VCSEL 에피·레이저·패키징 공급망에 새로운 AI 매출 경로가 열릴 수 있습니다.",
+        "광컴퓨팅 투자·양산확대": "자금조달이 고용 확대가 아니라 실제 고용량 생산·테스트·패키징·고객 배치 능력 확장에 쓰이면 광인터커넥트가 연구개발에서 양산 인프라 단계로 이동하는 신호입니다.",
         "광컴퓨팅 상용화·고객검증": "라이트매터·아야르 랩스·엑스케이프 등에서 샘플링·고객검증·생산·배치가 확인되면 광인터커넥트가 기술 시연에서 실제 AI 시스템 매출로 이동하는 신호입니다.",
+        "Photonic Fabric 매출 램프": "마벨이 Celestial AI의 Photonic Fabric에서 실제 고객·출하·매출 램프를 확인하면 비상장 광인터커넥트 기술이 상장사 데이터센터 매출로 전환되는 직접 검증 신호입니다.",
+        "Photonic Fabric 광스케일업": "Celestial AI의 광 I/O를 패키지·시스템·랙까지 확장하는 구조는 전기식 스케일업 인터커넥트의 전력·거리 한계를 낮추는 마벨의 중장기 광연결 축입니다.",
         "광컴퓨팅·스케일업 인터커넥트": "GPU·XPU·메모리 사이 데이터 이동 병목을 광링크로 줄이는 구조가 확산되면 AI 인프라 가치가 연산칩에서 광엔진·레이저·패키징까지 넓어지는 신호입니다.",
         "FCC 광트랜시버 규제": "완제품 국적보다 부품 원산지·가치비중까지 규제가 내려오면 3.2T 세대의 공급사 선정과 레이저·InP·DSP 가치배분이 직접 바뀌는 정책 신호입니다.",
         "미국 광트랜시버 규제·법안": "FCC 상업시장 규제와 연방 국가안보시스템 조달 제한은 범위가 다르므로, 법안 통과·적용대상 확대 여부가 중국 광모듈의 실제 미국 매출 접근성을 바꾸는 신호입니다.",
@@ -838,11 +852,15 @@ def meaning_for(category: str) -> str:
 
 def risk_for(category: str) -> str:
     mapping = {
+        "광메모리 투자·개발자금": "투자금 유치는 기술 검증이 아닙니다. 목표 토큰속도·메모리 용량·비트당 에너지가 실제 실리콘·독립 벤치마크·고객 샘플로 확인되지 않으면 밸류체인 기대만 앞설 수 있습니다.",
         "광메모리·추론 아키텍처": "현재 공개 수치는 대부분 회사의 설계목표이므로 실리콘 존재 여부·메모리 종류·패키징 수율·실제 토큰당 비용이 검증되지 않으면 기대가 매출로 이어지지 않을 수 있습니다.",
         "광메모리 고객검증·상용화": "2027 고객 인도 일정이 지연되거나 고객 실명이 공개되지 않은 채 샘플 단계에 머물면 상용화 시점이 뒤로 밀릴 수 있습니다.",
         "광메모리 성능·검증": "시뮬레이션·설계목표와 실측치를 혼동하면 안 되며, 대형 모델에서의 지연시간·전력·오류율·메모리 일관성 검증이 실패할 수 있습니다.",
         "VCSEL 광메모리 공급망": "micro-VCSEL 수율·열안정성·수명·웨이퍼 공급과 고밀도 패키징 정렬 난도가 병목이 되면 InP 회피 효과가 줄어들 수 있습니다.",
+        "광컴퓨팅 투자·양산확대": "대규모 자금이 있어도 고용량 생산수율·패키징·레이저 수명·테스트 시간이 해결되지 않으면 설비 확장이 매출보다 먼저 비용 부담으로 나타날 수 있습니다.",
         "광컴퓨팅 상용화·고객검증": "고객검증·패키징 수율·레이저 신뢰성·표준화 일정이 늦어지면 대량배치가 지연될 수 있습니다.",
+        "Photonic Fabric 매출 램프": "인수 당시 제시된 매출 시점·연환산 매출 목표가 고객 일정 또는 양산수율 때문에 늦어지면 마벨의 광스케일업 재평가 시점도 함께 밀릴 수 있습니다.",
+        "Photonic Fabric 광스케일업": "스케일업 표준 경쟁, 패키징 수율, 외부 레이저·광엔진 비용이 기대보다 높으면 대량 채택 속도가 늦어질 수 있습니다.",
         "광컴퓨팅·스케일업 인터커넥트": "광링크가 구리 대비 비용·전력·유지보수 우위를 충분히 입증하지 못하거나 표준 경쟁이 길어지면 채택 속도가 늦어질 수 있습니다.",
         "FCC 광트랜시버 규제": "3.2T·65% 같은 시장 시나리오가 최종 규정에서 바뀌거나, 미국 제조요건이 더 엄격해지면 예상 수혜기업과 공급망 구조가 달라질 수 있습니다.",
         "미국 광트랜시버 규제·법안": "연방 국가안보시스템 조달 제한을 전체 상업용 데이터센터 금지로 확대해석하면 실적 민감도를 과대평가할 수 있습니다.",
@@ -1143,7 +1161,7 @@ def main() -> None:
         "initialized": True,
         "dedupe_version": 2,
         "quality_version": 3,
-        "photonic_compute_version": 5,
+        "photonic_compute_version": 6,
         "optical_material_version": 1,
         "cpo_equipment_version": 2,
         "optical_policy_version": 2,
@@ -1176,6 +1194,17 @@ def main() -> None:
         photonic_compute_version = int(state.get("photonic_compute_version") or 0)
         if photonic_compute_version < 5:
             new_items = [item for item in new_items if item.get("company") not in {"Volantis", "Lightmatter", "Ayar Labs", "Xscape Photonics"}]
+        if photonic_compute_version < 6:
+            # Baseline currently-known funding/architecture announcements silently.
+            # Future customer, silicon, production, or revenue-ramp events remain eligible.
+            new_items = [
+                item for item in new_items
+                if item.get("category") not in {
+                    "광메모리 투자·개발자금",
+                    "광컴퓨팅 투자·양산확대",
+                    "Photonic Fabric 광스케일업",
+                }
+            ]
         alert_items = new_items[:8] if initialized else []
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
@@ -1219,7 +1248,7 @@ def main() -> None:
             ])
         lines.extend([
             "<b>감시 기준</b>",
-            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / AAOI 800G·1.6T·3.2T 생산능력·고객·출하 / 볼란티스 A-1 고객샘플·2027 인도·실리콘·벤치마크·광메모리 대역폭·용량·토큰속도 / 라이트매터·아야르 랩스·엑스케이프 광인터커넥트 고객검증·생산·배치 / VCSEL 광메모리 공급망·패키징·수율 / FCC 중국산 광트랜시버 최종규칙·3.2T 적용세대·미국산 콘텐츠 65%·75%·예외·시행일 / 상원·의회 국가안보시스템 광트랜시버 법안 범위 / InP 기판 공급부족·수출허가·증설·가격 / 옵티코어 400G·800G 신규 PO·계약금액·검수·납기변경 / 오이솔루션 1.6T ELSFP·EML 샘플·고객검증·양산 PO / 엔비디아 CPO 실제 배치 / 코히런트 포톤링크 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027년 2분기 가시성·생산능력 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030년 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·수주잔고 / 코닝 광통신·유리기판 신규 AI 매출 경로",
+            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / AAOI 800G·1.6T·3.2T 생산능력·고객·출하 / 볼란티스 8,800만달러급 투자·A-1 고객샘플·2027 인도·실리콘·독립벤치마크·광메모리 대역폭·용량·토큰속도 / 라이트매터·아야르 랩스·엑스케이프 광인터커넥트 자금조달·고용량 생산·고객검증·생산·배치 / 마벨 Celestial AI Photonic Fabric 고객·출하·FY28 매출 램프 / VCSEL 광메모리 공급망·패키징·수율 / FCC 중국산 광트랜시버 최종규칙·3.2T 적용세대·미국산 콘텐츠 65%·75%·예외·시행일 / 상원·의회 국가안보시스템 광트랜시버 법안 범위 / InP 기판 공급부족·수출허가·증설·가격 / 옵티코어 400G·800G 신규 PO·계약금액·검수·납기변경 / 오이솔루션 1.6T ELSFP·EML 샘플·고객검증·양산 PO / 엔비디아 CPO 실제 배치 / 코히런트 포톤링크 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027년 2분기 가시성·생산능력 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030년 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·수주잔고 / 코닝 광통신·유리기판 신규 AI 매출 경로",
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
