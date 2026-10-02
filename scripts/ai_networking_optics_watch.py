@@ -650,7 +650,7 @@ def category_for(title: str, company: str) -> str:
             return "국내 AI 광트랜시버 수주"
         return "국내 AI 광트랜시버"
     if company == "OE Solutions":
-        if re.search(r"1\.6\s*T|ELSFP|EML", title, re.I) and re.search(r"샘플|sample|검증|qualification|certification|고객", title, re.I):
+        if re.search(r"1\.6\s*T|ELSFP|EML", title, re.I) and re.search(r"샘플|samples?|sampling|검증|qualification|certification|고객", title, re.I):
             return "국내 1.6T 고객검증·샘플"
         if re.search(r"수주|공급|order|shipment|양산|출하", title, re.I):
             return "국내 광통신 수주·양산"
