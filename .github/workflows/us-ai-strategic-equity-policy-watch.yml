@@ -1,0 +1,203 @@
+name: US AI Strategic Equity Policy Watch
+
+on:
+  schedule:
+    - cron: "19,49 * * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/us-ai-strategic-equity-policy-watch.yml"
+      - "scripts/us_ai_strategic_equity_watch.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: us-ai-strategic-equity-policy-watch
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.KHS_AI_POLICY_TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.KHS_POLICY_TELEGRAM_CHAT_ID }}
+      EXPECTED_TELEGRAM_BOT_USERNAMES: "khs88798879_bot,hs88798879_bot"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify Telegram route
+        id: telegram
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, pathlib, urllib.request
+          token=(os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id=(os.environ.get("TELEGRAM_CHAT_ID") or "").strip()
+          expected={x.strip().lstrip("@").lower() for x in (os.environ.get("EXPECTED_TELEGRAM_BOT_USERNAMES") or "").split(",") if x.strip()}
+          if not token or not chat_id:
+              raise RuntimeError("Missing Telegram route secrets")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe",timeout=25) as r:
+              payload=json.loads(r.read().decode("utf-8"))
+          user=str((payload.get("result") or {}).get("username") or "")
+          if not payload.get("ok") or not user:
+              raise RuntimeError("Telegram getMe failed")
+          if expected and user.lower() not in expected:
+              raise RuntimeError(f"Unexpected Telegram bot @{user}")
+          out=pathlib.Path(os.environ["GITHUB_OUTPUT"])
+          with out.open("a",encoding="utf-8") as f:
+              f.write(f"bot_username={user}\n")
+              f.write(f"chat_id={chat_id}\n")
+          print(f"verified_bot=@{user}")
+          PY
+
+      - name: Validate strict trigger rules
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile scripts/us_ai_strategic_equity_watch.py
+          PYTHONPATH=scripts python - <<'PY'
+          import us_ai_strategic_equity_watch as w
+
+          assert w._is_material(
+              "Trump says government may take stake in OpenAI and Anthropic",
+              "Officials are considering an equity investment and ownership stake."
+          )
+          assert w._is_material(
+              "Anthropic says it has not discussed a government stake",
+              "No talks have occurred over equity ownership."
+          )
+          assert not w._is_material(
+              "Trump and AI CEOs sign voluntary safety pact",
+              "OpenAI and Anthropic agreed to audits and safety standards."
+          )
+          assert not w._is_material(
+              "OpenAI launches a new model",
+              "No government ownership or equity terms were announced."
+          )
+          print("US AI strategic-equity trigger regression checks passed.")
+          PY
+
+      - name: Run strategic equity watch
+        run: |
+          rm -f out/us_ai_strategic_equity_alert.html                 out/us_ai_strategic_equity_title.txt                 out/us_ai_strategic_equity_pending_state.json                 out/us_ai_strategic_equity_telegram_confirmed.json
+          python scripts/us_ai_strategic_equity_watch.py
+
+      - name: Send Telegram only when material change exists
+        env:
+          RESOLVED_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, pathlib, time, urllib.parse, urllib.request
+          alert=pathlib.Path("out/us_ai_strategic_equity_alert.html")
+          title=pathlib.Path("out/us_ai_strategic_equity_title.txt")
+          if not alert.exists() or not alert.read_text(encoding="utf-8").strip():
+              print("No material alert to send.")
+              raise SystemExit(0)
+
+          token=os.environ["TELEGRAM_BOT_TOKEN"].strip()
+          chat_id=os.environ["RESOLVED_CHAT_ID"].strip()
+          body=alert.read_text(encoding="utf-8").strip()
+          if title.exists() and title.read_text(encoding="utf-8").strip():
+              body=title.read_text(encoding="utf-8").strip()+"\n\n"+body
+
+          chunks=[]
+          while len(body)>3800:
+              cut=body.rfind("\n\n",0,3800)
+              if cut<900: cut=body.rfind("\n",0,3800)
+              if cut<900: cut=3800
+              chunks.append(body[:cut].strip())
+              body=body[cut:].strip()
+          if body: chunks.append(body)
+
+          ids=[]
+          for chunk in chunks:
+              data=urllib.parse.urlencode({
+                  "chat_id":chat_id,
+                  "text":chunk,
+                  "parse_mode":"HTML",
+                  "disable_web_page_preview":"true",
+              }).encode("utf-8")
+              last=None
+              result=None
+              for attempt in range(1,4):
+                  try:
+                      req=urllib.request.Request(
+                          f"https://api.telegram.org/bot{token}/sendMessage",
+                          data=data, method="POST"
+                      )
+                      with urllib.request.urlopen(req,timeout=30) as r:
+                          result=json.loads(r.read().decode("utf-8"))
+                      if result.get("ok"):
+                          break
+                      last=RuntimeError(str(result))
+                  except Exception as exc:
+                      last=exc
+                  if attempt<3:
+                      time.sleep(attempt*3)
+              if not result or not result.get("ok"):
+                  raise RuntimeError(f"Telegram send failed: {last}")
+              mid=(result.get("result") or {}).get("message_id")
+              if mid is None:
+                  raise RuntimeError("Telegram success without message_id")
+              ids.append(mid)
+
+          pathlib.Path("out/us_ai_strategic_equity_telegram_confirmed.json").write_text(
+              json.dumps({"status":"confirmed","messages":ids},ensure_ascii=False,indent=2)+"\n",
+              encoding="utf-8",
+          )
+          print(f"telegram_messages_sent={len(ids)}")
+          PY
+
+      - name: Finalize state after no-alert or confirmed delivery
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f out/us_ai_strategic_equity_pending_state.json
+          if [ -f out/us_ai_strategic_equity_alert.html ] && [ ! -f out/us_ai_strategic_equity_telegram_confirmed.json ]; then
+            echo "Alert existed but Telegram delivery was not confirmed" >&2
+            exit 1
+          fi
+          cp out/us_ai_strategic_equity_pending_state.json data/us_ai_strategic_equity_watch_state.json
+
+      - name: Persist strategic equity state
+        shell: bash
+        run: |
+          set -euo pipefail
+          tmp="$(mktemp -d)"
+          cp data/us_ai_strategic_equity_watch_state.json "$tmp/state.json"
+          git config user.name "us-ai-strategic-equity-watch[bot]"
+          git config user.email "us-ai-strategic-equity-watch[bot]@users.noreply.github.com"
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            mkdir -p data
+            cp "$tmp/state.json" data/us_ai_strategic_equity_watch_state.json
+            git add data/us_ai_strategic_equity_watch_state.json
+            if git diff --cached --quiet; then
+              echo "Strategic equity state unchanged."
+              exit 0
+            fi
+            git commit -m "Update US AI strategic equity watch state"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
