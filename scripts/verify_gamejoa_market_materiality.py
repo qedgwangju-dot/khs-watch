@@ -290,6 +290,54 @@ class MaterialityChecks(unittest.TestCase):
         self.assertEqual(real_listing["disposition"], "keep")
         self.assertGreaterEqual(real_listing["priority"], 2)
 
+    def test_memory_price_research_preserves_ranges_and_forecast_status(self):
+        title = 'KB증권 "4분기 메모리 가격 두자릿수 상승…가속구간 진입"'
+        body = (
+            "KB증권은 4분기 메모리 가격 상승을 분석했다. "
+            '김동원 본부장은 트렌드포스를 인용해 "4분기 범용 D램 가격은 전 분기 대비 10∼15%, '
+            '낸드(NAND) 가격은 15∼20% 추가 상승하며 두 자릿수 상승세를 이어갈 전망"이라고 짚었다.'
+        )
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        for term in ("KB증권", "트렌드포스", "4분기", "전분기 대비", "10∼15%", "15∼20%", "전망"):
+            self.assertIn(term, core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 7)), 1)
+
+    def test_lng_cost_comparison_is_research_not_new_capital_commitment(self):
+        title = '로이터 "알래스카 LNG 사업비, 멕시코만 연안의 두배"'
+        body = (
+            "알래스카 액화천연가스(LNG) 사업의 비용이 미국 멕시코만 연안 LNG 사업의 두 배를 넘는다고 로이터 통신이 보도했다. "
+            "글렌판은 이 사업 비용을 445억∼545억달러로 추산했다."
+        )
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("알래스카 LNG 사업비", core)
+        self.assertIn("멕시코만 연안", core)
+        self.assertIn("두 배", core)
+        self.assertIn("로이터", core)
+        self.assertNotRegex(core, "투자했다|집행했다|계약했다")
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 7)), 1)
+        opinion = materiality.assess("LNG 사업비 부담", "LNG 사업비 부담이 크다고 지적했다.")
+        self.assertEqual(opinion["evidence"], [])
+
+    def test_middle_east_military_reinforcement_is_not_excluded_by_oil_token_gate(self):
+        title = "미국 항모·1만병력 중동 추가 파견"
+        body = "미국은 중동에 항공모함과 병력 1만명을 추가 파견했다. 병력은 11월 말 도착할 예정이다."
+        item = alert(title, body)
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "keep")
+        self.assertGreaterEqual(audit["priority"], 2)
+        self.assertIn("discount_rate", audit["axes"])
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("추가 파견", core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 7)), 1)
+
     def test_earnings_abbreviation_remains_primary_ahead_of_secondary_analyst_revision(self):
         title = "HL디앤아이한라, 상반기 영업익 34%↑…증권가도 목표주가 상향"
         self.assertEqual(materiality.focus_kind(title), "earnings")

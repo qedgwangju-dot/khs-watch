@@ -6,10 +6,10 @@ from __future__ import annotations
 import re
 
 
-VERSION = 34
+VERSION = 35
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
-    rf"원유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|이란|이스라엘|우크라이나|러시아|구리|리튬|"
+    rf"원유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
     r"\boil\b|brent|wti|\bgas\b|hormuz|iran|ukraine|russia|copper|lithium"
 )
 EARLY_SIGNAL = re.compile(
@@ -83,6 +83,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("sanctions_exemption", r"제재.*(?:면제|예외)", r"(?:예외|면제|일반\s*허가|general licen[cs]e)"),
     ("monetary_guidance", r"(?:연준|ECB|한국은행).{0,15}(?:의장|총재)", r"(?:금리|통화|정책).{0,90}(?:밝혔|말했|강조|신중|시사|필요)"),
     ("nuclear_warning", r"핵\s*(?:대응|사용|공격|위협)|nuclear.{0,12}(?:threat|response)", r"(?:핵|특별한\s*수단|모든\s*무기).{0,80}(?:대응|사용|경고|위협|준비|불가피)"),
+    ("military_reinforcement", r"(?:항모|항공모함|병력).{0,40}(?:추가\s*파견|증강)", r"추가\s*파견|병력.{0,20}증강"),
     ("trading_status", r"거래\s*재개|액면병합|주식병합", r"거래.{0,12}재개|재개.{0,12}거래|액면병합|주식병합"),
     ("customer_implementation", r"1차\s*시공|초도\s*납품", r"1차\s*시공|초도\s*납품"),
     ("industrial_program", r"(?:SMR|원전|양자|반도체|로봇).{0,16}상용화", r"(?:상용화|사업화).{0,50}(?:출범|지원|시행|추진)|(?:출범|지원|시행|추진).{0,50}(?:상용화|사업화)"),
@@ -95,6 +96,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("mortgage_rate", r"주담대|모기지|주택담보대출", r"주담대|모기지|주택담보대출|mortgage"),
     ("macro_release", r"\bcpi\b|\bpce\b|\bppi\b|\bgdp\b|고용|실업률|물가|건설지출", r"cpi|pce|ppi|gdp|고용|실업|물가|건설지출|인플레이션|inflation|payroll"),
     ("export_results", r"수출(?:액|실적|량)|수출.{0,20}(?:\d위|역대|최대|최저|증가|감소)", r"수출(?:액|실적|량)|수출.{0,45}(?:\d|최대|최저)"),
+    ("project_cost", r"(?:LNG|원전|데이터센터|발전소|공장).{0,20}(?:사업비|건설비|사업\s*비용)", r"(?:LNG|원전|데이터센터|발전소|공장).{0,40}(?:사업비|건설비|비용)"),
     ("energy_supply", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|\bbrent\b|\boil\b|hormuz|tanker", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|항행|통항|brent|\boil\b|hormuz|tanker|shipping"),
     ("bond_yield", r"금리|국채.{0,8}(?:투매|수익률)|bond yields|treasury yields", r"금리|국채.{0,8}수익률|bond yields|treasury yields|interest rates"),
     ("fx", r"환율|약달러|강달러|달러화|원[·/]달러|달러[·/]원|\bndf\b|exchange rate", r"환율|달러화|달러[·/]원|원[·/]달러|\bndf\b|exchange rate|dollar"),
@@ -125,7 +127,7 @@ ECONOMIC_GEOPOLITICS = re.compile(
     rf"에너지\s*시설|정유|유전|송유관|원유|{OIL_PRICE}|가스|항만|물류|유조선|운임|호르무즈|홍해|통항|봉쇄|"
     r"수출|수입|제재|국방\s*예산|방위\s*예산|조달|수주|공급계약|휴전|협상|접촉|"
     r"확전|전면전|전쟁\s*(?:선포|확대)|핵(?:무기)?\s*(?:사용|위협|공격)|핵전쟁|참전|"
-    r"추가\s*(?:공격|공습)|공격\s*임박|항공\s*모함|항공모함|병력\s*증강|"
+    r"추가\s*(?:공격|공습)|공격\s*임박|항공\s*모함|항공모함|항모|병력\s*증강|"
     r"energy|refiner|pipeline|oil|gas|port|shipping|tanker|hormuz|blockade|sanction|procurement|contract|ceasefire|talks|negotiat|escalat", re.I,
 )
 LOCAL_AUTHORITY = re.compile(
@@ -284,8 +286,11 @@ RULES = (
      r"입찰|시공사|우선협상|procurement|bid|preferred bidder",
      r"제출|선정|선택|낙찰|철회|탈락|확보|submit|select|award|withdraw"),
     ("selling_price_or_cost", ("earnings",),
-     r"판매가격|판매\s*가격|판가|단가|원가|평균판매가격|\basp\b|selling price|unit price|input cost",
-     r"인상|인하|상승|하락|급등|급락|증가|감소|전가|협상|상향|하향|rais|cut|rise|fall|increas|decreas|negotiat"),
+     r"판매가격|판매\s*가격|판가|단가|원가|평균판매가격|(?:메모리|HBM|D램|DRAM|낸드|NAND)\s*(?:공급\s*)?가격|\basp\b|selling price|unit price|input cost",
+     r"인상|인하|상승|하락|오르|내리|급등|급락|증가|감소|전가|협상|상향|하향|rais|cut|rise|fall|increas|decreas|negotiat"),
+    ("project_cost_evaluation", ("earnings",),
+     r"(?:LNG|원전|데이터센터|발전소|공장).{0,40}(?:사업비|건설비|사업.{0,15}비용)",
+     r"추산|추정|비교|두\s*배|\d+(?:\.\d+)?\s*배|cost estimate|estimated cost"),
     ("earnings_or_guidance", ("earnings",),
      r"매출|영업이익|순이익|마진|실적|가이던스|출하|판매(?:량|실적|는|가)|시장점유율|revenue|earnings|profit|guidance|shipments",
      r"증가|감소|상승|하락|상회|하회|상향|하향|달성|기록|집계|발표|전망|예상|rise|fall|grow|cut|rais|report|forecast|beat|miss"),
@@ -388,7 +393,7 @@ RULES = (
      r"효소|단백질|enzyme|protein", r"발견|규명|discover|characteriz"),
     ("energy_geopolitics_or_supply_risk", ("earnings", "discount_rate"),
      ENERGY_SUBJECT,
-     r"공격|공습|피격|발사체|화재|휴전|협상|통항|봉쇄|제재|상승|하락|오른|내린|급등|급락|차질|감산|증산|합의|경고|명령|배치|발표|attack|strike|ceasefire|talks|blockade|sanction|rise|fall|disrupt|output|warn|deploy|announc"),
+     r"공격|공습|피격|발사체|화재|휴전|협상|통항|봉쇄|제재|상승|하락|오른|내린|급등|급락|차질|감산|증산|합의|경고|명령|배치|추가\s*파견|파견했다|발표|attack|strike|ceasefire|talks|blockade|sanction|rise|fall|disrupt|output|warn|deploy|announc"),
     ("climate_operational_damage", ("earnings", "timeline"),
      r"폭염|폭우|홍수|태풍|정전|가뭄|산불|heatwave|flood|outage|drought|wildfire",
      r"전력|변압기|과부하|폐사|양식|농작물|생산|공급|항만|물류|공장|피해|사망|power|transformer|crop|production|supply|port|factory|damage|death"),
@@ -460,6 +465,10 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
         return False
     if kind == "market_price_or_flow" and re.search(r"유의할|주의할|유의해야|주의해야|변동성.{0,15}(?:지적|유의)", sentence):
         return False
+    if kind == "project_cost_evaluation" and not (
+        QUANTITY.search(sentence) or re.search(r"(?:두|\d+(?:\.\d+)?)\s*배", sentence)
+    ):
+        return False
     if kind == "energy_geopolitics_or_supply_risk":
         without_quotes = re.sub(r"(?:S-?Oil|SK이노베이션)\s*\([^)]*\)", "", sentence, flags=re.I)
         if not re.search(ENERGY_SUBJECT, without_quotes, re.I):
@@ -478,7 +487,7 @@ def news_value_rank(evidence: list[dict]) -> int:
     if kinds & {"technology_or_clinical_stage", "space_execution_stage", "space_thermal_validation",
                 "cryogenic_propellant_storage", "biology_research_discovery", "research_validation_result", "model_operating_specification",
                 "customer_discussions", "industrial_partnership_execution", "corporate_action_clarification", "capital_or_shareholder_action", "capital_listing_stage",
-                "customer_financing_commitment", "public_program_cost_study", "energy_geopolitics_or_supply_risk"}:
+                "customer_financing_commitment", "public_program_cost_study", "project_cost_evaluation", "energy_geopolitics_or_supply_risk"}:
         return 3
     return 2
 
@@ -689,7 +698,7 @@ def assess(title: str, body: str) -> dict:
             early = bool(EARLY_SIGNAL.search(sentence)) or kind in {"customer_discussions", "institutional_capital_access"}
             if kind == "capital_listing_stage" and re.search(r"오는\s*\d{1,2}일|출시한다고|출시할|상장할", sentence):
                 early = True
-            priority = 2 if early or kind in {"technology_or_clinical_stage", "research_validation_result", "market_infrastructure", "model_operating_specification", "industrial_architecture_adoption", "space_execution_stage", "space_thermal_validation", "cryogenic_propellant_storage", "biology_research_discovery", "public_program_cost_study", "sector_demand_outlook", "market_outlook", "fund_assets_level", "financing_infrastructure"} else 3
+            priority = 2 if early or kind in {"technology_or_clinical_stage", "research_validation_result", "market_infrastructure", "model_operating_specification", "industrial_architecture_adoption", "space_execution_stage", "space_thermal_validation", "cryogenic_propellant_storage", "biology_research_discovery", "public_program_cost_study", "project_cost_evaluation", "sector_demand_outlook", "market_outlook", "fund_assets_level", "financing_infrastructure"} else 3
             if kind == "capital_listing_stage":
                 priority = 3
             if kind in {"earnings_or_guidance", "market_price_or_flow"} and not QUANTITY.search(sentence):

@@ -1028,3 +1028,32 @@ four dry-run rows retain corrected cores and two are excluded. The just-sent
 generic tokenization explanation no longer passes. Original URLs, historical
 sends, seen history and retrieval queues were not rewritten or reset. Deployment
 and fresh version-34 execution proof are recorded separately below.
+
+## Version 35: Recover Material Forecasts, Cost Comparisons and Reinforcement
+
+Version 34 was deployed as `51204c743ad142b34db828f53f84d832f40f7fe7`.
+Fresh dry run `37005317797` completed successfully at `2026-10-02T12:15:59Z`
+with that exact checkout, 135 regressions and a passing generated-report guard.
+Query time was `21:12:49 KST`; 1,107 rows were collected, 47 classified alerts
+were already seen and no article was selected. Bodies attempted/verified/failed/
+deferred were 160/122/38/627. ZIP SHA-256:
+`D4084E8AFC32EC1DB5F5732E690D7A48B5E355B2520EABA71905364180CBB10E`.
+This was not accepted as proof of good selection or news absence.
+
+Review of the exclusions identified three important false negatives. Their
+original articles were fetched directly through the existing source fetcher,
+with aligned titles and verified bodies, and read in full. Memory price forecasts
+were not recognized as selling prices; an LNG project cost comparison was not
+recognized in its summary; Middle East reinforcement lacked a matching event
+subject/action. All three passed the production display filter after repair,
+with complete cores and zero source-fact errors. Evidence is saved locally in
+`gamejoa-v35-source-probes.json` beside this checkout, separately from delivery.
+
+The memory core preserves the research attribution, quarter, previous-quarter
+basis, DRAM 10-15% and NAND 15-20% ranges, and forecast status. The LNG core
+preserves Reuters' comparison to Gulf Coast projects, without claiming a new
+capital commitment or a completed investment. The military core preserves the
+actual additional carrier/troop deployment without inventing an oil-price move
+or an executed future attack. Three new regressions bring the suite to 138 tests;
+the cost rule requires a quantified estimate or comparison, not vague cost concern.
+Fresh remote validation and deployment are recorded separately below.

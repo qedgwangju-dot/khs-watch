@@ -2228,6 +2228,33 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     if not market_materiality.focus_kind(title) and not market_materiality.DENIAL_HEADLINE.search(title):
         return ""
+    if market_materiality.focus_kind(title) == "memory":
+        issuer = re.match(r"^([A-Za-z가-힣]+증권)\s", title)
+        for sentence in sentences:
+            prices = re.search(
+                r"([1-4]분기)\s*(?:범용\s*)?D램\s*가격은\s*전\s*분기\s*대비\s*"
+                r"(\d+(?:\.\d+)?\s*[~∼-]\s*\d+(?:\.\d+)?%),\s*"
+                r"낸드(?:\(NAND\))?\s*가격은\s*(\d+(?:\.\d+)?\s*[~∼-]\s*\d+(?:\.\d+)?%)"
+                r"[^.!?]{0,100}상승[^.!?]{0,100}(?:전망|예상)", sentence,
+            )
+            if issuer and prices and issuer.group(1) in " ".join(sentences):
+                attribution = " 트렌드포스를 인용해" if re.search(r"트렌드포스를\s*인용", sentence) else ""
+                fact = (
+                    f"{issuer.group(1)}은{attribution} {prices.group(1)} 전분기 대비 "
+                    f"D램 가격 {prices.group(2)}, 낸드 가격 {prices.group(3)} 추가 상승을 전망했다."
+                )
+                if core_sentence_is_complete(fact):
+                    return fact
+    if market_materiality.focus_kind(title) == "project_cost":
+        for sentence in sentences:
+            comparison = re.search(
+                r"([가-힣A-Za-z0-9]+)\s+(?:액화천연가스\s*\(LNG\)|LNG)\s*사업의\s*비용이\s*"
+                r"([^.!?]{1,50}LNG\s*사업의\s*두\s*배를\s*넘는다고)\s*로이터\s*통신이[^.!?]{0,40}보도했다", sentence,
+            )
+            if comparison:
+                fact = f"로이터는 {comparison.group(1)} LNG 사업비가 {comparison.group(2)} 보도했다."
+                if core_sentence_is_complete(fact):
+                    return fact
     if market_materiality.focus_kind(title) == "space_execution":
         for sentence in sentences:
             if re.search(r"발사했다|발사에\s*성공|교신.{0,20}성공", sentence) and any(
