@@ -46,33 +46,31 @@
     "https://stock.ltn.com.tw/article/gqpj9vhyk1ku",
     "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch"
   ],
-  "last_checked_at_kst": "2026-10-02T16:27:39+09:00",
+  "last_checked_at_kst": "2026-10-02T17:43:34+09:00",
   "last_evidence_url": "https://ec.ltn.com.tw/article/paper/1772416",
   "last_evidence_published_at_kst": "2026-09-28T06:30:00+09:00",
   "last_alert_reasons": [
-    "기판 병목 미확인→easing",
-    "HBM 병목 미확인→easing",
-    "CoWoS 병목 미확인→easing"
+    "HBM 연계 AI 고객 추가: Broadcom"
   ],
-  "last_alert_at_kst": "2026-09-27T18:47:52+09:00",
-  "last_successful_delivery_kst": "2026-09-27T18:51:33+09:00",
+  "last_alert_at_kst": "2026-10-02T17:43:34+09:00",
+  "last_successful_delivery_kst": "2026-10-02T17:49:16+09:00",
   "telegram_message_ids": [
-    152
+    210
   ],
-  "telegram_message_id": 152,
+  "telegram_message_id": 210,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      152
+      210
     ],
-    "confirmed_at_kst": "2026-09-27T18:51:33+09:00",
-    "payload_hash": "479b0f536362c8bb778002fbffc754067563cd3593e8030c6880e251afd0d332"
+    "confirmed_at_kst": "2026-10-02T17:49:16+09:00",
+    "payload_hash": "5ea030a41af22d25e200de3314a6e2c8230b6a7f39d150d0c3a7fddecb339051"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-02T16:32:38+09:00",
-    "status": "no_message_due"
+    "checked_at_kst": "2026-10-02T17:49:16+09:00",
+    "status": "confirmed"
   },
   "foundry_snapshot": {
     "n2_2026ye_wpm": 120000,
@@ -82,17 +80,19 @@
     "reservation_customers": [
       "AMD",
       "Apple",
+      "Broadcom",
       "MediaTek",
       "NVIDIA",
       "Qualcomm"
     ],
     "ai_hbm_customers": [
       "AMD",
+      "Broadcom",
       "NVIDIA"
     ],
     "n2_fabs_2026": 5,
     "source_url": "https://money.udn.com/money/story/5612/9780512",
-    "source_name": "money.udn.com"
+    "source_name": "경제일보"
   },
   "foundry_baseline_note": "TSMC N2 2026년말 12만장/월·NVIDIA/AMD 포함 추가예약 10~20%를 현재값으로 잠금. 이후 N2/N3 생산능력 1만장 또는 10% 이상, AI 고객 예약 10%p 이상 등 실제 변화만 HBM 교차 알림.",
   "bottleneck_parser_version": 2,
@@ -110,132 +110,5 @@
       "substrate": "tight"
     },
     "note": "기존 전송 이력은 감사 추적용으로 보존하되 현재 상태 기준선과 재알림 판정에는 사용하지 않음"
-  },
-  "_delivery": {
-    "id": "0f4c5506a803fcbf645dac524013c13bde0825e9fa002315663c71b6abba2c47",
-    "status": "partial",
-    "created_at_kst": "2026-10-02T17:49:11+09:00",
-    "chunks": [
-      "🚨 <b>HBM 교차 알림 | TSMC 앞단·후단·메모리 병목 변화</b>\n━━━━━━━━━━━━━━━━\n• HBM 알림 사유: <b>HBM 연계 AI 고객 추가: Broadcom</b>\n• 전파 경로: NVIDIA·AMD N2 웨이퍼 → GPU·ASIC 출하 → CoWoS·SoIC → HBM 비트수요\n• 알림 기준: AI 고객 연계 N2/N3 생산능력·예약 물량 변화 또는 CoWoS·SoIC·테스터·기판·HBM 병목 변화만 교차 알림합니다.\n• 제외: Apple 단독 N2 주문·부지 검토·공장 의향·같은 기사 재배포만으로는 HBM 알림을 울리지 않습니다.\n• 앞단: N2 2026년말 <b>120,000장/월</b>\n• HBM 연계 AI 고객: AMD · Broadcom · NVIDIA\n• 후단: CoWoS 부족·병목 · 기판 부족·병목\n• 메모리: HBM 부족·병목\n• CoWoS 상태 근거: TrendForce · <a href=\"https://www.trendforce.com/presscenter/news/20260918-13241.html\">원문</a>\n• 기판 상태 근거: TrendForce News · <a href=\"https://www.trendforce.com/news/2026/09/03/news-tsmc-equipment-demand-reportedly-jumps-90-in-just-over-half-a-year-substrate-capacity-faces-ai-squeeze/\">원문</a>\n• HBM 상태 근거: TrendForce · <a href=\"https://www.trendforce.com/presscenter/news/20260929-13255.html\">원문</a>\n• 기타 변화 근거: LTN · <a href=\"https://ec.ltn.com.tw/article/paper/1772416\">원문</a>\n• 조회: 2026-10-02 17:43 KST"
-    ],
-    "next_chunk": 1,
-    "message_ids": [
-      210
-    ],
-    "candidate": {
-      "watch_version": 2,
-      "baseline_seeded_at_kst": "2026-09-27T18:02:00+09:00",
-      "baseline_note": "HBM 교차 기준선. 嘉義 총 10개·추가 5개 및 부지 의견수렴은 현재값으로 잠그되, 부지·의향만으로는 HBM 교차 알림하지 않음. 실제 CoWoS/SoIC 월 생산능력 변화, 장비 반입·양산 진입, 테스터·기판·HBM·CoWoS 병목 변화만 신규 교차 알림.",
-      "current_state": {
-        "chiayi_total_fabs": 10,
-        "chiayi_additional_fabs": 5,
-        "chiayi_phase3_status": "public_comment",
-        "fab_count_evidence_state": "supply_chain_report",
-        "phase3_evidence_state": "official",
-        "last_evidence_state": "supply_chain_report",
-        "last_source_url": "https://ec.ltn.com.tw/article/paper/1772416",
-        "last_source_name": "自由財經",
-        "last_event_title": "嘉科三期擴建起跑 台積電再加碼5座先進封裝廠 - 自由財經",
-        "official_source_url": "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch",
-        "last_source_published_at_kst": "2026-09-28T06:30:00+09:00",
-        "bottlenecks": {
-          "hbm": {
-            "status": "tight",
-            "evidence_state": "research",
-            "source_url": "https://www.trendforce.com/presscenter/news/20260929-13255.html",
-            "source_name": "TrendForce",
-            "source_title": "HBM Supply Constraints Persist, 2027 Price Outlook Revised Upward",
-            "source_published_at_kst": "2026-09-29T00:00:00+09:00"
-          },
-          "cowos": {
-            "status": "tight",
-            "evidence_state": "research",
-            "source_url": "https://www.trendforce.com/presscenter/news/20260918-13241.html",
-            "source_name": "TrendForce",
-            "source_title": "AI Chip Packaging Pushes Beyond Reticle Limits",
-            "source_published_at_kst": "2026-09-18T00:00:00+09:00"
-          },
-          "substrate": {
-            "status": "tight",
-            "evidence_state": "supply_chain_report",
-            "source_url": "https://www.trendforce.com/news/2026/09/03/news-tsmc-equipment-demand-reportedly-jumps-90-in-just-over-half-a-year-substrate-capacity-faces-ai-squeeze/",
-            "source_name": "TrendForce News",
-            "source_title": "Substrate Capacity Faces AI Squeeze",
-            "source_published_at_kst": "2026-09-03T00:00:00+09:00"
-          }
-        }
-      },
-      "baseline_sources": [
-        "https://ec.ltn.com.tw/article/breakingnews/5586843",
-        "https://stock.ltn.com.tw/article/gqpj9vhyk1ku",
-        "https://www.nstc.gov.tw/folksonomy/list/d3c30297-bb63-44c5-ad30-38a65b203288%3Fl%3Dch"
-      ],
-      "last_checked_at_kst": "2026-10-02T17:43:34+09:00",
-      "last_evidence_url": "https://ec.ltn.com.tw/article/paper/1772416",
-      "last_evidence_published_at_kst": "2026-09-28T06:30:00+09:00",
-      "last_alert_reasons": [
-        "HBM 연계 AI 고객 추가: Broadcom"
-      ],
-      "last_alert_at_kst": "2026-10-02T17:43:34+09:00",
-      "last_successful_delivery_kst": "2026-09-27T18:51:33+09:00",
-      "telegram_message_ids": [
-        152
-      ],
-      "telegram_message_id": 152,
-      "bot_username": "khs88798879887988798879_bot",
-      "delivery_receipt": {
-        "status": "confirmed",
-        "bot_username": "khs88798879887988798879_bot",
-        "message_ids": [
-          152
-        ],
-        "confirmed_at_kst": "2026-09-27T18:51:33+09:00",
-        "payload_hash": "479b0f536362c8bb778002fbffc754067563cd3593e8030c6880e251afd0d332"
-      },
-      "delivery_check": {
-        "checked_at_kst": "2026-10-02T16:32:38+09:00",
-        "status": "no_message_due"
-      },
-      "foundry_snapshot": {
-        "n2_2026ye_wpm": 120000,
-        "n3_2026q4_wpm": 180000,
-        "reservation_min_pct": 10.0,
-        "reservation_max_pct": 20.0,
-        "reservation_customers": [
-          "AMD",
-          "Apple",
-          "Broadcom",
-          "MediaTek",
-          "NVIDIA",
-          "Qualcomm"
-        ],
-        "ai_hbm_customers": [
-          "AMD",
-          "Broadcom",
-          "NVIDIA"
-        ],
-        "n2_fabs_2026": 5,
-        "source_url": "https://money.udn.com/money/story/5612/9780512",
-        "source_name": "경제일보"
-      },
-      "foundry_baseline_note": "TSMC N2 2026년말 12만장/월·NVIDIA/AMD 포함 추가예약 10~20%를 현재값으로 잠금. 이후 N2/N3 생산능력 1만장 또는 10% 이상, AI 고객 예약 10%p 이상 등 실제 변화만 HBM 교차 알림.",
-      "bottleneck_parser_version": 2,
-      "bottleneck_parser_migration_note": "v2: 기사 전체 HTML의 관련기사·사이드바 문구를 병목 방향으로 오인하던 문제를 제거하고 명시적 현재 공급상태 기준선으로 재설정.",
-      "false_alert_correction": {
-        "corrected_at_kst": "2026-10-01T22:30:00+09:00",
-        "issue": "병목 키워드와 easing/tight 문구를 기사 전체 HTML에서 독립 검색해 관련기사·사이드바 문구가 서로 결합되는 false positive 및 동일 근거 재처리 시 상태 왕복 발생",
-        "invalid_package_alert_message_ids": [
-          197,
-          201
-        ],
-        "corrected_current_state": {
-          "hbm": "tight",
-          "cowos": "tight",
-          "substrate": "tight"
-        },
-        "note": "기존 전송 이력은 감사 추적용으로 보존하되 현재 상태 기준선과 재알림 판정에는 사용하지 않음"
-      }
-    },
-    "attempt_at_kst": "2026-10-02T17:49:12+09:00"
   }
 }
