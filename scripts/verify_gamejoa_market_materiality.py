@@ -113,6 +113,55 @@ DELIVERED_LOCAL_ADMINISTRATION = (
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_new_source_ai_financing_core_keeps_agreement_amount_and_reporting_attribution(self):
+        title = "AI 속도조절론에도 대규모 자금 투입 '가속'"
+        body = ("AI 모델 개발회사를 향한 대규모 자금 투입이 이어지고 있다.\n"
+                "로이터통신은 앤트로픽의 비공개 기업공개(IPO) 서류를 인용해 앤트로픽이 브로드컴으로부터 최대 420억달러(약 57조원) 규모의 대출을 받기로 합의했다고 1일(현지시간) 보도했다.\n"
+                "오픈AI는 이와 별개로 신규 자금조달을 추진하고 있다.")
+        item = {**alert(title, body), "link": "https://www.hankyung.com/article/2026100208801"}
+        core = radar.verified_alert_core(item, title)
+        for term in ("로이터통신", "앤트로픽", "브로드컴", "최대 420억달러", "합의했다고", "보도했다"):
+            self.assertIn(term, core)
+        self.assertNotIn("오픈AI", core)
+        self.assertNotIn("대출을 받았다", core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 7)), 1, item.get("_exclusion_reason"))
+        for wrong in (core.replace("앤트로픽", "다른기업"), core.replace("420억달러", "500억달러")):
+            self.assertFalse(radar.source_output_aligned({**item, "telegram_core_fact": wrong}))
+        item["telegram_core_fact"] = core
+        item["fx_conversion"] = radar.build_alert_fx_conversion(
+            item, {"rates": {"USD": {"value": 1421, "status": "fixture", "source": "unit test"}}}, NOW,
+        )
+        block = radar.compact_alert(item, 1, NOW, {}, {})
+        self.assertIn("420억달러(약 60조원)", block)
+        self.assertEqual(radar.compact_alert_block_errors(block), [])
+
+    def test_new_source_ai_infrastructure_core_recovers_change_not_old_revenue_level(self):
+        title = "앤트로픽, 초고속 성장 속 인프라 지출 계획"
+        body = ("앤트로픽의 비공개 IPO 투자설명서 내용 기반 언론 보도가 이어지고 있다.\n"
+                "앤트로픽의 2025년 매출은 45.9억달러로 전년 대비 1088% 초고성장하고 있다.\n"
+                "앤트로픽은 기존의 클라우드 중심 모델에서 벗어나 전용 데이터센터 구축과 자체 칩을 활용하는 방식의 인프라 전략을 확대하고 있다.")
+        item = {**alert(title, body), "link": "https://magazine.hankyung.com/business/article/202610017669b",
+                "telegram_core_fact": "앤트로픽 매출은 45.9억달러입니다."}
+        core = radar.verified_alert_core(item, title)
+        for term in ("앤트로픽", "전용 데이터센터", "자체 칩", "확대"):
+            self.assertIn(term, core)
+        self.assertNotIn("45.9억달러", core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 7)), 1)
+
+    def test_change_core_recovery_cannot_rescue_consumer_or_local_administrative_promotions(self):
+        for title, body, _link in DELIVERED_LOCAL_ADMINISTRATION:
+            item = {**alert(title, body), "telegram_core_fact": "새로운 발전 전략을 소개했다."}
+            with patch.object(radar.base, "kst_now", return_value=NOW):
+                self.assertEqual(radar.quality_display_alerts([item], 7), [])
+        audit = materiality.assess("은행, 비대면 개인사업자 대출 출시", "은행은 간편한 개인사업자 대출 상품을 출시했다고 밝혔다.")
+        self.assertNotIn("customer_financing_commitment", [item["kind"] for item in audit["evidence"]])
+
     def test_actual_local_administration_deliveries_do_not_fill_core_news_slots(self):
         for title, body, link in DELIVERED_LOCAL_ADMINISTRATION:
             with self.subTest(link=link):

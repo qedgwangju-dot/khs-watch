@@ -2181,6 +2181,12 @@ def article_sentences(
 
 def normalized_article_sentence(sentence: str) -> str:
     text = clean_article_summary_text(sentence)
+    attributed = re.match(
+        r"^(로이터통신|블룸버그통신)(?:은|는)\s+[^.!?]{0,100}?인용해\s+(.+?)"
+        r"(?:\s+\d{1,2}일\s*\(현지\s*시간\))?\s+보도했다[.!?]?$", text,
+    )
+    if attributed:
+        text = f"{attributed.group(1)}은 {attributed.group(2)} 보도했다."
     replacements = (
         (r"^[가-힣]{2,5}\s*(?:기자|특파원)(?:\s+[가-힣]{2,5}\s*(?:기자|특파원))*\s*=\s*", ""),
         (r"^[▲△▶]\s*", ""),
@@ -2219,6 +2225,13 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     if not market_materiality.focus_kind(title) and not market_materiality.DENIAL_HEADLINE.search(title):
         return ""
+    if market_materiality.focus_kind(title) == "financing":
+        for sentence in sentences:
+            audit = market_materiality.assess(title, sentence)
+            if any(item["kind"] == "customer_financing_commitment" for item in audit["evidence"]):
+                fact = normalized_article_sentence(sentence)
+                if core_sentence_is_complete(fact):
+                    return fact
     if market_materiality.focus_kind(title) == "ownership" and re.search(r"매각|처분", title):
         for sentence in sentences:
             if (
@@ -7110,6 +7123,13 @@ def source_output_aligned(alert: dict) -> bool:
             or (oil_down and has_term(rendered_text, ["유가 상승", "유가 급등", "유가 폭등", "유가 돌파"]))
         )
         direction_conflict = direction_conflict or market_move_direction_conflict(source_title, summary)
+        financing_alignment = False
+        if alert.get("body_verified") and market_materiality.focus_kind(source_title) == "financing":
+            financing_alignment = any(
+                item["kind"] == "customer_financing_commitment"
+                and normalized_article_sentence(item["source_excerpt"]) == summary
+                for item in source_market_materiality(alert)["evidence"]
+            )
         return bool(
             (alert.get("body_verified") or alert.get("title_fact_verified"))
             and source_title
@@ -7117,7 +7137,7 @@ def source_output_aligned(alert: dict) -> bool:
             and len(summary) >= 12
             and not core_has_ui_garbage(summary)
             and korean_business_source_allowed(alert)
-            and korean_title_core_aligned(source_title, summary)
+            and (korean_title_core_aligned(source_title, summary) or financing_alignment)
             and macro_release_core_aligned(source_title, summary)
             and market_materiality.core_focus_aligned(source_title, summary)
             and not source_core_fact_errors(alert)
@@ -8942,6 +8962,9 @@ def verified_alert_core(alert: dict, title: str) -> str:
         alert.get("source_title") or alert.get("original_news") or title
     )
     candidates: list[str] = []
+    def valid_source_fact(fact: str) -> bool:
+        return bool(core_sentence_is_complete(fact) and not source_core_fact_errors({**alert, "telegram_core_fact": fact}))
+
     rule_core = single_stock_leverage_core(alert, title)
     if core_sentence_is_complete(rule_core):
         return rule_core
@@ -8956,12 +8979,12 @@ def verified_alert_core(alert: dict, title: str) -> str:
             if revision_fact:
                 return revision_fact
             financial_fact = headline_financial_fact(source_title or title, article_summary_body(body))
-            if financial_fact:
+            if financial_fact and (market_materiality.focus_kind(source_title) or valid_source_fact(financial_fact)):
                 return financial_fact
             focused_fact = source_focused_article_core(source_title or title, ranked_article_sentences(
                 body, korean_business_title_terms(source_title or title), title=source_title or title,
             ))
-            if focused_fact:
+            if focused_fact and (market_materiality.focus_kind(source_title) != "financing" or valid_source_fact(focused_fact)):
                 return focused_fact
         source_body = article_summary_body(
             "\n".join(
@@ -8991,6 +9014,18 @@ def verified_alert_core(alert: dict, title: str) -> str:
             ]
         )
 
+    if is_business and alert.get("body_verified") and not market_materiality.focus_kind(source_title):
+        for candidate in candidates:
+            core = complete_prose_text(candidate, limit=GAMEJOA_CORE_MAX_CHARS)
+            if valid_source_fact(core) and market_materiality.core_focus_aligned(source_title, core):
+                return core
+        audit = source_market_materiality(alert)
+        if audit["disposition"] == "keep" and audit["priority"] >= 2:
+            for evidence in audit["evidence"]:
+                fact = normalized_article_sentence(evidence["source_excerpt"])
+                core = complete_prose_text(fact, limit=GAMEJOA_CORE_MAX_CHARS)
+                if valid_source_fact(core) and market_materiality.core_focus_aligned(source_title, core):
+                    return core
     for candidate in candidates:
         core = complete_prose_text(candidate, limit=GAMEJOA_CORE_MAX_CHARS)
         if core_sentence_is_complete(core) and not subjectless_financial_core(core) and (

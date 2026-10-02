@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 26
+VERSION = 27
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -89,6 +89,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("ownership", r"지분.{0,25}(?:인수|매각|취득)|인수.{0,25}지분|합병(?!원)", r"지분|인수|매각|취득|합병(?!원)|stake|acquir|merger"),
     ("shareholder", r"자사주|자기주식|주주환원|배당", r"자사주|자기주식|주주환원|배당|(?:주식|지분).{0,30}(?:매수|취득|매입|처분)|buyback|dividend"),
     ("capital_listing", r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|신규\s*상장", r"기업공개|\bipo\b|상장(?!지수)"),
+    ("financing", r"자금.{0,12}(?:투입|조달|유입)|대출|funding|financing|loan", r"자금|대출|투자(?!자)|조달|전환사채|출자|납입|증자|확정된\s*사항|funding|financing|loan|convertible debt"),
     ("mortgage_rate", r"주담대|모기지|주택담보대출", r"주담대|모기지|주택담보대출|mortgage"),
     ("macro_release", r"\bcpi\b|\bpce\b|\bppi\b|\bgdp\b|고용|실업률|물가", r"cpi|pce|ppi|gdp|고용|실업|물가|인플레이션|inflation|payroll"),
     ("energy_supply", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|\bbrent\b|\boil\b|hormuz|tanker", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|항행|통항|brent|\boil\b|hormuz|tanker|shipping"),
@@ -283,6 +284,9 @@ RULES = (
     ("licensing_cashflow", ("earnings", "timeline"),
      r"로열티|선급금|마일스톤|기술이전|royalty|upfront|milestone|licens",
      r"체결|계약|수령|수취|받|합의|서명|sign|agreement|receiv"),
+    ("customer_financing_commitment", ("earnings", "timeline"),
+     r"대출|전환사채|loan|convertible debt",
+     r"받기로\s*합의|대출\s*(?:계약|약정).{0,15}(?:체결|서명)|대출.{0,20}(?:집행했다|승인했다)|agreed to (?:lend|borrow)|loan agreement.{0,20}(?:signed|executed)"),
     ("capital_or_shareholder_action", ("earnings", "timeline"),
      r"투자(?=\s*(?:\d|를|한다|한다고|하는|하고|해|했다|할|하겠|금|액|규모|계획|협약|계약|자금|라운드)|.{0,12}유치)|전략투자|capex|자본지출|(?<!대)출자|자금\s*조달|자본\s*조달|회사채|주주환원|배당|자사주|자기주식|지분|funding|financing|buyback|dividend|bond issuance|stake",
      r"체결|유치|출자|발행|증액|삭감|확대|축소|매입|매수|취득|소각|매각|인수|검토|추진|결정|발표|승인|투입|금융\s*종결|납입|집행|투자\s*라운드.{0,10}참여|raise|issu|buy|repurchas|sell|acquir|announc|consider|approv|financing closed|funding disbursed"),
@@ -445,7 +449,7 @@ def news_value_rank(evidence: list[dict]) -> int:
     if kinds & {"technology_or_clinical_stage", "space_execution_stage", "space_thermal_validation",
                 "cryogenic_propellant_storage", "biology_research_discovery", "model_operating_specification",
                 "customer_discussions", "industrial_partnership_execution", "corporate_action_clarification", "capital_or_shareholder_action", "capital_listing_stage",
-                "public_program_cost_study", "energy_geopolitics_or_supply_risk"}:
+                "customer_financing_commitment", "public_program_cost_study", "energy_geopolitics_or_supply_risk"}:
         return 3
     return 2
 

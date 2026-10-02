@@ -761,3 +761,44 @@ contract scripts passed, including 113 materiality tests. New regressions
 include real-delivery negatives and early/industrial positive counterchecks.
 These examples do not prove exhaustive recall, perfect precision or model
 retraining. Deployment and fresh source-run verification follow separately.
+
+## Version 27: Recover Important Source Facts Without Relaxing Guards
+
+Version 26 was deployed in revision `9993ab1d9`. Fresh production-environment
+dry run `36991068399` completed successfully at `2026-10-02T09:42:54Z` and
+queried sources at `2026-10-02T18:40:08+09:00`. It passed 113 regressions and
+the independent generated-report guard, but selected zero articles. It
+attempted 71 article bodies, verified 50, failed 21 and deferred 589; coverage
+was incomplete. Artifact ZIP SHA-256:
+`3B8FAC7EC6B4A2314A84B3C2D0E8F7B7C21EDAF4F6F3375BD14135120384879A`.
+
+An empty technical PASS was not accepted as proof of good selection. Two
+important AI financing/infrastructure candidates had been rejected because
+the core was generic or used an old revenue level instead of the source's
+new change. Both originals were fetched again through the existing source
+proxy and article-body extractor, rather than substituting a search snippet.
+
+| Re-fetched original | Recovered source fact |
+| --- | --- |
+| `https://www.hankyung.com/article/2026100208801` | Reuters-reported Anthropic agreement to borrow up to USD 42 billion from Broadcom; borrower, lender, maximum amount and reporting status retained |
+| `https://magazine.hankyung.com/business/article/202610017669b` | Anthropic's expansion from a cloud-centered model toward dedicated data centers and its own chips; historic revenue no longer substitutes for the infrastructure change |
+
+The change recognizes a sourced customer-financing commitment, not a generic
+consumer-loan product launch. Narrow attribution compression removes the
+document/date introduction while preserving the reported agreement. A broad
+financing headline may align with an exactly source-attested loan sentence;
+wrong counterparties and wrong amounts still fail the independent guard.
+For generic business headlines, complete source-attested change evidence is
+considered before the legacy generic fallback. Source/body, factual status,
+headline focus, sentence completion and publication guards remain in place.
+
+All 11 local contract scripts passed, including 116 materiality tests,
+95 coverage cases and 26 retrieval-queue tests. The additional positive
+controls exercise both original-source failures and the final compact FX
+renderer; its exchange rate is explicitly a synthetic test fixture, not a
+current market value. Negative controls retain the four local administrative
+exclusions and reject loan-product advertising. Read-only replay of the same
+12 actual delivery rows retains eight, removes four, regenerates one core
+and records zero headline/core focus mismatches. No historical delivery or
+duplicate state was reset. Version-27 deployment and a fresh remote source
+run are still required and will be recorded separately.
