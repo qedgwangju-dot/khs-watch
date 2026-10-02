@@ -567,9 +567,36 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
             if any(term in low for term in ["합의", "agreed", "agreement"]):
                 facts.add("nuclear_framework_status:agreed")
                 facts.add("nuclear_project_status:individual_projects_pending")
-            for value in _usd_billion_values(low):
-                if value in {"120", "100", "20", "10"}:
-                    facts.add(f"nuclear_framework_usd_b:{value}")
+            usd_values = set(_usd_billion_values(low))
+            # 총재원·건설비·예비비·선지급금을 같은 슬롯에 섞지 않는다.
+            if "120" in usd_values:
+                facts.add("nuclear_framework_usd_b:120")
+            if "100" in usd_values and any(term in low for term in ["건설비", "건설비용", "overnight cost", "construction cost"]):
+                facts.add("nuclear_construction_cost_usd_b:100")
+            if "20" in usd_values and any(term in low for term in ["예비비", "contingency"]):
+                facts.add("nuclear_contingency_usd_b:20")
+            upfront_terms = ["선지급", "먼저 지급", "선제 지급", "upfront payment", "advance payment", "prepayment"]
+            longlead_terms = ["장주기", "장납기", "long lead", "long-lead"]
+            if "10" in usd_values and any(term in low for term in upfront_terms):
+                facts.add("nuclear_upfront_payment_usd_b:10")
+                executed_upfront = any(
+                    term in low
+                    for term in [
+                        "선지급 완료", "지급 완료", "송금 완료", "집행 완료",
+                        "선지급했다", "지급했다", "송금했다", "집행했다",
+                        "upfront payment completed", "advance payment completed",
+                        "prepayment completed", "paid", "transferred", "disbursed",
+                    ]
+                )
+                facts.add(
+                    "nuclear_upfront_payment_status:executed"
+                    if executed_upfront
+                    else "nuclear_upfront_payment_status:conditional"
+                )
+            if any(term in low for term in longlead_terms) and any(
+                term in low for term in ["구매주문", "구매 주문", "발주 완료", "발주했다", "purchase order", "ordered", "po issued"]
+            ):
+                facts.add("nuclear_longlead_order_status:ordered")
         if _is_official(row):
             source_low = _norm(str(row.get("source") or ""))
             if any(term in low for term in ["non-binding", "nonbinding", "비구속"]):
@@ -780,6 +807,8 @@ def _fact_slot(family: str, fact: str) -> str:
         "nuclear_framework_binding:", "nuclear_definitive_agreement_status:", "nuclear_federal_site_status:",
         "nuclear_initial_ap1000_units:", "nuclear_settlement_waiver_status:", "nuclear_apr1400_wh_value_per_unit_usd_b:",
         "nuclear_korean_ap1000_supply_chain:", "nuclear_counterparty_confirmation:",
+        "nuclear_construction_cost_usd_b:", "nuclear_contingency_usd_b:", "nuclear_upfront_payment_usd_b:",
+        "nuclear_upfront_payment_status:", "nuclear_longlead_order_status:",
         "stake_percent:", "stake_range_percent:", "stake_status:", "equity_definitive_agreement_status:",
         "equity_due_diligence_status:", "equity_regulatory_approval_status:", "equity_closing_status:", "funding_amount_usd:", "funding_date:", "funding_wait:",
         "repayment_horizon:", "package_nuclear_units:", "package_overall_usd_b:",
@@ -915,6 +944,9 @@ def _human_fact(value: str) -> str:
         "nuclear_settlement_waiver_status:contemplated": "2025 타협협정 일회성 예외 검토",
         "nuclear_korean_ap1000_supply_chain:included": "AP1000 한국 시공·기자재 참여 방향 포함",
         "nuclear_counterparty_confirmation:official": "Westinghouse·Cameco 측 공식 확인",
+        "nuclear_upfront_payment_status:conditional": "최대 100억달러 선지급은 조건부 협의 단계",
+        "nuclear_upfront_payment_status:executed": "원전 선지급 실제 집행 확인",
+        "nuclear_longlead_order_status:ordered": "장주기 품목 구매주문·발주 확인",
         "stake_status:contemplated": "Westinghouse 지분투자 프레임워크 포함·미종결",
         "equity_definitive_agreement_status:pending": "지분 최종계약 미체결",
         "equity_due_diligence_status:pending": "지분투자 실사 필요",
@@ -935,7 +967,10 @@ def _human_fact(value: str) -> str:
         "nuclear_total_units:": "원전 전체 ",
         "ap1000_units:": "AP1000 ",
         "apr1400_units:": "APR1400 ",
-        "nuclear_framework_usd_b:": "원전 프레임워크 재원 ",
+        "nuclear_framework_usd_b:": "원전 프레임워크 총재원 ",
+        "nuclear_construction_cost_usd_b:": "원전 건설비 ",
+        "nuclear_contingency_usd_b:": "원전 예비비 ",
+        "nuclear_upfront_payment_usd_b:": "원전 선지급 한도 ",
         "nuclear_apr1400_wh_value_per_unit_usd_b:": "APR1400 1기당 Westinghouse 예상 가치 ",
         "stake_percent:": "웨스팅하우스 지분 ",
         "stake_range_percent:": "웨스팅하우스 지분 범위 ",
@@ -1161,6 +1196,37 @@ def _migrate_westinghouse_framework_equity(state: dict) -> None:
     state["westinghouse_framework_equity_version"] = 1
 
 
+def _migrate_project_power_funding_roles(state: dict) -> None:
+    if int(state.get("project_power_funding_roles_version") or 0) >= 1:
+        return
+    bucket = (state.setdefault("event_states", {}).get("nuclear_build") or {})
+    if bucket:
+        facts = {str(x) for x in (bucket.get("facts") or [])}
+        slots = {str(k): str(v) for k, v in (bucket.get("slots") or {}).items()}
+
+        # 과거 파서가 1,200억 총재원과 1,000억 건설비·200억 예비비·100억 선지급을
+        # nuclear_framework_usd_b 한 슬롯에 섞을 수 있었으므로 총재원은 120으로 고정하고 역할별로 분리한다.
+        facts = {x for x in facts if not x.startswith("nuclear_framework_usd_b:")}
+        facts.add("nuclear_framework_usd_b:120")
+        slots["nuclear_build|nuclear_framework_usd_b"] = "nuclear_framework_usd_b:120"
+
+        baseline = {
+            "nuclear_construction_cost_usd_b:100",
+            "nuclear_contingency_usd_b:20",
+            "nuclear_upfront_payment_usd_b:10",
+            "nuclear_upfront_payment_status:conditional",
+        }
+        facts |= baseline
+        slots["nuclear_build|nuclear_construction_cost_usd_b"] = "nuclear_construction_cost_usd_b:100"
+        slots["nuclear_build|nuclear_contingency_usd_b"] = "nuclear_contingency_usd_b:20"
+        slots["nuclear_build|nuclear_upfront_payment_usd_b"] = "nuclear_upfront_payment_usd_b:10"
+        slots["nuclear_build|nuclear_upfront_payment_status"] = "nuclear_upfront_payment_status:conditional"
+        bucket["facts"] = sorted(facts)
+        bucket["slots"] = slots
+        bucket["last_source"] = str(bucket.get("last_source") or "") + " · project-power-funding-roles"
+    state["project_power_funding_roles_version"] = 1
+
+
 def _load() -> dict:
     global _SHARED_STATE, _BOOTSTRAP_GUARD
     state = _ORIG_LOAD()
@@ -1172,6 +1238,7 @@ def _load() -> dict:
     _migrate_announcement_stage_guard(state)
     _migrate_joint_fact_sheet_status(state)
     _migrate_westinghouse_framework_equity(state)
+    _migrate_project_power_funding_roles(state)
     if _BOOTSTRAP_GUARD:
         state["event_state_guard_version"] = GUARD_VERSION
         state["event_state_guard_started_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
@@ -1656,6 +1723,10 @@ def _self_test() -> int:
         "ap1000_units:6",
         "apr1400_units:2",
         "nuclear_framework_usd_b:120",
+        "nuclear_construction_cost_usd_b:100",
+        "nuclear_contingency_usd_b:20",
+        "nuclear_upfront_payment_usd_b:10",
+        "nuclear_upfront_payment_status:conditional",
         "nuclear_framework_binding:nonbinding",
         "nuclear_definitive_agreement_status:pending",
         "nuclear_federal_site_status:planned",
@@ -1667,6 +1738,21 @@ def _self_test() -> int:
     }
     if not required_nuclear.issubset(accepted):
         raise RuntimeError(f"official Project Power baseline failed: {accepted}")
+
+    if any(x in accepted for x in {"nuclear_framework_usd_b:100", "nuclear_framework_usd_b:20", "nuclear_framework_usd_b:10"}):
+        raise RuntimeError(f"Project Power amount roles collapsed into total framework slot: {accepted}")
+
+    executed_power = [{
+        "title": "산업통상부 공식 Project Power 최대 100억달러 선지급 완료 장주기 품목 구매주문 발주 완료",
+        "source": "대한민국 정책브리핑",
+        "link": "https://example.com/project-power-executed",
+        "published": "2026-12-15T00:00:00+00:00",
+    }]
+    executed_accepted, _ = _accepted_facts_for_group("nuclear_build", executed_power)
+    if "nuclear_upfront_payment_status:executed" not in executed_accepted:
+        raise RuntimeError(f"Project Power upfront execution parsing failed: {executed_accepted}")
+    if "nuclear_longlead_order_status:ordered" not in executed_accepted:
+        raise RuntimeError(f"Project Power long-lead PO parsing failed: {executed_accepted}")
 
     accepted, _ = _accepted_facts_for_group("westinghouse_stake", by_family.get("westinghouse_stake", []))
     required_stake = {
@@ -1715,7 +1801,7 @@ def _official_project_baseline_rows() -> list[dict]:
             "published": published,
         },
         {
-            "title": "산업통상부 공식 Project Power 한미 원전 프레임워크 합의 원전 8기 AP1000 6기 APR1400 2기 최대 1200억달러",
+            "title": "산업통상부 공식 Project Power 한미 원전 프레임워크 합의 원전 8기 AP1000 6기 APR1400 2기 최대 1200억달러 건설비용 1000억달러 예비비 200억달러 연말까지 최대 100억달러 먼저 지급 장주기 품목 선제 확보 상업적 합리성 검토와 국회보고를 전제로 협의",
             "source": "대한민국 정책브리핑",
             "link": link,
             "published": published,
