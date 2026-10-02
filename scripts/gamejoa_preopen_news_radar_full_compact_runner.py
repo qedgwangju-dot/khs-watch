@@ -2261,6 +2261,10 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
             fact = fact.replace("SMR는", "SMR은")
             fact = fact.replace("상용화 기반 마련에 나서고", "상용화를 추진하고")
             fact = fact.replace("연구 성과를 창업과 사업화로 연결하기 위한 지원", "연구성과의 창업·사업화 지원")
+        if market_materiality.focus_kind(title) == "sanctions_exemption":
+            fact = re.sub(r"^([가-힣]{2,10}(?:이|은|는))\s+\d{1,2}일\s*\(현지\s*시간\)\s*", r"\1 ", fact)
+            fact = fact.replace("대(對)", "대")
+            fact = re.sub(r"액화천연가스\s*\(LNG\)", "LNG", fact, flags=re.I)
         if market_materiality.focus_kind(title) == "project_buildout":
             fact = re.sub(
                 r"^.*?([A-Za-z0-9가-힣&·]+)의\s+(?:글로벌\s*)?최고경영자\s*\(CEO\)"
@@ -2920,7 +2924,7 @@ def detailed_article_core(title: str, body: str) -> str:
         return focused_fact
     audit = market_materiality.assess(title, body)
     for evidence in audit["evidence"]:
-        if evidence["kind"] not in {"commercial_order", "customer_supply_start", "procurement_execution_stage"}:
+        if evidence["kind"] not in {"commercial_order", "customer_supply_start", "procurement_execution_stage", "policy_scope_or_stage", "export_control_scope"}:
             continue
         fact = normalized_article_sentence(evidence["source_excerpt"].rstrip(".") + ".")
         if len(fact) > GAMEJOA_CORE_MAX_CHARS:
@@ -6958,7 +6962,13 @@ def korean_title_core_aligned(title: str, core: str) -> bool:
                 matched.add(title_token)
                 break
     if not matched:
-        return False
+        # Broad regulatory headlines may name the meeting, while the core
+        # correctly names its concrete instrument rather than the promise.
+        return bool(
+            re.search(r"규제(?:혁신|\s*개선|\s*완화|합리화)", title)
+            and re.search(r"(?:허가|규정|규제|요건|기준|절차).{0,35}(?:완화|개정)", core)
+            and re.search(r"(?:고시|법률|법안|시행령|규정).{0,15}(?:개정|제정|시행)", core)
+        )
 
     # Company names often split into several tokens (for example SK +
     # 하이닉스). A company-only overlap is insufficient evidence that the

@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 19
+VERSION = 20
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|목표|보인다|나서야|시급|밑돌\s*듯|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
@@ -75,6 +75,7 @@ HARD_HEADLINE = re.compile(
 # the classifier. Reuse it for evidence ranking and compact-summary checks.
 HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) for name, head, source in (
     ("tax_relief", r"비과세|과세.{0,12}제외|특례\s*(?:관세|방안)|FTA.{0,12}특례", r"비과세|과세.{0,25}제외|특례|특혜관세"),
+    ("sanctions_exemption", r"제재.*(?:면제|예외)", r"(?:예외|면제|일반\s*허가|general licen[cs]e)"),
     ("monetary_guidance", r"(?:연준|ECB|한국은행).{0,15}(?:의장|총재)", r"(?:금리|통화|정책).{0,90}(?:밝혔|말했|강조|신중|시사|필요)"),
     ("nuclear_warning", r"핵\s*(?:대응|사용|공격|위협)|nuclear.{0,12}(?:threat|response)", r"(?:핵|특별한\s*수단|모든\s*무기).{0,80}(?:대응|사용|경고|위협|준비|불가피)"),
     ("trading_status", r"거래\s*재개|액면병합|주식병합", r"거래.{0,12}재개|재개.{0,12}거래|액면병합|주식병합"),
@@ -268,8 +269,8 @@ RULES = (
      r"금리|국고채|모기지|주담대|주택담보대출|물가|인플레이션|고용|환율|달러화|유동성|차입|구매관리자|\bpmi\b|cpi|pce|payroll|mortgage|interest rate|treasury|inflation|exchange rate|borrowing",
      r"인상|(?<!할)인하|동결|상승|하락|오른|내린|올랐|내렸|둔화|급등|급락|상회|하회|밑돌|웃돌|발표|기록|증가|감소|결정|약세|강세|최고|치솟|cut|hike|hold|rise|fall|miss|beat|announc|estimat|record"),
     ("policy_scope_or_stage", ("timeline",),
-     r"관세|법인세|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
-     r"제안|검토|추진|인상|인하|올리|올렸|상향|하향|완화|강화|시행|발효|금지|제한|허가|승인|제정|철회|의견수렴|입법예고|면제|배정|의결|착수|발표|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
+     r"관세|법인세|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
+     r"제안|검토|추진|인상|인하|올리|올렸|상향|하향|완화|강화|시행|발효|금지|제한|허가|승인|제정|개정|철회|의견수렴|입법예고|면제|배정|의결|착수|발표|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
     ("export_control_scope", ("earnings", "timeline"),
      r"country group|trade authorization|export administration|수출관리규정|수출허가",
      r"remov|add|available|amend|change|변경|제외|허용"),
@@ -326,6 +327,10 @@ COMPILED_RULES = tuple(
 
 def evidence_is_new_event(kind: str, sentence: str) -> bool:
     """Do not promote service descriptions or event support into transactions."""
+    if re.search(r"논의해\s*나가겠다|해소될\s*수\s*있도록|최선을\s*다하겠다", sentence) and not re.search(
+        r"고시.{0,12}개정|법안.{0,12}(?:발의|제출)|계약.{0,12}체결|시행일.{0,15}확정", sentence,
+    ):
+        return False
     if kind == "commercial_order":
         return bool(re.search(
             r"체결|확정|수주(?:했다|했다고|한|하며|했으며|에\s*성공)|발주(?:했다|하기로)|갱신|취소|파기|해지|협상|서명|"
@@ -343,6 +348,8 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
             r"(?:투자|출자).{0,20}(?:계약\s*체결|유치했다|집행했다)|funding (?:secured|committed)", sentence, re.I,
         ):
             return False
+    if kind == "policy_scope_or_stage" and re.search(r"과제로\s*제시|의견이\s*나왔다|논의해\s*나가겠다|해소될\s*수\s*있도록", sentence):
+        return bool(re.search(r"고시.{0,12}(?:개정|제정)(?:한다|하기로)|법안.{0,12}(?:발의|제출)|시행일.{0,15}확정|행정명령.{0,15}서명", sentence))
     if kind == "policy_scope_or_stage" and re.search(r"규제\s*명확성|규제.{0,15}명확해질|출발선", sentence):
         return bool(re.search(r"입법예고|시행일|제정|개정|발효|행정명령|규제안|법안", sentence))
     if kind == "market_infrastructure" and re.search(r"연결돼\s*있|연결되어\s*있|기반으로\s*작동", sentence):
@@ -422,6 +429,11 @@ def assess(title: str, body: str) -> dict:
     electoral = bool(re.search(r"유세|선거운동|지지\s*(?:호소|결집)|campaign rally|election campaign", title, re.I))
     if ROUTINE_FOREGROUND.search(title) and not DIRECT_HEADLINE_CHANGE.search(title):
         result.update(disposition="exclude", priority=0, reason="routine_foreground_not_new_economic_event")
+        return result
+    if re.search(r"[가-힣]{2,10}(?:시|군|구)[,\s].{0,40}(?:재생에너지|탄소중립|온실가스|에너지\s*계획)", title) and not re.search(
+        r"(?:수주|공급\s*계약|예산|출자|투입).{0,30}(?:\d[\d,.]*\s*(?:억|조)\s*원|체결|확정)|(?:발전소|설비).{0,25}(?:착공|가동|허가|승인)", headline_lead,
+    ):
+        result.update(disposition="exclude", priority=0, reason="municipal_energy_target_without_market_execution")
         return result
     if STAFF_APPOINTMENT.search(title) and not re.search(r"공급\s*계약|수주|고객\s*계약|인수\s*(?:계약|완료)|영업이익|순이익|가이던스|supply contract|guidance", headline_lead, re.I):
         result.update(disposition="exclude", priority=0, reason="staff_appointment_without_market_change")
@@ -584,7 +596,10 @@ def assess(title: str, body: str) -> dict:
                 r"관세|법인세|세율|세금|수출|수입|보조금|지원금|비용|생산|공급|tariff|tax rate|corporate tax|export|import|subsid|cost|production|supply", sentence, re.I,
             ):
                 evidence_axes.append("earnings")
-            matches.append((priority, focus_score(title, sentence), -index, evidence_axes,
+            focus = focus_score(title, sentence)
+            if kind == "policy_scope_or_stage" and re.search(r"고시.{0,15}개정|법안.{0,15}(?:발의|통과)|시행일|발효일", sentence):
+                focus += 20
+            matches.append((priority, focus, -index, evidence_axes,
                             {"kind": kind, "stage": "early_signal" if early else "reported_change", "source_excerpt": sentence}))
     if matches:
         matches.sort(key=lambda item: item[:3], reverse=True)
@@ -597,6 +612,11 @@ def assess(title: str, body: str) -> dict:
         result.update(disposition="keep", reason="source_change_evidence")
         result["news_value_rank"] = news_value_rank(result["evidence"])
         kinds = {item["kind"] for item in result["evidence"]}
+        if re.search(r"포럼|패널토론|forum|panel discussion", headline_lead, re.I) and kinds <= {"policy_scope_or_stage", "customer_discussions", "financing_infrastructure", "market_infrastructure"} and not re.search(
+            r"(?:정부|금융위|국세청|국회|장관|부처).{0,80}(?:입법예고했다|발의했다|개정한다|시행한다|시행하기로\s*결정|공포했다)", body,
+        ):
+            result["priority"] = 1
+            result["scope_note"] = "forum_policy_opinion_without_announced_instrument_change"
         if SUPPORT_EVENT.search(title) and kinds <= {"capital_or_shareholder_action", "corporate_transaction", "institutional_capital_access", "financing_infrastructure"}:
             result["priority"] = 1
             result["scope_note"] = "support_event_without_committed_capital"

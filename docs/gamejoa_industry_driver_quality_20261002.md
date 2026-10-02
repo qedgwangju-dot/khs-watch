@@ -509,3 +509,38 @@ The order core reports the actual additional contract of approximately
 1871억원 rather than a photo caption. All 11 local scripts passed again,
 including 93 materiality tests, 95 coverage cases and 26 queue tests. Final
 fresh-run evidence follows after deployment and artifact review.
+
+## Version 20: Concrete Policy Changes Before Generic Promises
+
+Run `36973769183` completed at `2026-10-02T06:37:05Z`, with version 19
+in the saved report at `15:33:12 KST`. It verified 118 bodies, failed 42
+and deferred 537; this is incomplete coverage, not evidence of news absence.
+ZIP SHA-256:
+`D525936555D741B37C98B30AAB31696CF1A291352184A4A83F59FD2C348C0C34`.
+The additional order core was accurate, but a municipal target without
+committed execution and a forum's regulatory speculation remained eligible.
+A new permit-rule amendment was summarized as an official's vague promise,
+and a sanctions exemption lost its actor and scope. The report was therefore
+not accepted unchanged despite passing technical checks.
+
+Generic promises cannot establish an event through any secondary evidence
+class. Explicit instrument changes outrank them in policy cores. Broad
+regulatory-innovation headlines can align with a concrete permit/gosi amendment
+without repeating the meeting headline; all body, core-fact, direction and
+focus checks remain mandatory. Municipal targets without a committed budget,
+contract or approved/started facility are excluded. Forum opinions without
+an announced governmental instrument change stay below the publication
+threshold; real transactions or industrial tests remain eligible.
+
+Sanctions-exemption cores now retain the actor, affected country and deadline.
+Source reporting dates and redundant LNG expansion may be removed to fit the
+existing complete-sentence limit, but provisional actions are not promoted to
+signed commitments. Adjacent contract amounts remain incremental, not an
+incorrect substitution of the headline's cumulative total.
+
+Read-only replay of all eight artifacts reviews 53 rows, retains 33, removes
+20 weak/duplicate selections and repairs 12 cores, with zero headline/core
+focus mismatches. The latest seven-row report becomes five, including the
+actual autonomous-vehicle permit amendment. This replay neither sends old
+articles nor changes seen keys. Fresh deployment and run proof are recorded
+below only after the new artifact is inspected.

@@ -96,6 +96,45 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_municipal_targets_do_not_outrank_committed_energy_projects(self):
+        vague = materiality.assess("과천시, 2030년 재생에너지 보급률 10%로 확대", "과천시는 지역에너지계획 보고회를 열고 2030년 보급률 10%를 목표로 논의했다.")
+        self.assertEqual(vague["disposition"], "exclude")
+        actual = materiality.assess("과천시, 태양광 설비 500억원 공급 계약 체결", "과천시는 태양광 설비 500억원 공급 계약을 체결했다.")
+        self.assertEqual(actual["disposition"], "keep")
+
+    def test_policy_core_prioritizes_the_instrument_over_promises_and_forum_tasks(self):
+        title = "국조실, 신산업 규제혁신 간담회 개최"
+        action = "정부는 무인 자율주행차의 동일 사양 추가 허가 절차를 완화하도록 관련 고시를 개정한다."
+        body = action + '\n실장은 "규제합리화위원회가 강화된 만큼 자율주행, 로봇의 애로사항이 해소될 수 있도록 논의해 나가겠다"고 말했다.'
+        item = alert(title, body)
+        item["telegram_core_fact"] = body.split("\n")[-1]
+        self.assertIn("core_without_market_change_evidence", radar.source_core_fact_errors(item))
+        self.assertEqual(radar.verified_alert_core(item, title), action)
+        normalized = radar.normalize_alert_for_output(item)
+        self.assertTrue(radar.source_output_aligned(normalized))
+        self.assertEqual(len(radar.quality_display_alerts([item], 1)), 1)
+        self.assertFalse(radar.korean_title_core_aligned(title, "정부는 AI 미래 혁신 비전을 공유했다."))
+        self.assertFalse(radar.korean_title_core_aligned("자동차기업, 분기 실적 발표", action))
+        forum = materiality.assess("코인 규율 도마…제도 정비 과제 부상", "기본법 제정과 결제수단별 규제 정비가 주요 과제로 제시됐다.")
+        self.assertNotEqual(forum["disposition"], "keep")
+        speculative = materiality.assess("코인 규율 도마…제도 정비 과제 부상", "포럼에서 교수는 국세청의 가상자산 과세 관련 고시가 이번 달에 나오지 않을까 본다고 말했다.")
+        self.assertLess(speculative["priority"], 2)
+        official = materiality.assess("정책 포럼, 자율주행 규제 고시 개정 발표", "정부는 포럼에서 자율주행 허가 절차를 완화하도록 관련 고시를 개정한다고 발표했다.")
+        self.assertGreaterEqual(official["priority"], 2)
+
+    def test_sanctions_exemption_core_keeps_the_actor_scope_and_deadline(self):
+        title = '영국, 러시아 제재 발표…"한국 사할린 LNG 수입 제재 면제"'
+        body = "영국이 1일(현지 시간) 러시아 제재를 새로 발표한 가운데 한국에 공급되는 사할린 LNG에 대해서는 2028년 3월까지 예외를 적용하기로 했다.\n대상은 2025년 6월17일 이전 체결된 LNG 공급 계약에 한해 적용된다."
+        item = alert(title, body)
+        item["telegram_core_fact"] = body.split("\n")[-1]
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("영국", core)
+        self.assertIn("한국", core)
+        self.assertIn("2028년 3월", core)
+        self.assertIn("예외", core)
+        self.assertFalse(core.startswith("대상은"))
+        self.assertTrue(radar.source_output_aligned({**item, "telegram_core_fact": core}))
+
     def test_principal_personnel_and_reward_events_cannot_borrow_contracts_or_policy(self):
         for title, body in (
             ("방산기업, 조기 선제 인사로 수출 확대", "지난 8월 공급 계약을 체결했다. 이번 정기 인사는 해외 수출 확대에 초점을 맞췄다."),
