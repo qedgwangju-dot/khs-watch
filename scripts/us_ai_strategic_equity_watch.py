@@ -327,39 +327,46 @@ def build_news(event):
 def main():
     OUT_DIR.mkdir(parents=True,exist_ok=True)
     for p in [OUT_ALERT,OUT_TITLE,OUT_PENDING]:
-        if p.exists(): p.unlink()
+        if p.exists():
+            p.unlink()
 
     state=_load_state()
     seen=set(state.get("seen_events",[]))
     events=discover()
 
-    # Bootstrap: deliver the current verified baseline exactly once, and suppress historical backfill.
+    # Bootstrap: deliver the verified current baseline exactly once and suppress historical backfill.
     seed_key="baseline:time-openai-anthropic-intel"
-    alerts=[]
     if seed_key not in seen:
         rate,basis=_fx()
-        alerts.append(("🏛 미국 정부 전략지분·AI 산업정책",build_seed(rate,basis)))
+        OUT_TITLE.write_text("🏛 미국 정부 전략지분·AI 산업정책\n",encoding="utf-8")
+        OUT_ALERT.write_text(build_seed(rate,basis)+"\n",encoding="utf-8")
         seen.add(seed_key)
         for e in events:
             if e.get("kind")=="news":
                 seen.add("event:"+_event_key(e))
+        print("alert_ready=true type=baseline")
     else:
+        new_events=[]
+        used=set()
         for e in events:
             if e.get("kind")!="news":
                 continue
             key="event:"+_event_key(e)
-            if key in seen:
+            if key in seen or key in used:
                 continue
-            alerts.append(("🏛 미국 정부 전략지분·AI 산업정책 — 새 변화",build_news(e)))
-            seen.add(key)
+            used.add(key)
+            new_events.append((key,e))
 
-    if alerts:
-        title,body=alerts[0]
-        OUT_TITLE.write_text(title+"\n",encoding="utf-8")
-        OUT_ALERT.write_text(body+"\n",encoding="utf-8")
-        print(f"alert_ready=true count={len(alerts)}")
-    else:
-        print("No material new US AI strategic-equity event.")
+        selected=new_events[:5]
+        if selected:
+            body="\n\n────────\n\n".join(build_news(e) for _,e in selected)
+            OUT_TITLE.write_text("🏛 미국 정부 전략지분·AI 산업정책 — 새 변화\n",encoding="utf-8")
+            OUT_ALERT.write_text(body+"\n",encoding="utf-8")
+            for key,_ in selected:
+                seen.add(key)
+            print(f"alert_ready=true count={len(selected)}")
+        else:
+            print("No material new US AI strategic-equity event.")
 
     state["seen_events"]=sorted(seen)
     _save_pending(state)
