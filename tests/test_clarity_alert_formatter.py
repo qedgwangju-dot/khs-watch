@@ -122,6 +122,23 @@ class ClarityFormatterTest(unittest.TestCase):
         self.assertIn("Circle Internet Trust Company LLC", rendered)
         self.assertIn("제3자 기관자산 수탁 서비스의 실제 제공·매출 연결은 아직 공식 확인", rendered)
 
+    def test_custody_final_rule_is_not_described_as_proposal(self):
+        event = {
+            "source": "SEC Federal Register 최종규칙",
+            "event_type": "SEC·CFTC 공식 규칙·해석·집행지침",
+            "federal_register_type": "Final Rule",
+            "title": "Adviser and Regulated Fund Custody Rules; Crypto Custody Rules",
+            "url": "https://www.federalregister.gov/final",
+            "date": "2027-03-01",
+            "detail": "Document Number: 2027-12345 | Publication Date: 2027-03-01 | Effective Date: 2027-04-01",
+        }
+        title, body = MOD.localize_event(event)
+        self.assertIn("최종규칙 확정", title)
+        self.assertIn("시행일은 2027-04-01", body)
+        self.assertNotIn("개정안 제안", title)
+        summary = MOD.core_summary(event)
+        self.assertIn("최종 확정", summary)
+
     def test_date_only_is_shown_in_korean_calendar_format(self):
         event = {
             "source": "상원 은행위원회",
