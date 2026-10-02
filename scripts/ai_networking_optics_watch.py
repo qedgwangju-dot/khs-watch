@@ -232,8 +232,8 @@ HIGH_SIGNAL_PATTERNS = [
     r"domestic content", r"domestic end product", r"Buy American",
     r"\b65\s*%\b", r"\b75\s*%\b", r"exempt(?:ion|ions)?", r"restrictions?",
     r"national security systems?", r"Inn[o]?light", r"Eoptolink",
-    r"광트랜시버", r"AI 데이터센터", r"ELSFP", r"EML",
-    r"공급계약", r"수주", r"검수", r"납품", r"계약기간", r"샘플", r"양산", r"출하",
+    r"광트랜시버", r"광통신", r"AI 데이터센터", r"ELSFP", r"EML",
+    r"공급계약", r"수주", r"검수", r"납품", r"계약기간", r"샘플", r"samples?", r"sampling", r"양산", r"출하",
     r"optical coupling", r"active alignment", r"alignment modules?", r"aligners?",
     r"motion platforms?", r"linear motors?", r"6[- ]axis", r"nanometer", r"50\s*nm",
     r"\bFAU\b", r"\bOSAT\b", r"order visibility", r"delivery visibility",
@@ -261,7 +261,7 @@ ACTION_PATTERNS = [
     r"export licen[cs]e", r"capacity reservation", r"prepayment", r"deposit",
     r"long[- ]term supply", r"crystal growth", r"pilot production",
     r"공급계약", r"단일판매", r"수주", r"발주서", r"검수", r"납품", r"계약기간",
-    r"정정", r"샘플", r"고객.{0,12}(검증|평가|인증)", r"양산", r"출하", r"생산능력", r"증설",
+    r"정정", r"샘플", r"samples?", r"sampling", r"고객.{0,12}(검증|평가|인증)", r"양산", r"출하", r"생산능력", r"증설",
     r"訂單", r"能見度", r"出貨", r"量產", r"擴產", r"產能", r"產能利用率",
     r"驗證", r"認證", r"導入", r"光耦合", r"對位", r"線性馬達", r"六軸",
 ]
@@ -567,6 +567,14 @@ def signal_score(title: str, source: str) -> int:
         score += 3
     if re.search(r"copper|optical|fiber|fibre|transceiver|laser|data movement|interconnect|fabric|retimer|PCIe|CXL", text, re.I):
         score += 2
+    if re.search(r"광트랜시버|광통신|AI 데이터센터", text, re.I):
+        score += 3
+    if re.search(r"공급계약|단일판매|수주|발주서|\bPO\b", text, re.I):
+        score += 5
+    if re.search(r"검수|납품|계약기간|정정", text, re.I):
+        score += 4
+    if re.search(r"샘플|samples?|sampling|고객.{0,20}(검증|평가|인증)|검증|인증|양산|출하|증설|생산능력", text, re.I):
+        score += 4
     if re.search(r"AI|data ?center|datacenter|hyperscaler|GPU|XPU", text, re.I):
         score += 2
     if any(source.lower() == trusted.lower() for trusted in TRUSTED_SOURCES):
@@ -587,7 +595,7 @@ def stage_for(title: str) -> str:
         return "납기·검수 변경"
     if re.search(r"공급계약|단일판매|수주|발주서|\bPO\b", title, re.I):
         return "수주·가시성"
-    if re.search(r"샘플|고객.{0,20}(검증|평가|인증)|검증|인증", title, re.I):
+    if re.search(r"샘플|samples?|sampling|고객.{0,20}(검증|평가|인증)|검증|인증", title, re.I):
         return "고객 검증·양산 도입"
     if re.search(r"양산|출하", title, re.I):
         return "양산·출하"
