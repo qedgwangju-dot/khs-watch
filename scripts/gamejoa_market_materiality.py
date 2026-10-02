@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 16
+VERSION = 17
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|목표|보인다|나서야|시급|밑돌\s*듯|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
@@ -38,7 +38,8 @@ RETAIL_PRODUCT_METRIC = re.compile(
     r"쇼핑|플래그십\s*스토어|sales per store|kids.{0,20}sales", re.I,
 )
 ROUTINE_PERSONNEL = re.compile(r"사장단\s*인사|임원\s*인사|이사회\s*의장.{0,15}내정", re.I)
-STAFF_APPOINTMENT = re.compile(r"(?:변호사|전문가|고문|자문위원|임원).{0,25}(?:영입|선임|합류)|(?:영입|선임).{0,25}(?:변호사|고문|자문위원)|staff appointment|hires? counsel", re.I)
+STAFF_APPOINTMENT = re.compile(r"(?:변호사|전문가|고문|자문위원|임원).{0,25}(?:영입|선임|합류)|(?:영입|선임).{0,25}(?:변호사|고문|자문위원)|(?:수장|이사장|원장)\s*후보.{0,20}적격|staff appointment|hires? counsel", re.I)
+VIRAL_DEMONSTRATION = re.compile(r"이색적인\s*장면|패러디|이색\s*영상|바이럴\s*영상|parody|viral video", re.I)
 SUPPORT_EVENT = re.compile(r"투자유치\s*(?:지원|가이드|프로그램)|기업설명회|투자자\s*미팅|투자\s*상담회|investment matchmaking|fundraising workshop", re.I)
 SPORTS_OWNERSHIP = re.compile(r"구단주|축구\s*구단|야구\s*구단|프로\s*(?:축구|야구)|football club|soccer club|club owner", re.I)
 LOCAL_CEREMONY = re.compile(r"나무\s*심기|식목|선포식|기념식|지역\s*축제|tree planting|proclamation ceremony", re.I)
@@ -70,6 +71,7 @@ HARD_HEADLINE = re.compile(
 # Prefer the first event mentioned in the headline, not a sector assigned by
 # the classifier. Reuse it for evidence ranking and compact-summary checks.
 HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) for name, head, source in (
+    ("tax_relief", r"비과세|과세.{0,12}제외|특례\s*(?:관세|방안)|FTA.{0,12}특례", r"비과세|과세.{0,25}제외|특례|특혜관세"),
     ("monetary_guidance", r"(?:연준|ECB|한국은행).{0,15}(?:의장|총재)", r"(?:금리|통화|정책).{0,90}(?:밝혔|말했|강조|신중|시사|필요)"),
     ("nuclear_warning", r"핵\s*(?:대응|사용|공격|위협)|nuclear.{0,12}(?:threat|response)", r"(?:핵|특별한\s*수단|모든\s*무기).{0,80}(?:대응|사용|경고|위협|준비|불가피)"),
     ("trading_status", r"거래\s*재개|액면병합|주식병합", r"거래.{0,12}재개|재개.{0,12}거래|액면병합|주식병합"),
@@ -113,6 +115,9 @@ ECONOMIC_GEOPOLITICS = re.compile(
 
 
 def focus_kind(title: str) -> str:
+    # A scoped tax treatment is the event; oil is only its subject.
+    if HEADLINE_FOCUS[0][1].search(title or ""):
+        return "tax_relief"
     matches = [(match.start(), index, kind) for index, (kind, headline, _source) in enumerate(HEADLINE_FOCUS)
                if (match := headline.search(title or "")) is not None]
     return min(matches)[2] if matches else ""
@@ -365,6 +370,28 @@ def news_value_rank(evidence: list[dict]) -> int:
     return 2
 
 
+def source_sentences(text: str) -> list[str]:
+    """Keep punctuation inside a quoted statement with its speaker."""
+    sentences = []
+    for paragraph in str(text or "").splitlines():
+        quoted, start = False, 0
+        for boundary in re.finditer(r'[“”"]|(?<=[.!?。])\s+', paragraph):
+            marker = boundary.group(0)
+            if marker == "“":
+                quoted = True
+            elif marker == "”":
+                quoted = False
+            elif marker == '"':
+                quoted = not quoted
+            elif not quoted:
+                if value := paragraph[start:boundary.start()].strip():
+                    sentences.append(value)
+                start = boundary.end()
+        if value := paragraph[start:].strip():
+            sentences.append(value)
+    return sentences
+
+
 def assess(title: str, body: str) -> dict:
     title = re.sub(r"\s+", " ", str(title or "")).strip()
     body = str(body or "").strip()
@@ -378,12 +405,18 @@ def assess(title: str, body: str) -> dict:
     ):
         result.update(disposition="exclude", priority=0, reason="investment_loan_solicitation_not_market_news")
         return result
-    sentences = [part.strip() for part in re.split(r"(?<!\d)[.!?。](?!\d)\s*|[\r\n]+", body) if part.strip()]
+    sentences = source_sentences(body)
     lead = " ".join(sentences[:3])
     headline_lead = f"{title} {lead}"
     electoral = bool(re.search(r"유세|선거운동|지지\s*(?:호소|결집)|campaign rally|election campaign", title, re.I))
     if STAFF_APPOINTMENT.search(title) and not re.search(r"공급\s*계약|수주|고객\s*계약|인수\s*(?:계약|완료)|영업이익|순이익|가이던스|supply contract|guidance", headline_lead, re.I):
         result.update(disposition="exclude", priority=0, reason="staff_appointment_without_market_change")
+        return result
+    if VIRAL_DEMONSTRATION.search(headline_lead) and not re.search(
+        r"공급\s*계약|납품\s*계약|수주|임상\s*[1-3]상|검증\s*결과|실증\s*결과|"
+        r"(?:대역폭|수율|전력효율|추론비용).{0,20}\d+(?:\.\d+)?\s*(?:%|배)|supply contract|validation results", headline_lead, re.I,
+    ):
+        result.update(disposition="exclude", priority=0, reason="entertainment_demonstration_without_industry_evidence")
         return result
     if OFFICE_PUBLICITY.search(headline_lead) and not OFFICE_ECONOMIC_CHANGE.search(headline_lead):
         result.update(disposition="exclude", priority=0, reason="office_publicity_without_business_economics")

@@ -2111,7 +2111,7 @@ def ranked_article_sentences(
         # Split only at actual punctuation. A bare Hangul "다" also appears
         # inside clauses such as "지난해 같은 기간보다 20.8% 감소", so using
         # it as a boundary drops the result that follows.
-        for sentence in re.split(r"(?<=[.!?。])\s+|[\r\n]+", cleaned_text)
+        for sentence in market_materiality.source_sentences(cleaned_text)
         if clean_article_summary_text(sentence)
     ]
     if title:
@@ -8801,7 +8801,7 @@ def verified_alert_core(alert: dict, title: str) -> str:
             ))
             if focused_fact:
                 return focused_fact
-        source_body = strip_core_ui_garbage(
+        source_body = article_summary_body(
             "\n".join(
                 str(alert.get(key) or "")
                 for key in (
@@ -8845,6 +8845,8 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if not source or not core:
         return []
     errors = []
+    if core.count("“") != core.count("”"):
+        errors.append("orphaned_source_quote")
     target = analyst_research_target(title, source)
     if target and re.search(r"영업이익|순이익|매출", core) and target not in core:
         errors.append("financial_subject_mismatch")

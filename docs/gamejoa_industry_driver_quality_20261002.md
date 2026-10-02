@@ -415,3 +415,30 @@ All 11 local scripts passed again, including the expanded 84-test materiality
 suite. The fresh version-16 execution must still be checked below. Prior
 Telegram delivery state and the user's disabled separate policy watch remain
 untouched.
+
+## Version 17: Foreground Genre, Policy Focus and Quoted Sentences
+
+Run `36968824092` checked out version 16 and passed at
+`2026-10-02T05:28:19Z`. Its `14:25:14 KST` report verified 130 bodies,
+failed 30 and deferred 668. ZIP SHA-256:
+`B5489307D9D69D133CCDBEC65F355DC6757114B0DA6AD5E080A1F364621A3155`.
+Manual review did not accept the report unchanged: two remaining fillers were
+a robot-disposal parody and local agency-leader nomination hearings. Their
+background production and business-development wording was not the reported
+foreground event. An oil-tax-relief story also selected historical import
+mix, while a trade-policy quotation lost its speaker at an internal full stop.
+
+Version 17 excludes entertainment demonstrations lacking direct industry/test
+evidence and routine agency-candidate suitability reports. Actual measured
+robot tests and source-reported financial events remain eligible. A scoped
+tax-relief headline takes precedence over the broad oil topic and keeps
+`under review`, not an invented implementation. Quote-aware sentence boundaries
+retain the speaker's complete statement; an orphaned quote fails the source/core
+guard. Regeneration preserves paragraph boundaries so photo locations and
+subheads cannot attach to an otherwise valid sentence.
+
+Read-only replay of the seven-row version-16 artifact retains five industry,
+policy and energy stories, removes the two fillers and repairs both policy
+cores. The materiality suite now has 87 tests. Source collection and these
+tests still do not certify universal coverage or every future classification.
+Final production-environment evidence is recorded below after artifact reread.

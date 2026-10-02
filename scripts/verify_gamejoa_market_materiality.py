@@ -96,6 +96,54 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_viral_and_personnel_foreground_cannot_borrow_background_economics(self):
+        cases = (
+            ("현실판 터미네이터?…용광로에 뛰어든 로봇", "휴머노이드 로봇이 용광로에 뛰어드는 이색적인 장면이 공개됐습니다. 차세대 로봇 생산이 확대되면서 기존 모델을 퇴역시키기로 한 겁니다. 영화 패러디 영상입니다."),
+            ("신보·경제진흥원 수장 후보 적격", "시의회가 이사장과 원장 후보자에게 적격 판단을 내렸다. 소상공인 생존기간과 매출 증가 등 실질 성과를 관리하겠다는 방향을 긍정적으로 봤다."),
+        )
+        for title, body in cases:
+            with self.subTest(title=title):
+                assessed = materiality.assess(title, body)
+                self.assertNotEqual(assessed["disposition"], "keep", assessed)
+                with patch.object(radar.base, "kst_now", return_value=NOW):
+                    self.assertEqual(radar.quality_display_alerts([alert(title, body)], 7), [])
+        actual = materiality.assess("로봇 검증 결과 공개", "로봇기업은 전력효율을 30% 높인 검증 결과를 공개했다. 영상에는 영화 패러디도 포함됐다.")
+        self.assertEqual(actual["disposition"], "keep", actual)
+
+    def test_scoped_tax_event_beats_oil_import_background(self):
+        title = '관세청장 "중동산 원유 우회운송 비용 증가분 비과세 특례 검토"'
+        body = '관세청은 원유 수입 중 중동산 비중이 70.9%에서 55.6%로 감소했다고 밝혔다. 관세청장은 "중동산 원유 대체운반 운임·보험료 증가분을 과세에서 제외하는 특례 방안을 검토하겠다"고 밝혔다.'
+        item = alert(title, body)
+        item["telegram_core_fact"] = "원유 수입 중 중동산 비중이 70.9%에서 55.6%로 감소했다."
+        self.assertFalse(radar.source_output_aligned(item))
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("과세에서 제외", core)
+        self.assertIn("검토", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+
+    def test_punctuation_inside_quotes_keeps_speaker_and_whole_statement(self):
+        title = "미 무역대표부, 과잉생산 대응 조치 수주일 내 발표"
+        body = '미국이 중국 등을 겨냥한 과잉생산 대응 조치를 수주일 내 발표한다. 그리어 대표는 “조용히 받아들일 생각이 없다. 미국은 행동할 것”이라며 “향후 수주일 안에 조사 내용을 공개할 것”이라고 밝혔다.'
+        sentences = materiality.source_sentences(body)
+        self.assertEqual(len(sentences), 2)
+        self.assertTrue(sentences[1].startswith("그리어 대표는"))
+        ranked = radar.ranked_article_sentences(body, [], title=title)
+        self.assertFalse(any(sentence.startswith("미국은 행동할 것") for sentence in ranked))
+        for sentence in ranked:
+            self.assertEqual(sentence.count("“"), sentence.count("”"), sentence)
+        core = radar.detailed_article_core(title, body)
+        self.assertEqual(core.count("“"), core.count("”"), core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        item = alert(title, body)
+        item["source_body"] = '그리어 대표 "수주일 내 조사 내용 공개"\n▲그리어 대표가 기자회견에서 발언하고 있다. 밀워키(미국)/AP연합뉴스\n' + body
+        item["telegram_core_fact"] = '미국은 행동할 것”이라며 “수주일 안에 조사 내용을 공개할 것”이라고 밝혔다.'
+        self.assertIn("orphaned_source_quote", radar.source_core_fact_errors(item))
+        repaired = radar.verified_alert_core(item, title)
+        self.assertEqual(repaired.count("“"), repaired.count("”"), repaired)
+        self.assertTrue(radar.core_sentence_is_complete(repaired), repaired)
+        self.assertNotIn("AP연합뉴스", repaired)
+        self.assertNotIn("발언하고 있다", repaired)
+
     def test_fresh_run_administrative_and_exhibition_fillers_do_not_pass(self):
         cases = (
             ("리알로, 파트너와 함께 메인넷 연다", "리알로는 은행이 온체인에서 대출을 제공하려면 대출자의 온체인 자산과 신용정보를 확인할 필요가 있다고 말했다. 리알로가 뉴욕증권거래소와 연결돼 있다고 설명했다. 한국 기관들이 규제 명확성이 생기기를 기다리며 기회를 검토하고 있다고 말했다."),
