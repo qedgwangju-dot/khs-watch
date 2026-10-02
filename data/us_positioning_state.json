@@ -1,7 +1,7 @@
 {
   "seen": {
     "Nasdaq SOX|sox": "997ad63914a78c5bb9db1157e27515e9da987beadf3142c28fcd928c7550d6f4",
-    "Cboe|options": "ad50484d672b0d2be3c2ee4c2648ba8e5c3cab735df16b1f6aca926dfcffa311",
+    "Cboe|options": "07a3ae502cebc8d1b7ba004ae6239ab7a9e153bea8e7545870aa23dc832dba87",
     "CFTC|cot": "4b1e773466ddc4a7be9d5e8f0d153ac93e6b0bbf9e17f5211e81063c0c4498f0"
   },
   "values": {
@@ -33,22 +33,30 @@
       "kind": "options",
       "period": "Thursday, October 1, 2026",
       "metrics": {
-        "total_pc_ratio": 0.83,
-        "total_calls": 4007953,
-        "total_puts": 3329401,
-        "total_time_ct": "03:15 PM",
-        "equity_pc_ratio": 0.75,
-        "equity_calls": 2617029,
-        "equity_puts": 1960368,
-        "equity_time_ct": "03:15 PM",
-        "index_pc_ratio": 0.98,
-        "index_calls": 1390924,
-        "index_puts": 1369033,
-        "index_time_ct": "03:15 PM",
-        "final_snapshot": true
+        "total_pc_ratio": 0.9,
+        "total_calls": 7261792,
+        "total_puts": 6561036,
+        "total_time_ct": "일별 마감",
+        "equity_pc_ratio": 0.57,
+        "equity_calls": 2039492,
+        "equity_puts": 1155828,
+        "equity_time_ct": "일별 마감",
+        "index_pc_ratio": 1.01,
+        "index_calls": 3623629,
+        "index_puts": 3661053,
+        "index_time_ct": "일별 마감",
+        "snapshot_type": "cboe_daily_eod",
+        "final_snapshot": true,
+        "daily_ratio_crosscheck": {
+          "date": "2026-10-01",
+          "total": 0.9,
+          "index": 1.01,
+          "equity": 0.57,
+          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-01"
+        }
       },
-      "url": "https://www.cboe.com/us/options/market_statistics/market/",
-      "fingerprint": "ad50484d672b0d2be3c2ee4c2648ba8e5c3cab735df16b1f6aca926dfcffa311"
+      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-01",
+      "fingerprint": "07a3ae502cebc8d1b7ba004ae6239ab7a9e153bea8e7545870aa23dc832dba87"
     },
     "CFTC|cot": {
       "source": "CFTC",
@@ -148,5 +156,5 @@
       }
     }
   },
-  "updated_at_kst": "2026-10-02T10:34:09.620843+09:00"
+  "updated_at_kst": "2026-10-02T10:42:21.905357+09:00"
 }
