@@ -90,6 +90,38 @@ class ClarityFormatterTest(unittest.TestCase):
         self.assertIn("S7-2026-35", body)
         self.assertNotIn("롤러코스터", title)
 
+    def test_custody_federal_register_milestone_uses_exact_comment_deadline(self):
+        event = {
+            "source": "SEC Federal Register 제안규칙",
+            "event_type": "SEC·CFTC 공식 규칙·해석·집행지침",
+            "federal_register_type": "Proposed Rule",
+            "title": "Adviser and Regulated Fund Custody Rules; Crypto Custody Rules",
+            "url": "https://www.federalregister.gov/example",
+            "date": "2026-10-05",
+            "detail": (
+                "SEC custody proposal. Document Number: 2026-99999 | "
+                "Publication Date: 2026-10-05 | Comments Close: 2026-12-04"
+            ),
+        }
+        title, body = MOD.localize_event(event)
+        self.assertIn("암호자산 수탁 규칙", title)
+        self.assertIn("2026-12-04", body)
+        self.assertIn("2026-99999", body)
+
+    def test_custody_investment_lines_include_coinbase_and_circle_trust_paths(self):
+        event = {
+            "source": "SEC 보도자료",
+            "event_type": "SEC·CFTC 공식 규칙·해석·집행지침",
+            "title": "SEC Proposal Would Address How Investment Advisers and Funds Can Custody Crypto Assets Under the Federal Securities Laws",
+            "url": "https://www.sec.gov/example",
+            "date": "2026-10-01",
+            "detail": "registered investment advisers regulated funds custody crypto assets",
+        }
+        rendered = "\n".join(MOD.investment_lines(event))
+        self.assertIn("Coinbase Custody Trust Company", rendered)
+        self.assertIn("Circle Internet Trust Company LLC", rendered)
+        self.assertIn("제3자 기관자산 수탁 서비스의 실제 제공·매출 연결은 아직 공식 확인", rendered)
+
     def test_date_only_is_shown_in_korean_calendar_format(self):
         event = {
             "source": "상원 은행위원회",
