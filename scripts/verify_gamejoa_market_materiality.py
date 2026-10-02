@@ -96,6 +96,27 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_capacity_headline_core_cannot_substitute_previous_quarter_revenue(self):
+        title = "엠케이전자, 중국 법인 성장 지속…도금와이어 캐파 증설 착수"
+        body = "실제로 엠케이전자 중국법인의 2분기 매출은 전 분기 대비 약 15% 증가했다. 엠케이전자는 내년 상반기까지 올해 대비 도금와이어 생산능력을 50% 확대하는 증설에 착수했다."
+        sentences = radar.ranked_article_sentences(body, [], title=title)
+        core = radar.source_focused_article_core(title, sentences)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertIn("증설", core)
+        self.assertIn("50%", core)
+        self.assertIn("올해 대비", core)
+        self.assertNotIn("15%", core)
+        self.assertFalse(materiality.core_focus_aligned(title, "2분기 매출은 15% 증가했다."))
+
+    def test_foreign_wire_dateline_and_invisible_characters_do_not_reach_core(self):
+        raw = "[마나마=AP/뉴시스] \ufeff마코 루비오\ufeff 미국 국무장관이 이란 대표단에 출국을 요구한 것으로 전해졌다."
+        self.assertTrue(radar.core_has_ui_garbage(raw))
+        cleaned = radar.normalized_article_sentence(raw)
+        self.assertNotIn("[마나마", cleaned)
+        self.assertNotIn("\ufeff", cleaned)
+        self.assertTrue(radar.core_sentence_is_complete(cleaned), cleaned)
+        self.assertIn("요구한 것으로 전해졌다", cleaned)
+
     def test_foreign_topic_overlays_preserve_only_verified_collector_evidence(self):
         title = "US attacks Iran over ship being hit in Strait of Hormuz"
         body = "The US military completed airstrikes targeting Iran after a civilian vessel was attacked in the Strait of Hormuz, threatening the ceasefire."

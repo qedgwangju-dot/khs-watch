@@ -212,3 +212,18 @@ semiconductor market-driver and power-cable order stories and removed all five
 administrative/publicity fillers (7 selected rows became 2). No saved core,
 delivery state or sent-event key was modified. Fresh live dry-run and saved
 artifact verification are still required before the amended runtime is accepted.
+
+Run `36953905842` passed all 11 scripts (61 materiality tests) and the report
+guard at `2026-10-02T02:08:00Z`. Its 11:05:09 KST report selected actual market,
+capital, capacity, geopolitical and contract events rather than the five
+previous administrative/publicity fillers. Collection still had 160 detail
+attempts, 123 verified bodies, 37 failures and 658 deferred rows.
+
+The manual core reread found two remaining summary defects: capacity expansion
+was replaced by the same issuer's preceding-quarter revenue, and a foreign wire
+dateline/invisible character survived in the Iran core. Version 10 adds a
+capacity-focused source/core check and removes wire-service datelines/invisible
+characters. Compression retains the source's comparison baseline (`올해 대비`),
+not just its percentage. Two persistent tests bring the materiality suite to
+63, and all 11 local scripts passed again. Read-only replay repaired those two
+cores without changing delivery state; a new runtime artifact is still required.
