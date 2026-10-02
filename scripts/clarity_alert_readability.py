@@ -193,6 +193,13 @@ def sentence_bullets(text):
 
 def confirmed_fact_lines(event, body_ko):
     if FMT.is_sec_crypto_custody_2026(event):
+        if FMT.rule_stage(event) == "final":
+            effective = FMT.federal_register_effective_date(event)
+            return [
+                "SEC 암호자산 수탁 규칙 Final Rule(최종규칙) 확정.",
+                "self-custody(자체 수탁)·state trust company(주 신탁회사) 조건은 최종 문안 기준으로 적용.",
+                ("시행일 " + effective) if effective else "시행일·전환기간·준수기한은 Federal Register 원문 확인.",
+            ]
         return [
             "File No. S7-2026-35 · Release No. IA-7023 / IC-36353.",
             "제한적 self-custody(자체 수탁) + 조건부 state trust company(주 신탁회사) 수탁 경로 제안.",
@@ -204,6 +211,8 @@ def confirmed_fact_lines(event, body_ko):
 
 def compact_status(event):
     if FMT.is_sec_crypto_custody_2026(event):
+        if FMT.rule_stage(event) == "final":
+            return "🟢 Final Rule(최종규칙) — 최종 문안 확정, 시행일·준수기한 확인 단계."
         return "🟡 Proposed Rule(제안규칙) — 공식 초안 공개, 아직 법적 의무·시행 효력 없음."
     status = clean(current_status(event))
     if len(status) > 150:
@@ -254,7 +263,12 @@ def pending_lines(event):
 def next_check_lines(event):
     et = clean(event.get("event_type", ""))
     if FMT.is_sec_crypto_custody_2026(event):
-        return ["Federal Register 게재·60일 의견수렴", "최종규칙 채택 여부·시행일"]
+        if FMT.rule_stage(event) == "final":
+            return ["시행일·전환기간·준수기한", "기관별 실제 수탁 개시·수탁자산 증가"]
+        due = FMT.federal_register_comments_close(event)
+        if due:
+            return [f"의견수렴 마감 {due}", "Final Rule(최종규칙) 채택 여부·시행일"]
+        return ["Federal Register 게재·60일 의견수렴", "Final Rule(최종규칙) 채택 여부·시행일"]
     if is_media_text_release(event):
         return ["공식 개정 법안 PDF·텍스트 확보", "직전 버전과 조문별 diff", "상원 cloture·motion to proceed 60표 결과"]
     if is_ethics_breakthrough(event):
