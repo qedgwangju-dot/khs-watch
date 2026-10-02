@@ -360,6 +360,19 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         )
         self.assertEqual(MODULE._news_title_ko(row), "백악관, 미국 디젤 수출금지 여부 검토")
 
+    def test_euronews_direct_reserve_parser(self):
+        now = dt.datetime(2026, 10, 2, 12, 0, tzinfo=dt.timezone.utc)
+        html = """
+        <html><body>
+        EU Energy Commissioner Dan Jorgensen said releasing strategic reserves is a possibility
+        as the diesel squeeze bites. Member states are discussing a coordinated release.
+        </body></html>
+        """
+        item = MODULE.parse_eu_diesel_reserve_snapshot(html, now)
+        self.assertEqual(item.event_kind, "eu_diesel_reserve_policy")
+        self.assertEqual(item.source, "Euronews")
+        self.assertIn("strategic diesel reserves", item.title)
+
     def test_eu_diesel_reserve_considering_is_classified(self):
         title = 'EU energy chief says releasing strategic diesel reserves is a possibility'
         self.assertEqual(MODULE.classify_event(title), "eu_diesel_reserve_policy")

@@ -50,6 +50,10 @@ KPLER_STS_URL = (
     "https://www.kpler.com/blog/"
     "saudi-export-rerouting-amid-gulf-of-oman-sts-bottlenecks-amplify-vlcc-intensity-of-meg-flows"
 )
+EU_DIESEL_RESERVE_URL = (
+    "https://www.euronews.com/2026/10/01/"
+    "releasing-strategic-reserves-is-a-possibility-eu-energy-chief-tells-euronews-as-diesel-squ"
+)
 MIDEAST_EXPORT_SNAPSHOT_URLS = (
     "https://www.reuters.com/business/energy/"
     "mideast-oil-exports-rebound-september-saudi-arabia-boosts-shipments-2026-09-28/",
@@ -720,6 +724,28 @@ def _visible_text(raw_html: str) -> str:
     return re.sub(r"\s+", " ", html.unescape(text)).strip()
 
 
+def parse_eu_diesel_reserve_snapshot(raw_html: str, current: dt.datetime) -> NewsItem:
+    text = _visible_text(raw_html)
+    low = normalize_text(text)
+    required = (
+        any(term in low for term in ("energy commissioner", "dan jørgensen", "dan jorgensen"))
+        and "diesel" in low
+        and any(term in low for term in ("strategic reserves", "emergency oil-reserve", "emergency stocks", "strategic stocks"))
+        and any(term in low for term in ("possibility", "discuss", "release", "releasing"))
+    )
+    if not required:
+        raise RuntimeError("EU diesel reserve interview markers not found")
+    title = "EU energy chief considers release of strategic diesel reserves"
+    return NewsItem(
+        title=title,
+        source="Euronews",
+        link=EU_DIESEL_RESERVE_URL,
+        published_utc=current.isoformat().replace("+00:00", "Z"),
+        published_epoch=current.timestamp(),
+        event_kind="eu_diesel_reserve_policy",
+    )
+
+
 def parse_kpler_sts_snapshot(raw_html: str, current: dt.datetime) -> NewsItem:
     text = _visible_text(raw_html)
     record = re.search(
@@ -867,6 +893,12 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
             items.extend(parse_rss(fetch_bytes(google_news_url(query)), current, max_age_hours))
         except Exception as exc:
             errors.append(str(exc))
+
+    try:
+        eu_html = fetch_bytes(EU_DIESEL_RESERVE_URL).decode("utf-8", errors="replace")
+        items.append(parse_eu_diesel_reserve_snapshot(eu_html, current))
+    except Exception as exc:
+        errors.append(f"Euronews EU diesel reserve direct: {type(exc).__name__}: {exc}")
 
     try:
         kpler_html = fetch_bytes(KPLER_STS_URL).decode("utf-8", errors="replace")
