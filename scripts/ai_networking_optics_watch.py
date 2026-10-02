@@ -67,12 +67,21 @@ COMPANIES = {
             '"optical transceiver" (FCC OR "Federal Communications Commission") (China OR Chinese OR restriction OR rule OR "Covered List" OR 3.2T OR "domestic content" OR 65% OR 75%)',
             '"optical transceiver" (Senate OR Congress OR "national security systems") (China OR Chinese OR Innolight OR Eoptolink)',
             '"optical transceiver" ("Buy American" OR "domestic end product" OR HBOM OR SBOM)',
+            '("Morgan Stanley" OR "Marc Lehman") (FCC OR optical OR transceiver) (3.2T OR 65% OR 75% OR Lumentum OR Coherent OR AAOI)',
         ],
     },
     "AXT": {
         "ticker": "AXTI",
         "aliases": ["AXT", "AXT Inc."],
         "query": 'AXT (InP OR "indium phosphide") (substrate OR shortage OR "export license" OR capacity OR "data center" OR optical)',
+    },
+    "InP Supply Chain": {
+        "ticker": "InP 공급망",
+        "aliases": ["InP", "indium phosphide", "Sumitomo Electric", "IQE"],
+        "queries": [
+            '"indium phosphide" substrate ("data center" OR optical OR transceiver) (shortage OR "lead time" OR capacity OR price OR export)',
+            '"InP substrate" (shortage OR capacity OR "export license" OR "lead time") (laser OR transceiver OR AI)',
+        ],
     },
     "Applied Optoelectronics": {
         "ticker": "AAOI",
@@ -133,6 +142,7 @@ DISPLAY_NAMES_KO = {
     "Coherent": "코히런트",
     "US Optical Policy": "미국 광트랜시버 정책",
     "AXT": "AXT",
+    "InP Supply Chain": "InP 기판 공급망",
     "Applied Optoelectronics": "어플라이드 옵토일렉트로닉스",
     "Astera Labs": "아스테라 랩스",
     "Corning": "코닝",
@@ -287,17 +297,32 @@ def canonical_story_key(company: str, title: str) -> str | None:
     text = html.unescape(title or "").lower()
     if company == "US Optical Policy":
         if re.search(r"senate|congress|bill|legislation|national security systems?", text, re.I):
-            if re.search(r"pass(?:es|ed)?|signed|enacted|law", text, re.I):
+            if re.search(r"signed|enacted|becomes? law", text, re.I):
                 return "us-optical-policy|congress|enacted"
+            if re.search(r"pass(?:es|ed)?", text, re.I):
+                return "us-optical-policy|congress|passed"
             return "us-optical-policy|congress|bill"
-        if re.search(r"final rule|finaliz(?:e|es|ed|ing)|adopt(?:s|ed)?|effective|takes? effect", text, re.I):
+        if re.search(r"effective|takes? effect|implementation date", text, re.I):
+            return "us-optical-policy|fcc|effective"
+        if re.search(r"final rule|finaliz(?:e|es|ed|ing)|adopt(?:s|ed)?", text, re.I):
             return "us-optical-policy|fcc|final"
         if re.search(r"proposed rule|rulemaking|notice|comment|draft|consider", text, re.I):
             return "us-optical-policy|fcc|proposal"
         if re.search(r"3\.2\s*t|65\s*%|75\s*%|domestic content|buy american|exempt", text, re.I):
-            return "us-optical-policy|fcc|content-threshold-scenario"
-        return "us-optical-policy|fcc|other"
-    if company == "AXT" and re.search(r"\binp\b|indium phosphide", text, re.I):
+            parts = []
+            if re.search(r"3\.2\s*t", text, re.I):
+                parts.append("3.2t")
+            if re.search(r"65\s*%", text, re.I):
+                parts.append("65")
+            if re.search(r"75\s*%", text, re.I):
+                parts.append("75")
+            if re.search(r"domestic content|domestic end product|buy american", text, re.I):
+                parts.append("domestic")
+            if re.search(r"exempt", text, re.I):
+                parts.append("exemption")
+            return "us-optical-policy|fcc|content-scenario|" + "-".join(parts or ["generic"])
+        return None
+    if company in {"AXT", "InP Supply Chain"} and re.search(r"\binp\b|indium phosphide", text, re.I):
         if re.search(r"export licen[cs]e|restriction|china", text, re.I):
             return "axt|inp|export-policy"
         if re.search(r"shortage|tight|capacity|expand|substrate", text, re.I):
@@ -532,7 +557,7 @@ def category_for(title: str, company: str) -> str:
         if re.search(r"senate|congress|bill|legislation|national security systems?", title, re.I):
             return "미국 광트랜시버 규제·법안"
         return "FCC 광트랜시버 규제"
-    if company == "AXT" and re.search(r"\bInP\b|indium phosphide|substrate|export licen[cs]e", title, re.I):
+    if company in {"AXT", "InP Supply Chain"} and re.search(r"\bInP\b|indium phosphide|substrate|export licen[cs]e", title, re.I):
         return "InP 기판 병목"
     if company == "CPO Equipment Supply Chain":
         if re.search(r"驗證|認證|導入|\bOSAT\b|qualification|validation|verification|certif", title, re.I):
@@ -793,7 +818,7 @@ def main() -> None:
         "dedupe_version": 2,
         "quality_version": 3,
         "cpo_equipment_version": 2,
-        "optical_policy_version": 1,
+        "optical_policy_version": 2,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "seen_keys": updated_seen,
         "seen_story_keys": updated_story_keys,
@@ -814,6 +839,8 @@ def main() -> None:
         optical_policy_version = int(state.get("optical_policy_version") or 0)
         if optical_policy_version < 1:
             new_items = [item for item in new_items if item.get("company") not in {"US Optical Policy", "AXT"}]
+        if optical_policy_version < 2:
+            new_items = [item for item in new_items if item.get("company") != "InP Supply Chain"]
         alert_items = new_items[:8] if initialized else []
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
