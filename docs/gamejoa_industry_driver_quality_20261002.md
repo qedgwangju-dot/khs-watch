@@ -301,3 +301,51 @@ Version 14 checks the headline and source introduction together for that
 context. Unquantified recollections of years of fundraising effort cannot be
 new financing evidence. A new quantified investment with office economics
 remains eligible. The persistent suite now has 74 tests.
+
+## Version 14 Acceptance and Remaining Boundaries
+
+The final runtime revision is
+`18dd3505a1887dca4b1a651a878b2ead95bd0b9c`. GitHub run `36958589662`
+checked out that exact revision and completed successfully at
+`2026-10-02T03:08:44Z` (`12:08:44 KST`). All 11 verification scripts passed,
+including 74 materiality tests, 95 coverage cases and 26 detail-queue tests.
+The generated-report guard passed separately after fresh source collection.
+
+The saved report is timestamped `2026-10-02T12:05:36+09:00`. It contains seven
+body-verified selected articles with complete compact cores (maximum 96
+characters) and seven valid HTTPS original-source anchors. Manual source/core
+review covered all seven rows: Korean bond yields, EcoPro HN customer/orders,
+trading resumption, Federal Reserve guidance, egg supply/prices, Hyundai's
+hybrid production plan and NASA-project-related market reaction. The source's
+reported market time is retained rather than presented as the query-time quote.
+Read-only saved-artifact replay retained all seven rows, changed no cores and
+reported zero headline/core focus mismatches. It did not modify delivery state.
+
+Artifact ZIP SHA-256:
+`892315B2879ABCA15D4EF69C2D60953976A20C38CA5E8C110C21F560E505B7D1`.
+Execution: https://github.com/qedgwangju-dot/khs-watch/actions/runs/36958589662
+
+These results accept the amended runtime and source-aligned visible report;
+they are not proof of complete news coverage or every internal classification.
+Collection attempted 160 article details, verified 132, failed 28 and deferred
+648 candidates. `coverage_incomplete` remains `true`; the recorded failure is
+`Korean business article body verification failed=28`. The NASA market story's
+internal evidence also retains a lexical energy-risk hit from an S-Oil stock
+quote. Its visible core is aligned, but that hit is not proof of an energy
+policy change. This remains a classification limitation rather than a basis
+for asserting perfect accuracy.
+
+The six added discovery queries predominantly cover trusted Korean press;
+existing international collectors remain in place. They do not constitute a
+complete direct subscription to every overseas company IR/blog or a promise
+of first-minute global coverage. All 24 supplied event classes have persistent
+candidate/final-selection fixtures, but synthetic fixtures do not certify
+every assertion in the user's reference digest.
+
+This execution used `telegram_dry_run=true`: Telegram sending, delivery-result
+verification, seen-state commit and retrieval-queue commit were all skipped.
+No historical sample was resent, and actual Telegram receipt was not proved.
+At the final API reread, `gamejoa-preopen-news-radar.yml` was `active` and the
+separate `khs-policy-watch.yml` remained `disabled_manually` as requested.
+Failure feedback is encoded in rules and repeatable regression tests; it is
+not a claim of model self-training or guaranteed future delivery.
