@@ -97,6 +97,8 @@ TRUSTED_SOURCES = {
     "state department",
     "department of state",
     "politico",
+    "federal communications commission",
+    "fcc",
     "reuters",
     "bloomberg",
     "the wall street journal",
@@ -124,6 +126,8 @@ SOURCE_PRIORITY = {
     "department of state": 0,
     "european council": 1,
     "european parliament": 1,
+    "federal communications commission": 0,
+    "fcc": 0,
     "reuters": 1,
     "bloomberg": 2,
     "the wall street journal": 3,
@@ -332,6 +336,80 @@ STORY_RULES = (
             "삼성전자·Ericsson·Nokia 수주, KMW·에이스테크·쏠리드·에치에프알 실제 주문을 순서대로 추적합니다."
         ),
         trusted_sources=("미 연방관보 FCC",),
+    ),
+    StoryRule(
+        key="us_fcc_space_nepa_reform",
+        title="미 FCC, 우주 기반 운영의 NEPA 환경심사 범위 축소",
+        google_queries=(
+            '"Modernizing the Commission’s National Environmental Policy Act Rules" FCC space-based operations September 30 2026',
+            '"space-based operations" "major Federal action" FCC NEPA satellite',
+            '"FCC" "NEPA" satellite launch deployment operation space stations 2026',
+            '"FCC 26-55" NEPA satellite space-based operations',
+        ),
+        required_groups=(
+            ("fcc", "federal communications commission"),
+            ("nepa", "national environmental policy act"),
+            ("space-based operations", "space station", "space stations", "satellite", "satellites"),
+            ("major federal action", "major federal actions", "mfa", "environmental review", "environmental assessment"),
+        ),
+        core=(
+            "FCC는 우주 기반 운영의 발사·배치·우주국 운용과 일부 위성 지상국 관련 FCC 승인행위를 "
+            "NEPA상 '주요 연방행위(MFA)'가 아닌 것으로 정리해 FCC 자체 환경심사 범위를 축소했습니다."
+        ),
+        impact="위성통신·LEO/NGSO 위성군, 지상국·게이트웨이, 우주 인프라 | 시간표·할인율·돈 버는 능력",
+        point=(
+            "핵심은 '위성군 전체가 모든 환경규제에서 면제'가 아니라 FCC 인허가 단계의 NEPA 절차가 줄어드는 것입니다. "
+            "허가 지연과 규제비용이 낮아지면 위성 배치·증설 시간표의 불확실성이 줄 수 있습니다."
+        ),
+        counter=(
+            "FAA의 발사·재진입 환경심사, 안테나 구조물 등록이 필요한 지상시설, 궤도잔해·주파수 간섭·안전 규정까지 사라지는 것은 아닙니다. "
+            "따라서 FCC NEPA 개정만으로 모든 위성 프로젝트의 인허가가 자동 승인되는 것으로 해석하면 안 됩니다."
+        ),
+        sectors="위성통신/LEO·NGSO, 지상국·게이트웨이, 우주 인프라·발사서비스",
+        impacts=("시간표", "할인율", "돈 버는 능력"),
+        paths=("인허가", "규제비용", "위성 배치", "지상국 구축"),
+        follow_up=(
+            "Federal Register 게재·효력발생일, 소송·집행정지 여부, FCC 위성·지상국 허가 처리기간, "
+            "SpaceX·Amazon Leo/Project Kuiper·AST SpaceMobile 등 사업자의 실제 신규 허가·배치 증가를 추적합니다."
+        ),
+        trusted_sources=("Federal Communications Commission", "FCC"),
+    ),
+    StoryRule(
+        key="us_fcc_satellite_spectrum_abundance",
+        title="미 FCC, 위성통신용 1,050MHz 주파수 추가 개방",
+        google_queries=(
+            '"Satellite Spectrum Abundance" FCC 12.7 42 GHz September 30 2026',
+            '"1,050 megahertz" satellite FCC 12.7 42',
+            '"more than 1,000 megahertz" satellite broadband FCC 42 GHz 12.7 GHz',
+            '"FCC 26-65" satellite spectrum abundance',
+        ),
+        required_groups=(
+            ("fcc", "federal communications commission"),
+            ("satellite spectrum abundance", "satellite broadband", "fixed-satellite service", "fss"),
+            ("12.7", "12.7-13.25", "42 ghz", "42-42.5"),
+            ("1,050", "1050", "1,000 megahertz", "1000 megahertz", "more than 1,000"),
+        ),
+        core=(
+            "FCC는 12.7~13.25GHz 550MHz와 42~42.5GHz 500MHz를 합쳐 총 1,050MHz를 "
+            "위성 고정통신서비스(FSS)에 더 폭넓게 사용할 수 있도록 규칙을 개정했습니다."
+        ),
+        impact="위성광대역·항공/해상 연결·게이트웨이·feeder link·ESIM | 돈 버는 능력·수급·시간표",
+        point=(
+            "추가 주파수는 소비자 단말 downlink, 항공·해상 이동형 지구국, 게이트웨이·feeder link 용량 확대에 연결될 수 있어 "
+            "위성망의 가입자·트래픽 증가를 기존 주파수 혼잡 없이 수용할 여지를 늘립니다."
+        ),
+        counter=(
+            "1,050MHz는 단일 사업자에게 독점 배정된 용량이 아니며, 실제 매출은 사업자별 면허·주파수 조정·단말/지상국 투자·위성 발사로 이어져야 합니다. "
+            "12.7GHz·42GHz의 기존 지상 서비스와 간섭 보호 조건도 남습니다."
+        ),
+        sectors="위성광대역, 항공·해상 위성통신, 게이트웨이·지상국, 위성 안테나·RF 부품",
+        impacts=("돈 버는 능력", "수급", "시간표"),
+        paths=("주파수", "위성 용량", "지상국 CAPEX", "가입자·트래픽"),
+        follow_up=(
+            "최종 규칙 효력발생일, SpaceX·Amazon Leo/Project Kuiper·기타 NGSO 사업자의 실제 대역 사용 신청, "
+            "지상국·ESIM·게이트웨이 발주, 추가 Ku/Ka·D-band FNPRM의 최종 채택 여부를 추적합니다."
+        ),
+        trusted_sources=("Federal Communications Commission", "FCC"),
     ),
     StoryRule(
         key="us_fcc_security_import_restriction",
@@ -1194,6 +1272,27 @@ def semantic_policy_event_key(item: dict) -> str:
         elif any(term in title_text for term in ("additional companies", "additional vendors", "designates", "designation", "추가 지정", "추가 기업")):
             stage = "additional-designation"
         return f"us-congress-chinese-optical-transceiver-{stage}"
+    if "nepa" in text and ("space-based operations" in text or "space station" in text or "satellite" in text):
+        stage = "adopted"
+        if any(term in title_text for term in ("effective", "takes effect", "효력", "발효")):
+            stage = "effective"
+        elif any(term in title_text for term in ("court", "lawsuit", "challenge", "stay", "소송", "집행정지")):
+            stage = "litigation"
+        elif any(term in title_text for term in ("proposed", "proposal", "notice of proposed", "제안", "초안")):
+            stage = "proposal"
+        return f"us-fcc-space-nepa-{stage}"
+    if (
+        ("satellite spectrum abundance" in text or ("12.7" in text and "42" in text))
+        and ("1,050" in text or "1050" in text or "1,000 megahertz" in text or "1000 megahertz" in text or "more than 1,000" in text)
+    ):
+        stage = "adopted"
+        if any(term in title_text for term in ("effective", "takes effect", "효력", "발효")):
+            stage = "effective"
+        elif any(term in title_text for term in ("application", "license", "market access", "신청", "면허")):
+            stage = "operator-application"
+        elif any(term in title_text for term in ("further notice", "fnprm", "comment", "추가 의견", "의견수렴")):
+            stage = "further-notice"
+        return f"us-fcc-satellite-spectrum-abundance-{stage}"
     if (
         "auction 115" in text
         and ("upper c-band" in text or "upper c band" in text)
@@ -2281,6 +2380,16 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
 
 def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, str]:
     """Return a conservative status, upgrading only first-party verified events."""
+    if (
+        rule.key in {"us_fcc_space_nepa_reform", "us_fcc_satellite_spectrum_abundance"}
+        and any(
+            "fcc.gov" in str(item.get("link") or "").lower()
+            or "federal communications commission" in str(item.get("source") or "").lower()
+            or str(item.get("source") or "").strip().lower() == "fcc"
+            for item in items
+        )
+    ):
+        return "공식 확인", "미 FCC 공식자료 확인 완료"
     if (
         rule.key == "us_fcc_upper_c_band_auction115"
         and any(
