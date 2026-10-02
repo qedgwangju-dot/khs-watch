@@ -306,13 +306,24 @@ def collect_federal_register(errors):
                 signal = f"{title} {abstract}"
                 if not (TOPIC_RE.search(signal) or (CRYPTO_RE.search(signal) and REG_ACTION_RE.search(signal))):
                     continue
+                detail_parts = []
+                if abstract:
+                    detail_parts.append(abstract[:520])
+                if row.get("document_number"):
+                    detail_parts.append(f"Document Number: {clean(row.get('document_number'))}")
+                if row.get("publication_date"):
+                    detail_parts.append(f"Publication Date: {clean(row.get('publication_date'))}")
+                if row.get("comments_close_on"):
+                    detail_parts.append(f"Comments Close: {clean(row.get('comments_close_on'))}")
+                if row.get("citation"):
+                    detail_parts.append(f"Citation: {clean(row.get('citation'))}")
                 events.append(Event(
                     source,
                     "SEC·CFTC 공식 규칙·해석·집행지침",
                     title,
                     row.get("html_url") or url,
                     date=row.get("publication_date") or "",
-                    detail=abstract[:700],
+                    detail=" | ".join(detail_parts)[:900],
                 ))
         except Exception as exc:
             errors.append(f"{source}: {exc}")
