@@ -46,11 +46,17 @@ BASELINE = {
 }
 
 QUERIES = (
-    '"BofA" "AI data center" "$2.2 trillion" 2030',
-    '"Bank of America" "data center systems" 2030 TAM AI',
-    '"BofA" "server CPU" 2030 210 billion agentic',
-    '"BofA" cloud capex 2027 1.4 trillion AI',
-    '"Vivek Arya" data center systems TAM AI 2030',
+    'BofA AI data center systems market 2030',
+    'Bank of America data center systems TAM AI 2030',
+    'BofA server CPU 2030 agentic AI',
+    'BofA cloud capex 2027 AI infrastructure',
+    'Vivek Arya AI data center systems 2030',
+)
+
+SEED_URLS = (
+    ("Investing.com", "https://www.investing.com/news/stock-market-news/these-5-ai-chip-stocks-are-mustown-into-q4-bofa-says-4927145"),
+    ("Yahoo Finance", "https://sg.finance.yahoo.com/news/ai-spending-will-fuel-wins-for-micron-nvidia-intel-and-other-chip-stocks-bofa-analyst-193925832.html"),
+    ("Investing.com", "https://uk.investing.com/news/stock-market-news/bofa-lifts-server-cpu-tam-to-210bn-on-the-rise-of-ai-agents-4830073"),
 )
 
 TRUSTED = (
@@ -149,6 +155,26 @@ def collect(now: datetime) -> list[dict]:
                 "published_at": pub.isoformat() if pub else "",
                 "text": blob,
             })
+    for source, url in SEED_URLS:
+        try:
+            blob = article_text(url)
+            if not blob:
+                continue
+            low = blob.lower()
+            if "bofa" not in low and "bank of america" not in low and "vivek arya" not in low:
+                continue
+            ident = hashlib.sha256(url.encode("utf-8")).hexdigest()[:24]
+            out.append({
+                "id": ident,
+                "title": clean(blob[:220]),
+                "source": source,
+                "url": url,
+                "published_at": "",
+                "text": blob,
+            })
+        except Exception:
+            pass
+
     uniq = {}
     for row in out:
         uniq[row["id"]] = row
