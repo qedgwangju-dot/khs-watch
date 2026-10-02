@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-02T06:49:00+09:00",
+  "updated_at_kst": "2026-10-02T10:14:55+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
@@ -21,55 +21,55 @@
     "five_day_30y_bp": 14.0
   },
   "btc_etf": {
-    "date": "2026-09-30",
-    "total_usd_m": -148.7,
-    "status": "complete",
-    "reported_funds": 12,
-    "missing_funds": 0,
-    "prev_date": "2026-09-29",
-    "prev_total_usd_m": 66.2,
-    "day_change_usd_m": -214.9,
-    "day_change_pct": -324.6,
+    "date": "2026-10-01",
+    "total_usd_m": -92.9,
+    "status": "partial",
+    "reported_funds": 11,
+    "missing_funds": 1,
+    "prev_date": "2026-09-30",
+    "prev_total_usd_m": -148.7,
+    "day_change_usd_m": 55.8,
+    "day_change_pct": 37.5,
     "source_latest_date": "2026-10-01",
-    "source_latest_status": "pending",
-    "pending_date": "2026-10-01",
-    "latest_recomputed_total_usd_m": -148.7,
+    "source_latest_status": "partial",
+    "pending_date": null,
+    "latest_recomputed_total_usd_m": -92.9,
     "latest_total_gap_usd_m": 0.0,
     "latest_total_validated": true,
-    "last5_usd_m": 273.7,
+    "last5_usd_m": -9.9,
     "last5_dates": [
-      "2026-09-24",
       "2026-09-25",
       "2026-09-28",
       "2026-09-29",
-      "2026-09-30"
+      "2026-09-30",
+      "2026-10-01"
     ],
     "last5_values_usd_m": [
-      190.7,
       134.5,
       31.0,
       66.2,
-      -148.7
+      -148.7,
+      -92.9
     ],
-    "prev5_usd_m": 2653.1,
+    "prev5_usd_m": 2684.3,
     "prev5_dates": [
-      "2026-09-17",
       "2026-09-18",
       "2026-09-21",
       "2026-09-22",
-      "2026-09-23"
+      "2026-09-23",
+      "2026-09-24"
     ],
     "prev5_values_usd_m": [
-      159.5,
       433.0,
       999.0,
       714.7,
-      346.9
+      346.9,
+      190.7
     ],
     "five_day_compare_valid": true,
-    "five_day_change_usd_m": -2379.4,
-    "five_day_change_pct": -89.7,
-    "five_day_direction": "순자금흐름 악화"
+    "five_day_change_usd_m": -2694.2,
+    "five_day_change_pct": null,
+    "five_day_direction": "순유입→순유출 전환"
   },
   "sources": {
     "treasury_buyback_xml": "https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.xml",
