@@ -682,16 +682,22 @@ def extract_samsung_hbm4_price(event: dict) -> dict | None:
     obs: dict = {}
     if any(k in low for k in ("계약 체결", "가격 확정", "협상 타결", "contract signed", "price finalized", "pricing finalized", "negotiations concluded")):
         obs["stage"] = "signed"
-    elif any(k in low for k in ("마무리 수순", "final stages", "nearing completion", "close to finalizing")):
-        # '마무리 수순' is still not a signed contract.
-        obs["stage"] = "final_stage"
-    elif any(k in low for k in ("협상", "negotiation", "negotiating")):
-        obs["stage"] = "negotiation"
-    elif any(k in low for k in ("제시", "offered", "quoted")):
-        obs["stage"] = "reported_offer"
     else:
-        return None
-
+        future_final = bool(re.search(
+            r"(?:마무리\s*수순|final\s+stages|nearing\s+completion|close\s+to\s+finalizing)"
+            r"[^.]{0,50}?(?:전망|예상|것으로|expected|likely|planned)"
+            r"|(?:전망|예상|것으로|expected|likely|planned)[^.]{0,50}?"
+            r"(?:마무리\s*수순|final\s+stages|nearing\s+completion|close\s+to\s+finalizing)",
+            low, re.I
+        ))
+        if any(k in low for k in ("마무리 수순", "final stages", "nearing completion", "close to finalizing")) and not future_final:
+            obs["stage"] = "final_stage"
+        elif any(k in low for k in ("협상", "negotiation", "negotiating")):
+            obs["stage"] = "negotiation"
+        elif any(k in low for k in ("제시", "offered", "quoted")):
+            obs["stage"] = "reported_offer"
+        else:
+            return None
     # Exact range only when the article gives explicit endpoints.
     pm = re.search(
         r"(?:hbm4[^.]{0,120}?)(?:\$|미화\s*)?([0-9]+(?:\.[0-9]+)?)\s*(?:~|[-–—]|to)\s*(?:\$|미화\s*)?([0-9]+(?:\.[0-9]+)?)\s*(?:/\s*)?gb",
