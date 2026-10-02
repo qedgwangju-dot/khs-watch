@@ -1,7 +1,7 @@
 {
-  "last_alert_at_kst": "2026-10-02T22:36:16+09:00",
-  "last_event_kind": "eu_diesel_reserve_policy",
-  "last_event_id": "eu_diesel_reserve_policy:39e5bae5e4105db3",
+  "last_alert_at_kst": "2026-10-02T23:39:58+09:00",
+  "last_event_kind": "g7_reserve_release_agreement",
+  "last_event_id": "g7_reserve_release_agreement:eee493cfb65aaaeb",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-09-29T19:49:06+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-09-29T20:06:00+09:00",
@@ -11,30 +11,31 @@
     "oil_flow_recovery:49e30579bf30006f": "2026-10-02T00:40:12+09:00",
     "china_fuel_export_policy:e14f44093362ac6d": "2026-10-02T15:13:07+09:00",
     "east_west_pipeline_recovery:e1c114d1a040aef0": "2026-10-02T22:33:12+09:00",
-    "eu_diesel_reserve_policy:39e5bae5e4105db3": "2026-10-02T22:36:16+09:00"
+    "eu_diesel_reserve_policy:39e5bae5e4105db3": "2026-10-02T22:36:16+09:00",
+    "g7_reserve_release_agreement:eee493cfb65aaaeb": "2026-10-02T23:39:58+09:00"
   },
   "last_market": {
     "oil": {
       "symbol": "BZ=F",
       "label": "Brent",
       "unit": "달러/배럴",
-      "price": 99.63,
+      "price": 99.16,
       "previous_close": 102.31,
-      "change": -2.680000000000007,
-      "change_pct": -2.6194897859446846,
-      "timestamp_utc": "2026-10-02T13:26:15Z",
-      "timestamp_epoch": 1790947575.0
+      "change": -3.1500000000000057,
+      "change_pct": -3.0788779200469216,
+      "timestamp_utc": "2026-10-02T14:30:19Z",
+      "timestamp_epoch": 1790951419.0
     },
     "usdkrw": {
       "symbol": "KRW=X",
       "label": "원·달러",
       "unit": "원/달러",
-      "price": 1345.73,
+      "price": 1343.65,
       "previous_close": 1359.84,
-      "change": -14.1099999999999,
-      "change_pct": -1.0376220731850734,
-      "timestamp_utc": "2026-10-02T13:36:34Z",
-      "timestamp_epoch": 1790948194.0
+      "change": -16.189999999999827,
+      "change_pct": -1.190581244852323,
+      "timestamp_utc": "2026-10-02T14:40:19Z",
+      "timestamp_epoch": 1790952019.0
     }
   }
 }
