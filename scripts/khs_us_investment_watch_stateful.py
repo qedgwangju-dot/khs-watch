@@ -725,7 +725,7 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
                 facts.add("encinal_phase1_gw:1.4")
             if "4.9gw" in low:
                 facts.add("encinal_phase2_gw:4.9")
-            if any(term in low for term in ["사업비", "투자", "project cost"]):
+            if any(term in low for term in ["사업비", "총사업비", "project cost", "project costs", "estimated cost"]):
                 for value in _usd_billion_values(low):
                     facts.add(f"encinal_project_cost_usd_b:{value}")
             if _is_official(row) and any(term in low for term in ["제1호", "제 1 호", "1호", "공식 추진", "project star"]):
@@ -1227,6 +1227,24 @@ def _migrate_project_power_funding_roles(state: dict) -> None:
     state["project_power_funding_roles_version"] = 1
 
 
+def _migrate_encinal_project_cost_role(state: dict) -> None:
+    if int(state.get("encinal_project_cost_role_version") or 0) >= 1:
+        return
+    bucket = (state.setdefault("event_states", {}).get("encinal") or {})
+    if bucket:
+        facts = {str(x) for x in (bucket.get("facts") or [])}
+        slots = {str(k): str(v) for k, v in (bucket.get("slots") or {}).items()}
+        # 첫 송금 24억달러(2.4B)가 Project Star 총사업비로 오염된 과거 상태를
+        # 산업통상부 확정 총사업비 223억달러(22.3B)로 교정한다.
+        facts = {x for x in facts if not x.startswith("encinal_project_cost_usd_b:")}
+        facts.add("encinal_project_cost_usd_b:22.3")
+        slots["encinal|encinal_project_cost_usd_b"] = "encinal_project_cost_usd_b:22.3"
+        bucket["facts"] = sorted(facts)
+        bucket["slots"] = slots
+        bucket["last_source"] = str(bucket.get("last_source") or "") + " · project-cost-vs-funding-corrected"
+    state["encinal_project_cost_role_version"] = 1
+
+
 def _load() -> dict:
     global _SHARED_STATE, _BOOTSTRAP_GUARD
     state = _ORIG_LOAD()
@@ -1239,6 +1257,7 @@ def _load() -> dict:
     _migrate_joint_fact_sheet_status(state)
     _migrate_westinghouse_framework_equity(state)
     _migrate_project_power_funding_roles(state)
+    _migrate_encinal_project_cost_role(state)
     if _BOOTSTRAP_GUARD:
         state["event_state_guard_version"] = GUARD_VERSION
         state["event_state_guard_started_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
@@ -1715,6 +1734,16 @@ def _self_test() -> int:
     }
     if not required_encinal.issubset(accepted):
         raise RuntimeError(f"official Project Star baseline failed: {accepted}")
+
+    transfer_only_encinal = [{
+        "title": "텍사스 엔시날 첫 투자금 24억달러 미국 송금 완료",
+        "source": "아주경제",
+        "link": "https://example.com/encinal-transfer-only",
+        "published": "2026-10-01T05:30:00+00:00",
+    }]
+    transfer_accepted, _ = _accepted_facts_for_group("encinal", transfer_only_encinal)
+    if any(x.startswith("encinal_project_cost_usd_b:") for x in transfer_accepted):
+        raise RuntimeError(f"Encinal first transfer contaminated project cost: {transfer_accepted}")
 
     accepted, _ = _accepted_facts_for_group("nuclear_build", by_family.get("nuclear_build", []))
     required_nuclear = {
