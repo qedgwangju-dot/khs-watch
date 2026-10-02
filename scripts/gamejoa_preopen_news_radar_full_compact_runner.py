@@ -2218,6 +2218,18 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     if not market_materiality.focus_kind(title) and not market_materiality.DENIAL_HEADLINE.search(title):
         return ""
+    if market_materiality.focus_kind(title) == "sanctions_exemption":
+        for sentence in sentences:
+            action = re.search(
+                r"((?:영국|유럽연합|EU|미국|일본|캐나다)\s*(?:정부)?(?:은|는|이))\s+"
+                r"(?:\d{1,2}일\s*\(현지\s*시간\)\s*)?"
+                r"[^.!?]{0,100}?제재\s*예외조치를\s*발표하고\s+([^.!?]+제재를\s*면제하기로\s*했다[.!?]?)",
+                sentence,
+            )
+            if action:
+                fact = action.group(1) + " " + action.group(2)
+                if core_sentence_is_complete(fact):
+                    return fact
     if market_materiality.focus_kind(title) == "shareholder":
         insider_fact = insider_purchase_fact(title, sentences)
         if core_sentence_is_complete(insider_fact):
@@ -7105,7 +7117,31 @@ def joint_validation_event_theme(alert: dict) -> str:
     return f"joint_validation:{participant_key}:{'+'.join(markers)}:{stage}:{quantities}:{day}"
 
 
+def sanctions_exemption_event_theme(alert: dict) -> str:
+    """Merge a verified, same-jurisdiction LNG exemption across publishers."""
+    if not alert.get("body_verified"):
+        return ""
+    title = str(alert.get("source_title") or alert.get("news") or "")
+    body = str(alert.get("source_body") or "")
+    if market_materiality.focus_kind(title) != "sanctions_exemption":
+        return ""
+    authority = re.match(r"^(영국|英|미국|美|유럽연합|EU|일본|日|캐나다)(?:\s*정부)?[,，\s]", title)
+    if not authority or not all(term in body for term in ("한국", "러시아", "LNG")):
+        return ""
+    if not re.search(r"사할린[\s-]*(?:Ⅱ|II|2)", body, re.I):
+        return ""
+    expiries = re.findall(r"(\d{4})년\s*(\d{1,2})월\s*(\d{1,2})일\s*(?:까지|사이)", body)
+    if not expiries:
+        return ""
+    expiry = max(tuple(map(int, values)) for values in expiries)
+    authorities = {"영국": "uk", "英": "uk", "미국": "us", "美": "us", "유럽연합": "eu", "EU": "eu", "일본": "jp", "日": "jp", "캐나다": "ca"}
+    return f"sanctions_exemption:{authorities[authority.group(1)]}:russia:sakhalin-2:korea:{expiry[0]:04d}-{expiry[1]:02d}-{expiry[2]:02d}"
+
+
 def semantic_event_theme(alert: dict) -> str:
+    exemption_theme = sanctions_exemption_event_theme(alert)
+    if exemption_theme:
+        return exemption_theme
     joint_theme = joint_validation_event_theme(alert)
     if joint_theme:
         return joint_theme

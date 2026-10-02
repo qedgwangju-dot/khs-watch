@@ -544,3 +544,34 @@ focus mismatches. The latest seven-row report becomes five, including the
 actual autonomous-vehicle permit amendment. This replay neither sends old
 articles nor changes seen keys. Fresh deployment and run proof are recorded
 below only after the new artifact is inspected.
+
+## Version 21: Source-Action Exemption Cores and Consultation Exclusion
+
+Fresh version-20 run `36976290730` completed successfully at
+`2026-10-02T07:03:48Z`; the saved report queried at `16:00:35 KST`.
+It verified 122 bodies, failed 38 and deferred 652. ZIP SHA-256:
+`38D2A8F128411D5CAB78AB709766571EB8469C993E030888BD4E9D9788A20B73`.
+Manual inspection of all five selected items found an investment-immigration
+consultation advert and two publisher versions of the same LNG exemption.
+One exemption core quoted future monitoring instead of the actual exemption.
+These findings prevent treating technical success as source-quality completion.
+
+Consumer investment-immigration consultation headlines cannot borrow CPI,
+capital-return or project language to become equity news. Actual government
+employment-visa cost policy remains eligible. Exemption cores prefer the
+source's operative decision clause, preserving existing-contract scope and
+the exact expiry instead of a monitoring promise or photo credit.
+
+Verified Sakhalin-2 LNG exemptions share a persisted semantic event theme
+only with the same sanctioning jurisdiction, Korea/Russia scope and explicit
+expiry date. Publisher and publication-day changes do not create a new event;
+different authorities or expiries stay separate, and unverified bodies cannot
+establish the theme. This narrow rule is not universal semantic deduplication.
+
+Read-only replay of nine artifacts reviews 58 rows, retains 36, removes 22
+weak/duplicate selections and regenerates 13 cores, with zero headline/core
+focus mismatches. The latest five-row artifact becomes three actual macro/
+supply-policy events. All 11 local contract scripts passed, including 98
+materiality tests, 95 coverage cases and 26 retrieval-queue tests. No old
+article was resent, and no delivery/seen record was reset. Final fresh-run
+proof is recorded separately after deployment.

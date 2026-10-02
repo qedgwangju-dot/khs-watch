@@ -96,6 +96,35 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_consumer_visa_consultation_cannot_borrow_cpi_and_capital_words(self):
+        item = alert("이민업체, 미국투자이민 상담…EB-5 수수료 조정", "EB-5 수수료는 물가상승률에 따라 조정된다. 업체는 투자금 상환과 가족 영주권 신청을 위한 개별상담을 운영한다.")
+        self.assertEqual(radar.source_market_materiality(item)["disposition"], "exclude")
+        self.assertEqual(radar.quality_display_alerts([item], 1), [])
+        policy = materiality.assess("미국, H-1B 비자 비용 인상", "미국 정부는 H-1B 취업 비자 비용을 올리는 규제안을 발표했다.")
+        self.assertEqual(policy["disposition"], "keep")
+
+    def test_exemption_action_beats_monitoring_quote_and_deduplicates_publishers(self):
+        title = "英, 한국 러시아산 LNG 제재 면제…연 150만t 도입 차질 우려 해소"
+        action = "사진=뉴시스2일 산업통상부에 따르면 영국 정부는 1일(현지시간) 러시아산 LNG 관련 제재 예외조치를 발표하고 한국이 기존 장기계약에 따라 수입하는 사할린Ⅱ LNG에 대해 2028년 3월 31일까지 제재를 면제하기로 했다."
+        quote = '산업부는 “제재 면제조치가 실제 운송·보험 과정에서 적용되는지 점검하고 사할린Ⅱ LNG의 안정적인 도입을 관리할 계획”이라고 밝혔다.'
+        first = alert(title, action + "\n" + quote)
+        first["telegram_core_fact"] = quote
+        core = radar.verified_alert_core(first, title)
+        self.assertIn("영국 정부", core)
+        self.assertIn("기존 장기계약", core)
+        self.assertIn("2028년 3월 31일", core)
+        self.assertIn("면제하기로", core)
+        self.assertNotIn("점검", core)
+        self.assertNotIn("사진", core)
+        second = alert('영국, 러시아 제재 발표…"한국 사할린-2 LNG 수입 제재 면제"', "영국은 러시아 사할린-2 LNG의 한국 수입에 제재 예외를 적용하기로 했다. 허가는 2027년 1월1일부터 2028년 3월31일 사이 적용된다.")
+        second["link"] = "https://www.yna.co.kr/view/another-exemption"
+        second["published"] = "2026-10-01T23:50:00+09:00"
+        self.assertEqual(radar.semantic_event_theme(first), radar.semantic_event_theme(second))
+        self.assertEqual(len(radar.quality_display_alerts([first, second], 7)), 1)
+        self.assertNotEqual(radar.semantic_event_theme(first), radar.semantic_event_theme({**second, "source_body": second["source_body"].replace("2028년 3월31일", "2029년 3월31일")}))
+        self.assertNotEqual(radar.semantic_event_theme(first), radar.semantic_event_theme({**second, "source_title": second["source_title"].replace("영국", "미국")}))
+        self.assertEqual(radar.semantic_event_theme({**first, "body_verified": False}), "")
+
     def test_municipal_targets_do_not_outrank_committed_energy_projects(self):
         vague = materiality.assess("과천시, 2030년 재생에너지 보급률 10%로 확대", "과천시는 지역에너지계획 보고회를 열고 2030년 보급률 10%를 목표로 논의했다.")
         self.assertEqual(vague["disposition"], "exclude")

@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 20
+VERSION = 21
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|목표|보인다|나서야|시급|밑돌\s*듯|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
@@ -416,6 +416,9 @@ def assess(title: str, body: str) -> dict:
     result = {"version": VERSION, "disposition": "review", "priority": 1, "axes": [], "evidence": []}
     if not title or not body:
         result["reason"] = "source_evidence_unavailable"
+        return result
+    if re.search(r"투자\s*이민|EB-?5", title, re.I) and re.search(r"상담|설명회|세미나", title):
+        result.update(disposition="exclude", priority=0, reason="consumer_immigration_consultation_not_equity_news")
         return result
     if SOLICITATION_HEADLINE.search(title) and SOLICITATION_BODY.search(body) and (
         re.search(r"잡으려면|활용\s*가능한\s*기회", title)
