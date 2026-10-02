@@ -382,16 +382,22 @@ def paragraph_split(text, limit=3900):
 def build_readable(events):
     events = sorted(events, key=event_rank, reverse=True)
     header = "<b>🔔 CLARITY 법안 Watch — 표결·규제·BTC/COIN/Circle 영향</b>"
-    overview = ["<b>👀 한눈에 보기</b>"]
-    for event in events[:3]:
-        title_ko, body_ko = localized(event)
-        takeaway = easy_takeaway(event, body_ko)
-        overview.append("• " + html.escape(takeaway or short_change(event, title_ko, body_ko)))
-        overview.append("  ↳ <b>4축</b> " + html.escape(impact_snapshot(event)))
-
     blocks = [event_block(event, i) for i, event in enumerate(events, 1)]
-    full = header + "\n\n" + "\n".join(overview) + "\n\n━━━━━━━━━━━━━━━━━━\n" + "\n\n━━━━━━━━━━━━━━━━━━\n".join(blocks)
-    return paragraph_split(full)
+    parts = [header]
+
+    # A one-event alert should open directly with the event card instead of
+    # repeating the same takeaway in a separate overview.
+    if len(events) > 1:
+        overview = ["<b>👀 한눈에 보기</b>"]
+        for event in events[:3]:
+            title_ko, body_ko = localized(event)
+            takeaway = easy_takeaway(event, body_ko)
+            overview.append("• " + html.escape(takeaway or short_change(event, title_ko, body_ko)))
+            overview.append("  ↳ <b>4축</b> " + html.escape(impact_snapshot(event)))
+        parts.append("\n".join(overview))
+
+    parts.append("\n\n━━━━━━━━━━━━━━━━━━\n".join(blocks))
+    return paragraph_split("\n\n".join(parts))
 
 
 def main():
