@@ -6,8 +6,9 @@ on:
       - ".github/workflows/ai-networking-optics-telegram-watch.yml"
       - "scripts/ai_networking_optics_watch.py"
   schedule:
-    # GitHub cron is UTC. Check twice per hour; remain silent without a meaningful new signal.
-    - cron: "23,53 * * * *"
+    # TEMP validation cadence: every 5 minutes. This will be reverted to twice-hourly
+    # after a real schedule-triggered run is observed and verified.
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 permissions:
