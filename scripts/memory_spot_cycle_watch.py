@@ -1570,6 +1570,43 @@ def _trend_3q4q_pace_summary(state: dict) -> list[str]:
     return out
 
 
+def _trend_relative_spread_summary(state: dict) -> list[str]:
+    out: list[str] = []
+    keys = (
+        "q3_conventional_dram_min_pct", "q3_conventional_dram_max_pct",
+        "q4_conventional_dram_min_pct", "q4_conventional_dram_max_pct",
+        "q3_hbm_blended_min_pct", "q3_hbm_blended_max_pct",
+        "q4_hbm_blended_min_pct", "q4_hbm_blended_max_pct",
+        "q4_total_nand_min_pct", "q4_total_nand_max_pct",
+        "q4_enterprise_ssd_min_pct", "q4_enterprise_ssd_max_pct",
+    )
+    if any(state.get(k) is None for k in keys):
+        return out
+
+    q3_dram = (float(state["q3_conventional_dram_min_pct"]) + float(state["q3_conventional_dram_max_pct"])) / 2.0
+    q4_dram = (float(state["q4_conventional_dram_min_pct"]) + float(state["q4_conventional_dram_max_pct"])) / 2.0
+    q3_hbm = (float(state["q3_hbm_blended_min_pct"]) + float(state["q3_hbm_blended_max_pct"])) / 2.0
+    q4_hbm = (float(state["q4_hbm_blended_min_pct"]) + float(state["q4_hbm_blended_max_pct"])) / 2.0
+    q4_nand = (float(state["q4_total_nand_min_pct"]) + float(state["q4_total_nand_max_pct"])) / 2.0
+    q4_essd = (float(state["q4_enterprise_ssd_min_pct"]) + float(state["q4_enterprise_ssd_max_pct"])) / 2.0
+
+    q3_spread = q3_hbm - q3_dram
+    q4_spread = q4_hbm - q4_dram
+    swing = q4_spread - q3_spread
+    essd_premium = q4_essd - q4_nand
+
+    out.append(
+        f"HBM 상대 가격축: Conventional DRAM 대비 중간값 스프레드 "
+        f"3Q {q3_spread:+.1f}%p→4Q {q4_spread:+.1f}%p ({swing:+.1f}%p 스윙)"
+    )
+    out.append(
+        f"eSSD 상대 가격축: 4Q Enterprise SSD 중간값이 전체 NAND보다 {essd_premium:+.1f}%p 높음"
+    )
+    if q3_spread < 0 <= q4_spread:
+        out.append("국면 전환: HBM 가격 상승률이 Conventional DRAM보다 낮던 상태에서 더 높은 상태로 역전")
+    return out
+
+
 def _merge_typed_state(old: dict, obs: dict) -> dict:
     if old.get("as_of") and obs.get("as_of") and obs["as_of"] < old["as_of"]:
         return dict(old)
@@ -2090,6 +2127,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         lines.append("• <b>TrendForce 3Q26→4Q26 가격 상승 속도</b>")
         for summary in _trend_3q4q_pace_summary(trend_3q4q_state):
             lines.append("  " + html.escape(summary))
+        for summary in _trend_relative_spread_summary(trend_3q4q_state):
+            lines.append("  상대 비교: " + html.escape(summary))
         if trend_3q4q_state.get("q4_enterprise_ssd_min_pct") is not None:
             lines.append(
                 f"  Enterprise SSD: 4Q <b>+{float(trend_3q4q_state['q4_enterprise_ssd_min_pct']):.0f}~{float(trend_3q4q_state['q4_enterprise_ssd_max_pct']):.0f}% QoQ</b> — 주요 메모리 중 가격 상승폭 가속 축"
