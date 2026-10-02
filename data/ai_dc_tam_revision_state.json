@@ -16,11 +16,13 @@
     "agentic_cpu_per_gpu": 1.0
   },
   "baseline_source": "BofA Global Research 2차 공개보도 기준",
-  "updated_at_kst": "2026-10-02T12:13:05+09:00",
-  "seen_ids": [],
+  "updated_at_kst": "2026-10-02T12:16:20+09:00",
+  "seen_ids": [
+    "96968f7017f301cafbcf6d43"
+  ],
   "last_collection": {
-    "trusted_rows": 0,
-    "new_rows": 0,
+    "trusted_rows": 1,
+    "new_rows": 1,
     "candidate_metric_rows": 0,
     "material_changes": 0
   }
