@@ -189,7 +189,7 @@ jobs:
       - name: Send Telegram only on meaningful changes
         run: |
           python - <<'PY'
-          import os, pathlib, requests, time
+          import html, os, pathlib, re, requests, time
 
           default_token = os.environ["TELEGRAM_BOT_TOKEN"].strip()
           default_chat = os.environ["TELEGRAM_CHAT_ID"].strip()
@@ -219,6 +219,17 @@ jobs:
                   continue
 
               text = p.read_text(encoding="utf-8").strip()
+
+              if p.name in ("epoch_ai_dc_execution_alert.txt", "ai_dc_tam_revision_alert.txt"):
+                  rendered = []
+                  for line in text.splitlines():
+                      m = re.fullmatch(r"\s*원문:\s*(https?://\S+)\s*", line)
+                      if m:
+                          rendered.append(f'<a href="{html.escape(m.group(1), quote=True)}">원문</a>')
+                      else:
+                          rendered.append(html.escape(line))
+                  text = "\n".join(rendered)
+
               token = default_token
               chat = default_chat
               payload = {"chat_id": chat, "text": text}
@@ -336,6 +347,9 @@ jobs:
                           ]
                       ]
                   }
+              elif p.name in ("epoch_ai_dc_execution_alert.txt", "ai_dc_tam_revision_alert.txt"):
+                  payload["parse_mode"] = "HTML"
+                  payload["link_preview_options"] = {"is_disabled": True}
               else:
                   payload["link_preview_options"] = {"is_disabled": True}
 
