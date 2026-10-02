@@ -41,12 +41,8 @@ def event_rank(event):
     if "원문·핵심 조항 수정" in et or "원문 버전" in et:
         return 180
     if FMT.is_sec_crypto_custody_2026(event):
-        lines.extend([
-            "self-custody(자체 수탁) 허용 조건의 최종 문구",
-            "state trust company(주 신탁회사) 수탁 자격·통제 요건",
-            "최종규칙 채택 여부와 시행일",
-        ])
-    elif is_media_text_release(event):
+        return 179
+    if is_media_text_release(event):
         return 178
     if is_ethics_breakthrough(event):
         return 175
@@ -200,7 +196,7 @@ def confirmed_fact_lines(event, body_ko):
         return [
             "File No. S7-2026-35 · Release No. IA-7023 / IC-36353.",
             "제한적 self-custody(자체 수탁) + 조건부 state trust company(주 신탁회사) 수탁 경로 제안.",
-            "모든 암호자산에 자동 적용되는 것은 아님 — 자산이 funds/securities 또는 securities/similar investments에 해당하는 범위가 핵심.",
+            "모든 암호자산에 자동 적용되는 것은 아님 — funds/securities(자금·증권) 또는 securities/similar investments(증권·유사 투자자산) 범위가 핵심.",
         ]
     facts = sentence_bullets(body_ko)
     return facts[:3]
@@ -222,7 +218,13 @@ def pending_lines(event):
         for part in re.split(r"\s*/\s*", verification):
             if part:
                 lines.append(part)
-    if is_media_text_release(event):
+    if FMT.is_sec_crypto_custody_2026(event):
+        lines.extend([
+            "self-custody(자체 수탁) 허용 조건의 최종 문구",
+            "state trust company(주 신탁회사) 수탁 자격·통제 요건",
+            "최종규칙 채택 여부와 시행일",
+        ])
+    elif is_media_text_release(event):
         lines.extend([
             "Senate Banking·GovInfo·Congress.gov에 올라온 실제 개정 원문",
             "윤리·State AG 집행권·DeFi·stablecoin rewards·SEC/CFTC 권한의 최종 문구",
