@@ -152,7 +152,7 @@ jobs:
 
           inp_supply = "AXT InP substrate shortage worsens as export license delays constrain optical laser supply"
           assert watch.signal_score(inp_supply, "AXT") >= 7, "InP substrate/export-license bottleneck must trigger"
-          assert watch.category_for(inp_supply, "AXT") == "InP 기판 병목"
+          assert watch.category_for(inp_supply, "AXT") == "InP 수출허가·공급망"
           assert watch.stage_for(inp_supply) == "수출허가·공급망 규제"
 
           assert watch.canonical_story_key("US Optical Policy", fcc_final) == "us-optical-policy|fcc|final"
