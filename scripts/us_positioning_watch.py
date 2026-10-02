@@ -1131,16 +1131,19 @@ if quality_gate_ok and (updates or force):
     prior_sox = (state.get("values", {}) or {}).get("Nasdaq SOX|sox")
     prior_cftc = (state.get("values", {}) or {}).get("CFTC|cot")
     prior_cboe = (state.get("values", {}) or {}).get("Cboe|options")
-    correction = bool(
-        prior_sox
-        and sox
-        and prior_sox.get("period") == sox.get("period")
-        and (
-            abs(float((prior_sox.get("metrics") or {}).get("pct", 999)) - float(sox["metrics"]["pct"])) > 0.01
-            or prior_cftc is None
-            or prior_cboe is None
+    def same_period_changed(prior, current):
+        return bool(
+            prior
+            and current
+            and prior.get("period") == current.get("period")
+            and prior.get("fingerprint") != current.get("fingerprint")
         )
-    )
+
+    correction = any([
+        same_period_changed(prior_sox, sox),
+        same_period_changed(prior_cboe, cboe),
+        same_period_changed(prior_cftc, cftc),
+    ])
     event_label = "정정·보강" if correction else "신규 변화"
 
     body = [
@@ -1186,7 +1189,7 @@ if quality_gate_ok and (updates or force):
             if isinstance(hist.get("net_short_percentile_3y"), (int, float)):
                 body += [
                     f"• 최근 3년 순숏: <b>{hist['net_short_percentile_3y']:.0f}백분위</b> · 총 숏 계약수 {hist.get('gross_short_percentile_3y', 0):.0f}백분위 · 숏/OI {hist.get('short_share_oi_percentile_3y', 0):.0f}백분위",
-                    f"• 3년 극단 대비 청산률: 순숏 {hist.get('net_short_unwind_from_peak_pct', 0):.1f}% · 총숏 {hist.get('gross_short_unwind_from_peak_pct', 0):.1f}%",
+                    f"• 3년 극단 대비 축소율: 순숏 {hist.get('net_short_unwind_from_peak_pct', 0):.1f}% · 총숏 {hist.get('gross_short_unwind_from_peak_pct', 0):.1f}%",
                     f"• 숏 계약 변화: 1주 {int(hist.get('leveraged_short_1w_change') or 0):+,} · 4주 {int(hist.get('leveraged_short_4w_change') or 0):+,}",
                 ]
                 if hist.get("ten_year_complete") and isinstance(hist.get("net_short_percentile_10y"), (int, float)):
@@ -1225,7 +1228,7 @@ if quality_gate_ok and (updates or force):
             eq_desc = "콜 거래 우위" if eq_pc < 0.80 else "혼재·중립권" if eq_pc <= 1.0 else "풋 거래 우위"
             body.append(
                 f"• 주식옵션: 콜 {eq_calls:,} / 풋 {eq_puts:,} → P/C {eq_pc:.2f} "
-                f"({m.get('equity_time_ct') or '최신'} CT)"
+                f"({m.get('equity_time_ct') or '일별 마감'})"
             )
             body.append(
                 f"  → 콜이 풋의 {eq_call_put:.2f}배 · 콜+풋 거래량 중 콜 {eq_call_share:.1f}% "
@@ -1292,10 +1295,26 @@ if quality_gate_ok and (updates or force):
         if cftc:
             cm = cftc["metrics"]
             asset_dir = "기관 순롱 확대" if cm["asset_net_wow"] > 0 else "기관 순롱 축소" if cm["asset_net_wow"] < 0 else "기관 변화 제한"
-            lev_dir = "헤지펀드성 포지션 개선" if cm["lev_net_wow"] > 0 else "헤지펀드성 포지션 악화" if cm["lev_net_wow"] < 0 else "헤지펀드성 변화 제한"
+            lev_dir = (
+                "헤지펀드성 순숏 축소·순포지션 개선"
+                if cm["lev_net_wow"] > 0
+                else "헤지펀드성 순숏 확대·순포지션 약화"
+                if cm["lev_net_wow"] < 0
+                else "헤지펀드성 변화 제한"
+            )
+            lag_text = ""
+            if sox:
+                try:
+                    cftc_d = datetime.strptime(cftc["period"], "%B %d, %Y").date()
+                    sox_d = datetime.strptime(sox["period"], "%m/%d/%Y").date()
+                    lag_days = (sox_d - cftc_d).days
+                    if lag_days > 0:
+                        lag_text = f" · CFTC 기준일이 SOX/Cboe보다 {lag_days}일 느림"
+                except Exception:
+                    pass
             body.append(
-                f"• <b>CFTC와 연결</b>: {asset_dir} + {lev_dir} "
-                "→ 옵션 방향과 선물 포지션이 같은 쪽인지까지 확인해야 함"
+                f"• <b>CFTC와 연결</b>: {asset_dir} + {lev_dir}{lag_text} "
+                "→ 같은 날의 옵션·선물 동행으로 단정하지 않고 다음 CFTC 갱신에서 확인"
             )
 
         body.append(
