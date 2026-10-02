@@ -344,7 +344,8 @@ STORY_RULES = (
             '"Modernizing the Commission’s National Environmental Policy Act Rules" FCC space-based operations September 30 2026',
             '"space-based operations" "major Federal action" FCC NEPA satellite',
             '"FCC" "NEPA" satellite launch deployment operation space stations 2026',
-            '"FCC 26-55" NEPA satellite space-based operations',
+            '"actions associated with space-based operations" FCC NEPA September 30 2026',
+            '"not major Federal actions" FCC satellite earth stations space-based operations',
         ),
         required_groups=(
             ("fcc", "federal communications commission"),
@@ -353,17 +354,17 @@ STORY_RULES = (
             ("major federal action", "major federal actions", "mfa", "environmental review", "environmental assessment"),
         ),
         core=(
-            "FCC는 우주 기반 운영의 발사·배치·우주국 운용과 일부 위성 지상국 관련 FCC 승인행위를 "
-            "NEPA상 '주요 연방행위(MFA)'가 아닌 것으로 정리해 FCC 자체 환경심사 범위를 축소했습니다."
+            "FCC는 안테나 구조물 등록이 필요하지 않은 범위의 스펙트럼 인가·위성 지상국 배치와 "
+            "발사·배치·우주국 운용 등 우주 기반 운영 관련 FCC 조치를 NEPA상 '주요 연방행위(MFA)'로 보지 않기로 했습니다."
         ),
         impact="위성통신·LEO/NGSO 위성군, 지상국·게이트웨이, 우주 인프라 | 시간표·할인율·돈 버는 능력",
         point=(
-            "핵심은 '위성군 전체가 모든 환경규제에서 면제'가 아니라 FCC 인허가 단계의 NEPA 절차가 줄어드는 것입니다. "
-            "허가 지연과 규제비용이 낮아지면 위성 배치·증설 시간표의 불확실성이 줄 수 있습니다."
+            "핵심은 '위성군 프로젝트가 모든 환경규제에서 면제'가 아니라 FCC가 행사하는 스펙트럼 인가·우주 기반 운영 관련 "
+            "NEPA 심사 트리거의 범위가 줄어드는 것입니다. 허가 절차 불확실성이 낮아지면 위성 배치·지상국 구축 시간표가 빨라질 수 있습니다."
         ),
         counter=(
-            "FAA의 발사·재진입 환경심사, 안테나 구조물 등록이 필요한 지상시설, 궤도잔해·주파수 간섭·안전 규정까지 사라지는 것은 아닙니다. "
-            "따라서 FCC NEPA 개정만으로 모든 위성 프로젝트의 인허가가 자동 승인되는 것으로 해석하면 안 됩니다."
+            "FAA의 발사·통제된 재진입 인허가와 환경심사, 안테나 구조물 등록이 필요한 지상시설, 궤도잔해·주파수 간섭·안전 규정까지 사라지는 것은 아닙니다. "
+            "따라서 FCC NEPA 개정은 '모든 환경규제 면제'나 위성군 자동 승인으로 해석하면 안 됩니다."
         ),
         sectors="위성통신/LEO·NGSO, 지상국·게이트웨이, 우주 인프라·발사서비스",
         impacts=("시간표", "할인율", "돈 버는 능력"),
@@ -381,7 +382,8 @@ STORY_RULES = (
             '"Satellite Spectrum Abundance" FCC 12.7 42 GHz September 30 2026',
             '"1,050 megahertz" satellite FCC 12.7 42',
             '"more than 1,000 megahertz" satellite broadband FCC 42 GHz 12.7 GHz',
-            '"FCC 26-65" satellite spectrum abundance',
+            '"12.7-13.25 GHz" "42-42.5 GHz" FCC fixed-satellite service September 30 2026',
+            '"1,050 megahertz" FCC satellite broadband September 30 2026',
         ),
         required_groups=(
             ("fcc", "federal communications commission"),
@@ -390,8 +392,8 @@ STORY_RULES = (
             ("1,050", "1050", "1,000 megahertz", "1000 megahertz", "more than 1,000"),
         ),
         core=(
-            "FCC는 12.7~13.25GHz 550MHz와 42~42.5GHz 500MHz를 합쳐 총 1,050MHz를 "
-            "위성 고정통신서비스(FSS)에 더 폭넓게 사용할 수 있도록 규칙을 개정했습니다."
+            "FCC는 12.7~13.25GHz 550MHz에서 위성 고정통신서비스(FSS) 상·하향 운용을 확대하고, "
+            "42~42.5GHz 500MHz에서는 개별 허가된 위성 게이트웨이·피더링크 지구국으로의 FSS 하향 운용을 허용해 총 1,050MHz를 추가 개방했습니다."
         ),
         impact="위성광대역·항공/해상 연결·게이트웨이·feeder link·ESIM | 돈 버는 능력·수급·시간표",
         point=(
@@ -406,8 +408,44 @@ STORY_RULES = (
         impacts=("돈 버는 능력", "수급", "시간표"),
         paths=("주파수", "위성 용량", "지상국 CAPEX", "가입자·트래픽"),
         follow_up=(
-            "최종 규칙 효력발생일, SpaceX·Amazon Leo/Project Kuiper·기타 NGSO 사업자의 실제 대역 사용 신청, "
-            "지상국·ESIM·게이트웨이 발주, 추가 Ku/Ka·D-band FNPRM의 최종 채택 여부를 추적합니다."
+            "최종 규칙의 Federal Register 게재·효력발생일, SpaceX·Amazon Leo/Project Kuiper·기타 NGSO 사업자의 실제 대역 사용 신청, "
+            "지상국·ESIM·게이트웨이 발주를 추적합니다. 별도 후속 트랙으로 Ku/Ka 1,450MHz와 D-band 138.25GHz 추가 확대 FNPRM의 최종 규칙 전환도 감시합니다."
+        ),
+        trusted_sources=("Federal Communications Commission", "FCC"),
+    ),
+    StoryRule(
+        key="us_fcc_satellite_spectrum_followon_fnprm",
+        title="미 FCC, Ku/Ka·D-band 위성 주파수 추가 확대 절차",
+        google_queries=(
+            '"1,450 megahertz" FCC satellite Ku Ka D-band',
+            '"138.25 gigahertz" FCC satellite D-band',
+            '"Spectrum Abundance FNPRM" 1450 megahertz 138.25 gigahertz',
+            '"satellite communications" "1,450 megahertz" "138.25 gigahertz"',
+        ),
+        required_groups=(
+            ("fcc", "federal communications commission"),
+            ("satellite", "satellite communications", "fixed-satellite service", "fss"),
+            ("1,450", "1450", "138.25"),
+            ("further notice", "fnprm", "seek comment", "comment", "proposed", "proposal"),
+        ),
+        core=(
+            "FCC는 이미 개방한 1,050MHz와 별도로 Ku·Ka 대역 1,450MHz와 D-band 138.25GHz를 "
+            "위성통신에 더 집중적으로 쓰는 방안을 추가 의견수렴(FNPRM) 단계에서 검토하고 있습니다."
+        ),
+        impact="위성광대역·위성 간 링크·게이트웨이·RF/안테나·고주파 부품 | 시간표·돈 버는 능력",
+        point=(
+            "이 물량은 아직 최종 개방이 아니라 후속 규칙제정 절차입니다. 최종 채택되면 현재 1,050MHz보다 훨씬 큰 추가 용량이 열려 "
+            "차세대 위성망의 게이트웨이·단말·고주파 RF 장비 투자 규모를 다시 키울 수 있습니다."
+        ),
+        counter=(
+            "FNPRM은 의견수렴 단계이므로 1,450MHz·138.25GHz 전부가 그대로 최종 할당된다고 가정하면 안 됩니다. "
+            "기존 사용자 보호·간섭 조건·기술규칙과 실제 최종 대역폭이 바뀔 수 있습니다."
+        ),
+        sectors="위성광대역, 위성 간 링크, 게이트웨이·지상국, RF 프론트엔드·안테나",
+        impacts=("시간표", "돈 버는 능력"),
+        paths=("규칙제정", "주파수", "지상국 CAPEX", "위성 네트워크 용량"),
+        follow_up=(
+            "Federal Register 의견수렴 기한, 주요 사업자 의견서, 최종 Report and Order 채택 여부, 실제 사용 신청·게이트웨이 발주를 추적합니다."
         ),
         trusted_sources=("Federal Communications Commission", "FCC"),
     ),
@@ -1293,6 +1331,17 @@ def semantic_policy_event_key(item: dict) -> str:
         elif any(term in title_text for term in ("further notice", "fnprm", "comment", "추가 의견", "의견수렴")):
             stage = "further-notice"
         return f"us-fcc-satellite-spectrum-abundance-{stage}"
+    if (
+        ("1,450" in text or "1450" in text or "138.25" in text)
+        and ("satellite" in text or "fss" in text)
+        and ("further notice" in text or "fnprm" in text or "seek comment" in text or "proposed" in text)
+    ):
+        stage = "proposal"
+        if any(term in title_text for term in ("final rule", "report and order", "adopted", "finalized", "최종", "채택")):
+            stage = "final"
+        elif any(term in title_text for term in ("comment deadline", "reply comment", "의견수렴", "댓글 기한")):
+            stage = "comment"
+        return f"us-fcc-satellite-spectrum-followon-{stage}"
     if (
         "auction 115" in text
         and ("upper c-band" in text or "upper c band" in text)
