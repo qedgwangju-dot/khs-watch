@@ -287,6 +287,125 @@ ISU_LI2S_SAFETY = re.compile(
 )
 
 
+EV46_NEW_EVENT = re.compile(r'new\s+(?:order|contract|customer|award|capacity)|additional|expanded|increase|revised|renewed|second\s+contract|신규\s*(?:수주|계약|고객)|추가\s*(?:수주|계약|물량)|후속\s*(?:수주|계약|발주)|증액|확대|상향|재계약', re.I)
+EV46_PLAN_ONLY = re.compile(r'계획|예정|검토|협의|전망|목표|추진|plan(?:s|ned)?|expected|target|consider|explore|reportedly|전해졌|파악됐', re.I)
+
+
+def _ev46_known_baseline(text: str, source: str = '') -> bool:
+    official = source in base.OFFICIAL_OR_PRIMARY
+    # User already surfaced the Mercedes 46100 / Poland 2027-line / 2028-supply
+    # report. Keep the media report silent, but allow a later official Mercedes
+    # or LGES confirmation to advance the state.
+    if EV46_MERCEDES_BASE.search(text) and not official:
+        return True
+    if EV46_INDIGO_BASE.search(text) and EV46_MOU.search(text):
+        return True
+    if EV46_RIVIAN_BASE.search(text) and not EV46_NEW_EVENT.search(text):
+        return True
+    if EV46_CHERY_BASE.search(text) and not EV46_NEW_EVENT.search(text):
+        return True
+    if EV46_BMW_BASE.search(text) and not EV46_NEW_EVENT.search(text):
+        return True
+    if EV46_TESLA_BASE.search(text) and not EV46_NEW_EVENT.search(text):
+        return True
+    if EV46_SDI_BASE.search(text) and not EV46_NEW_EVENT.search(text):
+        return True
+    if EV46_ARIZONA_PLAN.search(text) and not (EV46_SOP.search(text) or EV46_SHIPMENT.search(text) or EV46_RAMP.search(text)):
+        return True
+    if EV46_POLAND_PLAN.search(text) and not (EV46_EQUIPMENT.search(text) or EV46_CONSTRUCTION.search(text) or EV46_SOP.search(text)):
+        return True
+    if EV46_BASELINE_BACKLOG.search(text):
+        gwh = {m.replace(' ', '').lower() for m in re.findall(r'\d[\d,.]*\s*GWh', text, re.I)}
+        known = {'100gwh', '440gwh'}
+        if gwh and gwh.issubset(known):
+            return True
+    return False
+
+
+def _ev46_stage(text: str, source: str = '') -> str:
+    if not EV46_RE.search(text):
+        return ''
+    # Require a named cell maker/OEM/component supplier, otherwise generic
+    # 46-series market-growth explainers remain discovery-only.
+    actor = bool(EV46_CELLMAKER.search(text) or EV46_OEM.search(text) or EV46_COMPONENT.search(text))
+    if not actor:
+        return ''
+
+    if EV46_REVERSE.search(text):
+        return 'reverse'
+
+    if _ev46_known_baseline(text, source):
+        return 'known_baseline'
+
+    if EV46_COMPONENT.search(text) and EV46_COMPONENT_ORDER.search(text):
+        return 'component_order'
+
+    if EV46_BMA_EXEC.search(text):
+        return 'bma_integration'
+
+    if EV46_SHIPMENT.search(text):
+        return 'first_shipment'
+
+    if EV46_SOP.search(text):
+        return 'sop'
+
+    if EV46_RAMP.search(text):
+        return 'ramp_metrics'
+
+    if EV46_EQUIPMENT.search(text):
+        return 'equipment_execution'
+
+    if EV46_CONSTRUCTION.search(text):
+        return 'construction_execution'
+
+    if EV46_BACKLOG.search(text) and EV46_GWH.search(text):
+        return 'backlog_change'
+
+    # A non-binding MOU is not a firm order. The current indiGOtech MOU is
+    # baseline; future MOUs remain low-priority discovery unless converted to a
+    # binding agreement.
+    if EV46_MOU.search(text) and not EV46_CONTRACT.search(text):
+        return 'mou'
+
+    if EV46_CONTRACT.search(text) and (EV46_OEM.search(text) and EV46_CELLMAKER.search(text)):
+        return 'oem_contract'
+
+    if EV46_FORMAT_CONFIRM.search(text) and EV46_OEM.search(text):
+        return 'format_confirmation'
+
+    return 'background'
+
+
+def _ev46_customer_tags(text: str) -> list[str]:
+    out = []
+    for name, pat in [
+        ('tesla', r'Tesla|테슬라'),
+        ('rivian', r'Rivian|리비안'),
+        ('bmw', r'\bBMW\b'),
+        ('mercedes', r'Mercedes[-\s]*Benz|Mercedes|벤츠'),
+        ('chery', r'Chery|체리'),
+        ('volvo', r'Volvo|볼보'),
+        ('indigotech', r'indiGOtech|인디고테크'),
+        ('kgm', r'KGM|KG\s*Mobility'),
+    ]:
+        if re.search(pat, text, re.I):
+            out.append(name)
+    return out
+
+
+def _ev46_cellmaker_tags(text: str) -> list[str]:
+    out = []
+    for name, pat in [
+        ('lges', r'LG에너지솔루션|LG\s*Energy\s*Solution'),
+        ('sdi', r'삼성SDI|Samsung\s*SDI'),
+        ('tesla', r'Tesla|테슬라'),
+        ('skon', r'SK온|SK\s*On'),
+    ]:
+        if re.search(pat, text, re.I):
+            out.append(name)
+    return out
+
+
 def _extract_us_target(text: str) -> tuple[float | None, float | None, int | None]:
     twh = None
     gw = None
