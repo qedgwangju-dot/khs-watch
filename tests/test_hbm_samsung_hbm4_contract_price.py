@@ -64,6 +64,19 @@ class SamsungHBM4ContractPriceTests(unittest.TestCase):
         self.assertEqual(w._hbm4_stack_height("HBM4 8-Hi and 12-Hi prices differ"),"unspecified")
         self.assertEqual(w._hbm4_stack_height("HBM4 12-Hi price is $4/Gb"),"12hi")
 
+    def test_contract_price_alert_is_not_displaced_by_four_other_events(self):
+        price = {
+            "published_at_kst":"2026-10-02T09:00:00+09:00",
+            "samsung_hbm4_price_change":{"state":{},"reasons":[]},
+        }
+        others = [
+            {"published_at_kst":f"2026-10-02T1{i}:00:00+09:00","id":str(i)}
+            for i in range(0,5)
+        ]
+        selected = w.select_send_events([price, *others], limit=4)
+        self.assertEqual(len(selected),4)
+        self.assertTrue(any(e.get("samsung_hbm4_price_change") for e in selected))
+
     def test_dedicated_telegram_message(self):
         obs=dict(w.SAMSUNG_HBM4_PRICE_BASELINE)
         obs.update({
