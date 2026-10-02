@@ -336,7 +336,8 @@
     "stateevt_644bbd3c3ab5d414d9ea": "2026-10-01T23:05:45.218214+00:00",
     "stateevt_bf7b8b20b6d6b143e7b8": "2026-10-01T23:15:40.460578+00:00",
     "stateevt_05055f763ef19bc3ab75": "2026-10-01T23:15:40.460578+00:00",
-    "stateevt_f102c55803b39e9f735f": "2026-10-02T06:14:18.498949+00:00"
+    "stateevt_f102c55803b39e9f735f": "2026-10-02T06:14:18.498949+00:00",
+    "stateevt_a11d2cecef46963c039b": "2026-10-02T06:16:02.365139+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -364,22 +365,31 @@
     "eventstate_funding_execution_644bbd3c3ab5d414d9ea": "2026-10-01T23:05:45.218214+00:00",
     "eventstate_funding_execution_bf7b8b20b6d6b143e7b8": "2026-10-01T23:15:40.460578+00:00",
     "eventstate_encinal_05055f763ef19bc3ab75": "2026-10-01T23:15:40.460578+00:00",
-    "eventstate_alaska_lng_f102c55803b39e9f735f": "2026-10-02T06:14:18.498949+00:00"
+    "eventstate_alaska_lng_f102c55803b39e9f735f": "2026-10-02T06:14:18.498949+00:00",
+    "eventstate_nuclear_build_a11d2cecef46963c039b": "2026-10-02T06:16:02.365139+00:00"
   },
   "official_status": {
-    "status": "official_seen",
-    "title": "[상태 변화] 알래스카 LNG — 착공",
-    "source": "정책브리핑",
-    "updated_at": "2026-10-02T06:14:38.511942+00:00"
+    "status": "unconfirmed",
+    "title": "[상태 변화] 미국 원전 구성·발주 — APR1400 1기당 Westinghouse 예상 가치 20억달러 · Westinghouse·Cameco 측 공식 확인 · 최종 계약 후속 협상 필요 · 연방정부 부지 배치 예정·개별 부지 미확정 · 프레임워크 비구속 · 1단계 AP1000 2기",
+    "source": "대한민국 정책브리핑",
+    "updated_at": "2026-10-02T06:16:22.300390+00:00"
   },
   "event_states": {
     "nuclear_build": {
       "facts": [
         "ap1000_units:6",
         "apr1400_units:2",
+        "nuclear_apr1400_wh_value_per_unit_usd_b:2",
+        "nuclear_counterparty_confirmation:official",
+        "nuclear_definitive_agreement_status:pending",
+        "nuclear_federal_site_status:planned",
+        "nuclear_framework_binding:nonbinding",
         "nuclear_framework_status:agreed",
         "nuclear_framework_usd_b:120",
+        "nuclear_initial_ap1000_units:2",
+        "nuclear_korean_ap1000_supply_chain:included",
         "nuclear_project_status:individual_projects_pending",
+        "nuclear_settlement_waiver_status:contemplated",
         "nuclear_total_units:8",
         "party:kepco",
         "party:westinghouse"
@@ -387,35 +397,37 @@
       "slots": {
         "nuclear_build|ap1000_units": "ap1000_units:6",
         "nuclear_build|apr1400_units": "apr1400_units:2",
+        "nuclear_build|nuclear_apr1400_wh_value_per_unit_usd_b": "nuclear_apr1400_wh_value_per_unit_usd_b:2",
+        "nuclear_build|nuclear_counterparty_confirmation": "nuclear_counterparty_confirmation:official",
+        "nuclear_build|nuclear_definitive_agreement_status": "nuclear_definitive_agreement_status:pending",
+        "nuclear_build|nuclear_federal_site_status": "nuclear_federal_site_status:planned",
+        "nuclear_build|nuclear_framework_binding": "nuclear_framework_binding:nonbinding",
         "nuclear_build|nuclear_framework_status": "nuclear_framework_status:agreed",
         "nuclear_build|nuclear_framework_usd_b": "nuclear_framework_usd_b:120",
+        "nuclear_build|nuclear_initial_ap1000_units": "nuclear_initial_ap1000_units:2",
+        "nuclear_build|nuclear_korean_ap1000_supply_chain": "nuclear_korean_ap1000_supply_chain:included",
+        "nuclear_build|nuclear_project_status": "nuclear_project_status:individual_projects_pending",
+        "nuclear_build|nuclear_settlement_waiver_status": "nuclear_settlement_waiver_status:contemplated",
         "nuclear_build|nuclear_total_units": "nuclear_total_units:8",
         "nuclear_build|party:kepco": "party:kepco",
-        "nuclear_build|party:westinghouse": "party:westinghouse",
-        "nuclear_build|nuclear_project_status": "nuclear_project_status:individual_projects_pending"
+        "nuclear_build|party:westinghouse": "party:westinghouse"
       },
       "initialized_at": "2026-09-21T13:18:18.976289+00:00",
-      "updated_at": "2026-10-01T04:00:32.388435+00:00",
+      "updated_at": "2026-10-02T06:16:22.293455+00:00",
       "last_title": "산업통상부 공식 Project Power 한미 원전 프레임워크 합의 원전 8기 AP1000 6기 APR1400 2기 최대 1200억달러",
       "last_source": "대한민국 정책브리핑",
       "evidence": [
         {
-          "source": "대한민국 정책브리핑",
-          "title": "산업통상부 공식 Project Power 한미 원전 프레임워크 합의 원전 8기 AP1000 6기 APR1400 2기 최대 1200억달러",
-          "link": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156783865",
+          "source": "Cameco",
+          "title": "Cameco 공식 Project Power 원전 프레임워크 원전 8기 AP1000 6기 APR1400 2기 최대 1200억달러 terms non-binding definitive agreements pending federal sites planned beginning with AP1000 2기 2025 settlement agreement one-time waiver contemplated APR1400 reactor당 20억달러 Westinghouse value",
+          "link": "https://www.cameco.com/media/news/cameco-acknowledges-united-states-and-republic-of-korea-announcement-of-framework-for",
+          "published": "2026-09-30T12:00:00+00:00"
+        },
+        {
+          "source": "산업통상부",
+          "title": "산업통상부 공식 Project Power AP1000 6기 한국 시공사 기자재기업 참여 확대 한미 원전 프레임워크 합의",
+          "link": "https://www.motir.go.kr/kor/article/ATCL3f49a5a8c/172253/view",
           "published": "2026-10-01T00:00:00+00:00"
-        },
-        {
-          "source": "뉴스1",
-          "title": "미국에 APR1400 2기 건설 추진…한국 원전, 미국 본토 진출 길 열려 - 뉴스1",
-          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE56eGM3NlJVXzlTUnBzQ0JLQ2Z5WWRmU2N1a1dzY2JjZ0JLVlB5Z2VkYXp5a1ZEODl1alFFd3ZLNGozMDJobTFneXpqU3VlaXRodXgyS0ZqMnV3czhNdWc0X2k2c0LSAWRBVV95cUxOenhjNzZSVV85U1Jwc0NCS0NmeVlkZlNjdWtXc2NiY2dCS1ZQeWdlZGF6eWtWRDg5dWpRRXd2SzRqMzAyaG0xZ3l6alN1ZWl0aHV4MktGajJ1d3M4TXVnNF9pNnNC?oc=5",
-          "published": "2026-09-30T21:46:19+00:00"
-        },
-        {
-          "source": "뉴시스",
-          "title": "한미, 1200억弗로 美원전 8기 짓는다…APR1400 첫 미국 진출 - 뉴시스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1YYldpSWhjV0RuMWR2RmtSN3cwOVVMUEhaMEVuLWpSdU0zYW05MlNObXBzZ0xzVUwwOWt6XzNSOG5IbkxnQ21KVXB0REtqTnE3MjV2akI4eElqTkw5ZjU4RNIBeEFVX3lxTE5UM3VwVTV4YThudnpjczM5aVB6OXlLM2NLbVlneXVXNi0zSlpnbGJtYU8zZzlhYUpIWFBfXzYwSWZFOXFMWHUyQ0NyZUQ5NHpBeXdSVmN6V2xjV0dEeDVMcTBUeGdlenN4aEx1cTJRbUdjM0pGQUpLbw?oc=5",
-          "published": "2026-09-30T21:04:40+00:00"
         }
       ]
     },
@@ -451,55 +463,33 @@
     },
     "westinghouse_stake": {
       "facts": [
-        "governance:board",
-        "governance:voting",
+        "equity_definitive_agreement_status:pending",
+        "equity_due_diligence_status:pending",
+        "equity_regulatory_approval_status:pending",
         "party:kepco",
         "party:westinghouse",
-        "stage:의결",
-        "stake_percent:10"
+        "stake_range_percent:5~10",
+        "stake_status:contemplated"
       ],
       "slots": {
-        "westinghouse_stake|governance:board": "governance:board",
-        "westinghouse_stake|governance:voting": "governance:voting",
+        "westinghouse_stake|equity_definitive_agreement_status": "equity_definitive_agreement_status:pending",
+        "westinghouse_stake|equity_due_diligence_status": "equity_due_diligence_status:pending",
+        "westinghouse_stake|equity_regulatory_approval_status": "equity_regulatory_approval_status:pending",
         "westinghouse_stake|party:kepco": "party:kepco",
         "westinghouse_stake|party:westinghouse": "party:westinghouse",
-        "westinghouse_stake|stage:의결": "stage:의결",
-        "westinghouse_stake|stake_percent": "stake_percent:10"
+        "westinghouse_stake|stake_equity_percent": "stake_range_percent:5~10",
+        "westinghouse_stake|stake_status": "stake_status:contemplated"
       },
       "initialized_at": "2026-09-21T13:18:34.537072+00:00",
-      "updated_at": "2026-09-23T10:11:17.022769+00:00",
-      "last_title": "Second U.S.-bound investment, eight reactors... last-minute wrangling over the Westinghouse stake - 경향신문",
-      "last_source": "경향신문",
+      "updated_at": "2026-10-02T06:16:22.298881+00:00",
+      "last_title": "Westinghouse Brookfield 공식 한국 Westinghouse cornerstone equity investment 5~10% potential equity investment terms non-binding subject to definitive agreements due diligence regulatory approvals pending",
+      "last_source": "Westinghouse",
       "evidence": [
         {
-          "source": "머니투데이",
-          "title": "美웨스팅하우스 지분 5~10%를 할인가에 인수...\"의결권도 확보\" - 머니투데이 - 머니투데이",
-          "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5zdjNGUTRzMllGMHFrZjRqb1hvc0FlNmpHTnpqdVZpcGhzd0pDcVdBa0xNczZIZ2FYN2pBbWwtRm9ycDNlRXBhYzhqamZtSENPRFdPZ2hlM2tiUEc3SVVZQ1JUTVFWVk02QWNj0gFwQVVfeXFMTVFhcEROVEFzNzNiVjVjcjZUNzN6Ql9QUnJtb2hlT0xHWGpSelppMWpxTjZjVmozeW5NRGJzc1NkajJlbE9YanJuN3BuYlRHTGx6am5aaHJERENkYVluOVhZQVIxWXNqQms4X2hhbWRmVA?oc=5",
-          "published": "2026-09-22T08:49:22+00:00"
-        },
-        {
-          "source": "뉴스1",
-          "title": "韓, 웨스팅하우스 5~10% 지분 '10% 할인가' 인수 추진…의결권 확보 - 뉴스1",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9YQkFvcGdEMUR4a2g0dFh4Umo5bVlZcUtBTWwxYXZKSlVybEU0YlJSMkgtX3ZVWmpMaS1qcUg3cmlQSUtFZnJyeU5XTVBQQVdmNmx1Z1k0NHZEd9IBX0FVX3lxTE0yZWU1N28ycmpId2hEbVB4dXdpaGNiTVdHWTNZeU0yNV9NbEgwYkVnUGZZSnhqZXVYU09BekVqUy11X1RxcjllY1czUkdVZTVIRVBDZFRmYjdaOTBfTGJB?oc=5",
-          "published": "2026-09-22T08:09:14+00:00"
-        },
-        {
-          "source": "매일경제",
-          "title": "[단독] 韓, 웨스팅하우스 지분 ‘10% 할인가’에 인수…의결권 확보 가닥 - 매일경제",
-          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1zcmd2OVR5eHhwLUpaOWRjeUd1QUJIaEV1cUFNdzNZSy1IWVBIdFlwTDlWYV9LQk1waTU4d1BURDFwTXFKcTY3d3hkY09FRU50ZloyNw?oc=5",
-          "published": "2026-09-22T03:31:48+00:00"
-        },
-        {
-          "source": "미주중앙일보",
-          "title": "[속보] 정부 “웨스팅하우스 지분 5∼10% 확보시에도 의결권 갖는다” 보고 - 미주중앙일보",
-          "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFB6dU1CWUgtdlU4U09Cd3NJU0dvZDRqMEpHcHNVMlI5MGQ4M3ptc19ScVdKMjZ5QS00Q1RXS1pRV3g4QlBBTjNFWHZERjVoSEdUcURvZm5lRkRRVk5reGpEUDJR?oc=5",
-          "published": "2026-09-22T03:13:00+00:00"
-        },
-        {
-          "source": "매일경제",
-          "title": "[속보] 정부 “웨스팅하우스 지분 5∼10% 확보시에도 의결권 갖는다” 보고 - 매일경제",
-          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBTX3N2ay1ldW9CNWJXRzhVVjgtN2J3RHlrNXljWGZWeFpSUHFwSGNRQjFyUGRsMGZQRkxsY19TaEhlbmN0TjVXZk5sbi0xQ3dfeWFnOA?oc=5",
-          "published": "2026-09-22T03:18:57+00:00"
+          "source": "Westinghouse",
+          "title": "Westinghouse Brookfield 공식 한국 Westinghouse cornerstone equity investment 5~10% potential equity investment terms non-binding subject to definitive agreements due diligence regulatory approvals pending",
+          "link": "https://info.westinghousenuclear.com/news/u.s.-korea-framework-advances-deployment-of-westinghouse-nuclear-technology-in-the-united-states",
+          "published": "2026-10-01T12:00:00+00:00"
         }
       ]
     },
@@ -723,5 +713,6 @@
   "amount_scope_guard_version": 1,
   "announcement_stage_guard_version": 1,
   "joint_fact_sheet_status_version": 1,
-  "official_evidence_cleanup_version": 1
+  "official_evidence_cleanup_version": 1,
+  "westinghouse_framework_equity_version": 1
 }
