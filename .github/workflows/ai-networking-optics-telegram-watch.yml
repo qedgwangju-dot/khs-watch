@@ -6,9 +6,15 @@ on:
       - ".github/workflows/ai-networking-optics-telegram-watch.yml"
       - "scripts/ai_networking_optics_watch.py"
   schedule:
-    # TEMP validation cadence: every 5 minutes. This will be reverted to twice-hourly
-    # after a real schedule-triggered run is observed and verified.
-    - cron: "*/5 * * * *"
+    # Direct twice-hourly check, away from top-of-hour congestion.
+    - cron: "8,38 * * * *"
+  workflow_run:
+    # Redundant trigger path: if this workflow's own schedule is delayed/dropped,
+    # run after two already-active semiconductor watchers complete.
+    workflows:
+      - "Vera Rubin SOCAMM Capacity Telegram Watch"
+      - "Korea AI Semiconductor Policy Demand Watch"
+    types: [completed]
   workflow_dispatch:
 
 permissions:
