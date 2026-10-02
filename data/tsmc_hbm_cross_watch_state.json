@@ -113,7 +113,7 @@
   },
   "_delivery": {
     "id": "0f4c5506a803fcbf645dac524013c13bde0825e9fa002315663c71b6abba2c47",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-10-02T17:49:11+09:00",
     "chunks": [
       "🚨 <b>HBM 교차 알림 | TSMC 앞단·후단·메모리 병목 변화</b>\n━━━━━━━━━━━━━━━━\n• HBM 알림 사유: <b>HBM 연계 AI 고객 추가: Broadcom</b>\n• 전파 경로: NVIDIA·AMD N2 웨이퍼 → GPU·ASIC 출하 → CoWoS·SoIC → HBM 비트수요\n• 알림 기준: AI 고객 연계 N2/N3 생산능력·예약 물량 변화 또는 CoWoS·SoIC·테스터·기판·HBM 병목 변화만 교차 알림합니다.\n• 제외: Apple 단독 N2 주문·부지 검토·공장 의향·같은 기사 재배포만으로는 HBM 알림을 울리지 않습니다.\n• 앞단: N2 2026년말 <b>120,000장/월</b>\n• HBM 연계 AI 고객: AMD · Broadcom · NVIDIA\n• 후단: CoWoS 부족·병목 · 기판 부족·병목\n• 메모리: HBM 부족·병목\n• CoWoS 상태 근거: TrendForce · <a href=\"https://www.trendforce.com/presscenter/news/20260918-13241.html\">원문</a>\n• 기판 상태 근거: TrendForce News · <a href=\"https://www.trendforce.com/news/2026/09/03/news-tsmc-equipment-demand-reportedly-jumps-90-in-just-over-half-a-year-substrate-capacity-faces-ai-squeeze/\">원문</a>\n• HBM 상태 근거: TrendForce · <a href=\"https://www.trendforce.com/presscenter/news/20260929-13255.html\">원문</a>\n• 기타 변화 근거: LTN · <a href=\"https://ec.ltn.com.tw/article/paper/1772416\">원문</a>\n• 조회: 2026-10-02 17:43 KST"
@@ -233,6 +233,7 @@
         },
         "note": "기존 전송 이력은 감사 추적용으로 보존하되 현재 상태 기준선과 재알림 판정에는 사용하지 않음"
       }
-    }
+    },
+    "attempt_at_kst": "2026-10-02T17:49:12+09:00"
   }
 }
