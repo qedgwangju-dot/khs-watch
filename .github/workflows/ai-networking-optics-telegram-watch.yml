@@ -157,6 +157,10 @@ jobs:
 
           assert watch.canonical_story_key("US Optical Policy", fcc_final) == "us-optical-policy|fcc|final"
           assert watch.canonical_story_key("US Optical Policy", senate_bill) == "us-optical-policy|congress|bill"
+
+          aaoi_ramp = "Applied Optoelectronics expands 1.6T transceiver capacity for hyperscaler shipments"
+          assert watch.signal_score(aaoi_ramp, "Applied Optoelectronics") >= 7, "AAOI capacity/shipments must trigger"
+          assert watch.category_for(aaoi_ramp, "Applied Optoelectronics") == "1.6T 전환"
           print("dedupe_and_quality_regression_test=passed")
           PY
 
@@ -216,7 +220,7 @@ jobs:
               "DSP", "PCIe", "CXL",
               "GPU", "XPU", "AI", "1.6T", "3.2T", "800G", "100Tbps", "FY25", "FY26",
               "FY27", "FY28", "FCC", "Covered List", "Buy American", "InP", "AXT", "AXTI",
-              "Innolight", "Eoptolink", "HBOM", "SBOM",
+              "AAOI", "Applied Optoelectronics", "Innolight", "Eoptolink", "HBOM", "SBOM",
               "AVGO", "NVDA", "ANET", "MRVL", "LITE", "COHR", "ALAB", "GLW", "005930.KS",
           ]
 
