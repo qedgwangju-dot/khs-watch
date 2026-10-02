@@ -141,7 +141,7 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
         self.assertIn("Bessent 재무장관", rendered)
         self.assertIn("Bloomberg Law · CoinDesk", rendered)
         self.assertNotIn("publisher-specific headline", rendered)
-        self.assertIn("시간표 ↑", rendered)
+        self.assertIn("시간표: 이번 사건에서 가장 직접적으로 바뀐 축", rendered)
 
     def test_media_first_draft_release_is_clear_and_not_called_official_yet(self):
         event = {
