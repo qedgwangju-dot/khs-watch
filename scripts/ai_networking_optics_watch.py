@@ -640,7 +640,7 @@ def signal_score(title: str, source: str) -> int:
 
 
 def stage_for(title: str) -> str:
-    if re.search(r"customer sampling|customer delivery|customer deployment|integrated inference engines?", title, re.I):
+    if re.search(r"customer delivery|customer deployment|integrated inference engines?", title, re.I):
         return "고객 샘플·배치"
     if re.search(r"silicon validation|silicon demonstrates?|tape[- ]?out|benchmark|measured|prototype", title, re.I):
         return "실리콘·성능 검증"
