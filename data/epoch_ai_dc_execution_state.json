@@ -1,15 +1,15 @@
 {
-  "format_version": 1,
+  "format_version": 2,
   "source": "Epoch AI",
   "source_url": "https://epoch.ai/data/ai-data-centers",
   "data_url": "https://epoch.ai/data/data_centers/data_centers.csv",
   "timeline_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
-  "as_of_kst": "2026-10-02T12:22:14+09:00",
+  "as_of_kst": "2026-10-02T12:24:24+09:00",
   "site_count": 75,
-  "current_it_mw": 11949.3,
-  "planned_it_mw_2030": 33029.3,
+  "current_it_mw": 11684.3,
+  "planned_it_mw_2030": 32764.3,
   "remaining_it_mw": 21080.0,
-  "execution_ratio_pct": 36.18,
+  "execution_ratio_pct": 35.66,
   "top_remaining_sites": [
     {
       "name": "Microsoft Fairwater Wisconsin",
