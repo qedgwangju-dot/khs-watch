@@ -389,6 +389,17 @@ def story_tokens(title: str) -> set[str]:
 
 def canonical_story_key(company: str, title: str) -> str | None:
     text = html.unescape(title or "").lower()
+    if company == "Volantis":
+        if re.search(r"series\s*a|\$?88\s*m|funding|financing", text, re.I):
+            return "volantis|funding|series-a"
+        if re.search(r"customer sampling|customer delivery|customer deployment|integrated inference engines?", text, re.I):
+            return "volantis|a1|customer"
+        if re.search(r"silicon|tape[- ]?out|benchmark|measured|prototype|240\s*tb/s|10\s*tb|1\s*pj/bit|tokens? per second|tok/s", text, re.I):
+            return "volantis|a1|silicon-performance"
+        if re.search(r"vcsel|micro[- ]?vcsel|foundry|wafer|laser|supply chain", text, re.I):
+            return "volantis|a1|vcsel-supply"
+        if re.search(r"a-1|photonic memory|optical memory|memory wall|optical fabric|memory pooling", text, re.I):
+            return "volantis|a1|architecture"
     if company == "US Optical Policy":
         if re.search(r"senate|congress|bill|legislation|national security systems?", text, re.I):
             if re.search(r"signed|enacted|becomes? law", text, re.I):
@@ -1035,6 +1046,7 @@ def main() -> None:
         "initialized": True,
         "dedupe_version": 2,
         "quality_version": 3,
+        "photonic_compute_version": 1,
         "optical_material_version": 1,
         "cpo_equipment_version": 2,
         "optical_policy_version": 2,
@@ -1064,6 +1076,9 @@ def main() -> None:
         korea_optics_version = int(state.get("korea_optics_version") or 0)
         if korea_optics_version < 1:
             new_items = [item for item in new_items if item.get("company") not in {"Opticore", "OE Solutions"}]
+        photonic_compute_version = int(state.get("photonic_compute_version") or 0)
+        if photonic_compute_version < 1:
+            new_items = [item for item in new_items if item.get("company") not in {"Volantis", "Lightmatter", "Ayar Labs", "Xscape Photonics"}]
         alert_items = new_items[:8] if initialized else []
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
@@ -1071,10 +1086,13 @@ def main() -> None:
     if alert_items:
         policy_only = all(item.get("company") == "US Optical Policy" for item in alert_items)
         korea_optics_only = all(item.get("company") in {"Opticore", "OE Solutions"} for item in alert_items)
+        photonic_compute_only = all(item.get("company") in {"Volantis", "Lightmatter", "Ayar Labs", "Xscape Photonics"} for item in alert_items)
         if policy_only:
             alert_header = "🚨 <b>미국 광트랜시버 규제 변화 감지</b>"
         elif korea_optics_only:
             alert_header = "🚨 <b>국내 AI 광통신 수주·검증 변화 감지</b>"
+        elif photonic_compute_only:
+            alert_header = "🚨 <b>AI 광컴퓨팅·광메모리 구조 변화 감지</b>"
         else:
             alert_header = "🚨 <b>AI 네트워킹·광통신 구조 변화 감지</b>"
         lines = [
@@ -1104,7 +1122,7 @@ def main() -> None:
             ])
         lines.extend([
             "<b>감시 기준</b>",
-            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / AAOI 800G·1.6T·3.2T 생산능력·고객·출하 / FCC 중국산 광트랜시버 최종규칙·3.2T 적용세대·미국산 콘텐츠 65%·75%·예외·시행일 / 상원·의회 국가안보시스템 광트랜시버 법안 범위 / InP 기판 공급부족·수출허가·증설·가격 / 옵티코어 400G·800G 신규 PO·계약금액·검수·납기변경 / 오이솔루션 1.6T ELSFP·EML 샘플·고객검증·양산 PO / 엔비디아 CPO 실제 배치 / 코히런트 포톤링크 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027년 2분기 가시성·생산능력 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030년 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·수주잔고 / 코닝 광통신·유리기판 신규 AI 매출 경로",
+            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / AAOI 800G·1.6T·3.2T 생산능력·고객·출하 / 볼란티스 A-1 고객샘플·2027 인도·실리콘·벤치마크·광메모리 대역폭·용량·토큰속도 / 라이트매터·아야르 랩스·엑스케이프 광인터커넥트 고객검증·생산·배치 / VCSEL 광메모리 공급망·패키징·수율 / FCC 중국산 광트랜시버 최종규칙·3.2T 적용세대·미국산 콘텐츠 65%·75%·예외·시행일 / 상원·의회 국가안보시스템 광트랜시버 법안 범위 / InP 기판 공급부족·수출허가·증설·가격 / 옵티코어 400G·800G 신규 PO·계약금액·검수·납기변경 / 오이솔루션 1.6T ELSFP·EML 샘플·고객검증·양산 PO / 엔비디아 CPO 실제 배치 / 코히런트 포톤링크 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027년 2분기 가시성·생산능력 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030년 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·수주잔고 / 코닝 광통신·유리기판 신규 AI 매출 경로",
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
