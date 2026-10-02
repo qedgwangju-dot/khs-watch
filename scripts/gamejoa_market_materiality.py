@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 11
+VERSION = 12
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|목표|보인다|나서야|시급|밑돌\s*듯|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
@@ -68,6 +68,8 @@ HARD_HEADLINE = re.compile(
 # Prefer the first event mentioned in the headline, not a sector assigned by
 # the classifier. Reuse it for evidence ranking and compact-summary checks.
 HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) for name, head, source in (
+    ("trading_status", r"거래\s*재개|액면병합|주식병합", r"거래.{0,12}재개|재개.{0,12}거래|액면병합|주식병합"),
+    ("industrial_program", r"(?:SMR|원전|양자|반도체|로봇).{0,16}상용화", r"(?:상용화|사업화).{0,50}(?:출범|지원|시행|추진)|(?:출범|지원|시행|추진).{0,50}(?:상용화|사업화)"),
     ("ownership", r"지분.{0,25}(?:인수|매각|취득)|인수.{0,25}지분|합병(?!원)", r"지분|인수|매각|취득|합병(?!원)|stake|acquir|merger"),
     ("shareholder", r"자사주|자기주식|주주환원|배당", r"자사주|자기주식|주주환원|배당|(?:주식|지분).{0,30}(?:매수|취득|매입|처분)|buyback|dividend"),
     ("capital_listing", r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|신규\s*상장", r"기업공개|\bipo\b|상장(?!지수)"),
@@ -179,6 +181,9 @@ def core_focus_aligned(title: str, core: str) -> bool:
 # Each rule needs a subject and a change in the same source-authored sentence.
 # Quantities, counterparties and stages are evidence, not estimates of price impact.
 RULES = (
+    ("trading_status_change", ("flows", "timeline"),
+     r"거래\s*재개|매매\s*재개|액면병합|주식병합|거래정지|매매정지",
+     r"재개|결정|발표|완료|정지"),
     ("capital_listing_stage", ("flows", "timeline"),
      r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)",
      r"추진|예정|목표|신청|승인|상장했다|연기|철회|마케팅|등록|plan|aim|file|approv|delay|withdraw|market"),
@@ -302,6 +307,7 @@ def assess(title: str, body: str) -> dict:
     sentences = [part.strip() for part in re.split(r"(?<!\d)[.!?。](?!\d)\s*|[\r\n]+", body) if part.strip()]
     lead = " ".join(sentences[:3])
     headline_lead = f"{title} {lead}"
+    electoral = bool(re.search(r"유세|선거운동|지지\s*(?:호소|결집)|campaign rally|election campaign", title, re.I))
     if OFFICE_PUBLICITY.search(title) and not OFFICE_ECONOMIC_CHANGE.search(headline_lead):
         result.update(disposition="exclude", priority=0, reason="office_publicity_without_business_economics")
         return result
@@ -338,6 +344,10 @@ def assess(title: str, body: str) -> dict:
         for kind, axes, subject, action in COMPILED_RULES:
             if not subject.search(sentence) or not action.search(sentence):
                 continue
+            # Campaign rhetoric and retrospective blame are not new macro data.
+            # A concrete policy proposal or current escalation remains eligible.
+            if electoral and kind not in {"policy_scope_or_stage", "export_control_scope", "energy_geopolitics_or_supply_risk"}:
+                continue
             if not anchored and not adjacent and not focus_kind(title) and not subject.search(title):
                 continue
             if routine and kind not in {"policy_scope_or_stage", "physical_supply_or_capacity", "capital_or_shareholder_action"}:
@@ -358,8 +368,9 @@ def assess(title: str, body: str) -> dict:
             ):
                 continue
             if kind == "labor_cost_or_execution" and not re.search(
-                r"파업|노조|성과급|임단협|임금|(?<!금)감원|인력|인원|일자리|근로|노동|고용|"
-                r"worker|union|labor|labour|layoff|wage", sentence, re.I,
+                r"파업|임단협|임금.{0,20}(?:인상|인하|교섭|협상)|성과급.{0,25}(?:주식|지급|변경)|"
+                r"(?<!금)감원|(?:인력|인원|일자리).{0,20}감축|(?:생산|공장|운송|항만).{0,25}(?:중단|차질)|"
+                r"strike|layoff|wage.{0,20}(?:talk|rais|cut)|(?:worker|job|labor|labour).{0,20}(?:cut|reduc)", sentence, re.I,
             ):
                 continue
             if kind == "physical_supply_or_capacity":

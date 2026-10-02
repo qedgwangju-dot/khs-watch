@@ -160,6 +160,24 @@ def macro_release_theme(alert: dict) -> str:
     return f"macro_release:{country}:{indicator}:{year}-{month:02d}:{basis}:{comparison}:{rate}"
 
 
+def verified_trade_theme(alert: dict) -> str:
+    """Same sourced trade fact and quantities, without merging changed purchases."""
+    if not alert.get("body_verified"):
+        return ""
+    core = str(alert.get("telegram_core_fact") or "")
+    body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+    day = str(alert.get("published") or "")[:10]
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", day) or not re.search(r"(?:주식|지분).{0,30}(?:매수|매입|매도)", core):
+        return ""
+    amounts = sorted(set(re.sub(r"[\s,]", "", value) for value in re.findall(
+        r"(\d[\d,]*(?:만\s*\d[\d,]*)?)\s*주(?:를|을)?\s*(?:장내(?:에서)?\s*)?(?:매수|매입|매도|사들)", body,
+    )))
+    if not amounts:
+        return ""
+    fact = re.sub(r"[^a-z0-9가-힣%]", "", core.lower())
+    return f"verified_trade:{day}:{fact}:{'+'.join(amounts)}"
+
+
 def canonical_alert_for_seen(alert: dict) -> dict:
     """Overridden by the final renderer so cross-source stories share a key."""
     return alert
@@ -186,6 +204,7 @@ def alert_seen_keys(alert: dict) -> list[str]:
         str(canonical.get("supply_chain_theme") or alert.get("supply_chain_theme") or ""),
     )
     add("event", macro_release_theme(canonical))
+    add("event", verified_trade_theme(canonical))
     add("title", str(canonical.get("news") or alert.get("news") or ""))
     add("original", str(canonical.get("original_news") or alert.get("original_news") or ""))
     return list(dict.fromkeys(keys))

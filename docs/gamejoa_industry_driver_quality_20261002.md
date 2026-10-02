@@ -245,3 +245,26 @@ a completed project. The expanded suite has 66 tests. Read-only revalidation of
 the actual version-10 artifact removed four fillers and preserved the three
 market/industry events, including the JERA 3-4 GW goal with an aligned core.
 Final acceptance still requires the new runtime artifact below.
+
+Run `36956176543` completed at `2026-10-02T02:36:23Z` with all 66 tests and
+the generated-report guard passing. The `11:33:41 KST` artifact had 131
+verified bodies, 29 failures and 679 deferred candidates. Telegram send and
+state commits were skipped. Its ZIP SHA-256 is
+`BE009DED70A8C1F858CEA4F256A91C17A7FC2A3B7B0DF59048096C9F7459AB47`.
+
+Manual review still found campaign rhetoric classified as macro data,
+municipal personnel disputes as labor execution, duplicate editions of one
+insider purchase, and summaries choosing discussion/old-contract background.
+Version 12 narrows those predicates while retaining concrete campaign policy
+proposals, escalation warnings and actual wage/strike events. Verified trade
+facts share a key only when their normalized core, publication day and sourced
+purchase quantities match; changed quantities remain distinct. Selection,
+seen-state keys and the independent report guard share this rule.
+
+Industrial commercialization summaries now preserve implementation and timing;
+trading-resumption summaries retain that event rather than an old contract.
+Read-only replay of the saved seven-article artifact keeps four stories,
+removes two nonmarket stories and one duplicate, changes two cores, and has
+zero core-focus mismatches. The 70-test materiality suite and all 11 regression
+scripts pass locally. No historical article, delivery key or report output
+was sent or reset. A fresh version-12 runtime artifact remains to be checked.

@@ -2245,6 +2245,11 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         ):
             continue
         fact = normalized_article_sentence(sentence)
+        if market_materiality.focus_kind(title) == "industrial_program":
+            fact = re.sub(r"소형모듈원자로\s*\(SMR\)", "SMR", fact, flags=re.I)
+            fact = fact.replace("SMR는", "SMR은")
+            fact = fact.replace("상용화 기반 마련에 나서고", "상용화를 추진하고")
+            fact = fact.replace("연구 성과를 창업과 사업화로 연결하기 위한 지원", "연구성과의 창업·사업화 지원")
         if market_materiality.focus_kind(title) == "project_buildout":
             fact = re.sub(
                 r"^.*?([A-Za-z0-9가-힣&·]+)의\s+(?:글로벌\s*)?최고경영자\s*\(CEO\)"
@@ -7056,6 +7061,9 @@ def alert_dedup_key(alert: dict) -> tuple[str, str]:
     macro_theme = telegram.macro_release_theme(alert)
     if macro_theme:
         return (macro_theme, "event")
+    trade_theme = telegram.verified_trade_theme(alert)
+    if trade_theme:
+        return (trade_theme, "event")
     market_theme = telegram.korean_market_move_theme(alert)
     if market_theme:
         return (market_theme, "event")

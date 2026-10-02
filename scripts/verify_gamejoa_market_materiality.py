@@ -96,6 +96,60 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_campaign_rhetoric_and_personnel_disputes_are_not_macro_or_labor_events(self):
+        cases = (
+            ("트럼프-밴스, 공화당 지지지역 유세 지원", '밴스는 일자리 100만 개가 미국인에게 돌아갔다고 주장했다. 야당은 트럼프와 밴스가 이란전 비용으로 물가를 치솟게 만든 장본인이라고 비판했다.'),
+            ("광역시, 불통 인사 반박", '광역시는 공무원노조의 원칙 없는 인사 중단 요구에 대해 업무성과를 고려해 단행했다고 반박했다.'),
+        )
+        for title, body in cases:
+            item = alert(title, body)
+            self.assertNotEqual(materiality.assess(title, body)["disposition"], "keep")
+            with patch.object(radar.base, "kst_now", return_value=NOW):
+                self.assertEqual(radar.quality_display_alerts([item], 7), [])
+        for title, body in (
+            ("트럼프 유세서 중국산 장비 관세 인상 제안", "트럼프는 중국산 장비에 대한 관세를 30%로 인상하는 방안을 제안했다."),
+            ("트럼프 유세서 이란 추가 공격 경고", "트럼프는 이란에 대한 추가 공격이 임박했다고 경고했다."),
+            ("항만 노조 파업", "항만 노조는 임금 교섭 결렬로 파업을 결정했다."),
+        ):
+            self.assertEqual(materiality.assess(title, body)["disposition"], "keep")
+
+    def test_industry_program_core_explains_implementation_not_panel_discussion(self):
+        title = "SMR·양자 상용화 속도낸다…정부 7대 시드 시동"
+        body = "과기정통부는 양자 기업 대상 지원책의 방향성을 설명했고, 종합토론에서는 학계 관계자들이 지원 방안 등을 논의했다. 소형모듈원자로(SMR)는 수요·공급 기업이 참여하는 민관협의체를 이달 출범시켜 상용화 기반 마련에 나서고, 양자 분야는 연구 성과를 창업과 사업화로 연결하기 위한 지원을 본격화한다."
+        core = radar.source_focused_article_core(title, radar.ranked_article_sentences(body, [], title=title))
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertIn("이달", core)
+        self.assertIn("민관협의체", core)
+        self.assertIn("사업화", core)
+        self.assertNotIn("종합토론", core)
+
+    def test_trade_editions_deduplicate_without_collapsing_changed_quantities(self):
+        import verify_gamejoa_generated_report as guard
+        core = "HLB그룹은 진 의장이 지분 99%를 보유한 금융투자회사 에포케가 최근 장내에서 HLB이노베이션과 HLB테라퓨틱스 주식을 추가 매수했다고 밝혔다."
+        titles = ("진양곤 HLB 의장, 개인법인 통해 계열사 지분 확대", "진양곤 HLB 의장, 후속 파이프라인 자신감")
+        items = [alert(title, core + " 에포케는 주식 21만8718주를 장내 매수했다. 주식 13만584주를 매수했다.") for title in titles]
+        for index, item in enumerate(items):
+            item.update(telegram_core_fact=core.replace("에포케", "'에포케'") if index else core,
+                        link=f"https://www.yna.co.kr/view/trade-edition-{index}")
+        items[0]["source_body"] = items[0]["source_body"].replace("13만584주를 매수했다", "13만584주를 장내에서 사들였다")
+        telegram = production.contract.telegram
+        self.assertTrue(telegram.verified_trade_theme(items[0]))
+        self.assertEqual(telegram.verified_trade_theme(items[0]), telegram.verified_trade_theme(items[1]))
+        self.assertEqual(len(guard.duplicate_event_errors(items, radar)), 1)
+        self.assertTrue(set(telegram.alert_seen_keys(items[0])) & set(telegram.alert_seen_keys(items[1])))
+        changed = {**items[1], "source_body": items[1]["source_body"].replace("21만8718주", "25만8718주")}
+        self.assertNotEqual(telegram.verified_trade_theme(items[0]), telegram.verified_trade_theme(changed))
+        self.assertEqual(telegram.verified_trade_theme({**items[0], "body_verified": False}), "")
+
+    def test_trading_resumption_core_does_not_replace_event_with_old_contract(self):
+        title = "5대 1 액면병합 끝낸 아이비젼웍스, 거래 재개일에 상한가"
+        body = "거래정지 기간 중 아이비젼웍스는 38억원 규모의 검사 시스템 공급계약을 체결했다. 아이비젼웍스는 거래 재개 기준가 대비 29.97% 오른 상한가 6440원에 거래되고 있다."
+        core = radar.source_focused_article_core(title, radar.ranked_article_sentences(body, [], title=title))
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertIn("재개", core)
+        self.assertNotIn("38억원", core)
+        self.assertEqual(materiality.assess(title, body)["disposition"], "keep")
+
     def test_certification_emissions_and_hospital_are_not_financial_actions(self):
         cases = (
             ("한유원 인증 3개 취득", "한유원은 안전보건 경영 인증을 받았다. 무재해사업장 달성, 온실가스 감축 실적 및 에너지 절약 캠페인 성과를 인정받았다."),
