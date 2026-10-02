@@ -40,7 +40,13 @@ def event_rank(event):
         return 190
     if "원문·핵심 조항 수정" in et or "원문 버전" in et:
         return 180
-    if is_media_text_release(event):
+    if FMT.is_sec_crypto_custody_2026(event):
+        lines.extend([
+            "self-custody(자체 수탁) 허용 조건의 최종 문구",
+            "state trust company(주 신탁회사) 수탁 자격·통제 요건",
+            "최종규칙 채택 여부와 시행일",
+        ])
+    elif is_media_text_release(event):
         return 178
     if is_ethics_breakthrough(event):
         return 175
@@ -73,6 +79,8 @@ def easy_takeaway(event, body_ko):
 
 def short_change(event, title_ko, body_ko):
     et = clean(event.get("event_type", ""))
+    if FMT.is_sec_crypto_custody_2026(event):
+        return "CLARITY 법안 본체 변화가 아니라, SEC가 기관의 암호자산 수탁 경로를 넓히기 위해 별도 제안규칙을 낸 사건입니다."
     if is_media_text_release(event):
         return "상원 공화당의 CLARITY 최신·최종 초안 공개가 신뢰매체에서 확인됐습니다. 단순 발언이 아니라 법안 문안 자체가 바뀐 상태 변화이며, 공식 Senate/GovInfo 원문으로 조항을 재확인하는 단계입니다."
     if is_ethics_breakthrough(event):
@@ -156,6 +164,8 @@ def investment_lines(event):
 
 def impact_snapshot(event):
     et = clean(event.get("event_type", ""))
+    if FMT.is_sec_crypto_custody_2026(event):
+        return "할인율 ↓ 가능 · 시간표 ↑ · COIN 수탁기회 ↑/△ · BTC/ETH 기관접근 ↑/△"
     if is_media_text_release(event):
         return "시간표 ↑ · 할인율 ↑/△ · 수급 ↑/△ · 돈 버는 능력 →"
     if is_ethics_breakthrough(event):
@@ -183,6 +193,26 @@ def sentence_bullets(text):
         return []
     parts = re.split(r"(?<=[.!?。])\s+", text)
     return [p.strip() for p in parts if p.strip()]
+
+
+def confirmed_fact_lines(event, body_ko):
+    if FMT.is_sec_crypto_custody_2026(event):
+        return [
+            "File No. S7-2026-35 · Release No. IA-7023 / IC-36353.",
+            "제한적 self-custody(자체 수탁)와 조건부 state trust company(주 신탁회사) 수탁을 허용하는 방향.",
+            "Federal Register(연방관보) 게재 후 60일간 의견수렴. 아직 최종규칙·시행 규정은 아님.",
+        ]
+    facts = sentence_bullets(body_ko)
+    return facts[:3]
+
+
+def compact_status(event):
+    if FMT.is_sec_crypto_custody_2026(event):
+        return "🟡 Proposed Rule(제안규칙) — 공식 초안 공개, 아직 법적 의무·시행 효력 없음."
+    status = clean(current_status(event))
+    if len(status) > 150:
+        return status[:147].rstrip() + "…"
+    return status
 
 
 def pending_lines(event):
@@ -221,6 +251,8 @@ def pending_lines(event):
 
 def next_check_lines(event):
     et = clean(event.get("event_type", ""))
+    if FMT.is_sec_crypto_custody_2026(event):
+        return ["Federal Register 게재·60일 의견수렴", "최종규칙 채택 여부·시행일"]
     if is_media_text_release(event):
         return ["공식 개정 법안 PDF·텍스트 확보", "직전 버전과 조문별 diff", "상원 cloture·motion to proceed 60표 결과"]
     if is_ethics_breakthrough(event):
@@ -283,47 +315,37 @@ def event_block(event, index):
     takeaway = easy_takeaway(event, body_ko)
     lines = [
         f"<b>{index}. {html.escape(title_ko)}</b>",
+        "",
+        "<b>🧩 핵심</b>",
+        "• " + html.escape(takeaway or short_change(event, title_ko, body_ko)),
+        "• " + html.escape(compact_status(event)),
+        "",
+        "<b>📌 확인</b>",
     ]
-    if takeaway:
-        lines.extend([
-            "",
-            "<b>🧩 한마디로</b>",
-            html.escape(takeaway),
-        ])
-    lines.extend([
-        "",
-        "<b>🧭 무엇이 달라졌나</b>",
-        html.escape(short_change(event, title_ko, body_ko)),
-        "",
-        "<b>📍 현재 판정</b>",
-        html.escape(current_status(event)),
-        "",
-        "<b>💰 투자 의미</b>",
-    ])
-    for line in investment_lines(event):
-        lines.append("• " + html.escape(line))
 
-    facts = sentence_bullets(body_ko)
-    if facts:
-        lines.extend(["", "<b>✅ 확인된 사실</b>"])
-        for fact in facts:
-            lines.append("• " + html.escape(fact))
+    for fact in confirmed_fact_lines(event, body_ko):
+        lines.append("• " + html.escape(fact))
 
-    pending = pending_lines(event)
-    if pending:
-        lines.extend(["", "<b>⚠️ 아직 미확정</b>"])
-        for item in pending:
-            lines.append("• " + html.escape(item))
+    invest = investment_lines(event)
+    if invest:
+        lines.extend(["", "<b>💰 투자 의미</b>"])
+        for line in invest[:4]:
+            lines.append("• " + html.escape(line))
 
-    next_lines = next_check_lines(event)
-    if next_lines:
+    watch = []
+    for item in pending_lines(event) + next_check_lines(event):
+        if item and item not in watch:
+            watch.append(item)
+    if watch:
         lines.extend(["", "<b>⏱ 다음 확인</b>"])
-        for item in next_lines:
+        for item in watch[:3]:
             lines.append("• " + html.escape(item))
 
     evidence = evidence_block(event)
     if evidence:
-        lines.extend(["", "<b>🔎 근거</b>"] + evidence)
+        lines.extend(["", "<b>🔎 근거</b>"])
+        # Keep source/date/link compact; one line per item at most.
+        lines.extend(evidence[:3])
     return "\n".join(lines)
 
 
@@ -358,23 +380,15 @@ def paragraph_split(text, limit=3900):
 def build_readable(events):
     events = sorted(events, key=event_rank, reverse=True)
     header = "<b>🔔 CLARITY 법안 Watch — 표결·규제·BTC/COIN/Circle 영향</b>"
-    overview = ["<b>한눈에 보기</b>"]
-    for event in events:
+    overview = ["<b>👀 한눈에 보기</b>"]
+    for event in events[:3]:
         title_ko, body_ko = localized(event)
         takeaway = easy_takeaway(event, body_ko)
         overview.append("• " + html.escape(takeaway or short_change(event, title_ko, body_ko)))
-        overview.append("  ↳ " + html.escape(impact_snapshot(event)))
+        overview.append("  ↳ <b>4축</b> " + html.escape(impact_snapshot(event)))
 
     blocks = [event_block(event, i) for i, event in enumerate(events, 1)]
-    primary = events[0]
-    tail = [
-        "<b>📊 시장 반응·원인 분리</b>",
-        "BTC·ETH·COIN·CRCL이 움직였더라도 이번 사건 때문이라고 바로 단정하지 않습니다. 의미 있는 가격·거래량 변화가 확인되면 미국 국채금리·달러·Nasdaq/S&P 500과 같은 시간대를 비교해 CLARITY 직접 효과와 거시 효과를 분리합니다.",
-        "",
-        "<b>핵심 한 줄 요약</b>",
-        html.escape(core_summary(primary)),
-    ]
-    full = header + "\n\n" + "\n".join(overview) + "\n\n" + "\n\n".join(blocks) + "\n\n" + "\n".join(tail)
+    full = header + "\n\n" + "\n".join(overview) + "\n\n━━━━━━━━━━━━━━━━━━\n" + "\n\n━━━━━━━━━━━━━━━━━━\n".join(blocks)
     return paragraph_split(full)
 
 
