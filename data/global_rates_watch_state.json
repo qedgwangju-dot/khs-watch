@@ -5,9 +5,9 @@
     "ust2": 4.83,
     "ust10": 5.28,
     "ust30": 5.63,
-    "usdjpy": 157.8489990234375,
+    "usdjpy": null,
     "us_jp_2y_spread": null,
-    "usdjpy_daily_change_pct": -0.12780422532083804,
+    "usdjpy_daily_change_pct": null,
     "boe_bank_rate": 3.75
   },
   "active": {
@@ -32,7 +32,7 @@
     "ust2": "2026-10-02",
     "ust10": "2026-10-02",
     "ust30": "2026-10-02",
-    "usdjpy": "2026-10-02",
+    "usdjpy": "2026-09-25",
     "boe_bank_rate": "2026-09-17"
   },
   "central_bank_decisions": {
@@ -52,13 +52,13 @@
     }
   },
   "classification": "미·일 장기채 동시 스트레스",
-  "updated_at_kst": "2026-10-03T05:51:10+09:00",
+  "updated_at_kst": "2026-10-03T07:13:43+09:00",
   "date_alignment": {
     "jgb2_date": "2026/10/1",
     "ust2_date": "2026-10-02",
     "same_2y_date": false,
     "latest_rate_date": "2026-10-02",
-    "live_fx_signal_eligible": true,
-    "live_fx_timestamp_utc": "2026-10-02T20:51:27Z"
+    "live_fx_signal_eligible": false,
+    "live_fx_timestamp_utc": null
   }
 }
