@@ -158,6 +158,36 @@ class MaterialityChecks(unittest.TestCase):
                    "telegram_core_fact": core.replace("2.9%", "3.0%")}
         self.assertEqual(guard.duplicate_event_errors([items[0], revised], radar), [])
 
+    def test_cross_source_macro_caption_uses_verified_release_context(self):
+        full_core = "국가데이터처가 발표한 2026년 9월 소비자물가는 전년비 2.9% 상승했다."
+        first = {**alert("9월 물가 2.9%↑(종합)", full_core), "telegram_core_fact": full_core, "published": "2026-10-02T09:33:00+09:00"}
+        caption = {**alert("소비자 물가상승률 2.9%", "국가데이터처 심의관이 2026년 9월 소비자물가 동향을 브리핑했다. 지난달 소비자물가 상승률은 작년 동월보다 2.9% 상승했다."),
+                   "telegram_core_fact": "지난달 소비자물가 상승률은 작년 동월보다 2.9% 상승했다.", "published": "2026-10-02T09:19:00+09:00",
+                   "link": "https://www.yna.co.kr/view/PYH-caption-fixture"}
+        telegram = production.contract.telegram
+        self.assertEqual(telegram.macro_release_theme(first), telegram.macro_release_theme(caption))
+        normalized = [radar.normalize_alert_for_output(item) for item in (first, caption)]
+        import verify_gamejoa_generated_report as guard
+        self.assertEqual(len(guard.duplicate_event_errors(normalized, radar)), 1)
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([first, caption], 7)), 1)
+        self.assertEqual(telegram.macro_release_theme({**caption, "body_verified": False}), "")
+        different = {**caption, "source_body": caption["source_body"].replace("9월", "8월")}
+        self.assertNotEqual(telegram.macro_release_theme(different), telegram.macro_release_theme(first))
+
+    def test_office_opening_profile_does_not_become_new_financing(self):
+        title = "금융그룹 '4000명 새 둥지' 시대 열었다…새로운 100년 시작"
+        body = "금융그룹은 헤드쿼터 오프닝 행사를 열었다. 회장은 혁신 비전을 강조했다. 시장은 축사에서 15년간 이어온 투자유치 노력의 결실이라고 말했다."
+        self.assertEqual(materiality.assess(title, body)["disposition"], "exclude")
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([alert(title, body)], 7), [])
+        for headline, source in (
+            ("금융기업 사옥 매각, 현금흐름 개선", "금융기업은 사옥 매각을 결정했다."),
+            ("사옥 이전으로 임대료 절감…영업이익 가이던스 상향", "기업은 사옥 이전으로 임대료를 줄여 영업이익 가이던스를 10% 상향했다."),
+            ("반도체기업, 미국 법인 출범", "반도체기업은 현지 고객 지원을 위해 미국 법인에 20억원을 출자한다고 발표했다."),
+        ):
+            self.assertEqual(materiality.assess(headline, source)["disposition"], "keep")
+
     def test_retail_fx_benefits_are_not_macro_rate_changes(self):
         title = "백화점, 中 국경절 관광객 공략…K패션 행사"
         body = "백화점이 중국 국경절 연휴 관광객 공략에 나선다. 300만원 이상 결제하면 10만원을 즉시 할인하고 환율 우대 혜택을 적용한다."
@@ -195,6 +225,17 @@ class MaterialityChecks(unittest.TestCase):
         self.assertEqual({item["source_title"] for item in selected}, {title for title, _body in strong})
         self.assertEqual(materiality.assess("신발기업, 영업이익 가이던스 상향", "신발기업은 영업이익 가이던스를 20% 상향했다.")["priority"], 3)
         self.assertEqual(materiality.assess("임원 인사·이사회 의장 내정, 지분 인수 결정", "기업은 지분 30% 인수를 결정하고 이사회 의장을 내정했다.")["priority"], 3)
+
+    def test_limited_scope_publicity_does_not_fill_unused_core_slots(self):
+        cases = (
+            ("부산 9월 소비자물가 2.7% 상승", "부산의 9월 소비자물가는 2.7% 상승했다."),
+            ("키즈 신발 매출 2.5배 증가", "패션기업은 걸음마 신발 매출이 150% 증가했다고 밝혔다."),
+            ("그룹 사장단 인사·이사회 의장 내정", "그룹은 사장단 인사를 발표했다. 계열사는 해외 공장 가동을 확대했다."),
+        )
+        for title, body in cases:
+            item = alert(title, body)
+            with patch.object(radar.base, "kst_now", return_value=NOW):
+                self.assertEqual(radar.quality_display_alerts([item], 7), [])
 
     def test_bond_threshold_revisions_share_an_event_but_new_levels_do_not(self):
         titles = (
@@ -738,13 +779,22 @@ class MaterialityChecks(unittest.TestCase):
 
 def audit_saved_runs(paths):
     results = []
+    selections = []
     for path in paths:
         with zipfile.ZipFile(path) as archive:
             name = next(name for name in archive.namelist() if name.endswith("gamejoa_preopen_news_radar.json"))
             report = json.loads(archive.read(name))
+        run_time = radar.detail_queue.parse_time(report.get("query_time_kst"))
+        candidates = copy.deepcopy(report["alerts"])
+        with patch.object(radar.base, "kst_now", return_value=run_time or NOW):
+            selected = radar.quality_display_alerts(candidates, 7)
+        selected_links = {item.get("link") for item in selected}
+        selections.append({"artifact": str(path), "original_count": len(candidates), "revalidated_count": len(selected),
+                           "selected_titles": [item.get("source_title") for item in selected],
+                           "removed": [{"title": item.get("source_title"), "reason": item.get("_exclusion_reason")}
+                                       for item in candidates if item.get("link") not in selected_links]})
         for item in report["alerts"]:
             title = item.get("source_title") or item.get("news") or ""
-            run_time = radar.detail_queue.parse_time(report.get("query_time_kst"))
             results.append({
                 "artifact": str(path), "title": title,
                 "materiality": radar.source_market_materiality(item),
@@ -757,6 +807,7 @@ def audit_saved_runs(paths):
                       "excluded": sum(r["materiality"]["disposition"] == "exclude" for r in results),
                       "stale_previews": sum(r["stale_session_preview"] for r in results),
                       "focus_mismatches": sum(not materiality.core_focus_aligned(r["title"], r["revalidated_core"]) for r in results),
+                      "selection_audits": selections,
                       "results": results}, ensure_ascii=False))
 
 

@@ -203,6 +203,8 @@ def main() -> int:
             materiality = prod.runner.source_market_materiality(alert)
             if materiality["disposition"] == "exclude":
                 errors.append(f"routine/vague article passed materiality gate: {alert.get('news')}")
+            if materiality["priority"] < 2 and materiality.get("scope_note"):
+                errors.append(f"limited-scope publicity filled a core-news slot: {alert.get('news')}")
             if alert.get("market_materiality") != materiality:
                 errors.append(f"source materiality audit missing or stale: {alert.get('news')}")
             if not prod.runner.source_output_aligned(alert):

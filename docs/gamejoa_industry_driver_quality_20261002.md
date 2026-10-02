@@ -157,3 +157,22 @@ forecasts and revised values/periods remain distinct. The final generated-report
 guard independently rejects duplicate source event keys, even if a future
 selection change accidentally lets two editions through. The amended patch
 must still pass the complete suite and a new production-environment dry run.
+
+Run `36950452830` passed the 55-test suite and generated-report guard at
+`2026-10-02T01:24:03Z`. Manual rereading confirmed the three exclusions and
+same-publisher CPI deduplication, but revealed a cross-source photo-caption
+edition of the same CPI release and an office-opening story whose financing
+evidence came from a mayor's recollection of the preceding 15 years.
+
+Version 8 resolves an omitted macro country/period only from the verified
+article's release-agency/period context. A forecast or changed period/value
+still receives a different key, and the generated-report guard checks those
+keys independently. Office publicity without new earnings, costs, orders,
+financing or asset transactions is excluded; actual asset disposal, cost
+savings and new overseas operating subsidiaries remain eligible. Regional
+indicators, limited store/product publicity and routine personnel stories no
+longer fill spare core-news slots merely because fewer than seven material
+events exist. The final guard independently checks that scope floor as well.
+Fifty-eight materiality tests now cover the observed failures and all 24
+industry event classes. The next final record must use the version-8 runtime
+artifact and distinguish collection failures/deferred rows from no news.

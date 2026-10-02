@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 7
+VERSION = 8
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should)\b", re.I,
@@ -40,6 +40,12 @@ RETAIL_PRODUCT_METRIC = re.compile(
 ROUTINE_PERSONNEL = re.compile(r"사장단\s*인사|임원\s*인사|이사회\s*의장.{0,15}내정", re.I)
 SPORTS_OWNERSHIP = re.compile(r"구단주|축구\s*구단|야구\s*구단|프로\s*(?:축구|야구)|football club|soccer club|club owner", re.I)
 LOCAL_CEREMONY = re.compile(r"나무\s*심기|식목|선포식|기념식|지역\s*축제|tree planting|proclamation ceremony", re.I)
+OFFICE_PUBLICITY = re.compile(r"사옥|본사\s*이전|헤드쿼터|새\s*둥지|headquarters|new office", re.I)
+OFFICE_ECONOMIC_CHANGE = re.compile(
+    r"영업이익|순이익|가이던스|연결\s*실적|공급\s*계약|납품\s*계약|수주|발주|공장|양산|"
+    r"임대료|이전\s*비용|현금흐름|자금조달|자사주|배당|(?:사옥|부동산).{0,20}(?:매각|취득|매입)|"
+    r"operating profit|guidance|supply contract|factory|rent|relocation cost|cash flow|financing", re.I,
+)
 PUBLIC_MARKET_BUSINESS_LINK = re.compile(
     r"상장사|상장\s*기업|상장\s*구단|증시\s*상장|코스피|코스닥|나스닥|뉴욕증권거래소|"
     r"영업이익|순이익|가이던스|연결\s*실적|공급\s*계약|납품\s*계약|수주|발주|"
@@ -188,6 +194,9 @@ RULES = (
      r"주식|지분|shares|stake", r"기부|이전|증여|donat|transfer"),
     ("corporate_transaction", ("earnings", "timeline"),
      r"회사|기업|사업|법인|지분|company|business|subsidiar|stake", r"인수|합병|acquir|merger"),
+    ("operating_asset_transaction", ("earnings", "timeline"),
+     r"(?:사옥|부동산|사업부|영업자산).{0,20}(?:매각|취득|매입)|operating asset|headquarters sale",
+     r"결정|확정|검토|추진|계약|매각했다|매입했다|decid|consider|contract|sold|acquir"),
     ("institutional_capital_access", ("earnings", "timeline"),
      r"국민연금|연기금|벤처캐피털|\bvc\b|pension fund|venture capital",
      r"투자\s*기회.{0,8}(?:확대|넓)|출자|투자협력|투자 협력|funding|investment opportunities|commitment"),
@@ -267,6 +276,9 @@ def assess(title: str, body: str) -> dict:
     sentences = [part.strip() for part in re.split(r"(?<!\d)[.!?。](?!\d)\s*|[\r\n]+", body) if part.strip()]
     lead = " ".join(sentences[:3])
     headline_lead = f"{title} {lead}"
+    if OFFICE_PUBLICITY.search(title) and not OFFICE_ECONOMIC_CHANGE.search(headline_lead):
+        result.update(disposition="exclude", priority=0, reason="office_publicity_without_business_economics")
+        return result
     if SPORTS_OWNERSHIP.search(headline_lead) and not PUBLIC_MARKET_BUSINESS_LINK.search(headline_lead):
         result.update(disposition="exclude", priority=0, reason="sports_ownership_without_market_business_link")
         return result
