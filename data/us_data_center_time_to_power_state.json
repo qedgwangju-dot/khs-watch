@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "format_version": 3,
+  "format_version": 4,
   "miso_metrics": {
     "cycle5_projects": 15,
     "cycle5_mw": 7297.5,
@@ -27,6 +27,21 @@
     "interconnection_backlog_high_years": 10.0
   },
   "flexible_load_source_errors": [],
+  "power_semiconductor_metrics": {
+    "nvidia_full_scale_year": 2027.0,
+    "nvidia_row_power_center_mw": 2.0,
+    "nvidia_partner_count_min": 80.0,
+    "infineon_bbu_kw": 24.0,
+    "infineon_bbu_efficiency_pct": 99.0,
+    "infineon_bbu_density_w_in3": 450.0,
+    "digitimes_ev_share_2026_pct": 65.0,
+    "digitimes_sic_6in_rebound_year": 2027.0,
+    "digitimes_hvdc_start_year": 2027.0,
+    "digitimes_hvdc_end_year": 2028.0,
+    "wolfspeed_liteon_200mm_qualified": true,
+    "infineon_eaton_sst_apac": true
+  },
+  "power_semiconductor_source_errors": [],
   "seen_ids": [
     "07a3b3726e4eed7a1635",
     "ad521c7e834b4ee6e44b",
@@ -64,10 +79,10 @@
     "4302e47a0a8821b08d8b",
     "e408345fc8d305f2493a"
   ],
-  "last_fx_krw_per_usd": 1357.414201,
+  "last_fx_krw_per_usd": 1360.202164,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-09-26T07:50:30+00:00",
-  "updated_at_utc": "2026-09-26T07:51:12+00:00",
+  "fx_checked_utc": "2026-10-02T16:49:31+00:00",
+  "updated_at_utc": "2026-10-02T16:50:19+00:00",
   "source_errors": [
     "ABB: ReadTimeout"
   ]
