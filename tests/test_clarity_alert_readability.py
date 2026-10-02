@@ -28,12 +28,10 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
             "reported_title": "Trump agrees to new bipartisan ethics provision in massive crypto bill",
         }
         rendered = "\n".join(MOD.build_readable([event]))
-        self.assertIn("<b>한눈에 보기</b>", rendered)
-        self.assertIn("<b>🧭 무엇이 달라졌나</b>", rendered)
-        self.assertIn("<b>📍 현재 판정</b>", rendered)
+        self.assertIn("<b>👀 한눈에 보기</b>", rendered)
+        self.assertIn("<b>🧩 핵심</b>", rendered)
         self.assertIn("<b>💰 투자 의미</b>", rendered)
-        self.assertIn("<b>✅ 확인된 사실</b>", rendered)
-        self.assertIn("<b>⚠️ 아직 미확정</b>", rendered)
+        self.assertIn("<b>📌 확인</b>", rendered)
         self.assertIn("<b>⏱ 다음 확인</b>", rendered)
         self.assertIn("<b>🔎 근거</b>", rendered)
         self.assertIn("약 80%", rendered)
@@ -42,6 +40,49 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
         self.assertIn('<a href="https://apnews.com/article/521fd5986eb107413064018f7a468c51">원문</a>', rendered)
         self.assertNotIn("Trump agrees to new bipartisan ethics provision in massive crypto bill", rendered)
         self.assertLessEqual(max(map(len, MOD.build_readable([event]))), 3900)
+
+    def test_sec_crypto_custody_alert_is_one_compact_specific_card(self):
+        events = [
+            {
+                "source": "SEC 발언·성명",
+                "event_type": "SEC·CFTC 공식 규칙·해석·집행지침",
+                "title": "Roller Coaster Ride: Statement on Proposed Adviser and Regulated Fund Custody Rules; Crypto Custody Rules",
+                "url": "https://www.sec.gov/newsroom/speeches-statements/peirce-statement-proposed-amendments-custody-rules-100126",
+                "date": "Thu, 01 Oct 2026 15:59:13 -0400",
+                "detail": "Commissioner Hester M. Peirce",
+            },
+            {
+                "source": "SEC 발언·성명",
+                "event_type": "SEC·CFTC 공식 규칙·해석·집행지침",
+                "title": "Statement on Proposal to Address the Custody of Crypto Assets Under the Investment Advisers Act and the Investment Company Act",
+                "url": "https://www.sec.gov/newsroom/speeches-statements/atkins-crypto-custody-100126-statement-proposal-address-custody-crypto-assets-under-investment-advisers-act-investment-company",
+                "date": "Thu, 01 Oct 2026 16:00:02 -0400",
+                "detail": "Chairman Paul S. Atkins",
+            },
+            {
+                "source": "SEC 보도자료",
+                "event_type": "SEC·CFTC 공식 규칙·해석·집행지침",
+                "title": "SEC Proposal Would Address How Investment Advisers and Funds Can Custody Crypto Assets Under the Federal Securities Laws",
+                "url": "https://www.sec.gov/newsroom/press-releases/2026-100-sec-proposal-would-address-how-investment-advisers-funds-can-custody-crypto-assets-under-federal",
+                "date": "Thu, 01 Oct 2026 12:16:07 -0400",
+                "detail": "The Securities and Exchange Commission today proposed new rules and amendments to provide a tailored framework for the custody of crypto assets for registered investment advisers and regulated funds.",
+            },
+        ]
+        filtered = MOD.FMT.filter_alertable_events(events)
+        self.assertEqual(len(filtered), 1)
+        rendered = "\n".join(MOD.build_readable(filtered))
+        self.assertEqual(rendered.count("<b>1. "), 1)
+        self.assertNotIn("롤러코스터 라이드", rendered)
+        self.assertNotIn("헤스터 M.", rendered)
+        self.assertNotIn("폴 S.", rendered)
+        self.assertIn("self-custody(자체 수탁)", rendered)
+        self.assertIn("S7-2026-35", rendered)
+        self.assertIn("COIN", rendered)
+        self.assertIn("CRCL", rendered)
+        self.assertIn("CLARITY 법안 본체 변화가 아니라", MOD.short_change(filtered[0], *MOD.localized(filtered[0])))
+        self.assertNotIn("시장 반응·원인 분리", rendered)
+        self.assertNotIn("핵심 한 줄 요약", rendered)
+        self.assertLessEqual(max(map(len, MOD.build_readable(filtered))), 3900)
 
     def test_oira_prerule_starts_with_easy_real_world_meaning(self):
         event = {
