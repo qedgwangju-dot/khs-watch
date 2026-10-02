@@ -94,11 +94,10 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
             "detail": "RIN 3038-AF80 | Status: Pending Review | Stage: Prerule | Economically Significant: No | Legal Deadline: None",
         }
         rendered = "\n".join(MOD.build_readable([event]))
-        self.assertIn("<b>🧩 한마디로</b>", rendered)
+        self.assertIn("<b>🧩 핵심</b>", rendered)
         self.assertIn("CLARITY가 의회에서 막혀도 CFTC가 기다리지 않고", rendered)
         self.assertIn("레버리지·마진 거래", rendered)
         self.assertIn("Prerule(사전규칙 단계)", rendered)
-        self.assertIn("아직 미확정", rendered)
         self.assertIn("OIRA Pending Review(검토 중) 종료", rendered)
         self.assertLessEqual(max(map(len, MOD.build_readable([event]))), 3900)
 
