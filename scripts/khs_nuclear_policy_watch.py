@@ -555,11 +555,25 @@ def collect_westinghouse_stake_items(now: dt.datetime) -> list[dict]:
         published = parse_date(body) or now
         if (now - published).total_seconds() / 3600 > WEC_MAX_SOURCE_AGE_HOURS:
             continue
-        normalized = (
-            "Westinghouse 공식 한국 지분 5~10% cornerstone equity investment "
-            "terms non-binding subject to definitive agreements due diligence corporate approvals regulatory approvals"
-        )
-        state_text = normalized + " " + body
+        normalized_parts = [f"{source['name']} 공식 한국 Westinghouse 지분투자"]
+        if any(term in low for term in ["5% and 10%", "5% to 10%", "5%~10%", "5-10%"]):
+            normalized_parts.append("지분 5~10%")
+        if "cornerstone equity investment" in low:
+            normalized_parts.append("cornerstone equity investment")
+        elif "potential equity investment" in low:
+            normalized_parts.append("potential equity investment")
+        if "non-binding" in low or "nonbinding" in low:
+            normalized_parts.append("terms non-binding")
+        if "subject to definitive agreements" in low or "definitive agreements" in low or "final negotiations" in low:
+            normalized_parts.append("definitive agreements pending")
+        if "due diligence" in low:
+            normalized_parts.append("due diligence")
+        if "corporate approvals" in low or "corporate approval" in low:
+            normalized_parts.append("corporate approvals")
+        if "regulatory approvals" in low or "regulatory approval" in low:
+            normalized_parts.append("regulatory approvals")
+        normalized = " ".join(normalized_parts)
+        state_text = normalized
         story_key = f"official|{source['name'].lower()}|2026-09-30|westinghouse-equity-framework"
         if story_key in seen_story:
             continue
