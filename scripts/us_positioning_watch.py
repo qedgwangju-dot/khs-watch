@@ -38,6 +38,7 @@ CFTC = "https://www.cftc.gov/dea/futures/financial_lf.htm"
 CFTC_HISTORY_TEMPLATE = "https://www.cftc.gov/files/dea/history/fut_fin_txt_{year}.zip"
 NQ_CFTC_CODE = "209742"
 CBOE = "https://www.cboe.com/us/options/market_statistics/market/"
+CBOE_DAILY_TEMPLATE = "https://www.cboe.com/markets/us/options/market-statistics/daily?dt={date}"
 SOX = "https://indexes.nasdaq.com/Index/History/SOX"
 SOX_OVERVIEW = "https://beta.indexes.nasdaq.com/Index/Overview/SOX"
 SOX_OVERVIEW_FALLBACK = "https://indexes.nasdaq.com/Index/Overview/SOX"
@@ -535,6 +536,26 @@ def parse_cboe_section(text, heading, next_heading=None, required_time="03:15 PM
     return None
 
 
+def fetch_cboe_daily_ratio_crosscheck(period):
+    d = datetime.strptime(period, "%A, %B %d, %Y").date()
+    url = CBOE_DAILY_TEMPLATE.format(date=d.isoformat())
+    h = browser_html(url)
+    text = re.sub(r"\s+", " ", BeautifulSoup(h, "html.parser").get_text(" ", strip=True))
+    pats = {
+        "total": r"TOTAL PUT/CALL RATIO\s+([0-9]+(?:\.[0-9]+)?)",
+        "index": r"INDEX PUT/CALL RATIO\s+([0-9]+(?:\.[0-9]+)?)",
+        "equity": r"EQUITY PUT/CALL RATIO\s+([0-9]+(?:\.[0-9]+)?)",
+    }
+    ratios = {}
+    for key, pat in pats.items():
+        m = re.search(pat, text, re.I)
+        if m:
+            ratios[key] = float(m.group(1))
+    if len(ratios) != 3:
+        raise RuntimeError(f"Cboe official daily ratio cross-check unavailable for {d.isoformat()}")
+    return {"date": d.isoformat(), "url": url, **ratios}
+
+
 def parse_cboe():
     # Browser rendering is needed because the current-statistics tables are JS-backed.
     h = browser_html(CBOE)
@@ -559,6 +580,23 @@ def parse_cboe():
             "Cboe final 03:15 PM CT rows are not all available yet; intraday snapshot suppressed"
         )
 
+    daily = fetch_cboe_daily_ratio_crosscheck(period)
+    ratio_pairs = {
+        "total": (total["pc_ratio"], daily["total"]),
+        "index": (index_opt["pc_ratio"], daily["index"]),
+        "equity": (equity["pc_ratio"], daily["equity"]),
+    }
+    mismatches = [
+        f"{k}: intraday-final={a:.2f} daily={b:.2f}"
+        for k, (a, b) in ratio_pairs.items()
+        if abs(a - b) > 0.01
+    ]
+    if mismatches:
+        raise RuntimeError(
+            "Cboe final snapshot conflicts with official daily ratios; suppressing alert | "
+            + " | ".join(mismatches)
+        )
+
     metrics = {
         "total_pc_ratio": total["pc_ratio"] if total else None,
         "total_calls": total["calls"] if total else None,
@@ -573,6 +611,13 @@ def parse_cboe():
         "index_puts": index_opt["puts"] if index_opt else None,
         "index_time_ct": index_opt["time_ct"] if index_opt else None,
         "final_snapshot": True,
+        "daily_ratio_crosscheck": {
+            "date": daily["date"],
+            "total": daily["total"],
+            "index": daily["index"],
+            "equity": daily["equity"],
+            "url": daily["url"],
+        },
     }
     core = {"source": "Cboe", "kind": "options", "period": period, "metrics": metrics}
     return {**core, "url": CBOE, "fingerprint": fp(core)}
@@ -935,6 +980,14 @@ def validate_critical_sources(cftc_obj, cboe_obj, sox_obj):
             problems.append("Cboe 최종 03:15 PM CT 스냅샷 미확인")
         if not all(m.get(k) == "03:15 PM" for k in ("total_time_ct","equity_time_ct","index_time_ct")):
             problems.append("Cboe Total/Equity/Index 최종 시각 불일치")
+        daily = m.get("daily_ratio_crosscheck") or {}
+        for key, metric_key in (("total","total_pc_ratio"),("index","index_pc_ratio"),("equity","equity_pc_ratio")):
+            if not isinstance(daily.get(key), (int, float)):
+                problems.append(f"Cboe 일별 공식비율 교차검증 누락: {key}")
+            elif abs(float(m.get(metric_key)) - float(daily.get(key))) > 0.01:
+                problems.append(
+                    f"Cboe 최종/일별 공식비율 불일치 {key}: {m.get(metric_key)} vs {daily.get(key)}"
+                )
         if m.get("total_calls") and m.get("total_puts") and m.get("total_pc_ratio") is not None:
             calc = m["total_puts"] / m["total_calls"]
             if abs(calc - m["total_pc_ratio"]) > 0.03:
