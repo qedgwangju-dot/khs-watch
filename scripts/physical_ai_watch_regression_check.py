@@ -1199,4 +1199,93 @@ assert g == "frontier_ai", (g, s, c)
 assert c.endswith("Gemini Robotics 모델 공개 범위 확대"), c
 assert s >= 11, s
 
+# 32) 46-series EV cylindrical battery lane. Current contracts/plans
+# surfaced by the user are baselines; new OEM confirmation, binding orders,
+# equipment execution, SOP, first shipment, ramp metrics and reversals alert.
+ev46_lges_backlog_baseline = make(
+    "LG Energy Solution 46-series backlog exceeds 440GWh",
+    "LG Energy Solution secured more than 100GWh of new 46-series orders in Q1 2026, bringing its 46-series order backlog above 440GWh.",
+    "LG Energy Solution",
+)
+g, s, c, k = classify(ev46_lges_backlog_baseline)
+assert g == "ev_46_series", (g, s, c)
+assert s < 11, ("440GWh / 100GWh Q1 figures are current baseline", s, c)
+
+ev46_rivian_baseline = make(
+    "LG Energy Solution to supply Rivian 4695 batteries",
+    "LG Energy Solution signed a 67GWh five-year supply contract for 4695 46-series cylindrical batteries for Rivian R2.",
+    "LG Energy Solution",
+)
+g, s, c, k = classify(ev46_rivian_baseline)
+assert g == "ev_46_series", (g, s, c)
+assert s < 11, ("Rivian 67GWh 4695 contract is current baseline", s, c)
+
+ev46_mercedes_baseline = make(
+    "LG Energy Solution to supply Mercedes-Benz 46100 cells from Poland",
+    "TheElec reports LG Energy Solution plans a 46100 line at Wroclaw in 2027 for Mercedes-Benz supply from 2028 and is considering BMA equipment investment.",
+    "디일렉",
+)
+g, s, c, k = classify(ev46_mercedes_baseline)
+assert g == "ev_46_series", (g, s, c)
+assert s < 11, ("Mercedes 46100 2028 report is user-surfaced baseline", s, c)
+
+ev46_indigo_mou = make(
+    "LG Energy Solution and indiGOtech sign 46-series MOU",
+    "The companies signed a nonbinding MOU to explore 46-series battery supply for Flow Ride and Flow Cargo from 2027 to 2030.",
+    "LG Energy Solution",
+)
+g, s, c, k = classify(ev46_indigo_mou)
+assert g == "ev_46_series", (g, s, c)
+assert s < 11, ("nonbinding indiGOtech MOU must not be treated as firm order", s, c)
+
+ev46_volvo_format = make(
+    "Volvo confirms 4695 cylindrical battery format",
+    "Volvo officially confirmed adoption of 4695 46mm cylindrical batteries for its next EV platform.",
+    "Volvo",
+)
+g, s, c, k = classify(ev46_volvo_format)
+assert g == "ev_46_series", (g, s, c)
+assert c.endswith("완성차 46파이 규격 공식 채택"), c
+assert s >= 11, s
+
+ev46_arizona_sop = make(
+    "LG Energy Solution starts 46-series mass production in Arizona",
+    "LG Energy Solution started mass production of 4680, 4695, 46100 and 46120 46-series cells at its Queen Creek Arizona plant.",
+    "LG Energy Solution",
+)
+g, s, c, k = classify(ev46_arizona_sop)
+assert g == "ev_46_series", (g, s, c)
+assert c.endswith("46시리즈 실제 양산 개시"), c
+assert s >= 11, s
+
+ev46_poland_equipment = make(
+    "LG Energy Solution orders equipment for Poland 46100 line",
+    "LG Energy Solution placed equipment orders and began production-line installation for a 46100 46-series line in Wroclaw Poland.",
+    "LG Energy Solution",
+)
+g, s, c, k = classify(ev46_poland_equipment)
+assert g == "ev_46_series", (g, s, c)
+assert c.endswith("46시리즈 장비발주·반입·라인 구축"), c
+assert s >= 11, s
+
+ev46_bma = make(
+    "LG Energy Solution confirms Mercedes 46100 BMA investment",
+    "LG Energy Solution approved investment and equipment orders for battery module assembly BMA alongside its Mercedes-Benz 46100 cell line.",
+    "LG Energy Solution",
+)
+g, s, c, k = classify(ev46_bma)
+assert g == "ev_46_series", (g, s, c)
+assert c.endswith("46시리즈 모듈조립 내재화·투자"), c
+assert s >= 11, s
+
+ev46_component_order = make(
+    "KNS wins 46-series assembly equipment order",
+    "KNS won a contract to supply rivet and inspection equipment for a 4695 46-series battery production line for LG Energy Solution.",
+    "KNS",
+)
+g, s, c, k = classify(ev46_component_order)
+assert g == "ev_46_series", (g, s, c)
+assert c.endswith("46시리즈 소재·장비 직접 수주"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
