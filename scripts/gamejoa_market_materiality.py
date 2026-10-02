@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 22
+VERSION = 23
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|목표|보인다|나서야|시급|밑돌\s*듯|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
@@ -620,6 +620,11 @@ def assess(title: str, body: str) -> dict:
         result.update(disposition="keep", reason="source_change_evidence")
         result["news_value_rank"] = news_value_rank(result["evidence"])
         kinds = {item["kind"] for item in result["evidence"]}
+        if re.search(r"총력|독려|당부", title) and kinds <= {"policy_scope_or_stage", "physical_supply_or_capacity", "customer_discussions"} and not re.search(
+            r"고시.{0,15}개정|법안.{0,15}(?:발의|통과)|시행일.{0,15}확정|계약.{0,15}체결|예산.{0,20}(?:확정|증액)|발주.{0,15}(?:했다|확정)", body,
+        ):
+            result["priority"] = 1
+            result["scope_note"] = "target_reiteration_without_new_instrument_or_execution"
         if re.search(r"포럼|패널토론|forum|panel discussion", headline_lead, re.I) and kinds <= {"policy_scope_or_stage", "customer_discussions", "financing_infrastructure", "market_infrastructure"} and not re.search(
             r"(?:정부|금융위|국세청|국회|장관|부처).{0,80}(?:입법예고했다|발의했다|개정한다|시행한다|시행하기로\s*결정|공포했다)", body,
         ):

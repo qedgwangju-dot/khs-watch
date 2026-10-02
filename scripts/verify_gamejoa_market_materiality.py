@@ -96,6 +96,15 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_annual_target_reiteration_cannot_borrow_earlier_actuals(self):
+        title = "국토부 차관, 연말 공공주택 6만2000가구 착공 총력"
+        body = "국토부는 연말까지 기존 공공주택 착공 목표를 달성하도록 당부했다. 1~8월 서울 주택 인허가는 3만9940가구로 전년비 40.4% 증가했고 착공은 2만679가구로 41.1% 늘었다."
+        audit = materiality.assess(title, body)
+        self.assertLess(audit["priority"], 2)
+        self.assertEqual(radar.quality_display_alerts([alert(title, body)], 7), [])
+        actual = materiality.assess("정부, 공공주택 공급 총력…신규 발주 확정", "정부는 공공주택 공급을 위해 3000억원 공급 계약을 체결하고 발주를 확정했다.")
+        self.assertEqual(actual["priority"], 3)
+
     def test_primary_sales_issuer_not_competitor_forecast_owns_core_numbers(self):
         title = "현대차·기아, 3분기 美 역대 최다 기록…포드 제치고 빅3 눈앞"
         body = "현대차·기아는 3분기 합산 판매량이 50만6200대로 집계됐다고 2일 밝혔다. 전년 동기 대비 5.4% 증가한 것이다.\n포드는 아직 9월 판매 실적을 발표하지 않았는데 콕스는 포드의 3분기 판매량이 7.1% 감소한 50만4172대로 전망된다고 밝혔다."

@@ -609,3 +609,23 @@ focus mismatches. The latest seven-row report becomes four meaningful
 macro/supply/defense/sales events. All 11 local contract scripts passed; the
 latest targeted suite contains 101 passing materiality tests. Fresh production
 validation and external-delivery boundaries follow separately below.
+
+## Version 23: Do Not Fill Slots With Reiterated Targets
+
+Run `36978929239` completed at `2026-10-02T07:34:36Z`, with version 22
+in its report queried at `16:30:53 KST`. It attempted 138 bodies, verified
+110, failed 28 and deferred 583. ZIP SHA-256:
+`3F3736565A0684530F0777BD36DE1BEA8CB585D98628AC527002F5D5BE1CBF9F`.
+Its one selected item reiterated an annual public-housing target while the
+core substituted January-August actuals. This was not accepted as evidence
+of a new high-impact execution change.
+
+A target-reiteration headline containing `총력`, `독려` or `당부`, supported
+only by policy/capacity/discussion evidence, stays below publication priority
+unless the source announces an instrument change, signed contract, newly
+confirmed/increased budget or actual new order. Genuine supplier execution
+remains eligible. This prevents earlier actuals from rescuing a reminder of
+an existing target. Read-only replay of this artifact selects zero, with an
+explicit exclusion reason; it does not fabricate replacement news or clear
+seen state. The targeted suite now contains 102 passing materiality tests.
+Production validation after deployment follows below.
