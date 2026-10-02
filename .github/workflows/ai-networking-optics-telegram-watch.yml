@@ -139,6 +139,24 @@ jobs:
           assert watch.source_priority("Lumentum") >= 65, (
               "Official Lumentum material must remain eligible as a primary source."
           )
+
+          fcc_final = "FCC finalizes restrictions on Chinese-made optical transceivers for 3.2T systems with domestic content requirements"
+          assert watch.signal_score(fcc_final, "Reuters") >= 7, "FCC final-rule optics story must trigger"
+          assert watch.category_for(fcc_final, "US Optical Policy") == "FCC 광트랜시버 규제"
+          assert watch.stage_for(fcc_final) == "최종 규칙·시행"
+
+          senate_bill = "Senate introduces bill restricting Innolight and Eoptolink optical transceivers in national security systems"
+          assert watch.signal_score(senate_bill, "Reuters") >= 7, "Congressional optics restriction must trigger"
+          assert watch.category_for(senate_bill, "US Optical Policy") == "미국 광트랜시버 규제·법안"
+          assert watch.stage_for(senate_bill) == "법안 발의·입법"
+
+          inp_supply = "AXT InP substrate shortage worsens as export license delays constrain optical laser supply"
+          assert watch.signal_score(inp_supply, "AXT") >= 7, "InP substrate/export-license bottleneck must trigger"
+          assert watch.category_for(inp_supply, "AXT") == "InP 기판 병목"
+          assert watch.stage_for(inp_supply) == "수출허가·공급망 규제"
+
+          assert watch.canonical_story_key("US Optical Policy", fcc_final) == "us-optical-policy|fcc|final"
+          assert watch.canonical_story_key("US Optical Policy", senate_bill) == "us-optical-policy|congress|bill"
           print("dedupe_and_quality_regression_test=passed")
           PY
 
@@ -197,8 +215,9 @@ jobs:
               "CPO", "NPO", "SiPh", "InP", "PIC", "FAU", "ELS", "OSAT", "CAPA",
               "DSP", "PCIe", "CXL",
               "GPU", "XPU", "AI", "1.6T", "3.2T", "800G", "100Tbps", "FY25", "FY26",
-              "FY27", "FY28", "AVGO", "NVDA", "ANET", "MRVL", "LITE",
-              "COHR", "ALAB", "GLW", "005930.KS",
+              "FY27", "FY28", "FCC", "Covered List", "Buy American", "InP", "AXT", "AXTI",
+              "Innolight", "Eoptolink", "HBOM", "SBOM",
+              "AVGO", "NVDA", "ANET", "MRVL", "LITE", "COHR", "ALAB", "GLW", "005930.KS",
           ]
 
           DISPLAY_KO = {
