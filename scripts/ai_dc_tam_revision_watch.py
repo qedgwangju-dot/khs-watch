@@ -371,11 +371,13 @@ def main() -> int:
     now = datetime.now(timezone.utc)
     old = load_state()
     first = not bool(old)
-    metrics = dict(old.get("metrics") or BASELINE)
-    for k, v in BASELINE.items():
-        if k in {"source", "as_of"}:
-            continue
+    baseline_metrics = {k: v for k, v in BASELINE.items() if k not in {"source", "as_of"}}
+    metrics = dict(old.get("metrics") or baseline_metrics)
+    for k, v in baseline_metrics.items():
         metrics.setdefault(k, v)
+    reference_metrics = dict(old.get("reference_metrics") or baseline_metrics)
+    for k, v in baseline_metrics.items():
+        reference_metrics.setdefault(k, v)
 
     try:
         fx = fetch_fx()
@@ -427,12 +429,14 @@ def main() -> int:
         proposed[key] = value
         evidence.extend(support)
 
-    changes = material_changes(metrics, proposed)
+    changes = material_changes(reference_metrics, proposed)
     notify = bool(changes)
+    next_reference = dict(proposed) if notify else dict(reference_metrics)
 
     pending = {
         "initialized": True,
         "metrics": proposed,
+        "reference_metrics": next_reference,
         "baseline_source": BASELINE["source"],
         "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
         "seen_ids": list(dict.fromkeys(list(seen) + [r["id"] for r in rows]))[-1000:],
