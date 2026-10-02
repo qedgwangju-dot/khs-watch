@@ -2887,17 +2887,21 @@
       "title": "한전, 리벨리온·TTA와 국산 NPU 기반 AI 영상분석 협력 - 뉴스락",
       "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5jVDRfSnlMNFY2NllNdW9qMGxhNXk3VlhtSmhWS2xuSmVBX2dZTlp1c3RhMDFiZG9PRnVOcG9mckRuWnhueDZGYzJYMWRKb3FjQ3Y0d3hrbGZjOUJra2xpWW1fWkpGenNXMXBlQw?oc=5",
       "direct_url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5jVDRfSnlMNFY2NllNdW9qMGxhNXk3VlhtSmhWS2xuSmVBX2dZTlp1c3RhMDFiZG9PRnVOcG9mckRuWnhueDZGYzJYMWRKb3FjQ3Y0d3hrbGZjOUJra2xpWW1fWkpGenNXMXBlQw?oc=5",
-      "event_signature": null,
+      "event_signature": "kepco|npu|power_video",
       "first_seen_kst": "2026-10-02T17:54:49+09:00",
-      "alerted": true
+      "material_stage": 1,
+      "suppressed_duplicate": "same_event:kepco|npu|power_video",
+      "corrected_reason": "2026-10-02 동일 한전-리벨리온-TTA MOU/현장실증 사건 중복기사"
     },
     "7f35e6a93205dee469747bca": {
       "title": "한전 변전소 AI 관제에 국산 NPU 투입...리벨리온 현장 실증 - zdnet.co.kr",
       "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBHNm9JMTVZb2hocTBMZVNnRmdob0xhNWJ6VlJVSmU3cDJVSUpidFFHYzBOMDR5S0VtNHVSM1Nra3JnZVJZZHd0NXhUOUlpa1BURTFROFBB?oc=5",
       "direct_url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBHNm9JMTVZb2hocTBMZVNnRmdob0xhNWJ6VlJVSmU3cDJVSUpidFFHYzBOMDR5S0VtNHVSM1Nra3JnZVJZZHd0NXhUOUlpa1BURTFROFBB?oc=5",
-      "event_signature": null,
+      "event_signature": "kepco|npu|power_video",
       "first_seen_kst": "2026-10-02T17:54:49+09:00",
-      "alerted": true
+      "alerted": true,
+      "material_stage": 2,
+      "canonical_event": true
     }
   }
 }
