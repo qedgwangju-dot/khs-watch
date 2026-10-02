@@ -18,7 +18,7 @@
         "max": null,
         "evidence_state": "supply_chain_report",
         "source_url": "https://udn.com/news/story/7240/9772200",
-        "source_name": "udn.com"
+        "source_name": "UDN"
       },
       "N3|2027": {
         "value": null,
@@ -35,12 +35,14 @@
       "customers": [
         "AMD",
         "Apple",
+        "Broadcom",
         "MediaTek",
         "NVIDIA",
         "Qualcomm"
       ],
       "ai_hbm_customers": [
         "AMD",
+        "Broadcom",
         "NVIDIA"
       ],
       "evidence_state": "supply_chain_report",
@@ -95,135 +97,30 @@
     "https://investor.tsmc.com/static/annualReports/2025/english/index.html",
     "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf"
   ],
-  "last_checked_at_kst": "2026-10-02T16:51:59+09:00",
+  "last_checked_at_kst": "2026-10-02T17:36:59+09:00",
   "last_evidence_url": "https://money.udn.com/money/story/5612/9780512",
   "last_evidence_published_at_kst": "2026-09-30T18:00:00+09:00",
   "delivery_check": {
-    "checked_at_kst": "2026-10-02T16:54:22+09:00",
-    "status": "no_message_due"
+    "checked_at_kst": "2026-10-02T17:39:09+09:00",
+    "status": "confirmed"
   },
-  "_delivery": {
-    "id": "de469ea4344428ad5c676c5b0cdde6f2c95af9b02ae75c4f8a793dcfa5713a1b",
-    "status": "partial",
-    "created_at_kst": "2026-10-02T17:39:04+09:00",
-    "chunks": [
-      "🚨 <b>TSMC 선단공정 생산능력 상태 변화</b>\n━━━━━━━━━━━━━━━━\n• 이번 변화: <b>추가 예약 고객 확대: Broadcom</b>\n• 2나노 2026년말: <b>120,000장/월</b>\n• 3나노 2026년 4분기: <b>180,000장/월</b>\n• 3나노 2027년: <b>200,000~210,000장/월</b>\n• 고객 추가 예약: <b>10~20%</b> · AMD · Apple · Broadcom · MediaTek · NVIDIA · Qualcomm\n• 2026년 2나노 가동 팹: 5개\n• 2나노 첫해 생산량: 3나노 첫해 대비 +45%\n• 2나노 생산능력: 2026~2028 CAGR 70%\n• 초기 수익성 역풍: 2026년 N2 램프의 매출총이익률 희석 2~3%p\n• 다음 확인: 월 생산능력 1만 장 또는 10% 이상 변경 · 고객 예약 10%p 이상 변경 · 장비 반입/양산 일정 · 웨이퍼 가격 5% 이상 변경 · 수율·가동률·마진\n• 중복 방지: 같은 생산능력·같은 고객 예약 수치의 재배포는 다시 알리지 않습니다.\n• 근거: 경제일보 · <a href=\"https://money.udn.com/money/story/5612/9780512\">원문</a>\n• 조회: 2026-10-02 17:36 KST"
-    ],
-    "next_chunk": 1,
+  "last_alert_reasons": [
+    "추가 예약 고객 확대: Broadcom"
+  ],
+  "last_alert_at_kst": "2026-10-02T17:36:59+09:00",
+  "last_successful_delivery_kst": "2026-10-02T17:39:09+09:00",
+  "telegram_message_ids": [
+    209
+  ],
+  "telegram_message_id": 209,
+  "bot_username": "khs88798879887988798879_bot",
+  "delivery_receipt": {
+    "status": "confirmed",
+    "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
       209
     ],
-    "candidate": {
-      "watch_version": 1,
-      "baseline_seeded_at_kst": "2026-09-28T11:53:00+09:00",
-      "baseline_note": "2026-09-28 경제일보 공급망 보도의 N2 2026년말 12만장/월·고객 추가예약 10~20%와 기존 공식/상위근거 N2 램프 사실을 현재 기준선으로 잠금. 같은 기사 재배포는 역송출하지 않음.",
-      "current_state": {
-        "capacity_targets": {
-          "N2|2026YE": {
-            "value": 120000,
-            "min": null,
-            "max": null,
-            "evidence_state": "supply_chain_report",
-            "source_url": "https://money.udn.com/money/story/5612/9780512",
-            "source_name": "經濟日報"
-          },
-          "N3|2026Q4": {
-            "value": 180000,
-            "min": null,
-            "max": null,
-            "evidence_state": "supply_chain_report",
-            "source_url": "https://udn.com/news/story/7240/9772200",
-            "source_name": "UDN"
-          },
-          "N3|2027": {
-            "value": null,
-            "min": 200000,
-            "max": 210000,
-            "evidence_state": "supply_chain_report",
-            "source_url": "https://money.udn.com/money/story/5612/9780512",
-            "source_name": "經濟日報"
-          }
-        },
-        "customer_reservation": {
-          "min_pct": 10.0,
-          "max_pct": 20.0,
-          "customers": [
-            "AMD",
-            "Apple",
-            "Broadcom",
-            "MediaTek",
-            "NVIDIA",
-            "Qualcomm"
-          ],
-          "ai_hbm_customers": [
-            "AMD",
-            "Broadcom",
-            "NVIDIA"
-          ],
-          "evidence_state": "supply_chain_report",
-          "source_url": "https://money.udn.com/money/story/5612/9780512",
-          "source_name": "經濟日報"
-        },
-        "n2_fabs_2026": 5,
-        "n2_first_year_vs_n3_pct": 45,
-        "n2_cagr_2026_2028_pct": 70,
-        "scalar_evidence_state": "top_tier_report",
-        "scalar_source_url": "https://focustaiwan.tw/sci-tech/202604280010",
-        "process_timeline": {
-          "N2": {
-            "milestone": "양산",
-            "period": "2025Q4",
-            "evidence_state": "official",
-            "source_url": "https://investor.tsmc.com/static/annualReports/2025/english/index.html"
-          },
-          "N2P": {
-            "milestone": "양산",
-            "period": "2026H2",
-            "evidence_state": "official",
-            "source_url": "https://investor.tsmc.com/static/annualReports/2025/english/index.html"
-          },
-          "A16": {
-            "milestone": "양산",
-            "period": "2026H2",
-            "evidence_state": "official",
-            "source_url": "https://investor.tsmc.com/static/annualReports/2025/english/index.html"
-          },
-          "A14": {
-            "milestone": "양산",
-            "period": "2028",
-            "evidence_state": "official",
-            "source_url": "https://investor.tsmc.com/static/annualReports/2025/english/index.html"
-          }
-        },
-        "n2_gross_margin_dilution": {
-          "min_pp": 2,
-          "max_pp": 3,
-          "evidence_state": "official",
-          "source_url": "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf"
-        },
-        "last_evidence_state": "supply_chain_report",
-        "last_source_url": "https://money.udn.com/money/story/5612/9780512",
-        "last_source_name": "經濟日報",
-        "last_source_published_at_kst": "2026-09-30T18:00:00+09:00"
-      },
-      "baseline_sources": [
-        "https://money.udn.com/money/story/5612/9780512",
-        "https://focustaiwan.tw/sci-tech/202604280010",
-        "https://investor.tsmc.com/static/annualReports/2025/english/index.html",
-        "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf"
-      ],
-      "last_checked_at_kst": "2026-10-02T17:36:59+09:00",
-      "last_evidence_url": "https://money.udn.com/money/story/5612/9780512",
-      "last_evidence_published_at_kst": "2026-09-30T18:00:00+09:00",
-      "delivery_check": {
-        "checked_at_kst": "2026-10-02T16:54:22+09:00",
-        "status": "no_message_due"
-      },
-      "last_alert_reasons": [
-        "추가 예약 고객 확대: Broadcom"
-      ],
-      "last_alert_at_kst": "2026-10-02T17:36:59+09:00"
-    },
-    "attempt_at_kst": "2026-10-02T17:39:06+09:00"
+    "confirmed_at_kst": "2026-10-02T17:39:09+09:00",
+    "payload_hash": "2ff23125cd6efea70842b3018cdfddced23a21c64bd1fd5fdd96a464d35122c3"
   }
 }
