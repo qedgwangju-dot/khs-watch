@@ -304,27 +304,65 @@ def parse_metrics(text: str) -> dict:
             2029: "ms_it_power_2029_gw",
         }
         for year, key_name in year_patterns.items():
-            m = re.search(rf"{year}[^.{{0,120}}]*?([0-9]{{1,3}}(?:\.[0-9]+)?)\s*GW", text, re.I)
+            m = re.search(rf"{year}[^.]{{0,120}}?([0-9]{{1,3}}(?:\.[0-9]+)?)\s*GW", text, re.I)
             if not m:
-                m = re.search(rf"([0-9]{{1,3}}(?:\.[0-9]+)?)\s*GW[^.{{0,120}}]*?{year}", text, re.I)
+                m = re.search(rf"([0-9]{{1,3}}(?:\.[0-9]+)?)\s*GW[^.]{{0,120}}?{year}", text, re.I)
             if m:
                 v = num(m.group(1))
                 if v and 0.1 <= v <= 200:
                     out[key_name] = v
 
-        patterns = [
-            ("ms_new_power_need_2026_2028_gw", r"97\s*GW", 40, 160),
-            ("ms_under_construction_gw", r"21\s*GW[^.]{0,80}(?:under construction|construction)", 5, 80),
-            ("ms_grid_available_gw", r"19\s*GW[^.]{0,100}(?:grid|available)", 5, 80),
-            ("ms_gross_gap_gw", r"57\s*GW[^.]{0,100}(?:gap|shortfall|deficit)", 10, 120),
-            ("ms_residual_gap_gw", r"33\s*GW[^.]{0,100}(?:gap|shortfall|deficit|residual)", 5, 100),
+        semantic_patterns = [
+            (
+                "ms_new_power_need_2026_2028_gw",
+                [
+                    r"(?:2026\s*(?:to|through|[-–])\s*2028|2026[^.]{0,40}2028)[^.]{0,180}?([0-9]{1,3}(?:\.[0-9]+)?)\s*GW[^.]{0,100}?(?:power|electricity|demand|require|need)",
+                    r"(?:require|need|demand)[^.]{0,120}?([0-9]{1,3}(?:\.[0-9]+)?)\s*GW[^.]{0,120}?(?:2026\s*(?:to|through|[-–])\s*2028|2026[^.]{0,40}2028)",
+                ],
+                40, 160,
+            ),
+            (
+                "ms_under_construction_gw",
+                [
+                    r"([0-9]{1,3}(?:\.[0-9]+)?)\s*GW[^.]{0,100}?(?:under construction|being built|construction)",
+                    r"(?:under construction|being built|construction)[^.]{0,100}?([0-9]{1,3}(?:\.[0-9]+)?)\s*GW",
+                ],
+                5, 80,
+            ),
+            (
+                "ms_grid_available_gw",
+                [
+                    r"([0-9]{1,3}(?:\.[0-9]+)?)\s*GW[^.]{0,120}?(?:grid capacity|grid.*available|available.*grid)",
+                    r"(?:grid capacity|grid.*available|available.*grid)[^.]{0,120}?([0-9]{1,3}(?:\.[0-9]+)?)\s*GW",
+                ],
+                5, 80,
+            ),
+            (
+                "ms_gross_gap_gw",
+                [
+                    r"([0-9]{1,3}(?:\.[0-9]+)?)\s*GW[^.]{0,120}?(?:initial|potential)?\s*(?:gap|shortfall|deficit)",
+                    r"(?:initial|potential)?\s*(?:gap|shortfall|deficit)[^.]{0,120}?([0-9]{1,3}(?:\.[0-9]+)?)\s*GW",
+                ],
+                10, 120,
+            ),
+            (
+                "ms_residual_gap_gw",
+                [
+                    r"([0-9]{1,3}(?:\.[0-9]+)?)\s*GW[^.]{0,120}?(?:residual|remaining)[^.]{0,50}?(?:gap|shortfall|deficit)",
+                    r"(?:residual|remaining)[^.]{0,80}?(?:gap|shortfall|deficit)[^.]{0,120}?([0-9]{1,3}(?:\.[0-9]+)?)\s*GW",
+                ],
+                5, 100,
+            ),
         ]
-        for key_name, pat, lo, hi in patterns:
-            m = re.search(pat, text, re.I)
-            if m:
-                v = num(re.search(r"([0-9]+(?:\.[0-9]+)?)", m.group(0)).group(1))
+        for key_name, patterns, lo, hi in semantic_patterns:
+            for pat in patterns:
+                m = re.search(pat, text, re.I)
+                if not m:
+                    continue
+                v = num(m.group(1))
                 if v is not None and lo <= v <= hi:
                     out[key_name] = v
+                    break
 
     return out
 
