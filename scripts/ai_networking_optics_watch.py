@@ -284,7 +284,7 @@ def canonical_story_key(company: str, title: str) -> str | None:
             if re.search(r"pass(?:es|ed)?|signed|enacted|law", text, re.I):
                 return "us-optical-policy|congress|enacted"
             return "us-optical-policy|congress|bill"
-        if re.search(r"final rule|adopt(?:s|ed)?|effective|takes? effect", text, re.I):
+        if re.search(r"final rule|finaliz(?:e|es|ed|ing)|adopt(?:s|ed)?|effective|takes? effect", text, re.I):
             return "us-optical-policy|fcc|final"
         if re.search(r"proposed rule|rulemaking|notice|comment|draft|consider", text, re.I):
             return "us-optical-policy|fcc|proposal"
@@ -484,7 +484,7 @@ def signal_score(title: str, source: str) -> int:
 
 
 def stage_for(title: str) -> str:
-    if re.search(r"final rule|adopt(?:s|ed)?|effective|takes? effect|signed|enacted", title, re.I):
+    if re.search(r"final rule|finaliz(?:e|es|ed|ing)|adopt(?:s|ed)?|effective|takes? effect|signed|enacted", title, re.I):
         return "최종 규칙·시행"
     if re.search(r"proposed rule|rulemaking|notice|comment period|draft rule|considering", title, re.I):
         return "규칙 제안·검토"
