@@ -935,6 +935,46 @@ def category_for(title: str, company: str) -> str:
         if re.search(r"수주|공급|order|shipment|양산|출하", title, re.I):
             return "국내 광통신 수주·양산"
         return "국내 광통신"
+    if company == "Sungho Electronics / ADST":
+        if re.search(r"수주|발주|\bPO\b|공급계약|order|contract", title, re.I):
+            return "ADST CPO 정렬·검사 수주"
+        if re.search(r"검수|납품|shipment|양산|production|ramp", title, re.I):
+            return "ADST CPO 정렬·검사 양산"
+        if re.search(r"active alignment|lens alignment|fiber array alignment|광정렬|얼라인먼트|검사", title, re.I):
+            return "ADST CPO 정밀정렬·검사"
+        return "ADST CPO 장비"
+    if company == "POET Technologies":
+        if re.search(r"ELS|external (?:laser|light) source|Sivers", title, re.I):
+            if re.search(r"customer|sampling|qualification|production|shipment|order|contract|design win", title, re.I):
+                return "POET ELS 상용화·고객검증"
+            return "POET ELS·하이브리드집적"
+        if re.search(r"production|shipment|order|customer|qualification|sampling", title, re.I):
+            return "POET 광엔진 상용화"
+        return "POET 광엔진·하이브리드집적"
+    if company == "TFLN Supply Chain":
+        if re.search(r"400G/lane|400G per lane", title, re.I):
+            return "TFLN 400G/lane"
+        if re.search(r"customer|sampling|qualification|production|shipment|foundry|order|design win", title, re.I):
+            return "TFLN 고객검증·양산"
+        return "TFLN 광변조기"
+    if company == "ELS Connector Supply Chain":
+        if re.search(r"blind[- ]mate|blind mate|connector|ferrule|insertion loss", title, re.I):
+            return "ELSFP 블라인드메이트·광결합"
+        if re.search(r"reliability|lifetime|thermal|failure|hot[- ]swap|field[- ]replaceable", title, re.I):
+            return "ELSFP 신뢰성·서비스성"
+        return "ELSFP 연결부품"
+    if company in {"Lumentum", "Coherent"} and re.search(r"\bELS\b|\bELSFP\b|external (?:laser|light) source|high[- ]power CW|ultra[- ]high[- ]power|\bUHP\b|350mW|400mW", title, re.I):
+        if re.search(r"customer|sampling|qualification|production|shipment|order|agreement|anchor", title, re.I):
+            return "ELS 외장광원·양산"
+        if re.search(r"reliability|lifetime|thermal|failure|hot[- ]swap|field[- ]replaceable", title, re.I):
+            return "ELS 외장광원 신뢰성"
+        return "ELS 외장광원"
+    if company == "Marvell" and re.search(r"200G/lane|200G per lane|direct attach copper|\bDAC\b|\bACC\b|active copper cable|co[- ]packaged copper", title, re.I):
+        if re.search(r"2(?:\.0|\.5)?[- ]?meter|2(?:\.0|\.5)?[- ]?metre|reach|extend|redriver|co[- ]packaged copper|\bACC\b", title, re.I):
+            return "200G/lane 구리 연장기술"
+        return "200G/lane 구리 도달거리"
+    if company == "Marvell" and re.search(r"400G/lane|400G per lane", title, re.I) and re.search(r"copper|DAC|ACC|optical|CPO|NPO", title, re.I):
+        return "400G/lane 구리 한계"
     if company == "CPO Equipment Supply Chain":
         if re.search(r"驗證|認證|導入|\bOSAT\b|qualification|validation|verification|certif", title, re.I):
             return "CPO 장비 고객검증·도입"
@@ -1003,6 +1043,26 @@ def meaning_for(category: str) -> str:
         "국내 1.6T 고객검증·샘플": "오이솔루션의 ELSFP·EML 샘플이 고객 검증을 거쳐 양산 채택되면 1.6T AI 네트워킹 매출이 개발 단계에서 실제 주문 단계로 넘어가는 신호입니다.",
         "국내 광통신 수주·양산": "국내 광통신 신제품이 실제 수주·출하·양산으로 전환되는지 확인하는 매출 검증 신호입니다.",
         "국내 광통신": "국내 광통신 업체의 800G·1.6T 제품 개발이 고객 검증·주문으로 연결되는지 확인하는 신호입니다.",
+        "ADST CPO 정렬·검사 수주": "성호전자의 CPO 연결은 필름 기판이 아니라 자회사 ADST의 광섬유·렌즈 정렬, 검사·조립 장비 수주입니다. 신규 PO·계약금액·고객·납기가 실제 매출로 연결되는지를 확인하는 직접 신호입니다.",
+        "ADST CPO 정렬·검사 양산": "ADST 장비가 검수·납품을 넘어 고객 양산라인에서 반복 투입되면 CPO 기대가 실제 장비 매출과 서비스 수요로 전환되는 신호입니다.",
+        "ADST CPO 정밀정렬·검사": "CPO는 광엔진·FAU·렌즈·광섬유의 결합 손실과 정렬 오차가 수율을 좌우하므로 나노미터급 정렬·검사 장비의 채택이 핵심 양산 관문입니다.",
+        "ADST CPO 장비": "성호전자 자회사 ADST의 CPO 장비 사업이 신규 고객·수주·검수·양산으로 확장되는지를 추적합니다.",
+        "POET ELS 상용화·고객검증": "POET Optical Interposer와 외장광원 조합이 샘플·검증·주문·양산으로 넘어가면 하이브리드 집적 기술이 실제 CPO 매출로 전환되는 신호입니다.",
+        "POET ELS·하이브리드집적": "POET의 Optical Interposer와 외장광원 결합은 레이저·광소자·전자소자를 칩 스케일에서 통합하는 CPO 경로이지만 고객·양산 확인 전에는 기술·협력 단계입니다.",
+        "POET 광엔진 상용화": "POET 광엔진의 고객 샘플·주문·출하가 확인되면 하이브리드 집적 플랫폼이 개발 단계에서 반복 가능한 제품 매출로 이동하는 신호입니다.",
+        "POET 광엔진·하이브리드집적": "POET의 수동 정렬 기반 Optical Interposer는 CPO·플러거블 광엔진의 조립 복잡도와 비용을 낮출 수 있는 제조 경로입니다.",
+        "TFLN 400G/lane": "400G/lane TFLN 변조기가 실험실 성능을 넘어 고객 검증·생산으로 이동하면 3.2T 이상 광링크의 전력·대역폭 병목을 완화하는 차세대 경로가 됩니다.",
+        "TFLN 고객검증·양산": "TFLN은 CPO의 필수 단일 해법이 아니라 SiPh·InP와 경쟁·보완하는 변조기 경로입니다. 고객 검증·파운드리·대량생산이 확인돼야 실제 매출 단계로 봅니다.",
+        "TFLN 광변조기": "박막 리튬니오베이트는 높은 변조 대역폭과 낮은 구동전압을 노리는 차세대 광변조기 경로지만 현재 CPO 전체를 대체하는 확정 표준은 아닙니다.",
+        "ELSFP 블라인드메이트·광결합": "ELSFP의 블라인드메이트 커넥터는 외장 레이저를 현장 교체 가능하게 하면서 낮은 삽입손실과 정밀 정렬을 확보해야 하므로 CPO 서비스성·광결합 수율의 핵심 연결부품입니다.",
+        "ELSFP 신뢰성·서비스성": "외장 레이저를 고열 ASIC 패키지 밖으로 이동하고 현장 교체 가능하게 만드는 것이 ELSFP의 핵심 목적이므로 수명·열·교체성 검증은 CPO 가동률과 유지보수 비용을 좌우합니다.",
+        "ELSFP 연결부품": "ELSFP 표준 연결부품의 고객 채택·양산은 외장광원이 개별 데모에서 멀티벤더 생태계로 넘어가는 신호입니다.",
+        "ELS 외장광원·양산": "Coherent·Lumentum 등의 고출력 InP CW 외장광원이 고객 샘플·장기계약·양산으로 넘어가면 CPO의 열·서비스성 병목을 해결하는 직접 매출 신호입니다.",
+        "ELS 외장광원 신뢰성": "외장광원의 핵심은 레이저를 고열 패키지에서 분리해 열부하와 고장 교체 위험을 낮추는 것입니다. 수명·온도별 출력·현장교체 검증이 실제 채택을 좌우합니다.",
+        "ELS 외장광원": "CPO 외장광원은 SiPh 광엔진에 고출력 CW 빛을 공급하며 레이저를 ASIC 패키지 밖으로 분리해 열관리와 서비스성을 개선하는 구조입니다.",
+        "200G/lane 구리 연장기술": "200G/lane에서 수동 DAC 도달거리가 약 1m 수준으로 짧아지는 반면 ACC·리드라이버·co-packaged copper가 2m 이상 구간을 연장하면 CPO 전환 시점을 일부 늦출 수 있습니다.",
+        "200G/lane 구리 도달거리": "200G/lane 수동 구리는 약 1m 수준의 도달거리 제약이 생겨 단일 랙을 넘는 scale-up에서 광연결 필요성이 커지는 구조적 병목입니다.",
+        "400G/lane 구리 한계": "400G/lane으로 올라가면 구리 도달거리·손실·전력 한계가 더 악화돼 NPO/CPO 같은 광연결 전환 압력이 커지는 장기 촉발 요인입니다.",
         "3.2T 전환": "차세대 광링크가 시제품에서 고객 검증·양산으로 넘어가면 광 DSP·레이저·모듈의 다음 매출 사이클 선행신호입니다.",
         "CPO·실리콘 포토닉스": "스위치와 광학을 더 가깝게 결합해 전력·대역폭 병목을 줄이는 구조 변화로, 기존 플러거블 광모듈의 가치 배분까지 바꿀 수 있습니다.",
         "1.6T 전환": "800G에서 1.6T로 실제 출하가 이동하는 신호로, 광 DSP·레이저·고밀도 연결부품의 현재 매출 증가와 직접 연결됩니다.",
@@ -1054,6 +1114,26 @@ def risk_for(category: str) -> str:
         "국내 1.6T 고객검증·샘플": "샘플 출하가 고객 인증·양산 PO로 이어지지 않거나 ELSFP 열·신뢰성 검증이 늦어지면 매출 시점이 지연될 수 있습니다.",
         "국내 광통신 수주·양산": "초기 수주가 반복계약으로 이어지지 않거나 가격 하락이 빠르면 외형 증가 대비 마진 개선이 제한될 수 있습니다.",
         "국내 광통신": "제품 발표만 있고 고객 검증·수주가 없으면 투자 기대가 실제 매출보다 앞설 수 있습니다.",
+        "ADST CPO 정렬·검사 수주": "PO가 반복 발주로 이어지지 않거나 고객이 CPO 양산 일정을 늦추면 장비 매출이 일회성에 그칠 수 있습니다. 검수·수주잔고·고객 다변화를 함께 봐야 합니다.",
+        "ADST CPO 정렬·검사 양산": "고객 라인 수율이 낮거나 CPO 일정이 연기되면 장비 설치와 매출 인식도 함께 밀리고 재고·운전자본 부담이 먼저 나타날 수 있습니다.",
+        "ADST CPO 정밀정렬·검사": "정렬 정밀도·UPH·검사시간이 고객 요구를 못 맞추거나 경쟁 장비가 인증되면 독점 기대가 약해질 수 있습니다.",
+        "ADST CPO 장비": "성호전자 본업 필름콘덴서와 ADST CPO 장비를 혼동하면 실적 민감도를 과대평가할 수 있습니다.",
+        "POET ELS 상용화·고객검증": "협력 발표가 고객 인증·양산 주문으로 이어지지 않거나 외장광원 수율·열·패키징 비용이 높으면 매출 시점이 지연될 수 있습니다.",
+        "POET ELS·하이브리드집적": "기술 집적 성공만으로 양산 경제성이 보장되지 않으며 레이저 공급, 패키징 수율, 고객 인증이 별도 병목입니다.",
+        "POET 광엔진 상용화": "초기 샘플이 반복 주문으로 이어지지 않거나 고객 집중도가 높으면 매출 가시성이 낮을 수 있습니다.",
+        "POET 광엔진·하이브리드집적": "플랫폼 장점이 있어도 대량생산 수율과 원가가 기존 SiPh·EML 방식보다 불리하면 채택이 제한될 수 있습니다.",
+        "TFLN 400G/lane": "400G/lane 실험 성능이 실제 패키징·온도·수명·대량생산 수율에서 재현되지 않으면 상용화가 늦어질 수 있습니다.",
+        "TFLN 고객검증·양산": "TFLN은 아직 멀티벤더 대량생산·패키징 표준과 비용곡선이 확정되지 않았고 SiPh·InP 대안이 있어 채택이 분산될 수 있습니다.",
+        "TFLN 광변조기": "연구 성능과 고객 양산은 별개입니다. 파운드리 수율·결합손실·패키징·드라이버 통합 비용이 먼저 확인돼야 합니다.",
+        "ELSFP 블라인드메이트·광결합": "삽입손실·편광 정렬·반복 착탈 신뢰성이 나쁘면 외장광원 출력 여유를 잡아먹고 현장 교체성 이점이 줄어듭니다.",
+        "ELSFP 신뢰성·서비스성": "레이저를 외부로 빼도 커넥터·PMF·TEC·전원·오염 문제가 새로운 고장점이 될 수 있어 전체 링크 신뢰성을 확인해야 합니다.",
+        "ELSFP 연결부품": "OIF 규격 준수 자체가 고객 채택을 보장하지 않으며 실제 스위치·가속기 설계 채택과 양산 수량이 필요합니다.",
+        "ELS 외장광원·양산": "Coherent와 Lumentum 등 복수 공급자가 있어 특정 업체 독점 가정은 위험합니다. 출력·효율·수명·가격·고객 이원화가 마진을 좌우합니다.",
+        "ELS 외장광원 신뢰성": "고온 출력과 수명 검증이 충분하지 않거나 레이저 고장률이 예상보다 높으면 CPO 시스템 가동률과 유지보수 비용이 악화될 수 있습니다.",
+        "ELS 외장광원": "외장화가 열 문제를 완화해도 광결합 손실·PMF 정렬·커넥터 비용이 커지면 시스템 총비용 우위가 줄어들 수 있습니다.",
+        "200G/lane 구리 연장기술": "ACC·co-packaged copper가 2~4m 구간을 낮은 전력·지연으로 커버하면 일부 scale-up 구간의 광 전환이 뒤로 밀릴 수 있습니다.",
+        "200G/lane 구리 도달거리": "1m는 대표적인 수동 DAC 한계이지 모든 구리 링크의 절대 한계가 아닙니다. ACC·AEC·co-packaged copper를 섞으면 더 긴 거리가 가능하므로 CPO 수요를 과대추정하면 안 됩니다.",
+        "400G/lane 구리 한계": "400G/lane 상용화 시점이 늦거나 랙 구조가 더 짧은 구리 배선을 허용하면 광 전환 시점도 늦어질 수 있습니다.",
         "3.2T 전환": "고객 인증·대량생산 수율이 지연되면 매출 시점이 뒤로 밀릴 수 있습니다.",
         "CPO·실리콘 포토닉스": "레이저 신뢰성·수율·현장 교체 난도와 플러거블 대비 경제성이 핵심 실패 경로입니다.",
         "1.6T 전환": "물량 증가보다 평균판매단가 하락이 빠르면 매출 성장 폭이 제한될 수 있습니다.",
@@ -1346,6 +1426,7 @@ def main() -> None:
         "cpo_equipment_version": 2,
         "optical_policy_version": 2,
         "korea_optics_version": 1,
+        "optical_bottleneck_version": 1,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "seen_keys": updated_seen,
         "seen_story_keys": updated_story_keys,
@@ -1372,6 +1453,19 @@ def main() -> None:
         korea_optics_version = int(state.get("korea_optics_version") or 0)
         if korea_optics_version < 1:
             new_items = [item for item in new_items if item.get("company") not in {"Opticore", "OE Solutions"}]
+        optical_bottleneck_version = int(state.get("optical_bottleneck_version") or 0)
+        if optical_bottleneck_version < 1:
+            # Establish the newly added bottleneck branches silently. Only future
+            # customer, order, reliability, production, reach or standard changes alert.
+            new_items = [
+                item for item in new_items
+                if item.get("company") not in {
+                    "Sungho Electronics / ADST",
+                    "POET Technologies",
+                    "TFLN Supply Chain",
+                    "ELS Connector Supply Chain",
+                }
+            ]
         photonic_compute_version = int(state.get("photonic_compute_version") or 0)
         if photonic_compute_version < 5:
             new_items = [item for item in new_items if item.get("company") not in {"Volantis", "Lightmatter", "Ayar Labs", "Xscape Photonics"}]
@@ -1429,7 +1523,7 @@ def main() -> None:
             ])
         lines.extend([
             "<b>감시 기준</b>",
-            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / AAOI 800G·1.6T·3.2T 생산능력·고객·출하 / 볼란티스 Series A 자금조달·공식 금액 정정·A-1 고객샘플·2027 인도·실리콘·독립벤치마크·광메모리 대역폭·용량·토큰속도 / 라이트매터·아야르 랩스·엑스케이프 광인터커넥트 자금조달·고용량 생산·고객검증·생산·배치 / 마벨 Celestial AI Photonic Fabric 고객·출하·FY28 매출 램프 / VCSEL 광메모리 공급망·패키징·수율 / FCC 중국산 광트랜시버 최종규칙·3.2T 적용세대·미국산 콘텐츠 65%·75%·예외·시행일 / 상원·의회 국가안보시스템 광트랜시버 법안 범위 / InP 기판 공급부족·수출허가·증설·가격 / 옵티코어 400G·800G 신규 PO·계약금액·검수·납기변경 / 오이솔루션 1.6T ELSFP·EML 샘플·고객검증·양산 PO / 엔비디아 CPO 실제 배치 / 코히런트 포톤링크 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027년 2분기 가시성·생산능력 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030년 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·수주잔고 / 코닝 광통신·유리기판 신규 AI 매출 경로",
+            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / AAOI 800G·1.6T·3.2T 생산능력·고객·출하 / 볼란티스 Series A 자금조달·공식 금액 정정·A-1 고객샘플·2027 인도·실리콘·독립벤치마크·광메모리 대역폭·용량·토큰속도 / 라이트매터·아야르 랩스·엑스케이프 광인터커넥트 자금조달·고용량 생산·고객검증·생산·배치 / 마벨 Celestial AI Photonic Fabric 고객·출하·FY28 매출 램프 / 200G/lane 수동구리 약 1m 도달거리·ACC/CPC 연장·400G/lane 구리 한계 / Coherent·Lumentum ELS/ELSFP 출력·온도·수명·고객·양산 / ELSFP 블라인드메이트 커넥터 삽입손실·OIF 규격·고객 채택 / TFLN 200G·400G/lane 고객검증·파운드리·양산 / POET ELS·Optical Interposer 고객검증·양산 / 성호전자 자회사 ADST CPO 정렬·검사 신규 PO·검수·양산 / VCSEL 광메모리 공급망·패키징·수율 / FCC 중국산 광트랜시버 최종규칙·3.2T 적용세대·미국산 콘텐츠 65%·75%·예외·시행일 / 상원·의회 국가안보시스템 광트랜시버 법안 범위 / InP 기판 공급부족·수출허가·증설·가격 / 옵티코어 400G·800G 신규 PO·계약금액·검수·납기변경 / 오이솔루션 1.6T ELSFP·EML 샘플·고객검증·양산 PO / 엔비디아 CPO 실제 배치 / 코히런트 포톤링크 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027년 2분기 가시성·생산능력 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030년 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·수주잔고 / 코닝 광통신·유리기판 신규 AI 매출 경로",
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
