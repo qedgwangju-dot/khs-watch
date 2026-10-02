@@ -2225,6 +2225,32 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     if not market_materiality.focus_kind(title) and not market_materiality.DENIAL_HEADLINE.search(title):
         return ""
+    if market_materiality.focus_kind(title) == "macro_release" and "건설지출" in title:
+        country = re.match(r"^(미국|한국|중국|일본)\s", title)
+        for sentence in sentences:
+            change = re.search(
+                r"((?:\d{4}년\s*)?\d{1,2}월)\s*건설지출은\s*(연율\s*환산으로\s*)?"
+                r"전월\s*대비\s*(\d+(?:\.\d+)?%)\s*(증가|감소)했다고", sentence,
+            )
+            if country and change:
+                basis = " 연율 환산 기준" if change.group(2) else ""
+                fact = f"{country.group(1)} {change.group(1)} 건설지출은{basis} 전월 대비 {change.group(3)} {change.group(4)}했다."
+                if core_sentence_is_complete(fact):
+                    return fact
+    if market_materiality.focus_kind(title) == "analyst_revision":
+        for sentence in sentences:
+            cleaned = normalized_article_sentence(sentence)
+            reporter = re.match(r"^([A-Za-z0-9가-힣]+)(은|는)\s", cleaned)
+            revision = re.search(
+                r"([A-Za-z가-힣]+(?:\s+[A-Za-z가-힣]+){0,2}\([A-Z]{1,8}\))의\s*목표주가를\s*"
+                r"(?:기존\s*)?(\d[\d,.]*(?:달러|원))에서\s*(\d[\d,.]*(?:달러|원))로\s*(상향|하향)", cleaned,
+            )
+            if reporter and revision:
+                company = re.sub(r"(?<=[가-힣])\s+(?=[가-힣])", "", revision.group(1))
+                particle = "으로" if revision.group(3).endswith("원") else "로"
+                fact = f"{reporter.group(1)}{reporter.group(2)} {company} 목표주가를 {revision.group(2)}에서 {revision.group(3)}{particle} {revision.group(4)}했다."
+                if core_sentence_is_complete(fact):
+                    return fact
     if market_materiality.focus_kind(title) == "export_results":
         for sentence in sentences:
             if not market_materiality.focus_matches(title, sentence) or not market_materiality.QUANTITY.search(sentence):

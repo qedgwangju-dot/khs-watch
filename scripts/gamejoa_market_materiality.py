@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 28
+VERSION = 29
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -91,7 +91,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("capital_listing", r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|신규\s*상장", r"기업공개|\bipo\b|상장(?!지수)"),
     ("financing", r"자금.{0,12}(?:투입|조달|유입)|대출|funding|financing|loan", r"자금|대출|투자(?!자)|조달|전환사채|출자|납입|증자|확정된\s*사항|funding|financing|loan|convertible debt"),
     ("mortgage_rate", r"주담대|모기지|주택담보대출", r"주담대|모기지|주택담보대출|mortgage"),
-    ("macro_release", r"\bcpi\b|\bpce\b|\bppi\b|\bgdp\b|고용|실업률|물가", r"cpi|pce|ppi|gdp|고용|실업|물가|인플레이션|inflation|payroll"),
+    ("macro_release", r"\bcpi\b|\bpce\b|\bppi\b|\bgdp\b|고용|실업률|물가|건설지출", r"cpi|pce|ppi|gdp|고용|실업|물가|건설지출|인플레이션|inflation|payroll"),
     ("export_results", r"수출(?:액|실적|량)|수출.{0,20}(?:\d위|역대|최대|최저|증가|감소)", r"수출(?:액|실적|량)|수출.{0,45}(?:\d|최대|최저)"),
     ("energy_supply", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|\bbrent\b|\boil\b|hormuz|tanker", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|항행|통항|brent|\boil\b|hormuz|tanker|shipping"),
     ("bond_yield", r"금리|국채.{0,8}(?:투매|수익률)|bond yields|treasury yields", r"금리|국채.{0,8}수익률|bond yields|treasury yields|interest rates"),
@@ -100,6 +100,8 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("production_capacity", r"증설|캐파|생산능력|착공|가동\s*(?:중단|시작)|생산\s*중단|production capacity|capacity expansion|production halt", r"증설|캐파|생산능력|착공|가동|생산|production capacity|capacity|construction|production"),
     ("project_buildout", r"데이터센터\s*(?:구축|건설)|data cent(?:er|re).{0,15}(?:build|construction)", r"데이터센터[^.!?]{0,80}(?:구축|건설)|(?:구축|건설).{0,30}데이터센터|data cent(?:er|re).{0,80}(?:build|construction)|(?:build|construction).{0,30}data cent(?:er|re)"),
     ("research_spending", r"r&d|연구개발", r"r&d|연구개발"),
+    ("model_efficiency", r"토큰\s*(?:처리량|량)|추론\s*(?:속도|비용).{0,15}\d", r"토큰\s*(?:처리량|량).{0,35}\d|추론\s*(?:속도|비용).{0,35}\d"),
+    ("analyst_revision", r"목표주가|목표가|투자의견|\[美특징주\].{0,60}(?:전망|평가)", r"목표주가|목표가|투자의견"),
     ("industrial_architecture", r"hvdc|\bvdc\b|\bcpo\b|광트랜시버|광\s*인터커넥트|파운데이션\s*모델|foundation model", r"hvdc|\bvdc\b|\bcpo\b|광트랜시버|광\s*인터커넥트|파운데이션\s*모델|foundation model"),
     ("space_turnaround", r"열\s*차폐|재진입|재발사|재비행|heat[ -]shield|thermal protection|re.?entry|reflight|relaunch|turnaround", r"열\s*차폐|재진입|재발사|재비행|타일|정비|heat[ -]shield|thermal protection|re.?entry|reflight|relaunch|turnaround"),
     ("space_propellant_storage", r"추진제|\bzbo\b|무손실\s*저장|zero[ -]boil[ -]off|propellant", r"추진제|\bzbo\b|무손실\s*저장|zero[ -]boil[ -]off|propellant"),
@@ -107,7 +109,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("space_execution", r"위성|궤도|발사한도|발사계약|환경심사|환경영향평가|주파수|satellite|orbital|launch contract|spectrum", r"위성|궤도|발사|환경심사|환경영향평가|주파수|satellite|orbital|launch|spectrum"),
     ("fund_result", r"펀드.{0,20}(?:손실|청산|만기|수익)|(?:손실|청산).{0,20}펀드", r"손실|청산|수익률|loss|liquidat|returns"),
     ("memory", r"hbm|hbf|메모리|낸드|dram", r"hbm|hbf|메모리|낸드|dram"),
-    ("earnings", r"매출|영업이익|순이익|실적|가이던스|earnings|guidance", r"매출|영업이익|순이익|실적|가이던스|revenue|profit|earnings|guidance"),
+    ("earnings", r"매출|영업(?:이익|익)|순(?:이익|익)|실적|가이던스|earnings|guidance", r"매출|영업(?:이익|익)|순(?:이익|익)|실적|가이던스|revenue|profit|earnings|guidance"),
 ))
 MONTH = re.compile(r"(?<!\d)(1[0-2]|[1-9])월")
 ASPIRATION = re.compile(r"관계자는|기대한다|기대된다|키워나|키워\s*나|키우고|성장축|비전을|최선을|응원|company spokesperson", re.I)
@@ -280,6 +282,8 @@ RULES = (
     ("earnings_or_guidance", ("earnings",),
      r"매출|영업이익|순이익|마진|실적|가이던스|출하|판매(?:량|실적|는|가)|시장점유율|revenue|earnings|profit|guidance|shipments",
      r"증가|감소|상승|하락|상회|하회|상향|하향|달성|기록|집계|발표|전망|예상|rise|fall|grow|cut|rais|report|forecast|beat|miss"),
+    ("analyst_revision", ("discount_rate",),
+     r"목표주가|목표가|투자의견", r"상향|하향|높였|낮췄|올렸|내렸"),
     ("export_results", ("earnings",),
      r"수출(?:액|실적|량)|수출.{0,45}(?:\d|최대|최저)",
      r"증가|감소|상승|하락|최대|최저|기록|집계|발표"),
@@ -323,7 +327,7 @@ RULES = (
      r"연결|도입|출시|가동|개편|허용|launch|deploy|connect|reform"),
     ("model_operating_specification", ("earnings", "timeline"),
      r"모델|llm|ai model|language model|솔라 미니|gpu|npu",
-     r"(?:gpu|npu|가속기)\s*(?:\d+|한|두|세)\s*(?:장|개)|\d+\s*(?:장|개)의?\s*(?:gpu|npu)|(?:메모리|전력|지연시간|추론비용|운용비용).{0,15}\d+(?:\.\d+)?\s*(?:%|gb|w|배)|\d+(?:\.\d+)?\s*(?:배|%)\s*(?:빠르|절감|줄|감소)"),
+     r"(?:gpu|npu|가속기)\s*(?:\d+|한|두|세)\s*(?:장|개)|\d+\s*(?:장|개)의?\s*(?:gpu|npu)|(?:메모리|전력|지연시간|추론비용|운용비용|토큰량|토큰\s*처리량).{0,25}\d+(?:\.\d+)?\s*(?:%|gb|w|배)|\d+(?:\.\d+)?\s*(?:배|%)\s*(?:빠르|절감|줄|감소)"),
     ("industrial_architecture_adoption", ("earnings", "timeline"),
      r"hvdc|\bvdc\b|\bcpo\b|광트랜시버|광\s*인터커넥트|파운데이션\s*모델|foundation model|co.packaged optics",
      r"규격|채택|통합|전환|도입|standard|specification|adopt|integrat|deploy"),
@@ -331,7 +335,7 @@ RULES = (
      r"풍력|태양광|발전소|반도체|데이터센터|휴머노이드|자율주행|무인기|항공우주|wind power|solar|power plant|semiconductor|data center|humanoid|autonomous driving|drone|aerospace",
      r"(?:업무협약|공동개발\s*협약|MOU).{0,20}(?:체결|맺|서명)|(?:체결|맺|서명).{0,20}(?:업무협약|공동개발\s*협약|MOU)|signed.{0,30}(?:mou|joint development)"),
     ("rates_fx_or_macro", ("discount_rate",),
-     r"금리|국고채|모기지|주담대|주택담보대출|물가|인플레이션|고용|환율|달러화|유동성|차입|구매관리자|\bpmi\b|cpi|pce|payroll|mortgage|interest rate|treasury|inflation|exchange rate|borrowing",
+     r"금리|국고채|모기지|주담대|주택담보대출|물가|인플레이션|고용|건설지출|환율|달러화|유동성|차입|구매관리자|\bpmi\b|cpi|pce|payroll|mortgage|interest rate|treasury|inflation|exchange rate|borrowing",
      r"인상|(?<!할)인하|동결|상승|하락|오른|내린|올랐|내렸|둔화|급등|급락|상회|하회|밑돌|웃돌|발표|기록|증가|감소|결정|약세|강세|최고|치솟|cut|hike|hold|rise|fall|miss|beat|announc|estimat|record"),
     ("policy_scope_or_stage", ("timeline",),
      r"관세|법인세|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
@@ -487,6 +491,15 @@ def assess(title: str, body: str) -> dict:
     if not title or not body:
         result["reason"] = "source_evidence_unavailable"
         return result
+    if re.search(r"따라\s*투자하면|투자하면\s*돈\s*벌까|경제\s*용어|투자\s*방법", title) and not DIRECT_HEADLINE_CHANGE.search(title):
+        result.update(disposition="exclude", priority=0, reason="investment_method_explainer_not_new_market_event")
+        return result
+    if re.search(r"보안인증|보안\s*인증|CSAP|ISMS", title, re.I) and re.search(r"획득|취득", title) and not re.search(
+        r"(?:신규\s*고객|공급\s*계약|납품\s*계약|수주).{0,25}(?:체결|확정|확보|획득)|"
+        r"(?:매출|영업이익|순이익|자금조달).{0,25}(?:증가|상향|확정|유치)|supply contract signed", body, re.I,
+    ):
+        result.update(disposition="exclude", priority=0, reason="routine_security_certificate_without_business_commitment")
+        return result
     if re.search(r"투자\s*이민|EB-?5", title, re.I) and re.search(r"상담|설명회|세미나", title):
         result.update(disposition="exclude", priority=0, reason="consumer_immigration_consultation_not_equity_news")
         return result
@@ -637,7 +650,7 @@ def assess(title: str, body: str) -> dict:
             ):
                 continue
             if kind == "model_operating_specification" and not re.search(
-                r"구동|동작|실행|추론|운용|가동|배포|메모리|전력|지연시간|추론비용|운용비용|running|inference|deploy|memory|power|latency|cost", sentence, re.I,
+                r"구동|동작|실행|추론|운용|가동|배포|메모리|전력|토큰|지연시간|추론비용|운용비용|running|inference|deploy|memory|power|latency|cost", sentence, re.I,
             ):
                 continue
             if kind == "energy_geopolitics_or_supply_risk" and not ECONOMIC_GEOPOLITICS.search(sentence) and not re.search(r"브렌트|\bbrent\b|\bwti\b", sentence, re.I):

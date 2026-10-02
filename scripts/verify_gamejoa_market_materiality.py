@@ -113,6 +113,62 @@ DELIVERED_LOCAL_ADMINISTRATION = (
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_actual_construction_spending_delivery_keeps_period_basis_and_change(self):
+        title = "미국 8월 건설지출 0.9% 증가…비주거용이 견인"
+        body = ("미국 부동산 시황을 파악할 수 있는 2026년 8월 건설지출은 연율 환산으로 전월 대비 0.9% 증가했다고 마켓워치와 RTT 뉴스, MSN이 2일 보도했다.\n"
+                "공장 건설도 비주거용 건설 증가에 기여했다.")
+        item = {**alert(title, body), "telegram_core_fact": "공장 건설도 비주거용 건설 증가에 기여했다."}
+        core = radar.verified_alert_core(item, title)
+        for term in ("미국", "8월", "건설지출", "연율", "전월 대비", "0.9%"):
+            self.assertIn(term, core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        self.assertFalse(materiality.core_focus_aligned(title, item["telegram_core_fact"]))
+
+    def test_actual_model_efficiency_delivery_uses_fourfold_token_change_not_background(self):
+        title = "LGU+, AI 토큰 처리량 4배 높였다...GPU·전력 효율화"
+        body = ("LG유플러스가 같은 GPU에서 AI가 처리할 수 있는 토큰량을 최대 4배까지 높이는 기술을 개발했다.\n"
+                "AI 서비스 확대로 GPU와 전력 비용이 늘어나는 가운데 모델 성능을 유지하면서 인프라 운영비를 줄이는 기술 확보에 나선다.\n"
+                "앞서 NPU에서 전력 소모를 78%, 모델 크기를 82% 줄였다.")
+        item = {**alert(title, body), "telegram_core_fact": "AI 서비스 확대로 GPU와 전력 비용이 늘어나는 가운데 모델 성능을 유지하면서 인프라 운영비를 줄이는 기술 확보에 나선다."}
+        core = radar.verified_alert_core(item, title)
+        for term in ("LG유플러스", "GPU", "토큰량", "최대 4배"):
+            self.assertIn(term, core)
+        self.assertNotIn("78%", core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+
+    def test_actual_analyst_revision_delivery_does_not_use_old_customer_metric(self):
+        title = "[美특징주]팔로알토, 수요 증가 전망·플랫폼 전략 ‘긍정적’ 평가…개장전 1%↑"
+        body = ("TD코웬은 2일(현지 시간) 인공지능(AI) 확산에 따른 사이버보안 수요 증가와 플랫폼 전략의 성과를 반영해 팔로 알토 네트웍스(PANW)의 목표주가를 기존 400달러에서 440달러로 상향하고, 투자의견은 그대로 ‘매수’를 유지했다.\n"
+                "플랫폼화 고객의 순매출유지율(NRR)은 120%를 기록했다.")
+        item = {**alert(title, body), "telegram_core_fact": "플랫폼화 고객의 순매출유지율(NRR)은 120%를 기록했다."}
+        core = radar.verified_alert_core(item, title)
+        for term in ("TD코웬", "PANW", "목표주가", "400달러", "440달러", "상향"):
+            self.assertIn(term, core)
+        self.assertNotIn("120%", core)
+        self.assertIn("440달러로", core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        self.assertTrue(radar.source_output_aligned({**item, "telegram_core_fact": core}))
+
+    def test_earnings_abbreviation_remains_primary_ahead_of_secondary_analyst_revision(self):
+        title = "HL디앤아이한라, 상반기 영업익 34%↑…증권가도 목표주가 상향"
+        self.assertEqual(materiality.focus_kind(title), "earnings")
+        body = "HL D&I한라의 상반기 연결 기준 매출은 8302억원, 영업이익은 455억원으로 전년비 각각 13.5%, 34.1% 증가했다."
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("455억원", core)
+        self.assertIn("34.1%", core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+
+    def test_actual_investment_explainer_and_routine_security_certificate_are_not_core_news(self):
+        rows = (
+            ("행동주의 따라 투자하면 돈 벌까", "행동주의 펀드의 지분 취득이 알려지면 주가가 뛰기도 한다. 2014년부터 2026년까지 국내 사례를 분석했다."),
+            ("문서 AI 플랫폼, KISA 클라우드 보안인증 획득", "업체는 그동안 공공기관에 구축형으로 AI를 공급했지만 이제 클라우드 형태로도 제공할 수 있게 됐다."),
+        )
+        for title, body in rows:
+            self.assertEqual(materiality.assess(title, body)["disposition"], "exclude")
+        positive = materiality.assess("보안인증 획득 후 신규 공급계약 체결", "회사는 보안인증 획득 후 신규 고객 공급계약을 체결했다.")
+        self.assertEqual(positive["disposition"], "keep")
+
     def test_actual_export_delivery_uses_statistics_not_regulator_aspiration(self):
         title = "K-뷰티 수출 1위, 중국 아닌 ‘이 나라’였다"
         body = ("올해 1~3분기 수출액 111억 달러\n"

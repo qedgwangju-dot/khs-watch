@@ -841,3 +841,41 @@ article rows, retains nine and removes four. The retained cosmetics article
 has a corrected statistical core, not a new forced send. Historical delivery
 records, seen state and retrieval queues were not reset. Version-28 deployment
 and a fresh remote source run remain separate verification requirements.
+
+## Version 29: Review the Next Actual Send Before Declaring Quality Fixed
+
+Version 28 was deployed in revision
+`efc457b9319b803141278282c4ceccfc2249d448`. Regular production run
+`36995127300` completed at `2026-10-02T10:29:35Z`; its saved report queried
+at `19:26:27 KST` and contains version 28. The delivery record is `sent`,
+message ID `2023`, one attempt and no API error. Its artifact ZIP SHA-256 is
+`5AB67C5F982216E40CB8E3E3A8C847F7F153A6DF2FD2DEFDEB0922D6C2509597`.
+It verified 127 of 160 attempted bodies, failed 33 and deferred 615. Coverage
+remained incomplete. Actual delivery did not establish satisfactory quality:
+all seven selected rows were reviewed and additional defects were found.
+
+| Actual selected row | Defect | Version-29 treatment |
+| --- | --- | --- |
+| US August construction spending | Generic factory-construction contribution replaced the 0.9% macro result | Retain country, period, annualized basis, month-on-month change |
+| LG Uplus token optimization | Operating-cost background replaced the fourfold token result | Retain same-GPU, token throughput, maximum fourfold and development status |
+| Palo Alto analyst assessment | Old 120% customer-retention metric replaced the new target revision | Retain TD Cowen, issuer, USD 400 to 440 and target-price revision; not realized earnings |
+| Document-AI cloud security certificate | Routine product access certification, no new business commitment | Exclude routine security certification unless a new contract/customer commitment or financial change is evidenced |
+| Activist-investment method explainer | Historical strategy analysis treated as a fresh ownership event | Exclude investment-method explainers without a new foreground market event |
+
+Construction spending is a macro spending measure, not a company CAPEX figure.
+AI token throughput is a reported technical result, not a revenue guarantee.
+An analyst target is explicitly an analyst target, not a transaction price.
+Secondary analyst commentary cannot replace the primary earnings event:
+`영업익` and `순익` receive the same focus as their full Korean metric names.
+Source-fact and source/title alignment checks still apply after compression.
+
+Read-only replay now covers eight actual run archives and 20 article rows.
+Fourteen remain eligible and six are removed: the four local administrative
+rows plus routine cloud certification and the investment-method explainer.
+The latest seven rows retain five; their five retained cores have zero
+source-fact errors, with the three defective economic summaries corrected.
+The actual historic Telegram records are not rewritten or forcibly resent.
+New positive controls retain the primary earnings article, a security
+certificate accompanied by a new supply contract, the macro result and the
+technical result. The materiality suite now has 123 tests. All 11 local
+contracts passed; deployment and a final fresh remote run follow separately.
