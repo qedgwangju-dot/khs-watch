@@ -2228,6 +2228,14 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     if not market_materiality.focus_kind(title) and not market_materiality.DENIAL_HEADLINE.search(title):
         return ""
+    if market_materiality.focus_kind(title) == "space_execution":
+        for sentence in sentences:
+            if re.search(r"발사했다|발사에\s*성공|교신.{0,20}성공", sentence) and any(
+                term in sentence for term in korean_business_title_terms(title)
+            ):
+                fact = normalized_article_sentence(sentence)
+                if core_sentence_is_complete(fact):
+                    return fact
     if market_materiality.focus_kind(title) == "capital_listing" and "ETF" in title.upper():
         for sentence in sentences:
             issuer = re.match(r"^([가-힣A-Za-z0-9·&]+)(?:은|는)\s", sentence)

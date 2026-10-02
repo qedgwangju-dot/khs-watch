@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 32
+VERSION = 33
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -22,7 +22,7 @@ HEADLINE_EARLY = re.compile(
 )
 BACKGROUND = re.compile(
     r"^\d{4}년\s+설립|^(?:한편\s*)?(?:지난해|작년|과거|기존에는|종전에는|previously|last year)\b|"
-    r"설립된 회사|설립된 기업|설립 이후 누적|창립 이래|has historically", re.I,
+    r"설립된 회사|설립된 기업|설립 이후 누적|창립 이래|\d+\s*여?\s*년간.{0,130}(?:공급|협력|제공)해\s*왔다|has historically", re.I,
 )
 QUANTITY = re.compile(r"\d[\d,.]*\s*(?:%|bp\b|조\s*원|억\s*원|만\s*원|달러|유로|억원|조원|억달러|billion|million)", re.I)
 SOFT_HEADLINE = re.compile(
@@ -43,10 +43,10 @@ RETAIL_PRODUCT_METRIC = re.compile(
     r"쇼핑|플래그십\s*스토어|sales per store|kids.{0,20}sales", re.I,
 )
 ROUTINE_PERSONNEL = re.compile(r"사장단\s*인사|임원\s*인사|이사회\s*의장.{0,15}내정", re.I)
-STAFF_APPOINTMENT = re.compile(r"(?:변호사|전문가|고문|자문위원|임원).{0,25}(?:영입|선임|합류)|(?:영입|선임).{0,25}(?:변호사|고문|자문위원)|(?:수장|이사장|원장)\s*후보.{0,20}적격|staff appointment|hires? counsel", re.I)
+STAFF_APPOINTMENT = re.compile(r"(?:변호사|전문가|고문|자문위원|임원|대표|사장|CEO).{0,25}(?:영입|선임|합류)|(?:영입|선임).{0,25}(?:변호사|고문|자문위원|대표|사장|CEO)|(?:수장|이사장|원장)\s*후보.{0,20}적격|staff appointment|hires? counsel", re.I)
 ROUTINE_FOREGROUND = re.compile(r"(?:상|어워드|어워즈).{0,12}수상|수상$|포상|표창|(?:선제|조기|정기|임원|사장단)\s*인사|(?:도서|서적).{0,20}(?:출간|인기|관심)|book promotion", re.I)
 DIRECT_HEADLINE_CHANGE = re.compile(r"(?:매출|영업이익|순이익|가이던스).{0,20}(?:증가|감소|상향|하향|상회|하회)|(?:수주|계약).{0,20}(?:체결|확정|억|조)|(?:공장|생산능력).{0,20}(?:증설|착공|가동)|(?:지분|사업부).{0,20}(?:인수|매각|취득).{0,12}(?:결정|완료|확정)|earnings revision|contract signed", re.I)
-PHOTO_DESCRIPTION = re.compile(r"(?:기념촬영|사진촬영|촬영|시공|시연|발언|연설|질문에\s*답)(?:을|를)?\s*하고\s*있다", re.I)
+PHOTO_DESCRIPTION = re.compile(r"(?:기념촬영|사진촬영|촬영|시공|시연|발언|연설|질문에\s*답)(?:을|를)?\s*하고\s*있다|사진\s*확대", re.I)
 VIRAL_DEMONSTRATION = re.compile(r"이색적인\s*장면|패러디|이색\s*영상|바이럴\s*영상|parody|viral video", re.I)
 SUPPORT_EVENT = re.compile(r"투자유치\s*(?:지원|가이드|프로그램)|기업설명회|투자자\s*미팅|투자\s*상담회|investment matchmaking|fundraising workshop", re.I)
 SPORTS_OWNERSHIP = re.compile(r"구단주|축구\s*구단|야구\s*구단|프로\s*(?:축구|야구)|football club|soccer club|club owner", re.I)
@@ -109,7 +109,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("space_turnaround", r"열\s*차폐|재진입|재발사|재비행|heat[ -]shield|thermal protection|re.?entry|reflight|relaunch|turnaround", r"열\s*차폐|재진입|재발사|재비행|타일|정비|heat[ -]shield|thermal protection|re.?entry|reflight|relaunch|turnaround"),
     ("space_propellant_storage", r"추진제|\bzbo\b|무손실\s*저장|zero[ -]boil[ -]off|propellant", r"추진제|\bzbo\b|무손실\s*저장|zero[ -]boil[ -]off|propellant"),
     ("science_milestone", r"극저온|양자|효소|cryogenic|quantum|enzyme", r"극저온|양자|효소|cryogenic|quantum|enzyme"),
-    ("space_execution", r"위성|궤도|발사한도|발사계약|환경심사|환경영향평가|주파수|satellite|orbital|launch contract|spectrum", r"위성|궤도|발사|환경심사|환경영향평가|주파수|satellite|orbital|launch|spectrum"),
+    ("space_execution", r"위성|궤도|발사한도|발사계약|환경심사|환경영향평가|주파수|우주로.{0,12}(?:쐈|발사)|우주.{0,15}(?:시험|실험)|satellite|orbital|launch contract|spectrum", r"위성|궤도|발사|교신|환경심사|환경영향평가|주파수|satellite|orbital|launch|spectrum"),
     ("fund_result", r"펀드.{0,20}(?:손실|청산|만기|수익)|(?:손실|청산).{0,20}펀드", r"손실|청산|수익률|loss|liquidat|returns"),
     ("memory", r"hbm|hbf|메모리|낸드|dram", r"hbm|hbf|메모리|낸드|dram"),
     ("earnings", r"매출|영업(?:이익|익)|순(?:이익|익)|실적|가이던스|earnings|guidance", r"매출|영업(?:이익|익)|순(?:이익|익)|실적|가이던스|revenue|profit|earnings|guidance"),
@@ -373,7 +373,7 @@ RULES = (
      r"메모리|반도체|hbm|hbf|cxl|칩|공정|로봇|신약|임상|fda|의약품|기술|양자|극저온|memory|semiconductor|chip|clinical|drug|technology|quantum|cryogenic",
      r"양산|상용화|인증|승인|허가|임상\s*[1-3]상.{0,15}결과|임상 결과|임상결과|공급|도입|검증|성능|대역폭|수율|전력효율|결과 발표|생산|production|commercial|certif|approv|deploy|validat|performance|bandwidth|yield"),
     ("space_execution_stage", ("timeline",),
-     r"위성|궤도|satellite|orbital", r"시험|검증|발사.{0,15}(?:완료|성공)|prototype|orbital test|launch.{0,20}(?:complet|success)"),
+     r"위성|궤도|satellite|orbital", r"시험|검증|발사.{0,15}(?:완료|성공)|교신.{0,20}성공|prototype|orbital test|launch.{0,20}(?:complet|success)"),
     ("launch_turnaround_bottleneck", ("earnings", "timeline"),
      r"로켓|발사체|우주선|rocket|launch vehicle|spacecraft",
      r"(?:재발사|재비행|발사\s*일정|정비\s*기간|교체\s*비용).{0,35}(?:지연|연장|증가|감소|단축|제한)|"

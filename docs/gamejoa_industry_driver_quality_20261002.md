@@ -971,3 +971,35 @@ and body aligned, the saved core retained issuer, fund, day 7, exchange venue
 and future listing, and source-fact errors were zero. Three further regression
 cases bring the materiality suite to 131 tests. Final deployment and fresh-run
 verification are recorded separately below.
+
+## Version 33: Prefer Orbital Execution and Reject Routine Appointments
+
+The next actual production send, run `37000917006`, queried at
+`20:28:38 KST` and delivered four rows with `status=sent`, message ID `2027`,
+one attempt and no API error. Its version-31 selection included the exploration
+portal already fixed by version 32. All four bodies were read. Automotive
+quarterly unit-sales growth and labor rejection remained valid; the orbital
+AI-chip article used the experiment's purpose instead of confirmed post-launch
+communication. The revised core retains the reporting company's successful
+satellite communication and reported normal operation, not commercial operation
+of an orbital data center. Photo-expansion captions cannot establish a milestone.
+
+Version-32 dry run `37002031822` completed at `2026-10-02T11:41:39Z` and
+queried at `20:37:59 KST`. It attempted 160 bodies, verified 130, failed 30
+and deferred 606; coverage was incomplete. ZIP SHA-256:
+`C803F29D191EA1316526D06B371ADB98E10E1CAA49C7E9D268794BB0FEF18AD9`.
+Its only selected body was read: a country-representative appointment was
+promoted using a 20-year supply history. Routine representative/CEO appointments
+without a new business change are now excluded, while an appointment accompanied
+by a new guidance revision remains eligible. Long-running supply/cooperation
+history is explicitly background, not a current economic event. Three further
+regressions bring the materiality suite to 134 tests.
+
+Read-only replay now reviews 24 actual-delivery article rows plus six dry-run
+rows. Seventeen actual rows remain eligible and seven actual rows are removed;
+four dry-run rows retain corrected cores and two weak dry-run rows are removed.
+The three retained rows in the latest actual send have zero source-fact errors,
+including the corrected orbital execution core. All 11 local contracts passed
+with 134 materiality regressions. Historical sends, original URLs and seen state
+were not rewritten or forced into another send. Final deployment and remote
+verification follow separately.

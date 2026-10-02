@@ -248,6 +248,36 @@ class MaterialityChecks(unittest.TestCase):
         self.assertEqual(audit["evidence"][0]["kind"], "capital_listing_stage")
         self.assertNotIn("market_price_or_flow", {row["kind"] for row in audit["evidence"]})
 
+    def test_orbital_test_core_keeps_actual_communication_result_not_purpose(self):
+        title = "구글 AI칩 우주로 쐈다…‘우주 데이터센터’ 첫 실험"
+        purpose = "이번 시험의 핵심은 고성능 AI 칩이 우주의 방사선과 온도 변화 속에서도 정상 작동하는지 확인하는 것이다."
+        body = ("내년 TPU 위성 2대 연결, 레이저 통신으로 실험 사진 확대 플래닛랩스 시설에서 공개된 구글 시험 위성.\n"
+                "구글은 발사 후 위성과 교신하는 데 성공했으며 위성이 정상 작동하고 있다고 밝혔다.\n" + purpose)
+        item = {**alert(title, body), "telegram_core_fact": purpose}
+        core = radar.verified_alert_core(item, title)
+        for term in ("구글", "교신", "성공", "정상 작동"):
+            self.assertIn(term, core)
+        self.assertNotIn("확인하는 것이다", core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        self.assertTrue(radar.source_output_aligned({**item, "telegram_core_fact": core}))
+        self.assertNotIn("사진 확대", str(materiality.assess(title, body)["evidence"]))
+
+    def test_photo_expansion_caption_alone_does_not_establish_space_milestone(self):
+        title = "구글 우주 데이터센터 첫 실험"
+        body = "내년 TPU 위성 2대 연결, 레이저 통신으로 실험 사진 확대 플래닛랩스 시설에서 공개된 구글 시험 위성."
+        self.assertNotEqual(materiality.assess(title, body)["disposition"], "keep")
+        self.assertEqual(materiality.assess(title, body)["evidence"], [])
+
+    def test_country_representative_appointment_does_not_promote_supply_history(self):
+        title = "스웨덴 방산기업 사브, 스테판 엥스트룀 한국 대표 선임"
+        history = "사브는 한국에서 20여년간 첨단 센서, 레이더, 전자전 등 부체계와 기술을 공급하며 국내 방산업체와 협력해왔다."
+        body = "사브가 신임 대표이사를 선임했다.\n" + history
+        self.assertEqual(materiality.assess(title, body)["disposition"], "exclude")
+        self.assertEqual(materiality.assess(title, body)["reason"], "staff_appointment_without_market_change")
+        self.assertEqual(materiality.assess("사브, 한국 방산기업과 협력", history)["evidence"], [])
+        real_change = "사브가 신임 대표이사를 선임했다. 새 대표는 분기 매출 가이던스를 15% 상향한다고 밝혔다."
+        self.assertEqual(materiality.assess(title, real_change)["disposition"], "keep")
+
     def test_earnings_abbreviation_remains_primary_ahead_of_secondary_analyst_revision(self):
         title = "HL디앤아이한라, 상반기 영업익 34%↑…증권가도 목표주가 상향"
         self.assertEqual(materiality.focus_kind(title), "earnings")
