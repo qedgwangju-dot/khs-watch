@@ -783,24 +783,20 @@ if grid_msg_anchor not in t:
     raise SystemExit("generation Electricity 2026 message insertion point not found")
 t = t.replace(grid_msg_anchor, grid_msg_new, 1)
 
-grid_status_anchor = '''    f"- 대형 전력변압기 최대 조달기간: **{power_metrics['transformer_lead_max_years']}년**\n"
-    f"- PwC 2026~2050 누적 자본투자 기준:'''
-grid_status_new = '''    f"- 대형 전력변압기 최대 조달기간: **{power_metrics['transformer_lead_max_years']}년**\n"
-    f"- IEA 글로벌 연간 전력망 투자: **{power_metrics['global_grid_investment_usd_b']}십억달러**\n"
-    f"- IEA 2030 전력망 투자 필요 증가율: **+{power_metrics['global_grid_investment_growth_2030_pct']}%**\n"
-    f"- IEA 글로벌 계통접속 대기열: **{power_metrics['global_grid_queue_gw']}GW+**\n"
-    f"- IEA 전력망/데이터센터 구축기간: **{power_metrics['grid_build_low_years']}~{power_metrics['grid_build_high_years']}년 / {power_metrics['data_center_build_low_years']}~{power_metrics['data_center_build_high_years']}년**\n"
-    f"- PwC 2026~2050 누적 자본투자 기준:'''
+grid_status_anchor = '''    f"- 대형 전력변압기 최대 조달기간: **{power_metrics['transformer_lead_max_years']}년**\\n"
+'''
+grid_status_new = grid_status_anchor + '''    f"- IEA 글로벌 연간 전력망 투자: **{power_metrics['global_grid_investment_usd_b']}십억달러**\\n"
+    f"- IEA 2030 전력망 투자 필요 증가율: **+{power_metrics['global_grid_investment_growth_2030_pct']}%**\\n"
+    f"- IEA 글로벌 계통접속 대기열: **{power_metrics['global_grid_queue_gw']}GW+**\\n"
+    f"- IEA 전력망/데이터센터 구축기간: **{power_metrics['grid_build_low_years']}~{power_metrics['grid_build_high_years']}년 / {power_metrics['data_center_build_low_years']}~{power_metrics['data_center_build_high_years']}년**\\n"
+'''
 if grid_status_anchor not in t:
     raise SystemExit("generation Electricity 2026 status insertion point not found")
 t = t.replace(grid_status_anchor, grid_status_new, 1)
 
-grid_links_anchor = '''    msg.append(f"• {a('GE Vernova 가스터빈 공급능력', GEV_Q2_2026)}")
-    msg.append(f"• {a('PwC 글로벌 데이터센터 반복투자 전망','''
-grid_links_new = '''    msg.append(f"• {a('GE Vernova 가스터빈 공급능력', GEV_Q2_2026)}")
-    msg.append(f"• {a('IEA Electricity 2026 전력망 투자·접속 병목', IEA_ELECTRICITY_2026_EXEC)}")
-    msg.append(f"• {a('IEA Electricity 2026 전력망 구축기간', IEA_ELECTRICITY_2026_GRIDS)}")
-    msg.append(f"• {a('PwC 글로벌 데이터센터 반복투자 전망','''
+grid_links_anchor = '''    msg.append(f"• {a('GE Vernova 가스터빈 공급능력', GEV_Q2_2026)}")'''
+grid_links_new = grid_links_anchor + '''\n    msg.append(f"• {a('IEA Electricity 2026 전력망 투자·접속 병목', IEA_ELECTRICITY_2026_EXEC)}")
+    msg.append(f"• {a('IEA Electricity 2026 전력망 구축기간', IEA_ELECTRICITY_2026_GRIDS)}")'''
 if grid_links_anchor not in t:
     raise SystemExit("generation Electricity 2026 links insertion point not found")
 t = t.replace(grid_links_anchor, grid_links_new, 1)
