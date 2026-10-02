@@ -72,6 +72,50 @@ def assert_compact_prose_limit(body: str, context: str, limit: int = 50) -> None
         raise AssertionError(f"{context} compact prose exceeded 50 chars: {errors}")
 
 
+def assert_fcc_space_nepa_and_satellite_spectrum_are_monitored() -> None:
+    rules = {rule.key: rule for rule in khs_trusted_policy_news_watch.STORY_RULES}
+    required_keys = {"us_fcc_space_nepa_reform", "us_fcc_satellite_spectrum_abundance"}
+    missing = required_keys.difference(rules)
+    if missing:
+        raise AssertionError(f"FCC space-policy rules missing: {sorted(missing)}")
+
+    nepa = rules["us_fcc_space_nepa_reform"]
+    if "FAA" not in nepa.counter or "모든" not in nepa.counter:
+        raise AssertionError("FCC NEPA rule must preserve the FAA/limited-scope caveat")
+    for marker in ("발사", "배치", "우주국", "NEPA"):
+        if marker not in (nepa.core + nepa.point + nepa.counter):
+            raise AssertionError(f"FCC NEPA monitoring context missing: {marker}")
+
+    spectrum = rules["us_fcc_satellite_spectrum_abundance"]
+    for marker in ("1,050MHz", "12.7", "42"):
+        if marker not in (spectrum.title + spectrum.core + spectrum.point):
+            raise AssertionError(f"FCC satellite-spectrum monitoring context missing: {marker}")
+
+    nepa_item = {
+        "title": "FCC adopts NEPA reform for space-based operations and satellite deployment",
+        "description": "Space-based operations are not major Federal actions under NEPA.",
+        "source": "Federal Communications Commission",
+        "link": "https://www.fcc.gov/document/example-nepa",
+    }
+    spectrum_item = {
+        "title": "FCC adopts Satellite Spectrum Abundance order opening 1,050 megahertz",
+        "description": "The order opens 12.7-13.25 GHz and 42-42.5 GHz for satellite broadband.",
+        "source": "Federal Communications Commission",
+        "link": "https://www.fcc.gov/document/example-spectrum",
+    }
+    if khs_trusted_policy_news_watch.semantic_policy_event_key(nepa_item) != "us-fcc-space-nepa-adopted":
+        raise AssertionError("FCC space NEPA semantic event key is not stable")
+    if khs_trusted_policy_news_watch.semantic_policy_event_key(spectrum_item) != "us-fcc-satellite-spectrum-abundance-adopted":
+        raise AssertionError("FCC satellite spectrum semantic event key is not stable")
+
+    status, detail = khs_trusted_policy_news_watch.alert_confirmation_status(nepa, [nepa_item])
+    if status != "공식 확인" or "FCC" not in detail:
+        raise AssertionError("First-party FCC NEPA item did not upgrade to official confirmation")
+    status, detail = khs_trusted_policy_news_watch.alert_confirmation_status(spectrum, [spectrum_item])
+    if status != "공식 확인" or "FCC" not in detail:
+        raise AssertionError("First-party FCC spectrum item did not upgrade to official confirmation")
+
+
 def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     assert_workflow_delivery_dedupe()
@@ -108,6 +152,7 @@ def main() -> int:
     assert_korea_trade_remedy_final_rate_change_is_monitored()
     assert_congress_chinese_optical_transceiver_bill_is_monitored()
     assert_fcc_upper_c_band_auction115_is_monitored()
+    assert_fcc_space_nepa_and_satellite_spectrum_are_monitored()
     assert_trusted_trump_rate_and_dollar_profiles_are_specific()
     assert_trusted_trump_current_iran_profiles_are_source_faithful()
     assert_trusted_trump_hormuz_open_is_source_faithful_and_deduped()
