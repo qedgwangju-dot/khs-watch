@@ -1,0 +1,27 @@
+{
+  "initialized": true,
+  "metrics": {
+    "source": "BofA Global Research 2차 공개보도 기준",
+    "as_of": "2026-10-01",
+    "ai_dc_system_tam_2030_usd_t": 2.2,
+    "ai_dc_system_tam_prior_usd_t": 1.8,
+    "ai_dc_cagr_pct": 40.0,
+    "server_cpu_tam_2030_usd_b": 210.6,
+    "server_cpu_tam_2026_usd_b": 61.4,
+    "cloud_capex_2026_usd_t": 1.0,
+    "cloud_capex_2027_usd_t": 1.4,
+    "cloud_capex_2030_low_usd_t": 2.0,
+    "cloud_capex_2030_high_usd_t": 3.0,
+    "training_cpu_per_gpu": 0.25,
+    "agentic_cpu_per_gpu": 1.0
+  },
+  "baseline_source": "BofA Global Research 2차 공개보도 기준",
+  "updated_at_kst": "2026-10-02T12:13:05+09:00",
+  "seen_ids": [],
+  "last_collection": {
+    "trusted_rows": 0,
+    "new_rows": 0,
+    "candidate_metric_rows": 0,
+    "material_changes": 0
+  }
+}

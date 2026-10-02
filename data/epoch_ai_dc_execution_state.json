@@ -1,0 +1,111 @@
+{
+  "format_version": 1,
+  "source": "Epoch AI",
+  "source_url": "https://epoch.ai/data/ai-data-centers",
+  "data_url": "https://epoch.ai/data/data_centers/data_centers.csv",
+  "timeline_url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
+  "as_of_kst": "2026-10-02T12:13:05+09:00",
+  "site_count": 75,
+  "current_it_mw": 11949.3,
+  "planned_it_mw_2030": 33029.3,
+  "remaining_it_mw": 21080.0,
+  "execution_ratio_pct": 36.18,
+  "top_remaining_sites": [
+    {
+      "name": "Microsoft Fairwater Wisconsin",
+      "owner": "Microsoft #confident",
+      "current_mw": 369.0,
+      "planned_mw": 2263.0,
+      "gap_mw": 1894.0,
+      "planned_date": "2028-05-13"
+    },
+    {
+      "name": "OpenAI Stargate New Mexico",
+      "owner": "Oracle #confident",
+      "current_mw": 0.0,
+      "planned_mw": 1750.0,
+      "gap_mw": 1750.0,
+      "planned_date": "2028-12-31"
+    },
+    {
+      "name": "Meta Hyperion",
+      "owner": "Meta #confident",
+      "current_mw": 0.0,
+      "planned_mw": 1632.0,
+      "gap_mw": 1632.0,
+      "planned_date": "2028-01-01"
+    },
+    {
+      "name": "OpenAI Stargate Shackelford",
+      "owner": "Oracle #confident",
+      "current_mw": 0.0,
+      "planned_mw": 1400.0,
+      "gap_mw": 1400.0,
+      "planned_date": "2028-11-11"
+    },
+    {
+      "name": "QTS Cedar Rapids",
+      "owner": "",
+      "current_mw": 0.0,
+      "planned_mw": 1133.0,
+      "gap_mw": 1133.0,
+      "planned_date": "2027-11-15"
+    },
+    {
+      "name": "Anthropic-Amazon New Carlisle",
+      "owner": "Amazon #confident",
+      "current_mw": 910.0,
+      "planned_mw": 1925.0,
+      "gap_mw": 1015.0,
+      "planned_date": "2028-03-17"
+    },
+    {
+      "name": "Goodnight",
+      "owner": "Google #speculative",
+      "current_mw": 0.0,
+      "planned_mw": 1006.0,
+      "gap_mw": 1006.0,
+      "planned_date": "2027-10-01"
+    },
+    {
+      "name": "OpenAI Stargate Michigan",
+      "owner": "Oracle #confident",
+      "current_mw": 0.0,
+      "planned_mw": 988.0,
+      "gap_mw": 988.0,
+      "planned_date": "2028-12-31"
+    },
+    {
+      "name": "OpenAI Stargate Wisconsin",
+      "owner": "Oracle #confident",
+      "current_mw": 0.0,
+      "planned_mw": 902.0,
+      "gap_mw": 902.0,
+      "planned_date": "2028-12-31"
+    },
+    {
+      "name": "Google Fort Wayne",
+      "owner": "Google #confident",
+      "current_mw": 0.0,
+      "planned_mw": 863.0,
+      "gap_mw": 863.0,
+      "planned_date": "2028-06-23"
+    },
+    {
+      "name": "OpenAI Stargate Milam",
+      "owner": "Softbank #confident",
+      "current_mw": 0.0,
+      "planned_mw": 857.0,
+      "gap_mw": 857.0,
+      "planned_date": "2028-12-31"
+    },
+    {
+      "name": "Crusoe Abilene Expansion",
+      "owner": "Microsoft #confident",
+      "current_mw": 0.0,
+      "planned_mw": 672.0,
+      "gap_mw": 672.0,
+      "planned_date": "2027-11-11"
+    }
+  ]
+}
