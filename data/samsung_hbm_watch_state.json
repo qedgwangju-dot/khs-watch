@@ -104,6 +104,7 @@
     "66d753f37dd3e78939235e57",
     "67cf87cd7ae84be2493d0fc6",
     "68cf60813c9be422ca6c4dd7",
+    "698e426aaecd0238eeafa74b",
     "69add4df92958b0c750a6244",
     "6a48b9f10771440c5bef51f4",
     "6b1903a7719be1a1ee3e52cd",
@@ -154,6 +155,7 @@
     "9053d0a137894146d9ea72a2",
     "908dd39afd1f41cf0db839e1",
     "914fababbb9099953512eef6",
+    "921da3de65944155cf83436b",
     "9348003ee0b889f4cd55f49b",
     "948c3db85e4f53a9d0cd2121",
     "94b2b1c2ce5c9c2f65c340fc",
@@ -169,6 +171,7 @@
     "a3053a837f87259ee3eba0af",
     "a42f64d496ea3b33d8256a30",
     "a5a275fb929f37b120e7a8ed",
+    "a6769c304669aa2c4a019be5",
     "a8045c048cc6c2f3e1151eca",
     "a831aeff6e59b0711466f6c1",
     "a845562aec371314227ee9ca",
@@ -263,8 +266,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-10-02T10:06:13+09:00",
-  "last_event_count": 101,
+  "updated_at_kst": "2026-10-02T15:41:11+09:00",
+  "last_event_count": 97,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -1276,10 +1279,10 @@
       "ddr5_chip_quote|dramexchange|16|4800/5600": {
         "key": "ddr5_chip_quote|dramexchange|16|4800/5600",
         "axis": "ddr5_chip_quote",
-        "value": 57.933,
+        "value": 58.0,
         "unit": "USD/chip",
         "period": "2026-10",
-        "as_of": "2026-10-01",
+        "as_of": "2026-10-02",
         "evidence": "research",
         "source_url": "https://www.dramexchange.com/",
         "source_title": "DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격",
@@ -1559,8 +1562,8 @@
         "as_of": "2026-09-30",
         "evidence": "research",
         "source_url": "https://www.trendforce.com/news/2026/09/30/news-samsung-foundry-loss-reportedly-seen-shrinking-42-yoy-in-2026-as-hbm4-base-die-4nm-demand-rises/",
-        "source_title": "[News] Samsung Foundry Loss Reportedly Seen Shrinking 42% YoY in 2026 as HBM4 Base-Die 4nm Demand Rises - trendforce.com",
-        "source": "trendforce.com",
+        "source_title": "[News] Samsung Foundry Loss Reportedly Seen Shrinking 42% YoY in 2026 as HBM4 Base-Die 4nm Demand Rises - TrendForce",
+        "source": "TrendForce",
         "excerpt": "삼성 HBM4 베이스다이 대응 4나노 증설 단계",
         "scope": "foundry_expansion_stage"
       },
@@ -1579,8 +1582,8 @@
         "as_of": "2026-09-30",
         "evidence": "research",
         "source_url": "https://www.trendforce.com/news/2026/09/30/news-samsung-foundry-loss-reportedly-seen-shrinking-42-yoy-in-2026-as-hbm4-base-die-4nm-demand-rises/",
-        "source_title": "[News] Samsung Foundry Loss Reportedly Seen Shrinking 42% YoY in 2026 as HBM4 Base-Die 4nm Demand Rises - trendforce.com",
-        "source": "trendforce.com",
+        "source_title": "[News] Samsung Foundry Loss Reportedly Seen Shrinking 42% YoY in 2026 as HBM4 Base-Die 4nm Demand Rises - TrendForce",
+        "source": "TrendForce",
         "excerpt": "삼성 4나노 신규수주·HBM4 베이스다이 가격 변화",
         "scope": "reported_foundry_pricing"
       },
@@ -1642,8 +1645,8 @@
         "as_of": "2026-09-30",
         "evidence": "reported",
         "source_url": "https://www.trendforce.com/news/2026/09/30/news-samsung-foundry-loss-reportedly-seen-shrinking-42-yoy-in-2026-as-hbm4-base-die-4nm-demand-rises/",
-        "source_title": "[News] Samsung Foundry Loss Reportedly Seen Shrinking 42% YoY in 2026 as HBM4 Base-Die 4nm Demand Rises - trendforce.com",
-        "source": "trendforce.com",
+        "source_title": "[News] Samsung Foundry Loss Reportedly Seen Shrinking 42% YoY in 2026 as HBM4 Base-Die 4nm Demand Rises - TrendForce",
+        "source": "TrendForce",
         "excerpt": "삼성 파운드리+System LSI 합산 영업손실 전망",
         "scope": "broker_estimate_foundry_plus_system_lsi_combined_not_foundry_standalone"
       },
@@ -1789,7 +1792,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-02T10:06:13+09:00",
+      "last_checked_at_kst": "2026-10-02T15:41:11+09:00",
       "gaps": [
         "원문 확인 실패: investing.com / HTTPError",
         "wafer_share: 연말 분모가 명확하지 않아 비교 보류",
@@ -1848,7 +1851,8 @@
     "market_pricing_track_version": 1,
     "foundry_recovery_track_version": 1,
     "foundry_pricing_range_track_version": 1,
-    "glass_substrate_track_version": 1
+    "glass_substrate_track_version": 1,
+    "hbm_generation_price_track_version": 1
   },
   "memory_axes_version": 1,
   "telegram_message_ids": [
@@ -1864,7 +1868,7 @@
     "payload_hash": "f1530e6ce0d0ac528db6098dd958547e06b0098128c3cfc0ada116eeaf81b9c7"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-02T10:10:31+09:00",
+    "checked_at_kst": "2026-10-02T15:45:17+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
