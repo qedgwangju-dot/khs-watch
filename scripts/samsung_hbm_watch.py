@@ -2138,7 +2138,7 @@ def _hbm4_contract_stage(text: str) -> str:
         return "final_stage"
     if re.search(r"(?:가격\s*협상|공급가\s*협상|협의\s*중|negotiat(?:e|ing|ion)|in\s*discussions?)", low, re.I):
         return "negotiating"
-    if re.search(r"(?:가격\s*(?:제시|요구)|인상\s*요구|asking\s*price|proposed\s*price|seeking\s*(?:a\s*)?price)", low, re.I):
+    if re.search(r"(?:가격\s*(?:제시|요구)|가격[^.]{0,20}?인상[^.]{0,20}?요구|인상\s*요구|asking\s*price|proposed\s*price|seeking\s*(?:a\s*)?price)", low, re.I):
         return "proposed"
     return "headline_reported"
 
