@@ -63,6 +63,34 @@ class SamsungHBM4PriceWatchTests(unittest.TestCase):
         self.assertEqual(obs["offered_price_usd_per_gb_min"], 4.60)
         self.assertEqual(obs["offered_price_usd_per_gb_max"], 4.80)
 
+    def test_premium_followup_is_reported_not_signed(self):
+        text = (
+            "삼성 HBM4 2027 가격 프리미엄. 내년 HBM 물량은 사실상 완판됐다고 보도됐다. "
+            "고객사가 요구하는 최고 사양 HBM을 안정적으로 공급할 업체가 제한적이라 가격 협상력이 강화되고 있다. "
+            "삼성 HBM4는 업계 표준 8Gbps를 넘는 11.7Gbps를 안정적으로 확보했고 최대 13Gbps까지 구현 가능하다. "
+            "HBM4 스택 대역폭은 최대 3.3TB/s로 고객 요구 3.0TB/s를 웃돈다."
+        )
+        obs = w.extract_samsung_hbm4_price(self.event(text))
+        self.assertIsNotNone(obs)
+        self.assertEqual(obs["reported_supply_status"], "virtually_sold_out_reported")
+        self.assertEqual(obs["pricing_power_stage"], "strengthened_reported")
+        self.assertEqual(obs["pricing_power_driver"], "high_spec_performance_and_limited_supply")
+        self.assertEqual(obs["performance_stable_gbps"], 11.7)
+        self.assertEqual(obs["performance_max_gbps"], 13.0)
+        self.assertEqual(obs["industry_standard_gbps"], 8.0)
+        self.assertEqual(obs["stack_bandwidth_tbps"], 3.3)
+        self.assertEqual(obs["customer_requirement_tbps"], 3.0)
+        self.assertNotEqual(obs.get("stage"), "signed")
+
+    def test_supply_and_pricing_power_changes_alert(self):
+        old = dict(w.SAMSUNG_HBM4_PRICE_BASELINE)
+        old["reported_supply_status"] = "largely_available"
+        old["pricing_power_stage"] = "neutral_reported"
+        new = dict(old, reported_supply_status="virtually_sold_out_reported", pricing_power_stage="strengthened_reported")
+        reasons = w.samsung_hbm4_price_changes(old, new)
+        self.assertTrue(any("공급 상태" in x and "virtually_sold_out_reported" in x for x in reasons))
+        self.assertTrue(any("가격 협상력" in x and "strengthened_reported" in x for x in reasons))
+
     def test_baseline_same_state_is_silent(self):
         old = dict(w.SAMSUNG_HBM4_PRICE_BASELINE)
         new = dict(old)
