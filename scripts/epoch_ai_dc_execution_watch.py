@@ -23,7 +23,7 @@ STATUS = OUT / "epoch_ai_dc_execution_status.md"
 
 KST = ZoneInfo("Asia/Seoul")
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
-FORMAT_VERSION = 2
+FORMAT_VERSION = 3
 
 
 def fetch_text(url: str, timeout: int = 40) -> str:
