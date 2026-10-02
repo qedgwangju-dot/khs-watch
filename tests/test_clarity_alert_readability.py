@@ -28,7 +28,7 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
             "reported_title": "Trump agrees to new bipartisan ethics provision in massive crypto bill",
         }
         rendered = "\n".join(MOD.build_readable([event]))
-        self.assertIn("<b>👀 한눈에 보기</b>", rendered)
+        self.assertNotIn("<b>👀 한눈에 보기</b>", rendered)
         self.assertIn("<b>🧩 핵심</b>", rendered)
         self.assertIn("<b>💰 투자 의미</b>", rendered)
         self.assertIn("<b>📌 확인</b>", rendered)
@@ -83,6 +83,28 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
         self.assertNotIn("시장 반응·원인 분리", rendered)
         self.assertNotIn("핵심 한 줄 요약", rendered)
         self.assertLessEqual(max(map(len, MOD.build_readable(filtered))), 3900)
+
+    def test_multiple_distinct_events_keep_short_overview(self):
+        events = [
+            {
+                "source": "SEC 보도자료",
+                "event_type": "SEC·CFTC 공식 규칙·해석·집행지침",
+                "title": "SEC Proposes New Regulation Crypto Assets",
+                "url": "https://www.sec.gov/example1",
+                "date": "2026-10-01",
+                "detail": "The SEC proposed Regulation Crypto Assets.",
+            },
+            {
+                "source": "OIRA/RegInfo — CFTC",
+                "event_type": "CFTC OIRA 규제검토 — Prerule",
+                "title": "Regulation Crypto Asset Transactions and Regulation Crypto Asset Markets",
+                "url": "https://www.reginfo.gov/example2",
+                "date": "2026-10-01",
+                "detail": "RIN 3038-AF80 Status: Pending Review Stage: Prerule",
+            },
+        ]
+        rendered = "\n".join(MOD.build_readable(events))
+        self.assertIn("<b>👀 한눈에 보기</b>", rendered)
 
     def test_oira_prerule_starts_with_easy_real_world_meaning(self):
         event = {
