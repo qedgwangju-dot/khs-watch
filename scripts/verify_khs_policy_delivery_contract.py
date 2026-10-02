@@ -148,6 +148,9 @@ def assert_fcc_space_nepa_and_satellite_spectrum_are_monitored() -> None:
     status, detail = khs_trusted_policy_news_watch.alert_confirmation_status(spectrum, [spectrum_item])
     if status != "공식 확인" or "FCC" not in detail:
         raise AssertionError("First-party FCC spectrum item did not upgrade to official-source confirmation")
+    status, detail = khs_trusted_policy_news_watch.alert_confirmation_status(followon, [followon_item])
+    if status != "공식 확인" or "FCC" not in detail:
+        raise AssertionError("First-party FCC follow-on spectrum item did not upgrade to official-source confirmation")
 
 
 def main() -> int:
