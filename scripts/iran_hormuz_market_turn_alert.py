@@ -103,6 +103,11 @@ NEWS_QUERIES = (
     '"50 million barrels" diesel EU reserves France when:3d',
     '"Europe weighs" diesel stocks release when:3d',
     'EU 경유 전략비축유 방출 검토 요르겐센 when:3d',
+    '"G7 agrees to release" 100mn barrels diesel crude when:1d',
+    '"100 million barrels" G7 diesel crude Financial Times when:1d',
+    '"Europe agrees to release diesel reserves immediately" Trump when:1d',
+    '"Trump" Europe diesel reserves immediately AP when:1d',
+    'G7 디젤 원유 1억배럴 방출 트럼프 즉시 방출 when:1d',
     '"Chinese refiners suspend" fuel exports PetroChina when:3d',
     '"China" fuel exports resume PetroChina October 7 when:7d',
     '"China" refined product exports suspended Beijing green light when:7d',
@@ -220,6 +225,7 @@ EVENT_LABELS = {
     "crude_product_divergence": "중동 원유 98% 회복·정제품 병목",
     "us_diesel_export_policy": "미국 디젤 수출정책 단계 변화",
     "eu_diesel_reserve_policy": "EU 경유 전략비축유 방출 단계 변화",
+    "g7_reserve_release_agreement": "G7 경유·원유 전략비축유 방출 합의",
     "china_fuel_export_policy": "중국 정제품 수출정책 단계 변화",
     "india_gulf_import_recovery": "인도 걸프산 원유 유입 회복",
 }
@@ -292,6 +298,7 @@ def _source_name_ko(source: str) -> str:
         ("euronews", "유로뉴스"),
         ("newsis", "뉴시스"),
         ("뉴시스", "뉴시스"),
+        ("news1", "뉴스1"),
         ("marketscreener", "마켓스크리너"),
     )
     for key, label in mappings:
@@ -321,6 +328,16 @@ def _news_title_ko(row: NewsItem) -> str:
         if stage == "restricted":
             return "중국, 정제품 수출 제한"
         return "중국 정유사, 10월 정제품 수출 중단"
+
+    if kind == "g7_reserve_release_agreement":
+        stage = _g7_reserve_stage(title)
+        labels = {
+            "release_started": "G7·IEA, 경유·원유 전략비축유 실제 방출 시작",
+            "agreed_100m": "G7, 경유·원유 전략비축유 1억 배럴 방출 합의",
+            "immediate_diesel": "트럼프, 유럽이 비축 경유를 즉시 방출하기로 합의했다고 발표",
+            "proposal_100m": "유럽·IEA, 경유 5,000만 배럴+원유 5,000만 배럴 방출안 논의",
+        }
+        return labels.get(stage, "G7 경유·원유 전략비축유 방출 합의 보도")
 
     if kind == "eu_diesel_reserve_policy":
         stage = _eu_diesel_reserve_stage(title)
@@ -441,6 +458,22 @@ def classify_event(title: str) -> str | None:
     )
     if diesel_policy_context and us_policy_actor:
         return "us_diesel_export_policy"
+
+    g7_release_agreement = (
+        (
+            any(term in low for term in ("g7", "group of seven", "주요 7개국"))
+            and any(term in low for term in ("diesel", "crude", "oil", "경유", "원유"))
+            and any(term in low for term in ("release", "agrees", "agreed", "방출", "합의"))
+            and any(term in low for term in ("100 million", "100mn", "1억", "50 million", "5,000만"))
+        )
+        or (
+            any(term in low for term in ("europe agrees", "european countries have agreed", "유럽이", "유럽 국가"))
+            and any(term in low for term in ("diesel reserves", "diesel oil reserves", "비축 경유", "경유 비축"))
+            and any(term in low for term in ("immediately", "immediate", "즉시", "방출"))
+        )
+    )
+    if g7_release_agreement:
+        return "g7_reserve_release_agreement"
 
     eu_reserve_context = (
         any(term in low for term in ("eu", "europe", "european", "jorgensen", "jørgensen", "유럽연합", "유럽", "요르겐센"))
@@ -1090,6 +1123,11 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
         basis = f"{kind}|{stage}"
         return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
+    if kind == "g7_reserve_release_agreement":
+        stage = _g7_reserve_stage(combined)
+        basis = f"{kind}|{stage}"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
+
     if kind == "eu_diesel_reserve_policy":
         stage = _eu_diesel_reserve_stage(combined)
         basis = f"{kind}|{stage}"
@@ -1633,6 +1671,85 @@ def _build_us_diesel_policy_alert_body(
     return "\n".join(lines).strip()+"\n"
 
 
+def _g7_reserve_stage(text_or_rows: str | list[NewsItem]) -> str:
+    text = normalize_text(text_or_rows) if isinstance(text_or_rows, str) else " ".join(normalize_text(row.title) for row in text_or_rows)
+    if any(term in text for term in ("release started", "releases begin", "stocks released", "actual release", "방출 시작", "실제 방출")):
+        return "release_started"
+    if (
+        any(term in text for term in ("g7 agrees", "g7 agreed", "agrees to release", "agreed to release", "합의"))
+        and any(term in text for term in ("100 million", "100mn", "1억"))
+    ):
+        return "agreed_100m"
+    if (
+        any(term in text for term in ("europe agrees", "european countries have agreed", "유럽"))
+        and any(term in text for term in ("diesel", "경유"))
+        and any(term in text for term in ("immediately", "immediate", "즉시"))
+    ):
+        return "immediate_diesel"
+    if (
+        any(term in text for term in ("50 million", "5,000만"))
+        and any(term in text for term in ("diesel", "경유"))
+        and any(term in text for term in ("crude", "원유"))
+    ):
+        return "proposal_100m"
+    return "agreement_reported"
+
+
+def _build_g7_reserve_release_alert_body(
+    news_rows: list[NewsItem], oil: Quote | None, current: dt.datetime, fx: Quote | None,
+) -> str:
+    stage = _g7_reserve_stage(news_rows)
+    labels = {
+        "release_started": "실제 방출 시작",
+        "agreed_100m": "경유·원유 합계 1억 배럴 방출 합의 보도",
+        "immediate_diesel": "유럽 비축 경유 즉시 방출 합의 발표",
+        "proposal_100m": "경유 5,000만+원유 5,000만 배럴 방출안",
+        "agreement_reported": "G7 전략비축유 방출 합의 보도",
+    }
+    lines = [
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
+        "",
+        "[한눈에]",
+        f"G7 상태       {labels.get(stage, stage)}",
+        "구성          경유 5,000만 배럴 + IEA 원유 5,000만 배럴 제안이 합의 보도로 단계 상승",
+        "시점          FT: 경유 상당 물량 첫 20일 내 · AP: 트럼프 '즉시 방출' 발표",
+    ]
+    if oil is not None:
+        direction = "↓" if oil.change < 0 else "↑" if oil.change > 0 else "→"
+        lines.append(f"Brent         USD {oil.price:.2f} · {oil.change_pct:+.2f}% {direction}")
+    if fx is not None:
+        won = "약세" if fx.change > 0 else "강세" if fx.change < 0 else "보합"
+        lines.append(f"원·달러       {fx.price:,.2f}원 · {fx.change_pct:+.2f}% · 원화 {won}")
+
+    lines.extend([
+        "",
+        "[핵심]",
+        "EU의 '검토' 단계에서 G7 차원의 '합의 보도' 단계로 올라왔습니다.",
+        "→ 단기 경유·원유 가격과 정제마진에는 하방 압력, 항공·운송·물가에는 완화 방향입니다.",
+        "→ 다만 1억 배럴 전체가 경유라는 뜻은 아닙니다. 로이터가 전한 기존 안은 경유 5,000만+원유 5,000만 배럴입니다.",
+        "",
+        "[다음 확인]",
+        "공식          G7·IEA 최종 성명 · 회원국별 배정 물량 · 실제 방출 시작일",
+        "경유          첫 20일 실제 방출량 · 유럽 경유 선물·재고",
+        "원유          IEA 5,000만 배럴 집행 여부 · Brent 반응",
+        "미국          디젤 수출금지 철회·유예 보장 여부",
+        "",
+        "[근거]",
+    ])
+    for row in news_rows[:3]:
+        published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
+        lines.append(f"{_source_name_ko(row.source)} · {published:%m-%d %H:%M KST} · {_news_title_ko(row)}")
+        if row.link:
+            lines.append(f"원문: {row.link}")
+    lines.extend([
+        "",
+        "[주의]",
+        "FT는 G7의 1억 배럴 합의를 보도했고, AP는 트럼프의 유럽 경유 '즉시 방출' 발표를 전했습니다.",
+        "현재 확인한 공개 G7·IEA 공식문서에는 세부 배정표가 아직 보이지 않아, 실제 집행 물량·시점은 별도 확인합니다.",
+    ])
+    return "\n".join(lines).strip() + "\n"
+
+
 def _eu_diesel_reserve_stage(text_or_rows: str | list[NewsItem]) -> str:
     text = normalize_text(text_or_rows) if isinstance(text_or_rows, str) else " ".join(normalize_text(row.title) for row in text_or_rows)
     if any(term in text for term in ("released", "release begins", "stocks released", "방출 시작", "실제 방출")):
@@ -2071,6 +2188,8 @@ def build_physical_flow_alert_body(
     metrics = _extract_kpler_sts_metrics(news_rows)
     if kind == "crude_product_divergence":
         return _build_crude_product_gap_alert_body(news_rows, oil, current, fx)
+    if kind == "g7_reserve_release_agreement":
+        return _build_g7_reserve_release_alert_body(news_rows, oil, current, fx)
     if kind == "eu_diesel_reserve_policy":
         return _build_eu_diesel_reserve_alert_body(news_rows, oil, current, fx)
     if kind == "us_diesel_export_policy":
@@ -2421,6 +2540,7 @@ def run_monitor(current: dt.datetime) -> int:
         "east_west_pipeline_recovery",
         "regional_export_recovery",
         "crude_product_divergence",
+        "g7_reserve_release_agreement",
         "eu_diesel_reserve_policy",
         "us_diesel_export_policy",
         "china_fuel_export_policy",
@@ -2439,6 +2559,8 @@ def run_monitor(current: dt.datetime) -> int:
         body = build_physical_flow_alert_body(kind, news_rows, oil, current, fx)
         if kind == "crude_product_divergence":
             title = "중동 원유 회복·정제품 병목 변화"
+        elif kind == "g7_reserve_release_agreement":
+            title = "G7 경유·원유 전략비축유 방출 합의"
         elif kind == "eu_diesel_reserve_policy":
             title = "EU 경유 전략비축유 방출 변화"
         elif kind == "us_diesel_export_policy":

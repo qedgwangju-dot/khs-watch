@@ -373,6 +373,50 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertEqual(item.source, "Euronews")
         self.assertIn("strategic diesel reserves", item.title)
 
+    def test_g7_100m_agreement_is_classified(self):
+        title = "G7 agrees to release 100mn barrels of diesel and crude under pressure from Trump"
+        self.assertEqual(MODULE.classify_event(title), "g7_reserve_release_agreement")
+
+    def test_europe_immediate_diesel_agreement_is_classified(self):
+        title = "Trump: Europe agrees to release diesel reserves immediately as fuel prices hover near record highs"
+        self.assertEqual(MODULE.classify_event(title), "g7_reserve_release_agreement")
+
+    def test_g7_event_requires_two_unique_sources(self):
+        now = dt.datetime(2026, 10, 2, 14, 0, tzinfo=dt.timezone.utc)
+        one = [MODULE.NewsItem(
+            "G7 agrees to release 100mn barrels of diesel and crude under pressure from Trump",
+            "Financial Times", "a", now.isoformat(), now.timestamp(), "g7_reserve_release_agreement"
+        )]
+        self.assertIsNone(MODULE.confirm_event(one))
+        one.append(MODULE.NewsItem(
+            "Trump: Europe agrees to release diesel reserves immediately as fuel prices hover near record highs",
+            "Associated Press", "b", now.isoformat(), now.timestamp(), "g7_reserve_release_agreement"
+        ))
+        result = MODULE.confirm_event(one)
+        self.assertIsNotNone(result)
+        assert result is not None
+        self.assertEqual(result[0], "g7_reserve_release_agreement")
+
+    def test_g7_agreement_body_preserves_split_and_caution(self):
+        now = dt.datetime(2026, 10, 2, 14, 0, tzinfo=dt.timezone.utc)
+        rows = [
+            MODULE.NewsItem(
+                "G7 agrees to release 100mn barrels of diesel and crude under pressure from Trump",
+                "Financial Times", "a", now.isoformat(), now.timestamp(), "g7_reserve_release_agreement"
+            ),
+            MODULE.NewsItem(
+                "Trump: Europe agrees to release diesel reserves immediately as fuel prices hover near record highs",
+                "Associated Press", "b", now.isoformat(), now.timestamp(), "g7_reserve_release_agreement"
+            ),
+        ]
+        body = MODULE.build_physical_flow_alert_body("g7_reserve_release_agreement", rows, None, now)
+        self.assertIn("1억 배럴", body)
+        self.assertIn("경유 5,000만 배럴 + IEA 원유 5,000만 배럴", body)
+        self.assertIn("1억 배럴 전체가 경유라는 뜻은 아닙니다", body)
+        self.assertIn("공개 G7·IEA 공식문서", body)
+        self.assertIn("파이낸셜타임스", body)
+        self.assertIn("AP", body)
+
     def test_eu_diesel_reserve_considering_is_classified(self):
         title = 'EU energy chief says releasing strategic diesel reserves is a possibility'
         self.assertEqual(MODULE.classify_event(title), "eu_diesel_reserve_policy")
