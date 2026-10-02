@@ -74,22 +74,35 @@ def assert_compact_prose_limit(body: str, context: str, limit: int = 50) -> None
 
 def assert_fcc_space_nepa_and_satellite_spectrum_are_monitored() -> None:
     rules = {rule.key: rule for rule in khs_trusted_policy_news_watch.STORY_RULES}
-    required_keys = {"us_fcc_space_nepa_reform", "us_fcc_satellite_spectrum_abundance"}
+    required_keys = {
+        "us_fcc_space_nepa_reform",
+        "us_fcc_satellite_spectrum_abundance",
+        "us_fcc_satellite_spectrum_followon_fnprm",
+    }
     missing = required_keys.difference(rules)
     if missing:
         raise AssertionError(f"FCC space-policy rules missing: {sorted(missing)}")
 
     nepa = rules["us_fcc_space_nepa_reform"]
-    if "FAA" not in nepa.counter or "모든" not in nepa.counter:
+    if "FAA" not in nepa.counter or "모든 환경규제" not in nepa.counter:
         raise AssertionError("FCC NEPA rule must preserve the FAA/limited-scope caveat")
-    for marker in ("발사", "배치", "우주국", "NEPA"):
+    for marker in ("발사", "배치", "우주국", "NEPA", "안테나 구조물 등록", "주요 연방행위"):
         if marker not in (nepa.core + nepa.point + nepa.counter):
             raise AssertionError(f"FCC NEPA monitoring context missing: {marker}")
 
     spectrum = rules["us_fcc_satellite_spectrum_abundance"]
-    for marker in ("1,050MHz", "12.7", "42"):
-        if marker not in (spectrum.title + spectrum.core + spectrum.point):
+    for marker in ("1,050MHz", "12.7", "42", "550MHz", "500MHz", "게이트웨이"):
+        if marker not in (spectrum.title + spectrum.core + spectrum.point + spectrum.follow_up):
             raise AssertionError(f"FCC satellite-spectrum monitoring context missing: {marker}")
+
+    followon = rules["us_fcc_satellite_spectrum_followon_fnprm"]
+    for marker in ("1,450MHz", "138.25GHz", "FNPRM", "최종"):
+        if marker not in (followon.title + followon.core + followon.point + followon.counter + followon.follow_up):
+            raise AssertionError(f"FCC follow-on spectrum monitoring context missing: {marker}")
+
+    all_queries = " ".join(nepa.google_queries + spectrum.google_queries + followon.google_queries)
+    if "FCC 26-55" in all_queries or "FCC 26-65" in all_queries:
+        raise AssertionError("Unverified FCC order numbers must not be hard-coded into space-policy search queries")
 
     nepa_item = {
         "title": "FCC adopts NEPA reform for space-based operations and satellite deployment",
@@ -97,23 +110,44 @@ def assert_fcc_space_nepa_and_satellite_spectrum_are_monitored() -> None:
         "source": "Federal Communications Commission",
         "link": "https://www.fcc.gov/document/example-nepa",
     }
+    nepa_proposal = {
+        "title": "FCC proposes NEPA reform for space-based operations and satellite deployment",
+        "description": "Notice of proposed rulemaking on major Federal actions under NEPA.",
+        "source": "Federal Communications Commission",
+        "link": "https://www.fcc.gov/document/example-nepa-proposal",
+    }
     spectrum_item = {
         "title": "FCC adopts Satellite Spectrum Abundance order opening 1,050 megahertz",
         "description": "The order opens 12.7-13.25 GHz and 42-42.5 GHz for satellite broadband.",
         "source": "Federal Communications Commission",
         "link": "https://www.fcc.gov/document/example-spectrum",
     }
+    followon_item = {
+        "title": "FCC seeks comment on 1,450 megahertz and 138.25 gigahertz for satellite communications",
+        "description": "Further Notice of Proposed Rulemaking for Ku, Ka and D-band satellite use.",
+        "source": "Federal Communications Commission",
+        "link": "https://www.fcc.gov/document/example-spectrum-fnprm",
+    }
+    followon_final = dict(followon_item)
+    followon_final["title"] = "FCC adopts final rule opening 1,450 megahertz and 138.25 gigahertz for satellite communications"
+
     if khs_trusted_policy_news_watch.semantic_policy_event_key(nepa_item) != "us-fcc-space-nepa-adopted":
-        raise AssertionError("FCC space NEPA semantic event key is not stable")
+        raise AssertionError("FCC space NEPA adopted semantic event key is not stable")
+    if khs_trusted_policy_news_watch.semantic_policy_event_key(nepa_proposal) != "us-fcc-space-nepa-proposal":
+        raise AssertionError("FCC space NEPA proposal must remain distinct from adoption")
     if khs_trusted_policy_news_watch.semantic_policy_event_key(spectrum_item) != "us-fcc-satellite-spectrum-abundance-adopted":
         raise AssertionError("FCC satellite spectrum semantic event key is not stable")
+    if khs_trusted_policy_news_watch.semantic_policy_event_key(followon_item) != "us-fcc-satellite-spectrum-followon-proposal":
+        raise AssertionError("FCC follow-on spectrum proposal semantic event key is not stable")
+    if khs_trusted_policy_news_watch.semantic_policy_event_key(followon_final) != "us-fcc-satellite-spectrum-followon-final":
+        raise AssertionError("FCC follow-on final rule must become a new semantic stage")
 
     status, detail = khs_trusted_policy_news_watch.alert_confirmation_status(nepa, [nepa_item])
     if status != "공식 확인" or "FCC" not in detail:
-        raise AssertionError("First-party FCC NEPA item did not upgrade to official confirmation")
+        raise AssertionError("First-party FCC NEPA item did not upgrade to official-source confirmation")
     status, detail = khs_trusted_policy_news_watch.alert_confirmation_status(spectrum, [spectrum_item])
     if status != "공식 확인" or "FCC" not in detail:
-        raise AssertionError("First-party FCC spectrum item did not upgrade to official confirmation")
+        raise AssertionError("First-party FCC spectrum item did not upgrade to official-source confirmation")
 
 
 def main() -> int:
