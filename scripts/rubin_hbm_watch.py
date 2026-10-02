@@ -735,6 +735,11 @@ def extract_samsung_hbm4_price(event: dict) -> dict | None:
         r"(?:hbm4[^.]{0,120}?)(?:\$|미화\s*)?([0-9]+(?:\.[0-9]+)?)\s*(?:~|[-–—]|to)\s*(?:\$|미화\s*)?([0-9]+(?:\.[0-9]+)?)\s*(?:/\s*)?gb",
         low, re.I,
     )
+    if not pm:
+        pm = re.search(
+            r"(?:hbm4[^.]{0,120}?)(?:1\s*)?gb\s*(?:당|per)?[^0-9]{0,30}?(?:\$|미화\s*)?([0-9]+(?:\.[0-9]+)?)\s*(?:~|[-–—]|to)\s*(?:\$|미화\s*)?([0-9]+(?:\.[0-9]+)?)\s*(?:달러|usd|\$)?",
+            low, re.I,
+        )
     if pm:
         obs["offered_price_usd_per_gb_min"] = float(pm.group(1))
         obs["offered_price_usd_per_gb_max"] = float(pm.group(2))
@@ -886,10 +891,21 @@ def extract_samsung_hbm4e_thermal_package(event: dict) -> dict | None:
         obs["hcb_thermal_resistance_improvement_pct"] = float(hm.group(1))
 
     if any(k in low for k in ("hcb", "hybrid copper bonding", "하이브리드 구리 본딩", "하이브리드 본딩")):
-        if (
+        hcb_mass_production = (
             "hbm4e" in low
-            and any(k in low for k in ("양산 적용", "양산에 적용", "mass production adoption", "adopted for mass production"))
-        ):
+            and (
+                any(k in low for k in ("양산 적용", "양산에 적용", "mass production adoption", "adopted for mass production"))
+                or bool(re.search(
+                    r"hbm4e[^.]{0,80}?양산[^.]{0,80}?(?:hcb|하이브리드\s*(?:구리\s*)?본딩)[^.]{0,80}?적용",
+                    low, re.I,
+                ))
+                or bool(re.search(
+                    r"(?:hcb|하이브리드\s*(?:구리\s*)?본딩)[^.]{0,80}?hbm4e[^.]{0,80}?양산[^.]{0,80}?적용",
+                    low, re.I,
+                ))
+            )
+        )
+        if hcb_mass_production:
             obs["hcb_stage"] = "hbm4e_mass_production"
         elif (
             "hbm4e" in low
