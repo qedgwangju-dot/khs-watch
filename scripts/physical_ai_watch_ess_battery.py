@@ -1004,6 +1004,25 @@ def risk(cat: str) -> str:
 
 def verification(item: dict, group: str, text: str) -> str:
     source = item.get('source') or ''
+    if group == 'ev_46_series':
+        stage = _ev46_stage(text, source)
+        if stage == 'known_baseline':
+            if EV46_MERCEDES_BASE.search(text) and source not in base.OFFICIAL_OR_PRIMARY:
+                return '디일렉 업계 취재 기준선 · Mercedes-Benz/LG에너지솔루션 공식 46100 확인 전'
+            return '기업·완성차 공식자료 기준선 · 같은 계약·양산 숫자 재보도는 새 이벤트 아님'
+        if stage == 'mou':
+            return '기업 공식 MOU라도 비구속 협의 단계 · 최종 공급계약/GWh/SOP 전'
+        if stage in {'oem_contract','format_confirmation','backlog_change','sop','first_shipment','ramp_metrics','bma_integration'}:
+            if source in base.OFFICIAL_OR_PRIMARY:
+                return '셀 업체·완성차 공식자료 · 규격/계약/GWh/양산/출하 단계 직접 확인'
+            return '신뢰 매체 보도 · 셀 업체·완성차 공식자료로 고객·규격·물량·일정 교차확인'
+        if stage in {'construction_execution','equipment_execution','component_order'}:
+            if source in base.OFFICIAL_OR_PRIMARY:
+                return '기업 공식자료 · 46파이 전용 설비/장비/소재 수주와 납기 직접 확인'
+            return '보도 단계 · 고객사 공시·수주공시·설비 발주자료 교차확인'
+        if stage == 'reverse':
+            return '계약·공장·고객 일정의 역방향 변화 · 당사자 공식자료와 취소/지연 물량 교차확인'
+        return '46파이 관련 보도 · 고객·규격·GWh·공장·SOP를 공식자료로 추가 확인'
     if group == 'global_battery_capacity':
         stage = _catl_debrecen_stage(text, source)
         if stage == 'trial_production_baseline':
@@ -1080,6 +1099,21 @@ def _same_event(a: dict, b: dict) -> bool:
         return False
     ta = f"{a.get('title','')} {a.get('description','')}"
     tb = f"{b.get('title','')} {b.get('description','')}"
+    if a.get('group') == 'ev_46_series':
+        sa = _ev46_stage(ta, a.get('source') or '')
+        sb = _ev46_stage(tb, b.get('source') or '')
+        if sa != sb:
+            return False
+        ca, cb = set(_ev46_customer_tags(ta)), set(_ev46_customer_tags(tb))
+        ma, mb = set(_ev46_cellmaker_tags(ta)), set(_ev46_cellmaker_tags(tb))
+        if ca and cb and not (ca & cb):
+            return False
+        if ma and mb and not (ma & mb):
+            return False
+        na, nb = _numbers(ta), _numbers(tb)
+        if na and nb:
+            return bool(na & nb)
+        return True
     if a.get('group') == 'global_battery_capacity':
         sa = _catl_debrecen_stage(ta, a.get('source') or '')
         sb = _catl_debrecen_stage(tb, b.get('source') or '')
@@ -1159,6 +1193,27 @@ def key(item: dict) -> str:
     us_stage = _us_ess_stage(text, source)
     sdi_stage = _sdi_ess_stage(text, source)
     stage3 = _ess3_stage(text, source)
+    ev46_stage = _ev46_stage(text, source)
+    if group == 'ev_46_series' and ev46_stage:
+        customers = '-'.join(_ev46_customer_tags(text)) or 'no-oem'
+        makers = '-'.join(_ev46_cellmaker_tags(text)) or 'no-maker'
+        formats = '-'.join(sorted(set(re.findall(r'\b(?:4680|4695|46100|46120)\b|46\s*mm|46mm', text, re.I)))) or 'no-format'
+        nums = sorted(_numbers(text))
+        suffix = '|'.join(nums[:5]) if nums else 'no-number'
+        if ev46_stage == 'known_baseline':
+            # Collapse the user-visible current market state to durable semantic
+            # baseline keys so publisher rewrites cannot re-alert.
+            if EV46_MERCEDES_BASE.search(text): return hashlib.sha256(b'ev46|mercedes|46100|2028|poland-baseline').hexdigest()
+            if EV46_RIVIAN_BASE.search(text): return hashlib.sha256(b'ev46|rivian|4695|67gwh|5y-baseline').hexdigest()
+            if EV46_CHERY_BASE.search(text): return hashlib.sha256(b'ev46|chery|8gwh|6y-baseline').hexdigest()
+            if EV46_BMW_BASE.search(text): return hashlib.sha256(b'ev46|bmw|46mm|95-120mm-baseline').hexdigest()
+            if EV46_TESLA_BASE.search(text): return hashlib.sha256(b'ev46|tesla|4680|40gwh-baseline').hexdigest()
+            if EV46_SDI_BASE.search(text): return hashlib.sha256(b'ev46|sdi|4695|micromobility-baseline').hexdigest()
+            if EV46_INDIGO_BASE.search(text): return hashlib.sha256(b'ev46|indigotech|2027-2030|mou-baseline').hexdigest()
+            if EV46_BASELINE_BACKLOG.search(text): return hashlib.sha256(b'ev46|lges|440gwh-backlog|q1-2026-baseline').hexdigest()
+            if EV46_ARIZONA_PLAN.search(text): return hashlib.sha256(b'ev46|lges|arizona|year-end-2026-plan-baseline').hexdigest()
+            if EV46_POLAND_PLAN.search(text): return hashlib.sha256(b'ev46|lges|poland|46100|2027-line-plan-baseline').hexdigest()
+        return hashlib.sha256(f'ev46|{ev46_stage}|{customers}|{makers}|{formats}|{suffix}'.encode()).hexdigest()
     if group == 'global_battery_capacity' and catl_stage:
         return hashlib.sha256(f'catl|debrecen|{catl_stage}'.encode()).hexdigest()
     if group == 'solid_state_material' and isu_stage:
@@ -1187,6 +1242,17 @@ def key(item: dict) -> str:
     return _orig_key(item)
 
 
+def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
+    chosen = _orig_select_diverse(items, seen, force, limit)
+    candidates = items if force else [x for x in items if x.get('key') not in seen]
+    ev46 = next((x for x in candidates if x.get('group') == 'ev_46_series'), None)
+    if not ev46 or any(x.get('key') == ev46.get('key') for x in chosen):
+        return chosen
+    if len(chosen) < limit:
+        return [ev46, *chosen]
+    return [ev46, *chosen[:-1]]
+
+
 base.topic_group = topic_group
 base.score = score
 base.category = category
@@ -1194,6 +1260,7 @@ base.meaning = meaning
 base.risk = risk
 base.verification = verification
 base.key = key
+base.select_diverse = select_diverse
 ext._same_event = _same_event
 
 if __name__ == '__main__':
