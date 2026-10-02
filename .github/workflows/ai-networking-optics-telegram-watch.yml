@@ -224,6 +224,47 @@ jobs:
           assert watch.signal_score(celestial_ramp, "Marvell") >= 7, "Celestial AI revenue-ramp signal must trigger"
           assert watch.category_for(celestial_ramp, "Marvell") == "Photonic Fabric 매출 램프"
 
+          # Event identity must follow the economic milestone, not the article headline.
+          # A future Volantis financing round must never be swallowed by the old $88M Series A.
+          volantis_series_b = "Volantis raises $140M Series B financing for A-1 production"
+          assert watch.canonical_story_key("Volantis", volantis_series_b) != "volantis|funding|series-a"
+          assert "series-b" in watch.canonical_story_key("Volantis", volantis_series_b)
+
+          # Ayar's Sep-2026 additional $150M / $650M total primary capital are one event.
+          ayar_funding_a = "Ayar Labs raises additional $150 million funding in 2026 for high-volume manufacturing"
+          ayar_funding_b = "Ayar Labs 2026 primary capital reaches $650 million as manufacturing scales"
+          assert watch.canonical_story_key("Ayar Labs", ayar_funding_a) == "ayar|funding|2026-primary-650m"
+          assert watch.canonical_story_key("Ayar Labs", ayar_funding_b) == "ayar|funding|2026-primary-650m"
+          ayar_production = "Ayar Labs begins high-volume manufacturing and customer deployment of TeraPHY"
+          assert watch.canonical_story_key("Ayar Labs", ayar_production) != "ayar|funding|2026-primary-650m"
+
+          # Lightmatter's known 1.6Tbps Passage sample and NVLink-Fusion membership are separate milestones.
+          lightmatter_old_sample = "Lightmatter Passage customer sampling reaches 1.6 Tbps per fiber"
+          assert watch.canonical_story_key("Lightmatter", lightmatter_old_sample) == "lightmatter|passage|sampling|1.6tbps-per-fiber"
+          assert watch.canonical_story_key("Lightmatter", "Lightmatter joins NVIDIA NVLink Fusion ecosystem") == "lightmatter|nvlink-fusion|ecosystem"
+
+          # Marvell/Celestial: repeat coverage of the original FY28 $500M guide is old,
+          # but a changed guide, customer qualification, and production shipment are distinct events.
+          celestial_old_guide = "Marvell Celestial AI Photonic Fabric targets $500 million annualized run-rate in FY28"
+          celestial_changed_guide = "Marvell raises Celestial AI Photonic Fabric FY28 run-rate guidance to $600 million"
+          assert watch.canonical_story_key("Marvell", celestial_old_guide) == "marvell|celestial|revenue-guidance|v1"
+          assert watch.canonical_story_key("Marvell", celestial_changed_guide) != "marvell|celestial|revenue-guidance|v1"
+          celestial_customer = "Marvell Celestial AI Photonic Fabric wins customer design win and qualification milestone"
+          celestial_ship = "Marvell Celestial AI Photonic Fabric begins volume production shipments"
+          assert watch.category_for(celestial_customer, "Marvell") == "Photonic Fabric 고객검증·수주"
+          assert watch.category_for(celestial_ship, "Marvell") == "Photonic Fabric 양산·출하"
+
+          # A silent run must preserve the last proven Telegram send metadata.
+          previous_delivery = {
+              "last_successful_delivery_kst": "2026-10-01T12:34:56+09:00",
+              "telegram_message_ids": [12345, 12346],
+              "bot_username": "khs88798879887988798879_bot",
+          }
+          carried = watch.preserve_delivery_metadata(previous_delivery, {"initialized": True})
+          assert carried["last_successful_delivery_kst"] == previous_delivery["last_successful_delivery_kst"]
+          assert carried["telegram_message_ids"] == previous_delivery["telegram_message_ids"]
+          assert carried["bot_username"] == previous_delivery["bot_username"]
+
           print("dedupe_and_quality_regression_test=passed")
           PY
 
