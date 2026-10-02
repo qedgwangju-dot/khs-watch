@@ -2,7 +2,7 @@
   "initialized": true,
   "signature_version": 2,
   "monitoring_unit": "event_state_change_not_article",
-  "last_checked_utc": "2026-10-02T16:22:37+00:00",
+  "last_checked_utc": "2026-10-02T18:26:47+00:00",
   "seen_signatures": [
     "0ebf19ce31fcf604087c719bba1bd08ce6c9ae73d31f5f780ade8227c0c2eb6f",
     "3686ce7521d4002ad0323b65ad6654aff709db9621e388d4e273a77484228a77",
@@ -12,6 +12,17 @@
     "31abf8c48531a3342a1c130ddf677cbafc314c91089781e0d000123e19a0d0ee"
   ],
   "accepted_current": 0,
-  "raw_articles": 432,
-  "source_errors": []
+  "raw_articles": 0,
+  "source_errors": [
+    "\"CLARITY Act\" Trump: HTTP Error 503: Service Unavailable",
+    "\"CLARITY Act\" Bessent: HTTP Error 503: Service Unavailable",
+    "\"CLARITY Act\" \"White House\": HTTP Error 503: Service Unavailable",
+    "\"CLARITY Act\" Senate ethics: HTTP Error 503: Service Unavailable",
+    "\"CLARITY Act\" Coinbase: HTTP Error 503: Service Unavailable",
+    "\"CLARITY Act\" \"Ryan VanGrack\": HTTP Error 503: Service Unavailable",
+    "\"CLARITY Act\" \"Brian Armstrong\": HTTP Error 503: Service Unavailable",
+    "\"CLARITY Act\" BitGo: HTTP Error 503: Service Unavailable",
+    "\"CLARITY Act\" draft Senate Republicans: HTTP Error 503: Service Unavailable",
+    "\"CLARITY Act\" revised text Senate: HTTP Error 503: Service Unavailable"
+  ]
 }
