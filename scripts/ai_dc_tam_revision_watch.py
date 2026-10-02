@@ -387,19 +387,29 @@ def main() -> int:
     seen = set(old.get("seen_ids") or [])
     new_rows = [r for r in rows if r["id"] not in seen]
 
+    # 본문 접근이 일시 실패해도 다음 실행에서 다시 숫자를 추출할 수 있도록
+    # 신규 기사뿐 아니라 현재 조회 가능한 신뢰자료 전체를 매번 재검증한다.
     candidates = []
-    for row in new_rows:
+    for row in rows:
         parsed = extract_metrics(row["text"])
         if parsed:
             candidates.append((row, parsed))
 
     proposed = dict(metrics)
     evidence = []
-    # 동일 숫자가 두 개 이상의 신뢰자료에서 확인되면 우선 채택하고,
-    # 한 곳뿐이면 기존 기준을 유지하되 기사 자체는 상태에 저장한다.
+    # 동일 숫자가 서로 다른 신뢰자료 2곳 이상에서 확인될 때만 기준을 갱신한다.
+    # 과거 정적 기준과 새 전망이 동수면 게시시각이 더 최근인 전망을 우선한다.
     keys = set()
     for _, parsed in candidates:
         keys.update(parsed)
+
+    def published_score(row: dict) -> float:
+        raw = str(row.get("published_at") or "")
+        try:
+            return datetime.fromisoformat(raw.replace("Z", "+00:00")).timestamp()
+        except Exception:
+            return 0.0
+
     for key in keys:
         buckets = {}
         for row, parsed in candidates:
@@ -407,12 +417,15 @@ def main() -> int:
                 continue
             v = round(float(parsed[key]), 4)
             buckets.setdefault(v, []).append(row)
-        if not buckets:
+        qualified = [(value, support) for value, support in buckets.items() if len(support) >= 2]
+        if not qualified:
             continue
-        value, support = max(buckets.items(), key=lambda kv: len(kv[1]))
-        if len(support) >= 2:
-            proposed[key] = value
-            evidence.extend(support)
+        value, support = max(
+            qualified,
+            key=lambda item: (max((published_score(r) for r in item[1]), default=0.0), len(item[1])),
+        )
+        proposed[key] = value
+        evidence.extend(support)
 
     changes = material_changes(metrics, proposed)
     notify = bool(changes)
