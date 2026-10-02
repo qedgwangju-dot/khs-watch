@@ -39,7 +39,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: clarity-watch-telegram-v3
+  group: clarity-watch-telegram
   cancel-in-progress: true
 
 jobs:
