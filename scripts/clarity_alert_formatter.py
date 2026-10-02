@@ -148,6 +148,12 @@ def format_event_date_korean(value):
 
 def is_oira_prerule(event):
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_sec_crypto_custody_2026(event):
+        return (
+            "쉽게 말하면, 미국 투자자문사·펀드가 암호자산을 다루고 싶어도 ‘어디에 어떻게 맡겨야 합법인지’ 애매했던 부분에 "
+            "SEC가 새 통로를 제안한 것입니다. 최종 확정되면 기관의 암호자산 투자·수탁 선택지가 넓어질 수 있지만, "
+            "아직 Proposed Rule(제안규칙)이라 즉시 효력이 생긴 것은 아닙니다."
+        )
     return ("oira" in signal or "reginfo" in signal) and ("prerule" in signal or "pre-rule" in signal)
 
 
@@ -205,11 +211,32 @@ def is_committee_commentary(event):
     return any(marker in title for marker in commentary_markers)
 
 
+def is_sec_crypto_custody_2026(event):
+    signal = clean(
+        f"{event.get('title','')} {event.get('detail','')} {event.get('source','')}"
+    ).lower()
+    if "sec" not in signal and "securities and exchange commission" not in signal:
+        return False
+    custody = "custody" in signal or "custodian" in signal
+    crypto = "crypto" in signal
+    adviser_fund = any(x in signal for x in [
+        "investment adviser", "investment advisers", "regulated fund", "regulated funds",
+        "investment company act", "advisers act",
+    ])
+    return custody and crypto and adviser_fund
+
+
+def is_sec_statement(event):
+    return clean(event.get("source", "")) == "SEC 발언·성명"
+
+
 def semantic_group(event):
     title = clean(event.get("title", "")).lower()
     source = clean(event.get("source", ""))
     when = parse_event_date(event.get("date", ""))
     day = when.date().isoformat() if when else clean(event.get("date", ""))
+    if is_sec_crypto_custody_2026(event):
+        return ("sec_crypto_custody_s7_2026_35", day)
     if source == "상원 은행위원회" and (
         "markup" in title or "mark-up" in title or "advance clarity act" in title or "bipartisan vote" in title
     ):
@@ -228,6 +255,13 @@ def event_priority(event):
     title = clean(event.get("title", "")).lower()
     source = clean(event.get("source", ""))
     score = 0
+    if is_sec_crypto_custody_2026(event):
+        if source == "SEC 보도자료":
+            score += 250
+        elif source == "SEC Federal Register 제안규칙":
+            score += 300
+        elif source == "SEC 발언·성명":
+            score += 50
     if "advance clarity act" in title and "vote" in title:
         score += 100
     elif "bipartisan vote" in title:
@@ -264,18 +298,42 @@ def filter_alertable_events(events, now=None, freshness_days=7):
             continue
         candidates.append(event)
     best_by_group = {}
+    grouped_sources = {}
     for event in candidates:
         key = semantic_group(event)
+        grouped_sources.setdefault(key, [])
+        src = clean(event.get("source", ""))
+        if src and src not in grouped_sources[key]:
+            grouped_sources[key].append(src)
         existing = best_by_group.get(key)
         if existing is None or event_priority(event) > event_priority(existing):
             best_by_group[key] = event
-    return list(best_by_group.values())
+    output = []
+    for key, event in best_by_group.items():
+        event = dict(event)
+        if key and key[0] == "sec_crypto_custody_s7_2026_35":
+            event["evidence_sources"] = [
+                "SEC 보도자료 2026-100",
+                "SEC Fact Sheet — IA-7023 / IC-36353",
+                "SEC 위원장·위원 성명(동일 제안규칙)",
+            ]
+            event["semantic_event"] = "sec_crypto_custody_s7_2026_35"
+        output.append(event)
+    return output
 
 
 def special_translation(event):
     title = clean(event.get("title", ""))
     detail = clean(event.get("detail", ""))
     signal = f"{title} {detail}".lower()
+    if is_sec_crypto_custody_2026(event):
+        return (
+            "SEC, 투자자문사·펀드의 암호자산 수탁 규칙 개정안 제안",
+            "SEC는 등록 투자자문사와 규제 펀드가 암호자산을 보관할 수 있는 별도 규제 틀을 제안했습니다. "
+            "핵심은 제한적 self-custody(자체 수탁), 조건부 state trust company(주 신탁회사) 수탁 허용, "
+            "수탁·기록보관·공시 규칙 현대화입니다. File No. S7-2026-35, Release No. IA-7023 / IC-36353이며 "
+            "의견 제출기한은 Federal Register(연방관보) 게재 후 60일입니다.",
+        )
     if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
         return (
             "CFTC, 암호자산 거래·시장 규제안 RIN 3038-AF80을 백악관 규제검토에 제출",
@@ -378,6 +436,13 @@ def easy_meaning(event, body_ko):
 def investment_lines(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_sec_crypto_custody_2026(event):
+        return [
+            "COIN: 기관 수탁 규칙이 명확해지면 Coinbase Custody 같은 수탁 사업의 규제 불확실성이 낮아질 수 있습니다. 다만 제한적 self-custody(자체 수탁) 허용은 외부 수탁 수요를 일부 줄일 수 있습니다.",
+            "BTC·ETH: 규제 펀드·자문사의 합법적 보유 경로가 넓어질 수 있다는 점은 기관 접근성에 긍정적이지만, 아직 제안 단계라 실제 자금 유입은 미확정입니다.",
+            "CRCL: 직접 적용 대상은 스테이블코인 발행 규칙이 아니라 수탁 규칙이어서 직접 실적 영향은 제한적입니다.",
+            "시간표: Federal Register 게재 → 60일 의견수렴 → 수정·최종규칙 채택 여부를 확인합니다.",
+        ]
     if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
         return [
             "돈 버는 능력: 지금 당장 매출이 바뀌는 단계는 아닙니다. 실제 수혜 여부는 향후 문안이 Coinbase 같은 미국 거래소의 파생상품·무기한 선물(perpetual)·레버리지·마진 거래와 등록 경로를 얼마나 넓히는지에 달려 있습니다. Circle은 USDC가 담보·결제 자산으로 명시될 때 직접 연결됩니다.",
@@ -467,6 +532,12 @@ def investment_lines(event):
 def core_summary(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_sec_crypto_custody_2026(event):
+        return (
+            "SEC의 S7-2026-35는 CLARITY 법안 자체 변경이 아니라 별도 행정규칙 경로에서 기관의 암호자산 수탁 통로를 넓히려는 제안으로, "
+            "COIN에는 수탁 규제 불확실성 완화 가능성이 있지만 self-custody(자체 수탁) 허용이 외부 수탁 수요를 일부 상쇄할 수 있고, "
+            "BTC·ETH에는 기관 접근성 개선 기대가 생기지만 실제 효과는 최종규칙 채택 뒤 확인해야 합니다."
+        )
     if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
         return "CFTC RIN 3038-AF80은 CLARITY 부결 뒤 의회 입법과 별개인 행정 규칙 경로가 실제 백악관 OIRA 검토에 들어갔다는 시간표 변화지만, 현재는 Pending Review(검토 중)·Prerule(사전규칙 단계)이고 규칙 본문도 비공개라 COIN·CRCL의 돈 버는 능력이 즉시 바뀐 단계는 아니며, 다음 핵심은 OIRA 검토 종료와 CFTC의 공개 문안입니다."
     if "innovation exemption" in signal and "tokenized" in signal:
