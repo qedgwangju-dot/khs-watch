@@ -569,6 +569,12 @@ def signal_score(title: str, source: str) -> int:
         score += 4
     if re.search(r"\bInP\b|indium phosphide|InP substrate|\bGaAs\b|gallium arsenide|砷化鎵|\bSiPh\b|photonics foundry|design win", text, re.I):
         score += 4
+    if re.search(r"photonic memory|optical memory|memory wall|memory pooling|compute[- ]to[- ]memory|optical fabric|micro[- ]?VCSEL|VCSEL", text, re.I):
+        score += 6
+    if re.search(r"tokens? per second|tok/s|20\s*trillion|10\s*trillion|240\s*TB/s|10\s*TB|1\s*pJ/bit|220\s*memory chips", text, re.I):
+        score += 4
+    if re.search(r"customer sampling|integrated inference engines?|silicon validation|tape[- ]?out|benchmark|commercialization", text, re.I):
+        score += 5
     if re.search(r"6[- ]inch InP|capacity reservation|prepayment|deposit|long[- ]term supply|crystal growth|pilot production|wafer substrate", text, re.I):
         score += 5
     if re.search(r"\bFCC\b|Federal Communications Commission|Covered List|equipment authorization", text, re.I):
@@ -619,6 +625,12 @@ def signal_score(title: str, source: str) -> int:
 
 
 def stage_for(title: str) -> str:
+    if re.search(r"customer sampling|customer delivery|customer deployment|integrated inference engines?", title, re.I):
+        return "고객 샘플·배치"
+    if re.search(r"silicon validation|silicon demonstrates?|tape[- ]?out|benchmark|measured|prototype", title, re.I):
+        return "실리콘·성능 검증"
+    if re.search(r"commercialization|mass production|volume production|production ramp", title, re.I):
+        return "상용화·양산"
     if re.search(r"final rule|finaliz(?:e|es|ed|ing)|adopt(?:s|ed)?|effective|takes? effect|signed|enacted", title, re.I):
         return "최종 규칙·시행"
     if re.search(r"proposed rule|rulemaking|notice|comment period|draft rule|considering", title, re.I):
@@ -667,6 +679,18 @@ def stage_for(title: str) -> str:
 
 
 def category_for(title: str, company: str) -> str:
+    if company == "Volantis":
+        if re.search(r"customer sampling|customer delivery|customer deployment|integrated inference engines?", title, re.I):
+            return "광메모리 고객검증·상용화"
+        if re.search(r"silicon|tape[- ]?out|benchmark|measured|prototype|240\s*TB/s|10\s*TB|1\s*pJ/bit|tokens? per second|tok/s", title, re.I):
+            return "광메모리 성능·검증"
+        if re.search(r"VCSEL|micro[- ]?VCSEL|supply chain|foundry|wafer|laser", title, re.I):
+            return "VCSEL 광메모리 공급망"
+        return "광메모리·추론 아키텍처"
+    if company in {"Lightmatter", "Ayar Labs", "Xscape Photonics"}:
+        if re.search(r"customer|deployment|production|shipment|sampling|qualification|validation", title, re.I):
+            return "광컴퓨팅 상용화·고객검증"
+        return "광컴퓨팅·스케일업 인터커넥트"
     if company == "US Optical Policy":
         if re.search(r"senate|congress|bill|legislation|national security systems?", title, re.I):
             return "미국 광트랜시버 규제·법안"
@@ -734,6 +758,12 @@ def category_for(title: str, company: str) -> str:
 
 def meaning_for(category: str) -> str:
     mapping = {
+        "광메모리·추론 아키텍처": "광학을 랙 간 네트워크가 아니라 가속기와 메모리 사이까지 끌어오면 HBM 용량·대역폭의 물리적 한계를 우회할 수 있어 추론 시스템 구조 자체를 바꾸는 신호입니다.",
+        "광메모리 고객검증·상용화": "설계 목표를 넘어 실제 고객 샘플·통합 추론엔진·배치 일정이 확인되면 광메모리 아키텍처가 연구단계에서 매출 가능 단계로 넘어가는 핵심 검증 신호입니다.",
+        "광메모리 성능·검증": "토큰 처리량·메모리 대역폭·용량·비트당 에너지가 실제 실리콘 또는 독립 벤치마크로 확인되면 광메모리의 경제성이 검증되는 신호입니다.",
+        "VCSEL 광메모리 공급망": "볼란티스처럼 InP 외부레이저 대신 GaAs 기반 micro-VCSEL을 쓰는 구조가 양산되면 VCSEL 에피·레이저·패키징 공급망에 새로운 AI 매출 경로가 열릴 수 있습니다.",
+        "광컴퓨팅 상용화·고객검증": "라이트매터·아야르 랩스·엑스케이프 등에서 샘플링·고객검증·생산·배치가 확인되면 광인터커넥트가 기술 시연에서 실제 AI 시스템 매출로 이동하는 신호입니다.",
+        "광컴퓨팅·스케일업 인터커넥트": "GPU·XPU·메모리 사이 데이터 이동 병목을 광링크로 줄이는 구조가 확산되면 AI 인프라 가치가 연산칩에서 광엔진·레이저·패키징까지 넓어지는 신호입니다.",
         "FCC 광트랜시버 규제": "완제품 국적보다 부품 원산지·가치비중까지 규제가 내려오면 3.2T 세대의 공급사 선정과 레이저·InP·DSP 가치배분이 직접 바뀌는 정책 신호입니다.",
         "미국 광트랜시버 규제·법안": "FCC 상업시장 규제와 연방 국가안보시스템 조달 제한은 범위가 다르므로, 법안 통과·적용대상 확대 여부가 중국 광모듈의 실제 미국 매출 접근성을 바꾸는 신호입니다.",
         "InP 기판 병목": "InP 기판 수급·수출허가·증설은 EML·CW 레이저와 1.6T·3.2T 광모듈 출하량의 상류 한계를 결정해 LITE·COHR·AXTI의 물량·가격·가동률에 직접 연결됩니다.",
@@ -772,6 +802,12 @@ def meaning_for(category: str) -> str:
 
 def risk_for(category: str) -> str:
     mapping = {
+        "광메모리·추론 아키텍처": "현재 공개 수치는 대부분 회사의 설계목표이므로 실리콘 존재 여부·메모리 종류·패키징 수율·실제 토큰당 비용이 검증되지 않으면 기대가 매출로 이어지지 않을 수 있습니다.",
+        "광메모리 고객검증·상용화": "2027 고객 인도 일정이 지연되거나 고객 실명이 공개되지 않은 채 샘플 단계에 머물면 상용화 시점이 뒤로 밀릴 수 있습니다.",
+        "광메모리 성능·검증": "시뮬레이션·설계목표와 실측치를 혼동하면 안 되며, 대형 모델에서의 지연시간·전력·오류율·메모리 일관성 검증이 실패할 수 있습니다.",
+        "VCSEL 광메모리 공급망": "micro-VCSEL 수율·열안정성·수명·웨이퍼 공급과 고밀도 패키징 정렬 난도가 병목이 되면 InP 회피 효과가 줄어들 수 있습니다.",
+        "광컴퓨팅 상용화·고객검증": "고객검증·패키징 수율·레이저 신뢰성·표준화 일정이 늦어지면 대량배치가 지연될 수 있습니다.",
+        "광컴퓨팅·스케일업 인터커넥트": "광링크가 구리 대비 비용·전력·유지보수 우위를 충분히 입증하지 못하거나 표준 경쟁이 길어지면 채택 속도가 늦어질 수 있습니다.",
         "FCC 광트랜시버 규제": "3.2T·65% 같은 시장 시나리오가 최종 규정에서 바뀌거나, 미국 제조요건이 더 엄격해지면 예상 수혜기업과 공급망 구조가 달라질 수 있습니다.",
         "미국 광트랜시버 규제·법안": "연방 국가안보시스템 조달 제한을 전체 상업용 데이터센터 금지로 확대해석하면 실적 민감도를 과대평가할 수 있습니다.",
         "InP 기판 병목": "중국 수출허가·원산지 규제가 강화되면 InP 가격 상승의 수혜보다 공급중단·고객 이원화가 먼저 나타날 수 있습니다.",
