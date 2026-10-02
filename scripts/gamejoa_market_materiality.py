@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 24
+VERSION = 25
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|목표|보인다|나서야|시급|밑돌\s*듯|합의\s*(?:안\s*(?:됐|되)|하지\s*않)|미합의|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
@@ -357,6 +357,10 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
     if kind == "technology_or_clinical_stage" and re.search(r"기대한다|기대된다|역량을|전문성을|소개하는\s*계기|학회.{0,20}(?:선정|채택)", sentence):
         return bool(re.search(r"임상\s*[1-3]상|\d+(?:\.\d+)?\s*(?:%|배|mK|dB)|인증\s*(?:획득|취득)|허가\s*(?:신청|승인)", sentence, re.I))
     if kind == "physical_supply_or_capacity" and re.search(
+        r"(?:공급|할인행사)[^.!?]{0,100}(?:진행한\s*점|실시한\s*점|도움이\s*(?:됐|되었))", sentence,
+    ):
+        return False
+    if kind == "physical_supply_or_capacity" and re.search(
         r"기대감|테마성|수혜\s*기대|주가를\s*뒷받침|가능성이\s*주가|"
         r"(?:고도화|확충|확대)(?:해야|할\s*필요)|해야\s*한다는\s*시장의\s*요구", sentence,
     ):
@@ -620,6 +624,15 @@ def assess(title: str, body: str) -> dict:
         result.update(disposition="keep", reason="source_change_evidence")
         result["news_value_rank"] = news_value_rank(result["evidence"])
         kinds = {item["kind"] for item in result["evidence"]}
+        if (
+            focus_kind(title) == "macro_release"
+            and re.search(r"농축산물|농산물|축산물|외식|식품|채소|과일", title)
+            and re.search(r"물가", title)
+            and not re.search(r"소비자물가|\bcpi\b|\bpce\b|\bppi\b", title, re.I)
+            and kinds <= {"rates_fx_or_macro", "physical_supply_or_capacity"}
+        ):
+            result["priority"] = 1
+            result["scope_note"] = "consumer_price_component_commentary_without_new_market_event"
         if re.search(r"총력|독려|당부", title) and kinds <= {"policy_scope_or_stage", "physical_supply_or_capacity", "customer_discussions"} and not re.search(
             r"고시.{0,15}개정|법안.{0,15}(?:발의|통과)|시행일.{0,15}확정|계약.{0,15}체결|예산.{0,20}(?:확정|증액)|발주.{0,15}(?:했다|확정)", body,
         ):

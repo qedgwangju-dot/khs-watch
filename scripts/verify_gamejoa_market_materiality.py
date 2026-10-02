@@ -96,6 +96,20 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_price_component_commentary_cannot_outrank_primary_cpi_or_supply_shock(self):
+        title = "전체 물가 2.9% 오를 때 농축산물 1.0%↓…축산물은 상승폭 확대"
+        body = "지난달 전체 소비자물가가 2.9% 오른 가운데 농축산물 물가는 1.0% 하락했다.\n농식품부는 추석 성수품을 평시 대비 1.6배 확대 공급하고 유통기업이 할인행사를 진행한 점이 물가 부담을 낮추는 데 도움이 됐다고 설명했다."
+        audit = materiality.assess(title, body)
+        self.assertLess(audit["priority"], 2)
+        self.assertNotIn("physical_supply_or_capacity", [item["kind"] for item in audit["evidence"]])
+        self.assertEqual(radar.quality_display_alerts([alert(title, body)], 7), [])
+        cpi = materiality.assess("9월 소비자물가 2.9% 상승…예상 상회", "9월 소비자물가는 2.9% 상승해 예상치 2.6%를 상회했다.")
+        self.assertEqual(cpi["priority"], 3)
+        shock = materiality.assess("폭염에 농축산물 공급 피해", "폭염으로 양식장 어류 3만마리가 폐사해 생산과 공급에 피해가 발생했다.")
+        self.assertEqual(shock["priority"], 3)
+        policy = materiality.assess("농축산물 물가 안정…정부, 수입 관세 0% 시행", "정부는 농축산물 물가 안정과 공급 부족에 대응해 수입 관세를 0%로 인하하는 규제 개편을 시행한다.")
+        self.assertEqual(policy["priority"], 3)
+
     def test_planned_share_disposal_keeps_source_quantity_and_stage(self):
         title = "최태원 SK 회장, 9440억원 규모 그룹 지분 매각 추진"
         body = "최태원 SK그룹 회장이 그룹 지주사 SK㈜ 지분 9440억원 규모를 매각한다.\nSK㈜는 최대주주인 최태원 회장이 주식 165만3924주(2.3%)를 매각할 예정이라고 2일 공시했다.\n거래는 1개월 뒤인 11월 2일부터 진행될 예정이다."

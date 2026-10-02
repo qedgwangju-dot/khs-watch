@@ -659,3 +659,34 @@ their regenerated cores have no source-fact guard errors. All 11 local
 contract scripts passed, including 104 materiality tests, 95 coverage cases
 and 26 retrieval-queue tests. `git diff --check` passed. Deployment and fresh
 run evidence follow separately below.
+
+## Version 25: Component Commentary Is Not a New Supply Event
+
+Fresh run `36982221820` completed at `2026-10-02T08:11:01Z`; the report
+queried at `17:07:16 KST`, with version 24 and an independent saved-report
+quality PASS. Checkout was `b2afc0c12ddfd802adb6b97d9b509f7721eaa0cf`,
+which includes quality revision `255566dd05c55139897086d73de7c79316b68860`.
+It attempted 160 bodies, verified 119, failed 41 and deferred 613.
+ZIP SHA-256:
+`0DF8EB9894E71A912C0E08041301A59F9EB891B36C53959B046207BF44990311`.
+
+Its only selected source was accurate but low-value food-price commentary.
+A retrospective holiday-discount/supply explanation was incorrectly treated
+as a new supply execution event. Such explanatory supply sentences cannot
+establish new capacity. Narrow food-component commentary without a primary
+CPI/PCE/PPI headline or another new market event stays below publication
+priority. Primary national macro releases, actual climate/supply damage and
+new tariff/regulatory measures retain their separate qualifying evidence.
+
+This run was a dry run: Telegram sending, delivery verification and seen/queue
+commits were skipped. Technical success alone did not justify accepting its
+selection unchanged. Final regression and new-source proof follow below.
+
+Read-only replay of 13 saved artifacts reviews 71 article rows, retains 43,
+removes 28 weak/duplicate selections and regenerates 17 cores, with zero
+headline/core focus mismatches. The low-value component commentary is
+excluded with its specific reason, while all four meaningful version-23
+source rows remain eligible. The 11 local contract scripts and whitespace
+guard passed; the materiality suite now contains 105 passing tests. Primary
+CPI, actual climate damage and a new tariff rule are explicit positive
+controls, not inferred coverage guarantees.
