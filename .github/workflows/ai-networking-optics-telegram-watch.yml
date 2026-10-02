@@ -198,7 +198,8 @@ jobs:
 
           volantis_funding = "Volantis raises $88M Series A to build photonic AI inference system"
           assert watch.signal_score(volantis_funding, "Reuters") >= 7, "Volantis photonic-memory funding signal must trigger"
-          assert watch.category_for(volantis_funding, "Volantis") == "광메모리·추론 아키텍처"
+          assert watch.category_for(volantis_funding, "Volantis") == "광메모리 투자·개발자금"
+          assert watch.stage_for(volantis_funding) == "투자·개발자금"
           assert watch.canonical_story_key("Volantis", volantis_funding) == "volantis|funding|series-a"
 
           volantis_customer = "Volantis A-1 integrated inference engines begin customer sampling for 2027 delivery"
@@ -213,6 +214,15 @@ jobs:
           lightmatter_sample = "Lightmatter Passage CPO begins customer sampling for AI scale-up deployment"
           assert watch.signal_score(lightmatter_sample, "Lightmatter") >= 7, "Lightmatter commercial photonics signal must trigger"
           assert watch.category_for(lightmatter_sample, "Lightmatter") == "광컴퓨팅 상용화·고객검증"
+
+          ayar_hvm = "Ayar Labs raises $150 million to expand high-volume manufacturing for CPO deployment"
+          assert watch.signal_score(ayar_hvm, "Ayar Labs") >= 7, "Ayar Labs manufacturing funding must trigger"
+          assert watch.category_for(ayar_hvm, "Ayar Labs") == "광컴퓨팅 투자·양산확대"
+          assert watch.stage_for(ayar_hvm) == "투자·개발자금"
+
+          celestial_ramp = "Marvell says Celestial AI Photonic Fabric revenue will ramp in fiscal 2028 to a $500 million annualized run-rate"
+          assert watch.signal_score(celestial_ramp, "Marvell") >= 7, "Celestial AI revenue-ramp signal must trigger"
+          assert watch.category_for(celestial_ramp, "Marvell") == "Photonic Fabric 매출 램프"
 
           print("dedupe_and_quality_regression_test=passed")
           PY
