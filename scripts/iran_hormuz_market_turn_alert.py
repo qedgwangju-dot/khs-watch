@@ -79,6 +79,9 @@ NEWS_QUERIES = (
     '"East-West Pipeline" 3.5 million barrels per day Saudi when:3d',
     '"East-West Pipeline" pumping 3.5 million bpd Yanbu when:3d',
     '"East-West Pipeline" 4 million bpd Yanbu Saudi when:3d',
+    '"East-West Pipeline" 80% capacity Saudi when:3d',
+    '"East-West Pipeline" 6 million barrels Saudi when:3d',
+    '"Saudi Arabia Hikes Oil Flow on Key Pipeline to Over 80% Capacity" when:3d',
     '"Yanbu" crude loadings resume East-West Pipeline when:3d',
     '"Middle East crude exports" September Kpler Reuters when:3d',
     '"Hormuz" "80% of prewar" oil flows Kpler when:3d',
@@ -91,6 +94,10 @@ NEWS_QUERIES = (
     '"diesel export ban" considering Trump when:3d',
     '"still considering diesel export ban" Trump Reuters when:3d',
     '미국 디젤 수출 금지 검토 백악관 when:3d',
+    '"strategic reserves" diesel EU energy chief Jorgensen when:3d',
+    '"50 million barrels" diesel EU reserves France when:3d',
+    '"Europe weighs" diesel stocks release when:3d',
+    'EU 경유 전략비축유 방출 검토 요르겐센 when:3d',
     '"Chinese refiners suspend" fuel exports PetroChina when:3d',
     '"China" fuel exports resume PetroChina October 7 when:7d',
     '"China" refined product exports suspended Beijing green light when:7d',
@@ -144,6 +151,9 @@ TRUSTED_SOURCE_ALIASES = (
     "livemint",
     "mint",
     "news1",
+    "newsis",
+    "뉴시스",
+    "euronews",
     "marketscreener",
     "s&p global",
     "platts",
@@ -204,6 +214,7 @@ EVENT_LABELS = {
     "regional_export_recovery": "중동 원유 수출 회복 단계 상향",
     "crude_product_divergence": "중동 원유 98% 회복·정제품 병목",
     "us_diesel_export_policy": "미국 디젤 수출정책 단계 변화",
+    "eu_diesel_reserve_policy": "EU 경유 전략비축유 방출 단계 변화",
     "china_fuel_export_policy": "중국 정제품 수출정책 단계 변화",
     "india_gulf_import_recovery": "인도 걸프산 원유 유입 회복",
 }
@@ -273,6 +284,9 @@ def _source_name_ko(source: str) -> str:
         ("business times", "비즈니스타임스"),
         ("livemint", "라이브민트"),
         ("moneycontrol", "머니컨트롤"),
+        ("euronews", "유로뉴스"),
+        ("newsis", "뉴시스"),
+        ("뉴시스", "뉴시스"),
         ("marketscreener", "마켓스크리너"),
     )
     for key, label in mappings:
@@ -303,6 +317,18 @@ def _news_title_ko(row: NewsItem) -> str:
             return "중국, 정제품 수출 제한"
         return "중국 정유사, 10월 정제품 수출 중단"
 
+    if kind == "eu_diesel_reserve_policy":
+        stage = _eu_diesel_reserve_stage(title)
+        labels = {
+            "released": "EU 회원국, 경유 전략비축유 실제 방출",
+            "approved": "EU 회원국, 경유 전략비축유 방출 승인",
+            "proposal_50m": "유럽, 경유 전략비축유 5,000만 배럴 방출안 논의",
+            "considering": "EU 에너지 책임자, 경유 전략비축유 방출 검토",
+            "coordinating": "EU·IEA, 경유 전략비축유 공동대응 협의",
+            "rejected": "EU, 경유 전략비축유 추가 방출안 보류·거부",
+        }
+        return labels.get(stage, "EU 경유 전략비축유 방출정책 변화")
+
     if kind == "us_diesel_export_policy":
         stage = _diesel_policy_stage(title)
         labels = {
@@ -331,6 +357,8 @@ def _news_title_ko(row: NewsItem) -> str:
         return "오만만 선박 간 이송 급증·VLCC 병목 심화"
 
     if kind == "east_west_pipeline_recovery":
+        if "80% capacity" in low or "over 80% capacity" in low or "above 80% capacity" in low:
+            return "사우디 East-West Pipeline, 최대 수송능력의 80% 이상으로 회복"
         if any(term in low for term in ("yanbu", "loadings resume", "exports resume", "resumes oil exports")):
             return "사우디 East-West Pipeline 복구 후 Yanbu 원유 선적 재개"
         return "사우디 East-West Pipeline 유량 회복"
@@ -408,6 +436,15 @@ def classify_event(title: str) -> str | None:
     )
     if diesel_policy_context and us_policy_actor:
         return "us_diesel_export_policy"
+
+    eu_reserve_context = (
+        any(term in low for term in ("eu", "europe", "european", "jorgensen", "jørgensen", "유럽연합", "유럽", "요르겐센"))
+        and any(term in low for term in ("diesel", "gasoil", "경유", "디젤"))
+        and any(term in low for term in ("strategic reserve", "strategic stock", "emergency stock", "emergency reserve", "reserve release", "stock release", "비축유", "전략비축", "비축"))
+        and any(term in low for term in ("release", "releasing", "consider", "considering", "discuss", "weigh", "proposal", "방출", "검토", "논의", "협의"))
+    )
+    if eu_reserve_context:
+        return "eu_diesel_reserve_policy"
 
     china_context = any(term in low for term in ("china", "chinese", "beijing", "petrochina", "sinopec", "zhejiang petrochemical", "중국", "베이징", "페트로차이나", "시노펙"))
     china_product_export_context = any(term in low for term in (
@@ -513,6 +550,13 @@ def classify_event(title: str) -> str | None:
         term in low for term in ("1.52", "recover", "recovered", "surge", "rise", "회복", "증가")
     ):
         return "india_gulf_import_recovery"
+
+    if (
+        any(term in low for term in ("saudi", "saudi arabia", "aramco", "사우디", "아람코"))
+        and any(term in low for term in ("pipeline", "송유관"))
+        and any(term in low for term in ("80% capacity", "over 80% capacity", "above 80% capacity", "80% 이상", "80% 넘"))
+    ):
+        return "east_west_pipeline_recovery"
 
     pipeline_export_resume_phrases = (
         "resumes oil exports",
@@ -870,9 +914,18 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             "jpmorgan via bloomberg" in normalize_text(row.source)
             for row in selected
         )
+        eu_primary_interview = kind == "eu_diesel_reserve_policy" and any(
+            "euronews" in normalize_text(row.source)
+            for row in selected
+        )
         pipeline_cross_checked = kind == "east_west_pipeline_recovery" and len(selected) >= minimum_sources
+        pipeline_bloomberg_material = kind == "east_west_pipeline_recovery" and any(
+            "bloomberg" in normalize_text(row.source)
+            and ("80% capacity" in normalize_text(row.title) or "6 million" in normalize_text(row.title))
+            for row in selected
+        )
 
-        if len(selected) >= minimum_sources or has_primary_data or regional_primary or broker_snapshot or pipeline_cross_checked:
+        if len(selected) >= minimum_sources or has_primary_data or regional_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material:
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
 
     candidates.sort(key=lambda value: value[0], reverse=True)
@@ -1004,6 +1057,11 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
         basis = f"{kind}|{stage}"
         return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
+    if kind == "eu_diesel_reserve_policy":
+        stage = _eu_diesel_reserve_stage(combined)
+        basis = f"{kind}|{stage}"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
+
     if kind == "china_fuel_export_policy":
         stage = _china_fuel_export_stage(combined)
         basis = f"{kind}|{stage}"
@@ -1067,11 +1125,26 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
                 flags=re.I,
             )
         ]
+        pct_values = [
+            float(value)
+            for value in re.findall(r"\b([0-9]+(?:\.[0-9]+)?)\s*%\s*(?:of\s+)?capacity\b", combined, flags=re.I)
+        ]
         rate = max(rates) if rates else 0.0
-        if exports_resumed:
-            band = "export_resume"
+        pct = max(pct_values) if pct_values else 0.0
+        if pct >= 95.0:
+            band = "capacity_95"
+        elif pct >= 90.0:
+            band = "capacity_90"
+        elif pct >= 80.0:
+            band = "capacity_80"
+        elif rate >= 5.5:
+            band = "5_5plus"
+        elif rate >= 5.0:
+            band = "5_0"
         elif rate >= 4.0:
             band = "4plus"
+        elif exports_resumed:
+            band = "export_resume"
         elif rate >= 3.5:
             band = "3_5"
         elif rate >= 3.0:
@@ -1297,6 +1370,20 @@ def _extract_pipeline_rate(news_rows: list[NewsItem]) -> tuple[float | None, boo
     return (max(rates) if rates else None, yanbu)
 
 
+def _extract_pipeline_capacity_pct(news_rows: list[NewsItem]) -> float | None:
+    text = " ".join(normalize_text(row.title) for row in news_rows)
+    values = [
+        float(v)
+        for v in re.findall(r"\b([0-9]+(?:\.[0-9]+)?)\s*%\s*(?:of\s+)?capacity\b", text, flags=re.I)
+    ]
+    if not values:
+        values = [
+            float(v)
+            for v in re.findall(r"(?:over|above|more than)\s+([0-9]+(?:\.[0-9]+)?)\s*%\s+capacity", text, flags=re.I)
+        ]
+    return max(values) if values else None
+
+
 def _pipeline_exports_resumed(news_rows: list[NewsItem]) -> bool:
     phrases = (
         "resumes oil exports", "resume oil exports", "starts exports after repairs",
@@ -1513,6 +1600,76 @@ def _build_us_diesel_policy_alert_body(
     return "\n".join(lines).strip()+"\n"
 
 
+def _eu_diesel_reserve_stage(text_or_rows: str | list[NewsItem]) -> str:
+    text = normalize_text(text_or_rows) if isinstance(text_or_rows, str) else " ".join(normalize_text(row.title) for row in text_or_rows)
+    if any(term in text for term in ("released", "release begins", "stocks released", "방출 시작", "실제 방출")):
+        return "released"
+    if any(term in text for term in ("approved", "agreed to release", "approve release", "방출 승인", "방출 결정")):
+        return "approved"
+    if "50 million" in text or "50mn" in text or "5,000만" in text:
+        return "proposal_50m"
+    if any(term in text for term in ("reject", "rejected", "rules out", "보류", "거부")):
+        return "rejected"
+    if any(term in text for term in ("coordinate", "coordinated", "coordinating", "iea", "공동대응", "협의")):
+        return "coordinating"
+    if any(term in text for term in ("consider", "considering", "weigh", "weighing", "discuss", "검토", "논의")):
+        return "considering"
+    return "policy_change"
+
+
+def _build_eu_diesel_reserve_alert_body(
+    news_rows: list[NewsItem], oil: Quote | None, current: dt.datetime, fx: Quote | None,
+) -> str:
+    stage = _eu_diesel_reserve_stage(news_rows)
+    labels = {
+        "released": "전략비축 경유 실제 방출",
+        "approved": "전략비축 경유 방출 승인",
+        "proposal_50m": "경유 5,000만 배럴 방출안 논의",
+        "considering": "경유 전략비축유 방출 검토",
+        "coordinating": "EU·IEA 공동 방출 협의",
+        "rejected": "추가 방출 보류·거부",
+        "policy_change": "전략비축유 정책 변화",
+    }
+    lines = [
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
+        "",
+        "[한눈에]",
+        f"EU 정책       {labels.get(stage, stage)}",
+    ]
+    if oil is not None:
+        direction = "↓" if oil.change < 0 else "↑" if oil.change > 0 else "→"
+        lines.append(f"Brent         USD {oil.price:.2f} · {oil.change_pct:+.2f}% {direction}")
+    if fx is not None:
+        won = "약세" if fx.change > 0 else "강세" if fx.change < 0 else "보합"
+        lines.append(f"원·달러       {fx.price:,.2f}원 · {fx.change_pct:+.2f}% · 원화 {won}")
+
+    lines.extend([
+        "",
+        "[핵심]",
+        "글로벌 경유 공급부족에 대응해 EU가 비축유를 시장에 풀 가능성이 커지는 단계입니다.",
+        "→ 실제 방출 시 단기 경유 가격·정제마진을 낮추는 방향이지만, 비축분은 유한해 구조적 공급부족을 해결하지는 못합니다.",
+        "",
+        "[다음 확인]",
+        "정책          EU 회원국 승인 · IEA 공동방출 규모 · 실제 방출 시작일",
+        "물량          5,000만 배럴 제안 · 미국 요구 1억2,000만 배럴과의 차이",
+        "시장          유럽 경유·미국 ULSD · 아시아 경유 정제마진 · Brent",
+        "연결          미국 디젤 수출제한 · 중국 수출중단 · 중동 정제품 회복률",
+        "",
+        "[근거]",
+    ])
+    for row in news_rows[:3]:
+        published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
+        lines.append(f"{_source_name_ko(row.source)} · {published:%m-%d %H:%M KST} · {_news_title_ko(row)}")
+        if row.link:
+            lines.append(f"원문: {row.link}")
+    lines.extend([
+        "",
+        "[주의]",
+        "EU 차원의 조율과 실제 방출 결정은 다릅니다. 최종 결정은 회원국별로 이뤄집니다.",
+    ])
+    return "\n".join(lines).strip() + "\n"
+
+
 def _china_fuel_export_stage(text_or_rows: str | list[NewsItem]) -> str:
     text = normalize_text(text_or_rows) if isinstance(text_or_rows, str) else " ".join(normalize_text(row.title) for row in text_or_rows)
     if any(term in text for term in ("resume", "resumes", "resumed", "reopen", "restart", "allow exports", "permits exports", "green light", "재개", "허용", "승인")):
@@ -1638,6 +1795,66 @@ def _extract_india_gulf_metrics(news_rows: list[NewsItem]) -> dict[str, float | 
     current = max(nums) if nums else None
     return {"current_mbd": current}
 
+
+
+def _build_east_west_pipeline_alert_body(
+    news_rows: list[NewsItem], oil: Quote | None, current: dt.datetime, fx: Quote | None,
+) -> str:
+    rate, yanbu = _extract_pipeline_rate(news_rows)
+    capacity_pct = _extract_pipeline_capacity_pct(news_rows)
+    exports_resumed = _pipeline_exports_resumed(news_rows)
+
+    lines = [
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
+        "",
+        "[한눈에]",
+    ]
+    if capacity_pct is not None:
+        implied = 7.0 * capacity_pct / 100.0
+        lines.append(f"East-West     최대 수송능력의 {capacity_pct:.0f}% 이상 · 최소 {implied:.1f} Mbd 수준")
+    elif rate is not None:
+        lines.append(f"East-West     {rate:.1f} Mbd · 7 Mbd 명목능력의 약 {rate / 7.0 * 100:.0f}%")
+    else:
+        lines.append("East-West     재가동·유량 회복 확인")
+    if exports_resumed:
+        lines.append("Yanbu         해외 원유 선적 재개")
+    elif yanbu:
+        lines.append("Yanbu         선적 확대 여부 추가 확인")
+
+    market = []
+    if oil is not None:
+        direction = "↓" if oil.change < 0 else "↑" if oil.change > 0 else "→"
+        market.append(f"Brent USD {oil.price:.2f} {oil.change_pct:+.2f}% {direction}")
+    if fx is not None:
+        won = "약세" if fx.change > 0 else "강세" if fx.change < 0 else "보합"
+        market.append(f"원·달러 {fx.price:,.2f}원 {fx.change_pct:+.2f}% · 원화 {won}")
+    if market:
+        lines.append("시장          " + " | ".join(market))
+
+    lines.extend([
+        "",
+        "[핵심]",
+        "사우디의 호르무즈 우회 공급축이 빠르게 정상화되면서 홍해를 통한 수출 여력이 크게 늘고 있습니다.",
+        "→ 7 Mbd 명목능력의 80%는 5.6 Mbd입니다. 80% 초과라면 최소 이 수준을 넘어선 것으로 볼 수 있습니다.",
+        "",
+        "[다음 확인]",
+        "유량          80% → 90% → 95% · 실제 Mbd",
+        "수출          Yanbu 선적량 · 홍해 수출 가능 물량 · 사우디 국내 정유 투입량",
+        "위험          송유관 재공격 · Bab el-Mandeb 통항 · 보험·VLCC 운임",
+        "",
+        "[근거]",
+    ])
+    for row in news_rows[:3]:
+        published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
+        lines.append(f"{_source_name_ko(row.source)} · {published:%m-%d %H:%M KST} · {_news_title_ko(row)}")
+        if row.link:
+            lines.append(f"원문: {row.link}")
+    lines.extend([
+        "",
+        "[주의]",
+        "명목 최대능력 7 Mbd와 실제 지속가능 처리량은 다를 수 있으므로, 가동률·실제 선적량을 함께 확인합니다.",
+    ])
+    return "\n".join(lines).strip() + "\n"
 
 
 def _build_sts_compact_alert_body(
@@ -1813,12 +2030,16 @@ def build_physical_flow_alert_body(
     metrics = _extract_kpler_sts_metrics(news_rows)
     if kind == "crude_product_divergence":
         return _build_crude_product_gap_alert_body(news_rows, oil, current, fx)
+    if kind == "eu_diesel_reserve_policy":
+        return _build_eu_diesel_reserve_alert_body(news_rows, oil, current, fx)
     if kind == "us_diesel_export_policy":
         return _build_us_diesel_policy_alert_body(news_rows, oil, current, fx)
     if kind == "china_fuel_export_policy":
         return _build_china_fuel_export_policy_alert_body(news_rows, oil, current, fx)
     if kind == "oil_flow_recovery":
         return _build_oil_flow_compact_alert_body(news_rows, oil, current, fx)
+    if kind == "east_west_pipeline_recovery":
+        return _build_east_west_pipeline_alert_body(news_rows, oil, current, fx)
     if kind == "sts_reroute_expansion" and metrics:
         return _build_sts_compact_alert_body(news_rows, oil, current, fx, metrics)
 
@@ -2159,6 +2380,7 @@ def run_monitor(current: dt.datetime) -> int:
         "east_west_pipeline_recovery",
         "regional_export_recovery",
         "crude_product_divergence",
+        "eu_diesel_reserve_policy",
         "us_diesel_export_policy",
         "china_fuel_export_policy",
         "india_gulf_import_recovery",
@@ -2176,12 +2398,16 @@ def run_monitor(current: dt.datetime) -> int:
         body = build_physical_flow_alert_body(kind, news_rows, oil, current, fx)
         if kind == "crude_product_divergence":
             title = "중동 원유 회복·정제품 병목 변화"
+        elif kind == "eu_diesel_reserve_policy":
+            title = "EU 경유 전략비축유 방출 변화"
         elif kind == "us_diesel_export_policy":
             title = "미국 디젤 수출정책 변화"
         elif kind == "china_fuel_export_policy":
             title = "중국 정제품 수출정책 변화"
         elif kind == "oil_flow_recovery":
             title = "중동 원유 흐름 변화"
+        elif kind == "east_west_pipeline_recovery":
+            title = "사우디 East-West Pipeline 회복"
         else:
             title = "중동 원유 흐름 회복·우회 물류 변화"
         alert = {

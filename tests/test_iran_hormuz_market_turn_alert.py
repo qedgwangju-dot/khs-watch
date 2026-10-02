@@ -360,6 +360,64 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         )
         self.assertEqual(MODULE._news_title_ko(row), "백악관, 미국 디젤 수출금지 여부 검토")
 
+    def test_eu_diesel_reserve_considering_is_classified(self):
+        title = 'EU energy chief says releasing strategic diesel reserves is a possibility'
+        self.assertEqual(MODULE.classify_event(title), "eu_diesel_reserve_policy")
+
+    def test_eu_diesel_reserve_stage_changes_create_new_event(self):
+        now = dt.datetime(2026, 10, 2, 12, 0, tzinfo=dt.timezone.utc)
+        considering = [MODULE.NewsItem(
+            "EU energy chief considers release of strategic diesel reserves",
+            "Euronews", "a", now.isoformat(), now.timestamp(), "eu_diesel_reserve_policy"
+        )]
+        approved = [MODULE.NewsItem(
+            "EU members approved strategic diesel reserve release",
+            "Reuters", "b", now.isoformat(), now.timestamp(), "eu_diesel_reserve_policy"
+        )]
+        self.assertNotEqual(
+            MODULE.event_id("eu_diesel_reserve_policy", considering),
+            MODULE.event_id("eu_diesel_reserve_policy", approved),
+        )
+
+    def test_eu_diesel_reserve_body_is_compact(self):
+        now = dt.datetime(2026, 10, 2, 12, 0, tzinfo=dt.timezone.utc)
+        rows = [MODULE.NewsItem(
+            "EU energy chief says releasing strategic diesel reserves is a possibility",
+            "Euronews", "https://example.com/eu", now.isoformat(), now.timestamp(), "eu_diesel_reserve_policy"
+        )]
+        body = MODULE.build_physical_flow_alert_body("eu_diesel_reserve_policy", rows, None, now)
+        self.assertIn("EU 정책", body)
+        self.assertIn("전략비축", body)
+        self.assertIn("5,000만 배럴", body)
+        self.assertLessEqual(len(body.splitlines()), 30)
+
+    def test_east_west_80pct_is_new_material_stage(self):
+        now = dt.datetime(2026, 10, 2, 12, 0, tzinfo=dt.timezone.utc)
+        old = [MODULE.NewsItem(
+            "Saudi East-West Pipeline transport hits 4.0 million barrels per day",
+            "Reuters", "a", now.isoformat(), now.timestamp(), "east_west_pipeline_recovery"
+        )]
+        new = [MODULE.NewsItem(
+            "Saudi Arabia Hikes Oil Flow on Key Pipeline to Over 80% Capacity",
+            "Bloomberg", "b", now.isoformat(), now.timestamp(), "east_west_pipeline_recovery"
+        )]
+        self.assertEqual(MODULE.classify_event(new[0].title), "east_west_pipeline_recovery")
+        self.assertNotEqual(
+            MODULE.event_id("east_west_pipeline_recovery", old),
+            MODULE.event_id("east_west_pipeline_recovery", new),
+        )
+
+    def test_east_west_80pct_body_calculates_lower_bound(self):
+        now = dt.datetime(2026, 10, 2, 12, 0, tzinfo=dt.timezone.utc)
+        rows = [MODULE.NewsItem(
+            "Saudi Arabia Hikes Oil Flow on Key Pipeline to Over 80% Capacity",
+            "Bloomberg", "https://example.com/bloomberg", now.isoformat(), now.timestamp(), "east_west_pipeline_recovery"
+        )]
+        body = MODULE.build_physical_flow_alert_body("east_west_pipeline_recovery", rows, None, now)
+        self.assertIn("80% 이상", body)
+        self.assertIn("최소 5.6 Mbd", body)
+        self.assertIn("80% → 90% → 95%", body)
+
     def test_china_fuel_export_suspension_classified(self):
         title = "Chinese refiners suspend October fuel exports, PetroChina cancels cargoes - Reuters"
         self.assertEqual(MODULE.classify_event(title), "china_fuel_export_policy")
