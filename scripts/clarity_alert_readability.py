@@ -199,8 +199,8 @@ def confirmed_fact_lines(event, body_ko):
     if FMT.is_sec_crypto_custody_2026(event):
         return [
             "File No. S7-2026-35 · Release No. IA-7023 / IC-36353.",
-            "제한적 self-custody(자체 수탁)와 조건부 state trust company(주 신탁회사) 수탁을 허용하는 방향.",
-            "Federal Register(연방관보) 게재 후 60일간 의견수렴. 아직 최종규칙·시행 규정은 아님.",
+            "제한적 self-custody(자체 수탁) + 조건부 state trust company(주 신탁회사) 수탁 경로 제안.",
+            "모든 암호자산에 자동 적용되는 것은 아님 — 자산이 funds/securities 또는 securities/similar investments에 해당하는 범위가 핵심.",
         ]
     facts = sentence_bullets(body_ko)
     return facts[:3]
@@ -333,7 +333,7 @@ def event_block(event, index):
             lines.append("• " + html.escape(line))
 
     watch = []
-    for item in pending_lines(event) + next_check_lines(event):
+    for item in next_check_lines(event) + pending_lines(event):
         if item and item not in watch:
             watch.append(item)
     if watch:
