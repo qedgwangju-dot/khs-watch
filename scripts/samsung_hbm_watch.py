@@ -2130,7 +2130,7 @@ def _article_body_text(url: str) -> str:
 
 def _hbm4_contract_stage(text: str) -> str:
     low = clean(text).lower()
-    if re.search(r"(?:계약\s*체결|공급계약\s*체결|lta\s*(?:signed|executed)|contract\s*(?:signed|executed))", low, re.I):
+    if re.search(r"(?:계약\s*체결|공급계약\s*체결|lta\s*(?:signed|executed)|contract\s*(?:signed|executed)|(?:signed|executed)[^.]{0,50}?(?:supply\s+)?contract)", low, re.I):
         return "contract_signed"
     if re.search(r"(?:가격\s*확정|가격\s*합의|합의\s*완료|agreement\s*(?:finalized|reached)|price\s*(?:agreed|finalized))", low, re.I):
         return "agreed"
