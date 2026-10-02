@@ -413,7 +413,7 @@ def story_tokens(title: str) -> set[str]:
 def _money_tokens(text: str) -> list[str]:
     tokens: list[str] = []
     for amount, unit in re.findall(
-        r"\\$?\\s*(\\d+(?:\\.\\d+)?)\\s*(million|billion|mn|bn|m|b)\\b",
+        r"\$?\s*(\d+(?:\.\d+)?)\s*(million|billion|mn|bn|m|b)\b",
         text or "",
         flags=re.I,
     ):
@@ -452,9 +452,9 @@ def canonical_story_key(company: str, title: str) -> str | None:
     if company == "Volantis":
         # Preserve the already-seen $88M Series A key, but do not collapse every
         # future financing round into that old event.
-        if re.search(r"series\\s*a", text, re.I) or re.search(r"\\b88\\s*(?:m|million)\\b", text, re.I):
+        if re.search(r"series\s*a", text, re.I) or re.search(r"\b88\s*(?:m|million)\b", text, re.I):
             return "volantis|funding|series-a"
-        series = re.search(r"series\\s*([b-z])", text, re.I)
+        series = re.search(r"series\s*([b-z])", text, re.I)
         if series and re.search(r"funding|financing|raises?|capital", text, re.I):
             suffix = "-" + "-".join(money) if money else ""
             return f"volantis|funding|series-{series.group(1).lower()}{suffix}"
@@ -463,7 +463,7 @@ def canonical_story_key(company: str, title: str) -> str | None:
             return f"volantis|funding|other|{suffix}"
         if re.search(r"customer sampling|customer delivery|customer deployment|integrated inference engines?", text, re.I):
             return "volantis|a1|customer"
-        if re.search(r"silicon|tape[- ]?out|benchmark|measured|prototype|240\\s*tb/s|10\\s*tb|1\\s*pj/bit|tokens? per second|tok/s", text, re.I):
+        if re.search(r"silicon|tape[- ]?out|benchmark|measured|prototype|240\s*tb/s|10\s*tb|1\s*pj/bit|tokens? per second|tok/s", text, re.I):
             return "volantis|a1|silicon-performance"
         if re.search(r"vcsel|micro[- ]?vcsel|foundry|wafer|laser|supply chain", text, re.I):
             return "volantis|a1|vcsel-supply"
@@ -474,7 +474,7 @@ def canonical_story_key(company: str, title: str) -> str | None:
         if re.search(r"nvlink fusion", text, re.I):
             return "lightmatter|nvlink-fusion|ecosystem"
         if re.search(r"passage", text, re.I) and re.search(r"sampl|customer qualification|customer validation", text, re.I):
-            if re.search(r"1\\.?6\\s*tbps|1\\.?6\\s*t", text, re.I):
+            if re.search(r"1\.?6\s*tbps|1\.?6\s*t", text, re.I):
                 return "lightmatter|passage|sampling|1.6tbps-per-fiber"
             return "lightmatter|passage|customer-sampling"
         if re.search(r"passage", text, re.I) and re.search(r"production|shipment|deployment|mass production|volume production", text, re.I):
@@ -488,8 +488,8 @@ def canonical_story_key(company: str, title: str) -> str | None:
             # Sep-2026 additional $150M brought 2026 primary capital to $650M.
             # Reprints that quote either number are one event, not new alerts.
             if re.search(r"2026", text) and (
-                re.search(r"\\b150\\s*(?:m|million)\\b", text, re.I)
-                or re.search(r"\\b650\\s*(?:m|million)\\b", text, re.I)
+                re.search(r"\b150\s*(?:m|million)\b", text, re.I)
+                or re.search(r"\b650\s*(?:m|million)\b", text, re.I)
             ):
                 return "ayar|funding|2026-primary-650m"
             suffix = "-".join(money) if money else "generic"
@@ -510,8 +510,8 @@ def canonical_story_key(company: str, title: str) -> str | None:
             # Marvell's original acquisition guidance: H2 FY28 revenue start,
             # $500M annualized run-rate in Q4 FY28 and $1B in Q4 FY29.
             old_v1 = (
-                (re.search(r"(?:fiscal\\s*)?2028|fy28", text, re.I) and re.search(r"\\b500\\s*(?:m|million)\\b", text, re.I))
-                or (re.search(r"(?:fiscal\\s*)?2029|fy29", text, re.I) and re.search(r"\\b1\\s*(?:b|billion)\\b", text, re.I))
+                (re.search(r"(?:fiscal\s*)?2028|fy28", text, re.I) and re.search(r"\b500\s*(?:m|million)\b", text, re.I))
+                or (re.search(r"(?:fiscal\s*)?2029|fy29", text, re.I) and re.search(r"\b1\s*(?:b|billion)\b", text, re.I))
             )
             if old_v1:
                 return "marvell|celestial|revenue-guidance|v1"
@@ -535,13 +535,13 @@ def canonical_story_key(company: str, title: str) -> str | None:
             return "us-optical-policy|fcc|final"
         if re.search(r"proposed rule|rulemaking|notice|comment|draft|consider", text, re.I):
             return "us-optical-policy|fcc|proposal"
-        if re.search(r"3\\.2\\s*t|65\\s*%|75\\s*%|domestic content|buy american|exempt", text, re.I):
+        if re.search(r"3\.2\s*t|65\s*%|75\s*%|domestic content|buy american|exempt", text, re.I):
             parts = []
-            if re.search(r"3\\.2\\s*t", text, re.I):
+            if re.search(r"3\.2\s*t", text, re.I):
                 parts.append("3.2t")
-            if re.search(r"65\\s*%", text, re.I):
+            if re.search(r"65\s*%", text, re.I):
                 parts.append("65")
-            if re.search(r"75\\s*%", text, re.I):
+            if re.search(r"75\s*%", text, re.I):
                 parts.append("75")
             if re.search(r"domestic content|domestic end product|buy american", text, re.I):
                 parts.append("domestic")
@@ -550,22 +550,22 @@ def canonical_story_key(company: str, title: str) -> str | None:
             return "us-optical-policy|fcc|content-scenario|" + "-".join(parts or ["generic"])
         return None
 
-    if company in {"AXT", "InP Supply Chain"} and re.search(r"\\binp\\b|indium phosphide", text, re.I):
+    if company in {"AXT", "InP Supply Chain"} and re.search(r"\binp\b|indium phosphide", text, re.I):
         if re.search(r"export licen[cs]e|restriction|china", text, re.I):
             return "axt|inp|export-policy"
         if re.search(r"shortage|tight|capacity|expand|substrate", text, re.I):
             return "axt|inp|capacity-shortage"
 
     if company == "Coherent" and "photonlink" in text:
-        if re.search(r"customer engagements?|long[- ]term(?:\\s+\\w+){0,6}\\s+agreements?|anchor customers?|design win|secures?.{0,60}agreements?", text, re.I):
+        if re.search(r"customer engagements?|long[- ]term(?:\s+\w+){0,6}\s+agreements?|anchor customers?|design win|secures?.{0,60}agreements?", text, re.I):
             return "coherent|photonlink|customer-contract"
-        if re.search(r"content opportunity|content per|100\\s*tbps|15,?000", text, re.I):
+        if re.search(r"content opportunity|content per|100\s*tbps|15,?000", text, re.I):
             return "coherent|photonlink|content-value"
         if re.search(r"chip[- ]to[- ]chip", text, re.I):
             return "coherent|photonlink|chip-to-chip"
         if re.search(r"specialty fibers?|polarization[- ]maintaining|mode[- ]matching|multicore fibers?", text, re.I):
             return "coherent|photonlink|specialty-fiber"
-        if re.search(r"\\binp\\b.*(?:capacity|expand)|(?:capacity|expand).*\\binp\\b", text, re.I):
+        if re.search(r"\binp\b.*(?:capacity|expand)|(?:capacity|expand).*\binp\b", text, re.I):
             return "coherent|photonlink|inp-capacity"
         if re.search(r"revenue|guidance|mass production|volume production|shipments?|production ramp|ramp(?:ing)?", text, re.I):
             return "coherent|photonlink|commercial-ramp"
