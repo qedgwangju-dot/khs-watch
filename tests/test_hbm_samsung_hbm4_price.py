@@ -82,6 +82,15 @@ class SamsungHBM4PriceWatchTests(unittest.TestCase):
         self.assertEqual(obs["customer_requirement_tbps"], 3.0)
         self.assertNotEqual(obs.get("stage"), "signed")
 
+    def test_hbm_wafer_share_reported_path_is_tracked(self):
+        obs = w.extract_samsung_hbm4_price(self.event(
+            "삼성전자 HBM4 2027 가격 프리미엄. HBM이 전 세계 D램 웨이퍼 생산능력에서 차지하는 비중은 "
+            "현재 20%대에서 내년 30% 수준까지 높아질 것으로 보고 있다."
+        ))
+        self.assertIsNotNone(obs)
+        self.assertEqual(obs["industry_hbm_dram_wafer_share_current_band"], "20s_pct_reported")
+        self.assertEqual(obs["industry_hbm_dram_wafer_share_2027_pct"], 30.0)
+
     def test_supply_and_pricing_power_changes_alert(self):
         old = dict(w.SAMSUNG_HBM4_PRICE_BASELINE)
         old["reported_supply_status"] = "largely_available"
