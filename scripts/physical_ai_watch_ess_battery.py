@@ -627,6 +627,8 @@ def _is_ess_battery(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    if _ev46_stage(text):
+        return 'ev_46_series'
     if _catl_debrecen_stage(text):
         return 'global_battery_capacity'
     if _isu_li2s_stage(text):
@@ -641,6 +643,29 @@ def score(item: dict) -> int:
     text = f"{title} {item.get('description','')} {item.get('source','')}"
     group = topic_group(text)
     source = item.get('source') or ''
+
+    if group == 'ev_46_series':
+        stage = _ev46_stage(text, source)
+        if stage in {'known_baseline','background','mou'}:
+            return 0
+        s = 20
+        s += {
+            'oem_contract': 17,
+            'format_confirmation': 13,
+            'backlog_change': 12,
+            'construction_execution': 12,
+            'equipment_execution': 14,
+            'sop': 17,
+            'first_shipment': 17,
+            'ramp_metrics': 13,
+            'bma_integration': 14,
+            'component_order': 15,
+            'reverse': 17,
+        }.get(stage, 0)
+        if base.NUMERIC.search(text): s += 3
+        if source in base.OFFICIAL_OR_PRIMARY: s += 7
+        elif source in base.TRUSTED: s += 3
+        return s
 
     if group == 'global_battery_capacity':
         stage = _catl_debrecen_stage(text, source)
@@ -794,6 +819,24 @@ def _raw_cat(text: str) -> str:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'ev_46_series':
+        stage = _ev46_stage(text)
+        raw = {
+            'known_baseline': '현재 계약·양산 기준선',
+            'mou': '비구속 협의·MOU',
+            'oem_contract': '완성차 공급계약·GWh 수주',
+            'format_confirmation': '완성차 46파이 규격 공식 채택',
+            'backlog_change': '46시리즈 수주잔고·신규수주 변화',
+            'construction_execution': '46시리즈 공장·라인 착공',
+            'equipment_execution': '46시리즈 장비발주·반입·라인 구축',
+            'sop': '46시리즈 실제 양산 개시',
+            'first_shipment': '46시리즈 첫 고객 출하',
+            'ramp_metrics': '46시리즈 가동률·수율·실생산',
+            'bma_integration': '46시리즈 모듈조립 내재화·투자',
+            'component_order': '46시리즈 소재·장비 직접 수주',
+            'reverse': '46시리즈 계약·양산 일정 후퇴',
+        }.get(stage, '46시리즈 시장 배경')
+        return f"46파이 EV 배터리 · {raw}"
     if group == 'global_battery_capacity':
         stage = _catl_debrecen_stage(text)
         raw = {
