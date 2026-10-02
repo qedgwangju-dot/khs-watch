@@ -74,6 +74,11 @@ COMPANIES = {
         "aliases": ["AXT", "AXT Inc."],
         "query": 'AXT (InP OR "indium phosphide") (substrate OR shortage OR "export license" OR capacity OR "data center" OR optical)',
     },
+    "Applied Optoelectronics": {
+        "ticker": "AAOI",
+        "aliases": ["Applied Optoelectronics", "AOI", "AAOI"],
+        "query": '"Applied Optoelectronics" (800G OR 1.6T OR 3.2T OR transceiver OR optical OR hyperscaler OR customer OR capacity OR shipment OR FCC OR China)',
+    },
     "Astera Labs": {
         "ticker": "ALAB",
         "aliases": ["Astera Labs", "Astera"],
@@ -128,6 +133,7 @@ DISPLAY_NAMES_KO = {
     "Coherent": "코히런트",
     "US Optical Policy": "미국 광트랜시버 정책",
     "AXT": "AXT",
+    "Applied Optoelectronics": "어플라이드 옵토일렉트로닉스",
     "Astera Labs": "아스테라 랩스",
     "Corning": "코닝",
     "Samsung Electronics": "삼성전자",
@@ -138,7 +144,7 @@ TRUSTED_SOURCES = {
     "Reuters", "Bloomberg", "Financial Times", "The Wall Street Journal", "CNBC",
     "DigiTimes", "DIGITIMES", "Investing.com", "Barron's", "MarketWatch",
     "NVIDIA Blog", "NVIDIA Newsroom", "Broadcom", "Arista Networks", "Marvell",
-    "Lumentum", "Coherent", "AXT", "Federal Communications Commission", "FCC",
+    "Lumentum", "Coherent", "AXT", "Applied Optoelectronics", "Federal Communications Commission", "FCC",
     "U.S. Senate", "Congress.gov", "Astera Labs", "Corning",
     "TrendForce", "MoneyDJ", "Economic Daily News", "UDN", "經濟日報",
     "GMT GLOBAL INC.", "TOYO Automation", "Chieftek Precision",
@@ -210,7 +216,7 @@ NOISE_PATTERNS = [
 SOURCE_PRIORITY = {
     "Coherent": 100, "NVIDIA Blog": 100, "NVIDIA Newsroom": 100,
     "Broadcom": 100, "Arista Networks": 100, "Marvell": 100,
-    "Lumentum": 100, "AXT": 100, "Federal Communications Commission": 100, "FCC": 100,
+    "Lumentum": 100, "AXT": 100, "Applied Optoelectronics": 100, "Federal Communications Commission": 100, "FCC": 100,
     "U.S. Senate": 100, "Congress.gov": 100, "Astera Labs": 100, "Corning": 100,
     "Samsung Electronics": 100, "Samsung Global Newsroom": 100,
     "Reuters": 95, "Bloomberg": 94, "Financial Times": 93,
@@ -842,7 +848,7 @@ def main() -> None:
             ])
         lines.extend([
             "<b>감시 기준</b>",
-            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / FCC 중국산 광트랜시버 최종규칙·3.2T 적용세대·미국산 콘텐츠 65%·75%·예외·시행일 / 상원·의회 국가안보시스템 광트랜시버 법안 범위 / InP 기판 공급부족·수출허가·증설·가격 / 엔비디아 CPO 실제 배치 / 코히런트 포톤링크 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027년 2분기 가시성·생산능력 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030년 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·수주잔고 / 코닝 광통신·유리기판 신규 AI 매출 경로",
+            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / AAOI 800G·1.6T·3.2T 생산능력·고객·출하 / FCC 중국산 광트랜시버 최종규칙·3.2T 적용세대·미국산 콘텐츠 65%·75%·예외·시행일 / 상원·의회 국가안보시스템 광트랜시버 법안 범위 / InP 기판 공급부족·수출허가·증설·가격 / 엔비디아 CPO 실제 배치 / 코히런트 포톤링크 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027년 2분기 가시성·생산능력 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030년 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·수주잔고 / 코닝 광통신·유리기판 신규 AI 매출 경로",
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
