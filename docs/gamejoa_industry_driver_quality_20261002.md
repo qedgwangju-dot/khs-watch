@@ -629,3 +629,33 @@ an existing target. Read-only replay of this artifact selects zero, with an
 explicit exclusion reason; it does not fabricate replacement news or clear
 seen state. The targeted suite now contains 102 passing materiality tests.
 Production validation after deployment follows below.
+
+## Version 24: Planned Disposal and Reported Nonagreement
+
+Run `36979967591` completed at `2026-10-02T07:46:05Z`; its saved report
+queried at `16:42:36 KST` with version 23. It attempted 160 bodies, verified
+125, failed 35 and deferred 661. ZIP SHA-256:
+`65110E37FEC2BC590F12DD7270EC10C2127A5125BEC143F3C5EC712270D991CB`.
+All four selected sources were reviewed. Two remaining thin summaries lost
+the planned share quantity and the reported nonagreement, respectively.
+
+Planned share-disposal cores prefer the source's disclosed share count and
+planned stage, not a lead that sounds completed. The independent fact guard
+rejects a completed-sounding core when the body discloses a future disposal.
+Investment nonagreement is now a denial focus. An overlong disputed-positive
+lead can retain its source institution, source-attested project context and
+exact denial quotation within the existing complete-sentence limit. This
+does not turn a newspaper report into official confirmation.
+
+Saved-artifact replay, the full local contract suite and fresh production
+environment validation are recorded below after completion. No old article
+is resent, no seen/delivery state is reset and no actual Telegram delivery is
+claimed from a dry run.
+
+Read-only replay of all 12 saved artifacts reviews 70 article rows, retains
+44, removes 26 weak/duplicate selections and regenerates 17 cores, with
+zero headline/core focus mismatches. The latest four rows remain eligible;
+their regenerated cores have no source-fact guard errors. All 11 local
+contract scripts passed, including 104 materiality tests, 95 coverage cases
+and 26 retrieval-queue tests. `git diff --check` passed. Deployment and fresh
+run evidence follow separately below.

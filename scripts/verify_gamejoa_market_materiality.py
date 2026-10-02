@@ -96,6 +96,36 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_planned_share_disposal_keeps_source_quantity_and_stage(self):
+        title = "최태원 SK 회장, 9440억원 규모 그룹 지분 매각 추진"
+        body = "최태원 SK그룹 회장이 그룹 지주사 SK㈜ 지분 9440억원 규모를 매각한다.\nSK㈜는 최대주주인 최태원 회장이 주식 165만3924주(2.3%)를 매각할 예정이라고 2일 공시했다.\n거래는 1개월 뒤인 11월 2일부터 진행될 예정이다."
+        item = alert(title, body)
+        item["telegram_core_fact"] = body.split("\n")[0]
+        self.assertIn("planned_disposal_reported_as_completed", radar.source_core_fact_errors(item))
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("165만3924주", core)
+        self.assertIn("2.3%", core)
+        self.assertIn("예정", core)
+        self.assertIn("최태원", core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        self.assertTrue(radar.core_sentence_is_complete(core))
+
+    def test_investment_nonagreement_keeps_denial_and_reporting_source(self):
+        title = "미국 내부서도 '알래스카 LNG' 의문…한국과 투자 합의 안 됐다"
+        body = ('미국 언론들은 알래스카 액화천연가스(LNG) 파이프라인 사업성에 의문을 표했다.\n'
+                '월스트리트저널(WSJ)은 1일(현지시간) 한국이 알래스카 LNG 사업에 약 500억달러를 투자할 것이라고 발표했다며 '
+                '"문제는 한국이 구체적인 투자액은 물론 투자 자체에도 합의하지 않았다는 것"이라고 보도했다.')
+        self.assertFalse(materiality.core_focus_aligned(title, body.split("\n")[0]))
+        core = radar.verified_alert_core(alert(title, body), title)
+        self.assertIn("WSJ", core)
+        self.assertIn("알래스카 LNG", core)
+        self.assertIn("합의하지 않았", core)
+        self.assertIn("보도했다", core)
+        self.assertNotIn("500억달러", core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        self.assertTrue(materiality.core_focus_aligned(title, core))
+        self.assertEqual(radar.source_core_fact_errors({**alert(title, body), "telegram_core_fact": core}), [])
+
     def test_annual_target_reiteration_cannot_borrow_earlier_actuals(self):
         title = "국토부 차관, 연말 공공주택 6만2000가구 착공 총력"
         body = "국토부는 연말까지 기존 공공주택 착공 목표를 달성하도록 당부했다. 1~8월 서울 주택 인허가는 3만9940가구로 전년비 40.4% 증가했고 착공은 2만679가구로 41.1% 늘었다."

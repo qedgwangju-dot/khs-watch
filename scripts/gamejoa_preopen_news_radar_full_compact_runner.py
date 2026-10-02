@@ -2219,6 +2219,18 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     if not market_materiality.focus_kind(title) and not market_materiality.DENIAL_HEADLINE.search(title):
         return ""
+    if market_materiality.focus_kind(title) == "ownership" and re.search(r"매각|처분", title):
+        for sentence in sentences:
+            if (
+                market_materiality.core_focus_aligned(title, sentence)
+                and re.search(r"주식\s*[\d,만억]+주", sentence)
+                and re.search(r"(?:매각|처분)할\s*(?:예정|계획)", sentence)
+                and re.search(r"공시했다|밝혔다", sentence)
+                and any(term in sentence for term in korean_business_title_terms(title))
+            ):
+                fact = normalized_article_sentence(sentence)
+                if core_sentence_is_complete(fact):
+                    return fact
     if market_materiality.focus_kind(title) == "sanctions_exemption":
         for sentence in sentences:
             action = re.search(
@@ -2295,6 +2307,17 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
             )
             fact = re.sub(r"말했다고\s+전했다\.?$", "밝혔다.", fact)
         if market_materiality.DENIAL_HEADLINE.search(title):
+            # Keep the reporting institution and the exact denial quote when
+            # an overlong lead also describes a disputed positive announcement.
+            reporter = re.match(r"^([가-힣A-Za-z]{2,30}(?:\([A-Z]{2,10}\))?)(?:은|는)\s", fact)
+            quotation = re.search(r'["“]([^"”]+)["”](?:이라고|고)\s*보도했다', fact)
+            context = re.search(r"([가-힣A-Za-z0-9·-]+\s+(?:LNG|데이터센터|원전)\s*(?:사업|투자))에", fact)
+            if reporter and quotation and context and market_materiality.DENIAL_SOURCE.search(quotation.group(1)):
+                institution = re.search(r"\(([A-Z]{2,10})\)", reporter.group(1))
+                institution = institution.group(1) if institution else reporter.group(1)
+                candidate = f'{institution}: {context.group(1)}에 대해 "{quotation.group(1)}"이라고 보도했다.'
+                if core_sentence_is_complete(candidate) and market_materiality.core_focus_aligned(title, candidate):
+                    return candidate
             fact = re.sub(r"액화천연가스\s*\(LNG\)", "LNG", fact, flags=re.I)
             fact = re.sub(r"((?:은|는)\s+)(?:\d{1,2}일\s+)?[^.!?]{1,30}(?:대통령|총리|장관)이\s+", r"\1", fact)
             fact = re.sub(r"(투자|계약|수주|매각|인수)(?:를|을)\s*(?:기정사실로\s*)?발표한\s*데\s*대해", r"\1에 대해", fact)
@@ -9009,6 +9032,12 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         errors.append("new_execution_replaced_by_order_history")
     if re.search(r"비롯한|포함한|특수관계인", source) and "개인 명의" in core and not re.search(r"개인\s*명의|개인\s*자금|사비", source):
         errors.append("unsupported_personal_trade_attribution")
+    if (
+        market_materiality.focus_kind(title) == "ownership" and re.search(r"매각|처분", title)
+        and re.search(r"(?:매각|처분)할\s*(?:예정|계획)[^.!?]{0,30}(?:공시했다|밝혔다)", source)
+        and not re.search(r"예정|계획|추진|검토|매각할|처분할", core)
+    ):
+        errors.append("planned_disposal_reported_as_completed")
     return errors
 
 
