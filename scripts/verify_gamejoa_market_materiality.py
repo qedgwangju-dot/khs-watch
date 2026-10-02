@@ -92,6 +92,41 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_retail_fx_benefits_are_not_macro_rate_changes(self):
+        title = "백화점, 中 국경절 관광객 공략…K패션 행사"
+        body = "백화점이 중국 국경절 연휴 관광객 공략에 나선다. 300만원 이상 결제하면 10만원을 즉시 할인하고 환율 우대 혜택을 적용한다."
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "exclude", audit)
+        self.assertNotIn("discount_rate", audit["axes"])
+        item = alert(title, body)
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([item], 1), [])
+        self.assertIn("discount_rate", materiality.assess("연준, 기준금리 인하", "연준은 기준금리를 0.25%포인트 인하하고 달러화가 하락했다.")["axes"])
+
+    def test_regulator_abbreviation_and_partner_nouns_are_not_actions(self):
+        audit = materiality.assess("파생결합증권 잔액 증가", "금감원은 원금지급형 상품 수요가 늘며 잔액이 증가했다고 밝혔다.")
+        self.assertNotIn("labor_cost_or_execution", [item["kind"] for item in audit["evidence"]])
+        anniversary = materiality.assess("보험사 일본지사 50주년…함께 성장", "회장은 고객사와 협력사에 감사하며 함께 성장하겠다고 말했다.")
+        self.assertEqual(anniversary["disposition"], "exclude", anniversary)
+        self.assertEqual(materiality.assess("기업, 인력 감원", "기업은 비용 구조조정을 위해 인력 감원을 발표했다.")["disposition"], "keep")
+
+    def test_industry_changes_precede_local_cpi_and_product_sales_pr(self):
+        weak = (
+            ("부산 9월 소비자물가 2.7% 상승", "부산의 9월 소비자물가지수는 전년 동월 대비 2.7% 상승했다."),
+            ("커피기업, 매장당 매출 3년 새 18% 증가", "공정위 정보공개서 기준 지난해 매장당 매출은 3년 전보다 18% 증가했다."),
+            ("키즈 신발 매출 2.5배 증가", "패션기업은 걸음마 신발의 1~9월 매출이 전년 동기 대비 150% 증가했다고 밝혔다."),
+        )
+        for title, body in weak:
+            self.assertEqual(materiality.assess(title, body)["priority"], 1)
+        strong = [INDUSTRY_DRIVER_CASES[index][1:] for index in (0, 2, 10)]
+        items = [alert(title, body) for title, body in (*weak, *strong)]
+        for item in items[:len(weak)]:
+            item["score"] = 9999
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            selected = radar.quality_display_alerts(items, len(strong))
+        self.assertEqual({item["source_title"] for item in selected}, {title for title, _body in strong})
+        self.assertEqual(materiality.assess("신발기업, 영업이익 가이던스 상향", "신발기업은 영업이익 가이던스를 20% 상향했다.")["priority"], 3)
+
     def test_industry_driver_event_classes_have_source_evidence(self):
         self.assertEqual(len(INDUSTRY_DRIVER_CASES), 20)
         for name, title, body in INDUSTRY_DRIVER_CASES:

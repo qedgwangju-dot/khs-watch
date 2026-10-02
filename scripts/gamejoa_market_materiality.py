@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 3
+VERSION = 4
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should)\b", re.I,
@@ -27,7 +27,19 @@ SOFT_HEADLINE = re.compile(
 ROUTINE_HEADLINE = re.compile(
     r"봉사|기부|나눔|문화행사|체육대회|기념촬영|시상|(?:상|어워드|어워즈).{0,12}수상|수상$|브랜드상|"
     r"할인 행사|할인행사|사은품|경품|체험행사|비전 선포|응원|격려|"
-    r"volunteer|charity|brand award|giveaway|ceremonial", re.I,
+    r"관광객\s*공략|기획전|팝업\s*스토어|\d+주년|volunteer|charity|brand award|giveaway|ceremonial", re.I,
+)
+REGIONAL_CPI = re.compile(
+    r"(?:서울|부산|대구|인천|광주|대전|울산|세종|경기|강원|충북|충남|전북|전남|경북|경남|제주).{0,12}소비자물가|"
+    r"지역(?:별|의)?\s*소비자물가|regional consumer prices", re.I,
+)
+RETAIL_PRODUCT_METRIC = re.compile(
+    r"매장당\s*매출|(?:키즈|신발|커피|패션).{0,25}(?:매출|판매)|(?:매출|판매).{0,20}(?:매장당|신발|커피)|"
+    r"sales per store|kids.{0,20}sales", re.I,
+)
+ENTERPRISE_CHANGE = re.compile(
+    r"영업이익|순이익|가이던스|마진|현금흐름|수주|공급계약|납품계약|공장|양산|인수|합병|규제|관세|주주환원|"
+    r"operating profit|net income|guidance|cash flow|supply contract|factory|acquisition", re.I,
 )
 HARD_HEADLINE = re.compile(
     r"매출|이익|실적|가이던스|판가|가격|수주|계약|발주|공장|양산|증설|가동|"
@@ -177,7 +189,7 @@ RULES = (
      r"규격|채택|통합|전환|도입|standard|specification|adopt|integrat|deploy"),
     ("rates_fx_or_macro", ("discount_rate",),
      r"기준\s*금리|국채\s*금리|국고채|모기지|주담대|주택담보대출|물가|인플레이션|고용|환율|달러화|유동성|차입|cpi|pce|payroll|mortgage|interest rate|treasury|inflation|exchange rate|borrowing",
-     r"인상|인하|동결|상승|하락|둔화|급등|급락|상회|하회|발표|증가|감소|결정|약세|강세|최고|치솟|cut|hike|hold|rise|fall|miss|beat|announc|estimat"),
+     r"인상|(?<!할)인하|동결|상승|하락|둔화|급등|급락|상회|하회|발표|증가|감소|결정|약세|강세|최고|치솟|cut|hike|hold|rise|fall|miss|beat|announc|estimat"),
     ("policy_scope_or_stage", ("timeline",),
      r"관세|수출통제|수출금지|수입금지|수입 금지|수입 제한|수입제한|제재|보조금|지원금|예탁금|규제|인허가|조례|환경심사|환경영향평가|주파수|tariff|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
      r"제안|검토|추진|인상|인하|완화|강화|시행|발효|금지|제한|허가|승인|제정|철회|의견수렴|입법예고|면제|배정|의결|착수|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
@@ -204,11 +216,11 @@ RULES = (
      r"폭염|폭우|홍수|태풍|정전|가뭄|산불|heatwave|flood|outage|drought|wildfire",
      r"전력|변압기|과부하|폐사|양식|농작물|생산|공급|항만|물류|공장|피해|사망|power|transformer|crop|production|supply|port|factory|damage|death"),
     ("labor_cost_or_execution", ("earnings", "timeline"),
-     r"파업|노조|성과급|임단협|감원|감축|임금|strike|union|layoff|wage",
+     r"파업|노조|성과급|임단협|(?<!금)감원|감축|임금|strike|union|layoff|wage",
      r"생산|공장|운송|항만|비용|인상|교섭|협상|주식|지급|중단|감축|production|factory|port|cost|talks|shares|halt|cut"),
     ("customer_discussions", ("earnings", "timeline"),
      r"공급|고객|구매|생산|공동개발|공동 개발|인증|hbm|파운드리|자율주행|데이터센터|ai.{0,4}(?:반도체|인프라)|supply|customer|procurement|co-develop|foundry|autonomous|data center",
-     r"협상|논의|검토|회동|협력|합의|협약|negotiat|discuss|consider|meeting|collaborat|agreement"),
+     r"협상|논의|검토|회동|협력(?!사)|합의|협약|negotiat|discuss|consider|meeting|collaborat|agreement"),
 )
 COMPILED_RULES = tuple(
     (kind, axes, re.compile(subject, re.I), re.compile(action, re.I))
@@ -261,6 +273,10 @@ def assess(title: str, body: str) -> dict:
                 continue
             if soft and kind == "customer_discussions" and not re.search(
                 r"공급|고객|구매|생산|공동\s*개발|인증|hbm|파운드리|자율주행|데이터센터|ai.{0,4}(?:반도체|인프라)|supply|customer|procurement|co-develop|foundry|autonomous|data center", sentence, re.I,
+            ):
+                continue
+            if kind == "rates_fx_or_macro" and re.search(
+                r"환율\s*(?:우대|혜택)|우대\s*환율|즉시\s*할인|할인\s*쿠폰|사은품|경품", sentence,
             ):
                 continue
             if kind == "technology_or_clinical_stage" and not re.search(
@@ -325,6 +341,14 @@ def assess(title: str, body: str) -> dict:
                 result["priority"] = min(result["priority"], 2)
         if focus_kind(title) == "fund_result" or re.search(r"(?:상반기|하반기|연간).{0,25}(?:결산|비교|가장)|R&D|연구개발", title, re.I):
             result["priority"] = min(result["priority"], 2)
+        # Local indicators and product-level sales PR can be true without
+        # displacing changes to industry architecture, financing or execution.
+        if REGIONAL_CPI.search(title):
+            result["priority"] = min(result["priority"], 1)
+            result["scope_note"] = "regional_indicator_not_national_macro"
+        elif RETAIL_PRODUCT_METRIC.search(title) and not ENTERPRISE_CHANGE.search(title):
+            result["priority"] = min(result["priority"], 1)
+            result["scope_note"] = "retail_product_or_store_metric"
         if re.search(r"증시|코스피|코스닥|나스닥|뉴욕마감|대만.*가권", title) and re.search(r"마감|출발|강보합|약보합|소폭|0\.\d+%", title) and not focus_kind(title) and not re.search(
             r"순매수|순매도|유입|유출|서킷브레이커|사이드카|실적|관세|연준|fomc|금리|유가", title, re.I,
         ):

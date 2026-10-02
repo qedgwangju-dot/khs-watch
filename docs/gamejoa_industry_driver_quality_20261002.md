@@ -64,3 +64,18 @@ reference digest. Primary-source availability and verification remain separate.
   and clickable source. Status labels and removed commentary remain absent.
 - Fresh source access, GitHub execution and Telegram receipt must be reported
   separately from local test results and configuration deployment.
+
+## Runtime Feedback
+
+The first new-config dry run, 36943871442, passed its execution and report guards,
+but a manual artifact reread exposed selection-quality defects: a retail FX
+benefit was treated as a macro change, and local CPI/product-sales PR occupied
+slots ahead of experimental industry changes. Those results were not accepted
+as proof of final selection quality merely because CI was green.
+
+Persistent cases now prevent substring false positives (`할인하고` vs `인하`,
+`금감원` vs `감원`, and `협력사` vs a cooperation action). Limited regional and
+product/store metrics rank below the industry benchmark; full-company
+earnings/guidance and meaningful contracts/capacity changes remain eligible.
+The correction must be retested against the complete suite and another fresh
+runtime artifact without sending historical samples or resetting seen state.
