@@ -57,6 +57,48 @@ jobs:
           print(f"telegram_bot_verified=@{username}")
           PY
 
+      - name: Validate same-event duplicate regression
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          from zoneinfo import ZoneInfo
+          from scripts.rebellions_partner_watch import (
+              classify,
+              event_signature,
+              find_duplicate_event,
+              material_stage,
+          )
+
+          first = "한전, 리벨리온·TTA와 국산 NPU 기반 AI 영상분석 협력 - 뉴스락"
+          second = "한전 변전소 AI 관제에 국산 NPU 투입...리벨리온 현장 실증 - zdnet.co.kr"
+
+          sig1 = event_signature(first)
+          sig2 = event_signature(second)
+          assert sig1 == sig2, (sig1, sig2)
+          assert sig1 == "kepco|npu|power_video", sig1
+          assert "실증" in classify(second), classify(second)
+
+          now = dt.datetime.now(ZoneInfo("Asia/Seoul"))
+          seen = {
+              "first": {
+                  "title": first,
+                  "url": "https://example.com/a",
+                  "event_signature": sig1,
+                  "material_stage": material_stage(first),
+                  "first_seen_kst": now.isoformat(timespec="seconds"),
+                  "pending_alert": True,
+              }
+          }
+          item = {
+              "title": second,
+              "summary": "",
+              "url": "https://example.com/b",
+          }
+          reason = find_duplicate_event(item, seen, now)
+          assert reason and reason.startswith("same_event:"), reason
+          print(f"rebellions_same_event_regression_ok=true signature={sig1} reason={reason}")
+          PY
+
       - name: Check Rebellions partnerships, orders and deployments
         run: python scripts/rebellions_partner_watch.py
 
