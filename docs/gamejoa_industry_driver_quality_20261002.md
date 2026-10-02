@@ -88,4 +88,26 @@ Those remaining defects generated another regression case and scope checks.
 Same-day threshold editions now share an event key; a changed level, country
 or maturity remains separate. Personnel and local retail publicity rank below
 industry changes, while actual earnings and capital/ownership actions stay
-eligible. The amended configuration still requires fresh runtime verification.
+eligible. The amended configuration was submitted for the fresh runtime
+verification recorded below.
+
+## Final Verification Record
+
+- Code revision: `83935cdf640bde614eacaf9893c398365b39e2c5`.
+- All 11 local contract/regression scripts passed, including 47 materiality
+  tests, 95 coverage cases and 26 detail-queue tests. Diff whitespace checks
+  passed; existing report outputs and delivery/seen state were left untouched.
+- GitHub live dry run `36946678572` completed successfully at
+  `2026-10-02T00:38:01Z`, including the same 47 materiality tests and generated
+  report guard. Actual Telegram send and state-commit steps were skipped.
+- The saved `09:34:49 KST` artifact was reread: 7 verified article bodies,
+  materiality version 5, 7 complete cores of at most 91 characters, 7 correctly
+  formed original-link anchors, and no removed commentary/status fields or
+  broken URL schemes. The known personnel/store-publicity examples were not
+  selected. Synthetic tests separately exercise bond-edition deduplication
+  and preserve distinct levels, countries and maturities.
+- Collection remains incomplete: 160 detail attempts, 131 verified, 29 failed,
+  523 deferred, and one source failure. This success is not proof of full news
+  coverage, validation of every reference claim, or Telegram receipt.
+- The radar workflow remained active; `khs-policy-watch.yml` remained
+  `disabled_manually`. No historical test article was sent.
