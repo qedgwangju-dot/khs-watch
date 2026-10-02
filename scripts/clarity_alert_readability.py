@@ -379,9 +379,18 @@ def paragraph_split(text, limit=3900):
     return chunks
 
 
+def header_for_events(events):
+    signal = " ".join(
+        clean(f"{e.get('event_type','')} {e.get('title','')} {e.get('detail','')}") for e in events
+    ).lower()
+    legislative = bool(re.search(r"clarity|h\\.?r\\.?\\s*3633|cloture|motion to proceed|senate|상원|법안", signal, re.I))
+    if legislative:
+        return "<b>🔔 CLARITY 법안 Watch — 표결·규제·BTC/COIN/Circle 영향</b>"
+    return "<b>🇺🇸 미국 암호자산 규제 Watch — SEC/CFTC·BTC/COIN/Circle 영향</b>"
+
 def build_readable(events):
     events = sorted(events, key=event_rank, reverse=True)
-    header = "<b>🔔 CLARITY 법안 Watch — 표결·규제·BTC/COIN/Circle 영향</b>"
+    header = header_for_events(events)
     blocks = [event_block(event, i) for i, event in enumerate(events, 1)]
     parts = [header]
 
