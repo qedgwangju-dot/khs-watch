@@ -204,7 +204,7 @@ jobs:
           volantis_customer = "Volantis A-1 integrated inference engines begin customer sampling for 2027 delivery"
           assert watch.signal_score(volantis_customer, "Volantis") >= 7, "Volantis customer-sampling signal must trigger"
           assert watch.category_for(volantis_customer, "Volantis") == "광메모리 고객검증·상용화"
-          assert watch.stage_for(volantis_customer) == "고객 샘플·배치"
+          assert watch.stage_for(volantis_customer) == "고객 검증·양산 도입"
 
           volantis_perf = "Volantis A-1 silicon demonstrates 240 TB/s optical memory bandwidth at under 1 pJ/bit"
           assert watch.signal_score(volantis_perf, "Volantis") >= 7, "Volantis measured-performance signal must trigger"
