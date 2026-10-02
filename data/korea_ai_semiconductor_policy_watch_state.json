@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-09-27T18:11:08+09:00",
-  "last_checked_kst": "2026-10-02T14:52:45+09:00",
+  "last_checked_kst": "2026-10-02T21:50:43+09:00",
   "seen": {
     "2b31306619b190498e7f41c7": {
       "title": "[입찰공고] 2026년 AI반도체 지원사업 성과조사분석 및 우수사례 발굴 용역 - 정보통신산업진흥원(NIPA)",
@@ -246,6 +246,51 @@
       "category": "조달·선정·협약",
       "first_seen_kst": "2026-10-02T08:57:49+09:00",
       "suppressed_stale": true
+    },
+    "239a291128f19af8787cd7da": {
+      "title": "국산 AI반도체 3사 나란히 혁신제품 지정…리벨리온·퓨리오사에이아이·딥엑스 공공시장 진입 시작 - 조달경제신문",
+      "url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1hdnZrYWlrYjFtUTNIWTRXRWVKdFAxQUp3YW12ZDE0WXRaMTNQWXFrdnFPZ3ZnNGFzemdvd1dwQ1MzWWhvcXp0RWMxS3ZsNmNqZElUTnFyYnJIaDBmOHhVZ2d0YTdsRWEyaVI0WkZB?oc=5",
+      "event_signature": "리벨리온+딥엑스|조달·선정·협약|혁신제품",
+      "stage": 4,
+      "category": "조달·선정·협약",
+      "first_seen_kst": "2026-10-02T21:50:43+09:00",
+      "suppressed_stale": true
+    },
+    "f200213f2d97c2cdf17e9bf2": {
+      "title": "\"국산 NPU 영토확장\"…딥엑스, 양산 첫해 글로벌 수주 77건 기록 - 유니콘팩토리",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE1DTFA5SUI4TlNFVHJrWXYxVXdjcUxXcHY0U1RZR3ZCdWF6dFgzSXlNZ0pOVGdZZG8wNWtGVUQ0NnNQOW9lTlRWWXhNakV4MjNrbk9IY25FdVdGTnpUZGRQeGJOcGhwdDBzcEF3RA?oc=5",
+      "event_signature": "딥엑스|실제 수주·구매|일반",
+      "stage": 5,
+      "category": "실제 수주·구매",
+      "first_seen_kst": "2026-10-02T21:50:43+09:00",
+      "suppressed_stale": true
+    },
+    "c63bbe90e23fac1f07b1aa6a": {
+      "title": "'국산 AI 반도체' 리벨리온-딥엑스, 공공기관 수의계약·조달 채널 확보 - v.daum.net",
+      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBMcTdTWmtfdFdqd2x5aUNnS25uZU9XQ2J0czBETjBsN2E2Rkk3LVVTVEc4MXlGbFlrUkNUcU91R0tTRUZRTVJZc2E0QQ?oc=5",
+      "event_signature": "리벨리온+딥엑스|조달·선정·협약|혁신제품",
+      "stage": 4,
+      "category": "조달·선정·협약",
+      "first_seen_kst": "2026-10-02T21:50:43+09:00",
+      "suppressed_duplicate": "same_title"
+    },
+    "631415229665d50c00222c5b": {
+      "title": "리벨리온 NPU, 정부 혁신제품 지정…공공조달 시장 진입 - 네이트",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1zZGdzOTJnR2stdEJSZ2VCZFZobC04OWZrbnFXWlZoSEY2SmRwbUgzdXo1bjNXWWFXTHlxTjV4SnUxN3FBZ0duMjNYTUJnb2I3R24w?oc=5",
+      "event_signature": "리벨리온|조달·선정·협약|혁신제품",
+      "stage": 4,
+      "category": "조달·선정·협약",
+      "first_seen_kst": "2026-10-02T21:50:43+09:00",
+      "suppressed_stale": true
+    },
+    "905a59e69f6e6ebd38a06298": {
+      "title": "금융위 \"㈜퓨리오사AI 투자승인은 국민성장펀드 마중물 수행 사례\" - 정책브리핑",
+      "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBUWmJEMDZZUTRQUF9hc2h2cC1JSHpCRmp0cXVnRHhZRWZSd0JJNjdsRUR4TDFxOUhkQUZTQnlLQUhIWkg3MTZEOTNybFhpX1hiUHJJNkdubTkyam90cG9IWHo2dDdJVkxra05QSA?oc=5",
+      "event_signature": "퓨리오사AI|정책·산업 변화|일반",
+      "stage": 1,
+      "category": "정책·산업 변화",
+      "first_seen_kst": "2026-10-02T21:50:43+09:00",
+      "suppressed_duplicate": "same_title"
     }
   }
 }
