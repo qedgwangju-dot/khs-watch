@@ -5,7 +5,6 @@ on:
     paths:
       - ".github/workflows/rebellions-partner-watch-telegram.yml"
       - "scripts/rebellions_partner_watch.py"
-      - "data/rebellions_partner_watch_state.json"
   schedule:
     # GitHub cron is UTC. Hourly, offset from crowded slots.
     - cron: "37 * * * *"
@@ -180,22 +179,21 @@ jobs:
       - name: Persist watch state
         if: success() && hashFiles('out/rebellions_partner_watch_pending_state.json') != '' && (hashFiles('out/rebellions_partner_watch_alert.md') == '' || hashFiles('out/rebellions_partner_watch_telegram_confirmed.json') != '')
         run: |
-          cp out/rebellions_partner_watch_pending_state.json data/rebellions_partner_watch_state.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Bring the checkout to the latest main BEFORE writing the pending state.
+          # The state file itself no longer triggers this workflow, preventing self-trigger loops.
+          git fetch origin main
+          git rebase origin/main
+
+          cp out/rebellions_partner_watch_pending_state.json data/rebellions_partner_watch_state.json
           git add data/rebellions_partner_watch_state.json
           if git diff --cached --quiet; then
             echo "Rebellions watch state unchanged"
           else
-            git commit -m "Update Rebellions partner watch state"
-            for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then
-                exit 0
-              fi
-              git rebase --abort 2>/dev/null || true
-              sleep $((attempt * 3))
-            done
-            exit 1
+            git commit -m "Update Rebellions partner watch state [skip ci]"
+            git push origin HEAD:main
           fi
 
       - name: Upload verification artifacts
