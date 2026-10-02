@@ -6942,7 +6942,24 @@ def source_output_aligned(alert: dict) -> bool:
     return True
 
 
+def bond_yield_threshold_theme(alert: dict) -> str:
+    title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
+    event = re.search(
+        r"(미국|영국|독일|프랑스|일본|이탈리아|캐나다|한국)\s*(\d{1,2})년물\s*국채\s*"
+        r"(?:금리|수익률).{0,20}?(\d+(?:\.\d+)?)\s*[%％]\s*(돌파|하회)", title,
+    )
+    published = detail_queue.parse_time(alert.get("published"))
+    if not event or not published:
+        return ""
+    country, tenor, threshold, direction = event.groups()
+    day = published.astimezone(dt.timezone(dt.timedelta(hours=9))).date().isoformat()
+    return f"bond_yield_threshold:{country}:{int(tenor)}:{float(threshold):.12g}:{direction}:{day}"
+
+
 def semantic_event_theme(alert: dict) -> str:
+    yield_theme = bond_yield_threshold_theme(alert)
+    if yield_theme:
+        return yield_theme
     macro_theme = telegram.macro_release_theme(alert)
     if macro_theme:
         return macro_theme
@@ -7994,6 +8011,9 @@ def normalize_alert_for_output(alert: dict) -> dict:
     ceo_theme = telegram.korean_joint_ceo_theme(out)
     if ceo_theme:
         out["supply_chain_theme"] = ceo_theme
+    yield_theme = bond_yield_threshold_theme(out)
+    if yield_theme:
+        out["supply_chain_theme"] = yield_theme
     if is_china_mofcom_control(out):
         out["china_mofcom_trade_control"] = True
         out["impacts"] = ["돈 버는 능력", "수급", "시간표"]

@@ -79,3 +79,13 @@ product/store metrics rank below the industry benchmark; full-company
 earnings/guidance and meaningful contracts/capacity changes remain eligible.
 The correction must be retested against the complete suite and another fresh
 runtime artifact without sending historical samples or resetting seen state.
+
+The second dry run, 36945252801, passed 46 materiality tests and the report
+guards, and its manual reread confirmed the retail-FX correction. It still
+selected two editions of one UK 30-year bond-yield threshold event, a routine
+personnel announcement with business background, and a local store PR story.
+Those remaining defects generated another regression case and scope checks.
+Same-day threshold editions now share an event key; a changed level, country
+or maturity remains separate. Personnel and local retail publicity rank below
+industry changes, while actual earnings and capital/ownership actions stay
+eligible. The amended configuration still requires fresh runtime verification.

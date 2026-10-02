@@ -115,6 +115,8 @@ class MaterialityChecks(unittest.TestCase):
             ("부산 9월 소비자물가 2.7% 상승", "부산의 9월 소비자물가지수는 전년 동월 대비 2.7% 상승했다."),
             ("커피기업, 매장당 매출 3년 새 18% 증가", "공정위 정보공개서 기준 지난해 매장당 매출은 3년 전보다 18% 증가했다."),
             ("키즈 신발 매출 2.5배 증가", "패션기업은 걸음마 신발의 1~9월 매출이 전년 동기 대비 150% 증가했다고 밝혔다."),
+            ("명동 패션 매장 고객 10명 중 7명 외국인…쇼핑 뜬다", "패션기업은 명동 플래그십 스토어의 외국인 매출이 열흘간 전년 대비 40% 증가했다고 밝혔다."),
+            ("그룹, 사장단 인사…건설사 이사회 의장 내정", "그룹은 사장단 인사를 발표했다. 계열사의 기존 자산 매각 계약이 체결됐고 해외 공장 가동이 늘었다."),
         )
         for title, body in weak:
             self.assertEqual(materiality.assess(title, body)["priority"], 1)
@@ -126,6 +128,29 @@ class MaterialityChecks(unittest.TestCase):
             selected = radar.quality_display_alerts(items, len(strong))
         self.assertEqual({item["source_title"] for item in selected}, {title for title, _body in strong})
         self.assertEqual(materiality.assess("신발기업, 영업이익 가이던스 상향", "신발기업은 영업이익 가이던스를 20% 상향했다.")["priority"], 3)
+        self.assertEqual(materiality.assess("임원 인사·이사회 의장 내정, 지분 인수 결정", "기업은 지분 30% 인수를 결정하고 이사회 의장을 내정했다.")["priority"], 3)
+
+    def test_bond_threshold_revisions_share_an_event_but_new_levels_do_not(self):
+        titles = (
+            "영국 30년물 국채 금리 장중 6％ 돌파…G7서 14년만(종합)",
+            "영국 30년물 국채 금리 장중 6% 돌파…G7서 14년만에 처음",
+            "영국 30년물 국채 금리 장중 6.1% 돌파",
+        )
+        items = [alert(title, f"영국 30년물 국채 금리는 장중 {'6.1' if index == 2 else '6.029'}%까지 상승했다.") for index, title in enumerate(titles)]
+        for index, item in enumerate(items):
+            item["link"] = f"https://www.yna.co.kr/view/bond-threshold-{index}"
+        themes = [radar.bond_yield_threshold_theme(item) for item in items]
+        self.assertEqual(themes[0], themes[1])
+        self.assertNotEqual(themes[1], themes[2])
+        seen_keys = [set(production.contract.telegram.alert_seen_keys(item)) for item in items]
+        self.assertTrue(any(key.startswith("event:") for key in seen_keys[0] & seen_keys[1]))
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            selected = radar.quality_display_alerts(items, 7)
+        self.assertEqual(len(selected), 2)
+        changed_country = {**items[0], "source_title": titles[0].replace("영국", "미국")}
+        changed_tenor = {**items[0], "source_title": titles[0].replace("30년물", "10년물")}
+        self.assertNotEqual(themes[0], radar.bond_yield_threshold_theme(changed_country))
+        self.assertNotEqual(themes[0], radar.bond_yield_threshold_theme(changed_tenor))
 
     def test_industry_driver_event_classes_have_source_evidence(self):
         self.assertEqual(len(INDUSTRY_DRIVER_CASES), 20)

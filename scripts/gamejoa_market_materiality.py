@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 4
+VERSION = 5
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should)\b", re.I,
@@ -35,10 +35,12 @@ REGIONAL_CPI = re.compile(
 )
 RETAIL_PRODUCT_METRIC = re.compile(
     r"매장당\s*매출|(?:키즈|신발|커피|패션).{0,25}(?:매출|판매)|(?:매출|판매).{0,20}(?:매장당|신발|커피)|"
-    r"sales per store|kids.{0,20}sales", re.I,
+    r"쇼핑|플래그십\s*스토어|sales per store|kids.{0,20}sales", re.I,
 )
+ROUTINE_PERSONNEL = re.compile(r"사장단\s*인사|임원\s*인사|이사회\s*의장.{0,15}내정", re.I)
 ENTERPRISE_CHANGE = re.compile(
-    r"영업이익|순이익|가이던스|마진|현금흐름|수주|공급계약|납품계약|공장|양산|인수|합병|규제|관세|주주환원|"
+    r"영업이익|순이익|가이던스|실적|분기|연결|마진|현금흐름|수주|공급계약|납품계약|공장|양산|인수|합병|규제|관세|주주환원|"
+    r"상장|기업공개|자사주|배당|지분|주식\s*(?:매수|매각)|자금조달|유상증자|\bipo\b|"
     r"operating profit|net income|guidance|cash flow|supply contract|factory|acquisition", re.I,
 )
 HARD_HEADLINE = re.compile(
@@ -349,6 +351,9 @@ def assess(title: str, body: str) -> dict:
         elif RETAIL_PRODUCT_METRIC.search(title) and not ENTERPRISE_CHANGE.search(title):
             result["priority"] = min(result["priority"], 1)
             result["scope_note"] = "retail_product_or_store_metric"
+        elif ROUTINE_PERSONNEL.search(title) and not ENTERPRISE_CHANGE.search(title):
+            result["priority"] = min(result["priority"], 1)
+            result["scope_note"] = "personnel_announcement_without_business_change"
         if re.search(r"증시|코스피|코스닥|나스닥|뉴욕마감|대만.*가권", title) and re.search(r"마감|출발|강보합|약보합|소폭|0\.\d+%", title) and not focus_kind(title) and not re.search(
             r"순매수|순매도|유입|유출|서킷브레이커|사이드카|실적|관세|연준|fomc|금리|유가", title, re.I,
         ):
