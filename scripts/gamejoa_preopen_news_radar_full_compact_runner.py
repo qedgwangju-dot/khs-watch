@@ -8301,8 +8301,8 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
         if alert["market_materiality"]["disposition"] == "exclude":
             alert["_exclusion_reason"] = "market_materiality:" + alert["market_materiality"]["reason"]
             continue
-        if alert["market_materiality"]["priority"] < 2 and alert["market_materiality"].get("scope_note"):
-            alert["_exclusion_reason"] = "limited_scope_without_market_change:" + alert["market_materiality"]["scope_note"]
+        if alert["market_materiality"]["disposition"] != "keep" or alert["market_materiality"]["priority"] < 2:
+            alert["_exclusion_reason"] = "no_source_market_change_evidence:" + alert["market_materiality"].get("scope_note", alert["market_materiality"]["reason"])
             continue
         if is_polysilicon_11052_base_rehash(alert):
             alert["_exclusion_reason"] = "historical_polysilicon_11052_base_rehash"

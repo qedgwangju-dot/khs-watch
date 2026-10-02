@@ -176,3 +176,39 @@ events exist. The final guard independently checks that scope floor as well.
 Fifty-eight materiality tests now cover the observed failures and all 24
 industry event classes. The next final record must use the version-8 runtime
 artifact and distinguish collection failures/deferred rows from no news.
+
+Run `36951418748` passed 58 tests and report validation at
+`2026-10-02T01:36:12Z`, but its manual reread found additional generic filler:
+a local administrative ordinance, a conference presentation about preventing
+outages (not an outage or capacity change), prisoner-disclosure diplomacy,
+administrative tax-estimation work and a park opening with unrelated M&A
+background. These were not accepted as equity-moving evidence merely because
+their broad legacy sector labels or later article paragraphs matched words.
+
+Version 9 requires positive source-authored market-change evidence with
+priority at least 2 for publication, not just the old sector/score gate. It
+anchors evidence to the headline topic, skips unrelated `한편` background,
+distinguishes prevention advice from actual operational changes, scopes
+ordinances to economic/industrial subjects, and requires concrete industrial
+context for generic technology adoption. Tax-rate changes remain eligible;
+tax-estimation administration alone does not. Tentative customer talks,
+architecture adoption, experiments and all 24 industry classes still pass.
+Sixty-one tests now cover these distinctions. Discovery can retain unfamiliar
+review candidates in diagnostics; those candidates cannot fill output slots
+without source evidence. Final-report validation independently enforces this
+same evidence threshold.
+
+The full 11-script regression bundle passed locally, including 95 coverage
+cases and 26 detail-queue tests. Strengthening the evidence gate initially
+exposed missing action expressions for real investments, construction, ETF
+listings, CB conversion and reported FX changes; those source expressions were
+added without relaxing the publication threshold. Verified foreign article
+body/provenance fields now survive legacy topic overlays. Unverified snippets
+are not upgraded, and geopolitical risk does not invent observed investor
+flows when the source contains no flow evidence.
+
+A read-only version-9 replay of the actual version-8 artifact retained the
+semiconductor market-driver and power-cable order stories and removed all five
+administrative/publicity fillers (7 selected rows became 2). No saved core,
+delivery state or sent-event key was modified. Fresh live dry-run and saved
+artifact verification are still required before the amended runtime is accepted.

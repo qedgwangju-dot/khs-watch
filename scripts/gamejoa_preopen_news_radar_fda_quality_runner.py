@@ -225,6 +225,15 @@ def enforce_fda_quality_gate() -> None:
         if not alert:
             return None
 
+        # Topic overlays must preserve collector-verified foreign source text.
+        # Never promote an unverified snippet while copying these fields.
+        if row.get("body_verified"):
+            alert["body_verified"] = True
+            alert["source_title"] = str(row.get("source_title") or row.get("title") or "")
+            for field in ("source_body", "source_abstract"):
+                if row.get(field):
+                    alert[field] = row[field]
+
         sectors = alert.get("sectors") or []
         is_biotech = BIOTECH_SECTOR in sectors or has_any(text, ["fda", "pdufa", "crl", "bla", "nda", "clinical trial"])
         if not is_biotech:

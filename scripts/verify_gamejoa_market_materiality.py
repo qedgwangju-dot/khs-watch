@@ -96,6 +96,48 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_foreign_topic_overlays_preserve_only_verified_collector_evidence(self):
+        title = "US attacks Iran over ship being hit in Strait of Hormuz"
+        body = "The US military completed airstrikes targeting Iran after a civilian vessel was attacked in the Strait of Hormuz, threatening the ceasefire."
+        row = {"source": "AP News", "publisher": "AP News", "layer": "trusted", "title": title,
+               "source_title": title, "source_body": body, "source_abstract": body, "summary": body,
+               "body_verified": True, "published": NOW, "link": "https://apnews.com/article/verified-foreign-fixture"}
+        item = production.contract.strict.classify(row, NOW)
+        self.assertIsNotNone(item)
+        self.assertTrue(item["body_verified"])
+        self.assertEqual(item["source_body"], body)
+        self.assertEqual(item["source_title"], title)
+        self.assertEqual(radar.source_market_materiality(item)["disposition"], "keep")
+        unverified = production.contract.strict.classify({**row, "body_verified": False}, NOW)
+        self.assertIsNotNone(unverified)
+        self.assertNotEqual(radar.source_market_materiality(unverified)["disposition"], "keep")
+
+    def test_legacy_sector_labels_cannot_replace_source_market_change_evidence(self):
+        cases = (
+            ("영월 2027년 주요업무 보고회 개최", "영월은 주요업무 보고회를 개최했다. 출향군민 교류 조례 제정으로 행정 수요에 대응한다."),
+            ("기업 AI 데이터센터 운영 혁신 전략 발표", "기업은 기술 강연을 진행했다. 발표자는 AIDC의 설비 가동 중단을 방지하는 운영 품질이 중요하다고 말했다."),
+            ("우크라 외무 北포로 공개 논란 진화", "우크라이나와 한국은 포로 송환 사실을 비공개하기로 합의했지만, 비공개 합의 여부를 두고 논란이 발생했다."),
+            ("재경부 세수추계 개선", "재경부는 세수추계 정확도를 개선한다. 세수 부족 규모를 파악해 다음 해 예산안 심사에 활용한다. 국유재산 실태조사에는 인공지능 변화탐지 기술을 도입했다."),
+            ("식품기업 반려동물 정원 개장", "식품기업은 서울시와 반려동물 정원을 개장했다. 한편 식품기업은 해외 회사 인수를 계기로 사업 통합을 추진한다."),
+        )
+        for title, body in cases:
+            item = alert(title, body)
+            item["sectors"] = ["반도체/AI", "금융/자본시장"]
+            with patch.object(radar.base, "kst_now", return_value=NOW):
+                self.assertEqual(radar.quality_display_alerts([item], 7), [], title)
+
+    def test_conference_or_local_policy_with_new_economic_change_survives(self):
+        cases = (
+            ("기업 AI 데이터센터 운영 혁신 전략 발표", "기업은 데이터센터에 800V HVDC 전력 변환 규격을 채택한다고 발표했다."),
+            ("지역 데이터센터 조례 개편", "시의회는 데이터센터 인허가 조례를 개편하고 전력 공급 규제를 완화했다."),
+            ("재경부 세율 인하 발표", "재경부는 기업의 세율을 2%포인트 인하하는 방안을 발표했다."),
+            ("우크라 에너지 시설 공격", "우크라이나는 러시아 에너지 시설 공격을 확대했다."),
+        )
+        for title, body in cases:
+            audit = materiality.assess(title, body)
+            self.assertEqual(audit["disposition"], "keep", (title, audit))
+            self.assertGreaterEqual(audit["priority"], 2)
+
     def test_actual_run_nonmarket_ownership_ceremony_and_product_pr_are_excluded(self):
         cases = (
             ("메시, 스페인 2부 엘덴세 지분 전량 인수…두 번째 구단주 행보", "메시는 투자그룹이 보유한 엘덴세 지분 전량을 인수했다. 축구 구단주가 됐다."),

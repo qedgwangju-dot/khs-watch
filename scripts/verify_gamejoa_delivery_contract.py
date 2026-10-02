@@ -682,6 +682,9 @@ def main() -> int:
         ),
         "published": now,
     }
+    # Final-selection fixtures represent details already fetched and validated,
+    # not an unverified discovery snippet awaiting the article-detail queue.
+    uae_ear_row.update(source_body=uae_ear_row["source_abstract"], body_verified=True)
     uae_ear_alert = production.contract.strict.classify(uae_ear_row, now)
     if not uae_ear_alert:
         errors.append("Federal Register UAE EAR final rule was not classified")
@@ -699,7 +702,7 @@ def main() -> int:
             errors.append("Federal Register UAE EAR source/body alignment guard did not pass")
         selected_uae_ear = compact.quality_display_alerts([uae_ear_alert], 5)
         if len(selected_uae_ear) != 1 or not compact.source_output_aligned(selected_uae_ear[0]):
-            errors.append("Federal Register UAE EAR alert failed final selection source/body alignment")
+            errors.append(f"Federal Register UAE EAR alert failed final selection source/body alignment: {uae_ear_alert.get('_exclusion_reason')} / {compact.source_market_materiality(uae_ear_alert)} / source_fields={[(k, uae_ear_alert.get(k)) for k in ('body_verified', 'source_title', 'original_news', 'source_body')]}")
 
     # Regression fixture for the July 21 Reuters Treasury-tax article.  The
     # collector query label contains nuclear/rate terms, but labels are routing
@@ -781,6 +784,7 @@ def main() -> int:
         "summary": "The U.S. military completed airstrikes targeting Iran after a civilian vessel was attacked in the Strait of Hormuz, threatening the ceasefire.",
         "published": now,
     }
+    iran_row.update(source_body=iran_row["summary"], source_abstract=iran_row["summary"], body_verified=True)
     iran_alert = production.contract.strict.classify(iran_row, now)
     if not iran_alert:
         errors.append("Iran/Hormuz ship attack and U.S. strike was not classified")
@@ -788,9 +792,11 @@ def main() -> int:
         normalized_iran = compact.normalize_alert_for_output(iran_alert)
         if normalized_iran.get("news") != "미국, 이란 재공격·호르무즈 상선 피격: 휴전·유가 리스크":
             errors.append(f"Iran/Hormuz alert did not render a specific Korean title: {normalized_iran.get('news')}")
-        expected_impacts = {"돈 버는 능력", "할인율", "수급", "시간표"}
+        expected_impacts = {"돈 버는 능력", "할인율"}
         if not expected_impacts.issubset(set(normalized_iran.get("impacts") or [])):
             errors.append(f"Iran/Hormuz alert lost decision impacts: {normalized_iran.get('impacts')}")
+        if "수급" in set(normalized_iran.get("impacts") or []):
+            errors.append("Iran/Hormuz source without investor-flow evidence invented actual market flows")
         if not normalized_iran.get("realtime_policy_lane"):
             errors.append("Iran/Hormuz alert was not routed to the realtime policy lane")
         reuters_duplicate = dict(normalized_iran)
@@ -803,7 +809,7 @@ def main() -> int:
         })
         one_story = compact.quality_display_alerts([reuters_duplicate, normalized_iran], 5)
         if len(one_story) != 1 or "AP" not in str(one_story[0].get("publisher") or ""):
-            errors.append(f"Iran/Hormuz cross-source story was not deduped to AP: {one_story}")
+            errors.append(f"Iran/Hormuz cross-source story was not deduped to AP: {one_story} / {normalized_iran.get('_exclusion_reason')} / {compact.source_market_materiality(normalized_iran)} / source_fields={[(k, normalized_iran.get(k)) for k in ('body_verified', 'source_title', 'original_news', 'source_body')]}")
         raw_reuters_variant = dict(normalized_iran)
         raw_reuters_variant.update({
             "news": "트럼프 에너지 발언: 유가·운임 리스크",
