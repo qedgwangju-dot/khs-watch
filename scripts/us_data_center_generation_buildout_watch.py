@@ -73,7 +73,7 @@ NEWS_QUERIES = (
 )
 
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
-FORMAT_VERSION = 2
+FORMAT_VERSION = 4
 
 
 def fetch(url: str, timeout: int = 30):
@@ -322,17 +322,20 @@ format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
 should_alert = baseline_run or format_upgrade or bool(new_items) or bool(gev_changes)
 
 seen = list(dict.fromkeys(list(old_ids) + [x["id"] for x in items]))[-1600:]
-pending = {
+combined_baseline = dict(old.get("baseline") or {})
+combined_baseline.update(BASELINE)
+pending = dict(old)
+pending.update({
     "initialized": True,
     "format_version": FORMAT_VERSION,
-    "baseline": BASELINE,
+    "baseline": combined_baseline,
     "gev_metrics": gev,
     "seen_ids": seen,
     "last_fx_krw_per_usd": fx,
     "fx_source": fx_source,
     "fx_checked_utc": fx_checked,
     "updated_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
-}
+})
 PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 if should_alert:
