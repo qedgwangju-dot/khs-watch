@@ -315,7 +315,7 @@ def filter_alertable_events(events, now=None, freshness_days=7):
             event["evidence_sources"] = [
                 "SEC 보도자료 2026-100",
                 "SEC Fact Sheet — IA-7023 / IC-36353",
-                "SEC 위원장·위원 성명(동일 제안규칙)",
+                "NYDFS 가상자산 규제기관 목록(Coinbase Custody·Circle New York Trust)",
             ]
             event["semantic_event"] = "sec_crypto_custody_s7_2026_35"
         output.append(event)
