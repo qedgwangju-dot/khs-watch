@@ -315,6 +315,8 @@ def collect_federal_register(errors):
                     detail_parts.append(f"Publication Date: {clean(row.get('publication_date'))}")
                 if row.get("comments_close_on"):
                     detail_parts.append(f"Comments Close: {clean(row.get('comments_close_on'))}")
+                if row.get("effective_on"):
+                    detail_parts.append(f"Effective Date: {clean(row.get('effective_on'))}")
                 if row.get("citation"):
                     detail_parts.append(f"Citation: {clean(row.get('citation'))}")
                 events.append(Event(
