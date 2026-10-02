@@ -235,6 +235,19 @@ baseline_new = '''    "incremental_gas_bcf_day": 4.0,
     "ls_bloom_dc_order_krw_eok": 3190.0,
     "ls_apr_dc_order_krw_eok": 1703.0,
     "ls_may_dc_order_krw_eok": 1050.0,
+    "ms_new_power_need_2026_2028_gw": 97.0,
+    "ms_under_construction_gw": 21.0,
+    "ms_available_grid_gw": 19.0,
+    "ms_initial_shortfall_gw": 57.0,
+    "ms_alternative_supply_gw": 24.0,
+    "ms_residual_shortfall_gw": 33.0,
+    "ms_residual_shortfall_2029_gw": 72.0,
+    "gs_us_2030_power_gw": 108.0,
+    "gs_us_prior_2030_power_gw": 83.0,
+    "gs_global_growth_2025_2030_pct": 170.0,
+    "gs_global_prior_growth_pct": 117.0,
+    "gs_btm_gas_capacity_2030_gw": 30.0,
+    "gs_btm_power_delivery_2030_gw": 20.0,
 }'''
 if baseline_old not in t:
     raise SystemExit("generation capex baseline insertion point not found")
@@ -516,6 +529,33 @@ msg_new = '''    cm = pwc_metrics
     msg.append(f"• <b>HD현대일렉트릭</b> │ 북미 데이터센터 장기 기본계약 최대 <b>{b['hd_hyundai_dc_framework_krw_eok']:,.0f}억원</b> │ 실제 개별 발주는 분할 · {int(b['hd_hyundai_delivery_year'])}년까지 순차 납품")
     msg.append(f"• <b>LS ELECTRIC</b> │ 뉴멕시코 {b['ls_bloom_dc_order_krw_eok']:,.0f}억원 · 북미 {b['ls_apr_dc_order_krw_eok']:,.0f}억원 · 미국 빅테크 {b['ls_may_dc_order_krw_eok']:,.0f}억원의 확인된 프로젝트를 각각 추적")
     msg.append("• <b>판정:</b> PwC 전망은 시장 기준선, 기업 수주는 확정 매출 연결 후보로 분리합니다. 기본계약 상단을 실제 발주액과 동일시하지 않습니다.")
+
+    msg += ["", "<b>⚡ Morgan Stanley·Goldman Sachs 전력 병목 기준선</b>"]
+    msg.append(
+        f"• <b>Morgan Stanley 2026~2028 신규 필요</b> │ <b>{b['ms_new_power_need_2026_2028_gw']:g}GW</b>"
+        f" = 건설 중 {b['ms_under_construction_gw']:g}GW + 가용 전력망 {b['ms_available_grid_gw']:g}GW"
+        f" + 초기 부족 <b>{b['ms_initial_shortfall_gw']:g}GW</b>"
+    )
+    msg.append(
+        f"• <b>대체전원 반영</b> │ 현장 가스·연료전지·직접원전 등 {b['ms_alternative_supply_gw']:g}GW"
+        f" → 2028 잔여 부족 <b>{b['ms_residual_shortfall_gw']:g}GW</b>"
+        f" │ 2029까지 <b>{b['ms_residual_shortfall_2029_gw']:g}GW</b>"
+    )
+    msg.append(
+        f"• <b>Goldman Sachs 미국 2030 데이터센터 전력</b> │ {b['gs_us_prior_2030_power_gw']:g}GW"
+        f" → <b>{b['gs_us_2030_power_gw']:g}GW</b> (+{(b['gs_us_2030_power_gw']/b['gs_us_prior_2030_power_gw']-1)*100:.1f}%)"
+    )
+    msg.append(
+        f"• <b>Goldman Sachs 글로벌 전력수요 증가</b> │ 2025~2030 기존 +{b['gs_global_prior_growth_pct']:g}%"
+        f" → <b>+{b['gs_global_growth_2025_2030_pct']:g}%</b>"
+    )
+    msg.append(
+        f"• <b>현장 가스발전</b> │ 2030 설비 약 {b['gs_btm_gas_capacity_2030_gw']:g}GW"
+        f" → 실제 공급전력 <b>{b['gs_btm_power_delivery_2030_gw']:g}GW+</b>"
+    )
+    msg.append("• <b>판정:</b> 위 GW는 증권사 수요·공급 전망이며 확정 계약·착공·전원 인가 용량과 분리합니다.")
+    msg.append("• <b>조기경보:</b> 수요 전망은 오르는데 실제 가용 IT전력·계통접속·발전 착공·상업운전 MW가 따라오지 않으면 병목 악화로 봅니다.")
+
     if pwc_changes:
         msg += ["", "<b>🔄 PwC 자본투자 전망 변경</b>"]
         for ch in pwc_changes[:6]:
@@ -536,6 +576,10 @@ status_old = '''    f"- 대형 전력변압기 최대 조달기간: **{power_met
 status_new = '''    f"- 대형 전력변압기 최대 조달기간: **{power_metrics['transformer_lead_max_years']}년**\n"
     f"- PwC 2026~2050 누적 자본투자 기준: **{BASELINE['pwc_total_2026_2050_usd_t']}조달러**\n"
     f"- PwC ICT 장비 비중: **{BASELINE['pwc_ict_share_2026_pct']}% → {BASELINE['pwc_ict_share_2050_pct']}%**\n"
+    f"- Morgan Stanley 2026~2028 신규 필요: **{BASELINE['ms_new_power_need_2026_2028_gw']}GW**\n"
+    f"- Morgan Stanley 대체전원 반영 후 2028 부족: **{BASELINE['ms_residual_shortfall_gw']}GW**\n"
+    f"- Goldman Sachs 2030 미국 데이터센터 전력: **{BASELINE['gs_us_2030_power_gw']}GW**\n"
+    f"- Goldman Sachs 2025~2030 글로벌 전력수요 증가: **+{BASELINE['gs_global_growth_2025_2030_pct']}%**\n"
     f"- 신규 의미자료: **{len(new_items)}건**\n"
 '''
 if status_old in t:
@@ -548,6 +592,8 @@ links_new = '''    msg.append(f"• {a('GE Vernova 가스터빈 공급능력', G
     msg.append(f"• {a('효성중공업 미국 AI 데이터센터 수주', 'https://www.hyosung.com/kr/newsroom/view/19332')}")
     msg.append(f"• {a('HD현대일렉트릭 북미 데이터센터 공급계약', 'https://hyundai-elec.co.kr/elect/ko/PR/newsList.jsp')}")
     msg.append(f"• {a('LS ELECTRIC 데이터센터 전력솔루션', 'https://nahpdev-web.ls-electric.com/markets/data-center')}")
+    msg.append(f"• {a('Morgan Stanley 미국 데이터센터 전력부족 전망', 'https://finance.yahoo.com/energy/articles/morgan-stanley-raises-us-data-134656211.html')}")
+    msg.append(f"• {a('Goldman Sachs 데이터센터 전력수요 전망', 'https://www.goldmansachs.com/insights/goldman-sachs-exchanges/the-outlook-for-data-center-power-demand-as-ai-token-use-grows')}")
     ALERT.write_text'''
 if links_old in t:
     t = t.replace(links_old, links_new, 1)
@@ -623,8 +669,9 @@ if gen_cap_old not in t:
 t = t.replace(gen_cap_old, gen_cap_new, 1)
 print("US generation watcher freshness + ordered dedupe guard inserted")
 
+t = t.replace("FORMAT_VERSION = 3", "FORMAT_VERSION = 4", 1)
 g.write_text(t, encoding="utf-8")
-print("US generation watcher recurring-capex + Korean supplier-order guard inserted")
+print("US generation watcher recurring-capex + power-gap + Korean supplier-order guard inserted")
 
 # Extend the existing time-to-power watcher with flexible-load / demand-response
 # signals.  This remains part of the same watcher and state file: no new alert
