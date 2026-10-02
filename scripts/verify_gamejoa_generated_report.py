@@ -207,6 +207,8 @@ def main() -> int:
                 errors.append(f"article without source market-change evidence filled a core-news slot: {alert.get('news')}")
             if alert.get("market_materiality") != materiality:
                 errors.append(f"source materiality audit missing or stale: {alert.get('news')}")
+            for fact_error in prod.runner.source_core_fact_errors(alert):
+                errors.append(f"source fact validation failed ({fact_error}): {alert.get('news')}")
             if not prod.runner.source_output_aligned(alert):
                 errors.append(
                     "source/body alignment failed: "

@@ -501,8 +501,10 @@ def main() -> int:
         "최태원 회장, SK하이닉스 주식 3620주 매수",
         "최태원 SK그룹 회장이 SK하이닉스 주식 3620주를 장내 매수했다.",
     )
-    if "최태원" not in insider_core or "3620주" not in insider_core or "개인 명의" not in insider_core:
+    if "최태원" not in insider_core or "3620주" not in insider_core or "매수" not in insider_core:
         failures.append(f"insider_purchase_core={insider_core}")
+    if "개인 명의" in insider_core:
+        failures.append(f"unsupported_personal_purchase_attribution={insider_core}")
 
     viral_title = '"일론 머스크인 줄 알았네"… SNS 달군 中 \'도플갱어\' 바비큐 사장'
     contaminated_core = "삼성전자 사장 171만8000원, 10주를 개인 명의로 매수했습니다."
@@ -1057,6 +1059,8 @@ def main() -> int:
     )
     if not insider_core.startswith("최태원 회장 3620주"):
         failures.append(f"insider_buyer_prefix_polluted={insider_core}")
+    if "개인 명의" not in insider_core:
+        failures.append(f"source_personal_purchase_attribution_lost={insider_core}")
 
     lta_core = radar.detailed_article_core(
         "SK하이닉스, AI 메모리 수요 강세 속 10개 고객사와 장기공급계약 체결",

@@ -96,6 +96,87 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_actual_delivery_publicity_is_not_promoted_by_service_keywords(self):
+        cases = (
+            ("지평, 방사청 출신 변호사 영입…방산 법률자문 강화", "법무법인 지평은 방사청 출신 변호사를 영입했다고 밝혔다. 국방 조달 및 수출 통제, 해외 투자 및 인수합병(M&A), 기술 이전을 아우르는 법률 솔루션을 제공하고 있다."),
+            ("바이오협, 바이오기업 31곳 투자유치 지원…미팅 20건 연계", "협회는 바이오기업 31곳을 대상으로 투자유치 지원 프로그램을 운영했다. 상장과 인수합병(M&A), 기술이전 등 투자금 회수 전략을 검토할 때 참고할 내용도 수록했다."),
+            ("관악연구소, 3억원 투자유치", "금융 AI 기업 관악연구소는 서울대학교 기술지주로부터 3억원 투자를 유치했다. 금융권 기술 적용 가능성을 확인하고 있다. 투자자는 독보적인 기술 역량으로 혁신을 이끌 것으로 기대한다고 말했다."),
+            ("휴온스, 글로벌 학회 신약 연구 초록 채택", "휴온스는 비임상 연구결과 2건이 학회 초록으로 선정됐다고 밝혔다. 관계자는 후보물질의 개발 가능성을 검증하면서 임상 단계까지 확대하겠다고 말했다."),
+            ("광통신주, AI 투자 기대감에 상한가", "차세대 통신망 수요 확대 기대감에 광통신주가 29.8% 상승했다. 단기 테마성 수급 유입에 유의할 필요가 있다는 지적이다."),
+            ("[특징주] AI 데이터 센터 투자 확대에 광통신주 강세…머큐리, 상한가", "차세대 통신망 수요 확대 기대감에 머큐리가 29.8% 상승했다. 이날 주가 상승은 인공지능(AI) 데이터센터 확산과 대용량 트래픽 증가에 따라 초고속 유무선 전송망과 광통신 네트워크 인프라를 고도화해야 한다는 시장의 요구가 부각된 영향으로 풀이된다. 오이솔루션은 광트랜시버를 생산하고 있으며, 우리넷은 광전송 네트워크 장비 경쟁력을 보유하고 있어 통신 인프라 확충에 따른 공급 확대 가능성이 주가를 뒷받침했다."),
+            ("계란 생산량 늘어 한 판 가격 하락", "계란 생산량 증가로 특란 가격은 6882원으로 하락했다."),
+        )
+        for title, body in cases:
+            with self.subTest(title=title):
+                assessed = materiality.assess(title, body)
+                self.assertTrue(assessed["disposition"] != "keep" or assessed["priority"] < 2, assessed)
+                with patch.object(radar.base, "kst_now", return_value=NOW):
+                    self.assertEqual(radar.quality_display_alerts([alert(title, body)], 7), [])
+
+    def test_new_transactions_and_tests_survive_publicity_scope_checks(self):
+        cases = (
+            ("바이오 지원펀드, 신규 출자 계약", "바이오 지원펀드는 신약 임상 3상 지원을 위해 800억원 출자 계약을 체결했다."),
+            ("바이오기업, 학회서 임상 3상 결과 공개", "바이오기업은 학회에서 신약 임상 3상 결과를 공개했으며 반응률이 30% 개선됐다고 밝혔다."),
+            ("자동차 부품기업, 자율주행 고객 첫 공급", "자동차 부품기업은 자율주행 고객에 전자 브레이크를 첫 공급했다."),
+            ("메모리 장비업체, 신규 계약 체결", "메모리 장비업체는 고객과 공급계약을 체결했다."),
+            ("냉각장비기업, 데이터센터 설비투자", "냉각장비기업은 AI 데이터센터 수요 대응을 위해 1500억원 증설투자를 실시한다."),
+            ("식품 공급망, 폭염에 집단 폐사", "폭염으로 양식장 어류 3만 마리가 폐사해 생산과 공급에 피해가 발생했다."),
+        )
+        for title, body in cases:
+            with self.subTest(title=title):
+                result = materiality.assess(title, body)
+                self.assertEqual(result["disposition"], "keep", result)
+                self.assertGreaterEqual(result["priority"], 2, result)
+
+    def test_new_change_rank_precedes_focus_and_certainty(self):
+        early = alert("양자기업, 극저온 검증 결과 공개", "양자기업은 20mK 극저온 환경에서 격리도 100dB를 검증하고 상용화 협력을 추진한다고 발표했다.")
+        routine = alert("국고채 금리 하락", "국고채 3년물 금리는 5bp 하락한 연 3.960%를 기록했다.")
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            selected = radar.quality_display_alerts([routine, early], 1)
+        self.assertEqual(selected[0]["source_title"], early["source_title"])
+
+    def test_stock_quote_does_not_create_energy_policy_evidence(self):
+        result = materiality.assess("우주 프로젝트 관련주 상승", "국내 기업은 위성 고객과 발사계약을 체결했다. S-Oil(163200원 ▲14400 +9.68%)이 9%대 급등했다.")
+        self.assertNotIn("energy_geopolitics_or_supply_risk", {row["kind"] for row in result["evidence"]})
+
+    def test_bid_execution_replaces_generic_order_history(self):
+        title = "IPARK현대산업개발, 수도권 정비사업 확장"
+        body = "IPARK현대산업개발은 최근 수도권 정비사업 수주를 이어가고 있다. IPARK현대산업개발은 능곡3구역 시공사 입찰제안서를 단독 제출했다. 시공사 선정은 오는 11월 예정이다."
+        audit = materiality.assess(title, body)
+        self.assertIn("procurement_execution_stage", {row["kind"] for row in audit["evidence"]})
+        self.assertNotIn("수주를 이어가고", str(audit["evidence"]))
+        core = radar.detailed_article_core(title, body)
+        self.assertIn("단독 제출", core)
+        self.assertNotIn("수주를 이어가고", core)
+
+    def test_analyst_revision_retains_issuer_and_new_estimate(self):
+        title = '메리츠증권 "넷마블, 신작보다 기존작 수명 연장 집중"'
+        body = "메리츠증권은 넷마블에 대해 시장 기대치를 밑돌 것으로 전망했다. 메리츠증권은 3분기 환율이 13% 하락한 점을 반영해 매출 추정치를 350억원 낮췄고, 영업이익 전망치도 기존 1069억원에서 786억원으로 26.5% 하향했다."
+        item = alert(title, body)
+        item["telegram_core_fact"] = "메리츠증권 3분기 영업이익은 1069억원 전망입니다."
+        self.assertEqual(set(radar.source_core_fact_errors(item)), {"financial_subject_mismatch", "superseded_financial_estimate"},
+                         {"revision": radar.financial_revision_fact(title, radar.ranked_article_sentences(body, [], title=title)),
+                          "target": radar.analyst_research_target(title, body),
+                          "sentences": radar.ranked_article_sentences(body, [], title=title)})
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("넷마블", core)
+        self.assertIn("1069억원→786억원", core)
+        self.assertIn("26.5% 하향", core)
+        self.assertNotIn("메리츠증권 3분기", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+
+    def test_group_insider_purchase_is_not_one_persons_total(self):
+        title = "더네이쳐홀딩스, 박영준 대표 등 임원 주식 매입"
+        body = "더네이쳐홀딩스는 박영준 대표이사를 비롯한 주요 임원 4명 등 특수관계인이 시간외 대량매매(블록딜) 방식으로 자사주 4만9480주(약 3억2000만원 규모)를 매입했다고 2일 밝혔다. 회사 측에 따르면 박 대표는 이번에 1만3894주를 매입했다."
+        core = radar.insider_purchase_fact(title, radar.ranked_article_sentences(body, [], title=title))
+        self.assertIn("임원 4명", core)
+        self.assertIn("4만9480주", core)
+        self.assertIn("3억2000만원", core)
+        self.assertNotIn("개인 명의", core)
+        self.assertNotIn("1만3894주", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+
     def test_vision_headline_cannot_hide_office_publicity_or_historical_fundraising(self):
         title = "금융그룹 회장 새로운 금융의 길 열겠다"
         body = '금융그룹 회장은 헤드쿼터 개관식에서 새로운 100년을 열겠다고 말했다. 시장은 축사에서 "15년간 이어온 투자유치 노력이 타운의 완성으로 결실을 맺었다"고 말했다.'

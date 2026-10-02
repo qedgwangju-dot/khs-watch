@@ -2126,6 +2126,7 @@ def ranked_article_sentences(
         for sentence in sentences
         if len(sentence) >= 12 and not article_title_restatement(sentence, title)
     ]
+    sentences = list(dict.fromkeys(sentences))
     if market_materiality.focus_kind(title) == "research_spending":
         # Bind an amount to the issuer in the preceding source sentence.
         for index in range(1, len(sentences)):
@@ -2313,7 +2314,42 @@ def sentence_has_suspect_financial_amount(sentence: str) -> bool:
     return False
 
 
-def financial_result_fact(title: str, sentences: list[str]) -> str:
+def analyst_research_target(title: str, source: str) -> str:
+    quoted = re.search(r'(?:증권|리서치|research)\s*["\'“‘]\s*([A-Za-z0-9가-힣&·.-]{2,30})(?=[,，\s])', title, re.I)
+    if quoted and re.search(rf"{re.escape(quoted.group(1))}(?:의|은|는|에\s*대해)", source):
+        return quoted.group(1)
+    return ""
+
+
+def financial_revision_fact(title: str, sentences: list[str], source_context: str = "") -> str:
+    target = analyst_research_target(title, source_context or " ".join(sentences))
+    for sentence in sentences:
+        revision = re.search(
+            r"(영업이익|순이익|매출(?:액)?)\s*(?:(?:전망치|추정치|전망|예상치)(?:도|는|은|를|을)?\s*)?"
+            rf"(?:기존\s*)?({KOREAN_WON_AMOUNT_PATTERN})에서\s*({KOREAN_WON_AMOUNT_PATTERN})(?:으로|로)\s*"
+            r"(?:(\d+(?:\.\d+)?)%\s*)?(하향|상향|낮췄|높였)", sentence,
+        )
+        if not revision:
+            continue
+        owner = re.match(r"^([A-Za-z0-9가-힣&·.-]{2,30})(?:은|는|의)\s*", sentence)
+        subject = target or (owner.group(1) if owner else "")
+        if not subject or (not target and re.search(r"증권|리서치", subject)):
+            continue
+        period = re.search(r"([1-4])분기", sentence) or re.search(r"([1-4])분기", title)
+        old, new = (amount.replace(" ", "") for amount in revision.group(2, 3))
+        direction = "하향" if revision.group(5) in {"하향", "낮췄"} else "상향"
+        change = f"({revision.group(4)}% {direction})" if revision.group(4) else f" {direction}"
+        fact = f"{subject} {period.group(1) + '분기 ' if period else ''}{revision.group(1)} 전망은 {old}→{new}{change}입니다."
+        if core_sentence_is_complete(fact):
+            return fact
+    return ""
+
+
+def financial_result_fact(title: str, sentences: list[str], source_context: str = "") -> str:
+    revision = financial_revision_fact(title, sentences, source_context)
+    if revision:
+        return revision
+    target = analyst_research_target(title, source_context or " ".join(sentences))
     metric_patterns = (
         ("영업이익", "영업이익"),
         ("당기순이익", "순이익"),
@@ -2347,7 +2383,14 @@ def financial_result_fact(title: str, sentences: list[str]) -> str:
         subject_match = re.match(r"^([A-Za-z0-9가-힣&·.-]{2,30})(?:은|는|의)\s*", sentence)
         if not subject_match:
             continue
-        prefix = subject_match.group(1) + " "
+        subject = subject_match.group(1)
+        if re.search(r"증권|리서치", subject) and subject not in title.split('"')[0]:
+            continue
+        if re.search(r"증권|리서치", subject) and target:
+            subject = target
+        elif re.search(r"증권|리서치", subject) and re.search(r"전망|추정|예상", sentence):
+            continue
+        prefix = subject + " "
         prefix += f"{period_match.group(1)}분기 " if period_match else ""
         compact_amount = amount.replace(' ', '') if amount_match else amount
         result = f"{prefix}{metric}은 {compact_amount}"
@@ -2458,6 +2501,24 @@ def insider_purchase_fact(title: str, sentences: list[str]) -> str:
     if not insider_purchase_signal(text):
         return ""
 
+    # A group total belongs to the group, not the first named executive.
+    for sentence in sentences:
+        group = re.search(
+            r"(?:대표이사|회장|임원).{0,40}(?:비롯한|포함한|등\s*특수관계인|특수관계인).{0,80}(?:매입|매수|취득)", sentence,
+        )
+        if not group or not re.search(r"\d[\d,.]*(?:만\d*)?주", sentence):
+            continue
+        fact = normalized_article_sentence(sentence)
+        fact = re.sub(r"^.*?기자\s*=\s*", "", fact)
+        fact = re.sub(r"\s*\(블록딜\)\s*", " ", fact)
+        fact = fact.replace("시간외 대량매매 방식으로", "블록딜로")
+        fact = fact.replace("대표이사를 비롯한 주요 임원", "대표 등 임원")
+        fact = re.sub(r"\(약\s*([^()]+)\s*규모\)", r"(약 \1)", fact)
+        fact = fact.replace("만원 )", "만원)")
+        fact = re.sub(r"(?:을|를)\s*(매입|매수|취득)했다고\s*\d{1,2}일\s*밝혔다\.?$", r" \1했다.", fact)
+        if core_sentence_is_complete(fact):
+            return fact
+
     purchases: list[str] = []
     seen_buyers: set[str] = set()
     seen_details: set[str] = set()
@@ -2465,6 +2526,8 @@ def insider_purchase_fact(title: str, sentences: list[str]) -> str:
         if not re.search(INSIDER_ROLE_PATTERN, sentence, flags=re.IGNORECASE):
             continue
         if not re.search(r"(?:매수|매입|취득)", sentence):
+            continue
+        if re.search(r"비롯한|포함한|특수관계인", sentence) or re.search(r"회사\s*측에\s*따르면", sentence):
             continue
         buyer_match = re.search(
             rf"([가-힣]{{2,4}}(?:\s+[A-Za-z가-힣0-9()·]+){{0,3}}\s*{INSIDER_ROLE_PATTERN})",
@@ -2528,8 +2591,9 @@ def insider_purchase_fact(title: str, sentences: list[str]) -> str:
 
     if not purchases:
         return ""
+    personal = " 개인 명의로" if re.search(r"개인\s*명의|개인\s*자금|사비", text) else ""
     return concise_text(
-        f"{'·'.join(purchases)}를 개인 명의로 매수했습니다.",
+        f"{'·'.join(purchases)}를{personal} 매수했습니다.",
         limit=GAMEJOA_CORE_MAX_CHARS,
     )
 
@@ -2823,6 +2887,9 @@ def detailed_article_core(title: str, body: str) -> str:
         korean_business_title_terms(title),
         title=title,
     )
+    revision_fact = financial_revision_fact(title, sentences, body)
+    if revision_fact:
+        return revision_fact
     long_term_supply_fact = long_term_supply_article_fact(title, body)
     if long_term_supply_fact:
         return long_term_supply_fact
@@ -2850,6 +2917,15 @@ def detailed_article_core(title: str, body: str) -> str:
     focused_fact = source_focused_article_core(title, sentences)
     if focused_fact:
         return focused_fact
+    audit = market_materiality.assess(title, body)
+    for evidence in audit["evidence"]:
+        if evidence["kind"] not in {"commercial_order", "customer_supply_start", "procurement_execution_stage"}:
+            continue
+        fact = normalized_article_sentence(evidence["source_excerpt"].rstrip(".") + ".")
+        if len(fact) > GAMEJOA_CORE_MAX_CHARS:
+            fact = re.sub(r"^\d{1,2}일\s+[^.!?]{1,30}에\s*따르면\s*", "", fact)
+        if core_sentence_is_complete(fact) and not article_title_restatement(fact, title):
+            return fact
 
     # In a multi-issuer memory article, a contextual revenue number must not
     # replace the headline's HBM supply/price change or lose its issuer.
@@ -2877,7 +2953,7 @@ def detailed_article_core(title: str, body: str) -> str:
 
     preferred = [
         insider_purchase_fact(title, sentences),
-        financial_result_fact(title, sentences),
+        financial_result_fact(title, sentences, body),
         shareholder_return_fact(sentences),
         financial_context_fact(sentences),
         shareholder_schedule_fact(sentences),
@@ -6938,6 +7014,7 @@ def source_output_aligned(alert: dict) -> bool:
             and korean_title_core_aligned(source_title, summary)
             and macro_release_core_aligned(source_title, summary)
             and market_materiality.core_focus_aligned(source_title, summary)
+            and not source_core_fact_errors(alert)
             and not direction_conflict
         )
     if alert.get("grid_policy_delay"):
@@ -8319,6 +8396,7 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     candidates = sorted(
         candidates,
         key=lambda alert: (
+            alert["market_materiality"].get("news_value_rank", 0),
             alert["market_materiality"]["priority"],
             alert["market_materiality"].get("focus", 0),
             (detail_queue.parse_time(alert.get("published")) or dt.datetime(1970, 1, 1, tzinfo=dt.timezone.utc)).timestamp(),
@@ -8714,12 +8792,14 @@ def verified_alert_core(alert: dict, title: str) -> str:
             if listing_fact:
                 return listing_fact
             body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+            revision_fact = financial_revision_fact(source_title or title, ranked_article_sentences(body, [], title=source_title or title), body)
+            if revision_fact:
+                return revision_fact
             focused_fact = source_focused_article_core(source_title or title, ranked_article_sentences(
                 body, korean_business_title_terms(source_title or title), title=source_title or title,
             ))
             if focused_fact:
                 return focused_fact
-        candidates.append(str(alert.get("telegram_core_fact") or ""))
         source_body = strip_core_ui_garbage(
             "\n".join(
                 str(alert.get(key) or "")
@@ -8734,7 +8814,11 @@ def verified_alert_core(alert: dict, title: str) -> str:
             )
         )
         if source_body:
-            candidates.append(detailed_article_core(source_title or title, source_body))
+            regenerated = detailed_article_core(source_title or title, source_body)
+        if not source_core_fact_errors(alert):
+            candidates.append(str(alert.get("telegram_core_fact") or ""))
+        if source_body:
+            candidates.append(regenerated)
         candidates.append(canonical_title_fact(source_title or title))
     else:
         candidates.extend(
@@ -8751,6 +8835,30 @@ def verified_alert_core(alert: dict, title: str) -> str:
         ):
             return core
     return ""
+
+
+def source_core_fact_errors(alert: dict) -> list[str]:
+    title = str(alert.get("source_title") or alert.get("news") or "")
+    source = article_summary_body(str(alert.get("source_body") or alert.get("source_abstract") or ""))
+    core = str(alert.get("telegram_core_fact") or "")
+    if not source or not core:
+        return []
+    errors = []
+    target = analyst_research_target(title, source)
+    if target and re.search(r"영업이익|순이익|매출", core) and target not in core:
+        errors.append("financial_subject_mismatch")
+    revision = financial_revision_fact(title, ranked_article_sentences(source, [], title=title), source)
+    if revision:
+        values = re.search(rf"({KOREAN_WON_AMOUNT_PATTERN})→({KOREAN_WON_AMOUNT_PATTERN})", revision)
+        if values and re.search(r"영업이익|순이익|매출", core):
+            compact = re.sub(r"\s", "", core)
+            if values.group(1).replace(" ", "") in compact and values.group(2).replace(" ", "") not in compact:
+                errors.append("superseded_financial_estimate")
+    if re.search(r"수주를\s*이어가|수주가\s*이어", core) and re.search(r"입찰제안서.{0,15}제출|공급계약.{0,15}체결", source):
+        errors.append("new_execution_replaced_by_order_history")
+    if re.search(r"비롯한|포함한|특수관계인", source) and "개인 명의" in core and not re.search(r"개인\s*명의|개인\s*자금|사비", source):
+        errors.append("unsupported_personal_trade_attribution")
+    return errors
 
 
 def compact_gamejoa_prose_lines(body: str) -> tuple[str, int]:

@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 14
+VERSION = 15
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|목표|보인다|나서야|시급|밑돌\s*듯|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
@@ -38,6 +38,8 @@ RETAIL_PRODUCT_METRIC = re.compile(
     r"쇼핑|플래그십\s*스토어|sales per store|kids.{0,20}sales", re.I,
 )
 ROUTINE_PERSONNEL = re.compile(r"사장단\s*인사|임원\s*인사|이사회\s*의장.{0,15}내정", re.I)
+STAFF_APPOINTMENT = re.compile(r"(?:변호사|전문가|고문|자문위원|임원).{0,25}(?:영입|선임|합류)|(?:영입|선임).{0,25}(?:변호사|고문|자문위원)|staff appointment|hires? counsel", re.I)
+SUPPORT_EVENT = re.compile(r"투자유치\s*(?:지원|가이드|프로그램)|기업설명회|투자자\s*미팅|투자\s*상담회|investment matchmaking|fundraising workshop", re.I)
 SPORTS_OWNERSHIP = re.compile(r"구단주|축구\s*구단|야구\s*구단|프로\s*(?:축구|야구)|football club|soccer club|club owner", re.I)
 LOCAL_CEREMONY = re.compile(r"나무\s*심기|식목|선포식|기념식|지역\s*축제|tree planting|proclamation ceremony", re.I)
 OFFICE_PUBLICITY = re.compile(r"사옥|본사\s*이전|헤드쿼터|새\s*둥지|headquarters|new office", re.I)
@@ -196,6 +198,11 @@ RULES = (
     ("commercial_order", ("earnings", "timeline"),
      r"수주|발주|공급계약|공급\s*계약|납품\s*계약|발사\s*계약|purchase order|supply contract|procurement contract|launch (?:contract|agreement)",
      r"체결|확정|수주|발주|갱신|취소|파기|해지|협상|추진|서명|sign|secure|award|agree|cancel|negotiat"),
+    ("customer_supply_start", ("earnings", "timeline"),
+     r"고객|공급|납품|customer|supply|deliver", r"첫\s*(?:공급|납품)|공급(?:했다|한다|하기로)|납품(?:했다|한다)|first delivery|began supplying"),
+    ("procurement_execution_stage", ("earnings", "timeline"),
+     r"입찰|시공사|우선협상|procurement|bid|preferred bidder",
+     r"제출|선정|선택|낙찰|철회|탈락|확보|submit|select|award|withdraw"),
     ("selling_price_or_cost", ("earnings",),
      r"판매가격|판매\s*가격|판가|단가|원가|평균판매가격|\basp\b|selling price|unit price|input cost",
      r"인상|인하|상승|하락|급등|급락|증가|감소|전가|협상|상향|하향|rais|cut|rise|fall|increas|decreas|negotiat"),
@@ -222,6 +229,9 @@ RULES = (
      r"주식|지분|shares|stake", r"기부|이전|증여|donat|transfer"),
     ("corporate_transaction", ("earnings", "timeline"),
      r"회사|기업|사업|법인|지분|인수|합병(?!원)|company|business|subsidiar|stake|acquir|merger", r"인수|합병(?!원)|acquir|merger"),
+    ("corporate_ownership_execution", ("earnings", "timeline"),
+     r"잔여\s*지분|완전자회사|주식교환|지분.{0,20}\d+(?:\.\d+)?%|remaining stake|wholly.owned|share exchange",
+     r"확보|편입|취득|교환|acquir|convert|exchange"),
     ("operating_asset_transaction", ("earnings", "timeline"),
      r"(?:사옥|부동산|사업부|영업자산).{0,20}(?:매각|취득|매입)|operating asset|headquarters sale",
      r"결정|확정|검토|추진|계약|매각했다|매입했다|decid|consider|contract|sold|acquir"),
@@ -263,7 +273,7 @@ RULES = (
      r"펀드.{0,40}순자산|순자산.{0,30}펀드|fund.{0,30}(?:net assets|aum)", r"돌파|증가|감소|exceed|increas|decreas"),
     ("technology_or_clinical_stage", ("earnings", "timeline"),
      r"메모리|반도체|hbm|hbf|cxl|칩|공정|로봇|신약|임상|fda|의약품|기술|양자|극저온|memory|semiconductor|chip|clinical|drug|technology|quantum|cryogenic",
-     r"양산|상용화|인증|승인|허가|임상 결과|임상결과|공급|도입|검증|성능|대역폭|수율|전력효율|결과 발표|생산|production|commercial|certif|approv|deploy|validat|performance|bandwidth|yield"),
+     r"양산|상용화|인증|승인|허가|임상\s*[1-3]상.{0,15}결과|임상 결과|임상결과|공급|도입|검증|성능|대역폭|수율|전력효율|결과 발표|생산|production|commercial|certif|approv|deploy|validat|performance|bandwidth|yield"),
     ("space_execution_stage", ("timeline",),
      r"위성|궤도|satellite|orbital", r"시험|검증|발사.{0,15}(?:완료|성공)|prototype|orbital test|launch.{0,20}(?:complet|success)"),
     ("launch_turnaround_bottleneck", ("earnings", "timeline"),
@@ -297,6 +307,59 @@ COMPILED_RULES = tuple(
 )
 
 
+def evidence_is_new_event(kind: str, sentence: str) -> bool:
+    """Do not promote service descriptions or event support into transactions."""
+    if kind == "commercial_order":
+        return bool(re.search(
+            r"체결|확정|수주(?:했다|했다고|한|하며|했으며|에\s*성공)|발주(?:했다|하기로)|갱신|취소|파기|해지|협상|서명|"
+            r"(?:수주|발주).{0,20}(?:금액|규모|억\s*원|조\s*원)|sign|secur|award|agree|cancel|negotiat", sentence, re.I,
+        ))
+    if kind == "corporate_transaction":
+        return bool(re.search(
+            r"(?:인수|합병)(?:했다|한다고|한다|하기로|한|를\s*(?:검토|추진|협상|결정))|"
+            r"(?:인수|합병).{0,30}(?:계약|대금|금액|협상|검토\s*중|합의|발표|완료)|"
+            r"(?:acquir|merg).{0,35}(?:announc|agree|complete|consider|negotiat)|acquired|acquisition of", sentence, re.I,
+        ))
+    if kind == "capital_or_shareholder_action":
+        if SUPPORT_EVENT.search(sentence) and not re.search(
+            r"(?:투자|출자|지원금|보조금).{0,25}\d[\d,.]*\s*(?:조|억|만|billion|million)|"
+            r"(?:투자|출자).{0,20}(?:계약\s*체결|유치했다|집행했다)|funding (?:secured|committed)", sentence, re.I,
+        ):
+            return False
+    if kind == "technology_or_clinical_stage" and re.search(r"기대한다|기대된다|역량을|전문성을|소개하는\s*계기|학회.{0,20}(?:선정|채택)", sentence):
+        return bool(re.search(r"임상\s*[1-3]상|\d+(?:\.\d+)?\s*(?:%|배|mK|dB)|인증\s*(?:획득|취득)|허가\s*(?:신청|승인)", sentence, re.I))
+    if kind == "physical_supply_or_capacity" and re.search(
+        r"기대감|테마성|수혜\s*기대|주가를\s*뒷받침|가능성이\s*주가|"
+        r"(?:고도화|확충|확대)(?:해야|할\s*필요)|해야\s*한다는\s*시장의\s*요구", sentence,
+    ):
+        return bool(re.search(r"\d[\d,.]*\s*(?:GW|MW|조\s*원|억\s*원|톤|대)|계약\s*체결|착공했다|가동을\s*시작", sentence, re.I))
+    if kind == "market_price_or_flow" and re.search(r"법률\s*(?:솔루션|자문)|투자유치\s*가이드|회수\s*전략", sentence):
+        return False
+    if kind == "market_price_or_flow" and re.search(r"유의할|주의할|유의해야|주의해야|변동성.{0,15}(?:지적|유의)", sentence):
+        return False
+    if kind == "energy_geopolitics_or_supply_risk":
+        without_quotes = re.sub(r"(?:S-?Oil|SK이노베이션)\s*\([^)]*\)", "", sentence, flags=re.I)
+        if not re.search(r"원유|유가|브렌트|천연가스|운임|호르무즈|홍해|이란|이스라엘|우크라이나|러시아|구리|리튬|\boil\b|brent|wti|\bgas\b|hormuz|iran|ukraine|russia|copper|lithium", without_quotes, re.I):
+            return False
+    return True
+
+
+def news_value_rank(evidence: list[dict]) -> int:
+    """Economic mechanism outranks textual focus and announcement certainty."""
+    kinds = {item["kind"] for item in evidence}
+    if kinds & {"commercial_order", "customer_supply_start", "procurement_execution_stage", "selling_price_or_cost",
+                "earnings_or_guidance", "licensing_cashflow", "corporate_transaction", "corporate_ownership_execution", "export_control_scope",
+                "policy_scope_or_stage", "industrial_architecture_adoption", "physical_supply_or_capacity",
+                "launch_turnaround_bottleneck", "sector_demand_outlook"}:
+        return 4
+    if kinds & {"technology_or_clinical_stage", "space_execution_stage", "space_thermal_validation",
+                "cryogenic_propellant_storage", "biology_research_discovery", "model_operating_specification",
+                "customer_discussions", "capital_or_shareholder_action", "capital_listing_stage",
+                "public_program_cost_study", "energy_geopolitics_or_supply_risk"}:
+        return 3
+    return 2
+
+
 def assess(title: str, body: str) -> dict:
     title = re.sub(r"\s+", " ", str(title or "")).strip()
     body = str(body or "").strip()
@@ -314,6 +377,9 @@ def assess(title: str, body: str) -> dict:
     lead = " ".join(sentences[:3])
     headline_lead = f"{title} {lead}"
     electoral = bool(re.search(r"유세|선거운동|지지\s*(?:호소|결집)|campaign rally|election campaign", title, re.I))
+    if STAFF_APPOINTMENT.search(title) and not re.search(r"공급\s*계약|수주|고객\s*계약|인수\s*(?:계약|완료)|영업이익|순이익|가이던스|supply contract|guidance", headline_lead, re.I):
+        result.update(disposition="exclude", priority=0, reason="staff_appointment_without_market_change")
+        return result
     if OFFICE_PUBLICITY.search(headline_lead) and not OFFICE_ECONOMIC_CHANGE.search(headline_lead):
         result.update(disposition="exclude", priority=0, reason="office_publicity_without_business_economics")
         return result
@@ -351,6 +417,8 @@ def assess(title: str, body: str) -> dict:
             continue
         for kind, axes, subject, action in COMPILED_RULES:
             if not subject.search(sentence) or not action.search(sentence):
+                continue
+            if not evidence_is_new_event(kind, sentence):
                 continue
             # Campaign rhetoric and retrospective blame are not new macro data.
             # A concrete policy proposal or current escalation remains eligible.
@@ -469,6 +537,24 @@ def assess(title: str, body: str) -> dict:
             if len(result["evidence"]) < 4 and not any(item["kind"] == evidence["kind"] for item in result["evidence"]):
                 result["evidence"].append(evidence)
         result.update(disposition="keep", reason="source_change_evidence")
+        result["news_value_rank"] = news_value_rank(result["evidence"])
+        kinds = {item["kind"] for item in result["evidence"]}
+        if SUPPORT_EVENT.search(title) and kinds <= {"capital_or_shareholder_action", "corporate_transaction", "institutional_capital_access", "financing_infrastructure"}:
+            result["priority"] = 1
+            result["scope_note"] = "support_event_without_committed_capital"
+        if re.search(r"학회|초록|conference abstract", title, re.I) and not re.search(
+            r"임상\s*[1-3]상|유효성|안전성|\d+(?:\.\d+)?\s*(?:%|배|mK|dB)|기술이전\s*계약|허가\s*신청", body, re.I,
+        ) and kinds <= {"technology_or_clinical_stage", "market_price_or_flow"}:
+            result["priority"] = 1
+            result["scope_note"] = "abstract_acceptance_without_new_test_results"
+        if re.search(r"기술지주|시드\s*투자|엔젤\s*투자|seed funding|angel investment", headline_lead, re.I) and kinds <= {"capital_or_shareholder_action", "technology_or_clinical_stage", "market_price_or_flow"} and not re.search(
+            r"공급\s*계약|납품\s*계약|본계약\s*체결|임상\s*[1-3]상|대역폭.{0,10}\d|추론비용.{0,10}\d|전력효율.{0,10}\d|코스피|코스닥|상장사|listed company", body, re.I,
+        ):
+            result["priority"] = 1
+            result["scope_note"] = "isolated_seed_funding_without_market_transmission"
+        if re.search(r"계란|달걀|한우|돼지고기|egg prices", title, re.I) and kinds <= {"physical_supply_or_capacity", "rates_fx_or_macro", "sector_demand_outlook"}:
+            result["priority"] = 1
+            result["scope_note"] = "single_consumer_price_without_industry_change"
         if HEADLINE_EARLY.search(title):
             result["headline_stage"] = "early_signal"
             if re.search(r"제언|권고|해야|바꿔야|줄여야|늘려야", title):

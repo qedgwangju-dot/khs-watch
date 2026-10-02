@@ -349,3 +349,38 @@ At the final API reread, `gamejoa-preopen-news-radar.yml` was `active` and the
 separate `khs-policy-watch.yml` remained `disabled_manually` as requested.
 Failure feedback is encoded in rules and repeatable regression tests; it is
 not a claim of model self-training or guaranteed future delivery.
+
+## Version 15: Review of Actual Sent Reports
+
+The user's quality feedback prompted review of three subsequent production
+reports, not just dry-run layout checks. Runs `36962623521`, `36964103748`
+and `36965196951` have saved delivery results with `status=sent` and message
+IDs `1997`, `1999` and `2000`. Their 18 selected source bodies exposed weak
+selection and factual compression that earlier passing guards did not catch.
+
+The new predicates distinguish actual transactions from legal-service
+descriptions, investor-support events from committed funding, and conference
+abstract acceptance from test results. Isolated seed funding without market
+transmission, individual consumer-price reports and pure thematic price
+expectations do not fill core-news slots. Actual supply, bids, orders, clinical
+results, operating damage, financing negotiations and industry research remain
+eligible. A sourced economic mechanism ranks ahead of superficial headline
+focus or certainty. No blanket company whitelist or minimum order amount was
+added.
+
+Financial summaries retain the analyzed company and the changed estimate:
+the Netmarble example is `1069억원 -> 786억원 (26.5% downward)`, not the
+broker's own profit or the superseded number. Group insider purchases keep
+the group and its total separate from an individual's purchase. Personal-fund
+attribution requires source evidence. An actual submitted bid replaces generic
+order-history wording. Generation and the independent report guard check these
+source/core relationships. The old coverage test that required an unsupported
+personal attribution was corrected, with a source-explicit positive case kept.
+
+Read-only replay of all 18 saved rows retains 13, removes five weak stories,
+repairs three cores and reports zero headline/core focus mismatches. All 11
+local regression scripts pass, including 81 materiality tests, 95 coverage
+cases and 26 detail-queue tests. No historical article was sent, no seen key
+reset and no queue state committed by this replay. These are bounded
+regressions, not a claim of universal semantic accuracy or complete coverage.
+Fresh production-environment dry-run evidence is recorded below once available.
