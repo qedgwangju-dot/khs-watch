@@ -4,7 +4,8 @@
 
 The user's Chart Book reference is a benchmark for source-specific industry
 changes, not permission to turn every supplied statement into a confirmed news
-alert. Combined bullets yield 20 event classes below. None was pinned into
+alert. The initial digest yields 20 event classes; its additional 08:45 KST
+rocket-bottleneck section adds 4 classes, giving 24 below. None was pinned into
 production as a historical article or sent as a test Telegram message.
 
 Selection fixtures paraphrase those event classes using synthetic companies and
@@ -35,6 +36,10 @@ reference digest. Primary-source availability and verification remain separate.
 | 18 | Space company external financing | First external fundraising is a capital-access signal when newly reported. No matching October official Blue Origin release was located; an older financing story is not fresh merely because the digest repeats it. |
 | 19 | Defense-program cost scope | CBO's May 12 notional 20-year model and the administration's different time/scope estimate cannot be compared as identical budgets. A fresh hearing or budget action requires its own source/date. |
 | 20 | AI biology discovery | Anthropic's September 23 article describes discovery of an uncharacterized ART system in existing DNA, followed by human laboratory work. The function remains under investigation; this is not de novo enzyme design, drug approval or commercial orders. |
+| 21 | Reusable-launch maintenance bottleneck | New tile damage, inspection, replacement, turnaround or launch-schedule changes qualify when reported in the source. The supplied 1,400-degree figure and inspection burden require a vehicle-specific test/operational report; they are not one universal reentry condition. |
+| 22 | Thermal-protection development | Attachment systems, active/regenerative cooling and heat-resistant skins qualify at the actual test, proposed-adoption or certification stage. NASA describes reusable tiles and attachment concepts, but those older references do not prove a newly adopted methane-cooled exterior or an October breakthrough. |
+| 23 | Orbital cryogenic propellant storage | ZBO storage/transfer is a separate propulsion and mission-duration milestone, not proof that reentry tile damage has been solved. NASA RRM3 describes earlier four-month methane storage with zero boil-off; the historic demonstration is not fresh October news. |
+| 24 | Qualified space-material supply | A new customer contract, qualification, delivery or capacity change qualifies. Rocket Lab's user guide specifies reusable Stage 1 and expendable Stage 2, not a reusable orbital upper stage. ATI's general materials capabilities and Hexcel's carbon-carbon/heat-shield applications do not establish the supplied ATI exclusive-Inconel claim or a new HXL order. No matching exclusive-supply contract was located. |
 
 ## Primary References
 
@@ -50,13 +55,18 @@ reference digest. Primary-source availability and verification remain separate.
 - FAA review: https://www.faa.gov/space/stakeholderengagement/blue-origin-new-glenn
 - Defense cost model: https://www.cbo.gov/publication/62379
 - AI biology discovery: https://www.anthropic.com/news/claude-discovers-novel-enzyme-system
+- Reusable thermal-protection materials: https://www.nasa.gov/general/thermal-protection-materials-branch-reusable-materials/
+- Orbital methane storage: https://www.nasa.gov/isam/robotic-refueling-mission-3/
+- Rocket Lab stage architecture: https://rocketlabcorp.com/assets/Uploads/Rocket-Lab-Neutron-PUG-reduced-final.pdf
+- ATI material applications: https://www.atimaterials.com/Documents/This%20is%20ATI-2025-Jul.pdf
+- Hexcel high-temperature applications: https://www.hexcel.com/meeting-the-high-temperature-material-challenges-of-hypersonic-flight-systems/
 
 ## Persistent Verification
 
 - Source-only materiality rules retain counterparty, quantity, operating stage,
   policy scope and experimental evidence where present; no issuer whitelist or
   minimum contract amount is introduced.
-- Candidate classification and final selection both exercise all 20 classes.
+- Candidate classification and final selection both exercise all 24 classes.
 - Additional tests preserve tentative research/licensing/financing stages,
   reject vague thematic promotion and unverified bodies, and confirm the four
   discovery queries are in the active collector.
@@ -111,3 +121,14 @@ verification recorded below.
   coverage, validation of every reference claim, or Telegram receipt.
 - The radar workflow remained active; `khs-policy-watch.yml` remained
   `disabled_manually`. No historical test article was sent.
+
+## Additional Rocket Section
+
+Materiality version 6 adds source-specific turnaround damage/delay evidence,
+thermal-protection validation and cryogenic propellant-storage validation.
+Six industry discovery queries replace the previous four. Existing contracts
+continue to handle qualified space-material supply; no named-company list is
+used. Fifty local materiality tests passed, including all 24 event classes,
+research-versus-operational axes, English source evidence, tentative-stage
+preservation and rejection of capability-only beneficiary claims. This patch
+still requires the complete regression suite and a fresh GitHub dry run.

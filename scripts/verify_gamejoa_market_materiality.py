@@ -80,6 +80,10 @@ INDUSTRY_DRIVER_CASES = (
     ("space_external_financing", "우주기업, 외부 자금조달 검토", "우주기업은 위성통신 사업을 위한 외부 자금조달 계약을 검토한다고 발표했다."),
     ("defense_cost_scope", "방위사업 예산 추산 비교", "의회는 방위사업 예산의 20년 총비용 추산을 공개하고 국방부의 10년 추산과 산정 범위를 비교했다."),
     ("ai_biology_discovery", "AI 연구진, 신규 효소 시스템 실험 검증", "AI 연구진은 DNA 데이터에서 신규 효소 시스템을 발견하고 실험실 검증 결과를 공개했다. 기능 규명은 진행 중이다."),
+    ("reusable_launch_bottleneck", "로켓 열차폐 타일 손상에 재발사 일정 지연", "로켓 운영사는 재진입 열차폐 타일 손상으로 검사와 교체가 늘어 재발사 일정이 5일 지연됐다고 발표했다."),
+    ("thermal_protection_validation", "우주선 열차폐 부착 구조 시험 검증", "우주선 개발사는 열차폐 타일 부착 구조가 1400도 열 순환 시험 10회를 견뎠다고 검증 결과를 발표했다."),
+    ("propellant_storage_validation", "궤도 극저온 추진제 ZBO 저장 실증", "우주 연구진은 궤도에서 액체 메탄 추진제의 ZBO 저장을 4개월 실증했다고 발표했다."),
+    ("launch_material_supply_contract", "발사체 소재기업, 초내열합금 납품계약 체결", "소재기업은 재사용 로켓용 초내열합금 100톤 납품계약을 고객과 체결했다고 발표했다."),
 )
 
 
@@ -153,7 +157,7 @@ class MaterialityChecks(unittest.TestCase):
         self.assertNotEqual(themes[0], radar.bond_yield_threshold_theme(changed_tenor))
 
     def test_industry_driver_event_classes_have_source_evidence(self):
-        self.assertEqual(len(INDUSTRY_DRIVER_CASES), 20)
+        self.assertEqual(len(INDUSTRY_DRIVER_CASES), 24)
         for name, title, body in INDUSTRY_DRIVER_CASES:
             with self.subTest(name=name):
                 audit = materiality.assess(title, body)
@@ -197,6 +201,8 @@ class MaterialityChecks(unittest.TestCase):
             ("로봇·AI 모델 통합·운용비용 변화", ("휴머노이드", "통합", "추론비용", "인수")),
             ("위성·궤도컴퓨팅 인허가·상업 발사계약", ("발사계약", "환경영향평가", "주파수")),
             ("양자·바이오 AI 실험 검증 이정표", ("극저온", "효소", "검증", "발견")),
+            ("재사용 발사체 열차폐·정비·재발사 병목", ("열차폐", "재진입", "지연", "계약")),
+            ("궤도 극저온 추진제 저장·ZBO 실증", ("추진제", "ZBO", "저장", "실증")),
         ):
             self.assertIn(name, queries)
             self.assertTrue(all(term in queries[name] for term in terms))
@@ -221,6 +227,34 @@ class MaterialityChecks(unittest.TestCase):
                 self.assertNotIn(invented, core)
         self.assertEqual(materiality.assess(*cases["ai_biology_discovery"])["axes"], ["timeline"])
         self.assertEqual(materiality.assess(*cases["defense_cost_scope"])["axes"], ["timeline"])
+
+    def test_space_bottlenecks_and_research_have_distinct_source_axes(self):
+        cases = {name: (title, body) for name, title, body in INDUSTRY_DRIVER_CASES}
+        self.assertEqual(materiality.assess(*cases["reusable_launch_bottleneck"])["axes"], ["earnings", "timeline"])
+        for name in ("thermal_protection_validation", "propellant_storage_validation"):
+            self.assertEqual(materiality.assess(*cases[name])["axes"], ["timeline"])
+        for title, body in (
+            ("Reusable rocket turnaround delayed", "The rocket's turnaround was delayed by five days after heat shield tile damage."),
+            ("Spacecraft heat shield test validated", "The spacecraft heat shield was validated through ten thermal cycling tests."),
+            ("Orbital propellant zero-boil-off test", "The orbital propellant zero-boil-off storage system was demonstrated for four months."),
+        ):
+            self.assertEqual(materiality.assess(title, body)["disposition"], "keep")
+
+    def test_space_supplier_theme_alone_is_not_exposure_evidence(self):
+        title = "로켓 초내열합금 기업, 독점 공급 수혜 기대"
+        body = "소재기업은 초내열합금과 탄소복합재를 제조한다. 향후 우주 시장 성장의 수혜를 기대한다."
+        self.assertLess(materiality.assess(title, body)["priority"], 2)
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
+
+    def test_space_storage_plans_remain_plans_and_not_heat_shield_adoption(self):
+        title = "우주선 추진제 ZBO 저장 도입 검토"
+        body = "우주선 개발사는 액체 메탄 추진제의 ZBO 저장 도입을 검토 중이다."
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("검토", core)
+        self.assertNotIn("열차폐", core)
+        self.assertTrue(all(evidence["stage"] == "early_signal" for evidence in materiality.assess(title, body)["evidence"]))
 
     def test_industry_coverage_does_not_bypass_source_body_verification(self):
         for name, title, body in INDUSTRY_DRIVER_CASES:

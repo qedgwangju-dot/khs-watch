@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 5
+VERSION = 6
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should)\b", re.I,
@@ -64,6 +64,8 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("breadth", r"(?:상승|하락)\s*종목|순환매|쏠림", r"(?:오른|내린|상승|하락)\s*종목|순환매|쏠림|순매수|순매도|자금.{0,12}이동"),
     ("research_spending", r"r&d|연구개발", r"r&d|연구개발"),
     ("industrial_architecture", r"hvdc|\bvdc\b|\bcpo\b|광트랜시버|광\s*인터커넥트|파운데이션\s*모델|foundation model", r"hvdc|\bvdc\b|\bcpo\b|광트랜시버|광\s*인터커넥트|파운데이션\s*모델|foundation model"),
+    ("space_turnaround", r"열\s*차폐|재진입|재발사|재비행|heat[ -]shield|thermal protection|re.?entry|reflight|relaunch|turnaround", r"열\s*차폐|재진입|재발사|재비행|타일|정비|heat[ -]shield|thermal protection|re.?entry|reflight|relaunch|turnaround"),
+    ("space_propellant_storage", r"추진제|\bzbo\b|무손실\s*저장|zero[ -]boil[ -]off|propellant", r"추진제|\bzbo\b|무손실\s*저장|zero[ -]boil[ -]off|propellant"),
     ("science_milestone", r"극저온|양자|효소|cryogenic|quantum|enzyme", r"극저온|양자|효소|cryogenic|quantum|enzyme"),
     ("space_execution", r"위성|궤도|발사한도|발사계약|환경심사|환경영향평가|주파수|satellite|orbital|launch contract|spectrum", r"위성|궤도|발사|환경심사|환경영향평가|주파수|satellite|orbital|launch|spectrum"),
     ("fund_result", r"펀드.{0,20}(?:손실|청산|만기|수익)|(?:손실|청산).{0,20}펀드", r"손실|청산|수익률|loss|liquidat|returns"),
@@ -209,6 +211,16 @@ RULES = (
      r"양산|상용화|인증|승인|허가|임상 결과|임상결과|공급|도입|검증|성능|대역폭|수율|전력효율|결과 발표|생산|production|commercial|certif|approv|deploy|validat|performance|bandwidth|yield"),
     ("space_execution_stage", ("timeline",),
      r"위성|궤도|satellite|orbital", r"시험|검증|발사.{0,15}(?:완료|성공)|prototype|orbital test|launch.{0,20}(?:complet|success)"),
+    ("launch_turnaround_bottleneck", ("earnings", "timeline"),
+     r"로켓|발사체|우주선|rocket|launch vehicle|spacecraft",
+     r"(?:재발사|재비행|발사\s*일정|정비\s*기간|교체\s*비용).{0,35}(?:지연|연장|증가|감소|단축|제한)|"
+     r"(?:turnaround|reflight|relaunch|launch schedule|maintenance (?:time|cost)).{0,35}(?:delay|increas|decreas|reduc|limit|extend)"),
+    ("space_thermal_validation", ("timeline",),
+     r"열\s*차폐|heat[ -]shield|thermal protection|재생\s*냉각|regenerative cooling",
+     r"시험|검증|실증|인증|채택|도입|검토|test|validat|demonstrat|certif|adopt|deploy|consider"),
+    ("cryogenic_propellant_storage", ("timeline",),
+     r"추진제|\bzbo\b|무손실\s*저장|zero[ -]boil[ -]off|cryogenic.{0,25}(?:storage|propellant)",
+     r"시험|검증|실증|인증|도입|검토|test|validat|demonstrat|certif|deploy|consider"),
     ("biology_research_discovery", ("timeline",),
      r"효소|단백질|enzyme|protein", r"발견|규명|discover|characteriz"),
     ("energy_geopolitics_or_supply_risk", ("earnings", "discount_rate"),
@@ -293,6 +305,10 @@ def assess(title: str, body: str) -> dict:
                 r"실험|검증|연구\s*결과|논문|laboratory|experiment|validat|research results|paper", sentence, re.I,
             ):
                 continue
+            if kind in {"space_thermal_validation", "cryogenic_propellant_storage"} and not re.search(
+                r"로켓|발사체|우주선|궤도|우주|rocket|launch vehicle|spacecraft|orbital|in.space", sentence, re.I,
+            ):
+                continue
             if kind == "model_operating_specification" and not re.search(
                 r"구동|동작|실행|추론|운용|가동|배포|메모리|전력|지연시간|추론비용|운용비용|running|inference|deploy|memory|power|latency|cost", sentence, re.I,
             ):
@@ -302,7 +318,7 @@ def assess(title: str, body: str) -> dict:
             if kind == "research_spending_change" and not QUANTITY.search(sentence):
                 continue
             early = bool(EARLY_SIGNAL.search(sentence)) or kind in {"customer_discussions", "institutional_capital_access"}
-            priority = 2 if early or kind in {"technology_or_clinical_stage", "market_infrastructure", "model_operating_specification", "industrial_architecture_adoption", "space_execution_stage", "biology_research_discovery", "public_program_cost_study"} else 3
+            priority = 2 if early or kind in {"technology_or_clinical_stage", "market_infrastructure", "model_operating_specification", "industrial_architecture_adoption", "space_execution_stage", "space_thermal_validation", "cryogenic_propellant_storage", "biology_research_discovery", "public_program_cost_study"} else 3
             if kind == "capital_listing_stage":
                 priority = 3
             if kind in {"earnings_or_guidance", "market_price_or_flow"} and not QUANTITY.search(sentence):

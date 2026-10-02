@@ -100,6 +100,21 @@ SEARCH_SOURCES = [
         "OR site:hankyung.com OR site:edaily.co.kr OR site:zdnet.co.kr)",
     ),
     (
+        "재사용 발사체 열차폐·정비·재발사 병목",
+        "(로켓 OR 발사체 OR 우주선) (열차폐 OR 열 차폐 OR 재진입 OR 재발사 OR 재비행) "
+        "(타일 OR 균열 OR 탈락 OR 박리 OR 검사 OR 교체 OR 정비 OR 재생냉각 OR 초내열합금) "
+        "(시험 OR 검증 OR 지연 OR 단축 OR 비용 OR 계약 OR 공급) "
+        "(site:yna.co.kr OR site:newsis.com OR site:etnews.com OR site:mk.co.kr "
+        "OR site:hankyung.com OR site:edaily.co.kr OR site:zdnet.co.kr)",
+    ),
+    (
+        "궤도 극저온 추진제 저장·ZBO 실증",
+        "(추진제 OR ZBO OR zero boil off OR 무손실 저장) (궤도 OR 우주 OR 로켓) "
+        "(저장 OR 냉각 OR 비등 OR 손실) (시험 OR 실증 OR 검증 OR 도입 OR 계약) "
+        "(site:yna.co.kr OR site:newsis.com OR site:etnews.com OR site:mk.co.kr "
+        "OR site:hankyung.com OR site:edaily.co.kr OR site:zdnet.co.kr)",
+    ),
+    (
         "단일종목 레버리지 규제 시행효과·거래급감",
         "(단일종목레버리지 OR 단일종목 레버리지 OR 단일레버리지 OR 기본예탁금) "
         "(거래대금 OR 거래량 OR 개인매도 OR 개인 매도 OR 거래급감 OR 거래 급감) "
@@ -1375,6 +1390,8 @@ PRIORITY_TERMS.update({
     "hvdc": 11, "광트랜시버": 11, "광 인터커넥트": 10, "환경심사": 10,
     "환경영향평가": 10, "발사계약": 12, "발사 계약": 12, "발사한도": 10,
     "궤도컴퓨팅": 10, "극저온": 10, "효소 시스템": 10, "추론비용": 11,
+    "열차폐": 10, "열 차폐": 10, "재진입": 10, "재발사": 10, "재비행": 10,
+    "재생냉각": 10, "초내열합금": 10, "추진제": 10, "무손실 저장": 10, "zbo": 10,
 })
 IMPACT_TERMS["할인율"] = (*IMPACT_TERMS["할인율"],
     "기준금리", "금리 인하", "유럽중앙은행", "일본은행", "비농업 고용",
