@@ -14,6 +14,12 @@ POLISHED_HEADER = (
     "표결·규제·BTC/COIN/Circle 영향\n"
     "━━━━━━━━━━━━━━━━━━"
 )
+REG_HEADER = "<b>🇺🇸 미국 암호자산 규제 Watch — SEC/CFTC·BTC/COIN/Circle 영향</b>"
+POLISHED_REG_HEADER = (
+    "<b>🇺🇸 미국 암호자산 규제 Watch</b>\n"
+    "SEC/CFTC·BTC/COIN/Circle 영향\n"
+    "━━━━━━━━━━━━━━━━━━"
+)
 
 AXES = (
     ("돈 버는 능력", "💵"),
@@ -38,6 +44,7 @@ def polish_chunk(text):
     text = strip_italics(text)
 
     text = text.replace(HEADER, POLISHED_HEADER)
+    text = text.replace(REG_HEADER, POLISHED_REG_HEADER)
     text = text.replace("<b>한눈에 보기</b>", "<b>👀 한눈에 보기</b>")
 
     # Separate each event visually without deleting any substantive text.
