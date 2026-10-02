@@ -1,78 +1,78 @@
 {
   "initialized": true,
-  "updated_at_kst": "2026-10-02T16:04:06+09:00",
+  "updated_at_kst": "2026-10-02T16:09:33+09:00",
   "crypto": {
     "derivatives": {
       "BTCUSDT": {
-        "funding": 4.7e-05,
-        "index_price": 85979.09,
-        "mark_price": 85936.1,
-        "last_price": 85935.5,
-        "open_interest": 545521600.0,
-        "open_interest_value": 4688834525.024,
-        "turnover24h": 668248641735.0,
+        "funding": 4.8e-05,
+        "index_price": 85966.21,
+        "mark_price": 85933.9,
+        "last_price": 85933.9,
+        "open_interest": 545128672.0,
+        "open_interest_value": 4680970844.88352,
+        "turnover24h": 668251035012.0,
         "source": "Gate.io Futures API"
       },
       "ETHUSDT": {
-        "funding": 6.5e-05,
-        "index_price": 2728.71,
-        "mark_price": 2727.49,
-        "last_price": 2727.48,
-        "open_interest": 79261680.0,
-        "open_interest_value": 2162361670.584,
-        "turnover24h": 181934047673.0,
+        "funding": 6.6e-05,
+        "index_price": 2728.94,
+        "mark_price": 2727.88,
+        "last_price": 2727.88,
+        "open_interest": 79273072.0,
+        "open_interest_value": 2160476595.0592,
+        "turnover24h": 181934484462.0,
         "source": "Gate.io Futures API"
       },
       "SOLUSDT": {
         "funding": 0.0001,
-        "index_price": 121.602,
-        "mark_price": 121.55,
-        "last_price": 121.57,
-        "open_interest": 7369464.0,
-        "open_interest_value": 897011158.08,
-        "turnover24h": 4442160154.0,
+        "index_price": 121.562,
+        "mark_price": 121.52,
+        "last_price": 121.54,
+        "open_interest": 7362144.0,
+        "open_interest_value": 894500496.0,
+        "turnover24h": 4442178486.0,
         "source": "Gate.io Futures API"
       }
     },
     "prices": {
       "BTC": {
-        "usd": 85945.0,
-        "change24": 2.2613029612224014,
-        "volume24": 39227473727.41261,
+        "usd": 85983.84,
+        "change24": 2.237558899779561,
+        "volume24": 39095064264.44236,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 85945.0,
-          "Coinbase": 85914.53,
-          "Gate.io Spot": 85981.3
+          "CoinGecko": 85995.0,
+          "Coinbase": 85983.84,
+          "Gate.io Spot": 85966.3
         },
-        "dispersion_pct": 0.07768921984990874
+        "dispersion_pct": 0.03337836505091781
       },
       "ETH": {
-        "usd": 2727.4,
-        "change24": 0.5793111965845661,
-        "volume24": 15597933449.813974,
+        "usd": 2728.93,
+        "change24": 0.4724533772402049,
+        "volume24": 15462350584.169453,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 2727.33,
-          "Coinbase": 2727.4,
-          "Gate.io Spot": 2728.48
+          "CoinGecko": 2729.0,
+          "Coinbase": 2728.59,
+          "Gate.io Spot": 2728.93
         },
-        "dispersion_pct": 0.04216469898071756
+        "dispersion_pct": 0.015024203625591512
       },
       "SOL": {
-        "usd": 121.66,
-        "change24": 2.1741377923836986,
-        "volume24": 4406322053.327158,
+        "usd": 121.56,
+        "change24": 1.9524567207173957,
+        "volume24": 4395670948.858266,
         "verified": true,
         "source_count": 3,
         "sources": {
-          "CoinGecko": 121.66,
-          "Coinbase": 121.71,
-          "Gate.io Spot": 121.63
+          "CoinGecko": 121.56,
+          "Coinbase": 121.55,
+          "Gate.io Spot": 121.56
         },
-        "dispersion_pct": 0.06575702778234284
+        "dispersion_pct": 0.00822639025995814
       }
     },
     "price_verified": true,
@@ -96,7 +96,7 @@
         "2026-09-30",
         "2026-10-01"
       ],
-      "stable_obs": 17,
+      "stable_obs": 18,
       "trigger_ready": true
     },
     "eth_etf": {
@@ -113,7 +113,7 @@
         "2026-09-30",
         "2026-10-01"
       ],
-      "stable_obs": 34,
+      "stable_obs": 35,
       "trigger_ready": true
     }
   },
@@ -145,7 +145,7 @@
     "equity_investments_b": 99.0,
     "equity_commitments_b": 25.0,
     "customer_finance_language": true,
-    "checked_at_kst": "2026-10-02T16:04:49+09:00"
+    "checked_at_kst": "2026-10-02T16:10:22+09:00"
   },
   "news_seen": [
     "20a34ebbb9aa9147698a0ae7",
