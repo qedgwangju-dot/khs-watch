@@ -335,7 +335,8 @@
     "stateevt_e191e0a210218dc554c1": "2026-10-01T19:00:22.000282+00:00",
     "stateevt_644bbd3c3ab5d414d9ea": "2026-10-01T23:05:45.218214+00:00",
     "stateevt_bf7b8b20b6d6b143e7b8": "2026-10-01T23:15:40.460578+00:00",
-    "stateevt_05055f763ef19bc3ab75": "2026-10-01T23:15:40.460578+00:00"
+    "stateevt_05055f763ef19bc3ab75": "2026-10-01T23:15:40.460578+00:00",
+    "stateevt_f102c55803b39e9f735f": "2026-10-02T06:14:18.498949+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -362,13 +363,14 @@
     "eventstate_texas_ai_power_e191e0a210218dc554c1": "2026-10-01T19:00:22.000282+00:00",
     "eventstate_funding_execution_644bbd3c3ab5d414d9ea": "2026-10-01T23:05:45.218214+00:00",
     "eventstate_funding_execution_bf7b8b20b6d6b143e7b8": "2026-10-01T23:15:40.460578+00:00",
-    "eventstate_encinal_05055f763ef19bc3ab75": "2026-10-01T23:15:40.460578+00:00"
+    "eventstate_encinal_05055f763ef19bc3ab75": "2026-10-01T23:15:40.460578+00:00",
+    "eventstate_alaska_lng_f102c55803b39e9f735f": "2026-10-02T06:14:18.498949+00:00"
   },
   "official_status": {
     "status": "official_seen",
-    "title": "[상태 변화] 텍사스 엔시날 발전사업 — Encinal 공식 사업비 24억달러 · 송금집행",
-    "source": "대한민국 정책브리핑",
-    "updated_at": "2026-10-01T23:16:02.298960+00:00"
+    "title": "[상태 변화] 알래스카 LNG — 착공",
+    "source": "정책브리핑",
+    "updated_at": "2026-10-02T06:14:38.511942+00:00"
   },
   "event_states": {
     "nuclear_build": {
@@ -655,23 +657,25 @@
       "facts": [
         "alaska_bilateral_status:review_started",
         "alaska_reported_amount_usd_b:54",
-        "stage:발표실행"
+        "stage:발표실행",
+        "stage:착공"
       ],
       "slots": {
         "alaska_lng|alaska_bilateral_status": "alaska_bilateral_status:review_started",
         "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:54",
-        "alaska_lng|stage:announcement": "stage:발표실행"
+        "alaska_lng|stage:announcement": "stage:발표실행",
+        "alaska_lng|stage:착공": "stage:착공"
       },
       "initialized_at": "2026-09-29T23:10:16.076895+00:00",
-      "updated_at": "2026-10-01T04:00:32.379091+00:00",
-      "last_title": "산업통상부 공식 Project North 알래스카 LNG 검토 착수 상업적 합리성 국내법 요건 충족 시 추진 여부 결정",
-      "last_source": "대한민국 정책브리핑",
+      "updated_at": "2026-10-02T06:14:38.493681+00:00",
+      "last_title": "한미 전략투자 1호 '텍사스 가스발전' 추진…알래스카 LNG 검토 착수 - 정책브리핑",
+      "last_source": "정책브리핑",
       "evidence": [
         {
-          "source": "대한민국 정책브리핑",
-          "title": "산업통상부 공식 Project North 알래스카 LNG 검토 착수 상업적 합리성 국내법 요건 충족 시 추진 여부 결정",
-          "link": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156783865",
-          "published": "2026-10-01T00:00:00+00:00"
+          "source": "VOA 한국어 홈페이지",
+          "title": "백악관 “오랜 숙원 알래스카 사업, 착공∙완공 기대” - VOA 한국어 홈페이지",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9FNHJ6LWwxUEktVEJRWkdsdy0wdHhLX0VZV1N5YXRWQ2k5b05VOU5ueGxkNDZVbW5xM1FrSExJbURESWZxR0lOTmZpZTlrTExQcVFBM1o3VGZ1cW5mNnRiQmtoQ2E3Ri1WUzVjLdIBb0FVX3lxTE9oTUM3aWhiX3V5bHBiTDFIdGdRLVphLWdjTTZjUUxPVGtISG5qWVFrTGJURXJIUUZhemZWTHVLZjRFY3c1TW5INTlFUXVGZlhQN1NaZjBoTElWQ3pHSnpXMHlLenRJMi1aMllNVTFqaw?oc=5",
+          "published": "2026-10-01T19:05:35+00:00"
         }
       ]
     },
