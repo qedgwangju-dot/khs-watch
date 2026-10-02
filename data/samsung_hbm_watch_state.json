@@ -2046,7 +2046,7 @@
   "last_samsung_hbm4_price_alert_count": 0,
   "_delivery": {
     "id": "5a488cfefff0c4061a0af96af08186d179b9b87bba5c9d4aa20c89a3bd5b3e6c",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-10-02T18:41:09+09:00",
     "chunks": [
       "🚨 <b>HBM 상태 변화</b>\n━━━━━━━━━━━━━━━━\n<b>신규 변화 1건</b> · 2026-10-02 18:36 KST\n\n<b>1.</b>\n<b>삼성 HBM 관련 신규 변화</b>\n• 상태 판정: <b>신뢰 보도 단계</b>\n• 변화 구분: 기타\n• 감지 근거: v.daum.net · 2026-10-02T17:36:09+09:00\n• 근거 제목(한국어): [단독] 삼성, 내년 HBM가격 3배로 높인다 · <a href=\"https://v.daum.net/v/20261002173609811\">원문</a>"
@@ -4105,6 +4105,7 @@
       },
       "last_samsung_hbm4_price_observation_count": 1,
       "last_samsung_hbm4_price_alert_count": 0
-    }
+    },
+    "attempt_at_kst": "2026-10-02T18:41:10+09:00"
   }
 }
