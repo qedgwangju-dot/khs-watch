@@ -8459,7 +8459,8 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             continue
         normalized = normalize_alert_for_output(alert)
         if not source_output_aligned(normalized):
-            alert["_exclusion_reason"] = "source_body_mismatch"
+            core_errors = source_core_fact_errors(normalized)
+            alert["_exclusion_reason"] = "core_fact_guard:" + ",".join(core_errors) if core_errors else "source_body_mismatch"
             continue
         normalized["stock_market_channels"] = stock_market_channels(normalized)
         if not has_stock_market_link(normalized):
@@ -8601,6 +8602,7 @@ def display_news(alert: dict) -> str:
 
 
 CORE_UI_GARBAGE_PATTERNS = (
+    r'[^.!?\r\n"“”]*?(?:시공|시연|촬영)하고\s*있다\s*\(사진\s*=[^)]*\)',
     r'[^.!?\r\n"“”]*?(?:발언|연설|질문에\s*답|기념촬영을)하고\s*있다\.',
     r"\b등록\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}(?::\d{2})?)?"
     r"(?:\s*수정\s*\d{4}[./-]\d{1,2}[./-]\d{1,2}(?:\s+\d{1,2}:\d{2}(?::\d{2})?)?)?",
@@ -8845,8 +8847,14 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if not source or not core:
         return []
     errors = []
+    if alert.get("korean_business_news"):
+        core_audit = market_materiality.assess(title, core)
+        if core_audit["disposition"] != "keep" or not core_audit["evidence"]:
+            errors.append("core_without_market_change_evidence")
     if core.count("“") != core.count("”"):
         errors.append("orphaned_source_quote")
+    if re.search(r"하고\s*있다\s+(?:[A-Za-z0-9가-힣·&()]+\s+){0,8}[A-Za-z0-9가-힣·&()]+(?:은|는)\s+", core):
+        errors.append("concatenated_photo_caption")
     target = analyst_research_target(title, source)
     if target and re.search(r"영업이익|순이익|매출", core) and target not in core:
         errors.append("financial_subject_mismatch")

@@ -442,3 +442,36 @@ policy and energy stories, removes the two fillers and repairs both policy
 cores. The materiality suite now has 87 tests. Source collection and these
 tests still do not certify universal coverage or every future classification.
 Final production-environment evidence is recorded below after artifact reread.
+
+## Version 18: Validate the Actual Core, Not Background Economics
+
+Run `36970008197` checked out `adfea5c57cf3572e3ff258d693773ef027cd9085`
+and completed successfully at `2026-10-02T05:44:06Z`. The `14:40:58 KST`
+report still contained an aviation management award, trend-book promotion
+and a photo caption attached to SG's actual implementation fact. It verified
+120 bodies, failed 40 and deferred 662. Passing technical guards did not
+make this a quality-complete report. ZIP SHA-256:
+`C690A9D657EAF0DCEB526D9B483603449A662138D7FDE994F069AC3BBEF47296`.
+
+Version 18 independently assesses the rendered core for a source-reported
+economic/industrial event. Background freight operations or book descriptions
+cannot establish the relevance of an award or book-promotion core. Full-body
+selection still determines materiality; the core check determines whether
+the reader actually receives the event, not a second high-priority threshold.
+This distinction prevents a concise price-change core from being rejected
+merely because it omits other context already present in the verified body.
+Explicit source-photo descriptions are removed before regeneration. Failure
+diagnostics now distinguish core-fact failures from title/body mismatches.
+
+Positive source/core regressions preserve sales releases, complete ownership
+transactions, signed industrial partnerships, order backlogs, funding-round
+participation, economic releases, export restrictions, investment allocations
+and explicit financing clarifications. None of these additions permits an
+unverified source or turns an informal MOU into a firm revenue contract.
+
+Read-only replay of all six artifacts reviews 39 rows, retains 25, removes
+14 weak selections, repairs seven cores and reports zero headline/core focus
+mismatches. It neither sends historical articles nor resets seen keys.
+All 11 local contract scripts passed, including 89 materiality tests, 95
+coverage cases and 26 retrieval-queue tests. Fresh production-environment
+validation is recorded separately below after the new artifact is reread.

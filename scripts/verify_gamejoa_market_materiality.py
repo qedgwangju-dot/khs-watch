@@ -96,6 +96,50 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_rendered_core_must_explain_a_market_change_not_background_words(self):
+        cases = (
+            ("항공사 회장 경영자상 수상", "회장이 경영자상을 수상했다. 과거 여객 수요가 급감하자 화물 사업을 확대했다.", "회장이 경영자상을 수상했다."),
+            ("내년 머니 트렌드 서적 인기", "서점가에서 내년 트렌드 서적이 인기다. 책은 금리와 반도체 수요의 장기 전망을 쉽게 풀어낸다.", "서점가에서 내년 트렌드 서적이 인기다."),
+        )
+        for title, body, core in cases:
+            with self.subTest(title=title):
+                item = alert(title, body)
+                item["telegram_core_fact"] = core
+                self.assertIn("core_without_market_change_evidence", radar.source_core_fact_errors(item))
+                self.assertFalse(radar.source_output_aligned(item))
+                with patch.object(radar.base, "kst_now", return_value=NOW):
+                    self.assertEqual(radar.quality_display_alerts([item], 7), [])
+        for title, body in (
+            ("기업, 수주잔고 확보", "기업은 2조원을 웃도는 수주잔고를 확보했다고 밝혔다."),
+            ("유로존 9월 제조업 PMI 52.9", "유로존 9월 제조업 구매관리자 지수(PMI)는 52.9를 기록했다."),
+            ("발전사, 육상풍력 업무협약 체결", "발전사는 개발공사와 육상풍력사업 업무협약을 체결했다."),
+            ("현대차 9월 판매 역대 최대", "현대차의 9월 하이브리드 판매는 전년 동월 대비 39% 증가했다."),
+            ("컬리, 넥스트키친 100% 자회사로", "컬리는 넥스트키친을 100% 자회사로 편입한다."),
+            ("하이즈복합재산업, 무인기 생태계 MOU", "하이즈복합재산업은 한화에어로스페이스와 무인기 업무협약(MOU)을 체결했다."),
+            ("미국, 경유 수출 금지 경고", "트럼프 행정부는 미국의 경유 수출을 금지하겠다고 유럽에 최후통첩을 보냈다."),
+            ("유가 상승", "브렌트유는 이날 4.4% 오른 배럴당 102.31달러를 기록했다."),
+            ("SBVA, 데이터브릭스 투자 라운드 참여", "SBVA는 데이터브릭스의 50억달러 규모 전략적 투자 라운드에 참여했다."),
+            ("미국, 중국 과잉생산 대응 조치 예고", "미국이 중국 등을 겨냥한 과잉생산 대응 조치를 수주일 내 발표한다."),
+            ("알래스카 LNG 투자 구상", "트럼프는 한국의 2000억달러 전략투자 가운데 540억달러를 알래스카 LNG 개발에 투입하는 구상을 발표했다."),
+            ("미국 고용지표 예상 하회", "미국 비농업 고용이 예상치를 밑돌았습니다."),
+            ("기업, 인수 자금조달 미정", "기업은 인수 자금조달 방식에 대해 확정된 사항은 없다고 설명했다."),
+        ):
+            with self.subTest(title=title):
+                item = alert(title, body)
+                item["telegram_core_fact"] = body
+                self.assertEqual(radar.source_core_fact_errors(item), [])
+
+    def test_photo_description_concatenated_with_business_fact_is_repaired(self):
+        title = 'SG "온양캠퍼스 에코스틸아스콘 1차 시공 완료"'
+        body = "SG가 온양캠퍼스에 아스콘을 시공하고 있다 (사진=SG) [서울=뉴시스] 기자 = SG는 온양캠퍼스에 에코스틸아스콘 1차 시공을 완료했다고 밝혔다."
+        item = alert(title, body)
+        item["telegram_core_fact"] = "SG가 아스콘을 시공하고 있다 아스콘 기업 SG는 온양캠퍼스에 1차 시공을 완료했다."
+        self.assertIn("concatenated_photo_caption", radar.source_core_fact_errors(item))
+        core = radar.verified_alert_core(item, title)
+        self.assertNotIn("시공하고 있다", core)
+        self.assertIn("1차 시공을 완료", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+
     def test_viral_and_personnel_foreground_cannot_borrow_background_economics(self):
         cases = (
             ("현실판 터미네이터?…용광로에 뛰어든 로봇", "휴머노이드 로봇이 용광로에 뛰어드는 이색적인 장면이 공개됐습니다. 차세대 로봇 생산이 확대되면서 기존 모델을 퇴역시키기로 한 겁니다. 영화 패러디 영상입니다."),
@@ -1173,11 +1217,15 @@ def audit_saved_runs(paths):
                                        for item in candidates if item.get("link") not in selected_links]})
         for item in report["alerts"]:
             title = item.get("source_title") or item.get("news") or ""
+            core = radar.verified_alert_core(item, title)
+            core_item = {**item, "telegram_core_fact": core}
             results.append({
                 "artifact": str(path), "title": title,
                 "materiality": radar.source_market_materiality(item),
                 "stored_core": item.get("telegram_core_fact"),
-                "revalidated_core": radar.verified_alert_core(item, title),
+                "revalidated_core": core,
+                "core_errors": radar.source_core_fact_errors(core_item),
+                "core_materiality": materiality.assess(title, core),
                 "stale_session_preview": bool(run_time and radar.is_stale_session_preview(item, run_time)),
             })
     print(json.dumps({"read_only_shadow_audit": True, "articles": len(results),

@@ -6,7 +6,7 @@ from __future__ import annotations
 import re
 
 
-VERSION = 17
+VERSION = 18
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"해야|권고|제언|우려|필요|목표|보인다|나서야|시급|밑돌\s*듯|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
@@ -204,6 +204,8 @@ RULES = (
     ("commercial_order", ("earnings", "timeline"),
      r"수주|발주|공급계약|공급\s*계약|납품\s*계약|발사\s*계약|purchase order|supply contract|procurement contract|launch (?:contract|agreement)",
      r"체결|확정|수주|발주|갱신|취소|파기|해지|협상|추진|서명|sign|secure|award|agree|cancel|negotiat"),
+    ("order_backlog_level", ("earnings", "timeline"),
+     r"수주잔고|수주\s*잔고|잔여수주|order backlog|remaining orders", r"확보|기록|집계|발표|증가|감소|secur|report|increas|decreas"),
     ("customer_supply_start", ("earnings", "timeline"),
      r"고객|공급|납품|시공|customer|supply|deliver", r"첫\s*(?:공급|납품)|공급(?:했다|한다|하기로)|납품(?:했다|한다)|(?:1차\s*시공|초도\s*납품).{0,15}완료|first delivery|began supplying"),
     ("procurement_execution_stage", ("earnings", "timeline"),
@@ -213,7 +215,7 @@ RULES = (
      r"판매가격|판매\s*가격|판가|단가|원가|평균판매가격|\basp\b|selling price|unit price|input cost",
      r"인상|인하|상승|하락|급등|급락|증가|감소|전가|협상|상향|하향|rais|cut|rise|fall|increas|decreas|negotiat"),
     ("earnings_or_guidance", ("earnings",),
-     r"매출|영업이익|순이익|마진|실적|가이던스|출하|판매량|시장점유율|revenue|earnings|profit|guidance|shipments",
+     r"매출|영업이익|순이익|마진|실적|가이던스|출하|판매(?:량|실적|는|가)|시장점유율|revenue|earnings|profit|guidance|shipments",
      r"증가|감소|상승|하락|상회|하회|상향|하향|달성|기록|집계|발표|전망|예상|rise|fall|grow|cut|rais|report|forecast|beat|miss"),
     ("research_spending_change", ("earnings", "timeline"),
      r"r&d|연구개발", r"증가|감소|늘|줄|투자|지출|비용|rise|fall|spend|invest"),
@@ -221,8 +223,8 @@ RULES = (
      r"로열티|선급금|마일스톤|기술이전|royalty|upfront|milestone|licens",
      r"체결|계약|수령|수취|받|합의|서명|sign|agreement|receiv"),
     ("capital_or_shareholder_action", ("earnings", "timeline"),
-     r"투자(?=\s*(?:\d|를|한다|한다고|하는|하고|해|했다|할|하겠|금|액|규모|계획|협약|계약|자금)|.{0,12}유치)|capex|자본지출|(?<!대)출자|자금\s*조달|자본\s*조달|회사채|주주환원|배당|자사주|자기주식|지분|funding|financing|buyback|dividend|bond issuance|stake",
-     r"체결|유치|출자|발행|증액|삭감|확대|축소|매입|매수|취득|소각|매각|인수|검토|추진|결정|발표|승인|raise|issu|buy|repurchas|sell|acquir|announc|consider|approv"),
+     r"투자(?=\s*(?:\d|를|한다|한다고|하는|하고|해|했다|할|하겠|금|액|규모|계획|협약|계약|자금|라운드)|.{0,12}유치)|전략투자|capex|자본지출|(?<!대)출자|자금\s*조달|자본\s*조달|회사채|주주환원|배당|자사주|자기주식|지분|funding|financing|buyback|dividend|bond issuance|stake",
+     r"체결|유치|출자|발행|증액|삭감|확대|축소|매입|매수|취득|소각|매각|인수|검토|추진|결정|발표|승인|투입|투자\s*라운드.{0,10}참여|raise|issu|buy|repurchas|sell|acquir|announc|consider|approv"),
     ("financing_infrastructure", ("earnings", "timeline"),
      r"금융플랫폼|금융\s*플랫폼|투자\s*자금\s*조달|financing platform|investment financing",
      r"구축|설립|출범|조성|지원|build|establish|launch|support"),
@@ -236,8 +238,11 @@ RULES = (
     ("corporate_transaction", ("earnings", "timeline"),
      r"회사|기업|사업|법인|지분|인수|합병(?!원)|company|business|subsidiar|stake|acquir|merger", r"인수|합병(?!원)|acquir|merger"),
     ("corporate_ownership_execution", ("earnings", "timeline"),
-     r"잔여\s*지분|완전자회사|주식교환|지분.{0,20}\d+(?:\.\d+)?%|remaining stake|wholly.owned|share exchange",
+     r"잔여\s*지분|완전자회사|100%\s*자회사|주식교환|지분.{0,20}\d+(?:\.\d+)?%|remaining stake|wholly.owned|share exchange",
      r"확보|편입|취득|교환|acquir|convert|exchange"),
+    ("corporate_action_clarification", ("earnings", "timeline"),
+     r"자금조달|인수|합병(?!원)|공급\s*계약|투자\s*계획|financing|acquisition|merger|supply contract|investment plan",
+     r"(?:확정|결정)된\s*사항(?:은|이)?\s*없|부인|사실무근|denies|not final"),
     ("operating_asset_transaction", ("earnings", "timeline"),
      r"(?:사옥|부동산|사업부|영업자산).{0,20}(?:매각|취득|매입)|operating asset|headquarters sale",
      r"결정|확정|검토|추진|계약|매각했다|매입했다|decid|consider|contract|sold|acquir"),
@@ -253,12 +258,15 @@ RULES = (
     ("industrial_architecture_adoption", ("earnings", "timeline"),
      r"hvdc|\bvdc\b|\bcpo\b|광트랜시버|광\s*인터커넥트|파운데이션\s*모델|foundation model|co.packaged optics",
      r"규격|채택|통합|전환|도입|standard|specification|adopt|integrat|deploy"),
+    ("industrial_partnership_execution", ("earnings", "timeline"),
+     r"풍력|태양광|발전소|반도체|데이터센터|휴머노이드|자율주행|무인기|항공우주|wind power|solar|power plant|semiconductor|data center|humanoid|autonomous driving|drone|aerospace",
+     r"(?:업무협약|공동개발\s*협약|MOU).{0,20}(?:체결|맺|서명)|(?:체결|맺|서명).{0,20}(?:업무협약|공동개발\s*협약|MOU)|signed.{0,30}(?:mou|joint development)"),
     ("rates_fx_or_macro", ("discount_rate",),
-     r"금리|국고채|모기지|주담대|주택담보대출|물가|인플레이션|고용|환율|달러화|유동성|차입|cpi|pce|payroll|mortgage|interest rate|treasury|inflation|exchange rate|borrowing",
-     r"인상|(?<!할)인하|동결|상승|하락|오른|내린|올랐|내렸|둔화|급등|급락|상회|하회|발표|증가|감소|결정|약세|강세|최고|치솟|cut|hike|hold|rise|fall|miss|beat|announc|estimat"),
+     r"금리|국고채|모기지|주담대|주택담보대출|물가|인플레이션|고용|환율|달러화|유동성|차입|구매관리자|\bpmi\b|cpi|pce|payroll|mortgage|interest rate|treasury|inflation|exchange rate|borrowing",
+     r"인상|(?<!할)인하|동결|상승|하락|오른|내린|올랐|내렸|둔화|급등|급락|상회|하회|밑돌|웃돌|발표|기록|증가|감소|결정|약세|강세|최고|치솟|cut|hike|hold|rise|fall|miss|beat|announc|estimat|record"),
     ("policy_scope_or_stage", ("timeline",),
-     r"관세|법인세|세율|세금|수출통제|수출금지|수입금지|수입 금지|수입 제한|수입제한|제재|보조금|지원금|예탁금|규제|인허가|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
-     r"제안|검토|추진|인상|인하|올리|올렸|상향|하향|완화|강화|시행|발효|금지|제한|허가|승인|제정|철회|의견수렴|입법예고|면제|배정|의결|착수|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
+     r"관세|법인세|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
+     r"제안|검토|추진|인상|인하|올리|올렸|상향|하향|완화|강화|시행|발효|금지|제한|허가|승인|제정|철회|의견수렴|입법예고|면제|배정|의결|착수|발표|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
     ("export_control_scope", ("earnings", "timeline"),
      r"country group|trade authorization|export administration|수출관리규정|수출허가",
      r"remov|add|available|amend|change|변경|제외|허용"),
@@ -296,7 +304,7 @@ RULES = (
      r"효소|단백질|enzyme|protein", r"발견|규명|discover|characteriz"),
     ("energy_geopolitics_or_supply_risk", ("earnings", "discount_rate"),
      r"원유|유가|브렌트|천연가스|운임|호르무즈|홍해|이란|이스라엘|우크라이나|러시아|구리|리튬|\boil\b|brent|wti|\bgas\b|hormuz|iran|ukraine|russia|copper|lithium",
-     r"공격|공습|피격|발사체|화재|휴전|협상|통항|봉쇄|제재|상승|하락|급등|급락|차질|감산|증산|합의|경고|명령|배치|발표|attack|strike|ceasefire|talks|blockade|sanction|rise|fall|disrupt|output|warn|deploy|announc"),
+     r"공격|공습|피격|발사체|화재|휴전|협상|통항|봉쇄|제재|상승|하락|오른|내린|급등|급락|차질|감산|증산|합의|경고|명령|배치|발표|attack|strike|ceasefire|talks|blockade|sanction|rise|fall|disrupt|output|warn|deploy|announc"),
     ("climate_operational_damage", ("earnings", "timeline"),
      r"폭염|폭우|홍수|태풍|정전|가뭄|산불|heatwave|flood|outage|drought|wildfire",
      r"전력|변압기|과부하|폐사|양식|농작물|생산|공급|항만|물류|공장|피해|사망|power|transformer|crop|production|supply|port|factory|damage|death"),
@@ -357,14 +365,14 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
 def news_value_rank(evidence: list[dict]) -> int:
     """Economic mechanism outranks textual focus and announcement certainty."""
     kinds = {item["kind"] for item in evidence}
-    if kinds & {"commercial_order", "customer_supply_start", "procurement_execution_stage", "selling_price_or_cost",
+    if kinds & {"commercial_order", "order_backlog_level", "customer_supply_start", "procurement_execution_stage", "selling_price_or_cost",
                 "earnings_or_guidance", "licensing_cashflow", "corporate_transaction", "corporate_ownership_execution", "export_control_scope",
                 "policy_scope_or_stage", "industrial_architecture_adoption", "physical_supply_or_capacity",
                 "launch_turnaround_bottleneck", "sector_demand_outlook"}:
         return 4
     if kinds & {"technology_or_clinical_stage", "space_execution_stage", "space_thermal_validation",
                 "cryogenic_propellant_storage", "biology_research_discovery", "model_operating_specification",
-                "customer_discussions", "capital_or_shareholder_action", "capital_listing_stage",
+                "customer_discussions", "industrial_partnership_execution", "corporate_action_clarification", "capital_or_shareholder_action", "capital_listing_stage",
                 "public_program_cost_study", "energy_geopolitics_or_supply_risk"}:
         return 3
     return 2
@@ -477,7 +485,7 @@ def assess(title: str, body: str) -> dict:
             ):
                 continue
             if kind == "earnings_or_guidance" and not re.search(
-                r"매출|영업(?:이익|익)|순(?:이익|익)|마진|가이던스|출하|판매량|시장점유율|주당순이익|"
+                r"매출|영업(?:이익|익)|순(?:이익|익)|마진|가이던스|출하|판매(?:량|실적|는|가)|시장점유율|주당순이익|"
                 r"실적.{0,20}(?:어닝|상회|하회|흑자|적자)|\beps\b|revenue|earnings|profit|guidance|shipments", sentence, re.I,
             ):
                 continue
