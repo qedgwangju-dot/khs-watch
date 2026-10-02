@@ -100,8 +100,8 @@ SEARCHES = [
     ("google", 'LS ELECTRIC data center transformer order United States 2026'),
     ("google", 'Hyosung Heavy Industries US transformer data center 2026'),
     ("google", 'HD Hyundai Electric US transformer data center 2026'),
-    ("google", '"Morgan Stanley" data center 78.57 GW 2029 97 GW power shortfall'),
-    ("google", '"Morgan Stanley" data center power 57 GW 33 GW 2026 2028'),
+    ("google", '"모건스탠리" data center 78.57 GW 2029 97 GW power shortfall'),
+    ("google", '"모건스탠리" data center power 57 GW 33 GW 2026 2028'),
 ]
 
 OFFICIAL_DOMAINS = (
@@ -382,10 +382,10 @@ def material_metric_changes(old: dict, new: dict) -> list[dict]:
         "queue_projects": ("계통연결 대기 프로젝트", "pct", 10.0),
         "queue_gw": ("계통연결 대기 용량", "pct", 10.0),
         "transmission_345kv_plus_miles_latest": ("345kV+ 송전선 연간 준공", "pct", 25.0),
-        "ms_it_power_2029_gw": ("Morgan Stanley 2029 데이터센터 IT 전력", "pct", 10.0),
-        "ms_new_power_need_2026_2028_gw": ("Morgan Stanley 2026~2028 신규 전력 필요량", "abs", 10.0),
-        "ms_gross_gap_gw": ("Morgan Stanley 1차 전력 부족분", "abs", 5.0),
-        "ms_residual_gap_gw": ("Morgan Stanley 대체전원 반영 후 부족분", "abs", 5.0),
+        "ms_it_power_2029_gw": ("모건스탠리 2029 데이터센터 IT 전력", "pct", 10.0),
+        "ms_new_power_need_2026_2028_gw": ("모건스탠리 2026~2028 신규 전력 필요량", "abs", 10.0),
+        "ms_gross_gap_gw": ("모건스탠리 1차 전력 부족분", "abs", 5.0),
+        "ms_residual_gap_gw": ("모건스탠리 대체전원 반영 후 부족분", "abs", 5.0),
     }
     out = []
     for key, (label, mode, threshold) in rules.items():
@@ -469,10 +469,10 @@ def build_alert(changes: list[dict], events: list[dict], state: dict) -> str:
         f"{format_metric('queue_gw', float(m.get('queue_gw') or 0))}",
         f"• 345kV+ 송전선 최신 기준: "
         f"{format_metric('transmission_345kv_plus_miles_2024', float(m.get('transmission_345kv_plus_miles_latest') or m.get('transmission_345kv_plus_miles_2024') or 0))}",
-        f"• Morgan Stanley IT 전력 경로: 2025 {float(m.get('ms_it_power_2025_gw') or 0):.2f}GW → "
+        f"• 모건스탠리 IT 전력 경로: 2025 {float(m.get('ms_it_power_2025_gw') or 0):.2f}GW → "
         f"2026 {float(m.get('ms_it_power_2026_gw') or 0):.2f}GW → 2027 {float(m.get('ms_it_power_2027_gw') or 0):.2f}GW → "
         f"2028 {float(m.get('ms_it_power_2028_gw') or 0):.2f}GW → 2029 {float(m.get('ms_it_power_2029_gw') or 0):.2f}GW",
-        f"• Morgan Stanley 전력 수급 스트레스: 2026~2028 신규 필요 {float(m.get('ms_new_power_need_2026_2028_gw') or 0):.0f}GW "
+        f"• 모건스탠리 전력 수급 스트레스: 2026~2028 신규 필요 {float(m.get('ms_new_power_need_2026_2028_gw') or 0):.0f}GW "
         f"→ 건설 중 {float(m.get('ms_under_construction_gw') or 0):.0f}GW + 전력망 가용 {float(m.get('ms_grid_available_gw') or 0):.0f}GW "
         f"→ 1차 부족 {float(m.get('ms_gross_gap_gw') or 0):.0f}GW → 대체전원 반영 후 약 {float(m.get('ms_residual_gap_gw') or 0):.0f}GW",
         "",
