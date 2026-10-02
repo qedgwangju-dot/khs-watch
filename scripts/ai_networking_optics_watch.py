@@ -959,6 +959,21 @@ def main() -> None:
     def source_is_corroborated(item: dict) -> bool:
         if source_priority(item.get("source") or "") >= 65:
             return True
+
+        # Private photonics startups are often first covered by specialist media.
+        # Allow a low-priority source only when a second independent outlet reports
+        # the same underlying event. One low-quality article can never trigger alone.
+        if item.get("company") in {"Volantis", "Lightmatter", "Ayar Labs", "Xscape Photonics"}:
+            corroborating_sources = {
+                normalize_text(other.get("source") or "").lower()
+                for other in all_relevant
+                if other is not item
+                and normalize_text(other.get("source") or "").lower() != normalize_text(item.get("source") or "").lower()
+                and same_underlying_story(item, other)
+            }
+            if corroborating_sources:
+                return True
+
         return any(
             other is not item
             and source_priority(other.get("source") or "") >= 65
@@ -1052,7 +1067,7 @@ def main() -> None:
         "initialized": True,
         "dedupe_version": 2,
         "quality_version": 3,
-        "photonic_compute_version": 3,
+        "photonic_compute_version": 4,
         "optical_material_version": 1,
         "cpo_equipment_version": 2,
         "optical_policy_version": 2,
@@ -1083,7 +1098,7 @@ def main() -> None:
         if korea_optics_version < 1:
             new_items = [item for item in new_items if item.get("company") not in {"Opticore", "OE Solutions"}]
         photonic_compute_version = int(state.get("photonic_compute_version") or 0)
-        if photonic_compute_version < 3:
+        if photonic_compute_version < 4:
             new_items = [item for item in new_items if item.get("company") not in {"Volantis", "Lightmatter", "Ayar Labs", "Xscape Photonics"}]
         alert_items = new_items[:8] if initialized else []
     if ALERT_PATH.exists():
