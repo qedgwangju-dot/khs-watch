@@ -48,7 +48,7 @@ COMPANIES = {
     "Marvell": {
         "ticker": "MRVL",
         "aliases": ["Marvell"],
-        "query": 'Marvell (optical DSP OR SerDes OR interconnect OR networking OR 800G OR 1.6T OR 3.2T OR CPO OR "co-packaged optics")',
+        "query": 'Marvell (optical DSP OR SerDes OR interconnect OR networking OR 800G OR 1.6T OR 3.2T OR CPO OR "co-packaged optics" OR "Celestial AI" OR "photonic fabric")',
     },
     "Lumentum": {
         "ticker": "LITE",
@@ -247,6 +247,7 @@ HIGH_SIGNAL_PATTERNS = [
     r"copper", r"optical", r"fiber", r"fibre", r"transceiver", r"laser",
     r"data movement", r"interconnect", r"fabric", r"retimer", r"PCIe", r"CXL",
     r"photonic memory", r"optical memory", r"memory wall", r"memory pooling",
+    r"photonic AI", r"photonic inference", r"AI inference system",
     r"compute[- ]to[- ]memory", r"optical fabric", r"micro[- ]?VCSEL", r"VCSEL",
     r"tokens? per second", r"tok/s", r"20\s*trillion", r"10\s*trillion",
     r"240\s*TB/s", r"10\s*TB", r"1\s*pJ/bit", r"220\s*memory chips",
@@ -289,6 +290,7 @@ ACTION_PATTERNS = [
     r"assembly line", r"factory expansion", r"capacity", r"CAPA", r"utilization",
     r"qualification", r"validation", r"verification", r"sampling", r"sample",
     r"silicon", r"tape[- ]?out", r"benchmark", r"commercialization", r"delivery",
+    r"funding", r"financing", r"raises?", r"series\s+[abc]",
     r"final rule", r"proposed rule", r"rulemaking", r"adopt(?:s|ed)?", r"effective",
     r"restrict(?:s|ed|ion|ions)?", r"ban(?:s|ned)?", r"prohibit(?:s|ed|ion)?",
     r"introduc(?:es|ed)? bill", r"legislation", r"covered list", r"equipment authorization",
@@ -580,8 +582,10 @@ def signal_score(title: str, source: str) -> int:
         score += 4
     if re.search(r"\bInP\b|indium phosphide|InP substrate|\bGaAs\b|gallium arsenide|砷化鎵|\bSiPh\b|photonics foundry|design win", text, re.I):
         score += 4
-    if re.search(r"photonic memory|optical memory|memory wall|memory pooling|compute[- ]to[- ]memory|optical fabric|micro[- ]?VCSEL|VCSEL", text, re.I):
+    if re.search(r"photonic memory|optical memory|memory wall|memory pooling|compute[- ]to[- ]memory|optical fabric|micro[- ]?VCSEL|VCSEL|photonic AI|photonic inference|AI inference system", text, re.I):
         score += 6
+    if re.search(r"funding|financing|raises?|series\s+[abc]", text, re.I):
+        score += 3
     if re.search(r"tokens? per second|tok/s|20\s*trillion|10\s*trillion|240\s*TB/s|10\s*TB|1\s*pJ/bit|220\s*memory chips", text, re.I):
         score += 4
     if re.search(r"customer sampling|integrated inference engines?|silicon validation|tape[- ]?out|benchmark|commercialization", text, re.I):
