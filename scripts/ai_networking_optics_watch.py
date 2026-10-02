@@ -51,17 +51,17 @@ COMPANIES = {
     "Marvell": {
         "ticker": "MRVL",
         "aliases": ["Marvell"],
-        "query": 'Marvell (optical DSP OR SerDes OR interconnect OR networking OR 800G OR 1.6T OR 3.2T OR CPO OR "co-packaged optics" OR "Celestial AI" OR "photonic fabric")',
+        "query": 'Marvell (optical DSP OR SerDes OR interconnect OR networking OR 800G OR 1.6T OR 3.2T OR CPO OR "co-packaged optics" OR "Celestial AI" OR "photonic fabric" OR "200G/lane" OR DAC OR ACC OR "active copper cable" OR "co-packaged copper")',
     },
     "Lumentum": {
         "ticker": "LITE",
         "aliases": ["Lumentum"],
-        "query": 'Lumentum (AI datacenter OR data center OR optical OR laser OR CPO OR 800G OR 1.6T OR 3.2T OR transceiver)',
+        "query": 'Lumentum (AI datacenter OR data center OR optical OR laser OR CPO OR 800G OR 1.6T OR 3.2T OR transceiver OR ELS OR ELSFP OR "external laser source" OR "external light source" OR "CW laser" OR UHP OR 350mW OR 400mW)',
     },
     "Coherent": {
         "ticker": "COHR",
         "aliases": ["Coherent"],
-        "query": 'Coherent (PhotonLink OR "integrated optics" OR "complete optical solution" OR "end-to-end" OR "vertical integration" OR CPO OR NPO OR "chip-to-chip" OR "silicon photonics" OR SiPh OR InP OR "specialty fiber" OR "polarization-maintaining fiber" OR "mode-matching fiber" OR "multicore fiber" OR "customer engagement" OR "long-term agreement" OR "content opportunity" OR 800G OR 1.6T OR 3.2T)',
+        "query": 'Coherent (PhotonLink OR "integrated optics" OR "complete optical solution" OR "end-to-end" OR "vertical integration" OR CPO OR NPO OR "chip-to-chip" OR "silicon photonics" OR SiPh OR InP OR ELS OR ELSFP OR "external laser source" OR "external light source" OR "CW laser" OR 400mW OR "specialty fiber" OR "polarization-maintaining fiber" OR "mode-matching fiber" OR "multicore fiber" OR "customer engagement" OR "long-term agreement" OR "content opportunity" OR 800G OR 1.6T OR 3.2T)',
     },
     "US Optical Policy": {
         "ticker": "FCC/의회",
@@ -130,6 +130,39 @@ COMPANIES = {
         "locales": [
             {"hl": "ko", "gl": "KR", "ceid": "KR:ko"},
             {"hl": "en-US", "gl": "US", "ceid": "US:en"},
+        ],
+    },
+    "Sungho Electronics / ADST": {
+        "ticker": "043260.KQ",
+        "aliases": ["성호전자", "Sungho Electronics", "ADST", "에이디에스테크"],
+        "queries": [
+            '("성호전자" OR "에이디에스테크" OR ADST) (CPO OR 광트랜시버 OR 광정렬 OR "렌즈 얼라인먼트" OR "Fiber Array Alignment" OR 검사장비 OR 외부광원) (수주 OR 발주 OR PO OR 공급 OR 납품 OR 검수 OR 양산 OR 증설 OR 고객)',
+            '("Sungho Electronics" OR ADST) (CPO OR "co-packaged optics" OR "active alignment" OR "lens alignment" OR "fiber array alignment" OR inspection OR ELS) (order OR PO OR contract OR shipment OR qualification OR production OR customer)',
+        ],
+        "locales": [
+            {"hl": "ko", "gl": "KR", "ceid": "KR:ko"},
+            {"hl": "en-US", "gl": "US", "ceid": "US:en"},
+        ],
+    },
+    "POET Technologies": {
+        "ticker": "POET",
+        "aliases": ["POET Technologies", "POET", "Optical Interposer", "Sivers Semiconductors"],
+        "query": '"POET Technologies" (CPO OR "co-packaged optics" OR ELS OR "external light source" OR "external laser source" OR "Optical Interposer" OR Sivers) (customer OR sampling OR qualification OR production OR shipment OR order OR contract OR design win OR manufacturing)',
+    },
+    "TFLN Supply Chain": {
+        "ticker": "TFLN 공급망",
+        "aliases": ["TFLN", "thin-film lithium niobate", "thin film lithium niobate", "HyperLight", "AFR Milan", "Advanced Fiber Resources"],
+        "queries": [
+            '("thin-film lithium niobate" OR "thin film lithium niobate" OR TFLN) (CPO OR NPO OR LPO OR "200G/lane" OR "400G/lane") (customer OR sampling OR qualification OR production OR shipment OR foundry OR capacity OR order OR "design win")',
+            '(HyperLight OR "AFR Milan" OR "Advanced Fiber Resources") (TFLN OR modulator) ("AI infrastructure" OR datacenter OR "data center" OR CPO OR NPO) (production OR customer OR shipment OR qualification OR sampling OR capacity OR order)',
+        ],
+    },
+    "ELS Connector Supply Chain": {
+        "ticker": "ELSFP 연결부품",
+        "aliases": ["ELSFP", "SENKO", "TE Connectivity", "Molex", "Furukawa Electric", "blind-mate"],
+        "queries": [
+            '(ELSFP OR "external laser source") ("blind-mate" OR "blind mate" OR connector OR ferrule OR "insertion loss") (CPO OR NPO) (qualification OR production OR shipment OR customer OR order OR standard OR reliability)',
+            '("SENKO" OR "TE Connectivity" OR Molex OR "Furukawa Electric") ELSFP (CPO OR "external laser") (production OR shipment OR qualification OR customer OR order OR "OIF-ELSFP")',
         ],
     },
     "Volantis": {
@@ -216,6 +249,10 @@ DISPLAY_NAMES_KO = {
     "Applied Optoelectronics": "어플라이드 옵토일렉트로닉스",
     "Opticore": "옵티코어",
     "OE Solutions": "오이솔루션",
+    "Sungho Electronics / ADST": "성호전자·ADST",
+    "POET Technologies": "POET Technologies",
+    "TFLN Supply Chain": "TFLN 광변조기 공급망",
+    "ELS Connector Supply Chain": "ELSFP 블라인드메이트 연결부품",
     "Volantis": "볼란티스",
     "Lightmatter": "라이트매터",
     "Ayar Labs": "아야르 랩스",
@@ -232,6 +269,10 @@ TRUSTED_SOURCES = {
     "NVIDIA Blog", "NVIDIA Newsroom", "Broadcom", "Arista Networks", "Marvell",
     "Lumentum", "Coherent", "AXT", "WIN Semiconductors", "VPEC", "Applied Optoelectronics",
     "Opticore", "옵티코어", "OE Solutions", "오이솔루션",
+    "Sungho Electronics", "성호전자", "ADST", "에이디에스테크",
+    "POET Technologies", "POET", "Sivers Semiconductors",
+    "HyperLight", "AFR Milan", "Advanced Fiber Resources",
+    "SENKO", "TE Connectivity", "Molex", "Furukawa Electric",
     "Volantis", "Lightmatter", "Ayar Labs", "Xscape Photonics",
     "KIND", "KRX", "한국거래소",
     "연합뉴스", "전자신문", "ETNews", "Federal Communications Commission", "FCC",
@@ -250,6 +291,12 @@ HIGH_SIGNAL_PATTERNS = [
     r"capacity expansion", r"expand(?:ing|s|ed)? capacity", r"new factory", r"new plant",
     r"shortage", r"constraint", r"bottleneck", r"supply tight", r"pricing", r"price increase",
     r"copper", r"optical", r"fiber", r"fibre", r"transceiver", r"laser",
+    r"\bELS\b", r"\bELSFP\b", r"external laser source", r"external light source",
+    r"high[- ]power CW", r"ultra[- ]high[- ]power", r"\bUHP\b",
+    r"TFLN", r"thin[- ]film lithium niobate", r"thin film lithium niobate",
+    r"blind[- ]mate", r"insertion loss", r"hot[- ]swap", r"field[- ]replaceable",
+    r"200G/lane", r"400G/lane", r"direct attach copper", r"\bDAC\b", r"\bACC\b", r"co[- ]packaged copper",
+    r"reliability", r"lifetime", r"thermal", r"laser failure",
     r"data movement", r"interconnect", r"fabric", r"retimer", r"PCIe", r"CXL",
     r"photonic memory", r"optical memory", r"memory wall", r"memory pooling",
     r"photonic AI", r"photonic inference", r"AI inference system",
@@ -296,6 +343,9 @@ ACTION_PATTERNS = [
     r"qualification", r"validation", r"verification", r"sampling", r"sample",
     r"silicon", r"tape[- ]?out", r"benchmark", r"commercialization", r"delivery",
     r"funding", r"financing", r"raises?", r"series\s+[abc]",
+    r"reliability", r"lifetime", r"MTBF", r"failure rate", r"thermal",
+    r"blind[- ]mate", r"insertion loss", r"hot[- ]swap", r"field[- ]replaceable",
+    r"OIF[- ]ELSFP", r"reach", r"meter", r"metre",
     r"final rule", r"proposed rule", r"rulemaking", r"adopt(?:s|ed)?", r"effective",
     r"restrict(?:s|ed|ion|ions)?", r"ban(?:s|ned)?", r"prohibit(?:s|ed|ion)?",
     r"introduc(?:es|ed)? bill", r"legislation", r"covered list", r"equipment authorization",
@@ -325,6 +375,10 @@ SOURCE_PRIORITY = {
     "Broadcom": 100, "Arista Networks": 100, "Marvell": 100,
     "Lumentum": 100, "AXT": 100, "Applied Optoelectronics": 100,
     "Volantis": 100, "Lightmatter": 100, "Ayar Labs": 100, "Xscape Photonics": 100,
+    "Sungho Electronics": 100, "성호전자": 100, "ADST": 100, "에이디에스테크": 100,
+    "POET Technologies": 100, "POET": 100, "Sivers Semiconductors": 100,
+    "HyperLight": 100, "AFR Milan": 100, "Advanced Fiber Resources": 100,
+    "SENKO": 100, "TE Connectivity": 100, "Molex": 100, "Furukawa Electric": 100,
     "Opticore": 100, "옵티코어": 100, "OE Solutions": 100, "오이솔루션": 100,
     "KIND": 100, "KRX": 100, "한국거래소": 100, "연합뉴스": 90, "전자신문": 85, "ETNews": 85,
     "Federal Communications Commission": 100, "FCC": 100,
@@ -705,6 +759,16 @@ def signal_score(title: str, source: str) -> int:
         score += 4
     if re.search(r"photonic memory|optical memory|memory wall|memory pooling|compute[- ]to[- ]memory|optical fabric|micro[- ]?VCSEL|VCSEL|photonic AI|photonic inference|AI inference system", text, re.I):
         score += 6
+    if re.search(r"\bELS\b|\bELSFP\b|external laser source|external light source|high[- ]power CW|ultra[- ]high[- ]power|\bUHP\b", text, re.I):
+        score += 5
+    if re.search(r"TFLN|thin[- ]film lithium niobate|thin film lithium niobate", text, re.I):
+        score += 5
+    if re.search(r"blind[- ]mate|insertion loss|hot[- ]swap|field[- ]replaceable", text, re.I):
+        score += 4
+    if re.search(r"200G/lane|400G/lane|direct attach copper|\bDAC\b|\bACC\b|co[- ]packaged copper", text, re.I):
+        score += 4
+    if re.search(r"reliability|lifetime|MTBF|failure rate|thermal|laser failure", text, re.I):
+        score += 3
     if re.search(r"funding|financing|raises?|series\s+[abc]", text, re.I):
         score += 3
     if re.search(r"tokens? per second|tok/s|20\s*trillion|10\s*trillion|240\s*TB/s|10\s*TB|1\s*pJ/bit|220\s*memory chips", text, re.I):
@@ -761,6 +825,10 @@ def signal_score(title: str, source: str) -> int:
 
 
 def stage_for(title: str) -> str:
+    if re.search(r"reliability|lifetime|MTBF|failure rate|thermal|laser failure", title, re.I):
+        return "신뢰성·열검증"
+    if re.search(r"blind[- ]mate|insertion loss|hot[- ]swap|field[- ]replaceable|OIF[- ]ELSFP", title, re.I):
+        return "광결합·커넥터 검증"
     if re.search(r"funding|financing|raises?|series\s+[abc]|strategic investment", title, re.I):
         return "투자·개발자금"
     if re.search(r"customer delivery|customer deployment|integrated inference engines?", title, re.I):
