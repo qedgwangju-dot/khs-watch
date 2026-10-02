@@ -324,13 +324,13 @@ def filter_alertable_events(events, now=None, freshness_days=7):
 
 def federal_register_comments_close(event):
     detail = clean(event.get("detail", ""))
-    m = re.search(r"Comments Close:\\s*(\\d{4}-\\d{2}-\\d{2})", detail, re.I)
+    m = re.search(r"Comments Close:\s*(\d{4}-\d{2}-\d{2})", detail, re.I)
     return m.group(1) if m else ""
 
 
 def federal_register_document_number(event):
     detail = clean(event.get("detail", ""))
-    m = re.search(r"Document Number:\\s*([^|]+)", detail, re.I)
+    m = re.search(r"Document Number:\s*([^|]+)", detail, re.I)
     return clean(m.group(1)) if m else ""
 
 def special_translation(event):
