@@ -96,6 +96,53 @@ def alert(title, body):
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_certification_emissions_and_hospital_are_not_financial_actions(self):
+        cases = (
+            ("한유원 인증 3개 취득", "한유원은 안전보건 경영 인증을 받았다. 무재해사업장 달성, 온실가스 감축 실적 및 에너지 절약 캠페인 성과를 인정받았다."),
+            ("김해시의원 의료거점 설립 협의 촉구", "경남 김해지역 종합병원의 잇따른 운영 중단과 의료기관 개원 지연에 따른 의료공백 해소를 위해 협의에 나서야 한다는 의견이 나왔다."),
+            ("부산 북항 크레인 내구연한 초과", "부산 북항 크레인 155기 중 151기가 내구연한을 초과했다. 다만 이들 사고는 대부분 항만 건설공사 현장과 여객터미널 등에서 발생했다."),
+        )
+        for title, body in cases:
+            audit = materiality.assess(title, body)
+            self.assertFalse(audit["disposition"] == "keep" and audit["priority"] >= 2, (title, audit))
+        for title, body in (
+            ("제조업체 인력 감축 발표", "제조업체는 공장 비용 축소를 위해 인력 300명을 감축한다고 발표했다."),
+            ("반도체 업체 합병 승인", "경쟁당국은 반도체 업체 합병을 승인했다."),
+            ("항만 크레인 교체 발주", "항만공사는 노후 크레인 교체 공사를 신규 발주했다고 발표했다."),
+        ):
+            self.assertEqual(materiality.assess(title, body)["disposition"], "keep", title)
+
+    def test_contact_footer_related_titles_cannot_supply_article_evidence(self):
+        title = "산업부 CPTPP 간담회"
+        body = "산업부는 제조업계의 의견을 듣는 간담회를 열었다.\nreporter@example.com\nCPTPP 가입 시 보조금 제한 가능성\n국가 AI 투자 2조원 승인"
+        cleaned = radar.article_summary_body(body)
+        self.assertNotIn("보조금", cleaned)
+        self.assertNotIn("투자", cleaned)
+        item = alert(title, body)
+        audit = radar.source_market_materiality(item)
+        self.assertNotEqual(audit["disposition"], "keep", audit)
+
+    def test_data_center_target_core_keeps_capacity_and_stage_not_per_gw_cost(self):
+        title = "日 JERA·델·라엘름, 5년내 3~4GW 데이터센터 구축 목표"
+        body = "파이낸셜타임스(FT)는 JERA의 글로벌 최고경영자(CEO) 유키오 카니가 자사와 인터뷰에서 5년 안에 3~4기가와트(GW) 규모의 데이터센터와 가스발전 인프라 구축을 목표로 한다고 말했다고 전했다. 그는 GW당 구축 비용을 350억~450억달러로 추산했다. 국제데이터센터협회(IDCA)의 보고서에 따르면 미국 데이터센터의 전력소비량은 29.2GW로 전 세계 데이터센터 전력소비량의 43%를 차지한다. 다른 회사는 400MW 데이터센터 건설을 추진한다."
+        sentences = radar.ranked_article_sentences(body, [], title=title)
+        core = radar.source_focused_article_core(title, sentences)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertIn("JERA", core)
+        self.assertIn("3~4", core)
+        self.assertIn("목표", core)
+        self.assertNotIn("달러", core)
+        self.assertNotIn("29.2", core)
+        self.assertNotIn("400MW", core)
+        self.assertFalse(materiality.core_focus_aligned(title, "그는 GW당 구축 비용을 350억~450억달러로 추산했다."))
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertEqual(audit["evidence"][0]["stage"], "early_signal", audit)
+        item = alert(title, body)
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            selected = radar.quality_display_alerts([item], 7)
+        self.assertEqual(len(selected), 1, item.get("_exclusion_reason"))
+
     def test_capacity_headline_core_cannot_substitute_previous_quarter_revenue(self):
         title = "엠케이전자, 중국 법인 성장 지속…도금와이어 캐파 증설 착수"
         body = "실제로 엠케이전자 중국법인의 2분기 매출은 전 분기 대비 약 15% 증가했다. 엠케이전자는 내년 상반기까지 올해 대비 도금와이어 생산능력을 50% 확대하는 증설에 착수했다."

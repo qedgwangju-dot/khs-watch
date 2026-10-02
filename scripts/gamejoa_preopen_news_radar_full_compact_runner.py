@@ -2081,6 +2081,10 @@ def article_summary_body(text: str) -> str:
     paragraphs = []
     for line in raw.splitlines():
         line = line.strip()
+        if re.fullmatch(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", line) or re.match(
+            r"^(?:제보는\s*카카오톡|[◎☞]\s*공감언론|<저작권자)", line,
+        ):
+            break
         if re.fullmatch(r"관련\s*뉴스|주요\s*뉴스|.+기자의\s*주요\s*뉴스", line):
             break
         if re.fullmatch(r"읽기모드|다크모드|폰트크기|가|기사반응|공유하기|프린트|북마크|가장\s*(?:작게|크게)|작게|기본|크게", line):
@@ -2241,6 +2245,12 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         ):
             continue
         fact = normalized_article_sentence(sentence)
+        if market_materiality.focus_kind(title) == "project_buildout":
+            fact = re.sub(
+                r"^.*?([A-Za-z0-9가-힣&·]+)의\s+(?:글로벌\s*)?최고경영자\s*\(CEO\)"
+                r"[^.!?]{1,60}?인터뷰에서\s+", r"\1는 ", fact,
+            )
+            fact = re.sub(r"말했다고\s+전했다\.?$", "밝혔다.", fact)
         if market_materiality.DENIAL_HEADLINE.search(title):
             fact = re.sub(r"액화천연가스\s*\(LNG\)", "LNG", fact, flags=re.I)
             fact = re.sub(r"((?:은|는)\s+)(?:\d{1,2}일\s+)?[^.!?]{1,30}(?:대통령|총리|장관)이\s+", r"\1", fact)

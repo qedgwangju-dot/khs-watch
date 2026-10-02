@@ -227,3 +227,21 @@ characters. Compression retains the source's comparison baseline (`올해 대비
 not just its percentage. Two persistent tests bring the materiality suite to
 63, and all 11 local scripts passed again. Read-only replay repaired those two
 cores without changing delivery state; a new runtime artifact is still required.
+
+Run `36954943353` passed the 63-test suite and report guard at
+`2026-10-02T02:20:40Z`, but fresh-source manual checking found additional lexical
+and source-boundary defects. Hospital (`종합병원`) was misread as a merger,
+emissions reduction as labor reduction, nonfinancial ESG performance as
+earnings, and a construction-site mention as new capacity. Related-story titles
+after the reporter's contact address supplied unrelated policy evidence.
+
+Version 11 distinguishes those contexts, stops article evidence at contact and
+copyright footers, and retains genuine labor reductions, mergers, new port
+procurement and technical qualifications. It also binds a data-center buildout
+core to the headline's capacity and planned stage, not the same article's per-GW
+cost estimate, another project or global power-consumption statistics. A
+source-authored CEO attribution can be shortened without turning the goal into
+a completed project. The expanded suite has 66 tests. Read-only revalidation of
+the actual version-10 artifact removed four fillers and preserved the three
+market/industry events, including the JERA 3-4 GW goal with an aligned core.
+Final acceptance still requires the new runtime artifact below.

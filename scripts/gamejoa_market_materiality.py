@@ -6,10 +6,10 @@ from __future__ import annotations
 import re
 
 
-VERSION = 10
+VERSION = 11
 EARLY_SIGNAL = re.compile(
     r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
-    r"해야|권고|제언|우려|필요|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should)\b", re.I,
+    r"해야|권고|제언|우려|필요|목표|보인다|나서야|시급|밑돌\s*듯|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
 )
 HEADLINE_EARLY = re.compile(
     r"검토|협상|논의|가능성|관측|소식통|제안|제언|권고|해야|바꿔야|줄여야|늘려야|우려|전망$|예상$|"
@@ -68,7 +68,7 @@ HARD_HEADLINE = re.compile(
 # Prefer the first event mentioned in the headline, not a sector assigned by
 # the classifier. Reuse it for evidence ranking and compact-summary checks.
 HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) for name, head, source in (
-    ("ownership", r"지분.{0,25}(?:인수|매각|취득)|인수.{0,25}지분|합병", r"지분|인수|매각|취득|합병|stake|acquir|merger"),
+    ("ownership", r"지분.{0,25}(?:인수|매각|취득)|인수.{0,25}지분|합병(?!원)", r"지분|인수|매각|취득|합병(?!원)|stake|acquir|merger"),
     ("shareholder", r"자사주|자기주식|주주환원|배당", r"자사주|자기주식|주주환원|배당|(?:주식|지분).{0,30}(?:매수|취득|매입|처분)|buyback|dividend"),
     ("capital_listing", r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|신규\s*상장", r"기업공개|\bipo\b|상장(?!지수)"),
     ("mortgage_rate", r"주담대|모기지|주택담보대출", r"주담대|모기지|주택담보대출|mortgage"),
@@ -78,6 +78,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("fx", r"환율|약달러|강달러|달러화|원[·/]달러|달러[·/]원|\bndf\b|exchange rate", r"환율|달러화|달러[·/]원|원[·/]달러|\bndf\b|exchange rate|dollar"),
     ("breadth", r"(?:상승|하락)\s*종목|순환매|쏠림", r"(?:오른|내린|상승|하락)\s*종목|순환매|쏠림|순매수|순매도|자금.{0,12}이동"),
     ("production_capacity", r"증설|캐파|생산능력|착공|가동\s*(?:중단|시작)|생산\s*중단|production capacity|capacity expansion|production halt", r"증설|캐파|생산능력|착공|가동|생산|production capacity|capacity|construction|production"),
+    ("project_buildout", r"데이터센터\s*(?:구축|건설)|data cent(?:er|re).{0,15}(?:build|construction)", r"데이터센터[^.!?]{0,80}(?:구축|건설)|(?:구축|건설).{0,30}데이터센터|data cent(?:er|re).{0,80}(?:build|construction)|(?:build|construction).{0,30}data cent(?:er|re)"),
     ("research_spending", r"r&d|연구개발", r"r&d|연구개발"),
     ("industrial_architecture", r"hvdc|\bvdc\b|\bcpo\b|광트랜시버|광\s*인터커넥트|파운데이션\s*모델|foundation model", r"hvdc|\bvdc\b|\bcpo\b|광트랜시버|광\s*인터커넥트|파운데이션\s*모델|foundation model"),
     ("space_turnaround", r"열\s*차폐|재진입|재발사|재비행|heat[ -]shield|thermal protection|re.?entry|reflight|relaunch|turnaround", r"열\s*차폐|재진입|재발사|재비행|타일|정비|heat[ -]shield|thermal protection|re.?entry|reflight|relaunch|turnaround"),
@@ -125,6 +126,16 @@ def focus_matches(title: str, sentence: str) -> bool:
         funds = [root for root in re.findall(r"([A-Za-z0-9가-힣]+)펀드", title) if len(root) >= 2]
         if funds and not any(root in sentence for root in funds):
             return False
+    if kind == "project_buildout":
+        capacity = re.compile(r"(\d+(?:\.\d+)?(?:\s*[~∼-]\s*\d+(?:\.\d+)?)?)\s*(GW|MW|기가와트|메가와트)", re.I)
+        target = capacity.search(title)
+        if target:
+            def capacity_key(match):
+                number = re.sub(r"\s+", "", match.group(1)).replace("∼", "~").replace("-", "~")
+                unit = match.group(2).lower().replace("기가와트", "gw").replace("메가와트", "mw")
+                return number, unit
+            if not any(capacity_key(value) == capacity_key(target) for value in capacity.finditer(sentence)):
+                return False
     return not kind or next(source for name, _head, source in HEADLINE_FOCUS if name == kind).search(sentence or "") is not None
 
 
@@ -199,7 +210,7 @@ RULES = (
     ("ownership_transfer", ("flows", "timeline"),
      r"주식|지분|shares|stake", r"기부|이전|증여|donat|transfer"),
     ("corporate_transaction", ("earnings", "timeline"),
-     r"회사|기업|사업|법인|지분|인수|합병|company|business|subsidiar|stake|acquir|merger", r"인수|합병|acquir|merger"),
+     r"회사|기업|사업|법인|지분|인수|합병(?!원)|company|business|subsidiar|stake|acquir|merger", r"인수|합병(?!원)|acquir|merger"),
     ("operating_asset_transaction", ("earnings", "timeline"),
      r"(?:사옥|부동산|사업부|영업자산).{0,20}(?:매각|취득|매입)|operating asset|headquarters sale",
      r"결정|확정|검토|추진|계약|매각했다|매입했다|decid|consider|contract|sold|acquir"),
@@ -231,8 +242,8 @@ RULES = (
      r"주가|증시|코스피|코스닥|etf|etn|순매수|순매도|거래대금|유입|유출|수익률|주식|shares|stocks|equities|inflows|outflows",
      r"급등|급락|상승|하락|순매수|순매도|유입|유출|이동|상장|편입|편출|증가|감소|surge|slump|rise|fall|inflows|outflows|list|rebalance"),
     ("physical_supply_or_capacity", ("earnings", "timeline"),
-     r"공장|생산|설비|공급|수요|재고|수율|리드타임|부족|품귀|항만|물류|운송|AI\s*팩토리|factory|production|supply|demand|inventory|lead time|port|freight",
-     r"증설|착공|가동|증가|감소|중단|차질|부족|품귀|지연|연장|매각|검토|확대|축소|상용화|구축|건설|신설|짓고|짓는다|도입|생산할|늘고|늘었|expand|start|halt|disrupt|shortage|delay|consider|launch|build|deploy"),
+     r"공장|생산|설비|공급|수요|재고|수율|리드타임|부족|품귀|항만|물류|운송|데이터센터|AI\s*팩토리|factory|production|supply|demand|inventory|lead time|port|freight|data cent(?:er|re)",
+     r"증설|착공|가동|증가|감소|중단|차질|부족|품귀|지연|연장|매각|검토|확대|축소|상용화|구축|건설\s*(?:하|할|을|에|계획|계약|추진)|신설|짓고|짓는다|도입|생산할|늘고|늘었|expand|start|halt|disrupt|shortage|delay|consider|launch|build|deploy"),
     ("sector_demand_outlook", ("earnings",),
      r"반도체|메모리|데이터센터|출하량|semiconductor|memory|data center|shipments", r"호황|불황|수요.{0,20}(?:전망|늘|줄)|boom|bust|demand outlook"),
     ("market_outlook", (),
@@ -263,7 +274,7 @@ RULES = (
      r"폭염|폭우|홍수|태풍|정전|가뭄|산불|heatwave|flood|outage|drought|wildfire",
      r"전력|변압기|과부하|폐사|양식|농작물|생산|공급|항만|물류|공장|피해|사망|power|transformer|crop|production|supply|port|factory|damage|death"),
     ("labor_cost_or_execution", ("earnings", "timeline"),
-     r"파업|노조|성과급|임단협|(?<!금)감원|감축|임금|strike|union|layoff|wage",
+     r"파업|노조|성과급|임단협|(?<!금)감원|(?:인력|인원|일자리).{0,20}감축|임금|strike|union|layoff|wage",
      r"생산|공장|운송|항만|비용|인상|교섭|협상|주식|지급|중단|감축|production|factory|port|cost|talks|shares|halt|cut"),
     ("customer_discussions", ("earnings", "timeline"),
      r"공급|고객|구매|생산|공동개발|공동 개발|인증|hbm|파운드리|자율주행|데이터센터|ai.{0,4}(?:반도체|인프라)|supply|customer|procurement|co-develop|foundry|autonomous|data center",
@@ -341,12 +352,22 @@ def assess(title: str, body: str) -> dict:
                 r"환율\s*(?:우대|혜택)|우대\s*환율|즉시\s*할인|할인\s*쿠폰|사은품|경품", sentence,
             ):
                 continue
+            if kind == "earnings_or_guidance" and not re.search(
+                r"매출|영업(?:이익|익)|순(?:이익|익)|마진|가이던스|출하|판매량|시장점유율|주당순이익|"
+                r"실적.{0,20}(?:어닝|상회|하회|흑자|적자)|\beps\b|revenue|earnings|profit|guidance|shipments", sentence, re.I,
+            ):
+                continue
+            if kind == "labor_cost_or_execution" and not re.search(
+                r"파업|노조|성과급|임단협|임금|(?<!금)감원|인력|인원|일자리|근로|노동|고용|"
+                r"worker|union|labor|labour|layoff|wage", sentence, re.I,
+            ):
+                continue
             if kind == "physical_supply_or_capacity":
                 if re.search(r"(?:가동|공급|생산).{0,8}중단을?\s*(?:방지|막|예방)|prevent.{0,25}(?:outage|shutdown)", sentence, re.I):
                     continue
                 if not re.search(
-                    r"공장|생산|설비|공급|리드타임|품귀|항만|물류|운송|반도체|메모리|기판|전력|원유|원자재|AI\s*팩토리|광통신|광인터커넥트|네트워크|"
-                    r"factory|production|supply|lead time|shortage|port|freight|semiconductor|memory|substrate|power|oil|raw material|optical|network", sentence, re.I,
+                    r"공장|생산|설비|공급|리드타임|품귀|항만|물류|운송|반도체|메모리|기판|전력|원유|원자재|데이터센터|AI\s*팩토리|광통신|광인터커넥트|네트워크|"
+                    r"factory|production|supply|lead time|shortage|port|freight|semiconductor|memory|substrate|power|oil|raw material|optical|network|data cent(?:er|re)", sentence, re.I,
                 ):
                     continue
             if kind == "policy_scope_or_stage" and re.search(r"조례", sentence) and not re.search(
