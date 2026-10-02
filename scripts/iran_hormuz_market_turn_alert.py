@@ -440,7 +440,7 @@ def classify_event(title: str) -> str | None:
     eu_reserve_context = (
         any(term in low for term in ("eu", "europe", "european", "jorgensen", "jørgensen", "유럽연합", "유럽", "요르겐센"))
         and any(term in low for term in ("diesel", "gasoil", "경유", "디젤"))
-        and any(term in low for term in ("strategic reserve", "strategic stock", "emergency stock", "emergency reserve", "reserve release", "stock release", "비축유", "전략비축", "비축"))
+        and any(term in low for term in ("strategic reserve", "strategic diesel reserve", "strategic fuel reserve", "strategic stock", "emergency stock", "emergency reserve", "reserve release", "stock release", "비축유", "전략비축", "비축"))
         and any(term in low for term in ("release", "releasing", "consider", "considering", "discuss", "weigh", "proposal", "방출", "검토", "논의", "협의"))
     )
     if eu_reserve_context:
@@ -1814,12 +1814,15 @@ def _build_east_west_pipeline_alert_body(
         lines.append(f"East-West     최대 수송능력의 {capacity_pct:.0f}% 이상 · 최소 {implied:.1f} Mbd 수준")
     elif rate is not None:
         lines.append(f"East-West     {rate:.1f} Mbd · 7 Mbd 명목능력의 약 {rate / 7.0 * 100:.0f}%")
+        lines.append(f"vs 4Mbd      약 {rate / 4.0 * 100:.0f}% 회복")
     else:
         lines.append("East-West     재가동·유량 회복 확인")
     if exports_resumed:
-        lines.append("Yanbu         해외 원유 선적 재개")
+        lines.append("Yanbu 수출     재개 확인")
     elif yanbu:
-        lines.append("Yanbu         선적 확대 여부 추가 확인")
+        lines.append("Yanbu         기사 내 직접 언급 · 선적 재개 여부 추가 확인")
+    else:
+        lines.append("Yanbu 수출     실제 선적 별도 확인 필요")
 
     market = []
     if oil is not None:
@@ -1835,6 +1838,11 @@ def _build_east_west_pipeline_alert_body(
         "",
         "[핵심]",
         "사우디의 호르무즈 우회 공급축이 빠르게 정상화되면서 홍해를 통한 수출 여력이 크게 늘고 있습니다.",
+        (
+            "→ Yanbu 해외 선적 재개가 확인돼 송유관 회복이 실제 수출로 연결되기 시작했습니다."
+            if exports_resumed
+            else "→ 다만 송유관 내부 유량과 Yanbu 실제 선적은 다릅니다. 선적 재개 확인 전 수출 정상화로 단정하지 않습니다."
+        ),
         "→ 7 Mbd 명목능력의 80%는 5.6 Mbd입니다. 80% 초과라면 최소 이 수준을 넘어선 것으로 볼 수 있습니다.",
         "",
         "[다음 확인]",
