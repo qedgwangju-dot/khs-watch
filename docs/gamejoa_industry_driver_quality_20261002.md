@@ -1057,3 +1057,37 @@ actual additional carrier/troop deployment without inventing an oil-price move
 or an executed future attack. Three new regressions bring the suite to 138 tests;
 the cost rule requires a quantified estimate or comparison, not vague cost concern.
 Fresh remote validation and deployment are recorded separately below.
+
+## Final Version 35 Execution and Delivery Evidence
+
+Code deployment: `7538267d43014aac7f6814d76b9eaef817649488` on `main`.
+Normal production run `37006569643` completed successfully at
+`2026-10-02T12:34:05Z`. Its actual checkout was
+`9c4323a4b2cadf1c5237ee04755e7be27225bc09`; ancestry was verified, and the
+only differences from the deployed code were retrieval-queue and seen-state
+files. All 11 remote contracts passed, including 138 materiality tests, and
+the generated-report guard and runtime-delivery verification passed.
+
+The final report queried at `2026-10-02T21:30:43+09:00`, collected 1,018 rows,
+filtered 65 already-seen alerts and selected two. Both original article bodies
+were read: the euro-area CPI core preserves September, year-over-year basis,
+3.8% and preliminary status; the ETF core preserves the issuer, actual fund,
+day 7 and future listing, without claiming realized inflow. Both original URLs
+are unchanged. The read-only source-fact audit has zero errors on both rows.
+The delivery artifact records `status=sent`, message ID `2032`, one attempt
+and an empty error. This is Telegram API delivery evidence, not proof of the
+recipient reading the message. ZIP SHA-256:
+`E2AF7B5A9B1D224954477496A4581108FDE502F949B7DF3CA8A3EB6F55F7E972`.
+
+Final read-only replay covers 27 actual-delivery article rows: 19 retained and
+eight weak rows excluded. Six additional dry-run rows retain four corrected
+cores and exclude two. Retained cores have zero source-fact errors. The three
+fresh original-source probes are separate positive checks, not invented
+historical delivery records. No historical resend or seen-state reset occurred.
+
+Coverage is explicitly incomplete: 160 bodies were attempted, 146 verified,
+14 failed and 569 were deferred in the final normal run. Passing tests and two
+correct deliveries do not prove perfect relevance, all-source coverage, or
+future delivery. Known semantic failures are regression cases rather than
+claims of model retraining. The verified level is deployed code, local and
+remote validation, reviewed output, and the recorded current-run API delivery.
