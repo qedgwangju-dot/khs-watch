@@ -426,7 +426,7 @@ STORY_RULES = (
             ("fcc", "federal communications commission"),
             ("satellite", "satellite communications", "fixed-satellite service", "fss"),
             ("1,450", "1450", "138.25"),
-            ("further notice", "fnprm", "seek comment", "comment", "proposed", "proposal"),
+            ("further notice", "fnprm", "seek comment", "comment", "proposed", "proposal", "final rule", "report and order", "adopted", "finalized"),
         ),
         core=(
             "FCC는 이미 개방한 1,050MHz와 별도로 Ku·Ka 대역 1,450MHz와 D-band 138.25GHz를 "
@@ -1319,6 +1319,19 @@ def semantic_policy_event_key(item: dict) -> str:
         elif any(term in title_text for term in ("proposed", "proposal", "notice of proposed", "제안", "초안")):
             stage = "proposal"
         return f"us-fcc-space-nepa-{stage}"
+    # Distinguish the follow-on Ku/Ka/D-band proceeding from the already-adopted
+    # 12.7/42 GHz order.  Use the headline for the split so a broad FCC article
+    # that merely mentions both packages does not collapse the two event tracks.
+    if (
+        ("1,450" in title_text or "1450" in title_text or "138.25" in title_text)
+        and ("satellite" in text or "fss" in text)
+    ):
+        stage = "proposal"
+        if any(term in title_text for term in ("final rule", "report and order", "adopted", "finalized", "최종", "채택")):
+            stage = "final"
+        elif any(term in title_text for term in ("comment deadline", "reply comment", "의견수렴", "댓글 기한")):
+            stage = "comment"
+        return f"us-fcc-satellite-spectrum-followon-{stage}"
     if (
         ("satellite spectrum abundance" in text or ("12.7" in text and "42" in text))
         and ("1,050" in text or "1050" in text or "1,000 megahertz" in text or "1000 megahertz" in text or "more than 1,000" in text)
@@ -1331,17 +1344,6 @@ def semantic_policy_event_key(item: dict) -> str:
         elif any(term in title_text for term in ("further notice", "fnprm", "comment", "추가 의견", "의견수렴")):
             stage = "further-notice"
         return f"us-fcc-satellite-spectrum-abundance-{stage}"
-    if (
-        ("1,450" in text or "1450" in text or "138.25" in text)
-        and ("satellite" in text or "fss" in text)
-        and ("further notice" in text or "fnprm" in text or "seek comment" in text or "proposed" in text)
-    ):
-        stage = "proposal"
-        if any(term in title_text for term in ("final rule", "report and order", "adopted", "finalized", "최종", "채택")):
-            stage = "final"
-        elif any(term in title_text for term in ("comment deadline", "reply comment", "의견수렴", "댓글 기한")):
-            stage = "comment"
-        return f"us-fcc-satellite-spectrum-followon-{stage}"
     if (
         "auction 115" in text
         and ("upper c-band" in text or "upper c band" in text)
@@ -2430,7 +2432,11 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
 def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, str]:
     """Return a conservative status, upgrading only first-party verified events."""
     if (
-        rule.key in {"us_fcc_space_nepa_reform", "us_fcc_satellite_spectrum_abundance"}
+        rule.key in {
+            "us_fcc_space_nepa_reform",
+            "us_fcc_satellite_spectrum_abundance",
+            "us_fcc_satellite_spectrum_followon_fnprm",
+        }
         and any(
             "fcc.gov" in str(item.get("link") or "").lower()
             or "federal communications commission" in str(item.get("source") or "").lower()
