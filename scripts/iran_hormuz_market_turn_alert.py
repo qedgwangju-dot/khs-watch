@@ -260,6 +260,94 @@ def normalize_text(value: str) -> str:
     return value
 
 
+def _source_name_ko(source: str) -> str:
+    low = normalize_text(source)
+    mappings = (
+        ("jpmorgan via bloomberg", "JP모건·블룸버그"),
+        ("bnn bloomberg", "BNN 블룸버그"),
+        ("bloomberg", "블룸버그"),
+        ("reuters", "로이터"),
+        ("financial times", "파이낸셜타임스"),
+        ("associated press", "AP"),
+        ("ap news", "AP"),
+        ("business times", "비즈니스타임스"),
+        ("livemint", "라이브민트"),
+        ("moneycontrol", "머니컨트롤"),
+        ("marketscreener", "마켓스크리너"),
+    )
+    for key, label in mappings:
+        if key in low:
+            return label
+    return source
+
+
+def _news_title_ko(row: NewsItem) -> str:
+    title = html.unescape(str(row.title or "")).strip()
+    if not title:
+        return EVENT_LABELS.get(row.event_kind, "관련 보도")
+    if re.search(r"[가-힣]", title) and not re.search(r"[A-Za-z]{5,}", title):
+        return title
+
+    low = normalize_text(title)
+    kind = row.event_kind
+
+    if kind == "china_fuel_export_policy":
+        stage = _china_fuel_export_stage(title)
+        if stage == "cargo_cancelled":
+            return "중국 정유사, 10월 정제품 수출 중단…PetroChina 일부 휘발유·항공유 화물 취소"
+        if stage == "resumed":
+            return "중국, 정제품 수출 재개·허용"
+        if stage == "extended":
+            return "중국, 정제품 수출 중단·제한 연장"
+        if stage == "restricted":
+            return "중국, 정제품 수출 제한"
+        return "중국 정유사, 10월 정제품 수출 중단"
+
+    if kind == "us_diesel_export_policy":
+        stage = _diesel_policy_stage(title)
+        labels = {
+            "effective": "미국, 디젤 수출 금지·제한 시행",
+            "announced": "미국, 디젤 수출금지 발표",
+            "supports": "미국 대통령, 디젤 수출금지 방안 지지·요구",
+            "considering": "백악관, 미국 디젤 수출금지 여부 검토",
+            "voluntary": "미국 정부, 정유사 자발적 디젤 수출 제한 논의",
+            "denied": "백악관, 미국 디젤 수출금지 검토 보도 부인",
+            "withdrawn": "미국, 디젤 수출금지 계획 철회",
+        }
+        return labels.get(stage, "미국 디젤 수출정책 변화")
+
+    if kind == "crude_product_divergence":
+        return "JP모건, 중동 원유 흐름은 전쟁 전 수준에 근접했지만 정제품 회복은 지연"
+
+    if kind == "regional_export_recovery":
+        return "중동 원유 수출, 전쟁 이후 최고 수준으로 회복"
+
+    if kind == "oil_flow_recovery":
+        if "prices settle down" in low or "prices fall" in low or "prices decline" in low:
+            return "중동 원유 수출 회복 조짐에 국제유가 하락"
+        return "중동 원유 수출·호르무즈 물류 회복"
+
+    if kind == "sts_reroute_expansion":
+        return "오만만 선박 간 이송 급증·VLCC 병목 심화"
+
+    if kind == "east_west_pipeline_recovery":
+        if any(term in low for term in ("yanbu", "loadings resume", "exports resume", "resumes oil exports")):
+            return "사우디 East-West Pipeline 복구 후 Yanbu 원유 선적 재개"
+        return "사우디 East-West Pipeline 유량 회복"
+
+    if kind == "india_gulf_import_recovery":
+        return "인도, 걸프산 원유 수입 회복"
+
+    if kind == "ceasefire":
+        return "미국·이란 최종 휴전 합의"
+    if kind == "us_attack_end":
+        return "미국, 대이란 공격 중단 공식화"
+    if kind == "hormuz_normalization":
+        return "호르무즈 해협 실질 통행 정상화"
+
+    return EVENT_LABELS.get(kind, "관련 보도")
+
+
 def finite_number(value: object) -> float | None:
     try:
         number = float(value)
@@ -1383,7 +1471,7 @@ def _build_crude_product_gap_alert_body(
     ])
     for row in news_rows[:3]:
         published=dt.datetime.fromtimestamp(row.published_epoch,tz=UTC).astimezone(KST)
-        lines.append(f"{row.source} · {published:%m-%d %H:%M KST}")
+        lines.append(f"{_source_name_ko(row.source)} · {published:%m-%d %H:%M KST}")
         if row.link:
             lines.append(f"원문: {row.link}")
     lines.extend(["", "[주의]", "JP모건 추정치와 Kpler 선박추적치는 집계 범위·다크 플로우 포함 여부가 달라 직접 치환하지 않습니다."])
@@ -1411,14 +1499,14 @@ def _build_us_diesel_policy_alert_body(
         "항공·운송     글로벌 경유·항공유 가격 상승 시 비용 부담 확인",
         "물가·금리     정제품 가격 상승이 수입물가·운송비로 전이되는지 확인",
         "", "[다음 체크]",
-        "정책          백악관·DOE 공식문구 · 금지/자발제한/철회 · 기간·물량",
+        "정책          백악관·미 에너지부(DOE) 공식문구 · 금지/자발제한/철회 · 기간·물량",
         "미국          중간유분 수출·재고 · 정유 가동률",
         "세계          디젤·항공유 가격 · 유럽·중남미 대체조달 · 중국 수출",
         "", "[근거]",
     ])
     for row in news_rows[:3]:
         published=dt.datetime.fromtimestamp(row.published_epoch,tz=UTC).astimezone(KST)
-        lines.append(f"{row.source} · {published:%m-%d %H:%M KST} · {row.title}")
+        lines.append(f"{_source_name_ko(row.source)} · {published:%m-%d %H:%M KST} · {_news_title_ko(row)}")
         if row.link:
             lines.append(f"원문: {row.link}")
     lines.extend(["","[주의]","검토·지지·자발 제한·금지 발표·실제 시행을 서로 다른 단계로 관리합니다."])
@@ -1479,14 +1567,14 @@ def _build_china_fuel_export_policy_alert_body(
         "[다음 체크]",
         "중국          10월 7일 연휴 종료 뒤 수출 허용 여부 · PetroChina 취소 물량 재계약 여부",
         "제품          디젤·항공유·휘발유 수출량 · 중국 내 재고 · 정유 가동률",
-        "아시아        Singapore gasoil crack · 10~11월 스프레드 · 한국 정유사 수출마진",
+        "아시아        싱가포르 경유 정제마진 · 10~11월 스프레드 · 한국 정유사 수출마진",
         "동시 변수     러시아 디젤 수출금지 · 미국 디젤 수출제한 검토 · 중동 정제품 회복률",
         "",
         "[근거]",
     ])
     for row in news_rows[:3]:
         published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
-        lines.append(f"{row.source} · {published:%m-%d %H:%M KST} · {row.title}")
+        lines.append(f"{_source_name_ko(row.source)} · {published:%m-%d %H:%M KST} · {_news_title_ko(row)}")
         if row.link:
             lines.append(f"원문: {row.link}")
     lines.extend([
@@ -1643,7 +1731,7 @@ def _build_sts_compact_alert_body(
                 f"Kpler · 기준 {metrics['source_date']} · STS {float(metrics['current_mbd']):.1f} Mbd"
             )
         else:
-            lines.append(f"{row.source} · {published:%m-%d %H:%M KST}")
+            lines.append(f"{_source_name_ko(row.source)} · {published:%m-%d %H:%M KST}")
         if row.link:
             lines.append(f"원문: {row.link}")
 
@@ -1695,15 +1783,15 @@ def _build_oil_flow_compact_alert_body(
     lines.extend([
         "",
         "[다음 확인]",
-        "실물          호르무즈 통과량 · Saudi Gulf/Red Sea 선적 · Yanbu/East-West",
-        "물류          GoO STS · VLCC 운임/가용선복 · 보험",
+        "실물          호르무즈 통과량 · 사우디 걸프/홍해 선적 · Yanbu·East-West Pipeline",
+        "물류          오만만 선박 간 이송(STS) · VLCC 운임/가용선복 · 보험",
         "한국          원·달러 · 수입물가/CPI · 국고채 금리 · 기업 실적",
         "",
         "[근거]",
     ])
     for row in news_rows[:2]:
         published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
-        lines.append(f"{row.source} · {published:%m-%d %H:%M KST}")
+        lines.append(f"{_source_name_ko(row.source)} · {published:%m-%d %H:%M KST}")
         if row.link:
             lines.append(f"원문: {row.link}")
 
@@ -1943,7 +2031,7 @@ def build_physical_flow_alert_body(
                 f"2025 평균 {float(metrics['baseline_2025_mbd']):.2f}"
             )
         else:
-            lines.append(f"{row.source} · {published:%m-%d %H:%M KST} · {row.title}")
+            lines.append(f"{_source_name_ko(row.source)} · {published:%m-%d %H:%M KST} · {_news_title_ko(row)}")
         if row.link:
             lines.append(f"원문: {row.link}")
 
@@ -1971,7 +2059,7 @@ def build_alert_body(
     ]
     for row in news_rows[:3]:
         published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
-        lines.append(f"- {row.source} · {published:%m-%d %H:%M KST} · {row.title}")
+        lines.append(f"- {_source_name_ko(row.source)} · {published:%m-%d %H:%M KST} · {_news_title_ko(row)}")
     lines.extend(
         [
             "",

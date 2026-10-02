@@ -321,6 +321,45 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         self.assertEqual(MODULE.classify_event(considering.title), "us_diesel_export_policy")
         self.assertNotEqual(MODULE.event_id("us_diesel_export_policy", [denied]), MODULE.event_id("us_diesel_export_policy", [considering]))
 
+    def test_english_news_headlines_are_rendered_in_korean(self):
+        now = dt.datetime(2026, 10, 2, 6, 13, tzinfo=dt.timezone.utc)
+        rows = [
+            MODULE.NewsItem(
+                "VIEW Chinese refiners suspend October fuel exports, sources say - Reuters",
+                "Reuters",
+                "https://example.com/reuters",
+                now.isoformat(),
+                now.timestamp(),
+                "china_fuel_export_policy",
+            ),
+            MODULE.NewsItem(
+                "Chinese refiners suspend October fuel exports, says report: Which other countries plan curbs amid Iran, Ukraine war",
+                "Livemint",
+                "https://example.com/livemint",
+                now.isoformat(),
+                now.timestamp(),
+                "china_fuel_export_policy",
+            ),
+        ]
+        body = MODULE.build_physical_flow_alert_body("china_fuel_export_policy", rows, None, now)
+        self.assertIn("로이터 ·", body)
+        self.assertIn("라이브민트 ·", body)
+        self.assertIn("중국 정유사, 10월 정제품 수출 중단", body)
+        self.assertNotIn("Chinese refiners suspend", body)
+        self.assertNotIn("Which other countries", body)
+
+    def test_us_diesel_english_headline_is_rendered_in_korean(self):
+        now = dt.datetime(2026, 10, 2, 6, 13, tzinfo=dt.timezone.utc)
+        row = MODULE.NewsItem(
+            "Trump says he is still considering diesel export ban",
+            "Reuters",
+            "https://example.com/reuters",
+            now.isoformat(),
+            now.timestamp(),
+            "us_diesel_export_policy",
+        )
+        self.assertEqual(MODULE._news_title_ko(row), "백악관, 미국 디젤 수출금지 여부 검토")
+
     def test_china_fuel_export_suspension_classified(self):
         title = "Chinese refiners suspend October fuel exports, PetroChina cancels cargoes - Reuters"
         self.assertEqual(MODULE.classify_event(title), "china_fuel_export_policy")
