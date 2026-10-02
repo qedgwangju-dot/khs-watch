@@ -195,6 +195,25 @@ jobs:
           assert not __import__("re").search(r"\bInP\b|indium phosphide|\bGaAs\b|gallium arsenide|砷化鎵|optical|transceiver|CPO|1\.6T|3\.2T|laser|photodiode", power_only, __import__("re").I), (
               "Power-only SiC/HVDC story must stay outside the optical-material alert."
           )
+
+          volantis_funding = "Volantis raises $88M Series A to build photonic AI inference system"
+          assert watch.signal_score(volantis_funding, "Reuters") >= 7, "Volantis photonic-memory funding signal must trigger"
+          assert watch.category_for(volantis_funding, "Volantis") == "광메모리·추론 아키텍처"
+          assert watch.canonical_story_key("Volantis", volantis_funding) == "volantis|funding|series-a"
+
+          volantis_customer = "Volantis A-1 integrated inference engines begin customer sampling for 2027 delivery"
+          assert watch.signal_score(volantis_customer, "Volantis") >= 7, "Volantis customer-sampling signal must trigger"
+          assert watch.category_for(volantis_customer, "Volantis") == "광메모리 고객검증·상용화"
+          assert watch.stage_for(volantis_customer) == "고객 샘플·배치"
+
+          volantis_perf = "Volantis A-1 silicon demonstrates 240 TB/s optical memory bandwidth at under 1 pJ/bit"
+          assert watch.signal_score(volantis_perf, "Volantis") >= 7, "Volantis measured-performance signal must trigger"
+          assert watch.category_for(volantis_perf, "Volantis") == "광메모리 성능·검증"
+
+          lightmatter_sample = "Lightmatter Passage CPO begins customer sampling for AI scale-up deployment"
+          assert watch.signal_score(lightmatter_sample, "Lightmatter") >= 7, "Lightmatter commercial photonics signal must trigger"
+          assert watch.category_for(lightmatter_sample, "Lightmatter") == "광컴퓨팅 상용화·고객검증"
+
           print("dedupe_and_quality_regression_test=passed")
           PY
 
@@ -256,6 +275,8 @@ jobs:
               "FY27", "FY28", "FCC", "Covered List", "Buy American", "InP", "AXT", "AXTI",
               "AAOI", "Applied Optoelectronics", "Innolight", "Eoptolink", "HBOM", "SBOM",
               "Morgan Stanley", "Marc Lehman", "Sumitomo Electric", "IQE",
+              "Volantis", "A-1", "Lightmatter", "Passage", "Ayar Labs", "TeraPHY", "SuperNova",
+              "Xscape Photonics", "FalconX", "ChromX", "CombX", "Celestial AI",
               "GaAs", "gallium arsenide", "WIN Semiconductors", "WIN Semi",
               "VPEC", "Visual Photonics Epitaxy", "Casela", "AXT-Tongmei", "Tongmei",
               "AVGO", "NVDA", "ANET", "MRVL", "LITE", "COHR", "ALAB", "GLW", "005930.KS",
@@ -292,6 +313,11 @@ jobs:
               "Visual Photonics Epitaxy": "VPEC",
               "Casela": "카셀라",
               "Sumitomo Electric": "스미토모전기공업",
+              "Volantis": "볼란티스",
+              "Lightmatter": "라이트매터",
+              "Ayar Labs": "아야르 랩스",
+              "Xscape Photonics": "엑스케이프 포토닉스",
+              "Celestial AI": "셀레스티얼 AI",
           }
 
           def localize_names(value: str) -> str:
