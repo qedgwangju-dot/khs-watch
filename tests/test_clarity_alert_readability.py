@@ -84,6 +84,31 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
         self.assertNotIn("핵심 한 줄 요약", rendered)
         self.assertLessEqual(max(map(len, MOD.build_readable(filtered))), 3900)
 
+    def test_non_clarity_sec_rule_uses_us_crypto_regulation_header(self):
+        event = {
+            "source": "SEC 보도자료",
+            "event_type": "SEC·CFTC 공식 규칙·해석·집행지침",
+            "title": "SEC Proposal Would Address How Investment Advisers and Funds Can Custody Crypto Assets Under the Federal Securities Laws",
+            "url": "https://www.sec.gov/example",
+            "date": "2026-10-01",
+            "detail": "registered investment advisers regulated funds custody crypto assets",
+        }
+        rendered = "\n".join(MOD.build_readable([event]))
+        self.assertIn("미국 암호자산 규제 Watch", rendered)
+        self.assertNotIn("CLARITY 법안 Watch", rendered)
+
+    def test_clarity_legislative_event_keeps_clarity_header(self):
+        event = {
+            "source": "상원 본회의",
+            "event_type": "상원 본회의 일정",
+            "title": "Senate schedules consideration of H.R. 3633 CLARITY Act",
+            "url": "https://www.senate.gov/",
+            "date": "2026-10-01",
+            "detail": "CLARITY Act",
+        }
+        rendered = "\n".join(MOD.build_readable([event]))
+        self.assertIn("CLARITY 법안 Watch", rendered)
+
     def test_multiple_distinct_events_keep_short_overview(self):
         events = [
             {
