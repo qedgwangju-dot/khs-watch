@@ -772,6 +772,27 @@ def risk_for(category: str) -> str:
     return mapping[category]
 
 
+def _self_test_korean_optics_alerts() -> None:
+    opticore_order = "옵티코어 AI 데이터센터용 400G 800G 광트랜시버 공급계약 체결"
+    assert signal_score(opticore_order, "전자신문") >= 7
+    assert category_for(opticore_order, "Opticore") == "국내 AI 광트랜시버 수주"
+    assert stage_for(opticore_order) == "수주·가시성"
+
+    opticore_delay = "옵티코어 400G 800G 광트랜시버 고객사 검수 일정 조정으로 계약기간 변경"
+    assert signal_score(opticore_delay, "한국거래소") >= 7
+    assert category_for(opticore_delay, "Opticore") == "국내 AI 광트랜시버 납기·검수"
+    assert stage_for(opticore_delay) == "납기·검수 변경"
+
+    oe_sample = "OE Solutions begins Q3 2026 customer sampling of ELSFP for 1.6T AI networking"
+    assert signal_score(oe_sample, "OE Solutions") >= 7
+    assert category_for(oe_sample, "OE Solutions") == "국내 1.6T 고객검증·샘플"
+    assert stage_for(oe_sample) == "고객 검증·양산 도입"
+
+    assert len(story_tokens("옵티코어 AI 데이터센터 광트랜시버 공급계약")) >= 3
+    assert source_priority("전자신문") >= 65
+    assert source_priority("OE Solutions") >= 65
+
+
 def load_state() -> dict:
     if not STATE_PATH.exists():
         return {"initialized": False, "seen_keys": []}
@@ -782,6 +803,7 @@ def load_state() -> dict:
 
 
 def main() -> None:
+    _self_test_korean_optics_alerts()
     (ROOT / "out").mkdir(parents=True, exist_ok=True)
     (ROOT / "data").mkdir(parents=True, exist_ok=True)
 
