@@ -1,6 +1,6 @@
 {
   "seen": {
-    "ICI|mmf": "0fc80ab5f6b9feb7fa734023f812e89da42e92c6a92f09b303d4e07bff7a4685",
+    "ICI|mmf": "461e414718d68e83ed6f72493085bbc6eb9333f145d465aaa2a8ff879922df2e",
     "FINRA|margin": "8655636a0708abc68f71ddd7a8febfc428dbeaf45d54c8d809c6c5280ea4c65e",
     "ICI|combined": "caad4d872e529dbe116a0fec5e93ef6fda1615be9408bec0f2085028316dd7a2",
     "JPMorganChase Institute|household_withdrawals": "6c6c7de140d30ef3253091d748c839718c430cd42b2e1b65880108e2720f7e29",
@@ -10,14 +10,14 @@
     "ICI|mmf": {
       "source": "ICI",
       "kind": "mmf",
-      "period": "September 23",
-      "published": "September 24, 2026",
+      "period": "September 30",
+      "published": "October 1, 2026",
       "url": "https://www.ici.org/research/stats/mmf",
       "metrics": {
-        "assets_trillion": 7.94,
-        "weekly_change_bn": 15.0
+        "assets_trillion": 7.89,
+        "weekly_change_bn": -45.45
       },
-      "fingerprint": "0fc80ab5f6b9feb7fa734023f812e89da42e92c6a92f09b303d4e07bff7a4685"
+      "fingerprint": "461e414718d68e83ed6f72493085bbc6eb9333f145d465aaa2a8ff879922df2e"
     },
     "FINRA|margin": {
       "source": "FINRA",
@@ -81,13 +81,13 @@
       "fingerprint": "7360f0d54948ccab33bac2e7f7154281e984872c447a15f209941748eb0d4c64"
     }
   },
-  "updated_at_kst": "2026-10-01T03:01:43.379146+09:00",
+  "updated_at_kst": "2026-10-02T09:50:05.346809+09:00",
   "derived": {
     "sp500_drawdown_band": "normal",
-    "sp500_last_date": "2026-09-30",
-    "sp500_last_value": 7701.77978515625,
+    "sp500_last_date": "2026-10-01",
+    "sp500_last_value": 7666.4501953125,
     "sp500_peak_date": "2026-08-13",
     "sp500_peak_value": 7798.990234375,
-    "sp500_drawdown_pct": -1.25
+    "sp500_drawdown_pct": -1.7
   }
 }
