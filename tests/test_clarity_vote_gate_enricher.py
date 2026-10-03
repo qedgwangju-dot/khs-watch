@@ -50,6 +50,14 @@ class ClarityVoteGateEnricherTest(unittest.TestCase):
         self.assertNotIn("표시 원칙", block)
         self.assertNotIn("2026년 9월 16일 03:15 KST", block)
 
+    def test_standalone_crypto_regulation_alert_does_not_get_clarity_vote_gate(self):
+        self.assertFalse(MOD.should_add_vote_gate([
+            "<b>🇺🇸 미국 암호자산 규제 Watch</b>\nSEC/CFTC·BTC/COIN/Circle 영향"
+        ]))
+        self.assertTrue(MOD.should_add_vote_gate([
+            "<b>🔔 CLARITY 법안 Watch</b>\n표결·규제·BTC/COIN/Circle 영향"
+        ]))
+
     def test_market_context_shows_macro_controls(self):
         block = MOD.build_gate_block({
             "official_time_kst": "2026-09-16T03:15:00+09:00",
