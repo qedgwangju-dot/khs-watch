@@ -1417,9 +1417,11 @@ def _extract_micron_supply_commitment(item: dict) -> dict | None:
     if m_rpo:
         obs["rpo_usd_bn"] = float(m_rpo.group(1))
 
-    m_rev = re.search(r"(?:FQ1-27|first quarter of 2027|fiscal q1 2027)[^$]{0,160}\$\s*([0-9]+(?:\.[0-9]+)?)\s*billion[^.]{0,120}?(?:revenue|sales)", text, re.I)
+    m_rev = re.search(r"(?:FQ1-27|first quarter of 2027|fiscal q1 2027)[^.]{0,120}?(?:revenue|sales)[^$]{0,40}\$\s*([0-9]+(?:\.[0-9]+)?)\s*billion", text, re.I)
     if not m_rev:
         m_rev = re.search(r"(?:revenue|sales)[^$]{0,80}\$\s*([0-9]+(?:\.[0-9]+)?)\s*billion[^.]{0,120}?(?:FQ1-27|first quarter of 2027|fiscal q1 2027)", text, re.I)
+    if not m_rev:
+        m_rev = re.search(r"(?:FQ1-27|first quarter of 2027|fiscal q1 2027)[^$]{0,200}\$\s*([0-9]+(?:\.[0-9]+)?)\s*billion", text, re.I)
     if m_rev:
         obs["fq1_27_revenue_usd_bn"] = float(m_rev.group(1))
 
