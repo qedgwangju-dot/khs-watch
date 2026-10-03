@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-04T01:37:55+09:00",
+  "updated_at_kst": "2026-10-04T01:41:29+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
@@ -118,13 +118,13 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 2,
+  "last_unseen_raw_count": 0,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1348.28,
-    "date": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-04 01:38 KST · 보조 API 2026-10-03 · 차이 0.07% · 일중 기준시각 차이 가능",
+    "date": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-04 01:41 KST · 보조 API 2026-10-03 · 차이 0.07% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -177,13 +177,13 @@
       "https://insights.trendforce.com/p/weekly-radar-002",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-10-04T01:38:07+09:00",
+    "last_checked_at_kst": "2026-10-04T01:41:41+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-04T01:38:49+09:00",
+    "checked_at_kst": "2026-10-04T01:42:16+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-01T09:43:49+09:00",
@@ -253,7 +253,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-04",
-    "last_checked_at_kst": "2026-10-04T01:38:43+09:00"
+    "last_checked_at_kst": "2026-10-04T01:42:10+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -289,7 +289,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-04",
-    "last_checked_at_kst": "2026-10-04T01:38:46+09:00",
+    "last_checked_at_kst": "2026-10-04T01:42:12+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -333,7 +333,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-04T01:38:47+09:00",
+    "last_checked_at_kst": "2026-10-04T01:42:14+09:00",
     "candidate_count": 0,
     "event_count": 0
   },
@@ -426,7 +426,7 @@
     "as_of": "2026-10-02",
     "note": "Rubin Ultra의 HBM4E/HBM4 8단·12단 선택지 확대는 업계 보도상 평가 단계. NVIDIA 공식 최종 사양·확정 탑재로 승격하지 않음."
   },
-  "samsung_nextgen_hbm_track_version": 2,
+  "samsung_nextgen_hbm_track_version": 3,
   "samsung_nextgen_hbm": {
     "custom_hbm_stage": "official_sampling_plan",
     "custom_hbm_sample_start_year": 2027,
@@ -439,11 +439,11 @@
     "zhbm_energy_efficiency_vs_hbm5_x": 3.0,
     "zhbm_thermal_resistance_reduction_floor_pct": 50.0,
     "zhbm_memory_density_floor_vs_hbm5_x": 10.0,
-    "source": "삼성전자 FMS 2026 공식자료 + 매일경제",
-    "source_url": "https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-fms-2026%EC%84%9C-%EC%B0%A8%EC%84%B8%EB%8C%80-3d-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EB%B9%84%EC%A0%84-%EC%A0%9C%EC%8B%9C",
+    "source": "삼성전자 HBM4 공식자료 + FMS 2026 공식자료 + 매일경제",
+    "source_url": "https://semiconductor.samsung.com/kr/news-events/news/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing/",
     "secondary_source_url": "https://www.mk.co.kr/news/business/12167424",
-    "as_of": "2026-10-02",
-    "note": "HBM5 맞춤형 본격화는 업계 전망 단계. zHBM은 삼성 공식 콘셉트·개발 단계이며 고객 샘플·검증·계약·양산으로 승격하지 않음."
+    "as_of": "2026-10-03",
+    "note": "삼성 Custom HBM은 2027년부터 고객사별 사양에 맞춰 순차 샘플링을 시작한다는 공식 계획. HBM5 맞춤형 본격화는 업계 전망 단계. zHBM은 공식 콘셉트·개발 단계이며 확정 고객·계약·양산으로 승격하지 않음."
   },
   "jpm_hbm_structural_track_version": 1,
   "jpm_hbm_structural": {
