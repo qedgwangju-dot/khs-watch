@@ -4,11 +4,13 @@ import html
 import json
 import os
 import pathlib
+import re
 import urllib.parse
 import urllib.request
 from zoneinfo import ZoneInfo
 
 import requests
+from bs4 import BeautifulSoup
 
 from global_rates_watch import fetch_ust_curve
 
@@ -25,7 +27,11 @@ HEADERS = {
 }
 
 CFTC_URL = "https://publicreporting.cftc.gov/resource/gpe5-46if.json"
+CFTC_HTML_URL = "https://www.cftc.gov/dea/futures/financial_lf.htm"
 OFR_URL = "https://data.financialresearch.gov/v1/series/full"
+OFR_TIMESERIES_URL = "https://data.financialresearch.gov/v1/series/timeseries"
+NYFED_SOFR_URL = "https://markets.newyorkfed.org/api/rates/secured/sofr/last/10.json"
+NYFED_TGCR_URL = "https://markets.newyorkfed.org/api/rates/secured/tgcr/last/10.json"
 
 CONTRACTS = {
     "2년": {"code": "042601", "name": "UST 2Y NOTE"},
@@ -53,6 +59,99 @@ def num(v):
         return float(v)
     except Exception:
         return 0.0
+
+
+def _ints(text):
+    return [int(x.replace(",", "")) for x in re.findall(r"[-+]?\d[\d,]*", text or "")]
+
+
+def ensure_recent_date(label, raw_date, max_days):
+    try:
+        d = dt.date.fromisoformat(str(raw_date)[:10])
+    except Exception as exc:
+        raise RuntimeError(f"{label} date invalid: {raw_date}") from exc
+    age = (dt.datetime.now(KST).date() - d).days
+    if age < 0 or age > max_days:
+        raise RuntimeError(f"{label} stale: {raw_date} ({age} days)")
+    return age
+
+
+def nyfed_rate(url, expected_type):
+    r = requests.get(url, headers=HEADERS, timeout=(8, 30))
+    r.raise_for_status()
+    rows = (r.json() or {}).get("refRates") or []
+    rows = [x for x in rows if str(x.get("type") or "").upper() == expected_type.upper()]
+    if not rows:
+        raise RuntimeError(f"NY Fed {expected_type} data unavailable")
+    rows.sort(key=lambda x: str(x.get("effectiveDate") or ""))
+    row = rows[-1]
+    return {
+        "date": str(row.get("effectiveDate") or "")[:10],
+        "rate": float(row.get("percentRate")),
+        "revision": str(row.get("revisionIndicator") or ""),
+        "source": url,
+    }
+
+
+def get_cftc_official_html():
+    r = requests.get(CFTC_HTML_URL, headers=HEADERS, timeout=(8, 45))
+    r.raise_for_status()
+    plain = BeautifulSoup(r.text, "html.parser").get_text("\n")
+    report_m = re.search(
+        r"Traders in Financial Futures\s*-\s*Futures Only Positions as of\s+([A-Za-z]+\s+\d{1,2},\s+20\d{2})",
+        plain,
+        re.I,
+    )
+    if not report_m:
+        raise RuntimeError("CFTC official HTML report date unavailable")
+    report_date = dt.datetime.strptime(report_m.group(1), "%B %d, %Y").date().isoformat()
+
+    out = {}
+    for label, meta in CONTRACTS.items():
+        pattern = re.escape(meta["name"]) + r"\s*-\s*CHICAGO BOARD OF TRADE"
+        m = re.search(pattern, plain, re.I)
+        if not m:
+            raise RuntimeError(f"CFTC official HTML contract missing: {label}")
+        block = plain[m.start():m.start() + 4500]
+        oi_m = re.search(r"Open Interest is\s*([\d,]+)", block, re.I)
+        pos_m = re.search(r"Positions\s+([\s\S]*?)\s+Changes from:", block, re.I)
+        if not oi_m or not pos_m:
+            raise RuntimeError(f"CFTC official HTML fields missing: {label}")
+        vals = _ints(pos_m.group(1))
+        if len(vals) < 14:
+            raise RuntimeError(f"CFTC official HTML positions parse failed: {label}")
+        out[label] = {
+            "oi": int(oi_m.group(1).replace(",", "")),
+            "long": vals[6],
+            "short": vals[7],
+        }
+    return report_date, out
+
+
+def validate_cftc_crosscheck(latest, rows, html_latest, html_rows):
+    if html_latest != latest:
+        raise RuntimeError(f"CFTC source date mismatch: API={latest}, HTML={html_latest}")
+    for label in CONTRACTS:
+        a = rows[label]
+        b = html_rows.get(label) or {}
+        for key in ("oi", "long", "short"):
+            if int(round(float(a.get(key) or 0))) != int(b.get(key) or 0):
+                raise RuntimeError(
+                    f"CFTC source mismatch {label} {key}: API={a.get(key)} HTML={b.get(key)}"
+                )
+    return True
+
+
+def select_week_reference(points):
+    if len(points) < 2:
+        raise RuntimeError("weekly comparison history insufficient")
+    latest_date, latest_value = points[-1]
+    target = dt.date.fromisoformat(latest_date) - dt.timedelta(days=7)
+    eligible = [(d, v) for d, v in points[:-1] if dt.date.fromisoformat(d) <= target]
+    if not eligible:
+        raise RuntimeError("weekly comparison anchor unavailable")
+    old_date, old_value = eligible[-1]
+    return latest_date, latest_value, old_date, old_value
 
 
 def get_cftc_positions():
@@ -111,6 +210,12 @@ def get_cftc_positions():
             "long_change": cur["long"] - old["long"],
             "short_change": cur["short"] - old["short"],
         }
+
+    if dt.date.fromisoformat(latest).weekday() != 1:
+        raise RuntimeError(f"CFTC latest report is not Tuesday: {latest}")
+    ensure_recent_date("CFTC", latest, 10)
+    html_latest, html_rows = get_cftc_official_html()
+    validate_cftc_crosscheck(latest, result, html_latest, html_rows)
     return latest, prev, result
 
 
@@ -148,10 +253,10 @@ def extract_points(payload):
     return sorted(dedup.items())
 
 
-def ofr_series(mnemonic, days=45):
-    start = (dt.date.today() - dt.timedelta(days=days)).isoformat()
+def ofr_series(mnemonic, days=45, endpoint=OFR_URL):
+    start = (dt.datetime.now(KST).date() - dt.timedelta(days=days)).isoformat()
     r = requests.get(
-        OFR_URL,
+        endpoint,
         params={"mnemonic": mnemonic, "start_date": start},
         headers=HEADERS,
         timeout=(8, 30),
@@ -171,6 +276,18 @@ def repo_snapshot():
     spread_bp = (s - t) * 100.0
     move_bp = (s - sofr[prev]) * 100.0
 
+    ny_sofr = nyfed_rate(NYFED_SOFR_URL, "SOFR")
+    ny_tgcr = nyfed_rate(NYFED_TGCR_URL, "TGCR")
+    if ny_sofr["date"] != d or ny_tgcr["date"] != d:
+        raise RuntimeError(
+            f"Repo source date mismatch: OFR={d}, NYFed SOFR={ny_sofr['date']}, TGCR={ny_tgcr['date']}"
+        )
+    if abs(float(ny_sofr["rate"]) - float(s)) > 1e-9 or abs(float(ny_tgcr["rate"]) - float(t)) > 1e-9:
+        raise RuntimeError(
+            f"Repo source value mismatch: OFR SOFR/TGCR={s}/{t}, NYFed={ny_sofr['rate']}/{ny_tgcr['rate']}"
+        )
+    ensure_recent_date("Repo", d, 4)
+
     if spread_bp >= 10 or move_bp >= 10:
         state = "스트레스"
     elif spread_bp >= 5 or move_bp >= 5:
@@ -178,10 +295,15 @@ def repo_snapshot():
     else:
         state = "안정"
 
-    dvp = ofr_series("REPO-DVP_TV_TOT-P", 30)
-    dvp_date, dvp_value = dvp[-1]
-    old_idx = max(0, len(dvp) - 6)
-    old_date, old_value = dvp[old_idx]
+    dvp = ofr_series("REPO-DVP_TV_TOT-P", 45)
+    dvp_check = ofr_series("REPO-DVP_TV_TOT-P", 45, endpoint=OFR_TIMESERIES_URL)
+    dvp_date, dvp_value, old_date, old_value = select_week_reference(dvp)
+    check_map = dict(dvp_check)
+    if dvp_date not in check_map or abs(float(check_map[dvp_date]) - float(dvp_value)) > 0.01:
+        raise RuntimeError(
+            f"OFR DVP endpoint mismatch: full={dvp_date}/{dvp_value}, timeseries={check_map.get(dvp_date)}"
+        )
+    ensure_recent_date("OFR DVP Repo", dvp_date, 4)
     dvp_week_pct = (dvp_value / old_value - 1.0) * 100.0 if old_value else 0.0
 
     return {
@@ -191,10 +313,15 @@ def repo_snapshot():
         "tgcr": t,
         "spread_bp": spread_bp,
         "move_bp": move_bp,
+        "nyfed_verified": True,
+        "nyfed_sofr_revision": ny_sofr["revision"],
+        "nyfed_tgcr_revision": ny_tgcr["revision"],
         "dvp_date": dvp_date,
         "dvp_value": dvp_value,
         "dvp_old_date": old_date,
+        "dvp_old_value": old_value,
         "dvp_week_pct": dvp_week_pct,
+        "dvp_crosscheck_verified": True,
     }
 
 
@@ -328,14 +455,9 @@ def main():
     curve = fetch_ust_curve()
     y30 = curve["ust30"].value
     y30_date = curve["ust30"].date
+    ensure_recent_date("U.S. Treasury 30Y", y30_date, 4)
     jpm_signal = jpm_30y_signal(y30)
     tech_head, tech_reason = technical_positioning(rows, repo, y30)
-
-    state = load_state()
-    force = (os.getenv("FORCE_SEND") or "").lower() in ("1", "true", "yes")
-    if not force and state.get("last_sent_cftc_date") == latest:
-        print(f"no_new_cftc_data=true date={latest}")
-        return
 
     lines = [
         "[미 국채 포지셔닝 Watch]",
@@ -361,7 +483,7 @@ def main():
     lines += [
         "",
         f"Repo: {repo['state']} | SOFR {repo['sofr']:.2f}% / TGCR {repo['tgcr']:.2f}% | 스프레드 {spread_sign}{repo['spread_bp']:.0f}bp | SOFR 전일 {move_sign}{repo['move_bp']:.0f}bp",
-        "DVP Repo: $" + f"{repo['dvp_value']/1e12:.2f}T | 약 1주 {repo['dvp_week_pct']:+.1f}% | {repo['dvp_date']}",
+        "DVP Repo: $" + f"{repo['dvp_value']/1e12:.2f}T | 약 1주 {repo['dvp_week_pct']:+.1f}% ({repo['dvp_old_date']}→{repo['dvp_date']}) | {repo['dvp_date']}",
         "",
         "베이시스 해석: CFTC 선물 숏만으로 금리상승 베팅으로 단정하지 않음",
         "→ 숏↓ + Repo 안정 = 질서 있는 베이시스 축소 가능성",
@@ -373,12 +495,61 @@ def main():
     ]
     text = "\n".join(lines)
 
+    verification = {
+        "checked_at_kst": dt.datetime.now(KST).isoformat(),
+        "cftc": {
+            "latest": latest,
+            "previous": prev,
+            "official_api_html_crosscheck": True,
+            "rows": rows,
+        },
+        "repo": repo,
+        "treasury_30y": {
+            "date": y30_date,
+            "yield": y30,
+            "source": curve["ust30"].source,
+        },
+        "classification": {
+            "overall": head,
+            "reason": reason,
+            "technical": tech_head,
+            "technical_reason": tech_reason,
+        },
+    }
     OUT.joinpath("treasury_positioning_watch.txt").write_text(text + "\n", encoding="utf-8")
+    OUT.joinpath("treasury_positioning_verification.json").write_text(
+        json.dumps(verification, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+    audit_only = (os.getenv("AUDIT_ONLY") or "").lower() in ("1", "true", "yes")
+    if audit_only:
+        print(
+            f"audit_only=true cftc={latest} repo={repo['date']} dvp={repo['dvp_date']} "
+            f"dvp_week={repo['dvp_week_pct']:+.2f}% y30={y30:.2f}@{y30_date} classification={head}"
+        )
+        return
+
+    state = load_state()
+    force = (os.getenv("FORCE_SEND") or "").lower() in ("1", "true", "yes")
+    if not force and state.get("last_sent_cftc_date") == latest:
+        print(f"no_new_cftc_data=true date={latest}")
+        return
+
     mid = send_telegram(text)
+    delivery = {
+        "message_id": mid,
+        "cftc_date": latest,
+        "confirmed_at_kst": dt.datetime.now(KST).isoformat(),
+    }
+    OUT.joinpath("treasury_positioning_delivery.json").write_text(
+        json.dumps(delivery, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
     state.update({
         "last_sent_cftc_date": latest,
         "last_message_id": mid,
-        "updated_at_kst": dt.datetime.now(KST).isoformat(),
+        "updated_at_kst": delivery["confirmed_at_kst"],
     })
     save_state(state)
     print(f"telegram_delivery_confirmed=true message_id={mid} cftc_date={latest} classification={head}")
