@@ -120,13 +120,16 @@ def get_bea_growth_snapshot():
     if nominal is None:
         raise RuntimeError("BEA current-dollar GDP growth not found")
 
-    title = " ".join((rsoup.find("h1") or rsoup).stripped_strings)
-    pm = re.search(r"([1-4](?:st|nd|rd|th) Quarter)\s+(20\d{2})", title, re.I)
+    headings = [" ".join(h.stripped_strings) for h in rsoup.find_all(["h1", "h2"])]
+    title = next((h for h in headings if "GDP (" in h and re.search(r"[1-4](?:st|nd|rd|th)\s+Quarter\s+20\d{2}", h, re.I)), "")
+    if not title:
+        title = " ".join(headings) or " ".join(rsoup.stripped_strings)
+    pm = re.search(r"([1-4](?:st|nd|rd|th))\s+Quarter\s+(20\d{2})", title, re.I)
     if pm:
-        qnum = {"1st": "Q1", "2nd": "Q2", "3rd": "Q3", "4th": "Q4"}[pm.group(1).split()[0].lower()]
+        qnum = {"1st": "Q1", "2nd": "Q2", "3rd": "Q3", "4th": "Q4"}[pm.group(1).lower()]
         period = f"{pm.group(2)} {qnum}"
     else:
-        period = "최신 분기"
+        period = "기준분기 확인 대기"
 
     profits_url = "https://www.bea.gov/data/income-saving/corporate-profits"
     pr = requests.get(profits_url, headers=app.base.HEADERS, timeout=(8, 20))
