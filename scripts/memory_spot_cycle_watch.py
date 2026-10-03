@@ -2195,15 +2195,39 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             lines.append('  <a href="' + html.escape(korea_earnings_source_url, quote=True) + '">근거 기사</a>')
 
     if micron_supply_changes:
-        lines.append("• <b>Micron 2027 공급 확약 상태 변화</b>")
+        lines.append("• <b>Micron 공급 확약·FQ1-27 수익력 상태 변화</b>")
         for change in list(dict.fromkeys(micron_supply_changes)):
             lines.append("  " + html.escape(change))
         pct = micron_supply_state.get("output_committed_min_pct")
         if pct is not None:
-            lines.append(f"  현재 기준: 2027년 Micron 총출력의 <b>{float(pct):.0f}% 이상</b>이 이미 고객에게 확약")
-        lines.append("  범위: SCA 고객 + 비SCA 고객을 합친 전체 고객 기반 기준")
-        lines.append("  의미: 단순 기사 제목보다 실제 확약 비중 상승/하락이 공급 타이트함의 핵심 상태값")
-        lines.append("  검증: CEO 컨퍼런스콜 발언 재전사 + Micron 공식 실적자료의 SCA 구조를 함께 확인")
+            lines.append(f"  2027 공급: Micron 총출력의 <b>{float(pct):.0f}% 이상</b>이 이미 고객에게 확약")
+        if micron_supply_state.get("sca_count") is not None:
+            lines.append(
+                f"  SCA: <b>{int(micron_supply_state['sca_count'])}건</b> · "
+                f"현재 2030년까지 매출의 <b>{float(micron_supply_state.get('sca_revenue_share_2030_pct') or 0):.0f}%+</b> 추정 · "
+                f"가격 프레임워크 적용 약 <b>{float(micron_supply_state.get('sca_pricing_framework_pct') or 0):.0f}%</b>"
+            )
+        if micron_supply_state.get("sca_end_year") is not None:
+            lines.append(f"  계약 만기: 기존 SCA 연장·신규 SCA가 <b>{int(micron_supply_state['sca_end_year'])}년</b>까지 확대")
+        if micron_supply_state.get("rpo_usd_bn") is not None:
+            lines.append(
+                "  계약 잔액: RPO 약 <b>$" + f"{float(micron_supply_state['rpo_usd_bn']):.0f}B</b> · "
+                + "고객 현금예치·관련 약정 약 <b>$" + f"{float(micron_supply_state.get('customer_commitments_usd_bn') or 0):.0f}B</b>"
+            )
+        if micron_supply_state.get("fq1_27_implied_op_usd_bn") is not None:
+            lines.append(
+                "  FQ1-27 비GAAP 영업이익 환산: <b>약 $" + f"{float(micron_supply_state['fq1_27_implied_op_usd_bn']):.1f}B</b> "
+                + "= 매출 $" + f"{float(micron_supply_state.get('fq1_27_revenue_usd_bn') or 0):.1f}B × "
+                + f"매출총이익률 {float(micron_supply_state.get('fq1_27_non_gaap_gm_pct') or 0):.2f}% "
+                + "- 영업비용 $" + f"{float(micron_supply_state.get('fq1_27_non_gaap_opex_usd_bn') or 0):.2f}B"
+            )
+            lines.append("  ※ 회사가 영업이익 가이던스를 직접 제시한 것이 아니라 공식 매출·매출총이익률·영업비용 가이던스로 역산한 수치")
+        if micron_supply_state.get("memory_shortage_through_year") is not None:
+            lines.append(f"  공급: DRAM·NAND 모두 <b>{int(micron_supply_state['memory_shortage_through_year'])}년까지 공급제약</b> 전망")
+        lines.append("  범위: 2027 75%+ 확약은 SCA 고객 + 비SCA 고객을 합친 전체 고객 기반 기준")
+        lines.append("  해석: 단기 이익 급증보다 2031 계약·가격 프레임워크·RPO가 메모리 사이클 변동성을 얼마나 낮추는지가 재평가 핵심")
+        lines.append("  역풍: HBM 디스펙·CXL·신규 클린룸 램프가 예상보다 빨라지면 2028 이후 가격·마진 정상화가 빨라질 수 있음")
+        lines.append("  검증: CEO 컨퍼런스콜 발언 재전사 + Micron 공식 FQ4-26 실적·FQ1-27 가이던스 교차확인")
         if micron_supply_source_url:
             lines.append('  <a href="' + html.escape(micron_supply_source_url, quote=True) + '">근거 발언</a>')
         official = micron_supply_state.get("official_context_url") or MICRON_SUPPLY_COMMITMENT_BASELINE.get("official_context_url")
