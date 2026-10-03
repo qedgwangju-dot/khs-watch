@@ -99,6 +99,7 @@ OFFICIAL_SOURCE_HINTS = (
     "openai", "nipa", "과학기술정보통신부", "msit", "kisa", "한국인터넷진흥원",
     "nists", "nist", "cisa", "gov.uk", "aisi", "european commission",
     "europa.eu", "oecd", "white house", "whitehouse.gov", "commerce department", "ntia",
+    "house.gov", "u.s. house", "house of representatives",
     "naver", "lg cns", "s2w", "샌즈랩", "palo alto", "unit 42",
     "crowdstrike", "ibm", "nvidia", "microsoft", "openshell",
     "nemoclaw", "sentry", "sap", "canonical", "red hat",
@@ -324,6 +325,7 @@ WATCH_ENTITIES = (
 )
 
 KNOWN_OFFICIAL_PAGES = {
+    "미 하원의장실 White House Accord 공식 발표": "https://mikejohnson.house.gov/news/documentsingle.aspx?DocumentID=2939",
     "백악관 Super Intelligence 행정명령": "https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/",
     "백악관 Super Intelligence 팩트시트": "https://www.whitehouse.gov/fact-sheets/2026/09/fact-sheet-president-donald-j-trump-inaugurates-the-era-of-super-intelligence/",
     "OpenAI 프런티어 학습 Safety Case": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training/",
@@ -514,7 +516,10 @@ def detect_entity(text: str) -> str:
         ("백악관·프런티어 AI 공동서약", (
             "joint commitment on frontier responsibilities",
             "white house accord on super intelligence",
-            "morally binding", "oversight board", "super intelligence",
+            "morally binding", "signed accord", "공동 서약", "공동 합의",
+        )),
+        ("백악관 Super Intelligence 정책", (
+            "super intelligence", "superintelligence", "white house", "백악관",
         )),
         ("네이버클라우드", ("네이버클라우드", "naver cloud")),
         ("OpenAI", ("openai",)),
@@ -654,8 +659,10 @@ def cluster_events(items: list[dict]) -> list[list[dict]]:
 def source_label(source: str) -> str:
     low = source.lower()
     mapping = (
+        ("white house","백악관"), ("house of representatives","미 하원"),
+        ("u.s. house","미 하원"), ("associated press","AP"), ("ap news","AP"),
         ("reuters","Reuters"), ("연합뉴스","연합뉴스"), ("yonhap","연합뉴스"),
-        ("openai","OpenAI"), ("nipa","NIPA"), ("과학기술정보통신부","과기정통부"),
+        ("openai","OpenAI"), ("nvidia","NVIDIA"), ("nipa","NIPA"), ("과학기술정보통신부","과기정통부"),
         ("naver","NAVER"), ("s2w","S2W"), ("lg cns","LG CNS"),
         ("zdnet","ZDNet"), ("전자신문","전자신문"), ("etnews","전자신문"),
         ("파이낸셜뉴스","파이낸셜뉴스"), ("한국경제","한국경제"),
@@ -665,6 +672,20 @@ def source_label(source: str) -> str:
         if needle in low:
             return label
     return re.sub(r"^www\.", "", source)[:24] or "원문"
+
+
+def official_page_source(name: str) -> str:
+    if name.startswith("NVIDIA"):
+        return "NVIDIA"
+    if name.startswith("NIPA"):
+        return "NIPA"
+    if name.startswith("OpenAI"):
+        return "OpenAI"
+    if name.startswith("백악관"):
+        return "White House"
+    if name.startswith("미 하원의장실"):
+        return "U.S. House of Representatives"
+    return "공식 원천"
 
 
 HANGUL_RE = re.compile(r"[가-힣]")
@@ -877,9 +898,9 @@ def main() -> int:
                 new_items.append(normalize({
                     "kind":"official",
                     "query":"official page change",
-                    "title":f"{name} 공식 사업페이지 변경 감지",
+                    "title":f"{name} 공식 페이지 변경 감지",
                     "description":snap.get("material",""),
-                    "source":"NVIDIA" if name.startswith("NVIDIA") else "NIPA",
+                    "source":official_page_source(name),
                     "url":snap["url"],
                     "published_at":now.isoformat(),
                 }))
