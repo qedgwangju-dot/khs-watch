@@ -310,10 +310,10 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-10-04T01:09:53+09:00",
+  "updated_at_kst": "2026-10-04T01:33:41+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
-  "last_send_event_count": 1,
+  "last_send_event_count": 0,
   "monthly_due": false,
   "compare_version": 4,
   "official_month": "",
@@ -1914,7 +1914,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-04T01:09:53+09:00",
+      "last_checked_at_kst": "2026-10-04T01:33:41+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -1986,8 +1986,8 @@
     "payload_hash": "9349c5f56a103cdf0c4057067982fe1d19e3f6c79c48a163d0f37f2b5e61d00f"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-04T01:10:44+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-10-04T01:34:25+09:00",
+    "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
   "state_corrections": [
@@ -2065,5 +2065,5 @@
     "note": "3배 이상은 2027 HBM4 제시가격을 현재 주력 HBM3E 약 1.5달러/Gb와 비교한 제품간 가격배수다. 전년 대비 HBM4 가격상승률로 해석하지 않으며, 4달러대 중후반은 제시·협상 가격이지 체결가격이 아니다."
   },
   "last_samsung_hbm4_price_observation_count": 0,
-  "last_samsung_hbm4_price_alert_count": 1
+  "last_samsung_hbm4_price_alert_count": 0
 }
