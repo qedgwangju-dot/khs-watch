@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-03T11:18:53+09:00",
+  "updated_at_kst": "2026-10-03T17:20:38+09:00",
   "seen_ids": [
     "05738ff36f7b6c56288425e7",
     "13736d06804f15f7083db8c9",
@@ -51,6 +51,7 @@
     "b529225d8c29a6e9fe90a400",
     "b64cd923b40345dd4374ebec",
     "b78305e0987a83c06114ad4f",
+    "b7deb474c9ea0344950c1c69",
     "bbb3199d6ea68806a9282eef",
     "bfb8e5260d8cff47d7b8182e",
     "c0a74fa7ce49b5be25858caf",
@@ -85,7 +86,7 @@
     "nvidia_demand_b0db6b8218",
     "nvidia_demand_b9dff9a4c6"
   ],
-  "last_event_count": 19,
+  "last_event_count": 20,
   "last_new_event_count": 0,
   "alert_generated": false,
   "format_version": 3,
@@ -115,7 +116,7 @@
   },
   "schedule_audit_version": 1,
   "last_run_event": "schedule",
-  "last_schedule_check_kst": "2026-10-03T11:18:53+09:00",
-  "schedule_gap_minutes": 164.1,
+  "last_schedule_check_kst": "2026-10-03T17:20:38+09:00",
+  "schedule_gap_minutes": 361.8,
   "last_push_check_kst": "2026-10-01T14:28:21+09:00"
 }
