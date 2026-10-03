@@ -1,9 +1,9 @@
 {
   "initialized": true,
-  "version": 4,
+  "version": 5,
   "dataset_updated": "Oct 2, 2026",
   "source_hash": "7a7230948dddd31ebea69c580226182cc9a1d95efe1dc4041a7524a42de4c98e",
-  "snapshot_hash": "dfb844b8084abc878957714c2ba6f301f92fea68144ea115e702809d53c42dd1",
+  "snapshot_hash": "db2593c02d073ee1cf6738610c17d2e21e8ead3dcafbb62daf667868925d6497",
   "projects": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -295,8 +295,8 @@
       "planned_mw": 636.0,
       "progress": 100.0,
       "completion_date": "2026-06-14",
-      "completion": "완료",
-      "stage": "가동 완료",
+      "completion": "Epoch 추정 IT전력 계획치 도달",
+      "stage": "Epoch 상태상 가동·IT전력 계획치 도달",
       "risk": false,
       "source_status": "Building 3 and 4 are operational.",
       "mw_quality": "현재 추정 IT전력=계획치",
@@ -306,23 +306,7 @@
       "company_issues": []
     }
   ],
-  "last_changes": [
-    "MS Fairwater (WI) MW 품질 부분 가동·현재 가용 용량→현재 추정 IT전력·부분 가동/건설 병행",
-    "Amazon New Carlisle (IN) MW 품질 부분 가동·현재 가용 용량→현재 추정 IT전력·부분 가동/건설 병행",
-    "Stargate Jupiter (NM) MW 품질 건설 중 계획 용량→미래 계획 IT전력·현재 추정 0MW",
-    "Meta Hyperion (LA) MW 품질 건설 중 계획 용량→미래 계획 IT전력·현재 추정 0MW",
-    "xAI Colossus 2 (TN) MW 품질 부분 가동·현재 가용 용량→현재 추정 IT전력·부분 가동/건설 병행",
-    "Stargate Shackelford (TX) MW 품질 건설 중 계획 용량→미래 계획 IT전력·현재 추정 0MW",
-    "QTS Cedar Rapids (IA) MW 품질 건설 중 계획 용량→미래 계획 IT전력·현재 추정 0MW",
-    "Meta Prometheus (OH) MW 품질 부분 가동·현재 가용 용량→현재 추정 IT전력·부분 가동/건설 병행",
-    "Google Goodnight (TX) MW 품질 건설 중 계획 용량→미래 계획 IT전력·현재 추정 0MW",
-    "Stargate Michigan MW 품질 건설 중 계획 용량→미래 계획 IT전력·현재 추정 0MW",
-    "Stargate Wisconsin MW 품질 건설 중 계획 용량→미래 계획 IT전력·현재 추정 0MW",
-    "Google Fort Wayne (IN) MW 품질 건설 중 계획 용량→미래 계획 IT전력·현재 추정 0MW",
-    "Stargate Milam (TX) MW 품질 건설 중 계획 용량→미래 계획 IT전력·현재 추정 0MW",
-    "Stargate Abilene (TX) MW 품질 부분 가동·현재 가용 용량→현재 추정 IT전력·부분 가동/건설 병행",
-    "MS Fairwater Atlanta (GA) MW 품질 가동 용량→현재 추정 IT전력=계획치"
-  ],
+  "last_changes": [],
   "source_errors": [],
-  "updated_at_utc": "2026-10-03T16:17:50+00:00"
+  "updated_at_utc": "2026-10-03T16:19:16+00:00"
 }
