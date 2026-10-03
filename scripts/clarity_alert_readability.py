@@ -75,6 +75,8 @@ def easy_takeaway(event, body_ko):
 
 def short_change(event, title_ko, body_ko):
     et = clean(event.get("event_type", ""))
+    if FMT.is_sec_3x_crypto_etp_approval(event):
+        return "SEC가 비트코인·이더 3배 레버리지 ETP의 Cboe BZX 상장·거래 규칙을 승인했습니다. 현물 3배 ETF가 아니라 선물 기반 일일 3배 상품입니다."
     if FMT.is_sec_crypto_custody_2026(event):
         return "CLARITY 법안 본체 변화가 아니라, SEC가 기관의 암호자산 수탁 경로를 넓히기 위해 별도 제안규칙을 낸 사건입니다."
     if is_media_text_release(event):
@@ -160,6 +162,8 @@ def investment_lines(event):
 
 def impact_snapshot(event):
     et = clean(event.get("event_type", ""))
+    if FMT.is_sec_3x_crypto_etp_approval(event):
+        return "수급 ↑/△ · 시간표 ↑↑ · BTC/ETH 변동성 ↑ 가능 · COIN 직접매출 →"
     if FMT.is_sec_crypto_custody_2026(event):
         return "할인율 ↓ 가능 · 시간표 ↑ · COIN 수탁기회 ↑/△ · BTC/ETH 기관접근 ↑/△"
     if is_media_text_release(event):
@@ -192,6 +196,12 @@ def sentence_bullets(text):
 
 
 def confirmed_fact_lines(event, body_ko):
+    if FMT.is_sec_3x_crypto_etp_approval(event):
+        return [
+            "SEC Release 34-106577 · File SR-CboeBZX-2026-065 · 승인일 2026-10-02.",
+            "3x Bitcoin ETF·3x Ether ETF는 최근월·차근월 선물 벤치마크의 하루 수익률 3배를 목표.",
+            "SEC는 상품명에 ETF가 들어가지만 법적 분류는 Commodity-Based Trust Shares ETP라고 명시.",
+        ]
     if FMT.is_sec_crypto_custody_2026(event):
         if FMT.rule_stage(event) == "final":
             effective = FMT.federal_register_effective_date(event)
@@ -210,6 +220,8 @@ def confirmed_fact_lines(event, body_ko):
 
 
 def compact_status(event):
+    if FMT.is_sec_3x_crypto_etp_approval(event):
+        return "🟢 상장규칙 승인 — SEC 승인 완료. 실제 거래개시일·초기 AUM은 별도 확인."
     if FMT.is_sec_crypto_custody_2026(event):
         if FMT.rule_stage(event) == "final":
             return "🟢 Final Rule(최종규칙) — 최종 문안 확정, 시행일·준수기한 확인 단계."
@@ -262,6 +274,12 @@ def pending_lines(event):
 
 def next_check_lines(event):
     et = clean(event.get("event_type", ""))
+    if FMT.is_sec_3x_crypto_etp_approval(event):
+        return [
+            "실제 상장·거래 개시일과 공식 티커",
+            "3x Bitcoin ETF 등록서류 효력 예정일 2026-10-18",
+            "초기 AUM·거래대금·CME 선물 미결제약정 변화",
+        ]
     if FMT.is_sec_crypto_custody_2026(event):
         if FMT.rule_stage(event) == "final":
             return ["시행일·전환기간·준수기한", "기관별 실제 수탁 개시·수탁자산 증가"]
