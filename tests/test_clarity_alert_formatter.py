@@ -150,14 +150,32 @@ class ClarityFormatterTest(unittest.TestCase):
         }
         self.assertTrue(MOD.is_sec_3x_crypto_etp_approval(event))
         title, body = MOD.localize_event(event)
-        self.assertIn("3배 레버리지 ETP", title)
-        self.assertIn("선물 벤치마크", body)
-        self.assertIn("현물 BTC·ETH 3배 ETF가 아니라", body)
+        self.assertIn("BITH·ETHK", title)
+        self.assertIn("CME 비트코인·이더 선물", body)
+        self.assertIn("실제 거래개시는 VS Trust 등록서류 효력", body)
         invest = "\n".join(MOD.investment_lines(event))
-        self.assertIn("2026-10-18", invest)
+        self.assertIn("BITH·ETHK 티커는 VS Trust S-1에서 이미 확인", invest)
+        self.assertNotIn("2026-10-18", invest)
         summary = MOD.core_summary(event)
-        self.assertIn("선물 기반 레버리지 상품", summary)
-        self.assertIn("롤오버 비용", summary)
+        self.assertIn("현물 BTC·ETH 3배 보유 승인이 아니며", summary)
+        self.assertIn("VS Trust 등록서류 효력", summary)
+
+    def test_volatility_shares_product_listing_is_distinct_launch_stage(self):
+        event = {
+            "source": "Volatility Shares 공식 상품목록",
+            "event_type": "3배 BTC·ETH ETP 실제 상품목록·거래개시 추적",
+            "title": "BITH 3x Bitcoin ETF / ETHK 3x Ether ETF",
+            "url": "https://www.volatilityshares.com/etf-product-list.php",
+            "date": "2026-10-20",
+            "detail": "BITH issuer product page listed; inception 10/20/2026 | ETHK issuer product page listed; inception 10/20/2026",
+        }
+        self.assertTrue(MOD.is_volatility_3x_crypto_launch(event))
+        title, body = MOD.localize_event(event)
+        self.assertIn("실제 상품목록 등재", title)
+        self.assertIn("BITH(3x Bitcoin ETF)", body)
+        self.assertIn("ETHK(3x Ether ETF)", body)
+        invest = "\n".join(MOD.investment_lines(event))
+        self.assertIn("첫 5거래일 AUM", invest)
 
     def test_date_only_is_shown_in_korean_calendar_format(self):
         event = {
