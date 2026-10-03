@@ -75,6 +75,7 @@
     "3e9686ba8b65b8379217a7dc",
     "3eb237c40279f59da0ecd9b5",
     "3f156141cc533f1da119e9d7",
+    "3f2b718edb227cfc2648e177",
     "405463a0e2a049064d3f3acf",
     "40d56e9fa910b19c9028f84e",
     "4130c04867b94a6d1449df4b",
@@ -189,6 +190,7 @@
     "9b7d072c5cc6386d531f360a",
     "9deb4a8d28a86b75f391a95d",
     "9ecb42547063980851cd73d7",
+    "9fad2935fe289e0c1c68d10a",
     "a18a355eac4bcbbf23ab3b69",
     "a281cdcd4c1fe29a859c7bb9",
     "a3053a837f87259ee3eba0af",
@@ -221,6 +223,7 @@
     "b93f33ed6889ca9ab7f2d015",
     "bb8d68accda30ea0a27f488c",
     "bbcd5c843fbbd5deb25712cb",
+    "bc04e3792c96c7c3a6236451",
     "bd26432b3c3bf171b67b4e34",
     "bd89f94d9970c70227357ae5",
     "be3ea72057cda8f38d4e8424",
@@ -249,6 +252,7 @@
     "da2e59416c300e7919ff2162",
     "dad30ad5dc81ab12af7350c6",
     "dad35b5b5d47e9bc13e72730",
+    "dd295c75098ac9ec8b9f081b",
     "ddd95cd2c576de3fc9da7859",
     "df546e75e56e78307e8a37a8",
     "df7ff81b08de6f78a2d656df",
@@ -302,10 +306,10 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-10-03T13:44:33+09:00",
-  "last_event_count": 130,
+  "updated_at_kst": "2026-10-03T14:39:35+09:00",
+  "last_event_count": 128,
   "last_fresh_new_count": 0,
-  "last_send_event_count": 1,
+  "last_send_event_count": 0,
   "monthly_due": false,
   "compare_version": 4,
   "official_month": "",
@@ -1637,8 +1641,8 @@
         "as_of": "2026-09-30",
         "evidence": "research",
         "source_url": "https://www.trendforce.com/news/2026/09/30/news-samsung-foundry-loss-reportedly-seen-shrinking-42-yoy-in-2026-as-hbm4-base-die-4nm-demand-rises/",
-        "source_title": "[News] Samsung Foundry Loss Reportedly Seen Shrinking 42% YoY in 2026 as HBM4 Base-Die 4nm Demand Rises - TrendForce",
-        "source": "TrendForce",
+        "source_title": "[News] Samsung Foundry Loss Reportedly Seen Shrinking 42% YoY in 2026 as HBM4 Base-Die 4nm Demand Rises - trendforce.com",
+        "source": "trendforce.com",
         "excerpt": "삼성 HBM4 베이스다이 대응 4나노 증설 단계",
         "scope": "foundry_expansion_stage"
       },
@@ -1657,8 +1661,8 @@
         "as_of": "2026-09-30",
         "evidence": "research",
         "source_url": "https://www.trendforce.com/news/2026/09/30/news-samsung-foundry-loss-reportedly-seen-shrinking-42-yoy-in-2026-as-hbm4-base-die-4nm-demand-rises/",
-        "source_title": "[News] Samsung Foundry Loss Reportedly Seen Shrinking 42% YoY in 2026 as HBM4 Base-Die 4nm Demand Rises - TrendForce",
-        "source": "TrendForce",
+        "source_title": "[News] Samsung Foundry Loss Reportedly Seen Shrinking 42% YoY in 2026 as HBM4 Base-Die 4nm Demand Rises - trendforce.com",
+        "source": "trendforce.com",
         "excerpt": "삼성 4나노 신규수주·HBM4 베이스다이 가격 변화",
         "scope": "reported_foundry_pricing"
       },
@@ -1720,8 +1724,8 @@
         "as_of": "2026-09-30",
         "evidence": "reported",
         "source_url": "https://www.trendforce.com/news/2026/09/30/news-samsung-foundry-loss-reportedly-seen-shrinking-42-yoy-in-2026-as-hbm4-base-die-4nm-demand-rises/",
-        "source_title": "[News] Samsung Foundry Loss Reportedly Seen Shrinking 42% YoY in 2026 as HBM4 Base-Die 4nm Demand Rises - TrendForce",
-        "source": "TrendForce",
+        "source_title": "[News] Samsung Foundry Loss Reportedly Seen Shrinking 42% YoY in 2026 as HBM4 Base-Die 4nm Demand Rises - trendforce.com",
+        "source": "trendforce.com",
         "excerpt": "삼성 파운드리+System LSI 합산 영업손실 전망",
         "scope": "broker_estimate_foundry_plus_system_lsi_combined_not_foundry_standalone"
       },
@@ -1906,20 +1910,20 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-03T13:44:33+09:00",
+      "last_checked_at_kst": "2026-10-03T14:39:35+09:00",
       "gaps": [
         "원문 확인 실패: investing.com / HTTPError",
         "wafer_share: 연말 분모가 명확하지 않아 비교 보류",
         "wafer_share: 연도별 값 연결 불명확",
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
-      "observations": 9,
+      "observations": 8,
       "rdimm_paired_observations": 0,
       "wafer_share|trendforce|industry|2026-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "wafer_share|trendforce|industry|2027-YE": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "non_concrete_generic_evidence_suppressed": 3,
       "rdimm_quote|dramexchange|32|4800/5600": "지연 원자료: 현재 가격 알림 보류",
-      "hbm_market_pricing|trendforce|industry|2027": "동일 기준일 원값 불일치: 발송 보류",
+      "hbm_market_pricing|trendforce|industry|2027": "하위 증거는 기존 확정값을 덮어쓰지 않음",
       "foundry_external_2nm|samsung|external_2nm|current": "하위 증거는 기존 확정값을 덮어쓰지 않음"
     },
     "version": 1,
@@ -1981,8 +1985,8 @@
     "payload_hash": "485c7b766682d5c40f1ec846c767a2e91f15b0cf0a472cc0dcee70e70add14d0"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-03T13:49:03+09:00",
-    "status": "confirmed"
+    "checked_at_kst": "2026-10-03T14:44:10+09:00",
+    "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
   "state_corrections": [
@@ -2058,5 +2062,5 @@
     "title": "[단독] 삼성 \"최고성능 HBM4 자신감, 협상력 확대\"… 가격 프리미엄 강공 - v.daum.net"
   },
   "last_samsung_hbm4_price_observation_count": 1,
-  "last_samsung_hbm4_price_alert_count": 1
+  "last_samsung_hbm4_price_alert_count": 0
 }
