@@ -165,9 +165,7 @@ def impact_snapshot(event):
     if FMT.is_volatility_3x_crypto_launch(event):
         return "시간표 ↑↑ · BTC/ETH 선물수급 ↑/△ · 변동성 ↑ 가능 · COIN 직접매출 →"
     if FMT.is_sec_3x_crypto_etp_approval(event):
-        return "시간표 ↑ · BTC/ETH 선물수급 ↑ 기대 · 현물 직접수요 → · COIN 직접매출 →"
-    if FMT.is_sec_3x_crypto_etp_approval(event):
-        return "수급 ↑/△ · 시간표 ↑↑ · BTC/ETH 변동성 ↑ 가능 · COIN 직접매출 →"
+        return "시간표 ↑↑ · BTC/ETH 선물수급 ↑/△ · 변동성 ↑ 가능 · 현물 직접수요 → · COIN 직접매출 →"
     if FMT.is_sec_crypto_custody_2026(event):
         return "할인율 ↓ 가능 · 시간표 ↑ · COIN 수탁기회 ↑/△ · BTC/ETH 기관접근 ↑/△"
     if is_media_text_release(event):
@@ -212,7 +210,7 @@ def confirmed_fact_lines(event, body_ko):
     if FMT.is_sec_3x_crypto_etp_approval(event):
         return [
             "SEC Release 34-106577 · File SR-CboeBZX-2026-065 · 승인일 2026-10-02.",
-            "공식 티커 BITH(3x Bitcoin ETF) · ETHK(3x Ether ETF).",
+            "공식 티커 BITH(3x Bitcoin ETF) · ETHK(3x Ether ETF). 법적 상장분류는 Commodity-Based Trust Shares(원자재 기반 신탁지분)인 ETP.",
             "현물 보유형이 아니라 CME 선물 기반·하루 3배·일일 재설정 구조. 장기 누적수익률은 기초자산의 정확한 3배가 아님.",
         ]
     if FMT.is_sec_crypto_custody_2026(event):
