@@ -1845,7 +1845,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         state["korea_memory_earnings_track_version"] = KOREA_MEMORY_EARNINGS_TRACK_VERSION
 
     micron_supply_state = dict(state.get("micron_supply_commitment") or {})
-    if int(state.get("micron_supply_commitment_track_version") or 0) < MICRON_SUPPLY_COMMITMENT_TRACK_VERSION:
+    micron_supply_upgrade_due = int(state.get("micron_supply_commitment_track_version") or 0) < MICRON_SUPPLY_COMMITMENT_TRACK_VERSION
+    if micron_supply_upgrade_due:
         micron_supply_state = _merge_typed_state(MICRON_SUPPLY_COMMITMENT_BASELINE, micron_supply_state)
         state["micron_supply_commitment_track_version"] = MICRON_SUPPLY_COMMITMENT_TRACK_VERSION
 
@@ -1921,6 +1922,9 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     micron_supply_changes: list[str] = []
     micron_supply_source_url = ""
+    if micron_supply_upgrade_due:
+        micron_supply_changes.append("Micron SCA 2031·FQ1-27 수익력·2028 공급제약 기준선 신규")
+        micron_supply_source_url = MICRON_SUPPLY_COMMITMENT_BASELINE["source_url"]
     for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
         obs = _extract_micron_supply_commitment(item)
         if not obs:
