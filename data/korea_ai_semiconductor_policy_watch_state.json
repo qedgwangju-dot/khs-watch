@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-09-27T18:11:08+09:00",
-  "last_checked_kst": "2026-10-03T17:17:42+09:00",
+  "last_checked_kst": "2026-10-03T22:30:44+09:00",
   "seen": {
     "2b31306619b190498e7f41c7": {
       "title": "[입찰공고] 2026년 AI반도체 지원사업 성과조사분석 및 우수사례 발굴 용역 - 정보통신산업진흥원(NIPA)",
@@ -336,6 +336,24 @@
       "category": "조달·선정·협약",
       "first_seen_kst": "2026-10-03T17:17:42+09:00",
       "suppressed_duplicate": "same_title"
+    },
+    "3529c1f8bf5d2b57dd30d4a8": {
+      "title": "조달 60일에서 10일 이내로…리벨리온 ATOM-Max, 혁신제품 지정 - 벤처스퀘어",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE80bUVOVGJNSnJ5S3ktUGludHQ4bldsSFNJVURTUGZ3LXVVY2ZLcXhYSGJJLTB6Ykl0LXJQSmJETkhPRjM1LTM5RHpYREZXZVk?oc=5",
+      "event_signature": "리벨리온|조달·선정·협약|혁신제품",
+      "stage": 4,
+      "category": "조달·선정·협약",
+      "first_seen_kst": "2026-10-03T22:30:44+09:00",
+      "suppressed_stale": true
+    },
+    "ca99b39e46ba33803c9e513b": {
+      "title": "라이너, 리벨리온과 ‘AI 풀스택 솔루션’ 사업 업무협약 체결 - 아이티데일리",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE53SG02UkUyNGg5TWNrOWVXcXlTNVVPX0RUTmdvMmdtZUVYVDZkMEtfQjhUcGJzSjlqNm40YVljSGt1ZHEtM1RIY3UyZkVaQS1TQ2J3TXlvNFJXUm9TQ3JCb3lsRThaX1pJ?oc=5",
+      "event_signature": "리벨리온|조달·선정·협약|일반",
+      "stage": 4,
+      "category": "조달·선정·협약",
+      "first_seen_kst": "2026-10-03T22:30:44+09:00",
+      "suppressed_stale": true
     }
   }
 }
