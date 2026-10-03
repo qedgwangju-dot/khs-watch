@@ -681,6 +681,304 @@ def _citi_wpm(text: str, aliases: tuple[str, ...]) -> float | None:
     return None
 
 
+def extract_jpm_hbm_structural(event: dict) -> dict | None:
+    text = compact_fact_text(event)
+    low = text.lower()
+    if not relevant("jpm_hbm_structural", text):
+        return None
+
+    obs: dict = {}
+
+    m = re.search(
+        r"(?:2026\s*(?:to|[-–—]|~)\s*2028|2026년?[^.]{0,40}?2028년?)[^.]{0,160}?(?:cagr|compound[^.%]{0,40}?growth|복합[^.%]{0,40}?성장률|연평균[^.%]{0,40}?성장률)[^%]{0,60}?([0-9]+(?:\.[0-9]+)?)\s*%",
+        low, re.I,
+    )
+    if not m:
+        m = re.search(
+            r"(?:cagr|compound[^.%]{0,40}?growth|복합[^.%]{0,40}?성장률|연평균[^.%]{0,40}?성장률)[^%]{0,100}?([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,120}?(?:2026)[^.]{0,60}?(?:2028)",
+            low, re.I,
+        )
+    if m:
+        obs["demand_cagr_2026_2028_pct"] = float(m.group(1))
+        obs["demand_cagr_period"] = "2026-2028"
+
+    m = re.search(
+        r"(?:cumulative|누적)[^.]{0,100}?(?:bit\s+demand|비트\s*수요)[^0-9]{0,40}?([0-9]+(?:\.[0-9]+)?)\s*(?:billion\s*gb|십억\s*gb)",
+        low, re.I,
+    )
+    if not m:
+        m = re.search(r"([0-9]+(?:\.[0-9]+)?)\s*billion\s*gb[^.]{0,80}?(?:cumulative|누적)", low, re.I)
+    if m:
+        obs["cumulative_bit_demand_2026_2028_billion_gb"] = float(m.group(1))
+
+    for year in (2027, 2028):
+        m = re.search(
+            rf"{year}[^.%]{{0,100}}?(?:hbm[^.%]{{0,50}}?)?(?:asp|average selling price|평균판매단가|가격)[^%]{{0,80}}?([+-]?\d+(?:\.\d+)?)\s*%",
+            low, re.I,
+        )
+        if not m:
+            m = re.search(
+                rf"(?:asp|average selling price|평균판매단가|가격)[^%]{{0,100}}?([+-]?\d+(?:\.\d+)?)\s*%[^.]{{0,100}}?{year}",
+                low, re.I,
+            )
+        if m:
+            obs[f"asp_{year}_yoy_pct"] = float(m.group(1))
+
+    m = re.search(r"(?:2028)[^.]{0,120}?(?:\$|usd\s*)?([0-9]+(?:\.[0-9]+)?)\s*(?:per\s*gb|/\s*gb|달러\s*/?\s*gb)", low, re.I)
+    if m:
+        obs["asp_2028_usd_per_gb"] = float(m.group(1))
+
+    m = re.search(
+        r"(?:supply[- ]?demand|수급)[^.]{0,160}?(-?\d+(?:\.\d+)?)\s*%[^.]{0,120}?(?:to|→|에서)[^0-9-]{0,20}(-?\d+(?:\.\d+)?)\s*%",
+        low, re.I,
+    )
+    if m:
+        obs["supply_demand_gap_initial_pct"] = float(m.group(1))
+        obs["supply_demand_gap_later_pct"] = float(m.group(2))
+
+    m = re.search(
+        r"([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:new\s+dram\s+capacity|신규\s*dram\s*생산능력)[^.]{0,100}?(?:hbm|allocated|directed)",
+        low, re.I,
+    )
+    if not m:
+        m = re.search(
+            r"(?:new\s+dram\s+capacity|신규\s*dram\s*생산능력)[^.]{0,120}?([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,80}?(?:hbm)",
+            low, re.I,
+        )
+    if m:
+        obs["new_dram_capacity_to_hbm_pct_2025_2028"] = float(m.group(1))
+
+    m = re.search(
+        r"(?:hbm)[^.]{0,140}?(?:share|비중)[^.]{0,120}?([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:to|→|에서)[^0-9]{0,20}([0-9]+(?:\.[0-9]+)?)\s*%",
+        low, re.I,
+    )
+    if not m:
+        m = re.search(
+            r"(?:from)[^0-9]{0,20}([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:to)[^0-9]{0,20}([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,120}?(?:dram\s+capacity|capacity)",
+            low, re.I,
+        )
+    if m:
+        obs["hbm_share_dram_capacity_start_pct"] = float(m.group(1))
+        obs["hbm_share_dram_capacity_2028_pct"] = float(m.group(2))
+
+    m = re.search(r"(?:16\s*[- ]?hi|16단)[^.]{0,140}?(?:2029)", low, re.I)
+    if m:
+        obs["sixteen_hi_earliest_year"] = 2029
+
+    for label, field in (("asic", "asic_hbm_demand_share_2027_pct"), ("nvidia", "nvidia_hbm_demand_share_2027_pct")):
+        m = re.search(rf"2027[^.%]{{0,120}}?{label}[^%]{{0,80}}?([0-9]+(?:\.\d+)?)\s*%", low, re.I)
+        if not m:
+            m = re.search(rf"{label}[^.%]{{0,120}}?([0-9]+(?:\.\d+)?)\s*%[^.]{{0,100}}?2027", low, re.I)
+        if m:
+            obs[field] = float(m.group(1))
+
+    if not obs:
+        return None
+    obs.update({
+        "source": event.get("origin_source") or event.get("source") or "J.P. Morgan 관련 재인용",
+        "source_url": event.get("direct_link") or "",
+        "as_of": (event.get("published_at_kst") or "")[:10],
+        "observed_at": event.get("published_at_kst") or "",
+    })
+    return obs
+
+
+def merge_jpm_hbm_structural(old: dict, obs: dict) -> dict:
+    merged = dict(old or {})
+    for key, value in obs.items():
+        if value not in (None, ""):
+            merged[key] = value
+    return merged
+
+
+def jpm_hbm_structural_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+    for key, label, threshold, unit in (
+        ("demand_cagr_2026_2028_pct", "2026~2028 HBM 비트수요 CAGR", 5.0, "%"),
+        ("asp_2027_yoy_pct", "2027 HBM 평균판매단가 증가율", 5.0, "%"),
+        ("asp_2028_yoy_pct", "2028 HBM 평균판매단가 증가율", 5.0, "%"),
+        ("hbm_share_dram_capacity_2028_pct", "2028 HBM의 DRAM 생산능력 비중", 2.0, "%"),
+        ("new_dram_capacity_to_hbm_pct_2025_2028", "2025~2028 신규 DRAM 생산능력의 HBM 배분 비중", 5.0, "%"),
+        ("supply_demand_gap_later_pct", "HBM 수급 부족률 후반값", 3.0, "%"),
+        ("asic_hbm_demand_share_2027_pct", "2027 ASIC HBM 수요 비중", 3.0, "%"),
+        ("nvidia_hbm_demand_share_2027_pct", "2027 NVIDIA HBM 수요 비중", 3.0, "%"),
+        ("asp_2028_usd_per_gb", "2028 HBM 평균판매단가", 0.3, "달러/Gb"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if a is not None and b is not None and abs(float(b) - float(a)) >= threshold:
+            changes.append(f"{label} {float(a):g}→{float(b):g}{unit}")
+        elif a is None and b is not None:
+            changes.append(f"{label} {float(b):g}{unit} 신규 확인")
+
+    a, b = old.get("cumulative_bit_demand_2026_2028_billion_gb"), new.get("cumulative_bit_demand_2026_2028_billion_gb")
+    if a and b and abs(float(b) / float(a) - 1.0) >= 0.10:
+        changes.append(f"2026~2028 누적 HBM 비트수요 {float(a):g}→{float(b):g}십억 GB")
+
+    if old.get("sixteen_hi_earliest_year") != new.get("sixteen_hi_earliest_year") and new.get("sixteen_hi_earliest_year"):
+        changes.append(f"16단 상용화 최소 시점 {old.get('sixteen_hi_earliest_year') or '미확인'}→{new.get('sixteen_hi_earliest_year')}")
+    return changes
+
+
+def jpm_hbm_structural_event(state: dict, changes: list[str]) -> dict:
+    return {
+        "category": "jpm_hbm_structural",
+        "fact_key": "jpm_hbm_structural_" + (state.get("observed_at") or state.get("as_of") or ""),
+        "headline_ko": "J.P. Morgan HBM 구조적 수급·가격 전망 변화",
+        "fact_bullets": changes,
+        "verdict": (
+            "63%는 2026~2028 비트수요 CAGR이고 54%는 2027 평균판매단가 증가율이므로 서로 다른 기간 기준입니다. "
+            "두 수치를 곱해 2027 매출 2.5배를 J.P. Morgan 확정 전망으로 자동 계산하지 않습니다."
+        ),
+        "verification": "J.P. Morgan 재인용 2곳 이상 또는 직접 출처",
+        "quality": "리서치 재인용 교차",
+        "origin_source": state.get("source") or "J.P. Morgan",
+        "source": state.get("source") or "J.P. Morgan",
+        "published_at_kst": state.get("observed_at") or state.get("as_of") or "",
+        "direct_link": state.get("source_url") or "",
+        "article_text": "",
+        "jpm_hbm_state": state,
+    }
+
+
+def extract_micron_sca_visibility(event: dict) -> dict | None:
+    text = compact_fact_text(event)
+    low = text.lower()
+    if not relevant("micron_sca_visibility", text):
+        return None
+
+    obs: dict = {}
+
+    m = re.search(r"(?:signed|total|총)[^.]{0,80}?([0-9]{1,3})\s*(?:scas?|strategic customer agreements?|전략적 고객 계약)", low, re.I)
+    if not m:
+        m = re.search(r"([0-9]{1,3})\s*(?:signed\s+)?(?:scas?|strategic customer agreements?)", low, re.I)
+    if m:
+        obs["sca_count"] = int(m.group(1))
+
+    m = re.search(r"(?:remaining performance obligations?|\brpo\b)[^$0-9]{0,80}?\$?\s*([0-9]+(?:\.[0-9]+)?)\s*billion", low, re.I)
+    if m:
+        obs["rpo_usd_bn"] = float(m.group(1))
+        obs["rpo_definition"] = "remaining_performance_obligations_sca_defined_pricing"
+
+    m = re.search(r"(?:financial commitments?|customer commitments?)[^$0-9]{0,100}?\$?\s*([0-9]+(?:\.[0-9]+)?)\s*billion", low, re.I)
+    if m:
+        obs["financial_commitments_usd_bn"] = float(m.group(1))
+    if "cash deposit" in low or "cash deposits" in low:
+        if any(k in low for k in ("vast majority", "mostly", "대부분")):
+            obs["financial_commitments_majority_cash_deposits"] = True
+
+    if "take-or-pay" in low or "take or pay" in low:
+        obs["take_or_pay"] = True
+    if any(k in low for k in ("minimum pricing", "floor prices", "price floor", "minimum price")):
+        obs["rpo_basis"] = "committed_volumes_minimum_pricing"
+
+    m = re.search(r"(?:over|more than|greater than|약|약간 넘는)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,120}?(?:revenue)[^.]{0,80}?(?:2030)", low, re.I)
+    if not m:
+        m = re.search(r"(?:revenue)[^.]{0,120}?(?:2030)[^%]{0,100}?(?:over|more than)?\s*([0-9]+(?:\.[0-9]+)?)\s*%", low, re.I)
+    if m:
+        obs["sca_revenue_coverage_through_2030_min_pct"] = float(m.group(1))
+
+    if any(k in low for k in ("three-quarters", "three quarters", "75%")) and any(k in low for k in ("defined pricing", "pricing framework", "가격 프레임워크")):
+        obs["defined_pricing_framework_share_pct"] = 75.0
+
+    m = re.search(r"(?:2027)[^.]{0,140}?(?:more than|over|greater than)[^0-9]{0,20}([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:output|생산량)[^.]{0,80}?(?:committed|확보|약정)", low, re.I)
+    if not m:
+        m = re.search(r"(?:more than|over|greater than)[^0-9]{0,20}([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,120}?(?:output|생산량)[^.]{0,100}?2027", low, re.I)
+    if m:
+        obs["output_committed_2027_min_pct"] = float(m.group(1))
+        obs["output_committed_scope"] = "total_output_sca_and_non_sca"
+
+    if (
+        "2027" in low and "hbm" in low
+        and any(k in low for k in ("vast majority", "대부분", "대다수"))
+        and any(k in low for k in ("completed agreements", "agreements for", "계약", "협의"))
+    ):
+        obs["hbm_2027_bit_supply_stage"] = "vast_majority_agreements_completed"
+
+    if "2028" in low and any(k in low for k in ("majority of discussions", "discussions with customers", "customer discussions", "논의")):
+        obs["customer_discussion_focus_year"] = 2028
+
+    if "2031" in low and any(k in low for k in ("sca", "agreement", "agreements", "계약")):
+        obs["sca_max_year"] = 2031
+
+    if not obs:
+        return None
+    obs.update({
+        "rpo_and_financial_commitments_are_separate": True,
+        "source": event.get("origin_source") or event.get("source") or "Micron 관련 자료",
+        "source_url": event.get("direct_link") or "",
+        "as_of": (event.get("published_at_kst") or "")[:10],
+        "observed_at": event.get("published_at_kst") or "",
+    })
+    return obs
+
+
+def merge_micron_sca_visibility(old: dict, obs: dict) -> dict:
+    merged = dict(old or {})
+    for key, value in obs.items():
+        if value not in (None, ""):
+            merged[key] = value
+    return merged
+
+
+def micron_sca_visibility_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+    for key, label, threshold, unit in (
+        ("rpo_usd_bn", "RPO", 10.0, "십억달러"),
+        ("financial_commitments_usd_bn", "고객 금융약정", 5.0, "십억달러"),
+        ("output_committed_2027_min_pct", "2027 전체 output 커밋 하한", 5.0, "%"),
+        ("sca_revenue_coverage_through_2030_min_pct", "2030년까지 SCA 매출커버리지 하한", 5.0, "%"),
+        ("defined_pricing_framework_share_pct", "가격 프레임워크 확정 SCA 매출비중", 10.0, "%"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if a is not None and b is not None and abs(float(b) - float(a)) >= threshold:
+            changes.append(f"{label} {float(a):g}→{float(b):g}{unit}")
+        elif a is None and b is not None:
+            changes.append(f"{label} {float(b):g}{unit} 신규 확인")
+
+    a, b = old.get("sca_count"), new.get("sca_count")
+    if a is not None and b is not None and int(a) != int(b):
+        changes.append(f"SCA 건수 {int(a)}→{int(b)}건")
+    elif a is None and b is not None:
+        changes.append(f"SCA {int(b)}건 신규 확인")
+
+    for key, label in (
+        ("hbm_2027_bit_supply_stage", "2027 HBM 비트공급 계약 단계"),
+        ("output_committed_scope", "2027 커밋 범위"),
+    ):
+        if old.get(key) != new.get(key) and new.get(key):
+            changes.append(f"{label} {old.get(key) or '미확인'}→{new.get(key)}")
+
+    for key, label in (
+        ("customer_discussion_focus_year", "고객 협의 중심연도"),
+        ("sca_max_year", "SCA 최대 계약연도"),
+    ):
+        if old.get(key) != new.get(key) and new.get(key):
+            changes.append(f"{label} {old.get(key) or '미확인'}→{new.get(key)}")
+    return changes
+
+
+def micron_sca_visibility_event(state: dict, changes: list[str]) -> dict:
+    return {
+        "category": "micron_sca_visibility",
+        "fact_key": "micron_sca_visibility_" + (state.get("observed_at") or state.get("as_of") or ""),
+        "headline_ko": "Micron 장기계약·RPO·고객 예치금 상태 변화",
+        "fact_bullets": changes,
+        "verdict": (
+            "RPO는 구매주문 금액이 아니라 가격 프레임워크가 확정된 SCA의 잔존 이행의무이며 최소가격 기준입니다. "
+            "고객 금융약정 320억달러는 별도 항목이고 대부분 현금예치금이므로 RPO 1500억달러와 합산하지 않습니다. "
+            "2027년 75%+ 커밋은 전체 output 범위이며, HBM은 별도로 '대부분의 2027 비트공급 계약 완료'로 관리합니다."
+        ),
+        "verification": "Micron 공식/실적콜·Reuters 교차",
+        "quality": "공식자료·신뢰보도 교차",
+        "origin_source": state.get("source") or "Micron",
+        "source": state.get("source") or "Micron",
+        "published_at_kst": state.get("observed_at") or state.get("as_of") or "",
+        "direct_link": state.get("source_url") or "",
+        "article_text": "",
+        "micron_sca_state": state,
+    }
+
+
 def extract_citi_hbm_outlook(event: dict) -> dict | None:
     text = compact_fact_text(event)
     low = text.lower()
