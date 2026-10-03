@@ -98,8 +98,7 @@ NEWS_QUERIES = [
 OFFICIAL_SOURCE_HINTS = (
     "openai", "nipa", "과학기술정보통신부", "msit", "kisa", "한국인터넷진흥원",
     "nists", "nist", "cisa", "gov.uk", "aisi", "european commission",
-    "europa.eu", "oecd", "white house", "commerce department", "ntia",
-    "associated press", "ap news",
+    "europa.eu", "oecd", "white house", "whitehouse.gov", "commerce department", "ntia",
     "naver", "lg cns", "s2w", "샌즈랩", "palo alto", "unit 42",
     "crowdstrike", "ibm", "nvidia", "microsoft", "openshell",
     "nemoclaw", "sentry", "sap", "canonical", "red hat",
@@ -325,6 +324,8 @@ WATCH_ENTITIES = (
 )
 
 KNOWN_OFFICIAL_PAGES = {
+    "백악관 Super Intelligence 행정명령": "https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/",
+    "백악관 Super Intelligence 팩트시트": "https://www.whitehouse.gov/fact-sheets/2026/09/fact-sheet-president-donald-j-trump-inaugurates-the-era-of-super-intelligence/",
     "OpenAI 프런티어 학습 Safety Case": "https://openai.com/index/towards-safety-cases-for-frontier-ai-training/",
     "NIPA 사이버보안 특화 AI 사업": "https://nipa.kr/home/bsnsAll/00/detail?bsnsDtlsIemNo=909",
     "NVIDIA OpenShell 개요·지원": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/README.md",
@@ -409,7 +410,7 @@ def official_page_snapshots() -> dict[str, dict]:
             continue
         text = strip_html(raw)
         material = " ".join(re.findall(
-            r".{0,70}(?:B200|H200|256장|32노드|2026|2027|10개월|사업예산|추진일정|중간평가|GPU|OpenShell|Sentry|BlueField-4|BlueField|pricing|price|license|subscription|AI Enterprise|partner|customer|supported agents|Full coverage|Partial coverage|No coverage|production use|security release|Codex|Claude Code|OpenCode|Safety Case|training approval|senior leadership|veto|independent review|audit|external evaluator|procurement|insurance|certification|fail-closed).{0,140}",
+            r".{0,70}(?:B200|H200|256장|32노드|2026|2027|10개월|사업예산|추진일정|중간평가|GPU|OpenShell|Sentry|BlueField-4|BlueField|pricing|price|license|subscription|AI Enterprise|partner|customer|supported agents|Full coverage|Partial coverage|No coverage|production use|security release|Codex|Claude Code|OpenCode|Safety Case|Super Intelligence|Joint Commitment|morally binding|signatory|common standards|best practices|oversight board|board committee|training approval|senior leadership|veto|independent review|audit|auditor|external evaluator|procurement|insurance|certification|codif|legislation|regulation|fail-closed).{0,140}",
             text,
             flags=re.I,
         ))
