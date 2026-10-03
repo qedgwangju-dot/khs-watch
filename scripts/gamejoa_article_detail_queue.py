@@ -62,12 +62,14 @@ def prune_state(state: dict, now: dt.datetime) -> dict:
 
 def plan_details(
     rows: list[dict], state: dict, now: dt.datetime, limit: int, *, respect_cooldown: bool = True,
+    selection_version: int = 0,
 ) -> tuple[list[dict], dict, dict]:
     if limit < 1:
         raise ValueError("Article retrieval budget must be positive")
     pending = prune_state(state, now)
     eligible = []
     cooling = 0
+    selection_refresh = 0
     for row in rows:
         row.pop("_detail_deferred_reason", None)
         key = article_key(row)
@@ -86,10 +88,18 @@ def plan_details(
             and "title/body mismatch" in str(entry.get("last_error") or "")
             and int(entry.get("response_validation_version") or 0) < RESPONSE_VALIDATION_VERSION
         )
-        if respect_cooldown and due and due > now and not revalidate_routes:
+        # A verified receipt is not a selection decision. New rules need a
+        # fresh body once, not an old body or an hour-long successful-fetch hold.
+        revalidate_selection = (
+            selection_version > 0
+            and entry.get("verification_status") == "verified"
+            and int(entry.get("selection_validation_version") or 0) < selection_version
+        )
+        if respect_cooldown and due and due > now and not (revalidate_routes or revalidate_selection):
             cooling += 1
             row["_detail_deferred_reason"] = "retry_cooldown"
             continue
+        selection_refresh += int(revalidate_selection)
         eligible.append(row)
 
     # Keep room for urgent candidates while guaranteeing progress for the
@@ -112,12 +122,16 @@ def plan_details(
             row["_detail_deferred_reason"] = "retrieval_budget"
     return selected, pending, {
         "eligible": len(eligible), "cooling": cooling,
+        "selection_refresh": selection_refresh,
         "fair_slots": max(0, len(selected) - min(priority_slots, len(selected))),
         "deferred": len(rows) - len(selected),
     }
 
 
-def record_attempt(state: dict, row: dict, now: dt.datetime, *, verified: bool, error: str = "") -> None:
+def record_attempt(
+    state: dict, row: dict, now: dt.datetime, *, verified: bool, error: str = "",
+    selection_version: int = 0,
+) -> None:
     entry = state["entries"][article_key(row)]
     attempts = int(entry.get("attempts") or 0) + 1
     failures = 0 if verified else int(entry.get("consecutive_failures") or 0) + 1
@@ -129,6 +143,7 @@ def record_attempt(state: dict, row: dict, now: dt.datetime, *, verified: bool, 
         "verification_status": "verified" if verified else "failed",
         "last_error": error[:350],
         "response_validation_version": RESPONSE_VALIDATION_VERSION,
+        "selection_validation_version": selection_version,
     })
 
 

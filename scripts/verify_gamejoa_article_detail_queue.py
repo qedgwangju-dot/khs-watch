@@ -36,6 +36,61 @@ def fixture(title: str, body: str) -> str:
 
 
 class DetailQueueChecks(unittest.TestCase):
+    def test_changed_selection_rules_refresh_verified_metadata_once_without_reusing_body(self):
+        row = article(0)
+        _, state, _ = queue.plan_details([row], {"entries": {}}, NOW, 1, selection_version=36)
+        queue.record_attempt(state, row, NOW, verified=True, selection_version=36)
+        selected, state, stats = queue.plan_details(
+            [row], state, NOW + dt.timedelta(seconds=1), 1, selection_version=37,
+        )
+        self.assertEqual(selected, [row])
+        self.assertEqual(stats["selection_refresh"], 1)
+        self.assertNotIn("source_body", json.dumps(state))
+        self.assertNotIn('"seen"', json.dumps(state))
+        queue.record_attempt(state, row, NOW + dt.timedelta(seconds=1), verified=True, selection_version=37)
+        selected, _, stats = queue.plan_details(
+            [row], state, NOW + dt.timedelta(seconds=2), 1, selection_version=37,
+        )
+        self.assertFalse(selected)
+        self.assertEqual(stats["selection_refresh"], 0)
+        self.assertEqual(stats["cooling"], 1)
+
+    def test_changed_selection_rules_do_not_bypass_transport_failure_backoff(self):
+        row = article(0)
+        _, state, _ = queue.plan_details([row], {"entries": {}}, NOW, 1, selection_version=36)
+        queue.record_attempt(state, row, NOW, verified=False, error="HTTP 502", selection_version=36)
+        selected, _, stats = queue.plan_details(
+            [row], state, NOW + dt.timedelta(seconds=1), 1, selection_version=37,
+        )
+        self.assertFalse(selected)
+        self.assertEqual(stats["selection_refresh"], 0)
+        self.assertEqual(stats["cooling"], 1)
+
+    def test_new_rules_fetch_fresh_body_in_real_collector_instead_of_using_verified_history(self):
+        row = article(1)
+        _, state, _ = queue.plan_details([row], {"entries": {}}, NOW, 1)
+        queue.record_attempt(
+            state, row, NOW, verified=True, selection_version=radar.market_materiality.VERSION - 1,
+        )
+        body = "<p>기업은 신규 공급계약을 체결하고 생산시설을 확대한다고 발표했다. 계약금액은 1000억원이다.</p>" * 5
+        with tempfile.TemporaryDirectory() as folder, patch.dict(os.environ, {"RADAR_RUN_MODE": "live", "GITHUB_RUN_ID": "new-selection-test"}), \
+                patch.object(queue, "STATE_PATH", Path(folder) / "state.json"), \
+                patch.object(queue, "PENDING_PATH", Path(folder) / "pending.json"), \
+                patch.object(queue, "CACHE_PATH", Path(folder) / "cache.json"), \
+                patch.object(radar.telegram, "load_seen_state", return_value={"seen": {}}), \
+                patch.object(radar.base, "kst_now", return_value=NOW + dt.timedelta(seconds=1)), \
+                patch.object(radar.base, "fetch", return_value=(fixture(row["title"], body), None)) as fetch:
+            queue.save_json(queue.STATE_PATH, state)
+            notes = radar.hydrate_korean_business_details([row], NOW + dt.timedelta(seconds=1))
+            fetch.assert_called_once()
+            self.assertTrue(row["body_verified"])
+            self.assertIn("1000억원", row["source_body"])
+            refreshed = queue.load_state(queue.PENDING_PATH)["entries"][queue.article_key(row)]
+            self.assertEqual(refreshed["selection_validation_version"], radar.market_materiality.VERSION)
+            self.assertNotIn("source_body", refreshed)
+            diagnostic = radar.telegram.selection_diagnostics([], notes, [], [], [], [], True)
+            self.assertEqual(diagnostic["detail_queue"]["selection_refresh"], 1)
+
     def test_old_http_only_validation_failure_is_rechecked_once(self):
         row = article(0)
         selected, state, _ = queue.plan_details([row], {"entries": {}}, NOW, 1)

@@ -80,6 +80,10 @@ Every defect or requested change must follow this sequence:
   work is closed.
 - Source access failures, delayed data, mismatches, and empty selections must be
   reported explicitly; they must not be rewritten as successful news delivery.
+- Successful article-fetch cooldowns are versioned against the selection rules.
+  After a rule change, a previously verified unsent candidate is fetched and
+  checked once with fresh source evidence. This does not reuse earlier bodies,
+  clear seen-state, bypass transport-failure backoff or force a Telegram send.
 - The 06:30 preopen digest must not be emptied by the real-time seen-state.
   It may reuse a qualifying overnight item once in the daily digest, then the
   successful digest send must refresh seen-state so later live polls stay quiet.

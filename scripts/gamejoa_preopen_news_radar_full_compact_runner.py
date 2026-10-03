@@ -6744,6 +6744,7 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
     selected, pending, stats = detail_queue.plan_details(
         candidates, detail_queue.load_state(detail_queue.STATE_PATH), now, KOREAN_BUSINESS_DETAIL_LIMIT,
         respect_cooldown=live_mode,
+        selection_version=market_materiality.VERSION,
     )
     cache = detail_queue.load_run_cache(now, detail_queue.CACHE_PATH)
 
@@ -6789,7 +6790,10 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
         error = receipt["error"]
         valid = bool(not error and detail.get("body_verified"))
         query_time = detail_queue.parse_time(receipt["query_time_kst"]) or now
-        detail_queue.record_attempt(pending, row, query_time, verified=valid, error=error)
+        detail_queue.record_attempt(
+            pending, row, query_time, verified=valid, error=error,
+            selection_version=market_materiality.VERSION,
+        )
         row["article_query_time_kst"] = receipt["query_time_kst"]
         row["_article_detail_cache_hit"] = cache_hit
         if not valid:
@@ -6819,6 +6823,7 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
         "Korean business detail queue: "
         f"source_fetches={len(results) - cache_hits} cache_hits={cache_hits} "
         f"fair_slots={stats['fair_slots']} retry_cooldown={stats['cooling']} "
+        f"selection_refresh={stats['selection_refresh']} "
         f"already_sent_skipped={sent_skipped} nonmarket_skipped={nonmarket_skipped}",
     ]
     for note in notes:
