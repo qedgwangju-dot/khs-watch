@@ -114,6 +114,63 @@ jobs:
               raise RuntimeError("Product identifiers were not preserved")
           PY
 
+      - name: Verify frontier accord classification on push
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          python - <<'PY'
+          from scripts.ai_safety_policy_watch import detect_category, detect_entity, source_official, official_page_source
+
+          cases = [
+              (
+                  "White House Accord on Super Intelligence Joint Commitment on Frontier Responsibilities signatory added",
+                  "프런티어 AI 공동 서약·서명기업 변화",
+                  "백악관·프런티어 AI 공동서약",
+              ),
+              (
+                  "frontier AI external auditor audit frequency audit scope auditor access",
+                  "외부감사 규격·감사기관",
+                  None,
+              ),
+              (
+                  "frontier AI oversight board independent board committee",
+                  "독립 이사회·감독위원회",
+                  None,
+              ),
+              (
+                  "AI accord codified into law procurement requirement insurance requirement",
+                  "자율서약→법·조달·보험 성문화",
+                  None,
+              ),
+          ]
+          for text, expected_category, expected_entity in cases:
+              category = detect_category(text)
+              print(f"ai_policy_accord_case={expected_category} actual={category}")
+              if category != expected_category:
+                  raise RuntimeError(f"Accord category mismatch: expected={expected_category} actual={category}")
+              if expected_entity:
+                  entity = detect_entity(text)
+                  if entity != expected_entity:
+                      raise RuntimeError(f"Accord entity mismatch: expected={expected_entity} actual={entity}")
+
+          for source in ("White House", "U.S. House of Representatives"):
+              if not source_official(source):
+                  raise RuntimeError(f"Official source not recognized: {source}")
+
+          source_cases = {
+              "백악관 Super Intelligence 행정명령": "White House",
+              "미 하원의장실 White House Accord 공식 발표": "U.S. House of Representatives",
+              "OpenAI 프런티어 학습 Safety Case": "OpenAI",
+              "NVIDIA OpenShell 보안정책": "NVIDIA",
+              "NIPA 사이버보안 특화 AI 사업": "NIPA",
+          }
+          for name, expected in source_cases.items():
+              actual = official_page_source(name)
+              print(f"ai_policy_official_source={name} -> {actual}")
+              if actual != expected:
+                  raise RuntimeError(f"Official page source mismatch: {name} -> {actual}, expected {expected}")
+          PY
+
       - name: Run live policy watch
         run: |
           rm -f out/ai_safety_policy_watch_alert_title.txt out/ai_safety_policy_watch_alert.html out/ai_safety_policy_watch_telegram_confirmed.json
