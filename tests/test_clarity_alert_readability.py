@@ -172,7 +172,8 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
             "detail": "BITH issuer product page listed; inception 10/20/2026 | ETHK issuer product page listed; inception 10/20/2026",
         }
         rendered = "\n".join(MOD.build_readable([event]))
-        self.assertIn("발행사 상품목록 등재", rendered)
+        self.assertIn("설정일 확인", rendered)
+        self.assertIn("공식 inception date(설정일) 10/20/2026 확인", rendered)
         self.assertIn("BITH = VS Trust 3x Bitcoin ETF 공식 티커", rendered)
         self.assertIn("ETHK = VS Trust 3x Ether ETF 공식 티커", rendered)
         self.assertIn("첫 5거래일 AUM", rendered)
