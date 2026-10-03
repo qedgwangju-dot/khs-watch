@@ -389,8 +389,8 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         item = {
             "title": "Nvidia DGX Spark 128GB price jumps to $6,950 amid memory crunch",
             "description": (
-                "The 128 GB Founders Edition price increased from $4,699 to $6,950 "
-                "because of memory supply constraints and rising memory costs."
+                "Nvidia jacked the price of its 128 GB DGX Spark on Friday to $6,950. "
+                "The system is amid a memory crunch, and skyrocketing memory prices are to blame for the price adjustment."
             ),
             "source": "The Register",
             "link": "https://www.theregister.com/systems/2026/10/02/nvidia-debuts-4999-dgx-spark-with-half-the-ram-and-storage-amid-memory-crunch/5300622",
