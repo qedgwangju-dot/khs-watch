@@ -416,6 +416,45 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertEqual(obs["sku_128_fe_price_usd"], 6950.0)
         self.assertTrue(obs["sku_128_fe_price_official_confirmed"])
 
+    def test_dgx_spark_official_source_keeps_primary_provenance_and_oem_list(self):
+        item = {
+            "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+            "description": (
+                "Starting Oct. 23, DGX Spark 64GB starts at $4,999 from Acer, ASUS, Dell, "
+                "Gigabyte, HP and MSI. It is available exclusively from manufacturer partners."
+            ),
+            "source": "NVIDIA",
+            "link": "https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/",
+            "published_kst": "2026-10-02T22:00:00+09:00",
+        }
+        obs = w._extract_dgx_spark_memory_price(item)
+        self.assertIsNotNone(obs)
+        self.assertTrue(obs["sku_64_price_official_confirmed"])
+        self.assertEqual(obs["oem_partner_count"], 6)
+        self.assertEqual(obs["oem_partners"], "Acer, ASUS, Dell, Gigabyte, HP, MSI")
+        self.assertEqual(obs["source_rank"], 3)
+
+    def test_dgx_spark_secondary_6950_does_not_become_official_or_replace_primary_source(self):
+        item = {
+            "title": "Nvidia DGX Spark 128GB jumps to $6,950",
+            "description": (
+                "The 128GB Founders Edition price increased to $6,950 amid memory supply constraints."
+            ),
+            "source": "The Register",
+            "link": "https://www.theregister.com/systems/2026/10/02/nvidia-debuts-4999-dgx-spark-with-half-the-ram-and-storage-amid-memory-crunch/5300622",
+            "published_kst": "2026-10-02T23:00:00+09:00",
+        }
+        obs = w._extract_dgx_spark_memory_price(item)
+        self.assertIsNotNone(obs)
+        self.assertFalse(obs.get("sku_128_fe_price_official_confirmed", False))
+        self.assertIn("신뢰보도", obs["sku_128_fe_price_source_kind"])
+        merged = w._merge_typed_state(w.DGX_SPARK_MEMORY_PRICE_BASELINE, obs)
+        self.assertEqual(
+            merged["source_url"],
+            "https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/",
+        )
+        self.assertFalse(merged["sku_128_fe_price_official_confirmed"])
+
     def test_dgx_spark_typed_state_only_alerts_when_tracked_fact_changes(self):
         same = dict(w.DGX_SPARK_MEMORY_PRICE_BASELINE)
         self.assertEqual(w._dgx_spark_memory_price_changes(w.DGX_SPARK_MEMORY_PRICE_BASELINE, same), [])
