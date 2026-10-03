@@ -132,26 +132,49 @@ class BioAlertRegressionTests(unittest.TestCase):
     def test_halozyme_portfolio_ir_update_is_distinct_event(self):
         text = (
             "MSD가 제기해 심리가 개시된 PGR 14건 가운데 7건에서 "
-            "심판 대상 청구항의 특허성이 부정됐습니다."
+            "심판 대상 청구항의 특허성이 부정됐습니다. "
+            "아직 최종 결정이 나오지 않은 나머지 7건도 지난 7월 23일 구술심리에서 다뤄졌습니다."
         )
-        case, patent = halo.get_case(text)
-        self.assertEqual(case, "HALOZYME-PGR-PORTFOLIO-7OF14")
-        self.assertEqual(patent, "")
-        self.assertEqual(halo.classify(text, case), "portfolio_update")
-        rendered = halo.alert(
-            case,
-            patent,
-            "portfolio_update",
+        score = halo.parse_portfolio_scorecard("Halozyme " + text)
+        self.assertIsNotNone(score)
+        item = {
+            "url": "https://www.alteogen.com/kr/sub/ir/information.php?bid=2&idx=374&mode=view&page=1",
+            "published": "",
+            "title": "알테오젠 파트너 MSD, 할로자임 MDASE 여섯 번째, 일곱 번째 특허 무효화 판정",
+            "score": score,
+        }
+        rendered = halo.portfolio_alert(item)
+        self.assertIn("판세 업데이트", rendered)
+        self.assertIn("14건 중 7건", rendered)
+        self.assertIn("7/14건", rendered)
+        self.assertIn("잔여:</b> 7건", rendered)
+
+    def test_halozyme_portfolio_scorecard_key_changes_only_with_real_score_change(self):
+        score_7 = {"total": 14, "won": 7, "pending": 7, "oral_date": "2026-07-23"}
+        score_7_repeat = {"total": 14, "won": 7, "pending": 7, "oral_date": "2026-07-23"}
+        score_8 = {"total": 14, "won": 8, "pending": 6, "oral_date": "2026-07-23"}
+        self.assertEqual(
+            halo.portfolio_scorecard_key(score_7),
+            halo.portfolio_scorecard_key(score_7_repeat),
+        )
+        self.assertNotEqual(
+            halo.portfolio_scorecard_key(score_7),
+            halo.portfolio_scorecard_key(score_8),
+        )
+
+    def test_halozyme_case_timeline_appends_later_review_stage(self):
+        rendered = halo.timeline_line(
+            "PGR2025-00033",
+            "director_review",
             {
-                "url": "https://www.alteogen.com/kr/sub/ir/information.php?bid=2&idx=374&mode=view&page=1",
-                "published": "",
-                "title": "알테오젠 파트너 MSD, 할로자임 MDASE 여섯 번째, 일곱 번째 특허 무효화 판정",
+                "published": "Mon, 19 Oct 2026 12:00:00 GMT",
+                "title": "Director Review",
             },
         )
-        self.assertIn("누적 판세 업데이트", rendered)
-        self.assertIn("14건 중 7건", rendered)
-        self.assertIn("잔여 7건", rendered)
-        self.assertIn("2026-09-28 알테오젠 공식 IR", rendered)
+        self.assertIn("2025-03-07 PGR 청구", rendered)
+        self.assertIn("2025-10-01 심판 개시", rendered)
+        self.assertIn("2026-09-25 최종서면결정", rendered)
+        self.assertIn("2026-10-19 국장 재검토", rendered)
 
     def test_single_runner_health_schema_covers_all_bio_lanes(self):
         source = (ROOT / "scripts" / "bio_single_runner.py").read_text(encoding="utf-8")
