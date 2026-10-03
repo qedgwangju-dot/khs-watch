@@ -537,10 +537,31 @@
       "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNOWJQSXJTSWY4MTF0MjN6ZTlmN3p4UURzNS0tdFNlM0k0RmFDdnNCdzgtelgzOG5MOU10aHcxRzNCS09wTjhfbElxTmx4dWVkM0ZSU2dWU0FYelhaVFg4djNnX1ZtUG9oMFR6bkFBMDFFSlV1NFN1c2VLOTVBR1FjdHpMN3ZxT25wcXVHSF9CZnYtRVBoVWVaZ3puaVBZcDN4S1lUNmQzME5sVjFLRTdtTmN6SDdqQQ?oc=5",
       "published_utc": "2026-10-02T16:14:39Z",
       "first_seen_kst": "2026-10-03T01:39:34+09:00"
+    },
+    "eaa5c4bf5f1a773fc5b5": {
+      "source": "Arab News",
+      "title": "Tanker struck in the Strait of Hormuz - Arab News",
+      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxOTmcwQWVndXloQUhJSnVWSTgzUWZJaS1GLUlpaWl0RVl3eHhMaHVRMl95TVVfSWJNUTJONy1MNUVRTzFUZThGSnYzTk9FalpqcU50NWNDTGpNQnFFOUtwZFIyQVFIOFlzek43QlVIOXpybVdub2JXQy1OOEo4SnZmdjZ6WWlaUG1HVHc?oc=5",
+      "published_utc": "2026-10-02T19:17:00Z",
+      "first_seen_kst": "2026-10-03T14:47:35+09:00"
+    },
+    "89d590db65a0deb112d2": {
+      "source": "Gulf News",
+      "title": "Oil tankers attacked in Hormuz strait: UK maritime agency - Gulf News",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQVFVWaTFVdUE4N2oySEhXLW56RDZYcFBrajBrQmVQXzVUZW5HLVVoZWlqa2IwWkRsaWNlMGxIYjlMblFqYTc1cXBJNDhjdXlhU1lCcWJLT2paQ1AzYVRzZ2xSM0JLSzk4Y0tlcXl6TTNnMUlCSkdlZ0FFNFBfNHMwdGFZQ1psSGx6QWVHSEdjYVFvdEhadEFESVVsTnNSbThtUXfSAbQBQVVfeXFMTV9LTUtEZXkycnIzcVhVVlI1ZE9mSjl2ZjVDQ1FDZXBNUFQ2M0Q2eXU4ZXN0Z3FrTlJjb3BxckRhTVdsa1NTSjJXcWRiMUtvOXFQNHAyUnRuLUZ3MjR4ZlZWTGg0WW9YbFhMN3ZIOUE5OFdkdGhfVGFyZnk1ekNyX05yVUJDdE5LZjFDU3NTc3dIZVhqV3R2MTFzSkNWZlhDMDk4S21wTDc3dW5EWkJnaTBPd3BD?oc=5",
+      "published_utc": "2026-10-03T02:23:25Z",
+      "first_seen_kst": "2026-10-03T14:47:35+09:00"
+    },
+    "a46333a92b0d7f15cce1": {
+      "source": "Reuters",
+      "title": "September LNG shipments through Hormuz hit highest since start of US-Iran war - Reuters",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOV2hrU0N6b3dJbmV3dlJBZVVhbVl5cl9VcC1aNE1TRDhiS2FuZDY0V2xDMGtYUklNQ2MxODZqam5XdVhmek00dllQUnVyUUdNQUx2N0hWREJlUjJ3MWQ5N1hnbGJkdnBKNkJMV2NiT3JpYzhQQVpKOUk2cFF4TEJodnBZUmxfRnMyTHpTTWp6RE10dUdjSHU5eWhOVnNwMkx6VUU0OWJBVGZ0TVR6Tm5hWWVTZlZrU29uR3Y2OVRoMTNxWldU?oc=5",
+      "published_utc": "2026-10-02T07:47:58Z",
+      "first_seen_kst": "2026-10-03T14:47:35+09:00"
     }
   },
   "highest_warning_seen": 124,
-  "last_checked_kst": "2026-10-03T09:31:46+09:00",
+  "last_checked_kst": "2026-10-03T14:47:35+09:00",
   "confirmed_events": {
     "news:2026-08-30:strike:hormuz:1": {
       "warning": null,
@@ -620,6 +641,17 @@
         "Anadolu Ajansı"
       ],
       "first_seen_kst": "2026-10-02T08:48:04+09:00"
+    },
+    "news:2026-10-02:strike:hormuz:1": {
+      "warning": null,
+      "event_kind": "strike",
+      "location": "hormuz",
+      "projectile_count": 1,
+      "sources": [
+        "Arab News",
+        "Anadolu Ajansı"
+      ],
+      "first_seen_kst": "2026-10-03T14:47:35+09:00"
     }
   }
 }
