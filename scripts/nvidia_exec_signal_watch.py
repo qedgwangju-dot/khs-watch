@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-# EDA lane test marker
-
 import hashlib
 import html
 import json
@@ -34,6 +32,16 @@ CAPITAL_RETURN_TRACK_VERSION = 1
 CAPITAL_RETURN_CORRECTION_VERSION = 1
 CAPITAL_RETURN_DEDUPE_VERSION = 1
 SCHEDULE_AUDIT_VERSION = 1
+EDA_MONETIZATION_TRACK_VERSION = 1
+
+SYNOPSYS_INVESTOR_DAY = "https://investor.synopsys.com/news/news-details/2026/Synopsys-Details-Growth-Strategy-and-Long-term-Financial-Model-at-2026-Investor-Day/"
+SYNOPSYS_AMAZON_DEAL = "https://investor.synopsys.com/news/news-details/2026/Synopsys-and-Amazon-Announce-Strategic-Multi-year-IP-Agreement-for-Custom-Silicon-Collaboration-Also-Extends-to-Cloud-and-AI-Powered-Engineering/default.aspx"
+EDA_BASELINE_FACT_KEYS = {
+    "synopsys_fy27_revenue_11_15b",
+    "synopsys_eda_subscription_consumption_outcome_20260930",
+    "synopsys_gpt_synopsys_openai_20260930",
+    "synopsys_aws_ip_1b_plus_royalty_20260930",
+}
 
 OFFICIAL_Q2_TRANSCRIPT = (
     "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-"
@@ -72,12 +80,17 @@ QUERIES = [
     '"NVIDIA" capital return repurchase dividend',
     '"엔비디아" 자사주 매입 승인',
     '"엔비디아" 자사주 매입 1500억 달러',
+    '"Synopsys" EDA AI subscription consumption outcome-based pricing GPT-Synopsys',
+    '"Synopsys" fiscal 2027 revenue guidance 11.15 billion investor day',
+    '"Synopsys" GPT-Synopsys OpenAI revenue share commercialization',
+    '"Synopsys" Amazon AWS 1 billion license royalty custom silicon AOIP',
 ]
 
 TRUSTED = (
     "reuters", "bloomberg", "nvidia", "financial times", "ft.com", "techcrunch",
     "associated press", "ap news", "barron's", "barrons", "marketscreener", "mt newswires",
     "cnbc", "wall street journal", "wsj", "연합뉴스", "yonhap",
+    "synopsys", "investors business daily", "investopedia",
 )
 
 
