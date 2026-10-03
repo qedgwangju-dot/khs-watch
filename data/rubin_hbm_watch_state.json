@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-04T01:32:40+09:00",
+  "updated_at_kst": "2026-10-04T01:37:55+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
@@ -74,12 +74,14 @@
     "c3d140a064e98999aa4ea37b",
     "c66bcba5501ce4414506b0e6",
     "caf236d0d63266773b9b11da",
+    "cdb74aa9fe6a1d10fc0d28c2",
     "d059f8c3e0d742a821065a47",
     "d26bff6649e5357d756fc3fc",
     "d33a5fbc0d352f5813521b17",
     "d438811610a9bd1cc60718b5",
     "d5bb9608cc828c7b4cd00446",
     "d6a7588c8d5d4c51180c5a1a",
+    "d75fa48d506a4de827529a2c",
     "dca2bc8b55a45dd7abd304fb",
     "dff177bae16621437b065202",
     "e05c1927e16110a949b8b797",
@@ -116,13 +118,13 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 2,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1348.28,
-    "date": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-04 01:32 KST · 보조 API 2026-10-03 · 차이 0.07% · 일중 기준시각 차이 가능",
+    "date": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-04 01:38 KST · 보조 API 2026-10-03 · 차이 0.07% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -175,13 +177,13 @@
       "https://insights.trendforce.com/p/weekly-radar-002",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-10-04T01:32:51+09:00",
+    "last_checked_at_kst": "2026-10-04T01:38:07+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-04T01:33:29+09:00",
+    "checked_at_kst": "2026-10-04T01:38:49+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-01T09:43:49+09:00",
@@ -251,7 +253,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-04",
-    "last_checked_at_kst": "2026-10-04T01:33:24+09:00"
+    "last_checked_at_kst": "2026-10-04T01:38:43+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -287,7 +289,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-04",
-    "last_checked_at_kst": "2026-10-04T01:33:26+09:00",
+    "last_checked_at_kst": "2026-10-04T01:38:46+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -331,7 +333,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-04T01:33:27+09:00",
+    "last_checked_at_kst": "2026-10-04T01:38:47+09:00",
     "candidate_count": 0,
     "event_count": 0
   },
@@ -424,8 +426,12 @@
     "as_of": "2026-10-02",
     "note": "Rubin Ultra의 HBM4E/HBM4 8단·12단 선택지 확대는 업계 보도상 평가 단계. NVIDIA 공식 최종 사양·확정 탑재로 승격하지 않음."
   },
-  "samsung_nextgen_hbm_track_version": 1,
+  "samsung_nextgen_hbm_track_version": 2,
   "samsung_nextgen_hbm": {
+    "custom_hbm_stage": "official_sampling_plan",
+    "custom_hbm_sample_start_year": 2027,
+    "custom_hbm_customer_specific": true,
+    "custom_hbm_interface_customization": true,
     "hbm5_customization_stage": "industry_expected",
     "zhbm_stage": "concept_development",
     "zhbm_customer_specific_design": true,
@@ -485,5 +491,36 @@
     "official_source_url": "https://micron.gcs-web.com/node/50991",
     "as_of": "2026-09-30",
     "note": "RPO 1500억달러는 구매주문 총액이 아니라 가격 프레임워크가 확정된 SCA의 미인식 계약가치(최소가격 기준). 320억달러는 별도 고객 금융약정이며 대부분 현금예치금이므로 RPO와 합산 금지. 2027년 75%+는 Micron 전체 output 커밋으로, HBM 전용 수치와 분리."
+  },
+  "nvhbm_architecture_track_version": 1,
+  "nvhbm_architecture": {
+    "nvidia_stage": "official_announced",
+    "feynman_custom_hbm_official": true,
+    "first_collaborator": "Amazon Annapurna Labs",
+    "memory_controller_location": "hbm_base_die",
+    "bandwidth_gain_pct_max": 30.0,
+    "compute_die_area_gain_pct_max": 25.0,
+    "phy_support_area_reduction_pct_max": 67.0,
+    "layout_usable_silicon_gain_pct_max": 80.0,
+    "main_die_silicon_gain_pct_max": 30.0,
+    "hbm_power_reduction_pct_max": 15.0,
+    "xpu_end_to_end_performance_gain_pct_max": 30.0,
+    "one_gw_additional_xpu_headroom_max": 15000,
+    "official_memory_vendors": [],
+    "rubin_hbm_logic_phy_die_share_estimate_pct": 16.0,
+    "feynman_nvhbm_interface_die_share_estimate_pct": 4.0,
+    "samsung_standard_hbm4_phy_width_mm": 8.0,
+    "samsung_standard_hbm4_phy_height_mm": 4.0,
+    "samsung_custom_d2d_width_mm": 8.5,
+    "samsung_custom_d2d_height_mm": 1.5,
+    "samsung_custom_d2d_area_reduction_pct_estimate": 60.15625,
+    "official_source": "NVIDIA NVLink Fusion NVHBM Technical Blog",
+    "official_source_url": "https://developer.nvidia.com/blog/nvidia-nvlink-fusion-brings-nvhbm-to-next-generation-ai-infrastructure/",
+    "feynman_official_source_url": "https://images.nvidia.com/nvimages/gtc/pdf/GTC26_SanJose_Highlights_Final.pdf",
+    "samsung_official_source_url": "https://semiconductor.samsung.com/foundry/application-specific-service/hpc-ai/",
+    "research_source": "SemiAnalysis",
+    "research_source_url": "https://newsletter.semianalysis.com/p/ectc2026",
+    "as_of": "2026-10-03",
+    "note": "NVIDIA 공식 수치와 SemiAnalysis 추정치를 분리 저장. Rubin 16%→Feynman 약 4% 및 Samsung PHY 8×4mm→D2D 8.5×1.5mm(약 60.2% 축소)는 SemiAnalysis 추정·Samsung Hot Chips 자료 인용이며 NVIDIA 공식 다이면적 실측치로 승격하지 않음. NVIDIA의 +25% compute die area와 상세 본문의 +30% main-die silicon은 서로 다른 공식 표현이라 합치지 않음."
   }
 }
