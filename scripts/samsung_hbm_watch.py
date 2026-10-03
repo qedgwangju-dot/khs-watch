@@ -35,7 +35,7 @@ EVENT_STATE_VERSION = 2
 SHARE_TRACK_VERSION = 1
 BROKER_FORECAST_TRACK_VERSION = 3
 CAPITAL_RETURN_TRACK_VERSION = 1
-SAMSUNG_HBM4_PRICE_TRACK_VERSION = 1
+SAMSUNG_HBM4_PRICE_TRACK_VERSION = 2
 SHARE_REVISION_THRESHOLD_PP = 3.0
 BROKER_ASP_REVISION_THRESHOLD_PP = 5.0
 SHARE_ACTUAL_DEVIATION_THRESHOLD_PP = 5.0
@@ -104,17 +104,21 @@ BROKER_FORECAST_BASELINES = {
 }
 
 SAMSUNG_HBM4_PRICE_BASELINE = {
-    "price_multiple_vs_2026": 3.0,
-    "price_yoy_pct": 200.0,
-    "contract_stage": "headline_reported",
+    "price_multiple_vs_hbm3e": 3.0,
+    "price_premium_vs_hbm3e_pct": 200.0,
+    "reference_hbm3e_usd_per_gb": 1.5,
+    "offered_price_band": "mid_to_high_4_usd_per_gb",
+    "contract_stage": "negotiating",
     "stack_height": "unspecified",
     "usd_per_gb": None,
     "customer": "",
-    "body_verified": False,
-    "source": "매일경제 단독 제목",
-    "source_url": "https://www.mk.co.kr/news/business/12167164",
+    "body_verified": True,
+    "source": "매일경제",
+    "source_url": "https://www.mk.co.kr/news/business/12167424",
     "as_of": "2026-10-02",
-    "note": "제목의 3배는 가격 수준 3.0배, 즉 전년 대비 +200%로 저장. 기사 본문 미확보 상태이므로 제시가·협상가·체결가로 승격하지 않음.",
+    "observed_at": "2026-10-02T17:32:00+09:00",
+    "title": "삼성 \"최고성능 HBM4 자신감, 협상력 확대\"… 가격 프리미엄 강공",
+    "note": "3배 이상은 2027 HBM4 제시가격을 현재 주력 HBM3E 약 1.5달러/Gb와 비교한 제품간 가격배수다. 전년 대비 HBM4 가격상승률로 해석하지 않으며, 4달러대 중후반은 제시·협상 가격이지 체결가격이 아니다.",
 }
 
 CAPITAL_RETURN_BASELINE = {
@@ -2144,18 +2148,37 @@ def _hbm4_contract_stage(text: str) -> str:
 
 
 def _hbm4_price_multiple(text: str) -> float | None:
+    """Extract only a price multiple; never reuse performance/efficiency multipliers."""
     value = clean(text)
-    patterns = (
-        r"(?:HBM4)[^.]{0,100}?(?:가격|판매가|공급가|price)[^.]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*배",
-        r"(?:가격|판매가|공급가|price)[^.]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*배[^.]{0,100}?(?:HBM4)",
-        r"(?:HBM4)[^.]{0,100}?([0-9]+(?:\.[0-9]+)?)\s*(?:times|x)\b[^.]{0,80}?(?:price|pricing)",
-    )
-    for pat in patterns:
-        m = re.search(pat, value, re.I)
-        if m:
+    segments = [x.strip() for x in re.split(r"(?<=[.!?。])\s+|[;；]", value) if x.strip()]
+    for segment in segments:
+        low = segment.lower()
+        if not any(k in low for k in ("hbm4", "hbm3e")):
+            continue
+        if not any(k in low for k in ("가격", "판매가", "공급가", "달러", "price", "pricing", "usd", "$")):
+            continue
+        patterns = (
+            r"(?:hbm4)[^.]{0,120}?(?:가격|판매가|공급가|price|pricing)[^.]{0,90}?([0-9]+(?:\.[0-9]+)?)\s*배",
+            r"(?:가격|판매가|공급가|price|pricing)[^.]{0,90}?([0-9]+(?:\.[0-9]+)?)\s*배[^.]{0,120}?(?:hbm4|hbm3e)",
+            r"(?:hbm3e)[^.]{0,100}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,40}?(?:높|비싸|higher|premium)",
+            r"([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,40}?(?:높|비싸|higher|premium)[^.]{0,90}?(?:hbm3e|가격|price)",
+        )
+        for pat in patterns:
+            m = re.search(pat, segment, re.I)
+            if not m:
+                continue
             n = float(m.group(1))
-            if 1.0 <= n <= 10.0:
-                return n
+            if not (1.0 <= n <= 10.0):
+                continue
+            a, b = m.span(1)
+            context = low[max(0, a - 80):min(len(low), b + 80)]
+            price_context = any(k in context for k in ("가격", "판매가", "공급가", "달러", "price", "pricing", "hbm3e", "$"))
+            performance_context = any(k in context for k in ("zhbm", "성능", "전력효율", "전력 효율", "대역폭", "performance", "energy efficiency", "bandwidth"))
+            if not price_context:
+                continue
+            if performance_context and not any(k in context for k in ("가격", "달러", "price", "pricing", "hbm3e")):
+                continue
+            return n
     return None
 
 
@@ -2189,25 +2212,38 @@ def extract_samsung_hbm4_price_observation(e: dict) -> dict | None:
     if not (("samsung" in low or "삼성" in base) and "hbm4" in low and any(k in low for k in ("가격","판매가","공급가","price","pricing","배"))):
         return None
     body = _article_body_text(e.get("direct_link") or "")
-    text = clean(base + " " + body)
-    multiple = _hbm4_price_multiple(text)
-    usd_per_gb = _hbm4_usd_per_gb(text)
-    stage = _hbm4_contract_stage(text if body else base)
-    stack = _hbm4_stack_height(text)
+    price_text = clean(body if body else base)
+    multiple = _hbm4_price_multiple(price_text)
+    usd_per_gb = _hbm4_usd_per_gb(price_text)
+    stage = _hbm4_contract_stage(price_text if body else base)
+    stack = _hbm4_stack_height(price_text)
+
+    title = e.get("title") or ""
+    source = e.get("source") or ""
+    source_url = e.get("direct_link") or ""
+    if "최고성능 HBM4 자신감" in title and "가격 프리미엄" in title:
+        source = "매일경제"
+        source_url = "https://www.mk.co.kr/news/business/12167424"
+    elif "내년 HBM4 가격 3배" in title or "내년 HBM가격 3배" in title:
+        source = "매일경제"
+        source_url = "https://www.mk.co.kr/news/business/12167164"
+
     if multiple is None and usd_per_gb is None and stage == "headline_reported":
         return None
     return {
-        "price_multiple_vs_2026": multiple,
-        "price_yoy_pct": (multiple - 1.0) * 100.0 if multiple is not None else None,
+        "price_multiple_vs_hbm3e": multiple,
+        "price_premium_vs_hbm3e_pct": (multiple - 1.0) * 100.0 if multiple is not None else None,
+        "reference_hbm3e_usd_per_gb": 1.5 if multiple is not None else None,
+        "offered_price_band": "mid_to_high_4_usd_per_gb" if ("4달러대 중후반" in price_text or "4 달러대 중후반" in price_text) else None,
         "contract_stage": stage,
         "stack_height": stack,
         "usd_per_gb": usd_per_gb,
         "customer": "",
         "body_verified": bool(body),
-        "source": e.get("source") or "",
-        "source_url": e.get("direct_link") or "",
+        "source": source,
+        "source_url": source_url,
         "observed_at": e.get("published_at_kst") or "",
-        "title": e.get("title") or "",
+        "title": title,
     }
 
 
@@ -2224,11 +2260,11 @@ def _hbm4_price_candidate(old: dict | None, obs: dict) -> dict:
 def _hbm4_price_changes(old: dict, obs: dict) -> list[str]:
     new = _hbm4_price_candidate(old, obs)
     reasons = []
-    a, b = old.get("price_multiple_vs_2026"), new.get("price_multiple_vs_2026")
+    a, b = old.get("price_multiple_vs_hbm3e"), new.get("price_multiple_vs_hbm3e")
     if a is not None and b is not None and abs(float(b)-float(a)) >= 0.25:
-        reasons.append(f"가격 수준 {float(a):.2f}배→{float(b):.2f}배")
+        reasons.append(f"HBM3E 대비 제시가격 배수 {float(a):.2f}배→{float(b):.2f}배")
     elif a is None and b is not None:
-        reasons.append(f"가격 수준 {float(b):.2f}배 신규 확인")
+        reasons.append(f"HBM3E 대비 제시가격 배수 {float(b):.2f}배 신규 확인")
     a, b = old.get("usd_per_gb"), new.get("usd_per_gb")
     if a is not None and b is not None:
         pct = (float(b)/float(a)-1.0)*100 if float(a) else 0.0
@@ -2247,12 +2283,13 @@ def _hbm4_price_changes(old: dict, obs: dict) -> list[str]:
     return reasons
 
 
-def samsung_hbm4_price_change_event(obs: dict, old: dict, reasons: list[str]) -> dict:
+def samsung_hbm4_price_change_event(obs: dict, old: dict, reasons: list[str], parser_correction: bool = False) -> dict:
     candidate = _hbm4_price_candidate(old, obs)
     return {
-        "id": "samsung_hbm4_price|" + hashlib.sha256(((obs.get("title") or "") + "|" + (obs.get("source_url") or "")).encode()).hexdigest()[:16],
+        "id": ("samsung_hbm4_price_correction|" if parser_correction else "samsung_hbm4_price|") + hashlib.sha256(((obs.get("title") or "") + "|" + (obs.get("source_url") or "")).encode()).hexdigest()[:16],
         "samsung_hbm4_price_change": {"state": candidate, "reasons": reasons},
         "samsung_hbm4_price_state_candidate": candidate,
+        "parser_correction": parser_correction,
         "title": obs.get("title") or "삼성 HBM4 2027 계약가격 변화",
         "description": "",
         "source": obs.get("source") or "",
@@ -2273,16 +2310,24 @@ def samsung_hbm4_price_event_summary(e: dict) -> list[str]:
         "agreed":"가격 합의·확정",
         "contract_signed":"계약 체결",
     }
-    lines = ["<b>삼성 HBM4 2027 계약가격 변화</b>"]
-    if st.get("price_multiple_vs_2026") is not None:
-        lines.append(f"• 가격 수준: 2026년=1.0 기준 <b>{float(st['price_multiple_vs_2026']):.2f}배</b>")
-        lines.append(f"• 전년 대비 환산: <b>+{float(st.get('price_yoy_pct') or 0):.0f}%</b> — 3배는 +200%이며 +300%가 아닙니다.")
+    is_correction = bool(e.get("parser_correction"))
+    lines = ["<b>삼성 HBM4 2027 계약가격 오탐 정정</b>" if is_correction else "<b>삼성 HBM4 2027 계약가격 변화</b>"]
+    if st.get("price_multiple_vs_hbm3e") is not None:
+        lines.append(f"• 가격 기준: 현재 주력 HBM3E 대비 <b>{float(st['price_multiple_vs_hbm3e']):.2f}배 이상</b>")
+        lines.append(f"• 제품간 프리미엄 환산: <b>+{float(st.get('price_premium_vs_hbm3e_pct') or 0):.0f}% 이상</b> — 전년 대비 HBM4 가격상승률이 아닙니다.")
+    if st.get("reference_hbm3e_usd_per_gb") is not None:
+        lines.append(f"• 비교 HBM3E: 약 <b>{float(st['reference_hbm3e_usd_per_gb']):.2f}달러/Gb</b>")
+    if st.get("offered_price_band") == "mid_to_high_4_usd_per_gb":
+        lines.append("• 삼성 HBM4 제시가격: <b>1Gb당 4달러대 중후반</b> — 기사 표현 그대로이며 임의 숫자 범위로 바꾸지 않습니다.")
     if st.get("usd_per_gb") is not None:
-        lines.append(f"• 확인 가격: <b>{float(st['usd_per_gb']):.2f}달러/Gb</b>")
+        lines.append(f"• 정확히 확인된 가격: <b>{float(st['usd_per_gb']):.2f}달러/Gb</b>")
     lines.append(f"• 계약 단계: <b>{labels.get(st.get('contract_stage'), st.get('contract_stage') or '미확인')}</b>")
-    lines.append(f"• 적층 기준: <b>{st.get('stack_height') or '미확인'}</b>")
+    stack_label = st.get("stack_height")
+    lines.append(f"• 적층 기준: <b>{'미확인' if stack_label in (None, '', 'unspecified') else stack_label}</b>")
     lines.append(f"• 본문 직접 확인: <b>{'예' if st.get('body_verified') else '아니오'}</b>")
-    lines.append("• 구분: 제목의 3배만으로 실제 고객 체결가격·LTA 가격으로 승격하지 않습니다.")
+    if is_correction:
+        lines.append("• 정정 사유: 이전 알림의 8배는 zHBM의 '성능 8배'를 HBM4 가격배수로 잘못 읽은 파싱 오류였습니다.")
+    lines.append("• 구분: HBM3E 대비 제시·협상가격과 실제 고객 체결가격·LTA 가격을 절대 같은 값으로 취급하지 않습니다.")
     if ch.get("reasons"):
         lines.append("• 이번 변화: " + html.escape(" · ".join(ch["reasons"])))
     lines += [
@@ -2719,9 +2764,23 @@ def main() -> None:
                 current.setdefault(field, value)
         state["broker_forecast_track_version"] = BROKER_FORECAST_TRACK_VERSION
 
-    if int(state.get("samsung_hbm4_price_track_version") or 0) < SAMSUNG_HBM4_PRICE_TRACK_VERSION:
+    legacy_price_track_version = int(state.get("samsung_hbm4_price_track_version") or 0)
+    legacy_bad_price_multiple = samsung_hbm4_price_state.get("price_multiple_vs_2026")
+    legacy_price_title = samsung_hbm4_price_state.get("title") or ""
+    price_parser_correction_due = bool(
+        legacy_price_track_version < SAMSUNG_HBM4_PRICE_TRACK_VERSION
+        and legacy_bad_price_multiple is not None
+        and float(legacy_bad_price_multiple) >= 5.0
+        and ("최고성능 HBM4 자신감" in legacy_price_title or "가격 프리미엄" in legacy_price_title)
+    )
+    if legacy_price_track_version < SAMSUNG_HBM4_PRICE_TRACK_VERSION:
         seeded_price = dict(SAMSUNG_HBM4_PRICE_BASELINE)
-        seeded_price.update({k: v for k, v in samsung_hbm4_price_state.items() if v not in (None, "")})
+        old_stage = samsung_hbm4_price_state.get("contract_stage")
+        stage_rank = {"headline_reported": 0, "proposed": 1, "negotiating": 2, "final_stage": 3, "agreed": 4, "contract_signed": 5}
+        if old_stage and stage_rank.get(old_stage, -1) > stage_rank.get(seeded_price["contract_stage"], -1):
+            seeded_price["contract_stage"] = old_stage
+        if samsung_hbm4_price_state.get("usd_per_gb") not in (None, ""):
+            seeded_price["usd_per_gb"] = samsung_hbm4_price_state["usd_per_gb"]
         samsung_hbm4_price_state = seeded_price
         state["samsung_hbm4_price_track_version"] = SAMSUNG_HBM4_PRICE_TRACK_VERSION
 
@@ -2863,6 +2922,24 @@ def main() -> None:
             hbm4_price_alert_events.append(samsung_hbm4_price_change_event(latest_hbm4_price_obs, samsung_hbm4_price_state, hbm4_price_changes))
         else:
             samsung_hbm4_price_state = _hbm4_price_candidate(samsung_hbm4_price_state, latest_hbm4_price_obs)
+
+    if price_parser_correction_due:
+        correction_obs = dict(SAMSUNG_HBM4_PRICE_BASELINE)
+        correction_obs.update({
+            "observed_at": datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+            "title": "삼성 HBM4 2027 계약가격 오탐 정정",
+            "source": "매일경제 + 삼성전자 공식자료",
+            "source_url": "https://www.mk.co.kr/news/business/12167424",
+        })
+        correction_reasons = [
+            f"파싱 오탐 정정: {float(legacy_bad_price_multiple):.2f}배→HBM3E 대비 3.00배 이상",
+            "zHBM 성능 8배 수치를 HBM4 가격배수로 잘못 분류한 오류 제거",
+            "가격 비교 기준을 '2026년'이 아니라 '현재 주력 HBM3E 약 1.5달러/Gb'로 정정",
+        ]
+        hbm4_price_alert_events.append(
+            samsung_hbm4_price_change_event(correction_obs, samsung_hbm4_price_state, correction_reasons, parser_correction=True)
+        )
+        samsung_hbm4_price_state = _hbm4_price_candidate(samsung_hbm4_price_state, correction_obs)
 
     structured_capital_event_ids = set()
     latest_capital_obs: dict | None = None
