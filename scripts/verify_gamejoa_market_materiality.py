@@ -113,6 +113,23 @@ DELIVERED_LOCAL_ADMINISTRATION = (
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_actual_food_price_release_keeps_published_index_not_general_cause(self):
+        title = "세계식량가격 석 달째 상승…설탕 6.1%·곡물 5.1%↑"
+        body = ("세계식량가격이 3개월 연속 상승했다. 흑해 지역의 물류 차질과 주요 생산국의 작황 우려로 "
+                "곡물·설탕 가격이 오르면서 전체 지수를 끌어올렸다.\n"
+                "농림축산식품부는 3일 유엔 식량농업기구(FAO)의 9월 세계식량가격지수가 136.0으로 "
+                "전월보다 1.5% 상승했다고 밝혔다. 지난해 같은 달과 비교하면 5.8% 높다.\n"
+                "지수는 지난 6월 130.1에서 7월 131.7, 8월 134.0, 9월 136.0으로 석 달째 상승했다.")
+        core = radar.detailed_article_core(title, body)
+        for fact in ("FAO", "9월", "136.0", "전월보다 1.5%", "상승"):
+            self.assertIn(fact, core)
+        self.assertNotIn("흑해", core)
+        self.assertNotIn("6.1%", core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        self.assertLessEqual(len(core), 100)
+        self.assertEqual(materiality.assess(title, body)["disposition"], "keep")
+        self.assertEqual(radar.source_core_fact_errors({**alert(title, body), "telegram_core_fact": core}), [])
+
     def test_actual_retail_fuel_core_keeps_product_period_price_and_comparison(self):
         title = "전국 주유소 기름값 20주 연속 하락…휘발유 L당 1857원"
         body = ("휘발유 전주보다 0.4원↓…서울 1904원·대구 1829.8원\n"

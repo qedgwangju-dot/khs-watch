@@ -8,7 +8,7 @@ import datetime as dt
 from functools import lru_cache
 
 
-VERSION = 50
+VERSION = 51
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -120,6 +120,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("project_cost", r"(?:LNG|원전|데이터센터|발전소|공장).{0,20}(?:사업비|건설비|사업\s*비용)", r"(?:LNG|원전|데이터센터|발전소|공장).{0,40}(?:사업비|건설비|비용)"),
     ("breadth", r"(?:상승|하락)\s*종목|순환매|쏠림|(?:S&P500|코스피|코스닥|나스닥).{0,30}종목.{0,20}%.{0,15}(?:하락|상승)", r"(?:오른|내린|상승|하락)\s*종목|종목.{0,20}%.{0,15}(?:하락|상승)|순환매|쏠림|순매수|순매도|자금.{0,12}이동"),
     ("retail_fuel", r"주유소.{0,30}(?:기름값|휘발유|경유)|(?:휘발유|경유).{0,15}(?:L당|리터당)", r"(?:휘발유|경유).{0,55}(?:L|리터)(?:\(L\))?\s*당\s*\d[\d,.]*원"),
+    ("commodity_price_release", r"세계\s*식량\s*가격|식량가격지수|FAO.{0,20}(?:식량|지수)", r"(?:세계\s*)?식량\s*가격\s*지수.{0,45}\d"),
     ("energy_supply", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|\bbrent\b|\boil\b|hormuz|tanker", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|항행|통항|brent|\boil\b|hormuz|tanker|shipping"),
     ("bond_yield", r"금리|국채.{0,8}(?:투매|수익률)|bond yields|treasury yields", r"금리|국채.{0,8}수익률|bond yields|treasury yields|interest rates"),
     ("fx", r"환율|약달러|강달러|달러화|원[·/]달러|달러[·/]원|\bndf\b|exchange rate", r"환율|달러화|달러[·/]원|원[·/]달러|\bndf\b|exchange rate|dollar"),
@@ -509,7 +510,7 @@ RULES = (
      r"입찰|시공사|우선협상|procurement|bid|preferred bidder",
      r"제출|선정|선택|낙찰|철회|탈락|확보|submit|select|award|withdraw"),
     ("selling_price_or_cost", ("earnings",),
-     r"판매가격|판매\s*가격|판가|단가|원가|평균판매가격|(?:메모리|HBM|D램|DRAM|낸드|NAND)\s*(?:공급\s*)?가격|\basp\b|selling price|unit price|input cost",
+     r"판매가격|판매\s*가격|판가|단가|원가|평균판매가격|(?:세계\s*)?식량\s*가격\s*지수|(?:메모리|HBM|D램|DRAM|낸드|NAND)\s*(?:공급\s*)?가격|\basp\b|selling price|unit price|input cost",
      r"인상|인하|상승|하락|오르|내리|올랐|내렸|급등|급락|증가|감소|전가|협상|상향|하향|rais|cut|rise|fall|increas|decreas|negotiat"),
     ("project_cost_evaluation", ("earnings",),
      r"(?:LNG|원전|데이터센터|발전소|공장).{0,40}(?:사업비|건설비|사업.{0,15}비용)",
