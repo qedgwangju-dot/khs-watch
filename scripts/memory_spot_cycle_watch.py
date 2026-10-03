@@ -183,16 +183,20 @@ MICRON_SUPPLY_COMMITMENT_BASELINE = {
     "as_of": "2026-10-03",
     "source_rank": 2,
 }
-DGX_SPARK_MEMORY_PRICE_TRACK_VERSION = 1
+DGX_SPARK_MEMORY_PRICE_TRACK_VERSION = 2
 DGX_SPARK_MEMORY_PRICE_BASELINE = {
     "sku_64_memory_gb": 64,
     "sku_64_price_usd": 4999.0,
+    "sku_64_price_official_confirmed": True,
     "sku_64_available_date": "2026-10-23",
     "sku_64_model_limit_b": 100.0,
     "sku_128_memory_gb": 128,
     "sku_128_fe_price_usd": 6950.0,
     "sku_128_fe_price_official_confirmed": False,
+    "sku_128_fe_price_source_kind": "신뢰보도 확인 · NVIDIA 공개 현재가 페이지 직접 확인 전",
+    "sku_128_fe_price_source_url": "https://www.theregister.com/systems/2026/10/02/nvidia-debuts-4999-dgx-spark-with-half-the-ram-and-storage-amid-memory-crunch/5300622",
     "sku_128_prior_price_usd": 4699.0,
+    "sku_128_prior_price_official_confirmed": True,
     "sku_128_launch_price_usd": 3999.0,
     "cluster_units": 2,
     "cluster_memory_gb": 128,
@@ -202,14 +206,18 @@ DGX_SPARK_MEMORY_PRICE_BASELINE = {
     "cluster_interconnect_gbps": 200,
     "memory_type": "LPDDR5X unified memory",
     "memory_supply_cost_pressure": True,
+    "memory_supply_cost_pressure_official_scope": "2026-02-25 공식 $3,999→$4,699 MSRP 인상 원인으로 메모리 공급제약 확인",
+    "current_6950_cause_official_confirmed": False,
     "oem_only_64gb": True,
-    "source": "NVIDIA + The Register",
-    "source_kind": "NVIDIA 공식 64GB 발표 + NVIDIA 공식 2026-02 가격변경 공지 + The Register 2026-10-02 현행 128GB 가격 교차확인",
+    "oem_partner_count": 6,
+    "oem_partners": "Acer, ASUS, Dell, Gigabyte, HP, MSI",
+    "source": "NVIDIA",
+    "source_kind": "NVIDIA 공식 64GB 발표 + NVIDIA 공식 2026-02 가격변경 공지; $6,950 현행가는 별도 신뢰보도",
     "source_url": "https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/",
     "secondary_source_url": "https://www.theregister.com/systems/2026/10/02/nvidia-debuts-4999-dgx-spark-with-half-the-ram-and-storage-amid-memory-crunch/5300622",
     "prior_price_source_url": "https://forums.developer.nvidia.com/t/2-23-2026-price-change-announcement/361713",
     "as_of": "2026-10-02",
-    "source_rank": 2,
+    "source_rank": 3,
 }
 
 TREND_PINNED_PRESS_URLS = [
@@ -1625,6 +1633,8 @@ def _extract_dgx_spark_memory_price(item: dict) -> dict | None:
         ))
     if p64 is not None:
         obs["sku_64_price_usd"] = p64
+        if rank >= 3:
+            obs["sku_64_price_official_confirmed"] = True
 
     p128 = price((
         r"128\s*GB[^.]{0,220}?(?:Founders?\s+Edition|FE)?[^.]{0,120}?(?:raised|increase(?:d)?|jumps?|hike(?:d)?|price(?:d)?|MSRP)[^.]{0,100}?(?:from\s*(?:\$|USD\s*)?[0-9][0-9,]{3,}\s*)?to\s*(?:\$|USD\s*)?([0-9][0-9,]{3,})",
@@ -1636,8 +1646,19 @@ def _extract_dgx_spark_memory_price(item: dict) -> dict | None:
     ))
     if p128 is not None:
         obs["sku_128_fe_price_usd"] = p128
+        obs["sku_128_fe_price_source_url"] = item.get("link") or ""
+        obs["sku_128_fe_price_source_kind"] = (
+            "NVIDIA 공식 확인" if rank >= 3
+            else "신뢰보도 확인 · NVIDIA 공개 현재가 페이지 직접 확인 전"
+        )
         if rank >= 3:
             obs["sku_128_fe_price_official_confirmed"] = True
+            obs["current_6950_cause_official_confirmed"] = bool(
+                any(k in low or k in text for k in (
+                    "memory supply constraints", "memory supply constraint",
+                    "메모리 공급 제약", "内存供应受限"
+                ))
+            )
 
     if re.search(r"(?:Oct(?:ober)?\.?\s*23|10\s*월\s*23\s*일|10月23日)", text, re.I):
         year = (item.get("published_kst") or "2026")[:4]
@@ -1694,6 +1715,22 @@ def _extract_dgx_spark_memory_price(item: dict) -> dict | None:
     if any(k in low for k in ("exclusively from manufacturer partners", "oem partners only", "no founders edition")) or ("OEM" in text and "64GB" in text):
         obs["oem_only_64gb"] = True
 
+    partner_names = []
+    for canonical, aliases in (
+        ("Acer", ("acer", "宏碁")),
+        ("ASUS", ("asus", "华硕")),
+        ("Dell", ("dell", "戴尔")),
+        ("Gigabyte", ("gigabyte", "技嘉")),
+        ("HP", (" hp ", "hewlett-packard", "惠普")),
+        ("MSI", ("msi", "微星")),
+    ):
+        padded = " " + low + " "
+        if any(alias in padded or alias in text for alias in aliases):
+            partner_names.append(canonical)
+    if len(partner_names) >= 4:
+        obs["oem_partner_count"] = len(partner_names)
+        obs["oem_partners"] = ", ".join(partner_names)
+
     if not any(k in obs for k in (
         "sku_64_price_usd", "sku_128_fe_price_usd", "sku_64_available_date",
         "sku_64_model_limit_b", "cluster_memory_gb", "cluster_speedup_x",
@@ -1747,6 +1784,16 @@ def _dgx_spark_memory_price_changes(old: dict, new: dict) -> list[str]:
             changes.append(f"2대 클러스터 Qwen 기준 성능: 최대 {float(b):.1f}x 신규 확인")
         elif abs(float(b) - float(a)) >= 0.1:
             changes.append(f"2대 클러스터 Qwen 기준 성능: 최대 {float(a):.1f}x→{float(b):.1f}x")
+
+    for key, label in (
+        ("oem_partner_count", "DGX Spark 64GB OEM 파트너 수"),
+        ("oem_partners", "DGX Spark 64GB OEM 파트너"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if b is not None and a is not None and a != b:
+            changes.append(f"{label}: {a}→{b}")
+        elif b is not None and a is None:
+            changes.append(f"{label}: {b} 신규 확인")
 
     a, b = old.get("sku_128_fe_price_official_confirmed"), new.get("sku_128_fe_price_official_confirmed")
     if b is not None and a is not None and bool(a) != bool(b):
@@ -2654,10 +2701,23 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
                 + f"2대 64GB 클러스터가 단일 시스템 대비 최대 <b>{float(dgx_spark_state['cluster_speedup_x']):.1f}x</b> — 모든 워크로드의 일반 성능 수치가 아님"
             )
         lines.append("  메모리 층위: DGX Spark 통합 메모리는 <b>LPDDR5X</b>이며 HBM 가격 신호와 별도 추적")
+        if p64 is not None and launch128 is not None:
+            lines.append(
+                "  역사 비교: 새 64GB 시작가는 2025년 128GB 출시가보다 "
+                + f"{(float(p64)/float(launch128)-1)*100:+.1f}% 높음 — 메모리는 절반이지만 시스템 가격은 더 높음"
+            )
         if dgx_spark_state.get("memory_supply_cost_pressure"):
-            lines.append("  원가 신호: 메모리 공급제약·가격 상승이 완제품의 가격 인상과 64GB 신규 SKU로 실제 전가된 상태")
-        lines.append("  의미: 공급사 ASP 전망보다 한 단계 downstream에서 메모리 부족이 제품 가격·용량 구성까지 바꿨는지 확인하는 실물 지표")
-        lines.append("  다음 확인: 10/23 OEM 실제 판매가·재고, NVIDIA 공식 128GB 현행 MSRP 확인, LPDDR5X 계약가, 64GB↔128GB 판매 비중")
+            lines.append(
+                "  공식 원가 신호: NVIDIA는 2026-02-25 Founders Edition MSRP "
+                "$3,999→$4,699 인상 원인을 전세계 메모리 공급제약이라고 명시"
+            )
+        if p128 is not None and not dgx_spark_state.get("sku_128_fe_price_official_confirmed"):
+            lines.append(
+                "  현재 $6,950와 이번 64GB SKU의 직접 인과: 신뢰보도 단계 · "
+                "NVIDIA 공개 현재가 페이지와 이번 $6,950 인상 원인 공식 문구는 아직 미확인"
+            )
+        lines.append("  의미: HBM이 아니라 LPDDR5X 통합 메모리의 부족·가격 압력이 로컬 AI 완제품의 가격·용량 구성까지 번지는지 보는 downstream 실물 지표")
+        lines.append("  다음 확인: 10/23 OEM 실제 판매가·재고, NVIDIA 공식 128GB 현행 MSRP, LPDDR5X 계약가, 64GB↔128GB 판매 비중")
         official = DGX_SPARK_MEMORY_PRICE_BASELINE.get("source_url")
         secondary = DGX_SPARK_MEMORY_PRICE_BASELINE.get("secondary_source_url")
         prior_source = DGX_SPARK_MEMORY_PRICE_BASELINE.get("prior_price_source_url")
