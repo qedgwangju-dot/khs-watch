@@ -1305,14 +1305,23 @@ def main() -> None:
             title = item["title"]
             source = item.get("source") or ""
 
-            # Optical-material alert is intentionally separate from power semiconductors.
-            # Exclude SiC/800V-HVDC-only stories unless they also contain a direct
-            # optical-transceiver / InP / GaAs / CPO / 1.6T / 3.2T connection.
-            if company in {"AXT", "InP Supply Chain", "GaAs Optical Supply Chain"}:
-                power_only = bool(re.search(r"\bSiC\b|silicon carbide|800V|HVDC|power semiconductor", title, re.I))
-                optical_link = bool(re.search(r"\bInP\b|indium phosphide|\bGaAs\b|gallium arsenide|砷化鎵|optical|transceiver|CPO|1\.6T|3\.2T|laser|photodiode", title, re.I))
-                if power_only and not optical_link:
-                    continue
+            # Keep 800V-DC / SiC / GaN power architecture separate from optics.
+            # Higher rack density can drive both power and optical changes, but one does
+            # not prove the other. Power-only stories stay in the existing data-center
+            # power watcher unless the headline contains a direct optical/CPO link.
+            power_only = bool(re.search(
+                r"\bSiC\b|silicon carbide|\bGaN\b|gallium nitride|800\s*V(?:DC)?|HVDC|power semiconductor",
+                title,
+                re.I,
+            ))
+            optical_link = bool(re.search(
+                r"\bInP\b|indium phosphide|\bGaAs\b|gallium arsenide|砷化鎵|optical|transceiver|"
+                r"\bCPO\b|\bNPO\b|1\.6T|3\.2T|laser|photodiode|silicon photonics|\bSiPh\b|COUPE|optical engine",
+                title,
+                re.I,
+            ))
+            if power_only and not optical_link:
+                continue
 
             # Conference demonstrations are discovery signals, not commercial milestones.
             # ECOC/OFC showcase-only headlines are baselined unless they also include
