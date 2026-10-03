@@ -272,7 +272,7 @@ def _overall_direction(flows):
 
 
 def _oas_delta(oas_text):
-    m = re.search(r"직전 대비\s+[↑↓→]\s+([+-]?\d+(?:\.\d+)?)bp", oas_text or "")
+    m = re.search(r"직전(?: 저장값)? 대비\s+[↑↓→]\s+([+-]?\d+(?:\.\d+)?)bp", oas_text or "")
     return float(m.group(1)) if m else None
 
 
@@ -366,6 +366,9 @@ def _validate_compact_report(text, overall_head, y10, hyg_oas):
     if "발행좌수 변화 × 해당일 NAV로 계산한 추정치" not in text:
         raise RuntimeError("ETF flow estimation method disclosure missing")
     hdoas = _oas_delta(hyg_oas)
+    if hdoas is None:
+        rendered = re.search(r"HYG OAS [^\n]*직전(?: 저장값)? 대비\s+↑\s+\+(\d+(?:\.\d+)?)bp", text)
+        hdoas = float(rendered.group(1)) if rendered else None
     if hdoas is not None and hdoas >= 5:
         if "신용 위험: 혼조" in text:
             raise RuntimeError("HYG OAS widening >=5bp cannot be flattened to generic mixed credit")
