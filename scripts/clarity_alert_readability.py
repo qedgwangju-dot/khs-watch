@@ -162,6 +162,10 @@ def investment_lines(event):
 
 def impact_snapshot(event):
     et = clean(event.get("event_type", ""))
+    if FMT.is_volatility_3x_crypto_launch(event):
+        return "시간표 ↑↑ · BTC/ETH 선물수급 ↑/△ · 변동성 ↑ 가능 · COIN 직접매출 →"
+    if FMT.is_sec_3x_crypto_etp_approval(event):
+        return "시간표 ↑ · BTC/ETH 선물수급 ↑ 기대 · 현물 직접수요 → · COIN 직접매출 →"
     if FMT.is_sec_3x_crypto_etp_approval(event):
         return "수급 ↑/△ · 시간표 ↑↑ · BTC/ETH 변동성 ↑ 가능 · COIN 직접매출 →"
     if FMT.is_sec_crypto_custody_2026(event):
@@ -196,11 +200,20 @@ def sentence_bullets(text):
 
 
 def confirmed_fact_lines(event, body_ko):
+    if FMT.is_volatility_3x_crypto_launch(event):
+        facts = []
+        signal = clean(f"{event.get('title','')} {event.get('detail','')}").upper()
+        if "BITH" in signal:
+            facts.append("BITH = VS Trust 3x Bitcoin ETF 공식 티커.")
+        if "ETHK" in signal:
+            facts.append("ETHK = VS Trust 3x Ether ETF 공식 티커.")
+        facts.append("발행사 공식 상품목록 등재는 SEC 상장규칙 승인보다 한 단계 뒤의 상품 출시 신호.")
+        return facts[:3]
     if FMT.is_sec_3x_crypto_etp_approval(event):
         return [
             "SEC Release 34-106577 · File SR-CboeBZX-2026-065 · 승인일 2026-10-02.",
-            "3x Bitcoin ETF·3x Ether ETF는 최근월·차근월 선물 벤치마크의 하루 수익률 3배를 목표.",
-            "SEC는 상품명에 ETF가 들어가지만 법적 분류는 Commodity-Based Trust Shares ETP라고 명시.",
+            "공식 티커 BITH(3x Bitcoin ETF) · ETHK(3x Ether ETF).",
+            "현물 보유형이 아니라 CME 선물 기반·하루 3배·일일 재설정 구조. 장기 누적수익률은 기초자산의 정확한 3배가 아님.",
         ]
     if FMT.is_sec_crypto_custody_2026(event):
         if FMT.rule_stage(event) == "final":
@@ -220,6 +233,8 @@ def confirmed_fact_lines(event, body_ko):
 
 
 def compact_status(event):
+    if FMT.is_volatility_3x_crypto_launch(event):
+        return "🟢 발행사 상품목록 등재 — 실제 출시 단계 진전. 첫 거래일·AUM·거래대금 확인."
     if FMT.is_sec_3x_crypto_etp_approval(event):
         return "🟢 상장규칙 승인 — SEC 승인 완료. 실제 거래개시일·초기 AUM은 별도 확인."
     if FMT.is_sec_crypto_custody_2026(event):
@@ -274,11 +289,17 @@ def pending_lines(event):
 
 def next_check_lines(event):
     et = clean(event.get("event_type", ""))
+    if FMT.is_volatility_3x_crypto_launch(event):
+        return [
+            "공식 inception date(설정일)·첫 거래일",
+            "첫 5거래일 AUM·거래대금·프리미엄/디스카운트",
+            "CME BTC·ETH 선물 미결제약정·거래량 변화",
+        ]
     if FMT.is_sec_3x_crypto_etp_approval(event):
         return [
-            "실제 상장·거래 개시일과 공식 티커",
-            "3x Bitcoin ETF 등록서류 효력 예정일 2026-10-18",
-            "초기 AUM·거래대금·CME 선물 미결제약정 변화",
+            "VS Trust S-1 효력 발생 여부",
+            "Volatility Shares 공식 출시·Cboe 첫 거래일",
+            "BITH·ETHK 초기 AUM·거래대금·CME 선물 미결제약정 변화",
         ]
     if FMT.is_sec_crypto_custody_2026(event):
         if FMT.rule_stage(event) == "final":
