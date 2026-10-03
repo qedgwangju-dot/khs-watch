@@ -343,8 +343,8 @@ def main():
     event_name = os.getenv("GITHUB_EVENT_NAME", "").strip()
     if event_name == "workflow_run":
         minute_of_day = now.hour * 60 + now.minute
-        if not (8 * 60 + 20 <= minute_of_day <= 15 * 60 + 30):
-            print(f"treasury_fallback_noop=true kst={now:%H:%M} reason=outside_0820_1530")
+        if not (8 * 60 + 20 <= minute_of_day <= 16 * 60):
+            print(f"treasury_fallback_noop=true kst={now:%H:%M} reason=outside_0820_1600")
             return
     fx = base.get_usdkrw()
     curve, prev_curve = get_curve_pair()
@@ -579,14 +579,16 @@ def main():
         json.dumps(fingerprint_payload, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
     ).hexdigest()
     last_delivery = state.get("last_delivery") or {}
+    event_name = os.getenv("GITHUB_EVENT_NAME", "").strip()
     if (
-        os.getenv("GITHUB_EVENT_NAME", "").strip() in ("schedule", "workflow_run")
-        and last_delivery.get("data_fingerprint") == data_fingerprint
+        event_name != "workflow_dispatch"
+        and last_delivery.get("treasury_date") == curve["date"]
     ):
         base.save_state(state)
         print(
             "duplicate_delivery_suppressed=true "
-            f"treasury_date={curve['date']} fingerprint={data_fingerprint[:12]}"
+            f"event={event_name or 'unknown'} treasury_date={curve['date']} "
+            f"fingerprint={data_fingerprint[:12]} last_message_ids={last_delivery.get('message_ids')}"
         )
         return
 
