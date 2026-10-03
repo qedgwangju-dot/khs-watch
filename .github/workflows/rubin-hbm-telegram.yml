@@ -13,6 +13,8 @@ on:
       - "scripts/abf_cpu_monetization_watch.py"
       - "scripts/ai_inference_structure_watch.py"
       - "data/ai_inference_structure_watch_state.json"
+      - "scripts/ai_server_physical_bottleneck_watch.py"
+      - "data/ai_server_physical_bottleneck_watch_state.json"
       - "scripts/skhynix_us_memory_watch.py"
       - "scripts/samsung_hbm_watch.py"
       - "scripts/hbm_delivery.py"
@@ -70,7 +72,7 @@ jobs:
         run: |
           set -o pipefail
           mkdir -p out
-          python -m py_compile scripts/hbm_delivery.py scripts/currency_krw_guard.py scripts/hbm_memory_axes.py scripts/samsung_hbm_watch.py scripts/rubin_hbm_watch.py scripts/skhynix_us_memory_watch.py scripts/ai_component_leadtime_watch.py scripts/agentic_cpu_watch.py scripts/samsung_electromechanics_cpu_watch.py scripts/abf_cpu_monetization_watch.py scripts/ai_inference_structure_watch.py scripts/solidigm_ipo_watch.py scripts/tsmc_advanced_packaging_watch.py scripts/tsmc_leading_node_watch.py
+          python -m py_compile scripts/hbm_delivery.py scripts/currency_krw_guard.py scripts/hbm_memory_axes.py scripts/samsung_hbm_watch.py scripts/rubin_hbm_watch.py scripts/skhynix_us_memory_watch.py scripts/ai_component_leadtime_watch.py scripts/agentic_cpu_watch.py scripts/samsung_electromechanics_cpu_watch.py scripts/abf_cpu_monetization_watch.py scripts/ai_inference_structure_watch.py scripts/ai_server_physical_bottleneck_watch.py scripts/solidigm_ipo_watch.py scripts/tsmc_advanced_packaging_watch.py scripts/tsmc_leading_node_watch.py
           python -m unittest discover -s tests -p 'test_hbm*.py' -v 2>&1 | tee out/hbm_regression_tests.txt
 
       - name: Validate existing Telegram destination without sending
@@ -90,7 +92,7 @@ jobs:
           out = pathlib.Path('out')
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as summary:
               summary.write('## HBM 실행·저장 확인\n\n')
-              for name in ('hbm_begin_summary.json', 'hbm_delivery_summary.json', 'hbm_memory_axes_status.json', 'samsung_hbm_delivery_receipt.json', 'rubin_hbm_delivery_receipt.json', 'skhynix_hbm_delivery_receipt.json', 'solidigm_hbm_delivery_receipt.json', 'tsmc_foundry_hbm_delivery_receipt.json', 'tsmc_package_hbm_delivery_receipt.json', 'tsmc_cross_hbm_delivery_receipt.json', 'inference_structure_hbm_delivery_receipt.json'):
+              for name in ('hbm_begin_summary.json', 'hbm_delivery_summary.json', 'hbm_memory_axes_status.json', 'samsung_hbm_delivery_receipt.json', 'rubin_hbm_delivery_receipt.json', 'skhynix_hbm_delivery_receipt.json', 'solidigm_hbm_delivery_receipt.json', 'tsmc_foundry_hbm_delivery_receipt.json', 'tsmc_package_hbm_delivery_receipt.json', 'tsmc_cross_hbm_delivery_receipt.json', 'inference_structure_hbm_delivery_receipt.json', 'server_bottleneck_hbm_delivery_receipt.json'):
                   p = out / name
                   if p.exists():
                       value = json.loads(p.read_text(encoding='utf-8'))
@@ -140,6 +142,8 @@ jobs:
             out/tsmc_hbm_cross_status.json
             out/ai_inference_structure_alert.html
             out/ai_inference_structure_pending_state.json
+            out/ai_server_physical_bottleneck_alert.html
+            out/ai_server_physical_bottleneck_pending_state.json
             out/hbm_memory_axes_status.json
             out/hbm_begin_summary.json
             out/hbm_regression_tests.txt
