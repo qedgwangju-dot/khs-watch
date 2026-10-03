@@ -1623,6 +1623,8 @@ def _extract_dgx_spark_memory_price(item: dict) -> dict | None:
 
     p128 = price((
         r"128\s*GB[^.]{0,220}?(?:Founders?\s+Edition|FE)?[^.]{0,120}?(?:raised|increase(?:d)?|jumps?|hike(?:d)?|price(?:d)?|MSRP)[^.]{0,100}?(?:from\s*(?:\$|USD\s*)?[0-9][0-9,]{3,}\s*)?to\s*(?:\$|USD\s*)?([0-9][0-9,]{3,})",
+        r"(?:raised|jacked|increased|hiked|bumped)[^.]{0,120}?(?:price|msrp)[^.]{0,120}?128\s*GB[^.]{0,120}?to\s*(?:\$|USD\s*)?([0-9][0-9,]{3,})",
+        r"128\s*GB[^.]{0,160}?(?:now\s+costs?|now\s+priced\s+at|current(?:ly)?\s+(?:costs?|priced\s+at))[^$0-9]{0,40}(?:\$|USD\s*)?([0-9][0-9,]{3,})",
         r"128\s*GB[^.]{0,220}?(?:Founders?\s+Edition|FE)?[^.]{0,120}?(?:涨价至|售价|价格)[^$0-9]{0,40}(?:\$|USD\s*)?([0-9][0-9,]{3,})",
         r"(?:\$|USD\s*)([0-9][0-9,]{3,})[^.]{0,100}?128\s*GB",
         r"128\s*GB[^.]{0,180}?([0-9][0-9,]{3,})\s*(?:USD|dollars?|美元)",
