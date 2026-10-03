@@ -209,6 +209,103 @@ UKMTO_DIRECT_PAGES = (
 _original_official_scan = watcher.official_scan
 _original_news_scan = watcher.news_scan
 
+SOURCE_DOMAINS = {
+    "Reuters": "reuters.com",
+    "Associated Press": "apnews.com",
+    "AP News": "apnews.com",
+    "Anadolu Ajansı": "aa.com.tr",
+    "Anadolu Agency": "aa.com.tr",
+    "Arab News": "arabnews.com",
+    "Gulf News": "gulfnews.com",
+    "The Maritime Executive": "maritime-executive.com",
+    "Lloyd’s List": "lloydslist.com",
+    "Lloyd's List": "lloydslist.com",
+    "TradeWinds": "tradewindsnews.com",
+    "RFE/RL": "rferl.org",
+    "Radio Free Europe/Radio Liberty": "rferl.org",
+    "Oman News Agency": "omannews.gov.om",
+    "U.S. Central Command": "centcom.mil",
+    "CENTCOM": "centcom.mil",
+}
+
+
+def _bing_rss(query, news=False):
+    base = "https://www.bing.com/news/search" if news else "https://www.bing.com/search"
+    url = base + "?" + urllib.parse.urlencode({"q": query, "format": "rss"})
+    body, _, _ = watcher.fetch(url, "application/rss+xml,application/xml,text/xml,*/*")
+    root = __import__("xml.etree.ElementTree", fromlist=["ElementTree"]).fromstring(body)
+    rows = []
+    for item in root.findall(".//item"):
+        rows.append({
+            "title": watcher.clean(item.findtext("title") or ""),
+            "url": (item.findtext("link") or "").strip(),
+            "description": watcher.clean(item.findtext("description") or ""),
+        })
+    return rows
+
+
+def _strip_source_suffix(title, source):
+    value = str(title or "").strip()
+    suffix = " - " + str(source or "").strip()
+    if suffix.strip() != "-" and value.lower().endswith(suffix.lower()):
+        value = value[:-len(suffix)].rstrip()
+    return value
+
+
+def _resolve_direct_publisher_url(item):
+    current = str(item.get("url") or "")
+    source = str(item.get("source") or "")
+    domain = SOURCE_DOMAINS.get(source)
+    if not domain:
+        return current
+    if domain in urllib.parse.urlparse(current).netloc.lower():
+        return current
+
+    title = _strip_source_suffix(item.get("title"), source)
+    queries = [
+        f'site:{domain} "{title}"',
+        f'site:{domain} {title[:140]}',
+    ]
+    for query in queries:
+        try:
+            for hit in _bing_rss(query, news=False):
+                link = hit.get("url") or ""
+                if domain in urllib.parse.urlparse(link).netloc.lower():
+                    return link
+        except Exception:
+            continue
+    return current
+
+
+def _official_index_max_warning():
+    """공식 UKMTO 도메인의 검색 색인에서 최신 경보번호 힌트만 얻는다.
+
+    이 값은 직접원문으로 승격하지 않고, 다음 공식 PDF 후보 번호를 찾는 데만 사용한다.
+    """
+    max_no = 0
+    hints = []
+    for query in (
+        'site:ukmto.org "UKMTO #" "Strait of Hormuz"',
+        'site:ukmto.org "UKMTO #" tanker projectile',
+        'site:ukmto.org "UKMTO WARNING" Hormuz',
+    ):
+        try:
+            hits = _bing_rss(query, news=False)
+        except Exception:
+            continue
+        for hit in hits:
+            text = " ".join([hit.get("title") or "", hit.get("description") or "", hit.get("url") or ""])
+            for m in re.finditer(r"UKMTO\s+#?(\d{2,3})|WARNING[_\s-]+(\d{2,3})[-_]26", text, flags=re.I):
+                number = int(m.group(1) or m.group(2))
+                max_no = max(max_no, number)
+                date_match = re.search(
+                    r"\b(\d{1,2})\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+2026\b",
+                    text,
+                    flags=re.I,
+                )
+                hints.append((number, date_match.group(0) if date_match else None))
+    return max_no, hints
+
 
 def _decode_html(body):
     return body.decode("utf-8", errors="replace")
@@ -298,7 +395,13 @@ def robust_official_scan(highest):
             "lane": "official-direct-pdf",
         }
 
+    # UKMTO 공식 도메인의 검색색인은 직접원문으로 사용하지 않고,
+    # 최신 경보번호를 찾아 다음 직접 PDF 후보를 좁히는 용도로만 사용한다.
+    index_max, _ = _official_index_max_warning()
+    max_seen = max(max_seen, index_max)
+
     # 기존 guessed-PDF 경로는 마지막 보조수단으로 유지한다.
+    # index_max가 147이면 148번부터 당일/전일 공식 PDF를 직접 시도한다.
     legacy, legacy_max, legacy_errors, legacy_ok = _original_official_scan(max_seen)
     page_ok = page_ok or legacy_ok
     errors.extend(legacy_errors)
@@ -343,7 +446,8 @@ def _enrich_news_item(item):
     row["article_text"] = ""
     row["resolved_url"] = row.get("url")
     try:
-        text, final_url = watcher.fetch_source(row.get("url") or "")
+        direct_url = _resolve_direct_publisher_url(row)
+        text, final_url = watcher.fetch_source(direct_url)
         text = watcher.clean(text)[:80_000]
         if text:
             row["article_text"] = text
