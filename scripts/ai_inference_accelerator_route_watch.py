@@ -343,7 +343,9 @@ def official_page_snapshots() -> dict[str, dict]:
     out = {}
     keyword = re.compile(
         r"(?i)(?:GPT-6\.1 Sol|GPT-6 Astra|GPT-5\.6 Sol|Ultrafast|Cerebras|NVIDIA|750\s*MW|tranche|"
-        r"tokens? per second|tokens?/s|service[_ -]?tier|batch(?: size)?|pricing|price|capacity|inference stack)"
+        r"tokens? per second|tokens?/s|service[_ -]?tier|batch(?: size)?|pricing|price|capacity|inference stack|"
+        r"Synopsys|Autopilot|AgentEngineer|consumption[-\s]*based|subscription|FY\s*2027|11\.15\s*billion|"
+        r"GPT[-\s]*Synopsys|Amazon|AWS|AOIP|Design Automation|EDA|operating margin)"
     )
     for name, url in OFFICIAL_PAGES.items():
         try:
@@ -598,7 +600,7 @@ def main() -> int:
                     "query":"official page change",
                     "title":f"{name} 공식 페이지 핵심 내용 변경",
                     "description":snap.get("material",""),
-                    "source":"OpenAI",
+                    "source":"Synopsys" if name.startswith("Synopsys") else "OpenAI",
                     "url":snap["url"],
                     "published_at":now.isoformat(),
                 })
