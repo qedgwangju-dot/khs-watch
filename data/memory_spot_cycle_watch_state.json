@@ -403,11 +403,17 @@
       "source": "moomoo.com",
       "published_kst": "2026-10-01T18:57:07+09:00",
       "first_seen_kst": "2026-10-03T06:25:48+09:00"
+    },
+    "88f50a6c20de7c40089102c8": {
+      "title": "Micron Warns Memory Shortage Will Get Worse Through 2028 - techrepublic.com",
+      "source": "techrepublic.com",
+      "published_kst": "2026-10-02T21:54:48+09:00",
+      "first_seen_kst": "2026-10-03T14:53:45+09:00"
     }
   },
-  "updated_at_kst": "2026-10-03T09:48:52+09:00",
-  "last_scan_count": 27,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-10-03T14:53:45+09:00",
+  "last_scan_count": 28,
+  "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -452,20 +458,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-03T01:56:23+09:00",
+  "last_successful_delivery_kst": "2026-10-03T14:53:50+09:00",
   "telegram_message_ids": [
-    215
+    218
   ],
-  "telegram_message_id": 215,
+  "telegram_message_id": 218,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      215
+      218
     ],
-    "confirmed_at_kst": "2026-10-03T01:56:23+09:00",
-    "alert_signature": "218bd4bed9fc00807941fe9c1cabba8f9a1c8462a71a7c9abc814545282a4454"
+    "confirmed_at_kst": "2026-10-03T14:53:50+09:00",
+    "alert_signature": "a3976259eff813c903ab7d9bc13b5bf216356257a2eb49c984d1c3334417ebe7"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
