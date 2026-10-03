@@ -409,10 +409,16 @@
       "source": "techrepublic.com",
       "published_kst": "2026-10-02T21:54:48+09:00",
       "first_seen_kst": "2026-10-03T14:53:45+09:00"
+    },
+    "ad36fac998dcfdf938bfac32": {
+      "title": "마이크론(MU) 2026 회계연도 4분기 실적 발표 컨퍼런스 콜: 사상 최대 매출 및 메모리 공급 부족 전망 - TradingKey",
+      "source": "TradingKey",
+      "published_kst": "2026-10-01T08:31:41+09:00",
+      "first_seen_kst": "2026-10-03T16:27:13+09:00"
     }
   },
-  "updated_at_kst": "2026-10-03T14:53:45+09:00",
-  "last_scan_count": 28,
+  "updated_at_kst": "2026-10-03T16:27:13+09:00",
+  "last_scan_count": 29,
   "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
@@ -458,20 +464,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-03T14:53:50+09:00",
+  "last_successful_delivery_kst": "2026-10-03T16:27:17+09:00",
   "telegram_message_ids": [
-    218
+    221
   ],
-  "telegram_message_id": 218,
+  "telegram_message_id": 221,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      218
+      221
     ],
-    "confirmed_at_kst": "2026-10-03T14:53:50+09:00",
-    "alert_signature": "a3976259eff813c903ab7d9bc13b5bf216356257a2eb49c984d1c3334417ebe7"
+    "confirmed_at_kst": "2026-10-03T16:27:17+09:00",
+    "alert_signature": "9cf25dbe8c1c55b15619c10482f4fc9fd5d9a7fd6696e513b8e103e9323e7037"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -532,19 +538,28 @@
     "as_of": "2026-09-30",
     "source_rank": 2
   },
-  "micron_supply_commitment_track_version": 2,
+  "micron_supply_commitment_track_version": 3,
   "micron_supply_commitment": {
     "commitment_year": 2027,
     "output_committed_min_pct": 75.0,
-    "sca_revenue_share_2030_pct": 50.0,
+    "sca_count": 26,
+    "sca_revenue_share_2030_pct": 35.0,
+    "sca_pricing_framework_pct": 75.0,
+    "sca_end_year": 2031,
+    "rpo_usd_bn": 150.0,
+    "customer_commitments_usd_bn": 32.0,
+    "fq1_27_revenue_usd_bn": 61.5,
+    "fq1_27_non_gaap_gm_pct": 86.25,
+    "fq1_27_non_gaap_opex_usd_bn": 2.06,
+    "fq1_27_implied_op_usd_bn": 50.98,
     "memory_shortage_through_year": 2028,
     "nand_shortage_through_year": 2028,
     "supply_tighter_2027_2028": true,
-    "source": "Micron CEO earnings call via Investing.com",
+    "source": "Micron Q4 FY2026 call + official earnings release",
     "source_kind": "경영진 컨퍼런스콜 발언 재전사 + Micron 공식 실적자료 교차확인",
     "source_url": "https://www.investing.com/news/transcripts/earnings-call-transcript-micron-tops-q4-2026-estimates-as-demand-stays-hot-93CH-4925992",
     "official_context_url": "https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Fiscal-Fourth-Quarter-and-Full-Year-2026-Results/default.aspx",
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-03",
     "source_rank": 2
   }
 }
