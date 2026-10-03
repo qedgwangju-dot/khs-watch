@@ -2,8 +2,8 @@
   "initialized": true,
   "source_version": 2,
   "bill": "H.R. 3633 — Digital Asset Market Clarity Act",
-  "last_checked_kst": "2026-10-04T01:11:28+09:00",
-  "last_checked_et": "2026-10-03T12:11:28-04:00",
+  "last_checked_kst": "2026-10-04T01:13:45+09:00",
+  "last_checked_et": "2026-10-03T12:13:45-04:00",
   "seen_event_keys": [
     "06ee00dbb8854130493bb2e968b1cacab9ca367fe3cc63799c3a34b54881ae9c",
     "084ee027ab8ec15b4074b4fa1b60022844e2dc9f19a270999c1f2f23b0a34a53",
@@ -86,7 +86,7 @@
     "fae400f86e5c7c7497de7708637dc5b3f87d05441c853b65e3742939ae233f84",
     "fe2906beaa0c20857bcf830328fd25f77105af8385b0204d7b2829adad3b2827"
   ],
-  "event_count": 57,
+  "event_count": 56,
   "source_errors": [
     "SEC Newsroom crypto orders: fetch failed: https://www.sec.gov/newsroom: HTTP Error 403: Forbidden",
     "SEC/Cboe exchange orders: https://www.sec.gov/rules-regulations/self-regulatory-organization-rulemaking/national-securities-exchanges: fetch failed: https://www.sec.gov/rules-regulations/self-regulatory-organization-rulemaking/national-securities-exchanges: HTTP Error 403: Forbidden || https://www.sec.gov/taxonomy/term/193081?order=field_publish_date&page=0&sort=desc: fetch failed: https://www.sec.gov/taxonomy/term/193081?order=field_publish_date&page=0&sort=desc: HTTP Error 403: Forbidden"
