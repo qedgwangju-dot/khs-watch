@@ -224,7 +224,7 @@ def get_repo_stress():
     sign2 = "+" if move_bp >= 0 else ""
     return (
         f"Repo: {state} | SOFR {s:.2f}% / TGCR {t:.2f}% | "
-        f"스프레드 {sign1}{spread_bp:.0f}bp | SOFR 전일 {sign2}{move_bp:.0f}bp | {d}"
+        f"스프레드 {sign1}{spread_bp:.0f}bp | SOFR 전일 {sign2}{move_bp:.0f}bp | 기준 {d} (최신 공식 공표값)"
     )
 
 
@@ -271,17 +271,22 @@ def _overall_direction(flows):
     return "혼조·추가 확인", "국채 만기 이동과 회사채 위험선호가 한 방향으로 완전히 정렬되지는 않음"
 
 
-def _credit_summary(lqd_flow, hyg_flow, lqd_oas, hyg_oas):
-    oas_widen = "↑" in lqd_oas or "↑" in hyg_oas
-    if _outflow(lqd_flow) and _outflow(hyg_flow) and not oas_widen:
-        return "선제 위험축소·신용경색 미확인", "LQD·HYG 자금은 빠지지만 OAS는 급확대하지 않아 아직 신용경색 단계는 아님"
-    if _outflow(hyg_flow) and oas_widen:
-        return "신용위험 경계 강화", "HYG 자금유출과 OAS 확대가 겹쳐 기업 신용위험이 실제 가격에 반영되기 시작"
-    if _inflow(lqd_flow) and _inflow(hyg_flow) and oas_widen:
-        return "혼조 — 자금유입·스프레드 확대", "LQD·HYG에는 자금이 유입됐지만 OAS가 확대돼 위험선호와 신용가격 신호가 엇갈림"
-    if _inflow(lqd_flow) and _inflow(hyg_flow):
-        return "신용 위험선호 회복 확인", "LQD·HYG 자금유입과 OAS 안정이 함께 확인됨"
-    return "혼조", "자금흐름과 신용스프레드가 같은 방향인지 추가 확인"
+def _oas_delta(oas_text):
+    m = re.search(r"직전 대비\s+[↑↓→]\s+([+-]?\d+(?:\.\d+)?)bp", oas_text or "")
+    return float(m.group(1)) if m else None
+
+
+def _credit_alert_line(hyg_flow, hyg_oas):
+    hdoas = _oas_delta(hyg_oas)
+    if hdoas is None or hdoas < 5:
+        return None
+    if hdoas >= 10:
+        if _outflow(hyg_flow):
+            return f"현재 신용경보: HYG OAS {hdoas:+.1f}bp 급확대 + HYG 자금유출 → 신용위험 확대 경계"
+        return f"현재 신용경보: HYG OAS {hdoas:+.1f}bp 급확대 → 신용위험 경계 강화. HYG 자금은 유입이라 전면 위험회피 확정은 아님"
+    if _outflow(hyg_flow):
+        return f"현재 신용경보: HYG OAS {hdoas:+.1f}bp 확대 + HYG 자금유출 → 신용위험 경계 강화"
+    return f"현재 신용경보: HYG OAS {hdoas:+.1f}bp 확대 → 신용가격 악화. 자금유입과 신용가격 신호가 엇갈림"
 
 
 def _fx_rate_from_line(fx_line):
@@ -306,7 +311,7 @@ def _fmt_krw_trillion(value_trillion):
     return f"약 {value_trillion:,.2f}조원"
 
 
-def _next_alert(y10, y30):
+def _next_alert(y10, y30, hyg_flow, hyg_oas):
     parts = []
     if y10 is not None:
         if y10 < 5.00:
@@ -324,15 +329,21 @@ def _next_alert(y10, y30):
             parts.append("30년물 JPM 6.00% 상향")
         else:
             parts.append("30년물 JPM 5.25% 하향 반전")
-    parts.extend([
-        "Repo 주의·스트레스 전환",
-        "HYG 자금유출 + OAS 일간 +5bp 이상",
-        "R>G 전환",
-    ])
+    parts.append("Repo 주의·스트레스 전환")
+
+    hdoas = _oas_delta(hyg_oas)
+    if hdoas is not None and hdoas >= 5:
+        if _inflow(hyg_flow):
+            parts.append("HYG OAS 추가 확대 또는 HYG 자금유출 전환")
+        else:
+            parts.append("HYG OAS 추가 확대 지속 여부")
+    else:
+        parts.append("HYG 자금유출 + OAS 일간 +5bp 이상")
+    parts.append("R>G 전환")
     return "다음 경보: " + " · ".join(parts)
 
 
-def _validate_compact_report(text, overall_head, y10):
+def _validate_compact_report(text, overall_head, y10, hyg_oas):
     expected = f"전체 방향: {overall_head}"
     if expected not in text:
         raise RuntimeError(f"final report overall mismatch: expected {expected}")
@@ -343,6 +354,18 @@ def _validate_compact_report(text, overall_head, y10):
     refi = next((line for line in text.splitlines() if line.startswith("차환:")), "")
     if "$" in refi and "원" not in refi:
         raise RuntimeError("refinancing foreign amounts are missing KRW conversion")
+    if "$" in refi and "Bills에 +75bp" not in refi:
+        raise RuntimeError("refinancing +75bp cost must state that it applies to Bills")
+    if "발행좌수 변화 × 해당일 NAV로 계산한 추정치" not in text:
+        raise RuntimeError("ETF flow estimation method disclosure missing")
+    hdoas = _oas_delta(hyg_oas)
+    if hdoas is not None and hdoas >= 5:
+        if "신용 위험: 혼조" in text:
+            raise RuntimeError("HYG OAS widening >=5bp cannot be flattened to generic mixed credit")
+        if "현재 신용경보:" not in text:
+            raise RuntimeError("active HYG OAS alert is missing from final report")
+        if "HYG 자금유출 + OAS 일간 +5bp 이상" in text:
+            raise RuntimeError("already-triggered HYG OAS threshold repeated as a future alert")
 
 
 def _compact_report(raw_text):
@@ -351,12 +374,8 @@ def _compact_report(raw_text):
     overall_head, overall_reason = readable._direction_pair("전체 자금 방향", raw_text)
     treasury_head, treasury_reason = readable._direction_pair("ETF 자금 방향", raw_text)
     credit_flow_head, credit_flow_reason = readable._direction_pair("신용자금 방향", raw_text)
-    credit_head, credit_reason = _credit_summary(flows["LQD"][0], flows["HYG"][0], lqd_oas, hyg_oas)
-    if overall_head == "혼조·추가 확인":
-        overall_reason = (
-            f"국채 {treasury_head} · 회사채 {credit_flow_head} → "
-            "금리·국채와 신용자금 신호가 한 방향으로 정렬되지 않음"
-        )
+    credit_head, credit_reason = credit_flow_head, credit_flow_reason
+    credit_alert_line = _credit_alert_line(flows["HYG"][0], hyg_oas)
 
     r2, r10, r30 = _rate("2년", raw_text), _rate("10년", raw_text), _rate("30년", raw_text)
     s210 = _rate("2년-10년 금리차", raw_text)
@@ -377,7 +396,7 @@ def _compact_report(raw_text):
 
     gr = readable.get_growth_cost_snapshot()
     if gr.get("ok"):
-        gr_line = f"G-R: {gr['gap']:+.2f}%p | G {gr['g']:.2f}% vs R {gr['r']:.2f}% → {gr['state']}"
+        gr_line = f"G-R(명목GDP 연율-HYG 평균 만기수익률): {gr['gap']:+.2f}%p | G {gr['g']:.2f}% vs R {gr['r']:.2f}% → {gr['state']}"
     else:
         gr_line = "G-R: 공식 최신값 조회 실패 → 판정 보류"
 
@@ -396,7 +415,7 @@ def _compact_report(raw_text):
         refi_line = (
             f"차환: 12개월 ${next12_t_display:.2f}T ({next12_krw}) ({refi['next12_share']:.1f}%) | "
             f"Bills ${bills_t_display:.2f}T ({bills_krw}) ({refi['bill_share']:.1f}%) | "
-            f"+75bp 단순 연율 +${plus75_b_display:.1f}B ({plus75_krw})"
+            f"Bills에 +75bp 적용 시 단순 연율 이자부담 +${plus75_b_display:.1f}B ({plus75_krw})"
         )
         refi_date = refi["record_date"]
     except Exception:
@@ -404,7 +423,7 @@ def _compact_report(raw_text):
         refi_date = "확인 대기"
 
     conclusion = f"{overall_head} — {overall_reason}"
-    next_alert_line = _next_alert(y10, y30)
+    next_alert_line = _next_alert(y10, y30, flows["HYG"][0], hyg_oas)
 
     lines = [
         "[미 국채·회사채 방향성 일일 보고]",
@@ -419,6 +438,7 @@ def _compact_report(raw_text):
         f"회사채 자금: LQD {flows['LQD'][0]} | HYG {flows['HYG'][0]}",
         f"신용 위험: {credit_head} | LQD OAS {lqd_oas} | HYG OAS {hyg_oas}",
         f"→ {credit_reason}",
+        *([credit_alert_line] if credit_alert_line else []),
         "",
         f"금리: 2년 {r2} | 10년 {r10} | 30년 {r30}",
         f"커브: {regime} = {easy}",
@@ -444,10 +464,11 @@ def _compact_report(raw_text):
         next_alert_line,
         "",
         f"기준: ETF·미 재무부 {treasury_date} | MSPD {refi_date}",
+        "자금흐름: iShares 공식 발행좌수 변화 × 해당일 NAV로 계산한 추정치이며 iShares가 공표한 공식 일간 순유입액은 아님.",
         "출처: iShares · U.S. Treasury · Treasury FiscalData · OFR/NY Fed · BEA · JPM 기술기준(사용자 제공 2026-09-29 자료)",
     ]
     report = "\n".join(lines)
-    _validate_compact_report(report, overall_head, y10)
+    _validate_compact_report(report, overall_head, y10, hyg_oas)
     return report
 
 
@@ -456,7 +477,7 @@ def _format_html(chunk):
     bold_prefixes = (
         "전체 방향:", "국채 자금:", "회사채 자금:", "신용 위험:",
         "금리:", "커브:", "오늘의 주도축:", "시장 기술압력:",
-        "JPM 30년 기술선:", "Repo:", "G-R:", "차환:", "다음 경보:",
+        "JPM 30년 기술선:", "Repo:", "G-R(", "차환:", "현재 신용경보:", "다음 경보:",
     )
     for line in chunk.splitlines():
         escaped = html.escape(line, quote=False)
