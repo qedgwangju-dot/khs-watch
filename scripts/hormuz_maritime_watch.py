@@ -202,6 +202,11 @@ def readable_cluster_alert(cluster):
 # v5: 공식 UKMTO 직접탐지와 '같은 사건' 교차검증을 보강한다.
 watcher.STATE_VERSION = 5
 watcher.CLUSTER_WINDOW_HOURS = 12
+watcher.NEWS_QUERIES = tuple(watcher.NEWS_QUERIES) + (
+    '"UKMTO" tanker Oman "unknown projectile" when:2d',
+    'site:reuters.com tanker Oman UKMTO projectile when:2d',
+    '"UK maritime agency" tanker Oman projectile when:2d',
+)
 watcher.PRIMARY_SOURCES.add("AFP")
 watcher.STRONG_SOURCES.add("AFP")
 UKMTO_DIRECT_PAGES = (
@@ -451,6 +456,8 @@ def _extract_incident_details(text):
     }.items():
         if any(term in low for term in terms):
             details.add(token)
+    if re.search(r"no\s+(?:reported\s+)?(?:casualties\s+or\s+)?environmental\s+(?:impact|damage|effects)", low):
+        details.add("no_env")
     return details
 
 
@@ -553,11 +560,20 @@ def strict_compatible(a, b):
         return False
 
     shared = details_a & details_b
-    hard_shared = {
+    specific_shared = {
         x for x in shared
-        if x.startswith("time:") or x.startswith("distance:") or x in {"outbound", "inbound", "fire", "blackout", "crew_safe", "no_env"}
+        if x.startswith("time:") or x.startswith("distance:") or x in {"outbound", "inbound", "blackout"}
     }
-    return bool(hard_shared)
+    if specific_shared:
+        return True
+
+    # 화재·승무원안전·환경무피해처럼 흔한 결과만 같은 경우에는
+    # 같은 날 발생한 서로 다른 선박 사건을 합치지 않는다.
+    generic_shared = shared & {"fire", "crew_safe", "no_env"}
+    gap = abs(float(a.get("published_epoch") or 0) - float(b.get("published_epoch") or 0))
+    if len(generic_shared) >= 3 and gap <= 4 * 3600:
+        return True
+    return False
 
 
 def strict_clusters(news):
