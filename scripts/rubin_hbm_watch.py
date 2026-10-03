@@ -1673,14 +1673,14 @@ def extract_nvhbm_architecture(event: dict) -> dict | None:
 
     if official:
         v = pct((
-            r"(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,80}?(?:more|higher|increase|향상|증가)[^.]{0,80}?(?:memory\s+bandwidth|bandwidth|메모리\s*대역폭|대역폭)",
+            r"(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^%.]{0,80}?(?:more|higher|increase|향상|증가)[^%.]{0,80}?(?:memory\s+bandwidth|bandwidth|메모리\s*대역폭|대역폭)",
             r"(?:memory\s+bandwidth|bandwidth|메모리\s*대역폭|대역폭)[^%]{0,100}?(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%",
         ))
         if v is not None:
             obs["bandwidth_gain_pct_max"] = v
 
         v = pct((
-            r"(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:more|additional|추가|증가)[^.]{0,80}?(?:compute\s+die\s+area|연산\s*다이\s*면적)",
+            r"(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^%.]{0,100}?(?:more|additional|추가|증가)[^%.]{0,80}?(?:compute\s+die\s+area|연산\s*다이\s*면적)",
             r"(?:compute\s+die\s+area|연산\s*다이\s*면적)[^%]{0,120}?(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%",
         ))
         if v is not None:
@@ -1694,21 +1694,21 @@ def extract_nvhbm_architecture(event: dict) -> dict | None:
             obs["phy_support_area_reduction_pct_max"] = v
 
         v = pct((
-            r"(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:more|증가)[^.]{0,100}?(?:usable\s+silicon|사용할\s*수\s*있는\s*실리콘|가용\s*실리콘)",
+            r"(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^%.]{0,100}?(?:more|증가)[^%.]{0,100}?(?:usable\s+silicon|사용할\s*수\s*있는\s*실리콘|가용\s*실리콘)",
             r"(?:usable\s+silicon|사용할\s*수\s*있는\s*실리콘|가용\s*실리콘)[^%]{0,120}?(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%",
         ))
         if v is not None:
             obs["layout_usable_silicon_gain_pct_max"] = v
 
         v = pct((
-            r"(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:increase|증가)[^.]{0,100}?(?:main[- ]die\s+silicon|메인\s*다이\s*실리콘)",
+            r"(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^%.]{0,100}?(?:increase|증가)[^%.]{0,100}?(?:main[- ]die\s+silicon|메인\s*다이\s*실리콘)",
             r"(?:main[- ]die\s+silicon|메인\s*다이\s*실리콘)[^%]{0,120}?(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%",
         ))
         if v is not None:
             obs["main_die_silicon_gain_pct_max"] = v
 
         v = pct((
-            r"(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:lower|reduce|reduction|낮|절감|감소)[^.]{0,80}?(?:hbm\s+power|hbm\s+전력)",
+            r"(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^%.]{0,100}?(?:lower|reduce|reduction|낮|절감|감소)[^%.]{0,80}?(?:hbm\s+power|hbm\s+전력)",
             r"(?:hbm\s+power|hbm\s+전력)[^%]{0,100}?(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,40}?(?:lower|낮|절감|감소)",
         ))
         if v is not None:
@@ -1746,12 +1746,22 @@ def extract_nvhbm_architecture(event: dict) -> dict | None:
         m = re.search(r"(?:rubin)[^.]{0,180}?(?:hbm4?\s*(?:controllers?|컨트롤러)?|hbm)[^.]{0,120}?(?:logic|phy|로직)[^%]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*%", low, re.I)
         if not m:
             m = re.search(r"([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:rubin)[^.]{0,100}?(?:hbm)[^.]{0,80}?(?:logic|phy)", low, re.I)
+        if not m:
+            m = re.search(
+                r"(?:hbm4?)[^.]{0,120}?(?:controllers?|컨트롤러|logic|phy)[^.]{0,120}?([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,140}?(?:rubin)",
+                low, re.I,
+            )
         if m:
             obs["rubin_hbm_logic_phy_die_share_estimate_pct"] = float(m.group(1))
 
         m = re.search(r"(?:feynman)[^.]{0,180}?(?:nvhbm|hbm)[^%]{0,120}?([0-9]+(?:\.[0-9]+)?)\s*%", low, re.I)
         if not m:
             m = re.search(r"([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:feynman)[^.]{0,100}?(?:nvhbm|hbm)", low, re.I)
+        if not m:
+            m = re.search(
+                r"(?:feynman)[^.]{0,140}?(?:nvhbm|custom\s+hbm)[^.]{0,140}?(?:falls?|drop|reduce|낮)[^0-9]{0,30}([0-9]+(?:\.[0-9]+)?)\s*%",
+                low, re.I,
+            )
         if m:
             obs["feynman_nvhbm_interface_die_share_estimate_pct"] = float(m.group(1))
 
