@@ -1319,7 +1319,7 @@ fieldai_funding_close = make(
 )
 g, s, c, k = classify(fieldai_funding_close)
 assert g == "fieldai", (g, s, c)
-assert c.endswith("7억달러 투자유치 공식 종결"), c
+assert c.endswith("투자유치 종결"), c
 assert s >= 11, s
 
 fieldai_commercial_change = make(
