@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-03T18:32:20+09:00",
+  "updated_at_kst": "2026-10-03T18:34:01+09:00",
   "seen_ids": [
     "05738ff36f7b6c56288425e7",
     "13736d06804f15f7083db8c9",
@@ -87,7 +87,7 @@
     "nvidia_demand_b0db6b8218",
     "nvidia_demand_b9dff9a4c6"
   ],
-  "last_event_count": 21,
+  "last_event_count": 20,
   "last_new_event_count": 0,
   "alert_generated": false,
   "format_version": 3,
@@ -119,5 +119,5 @@
   "last_run_event": "push",
   "last_schedule_check_kst": "2026-10-03T17:20:38+09:00",
   "schedule_gap_minutes": 361.8,
-  "last_push_check_kst": "2026-10-03T18:32:20+09:00"
+  "last_push_check_kst": "2026-10-03T18:34:01+09:00"
 }
