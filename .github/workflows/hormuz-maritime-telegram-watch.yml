@@ -39,7 +39,10 @@ jobs:
         run: python -m pip install --disable-pip-version-check --quiet pypdf
 
       - name: Validate monitor syntax
-        run: python -m py_compile scripts/hormuz_maritime_watch.py
+        run: |
+          python -m py_compile scripts/hormuz_maritime_watch.py
+          python -m py_compile scripts/test_hormuz_maritime_watch.py
+          python scripts/test_hormuz_maritime_watch.py
 
       - name: Validate existing Telegram route without sending
         env:
