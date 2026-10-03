@@ -690,15 +690,10 @@ def extract_jpm_hbm_structural(event: dict) -> dict | None:
     obs: dict = {}
 
     m = re.search(
-        r"(?:2026\s*(?:to|[-–—]|~)\s*2028|2026년?[^.]{0,40}?2028년?)[^.]{0,160}?(?:cagr|compound[^.%]{0,40}?growth|복합[^.%]{0,40}?성장률|연평균[^.%]{0,40}?성장률)[^%]{0,60}?([0-9]+(?:\.[0-9]+)?)\s*%",
+        r"(?:cagr|compound[^.%]{0,40}?growth|복합[^.%]{0,40}?성장률|연평균[^.%]{0,40}?성장률)[^%]{0,100}?([0-9]+(?:\.[0-9]+)?)\s*%",
         low, re.I,
     )
-    if not m:
-        m = re.search(
-            r"(?:cagr|compound[^.%]{0,40}?growth|복합[^.%]{0,40}?성장률|연평균[^.%]{0,40}?성장률)[^%]{0,100}?([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,120}?(?:2026)[^.]{0,60}?(?:2028)",
-            low, re.I,
-        )
-    if m:
+    if m and "2026" in low and "2028" in low:
         obs["demand_cagr_2026_2028_pct"] = float(m.group(1))
         obs["demand_cagr_period"] = "2026-2028"
 
@@ -1162,8 +1157,8 @@ def extract_samsung_hbm4_price(event: dict) -> dict | None:
             obs["stage"] = "negotiation"
         elif any(k in low for k in ("제시", "offered", "quoted")):
             obs["stage"] = "reported_offer"
-        else:
-            return None
+        # 가격·공급·성능·웨이퍼 구조 기사에는 계약 단계 문구가 없을 수 있으므로
+        # 여기서 버리지 않고 아래의 구조화 필드를 계속 추출한다.
     # Exact range only when the article gives explicit endpoints.
     pm = re.search(
         r"(?:hbm4[^.]{0,120}?)(?:\$|미화\s*)?([0-9]+(?:\.[0-9]+)?)\s*(?:~|[-–—]|to)\s*(?:\$|미화\s*)?([0-9]+(?:\.[0-9]+)?)\s*(?:/\s*)?gb",
