@@ -31,6 +31,7 @@ OFFICIAL_DOMAINS = {
     "www.banking.senate.gov",
     "www.agriculture.senate.gov",
     "www.sec.gov",
+    "data.sec.gov",
     "www.cftc.gov",
     "www.federalregister.gov",
     "www.reginfo.gov",
@@ -76,6 +77,8 @@ SEC_EXCHANGE_ORDERS_URLS = [
     "https://www.cboe.com/us/equities/regulation/rule_filings/BZX/",
 ]
 VOLATILITY_SHARES_PRODUCTS_URL = "https://www.volatilityshares.com/etf-product-list.php"
+VS_TRUST_SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK0001793497.json"
+VS_TRUST_CIK = "1793497"
 
 LEG_ACTION_RE = re.compile(
     r"\b(?:markup|mark-up|vote|voted|advance(?:d)?|pass(?:ed|age)?|fail(?:ed|ure)?|reject(?:ed)?|cloture|floor|calendar|schedule|consideration|amendment|amended|new text|bill text|revised text|reported|referred|signed|signature|veto|became law|enacted|session adjourn|sine die|read twice)\b",
@@ -624,6 +627,121 @@ def collect_sec_exchange_orders(errors):
     return list({e.key: e for e in events}.values())
 
 
+def recent_submission_rows(payload):
+    recent = ((payload or {}).get("filings") or {}).get("recent") or {}
+    keys = [
+        "accessionNumber", "filingDate", "form", "fileNumber",
+        "primaryDocument", "primaryDocDescription",
+    ]
+    size = max((len(recent.get(k) or []) for k in keys), default=0)
+    rows = []
+    for i in range(size):
+        row = {}
+        for key in keys:
+            values = recent.get(key) or []
+            row[key] = clean(values[i]) if i < len(values) else ""
+        rows.append(row)
+    return rows
+
+
+def sec_archive_url(accession, primary_document):
+    acc = clean(accession).replace("-", "")
+    doc = clean(primary_document)
+    if not acc or not doc:
+        return ""
+    return f"https://www.sec.gov/Archives/edgar/data/{VS_TRUST_CIK}/{acc}/{doc}"
+
+
+def collect_vs_trust_3x_registration_milestones(errors):
+    events = []
+    try:
+        payload = json.loads(fetch(VS_TRUST_SUBMISSIONS_URL, timeout=25).decode("utf-8"))
+    except Exception as exc:
+        errors.append(f"VS Trust SEC submissions: {exc}")
+        return events
+
+    rows = recent_submission_rows(payload)
+    target_file_numbers = set()
+    relevant_docs = {}
+
+    # First identify the registration file numbers that actually contain both
+    # BITH and ETHK / 3x Bitcoin and 3x Ether.
+    for row in rows:
+        form = row.get("form", "")
+        if form not in {"S-1", "S-1/A", "424B3", "424B4"}:
+            continue
+        filing_date = row.get("filingDate", "")
+        if filing_date and filing_date < "2026-08-17":
+            continue
+        url = sec_archive_url(row.get("accessionNumber", ""), row.get("primaryDocument", ""))
+        if not url:
+            continue
+        try:
+            body = clean(BeautifulSoup(fetch(url, timeout=20), "html.parser").get_text(" ", strip=True))
+        except Exception:
+            continue
+        signal = body.lower()
+        if not (
+            ("3x bitcoin etf" in signal and "3x ether etf" in signal)
+            or ("bith" in signal and "ethk" in signal)
+        ):
+            continue
+        file_no = clean(row.get("fileNumber", ""))
+        if file_no:
+            target_file_numbers.add(file_no)
+        relevant_docs[row.get("accessionNumber", "")] = (row, url, body)
+
+    # Final prospectus / amended registration filing is a launch-readiness milestone.
+    for accession, (row, url, body) in relevant_docs.items():
+        form = row.get("form", "")
+        if form not in {"424B3", "424B4"}:
+            continue
+        events.append(Event(
+            "SEC EDGAR — VS Trust",
+            "3배 BTC·ETH ETP 최종 투자설명서",
+            "VS Trust, BITH·ETHK final prospectus filed",
+            url,
+            date=row.get("filingDate", ""),
+            detail=f"Form {form}; File No. {row.get('fileNumber','')}; Accession {accession}; BITH/ETHK confirmed in final prospectus",
+        ))
+
+    # EFFECT is the critical Securities Act effectiveness milestone. Tie it to
+    # the registration file number already verified above, instead of treating
+    # any VS Trust EFFECT filing as relevant.
+    for row in rows:
+        if row.get("form", "") != "EFFECT":
+            continue
+        filing_date = row.get("filingDate", "")
+        if filing_date and filing_date < "2026-08-17":
+            continue
+        file_no = clean(row.get("fileNumber", ""))
+        if target_file_numbers and file_no not in target_file_numbers:
+            continue
+        url = sec_archive_url(row.get("accessionNumber", ""), row.get("primaryDocument", ""))
+        effective_date = filing_date
+        if url:
+            try:
+                raw = fetch(url, timeout=20).decode("utf-8", "ignore")
+                m = re.search(r"(?:EFFECTIVE[- ]DATE|effectiveDate)[^0-9]*(20\d{2}[-/]\d{2}[-/]\d{2}|\d{8})", raw, re.I)
+                if m:
+                    value = m.group(1)
+                    if re.fullmatch(r"\d{8}", value):
+                        value = f"{value[:4]}-{value[4:6]}-{value[6:]}"
+                    effective_date = value.replace("/", "-")
+            except Exception:
+                pass
+        events.append(Event(
+            "SEC EDGAR — VS Trust",
+            "3배 BTC·ETH ETP 등록 효력 발생",
+            "VS Trust BITH·ETHK registration statement effective",
+            url or VS_TRUST_SUBMISSIONS_URL,
+            date=effective_date or filing_date,
+            detail=f"Form EFFECT; File No. {file_no}; Accession {row.get('accessionNumber','')}; registration effectiveness milestone for verified BITH/ETHK filing",
+        ))
+
+    return list({e.key: e for e in events}.values())
+
+
 def collect_volatility_shares_3x_crypto_launch(errors):
     events = []
     try:
@@ -653,12 +771,14 @@ def collect_volatility_shares_3x_crypto_launch(errors):
         f"{ticker} issuer product page listed" + (f"; inception {row['inception']}" if row["inception"] else "")
         for ticker, row in found.items()
     )
+    stable_dates = sorted({row["inception"] for row in found.values() if row.get("inception")})
+    event_date = stable_dates[-1] if stable_dates else ""
     events.append(Event(
         "Volatility Shares 공식 상품목록",
         "3배 BTC·ETH ETP 실제 상품목록·거래개시 추적",
         title,
         VOLATILITY_SHARES_PRODUCTS_URL,
-        date=now_et().date().isoformat(),
+        date=event_date,
         detail=detail,
     ))
     return events
@@ -677,6 +797,7 @@ def collect_regulators(errors):
     events.extend(collect_reginfo_reviews(errors))
     events.extend(collect_sec_newsroom_crypto_orders(errors))
     events.extend(collect_sec_exchange_orders(errors))
+    events.extend(collect_vs_trust_3x_registration_milestones(errors))
     events.extend(collect_volatility_shares_3x_crypto_launch(errors))
     return list({e.key: e for e in events}.values())
 
