@@ -35,7 +35,7 @@ EVENT_STATE_VERSION = 2
 SHARE_TRACK_VERSION = 1
 BROKER_FORECAST_TRACK_VERSION = 3
 CAPITAL_RETURN_TRACK_VERSION = 1
-SAMSUNG_HBM4_PRICE_TRACK_VERSION = 2
+SAMSUNG_HBM4_PRICE_TRACK_VERSION = 3
 SHARE_REVISION_THRESHOLD_PP = 3.0
 BROKER_ASP_REVISION_THRESHOLD_PP = 5.0
 SHARE_ACTUAL_DEVIATION_THRESHOLD_PP = 5.0
@@ -2148,21 +2148,32 @@ def _hbm4_contract_stage(text: str) -> str:
 
 
 def _hbm4_price_multiple(text: str) -> float | None:
-    """Extract only a price multiple; never reuse performance/efficiency multipliers."""
+    """Extract only an explicitly stated HBM4-vs-HBM3E price multiple.
+
+    Performance/efficiency/bandwidth multipliers (for example zHBM 8x
+    performance) are never eligible, even when the same article also discusses
+    HBM4 pricing.
+    """
     value = clean(text)
-    segments = [x.strip() for x in re.split(r"(?<=[.!?。])\s+|[;；]", value) if x.strip()]
+    segments = [x.strip() for x in re.split(r"(?<=[.!?。])\s+|[;；]|\n+", value) if x.strip()]
+    positive_price_words = ("가격", "판매가", "공급가", "달러", "price", "pricing", "premium", "프리미엄")
+    reject_words = ("zhbm", "성능", "전력효율", "전력 효율", "대역폭", "performance", "energy efficiency", "bandwidth")
+
+    patterns = (
+        # "HBM4 가격을 HBM3E보다 3배 이상 높게 ..."
+        r"(?:hbm4)[^.]{0,100}?(?:가격|판매가|공급가|price|pricing)[^.]{0,100}?(?:hbm3e)[^.]{0,60}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,35}?(?:높|비싸|higher|premium)",
+        # "HBM3E ... 고려하면 3배 이상 높은 수준"
+        r"(?:hbm3e)[^.]{0,160}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,40}?(?:높|비싸|higher|premium)",
+        # "가격 ... 3배 이상 ... HBM3E"
+        r"(?:가격|판매가|공급가|price|pricing)[^.]{0,100}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,80}?(?:hbm3e)",
+    )
+
     for segment in segments:
         low = segment.lower()
-        if not any(k in low for k in ("hbm4", "hbm3e")):
+        if "hbm4" not in low and "hbm3e" not in low:
             continue
-        if not any(k in low for k in ("가격", "판매가", "공급가", "달러", "price", "pricing", "usd", "$")):
+        if not any(k in low for k in positive_price_words):
             continue
-        patterns = (
-            r"(?:hbm4).{0,120}?(?:가격|판매가|공급가|price|pricing).{0,90}?([0-9]+(?:\.[0-9]+)?)\s*배",
-            r"(?:가격|판매가|공급가|price|pricing).{0,90}?([0-9]+(?:\.[0-9]+)?)\s*배.{0,120}?(?:hbm4|hbm3e)",
-            r"(?:hbm3e).{0,140}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?.{0,40}?(?:높|비싸|higher|premium)",
-            r"([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?.{0,40}?(?:높|비싸|higher|premium).{0,90}?(?:hbm3e|가격|price)",
-        )
         for pat in patterns:
             m = re.search(pat, segment, re.I)
             if not m:
@@ -2171,12 +2182,10 @@ def _hbm4_price_multiple(text: str) -> float | None:
             if not (1.0 <= n <= 10.0):
                 continue
             a, b = m.span(1)
-            context = low[max(0, a - 80):min(len(low), b + 80)]
-            price_context = any(k in context for k in ("가격", "판매가", "공급가", "달러", "price", "pricing", "hbm3e", "$"))
-            performance_context = any(k in context for k in ("zhbm", "성능", "전력효율", "전력 효율", "대역폭", "performance", "energy efficiency", "bandwidth"))
-            if not price_context:
+            local = low[max(0, a - 70):min(len(low), b + 70)]
+            if any(k in local for k in reject_words):
                 continue
-            if performance_context and not any(k in context for k in ("가격", "달러", "price", "pricing", "hbm3e")):
+            if not any(k in local for k in ("가격", "판매가", "공급가", "달러", "price", "pricing", "premium", "프리미엄", "hbm3e")):
                 continue
             return n
     return None
@@ -2765,7 +2774,11 @@ def main() -> None:
         state["broker_forecast_track_version"] = BROKER_FORECAST_TRACK_VERSION
 
     legacy_price_track_version = int(state.get("samsung_hbm4_price_track_version") or 0)
-    legacy_bad_price_multiple = samsung_hbm4_price_state.get("price_multiple_vs_2026")
+    legacy_bad_price_multiple = (
+        samsung_hbm4_price_state.get("price_multiple_vs_hbm3e")
+        if samsung_hbm4_price_state.get("price_multiple_vs_hbm3e") is not None
+        else samsung_hbm4_price_state.get("price_multiple_vs_2026")
+    )
     legacy_price_title = samsung_hbm4_price_state.get("title") or ""
     price_parser_correction_due = bool(
         legacy_price_track_version < SAMSUNG_HBM4_PRICE_TRACK_VERSION
