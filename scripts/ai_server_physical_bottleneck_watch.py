@@ -61,6 +61,9 @@ SEARCHES = [
     'site:wiwynn.com 2026 AI server rack shipment capacity',
     'site:emctw.com 2026 AI server CCL capacity shipment price',
     'site:auras.com.tw 2026 AI server liquid cooling cold plate capacity shipment',
+    'site:avc.co 2026 AI server liquid cooling cold plate CDU capacity shipment',
+    'site:liteon.com 2026 AI server power supply power shelf 800V capacity shipment',
+    'site:tuc.com.tw 2026 AI server CCL copper clad laminate capacity shipment price',
 ]
 
 OFFICIAL_DOMAINS = (
@@ -73,6 +76,9 @@ OFFICIAL_DOMAINS = (
     "wiwynn.com",
     "emctw.com",
     "auras.com.tw",
+    "avc.co",
+    "liteon.com",
+    "tuc.com.tw",
     "nvidia.com",
     "investor.nvidia.com",
 )
@@ -109,6 +115,9 @@ COMPANY_MAP = {
     "wiwynn.com": "Wiwynn",
     "emctw.com": "Elite Material",
     "auras.com.tw": "Auras Technology",
+    "avc.co": "AVC(Asia Vital Components)",
+    "liteon.com": "Lite-On",
+    "tuc.com.tw": "TUC",
     "nvidia.com": "NVIDIA",
     "investor.nvidia.com": "NVIDIA",
     "trendforce.com": "TrendForce",
