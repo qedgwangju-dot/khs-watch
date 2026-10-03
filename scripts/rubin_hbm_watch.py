@@ -708,14 +708,25 @@ def extract_jpm_hbm_structural(event: dict) -> dict | None:
 
     for year in (2027, 2028):
         m = re.search(
-            rf"{year}[^.%]{{0,100}}?(?:hbm[^.%]{{0,50}}?)?(?:asp|average selling price|평균판매단가|가격)[^%]{{0,80}}?([+-]?\d+(?:\.\d+)?)\s*%",
+            rf"([+-]?\d+(?:\.\d+)?)\s*%\s*(?:y/?y\s*)?(?:in|for|during|\(|,)?\s*{year}",
             low, re.I,
         )
         if not m:
             m = re.search(
-                rf"(?:asp|average selling price|평균판매단가|가격)[^%]{{0,100}}?([+-]?\d+(?:\.\d+)?)\s*%[^.]{{0,100}}?{year}",
+                rf"{year}[^.%]{{0,100}}?(?:hbm[^.%]{{0,50}}?)?(?:asp|average selling price|평균판매단가|가격)[^%]{{0,80}}?([+-]?\d+(?:\.\d+)?)\s*%",
                 low, re.I,
             )
+        if not m:
+            # 마지막 보조패턴은 같은 문장 안에서 해당 연도와 가장 가까운 ASP 증가율을 찾는다.
+            sentence_candidates = [
+                part for part in re.split(r"[.!?]", low)
+                if str(year) in part and any(k in part for k in ("asp", "average selling price", "평균판매단가", "가격"))
+            ]
+            for part in sentence_candidates:
+                near = re.search(rf"([+-]?\d+(?:\.\d+)?)\s*%[^%]{{0,45}}?(?:in|for)?\s*{year}", part, re.I)
+                if near:
+                    m = near
+                    break
         if m:
             obs[f"asp_{year}_yoy_pct"] = float(m.group(1))
 
