@@ -145,6 +145,23 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
         self.assertNotIn("CLARITY 법안 Watch", rendered)
         self.assertLessEqual(max(map(len, MOD.build_readable([event]))), 3900)
 
+    def test_3x_registration_effect_card_is_launch_readiness_not_trading_start(self):
+        event = {
+            "source": "SEC EDGAR — VS Trust",
+            "event_type": "3배 BTC·ETH ETP 등록 효력 발생",
+            "title": "VS Trust BITH·ETHK registration statement effective",
+            "url": "https://www.sec.gov/example",
+            "date": "2026-10-05",
+            "detail": "Form EFFECT; File No. 333-999999; Accession 0001; BITH/ETHK",
+        }
+        rendered = "\n".join(MOD.build_readable([event]))
+        self.assertIn("등록 효력 발생", rendered)
+        self.assertIn("실제 첫 거래일은 별도 확인", rendered)
+        self.assertIn("Volatility Shares 공식 출시 공지", rendered)
+        self.assertIn("Cboe BZX 첫 거래일", rendered)
+        self.assertNotIn("상장규칙 승인 — SEC 승인 완료", rendered)
+        self.assertIn("미국 암호자산 규제 Watch", rendered)
+
     def test_3x_crypto_launch_card_is_separate_from_rule_approval(self):
         event = {
             "source": "Volatility Shares 공식 상품목록",
