@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-03T14:29:56+09:00",
+  "updated_at_kst": "2026-10-03T15:01:37+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
@@ -16,6 +16,7 @@
     "21e84f4d7bcbfa46a6b63dee",
     "2d27da4b09baa1d0f61ace3d",
     "2d9314e7dce8075fefab9289",
+    "2dc1704a7586d7a72e6bb296",
     "2dfd1c86ac0599c056567928",
     "2febb8d3e788181bbf878d83",
     "30e12d5e09347c31afe9bbbf",
@@ -70,6 +71,7 @@
     "bc36972bfd79436e7ad41fd1",
     "c1d173fd17a8a8cd17f5cd5b",
     "c1ede00bdbacc4e73f3e3732",
+    "c3d140a064e98999aa4ea37b",
     "c66bcba5501ce4414506b0e6",
     "caf236d0d63266773b9b11da",
     "d059f8c3e0d742a821065a47",
@@ -113,17 +115,19 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 1,
+  "last_unseen_raw_count": 2,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1348.28,
-    "date": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-03 14:30 KST · 보조 API 2026-10-03 · 차이 0.07% · 일중 기준시각 차이 가능",
+    "date": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-03 15:01 KST · 보조 API 2026-10-03 · 차이 0.07% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [],
+  "errors": [
+    "핵심 사실 자동추출 실패로 발송 제외: news.futunn.com | Micron explicitly forecasts tighter HBM supply in 2027–2028, with simultaneous capacity expansion across its four major facilities. - news.futunn.com"
+  ],
   "ai_component_leadtime": {
     "as_of": "2026-09-21",
     "source": "https://insights.trendforce.com/p/weekly-radar-002",
@@ -172,13 +176,13 @@
       "https://insights.trendforce.com/p/weekly-radar-002",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-10-03T14:30:33+09:00",
+    "last_checked_at_kst": "2026-10-03T15:01:56+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-03T14:37:38+09:00",
+    "checked_at_kst": "2026-10-03T15:08:54+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-01T09:43:49+09:00",
@@ -248,7 +252,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-03",
-    "last_checked_at_kst": "2026-10-03T14:31:16+09:00"
+    "last_checked_at_kst": "2026-10-03T15:02:43+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -284,7 +288,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-03",
-    "last_checked_at_kst": "2026-10-03T14:35:30+09:00",
+    "last_checked_at_kst": "2026-10-03T15:07:40+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -328,7 +332,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-03T14:35:56+09:00",
+    "last_checked_at_kst": "2026-10-03T15:08:14+09:00",
     "candidate_count": 0,
     "event_count": 0
   },
