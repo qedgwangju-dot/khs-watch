@@ -1,5 +1,6 @@
 name: AI Safety Standards Policy Watch
 
+# Duplicate-alert guard verified against alternating official-page render digests.
 on:
   push:
     branches: [main]
