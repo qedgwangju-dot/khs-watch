@@ -58,7 +58,7 @@ class SamsungNextGenHBMWatchTests(unittest.TestCase):
 
     def test_hbm5_industry_expectation_not_upgraded_to_customer_joint_development(self):
         obs = w.extract_samsung_nextgen_hbm(self.event(
-            "HBM5 세대로 갈수록 고객 맞춤형 경쟁이 본격화할 것으로 업계는 보고 있다."
+            "삼성전자 HBM5 세대로 갈수록 고객 맞춤형 경쟁이 본격화할 것으로 업계는 보고 있다."
         ))
         self.assertEqual(obs["hbm5_customization_stage"], "industry_expected")
 
