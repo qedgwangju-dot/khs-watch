@@ -1618,6 +1618,10 @@ def _extract_dgx_spark_memory_price(item: dict) -> dict | None:
         r"(?:\$|USD\s*)([0-9][0-9,]{3,})[^.]{0,100}?64\s*GB",
         r"64\s*GB[^.]{0,160}?([0-9][0-9,]{3,})\s*(?:USD|dollars?|美元)",
     ))
+    if p64 is None and "64gb" in no_space:
+        p64 = price((
+            r"(?:starting(?:\s+price)?(?:\s+at)?|starts?\s+at|起售价)[^$0-9]{0,30}(?:\$|USD\s*)?([0-9][0-9,]{3,})",
+        ))
     if p64 is not None:
         obs["sku_64_price_usd"] = p64
 
