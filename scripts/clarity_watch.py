@@ -36,6 +36,7 @@ OFFICIAL_DOMAINS = {
     "www.reginfo.gov",
     "www.whitehouse.gov",
     "www.cboe.com",
+    "www.volatilityshares.com",
 }
 TOPIC_RE = re.compile(
     r"\b(?:CLARITY(?:\s+Act)?|H\.?\s*R\.?\s*3633|Digital\s+Asset\s+Market\s+Clarity|digital\s+asset\s+market\s+structure|crypto\s+asset\s+market\s+structure)\b",
@@ -56,7 +57,7 @@ SEC_VERIFIED_SRO_BACKFILL = [
         "title": "Order Granting Approval of a Proposed Rule Change to List and Trade Shares of the 3x Gold ETF, 3x Silver ETF, 3x Bitcoin ETF, 3x Ether ETF, 3x Crude Oil ETF, and 3x Natural Gas ETF",
         "url": "https://www.sec.gov/files/rules/sro/cboebzx/2026/34-106577.pdf",
         "date": "Oct 2, 2026",
-        "detail": "Release No. 34-106577; File No. SR-CboeBZX-2026-065; verified official SEC order backfill",
+        "detail": "Release No. 34-106577; File No. SR-CboeBZX-2026-065; BITH and ETHK confirmed in VS Trust S-1; futures-based daily 3x products; actual trading start not yet confirmed; separate Volatility Shares Trust 485BXT dates are not launch dates for this VS Trust ETP approval",
     },
 ]
 
@@ -65,7 +66,7 @@ SEC_DIRECT_ORDER_PROBES = [
         "url": "https://www.sec.gov/files/rules/sro/cboebzx/2026/34-106577.pdf",
         "title": "Order Granting Approval of a Proposed Rule Change to List and Trade Shares of the 3x Gold ETF, 3x Silver ETF, 3x Bitcoin ETF, 3x Ether ETF, 3x Crude Oil ETF, and 3x Natural Gas ETF",
         "date": "Oct 2, 2026",
-        "detail": "Release No. 34-106577; File No. SR-CboeBZX-2026-065",
+        "detail": "Release No. 34-106577; File No. SR-CboeBZX-2026-065; BITH and ETHK confirmed in VS Trust S-1; futures-based daily 3x products; actual trading start not yet confirmed",
     },
 ]
 
@@ -74,6 +75,7 @@ SEC_EXCHANGE_ORDERS_URLS = [
     "https://www.sec.gov/taxonomy/term/193081?order=field_publish_date&page=0&sort=desc",
     "https://www.cboe.com/us/equities/regulation/rule_filings/BZX/",
 ]
+VOLATILITY_SHARES_PRODUCTS_URL = "https://www.volatilityshares.com/etf-product-list.php"
 
 LEG_ACTION_RE = re.compile(
     r"\b(?:markup|mark-up|vote|voted|advance(?:d)?|pass(?:ed|age)?|fail(?:ed|ure)?|reject(?:ed)?|cloture|floor|calendar|schedule|consideration|amendment|amended|new text|bill text|revised text|reported|referred|signed|signature|veto|became law|enacted|session adjourn|sine die|read twice)\b",
@@ -622,6 +624,46 @@ def collect_sec_exchange_orders(errors):
     return list({e.key: e for e in events}.values())
 
 
+def collect_volatility_shares_3x_crypto_launch(errors):
+    events = []
+    try:
+        soup = soup_for(VOLATILITY_SHARES_PRODUCTS_URL)
+        text = clean(soup.get_text(" ", strip=True))
+    except Exception as exc:
+        errors.append(f"Volatility Shares product list: {exc}")
+        return events
+
+    found = {}
+    for ticker, name in (("BITH", "3x Bitcoin ETF"), ("ETHK", "3x Ether ETF")):
+        m = re.search(rf"\b{ticker}\b\s+{re.escape(name)}\b", text, re.I)
+        if not m:
+            continue
+        snippet = clean(text[m.start(): m.start() + 700])
+        inception = ""
+        date_match = re.search(r"\b(\d{2}/\d{2}/20\d{2})\b", snippet)
+        if date_match:
+            inception = date_match.group(1)
+        found[ticker] = {"name": name, "inception": inception}
+
+    if not found:
+        return events
+
+    title = " / ".join(f"{ticker} {row['name']}" for ticker, row in found.items())
+    detail = " | ".join(
+        f"{ticker} issuer product page listed" + (f"; inception {row['inception']}" if row["inception"] else "")
+        for ticker, row in found.items()
+    )
+    events.append(Event(
+        "Volatility Shares 공식 상품목록",
+        "3배 BTC·ETH ETP 실제 상품목록·거래개시 추적",
+        title,
+        VOLATILITY_SHARES_PRODUCTS_URL,
+        date=now_et().date().isoformat(),
+        detail=detail,
+    ))
+    return events
+
+
 def collect_regulators(errors):
     events = []
     feeds = [
@@ -635,6 +677,7 @@ def collect_regulators(errors):
     events.extend(collect_reginfo_reviews(errors))
     events.extend(collect_sec_newsroom_crypto_orders(errors))
     events.extend(collect_sec_exchange_orders(errors))
+    events.extend(collect_volatility_shares_3x_crypto_launch(errors))
     return list({e.key: e for e in events}.values())
 
 
