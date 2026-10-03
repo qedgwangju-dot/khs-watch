@@ -1221,7 +1221,9 @@ def extract_samsung_hbm4_price(event: dict) -> dict | None:
     if stable:
         obs["performance_stable_gbps"] = float(stable.group(1))
 
-    max_speed = re.search(r"(?:hbm4)[^.]{0,180}?(?:최대|up\s+to)[^0-9]{0,30}?([0-9]+(?:\.[0-9]+)?)\s*gbps", low, re.I)
+    max_speed = re.search(r"(?:hbm4)[^.]{0,240}?(?:최대|up\s+to)[^0-9]{0,30}?([0-9]+(?:\.[0-9]+)?)\s*gbps", low, re.I)
+    if not max_speed and "hbm4" in low:
+        max_speed = re.search(r"(?:최대|up\s+to)[^0-9]{0,30}?([0-9]+(?:\.[0-9]+)?)\s*gbps", low, re.I)
     if max_speed:
         obs["performance_max_gbps"] = float(max_speed.group(1))
 
@@ -1248,7 +1250,7 @@ def extract_samsung_hbm4_price(event: dict) -> dict | None:
     if any(k in low for k in ("이달 중", "this month")) and any(k in low for k in ("마무리", "finaliz", "conclud")):
         obs["target_close_month"] = _relative_month_from_event(event)
 
-    if not any(k in obs for k in ("offered_price_band", "offered_price_usd_per_gb_min", "price_multiple_floor", "stage")):
+    if not obs:
         return None
     obs.update({
         "source": event.get("origin_source") or event.get("source") or "",
@@ -1351,10 +1353,11 @@ def extract_rubin_ultra_hbm_options(event: dict) -> dict | None:
 
     options: list[str] = []
     for product in ("hbm4e", "hbm4"):
+        token = r"hbm4e" if product == "hbm4e" else r"hbm4(?!e)"
         for layers in (12, 8):
             pats = (
-                rf"{layers}\s*[- ]?(?:hi|단)[^.]{0,50}?{product}",
-                rf"{product}[^.]{{0,50}}?{layers}\s*[- ]?(?:hi|단)",
+                rf"{layers}\s*[- ]?(?:hi|단)[^.]{0,50}?{token}",
+                rf"{token}[^.]{{0,50}}?{layers}\s*[- ]?(?:hi|단)",
             )
             if any(re.search(p, low, re.I) for p in pats):
                 options.append(f"{product.upper()}_{layers}hi")
