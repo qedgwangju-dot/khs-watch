@@ -211,6 +211,17 @@ def is_committee_commentary(event):
     return any(marker in title for marker in commentary_markers)
 
 
+def is_sec_3x_crypto_etp_approval(event):
+    signal = clean(
+        f"{event.get('title','')} {event.get('detail','')} {event.get('source','')}"
+    ).lower()
+    return (
+        "3x bitcoin etf" in signal
+        and ("3x ether etf" in signal or "3x ethereum etf" in signal)
+        and ("order granting approval" in signal or "approval" in signal or "approved" in signal)
+    )
+
+
 def is_sec_crypto_custody_2026(event):
     signal = clean(
         f"{event.get('title','')} {event.get('detail','')} {event.get('source','')}"
@@ -235,6 +246,8 @@ def semantic_group(event):
     source = clean(event.get("source", ""))
     when = parse_event_date(event.get("date", ""))
     day = when.date().isoformat() if when else clean(event.get("date", ""))
+    if is_sec_3x_crypto_etp_approval(event):
+        return ("sec_3x_btc_eth_etp_sr_cboebzx_2026_065", day)
     if is_sec_crypto_custody_2026(event):
         return ("sec_crypto_custody_s7_2026_35", day)
     if source == "상원 은행위원회" and (
@@ -255,6 +268,8 @@ def event_priority(event):
     title = clean(event.get("title", "")).lower()
     source = clean(event.get("source", ""))
     score = 0
+    if is_sec_3x_crypto_etp_approval(event):
+        score += 320
     if is_sec_crypto_custody_2026(event):
         if source == "SEC 보도자료":
             score += 250
@@ -311,6 +326,13 @@ def filter_alertable_events(events, now=None, freshness_days=7):
     output = []
     for key, event in best_by_group.items():
         event = dict(event)
+        if key and key[0] == "sec_3x_btc_eth_etp_sr_cboebzx_2026_065":
+            event["evidence_sources"] = [
+                "SEC Release 34-106577 / SR-CboeBZX-2026-065",
+                "Cboe BZX 공식 규칙변경",
+                "Volatility Shares 등록서류",
+            ]
+            event["semantic_event"] = "sec_3x_btc_eth_etp_sr_cboebzx_2026_065"
         if key and key[0] == "sec_crypto_custody_s7_2026_35":
             event["evidence_sources"] = [
                 "SEC 보도자료 2026-100",
@@ -343,6 +365,13 @@ def special_translation(event):
     title = clean(event.get("title", ""))
     detail = clean(event.get("detail", ""))
     signal = f"{title} {detail}".lower()
+    if is_sec_3x_crypto_etp_approval(event):
+        return (
+            "SEC, 비트코인·이더 3배 레버리지 ETP 상장·거래 규칙 승인",
+            "SEC가 Cboe BZX의 SR-CboeBZX-2026-065를 승인해 Volatility Shares의 3x Bitcoin ETF와 3x Ether ETF를 포함한 6개 3배 상품의 상장·거래 길을 열었습니다. "
+            "정확히는 현물 BTC·ETH 3배 ETF가 아니라, 최근월·차근월 선물 벤치마크의 하루 수익률을 3배 추종하는 Commodity-Based Trust Shares(원자재 기반 신탁지분) ETP입니다. "
+            "SEC 명령도 상품명에 ETF가 들어가지만 법적 분류는 ETP라고 명시합니다.",
+        )
     if is_sec_crypto_custody_2026(event):
         stage = rule_stage(event)
         due = federal_register_comments_close(event)
@@ -438,6 +467,11 @@ def localize_event(event):
 def easy_meaning(event, body_ko):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_sec_3x_crypto_etp_approval(event):
+        return (
+            "쉽게 말하면, 미국 증시에서 BTC·ETH 방향에 하루 3배로 베팅하는 규제 상품을 상장할 수 있게 된 것입니다. "
+            "다만 현물 코인을 3배 보유하는 상품이 아니라 선물 기반·일일 재설정 구조라 장기 수익률이 BTC·ETH 누적수익률의 정확히 3배가 되지는 않습니다."
+        )
     if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
         return (
             "한마디로, CLARITY가 의회에서 막혀도 CFTC가 기다리지 않고 현재 가진 권한으로 미국 암호자산 시장 규칙을 먼저 만들기 시작했다는 뜻입니다. "
@@ -469,6 +503,13 @@ def easy_meaning(event, body_ko):
 def investment_lines(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_sec_3x_crypto_etp_approval(event):
+        return [
+            "BTC·ETH: 직접 현물 매수 수요라기보다 CME 선물·연계 ETP 거래 수요를 키우는 경로입니다. 단기 거래량·변동성 확대 가능성이 더 직접적입니다.",
+            "COIN: 이번 상품은 Volatility Shares·Cboe·선물시장 구조라 Coinbase의 직접 상품매출 연결은 약합니다. 다만 미국 가상자산 투자상품군 확대는 기관·거래 생태계에는 간접적으로 긍정적입니다.",
+            "수급: 레버리지 상품의 일일 리밸런싱 때문에 급등·급락 구간에서 선물 수급이 증폭될 수 있습니다. 실제 영향은 출시 후 AUM·거래대금·CME 미결제약정으로 확인해야 합니다.",
+            "시간표: SEC 상장규칙 승인은 완료됐지만 실제 거래개시는 별도입니다. 3x Bitcoin ETF 등록서류의 최신 효력 예정일은 2026-10-18이며 실제 상장일·초기 AUM을 확인해야 합니다.",
+        ]
     if is_sec_crypto_custody_2026(event):
         if stage == "final":
             return [
@@ -572,6 +613,12 @@ def investment_lines(event):
 def core_summary(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_sec_3x_crypto_etp_approval(event):
+        return (
+            "SEC의 34-106577은 비트코인·이더 선물의 하루 수익률을 3배 추종하는 ETP의 Cboe BZX 상장 길을 연 조치로, "
+            "현물 ETF 3배 승인이 아니라 선물 기반 레버리지 상품 승인이라는 점이 핵심입니다. 단기 수급·변동성에는 영향이 커질 수 있지만 "
+            "장기 보유 시 일일 재설정·복리·롤오버 비용 때문에 기초자산 누적수익률의 3배와 크게 달라질 수 있습니다."
+        )
     if is_sec_crypto_custody_2026(event):
         if stage == "final":
             return (
