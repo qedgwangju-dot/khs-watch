@@ -7,7 +7,7 @@ import re
 from functools import lru_cache
 
 
-VERSION = 42
+VERSION = 43
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -95,6 +95,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("military_reinforcement", r"(?:항모|항공모함|병력).{0,40}(?:추가\s*파견|증강)", r"추가\s*파견|병력.{0,20}증강"),
     ("trading_status", r"거래\s*재개|액면병합|주식병합", r"거래.{0,12}재개|재개.{0,12}거래|액면병합|주식병합"),
     ("customer_implementation", r"1차\s*시공|초도\s*납품", r"1차\s*시공|초도\s*납품"),
+    ("commercial_order", r"수주|공급\s*계약|납품\s*계약|발사\s*계약|\d+\s*년\s*계약(?!가)", r"수주|발주|계약"),
     ("industrial_program", r"(?:SMR|원전|양자|반도체|로봇).{0,16}상용화", r"(?:상용화|사업화).{0,50}(?:출범|지원|시행|추진)|(?:출범|지원|시행|추진).{0,50}(?:상용화|사업화)"),
     ("environmental_approval", r"환경(?:영향)?평가.{0,15}(?:통과|완료|면제)", r"최종\s*환경평가|FONSI|환경영향평가서.{0,35}(?:없이|면제)"),
     ("ownership", r"지분.{0,25}(?:인수|매각|취득)|(?:피?인수).{0,25}(?:지분|계약|완료)|인수로|회사\s*인수|(?:결합|합병).{0,12}완료|합병(?!원)|주식.{0,8}(?:판다|매도|매각)", r"지분|인수|매각|매도|취득|거래계획|결합|합병(?!원)|stake|acquir|merger"),
@@ -208,7 +209,7 @@ def focus_kind(title: str) -> str:
         return "capital_listing"
     # The changed measure/action outranks a company or commodity mentioned
     # earlier in a headline (e.g. DRAM share, not generic memory demand).
-    for kind in ("capital_spending", "industry_market_share", "trade_threat", "stockpile_release", "equity_compensation"):
+    for kind in ("capital_spending", "industry_market_share", "trade_threat", "stockpile_release", "equity_compensation", "commercial_order"):
         if next(head for name, head, _source in HEADLINE_FOCUS if name == kind).search(title or ""):
             return kind
     matches = [(match.start(), index, kind) for index, (kind, headline, _source) in enumerate(HEADLINE_FOCUS)
@@ -377,7 +378,7 @@ RULES = (
     ("order_backlog_level", ("earnings", "timeline"),
      r"수주잔고|수주\s*잔고|잔여수주|order backlog|remaining orders", r"확보|기록|집계|발표|증가|감소|secur|report|increas|decreas"),
     ("customer_supply_start", ("earnings", "timeline"),
-     r"고객|공급|납품|시공|customer|supply|deliver", r"첫\s*(?:공급|납품)|공급(?:했다|한다|하기로)|납품(?:했다|한다)|(?:1차\s*시공|초도\s*납품).{0,15}완료|first delivery|began supplying"),
+     r"고객|공급|납품|시공|customer|supply|deliver", r"첫\s*(?:공급|납품)|공급(?:했다|한다|하기로)|납품(?:했다|한다)|(?:공급|납품)과\s*설치.{0,10}완료|(?:1차\s*시공|초도\s*납품).{0,15}완료|first delivery|began supplying"),
     ("procurement_execution_stage", ("earnings", "timeline"),
      r"입찰|시공사|우선협상|procurement|bid|preferred bidder",
      r"제출|선정|선택|낙찰|철회|탈락|확보|submit|select|award|withdraw"),
@@ -681,6 +682,8 @@ def source_sentences(text: str) -> list[str]:
             elif marker == '"':
                 quoted = not quoted
             elif not quoted:
+                if re.search(r"\b[A-Z]\.$", paragraph[:boundary.start()]) and re.match(r"[A-Z][a-z]", paragraph[boundary.end():]):
+                    continue
                 if value := paragraph[start:boundary.start()].strip():
                     sentences.append(value)
                 start = boundary.end()
@@ -961,6 +964,9 @@ def assess(title: str, body: str) -> dict:
         result.update(disposition="keep", reason="source_change_evidence")
         result["news_value_rank"] = news_value_rank(result["evidence"])
         kinds = {item["kind"] for item in result["evidence"]}
+        if re.search(r"대선|선거|정치\s*지형|유세|출마|지지율", title) and kinds <= {"rates_fx_or_macro", "market_outlook"}:
+            result["priority"] = 1
+            result["scope_note"] = "political_profile_not_new_macro_release_or_policy_change"
         if local_administration_without_execution(title, lead, result["evidence"]):
             result["priority"] = 1
             result["scope_note"] = "local_administrative_proposal_without_business_execution"

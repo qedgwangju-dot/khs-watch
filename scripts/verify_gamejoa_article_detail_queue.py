@@ -36,6 +36,79 @@ def fixture(title: str, body: str) -> str:
 
 
 class DetailQueueChecks(unittest.TestCase):
+    def test_political_profile_macro_background_is_not_new_market_release(self):
+        title = '중남미 7개 대선 모두 우파 승리…룰라·보우소나루 아들 4일 격돌(종합)'
+        body = ('브라질 대선에서는 현직 대통령과 야당 후보가 맞붙는다. '
+                '룰라 정부에서 실업과 빈곤, 물가상승률은 낮아지고 평균 소득은 높아졌지만 가계부채는 오히려 늘었다.')
+        audit = radar.market_materiality.assess(title, body)
+        self.assertLess(audit['priority'], 2, audit)
+        actual = radar.market_materiality.assess('미국 9월 고용 발표, 예상보다 부진',
+                                               '미국 9월 비농업 고용은 전월 대비 2만9000명 늘어 전문가 예상치 8만4000명을 밑돌았다.')
+        self.assertEqual(actual['disposition'], 'keep', actual)
+        self.assertGreaterEqual(actual['priority'], 2, actual)
+
+    def test_actual_device_delivery_precedes_unbound_technology_description(self):
+        title = '"내시경 술기 보조하는 AI"…소방관건강 지킨다'
+        body = ('AI 로봇 내시경은 영상 인식과 제어를 결합한 자율조향 기능으로 의료진의 조작을 돕는다. '
+                '이 기술이 적용된 AI 로봇 내시경은 국립소방병원에 공급돼 진단에 활용될 예정이다. '
+                '최근 메디인테크는 국립소방병원에 인티온 에스의 공급과 설치를 완료했다. '
+                '메디인테크가 국내 국공립병원에 해당 장비를 공급한 첫 사례다.')
+        core = radar.detailed_article_core(title, body)
+        for term in ('메디인테크', '국립소방병원', '인티온 에스', '완료'):
+            self.assertIn(term, core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertFalse(radar.core_sentence_is_complete('이 기술이 적용된 AI 장비는 병원에 공급될 예정이다.'))
+
+    def test_physical_pounds_are_not_sterling_and_real_currency_is_retained(self):
+        physical = '3분기 구리 생산량이 8억3000만 파운드로 가이던스에 부합했고, 금 생산도 23만 온스를 기록했습니다.'
+        self.assertEqual(radar.extract_foreign_amounts(physical), [])
+        for value in ('8억 파운드의 알루미늄 생산량', '5파운드 스테이크', '무게 100파운드'):
+            self.assertEqual(radar.extract_foreign_amounts(value), [], value)
+        for value in ('회사는 100만 파운드를 투자했다.', '사업비는 500만 영국 파운드다.', '£100 million', 'GBP 100 million'):
+            amounts = radar.extract_foreign_amounts(value)
+            self.assertTrue(amounts, value)
+            self.assertEqual(amounts[0]['code'], 'GBP', value)
+
+    def test_same_title_edition_is_one_story_and_new_headline_terms_survive(self):
+        title = '美고용 부진에 금리인상 우려 완화…나스닥 1.2%↑'
+        first = {'news': title, 'source_title': title, 'original_news': title, 'published': NOW.isoformat()}
+        revised = {**first, 'news': title + '(종합)', 'source_title': title + '(종합)', 'original_news': title + '(종합)'}
+        self.assertEqual(radar.alert_dedup_key(first), radar.alert_dedup_key(revised))
+        self.assertTrue(set(radar.telegram.alert_seen_keys(first)) & set(radar.telegram.alert_seen_keys(revised)))
+        state = {'seen': {'old': {'title': title + '(종합)', 'first_seen_kst': NOW.isoformat()}}}
+        radar.telegram.migrate_seen_title_aliases(state)
+        self.assertTrue(set(radar.telegram.alert_seen_keys(first)) & set(state['seen']))
+        changed = {**first, 'news': title.replace('1.2%', '2.4%'), 'source_title': title.replace('1.2%', '2.4%'), 'original_news': title.replace('1.2%', '2.4%')}
+        self.assertNotEqual(radar.alert_dedup_key(first), radar.alert_dedup_key(changed))
+        next_day = {**first, 'published': (NOW + dt.timedelta(days=1)).isoformat()}
+        self.assertNotEqual(radar.alert_dedup_key(first), radar.alert_dedup_key(next_day))
+
+    def test_contract_core_uses_actual_order_not_unrelated_acquisition_projection(self):
+        title = '싸이큐리온, 사상 최대 5500만달러 10년 계약..공공안전 확장 가속'
+        body = ('싸이큐리온(CYCU)은 대표가 인터뷰에서 회사 역사상 최대 규모인 5460만 달러, 10년 계약 수주와 '
+                '비디오 솔루션 사업 인수 계획을 설명했다고 9월 30일 발표했다. '
+                '회사는 이 계약에서 연간 500만 달러 이상의 매출이 발생할 것으로 예상하며, 업무는 2026년 11월 시작될 예정이다. '
+                '인수가 완료되면 회사의 프로포마 연간 총매출 런레이트는 약 3000만 달러 수준이 된다.')
+        core = radar.detailed_article_core(title, body)
+        for fact in ('싸이큐리온', '5460만', '10년', '수주', '2026년 11월', '예정'):
+            self.assertIn(fact, core)
+        self.assertNotIn('3000만', core)
+        self.assertNotIn('인수', core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+
+    def test_executive_initial_keeps_the_order_with_its_announcing_company(self):
+        title = '싸이큐리온, 사상 최대 5500만달러 10년 계약..공공안전 확장 가속'
+        statement = ('싸이큐리온(CYCU)은 켈리 회장 겸 대표(L. Kevin Kelly)가 인터뷰에서 '
+                     '회사 역사상 최대 규모인 5460만 달러, 10년 계약 수주와 비디오 솔루션 사업 인수 계획을 '
+                     '설명했다고 9월 30일 발표했다.')
+        self.assertEqual(radar.market_materiality.source_sentences(statement), [statement])
+        core = radar.detailed_article_core(title, statement + ' 업무는 2026년 11월 시작될 예정이다.')
+        self.assertIn('싸이큐리온', core)
+        self.assertIn('5460만', core)
+        self.assertIn('10년', core)
+        self.assertNotIn('인수', core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+
     def test_scoped_market_changes_outrank_isolated_corporate_actions(self):
         assess = radar.market_materiality.assess
         policy = assess('FCC, 중국산 데이터센터 장비 수입 제한 검토',

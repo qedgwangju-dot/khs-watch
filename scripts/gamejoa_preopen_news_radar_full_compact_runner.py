@@ -1818,6 +1818,14 @@ def extract_foreign_amounts(text: str) -> list[dict]:
             if any(match.start() < end and match.end() > start for start, end in occupied):
                 continue
             code = currency_label_to_code(match.group("label"))
+            if match.group("label") == "파운드":
+                # Bare pounds may be a production weight, not sterling.
+                before = re.split(r"[.!?。;\n]|,\s+", cleaned[:match.start()])[-1][-80:]
+                after = re.split(r"[.!?。;\n]|,\s+", cleaned[match.end():], maxsplit=1)[0][:60]
+                quantity = re.search(r"구리|금속|생산량|출하량|중량|무게|체중|수확량|온스|킬로그램|\bkg\b", before + after, re.I)
+                monetary = re.search(r"영국|스털링|매출|이익|배당|투자|자금|지출|자산|대출|비용|벌금|대금|구입|매입|매수|매도|계약금|상금|가격|금액", before + after)
+                if quantity or not monetary:
+                    continue
             amount = parse_foreign_number(match.group("number"), match.group("scale") or "")
             if not code or amount is None:
                 continue
@@ -2293,6 +2301,28 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         return ""
     focus = market_materiality.focus_kind(title)
     source = " ".join(sentences)
+    if focus == "commercial_order":
+        for sentence in sentences:
+            issuer = re.match(r"^([A-Za-z0-9가-힣&·]+(?:\s+[A-Za-z0-9가-힣&·]+){0,4})\s*(?:\([A-Za-z0-9.-]+\))?(?:은|는|이|가)\s+", sentence)
+            headline_issuer = re.match(r"^([^,，]{2,35})[,，]", title)
+            if not issuer and headline_issuer and re.search(
+                re.escape(headline_issuer.group(1)) + r"\s*(?:\([A-Za-z0-9.-]+\))?(?:은|는|이|가)\s+", sentence,
+            ):
+                issuer = headline_issuer
+            duration = re.search(r"(?<!\d)(\d+)\s*년\s*계약\s*수주", sentence)
+            amount = re.search(r"(\d[\d,.]*\s*(?:(?:조|억|만|천)\s*)*(?:달러|유로|원))\s*[,，]?\s*\d+\s*년\s*계약\s*수주", sentence)
+            if not issuer or not duration or not amount or not re.search(r"발표했다", sentence):
+                continue
+            name = issuer.group(1)
+            fact = f"{name}{korean_topic_particle(name)} {amount.group(1)} 규모의 {duration.group(1)}년 계약 수주를 발표했다."
+            start = re.search(r"업무는\s*(\d{4}년\s*\d{1,2}월)\s*시작될\s*예정", source)
+            if start:
+                fact += f" 업무는 {start.group(1)} 시작될 예정이다."
+            if core_sentence_is_complete(fact):
+                return fact
+        # The evidence path below can join an order with its next-sentence
+        # amount. Do not return the isolated amount or acquisition background.
+        return ""
     if focus == "trading_status":
         issuer = re.match(r"^([^,，]{2,35})[,，]", title)
         for sentence in sentences:
@@ -7754,6 +7784,7 @@ def alert_dedup_key(alert: dict) -> tuple[str, str]:
     raw_title = str(alert.get("original_news") or alert.get("news") or "")
     raw_title = re.split(r"\s+-\s+", raw_title, maxsplit=1)[0].strip()
     raw_title = re.sub(r"^(?:\s*\[[^\]]{1,12}\]\s*)+", "", raw_title).strip()
+    raw_title = telegram.canonical_edition_title(raw_title)
     theme = str(alert.get("supply_chain_theme") or semantic_event_theme(alert) or "")
     if theme:
         return (base.norm(theme), "event")
@@ -9264,6 +9295,8 @@ def core_sentence_is_complete(value: object, limit: int = GAMEJOA_CORE_MAX_CHARS
     if re.match(r"^(?:그리고|한편|다만|그러나|이에|여기에|이\s*부문|이와\s*관련해)\s+", text):
         return False
     if re.match(r"^(?:이\s*과정에서|이러한|이\s*같은|이를\s*통해|그\s*결과)\s+", text):
+        return False
+    if re.match(r"^(?:이|해당|그)\s*(?:기술|시스템|제품|장비)(?:이|은|는|을|의|가)\s+", text):
         return False
     if (
         re.search(r"(?:예상치|전망치|기대치).*?(?:밑돈|웃돈|낮은|높은)\s*(?:수치|수준)(?:다|이다)[.!?。]?$", text)

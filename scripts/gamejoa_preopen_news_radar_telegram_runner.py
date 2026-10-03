@@ -199,6 +199,10 @@ def canonical_alert_for_seen(alert: dict) -> dict:
     return alert
 
 
+def canonical_edition_title(title: str) -> str:
+    return re.sub(r"\s*[\[(](?:종합(?:\s*\d+보)?|\d+보|상보|속보)[\])]\s*$", "", title).strip()
+
+
 def alert_seen_keys(alert: dict) -> list[str]:
     try:
         canonical = canonical_alert_for_seen(alert)
@@ -225,6 +229,8 @@ def alert_seen_keys(alert: dict) -> list[str]:
     add("event", market_materiality.source_event_identity(canonical))
     add("title", str(canonical.get("news") or alert.get("news") or ""))
     add("original", str(canonical.get("original_news") or alert.get("original_news") or ""))
+    for value in (canonical.get("news"), canonical.get("source_title"), canonical.get("original_news")):
+        add("title", canonical_edition_title(str(value or "")))
     return list(dict.fromkeys(keys))
 
 
@@ -239,6 +245,7 @@ def migrate_seen_title_aliases(state: dict) -> None:
             continue
         alias = f"title:{digest_seen(title)}"
         seen.setdefault(alias, dict(entry))
+        seen.setdefault(f"title:{digest_seen(canonical_edition_title(title))}", dict(entry))
         link = str(entry.get("link") or "")
         if link and "news.google.com/rss/articles" not in link:
             seen.setdefault(f"link:{digest_seen(canonical_article_url(link))}", dict(entry))
