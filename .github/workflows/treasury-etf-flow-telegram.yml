@@ -52,6 +52,19 @@ jobs:
           python -m py_compile scripts/treasury_credit_flow_watch_readable.py
           python -m py_compile scripts/treasury_credit_flow_watch_marketstress.py
           python -m py_compile scripts/treasury_credit_flow_watch_refinancing.py
+          PYTHONPATH=scripts python - <<'PY'
+          import treasury_credit_flow_watch_refinancing as report
+
+          sample = "291.7bp | 기준 2026-10-01 | 직전 저장값 대비 ↑ +10.7bp"
+          assert report._oas_delta(sample) == 10.7, report._oas_delta(sample)
+          assert report._oas_asof(sample) == "2026-10-01", report._oas_asof(sample)
+          nxt = report._next_alert(5.28, 5.63, "↑ 순유입 +$638.1M", sample)
+          assert "HYG OAS 추가 확대 또는 HYG 자금유출 전환" in nxt, nxt
+          assert "HYG 자금유출 + OAS 일간 +5bp 이상" not in nxt, nxt
+          alert = report._credit_alert_line("↑ 순유입 +$638.1M", sample)
+          assert alert and "현재 신용경보:" in alert and "2026-10-01" in alert, alert
+          print("treasury_compact_invariants=ok")
+          PY
 
       - name: Validate exact Telegram bot route
         run: |
