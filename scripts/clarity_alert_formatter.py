@@ -544,9 +544,9 @@ def investment_lines(event):
     if is_sec_3x_crypto_etp_approval(event):
         return [
             "BTC·ETH: 직접 현물 매수 수요라기보다 CME 선물·연계 ETP 거래 수요를 키우는 경로입니다. 단기 거래량·변동성 확대 가능성이 더 직접적입니다.",
-            "COIN: 이번 상품은 Volatility Shares·Cboe·CME 선물시장 구조라 Coinbase의 직접 상품매출 연결은 약합니다. 미국 암호자산 투자상품군 확대라는 간접 효과로 구분합니다.",
-            "수급: 레버리지 상품의 일일 리밸런싱 때문에 급등·급락 구간에서 선물 수급이 증폭될 수 있습니다. 실제 영향은 출시 후 AUM·거래대금·CME 미결제약정으로 확인해야 합니다.",
-            "시간표: SEC 상장규칙 승인은 완료됐지만 실제 거래개시는 별도입니다. BITH·ETHK 티커는 VS Trust S-1에서 이미 확인되며, 다음 관문은 해당 VS Trust 등록서류의 효력과 발행사 공식 출시·첫 거래입니다.",
+            "CBOE·CME: Cboe BZX가 상장시장이고 기초 노출은 CME 비트코인·이더 선물이므로 거래량이 붙을 경우 두 시장 인프라가 더 직접적인 사업 연결입니다.",
+            "COIN·CRCL: 이번 상품의 직접 구조에는 들어가지 않습니다. 미국 암호자산 투자상품군 확대라는 간접 생태계 효과로만 구분합니다.",
+            "시간표: SEC 상장규칙 승인은 완료됐지만 실제 거래개시는 별도입니다. BITH·ETHK 티커는 VS Trust S-1에서 이미 확인되며, 다음 관문은 등록서류 효력 → 발행사 공식 출시 → Cboe 첫 거래 → 초기 AUM·거래대금입니다.",
         ]
     if is_sec_crypto_custody_2026(event):
         if stage == "final":
