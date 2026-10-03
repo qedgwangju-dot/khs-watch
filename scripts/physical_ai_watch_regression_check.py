@@ -1288,4 +1288,77 @@ assert g == "ev_46_series", (g, s, c)
 assert c.endswith("46시리즈 소재·장비 직접 수주"), c
 assert s >= 11, s
 
+# 33) FieldAI funding/commercialization lane. The Oct. 2 funding report
+# and $135M revenue+contracts / 30+ customer figures are user-surfaced baselines.
+# Alert only on an actual close/terms change, new commercial metrics, a new
+# production partner/deployment, or direct Hyundai/Atlas/RMAC integration.
+fieldai_funding_proposed_baseline = make(
+    "FieldAI set to raise $700 million at $10 billion valuation",
+    "FieldAI is raising $700 million at a $10 billion valuation. The funding has not formally closed and final investment commitments are not yet finalized.",
+    "Business Insider",
+)
+g, s, c, k = classify(fieldai_funding_proposed_baseline)
+assert g == "fieldai", (g, s, c)
+assert c.endswith("기업가치 100억달러·7억달러 조달 추진 기준선"), c
+assert s < 11, ("current FieldAI financing proposal must stay silent", s, c)
+
+fieldai_commercial_baseline = make(
+    "FieldAI passes $135 million in revenue and customer contracts",
+    "FieldAI has more than $135 million in revenue and customer contracts across more than 30 customers.",
+    "Business Insider",
+)
+g, s, c, k = classify(fieldai_commercial_baseline)
+assert g == "fieldai", (g, s, c)
+assert c.endswith("고객 30곳+·매출+계약 1.35억달러 기준선"), c
+assert s < 11, ("$135M + 30 customers is current baseline", s, c)
+
+fieldai_funding_close = make(
+    "FieldAI closes $700 million funding round at $10 billion valuation",
+    "FieldAI announced that its funding round closed and completed at $700 million with a $10 billion valuation.",
+    "FieldAI",
+)
+g, s, c, k = classify(fieldai_funding_close)
+assert g == "fieldai", (g, s, c)
+assert c.endswith("7억달러 투자유치 공식 종결"), c
+assert s >= 11, s
+
+fieldai_commercial_change = make(
+    "FieldAI commercial contracts expand",
+    "FieldAI said revenue and customer contracts increased to $200 million across 45 customers, surpassing its prior level.",
+    "FieldAI",
+)
+g, s, c, k = classify(fieldai_commercial_change)
+assert g == "fieldai", (g, s, c)
+assert c.endswith("매출·계약·수주잔고·고객수 증가"), c
+assert s >= 11, s
+
+fieldai_hyundai_atlas = make(
+    "FieldAI and Hyundai integrate FFM with Atlas",
+    "FieldAI and Hyundai announced a production deployment partnership integrating Field Foundation Models with Atlas at HMGMA after RMAC validation.",
+    "FieldAI",
+)
+g, s, c, k = classify(fieldai_hyundai_atlas)
+assert g == "fieldai", (g, s, c)
+assert c.endswith("현대차·Atlas·RMAC 직접 통합"), c
+assert s >= 11, s
+
+fieldai_hyundai_stake = make(
+    "Hyundai discloses FieldAI equity stake",
+    "Hyundai disclosed that it owns a 2.5% equity stake in FieldAI following an additional investment.",
+    "Hyundai Motor Group",
+)
+g, s, c, k = classify(fieldai_hyundai_stake)
+assert g == "fieldai", (g, s, c)
+assert c.endswith("현대차 추가투자·지분 공개"), c
+assert s >= 11, s
+
+fieldai_partner_baseline = make(
+    "Boston Dynamics and FieldAI partner on construction autonomy",
+    "Boston Dynamics and FieldAI announced a strategic partnership for FieldAI Field Foundation Models on Spot in construction deployments.",
+    "FieldAI",
+)
+g, s, c, k = classify(fieldai_partner_baseline)
+assert g == "fieldai", (g, s, c)
+assert s < 11, ("existing Boston Dynamics partnership must remain baseline", s, c)
+
 print("Physical-AI watcher regression guards: PASS")
