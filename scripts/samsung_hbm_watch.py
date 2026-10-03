@@ -2221,7 +2221,10 @@ def extract_samsung_hbm4_price_observation(e: dict) -> dict | None:
     if not (("samsung" in low or "삼성" in base) and "hbm4" in low and any(k in low for k in ("가격","판매가","공급가","price","pricing","배"))):
         return None
     body = _article_body_text(e.get("direct_link") or "")
-    price_text = clean(body if body else base)
+    # Keep title/description together with the verified body. Some syndicated
+    # follow-up articles put the explicit "price 3x" fact in the headline/deck
+    # while the body later mentions unrelated zHBM "performance 8x".
+    price_text = clean(base + " " + body) if body else base
     multiple = _hbm4_price_multiple(price_text)
     usd_per_gb = _hbm4_usd_per_gb(price_text)
     stage = _hbm4_contract_stage(price_text if body else base)
