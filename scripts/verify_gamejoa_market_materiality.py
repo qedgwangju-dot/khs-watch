@@ -113,6 +113,82 @@ DELIVERED_LOCAL_ADMINISTRATION = (
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_hypothetical_household_interest_bill_is_not_a_new_mortgage_rate(self):
+        title = '주담대 8% 되면…"5억 빌렸다면 이자만 매달 330만원"'
+        body = ("주택담보대출 금리가 8%까지 오르면 5억원을 빌린 차주는 매달 330만원의 이자를 부담할 수 있다는 분석이 나왔다. "
+                "현재 5대 은행의 금리 상단은 7%대이며 금리가 8% 수준까지 오를 경우 차주의 부담이 늘어날 수 있다고 말했다.")
+        result = materiality.assess(title, body)
+        self.assertEqual(result["disposition"], "exclude", result)
+        self.assertEqual(result["reason"], "hypothetical_household_interest_calculation_not_new_rate", result)
+        actual = materiality.assess("은행, 주담대 금리 상향", "은행은 주택담보대출 금리 상단을 7%에서 8%로 상향했다고 발표했다.")
+        self.assertEqual(actual["disposition"], "keep", actual)
+
+    def test_intern_reporter_byline_is_removed_before_core_ranking(self):
+        source = "[서울=뉴시스]장인혜 인턴 기자 = 은행은 주택담보대출 금리 상단을 8%로 상향했다."
+        core = radar.normalized_article_sentence(source)
+        self.assertNotIn("장인혜", core)
+        self.assertNotIn("기자", core)
+        self.assertTrue(core.startswith("은행"), core)
+
+    def test_us_market_close_dedup_uses_session_and_observed_level_across_publishers(self):
+        first = {**alert("취업문 얼었는데 환호한 월가[뉴욕마감]",
+                          "뉴욕증시 3대 지수가 2일(현지시간) 일제히 상승했다. 나스닥종합지수는 319.27포인트(1.19%) 오른 2만7190.86에 마감했다."),
+                 "published": "2026-10-03T06:27+09:00"}
+        second = {**alert("뉴욕증시, 美 고용 지표 소화하며 상승…나스닥 1.19%↑[상보]",
+                           "25일(현지시간) 트레이더 사진. 뉴욕증시가 2일(현지시간) 상승했다. 나스닥지수는 319.27포인트(1.19%) 뛴 27190.86에 거래를 끝냈다."),
+                  "published": "2026-10-03T06:47+09:00", "link": "https://www.etoday.co.kr/news/view/market-fixture"}
+        identity = materiality.source_event_identity(first)
+        self.assertEqual(identity, "source_event:v1:us:equity_close:2026-10-02:nasdaq=27190.86:change=1.19")
+        self.assertEqual(identity, materiality.source_event_identity(second))
+        changed_level = {**second, "source_body": second["source_body"].replace("27190.86", "27191.86")}
+        self.assertNotEqual(identity, materiality.source_event_identity(changed_level))
+        next_day = {**second, "source_body": second["source_body"].replace("2일(현지시간)", "3일(현지시간)"),
+                    "published": "2026-10-04T06:47+09:00"}
+        self.assertNotEqual(identity, materiality.source_event_identity(next_day))
+        intraday = {**second, "source_body": second["source_body"].replace("거래를 끝냈다", "장중 거래되고 있다")}
+        self.assertEqual(materiality.source_event_identity(intraday), "")
+        state = {"seen": {}}
+        seen_time = dt.datetime.fromisoformat("2026-10-04T07:00+09:00")
+        with patch.dict("os.environ", {"RADAR_RUN_MODE": "live"}), \
+                patch.object(radar.telegram, "load_seen_state", return_value=state), \
+                patch.object(radar.telegram, "save_seen_state", side_effect=lambda *_: None):
+            radar.telegram.record_seen_alerts([first], seen_time)
+            fresh, skipped = radar.telegram.filter_previously_seen_alerts([second, changed_level, next_day], seen_time, "live")
+        self.assertEqual(len(skipped), 1)
+        self.assertEqual(len(fresh), 2)
+
+    def test_known_legacy_delivery_gets_verified_close_alias_without_new_sent_records(self):
+        evidence = json.loads(radar.telegram.VERIFIED_EVENT_ALIAS_PATH.read_text(encoding="utf-8"))["entries"][0]
+        receipt = {"title": evidence["source_title"], "link": evidence["link"],
+                   "first_seen_kst": "2026-10-04T00:22:15+09:00", "lanes": {"live": "2026-10-04T00:22:15+09:00"}}
+        state = {"seen": {"old-link": dict(receipt)}}
+        radar.telegram.migrate_seen_verified_event_aliases(state)
+        key = f"event:{radar.telegram.digest_seen(evidence['source_event_identity'])}"
+        self.assertEqual(state["seen"][key]["first_seen_kst"], receipt["first_seen_kst"])
+        self.assertEqual(state["seen"][key]["event_alias_evidence_message_id"], 2111)
+        for name, value in receipt.items():
+            self.assertEqual(state["seen"]["old-link"][name], value)
+        self.assertEqual(state["seen"]["old-link"]["source_event_identity"], evidence["source_event_identity"])
+        revised = {**alert(evidence["source_title"], "뉴욕증시가 2일(현지시간) 상승했다. 나스닥지수는 319.27포인트(1.19%) 뛴 27191.86에 거래를 끝냈다."),
+                   "published": evidence["source_published_kst"], "link": evidence["link"]}
+        with patch.object(radar.telegram, "load_seen_state", return_value=state):
+            fresh, skipped = radar.telegram.filter_previously_seen_alerts([revised], dt.datetime.fromisoformat(receipt["first_seen_kst"]), "live")
+        self.assertEqual(len(fresh), 1)
+        self.assertEqual(len(skipped), 0)
+        unrelated = {"seen": {"old-link": {**receipt, "link": "https://www.etoday.co.kr/news/view/other"}}}
+        radar.telegram.migrate_seen_verified_event_aliases(unrelated)
+        self.assertEqual(len(unrelated["seen"]), 1)
+
+    def test_employment_market_core_supports_verified_close_sentence_variants(self):
+        title = "뉴욕증시, 美 고용 지표 소화하며 상승…나스닥 1.19%↑[상보]"
+        body = ("뉴욕증시가 2일(현지시간) 상승했다. "
+                "나스닥지수는 319.27포인트(1.19%) 뛴 2만7190.86에 거래를 끝냈다. "
+                "9월 비농업 부문 고용은 전월 대비 2만9000명 증가하는 데 그쳐 시장 예상치인 8만4000명 증가를 밑돌았다.")
+        core = radar.detailed_article_core(title, body)
+        for value in ("9월", "2만9000명", "8만4000명", "나스닥", "1.19%"):
+            self.assertIn(value, core)
+        self.assertTrue(radar.source_output_aligned({**alert(title, body), "telegram_core_fact": core}))
+
     def test_marine_industry_is_not_a_production_milestone(self):
         sentence = "해양산업에서 인공지능과 디지털 기술의 활용이 늘어나는 만큼 연구소도 다양한 연구를 추진하고 있다."
         self.assertFalse(materiality.evidence_is_new_event("technology_or_clinical_stage", sentence))

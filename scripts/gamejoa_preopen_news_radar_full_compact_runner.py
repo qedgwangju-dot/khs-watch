@@ -1612,6 +1612,7 @@ def rank_korean_business_detail_candidates(
 
 
 ARTICLE_SUMMARY_NOISE_PATTERNS = [
+    r"\b[가-힣]{2,6}\s*(?:인턴|수습|객원)?\s*기자\s*=\s*",
     r"(?:저작권자\s*\(?c\)?\s*)?[^.\n]{0,80}?무단\s*전재\s*[-·–—]?\s*(?:및\s*)?재배포(?:\s*금지)?[.!。]?",
     r"AI\s*학습\s*및\s*활용\s*금지",
     r"저작권자\s*©?\s*이투데이",
@@ -2244,7 +2245,7 @@ def normalized_article_sentence(sentence: str) -> str:
     if attributed:
         text = f"{attributed.group(1)}은 {attributed.group(2)} 보도했다."
     replacements = (
-        (r"^[가-힣]{2,5}\s*(?:기자|특파원)(?:\s+[가-힣]{2,5}\s*(?:기자|특파원))*\s*=\s*", ""),
+        (r"^[가-힣]{2,5}\s*(?:인턴\s*|수습\s*|객원\s*)?(?:기자|특파원)(?:\s+[가-힣]{2,5}\s*(?:기자|특파원))*\s*=\s*", ""),
         (r"^[▲△▶]\s*", ""),
         (
             r"([A-Za-z가-힣·&]+)\s*\(\s*[\d,]+원\s*[▲▼+-]\s*[\d,]+\s*"
@@ -2302,22 +2303,22 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
     focus = market_materiality.focus_kind(title)
     source = " ".join(sentences)
     if focus == "market_macro_response":
-        jobs = re.search(r"(\d{1,2}월)\s*미국의\s*비농업\s*일자리가[^.!?]{0,30}(\d[\d,]*만\d[\d,]*명)\s*증가", source)
-        expected = re.search(r"(?:전문가\s*)?예상치\s*(\d[\d,]*만\d[\d,]*명)", source)
-        close = re.search(r"나스닥종합지수는[^!?]{0,70}?\(([+-]?\d+(?:\.\d+)?)%\)([^!?]{0,45}?)마감", source)
+        jobs = re.search(r"(\d{1,2}월)\s*(?:미국(?:의)?\s*)?비농업\s*(?:부문\s*고용|일자리|고용)(?:은|이|가)?[^.!?]{0,30}(\d[\d,]*만\d[\d,]*명)\s*증가", source)
+        expected = re.search(r"(?:(?:전문가|시장)\s*)?예상치(?:인)?\s*(\d[\d,]*만\d[\d,]*명)", source)
+        close = re.search(r"나스닥(?:종합)?지수는[^!?]{0,70}?\(([+-]?\d+(?:\.\d+)?)%\)([^!?]{0,45}?)(?:마감|거래를\s*끝냈다)", source)
         if jobs and expected and close:
             observed = jobs.group(2).replace(',', '')
             forecast = expected.group(1).replace(',', '')
             def headcount(value):
                 return int(value.split('만')[0]) * 10000 + int(value.split('만')[1].rstrip('명'))
             rising_close = bool(
-                re.search(r"오른|상승", close.group(2))
+                re.search(r"오른|뛴|상승", close.group(2))
                 and not re.search(r"내린|하락|떨어", close.group(2))
                 and float(close.group(1)) > 0
             )
             falling_close = bool(
                 re.search(r"내린|하락|떨어", close.group(2))
-                and not re.search(r"오른|상승", close.group(2))
+                and not re.search(r"오른|뛴|상승", close.group(2))
                 and float(close.group(1)) > 0
             )
             if headcount(observed) < headcount(forecast) and (rising_close or falling_close):

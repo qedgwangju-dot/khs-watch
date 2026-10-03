@@ -27,6 +27,7 @@ assert spec and spec.loader
 spec.loader.exec_module(strict)
 base = strict.base
 SEEN_PATH = base.ROOT / "data" / "gamejoa_preopen_news_radar_seen.json"
+VERIFIED_EVENT_ALIAS_PATH = base.ROOT / "data" / "gamejoa_verified_event_aliases.json"
 DELIVERY_PATH = base.OUT / "gamejoa_preopen_news_radar_delivery.json"
 
 
@@ -41,6 +42,7 @@ def load_seen_state() -> dict:
         return {"seen": {}, "updated_at_kst": ""}
     payload.setdefault("seen", {})
     migrate_seen_title_aliases(payload)
+    migrate_seen_verified_event_aliases(payload)
     return payload
 
 
@@ -278,6 +280,42 @@ def migrate_seen_title_aliases(state: dict) -> None:
             seen.setdefault(f"event:{digest_seen(macro_theme)}", dict(entry))
 
 
+def migrate_seen_verified_event_aliases(state: dict) -> None:
+    """Upgrade historical sent receipts only with audited source-event evidence."""
+    if not VERIFIED_EVENT_ALIAS_PATH.exists():
+        return
+    proofs = json.loads(VERIFIED_EVENT_ALIAS_PATH.read_text(encoding="utf-8"))
+    seen = state.setdefault("seen", {})
+    for proof in proofs.get("entries", []):
+        identity = str(proof.get("source_event_identity") or "")
+        published = parse_seen_time(proof.get("source_published_kst"))
+        if not (
+            identity.startswith("source_event:v1:us:equity_close:") and published
+            and re.fullmatch(r"[0-9a-f]{64}", str(proof.get("source_body_sha256") or ""))
+            and proof.get("run_id") and proof.get("message_id")
+        ):
+            raise ValueError("Invalid verified event-alias evidence")
+        for entry in list(seen.values()):
+            first_seen = parse_seen_time(entry.get("first_seen_kst")) if isinstance(entry, dict) else None
+            if not first_seen or first_seen < published:
+                continue
+            if canonical_article_url(str(entry.get("link") or "")) != canonical_article_url(proof["link"]):
+                continue
+            if base.norm(canonical_edition_title(str(entry.get("title") or ""))) != base.norm(canonical_edition_title(proof["source_title"])):
+                continue
+            existing_identity = str(entry.get("source_event_identity") or "")
+            if existing_identity and existing_identity != identity:
+                continue
+            entry["source_event_identity"] = identity
+            entry.setdefault("source_published_kst", proof["source_published_kst"])
+            seen.setdefault(f"event:{digest_seen(identity)}", {
+                **entry, "source_event_identity": identity,
+                "source_published_kst": proof["source_published_kst"],
+                "event_alias_evidence_run_id": proof["run_id"],
+                "event_alias_evidence_message_id": proof["message_id"],
+            })
+
+
 def prune_seen_state(state: dict, now) -> None:
     ttl_days = max(1, int(os.getenv("GAMEJOA_RADAR_SEEN_TTL_DAYS", "14")))
     cutoff = now - dt.timedelta(days=ttl_days)
@@ -384,6 +422,7 @@ def record_seen_alerts(alerts: list[dict], now) -> None:
                 "source": alert.get("publisher") or alert.get("source") or "",
                 "link": alert.get("link") or "",
                 "source_event_identity": market_materiality.source_event_identity(alert),
+                "source_published_kst": str(alert.get("published") or ""),
             }
     save_seen_state(state, now)
 

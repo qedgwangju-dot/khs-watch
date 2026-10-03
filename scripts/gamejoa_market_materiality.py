@@ -4,10 +4,11 @@
 from __future__ import annotations
 
 import re
+import datetime as dt
 from functools import lru_cache
 
 
-VERSION = 47
+VERSION = 48
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -331,12 +332,56 @@ def core_focus_aligned(title: str, core: str) -> bool:
     return focus_matches(title, core) and period_matches(title, core)
 
 
+def us_equity_close_identity(alert: dict) -> str:
+    """Identify an observed US session close across publishers, not an intraday quote."""
+    title = str(alert.get("source_title") or alert.get("news") or "")
+    body = str(alert.get("source_body") or "") if alert.get("body_verified") else ""
+    if not re.search(r"뉴욕마감|뉴욕증시|월가", title) or not body:
+        return ""
+    session = re.search(
+        r"뉴욕(?:증시|주식시장)[^.!?]{0,40}?(?:(\d{1,2})월\s*)?(\d{1,2})일\s*\(현지(?:시간)?\)", body,
+    )
+    close = re.search(
+        r"나스닥(?:종합)?지수(?:는|가|이)?[^!?]{0,80}?\(([+-]?\d+(?:\.\d+)?)%\)\s*"
+        r"(오른|뛴|상승한|내린|하락한|떨어진)\s*(\d[\d,]*(?:만[\d,]+)?(?:\.\d+)?)\s*"
+        r"(?:에|로)?\s*(?:마감했다|거래를\s*끝냈다)", body,
+    )
+    try:
+        published = dt.datetime.fromisoformat(str(alert.get("published") or "").replace("Z", "+00:00"))
+        if not session or not close or not published.tzinfo:
+            return ""
+        published = published.astimezone(dt.timezone(dt.timedelta(hours=9))).date()
+        month = int(session.group(1)) if session.group(1) else published.month
+        year = published.year
+        if not session.group(1) and int(session.group(2)) > published.day:
+            previous_month = published.replace(day=1) - dt.timedelta(days=1)
+            year, month = previous_month.year, previous_month.month
+        elif month > published.month:
+            year -= 1
+        day = dt.date(year, month, int(session.group(2)))
+        if not dt.timedelta() <= published - day <= dt.timedelta(days=7):
+            return ""
+        value = close.group(3).replace(',', '')
+        level = float(value.split('만')[0]) * 10000 + float(value.split('만')[1]) if '만' in value else float(value)
+        rate = abs(float(close.group(1)))
+        if close.group(2) in {"내린", "하락한", "떨어진"}:
+            rate = -rate
+        elif float(close.group(1)) < 0:
+            return ""
+        return f"source_event:v1:us:equity_close:{day.isoformat()}:nasdaq={level:.12g}:change={rate:.12g}"
+    except (TypeError, ValueError):
+        return ""
+
+
 def source_event_identity(alert: dict) -> str:
     """Identify a sourced action and its terms, not a company-wide theme.
 
     Unrecognised or incomplete facts retain the existing link/title keys.
     Stored title-only receipts may supply an identity only when self-contained.
     """
+    close = us_equity_close_identity(alert)
+    if close:
+        return close
     title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
     body = str(alert.get("source_body") or "") if alert.get("body_verified") else ""
     kind = focus_kind(title)
@@ -779,6 +824,11 @@ def assess(title: str, body: str) -> dict:
     sentences = source_sentences(body)
     lead = " ".join(sentences[:3])
     headline_lead = f"{title} {lead}"
+    if focus_kind(title) == "mortgage_rate" and re.search(
+        r"(?:\d+(?:\.\d+)?%|금리)[^.!?]{0,15}(?:되면|오르면|빌렸다면|빌리면)|가정", title,
+    ) and re.search(r"가정하면|오를\s*경우|오르면|분석이\s*나왔다", lead):
+        result.update(disposition="exclude", priority=0, reason="hypothetical_household_interest_calculation_not_new_rate")
+        return result
     if re.search(r"업무를[^.!?]{0,45}살펴보는\s*기획\s*기사|기관의\s*(?:역할|업무)[^.!?]{0,25}소개하는\s*기획", body[:800]) and not DIRECT_HEADLINE_CHANGE.search(title):
         result.update(disposition="exclude", priority=0, reason="agency_role_overview_not_new_industry_event")
         return result
