@@ -524,6 +524,7 @@ ARTICLE_DETAIL_HOSTS = (
     "investing.com",
     "reuters.com",
     "trendforce.com",
+    "investors.micron.com",
 )
 
 
@@ -1383,9 +1384,7 @@ def _extract_micron_supply_commitment(item: dict) -> dict | None:
             text,
             re.I,
         )
-    if not m:
-        return None
-    pct = float(m.group(1))
+    pct = float(m.group(1)) if m else None
     source = item.get("source") or "출처 미표시"
     link = item.get("link") or ""
     host = urllib.parse.urlparse(link).netloc.lower()
@@ -1394,14 +1393,57 @@ def _extract_micron_supply_commitment(item: dict) -> dict | None:
         rank = 2
     if "micron.com" in host:
         rank = 3
-    return {
-        "commitment_year": 2027,
-        "output_committed_min_pct": pct,
+
+    obs: dict = {}
+    if pct is not None:
+        obs["commitment_year"] = 2027
+        obs["output_committed_min_pct"] = pct
+
+    m_sca = re.search(r"(?:signed|have signed|서명한)\s*([0-9]{1,3})\s*(?:SCAs?|strategic customer agreements)", text, re.I)
+    if not m_sca:
+        m_sca = re.search(r"([0-9]{1,3})\s*(?:SCAs?|strategic customer agreements)", text, re.I)
+    if m_sca:
+        obs["sca_count"] = int(m_sca.group(1))
+
+    m_share = re.search(r"(?:over|more than|at least)\s*([0-9]{1,3})\s*%[^.]{0,100}?(?:revenue)[^.]{0,80}?(?:through|to)\s*2030", text, re.I)
+    if m_share:
+        obs["sca_revenue_share_2030_pct"] = float(m_share.group(1))
+
+    m_end = re.search(r"(?:extend(?:ing|ed)?|extensions?|through|to)[^.]{0,80}?(2031)", text, re.I)
+    if m_end and ("sca" in low or "agreement" in low):
+        obs["sca_end_year"] = int(m_end.group(1))
+
+    m_rpo = re.search(r"(?:RPO|remaining performance obligations?)[^$]{0,100}\$\s*([0-9]+(?:\.[0-9]+)?)\s*billion", text, re.I)
+    if m_rpo:
+        obs["rpo_usd_bn"] = float(m_rpo.group(1))
+
+    m_rev = re.search(r"(?:FQ1-27|first quarter of 2027|fiscal q1 2027)[^$]{0,160}\$\s*([0-9]+(?:\.[0-9]+)?)\s*billion[^.]{0,120}?(?:revenue|sales)", text, re.I)
+    if not m_rev:
+        m_rev = re.search(r"(?:revenue|sales)[^$]{0,80}\$\s*([0-9]+(?:\.[0-9]+)?)\s*billion[^.]{0,120}?(?:FQ1-27|first quarter of 2027|fiscal q1 2027)", text, re.I)
+    if m_rev:
+        obs["fq1_27_revenue_usd_bn"] = float(m_rev.group(1))
+
+    gm = re.search(r"(?:gross margin)[^0-9]{0,40}([0-9]{2}(?:\.[0-9]+)?)\s*%", text, re.I)
+    opex = re.search(r"(?:operating expenses|opex)[^$]{0,60}\$\s*([0-9]+(?:\.[0-9]+)?)\s*billion", text, re.I)
+    if gm:
+        obs["fq1_27_non_gaap_gm_pct"] = float(gm.group(1))
+    if opex:
+        obs["fq1_27_non_gaap_opex_usd_bn"] = float(opex.group(1))
+    if obs.get("fq1_27_revenue_usd_bn") is not None and obs.get("fq1_27_non_gaap_gm_pct") is not None and obs.get("fq1_27_non_gaap_opex_usd_bn") is not None:
+        obs["fq1_27_implied_op_usd_bn"] = (
+            obs["fq1_27_revenue_usd_bn"] * obs["fq1_27_non_gaap_gm_pct"] / 100.0
+            - obs["fq1_27_non_gaap_opex_usd_bn"]
+        )
+
+    if not obs:
+        return None
+    obs.update({
         "source": source,
         "source_url": link,
         "as_of": (item.get("published_kst") or "")[:10],
         "source_rank": rank,
-    }
+    })
+    return obs
 
 
 def _micron_supply_commitment_changes(old: dict, new: dict) -> list[str]:
@@ -1412,6 +1454,27 @@ def _micron_supply_commitment_changes(old: dict, new: dict) -> list[str]:
             changes.append(f"Micron 2027 공급 확약 비중: {float(b):.0f}%+ 신규 확인")
         elif abs(float(b) - float(a)) >= 5:
             changes.append(f"Micron 2027 공급 확약 비중: {float(a):.0f}%+→{float(b):.0f}%+")
+
+    for key, label in (
+        ("sca_count", "Micron SCA 건수"),
+        ("sca_end_year", "Micron SCA 최장 만기"),
+    ):
+        av, bv = old.get(key), new.get(key)
+        if bv is not None and av != bv:
+            changes.append(f"{label}: {av if av is not None else '미확인'}→{bv}")
+
+    for key, label, threshold in (
+        ("sca_revenue_share_2030_pct", "2030년까지 SCA 매출 커버리지", 5.0),
+        ("rpo_usd_bn", "SCA RPO", 10.0),
+        ("fq1_27_implied_op_usd_bn", "FQ1-27 비GAAP 영업이익 환산", 2.0),
+    ):
+        av, bv = old.get(key), new.get(key)
+        if bv is None:
+            continue
+        if av is None:
+            changes.append(f"{label}: {float(bv):.1f} 신규 확인")
+        elif abs(float(bv) - float(av)) >= threshold:
+            changes.append(f"{label}: {float(av):.1f}→{float(bv):.1f}")
     return changes
 
 
