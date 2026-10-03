@@ -119,7 +119,14 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
-          from scripts.ai_safety_policy_watch import detect_category, detect_entity, source_official, official_page_source
+          from scripts.ai_safety_policy_watch import (
+              detect_category,
+              detect_entity,
+              source_official,
+              official_page_source,
+              forced_official_page_category,
+              forced_official_page_entity,
+          )
 
           cases = [
               (
@@ -169,6 +176,37 @@ jobs:
               print(f"ai_policy_official_source={name} -> {actual}")
               if actual != expected:
                   raise RuntimeError(f"Official page source mismatch: {name} -> {actual}, expected {expected}")
+
+          forced_cases = {
+              "미 하원의장실 White House Accord 공식 발표": (
+                  "프런티어 AI 공동 서약·서명기업 변화",
+                  "백악관·프런티어 AI 공동서약",
+              ),
+              "백악관 Super Intelligence 행정명령": (
+                  "백악관 Super Intelligence 정책·법제화",
+                  "백악관 Super Intelligence 정책",
+              ),
+              "OpenAI 프런티어 학습 Safety Case": (
+                  "Safety Case 실제 학습 승인 게이트",
+                  "OpenAI",
+              ),
+              "NVIDIA OpenShell 개요·지원": (
+                  "OpenShell 기본내장·지원 확대",
+                  "NVIDIA OpenShell",
+              ),
+          }
+          for name, (expected_category, expected_entity) in forced_cases.items():
+              actual_category = forced_official_page_category(name)
+              actual_entity = forced_official_page_entity(name)
+              print(
+                  f"ai_policy_forced_page={name} "
+                  f"category={actual_category} entity={actual_entity}"
+              )
+              if actual_category != expected_category or actual_entity != expected_entity:
+                  raise RuntimeError(
+                      f"Forced official page mapping mismatch: {name} "
+                      f"category={actual_category} entity={actual_entity}"
+                  )
           PY
 
       - name: Run live policy watch
