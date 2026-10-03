@@ -903,7 +903,11 @@ def collect_regulators(errors):
     events.extend(collect_reginfo_reviews(errors))
     events.extend(collect_sec_newsroom_crypto_orders(errors))
     events.extend(collect_sec_exchange_orders(errors))
-    events.extend(collect_vs_trust_3x_registration_milestones(errors))
+    # SEC EDGAR discovery endpoints currently return 403 from GitHub-hosted
+    # runners. Do not pretend that EFFECT/prospectus polling is live when the
+    # official discovery route is unavailable. Launch-stage monitoring stays
+    # active through Volatility Shares' official product list, which is the
+    # operational source for issuer launch/inception confirmation.
     events.extend(collect_volatility_shares_3x_crypto_launch(errors))
     return list({e.key: e for e in events}.values())
 
