@@ -191,6 +191,7 @@ DGX_SPARK_MEMORY_PRICE_BASELINE = {
     "sku_64_model_limit_b": 100.0,
     "sku_128_memory_gb": 128,
     "sku_128_fe_price_usd": 6950.0,
+    "sku_128_fe_price_official_confirmed": False,
     "sku_128_prior_price_usd": 4699.0,
     "sku_128_launch_price_usd": 3999.0,
     "cluster_units": 2,
@@ -1635,6 +1636,8 @@ def _extract_dgx_spark_memory_price(item: dict) -> dict | None:
     ))
     if p128 is not None:
         obs["sku_128_fe_price_usd"] = p128
+        if rank >= 3:
+            obs["sku_128_fe_price_official_confirmed"] = True
 
     if re.search(r"(?:Oct(?:ober)?\.?\s*23|10\s*월\s*23\s*일|10月23日)", text, re.I):
         year = (item.get("published_kst") or "2026")[:4]
@@ -1744,6 +1747,15 @@ def _dgx_spark_memory_price_changes(old: dict, new: dict) -> list[str]:
             changes.append(f"2대 클러스터 Qwen 기준 성능: 최대 {float(b):.1f}x 신규 확인")
         elif abs(float(b) - float(a)) >= 0.1:
             changes.append(f"2대 클러스터 Qwen 기준 성능: 최대 {float(a):.1f}x→{float(b):.1f}x")
+
+    a, b = old.get("sku_128_fe_price_official_confirmed"), new.get("sku_128_fe_price_official_confirmed")
+    if b is not None and a is not None and bool(a) != bool(b):
+        changes.append(
+            "DGX Spark 128GB 현재 가격 공식확인 상태: "
+            + ("확인" if a else "미확인") + "→" + ("확인" if b else "미확인")
+        )
+    elif b is True and a is None:
+        changes.append("DGX Spark 128GB 현재 가격: NVIDIA 공식 확인")
 
     a, b = old.get("memory_supply_cost_pressure"), new.get("memory_supply_cost_pressure")
     if b is not None and a is not None and bool(a) != bool(b):
@@ -2616,7 +2628,12 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
                 + f"<b>{float(dgx_spark_state.get('sku_64_model_limit_b') or 0):.0f}B</b> 파라미터 모델"
             )
         if p128 is not None:
-            line = "  128GB Founders Edition: <b>$" + f"{float(p128):,.0f}</b>"
+            price_status = (
+                "NVIDIA 공식 확인"
+                if dgx_spark_state.get("sku_128_fe_price_official_confirmed")
+                else "신뢰보도 확인 · NVIDIA 현재 가격페이지 직접 확인 전"
+            )
+            line = "  128GB Founders Edition: <b>$" + f"{float(p128):,.0f}</b> · " + price_status
             if prior128:
                 line += " · 2026-02 $" + f"{float(prior128):,.0f} 대비 {(float(p128)/float(prior128)-1)*100:+.1f}%"
             if launch128:
@@ -2640,7 +2657,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         if dgx_spark_state.get("memory_supply_cost_pressure"):
             lines.append("  원가 신호: 메모리 공급제약·가격 상승이 완제품의 가격 인상과 64GB 신규 SKU로 실제 전가된 상태")
         lines.append("  의미: 공급사 ASP 전망보다 한 단계 downstream에서 메모리 부족이 제품 가격·용량 구성까지 바꿨는지 확인하는 실물 지표")
-        lines.append("  다음 확인: 10/23 OEM 실제 판매가·재고, 128GB Founders Edition 현행 MSRP, LPDDR5X 계약가, 64GB↔128GB 판매 비중")
+        lines.append("  다음 확인: 10/23 OEM 실제 판매가·재고, NVIDIA 공식 128GB 현행 MSRP 확인, LPDDR5X 계약가, 64GB↔128GB 판매 비중")
         official = DGX_SPARK_MEMORY_PRICE_BASELINE.get("source_url")
         secondary = DGX_SPARK_MEMORY_PRICE_BASELINE.get("secondary_source_url")
         prior_source = DGX_SPARK_MEMORY_PRICE_BASELINE.get("prior_price_source_url")
