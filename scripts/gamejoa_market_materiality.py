@@ -6,9 +6,10 @@ from __future__ import annotations
 import re
 import datetime as dt
 from functools import lru_cache
+from urllib.parse import urlsplit
 
 
-VERSION = 52
+VERSION = 53
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -79,12 +80,57 @@ ENTERPRISE_CHANGE = re.compile(
     r"상장|기업공개|자사주|배당|지분|주식\s*(?:매수|매각)|자금조달|유상증자|\bipo\b|"
     r"operating profit|net income|guidance|cash flow|supply contract|factory|acquisition", re.I,
 )
+PRIVATE_LIFE_FOREGROUND = re.compile(
+    r"전남편|전아내|열애|결혼식|음주\s*회동|사적\s*만남|술자리|한잔했|"
+    r"(?:배우|가수|아이돌).{0,35}(?:근황|친분|데이트|연애|사생활)|"
+    r"인증\s*(?:샷|사진)|celebrity romance|private meeting|drinking reunion", re.I,
+)
+ENTERTAINMENT_MARKET_EVENT = re.compile(
+    r"매출|영업(?:이익|익|손실)|순(?:이익|익|손실)|가이던스|현금흐름|"
+    r"자사주|주주환원|배당|유상증자|자금조달|기업공개|\bipo\b|"
+    r"(?:코스피|코스닥|나스닥|증시)\s*상장|상장\s*(?:추진|신청|승인|철회)|"
+    r"(?:주식|지분).{0,25}(?:매수|매도|매각|매입|취득|인수|이전)|"
+    r"인수|합병|공급\s*계약|납품\s*계약|수주|발주|설비투자|"
+    r"주가|순매수|순매도|거래대금|금리|관세|수출통제|"
+    r"operating profit|net (?:income|loss)|revenue|guidance|cash flow|"
+    r"buyback|dividend|financing|acquisition|merger|supply contract|stock price", re.I,
+)
+CUSTOMER_DISCUSSION_SUBJECT = (
+    r"공급|고객|구매|생산|공동\s*개발|hbm|파운드리|자율주행|데이터센터|ai.{0,4}(?:반도체|인프라)|"
+    r"supply|customer|procurement|co-develop|foundry|autonomous|data cent(?:er|re)"
+)
+SOCIAL_MEETING_PROOF = re.compile(
+    r"음주|술자리|한잔했|인증\s*(?:샷|사진)|(?:회동|만남|친분|근황)[^.!?]{0,20}인증|"
+    r"(?:SNS|인스타그램|사진|영상)[^.!?]{0,25}(?:친분|근황)|drinking reunion", re.I,
+)
+SCOPED_BUSINESS_DISCUSSION = re.compile(
+    r"(?:공급|납품|구매|공동\s*개발|생산|투자)[^.!?]{0,40}(?:협상|논의|협력|합의|협약)|"
+    r"(?:협상|논의|협력|합의|협약)[^.!?]{0,40}(?:공급|납품|구매|공동\s*개발|생산|투자)|"
+    r"(?:supply|procurement|co-development|production|investment).{0,40}(?:talks|discuss|negotiat|agreement)|"
+    r"(?:discuss|negotiat).{0,40}(?:supply|procurement|co-development|production|investment)", re.I,
+)
 HARD_HEADLINE = re.compile(
     r"매출|이익|실적|가이던스|판가|가격|수주|계약|발주|공장|양산|증설|가동|"
     r"상용화|상장|투자유치|투자 유치|출자|자금조달|자사주|주식 매수|주주환원|주식 기부|지분 이전|"
     r"관세|금리|환율|예탁금|순매수|순매도|수출통제|임상|허가|공급부족|코스피|코스닥|증시|"
     r"earnings|guidance|contract|factory|production|tariff|interest rate|buyback", re.I,
 )
+
+
+def nonmarket_entertainment_reason(title: str, body: str = "", source_url: str = "") -> str:
+    """Use article genre/foreground, never a search-query sector label."""
+    foreground = f"{title} {' '.join(source_sentences(body)[:3])}"
+    market_event = bool(ENTERTAINMENT_MARKET_EVENT.search(title))
+    if PRIVATE_LIFE_FOREGROUND.search(foreground) and not market_event:
+        return "private_life_without_business_change"
+    try:
+        path = urlsplit(source_url).path.lower()
+    except ValueError:
+        path = ""
+    entertainment_section = bool(re.search(r"/(?:entertainment|entertain|showbiz|celebrity)(?:/|$)", path))
+    if entertainment_section and not market_event:
+        return "entertainment_without_headline_market_event"
+    return ""
 
 # Prefer the first event mentioned in the headline, not a sector assigned by
 # the classifier. Reuse it for evidence ranking and compact-summary checks.
@@ -649,7 +695,7 @@ RULES = (
      r"파업|노조|성과급|임단협|(?<!금)감원|(?:인력|인원|일자리).{0,20}감축|임금|strike|union|layoff|wage",
      r"생산|공장|운송|항만|비용|인상|교섭|협상|부결|타결|주식|지급|중단|감축|production|factory|port|cost|talks|shares|halt|cut"),
     ("customer_discussions", ("earnings", "timeline"),
-     r"공급|고객|구매|생산|공동개발|공동 개발|hbm|파운드리|자율주행|데이터센터|ai.{0,4}(?:반도체|인프라)|supply|customer|procurement|co-develop|foundry|autonomous|data center",
+     CUSTOMER_DISCUSSION_SUBJECT,
      r"협상|논의|검토|회동|협력(?!사)|합의|협약|negotiat|discuss|consider|meeting|collaborat|agreement"),
 )
 COMPILED_RULES = tuple(
@@ -661,6 +707,8 @@ COMPILED_RULES = tuple(
 def evidence_is_new_event(kind: str, sentence: str) -> bool:
     """Do not promote service descriptions or event support into transactions."""
     if COMPANY_PROFILE.search(sentence) or ACCOUNTING_NOTE.search(sentence):
+        return False
+    if kind == "customer_discussions" and SOCIAL_MEETING_PROOF.search(sentence) and not SCOPED_BUSINESS_DISCUSSION.search(sentence):
         return False
     if re.search(r"(?:주요|법률)\s*이슈를\s*짚고|(?:핵심\s*)?정보를\s*전달하고자|기사(?:에서는|에서)[^.!?]{0,35}소개합니다", sentence):
         return False
@@ -868,7 +916,7 @@ def source_sentences(text: str) -> list[str]:
     return sentences
 
 
-def assess(title: str, body: str) -> dict:
+def assess(title: str, body: str, *, source_url: str = "") -> dict:
     title = re.sub(r"\s+", " ", str(title or "")).strip()
     body = str(body or "").strip()
     result = {"version": VERSION, "disposition": "review", "priority": 1, "axes": [], "evidence": []}
@@ -929,8 +977,9 @@ def assess(title: str, body: str) -> dict:
     ):
         result.update(disposition="exclude", priority=0, reason="person_profile_without_direct_new_business_event")
         return result
-    if re.search(r"전남편|전아내|열애|결혼식|음주\s*회동|사적\s*만남|celebrity romance", headline_lead, re.I) and not ENTERPRISE_CHANGE.search(title):
-        result.update(disposition="exclude", priority=0, reason="private_life_without_business_change")
+    entertainment_reason = nonmarket_entertainment_reason(title, body, source_url)
+    if entertainment_reason:
+        result.update(disposition="exclude", priority=0, reason=entertainment_reason)
         return result
     if re.search(r"배당.{0,45}(?:유지|동결)|dividend.{0,30}unchanged", title, re.I) and not re.search(
         r"(?:특별|추가)\s*배당.{0,20}(?:신설|도입|증액)|자사주.{0,20}(?:신규|확대|매입|소각)|"
@@ -1065,7 +1114,7 @@ def assess(title: str, body: str) -> dict:
             if soft and kind in {"earnings_or_guidance", "rates_fx_or_macro", "market_price_or_flow"} and not SOFT_HEADLINE.search(sentence):
                 continue
             if soft and kind == "customer_discussions" and not re.search(
-                r"공급|고객|구매|생산|공동\s*개발|인증|hbm|파운드리|자율주행|데이터센터|ai.{0,4}(?:반도체|인프라)|supply|customer|procurement|co-develop|foundry|autonomous|data center", sentence, re.I,
+                CUSTOMER_DISCUSSION_SUBJECT, sentence, re.I,
             ):
                 continue
             if kind == "rates_fx_or_macro" and re.search(

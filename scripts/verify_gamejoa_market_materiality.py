@@ -112,6 +112,93 @@ DELIVERED_LOCAL_ADMINISTRATION = (
 )
 
 
+class EntertainmentBoundaryChecks(unittest.TestCase):
+    SOURCE_URL = "https://biz.chosun.com/entertainment/enter_general/2026/10/03/ME4GKNBTG44DGZTDMU4TAMJTMI/"
+
+    def test_actual_social_reunion_is_rejected_even_with_forged_ai_metadata(self):
+        title = '공효진, 케빈오 두고 전남편 만났다.."우리 한잔했어"'
+        body = ("배우 공효진이 전남편과 음주 회동을 인증했다.\n"
+                "공효진은 3일 자신의 SNS에 별다른 설명 없이 짧은 영상을 게재했다.\n"
+                "공개된 영상에는 밤거리를 걷고 있는 공효진과 정준원의 모습이 담겨 있었다.")
+        item = {**alert(title, body), "link": self.SOURCE_URL,
+                "source": "오픈AI·브로드컴 자체 AI칩·HBM", "sectors": ["반도체/AI"],
+                "market_materiality": {"disposition": "keep", "priority": 3, "axes": ["earnings"]}}
+        audit = radar.source_market_materiality(item)
+        self.assertEqual(audit["reason"], "private_life_without_business_change")
+        self.assertFalse(audit["evidence"])
+        self.assertTrue(radar.is_nonmarket_business_event(item))
+        self.assertIsNone(radar.build_verified_korean_business_alert({**item, "title": title}, NOW))
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([item], 7), [])
+
+    def test_entertainment_section_needs_a_headline_market_event_not_meeting_words(self):
+        title = "다시 만난 두 배우, 영상 공개"
+        body = "두 배우는 고객 초청 행사에서 회동했다. 두 사람의 영상이 공개됐다."
+        audit = materiality.assess(title, body, source_url=self.SOURCE_URL)
+        self.assertEqual(audit["reason"], "entertainment_without_headline_market_event")
+        self.assertFalse(audit["evidence"])
+
+    def test_incidental_quarter_and_connection_words_are_not_business_exceptions(self):
+        title = "새 분기에도 연결된 배우들의 만남"
+        body = "두 배우는 SNS에 인증 사진을 공개했다. 소속사의 지난해 영업이익은 증가했다."
+        audit = materiality.assess(title, body, source_url=self.SOURCE_URL)
+        self.assertEqual(audit["disposition"], "exclude", audit)
+        self.assertEqual(audit["priority"], 0)
+
+    def test_social_proof_is_not_a_customer_discussion_in_any_source(self):
+        for sentence in (
+            "대표는 고객과 술자리 회동을 인증했다.",
+            "공급사 대표가 친분을 드러내는 회동 인증 사진을 공개했다.",
+            "The customer posted photos of a drinking reunion after the meeting.",
+        ):
+            self.assertFalse(materiality.evidence_is_new_event("customer_discussions", sentence), sentence)
+        audit = materiality.assess("대표, 고객과 회동 인증", "대표는 고객과 회동을 인증했다.")
+        self.assertFalse(audit["evidence"], audit)
+
+    def test_customer_certification_alone_is_not_a_business_meeting_topic(self):
+        audit = materiality.assess("대표, 만남 인증", "대표는 회동을 인증했다.")
+        self.assertNotEqual(audit["disposition"], "keep", audit)
+        self.assertTrue(materiality.evidence_is_new_event(
+            "customer_discussions", "고객사는 HBM 공급과 공동 개발 방안을 논의했다.",
+        ))
+
+    def test_entertainment_company_earnings_and_insider_trades_remain_eligible(self):
+        for title, body in (
+            ("하이브, 3분기 영업이익 30% 증가", "하이브는 3분기 영업이익이 전년비 30% 증가했다고 발표했다."),
+            ("JYP 박진영, 회사 주식 50억원 매수", "JYP 박진영 대표는 회사 주식 50억원을 매수했다고 공시했다."),
+            ("YG, 자사주 200억원 매입 결정", "YG는 200억원 규모 자사주 매입을 결정했다고 공시했다."),
+        ):
+            item = {**alert(title, body), "link": self.SOURCE_URL}
+            audit = radar.source_market_materiality(item)
+            self.assertEqual(audit["disposition"], "keep", audit)
+            self.assertGreaterEqual(audit["priority"], 2)
+            self.assertFalse(radar.is_nonmarket_business_event(item))
+            row = {**item, "title": title, "publisher": "조선비즈", "published": NOW}
+            built = radar.build_verified_korean_business_alert(row, NOW)
+            self.assertIsNotNone(built, title)
+            with patch.object(radar.base, "kst_now", return_value=NOW):
+                self.assertEqual(len(radar.quality_display_alerts([built], 7)), 1, built)
+
+    def test_scoped_customer_supply_talks_are_not_blocked_by_meeting_photos(self):
+        title = "반도체기업, 고객과 HBM 공급 논의"
+        body = "반도체기업 대표는 고객과 HBM 공급 협상을 논의하고 회동 사진을 공개했다."
+        self.assertTrue(materiality.evidence_is_new_event("customer_discussions", body))
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertTrue(any(item["kind"] == "customer_discussions" for item in audit["evidence"]))
+
+    def test_entertainment_url_guard_uses_path_not_query_text(self):
+        title = "기업 대표, 고객사와 회동"
+        for url in (
+            "https://www.yna.co.kr/view/article?redirect=/entertainment/",
+            "https://www.etnews.com/news/article#entertainment/",
+            "https://www.yna.co.kr/view/entertainment-fixture",
+        ):
+            self.assertEqual(materiality.nonmarket_entertainment_reason(title, source_url=url), "")
+        self.assertEqual(materiality.nonmarket_entertainment_reason(title, source_url=self.SOURCE_URL),
+                         "entertainment_without_headline_market_event")
+
+
 class MaterialityChecks(unittest.TestCase):
     def test_combined_vehicle_sales_mix_does_not_become_one_issuer_decline(self):
         title = "'내연기관 시대 저문다'…현대차·기아, 국내 판매 2대 중 1대 '친환경'"

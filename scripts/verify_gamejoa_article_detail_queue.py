@@ -36,6 +36,42 @@ def fixture(title: str, body: str) -> str:
 
 
 class DetailQueueChecks(unittest.TestCase):
+    def test_entertainment_query_noise_is_removed_before_body_fetch(self):
+        rows = [{**article(1), "title": "두 배우 다시 만났다, 영상 공개",
+                 "link": "https://biz.chosun.com/entertainment/enter_general/2026/10/03/social/",
+                 "source": "오픈AI·브로드컴 자체 AI칩·HBM", "publisher": "조선비즈"},
+                {**article(2), "title": "배우들의 음주 회동 인증", "source": "HBM 공급 협상"}]
+        with tempfile.TemporaryDirectory() as folder, patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}), \
+                patch.object(queue, "STATE_PATH", Path(folder) / "state.json"), \
+                patch.object(queue, "PENDING_PATH", Path(folder) / "pending.json"), \
+                patch.object(queue, "CACHE_PATH", Path(folder) / "cache.json"), \
+                patch.object(radar.telegram, "load_seen_state", return_value={"seen": {}}), \
+                patch.object(radar.base, "fetch") as fetch:
+            notes = radar.hydrate_korean_business_details(rows, NOW)
+            fetch.assert_not_called()
+        self.assertIn("nonmarket_skipped=2", notes[-1])
+        self.assertEqual(rows[0]["_detail_skipped_reason"], "entertainment_without_headline_market_event")
+        self.assertEqual(rows[1]["_detail_skipped_reason"], "private_life_without_business_change")
+
+    def test_entertainment_company_results_still_receive_source_body_verification(self):
+        title = "하이브, 3분기 영업이익 30% 증가"
+        body = "하이브는 3분기 영업이익이 전년비 30% 증가했다고 발표했다. 하이브는 같은 기간 매출도 20% 증가했다고 밝혔다. " * 4
+        row = {**article(1), "title": title,
+               "link": "https://biz.chosun.com/entertainment/enter_general/2026/10/01/earnings/",
+               "source": "조선비즈", "publisher": "조선비즈"}
+        with tempfile.TemporaryDirectory() as folder, patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}), \
+                patch.object(queue, "STATE_PATH", Path(folder) / "state.json"), \
+                patch.object(queue, "PENDING_PATH", Path(folder) / "pending.json"), \
+                patch.object(queue, "CACHE_PATH", Path(folder) / "cache.json"), \
+                patch.object(radar.telegram, "load_seen_state", return_value={"seen": {}}), \
+                patch.object(radar.base, "fetch", return_value=(fixture(title, body), None)) as fetch:
+            radar.hydrate_korean_business_details([row], NOW)
+            fetch.assert_called_once()
+        self.assertTrue(row.get("body_verified"), row)
+        self.assertEqual(radar.market_materiality.assess(
+            row["source_title"], row["source_body"], source_url=row["link"],
+        )["disposition"], "keep")
+
     def test_government_response_does_not_turn_disputed_oil_project_into_a_deal(self):
         title = '트럼프, 84억弗 석유 프로젝트 압박…정부 "팩트시트 이행이 원칙"'
         body = ('정부는 도널드 트럼프 미국 대통령이 언급한 84억 달러 규모의 원유 회수 증진(EOR) 프로젝트와 '

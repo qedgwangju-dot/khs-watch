@@ -6931,6 +6931,12 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
     title_text = title.lower()
     body = str(row.get("source_body") or row.get("source_abstract") or "")
     text = f"{title} {body}".lower()
+    entertainment_reason = market_materiality.nonmarket_entertainment_reason(
+        title, article_summary_body(body) if row.get("body_verified") else "", str(row.get("link") or ""),
+    )
+    if entertainment_reason:
+        row["_exclusion_reason"] = entertainment_reason
+        return None
 
     # A macro release owns its headline; background oil/Fed references must
     # not replace the announced indicator with a thematic policy template.
@@ -7035,7 +7041,7 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
         return None
 
     # Source-backed changes must survive the legacy headline vocabulary gate.
-    source_audit = market_materiality.assess(title, article_summary_body(body))
+    source_audit = market_materiality.assess(title, article_summary_body(body), source_url=str(row.get("link") or ""))
     if row.get("body_verified") and source_audit["disposition"] == "keep" and source_audit["priority"] >= 2:
         impacts = [MATERIALITY_IMPACT_NAMES[axis] for axis in source_audit["axes"] if axis in MATERIALITY_IMPACT_NAMES]
         alert = base_korean_business_alert(
@@ -7130,7 +7136,9 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
         unique_links.add(link)
         row["publisher"] = korean_business_publisher(row)
         if is_nonmarket_business_event(row):
-            row["_detail_skipped_reason"] = "nonmarket_ceremonial_or_sports"
+            row["_detail_skipped_reason"] = market_materiality.nonmarket_entertainment_reason(
+                str(row.get("source_title") or row.get("title") or ""), source_url=link,
+            ) or "nonmarket_ceremonial_or_sports"
             nonmarket_skipped += 1
             continue
         title_tokens = normalized_title_tokens(str(row.get("title") or ""))
@@ -7201,6 +7209,7 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
         source_selection = market_materiality.assess(
             detail.get("title") or str(row.get("title") or ""),
             article_summary_body(detail.get("body") or ""),
+            source_url=str(row.get("link") or ""),
         ) if valid else {}
         detail_queue.record_attempt(
             pending, row, query_time, verified=valid, error=error,
@@ -9065,6 +9074,9 @@ def is_stale_session_preview(alert: dict, now) -> bool:
 
 def is_nonmarket_business_event(item: dict) -> bool:
     title = base.norm(str(item.get("source_title") or item.get("news") or item.get("title") or ""))
+    body = str(item.get("source_body") or "") if item.get("body_verified") else ""
+    if market_materiality.nonmarket_entertainment_reason(title, body, str(item.get("link") or "")):
+        return True
     material_events = (
         "매출", "영업이익", "순이익", "가이던스", "공급계약", "수주", "발주",
         "자사주", "주식 매수", "주식매수", "지분", "인수", "합병", "상장",
@@ -9177,7 +9189,7 @@ def source_market_materiality(alert: dict) -> dict:
     body = str(alert.get("source_body") or alert.get("source_abstract") or "")
     if not alert.get("body_verified"):
         body = ""
-    return market_materiality.assess(title, article_summary_body(body))
+    return market_materiality.assess(title, article_summary_body(body), source_url=str(alert.get("link") or ""))
 
 
 def verified_materiality_axes(alert: dict) -> list[str]:
