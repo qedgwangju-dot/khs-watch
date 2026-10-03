@@ -205,8 +205,16 @@ def credit_class(results, prev_rows):
     loas, hoas = results["LQD"].get("oas_bps"), results["HYG"].get("oas_bps")
     ploas = (prev_rows.get("LQD") or {}).get("oas_bps")
     phoas = (prev_rows.get("HYG") or {}).get("oas_bps")
+    lcur_date = results["LQD"].get("oas_date")
+    hcur_date = results["HYG"].get("oas_date")
+    lprev_date = (prev_rows.get("LQD") or {}).get("oas_date")
+    hprev_date = (prev_rows.get("HYG") or {}).get("oas_date")
     ldoas = None if loas is None or ploas is None else loas - float(ploas)
     hdoas = None if hoas is None or phoas is None else hoas - float(phoas)
+    if lprev_date and lcur_date and lprev_date == lcur_date:
+        ldoas = None
+    if hprev_date and hcur_date and hprev_date == hcur_date:
+        hdoas = None
 
     if lqd is None or hyg is None:
         return "신용 Fund Flow 판정 대기", "LQD·HYG 첫 기준점 확보 중", ldoas, hdoas
@@ -379,14 +387,22 @@ def main():
         if results[ticker].get("nav_date") != results[ticker].get("shares_date")
     }
     missing_oas = [ticker for ticker in ("LQD", "HYG") if results[ticker].get("oas_bps") is None]
-    oas_date_mismatch = {
-        ticker: {
-            "fund_date": results[ticker].get("date"),
-            "oas_date": results[ticker].get("oas_date"),
-        }
-        for ticker in ("LQD", "HYG")
-        if results[ticker].get("oas_date") != results[ticker].get("date")
-    }
+    oas_dates = {ticker: results[ticker].get("oas_date") for ticker in ("LQD", "HYG")}
+    unique_oas_dates = {d for d in oas_dates.values() if d}
+    oas_stale = {}
+    for ticker in ("LQD", "HYG"):
+        fund_d = results[ticker].get("date")
+        oas_d = results[ticker].get("oas_date")
+        if not fund_d or not oas_d:
+            continue
+        try:
+            fund_dt = dt.date.fromisoformat(fund_d)
+            oas_dt = dt.date.fromisoformat(oas_d)
+            lag_days = (fund_dt - oas_dt).days
+        except Exception:
+            lag_days = 999
+        if lag_days < 0 or lag_days > 4:
+            oas_stale[ticker] = {"fund_date": fund_d, "oas_date": oas_d, "calendar_lag_days": lag_days}
     curve_missing = [tenor for tenor in ("2Y", "10Y", "30Y") if curve.get(tenor) is None]
     if len(unique_fund_dates) != 1 or curve.get("date") not in unique_fund_dates:
         print(json.dumps({
@@ -408,10 +424,16 @@ def main():
             "fund_dates": fund_dates,
         }, ensure_ascii=False))
         return
-    if oas_date_mismatch:
+    if len(unique_oas_dates) != 1:
         print(json.dumps({
-            "report_withheld": "credit_oas_date_mismatch",
-            "details": oas_date_mismatch,
+            "report_withheld": "credit_oas_dates_not_aligned",
+            "details": oas_dates,
+        }, ensure_ascii=False))
+        return
+    if oas_stale:
+        print(json.dumps({
+            "report_withheld": "credit_oas_stale",
+            "details": oas_stale,
         }, ensure_ascii=False))
         return
     if curve_missing:
@@ -468,6 +490,7 @@ def main():
         price = "확인불가" if p is None else f"{arrow(p)} {p:+.2f}%"
         sec = "확인불가" if r.get("sec_yield") is None else f"{r['sec_yield']:.2f}%"
         oas = "확인불가" if r.get("oas_bps") is None else f"{r['oas_bps']:.1f}bp"
+        oas_date = r.get("oas_date") or "기준일 확인불가"
         doas = ldoas if ticker == "LQD" else hdoas
         if doas is None:
             doas_text = "비교 대기"
@@ -480,7 +503,7 @@ def main():
             f"• 가격: NAV ${r['nav']:.2f} | 1일 {price} | 30일 SEC {sec}",
             f"• 일간 자금: {arrow(flow)} {flow_word(flow)} {base.fmt_usd_flow(flow)} ({base.fmt_krw(flow, fx['rate'])})",
             f"• 최근 5회: {arrow(flow5)} {base.fmt_usd_flow(flow5)} ({base.fmt_krw(flow5, fx['rate'])})",
-            f"• 포트폴리오 OAS: {oas} | 직전 대비 {doas_text}",
+            f"• 포트폴리오 OAS: {oas} | 기준 {oas_date} | 직전 저장값 대비 {doas_text}",
             f"• 해석: {etf_interpretation(ticker, p, flow)}",
             "",
         ]
@@ -571,7 +594,8 @@ def main():
     state["last_delivery"] = {
         "at_kst": now.isoformat(timespec="seconds"), "bot_username": username, "message_ids": ids,
         "overall": o_head, "treasury_flow": t_head, "credit_flow": c_head, "curve_regime": regime,
-        "treasury_date": curve["date"], "format": "treasury-credit-ishares-oas-v2",
+        "treasury_date": curve["date"], "credit_oas_date": next(iter(unique_oas_dates)),
+        "format": "treasury-credit-ishares-oas-v3",
         "data_fingerprint": data_fingerprint,
     }
     base.save_state(state)
