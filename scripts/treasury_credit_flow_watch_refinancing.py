@@ -276,17 +276,24 @@ def _oas_delta(oas_text):
     return float(m.group(1)) if m else None
 
 
+def _oas_asof(oas_text):
+    m = re.search(r"기준\\s+(20\\d{2}-\\d{2}-\\d{2})", oas_text or "")
+    return m.group(1) if m else None
+
+
 def _credit_alert_line(hyg_flow, hyg_oas):
     hdoas = _oas_delta(hyg_oas)
     if hdoas is None or hdoas < 5:
         return None
+    asof = _oas_asof(hyg_oas)
+    asof_text = f" (OAS 기준 {asof})" if asof else ""
     if hdoas >= 10:
         if _outflow(hyg_flow):
-            return f"현재 신용경보: HYG OAS {hdoas:+.1f}bp 급확대 + HYG 자금유출 → 신용위험 확대 경계"
-        return f"현재 신용경보: HYG OAS {hdoas:+.1f}bp 급확대 → 신용위험 경계 강화. HYG 자금은 유입이라 전면 위험회피 확정은 아님"
+            return f"현재 신용경보: HYG OAS {hdoas:+.1f}bp 급확대{asof_text} + HYG 자금유출 → 신용위험 확대 경계"
+        return f"현재 신용경보: HYG OAS {hdoas:+.1f}bp 급확대{asof_text} → 신용위험 경계 강화. HYG 자금은 유입이라 전면 위험회피 확정은 아님"
     if _outflow(hyg_flow):
-        return f"현재 신용경보: HYG OAS {hdoas:+.1f}bp 확대 + HYG 자금유출 → 신용위험 경계 강화"
-    return f"현재 신용경보: HYG OAS {hdoas:+.1f}bp 확대 → 신용가격 악화. 자금유입과 신용가격 신호가 엇갈림"
+        return f"현재 신용경보: HYG OAS {hdoas:+.1f}bp 확대{asof_text} + HYG 자금유출 → 신용위험 경계 강화"
+    return f"현재 신용경보: HYG OAS {hdoas:+.1f}bp 확대{asof_text} → 신용가격 악화. 자금유입과 신용가격 신호가 엇갈림"
 
 
 def _fx_rate_from_line(fx_line):
@@ -396,7 +403,11 @@ def _compact_report(raw_text):
 
     gr = readable.get_growth_cost_snapshot()
     if gr.get("ok"):
-        gr_line = f"G-R(명목GDP 연율-HYG 평균 만기수익률): {gr['gap']:+.2f}%p | G {gr['g']:.2f}% vs R {gr['r']:.2f}% → {gr['state']}"
+        gr_line = (
+            f"G-R(명목GDP 연율-HYG 평균 만기수익률): {gr['gap']:+.2f}%p | "
+            f"G {gr['g']:.2f}% ({gr.get('g_period') or '기준기간 확인 대기'}) vs "
+            f"R {gr['r']:.2f}% (HYG 기준 {gr.get('r_date') or '기준일 확인 대기'}) → {gr['state']}"
+        )
     else:
         gr_line = "G-R: 공식 최신값 조회 실패 → 판정 보류"
 
