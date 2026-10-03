@@ -269,19 +269,24 @@ def _is_boston_capital_or_commercial(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    prior = _orig_topic_group(text)
+    # Preserve the dedicated FieldAI lane before broader Hyundai/Atlas rollout
+    # rules so a future FFM/Atlas/RMAC integration is not downgraded to a generic
+    # rollout headline.
+    if prior == 'fieldai':
+        return prior
     # Hyundai Mobis actuator commercialization has its own finer-grained gate.
     # Defer before the broader Boston Dynamics/Atlas rollout classifier so a
     # new Mobis order/PPAP/SOP/first-shipment event is not swallowed as a
     # generic external-customer rollout story.
     if MOBIS_ACTUATOR.search(text):
-        prior = _orig_topic_group(text)
         if prior == 'hyundai_mobis_atlas':
             return prior
     if _robot_factory_stage(text): return 'hyundai_atlas_rollout'
     if _robot_channel_stage(text): return 'hyundai_atlas_rollout'
     if _is_rmac_operational(text): return 'hyundai_atlas_rollout'
     if _is_boston_capital_or_commercial(text) or _is_atlas_rollout(text): return 'hyundai_atlas_rollout'
-    return _orig_topic_group(text)
+    return prior
 
 
 def _ipo_stage(text: str) -> str:
