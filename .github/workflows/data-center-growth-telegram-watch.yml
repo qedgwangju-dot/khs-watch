@@ -14,6 +14,7 @@ on:
       - "scripts/us_data_center_generation_buildout_watch.py"
       - "scripts/us_data_center_cancellation_risk_watch.py"
       - "scripts/us_ai_data_center_buildout_watch.py"
+      - "scripts/spacexai_neocloud_watch.py"
       - "scripts/epoch_ai_dc_execution_watch.py"
       - "scripts/ai_dc_tam_revision_watch.py"
       - "scripts/us_hyperscaler_company_risk_watch.py"
@@ -177,6 +178,9 @@ jobs:
       - name: Check Epoch AI major US data-center buildout
         run: python scripts/us_ai_data_center_buildout_watch.py
 
+      - name: Check SpaceXAI external compute and neocloud monetization
+        run: python scripts/spacexai_neocloud_watch.py
+
       - name: Check Epoch AI aggregate US execution ratio
         run: python scripts/epoch_ai_dc_execution_watch.py
 
@@ -208,6 +212,7 @@ jobs:
               pathlib.Path("out/us_data_center_generation_buildout_alert.txt"),
               pathlib.Path("out/us_data_center_cancellation_risk_alert.txt"),
               pathlib.Path("out/us_ai_data_center_buildout_alert.txt"),
+              pathlib.Path("out/spacexai_neocloud_alert.txt"),
               pathlib.Path("out/epoch_ai_dc_execution_alert.txt"),
               pathlib.Path("out/ai_dc_tam_revision_alert.txt"),
               pathlib.Path("out/us_hyperscaler_company_risk_alert.txt"),
@@ -336,6 +341,21 @@ jobs:
                           ],
                       ]
                   }
+              elif p.name == "spacexai_neocloud_alert.txt":
+                  payload["parse_mode"] = "HTML"
+                  payload["link_preview_options"] = {"is_disabled": True}
+                  payload["reply_markup"] = {
+                      "inline_keyboard": [
+                          [
+                              {"text": "📄 SpaceX S-1", "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026039276/spaceexplorationtechnologi.htm"},
+                              {"text": "📄 Google 계약 FWP", "url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026041150/spacexagreementfwp.htm"},
+                          ],
+                          [
+                              {"text": "🏢 Anthropic 공식", "url": "https://www.anthropic.com/news/higher-limits-spacex"},
+                              {"text": "🛰 SpaceXAI 공식", "url": "https://x.ai/news/anthropic-compute-partnership"},
+                          ],
+                      ]
+                  }
               elif p.name == "us_hyperscaler_company_risk_alert.txt":
                   payload["parse_mode"] = "HTML"
                   payload["link_preview_options"] = {"is_disabled": True}
@@ -424,6 +444,7 @@ jobs:
           cp out/us_data_center_generation_buildout_pending_state.json "$tmpdir/us_data_center_generation_buildout_state.json"
           cp out/us_data_center_cancellation_risk_pending_state.json "$tmpdir/us_data_center_cancellation_risk_state.json"
           cp out/us_ai_data_center_buildout_pending_state.json "$tmpdir/us_ai_data_center_buildout_state.json"
+          cp out/spacexai_neocloud_pending_state.json "$tmpdir/spacexai_neocloud_state.json"
           cp out/epoch_ai_dc_execution_pending_state.json "$tmpdir/epoch_ai_dc_execution_state.json"
           cp out/ai_dc_tam_revision_pending_state.json "$tmpdir/ai_dc_tam_revision_state.json"
           cp out/us_hyperscaler_company_risk_pending_state.json "$tmpdir/us_hyperscaler_company_risk_state.json"
@@ -443,6 +464,7 @@ jobs:
             cp "$tmpdir/us_data_center_generation_buildout_state.json" data/us_data_center_generation_buildout_state.json
             cp "$tmpdir/us_data_center_cancellation_risk_state.json" data/us_data_center_cancellation_risk_state.json
             cp "$tmpdir/us_ai_data_center_buildout_state.json" data/us_ai_data_center_buildout_state.json
+            cp "$tmpdir/spacexai_neocloud_state.json" data/spacexai_neocloud_state.json
             cp "$tmpdir/epoch_ai_dc_execution_state.json" data/epoch_ai_dc_execution_state.json
             cp "$tmpdir/ai_dc_tam_revision_state.json" data/ai_dc_tam_revision_state.json
             cp "$tmpdir/us_hyperscaler_company_risk_state.json" data/us_hyperscaler_company_risk_state.json
@@ -454,6 +476,7 @@ jobs:
                     data/us_data_center_generation_buildout_state.json \
                     data/us_data_center_cancellation_risk_state.json \
                     data/us_ai_data_center_buildout_state.json \
+                    data/spacexai_neocloud_state.json \
                     data/epoch_ai_dc_execution_state.json \
                     data/ai_dc_tam_revision_state.json \
                     data/us_hyperscaler_company_risk_state.json
@@ -507,6 +530,9 @@ jobs:
             out/us_ai_data_center_buildout_status.md
             out/us_ai_data_center_buildout_alert.txt
             out/us_ai_data_center_buildout_pending_state.json
+            out/spacexai_neocloud_status.md
+            out/spacexai_neocloud_alert.txt
+            out/spacexai_neocloud_pending_state.json
             out/epoch_ai_dc_execution_status.md
             out/epoch_ai_dc_execution_alert.txt
             out/epoch_ai_dc_execution_pending_state.json
