@@ -400,7 +400,21 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertIsNotNone(obs)
         self.assertEqual(obs["sku_128_memory_gb"], 128)
         self.assertEqual(obs["sku_128_fe_price_usd"], 6950.0)
+        self.assertIsNone(obs.get("sku_128_fe_price_official_confirmed"))
         self.assertTrue(obs["memory_supply_cost_pressure"])
+
+    def test_dgx_spark_128gb_price_only_becomes_official_when_nvidia_source_states_it(self):
+        item = {
+            "title": "NVIDIA DGX Spark 128GB pricing update",
+            "description": "DGX Spark 128GB Founders Edition is now priced at $6,950.",
+            "source": "NVIDIA",
+            "link": "https://blogs.nvidia.com/blog/example-dgx-spark-price/",
+            "published_kst": "2026-10-03T09:00:00+09:00",
+        }
+        obs = w._extract_dgx_spark_memory_price(item)
+        self.assertIsNotNone(obs)
+        self.assertEqual(obs["sku_128_fe_price_usd"], 6950.0)
+        self.assertTrue(obs["sku_128_fe_price_official_confirmed"])
 
     def test_dgx_spark_typed_state_only_alerts_when_tracked_fact_changes(self):
         same = dict(w.DGX_SPARK_MEMORY_PRICE_BASELINE)
@@ -408,6 +422,9 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         moved = dict(same, sku_128_fe_price_usd=7499.0)
         changes = w._dgx_spark_memory_price_changes(w.DGX_SPARK_MEMORY_PRICE_BASELINE, moved)
         self.assertTrue(any("128GB Founders Edition" in x and "$6,950→$7,499" in x for x in changes))
+        confirmed = dict(same, sku_128_fe_price_official_confirmed=True)
+        official_changes = w._dgx_spark_memory_price_changes(w.DGX_SPARK_MEMORY_PRICE_BASELINE, confirmed)
+        self.assertTrue(any("공식확인 상태" in x and "미확인→확인" in x for x in official_changes))
 
     def test_dgx_spark_untrusted_republisher_does_not_promote_typed_state(self):
         item = {
