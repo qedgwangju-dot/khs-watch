@@ -475,6 +475,41 @@ def collect_reginfo_reviews(errors):
     return list({e.key: e for e in events}.values())
 
 
+def collect_sec_newsroom_crypto_orders(errors):
+    events = []
+    url = "https://www.sec.gov/newsroom"
+    try:
+        soup = soup_for(url)
+        for a in soup.find_all("a", href=True):
+            title = clean(a.get_text(" ", strip=True))
+            if not title or not CRYPTO_RE.search(title):
+                continue
+            if not re.search(r"\b(?:Order|Approval|Approving|Approved|List|Listing|Trade|Trading|Shares|ETF|ETP)\b", title, re.I):
+                continue
+            href = abs_url(url, a.get("href"))
+            container = a.find_parent(["article", "li", "div"])
+            detail = clean(container.get_text(" ", strip=True))[:900] if container else title
+            date = ""
+            m = re.search(
+                r"\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\.?\s+\d{1,2},\s+20\d{2}\b",
+                detail,
+                re.I,
+            )
+            if m:
+                date = m.group(0).replace(".", "")
+            events.append(Event(
+                "SEC Newsroom 공식 업데이트",
+                "SEC 거래소 상장·거래 승인",
+                title,
+                href,
+                date=date,
+                detail=detail,
+            ))
+    except Exception as exc:
+        errors.append(f"SEC Newsroom crypto orders: {exc}")
+    return list({e.key: e for e in events}.values())
+
+
 def collect_sec_exchange_orders(errors):
     events = []
     last_errors = []
@@ -552,6 +587,7 @@ def collect_regulators(errors):
         events.extend(parse_rss(url, source, errors))
     events.extend(collect_federal_register(errors))
     events.extend(collect_reginfo_reviews(errors))
+    events.extend(collect_sec_newsroom_crypto_orders(errors))
     events.extend(collect_sec_exchange_orders(errors))
     return list({e.key: e for e in events}.values())
 
