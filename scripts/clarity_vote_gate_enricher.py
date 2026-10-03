@@ -115,6 +115,13 @@ def inject_first_chunk(chunk, block):
     return "\n".join(lines[:insert_at] + ["", block, ""] + lines[insert_at:])
 
 
+def should_add_vote_gate(chunks):
+    if not chunks:
+        return False
+    first = str(chunks[0] or "")
+    return "CLARITY 법안 Watch" in first
+
+
 def main():
     if not GATE_PATH.exists() or not CHUNKS_PATH.exists():
         print("clarity_vote_gate_enrichment=false reason=missing_input")
@@ -123,6 +130,9 @@ def main():
     chunks = json.loads(CHUNKS_PATH.read_text(encoding="utf-8"))
     if not chunks:
         print("clarity_vote_gate_enrichment=false reason=no_chunks")
+        return
+    if not should_add_vote_gate(chunks):
+        print("clarity_vote_gate_enrichment=false reason=non_clarity_regulatory_alert")
         return
     block = build_gate_block(gate)
     chunks[0] = inject_first_chunk(chunks[0], block)
