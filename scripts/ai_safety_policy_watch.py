@@ -44,6 +44,7 @@ USER_AGENT = "Mozilla/5.0 khs-ai-safety-policy-watch/1.0"
 MAX_AGE_HOURS = 168
 SEEN_RETENTION_DAYS = 90
 MAX_ALERT_EVENTS = 5
+OFFICIAL_SNAPSHOT_SCHEMA_VERSION = 2
 
 NEWS_QUERIES = [
     # International standards / mandatory requirements.
@@ -191,6 +192,12 @@ CONCRETE_ACTION_TERMS = (
 )
 
 CATEGORY_PATTERNS = [
+    ("백악관 Super Intelligence 정책·법제화", (
+        "inaugurating the era of super intelligence",
+        "super intelligence executive order",
+        "federal definition", "legislative language",
+        "행정명령", "연방 정의", "입법 문구",
+    )),
     ("프런티어 AI 공동 서약·서명기업 변화", (
         "joint commitment on frontier responsibilities",
         "white house accord on super intelligence",
@@ -612,16 +619,29 @@ def normalize(item: dict) -> dict:
 
 def load_state() -> dict:
     if not STATE_PATH.exists():
-        return {"initialized": False, "seen": {}, "official_pages": {}, "openshell_telemetry": {}}
+        return {
+            "initialized": False,
+            "seen": {},
+            "official_pages": {},
+            "openshell_telemetry": {},
+            "official_snapshot_schema_version": 0,
+        }
     try:
         obj = json.loads(STATE_PATH.read_text(encoding="utf-8"))
         obj.setdefault("initialized", False)
         obj.setdefault("seen", {})
         obj.setdefault("official_pages", {})
         obj.setdefault("openshell_telemetry", {})
+        obj.setdefault("official_snapshot_schema_version", 0)
         return obj
     except Exception:
-        return {"initialized": False, "seen": {}, "official_pages": {}}
+        return {
+            "initialized": False,
+            "seen": {},
+            "official_pages": {},
+            "openshell_telemetry": {},
+            "official_snapshot_schema_version": 0,
+        }
 
 
 def save_json(path: pathlib.Path, value: dict) -> None:
@@ -686,6 +706,34 @@ def official_page_source(name: str) -> str:
     if name.startswith("미 하원의장실"):
         return "U.S. House of Representatives"
     return "공식 원천"
+
+
+def forced_official_page_category(name: str) -> str:
+    mapping = {
+        "미 하원의장실 White House Accord 공식 발표": "프런티어 AI 공동 서약·서명기업 변화",
+        "백악관 Super Intelligence 행정명령": "백악관 Super Intelligence 정책·법제화",
+        "백악관 Super Intelligence 팩트시트": "백악관 Super Intelligence 정책·법제화",
+        "OpenAI 프런티어 학습 Safety Case": "Safety Case 실제 학습 승인 게이트",
+        "NIPA 사이버보안 특화 AI 사업": "예산·GPU·국책사업",
+        "NVIDIA OpenShell 개요·지원": "OpenShell 기본내장·지원 확대",
+        "NVIDIA OpenShell 지원정책": "OpenShell 기본내장·지원 확대",
+        "NVIDIA OpenShell 보안정책": "에이전트 안전 런타임·신뢰 플랫폼",
+    }
+    return mapping.get(name, "정책·사업화 변화")
+
+
+def forced_official_page_entity(name: str) -> str:
+    mapping = {
+        "미 하원의장실 White House Accord 공식 발표": "백악관·프런티어 AI 공동서약",
+        "백악관 Super Intelligence 행정명령": "백악관 Super Intelligence 정책",
+        "백악관 Super Intelligence 팩트시트": "백악관 Super Intelligence 정책",
+        "OpenAI 프런티어 학습 Safety Case": "OpenAI",
+        "NIPA 사이버보안 특화 AI 사업": "NIPA",
+        "NVIDIA OpenShell 개요·지원": "NVIDIA OpenShell",
+        "NVIDIA OpenShell 지원정책": "NVIDIA OpenShell",
+        "NVIDIA OpenShell 보안정책": "NVIDIA OpenShell",
+    }
+    return mapping.get(name, "AI 안전·보안 생태계")
 
 
 HANGUL_RE = re.compile(r"[가-힣]")
@@ -795,7 +843,9 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             f"<b>{idx}. {html.escape(rep['entity'])} · {html.escape(rep['category'])}</b>",
             f"• {html.escape(concise_fact(rep))}",
         ]
-        if rep["category"] == "프런티어 AI 공동 서약·서명기업 변화":
+        if rep["category"] == "백악관 Super Intelligence 정책·법제화":
+            lines.append("• <b>의미</b>: Super Intelligence 공식 정의·연방 후속조치·입법 문구가 바뀌어 자율 안전협약이 실제 법·규제 체계로 이동하는지 확인")
+        elif rep["category"] == "프런티어 AI 공동 서약·서명기업 변화":
             lines.append("• <b>의미</b>: 자율 서약의 참여 범위가 넓어지거나 축소되는지, 특정 기업의 가입·탈퇴가 공동 안전기준의 사실상 적용 범위를 바꾸는지 확인")
         elif rep["category"] == "공동 안전표준·모범사례":
             lines.append("• <b>의미</b>: 선언적 원칙이 실제 공통 기술표준·평가항목·운영절차로 구체화되는 첫 전환점인지 확인")
@@ -889,13 +939,21 @@ def main() -> int:
         new_items.append(item)
 
     # Track direct official page changes separately.
+    # Snapshot extraction rules are versioned. A parser/schema change silently
+    # re-baselines official pages so code changes cannot create false alerts.
     official_pages = dict(state.get("official_pages") or {})
+    prior_snapshot_schema = int(state.get("official_snapshot_schema_version") or 0)
+    rebaseline_official_pages = prior_snapshot_schema != OFFICIAL_SNAPSHOT_SCHEMA_VERSION
     try:
         snapshots = official_page_snapshots()
         for name,snap in snapshots.items():
             previous = official_pages.get(name)
-            if previous and previous.get("digest") != snap["digest"]:
-                new_items.append(normalize({
+            if (
+                previous
+                and previous.get("digest") != snap["digest"]
+                and not rebaseline_official_pages
+            ):
+                item = normalize({
                     "kind":"official",
                     "query":"official page change",
                     "title":f"{name} 공식 페이지 변경 감지",
@@ -903,12 +961,20 @@ def main() -> int:
                     "source":official_page_source(name),
                     "url":snap["url"],
                     "published_at":now.isoformat(),
-                }))
+                })
+                item["category"] = forced_official_page_category(name)
+                item["entity"] = forced_official_page_entity(name)
+                new_items.append(item)
             official_pages[name] = {
                 "digest":snap["digest"],
                 "updated_at":now.isoformat(),
                 "url":snap["url"],
             }
+        if rebaseline_official_pages:
+            print(
+                f"ai_policy_official_pages_rebaselined=true "
+                f"schema={OFFICIAL_SNAPSHOT_SCHEMA_VERSION}"
+            )
     except Exception as exc:
         errors.append(f"공식 사업페이지 감시 실패: {type(exc).__name__}: {exc}")
 
@@ -958,6 +1024,7 @@ def main() -> int:
         "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
         "seen": seen,
         "official_pages": official_pages,
+        "official_snapshot_schema_version": OFFICIAL_SNAPSHOT_SCHEMA_VERSION,
         "openshell_telemetry": openshell_telemetry,
         "last_collection": {
             "raw_items":len(raw),
