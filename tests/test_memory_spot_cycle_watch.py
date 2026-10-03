@@ -342,6 +342,25 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertIn("전체 NAND보다 +8.0%p", joined)
         self.assertIn("국면 전환", joined)
 
+    def test_micron_q1_implied_operating_profit_and_sca_2031_tracking(self):
+        item = {
+            "title": "Micron Q4 FY2026 earnings and strategic customer agreements",
+            "description": (
+                "Micron has signed 26 SCAs covering more than 35% of revenue through 2030, "
+                "with extensions to 2031. More than 75% of 2027 output is committed. "
+                "FQ1-27 revenue $61.5 billion, gross margin 86.25%, operating expenses $2.06 billion."
+            ),
+            "source": "Micron",
+            "link": "https://investors.micron.com/example",
+            "published_kst": "2026-10-03T09:00:00+09:00",
+        }
+        obs = w._extract_micron_supply_commitment(item)
+        self.assertEqual(obs["output_committed_min_pct"], 75.0)
+        self.assertEqual(obs["sca_count"], 26)
+        self.assertEqual(obs["sca_revenue_share_2030_pct"], 35.0)
+        self.assertEqual(obs["sca_end_year"], 2031)
+        self.assertAlmostEqual(obs["fq1_27_implied_op_usd_bn"], 50.98, places=1)
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
