@@ -279,29 +279,39 @@ def strong_stage(text: str) -> str:
 def parse_event(text: str, url: str, title: str, published: str) -> dict:
     if not is_official(url):
         return {}
-    categories = classify_categories(text)
-    if not categories or not has_supply_change(text):
+
+    sentences = re.split(r"(?<=[.!?])\s+", text)
+    candidates = []
+    for i in range(len(sentences)):
+        window = clean_text(" ".join(sentences[i:i + 2]))
+        categories = classify_categories(window)
+        if not categories or not has_supply_change(window):
+            continue
+
+        low = window.lower()
+        pure_forecast = (
+            any(k in low for k in ("forecast", "expected to reach", "projected to reach"))
+            and not any(k in low for k in (
+                "lead time", "shortage", "supply constraint", "capacity constraint",
+                "mass production", "customer shipments", "caps output", "sold out",
+                "material availability", "shipment growth", "shipments grow",
+            ))
+        )
+        if pure_forecast:
+            continue
+
+        metrics = metric_snippets(window)
+        stage = strong_stage(window)
+        if not metrics and not stage:
+            continue
+
+        score = len(metrics) * 3 + len(categories) * 2 + (3 if stage else 0)
+        candidates.append((score, categories, metrics, stage, window))
+
+    if not candidates:
         return {}
 
-    metrics = metric_snippets(text)
-    stage = strong_stage(text)
-
-    # 전망성 시장 침투율만으로는 병목 알림을 만들지 않는다.
-    low = text.lower()
-    pure_forecast = (
-        any(k in low for k in ("forecast", "expected to reach", "projected to reach"))
-        and not any(k in low for k in (
-            "lead time", "shortage", "supply constraint", "capacity constraint",
-            "mass production", "customer shipments", "caps output", "sold out",
-        ))
-    )
-    if pure_forecast:
-        return {}
-
-    # 실제 숫자 또는 공급·양산 단계 진전 중 하나가 있어야 한다.
-    if not metrics and not stage:
-        return {}
-
+    _, categories, metrics, stage, _ = max(candidates, key=lambda x: x[0])
     return {
         "categories": categories,
         "company": company_for(url, text),
