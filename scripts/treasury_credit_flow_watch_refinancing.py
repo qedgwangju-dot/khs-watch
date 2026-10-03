@@ -277,7 +277,7 @@ def _oas_delta(oas_text):
 
 
 def _oas_asof(oas_text):
-    m = re.search(r"기준\\s+(20\\d{2}-\\d{2}-\\d{2})", oas_text or "")
+    m = re.search(r"기준\s+(20\d{2}-\d{2}-\d{2})", oas_text or "")
     return m.group(1) if m else None
 
 
@@ -404,7 +404,7 @@ def _compact_report(raw_text):
     gr = readable.get_growth_cost_snapshot()
     if gr.get("ok"):
         gr_line = (
-            f"G-R(명목GDP 연율-HYG 평균 만기수익률): {gr['gap']:+.2f}%p | "
+            f"G-R 보조 프록시(명목GDP 연율-HYG 평균 만기수익률): {gr['gap']:+.2f}%p | "
             f"G {gr['g']:.2f}% ({gr.get('g_period') or '기준기간 확인 대기'}) vs "
             f"R {gr['r']:.2f}% (HYG 기준 {gr.get('r_date') or '기준일 확인 대기'}) → {gr['state']}"
         )
@@ -488,7 +488,7 @@ def _format_html(chunk):
     bold_prefixes = (
         "전체 방향:", "국채 자금:", "회사채 자금:", "신용 위험:",
         "금리:", "커브:", "오늘의 주도축:", "시장 기술압력:",
-        "JPM 30년 기술선:", "Repo:", "G-R(", "차환:", "현재 신용경보:", "다음 경보:",
+        "JPM 30년 기술선:", "Repo:", "G-R 보조 프록시(", "차환:", "현재 신용경보:", "다음 경보:",
     )
     for line in chunk.splitlines():
         escaped = html.escape(line, quote=False)
