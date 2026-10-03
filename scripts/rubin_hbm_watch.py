@@ -1687,8 +1687,9 @@ def extract_nvhbm_architecture(event: dict) -> dict | None:
             obs["compute_die_area_gain_pct_max"] = v
 
         v = pct((
-            r"(?:phy)[^.]{0,80}?(?:support|지원)[^.]{0,100}?(?:area|면적)[^%]{0,100}?(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,60}?(?:reduce|reduction|줄|감소)",
-            r"(?:reduce|reduction|줄|감소)[^%]{0,80}?(?:phy)[^.]{0,100}?(?:area|면적)[^%]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*%",
+            r"(?:phy)[^.]{0,80}?(?:support|지원)[^.]{0,100}?(?:area|면적)[^%]{0,100}?(?:reduce|reduced|reduction|줄|감소)[^%]{0,80}?(?:by\s*)?(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%",
+            r"(?:phy)[^.]{0,80}?(?:support|지원)[^.]{0,100}?(?:area|면적)[^%]{0,100}?(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,60}?(?:reduce|reduced|reduction|줄|감소)",
+            r"(?:reduce|reduced|reduction|줄|감소)[^%]{0,80}?(?:phy)[^.]{0,100}?(?:area|면적)[^%]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*%",
         ))
         if v is not None:
             obs["phy_support_area_reduction_pct_max"] = v
