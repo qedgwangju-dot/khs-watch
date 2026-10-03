@@ -29,7 +29,7 @@
       "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFA5TDVWc20yVjY3bmVNQXB2WUdOYXNTaWJfOTR3Sl85YzhTejM0LW9EdW1aMkNLdThMQWltZFZPYXlXR0JBSmMwSVZSUEhzaXh6SUhGT09rd1NSWlNR?oc=5",
       "published_utc": "2026-10-01T09:31:00+00:00",
       "source": "Google News RSS",
-      "title": "\"삼성월렛, 스테이블코인 탑재 속도\" [KBW2026 코리아 블록체인 위크] - busan.fnnews.com"
+      "title": "\"삼성월렛, 스테이블코인 탑재 속도\" [KBW2026 코리아 블록체인 위크] - 부산파이낸셜뉴스"
     }
   ],
   "official": {
@@ -37,14 +37,14 @@
     "errors": [],
     "explicit_reversal_confirmed": false,
     "job_fetch_ok": true,
-    "job_stablecoin_confirmed": false,
+    "job_stablecoin_confirmed": true,
     "samsung_support_confirmed": true
   },
   "topic_state": {
     "achieved_stage": 2,
     "explicit_reversal_confirmed": false,
     "job_exists": true,
-    "official_job_scope_now": false,
+    "official_job_scope_now": true,
     "pilot_or_launch": false,
     "stablecoin_bd_scope": true,
     "stablecoin_partner": "",
@@ -54,5 +54,5 @@
     "support_plan": true,
     "topic": "Samsung Wallet stablecoin adoption"
   },
-  "updated_at_kst": "2026-10-03T16:06:23+09:00"
+  "updated_at_kst": "2026-10-03T21:31:54+09:00"
 }
