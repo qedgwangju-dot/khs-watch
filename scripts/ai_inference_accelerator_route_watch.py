@@ -604,7 +604,12 @@ def main() -> int:
                     "url":snap["url"],
                     "published_at":now.isoformat(),
                 })
-                new_items.append(page_item)
+                # Official-page extractor changes can alter the digest even when
+                # the underlying business state did not change. Re-run the same
+                # material gate used for news so known Synopsys investor-day
+                # baselines and other non-material rewrites stay silent.
+                if material(page_item):
+                    new_items.append(page_item)
             official_pages[name] = {
                 "digest":snap["digest"],
                 "url":snap["url"],
