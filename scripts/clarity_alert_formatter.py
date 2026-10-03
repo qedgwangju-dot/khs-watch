@@ -246,6 +246,11 @@ def is_vs_trust_3x_final_prospectus(event):
     )
 
 
+def volatility_launch_inception_dates(event):
+    detail = clean(event.get("detail", ""))
+    return re.findall(r"inception\s+(\d{2}/\d{2}/20\d{2})", detail, re.I)
+
+
 def is_sec_3x_crypto_etp_approval(event):
     signal = clean(
         f"{event.get('title','')} {event.get('detail','')} {event.get('source','')}"
@@ -431,6 +436,14 @@ def special_translation(event):
         if "ethk" in signal:
             tickers.append("ETHK(3x Ether ETF)")
         ticker_text = " · ".join(tickers) if tickers else "BITH·ETHK"
+        inception_dates = volatility_launch_inception_dates(event)
+        if inception_dates:
+            dates = " · ".join(dict.fromkeys(inception_dates))
+            return (
+                "Volatility Shares, BITH·ETHK 설정일 확인 — 거래개시 단계 진전",
+                f"Volatility Shares 공식 상품목록에 {ticker_text}와 inception date(설정일) {dates}가 확인됐습니다. "
+                "SEC 상장규칙 승인보다 뒤 단계의 실제 출시 신호이며, 이제 첫 거래일·초기 AUM·거래대금·CME 선물 수급을 확인해야 합니다.",
+            )
         return (
             "Volatility Shares, 3배 BTC·ETH ETP 실제 상품목록 등재",
             f"Volatility Shares 공식 상품목록에 {ticker_text}가 실제로 올라온 상태 변화입니다. "
