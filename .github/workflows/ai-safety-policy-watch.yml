@@ -114,8 +114,7 @@ jobs:
               raise RuntimeError("Product identifiers were not preserved")
           PY
 
-      - name: Verify frontier accord classification on push
-        if: github.event_name == 'push'
+      - name: Verify frontier accord classification
         shell: bash
         run: |
           python - <<'PY'
