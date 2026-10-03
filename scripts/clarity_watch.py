@@ -57,7 +57,7 @@ SEC_VERIFIED_SRO_BACKFILL = [
         "title": "Order Granting Approval of a Proposed Rule Change to List and Trade Shares of the 3x Gold ETF, 3x Silver ETF, 3x Bitcoin ETF, 3x Ether ETF, 3x Crude Oil ETF, and 3x Natural Gas ETF",
         "url": "https://www.sec.gov/files/rules/sro/cboebzx/2026/34-106577.pdf",
         "date": "Oct 2, 2026",
-        "detail": "Release No. 34-106577; File No. SR-CboeBZX-2026-065; correction-v2: BITH and ETHK confirmed in VS Trust S-1; futures-based daily 3x products; actual trading start not yet confirmed; separate Volatility Shares Trust 485BXT dates are not launch dates for this VS Trust ETP approval",
+        "detail": "Release No. 34-106577; File No. SR-CboeBZX-2026-065; correction-v3-standalone: BITH and ETHK confirmed in VS Trust S-1; futures-based daily 3x products; actual trading start not yet confirmed; separate Volatility Shares Trust 485BXT dates are not launch dates for this VS Trust ETP approval",
     },
 ]
 
@@ -66,7 +66,7 @@ SEC_DIRECT_ORDER_PROBES = [
         "url": "https://www.sec.gov/files/rules/sro/cboebzx/2026/34-106577.pdf",
         "title": "Order Granting Approval of a Proposed Rule Change to List and Trade Shares of the 3x Gold ETF, 3x Silver ETF, 3x Bitcoin ETF, 3x Ether ETF, 3x Crude Oil ETF, and 3x Natural Gas ETF",
         "date": "Oct 2, 2026",
-        "detail": "Release No. 34-106577; File No. SR-CboeBZX-2026-065; correction-v2: BITH and ETHK confirmed in VS Trust S-1; futures-based daily 3x products; actual trading start not yet confirmed",
+        "detail": "Release No. 34-106577; File No. SR-CboeBZX-2026-065; correction-v3-standalone: BITH and ETHK confirmed in VS Trust S-1; futures-based daily 3x products; actual trading start not yet confirmed",
     },
 ]
 
