@@ -62,6 +62,9 @@ Every defect or requested change must follow this sequence:
 - Dated wire-photo captions are not current operating facts. A commentator's
   hypothetical psychological/logistics intent cannot by itself establish a
   confirmed supply interruption. Actual sourced disruptions remain eligible.
+- Public-opinion percentages are not policy execution. Keep actual rule changes
+  distinct from opinion polls; yield summaries prefer the observed rate change
+  to causal commentary when the source supplies a complete numeric fact.
 - Cross-publisher event identities compare actors, action, object, quantities,
   duration and stage. An unchanged statement is not new because its publisher,
   URL tracking parameters or query date changed. Changed terms and execution

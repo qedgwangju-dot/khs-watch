@@ -2230,6 +2230,19 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         return ""
     focus = market_materiality.focus_kind(title)
     source = " ".join(sentences)
+    if focus == "bond_yield":
+        for sentence in sentences:
+            if (
+                market_materiality.focus_matches(title, sentence)
+                and re.search(r"\d+(?:\.\d+)?\s*(?:%|bp\b)", sentence, re.I)
+                and re.search(r"올라|올랐|치솟|상승|하락|밑돌|넘었|돌파|기록|내렸|낮아|높아", sentence)
+                and not market_materiality.BACKGROUND.search(sentence)
+                and not market_materiality.EARLY_SIGNAL.search(sentence)
+            ):
+                fact = normalized_article_sentence(sentence)
+                fact = re.sub(r"^이에\s*따라\s+", "", fact)
+                if core_sentence_is_complete(fact):
+                    return fact
     if re.search(r"트럼프", title) and re.search(r"알래스카", title) and re.search(r"한국|韓", source):
         threat = next((sentence for sentence in sentences
                        if not market_materiality.BACKGROUND.search(sentence)

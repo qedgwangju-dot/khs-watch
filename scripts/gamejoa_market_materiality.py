@@ -7,7 +7,7 @@ import re
 from functools import lru_cache
 
 
-VERSION = 38
+VERSION = 39
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -496,6 +496,12 @@ COMPILED_RULES = tuple(
 
 def evidence_is_new_event(kind: str, sentence: str) -> bool:
     """Do not promote service descriptions or event support into transactions."""
+    if kind == "policy_scope_or_stage" and re.search(
+        r"(?:찬성|반대|지지)[^.!?]{0,25}\d+(?:\.\d+)?%|여론조사|지지율", sentence,
+    ) and not FORMAL_POLICY_EXECUTION.search(sentence) and not re.search(
+        r"국민투표[^.!?]{0,35}(?:가결|부결|확정)|referendum[^.!?]{0,35}(?:passed|rejected)", sentence, re.I,
+    ):
+        return False
     if kind in {"physical_supply_or_capacity", "energy_geopolitics_or_supply_risk"} and re.search(
         r"(?:수\s*있|가능성)[^.!?]{0,35}(?:분석|추측)|(?:의도|심리(?:적)?\s*압박|목적)[^.!?]{0,80}(?:수\s*있|가능성)", sentence,
     ) and not re.search(

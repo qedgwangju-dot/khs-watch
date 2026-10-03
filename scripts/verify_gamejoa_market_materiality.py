@@ -2038,6 +2038,28 @@ class ForegroundAndEventIdentityTests(unittest.TestCase):
         self.assertEqual(audit['priority'], 1, audit)
         self.assertFalse(audit['evidence'], audit)
 
+    def test_public_opinion_percentages_do_not_become_policy_execution(self):
+        title = '英 총리 다시 꺼낸 EU 재가입론…찬성 49%·반대 28.5%'
+        body = '영국 총리가 EU 재가입론을 다시 언급했다. EU와의 현재 관계를 유지하면서 무역장벽을 최대한 낮추는 방안에는 48.2%가 찬성했고, 관세동맹 가입은 47.1%, 단일시장 가입은 45.1%의 지지를 받았다.'
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit['disposition'], 'review', audit)
+        self.assertFalse(audit['evidence'], audit)
+
+    def test_actual_policy_execution_is_not_rejected_by_adjacent_poll(self):
+        title = '정부, 수입 관세 인하 규정 시행'
+        body = '여론조사에서 관세 인하 찬성은 48.2%였다. 정부는 수입 관세를 15%에서 10%로 낮추는 규정을 개정했다.'
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit['disposition'], 'keep', audit)
+        self.assertTrue(any('규정을 개정했다' in item['source_excerpt'] for item in audit['evidence']), audit)
+
+    def test_bond_summary_prefers_observed_yield_change_to_causal_commentary(self):
+        title = '[김남현의 채권썰] 금리 단기고점 본 듯, 단 은행채 경계 지속'
+        body = '최근 금리 상승에 따른 머니무브와 함께 은행채 발행 증가가 이어질 것으로 보여서다. 이에 따라 주초 4.119%까지 올라 3년10개월만에 최고치를 기록했던 국고3년물 금리는 한달여만에 4%를 밑돌았다.'
+        core = radar.detailed_article_core(title, body)
+        self.assertIn('국고3년물 금리는 한달여만에 4%를 밑돌았다', core)
+        self.assertNotIn('보여서다', core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+
     def test_actual_supply_disruption_survives_following_speculation(self):
         title = '러시아 드론 공격에 원유 운송 중단'
         body = '러시아 드론 공격으로 원유 운송이 중단됐다고 당국이 밝혔다. 전문가는 이번 공격이 심리적 압박을 가하려는 것일 수 있다고 분석했다.'
