@@ -32,16 +32,6 @@ CAPITAL_RETURN_TRACK_VERSION = 1
 CAPITAL_RETURN_CORRECTION_VERSION = 1
 CAPITAL_RETURN_DEDUPE_VERSION = 1
 SCHEDULE_AUDIT_VERSION = 1
-EDA_MONETIZATION_TRACK_VERSION = 1
-
-SYNOPSYS_INVESTOR_DAY = "https://investor.synopsys.com/news/news-details/2026/Synopsys-Details-Growth-Strategy-and-Long-term-Financial-Model-at-2026-Investor-Day/"
-SYNOPSYS_AMAZON_DEAL = "https://investor.synopsys.com/news/news-details/2026/Synopsys-and-Amazon-Announce-Strategic-Multi-year-IP-Agreement-for-Custom-Silicon-Collaboration-Also-Extends-to-Cloud-and-AI-Powered-Engineering/default.aspx"
-EDA_BASELINE_FACT_KEYS = {
-    "synopsys_fy27_revenue_11_15b",
-    "synopsys_eda_subscription_consumption_outcome_20260930",
-    "synopsys_gpt_synopsys_openai_20260930",
-    "synopsys_aws_ip_1b_plus_royalty_20260930",
-}
 
 OFFICIAL_Q2_TRANSCRIPT = (
     "https://investor.nvidia.com/files/content_files/TRANSCRIPT_-NVIDIA-Corp-NVDA-US-Q2-2027-"
@@ -80,17 +70,12 @@ QUERIES = [
     '"NVIDIA" capital return repurchase dividend',
     '"엔비디아" 자사주 매입 승인',
     '"엔비디아" 자사주 매입 1500억 달러',
-    '"Synopsys" EDA AI subscription consumption outcome-based pricing GPT-Synopsys',
-    '"Synopsys" fiscal 2027 revenue guidance 11.15 billion investor day',
-    '"Synopsys" GPT-Synopsys OpenAI revenue share commercialization',
-    '"Synopsys" Amazon AWS 1 billion license royalty custom silicon AOIP',
 ]
 
 TRUSTED = (
     "reuters", "bloomberg", "nvidia", "financial times", "ft.com", "techcrunch",
     "associated press", "ap news", "barron's", "barrons", "marketscreener", "mt newswires",
     "cnbc", "wall street journal", "wsj", "연합뉴스", "yonhap",
-    "synopsys", "investors business daily", "investopedia",
 )
 
 
@@ -168,23 +153,7 @@ def source_rank(source: str, title: str = "") -> int:
     return 10
 
 
-def classify_synopsys(text: str) -> str:
-    low = text.lower()
-    if "synopsys" not in low and "gpt-synopsys" not in low and "gpt synopsys" not in low:
-        return ""
-    if any(x in low for x in ("subscription", "consumption", "outcome-based", "outcome based", "revenue share", "usage-based", "pay-per-use", "flexeda")):
-        return "eda_monetization"
-    if any(x in low for x in ("fiscal 2027", "fy27", "2027 revenue", "$11.15 billion", "$11.1 billion", "$11.2 billion")):
-        return "eda_monetization"
-    if any(x in low for x in ("gpt-synopsys", "application-optimized ip", "aoip", "license-plus-royalty", "custom silicon")):
-        return "eda_monetization"
-    return ""
-
-
 def classify(text: str) -> str:
-    syn = classify_synopsys(text)
-    if syn:
-        return syn
     low = text.lower()
     nvidia = "nvidia" in low or "엔비디아" in low
     jensen = "jensen huang" in low or "젠슨 황" in low
@@ -211,69 +180,6 @@ def classify(text: str) -> str:
     if jensen and any(k in low for k in safety_terms):
         return "safety"
     return ""
-
-
-def extract_synopsys_signal(text: str) -> dict:
-    low = text.lower()
-    revenue_values = []
-    for raw in re.findall(r'\$\s*([0-9]+(?:\.[0-9]+)?)\s*(?:billion|bn|b)\b', text, re.I):
-        try:
-            revenue_values.append(float(raw))
-        except Exception:
-            pass
-
-    current_guidance = bool(
-        ("2027" in low or "fy27" in low or "fiscal 2027" in low)
-        and any(abs(v - 11.15) < 0.001 or abs(v - 11.1) < 0.001 or abs(v - 11.2) < 0.001 for v in revenue_values)
-    )
-    pricing = any(x in low for x in ("subscription", "consumption", "outcome-based", "outcome based", "revenue share", "usage-based", "pay-per-use", "flexeda"))
-    gpt = "gpt-synopsys" in low or "gpt synopsys" in low
-    amazon = "amazon" in low or "aws" in low
-    current_aws = amazon and (
-        any(abs(v - 1.0) < 0.001 for v in revenue_values)
-        or "more than $1 billion" in low
-        or "license-plus-royalty" in low
-        or "license plus royalty" in low
-    )
-    commercial = any(x in low for x in (
-        "general availability", "generally available", "production deployment",
-        "paid customer", "customer deployment", "pricing announced", "pricing published",
-        "상용 출시", "정식 출시", "유료 고객", "고객 배치", "가격 공개",
-    ))
-    pricing_metric = bool(re.search(
-        r'(?:consumption|outcome|usage|revenue\s*share|pricing).{0,100}(?:\d+(?:\.\d+)?\s*%|per\s+tapeout|per\s+run|per\s+outcome|ARR|revenue\s+contribution|비중|테이프아웃당|건당|요율)',
-        text,
-        re.I,
-    ))
-    guidance_change = False
-    if ("2027" in low or "fy27" in low or "fiscal 2027" in low) and revenue_values:
-        guidance_change = any(v < 11.05 or v > 11.25 for v in revenue_values)
-
-    stage = "background"
-    if current_guidance:
-        stage = "baseline_guidance"
-    elif amazon and current_aws:
-        stage = "baseline_aoip"
-    elif gpt and pricing:
-        stage = "baseline_pricing"
-    elif gpt and commercial:
-        stage = "gpt_commercial"
-    elif pricing and pricing_metric:
-        stage = "pricing_change"
-    elif guidance_change:
-        stage = "guidance_change"
-    elif ("application-optimized ip" in low or "aoip" in low or "custom silicon" in low) and any(
-        x in low for x in ("new customer", "signed", "secured", "new agreement", "신규 고객", "계약 체결", "고객 확보")
-    ):
-        stage = "aoip_customer"
-
-    return {
-        "stage": stage,
-        "revenue_values_usd_b": revenue_values,
-        "pricing": pricing,
-        "gpt_synopsys": gpt,
-        "amazon_aws": amazon,
-    }
 
 
 def _money_billion(text: str, label_patterns: tuple[str, ...]) -> float | None:
