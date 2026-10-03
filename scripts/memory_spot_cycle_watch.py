@@ -159,19 +159,28 @@ KOREA_MEMORY_EARNINGS_BASELINE = {
     "as_of": "2026-09-30",
     "source_rank": 2,
 }
-MICRON_SUPPLY_COMMITMENT_TRACK_VERSION = 2
+MICRON_SUPPLY_COMMITMENT_TRACK_VERSION = 3
 MICRON_SUPPLY_COMMITMENT_BASELINE = {
     "commitment_year": 2027,
     "output_committed_min_pct": 75.0,
-    "sca_revenue_share_2030_pct": 50.0,
+    "sca_count": 26,
+    "sca_revenue_share_2030_pct": 35.0,
+    "sca_pricing_framework_pct": 75.0,
+    "sca_end_year": 2031,
+    "rpo_usd_bn": 150.0,
+    "customer_commitments_usd_bn": 32.0,
+    "fq1_27_revenue_usd_bn": 61.5,
+    "fq1_27_non_gaap_gm_pct": 86.25,
+    "fq1_27_non_gaap_opex_usd_bn": 2.06,
+    "fq1_27_implied_op_usd_bn": 50.98,
     "memory_shortage_through_year": 2028,
     "nand_shortage_through_year": 2028,
     "supply_tighter_2027_2028": True,
-    "source": "Micron CEO earnings call via Investing.com",
+    "source": "Micron Q4 FY2026 call + official earnings release",
     "source_kind": "경영진 컨퍼런스콜 발언 재전사 + Micron 공식 실적자료 교차확인",
     "source_url": "https://www.investing.com/news/transcripts/earnings-call-transcript-micron-tops-q4-2026-estimates-as-demand-stays-hot-93CH-4925992",
     "official_context_url": "https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Fiscal-Fourth-Quarter-and-Full-Year-2026-Results/default.aspx",
-    "as_of": "2026-09-30",
+    "as_of": "2026-10-03",
     "source_rank": 2,
 }
 TREND_PINNED_PRESS_URLS = [
@@ -209,6 +218,8 @@ QUERIES = [
     ("ko", '골드만삭스 메모리 DRAM NAND 기업용 SSD 4분기 평균판매단가 전망 삼성전자 SK하이닉스'),
     ("ko", 'Micron CEO 2027 메모리 공급 75% committed 계약 SCA'),
     ("ko", '마이크론 2027 공급 75% 확약 장기계약 메모리 CEO'),
+    ("ko", '마이크론 SCA 2031 26개 RPO 1500억달러 Q1 FY2027 영업이익'),
+    ("ko", '마이크론 2028 DRAM 공급부족 2031 장기계약 Q1 2027 매출총이익률'),
     ("ko", 'LPDDR4X LP4X EOL 생산종료 지원 연장 2027 2028 삼성전자 SK하이닉스 마이크론'),
     ("ko", 'DDR4 생산종료 EOL 증설 공급배정 2군 메모리 이행률 fulfillment 삼성 SK하이닉스 마이크론'),
     # DRAM physical capacity / wafer-start / new-fab cycle: do not miss supply expansion.
@@ -228,6 +239,8 @@ QUERIES = [
     ("en", 'Goldman Sachs storage price eSSD enterprise SSD Q4 ASP Samsung SK hynix'),
     ("en", 'Micron CEO 2027 output 75% committed memory supply SCA'),
     ("en", 'Micron 2027 memory supply committed 75 percent strategic customer agreements'),
+    ("en", 'Micron 26 SCAs 2031 RPO 150 billion Q1 FY2027 operating profit guidance'),
+    ("en", 'Micron 2028 DRAM supply constrained 2031 strategic customer agreements'),
     ("en", 'LPDDR4X LP4X EOL end of life support extension 2027 2028 Samsung SK hynix Micron'),
     ("en", 'DDR4 EOL capacity expansion supply allocation second-tier memory fulfillment 50% Samsung SK hynix Micron'),
     ("en", 'Applied Materials Citi TMT DRAM wafer starts capacity 1.6 million 2 million 400000'),
