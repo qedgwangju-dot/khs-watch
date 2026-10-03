@@ -75,6 +75,12 @@ class AIServerPhysicalBottleneckTests(unittest.TestCase):
         )
         self.assertEqual(event, {})
 
+
+    def test_named_supplier_official_domains_are_covered(self):
+        self.assertTrue(m.is_official("https://www.avc.co/en-us/example"))
+        self.assertTrue(m.is_official("https://www.liteon.com/en/news/example"))
+        self.assertTrue(m.is_official("https://www.tuc.com.tw/example"))
+
     def test_baseline_does_not_claim_universal_six_month_shortage(self):
         self.assertFalse(m.BASELINE["facts"]["universal_six_month_shortage_confirmed"])
 
