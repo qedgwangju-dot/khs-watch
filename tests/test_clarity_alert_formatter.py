@@ -160,6 +160,41 @@ class ClarityFormatterTest(unittest.TestCase):
         self.assertIn("현물 BTC·ETH 3배 보유 승인이 아니며", summary)
         self.assertIn("VS Trust 등록서류 효력", summary)
 
+    def test_3x_approval_is_not_misclassified_as_proposed_rule(self):
+        event = {
+            "source": "SEC 거래소 규칙 승인명령",
+            "event_type": "SEC 거래소 상장·거래 승인",
+            "title": "Order Granting Approval of a Proposed Rule Change to List and Trade Shares of the 3x Bitcoin ETF and 3x Ether ETF",
+            "url": "https://www.sec.gov/example",
+            "date": "Oct 2, 2026",
+            "detail": "Release No. 34-106577 File No. SR-CboeBZX-2026-065",
+        }
+        self.assertEqual(MOD.rule_stage(event), "approval_order")
+
+    def test_oira_prerule_classifier_is_boolean_and_does_not_capture_sec_custody(self):
+        custody = {
+            "source": "SEC 보도자료",
+            "event_type": "SEC·CFTC 공식 규칙·해석·집행지침",
+            "title": "SEC Proposal Would Address How Investment Advisers and Funds Can Custody Crypto Assets",
+            "detail": "registered investment advisers regulated funds custody crypto assets",
+        }
+        self.assertIs(MOD.is_oira_prerule(custody), False)
+
+    def test_registration_effect_has_distinct_interpretation(self):
+        event = {
+            "source": "SEC EDGAR — VS Trust",
+            "event_type": "3배 BTC·ETH ETP 등록 효력 발생",
+            "title": "VS Trust BITH·ETHK registration statement effective",
+            "url": "https://www.sec.gov/example",
+            "date": "2026-10-05",
+            "detail": "Form EFFECT; File No. 333-999999; BITH/ETHK",
+        }
+        self.assertTrue(MOD.is_vs_trust_3x_registration_effect(event))
+        title, body = MOD.localize_event(event)
+        self.assertIn("등록서류 효력 발생", title)
+        self.assertIn("실제 Cboe 첫 거래", body)
+        self.assertEqual(MOD.rule_stage(event), "registration_effective")
+
     def test_volatility_shares_product_listing_is_distinct_launch_stage(self):
         event = {
             "source": "Volatility Shares 공식 상품목록",
