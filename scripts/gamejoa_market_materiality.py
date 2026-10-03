@@ -7,7 +7,7 @@ import re
 from functools import lru_cache
 
 
-VERSION = 36
+VERSION = 37
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -97,7 +97,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("capital_spending", r"설비투자|capex|자본지출|capital expenditure", r"설비투자|capex|자본지출|capital expenditure"),
     ("industry_market_share", r"점유율|시장.{0,8}(?:\d위|순위)", r"점유율|market share"),
     ("trade_threat", r"관세.{0,35}(?:위협|경고|두\s*배|2\s*배)|(?:두\s*배|2\s*배).{0,15}(?:청구|관세)|알래스카.{0,55}(?:청구|부담|압박)|tariff.{0,30}(?:threat|doubl)|doubl.{0,15}tariff", r"관세|청구|tariff|charge"),
-    ("stockpile_release", r"비축유|비축\s*원유|G7.{0,30}(?:원유|경유).{0,20}방출|oil reserves|stockpile", r"비축\s*(?:유|원유|경유)|oil reserves|stockpile"),
+    ("stockpile_release", r"비축유|비축\s*원유|G7.{0,30}(?:원유|경유).{0,20}방출|oil reserves|stockpile", r"비축\s*(?:유|원유|경유)|석유\s*비축|oil reserves|stockpile"),
     ("mortgage_rate", r"주담대|모기지|주택담보대출", r"주담대|모기지|주택담보대출|mortgage"),
     ("macro_release", r"\bcpi\b|\bpce\b|\bppi\b|\bgdp\b|고용|실업률|물가|건설지출", r"cpi|pce|ppi|gdp|고용|실업|물가|건설지출|인플레이션|inflation|payroll"),
     ("export_results", r"수출(?:액|실적|량)|수출.{0,20}(?:\d위|역대|최대|최저|증가|감소)", r"수출(?:액|실적|량)|수출.{0,45}(?:\d|최대|최저)"),
@@ -222,6 +222,9 @@ def focus_matches(title: str, sentence: str) -> bool:
     if kind == "stockpile_release" and re.search(r"채운|재비축|refill", title, re.I):
         return bool(re.search(r"비축|reserve|stockpile", sentence, re.I)
                     and re.search(r"채우|채운|채울|재비축|refill", sentence, re.I))
+    if kind == "stockpile_release":
+        return bool(re.search(r"비축\s*(?:유|원유|경유)|석유\s*비축|oil reserves|stockpile", sentence, re.I)
+                    or re.search(r"\d+(?:\.\d+)?\s*(?:억|만)?\s*배럴.{0,25}방출", sentence))
     if kind == "labor_negotiation" and "부결" in title and not re.search(r"부결|타결.{0,12}(?:못|않)|추가\s*교섭", sentence):
         return False
     if kind == "nuclear_warning":
@@ -326,11 +329,11 @@ def source_event_identity(alert: dict) -> str:
             months = duration.group(1) or "4"
             stage = "executed" if re.search(r"방출\s*완료|방출했다|released", title, re.I) else "plan"
             return f"source_event:v1:g7:oil_reserves:{stage}:barrels={count:.12g}:months={int(months)}"
-    if re.search(r"트럼프|Trump", title, re.I) and re.search(r"한국|Korea|韓", title, re.I) and re.search(r"석유|원유|oil", title, re.I):
+    if re.search(r"트럼프|Trump", title, re.I) and re.search(r"한국|Korea|韓", title + " " + body[:800], re.I) and re.search(r"석유|원유|oil", title, re.I):
         statement = next((sentence for sentence in source_sentences(body or title)
                           if not BACKGROUND.search(sentence) and re.search(r"트럼프|Trump", sentence, re.I)
                           and re.search(r"석유|원유|oil", sentence, re.I)
-                          and re.search(r"투자|invest", sentence, re.I)), "")
+                          and re.search(r"투자|프로젝트|invest|project", sentence, re.I)), "")
         amount = re.search(r"(\d+(?:\.\d+)?)\s*억\s*달러|\$?\s*(\d+(?:\.\d+)?)\s*billion", statement, re.I)
         if amount:
             dollars = float(amount.group(1)) * 100000000 if amount.group(1) else float(amount.group(2)) * 1000000000
@@ -367,7 +370,7 @@ RULES = (
      r"청구(?:금|액)?|부담(?:금|액)?",
      r"(?:합의|서명)[^.!?]{0,40}(?:않|안\s*하)[^.!?]{0,60}(?:두|2|\d+(?:\.\d+)?)\s*배"),
     ("energy_stockpile_action", ("earnings", "discount_rate", "timeline"),
-     r"비축\s*(?:유|원유|경유)|oil reserves|oil stockpile",
+     r"비축\s*(?:유|원유|경유)|석유\s*비축|oil reserves|oil stockpile",
      r"방출|매입|재비축|채우|채운|채울|release|refill|purchase"),
     ("earnings_or_guidance", ("earnings",),
      r"매출|영업이익|순이익|마진|실적|가이던스|출하|판매(?:량|실적|는|가)|시장점유율|revenue|earnings|profit|guidance|shipments",
@@ -434,7 +437,7 @@ RULES = (
      r"인상|(?<!할)인하|동결|상승|하락|오른|내린|올랐|내렸|둔화|급등|급락|상회|하회|밑돌|웃돌|발표|기록|증가|감소|결정|약세|강세|최고|치솟|cut|hike|hold|rise|fall|miss|beat|announc|estimat|record"),
     ("policy_scope_or_stage", ("timeline",),
      r"관세|법인세|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
-     r"제안|검토|추진|인상|인하|올리|올렸|상향|하향|완화|강화|시행|발효|금지|제한|허가|승인|제정|개정|철회|의견수렴|입법예고|면제|배정|의결|착수|발표|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
+     r"제안|검토|추진|인상|인하|올리|올렸|낮추|낮췄|상향|하향|완화|강화|시행|발효|금지|제한|허가|승인|제정|개정|철회|의견수렴|입법예고|면제|배정|의결|착수|발표|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
     ("environmental_approval", ("timeline",),
      r"최종\s*환경평가|FONSI|환경영향평가서", r"완료|결정을\s*내렸|작성\s*없이|면제"),
     ("export_control_scope", ("earnings", "timeline"),
@@ -652,7 +655,22 @@ def assess(title: str, body: str) -> dict:
     if re.search(r"금지.{0,20}(?:사실\s*아니|사실\s*아님)|(?:식탁|테이블).{0,15}간장", title) and not re.search(r"행정명령|시행일|규칙안\s*철회|규제\s*철회", lead):
         result.update(disposition="exclude", priority=0, reason="consumer_fact_check_not_new_policy")
         return result
-    electoral = bool(re.search(r"유세|선거운동|지지\s*(?:호소|결집)|campaign rally|election campaign", title, re.I))
+    if re.search(r"최고의\s*친구|우호\s*과시|우정\s*과시|best friend", title, re.I) and not re.search(r"관세|수출통제|휴전\s*합의|제재\s*(?:시행|해제)|공급\s*계약", title):
+        result.update(disposition="exclude", priority=0, reason="diplomatic_praise_not_new_policy")
+        return result
+    if re.search(r"\[리뷰\]|써보니|찍는\s*맛|사용기|체험기|hands.on review", headline_lead, re.I) and not re.search(r"매출|영업이익|순이익|가이던스|공급\s*계약|판매량|출하량|수주", headline_lead):
+        result.update(disposition="exclude", priority=0, reason="consumer_review_not_industry_change")
+        return result
+    if re.search(r"모기\s*(?:저격|퇴치)|모기\s*잡.{0,20}레이저", title) and not PUBLIC_MARKET_BUSINESS_LINK.search(headline_lead):
+        result.update(disposition="exclude", priority=0, reason="consumer_curiosity_without_market_business_link")
+        return result
+    if re.search(r"외부.{0,15}(?:요청|개입).{0,12}(?:없|않)|(?:요청|개입)\s*없었", title) and not re.search(r"신규\s*투자|투자\s*(?:철회|중단)|환수|감액|증액|지분\s*매각", headline_lead):
+        result.update(disposition="exclude", priority=0, reason="political_investment_process_denial_not_new_terms")
+        return result
+    if re.search(r"(?:공화당|민주당|민주).{0,12}(?:승리|이기)|대공황", title) and re.search(r"유세|지지\s*호소", body[:1500]) and not re.search(r"법안\s*발의|행정명령\s*서명|지급\s*대상|지급\s*일정|시행일", lead):
+        result.update(disposition="exclude", priority=0, reason="campaign_benefit_claim_without_payment_policy")
+        return result
+    electoral = bool(re.search(r"유세|선거운동|지지\s*(?:호소|결집)|campaign rally|election campaign", headline_lead, re.I))
     if ROUTINE_FOREGROUND.search(title) and not DIRECT_HEADLINE_CHANGE.search(title):
         result.update(disposition="exclude", priority=0, reason="routine_foreground_not_new_economic_event")
         return result

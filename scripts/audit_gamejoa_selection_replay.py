@@ -38,7 +38,8 @@ def replay(runs):
             identity = radar.market_materiality.source_event_identity(item)
             if identity and lane == "live":
                 identities.setdefault(identity, []).append({"run_id": run["run_id"], "title": item["news"]})
-            result = "retained" if item["link"] in fresh_links else "duplicate" if item["link"] in duplicate_links else "quality_excluded"
+            duplicate = item["link"] in duplicate_links or item.get("_exclusion_reason") == "semantic_duplicate"
+            result = "retained" if item["link"] in fresh_links else "duplicate" if duplicate else "quality_excluded"
             normalized = radar.normalize_alert_for_output(item)
             rows.append({
                 "run_id": run["run_id"], "query_time": run["query_time"], "lane": lane,

@@ -1825,6 +1825,60 @@ class MaterialityChecks(unittest.TestCase):
 
 
 class ForegroundAndEventIdentityTests(unittest.TestCase):
+    def test_remaining_publicity_cannot_borrow_background_market_facts(self):
+        cases = (
+            ('이스라엘 대통령 "트럼프, 최고의 친구" 우호 과시', '대통령은 트럼프와 좋은 관계라고 말했다. 영국은 앞서 정착촌 생산품 수입을 금지했다.'),
+            ('찍는 맛 살린 아이폰 프로 맥스', '[리뷰] 아이폰 써보니 카메라가 개선됐다. 칩 패키징 변화로 지속 성능이 40% 향상됐다.'),
+            ('모기 잡는데 레이저? 모기 저격수 등장', '스타트업은 라이다 제품의 월 생산량을 5000대로 늘려 소비자에게 판매할 계획이다.'),
+            ('국책은행, 영화 투자 외부 요청 없었다', '은행은 기존 절차에 따라 투자했다고 밝혔다. 앞서 제작사에 300억원을 출자했다.'),
+            ('트럼프, 공화당 승리하면 모두 5000달러', '트럼프는 선거 유세에서 공화당 지지를 호소했다. G7의 비축유 방출 성과를 강조했다.'),
+        )
+        for title, body in cases:
+            with self.subTest(title=title):
+                audit = materiality.assess(title, body)
+                self.assertEqual(audit['disposition'], 'exclude', audit)
+
+    def test_actual_policy_and_business_changes_survive_publicity_guards(self):
+        cases = (
+            ('아이폰 리뷰…분기 판매량 12% 증가', '아이폰의 분기 판매량이 12% 증가했다고 회사가 밝혔다.'),
+            ('모기 퇴치 센서 공급계약 체결', '상장사는 병원 고객과 500억원 센서 공급계약을 체결했다.'),
+            ('대통령, 관세 인하 합의…우호 과시', '대통령은 한국산 자동차 관세를 25%에서 15%로 낮추기로 합의했다.'),
+            ('국책은행, 외부 요청 없었다…신규 투자 철회', '은행은 제작사에 대한 신규 투자를 철회하고 출자액을 감액하기로 결정했다.'),
+        )
+        for title, body in cases:
+            with self.subTest(title=title):
+                audit = materiality.assess(title, body)
+                self.assertEqual(audit['disposition'], 'keep', audit)
+                self.assertGreaterEqual(audit['priority'], 2, audit)
+
+    def test_g7_separate_foreground_sentences_retain_quantity_duration_and_identity(self):
+        title = 'G7, 비축유 1억배럴 푼다…긴급 처방'
+        body = (
+            '주요 7개국(G7)이 총 1억배럴 규모의 석유 비축분을 공동 방출하기로 했다. '
+            '국제에너지기구와 협력해 4개월 동안 1억 배럴을 방출할 예정이다. '
+            'G7은 에너지 수출 금지는 하지 않겠다고 밝혔다.'
+        )
+        item = radar.normalize_alert_for_output(alert(title, body))
+        self.assertIn('4개월', item['telegram_core_fact'])
+        self.assertIn('1억배럴', item['telegram_core_fact'])
+        self.assertNotIn('수출', item['telegram_core_fact'])
+        self.assertEqual(radar.source_core_fact_errors(item), [])
+        self.assertTrue(radar.source_output_aligned(item), item)
+        other = alert('G7, 4개월간 비축유 방출', 'G7은 비축유 1억 배럴을 4개월 동안 방출하기로 합의했다.')
+        self.assertEqual(materiality.source_event_identity(item), materiality.source_event_identity(other))
+
+    def test_oil_project_identity_uses_verified_country_context_not_only_headline(self):
+        first = alert('대미투자 이견 와중에 트럼프, 11조원 석유 프로젝트 추진',
+                      '트럼프 대통령은 한국과의 협상에 따라 84억달러 규모의 원유 회수 증진 프로젝트가 추진된다고 발표했다. 프로젝트 위치와 기업은 밝히지 않았다.')
+        second = alert('트럼프, 한국 석유 프로젝트 84억달러 발표', first['source_body'])
+        self.assertEqual(materiality.source_event_identity(first), materiality.source_event_identity(second))
+        item = radar.normalize_alert_for_output(first)
+        self.assertIn('원유 회수 증진', item['telegram_core_fact'])
+        self.assertIn('84억달러', item['telegram_core_fact'])
+        self.assertNotIn('미국', item['telegram_core_fact'])
+        self.assertEqual(radar.source_core_fact_errors(item), [])
+        self.assertTrue(radar.source_output_aligned(item), item)
+
     def test_quoted_alaska_bill_is_summarized_as_a_bill_not_a_tariff(self):
         title = '트럼프 "韓 알래스카 투자 합의않으면 두배로 청구" 노골적 압박'
         body = (
@@ -2016,6 +2070,16 @@ class ForegroundAndEventIdentityTests(unittest.TestCase):
         self.assertEqual(fresh, [])
         self.assertEqual(len(repeated), 1)
         self.assertEqual(len(digest), 1)
+
+    def test_legacy_coarse_receipt_cannot_be_bypassed_by_new_structured_identity(self):
+        item = alert('G7, 비축유 방출', 'G7은 비축유 1억 배럴을 4개월간 방출하기로 합의했다.')
+        entry = {'title': item['news'], 'link': item['link'], 'first_seen_kst': NOW.isoformat(), 'lanes': {'live': NOW.isoformat()}}
+        state = {'seen': {'old': entry}}
+        radar.telegram.migrate_seen_title_aliases(state)
+        with patch.object(radar.telegram, 'load_seen_state', return_value=state):
+            fresh, repeated = radar.telegram.filter_previously_seen_alerts([item], NOW, 'live')
+        self.assertEqual(fresh, [])
+        self.assertEqual(len(repeated), 1)
 
 
 def audit_saved_runs(paths):

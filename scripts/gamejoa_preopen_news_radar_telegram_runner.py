@@ -310,6 +310,12 @@ def filter_previously_seen_alerts(
         # Its structured identity must outrank older coarse title/link keys.
         match_keys = [f"event:{digest_seen(identity)}"] if identity else keys
         matching_entries = [seen[key] for key in match_keys if key in seen]
+        if identity and not matching_entries:
+            # Legacy receipts without sufficient event terms still protect
+            # their exact URL/title. They cannot prove a material revision.
+            matching_entries = [seen[key] for key in keys if key in seen
+                                and not (seen[key].get("source_event_identity")
+                                         or market_materiality.source_event_identity({"source_title": seen[key].get("title", "")}))]
         already_seen = bool(matching_entries) if lane == "live" else any(
             seen_entry_has_lane(entry, lane) for entry in matching_entries
         )

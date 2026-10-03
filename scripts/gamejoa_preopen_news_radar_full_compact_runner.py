@@ -2249,13 +2249,20 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
                 fact = f"G7은 향후 {duration.group(1)}개월 동안 비축유 {volume.group(1)}을 방출하기로 합의했다."
                 if core_sentence_is_complete(fact):
                     return fact
+        foreground = " ".join(sentence for sentence in sentences[:6] if not market_materiality.BACKGROUND.search(sentence))
+        duration = re.search(r"(\d+)\s*(?:개월|달)", foreground)
+        volume = re.search(r"(\d+(?:\.\d+)?\s*(?:억|만)?\s*배럴)", foreground)
+        if duration and volume and re.search(r"G7|주요\s*7개국", foreground, re.I) and re.search(r"공동\s*방출|방출하기로", foreground):
+            fact = f"G7은 향후 {duration.group(1)}개월 동안 비축유 {volume.group(1)}을 공동 방출하기로 합의했다."
+            if core_sentence_is_complete(fact):
+                return fact
     identity = market_materiality.source_event_identity({"source_title": title, "source_body": source, "body_verified": True}) if re.search(r"트럼프", title) and re.search(r"석유|원유", title) else ""
     if ":us_oil_investment:statement:" in identity:
         for sentence in sentences:
             amount = re.search(r"(\d+(?:\.\d+)?\s*억\s*달러)", sentence)
-            if amount and re.search(r"트럼프", sentence) and re.search(r"석유|원유", sentence) and re.search(r"투자", sentence) and not market_materiality.BACKGROUND.search(sentence):
-                project = "원유 증산" if re.search(r"원유\s*증산|석유\s*증산", source) else "석유"
-                fact = f"트럼프는 한국의 미국 {project} 사업 투자액이 {amount.group(1)}라고 발표했다."
+            if amount and re.search(r"트럼프", sentence) and re.search(r"석유|원유", sentence) and re.search(r"투자|프로젝트", sentence) and not market_materiality.BACKGROUND.search(sentence):
+                project = "원유 회수 증진" if re.search(r"원유\s*회수\s*증진", source) else "원유 증산" if re.search(r"원유\s*증산|석유\s*증산", source) else "석유"
+                fact = f"트럼프는 한국과의 협상에 따른 {project} 사업 규모가 {amount.group(1)}라고 발표했다."
                 if core_sentence_is_complete(fact):
                     return fact
     if focus == "industry_market_share":
