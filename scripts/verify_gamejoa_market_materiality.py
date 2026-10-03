@@ -2030,6 +2030,36 @@ class ForegroundAndEventIdentityTests(unittest.TestCase):
         self.assertNotIn("G7", core)
         self.assertNotIn("방출", core)
 
+    def test_hypothetical_psychological_logistics_effect_is_not_actual_supply_disruption(self):
+        title = '러 드론, 키이우 교량 타격…차량 통행 중단'
+        body = '전문가 “교통·물류 차질과 주민 심리 압박 가능성”\n러시아군의 교량 공격으로 시내 교통 혼잡이 발생했다. 전문가는 러시아군이 물류에 차질을 주면서 주민들에게 심리적 압박을 가하려는 것일 수 있다고 분석했다.'
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit['disposition'], 'review', audit)
+        self.assertEqual(audit['priority'], 1, audit)
+        self.assertFalse(audit['evidence'], audit)
+
+    def test_actual_supply_disruption_survives_following_speculation(self):
+        title = '러시아 드론 공격에 원유 운송 중단'
+        body = '러시아 드론 공격으로 원유 운송이 중단됐다고 당국이 밝혔다. 전문가는 이번 공격이 심리적 압박을 가하려는 것일 수 있다고 분석했다.'
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit['disposition'], 'keep', audit)
+        self.assertGreaterEqual(audit['priority'], 2, audit)
+        self.assertIn('원유 운송이 중단', audit['evidence'][0]['source_excerpt'])
+
+    def test_dated_wire_photo_does_not_become_current_market_evidence(self):
+        title = '기업, 신규 공급계약 체결'
+        caption = '[현장=AP/뉴시스] 소방관들이 공장 화재를 진압하고 있다. 2026.09.09.'
+        fact = '기업은 생산 확대를 위한 신규 공급계약을 체결했다고 밝혔다.'
+        body = caption + fact
+        cleaned = radar.article_summary_body(body)
+        self.assertEqual(cleaned, fact)
+        core = radar.detailed_article_core(title, body)
+        self.assertIn('신규 공급계약', core)
+        self.assertNotIn('2026.09.09', core)
+        self.assertNotIn('화재', core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertFalse(radar.core_sentence_is_complete('2026.09.09.' + fact))
+
     def test_scoped_stockpile_refill_is_not_excluded_only_because_speech_was_at_rally(self):
         title = '트럼프, 미국 비축유 다시 채운다'
         body = '트럼프는 선거 유세에서 발언했다. 트럼프는 미국의 전략비축유를 다시 채우겠다고 발표했다. 앞서 G7은 비축유 1억 배럴을 4개월 동안 방출하기로 합의했다.'

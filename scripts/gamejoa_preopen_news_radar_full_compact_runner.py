@@ -6706,16 +6706,37 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
     candidates = []
     unique_links = set()
     live_mode = os.getenv("RADAR_RUN_MODE", "").strip().lower() == "live"
+    queue_state = detail_queue.load_state(detail_queue.STATE_PATH)
     seen_entries = list(telegram.load_seen_state().get("seen", {}).values()) if live_mode else []
     recent_sent = {}
+    sent_by_link = {}
     sent_links = set()
     for entry in seen_entries:
         if not isinstance(entry, dict) or not entry.get("link"):
             continue
         sent_links.add(str(entry["link"]))
+        sent_by_link.setdefault(str(entry["link"]), []).append(entry)
         sent_at = detail_queue.parse_time(entry.get("last_seen_kst"))
         if sent_at and dt.timedelta() <= now - sent_at < dt.timedelta(hours=1):
             recent_sent.setdefault(str(entry["link"]), []).append(entry)
+    backlog_resumed = 0
+    if live_mode:
+        for row in detail_queue.backlog_rows(
+            queue_state, now, {str(row.get("link") or "") for row in rows}, base.MAX_AGE_HOURS,
+        ):
+            if not is_korean_business_row(row) or not korean_business_source_domain_allowed(row["link"]):
+                continue
+            published = detail_queue.parse_time(row.get("published"))
+            prior_sends = sent_by_link.get(row["link"], [])
+            if prior_sends and not any(
+                published and (sent_at := detail_queue.parse_time(entry.get("last_seen_kst")))
+                and published > sent_at for entry in prior_sends
+            ):
+                continue
+            row["publisher"] = korean_business_publisher(row)
+            row["source"] = row.get("source") or row["publisher"]
+            rows.append(row)
+            backlog_resumed += 1
     sent_skipped = 0
     nonmarket_skipped = 0
     for row in rows:
@@ -6742,7 +6763,7 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
         candidates.append(row)
     candidates = rank_korean_business_detail_candidates(candidates, sent_links, live_mode)
     selected, pending, stats = detail_queue.plan_details(
-        candidates, detail_queue.load_state(detail_queue.STATE_PATH), now, KOREAN_BUSINESS_DETAIL_LIMIT,
+        candidates, queue_state, now, KOREAN_BUSINESS_DETAIL_LIMIT,
         respect_cooldown=live_mode,
         selection_version=market_materiality.VERSION,
     )
@@ -6758,6 +6779,8 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
         def validate_article_response(source_html: str) -> str | None:
             candidate = extract_article_detail(source_html, title)
             if candidate.get("body_verified"):
+                if row.get("_detail_from_queue") and not (row.get("published") or base.parse_date(candidate.get("published_kst"))):
+                    return "resumed article publication time unavailable"
                 return None
             return (
                 f"title/body mismatch aligned={candidate.get('title_aligned')} "
@@ -6789,6 +6812,9 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
         detail = receipt["detail"]
         error = receipt["error"]
         valid = bool(not error and detail.get("body_verified"))
+        if valid and row.get("_detail_from_queue") and not (row.get("published") or base.parse_date(detail.get("published_kst"))):
+            valid = False
+            error = "resumed article publication time unavailable"
         query_time = detail_queue.parse_time(receipt["query_time_kst"]) or now
         detail_queue.record_attempt(
             pending, row, query_time, verified=valid, error=error,
@@ -6810,6 +6836,7 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
             parsed = base.parse_date(detail["published_kst"])
             if parsed:
                 row["published"] = parsed
+                pending["entries"][detail_queue.article_key(row)]["source_published_kst"] = parsed.isoformat(timespec="seconds")
         verified += 1
     # Preflight receipts are reusable only inside this GitHub execution. The
     # durable queue holds retrieval metadata, never bodies or delivery state.
@@ -6824,6 +6851,7 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
         f"source_fetches={len(results) - cache_hits} cache_hits={cache_hits} "
         f"fair_slots={stats['fair_slots']} retry_cooldown={stats['cooling']} "
         f"selection_refresh={stats['selection_refresh']} "
+        f"backlog_resumed={backlog_resumed} "
         f"already_sent_skipped={sent_skipped} nonmarket_skipped={nonmarket_skipped}",
     ]
     for note in notes:
@@ -8985,7 +9013,14 @@ def display_news(alert: dict) -> str:
     return korean_title(alert)
 
 
+DATED_WIRE_PHOTO_PATTERN = (
+    r"\[[^\]\r\n]{1,40}=\s*(?:AP|AFP|Reuters|뉴시스|연합뉴스)(?:/[A-Za-z가-힣]+)?\]"
+    r"(?![^.\r\n]{0,50}기자\s*=)[^\r\n]{0,600}?(?:고\s*있다|자료사진)"
+    r"[^\r\n]{0,600}?\b\d{4}\.\d{1,2}\.\d{1,2}\.\s*"
+)
 CORE_UI_GARBAGE_PATTERNS = (
+    DATED_WIRE_PHOTO_PATTERN,
+    r"^\s*\d{4}\.\d{1,2}\.\d{1,2}\.\s*(?=[가-힣A-Za-z])",
     r"^[^.!?\r\n]{0,140}\[[^\]\r\n]{0,40}자료사진\]\s*",
     r'[^.!?\r\n"“”]*?(?:시공|시연|촬영)하고\s*있다\s*\(사진\s*=[^)]*\)',
     r'[^.!?\r\n"“”]*?(?:발언|연설|질문에\s*답|기념촬영을)\s*하고\s*있다\.',
@@ -9026,7 +9061,8 @@ def strip_core_ui_garbage(value: object) -> str:
     """Remove known publisher chrome before sentence ranking, never before direct output."""
     # Remove bracketed photo credits before the byline pattern can consume
     # their closing bracket next to a concatenated wire-service dateline.
-    text = clean_article_summary_text(value)
+    raw = re.sub(DATED_WIRE_PHOTO_PATTERN, " ", html.unescape(str(value or "")), flags=re.I)
+    text = clean_article_summary_text(raw)
     for pattern in CORE_UI_GARBAGE_PATTERNS:
         text = re.sub(pattern, " ", text, flags=re.IGNORECASE)
     return re.sub(r"\s+", " ", text).strip()

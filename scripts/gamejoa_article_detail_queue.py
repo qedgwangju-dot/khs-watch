@@ -36,6 +36,8 @@ def article_key(row: dict) -> str:
 
 
 def fingerprint(row: dict) -> str:
+    if row.get("_detail_from_queue") and re.fullmatch(r"[0-9a-f]{64}", str(row.get("_detail_queue_fingerprint") or "")):
+        return row["_detail_queue_fingerprint"]
     title = re.sub(r"\s+", " ", str(row.get("title") or "")).strip().lower()
     published = parse_time(row.get("published"))
     stamp = published.astimezone(dt.timezone.utc).isoformat() if published else ""
@@ -79,6 +81,13 @@ def plan_details(
             old = {"first_discovered_kst": now.isoformat(timespec="seconds"), "attempts": 0}
         entry = {**old, "url": row.get("link"), "title": row.get("title"),
                  "fingerprint": signature, "last_discovered_kst": now.isoformat(timespec="seconds")}
+        if not row.get("_detail_from_queue"):
+            published = parse_time(row.get("published"))
+            entry.update({
+                "published_kst": published.isoformat(timespec="seconds") if published else "",
+                "publisher": row.get("publisher") or "", "source": row.get("source") or "",
+                "fetch_url": row.get("_fetch_url") or row.get("link"),
+            })
         pending["entries"][key] = entry
         due = parse_time(entry.get("retry_after_kst"))
         # Retry failures from the old HTTP-only route winner once under the
@@ -145,6 +154,30 @@ def record_attempt(
         "response_validation_version": RESPONSE_VALIDATION_VERSION,
         "selection_validation_version": selection_version,
     })
+
+
+def backlog_rows(state: dict, now: dt.datetime, existing_links: set[str], max_age_hours: int) -> list[dict]:
+    """Recover discovery metadata only; every resumed row still needs a fresh body."""
+    rows = []
+    for entry in state.get("entries", {}).values():
+        if not isinstance(entry, dict):
+            continue
+        link = str(entry.get("url") or "")
+        discovered = parse_time(entry.get("first_discovered_kst") or entry.get("last_discovered_kst"))
+        published = parse_time(entry.get("source_published_kst") or entry.get("published_kst"))
+        if not link or link in existing_links or not entry.get("title") or not discovered:
+            continue
+        if not dt.timedelta() <= now - discovered <= dt.timedelta(hours=max_age_hours):
+            continue
+        if published and not -dt.timedelta(hours=1) <= now - published <= dt.timedelta(hours=max_age_hours):
+            continue
+        rows.append({
+            "title": entry["title"], "link": link, "published": published,
+            "publisher": entry.get("publisher") or "", "source": entry.get("source") or "",
+            "layer": "trusted", "summary": "", "_fetch_url": entry.get("fetch_url") or link,
+            "_detail_from_queue": True, "_detail_queue_fingerprint": entry.get("fingerprint") or "",
+        })
+    return rows
 
 
 def save_json(path: Path, value: dict) -> None:

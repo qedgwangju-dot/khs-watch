@@ -36,6 +36,74 @@ def fixture(title: str, body: str) -> str:
 
 
 class DetailQueueChecks(unittest.TestCase):
+    def test_backlog_carries_metadata_not_body_and_preserves_failure_cooldown(self):
+        row = article(0)
+        _, state, _ = queue.plan_details([row], {"entries": {}}, NOW, 1, selection_version=37)
+        queue.record_attempt(state, row, NOW, verified=False, error="timeout", selection_version=37)
+        resumed = queue.backlog_rows(state, NOW + dt.timedelta(seconds=1), set(), 24)
+        self.assertEqual(len(resumed), 1)
+        self.assertEqual(queue.fingerprint(resumed[0]), queue.fingerprint(row))
+        self.assertNotIn("source_body", resumed[0])
+        self.assertNotIn("body_verified", resumed[0])
+        selected, _, stats = queue.plan_details(resumed, state, NOW + dt.timedelta(seconds=1), 1, selection_version=38)
+        self.assertFalse(selected)
+        self.assertEqual(stats["cooling"], 1)
+        self.assertFalse(queue.backlog_rows(state, NOW, {row['link']}, 24))
+        self.assertFalse(queue.backlog_rows(state, NOW + dt.timedelta(hours=25), set(), 24))
+
+    def test_feed_evicted_article_is_freshly_verified_without_forcing_or_reusing_prior_body(self):
+        row = article(1)
+        _, state, _ = queue.plan_details([row], {"entries": {}}, NOW, 1)
+        queue.record_attempt(state, row, NOW, verified=True)
+        body = "<p>기업은 신규 공급계약을 체결하고 생산시설을 확대한다고 발표했다. 계약금액은 1000억원이다.</p>" * 5
+        page = '<meta property="article:published_time" content="' + NOW.isoformat() + '">' + fixture(row['title'], body)
+        with tempfile.TemporaryDirectory() as folder, patch.dict(os.environ, {"RADAR_RUN_MODE": "live", "GITHUB_RUN_ID": "backlog-test"}), \
+                patch.object(queue, "STATE_PATH", Path(folder) / "state.json"), \
+                patch.object(queue, "PENDING_PATH", Path(folder) / "pending.json"), \
+                patch.object(queue, "CACHE_PATH", Path(folder) / "cache.json"), \
+                patch.object(radar.telegram, "load_seen_state", return_value={"seen": {}}), \
+                patch.object(radar.base, "kst_now", return_value=NOW + dt.timedelta(seconds=1)), \
+                patch.object(radar.base, "fetch", return_value=(page, None)) as fetch:
+            queue.save_json(queue.STATE_PATH, state)
+            rows = []
+            notes = radar.hydrate_korean_business_details(rows, NOW + dt.timedelta(seconds=1))
+            fetch.assert_called_once()
+            self.assertEqual(len(rows), 1)
+            self.assertTrue(rows[0]['body_verified'])
+            self.assertEqual(rows[0]['published'], NOW)
+            self.assertIn('backlog_resumed=1', notes[-1])
+            with patch.object(radar.telegram, 'load_seen_state', return_value={"seen": {"a": {"link": row['link'], "last_seen_kst": NOW.isoformat()}}}):
+                sent_rows = []
+                radar.hydrate_korean_business_details(sent_rows, NOW + dt.timedelta(seconds=2))
+            self.assertFalse(sent_rows)
+            self.assertEqual(fetch.call_count, 1)
+
+    def test_legacy_backlog_without_publication_time_cannot_send_or_reset_transport_backoff(self):
+        row = article(1)
+        _, state, _ = queue.plan_details([row], {"entries": {}}, NOW, 1)
+        queue.record_attempt(state, row, NOW, verified=False, error='timeout')
+        state['entries'][queue.article_key(row)].pop('published_kst')
+        resumed = queue.backlog_rows(state, NOW + dt.timedelta(seconds=1), set(), 24)
+        self.assertIsNone(resumed[0]['published'])
+        self.assertEqual(queue.fingerprint(resumed[0]), queue.fingerprint(row))
+        self.assertFalse(queue.plan_details(resumed, state, NOW + dt.timedelta(seconds=1), 1)[0])
+        body = "<p>기업은 신규 공급계약을 체결했다고 밝혔다. 공급 품목은 전력기기이며 계약금액은 1000억원이다.</p>" * 5
+        with tempfile.TemporaryDirectory() as folder, patch.dict(os.environ, {"RADAR_RUN_MODE": "live", "GITHUB_RUN_ID": "undated-backlog-test"}), \
+                patch.object(queue, "STATE_PATH", Path(folder) / "state.json"), \
+                patch.object(queue, "PENDING_PATH", Path(folder) / "pending.json"), \
+                patch.object(queue, "CACHE_PATH", Path(folder) / "cache.json"), \
+                patch.object(radar.telegram, "load_seen_state", return_value={"seen": {}}), \
+                patch.object(radar.base, "kst_now", return_value=NOW + dt.timedelta(minutes=6)), \
+                patch.object(radar.base, "fetch", return_value=(fixture(row['title'], body), None)):
+            queue.save_json(queue.STATE_PATH, state)
+            rows = []
+            radar.hydrate_korean_business_details(rows, NOW + dt.timedelta(minutes=6))
+            self.assertFalse(rows[0].get('body_verified'))
+            self.assertIsNone(rows[0]['published'])
+            self.assertIn('publication time unavailable', rows[0]['_article_verification_failed'])
+            candidate = radar.contract.strict.classify(rows[0], NOW + dt.timedelta(minutes=6))
+            self.assertFalse(radar.quality_display_alerts([candidate] if candidate else [], 1))
+
     def test_changed_selection_rules_refresh_verified_metadata_once_without_reusing_body(self):
         row = article(0)
         _, state, _ = queue.plan_details([row], {"entries": {}}, NOW, 1, selection_version=36)

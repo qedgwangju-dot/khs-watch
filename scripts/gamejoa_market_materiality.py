@@ -7,7 +7,7 @@ import re
 from functools import lru_cache
 
 
-VERSION = 37
+VERSION = 38
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -496,6 +496,13 @@ COMPILED_RULES = tuple(
 
 def evidence_is_new_event(kind: str, sentence: str) -> bool:
     """Do not promote service descriptions or event support into transactions."""
+    if kind in {"physical_supply_or_capacity", "energy_geopolitics_or_supply_risk"} and re.search(
+        r"(?:수\s*있|가능성)[^.!?]{0,35}(?:분석|추측)|(?:의도|심리(?:적)?\s*압박|목적)[^.!?]{0,80}(?:수\s*있|가능성)", sentence,
+    ) and not re.search(
+        r"(?:공급|생산|운송|통항|물류)[^.!?]{0,25}(?:중단됐|중단되었|차질이\s*발생|폐쇄됐)|"
+        r"(?:정유|유전|송유관|에너지\s*시설)[^.!?]{0,30}(?:피격|파손|중단)", sentence,
+    ):
+        return False
     if re.search(r"체험해\s*보고|미리\s*체험|솔루션.{0,30}(?:탐색|찾아볼|검색)|카탈로그.{0,30}(?:분류|제공)", sentence) and not re.search(
         r"(?:공급|납품)\s*계약.{0,20}체결|수주했다|(?:성능|전력|비용).{0,20}\d+(?:\.\d+)?%", sentence,
     ):

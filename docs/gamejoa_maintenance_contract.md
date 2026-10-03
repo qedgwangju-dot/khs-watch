@@ -59,6 +59,9 @@ Every defect or requested change must follow this sequence:
   historical company profiles cannot qualify through incidental economic words.
   Actual outages, deaths, production damage, customer negotiations and early
   policy changes remain eligible when the source establishes the mechanism.
+- Dated wire-photo captions are not current operating facts. A commentator's
+  hypothetical psychological/logistics intent cannot by itself establish a
+  confirmed supply interruption. Actual sourced disruptions remain eligible.
 - Cross-publisher event identities compare actors, action, object, quantities,
   duration and stage. An unchanged statement is not new because its publisher,
   URL tracking parameters or query date changed. Changed terms and execution
@@ -84,6 +87,10 @@ Every defect or requested change must follow this sequence:
   After a rule change, a previously verified unsent candidate is fetched and
   checked once with fresh source evidence. This does not reuse earlier bodies,
   clear seen-state, bypass transport-failure backoff or force a Telegram send.
+- An unsent article does not leave the retrieval queue merely because it
+  scrolled out of a current RSS page. Resume its metadata within the normal age
+  window, fetch a new verified body, require a real publication time and apply
+  the same quality and seen checks. Already-sent unchanged links stay excluded.
 - The 06:30 preopen digest must not be emptied by the real-time seen-state.
   It may reuse a qualifying overnight item once in the daily digest, then the
   successful digest send must refresh seen-state so later live polls stay quiet.
