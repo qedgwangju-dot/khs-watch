@@ -337,7 +337,8 @@
     "stateevt_bf7b8b20b6d6b143e7b8": "2026-10-01T23:15:40.460578+00:00",
     "stateevt_05055f763ef19bc3ab75": "2026-10-01T23:15:40.460578+00:00",
     "stateevt_f102c55803b39e9f735f": "2026-10-02T06:14:18.498949+00:00",
-    "stateevt_a11d2cecef46963c039b": "2026-10-02T06:16:02.365139+00:00"
+    "stateevt_a11d2cecef46963c039b": "2026-10-02T06:16:02.365139+00:00",
+    "stateevt_4bd6e3eda851426115a9": "2026-10-03T01:23:43.460079+00:00"
   },
   "semantic_seen": {
     "alaska_participation_pressure": "2026-09-09T06:46:11.750941+00:00",
@@ -366,13 +367,14 @@
     "eventstate_funding_execution_bf7b8b20b6d6b143e7b8": "2026-10-01T23:15:40.460578+00:00",
     "eventstate_encinal_05055f763ef19bc3ab75": "2026-10-01T23:15:40.460578+00:00",
     "eventstate_alaska_lng_f102c55803b39e9f735f": "2026-10-02T06:14:18.498949+00:00",
-    "eventstate_nuclear_build_a11d2cecef46963c039b": "2026-10-02T06:16:02.365139+00:00"
+    "eventstate_nuclear_build_a11d2cecef46963c039b": "2026-10-02T06:16:02.365139+00:00",
+    "eventstate_alaska_lng_4bd6e3eda851426115a9": "2026-10-03T01:23:43.460079+00:00"
   },
   "official_status": {
-    "status": "unconfirmed",
-    "title": "[상태 변화] 미국 원전 구성·발주 — APR1400 1기당 Westinghouse 예상 가치 20억달러 · Westinghouse·Cameco 측 공식 확인 · 최종 계약 후속 협상 필요 · 연방정부 부지 배치 예정·개별 부지 미확정 · 프레임워크 비구속 · 1단계 AP1000 2기",
-    "source": "대한민국 정책브리핑",
-    "updated_at": "2026-10-02T06:16:22.300390+00:00"
+    "status": "official_seen",
+    "title": "[상태 변화] 알래스카 LNG — 알래스카 LNG 보도수치 500억달러",
+    "source": "정책브리핑",
+    "updated_at": "2026-10-03T01:24:06.580007+00:00"
   },
   "event_states": {
     "nuclear_build": {
@@ -654,26 +656,50 @@
     "alaska_lng": {
       "facts": [
         "alaska_bilateral_status:review_started",
-        "alaska_reported_amount_usd_b:54",
+        "alaska_reported_amount_usd_b:50",
         "stage:발표실행",
         "stage:착공"
       ],
       "slots": {
         "alaska_lng|alaska_bilateral_status": "alaska_bilateral_status:review_started",
-        "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:54",
+        "alaska_lng|alaska_reported_amount_usd_b": "alaska_reported_amount_usd_b:50",
         "alaska_lng|stage:announcement": "stage:발표실행",
         "alaska_lng|stage:착공": "stage:착공"
       },
       "initialized_at": "2026-09-29T23:10:16.076895+00:00",
-      "updated_at": "2026-10-02T06:14:38.493681+00:00",
+      "updated_at": "2026-10-03T01:24:06.557381+00:00",
       "last_title": "한미 전략투자 1호 '텍사스 가스발전' 추진…알래스카 LNG 검토 착수 - 정책브리핑",
       "last_source": "정책브리핑",
       "evidence": [
         {
-          "source": "VOA 한국어 홈페이지",
-          "title": "백악관 “오랜 숙원 알래스카 사업, 착공∙완공 기대” - VOA 한국어 홈페이지",
-          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9FNHJ6LWwxUEktVEJRWkdsdy0wdHhLX0VZV1N5YXRWQ2k5b05VOU5ueGxkNDZVbW5xM1FrSExJbURESWZxR0lOTmZpZTlrTExQcVFBM1o3VGZ1cW5mNnRiQmtoQ2E3Ri1WUzVjLdIBb0FVX3lxTE9oTUM3aWhiX3V5bHBiTDFIdGdRLVphLWdjTTZjUUxPVGtISG5qWVFrTGJURXJIUUZhemZWTHVLZjRFY3c1TW5INTlFUXVGZlhQN1NaZjBoTElWQ3pHSnpXMHlLenRJMi1aMllNVTFqaw?oc=5",
-          "published": "2026-10-01T19:05:35+00:00"
+          "source": "머니투데이",
+          "title": "韓 알래스카 LNG 사업 참여 못박은 트럼프…\"500억불 이상 투자\"(상보) - 머니투데이 - 머니투데이",
+          "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFBNWi1XZVhGbm1scm93YkhTVURlZ3FFbFNPbW5nb3Z6QnMzdEdzZWpQVm9sblZraFkyRjlSZTk2VzFmRWdMSHZRNVFIX3lOa0lnNUg1VU02aHp6NnBSWWVJQk5KZzJ0OENYbW85OG1Td09sbjhXeHZkbVp4SdIBe0FVX3lxTFBNWi1XZVhGbm1scm93YkhTVURlZ3FFbFNPbW5nb3Z6QnMzdEdzZWpQVm9sblZraFkyRjlSZTk2VzFmRWdMSHZRNVFIX3lOa0lnNUg1VU02aHp6NnBSWWVJQk5KZzJ0OENYbW85OG1Td09sbjhXeHZkbVp4SQ?oc=5",
+          "published": "2026-09-30T21:29:17+00:00"
+        },
+        {
+          "source": "뉴스핌",
+          "title": "美 \"알래스카 LNG 투자 결정\" vs 韓 \"검토 단계\"…500억달러 사업 '온도차' - 뉴스핌",
+          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBZdk1yY1Z6ZkR5QmtvLW02elRaTFBZb1FLVEREY0VSZG85RDBMUzYtcGQ4SDV3MkRDdXJQRWN5MVpKYkU4UGxyZ2VGVUJocGRocEcyUXlIMTl2dnht?oc=5",
+          "published": "2026-10-01T01:19:00+00:00"
+        },
+        {
+          "source": "한겨레",
+          "title": "한국은 검토 중인데…미 “알래스카 LNG 500억달러 투자” 일방 발표 - 한겨레",
+          "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE40MElvSE4zUlliQXdWTUpGbmJxYzVtT0d1cnlwTGdWLVFVbERvR0RPakJuWXZvRTNVTzBXQThYM2k3TnRicjQzeS1MTkJhS3ZlR01XYjNUTUlOb0o0MUYyQmhWdmd1WDNlUkRIQk83TQ?oc=5",
+          "published": "2026-10-01T04:53:00+00:00"
+        },
+        {
+          "source": "연합뉴스",
+          "title": "트럼프, '알래스카 LNG에 한국 500억불 투자' 일방 발표(종합2보) - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5WN1BlX0pLbFAzZXVkRGIwQjh1ZnhpWWlWNEZzamFJSHZwTEF0cko4Y2Q3c1N0MW81M0RleEdxcldhbkZBb0VJLTFIZkNXTVQwQWFYX3lNVVlKakXSAWBBVV95cUxPOTZZX3FXaEhsVjFpd0I2WUE1YVAwQTkwNFoxeDc3MWxaRGpjdU5YTi04NzBjNV9fRVpub251dWJKUnd3bkZVY1k2Q2JDeHUxMHZodTFuZVB2dE9maGR3X04?oc=5",
+          "published": "2026-09-30T22:48:41+00:00"
+        },
+        {
+          "source": "한겨레",
+          "title": "알래스카 LNG 개발 미 기업 “한국 500억달러 투자는 우리 노력의 결실” - 한겨레",
+          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1XTjN5aXI1SFZZOTVLSFMySGpjMUw3Z3poWDQ0LTNVazB5SEthekxoRjhuZE1GT1RrblR4RDVwbHFEZ0xFelQ0eW55amJoOHZSaDJjRHg5a2lYVGlSb0VwNnQ0b0tkbTdLVWRBc0xkYmt5QQ?oc=5",
+          "published": "2026-10-02T05:40:00+00:00"
         }
       ]
     },
