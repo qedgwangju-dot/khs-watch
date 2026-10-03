@@ -9,7 +9,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 53
+VERSION = 54
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -82,8 +82,8 @@ ENTERPRISE_CHANGE = re.compile(
 )
 PRIVATE_LIFE_FOREGROUND = re.compile(
     r"전남편|전아내|열애|결혼식|음주\s*회동|사적\s*만남|술자리|한잔했|"
-    r"(?:배우|가수|아이돌).{0,35}(?:근황|친분|데이트|연애|사생활)|"
-    r"인증\s*(?:샷|사진)|celebrity romance|private meeting|drinking reunion", re.I,
+    r"(?:배우|가수|아이돌).{0,35}(?:근황|친분|데이트|연애|사생활|인증\s*(?:샷|사진))|"
+    r"celebrity romance|private meeting|drinking reunion", re.I,
 )
 ENTERTAINMENT_MARKET_EVENT = re.compile(
     r"매출|영업(?:이익|익|손실)|순(?:이익|익|손실)|가이던스|현금흐름|"

@@ -162,6 +162,14 @@ class EntertainmentBoundaryChecks(unittest.TestCase):
             "customer_discussions", "고객사는 HBM 공급과 공동 개발 방안을 논의했다.",
         ))
 
+    def test_technical_customer_certification_is_not_a_private_life_photo(self):
+        title = "반도체기업, HBM 고객 인증 완료"
+        body = ("반도체기업은 데이터센터 공급용 HBM 고객 인증을 완료했다. "
+                "검증팀은 제품 인증 사진을 공개했다.")
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertTrue(any(item["kind"] == "technology_or_clinical_stage" for item in audit["evidence"]))
+
     def test_entertainment_company_earnings_and_insider_trades_remain_eligible(self):
         for title, body in (
             ("하이브, 3분기 영업이익 30% 증가", "하이브는 3분기 영업이익이 전년비 30% 증가했다고 발표했다."),
