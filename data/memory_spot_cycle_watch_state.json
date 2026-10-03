@@ -466,7 +466,7 @@
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
     "period": "2027",
-    "blended_asp_yoy_pct": 121.0,
+    "blended_asp_yoy_pct": 121,
     "eight_hi_premium_min_pct": 10,
     "eight_hi_premium_max_pct": 20,
     "mainstream_layers": 8,
@@ -607,11 +607,11 @@
   "dgx_spark_memory_price_track_version": 1,
   "dgx_spark_memory_price": {
     "sku_64_memory_gb": 64,
-    "sku_64_price_usd": 4999.0,
+    "sku_64_price_usd": 4999,
     "sku_64_available_date": "2026-10-23",
     "sku_64_model_limit_b": 100,
     "sku_128_memory_gb": 128,
-    "sku_128_fe_price_usd": 6950.0,
+    "sku_128_fe_price_usd": 6950,
     "sku_128_prior_price_usd": 4699,
     "sku_128_launch_price_usd": 3999,
     "cluster_units": 2,
@@ -629,6 +629,7 @@
     "secondary_source_url": "https://www.theregister.com/systems/2026/10/02/nvidia-debuts-4999-dgx-spark-with-half-the-ram-and-storage-amid-memory-crunch/5300622",
     "prior_price_source_url": "https://forums.developer.nvidia.com/t/2-23-2026-price-change-announcement/361713",
     "as_of": "2026-10-02",
-    "source_rank": 2
+    "source_rank": 2,
+    "sku_128_fe_price_official_confirmed": false
   }
 }
