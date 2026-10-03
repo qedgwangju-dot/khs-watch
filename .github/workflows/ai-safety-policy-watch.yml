@@ -118,13 +118,16 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
+          import datetime as dt
           from scripts.ai_safety_policy_watch import (
+              UTC,
               detect_category,
               detect_entity,
               source_official,
               official_page_source,
               forced_official_page_category,
               forced_official_page_entity,
+              advance_official_page_state,
           )
 
           cases = [
@@ -206,6 +209,63 @@ jobs:
                       f"Forced official page mapping mismatch: {name} "
                       f"category={actual_category} entity={actual_entity}"
                   )
+
+          # Duplicate-alert guard: immutable White House reference pages must
+          # never alert even if alternating HTML render variants change digest.
+          t0 = dt.datetime(2026, 10, 3, 0, 0, tzinfo=UTC)
+          base = {
+              "digest": "A",
+              "url": "https://www.whitehouse.gov/example",
+              "updated_at": t0.isoformat(),
+          }
+          snap_b = {"digest": "B", "url": base["url"], "material": "variant B"}
+          state1, alert1 = advance_official_page_state(
+              "백악관 Super Intelligence 행정명령", base, snap_b, t0
+          )
+          state2, alert2 = advance_official_page_state(
+              "백악관 Super Intelligence 행정명령",
+              state1,
+              {"digest": "A", "url": base["url"], "material": "variant A"},
+              t0 + dt.timedelta(minutes=20),
+          )
+          state3, alert3 = advance_official_page_state(
+              "백악관 Super Intelligence 행정명령",
+              state2,
+              snap_b,
+              t0 + dt.timedelta(minutes=40),
+          )
+          print(
+              f"ai_policy_duplicate_guard_immutable="
+              f"{alert1},{alert2},{alert3} digest={state3.get('digest')}"
+          )
+          if alert1 or alert2 or alert3 or state3.get("digest") != "A":
+              raise RuntimeError("Immutable White House page render jitter could create a duplicate alert")
+
+          # Mutable pages require the same changed digest to persist for at
+          # least 10 minutes and two observations before alerting.
+          mutable_base = {
+              "digest": "A",
+              "url": "https://example.com/mutable",
+              "updated_at": t0.isoformat(),
+          }
+          m1, ma1 = advance_official_page_state(
+              "NVIDIA OpenShell 지원정책",
+              mutable_base,
+              {"digest": "B", "url": mutable_base["url"], "material": "new"},
+              t0,
+          )
+          m2, ma2 = advance_official_page_state(
+              "NVIDIA OpenShell 지원정책",
+              m1,
+              {"digest": "B", "url": mutable_base["url"], "material": "new"},
+              t0 + dt.timedelta(minutes=11),
+          )
+          print(
+              f"ai_policy_duplicate_guard_mutable="
+              f"{ma1},{ma2} digest={m2.get('digest')}"
+          )
+          if ma1 or not ma2 or m2.get("digest") != "B":
+              raise RuntimeError("Mutable official page confirmation guard failed")
           PY
 
       - name: Run live policy watch
