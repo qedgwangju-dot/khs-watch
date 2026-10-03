@@ -148,16 +148,14 @@ def format_event_date_korean(value):
 
 def is_oira_prerule(event):
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
-    if is_sec_crypto_custody_2026(event):
-        return (
-            "쉽게 말하면, SEC가 기관의 암호자산 보관 규칙을 현실에 맞게 넓히려는 제안입니다. "
-            "특정 조건에서는 외부 수탁기관 없이 자체 수탁도 허용하고 주 신탁회사도 수탁 경로로 인정하려는 방향이지만, "
-            "모든 코인에 자동 적용되는 규칙은 아니고 아직 Proposed Rule(제안규칙)이라 즉시 효력도 없습니다."
-        )
     return ("oira" in signal or "reginfo" in signal) and ("prerule" in signal or "pre-rule" in signal)
 
 
 def rule_stage(event):
+    if is_sec_3x_crypto_etp_approval(event):
+        return "approval_order"
+    if is_volatility_3x_crypto_launch(event):
+        return "launch"
     event_type = clean(event.get("event_type", "")).lower()
     source = clean(event.get("source", "")).lower()
     fr_type = clean(event.get("federal_register_type", "")).lower()
