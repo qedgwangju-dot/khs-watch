@@ -104,16 +104,16 @@ def curve_regime(cur, prev):
 
     if d2 > 0 and d10 > 0 and ds210 < 0:
         name = "베어 플래트닝"
-        easy = "금리↑ + 단기금리가 더 크게↑ → Fed 재인상·고금리 장기화 우려"
+        easy = "금리↑ + 단기금리 상승폭이 더 큼 → Fed 고금리 장기화·추가 긴축 위험을 더 반영하는 패턴"
     elif d2 > 0 and d10 > 0 and ds210 > 0:
         name = "베어 스티프닝"
-        easy = "금리↑ + 장기금리가 더 크게↑ → 재정·국채 공급·인플레이션·기간프리미엄 부담"
+        easy = "금리↑ + 장기금리 상승폭이 더 큼 → 재정·국채 공급·인플레이션·기간프리미엄 부담이 커지는 패턴"
     elif d2 < 0 and d10 < 0 and ds210 > 0:
         name = "불 스티프닝"
-        easy = "금리↓ + 단기금리가 더 크게↓ → Fed 인하·경기둔화 기대"
+        easy = "금리↓ + 단기금리 하락폭이 더 큼 → Fed 인하·경기둔화 기대를 더 반영하는 패턴"
     elif d2 < 0 and d10 < 0 and ds210 < 0:
         name = "불 플래트닝"
-        easy = "금리↓ + 장기금리가 더 크게↓ → 장기 성장·물가 기대 약화"
+        easy = "금리↓ + 장기금리 하락폭이 더 큼 → 장기 성장·물가 기대 약화를 더 반영하는 패턴"
     else:
         name = "커브 트위스트·혼조"
         easy = "2년·10년 금리가 한 방향으로 정렬되지 않음 → Fed와 장기 재정·성장 요인 분리 확인"
@@ -128,13 +128,13 @@ def curve_regime(cur, prev):
     front_fed = d2 > 0 and d10 > 0 and d2 > d10
     back_fiscal = d30 > d10 and d30 > 0
     if front_fed and not back_fiscal:
-        driver = "오늘의 주도축: 앞단 Fed 문제 우세 → 재인상·고금리 장기화 우려가 핵심"
+        driver = "오늘의 주도축: 앞단 정책금리 기대 압력이 상대적으로 큰 패턴 → Fed 고금리 장기화·추가 긴축 우려 후보(원인 확정 아님)"
     elif back_fiscal and not front_fed:
-        driver = "오늘의 주도축: 뒷단 재정·장기채 공급 문제 우세 → 기간프리미엄·국채 공급 부담이 핵심"
+        driver = "오늘의 주도축: 뒷단 기간프리미엄 압력이 상대적으로 큰 패턴 → 재정·국채 공급 부담 후보(원인 확정 아님)"
     elif front_fed and back_fiscal:
-        driver = "오늘의 주도축: 앞단 Fed와 뒷단 재정·장기채 공급이 동시에 압박"
+        driver = "오늘의 주도축: 앞단 정책금리 기대와 뒷단 기간프리미엄 압력이 동시에 커지는 패턴(원인 확정 아님)"
     else:
-        driver = "오늘의 주도축: Fed와 재정 중 한쪽으로 단정하기 어려움"
+        driver = "오늘의 주도축: 금리곡선만으로 Fed·재정 중 한쪽 원인을 확정하기 어려움"
     return name, easy, (s210_now, s210_prev, ds210), (s1030_now, s1030_prev, ds1030, back, driver)
 
 
@@ -198,8 +198,40 @@ def credit_class(results, prev_rows):
 
     if lqd is None or hyg is None:
         return "신용 Fund Flow 판정 대기", "LQD·HYG 첫 기준점 확보 중", ldoas, hdoas
-    if hyg < 0 and (hp or 0) < 0 and hdoas is not None and hdoas >= 5:
-        return "신용위험 확대 확인", "HYG 가격↓ + 자금↓ + OAS↑ → 위험회피가 가격·수급·신용에서 동시에 확인", ldoas, hdoas
+
+    # 신용스프레드는 실제 위험가격이므로 대규모 OAS 확대를 ETF 자금유입만으로 상쇄하지 않는다.
+    if hdoas is not None and hdoas >= 10:
+        if hyg < 0 and (hp or 0) < 0:
+            return (
+                "신용위험 확대 확인",
+                f"HYG 가격↓ + 자금↓ + OAS {hdoas:+.1f}bp 급확대 → 가격·수급·신용에서 위험회피가 동시에 확인",
+                ldoas, hdoas,
+            )
+        if hyg < 0:
+            return (
+                "신용위험 경계 강화",
+                f"HYG 자금유출 + OAS {hdoas:+.1f}bp 급확대 → 신용위험 가격이 빠르게 악화",
+                ldoas, hdoas,
+            )
+        return (
+            "신용위험 경계 강화",
+            f"HYG OAS {hdoas:+.1f}bp 급확대 → 신용위험 가격은 악화. HYG 자금은 유입이라 전면 위험회피 확정은 아님",
+            ldoas, hdoas,
+        )
+
+    if hdoas is not None and hdoas >= 5:
+        if hyg < 0:
+            return (
+                "신용위험 경계 강화",
+                f"HYG 자금유출 + OAS {hdoas:+.1f}bp 확대 → 위험회피가 수급과 신용가격에서 동시 확인",
+                ldoas, hdoas,
+            )
+        return (
+            "신용가격 악화·자금흐름 혼조",
+            f"HYG OAS {hdoas:+.1f}bp 확대에도 자금은 유입 → 신용가격 악화와 저가매수 흐름이 엇갈림",
+            ldoas, hdoas,
+        )
+
     if lqd < 0 and hyg < 0:
         if (ldoas is None or abs(ldoas) < 5) and (hdoas is None or abs(hdoas) < 5):
             return "품질 선호·선제적 위험축소", "LQD·HYG 자금은 빠지지만 OAS 급등은 아직 없음 → 신용위기보다 자금이 먼저 방어적으로 이동", ldoas, hdoas
@@ -207,7 +239,9 @@ def credit_class(results, prev_rows):
     if lqd > 0 and hyg < 0:
         return "우량 신용만 선호", "LQD 유입·HYG 유출 → 회사채 안에서도 투자등급으로 품질 이동", ldoas, hdoas
     if lqd > 0 and hyg > 0:
-        return "신용 위험선호 회복", "LQD·HYG 동반 유입 → 기업 신용자산 선호 회복", ldoas, hdoas
+        if (ldoas is None or ldoas <= 0) and (hdoas is None or hdoas <= 0):
+            return "신용 위험선호 회복 확인", "LQD·HYG 동반 유입 + OAS 안정/축소 → 자금과 신용가격이 함께 개선", ldoas, hdoas
+        return "자금유입·신용가격 혼조", "LQD·HYG 자금은 유입됐지만 OAS가 축소되지 않아 위험선호 회복 확인은 보류", ldoas, hdoas
     return "신용시장 혼조", "LQD·HYG 방향이 엇갈림", ldoas, hdoas
 
 
@@ -217,9 +251,16 @@ def overall_class(t_head, c_head, results):
     hyg = results["HYG"].get("flow_usd")
     if None not in (shy, lqd, hyg) and shy > 0 and lqd < 0 and hyg < 0:
         return "방어적·품질 선호 강화", "회사채에서 빠진 자금이 안전한 미 국채, 특히 짧은 만기로 이동하는 품질 이동"
-    if "신용위험 확대" in c_head:
+    if "신용위험 확대 확인" in c_head:
         return "위험회피 강화", "신용위험이 자금흐름을 넘어 가격·스프레드까지 번지는 단계"
-    if "위험선호 회복" in c_head and "장기채 로테이션" in t_head:
+    if ("신용위험 경계" in c_head or "신용가격 악화" in c_head) and "장기채 위험 확대" in t_head:
+        return (
+            "금리·신용 위험경계 강화",
+            "장기금리 스트레스와 신용스프레드 악화가 동시에 확인. 다만 ETF 자금이 전면 유출로 정렬된 것은 아니어서 전면 위험회피 확정 단계는 아님",
+        )
+    if "신용위험 경계" in c_head or "신용가격 악화" in c_head:
+        return "신용 위험경계 강화", "신용스프레드 악화가 확인됐지만 자금흐름은 전면 위험회피로 정렬되지 않음"
+    if "위험선호 회복 확인" in c_head and "장기채 로테이션" in t_head:
         return "위험선호·금리하락 베팅 동시 회복", "중·장기 국채와 회사채로 자금이 함께 복귀"
     return "혼조·추가 확인", "국채 만기 이동과 회사채 위험선호가 아직 완전히 같은 방향으로 정렬되지 않음"
 
@@ -279,6 +320,12 @@ def main():
     state = base.load_state()
     state.setdefault("history", {})
     now = dt.datetime.now(KST)
+    event_name = os.getenv("GITHUB_EVENT_NAME", "").strip()
+    if event_name == "workflow_run":
+        minute_of_day = now.hour * 60 + now.minute
+        if not (8 * 60 + 20 <= minute_of_day <= 15 * 60 + 30):
+            print(f"treasury_fallback_noop=true kst={now:%H:%M} reason=outside_0820_1530")
+            return
     fx = base.get_usdkrw()
     curve, prev_curve = get_curve_pair()
     results, prev_rows = {}, {}
@@ -288,6 +335,12 @@ def main():
         hist = list(state["history"].get(ticker, []))
         prev = base.previous_snapshot(hist, cur["date"])
         prev_rows[ticker] = prev
+        if cur.get("nav_change_pct") is None and prev and prev.get("nav") not in (None, 0):
+            try:
+                cur["nav_change_pct"] = (cur["nav"] / float(prev["nav"]) - 1.0) * 100.0
+                cur["nav_change_source"] = "official_nav_derived"
+            except Exception:
+                pass
         if ticker in ("LQD", "HYG"):
             try:
                 cur["oas_bps"] = parse_oas_bps(meta)
@@ -299,6 +352,24 @@ def main():
         state["history"][ticker] = hist
         cur["flow_5d_usd"] = base.last_n_flows(hist, 5)
         results[ticker] = cur
+
+    fund_dates = {ticker: results[ticker].get("date") for ticker in FUNDS}
+    unique_fund_dates = {d for d in fund_dates.values() if d}
+    missing_oas = [ticker for ticker in ("LQD", "HYG") if results[ticker].get("oas_bps") is None]
+    if len(unique_fund_dates) != 1 or curve.get("date") not in unique_fund_dates:
+        print(json.dumps({
+            "report_withheld": "source_date_mismatch",
+            "treasury_date": curve.get("date"),
+            "fund_dates": fund_dates,
+        }, ensure_ascii=False))
+        return
+    if missing_oas:
+        print(json.dumps({
+            "report_withheld": "credit_oas_missing",
+            "missing": missing_oas,
+            "fund_dates": fund_dates,
+        }, ensure_ascii=False))
+        return
 
     t_head, t_reason = treasury_class(results, curve)
     c_head, c_reason, ldoas, hdoas = credit_class(results, prev_rows)
@@ -434,7 +505,7 @@ def main():
     ).hexdigest()
     last_delivery = state.get("last_delivery") or {}
     if (
-        os.getenv("GITHUB_EVENT_NAME", "").strip() == "schedule"
+        os.getenv("GITHUB_EVENT_NAME", "").strip() in ("schedule", "workflow_run")
         and last_delivery.get("data_fingerprint") == data_fingerprint
     ):
         base.save_state(state)
