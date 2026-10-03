@@ -20,7 +20,7 @@ TOP_N=15
 POWER_DELTA=50.0
 PROGRESS_DELTA=5.0
 DATE_DELTA=60
-FORMAT_VERSION=3
+FORMAT_VERSION=4
 
 TRACKED_NAMES=(
 "Microsoft Fairwater Wisconsin",
@@ -217,10 +217,10 @@ def risky(status):
     return any(k in low for k in ("delay","delayed","denied","rejected","blocked","halt","paused","financing uncertain","funding uncertain"))
 def capacity_bucket(current,planned,progress):
     if progress>=99.5 and current>0:
-        return "가동 용량"
+        return "현재 추정 IT전력=계획치"
     if current>0:
-        return "부분 가동·현재 가용 용량"
-    return "건설 중 계획 용량"
+        return "현재 추정 IT전력·부분 가동/건설 병행"
+    return "미래 계획 IT전력·현재 추정 0MW"
 
 def stage_rank(label):
     base=(label or "").replace("부분 가동·","")
@@ -295,6 +295,7 @@ def snapshot(dc_text,tl_text):
             "current_mw":round(current,1),"planned_mw":round(planned,1),"progress":round(progress,1),
             "completion_date":finish.isoformat(),"completion":qlabel(finish,progress),
             "stage":stg,"risk":risky(cur.get("status","")),
+            "source_status":clean(cur.get("status","")),
             "mw_quality":capacity_bucket(current,planned,progress),
             "energy_site":energy["site"],"energy_future":energy["future"],"energy_quality":energy["quality"],
             "company_issues":company_issues,
@@ -345,23 +346,23 @@ def h(v):return html.escape(str(v),quote=True)
 
 def render(ps,chg,upd):
     planned=sum(x["planned_mw"] for x in ps); current=sum(x["current_mw"] for x in ps); pct=current/planned*100 if planned else 0
-    lines=["<b>📊 미국 주요 AI 데이터센터 건설 현황</b>",f"출처: Epoch AI · {h(upd)}","용량 = 계획 IT전력 / 진행률 = 현재 가용 IT전력 ÷ 계획 IT전력","","<b>🔄 이번 핵심 변화</b>"]
+    lines=["<b>📊 미국 주요 AI 데이터센터 건설 현황</b>",f"출처: Epoch AI · {h(upd)}","용량 = 계획 최종 IT전력 / 진행률 = Epoch 현재 추정 IT전력 ÷ 계획 최종 IT전력","","<b>🔄 이번 핵심 변화</b>"]
     lines += [f"• {h(x)}" for x in chg[:6]]
     if len(chg)>6:lines.append(f"• 그 외 {len(chg)-6}건은 상태에 반영")
-    lines += ["",f"• 핵심 {len(ps)}개 계획 IT전력 합계 <b>{planned/1000:.1f}GW</b>",f"• 현재 가용 IT전력 합계 <b>{current/1000:.1f}GW</b> · 실가용 전환율 <b>{pct:.1f}%</b>",f"• GW 품질 │ 계획 {planned/1000:.1f}GW 전체를 가동으로 보지 않고 현재 가용 {current/1000:.1f}GW를 별도 관리",""]
+    lines += ["",f"• 핵심 {len(ps)}개 계획 최종 IT전력 합계 <b>{planned/1000:.1f}GW</b>",f"• Epoch 현재 추정 IT전력 합계 <b>{current/1000:.1f}GW</b> · 계획 대비 비율 <b>{pct:.1f}%</b>",f"• GW 품질 │ 계획 {planned/1000:.1f}GW를 실제 전원 인가·상업가동으로 간주하지 않고 Epoch 현재 추정치 {current/1000:.1f}GW와 분리",""]
     for i,p in enumerate(ps,1):
         inv=p["investors"] if p["investors"]!="미기재" else "Epoch 투자자 미기재"
         lines += [f"<b>{badge(i)} {h(p['display'])}{' ⚠️' if p['risk'] else ''}</b>",
                   f"{h(p['owner'])} → {h(p['users'])} | {h(inv)}",
                   f"<b>{p['planned_mw']:,.0f}MW</b> | {h(p['completion'])} | <b>{p['progress']:.0f}%</b> ({p['current_mw']:,.0f}/{p['planned_mw']:,.0f}MW) | {h(p['stage'])}",
-                  f"🧭 MW 품질 │ <b>{h(p.get('mw_quality','미분류'))}</b> · 계획 {p['planned_mw']:,.0f}MW → 현재 가용 {p['current_mw']:,.0f}MW · 접속계약·공식 전원 인가 문서는 별도 검증",
+                  f"🧭 MW 품질 │ <b>{h(p.get('mw_quality','미분류'))}</b> · 계획 {p['planned_mw']:,.0f}MW → Epoch 현재 추정 {p['current_mw']:,.0f}MW · 접속계약·공식 전원 인가·상업가동 문서는 별도 검증",
                   f"⚡ 전력원 │ [{h(p['energy_quality'])}] {h(p['energy_site'])} | 장기전원: {h(p['energy_future'])}"]
         for issue in p.get("company_issues",[])[:2]:
             lines.append(
                 f"🚨 기업 이슈 │ [{h(issue.get('relationship','기업 연관'))}] "
                 f"{h(issue.get('label','규제·운영'))} · {h(issue.get('summary',''))}"
             )
-    lines += ["","<b>📌 판정 기준</b>","• 진행률은 Epoch의 현재 가용 IT전력 ÷ 계획 최종 IT전력으로 직접 계산","• Epoch Current power는 현재 GPU 서버·네트워크·스토리지에 이용 가능한 IT전력 추정치이며 계획 MW와 분리","• Epoch 추적대상은 원칙적으로 착공한 프로젝트지만 접속계약·공식 전원 인가·상업가동 문서를 대신하지 않음","• 발표·계획 MW → 착공 → 현재 가용 IT전력 순으로 품질을 높여 관리하고 미확인 접속계약·전원 인가는 임의 승격하지 않음","• 계획용량·완료시점·공정은 위성영상·허가·회사자료 기반 Epoch 추정치","• IT전력 추정은 대략 ±1.4배, 일정은 약 ±6개월 불확실성을 염두에 둠","• 50MW 이상 용량 변화, 진행률 ±5%p, MW 품질 단계 변경, 완료시점 ±60일, 상위15 진입·이탈 때 전체판 재전송","• 자금조달·전력·인허가 위험은 기존 실행병목 감시와 별도 교차검증","• 전력원은 부지 실제·계획 전원과 기업 차원의 장기전원(원전·핵융합·지열 등)을 반드시 분리하고, 미확정은 미확정으로 표시","• 천연가스와 LNG는 구분하며 LNG 공급계약·터미널·연료근거가 확인될 때만 LNG로 표기","• 프로젝트별 기업 이슈는 동일 부지·동일 프로젝트 직접 연계가 구조화되어 확인될 때만 해당 프로젝트 줄에 표시","• 다른 지역의 기업 공통 규제·환경·소송 이슈는 프로젝트 줄에 복제하지 않고 별도 하이퍼스케일러 기업 리스크 알림에서 처리"]
+    lines += ["","<b>📌 판정 기준</b>","• 진행률은 Epoch timeline의 현재 추정 IT전력 ÷ 계획 최종 IT전력으로 직접 계산한 보조지표","• Epoch의 IT power는 GPU 서버·네트워크·스토리지를 포함한 총 IT전력 용량 추정치이며, 공식 전원 인가 MW나 계통 접속계약 MW와 같은 값으로 취급하지 않음","• Epoch 추적대상은 원칙적으로 착공한 프로젝트지만 접속계약·공식 전원 인가·상업가동 문서를 대신하지 않음","• 발표·계획 MW → 착공 → Epoch 현재 추정 IT전력 → 공식 전원 인가·상업가동을 서로 다른 단계로 관리하고 미확인 단계는 임의 승격하지 않음","• 계획용량·완료시점·공정은 위성영상·허가·회사자료 기반 Epoch 추정치","• IT전력 추정은 대략 ±1.4배, 일정은 약 ±6개월 불확실성을 염두에 둠","• 50MW 이상 용량 변화, 진행률 ±5%p, MW 품질 단계 변경, 완료시점 ±60일, 상위15 진입·이탈 때 전체판 재전송","• 자금조달·전력·인허가 위험은 기존 실행병목 감시와 별도 교차검증","• 전력원은 부지 실제·계획 전원과 기업 차원의 장기전원(원전·핵융합·지열 등)을 반드시 분리하고, 미확정은 미확정으로 표시","• 천연가스와 LNG는 구분하며 LNG 공급계약·터미널·연료근거가 확인될 때만 LNG로 표기","• 프로젝트별 기업 이슈는 동일 부지·동일 프로젝트 직접 연계가 구조화되어 확인될 때만 해당 프로젝트 줄에 표시","• 다른 지역의 기업 공통 규제·환경·소송 이슈는 프로젝트 줄에 복제하지 않고 별도 하이퍼스케일러 기업 리스크 알림에서 처리"]
     return "\n".join(lines)+"\n"
 
 def main():
