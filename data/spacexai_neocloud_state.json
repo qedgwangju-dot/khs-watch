@@ -1,0 +1,91 @@
+{
+  "initialized": true,
+  "format_version": 1,
+  "official": {
+    "anthropic": {
+      "monthly_usd_b": 1.25,
+      "gpus": 325000,
+      "through": "2029-05",
+      "termination": "초기 3개월 이후 상호 90일 통지 해지 가능",
+      "site_mw_min": 300,
+      "official_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026039276/spaceexplorationtechnologi.htm"
+    },
+    "google": {
+      "monthly_usd_b": 0.92,
+      "gpus": 110000,
+      "start": "2026-10",
+      "through": "2029-06",
+      "delivery_deadline": "2026-09-30",
+      "delivery_grace": "1개월",
+      "termination": "2026-12-31 이후 상호 90일 통지 해지 가능",
+      "official_url": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026041150/spacexagreementfwp.htm"
+    },
+    "spacex_ai": {
+      "nameplate_compute_draw_gw": 1.4,
+      "nameplate_date": "2026-06-30",
+      "contracted_sales_usd_b_q2_disclosure": 14.1,
+      "note": "Nameplate compute draw는 실제 전력사용량·가동률이 아님"
+    },
+    "_verification": {
+      "sec_live_all_ok": false,
+      "fallback": "공식 SEC 문서로 사전검증한 고정 기준값",
+      "errors": [
+        "SEC Anthropic live parse HTTPError",
+        "SEC Google live parse HTTPError",
+        "SEC 10-Q live parse HTTPError",
+        "SEC Q2 release live parse HTTPError"
+      ]
+    }
+  },
+  "reported_context": [
+    {
+      "label": "Microsoft 협상",
+      "detail": "The Information은 SpaceX AI 부문이 2026년 여름 Microsoft와 컴퓨팅 용량 임대 협상을 진행했다고 보도. 계약 성사 여부는 불명확하며 Microsoft는 논평을 거절.",
+      "status": "보도·미확정",
+      "url": "https://www.theinformation.com/articles/spacexs-ai-unit-turned-ai-cloud-firm"
+    },
+    {
+      "label": "12월 신규 월 11억달러 계약",
+      "detail": "SpaceX CFO Bret Johnsen이 2026년 9월 Goldman Sachs 행사에서 12월 시작 예정인 월 11억달러 규모 계약을 언급했다고 MarketWatch와 The Information이 보도. 상대방은 공개되지 않음.",
+      "status": "CFO 발언 보도·상대방 미공개",
+      "url": "https://www.marketwatch.com/story/spacex-is-inching-closer-to-this-lofty-100-billion-milestone-11536cfc"
+    },
+    {
+      "label": "11월 GPU 증설",
+      "detail": "The Information은 SpaceXAI가 2026년 11월 약 42만개의 NVIDIA GPU를 추가 가동할 계획이라고 보도. 실제 인도·가동 완료는 향후 별도 확인 대상.",
+      "status": "보도·계획",
+      "url": "https://www.theinformation.com/articles/spacexs-ai-unit-turned-ai-cloud-firm"
+    },
+    {
+      "label": "과거 Colossus 가동률",
+      "detail": "The Information은 Colossus의 2025년 가동률이 40% 미만이었고 2026년 봄에도 유휴 자원이 상당했다고 보도. 회사 공식 지표가 아니므로 역사적 배경으로만 사용.",
+      "status": "보도·비공식 추정",
+      "url": "https://www.theinformation.com/articles/spacexs-ai-unit-turned-ai-cloud-firm"
+    }
+  ],
+  "seen_news_ids": [
+    "a64be44afe15a55ef2fb297b",
+    "c763c09be90c6b471159a306"
+  ],
+  "seen_sec_accessions": [],
+  "seen_ir_ids": [],
+  "fx": {
+    "usdkrw": 1348.28,
+    "basis": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-04 01:40 KST · 보조 API 2026-10-03 · 차이 0.07% · 일중 기준시각 차이 가능",
+    "source": "ECB/Frankfurter"
+  },
+  "last_changes": [
+    "SpaceXAI 외부 컴퓨트 사업 기준선 신규 연결"
+  ],
+  "last_new_news": [],
+  "last_new_sec": [],
+  "last_new_ir": [],
+  "errors": [
+    "SEC submissions HTTPError · SpaceX IR 대체 감시",
+    "SEC Anthropic live parse HTTPError",
+    "SEC Google live parse HTTPError",
+    "SEC 10-Q live parse HTTPError",
+    "SEC Q2 release live parse HTTPError"
+  ],
+  "updated_at_utc": "2026-10-03T16:40:14+00:00"
+}
