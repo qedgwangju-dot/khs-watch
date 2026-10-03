@@ -52,6 +52,7 @@ class AIServerPhysicalBottleneckTests(unittest.TestCase):
             "2026-10-03T10:00:00+09:00",
         )
         self.assertIn("POWER", event["categories"])
+        self.assertNotIn("53%", event["metrics"])
         self.assertNotIn("90%", event["metrics"])
 
     def test_odm_rack_shipment_guidance_alerts(self):
