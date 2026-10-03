@@ -211,6 +211,17 @@ def is_committee_commentary(event):
     return any(marker in title for marker in commentary_markers)
 
 
+def is_volatility_3x_crypto_launch(event):
+    signal = clean(
+        f"{event.get('event_type','')} {event.get('title','')} {event.get('detail','')} {event.get('source','')}"
+    ).lower()
+    return (
+        "volatility shares" in signal
+        and ("bith" in signal or "ethk" in signal)
+        and ("상품목록" in signal or "product page listed" in signal or "거래개시" in signal)
+    )
+
+
 def is_sec_3x_crypto_etp_approval(event):
     signal = clean(
         f"{event.get('title','')} {event.get('detail','')} {event.get('source','')}"
@@ -248,6 +259,8 @@ def semantic_group(event):
     day = when.date().isoformat() if when else clean(event.get("date", ""))
     if is_sec_3x_crypto_etp_approval(event):
         return ("sec_3x_btc_eth_etp_sr_cboebzx_2026_065", day)
+    if is_volatility_3x_crypto_launch(event):
+        return ("volatility_3x_crypto_launch", day)
     if is_sec_crypto_custody_2026(event):
         return ("sec_crypto_custody_s7_2026_35", day)
     if source == "상원 은행위원회" and (
@@ -268,6 +281,8 @@ def event_priority(event):
     title = clean(event.get("title", "")).lower()
     source = clean(event.get("source", ""))
     score = 0
+    if is_volatility_3x_crypto_launch(event):
+        score += 260
     if is_sec_3x_crypto_etp_approval(event):
         score += 320
     if is_sec_crypto_custody_2026(event):
@@ -365,12 +380,25 @@ def special_translation(event):
     title = clean(event.get("title", ""))
     detail = clean(event.get("detail", ""))
     signal = f"{title} {detail}".lower()
+    if is_volatility_3x_crypto_launch(event):
+        tickers = []
+        if "bith" in signal:
+            tickers.append("BITH(3x Bitcoin ETF)")
+        if "ethk" in signal:
+            tickers.append("ETHK(3x Ether ETF)")
+        ticker_text = " · ".join(tickers) if tickers else "BITH·ETHK"
+        return (
+            "Volatility Shares, 3배 BTC·ETH ETP 실제 상품목록 등재",
+            f"Volatility Shares 공식 상품목록에 {ticker_text}가 실제로 올라온 상태 변화입니다. "
+            "SEC의 상장규칙 승인에서 발행사 상품 출시 단계로 한 칸 진전한 것이며, "
+            "공식 inception date(설정일)·첫 거래일·AUM·거래대금을 확인해 실제 시장 수요로 넘어갔는지 판단해야 합니다.",
+        )
     if is_sec_3x_crypto_etp_approval(event):
         return (
-            "SEC, 비트코인·이더 3배 레버리지 ETP 상장·거래 규칙 승인",
-            "SEC가 Cboe BZX의 SR-CboeBZX-2026-065를 승인해 Volatility Shares의 3x Bitcoin ETF와 3x Ether ETF를 포함한 6개 3배 상품의 상장·거래 길을 열었습니다. "
-            "정확히는 현물 BTC·ETH 3배 ETF가 아니라, 최근월·차근월 선물 벤치마크의 하루 수익률을 3배 추종하는 Commodity-Based Trust Shares(원자재 기반 신탁지분) ETP입니다. "
-            "SEC 명령도 상품명에 ETF가 들어가지만 법적 분류는 ETP라고 명시합니다.",
+            "SEC, BITH·ETHK 3배 BTC·ETH ETP 상장규칙 승인",
+            "SEC가 Cboe BZX의 SR-CboeBZX-2026-065를 승인해 VS Trust의 BITH(3x Bitcoin ETF)와 ETHK(3x Ether ETF)를 포함한 6개 3배 상품의 상장·거래 규칙을 승인했습니다. "
+            "정확히는 현물 BTC·ETH를 3배 보유하는 상품이 아니라, CME 비트코인·이더 선물의 최근월·차근월 벤치마크 하루 수익률을 3배 추종하는 일일 재설정형 상품입니다. "
+            "이번 SEC 조치는 거래소 상장규칙 승인이고, 실제 거래개시는 VS Trust 등록서류 효력·발행사 출시 절차를 별도로 확인해야 합니다.",
         )
     if is_sec_crypto_custody_2026(event):
         stage = rule_stage(event)
@@ -467,6 +495,11 @@ def localize_event(event):
 def easy_meaning(event, body_ko):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_volatility_3x_crypto_launch(event):
+        return (
+            "쉽게 말하면, ‘SEC가 상장할 수 있게 허용했다’는 단계에서 한 걸음 더 나아가 발행사 공식 상품목록에 BITH·ETHK가 실제로 등장한 것입니다. "
+            "이제부터 핵심은 첫 거래일과 AUM·거래대금이 얼마나 붙는지입니다."
+        )
     if is_sec_3x_crypto_etp_approval(event):
         return (
             "쉽게 말하면, 미국 증시에서 BTC·ETH 방향에 하루 3배로 베팅하는 규제 상품을 상장할 수 있게 된 것입니다. "
@@ -503,12 +536,19 @@ def easy_meaning(event, body_ko):
 def investment_lines(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_volatility_3x_crypto_launch(event):
+        return [
+            "BTC·ETH: 실제 거래가 시작되면 현물 직접매수보다 CME 선물·연계 ETP 수요와 일일 리밸런싱 수급이 더 직접적으로 늘어납니다.",
+            "COIN: Volatility Shares·Cboe·CME 중심 구조라 직접 매출 연결은 약합니다. 미국 내 암호자산 투자상품군 확대라는 간접 생태계 효과로 구분합니다.",
+            "수급: 첫 5거래일 AUM·거래대금·프리미엄/디스카운트와 CME 선물 미결제약정이 실제 시장 영향의 핵심 숫자입니다.",
+            "실패 경로: 상품목록 등재 뒤에도 AUM·거래량이 작거나 선물 롤비용·변동성 끌림이 크면 장기 투자수요로 이어지지 않을 수 있습니다.",
+        ]
     if is_sec_3x_crypto_etp_approval(event):
         return [
             "BTC·ETH: 직접 현물 매수 수요라기보다 CME 선물·연계 ETP 거래 수요를 키우는 경로입니다. 단기 거래량·변동성 확대 가능성이 더 직접적입니다.",
-            "COIN: 이번 상품은 Volatility Shares·Cboe·선물시장 구조라 Coinbase의 직접 상품매출 연결은 약합니다. 다만 미국 가상자산 투자상품군 확대는 기관·거래 생태계에는 간접적으로 긍정적입니다.",
+            "COIN: 이번 상품은 Volatility Shares·Cboe·CME 선물시장 구조라 Coinbase의 직접 상품매출 연결은 약합니다. 미국 암호자산 투자상품군 확대라는 간접 효과로 구분합니다.",
             "수급: 레버리지 상품의 일일 리밸런싱 때문에 급등·급락 구간에서 선물 수급이 증폭될 수 있습니다. 실제 영향은 출시 후 AUM·거래대금·CME 미결제약정으로 확인해야 합니다.",
-            "시간표: SEC 상장규칙 승인은 완료됐지만 실제 거래개시는 별도입니다. 3x Bitcoin ETF 등록서류의 최신 효력 예정일은 2026-10-18이며 실제 상장일·초기 AUM을 확인해야 합니다.",
+            "시간표: SEC 상장규칙 승인은 완료됐지만 실제 거래개시는 별도입니다. BITH·ETHK 티커는 VS Trust S-1에서 이미 확인되며, 다음 관문은 해당 VS Trust 등록서류의 효력과 발행사 공식 출시·첫 거래입니다.",
         ]
     if is_sec_crypto_custody_2026(event):
         if stage == "final":
@@ -613,11 +653,15 @@ def investment_lines(event):
 def core_summary(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_volatility_3x_crypto_launch(event):
+        return (
+            "BITH·ETHK가 발행사 공식 상품목록에 실제 등재되면 SEC 상장규칙 승인에서 상품 출시 단계로 진전한 것으로, "
+            "BTC·ETH 현물수요보다 CME 선물·일일 리밸런싱 수급 영향이 직접적이며 첫 5거래일 AUM·거래대금이 재평가 기준입니다."
+        )
     if is_sec_3x_crypto_etp_approval(event):
         return (
-            "SEC의 34-106577은 비트코인·이더 선물의 하루 수익률을 3배 추종하는 ETP의 Cboe BZX 상장 길을 연 조치로, "
-            "현물 ETF 3배 승인이 아니라 선물 기반 레버리지 상품 승인이라는 점이 핵심입니다. 단기 수급·변동성에는 영향이 커질 수 있지만 "
-            "장기 보유 시 일일 재설정·복리·롤오버 비용 때문에 기초자산 누적수익률의 3배와 크게 달라질 수 있습니다."
+            "SEC 34-106577은 VS Trust의 BITH·ETHK가 CME 선물의 하루 수익률을 3배 추종하도록 Cboe BZX에 상장될 수 있게 한 규칙 승인입니다. "
+            "현물 BTC·ETH 3배 보유 승인이 아니며, 티커는 이미 확인됐고 실제 거래개시는 VS Trust 등록서류 효력과 발행사 출시 확인이 다음 관문입니다."
         )
     if is_sec_crypto_custody_2026(event):
         if stage == "final":
