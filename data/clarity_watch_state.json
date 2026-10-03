@@ -2,8 +2,8 @@
   "initialized": true,
   "source_version": 2,
   "bill": "H.R. 3633 — Digital Asset Market Clarity Act",
-  "last_checked_kst": "2026-10-03T11:00:57+09:00",
-  "last_checked_et": "2026-10-02T22:00:57-04:00",
+  "last_checked_kst": "2026-10-03T17:10:05+09:00",
+  "last_checked_et": "2026-10-03T04:10:05-04:00",
   "seen_event_keys": [
     "06ee00dbb8854130493bb2e968b1cacab9ca367fe3cc63799c3a34b54881ae9c",
     "084ee027ab8ec15b4074b4fa1b60022844e2dc9f19a270999c1f2f23b0a34a53",
@@ -71,6 +71,7 @@
     "cc5a9decad9e47de5626696fb8964bedb9d9c957d7720bf45703fdcd6318744d",
     "d0fadf00b1204c805e11fd323da1768148ecd0ea34bd0f8aad5226a7810c93b2",
     "d32ae82f169b2ea182c9da55cb4308148aa572fb5a51338714e6db65dc80ebb9",
+    "d5a8ee2df2fd0a352999fc209cdf57d034e99d3f01036eaf5c31159c237f1f09",
     "d7096a998b47ecb8b16dcd6a4c4c0aeddac96b444b90c5728e0dc8fbb0738b7f",
     "d8fb582f541acee13e77019274db70ed8624e1c886b081107a4df8a4fd636b71",
     "e25f8b9fb9d71a04676542c7e2da168c7c8b4be3e6fa63c3e9f38c1090bfc2ac",
@@ -85,11 +86,6 @@
     "fae400f86e5c7c7497de7708637dc5b3f87d05441c853b65e3742939ae233f84",
     "fe2906beaa0c20857bcf830328fd25f77105af8385b0204d7b2829adad3b2827"
   ],
-  "event_count": 51,
-  "source_errors": [
-    "CFTC Federal Register 제안규칙: Expecting value: line 1 column 1 (char 0)",
-    "CFTC Federal Register 최종규칙: Expecting value: line 1 column 1 (char 0)",
-    "SEC Federal Register 제안규칙: Expecting value: line 1 column 1 (char 0)",
-    "SEC Federal Register 최종규칙: Expecting value: line 1 column 1 (char 0)"
-  ]
+  "event_count": 57,
+  "source_errors": []
 }
