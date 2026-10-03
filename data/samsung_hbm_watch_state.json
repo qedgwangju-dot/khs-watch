@@ -2069,7 +2069,7 @@
   "last_samsung_hbm4_price_alert_count": 1,
   "_delivery": {
     "id": "ccc90e3dab35cbb5617554a7ba29cd548e2c0e4f8d12bb56608e99c631660d08",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-10-03T21:03:15+09:00",
     "chunks": [
       "💵 <b>삼성 HBM4 2027 계약가격 감시</b>\n━━━━━━━━━━━━━━━━\n<b>신규 변화 1건</b> · 2026-10-03 20:58 KST\n\n<b>1.</b>\n<b>삼성 HBM4 2027 계약가격 변화</b>\n• 가격 기준: 현재 주력 HBM3E 대비 <b>8.00배 이상</b>\n• 제품간 프리미엄 환산: <b>+700% 이상</b> — 전년 대비 HBM4 가격상승률이 아닙니다.\n• 비교 HBM3E: 약 <b>1.50달러/Gb(약 2,022원/Gb)</b>\n• 삼성 HBM4 제시가격: <b>1Gb당 4달러(약 5,393원)대 중후반</b> — 기사 표현 그대로이며 임의 숫자 범위로 바꾸지 않습니다.\n• 계약 단계: <b>가격 협상</b>\n• 적층 기준: <b>미확인</b>\n• 본문 직접 확인: <b>예</b>\n• 구분: HBM3E 대비 제시·협상가격과 실제 고객 체결가격·LTA 가격을 절대 같은 값으로 취급하지 않습니다.\n• 이번 변화: HBM3E 대비 제시가격 배수 3.00배→8.00배\n• 감지 근거: 매일경제 · 2026-10-02T17:33:12+09:00\n• <a href=\"https://www.mk.co.kr/news/business/12167424\">원문</a>"
@@ -4145,6 +4145,7 @@
       },
       "last_samsung_hbm4_price_observation_count": 1,
       "last_samsung_hbm4_price_alert_count": 1
-    }
+    },
+    "attempt_at_kst": "2026-10-03T21:03:16+09:00"
   }
 }
