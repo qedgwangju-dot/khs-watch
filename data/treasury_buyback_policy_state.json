@@ -1,5 +1,5 @@
 {
-  "last_checked_kst": "2026-10-03T06:26:46+09:00",
+  "last_checked_kst": "2026-10-03T09:39:34+09:00",
   "schedule_sha256": "3461c9a9822dec08b3059d2dd367baadd0d0967193913ce8fe95702f000366d7",
   "long_end_max_bn": {
     "10Y to 20Y": 6.0,
@@ -34,7 +34,7 @@
       "value": null,
       "change_bp": null,
       "source": "https://www.newyorkfed.org/research/data_indicators/term-premia-tabs",
-      "error": "RuntimeError: FRED THREEFYTP10 조회 실패: txt: RuntimeError: 자료 다운로드 실패: https://fred.stlouisfed.org/data/THREEFYTP10.txt / TimeoutError: The read operation timed out | csv: RuntimeError: 자료 다운로드 실패: https://fred.stlouisfed.org/graph/fredgraph.csv?id=THREEFYTP10&cosd=2026-06-04 / TimeoutError: The read operation timed out"
+      "error": "RuntimeError: FRED THREEFYTP10 조회 실패: txt: RuntimeError: 자료 다운로드 실패: https://fred.stlouisfed.org/data/THREEFYTP10.txt / TimeoutError: The read operation timed out | csv: RuntimeError: 자료 다운로드 실패: https://fred.stlouisfed.org/graph/fredgraph.csv?id=THREEFYTP10&cosd=2026-06-05 / TimeoutError: The read operation timed out"
     },
     "latest": {
       "brent": {
