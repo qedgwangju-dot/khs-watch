@@ -20,7 +20,7 @@ TOP_N=15
 POWER_DELTA=50.0
 PROGRESS_DELTA=5.0
 DATE_DELTA=60
-FORMAT_VERSION=2
+FORMAT_VERSION=3
 
 TRACKED_NAMES=(
 "Microsoft Fairwater Wisconsin",
@@ -221,6 +221,32 @@ def capacity_bucket(current,planned,progress):
     if current>0:
         return "부분 가동·현재 가용 용량"
     return "건설 중 계획 용량"
+
+def stage_rank(label):
+    base=(label or "").replace("부분 가동·","")
+    order={
+        "건설 중":0,
+        "부지 정리":1,
+        "기초·토공":2,
+        "철골 공사":3,
+        "지붕·외피 공사":4,
+        "냉각설비 설치":5,
+        "변전소·전력설비 공사":5,
+        "시운전·내부설비":6,
+        "확장 공사":6,
+        "가동 확대":7,
+        "가동 완료":8,
+    }
+    return order.get(base,0)
+
+def project_issue_applies(project_name, issue):
+    # 회사 차원의 별도 사이트 이슈를 무관한 Epoch 프로젝트 줄에 복제하지 않는다.
+    # 프로젝트별 표시는 동일 부지/프로젝트가 구조화되어 확인될 때만 허용한다.
+    explicit=set(issue.get("project_names") or [])
+    if explicit:
+        return project_name in explicit
+    return False
+
 def updated_label():
     try:
         txt=" ".join(BeautifulSoup(fetch(DOWNLOADS,25).text,"html.parser").stripped_strings)
@@ -259,7 +285,9 @@ def snapshot(dc_text,tl_text):
         issue_map=load_company_issues()
         company_issues=[]
         for company in PROJECT_COMPANIES.get(name,()):
-            company_issues.extend(issue_map.get(company,[])[:2])
+            for issue in issue_map.get(company,[])[:4]:
+                if project_issue_applies(name,issue):
+                    company_issues.append(issue)
         stg=stage(cur.get("status",""),current,planned,progress)
         out.append({
             "name":name,"display":ALIASES.get(name,name),
@@ -285,12 +313,24 @@ def changes(old,new):
     for n,p in now.items():
         o=prev.get(n)
         if not o:continue
-        if abs(p["current_mw"]-float(o.get("current_mw",0)))>=POWER_DELTA:out.append(f"{p['display']} 현재 IT전력 {float(o.get('current_mw',0)):,.0f}→{p['current_mw']:,.0f}MW")
+        old_mw=float(o.get("current_mw",0))
+        mw_delta=p["current_mw"]-old_mw
+        if abs(mw_delta)>=POWER_DELTA:
+            direction="상향" if mw_delta>0 else "하향"
+            out.append(f"{p['display']} Epoch 현재 IT전력 추정치 {direction} {old_mw:,.0f}→{p['current_mw']:,.0f}MW")
         if abs(p["planned_mw"]-float(o.get("planned_mw",0)))>=POWER_DELTA:out.append(f"{p['display']} 계획 IT전력 {float(o.get('planned_mw',0)):,.0f}→{p['planned_mw']:,.0f}MW")
         if abs(p["progress"]-float(o.get("progress",0)))>=PROGRESS_DELTA:out.append(f"{p['display']} 진행률 {float(o.get('progress',0)):.0f}%→{p['progress']:.0f}%")
         od=pdate(o.get("completion_date","")); nd=pdate(p["completion_date"])
         if od and nd and abs((nd-od).days)>=DATE_DELTA:out.append(f"{p['display']} 완료시점 {o.get('completion','')}→{p['completion']} ({'지연' if nd>od else '앞당김'})")
-        if p["stage"]!=o.get("stage") and p["progress"]<99.5:out.append(f"{p['display']} 공정 {o.get('stage','')}→{p['stage']}")
+        if p["stage"]!=o.get("stage") and p["progress"]<99.5:
+            old_rank=stage_rank(o.get("stage",""))
+            new_rank=stage_rank(p["stage"])
+            # Epoch의 상태 문구/추정치 수정이 공사 역행처럼 보이는 오탐을 차단한다.
+            # 전진 단계만 공정 변화로 알리고, 실제 지연 키워드는 risk 플래그로 별도 감지한다.
+            if new_rank>old_rank:
+                out.append(f"{p['display']} 공정 진전 {o.get('stage','')}→{p['stage']}")
+            elif p.get("risk") and not o.get("risk"):
+                out.append(f"{p['display']} 공정 위험 신호 {o.get('stage','')}→{p['stage']}")
         if p.get("mw_quality")!=o.get("mw_quality"):out.append(f"{p['display']} MW 품질 {o.get('mw_quality','기존 미분류')}→{p.get('mw_quality')}")
         if (p["owner"],p["users"],p["investors"])!=(o.get("owner"),o.get("users"),o.get("investors")):out.append(f"{p['display']} 소유·사용·투자자 정보 변경")
         if (p.get("energy_site"),p.get("energy_future"),p.get("energy_quality"))!=(o.get("energy_site"),o.get("energy_future"),o.get("energy_quality")):out.append(f"{p['display']} 전력원 정보 변경")
@@ -321,7 +361,7 @@ def render(ps,chg,upd):
                 f"🚨 기업 이슈 │ [{h(issue.get('relationship','기업 연관'))}] "
                 f"{h(issue.get('label','규제·운영'))} · {h(issue.get('summary',''))}"
             )
-    lines += ["","<b>📌 판정 기준</b>","• 진행률은 Epoch의 현재 가용 IT전력 ÷ 계획 최종 IT전력으로 직접 계산","• Epoch Current power는 현재 GPU 서버·네트워크·스토리지에 이용 가능한 IT전력 추정치이며 계획 MW와 분리","• Epoch 추적대상은 원칙적으로 착공한 프로젝트지만 접속계약·공식 전원 인가·상업가동 문서를 대신하지 않음","• 발표·계획 MW → 착공 → 현재 가용 IT전력 순으로 품질을 높여 관리하고 미확인 접속계약·전원 인가는 임의 승격하지 않음","• 계획용량·완료시점·공정은 위성영상·허가·회사자료 기반 Epoch 추정치","• IT전력 추정은 대략 ±1.4배, 일정은 약 ±6개월 불확실성을 염두에 둠","• 50MW 이상 용량 변화, 진행률 ±5%p, MW 품질 단계 변경, 완료시점 ±60일, 상위15 진입·이탈 때 전체판 재전송","• 자금조달·전력·인허가 위험은 기존 실행병목 감시와 별도 교차검증","• 전력원은 부지 실제·계획 전원과 기업 차원의 장기전원(원전·핵융합·지열 등)을 반드시 분리하고, 미확정은 미확정으로 표시","• 천연가스와 LNG는 구분하며 LNG 공급계약·터미널·연료근거가 확인될 때만 LNG로 표기","• 기업별 벌금·허가위반·환경·소송·주민반대 이슈는 직접 위반과 파트너·고객 연계를 구분해 해당 기업 줄에 표시"]
+    lines += ["","<b>📌 판정 기준</b>","• 진행률은 Epoch의 현재 가용 IT전력 ÷ 계획 최종 IT전력으로 직접 계산","• Epoch Current power는 현재 GPU 서버·네트워크·스토리지에 이용 가능한 IT전력 추정치이며 계획 MW와 분리","• Epoch 추적대상은 원칙적으로 착공한 프로젝트지만 접속계약·공식 전원 인가·상업가동 문서를 대신하지 않음","• 발표·계획 MW → 착공 → 현재 가용 IT전력 순으로 품질을 높여 관리하고 미확인 접속계약·전원 인가는 임의 승격하지 않음","• 계획용량·완료시점·공정은 위성영상·허가·회사자료 기반 Epoch 추정치","• IT전력 추정은 대략 ±1.4배, 일정은 약 ±6개월 불확실성을 염두에 둠","• 50MW 이상 용량 변화, 진행률 ±5%p, MW 품질 단계 변경, 완료시점 ±60일, 상위15 진입·이탈 때 전체판 재전송","• 자금조달·전력·인허가 위험은 기존 실행병목 감시와 별도 교차검증","• 전력원은 부지 실제·계획 전원과 기업 차원의 장기전원(원전·핵융합·지열 등)을 반드시 분리하고, 미확정은 미확정으로 표시","• 천연가스와 LNG는 구분하며 LNG 공급계약·터미널·연료근거가 확인될 때만 LNG로 표기","• 프로젝트별 기업 이슈는 동일 부지·동일 프로젝트 직접 연계가 구조화되어 확인될 때만 해당 프로젝트 줄에 표시","• 다른 지역의 기업 공통 규제·환경·소송 이슈는 프로젝트 줄에 복제하지 않고 별도 하이퍼스케일러 기업 리스크 알림에서 처리"]
     return "\n".join(lines)+"\n"
 
 def main():
