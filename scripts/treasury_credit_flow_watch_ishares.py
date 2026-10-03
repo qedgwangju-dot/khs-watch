@@ -581,7 +581,7 @@ def main():
     last_delivery = state.get("last_delivery") or {}
     event_name = os.getenv("GITHUB_EVENT_NAME", "").strip()
     if (
-        event_name in ("schedule", "workflow_run")
+        event_name != "workflow_dispatch"
         and last_delivery.get("treasury_date") == curve["date"]
     ):
         base.save_state(state)
