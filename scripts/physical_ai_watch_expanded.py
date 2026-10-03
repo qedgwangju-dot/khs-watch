@@ -41,6 +41,8 @@ base.QUERIES.extend([
     '("FieldAI" OR "Field AI") (funding OR financing OR valuation OR investor OR "$700 million" OR "$10 billion" OR 투자유치 OR 기업가치 OR 투자자 OR 조달)',
     '("FieldAI" OR "Field AI") (revenue OR contracts OR backlog OR bookings OR customers OR deployments OR ARR OR 매출 OR 계약 OR 수주잔고 OR 고객 OR 배치) (30 OR "$135 million" OR "$100 million" OR expansion OR production OR multi-site OR enterprise OR 확대 OR 신규)',
     '("FieldAI" OR "Field AI") (Hyundai OR 현대차 OR 기아 OR "Boston Dynamics" OR Caterpillar OR Certis OR NVIDIA) (investment OR partnership OR contract OR Atlas OR RMAC OR HMGMA OR deployment OR licensing OR 투자 OR 협력 OR 계약 OR 배치 OR 사용권)',
+    '("Jensen Huang" OR "Jensen" OR 젠슨황 OR "젠슨 황") (robotics OR robot OR humanoid OR "physical AI" OR 로보틱스 OR 로봇 OR 휴머노이드 OR 피지컬AI) ("ChatGPT moment" OR "within a year" OR "within 12 months" OR "within two years" OR timeline OR inflection OR "general-purpose brain" OR "general purpose brain" OR "범용 두뇌" OR "1년 이내")',
+    '(NVIDIA OR 엔비디아) (robotics OR humanoid OR "physical AI" OR 로보틱스 OR 휴머노이드 OR 피지컬AI) ("general-purpose brain" OR "general purpose brain" OR "ChatGPT moment" OR fleet OR deployment OR production OR shipments OR customers OR "12 months" OR "within a year")',
 ])
 
 base.TRUSTED.update({
@@ -227,6 +229,47 @@ FIELD_AI_NEGATIVE = re.compile(
     r'partnership\s+(?:ended|terminated)|고객\s*이탈|계약\s*(?:해지|취소)|배치\s*(?:중단|정지)|파트너십\s*(?:종료|해지)',
     re.I,
 )
+
+NVIDIA_ROBOTICS_EXEC = re.compile(r'NVIDIA|엔비디아|Jensen\s*Huang|젠슨\s*황|젠슨황', re.I)
+NVIDIA_ROBOTICS_CONTEXT = re.compile(r'robotics|robot|humanoid|physical\s*AI|로보틱스|로봇|휴머노이드|피지컬\s*AI|피지컬AI', re.I)
+NVIDIA_CHATGPT_MOMENT = re.compile(r'ChatGPT\s*moment|ChatGPT\s*모먼트|챗GPT\s*모먼트', re.I)
+NVIDIA_CES2026_BASELINE = re.compile(r'ChatGPT\s*moment.{0,40}(?:for\s+robotics|robotics).{0,30}(?:is\s+here|has\s+arrived)|(?:robotics).{0,40}ChatGPT\s*moment.{0,30}(?:is\s+here|has\s+arrived)', re.I)
+NVIDIA_PRIOR_BASELINE = re.compile(r'ChatGPT\s*moment.{0,60}(?:coming|around\s+the\s+corner)|(?:coming|around\s+the\s+corner).{0,60}ChatGPT\s*moment', re.I)
+NVIDIA_WITHIN_YEAR = re.compile(r'within\s+(?:a|one)\s+year|within\s+12\s+months|next\s+12\s+months|1년\s*(?:이내|안에)|향후\s*1년', re.I)
+NVIDIA_LONGER_HORIZON = re.compile(r'within\s+(?:two|2|three|3)\s+years?|few\s+years|18\s+months|24\s+months|2년\s*이내|3년\s*이내', re.I)
+NVIDIA_ROADSHOW_NOTE = re.compile(r'roadshow|road\s+show|NDR|non[-\s]*deal\s+roadshow|investor\s+meeting|미팅\s*코멘트|로드쇼|기관\s*미팅', re.I)
+NVIDIA_GENERAL_BRAIN = re.compile(r'general[-\s]*purpose\s+brain|generalist\s+robot|범용\s*(?:로봇\s*)?두뇌|범용\s*로봇\s*모델', re.I)
+NVIDIA_EXEC_METRIC = re.compile(
+    r'\d[\d,.]*\s*(?:robots?|units?|customers?|sites?|factories|대|개|곳)|'
+    r'(?:fleet|production|shipment|deployment|customer|배치|생산|출하|고객).{0,80}\d[\d,.]*',
+    re.I,
+)
+NVIDIA_EXEC_CONFIRM = re.compile(r'official|announced|confirmed|said|stated|발표|확인|직접\s*언급|말했다', re.I)
+
+
+def _nvidia_exec_source_ok(source: str) -> bool:
+    low = (source or '').lower()
+    if any(x in low for x in ('nvidia', 'reuters', 'bloomberg', 'cnbc', 'financial times', 'ft.com', 'the information')):
+        return True
+    return False
+
+
+def _nvidia_robotics_exec_stage(text: str, source: str = '') -> str:
+    if not (NVIDIA_ROBOTICS_EXEC.search(text) and NVIDIA_ROBOTICS_CONTEXT.search(text)):
+        return ''
+    if NVIDIA_CES2026_BASELINE.search(text) or NVIDIA_PRIOR_BASELINE.search(text):
+        return 'official_rhetoric_baseline'
+    if NVIDIA_ROADSHOW_NOTE.search(text) and NVIDIA_WITHIN_YEAR.search(text) and not _nvidia_exec_source_ok(source):
+        return 'roadshow_within_year_unverified'
+    if NVIDIA_WITHIN_YEAR.search(text):
+        return 'within_year_confirmed' if _nvidia_exec_source_ok(source) else 'within_year_unverified'
+    if NVIDIA_LONGER_HORIZON.search(text) and (NVIDIA_CHATGPT_MOMENT.search(text) or NVIDIA_GENERAL_BRAIN.search(text)):
+        return 'timeline_change' if _nvidia_exec_source_ok(source) else 'timeline_unverified'
+    if NVIDIA_GENERAL_BRAIN.search(text) and NVIDIA_EXEC_METRIC.search(text):
+        return 'general_brain_execution'
+    if NVIDIA_EXEC_METRIC.search(text) and re.search(r'fleet|deployment|production|shipment|배치|생산|출하', text, re.I):
+        return 'quantified_deployment'
+    return 'background'
 
 
 def _fieldai_stage(text: str, source: str = '') -> str:
@@ -430,6 +473,8 @@ def _gemini_platform_stage(text: str) -> str:
 
 
 def topic_group(text: str) -> str | None:
+    if _nvidia_robotics_exec_stage(text):
+        return 'nvidia_robotics_exec'
     if _fieldai_stage(text):
         return 'fieldai'
     if _gemini_platform_stage(text) in {'new_partner','preview_expansion','ga','commercial'}:
