@@ -2148,31 +2148,32 @@ def _hbm4_contract_stage(text: str) -> str:
 
 
 def _hbm4_price_multiple(text: str) -> float | None:
-    """Extract only an explicitly stated HBM4-vs-HBM3E price multiple.
+    """Extract only an explicitly stated HBM4 price multiple.
 
-    Performance/efficiency/bandwidth multipliers (for example zHBM 8x
-    performance) are never eligible, even when the same article also discusses
-    HBM4 pricing.
+    The accepted clause must itself be about price/premium. Multipliers tied to
+    performance, efficiency or bandwidth are rejected even if they occur in the
+    same article.
     """
     value = clean(text)
     segments = [x.strip() for x in re.split(r"(?<=[.!?。])\s+|[;；]|\n+", value) if x.strip()]
-    positive_price_words = ("가격", "판매가", "공급가", "달러", "price", "pricing", "premium", "프리미엄")
     reject_words = ("zhbm", "성능", "전력효율", "전력 효율", "대역폭", "performance", "energy efficiency", "bandwidth")
 
     patterns = (
-        # "HBM4 가격을 HBM3E보다 3배 이상 높게 ..."
-        r"(?:hbm4)[^.]{0,100}?(?:가격|판매가|공급가|price|pricing)[^.]{0,100}?(?:hbm3e)[^.]{0,60}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,35}?(?:높|비싸|higher|premium)",
-        # "HBM3E ... 고려하면 3배 이상 높은 수준"
-        r"(?:hbm3e)[^.]{0,160}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,40}?(?:높|비싸|higher|premium)",
-        # "가격 ... 3배 이상 ... HBM3E"
-        r"(?:가격|판매가|공급가|price|pricing)[^.]{0,100}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,80}?(?:hbm3e)",
+        # Headline/reference phrasing: "HBM4 가격 3배 높인다"
+        r"(?:hbm4)[^.]{0,80}?(?:가격|판매가|공급가|price|pricing)[^.]{0,60}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,35}?(?:높|인상|올리|higher|premium)?",
+        # Body: "HBM4 ... HBM3E 대비 3배 이상 높게"
+        r"(?:hbm4)[^.]{0,120}?(?:가격|판매가|공급가|price|pricing)[^.]{0,120}?(?:hbm3e)[^.]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,45}?(?:높|비싸|higher|premium)",
+        # Body: "현재 주력 HBM3E 가격 ... 3배 이상 높은 수준"
+        r"(?:hbm3e)[^.]{0,200}?(?:가격|판매가|공급가|price|pricing)[^.]{0,160}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,45}?(?:높|비싸|higher|premium)",
+        # Generic price clause with HBM3E comparison in the same sentence.
+        r"(?:가격|판매가|공급가|price|pricing)[^.]{0,120}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,100}?(?:hbm3e)",
     )
 
     for segment in segments:
         low = segment.lower()
         if "hbm4" not in low and "hbm3e" not in low:
             continue
-        if not any(k in low for k in positive_price_words):
+        if not any(k in low for k in ("가격", "판매가", "공급가", "price", "pricing", "premium", "프리미엄")):
             continue
         for pat in patterns:
             m = re.search(pat, segment, re.I)
@@ -2182,10 +2183,9 @@ def _hbm4_price_multiple(text: str) -> float | None:
             if not (1.0 <= n <= 10.0):
                 continue
             a, b = m.span(1)
-            local = low[max(0, a - 70):min(len(low), b + 70)]
+            local = low[max(0, a - 80):min(len(low), b + 80)]
+            # Any local multiplier explicitly describing performance/efficiency/bandwidth is ineligible.
             if any(k in local for k in reject_words):
-                continue
-            if not any(k in local for k in ("가격", "판매가", "공급가", "달러", "price", "pricing", "premium", "프리미엄", "hbm3e")):
                 continue
             return n
     return None
