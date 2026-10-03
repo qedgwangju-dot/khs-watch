@@ -473,7 +473,8 @@ def _gemini_platform_stage(text: str) -> str:
 
 
 def topic_group(text: str) -> str | None:
-    if _nvidia_robotics_exec_stage(text):
+    nvidia_robotics_stage = _nvidia_robotics_exec_stage(text)
+    if nvidia_robotics_stage and nvidia_robotics_stage != 'background':
         return 'nvidia_robotics_exec'
     if _fieldai_stage(text):
         return 'fieldai'
