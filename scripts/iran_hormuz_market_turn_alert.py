@@ -50,6 +50,10 @@ KPLER_STS_URL = (
     "https://www.kpler.com/blog/"
     "saudi-export-rerouting-amid-gulf-of-oman-sts-bottlenecks-amplify-vlcc-intensity-of-meg-flows"
 )
+KPLER_PREWAR_EXPORT_URL = (
+    "https://www.kpler.com/blog/"
+    "explainer-how-mideast-gulf-crude-exports-returned-to-pre-war-levels"
+)
 EU_DIESEL_RESERVE_URL = (
     "https://www.euronews.com/2026/10/01/"
     "releasing-strategic-reserves-is-a-possibility-eu-energy-chief-tells-euronews-as-diesel-squ"
@@ -80,6 +84,10 @@ NEWS_QUERIES = (
     '"Saudi Arabia ramps up Gulf oil exports" OR "Aramco to boost Gulf exports" when:7d',
     '"Gulf of Oman" STS record OR "ship-to-ship" Oman Saudi crude when:7d',
     'Kpler "Gulf of Oman" STS bottlenecks VLCC when:7d',
+    'Kpler "pre-war levels" Middle East Gulf crude excluding Iran when:7d',
+    '"40% bypass Hormuz" Kpler crude when:7d',
+    '"16.5 mbd" "excluding Iran" Kpler when:7d',
+    '"Hormuz" "9.9 mbd" Kpler when:7d',
     '"Hormuz oil shipments" six-month high OR "record oil" Hormuz when:7d',
     '"East-West Pipeline" 3.5 million barrels per day Saudi when:3d',
     '"East-West Pipeline" pumping 3.5 million bpd Yanbu when:3d',
@@ -220,6 +228,7 @@ EVENT_LABELS = {
     "hormuz_normalization": "호르무즈 해협의 실질적 통행 정상화",
     "oil_flow_recovery": "중동 원유 수출·호르무즈 물류 회복",
     "sts_reroute_expansion": "걸프오브오만 STS 우회 물류 급증·병목",
+    "ex_iran_crude_prewar_recovery": "이란 제외 걸프 원유 수출 전쟁 전 100% 회복",
     "east_west_pipeline_recovery": "사우디 East-West Pipeline 실물 회복",
     "regional_export_recovery": "중동 원유 수출 회복 단계 상향",
     "crude_product_divergence": "중동 원유 98% 회복·정제품 병목",
@@ -377,6 +386,9 @@ def _news_title_ko(row: NewsItem) -> str:
 
     if kind == "sts_reroute_expansion":
         return "오만만 선박 간 이송 급증·VLCC 병목 심화"
+
+    if kind == "ex_iran_crude_prewar_recovery":
+        return "Kpler, 이란 제외 걸프 원유 수출 16.5 Mbd로 전쟁 전 수준 회복"
 
     if kind == "east_west_pipeline_recovery":
         if "80% capacity" in low or "over 80% capacity" in low or "above 80% capacity" in low:
@@ -560,6 +572,15 @@ def classify_event(title: str) -> str | None:
     )
     if has_iran and has_us and any(phrase in low for phrase in attack_end_phrases):
         return "us_attack_end"
+
+    ex_iran_prewar_context = (
+        any(term in low for term in ("excluding iran", "outside iran", "이란 제외"))
+        and any(term in low for term in ("middle east gulf", "mideast gulf", "gulf crude", "걸프 원유"))
+        and any(term in low for term in ("pre-war level", "prewar level", "pre-war levels", "전쟁 전 수준", "전쟁 이전 수준"))
+        and any(term in low for term in ("16.5", "100%"))
+    )
+    if ex_iran_prewar_context:
+        return "ex_iran_crude_prewar_recovery"
 
     regional_export_phrases = (
         "middle east crude exports", "mideast oil exports", "middle east oil exports",
@@ -779,6 +800,92 @@ def parse_eu_diesel_reserve_snapshot(raw_html: str, current: dt.datetime) -> New
     )
 
 
+def parse_kpler_prewar_export_snapshot(raw_html: str, current: dt.datetime) -> NewsItem:
+    text = _visible_text(raw_html)
+
+    current_match = re.search(
+        r"At\s+least\s+([0-9.]+)\s*mbd\s+left\s+the\s+region\s+between\s+1\s+and\s+28\s+September",
+        text,
+        flags=re.I,
+    )
+    prewar_match = re.search(
+        r"matching\s+the\s+pre-war\s+average\s+excluding\s+Iran",
+        text,
+        flags=re.I,
+    )
+    bypass_match = re.search(
+        r"([0-9.]+)%\s+of\s+the\s+region['’]s\s+crude\s+now\s+leaves\s+without\s+crossing\s+Hormuz",
+        text,
+        flags=re.I,
+    )
+    prewar_bypass_match = re.search(
+        r"against\s+([0-9.]+)%\s+before\s+the\s+war",
+        text,
+        flags=re.I,
+    )
+    hormuz_match = re.search(
+        r"([0-9.]+)%\s+physically\s+crossed\s+Hormuz,\s*([0-9.]+)\s*mbd",
+        text,
+        flags=re.I,
+    )
+    sts_match = re.search(
+        r"more\s+than\s+([0-9.]+)%\s+of\s+the\s+crude\s+crossing\s+the\s+strait\s+changed\s+tankers",
+        text,
+        flags=re.I,
+    )
+
+    if not (current_match and prewar_match and bypass_match and prewar_bypass_match and hormuz_match):
+        raise RuntimeError("Kpler pre-war export snapshot metrics not found")
+
+    current_mbd = float(current_match.group(1))
+    bypass_pct = float(bypass_match.group(1))
+    prewar_bypass_pct = float(prewar_bypass_match.group(1))
+    hormuz_pct = float(hormuz_match.group(1))
+    hormuz_mbd = float(hormuz_match.group(2))
+    sts_pct = float(sts_match.group(1)) if sts_match else None
+
+    title = (
+        f"Kpler Gulf crude excluding Iran {current_mbd:.1f} Mbd, 100% pre-war average; "
+        f"Hormuz {hormuz_mbd:.1f} Mbd {hormuz_pct:.0f}%; "
+        f"bypass {bypass_pct:.0f}% vs pre-war {prewar_bypass_pct:.0f}%"
+        + (f"; STS over {sts_pct:.0f}%" if sts_pct is not None else "")
+    )
+    return NewsItem(
+        title=title,
+        source="Kpler",
+        link=KPLER_PREWAR_EXPORT_URL,
+        published_utc=current.isoformat().replace("+00:00", "Z"),
+        published_epoch=current.timestamp(),
+        event_kind="ex_iran_crude_prewar_recovery",
+    )
+
+
+def _extract_ex_iran_prewar_metrics(news_rows: list[NewsItem]) -> dict[str, float | None]:
+    text = " ".join(normalize_text(row.title) for row in news_rows)
+
+    def grab(pattern: str) -> float | None:
+        m = re.search(pattern, text, flags=re.I)
+        return float(m.group(1)) if m else None
+
+    current_mbd = grab(r"excluding\s+iran\s+([0-9]+(?:\.[0-9]+)?)\s+mbd")
+    recovery_pct = grab(r"([0-9]+(?:\.[0-9]+)?)%\s+pre-war")
+    hormuz_mbd = grab(r"hormuz\s+([0-9]+(?:\.[0-9]+)?)\s+mbd")
+    hormuz_pct = grab(r"hormuz\s+[0-9]+(?:\.[0-9]+)?\s+mbd\s+([0-9]+(?:\.[0-9]+)?)%")
+    bypass_pct = grab(r"bypass\s+([0-9]+(?:\.[0-9]+)?)%")
+    prewar_bypass_pct = grab(r"pre-war\s+([0-9]+(?:\.[0-9]+)?)%")
+    sts_pct = grab(r"sts\s+over\s+([0-9]+(?:\.[0-9]+)?)%")
+
+    return {
+        "current_mbd": current_mbd,
+        "recovery_pct": recovery_pct,
+        "hormuz_mbd": hormuz_mbd,
+        "hormuz_pct": hormuz_pct,
+        "bypass_pct": bypass_pct,
+        "prewar_bypass_pct": prewar_bypass_pct,
+        "sts_pct": sts_pct,
+    }
+
+
 def parse_kpler_sts_snapshot(raw_html: str, current: dt.datetime) -> NewsItem:
     text = _visible_text(raw_html)
     record = re.search(
@@ -934,6 +1041,12 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
         errors.append(f"Euronews EU diesel reserve direct: {type(exc).__name__}: {exc}")
 
     try:
+        kpler_prewar_html = fetch_bytes(KPLER_PREWAR_EXPORT_URL).decode("utf-8", errors="replace")
+        items.append(parse_kpler_prewar_export_snapshot(kpler_prewar_html, current))
+    except Exception as exc:
+        errors.append(f"Kpler pre-war export direct: {type(exc).__name__}: {exc}")
+
+    try:
         kpler_html = fetch_bytes(KPLER_STS_URL).decode("utf-8", errors="replace")
         items.append(parse_kpler_sts_snapshot(kpler_html, current))
     except Exception as exc:
@@ -972,7 +1085,11 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             any(alias in normalize_text(row.source) for alias in DATA_PROVIDER_ALIASES)
             for row in selected
         )
-        regional_primary = kind in ("regional_export_recovery", "india_gulf_import_recovery") and any(
+        regional_primary = kind in (
+            "regional_export_recovery",
+            "india_gulf_import_recovery",
+            "ex_iran_crude_prewar_recovery",
+        ) and any(
             "kpler" in normalize_text(row.source)
             for row in selected
         )
@@ -1136,6 +1253,22 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
     if kind == "china_fuel_export_policy":
         stage = _china_fuel_export_stage(combined)
         basis = f"{kind}|{stage}"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
+
+    if kind == "ex_iran_crude_prewar_recovery":
+        metrics = _extract_ex_iran_prewar_metrics(rows)
+        crude = float(metrics.get("current_mbd") or 0.0)
+        bypass = float(metrics.get("bypass_pct") or 0.0)
+        hormuz = float(metrics.get("hormuz_mbd") or 0.0)
+        sts = float(metrics.get("sts_pct") or 0.0)
+        crude_band = round(crude * 2.0) / 2.0 if crude else 0.0
+        bypass_band = int(bypass // 5 * 5) if bypass else 0
+        hormuz_band = round(hormuz * 2.0) / 2.0 if hormuz else 0.0
+        sts_band = int(sts // 10 * 10) if sts else 0
+        basis = (
+            f"{kind}|crude_{crude_band:.1f}|bypass_{bypass_band}|"
+            f"hormuz_{hormuz_band:.1f}|sts_{sts_band}"
+        )
         return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
     if kind == "crude_product_divergence":
@@ -2015,6 +2148,76 @@ def _build_east_west_pipeline_alert_body(
     return "\n".join(lines).strip() + "\n"
 
 
+def _build_ex_iran_prewar_alert_body(
+    news_rows: list[NewsItem], oil: Quote | None, current: dt.datetime, fx: Quote | None,
+) -> str:
+    m = _extract_ex_iran_prewar_metrics(news_rows)
+    crude = float(m.get("current_mbd") or 0.0)
+    hormuz = float(m.get("hormuz_mbd") or 0.0)
+    hormuz_pct = float(m.get("hormuz_pct") or 0.0)
+    bypass = float(m.get("bypass_pct") or 0.0)
+    prewar_bypass = float(m.get("prewar_bypass_pct") or 0.0)
+    sts = m.get("sts_pct")
+
+    prewar_hormuz_mbd = crude * (1.0 - prewar_bypass / 100.0) if crude and prewar_bypass else None
+    current_bypass_mbd = crude * bypass / 100.0 if crude and bypass else None
+    prewar_bypass_mbd = crude * prewar_bypass / 100.0 if crude and prewar_bypass else None
+    hormuz_gap_mbd = prewar_hormuz_mbd - hormuz if prewar_hormuz_mbd is not None and hormuz else None
+    bypass_gain_mbd = current_bypass_mbd - prewar_bypass_mbd if current_bypass_mbd is not None and prewar_bypass_mbd is not None else None
+
+    lines = [
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
+        "",
+        "[한눈에]",
+        f"이란 제외 원유  {crude:.1f} Mbd · 전쟁 전 평균의 100%",
+        f"호르무즈      {hormuz:.1f} Mbd · 전체의 {hormuz_pct:.0f}%",
+        f"우회          {bypass:.0f}% · 전쟁 전 {prewar_bypass:.0f}%",
+    ]
+    if sts is not None:
+        lines.append(f"선박 간 이송  호르무즈 통과 원유의 70% 초과")
+    if hormuz_gap_mbd is not None and bypass_gain_mbd is not None:
+        lines.append(
+            f"구조 변화     호르무즈 약 {hormuz_gap_mbd:.1f} Mbd 감소 ↔ 우회 약 {bypass_gain_mbd:.1f} Mbd 증가"
+        )
+
+    market = []
+    if oil is not None:
+        direction = "↓" if oil.change < 0 else "↑" if oil.change > 0 else "→"
+        market.append(f"Brent USD {oil.price:.2f} {oil.change_pct:+.2f}% {direction}")
+    if fx is not None:
+        won = "약세" if fx.change > 0 else "강세" if fx.change < 0 else "보합"
+        market.append(f"원·달러 {fx.price:,.2f}원 {fx.change_pct:+.2f}% · 원화 {won}")
+    if market:
+        lines.append("시장          " + " | ".join(market))
+
+    lines.extend([
+        "",
+        "[핵심]",
+        "원유 총량은 이란 제외 기준 전쟁 전 수준까지 회복했지만 운송 경로는 아직 정상화되지 않았습니다.",
+        "→ 원유 공급 정상화와 호르무즈·운임·보험 정상화를 같은 의미로 보면 안 됩니다.",
+        "",
+        "[다음 확인]",
+        "총량          이란 제외 16.5 Mbd 유지·상향 여부",
+        "호르무즈      60% → 70% → 전쟁 전 83% 회복 여부",
+        "우회          40% → 30% → 전쟁 전 17% 정상화 여부",
+        "물류          선박 간 이송 비중 · VLCC 회전주기 · 보험료",
+        "이란          약 1.7 Mbd 전쟁 전 수출분 복귀 여부",
+        "",
+        "[근거]",
+    ])
+    for row in news_rows[:2]:
+        published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
+        lines.append(f"{_source_name_ko(row.source)} · {published:%m-%d %H:%M KST} · {_news_title_ko(row)}")
+        if row.link:
+            lines.append(f"원문: {row.link}")
+    lines.extend([
+        "",
+        "[주의]",
+        "이 수치는 이란을 제외한 걸프 원유 기준이며, Reuters의 2월 단일월 19.513 Mbd 비교와 분모가 다릅니다.",
+    ])
+    return "\n".join(lines).strip() + "\n"
+
+
 def _build_sts_compact_alert_body(
     news_rows: list[NewsItem],
     oil: Quote | None,
@@ -2196,6 +2399,8 @@ def build_physical_flow_alert_body(
         return _build_us_diesel_policy_alert_body(news_rows, oil, current, fx)
     if kind == "china_fuel_export_policy":
         return _build_china_fuel_export_policy_alert_body(news_rows, oil, current, fx)
+    if kind == "ex_iran_crude_prewar_recovery":
+        return _build_ex_iran_prewar_alert_body(news_rows, oil, current, fx)
     if kind == "oil_flow_recovery":
         return _build_oil_flow_compact_alert_body(news_rows, oil, current, fx)
     if kind == "east_west_pipeline_recovery":
@@ -2537,6 +2742,7 @@ def run_monitor(current: dt.datetime) -> int:
     physical_kinds = {
         "oil_flow_recovery",
         "sts_reroute_expansion",
+        "ex_iran_crude_prewar_recovery",
         "east_west_pipeline_recovery",
         "regional_export_recovery",
         "crude_product_divergence",
@@ -2569,6 +2775,8 @@ def run_monitor(current: dt.datetime) -> int:
             title = "중국 정제품 수출정책 변화"
         elif kind == "oil_flow_recovery":
             title = "중동 원유 흐름 변화"
+        elif kind == "ex_iran_crude_prewar_recovery":
+            title = "걸프 원유 전쟁 전 수준 회복·우회 구조 변화"
         elif kind == "east_west_pipeline_recovery":
             title = "사우디 East-West Pipeline 회복"
         else:

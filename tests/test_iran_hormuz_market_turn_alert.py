@@ -148,6 +148,53 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         rows = MODULE.parse_rss(rss, current, 24)
         self.assertEqual(rows, [])
 
+    def test_kpler_prewar_export_parser(self):
+        now = dt.datetime(2026, 10, 3, 12, 0, tzinfo=dt.timezone.utc)
+        html = """
+        <html><body>
+        At least 16.5 mbd left the region between 1 and 28 September, matching the pre-war average excluding Iran.
+        40% of the region's crude now leaves without crossing Hormuz, against 17% before the war.
+        In September, 60% physically crossed Hormuz, 9.9 mbd, mostly using shuttle tankers.
+        In August, more than 70% of the crude crossing the strait changed tankers off Fujairah or Sohar.
+        </body></html>
+        """
+        item = MODULE.parse_kpler_prewar_export_snapshot(html, now)
+        self.assertEqual(item.event_kind, "ex_iran_crude_prewar_recovery")
+        self.assertIn("16.5 Mbd", item.title)
+        self.assertIn("Hormuz 9.9 Mbd 60%", item.title)
+        self.assertIn("bypass 40% vs pre-war 17%", item.title)
+        self.assertIn("STS over 70%", item.title)
+
+    def test_ex_iran_prewar_body_calculates_route_substitution(self):
+        now = dt.datetime(2026, 10, 3, 12, 0, tzinfo=dt.timezone.utc)
+        rows = [MODULE.NewsItem(
+            "Kpler Gulf crude excluding Iran 16.5 Mbd, 100% pre-war average; Hormuz 9.9 Mbd 60%; bypass 40% vs pre-war 17%; STS over 70%",
+            "Kpler", "https://example.com/kpler", now.isoformat(), now.timestamp(), "ex_iran_crude_prewar_recovery"
+        )]
+        body = MODULE.build_physical_flow_alert_body("ex_iran_crude_prewar_recovery", rows, None, now)
+        self.assertIn("이란 제외 원유  16.5 Mbd · 전쟁 전 평균의 100%", body)
+        self.assertIn("호르무즈      9.9 Mbd · 전체의 60%", body)
+        self.assertIn("우회          40% · 전쟁 전 17%", body)
+        self.assertIn("호르무즈 약 3.8 Mbd 감소", body)
+        self.assertIn("우회 약 3.8 Mbd 증가", body)
+        self.assertIn("60% → 70% → 전쟁 전 83%", body)
+        self.assertIn("Reuters의 2월 단일월 19.513 Mbd 비교와 분모가 다릅니다", body)
+
+    def test_ex_iran_prewar_event_id_changes_when_route_normalizes(self):
+        now = dt.datetime(2026, 10, 3, 12, 0, tzinfo=dt.timezone.utc)
+        a = [MODULE.NewsItem(
+            "Kpler Gulf crude excluding Iran 16.5 Mbd, 100% pre-war average; Hormuz 9.9 Mbd 60%; bypass 40% vs pre-war 17%; STS over 70%",
+            "Kpler", "a", now.isoformat(), now.timestamp(), "ex_iran_crude_prewar_recovery"
+        )]
+        b = [MODULE.NewsItem(
+            "Kpler Gulf crude excluding Iran 16.5 Mbd, 100% pre-war average; Hormuz 12.0 Mbd 73%; bypass 27% vs pre-war 17%; STS over 40%",
+            "Kpler", "b", now.isoformat(), now.timestamp(), "ex_iran_crude_prewar_recovery"
+        )]
+        self.assertNotEqual(
+            MODULE.event_id("ex_iran_crude_prewar_recovery", a),
+            MODULE.event_id("ex_iran_crude_prewar_recovery", b),
+        )
+
     def test_physical_flow_body_separates_sts_from_hormuz_volume(self):
         current = dt.datetime(2026, 9, 27, 12, 0, tzinfo=dt.timezone.utc)
         news = [
