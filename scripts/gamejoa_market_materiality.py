@@ -8,7 +8,7 @@ import datetime as dt
 from functools import lru_cache
 
 
-VERSION = 48
+VERSION = 49
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -101,7 +101,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("commercial_order", r"수주|공급\s*계약|납품\s*계약|발사\s*계약|\d+\s*년\s*계약(?!가)", r"수주|발주|계약"),
     ("industrial_program", r"(?:SMR|원전|양자|반도체|로봇).{0,16}상용화", r"(?:상용화|사업화).{0,50}(?:출범|지원|시행|추진)|(?:출범|지원|시행|추진).{0,50}(?:상용화|사업화)"),
     ("environmental_approval", r"환경(?:영향)?평가.{0,15}(?:통과|완료|면제)", r"최종\s*환경평가|FONSI|환경영향평가서.{0,35}(?:없이|면제)"),
-    ("ownership", r"지분.{0,25}(?:인수|매각|취득)|(?:피?인수).{0,25}(?:지분|계약|완료)|인수로|회사\s*인수|(?:결합|합병).{0,12}완료|합병(?!원)|주식.{0,8}(?:판다|매도|매각)", r"지분|인수|매각|매도|취득|거래계획|결합|합병(?!원)|stake|acquir|merger"),
+    ("ownership", r"지분.{0,25}(?:인수|매각|취득)|자산.{0,50}(?:인수|매각|취득)|(?:피?인수).{0,25}(?:지분|계약|완료)|인수로|회사\s*인수|(?:결합|합병).{0,12}완료|합병(?!원)|주식.{0,8}(?:판다|매도|매각)", r"지분|인수|매각|매도|취득|거래계획|결합|합병(?!원)|stake|acquir|merger"),
     ("debt_repayment", r"부채.{0,15}상환|대출.{0,15}상환|debt repayment", r"부채|대출|상환|debt|repay"),
     ("equity_compensation", r"주식\s*보상|주식\s*인센티브|성과연동주식|양도제한조건부주식|stock.based compensation|equity compensation", r"주식\s*보상|성과연동주식|양도제한조건부주식|\bPSP\b|\bRSU\b|stock.based compensation|equity compensation"),
     ("labor_negotiation", r"임단협|임금.{0,12}(?:협상|합의)|단체협약", r"임단협|임금|단체협약|잠정합의안|교섭"),
@@ -246,6 +246,8 @@ def focus_matches(title: str, sentence: str) -> bool:
     if kind == "project_response":
         return bool(re.search(r"팩트시트|공동\s*합의|추진\s*여부", sentence)
                     and re.search(r"없|포함[^.!?]{0,15}않|말하기\s*어렵|밝히기\s*어렵", sentence))
+    if kind == "ownership" and "자산" in title:
+        return bool("자산" in sentence and re.search(r"인수|매입|취득|매각", sentence))
     if kind == "debt_repayment":
         return bool(re.search(r"부채|대출|debt|loan", sentence, re.I)
                     and re.search(r"상환|repay", sentence, re.I))
@@ -531,7 +533,7 @@ RULES = (
      r"인상|(?<!할)인하|동결|상승|하락|오른|내린|올랐|내렸|둔화|급등|급락|상회|하회|밑돌|웃돌|발표|기록|증가|감소|결정|약세|강세|최고|치솟|cut|hike|hold|rise|fall|miss|beat|announc|estimat|record"),
     ("policy_scope_or_stage", ("timeline",),
      r"관세|법인세|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
-     r"제안|검토|추진|인상|인하|올리|올렸|낮추|낮췄|상향|하향|완화|강화|시행|발효|금지|제한|허가|승인|제정|개정|철회|의견수렴|입법예고|면제|배정|의결|착수|발표|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
+     r"제안|검토|추진|인상|인하|올리|올렸|낮추|낮췄|상향|하향|완화|강화|시행|발효|금지|제한|(?<!인)허가(?:했|한다|를\s*(?:내|받|취득))|승인(?:했|한다|을\s*(?:받|획득|취득))|제정|개정|철회|의견수렴|입법예고|면제|배정|의결|착수|발표|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
     ("environmental_approval", ("timeline",),
      r"최종\s*환경평가|FONSI|환경영향평가서", r"완료|결정을\s*내렸|작성\s*없이|면제"),
     ("export_control_scope", ("earnings", "timeline"),
@@ -591,6 +593,13 @@ COMPILED_RULES = tuple(
 def evidence_is_new_event(kind: str, sentence: str) -> bool:
     """Do not promote service descriptions or event support into transactions."""
     if COMPANY_PROFILE.search(sentence) or ACCOUNTING_NOTE.search(sentence):
+        return False
+    if re.search(r"(?:주요|법률)\s*이슈를\s*짚고|(?:핵심\s*)?정보를\s*전달하고자|기사(?:에서는|에서)[^.!?]{0,35}소개합니다", sentence):
+        return False
+    if kind == "customer_discussions" and re.search(
+        r"(?:검토|평가|심사)하는\s*(?:프로그램|제도)|(?:고객|구축|서비스)\s*사례[^.!?]{0,40}(?:제출|인정)|"
+        r"program[^.!?]{0,50}(?:reviews|evaluates)[^.!?]{0,40}customer", sentence, re.I,
+    ):
         return False
     if kind in {"capital_or_shareholder_action", "convertible_ownership_rights"} and re.search(
         r"증액\s*승인만으로|즉각적인\s*희석\s*효과는\s*없|신주가\s*발행되지는\s*않|"
@@ -801,10 +810,18 @@ def assess(title: str, body: str) -> dict:
     if re.search(r"따라\s*투자하면|투자하면\s*돈\s*벌까|경제\s*용어|투자\s*방법", title) and not DIRECT_HEADLINE_CHANGE.search(title):
         result.update(disposition="exclude", priority=0, reason="investment_method_explainer_not_new_market_event")
         return result
-    if re.search(r"보안인증|보안\s*인증|CSAP|ISMS", title, re.I) and re.search(r"획득|취득", title) and not re.search(
-        r"(?:신규\s*고객|공급\s*계약|납품\s*계약|수주).{0,25}(?:체결|확정|확보|획득)|"
-        r"(?:매출|영업이익|순이익|자금조달).{0,25}(?:증가|상향|확정|유치)|supply contract signed", body, re.I,
-    ):
+    routine_certificate = bool(re.search(r"보안인증|보안\s*인증|CSAP|ISMS|컴피턴시|competency", title, re.I)
+                               and re.search(r"획득|취득|인정|certified|obtained", title, re.I))
+    certificate_business_change = routine_certificate and any(
+        not BACKGROUND.search(sentence) and not PAST_ACTION.search(sentence)
+        and not re.search(r"사례[^.!?]{0,40}(?:제출|인정)|서비스를\s*제공할\s*수|프로그램이다", sentence)
+        and re.search(
+            r"(?:신규\s*고객|공급\s*계약|납품\s*계약|수주).{0,25}(?:체결|확정|확보|획득)|"
+            r"(?:매출|영업이익|순이익|자금조달).{0,25}(?:증가|상향|확정|유치)|supply contract signed", sentence, re.I,
+        )
+        for sentence in source_sentences(body)
+    )
+    if routine_certificate and not certificate_business_change:
         result.update(disposition="exclude", priority=0, reason="routine_security_certificate_without_business_commitment")
         return result
     if re.search(r"투자\s*이민|EB-?5", title, re.I) and re.search(r"상담|설명회|세미나", title):
@@ -937,7 +954,8 @@ def assess(title: str, body: str) -> dict:
             continue
         # A numeric company profile or another topic later in the article must
         # not turn today's ceremonial/promotion headline into a market event.
-        anchored = any(token in sentence.lower() for token in tokens)
+        anchors = {token for token in tokens if not token.isdigit() and token in sentence.lower()}
+        anchored = bool(anchors)
         adjacent = (index > 0
                     and re.sub(r"[\W_]+", "", sentences[index - 1]).casefold() != headline_text
                     and any(token in sentences[index - 1].lower() for token in tokens))
@@ -951,6 +969,13 @@ def assess(title: str, body: str) -> dict:
             if focus_kind(title) == "project_response" and kind != "policy_agreement_clarification":
                 continue
             if not evidence_is_new_event(kind, sentence):
+                continue
+            # A late company-only forecast cannot replace an unrecognised
+            # headline event; an actual new contract/action remains eligible.
+            if not focus_kind(title) and index >= 3 and len(anchors) < 2 and not (
+                anchored and kind in {"commercial_order", "corporate_transaction", "capital_or_shareholder_action", "customer_supply_start"}
+                and re.search(r"체결했다|체결했다고|수주했다|수주했다고|인수했다|유치했다|납입했다|집행했다|signed|acquired", sentence, re.I)
+            ):
                 continue
             if kind == "export_results" and not QUANTITY.search(sentence):
                 continue

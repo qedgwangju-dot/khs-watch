@@ -2302,6 +2302,30 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         return ""
     focus = market_materiality.focus_kind(title)
     source = " ".join(sentences)
+    if focus == "ownership" and "자산" in title and "인수" in title:
+        for sentence in sentences:
+            issuer = re.match(r"^([A-Za-z0-9가-힣&·]+(?:\s+[A-Za-z0-9가-힣&·]+){0,4})\s*(?:\([A-Za-z0-9.-]+\))?(?:은|는|이|가)\s+", sentence)
+            amount = re.search(r"총\s*(\d[\d,.]*\s*(?:(?:조|억|만|천)\s*)*(?:달러|유로|원))에\s*인수하는\s*(?:확정\s*)?(?:자산매입|인수)?계약을\s*체결", sentence)
+            asset = re.search(r"([가-힣A-Za-z]+(?:\s+[가-힣A-Za-z]+){0,2}\s+자산)(?:을|를)\s*현금", sentence)
+            if not issuer or not amount or not asset or market_materiality.PAST_ACTION.search(sentence):
+                continue
+            name = issuer.group(1)
+            target = re.sub(r"^등\s+", "", asset.group(1))
+            regulator = re.search(r"\(([A-Z]{2,8})\)\s*인허가", sentence)
+            if regulator:
+                target = f"{regulator.group(1)} 인허가 등 {target}"
+            fact = (f"{name}{korean_topic_particle(name)} {target}을 "
+                    f"{re.sub(r'\s+', '', amount.group(1))}에 인수하는 계약을 체결했다.")
+            unbuilt = re.search(r"(?:해당\s*)?시설은[^.!?]{0,25}(?:미건설|실제로\s*건설되지\s*않)", source)
+            approvals = re.search(r"종결은[^.!?]{0,100}승인[^.!?]{0,30}전제", source)
+            if unbuilt and approvals:
+                fact += " 시설은 미건설이며 종결에는 규제 승인이 필요하다."
+            elif unbuilt:
+                fact += " 시설은 미건설 상태다."
+            elif approvals:
+                fact += " 종결에는 규제 승인이 필요하다."
+            if core_sentence_is_complete(fact):
+                return fact
     if focus == "market_macro_response":
         jobs = re.search(r"(\d{1,2}월)\s*(?:미국(?:의)?\s*)?비농업\s*(?:부문\s*고용|일자리|고용)(?:은|이|가)?[^.!?]{0,30}(\d[\d,]*만\d[\d,]*명)\s*증가", source)
         expected = re.search(r"(?:(?:전문가|시장)\s*)?예상치(?:인)?\s*(\d[\d,]*만\d[\d,]*명)", source)
@@ -9622,6 +9646,9 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if market_materiality.COMPANY_PROFILE.search(core):
         errors.append("company_profile_not_news_core")
     if alert.get("korean_business_news"):
+        source_audit = market_materiality.assess(title, source)
+        if source_audit["disposition"] != "keep" or not source_audit["evidence"]:
+            errors.append("article_without_headline_market_change_evidence")
         core_audit = market_materiality.assess(title, core)
         if core_audit["disposition"] != "keep" or not core_audit["evidence"]:
             errors.append("core_without_market_change_evidence")

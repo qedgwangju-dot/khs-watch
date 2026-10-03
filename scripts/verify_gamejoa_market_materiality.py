@@ -113,6 +113,87 @@ DELIVERED_LOCAL_ADMINISTRATION = (
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_article_series_introduction_and_license_noun_are_not_policy_changes(self):
+        title = "한국 바람에 20년 투자, 외국 투자자는 무엇을 보나 [지평 기후에너지리포트]"
+        introduction = "[지평 기후에너지리포트]에서는 기후에너지환경 분야 정책 변화부터 사업개발, 투자, 인허가, 분쟁까지 주요 법률 이슈를 짚고, 기업이 알아야 할 핵심 정보를 전달하고자 합니다."
+        body = "해상풍력 크로스보더 투자의 법률 이슈. 해상풍력특별법이 지난 3월 시행됐다. 외국 투자자는 제도의 안정성을 살핀다.\n" + introduction
+        self.assertFalse(materiality.evidence_is_new_event("policy_scope_or_stage", introduction))
+        self.assertLess(materiality.assess(title, body)["priority"], 2)
+        self.assertNotIn("policy_scope_or_stage", [row["kind"] for row in materiality.assess("기업, 사업 절차 소개", "회사는 인허가 절차와 관련 규제 정보를 제공한다.")["evidence"]])
+        for action in ("허가했다", "승인했다", "허가를 내줬다"):
+            changed = materiality.assess("정부, 신규 공장 인허가", f"정부는 신규 반도체 공장 건설을 {action}.")
+            self.assertEqual(changed["disposition"], "keep", changed)
+
+    def test_boycott_article_cannot_borrow_late_company_revenue_forecast(self):
+        title = "JYP, 중대 결정...파격 '보이콧' 선언"
+        body = ("방탄소년단에 이어 스트레이 키즈도 그래미 시상식 보이콧에 나섰다.\n"
+                "JYP엔터테인먼트는 내년 그래미 시상식에 음악을 출품하지 않았다고 밝혔다.\n"
+                "그래미는 아시안 팝 부문 시상을 강행하겠다고 발표했다.\n"
+                "스트레이 키즈는 빌보드 200에서 9차례 1위를 기록했다.\n"
+                "스트레이 키즈는 JYP의 실적 효자이기도 하다.\n"
+                "최근 SK증권은 스트레이 키즈의 활약에 힘입어 JYP엔터테인먼트의 2026년 매출액을 8665억원으로 전망했다.")
+        self.assertLess(materiality.assess(title, body)["priority"], 2)
+        item = {**alert(title, body), "link": "https://magazine.hankyung.com/business/article/202610031631b"}
+        wrong_core = "최근 SK증권은 스트레이 키즈의 활약에 힘입어 JYP엔터테인먼트의 2026년 매출액을 8665억원으로 전망했다."
+        self.assertIn("article_without_headline_market_change_evidence", radar.source_core_fact_errors({**item, "telegram_core_fact": wrong_core}))
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([item], 7), [])
+        actual = materiality.assess("JYP, 공연 취소로 매출 가이던스 하향", "JYP엔터테인먼트는 공연 취소로 매출 가이던스를 10% 하향했다.")
+        self.assertEqual(actual["disposition"], "keep")
+
+    def test_actual_asset_purchase_core_keeps_object_price_and_unclosed_stage(self):
+        title = "나노 뉴클리어 에너지, NRC 인허가 핵연료 자산 1350만 달러 인수"
+        body = ("나노 뉴클리어 에너지(NNE)가 자회사 HALEU 에너지 퓨얼과 함께 라드노스틱스 및 자회사로부터 "
+                "미국 원자력규제위원회(NRC) 인허가와 관련 지식재산권·기술 자료 등 핵연료 처리 자산을 "
+                "현금 950만 달러와 자사 보통주 400만 달러어치 등 총 1350만 달러에 인수하는 확정 자산매입계약을 체결했다고 2일 발표했다.\n"
+                "다만 해당 인허가에 따른 시설은 실제로 건설되지 않았다.\n"
+                "이번 거래는 우라늄 전환, 농축, 탈전환, 운송에서 원자로 배치까지 아우르는 수직계열화된 첨단 원자력 에너지·연료 플랫폼 구축이라는 회사의 장기 전략의 일환이다.\n"
+                "종결은 NRC의 인허가 이전 동의, 뉴멕시코주 당국을 포함한 기타 필수 승인·동의, 부지 관련 조건 충족을 전제로 한다.")
+        item = {**alert(title, body), "link": "https://www.mk.co.kr/news/stock/12167665"}
+        self.assertEqual(materiality.focus_kind(title), "ownership")
+        core = radar.verified_alert_core(item, title)
+        for fact in ("나노 뉴클리어 에너지", "NRC 인허가", "핵연료 처리 자산", "1350만달러", "계약을 체결", "미건설", "종결에는 규제 승인"):
+            self.assertIn(fact, core)
+        self.assertNotRegex(core, "인수했다|인수 완료|시설을 가동|장기 전략")
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        self.assertFalse(materiality.core_focus_aligned(title, "이번 거래는 장기적인 수직계열화 전략의 일환이다."))
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            built = radar.build_verified_korean_business_alert({**item, "published": NOW, "source": "매일경제"}, NOW)
+            self.assertIsNotNone(built)
+            self.assertEqual(len(radar.quality_display_alerts([built], 7)), 1)
+        item["telegram_core_fact"] = core
+        item["fx_conversion"] = radar.build_alert_fx_conversion(
+            item, {"rates": {"USD": {"value": 1348.28, "status": "fixture", "source": "unit test"}}}, NOW,
+        )
+        block = radar.compact_alert(item, 1, NOW, {}, {})
+        self.assertIn("1350만달러(약 182억원)", block)
+        self.assertIn("규제 승인이 필요하다", block)
+        self.assertEqual(radar.compact_alert_block_errors(block), [])
+        renamed = body.replace("나노 뉴클리어 에너지", "새로운 원자력 기업").replace("1350만 달러", "1400만 달러")
+        renamed_title = title.replace("나노 뉴클리어 에너지", "새로운 원자력 기업").replace("1350만 달러", "1400만 달러")
+        renamed_core = radar.verified_alert_core(alert(renamed_title, renamed), renamed_title)
+        self.assertIn("새로운 원자력 기업", renamed_core)
+        self.assertIn("1400만달러", renamed_core)
+
+    def test_actual_cloud_competency_definition_is_not_new_customer_negotiation(self):
+        title = "SK쉴더스, AWS '위협탐지 및 대응' 컴피턴시 국내 첫 획득"
+        body = ("SK쉴더스가 AWS의 위협 탐지 및 대응 컴피턴시를 획득했다.\n"
+                "2일 SK쉴더스에 따르면, AWS 보안 컴피턴시는 AWS 환경에서 보안 솔루션과 서비스를 제공하는 "
+                "AWS 파트너의 전문성과 고객 사례 등을 검토하는 프로그램이다.\n"
+                "SK쉴더스는 심사 과정에서 AWS 보안 서비스를 활용해 고객 환경의 위협 탐지 및 대응 체계를 구축한 사례를 제출했다.\n"
+                "앞으로 다양한 산업군으로 서비스 저변을 확대해 나갈 예정이다.")
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "exclude", audit)
+        self.assertFalse(materiality.evidence_is_new_event("customer_discussions", materiality.source_sentences(body)[1]))
+        item = {**alert(title, body), "link": "https://zdnet.co.kr/view/?no=20261003212658"}
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([item], 7), [])
+        actual_contract = body + "\nSK쉴더스는 신규 고객 공급계약을 체결했다."
+        self.assertEqual(materiality.assess(title, actual_contract)["disposition"], "keep")
+        self.assertEqual(materiality.assess(title, body + "\nSK쉴더스는 지난해 신규 고객 공급계약을 체결했다.")["disposition"], "exclude")
+        self.assertTrue(materiality.evidence_is_new_event("customer_discussions", "회사는 고객과 신규 보안 장비 공급을 협상 중이다."))
+        self.assertEqual(materiality.assess("제약기업, 신약 FDA 승인 획득", "제약기업은 신약 FDA 승인을 획득했다.")["disposition"], "keep")
+
     def test_hypothetical_household_interest_bill_is_not_a_new_mortgage_rate(self):
         title = '주담대 8% 되면…"5억 빌렸다면 이자만 매달 330만원"'
         body = ("주택담보대출 금리가 8%까지 오르면 5억원을 빌린 차주는 매달 330만원의 이자를 부담할 수 있다는 분석이 나왔다. "
