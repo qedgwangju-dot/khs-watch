@@ -183,6 +183,34 @@ MICRON_SUPPLY_COMMITMENT_BASELINE = {
     "as_of": "2026-10-03",
     "source_rank": 2,
 }
+DGX_SPARK_MEMORY_PRICE_TRACK_VERSION = 1
+DGX_SPARK_MEMORY_PRICE_BASELINE = {
+    "sku_64_memory_gb": 64,
+    "sku_64_price_usd": 4999.0,
+    "sku_64_available_date": "2026-10-23",
+    "sku_64_model_limit_b": 100.0,
+    "sku_128_memory_gb": 128,
+    "sku_128_fe_price_usd": 6950.0,
+    "sku_128_prior_price_usd": 4699.0,
+    "sku_128_launch_price_usd": 3999.0,
+    "cluster_units": 2,
+    "cluster_memory_gb": 128,
+    "cluster_model_limit_b": 200.0,
+    "cluster_speedup_x": 1.7,
+    "cluster_speedup_benchmark": "Qwen 3.8 27B",
+    "cluster_interconnect_gbps": 200,
+    "memory_type": "LPDDR5X unified memory",
+    "memory_supply_cost_pressure": True,
+    "oem_only_64gb": True,
+    "source": "NVIDIA + The Register",
+    "source_kind": "NVIDIA 공식 64GB 발표 + NVIDIA 공식 2026-02 가격변경 공지 + The Register 2026-10-02 현행 128GB 가격 교차확인",
+    "source_url": "https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/",
+    "secondary_source_url": "https://www.theregister.com/systems/2026/10/02/nvidia-debuts-4999-dgx-spark-with-half-the-ram-and-storage-amid-memory-crunch/5300622",
+    "prior_price_source_url": "https://forums.developer.nvidia.com/t/2-23-2026-price-change-announcement/361713",
+    "as_of": "2026-10-02",
+    "source_rank": 2,
+}
+
 TREND_PINNED_PRESS_URLS = [
     "https://www.trendforce.com/presscenter/news/20260930-13258.html",
     "https://www.trendforce.com/presscenter/news/20260929-13255.html",
@@ -220,6 +248,8 @@ QUERIES = [
     ("ko", '마이크론 2027 공급 75% 확약 장기계약 메모리 CEO'),
     ("ko", '마이크론 SCA 2031 26개 RPO 1500억달러 Q1 FY2027 영업이익'),
     ("ko", '마이크론 2028 DRAM 공급부족 2031 장기계약 Q1 2027 매출총이익률'),
+    ("ko", 'NVIDIA DGX Spark 64GB 4999 128GB 6950 메모리 공급제약 가격 인상 LPDDR5X'),
+    ("ko", '엔비디아 DGX Spark 64GB 4999 128GB 6950 통합 메모리 가격 인상 공급 부족'),
     ("ko", 'LPDDR4X LP4X EOL 생산종료 지원 연장 2027 2028 삼성전자 SK하이닉스 마이크론'),
     ("ko", 'DDR4 생산종료 EOL 증설 공급배정 2군 메모리 이행률 fulfillment 삼성 SK하이닉스 마이크론'),
     # DRAM physical capacity / wafer-start / new-fab cycle: do not miss supply expansion.
@@ -241,6 +271,8 @@ QUERIES = [
     ("en", 'Micron 2027 memory supply committed 75 percent strategic customer agreements'),
     ("en", 'Micron 26 SCAs 2031 RPO 150 billion Q1 FY2027 operating profit guidance'),
     ("en", 'Micron 2028 DRAM supply constrained 2031 strategic customer agreements'),
+    ("en", 'NVIDIA DGX Spark 64GB 4999 128GB 6950 memory supply constraints LPDDR5X'),
+    ("en", 'DGX Spark 128GB price increase 6950 memory shortage 64GB 4999'),
     ("en", 'LPDDR4X LP4X EOL end of life support extension 2027 2028 Samsung SK hynix Micron'),
     ("en", 'DDR4 EOL capacity expansion supply allocation second-tier memory fulfillment 50% Samsung SK hynix Micron'),
     ("en", 'Applied Materials Citi TMT DRAM wafer starts capacity 1.6 million 2 million 400000'),
@@ -250,16 +282,18 @@ QUERIES = [
 
 MEMORY_MARKERS = {
     "dram", "ddr4", "ddr5", "lpddr", "hbm", "hbm4", "hbm4e", "nand",
-    "essd", "ssd", "memory", "메모리", "디램", "낸드", "현물", "고정가",
+    "essd", "ssd", "memory", "lpddr5x", "unified memory", "dgx spark",
+    "메모리", "통합 메모리", "디램", "낸드", "현물", "고정가",
 }
 CHANGE_MARKERS = {
     "spot", "contract", "price", "asp", "shortage", "supply", "capacity", "capa",
     "inventory", "lta", "commitment", "allocation", "raise", "increase", "forecast",
+    "msrp", "sku", "launch", "price increase", "price hike",
     "outlook", "revised", "revision", "normalize", "normalization", "wafer", "wafer start", "wafer starts", "wspm",
     "eol", "end of life", "end-of-life", "support extension", "fulfillment",
     "greenfield", "fab", "factory", "ramp", "ramp-up", "equipment investment",
     "현물", "고정가", "계약가", "가격", "부족", "공급", "재고", "증설", "인상",
-    "상향", "전망", "확약", "배정", "수급", "웨이퍼", "생산능력", "투입량",
+    "상향", "전망", "확약", "배정", "수급", "가격 인상", "출시", "웨이퍼", "생산능력", "투입량",
     "신규 팹", "그린필드", "램프업", "가동", "장비투자", "설비투자",
     "생산종료", "지원 연장", "이행률",
 }
@@ -271,7 +305,7 @@ HIGH_SIGNAL = {
 }
 CRITICAL_MARKERS = {
     "sufficiency", "공급 충족", "under supply", "undersupply", "shortage", "공급부족",
-    "2027", "2028", "hbm4e", "lta", "장기계약", "공급확약", "commitment",
+    "2027", "2028", "hbm4e", "lta", "장기계약", "공급확약", "commitment", "dgx spark",
     "wafer starts", "greenfield", "p4", "p5", "m15x", "y1", "웨이퍼", "생산능력",
 }
 
@@ -529,6 +563,15 @@ ARTICLE_DETAIL_HOSTS = (
     "stockanalysis.com",
     "benzinga.com",
     "marketbeat.com",
+    "blogs.nvidia.com",
+    "nvidia.com",
+    "forums.developer.nvidia.com",
+    "theregister.com",
+    "pc.watch.impress.co.jp",
+    "tomshardware.com",
+    "itmedia.co.jp",
+    "computerbase.de",
+    "wallstreetcn.com",
 )
 
 
@@ -1500,6 +1543,210 @@ def _micron_supply_commitment_changes(old: dict, new: dict) -> list[str]:
     return changes
 
 
+
+def _dgx_spark_source_rank(item: dict) -> int:
+    source = str(item.get("source") or "").lower()
+    link = str(item.get("link") or "")
+    host = urllib.parse.urlparse(link).netloc.lower()
+    if "nvidia.com" in host or ("nvidia" in source and ("developer" in source or source.strip() == "nvidia")):
+        return 3
+    trusted = (
+        "theregister.com", "pc.watch.impress.co.jp", "tomshardware.com",
+        "itmedia.co.jp", "computerbase.de", "wallstreetcn.com", "futunn.com",
+        "reuters.com", "bloomberg.com",
+    )
+    trusted_source = (
+        "the register", "pc watch", "tom's hardware", "tom’s hardware",
+        "itmedia", "computerbase", "wallstreetcn", "华尔街见闻",
+        "reuters", "bloomberg",
+    )
+    if any(host == h or host.endswith("." + h) for h in trusted):
+        return 2
+    if any(s in source for s in trusted_source):
+        return 2
+    return 0
+
+
+def _is_dgx_spark_memory_price_item(item: dict) -> bool:
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    if "dgx spark" not in low:
+        return False
+    no_space = low.replace(" ", "")
+    if "64gb" not in no_space and "128gb" not in no_space:
+        return False
+    return any(k in low for k in (
+        "price", "msrp", "starting at", "memory", "lpddr5x", "unified",
+        "supply constraint", "shortage", "cost", "4999", "4,999", "6950", "6,950",
+    ))
+
+
+def _extract_dgx_spark_memory_price(item: dict) -> dict | None:
+    if not _is_dgx_spark_memory_price_item(item):
+        return None
+    rank = _dgx_spark_source_rank(item)
+    if rank < 2:
+        return None
+
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    compact = re.sub(r"\s+", " ", text)
+
+    def price(patterns: tuple[str, ...]) -> float | None:
+        for pat in patterns:
+            m = re.search(pat, compact, re.I | re.S)
+            if not m:
+                continue
+            raw = re.sub(r"[^0-9.]", "", m.group(1))
+            if not raw:
+                continue
+            value = float(raw)
+            if 2000 <= value <= 20000:
+                return value
+        return None
+
+    obs: dict = {}
+    no_space = low.replace(" ", "")
+
+    if "64gb" in no_space:
+        obs["sku_64_memory_gb"] = 64
+    if "128gb" in no_space:
+        obs["sku_128_memory_gb"] = 128
+
+    p64 = price((
+        r"64\s*GB[^.]{0,180}?(?:starting(?:\s+price)?(?:\s+at)?|starts?\s+at|priced?\s+at|price(?:d)?|MSRP|起售价|售价|价格)[^$0-9]{0,30}(?:\$|USD\s*)?([0-9][0-9,]{3,})",
+        r"(?:\$|USD\s*)([0-9][0-9,]{3,})[^.]{0,100}?64\s*GB",
+        r"64\s*GB[^.]{0,160}?([0-9][0-9,]{3,})\s*(?:USD|dollars?|美元)",
+    ))
+    if p64 is not None:
+        obs["sku_64_price_usd"] = p64
+
+    p128 = price((
+        r"128\s*GB[^.]{0,220}?(?:Founders?\s+Edition|FE)?[^.]{0,120}?(?:raised|increase(?:d)?|jumps?|hike(?:d)?|price(?:d)?|MSRP|涨价至|售价|价格)[^$0-9]{0,40}(?:to\s*)?(?:\$|USD\s*)?([0-9][0-9,]{3,})",
+        r"(?:\$|USD\s*)([0-9][0-9,]{3,})[^.]{0,100}?128\s*GB",
+        r"128\s*GB[^.]{0,180}?([0-9][0-9,]{3,})\s*(?:USD|dollars?|美元)",
+    ))
+    if p128 is not None:
+        obs["sku_128_fe_price_usd"] = p128
+
+    if re.search(r"(?:Oct(?:ober)?\.?\s*23|10\s*월\s*23\s*일|10月23日)", text, re.I):
+        year = (item.get("published_kst") or "2026")[:4]
+        if not re.fullmatch(r"20\d{2}", year):
+            year = "2026"
+        obs["sku_64_available_date"] = f"{year}-10-23"
+
+    if re.search(r"(?:up to\s*)?100[-\s]?billion[-\s]?parameter", low) or "1000亿" in text:
+        obs["sku_64_model_limit_b"] = 100.0
+
+    cluster_context = (
+        ("two" in low or "2 " in low or "2x" in low or "两台" in text)
+        and "64" in low
+        and "128" in low
+        and any(k in low for k in ("cluster", "pool", "sync cluster", "connectx-7", "集群"))
+    )
+    if cluster_context:
+        obs["cluster_units"] = 2
+        obs["cluster_memory_gb"] = 128
+
+    if re.search(r"(?:up to\s*)?200[-\s]?billion[-\s]?parameter", low) or "2000亿" in text:
+        obs["cluster_model_limit_b"] = 200.0
+
+    m_speed = re.search(r"(?:up to\s*)?([12]\.\d+)\s*x\s+(?:the\s+)?performance", low)
+    if not m_speed:
+        m_speed = re.search(r"(?:performance|性能)[^0-9]{0,40}(?:up to|最高|提升)?\s*([12]\.\d+)\s*x", low)
+    if m_speed:
+        obs["cluster_speedup_x"] = float(m_speed.group(1))
+    elif cluster_context and re.search(r"(?:up to|提升|最高)[^0-9]{0,20}(?:about\s*)?70\s*%", low):
+        obs["cluster_speedup_x"] = 1.7
+
+    if "qwen 3.8 27b" in low or "qwen3.8 27b" in low:
+        obs["cluster_speedup_benchmark"] = "Qwen 3.8 27B"
+
+    m_net = re.search(r"\b(200)\s*(?:gbps|gbe)\b", low)
+    if m_net:
+        obs["cluster_interconnect_gbps"] = int(m_net.group(1))
+
+    if "lpddr5x" in low:
+        obs["memory_type"] = "LPDDR5X unified memory"
+
+    supply_terms = (
+        "memory supply constraints", "memory supply constraint", "ongoing memory shortage",
+        "memory crunch", "skyrocketing memory prices", "rising memory prices",
+        "메모리 공급 제약", "메모리 공급 부족", "메모리 가격", "内存供应受限", "内存短缺",
+    )
+    cost_terms = (
+        "cost", "costs", "price adjustment", "price increase", "가격 인상",
+        "비용 상승", "成本上升", "涨价",
+    )
+    if any(k in low or k in text for k in supply_terms) and any(k in low or k in text for k in cost_terms):
+        obs["memory_supply_cost_pressure"] = True
+
+    if any(k in low for k in ("exclusively from manufacturer partners", "oem partners only", "no founders edition")) or ("OEM" in text and "64GB" in text):
+        obs["oem_only_64gb"] = True
+
+    if not any(k in obs for k in (
+        "sku_64_price_usd", "sku_128_fe_price_usd", "sku_64_available_date",
+        "sku_64_model_limit_b", "cluster_memory_gb", "cluster_speedup_x",
+        "memory_supply_cost_pressure",
+    )):
+        return None
+
+    obs.update({
+        "source": item.get("source") or urllib.parse.urlparse(str(item.get("link") or "")).netloc or "출처 미표시",
+        "source_url": item.get("link") or "",
+        "as_of": (item.get("published_kst") or "")[:10] or "",
+        "source_rank": rank,
+    })
+    return obs
+
+
+def _dgx_spark_memory_price_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+
+    for key, label in (
+        ("sku_64_price_usd", "DGX Spark 64GB 시작가"),
+        ("sku_128_fe_price_usd", "DGX Spark 128GB Founders Edition 가격"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if b is None:
+            continue
+        if a is None:
+            changes.append(label + ": $" + f"{float(b):,.0f} 신규 확인")
+        elif abs(float(b) - float(a)) >= 50:
+            pct = (float(b) / float(a) - 1.0) * 100.0 if float(a) else 0.0
+            changes.append(label + ": $" + f"{float(a):,.0f}→$" + f"{float(b):,.0f} ({pct:+.1f}%)")
+
+    for key, label in (
+        ("sku_64_available_date", "DGX Spark 64GB 출시일"),
+        ("sku_64_memory_gb", "DGX Spark 64GB 메모리 용량"),
+        ("sku_128_memory_gb", "DGX Spark 128GB 메모리 용량"),
+        ("sku_64_model_limit_b", "64GB 단일 시스템 모델 상한"),
+        ("cluster_memory_gb", "2대 클러스터 통합 메모리"),
+        ("cluster_model_limit_b", "2대 클러스터 모델 상한"),
+        ("cluster_interconnect_gbps", "클러스터 연결 속도"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if b is not None and a is not None and a != b:
+            changes.append(f"{label}: {a}→{b}")
+        elif b is not None and a is None:
+            changes.append(f"{label}: {b} 신규 확인")
+
+    a, b = old.get("cluster_speedup_x"), new.get("cluster_speedup_x")
+    if b is not None:
+        if a is None:
+            changes.append(f"2대 클러스터 Qwen 기준 성능: 최대 {float(b):.1f}x 신규 확인")
+        elif abs(float(b) - float(a)) >= 0.1:
+            changes.append(f"2대 클러스터 Qwen 기준 성능: 최대 {float(a):.1f}x→{float(b):.1f}x")
+
+    a, b = old.get("memory_supply_cost_pressure"), new.get("memory_supply_cost_pressure")
+    if b is not None and a is not None and bool(a) != bool(b):
+        changes.append(f"메모리 공급제약·원가 압력: {'확인' if a else '미확인'}→{'확인' if b else '미확인'}")
+    elif b is True and a is None:
+        changes.append("메모리 공급제약·원가 압력: 확인")
+
+    return changes
+
+
 def _merge_bernstein_memory_cycle(old: dict, obs: dict) -> dict:
     merged = dict(old or {})
     old_rank = int(merged.get("source_rank") or 0)
@@ -1935,6 +2182,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         micron_supply_state = _merge_typed_state(MICRON_SUPPLY_COMMITMENT_BASELINE, micron_supply_state)
         state["micron_supply_commitment_track_version"] = MICRON_SUPPLY_COMMITMENT_TRACK_VERSION
 
+    dgx_spark_state = dict(state.get("dgx_spark_memory_price") or {})
+    if int(state.get("dgx_spark_memory_price_track_version") or 0) < DGX_SPARK_MEMORY_PRICE_TRACK_VERSION:
+        dgx_spark_state = _merge_typed_state(DGX_SPARK_MEMORY_PRICE_BASELINE, dgx_spark_state)
+        state["dgx_spark_memory_price_track_version"] = DGX_SPARK_MEMORY_PRICE_TRACK_VERSION
+
     bernstein_state = dict(state.get("bernstein_memory_cycle") or {})
     if int(state.get("bernstein_memory_cycle_track_version") or 0) < BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION:
         bernstein_state = _merge_bernstein_memory_cycle(bernstein_state, BERNSTEIN_MEMORY_CYCLE_BASELINE)
@@ -2021,6 +2273,19 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             micron_supply_changes.extend(changes)
             micron_supply_source_url = micron_supply_state.get("source_url") or micron_supply_source_url
 
+    dgx_spark_changes: list[str] = []
+    dgx_spark_source_url = ""
+    for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
+        obs = _extract_dgx_spark_memory_price(item)
+        if not obs:
+            continue
+        merged = _merge_typed_state(dgx_spark_state, obs)
+        changes = _dgx_spark_memory_price_changes(dgx_spark_state, merged)
+        dgx_spark_state = merged
+        if changes:
+            dgx_spark_changes.extend(changes)
+            dgx_spark_source_url = dgx_spark_state.get("source_url") or dgx_spark_source_url
+
     bernstein_changes: list[str] = []
     bernstein_source_url = ""
     for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
@@ -2077,6 +2342,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             continue
         if _extract_micron_supply_commitment(x) or _is_micron_supply_context_item(x):
             continue
+        if _extract_dgx_spark_memory_price(x) or _is_dgx_spark_memory_price_item(x):
+            continue
         if _extract_trendforce_4q26_revision(x):
             continue
         if _extract_nand_divergence(x) or _extract_legacy_dram_state(x):
@@ -2118,6 +2385,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "korea_memory_earnings": korea_earnings_state,
         "micron_supply_commitment_track_version": MICRON_SUPPLY_COMMITMENT_TRACK_VERSION,
         "micron_supply_commitment": micron_supply_state,
+        "dgx_spark_memory_price_track_version": DGX_SPARK_MEMORY_PRICE_TRACK_VERSION,
+        "dgx_spark_memory_price": dgx_spark_state,
         "trendforce_4q26_revision_track_version": TREND_4Q26_REVISION_TRACK_VERSION,
         "trendforce_4q26_revision": trend_4q26_state,
         "trendforce_3q4q_pace_track_version": TREND_3Q4Q_PACE_TRACK_VERSION,
@@ -2149,6 +2418,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- Bernstein 가격 사이클 상태 변화: {len(bernstein_changes)}건",
         f"- 삼성전자·SK하이닉스 영업이익 컨센서스 변화: {len(korea_earnings_changes)}건",
         f"- Micron 2027 공급 확약 변화: {len(micron_supply_changes)}건",
+        f"- NVIDIA DGX Spark 메모리·가격 전가 변화: {len(dgx_spark_changes)}건",
         f"- TrendForce 4Q26 전망 리비전 변화: {len(trend_4q26_changes)}건",
         f"- TrendForce 3Q→4Q 가격속도 변화: {len(trend_3q4q_changes)}건",
         f"- NAND 소비자↔기업용 eSSD 양극화 변화: {len(divergence_changes)}건",
@@ -2161,11 +2431,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
+    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(legacy_changes)
+    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(legacy_changes)
     total_visible = typed_changes + len(prepared_items)
     lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
     if trend_4q26_changes:
@@ -2183,6 +2453,9 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
     elif korea_earnings_changes:
         one = korea_earnings_changes[0]
+        lines.append("한눈에: <b>" + html.escape(one) + "</b>")
+    elif dgx_spark_changes:
+        one = dgx_spark_changes[0]
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
     elif micron_supply_changes:
         one = micron_supply_changes[0]
@@ -2319,6 +2592,58 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         if official:
             lines.append('  <a href="' + html.escape(str(official), quote=True) + '">Micron 공식 실적자료</a>')
 
+
+    if dgx_spark_changes:
+        lines.append("• <b>NVIDIA DGX Spark 메모리 원가·제품구성 전가 변화</b>")
+        for change in list(dict.fromkeys(dgx_spark_changes)):
+            lines.append("  " + html.escape(change))
+        p64 = dgx_spark_state.get("sku_64_price_usd")
+        p128 = dgx_spark_state.get("sku_128_fe_price_usd")
+        prior128 = dgx_spark_state.get("sku_128_prior_price_usd")
+        launch128 = dgx_spark_state.get("sku_128_launch_price_usd")
+        if p64 is not None:
+            lines.append(
+                "  64GB SKU: <b>$" + f"{float(p64):,.0f}</b> · "
+                + html.escape(str(dgx_spark_state.get("sku_64_available_date") or "출시일 미확인"))
+                + " · 최대 "
+                + f"<b>{float(dgx_spark_state.get('sku_64_model_limit_b') or 0):.0f}B</b> 파라미터 모델"
+            )
+        if p128 is not None:
+            line = "  128GB Founders Edition: <b>$" + f"{float(p128):,.0f}</b>"
+            if prior128:
+                line += " · 2026-02 $" + f"{float(prior128):,.0f} 대비 {(float(p128)/float(prior128)-1)*100:+.1f}%"
+            if launch128:
+                line += " · 출시가 $" + f"{float(launch128):,.0f} 대비 {(float(p128)/float(launch128)-1)*100:+.1f}%"
+            lines.append(line)
+        if p64 is not None and p128 is not None:
+            lines.append(
+                f"  가격구조: 64GB는 128GB 현행가보다 {(1-float(p64)/float(p128))*100:.1f}% 낮지만 메모리는 50% 적음"
+            )
+            two64 = float(p64) * 2.0
+            lines.append(
+                "  2대 구성: <b>$" + f"{two64:,.0f}</b> = 128GB 메모리 풀 · "
+                + f"128GB 단일기보다 비용 {(two64/float(p128)-1)*100:+.1f}%"
+            )
+        if dgx_spark_state.get("cluster_speedup_x") is not None:
+            lines.append(
+                f"  성능: NVIDIA의 <b>{html.escape(str(dgx_spark_state.get('cluster_speedup_benchmark') or '특정 벤치마크'))}</b>에서 "
+                + f"2대 64GB 클러스터가 단일 시스템 대비 최대 <b>{float(dgx_spark_state['cluster_speedup_x']):.1f}x</b> — 모든 워크로드의 일반 성능 수치가 아님"
+            )
+        lines.append("  메모리 층위: DGX Spark 통합 메모리는 <b>LPDDR5X</b>이며 HBM 가격 신호와 별도 추적")
+        if dgx_spark_state.get("memory_supply_cost_pressure"):
+            lines.append("  원가 신호: 메모리 공급제약·가격 상승이 완제품의 가격 인상과 64GB 신규 SKU로 실제 전가된 상태")
+        lines.append("  의미: 공급사 ASP 전망보다 한 단계 downstream에서 메모리 부족이 제품 가격·용량 구성까지 바꿨는지 확인하는 실물 지표")
+        lines.append("  다음 확인: 10/23 OEM 실제 판매가·재고, 128GB Founders Edition 현행 MSRP, LPDDR5X 계약가, 64GB↔128GB 판매 비중")
+        official = dgx_spark_state.get("source_url") or DGX_SPARK_MEMORY_PRICE_BASELINE.get("source_url")
+        secondary = dgx_spark_state.get("secondary_source_url") or DGX_SPARK_MEMORY_PRICE_BASELINE.get("secondary_source_url")
+        prior_source = dgx_spark_state.get("prior_price_source_url") or DGX_SPARK_MEMORY_PRICE_BASELINE.get("prior_price_source_url")
+        if official:
+            lines.append('  <a href="' + html.escape(str(official), quote=True) + '">NVIDIA 공식 64GB 발표</a>')
+        if secondary:
+            lines.append('  <a href="' + html.escape(str(secondary), quote=True) + '">128GB 현행가 교차확인</a>')
+        if prior_source:
+            lines.append('  <a href="' + html.escape(str(prior_source), quote=True) + '">NVIDIA 공식 2026-02 가격변경 공지</a>')
+
     if bernstein_changes:
         lines.append("• <b>Bernstein 메모리 가격 사이클 상태 변화</b>")
         for change in bernstein_changes:
@@ -2397,13 +2722,13 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
+    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
 
     if legacy_changes:
-        has_other_content = bool(market_changes or bernstein_changes or korea_earnings_changes or micron_supply_changes or divergence_changes or prepared_items)
+        has_other_content = bool(market_changes or bernstein_changes or korea_earnings_changes or micron_supply_changes or dgx_spark_changes or divergence_changes or prepared_items)
         if has_other_content:
             lines.append("<<<TELEGRAM_MESSAGE_BREAK>>>")
         else:
@@ -2423,7 +2748,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         if legacy_source_url:
             lines.append('• <a href="' + html.escape(legacy_source_url, quote=True) + '">근거 원문</a>')
 
-    lines.append("※ 가격·수급·LTA·DRAM/HBM CAPA·웨이퍼 생산능력의 신규 변화만 알림")
+    lines.append("※ 가격·수급·LTA·DRAM/HBM CAPA·LPDDR5X 완제품 가격전가·웨이퍼 생산능력의 신규 변화만 알림")
     ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
 
