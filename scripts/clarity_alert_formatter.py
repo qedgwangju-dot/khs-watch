@@ -152,6 +152,10 @@ def is_oira_prerule(event):
 
 
 def rule_stage(event):
+    if is_vs_trust_3x_registration_effect(event):
+        return "registration_effective"
+    if is_vs_trust_3x_final_prospectus(event):
+        return "final_prospectus"
     if is_sec_3x_crypto_etp_approval(event):
         return "approval_order"
     if is_volatility_3x_crypto_launch(event):
@@ -220,6 +224,28 @@ def is_volatility_3x_crypto_launch(event):
     )
 
 
+def is_vs_trust_3x_registration_effect(event):
+    signal = clean(
+        f"{event.get('event_type','')} {event.get('title','')} {event.get('detail','')} {event.get('source','')}"
+    ).lower()
+    return (
+        "vs trust" in signal
+        and ("registration statement effective" in signal or "등록 효력 발생" in signal or "form effect" in signal)
+        and ("bith" in signal or "ethk" in signal or "3배 btc·eth" in signal)
+    )
+
+
+def is_vs_trust_3x_final_prospectus(event):
+    signal = clean(
+        f"{event.get('event_type','')} {event.get('title','')} {event.get('detail','')} {event.get('source','')}"
+    ).lower()
+    return (
+        "vs trust" in signal
+        and ("final prospectus" in signal or "최종 투자설명서" in signal or "form 424b" in signal)
+        and ("bith" in signal or "ethk" in signal or "3배 btc·eth" in signal)
+    )
+
+
 def is_sec_3x_crypto_etp_approval(event):
     signal = clean(
         f"{event.get('title','')} {event.get('detail','')} {event.get('source','')}"
@@ -255,6 +281,10 @@ def semantic_group(event):
     source = clean(event.get("source", ""))
     when = parse_event_date(event.get("date", ""))
     day = when.date().isoformat() if when else clean(event.get("date", ""))
+    if is_vs_trust_3x_registration_effect(event):
+        return ("vs_trust_3x_crypto_registration_effect", day)
+    if is_vs_trust_3x_final_prospectus(event):
+        return ("vs_trust_3x_crypto_final_prospectus", day)
     if is_sec_3x_crypto_etp_approval(event):
         return ("sec_3x_btc_eth_etp_sr_cboebzx_2026_065", day)
     if is_volatility_3x_crypto_launch(event):
@@ -279,6 +309,10 @@ def event_priority(event):
     title = clean(event.get("title", "")).lower()
     source = clean(event.get("source", ""))
     score = 0
+    if is_vs_trust_3x_registration_effect(event):
+        score += 310
+    if is_vs_trust_3x_final_prospectus(event):
+        score += 300
     if is_volatility_3x_crypto_launch(event):
         score += 260
     if is_sec_3x_crypto_etp_approval(event):
@@ -378,6 +412,18 @@ def special_translation(event):
     title = clean(event.get("title", ""))
     detail = clean(event.get("detail", ""))
     signal = f"{title} {detail}".lower()
+    if is_vs_trust_3x_registration_effect(event):
+        return (
+            "VS Trust, BITH·ETHK 등록서류 효력 발생",
+            "SEC EDGAR에서 BITH(3x Bitcoin ETF)·ETHK(3x Ether ETF)를 포함한 VS Trust 등록서류의 Form EFFECT(효력발생 통지)가 확인된 단계입니다. "
+            "이제 증권 등록 효력은 발생했지만, 실제 Cboe 첫 거래가 같은 날 자동으로 시작된다는 뜻은 아니므로 발행사 출시 공지·거래개시일을 별도로 확인해야 합니다.",
+        )
+    if is_vs_trust_3x_final_prospectus(event):
+        return (
+            "VS Trust, BITH·ETHK 최종 투자설명서 제출",
+            "SEC EDGAR에서 BITH·ETHK가 포함된 final prospectus(최종 투자설명서)가 확인된 출시 준비 단계입니다. "
+            "상장규칙 승인과 등록서류 준비가 더 진전됐지만 실제 첫 거래·AUM 발생은 별도 확인해야 합니다.",
+        )
     if is_volatility_3x_crypto_launch(event):
         tickers = []
         if "bith" in signal:
@@ -493,6 +539,16 @@ def localize_event(event):
 def easy_meaning(event, body_ko):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_vs_trust_3x_registration_effect(event):
+        return (
+            "쉽게 말하면, SEC가 ‘상장할 수 있다’고 승인한 데 이어 BITH·ETHK의 증권 등록 자체도 효력이 생긴 것입니다. "
+            "실제 거래 시작 직전 단계로 더 가까워졌지만, 첫 거래일은 발행사·Cboe가 별도로 확정해야 합니다."
+        )
+    if is_vs_trust_3x_final_prospectus(event):
+        return (
+            "쉽게 말하면, BITH·ETHK의 최종 투자설명서까지 제출돼 실제 출시 준비가 한 단계 더 진행된 것입니다. "
+            "다만 투자설명서 제출만으로 거래량이나 자금 유입이 생긴 것은 아닙니다."
+        )
     if is_volatility_3x_crypto_launch(event):
         return (
             "쉽게 말하면, ‘SEC가 상장할 수 있게 허용했다’는 단계에서 한 걸음 더 나아가 발행사 공식 상품목록에 BITH·ETHK가 실제로 등장한 것입니다. "
@@ -534,6 +590,20 @@ def easy_meaning(event, body_ko):
 def investment_lines(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_vs_trust_3x_registration_effect(event):
+        return [
+            "시간표: SEC 상장규칙 승인 → 등록서류 효력 발생까지 왔습니다. 다음 관문은 Volatility Shares 공식 출시·Cboe 첫 거래입니다.",
+            "BTC·ETH: 아직 현물 직접매수 효과가 아니라 CME 선물 기반 레버리지 상품의 출시 준비 진전입니다. 실제 영향은 첫 거래 후 AUM·거래대금·CME 선물 미결제약정으로 확인해야 합니다.",
+            "CBOE·CME: 실제 거래가 시작되면 상장시장과 기초 선물시장이라는 직접 연결이 생깁니다.",
+            "COIN·CRCL: 직접 상품 구조에는 포함되지 않아 간접 생태계 효과로만 봅니다.",
+        ]
+    if is_vs_trust_3x_final_prospectus(event):
+        return [
+            "시간표: 최종 투자설명서 제출은 출시 준비 진전입니다. 등록 효력·공식 출시·첫 거래를 순서대로 확인합니다.",
+            "BTC·ETH: 실제 자금 유입은 아직 아닙니다. 첫 거래 이후 선물 수급·변동성 영향을 확인해야 합니다.",
+            "CBOE·CME: 실제 거래개시 뒤 거래량이 붙는지가 사업 연결의 핵심입니다.",
+            "실패 경로: 출시가 지연되거나 초기 AUM·거래량이 작으면 시장 영향은 제한적입니다.",
+        ]
     if is_volatility_3x_crypto_launch(event):
         return [
             "BTC·ETH: 실제 거래가 시작되면 현물 직접매수보다 CME 선물·연계 ETP 수요와 일일 리밸런싱 수급이 더 직접적으로 늘어납니다.",
@@ -651,6 +721,16 @@ def investment_lines(event):
 def core_summary(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_vs_trust_3x_registration_effect(event):
+        return (
+            "BITH·ETHK는 SEC 상장규칙 승인에 이어 등록서류 효력까지 발생한 출시 직전 단계로 진전했으며, "
+            "다음 확정 신호는 Volatility Shares 공식 출시·Cboe 첫 거래이고 실제 시장 영향은 초기 AUM·거래대금·CME 선물 미결제약정으로 확인해야 합니다."
+        )
+    if is_vs_trust_3x_final_prospectus(event):
+        return (
+            "BITH·ETHK 최종 투자설명서 제출은 출시 준비가 진전된 신호지만 실제 자금 유입은 아니며, "
+            "등록 효력·공식 출시·첫 거래 뒤 AUM과 CME 선물 수급을 확인해야 합니다."
+        )
     if is_volatility_3x_crypto_launch(event):
         return (
             "BITH·ETHK가 발행사 공식 상품목록에 실제 등재되면 SEC 상장규칙 승인에서 상품 출시 단계로 진전한 것으로, "
