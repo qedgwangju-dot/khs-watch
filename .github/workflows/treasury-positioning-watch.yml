@@ -1,7 +1,26 @@
 name: Treasury Positioning Watch
 
 on:
+  push:
+    paths:
+      - "scripts/treasury_positioning_watch.py"
+      - "scripts/global_rates_watch.py"
+      - "tests/test_treasury_positioning_watch.py"
+      - ".github/workflows/treasury-positioning-watch.yml"
   schedule:
+    # CFTC TFF is normally released Friday 15:30 ET for Tuesday positions.
+    # Weekday retries also catch U.S. holiday-delayed Monday/Tuesday releases.
+    - cron: "47 15 * * 1-5"
+      timezone: "America/New_York"
+    - cron: "17 16 * * 1-5"
+      timezone: "America/New_York"
+    - cron: "17 17 * * 1-5"
+      timezone: "America/New_York"
+    - cron: "17 19 * * 1-5"
+      timezone: "America/New_York"
+    - cron: "17 22 * * 1-5"
+      timezone: "America/New_York"
+    # Final Saturday KST backup. State dedupe prevents duplicate Telegram sends.
     - cron: "40 8 * * 6"
       timezone: "Asia/Seoul"
   workflow_dispatch:
@@ -35,12 +54,13 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: python -m pip install --disable-pip-version-check requests
+        run: python -m pip install --disable-pip-version-check requests beautifulsoup4 pytest
 
       - name: Validate watcher
         run: |
           python -m py_compile scripts/global_rates_watch.py
           python -m py_compile scripts/treasury_positioning_watch.py
+          pytest -q tests/test_treasury_positioning_watch.py
 
       - name: Validate exact Telegram bot route
         run: |
@@ -58,11 +78,18 @@ jobs:
           print(f"telegram_route_valid=true bot=@{actual}")
           PY
 
+      - name: Audit live official sources without sending
+        if: github.event_name == 'push'
+        env:
+          AUDIT_ONLY: "true"
+        run: python scripts/treasury_positioning_watch.py
+
       - name: Run Treasury positioning watch
+        if: github.event_name != 'push'
         run: python scripts/treasury_positioning_watch.py
 
       - name: Commit positioning state
-        if: success()
+        if: success() && github.event_name != 'push'
         run: |
           if [ ! -f data/treasury_positioning_state.json ]; then
             exit 0
@@ -90,6 +117,8 @@ jobs:
           name: treasury-positioning-${{ github.run_id }}
           path: |
             out/treasury_positioning_watch.txt
+            out/treasury_positioning_verification.json
+            out/treasury_positioning_delivery.json
             data/treasury_positioning_state.json
           if-no-files-found: ignore
           retention-days: 14
