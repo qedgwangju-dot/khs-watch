@@ -137,11 +137,29 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
         rendered = "\n".join(MOD.build_readable([event]))
         self.assertIn("미국 암호자산 규제 Watch", rendered)
         self.assertIn("상장규칙 승인", rendered)
-        self.assertIn("현물 코인을 3배 보유하는 상품이 아니라", rendered)
-        self.assertIn("3x Bitcoin ETF 등록서류 효력 예정일 2026-10-18", rendered)
+        self.assertIn("BITH(3x Bitcoin ETF)", rendered)
+        self.assertIn("ETHK(3x Ether ETF)", rendered)
+        self.assertIn("VS Trust S-1 효력 발생 여부", rendered)
+        self.assertNotIn("2026-10-18", rendered)
         self.assertIn("CME 선물 미결제약정", rendered)
         self.assertNotIn("CLARITY 법안 Watch", rendered)
         self.assertLessEqual(max(map(len, MOD.build_readable([event]))), 3900)
+
+    def test_3x_crypto_launch_card_is_separate_from_rule_approval(self):
+        event = {
+            "source": "Volatility Shares 공식 상품목록",
+            "event_type": "3배 BTC·ETH ETP 실제 상품목록·거래개시 추적",
+            "title": "BITH 3x Bitcoin ETF / ETHK 3x Ether ETF",
+            "url": "https://www.volatilityshares.com/etf-product-list.php",
+            "date": "2026-10-20",
+            "detail": "BITH issuer product page listed; inception 10/20/2026 | ETHK issuer product page listed; inception 10/20/2026",
+        }
+        rendered = "\n".join(MOD.build_readable([event]))
+        self.assertIn("발행사 상품목록 등재", rendered)
+        self.assertIn("BITH = VS Trust 3x Bitcoin ETF 공식 티커", rendered)
+        self.assertIn("ETHK = VS Trust 3x Ether ETF 공식 티커", rendered)
+        self.assertIn("첫 5거래일 AUM", rendered)
+        self.assertNotIn("상장규칙 승인 — SEC 승인 완료", rendered)
 
     def test_multiple_distinct_events_keep_short_overview(self):
         events = [
