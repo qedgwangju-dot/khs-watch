@@ -456,6 +456,26 @@ def score(item: dict) -> int:
     group = topic_group(text)
     source = item.get('source') or ''
 
+    if group == 'fieldai':
+        stage = _fieldai_stage(text, source)
+        if stage in {'funding_proposed_baseline','commercial_baseline','hyundai_investment_baseline','partner_baseline','background'}:
+            return 0
+        s = 20
+        if base.NUMERIC.search(text): s += 3
+        s += {
+            'funding_closed_official': 18,
+            'funding_closed_reported': 13,
+            'funding_terms_change': 12,
+            'commercial_metric_change': 15,
+            'new_partner_or_deployment': 15,
+            'hyundai_atlas_integration': 19,
+            'hyundai_followon_or_stake': 17,
+            'reverse': 18,
+        }.get(stage, 0)
+        if source in base.OFFICIAL_OR_PRIMARY: s += 7
+        elif source in base.TRUSTED: s += 3
+        return s
+
     if group == 'samhyun':
         s = 10
         stage = _samhyun_stage(text)
@@ -557,6 +577,21 @@ def score(item: dict) -> int:
 
 
 def _raw_cat(text: str, group: str) -> str:
+    if group == 'fieldai':
+        return {
+            'funding_proposed_baseline': '기업가치 100억달러·7억달러 조달 추진 기준선',
+            'funding_closed_official': '7억달러 투자유치 공식 종결',
+            'funding_closed_reported': '투자유치 종결 보도',
+            'funding_terms_change': '투자유치 금액·기업가치 조건 변경',
+            'commercial_baseline': '고객 30곳+·매출+계약 1.35억달러 기준선',
+            'commercial_metric_change': '매출·계약·수주잔고·고객수 증가',
+            'partner_baseline': '기존 산업 파트너·배치 기준선',
+            'new_partner_or_deployment': '신규 고객·전략 파트너·생산배치',
+            'hyundai_investment_baseline': '현대차그룹 초기 투자 기준선',
+            'hyundai_atlas_integration': '현대차·Atlas·RMAC 직접 통합',
+            'hyundai_followon_or_stake': '현대차 추가투자·지분 공개',
+            'reverse': '투자·계약·배치 후퇴',
+        }.get(_fieldai_stage(text), 'FieldAI 사업 배경')
     if group == 'samhyun':
         stage = _samhyun_stage(text)
         if stage == 'follow_on_order':
@@ -613,6 +648,7 @@ def _raw_cat(text: str, group: str) -> str:
 
 def _lane(group: str) -> str:
     return {
+        'fieldai': 'FieldAI',
         'samhyun': '삼현',
         'xpeng': '샤오펑 IRON',
         'rfm_general_intelligence': '범용 로봇 지능',
@@ -623,7 +659,7 @@ def _lane(group: str) -> str:
 
 
 def category(text: str, group: str) -> str:
-    if group in {'samhyun','xpeng','rfm_general_intelligence','agility_platform','lg_robotics','frontier_ai'}:
+    if group in {'fieldai','samhyun','xpeng','rfm_general_intelligence','agility_platform','lg_robotics','frontier_ai'}:
         return f"{_lane(group)} · {_raw_cat(text, group)}"
     return _orig_category(text, group)
 
