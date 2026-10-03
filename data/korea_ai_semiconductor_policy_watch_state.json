@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-09-27T18:11:08+09:00",
-  "last_checked_kst": "2026-10-04T03:01:27+09:00",
+  "last_checked_kst": "2026-10-04T06:27:46+09:00",
   "seen": {
     "2b31306619b190498e7f41c7": {
       "title": "[입찰공고] 2026년 AI반도체 지원사업 성과조사분석 및 우수사례 발굴 용역 - 정보통신산업진흥원(NIPA)",
@@ -371,6 +371,24 @@
       "stage": 4,
       "category": "조달·선정·협약",
       "first_seen_kst": "2026-10-04T03:01:27+09:00",
+      "suppressed_duplicate": "same_title"
+    },
+    "7d4a74d91454c8409cb19a9f": {
+      "title": "국산 AI반도체, 공공조달시장 진출… 판로개척 등 성장 마중물 - dt.co.kr",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9fd0JtUHplbGg5U0dGdE5TaEhUeEtDUHNYSm13VVVuY2s5YmVCX2lyQ3RVNEJ5RzZZb2ZQYURZa1hMeUFzazZsdGZKNHNoQQ?oc=5",
+      "event_signature": "국산AI반도체산업|초기수요 정책|공공수요",
+      "stage": 3,
+      "category": "초기수요 정책",
+      "first_seen_kst": "2026-10-04T06:27:46+09:00",
+      "suppressed_stale": true
+    },
+    "799d7efc63442ed0e378fa06": {
+      "title": "공공 AI 문턱 낮춘 국산 NPU… 딥엑스 'DX-M1·DX-H1 시리즈' 혁신제품 지정 - 에이빙",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE0xSUtMd0t4YkRxdDI1eVhmc1otR1lYZGFEUjQzTWJQTjVndklvU0V2SWVXUmJobmxxX1pCQVlfRnVfS0JYaUVsSmtDZEYyTXFyNk9JdFVNQkdvOHNoNDYxT0MwRk4tSWfSAWtBVV95cUxPVGUzZms0b2F2WmFjRDd6blNBVEJzdHVEaGM3c0FScnVyV3FoT0stenNHN20weVk4TEtpTlBlc0dheVlmemYyd2VIRVJRZm5qUVJ5UjhwVnh4UjhBUFppRVEzNDRmTUxoeXotTQ?oc=5",
+      "event_signature": "딥엑스|조달·선정·협약|혁신제품",
+      "stage": 4,
+      "category": "조달·선정·협약",
+      "first_seen_kst": "2026-10-04T06:27:46+09:00",
       "suppressed_duplicate": "same_title"
     }
   }
