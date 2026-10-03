@@ -206,9 +206,10 @@ class ClarityFormatterTest(unittest.TestCase):
         }
         self.assertTrue(MOD.is_volatility_3x_crypto_launch(event))
         title, body = MOD.localize_event(event)
-        self.assertIn("실제 상품목록 등재", title)
+        self.assertIn("설정일 확인", title)
         self.assertIn("BITH(3x Bitcoin ETF)", body)
         self.assertIn("ETHK(3x Ether ETF)", body)
+        self.assertIn("10/20/2026", body)
         invest = "\n".join(MOD.investment_lines(event))
         self.assertIn("첫 5거래일 AUM", invest)
 
