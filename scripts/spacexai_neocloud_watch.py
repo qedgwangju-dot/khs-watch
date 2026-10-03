@@ -20,7 +20,7 @@ PENDING = OUT / "spacexai_neocloud_pending_state.json"
 ALERT = OUT / "spacexai_neocloud_alert.txt"
 STATUS = OUT / "spacexai_neocloud_status.md"
 
-FORMAT_VERSION = 2
+FORMAT_VERSION = 3
 MAX_NEWS_AGE_DAYS = 7
 UA = "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"
 HEADERS = {"User-Agent": UA, "Accept": "text/html,application/xhtml+xml,*/*"}
@@ -162,7 +162,7 @@ def official_snapshot() -> dict:
 
     try:
         ir = page_text(SPACEX_IR_UPDATES)
-        if "SpaceX Reports Second Quarter 2026 Results" not in ir:
+        if "SpaceX" not in ir or not any(k in ir for k in ("Investor Updates", "Communacopia", "Initial Public Offering")):
             raise RuntimeError("SpaceX IR identity guard")
         checks.append("SpaceX IR")
     except Exception as exc:
