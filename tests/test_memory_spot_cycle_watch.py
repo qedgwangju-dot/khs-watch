@@ -361,6 +361,65 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertEqual(obs["sca_end_year"], 2031)
         self.assertAlmostEqual(obs["fq1_27_implied_op_usd_bn"], 50.98, places=1)
 
+    def test_dgx_spark_official_64gb_state_extracts_capacity_price_and_cluster_limits(self):
+        item = {
+            "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+            "description": (
+                "DGX Spark is available with 64GB of unified memory and supports up to 100-billion-parameter models. "
+                "Two 64GB units connect over 200 GbE, pool memory to 128GB, support up to 200-billion-parameter models, "
+                "and in NVIDIA's Qwen 3.8 27B test delivered up to 1.7x performance. "
+                "Available Friday, Oct. 23, starting at $4,999."
+            ),
+            "source": "NVIDIA",
+            "link": "https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/",
+            "published_kst": "2026-10-02T22:00:00+09:00",
+        }
+        obs = w._extract_dgx_spark_memory_price(item)
+        self.assertIsNotNone(obs)
+        self.assertEqual(obs["sku_64_memory_gb"], 64)
+        self.assertEqual(obs["sku_64_price_usd"], 4999.0)
+        self.assertEqual(obs["sku_64_available_date"], "2026-10-23")
+        self.assertEqual(obs["sku_64_model_limit_b"], 100.0)
+        self.assertEqual(obs["cluster_memory_gb"], 128)
+        self.assertEqual(obs["cluster_model_limit_b"], 200.0)
+        self.assertEqual(obs["cluster_speedup_x"], 1.7)
+        self.assertEqual(obs["cluster_interconnect_gbps"], 200)
+
+    def test_dgx_spark_128gb_reprice_parses_new_price_not_old_from_price(self):
+        item = {
+            "title": "Nvidia DGX Spark 128GB price jumps to $6,950 amid memory crunch",
+            "description": (
+                "The 128 GB Founders Edition price increased from $4,699 to $6,950 "
+                "because of memory supply constraints and rising memory costs."
+            ),
+            "source": "The Register",
+            "link": "https://www.theregister.com/systems/2026/10/02/nvidia-debuts-4999-dgx-spark-with-half-the-ram-and-storage-amid-memory-crunch/5300622",
+            "published_kst": "2026-10-02T23:00:00+09:00",
+        }
+        obs = w._extract_dgx_spark_memory_price(item)
+        self.assertIsNotNone(obs)
+        self.assertEqual(obs["sku_128_memory_gb"], 128)
+        self.assertEqual(obs["sku_128_fe_price_usd"], 6950.0)
+        self.assertTrue(obs["memory_supply_cost_pressure"])
+
+    def test_dgx_spark_typed_state_only_alerts_when_tracked_fact_changes(self):
+        same = dict(w.DGX_SPARK_MEMORY_PRICE_BASELINE)
+        self.assertEqual(w._dgx_spark_memory_price_changes(w.DGX_SPARK_MEMORY_PRICE_BASELINE, same), [])
+        moved = dict(same, sku_128_fe_price_usd=7499.0)
+        changes = w._dgx_spark_memory_price_changes(w.DGX_SPARK_MEMORY_PRICE_BASELINE, moved)
+        self.assertTrue(any("128GB Founders Edition" in x and "$6,950→$7,499" in x for x in changes))
+
+    def test_dgx_spark_untrusted_republisher_does_not_promote_typed_state(self):
+        item = {
+            "title": "DGX Spark 64GB now $5,999",
+            "description": "DGX Spark 64GB price increase due to memory shortage.",
+            "source": "Unknown Blog",
+            "link": "https://example.com/dgx-spark",
+            "published_kst": "2026-10-03T09:00:00+09:00",
+        }
+        self.assertTrue(w._is_dgx_spark_memory_price_item(item))
+        self.assertIsNone(w._extract_dgx_spark_memory_price(item))
+
     def test_main_runs_currency_guard_after_output_generation(self):
         with patch.object(w, "collect", return_value=([], [])), \
              patch.object(w, "write_outputs"), \
