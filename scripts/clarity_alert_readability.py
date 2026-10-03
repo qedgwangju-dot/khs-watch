@@ -231,7 +231,11 @@ def confirmed_fact_lines(event, body_ko):
             facts.append("BITH = VS Trust 3x Bitcoin ETF 공식 티커.")
         if "ETHK" in signal:
             facts.append("ETHK = VS Trust 3x Ether ETF 공식 티커.")
-        facts.append("발행사 공식 상품목록 등재는 SEC 상장규칙 승인보다 한 단계 뒤의 상품 출시 신호.")
+        inception = FMT.volatility_launch_inception_dates(event)
+        if inception:
+            facts.append("공식 inception date(설정일) " + " · ".join(dict.fromkeys(inception)) + " 확인.")
+        else:
+            facts.append("발행사 공식 상품목록 등재는 SEC 상장규칙 승인보다 한 단계 뒤의 상품 출시 신호.")
         return facts[:3]
     if FMT.is_sec_3x_crypto_etp_approval(event):
         return [
@@ -262,7 +266,9 @@ def compact_status(event):
     if FMT.is_vs_trust_3x_final_prospectus(event):
         return "🟢 최종 투자설명서 제출 — 출시 준비 진전. 실제 거래개시는 별도 확인."
     if FMT.is_volatility_3x_crypto_launch(event):
-        return "🟢 발행사 상품목록 등재 — 실제 출시 단계 진전. 첫 거래일·AUM·거래대금 확인."
+        if FMT.volatility_launch_inception_dates(event):
+            return "🟢 설정일 확인 — 거래개시 단계 진전. 실제 첫 거래·AUM·거래대금 확인."
+        return "🟢 발행사 상품목록 등재 — 실제 출시 단계 진전. 설정일·첫 거래일 확인."
     if FMT.is_sec_3x_crypto_etp_approval(event):
         return "🟢 상장규칙 승인 — SEC 승인 완료. 실제 거래개시일·초기 AUM은 별도 확인."
     if FMT.is_sec_crypto_custody_2026(event):
@@ -330,6 +336,12 @@ def next_check_lines(event):
             "초기 AUM·거래대금",
         ]
     if FMT.is_volatility_3x_crypto_launch(event):
+        if FMT.volatility_launch_inception_dates(event):
+            return [
+                "Cboe 실제 첫 거래 확인",
+                "첫 5거래일 AUM·거래대금·프리미엄/디스카운트",
+                "CME BTC·ETH 선물 미결제약정·거래량 변화",
+            ]
         return [
             "공식 inception date(설정일)·첫 거래일",
             "첫 5거래일 AUM·거래대금·프리미엄/디스카운트",
