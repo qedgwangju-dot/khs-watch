@@ -675,6 +675,38 @@
           "fact": "2027 HBM 대량 물량 계약 완료, 2026보다 훨씬 높은 가격"
         }
       ]
+    },
+    {
+      "key": "glass_hvm_stage|chemtronics|current",
+      "axis": "glass_hvm_stage",
+      "value": {
+        "stage": "customer_evaluation",
+        "mass_production_target_year": null,
+        "customer": "Samsung Electronics",
+        "product": "glass_interposer",
+        "sample_delivered": true,
+        "evaluation_ongoing": true,
+        "issue_response_ongoing": true,
+        "sample_process": "existing_method",
+        "new_metal_fill_stage": "development",
+        "new_metal_fill_sample_delivered": false,
+        "mass_production_supply_confirmed": false
+      },
+      "unit": "stage,year",
+      "period": "current",
+      "as_of": "2026-10-02",
+      "evidence": "reported",
+      "source_url": "https://dealsite.co.kr/newsflash/170000",
+      "source_title": "딜사이트: 삼성전자, 켐트로닉스 유리 인터포저 샘플 테스트…첨단 패키징 개발 속도",
+      "source": "딜사이트·사용자 제공 본문",
+      "scope": "chemtronics_samsung_glass_interposer_reported_customer_evaluation_not_mass_production",
+      "excerpt": "켐트로닉스가 삼성전자에 기존 방식 유리 인터포저 샘플을 납품했고 평가·이슈 보완이 진행 중이라는 딜사이트 보도. 신규 금속 충진 방식은 아직 고객 샘플 미전달. 고객 실명은 보도 단계이며 평가 통과·정식 발주·양산 공급은 미확정.",
+      "official_background_sources": [
+        "https://kind.krx.co.kr/external/2026/05/15/001375/20260515002994/11013.htm",
+        "https://kind.krx.co.kr/external/2026/03/26/002516/20260317001410/72101.htm",
+        "https://semiconductor.samsung.com/kr/technologies/package/"
+      ],
+      "prior_reported_milestone_source": "https://www.sedaily.com/NewsView/2GQ5I9X52M/GD01"
     }
   ],
   "user_capture": {

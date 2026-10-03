@@ -70,6 +70,77 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         self.assertEqual(h["value"]["stage"], "customer_evaluation")
         self.assertEqual(h["value"]["mass_production_target_year"], 2027)
 
+    def test_chemtronics_samsung_sample_is_customer_evaluation_not_mass_production(self):
+        body = (
+            "켐트로닉스가 삼성전자에 유리 인터포저 샘플을 납품했다. "
+            "현재 해당 샘플에 대한 평가가 이어지고 있으며 샘플에 이슈가 있으면 대응·보완하고 있다. "
+            "삼성전자에 이미 납품한 유리 인터포저 샘플은 기존 방식으로 제작한 제품이다. "
+            "새롭게 개발하고 있는 금속 충진 방식은 아직 고객사에 샘플이 나가지는 않았다."
+        )
+        rows = w.parse_glass_substrate_records(
+            self.item("https://dealsite.co.kr/newsflash/170000", "딜사이트", "2026-10-02T10:00:00+09:00"),
+            body,
+        )
+        rec = next(x for x in rows if x["axis"] == "glass_hvm_stage")
+        self.assertEqual(rec["key"], "glass_hvm_stage|chemtronics|current")
+        self.assertEqual(rec["value"]["stage"], "customer_evaluation")
+        self.assertEqual(rec["value"]["customer"], "Samsung Electronics")
+        self.assertEqual(rec["value"]["product"], "glass_interposer")
+        self.assertTrue(rec["value"]["sample_delivered"])
+        self.assertTrue(rec["value"]["evaluation_ongoing"])
+        self.assertTrue(rec["value"]["issue_response_ongoing"])
+        self.assertEqual(rec["value"]["sample_process"], "existing_method")
+        self.assertEqual(rec["value"]["new_metal_fill_stage"], "development")
+        self.assertFalse(rec["value"]["new_metal_fill_sample_delivered"])
+        self.assertFalse(rec["value"]["mass_production_supply_confirmed"])
+
+    def test_chemtronics_future_stage_and_new_fill_sample_alert(self):
+        old = {
+            "axis":"glass_hvm_stage",
+            "value":{
+                "stage":"customer_evaluation",
+                "customer":"Samsung Electronics",
+                "sample_delivered":True,
+                "new_metal_fill_stage":"development",
+                "new_metal_fill_sample_delivered":False,
+                "mass_production_supply_confirmed":False,
+            },
+        }
+        new = {
+            "axis":"glass_hvm_stage",
+            "value":{
+                "stage":"po_signed",
+                "customer":"Samsung Electronics",
+                "sample_delivered":True,
+                "new_metal_fill_stage":"customer_sample",
+                "new_metal_fill_sample_delivered":True,
+                "mass_production_supply_confirmed":False,
+            },
+        }
+        reasons = w.comparison(old,new)
+        self.assertTrue(any("customer_evaluation→po_signed" in x for x in reasons))
+        self.assertTrue(any("신규 금속 충진 샘플 고객 전달" in x for x in reasons))
+
+    def test_render_chemtronics_customer_is_reported_not_contract(self):
+        rec = {
+            "key":"glass_hvm_stage|chemtronics|current",
+            "axis":"glass_hvm_stage",
+            "value":{
+                "stage":"customer_evaluation","mass_production_target_year":None,
+                "customer":"Samsung Electronics","product":"glass_interposer",
+                "sample_delivered":True,"evaluation_ongoing":True,"issue_response_ongoing":True,
+                "sample_process":"existing_method","new_metal_fill_stage":"development",
+                "new_metal_fill_sample_delivered":False,"mass_production_supply_confirmed":False
+            },
+            "unit":"stage,year","period":"current","as_of":"2026-10-02","evidence":"reported",
+            "source_url":"https://dealsite.co.kr/newsflash/170000",
+            "source_title":"삼성전자, 켐트로닉스 유리 인터포저 샘플 테스트",
+        }
+        out = w.render({"record":rec,"old":None,"reasons":["기준선"]})
+        self.assertIn("고객 Samsung Electronics", out)
+        self.assertIn("확정 공급계약·양산매출로 승격하지 않습니다", out)
+        self.assertIn("신규 금속 충진 방식", out)
+
     def test_yield_crossing_90_alerts(self):
         old = {"axis":"glass_panel_yield","value":{"yield_pct":88.0}}
         new = {"axis":"glass_panel_yield","value":{"yield_pct":92.0}}

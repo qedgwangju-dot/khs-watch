@@ -19,7 +19,7 @@ VERSION = 1
 FOUNDRY_TRACK_VERSION = 1
 FOUNDRY_RECOVERY_TRACK_VERSION = 1
 FOUNDRY_PRICING_RANGE_TRACK_VERSION = 1
-GLASS_SUBSTRATE_TRACK_VERSION = 1
+GLASS_SUBSTRATE_TRACK_VERSION = 2
 HBM_GENERATION_PRICE_TRACK_VERSION = 1
 MARKET_PRICING_TRACK_VERSION = 1
 EXTRA_QUERIES = [
@@ -39,7 +39,7 @@ EXTRA_QUERIES = [
     '(Samsung OR 삼성) Taylor foundry (mass production OR production OR 2027 OR customer OR contract OR negotiation)',
     '("510x515" OR "510×515" OR "515x510" OR "515×510") (glass substrate OR glass core OR TGV OR 유리기판 OR 유리 기판) (TSMC OR CoPoS OR Corning OR AGC OR NEG OR SCHOTT)',
     '(TSMC OR CoPoS) (glass core OR glass substrate OR 유리기판) (310x310 OR 510x515 OR 2030 OR pilot OR mass production OR 양산)',
-    '(Philoptics OR 필옵틱스 OR JNTC OR Absolics OR GlaSSEM OR 삼성전기) (TGV OR glass substrate OR 유리기판) (yield OR 수율 OR purchase order OR PO OR 양산 OR pilot OR 고객 검증)',
+    '(Philoptics OR 필옵틱스 OR JNTC OR Absolics OR GlaSSEM OR 삼성전기 OR Chemtronics OR 켐트로닉스) (TGV OR glass substrate OR glass interposer OR 유리기판 OR 유리 인터포저) (yield OR 수율 OR sample OR 샘플 OR customer evaluation OR 고객 평가 OR 고객 검증 OR purchase order OR PO OR 양산 OR pilot OR 삼성전자 OR Samsung)',
     '(SemiAnalysis OR TrendForce OR Micron OR Citi OR JPMorgan OR "J.P. Morgan" OR BofA) 2027 (HBM3E OR HBM4 OR HBM4E) (price OR pricing OR ASP OR "$/Gb" OR "per Gb" OR 가격)',
     '"HBM3E" "HBM4" "HBM4E" 2027 (price OR ASP OR "$/Gb")',
 ]
@@ -47,7 +47,9 @@ COMPANIES = {'samsung': r'삼성(?:전자)?|Samsung(?: Electronics)?',
              'skhynix': r'SK\s?하이닉스|SK\s*hynix', 'micron': r'마이크론|Micron'}
 OFFICIAL = {'news.samsung.com': 'samsung', 'semiconductor.samsung.com': 'samsung',
             'news.skhynix.com': 'skhynix', 'investors.micron.com': 'micron', 'micron.com': 'micron',
-            'nvidianews.nvidia.com': 'nvidia', 'developer.nvidia.com': 'nvidia'}
+            'nvidianews.nvidia.com': 'nvidia', 'developer.nvidia.com': 'nvidia',
+            'chemtronics.co.kr': 'chemtronics', 'www.chemtronics.co.kr': 'chemtronics',
+            'kind.krx.co.kr': 'krx'}
 RANK = {'user_capture': 0, 'reported': 1, 'research': 2, 'official': 3}
 POSTPROCESS_ENTITIES = {
     'tsmc': (r'\bTSMC\b', r'대만적체전로'),
@@ -202,7 +204,7 @@ def is_axis_text(text):
         r'(?:삼성|Samsung).*(?:Taylor|테일러).*(?:foundry|파운드리|mass\s*production|양산|customer|contract|수주|negotiation|협상)|'
         r'(?:510\s*[x×]\s*515|515\s*[x×]\s*510).*(?:glass\s*(?:substrate|core|panel)|TGV|유리\s*기판)|'
         r'(?:TSMC|CoPoS).*(?:glass\s*(?:substrate|core)|유리\s*기판).*(?:310\s*[x×]\s*310|510\s*[x×]\s*515|2030|pilot|mass\s*production|양산)|'
-        r'(?:Philoptics|필옵틱스|JNTC|Absolics|GlaSSEM|삼성전기).*(?:TGV|glass\s*(?:substrate|core)|유리\s*기판).*(?:yield|수율|purchase\s*order|\bPO\b|pilot|mass\s*production|양산|검증)|'
+        r'(?:Philoptics|필옵틱스|JNTC|Absolics|GlaSSEM|삼성전기|Chemtronics|켐트로닉스).*(?:TGV|glass\s*(?:substrate|core|interposer)|유리\s*(?:기판|인터포저)).*(?:yield|수율|sample|샘플|customer\s*(?:evaluation|validation)|고객\s*(?:평가|검증)|purchase\s*order|\bPO\b|pilot|mass\s*production|양산|검증|Samsung|삼성전자)|'
         r'(?:SemiAnalysis|TrendForce|Micron|Citi|J[.]?P[.]?\s*Morgan|BofA).*(?:2027|27E).*(?:HBM3E|HBM4|HBM4E).*(?:price|pricing|ASP|\$/Gb|per\s+Gb|가격)',
         text, re.I))
 
@@ -1029,6 +1031,7 @@ def _glass_entity(text):
         ('absolics', (r'Absolics', r'앱솔릭스')),
         ('glassem', (r'GlaSSEM', r'글라스셈')),
         ('samsung_electromechanics', (r'Samsung\s+Electro[- ]?Mechanics', r'삼성전기')),
+        ('chemtronics', (r'Chemtronics', r'켐트로닉스')),
     )
     found = [name for name, pats in pairs if any(re.search(p, text, re.I) for p in pats)]
     return found[0] if len(found) == 1 else ''
@@ -1037,7 +1040,7 @@ def _glass_entity(text):
 def parse_glass_substrate_records(item, body):
     text = re.sub(r'\s+', ' ', body or '')
     low = text.lower()
-    if not re.search(r'glass\s*(?:substrate|core|panel)|through[- ]?glass\s+via|\bTGV\b|유리\s*기판|글라스\s*코어', text, re.I):
+    if not re.search(r'glass\s*(?:substrate|core|panel|interposer)|through[- ]?glass\s+via|\bTGV\b|유리\s*(?:기판|인터포저)|글라스\s*코어', text, re.I):
         return []
     asof = (item.get('published_at_kst') or '')[:10]
     rows = []
@@ -1131,12 +1134,27 @@ def parse_glass_substrate_records(item, body):
         if tm:
             target_year = int(tm.group(1) or tm.group(2))
         if stage or target_year:
+            value = {'stage':stage or 'customer_evaluation','mass_production_target_year':target_year}
+            scope = 'stage_transition_customer_evaluation_to_hvm'
+            if entity == 'chemtronics' and re.search(r'(?:삼성전자|Samsung(?: Electronics)?)', text, re.I):
+                value.update({
+                    'customer': 'Samsung Electronics',
+                    'product': 'glass_interposer',
+                    'sample_delivered': bool(re.search(r'(?:샘플)[^.]{0,40}?(?:납품|공급|전달)|(?:sample)[^.]{0,50}?(?:delivered|supplied|shipped)', text, re.I)),
+                    'evaluation_ongoing': bool(re.search(r'(?:평가|검증)[^.]{0,40}?(?:이어|진행|계속)|(?:evaluation|validation)[^.]{0,50}?(?:ongoing|continues?|underway)', text, re.I)),
+                    'issue_response_ongoing': bool(re.search(r'(?:이슈|문제)[^.]{0,50}?(?:대응|보완)|(?:issue|problem)[^.]{0,50}?(?:address|remediat|respond|fix)', text, re.I)),
+                    'sample_process': 'existing_method' if re.search(r'(?:기존\s*방식|existing\s+(?:method|process))', text, re.I) else None,
+                    'new_metal_fill_stage': 'development' if re.search(r'(?:새롭게|신규|new)[^.]{0,80}?(?:금속\s*충진|metal\s*fill)', text, re.I) else None,
+                    'new_metal_fill_sample_delivered': False if re.search(r'(?:새롭게|신규|new)[^.]{0,100}?(?:금속\s*충진|metal\s*fill)[^.]{0,120}?(?:샘플)[^.]{0,60}?(?:나가지는\s*않|미공급|아직\s*.*않)|(?:new)[^.]{0,100}?(?:metal\s*fill)[^.]{0,120}?(?:sample)[^.]{0,60}?(?:not\s+(?:yet\s+)?(?:delivered|shipped|supplied))', text, re.I) else None,
+                    'mass_production_supply_confirmed': bool(re.search(r'(?:양산\s*(?:공급|계약)\s*(?:확정|체결)|mass\s*production\s+supply\s+(?:confirmed|contracted))', text, re.I)),
+                })
+                scope = 'chemtronics_samsung_glass_interposer_reported_customer_evaluation_not_mass_production'
             rows.append(make_record(
                 'glass_hvm_stage', [entity,'current'],
-                {'stage':stage or 'customer_evaluation','mass_production_target_year':target_year},
+                value,
                 'stage,year', 'current', item,
-                '유리기판 고객검증·장비발주·파일럿·양산 단계',
-                as_of=asof, scope='stage_transition_customer_evaluation_to_hvm'))
+                '유리기판·유리 인터포저 고객검증·장비발주·파일럿·양산 단계',
+                as_of=asof, scope=scope))
 
     return rows
 
@@ -1376,6 +1394,22 @@ def comparison(old, new):
             reasons.append(f"양산 목표 {int(av)}→{int(bv)}년")
         elif av is None and bv is not None:
             reasons.append(f"양산 목표 {int(bv)}년 신규 확인")
+        for field, label in (
+            ('sample_delivered','고객 샘플 납품'),
+            ('evaluation_ongoing','고객 평가 진행'),
+            ('issue_response_ongoing','평가 이슈 보완 대응'),
+            ('mass_production_supply_confirmed','양산 공급 확정'),
+        ):
+            if a.get(field) != b.get(field) and b.get(field) is not None:
+                reasons.append(label + (' 확인' if b.get(field) else ' 해소·철회'))
+        if a.get('customer') != b.get('customer') and b.get('customer'):
+            reasons.append(f"고객 실명 {a.get('customer') or '미확인'}→{b.get('customer')}")
+        if a.get('sample_process') != b.get('sample_process') and b.get('sample_process'):
+            reasons.append(f"샘플 공정 {a.get('sample_process') or '미확인'}→{b.get('sample_process')}")
+        if a.get('new_metal_fill_stage') != b.get('new_metal_fill_stage') and b.get('new_metal_fill_stage'):
+            reasons.append(f"신규 금속 충진 공정 {a.get('new_metal_fill_stage') or '미확인'}→{b.get('new_metal_fill_stage')}")
+        if a.get('new_metal_fill_sample_delivered') != b.get('new_metal_fill_sample_delivered') and b.get('new_metal_fill_sample_delivered') is not None:
+            reasons.append('신규 금속 충진 샘플 고객 전달' if b.get('new_metal_fill_sample_delivered') else '신규 금속 충진 샘플 미전달 확인')
         return reasons
     if new['axis'] == 'foundry_loss_outlook':
         reasons = []
@@ -1730,6 +1764,14 @@ def render(change, rate=None):
         if record['axis'] == 'glass_hvm_stage':
             labels = {'sample':'샘플','customer_evaluation':'고객 검증','po_pending':'정식 발주 대기','po_signed':'정식 수주','pilot':'파일럿','mass_production':'양산'}
             text = labels.get(v.get('stage'),v.get('stage',''))
+            if v.get('customer'):
+                text += f" / 고객 {v['customer']}"
+            if v.get('product') == 'glass_interposer':
+                text += " / 유리 인터포저"
+            if v.get('sample_delivered'):
+                text += " / 샘플 납품 확인"
+            if v.get('evaluation_ongoing'):
+                text += " / 평가 진행"
             if v.get('mass_production_target_year'):
                 text += f" / 양산 목표 {int(v['mass_production_target_year'])}년"
             return text
@@ -1887,6 +1929,16 @@ def render(change, rate=None):
         lines.append('• ±5%p 또는 85%·90% 기준선 돌파/이탈 시 재알림합니다.')
     if r['axis'] == 'glass_hvm_stage':
         lines.append('• 샘플→고객 검증→정식 발주 대기→정식 수주→파일럿→양산을 구분하며 기사상 기대감을 양산매출로 승격하지 않습니다.')
+        v = r['value']
+        if v.get('customer') == 'Samsung Electronics':
+            lines.append('• 고객 실명 삼성전자는 딜사이트 보도 단계로 저장합니다. 켐트로닉스·삼성전자 공식 공시 전에는 확정 공급계약·양산매출로 승격하지 않습니다.')
+        if v.get('sample_process') == 'existing_method':
+            lines.append('• 현재 삼성전자에 전달된 샘플은 보도상 기존 방식 제품입니다.')
+        if v.get('new_metal_fill_stage'):
+            status = '고객 샘플 전달' if v.get('new_metal_fill_sample_delivered') else '아직 고객 샘플 미전달'
+            lines.append(f"• 신규 금속 충진 방식: {v.get('new_metal_fill_stage')} · {status}")
+        if v.get('issue_response_ongoing'):
+            lines.append('• 현재는 평가 중 이슈 보완 대응 단계이며 평가 통과·정식 발주·양산 시점은 아직 확정되지 않았습니다.')
     if r['axis'] == 'foundry_loss_outlook':
         lines.append('• 주의: 파운드리 단독 손익이 아니라 파운드리+System LSI 합산 증권사 전망입니다. 회사 확정 실적과 분리합니다.')
         lines.append('• 2026E 손실 ±0.5조원 또는 10% 이상, 3Q26E ±0.2조원 또는 10% 이상, 손실 축소율 ±5%p 이상을 재알림합니다.')
@@ -1978,8 +2030,8 @@ def main():
             and any(k in text for k in ('$/gb','per gb','price','pricing','asp','가격'))
         )
         structured_glass = (
-            any(k in text for k in ('glass substrate','glass core','glass panel','tgv','유리기판','유리 기판','글라스 코어'))
-            and any(k in text for k in ('510x515','510×515','515x510','515×510','copos','yield','수율','purchase order','po ','pilot','양산'))
+            any(k in text for k in ('glass substrate','glass core','glass panel','glass interposer','tgv','유리기판','유리 기판','유리 인터포저','글라스 코어'))
+            and any(k in text for k in ('510x515','510×515','515x510','515×510','copos','yield','수율','sample','샘플','customer evaluation','customer validation','고객 평가','고객 검증','purchase order','po ','pilot','양산','samsung','삼성전자'))
         )
         structured_foundry_recovery = (
             ('samsung' in text or '삼성' in text)
@@ -2016,7 +2068,8 @@ def main():
         '머니투데이', 'moneytoday', 'mt.co.kr', '한국경제tv', 'wowtv', 'v.daum.net',
         'digitimes', 'semianalysis', 'newsletter.semianalysis', 'corning', 'agc', 'nippon electric glass', 'schott',
         'philoptics', '필옵틱스', 'jntc', '제이앤티씨', 'absolics', '앱솔릭스',
-        'samsung electro-mechanics', '삼성전기', 'edaily', '이데일리'
+        'samsung electro-mechanics', '삼성전기', 'edaily', '이데일리',
+        'dealsite', '딜사이트', 'chemtronics', '켐트로닉스', 'kind.krx.co.kr'
     )
     legacy.relevant = lambda text: original_relevant(text) or is_axis_text(text)
     observed, coverage = [], []
@@ -2123,7 +2176,7 @@ def main():
             blocks.extend(render(state['pending'][key], rate) for key in foundry)
             sections.append('\n\n'.join(blocks))
         if glass:
-            blocks = ['<b>유리기판 510×515mm 표준·HVM 전환 감시</b>']
+            blocks = ['<b>유리기판·유리 인터포저 고객검증·HVM 전환 감시</b>']
             blocks.extend(render(state['pending'][key], rate) for key in glass)
             sections.append('\n\n'.join(blocks))
         if generation_price:
