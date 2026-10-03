@@ -22,6 +22,7 @@ jobs:
     timeout-minutes: 12
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs8879887988798879_bot"
+      DRY_RUN: ${{ github.event_name == 'push' && 'true' || 'false' }}
 
     steps:
       - name: Checkout
@@ -95,7 +96,7 @@ jobs:
           fi
 
       - name: Send verified Hormuz alert to dedicated bot
-        if: hashFiles('out/hormuz_maritime_watch_telegram.txt') != ''
+        if: env.DRY_RUN != 'true' && hashFiles('out/hormuz_maritime_watch_telegram.txt') != ''
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.GLOBAL_RATES_TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.GLOBAL_RATES_TELEGRAM_CHAT_ID }}
@@ -184,7 +185,7 @@ jobs:
           PY
 
       - name: Persist baseline or confirmed state
-        if: always()
+        if: always() && env.DRY_RUN != 'true'
         run: |
           if [ -f out/hormuz_maritime_watch_pending_state.json ]; then
             if [ ! -f out/hormuz_maritime_watch_telegram.txt ] || [ -f out/hormuz_maritime_watch_telegram_confirmed.json ]; then
@@ -196,7 +197,7 @@ jobs:
           fi
 
       - name: Commit watcher state safely
-        if: always() && github.ref == 'refs/heads/main'
+        if: always() && env.DRY_RUN != 'true' && github.ref == 'refs/heads/main'
         run: |
           if [ ! -f data/hormuz_maritime_watch_state.json ]; then
             echo "No Hormuz state to persist"
