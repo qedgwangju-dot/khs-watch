@@ -2159,14 +2159,12 @@ def _hbm4_price_multiple(text: str) -> float | None:
     reject_words = ("zhbm", "성능", "전력효율", "전력 효율", "대역폭", "performance", "energy efficiency", "bandwidth")
 
     patterns = (
-        # Headline/reference phrasing: "HBM4 가격 3배 높인다"
-        r"(?:hbm4)[^.]{0,80}?(?:가격|판매가|공급가|price|pricing)[^.]{0,60}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,35}?(?:높|인상|올리|higher|premium)?",
-        # Body: "HBM4 ... HBM3E 대비 3배 이상 높게"
-        r"(?:hbm4)[^.]{0,120}?(?:가격|판매가|공급가|price|pricing)[^.]{0,120}?(?:hbm3e)[^.]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,45}?(?:높|비싸|higher|premium)",
-        # Body: "현재 주력 HBM3E 가격 ... 3배 이상 높은 수준"
-        r"(?:hbm3e)[^.]{0,200}?(?:가격|판매가|공급가|price|pricing)[^.]{0,160}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,45}?(?:높|비싸|higher|premium)",
-        # Generic price clause with HBM3E comparison in the same sentence.
-        r"(?:가격|판매가|공급가|price|pricing)[^.]{0,120}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,100}?(?:hbm3e)",
+        # Segments are already sentence-scoped; use "." so decimal prices such
+        # as HBM3E $1.5/Gb do not break the matcher before "3배 이상".
+        r"(?:hbm4).{0,80}?(?:가격|판매가|공급가|price|pricing).{0,60}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?.{0,35}?(?:높|인상|올리|higher|premium)?",
+        r"(?:hbm4).{0,120}?(?:가격|판매가|공급가|price|pricing).{0,120}?(?:hbm3e).{0,80}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?.{0,45}?(?:높|비싸|higher|premium)",
+        r"(?:hbm3e).{0,200}?(?:가격|판매가|공급가|price|pricing).{0,160}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?.{0,45}?(?:높|비싸|higher|premium)",
+        r"(?:가격|판매가|공급가|price|pricing).{0,120}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?.{0,100}?(?:hbm3e)",
     )
 
     for segment in segments:
