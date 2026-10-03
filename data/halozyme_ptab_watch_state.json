@@ -4,6 +4,8 @@
     "0ee5b69fd526297010d7ee4d",
     "11f48eb8a2b96c1b3845fd02",
     "1f3df1ee0ac6a5946bcc3248",
+    "36c8dc198c272bbeb5f0df2f",
+    "397fd23021765b9ec6fe83a7",
     "45b9cab6011a827c780922af",
     "4fee83ae2ca90b01db9bb45b",
     "96bda5ef87c6602628dfaca6",
@@ -16,9 +18,11 @@
   ],
   "seen_urls": [
     "http://the-biz.co.kr/news/articleView.html?idxno=728392",
-    "http://the-biz.co.kr/news/articleView.html?idxno=728392#pgr2025-00039"
+    "http://the-biz.co.kr/news/articleView.html?idxno=728392#pgr2025-00039",
+    "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557766",
+    "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557959"
   ],
-  "last_check_kst": "2026-10-03T22:43:34+09:00",
+  "last_check_kst": "2026-10-03T23:42:58+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -63,7 +67,9 @@
   "discovered_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00033": "12,049,652",
-    "PGR2025-00039": "12,104,185"
+    "PGR2025-00039": "12,104,185",
+    "PGR2025-00052": "12,264,345",
+    "PGR2025-00046": "12,091,692"
   },
   "district_case": "2:25-cv-03179",
   "legal_v3_initialized": true,
@@ -75,15 +81,18 @@
   "legal_v4_initialized": true,
   "search_mode": "개별 사건번호 + 미국/한국 뉴스 + Bing 웹",
   "last_sent_message_ids": [
-    115
+    117,
+    118,
+    119
   ],
   "final_decision_classification_version": 2,
   "seen_portfolio_updates": [
     "38543e8786807a5007ba4efd",
-    "43ef08da585744f361858416"
+    "43ef08da585744f361858416",
+    "8a5bb96672d580e8ab93df46"
   ],
   "last_portfolio_message_ids": [
-    115
+    119
   ],
   "case_event_timelines": {
     "PGR2025-00033": [
@@ -96,6 +105,11 @@
         "date": "2025-10-01",
         "kind": "",
         "label": "심판 개시"
+      },
+      {
+        "date": "2026-07-23",
+        "kind": "",
+        "label": "공동 구술심리"
       },
       {
         "date": "2026-09-25",
@@ -115,7 +129,56 @@
         "label": "심판 개시"
       },
       {
+        "date": "2026-07-23",
+        "kind": "",
+        "label": "공동 구술심리"
+      },
+      {
         "date": "2026-09-25",
+        "kind": "",
+        "label": "최종서면결정"
+      }
+    ],
+    "PGR2025-00046": [
+      {
+        "date": "2025-04-29",
+        "kind": "",
+        "label": "PGR 청구"
+      },
+      {
+        "date": "2025-10-10",
+        "kind": "",
+        "label": "심판 개시"
+      },
+      {
+        "date": "2026-07-23",
+        "kind": "",
+        "label": "공동 구술심리"
+      },
+      {
+        "date": "2026-10-02",
+        "kind": "",
+        "label": "최종서면결정"
+      }
+    ],
+    "PGR2025-00052": [
+      {
+        "date": "2025-06-27",
+        "kind": "",
+        "label": "PGR 청구"
+      },
+      {
+        "date": "2025-10-16",
+        "kind": "",
+        "label": "심판 개시"
+      },
+      {
+        "date": "2026-07-23",
+        "kind": "",
+        "label": "공동 구술심리"
+      },
+      {
+        "date": "2026-10-01",
         "kind": "",
         "label": "최종서면결정"
       }
