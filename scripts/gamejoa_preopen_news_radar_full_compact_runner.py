@@ -2302,6 +2302,11 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         return ""
     focus = market_materiality.focus_kind(title)
     source = " ".join(sentences)
+    if focus == "retail_fuel":
+        observation = market_materiality.retail_fuel_observation(title, "\n".join(sentences))
+        if observation:
+            return (f"{observation['period']} 전국 {observation['product']} 평균 판매가격은 L당 {observation['price']}원으로 "
+                    f"전주보다 {observation['change']}원 {observation['direction']}했다.")
     if focus == "ownership" and "자산" in title and "인수" in title:
         for sentence in sentences:
             issuer = re.match(r"^([A-Za-z0-9가-힣&·]+(?:\s+[A-Za-z0-9가-힣&·]+){0,4})\s*(?:\([A-Za-z0-9.-]+\))?(?:은|는|이|가)\s+", sentence)
@@ -6599,6 +6604,10 @@ def build_hyperscaler_ai_capex_alert(row: dict, now, text: str) -> dict | None:
     title = str(row.get("source_title") or row.get("title") or "")
     title_text = title.lower()
     companies = ("아마존", "amazon", "aws", "마이크로소프트", "microsoft", "구글", "alphabet", "메타", "oracle", "오라클", "앤트로픽", "anthropic")
+    if not (re.search(r"설비투자|capex|자본지출|투자|매출|실적|가이던스|클라우드.{0,12}성장", title_text)
+            and (any(company in title_text for company in companies)
+                 or re.search(r"빅테크|하이퍼스케일러|\bai\b|인공지능|클라우드", title_text))):
+        return None
     if not (
         any(company in text for company in companies)
         and any(term in text for term in ("ai", "인공지능", "데이터센터", "클라우드", "aws"))
@@ -7801,6 +7810,9 @@ def sanctions_exemption_event_theme(alert: dict) -> str:
 
 
 def semantic_event_theme(alert: dict) -> str:
+    source_identity = market_materiality.source_event_identity(alert)
+    if source_identity:
+        return source_identity
     exemption_theme = sanctions_exemption_event_theme(alert)
     if exemption_theme:
         return exemption_theme
@@ -8894,6 +8906,9 @@ def normalize_alert_for_output(alert: dict) -> dict:
     exemption_theme = sanctions_exemption_event_theme(out)
     if exemption_theme:
         out["supply_chain_theme"] = exemption_theme
+    source_identity = market_materiality.source_event_identity(out)
+    if source_identity:
+        out["supply_chain_theme"] = source_identity
     if not out.get("supply_chain_theme"):
         inferred_theme = semantic_event_theme(out)
         if inferred_theme:

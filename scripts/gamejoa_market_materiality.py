@@ -8,7 +8,7 @@ import datetime as dt
 from functools import lru_cache
 
 
-VERSION = 49
+VERSION = 50
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -119,6 +119,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("export_results", r"수출(?:액|실적|량)|수출.{0,20}(?:\d위|역대|최대|최저|증가|감소)", r"수출(?:액|실적|량)|수출.{0,45}(?:\d|최대|최저)"),
     ("project_cost", r"(?:LNG|원전|데이터센터|발전소|공장).{0,20}(?:사업비|건설비|사업\s*비용)", r"(?:LNG|원전|데이터센터|발전소|공장).{0,40}(?:사업비|건설비|비용)"),
     ("breadth", r"(?:상승|하락)\s*종목|순환매|쏠림|(?:S&P500|코스피|코스닥|나스닥).{0,30}종목.{0,20}%.{0,15}(?:하락|상승)", r"(?:오른|내린|상승|하락)\s*종목|종목.{0,20}%.{0,15}(?:하락|상승)|순환매|쏠림|순매수|순매도|자금.{0,12}이동"),
+    ("retail_fuel", r"주유소.{0,30}(?:기름값|휘발유|경유)|(?:휘발유|경유).{0,15}(?:L당|리터당)", r"(?:휘발유|경유).{0,55}(?:L|리터)(?:\(L\))?\s*당\s*\d[\d,.]*원"),
     ("energy_supply", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|\bbrent\b|\boil\b|hormuz|tanker", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|항행|통항|brent|\boil\b|hormuz|tanker|shipping"),
     ("bond_yield", r"금리|국채.{0,8}(?:투매|수익률)|bond yields|treasury yields", r"금리|국채.{0,8}수익률|bond yields|treasury yields|interest rates"),
     ("fx", r"환율|약달러|강달러|달러화|원[·/]달러|달러[·/]원|\bndf\b|exchange rate", r"환율|달러화|달러[·/]원|원[·/]달러|\bndf\b|exchange rate|dollar"),
@@ -275,6 +276,10 @@ def focus_matches(title: str, sentence: str) -> bool:
     if kind == "mortgage_rate":
         return bool(re.search(r"주담대|모기지|주택담보대출|mortgage", sentence, re.I)
                     and re.search(r"금리|rate", sentence, re.I))
+    if kind == "retail_fuel":
+        product = "휘발유" if "휘발유" in title else "경유" if "경유" in title else ""
+        return bool((not product or product in sentence)
+                    and re.search(r"(?:휘발유|경유).{0,55}(?:L|리터)(?:\(L\))?\s*당\s*\d[\d,.]*원", sentence))
     if kind == "fx" and re.search(r"\bndf\b", title, re.I):
         return bool(re.search(r"\bndf\b|차액결제선물환|역외환율", sentence, re.I))
     if kind == "energy_supply" and re.search(r"브렌트|\bbrent\b", title, re.I):
@@ -375,6 +380,58 @@ def us_equity_close_identity(alert: dict) -> str:
         return ""
 
 
+def market_breadth_identity(alert: dict) -> str:
+    """Use the measured index population, month and breadth, not AI sector tags."""
+    title = str(alert.get("source_title") or alert.get("news") or "")
+    body = str(alert.get("source_body") or "") if alert.get("body_verified") else ""
+    if focus_kind(title) != "breadth" or not body:
+        return ""
+    measures = re.finditer(
+        r"(S&P\s*500|코스피|코스닥|나스닥(?:100)?)(?:\s*(?:지수|구성|전체))?\s*"
+        r"(?:구성\s*)?종목(?:의|\s*중)?\s*(?:약\s*)?(\d+(?:\.\d+)?)%\s*(?:는|가|이|은)?\s*(하락|상승)", body,
+    )
+    try:
+        published = dt.datetime.fromisoformat(str(alert.get("published") or "").replace("Z", "+00:00"))
+        if not published.tzinfo:
+            return ""
+        published = published.astimezone(dt.timezone(dt.timedelta(hours=9)))
+        identities = set()
+        for measure in measures:
+            if not 0 <= float(measure.group(2)) <= 100:
+                continue
+            context = body[max(0, measure.start() - 220):measure.end()]
+            periods = list(re.finditer(r"(?:(\d{4})년\s*)?(\d{1,2})월", context))
+            if not periods:
+                continue
+            period = periods[-1]
+            month = int(period.group(2))
+            year = int(period.group(1)) if period.group(1) else published.year - (month > published.month)
+            dt.date(year, month, 1)
+            index = re.sub(r"\s+", "", measure.group(1)).lower()
+            direction = "down" if measure.group(3) == "하락" else "up"
+            identities.add(f"source_event:v1:market_breadth:{index}:{year}-{month:02d}:{direction}_share={float(measure.group(2)):.12g}")
+        return identities.pop() if len(identities) == 1 else ""
+    except (TypeError, ValueError):
+        return ""
+
+
+def retail_fuel_observation(title: str, body: str) -> dict:
+    """Extract the headline product's observed weekly price and comparison."""
+    if focus_kind(title) != "retail_fuel":
+        return {}
+    for sentence in source_sentences(body):
+        if not focus_matches(title, sentence):
+            continue
+        price = re.search(r"(휘발유|경유)\s*(?:평균\s*)?(?:판매)?가격은?\s*(?:리터(?:\(L\))?|L)\s*당\s*(\d[\d,.]*)원", sentence)
+        change = re.search(r"전주\s*(?:보다|대비)\s*(?:L\s*당\s*)?(\d[\d,.]*)원\s*(내렸|올랐|하락|상승)", sentence)
+        period = re.search(r"(\d{1,2}월\s*(?:첫째|둘째|셋째|넷째|다섯째|[1-5])\s*주)", sentence)
+        if price and change and period:
+            return {"product": price.group(1), "price": price.group(2), "change": change.group(1),
+                    "direction": "하락" if change.group(2) in {"내렸", "하락"} else "상승",
+                    "period": period.group(1), "source_excerpt": sentence}
+    return {}
+
+
 def source_event_identity(alert: dict) -> str:
     """Identify a sourced action and its terms, not a company-wide theme.
 
@@ -384,6 +441,9 @@ def source_event_identity(alert: dict) -> str:
     close = us_equity_close_identity(alert)
     if close:
         return close
+    breadth = market_breadth_identity(alert)
+    if breadth:
+        return breadth
     title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
     body = str(alert.get("source_body") or "") if alert.get("body_verified") else ""
     kind = focus_kind(title)
@@ -450,7 +510,7 @@ RULES = (
      r"제출|선정|선택|낙찰|철회|탈락|확보|submit|select|award|withdraw"),
     ("selling_price_or_cost", ("earnings",),
      r"판매가격|판매\s*가격|판가|단가|원가|평균판매가격|(?:메모리|HBM|D램|DRAM|낸드|NAND)\s*(?:공급\s*)?가격|\basp\b|selling price|unit price|input cost",
-     r"인상|인하|상승|하락|오르|내리|급등|급락|증가|감소|전가|협상|상향|하향|rais|cut|rise|fall|increas|decreas|negotiat"),
+     r"인상|인하|상승|하락|오르|내리|올랐|내렸|급등|급락|증가|감소|전가|협상|상향|하향|rais|cut|rise|fall|increas|decreas|negotiat"),
     ("project_cost_evaluation", ("earnings",),
      r"(?:LNG|원전|데이터센터|발전소|공장).{0,40}(?:사업비|건설비|사업.{0,15}비용)",
      r"추산|추정|비교|두\s*배|\d+(?:\.\d+)?\s*배|cost estimate|estimated cost"),
@@ -841,6 +901,13 @@ def assess(title: str, body: str) -> dict:
     sentences = source_sentences(body)
     lead = " ".join(sentences[:3])
     headline_lead = f"{title} {lead}"
+    fuel = retail_fuel_observation(title, body)
+    if fuel and "주유소" in title and not re.search(r"규제|유류세|가격상한|최고가격|가격\s*통제", title):
+        price = float(fuel["price"].replace(",", ""))
+        change = float(fuel["change"].replace(",", ""))
+        if price > 0 and change / price < 0.01:
+            result.update(disposition="exclude", priority=0, reason="routine_weekly_retail_fuel_move_below_one_percent")
+            return result
     if focus_kind(title) == "mortgage_rate" and re.search(
         r"(?:\d+(?:\.\d+)?%|금리)[^.!?]{0,15}(?:되면|오르면|빌렸다면|빌리면)|가정", title,
     ) and re.search(r"가정하면|오를\s*경우|오르면|분석이\s*나왔다", lead):

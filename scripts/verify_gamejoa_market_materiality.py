@@ -113,6 +113,111 @@ DELIVERED_LOCAL_ADMINISTRATION = (
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_actual_retail_fuel_core_keeps_product_period_price_and_comparison(self):
+        title = "전국 주유소 기름값 20주 연속 하락…휘발유 L당 1857원"
+        body = ("휘발유 전주보다 0.4원↓…서울 1904원·대구 1829.8원\n"
+                "전국 주유소 기름값이 소폭 내리며 20주 연속 하락세를 이어갔다.\n"
+                "3일 한국석유공사 유가정보시스템 오피넷에 따르면 9월 다섯째 주(9월 27일~10월 1일) "
+                "전국 주유소 휘발유 평균 판매가격은 리터(L)당 1857.6원으로 전주보다 0.4원 내렸다.\n"
+                "전국 주유소의 경유 평균 판매가격도 하락세를 이어갔다.\n"
+                "경유는 전주보다 L당 0.1원 내린 1843.3원을 기록했다.\n"
+                "정부는 석유 최고가격제를 유지하고 있다.")
+        core = radar.detailed_article_core(title, body)
+        self.assertEqual(core, "9월 다섯째 주 전국 휘발유 평균 판매가격은 L당 1857.6원으로 전주보다 0.4원 하락했다.")
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertTrue(materiality.core_focus_aligned(title, core))
+        self.assertFalse(materiality.core_focus_aligned(title, "전국 주유소의 경유 평균 판매가격도 하락세를 이어갔다."))
+        self.assertLessEqual(len(core), 100)
+        assessed = materiality.assess(title, body)
+        self.assertEqual(assessed["reason"], "routine_weekly_retail_fuel_move_below_one_percent", assessed)
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([alert(title, body)], 7), [])
+
+    def test_material_retail_fuel_price_change_is_not_silenced(self):
+        for product, price in (("휘발유", "1957.6"), ("경유", "1943.3")):
+            title = f"전국 주유소 {product} 급등…L당 {price}원"
+            body = f"9월 다섯째 주 전국 주유소 {product} 평균 판매가격은 L당 {price}원으로 전주보다 100원 올랐다."
+            self.assertEqual(materiality.assess(title, body)["disposition"], "keep")
+            core = radar.detailed_article_core(title, body)
+            for fact in (product, price, "100원 상승했다"):
+                self.assertIn(fact, core)
+            self.assertEqual(radar.source_core_fact_errors({**alert(title, body), "telegram_core_fact": core}), [])
+
+    def test_actual_breadth_article_is_not_a_hyperscaler_capex_event(self):
+        title = "고금리·고유가에도 AI주는 웃었다…S&P500 종목 80%는 하락"
+        body = (title + "\n등록 2026.10.03 22:00:00 수정 2026.10.03 23:34:24\n"
+                "지난 9월 기술주 중심의 나스닥100지수는 3% 올랐지만, S&P500 구성 종목의 약 80%는 하락했다.\n"
+                "종목별 평균 하락률은 5%에 달했다.\n"
+                "AI 투자에 자금이 몰렸다. 메타와 알파벳이 상승했다. 미국 국채금리는 4.7%에서 5.3%로 뛰었다.")
+        item = {**alert(title, body), "link": "https://www.newsis.com/view/NISX20261003_0003813673",
+                "published": "2026-10-03T23:34:24+09:00", "supply_chain_theme": "hyperscaler_ai_capex:2026-10-03"}
+        identity = materiality.source_event_identity(item)
+        self.assertEqual(identity, "source_event:v1:market_breadth:s&p500:2026-09:down_share=80")
+        canonical = radar.normalize_alert_for_output(item)
+        self.assertEqual(canonical["supply_chain_theme"], identity)
+        self.assertEqual(radar.alert_dedup_key(item), (identity, "event"))
+        row = {**item, "title": title, "published": NOW, "source": "뉴시스"}
+        self.assertIsNone(radar.build_hyperscaler_ai_capex_alert(row, NOW, body.lower()))
+        built = radar.build_verified_korean_business_alert(row, NOW)
+        self.assertIsNotNone(built)
+        self.assertEqual(materiality.focus_kind(built["source_title"]), "breadth")
+        self.assertNotEqual(built.get("korean_business_kind"), "hyperscaler_ai_capex")
+        self.assertTrue(materiality.core_focus_aligned(title, radar.verified_alert_core(built, title)))
+
+    def test_breadth_duplicate_identity_preserves_population_period_and_changed_measure(self):
+        title = "S&P500 종목 80%는 하락…AI주 쏠림"
+        body = "2026년 9월 S&P500 구성 종목의 약 80%는 하락했다."
+        first = alert(title, body)
+        repeated = {**first, "news": "상승 종목 쏠림…S&P500 대부분은 하락", "source_title": "상승 종목 쏠림…S&P500 대부분은 하락",
+                    "link": "https://www.etoday.co.kr/news/view/other-breadth", "published": "2026-10-04T01:30:00+09:00"}
+        identity = materiality.source_event_identity(first)
+        self.assertEqual(identity, materiality.source_event_identity(repeated))
+        for changed in (
+            {**first, "source_body": body.replace("80%", "75%")},
+            {**first, "source_body": body.replace("9월", "8월")},
+            {**first, "source_body": body.replace("2026년", "2025년")},
+            {**first, "source_body": body.replace("S&P500", "코스피")},
+            {**first, "source_body": body.replace("하락", "상승")},
+        ):
+            self.assertNotEqual(identity, materiality.source_event_identity(changed), changed)
+        self.assertEqual(materiality.source_event_identity({**first, "body_verified": False}), "")
+        self.assertEqual(materiality.source_event_identity({**first, "source_body": body.replace("2026년 9월 ", "")}), "")
+        subset = {**first, "source_body": "2026년 9월 S&P500 상위 100개 종목 중 80%는 하락했다."}
+        self.assertEqual(materiality.source_event_identity(subset), "")
+        state = {"seen": {}}
+        with patch.object(radar.telegram, "load_seen_state", return_value=state), \
+                patch.object(radar.telegram, "save_seen_state", side_effect=lambda *_args: None):
+            radar.telegram.record_seen_alerts([first], NOW)
+            fresh, skipped = radar.telegram.filter_previously_seen_alerts([repeated], NOW, "live")
+            revised = {**repeated, "source_body": body.replace("80%", "75%")}
+            changed, _ = radar.telegram.filter_previously_seen_alerts([revised], NOW, "live")
+        self.assertEqual(fresh, [])
+        self.assertEqual(len(skipped), 1)
+        self.assertEqual(len(changed), 1)
+
+    def test_unrelated_legacy_sector_key_cannot_hide_source_verified_breadth(self):
+        title = "고금리·고유가에도 AI주는 웃었다…S&P500 종목 80%는 하락"
+        body = "지난 9월 나스닥100지수는 3% 올랐지만, S&P500 구성 종목의 약 80%는 하락했다."
+        item = {**alert(title, body), "link": "https://www.newsis.com/view/NISX20261003_0003813673",
+                "supply_chain_theme": "hyperscaler_ai_capex:2026-10-03"}
+        entry = {"title": "부산대 작년 지역 생산유발 1.5조원, 일자리 창출 1.2만명",
+                 "link": "https://www.newsis.com/view/NISX20261002_0003812256",
+                 "first_seen_kst": NOW.isoformat(), "lanes": {"live": NOW.isoformat()}}
+        coarse = "event:" + radar.telegram.digest_seen(item["supply_chain_theme"])
+        state = {"seen": {coarse: entry}}
+        radar.telegram.migrate_seen_title_aliases(state)
+        with patch.object(radar.telegram, "load_seen_state", return_value=state):
+            fresh, skipped = radar.telegram.filter_previously_seen_alerts([item], NOW, "live")
+        self.assertEqual(len(fresh), 1)
+        self.assertEqual(skipped, [])
+        self.assertIn(coarse, state["seen"])
+        # Historical exact-article receipts remain effective without wiping state.
+        state["seen"]["link:" + radar.telegram.digest_seen(item["link"])] = {**entry, "title": title, "link": item["link"]}
+        with patch.object(radar.telegram, "load_seen_state", return_value=state):
+            exact, repeated = radar.telegram.filter_previously_seen_alerts([item], NOW, "live")
+        self.assertEqual(exact, [])
+        self.assertEqual(len(repeated), 1)
+
     def test_article_series_introduction_and_license_noun_are_not_policy_changes(self):
         title = "한국 바람에 20년 투자, 외국 투자자는 무엇을 보나 [지평 기후에너지리포트]"
         introduction = "[지평 기후에너지리포트]에서는 기후에너지환경 분야 정책 변화부터 사업개발, 투자, 인허가, 분쟁까지 주요 법률 이슈를 짚고, 기업이 알아야 할 핵심 정보를 전달하고자 합니다."
