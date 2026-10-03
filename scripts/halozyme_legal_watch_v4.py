@@ -153,6 +153,84 @@ CASE_TIMELINES = {
     ),
 }
 
+
+TIMELINE_EVENT_LABELS = {
+    "institution": "심판 개시",
+    "final_unpatentable": "최종서면결정",
+    "final_decision": "최종서면결정",
+    "director_review": "국장 재검토",
+    "rehearing": "PTAB 재심",
+    "appeal": "연방순회항소법원 항소",
+    "termination": "종결·합의",
+    "disclaimer": "청구항 포기",
+}
+
+_successful_timeline_events: list[dict] = []
+_pending_timeline_event: dict | None = None
+
+
+def _event_date(item: dict) -> str:
+    published = str(item.get("published") or "").strip()
+    if published:
+        try:
+            from email.utils import parsedate_to_datetime
+            return parsedate_to_datetime(published).date().isoformat()
+        except Exception:
+            pass
+    blob = " ".join(str(item.get(key) or "") for key in ("title", "description"))
+    m = re.search(r"\b(20\d{2})[-./년 ](\d{1,2})[-./월 ](\d{1,2})(?:일)?\b", blob)
+    if m:
+        return f"{int(m.group(1)):04d}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"
+    return ""
+
+
+def _timeline_event(case: str, kind: str, item: dict) -> dict | None:
+    if not case.startswith(("PGR", "IPR")):
+        return None
+    label = TIMELINE_EVENT_LABELS.get(kind)
+    if not label:
+        return None
+    return {
+        "case": case,
+        "date": _event_date(item),
+        "kind": kind,
+        "label": label,
+    }
+
+
+def _persisted_timeline_rows(case: str) -> list[dict]:
+    try:
+        state = json.loads(base.STATE.read_text(encoding="utf-8"))
+    except Exception:
+        return []
+    rows = (state.get("case_event_timelines") or {}).get(case) or []
+    return [row for row in rows if isinstance(row, dict)]
+
+
+def _merged_case_timelines(state: dict) -> dict:
+    timelines = dict(state.get("case_event_timelines") or {})
+
+    def add(case: str, date: str, label: str, kind: str = "") -> None:
+        rows = [row for row in (timelines.get(case) or []) if isinstance(row, dict)]
+        key = (date, label)
+        if key not in {(str(row.get("date") or ""), str(row.get("label") or "")) for row in rows}:
+            rows.append({"date": date, "kind": kind, "label": label})
+        rows.sort(key=lambda row: (str(row.get("date") or "9999-99-99"), str(row.get("label") or "")))
+        timelines[case] = rows[-30:]
+
+    for case, rows in CASE_TIMELINES.items():
+        for date, label in rows:
+            add(case, date, label)
+
+    for event in _successful_timeline_events:
+        add(
+            str(event.get("case") or ""),
+            str(event.get("date") or ""),
+            str(event.get("label") or ""),
+            str(event.get("kind") or ""),
+        )
+    return timelines
+
 FINAL_DECISION_TERMS = (
     "final written decision",
     "status final written decision",
@@ -187,21 +265,32 @@ def classify(text: str, case: str) -> str:
 
 
 def timeline_line(case: str, kind: str, item: dict) -> str:
-    known = CASE_TIMELINES.get(case)
-    if known:
-        return " → ".join(f"{day} {label}" for day, label in known)
+    if case.startswith(("PGR", "IPR")):
+        rows: list[tuple[str, str]] = list(CASE_TIMELINES.get(case) or ())
+        for row in _persisted_timeline_rows(case):
+            rows.append((str(row.get("date") or ""), str(row.get("label") or "")))
+        for event in _successful_timeline_events:
+            if event.get("case") == case:
+                rows.append((str(event.get("date") or ""), str(event.get("label") or "")))
+        current = _timeline_event(case, kind, item)
+        if current:
+            rows.append((str(current.get("date") or ""), str(current.get("label") or "")))
+
+        unique: dict[tuple[str, str], tuple[str, str]] = {}
+        for date, label in rows:
+            if label:
+                unique.setdefault((date, label), (date, label))
+        ordered = sorted(unique.values(), key=lambda row: (row[0] or "9999-99-99", row[1]))
+        if ordered:
+            return " → ".join(
+                f"{date} {label}" if date else f"날짜 확인 필요 · {label}"
+                for date, label in ordered
+            )
 
     published = str(item.get("published") or "").strip()
     event_label = {
-        "final_unpatentable": "최종서면결정",
-        "final_decision": "최종서면결정 공개",
-        "director_review": "국장 재검토",
-        "rehearing": "PTAB 재심",
-        "appeal": "연방순회항소법원 항소",
-        "institution": "심판 개시 결정",
-        "termination": "종결·합의",
         "district_order": "연방법원 절차 변화",
-    }.get(kind, "새 절차 변화")
+    }.get(kind, TIMELINE_EVENT_LABELS.get(kind, "새 절차 변화"))
     if published:
         try:
             from email.utils import parsedate_to_datetime
@@ -216,6 +305,8 @@ _original_alert = base.alert
 
 
 def alert(case: str, patent: str, kind: str, item: dict) -> str:
+    global _pending_timeline_event
+    _pending_timeline_event = None
     if kind == "portfolio_update":
         m = re.search(r"(\d+)OF(\d+)$", case)
         decided = int(m.group(1)) if m else 0
@@ -232,6 +323,8 @@ def alert(case: str, patent: str, kind: str, item: dict) -> str:
             "- <b>원문 확인:</b> 알테오젠 공식 IR 본문 직접 확인\n"
             f'- <a href="{url}">원문 뉴스보기</a>'
         )
+
+    _pending_timeline_event = _timeline_event(case, kind, item)
 
     if kind != "final_decision":
         message = _original_alert(case, patent, kind, item)
@@ -350,6 +443,12 @@ def _portfolio_ir_urls() -> list[str]:
     return urls[:12]
 
 
+def portfolio_scorecard_key(score: dict) -> str:
+    return base.digest(
+        f"portfolio|{score['total']}|{score['won']}|{score['pending']}|{score.get('oral_date') or ''}"
+    )
+
+
 def portfolio_updates() -> list[dict]:
     # 현재 공식 IR에서 확인된 7/14 판세는 검색색인·HTML 파싱 실패와 무관하게
     # 한 번은 반드시 이벤트로 소비하도록 검증된 기준선을 포함한다.
@@ -369,7 +468,7 @@ def portfolio_updates() -> list[dict]:
     unique = {}
     for item in updates:
         s = item["score"]
-        key = base.digest(f"portfolio|{s['total']}|{s['won']}|{s['pending']}|{s['oral_date']}")
+        key = portfolio_scorecard_key(s)
         unique.setdefault(key, item)
     return list(unique.values())
 
@@ -409,7 +508,7 @@ def send_portfolio_updates() -> list[int]:
 
     for item in portfolio_updates():
         s = item["score"]
-        key = base.digest(f"portfolio|{s['total']}|{s['won']}|{s['pending']}|{s['oral_date']}")
+        key = portfolio_scorecard_key(s)
         if key in seen:
             continue
         mid = base.send(token, chat, portfolio_alert(item))
@@ -427,8 +526,16 @@ _original_send = base.send
 
 
 def tracked_send(token: str, chat: str, text: str) -> int:
-    mid = _original_send(token, chat, text)
+    global _pending_timeline_event
+    try:
+        mid = _original_send(token, chat, text)
+    except Exception:
+        _pending_timeline_event = None
+        raise
     _sent_ids.append(mid)
+    if _pending_timeline_event:
+        _successful_timeline_events.append(dict(_pending_timeline_event))
+        _pending_timeline_event = None
     return mid
 
 
@@ -459,6 +566,7 @@ def main() -> int:
     state["search_mode"] = "개별 사건번호 + 미국/한국 뉴스 + Bing 웹"
     state["last_sent_message_ids"] = _sent_ids
     state["final_decision_classification_version"] = 2
+    state["case_event_timelines"] = _merged_case_timelines(state)
     base.STATE.write_text(
         json.dumps(state, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
