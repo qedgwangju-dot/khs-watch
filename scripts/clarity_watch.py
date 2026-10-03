@@ -816,7 +816,7 @@ def collect_vs_trust_3x_registration_milestones(errors):
         if filing_date and filing_date < "2026-08-17":
             continue
         file_no = clean(row.get("fileNumber", ""))
-        if target_file_numbers and file_no not in target_file_numbers:
+        if not target_file_numbers or file_no not in target_file_numbers:
             continue
         preloaded = row.get("_primaryText", "")
         url = clean(row.get("primaryDocument", "")) if row.get("_primaryText") is not None else ""
