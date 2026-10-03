@@ -159,7 +159,7 @@ KOREA_MEMORY_EARNINGS_BASELINE = {
     "as_of": "2026-09-30",
     "source_rank": 2,
 }
-MICRON_SUPPLY_COMMITMENT_TRACK_VERSION = 3
+MICRON_SUPPLY_COMMITMENT_TRACK_VERSION = 4
 MICRON_SUPPLY_COMMITMENT_BASELINE = {
     "commitment_year": 2027,
     "output_committed_min_pct": 75.0,
@@ -525,6 +525,10 @@ ARTICLE_DETAIL_HOSTS = (
     "reuters.com",
     "trendforce.com",
     "investors.micron.com",
+    "tradingkey.com",
+    "stockanalysis.com",
+    "benzinga.com",
+    "marketbeat.com",
 )
 
 
@@ -1366,6 +1370,22 @@ def _korea_memory_earnings_changes(old: dict, new: dict) -> list[str]:
     return changes
 
 
+def _is_micron_supply_context_item(item: dict) -> bool:
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    if "micron" not in low and "마이크론" not in text:
+        return False
+    event = any(k in low for k in (
+        "q4 2026", "q4 fy2026", "fiscal fourth quarter", "earnings call",
+        "fiscal q1 2027", "fq1-27", "2031", "2028",
+    ))
+    supply = any(k in low for k in (
+        "supply", "shortage", "committed", "strategic customer agreement",
+        "sca", "rpo", "gross margin", "operating expenses",
+    ))
+    return bool(event and supply)
+
+
 def _extract_micron_supply_commitment(item: dict) -> dict | None:
     text = _clean(f"{item.get('title','')} {item.get('description','')}")
     low = text.lower()
@@ -2055,7 +2075,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             continue
         if _extract_korea_memory_earnings_state(x):
             continue
-        if _extract_micron_supply_commitment(x):
+        if _extract_micron_supply_commitment(x) or _is_micron_supply_context_item(x):
             continue
         if _extract_trendforce_4q26_revision(x):
             continue
