@@ -2171,6 +2171,7 @@ def ranked_article_sentences(
         sentence
         for sentence in sentences
         if len(sentence) >= 12 and not article_title_restatement(sentence, title)
+        and not market_materiality.COMPANY_PROFILE.search(sentence)
     ]
     sentences = list(dict.fromkeys(sentences))
     if market_materiality.focus_kind(title) == "research_spending":
@@ -2265,6 +2266,11 @@ def normalized_article_sentence(sentence: str) -> str:
 
 def compact_article_sentence(sentence: str, limit: int = 50) -> str:
     return concise_text(normalized_article_sentence(sentence), limit=limit)
+
+
+def korean_topic_particle(name: str) -> str:
+    last = ord(name[-1]) if name else 0
+    return "은" if 0xAC00 <= last <= 0xD7A3 and (last - 0xAC00) % 28 else "는"
 
 
 def source_focused_article_core(title: str, sentences: list[str]) -> str:
@@ -2484,9 +2490,51 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
             return fact
     if market_materiality.focus_kind(title) == "financing":
         for sentence in sentences:
+            if not re.search(r"전환사채|전환\s*(?:선순위)?\s*채권", sentence):
+                continue
+            issuer = re.match(r"^([A-Za-z0-9가-힣&·]+(?:\s+[A-Za-z0-9가-힣&·]+){0,4})\s*(?:\([A-Za-z0-9.-]+\))?(?:은|는|이|가)\s+", sentence)
+            amount = re.search(r"총\s*(\d[\d,.]*\s*(?:(?:조|억|만|천)\s*)*(?:달러|유로|원))", sentence)
+            if not issuer or not amount or not re.search(r"발행", sentence):
+                continue
+            planned = bool(re.search(r"계획|추진|예정", sentence))
+            if not planned and not re.search(r"발행했다|발행했다고", sentence):
+                continue
+            interest = "무이자 " if re.search(r"이표율\s*0(?:\.0+)?\s*%|무이자", sentence) else ""
+            action = "발행을 추진한다" if planned else "발행했다"
+            fact = f"{issuer.group(1)}{korean_topic_particle(issuer.group(1))} {amount.group(1)} {interest}전환사채 {action}."
+            repurchase = re.search(r"기존\s*(\d{4})년(?:\s*만기)?[^.!?]{0,30}(?:전환사채|채권)[^.!?]{0,20}환매", sentence)
+            if repurchase and re.search(r"자금|조달", sentence):
+                fact += f" 일부 자금으로 {repurchase.group(1)}년물을 환매할 계획이다."
+            if core_sentence_is_complete(fact) and market_materiality.core_focus_aligned(title, fact):
+                return fact
+        for sentence in sentences:
             audit = market_materiality.assess(title, sentence)
             if any(item["kind"] == "customer_financing_commitment" for item in audit["evidence"]):
                 fact = normalized_article_sentence(sentence)
+                if core_sentence_is_complete(fact):
+                    return fact
+    if focus == "equity_compensation":
+        for sentence in sentences:
+            issuer = re.match(r"^([A-Za-z0-9가-힣&·]+(?:\s+[A-Za-z0-9가-힣&·]+){0,4})\s*(?:\([A-Za-z0-9.-]+\))?(?:은|는|이|가)\s+", sentence)
+            value = re.search(r"추정\s*총가치(?:는|가)?\s*(약\s*)?(\d[\d,.]*\s*(?:(?:조|억|만|천)\s*)*(?:달러|유로|원))", sentence)
+            if not issuer or not value or not re.search(r"전\s*직원", sentence):
+                continue
+            if not re.search(r"주식보상|성과연동주식|양도제한조건부주식", sentence) or not re.search(r"도입하기로\s*결의", sentence):
+                continue
+            fact = (f"{issuer.group(1)}{korean_topic_particle(issuer.group(1))} 전 직원 주식보상제 도입을 결의했다. "
+                    f"추정 총가치는 {value.group(1) or ''}{value.group(2)}다.")
+            if core_sentence_is_complete(fact):
+                return fact
+    if focus == "ownership" and re.search(r"인수|합병", title):
+        for sentence in sentences:
+            target = re.match(r"^([A-Za-z0-9가-힣&·]+(?:\s+[A-Za-z0-9가-힣&·]+){0,4})\s*(?:\([A-Za-z0-9.-]+\))?(?:은|는|이|가)\s+", sentence)
+            buyer = re.search(r"(?:법인\s+)?([A-Za-z0-9가-힣&·]+(?:\s+[A-Za-z0-9가-힣&·]+){0,3})에\s*인수되는", sentence)
+            cash = re.search(r"(?:보통주\s*)?1주당\s*현금\s*(\d[\d,.]*\s*(?:달러|유로|원))", sentence)
+            stock = re.search(r"보통주\s*(\d[\d,.]*)주를\s*받게", sentence)
+            if target and buyer and cash and stock and re.search(r"계약을\s*체결", sentence):
+                acquirer = re.sub(r"^.*?법인\s+", "", buyer.group(1))
+                fact = (f"{target.group(1)} 주주는 {acquirer} 인수 계약에 따라 "
+                        f"거래 종결 시 주당 현금 {cash.group(1)}와 주식 {stock.group(1)}주를 받는다.")
                 if core_sentence_is_complete(fact):
                     return fact
     if market_materiality.focus_kind(title) == "ownership" and re.search(r"매각|매도|처분|주식.{0,8}판다", title):
@@ -2545,10 +2593,27 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
             not market_materiality.core_focus_aligned(title, sentence)
             or market_materiality.ASPIRATION.search(sentence)
             or market_materiality.BACKGROUND.search(sentence)
+            or market_materiality.COMPANY_PROFILE.search(sentence)
             or re.match(r"^(?:또|그리고|한편|이러한|이를|이\s*같은)\s", sentence)
         ):
             continue
         fact = normalized_article_sentence(sentence)
+        if focus == "ownership" and not market_materiality.evidence_is_new_event("corporate_transaction", sentence) and re.search(r"인수|합병", title):
+            continue
+        if focus == "ownership" and re.search(r"인수|합병", title):
+            issuer = re.match(r"^([A-Za-z0-9가-힣&·-]+(?:\s+[A-Za-z0-9가-힣&·-]+){0,3})[,，]\s*", title)
+            if issuer and issuer.group(1) not in fact and re.match(r"^[^.!?]{0,80}(?:인수한다고|인수를\s*마무리|합병이\s*완료)", fact):
+                acquisition = re.search(r"기업\s+([A-Za-z0-9가-힣&·-]+)(?:을|를)\s*인수한다고\s*발표", sentence)
+                fact = issuer.group(1) + korean_topic_particle(issuer.group(1)) + " " + fact
+                if acquisition:
+                    fact = f"{issuer.group(1)}{korean_topic_particle(issuer.group(1))} {acquisition.group(1)} 인수를 발표했다."
+                    for related in sentences:
+                        if acquisition.group(1) not in related or not re.search(r"비용|가동률|마진", related) or not re.search(r"기대|예상|전망|수\s*있", related):
+                            continue
+                        expanded = fact + " " + normalized_article_sentence(related)
+                        if core_sentence_is_complete(expanded):
+                            fact = expanded
+                        break
         if market_materiality.focus_kind(title) == "environmental_approval":
             fact = re.sub(r"^\d{1,2}일\s*업계에\s*따르면\s*", "", fact)
             fact = re.sub(r"\s*\(현지\s*시간\)", "", fact)
@@ -9378,6 +9443,10 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if not source or not core:
         return []
     errors = []
+    if not market_materiality.core_focus_aligned(title, core):
+        errors.append("headline_event_or_period_mismatch")
+    if market_materiality.COMPANY_PROFILE.search(core):
+        errors.append("company_profile_not_news_core")
     if alert.get("korean_business_news"):
         core_audit = market_materiality.assess(title, core)
         if core_audit["disposition"] != "keep" or not core_audit["evidence"]:

@@ -36,6 +36,134 @@ def fixture(title: str, body: str) -> str:
 
 
 class DetailQueueChecks(unittest.TestCase):
+    def test_actual_convertible_article_summarizes_issue_not_unrelated_consensus(self):
+        title = "스노우플레이크, 35억달러 전환사채 발행 추진..2027년물 환매"
+        event = (
+            "스노우플레이크(SNOW)가 2029년 만기 13억 달러, 2031년 만기 22억 달러 등 총 35억 달러 규모의 "
+            "이표율 0.00% 전환 선순위 채권(Convertible Senior Notes)을 사모 방식으로 발행하고, 조달 자금 일부로 "
+            "기존 2027년 만기 전환사채를 환매할 계획이라고 2일(현지시간) 발표했다."
+        )
+        wrong = "증권가 컨센서스에 따르면 스노우플레이크의 2027 회계연도 매출액은 약 63억1700만 달러로 전년 대비 34.86% 증가할 것으로 예상된다."
+        body = "무이자 전환사채라 이자 부담은 없고 캡드콜로 희석도 일부 막아요.\n" + event + "\n" + wrong
+        item = {"news": title, "source_title": title, "source_body": body, "source_abstract": body,
+                "body_verified": True, "korean_business_news": True, "telegram_core_fact": wrong,
+                "link": "https://stock.mk.co.kr/news/view/1169333"}
+        self.assertEqual(radar.market_materiality.focus_kind(title), "financing")
+        self.assertIn("headline_event_or_period_mismatch", radar.source_core_fact_errors(item))
+        self.assertFalse(radar.source_output_aligned(item))
+        core = radar.verified_alert_core(item, title)
+        for term in ("스노우플레이크", "35억 달러", "무이자", "추진", "2027년물", "환매할 계획"):
+            self.assertIn(term, core)
+        self.assertNotIn("63억", core)
+        self.assertNotIn("34.86%", core)
+        self.assertNotIn("발행했다", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertTrue(radar.source_output_aligned({**item, "telegram_core_fact": core}), core)
+        conversion = radar.build_alert_fx_conversion(
+            {**item, "telegram_core_fact": core},
+            {"rates": {"USD": {"value": 1348.28, "status": "fixture", "source": "unit test"}}}, NOW,
+        )
+        converted = radar.compact_converted_core(core, conversion)
+        self.assertIn("35억 달러(약 5조원)", converted)
+        self.assertIn("2027년물", converted)
+        self.assertTrue(radar.core_sentence_is_complete(converted), converted)
+
+    def test_actual_cash_and_stock_acquisition_keeps_terms_and_closing_condition(self):
+        title = "상고마 테크놀러지스, BRC그룹 피인수 계약..주당 현금 4.925달러+주식"
+        body = (
+            "현금과 주식을 함께 받는 인수 계약이라 거래가 마무리되면 주주가 일정 수준의 현금 가치를 확보할 수 있어요.\n"
+            "상고마 테크놀러지스(SANG)가 미국 델라웨어주 법인 BRC 그룹 홀딩스에 인수되는 "
+            "계획합병(Arrangement Agreement) 계약을 체결했으며, 주주는 보통주 1주당 현금 4.925달러와 "
+            "BRC 그룹 홀딩스 보통주 0.04767주를 받게 된다고 10월 2일 발표했다.\n"
+            "증권가 컨센서스에 따르면 상고마의 2027년 매출액은 2억652만 달러로 전년 대비 46.64% 증가할 전망이다."
+        )
+        core = radar.detailed_article_core(title, body)
+        for term in ("상고마", "BRC 그룹 홀딩스", "인수 계약", "거래 종결 시", "4.925달러", "0.04767주"):
+            self.assertIn(term, core)
+        self.assertNotIn("46.64%", core)
+        self.assertNotIn("확보할 수 있어요", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        item = {"news": title, "source_title": title, "source_body": body, "body_verified": True,
+                "korean_business_news": True, "telegram_core_fact": core,
+                "link": "https://www.mk.co.kr/news/stock/12167629"}
+        self.assertTrue(radar.source_output_aligned(item), radar.source_core_fact_errors(item))
+
+    def test_equity_compensation_beats_company_profile_and_uses_actual_estimate(self):
+        title = "아이큐엠 퀀텀 컴퓨터스, 전직원 주식보상 도입..최대 2600만 유로"
+        event = (
+            "아이큐엠 퀀텀 컴퓨터스(IQMX)는 이사회가 전 직원을 대상으로 한 성과연동주식보상제(PSP 2026~2032)와 "
+            "양도제한조건부주식(RSU) 풀(2026~2030)을 신규 도입하기로 결의했으며, 두 제도의 추정 총가치는 "
+            "약 2570만 유로(PSP 약 1820만 유로, RSU 약 750만 유로)라고 9월 30일(현지시간) 발표했다."
+        )
+        profile = "아이큐엠 퀀텀 컴퓨터스는 초전도 방식 양자컴퓨팅 분야의 글로벌 기업으로, 기업·연구기관 등에 양자 시스템을 공급한다."
+        body = event + "\n" + profile
+        self.assertEqual(radar.market_materiality.focus_kind(title), "equity_compensation")
+        audit = radar.market_materiality.assess(title, body)
+        self.assertEqual(audit["priority"], 2, audit)
+        self.assertEqual([row["kind"] for row in audit["evidence"]], ["equity_compensation_change"])
+        core = radar.detailed_article_core(title, body)
+        for term in ("전 직원", "도입을 결의", "추정 총가치", "약 2570만 유로"):
+            self.assertIn(term, core)
+        self.assertNotIn("2600만", core)
+        self.assertNotIn("시스템을 공급", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        item = {"news": title, "source_title": title, "source_body": body, "body_verified": True,
+                "korean_business_news": True, "telegram_core_fact": profile,
+                "link": "https://stock.mk.co.kr/news/view/1169291"}
+        self.assertIn("company_profile_not_news_core", radar.source_core_fact_errors(item))
+        self.assertFalse(radar.source_output_aligned(item))
+        self.assertTrue(radar.source_output_aligned({**item, "telegram_core_fact": core}), core)
+
+    def test_generic_company_service_profile_is_not_a_new_supply_or_technology_event(self):
+        title = "양자기업, 초전도 컴퓨팅 사업 소개"
+        body = "양자기업은 초전도 방식 양자컴퓨팅 분야의 글로벌 기업으로, 연구기관과 국립연구소 등에 양자 시스템을 공급한다."
+        audit = radar.market_materiality.assess(title, body)
+        self.assertEqual(audit["evidence"], [], audit)
+        self.assertNotEqual(audit["disposition"], "keep", audit)
+        self.assertFalse(radar.market_materiality.evidence_is_new_event("customer_supply_start", body))
+
+    def test_actual_mosquito_laser_curiosity_does_not_borrow_production_delay(self):
+        title = "모기 보이면 '레이저 발사'...中서 나온 134만원짜리 기계"
+        body = ("모기를 감지해 레이저로 제거하는 기기가 중국에서 개발돼 이달 출시를 앞두고 있다. "
+                "대량 생산이 지연된 데다 레이저 제품의 안전성을 둘러싼 우려도 제기됐기 때문이다.")
+        audit = radar.market_materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "exclude", audit)
+        self.assertEqual(audit["reason"], "consumer_curiosity_without_market_business_link")
+        real = radar.market_materiality.assess("상장사, 모기 퇴치 센서 공급계약 체결",
+                                              "상장사는 병원 고객과 500억원 모기 퇴치 센서 공급계약을 체결했다.")
+        self.assertEqual(real["disposition"], "keep", real)
+
+    def test_headings_reference_notes_and_conditional_analysis_are_not_new_deals(self):
+        for sentence in (
+            "■ 경쟁 인수 제한과 자금 조달",
+            "해당 수치는 이번 인수 계약에 따른 변동이 반영되지 않았을 수 있다.",
+            "현금과 주식을 함께 받는 인수 계약이라 거래가 마무리되면 주주가 현금 가치를 확보할 수 있어요.",
+        ):
+            with self.subTest(sentence=sentence):
+                audit = radar.market_materiality.assess("기업, 인수 계약 발표", sentence)
+                self.assertEqual(audit["evidence"], [], audit)
+        self.assertFalse(radar.market_materiality.evidence_is_new_event(
+            "capital_or_shareholder_action", "일반 운영자금에는 향후 자사주 매입과 기술 인수가 포함될 수 있다.",
+        ))
+
+    def test_inference_acquisition_keeps_named_issuer_and_source_expected_cost_effect(self):
+        title = "네비우스, 인퍼라이즈 인수로 AI 추론 스택 확장 나서"
+        body = ("추론 최적화 기업 인퍼라이즈를 인수한다고 발표했습니다. "
+                "인퍼라이즈의 콜드 스타트 단축 기술로 유휴 GPU 비용을 줄이고 가동률을 높일 수 있을 것으로 기대됩니다.")
+        core = radar.detailed_article_core(title, body)
+        self.assertIn("네비우스는", core)
+        self.assertIn("인퍼라이즈 인수를 발표", core)
+        self.assertIn("GPU 비용", core)
+        self.assertIn("기대", core)
+        self.assertNotIn("인수했다", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+
+    def test_convertible_term_definition_is_not_an_approved_conversion(self):
+        sentence = "무이자 전환사채라 이자 부담은 없고 캡드콜로 희석도 일부 막아요."
+        self.assertFalse(radar.market_materiality.evidence_is_new_event("convertible_ownership_rights", sentence))
+        self.assertTrue(radar.market_materiality.evidence_is_new_event("convertible_ownership_rights",
+                                                                     "이사회는 전환사채 전환을 승인했다."))
+
     def test_foreign_flow_core_uses_observed_amount_not_generic_outlook_or_other_actor(self):
         title = "9월에 20조 팔아치운 외국인, 10월엔 돌아올까"
         body = (
