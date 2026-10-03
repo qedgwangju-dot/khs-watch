@@ -1575,10 +1575,10 @@ def _is_dgx_spark_memory_price_item(item: dict) -> bool:
     no_space = low.replace(" ", "")
     if "64gb" not in no_space and "128gb" not in no_space:
         return False
-    return any(k in low for k in (
-        "price", "msrp", "starting at", "memory", "lpddr5x", "unified",
-        "supply constraint", "shortage", "cost", "4999", "4,999", "6950", "6,950",
-    ))
+    # Any DGX Spark article naming the 64GB/128GB SKU belongs to the typed
+    # product-memory track. Sparse or low-quality reposts must never escape
+    # into the generic alert path just because their RSS snippet omitted price.
+    return True
 
 
 def _extract_dgx_spark_memory_price(item: dict) -> dict | None:
