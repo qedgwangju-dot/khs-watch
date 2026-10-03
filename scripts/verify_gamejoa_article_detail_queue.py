@@ -46,6 +46,7 @@ class DetailQueueChecks(unittest.TestCase):
         audit = radar.market_materiality.assess(title, body)
         self.assertEqual(audit['disposition'], 'keep', audit)
         self.assertEqual(audit['priority'], 2, audit)
+        self.assertEqual(audit['transmission_scope_rank'], 3, audit)
         core = radar.detailed_article_core(title, body)
         for term in ('트럼프', '84억 달러', '원유회수증진', '팩트시트에 없고', '정부', '밝히기 어렵다는'):
             self.assertIn(term, core)
@@ -82,7 +83,8 @@ class DetailQueueChecks(unittest.TestCase):
         body = event + ' ' + warning
         audit = radar.market_materiality.assess(title, body)
         self.assertEqual(audit['disposition'], 'keep', audit)
-        self.assertEqual(audit['priority'], 2, audit)
+        self.assertEqual(audit['priority'], 1, audit)
+        self.assertEqual(audit['scope_note'], 'authorized_capacity_without_committed_financing_or_issuance')
         self.assertTrue(all(item['stage'] == 'early_signal' for item in audit['evidence']), audit)
         self.assertFalse(radar.market_materiality.core_focus_aligned(title, warning))
         core = radar.detailed_article_core(title, body)
@@ -91,6 +93,110 @@ class DetailQueueChecks(unittest.TestCase):
         self.assertNotIn('발행했다', core)
         self.assertTrue(radar.core_sentence_is_complete(core), core)
         self.assertEqual(radar.market_materiality.assess(title, warning)['disposition'], 'review')
+        row = {'title': title, 'source_title': title, 'source_body': body, 'source_abstract': body,
+               'body_verified': True, 'publisher': '매일경제', 'source': '매일경제',
+               'link': 'https://stock.mk.co.kr/news/view/1169337', 'published': NOW}
+        alert = radar.build_verified_korean_business_alert(row, NOW)
+        if alert:
+            self.assertEqual(radar.quality_display_alerts([alert], 1), [])
+
+    def test_private_meeting_is_not_customer_negotiation_and_real_business_is_kept(self):
+        title = '공효진, 케빈오 두고 전남편 만났다.."우리 한잔했어"'
+        body = '배우 공효진이 전남편과 음주 회동을 인증했다. 공효진은 자신의 SNS에 짧은 영상을 게재했다.'
+        audit = radar.market_materiality.assess(title, body)
+        self.assertEqual(audit['disposition'], 'exclude', audit)
+        self.assertNotIn('customer_discussions', [item['kind'] for item in audit['evidence']])
+        generic = radar.market_materiality.assess('유명 배우, 근황 영상 공개', '배우는 팬들과의 회동을 SNS에 인증했다.')
+        self.assertLess(generic['priority'], 2, generic)
+        business = radar.market_materiality.assess('기업 회장, 고객사와 HBM 공급 협상',
+                       '기업 회장은 미국 고객사와 차세대 HBM 공급 및 공동개발 방안을 논의했다.')
+        self.assertEqual(business['disposition'], 'keep', business)
+        self.assertGreaterEqual(business['priority'], 2, business)
+        shareholder = radar.market_materiality.assess('연예기획사 대표, 자사주 200억원 매수',
+                          '연예기획사 대표는 자사주 200억원을 매수했다고 밝혔다.')
+        self.assertEqual(shareholder['disposition'], 'keep', shareholder)
+        self.assertGreaterEqual(shareholder['priority'], 2, shareholder)
+
+    def test_share_consolidation_range_uses_actual_agenda_not_unverified_eps_note(self):
+        title = '엔리벡스, 1대13~1대16 액면병합 추진..16일 임시주총'
+        event = ('엔리벡스(ENLV)가 나스닥 최소 매수호가 요건을 충족하기 위해 보통주를 '
+                 '1대13에서 1대16 범위로 병합하는 안건을 10월 16일(이스라엘 현지시간) '
+                 '임시 주주총회에 상정한다고 10월 2일 발표했다.')
+        note = ('이 수치는 회사가 발표한 값이 아니라 증권사 예상치를 집계한 것으로, '
+                '이번 액면병합 전 주식 기준인지 여부는 별도로 확인되지 않았다.')
+        audit = radar.market_materiality.assess(title, event + ' ' + note)
+        self.assertEqual(audit['disposition'], 'keep', audit)
+        self.assertTrue(all(item['source_excerpt'] != note for item in audit['evidence']), audit)
+        self.assertLess(radar.market_materiality.assess(title, note)['priority'], 2)
+        core = radar.detailed_article_core(title, event + ' ' + note)
+        for term in ('엔리벡스', '1대13~1대16', '10월 16일', '상정한다', '최종 비율은 미정'):
+            self.assertIn(term, core)
+        self.assertNotIn('증권사', core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+
+    def test_geopolitical_scope_uses_verified_subject_not_only_short_headline(self):
+        title = "트럼프 특사·푸틴, 종전 협상서 '러 석유업체 빅딜' 논의"
+        body = ('도널드 트럼프 미국 대통령 측과 러시아의 우크라이나 종전 협상에서 '
+                '러시아 석유기업 루코일의 해외자산 매각도 논의된 것으로 전해졌다.')
+        audit = radar.market_materiality.assess(title, body)
+        self.assertEqual(audit['transmission_scope_rank'], 3, audit)
+        self.assertTrue(all(item['stage'] == 'early_signal' for item in audit['evidence']), audit)
+
+    def test_sanctions_request_keeps_actor_target_and_unconfirmed_stage(self):
+        title = '젤렌스키 "트럼프가 러시아판 스타링크 제재해야"'
+        body = ('볼로디미르 젤렌스키 우크라이나 대통령은 러시아가 중국 지원으로 개발 중인 자체 위성 인터넷 '
+                "'라스베트(Rassvet·새벽)'가 올해 말이나 내년 초에 가동할 것이라면서 미국에 이를 제재해달라고 요구했다. "
+                '젤렌스키 대통령은 이 시스템 개발과 관련된 기업들을 제재해 달라고 트럼프 행정부에 여러 차례 요청했다고 말했다. '
+                '젤렌스키 대통령은 러시아가 라스베트를 가동하게 되면 공습의 정확도가 높아질 수 있다고 경고했다.')
+        core = radar.detailed_article_core(title, body)
+        for term in ('젤렌스키', '중국 지원', '러시아', '라스베트', '관련 기업', '미국 제재', '요청했다고'):
+            self.assertIn(term, core)
+        self.assertNotIn('제재했다', core)
+        self.assertNotIn('제재를 시행', core)
+        row = {'title': title, 'source_title': title, 'source_body': body, 'source_abstract': body,
+               'body_verified': True, 'publisher': '연합뉴스', 'source': '연합뉴스',
+               'link': 'https://www.yna.co.kr/view/AKR20261003039500009', 'published': NOW}
+        alert = radar.build_verified_korean_business_alert(row, NOW)
+        selected = radar.quality_display_alerts([alert], 1)
+        self.assertEqual(len(selected), 1, alert.get('_exclusion_reason'))
+        self.assertEqual(radar.source_core_fact_errors(selected[0]), [])
+
+    def test_market_breadth_keeps_period_population_and_not_only_bond_yield(self):
+        title = '고금리·고유가에도 AI주는 웃었다…S&P500 종목 80%는 하락'
+        body = ('지난 9월 기술주 중심의 나스닥100지수는 3% 올랐지만, S&P500 구성 종목의 약 80%는 하락했다. '
+                '종목별 평균 하락률은 5%에 달했다. 미국 10년 만기 국채 수익률은 한 달 사이 4.7%에서 5.3%로 뛰었다.')
+        core = radar.detailed_article_core(title, body)
+        for term in ('9월', '나스닥100', '3%', 'S&P500', '80%', '5%'):
+            self.assertIn(term, core)
+        audit = radar.market_materiality.assess(title, body)
+        self.assertEqual(audit['transmission_scope_rank'], 3, audit)
+        self.assertEqual(audit['transmission_scope_reason'], 'market_wide_breadth_change', audit)
+        self.assertNotIn('국채', core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        row = {'title': title, 'source_title': title, 'source_body': body, 'source_abstract': body,
+               'body_verified': True, 'publisher': '뉴시스', 'source': '뉴시스',
+               'link': 'https://www.newsis.com/view/NISX20261003_0003813673', 'published': NOW}
+        alert = radar.build_verified_korean_business_alert(row, NOW)
+        selected = radar.quality_display_alerts([alert], 1)
+        self.assertEqual(len(selected), 1, alert.get('_exclusion_reason'))
+        self.assertEqual(radar.source_core_fact_errors(selected[0]), [])
+
+    def test_selection_upgrade_prioritizes_known_market_candidate_but_keeps_fair_slots(self):
+        rows = [article(index) for index in range(6)]
+        old = rows[-1]
+        state = {'entries': {queue.article_key(old): {
+            'url': old['link'], 'title': old['title'], 'fingerprint': queue.fingerprint(old),
+            'verification_status': 'verified', 'selection_validation_version': 44,
+            'source_selection_disposition': 'keep', 'last_attempt_kst': NOW.isoformat(),
+            'first_discovered_kst': NOW.isoformat(), 'last_discovered_kst': NOW.isoformat(),
+            'retry_after_kst': (NOW + dt.timedelta(hours=1)).isoformat(),
+        }}}
+        selected, pending, stats = queue.plan_details(rows, state, NOW, 4, selection_version=45)
+        self.assertEqual(len(selected), 4)
+        self.assertEqual(selected[0]['link'], old['link'])
+        self.assertEqual(stats['fair_slots'], 2)
+        self.assertEqual(stats['selection_refresh'], 1)
+        self.assertNotIn('source_body', pending['entries'][queue.article_key(old)])
 
     def test_industry_analysis_uses_attributed_estimate_not_generic_price_support(self):
         title = '270조 투자 호재에도 원전주는 시큰둥…먼저 돈 되는 곳 따로 있다고?'

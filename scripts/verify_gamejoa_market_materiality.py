@@ -113,6 +113,17 @@ DELIVERED_LOCAL_ADMINISTRATION = (
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_copied_headline_is_not_independent_source_evidence(self):
+        title = "기업, 신규 반도체 공급계약 100억원 체결"
+        body = title + "\n회사는 반도체 분야의 전문 기업으로 알려져 있다."
+        audit = materiality.assess(title, body)
+        self.assertNotEqual(audit["disposition"], "keep", audit)
+        self.assertEqual(audit["evidence"], [], audit)
+        confirmed = body + "\n기업은 고객과 100억원 규모의 반도체 공급계약을 체결했다고 공시했다."
+        audit = materiality.assess(title, confirmed)
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertTrue(all(row["source_excerpt"] != title for row in audit["evidence"]), audit)
+
     def test_new_source_environmental_approval_core_is_the_decision_not_recycling_plan(self):
         title = "고려아연 '프로젝트 크루서블' 美 환경평가 통과…친환경 제련소 구축 탄력"
         body = ("2일 업계에 따르면 미국 전쟁부는 지난달 11일(현지시간) 미국 국가환경정책법(NEPA)에 따라 프로젝트 크루서블의 최종 환경평가(Final EA)를 완료하고 '중대한 환경영향 없음(FONSI)' 결정을 내렸다.\n"

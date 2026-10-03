@@ -75,6 +75,7 @@ def plan_details(
     selection_refresh = 0
     for row in rows:
         row.pop("_detail_deferred_reason", None)
+        row.pop("_source_revalidation_priority", None)
         key = article_key(row)
         signature = fingerprint(row)
         old = pending["entries"].get(key, {})
@@ -111,11 +112,17 @@ def plan_details(
             row["_detail_deferred_reason"] = "retry_cooldown"
             continue
         selection_refresh += int(revalidate_selection)
+        row["_source_revalidation_priority"] = bool(
+            revalidate_selection and entry.get("source_selection_disposition") == "keep"
+        )
         eligible.append(row)
 
     # Keep room for urgent candidates while guaranteeing progress for the
     # oldest waiting articles, independent of company-name keyword scores.
     priority_slots = max(1, limit // 2)
+    # This is only a retrieval hint. Recovered important candidates still need
+    # a new source receipt and all current publication checks.
+    eligible.sort(key=lambda row: bool(row.get("_source_revalidation_priority")), reverse=True)
     selected = eligible[:priority_slots]
     chosen = {article_key(row) for row in selected}
     waiting = [row for row in eligible if article_key(row) not in chosen]

@@ -2362,6 +2362,14 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
     if focus == "trading_status":
         issuer = re.match(r"^([^,，]{2,35})[,，]", title)
         for sentence in sentences:
+            ratio_range = re.search(r"(\d+대\d+)에서\s*(\d+대\d+)\s*범위로\s*병합", sentence)
+            meeting_date = re.search(r"(\d{1,2}월\s*\d{1,2}일)(?:\([^)]*\))?\s*임시\s*주주총회", sentence)
+            if issuer and ratio_range and meeting_date and re.search(r"상정한다고|상정할|상정하기로", sentence):
+                name = issuer.group(1)
+                fact = (f"{name}{korean_topic_particle(name)} {ratio_range.group(1)}~{ratio_range.group(2)} "
+                        f"액면병합안을 {meeting_date.group(1)} 임시주총에 상정한다. 최종 비율은 미정이다.")
+                if core_sentence_is_complete(fact):
+                    return fact
             ratio = re.search(r"(?:보통주\s*)?(\d[\d,]*)주를\s*(\d[\d,]*)주로\s*합치는\s*액면병합", sentence)
             if not issuer or not ratio or not re.search(r"상정한다고|상정할|상정하기로", sentence):
                 continue
@@ -2371,6 +2379,33 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
             additional = "과 복수의결권 도입" if "복수의결권" in sentence else ""
             fact = (f"{issuer.group(1)}{korean_topic_particle(issuer.group(1))} {ratio.group(1)}대{ratio.group(2)} "
                     f"액면병합{additional}안을{schedule} 임시주총에 상정한다.")
+            if core_sentence_is_complete(fact):
+                return fact
+    if focus == "sanctions_request":
+        for sentence in sentences:
+            speaker = re.search(r"([가-힣]{2,12})\s*(?:[가-힣]{2,12}\s*)?대통령은", sentence)
+            system = re.search(r"러시아가[^.!?]{0,70}위성\s*인터넷\s*['‘]([^('’]+)", sentence)
+            if not speaker or not system or not re.search(r"미국에[^.!?]{0,20}제재해달라고\s*요구", sentence):
+                continue
+            support = "중국 지원으로 개발 중인 " if re.search(r"중국\s*지원으로\s*개발", sentence) else ""
+            target = " 관련 기업" if re.search(r"(?:시스템|개발)[^.!?]{0,30}관련된\s*기업들을\s*제재", source) else ""
+            name = speaker.group(1)
+            fact = (f"{name}{korean_topic_particle(name)} {support}러시아 위성인터넷 '{system.group(1)}'{target}에 "
+                    "미국 제재를 요청했다고 밝혔다.")
+            if core_sentence_is_complete(fact):
+                return fact
+    if focus == "breadth":
+        for sentence in sentences:
+            period = re.search(r"(?:지난\s*)?(\d{1,2}월)", sentence)
+            index = re.search(r"(나스닥100|나스닥|러셀2000)[^.!?]{0,25}?(\d+(?:\.\d+)?)%\s*(?:올랐|상승)", sentence)
+            breadth = re.search(r"(S&P500)\s*(?:구성\s*)?종목의\s*(약\s*)?(\d+(?:\.\d+)?)%는\s*하락", sentence)
+            if not period or not index or not breadth:
+                continue
+            fact = (f"{period.group(1)} {index.group(1)}은 {index.group(2)}% 올랐지만 "
+                    f"{breadth.group(1)} 구성 종목의 {breadth.group(2) or ''}{breadth.group(3)}%는 하락했다.")
+            average = re.search(r"종목별\s*평균\s*하락률은\s*(\d+(?:\.\d+)?)%", source)
+            if average:
+                fact += f" 종목별 평균 하락률은 {average.group(1)}%였다."
             if core_sentence_is_complete(fact):
                 return fact
     if focus == "earnings":
@@ -6889,7 +6924,7 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
             )
             return alert
 
-    if any(term in title.lower() for term in KOREAN_BUSINESS_MARKET_RECAP_TERMS):
+    if market_materiality.focus_kind(title) != "breadth" and any(term in title.lower() for term in KOREAN_BUSINESS_MARKET_RECAP_TERMS):
         return None
 
     # Source-backed changes must survive the legacy headline vocabulary gate.

@@ -7,7 +7,7 @@ import re
 from functools import lru_cache
 
 
-VERSION = 44
+VERSION = 45
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -94,6 +94,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("nuclear_warning", r"핵\s*(?:대응|사용|공격|위협)|nuclear.{0,12}(?:threat|response)", r"(?:핵|특별한\s*수단|모든\s*무기).{0,80}(?:대응|사용|경고|위협|준비|불가피)"),
     ("military_reinforcement", r"(?:항모|항공모함|병력).{0,40}(?:추가\s*파견|증강)", r"추가\s*파견|병력.{0,20}증강"),
     ("trading_status", r"거래\s*재개|액면병합|주식병합", r"거래.{0,12}재개|재개.{0,12}거래|액면병합|주식병합"),
+    ("sanctions_request", r"제재.{0,30}(?:요청|요구|해야)|sanctions?.{0,30}(?:request|call)", r"제재[^.!?]{0,35}(?:요청|요구|해달라|해야)|sanctions?.{0,35}(?:request|call)"),
     ("authorized_capital", r"수권\s*(?:자본|주식)|authorized (?:capital|shares)", r"수권\s*(?:자본|주식)|authorized (?:capital|shares)"),
     ("customer_implementation", r"1차\s*시공|초도\s*납품", r"1차\s*시공|초도\s*납품"),
     ("commercial_order", r"수주|공급\s*계약|납품\s*계약|발사\s*계약|\d+\s*년\s*계약(?!가)", r"수주|발주|계약"),
@@ -115,10 +116,10 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("macro_release", r"\bcpi\b|\bpce\b|\bppi\b|\bgdp\b|고용|실업률|물가|건설지출", r"cpi|pce|ppi|gdp|고용|실업|물가|건설지출|인플레이션|inflation|payroll"),
     ("export_results", r"수출(?:액|실적|량)|수출.{0,20}(?:\d위|역대|최대|최저|증가|감소)", r"수출(?:액|실적|량)|수출.{0,45}(?:\d|최대|최저)"),
     ("project_cost", r"(?:LNG|원전|데이터센터|발전소|공장).{0,20}(?:사업비|건설비|사업\s*비용)", r"(?:LNG|원전|데이터센터|발전소|공장).{0,40}(?:사업비|건설비|비용)"),
+    ("breadth", r"(?:상승|하락)\s*종목|순환매|쏠림|(?:S&P500|코스피|코스닥|나스닥).{0,30}종목.{0,20}%.{0,15}(?:하락|상승)", r"(?:오른|내린|상승|하락)\s*종목|종목.{0,20}%.{0,15}(?:하락|상승)|순환매|쏠림|순매수|순매도|자금.{0,12}이동"),
     ("energy_supply", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|\bbrent\b|\boil\b|hormuz|tanker", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|항행|통항|brent|\boil\b|hormuz|tanker|shipping"),
     ("bond_yield", r"금리|국채.{0,8}(?:투매|수익률)|bond yields|treasury yields", r"금리|국채.{0,8}수익률|bond yields|treasury yields|interest rates"),
     ("fx", r"환율|약달러|강달러|달러화|원[·/]달러|달러[·/]원|\bndf\b|exchange rate", r"환율|달러화|달러[·/]원|원[·/]달러|\bndf\b|exchange rate|dollar"),
-    ("breadth", r"(?:상승|하락)\s*종목|순환매|쏠림", r"(?:오른|내린|상승|하락)\s*종목|순환매|쏠림|순매수|순매도|자금.{0,12}이동"),
     ("production_capacity", r"증설|캐파|생산능력|착공|가동\s*(?:중단|시작)|생산\s*중단|production capacity|capacity expansion|production halt", r"증설|캐파|생산능력|착공|가동|생산|production capacity|capacity|construction|production"),
     ("project_buildout", r"데이터센터\s*(?:구축|건설)|data cent(?:er|re).{0,15}(?:build|construction)", r"데이터센터[^.!?]{0,80}(?:구축|건설)|(?:구축|건설).{0,30}데이터센터|data cent(?:er|re).{0,80}(?:build|construction)|(?:build|construction).{0,30}data cent(?:er|re)"),
     ("research_spending", r"r&d|연구개발", r"r&d|연구개발"),
@@ -212,7 +213,7 @@ def focus_kind(title: str) -> str:
         return "capital_listing"
     # The changed measure/action outranks a company or commodity mentioned
     # earlier in a headline (e.g. DRAM share, not generic memory demand).
-    for kind in ("project_response", "capital_spending", "industry_market_share", "trade_threat", "stockpile_release", "equity_compensation", "commercial_order"):
+    for kind in ("project_response", "capital_spending", "industry_market_share", "trade_threat", "stockpile_release", "equity_compensation", "commercial_order", "breadth", "sanctions_request"):
         if next(head for name, head, _source in HEADLINE_FOCUS if name == kind).search(title or ""):
             return kind
     matches = [(match.start(), index, kind) for index, (kind, headline, _source) in enumerate(HEADLINE_FOCUS)
@@ -227,7 +228,7 @@ def focus_matches(title: str, sentence: str) -> bool:
         return False
     kind = focus_kind(title)
     if kind == "trading_status":
-        return bool(re.search(r"거래.{0,15}재개|재개.{0,15}거래|액면병합|주식병합", sentence)
+        return bool(re.search(r"거래.{0,15}재개|재개.{0,15}거래|액면병합|주식병합|보통주.{0,45}범위로\s*병합", sentence)
                     and re.search(r"발표|상정|결정|승인|추진|시행|예정|재개(?:된|됐|한다|일|\s*기준가)|\d+\s*(?:대|:|주를)\s*\d+|announc|approv|plan", sentence, re.I)
                     and not re.search(r"(?:사례|전례)가|일부\s*(?:투자자|애널리스트)|보장할\s*수\s*없", sentence))
     if kind == "authorized_capital":
@@ -384,7 +385,7 @@ RULES = (
     ("debt_repayment_change", ("earnings", "timeline"),
      r"부채|대출|debt|loan", r"(?:전액\s*)?상환(?:해|했|완료)|repaid|repayment completed"),
     ("trading_status_change", ("flows", "timeline"),
-     r"거래\s*재개|매매\s*재개|액면병합|주식병합|거래정지|매매정지",
+     r"거래\s*재개|매매\s*재개|액면병합|주식병합|거래정지|매매정지|보통주.{0,45}범위로\s*병합",
      r"재개|결정|발표|완료|정지"),
     ("capital_listing_stage", ("flows", "timeline"),
      r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|ETF",
@@ -494,7 +495,7 @@ RULES = (
      r"방위사업|국방예산|방위예산|조달예산|missile defense|defense budget|procurement budget",
      r"추산|심의|추정|예산안|cost estimate|cost study|budget proposal"),
     ("market_price_or_flow", (),
-     r"주가|증시|코스피|코스닥|etf|etn|순매수|순매도|거래대금|유입|유출|수익률|주식|shares|stocks|equities|inflows|outflows",
+     r"주가|증시|코스피|코스닥|나스닥|S&P\s*500|러셀\s*2000|etf|etn|순매수|순매도|거래대금|유입|유출|수익률|주식|shares|stocks|equities|inflows|outflows",
      r"급등|급락|상승|하락|순매수|순매도|유입|유출|이동|상장|편입|편출|증가|감소|surge|slump|rise|fall|inflows|outflows|list|rebalance"),
     ("physical_supply_or_capacity", ("earnings", "timeline"),
      r"공장|(?<!재)생산(?!자|유발)|설비|공급|수요|재고|수율|리드타임|부족|품귀|항만|물류|운송|데이터센터|AI\s*팩토리|factory|production|supply|demand|inventory|lead time|port|freight|data cent(?:er|re)",
@@ -532,7 +533,7 @@ RULES = (
      r"파업|노조|성과급|임단협|(?<!금)감원|(?:인력|인원|일자리).{0,20}감축|임금|strike|union|layoff|wage",
      r"생산|공장|운송|항만|비용|인상|교섭|협상|부결|타결|주식|지급|중단|감축|production|factory|port|cost|talks|shares|halt|cut"),
     ("customer_discussions", ("earnings", "timeline"),
-     r"공급|고객|구매|생산|공동개발|공동 개발|인증|hbm|파운드리|자율주행|데이터센터|ai.{0,4}(?:반도체|인프라)|supply|customer|procurement|co-develop|foundry|autonomous|data center",
+     r"공급|고객|구매|생산|공동개발|공동 개발|hbm|파운드리|자율주행|데이터센터|ai.{0,4}(?:반도체|인프라)|supply|customer|procurement|co-develop|foundry|autonomous|data center",
      r"협상|논의|검토|회동|협력(?!사)|합의|협약|negotiat|discuss|consider|meeting|collaborat|agreement"),
 )
 COMPILED_RULES = tuple(
@@ -552,6 +553,15 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
         return False
     if kind == "authorized_capital_proposal":
         return focus_matches("수권자본 증액", sentence)
+    if kind == "trading_status_change":
+        if re.search(r"(?:기준인지|반영됐는지).{0,25}(?:확인되지|불명확)|회사가 발표한 값이 아니라", sentence):
+            return False
+        return bool(re.search(
+            r"(?:거래|매매).{0,25}(?:재개|정지)|"
+            r"(?:액면|주식)병합.{0,60}(?:추진|상정|결정|승인|시행|완료|발표)|"
+            r"\d+주를\s*\d+주로\s*합치는\s*액면병합|"
+            r"\d+대\d+(?:에서\s*\d+대\d+)?[^.!?]{0,30}병합.{0,55}(?:상정|결정|승인|발표)", sentence,
+        ))
     if kind in {"commercial_order", "corporate_transaction", "customer_supply_start", "customer_discussions", "industrial_partnership_execution"} and PAST_ACTION.search(sentence):
         return False
     if kind == "rates_fx_or_macro" and re.search(r"환율\s*환산|매출\s*인식|기간\s*귀속|기말\s*조정", sentence):
@@ -678,6 +688,12 @@ def transmission_scope(title: str, evidence: list[dict]) -> tuple[int, str]:
     """Prioritize sourced market/industry changes, not merely dense issuer facts."""
     kinds = {item['kind'] for item in evidence}
     excerpts = ' '.join(item['source_excerpt'] for item in evidence)
+    if focus_kind(title) == 'breadth' and 'market_price_or_flow' in kinds and QUANTITY.search(excerpts) and re.search(
+        r"S&P\s*500|나스닥|러셀\s*2000|코스피|코스닥", excerpts, re.I,
+    ):
+        return 3, 'market_wide_breadth_change'
+    if 'policy_agreement_clarification' in kinds and re.search(r"한미|한국|양국|Korea", excerpts, re.I):
+        return 3, 'bilateral_policy_agreement_clarification'
     if kinds & {'policy_scope_or_stage', 'export_control_scope', 'environmental_approval'} and re.search(
         r"관세|수출통제|수입.{0,20}(?:금지|제한)|금리|예탁금|FCC|BIS|NEPA|tariff|export control|import ban|interest rate", title, re.I,
     ):
@@ -685,7 +701,7 @@ def transmission_scope(title: str, evidence: list[dict]) -> tuple[int, str]:
     if focus_kind(title) == 'macro_release' and kinds & {'rates_fx_or_macro'} and QUANTITY.search(excerpts) and not REGIONAL_CPI.search(title):
         return 3, 'national_macro_release'
     if kinds & {'energy_stockpile_action', 'energy_geopolitics_or_supply_risk'} and re.search(
-        rf"{OIL_PRICE}|원유|비축|경유|천연가스|호르무즈|이란|우크라이나|oil|stockpile|hormuz|iran|ukraine", title, re.I,
+        rf"{OIL_PRICE}|원유|비축|경유|천연가스|호르무즈|이란|우크라이나|oil|stockpile|hormuz|iran|ukraine", f"{title} {excerpts}", re.I,
     ):
         return 3, 'energy_or_geopolitical_transmission'
     if kinds & {'market_price_or_flow'} and re.search(r"외국인|기관|연기금|ETF|ETN", title, re.I) and re.search(
@@ -758,6 +774,9 @@ def assess(title: str, body: str) -> dict:
     sentences = source_sentences(body)
     lead = " ".join(sentences[:3])
     headline_lead = f"{title} {lead}"
+    if re.search(r"전남편|전아내|열애|결혼식|음주\s*회동|사적\s*만남|celebrity romance", headline_lead, re.I) and not ENTERPRISE_CHANGE.search(title):
+        result.update(disposition="exclude", priority=0, reason="private_life_without_business_change")
+        return result
     if re.search(r"배당.{0,45}(?:유지|동결)|dividend.{0,30}unchanged", title, re.I) and not re.search(
         r"(?:특별|추가)\s*배당.{0,20}(?:신설|도입|증액)|자사주.{0,20}(?:신규|확대|매입|소각)|"
         r"배당.{0,20}(?:인상|인하|삭감|중단|재개)|dividend.{0,20}(?:rais|cut|suspend|resum)", headline_lead, re.I,
@@ -841,7 +860,10 @@ def assess(title: str, body: str) -> dict:
     routine = bool(ROUTINE_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     soft = bool(SOFT_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     matches = []
+    headline_text = re.sub(r"[\W_]+", "", title).casefold()
     for index, sentence in enumerate(sentences):
+        if re.sub(r"[\W_]+", "", sentence).casefold() == headline_text:
+            continue
         if PHOTO_DESCRIPTION.search(sentence):
             continue
         if BACKGROUND.search(sentence) or COMPANY_PROFILE.search(sentence) or re.match(r"^한편[,\s]", sentence) or not period_matches(title, sentence):
@@ -853,7 +875,9 @@ def assess(title: str, body: str) -> dict:
         # A numeric company profile or another topic later in the article must
         # not turn today's ceremonial/promotion headline into a market event.
         anchored = any(token in sentence.lower() for token in tokens)
-        adjacent = index > 0 and any(token in sentences[index - 1].lower() for token in tokens)
+        adjacent = (index > 0
+                    and re.sub(r"[\W_]+", "", sentences[index - 1]).casefold() != headline_text
+                    and any(token in sentences[index - 1].lower() for token in tokens))
         if (focus_kind(title) or DENIAL_HEADLINE.search(title)) and not focus_matches(title, sentence):
             continue
         for kind, axes, subject, action in COMPILED_RULES:
@@ -886,7 +910,7 @@ def assess(title: str, body: str) -> dict:
             ):
                 continue
             if kind == "market_price_or_flow" and not re.search(
-                r"주가|증시|코스피|코스닥|etf|etn|순매수|순매도|거래대금|수익률|주식|자금|자본|투자금|shares|stocks|equities|capital|fund flows", sentence, re.I,
+                r"주가|증시|코스피|코스닥|나스닥|S&P\s*500|러셀\s*2000|etf|etn|순매수|순매도|거래대금|수익률|주식|자금|자본|투자금|shares|stocks|equities|capital|fund flows", sentence, re.I,
             ):
                 continue
             if kind == "market_price_or_flow" and re.search(r"ETF.{0,80}(?:상장|출시)", sentence, re.I) and not re.search(
@@ -1003,6 +1027,9 @@ def assess(title: str, body: str) -> dict:
         result.update(disposition="keep", reason="source_change_evidence")
         result["news_value_rank"] = news_value_rank(result["evidence"])
         kinds = {item["kind"] for item in result["evidence"]}
+        if kinds == {"authorized_capital_proposal"}:
+            result["priority"] = 1
+            result["scope_note"] = "authorized_capacity_without_committed_financing_or_issuance"
         if re.search(r"대선|선거|정치\s*지형|유세|출마|지지율", title) and kinds <= {"rates_fx_or_macro", "market_outlook"}:
             result["priority"] = 1
             result["scope_note"] = "political_profile_not_new_macro_release_or_policy_change"
