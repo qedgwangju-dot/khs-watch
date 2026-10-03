@@ -172,6 +172,7 @@ TRANSLATE_MYMEMORY = "https://api.mymemory.translated.net/get"
 IDENTIFIERS = (
     "OpenAI", "Cerebras", "NVIDIA", "AMD", "GPT-6.1 Sol", "GPT-6 Astra",
     "GPT-5.6 Sol", "Ultrafast", "GPU", "WSE", "ASIC",
+    "Synopsys", "GPT-Synopsys", "Autopilot", "EDA", "AWS",
 )
 
 
@@ -246,7 +247,18 @@ def source_trusted(source: str) -> bool:
 
 
 def material(item: dict) -> bool:
-    low = f" {item.get('title','')} {item.get('description','')} ".lower()
+    text = f" {item.get('title','')} {item.get('description','')} "
+    low = text.lower()
+
+    # Synopsys EDA monetization / AI-chip-design lane.
+    stage = synopsys_stage(text)
+    if stage:
+        if stage in {"investor_day_baseline","monetization_baseline","aws_baseline","gpt_baseline","background"}:
+            return False
+        if item.get("kind") == "official_page":
+            return True
+        return source_trusted(item.get("source", ""))
+
     if not ("openai" in low or "gpt-" in low or "gpt " in low):
         return False
     if not any(x in low for x in ACCELERATOR_TERMS):
@@ -259,6 +271,15 @@ def material(item: dict) -> bool:
 
 
 def detect_category(text: str) -> str:
+    syn = synopsys_stage(text)
+    if syn == "guidance_change":
+        return "Synopsys FY27 가이던스 변경"
+    if syn == "pricing_execution":
+        return "Synopsys 소비기반 과금 실제 도입"
+    if syn == "gpt_milestone":
+        return "GPT-Synopsys 상용화·수익화"
+    if syn == "new_hyperscaler_contract":
+        return "Synopsys 신규 하이퍼스케일러 계약"
     low = text.lower()
     scored = []
     for label, patterns in CATEGORY_PATTERNS:
@@ -272,6 +293,12 @@ def detect_category(text: str) -> str:
 
 
 def detect_entity(text: str) -> str:
+    if SYNOPSYS_ID.search(text):
+        if SYNOPSYS_GPT.search(text):
+            return "Synopsys · OpenAI"
+        if SYNOPSYS_AWS.search(text):
+            return "Synopsys · AWS"
+        return "Synopsys"
     low = text.lower()
     if "cerebras" in low and "nvidia" in low:
         return "OpenAI · Cerebras/NVIDIA"
@@ -479,6 +506,14 @@ def concise_fact(item: dict) -> str:
 
 
 def impact(category: str) -> str:
+    if category == "Synopsys FY27 가이던스 변경":
+        return "FY27 매출 $11.15B 기준선에서 상향·하향이 발생하면 AI 설계 복잡도와 EDA 소비량이 실제 매출로 전환되는 속도가 바뀐 신호입니다."
+    if category == "Synopsys 소비기반 과금 실제 도입":
+        return "구독형 EDA에 사용량·소비기반 과금이 실제 고객 단가로 붙으면 AI 에이전트가 5~10배 더 많은 툴 실행을 유발할수록 Synopsys의 고객당 매출이 엔지니어 좌석 수보다 설계 연산량에 더 민감해질 수 있습니다."
+    if category == "GPT-Synopsys 상용화·수익화":
+        return "OpenAI와의 공동개발이 실제 고객 출시·사용권·수익배분으로 전환되면 EDA 도구 사용량 자체가 새로운 반복매출원이 되는지 확인할 수 있습니다."
+    if category == "Synopsys 신규 하이퍼스케일러 계약":
+        return "AWS 외 추가 하이퍼스케일러가 Synopsys IP·EDA를 채택하면 맞춤형 AI 칩 증가가 설계자동화와 IP 매출로 직접 연결되는 신호입니다."
     if category == "모델→가속기 배치 확정":
         return "같은 OpenAI 모델이 어느 가속기에서 실제 서비스되는지가 확정되면 Cerebras와 NVIDIA의 실질 점유 영역이 바뀝니다."
     if category == "Ultrafast 출시·지원범위":
@@ -493,7 +528,9 @@ def impact(category: str) -> str:
 
 
 def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
-    title = f"⚡ <b>AI 추론 가속기·모델 라우팅 Watch</b> · 중요 변화 {len(events)}건"
+    has_eda = any(any(SYNOPSYS_ID.search(f"{x.get('title','')} {x.get('description','')}") for x in cluster) for cluster in events)
+    watch_name = "AI 반도체 설계·추론 가속기 Watch" if has_eda else "AI 추론 가속기·모델 라우팅 Watch"
+    title = f"⚡ <b>{watch_name}</b> · 중요 변화 {len(events)}건"
     lines = [f"<i>{now.astimezone(KST).strftime('%m/%d %H:%M KST')}</i>"]
     for idx, cluster in enumerate(events, 1):
         rep = cluster[0]
@@ -517,7 +554,7 @@ def build_alert(events: list[list[dict]], now: dt.datetime) -> tuple[str,str]:
             lines.append("🔗 " + " · ".join(links))
     lines += [
         "",
-        "<b>다음 확인</b>: 모델→가속기 확정 · Ultrafast 정식 출시/지원범위 · tokens/s · batch 크기 · 가격 · Cerebras 750MW 트랜치 가동 · 실제 live MW · 계약 증감·지연",
+        "<b>다음 확인</b>: Synopsys 소비기반 실제 단가·고객 채택률·FY27 가이던스 변경·GPT-Synopsys 상용출시·추가 하이퍼스케일러 계약 · 모델→가속기 확정 · Ultrafast 정식 출시/지원범위 · tokens/s · batch 크기 · 가격 · Cerebras 750MW 트랜치 가동 · 실제 live MW · 계약 증감·지연",
     ]
     return title, "\n".join(lines)
 
@@ -608,7 +645,7 @@ def main() -> int:
         ALERT_BODY.write_text(body.rstrip() + "\n", encoding="utf-8")
 
     status = [
-        "# AI 추론 가속기·모델 라우팅 Watch",
+        "# AI 반도체 설계·추론 가속기 Watch",
         "",
         f"- 조회시각: {now.astimezone(KST).strftime('%Y-%m-%d %H:%M:%S KST')}",
         f"- 최초 기준선: {'예' if baseline else '아니오'}",
