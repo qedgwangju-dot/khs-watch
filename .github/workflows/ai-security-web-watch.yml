@@ -118,6 +118,34 @@ jobs:
               raise RuntimeError("Model identifier was not preserved")
           PY
 
+      - name: Verify frontier accord security classification on push
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          python - <<'PY'
+          from scripts.ai_security_web_watch import detect_category, event_impact
+
+          cases = [
+              (
+                  "White House Accord on Super Intelligence external audit found security control failure and unauthorized access",
+                  "공동서약·외부감사 보안실패",
+              ),
+              (
+                  "independent board oversight board ordered pause of frontier model deployment",
+                  "이사회·감독기구 중단명령",
+              ),
+          ]
+          for text, expected in cases:
+              actual = detect_category(text)
+              print(f"ai_security_accord_case={expected} actual={actual}")
+              if actual != expected:
+                  raise RuntimeError(f"Accord security category mismatch: expected={expected} actual={actual}")
+          if "외부감사" not in event_impact([{"category":"공동서약·외부감사 보안실패"}]):
+              raise RuntimeError("Accord audit impact text missing")
+          if "중단" not in event_impact([{"category":"이사회·감독기구 중단명령"}]):
+              raise RuntimeError("Accord oversight impact text missing")
+          PY
+
       - name: Run live web security watch
         run: |
           rm -f out/ai_security_web_watch_alert_title.txt out/ai_security_web_watch_alert.md out/ai_security_web_watch_telegram_confirmed.json
