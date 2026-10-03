@@ -1,9 +1,17 @@
 name: Treasury ETF Fund Flow Telegram
 
 on:
+  push:
+    paths:
+      - ".github/workflows/treasury-etf-flow-telegram.yml"
   schedule:
     - cron: "30,35,40 8 * * *"
       timezone: "Asia/Seoul"
+  workflow_run:
+    workflows:
+      - "Global Rates & Yen Carry Telegram Watch"
+    types:
+      - completed
   workflow_dispatch:
 
 permissions:
