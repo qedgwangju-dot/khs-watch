@@ -20,7 +20,7 @@ TOP_N=15
 POWER_DELTA=50.0
 PROGRESS_DELTA=5.0
 DATE_DELTA=60
-FORMAT_VERSION=4
+FORMAT_VERSION=5
 
 TRACKED_NAMES=(
 "Microsoft Fairwater Wisconsin",
@@ -192,12 +192,16 @@ def short(v):
     parts=[x.strip() for x in re.split(r"[,;|]",v) if x.strip()]
     return "·".join(dict.fromkeys(SHORT.get(x,x) for x in parts))
 def qlabel(d,progress):
-    if progress>=99.5:return "완료"
+    if progress>=99.5:
+        return "Epoch 추정 IT전력 계획치 도달"
     if not d:return "일정 미기재"
     return f"{d.year}.{(d.month-1)//3+1}Q"
 def stage(status,current,planned,progress):
     low=(status or "").lower()
-    if progress>=99.5:return "가동 완료"
+    if progress>=99.5:
+        if "operational" in low:
+            return "Epoch 상태상 가동·IT전력 계획치 도달"
+        return "Epoch 추정 IT전력 계획치 도달"
     prefix="부분 가동·" if current>0 and current<planned else ""
     for keys,label in (
         (("commission","fit-out","fit out"),"시운전·내부설비"),
@@ -235,7 +239,8 @@ def stage_rank(label):
         "시운전·내부설비":6,
         "확장 공사":6,
         "가동 확대":7,
-        "가동 완료":8,
+        "Epoch 상태상 가동·IT전력 계획치 도달":8,
+        "Epoch 추정 IT전력 계획치 도달":8,
     }
     return order.get(base,0)
 
@@ -320,7 +325,7 @@ def changes(old,new):
             direction="상향" if mw_delta>0 else "하향"
             out.append(f"{p['display']} Epoch 현재 IT전력 추정치 {direction} {old_mw:,.0f}→{p['current_mw']:,.0f}MW")
         if abs(p["planned_mw"]-float(o.get("planned_mw",0)))>=POWER_DELTA:out.append(f"{p['display']} 계획 IT전력 {float(o.get('planned_mw',0)):,.0f}→{p['planned_mw']:,.0f}MW")
-        if abs(p["progress"]-float(o.get("progress",0)))>=PROGRESS_DELTA:out.append(f"{p['display']} 진행률 {float(o.get('progress',0)):.0f}%→{p['progress']:.0f}%")
+        if abs(p["progress"]-float(o.get("progress",0)))>=PROGRESS_DELTA:out.append(f"{p['display']} Epoch IT전력 비율 {float(o.get('progress',0)):.0f}%→{p['progress']:.0f}%")
         od=pdate(o.get("completion_date","")); nd=pdate(p["completion_date"])
         if od and nd and abs((nd-od).days)>=DATE_DELTA:out.append(f"{p['display']} 완료시점 {o.get('completion','')}→{p['completion']} ({'지연' if nd>od else '앞당김'})")
         if p["stage"]!=o.get("stage") and p["progress"]<99.5:
@@ -335,9 +340,10 @@ def changes(old,new):
         if p.get("mw_quality")!=o.get("mw_quality"):out.append(f"{p['display']} MW 품질 {o.get('mw_quality','기존 미분류')}→{p.get('mw_quality')}")
         if (p["owner"],p["users"],p["investors"])!=(o.get("owner"),o.get("users"),o.get("investors")):out.append(f"{p['display']} 소유·사용·투자자 정보 변경")
         if (p.get("energy_site"),p.get("energy_future"),p.get("energy_quality"))!=(o.get("energy_site"),o.get("energy_future"),o.get("energy_quality")):out.append(f"{p['display']} 전력원 정보 변경")
-        old_issue_fps=[x.get("fingerprint") for x in o.get("company_issues",[])]
-        new_issue_fps=[x.get("fingerprint") for x in p.get("company_issues",[])]
-        if old_issue_fps!=new_issue_fps:out.append(f"{p['display']} 기업별 규제·법적 이슈 변경")
+        old_issue_fps={x.get("fingerprint") for x in o.get("company_issues",[]) if x.get("fingerprint")}
+        new_issue_fps={x.get("fingerprint") for x in p.get("company_issues",[]) if x.get("fingerprint")}
+        if new_issue_fps-old_issue_fps:
+            out.append(f"{p['display']} 동일 프로젝트 직접 규제·법적 이슈 신규")
     return list(dict.fromkeys(out))
 def badge(n):
     m={"0":"0️⃣","1":"1️⃣","2":"2️⃣","3":"3️⃣","4":"4️⃣","5":"5️⃣","6":"6️⃣","7":"7️⃣","8":"8️⃣","9":"9️⃣"}
@@ -346,15 +352,15 @@ def h(v):return html.escape(str(v),quote=True)
 
 def render(ps,chg,upd):
     planned=sum(x["planned_mw"] for x in ps); current=sum(x["current_mw"] for x in ps); pct=current/planned*100 if planned else 0
-    lines=["<b>📊 미국 주요 AI 데이터센터 건설 현황</b>",f"출처: Epoch AI · {h(upd)}","용량 = 계획 최종 IT전력 / 진행률 = Epoch 현재 추정 IT전력 ÷ 계획 최종 IT전력","","<b>🔄 이번 핵심 변화</b>"]
+    lines=["<b>📊 미국 주요 AI 데이터센터 건설 현황</b>",f"출처: Epoch AI · {h(upd)}","용량 = 계획 최종 IT전력 / IT전력 비율 = Epoch 현재 추정 IT전력 ÷ 계획 최종 IT전력","","<b>🔄 이번 핵심 변화</b>"]
     lines += [f"• {h(x)}" for x in chg[:6]]
     if len(chg)>6:lines.append(f"• 그 외 {len(chg)-6}건은 상태에 반영")
-    lines += ["",f"• 핵심 {len(ps)}개 계획 최종 IT전력 합계 <b>{planned/1000:.1f}GW</b>",f"• Epoch 현재 추정 IT전력 합계 <b>{current/1000:.1f}GW</b> · 계획 대비 비율 <b>{pct:.1f}%</b>",f"• GW 품질 │ 계획 {planned/1000:.1f}GW를 실제 전원 인가·상업가동으로 간주하지 않고 Epoch 현재 추정치 {current/1000:.1f}GW와 분리",""]
+    lines += ["",f"• 핵심 {len(ps)}개 계획 최종 IT전력 합계 <b>{planned/1000:.1f}GW</b>",f"• Epoch 현재 추정 IT전력 합계 <b>{current/1000:.1f}GW</b> · 계획 IT전력 대비 비율 <b>{pct:.1f}%</b>",f"• GW 품질 │ 계획 {planned/1000:.1f}GW를 실제 전원 인가·상업가동으로 간주하지 않고 Epoch 현재 추정치 {current/1000:.1f}GW와 분리",""]
     for i,p in enumerate(ps,1):
         inv=p["investors"] if p["investors"]!="미기재" else "Epoch 투자자 미기재"
         lines += [f"<b>{badge(i)} {h(p['display'])}{' ⚠️' if p['risk'] else ''}</b>",
                   f"{h(p['owner'])} → {h(p['users'])} | {h(inv)}",
-                  f"<b>{p['planned_mw']:,.0f}MW</b> | {h(p['completion'])} | <b>{p['progress']:.0f}%</b> ({p['current_mw']:,.0f}/{p['planned_mw']:,.0f}MW) | {h(p['stage'])}",
+                  f"<b>{p['planned_mw']:,.0f}MW</b> | {h(p['completion'])} | IT전력 비율 <b>{p['progress']:.0f}%</b> ({p['current_mw']:,.0f}/{p['planned_mw']:,.0f}MW) | {h(p['stage'])}",
                   f"🧭 MW 품질 │ <b>{h(p.get('mw_quality','미분류'))}</b> · 계획 {p['planned_mw']:,.0f}MW → Epoch 현재 추정 {p['current_mw']:,.0f}MW · 접속계약·공식 전원 인가·상업가동 문서는 별도 검증",
                   f"⚡ 전력원 │ [{h(p['energy_quality'])}] {h(p['energy_site'])} | 장기전원: {h(p['energy_future'])}"]
         for issue in p.get("company_issues",[])[:2]:
@@ -362,7 +368,7 @@ def render(ps,chg,upd):
                 f"🚨 기업 이슈 │ [{h(issue.get('relationship','기업 연관'))}] "
                 f"{h(issue.get('label','규제·운영'))} · {h(issue.get('summary',''))}"
             )
-    lines += ["","<b>📌 판정 기준</b>","• 진행률은 Epoch timeline의 현재 추정 IT전력 ÷ 계획 최종 IT전력으로 직접 계산한 보조지표","• Epoch의 IT power는 GPU 서버·네트워크·스토리지를 포함한 총 IT전력 용량 추정치이며, 공식 전원 인가 MW나 계통 접속계약 MW와 같은 값으로 취급하지 않음","• Epoch 추적대상은 원칙적으로 착공한 프로젝트지만 접속계약·공식 전원 인가·상업가동 문서를 대신하지 않음","• 발표·계획 MW → 착공 → Epoch 현재 추정 IT전력 → 공식 전원 인가·상업가동을 서로 다른 단계로 관리하고 미확인 단계는 임의 승격하지 않음","• 계획용량·완료시점·공정은 위성영상·허가·회사자료 기반 Epoch 추정치","• IT전력 추정은 대략 ±1.4배, 일정은 약 ±6개월 불확실성을 염두에 둠","• 50MW 이상 용량 변화, 진행률 ±5%p, MW 품질 단계 변경, 완료시점 ±60일, 상위15 진입·이탈 때 전체판 재전송","• 자금조달·전력·인허가 위험은 기존 실행병목 감시와 별도 교차검증","• 전력원은 부지 실제·계획 전원과 기업 차원의 장기전원(원전·핵융합·지열 등)을 반드시 분리하고, 미확정은 미확정으로 표시","• 천연가스와 LNG는 구분하며 LNG 공급계약·터미널·연료근거가 확인될 때만 LNG로 표기","• 프로젝트별 기업 이슈는 동일 부지·동일 프로젝트 직접 연계가 구조화되어 확인될 때만 해당 프로젝트 줄에 표시","• 다른 지역의 기업 공통 규제·환경·소송 이슈는 프로젝트 줄에 복제하지 않고 별도 하이퍼스케일러 기업 리스크 알림에서 처리"]
+    lines += ["","<b>📌 판정 기준</b>","• IT전력 비율은 Epoch timeline의 현재 추정 IT전력 ÷ 계획 최종 IT전력으로 직접 계산한 보조지표이며 건설 공정률·상업가동률이 아님","• Epoch의 IT power는 GPU 서버·네트워크·스토리지를 포함한 총 IT전력 용량 추정치이며, 공식 전원 인가 MW나 계통 접속계약 MW와 같은 값으로 취급하지 않음","• Epoch 추적대상은 원칙적으로 착공한 프로젝트지만 접속계약·공식 전원 인가·상업가동 문서를 대신하지 않음","• 발표·계획 MW → 착공 → Epoch 현재 추정 IT전력 → 공식 전원 인가·상업가동을 서로 다른 단계로 관리하고 미확인 단계는 임의 승격하지 않음","• 계획용량·완료시점·공정은 위성영상·허가·회사자료 기반 Epoch 추정치","• IT전력 추정은 대략 ±1.4배, 일정은 약 ±6개월 불확실성을 염두에 둠","• 50MW 이상 용량 변화, IT전력 비율 ±5%p, MW 품질 단계 변경, 완료 추정시점 ±60일, 상위15 진입·이탈 때 전체판 재전송","• 자금조달·전력·인허가 위험은 기존 실행병목 감시와 별도 교차검증","• 전력원은 부지 실제·계획 전원과 기업 차원의 장기전원(원전·핵융합·지열 등)을 반드시 분리하고, 미확정은 미확정으로 표시","• 천연가스와 LNG는 구분하며 LNG 공급계약·터미널·연료근거가 확인될 때만 LNG로 표기","• 프로젝트별 기업 이슈는 동일 부지·동일 프로젝트 직접 연계가 구조화되어 확인될 때만 해당 프로젝트 줄에 표시","• 다른 지역의 기업 공통 규제·환경·소송 이슈는 프로젝트 줄에 복제하지 않고 별도 하이퍼스케일러 기업 리스크 알림에서 처리"]
     return "\n".join(lines)+"\n"
 
 def main():
