@@ -54,6 +54,18 @@ Every defect or requested change must follow this sequence:
   seen key across publishers, including migrated historical seen entries.
   Revised values, other periods, core versus headline, and explicit month-on-
   month values remain distinct.
+- A market event must be the article's foreground change. Consumer promotions,
+  humanitarian response, ceremonial politics, regional multiplier studies and
+  historical company profiles cannot qualify through incidental economic words.
+  Actual outages, deaths, production damage, customer negotiations and early
+  policy changes remain eligible when the source establishes the mechanism.
+- Cross-publisher event identities compare actors, action, object, quantities,
+  duration and stage. An unchanged statement is not new because its publisher,
+  URL tracking parameters or query date changed. Changed terms and execution
+  stages must not be suppressed by older coarse title/link keys.
+- DRAM market share must retain its source, period and revenue/bit basis.
+  CAPEX plans must retain their fiscal period and net/gross basis. A reporter's
+  annual extrapolation is not company guidance. A project bill is not a tariff.
 - A visible live radar item contains only the heading, `핵심`, and a clickable
   `출처`. Investment commentary, importance/status labels, duplicate query time,
   per-item `기준/시각`, `경로/섹터`, and the disclaimer must not return.

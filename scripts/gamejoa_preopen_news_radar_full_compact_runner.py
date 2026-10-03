@@ -2228,6 +2228,70 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     if not market_materiality.focus_kind(title) and not market_materiality.DENIAL_HEADLINE.search(title):
         return ""
+    focus = market_materiality.focus_kind(title)
+    source = " ".join(sentences)
+    if re.search(r"트럼프", title) and re.search(r"알래스카", title) and re.search(r"한국|韓", source):
+        threat = next((sentence for sentence in sentences
+                       if not market_materiality.BACKGROUND.search(sentence)
+                       and re.search(r"합의[^.!?]{0,30}(?:않|안\s*하)|서명[^.!?]{0,20}(?:않|안\s*하)", sentence)
+                       and re.search(r"(?:청구|부담)[^.!?]{0,30}(?:두|2)\s*배|(?:두|2)\s*배[^.!?]{0,30}(?:청구|부담)", sentence)), "")
+        if threat:
+            timing = "곧 " if "곧" in threat else ""
+            # A bill/charge is not a tariff. Do not convert the sourced noun.
+            fact = f"트럼프는 한국이 알래스카 투자에 {timing}합의하지 않으면 청구액을 두 배로 올리겠다고 말했다."
+            if core_sentence_is_complete(fact):
+                return fact
+    if focus == "stockpile_release" and not re.search(r"채운|재비축|refill", title, re.I):
+        for sentence in sentences:
+            duration = re.search(r"(\d+)\s*(?:개월|달)", sentence)
+            volume = re.search(r"(\d+(?:\.\d+)?\s*(?:억|만)?\s*배럴)", sentence)
+            if duration and volume and re.search(r"G7|주요\s*7개국", sentence, re.I) and re.search(r"방출[^.!?]{0,35}합의", sentence):
+                fact = f"G7은 향후 {duration.group(1)}개월 동안 비축유 {volume.group(1)}을 방출하기로 합의했다."
+                if core_sentence_is_complete(fact):
+                    return fact
+    identity = market_materiality.source_event_identity({"source_title": title, "source_body": source, "body_verified": True}) if re.search(r"트럼프", title) and re.search(r"석유|원유", title) else ""
+    if ":us_oil_investment:statement:" in identity:
+        for sentence in sentences:
+            amount = re.search(r"(\d+(?:\.\d+)?\s*억\s*달러)", sentence)
+            if amount and re.search(r"트럼프", sentence) and re.search(r"석유|원유", sentence) and re.search(r"투자", sentence) and not market_materiality.BACKGROUND.search(sentence):
+                project = "원유 증산" if re.search(r"원유\s*증산|석유\s*증산", source) else "석유"
+                fact = f"트럼프는 한국의 미국 {project} 사업 투자액이 {amount.group(1)}라고 발표했다."
+                if core_sentence_is_complete(fact):
+                    return fact
+    if focus == "industry_market_share":
+        period = re.search(r"(\d{4}년\s*[1-4]분기)\s*D램\s*매출\s*시장\s*점유율", source, re.I)
+        micron = re.search(r"마이크론(?:은|의)\s*(?:매출\s*)?점유율\s*(\d+(?:\.\d+)?)%", source)
+        hynix = re.search(r"SK하이닉스\s*점유율은\s*(\d+(?:\.\d+)?)%", source, re.I)
+        gap = re.search(r"(?:두\s*업체\s*)?점유율\s*격차는\s*(\d+(?:\.\d+)?)%포인트", source)
+        if period and micron and hynix and gap and "카운터포인트" in source:
+            fact = (
+                f"카운터포인트의 {period.group(1)} D램 매출 점유율은 마이크론 {micron.group(1)}%, "
+                f"SK하이닉스 {hynix.group(1)}%로 격차는 {gap.group(1)}%포인트다."
+            )
+            if core_sentence_is_complete(fact):
+                return fact
+    if focus == "capital_spending":
+        for sentence in sentences:
+            plan = re.search(
+                r"(\d{4}회계연도)\s*상반기\s*(?:\([^)]*\))?\s*설비투자는\s*"
+                r"(\d[\d,.]*\s*억\s*달러)[^.!?]{0,70}이[르를][^.!?]{0,70}"
+                r"하반기[^.!?]{0,100}자본지출이\s*더\s*증가[^.!?]{0,40}예상", sentence,
+            )
+            if plan and re.search(r"^마이크론은", sentence):
+                basis = " 순설비투자" if re.search(r"정부\s*지원금을\s*차감한\s*순액", source) else " 설비투자"
+                fact = (
+                    f"마이크론은 {plan.group(1)} 상반기{basis} {plan.group(2)}를 예상하고 "
+                    "하반기 추가 증액을 밝혔다."
+                )
+                if core_sentence_is_complete(fact):
+                    return fact
+    if focus == "trade_threat":
+        for sentence in sentences:
+            if market_materiality.BACKGROUND.search(sentence) or not market_materiality.focus_matches(title, sentence):
+                continue
+            fact = normalized_article_sentence(sentence)
+            if core_sentence_is_complete(fact) and re.search(r"트럼프|Trump", fact, re.I):
+                return fact
     if market_materiality.focus_kind(title) == "memory":
         issuer = re.match(r"^([A-Za-z가-힣]+증권)\s", title)
         for sentence in sentences:
@@ -7445,6 +7509,9 @@ def semantic_event_theme(alert: dict) -> str:
 
 
 def alert_dedup_key(alert: dict) -> tuple[str, str]:
+    source_identity = market_materiality.source_event_identity(alert)
+    if source_identity:
+        return (source_identity, "event")
     if alert.get("iran_hormuz_escalation"):
         return ("iran_hormuz_military_escalation", str(alert.get("published") or "")[:10])
     macro_theme = telegram.macro_release_theme(alert)
@@ -8677,7 +8744,7 @@ def verified_materiality_axes(alert: dict) -> list[str]:
 
 def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     initial = telegram.display_alerts(alerts, min(max(limit * 3, 12), 30))
-    candidates = initial + alerts
+    candidates = list({id(alert): alert for alert in initial + alerts}.values())
     now = base.kst_now()
     iran_candidates = [alert for alert in candidates if alert.get("iran_hormuz_escalation")]
     if iran_candidates:

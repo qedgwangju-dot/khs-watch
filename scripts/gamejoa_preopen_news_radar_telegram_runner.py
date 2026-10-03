@@ -17,6 +17,8 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
+import gamejoa_market_materiality as market_materiality
+
 
 STRICT_PATH = Path(__file__).with_name("gamejoa_preopen_news_radar_strict_runner.py")
 spec = importlib.util.spec_from_file_location("gamejoa_strict_radar", STRICT_PATH)
@@ -59,6 +61,19 @@ def parse_seen_time(value: str | None):
 
 def digest_seen(value: str) -> str:
     return hashlib.sha256(base.norm(value).encode("utf-8")).hexdigest()[:24]
+
+
+def canonical_article_url(value: str) -> str:
+    """Keep article-identifying parameters; drop only known tracking fields."""
+    parsed = urllib.parse.urlsplit(value)
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+        return value
+    query = [(key, val) for key, val in urllib.parse.parse_qsl(parsed.query, keep_blank_values=True)
+             if not key.lower().startswith("utm_")
+             and not (key.lower() == "input" and val == "1195m")
+             and not (key.lower() in {"ref", "cp"} and val in {"naver", "nv"})]
+    return urllib.parse.urlunsplit(("https", parsed.netloc.lower(), parsed.path,
+                                  urllib.parse.urlencode(sorted(query)), ""))
 
 
 def korean_market_move_theme(alert: dict) -> str:
@@ -200,12 +215,14 @@ def alert_seen_keys(alert: dict) -> list[str]:
     link = str(canonical.get("link") or alert.get("link") or "")
     if "news.google.com/rss/articles" not in link:
         add("link", link)
+        add("link", canonical_article_url(link))
     add(
         "event",
         str(canonical.get("supply_chain_theme") or alert.get("supply_chain_theme") or ""),
     )
     add("event", macro_release_theme(canonical))
     add("event", verified_trade_theme(canonical))
+    add("event", market_materiality.source_event_identity(canonical))
     add("title", str(canonical.get("news") or alert.get("news") or ""))
     add("original", str(canonical.get("original_news") or alert.get("original_news") or ""))
     return list(dict.fromkeys(keys))
@@ -222,6 +239,12 @@ def migrate_seen_title_aliases(state: dict) -> None:
             continue
         alias = f"title:{digest_seen(title)}"
         seen.setdefault(alias, dict(entry))
+        link = str(entry.get("link") or "")
+        if link and "news.google.com/rss/articles" not in link:
+            seen.setdefault(f"link:{digest_seen(canonical_article_url(link))}", dict(entry))
+        source_identity = str(entry.get("source_event_identity") or "") or market_materiality.source_event_identity({"source_title": title})
+        if source_identity:
+            seen.setdefault(f"event:{digest_seen(source_identity)}", dict(entry))
         market_theme = korean_market_move_theme({
             "source_title": title,
             "published": entry.get("first_seen_kst"),
@@ -282,7 +305,11 @@ def filter_previously_seen_alerts(
     skipped: list[dict] = []
     for alert in alerts:
         keys = alert_seen_keys(alert)
-        matching_entries = [seen[key] for key in keys if key in seen]
+        identity = market_materiality.source_event_identity(alert)
+        # A sourced change of amount/stage may keep the same title or URL.
+        # Its structured identity must outrank older coarse title/link keys.
+        match_keys = [f"event:{digest_seen(identity)}"] if identity else keys
+        matching_entries = [seen[key] for key in match_keys if key in seen]
         already_seen = bool(matching_entries) if lane == "live" else any(
             seen_entry_has_lane(entry, lane) for entry in matching_entries
         )
@@ -343,6 +370,7 @@ def record_seen_alerts(alerts: list[dict], now) -> None:
                 "title": alert.get("news") or alert.get("original_news") or "",
                 "source": alert.get("publisher") or alert.get("source") or "",
                 "link": alert.get("link") or "",
+                "source_event_identity": market_materiality.source_event_identity(alert),
             }
     save_seen_state(state, now)
 

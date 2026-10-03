@@ -1824,6 +1824,200 @@ class MaterialityChecks(unittest.TestCase):
         self.assertIn('alert.get("market_materiality") != materiality', (root / "scripts/verify_gamejoa_generated_report.py").read_text(encoding="utf-8"))
 
 
+class ForegroundAndEventIdentityTests(unittest.TestCase):
+    def test_quoted_alaska_bill_is_summarized_as_a_bill_not_a_tariff(self):
+        title = '트럼프 "韓 알래스카 투자 합의않으면 두배로 청구" 노골적 압박'
+        body = (
+            '트럼프는 한국의 알래스카 LNG 투자를 확정 발표했다. '
+            '이어 해당 질문을 한 취재진에 "그들이 합의를 하지 않았다고 하느냐"고 되물으며 '
+            '"곧 합의하지 않는다면 (청구금을) 두 배로 올릴 것이라고 전하라"고 말했다. '
+            '앞서 트럼프는 한국 정부가 500억달러를 투자한다고 발표했다.'
+        )
+        item = radar.normalize_alert_for_output(alert(title, body))
+        self.assertIn("곧 합의하지 않으면", item["telegram_core_fact"])
+        self.assertIn("청구액을 두 배", item["telegram_core_fact"])
+        self.assertNotIn("관세", item["telegram_core_fact"])
+        self.assertNotIn("500억", item["telegram_core_fact"])
+        self.assertEqual(radar.source_core_fact_errors(item), [])
+        self.assertTrue(radar.source_output_aligned(item), item)
+
+    def test_g7_summary_and_cross_source_identity_keep_release_not_export_background(self):
+        title = 'G7 "4달 동안 비축유 1억배럴 방출"…트럼프 압박'
+        body = (
+            '주요 7개국(G7)이 향후 4개월에 걸쳐 비축 경유와 원유 1억 배럴을 방출하기로 합의했다. '
+            'G7은 경유 수출을 금지하지 않기로 의견을 모았다.'
+        )
+        core = radar.detailed_article_core(title, body)
+        self.assertIn("4개월", core)
+        self.assertIn("1억 배럴", core)
+        self.assertNotIn("수출", core)
+        self.assertEqual(radar.source_core_fact_errors({**alert(title, body), "telegram_core_fact": core}), [])
+        self.assertTrue(radar.source_output_aligned(radar.normalize_alert_for_output(alert(title, body))))
+        other = alert('G7 "4개월간 경유·원유 1억배럴 방출"', body)
+        self.assertEqual(radar.alert_dedup_key(alert(title, body)), radar.alert_dedup_key(other))
+
+    def test_continued_dialogue_does_not_promote_old_tariff_changes(self):
+        title = 'Key Trump ally urges continued US-China engagement on rare earths'
+        body = 'The senator called for continued dialogue. Under the earlier deal, the US cut tariffs and Chinese export controls were paused.'
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["priority"], 1)
+        self.assertEqual(audit["reason"], "continued_dialogue_without_new_policy_or_supply_terms")
+
+    def test_incidental_economic_words_do_not_rescue_nonmarket_foreground(self):
+        cases = (
+            ("한화투자증권, 업비트와 인스타툰 론칭 이벤트", "고객들이 디지털자산을 친근하게 접하도록 협력 기회를 발굴한다. 경품을 지급한다."),
+            ("광주시의사회, 네팔 대홍수 피해 지역에 구호대 파견", "의사회는 홍수 피해 주민에게 구호품 2500만원을 지원했다."),
+            ("총리, 연대와 통합 강조…홍익인간 정신", "총리는 홍수 피해 구조대의 노고에 감사했다."),
+            ("시장, 성매매 의혹 마타도어 비판", "시장은 의혹을 확대 재생산한 데 대해 사과를 요구했다."),
+            ("부산대, 지역 생산유발 1.5조원", "연구 결과 지난해 고용 1만2000명과 생산유발 1.5조원 증가 효과를 기록했다."),
+            ("식당 테이블 간장 금지? 식약처 사실 아님", "앞서 지난 7월 고시를 개정했다. 이번 간장 금지 주장은 사실이 아니다."),
+            ("복잡한 전력망 운영 노하우…한국전력 제2의 삼전닉스", "한국전력은 정전 시간이 세계 2위로 짧다고 밝혔다."),
+        )
+        for title, body in cases:
+            with self.subTest(title=title):
+                audit = materiality.assess(title, body)
+                self.assertFalse(audit["disposition"] == "keep" and audit["priority"] >= 2, audit)
+
+    def test_new_operating_damage_and_hard_changes_remain_eligible(self):
+        cases = (
+            ("폭염 속 서울 아파트 정전 잇따라", "폭염으로 변압기 과부하 정전이 발생해 1000세대 전력 공급이 중단됐다."),
+            ("태풍에 반도체 공장 생산 중단", "태풍 침수 피해로 반도체 공장의 생산을 중단했다."),
+            ("반도체 설비투자 확대", "기업은 내년 반도체 설비투자를 2배 늘릴 계획이라고 밝혔다."),
+            ("대학교 기술기업, 반도체 공급계약 체결", "대학교 기술기업은 반도체 고객과 500억원 공급계약을 체결했다."),
+        )
+        for title, body in cases:
+            with self.subTest(title=title):
+                audit = materiality.assess(title, body)
+                self.assertEqual(audit["disposition"], "keep", audit)
+                self.assertGreaterEqual(audit["priority"], 2, audit)
+
+    def test_dram_share_core_preserves_period_basis_values_and_gap(self):
+        title = "마이크론, D램 2위 SK하이닉스 턱밑 추격…점유율 격차 1%포인트"
+        body = (
+            "마이크론은 AI 수요로 매출이 빠르게 늘었다. "
+            "카운터포인트에 따르면 D램 시장에서 마이크론은 매출 점유율 24%로 3위를 기록했다. "
+            "2위 SK하이닉스 점유율은 25%였다. 두 업체 점유율 격차는 1%포인트였다. "
+            "2026년 2분기 D램 매출 시장 점유율. "
+            "마이크론은 4분기 매출 542억달러를 발표했다."
+        )
+        core = radar.detailed_article_core(title, body)
+        for required in ("카운터포인트", "2026년 2분기", "매출 점유율", "24%", "25%", "1%포인트"):
+            self.assertIn(required, core)
+        self.assertNotIn("542억", core)
+        item = radar.normalize_alert_for_output(alert(title, body))
+        self.assertEqual(radar.source_core_fact_errors(item), [])
+        self.assertTrue(radar.source_output_aligned(item), item)
+
+    def test_capex_core_is_forward_plan_not_prior_spend_or_reporter_estimate(self):
+        title = "연간 설비투자 2배 늘리는 마이크론…삼성·SK 압박"
+        body = (
+            '마이크론은 "2027회계연도 상반기(9월~2027년 2월) 설비투자는 250억 달러에 이를 것"이라며 '
+            '"하반기(2027년 3~8월)에는 자본지출이 더 증가할 것으로 예상한다"고 밝혔다. '
+            "보수적인 계산으로 연간 500억 달러를 넘어선다. "
+            "마이크론의 투자계획은 정부 지원금을 차감한 순액을 기준으로 한다. "
+            "마이크론의 2026회계연도 설비투자 규모는 274억 달러였다."
+        )
+        core = radar.detailed_article_core(title, body)
+        for required in ("마이크론", "2027회계연도", "상반기", "순설비투자", "250억 달러", "하반기", "예상"):
+            self.assertIn(required, core)
+        self.assertNotIn("274억", core)
+        self.assertNotIn("500억", core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertEqual(radar.source_core_fact_errors({**alert(title, body), "telegram_core_fact": core}), [])
+
+    def test_background_investment_is_not_trade_threat_core(self):
+        title = '트럼프, 한국에 알래스카 투자 안 하면 관세 두 배 위협'
+        body = '앞서 트럼프는 한국이 500억달러를 투자한다고 발표했다. 트럼프는 한국이 알래스카 투자에 참여하지 않으면 관세를 두 배 올리겠다고 경고했다.'
+        core = radar.detailed_article_core(title, body)
+        self.assertIn("참여하지 않으면", core)
+        self.assertIn("관세", core)
+        self.assertNotIn("500억", core)
+
+    def test_cross_publisher_event_identity_keeps_changed_terms_and_stage(self):
+        first = alert("트럼프, 한국 알래스카 투자 없으면 관세 두 배 위협", "트럼프는 한국이 알래스카에 투자하지 않으면 관세를 두 배 인상하겠다고 경고했다.")
+        second = alert("한국에 알래스카 투자 촉구한 트럼프, 관세 2배 경고", first["source_body"])
+        self.assertEqual(radar.alert_dedup_key(first), radar.alert_dedup_key(second))
+        self.assertTrue(set(radar.telegram.alert_seen_keys(first)) & set(radar.telegram.alert_seen_keys(second)))
+        for title in (
+            "트럼프, 한국 알래스카 투자 없으면 관세 세 배 위협",
+            "트럼프, 한국 알래스카 투자 없으면 관세 3배 위협",
+            "트럼프, 한국 알래스카 투자 조건 관세 두 배 부과 결정",
+            "트럼프, 한국 알래스카 투자 없으면 비용 두 배 청구",
+        ):
+            changed = alert(title, title + "이라고 밝혔다.")
+            self.assertNotEqual(radar.alert_dedup_key(first), radar.alert_dedup_key(changed))
+
+    def test_g7_release_has_quantity_and_duration_not_publication_date(self):
+        first = alert("G7, 비축유 1억 배럴 방출", "G7은 비축유 1억 배럴을 향후 4개월 동안 방출하기로 합의했다.")
+        second = alert("주요 7개국, 비축유 방출 합의", first["source_body"])
+        second["published"] = "2026-10-03T12:00:00+09:00"
+        self.assertEqual(radar.alert_dedup_key(first), radar.alert_dedup_key(second))
+        changed = alert("G7, 비축유 추가 방출", "G7은 비축유 2억 배럴을 향후 4개월 동안 방출하기로 합의했다.")
+        self.assertNotEqual(radar.alert_dedup_key(first), radar.alert_dedup_key(changed))
+        duration = alert("G7, 비축유 방출 기간 변경", "G7은 비축유 1억 배럴을 향후 6개월 동안 방출하기로 합의했다.")
+        self.assertNotEqual(radar.alert_dedup_key(first), radar.alert_dedup_key(duration))
+
+    def test_event_identity_does_not_merge_investment_statement_with_signed_or_denied_deal(self):
+        first = alert("트럼프, 한국의 미국 석유 투자 발표", "트럼프는 한국이 미국 석유 사업에 84억 달러를 투자한다고 밝혔다.")
+        second = alert("한국의 석유 투자 84억달러 언급한 트럼프", first["source_body"])
+        self.assertEqual(radar.alert_dedup_key(first), radar.alert_dedup_key(second))
+        for title, body in (
+            ("트럼프, 한국 미국 석유 투자 계약 서명", first["source_body"]),
+            ("한국, 트럼프 미국 석유 투자 발표 부인", first["source_body"]),
+            (first["news"], first["source_body"].replace("84억", "85억")),
+        ):
+            self.assertNotEqual(radar.alert_dedup_key(first), radar.alert_dedup_key(alert(title, body)))
+
+    def test_stockpile_refill_cannot_reuse_background_release_core(self):
+        title = "트럼프, 미국 비축유 다시 채운다"
+        body = "G7은 비축유 1억 배럴을 4개월간 방출하기로 합의했다. 트럼프는 미국의 비축유를 다시 채우겠다고 발표했다."
+        core = radar.detailed_article_core(title, body)
+        self.assertIn("채우", core)
+        self.assertNotIn("G7", core)
+        self.assertNotIn("방출", core)
+
+    def test_unverified_body_cannot_invent_dedup_terms(self):
+        item = alert("G7, 비축유 방출", "G7은 비축유 1억 배럴을 4개월 동안 방출한다.")
+        item["body_verified"] = False
+        self.assertEqual(materiality.source_event_identity(item), "")
+
+    def test_article_tracking_aliases_keep_identifying_query_parameters(self):
+        first = alert("기업, 고객 계약 체결", "기업은 고객과 공급계약을 체결했다.")
+        first["link"] = "https://www.edaily.co.kr/News/Read?newsId=123&mediaCodeNo=257&utm_source=naver"
+        second = {**first, "link": "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=123&utm_medium=referral"}
+        self.assertTrue(set(radar.telegram.alert_seen_keys(first)) & set(radar.telegram.alert_seen_keys(second)))
+        one = radar.telegram.canonical_article_url(first["link"])
+        two = radar.telegram.canonical_article_url(first["link"].replace("newsId=123", "newsId=124"))
+        self.assertNotEqual(one, two)
+        self.assertIn("newsId=123", one)
+
+    def test_persistent_dedup_allows_new_amount_even_with_same_title_and_link(self):
+        first = alert("트럼프, 한국의 미국 석유 투자 발표", "트럼프는 한국이 미국 석유 사업에 84억 달러를 투자한다고 밝혔다.")
+        state = {"seen": {}}
+        with patch.object(radar.telegram, "load_seen_state", return_value=state), \
+                patch.object(radar.telegram, "save_seen_state", side_effect=lambda *_args: None):
+            radar.telegram.record_seen_alerts([first], NOW)
+            changed = {**first, "source_body": first["source_body"].replace("84억", "85억")}
+            fresh, skipped = radar.telegram.filter_previously_seen_alerts([changed], NOW, "live")
+            repeated, duplicates = radar.telegram.filter_previously_seen_alerts([first], NOW, "live")
+        self.assertEqual(len(fresh), 1)
+        self.assertEqual(skipped, [])
+        self.assertEqual(repeated, [])
+        self.assertEqual(len(duplicates), 1)
+
+    def test_legacy_migration_uses_only_self_contained_receipts(self):
+        entry = {"title": "트럼프, 한국 알래스카 투자 없으면 관세 두 배 위협", "first_seen_kst": NOW.isoformat(), "lanes": {"live": NOW.isoformat()}}
+        state = {"seen": {"old": entry}}
+        radar.telegram.migrate_seen_title_aliases(state)
+        item = alert("한국에 알래스카 투자 촉구한 트럼프, 관세 2배 경고", "트럼프는 한국이 알래스카에 투자하지 않으면 관세를 두 배 인상하겠다고 경고했다.")
+        with patch.object(radar.telegram, "load_seen_state", return_value=state):
+            fresh, repeated = radar.telegram.filter_previously_seen_alerts([item], NOW, "live")
+            digest, _ = radar.telegram.filter_previously_seen_alerts([item], NOW, "preopen")
+        self.assertEqual(fresh, [])
+        self.assertEqual(len(repeated), 1)
+        self.assertEqual(len(digest), 1)
+
+
 def audit_saved_runs(paths):
     results = []
     selections = []
