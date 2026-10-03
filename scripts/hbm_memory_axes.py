@@ -208,7 +208,7 @@ def is_axis_text(text):
 
 
 def read_document(raw):
-    from selectolax.parser import HTMLParser
+    from selectolax.lexbor import LexborHTMLParser as HTMLParser
     tree = HTMLParser(raw)
     pub = ''
     for selector in ('meta[property="article:published_time"]', 'meta[name="date"]'):
@@ -1235,7 +1235,7 @@ def parse_records(item, body):
 
 
 def public_spot_quotes(raw, checked):
-    from selectolax.parser import HTMLParser
+    from selectolax.lexbor import LexborHTMLParser as HTMLParser
     tree = HTMLParser(raw)
     full = tree.body.text(separator=' ', strip=True) if tree.body else ''
     result = []
