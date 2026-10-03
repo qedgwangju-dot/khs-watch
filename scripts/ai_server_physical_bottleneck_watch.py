@@ -282,8 +282,8 @@ def parse_event(text: str, url: str, title: str, published: str) -> dict:
 
     sentences = re.split(r"(?<=[.!?])\s+", text)
     candidates = []
-    for i in range(len(sentences)):
-        window = clean_text(" ".join(sentences[i:i + 2]))
+    for sentence in sentences:
+        window = clean_text(sentence)
         categories = classify_categories(window)
         if not categories or not has_supply_change(window):
             continue
