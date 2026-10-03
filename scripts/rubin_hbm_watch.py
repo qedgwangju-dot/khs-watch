@@ -2080,7 +2080,7 @@ def choose_verified_events(fresh_unseen: list[dict], raw_events: list[dict], see
     errors: list[str] = []
     candidates: list[dict] = []
     for raw in fresh_unseen:
-        if raw.get("category") in ("citi_hbm_outlook", "samsung_hbm4_price", "hbm4e_thermal_package", "samsung_nextgen_hbm", "rubin_hbm_option_set"):
+        if raw.get("category") in ("citi_hbm_outlook", "jpm_hbm_structural", "micron_sca_visibility", "samsung_hbm4_price", "hbm4e_thermal_package", "samsung_nextgen_hbm", "rubin_hbm_option_set"):
             continue
         source_low = (raw.get("source") or "").lower()
         if any(k in source_low for k in LOW_VALUE_SOURCE_HINTS):
@@ -2195,7 +2195,7 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
         grouped.setdefault(e["category"], []).append(e)
 
     n = 1
-    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "hbm4e_thermal_package", "rubin_shipments", "rubin_hbm_option_set", "samsung_hbm4_price", "samsung_nextgen_hbm", "hbm_2027_contract", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
+    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "hbm4e_thermal_package", "rubin_shipments", "rubin_hbm_option_set", "samsung_hbm4_price", "samsung_nextgen_hbm", "hbm_2027_contract", "jpm_hbm_structural", "micron_sca_visibility", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
         group = grouped.get(category) or []
         if not group:
             continue
@@ -2207,6 +2207,10 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 삼성전자 2027 HBM4 계약가격·협상력 감시", ""]
         if category == "samsung_nextgen_hbm" and n > 1:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 삼성 HBM5·zHBM 맞춤형 로드맵 감시", ""]
+        if category == "jpm_hbm_structural" and n > 1:
+            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 J.P. Morgan HBM 구조적 수급·가격 감시", ""]
+        if category == "micron_sca_visibility" and n > 1:
+            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 Micron 장기계약·RPO·고객예치금 감시", ""]
         if category == "citi_hbm_outlook" and n > 1:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 Citi HBM 2027~2028 수급·가격 감시", ""]
         if category == "memory_migration" and n > 1:
@@ -2294,6 +2298,51 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
                     f"• 고객 맞춤형 설계 지원: {'예' if ns.get('zhbm_customer_specific_design') else '미확인'} · "
                     "현재 확정 고객·공급계약·양산 매출은 미확인"
                 )
+            if category == "jpm_hbm_structural" and e.get("jpm_hbm_state"):
+                js = e["jpm_hbm_state"]
+                lines.append(
+                    f"• HBM 비트수요: 2026~2028 CAGR {float(js.get('demand_cagr_2026_2028_pct') or 0):g}% · "
+                    f"3년 누적 {float(js.get('cumulative_bit_demand_2026_2028_billion_gb') or 0):g}십억 GB"
+                )
+                lines.append(
+                    f"• 평균판매단가: 2027 +{float(js.get('asp_2027_yoy_pct') or 0):g}% · "
+                    f"2028 +{float(js.get('asp_2028_yoy_pct') or 0):g}% · "
+                    f"2028 {float(js.get('asp_2028_usd_per_gb') or 0):g}달러/Gb"
+                )
+                lines.append(
+                    f"• DRAM 생산능력: HBM 비중 {float(js.get('hbm_share_dram_capacity_start_pct') or 0):g}%→"
+                    f"{float(js.get('hbm_share_dram_capacity_2028_pct') or 0):g}% · "
+                    f"2025~2028 신규 DRAM 캐파 중 HBM {float(js.get('new_dram_capacity_to_hbm_pct_2025_2028') or 0):g}%"
+                )
+                lines.append(
+                    f"• 2027 HBM 수요처: ASIC {float(js.get('asic_hbm_demand_share_2027_pct') or 0):g}% · "
+                    f"NVIDIA {float(js.get('nvidia_hbm_demand_share_2027_pct') or 0):g}%"
+                )
+                lines.append("• 구분: 63%는 2026~2028 CAGR입니다. 2027 단년 비트성장률로 바꾸거나 +54% ASP와 곱해 2.5배 매출을 확정치로 쓰지 않습니다.")
+            if category == "micron_sca_visibility" and e.get("micron_sca_state"):
+                ms = e["micron_sca_state"]
+                rpo = float(ms.get("rpo_usd_bn") or 0)
+                fin = float(ms.get("financial_commitments_usd_bn") or 0)
+                if rate is not None:
+                    lines.append(
+                        f"• RPO: {rpo:g}0억달러(약 {rpo*1_000_000_000*rate/1e12:,.1f}조원) · "
+                        f"고객 금융약정: {fin:g}0억달러(약 {fin*1_000_000_000*rate/1e12:,.1f}조원)"
+                    )
+                else:
+                    lines.append(f"• RPO: {rpo:g}0억달러 · 고객 금융약정: {fin:g}0억달러")
+                lines.append(
+                    f"• SCA: {int(ms.get('sca_count') or 0)}건 · 2030년까지 매출커버리지 35%+ · "
+                    f"가격 프레임워크 확정 매출비중 {float(ms.get('defined_pricing_framework_share_pct') or 0):g}%"
+                )
+                lines.append(
+                    f"• 2027 전체 output 커밋: {float(ms.get('output_committed_2027_min_pct') or 0):g}%+ "
+                    f"(SCA+비SCA) · HBM: {ms.get('hbm_2027_bit_supply_stage') or '미확인'}"
+                )
+                lines.append(
+                    f"• 고객 협의 중심: {int(ms.get('customer_discussion_focus_year') or 0)}년 · "
+                    f"SCA 최장 {int(ms.get('sca_max_year') or 0)}년"
+                )
+                lines.append("• 구분: RPO는 구매주문 총액이 아니며, 320억달러 금융약정은 별도 항목이고 대부분 현금예치금입니다. 두 금액은 합산하지 않습니다.")
             if category == "citi_hbm_outlook" and e.get("citi_state"):
                 cs = e["citi_state"]
                 lo, hi = cs.get("hbm4_12hi_usd_per_gb_min"), cs.get("hbm4_12hi_usd_per_gb_max")
@@ -2469,6 +2518,80 @@ def main() -> None:
     if thermal_changes and not first_run:
         verified_events.append(samsung_hbm4e_thermal_event(thermal_state, list(dict.fromkeys(thermal_changes))))
 
+    jpm_state = dict(state.get("jpm_hbm_structural") or {})
+    jpm_track_version = int(state.get("jpm_hbm_structural_track_version") or 0)
+    if jpm_track_version < JPM_HBM_STRUCTURAL_TRACK_VERSION:
+        seeded = dict(JPM_HBM_STRUCTURAL_BASELINE)
+        seeded.update({k: v for k, v in jpm_state.items() if v not in (None, "")})
+        jpm_state = seeded
+        jpm_track_version = JPM_HBM_STRUCTURAL_TRACK_VERSION
+
+    jpm_observations: list[dict] = []
+    jpm_sources: set[str] = set()
+    jpm_direct = False
+    for raw in raw_events:
+        if raw.get("category") != "jpm_hbm_structural":
+            continue
+        enriched = enrich_event(raw)
+        if not enriched.get("link_verified"):
+            continue
+        obs = extract_jpm_hbm_structural(enriched)
+        if not obs:
+            continue
+        jpm_observations.append(obs)
+        src = (enriched.get("origin_source") or enriched.get("source") or "").strip().lower()
+        if src:
+            jpm_sources.add(src)
+        if any(k in src for k in ("j.p. morgan", "jp morgan", "jpmorgan")):
+            jpm_direct = True
+
+    jpm_changes: list[str] = []
+    if jpm_direct or len(jpm_sources) >= 2:
+        candidate = dict(jpm_state)
+        for obs in sorted(jpm_observations, key=lambda x: x.get("observed_at") or ""):
+            candidate = merge_jpm_hbm_structural(candidate, obs)
+        jpm_changes = jpm_hbm_structural_changes(jpm_state, candidate)
+        jpm_state = candidate
+    if jpm_changes and not first_run:
+        verified_events.append(jpm_hbm_structural_event(jpm_state, jpm_changes))
+
+    micron_state = dict(state.get("micron_sca_visibility") or {})
+    micron_track_version = int(state.get("micron_sca_visibility_track_version") or 0)
+    if micron_track_version < MICRON_SCA_TRACK_VERSION:
+        seeded = dict(MICRON_SCA_BASELINE)
+        seeded.update({k: v for k, v in micron_state.items() if v not in (None, "")})
+        micron_state = seeded
+        micron_track_version = MICRON_SCA_TRACK_VERSION
+
+    micron_observations: list[dict] = []
+    micron_sources: set[str] = set()
+    micron_authoritative = False
+    for raw in raw_events:
+        if raw.get("category") != "micron_sca_visibility":
+            continue
+        enriched = enrich_event(raw)
+        if not enriched.get("link_verified"):
+            continue
+        obs = extract_micron_sca_visibility(enriched)
+        if not obs:
+            continue
+        micron_observations.append(obs)
+        src = (enriched.get("origin_source") or enriched.get("source") or "").strip().lower()
+        if src:
+            micron_sources.add(src)
+        if any(k in src for k in ("micron", "reuters")):
+            micron_authoritative = True
+
+    micron_changes: list[str] = []
+    if micron_authoritative or len(micron_sources) >= 2:
+        candidate = dict(micron_state)
+        for obs in sorted(micron_observations, key=lambda x: x.get("observed_at") or ""):
+            candidate = merge_micron_sca_visibility(candidate, obs)
+        micron_changes = micron_sca_visibility_changes(micron_state, candidate)
+        micron_state = candidate
+    if micron_changes and not first_run:
+        verified_events.append(micron_sca_visibility_event(micron_state, micron_changes))
+
     citi_state = dict(state.get("citi_hbm_outlook") or {})
     citi_track_version = int(state.get("citi_hbm_track_version") or 0)
     if citi_track_version < CITI_HBM_TRACK_VERSION:
@@ -2523,6 +2646,10 @@ def main() -> None:
         "samsung_nextgen_hbm": nextgen_state,
         "samsung_hbm4e_thermal_track_version": thermal_track_version,
         "samsung_hbm4e_thermal_package": thermal_state,
+        "jpm_hbm_structural_track_version": jpm_track_version,
+        "jpm_hbm_structural": jpm_state,
+        "micron_sca_visibility_track_version": micron_track_version,
+        "micron_sca_visibility": micron_state,
         "citi_hbm_track_version": citi_track_version,
         "citi_hbm_outlook": citi_state,
         "last_unseen_raw_count": len(unseen_raw),
@@ -2554,6 +2681,8 @@ def main() -> None:
         f"- Samsung HBM4 price typed changes: {len(samsung_price_changes)}",
         f"- Samsung next-gen HBM typed changes: {len(nextgen_changes)}",
         f"- Samsung HBM4E thermal/package typed changes: {len(thermal_changes)}",
+        f"- J.P. Morgan HBM structural typed changes: {len(jpm_changes)}",
+        f"- Micron SCA/RPO typed changes: {len(micron_changes)}",
         f"- Citi HBM typed changes: {len(citi_changes)}",
         f"- send_events: {len(send_events)}",
         f"- freshness_hours: {SEND_FRESHNESS_HOURS}",
