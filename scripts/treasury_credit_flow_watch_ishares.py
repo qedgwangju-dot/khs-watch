@@ -580,7 +580,7 @@ def main():
     ).hexdigest()
     last_delivery = state.get("last_delivery") or {}
     if (
-        os.getenv("GITHUB_EVENT_NAME", "").strip() != "workflow_dispatch"
+        os.getenv("GITHUB_EVENT_NAME", "").strip() in ("schedule", "workflow_run")
         and last_delivery.get("data_fingerprint") == data_fingerprint
     ):
         base.save_state(state)
