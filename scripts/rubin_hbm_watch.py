@@ -93,7 +93,7 @@ RUBIN_ULTRA_HBM_OPTIONS_BASELINE = {
     "as_of": "2026-10-02",
     "note": "Rubin Ultra의 HBM4E/HBM4 8단·12단 선택지 확대는 업계 보도상 평가 단계. NVIDIA 공식 최종 사양·확정 탑재로 승격하지 않음.",
 }
-SAMSUNG_NEXTGEN_HBM_TRACK_VERSION = 2
+SAMSUNG_NEXTGEN_HBM_TRACK_VERSION = 3
 SAMSUNG_NEXTGEN_HBM_BASELINE = {
     "custom_hbm_stage": "official_sampling_plan",
     "custom_hbm_sample_start_year": 2027,
@@ -2841,8 +2841,15 @@ def main() -> None:
     nextgen_state = dict(state.get("samsung_nextgen_hbm") or {})
     nextgen_track_version = int(state.get("samsung_nextgen_hbm_track_version") or 0)
     if nextgen_track_version < SAMSUNG_NEXTGEN_HBM_TRACK_VERSION:
+        previous_nextgen_track_version = nextgen_track_version
         seeded = dict(SAMSUNG_NEXTGEN_HBM_BASELINE)
         seeded.update({k: v for k, v in nextgen_state.items() if v not in (None, "")})
+        # v3 only corrects provenance for the already-known 2027 Custom HBM
+        # sampling baseline. Do not let legacy zHBM/MK metadata overwrite the
+        # newer Samsung official Custom HBM source.
+        if previous_nextgen_track_version < 3 and seeded.get("custom_hbm_stage") == "official_sampling_plan":
+            for key in ("source", "source_url", "secondary_source_url", "as_of", "note"):
+                seeded[key] = SAMSUNG_NEXTGEN_HBM_BASELINE[key]
         nextgen_state = seeded
         nextgen_track_version = SAMSUNG_NEXTGEN_HBM_TRACK_VERSION
 
