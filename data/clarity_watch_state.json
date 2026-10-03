@@ -2,9 +2,10 @@
   "initialized": true,
   "source_version": 2,
   "bill": "H.R. 3633 — Digital Asset Market Clarity Act",
-  "last_checked_kst": "2026-10-04T01:15:18+09:00",
-  "last_checked_et": "2026-10-03T12:15:18-04:00",
+  "last_checked_kst": "2026-10-04T01:24:36+09:00",
+  "last_checked_et": "2026-10-03T12:24:36-04:00",
   "seen_event_keys": [
+    "014ece5622c668588a744a4fffa905e803f51a087ad35edaafd5a1ef049e8081",
     "06ee00dbb8854130493bb2e968b1cacab9ca367fe3cc63799c3a34b54881ae9c",
     "084ee027ab8ec15b4074b4fa1b60022844e2dc9f19a270999c1f2f23b0a34a53",
     "0c66c1ef94728a83e8ecbafaa4fdc5f038cba54010112b43462b09e826966d4c",
@@ -91,9 +92,9 @@
   "source_errors": [
     "SEC Newsroom crypto orders: fetch failed: https://www.sec.gov/newsroom: HTTP Error 403: Forbidden"
   ],
-  "last_successful_delivery_kst": "2026-10-04T01:15:30+09:00",
+  "last_successful_delivery_kst": "2026-10-04T01:24:48+09:00",
   "telegram_message_ids": [
-    112
+    113
   ],
   "bot_username": "khs88790088790000_bot",
   "telegram_format": "korean_html_v7_negotiation_gate"
