@@ -137,7 +137,7 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
         rendered = "\n".join(MOD.build_readable([event]))
         self.assertIn("미국 암호자산 규제 Watch", rendered)
         self.assertIn("상장규칙 승인", rendered)
-        self.assertIn("현물 3배 ETF가 아니라", rendered)
+        self.assertIn("현물 코인을 3배 보유하는 상품이 아니라", rendered)
         self.assertIn("3x Bitcoin ETF 등록서류 효력 예정일 2026-10-18", rendered)
         self.assertIn("CME 선물 미결제약정", rendered)
         self.assertNotIn("CLARITY 법안 Watch", rendered)
