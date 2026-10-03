@@ -500,9 +500,13 @@ def event_line(event: dict) -> str:
     return "• 구조 변화 감지"
 
 def build_alert(events: list[dict], latest: dict, sources: list[str]) -> str:
-    cw = (latest.get("neocloud") or {}).get("CoreWeave") or {}
+    cloud = latest.get("neocloud") or {}
+    cw = cloud.get("CoreWeave") or {}
+    nb = cloud.get("Nebius") or {}
+    ytl = cloud.get("YTL") or {}
     kinds = {str(e.get("kind") or "") for e in events}
     labels = " ".join(str(e.get("label") or "") for e in events)
+    event_companies = {str(e.get("company") or "") for e in events if e.get("company")}
 
     lines = [
         "<b>🚨 AI 추론 수익화 변화</b>",
@@ -520,11 +524,23 @@ def build_alert(events: list[dict], latest: dict, sources: list[str]) -> str:
     if "upstream" in kinds and any(k in labels for k in ("FCBGA", "ABF", "삼성전기", "IBIDEN")):
         current.append("• 삼성전기 2Q26 패키지솔루션 7,716억원")
     if "neocloud_metric" in kinds or "servicing" in kinds or "negative" in kinds:
-        current.append(
-            f"• CoreWeave: 활성 {float(cw.get('active_power_gw') or 0):.2f}GW / "
-            f"계약 {float(cw.get('contracted_power_gw') or 0):.2f}GW / "
-            f"MW당 연환산 매출 {float(cw.get('annualized_revenue_per_mw_usd_m') or 0):.1f}백만달러"
-        )
+        if "CoreWeave" in event_companies:
+            current.append(
+                f"• CoreWeave: 활성 {float(cw.get('active_power_gw') or 0):.2f}GW / "
+                f"계약 {float(cw.get('contracted_power_gw') or 0):.2f}GW / "
+                f"MW당 연환산 매출 {float(cw.get('annualized_revenue_per_mw_usd_m') or 0):.1f}백만달러"
+            )
+        if "Nebius" in event_companies:
+            current.append(
+                f"• Nebius: 계약 {float(nb.get('contracted_power_gw') or 0):.2f}GW / "
+                f"연결 {float(nb.get('connected_power_gw') or 0):.2f}GW / "
+                f"활성 {float(nb.get('active_power_gw') or 0):.2f}GW"
+            )
+        if "YTL" in event_companies:
+            current.append(
+                f"• YTL: 계약 {float(ytl.get('contracted_power_gw') or 0):.3f}GW / "
+                f"데이터센터 부문 기준 매출 MYR {float(ytl.get('data_center_segment_revenue_myr_m') or 0):.1f} million"
+            )
     if current:
         lines += ["", "<b>현재 숫자</b>", *current]
 
@@ -534,7 +550,10 @@ def build_alert(events: list[dict], latest: dict, sources: list[str]) -> str:
     if "upstream" in kinds:
         checks.append("FCBGA 가동률·고객 승인")
     if "neocloud_metric" in kinds or "servicing" in kinds or "negative" in kinds:
-        checks.append("계약 GW→활성 GW·MW당 매출")
+        if "YTL" in event_companies:
+            checks.append("계약 MW→실가동 MW·데이터센터 부문 매출")
+        if event_companies & {"CoreWeave", "Nebius"}:
+            checks.append("계약 GW→활성 GW·MW당 매출")
     if "edge_actual" in kinds:
         checks.append("실제 가동 MW·상용 매출")
     if not checks:
