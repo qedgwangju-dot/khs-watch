@@ -203,6 +203,7 @@
     "a845562aec371314227ee9ca",
     "a9a2b98d9be48dfaa7992df7",
     "ab09ce8ddb7926e318bb1df5",
+    "ab2d58a6251e5c9cb4f9a1be",
     "ab6da86881024c2ae4c2cde2",
     "ab946d84cf8d9b45b14ee055",
     "ac9d8b4518afc0b95672e1d7",
@@ -241,6 +242,7 @@
     "c6dbc35819f3c1e93989d93f",
     "c77f5842676ed1c029c40f95",
     "c79756540ecc6154f1a0a8be",
+    "c8c92bb542122bd9b0e1d361",
     "ca09e33d248798e711bcf1aa",
     "ce2907eb6606358bbce0cf0f",
     "ceda52f785d43ad07057096a",
@@ -308,8 +310,8 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-10-03T21:34:48+09:00",
-  "last_event_count": 127,
+  "updated_at_kst": "2026-10-03T22:03:56+09:00",
+  "last_event_count": 128,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
   "monthly_due": false,
@@ -1912,7 +1914,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-03T21:34:48+09:00",
+      "last_checked_at_kst": "2026-10-03T22:03:56+09:00",
       "gaps": [
         "원문 확인 실패: investing.com / HTTPError",
         "wafer_share: 연말 분모가 명확하지 않아 비교 보류",
@@ -1987,7 +1989,7 @@
     "payload_hash": "0f344a94229a896821dd11644480769ed2b7736ffaf4e949d607fda53a4c2a79"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-03T21:39:51+09:00",
+    "checked_at_kst": "2026-10-03T22:08:32+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
