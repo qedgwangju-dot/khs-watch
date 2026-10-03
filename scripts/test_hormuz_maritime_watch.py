@@ -105,3 +105,22 @@ check("live-count-not-overstated", live_clusters[0]["projectile_count"] is None)
 check("live-shared-details-preserved", {"outbound", "fire", "blackout", "crew_safe", "no_env"}.issubset(set(live_clusters[0]["confirmed_details"])))
 
 print("HORMUZ_MARITIME_LIVE_CASE_OK")
+
+
+# 8) 같은 날 첫 번째(화재·정전·출항)와 두 번째(오만 동쪽·승무원 안전) 피격은
+# 승무원안전/환경무피해가 같아도 서로 다른 사건으로 유지한다.
+first_attack = row(
+    "Anadolu Ajansı",
+    details=("outbound", "fire", "blackout", "crew_safe", "no_env", "time:1122"),
+    count=1,
+    t=10_000.0,
+)
+second_attack = row(
+    "Reuters",
+    details=("distance:4:east", "crew_safe", "no_env"),
+    count=1,
+    t=11_800.0,
+)
+check("concurrent-tanker-incidents-split", not mod.strict_compatible(first_attack, second_attack))
+
+print("HORMUZ_MARITIME_CONCURRENT_EVENTS_OK")
