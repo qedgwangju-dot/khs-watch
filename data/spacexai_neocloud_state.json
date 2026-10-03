@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "format_version": 1,
+  "format_version": 2,
   "official": {
     "anthropic": {
       "monthly_usd_b": 1.25,
@@ -27,13 +27,15 @@
       "note": "Nameplate compute draw는 실제 전력사용량·가동률이 아님"
     },
     "_verification": {
-      "sec_live_all_ok": false,
-      "fallback": "공식 SEC 문서로 사전검증한 고정 기준값",
+      "sec_baseline_verified_setup": true,
+      "sec_live_runner_disabled": true,
+      "reason": "GitHub-hosted runner의 SEC 403 차단 때문에 공식 SEC 기준값은 고정 검증값으로 유지",
+      "live_company_checks": [
+        "Anthropic 공식",
+        "SpaceXAI 공식"
+      ],
       "errors": [
-        "SEC Anthropic live parse HTTPError",
-        "SEC Google live parse HTTPError",
-        "SEC 10-Q live parse HTTPError",
-        "SEC Q2 release live parse HTTPError"
+        "SpaceX IR live check RuntimeError"
       ]
     }
   },
@@ -71,21 +73,15 @@
   "seen_ir_ids": [],
   "fx": {
     "usdkrw": 1348.28,
-    "basis": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-04 01:40 KST · 보조 API 2026-10-03 · 차이 0.07% · 일중 기준시각 차이 가능",
+    "basis": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-04 01:43 KST · 보조 API 2026-10-03 · 차이 0.07% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter"
   },
-  "last_changes": [
-    "SpaceXAI 외부 컴퓨트 사업 기준선 신규 연결"
-  ],
+  "last_changes": [],
   "last_new_news": [],
   "last_new_sec": [],
   "last_new_ir": [],
   "errors": [
-    "SEC submissions HTTPError · SpaceX IR 대체 감시",
-    "SEC Anthropic live parse HTTPError",
-    "SEC Google live parse HTTPError",
-    "SEC 10-Q live parse HTTPError",
-    "SEC Q2 release live parse HTTPError"
+    "SpaceX IR live check RuntimeError"
   ],
-  "updated_at_utc": "2026-10-03T16:40:14+00:00"
+  "updated_at_utc": "2026-10-03T16:43:18+00:00"
 }
