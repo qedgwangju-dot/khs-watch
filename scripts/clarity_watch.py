@@ -48,6 +48,8 @@ REG_ACTION_RE = re.compile(
     r"\b(?:rule|rulemaking|propos(?:e|ed|al)|adopt(?:s|ed|ion)|final rule|interpretation|guidance|no-action|order|staff letter|framework|registration|market structure|jurisdiction|enforcement|exemptive relief|exemption|exemptions|exempt(?:ed|ion)?)\b",
     re.I,
 )
+SEC_EXCHANGE_ORDERS_URL = "https://www.sec.gov/rules-regulations/self-regulatory-organization-rulemaking/national-securities-exchanges?order=field_publish_date&page=0&sort=desc&sro_organization=All&year=All"
+
 LEG_ACTION_RE = re.compile(
     r"\b(?:markup|mark-up|vote|voted|advance(?:d)?|pass(?:ed|age)?|fail(?:ed|ure)?|reject(?:ed)?|cloture|floor|calendar|schedule|consideration|amendment|amended|new text|bill text|revised text|reported|referred|signed|signature|veto|became law|enacted|session adjourn|sine die|read twice)\b",
     re.I,
@@ -468,6 +470,53 @@ def collect_reginfo_reviews(errors):
     return list({e.key: e for e in events}.values())
 
 
+def collect_sec_exchange_orders(errors):
+    events = []
+    url = SEC_EXCHANGE_ORDERS_URL
+    try:
+        soup = soup_for(url)
+        seen = set()
+        for a in soup.find_all("a", href=True):
+            title = clean(a.get_text(" ", strip=True))
+            href = abs_url(url, a.get("href"))
+            if not title or href in seen:
+                continue
+            signal = title
+            if not CRYPTO_RE.search(signal):
+                continue
+            if not re.search(r"\b(?:Order|Approval|Approving|Approved|List|Listing|Trade|Trading|Shares|ETF|ETP)\b", signal, re.I):
+                continue
+            seen.add(href)
+
+            date = ""
+            detail = ""
+            tr = a.find_parent("tr")
+            if tr is not None:
+                row_text = clean(tr.get_text(" ", strip=True))
+                detail = row_text[:900]
+                m = re.search(
+                    r"\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:t(?:ember)?)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2},\s+20\d{2}\b",
+                    row_text,
+                    re.I,
+                )
+                if m:
+                    date = m.group(0)
+            if not detail:
+                detail = title
+
+            events.append(Event(
+                "SEC 거래소 규칙 승인명령",
+                "SEC 거래소 상장·거래 승인",
+                title,
+                href,
+                date=date,
+                detail=detail,
+            ))
+    except Exception as exc:
+        errors.append(f"SEC exchange orders: {exc}")
+    return list({e.key: e for e in events}.values())
+
+
 def collect_regulators(errors):
     events = []
     feeds = [
@@ -479,6 +528,7 @@ def collect_regulators(errors):
         events.extend(parse_rss(url, source, errors))
     events.extend(collect_federal_register(errors))
     events.extend(collect_reginfo_reviews(errors))
+    events.extend(collect_sec_exchange_orders(errors))
     return list({e.key: e for e in events}.values())
 
 
