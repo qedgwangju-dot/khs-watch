@@ -415,16 +415,52 @@
       "source": "TradingKey",
       "published_kst": "2026-10-01T08:31:41+09:00",
       "first_seen_kst": "2026-10-03T16:27:13+09:00"
+    },
+    "855dfe9ebae54a5984f6fb4e": {
+      "title": "Nvidia DGX Spark 64GB Launches at $4,999 as Memory Prices Surge [2026] - tech-insider.org",
+      "source": "tech-insider.org",
+      "published_kst": "2026-10-03T05:34:53+09:00",
+      "first_seen_kst": "2026-10-03T18:29:50+09:00"
+    },
+    "4d56f804ff5dd776506a06d4": {
+      "title": "Nvidia launches 64 GB DGX Spark at $4,999 as memory prices surge - news.lavx.hu",
+      "source": "news.lavx.hu",
+      "published_kst": "2026-10-03T01:43:42+09:00",
+      "first_seen_kst": "2026-10-03T18:29:50+09:00"
+    },
+    "cc703d6bac95f111a378dfb7": {
+      "title": "Nvidia Adds $4,999 DGX Spark With 64GB of Memory as RAM Prices Surge - finance.biggo.com",
+      "source": "finance.biggo.com",
+      "published_kst": "2026-10-02T22:35:00+09:00",
+      "first_seen_kst": "2026-10-03T18:29:50+09:00"
+    },
+    "1713341e954a4410635882f1": {
+      "title": "Nvidia launches DGX Spark 64GB configuration with hardware partners - Crypto Briefing",
+      "source": "Crypto Briefing",
+      "published_kst": "2026-10-02T22:20:47+09:00",
+      "first_seen_kst": "2026-10-03T18:29:50+09:00"
+    },
+    "7624fb7768c15b9a2d462d35": {
+      "title": "NVIDIA has launched a 64GB version of the DGX Spark, with memory halved and a starting price of $4,999, while the price for the 128GB version has increased to $6,950. - news.futunn.com",
+      "source": "news.futunn.com",
+      "published_kst": "2026-10-02T00:34:00+09:00",
+      "first_seen_kst": "2026-10-03T18:29:50+09:00"
+    },
+    "0d85202b722fac5844088d36": {
+      "title": "마이크론(MU) 2026 회계연도 4분기 실적 발표 컨퍼런스 콜: 사상 최대 매출 및 메모리 공급 부족 전망 - tradingkey.com",
+      "source": "tradingkey.com",
+      "published_kst": "2026-10-01T08:31:41+09:00",
+      "first_seen_kst": "2026-10-03T18:29:50+09:00"
     }
   },
-  "updated_at_kst": "2026-10-03T16:47:32+09:00",
-  "last_scan_count": 28,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-10-03T18:29:50+09:00",
+  "last_scan_count": 33,
+  "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
     "period": "2027",
-    "blended_asp_yoy_pct": 121,
+    "blended_asp_yoy_pct": 121.0,
     "eight_hi_premium_min_pct": 10,
     "eight_hi_premium_max_pct": 20,
     "mainstream_layers": 8,
@@ -464,20 +500,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-03T16:47:37+09:00",
+  "last_successful_delivery_kst": "2026-10-03T18:29:56+09:00",
   "telegram_message_ids": [
-    222
+    223
   ],
-  "telegram_message_id": 222,
+  "telegram_message_id": 223,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      222
+      223
     ],
-    "confirmed_at_kst": "2026-10-03T16:47:37+09:00",
-    "alert_signature": "1dbe86267a80f017621401d3b01ea74d1eeee856e3719945ea9aac6f1336c6f7"
+    "confirmed_at_kst": "2026-10-03T18:29:56+09:00",
+    "alert_signature": "026692b0a2f4372bd314af8da6e51aa397630f82f6d910cf9326dabb7e51df46"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -565,11 +601,11 @@
   "dgx_spark_memory_price_track_version": 1,
   "dgx_spark_memory_price": {
     "sku_64_memory_gb": 64,
-    "sku_64_price_usd": 4999,
+    "sku_64_price_usd": 4999.0,
     "sku_64_available_date": "2026-10-23",
     "sku_64_model_limit_b": 100,
     "sku_128_memory_gb": 128,
-    "sku_128_fe_price_usd": 6950,
+    "sku_128_fe_price_usd": 6950.0,
     "sku_128_prior_price_usd": 4699,
     "sku_128_launch_price_usd": 3999,
     "cluster_units": 2,
@@ -581,9 +617,9 @@
     "memory_type": "LPDDR5X unified memory",
     "memory_supply_cost_pressure": true,
     "oem_only_64gb": true,
-    "source": "NVIDIA + The Register",
+    "source": "news.futunn.com",
     "source_kind": "NVIDIA 공식 64GB 발표 + NVIDIA 공식 2026-02 가격변경 공지 + The Register 2026-10-02 현행 128GB 가격 교차확인",
-    "source_url": "https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/",
+    "source_url": "https://news.futunn.com/en/post/1000536008/nvidia-has-launched-a-64gb-version-of-the-dgx-spark",
     "secondary_source_url": "https://www.theregister.com/systems/2026/10/02/nvidia-debuts-4999-dgx-spark-with-half-the-ram-and-storage-amid-memory-crunch/5300622",
     "prior_price_source_url": "https://forums.developer.nvidia.com/t/2-23-2026-price-change-announcement/361713",
     "as_of": "2026-10-02",
