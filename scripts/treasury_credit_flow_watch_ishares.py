@@ -35,7 +35,7 @@ def arrow(v):
 def flow_word(v):
     if v is None:
         return "기준점 수집 중"
-    return "순유입" if v > 0 else "순유출" if v < 0 else "중립"
+    return "추정 순유입" if v > 0 else "추정 순유출" if v < 0 else "추정 중립"
 
 
 def parse_oas_snapshot(meta):
