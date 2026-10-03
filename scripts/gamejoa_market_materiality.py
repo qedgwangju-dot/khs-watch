@@ -7,7 +7,7 @@ import re
 from functools import lru_cache
 
 
-VERSION = 45
+VERSION = 46
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -25,7 +25,7 @@ BACKGROUND = re.compile(
     r"^\d{4}년\s+설립|^(?:한편\s*)?(?:앞서\s|지난해|작년|과거|기존에는|종전에는|previously|last year)\b|"
     r"설립된 회사|설립된 기업|설립 이후 누적|창립 이래|\d+\s*여?\s*년간.{0,130}(?:공급|협력|제공)해\s*왔다|has historically", re.I,
 )
-PAST_ACTION = re.compile(r"^(?:해외\s*시장\s*진출도\s*추진하고\s*있다\.\s*)?지난\s*(?:\d{1,2}월|달|해)|과거\s*\d{4}년", re.I)
+PAST_ACTION = re.compile(r"지난\s*(?:\d{1,2}월|달|해)|과거\s*\d{4}년", re.I)
 COMPANY_PROFILE = re.compile(
     r"(?:분야|부문|업계)의\s*(?:글로벌\s*)?(?:선도\s*)?기업으로|"
     r"(?:기업|회사|업체)(?:으로|로)\s*[^.!?]{0,180}(?:공급한다|제공한다|운영한다)|"
@@ -562,7 +562,7 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
             r"\d+주를\s*\d+주로\s*합치는\s*액면병합|"
             r"\d+대\d+(?:에서\s*\d+대\d+)?[^.!?]{0,30}병합.{0,55}(?:상정|결정|승인|발표)", sentence,
         ))
-    if kind in {"commercial_order", "corporate_transaction", "customer_supply_start", "customer_discussions", "industrial_partnership_execution"} and PAST_ACTION.search(sentence):
+    if kind in {"commercial_order", "corporate_transaction", "customer_supply_start", "customer_discussions", "industrial_partnership_execution", "capital_or_shareholder_action", "insider_disclosed_trade", "ownership_transfer"} and PAST_ACTION.search(sentence):
         return False
     if kind == "rates_fx_or_macro" and re.search(r"환율\s*환산|매출\s*인식|기간\s*귀속|기말\s*조정", sentence):
         return False
@@ -774,6 +774,11 @@ def assess(title: str, body: str) -> dict:
     sentences = source_sentences(body)
     lead = " ".join(sentences[:3])
     headline_lead = f"{title} {lead}"
+    if re.search(r"화제의\s*바이오人|인물\s*탐구|CEO\s*프로필|경영자\s*약력|executive profile", title, re.I) and not (
+        DIRECT_HEADLINE_CHANGE.search(title) or re.search(r"임상\s*[1-3][ab]?상.{0,25}(?:결과|유효성|실패|성공)|임상\s*결과", title, re.I)
+    ):
+        result.update(disposition="exclude", priority=0, reason="person_profile_without_direct_new_business_event")
+        return result
     if re.search(r"전남편|전아내|열애|결혼식|음주\s*회동|사적\s*만남|celebrity romance", headline_lead, re.I) and not ENTERPRISE_CHANGE.search(title):
         result.update(disposition="exclude", priority=0, reason="private_life_without_business_change")
         return result

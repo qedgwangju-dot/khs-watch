@@ -113,6 +113,26 @@ DELIVERED_LOCAL_ADMINISTRATION = (
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_past_fundraising_after_company_name_is_not_current_capital_event(self):
+        past = "에이프릴바이오는 지난 6월 TKG휴켐스·IMM 측으로부터 3468억원 규모의 투자를 유치하면서 경영권을 TKG휴켐스에 넘겼다."
+        self.assertFalse(materiality.evidence_is_new_event("capital_or_shareholder_action", past))
+        self.assertFalse(materiality.evidence_is_new_event("insider_disclosed_trade", "대표는 지난 6월 주식 177만주를 매각했다."))
+        self.assertFalse(materiality.evidence_is_new_event("commercial_order", "회사는 지난 6월 공급계약을 체결했다."))
+        current = "바이오기업은 임상 연구를 위해 3468억원 규모의 신규 투자를 유치했다고 발표했다."
+        self.assertTrue(materiality.evidence_is_new_event("capital_or_shareholder_action", current))
+        self.assertEqual(materiality.assess("바이오기업, 신규 투자유치", current)["disposition"], "keep")
+
+    def test_actual_person_profile_does_not_promote_old_control_transfer(self):
+        title = "경영권 내려놓은 차상훈 대표 'APB-R3'로 'SAFA' 가치 증명할까[화제의 바이오人]"
+        body = ("에이프릴바이오는 지난 6월 3468억원 규모의 투자를 유치하면서 경영권을 넘겼다. "
+                "차 대표도 보유주식 177만주를 약 582억원에 매각했다. "
+                "차 대표는 2013년 에이프릴바이오를 설립한 창업자다.")
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "exclude", audit)
+        self.assertEqual(audit["reason"], "person_profile_without_direct_new_business_event", audit)
+        positive = materiality.assess("바이오기업, 임상 2상 결과 공개[화제의 바이오人]", "바이오기업은 신약의 임상 2상 결과를 공개했다.")
+        self.assertEqual(positive["disposition"], "keep", positive)
+
     def test_copied_headline_is_not_independent_source_evidence(self):
         title = "기업, 신규 반도체 공급계약 100억원 체결"
         body = title + "\n회사는 반도체 분야의 전문 기업으로 알려져 있다."
