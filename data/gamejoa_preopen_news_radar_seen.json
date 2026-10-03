@@ -886,6 +886,20 @@
       "source": "국민일보",
       "title": "경쟁자 나타난 한화의 오스탈 인수전… ‘통매각’으로 판 커지나"
     },
+    "event:46f290865f47bec1db77e911": {
+      "event_alias_evidence_message_id": 2111,
+      "event_alias_evidence_run_id": 37132573108,
+      "first_seen_kst": "2026-10-04T00:19:00+09:00",
+      "lanes": {
+        "live": "2026-10-04T00:19:00+09:00"
+      },
+      "last_seen_kst": "2026-10-04T00:19:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632252",
+      "source": "이투데이",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-02:nasdaq=27190.86:change=1.19",
+      "source_published_kst": "2026-10-03T06:47+09:00",
+      "title": "뉴욕증시, 美 고용 지표 소화하며 상승⋯나스닥 1.19%↑[상보]"
+    },
     "event:482200328b9d8e938ee7fb98": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
       "lanes": {
@@ -5264,7 +5278,8 @@
       "last_seen_kst": "2026-10-04T00:19:00+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632252",
       "source": "이투데이",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-02:nasdaq=27190.86:change=1.19",
+      "source_published_kst": "2026-10-03T06:47+09:00",
       "title": "뉴욕증시, 美 고용 지표 소화하며 상승⋯나스닥 1.19%↑[상보]"
     },
     "link:2c24bcc7645c66f33bbf2fac": {
@@ -7566,6 +7581,18 @@
       "link": "https://www.asiae.co.kr/article/2026100120181302228",
       "source": "아시아경제",
       "title": "'고가 기념품 공금 구매' 의혹…농협중앙회장 비서 구속"
+    },
+    "link:645f30d44230806f9d299f2d": {
+      "first_seen_kst": "2026-10-04T00:48:36+09:00",
+      "lanes": {
+        "live": "2026-10-04T00:48:36+09:00"
+      },
+      "last_seen_kst": "2026-10-04T00:48:36+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610031631b",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-03T10:31+09:00",
+      "title": "JYP, 중대 결정...파격 '보이콧' 선언"
     },
     "link:64926c01068a94db207d9adf": {
       "first_seen_kst": "2026-09-25T10:19:34+09:00",
@@ -11924,6 +11951,18 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003813135",
       "source": "뉴시스",
       "title": "최태원 9440억 지분 매각…SK하닉 애프터마켓 주가 영향은 '미미'"
+    },
+    "link:d2264febca64338a5e964e30": {
+      "first_seen_kst": "2026-10-04T00:48:36+09:00",
+      "lanes": {
+        "live": "2026-10-04T00:48:36+09:00"
+      },
+      "last_seen_kst": "2026-10-04T00:48:36+09:00",
+      "link": "https://www.mk.co.kr/news/society/12167107",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-03T07:00+09:00",
+      "title": "한국 바람에 20년 투자, 외국 투자자는 무엇을 보나 [지평 기후에너지리포트]"
     },
     "link:d262c6a8a3303b1a7c2f8119": {
       "first_seen_kst": "2026-10-02T13:22:36+09:00",
@@ -18715,6 +18754,18 @@
       "source": "연합뉴스",
       "title": "삼성중공업, LNG선 2척 6천722억원에 수주…올해 20척째 | 연합뉴스"
     },
+    "original:7ec0df0193d5bda93e97c9d0": {
+      "first_seen_kst": "2026-10-04T00:48:36+09:00",
+      "lanes": {
+        "live": "2026-10-04T00:48:36+09:00"
+      },
+      "last_seen_kst": "2026-10-04T00:48:36+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610031631b",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-03T10:31+09:00",
+      "title": "JYP, 중대 결정...파격 '보이콧' 선언"
+    },
     "original:7f2e2482899c6f7e21432b3f": {
       "first_seen_kst": "2026-10-02T17:49:31+09:00",
       "lanes": {
@@ -21255,6 +21306,18 @@
       "source": "뉴시스",
       "title": "AI 메모리 호황에 삼전·닉스 올 3Q도 '최대 실적' 전망…\"환율 하락이 변수\""
     },
+    "original:bd3903c83a1e0794188b12a6": {
+      "first_seen_kst": "2026-10-04T00:48:36+09:00",
+      "lanes": {
+        "live": "2026-10-04T00:48:36+09:00"
+      },
+      "last_seen_kst": "2026-10-04T00:48:36+09:00",
+      "link": "https://www.mk.co.kr/news/society/12167107",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-03T07:00+09:00",
+      "title": "한국 바람에 20년 투자, 외국 투자자는 무엇을 보나 [지평 기후에너지리포트]"
+    },
     "original:be29411f5800df6f11cb8e5e": {
       "first_seen_kst": "2026-09-18T12:25:16+09:00",
       "lanes": {
@@ -23211,7 +23274,8 @@
       "last_seen_kst": "2026-10-04T00:19:00+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632252",
       "source": "이투데이",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-02:nasdaq=27190.86:change=1.19",
+      "source_published_kst": "2026-10-03T06:47+09:00",
       "title": "뉴욕증시, 美 고용 지표 소화하며 상승⋯나스닥 1.19%↑[상보]"
     },
     "original:ef9cdc4d17b26b6a1f51e733": {
@@ -28770,6 +28834,18 @@
       "source": "연합뉴스",
       "title": "삼성중공업, LNG선 2척 6천722억원에 수주…올해 20척째 | 연합뉴스"
     },
+    "title:7ec0df0193d5bda93e97c9d0": {
+      "first_seen_kst": "2026-10-04T00:48:36+09:00",
+      "lanes": {
+        "live": "2026-10-04T00:48:36+09:00"
+      },
+      "last_seen_kst": "2026-10-04T00:48:36+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202610031631b",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-03T10:31+09:00",
+      "title": "JYP, 중대 결정...파격 '보이콧' 선언"
+    },
     "title:7f2e2482899c6f7e21432b3f": {
       "first_seen_kst": "2026-10-02T17:49:31+09:00",
       "lanes": {
@@ -31352,6 +31428,18 @@
       "source": "뉴시스",
       "title": "AI 메모리 호황에 삼전·닉스 올 3Q도 '최대 실적' 전망…\"환율 하락이 변수\""
     },
+    "title:bd3903c83a1e0794188b12a6": {
+      "first_seen_kst": "2026-10-04T00:48:36+09:00",
+      "lanes": {
+        "live": "2026-10-04T00:48:36+09:00"
+      },
+      "last_seen_kst": "2026-10-04T00:48:36+09:00",
+      "link": "https://www.mk.co.kr/news/society/12167107",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-03T07:00+09:00",
+      "title": "한국 바람에 20년 투자, 외국 투자자는 무엇을 보나 [지평 기후에너지리포트]"
+    },
     "title:be29411f5800df6f11cb8e5e": {
       "first_seen_kst": "2026-09-18T12:25:16+09:00",
       "lanes": {
@@ -31823,7 +31911,8 @@
       "last_seen_kst": "2026-10-04T00:19:00+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632252",
       "source": "이투데이",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-02:nasdaq=27190.86:change=1.19",
+      "source_published_kst": "2026-10-03T06:47+09:00",
       "title": "뉴욕증시, 美 고용 지표 소화하며 상승⋯나스닥 1.19%↑[상보]"
     },
     "title:cace9da7d634f01162092f4e": {
@@ -33338,7 +33427,8 @@
       "last_seen_kst": "2026-10-04T00:19:00+09:00",
       "link": "https://www.etoday.co.kr/news/view/2632252",
       "source": "이투데이",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-02:nasdaq=27190.86:change=1.19",
+      "source_published_kst": "2026-10-03T06:47+09:00",
       "title": "뉴욕증시, 美 고용 지표 소화하며 상승⋯나스닥 1.19%↑[상보]"
     },
     "title:ef9cdc4d17b26b6a1f51e733": {
@@ -33990,5 +34080,5 @@
       "title": "대방건설, 인천계양 테크노밸리 공공주택지구 조경공사 수주 | 연합뉴스"
     }
   },
-  "updated_at_kst": "2026-10-04T00:26:19+09:00"
+  "updated_at_kst": "2026-10-04T00:48:36+09:00"
 }
