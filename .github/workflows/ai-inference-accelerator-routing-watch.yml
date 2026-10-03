@@ -6,6 +6,8 @@ on:
     paths:
       - ".github/workflows/ai-inference-accelerator-routing-watch.yml"
       - "scripts/ai_inference_accelerator_route_watch.py"
+      - "scripts/currency_krw_guard.py"
+      - "scripts/fx_api.py"
   schedule:
     - cron: "26 * * * *"
   workflow_dispatch:
@@ -99,7 +101,7 @@ jobs:
         run: |
           python - <<'PY'
           import re
-          from scripts.ai_inference_accelerator_route_watch import translate_alert_text
+          from scripts.ai_inference_accelerator_route_watch import translate_alert_text, synopsys_stage, material
           sample = "GPT-6.1 Sol Ultrafast runs on NVIDIA GPU instead of Cerebras"
           translated = translate_alert_text(sample)
           print(f"ai_inference_route_translation_sample={translated}")
@@ -108,6 +110,21 @@ jobs:
           for term in ("GPT-6.1 Sol", "Ultrafast", "NVIDIA", "GPU", "Cerebras"):
               if term not in translated:
                   raise RuntimeError(f"Identifier not preserved: {term}")
+
+          baseline = "Synopsys 2026 Investor Day: FY 2027 revenue $11.15 billion, approximately 15% revenue growth, subscription and consumption-based models."
+          if synopsys_stage(baseline) != "investor_day_baseline":
+              raise RuntimeError("Synopsys FY27 baseline classification failed")
+          baseline_item = {"title": baseline, "description": "", "source": "Synopsys", "kind": "news"}
+          if material(baseline_item):
+              raise RuntimeError("Known Synopsys investor-day baseline must remain silent")
+
+          pricing = "Synopsys launched consumption-based EDA pricing at $0.25 per run for production customers."
+          if synopsys_stage(pricing) != "pricing_execution":
+              raise RuntimeError("Synopsys consumption-pricing execution classification failed")
+          pricing_item = {"title": pricing, "description": "", "source": "Synopsys", "kind": "news"}
+          if not material(pricing_item):
+              raise RuntimeError("New Synopsys consumption-pricing execution must alert")
+          print("synopsys_eda_regression=PASS")
           PY
 
       - name: Run inference accelerator routing watch
@@ -115,6 +132,10 @@ jobs:
           rm -f out/ai_inference_accelerator_route_watch_alert_title.txt out/ai_inference_accelerator_route_watch_alert.html out/ai_inference_accelerator_route_watch_telegram_confirmed.json
           python scripts/ai_inference_accelerator_route_watch.py
           cat out/ai_inference_accelerator_route_watch_status.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Enforce KRW immediately after every foreign-currency amount
+        if: hashFiles('out/ai_inference_accelerator_route_watch_alert.html') != ''
+        run: python scripts/currency_krw_guard.py out/ai_inference_accelerator_route_watch_alert.html
 
       - name: Build one-shot Telegram test
         if: github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true'
