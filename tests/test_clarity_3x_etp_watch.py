@@ -67,6 +67,52 @@ class Clarity3xEtpWatchTest(unittest.TestCase):
         self.assertIn("Form EFFECT", effect[0].detail)
         self.assertEqual(errors, [])
 
+    def test_sec_archives_fallback_can_verify_s1_and_effect_when_data_sec_blocks(self):
+        root_payload = {
+            "directory": {
+                "item": [
+                    {"name": "000121390026120000", "type": "dir", "last-modified": "2026-10-05 12:00:00"},
+                    {"name": "000121390026090839", "type": "dir", "last-modified": "2026-08-17 12:00:00"},
+                ]
+            }
+        }
+        s1_index = """
+        <html><body>
+        Filing Type S-1 Filing Date 2026-08-17 File Number 333-999999
+        <table><tr><td>S-1</td><td><a href="s1.htm">s1.htm</a></td></tr></table>
+        </body></html>
+        """
+        effect_index = """
+        <html><body>
+        Filing Type EFFECT Filing Date 2026-10-05 File Number 333-999999
+        <table><tr><td>EFFECT</td><td><a href="primary_doc.xml">primary_doc.xml</a></td></tr></table>
+        </body></html>
+        """
+
+        def fake_fetch(url, timeout=30):
+            if url == MOD.VS_TRUST_SUBMISSIONS_URL:
+                raise RuntimeError("403")
+            if url == MOD.VS_TRUST_ARCHIVE_INDEX_URL:
+                return json.dumps(root_payload).encode("utf-8")
+            if url.endswith("0001213900-26-090839-index.html"):
+                return s1_index.encode("utf-8")
+            if url.endswith("0001213900-26-120000-index.html"):
+                return effect_index.encode("utf-8")
+            if url.endswith("/s1.htm"):
+                return b"<html><body>VS Trust BITH 3x Bitcoin ETF ETHK 3x Ether ETF</body></html>"
+            if url.endswith("/primary_doc.xml"):
+                return b"<effectiveDate>20261005</effectiveDate>"
+            raise AssertionError(url)
+
+        errors = []
+        with patch.object(MOD, "fetch", side_effect=fake_fetch):
+            events = MOD.collect_vs_trust_3x_registration_milestones(errors)
+
+        effect = [e for e in events if "등록 효력 발생" in e.event_type]
+        self.assertEqual(len(effect), 1)
+        self.assertEqual(effect[0].date, "2026-10-05")
+        self.assertTrue(any("VS Trust SEC submissions" in e for e in errors))
+
     def test_final_prospectus_is_separate_launch_readiness_event(self):
         payload = {
             "filings": {
