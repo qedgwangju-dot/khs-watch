@@ -14,7 +14,6 @@ from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
-from googlenewsdecoder import gnewsdecoder
 
 OUT = Path("out")
 STATE = Path("data/us_hyperscaler_company_risk_state.json")
@@ -245,6 +244,8 @@ def resolve(link: str) -> str:
     if "news.google.com" not in link:
         return link
     try:
+        # Decoder is optional. Dependency/API breakage must not stop the watcher.
+        from googlenewsdecoder import gnewsdecoder
         result = gnewsdecoder(link, interval=0.1)
         if isinstance(result, dict) and result.get("status") and result.get("decoded_url"):
             return str(result["decoded_url"])
