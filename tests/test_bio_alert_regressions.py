@@ -73,7 +73,7 @@ class BioAlertRegressionTests(unittest.TestCase):
         self.assertEqual(halo.classify(text, case), "final_unpatentable")
 
     def test_halozyme_current_fwd_cases_upgrade_to_unpatentable(self):
-        for case in ("PGR2025-00033", "PGR2025-00039"):
+        for case in ("PGR2025-00033", "PGR2025-00039", "PGR2025-00046", "PGR2025-00052"):
             self.assertEqual(
                 halo.classify("Status Final Written Decision", case),
                 "final_unpatentable",
@@ -91,12 +91,36 @@ class BioAlertRegressionTests(unittest.TestCase):
         }
         self.assertEqual(
             halo.timeline_line("PGR2025-00033", "final_unpatentable", item),
-            "2025-03-07 PGR 청구 → 2025-10-01 심판 개시 → 2026-09-25 최종서면결정",
+            "2025-03-07 PGR 청구 → 2025-10-01 심판 개시 → 2026-07-23 공동 구술심리 → 2026-09-25 최종서면결정",
         )
         self.assertEqual(
             halo.timeline_line("PGR2025-00039", "final_unpatentable", item),
-            "2025-03-28 PGR 청구 → 2025-10-01 심판 개시 → 2026-09-25 최종서면결정",
+            "2025-03-28 PGR 청구 → 2025-10-01 심판 개시 → 2026-07-23 공동 구술심리 → 2026-09-25 최종서면결정",
         )
+
+    def test_halozyme_new_fwd_timelines_are_complete(self):
+        item_52 = {"published": "Thu, 01 Oct 2026 00:00:00 GMT"}
+        self.assertEqual(
+            halo.timeline_line("PGR2025-00052", "final_unpatentable", item_52),
+            "2025-06-27 PGR 청구 → 2025-10-16 심판 개시 → 2026-07-23 공동 구술심리 → 2026-10-01 최종서면결정",
+        )
+        item_46 = {"published": "Fri, 02 Oct 2026 00:00:00 GMT"}
+        self.assertEqual(
+            halo.timeline_line("PGR2025-00046", "final_unpatentable", item_46),
+            "2025-04-29 PGR 청구 → 2025-10-10 심판 개시 → 2026-07-23 공동 구술심리 → 2026-10-02 최종서면결정",
+        )
+
+    def test_halozyme_ptab_verified_rollup_is_nine_of_fourteen(self):
+        item = halo.PTAB_VERIFIED_PORTFOLIO_SCORECARD
+        self.assertEqual(item["score"]["won"], 9)
+        self.assertEqual(item["score"]["pending"], 5)
+        rendered = halo.portfolio_alert(item)
+        self.assertIn("누적 9/14건", rendered)
+        self.assertIn("PTAB 확인 기준 9/14건", rendered)
+        self.assertIn("2026-10-01 PGR2025-00052", rendered)
+        self.assertIn("2026-10-02 PGR2025-00046", rendered)
+        self.assertIn("알테오젠이 9/14를 새 공식 IR로 발표했다는 뜻이 아니라", rendered)
+        self.assertIn("30일 내 USPTO 국장 재검토 또는 PTAB 재심", rendered)
 
     def test_halozyme_portfolio_scorecard_is_separate_event(self):
         sample = (
@@ -152,14 +176,14 @@ class BioAlertRegressionTests(unittest.TestCase):
     def test_halozyme_portfolio_scorecard_key_changes_only_with_real_score_change(self):
         score_7 = {"total": 14, "won": 7, "pending": 7, "oral_date": "2026-07-23"}
         score_7_repeat = {"total": 14, "won": 7, "pending": 7, "oral_date": "2026-07-23"}
-        score_8 = {"total": 14, "won": 8, "pending": 6, "oral_date": "2026-07-23"}
+        score_9 = {"total": 14, "won": 9, "pending": 5, "oral_date": "2026-07-23"}
         self.assertEqual(
             halo.portfolio_scorecard_key(score_7),
             halo.portfolio_scorecard_key(score_7_repeat),
         )
         self.assertNotEqual(
             halo.portfolio_scorecard_key(score_7),
-            halo.portfolio_scorecard_key(score_8),
+            halo.portfolio_scorecard_key(score_9),
         )
 
     def test_halozyme_case_timeline_appends_later_review_stage(self):

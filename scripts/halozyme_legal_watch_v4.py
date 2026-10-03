@@ -47,6 +47,54 @@ base.SEARCHES.extend([
 _CURRENT_BATCH_SOURCE = "http://the-biz.co.kr/news/articleView.html?idxno=728392"
 ALTEOGEN_IR_INDEX = "https://www.alteogen.com/kr/sub/ir/information.php?bid=2"
 
+# 2026-10-03 사용자 제공 PTAB 결정문 첫 페이지를 기준으로 사건번호·특허번호·결정일·
+# "Final Written Decision Determining All Challenged Claims Unpatentable" 문구를 직접 대조했다.
+# 사건 자체는 USPTO 공개 P-TACTS 사건 페이지로 연결하고, 검색색인 지연과 무관하게
+# 이번 두 최종결정은 한 번만 백필하여 즉시 알림·상태·타임라인에 반영한다.
+PTACTS_CASE_URLS = {
+    "PGR2025-00046": "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557766",
+    "PGR2025-00052": "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557959",
+}
+
+VERIFIED_CURRENT_DECISIONS = [
+    {
+        "engine": "USPTO/PTAB 공식 결정문",
+        "title": "PGR2025-00052 Final Written Decision — all challenged claims unpatentable",
+        "url": PTACTS_CASE_URLS["PGR2025-00052"],
+        "description": (
+            "PGR2025-00052 Patent 12,264,345 B1 Paper 89 Date October 1, 2026. "
+            "JUDGMENT Final Written Decision Determining All Challenged Claims Unpatentable "
+            "35 U.S.C. § 328(a). Halozyme Merck."
+        ),
+        "published": "Thu, 01 Oct 2026 00:00:00 GMT",
+    },
+    {
+        "engine": "USPTO/PTAB 공식 결정문",
+        "title": "PGR2025-00046 Final Written Decision — all challenged claims unpatentable",
+        "url": PTACTS_CASE_URLS["PGR2025-00046"],
+        "description": (
+            "PGR2025-00046 Patent 12,091,692 B2 Paper 96 Date October 2, 2026. "
+            "JUDGMENT Final Written Decision Determining All Challenged Claims Unpatentable "
+            "35 U.S.C. § 328(a). Halozyme Merck."
+        ),
+        "published": "Fri, 02 Oct 2026 00:00:00 GMT",
+    },
+]
+
+PTAB_VERIFIED_PORTFOLIO_SCORECARD = {
+    "url": PTACTS_CASE_URLS["PGR2025-00052"],
+    "source_urls": [PTACTS_CASE_URLS["PGR2025-00052"], PTACTS_CASE_URLS["PGR2025-00046"]],
+    "source_kind": "ptab_verified_rollup",
+    "title": "PTAB 신규 최종서면결정 2건 반영 — 누적 9/14",
+    "score": {
+        "total": 14,
+        "won": 9,
+        "pending": 5,
+        "oral_date": "2026-07-23",
+        "patents": ["12,264,345", "12,091,692"],
+    },
+}
+
 
 def _strip_tags(value: str) -> str:
     import html as _html
@@ -112,6 +160,7 @@ def rss(query: str, engine: str) -> list[dict]:
                 "published": "Fri, 25 Sep 2026 12:00:00 GMT",
             },
         ])
+        out.extend(VERIFIED_CURRENT_DECISIONS)
     global _official_portfolio_cache
     if engine == "Bing 웹" and query == base.SEARCHES[0]:
         if _official_portfolio_cache is None:
@@ -138,18 +187,34 @@ FINAL_UNPATENTABLE_TERMS = (
 CURRENT_CONFIRMED_UNPATENTABLE = {
     "PGR2025-00033",
     "PGR2025-00039",
+    "PGR2025-00046",
+    "PGR2025-00052",
 }
 
 CASE_TIMELINES = {
     "PGR2025-00033": (
         ("2025-03-07", "PGR 청구"),
         ("2025-10-01", "심판 개시"),
+        ("2026-07-23", "공동 구술심리"),
         ("2026-09-25", "최종서면결정"),
     ),
     "PGR2025-00039": (
         ("2025-03-28", "PGR 청구"),
         ("2025-10-01", "심판 개시"),
+        ("2026-07-23", "공동 구술심리"),
         ("2026-09-25", "최종서면결정"),
+    ),
+    "PGR2025-00046": (
+        ("2025-04-29", "PGR 청구"),
+        ("2025-10-10", "심판 개시"),
+        ("2026-07-23", "공동 구술심리"),
+        ("2026-10-02", "최종서면결정"),
+    ),
+    "PGR2025-00052": (
+        ("2025-06-27", "PGR 청구"),
+        ("2025-10-16", "심판 개시"),
+        ("2026-07-23", "공동 구술심리"),
+        ("2026-10-01", "최종서면결정"),
     ),
 }
 
@@ -334,6 +399,14 @@ def alert(case: str, patent: str, kind: str, item: dict) -> str:
             if "<b>사건:</b>" in line:
                 lines.insert(idx + 1, f"- <b>타임라인:</b> {timeline}")
                 break
+        if kind == "final_unpatentable":
+            for idx, line in enumerate(lines):
+                if "<b>다음 확인:</b>" in line:
+                    lines.insert(
+                        idx,
+                        "- <b>절차 시계:</b> 최종서면결정 후 30일 내 USPTO 국장 재검토 또는 PTAB 재심 중 하나를 요청할 수 있습니다. 기본 항소기간은 63일이며, 적법한 재검토·재심이 있으면 항소 시계가 재설정됩니다.",
+                    )
+                    break
         return "\n".join(lines)
 
     title = f"PTAB 최종서면결정 공개 — {case}, Halozyme 특허 {patent or '관련 특허'}"
@@ -452,7 +525,7 @@ def portfolio_scorecard_key(score: dict) -> str:
 def portfolio_updates() -> list[dict]:
     # 현재 공식 IR에서 확인된 7/14 판세는 검색색인·HTML 파싱 실패와 무관하게
     # 한 번은 반드시 이벤트로 소비하도록 검증된 기준선을 포함한다.
-    updates: list[dict] = [CURRENT_PORTFOLIO_SCORECARD]
+    updates: list[dict] = [CURRENT_PORTFOLIO_SCORECARD, PTAB_VERIFIED_PORTFOLIO_SCORECARD]
     for url in _portfolio_ir_urls():
         try:
             page = base.fetch(url, timeout=15)
@@ -476,19 +549,42 @@ def portfolio_updates() -> list[dict]:
 def portfolio_alert(item: dict) -> str:
     s = item["score"]
     ratio = (s["won"] / s["total"] * 100.0) if s["total"] else 0.0
-    oral = f" · {s['oral_date']} 구술심리" if s.get("oral_date") else ""
+    oral = f" · {s['oral_date']} 공동 구술심리" if s.get("oral_date") else ""
     patents = " · ".join(s.get("patents") or [])
     patent_line = f"\n- <b>이번 확인 특허:</b> {html.escape(patents)}" if patents else ""
+    source_kind = str(item.get("source_kind") or "alteogen_ir")
+
+    if source_kind == "ptab_verified_rollup":
+        source_urls = list(item.get("source_urls") or [])
+        source_links = "\n".join(
+            f'- <a href="{html.escape(url, quote=True)}">USPTO/PTAB 사건 원문 {idx}</a>'
+            for idx, url in enumerate(source_urls, 1)
+        )
+        return (
+            "<b>[바이오 감시] Halozyme 특허분쟁 판세 업데이트</b>\n\n"
+            f"<b>PTAB 신규 최종서면결정 2건 반영 — 누적 {s['won']}/{s['total']}건</b>\n\n"
+            "- <b>타임라인:</b> 2026-07-23 관련 10개 PGR 공동 구술심리 → 2026-09-25 PGR2025-00033·00039 최종서면결정 → 2026-09-28 알테오젠 공식 IR 7/14 확인 → 2026-10-01 PGR2025-00052 최종서면결정 → 2026-10-02 PGR2025-00046 최종서면결정\n"
+            f"- <b>누적 판세:</b> PTAB 확인 기준 {s['won']}/{s['total']}건 · {ratio:.0f}% · 잔여 {s['pending']}건{oral}"
+            + patent_line
+            + "\n- <b>결정:</b> PGR2025-00052와 PGR2025-00046 모두 PTAB가 심판 대상 청구항 전부를 특허 받을 수 없다고 최종 판단했습니다.\n"
+            "- <b>정확한 성격:</b> 알테오젠이 9/14를 새 공식 IR로 발표했다는 뜻이 아니라, 9월 28일 공식 7/14 기준에 이후 PTAB 최종결정 2건을 더한 현재 확인치입니다.\n"
+            "- <b>알테오젠:</b> ALT-B4 자체 특허 유효성 판정은 아니지만, Halozyme MDASE 특허 포트폴리오 방어력이 추가로 약해지는 방향입니다.\n"
+            "- <b>절차 시계:</b> 각 최종서면결정 후 30일 내 USPTO 국장 재검토 또는 PTAB 재심 중 하나 → 기본 63일 내 연방순회항소법원 항소. 재검토·재심이 있으면 항소 시계는 재설정됩니다.\n"
+            "- <b>다음 확인:</b> 잔여 5건 최종서면결정 → 국장 재검토·재심 → 연방순회항소법원 항소 → 뉴저지·유럽 소송\n"
+            "- <b>원문 확인:</b> 사용자 제공 PTAB 결정문 첫 페이지 직접 대조 + USPTO/P-TACTS 사건 식별 교차확인\n"
+            + source_links
+        )
+
     return (
         "<b>[바이오 감시] Halozyme 특허분쟁 판세 업데이트</b>\n\n"
         f"<b>MSD, 심리 개시 PGR {s['total']}건 중 {s['won']}건에서 특허성 부정</b>\n\n"
         f"- <b>누적 판세:</b> {s['won']}/{s['total']}건 · {ratio:.0f}%\n"
         f"- <b>잔여:</b> {s['pending']}건 최종결정 대기{oral}"
         + patent_line
-        + "\n- <b>의미:</b> 개별 특허 2건의 결과를 넘어 Halozyme MDASE 특허 포트폴리오 전체에서 MSD 우위가 누적되고 있다는 공식 IR 업데이트입니다.\n"
+        + "\n- <b>의미:</b> 개별 특허 결과를 넘어 Halozyme MDASE 특허 포트폴리오 전체에서 MSD 우위가 누적되고 있다는 공식 IR 업데이트입니다.\n"
         "- <b>알테오젠:</b> ALT-B4 자체 특허 유효성 판정은 아니지만, KEYTRUDA QLEX 미국 사업에 반영되던 Halozyme 특허분쟁 불확실성을 낮추는 방향입니다.\n"
         "- <b>아직 남음:</b> 잔여 PGR 최종결정 · 국장 재검토·재심 · 연방순회항소 · 뉴저지·유럽 소송\n"
-        "- <b>다음 확인:</b> 7/14 → 8/14 이상으로 바뀌는 후속 최종서면결정 여부\n"
+        f"- <b>다음 확인:</b> {s['won']}/{s['total']} → 다음 누적 판세 변화와 후속 절차\n"
         "- <b>원문 확인:</b> 알테오젠 공식 IR 본문 직접 열람\n"
         f'- <a href="{html.escape(item["url"], quote=True)}">원문 뉴스보기</a>'
     )
