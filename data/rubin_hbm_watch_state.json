@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-02T18:28:17+09:00",
+  "updated_at_kst": "2026-10-03T13:36:56+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
@@ -9,6 +9,7 @@
     "11a202510cd997dfa3504821",
     "11b0887a69d7d15b6128314d",
     "1a7355b983f5d9b5a7d4a97f",
+    "1a740e6eaff99a7fffe1b7b7",
     "1dd83b5311279ef155add2d2",
     "1f7c1f701db354f9e408d486",
     "20a5c84026d1bbe9b4f60398",
@@ -20,6 +21,7 @@
     "30e12d5e09347c31afe9bbbf",
     "331b6820836c8a9823107ede",
     "35d13626592549116ca7a042",
+    "36289e3d827d73abf7b71266",
     "366eb2b49378313e5a18f1ec",
     "40660e881b3fe6bde98047a2",
     "4247585e3b18e9cad642ceec",
@@ -45,10 +47,12 @@
     "7310bace62d2a5a4af5e422b",
     "7905a269e5f79330a355c833",
     "7c4fab38f3ac9aeca880db5a",
+    "7e3036adf1559a2f0b773ca9",
     "817f217f23561cc348f4159b",
     "86e3b5a2a1b5f5a0a64b608e",
     "879690aaf1650f4535c5fa3b",
     "89dfc6e2a5f58fd54f926dca",
+    "8c3ed41a5caa69f015e2670c",
     "959562dc71d2a106144c7eab",
     "96aeca25517239df73a1fe98",
     "97cd9aa32a1e0bc1defa7483",
@@ -108,17 +112,20 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 1,
+  "last_unseen_raw_count": 4,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
-    "rate": 1361.27,
-    "date": "2026-10-01 일일 기준 · ECB/Frankfurter · 조회 2026-10-02 18:28 KST · 보조 API 2026-10-02 · 차이 0.08% · 일중 기준시각 차이 가능",
+    "rate": 1348.28,
+    "date": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-03 13:37 KST · 보조 API 2026-10-03 · 차이 0.07% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [],
+  "errors": [
+    "핵심 사실 자동추출 실패로 발송 제외: 富途牛牛 | Micron explicitly forecasts tighter HBM supply in 2027–2028, with simultaneous capacity expansion across its four major facilities. - 富途牛牛",
+    "교차검증 부족으로 발송 제외: 뉴스포스트 | HBM 다음은 eSSD…AIDC 투자 경쟁 속 '솔리다임' 역할 커진다 - 뉴스포스트"
+  ],
   "ai_component_leadtime": {
     "as_of": "2026-09-21",
     "source": "https://insights.trendforce.com/p/weekly-radar-002",
@@ -167,13 +174,13 @@
       "https://insights.trendforce.com/p/weekly-radar-002",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-10-02T18:28:27+09:00",
+    "last_checked_at_kst": "2026-10-03T13:37:15+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-02T18:34:58+09:00",
+    "checked_at_kst": "2026-10-03T13:42:42+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-01T09:43:49+09:00",
@@ -242,8 +249,8 @@
       "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
-    "last_validation_cutoff": "2026-10-02",
-    "last_checked_at_kst": "2026-10-02T18:29:05+09:00"
+    "last_validation_cutoff": "2026-10-03",
+    "last_checked_at_kst": "2026-10-03T13:37:27+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -278,8 +285,8 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10461",
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
-    "last_checked_cutoff": "2026-10-02",
-    "last_checked_at_kst": "2026-10-02T18:32:48+09:00",
+    "last_checked_cutoff": "2026-10-03",
+    "last_checked_at_kst": "2026-10-03T13:41:42+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -323,7 +330,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-02T18:33:14+09:00",
+    "last_checked_at_kst": "2026-10-03T13:42:08+09:00",
     "candidate_count": 0,
     "event_count": 0
   },
@@ -356,7 +363,7 @@
     "secondary_source_url": "https://newsis.com/view/NISX20260930_0003808711",
     "as_of": "2026-09-30"
   },
-  "samsung_hbm4_price_track_version": 1,
+  "samsung_hbm4_price_track_version": 2,
   "samsung_hbm4_price": {
     "stage": "negotiation",
     "offered_price_band": "mid_to_high_4_usd_per_gb",
@@ -366,8 +373,20 @@
     "price_multiple_floor": 3.0,
     "volume_stage": "largely_agreed",
     "target_close_month": "2026-10",
+    "reported_supply_status": "virtually_sold_out_reported",
+    "pricing_power_stage": "strengthened_reported",
+    "pricing_power_driver": "high_spec_performance_and_limited_supply",
+    "performance_stable_gbps": 11.7,
+    "performance_max_gbps": 13.0,
+    "industry_standard_gbps": 8.0,
+    "stack_bandwidth_tbps": 3.3,
+    "customer_requirement_tbps": 3.0,
+    "industry_hbm_dram_wafer_share_current_band": "20s_pct_reported",
+    "industry_hbm_dram_wafer_share_2027_pct": 30.0,
     "source": "매일경제 단독",
     "source_url": "https://www.mk.co.kr/news/business/12167164",
+    "premium_source_url": "https://www.mk.co.kr/news/business/12167424",
+    "official_performance_source_url": "https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-%EC%84%B8%EA%B3%84-%EC%B5%9C%EC%B4%88-%EC%97%85%EA%B3%84-%EC%B5%9C%EA%B3%A0-%EC%84%B1%EB%8A%A5%EC%9D%98-hbm4-%EC%96%91%EC%82%B0-%EC%B6%9C%ED%95%98",
     "as_of": "2026-10-02",
     "note": "4달러대 중후반은 기사 표현 그대로 보존. 정확한 상·하단 가격으로 임의 환산하지 않음."
   },
@@ -388,5 +407,82 @@
     "as_of": "2026-10-02",
     "note": "40배는 장비업계의 장기 전망으로 저장하고 삼성 HBM4E 확정 로드맵으로 승격하지 않음. TSMC 공식 CoWoS 로드맵은 2028년 14배, 2029년 14배 초과이며 40배는 SoW-X 별도 구조.",
     "observed_at": "2026-10-02T15:21:00+09:00"
+  },
+  "rubin_ultra_hbm_options_track_version": 1,
+  "rubin_ultra_hbm_options": {
+    "stage": "reported_evaluation",
+    "candidate_options": [
+      "HBM4E_12hi",
+      "HBM4E_8hi",
+      "HBM4_12hi",
+      "HBM4_8hi"
+    ],
+    "original_reported_option": "HBM4E_12hi",
+    "source": "매일경제",
+    "source_url": "https://www.mk.co.kr/news/business/12167424",
+    "as_of": "2026-10-02",
+    "note": "Rubin Ultra의 HBM4E/HBM4 8단·12단 선택지 확대는 업계 보도상 평가 단계. NVIDIA 공식 최종 사양·확정 탑재로 승격하지 않음."
+  },
+  "samsung_nextgen_hbm_track_version": 1,
+  "samsung_nextgen_hbm": {
+    "hbm5_customization_stage": "industry_expected",
+    "zhbm_stage": "concept_development",
+    "zhbm_customer_specific_design": true,
+    "zhbm_performance_vs_hbm5_x": 8.0,
+    "zhbm_energy_efficiency_vs_hbm5_x": 3.0,
+    "zhbm_thermal_resistance_reduction_floor_pct": 50.0,
+    "zhbm_memory_density_floor_vs_hbm5_x": 10.0,
+    "source": "삼성전자 FMS 2026 공식자료 + 매일경제",
+    "source_url": "https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-fms-2026%EC%84%9C-%EC%B0%A8%EC%84%B8%EB%8C%80-3d-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EB%B9%84%EC%A0%84-%EC%A0%9C%EC%8B%9C",
+    "secondary_source_url": "https://www.mk.co.kr/news/business/12167424",
+    "as_of": "2026-10-02",
+    "note": "HBM5 맞춤형 본격화는 업계 전망 단계. zHBM은 삼성 공식 콘셉트·개발 단계이며 고객 샘플·검증·계약·양산으로 승격하지 않음."
+  },
+  "jpm_hbm_structural_track_version": 1,
+  "jpm_hbm_structural": {
+    "demand_cagr_2026_2028_pct": 63.0,
+    "demand_cagr_period": "2026-2028",
+    "cumulative_bit_demand_2026_2028_billion_gb": 163.0,
+    "asp_2027_yoy_pct": 54.0,
+    "asp_2028_yoy_pct": 25.0,
+    "asp_2028_usd_per_gb": 3.8,
+    "supply_demand_gap_initial_pct": -20.0,
+    "supply_demand_gap_later_pct": -16.0,
+    "new_dram_capacity_to_hbm_pct_2025_2028": 58.0,
+    "hbm_share_dram_capacity_start_pct": 19.0,
+    "hbm_share_dram_capacity_2028_pct": 31.0,
+    "sixteen_hi_earliest_year": 2029,
+    "asic_hbm_demand_share_2027_pct": 48.0,
+    "nvidia_hbm_demand_share_2027_pct": 43.0,
+    "nvidia_hbm_demand_share_2026_pct": 58.0,
+    "source": "J.P. Morgan 리서치 재인용 2곳 교차",
+    "source_url": "https://www.itiger.com/news/1184910027",
+    "secondary_source_url": "https://gmt8press.com/content/detail/434514",
+    "as_of": "2026-09-23",
+    "note": "63%는 2026~2028 HBM 비트수요 CAGR로 저장. 2027 단년 비트성장률로 재해석하거나 2027 ASP +54%와 곱해 2.5배 매출을 J.P. Morgan 확정치로 승격하지 않음."
+  },
+  "micron_sca_visibility_track_version": 1,
+  "micron_sca_visibility": {
+    "sca_count": 26,
+    "rpo_usd_bn": 150.0,
+    "rpo_definition": "remaining_performance_obligations_sca_defined_pricing",
+    "rpo_basis": "committed_volumes_minimum_pricing",
+    "take_or_pay": true,
+    "financial_commitments_usd_bn": 32.0,
+    "financial_commitments_majority_cash_deposits": true,
+    "rpo_and_financial_commitments_are_separate": true,
+    "sca_revenue_coverage_through_2030_min_pct": 35.0,
+    "defined_pricing_framework_share_pct": 75.0,
+    "output_committed_2027_min_pct": 75.0,
+    "output_committed_scope": "total_output_sca_and_non_sca",
+    "hbm_2027_bit_supply_stage": "vast_majority_agreements_completed",
+    "customer_discussion_focus_year": 2028,
+    "sca_max_year": 2031,
+    "source": "Micron FY2026 Q4 prepared remarks/call + Reuters",
+    "source_url": "https://stockanalysis.com/stocks/mu/transcripts/699706-q4-2026/",
+    "secondary_source_url": "https://www.reuters.com/business/micron-forecasts-quarterly-revenue-above-estimates-2026-09-30/",
+    "official_source_url": "https://micron.gcs-web.com/node/50991",
+    "as_of": "2026-09-30",
+    "note": "RPO 1500억달러는 구매주문 총액이 아니라 가격 프레임워크가 확정된 SCA의 미인식 계약가치(최소가격 기준). 320억달러는 별도 고객 금융약정이며 대부분 현금예치금이므로 RPO와 합산 금지. 2027년 75%+는 Micron 전체 output 커밋으로, HBM 전용 수치와 분리."
   }
 }
