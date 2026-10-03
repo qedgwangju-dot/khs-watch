@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-03T14:49:24+09:00",
+  "updated_at_kst": "2026-10-03T20:31:50+09:00",
   "initial_alert_sent": true,
   "preorder_at_kst": "2026-10-16T21:00:00+09:00",
   "launch_date": "2026-10-23",
@@ -9,6 +9,7 @@
     "08ee900e67a97c3baa66e7c0",
     "0deccab046baa0654028e226",
     "0e1d64e5caabae4511272346",
+    "131aa40896d4696b3c74f6c7",
     "14e3e01165fea3bf1be26561",
     "1939e6b1a628746af61c5c1d",
     "1c359dad24269391023e3829",
@@ -97,6 +98,7 @@
     "e73880ae0980b211b2ad2de6",
     "f2deef37e8a2dbb98cda2986",
     "f7c97083f05ae7b065eafae5",
+    "fdfc39f54ba21516d484595f",
     "fede0acc4416cc1373a28752"
   ],
   "metrics": {
@@ -113,7 +115,7 @@
     "counterpoint_duo": "Reuters가 Counterpoint 전망 약 600만대 인용",
     "trendforce_duo": "TrendForce 공식 2026 출하 약 500만대"
   },
-  "last_scan_items": 48,
+  "last_scan_items": 49,
   "last_signal_count": 0,
   "last_alert": {
     "at_kst": "2026-09-30T13:10:14+09:00",
