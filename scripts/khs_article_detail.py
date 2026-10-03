@@ -106,7 +106,12 @@ class ArticleHTMLParser(HTMLParser):
             "hidden" in attr or attr.get("aria-hidden", "").lower() == "true"
             or re.search(r"display\s*:\s*none", attr.get("style", ""), re.I)
         )
-        if tag in {"aside", "nav", "footer", "form"} or hidden:
+        caption_identity = f"{attr.get('id', '')} {attr.get('class', '')}".lower().replace("_", "-")
+        caption = bool(
+            tag == "figcaption"
+            or re.search(r"(?:^|[\s-])caption(?:[\s-]|$)|(?:^|\s)(?:article-photo|img-desc|photojournal)(?:\s|$)", caption_identity)
+        )
+        if tag in {"aside", "nav", "footer", "form"} or hidden or caption:
             if tag not in VOID_TAGS:
                 self.ignored_tags = [tag]
                 self.ignored_depth = 1

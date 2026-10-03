@@ -2172,6 +2172,7 @@ def ranked_article_sentences(
         for sentence in sentences
         if len(sentence) >= 12 and not article_title_restatement(sentence, title)
         and not market_materiality.COMPANY_PROFILE.search(sentence)
+        and not market_materiality.ACCOUNTING_NOTE.search(sentence)
     ]
     sentences = list(dict.fromkeys(sentences))
     if market_materiality.focus_kind(title) == "research_spending":
@@ -2292,6 +2293,31 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         return ""
     focus = market_materiality.focus_kind(title)
     source = " ".join(sentences)
+    if focus == "trading_status":
+        issuer = re.match(r"^([^,，]{2,35})[,，]", title)
+        for sentence in sentences:
+            ratio = re.search(r"(?:보통주\s*)?(\d[\d,]*)주를\s*(\d[\d,]*)주로\s*합치는\s*액면병합", sentence)
+            if not issuer or not ratio or not re.search(r"상정한다고|상정할|상정하기로", sentence):
+                continue
+            meeting = next((re.search(r"임시주총은[^.!?]{0,40}?(?<!\d)(\d{1,2}월\s*\d{1,2}일)", row) for row in sentences
+                            if re.search(r"임시주총은[^.!?]{0,40}\d{1,2}월\s*\d{1,2}일", row)), None)
+            schedule = f" {meeting.group(1)}" if meeting else ""
+            additional = "과 복수의결권 도입" if "복수의결권" in sentence else ""
+            fact = (f"{issuer.group(1)}{korean_topic_particle(issuer.group(1))} {ratio.group(1)}대{ratio.group(2)} "
+                    f"액면병합{additional}안을{schedule} 임시주총에 상정한다.")
+            if core_sentence_is_complete(fact):
+                return fact
+    if focus == "earnings":
+        for sentence in sentences:
+            issuer = re.match(r"^([A-Za-z0-9가-힣&·]+(?:\s+[A-Za-z0-9가-힣&·]+){0,4})\s*(?:\([A-Za-z0-9.-]+\))?(?:은|는|이|가)\s+", sentence)
+            estimate = re.search(r"(\d{4})\s*회계연도\s*(상반기|하반기)\s*(?:\([^)]*\))?\s*잠정\s*미감사\s*매출액이\s*(?:약\s*)?(\d[\d,.]*\s*(?:만|억)?\s*[~∼-]\s*\d[\d,.]*\s*(?:만|억)\s*달러)", sentence)
+            multiple = re.search(r"전년\s*동기[^.!?]{0,90}대비\s*(약\s*)?(\d+(?:\.\d+)?)배[^.!?]{0,40}예상", sentence)
+            if issuer and estimate and multiple and re.search(r"발표했다", sentence):
+                name = issuer.group(1)
+                fact = (f"{name}{korean_topic_particle(name)} {estimate.group(1)}회계연도 {estimate.group(2)} "
+                        f"잠정 미감사 매출을 {estimate.group(3)}로 예상했다. 전년동기 {multiple.group(1) or ''}{multiple.group(2)}배다.")
+                if core_sentence_is_complete(fact):
+                    return fact
     if focus == "bond_yield":
         for sentence in sentences:
             if (
@@ -8965,6 +8991,7 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     candidates = sorted(
         candidates,
         key=lambda alert: (
+            alert["market_materiality"].get("transmission_scope_rank", 0),
             alert["market_materiality"].get("news_value_rank", 0),
             alert["market_materiality"]["priority"],
             alert["market_materiality"].get("focus", 0),
@@ -9173,6 +9200,8 @@ DATED_WIRE_PHOTO_PATTERN = (
     r"\[[^\]\r\n]{1,40}=\s*(?:AP|AFP|Reuters|뉴시스|연합뉴스)(?:/[A-Za-z가-힣]+)?\]"
     r"(?![^.\r\n]{0,50}기자\s*=)[^\r\n]{0,600}?(?:고\s*있다|자료사진)"
     r"[^\r\n]{0,600}?\b\d{4}\.\d{1,2}\.\d{1,2}\.\s*"
+    r"|\[[^\]\r\n]{1,40}=\s*(?:AP|AFP|Reuters|뉴시스|연합뉴스)(?:/[A-Za-z가-힣]+)?\]"
+    r"(?![^.\r\n]{0,50}기자\s*=)[^\r\n]{0,1400}?사진은[^\r\n]{0,500}?\b\d{4}\.\d{1,2}\.\d{1,2}\.\s*"
 )
 CORE_UI_GARBAGE_PATTERNS = (
     DATED_WIRE_PHOTO_PATTERN,
@@ -9232,7 +9261,7 @@ def core_sentence_is_complete(value: object, limit: int = GAMEJOA_CORE_MAX_CHARS
         return False
     # A sentence beginning with a discourse connector is usually a clipped
     # paragraph fragment from a publisher page, not a self-contained summary.
-    if re.match(r"^(?:그리고|한편|다만|그러나|이에|이와s*관련해)\s+", text):
+    if re.match(r"^(?:그리고|한편|다만|그러나|이에|여기에|이\s*부문|이와\s*관련해)\s+", text):
         return False
     if re.match(r"^(?:이\s*과정에서|이러한|이\s*같은|이를\s*통해|그\s*결과)\s+", text):
         return False

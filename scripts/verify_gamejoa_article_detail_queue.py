@@ -36,6 +36,104 @@ def fixture(title: str, body: str) -> str:
 
 
 class DetailQueueChecks(unittest.TestCase):
+    def test_scoped_market_changes_outrank_isolated_corporate_actions(self):
+        assess = radar.market_materiality.assess
+        policy = assess('FCC, 중국산 데이터센터 장비 수입 제한 검토',
+                        'FCC는 중국산 데이터센터 장비의 수입 제한안을 검토 중이라고 소식통이 전했다.')
+        capex = assess('메모리기업, 반도체 설비투자 2배 확대',
+                       '메모리기업은 반도체 생산능력 확대를 위해 설비투자를 2배 늘려 250억 달러를 투입할 계획이라고 발표했다.')
+        company = assess('통신기업, 현금·주식 피인수 계약',
+                         '통신기업은 인수 계약을 체결하고 거래 종결 시 주당 현금 4.925달러를 받는다고 발표했다.')
+        for result in (policy, capex, company):
+            self.assertEqual(result['disposition'], 'keep', result)
+        self.assertGreater(policy['transmission_scope_rank'], capex['transmission_scope_rank'])
+        self.assertGreater(capex['transmission_scope_rank'], company['transmission_scope_rank'])
+        praise = assess('반도체기업, 미래 혁신 비전', '반도체기업은 미래 혁신 비전을 공유하며 협력을 강화하기로 했다.')
+        self.assertNotEqual(praise['disposition'], 'keep', praise)
+
+    def test_photo_caption_cannot_supply_an_unrelated_corporate_event(self):
+        title = '스타벅스, 中신장 첫 진출…美의원·인권단체 "즉각 매장 닫아라"'
+        caption = ('[보스턴=AP/뉴시스] 스타벅스가 일본 법인 지분 매각을 두고 예비 협의를 진행했다. '
+                   '사진은 보스턴의 한 매장 외부에 스타벅스 로고가 걸려 있는 모습. 2026.06.11.')
+        current = ('미국 커피 체인 스타벅스가 중국 신장위구르자치구에 처음으로 매장을 열자 미국 정치권과 '
+                   '위구르 인권단체에서 매장을 폐쇄하라는 요구가 나왔다. '
+                   '스타벅스는 지난달 29일 우루무치에 매장 2곳을 열고 신장 시장에 처음 진출했다. '
+                   '미 하원 의원은 성명을 내고 매장 폐쇄를 요구했다. 회사는 요구에 대해 별도의 입장을 내놓지 않았다.')
+        source = fixture(title, '<div class="article_photo"><p id="caption_NISI20260611">' + caption + '</p></div><p>' + current + '</p>')
+        detail = extract_article_detail(source, title)
+        self.assertTrue(detail['body_verified'], detail)
+        self.assertIn('우루무치', detail['body'])
+        self.assertNotIn('일본 법인', detail['body'])
+        self.assertNotIn('일본 법인', radar.article_summary_body(caption + current))
+        core = radar.detailed_article_core(title, detail['body'])
+        self.assertNotIn('일본', core)
+        self.assertNotIn('지분 매각', core)
+
+    def test_actual_share_consolidation_core_keeps_ratio_proposal_and_vote_date(self):
+        title = '가드포스 AI, 40대1 액면병합 추진…복수의결권 도입도'
+        body = ('가드포스 AI(GFAI)가 기존 보통주 40주를 1주로 합치는 액면병합과 복수의결권 구조 도입 '
+                '등 3개 안건을 임시주주총회에 상정한다고 10월 2일 발표했다.\n'
+                '임시주총은 홍콩 시간 기준 10월 27일 오전 11시에 열린다.\n'
+                '일부 투자자와 애널리스트가 액면병합을 부정적으로 인식하고, 병합 후 주가가 병합 전 수준으로 '
+                '되돌아간 사례가 있으며, 발행주식 수 감소로 유동성이 떨어질 수 있다는 점이다.')
+        wrong = radar.market_materiality.source_sentences(body)[-1]
+        self.assertFalse(radar.market_materiality.core_focus_aligned(title, wrong))
+        core = radar.detailed_article_core(title, body)
+        for term in ('가드포스 AI', '40대1', '복수의결권', '10월 27일', '상정한다'):
+            self.assertIn(term, core)
+        self.assertNotIn('시행했다', core)
+        self.assertNotIn('일부 투자자', core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+
+    def test_actual_preliminary_revenue_core_is_total_not_a_segment(self):
+        title = '루안윈 에다이 테크놀로지, 상반기 잠정매출 930만~950만달러..전년비 25배'
+        body = ('루안윈 에다이 테크놀로지(RYET)가 9월 30일 종료된 2027 회계연도 상반기(6개월) 잠정 미감사 '
+                '매출액이 약 930만~950만 달러(약 6300만~6450만 위안)로 전년 동기 약 37만 달러(260만 위안) '
+                '대비 약 25배에 이를 것으로 예상된다고 2일 발표했다.\n'
+                '이 부문 매출은 약 500만~520만 달러(3400만~3550만 위안)로 전체의 약 53~56%를 차지할 전망이다.\n'
+                '매출 인식, 기간 귀속, 환율 환산 등 기말 조정에 따라 최종 수치는 크게 달라질 수 있다.')
+        core = radar.detailed_article_core(title, body)
+        for term in ('루안윈', '2027회계연도 상반기', '잠정 미감사', '930만~950만 달러', '예상했다', '약 25배'):
+            self.assertIn(term, core)
+        self.assertNotIn('500만', core)
+        self.assertFalse(radar.core_sentence_is_complete('이 부문 매출은 500만 달러로 예상된다.'))
+        audit = radar.market_materiality.assess(title, body)
+        self.assertNotIn('rates_fx_or_macro', [item['kind'] for item in audit['evidence']])
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+
+    def test_service_comparison_and_unchanged_dividend_are_not_new_high_impact_events(self):
+        title = '국내 3사 자율주행 서비스 비교해보니'
+        body = '지난 3월에는 AI 서비스 기업 NCS와 자율주행 물류 사업 공동 수주를 위한 업무협약을 체결했다.'
+        audit = radar.market_materiality.assess(title, body)
+        self.assertLess(audit['priority'], 2, audit)
+        self.assertFalse(radar.market_materiality.evidence_is_new_event('commercial_order', body))
+        current = 'A2Z는 UAE 기업과 100억원 규모 자율주행 차량 공급 계약을 체결했다고 발표했다.'
+        self.assertEqual(radar.market_materiality.assess('A2Z, 100억원 공급 계약 체결', current)['disposition'], 'keep')
+        unchanged = radar.market_materiality.assess('펜넷파크, 10월 배당 주당 0.08달러 유지',
+                                                  '펜넷파크는 월간 배당금을 0.08달러로 확정하고 11월 2일 지급한다고 발표했다.')
+        self.assertLess(unchanged['priority'], 2, unchanged)
+        cut = radar.market_materiality.assess('금융기업, 배당 50% 삭감', '금융기업은 분기 배당금을 50% 삭감한다고 발표했다.')
+        self.assertEqual(cut['disposition'], 'keep', cut)
+
+    def test_office_photo_in_lead_cannot_exclude_actual_shareholder_change(self):
+        title = '두둑해진 곳간에 주주환원 관심…반도체기업 자사주 소각'
+        body = '반도체기업 본사 전경.\n반도체기업은 40조원 규모 자기주식을 취득하고 전량 소각한다고 발표했다.'
+        audit = radar.market_materiality.assess(title, body)
+        self.assertEqual(audit['disposition'], 'keep', audit)
+        self.assertNotEqual(audit['reason'], 'office_publicity_without_business_economics')
+
+    def test_connective_debt_core_is_rebuilt_as_the_actual_debt_repayment(self):
+        title = '하이페리온 디파이, 부채 전액 상환·자사주 매입 시작에 주목'
+        body = ('아브뉴 캐피털 대출 약 860만 달러를 전액 상환해 잔여 장기 부채가 없어지면서 이자 부담이 줄었습니다. '
+                '여기에 가중평균 3.21달러로 자사주 24만 주를 매입하며 주주환원 의지도 보였습니다.')
+        self.assertEqual(radar.market_materiality.focus_kind(title), 'debt_repayment')
+        self.assertFalse(radar.core_sentence_is_complete('여기에 자사주 24만 주를 매입했습니다.'))
+        core = radar.detailed_article_core(title, body)
+        self.assertIn('860만', core)
+        self.assertIn('전액 상환', core)
+        self.assertNotIn('여기에', core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+
     def test_actual_convertible_article_summarizes_issue_not_unrelated_consensus(self):
         title = "스노우플레이크, 35억달러 전환사채 발행 추진..2027년물 환매"
         event = (
