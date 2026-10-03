@@ -503,6 +503,22 @@ def score(item: dict) -> int:
     group = topic_group(text)
     source = item.get('source') or ''
 
+    if group == 'nvidia_robotics_exec':
+        stage = _nvidia_robotics_exec_stage(text, source)
+        if stage in {'official_rhetoric_baseline','roadshow_within_year_unverified','within_year_unverified','timeline_unverified','background'}:
+            return 0
+        s = 20
+        s += {
+            'within_year_confirmed': 18,
+            'timeline_change': 14,
+            'general_brain_execution': 17,
+            'quantified_deployment': 17,
+        }.get(stage, 0)
+        if base.NUMERIC.search(text): s += 3
+        if source in base.OFFICIAL_OR_PRIMARY or _nvidia_exec_source_ok(source): s += 7
+        elif source in base.TRUSTED: s += 3
+        return s
+
     if group == 'fieldai':
         stage = _fieldai_stage(text, source)
         if stage in {'funding_proposed_baseline','commercial_baseline','hyundai_investment_baseline','partner_baseline','background'}:
@@ -624,6 +640,17 @@ def score(item: dict) -> int:
 
 
 def _raw_cat(text: str, group: str) -> str:
+    if group == 'nvidia_robotics_exec':
+        return {
+            'official_rhetoric_baseline': '로보틱스 ChatGPT 모먼트 공식 수사 기준선',
+            'roadshow_within_year_unverified': '로드쇼 1년 이내 코멘트 미확인 기준선',
+            'within_year_unverified': '1년 이내 시간표 미확인',
+            'within_year_confirmed': '1년 이내 로보틱스 변곡점 공식 확인',
+            'timeline_change': '로보틱스 변곡점 시간표 변경',
+            'timeline_unverified': '로보틱스 시간표 미확인',
+            'general_brain_execution': '범용 로봇 두뇌 실행지표',
+            'quantified_deployment': '로봇 배치·생산·고객 정량 확대',
+        }.get(_nvidia_robotics_exec_stage(text), 'NVIDIA 로보틱스 전망')
     if group == 'fieldai':
         return {
             'funding_proposed_baseline': '기업가치 100억달러·7억달러 조달 추진 기준선',
@@ -695,6 +722,7 @@ def _raw_cat(text: str, group: str) -> str:
 
 def _lane(group: str) -> str:
     return {
+        'nvidia_robotics_exec': 'NVIDIA 로보틱스',
         'fieldai': 'FieldAI',
         'samhyun': '삼현',
         'xpeng': '샤오펑 IRON',
@@ -706,7 +734,7 @@ def _lane(group: str) -> str:
 
 
 def category(text: str, group: str) -> str:
-    if group in {'fieldai','samhyun','xpeng','rfm_general_intelligence','agility_platform','lg_robotics','frontier_ai'}:
+    if group in {'nvidia_robotics_exec','fieldai','samhyun','xpeng','rfm_general_intelligence','agility_platform','lg_robotics','frontier_ai'}:
         return f"{_lane(group)} · {_raw_cat(text, group)}"
     return _orig_category(text, group)
 
@@ -984,7 +1012,7 @@ def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -
         return []
     chosen: list[dict] = []
     used: set[str] = set()
-    priority = ['tesla','fieldai','xpeng','global_battery_capacity','solid_state_material','rfm_general_intelligence','agility_platform','samhyun','lg_robotics','robotis','battery','ess_battery','frontier_ai','wonik','byd_paxini']
+    priority = ['tesla','nvidia_robotics_exec','fieldai','xpeng','global_battery_capacity','solid_state_material','rfm_general_intelligence','agility_platform','samhyun','lg_robotics','robotis','battery','ess_battery','frontier_ai','wonik','byd_paxini']
     for group in priority:
         for x in candidates:
             if x.get('group') == group and x['key'] not in used:
