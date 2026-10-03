@@ -38,6 +38,22 @@ class AIServerPhysicalBottleneckTests(unittest.TestCase):
         self.assertIn("POWER", event["categories"])
         self.assertIn("26 weeks", event["metrics"])
 
+
+    def test_unrelated_article_number_is_not_attached_to_bottleneck(self):
+        text = (
+            "AI server power supply PSU supply constraints are limiting output. "
+            "Elsewhere, liquid cooling penetration is projected to reach 53% in 2026. "
+            "A separate business segment grew 90%."
+        )
+        event = m.parse_event(
+            text,
+            "https://www.trendforce.com/presscenter/news/example.html",
+            "AI server power supply constraints",
+            "2026-10-03T10:00:00+09:00",
+        )
+        self.assertIn("POWER", event["categories"])
+        self.assertNotIn("90%", event["metrics"])
+
     def test_odm_rack_shipment_guidance_alerts(self):
         text = "AI server rack shipments are expected to grow more than double as production capacity expands."
         event = m.parse_event(
