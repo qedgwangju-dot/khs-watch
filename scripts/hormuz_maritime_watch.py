@@ -261,6 +261,17 @@ def _resolve_direct_publisher_url(item):
     if domain in urllib.parse.urlparse(current).netloc.lower():
         return current
 
+    if "news.google.com/" in current:
+        try:
+            from googlenewsdecoder import gnewsdecoder
+            decoded = gnewsdecoder(current, timeout=12.0)
+            if isinstance(decoded, dict) and decoded.get("success"):
+                link = str(decoded.get("decoded_url") or "")
+                if domain in urllib.parse.urlparse(link).netloc.lower():
+                    return link
+        except Exception:
+            pass
+
     title = _strip_source_suffix(item.get("title"), source)
     queries = [
         f'site:{domain} "{title}"',
