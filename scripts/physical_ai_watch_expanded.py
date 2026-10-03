@@ -204,8 +204,10 @@ FIELD_AI_CUSTOMER_COUNT = re.compile(r'\b\d{2,4}\+?\s*(?:customers?|clients?)\b|
 FIELD_AI_HYUNDAI = re.compile(r'Hyundai|현대차|현대자동차|기아|Kia', re.I)
 FIELD_AI_ATLAS = re.compile(r'Atlas|아틀라스|RMAC|HMGMA|Robot\s*Metaplant\s*Application\s*Center', re.I)
 FIELD_AI_HYUNDAI_STAKE = re.compile(
-    r'(?:Hyundai|현대차|현대자동차|기아|Kia).{0,120}(?:stake|equity|ownership|follow[-\s]*on\s+investment|additional\s+investment|지분|추가\s*투자|후속\s*투자)|'
-    r'(?:stake|equity|ownership|follow[-\s]*on\s+investment|additional\s+investment|지분|추가\s*투자|후속\s*투자).{0,120}(?:Hyundai|현대차|현대자동차|기아|Kia)',
+    r'(?:Hyundai|현대차|현대자동차|기아|Kia).{0,140}(?:follow[-\s]*on\s+investment|additional\s+investment|increased\s+investment|추가\s*투자|후속\s*투자|투자\s*확대)|'
+    r'(?:follow[-\s]*on\s+investment|additional\s+investment|increased\s+investment|추가\s*투자|후속\s*투자|투자\s*확대).{0,140}(?:Hyundai|현대차|현대자동차|기아|Kia)|'
+    r'(?:Hyundai|현대차|현대자동차|기아|Kia).{0,140}(?:stake|equity|ownership|지분|지분율).{0,80}(?:\d+(?:\.\d+)?\s*%|disclosed|acquired|owns?|공개|확보|취득|보유)|'
+    r'(?:\d+(?:\.\d+)?\s*%|disclosed|acquired|owns?|공개|확보|취득|보유).{0,80}(?:stake|equity|ownership|지분|지분율).{0,140}(?:Hyundai|현대차|현대자동차|기아|Kia)',
     re.I,
 )
 FIELD_AI_HYUNDAI_BASELINE = re.compile(
@@ -237,7 +239,7 @@ def _fieldai_stage(text: str, source: str = '') -> str:
         FIELD_AI_PARTNER_EVENT.search(text) or re.search(r'integrat|deploy|license|탑재|통합|배치|사용권|적용', text, re.I)
     ):
         return 'hyundai_atlas_integration'
-    if FIELD_AI_HYUNDAI_STAKE.search(text) and not FIELD_AI_HYUNDAI_BASELINE.search(text):
+    if FIELD_AI_HYUNDAI_STAKE.search(text):
         return 'hyundai_followon_or_stake'
     if FIELD_AI_FUNDING.search(text) and FIELD_AI_CLOSED.search(text):
         return 'funding_closed_official' if official else 'funding_closed_reported'
