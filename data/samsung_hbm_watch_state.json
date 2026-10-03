@@ -2052,7 +2052,7 @@
   "last_samsung_hbm4_price_alert_count": 0,
   "_delivery": {
     "id": "75581026addd8996f1b826463ef1bf40820c73c7833790cbcc22f058872b837d",
-    "status": "queued",
+    "status": "in_flight",
     "created_at_kst": "2026-10-03T13:48:56+09:00",
     "chunks": [
       "💵 <b>삼성 HBM4 2027 계약가격 감시</b>\n━━━━━━━━━━━━━━━━\n<b>신규 변화 1건</b> · 2026-10-03 13:44 KST\n\n<b>1.</b>\n<b>삼성 HBM4 2027 계약가격 변화</b>\n• 가격 수준: 2026년=1.0 기준 <b>8.00배</b>\n• 전년 대비 환산: <b>+700%</b> — 3배는 +200%이며 +300%가 아닙니다.\n• 계약 단계: <b>가격 협상</b>\n• 적층 기준: <b>unspecified</b>\n• 본문 직접 확인: <b>예</b>\n• 구분: 제목의 3배만으로 실제 고객 체결가격·LTA 가격으로 승격하지 않습니다.\n• 이번 변화: 가격 수준 3.00배→8.00배 · 계약 단계 headline_reported→negotiating · 기사 본문 직접 확인\n• 감지 근거: v.daum.net · 2026-10-02T17:33:12+09:00\n• <a href=\"https://v.daum.net/v/xUwyJh4qhi?f=p\">원문</a>"
@@ -4120,6 +4120,7 @@
       },
       "last_samsung_hbm4_price_observation_count": 1,
       "last_samsung_hbm4_price_alert_count": 1
-    }
+    },
+    "attempt_at_kst": "2026-10-03T13:48:58+09:00"
   }
 }
