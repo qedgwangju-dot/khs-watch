@@ -386,6 +386,27 @@ def timeline_line(case: str, kind: str, item: dict) -> str:
     return f"날짜 확인 필요 · {event_label}"
 
 
+def _korean_date_label(date_text: str) -> str:
+    m = re.fullmatch(r"(20\d{2})-(\d{2})-(\d{2})", date_text.strip())
+    if not m:
+        return html.escape(date_text)
+    return f"{int(m.group(1))}년 {int(m.group(2))}월 {int(m.group(3))}일"
+
+
+def timeline_html(case: str, kind: str, item: dict) -> str:
+    rows: list[str] = []
+    for segment in timeline_line(case, kind, item).split(" → "):
+        segment = segment.strip()
+        m = re.match(r"^(20\d{2}-\d{2}-\d{2})\s+(.+)$", segment)
+        if m:
+            rows.append(
+                f"• <b>{_korean_date_label(m.group(1))}</b> {html.escape(m.group(2))}"
+            )
+        else:
+            rows.append(f"• {html.escape(segment)}")
+    return "\n".join(rows)
+
+
 _original_alert = base.alert
 
 
@@ -401,7 +422,10 @@ def alert(case: str, patent: str, kind: str, item: dict) -> str:
         return (
             "<b>[바이오 감시] Halozyme 특허분쟁 누적 판세 업데이트</b>\n\n"
             f"<b>MSD PGR {total}건 중 {decided}건에서 심판 대상 청구항 특허성 부정</b>\n\n"
-            "- <b>타임라인:</b> 2026-07-23 잔여 사건 포함 구술심리 → 2026-09-25 PGR2025-00033·00039 최종서면결정 → 2026-09-28 알테오젠 공식 IR 누적 판세 확인\n"
+            "- <b>타임라인:</b>\n"
+            "• <b>2026년 7월 23일</b> 잔여 사건 포함 구술심리\n"
+            "• <b>2026년 9월 25일</b> PGR2025-00033·00039 최종서면결정\n"
+            "• <b>2026년 9월 28일</b> 알테오젠 공식 IR 누적 판세 확인\n"
             f"- <b>현재 판세:</b> 최종결정 {decided}건 특허성 부정 · 잔여 {remaining}건 최종결정 대기\n"
             "- <b>알테오젠:</b> 단일 사건 승패가 아니라 Halozyme MDASE 특허군 전체의 방어력이 약해지는 흐름을 보여주는 후속 업데이트입니다. ALT-B4 자체 특허 유효성 판정은 아닙니다.\n"
             "- <b>다음 확인:</b> 잔여 PGR 최종서면결정 → 국장 재검토·재심 → 연방순회항소법원 항소 → 뉴저지·유럽 소송\n"
@@ -413,11 +437,11 @@ def alert(case: str, patent: str, kind: str, item: dict) -> str:
 
     if kind != "final_decision":
         message = _original_alert(case, patent, kind, item)
-        timeline = html.escape(timeline_line(case, kind, item))
+        timeline = timeline_html(case, kind, item)
         lines = message.splitlines()
         for idx, line in enumerate(lines):
             if "<b>사건:</b>" in line:
-                lines.insert(idx + 1, f"- <b>타임라인:</b> {timeline}")
+                lines.insert(idx + 1, f"- <b>타임라인:</b>\n{timeline}")
                 break
         if kind == "final_unpatentable":
             for idx, line in enumerate(lines):
@@ -438,7 +462,7 @@ def alert(case: str, patent: str, kind: str, item: dict) -> str:
         f"- <b>사건:</b> {html.escape(case)}"
         + (f" · 미국 특허 {html.escape(patent)}" if patent else "")
         + "\n"
-        f"- <b>타임라인:</b> {html.escape(timeline_line(case, kind, item))}\n"
+        f"- <b>타임라인:</b>\n{timeline_html(case, kind, item)}\n"
         "- <b>결정:</b> PTAB 최종서면결정이 공개됐습니다. 청구항별 특허성 판단은 원문 결과를 추가 교차확인합니다.\n"
         "- <b>알테오젠:</b> Halozyme 변형 PH20 특허 장벽과 MSD·알테오젠의 미국 피하주사 사업 리스크에 직접 연결되는 사건입니다.\n"
         "- <b>다음 확인:</b> 청구항별 특허성 결과 → 국장 재검토·재심 → 연방순회항소법원 항소\n"
@@ -583,7 +607,12 @@ def portfolio_alert(item: dict) -> str:
         return (
             "<b>[바이오 감시] Halozyme 특허분쟁 판세 업데이트</b>\n\n"
             f"<b>PTAB 신규 최종서면결정 2건 반영 — 누적 {s['won']}/{s['total']}건</b>\n\n"
-            "- <b>타임라인:</b> 2026-07-23 관련 10개 PGR 공동 구술심리 → 2026-09-25 PGR2025-00033·00039 최종서면결정 → 2026-09-28 알테오젠 공식 IR 7/14 확인 → 2026-10-01 PGR2025-00052 최종서면결정 → 2026-10-02 PGR2025-00046 최종서면결정\n"
+            "- <b>타임라인:</b>\n"
+            "• <b>2026년 7월 23일</b> 관련 10개 PGR 공동 구술심리\n"
+            "• <b>2026년 9월 25일</b> PGR2025-00033·00039 최종서면결정\n"
+            "• <b>2026년 9월 28일</b> 알테오젠 공식 IR 7/14 확인\n"
+            "• <b>2026년 10월 1일</b> PGR2025-00052 최종서면결정\n"
+            "• <b>2026년 10월 2일</b> PGR2025-00046 최종서면결정\n"
             f"- <b>누적 판세:</b> PTAB 확인 기준 {s['won']}/{s['total']}건 · {ratio:.0f}% · 잔여 {s['pending']}건{oral}"
             + patent_line
             + "\n- <b>결정:</b> PGR2025-00052와 PGR2025-00046 모두 PTAB가 심판 대상 청구항 전부를 특허 받을 수 없다고 최종 판단했습니다.\n"

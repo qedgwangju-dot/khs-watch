@@ -108,6 +108,15 @@ class BioAlertRegressionTests(unittest.TestCase):
             "rehearing",
         )
 
+    def test_halozyme_timeline_html_bolds_each_date(self):
+        item = {"published": "Thu, 01 Oct 2026 00:00:00 GMT"}
+        rendered = halo.timeline_html("PGR2025-00052", "final_unpatentable", item)
+        self.assertIn("• <b>2025년 6월 27일</b> PGR 청구", rendered)
+        self.assertIn("• <b>2025년 10월 16일</b> 심판 개시", rendered)
+        self.assertIn("• <b>2026년 7월 23일</b> 공동 구술심리", rendered)
+        self.assertIn("• <b>2026년 10월 1일</b> 최종서면결정", rendered)
+        self.assertNotIn("2026-10-01", rendered)
+
     def test_halozyme_alert_timeline_dates(self):
         item = {
             "published": "Fri, 25 Sep 2026 12:00:00 GMT",
@@ -141,7 +150,8 @@ class BioAlertRegressionTests(unittest.TestCase):
         self.assertIn("누적 9/14건", rendered)
         self.assertIn("PTAB 확인 기준 9/14건", rendered)
         self.assertIn("2026-10-01 PGR2025-00052", rendered)
-        self.assertIn("2026-10-02 PGR2025-00046", rendered)
+        self.assertIn("• <b>2026년 10월 1일</b> PGR2025-00052", rendered)
+        self.assertIn("• <b>2026년 10월 2일</b> PGR2025-00046", rendered)
         self.assertIn("알테오젠이 9/14를 새 공식 IR로 발표했다는 뜻이 아니라", rendered)
         self.assertIn("30일 내 USPTO 국장 재검토 또는 PTAB 재심", rendered)
 
@@ -173,8 +183,8 @@ class BioAlertRegressionTests(unittest.TestCase):
             item,
         )
         self.assertIn("<b>타임라인:</b>", rendered)
-        self.assertIn("2025-03-07 PGR 청구", rendered)
-        self.assertIn("2026-09-25 최종서면결정", rendered)
+        self.assertIn("• <b>2025년 3월 7일</b> PGR 청구", rendered)
+        self.assertIn("• <b>2026년 9월 25일</b> 최종서면결정", rendered)
 
     def test_halozyme_portfolio_ir_update_is_distinct_event(self):
         text = (
