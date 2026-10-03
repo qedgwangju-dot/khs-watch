@@ -232,7 +232,7 @@ FIELD_AI_NEGATIVE = re.compile(
 def _fieldai_stage(text: str, source: str = '') -> str:
     if not FIELD_AI_ID.search(text):
         return ''
-    official = source in {'FieldAI', 'Field AI'}
+    official = bool(re.search(r'\bFieldAI\b|\bField\s+AI\b', source or '', re.I))
     if FIELD_AI_FUNDING_REVERSE.search(text) or FIELD_AI_NEGATIVE.search(text):
         return 'reverse'
     if FIELD_AI_HYUNDAI.search(text) and FIELD_AI_ATLAS.search(text) and (
