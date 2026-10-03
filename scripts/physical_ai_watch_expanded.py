@@ -764,6 +764,29 @@ def risk(cat: str) -> str:
 
 def verification(item: dict, group: str, text: str) -> str:
     source = item.get('source') or ''
+    if group == 'fieldai':
+        stage = _fieldai_stage(text, source)
+        if stage == 'funding_proposed_baseline':
+            return 'Business Insider 소식통 보도 기준선 · 100억달러 기업가치·7억달러 조달은 아직 공식 클로징 전'
+        if stage == 'funding_closed_official':
+            return 'FieldAI 공식 투자유치 발표 · 납입액·기업가치·투자자·신주조건 직접 확인'
+        if stage == 'funding_closed_reported':
+            return '신뢰 매체의 투자유치 종결 보도 · FieldAI 공식 발표·투자자 확인 전'
+        if stage == 'commercial_baseline':
+            return 'Business Insider 보도 · 1.35억달러는 인식매출 단독이 아니라 매출+고객계약 합산, 30곳+ 고객 기준선'
+        if stage == 'hyundai_investment_baseline':
+            return '연합뉴스·전자신문·FieldAI 공개자료 교차확인 · 투자금 수백만달러 수준, 정확한 금액·지분율 비공개'
+        if stage == 'partner_baseline':
+            return 'FieldAI 공식 파트너십 기준선 · 반복 보도는 새 이벤트 아님'
+        if stage in {'commercial_metric_change','new_partner_or_deployment','hyundai_atlas_integration','hyundai_followon_or_stake'}:
+            if source in base.OFFICIAL_OR_PRIMARY:
+                return 'FieldAI·당사자 공식자료 · 고객·계약·배치·투자 단계 직접 확인'
+            return '신뢰 매체 보도 · FieldAI·고객·투자자 공식자료 교차확인'
+        if stage == 'funding_terms_change':
+            return '신뢰 매체·회사자료로 기존 7억달러·100억달러 조건 대비 변경 확인'
+        if stage == 'reverse':
+            return '계약·투자·배치 후퇴 보도 · 당사자 공식자료 교차확인'
+        return 'FieldAI 관련 보도 · 회사·고객·투자자 1차자료 추가확인'
     if group == 'samhyun':
         stage = _samhyun_stage(text)
         if stage in {'initial_mass_production_order','first_shipment','follow_on_order'}:
@@ -805,6 +828,17 @@ def same_event(a: dict, b: dict) -> bool:
     ta = f"{a.get('title','')} {a.get('description','')}"
     tb = f"{b.get('title','')} {b.get('description','')}"
     g = a.get('group')
+    if g == 'fieldai':
+        sa, sb = _fieldai_stage(ta, a.get('source') or ''), _fieldai_stage(tb, b.get('source') or '')
+        if sa != sb:
+            return False
+        if sa in {'funding_proposed_baseline','funding_closed_official','funding_closed_reported','commercial_baseline','hyundai_investment_baseline'}:
+            return True
+        nums_a = set(re.findall(r'\$?\s*\d[\d,.]*\s*(?:million|billion|M|B|달러)|\d[\d,.]*\s*(?:customers?|clients?|고객|고객사)', ta, re.I))
+        nums_b = set(re.findall(r'\$?\s*\d[\d,.]*\s*(?:million|billion|M|B|달러)|\d[\d,.]*\s*(?:customers?|clients?|고객|고객사)', tb, re.I))
+        if nums_a and nums_b:
+            return bool(nums_a & nums_b)
+        return True
     if g == 'samhyun':
         sa, sb = _samhyun_stage(ta), _samhyun_stage(tb)
         if sa != sb:
@@ -850,6 +884,20 @@ def same_event(a: dict, b: dict) -> bool:
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     group = base.topic_group(text)
+    if group == 'fieldai':
+        stage = _fieldai_stage(text, item.get('source') or '')
+        if stage == 'funding_proposed_baseline':
+            return hashlib.sha256(b'fieldai|funding|2026-10-02|proposed|700m|10b').hexdigest()
+        if stage == 'commercial_baseline':
+            return hashlib.sha256(b'fieldai|commercial|2026-10|135m-revenue-plus-contracts|30-plus-customers').hexdigest()
+        if stage == 'hyundai_investment_baseline':
+            return hashlib.sha256(b'fieldai|hyundai|2026-02|initial-investment|amount-undisclosed').hexdigest()
+        if stage == 'partner_baseline':
+            partners = '-'.join(sorted(set(re.findall(r'Boston\s*Dynamics|Caterpillar|Certis|Big[-\s]*D\s*Construction|DPR\s*Construction|NVIDIA', text, re.I)))) or 'known-partner'
+            return hashlib.sha256(f'fieldai|partner-baseline|{partners}'.encode()).hexdigest()
+        nums = '|'.join(sorted(set(re.findall(r'\$?\s*\d[\d,.]*\s*(?:million|billion|M|B|달러)|\d[\d,.]*\s*(?:customers?|clients?|고객|고객사)', text, re.I)))[:6]) or 'no-number'
+        partners = '-'.join(sorted(set(re.findall(r'Hyundai|현대차|기아|Kia|Boston\s*Dynamics|Caterpillar|Certis|NVIDIA|Atlas|RMAC|HMGMA', text, re.I)))) or 'no-partner'
+        return hashlib.sha256(f'fieldai|{stage}|{partners}|{nums}'.encode()).hexdigest()
     if group == 'samhyun':
         stage = _samhyun_stage(text)
         return hashlib.sha256(f'samhyun|humanoid-actuator|{stage}'.encode()).hexdigest()
@@ -887,7 +935,7 @@ def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -
         return []
     chosen: list[dict] = []
     used: set[str] = set()
-    priority = ['tesla','xpeng','global_battery_capacity','solid_state_material','rfm_general_intelligence','agility_platform','samhyun','lg_robotics','robotis','battery','ess_battery','frontier_ai','wonik','byd_paxini']
+    priority = ['tesla','fieldai','xpeng','global_battery_capacity','solid_state_material','rfm_general_intelligence','agility_platform','samhyun','lg_robotics','robotis','battery','ess_battery','frontier_ai','wonik','byd_paxini']
     for group in priority:
         for x in candidates:
             if x.get('group') == group and x['key'] not in used:
