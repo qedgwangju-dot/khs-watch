@@ -1392,7 +1392,7 @@ nvidia_robotics_within_year_confirmed = make(
 )
 g, s, c, k = classify(nvidia_robotics_within_year_confirmed)
 assert g == "nvidia_robotics_exec", (g, s, c)
-assert c.endswith("1년 이내 로보틱스 변곡점 공식 확인"), c
+assert c.endswith("1년 이내 로보틱스 변곡점 시간표"), c
 assert s >= 11, s
 
 nvidia_robotics_timeline_change = make(
