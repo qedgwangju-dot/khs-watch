@@ -2158,10 +2158,10 @@ def _hbm4_price_multiple(text: str) -> float | None:
         if not any(k in low for k in ("가격", "판매가", "공급가", "달러", "price", "pricing", "usd", "$")):
             continue
         patterns = (
-            r"(?:hbm4)[^.]{0,120}?(?:가격|판매가|공급가|price|pricing)[^.]{0,90}?([0-9]+(?:\.[0-9]+)?)\s*배",
-            r"(?:가격|판매가|공급가|price|pricing)[^.]{0,90}?([0-9]+(?:\.[0-9]+)?)\s*배[^.]{0,120}?(?:hbm4|hbm3e)",
-            r"(?:hbm3e)[^.]{0,100}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,40}?(?:높|비싸|higher|premium)",
-            r"([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?[^.]{0,40}?(?:높|비싸|higher|premium)[^.]{0,90}?(?:hbm3e|가격|price)",
+            r"(?:hbm4).{0,120}?(?:가격|판매가|공급가|price|pricing).{0,90}?([0-9]+(?:\.[0-9]+)?)\s*배",
+            r"(?:가격|판매가|공급가|price|pricing).{0,90}?([0-9]+(?:\.[0-9]+)?)\s*배.{0,120}?(?:hbm4|hbm3e)",
+            r"(?:hbm3e).{0,140}?([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?.{0,40}?(?:높|비싸|higher|premium)",
+            r"([0-9]+(?:\.[0-9]+)?)\s*배(?:\s*이상)?.{0,40}?(?:높|비싸|higher|premium).{0,90}?(?:hbm3e|가격|price)",
         )
         for pat in patterns:
             m = re.search(pat, segment, re.I)
