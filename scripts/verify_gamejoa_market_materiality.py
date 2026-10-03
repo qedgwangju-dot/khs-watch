@@ -113,6 +113,62 @@ DELIVERED_LOCAL_ADMINISTRATION = (
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_marine_industry_is_not_a_production_milestone(self):
+        sentence = "해양산업에서 인공지능과 디지털 기술의 활용이 늘어나는 만큼 연구소도 다양한 연구를 추진하고 있다."
+        self.assertFalse(materiality.evidence_is_new_event("technology_or_clinical_stage", sentence))
+        self.assertNotEqual(materiality.assess("바다 안전 기술", sentence)["disposition"], "keep")
+        self.assertEqual(materiality.assess("반도체 기술, 양산 시작", "기업은 검증한 반도체 기술의 양산을 시작했다.")["disposition"], "keep")
+
+    def test_actual_agency_role_series_is_not_industry_breaking_news(self):
+        title = "[해수분해] 가라앉는 배 탈출 '골든타임' 늘린다…바다 안전 기술"
+        body = ("연합뉴스는 해양수산부와 소속 기관의 업무를 하나씩 '분해'해 살펴보는 기획 기사를 매주 송고합니다. "
+                "해양산업에서 AI와 디지털 기술의 활용이 늘어 연구소도 다양한 연구를 추진하고 있다.")
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "exclude", audit)
+        self.assertEqual(audit["reason"], "agency_role_overview_not_new_industry_event", audit)
+
+    def test_employment_driven_market_close_keeps_release_actual_forecast_and_index(self):
+        title = "취업문 얼었는데 환호한 월가…엔비디아·AMD 줄줄이 최고치[뉴욕마감]"
+        body = ("나스닥종합지수는 319.27포인트(1.19%) 오른 2만7190.86에 마감했다. "
+                "미 노동부는 9월 미국의 비농업 일자리가 전달보다 2만9000명 증가했다고 발표했다. "
+                "다우존스가 집계한 전문가 예상치 8만4000명의 3분의 1에도 못 미친다. 실업률도 4.2%로 전달보다 올랐다. "
+                "엔비디아, 크라우드스트라이크, 팔로알토네트웍스, AMD가 줄줄이 장중 역대 최고가를 경신했다.")
+        core = radar.detailed_article_core(title, body)
+        for term in ("9월", "비농업", "2만9000명", "8만4000명", "1.19%", "나스닥"):
+            self.assertIn(term, core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertEqual(radar.source_core_fact_errors({**alert(title, body), "telegram_core_fact": core}), [])
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["transmission_scope_rank"], 3, audit)
+        row = {"title": title, "source_title": title, "source_body": body, "source_abstract": body,
+               "body_verified": True, "link": "https://www.mt.co.kr/world/2026/10/01/macro-fixture",
+               "publisher": "머니투데이", "source": "머니투데이", "published": NOW}
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            fresh = radar.build_verified_korean_business_alert(row, NOW)
+            self.assertIsNotNone(fresh)
+            selected = radar.quality_display_alerts([fresh], 1)
+            self.assertEqual(len(selected), 1, fresh.get("_exclusion_reason"))
+            self.assertIn("엔비디아·AMD", selected[0]["telegram_core_fact"])
+            self.assertIn("장중 최고가", selected[0]["telegram_core_fact"])
+
+    def test_macro_market_core_cannot_turn_a_falling_index_into_a_rising_close(self):
+        title = "고용 부진에 뉴욕증시 하락[뉴욕마감]"
+        body = ("나스닥종합지수는 319.27포인트(1.19%) 내린 2만7190.86에 마감했다. "
+                "미 노동부는 9월 미국의 비농업 일자리가 전달보다 2만9000명 증가했다고 발표했다. "
+                "다우존스가 집계한 전문가 예상치 8만4000명의 3분의 1에도 못 미친다.")
+        core = radar.detailed_article_core(title, body)
+        self.assertNotIn("상승 마감", core)
+        self.assertEqual(radar.source_core_fact_errors({**alert(title, body), "telegram_core_fact": core}), [])
+
+    def test_macro_market_core_does_not_invent_a_company_record_from_a_forecast(self):
+        title = "취업문 얼었는데 환호한 월가…엔비디아·AMD 줄줄이 최고치[뉴욕마감]"
+        sentences = ["나스닥종합지수는 319.27포인트(1.19%) 오른 2만7190.86에 마감했다.",
+                     "미 노동부는 9월 미국의 비농업 일자리가 전달보다 2만9000명 증가했다고 발표했다.",
+                     "다우존스가 집계한 전문가 예상치 8만4000명의 3분의 1에도 못 미친다.",
+                     "엔비디아와 AMD는 장중 최고가를 경신할 것으로 예상된다."]
+        core = radar.source_focused_article_core(title, sentences)
+        self.assertNotIn("장중 최고가를 경신했다", core)
+
     def test_past_fundraising_after_company_name_is_not_current_capital_event(self):
         past = "에이프릴바이오는 지난 6월 TKG휴켐스·IMM 측으로부터 3468억원 규모의 투자를 유치하면서 경영권을 TKG휴켐스에 넘겼다."
         self.assertFalse(materiality.evidence_is_new_event("capital_or_shareholder_action", past))

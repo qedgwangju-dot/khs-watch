@@ -2301,6 +2301,37 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         return ""
     focus = market_materiality.focus_kind(title)
     source = " ".join(sentences)
+    if focus == "market_macro_response":
+        jobs = re.search(r"(\d{1,2}월)\s*미국의\s*비농업\s*일자리가[^.!?]{0,30}(\d[\d,]*만\d[\d,]*명)\s*증가", source)
+        expected = re.search(r"(?:전문가\s*)?예상치\s*(\d[\d,]*만\d[\d,]*명)", source)
+        close = re.search(r"나스닥종합지수는[^!?]{0,70}?\(([+-]?\d+(?:\.\d+)?)%\)([^!?]{0,45}?)마감", source)
+        if jobs and expected and close:
+            observed = jobs.group(2).replace(',', '')
+            forecast = expected.group(1).replace(',', '')
+            def headcount(value):
+                return int(value.split('만')[0]) * 10000 + int(value.split('만')[1].rstrip('명'))
+            rising_close = bool(
+                re.search(r"오른|상승", close.group(2))
+                and not re.search(r"내린|하락|떨어", close.group(2))
+                and float(close.group(1)) > 0
+            )
+            falling_close = bool(
+                re.search(r"내린|하락|떨어", close.group(2))
+                and not re.search(r"오른|상승", close.group(2))
+                and float(close.group(1)) > 0
+            )
+            if headcount(observed) < headcount(forecast) and (rising_close or falling_close):
+                direction = "상승" if rising_close else "하락"
+                fact = (f"美 {jobs.group(1)} 비농업 고용은 {observed}으로 예상 {forecast}을 밑돌았다. "
+                        f"나스닥은 {close.group(1)}% {direction} 마감했다.")
+                if all(name in title for name in ("엔비디아", "AMD")) and any(
+                    all(name in sentence for name in ("엔비디아", "AMD"))
+                    and re.search(r"장중\s*(?:역대|사상)?\s*최고가를\s*경신했다", sentence)
+                    for sentence in sentences
+                ):
+                    fact += " 엔비디아·AMD는 장중 최고가를 경신했다."
+                if core_sentence_is_complete(fact):
+                    return fact
     if focus == "project_response" and re.search(r"트럼프", title) and re.search(r"원유\s*회수\s*증진", source):
         amount = re.search(r"(\d+(?:\.\d+)?\s*억\s*달러)[^.!?]{0,35}원유\s*회수\s*증진", source)
         omitted = re.search(r"원유\s*회수\s*증진\s*프로젝트[^.!?]{0,100}공동\s*팩트시트[^.!?]{0,30}포함[^.!?]{0,15}않", source)
@@ -6924,7 +6955,7 @@ def build_verified_korean_business_alert(row: dict, now) -> dict | None:
             )
             return alert
 
-    if market_materiality.focus_kind(title) != "breadth" and any(term in title.lower() for term in KOREAN_BUSINESS_MARKET_RECAP_TERMS):
+    if market_materiality.focus_kind(title) not in {"breadth", "market_macro_response"} and any(term in title.lower() for term in KOREAN_BUSINESS_MARKET_RECAP_TERMS):
         return None
 
     # Source-backed changes must survive the legacy headline vocabulary gate.

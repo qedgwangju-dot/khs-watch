@@ -7,7 +7,7 @@ import re
 from functools import lru_cache
 
 
-VERSION = 46
+VERSION = 47
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -114,6 +114,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("stockpile_release", r"비축유|비축\s*원유|G7.{0,30}(?:원유|경유).{0,20}방출|oil reserves|stockpile", r"비축\s*(?:유|원유|경유)|석유\s*비축|oil reserves|stockpile"),
     ("mortgage_rate", r"주담대|모기지|주택담보대출", r"주담대|모기지|주택담보대출|mortgage"),
     ("macro_release", r"\bcpi\b|\bpce\b|\bppi\b|\bgdp\b|고용|실업률|물가|건설지출", r"cpi|pce|ppi|gdp|고용|실업|물가|건설지출|인플레이션|inflation|payroll"),
+    ("market_macro_response", r"(?=.*(?:뉴욕마감|뉴욕증시|월가))(?=.*(?:고용|취업|실업|CPI|FOMC|연준))", r"고용|비농업|실업|CPI|FOMC|연준|나스닥|S&P\s*500|다우"),
     ("export_results", r"수출(?:액|실적|량)|수출.{0,20}(?:\d위|역대|최대|최저|증가|감소)", r"수출(?:액|실적|량)|수출.{0,45}(?:\d|최대|최저)"),
     ("project_cost", r"(?:LNG|원전|데이터센터|발전소|공장).{0,20}(?:사업비|건설비|사업\s*비용)", r"(?:LNG|원전|데이터센터|발전소|공장).{0,40}(?:사업비|건설비|비용)"),
     ("breadth", r"(?:상승|하락)\s*종목|순환매|쏠림|(?:S&P500|코스피|코스닥|나스닥).{0,30}종목.{0,20}%.{0,15}(?:하락|상승)", r"(?:오른|내린|상승|하락)\s*종목|종목.{0,20}%.{0,15}(?:하락|상승)|순환매|쏠림|순매수|순매도|자금.{0,12}이동"),
@@ -213,7 +214,7 @@ def focus_kind(title: str) -> str:
         return "capital_listing"
     # The changed measure/action outranks a company or commodity mentioned
     # earlier in a headline (e.g. DRAM share, not generic memory demand).
-    for kind in ("project_response", "capital_spending", "industry_market_share", "trade_threat", "stockpile_release", "equity_compensation", "commercial_order", "breadth", "sanctions_request"):
+    for kind in ("project_response", "capital_spending", "industry_market_share", "trade_threat", "stockpile_release", "equity_compensation", "commercial_order", "breadth", "sanctions_request", "market_macro_response"):
         if next(head for name, head, _source in HEADLINE_FOCUS if name == kind).search(title or ""):
             return kind
     matches = [(match.start(), index, kind) for index, (kind, headline, _source) in enumerate(HEADLINE_FOCUS)
@@ -481,7 +482,7 @@ RULES = (
      r"풍력|태양광|발전소|반도체|데이터센터|휴머노이드|자율주행|무인기|항공우주|wind power|solar|power plant|semiconductor|data center|humanoid|autonomous driving|drone|aerospace",
      r"(?:업무협약|공동개발\s*협약|MOU).{0,20}(?:체결|맺|서명)|(?:체결|맺|서명).{0,20}(?:업무협약|공동개발\s*협약|MOU)|signed.{0,30}(?:mou|joint development)"),
     ("rates_fx_or_macro", ("discount_rate",),
-     r"금리|국고채|모기지|주담대|주택담보대출|물가|인플레이션|고용|건설지출|환율|달러화|유동성|차입|구매관리자|\bpmi\b|cpi|pce|payroll|mortgage|interest rate|treasury|inflation|exchange rate|borrowing",
+     r"금리|국고채|모기지|주담대|주택담보대출|물가|인플레이션|고용|비농업\s*일자리|실업률|건설지출|환율|달러화|유동성|차입|구매관리자|\bpmi\b|cpi|pce|payroll|mortgage|interest rate|treasury|inflation|exchange rate|borrowing",
      r"인상|(?<!할)인하|동결|상승|하락|오른|내린|올랐|내렸|둔화|급등|급락|상회|하회|밑돌|웃돌|발표|기록|증가|감소|결정|약세|강세|최고|치솟|cut|hike|hold|rise|fall|miss|beat|announc|estimat|record"),
     ("policy_scope_or_stage", ("timeline",),
      r"관세|법인세|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
@@ -635,6 +636,10 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
         return bool(re.search(r"새로|처음|신규|도입했다|가동했다|출시했다", sentence))
     if kind == "technology_or_clinical_stage" and re.search(r"기대한다|기대된다|역량을|전문성을|소개하는\s*계기|학회.{0,20}(?:선정|채택)", sentence):
         return bool(re.search(r"임상\s*[1-3]상|\d+(?:\.\d+)?\s*(?:%|배|mK|dB)|인증\s*(?:획득|취득)|허가\s*(?:신청|승인)", sentence, re.I))
+    if kind == "technology_or_clinical_stage" and not re.search(
+        r"(?<!해)양산(?!업)|상용화|인증|승인|허가|임상\s*[1-3][ab]?상.{0,15}결과|임상\s*결과|공급|도입|검증|성능|대역폭|수율|전력효율|생산|production|commercial|certif|approv|deploy|validat|performance|bandwidth|yield", sentence, re.I,
+    ):
+        return False
     if kind == "physical_supply_or_capacity" and re.search(
         r"(?:공급|할인행사)[^.!?]{0,100}(?:진행한\s*점|실시한\s*점|도움이\s*(?:됐|되었))", sentence,
     ):
@@ -698,7 +703,7 @@ def transmission_scope(title: str, evidence: list[dict]) -> tuple[int, str]:
         r"관세|수출통제|수입.{0,20}(?:금지|제한)|금리|예탁금|FCC|BIS|NEPA|tariff|export control|import ban|interest rate", title, re.I,
     ):
         return 3, 'market_wide_policy_terms'
-    if focus_kind(title) == 'macro_release' and kinds & {'rates_fx_or_macro'} and QUANTITY.search(excerpts) and not REGIONAL_CPI.search(title):
+    if focus_kind(title) in {'macro_release', 'market_macro_response'} and kinds & {'rates_fx_or_macro'} and QUANTITY.search(excerpts) and not REGIONAL_CPI.search(title):
         return 3, 'national_macro_release'
     if kinds & {'energy_stockpile_action', 'energy_geopolitics_or_supply_risk'} and re.search(
         rf"{OIL_PRICE}|원유|비축|경유|천연가스|호르무즈|이란|우크라이나|oil|stockpile|hormuz|iran|ukraine", f"{title} {excerpts}", re.I,
@@ -774,6 +779,9 @@ def assess(title: str, body: str) -> dict:
     sentences = source_sentences(body)
     lead = " ".join(sentences[:3])
     headline_lead = f"{title} {lead}"
+    if re.search(r"업무를[^.!?]{0,45}살펴보는\s*기획\s*기사|기관의\s*(?:역할|업무)[^.!?]{0,25}소개하는\s*기획", body[:800]) and not DIRECT_HEADLINE_CHANGE.search(title):
+        result.update(disposition="exclude", priority=0, reason="agency_role_overview_not_new_industry_event")
+        return result
     if re.search(r"화제의\s*바이오人|인물\s*탐구|CEO\s*프로필|경영자\s*약력|executive profile", title, re.I) and not (
         DIRECT_HEADLINE_CHANGE.search(title) or re.search(r"임상\s*[1-3][ab]?상.{0,25}(?:결과|유효성|실패|성공)|임상\s*결과", title, re.I)
     ):
