@@ -17,7 +17,7 @@ STATE_PATH = ROOT / "data" / "gamejoa_article_detail_queue.json"
 PENDING_PATH = ROOT / "out" / "gamejoa_article_detail_queue_pending.json"
 CACHE_PATH = ROOT / "out" / "gamejoa_article_detail_run_cache.json"
 RETENTION = dt.timedelta(days=3)
-RESPONSE_VALIDATION_VERSION = 3
+RESPONSE_VALIDATION_VERSION = 4
 
 
 def parse_time(value) -> dt.datetime | None:
@@ -71,6 +71,7 @@ def plan_details(
     pending = prune_state(state, now)
     eligible = []
     cooling = 0
+    nonmaterial_recheck = 0
     selection_refresh = 0
     for row in rows:
         row.pop("_detail_deferred_reason", None)
@@ -106,6 +107,7 @@ def plan_details(
         )
         if respect_cooldown and due and due > now and not (revalidate_routes or revalidate_selection):
             cooling += 1
+            nonmaterial_recheck += int(entry.get("source_selection_disposition") == "exclude")
             row["_detail_deferred_reason"] = "retry_cooldown"
             continue
         selection_refresh += int(revalidate_selection)
@@ -131,6 +133,7 @@ def plan_details(
             row["_detail_deferred_reason"] = "retrieval_budget"
     return selected, pending, {
         "eligible": len(eligible), "cooling": cooling,
+        "nonmaterial_recheck": nonmaterial_recheck,
         "selection_refresh": selection_refresh,
         "fair_slots": max(0, len(selected) - min(priority_slots, len(selected))),
         "deferred": len(rows) - len(selected),
@@ -140,11 +143,14 @@ def plan_details(
 def record_attempt(
     state: dict, row: dict, now: dt.datetime, *, verified: bool, error: str = "",
     selection_version: int = 0,
+    source_disposition: str = "", source_reason: str = "",
 ) -> None:
     entry = state["entries"][article_key(row)]
     attempts = int(entry.get("attempts") or 0) + 1
     failures = 0 if verified else int(entry.get("consecutive_failures") or 0) + 1
     minutes = 60 if verified else (5, 15, 60, 120)[min(failures - 1, 3)]
+    if verified and source_disposition == "exclude":
+        minutes = 360
     entry.update({
         "attempts": attempts, "consecutive_failures": failures,
         "last_attempt_kst": now.isoformat(timespec="seconds"),
@@ -153,6 +159,8 @@ def record_attempt(
         "last_error": error[:350],
         "response_validation_version": RESPONSE_VALIDATION_VERSION,
         "selection_validation_version": selection_version,
+        "source_selection_disposition": source_disposition if verified else "",
+        "source_selection_reason": source_reason[:150] if verified else "",
     })
 
 

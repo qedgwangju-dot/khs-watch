@@ -1375,8 +1375,51 @@ def korean_business_publisher(row: dict) -> str:
 
 
 def korean_business_source_domain_allowed(link: str) -> bool:
-    lowered = str(link or "").lower()
-    return any(domain in lowered for domain in KOREAN_BUSINESS_PUBLISHER_DOMAINS)
+    try:
+        hostname = urllib.parse.urlsplit(str(link or "")).hostname or ""
+    except ValueError:
+        return False
+    return any(hostname == domain or hostname.endswith("." + domain) for domain in KOREAN_BUSINESS_PUBLISHER_DOMAINS)
+
+
+def korean_business_article_url_rejection(link: str) -> str:
+    try:
+        parsed = urllib.parse.urlsplit(link)
+    except ValueError:
+        return "malformed_article_url"
+    if parsed.scheme not in {"http", "https"} or not korean_business_source_domain_allowed(link):
+        return "untrusted_article_url"
+    path = parsed.path.lower().rstrip("/")
+    if not path or re.search(r"/(?:search|section|category|listing|list)(?:[/.]|$)", path):
+        return "publisher_listing_not_article"
+    host = parsed.hostname or ""
+    query = {key.lower(): values for key, values in urllib.parse.parse_qs(parsed.query).items()}
+    if host == "fnnews.com" or host.endswith(".fnnews.com"):
+        if not re.fullmatch(r"/news/\d+", path):
+            return "publisher_listing_not_article"
+    if host == "etoday.co.kr" or host.endswith(".etoday.co.kr"):
+        if not re.fullmatch(r"/news/view/\d+", path):
+            return "publisher_listing_not_article"
+    if host == "kmib.co.kr" or host.endswith(".kmib.co.kr"):
+        if path != "/article/view.asp" or not any(re.fullmatch(r"\d+", value) for value in query.get("arcid", [])):
+            return "publisher_listing_not_article"
+    if host == "newsis.com" or host.endswith(".newsis.com"):
+        if any(value.upper().startswith("NISI") for value in query.get("id", [])) or "nisi" in path:
+            return "photo_page_not_article"
+    return ""
+
+
+def canonical_korean_business_article_url(link: str) -> str:
+    parsed = urllib.parse.urlsplit(link)
+    query = urllib.parse.parse_qs(parsed.query)
+    article_ids = next((values for key, values in query.items() if key.lower() == "newsid"), [])
+    if (
+        parsed.hostname == "m.coinlab.edaily.co.kr" and parsed.scheme in {"http", "https"}
+        and parsed.path.lower() == "/news/read"
+        and len(article_ids) == 1 and re.fullmatch(r"\d{15,20}", article_ids[0])
+    ):
+        return urllib.parse.urlunsplit(("https", "www.edaily.co.kr", "/News/Read", parsed.query, ""))
+    return link
 
 
 def korean_business_source_allowed(item: dict) -> bool:
@@ -2226,6 +2269,19 @@ def compact_article_sentence(sentence: str, limit: int = 50) -> str:
 
 def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
+    flow_actors = [actor for actor in ("외국인", "기관", "개인", "연기금") if actor in title]
+    if flow_actors and re.search(r"순매수|순매도|팔아치|사들|매수|매도", title):
+        for sentence in sentences:
+            if (
+                any(actor in sentence for actor in flow_actors)
+                and re.search(r"\d[\d,.]*\s*(?:조|억|만)\s*원", sentence)
+                and re.search(r"순매수(?:했다|한\s*것으로)|순매도(?:했다|한\s*것으로)|매수했다|매도했다", sentence)
+                and market_materiality.period_matches(title, sentence)
+                and not market_materiality.EARLY_SIGNAL.search(sentence)
+            ):
+                fact = normalized_article_sentence(sentence)
+                if core_sentence_is_complete(fact):
+                    return fact
     if not market_materiality.focus_kind(title) and not market_materiality.DENIAL_HEADLINE.search(title):
         return ""
     focus = market_materiality.focus_kind(title)
@@ -6733,6 +6789,8 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
         if sent_at and dt.timedelta() <= now - sent_at < dt.timedelta(hours=1):
             recent_sent.setdefault(str(entry["link"]), []).append(entry)
     backlog_resumed = 0
+    invalid_url_skipped = 0
+    canonicalized_urls = 0
     if live_mode:
         for row in detail_queue.backlog_rows(
             queue_state, now, {str(row.get("link") or "") for row in rows}, base.MAX_AGE_HOURS,
@@ -6756,6 +6814,18 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
         if not is_korean_business_row(row) or not row.get("link"):
             continue
         link = str(row["link"])
+        canonical_link = canonical_korean_business_article_url(link)
+        if canonical_link != link:
+            row["source_discovery_url"] = link
+            row["link"] = canonical_link
+            row["_fetch_url"] = canonical_link
+            link = canonical_link
+            canonicalized_urls += 1
+        rejection = korean_business_article_url_rejection(link)
+        if rejection:
+            row["_detail_skipped_reason"] = rejection
+            invalid_url_skipped += 1
+            continue
         if link in unique_links:
             continue
         unique_links.add(link)
@@ -6829,9 +6899,15 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
             valid = False
             error = "resumed article publication time unavailable"
         query_time = detail_queue.parse_time(receipt["query_time_kst"]) or now
+        source_selection = market_materiality.assess(
+            detail.get("title") or str(row.get("title") or ""),
+            article_summary_body(detail.get("body") or ""),
+        ) if valid else {}
         detail_queue.record_attempt(
             pending, row, query_time, verified=valid, error=error,
             selection_version=market_materiality.VERSION,
+            source_disposition=source_selection.get("disposition") or "",
+            source_reason=source_selection.get("reason") or "",
         )
         row["article_query_time_kst"] = receipt["query_time_kst"]
         row["_article_detail_cache_hit"] = cache_hit
@@ -6863,8 +6939,10 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
         "Korean business detail queue: "
         f"source_fetches={len(results) - cache_hits} cache_hits={cache_hits} "
         f"fair_slots={stats['fair_slots']} retry_cooldown={stats['cooling']} "
+        f"nonmaterial_recheck={stats['nonmaterial_recheck']} "
         f"selection_refresh={stats['selection_refresh']} "
         f"backlog_resumed={backlog_resumed} "
+        f"invalid_url_skipped={invalid_url_skipped} canonicalized_urls={canonicalized_urls} "
         f"already_sent_skipped={sent_skipped} nonmarket_skipped={nonmarket_skipped}",
     ]
     for note in notes:

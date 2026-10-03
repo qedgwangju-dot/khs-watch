@@ -25,6 +25,8 @@ TARGET_MARKERS = (
     "article_content",
     "news-content",
     "news_content",
+    "news-body",
+    "news-detail-wrap",
 )
 TITLE_STOPWORDS = {
     "a",
@@ -83,7 +85,11 @@ class ArticleHTMLParser(HTMLParser):
         self.target_parts: list[str] = []
         self.target_bodies: list[str] = []
         self.ignored_depth = 0
+        self.ignored_tags: list[str] = []
         self.time_values: list[str] = []
+        self.publication_region_depth = 0
+        self.publication_region_parts: list[str] = []
+        self.publication_region_values: list[str] = []
         self.json_ld_depth = 0
         self.json_ld_parts: list[str] = []
         self.json_ld_current: list[str] = []
@@ -93,7 +99,8 @@ class ArticleHTMLParser(HTMLParser):
         attr = {str(key).lower(): str(value or "") for key, value in attrs}
         if self.ignored_depth:
             if tag not in VOID_TAGS:
-                self.ignored_depth += 1
+                self.ignored_tags.append(tag)
+                self.ignored_depth = len(self.ignored_tags)
             return
         hidden = (
             "hidden" in attr or attr.get("aria-hidden", "").lower() == "true"
@@ -101,6 +108,7 @@ class ArticleHTMLParser(HTMLParser):
         )
         if tag in {"aside", "nav", "footer", "form"} or hidden:
             if tag not in VOID_TAGS:
+                self.ignored_tags = [tag]
                 self.ignored_depth = 1
             return
         if tag == "meta":
@@ -125,6 +133,12 @@ class ArticleHTMLParser(HTMLParser):
             return
 
         identity = f"{attr.get('id', '')} {attr.get('class', '')} {attr.get('itemprop', '')}".lower().replace("_", "-")
+        if self.publication_region_depth:
+            if tag not in VOID_TAGS:
+                self.publication_region_depth += 1
+        elif "time-info" in identity.split():
+            self.publication_region_depth = 1
+            self.publication_region_parts = []
         is_explicit_target = any(
             marker.replace("_", "-") in identity for marker in TARGET_MARKERS
         )
@@ -157,8 +171,12 @@ class ArticleHTMLParser(HTMLParser):
     def handle_endtag(self, tag: str) -> None:
         tag = tag.lower()
         if self.ignored_depth:
-            if tag not in VOID_TAGS:
-                self.ignored_depth -= 1
+            if tag in self.ignored_tags:
+                # Optional closing tags in a hidden menu must not hide the
+                # subsequent article after its enclosing container closes.
+                index = len(self.ignored_tags) - 1 - self.ignored_tags[::-1].index(tag)
+                del self.ignored_tags[index:]
+                self.ignored_depth = len(self.ignored_tags)
             return
         if tag == "title":
             self.in_title = False
@@ -172,6 +190,12 @@ class ArticleHTMLParser(HTMLParser):
             return
         if self.skip_depth:
             return
+
+        if self.publication_region_depth and tag not in VOID_TAGS:
+            self.publication_region_depth -= 1
+            if self.publication_region_depth == 0:
+                self.publication_region_values.append(clean(" ".join(self.publication_region_parts)))
+                self.publication_region_parts = []
 
         if self.target_depth:
             if tag in BLOCK_TAGS:
@@ -205,6 +229,8 @@ class ArticleHTMLParser(HTMLParser):
             self.raw_parts.append(data)
         if self.target_depth and not self.skip_depth:
             self.target_parts.append(data)
+        if self.publication_region_depth and not self.skip_depth:
+            self.publication_region_parts.append(data)
         if self.capture_depth and self.block_depth and not self.skip_depth:
             self.block_parts.append(data)
 
@@ -220,7 +246,7 @@ def parse_published(value: str | None) -> dt.datetime | None:
         return parsed.astimezone(KST)
     except ValueError:
         pass
-    for fmt in ("%Y-%m-%d", "%Y.%m.%d", "%B %d, %Y"):
+    for fmt in ("%Y-%m-%d", "%Y.%m.%d", "%Y.%m.%d %H:%M:%S", "%Y.%m.%d %H:%M", "%B %d, %Y"):
         try:
             return dt.datetime.strptime(value, fmt).replace(tzinfo=KST)
         except ValueError:
@@ -340,12 +366,18 @@ def extract_article_detail(html_text: str, listing_title: str = "") -> dict:
     elif len(structured_body) >= 180:
         body = structured_body
     body = trim_article_footer(body)
+    visible_published = next((
+        match.group(1)
+        for value in parser.publication_region_values
+        if (match := re.search(r"입력\s*:?\s*(\d{4}\.\d{2}\.\d{2}\s+\d{2}:\d{2}(?::\d{2})?)", value))
+    ), "")
     published = parse_published(
         parser.meta.get("article:published_time")
         or parser.meta.get("date")
         or parser.meta.get("dc.date.issued")
         or structured.get("datePublished")
         or (parser.time_values[0] if parser.time_values else "")
+        or visible_published
     )
     aligned = titles_align(listing_title or title, title)
     return {

@@ -36,6 +36,151 @@ def fixture(title: str, body: str) -> str:
 
 
 class DetailQueueChecks(unittest.TestCase):
+    def test_foreign_flow_core_uses_observed_amount_not_generic_outlook_or_other_actor(self):
+        title = "9월에 20조 팔아치운 외국인, 10월엔 돌아올까"
+        body = (
+            "10월에는 실적 발표와 미국 장기금리, 환율 등이 외국인 귀환 여부를 가를 변수로 거론된다. "
+            "개인은 9월 국내 증시에서 10조원을 순매수했다. "
+            "2일 한국거래소에 따르면 지난 9월 외국인은 유가증권시장에서 20조3722억원어치를 순매도했다. "
+            "외국인은 10월에 5조원을 순매수할 것으로 예상된다."
+        )
+        core = radar.detailed_article_core(title, body)
+        self.assertIn("20조3722억원", core)
+        self.assertIn("9월 외국인", core)
+        self.assertIn("순매도했다", core)
+        self.assertNotIn("10조원", core)
+        self.assertNotIn("5조원", core)
+        self.assertNotIn("변수", core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+
+    def test_verified_nonmaterial_recheck_is_metadata_only_and_rearmed_by_changes(self):
+        row = article(1)
+        _, state, _ = queue.plan_details([row], {"entries": {}}, NOW, 1, selection_version=40)
+        queue.record_attempt(state, row, NOW, verified=True, selection_version=40,
+                             source_disposition="exclude", source_reason="consumer_review_not_industry_change")
+        entry = state["entries"][queue.article_key(row)]
+        self.assertEqual(queue.parse_time(entry["retry_after_kst"]), NOW + dt.timedelta(hours=6))
+        selected, _, stats = queue.plan_details([row], state, NOW + dt.timedelta(hours=1), 1, selection_version=40)
+        self.assertFalse(selected)
+        self.assertEqual(stats["nonmaterial_recheck"], 1)
+        self.assertTrue(queue.plan_details([row], state, NOW + dt.timedelta(hours=6), 1, selection_version=40)[0])
+        self.assertTrue(queue.plan_details([row], state, NOW + dt.timedelta(seconds=1), 1, selection_version=41)[0])
+        changed = {**row, "title": "기업1, 신규 공급계약 금액 1000억원", "published": NOW + dt.timedelta(minutes=1)}
+        self.assertTrue(queue.plan_details([changed], state, NOW + dt.timedelta(minutes=1), 1, selection_version=40)[0])
+        encoded = json.dumps(state)
+        self.assertNotIn("source_body", encoded)
+        self.assertNotIn('"seen"', encoded)
+        queue.record_attempt(state, row, NOW + dt.timedelta(hours=6), verified=False, error="HTTP 502", selection_version=40)
+        self.assertEqual(entry["source_selection_disposition"], "")
+        self.assertEqual(queue.parse_time(entry["retry_after_kst"]), NOW + dt.timedelta(hours=6, minutes=5))
+
+    def test_collector_records_nonmaterial_recheck_only_after_verified_source_body(self):
+        row = {**article(1), "title": "휴대폰 카메라 써보니, 찍는 맛 [리뷰]"}
+        body = "새 휴대폰 카메라를 직접 사용해 촬영 사진과 사용감을 살펴봤다. 구도와 화질에 대한 개인 평가다. " * 5
+        with tempfile.TemporaryDirectory() as folder, patch.dict(os.environ, {"RADAR_RUN_MODE": "live", "GITHUB_RUN_ID": "source-exclusion-test"}), \
+                patch.object(queue, "STATE_PATH", Path(folder) / "state.json"), \
+                patch.object(queue, "PENDING_PATH", Path(folder) / "pending.json"), \
+                patch.object(queue, "CACHE_PATH", Path(folder) / "cache.json"), \
+                patch.object(radar.telegram, "load_seen_state", return_value={"seen": {}}), \
+                patch.object(radar.base, "kst_now", return_value=NOW), \
+                patch.object(radar.base, "fetch", return_value=(fixture(row["title"], body), None)):
+            radar.hydrate_korean_business_details([row], NOW)
+            entry = queue.load_state(queue.PENDING_PATH)["entries"][queue.article_key(row)]
+            self.assertEqual(entry["verification_status"], "verified")
+            self.assertEqual(entry["source_selection_disposition"], "exclude")
+            self.assertEqual(entry["source_selection_reason"], "consumer_review_not_industry_change")
+            self.assertEqual(queue.parse_time(entry["retry_after_kst"]), NOW + dt.timedelta(hours=6))
+            self.assertNotIn("source_body", entry)
+
+    def test_hidden_menu_optional_end_tags_do_not_swallow_following_article(self):
+        title = "외국인, 9월 코스피 주식 20조원 순매도"
+        body = "외국인은 9월 코스피 시장에서 20조3722억원을 순매도했다. 삼성전자와 SK하이닉스 매도가 집중됐다. " * 5
+        source = (
+            f'<meta property="og:title" content="{title}">'
+            '<aside style="display:none"><ul><li>숨긴 추천기사<li><svg><path></path></svg>다른 추천기사</ul></aside>'
+            f'<div class="news_cnt_detail_wrap" itemprop="articleBody"><p>{body}</p></div>'
+            '<div class="recommendation">다른 기사 자사주 매수</div>'
+        )
+        detail = extract_article_detail(source, title)
+        self.assertTrue(detail["body_verified"])
+        self.assertIn("20조3722억원", detail["body"])
+        for noise in ("추천기사", "자사주 매수"):
+            self.assertNotIn(noise, detail["body"])
+        self.assertFalse(extract_article_detail(source, "기업, 신제품 출시와 신규 생산라인 가동")["body_verified"])
+
+    def test_mk_stock_article_region_recovers_body_and_original_kst_publication(self):
+        title = "미국 9월 고용, 예상치 크게 밑돌아"
+        body = "미국 9월 비농업 고용은 2만9000명 증가하며 예상치에 못 미쳤다. 실업률은 4.2%로 상승했다. " * 5
+        source = (
+            f'<meta property="og:title" content="{title}">'
+            '<div class="time_info mt-500"><span>입력&nbsp;:&nbsp;2026.10.02 22:50:34</span></div>'
+            f'<section id="news_body"><div class="news_detail_wrap"><p>{body}</p></div></section>'
+            '<section><p>다른 기사 제목과 주가 정보</p></section>'
+        )
+        detail = extract_article_detail(source, title)
+        self.assertTrue(detail["body_verified"])
+        self.assertEqual(detail["published_kst"], "2026-10-02T22:50:34+09:00")
+        self.assertNotIn("다른 기사", detail["body"])
+        self.assertNotIn("입력", detail["body"])
+
+    def test_listing_search_photo_and_spoofed_publisher_urls_do_not_take_fetch_budget(self):
+        bad_links = (
+            "https://www.etoday.co.kr/search/?keyword=삼성전자",
+            "https://www.fnnews.com/section/002001000",
+            "https://www.kmib.co.kr/article/listing.asp?sid1=chr&page=11",
+            "https://www.newsis.com/view/NISI20261002_0002100000",
+            "https://www.newsis.com/view.html?id=NISI20261002_0002100000",
+            "https://attacker.invalid/path/mk.co.kr/news/stock/12167168",
+            "https://mk.co.kr.attacker.invalid/news/stock/12167168",
+        )
+        for link in bad_links:
+            self.assertTrue(radar.korean_business_article_url_rejection(link), link)
+        for link in (
+            "https://www.etoday.co.kr/news/view/2631400",
+            "https://www.fnnews.com/news/202610011945430660",
+            "https://www.kmib.co.kr/article/view.asp?arcid=9000001517&cp=nv",
+            "https://www.newsis.com/view/NISX20261002_0003787706",
+            "https://stock.mk.co.kr/news/view/1169273",
+        ):
+            self.assertFalse(radar.korean_business_article_url_rejection(link), link)
+        rows = [{**article(index), "link": link} for index, link in enumerate(bad_links)]
+        with tempfile.TemporaryDirectory() as folder, patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}), \
+                patch.object(queue, "STATE_PATH", Path(folder) / "state.json"), \
+                patch.object(queue, "PENDING_PATH", Path(folder) / "pending.json"), \
+                patch.object(queue, "CACHE_PATH", Path(folder) / "cache.json"), \
+                patch.object(radar.telegram, "load_seen_state", return_value={"seen": {}}), \
+                patch.object(radar.base, "fetch") as fetch:
+            notes = radar.hydrate_korean_business_details(rows, NOW)
+            fetch.assert_not_called()
+            self.assertIn("invalid_url_skipped=7", notes[-1])
+
+    def test_invalid_edaily_mobile_host_maps_same_id_but_still_requires_body_alignment(self):
+        original = "https://m.coinlab.edaily.co.kr/News/Read?newsId=06573126645608984&mediaCodeNo=257"
+        canonical = "https://www.edaily.co.kr/News/Read?newsId=06573126645608984&mediaCodeNo=257"
+        self.assertEqual(radar.canonical_korean_business_article_url(original), canonical)
+        for link in (
+            "https://marketin.edaily.co.kr/News/Read?newsId=04372246645608984",
+            "https://m.coinlab.edaily.co.kr/News/Read?newsId=invalid",
+            "https://m.coinlab.edaily.co.kr.attacker.invalid/News/Read?newsId=06573126645608984",
+        ):
+            self.assertEqual(radar.canonical_korean_business_article_url(link), link)
+        row = {**article(1), "link": original, "publisher": "이데일리"}
+        body = "미국의 9월 신규 고용이 예상치를 크게 밑돌았고 실업률은 상승했다. 미국 국채금리가 하락했다. " * 5
+        page = fixture("미국 9월 고용 쇼크", body)
+        with tempfile.TemporaryDirectory() as folder, patch.dict(os.environ, {"RADAR_RUN_MODE": "live", "GITHUB_RUN_ID": "canonical-test"}), \
+                patch.object(queue, "STATE_PATH", Path(folder) / "state.json"), \
+                patch.object(queue, "PENDING_PATH", Path(folder) / "pending.json"), \
+                patch.object(queue, "CACHE_PATH", Path(folder) / "cache.json"), \
+                patch.object(radar.telegram, "load_seen_state", return_value={"seen": {}}), \
+                patch.object(radar.base, "fetch", return_value=(page, None)) as fetch:
+            radar.hydrate_korean_business_details([row], NOW)
+            self.assertEqual(fetch.call_args.args[0], canonical)
+            self.assertEqual(row["link"], canonical)
+            self.assertEqual(row["source_discovery_url"], original)
+            self.assertFalse(row.get("body_verified"))
+            self.assertIn("title/body mismatch", row["_article_verification_failed"])
+            self.assertIn("mismatch", fetch.call_args.kwargs["response_validator"](page))
+
     def test_backlog_carries_metadata_not_body_and_preserves_failure_cooldown(self):
         row = article(0)
         _, state, _ = queue.plan_details([row], {"entries": {}}, NOW, 1, selection_version=37)
