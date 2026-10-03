@@ -1,11 +1,59 @@
 {
   "initialized": true,
   "last_collection": {
-    "errors": [],
+    "errors": [
+      "Google News 실패: OpenAI AI safety standard recursive self-improvement in / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"AI Safety Institute\" standard evaluation incident repo / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: NAAIMES AI measurement evaluation standard safety insti / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: NIST frontier AI safety standard evaluation cybersecuri / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: EU AI frontier model safety standard incident reporting / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"사이버보안 특화 AI\" 네이버클라우드 과기정통부 NIPA / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"특화 인공지능 파운데이션 모델\" 사이버 보안 B200 / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"AI 보안모델\" 조달 실증 수주 계약 / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: 네이버클라우드 S2W 샌즈랩 LG CNS 사이버보안 AI 계약 실증 / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"AI 안전연구소\" 한국 국제 표준 평가 / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (NAVER Cloud OR S2W OR SandLab OR \"LG CNS\") cybersecuri / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: AI cybersecurity foundation model government procuremen / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (Palo Alto Networks OR CrowdStrike OR IBM OR Microsoft  / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (\"Unit 42\" OR \"Frontier AI Defense\" OR SafeMind OR \"AI  / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (Palo Alto Networks OR CrowdStrike) AI security ARR ann / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (IBM OR Microsoft) AI cybersecurity autonomous SOC paid / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (NVIDIA OR BlueField OR Nemotron) cybersecurity inferen / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: AI security agent autonomous SOC continuous monitoring  / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: NVIDIA \"Open Agent Safety Platform\" OpenShell Sentry pa / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (NVIDIA OpenShell OR \"agent safety runtime\") enterprise / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (NVIDIA OpenShell OR NemoClaw) Microsoft SAP Canonical  / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (OpenShell OR \"Open Agent Safety Platform\") AI Enterpri / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (OpenShell OR \"agent safety runtime\") telemetry active  / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: NVIDIA Sentry standalone SKU pricing license subscripti / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"BlueField-4\" Sentry attach rate shipments units revenu / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (OpenShell OR Sentry) default integration bundled \"AI E / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"BlueField-4\" Sentry Arm Intel x86 server deployment no / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"hardware isolation\" AI agents procurement insurance re / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (\"Open Agent Safety Platform\" OR OpenShell OR Sentry) p / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (\"BlueField-4\" OR Sentry) Rubin included baseline incre / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (OpenAI OR Anthropic OR Google OR Meta) \"Safety Case\" t / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (OpenAI OR Anthropic OR Google OR Meta) frontier AI ind / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (OpenAI OR Anthropic OR Google OR Meta) safety case pro / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: (OpenAI OR Anthropic OR Google OR Meta) safety case ado / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: government procurement insurance \"Safety Case\" frontier / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"Joint Commitment on Frontier Responsibilities\" AI / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"White House Accord on Super Intelligence\" AI / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"Frontier Responsibilities\" Google Anthropic Meta OpenA / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"morally binding\" AI accord signatory auditor board com / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"AI accord\" signatory added withdrew external auditor b / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"frontier AI\" common standards best practices external  / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"AI safety\" independent board committee external audit  / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"AI accord\" codified law regulation procurement insuran / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"super intelligence\" accord law regulation audit procur / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: site:whitehouse.gov \"Super Intelligence\" safety regulat / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: site:federalregister.gov \"Super Intelligence\" executive / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: site:congress.gov \"Super Intelligence\" AI safety bill / HTTPError: HTTP Error 503: Service Unavailable"
+    ],
     "material_items": 0,
     "new_articles": 0,
     "new_events": 0,
-    "raw_items": 32
+    "raw_items": 0
   },
   "official_pages": {
     "NIPA 사이버보안 특화 AI 사업": {
@@ -79,7 +127,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-10-03T18:41:03.217937+00:00",
+    "updated_at": "2026-10-03T18:49:29.465047+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -129,5 +177,5 @@
       "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1nUGFNdklnZVhSemdadTI5cXB6R0NocDk1SjBUbEVfZk51YlVrOEhoc2hyeWJwSXZ5OE9UbU1pcGRpRER3RVF5cVk2SDhWUQ?oc=5"
     }
   },
-  "updated_at_kst": "2026-10-04T03:41:03+09:00"
+  "updated_at_kst": "2026-10-04T03:49:29+09:00"
 }
