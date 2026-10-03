@@ -56,13 +56,15 @@
   },
   "_delivery": {
     "id": "a88bba9464ceab32e13d5fd8855a46c11d9fa2e592f1e53eeb7c74b0fee8211a",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-10-03T13:52:37+09:00",
     "chunks": [
       "🚨 <b>Solidigm IPO 상태 변화</b>\n━━━━━━━━━━━━━━━━\n• 현재 단계: <b>주관사 선정 경쟁(피치 미팅)</b>\n• 확인 수준: <b>Reuters 복수 관계자 보도 단계</b>\n• 목표 시점: <b>이르면 2027년</b>\n• 거론 기업가치: <b>최대 1,500억달러(약 202조2,420억원)</b>\n• 조달 가능 규모: <b>500억달러(약 67조4,140억원)</b>\n• Pre-IPO 별도 검토액: 36억달러(약 4조8,538억원)\n• 공모 구조: 신주 포함\n• 이번 변화: <b>조달 규모 +233.3%</b>\n• 다음 확인: 대표주관사 선정 · SEC 비공개/공개 신고 · 공모가 밴드 · 신주/구주 비중 · SK하이닉스 잔여지분 · 자금용도\n• 근거: Reuters · <a href=\"https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/\">원문</a>\n• 주의: 기업가치·조달액·일정은 현재 확정값이 아니라 보도 단계이며 시장 상황에 따라 변경될 수 있습니다.\n• 환율: 2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-03 13:52 KST · 보조 API 2026-10-03 · 차이 0.07% · 일중 기준시각 차이 가능\n• 조회: 2026-10-03 13:49 KST"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      217
+    ],
     "candidate": {
       "watch_version": 1,
       "topic": "Solidigm IPO",
