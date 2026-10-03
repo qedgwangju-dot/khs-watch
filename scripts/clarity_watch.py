@@ -49,6 +49,15 @@ REG_ACTION_RE = re.compile(
     r"\b(?:rule|rulemaking|propos(?:e|ed|al)|adopt(?:s|ed|ion)|final rule|interpretation|guidance|no-action|order|staff letter|framework|registration|market structure|jurisdiction|enforcement|exemptive relief|exemption|exemptions|exempt(?:ed|ion)?)\b",
     re.I,
 )
+SEC_DIRECT_ORDER_PROBES = [
+    {
+        "url": "https://www.sec.gov/files/rules/sro/cboebzx/2026/34-106577.pdf",
+        "title": "Order Granting Approval of a Proposed Rule Change to List and Trade Shares of the 3x Gold ETF, 3x Silver ETF, 3x Bitcoin ETF, 3x Ether ETF, 3x Crude Oil ETF, and 3x Natural Gas ETF",
+        "date": "Oct 2, 2026",
+        "detail": "Release No. 34-106577; File No. SR-CboeBZX-2026-065",
+    },
+]
+
 SEC_EXCHANGE_ORDERS_URLS = [
     "https://www.sec.gov/rules-regulations/self-regulatory-organization-rulemaking/national-securities-exchanges",
     "https://www.sec.gov/taxonomy/term/193081?order=field_publish_date&page=0&sort=desc",
@@ -512,6 +521,22 @@ def collect_sec_newsroom_crypto_orders(errors):
 
 def collect_sec_exchange_orders(errors):
     events = []
+    # Direct probes are used for high-impact orders when SEC index pages block
+    # automated runners. The event is emitted only if the official SEC PDF is reachable.
+    for probe in SEC_DIRECT_ORDER_PROBES:
+        try:
+            fetch(probe["url"], timeout=20)
+            events.append(Event(
+                "SEC 거래소 규칙 승인명령",
+                "SEC 거래소 상장·거래 승인",
+                probe["title"],
+                probe["url"],
+                date=probe["date"],
+                detail=probe["detail"],
+            ))
+        except Exception:
+            pass
+
     last_errors = []
     for url in SEC_EXCHANGE_ORDERS_URLS:
         try:
