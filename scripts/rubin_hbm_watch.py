@@ -774,6 +774,14 @@ def extract_jpm_hbm_structural(event: dict) -> dict | None:
     for label, field in (("asic", "asic_hbm_demand_share_2027_pct"), ("nvidia", "nvidia_hbm_demand_share_2027_pct")):
         m = re.search(rf"2027[^.%]{{0,120}}?{label}[^%]{{0,80}}?([0-9]+(?:\.\d+)?)\s*%", low, re.I)
         if not m:
+            for part in re.split(r"[.!?]", low):
+                if "2027" not in part or label not in part:
+                    continue
+                near = re.search(rf"{label}[^%]{{0,100}}?([0-9]+(?:\.\d+)?)\s*%", part, re.I)
+                if near:
+                    m = near
+                    break
+        if not m:
             m = re.search(rf"{label}[^.%]{{0,120}}?([0-9]+(?:\.\d+)?)\s*%[^.]{{0,100}}?2027", low, re.I)
         if m:
             obs[field] = float(m.group(1))
