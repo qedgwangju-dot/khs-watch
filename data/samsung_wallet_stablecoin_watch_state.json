@@ -20,16 +20,16 @@
       "title": "\"삼성월렛, 스테이블코인 탑재 속도\" [KBW2026 코리아 블록체인 위크] - v.daum.net"
     },
     {
-      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFA5TDVWc20yVjY3bmVNQXB2WUdOYXNTaWJfOTR3Sl85YzhTejM0LW9EdW1aMkNLdThMQWltZFZPYXlXR0JBSmMwSVZSUEhzaXh6SUhGT09rd1NSWlNR?oc=5",
-      "published_utc": "2026-10-01T09:31:00+00:00",
-      "source": "Google News RSS",
-      "title": "\"삼성월렛, 스테이블코인 탑재 속도\" [KBW2026 코리아 블록체인 위크] - 부산파이낸셜뉴스"
-    },
-    {
       "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFA0Z0lHZEtjMVFpN1oyWktSdm9MSVBNYzBDNXNNcWlvMVNOTkRhRXh3bnRpNTk5VVkwT3FFczQ4N2xaSlprN1VJcDM5WHcwNDNFaW1uU2FjQkhmdw?oc=5",
       "published_utc": "2026-10-01T09:31:43+00:00",
       "source": "Google News RSS",
-      "title": "\"삼성월렛, 스테이블코인 탑재 속도\" [KBW2026 코리아 블록체인 위크] - fnnews.com"
+      "title": "\"삼성월렛, 스테이블코인 탑재 속도\" [KBW2026 코리아 블록체인 위크] - 파이낸셜뉴스"
+    },
+    {
+      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFA5TDVWc20yVjY3bmVNQXB2WUdOYXNTaWJfOTR3Sl85YzhTejM0LW9EdW1aMkNLdThMQWltZFZPYXlXR0JBSmMwSVZSUEhzaXh6SUhGT09rd1NSWlNR?oc=5",
+      "published_utc": "2026-10-01T09:31:00+00:00",
+      "source": "Google News RSS",
+      "title": "\"삼성월렛, 스테이블코인 탑재 속도\" [KBW2026 코리아 블록체인 위크] - busan.fnnews.com"
     }
   ],
   "official": {
@@ -37,14 +37,14 @@
     "errors": [],
     "explicit_reversal_confirmed": false,
     "job_fetch_ok": true,
-    "job_stablecoin_confirmed": true,
+    "job_stablecoin_confirmed": false,
     "samsung_support_confirmed": true
   },
   "topic_state": {
     "achieved_stage": 2,
     "explicit_reversal_confirmed": false,
     "job_exists": true,
-    "official_job_scope_now": true,
+    "official_job_scope_now": false,
     "pilot_or_launch": false,
     "stablecoin_bd_scope": true,
     "stablecoin_partner": "",
@@ -54,5 +54,5 @@
     "support_plan": true,
     "topic": "Samsung Wallet stablecoin adoption"
   },
-  "updated_at_kst": "2026-10-03T10:40:02+09:00"
+  "updated_at_kst": "2026-10-03T16:06:23+09:00"
 }
