@@ -57,6 +57,10 @@ NEWS_QUERIES = [
     '"Cerebras" OpenAI model support GPT-6.1 Astra Ultrafast',
     '"OpenAI" service_tier ultrafast pricing speed',
     '"OpenAI" low batch NVIDIA GPU inference latency',
+    '"Synopsys" EDA consumption-based pricing AI agents tapeout output licensing',
+    '"Synopsys" FY2027 revenue guidance 11.15 billion investor day',
+    '"Synopsys" GPT-Synopsys OpenAI licensing revenue share general availability',
+    '"Synopsys" AWS licensing royalty output custom silicon Trainium Graviton',
 ]
 
 OFFICIAL_PAGES = {
@@ -64,15 +68,19 @@ OFFICIAL_PAGES = {
     "OpenAI Ultrafast 모드": "https://developers.openai.com/api/docs/guides/ultrafast-mode",
     "OpenAI GPT-6.1 Sol 모델": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
     "OpenAI GPT-5.6 Sol Ultrafast 미리보기": "https://openai.com/index/previewing-ultrafast/",
+    "Synopsys 2026 Investor Day": "https://investor.synopsys.com/news/news-details/2026/Synopsys-Details-Growth-Strategy-and-Long-term-Financial-Model-at-2026-Investor-Day/",
+    "Synopsys GPT-Synopsys": "https://investor.synopsys.com/news/news-details/2026/OpenAI-and-Synopsys-Announce-GPT-Synopsys-Frontier-Intelligence-to-Revolutionize-Chip-Design/default.aspx",
+    "Synopsys Autopilot": "https://investor.synopsys.com/news/news-details/2026/Synopsys-Powers-Autonomous-Engineering-with-a-Broad-Portfolio-of-Long-Horizon-Agents-and-Autopilot-Platform/default.aspx",
 }
 
 OFFICIAL_SOURCE_HINTS = (
-    "openai", "cerebras", "nvidia", "amd", "sec", "investor",
+    "openai", "cerebras", "nvidia", "amd", "sec", "investor", "synopsys",
 )
 TRUSTED_SOURCE_HINTS = (
     "reuters", "bloomberg", "financial times", "the information", "cnbc",
     "techcrunch", "the verge", "ars technica", "semianalysis", "tom's hardware",
     "tomshardware", "serve the home", "servethehome", "venturebeat",
+    "barron's", "barrons", "investors business daily", "investopedia",
 )
 
 MODEL_TERMS = (
@@ -94,6 +102,44 @@ CONCRETE_TERMS = (
     "reduced", "expanded", "increase", "decrease", "routing", "route",
     "deployment", "deployed", "production",
 )
+
+
+SYNOPSYS_ID = re.compile(r'\bSynopsys\b|시놉시스', re.I)
+SYNOPSYS_AI_MONETIZATION = re.compile(r'consumption[-\s]*based|subscription|consumption|usage[-\s]*based|agent|Autopilot|과금|구독|사용량|소비기반', re.I)
+SYNOPSYS_GUIDANCE = re.compile(r'FY\s*2027|fiscal\s*2027|2027.{0,20}(?:revenue|매출)|revenue.{0,20}2027', re.I)
+SYNOPSYS_1115_BASE = re.compile(r'\$?\s*11\.15\s*billion|\$?\s*11,?150\s*million|111\.5\s*억\s*달러', re.I)
+SYNOPSYS_15_BASE = re.compile(r'(?:revenue\s+growth|매출\s*성장).{0,30}(?:~?\s*15\s*%|approximately\s+15\s*%)|15\s*%.{0,30}(?:revenue\s+growth|매출\s*성장)', re.I)
+SYNOPSYS_BASELINE_RE = re.compile(r'2026\s+Investor\s+Day|September\s+30,?\s+2026|9월\s*30일|subscription.{0,80}consumption[-\s]*based|consumption[-\s]*based.{0,80}subscription', re.I)
+SYNOPSYS_PRICING_DETAIL = re.compile(r'(?:per[-\s]*(?:run|design|tapeout|job|token|compute|hour)|rate\s*card|unit\s*price|price\s*per|tapeout[-\s]*based|output[-\s]*based|royalty\s*rate|사용량\s*단가|건당\s*과금|테이프아웃\s*연동)', re.I)
+SYNOPSYS_PRICING_EXEC = re.compile(r'(?:launched|rolled\s+out|available|signed|customer\s+adoption|production|실제\s*도입|상용\s*적용|고객\s*채택|출시|정식\s*도입)', re.I)
+SYNOPSYS_GPT = re.compile(r'GPT[-\s]*Synopsys|OpenAI.{0,60}Synopsys|Synopsys.{0,60}OpenAI', re.I)
+SYNOPSYS_GPT_MILESTONE = re.compile(r'general\s+availability|generally\s+available|launched|customer\s+deployment|license\s+revenue|revenue\s+share|first\s+customer|정식\s*출시|고객\s*배치|첫\s*고객|사용권\s*매출|수익\s*배분', re.I)
+SYNOPSYS_AWS = re.compile(r'Amazon\s+Web\s+Services|\bAWS\b|Amazon', re.I)
+SYNOPSYS_AWS_BASE = re.compile(r'(?:over|more\s+than|>)\s*\$?\s*1\s*billion|\$?\s*1\s*billion.{0,60}(?:agreement|deal|license)', re.I)
+SYNOPSYS_NEW_HYPERSCALER = re.compile(r'Google|Alphabet|Microsoft|Meta|Oracle|Anthropic|xAI', re.I)
+SYNOPSYS_GUIDANCE_CHANGE = re.compile(r'raise|raised|lower|lowered|cut|increase|decrease|revised|updated|상향|하향|삭감|수정|변경', re.I)
+
+
+def synopsys_stage(text: str) -> str:
+    if not SYNOPSYS_ID.search(text):
+        return ""
+    if SYNOPSYS_GUIDANCE.search(text) and SYNOPSYS_1115_BASE.search(text) and (SYNOPSYS_15_BASE.search(text) or SYNOPSYS_BASELINE_RE.search(text)):
+        return "investor_day_baseline"
+    if SYNOPSYS_AI_MONETIZATION.search(text) and SYNOPSYS_BASELINE_RE.search(text) and not SYNOPSYS_PRICING_DETAIL.search(text):
+        return "monetization_baseline"
+    if SYNOPSYS_AWS.search(text) and SYNOPSYS_AWS_BASE.search(text) and not SYNOPSYS_NEW_HYPERSCALER.search(text):
+        return "aws_baseline"
+    if SYNOPSYS_GPT.search(text) and re.search(r'multi[-\s]*year|strategic\s+partnership|preferred\s+partners?|공동\s*개발|전략적\s*파트너', text, re.I) and not SYNOPSYS_GPT_MILESTONE.search(text):
+        return "gpt_baseline"
+    if SYNOPSYS_GUIDANCE.search(text) and SYNOPSYS_GUIDANCE_CHANGE.search(text) and re.search(r'\$?\s*\d+(?:\.\d+)?\s*(?:billion|B)|\d+(?:\.\d+)?\s*%', text, re.I):
+        return "guidance_change"
+    if SYNOPSYS_PRICING_DETAIL.search(text) and SYNOPSYS_PRICING_EXEC.search(text):
+        return "pricing_execution"
+    if SYNOPSYS_GPT.search(text) and SYNOPSYS_GPT_MILESTONE.search(text):
+        return "gpt_milestone"
+    if SYNOPSYS_NEW_HYPERSCALER.search(text) and re.search(r'contract|agreement|license|customer|계약|사용권|고객', text, re.I):
+        return "new_hyperscaler_contract"
+    return "background"
 
 CATEGORY_PATTERNS = [
     ("모델→가속기 배치 확정", (
