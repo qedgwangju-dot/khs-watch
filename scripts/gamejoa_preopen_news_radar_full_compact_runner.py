@@ -2307,6 +2307,20 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         if observation:
             return (f"{observation['period']} 전국 {observation['product']} 평균 판매가격은 L당 {observation['price']}원으로 "
                     f"전주보다 {observation['change']}원 {observation['direction']}했다.")
+    if focus == "product_sales_mix":
+        parties = re.search(r"([A-Za-z0-9가-힣&]+(?:[·ㆍ][A-Za-z0-9가-힣&]+)+)", title)
+        observation = re.search(
+            r"(?:양사의|두\s*회사의)\s*(\d{1,2}[~∼-]\d{1,2}월)\s*국내\s*판매량\s*\d[\d,만]*대\s*중\s*"
+            r"하이브리드[·ㆍ]전기차[·ㆍ]수소차는\s*(\d[\d,만]*)대로\s*(\d+(?:\.\d+)?)%를\s*차지했다", source,
+        )
+        comparison = re.search(r"전년\s*동기\s*\d+(?:\.\d+)?%보다\s*(\d+(?:\.\d+)?)%포인트\s*높아졌다", source)
+        if parties and observation and comparison and "친환경차" in source:
+            return (f"{parties.group(1)}의 {observation.group(1)} 국내 친환경차 판매는 {observation.group(2)}대로 "
+                    f"전체 판매의 {observation.group(3)}%를 차지했다. 비중은 전년비 {comparison.group(1)}%포인트 높아졌다.")
+    if focus == "earnings":
+        loss = profit_loss_result_fact(title, sentences)
+        if loss:
+            return loss
     if focus == "ownership" and "자산" in title and "인수" in title:
         for sentence in sentences:
             issuer = re.match(r"^([A-Za-z0-9가-힣&·]+(?:\s+[A-Za-z0-9가-힣&·]+){0,4})\s*(?:\([A-Za-z0-9.-]+\))?(?:은|는|이|가)\s+", sentence)
@@ -2917,7 +2931,35 @@ def financial_headline_subject(title: str, source: str) -> str:
     return ""
 
 
+def profit_loss_result_fact(title: str, sentences: list[str]) -> str:
+    """Keep the issuer's adjacent, same-period observed loss and accounting basis."""
+    if not re.search(r"실적|적자|손실|영업이익|순이익", title):
+        return ""
+    for index, sentence in enumerate(sentences[:-1]):
+        owner = re.match(r"^([A-Za-z0-9가-힣&·.-]{2,30})(?:은|는)\s*(?:올\s*)?(상반기|하반기|[1-4]분기)\s*매출", sentence)
+        if not owner or owner.group(1) not in title or market_materiality.BACKGROUND.search(sentence):
+            continue
+        following = sentences[index + 1]
+        metric = re.match(r"(모회사\s*귀속\s*|지배주주\s*귀속\s*)?순손실(?:은|이)\s*", following)
+        amounts = extract_foreign_amounts(following[metric.end():]) if metric else []
+        won = re.search(KOREAN_WON_AMOUNT_PATTERN, following[metric.end():]) if metric else None
+        if not metric or not re.search(r"흑자에서\s*적자로\s*전환", following) or not (amounts or won):
+            continue
+        if re.search(r"전망|추정|예상|가정", following):
+            continue
+        amount = amounts[0]["raw"].replace(" ", "") if amounts else won.group(0).replace(" ", "")
+        particle = "으로" if amount.endswith(("원", "위안", "엔")) else "로"
+        change = re.search(r"전년\s*동기\s*대비\s*(\d+(?:\.\d+)?)%\s*(증가|감소)", sentence)
+        revenue = f"매출이 전년비 {change.group(1)}% {change.group(2)}했고, " if change else ""
+        return (f"{owner.group(1)}은 {owner.group(2)} {revenue}{metric.group(1) or ''}"
+                f"순손실 {amount}{particle} 적자 전환했다.")
+    return ""
+
+
 def headline_financial_fact(title: str, body: str) -> str:
+    loss = profit_loss_result_fact(title, market_materiality.source_sentences(body))
+    if loss:
+        return loss
     subject = financial_headline_subject(title, body)
     if not subject or market_materiality.focus_kind(title) not in {"", "earnings"}:
         return ""
@@ -9658,6 +9700,25 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     errors = []
     if not market_materiality.core_focus_aligned(title, core):
         errors.append("headline_event_or_period_mismatch")
+    expected_loss = profit_loss_result_fact(title, market_materiality.source_sentences(source))
+    if expected_loss:
+        basis = re.search(r"(?:모회사\s*귀속\s*|지배주주\s*귀속\s*)?순손실", expected_loss).group(0)
+        amounts = extract_foreign_amounts(expected_loss)
+        compact_core = re.sub(r"\s", "", core)
+        if basis.replace(" ", "") not in compact_core or not re.search(r"적자\s*전환|적자로\s*전환", core):
+            errors.append("observed_loss_or_accounting_basis_omitted")
+        if amounts and amounts[0]["raw"].replace(" ", "") not in compact_core:
+            errors.append("observed_loss_amount_mismatch")
+    if market_materiality.focus_kind(title) == "product_sales_mix":
+        expected_mix = source_focused_article_core(title, market_materiality.source_sentences(source))
+        if expected_mix:
+            compact_core = re.sub(r"\s", "", core)
+            required = re.findall(r"\d{1,2}[~∼-]\d{1,2}월|\d+(?:\.\d+)?%포인트|\d+(?:\.\d+)?%", expected_mix)
+            parties = re.search(r"([A-Za-z0-9가-힣&]+(?:[·ㆍ][A-Za-z0-9가-힣&]+)+)", title)
+            if any(value not in compact_core for value in required) or (
+                parties and not all(party in core for party in re.split(r"[·ㆍ]", parties.group(1)))
+            ):
+                errors.append("combined_sales_population_or_mix_mismatch")
     if market_materiality.COMPANY_PROFILE.search(core):
         errors.append("company_profile_not_news_core")
     if alert.get("korean_business_news"):

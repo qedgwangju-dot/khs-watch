@@ -8,7 +8,7 @@ import datetime as dt
 from functools import lru_cache
 
 
-VERSION = 51
+VERSION = 52
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -121,6 +121,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("breadth", r"(?:상승|하락)\s*종목|순환매|쏠림|(?:S&P500|코스피|코스닥|나스닥).{0,30}종목.{0,20}%.{0,15}(?:하락|상승)", r"(?:오른|내린|상승|하락)\s*종목|종목.{0,20}%.{0,15}(?:하락|상승)|순환매|쏠림|순매수|순매도|자금.{0,12}이동"),
     ("retail_fuel", r"주유소.{0,30}(?:기름값|휘발유|경유)|(?:휘발유|경유).{0,15}(?:L당|리터당)", r"(?:휘발유|경유).{0,55}(?:L|리터)(?:\(L\))?\s*당\s*\d[\d,.]*원"),
     ("commodity_price_release", r"세계\s*식량\s*가격|식량가격지수|FAO.{0,20}(?:식량|지수)", r"(?:세계\s*)?식량\s*가격\s*지수.{0,45}\d"),
+    ("product_sales_mix", r"판매.{0,35}(?:비중|중.{0,15}(?:친환경|전기차|하이브리드))|제품\s*믹스|판매\s*믹스", r"판매(?:량|대수|비중)?.{0,100}(?:차지|비중|%)"),
     ("energy_supply", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|\bbrent\b|\boil\b|hormuz|tanker", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|항행|통항|brent|\boil\b|hormuz|tanker|shipping"),
     ("bond_yield", r"금리|국채.{0,8}(?:투매|수익률)|bond yields|treasury yields", r"금리|국채.{0,8}수익률|bond yields|treasury yields|interest rates"),
     ("fx", r"환율|약달러|강달러|달러화|원[·/]달러|달러[·/]원|\bndf\b|exchange rate", r"환율|달러화|달러[·/]원|원[·/]달러|\bndf\b|exchange rate|dollar"),
@@ -138,7 +139,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("space_execution", r"위성|궤도|발사한도|발사계약|환경심사|환경영향평가|주파수|우주로.{0,12}(?:쐈|발사)|우주.{0,15}(?:시험|실험)|satellite|orbital|launch contract|spectrum", r"위성|궤도|발사|교신|환경심사|환경영향평가|주파수|satellite|orbital|launch|spectrum"),
     ("fund_result", r"펀드.{0,20}(?:손실|청산|만기|수익)|(?:손실|청산).{0,20}펀드", r"손실|청산|수익률|loss|liquidat|returns"),
     ("memory", r"hbm|hbf|메모리|낸드|D램|dram", r"hbm|hbf|메모리|낸드|D램|dram"),
-    ("earnings", r"매출|영업(?:이익|익)|순(?:이익|익)|실적|가이던스|earnings|guidance", r"매출|영업(?:이익|익)|순(?:이익|익)|실적|가이던스|revenue|profit|earnings|guidance"),
+    ("earnings", r"매출|영업(?:이익|익|손실)|순(?:이익|익|손실)|실적|가이던스|earnings|guidance", r"매출|영업(?:이익|익|손실)|순(?:이익|익|손실)|실적|가이던스|revenue|profit|earnings|guidance"),
 ))
 MONTH = re.compile(r"(?<!\d)(1[0-2]|[1-9])월")
 ASPIRATION = re.compile(r"관계자는|기대한다|기대된다|키워나|키워\s*나|키우고|성장축|비전을|최선을|응원|company spokesperson", re.I)
@@ -281,6 +282,10 @@ def focus_matches(title: str, sentence: str) -> bool:
         product = "휘발유" if "휘발유" in title else "경유" if "경유" in title else ""
         return bool((not product or product in sentence)
                     and re.search(r"(?:휘발유|경유).{0,55}(?:L|리터)(?:\(L\))?\s*당\s*\d[\d,.]*원", sentence))
+    if kind == "product_sales_mix":
+        product = next((term for term in ("친환경", "전기차", "하이브리드") if term in title), "")
+        return bool((not product or product in sentence or (product == "친환경" and "하이브리드" in sentence and "전기차" in sentence))
+                    and re.search(r"판매(?:량|대수|비중)?.{0,100}(?:차지|비중|%)", sentence))
     if kind == "fx" and re.search(r"\bndf\b", title, re.I):
         return bool(re.search(r"\bndf\b|차액결제선물환|역외환율", sentence, re.I))
     if kind == "energy_supply" and re.search(r"브렌트|\bbrent\b", title, re.I):
@@ -522,8 +527,10 @@ RULES = (
      r"비축\s*(?:유|원유|경유)|석유\s*비축|oil reserves|oil stockpile",
      r"방출|매입|재비축|채우|채운|채울|release|refill|purchase"),
     ("earnings_or_guidance", ("earnings",),
-     r"매출|영업이익|순이익|마진|실적|가이던스|출하|판매(?:량|실적|는|가)|시장점유율|revenue|earnings|profit|guidance|shipments",
-     r"증가|감소|상승|하락|상회|하회|상향|하향|달성|기록|집계|발표|전망|예상|rise|fall|grow|cut|rais|report|forecast|beat|miss"),
+     r"매출|영업이익|순이익|영업손실|순손실|마진|실적|가이던스|출하|판매(?:량|실적|는|가)|시장점유율|revenue|earnings|profit|guidance|shipments",
+     r"증가|감소|상승|하락|상회|하회|상향|하향|달성|기록|집계|발표|전망|예상|적자\s*전환|적자로\s*전환|rise|fall|grow|cut|rais|report|forecast|beat|miss"),
+    ("product_sales_mix", ("earnings",),
+     r"판매(?:량|대수|비중)?", r"\d+(?:\.\d+)?%\s*(?:를|을)?\s*차지|비중.{0,20}(?:높아|올라|낮아|줄어)"),
     ("industry_market_share", ("earnings",),
      r"(?:D램|DRAM|낸드|NAND|HBM|반도체).{0,80}점유율|매출\s*점유율|시장점유율|market share",
      r"\d+(?:\.\d+)?\s*%|기록|집계|report"),
@@ -1074,7 +1081,7 @@ def assess(title: str, body: str) -> dict:
             ):
                 continue
             if kind == "earnings_or_guidance" and not re.search(
-                r"매출|영업(?:이익|익)|순(?:이익|익)|마진|가이던스|출하|판매(?:량|실적|는|가)|시장점유율|주당순이익|"
+                r"매출|영업(?:이익|익|손실)|순(?:이익|익|손실)|마진|가이던스|출하|판매(?:량|실적|는|가)|시장점유율|주당순이익|"
                 r"실적.{0,20}(?:어닝|상회|하회|흑자|적자)|\beps\b|revenue|earnings|profit|guidance|shipments", sentence, re.I,
             ):
                 continue

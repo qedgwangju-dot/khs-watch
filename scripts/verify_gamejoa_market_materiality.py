@@ -113,6 +113,71 @@ DELIVERED_LOCAL_ADMINISTRATION = (
 
 
 class MaterialityChecks(unittest.TestCase):
+    def test_combined_vehicle_sales_mix_does_not_become_one_issuer_decline(self):
+        title = "'내연기관 시대 저문다'…현대차·기아, 국내 판매 2대 중 1대 '친환경'"
+        body = ("올해 현대자동차와 기아가 국내에서 판매한 차량 2대 중 1대는 친환경차인 것으로 나타났다.\n"
+                "3일 뉴시스가 현대차와 기아의 차종별 판매 실적을 분석한 결과 양사의 1~9월 국내 판매량 "
+                "88만4482대 중 하이브리드·전기차·수소차는 43만9587대로 49.7%를 차지했다. "
+                "전년 동기 39.4%보다 10.3%포인트 높아졌다.\n"
+                "현대차는 노조 파업에 따른 생산 차질과 신차 대기 수요 등으로 내수 판매가 16.3% 줄면서 "
+                "하이브리드도 11만9522대로 12.2% 감소했다.")
+        core = radar.detailed_article_core(title, body)
+        for fact in ("현대차·기아", "1~9월", "국내 친환경차", "43만9587대", "전체 판매의 49.7%", "10.3%포인트"):
+            self.assertIn(fact, core)
+        self.assertNotIn("16.3%", core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        self.assertLessEqual(len(core), 100)
+        self.assertEqual(radar.source_core_fact_errors({**alert(title, body), "telegram_core_fact": core}), [])
+        wrong_core = "현대차는 노조 파업에 따른 생산 차질과 신차 대기 수요 등으로 내수 판매가 16.3% 줄면서 하이브리드도 11만9522대로 12.2% 감소했다."
+        self.assertFalse(materiality.core_focus_aligned(title, wrong_core))
+        self.assertIn("combined_sales_population_or_mix_mismatch", radar.source_core_fact_errors(
+            {**alert(title, body), "telegram_core_fact": wrong_core},
+        ))
+        for mismatched in (core.replace("현대차·기아", "현대차"), core.replace("49.7%", "45.7%"), core.replace("1~9월", "9월")):
+            self.assertIn("combined_sales_population_or_mix_mismatch", radar.source_core_fact_errors(
+                {**alert(title, body), "telegram_core_fact": mismatched},
+            ))
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([alert(title, body)], 7)), 1)
+        variant = title.replace("현대차·기아", "제조사A·제조사B")
+        source = body.replace("현대자동차", "제조사A").replace("현대차", "제조사A").replace("기아", "제조사B")
+        self.assertIn("제조사A·제조사B", radar.detailed_article_core(variant, source))
+
+    def test_observed_same_period_loss_keeps_attribution_and_revenue_change(self):
+        title = "돼지는 적자 닭은 방어…원스식품 실적 바닥 통과하나"
+        body = ("원스식품은 올 상반기 매출 467억4700만위안(약 9조3600억원)으로 전년 동기 대비 6.23% 감소했다. "
+                "모회사 귀속 순손실은 43억6600만위안으로 지난해 같은 기간 34억7500만위안 흑자에서 적자로 전환했다. "
+                "특히 올 2분기에만 32억9600만위안의 순손실을 냈다.")
+        core = radar.detailed_article_core(title, body)
+        for fact in ("원스식품", "상반기", "6.23% 감소", "모회사 귀속 순손실", "43억6600만위안", "적자 전환"):
+            self.assertIn(fact, core)
+        self.assertNotIn("2분기", core)
+        self.assertNotIn("32억", core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        self.assertEqual(radar.source_core_fact_errors({**alert(title, body), "telegram_core_fact": core}), [])
+        for incomplete in ("원스식품은 상반기 매출이 전년비 6.23% 감소했다.", core.replace("모회사 귀속 ", "")):
+            self.assertIn("observed_loss_or_accounting_basis_omitted", radar.source_core_fact_errors(
+                {**alert(title, body), "telegram_core_fact": incomplete},
+            ))
+        self.assertIn("observed_loss_amount_mismatch", radar.source_core_fact_errors(
+            {**alert(title, body), "telegram_core_fact": core.replace("43억6600만위안", "32억9600만위안")},
+        ))
+        item = {**alert(title, body), "telegram_core_fact": core}
+        item["fx_conversion"] = radar.build_alert_fx_conversion(
+            item, {"rates": {"CNY": {"value": 201.1, "status": "fixture", "source": "unit test"}}}, NOW,
+        )
+        rendered = radar.compact_converted_core(core, item["fx_conversion"], 100)
+        self.assertIn("모회사 귀속 순손실", rendered)
+        self.assertIn("적자 전환", rendered)
+        self.assertIn("약 8,780억원", rendered)
+        self.assertTrue(radar.core_sentence_is_complete(rendered))
+        self.assertLessEqual(len(rendered), 100)
+        block = radar.compact_alert(item, 1, NOW, {}, {})
+        self.assertIn(rendered, block)
+        self.assertEqual(radar.compact_alert_block_errors(block), [])
+        uncertain = body.replace("적자로 전환했다", "적자로 전환할 전망이다")
+        self.assertEqual(radar.profit_loss_result_fact(title, materiality.source_sentences(uncertain)), "")
+
     def test_actual_food_price_release_keeps_published_index_not_general_cause(self):
         title = "세계식량가격 석 달째 상승…설탕 6.1%·곡물 5.1%↑"
         body = ("세계식량가격이 3개월 연속 상승했다. 흑해 지역의 물류 차질과 주요 생산국의 작황 우려로 "
