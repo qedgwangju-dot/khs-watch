@@ -1125,9 +1125,14 @@ def parse_glass_substrate_records(item, body):
             stage = 'po_signed'
         elif re.search(r'(?:pending\s*(?:purchase\s*)?order|final\s+purchase[- ]?order\s+process|본계약\s*대기|발주\s*대기|수주\s*대기)', text, re.I):
             stage = 'po_pending'
-        elif re.search(r'(?:customer\s*(?:validation|evaluation)|고객\s*(?:검증|평가)|신뢰성\s*평가)', text, re.I):
+        elif re.search(
+            r'(?:customer\s*(?:validation|evaluation)|고객\s*(?:검증|평가)|신뢰성\s*평가|'
+            r'샘플[^.]{0,80}?(?:평가가?\s*(?:이어|진행|계속|중)|평가\s*중)|'
+            r'sample[^.]{0,80}?(?:evaluation|validation)[^.]{0,40}?(?:ongoing|underway|continues?))',
+            text, re.I
+        ):
             stage = 'customer_evaluation'
-        elif re.search(r'(?:sample\s*(?:supply|shipment)|샘플\s*(?:공급|출하))', text, re.I):
+        elif re.search(r'(?:sample\s*(?:supply|shipment|delivery)|샘플\s*(?:공급|출하|납품|전달)|샘플[^.]{0,30}?(?:공급|출하|납품|전달))', text, re.I):
             stage = 'sample'
         target_year = None
         tm = re.search(r'(?:mass\s*production|양산)[^.]{0,80}?(20\d{2})|(20\d{2})[^.]{0,80}?(?:mass\s*production|양산)', text, re.I)
