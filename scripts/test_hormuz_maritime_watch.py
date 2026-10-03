@@ -82,3 +82,26 @@ alert = mod.readable_cluster_alert_v5(mod.strict_clusters([a, b])[0])
 check("alert-keeps-unknown-weapon-rule", "미상 발사체" in alert and "공격주체·미사일·포탄·드론은 공식 확인 전 단정하지 않습니다" in alert)
 
 print("HORMUZ_MARITIME_REGRESSION_OK")
+
+
+# 7) 실제 2026-10-03형: Anadolu 보도와 10시간가량 뒤의 AFP/Gulf News 재게시가
+# 화재·정전·승무원안전 세부까지 같으면 같은 사건으로 묶는다. 단, 발사체 수는 1곳만 확인하면 생략한다.
+anadolu_live = row(
+    "Anadolu Ajansı",
+    details=("outbound", "fire", "blackout", "crew_safe", "no_env", "time:1122"),
+    count=1,
+    t=1_000.0,
+)
+gulf_live = row(
+    "Gulf News",
+    origin="AFP",
+    details=("outbound", "fire", "blackout", "crew_safe", "no_env"),
+    count=None,
+    t=1_000.0 + 10.2 * 3600,
+)
+live_clusters = mod.strict_clusters([anadolu_live, gulf_live])
+check("live-anadolu-afp-cluster", len(live_clusters) == 1)
+check("live-count-not-overstated", live_clusters[0]["projectile_count"] is None)
+check("live-shared-details-preserved", {"outbound", "fire", "blackout", "crew_safe", "no_env"}.issubset(set(live_clusters[0]["confirmed_details"])))
+
+print("HORMUZ_MARITIME_LIVE_CASE_OK")
