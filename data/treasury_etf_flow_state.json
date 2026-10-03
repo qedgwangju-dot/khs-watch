@@ -304,9 +304,10 @@
         "nav": 81.02,
         "shares": 327800000.0,
         "sec_yield": 4.55,
-        "nav_change_pct": null,
+        "nav_change_pct": -0.08632383771119967,
         "net_assets": 26558933852.0,
         "source": "https://www.ishares.com/us/products/239452/ishares-13-year-treasury-bond-etf",
+        "nav_change_source": "official_nav_derived",
         "flow_usd": 259264000.0
       }
     ],
@@ -628,9 +629,10 @@
         "nav": 89.02,
         "shares": 465600000.0,
         "sec_yield": 4.95,
-        "nav_change_pct": null,
+        "nav_change_pct": -0.2800492886748107,
         "net_assets": 41447151382.0,
         "source": "https://www.ishares.com/us/products/239456/ishares-7-10-year-treasury-bond-etf",
+        "nav_change_source": "official_nav_derived",
         "flow_usd": 80118000.0
       }
     ],
@@ -952,9 +954,10 @@
         "nav": 77.42,
         "shares": 609600000.0,
         "sec_yield": 5.54,
-        "nav_change_pct": null,
+        "nav_change_pct": -0.33470648815654425,
         "net_assets": 47196617384.0,
         "source": "https://www.ishares.com/us/products/239454/ishares-20-year-treasury-bond-etf",
+        "nav_change_source": "official_nav_derived",
         "flow_usd": 781942000.0
       }
     ],
@@ -1223,9 +1226,10 @@
         "nav": 101.76,
         "shares": 263800000.0,
         "sec_yield": 5.99,
-        "nav_change_pct": null,
+        "nav_change_pct": -0.21572857423024505,
         "net_assets": 26844704288.0,
         "source": "https://www.ishares.com/us/products/239566/ishares-iboxx-investment-grade-corporate-bond-etf",
+        "nav_change_source": "official_nav_derived",
         "oas_bps": 88.22,
         "flow_usd": -539328000.0
       }
@@ -1495,23 +1499,24 @@
         "nav": 76.88,
         "shares": 232300000.0,
         "sec_yield": 7.06,
-        "nav_change_pct": null,
+        "nav_change_pct": 0.2739011347332676,
         "net_assets": 17858176762.0,
         "source": "https://www.ishares.com/us/products/239565/ishares-iboxx-high-yield-corporate-bond-etf",
+        "nav_change_source": "official_nav_derived",
         "oas_bps": 291.71,
         "flow_usd": 638104000.0
       }
     ]
   },
   "last_delivery": {
-    "at_kst": "2026-10-03T11:09:19+09:00",
+    "at_kst": "2026-10-03T15:16:01+09:00",
     "bot_username": "khs8879887988798879_bot",
     "message_ids": [
-      406
+      409
     ],
-    "overall": "혼조·추가 확인",
+    "overall": "금리·신용 위험경계 강화",
     "treasury_flow": "장기채 위험 확대",
-    "credit_flow": "신용시장 혼조",
+    "credit_flow": "신용위험 경계 강화",
     "curve_regime": "베어 플래트닝",
     "treasury_date": "2026-10-02",
     "format": "treasury-credit-ishares-oas-v2",
