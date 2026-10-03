@@ -35,6 +35,7 @@ OFFICIAL_DOMAINS = {
     "www.federalregister.gov",
     "www.reginfo.gov",
     "www.whitehouse.gov",
+    "www.cboe.com",
 }
 TOPIC_RE = re.compile(
     r"\b(?:CLARITY(?:\s+Act)?|H\.?\s*R\.?\s*3633|Digital\s+Asset\s+Market\s+Clarity|digital\s+asset\s+market\s+structure|crypto\s+asset\s+market\s+structure)\b",
@@ -48,7 +49,11 @@ REG_ACTION_RE = re.compile(
     r"\b(?:rule|rulemaking|propos(?:e|ed|al)|adopt(?:s|ed|ion)|final rule|interpretation|guidance|no-action|order|staff letter|framework|registration|market structure|jurisdiction|enforcement|exemptive relief|exemption|exemptions|exempt(?:ed|ion)?)\b",
     re.I,
 )
-SEC_EXCHANGE_ORDERS_URL = "https://www.sec.gov/rules-regulations/self-regulatory-organization-rulemaking/national-securities-exchanges?order=field_publish_date&page=0&sort=desc&sro_organization=All&year=All"
+SEC_EXCHANGE_ORDERS_URLS = [
+    "https://www.sec.gov/rules-regulations/self-regulatory-organization-rulemaking/national-securities-exchanges",
+    "https://www.sec.gov/taxonomy/term/193081?order=field_publish_date&page=0&sort=desc",
+    "https://www.cboe.com/us/equities/regulation/rule_filings/BZX/",
+]
 
 LEG_ACTION_RE = re.compile(
     r"\b(?:markup|mark-up|vote|voted|advance(?:d)?|pass(?:ed|age)?|fail(?:ed|ure)?|reject(?:ed)?|cloture|floor|calendar|schedule|consideration|amendment|amended|new text|bill text|revised text|reported|referred|signed|signature|veto|became law|enacted|session adjourn|sine die|read twice)\b",
@@ -472,9 +477,14 @@ def collect_reginfo_reviews(errors):
 
 def collect_sec_exchange_orders(errors):
     events = []
-    url = SEC_EXCHANGE_ORDERS_URL
-    try:
-        soup = soup_for(url)
+    last_errors = []
+    for url in SEC_EXCHANGE_ORDERS_URLS:
+        try:
+            soup = soup_for(url)
+        except Exception as exc:
+            last_errors.append(f"{url}: {exc}")
+            continue
+
         seen = set()
         for a in soup.find_all("a", href=True):
             title = clean(a.get_text(" ", strip=True))
@@ -486,8 +496,17 @@ def collect_sec_exchange_orders(errors):
                 continue
             if not re.search(r"\b(?:Order|Approval|Approving|Approved|List|Listing|Trade|Trading|Shares|ETF|ETP)\b", signal, re.I):
                 continue
-            seen.add(href)
 
+            # Cboe fallback page can include still-pending filings; require an
+            # approval marker unless the source URL is the SEC page.
+            if "cboe.com" in urllib.parse.urlparse(url).netloc.lower():
+                parent_text = clean((a.parent or a).get_text(" ", strip=True))
+                nearby = clean((a.find_parent("div") or a.parent or a).get_text(" ", strip=True))
+                combined = f"{title} {parent_text} {nearby}"
+                if not re.search(r"approved|approval|effective", combined, re.I):
+                    continue
+
+            seen.add(href)
             date = ""
             detail = ""
             tr = a.find_parent("tr")
@@ -502,18 +521,23 @@ def collect_sec_exchange_orders(errors):
                 if m:
                     date = m.group(0)
             if not detail:
-                detail = title
+                container = a.find_parent(["li", "div", "article"])
+                detail = clean(container.get_text(" ", strip=True))[:900] if container else title
 
             events.append(Event(
-                "SEC 거래소 규칙 승인명령",
+                "SEC 거래소 규칙 승인명령" if "sec.gov" in urllib.parse.urlparse(url).netloc.lower() else "Cboe BZX 공식 규칙변경",
                 "SEC 거래소 상장·거래 승인",
                 title,
                 href,
                 date=date,
                 detail=detail,
             ))
-    except Exception as exc:
-        errors.append(f"SEC exchange orders: {exc}")
+
+        if events:
+            break
+
+    if not events and last_errors:
+        errors.append("SEC/Cboe exchange orders: " + " || ".join(last_errors[:3]))
     return list({e.key: e for e in events}.values())
 
 
