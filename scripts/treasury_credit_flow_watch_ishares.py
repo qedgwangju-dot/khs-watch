@@ -38,15 +38,27 @@ def flow_word(v):
     return "순유입" if v > 0 else "순유출" if v < 0 else "중립"
 
 
-def parse_oas_bps(meta):
+def parse_oas_snapshot(meta):
     r = requests.get(meta["url"], headers=base.HEADERS, timeout=35)
     r.raise_for_status()
     text = BeautifulSoup(r.text, "html.parser").get_text(" ", strip=True)
     text = re.sub(r"\s+", " ", text)
-    m = re.search(r"Option Adjusted Spread\s+([0-9,.]+)\s*bps", text, re.I)
+    m = re.search(
+        r"Option Adjusted Spread\s+([0-9,.]+)\s*bps\s+as of\s+([A-Za-z]{3}\s+\d{1,2},\s+\d{4})",
+        text,
+        re.I,
+    )
     if not m:
         return None
-    return float(m.group(1).replace(",", ""))
+    return {
+        "value": float(m.group(1).replace(",", "")),
+        "date": dt.datetime.strptime(m.group(2), "%b %d, %Y").date().isoformat(),
+    }
+
+
+def parse_oas_bps(meta):
+    snap = parse_oas_snapshot(meta)
+    return None if not snap else snap["value"]
 
 
 def get_curve_pair():
@@ -343,9 +355,12 @@ def main():
                 pass
         if ticker in ("LQD", "HYG"):
             try:
-                cur["oas_bps"] = parse_oas_bps(meta)
+                oas_snap = parse_oas_snapshot(meta)
+                cur["oas_bps"] = None if not oas_snap else oas_snap["value"]
+                cur["oas_date"] = None if not oas_snap else oas_snap["date"]
             except Exception:
                 cur["oas_bps"] = None
+                cur["oas_date"] = None
         flow = base.compute_flow(cur, hist)
         cur["flow_usd"] = flow
         hist = base.upsert_history(hist, cur, flow)
@@ -355,7 +370,24 @@ def main():
 
     fund_dates = {ticker: results[ticker].get("date") for ticker in FUNDS}
     unique_fund_dates = {d for d in fund_dates.values() if d}
+    component_date_mismatch = {
+        ticker: {
+            "nav_date": results[ticker].get("nav_date"),
+            "shares_date": results[ticker].get("shares_date"),
+        }
+        for ticker in FUNDS
+        if results[ticker].get("nav_date") != results[ticker].get("shares_date")
+    }
     missing_oas = [ticker for ticker in ("LQD", "HYG") if results[ticker].get("oas_bps") is None]
+    oas_date_mismatch = {
+        ticker: {
+            "fund_date": results[ticker].get("date"),
+            "oas_date": results[ticker].get("oas_date"),
+        }
+        for ticker in ("LQD", "HYG")
+        if results[ticker].get("oas_date") != results[ticker].get("date")
+    }
+    curve_missing = [tenor for tenor in ("2Y", "10Y", "30Y") if curve.get(tenor) is None]
     if len(unique_fund_dates) != 1 or curve.get("date") not in unique_fund_dates:
         print(json.dumps({
             "report_withheld": "source_date_mismatch",
@@ -363,11 +395,30 @@ def main():
             "fund_dates": fund_dates,
         }, ensure_ascii=False))
         return
+    if component_date_mismatch:
+        print(json.dumps({
+            "report_withheld": "fund_component_date_mismatch",
+            "details": component_date_mismatch,
+        }, ensure_ascii=False))
+        return
     if missing_oas:
         print(json.dumps({
             "report_withheld": "credit_oas_missing",
             "missing": missing_oas,
             "fund_dates": fund_dates,
+        }, ensure_ascii=False))
+        return
+    if oas_date_mismatch:
+        print(json.dumps({
+            "report_withheld": "credit_oas_date_mismatch",
+            "details": oas_date_mismatch,
+        }, ensure_ascii=False))
+        return
+    if curve_missing:
+        print(json.dumps({
+            "report_withheld": "treasury_curve_incomplete",
+            "missing": curve_missing,
+            "treasury_date": curve.get("date"),
         }, ensure_ascii=False))
         return
 
@@ -496,6 +547,7 @@ def main():
                 "shares": results[ticker].get("shares"),
                 "flow_usd": results[ticker].get("flow_usd"),
                 "oas_bps": results[ticker].get("oas_bps"),
+                "oas_date": results[ticker].get("oas_date"),
             }
             for ticker in ("SHY", "IEF", "TLT", "LQD", "HYG")
         },
@@ -505,7 +557,7 @@ def main():
     ).hexdigest()
     last_delivery = state.get("last_delivery") or {}
     if (
-        os.getenv("GITHUB_EVENT_NAME", "").strip() in ("schedule", "workflow_run")
+        os.getenv("GITHUB_EVENT_NAME", "").strip() != "workflow_dispatch"
         and last_delivery.get("data_fingerprint") == data_fingerprint
     ):
         base.save_state(state)
