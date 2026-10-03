@@ -1,7 +1,7 @@
 {
-  "last_alert_at_kst": "2026-10-03T17:33:26+09:00",
-  "last_event_kind": "us_diesel_export_policy",
-  "last_event_id": "us_diesel_export_policy:8d4a79bbf8bd7a1a",
+  "last_alert_at_kst": "2026-10-04T00:16:07+09:00",
+  "last_event_kind": "ex_iran_crude_prewar_recovery",
+  "last_event_id": "ex_iran_crude_prewar_recovery:5c8b49622ecd4994",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-09-29T19:49:06+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-09-29T20:06:00+09:00",
@@ -14,7 +14,8 @@
     "eu_diesel_reserve_policy:39e5bae5e4105db3": "2026-10-02T22:36:16+09:00",
     "g7_reserve_release_agreement:eee493cfb65aaaeb": "2026-10-02T23:39:58+09:00",
     "g7_reserve_release_agreement:753c47cc03dbac9a": "2026-10-03T03:41:15+09:00",
-    "us_diesel_export_policy:8d4a79bbf8bd7a1a": "2026-10-03T17:33:26+09:00"
+    "us_diesel_export_policy:8d4a79bbf8bd7a1a": "2026-10-03T17:33:26+09:00",
+    "ex_iran_crude_prewar_recovery:5c8b49622ecd4994": "2026-10-04T00:16:07+09:00"
   },
   "last_market": {
     "oil": null,
