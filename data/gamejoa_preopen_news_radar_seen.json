@@ -1218,9 +1218,10 @@
     "event:61d95cfc9c4cf98a3c7714f2": {
       "first_seen_kst": "2026-10-04T01:43:50+09:00",
       "lanes": {
-        "live": "2026-10-04T01:43:50+09:00"
+        "live": "2026-10-04T01:43:50+09:00",
+        "preopen": "2026-10-04T06:34:33+09:00"
       },
-      "last_seen_kst": "2026-10-04T01:43:50+09:00",
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
       "link": "https://www.newsis.com/view/NISX20261003_0003813673",
       "source": "뉴시스",
       "source_event_identity": "source_event:v1:market_breadth:s&p500:2026-09:down_share=80",
@@ -1393,12 +1394,15 @@
     "event:6d3544df4c209db670f8713f": {
       "first_seen_kst": "2026-10-03T16:23:07+09:00",
       "lanes": {
-        "live": "2026-10-03T16:23:07+09:00"
+        "live": "2026-10-03T16:23:07+09:00",
+        "preopen": "2026-10-04T06:34:33+09:00"
       },
-      "last_seen_kst": "2026-10-03T16:23:07+09:00",
-      "link": "https://biz.heraldcorp.com/article/10892565",
-      "source": "헤럴드경제",
-      "title": "“삼전닉스, CAPEX 규모 믿어도 된다”…AI 투자 내년 1.2조달러 [헤럴드머니페스타2026]"
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12167729",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-03T10:05+09:00",
+      "title": "나스닥 1%, 美반도체지수 2% 상승…연휴 뒤 韓증시도 따라 웃을까"
     },
     "event:6d6f65e0a0c66cc695483ee7": {
       "first_seen_kst": "2026-09-18T10:39:41+09:00",
@@ -1603,12 +1607,15 @@
     "event:765d6f42fcb5b84809de88f4": {
       "first_seen_kst": "2026-10-03T02:00:17+09:00",
       "lanes": {
-        "live": "2026-10-03T02:00:17+09:00"
+        "live": "2026-10-03T02:00:17+09:00",
+        "preopen": "2026-10-04T06:34:33+09:00"
       },
-      "last_seen_kst": "2026-10-03T02:00:17+09:00",
-      "link": "https://www.mt.co.kr/world/2026/10/03/2026100301371581840",
-      "source": "머니투데이",
-      "title": "G7 \"4달 동안 비축유 1억배럴 방출\"…트럼프 \"경유 풀어야\" 하루만"
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632253",
+      "source": "이투데이",
+      "source_event_identity": "source_event:v1:g7:oil_reserves:plan:barrels=100000000:months=4",
+      "source_published_kst": "2026-10-03T06:54+09:00",
+      "title": "국제유가, G7 비축유 방출에 하락⋯WTI 1.90%↓[상보]"
     },
     "event:7667325ae496488c7cb5d867": {
       "first_seen_kst": "2026-10-01T20:00:14+09:00",
@@ -2817,12 +2824,15 @@
     "event:c5a3bc7a884d610f00378016": {
       "first_seen_kst": "2026-10-03T01:03:39+09:00",
       "lanes": {
-        "live": "2026-10-03T01:03:39+09:00"
+        "live": "2026-10-03T01:03:39+09:00",
+        "preopen": "2026-10-04T06:34:33+09:00"
       },
-      "last_seen_kst": "2026-10-03T01:03:39+09:00",
-      "link": "https://biz.chosun.com/stock/stock_general/2026/10/03/G5TDKOBWHE4DAMBWG5TDSYJTGE/",
-      "source": "조선비즈",
-      "title": "美 9월 고용 쇼크… 예상치의 35%인 2만 9000명 증가"
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812247",
+      "source": "뉴시스",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-03T08:16+09:00",
+      "title": "금리 급등에 주식 매력 '흔들'…구원투수는 '실적'[금리 쇼크①]"
     },
     "event:c7665659dc86a28aa339445b": {
       "first_seen_kst": "2026-09-30T15:58:34+09:00",
@@ -3976,9 +3986,10 @@
     "link:096e79724fb499fccf7df208": {
       "first_seen_kst": "2026-10-04T01:43:50+09:00",
       "lanes": {
-        "live": "2026-10-04T01:43:50+09:00"
+        "live": "2026-10-04T01:43:50+09:00",
+        "preopen": "2026-10-04T06:34:33+09:00"
       },
-      "last_seen_kst": "2026-10-04T01:43:50+09:00",
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
       "link": "https://www.newsis.com/view/NISX20261003_0003813673",
       "source": "뉴시스",
       "source_event_identity": "source_event:v1:market_breadth:s&p500:2026-09:down_share=80",
@@ -5666,6 +5677,18 @@
       "source": "뉴시스",
       "title": "'공모주 청약 대행 사기' 신라운용·제니스투자 인가 취소…시장서 퇴출"
     },
+    "link:331073a8b1d705065f4bfe9a": {
+      "first_seen_kst": "2026-10-04T06:34:33+09:00",
+      "lanes": {
+        "preopen": "2026-10-04T06:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169458",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-04T06:20+09:00",
+      "title": "3분기 약달러에 ETF 상승률 1∼3위 모두 '달러 곱버스' 차지"
+    },
     "link:333e88107a85b5e62395ce0f": {
       "first_seen_kst": "2026-09-28T06:22:53+09:00",
       "lanes": {
@@ -6788,12 +6811,14 @@
     "link:4ec5249762755d9532e6829f": {
       "first_seen_kst": "2026-10-03T23:33:26+09:00",
       "lanes": {
-        "live": "2026-10-03T23:33:26+09:00"
+        "live": "2026-10-03T23:33:26+09:00",
+        "preopen": "2026-10-04T06:34:33+09:00"
       },
-      "last_seen_kst": "2026-10-03T23:33:26+09:00",
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
       "link": "https://www.newsis.com/view/NISX20261003_0003813735",
       "source": "뉴시스",
       "source_event_identity": "",
+      "source_published_kst": "2026-10-03T23:46+09:00",
       "title": "트럼프, 84억弗 석유 프로젝트 압박…정부 \"팩트시트 이행이 원칙\""
     },
     "link:4edd4c16279415256126eb9d": {
@@ -7964,6 +7989,18 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812453",
       "source": "뉴시스",
       "title": "더네이쳐홀딩스, 박영준 대표 등 임원 주식 매입…책임경영 강화"
+    },
+    "link:6a12d49e8a9f8b82d1398aba": {
+      "first_seen_kst": "2026-10-04T06:34:33+09:00",
+      "lanes": {
+        "preopen": "2026-10-04T06:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12167729",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-03T10:05+09:00",
+      "title": "나스닥 1%, 美반도체지수 2% 상승…연휴 뒤 韓증시도 따라 웃을까"
     },
     "link:6a3680414cd99602ee0dc434": {
       "first_seen_kst": "2026-10-01T17:59:22+09:00",
@@ -11346,6 +11383,18 @@
       "source": "데일리안",
       "title": "AI가 공장을 움직인다…피지컬 AI, '로봇 두뇌' 경쟁 본격화"
     },
+    "link:be6c6e19f465b693cf3662bd": {
+      "first_seen_kst": "2026-10-04T06:34:33+09:00",
+      "lanes": {
+        "preopen": "2026-10-04T06:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261003032000008",
+      "source": "연합뉴스",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-04T06:20+09:00",
+      "title": "3분기 약달러에 ETF 상승률 1∼3위 모두 '달러 곱버스' 차지 | 연합뉴스"
+    },
     "link:bee1da4c44a6479f7d17f793": {
       "first_seen_kst": "2026-10-02T15:48:44+09:00",
       "lanes": {
@@ -12305,6 +12354,18 @@
       "source": "연합뉴스",
       "title": "메시, 또 구단주 됐다…스페인 2부 엘덴세도 인수 | 연합뉴스"
     },
+    "link:d33c5adbf1465193b80a1587": {
+      "first_seen_kst": "2026-10-04T06:34:33+09:00",
+      "lanes": {
+        "preopen": "2026-10-04T06:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632253",
+      "source": "이투데이",
+      "source_event_identity": "source_event:v1:g7:oil_reserves:plan:barrels=100000000:months=4",
+      "source_published_kst": "2026-10-03T06:54+09:00",
+      "title": "국제유가, G7 비축유 방출에 하락⋯WTI 1.90%↓[상보]"
+    },
     "link:d346a333d879d2dde5e5a5bf": {
       "first_seen_kst": "2026-10-01T21:43:03+09:00",
       "lanes": {
@@ -12992,6 +13053,18 @@
       "link": "https://www.yna.co.kr/view/AKR20261002136000008",
       "source": "연합뉴스",
       "title": "[머니플로우] 금리 고공행진에 CD·채권 관련 ETF 인기 '쑥' | 연합뉴스"
+    },
+    "link:e462f96ed5e28dc1ef0fbe37": {
+      "first_seen_kst": "2026-10-04T06:34:33+09:00",
+      "lanes": {
+        "preopen": "2026-10-04T06:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812247",
+      "source": "뉴시스",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-03T08:16+09:00",
+      "title": "금리 급등에 주식 매력 '흔들'…구원투수는 '실적'[금리 쇼크①]"
     },
     "link:e472f8d191cea418942b417f": {
       "first_seen_kst": "2026-10-03T22:55:30+09:00",
@@ -14556,9 +14629,10 @@
     "original:086f62373eb0b99ebeecaaf6": {
       "first_seen_kst": "2026-10-04T01:43:50+09:00",
       "lanes": {
-        "live": "2026-10-04T01:43:50+09:00"
+        "live": "2026-10-04T01:43:50+09:00",
+        "preopen": "2026-10-04T06:34:33+09:00"
       },
-      "last_seen_kst": "2026-10-04T01:43:50+09:00",
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
       "link": "https://www.newsis.com/view/NISX20261003_0003813673",
       "source": "뉴시스",
       "source_event_identity": "source_event:v1:market_breadth:s&p500:2026-09:down_share=80",
@@ -15505,6 +15579,18 @@
       "link": "https://www.dt.co.kr/article/12087236",
       "source": "디지털타임스",
       "title": "암살자(들) 투자한 기업은행·산업은행 “외부 요청 없었다”"
+    },
+    "original:22532471b5b750da4d55a26b": {
+      "first_seen_kst": "2026-10-04T06:34:33+09:00",
+      "lanes": {
+        "preopen": "2026-10-04T06:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632253",
+      "source": "이투데이",
+      "source_event_identity": "source_event:v1:g7:oil_reserves:plan:barrels=100000000:months=4",
+      "source_published_kst": "2026-10-03T06:54+09:00",
+      "title": "국제유가, G7 비축유 방출에 하락⋯WTI 1.90%↓[상보]"
     },
     "original:229ac0390202bb751ef11d09": {
       "first_seen_kst": "2026-09-26T15:16:00+09:00",
@@ -16781,6 +16867,18 @@
       "link": "https://www.mk.co.kr/news/politics/12161571",
       "source": "매일경제",
       "title": "李대통령, 멕시코 ‘K엑스포’ 방문…“관세 얼마나 올랐나”"
+    },
+    "original:4023c9418898c39720277a0b": {
+      "first_seen_kst": "2026-10-04T06:34:33+09:00",
+      "lanes": {
+        "preopen": "2026-10-04T06:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812247",
+      "source": "뉴시스",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-03T08:16+09:00",
+      "title": "금리 급등에 주식 매력 '흔들'…구원투수는 '실적'[금리 쇼크①]"
     },
     "original:40243342aec7c9737b2f2cbb": {
       "first_seen_kst": "2026-09-21T18:41:01+09:00",
@@ -21357,6 +21455,18 @@
       "source": "이데일리",
       "title": "“루센트블록 재도전 기회 줘야”…허세영 대표 국감장 선다"
     },
+    "original:b289867090e78b0862b42346": {
+      "first_seen_kst": "2026-10-04T06:34:33+09:00",
+      "lanes": {
+        "preopen": "2026-10-04T06:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261003032000008",
+      "source": "연합뉴스",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-04T06:20+09:00",
+      "title": "3분기 약달러에 ETF 상승률 1∼3위 모두 '달러 곱버스' 차지 | 연합뉴스"
+    },
     "original:b3104036a0ebc17a464077ed": {
       "first_seen_kst": "2026-10-03T03:34:04+09:00",
       "lanes": {
@@ -22261,6 +22371,18 @@
       "source_published_kst": "2026-10-04T02:21+09:00",
       "title": "美, 기존 합의 토대로 핵 협상 조기 추진…이란 \"약속 이행 먼저\""
     },
+    "original:cabaa3581c8dcb78a3220ba0": {
+      "first_seen_kst": "2026-10-04T06:34:33+09:00",
+      "lanes": {
+        "preopen": "2026-10-04T06:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12167729",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-03T10:05+09:00",
+      "title": "나스닥 1%, 美반도체지수 2% 상승…연휴 뒤 韓증시도 따라 웃을까"
+    },
     "original:cace9da7d634f01162092f4e": {
       "first_seen_kst": "2026-10-01T19:47:29+09:00",
       "lanes": {
@@ -22557,12 +22679,14 @@
     "original:d1e0d4ee0296007aae4616d8": {
       "first_seen_kst": "2026-10-03T23:33:26+09:00",
       "lanes": {
-        "live": "2026-10-03T23:33:26+09:00"
+        "live": "2026-10-03T23:33:26+09:00",
+        "preopen": "2026-10-04T06:34:33+09:00"
       },
-      "last_seen_kst": "2026-10-03T23:33:26+09:00",
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
       "link": "https://www.newsis.com/view/NISX20261003_0003813735",
       "source": "뉴시스",
       "source_event_identity": "",
+      "source_published_kst": "2026-10-03T23:46+09:00",
       "title": "트럼프, 84억弗 석유 프로젝트 압박…정부 \"팩트시트 이행이 원칙\""
     },
     "original:d224a9fd6c82628780bbaeb1": {
@@ -23754,6 +23878,18 @@
       "source_event_identity": "",
       "title": "“1550원일땐 차마 못 갚았습니다”…1350원에 달러빚 정리나선 기업들"
     },
+    "original:ed4fbb51980c1f22167adf59": {
+      "first_seen_kst": "2026-10-04T06:34:33+09:00",
+      "lanes": {
+        "preopen": "2026-10-04T06:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169458",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-04T06:20+09:00",
+      "title": "3분기 약달러에 ETF 상승률 1∼3위 모두 '달러 곱버스' 차지"
+    },
     "original:ed5e195b1f098276ec7d5c80": {
       "first_seen_kst": "2026-09-17T17:33:37+09:00",
       "lanes": {
@@ -24846,9 +24982,10 @@
     "title:086f62373eb0b99ebeecaaf6": {
       "first_seen_kst": "2026-10-04T01:43:50+09:00",
       "lanes": {
-        "live": "2026-10-04T01:43:50+09:00"
+        "live": "2026-10-04T01:43:50+09:00",
+        "preopen": "2026-10-04T06:34:33+09:00"
       },
-      "last_seen_kst": "2026-10-04T01:43:50+09:00",
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
       "link": "https://www.newsis.com/view/NISX20261003_0003813673",
       "source": "뉴시스",
       "source_event_identity": "source_event:v1:market_breadth:s&p500:2026-09:down_share=80",
@@ -25795,6 +25932,18 @@
       "link": "https://www.dt.co.kr/article/12087236",
       "source": "디지털타임스",
       "title": "암살자(들) 투자한 기업은행·산업은행 “외부 요청 없었다”"
+    },
+    "title:22532471b5b750da4d55a26b": {
+      "first_seen_kst": "2026-10-04T06:34:33+09:00",
+      "lanes": {
+        "preopen": "2026-10-04T06:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632253",
+      "source": "이투데이",
+      "source_event_identity": "source_event:v1:g7:oil_reserves:plan:barrels=100000000:months=4",
+      "source_published_kst": "2026-10-03T06:54+09:00",
+      "title": "국제유가, G7 비축유 방출에 하락⋯WTI 1.90%↓[상보]"
     },
     "title:229ac0390202bb751ef11d09": {
       "first_seen_kst": "2026-09-26T15:16:00+09:00",
@@ -27080,6 +27229,18 @@
       "link": "https://www.mk.co.kr/news/politics/12161571",
       "source": "매일경제",
       "title": "李대통령, 멕시코 ‘K엑스포’ 방문…“관세 얼마나 올랐나”"
+    },
+    "title:4023c9418898c39720277a0b": {
+      "first_seen_kst": "2026-10-04T06:34:33+09:00",
+      "lanes": {
+        "preopen": "2026-10-04T06:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812247",
+      "source": "뉴시스",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-03T08:16+09:00",
+      "title": "금리 급등에 주식 매력 '흔들'…구원투수는 '실적'[금리 쇼크①]"
     },
     "title:40243342aec7c9737b2f2cbb": {
       "first_seen_kst": "2026-09-21T18:41:01+09:00",
@@ -31031,6 +31192,18 @@
       "source": "연합뉴스",
       "title": "기업은행·산업은행 \"영화 암살자(들) 투자 외부 요청 없었다\" | 연합뉴스"
     },
+    "title:a2bd5cc18f836e5bdbb75299": {
+      "first_seen_kst": "2026-10-04T06:34:33+09:00",
+      "lanes": {
+        "preopen": "2026-10-04T06:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632253",
+      "source": "이투데이",
+      "source_event_identity": "source_event:v1:g7:oil_reserves:plan:barrels=100000000:months=4",
+      "source_published_kst": "2026-10-03T06:54+09:00",
+      "title": "국제유가, G7 비축유 방출에 하락⋯WTI 1.90%↓[상보]"
+    },
     "title:a32b9dc43633e8897b7326b3": {
       "first_seen_kst": "2026-10-02T22:52:45+09:00",
       "lanes": {
@@ -31708,6 +31881,18 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03673606645608984",
       "source": "이데일리",
       "title": "“루센트블록 재도전 기회 줘야”…허세영 대표 국감장 선다"
+    },
+    "title:b289867090e78b0862b42346": {
+      "first_seen_kst": "2026-10-04T06:34:33+09:00",
+      "lanes": {
+        "preopen": "2026-10-04T06:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261003032000008",
+      "source": "연합뉴스",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-04T06:20+09:00",
+      "title": "3분기 약달러에 ETF 상승률 1∼3위 모두 '달러 곱버스' 차지 | 연합뉴스"
     },
     "title:b3104036a0ebc17a464077ed": {
       "first_seen_kst": "2026-10-03T03:34:04+09:00",
@@ -32623,6 +32808,18 @@
       "source_published_kst": "2026-10-04T02:21+09:00",
       "title": "美, 기존 합의 토대로 핵 협상 조기 추진…이란 \"약속 이행 먼저\""
     },
+    "title:cabaa3581c8dcb78a3220ba0": {
+      "first_seen_kst": "2026-10-04T06:34:33+09:00",
+      "lanes": {
+        "preopen": "2026-10-04T06:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12167729",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-03T10:05+09:00",
+      "title": "나스닥 1%, 美반도체지수 2% 상승…연휴 뒤 韓증시도 따라 웃을까"
+    },
     "title:cacc97cad688140e33681fd5": {
       "first_seen_kst": "2026-10-04T00:19:00+09:00",
       "lanes": {
@@ -32930,12 +33127,14 @@
     "title:d1e0d4ee0296007aae4616d8": {
       "first_seen_kst": "2026-10-03T23:33:26+09:00",
       "lanes": {
-        "live": "2026-10-03T23:33:26+09:00"
+        "live": "2026-10-03T23:33:26+09:00",
+        "preopen": "2026-10-04T06:34:33+09:00"
       },
-      "last_seen_kst": "2026-10-03T23:33:26+09:00",
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
       "link": "https://www.newsis.com/view/NISX20261003_0003813735",
       "source": "뉴시스",
       "source_event_identity": "",
+      "source_published_kst": "2026-10-03T23:46+09:00",
       "title": "트럼프, 84억弗 석유 프로젝트 압박…정부 \"팩트시트 이행이 원칙\""
     },
     "title:d224a9fd6c82628780bbaeb1": {
@@ -34147,6 +34346,18 @@
       "source_event_identity": "",
       "title": "“1550원일땐 차마 못 갚았습니다”…1350원에 달러빚 정리나선 기업들"
     },
+    "title:ed4fbb51980c1f22167adf59": {
+      "first_seen_kst": "2026-10-04T06:34:33+09:00",
+      "lanes": {
+        "preopen": "2026-10-04T06:34:33+09:00"
+      },
+      "last_seen_kst": "2026-10-04T06:34:33+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169458",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_published_kst": "2026-10-04T06:20+09:00",
+      "title": "3분기 약달러에 ETF 상승률 1∼3위 모두 '달러 곱버스' 차지"
+    },
     "title:ed5e195b1f098276ec7d5c80": {
       "first_seen_kst": "2026-09-17T17:33:37+09:00",
       "lanes": {
@@ -34872,5 +35083,5 @@
       "title": "대방건설, 인천계양 테크노밸리 공공주택지구 조경공사 수주 | 연합뉴스"
     }
   },
-  "updated_at_kst": "2026-10-04T06:09:53+09:00"
+  "updated_at_kst": "2026-10-04T06:34:33+09:00"
 }
