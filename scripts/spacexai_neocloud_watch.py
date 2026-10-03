@@ -24,6 +24,11 @@ FORMAT_VERSION = 1
 MAX_NEWS_AGE_DAYS = 7
 UA = "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"
 HEADERS = {"User-Agent": UA, "Accept": "text/html,application/xhtml+xml,*/*"}
+SEC_HEADERS = {
+    "User-Agent": "khs-watch research github-actions[bot]@users.noreply.github.com",
+    "Accept": "text/html,application/xhtml+xml,*/*",
+    "Accept-Encoding": "gzip, deflate",
+}
 
 SPACEX_S1 = "https://www.sec.gov/Archives/edgar/data/1181412/000162828026039276/spaceexplorationtechnologi.htm"
 SPACEX_GOOGLE_FWP = "https://www.sec.gov/Archives/edgar/data/1181412/000162828026041150/spacexagreementfwp.htm"
@@ -34,6 +39,34 @@ SPACEXAI_ANTHROPIC = "https://x.ai/news/anthropic-compute-partnership"
 THE_INFORMATION = "https://www.theinformation.com/articles/spacexs-ai-unit-turned-ai-cloud-firm"
 MARKETWATCH = "https://www.marketwatch.com/story/spacex-is-inching-closer-to-this-lofty-100-billion-milestone-11536cfc"
 SEC_SUBMISSIONS = "https://data.sec.gov/submissions/CIK0001181412.json"
+SPACEX_IR_UPDATES = "https://ir.spacex.com/updates/"
+
+OFFICIAL_BASELINE = {
+    "anthropic": {
+        "monthly_usd_b": 1.25,
+        "gpus": 325000,
+        "through": "2029-05",
+        "termination": "초기 3개월 이후 상호 90일 통지 해지 가능",
+        "site_mw_min": 300,
+        "official_url": SPACEX_S1,
+    },
+    "google": {
+        "monthly_usd_b": 0.92,
+        "gpus": 110000,
+        "start": "2026-10",
+        "through": "2029-06",
+        "delivery_deadline": "2026-09-30",
+        "delivery_grace": "1개월",
+        "termination": "2026-12-31 이후 상호 90일 통지 해지 가능",
+        "official_url": SPACEX_GOOGLE_FWP,
+    },
+    "spacex_ai": {
+        "nameplate_compute_draw_gw": 1.4,
+        "nameplate_date": "2026-06-30",
+        "contracted_sales_usd_b_q2_disclosure": 14.1,
+        "note": "Nameplate compute draw는 실제 전력사용량·가동률이 아님",
+    },
+}
 
 TRUSTED_NEWS = (
     "Reuters", "Bloomberg", "Financial Times", "The Information", "CNBC",
@@ -77,7 +110,8 @@ CURRENT_REPORTED_CONTEXT = [
 
 
 def fetch(url: str, timeout: int = 25) -> requests.Response:
-    r = requests.get(url, headers=HEADERS, timeout=timeout)
+    headers = SEC_HEADERS if ("sec.gov" in url or "data.sec.gov" in url) else HEADERS
+    r = requests.get(url, headers=headers, timeout=timeout)
     r.raise_for_status()
     return r
 
@@ -101,73 +135,75 @@ def parse_number(text: str, pattern: str, cast=float):
 
 
 def official_snapshot() -> dict:
-    s1 = page_text(SPACEX_S1)
-    g = page_text(SPACEX_GOOGLE_FWP)
-    q = page_text(SPACEX_10Q)
-    e = page_text(SPACEX_Q2_RELEASE)
-    a = page_text(ANTHROPIC_OFFICIAL)
+    # Start from exact figures already verified against official SEC filings.
+    # GitHub-hosted runners are sometimes blocked by SEC; a live parse upgrades
+    # the baseline only when every identity/term guard passes.
+    out = json.loads(json.dumps(OFFICIAL_BASELINE))
+    live_ok = True
+    errors = []
 
-    guards = [
-        ("S-1 Anthropic", "Cloud Services Agreements with Anthropic", s1),
-        ("Google FWP", "Cloud Service Agreement with Google", g),
-        ("10-Q", "Nameplate Compute Draw", q),
-        ("Q2 release", "contracted sales", e),
-        ("Anthropic official", "SpaceX", a),
-    ]
-    for label, needle, body in guards:
-        if needle.lower() not in body.lower():
-            raise RuntimeError(f"{label} identity guard failed")
+    try:
+        s1 = page_text(SPACEX_S1)
+        if "Cloud Services Agreements with Anthropic" not in s1:
+            raise RuntimeError("Anthropic identity guard")
+        anth_monthly = parse_number(s1, r"pay us\s*\$?([0-9]+(?:\.[0-9]+)?)\s*billion per month")
+        anth_gpus = parse_number(s1, r"approximately\s+([0-9,]+)\s+NVIDIA GPUs", int)
+        if "through May 2029" not in s1 or "90 days" not in s1:
+            raise RuntimeError("Anthropic term guard")
+        out["anthropic"]["monthly_usd_b"] = anth_monthly
+        out["anthropic"]["gpus"] = anth_gpus
+    except Exception as exc:
+        live_ok = False
+        errors.append(f"SEC Anthropic live parse {type(exc).__name__}")
 
-    anth_monthly = parse_number(s1, r"pay us\s*\$?([0-9]+(?:\.[0-9]+)?)\s*billion per month")
-    anth_gpus = parse_number(s1, r"approximately\s+([0-9,]+)\s+NVIDIA GPUs", int)
-    if "through May 2029" not in s1 or "90 days" not in s1:
-        raise RuntimeError("Anthropic contract terms missing")
+    try:
+        g = page_text(SPACEX_GOOGLE_FWP)
+        if "Cloud Service Agreement with Google" not in g:
+            raise RuntimeError("Google identity guard")
+        monthly_m = parse_number(g, r"pay us\s*\$?([0-9]+(?:\.[0-9]+)?)\s*million per month")
+        gpus = parse_number(g, r"approximately\s+([0-9,]+)\s+NVIDIA GPUs", int)
+        if "from October 2026 through June 2029" not in g:
+            raise RuntimeError("Google period guard")
+        if "September 30, 2026" not in g or "one-month grace period" not in g:
+            raise RuntimeError("Google delivery guard")
+        out["google"]["monthly_usd_b"] = monthly_m / 1000.0
+        out["google"]["gpus"] = gpus
+    except Exception as exc:
+        live_ok = False
+        errors.append(f"SEC Google live parse {type(exc).__name__}")
 
-    google_monthly_m = parse_number(g, r"pay us\s*\$?([0-9]+(?:\.[0-9]+)?)\s*million per month")
-    google_gpus = parse_number(g, r"approximately\s+([0-9,]+)\s+NVIDIA GPUs", int)
-    if "from October 2026 through June 2029" not in g:
-        raise RuntimeError("Google service period missing")
-    if "September 30, 2026" not in g or "one-month grace period" not in g or "December 31, 2026" not in g:
-        raise RuntimeError("Google delivery/termination terms missing")
+    try:
+        q = page_text(SPACEX_10Q)
+        m = re.search(r"Nameplate Compute Draw.*?([0-9]+(?:\.[0-9]+)?)\s+.*?0\.4", q, re.I)
+        if not m:
+            raise RuntimeError("10-Q metric guard")
+        out["spacex_ai"]["nameplate_compute_draw_gw"] = float(m.group(1))
+    except Exception as exc:
+        live_ok = False
+        errors.append(f"SEC 10-Q live parse {type(exc).__name__}")
 
-    m = re.search(r"Nameplate Compute Draw.*?([0-9]+(?:\.[0-9]+)?)\s+.*?0\.4", q, re.I)
-    if not m:
-        raise RuntimeError("Nameplate compute draw missing")
-    nameplate_gw = float(m.group(1))
+    try:
+        e = page_text(SPACEX_Q2_RELEASE)
+        v = parse_number(e, r"\$([0-9]+(?:\.[0-9]+)?)\s+billion of contracted sales")
+        out["spacex_ai"]["contracted_sales_usd_b_q2_disclosure"] = v
+    except Exception as exc:
+        live_ok = False
+        errors.append(f"SEC Q2 release live parse {type(exc).__name__}")
 
-    contracted_sales_b = parse_number(e, r"\$([0-9]+(?:\.[0-9]+)?)\s+billion of contracted sales")
+    # Independent company-side confirmation for the Anthropic relationship.
+    try:
+        a = page_text(ANTHROPIC_OFFICIAL)
+        if "SpaceX" not in a or "220,000" not in a:
+            raise RuntimeError("Anthropic official relationship guard")
+    except Exception as exc:
+        errors.append(f"Anthropic official live check {type(exc).__name__}")
 
-    anth_site_mw = None
-    am = re.search(r"more than\s+([0-9,]+)\s+megawatts", a, re.I)
-    if am:
-        anth_site_mw = int(am.group(1).replace(",", ""))
-
-    return {
-        "anthropic": {
-            "monthly_usd_b": anth_monthly,
-            "gpus": anth_gpus,
-            "through": "2029-05",
-            "termination": "상호 90일 통지 해지 가능",
-            "site_mw_min": anth_site_mw,
-            "official_url": SPACEX_S1,
-        },
-        "google": {
-            "monthly_usd_b": google_monthly_m / 1000.0,
-            "gpus": google_gpus,
-            "start": "2026-10",
-            "through": "2029-06",
-            "delivery_deadline": "2026-09-30",
-            "delivery_grace": "1개월",
-            "termination": "2026-12-31 이후 상호 90일 통지 해지 가능",
-            "official_url": SPACEX_GOOGLE_FWP,
-        },
-        "spacex_ai": {
-            "nameplate_compute_draw_gw": nameplate_gw,
-            "nameplate_date": "2026-06-30",
-            "contracted_sales_usd_b_q2_disclosure": contracted_sales_b,
-            "note": "Nameplate compute draw는 실제 전력사용량·가동률이 아님",
-        },
+    out["_verification"] = {
+        "sec_live_all_ok": live_ok,
+        "fallback": "공식 SEC 문서로 사전검증한 고정 기준값" if not live_ok else "SEC 실시간 재검증",
+        "errors": errors,
     }
+    return out
 
 
 def fx_snapshot(old: dict) -> dict:
@@ -269,6 +305,27 @@ def search_news() -> tuple[list[dict], list[str]]:
     return list({x["id"]: x for x in rows}.values()), errors
 
 
+def ir_release_rows() -> tuple[list[dict], list[str]]:
+    try:
+        soup = BeautifulSoup(fetch(SPACEX_IR_UPDATES, 20).content, "html.parser")
+        rows = []
+        for a in soup.find_all("a", href=True):
+            href = str(a.get("href") or "")
+            title = " ".join(a.get_text(" ", strip=True).split())
+            if "/updates/releases-details/" not in href or not title:
+                continue
+            low = title.lower()
+            if not any(k in low for k in ("ai", "compute", "cloud", "data center", "gpu")):
+                continue
+            if href.startswith("/"):
+                href = "https://ir.spacex.com" + href
+            ident = hashlib.sha256(href.encode("utf-8")).hexdigest()[:24]
+            rows.append({"id": ident, "title": title, "url": href, "source": "SpaceX IR"})
+        return list({x["id"]: x for x in rows}.values()), []
+    except Exception as exc:
+        return [], [f"SpaceX IR {type(exc).__name__}"]
+
+
 def sec_recent() -> tuple[list[dict], list[str]]:
     try:
         data = fetch(SEC_SUBMISSIONS, 20).json()
@@ -292,7 +349,9 @@ def sec_recent() -> tuple[list[dict], list[str]]:
             })
         return rows, []
     except Exception as exc:
-        return [], [f"SEC submissions {type(exc).__name__}"]
+        # SEC may block cloud-runner IPs. SpaceX IR remains an independent official
+        # company-side fallback; do not fabricate a filing result.
+        return [], [f"SEC submissions {type(exc).__name__} · SpaceX IR 대체 감시"]
 
 
 def official_changes(old: dict, new: dict) -> list[str]:
@@ -405,7 +464,8 @@ def main() -> int:
     fx = fx_snapshot(old)
     news, news_errors = search_news()
     sec_rows, sec_errors = sec_recent()
-    errors = news_errors + sec_errors
+    ir_rows, ir_errors = ir_release_rows()
+    errors = news_errors + sec_errors + ir_errors + list((official.get("_verification") or {}).get("errors") or [])
 
     baseline = not old.get("initialized")
     format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
@@ -413,9 +473,11 @@ def main() -> int:
 
     old_news = set(old.get("seen_news_ids", []))
     old_sec = set(old.get("seen_sec_accessions", []))
+    old_ir = set(old.get("seen_ir_ids", []))
     new_news = [] if baseline else [x for x in news if x["id"] not in old_news]
     new_sec = [] if baseline else [x for x in sec_rows if x["id"] not in old_sec]
-    should_alert = baseline or format_upgrade or bool(changes) or bool(new_news) or bool(new_sec)
+    new_ir = [] if baseline else [x for x in ir_rows if x["id"] not in old_ir]
+    should_alert = baseline or format_upgrade or bool(changes) or bool(new_news) or bool(new_sec) or bool(new_ir)
 
     pending = {
         "initialized": True,
@@ -424,17 +486,26 @@ def main() -> int:
         "reported_context": CURRENT_REPORTED_CONTEXT,
         "seen_news_ids": list(dict.fromkeys(old.get("seen_news_ids", []) + [x["id"] for x in news]))[-2000:],
         "seen_sec_accessions": list(dict.fromkeys(old.get("seen_sec_accessions", []) + [x["id"] for x in sec_rows]))[-500:],
+        "seen_ir_ids": list(dict.fromkeys(old.get("seen_ir_ids", []) + [x["id"] for x in ir_rows]))[-500:],
         "fx": fx,
         "last_changes": changes[:20],
         "last_new_news": new_news[:20],
         "last_new_sec": new_sec[:20],
+        "last_new_ir": new_ir[:20],
         "errors": errors[:20],
         "updated_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
     }
     PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     if should_alert:
-        ALERT.write_text(render(official, changes, new_news, new_sec, fx, baseline or format_upgrade), encoding="utf-8")
+        merged_official = list(new_sec)
+        for row in new_ir:
+            merged_official.append({
+                "filing_date": "회사 업데이트",
+                "form": row.get("title", "SpaceX IR"),
+                "url": row.get("url", SPACEX_IR_UPDATES),
+            })
+        ALERT.write_text(render(official, changes, new_news, merged_official, fx, baseline or format_upgrade), encoding="utf-8")
 
     STATUS.write_text(
         "# SpaceXAI 외부 컴퓨트·네오클라우드 감시\n\n"
@@ -443,6 +514,7 @@ def main() -> int:
         f"- AI 명목 컴퓨트 전력: **{official['spacex_ai']['nameplate_compute_draw_gw']:.1f}GW**\n"
         f"- 신규 확정 변화: **{len(changes)}건**\n"
         f"- 신규 SEC 후보: **{len(new_sec)}건**\n"
+        f"- 신규 SpaceX IR 후보: **{len(new_ir)}건**\n"
         f"- 신규 보도 후보: **{len(new_news)}건**\n"
         f"- 알림: **{'예' if should_alert else '아니오'}**\n"
         f"- 오류: **{'; '.join(errors) if errors else '없음'}**\n",
@@ -450,7 +522,7 @@ def main() -> int:
     )
     print(
         f"spacexai_neocloud baseline={baseline} format_upgrade={format_upgrade} "
-        f"changes={len(changes)} new_sec={len(new_sec)} new_news={len(new_news)} "
+        f"changes={len(changes)} new_sec={len(new_sec)} new_ir={len(new_ir)} new_news={len(new_news)} "
         f"alert={should_alert} errors={len(errors)}"
     )
     return 0
