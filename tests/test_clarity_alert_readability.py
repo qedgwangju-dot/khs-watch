@@ -125,6 +125,24 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
         self.assertIn("미국 암호자산 규제 Watch", rendered)
         self.assertNotIn("Proposed Rule(제안규칙) — 공식 초안", rendered)
 
+    def test_3x_crypto_etp_approval_card_is_compact_and_actionable(self):
+        event = {
+            "source": "SEC 거래소 규칙 승인명령",
+            "event_type": "SEC 거래소 상장·거래 승인",
+            "title": "Order Granting Approval of a Proposed Rule Change to List and Trade Shares of the 3x Bitcoin ETF and 3x Ether ETF",
+            "url": "https://www.sec.gov/files/rules/sro/cboebzx/2026/34-106577.pdf",
+            "date": "Oct 2, 2026",
+            "detail": "Release No. 34-106577 File No. SR-CboeBZX-2026-065",
+        }
+        rendered = "\n".join(MOD.build_readable([event]))
+        self.assertIn("미국 암호자산 규제 Watch", rendered)
+        self.assertIn("상장규칙 승인", rendered)
+        self.assertIn("현물 3배 ETF가 아니라", rendered)
+        self.assertIn("3x Bitcoin ETF 등록서류 효력 예정일 2026-10-18", rendered)
+        self.assertIn("CME 선물 미결제약정", rendered)
+        self.assertNotIn("CLARITY 법안 Watch", rendered)
+        self.assertLessEqual(max(map(len, MOD.build_readable([event]))), 3900)
+
     def test_multiple_distinct_events_keep_short_overview(self):
         events = [
             {
