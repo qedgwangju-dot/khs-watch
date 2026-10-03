@@ -1361,4 +1361,58 @@ g, s, c, k = classify(fieldai_partner_baseline)
 assert g == "fieldai", (g, s, c)
 assert s < 11, ("existing Boston Dynamics partnership must remain baseline", s, c)
 
+# 34) NVIDIA/Jensen robotics inflection timeline lane.
+# Official 2025/2026 ChatGPT-moment rhetoric is already the baseline. The
+# user-surfaced "within a year" roadshow note is not publicly corroborated, so
+# it must remain silent until an official/direct-quote source confirms it.
+nvidia_robotics_official_baseline = make(
+    "NVIDIA: The ChatGPT moment for robotics is here",
+    "Jensen Huang said the ChatGPT moment for robotics is here as physical AI models understand the real world, reason and plan actions.",
+    "NVIDIA",
+)
+g, s, c, k = classify(nvidia_robotics_official_baseline)
+assert g == "nvidia_robotics_exec", (g, s, c)
+assert c.endswith("로보틱스 ChatGPT 모먼트 공식 수사 기준선"), c
+assert s < 11, ("official CES 2026 ChatGPT-moment rhetoric is already baseline", s, c)
+
+nvidia_robotics_roadshow_unverified = make(
+    "Jensen Huang roadshow meeting comment",
+    "Roadshow investor meeting note: robotics ChatGPT moment is very close, within a year.",
+    "Roadshow meeting note",
+)
+g, s, c, k = classify(nvidia_robotics_roadshow_unverified)
+assert g == "nvidia_robotics_exec", (g, s, c)
+assert c.endswith("로드쇼 1년 이내 코멘트 미확인 기준선"), c
+assert s < 11, ("unverified roadshow quote must not alert", s, c)
+
+nvidia_robotics_within_year_confirmed = make(
+    "Jensen Huang says robotics inflection is within a year",
+    "NVIDIA CEO Jensen Huang said the ChatGPT moment for robotics will occur within a year as general-purpose robot brains mature.",
+    "NVIDIA",
+)
+g, s, c, k = classify(nvidia_robotics_within_year_confirmed)
+assert g == "nvidia_robotics_exec", (g, s, c)
+assert c.endswith("1년 이내 로보틱스 변곡점 공식 확인"), c
+assert s >= 11, s
+
+nvidia_robotics_timeline_change = make(
+    "Jensen Huang changes robotics timeline",
+    "Jensen Huang said the general-purpose brain for robotics is likely within two years rather than the near-term window.",
+    "Reuters",
+)
+g, s, c, k = classify(nvidia_robotics_timeline_change)
+assert g == "nvidia_robotics_exec", (g, s, c)
+assert c.endswith("로보틱스 변곡점 시간표 변경"), c
+assert s >= 11, s
+
+nvidia_robotics_quantified = make(
+    "NVIDIA expands production robot deployments",
+    "NVIDIA said its robotics platform is now deployed across 120 production sites with 8,000 robots using Jetson and GR00T.",
+    "NVIDIA",
+)
+g, s, c, k = classify(nvidia_robotics_quantified)
+assert g == "nvidia_robotics_exec", (g, s, c)
+assert c.endswith("로봇 배치·생산·고객 정량 확대"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
