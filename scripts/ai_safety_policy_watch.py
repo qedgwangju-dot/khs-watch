@@ -44,7 +44,19 @@ USER_AGENT = "Mozilla/5.0 khs-ai-safety-policy-watch/1.0"
 MAX_AGE_HOURS = 168
 SEEN_RETENTION_DAYS = 90
 MAX_ALERT_EVENTS = 5
-OFFICIAL_SNAPSHOT_SCHEMA_VERSION = 2
+OFFICIAL_SNAPSHOT_SCHEMA_VERSION = 3
+OFFICIAL_CHANGE_CONFIRM_RUNS = 2
+OFFICIAL_CHANGE_CONFIRM_SECONDS = 600
+
+# Published government/reference documents are immutable baselines. Their
+# rendered HTML may vary due to rotating related-content/navigation blocks, but
+# those presentation changes must never generate a policy alert. Follow-up
+# policy changes are discovered as new official documents/news items instead.
+IMMUTABLE_OFFICIAL_REFERENCE_PAGES = {
+    "미 하원의장실 White House Accord 공식 발표",
+    "백악관 Super Intelligence 행정명령",
+    "백악관 Super Intelligence 팩트시트",
+}
 
 NEWS_QUERIES = [
     # International standards / mandatory requirements.
@@ -94,6 +106,9 @@ NEWS_QUERIES = [
     '"AI safety" independent board committee external audit requirement',
     '"AI accord" codified law regulation procurement insurance certification',
     '"super intelligence" accord law regulation audit procurement insurance',
+    'site:whitehouse.gov "Super Intelligence" safety regulation accord',
+    'site:federalregister.gov "Super Intelligence" executive order regulation',
+    'site:congress.gov "Super Intelligence" AI safety bill',
 ]
 
 OFFICIAL_SOURCE_HINTS = (
@@ -101,6 +116,7 @@ OFFICIAL_SOURCE_HINTS = (
     "nists", "nist", "cisa", "gov.uk", "aisi", "european commission",
     "europa.eu", "oecd", "white house", "whitehouse.gov", "commerce department", "ntia",
     "house.gov", "u.s. house", "house of representatives",
+    "federalregister.gov", "federal register", "congress.gov", "congress",
     "naver", "lg cns", "s2w", "샌즈랩", "palo alto", "unit 42",
     "crowdstrike", "ibm", "nvidia", "microsoft", "openshell",
     "nemoclaw", "sentry", "sap", "canonical", "red hat",
@@ -736,6 +752,86 @@ def forced_official_page_entity(name: str) -> str:
     return mapping.get(name, "AI 안전·보안 생태계")
 
 
+def _parse_iso_utc(value: str | None) -> dt.datetime | None:
+    if not value:
+        return None
+    try:
+        return dt.datetime.fromisoformat(str(value).replace("Z", "+00:00")).astimezone(UTC)
+    except Exception:
+        return None
+
+
+def advance_official_page_state(
+    name: str,
+    previous: dict | None,
+    snapshot: dict,
+    now: dt.datetime,
+    *,
+    rebaseline: bool = False,
+) -> tuple[dict, bool]:
+    """Return (new_state, should_alert) for one official page snapshot.
+
+    Immutable published reference documents never alert on in-place HTML
+    changes. Mutable pages require the same changed digest to persist across at
+    least two observations spanning ten minutes before an alert is accepted.
+    This blocks CDN/A-B/render jitter and workflow bursts from becoming alerts.
+    """
+    digest = str(snapshot.get("digest") or "")
+    url = str(snapshot.get("url") or "")
+    previous = dict(previous or {})
+
+    if rebaseline or not previous.get("digest"):
+        return {
+            "digest": digest,
+            "url": url,
+            "updated_at": now.isoformat(),
+            "candidate_digest": None,
+            "candidate_count": 0,
+            "candidate_first_seen_at": None,
+        }, False
+
+    if name in IMMUTABLE_OFFICIAL_REFERENCE_PAGES:
+        # Keep the confirmed baseline digest fixed. The page may render
+        # different related-content/navigation fragments between requests.
+        previous["url"] = url or previous.get("url")
+        previous["candidate_digest"] = None
+        previous["candidate_count"] = 0
+        previous["candidate_first_seen_at"] = None
+        return previous, False
+
+    confirmed = str(previous.get("digest") or "")
+    if digest == confirmed:
+        previous["url"] = url or previous.get("url")
+        previous["candidate_digest"] = None
+        previous["candidate_count"] = 0
+        previous["candidate_first_seen_at"] = None
+        return previous, False
+
+    candidate = str(previous.get("candidate_digest") or "")
+    if candidate == digest:
+        count = int(previous.get("candidate_count") or 0) + 1
+        first_seen = _parse_iso_utc(previous.get("candidate_first_seen_at")) or now
+    else:
+        count = 1
+        first_seen = now
+
+    previous["url"] = url or previous.get("url")
+    previous["candidate_digest"] = digest
+    previous["candidate_count"] = count
+    previous["candidate_first_seen_at"] = first_seen.isoformat()
+
+    age = max(0.0, (now - first_seen).total_seconds())
+    if count >= OFFICIAL_CHANGE_CONFIRM_RUNS and age >= OFFICIAL_CHANGE_CONFIRM_SECONDS:
+        previous["digest"] = digest
+        previous["updated_at"] = now.isoformat()
+        previous["candidate_digest"] = None
+        previous["candidate_count"] = 0
+        previous["candidate_first_seen_at"] = None
+        return previous, True
+
+    return previous, False
+
+
 HANGUL_RE = re.compile(r"[가-힣]")
 LATIN_WORD_RE = re.compile(r"[A-Za-z]{2,}")
 TRANSLATE_GOOGLE = "https://translate.googleapis.com/translate_a/single"
@@ -939,20 +1035,26 @@ def main() -> int:
         new_items.append(item)
 
     # Track direct official page changes separately.
-    # Snapshot extraction rules are versioned. A parser/schema change silently
-    # re-baselines official pages so code changes cannot create false alerts.
+    # Snapshot extraction rules are versioned. Published reference documents
+    # never alert on in-place HTML changes, and mutable pages require a stable
+    # changed digest across multiple observations separated by time.
     official_pages = dict(state.get("official_pages") or {})
     prior_snapshot_schema = int(state.get("official_snapshot_schema_version") or 0)
     rebaseline_official_pages = prior_snapshot_schema != OFFICIAL_SNAPSHOT_SCHEMA_VERSION
     try:
         snapshots = official_page_snapshots()
-        for name,snap in snapshots.items():
+        for name, snap in snapshots.items():
             previous = official_pages.get(name)
-            if (
-                previous
-                and previous.get("digest") != snap["digest"]
-                and not rebaseline_official_pages
-            ):
+            page_state, should_alert = advance_official_page_state(
+                name,
+                previous,
+                snap,
+                now,
+                rebaseline=rebaseline_official_pages,
+            )
+            official_pages[name] = page_state
+
+            if should_alert:
                 item = normalize({
                     "kind":"official",
                     "query":"official page change",
@@ -965,11 +1067,14 @@ def main() -> int:
                 item["category"] = forced_official_page_category(name)
                 item["entity"] = forced_official_page_entity(name)
                 new_items.append(item)
-            official_pages[name] = {
-                "digest":snap["digest"],
-                "updated_at":now.isoformat(),
-                "url":snap["url"],
-            }
+                print(f"ai_policy_official_change_confirmed={name}")
+            elif (
+                previous
+                and str(previous.get("digest") or "") != str(snap.get("digest") or "")
+                and name in IMMUTABLE_OFFICIAL_REFERENCE_PAGES
+            ):
+                print(f"ai_policy_immutable_render_jitter_ignored={name}")
+
         if rebaseline_official_pages:
             print(
                 f"ai_policy_official_pages_rebaselined=true "
