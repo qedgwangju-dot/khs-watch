@@ -149,7 +149,6 @@ class BioAlertRegressionTests(unittest.TestCase):
         rendered = halo.portfolio_alert(item)
         self.assertIn("누적 9/14건", rendered)
         self.assertIn("PTAB 확인 기준 9/14건", rendered)
-        self.assertIn("2026-10-01 PGR2025-00052", rendered)
         self.assertIn("• <b>2026년 10월 1일</b> PGR2025-00052", rendered)
         self.assertIn("• <b>2026년 10월 2일</b> PGR2025-00046", rendered)
         self.assertIn("알테오젠이 9/14를 새 공식 IR로 발표했다는 뜻이 아니라", rendered)
