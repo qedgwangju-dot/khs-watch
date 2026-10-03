@@ -75,6 +75,10 @@ def easy_takeaway(event, body_ko):
 
 def short_change(event, title_ko, body_ko):
     et = clean(event.get("event_type", ""))
+    if FMT.is_vs_trust_3x_registration_effect(event):
+        return "BITH·ETHK 등록서류의 Form EFFECT(효력발생 통지)가 확인돼 실제 출시에 한 단계 더 가까워졌습니다."
+    if FMT.is_vs_trust_3x_final_prospectus(event):
+        return "BITH·ETHK 최종 투자설명서가 SEC EDGAR에 제출돼 출시 준비가 한 단계 더 진전됐습니다."
     if FMT.is_sec_3x_crypto_etp_approval(event):
         return "SEC가 비트코인·이더 3배 레버리지 ETP의 Cboe BZX 상장·거래 규칙을 승인했습니다. 현물 3배 ETF가 아니라 선물 기반 일일 3배 상품입니다."
     if FMT.is_sec_crypto_custody_2026(event):
@@ -162,6 +166,10 @@ def investment_lines(event):
 
 def impact_snapshot(event):
     et = clean(event.get("event_type", ""))
+    if FMT.is_vs_trust_3x_registration_effect(event):
+        return "시간표 ↑↑ · 실제거래 직전 단계 · BTC/ETH 선물수급은 아직 미발생"
+    if FMT.is_vs_trust_3x_final_prospectus(event):
+        return "시간표 ↑ · 출시준비 진전 · 실제 자금유입은 아직 미발생"
     if FMT.is_volatility_3x_crypto_launch(event):
         return "시간표 ↑↑ · BTC/ETH 선물수급 ↑/△ · 변동성 ↑ 가능 · COIN 직접매출 →"
     if FMT.is_sec_3x_crypto_etp_approval(event):
@@ -198,6 +206,24 @@ def sentence_bullets(text):
 
 
 def confirmed_fact_lines(event, body_ko):
+    if FMT.is_vs_trust_3x_registration_effect(event):
+        detail = clean(event.get("detail", ""))
+        form = "Form EFFECT(효력발생 통지)"
+        file_no = ""
+        m = re.search(r"File No\.\s*([^;|]+)", detail, re.I)
+        if m:
+            file_no = clean(m.group(1))
+        return [
+            form + (" · File No. " + file_no if file_no else ""),
+            "증권 등록 효력 발생은 상장규칙 승인보다 뒤 단계지만 실제 첫 거래일과는 구분.",
+            "다음 확인은 Volatility Shares 공식 출시·Cboe 첫 거래·초기 AUM.",
+        ]
+    if FMT.is_vs_trust_3x_final_prospectus(event):
+        return [
+            "BITH·ETHK가 포함된 final prospectus(최종 투자설명서) 제출.",
+            "출시 준비는 진전했지만 실제 첫 거래·자금 유입은 아직 별도 확인.",
+            "다음 확인은 등록 효력·발행사 출시 공지·Cboe 첫 거래.",
+        ]
     if FMT.is_volatility_3x_crypto_launch(event):
         facts = []
         signal = clean(f"{event.get('title','')} {event.get('detail','')}").upper()
@@ -231,6 +257,10 @@ def confirmed_fact_lines(event, body_ko):
 
 
 def compact_status(event):
+    if FMT.is_vs_trust_3x_registration_effect(event):
+        return "🟢 등록 효력 발생 — 증권 등록 단계 통과. 실제 첫 거래일은 별도 확인."
+    if FMT.is_vs_trust_3x_final_prospectus(event):
+        return "🟢 최종 투자설명서 제출 — 출시 준비 진전. 실제 거래개시는 별도 확인."
     if FMT.is_volatility_3x_crypto_launch(event):
         return "🟢 발행사 상품목록 등재 — 실제 출시 단계 진전. 첫 거래일·AUM·거래대금 확인."
     if FMT.is_sec_3x_crypto_etp_approval(event):
@@ -287,6 +317,18 @@ def pending_lines(event):
 
 def next_check_lines(event):
     et = clean(event.get("event_type", ""))
+    if FMT.is_vs_trust_3x_registration_effect(event):
+        return [
+            "Volatility Shares 공식 출시 공지",
+            "Cboe BZX 첫 거래일",
+            "첫 5거래일 AUM·거래대금·CME 선물 미결제약정",
+        ]
+    if FMT.is_vs_trust_3x_final_prospectus(event):
+        return [
+            "VS Trust Form EFFECT(등록 효력 발생)",
+            "Volatility Shares 공식 출시·Cboe 첫 거래",
+            "초기 AUM·거래대금",
+        ]
     if FMT.is_volatility_3x_crypto_launch(event):
         return [
             "공식 inception date(설정일)·첫 거래일",
