@@ -79,6 +79,7 @@ SEC_EXCHANGE_ORDERS_URLS = [
 VOLATILITY_SHARES_PRODUCTS_URL = "https://www.volatilityshares.com/etf-product-list.php"
 VS_TRUST_SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK0001793497.json"
 VS_TRUST_CIK = "1793497"
+VS_TRUST_ARCHIVE_INDEX_URL = "https://www.sec.gov/Archives/edgar/data/1793497/index.json"
 
 LEG_ACTION_RE = re.compile(
     r"\b(?:markup|mark-up|vote|voted|advance(?:d)?|pass(?:ed|age)?|fail(?:ed|ure)?|reject(?:ed)?|cloture|floor|calendar|schedule|consideration|amendment|amended|new text|bill text|revised text|reported|referred|signed|signature|veto|became law|enacted|session adjourn|sine die|read twice)\b",
@@ -652,15 +653,109 @@ def sec_archive_url(accession, primary_document):
     return f"https://www.sec.gov/Archives/edgar/data/{VS_TRUST_CIK}/{acc}/{doc}"
 
 
+def accession_with_hyphens(directory_name):
+    value = re.sub(r"\D", "", clean(directory_name))
+    if len(value) != 18:
+        return ""
+    return f"{value[:10]}-{value[10:12]}-{value[12:]}"
+
+
+def collect_vs_trust_archive_filing_rows(errors, max_dirs=30):
+    rows = []
+    try:
+        root = json.loads(fetch(VS_TRUST_ARCHIVE_INDEX_URL, timeout=25).decode("utf-8"))
+        items = ((root.get("directory") or {}).get("item") or [])
+    except Exception as exc:
+        errors.append(f"VS Trust SEC Archives index: {exc}")
+        return rows
+
+    directories = []
+    for item in items:
+        name = clean(item.get("name") or "")
+        if not re.fullmatch(r"\d{18}", name):
+            continue
+        modified = clean(item.get("last-modified") or "")
+        directories.append((modified, name))
+    directories.sort(reverse=True)
+
+    for _modified, directory in directories[:max_dirs]:
+        accession = accession_with_hyphens(directory)
+        if not accession:
+            continue
+        index_url = f"https://www.sec.gov/Archives/edgar/data/{VS_TRUST_CIK}/{directory}/{accession}-index.html"
+        try:
+            soup = BeautifulSoup(fetch(index_url, timeout=20), "html.parser")
+            text = clean(soup.get_text(" ", strip=True))
+        except Exception:
+            continue
+
+        form_match = re.search(r"Filing Type\s+(S-1/A|S-1|EFFECT|424B3|424B4)\b", text, re.I)
+        if not form_match:
+            form_match = re.search(r"\b(S-1/A|S-1|EFFECT|424B3|424B4)\b", text, re.I)
+        if not form_match:
+            continue
+        form = form_match.group(1).upper()
+
+        date_match = re.search(r"Filing Date\s+(20\d{2}-\d{2}-\d{2})", text, re.I)
+        filing_date = date_match.group(1) if date_match else ""
+        if filing_date and filing_date < "2026-08-17":
+            continue
+
+        file_match = re.search(r"File Number\s+(\d{3}-\d+)", text, re.I)
+        file_no = file_match.group(1) if file_match else ""
+
+        primary_url = ""
+        primary_text = ""
+        for tr in soup.find_all("tr"):
+            row_text = clean(tr.get_text(" ", strip=True))
+            if form not in row_text.upper():
+                continue
+            a = tr.find("a", href=True)
+            if a:
+                primary_url = abs_url(index_url, a.get("href"))
+                break
+        if not primary_url:
+            # EFFECT pages often expose XML rather than an HTML prospectus.
+            for a in soup.find_all("a", href=True):
+                href = abs_url(index_url, a.get("href"))
+                name = clean(a.get_text(" ", strip=True))
+                if form == "EFFECT" and ("primary_doc" in href.lower() or href.lower().endswith(".xml")):
+                    primary_url = href
+                    break
+                if form != "EFFECT" and re.search(r"\.html?$", href, re.I) and "index" not in name.lower():
+                    primary_url = href
+                    break
+        if primary_url:
+            try:
+                primary_text = fetch(primary_url, timeout=20).decode("utf-8", "ignore")
+            except Exception:
+                primary_text = ""
+
+        rows.append({
+            "accessionNumber": accession,
+            "filingDate": filing_date,
+            "form": form,
+            "fileNumber": file_no,
+            "primaryDocument": primary_url,
+            "primaryDocDescription": "",
+            "_primaryText": primary_text,
+            "_indexUrl": index_url,
+        })
+    return rows
+
+
 def collect_vs_trust_3x_registration_milestones(errors):
     events = []
+    rows = []
     try:
         payload = json.loads(fetch(VS_TRUST_SUBMISSIONS_URL, timeout=25).decode("utf-8"))
+        rows = recent_submission_rows(payload)
     except Exception as exc:
         errors.append(f"VS Trust SEC submissions: {exc}")
-        return events
+        rows = collect_vs_trust_archive_filing_rows(errors)
 
-    rows = recent_submission_rows(payload)
+    if not rows:
+        return events
     target_file_numbers = set()
     relevant_docs = {}
 
@@ -673,13 +768,19 @@ def collect_vs_trust_3x_registration_milestones(errors):
         filing_date = row.get("filingDate", "")
         if filing_date and filing_date < "2026-08-17":
             continue
-        url = sec_archive_url(row.get("accessionNumber", ""), row.get("primaryDocument", ""))
+        preloaded = row.get("_primaryText", "")
+        url = clean(row.get("primaryDocument", "")) if row.get("_primaryText") is not None else ""
         if not url:
-            continue
-        try:
-            body = clean(BeautifulSoup(fetch(url, timeout=20), "html.parser").get_text(" ", strip=True))
-        except Exception:
-            continue
+            url = sec_archive_url(row.get("accessionNumber", ""), row.get("primaryDocument", ""))
+        if preloaded:
+            body = clean(BeautifulSoup(preloaded, "html.parser").get_text(" ", strip=True))
+        else:
+            if not url:
+                continue
+            try:
+                body = clean(BeautifulSoup(fetch(url, timeout=20), "html.parser").get_text(" ", strip=True))
+            except Exception:
+                continue
         signal = body.lower()
         if not (
             ("3x bitcoin etf" in signal and "3x ether etf" in signal)
@@ -717,19 +818,24 @@ def collect_vs_trust_3x_registration_milestones(errors):
         file_no = clean(row.get("fileNumber", ""))
         if target_file_numbers and file_no not in target_file_numbers:
             continue
-        url = sec_archive_url(row.get("accessionNumber", ""), row.get("primaryDocument", ""))
+        preloaded = row.get("_primaryText", "")
+        url = clean(row.get("primaryDocument", "")) if row.get("_primaryText") is not None else ""
+        if not url:
+            url = sec_archive_url(row.get("accessionNumber", ""), row.get("primaryDocument", ""))
         effective_date = filing_date
-        if url:
+        raw = preloaded
+        if not raw and url:
             try:
                 raw = fetch(url, timeout=20).decode("utf-8", "ignore")
-                m = re.search(r"(?:EFFECTIVE[- ]DATE|effectiveDate)[^0-9]*(20\d{2}[-/]\d{2}[-/]\d{2}|\d{8})", raw, re.I)
-                if m:
-                    value = m.group(1)
-                    if re.fullmatch(r"\d{8}", value):
-                        value = f"{value[:4]}-{value[4:6]}-{value[6:]}"
-                    effective_date = value.replace("/", "-")
             except Exception:
-                pass
+                raw = ""
+        if raw:
+            m = re.search(r"(?:EFFECTIVE[- ]DATE|effectiveDate)[^0-9]*(20\d{2}[-/]\d{2}[-/]\d{2}|\d{8})", raw, re.I)
+            if m:
+                value = m.group(1)
+                if re.fullmatch(r"\d{8}", value):
+                    value = f"{value[:4]}-{value[4:6]}-{value[6:]}"
+                effective_date = value.replace("/", "-")
         events.append(Event(
             "SEC EDGAR — VS Trust",
             "3배 BTC·ETH ETP 등록 효력 발생",
