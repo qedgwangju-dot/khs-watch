@@ -201,6 +201,9 @@ def readable_cluster_alert(cluster):
 
 # v5: 공식 UKMTO 직접탐지와 '같은 사건' 교차검증을 보강한다.
 watcher.STATE_VERSION = 5
+watcher.CLUSTER_WINDOW_HOURS = 12
+watcher.PRIMARY_SOURCES.add("AFP")
+watcher.STRONG_SOURCES.add("AFP")
 UKMTO_DIRECT_PAGES = (
     "https://www.ukmto.org/",
     "https://www.ukmto.org/recent-incidents",
@@ -439,8 +442,8 @@ def _extract_incident_details(text):
         details.add(f"distance:{nm_match.group(1)}:{direction}")
 
     for token, terms in {
-        "outbound": ("outbound", "outbound transit"),
-        "inbound": ("inbound", "inbound transit"),
+        "outbound": ("outbound", "outbound transit", "exiting the strait", "exiting strait"),
+        "inbound": ("inbound", "inbound transit", "entering the strait", "entering strait"),
         "fire": ("small fire", "caught fire", "fire onboard", "fire on board", "resulting in a fire"),
         "blackout": ("blackout", "loss of power", "power loss"),
         "crew_safe": ("crew were safe", "crew are safe", "all crew", "no casualties", "no casualty"),
@@ -468,6 +471,10 @@ def _enrich_news_item(item):
                 "associated press" in top or re.search(r"\bap\b", top)
             ):
                 row["origin_source"] = "Associated Press"
+            elif row.get("source") == "Gulf News" and (
+                "afp" in top or "agence france-presse" in top
+            ):
+                row["origin_source"] = "AFP"
     except Exception:
         pass
 
