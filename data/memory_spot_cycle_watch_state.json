@@ -417,8 +417,8 @@
       "first_seen_kst": "2026-10-03T16:27:13+09:00"
     }
   },
-  "updated_at_kst": "2026-10-03T16:36:18+09:00",
-  "last_scan_count": 29,
+  "updated_at_kst": "2026-10-03T16:47:32+09:00",
+  "last_scan_count": 28,
   "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
@@ -442,7 +442,7 @@
     "shortage_through_year": 2027,
     "normalization_year": 2028,
     "lta_caps_price_increases": true,
-    "source": "富途牛牛",
+    "source": "news.futunn.com",
     "source_url": "https://news.futunn.com/en/post/1000379735/memory-chip-market-remains-robust-bernstein-dram-and-nand-prices",
     "source_rank": 2,
     "as_of": "2026-09-29"
@@ -464,20 +464,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-03T16:27:17+09:00",
+  "last_successful_delivery_kst": "2026-10-03T16:47:37+09:00",
   "telegram_message_ids": [
-    221
+    222
   ],
-  "telegram_message_id": 221,
+  "telegram_message_id": 222,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      221
+      222
     ],
-    "confirmed_at_kst": "2026-10-03T16:27:17+09:00",
-    "alert_signature": "9cf25dbe8c1c55b15619c10482f4fc9fd5d9a7fd6696e513b8e103e9323e7037"
+    "confirmed_at_kst": "2026-10-03T16:47:37+09:00",
+    "alert_signature": "1dbe86267a80f017621401d3b01ea74d1eeee856e3719945ea9aac6f1336c6f7"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
@@ -538,7 +538,7 @@
     "as_of": "2026-09-30",
     "source_rank": 2
   },
-  "micron_supply_commitment_track_version": 3,
+  "micron_supply_commitment_track_version": 4,
   "micron_supply_commitment": {
     "commitment_year": 2027,
     "output_committed_min_pct": 75.0,
