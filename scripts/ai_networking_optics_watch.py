@@ -120,6 +120,7 @@ COMPANIES = {
             'CPO (COUPE OR "advanced packaging" OR "optical engine") (yield OR capacity OR ramp OR production OR bottleneck OR order OR qualification OR shipment)',
             'CPO (testing OR "electro-optical test" OR "electro optical test" OR burn-in OR "high-power module socket" OR "testing throughput") (production OR volume OR capacity OR bottleneck OR standard OR qualification)',
             '("silicon photonics" OR SiPh) (packaging OR "fiber attach" OR FAU OR coupling) (yield OR production OR capacity OR qualification OR reliability OR shipment)',
+            '("CPO" OR "co-packaged optics" OR "silicon photonics" OR SiPh OR COUPE) ("package substrate" OR "packaging substrate" OR "packaged substrate" OR "substrate-level multi-chip" OR interposer OR "glass substrate" OR "glass interposer" OR "ABF substrate" OR "organic substrate") (customer OR "design win" OR qualification OR production OR shipment OR order OR capacity OR yield OR warpage OR thermal OR "insertion loss" OR "low loss" OR CTE OR bottleneck)',
         ],
     },
     "Opticore": {
@@ -342,6 +343,9 @@ HIGH_SIGNAL_PATTERNS = [
     r"optical coupling", r"active alignment", r"alignment modules?", r"aligners?",
     r"COUPE", r"advanced packaging", r"optical engine yield", r"electro[- ]optical test",
     r"testing throughput", r"burn[- ]?in", r"high[- ]power module sockets?", r"fiber attach",
+    r"package substrate", r"packaging substrate", r"packaged substrate", r"substrate[- ]level multi[- ]chip",
+    r"glass substrate", r"glass interposer", r"ABF substrate", r"organic substrate", r"interposer",
+    r"warpage", r"coefficient of thermal expansion", r"\bCTE\b", r"low[- ]loss", r"low\s*D[fk]",
     r"motion platforms?", r"linear motors?", r"6[- ]axis", r"nanometer", r"50\s*nm",
     r"\bFAU\b", r"\bOSAT\b", r"order visibility", r"delivery visibility",
     r"production capacity", r"\bCAPA\b", r"new lines?", r"assembly lines?",
@@ -951,6 +955,28 @@ def category_for(title: str, company: str) -> str:
             return "광모듈 제조·패키징"
         return "광통신 제조"
     if company == "CPO Packaging & Test":
+        package_substrate = bool(re.search(
+            r"package substrate|packaging substrate|packaged substrate|substrate[- ]level multi[- ]chip|"
+            r"glass substrate|glass interposer|ABF substrate|organic substrate|interposer",
+            title,
+            re.I,
+        ))
+        if package_substrate and re.search(
+            r"customer|design win|qualification|qualified|production|mass production|volume production|"
+            r"shipment|order|capacity|ramp|commercial",
+            title,
+            re.I,
+        ):
+            return "CPO 광패키징 기판·양산"
+        if package_substrate and re.search(
+            r"yield|warpage|thermal|heat|insertion loss|low[- ]loss|low\s*D[fk]|"
+            r"coefficient of thermal expansion|\bCTE\b|reliability|bottleneck|constraint",
+            title,
+            re.I,
+        ):
+            return "CPO 광패키징 기판·수율·열검증"
+        if package_substrate:
+            return "CPO 광패키징 기판·인터포저"
         if re.search(r"COUPE|advanced packaging|2\.5D|3D packaging", title, re.I):
             return "CPO 첨단패키징·COUPE"
         if re.search(r"testing throughput|electro[- ]optical test|burn[- ]?in|high[- ]power module socket|test standard|testing standard", title, re.I):
@@ -1075,6 +1101,9 @@ def meaning_for(category: str) -> str:
         "1.6T 광모듈 제조·패키징 램프": "1.6T 광모듈의 고객 주문·출하·생산 램프가 파브리넷 같은 고정밀 광학 제조·패키징 업체의 데이터센터 매출로 실제 전환되는 신호입니다.",
         "광모듈 제조·패키징": "고속 광모듈 수요가 부품 단계에서 조립·정렬·검사·패키징 물량으로 내려오는지를 확인하는 제조 실행 신호입니다.",
         "광통신 제조": "광통신 수요가 실제 제조 물량·가동률·매출로 이어지는지를 확인합니다.",
+        "CPO 광패키징 기판·양산": "CPO·SiPh의 광엔진과 전기 칩이 동일 패키지 안에서 양산 단계로 내려오면 패키지 기판·인터포저·광결합 구조가 실제 생산물량과 매출로 연결되는 직접 신호입니다.",
+        "CPO 광패키징 기판·수율·열검증": "고집적 CPO 패키지의 휨·열팽창계수·삽입손실·저손실 특성·수율 검증은 광엔진과 ASIC을 같은 패키지에서 대량생산할 수 있는지를 좌우하는 핵심 병목입니다.",
+        "CPO 광패키징 기판·인터포저": "CPO는 광학과 실리콘을 하나의 패키지 기판·인터포저 계층에서 통합하므로, 고밀도 배선·저손실·열안정성이 확보될수록 광연결의 전력·거리 병목을 줄일 수 있습니다.",
         "CPO 첨단패키징·COUPE": "CPO는 광엔진과 SiPh 칩을 정밀 패키징해야 하며, COUPE 같은 첨단패키징 생산능력·수율이 CPO 양산 속도를 직접 제한할 수 있습니다.",
         "CPO 검사·신뢰성 병목": "CPO 양산에서는 단순 광정렬보다 검사 처리량·번인·고출력 모듈 소켓·신뢰성 표준이 원가와 출하 속도를 좌우하는 병목으로 이동하고 있습니다.",
         "CPO 광엔진 수율·광결합": "광엔진 수율과 FAU·광섬유 결합 손실은 양품률과 테스트 시간을 동시에 좌우하므로 고객 양산 물량의 핵심 선행지표입니다.",
@@ -1153,6 +1182,9 @@ def risk_for(category: str) -> str:
         "1.6T 광모듈 제조·패키징 램프": "고객 집중도와 모듈 세대 전환 속도가 높아 1.6T 주문이 특정 고객의 일정 변경에 민감할 수 있고, 수율이 낮으면 외형 성장보다 원가 부담이 먼저 나타날 수 있습니다.",
         "광모듈 제조·패키징": "광통신 수요 증가가 곧바로 파브리넷의 고마진 매출 증가를 뜻하지 않으며 제품 혼합·고객 집중·가동률을 함께 봐야 합니다.",
         "광통신 제조": "수요 기대만 있고 실제 고객 주문·생산·출하가 없으면 제조 매출로 연결되지 않습니다.",
+        "CPO 광패키징 기판·양산": "양산 발표 뒤에도 고객 인증·가동률·반복 주문이 따라오지 않으면 초기 출하가 일회성에 그칠 수 있고, 패키지 기판 수율 저하는 매출총이익률을 먼저 압박할 수 있습니다.",
+        "CPO 광패키징 기판·수율·열검증": "대형 패키지의 휨·열팽창 불일치·광결합 오차·삽입손실이 높으면 재작업과 검사시간이 늘고 양품률이 떨어져 고객 승인과 양산 일정이 지연될 수 있습니다.",
+        "CPO 광패키징 기판·인터포저": "유리기판·유리인터포저는 TGV 성숙도와 대량생산 수율이 아직 핵심 변수이고, 기존 ABF·실리콘 인터포저가 예상보다 오래 유지되면 신소재 기판 전환 시점이 늦어질 수 있습니다.",
         "CPO 첨단패키징·COUPE": "CPO가 AI 칩과 동일한 2.5D·3D 패키징 자원을 놓고 경쟁하면 생산능력 확보가 늦어지고, 패키징 수율 저하는 광엔진보다 더 큰 출하 병목이 될 수 있습니다.",
         "CPO 검사·신뢰성 병목": "검사 표준이 통일되지 않고 검사시간이 길면 장비 증설만으로 처리량을 늘리기 어렵고 고객 인증·매출 인식이 지연될 수 있습니다.",
         "CPO 광엔진 수율·광결합": "광결합 오차·열·패키징 불량이 누적되면 광엔진 양품률이 떨어지고 검사·재작업 비용이 급증할 수 있습니다.",
@@ -1226,6 +1258,20 @@ def _self_test_korean_optics_alerts() -> None:
     assert len(story_tokens("옵티코어 AI 데이터센터 광트랜시버 공급계약")) >= 3
     assert source_priority("전자신문") >= 65
     assert source_priority("OE Solutions") >= 65
+
+    cpo_pkg_prod = (
+        "Broadcom CPO volume production uses advanced substrate-level multi-chip packaging "
+        "for silicon photonics optical engines"
+    )
+    assert signal_score(cpo_pkg_prod, "Broadcom") >= 7
+    assert category_for(cpo_pkg_prod, "CPO Packaging & Test") == "CPO 광패키징 기판·양산"
+
+    cpo_pkg_yield = (
+        "CPO glass interposer warpage and thermal CTE mismatch constrain silicon photonics "
+        "package substrate yield"
+    )
+    assert signal_score(cpo_pkg_yield, "TrendForce") >= 7
+    assert category_for(cpo_pkg_yield, "CPO Packaging & Test") == "CPO 광패키징 기판·수율·열검증"
 
 
 def load_state() -> dict:
@@ -1498,7 +1544,7 @@ def main() -> None:
         "optical_policy_version": 2,
         "korea_optics_version": 1,
         "optical_bottleneck_version": 1,
-        "optical_packaging_version": 1,
+        "optical_packaging_version": 2,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "seen_keys": updated_seen,
         "seen_story_keys": updated_story_keys,
@@ -1545,6 +1591,17 @@ def main() -> None:
             new_items = [
                 item for item in new_items
                 if item.get("company") not in {"Fabrinet", "CPO Packaging & Test"}
+            ]
+        elif optical_packaging_version < 2:
+            # Establish the new package-substrate/interposer branch silently.
+            # Future customer, capacity, yield, shipment, thermal/warpage or qualification changes alert.
+            new_items = [
+                item for item in new_items
+                if item.get("category") not in {
+                    "CPO 광패키징 기판·양산",
+                    "CPO 광패키징 기판·수율·열검증",
+                    "CPO 광패키징 기판·인터포저",
+                }
             ]
         photonic_compute_version = int(state.get("photonic_compute_version") or 0)
         if photonic_compute_version < 5:
@@ -1603,7 +1660,7 @@ def main() -> None:
             ])
         lines.extend([
             "<b>감시 기준</b>",
-            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / AAOI 800G·1.6T·3.2T 생산능력·고객·출하 / 볼란티스 Series A 자금조달·공식 금액 정정·A-1 고객샘플·2027 인도·실리콘·독립벤치마크·광메모리 대역폭·용량·토큰속도 / 라이트매터·아야르 랩스·엑스케이프 광인터커넥트 자금조달·고용량 생산·고객검증·생산·배치 / 마벨 Celestial AI Photonic Fabric 고객·출하·FY28 매출 램프 / ECOC·OFC는 전시·데모만으로 알림하지 않고 고객·수주·출하·생산능력·가이던스 변화만 알림 / 파브리넷 800G·1.6T 광모듈 제조·패키징 고객·출하·가동률 / CPO COUPE·첨단패키징 생산능력·광엔진 수율·검사 처리량·번인·고출력 소켓 / 200G/lane 수동구리 약 1m 도달거리·ACC/CPC 연장·400G/lane 구리 한계 / Coherent·Lumentum ELS/ELSFP 출력·온도·수명·고객·양산 / ELSFP 블라인드메이트 커넥터 삽입손실·OIF 규격·고객 채택 / TFLN 200G·400G/lane 고객검증·파운드리·양산 / POET ELS·Optical Interposer 고객검증·양산 / 성호전자 자회사 ADST CPO 정렬·검사 신규 PO·검수·양산 / VCSEL 광메모리 공급망·패키징·수율 / FCC 중국산 광트랜시버 최종규칙·3.2T 적용세대·미국산 콘텐츠 65%·75%·예외·시행일 / 상원·의회 국가안보시스템 광트랜시버 법안 범위 / InP 기판 공급부족·수출허가·증설·가격 / 옵티코어 400G·800G 신규 PO·계약금액·검수·납기변경 / 오이솔루션 1.6T ELSFP·EML 샘플·고객검증·양산 PO / 엔비디아 CPO 실제 배치 / 코히런트 포톤링크 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027년 2분기 가시성·생산능력 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030년 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·수주잔고 / 코닝 광통신·유리기판 신규 AI 매출 경로",
+            "1.6T 대량출하·고객 채택 / 3.2T 고객 인증·양산 / AAOI 800G·1.6T·3.2T 생산능력·고객·출하 / 볼란티스 Series A 자금조달·공식 금액 정정·A-1 고객샘플·2027 인도·실리콘·독립벤치마크·광메모리 대역폭·용량·토큰속도 / 라이트매터·아야르 랩스·엑스케이프 광인터커넥트 자금조달·고용량 생산·고객검증·생산·배치 / 마벨 Celestial AI Photonic Fabric 고객·출하·FY28 매출 램프 / ECOC·OFC는 전시·데모만으로 알림하지 않고 고객·수주·출하·생산능력·가이던스 변화만 알림 / 파브리넷 800G·1.6T 광모듈 제조·패키징 고객·출하·가동률 / CPO 패키지 기판·인터포저의 양산·고객인증·수율·휨·열팽창계수·삽입손실·저손실 특성 / CPO COUPE·첨단패키징 생산능력·광엔진 수율·검사 처리량·번인·고출력 소켓 / 200G/lane 수동구리 약 1m 도달거리·ACC/CPC 연장·400G/lane 구리 한계 / Coherent·Lumentum ELS/ELSFP 출력·온도·수명·고객·양산 / ELSFP 블라인드메이트 커넥터 삽입손실·OIF 규격·고객 채택 / TFLN 200G·400G/lane 고객검증·파운드리·양산 / POET ELS·Optical Interposer 고객검증·양산 / 성호전자 자회사 ADST CPO 정렬·검사 신규 PO·검수·양산 / VCSEL 광메모리 공급망·패키징·수율 / FCC 중국산 광트랜시버 최종규칙·3.2T 적용세대·미국산 콘텐츠 65%·75%·예외·시행일 / 상원·의회 국가안보시스템 광트랜시버 법안 범위 / InP 기판 공급부족·수출허가·증설·가격 / 옵티코어 400G·800G 신규 PO·계약금액·검수·납기변경 / 오이솔루션 1.6T ELSFP·EML 샘플·고객검증·양산 PO / 엔비디아 CPO 실제 배치 / 코히런트 포톤링크 고객·장기계약·양산·콘텐츠 가치 / CPO 제조장비 수주·2027년 2분기 가시성·생산능력 증설·가동률·OSAT 검증·광결합 정렬장비 출하 / CPO·NPO 수직통합과 외부 부품 대체 / 특수광섬유·InP 증설 / 칩 간 광연결 2029~2030년 / 삼성전자 SiPh 파운드리 고객 실명·양산 물량 / 광부품·DSP·레이저·리타이머 병목·가격 / 하이퍼스케일러 네트워크 수주·수주잔고 / 코닝 광통신·유리기판 신규 AI 매출 경로",
         ])
         ALERT_PATH.write_text("\n".join(lines).strip() + "\n", encoding="utf-8")
 
