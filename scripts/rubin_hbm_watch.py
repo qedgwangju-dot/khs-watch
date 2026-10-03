@@ -1701,7 +1701,7 @@ def extract_nvhbm_architecture(event: dict) -> dict | None:
             obs["layout_usable_silicon_gain_pct_max"] = v
 
         v = pct((
-            r"(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^%.]{0,100}?(?:increase|증가)[^%.]{0,100}?(?:main[- ]die\s+silicon|메인\s*다이\s*실리콘)",
+            r"(?:up to|max(?:imum)?|최대)\s*(?:a\s*)?([0-9]+(?:\.[0-9]+)?)\s*%[^%.]{0,100}?(?:increase|증가)[^%.]{0,100}?(?:main[- ]die\s+silicon|메인\s*다이\s*실리콘)",
             r"(?:main[- ]die\s+silicon|메인\s*다이\s*실리콘)[^%]{0,120}?(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%",
         ))
         if v is not None:
