@@ -1,9 +1,9 @@
 {
   "initialized": true,
-  "version": 2,
+  "version": 3,
   "dataset_updated": "Oct 2, 2026",
   "source_hash": "7a7230948dddd31ebea69c580226182cc9a1d95efe1dc4041a7524a42de4c98e",
-  "snapshot_hash": "d2d10afadcbaef957bbf0d1e6727fc2123d410cf788339fa9e7ba7ba75365f92",
+  "snapshot_hash": "cbeb78c5ffa48db324d0c4df080e0b6937e1cce40bc40580d3dae7221e52d58a",
   "projects": [
     {
       "name": "Microsoft Fairwater Wisconsin",
@@ -22,21 +22,7 @@
       "energy_site": "위스콘신 계통전력 + 250MW Portage Solar PPA로 사용전력 상쇄 · 백업은 재생 바이오연료 설계",
       "energy_future": "Microsoft 기업 장기전원: Crane 원전 835MW PPA + Helion 핵융합 50MW+ PPA(부지 직접 아님)",
       "energy_quality": "부지·기업 공식, 직접공급과 장기계약 분리",
-      "company_issues": [
-        {
-          "fingerprint": "dataone-vineland-generator-enforcement-20260922",
-          "company": "Microsoft",
-          "label": "규제·환경 위반",
-          "relationship": "파트너·고객 연계",
-          "summary": "DataOne Vineland(NJ), 62대×1,982kW 천연가스 발전기 무허가 설치·운영으로 NJDEP 107만달러 벌금·45일 내 허가 취득 또는 가동중단 명령. Microsoft는 직접 벌금 대상이 아니라 Nebius의 Vineland 전용 GPU 용량 고객.",
-          "published": "2026-09-22T00:00:00+00:00",
-          "url": "https://dep.nj.gov/newsrel/26_0044/",
-          "sources": [
-            "New Jersey Department of Environmental Protection",
-            "Nebius"
-          ]
-        }
-      ]
+      "company_issues": []
     },
     {
       "name": "Anthropic-Amazon New Carlisle",
@@ -302,24 +288,13 @@
       "energy_site": "고가용성 유틸리티 계통전력 · GPU 전력은 현장 발전·UPS 없이 계통 자체를 복원력 계층으로 사용",
       "energy_future": "Microsoft 기업 장기전원: Crane 원전 835MW PPA + Helion 핵융합 50MW+ PPA(부지 직접 아님)",
       "energy_quality": "Microsoft 공식 부지확정+기업전략",
-      "company_issues": [
-        {
-          "fingerprint": "dataone-vineland-generator-enforcement-20260922",
-          "company": "Microsoft",
-          "label": "규제·환경 위반",
-          "relationship": "파트너·고객 연계",
-          "summary": "DataOne Vineland(NJ), 62대×1,982kW 천연가스 발전기 무허가 설치·운영으로 NJDEP 107만달러 벌금·45일 내 허가 취득 또는 가동중단 명령. Microsoft는 직접 벌금 대상이 아니라 Nebius의 Vineland 전용 GPU 용량 고객.",
-          "published": "2026-09-22T00:00:00+00:00",
-          "url": "https://dep.nj.gov/newsrel/26_0044/",
-          "sources": [
-            "New Jersey Department of Environmental Protection",
-            "Nebius"
-          ]
-        }
-      ]
+      "company_issues": []
     }
   ],
-  "last_changes": [],
+  "last_changes": [
+    "MS Fairwater (WI) 기업별 규제·법적 이슈 변경",
+    "MS Fairwater Atlanta (GA) 기업별 규제·법적 이슈 변경"
+  ],
   "source_errors": [],
-  "updated_at_utc": "2026-10-03T13:30:39+00:00"
+  "updated_at_utc": "2026-10-03T16:13:44+00:00"
 }

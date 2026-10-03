@@ -47,6 +47,27 @@
   "last_fx_krw_per_usd": 1347.389067,
   "fx_source": "ER-API",
   "last_event_count": 1,
-  "last_errors": [],
-  "updated_at_utc": "2026-10-03T13:30:38+00:00"
+  "last_errors": [
+    "Amazon/AWS: HTTPError",
+    "Amazon/AWS: HTTPError",
+    "Amazon/AWS: HTTPError",
+    "Microsoft: HTTPError",
+    "Microsoft: HTTPError",
+    "Microsoft: HTTPError",
+    "Microsoft: HTTPError",
+    "Alphabet/Google: HTTPError",
+    "Alphabet/Google: HTTPError",
+    "Alphabet/Google: HTTPError",
+    "Meta: HTTPError",
+    "Meta: HTTPError",
+    "Meta: HTTPError",
+    "Oracle: HTTPError",
+    "Oracle: HTTPError",
+    "Oracle: HTTPError",
+    "Alibaba: HTTPError",
+    "Alibaba: HTTPError",
+    "ByteDance: HTTPError",
+    "ByteDance: HTTPError"
+  ],
+  "updated_at_utc": "2026-10-03T16:13:43+00:00"
 }
