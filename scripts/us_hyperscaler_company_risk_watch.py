@@ -165,24 +165,23 @@ def krw(usd: float, fx: float) -> str:
         return f"약 {jo:,}조원"
     return f"약 {rem:,}억원"
 
-def google_news(query: str) -> list[dict]:
-    url = "https://news.google.com/rss/search?" + urllib.parse.urlencode({
-        "q": query + f" when:{LOOKBACK_DAYS}d",
-        "hl": "en-US",
-        "gl": "US",
-        "ceid": "US:en",
-    })
-    r = requests.get(url, headers=HEADERS, timeout=30)
-    r.raise_for_status()
-    root = ET.fromstring(r.content)
+def _rss_rows(content: bytes, fallback_source: str) -> list[dict]:
+    root = ET.fromstring(content)
     cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=MAX_ALERT_AGE_DAYS)
     rows = []
     for item in root.findall(".//item")[:50]:
         title = norm(item.findtext("title"))
         link = norm(item.findtext("link"))
         pub = norm(item.findtext("pubDate"))
-        source_node = item.find("source")
-        source = norm(source_node.text if source_node is not None else "") or "Google News"
+        source = ""
+        for child in list(item):
+            if str(child.tag).lower().endswith("source"):
+                source = norm(child.text)
+                if source:
+                    break
+        if not source and " - " in title:
+            source = norm(title.rsplit(" - ", 1)[-1])
+        source = source or fallback_source
         d = parse_date(pub)
         if not title or not link or d is None or d < cutoff:
             continue
@@ -191,6 +190,38 @@ def google_news(query: str) -> list[dict]:
             continue
         rows.append({"title": title, "link": link, "source": source, "published": d.isoformat()})
     return rows
+
+
+def google_news(query: str) -> list[dict]:
+    google_url = "https://news.google.com/rss/search?" + urllib.parse.urlencode({
+        "q": query + f" when:{LOOKBACK_DAYS}d",
+        "hl": "en-US",
+        "gl": "US",
+        "ceid": "US:en",
+    })
+    try:
+        r = requests.get(google_url, headers=HEADERS, timeout=12)
+        r.raise_for_status()
+        return _rss_rows(r.content, "Google News")
+    except Exception as google_exc:
+        # GitHub-hosted runners can be rate-limited by Google News RSS.
+        # Use an independent RSS fallback rather than silently losing the company scan.
+        bing_url = "https://www.bing.com/news/search?" + urllib.parse.urlencode({
+            "q": query,
+            "format": "RSS",
+        })
+        try:
+            r = requests.get(
+                bing_url,
+                headers={**HEADERS, "User-Agent": "Mozilla/5.0 (compatible; khs-watch/1.0)"},
+                timeout=12,
+            )
+            r.raise_for_status()
+            return _rss_rows(r.content, "Bing News")
+        except Exception as bing_exc:
+            raise RuntimeError(
+                f"news RSS failed: Google={type(google_exc).__name__}, Bing={type(bing_exc).__name__}"
+            ) from bing_exc
 
 def tokens(title: str) -> set[str]:
     words = re.findall(r"[a-z0-9]+", title.lower())
