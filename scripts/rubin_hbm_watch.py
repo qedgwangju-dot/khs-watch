@@ -108,6 +108,53 @@ SAMSUNG_NEXTGEN_HBM_BASELINE = {
     "as_of": "2026-10-02",
     "note": "HBM5 맞춤형 본격화는 업계 전망 단계. zHBM은 삼성 공식 콘셉트·개발 단계이며 고객 샘플·검증·계약·양산으로 승격하지 않음.",
 }
+JPM_HBM_STRUCTURAL_TRACK_VERSION = 1
+JPM_HBM_STRUCTURAL_BASELINE = {
+    "demand_cagr_2026_2028_pct": 63.0,
+    "demand_cagr_period": "2026-2028",
+    "cumulative_bit_demand_2026_2028_billion_gb": 163.0,
+    "asp_2027_yoy_pct": 54.0,
+    "asp_2028_yoy_pct": 25.0,
+    "asp_2028_usd_per_gb": 3.8,
+    "supply_demand_gap_initial_pct": -20.0,
+    "supply_demand_gap_later_pct": -16.0,
+    "new_dram_capacity_to_hbm_pct_2025_2028": 58.0,
+    "hbm_share_dram_capacity_start_pct": 19.0,
+    "hbm_share_dram_capacity_2028_pct": 31.0,
+    "sixteen_hi_earliest_year": 2029,
+    "asic_hbm_demand_share_2027_pct": 48.0,
+    "nvidia_hbm_demand_share_2027_pct": 43.0,
+    "nvidia_hbm_demand_share_2026_pct": 58.0,
+    "source": "J.P. Morgan 리서치 재인용 2곳 교차",
+    "source_url": "https://www.itiger.com/news/1184910027",
+    "secondary_source_url": "https://gmt8press.com/content/detail/434514",
+    "as_of": "2026-09-23",
+    "note": "63%는 2026~2028 HBM 비트수요 CAGR로 저장. 2027 단년 비트성장률로 재해석하거나 2027 ASP +54%와 곱해 2.5배 매출을 J.P. Morgan 확정치로 승격하지 않음.",
+}
+MICRON_SCA_TRACK_VERSION = 1
+MICRON_SCA_BASELINE = {
+    "sca_count": 26,
+    "rpo_usd_bn": 150.0,
+    "rpo_definition": "remaining_performance_obligations_sca_defined_pricing",
+    "rpo_basis": "committed_volumes_minimum_pricing",
+    "take_or_pay": True,
+    "financial_commitments_usd_bn": 32.0,
+    "financial_commitments_majority_cash_deposits": True,
+    "rpo_and_financial_commitments_are_separate": True,
+    "sca_revenue_coverage_through_2030_min_pct": 35.0,
+    "defined_pricing_framework_share_pct": 75.0,
+    "output_committed_2027_min_pct": 75.0,
+    "output_committed_scope": "total_output_sca_and_non_sca",
+    "hbm_2027_bit_supply_stage": "vast_majority_agreements_completed",
+    "customer_discussion_focus_year": 2028,
+    "sca_max_year": 2031,
+    "source": "Micron FY2026 Q4 prepared remarks/call + Reuters",
+    "source_url": "https://stockanalysis.com/stocks/mu/transcripts/699706-q4-2026/",
+    "secondary_source_url": "https://www.reuters.com/business/micron-forecasts-quarterly-revenue-above-estimates-2026-09-30/",
+    "official_source_url": "https://micron.gcs-web.com/node/50991",
+    "as_of": "2026-09-30",
+    "note": "RPO 1500억달러는 구매주문 총액이 아니라 가격 프레임워크가 확정된 SCA의 미인식 계약가치(최소가격 기준). 320억달러는 별도 고객 금융약정이며 대부분 현금예치금이므로 RPO와 합산 금지. 2027년 75%+는 Micron 전체 output 커밋으로, HBM 전용 수치와 분리.",
+}
 CITI_HBM_TRACK_VERSION = 1
 CITI_HBM_BASELINE = {
     "demand_2027_yoy_pct": 62.0,
@@ -188,6 +235,14 @@ QUERIES = [
         '2027 HBM (contract OR price OR pricing OR LTA OR supply OR allocation OR volume OR negotiation OR agreement) (Samsung OR "SK hynix" OR Micron OR NVIDIA)',
     ),
     (
+        "jpm_hbm_structural",
+        '("J.P. Morgan" OR JPMorgan OR JP모건) HBM (63% OR 54% OR 31% OR 163 billion OR 1630억 OR shortage OR deficit OR capacity OR wafer OR ASP OR ASIC)',
+    ),
+    (
+        "micron_sca_visibility",
+        'Micron (SCA OR "strategic customer agreement" OR RPO OR "remaining performance obligations" OR "75% of output" OR "output committed" OR "32 billion" OR "150 billion" OR take-or-pay)',
+    ),
+    (
         "citi_hbm_outlook",
         'Citi HBM 2027 2028 (demand OR supply OR deficit OR shortage OR wafer OR WPM OR 12-Hi OR 8-Hi OR 752 OR 593 OR 1270 OR 809)',
     ),
@@ -216,6 +271,8 @@ CATEGORY_KO = {
     "samsung_hbm4_price": "삼성전자 2027 HBM4 계약가격·협상력",
     "samsung_nextgen_hbm": "별도 알림 · 삼성 HBM5·zHBM 맞춤형 로드맵",
     "hbm_2027_contract": "2027 HBM 계약가격·물량",
+    "jpm_hbm_structural": "별도 알림 · J.P. Morgan HBM 구조적 수급·가격",
+    "micron_sca_visibility": "별도 알림 · Micron 장기계약·RPO·예치금",
     "citi_hbm_outlook": "Citi HBM 2027~2028 수요·공급·가격",
     "hbm_wafer_economics": "HBM↔DDR5 웨이퍼 경제성",
     "memory_migration": "별도 알림 · HBM 용량 축소→KV 캐시 외부 메모리 전환",
@@ -327,6 +384,18 @@ def relevant(category: str, text: str) -> bool:
         )
     if category == "hbm_2027_contract":
         return "2027" in low and "hbm" in low and any(k in low for k in ("contract", "price", "pricing", "lta", "supply", "allocation", "volume", "agreement", "negotiation", "계약", "가격", "공급", "물량", "협상", "타결"))
+    if category == "jpm_hbm_structural":
+        return (
+            ("j.p. morgan" in low or "jp morgan" in low or "jpmorgan" in low or "jp모건" in low)
+            and "hbm" in low
+            and any(k in low for k in ("2027", "2028"))
+            and any(k in low for k in ("63%", "54%", "31%", "163", "shortage", "deficit", "capacity", "wafer", "asp", "asic", "부족", "생산능력", "웨이퍼", "가격"))
+        )
+    if category == "micron_sca_visibility":
+        return (
+            ("micron" in low or "마이크론" in low)
+            and any(k in low for k in ("sca", "strategic customer agreement", "rpo", "remaining performance obligations", "take-or-pay", "75% of output", "output committed", "cash deposit", "financial commitments", "장기계약", "예치금"))
+        )
     if category == "citi_hbm_outlook":
         return (
             ("citi" in low or "citigroup" in low or "씨티" in low or "花旗" in text)
