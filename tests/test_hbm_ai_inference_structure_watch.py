@@ -93,6 +93,41 @@ class InferenceStructureWatchTests(unittest.TestCase):
         self.assertEqual(parsed["metrics"].get("contracted_power_guidance_gw"), 4.0)
         self.assertNotIn("contracted_power_gw", parsed["metrics"])
 
+
+    def test_ytl_actual_contracted_power_and_segment_revenue_parse(self):
+        text = (
+            "The data center segment achieved revenue MYR 225 million for the current quarter. "
+            "With 298 MW in data center capacity already contracted, the group continues its rollout."
+        )
+        parsed = m.parse_ytl(text, "https://www.ytlpowerinternational.com/press-releases/example")
+        self.assertAlmostEqual(parsed["metrics"]["contracted_power_gw"], 0.298)
+        self.assertEqual(parsed["metrics"]["data_center_segment_revenue_myr_m"], 225.0)
+
+    def test_ytl_revenue_change_is_material_at_ten_percent(self):
+        previous = {"neocloud": {"YTL": {"data_center_segment_revenue_myr_m": 225.0}}}
+        update = {
+            "company": "YTL",
+            "metrics": {"data_center_segment_revenue_myr_m": 250.0},
+            "negative": False,
+        }
+        events = m.compare_neocloud(previous, update)
+        self.assertTrue(any(e["label"] == "데이터센터 부문 매출" for e in events))
+
+    def test_ytl_alert_does_not_show_unrelated_coreweave_baseline(self):
+        latest = {
+            "neocloud": {
+                "CoreWeave": {"active_power_gw": 1.5, "contracted_power_gw": 4.2, "annualized_revenue_per_mw_usd_m": 40.0},
+                "YTL": {"contracted_power_gw": 0.298, "data_center_segment_revenue_myr_m": 250.0},
+            }
+        }
+        alert = m.build_alert(
+            [{"kind": "neocloud_metric", "company": "YTL", "label": "데이터센터 부문 매출", "before": 225.0, "after": 250.0, "unit": "MYRm"}],
+            latest,
+            ["https://www.ytlpowerinternational.com/press-releases/example"],
+        )
+        self.assertIn("YTL:", alert)
+        self.assertNotIn("CoreWeave:", alert)
+
     def test_contractual_termination_right_is_not_downside_event(self):
         text = "Microsoft has the right to terminate a GPU Service if delivery dates are missed."
         parsed = m.parse_nebius(text, "https://nebius.com/newsroom/example")

@@ -43,6 +43,12 @@ BASELINE = {
             "contracted_power_guidance_gw": 4.0,
             "microsoft_servicing": True,
         },
+        "YTL": {
+            "contracted_power_gw": 0.298,
+            "green_dc_park_planned_gw": 1.0,
+            "sedenak_planned_gw": 1.2,
+            "data_center_segment_revenue_myr_m": 225.0,
+        },
     },
     "upstream_snapshot": {},
     "seen_urls": [
@@ -54,6 +60,8 @@ BASELINE = {
         "https://investors.coreweave.com/news/news-details/2026/CoreWeave-Continues-to-Contract-New-Compute-Capacity-at-Higher-Prices/default.aspx",
         "https://nebius.com/newsroom/nebius-reports-first-quarter-2026-financial-results",
         "https://nebius.com/newsroom/nebius-raises-775-million-in-first-secured-debt-financing-to-accelerate-global-buildout",
+        "https://www.ytlpowerinternational.com/press-releases/ytl-powers-3rd-quarter-revenue-grows-4-to-rm5-1-billion-with-profit-after-tax-of-rm342-million/",
+        "https://www.ytlpowerinternational.com/press-releases/ytl-power-and-jland-group-collaborate-on-new-gigawatt-scale-data-centre-campus-at-sedenak-tech-park/",
     ],
     "last_checked_at_kst": "2026-09-28T12:10:00+09:00",
     "candidate_count": 0,
@@ -64,12 +72,14 @@ SEARCHES = [
     'site:amd.com OR site:intel.com OR site:arm.com OR site:nvidia.com OR site:dell.com OR site:hpe.com "agentic AI" CPU GPU ratio',
     'site:investors.coreweave.com CoreWeave active power contracted power megawatt annualized revenue 2026',
     'site:nebius.com OR site:assets.nebius.com Nebius active power connected power contracted power servicing capacity tranche 2026',
+    'site:ytlpowerinternational.com YTL data center contracted MW operational capacity revenue data halls 2026',
     '(site:att.com OR site:verizon.com OR site:t-mobile.com OR site:microsoft.com OR site:aws.amazon.com OR site:cloud.google.com OR site:oracle.com) edge regional inference AI contract MW deployed',
 ]
 
 OFFICIAL_DOMAINS = (
     "amd.com", "intel.com", "arm.com", "nvidia.com", "dell.com", "hpe.com",
     "investors.coreweave.com", "coreweave.com", "nebius.com", "assets.nebius.com",
+    "ytlpowerinternational.com", "ytl.com",
     "att.com", "verizon.com", "t-mobile.com", "microsoft.com", "aws.amazon.com",
     "cloud.google.com", "googlecloudpresscorner.com", "oracle.com",
 )
@@ -159,6 +169,8 @@ def company_for(url: str, text: str = "") -> str:
         return "CoreWeave"
     if "nebius.com" in host:
         return "Nebius"
+    if "ytlpowerinternational.com" in host or host.endswith("ytl.com"):
+        return "YTL"
     if "intel.com" in host:
         return "Intel"
     if "dell.com" in host or "dell technologies" in low:
@@ -247,6 +259,31 @@ def parse_nebius(text: str, url: str) -> dict:
         metrics["microsoft_servicing"] = True
     return {"kind": "neocloud", "company": "Nebius", "metrics": metrics, "negative": negative} if metrics or negative else {}
 
+def parse_ytl(text: str, url: str) -> dict:
+    if company_for(url, text) != "YTL":
+        return {}
+    metrics = {}
+    sentences = re.split(r"(?<=[.!?])\s+", text)
+    for sentence in sentences:
+        low = sentence.lower()
+        if "data center" not in low and "data centre" not in low:
+            continue
+        if "contracted" in low:
+            m = re.search(r"(\d+(?:\.\d+)?)\s*(GW|gigawatts?|MW|megawatts?)\b", sentence, re.I)
+            if m:
+                metrics["contracted_power_gw"] = _to_gw(float(m.group(1)), m.group(2))
+        if any(k in low for k in ("operational capacity", "active power", "in operation", "operational")):
+            m = re.search(r"(\d+(?:\.\d+)?)\s*(GW|gigawatts?|MW|megawatts?)\b", sentence, re.I)
+            if m:
+                metrics["active_power_gw"] = _to_gw(float(m.group(1)), m.group(2))
+        if "segment" in low and "revenue" in low:
+            m = re.search(r"(?:RM|MYR)\s*(\d+(?:\.\d+)?)\s*(million|billion)\b", sentence, re.I)
+            if m:
+                value = float(m.group(1)) * (1000.0 if m.group(2).lower() == "billion" else 1.0)
+                metrics["data_center_segment_revenue_myr_m"] = value
+    negative = bool(re.search(r"\b(cancelled|canceled|delay(?:ed)?|postponed|power shortfall|occupancy decline)\b", text, re.I))
+    return {"kind": "neocloud", "company": "YTL", "metrics": metrics, "negative": negative} if metrics or negative else {}
+
 def parse_edge_actual(text: str, url: str, title: str) -> dict:
     if not is_official(url):
         return {}
@@ -321,6 +358,11 @@ def compare_neocloud(previous: dict, update: dict) -> list[dict]:
         after = float(update["metrics"]["annualized_revenue_per_mw_usd_m"])
         if before is None or (before and abs(after / float(before) - 1.0) >= 0.10):
             events.append({"kind": "neocloud_metric", "company": company, "label": "MW당 연환산 매출", "before": before, "after": after, "unit": "USDm/MW"})
+    if "data_center_segment_revenue_myr_m" in update["metrics"]:
+        before = old.get("data_center_segment_revenue_myr_m")
+        after = float(update["metrics"]["data_center_segment_revenue_myr_m"])
+        if before is None or (before and abs(after / float(before) - 1.0) >= 0.10):
+            events.append({"kind": "neocloud_metric", "company": company, "label": "데이터센터 부문 매출", "before": before, "after": after, "unit": "MYRm"})
     if update["metrics"].get("microsoft_servicing") and not old.get("microsoft_servicing"):
         events.append({"kind": "servicing", "company": company, "label": "Microsoft 계약이 실제 서비스 단계로 전환"})
     if update.get("negative"):
@@ -427,6 +469,7 @@ def discover(previous: dict) -> list[dict]:
             parsed = (
                 parse_coreweave(text, url)
                 or parse_nebius(text, url)
+                or parse_ytl(text, url)
                 or parse_cpu_ratio(text, url)
                 or parse_edge_actual(text, url, item.get("title") or "")
             )
@@ -443,6 +486,8 @@ def event_line(event: dict) -> str:
         before = "신규" if event.get("before") is None else f"{float(event['before']):.2f}"
         if event.get("unit") == "USDm/MW":
             return f"• <b>{html.escape(event['company'])} {html.escape(event['label'])}:</b> {before} → {float(event['after']):.1f}백만달러"
+        if event.get("unit") == "MYRm":
+            return f"• <b>{html.escape(event['company'])} {html.escape(event['label'])}:</b> {before} → MYR {float(event['after']):.1f} million"
         return f"• <b>{html.escape(event['company'])} {html.escape(event['label'])}:</b> {before} → {float(event['after']):.2f}GW"
     if kind in ("servicing", "negative"):
         return f"• <b>{html.escape(event['company'])}:</b> {html.escape(event['label'])}"
@@ -455,9 +500,13 @@ def event_line(event: dict) -> str:
     return "• 구조 변화 감지"
 
 def build_alert(events: list[dict], latest: dict, sources: list[str]) -> str:
-    cw = (latest.get("neocloud") or {}).get("CoreWeave") or {}
+    cloud = latest.get("neocloud") or {}
+    cw = cloud.get("CoreWeave") or {}
+    nb = cloud.get("Nebius") or {}
+    ytl = cloud.get("YTL") or {}
     kinds = {str(e.get("kind") or "") for e in events}
     labels = " ".join(str(e.get("label") or "") for e in events)
+    event_companies = {str(e.get("company") or "") for e in events if e.get("company")}
 
     lines = [
         "<b>🚨 AI 추론 수익화 변화</b>",
@@ -475,11 +524,23 @@ def build_alert(events: list[dict], latest: dict, sources: list[str]) -> str:
     if "upstream" in kinds and any(k in labels for k in ("FCBGA", "ABF", "삼성전기", "IBIDEN")):
         current.append("• 삼성전기 2Q26 패키지솔루션 7,716억원")
     if "neocloud_metric" in kinds or "servicing" in kinds or "negative" in kinds:
-        current.append(
-            f"• CoreWeave: 활성 {float(cw.get('active_power_gw') or 0):.2f}GW / "
-            f"계약 {float(cw.get('contracted_power_gw') or 0):.2f}GW / "
-            f"MW당 연환산 매출 {float(cw.get('annualized_revenue_per_mw_usd_m') or 0):.1f}백만달러"
-        )
+        if "CoreWeave" in event_companies:
+            current.append(
+                f"• CoreWeave: 활성 {float(cw.get('active_power_gw') or 0):.2f}GW / "
+                f"계약 {float(cw.get('contracted_power_gw') or 0):.2f}GW / "
+                f"MW당 연환산 매출 {float(cw.get('annualized_revenue_per_mw_usd_m') or 0):.1f}백만달러"
+            )
+        if "Nebius" in event_companies:
+            current.append(
+                f"• Nebius: 계약 {float(nb.get('contracted_power_gw') or 0):.2f}GW / "
+                f"연결 {float(nb.get('connected_power_gw') or 0):.2f}GW / "
+                f"활성 {float(nb.get('active_power_gw') or 0):.2f}GW"
+            )
+        if "YTL" in event_companies:
+            current.append(
+                f"• YTL: 계약 {float(ytl.get('contracted_power_gw') or 0):.3f}GW / "
+                f"데이터센터 부문 기준 매출 MYR {float(ytl.get('data_center_segment_revenue_myr_m') or 0):.1f} million"
+            )
     if current:
         lines += ["", "<b>현재 숫자</b>", *current]
 
@@ -489,7 +550,10 @@ def build_alert(events: list[dict], latest: dict, sources: list[str]) -> str:
     if "upstream" in kinds:
         checks.append("FCBGA 가동률·고객 승인")
     if "neocloud_metric" in kinds or "servicing" in kinds or "negative" in kinds:
-        checks.append("계약 GW→활성 GW·MW당 매출")
+        if "YTL" in event_companies:
+            checks.append("계약 MW→실가동 MW·데이터센터 부문 매출")
+        if event_companies & {"CoreWeave", "Nebius"}:
+            checks.append("계약 GW→활성 GW·MW당 매출")
     if "edge_actual" in kinds:
         checks.append("실제 가동 MW·상용 매출")
     if not checks:
@@ -514,6 +578,7 @@ def main() -> None:
 
     latest.setdefault("cpu_ratio", copy.deepcopy(BASELINE["cpu_ratio"]))
     latest.setdefault("neocloud", copy.deepcopy(BASELINE["neocloud"]))
+    latest["neocloud"].setdefault("YTL", copy.deepcopy(BASELINE["neocloud"]["YTL"]))
     seen = set(latest.get("seen_urls") or [])
 
     for item in updates:
