@@ -139,6 +139,26 @@ class ClarityFormatterTest(unittest.TestCase):
         summary = MOD.core_summary(event)
         self.assertIn("최종 확정", summary)
 
+    def test_sec_3x_btc_eth_etp_approval_is_specific_and_not_spot(self):
+        event = {
+            "source": "SEC 거래소 규칙 승인명령",
+            "event_type": "SEC 거래소 상장·거래 승인",
+            "title": "Order Granting Approval of a Proposed Rule Change to List and Trade Shares of the 3x Gold ETF, 3x Silver ETF, 3x Bitcoin ETF, 3x Ether ETF, 3x Crude Oil ETF, and 3x Natural Gas ETF",
+            "url": "https://www.sec.gov/files/rules/sro/cboebzx/2026/34-106577.pdf",
+            "date": "Oct 2, 2026",
+            "detail": "Release No. 34-106577 File No. SR-CboeBZX-2026-065",
+        }
+        self.assertTrue(MOD.is_sec_3x_crypto_etp_approval(event))
+        title, body = MOD.localize_event(event)
+        self.assertIn("3배 레버리지 ETP", title)
+        self.assertIn("선물 벤치마크", body)
+        self.assertIn("현물 BTC·ETH 3배 ETF가 아니라", body)
+        invest = "\n".join(MOD.investment_lines(event))
+        self.assertIn("2026-10-18", invest)
+        summary = MOD.core_summary(event)
+        self.assertIn("선물 기반 레버리지 상품", summary)
+        self.assertIn("롤오버 비용", summary)
+
     def test_date_only_is_shown_in_korean_calendar_format(self):
         event = {
             "source": "상원 은행위원회",
