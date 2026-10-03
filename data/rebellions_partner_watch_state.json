@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-10-03T09:42:11+09:00",
+  "last_checked_kst": "2026-10-03T16:02:31+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -2929,6 +2929,31 @@
       "event_signature": "kepco|general|power_video",
       "material_stage": 0,
       "first_seen_kst": "2026-10-03T00:56:55+09:00",
+      "alerted": true
+    },
+    "67f4979f07af4faf6825d2f0": {
+      "title": "[포토뉴스]한전-리벨리온-TTA, '국산 NPU 기반 전력 분야 AI 영상 분석 기술협력' 업무협약 체결 - BBS불교방송",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBiclhSdEVrWnhsZXpXRXdSQmZDLWdPT0NseGc2Q2VOeEhaSG9XZ2dMTnFnS3FHOEpDSDlUaDdOdkF0bmNNcG9DaDJ1bkdkX05mVEw5Qlg1OXBmU3l4dzY0RGFqZnFsWUEwSklZ?oc=5",
+      "summary": "[포토뉴스]한전-리벨리온-TTA, '국산 NPU 기반 전력 분야 AI 영상 분석 기술협력' 업무협약 체결 BBS불교방송",
+      "event_signature": "kepco|npu|power_video",
+      "material_stage": 1,
+      "first_seen_kst": "2026-10-03T16:02:31+09:00",
+      "suppressed_duplicate": "same_event:kepco|npu|power_video"
+    },
+    "86db4b81d924f0e422b57353": {
+      "title": "베슬AI, 리벨리온과 국산 NPU 기반 클라우드 인프라 협력 - 아이티데일리",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1ST19yVGRrLVBHVHpCOTd1Zm1UZzdSQ1JidHdiR1RfUHpwNGhkbFc5Qmo2NVNXNjRzUXJCSTNWNVZNMl9mUnpVMVhQWFRLMHJZcWpOWWpBemN6NEx1cWpldDYzMnEzNFhK?oc=5",
+      "first_seen_kst": "2026-10-03T16:02:31+09:00",
+      "suppressed_stale": true
+    },
+    "a6b6490d4de6306508c03e48": {
+      "title": "한전, 전력 AI 인프라 국산화 추진…리벨리온·TTA와 업무협약 - SR타임스",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE51eVFGamg3djc3cC1vcmxIcW0zTWVPSFNlenlURHp0ajRTRFVLaHpaU3haRl9NV0ZvOXJMVEJsNG1rSnFLcDVMc2xEeFJtTGp1UzRtWVhKQ2U4XzlZR0ZXYWdZejZ0aFVx0gFrQVVfeXFMTTRPTE8yblJsbWRSeFplVkZNUnVQZXRGMTlGdG5ZaGVTYmN2Rzg3bmhhOGt0NnJ0bXlLem9KUm9XNVloQm9WclZXek5zTVRzU2FtR2Vra2xqbV81SkExNU91em5rcmxhTUV3ZFU?oc=5",
+      "direct_url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE51eVFGamg3djc3cC1vcmxIcW0zTWVPSFNlenlURHp0ajRTRFVLaHpaU3haRl9NV0ZvOXJMVEJsNG1rSnFLcDVMc2xEeFJtTGp1UzRtWVhKQ2U4XzlZR0ZXYWdZejZ0aFVx0gFrQVVfeXFMTTRPTE8yblJsbWRSeFplVkZNUnVQZXRGMTlGdG5ZaGVTYmN2Rzg3bmhhOGt0NnJ0bXlLem9KUm9XNVloQm9WclZXek5zTVRzU2FtR2Vra2xqbV81SkExNU91em5rcmxhTUV3ZFU?oc=5",
+      "summary": "한전, 전력 AI 인프라 국산화 추진…리벨리온·TTA와 업무협약 SR타임스",
+      "event_signature": "kepco|general|general",
+      "material_stage": 1,
+      "first_seen_kst": "2026-10-03T16:02:31+09:00",
       "alerted": true
     }
   }
