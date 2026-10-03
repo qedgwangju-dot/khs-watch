@@ -305,12 +305,32 @@ FINAL_DECISION_TERMS = (
 )
 
 
+CURRENT_POST_FWD_TIMELINE_CASES = {
+    "PGR2025-00033",
+    "PGR2025-00039",
+    "PGR2025-00046",
+    "PGR2025-00052",
+}
+
+
 def classify(text: str, case: str) -> str:
     low = text.lower()
     if case.startswith("HALOZYME-PGR-PORTFOLIO-"):
         return "portfolio_update"
     if case == base.DISTRICT_CASE:
         return "district_order"
+
+    # 최종서면결정 이후의 재검토·재심·항소 서류는 본문에 기존 FWD 문구를
+    # 반복 인용하는 경우가 많다. 최신 판세 사건은 후속 절차를 FWD보다
+    # 먼저 판정해 타임라인 변화가 기존 최종결정으로 오분류되어 누락되지 않게 한다.
+    if case in CURRENT_POST_FWD_TIMELINE_CASES:
+        for key, terms in (
+            ("director_review", ("director review", "director-review", "국장 재검토")),
+            ("rehearing", ("request for rehearing", "rehearing", "재심")),
+            ("appeal", ("notice of appeal", "federal circuit", "court of appeals", "연방순회항소법원", "항소")),
+        ):
+            if any(term in low for term in terms):
+                return key
 
     if any(term in low for term in FINAL_UNPATENTABLE_TERMS):
         return "final_unpatentable"

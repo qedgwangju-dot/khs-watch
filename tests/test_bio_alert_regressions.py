@@ -85,6 +85,29 @@ class BioAlertRegressionTests(unittest.TestCase):
             "final_decision",
         )
 
+    def test_halozyme_post_fwd_stage_beats_quoted_fwd_language(self):
+        self.assertEqual(
+            halo.classify(
+                "Request for Director Review of the Final Written Decision determining all challenged claims unpatentable",
+                "PGR2025-00052",
+            ),
+            "director_review",
+        )
+        self.assertEqual(
+            halo.classify(
+                "Notice of Appeal to the Federal Circuit from the Final Written Decision determining all challenged claims unpatentable",
+                "PGR2025-00046",
+            ),
+            "appeal",
+        )
+        self.assertEqual(
+            halo.classify(
+                "Request for Rehearing of the Final Written Decision determining all challenged claims unpatentable",
+                "PGR2025-00039",
+            ),
+            "rehearing",
+        )
+
     def test_halozyme_alert_timeline_dates(self):
         item = {
             "published": "Fri, 25 Sep 2026 12:00:00 GMT",
