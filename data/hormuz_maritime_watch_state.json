@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "initialized": true,
   "official": {},
   "news": {
@@ -558,10 +558,31 @@
       "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOV2hrU0N6b3dJbmV3dlJBZVVhbVl5cl9VcC1aNE1TRDhiS2FuZDY0V2xDMGtYUklNQ2MxODZqam5XdVhmek00dllQUnVyUUdNQUx2N0hWREJlUjJ3MWQ5N1hnbGJkdnBKNkJMV2NiT3JpYzhQQVpKOUk2cFF4TEJodnBZUmxfRnMyTHpTTWp6RE10dUdjSHU5eWhOVnNwMkx6VUU0OWJBVGZ0TVR6Tm5hWWVTZlZrU29uR3Y2OVRoMTNxWldU?oc=5",
       "published_utc": "2026-10-02T07:47:58Z",
       "first_seen_kst": "2026-10-03T14:47:35+09:00"
+    },
+    "de4cf4208eed868cb971": {
+      "source": "Gulf News",
+      "title": "Five Indians rescued after tanker hit by projectile in Strait of Hormuz - Gulf News",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQZkZqc0d2WjA0cDlSNXhISkN1LXVkX3ZsRDNsSG9OeHpWTlFIOF90UDhlcGNLUXVhOEN6V254NmZzMk5KSUtKWXJ5ZUI3SDN4eU5fWWpCMHZUeGpONUwtbXAxNWJoV1V4WDdHb2NOOF9KUFJiRnhDYzNVclpGUVVvVjRta3B5TnVJNWNYdHpQX0pLZEU1eTFocXJZSHdpeUZnbzB4YVpvdG1uWEFhMTlqeV9YenBmaHNuZzVDM9IB0gFBVV95cUxPSUFlT1BsMWM3VHRIMGNXcWdTVjRmamw0b3cwRzVYTjRiVVNMYWlIMThKTTZJanVhTHg5R2FiM0duVF9GWmt6X05YTjUtbnlRY3RoeHo5Y256ZVA3OVdqbkNrY2ZiSFNTbFRPYWl2MG9UWlYwX2h3dkdETW53Tl9MWk02NG9YOUVQUHY3U29rNXZaUGVpS2NpS2Z5TEgzS25iVjNXN09YaVR4ckNLVkl3Tll0MURmSVk1V1loZ3pCX1NOY3FYUG9DZ2E3a1dXb1FlZEE?oc=5",
+      "published_utc": "2026-10-03T09:38:40Z",
+      "first_seen_kst": "2026-10-03T20:23:42+09:00"
+    },
+    "30ef6ff00517053617f6": {
+      "source": "Reuters",
+      "title": "Crude oil tanker struck by unknown projectile off Oman, UKMTO says - Reuters",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQWmh6LU5XZFg0NGU2MUxjNUVHc3lBd0lYMy1LNW81NU9TY0pQM051NVdWX1otZ181NDZYSWtXb2txc2RVbmVIMC1wTTFLVWVYN0ZZUGY1VmdRSFBNZDlGZ2NyeExDSEhWaEVsSHRtY0tGQWxrU1NXay1GS3ZxUExLWlRCRUMxNGx0NHhJbTBwOTRJaUx1amQxVXFqWEtETTF5eVNGZ2xHSWt6aUdycTJ5YjJQanA3bjBU?oc=5",
+      "published_utc": "2026-10-02T23:31:28Z",
+      "first_seen_kst": "2026-10-03T20:23:42+09:00"
+    },
+    "679ec00ef2479538ea35": {
+      "source": "Anadolu Ajansı",
+      "title": "Tanker struck by unknown projectile off Oman: UK maritime agency - Anadolu Ajansı",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNekhNbmw2MjZLS3RndW0yeElheVh0b01QVHVYZWFGRzBHejMzWjhFcHZuZ3l6c245bkZVMzVIdWhKNUdNRDFNQms4RjlPenB6MlBHYVdnY0ZqQzBsRHNYeGlIal9ZZnlXWVp1QTdqaW5lSk02M3hXU3pRUjFkSlU2LXc1aEZ5YWZGcHo5ejlLNGRVRVoxQXVGSUJNbDI0MF91Z0ZaUG5ESUdhc01HNGN2aQ?oc=5",
+      "published_utc": "2026-10-03T02:03:05Z",
+      "first_seen_kst": "2026-10-03T20:23:42+09:00"
     }
   },
   "highest_warning_seen": 124,
-  "last_checked_kst": "2026-10-03T14:47:35+09:00",
+  "last_checked_kst": "2026-10-03T20:23:42+09:00",
   "confirmed_events": {
     "news:2026-08-30:strike:hormuz:1": {
       "warning": null,
@@ -652,6 +673,17 @@
         "Anadolu Ajansı"
       ],
       "first_seen_kst": "2026-10-03T14:47:35+09:00"
+    },
+    "news:2026-10-02:strike:khasab:x": {
+      "warning": null,
+      "event_kind": "strike",
+      "location": "khasab",
+      "projectile_count": null,
+      "sources": [
+        "Gulf News",
+        "Anadolu Ajansı"
+      ],
+      "first_seen_kst": "2026-10-03T20:23:42+09:00"
     }
   }
 }
