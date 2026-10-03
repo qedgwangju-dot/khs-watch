@@ -40,6 +40,31 @@ class SamsungNextGenHBMWatchTests(unittest.TestCase):
         merged = w.merge_samsung_nextgen_hbm(dict(w.SAMSUNG_NEXTGEN_HBM_BASELINE), obs)
         self.assertEqual(w.samsung_nextgen_hbm_changes(w.SAMSUNG_NEXTGEN_HBM_BASELINE, merged), [])
 
+    def test_official_custom_hbm_2027_sampling_plan_is_not_mass_production(self):
+        obs = w.extract_samsung_nextgen_hbm(self.event(
+            "삼성전자는 Custom HBM도 2027년부터 고객사별 요구에 맞춰 순차 샘플링을 시작할 예정이다. "
+            "용량, 속도, 전력 특성, 인터페이스 등을 맞춤 설계한다.",
+            source="Samsung Semiconductor",
+        ))
+        self.assertEqual(obs["custom_hbm_stage"], "official_sampling_plan")
+        self.assertEqual(obs["custom_hbm_sample_start_year"], 2027)
+        self.assertTrue(obs["custom_hbm_customer_specific"])
+        self.assertTrue(obs["custom_hbm_interface_customization"])
+
+        merged = w.merge_samsung_nextgen_hbm(dict(w.SAMSUNG_NEXTGEN_HBM_BASELINE), obs)
+        self.assertEqual(w.samsung_nextgen_hbm_changes(w.SAMSUNG_NEXTGEN_HBM_BASELINE, merged), [])
+
+    def test_custom_hbm_actual_sample_is_stage_upgrade(self):
+        old = dict(w.SAMSUNG_NEXTGEN_HBM_BASELINE)
+        obs = w.extract_samsung_nextgen_hbm(self.event(
+            "삼성전자가 Custom HBM 샘플 출하를 시작해 주요 고객사 평가에 들어갔다.",
+            source="Samsung Semiconductor",
+        ))
+        self.assertEqual(obs["custom_hbm_stage"], "customer_sample")
+        new = w.merge_samsung_nextgen_hbm(old, obs)
+        reasons = w.samsung_nextgen_hbm_changes(old, new)
+        self.assertTrue(any("Custom HBM 단계" in x and "customer_sample" in x for x in reasons))
+
     def test_zhbm_customer_sample_is_stage_upgrade(self):
         old = dict(w.SAMSUNG_NEXTGEN_HBM_BASELINE)
         obs = w.extract_samsung_nextgen_hbm(self.event(

@@ -93,8 +93,12 @@ RUBIN_ULTRA_HBM_OPTIONS_BASELINE = {
     "as_of": "2026-10-02",
     "note": "Rubin Ultra의 HBM4E/HBM4 8단·12단 선택지 확대는 업계 보도상 평가 단계. NVIDIA 공식 최종 사양·확정 탑재로 승격하지 않음.",
 }
-SAMSUNG_NEXTGEN_HBM_TRACK_VERSION = 1
+SAMSUNG_NEXTGEN_HBM_TRACK_VERSION = 2
 SAMSUNG_NEXTGEN_HBM_BASELINE = {
+    "custom_hbm_stage": "official_sampling_plan",
+    "custom_hbm_sample_start_year": 2027,
+    "custom_hbm_customer_specific": True,
+    "custom_hbm_interface_customization": True,
     "hbm5_customization_stage": "industry_expected",
     "zhbm_stage": "concept_development",
     "zhbm_customer_specific_design": True,
@@ -102,11 +106,43 @@ SAMSUNG_NEXTGEN_HBM_BASELINE = {
     "zhbm_energy_efficiency_vs_hbm5_x": 3.0,
     "zhbm_thermal_resistance_reduction_floor_pct": 50.0,
     "zhbm_memory_density_floor_vs_hbm5_x": 10.0,
-    "source": "삼성전자 FMS 2026 공식자료 + 매일경제",
-    "source_url": "https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-fms-2026%EC%84%9C-%EC%B0%A8%EC%84%B8%EB%8C%80-3d-%EB%A9%94%EB%AA%A8%EB%A6%AC-%EB%B9%84%EC%A0%84-%EC%A0%9C%EC%8B%9C",
+    "source": "삼성전자 HBM4 공식자료 + FMS 2026 공식자료 + 매일경제",
+    "source_url": "https://semiconductor.samsung.com/kr/news-events/news/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing/",
     "secondary_source_url": "https://www.mk.co.kr/news/business/12167424",
-    "as_of": "2026-10-02",
-    "note": "HBM5 맞춤형 본격화는 업계 전망 단계. zHBM은 삼성 공식 콘셉트·개발 단계이며 고객 샘플·검증·계약·양산으로 승격하지 않음.",
+    "as_of": "2026-10-03",
+    "note": "삼성 Custom HBM은 2027년부터 고객사별 사양에 맞춰 순차 샘플링을 시작한다는 공식 계획. HBM5 맞춤형 본격화는 업계 전망 단계. zHBM은 공식 콘셉트·개발 단계이며 확정 고객·계약·양산으로 승격하지 않음.",
+}
+
+NVHBM_ARCH_TRACK_VERSION = 1
+NVHBM_ARCH_BASELINE = {
+    "nvidia_stage": "official_announced",
+    "feynman_custom_hbm_official": True,
+    "first_collaborator": "Amazon Annapurna Labs",
+    "memory_controller_location": "hbm_base_die",
+    "bandwidth_gain_pct_max": 30.0,
+    "compute_die_area_gain_pct_max": 25.0,
+    "phy_support_area_reduction_pct_max": 67.0,
+    "layout_usable_silicon_gain_pct_max": 80.0,
+    "main_die_silicon_gain_pct_max": 30.0,
+    "hbm_power_reduction_pct_max": 15.0,
+    "xpu_end_to_end_performance_gain_pct_max": 30.0,
+    "one_gw_additional_xpu_headroom_max": 15000,
+    "official_memory_vendors": [],
+    "rubin_hbm_logic_phy_die_share_estimate_pct": 16.0,
+    "feynman_nvhbm_interface_die_share_estimate_pct": 4.0,
+    "samsung_standard_hbm4_phy_width_mm": 8.0,
+    "samsung_standard_hbm4_phy_height_mm": 4.0,
+    "samsung_custom_d2d_width_mm": 8.5,
+    "samsung_custom_d2d_height_mm": 1.5,
+    "samsung_custom_d2d_area_reduction_pct_estimate": 60.15625,
+    "official_source": "NVIDIA NVLink Fusion NVHBM Technical Blog",
+    "official_source_url": "https://developer.nvidia.com/blog/nvidia-nvlink-fusion-brings-nvhbm-to-next-generation-ai-infrastructure/",
+    "feynman_official_source_url": "https://images.nvidia.com/nvimages/gtc/pdf/GTC26_SanJose_Highlights_Final.pdf",
+    "samsung_official_source_url": "https://semiconductor.samsung.com/foundry/application-specific-service/hpc-ai/",
+    "research_source": "SemiAnalysis",
+    "research_source_url": "https://newsletter.semianalysis.com/p/ectc2026",
+    "as_of": "2026-10-03",
+    "note": "NVIDIA 공식 수치와 SemiAnalysis 추정치를 분리 저장. Rubin 16%→Feynman 약 4% 및 Samsung PHY 8×4mm→D2D 8.5×1.5mm(약 60.2% 축소)는 SemiAnalysis 추정·Samsung Hot Chips 자료 인용이며 NVIDIA 공식 다이면적 실측치로 승격하지 않음. NVIDIA의 +25% compute die area와 상세 본문의 +30% main-die silicon은 서로 다른 공식 표현이라 합치지 않음.",
 }
 JPM_HBM_STRUCTURAL_TRACK_VERSION = 1
 JPM_HBM_STRUCTURAL_BASELINE = {
@@ -228,7 +264,11 @@ QUERIES = [
     ),
     (
         "samsung_nextgen_hbm",
-        'Samsung (HBM5 OR zHBM) (custom OR customized OR customer-specific OR concept OR sample OR validation OR contract OR mass production OR performance OR power efficiency OR thermal OR 맞춤형 OR 커스텀 OR 콘셉트 OR 목업 OR 샘플 OR 검증 OR 계약 OR 양산 OR 성능 OR 전력효율 OR 열저항)',
+        'Samsung ("Custom HBM" OR "custom HBM" OR HBM5 OR zHBM OR "커스텀 HBM" OR "맞춤형 HBM") (sample OR sampling OR customer-specific OR interface OR custom OR validation OR contract OR mass production OR performance OR power efficiency OR thermal OR 샘플 OR 샘플링 OR 고객사별 OR 인터페이스 OR 검증 OR 계약 OR 양산 OR 성능 OR 전력효율 OR 열저항)',
+    ),
+    (
+        "nvhbm_architecture",
+        '(NVHBM OR "custom HBM" OR "Custom HBM") (NVIDIA OR Feynman OR Rubin OR "Annapurna Labs" OR Samsung OR "SK hynix" OR Micron OR "memory controller" OR "base die" OR PHY OR "NV-HBI")',
     ),
     (
         "hbm_2027_contract",
@@ -269,7 +309,8 @@ CATEGORY_KO = {
     "rubin_shipments": "Rubin Ultra·NVL576 실제 출하",
     "rubin_hbm_option_set": "별도 알림 · Rubin Ultra HBM4/HBM4E 옵션 변화",
     "samsung_hbm4_price": "삼성전자 2027 HBM4 계약가격·협상력",
-    "samsung_nextgen_hbm": "별도 알림 · 삼성 HBM5·zHBM 맞춤형 로드맵",
+    "samsung_nextgen_hbm": "별도 알림 · 삼성 Custom HBM·HBM5·zHBM 맞춤형 로드맵",
+    "nvhbm_architecture": "별도 알림 · NVIDIA NVHBM·Custom HBM 구조 전환",
     "hbm_2027_contract": "2027 HBM 계약가격·물량",
     "jpm_hbm_structural": "별도 알림 · J.P. Morgan HBM 구조적 수급·가격",
     "micron_sca_visibility": "별도 알림 · Micron 장기계약·RPO·예치금",
@@ -279,8 +320,8 @@ CATEGORY_KO = {
 }
 
 OFFICIAL_SOURCE_HINTS = (
-    "nvidia", "samsung newsroom", "삼성전자 뉴스룸", "sk hynix", "sk하이닉스 뉴스룸",
-    "micron technology", "micron newsroom",
+    "nvidia", "samsung newsroom", "삼성전자 뉴스룸", "samsung semiconductor", "semiconductor.samsung",
+    "sk hynix", "sk하이닉스 뉴스룸", "micron technology", "micron newsroom",
 )
 TRUSTED_SOURCE_HINTS = (
     "trendforce", "reuters", "bloomberg", "the information", "semianalysis", "digitimes",
@@ -375,11 +416,20 @@ def relevant(category: str, text: str) -> bool:
     if category == "samsung_nextgen_hbm":
         return (
             ("samsung" in low or "삼성전자" in low or "삼성" in low)
-            and ("hbm5" in low or "zhbm" in low)
+            and any(k in low for k in ("custom hbm", "커스텀 hbm", "맞춤형 hbm", "hbm5", "zhbm"))
             and any(k in low for k in (
-                "custom", "customer-specific", "concept", "mock-up", "mockup", "sample", "validation",
-                "contract", "mass production", "performance", "power efficiency", "thermal",
-                "맞춤형", "커스텀", "콘셉트", "목업", "샘플", "검증", "계약", "양산", "성능", "전력효율", "열저항",
+                "custom", "customer-specific", "concept", "mock-up", "mockup", "sample", "sampling", "validation",
+                "contract", "mass production", "performance", "power efficiency", "thermal", "interface",
+                "맞춤형", "커스텀", "콘셉트", "목업", "샘플", "샘플링", "검증", "계약", "양산", "성능", "전력효율", "열저항", "인터페이스",
+            ))
+        )
+    if category == "nvhbm_architecture":
+        return (
+            ("nvhbm" in low or "custom hbm" in low or "커스텀 hbm" in low or "맞춤형 hbm" in low)
+            and any(k in low for k in (
+                "nvidia", "feynman", "rubin", "annapurna", "samsung", "sk hynix", "sk하이닉스", "micron",
+                "memory controller", "메모리 컨트롤러", "base die", "베이스 다이", "phy", "nv-hbi", "bandwidth",
+                "대역폭", "power", "전력", "die area", "다이 면적", "interface", "인터페이스",
             ))
         )
     if category == "hbm_2027_contract":
@@ -1447,6 +1497,28 @@ def extract_samsung_nextgen_hbm(event: dict) -> dict | None:
 
     obs: dict = {}
 
+    if any(k in low for k in ("custom hbm", "커스텀 hbm", "맞춤형 hbm")):
+        if any(k in low for k in ("양산 시작", "양산한다", "mass production", "in production")):
+            obs["custom_hbm_stage"] = "mass_production"
+        elif any(k in low for k in ("계약 체결", "공급 계약", "contract signed", "supply contract")):
+            obs["custom_hbm_stage"] = "contract_signed"
+        elif any(k in low for k in ("고객 검증", "고객사 검증", "customer validation", "qualification")):
+            obs["custom_hbm_stage"] = "customer_validation"
+        elif any(k in low for k in ("샘플 출하를 시작", "샘플링을 시작했다", "began sampling", "samples shipped", "sample shipments began")):
+            obs["custom_hbm_stage"] = "customer_sample"
+        elif (
+            "2027" in low
+            and any(k in low for k in ("샘플링", "샘플 출하", "sampling", "samples will", "samples to"))
+            and any(k in low for k in ("예정", "계획", "start", "begin", "will"))
+        ):
+            obs["custom_hbm_stage"] = "official_sampling_plan"
+            obs["custom_hbm_sample_start_year"] = 2027
+
+        if any(k in low for k in ("고객사별", "고객 맞춤형", "customer-specific", "according to their respective specifications")):
+            obs["custom_hbm_customer_specific"] = True
+        if "interface" in low or "인터페이스" in low:
+            obs["custom_hbm_interface_customization"] = True
+
     if "hbm5" in low and any(k in low for k in ("맞춤형", "커스텀", "custom", "customer-specific")):
         if any(k in low for k in ("업계는 보고", "전망", "예상", "expected", "industry expects", "industry views")):
             obs["hbm5_customization_stage"] = "industry_expected"
@@ -1508,6 +1580,7 @@ def merge_samsung_nextgen_hbm(old: dict, obs: dict) -> dict:
 def samsung_nextgen_hbm_changes(old: dict, new: dict) -> list[str]:
     reasons: list[str] = []
     for field, label in (
+        ("custom_hbm_stage", "Custom HBM 단계"),
         ("hbm5_customization_stage", "HBM5 맞춤형 단계"),
         ("zhbm_stage", "zHBM 단계"),
     ):
@@ -1515,9 +1588,18 @@ def samsung_nextgen_hbm_changes(old: dict, new: dict) -> list[str]:
         if a != b and b:
             reasons.append(f"{label} {a or '미확인'}→{b}")
 
-    a, b = old.get("zhbm_customer_specific_design"), new.get("zhbm_customer_specific_design")
-    if a != b and b is True:
-        reasons.append("zHBM 고객 맞춤형 설계 공식 지원 확인")
+    a, b = old.get("custom_hbm_sample_start_year"), new.get("custom_hbm_sample_start_year")
+    if a != b and b:
+        reasons.append(f"Custom HBM 샘플링 시작 연도 {a or '미확인'}→{b}")
+
+    for field, label in (
+        ("custom_hbm_customer_specific", "Custom HBM 고객사별 맞춤 설계"),
+        ("custom_hbm_interface_customization", "Custom HBM 인터페이스 맞춤 설계"),
+        ("zhbm_customer_specific_design", "zHBM 고객 맞춤형 설계"),
+    ):
+        a, b = old.get(field), new.get(field)
+        if a != b and b is True:
+            reasons.append(f"{label} 확인")
 
     for field, label, threshold, unit in (
         ("zhbm_performance_vs_hbm5_x", "zHBM 성능", 0.5, "배"),
@@ -1534,17 +1616,21 @@ def samsung_nextgen_hbm_changes(old: dict, new: dict) -> list[str]:
 
 
 def samsung_nextgen_hbm_event(state: dict, reasons: list[str]) -> dict:
-    stage = state.get("zhbm_stage") or "미확인"
-    advanced = stage in ("customer_sample", "customer_validation", "contract_signed", "mass_production")
+    zhbm_stage = state.get("zhbm_stage") or "미확인"
+    custom_stage = state.get("custom_hbm_stage") or "미확인"
+    advanced = (
+        zhbm_stage in ("customer_sample", "customer_validation", "contract_signed", "mass_production")
+        or custom_stage in ("customer_sample", "customer_validation", "contract_signed", "mass_production")
+    )
     return {
         "category": "samsung_nextgen_hbm",
-        "fact_key": "samsung_nextgen_hbm_" + str(stage) + "_" + (state.get("observed_at") or state.get("as_of") or ""),
-        "headline_ko": "삼성 HBM5·zHBM 맞춤형 로드맵 변화",
+        "fact_key": "samsung_nextgen_hbm_" + str(custom_stage) + "_" + str(zhbm_stage) + "_" + (state.get("observed_at") or state.get("as_of") or ""),
+        "headline_ko": "삼성 Custom HBM·HBM5·zHBM 맞춤형 로드맵 변화",
         "fact_bullets": reasons,
         "verdict": (
-            "zHBM이 콘셉트 단계를 넘어 고객 샘플·검증·계약·양산 쪽으로 진전했습니다."
+            "Custom HBM 또는 zHBM이 계획·콘셉트 단계를 넘어 고객 샘플·검증·계약·양산 쪽으로 진전했습니다."
             if advanced else
-            "현재는 HBM5 맞춤형 확대 전망과 zHBM 공식 콘셉트·개발 단계입니다. 확정 고객·계약·양산으로 승격하지 않습니다."
+            "삼성 Custom HBM은 2027년 고객사별 순차 샘플링 계획이 공식 확인됐습니다. HBM5 맞춤형 확대 전망과 zHBM 콘셉트·개발 단계는 별도로 관리하며, 확정 고객·계약·양산으로 승격하지 않습니다."
         ),
         "verification": "상태값 변화",
         "quality": "공식자료·신뢰보도 교차",
@@ -1554,6 +1640,224 @@ def samsung_nextgen_hbm_event(state: dict, reasons: list[str]) -> dict:
         "direct_link": state.get("source_url") or "",
         "article_text": "",
         "samsung_nextgen_hbm_state": state,
+    }
+
+
+def extract_nvhbm_architecture(event: dict) -> dict | None:
+    text = compact_fact_text(event)
+    low = text.lower()
+    if not relevant("nvhbm_architecture", text):
+        return None
+
+    obs: dict = {}
+    source = event.get("origin_source") or event.get("source") or ""
+    official = source_quality(source) == "공식·회사자료"
+    semianalysis = "semianalysis" in source.lower() or "semianalysis" in low
+
+    if "nvhbm" in low and official:
+        obs["nvidia_stage"] = "official_announced"
+
+    if (
+        ("memory controller" in low or "메모리 컨트롤러" in low)
+        and any(k in low for k in ("base die", "hbm stack", "베이스 다이", "hbm 스택", "3d hbm"))
+        and any(k in low for k in ("move", "moving", "moved", "inside", "into", "이동", "옮", "통합"))
+    ):
+        obs["memory_controller_location"] = "hbm_base_die"
+
+    def pct(patterns):
+        for pat in patterns:
+            m = re.search(pat, low, re.I)
+            if m:
+                return float(m.group(1))
+        return None
+
+    if official:
+        v = pct((
+            r"(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,80}?(?:more|higher|increase|향상|증가)[^.]{0,80}?(?:memory\s+bandwidth|bandwidth|메모리\s*대역폭|대역폭)",
+            r"(?:memory\s+bandwidth|bandwidth|메모리\s*대역폭|대역폭)[^%]{0,100}?(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%",
+        ))
+        if v is not None:
+            obs["bandwidth_gain_pct_max"] = v
+
+        v = pct((
+            r"(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:more|additional|추가|증가)[^.]{0,80}?(?:compute\s+die\s+area|연산\s*다이\s*면적)",
+            r"(?:compute\s+die\s+area|연산\s*다이\s*면적)[^%]{0,120}?(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%",
+        ))
+        if v is not None:
+            obs["compute_die_area_gain_pct_max"] = v
+
+        v = pct((
+            r"(?:phy)[^.]{0,80}?(?:support|지원)[^.]{0,100}?(?:area|면적)[^%]{0,100}?(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,60}?(?:reduce|reduction|줄|감소)",
+            r"(?:reduce|reduction|줄|감소)[^%]{0,80}?(?:phy)[^.]{0,100}?(?:area|면적)[^%]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*%",
+        ))
+        if v is not None:
+            obs["phy_support_area_reduction_pct_max"] = v
+
+        v = pct((
+            r"(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:more|증가)[^.]{0,100}?(?:usable\s+silicon|사용할\s*수\s*있는\s*실리콘|가용\s*실리콘)",
+            r"(?:usable\s+silicon|사용할\s*수\s*있는\s*실리콘|가용\s*실리콘)[^%]{0,120}?(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%",
+        ))
+        if v is not None:
+            obs["layout_usable_silicon_gain_pct_max"] = v
+
+        v = pct((
+            r"(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:increase|증가)[^.]{0,100}?(?:main[- ]die\s+silicon|메인\s*다이\s*실리콘)",
+            r"(?:main[- ]die\s+silicon|메인\s*다이\s*실리콘)[^%]{0,120}?(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%",
+        ))
+        if v is not None:
+            obs["main_die_silicon_gain_pct_max"] = v
+
+        v = pct((
+            r"(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:lower|reduce|reduction|낮|절감|감소)[^.]{0,80}?(?:hbm\s+power|hbm\s+전력)",
+            r"(?:hbm\s+power|hbm\s+전력)[^%]{0,100}?(?:up to|max(?:imum)?|최대)\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,40}?(?:lower|낮|절감|감소)",
+        ))
+        if v is not None:
+            obs["hbm_power_reduction_pct_max"] = v
+
+        v = pct((
+            r"([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,90}?(?:overall\s+end-to-end\s+performance|end-to-end\s+performance|엔드투엔드\s*성능)",
+            r"(?:overall\s+end-to-end\s+performance|end-to-end\s+performance|엔드투엔드\s*성능)[^%]{0,100}?([0-9]+(?:\.[0-9]+)?)\s*%",
+        ))
+        if v is not None:
+            obs["xpu_end_to_end_performance_gain_pct_max"] = v
+
+        m = re.search(r"(?:up to|최대)\s*([0-9][0-9,]*)\s*(?:additional\s+)?xpus?", low, re.I)
+        if m:
+            obs["one_gw_additional_xpu_headroom_max"] = int(m.group(1).replace(",", ""))
+
+        if "annapurna labs" in low and any(k in low for k in ("first", "첫", "collaborat", "협력")):
+            obs["first_collaborator"] = "Amazon Annapurna Labs"
+
+        if "feynman" in low and any(k in low for k in ("custom hbm", "custom high-bandwidth memory", "맞춤형 hbm", "커스텀 hbm")):
+            obs["feynman_custom_hbm_official"] = True
+
+        confirmed_vendors = []
+        for vendor, aliases in (
+            ("Samsung Electronics", ("samsung", "삼성전자")),
+            ("SK hynix", ("sk hynix", "sk하이닉스")),
+            ("Micron", ("micron", "마이크론")),
+        ):
+            if any(a in low for a in aliases) and any(k in low for k in ("validated", "validation partner", "memory partner", "memory provider", "검증", "파트너", "공급사")):
+                confirmed_vendors.append(vendor)
+        if confirmed_vendors:
+            obs["official_memory_vendors"] = sorted(set(confirmed_vendors))
+
+    if semianalysis:
+        m = re.search(r"(?:rubin)[^.]{0,180}?(?:hbm4?\s*(?:controllers?|컨트롤러)?|hbm)[^.]{0,120}?(?:logic|phy|로직)[^%]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*%", low, re.I)
+        if not m:
+            m = re.search(r"([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:rubin)[^.]{0,100}?(?:hbm)[^.]{0,80}?(?:logic|phy)", low, re.I)
+        if m:
+            obs["rubin_hbm_logic_phy_die_share_estimate_pct"] = float(m.group(1))
+
+        m = re.search(r"(?:feynman)[^.]{0,180}?(?:nvhbm|hbm)[^%]{0,120}?([0-9]+(?:\.[0-9]+)?)\s*%", low, re.I)
+        if not m:
+            m = re.search(r"([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:feynman)[^.]{0,100}?(?:nvhbm|hbm)", low, re.I)
+        if m:
+            obs["feynman_nvhbm_interface_die_share_estimate_pct"] = float(m.group(1))
+
+        std = re.search(r"(?:standard\s+hbm4\s+phy|hbm4\s+phy)[^.]{0,100}?([0-9]+(?:\.[0-9]+)?)\s*mm\s*[x×]\s*([0-9]+(?:\.[0-9]+)?)\s*mm", low, re.I)
+        custom = re.search(r"(?:custom\s+(?:d2d|die-to-die)\s+(?:interface|link)|d2d\s+interface)[^.]{0,100}?([0-9]+(?:\.[0-9]+)?)\s*mm\s*[x×]\s*([0-9]+(?:\.[0-9]+)?)\s*mm", low, re.I)
+        if std:
+            obs["samsung_standard_hbm4_phy_width_mm"] = float(std.group(1))
+            obs["samsung_standard_hbm4_phy_height_mm"] = float(std.group(2))
+        if custom:
+            obs["samsung_custom_d2d_width_mm"] = float(custom.group(1))
+            obs["samsung_custom_d2d_height_mm"] = float(custom.group(2))
+        if std and custom:
+            std_area = float(std.group(1)) * float(std.group(2))
+            custom_area = float(custom.group(1)) * float(custom.group(2))
+            if std_area > 0:
+                obs["samsung_custom_d2d_area_reduction_pct_estimate"] = (1.0 - custom_area / std_area) * 100.0
+
+    if not obs:
+        return None
+    obs.update({
+        "source": source,
+        "source_url": event.get("direct_link") or "",
+        "observed_at": event.get("published_at_kst") or "",
+    })
+    return obs
+
+
+def merge_nvhbm_architecture(old: dict, obs: dict) -> dict:
+    out = dict(old or {})
+    for key, value in obs.items():
+        if value in (None, ""):
+            continue
+        if key == "official_memory_vendors":
+            out[key] = sorted(set(out.get(key) or []) | set(value or []))
+        else:
+            out[key] = value
+    return out
+
+
+def nvhbm_architecture_changes(old: dict, new: dict) -> list[str]:
+    reasons: list[str] = []
+
+    for field, label in (
+        ("nvidia_stage", "NVIDIA NVHBM 단계"),
+        ("first_collaborator", "첫 협력사"),
+        ("memory_controller_location", "메모리 컨트롤러 위치"),
+    ):
+        a, b = old.get(field), new.get(field)
+        if a != b and b:
+            reasons.append(f"{label} {a or '미확인'}→{b}")
+
+    if old.get("feynman_custom_hbm_official") != new.get("feynman_custom_hbm_official") and new.get("feynman_custom_hbm_official") is True:
+        reasons.append("Feynman Custom HBM 공식 로드맵 확인")
+
+    old_vendors = set(old.get("official_memory_vendors") or [])
+    new_vendors = set(new.get("official_memory_vendors") or [])
+    added = sorted(new_vendors - old_vendors)
+    if added:
+        reasons.append("공식 NVHBM 메모리 파트너 실명 신규 확인: " + ", ".join(added))
+
+    for field, label, threshold in (
+        ("bandwidth_gain_pct_max", "NVIDIA 공식 대역폭 향상 최대치", 2.0),
+        ("compute_die_area_gain_pct_max", "NVIDIA 공식 연산 다이 면적 추가 확보 최대치", 2.0),
+        ("phy_support_area_reduction_pct_max", "NVIDIA 공식 PHY·지원 면적 감소 최대치", 2.0),
+        ("layout_usable_silicon_gain_pct_max", "NVIDIA 공식 전체 레이아웃 가용 실리콘 증가 최대치", 3.0),
+        ("main_die_silicon_gain_pct_max", "NVIDIA 공식 메인 다이 실리콘 증가 최대치", 2.0),
+        ("hbm_power_reduction_pct_max", "NVIDIA 공식 HBM 전력 감소 최대치", 2.0),
+        ("xpu_end_to_end_performance_gain_pct_max", "NVIDIA 공식 XPU 엔드투엔드 성능 향상 최대치", 2.0),
+        ("rubin_hbm_logic_phy_die_share_estimate_pct", "SemiAnalysis Rubin HBM 로직·PHY 다이 비중 추정", 2.0),
+        ("feynman_nvhbm_interface_die_share_estimate_pct", "SemiAnalysis Feynman NVHBM 인터페이스 다이 비중 추정", 1.0),
+        ("samsung_custom_d2d_area_reduction_pct_estimate", "SemiAnalysis 인용 Samsung Custom D2D 면적 감소 추정", 5.0),
+    ):
+        a, b = old.get(field), new.get(field)
+        if a is not None and b is not None and abs(float(b) - float(a)) >= threshold:
+            reasons.append(f"{label} {float(a):g}%→{float(b):g}%")
+        elif a is None and b is not None:
+            reasons.append(f"{label} {float(b):g}% 신규 확인")
+
+    a, b = old.get("one_gw_additional_xpu_headroom_max"), new.get("one_gw_additional_xpu_headroom_max")
+    if a is not None and b is not None and abs(int(b) - int(a)) >= 1000:
+        reasons.append(f"1GW 데이터센터 추가 XPU 헤드룸 최대 {int(a):,}→{int(b):,}대")
+    elif a is None and b is not None:
+        reasons.append(f"1GW 데이터센터 추가 XPU 헤드룸 최대 {int(b):,}대 신규 확인")
+
+    return reasons
+
+
+def nvhbm_architecture_event(state: dict, reasons: list[str]) -> dict:
+    return {
+        "category": "nvhbm_architecture",
+        "fact_key": "nvhbm_architecture_" + hashlib.sha256(("|".join(reasons) + "|" + (state.get("observed_at") or state.get("as_of") or "")).encode()).hexdigest()[:16],
+        "headline_ko": "NVIDIA NVHBM·Custom HBM 구조 변화",
+        "fact_bullets": reasons,
+        "verdict": (
+            "NVHBM은 단순 HBM 속도 상향이 아니라 메모리 컨트롤러를 XPU에서 HBM 베이스 다이로 옮기고 "
+            "표준 PHY를 맞춤형 다이투다이 인터페이스로 바꾸는 구조 변화입니다. "
+            "NVIDIA 공식 수치와 SemiAnalysis 추정치를 분리하며, 메모리 공급사 실명은 회사 공식 확인 전까지 확정하지 않습니다."
+        ),
+        "verification": "NVIDIA·메모리사 공식자료 우선, SemiAnalysis 추정 별도",
+        "quality": "공식자료·신뢰 리서치 분리",
+        "origin_source": state.get("source") or state.get("official_source") or "",
+        "source": state.get("source") or state.get("official_source") or "",
+        "published_at_kst": state.get("observed_at") or state.get("as_of") or "",
+        "direct_link": state.get("source_url") or state.get("official_source_url") or "",
+        "article_text": "",
+        "nvhbm_architecture_state": state,
     }
 
 
@@ -2097,7 +2401,7 @@ def choose_verified_events(fresh_unseen: list[dict], raw_events: list[dict], see
     errors: list[str] = []
     candidates: list[dict] = []
     for raw in fresh_unseen:
-        if raw.get("category") in ("citi_hbm_outlook", "jpm_hbm_structural", "micron_sca_visibility", "samsung_hbm4_price", "hbm4e_thermal_package", "samsung_nextgen_hbm", "rubin_hbm_option_set"):
+        if raw.get("category") in ("citi_hbm_outlook", "jpm_hbm_structural", "micron_sca_visibility", "samsung_hbm4_price", "hbm4e_thermal_package", "samsung_nextgen_hbm", "nvhbm_architecture", "rubin_hbm_option_set"):
             continue
         source_low = (raw.get("source") or "").lower()
         if any(k in source_low for k in LOW_VALUE_SOURCE_HINTS):
@@ -2212,7 +2516,7 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
         grouped.setdefault(e["category"], []).append(e)
 
     n = 1
-    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "hbm4e_thermal_package", "rubin_shipments", "rubin_hbm_option_set", "samsung_hbm4_price", "samsung_nextgen_hbm", "hbm_2027_contract", "jpm_hbm_structural", "micron_sca_visibility", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
+    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "hbm4e_thermal_package", "rubin_shipments", "rubin_hbm_option_set", "samsung_hbm4_price", "samsung_nextgen_hbm", "nvhbm_architecture", "hbm_2027_contract", "jpm_hbm_structural", "micron_sca_visibility", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
         group = grouped.get(category) or []
         if not group:
             continue
@@ -2223,7 +2527,9 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
         if category == "samsung_hbm4_price" and n > 1:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 삼성전자 2027 HBM4 계약가격·협상력 감시", ""]
         if category == "samsung_nextgen_hbm" and n > 1:
-            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 삼성 HBM5·zHBM 맞춤형 로드맵 감시", ""]
+            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 삼성 Custom HBM·HBM5·zHBM 맞춤형 로드맵 감시", ""]
+        if category == "nvhbm_architecture" and n > 1:
+            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 NVIDIA NVHBM·Custom HBM 구조 전환 감시", ""]
         if category == "jpm_hbm_structural" and n > 1:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 J.P. Morgan HBM 구조적 수급·가격 감시", ""]
         if category == "micron_sca_visibility" and n > 1:
@@ -2303,6 +2609,11 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
             if category == "samsung_nextgen_hbm" and e.get("samsung_nextgen_hbm_state"):
                 ns = e["samsung_nextgen_hbm_state"]
                 lines.append(
+                    f"• Custom HBM: {ns.get('custom_hbm_stage') or '미확인'} · "
+                    f"샘플링 시작 {ns.get('custom_hbm_sample_start_year') or '미확인'}년 · "
+                    f"고객사별 맞춤 {'예' if ns.get('custom_hbm_customer_specific') else '미확인'}"
+                )
+                lines.append(
                     f"• HBM5 맞춤형 단계: {ns.get('hbm5_customization_stage') or '미확인'} · "
                     f"zHBM 단계: {ns.get('zhbm_stage') or '미확인'}"
                 )
@@ -2312,8 +2623,44 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
                     f"열저항 50% 이상 감소"
                 )
                 lines.append(
-                    f"• 고객 맞춤형 설계 지원: {'예' if ns.get('zhbm_customer_specific_design') else '미확인'} · "
-                    "현재 확정 고객·공급계약·양산 매출은 미확인"
+                    "• 구분: Samsung Custom HBM 공식 샘플링 계획, zHBM 콘셉트, NVIDIA NVHBM은 서로 다른 상태값으로 관리합니다."
+                )
+            if category == "nvhbm_architecture" and e.get("nvhbm_architecture_state"):
+                nv = e["nvhbm_architecture_state"]
+                lines.append(
+                    f"• NVIDIA 공식 구조: 메모리 컨트롤러 {nv.get('memory_controller_location') or '미확인'} · "
+                    f"Feynman Custom HBM 로드맵 {'확인' if nv.get('feynman_custom_hbm_official') else '미확인'}"
+                )
+                lines.append(
+                    f"• NVIDIA 공식 효과: 대역폭 최대 +{float(nv.get('bandwidth_gain_pct_max') or 0):g}% · "
+                    f"HBM 전력 최대 -{float(nv.get('hbm_power_reduction_pct_max') or 0):g}% · "
+                    f"PHY·지원 면적 최대 -{float(nv.get('phy_support_area_reduction_pct_max') or 0):g}%"
+                )
+                lines.append(
+                    f"• 면적 수치 구분: compute die area 최대 +{float(nv.get('compute_die_area_gain_pct_max') or 0):g}% · "
+                    f"main-die silicon 최대 +{float(nv.get('main_die_silicon_gain_pct_max') or 0):g}% · "
+                    f"전체 레이아웃 usable silicon 최대 +{float(nv.get('layout_usable_silicon_gain_pct_max') or 0):g}%"
+                )
+                lines.append(
+                    f"• NVIDIA 공식 XPU 엔드투엔드 성능: 최대 +{float(nv.get('xpu_end_to_end_performance_gain_pct_max') or 0):g}% · "
+                    f"1GW·2,000W XPU 가정 추가 헤드룸 최대 {int(nv.get('one_gw_additional_xpu_headroom_max') or 0):,}대"
+                )
+                lines.append(
+                    f"• 첫 협력사: {nv.get('first_collaborator') or '미확인'} · "
+                    f"공식 실명 메모리 파트너: {', '.join(nv.get('official_memory_vendors') or []) or '아직 미공개'}"
+                )
+                lines.append(
+                    f"• SemiAnalysis 추정: Rubin HBM 컨트롤러·PHY 약 {float(nv.get('rubin_hbm_logic_phy_die_share_estimate_pct') or 0):g}% → "
+                    f"Feynman NVHBM 약 {float(nv.get('feynman_nvhbm_interface_die_share_estimate_pct') or 0):g}%"
+                )
+                std_area = float(nv.get("samsung_standard_hbm4_phy_width_mm") or 0) * float(nv.get("samsung_standard_hbm4_phy_height_mm") or 0)
+                d2d_area = float(nv.get("samsung_custom_d2d_width_mm") or 0) * float(nv.get("samsung_custom_d2d_height_mm") or 0)
+                lines.append(
+                    f"• SemiAnalysis가 인용한 Samsung 예시: 표준 PHY {std_area:g}mm² → Custom D2D {d2d_area:g}mm² · "
+                    f"면적 약 -{float(nv.get('samsung_custom_d2d_area_reduction_pct_estimate') or 0):.1f}%"
+                )
+                lines.append(
+                    "• 정확성 잠금: 16%→4%와 Samsung 약 60%는 리서치·발표자료 기반 추정/인용이고 NVIDIA 공식 다이면적 실측값이 아닙니다. +25%와 +30%도 서로 다른 NVIDIA 공식 면적 정의라 합산하지 않습니다."
                 )
             if category == "jpm_hbm_structural" and e.get("jpm_hbm_state"):
                 js = e["jpm_hbm_state"]
@@ -2509,6 +2856,35 @@ def main() -> None:
     if nextgen_changes and not first_run:
         verified_events.append(samsung_nextgen_hbm_event(nextgen_state, list(dict.fromkeys(nextgen_changes))))
 
+    nvhbm_state = dict(state.get("nvhbm_architecture") or {})
+    nvhbm_track_version = int(state.get("nvhbm_architecture_track_version") or 0)
+    if nvhbm_track_version < NVHBM_ARCH_TRACK_VERSION:
+        seeded = dict(NVHBM_ARCH_BASELINE)
+        seeded.update({k: v for k, v in nvhbm_state.items() if v not in (None, "")})
+        nvhbm_state = seeded
+        nvhbm_track_version = NVHBM_ARCH_TRACK_VERSION
+
+    nvhbm_changes: list[str] = []
+    for raw in raw_events:
+        if raw.get("category") != "nvhbm_architecture":
+            continue
+        enriched = enrich_event(raw)
+        if not enriched.get("link_verified"):
+            continue
+        quality = source_quality(enriched.get("origin_source") or enriched.get("source") or "")
+        if quality == "일반 보도":
+            continue
+        obs = extract_nvhbm_architecture(enriched)
+        if not obs:
+            continue
+        merged = merge_nvhbm_architecture(nvhbm_state, obs)
+        changes = nvhbm_architecture_changes(nvhbm_state, merged)
+        nvhbm_state = merged
+        if changes:
+            nvhbm_changes.extend(changes)
+    if nvhbm_changes and not first_run:
+        verified_events.append(nvhbm_architecture_event(nvhbm_state, list(dict.fromkeys(nvhbm_changes))))
+
     thermal_state = dict(state.get("samsung_hbm4e_thermal_package") or {})
     thermal_track_version = int(state.get("samsung_hbm4e_thermal_track_version") or 0)
     if thermal_track_version < SAMSUNG_HBM4E_THERMAL_TRACK_VERSION:
@@ -2661,6 +3037,8 @@ def main() -> None:
         "samsung_hbm4_price": samsung_price_state,
         "samsung_nextgen_hbm_track_version": nextgen_track_version,
         "samsung_nextgen_hbm": nextgen_state,
+        "nvhbm_architecture_track_version": nvhbm_track_version,
+        "nvhbm_architecture": nvhbm_state,
         "samsung_hbm4e_thermal_track_version": thermal_track_version,
         "samsung_hbm4e_thermal_package": thermal_state,
         "jpm_hbm_structural_track_version": jpm_track_version,
@@ -2697,6 +3075,7 @@ def main() -> None:
         f"- Rubin Ultra HBM option typed changes: {len(rubin_options_changes)}",
         f"- Samsung HBM4 price typed changes: {len(samsung_price_changes)}",
         f"- Samsung next-gen HBM typed changes: {len(nextgen_changes)}",
+        f"- NVIDIA NVHBM/custom-HBM typed changes: {len(nvhbm_changes)}",
         f"- Samsung HBM4E thermal/package typed changes: {len(thermal_changes)}",
         f"- J.P. Morgan HBM structural typed changes: {len(jpm_changes)}",
         f"- Micron SCA/RPO typed changes: {len(micron_changes)}",
