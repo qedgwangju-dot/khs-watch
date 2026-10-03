@@ -36,6 +36,95 @@ def fixture(title: str, body: str) -> str:
 
 
 class DetailQueueChecks(unittest.TestCase):
+    def test_government_response_does_not_turn_disputed_oil_project_into_a_deal(self):
+        title = '트럼프, 84억弗 석유 프로젝트 압박…정부 "팩트시트 이행이 원칙"'
+        body = ('정부는 도널드 트럼프 미국 대통령이 언급한 84억 달러 규모의 원유 회수 증진(EOR) 프로젝트와 '
+                '관련해 "한미 공동 팩트시트에 명시된 합의를 충실히 이행한다"는 원칙을 재확인했다. '
+                '트럼프 대통령이 새롭게 언급한 원유 회수 증진 프로젝트는 한미 양국이 앞서 발표한 공동 '
+                '팩트시트에는 포함돼 있지 않다. 정부는 현 단계에서 해당 사업의 추진 여부를 말하기 어렵다는 입장이다. '
+                '앞서 트럼프 대통령은 84억 달러 규모 사업을 거론했다.')
+        audit = radar.market_materiality.assess(title, body)
+        self.assertEqual(audit['disposition'], 'keep', audit)
+        self.assertEqual(audit['priority'], 2, audit)
+        core = radar.detailed_article_core(title, body)
+        for term in ('트럼프', '84억 달러', '원유회수증진', '팩트시트에 없고', '정부', '밝히기 어렵다는'):
+            self.assertIn(term, core)
+        self.assertNotIn('확정했다', core)
+        self.assertNotIn('체결했다', core)
+        self.assertNotIn('관세', core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertTrue(radar.market_materiality.core_focus_aligned(title, core), core)
+        item = {'source_title': title, 'source_body': body, 'body_verified': True}
+        self.assertIn(':denial:', radar.market_materiality.source_event_identity(item))
+        conversion = radar.build_alert_fx_conversion({**item, 'telegram_core_fact': core},
+                        {'rates': {'USD': {'value': 1350, 'status': 'fixture', 'source': 'unit test'}}}, NOW)
+        converted = radar.compact_converted_core(core, conversion)
+        self.assertIn('84억 달러(약 11조원)', converted)
+        self.assertIn('정부', converted)
+        self.assertIn('어렵다는', converted)
+        self.assertTrue(radar.core_sentence_is_complete(converted), converted)
+        row = {'title': title, 'source_title': title, 'source_body': body, 'source_abstract': body,
+               'body_verified': True, 'publisher': '뉴시스', 'source': '뉴시스',
+               'link': 'https://www.newsis.com/view/NISX20261003_0003813735', 'published': NOW}
+        alert = radar.build_verified_korean_business_alert(row, NOW)
+        self.assertIsNotNone(alert)
+        selected = radar.quality_display_alerts([alert], 1)
+        self.assertEqual(len(selected), 1, alert.get('_exclusion_reason'))
+        self.assertEqual(radar.source_core_fact_errors(selected[0]), [])
+        self.assertIn('정부', selected[0]['telegram_core_fact'])
+
+    def test_authorized_capital_is_a_proposal_not_an_issued_share_or_disclaimer(self):
+        title = 'YSX 테크, 수권자본 4400배 증액 추진..19일 임시주총 소집'
+        event = ('YSX 테크(YSXT)가 수권자본을 5만 달러에서 2억2000만 달러로 4400배 늘리는 안건 등 '
+                 '3개 안건을 표결에 부치기 위해 10월 19일 임시주주총회(EGM)를 소집한다고 2일 발표했다.')
+        warning = ('회사는 이번 증액만으로 기존 주주의 지분율이나 경제적 권리에 즉각적인 희석 효과는 없으며, '
+                   '증액 승인만으로 신주가 발행되지는 않는다고 밝혔다.')
+        body = event + ' ' + warning
+        audit = radar.market_materiality.assess(title, body)
+        self.assertEqual(audit['disposition'], 'keep', audit)
+        self.assertEqual(audit['priority'], 2, audit)
+        self.assertTrue(all(item['stage'] == 'early_signal' for item in audit['evidence']), audit)
+        self.assertFalse(radar.market_materiality.core_focus_aligned(title, warning))
+        core = radar.detailed_article_core(title, body)
+        for term in ('YSX 테크', '수권자본', '2억2000만 달러', '4400배', '10월 19일', '상정한다', '확정된 것은 아니다'):
+            self.assertIn(term, core)
+        self.assertNotIn('발행했다', core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        self.assertEqual(radar.market_materiality.assess(title, warning)['disposition'], 'review')
+
+    def test_industry_analysis_uses_attributed_estimate_not_generic_price_support(self):
+        title = '270조 투자 호재에도 원전주는 시큰둥…먼저 돈 되는 곳 따로 있다고?'
+        generic = '같은 AI 투자 사이클에서 상대적으로 수주·매출 가능성이 높은 데이터센터는 최근 금리 상승기에도 불구하고 대형 건설사 주가를 지탱하고 있다.'
+        estimate = ('김세련 LS증권 연구원은 “데이터센터는 인허가 기간을 제외하고 단순 시공 기준으로 2년 정도의 '
+                    '시간이 소요되기 때문에 올해부터 가시적으로 발주가 나올 것으로 예상된다”면서 '
+                    '“데이터센터 발주 시장 규모는 100조원 정도로 추산되는데 대형 건설사들에 기회가 될 것”이라고 말했다.')
+        body = '원전·발전 인프라 종목은 수주 규모와 세부 조건 불확실성 속에 주춤했다. ' + generic + ' ' + estimate
+        audit = radar.market_materiality.assess(title, body)
+        self.assertEqual(audit['disposition'], 'keep', audit)
+        self.assertEqual(audit['priority'], 2, audit)
+        self.assertNotIn('commercial_order', [item['kind'] for item in audit['evidence']])
+        self.assertNotIn('policy_scope_or_stage', [item['kind'] for item in audit['evidence']])
+        self.assertEqual(audit['transmission_scope_rank'], 2, audit)
+        self.assertFalse(radar.market_materiality.core_focus_aligned(title, generic))
+        core = radar.detailed_article_core(title, body)
+        for term in ('LS증권', '100조원', '추산했다', '인허가를 제외', '약 2년', '예상했다'):
+            self.assertIn(term, core)
+        self.assertNotIn('체결', core)
+        self.assertTrue(radar.core_sentence_is_complete(core), core)
+        empty = radar.market_materiality.assess(title, generic)
+        self.assertLess(empty['priority'], 2, empty)
+        candidate = {'news': title, 'source_title': title, 'source_body': body, 'body_verified': True,
+                     'korean_business_news': True, 'local_dc_policy': True}
+        self.assertFalse(radar.is_local_dc_like(candidate))
+        self.assertTrue(radar.is_local_dc_like({**candidate, 'source_body': body + ' 시의회는 신규 데이터센터 금지 조례를 의결했다.'}))
+        row = {'title': title, 'source_title': title, 'source_body': body, 'source_abstract': body,
+               'body_verified': True, 'publisher': '매일경제', 'source': '매일경제',
+               'link': 'https://stock.mk.co.kr/news/view/1169349', 'published': NOW}
+        alert = radar.build_verified_korean_business_alert(row, NOW)
+        selected = radar.quality_display_alerts([alert], 1)
+        self.assertEqual(len(selected), 1, alert.get('_exclusion_reason'))
+        self.assertEqual(radar.source_core_fact_errors(selected[0]), [])
+
     def test_political_profile_macro_background_is_not_new_market_release(self):
         title = '중남미 7개 대선 모두 우파 승리…룰라·보우소나루 아들 4일 격돌(종합)'
         body = ('브라질 대선에서는 현직 대통령과 야당 후보가 맞붙는다. '

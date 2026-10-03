@@ -2301,6 +2301,42 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         return ""
     focus = market_materiality.focus_kind(title)
     source = " ".join(sentences)
+    if focus == "project_response" and re.search(r"트럼프", title) and re.search(r"원유\s*회수\s*증진", source):
+        amount = re.search(r"(\d+(?:\.\d+)?\s*억\s*달러)[^.!?]{0,35}원유\s*회수\s*증진", source)
+        omitted = re.search(r"원유\s*회수\s*증진\s*프로젝트[^.!?]{0,100}공동\s*팩트시트[^.!?]{0,30}포함[^.!?]{0,15}않", source)
+        uncertain = re.search(r"(?:해당\s*)?사업의?\s*추진\s*여부[^.!?]{0,20}말하기\s*어렵", source)
+        if amount and omitted and uncertain:
+            fact = (f"트럼프의 {amount.group(1)} 원유회수증진 사업은 공동 팩트시트에 없고, "
+                    "정부는 추진 여부를 밝히기 어렵다는 입장이다.")
+            if core_sentence_is_complete(fact):
+                return fact
+    if focus == "authorized_capital":
+        issuer = re.match(r"^([^,，]{2,35})[,，]", title)
+        for sentence in sentences:
+            change = re.search(r"수권자본을\s*\d[\d,.]*\s*(?:만|억)?\s*달러에서\s*(\d[\d,.억만천\s]*달러)로\s*(\d[\d,]*)배\s*늘리는\s*안건", sentence)
+            meeting = re.search(r"(\d{1,2}월\s*\d{1,2}일)\s*임시주주총회", sentence)
+            if issuer and change and meeting and re.search(r"소집한다고|상정한다고|표결", sentence):
+                name = issuer.group(1)
+                fact = (f"{name}{korean_topic_particle(name)} 수권자본을 {change.group(1)}로 "
+                        f"{change.group(2)}배 늘리는 안건을 {meeting.group(1)} 임시주총에 상정한다.")
+                if re.search(r"신주\s*발행\s*규모와\s*시기[^.!?]{0,45}제시되지|증액\s*승인만으로\s*신주가\s*발행되지는\s*않", source):
+                    fact += " 신주 발행이 확정된 것은 아니다."
+                if core_sentence_is_complete(fact):
+                    return fact
+    if focus == "industry_outlook":
+        for sentence in sentences:
+            if not market_materiality.focus_matches(title, sentence):
+                continue
+            analyst = re.search(r"([A-Za-z가-힣&]+증권)\s*연구원", sentence)
+            estimate = re.search(r"(데이터센터)\s*발주\s*시장\s*규모는\s*(\d[\d,.]*\s*(?:조|억)\s*원)\s*(?:정도로\s*)?추산", sentence)
+            duration = re.search(r"인허가\s*기간을\s*제외하고\s*단순\s*시공\s*기준으로\s*(\d+)년", sentence)
+            if analyst and estimate:
+                context = "원전 투자 수혜 분석에서 " if "원전" in title and "원전" in source else ""
+                fact = f"{context}{analyst.group(1)}은 {estimate.group(1)} 발주시장을 {estimate.group(2)}으로 추산했다."
+                if duration:
+                    fact += f" 인허가를 제외한 시공기간은 약 {duration.group(1)}년으로 예상했다."
+                if core_sentence_is_complete(fact):
+                    return fact
     if focus == "commercial_order":
         for sentence in sentences:
             issuer = re.match(r"^([A-Za-z0-9가-힣&·]+(?:\s+[A-Za-z0-9가-힣&·]+){0,4})\s*(?:\([A-Za-z0-9.-]+\))?(?:은|는|이|가)\s+", sentence)
@@ -8246,6 +8282,15 @@ def has_decision_impact(alert: dict) -> bool:
 
 def is_local_dc_like(alert: dict) -> bool:
     text = alert_text(alert)
+    title = str(alert.get("source_title") or alert.get("news") or "")
+    source = article_summary_body(str(alert.get("source_body") or "")) if alert.get("body_verified") else ""
+    if alert.get("body_verified") and market_materiality.focus_kind(title) == "industry_outlook" and not re.search(
+        r"조례|모라토리엄|공청회|시의회|군의회|인허가.{0,15}(?:승인|거부|부결|금지)|"
+        r"zoning|moratorium|public hearing|city council|county board|permit denied", f"{text} {source}", re.I,
+    ):
+        # Excluding permit time from a construction estimate is not a local
+        # permitting decision, even when a legacy collector assigned that lane.
+        return False
     return bool(alert.get("local_dc_policy")) or (
         has_term(text, ["data center", "data centers", "데이터센터"])
         and has_term(text, ["zoning", "moratorium", "residents", "ordinance", "permit", "public hearing", "주민", "인허가"])
