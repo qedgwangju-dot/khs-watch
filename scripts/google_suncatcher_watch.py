@@ -51,6 +51,20 @@ TRUSTED_NEWS_SOURCES = {
     "Reuters", "Ars Technica", "SpaceNews", "The New York Times", "TechCrunch",
     "CNBC", "The Verge", "NPR", "Space.com", "Google", "blog.google",
 }
+
+SOURCE_LABEL_KO = {
+    "blog.google": "구글 공식",
+    "Google": "구글 공식",
+    "Reuters": "로이터",
+    "Ars Technica": "아스테크니카",
+    "SpaceNews": "스페이스뉴스",
+    "The New York Times": "뉴욕타임스",
+    "TechCrunch": "테크크런치",
+    "CNBC": "씨엔비씨",
+    "The Verge": "더버지",
+    "NPR": "엔피알",
+    "Space.com": "스페이스닷컴",
+}
 MEASUREMENT_CONTEXT = (
     "in orbit", "in-orbit", "on orbit", "flight data", "telemetry", "measured",
     "measurement", "recorded", "observed", "during the mission", "during our experiment",
@@ -233,7 +247,8 @@ def news_story_key(title: str, source: str) -> str:
 def korean_news_summary(item: dict) -> str:
     title = item.get("title", "")
     low = title.lower()
-    source = item.get("source") or "출처 미표기"
+    raw_source = item.get("source") or ""
+    source = SOURCE_LABEL_KO.get(raw_source, "신뢰 출처")
     if "prototype satellite is in orbit" in low or ("suncatcher" in low and "in orbit" in low):
         return f"• {source}: 프로젝트 선캐처 시험위성의 궤도 진입을 확인한 공식 게시물"
     if "launch" in low or "launched" in low:
