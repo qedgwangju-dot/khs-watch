@@ -1622,7 +1622,8 @@ def _extract_dgx_spark_memory_price(item: dict) -> dict | None:
         obs["sku_64_price_usd"] = p64
 
     p128 = price((
-        r"128\s*GB[^.]{0,220}?(?:Founders?\s+Edition|FE)?[^.]{0,120}?(?:raised|increase(?:d)?|jumps?|hike(?:d)?|price(?:d)?|MSRP|涨价至|售价|价格)[^$0-9]{0,40}(?:to\s*)?(?:\$|USD\s*)?([0-9][0-9,]{3,})",
+        r"128\s*GB[^.]{0,220}?(?:Founders?\s+Edition|FE)?[^.]{0,120}?(?:raised|increase(?:d)?|jumps?|hike(?:d)?|price(?:d)?|MSRP)[^.]{0,100}?(?:from\s*(?:\$|USD\s*)?[0-9][0-9,]{3,}\s*)?to\s*(?:\$|USD\s*)?([0-9][0-9,]{3,})",
+        r"128\s*GB[^.]{0,220}?(?:Founders?\s+Edition|FE)?[^.]{0,120}?(?:涨价至|售价|价格)[^$0-9]{0,40}(?:\$|USD\s*)?([0-9][0-9,]{3,})",
         r"(?:\$|USD\s*)([0-9][0-9,]{3,})[^.]{0,100}?128\s*GB",
         r"128\s*GB[^.]{0,180}?([0-9][0-9,]{3,})\s*(?:USD|dollars?|美元)",
     ))
@@ -2634,9 +2635,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             lines.append("  원가 신호: 메모리 공급제약·가격 상승이 완제품의 가격 인상과 64GB 신규 SKU로 실제 전가된 상태")
         lines.append("  의미: 공급사 ASP 전망보다 한 단계 downstream에서 메모리 부족이 제품 가격·용량 구성까지 바꿨는지 확인하는 실물 지표")
         lines.append("  다음 확인: 10/23 OEM 실제 판매가·재고, 128GB Founders Edition 현행 MSRP, LPDDR5X 계약가, 64GB↔128GB 판매 비중")
-        official = dgx_spark_state.get("source_url") or DGX_SPARK_MEMORY_PRICE_BASELINE.get("source_url")
-        secondary = dgx_spark_state.get("secondary_source_url") or DGX_SPARK_MEMORY_PRICE_BASELINE.get("secondary_source_url")
-        prior_source = dgx_spark_state.get("prior_price_source_url") or DGX_SPARK_MEMORY_PRICE_BASELINE.get("prior_price_source_url")
+        official = DGX_SPARK_MEMORY_PRICE_BASELINE.get("source_url")
+        secondary = DGX_SPARK_MEMORY_PRICE_BASELINE.get("secondary_source_url")
+        prior_source = DGX_SPARK_MEMORY_PRICE_BASELINE.get("prior_price_source_url")
+        if dgx_spark_source_url and dgx_spark_source_url != official:
+            lines.append('  <a href="' + html.escape(str(dgx_spark_source_url), quote=True) + '">이번 변화 근거</a>')
         if official:
             lines.append('  <a href="' + html.escape(str(official), quote=True) + '">NVIDIA 공식 64GB 발표</a>')
         if secondary:
