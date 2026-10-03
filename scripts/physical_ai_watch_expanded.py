@@ -38,16 +38,22 @@ base.QUERIES.extend([
     '(베어로보틱스 OR "Bear Robotics") (상장 OR IPO OR Nasdaq OR 나스닥 OR 프리IPO OR pre-IPO OR 투자유치 OR valuation)',
     '(GPT-6 Astra OR OpenAI OR "Gemini Robotics" OR "frontier AI" OR 프런티어AI) (robotics OR 로보틱스 OR robot OR 로봇 OR humanoid OR 휴머노이드 OR embodied AI OR 피지컬AI) (planning OR reasoning OR action model OR 행동모델 OR VLA OR RFM OR robot foundation model OR 배치 OR deployment OR integration OR 통합)',
     '("Google DeepMind" OR DeepMind OR "Gemini Robotics") (robot OR robotics OR humanoid OR 로봇 OR 휴머노이드) ("new partner" OR partnership OR "general availability" OR "public API" OR pricing OR license OR "customer deployment" OR 신규 파트너 OR 파트너십 OR 정식 출시 OR 공개 API OR 가격 OR 사용권 OR 고객 배치)',
+    '("FieldAI" OR "Field AI") (funding OR financing OR valuation OR investor OR "$700 million" OR "$10 billion" OR 투자유치 OR 기업가치 OR 투자자 OR 조달)',
+    '("FieldAI" OR "Field AI") (revenue OR contracts OR backlog OR bookings OR customers OR deployments OR ARR OR 매출 OR 계약 OR 수주잔고 OR 고객 OR 배치) (30 OR "$135 million" OR "$100 million" OR expansion OR production OR multi-site OR enterprise OR 확대 OR 신규)',
+    '("FieldAI" OR "Field AI") (Hyundai OR 현대차 OR 기아 OR "Boston Dynamics" OR Caterpillar OR Certis OR NVIDIA) (investment OR partnership OR contract OR Atlas OR RMAC OR HMGMA OR deployment OR licensing OR 투자 OR 협력 OR 계약 OR 배치 OR 사용권)',
 ])
 
 base.TRUSTED.update({
     '이데일리', 'EDAILY', '뉴스핌', 'Investors Business Daily', 'Reuters',
     'The Robot Report', '澎湃新闻', 'The Paper', '第一财经', 'IT之家',
+    'Business Insider', '조선비즈', 'ChosunBiz', '연합뉴스', '전자신문',
+    'Orange County Business Journal',
 })
 base.OFFICIAL_OR_PRIMARY.update({
     'XPENG', 'XPeng', '小鹏汽车', 'LG전자', 'LG Electronics',
     'Google DeepMind', 'DeepMind', 'Physical Intelligence', 'NVIDIA', 'NVIDIA Developer',
     'POSCO DX', '포스코DX', 'NC AI', '엔씨AI', 'Agility Robotics',
+    'FieldAI', 'Field AI',
 })
 base.MAX_ALERTS = 8
 
@@ -158,6 +164,107 @@ RFM_FIELD = re.compile(r'factory|industrial\s*site|production\s*site|현장|공�
 RFM_COMMERCIAL = re.compile(r'customer|고객|contract|계약|license|라이선스|paid|유료|commercial|상용|order|수주', re.I)
 RFM_MEASURED = re.compile(r'success\s*rate|성공률|latency|지연|benchmark|벤치마크|\d+(?:\.\d+)?\s*%', re.I)
 RFM_EXPLAINER = re.compile(r'부상|떠오르|경쟁\s*본격화|전망|주목|핵심\s*기술|what\s+is|explainer|overview', re.I)
+
+FIELD_AI_ID = re.compile(r'\bFieldAI\b|\bField\s+AI\b|Field\s+Foundation\s+Models?', re.I)
+FIELD_AI_FUNDING = re.compile(r'funding|financing|fundraise|raise|raised|valuation|투자\s*유치|자금\s*조달|기업\s*가치|밸류에이션', re.I)
+FIELD_AI_CURRENT_FUNDING = re.compile(
+    r'(?:\$?\s*700\s*million|\$?700M|7\s*억\s*달러).{0,140}(?:\$?\s*10\s*billion|\$?10B|100\s*억\s*달러)|'
+    r'(?:\$?\s*10\s*billion|\$?10B|100\s*억\s*달러).{0,140}(?:\$?\s*700\s*million|\$?700M|7\s*억\s*달러)',
+    re.I,
+)
+FIELD_AI_PROPOSED = re.compile(
+    r'set\s+to\s+raise|raising|seeking|in\s+talks|proposed|not\s+(?:yet\s+)?(?:closed|finalized)|'
+    r'not\s+formally\s+closed|추진\s*중|유치\s*추진|협의\s*중|최종\s*(?:계약|투자).{0,30}(?:전|아니)|확정\s*전',
+    re.I,
+)
+FIELD_AI_CLOSED = re.compile(
+    r'funding\s+(?:round\s+)?(?:closed|completed|finalized)|closed\s+(?:a\s+)?(?:funding\s+)?round|'
+    r'completed\s+(?:a\s+)?(?:funding\s+)?round|조달\s*(?:완료|종결)|투자\s*유치\s*(?:완료|확정)|납입\s*(?:완료|종료)',
+    re.I,
+)
+FIELD_AI_FUNDING_REVERSE = re.compile(
+    r'funding.{0,80}(?:cancel|withdraw|delay|down\s*round|lower\s+valuation)|'
+    r'(?:cancel|withdraw|delay|down\s*round|lower\s+valuation).{0,80}funding|'
+    r'투자\s*유치.{0,80}(?:취소|철회|지연|연기)|기업\s*가치.{0,40}(?:하향|삭감)',
+    re.I,
+)
+FIELD_AI_CURRENT_COMMERCIAL = re.compile(
+    r'(?:\$?\s*135\s*million|\$?135M|1억\s*3500만\s*달러).{0,180}(?:30\+?|30개|30\s*customers?|30\s*clients?)|'
+    r'(?:30\+?|30개|30\s*customers?|30\s*clients?).{0,180}(?:\$?\s*135\s*million|\$?135M|1억\s*3500만\s*달러)',
+    re.I,
+)
+FIELD_AI_COMMERCIAL_METRIC = re.compile(
+    r'(?:revenue|매출|ARR|bookings?|계약\s*규모|contracted\s+backlog|customer\s+contracts?|수주\s*잔고|수주잔고).{0,100}'
+    r'(?:\$\s*\d|\d[\d,.]*\s*(?:million|billion|억\s*달러|만\s*달러))|'
+    r'(?:\$\s*\d|\d[\d,.]*\s*(?:million|billion|억\s*달러|만\s*달러)).{0,100}'
+    r'(?:revenue|매출|ARR|bookings?|계약\s*규모|contracted\s+backlog|customer\s+contracts?|수주\s*잔고|수주잔고)',
+    re.I,
+)
+FIELD_AI_CUSTOMER_COUNT = re.compile(r'\b\d{2,4}\+?\s*(?:customers?|clients?)\b|\d{2,4}\+?\s*(?:개|곳)\s*(?:고객|고객사)', re.I)
+FIELD_AI_HYUNDAI = re.compile(r'Hyundai|현대차|현대자동차|기아|Kia', re.I)
+FIELD_AI_ATLAS = re.compile(r'Atlas|아틀라스|RMAC|HMGMA|Robot\s*Metaplant\s*Application\s*Center', re.I)
+FIELD_AI_HYUNDAI_STAKE = re.compile(
+    r'(?:Hyundai|현대차|현대자동차|기아|Kia).{0,120}(?:stake|equity|ownership|follow[-\s]*on\s+investment|additional\s+investment|지분|추가\s*투자|후속\s*투자)|'
+    r'(?:stake|equity|ownership|follow[-\s]*on\s+investment|additional\s+investment|지분|추가\s*투자|후속\s*투자).{0,120}(?:Hyundai|현대차|현대자동차|기아|Kia)',
+    re.I,
+)
+FIELD_AI_HYUNDAI_BASELINE = re.compile(
+    r'(?:Hyundai|현대차|현대자동차|기아|Kia).{0,180}(?:financial\s+investment|invested|investment|수백만\s*달러|투자).{0,180}(?:FieldAI|Field\s+AI)|'
+    r'(?:FieldAI|Field\s+AI).{0,180}(?:Hyundai|현대차|현대자동차|기아|Kia).{0,180}(?:financial\s+investment|invested|investment|수백만\s*달러|투자)',
+    re.I,
+)
+FIELD_AI_CURRENT_PARTNERS = re.compile(r'Boston\s*Dynamics|Caterpillar|Certis|Big[-\s]*D\s*Construction|DPR\s*Construction|NVIDIA', re.I)
+FIELD_AI_PARTNER_EVENT = re.compile(
+    r'new\s+(?:strategic\s+)?partnership|partner(?:s|ed)?\s+with|strategic\s+partnership|customer\s+contract|'
+    r'production\s+deployment|enterprise[-\s]*scale\s+deployment|multi[-\s]*site\s+deployment|'
+    r'신규\s*(?:전략적\s*)?파트너|파트너십\s*(?:체결|발표)|고객\s*계약|생산\s*배치|전사\s*배치',
+    re.I,
+)
+FIELD_AI_NEGATIVE = re.compile(
+    r'customer\s+(?:loss|termination)|contract\s+(?:terminated|cancelled|canceled)|deployment\s+(?:halted|suspended)|'
+    r'partnership\s+(?:ended|terminated)|고객\s*이탈|계약\s*(?:해지|취소)|배치\s*(?:중단|정지)|파트너십\s*(?:종료|해지)',
+    re.I,
+)
+
+
+def _fieldai_stage(text: str, source: str = '') -> str:
+    if not FIELD_AI_ID.search(text):
+        return ''
+    official = source in {'FieldAI', 'Field AI'}
+    if FIELD_AI_FUNDING_REVERSE.search(text) or FIELD_AI_NEGATIVE.search(text):
+        return 'reverse'
+    if FIELD_AI_HYUNDAI.search(text) and FIELD_AI_ATLAS.search(text) and (
+        FIELD_AI_PARTNER_EVENT.search(text) or re.search(r'integrat|deploy|license|탑재|통합|배치|사용권|적용', text, re.I)
+    ):
+        return 'hyundai_atlas_integration'
+    if FIELD_AI_HYUNDAI_STAKE.search(text) and not FIELD_AI_HYUNDAI_BASELINE.search(text):
+        return 'hyundai_followon_or_stake'
+    if FIELD_AI_FUNDING.search(text) and FIELD_AI_CLOSED.search(text):
+        return 'funding_closed_official' if official else 'funding_closed_reported'
+    if FIELD_AI_COMMERCIAL_METRIC.search(text) or FIELD_AI_CUSTOMER_COUNT.search(text):
+        if FIELD_AI_CURRENT_COMMERCIAL.search(text):
+            return 'commercial_baseline'
+        if re.search(r'new|added|grew|growth|increased|surpassed|exceeded|crossed|since|신규|추가|증가|돌파|넘어|상회', text, re.I):
+            return 'commercial_metric_change'
+    if FIELD_AI_FUNDING.search(text):
+        if FIELD_AI_CURRENT_FUNDING.search(text) and (FIELD_AI_PROPOSED.search(text) or not FIELD_AI_CLOSED.search(text)):
+            return 'funding_proposed_baseline'
+        if re.search(r'\$\s*\d|\d[\d,.]*\s*(?:million|billion|억\s*달러)', text, re.I):
+            return 'funding_terms_change'
+    if FIELD_AI_HYUNDAI_BASELINE.search(text) and not FIELD_AI_HYUNDAI_STAKE.search(text):
+        return 'hyundai_investment_baseline'
+    if FIELD_AI_PARTNER_EVENT.search(text):
+        if FIELD_AI_CURRENT_PARTNERS.search(text) and not re.search(
+            r'Atlas|아틀라스|RMAC|HMGMA|Hyundai|현대차|Kia|기아|Figure\s*AI|Agility\s*Robotics|Unitree|XPENG|ROBOTIS|로보티즈',
+            text,
+            re.I,
+        ):
+            return 'partner_baseline'
+        return 'new_partner_or_deployment'
+    if FIELD_AI_CURRENT_PARTNERS.search(text):
+        return 'partner_baseline'
+    return 'background'
+
 
 AGILITY_ID = re.compile(r'Agility\s*Robotics|애질리티\s*로보틱스|Jonathan\s*Hurst|조너선\s*허스트', re.I)
 AGILITY_WHEEL = re.compile(r'wheeled|wheels?|wheel[-\s]*base|바퀴형|바퀴|휠|wheeled\s*base', re.I)
@@ -321,6 +428,8 @@ def _gemini_platform_stage(text: str) -> str:
 
 
 def topic_group(text: str) -> str | None:
+    if _fieldai_stage(text):
+        return 'fieldai'
     if _gemini_platform_stage(text) in {'new_partner','preview_expansion','ga','commercial'}:
         return 'frontier_ai'
     if re.search(r'삼현|SAMHYUN', text, re.I) and re.search(r'휴머노이드|humanoid|로봇|robot|액추에이터|actuator', text, re.I):
