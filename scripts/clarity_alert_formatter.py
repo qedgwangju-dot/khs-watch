@@ -556,8 +556,8 @@ def easy_meaning(event, body_ko):
         )
     if is_sec_3x_crypto_etp_approval(event):
         return (
-            "쉽게 말하면, 미국 증시에서 BTC·ETH 방향에 하루 3배로 베팅하는 규제 상품을 상장할 수 있게 된 것입니다. "
-            "다만 현물 코인을 3배 보유하는 상품이 아니라 선물 기반·일일 재설정 구조라 장기 수익률이 BTC·ETH 누적수익률의 정확히 3배가 되지는 않습니다."
+            "쉽게 말하면, Cboe BZX가 CME 비트코인·이더 선물 벤치마크의 하루 수익률을 3배 추종하는 BITH·ETHK를 상장할 수 있도록 SEC가 거래소 규칙을 승인한 것입니다. "
+            "현물 BTC·ETH를 3배 보유하는 상품이 아니고 매일 목표 배율을 재설정하므로, 며칠 이상 보유한 누적수익률은 기초자산 누적수익률의 정확한 3배가 아닙니다."
         )
     if "3038-af80" in signal or "regulation crypto asset transactions and regulation crypto asset markets" in signal:
         return (
