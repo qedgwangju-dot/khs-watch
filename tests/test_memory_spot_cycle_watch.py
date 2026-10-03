@@ -411,8 +411,8 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
 
     def test_dgx_spark_untrusted_republisher_does_not_promote_typed_state(self):
         item = {
-            "title": "DGX Spark 64GB now $5,999",
-            "description": "DGX Spark 64GB price increase due to memory shortage.",
+            "title": "Nvidia launches DGX Spark 64GB configuration with hardware partners",
+            "description": "A sparse repost with no price details.",
             "source": "Unknown Blog",
             "link": "https://example.com/dgx-spark",
             "published_kst": "2026-10-03T09:00:00+09:00",
