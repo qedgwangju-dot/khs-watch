@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/hormuz-maritime-telegram-watch.yml"
       - "scripts/hormuz_maritime_watch.py"
+      - "scripts/test_hormuz_maritime_watch.py"
   schedule:
     - cron: "*/15 * * * *"
   workflow_dispatch:
@@ -25,10 +26,15 @@ jobs:
       DRY_RUN: ${{ github.event_name == 'push' && 'true' || 'false' }}
 
     steps:
-      - name: Checkout
+      - name: Checkout latest main
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
+      - name: Refresh latest main
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
 
       - name: Set up Python
         uses: actions/setup-python@v5
