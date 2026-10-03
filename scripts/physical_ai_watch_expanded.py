@@ -859,6 +859,21 @@ def risk(cat: str) -> str:
 
 def verification(item: dict, group: str, text: str) -> str:
     source = item.get('source') or ''
+    if group == 'nvidia_robotics_exec':
+        stage = _nvidia_robotics_exec_stage(text, source)
+        if stage == 'official_rhetoric_baseline':
+            return 'NVIDIA 공식 기준선 · 2025 coming / 2026 CES is here 반복 수사는 새 시간표 아님'
+        if stage in {'roadshow_within_year_unverified','within_year_unverified','timeline_unverified'}:
+            return '비공개·2차 전언 단계 · NVIDIA 원문/영상/직접 인용 공개자료에서 동일 문구 재확인 전'
+        if stage == 'within_year_confirmed':
+            return 'NVIDIA 공식자료 또는 Reuters·Bloomberg·CNBC·FT·The Information의 직접 인용으로 12개월 이내 시간표 확인'
+        if stage == 'timeline_change':
+            return 'NVIDIA/Jensen 직접 인용이 포함된 신뢰 자료 · 기존 near-term 기준선 대비 시간표 변경'
+        if stage in {'general_brain_execution','quantified_deployment'}:
+            if source in base.OFFICIAL_OR_PRIMARY:
+                return 'NVIDIA 공식자료 · 범용 로봇 두뇌/배치/생산 정량지표 직접 확인'
+            return '신뢰 매체 보도 · NVIDIA 및 로봇 파트너 공식자료 교차확인'
+        return 'NVIDIA 로보틱스 관련 보도 · 1차자료 추가확인'
     if group == 'fieldai':
         stage = _fieldai_stage(text, source)
         if stage == 'funding_proposed_baseline':
@@ -923,6 +938,17 @@ def same_event(a: dict, b: dict) -> bool:
     ta = f"{a.get('title','')} {a.get('description','')}"
     tb = f"{b.get('title','')} {b.get('description','')}"
     g = a.get('group')
+    if g == 'nvidia_robotics_exec':
+        sa, sb = _nvidia_robotics_exec_stage(ta, a.get('source') or ''), _nvidia_robotics_exec_stage(tb, b.get('source') or '')
+        if sa != sb:
+            return False
+        if sa in {'official_rhetoric_baseline','roadshow_within_year_unverified','within_year_unverified'}:
+            return True
+        nums_a = set(re.findall(r'\d[\d,.]*\s*(?:months?|years?|robots?|units?|customers?|sites?|대|개|곳|개월|년)', ta, re.I))
+        nums_b = set(re.findall(r'\d[\d,.]*\s*(?:months?|years?|robots?|units?|customers?|sites?|대|개|곳|개월|년)', tb, re.I))
+        if nums_a and nums_b:
+            return bool(nums_a & nums_b)
+        return True
     if g == 'fieldai':
         sa, sb = _fieldai_stage(ta, a.get('source') or ''), _fieldai_stage(tb, b.get('source') or '')
         if sa != sb:
@@ -979,6 +1005,15 @@ def same_event(a: dict, b: dict) -> bool:
 def key(item: dict) -> str:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     group = base.topic_group(text)
+    if group == 'nvidia_robotics_exec':
+        stage = _nvidia_robotics_exec_stage(text, item.get('source') or '')
+        if stage == 'official_rhetoric_baseline':
+            return hashlib.sha256(b'nvidia-robotics|chatgpt-moment|official-rhetoric-baseline|ces2026-here').hexdigest()
+        if stage == 'roadshow_within_year_unverified':
+            return hashlib.sha256(b'nvidia-robotics|roadshow|within-a-year|unverified-user-baseline').hexdigest()
+        nums = '|'.join(sorted(set(re.findall(r'\d[\d,.]*\s*(?:months?|years?|robots?|units?|customers?|sites?|대|개|곳|개월|년)', text, re.I)))[:6]) or 'no-number'
+        horizon = '12m' if NVIDIA_WITHIN_YEAR.search(text) else ('longer' if NVIDIA_LONGER_HORIZON.search(text) else 'no-horizon')
+        return hashlib.sha256(f'nvidia-robotics|{stage}|{horizon}|{nums}'.encode()).hexdigest()
     if group == 'fieldai':
         stage = _fieldai_stage(text, item.get('source') or '')
         if stage == 'funding_proposed_baseline':
