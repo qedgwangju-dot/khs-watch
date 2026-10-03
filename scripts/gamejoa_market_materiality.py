@@ -734,7 +734,7 @@ def assess(title: str, body: str) -> dict:
                 continue
             # Campaign rhetoric and retrospective blame are not new macro data.
             # A concrete policy proposal or current escalation remains eligible.
-            if electoral and kind not in {"policy_scope_or_stage", "export_control_scope", "energy_geopolitics_or_supply_risk"}:
+            if electoral and kind not in {"policy_scope_or_stage", "export_control_scope", "energy_geopolitics_or_supply_risk", "energy_stockpile_action", "conditional_project_charge"}:
                 continue
             if not anchored and not adjacent and not focus_kind(title) and not subject.search(title):
                 continue

@@ -2030,6 +2030,17 @@ class ForegroundAndEventIdentityTests(unittest.TestCase):
         self.assertNotIn("G7", core)
         self.assertNotIn("방출", core)
 
+    def test_scoped_stockpile_refill_is_not_excluded_only_because_speech_was_at_rally(self):
+        title = '트럼프, 미국 비축유 다시 채운다'
+        body = '트럼프는 선거 유세에서 발언했다. 트럼프는 미국의 전략비축유를 다시 채우겠다고 발표했다. 앞서 G7은 비축유 1억 배럴을 4개월 동안 방출하기로 합의했다.'
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit['disposition'], 'keep', audit)
+        self.assertGreaterEqual(audit['priority'], 2, audit)
+        self.assertTrue(any(item['kind'] == 'energy_stockpile_action' for item in audit['evidence']), audit)
+        core = radar.detailed_article_core(title, body)
+        self.assertIn('채우', core)
+        self.assertNotIn('G7', core)
+
     def test_unverified_body_cannot_invent_dedup_terms(self):
         item = alert("G7, 비축유 방출", "G7은 비축유 1억 배럴을 4개월 동안 방출한다.")
         item["body_verified"] = False
