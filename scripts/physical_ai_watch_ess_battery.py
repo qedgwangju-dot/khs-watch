@@ -202,6 +202,104 @@ EV46_SKON_DEV_BASE = re.compile(
 )
 EV46_SKON_QUALIFICATION = re.compile(r'customer\s*(?:qualification|validation|approval)|고객\s*(?:검증|인증|승인)|sample\s*(?:approved|qualification)|샘플\s*(?:승인|검증)', re.I)
 EV46_ANON_OEM = re.compile(r'European\s+global\s+(?:EV|automaker)|global\s+(?:EV|automaker|OEM)|유럽\s*글로벌\s*(?:완성차|전기차)|글로벌\s*(?:완성차|OEM)|U\.S\.\s*start[-\s]*up|미국\s*스타트업', re.I)
+SODIUM_RE = re.compile(r'sodium[-\s]*ion|나트륨\s*이온|나트륨이온|소듐\s*이온|소듐이온|钠离子|NAXTRA|낙스트라', re.I)
+SODIUM_ACTOR = re.compile(
+    r'CATL|宁德时代|HyperStrong|海博思创|LG에너지솔루션|LG\s*Energy\s*Solution|'
+    r'삼성SDI|Samsung\s*SDI|SK온|SK\s*On|EVE\s*Energy|亿纬锂能|이브에너지|'
+    r'HiNa\s*Battery|中科海钠|하이나배터리|Enertech|에너테크인터내셔널|에너테크|BYD',
+    re.I,
+)
+SODIUM_ESS = re.compile(r'\bESS\b|\bBESS\b|energy\s*storage|储能|에너지\s*저장|에너지저장|\bUPS\b|uninterruptible\s*power|무정전전원', re.I)
+SODIUM_BINDING = re.compile(r'supply\s*(?:contract|agreement)|purchase\s*order|binding\s*contract|수주|공급\s*계약|본계약|订单合作|合同', re.I)
+SODIUM_MOU = re.compile(r'\bMOU\b|strategic\s+cooperation|战略合作|업무\s*협약|양해\s*각서|협력\s*협약', re.I)
+SODIUM_GWH = re.compile(r'\d[\d,.]*\s*GWh', re.I)
+SODIUM_CAPACITY = re.compile(r'(?:capacity|产能|생산\s*능력|생산능력|line|production\s*line|产线|생산라인).{0,100}\d[\d,.]*\s*GWh|\d[\d,.]*\s*GWh.{0,100}(?:capacity|产能|생산\s*능력|생산능력|line|production\s*line|产线|생산라인)', re.I)
+SODIUM_SOP = re.compile(r'mass\s*production|commercial\s*production|series\s*production|batch\s*production|规模化商用|规模化量产|量产|批量生产|양산|상업\s*생산|대량\s*생산', re.I)
+SODIUM_SHIPMENT = re.compile(r'first\s*(?:shipment|delivery)|shipments?\s*(?:started|began|reached)|deliver(?:y|ies)\s*(?:started|began)|cumulative\s*shipments?|batch\s*delivery|批量交付|首批交付|累计出货|出货|첫\s*출하|초도\s*출하|출하\s*(?:개시|시작)|납품\s*(?:개시|시작)', re.I)
+SODIUM_INTL = re.compile(r'international|overseas|export|海外|国际|수출|해외', re.I)
+SODIUM_VALIDATION = re.compile(r'customer\s*(?:validation|qualification|test|sample)|technical\s*validation|sample\s*production|pilot\s*line|prototype|고객\s*(?:검증|인증|테스트)|샘플|시제품|파일럿\s*라인|试制|验证', re.I)
+SODIUM_PRICE = re.compile(r'(?:price|cost|价格|원가|가격).{0,80}(?:LFP|리튬인산철)|(?:LFP|리튬인산철).{0,80}(?:price|cost|价格|원가|가격)|\$\s*\d+(?:\.\d+)?\s*/\s*kWh|\d+(?:\.\d+)?\s*(?:yuan|RMB|위안)\s*/\s*(?:Wh|kWh)', re.I)
+SODIUM_PRICE_CONFIRMED = re.compile(r'contract\s*price|transaction\s*price|quoted\s*price|actual\s*price|成交价|报价|合同价|계약\s*단가|거래\s*가격|실제\s*가격|견적', re.I)
+SODIUM_DENSITY = re.compile(r'\d{3}\s*Wh\s*/\s*kg|\d{3}\s*Wh/kg|\d{3}\s*Wh/㎏', re.I)
+SODIUM_CYCLE = re.compile(r'\d[\d,]*\s*(?:cycles?|회\s*사이클|次循环)', re.I)
+SODIUM_REVERSE = re.compile(r'(?:sodium[-\s]*ion|나트륨이온|소듐이온|钠离子).{0,140}(?:delay|postpone|cancel|halt|suspend|cut|reduce|지연|연기|취소|중단|축소|감산)|(?:delay|postpone|cancel|halt|suspend|지연|연기|취소|중단|축소).{0,140}(?:sodium[-\s]*ion|나트륨이온|소듐이온|钠离子)', re.I)
+SODIUM_SAFETY_EVENT = re.compile(r'(?:sodium[-\s]*ion|나트륨이온|소듐이온|钠离子).{0,140}(?:thermal\s*runaway|fire|explosion|incident|recall|열폭주|화재|폭발|사고|리콜)|(?:thermal\s*runaway|fire|explosion|incident|recall|열폭주|화재|폭발|사고|리콜).{0,140}(?:sodium[-\s]*ion|나트륨이온|소듐이온|钠离子)', re.I)
+
+SODIUM_CATL_60_BASE = re.compile(
+    r'(?:CATL|宁德时代).{0,160}(?:HyperStrong|海博思创).{0,160}(?:60\s*GWh|three[-\s]*year|3年)|'
+    r'(?:60\s*GWh).{0,220}(?:CATL|宁德时代).{0,120}(?:HyperStrong|海博思创)',
+    re.I,
+)
+SODIUM_CATL_CAP_BASE = re.compile(
+    r'(?:Fuding|福鼎).{0,160}(?:40\s*GWh).{0,220}(?:Jining|济宁).{0,160}(?:160\s*GWh)|'
+    r'(?:40\s*GWh).{0,220}(?:160\s*GWh).{0,220}(?:CATL|宁德时代)',
+    re.I,
+)
+SODIUM_CATL_DELIVERY_PLAN_BASE = re.compile(
+    r'(?:September|9月|9월).{0,120}(?:first|首批|delivery|交付|납품|출하).{0,180}(?:1\s*GWh|end\s+of\s+2026|2026年末|2026년\s*말)|'
+    r'(?:1\s*GWh).{0,180}(?:2026).{0,160}(?:June\s+2027|2027年6月|2027년\s*6월|international|overseas|海外)',
+    re.I,
+)
+SODIUM_CATL_NAXTRA_BASE = re.compile(r'(?:NAXTRA|Naxtra|纳新|낙스트라).{0,140}(?:175\s*Wh/kg|175\s*Wh/㎏|175\s*Wh\s*/\s*kg)', re.I)
+SODIUM_EVE_BASE = re.compile(r'(?:EVE\s*Energy|亿纬锂能|이브에너지).{0,180}(?:NF155L|180\s*kWh|并网|grid[-\s]*connected).{0,220}(?:2026|batch\s*delivery|批量交付|钠电)', re.I)
+SODIUM_LGES_BASE = re.compile(
+    r'(?:LG에너지솔루션|LG\s*Energy\s*Solution).{0,180}(?:sodium[-\s]*ion|나트륨이온|소듐이온).{0,180}(?:2027|commercialization|상용화|ESS|12V|production\s*line|생산라인)|'
+    r'(?:2027).{0,180}(?:LG에너지솔루션|LG\s*Energy\s*Solution).{0,140}(?:sodium[-\s]*ion|나트륨이온|소듐이온)',
+    re.I,
+)
+SODIUM_SDI_BASE = re.compile(r'(?:삼성SDI|Samsung\s*SDI).{0,180}(?:sodium[-\s]*ion|나트륨이온|소듐이온).{0,180}(?:UPS|utility[-\s]*scale|ESS|long\s*lif|장수명|high\s*power|고출력|safety|안전)', re.I)
+SODIUM_SKON_BASE = re.compile(r'(?:SK온|SK\s*On).{0,180}(?:sodium[-\s]*ion|나트륨이온|소듐이온).{0,180}(?:prototype|시제품).{0,80}2027|2027.{0,120}(?:prototype|시제품).{0,140}(?:SK온|SK\s*On)', re.I)
+SODIUM_ENERTECH_BASE = re.compile(r'(?:Enertech|에너테크).{0,180}(?:140\s*[-~–]\s*160\s*Wh/kg|140\s*[-~–]\s*160\s*Wh/㎏|2027).{0,180}(?:January|1월|mass\s*production|양산|Chungju|충주)', re.I)
+
+
+def _sodium_stage(text: str, source: str = '') -> str:
+    if not (SODIUM_RE.search(text) and SODIUM_ACTOR.search(text)):
+        return ''
+    if SODIUM_REVERSE.search(text):
+        return 'reverse'
+    if SODIUM_SAFETY_EVENT.search(text):
+        return 'safety_event'
+
+    # Current execution baselines already known as of 2026-10-04.
+    if SODIUM_CATL_60_BASE.search(text):
+        return 'known_baseline'
+    if SODIUM_CATL_CAP_BASE.search(text):
+        return 'known_baseline'
+    if SODIUM_CATL_DELIVERY_PLAN_BASE.search(text) and not SODIUM_SHIPMENT.search(text):
+        return 'known_baseline'
+    if SODIUM_CATL_NAXTRA_BASE.search(text) and not SODIUM_NEW_EVENT.search(text):
+        return 'known_baseline'
+    if SODIUM_EVE_BASE.search(text) and not SODIUM_SHIPMENT.search(text):
+        return 'known_baseline'
+    if SODIUM_LGES_BASE.search(text) and not (SODIUM_VALIDATION.search(text) and re.search(r'completed|passed|approved|공급|승인|완료|통과', text, re.I)) and not SODIUM_SOP.search(text):
+        return 'known_baseline'
+    if SODIUM_SDI_BASE.search(text) and not re.search(r'(?:mass\s*production|양산).{0,80}(?:20\d{2}|\d+\s*GWh)|(?:20\d{2}|\d+\s*GWh).{0,80}(?:mass\s*production|양산)', text, re.I):
+        return 'known_baseline'
+    if SODIUM_SKON_BASE.search(text) and not re.search(r'completed|완료|customer|고객|sample|샘플', text, re.I):
+        return 'known_baseline'
+    if SODIUM_ENERTECH_BASE.search(text) and not re.search(r'(?:started|began|commenced|개시|시작|돌입).{0,60}(?:mass\s*production|양산)|(?:mass\s*production|양산).{0,60}(?:started|began|commenced|개시|시작|돌입)', text, re.I):
+        return 'known_baseline'
+
+    if SODIUM_PRICE.search(text) and SODIUM_PRICE_CONFIRMED.search(text):
+        return 'price_parity_or_transaction'
+    if SODIUM_SHIPMENT.search(text):
+        return 'international_or_batch_shipment' if SODIUM_INTL.search(text) else 'first_or_batch_shipment'
+    if SODIUM_SOP.search(text) and re.search(r'started|began|commenced|正式|已实现|개시|시작|돌입|양산\s*중|mass[-\s]*producing', text, re.I):
+        return 'mass_production_start'
+    if SODIUM_VALIDATION.search(text) and re.search(r'completed|passed|approved|selected|qualified|완료|통과|승인|선정|공급', text, re.I):
+        return 'customer_validation'
+    if SODIUM_BINDING.search(text) and SODIUM_GWH.search(text) and not SODIUM_MOU.search(text):
+        return 'binding_contract'
+    if SODIUM_CAPACITY.search(text) and re.search(r'commissioned|operational|started|completed|投产|建成|投运|가동|완공|반입|설치', text, re.I):
+        return 'capacity_execution'
+    if re.search(r'(?:commercialization|mass\s*production|양산|상용화).{0,100}20\d{2}|20\d{2}.{0,100}(?:commercialization|mass\s*production|양산|상용화)', text, re.I):
+        return 'schedule_change'
+    if SODIUM_DENSITY.search(text) and re.search(r'new|next[-\s]*generation|improved|record|신형|차세대|향상|상향|신규', text, re.I):
+        return 'performance_change'
+    return 'background'
+
+SODIUM_NEW_EVENT = re.compile(r'new|next[-\s]*generation|improved|record|launch|launched|신규|신형|차세대|향상|상향|출시', re.I)
+
 SDI_RE = re.compile(r'삼성SDI|Samsung\s*SDI', re.I)
 SDI_STORAGE_RE = re.compile(r'\bESS\b|\bBESS\b|energy\s*storage|에너지저장|\bUPS\b|\bBBU\b|무정전전원장치|배터리백업유닛', re.I)
 SDI_ESS_MIX_MARGIN = re.compile(r'매출\s*비중|revenue\s*mix|sales\s*mix|영업이익률|operating\s*margin|margin|AMPC|관세\s*환급|tariff\s*refund|본업\s*(?:흑자|이익)', re.I)
