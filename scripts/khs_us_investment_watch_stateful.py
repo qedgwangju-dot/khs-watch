@@ -345,6 +345,8 @@ def _material_facts(row: dict) -> set[str]:
         ("khnp", ["한수원", "한국수력원자력", "khnp"]),
         ("kepco", ["한전", "한국전력", "kepco"]),
         ("doosan", ["두산에너빌리티", "doosan enerbility"]),
+        ("hyundaiec", ["현대건설", "hyundai e&c", "hyundai engineering & construction"]),
+        ("beomhanmecatec", ["범한메카텍", "beomhan mecatec"]),
         ("bhi", ["비에이치아이", "bhi"]),
         ("gevernova", ["ge vernova"]),
         ("siemens", ["siemens energy"]),
@@ -599,6 +601,81 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
                 facts.add("nuclear_longlead_order_status:ordered")
         if _is_official(row):
             source_low = _norm(str(row.get("source") or ""))
+
+            # Project Power는 '프레임워크 합의'와 실제 실행단계를 분리한다.
+            # 아래 상태는 공식자료 1건 또는 독립 출처 2곳 이상에서만 승격된다.
+            if any(term in low for term in [
+                "framework signed", "framework has been signed", "signed the framework",
+                "프레임워크 서명 완료", "프레임워크에 서명했다", "프레임워크 공식 서명",
+            ]):
+                facts.add("nuclear_framework_signature_status:signed")
+
+            if any(term in low for term in [
+                "definitive agreement signed", "definitive agreements signed",
+                "definitive agreements executed", "최종 계약 체결", "본계약 체결",
+            ]):
+                facts.add("nuclear_definitive_agreement_status:signed")
+
+            if any(term in low for term in [
+                "specific site selected", "specific sites selected", "site selected",
+                "site identified", "site designated", "개별 부지 확정", "부지 선정 완료",
+                "부지 확정", "사업 부지 선정",
+            ]):
+                facts.add("nuclear_federal_site_status:selected")
+
+            if any(term in low for term in [
+                "waiver agreement signed", "waiver executed", "waiver finalized",
+                "one-time waiver approved", "예외 합의 체결", "예외 적용 확정",
+                "일회성 예외 확정", "타협협정 예외 체결",
+            ]):
+                facts.add("nuclear_settlement_waiver_status:executed")
+
+            if any(term in low for term in [
+                "financial close", "financing closed", "financing finalized",
+                "금융종결", "자금조달 종결", "금융약정 체결",
+            ]):
+                facts.add("nuclear_financing_status:closed")
+
+            if any(term in low for term in [
+                "combined license approved", "combined license issued",
+                "construction permit approved", "construction permit issued",
+                "복합허가 승인", "건설허가 승인", "건설허가 발급",
+            ]):
+                facts.add("nuclear_regulatory_status:approved")
+
+            if (
+                "ap1000" in low
+                and any(term in low for term in ["2기", "two ap1000", "two units"])
+                and any(term in low for term in [
+                    "epc contract signed", "epc agreement signed", "epc 계약 체결", "설계·조달·시공 계약 체결",
+                ])
+            ):
+                facts.add("nuclear_phase1_epc_status:signed")
+
+            award_terms = [
+                "purchase order", "po issued", "contract awarded", "supply contract",
+                "공급계약", "구매주문", "발주", "수주", "공급사 선정",
+            ]
+            qualify_terms = [
+                "vendor approval", "vendor qualification", "qualified supplier",
+                "공급사 승인", "벤더 승인", "품질 검증 완료", "공급자 등록",
+            ]
+            supplier_tokens = {
+                "doosan": ["두산에너빌리티", "doosan enerbility"],
+                "hyundaiec": ["현대건설", "hyundai e&c", "hyundai engineering & construction"],
+                "beomhanmecatec": ["범한메카텍", "beomhan mecatec"],
+                "bhi": ["비에이치아이", "bhi"],
+            }
+            project_context = any(term in low for term in ["project power", "ap1000", "apr1400", "한미 원전"])
+            if project_context:
+                for supplier, tokens in supplier_tokens.items():
+                    if not any(token in low for token in tokens):
+                        continue
+                    if any(term in low for term in award_terms):
+                        facts.add(f"nuclear_supplier_award:{supplier}")
+                    if any(term in low for term in qualify_terms):
+                        facts.add(f"nuclear_vendor_qualification:{supplier}")
+
             if any(term in low for term in ["non-binding", "nonbinding", "비구속"]):
                 facts.add("nuclear_framework_binding:nonbinding")
             if any(term in low for term in ["definitive agreements pending", "definitive agreement pending", "subject to definitive agreements", "final negotiations pending", "최종 협상 필요", "본계약 후속 확정"]):
@@ -809,6 +886,8 @@ def _fact_slot(family: str, fact: str) -> str:
         "nuclear_korean_ap1000_supply_chain:", "nuclear_counterparty_confirmation:",
         "nuclear_construction_cost_usd_b:", "nuclear_contingency_usd_b:", "nuclear_upfront_payment_usd_b:",
         "nuclear_upfront_payment_status:", "nuclear_longlead_order_status:",
+        "nuclear_framework_signature_status:", "nuclear_financing_status:", "nuclear_regulatory_status:",
+        "nuclear_phase1_epc_status:",
         "stake_percent:", "stake_range_percent:", "stake_status:", "equity_definitive_agreement_status:",
         "equity_due_diligence_status:", "equity_regulatory_approval_status:", "equity_closing_status:", "funding_amount_usd:", "funding_date:", "funding_wait:",
         "repayment_horizon:", "package_nuclear_units:", "package_overall_usd_b:",
@@ -947,6 +1026,13 @@ def _human_fact(value: str) -> str:
         "nuclear_upfront_payment_status:conditional": "최대 100억달러 선지급은 조건부 협의 단계",
         "nuclear_upfront_payment_status:executed": "원전 선지급 실제 집행 확인",
         "nuclear_longlead_order_status:ordered": "장주기 품목 구매주문·발주 확인",
+        "nuclear_framework_signature_status:signed": "한미 원전 프레임워크 공식 서명 완료",
+        "nuclear_financing_status:closed": "원전 사업 금융종결 확인",
+        "nuclear_regulatory_status:approved": "원전 사업 건설·복합허가 승인 확인",
+        "nuclear_phase1_epc_status:signed": "1단계 AP1000 2기 EPC 계약 체결",
+        "nuclear_settlement_waiver_status:executed": "2025 타협협정 일회성 예외 최종 체결",
+        "nuclear_federal_site_status:selected": "개별 원전 부지 선정·확정",
+        "nuclear_definitive_agreement_status:signed": "Project Power 최종 계약 체결",
         "stake_status:contemplated": "Westinghouse 지분투자 프레임워크 포함·미종결",
         "equity_definitive_agreement_status:pending": "지분 최종계약 미체결",
         "equity_due_diligence_status:pending": "지분투자 실사 필요",
@@ -1020,6 +1106,18 @@ def _human_fact(value: str) -> str:
             elif "_usd:" in prefix:
                 suffix = "달러"
             return f"{label}{raw}{suffix}"
+    supplier_names = {
+        "doosan": "두산에너빌리티",
+        "hyundaiec": "현대건설",
+        "beomhanmecatec": "범한메카텍",
+        "bhi": "비에이치아이",
+    }
+    if value.startswith("nuclear_supplier_award:"):
+        raw = value.split(":", 1)[1]
+        return f"Project Power/AP1000 공급·발주 확정: {supplier_names.get(raw, raw)}"
+    if value.startswith("nuclear_vendor_qualification:"):
+        raw = value.split(":", 1)[1]
+        return f"Project Power/AP1000 공급사 검증·승인: {supplier_names.get(raw, raw)}"
     if value.startswith("percent:"):
         return value.split(":", 1)[1] + "%"
     if value.startswith("gw:"):
@@ -1041,6 +1139,8 @@ def _human_fact(value: str) -> str:
         "party:khnp": "한국수력원자력",
         "party:kepco": "한국전력",
         "party:doosan": "두산에너빌리티",
+        "party:hyundaiec": "현대건설",
+        "party:beomhanmecatec": "범한메카텍",
         "party:bhi": "비에이치아이",
         "party:gevernova": "GE Vernova",
         "party:siemens": "Siemens Energy",
@@ -1906,6 +2006,27 @@ def _run_event_key(row: dict) -> str:
         return f"eventstate_{family}"
     return _ORIG_RUN_EVENT_KEY(row)
 
+
+# Project Power 실행단계는 일반 '원전' 기사보다 좁은 키워드로 추가 감시한다.
+# 새 워크플로를 만들지 않고 기존 대미투자 watcher의 검색면만 넓힌다.
+for _query in [
+    '"Project Power" Westinghouse Korea definitive agreement waiver site AP1000 APR1400 when:30d',
+    '"Project Power" AP1000 EPC purchase order long lead Korea when:30d',
+    'Westinghouse AP1000 Korea Doosan Hyundai E&C BHI Beomhan purchase order contract when:30d',
+    '웨스팅하우스 AP1000 한국 두산에너빌리티 현대건설 비에이치아이 범한메카텍 발주 수주 공급계약 when:30d',
+    'APR1400 미국 waiver 타협협정 예외 최종계약 부지 건설허가 when:30d',
+]:
+    if _query not in core.QUERIES:
+        core.QUERIES.append(_query)
+
+for _term in [
+    "Project Power", "definitive agreement", "waiver", "financial close",
+    "purchase order", "long lead", "EPC", "vendor qualification",
+    "건설허가", "복합허가", "부지 선정", "공급계약", "벤더 승인",
+    "두산에너빌리티", "현대건설", "비에이치아이", "범한메카텍",
+]:
+    if _term not in core.MATERIAL:
+        core.MATERIAL.append(_term)
 
 core._load = _load
 core._rss = _rss
