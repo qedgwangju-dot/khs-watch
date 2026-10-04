@@ -457,7 +457,7 @@ def newer_than(published: str, cutoff: str) -> bool:
         return False
 
 def discover(previous: dict, now: datetime) -> list[dict]:
-    seen_urls = set(previous.get("seen_urls") or [])
+    seen_urls = set(previous.get("seen_urls") or []) | set(BASELINE.get("seen_urls") or [])
     seen_signatures = set(previous.get("seen_signatures") or [])
     cutoff = str(previous.get("last_checked_at_kst") or "")
     freshness = now - timedelta(days=21)
@@ -472,7 +472,7 @@ def discover(previous: dict, now: datetime) -> list[dict]:
             continue
         for item in items:
             url = decode_google_news(item.get("link") or "")
-            if not url or url in seen_urls or url in local_urls or not is_official(url):
+            if not url or url in seen_urls or url in local_urls or not (is_official(url) or is_trusted(url)):
                 continue
             local_urls.add(url)
             published = item.get("published_at_kst") or ""
@@ -543,7 +543,7 @@ def build_alert(events: list[dict]) -> str:
         *[event_line(e) for e in events[:5]],
         "",
         "<b>의미</b>",
-        "• GPU 수요만이 아니라 케이블·냉각·전력·기판·랙 생산능력이 실제 AI 서버 출하 속도를 제한하는지 확인하는 신호입니다.",
+        "• GPU 수요만이 아니라 반도체 장비·케이블·냉각·전력·기판·랙 생산능력이 실제 AI 서버 증설·출하 속도를 제한하는지 확인하는 신호입니다.",
     ]
 
     beneficiaries = [BENEFICIARIES[c] for c in categories if c in BENEFICIARIES]
@@ -567,9 +567,12 @@ def main() -> None:
     now = datetime.now(ZoneInfo("Asia/Seoul"))
     previous = load_json(STATE_PATH) or copy.deepcopy(BASELINE)
     latest = copy.deepcopy(previous)
+    latest.setdefault("facts", {})
+    for key, value in (BASELINE.get("facts") or {}).items():
+        latest["facts"].setdefault(key, value)
     events = discover(previous, now)
 
-    seen_urls = set(previous.get("seen_urls") or [])
+    seen_urls = set(previous.get("seen_urls") or []) | set(BASELINE.get("seen_urls") or [])
     seen_signatures = set(previous.get("seen_signatures") or [])
     for event in events:
         if event.get("url"):
