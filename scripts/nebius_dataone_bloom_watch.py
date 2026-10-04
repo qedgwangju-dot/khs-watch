@@ -17,7 +17,7 @@ PENDING = OUT / "nebius_dataone_bloom_pending_state.json"
 ALERT = OUT / "nebius_dataone_bloom_alert.txt"
 STATUS = OUT / "nebius_dataone_bloom_status.md"
 
-FORMAT_VERSION = 3
+FORMAT_VERSION = 4
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
 
 FRANKFORT = "https://dataonefrankfort.com/"
@@ -135,7 +135,13 @@ def snapshot() -> dict:
     bloom_named = "bloom fuel cells" in f.lower()
     natural_gas = "fuel cells use natural gas as a feedstock" in f.lower()
     centerpoint = "centerpoint energy" in f.lower()
-    lng_backup = "lng storage tank" in f.lower() and "back-up" in f.lower()
+    low_f = f.lower()
+    lng_backup = (
+        "storage tank" in low_f
+        and "lng" in low_f
+        and ("back-up" in low_f or "backup" in low_f)
+        and "pipeline gas" in low_f
+    )
     substations = 2 if "funding and constructing two substations" in f.lower() else None
     late_2026 = "groundbreaking to occur late 2026 or very early 2027" in f.lower()
     build_months = "18-24개월" if "18-24 months" in f else None
@@ -242,8 +248,15 @@ def changes(old: dict, new: dict) -> list[str]:
         ("nebius_partner_owned_capacity_model", "Nebius 파트너 소유 인프라 사업모델"),
         ("bloom_frankfort_official_announcement", "Bloom Energy Frankfort·DataOne 공식 발표"),
     ):
-        if op.get(key) != np.get(key):
-            out.append(f"{label} {'확인' if np.get(key) else '약화/미확인'}")
+        before = op.get(key)
+        after = np.get(key)
+        if before is not None and before != after:
+            out.append(f"{label} {'확인' if after else '약화/미확인'}")
+
+    if of.get("lng_backup_expected") is not None and of.get("lng_backup_expected") != nf.get("lng_backup_expected"):
+        out.append(
+            f"Frankfort LNG 백업 계획 {'확인' if nf.get('lng_backup_expected') else '미확인'}"
+        )
     return out
 
 
