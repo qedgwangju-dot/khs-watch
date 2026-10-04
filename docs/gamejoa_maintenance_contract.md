@@ -50,6 +50,16 @@ Every defect or requested change must follow this sequence:
   incompatible thematic summary is re-extracted from the article and checked
   again; it is never published by bypassing source alignment. Related-story
   footers are not article evidence.
+- Client-rendered News1 articles use only typed text in the linked article's
+  `articleView`, bound to its requested URL article ID and aligned title. Empty,
+  malformed or mismatched client data cannot fall back to recommendation HTML.
+- A funding headline must retain the funding decision or unresolved options,
+  not substitute HBM demand from its background. Conditional valuation or IPO
+  scenarios do not become secured funding. Earnings forecasts retain their
+  forecast attribution and quarter; prior-quarter results cannot own the core.
+- An economic-war response needs sourced economic measures, not victory
+  rhetoric. A reported review/announcement without specified policy terms stays
+  an early signal; it never becomes a confirmed ban or oil-price change.
 - Same-country, same-indicator, same-period, same-value macro releases share a
   seen key across publishers, including migrated historical seen entries.
   Revised values, other periods, core versus headline, and explicit month-on-

@@ -8,6 +8,7 @@ import html
 import json
 import re
 from html.parser import HTMLParser
+from urllib.parse import urlsplit
 from zoneinfo import ZoneInfo
 
 
@@ -93,6 +94,9 @@ class ArticleHTMLParser(HTMLParser):
         self.json_ld_depth = 0
         self.json_ld_parts: list[str] = []
         self.json_ld_current: list[str] = []
+        self.page_json_depth = 0
+        self.page_json_parts: list[str] = []
+        self.page_json_current: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         tag = tag.lower()
@@ -129,6 +133,10 @@ class ArticleHTMLParser(HTMLParser):
         if tag == "script" and "ld+json" in attr.get("type", "").lower():
             self.json_ld_depth = 1
             self.json_ld_current = []
+            return
+        if tag == "script" and attr.get("id") == "__NEXT_DATA__" and attr.get("type") == "application/json":
+            self.page_json_depth = 1
+            self.page_json_current = []
             return
 
         if tag in SKIP_TAGS:
@@ -190,6 +198,11 @@ class ArticleHTMLParser(HTMLParser):
             self.json_ld_current = []
             self.json_ld_depth = 0
             return
+        if tag == "script" and self.page_json_depth:
+            self.page_json_parts.append("".join(self.page_json_current))
+            self.page_json_current = []
+            self.page_json_depth = 0
+            return
         if tag in SKIP_TAGS:
             self.skip_depth = max(0, self.skip_depth - 1)
             return
@@ -225,6 +238,9 @@ class ArticleHTMLParser(HTMLParser):
     def handle_data(self, data: str) -> None:
         if self.json_ld_depth:
             self.json_ld_current.append(data)
+            return
+        if self.page_json_depth:
+            self.page_json_current.append(data)
             return
         if self.ignored_depth:
             return
@@ -321,7 +337,40 @@ def trim_article_footer(body: str) -> str:
     return body[:footer.start()].strip() if footer else body.strip()
 
 
-def extract_article_detail(html_text: str, listing_title: str = "") -> dict:
+def news1_page_article(parts: list[str], title: str, source_url: str) -> dict:
+    """Read the linked article's typed text, not its client-rendered story list."""
+    try:
+        parsed_url = urlsplit(source_url)
+    except ValueError:
+        return {}
+    if parsed_url.hostname not in {"news1.kr", "www.news1.kr"}:
+        return {}
+    article_id = parsed_url.path.rstrip("/").rsplit("/", 1)[-1]
+    for part in parts:
+        try:
+            data = json.loads(part)
+            article = data["props"]["pageProps"]["articleView"]
+        except (json.JSONDecodeError, KeyError, TypeError):
+            continue
+        if not isinstance(article, dict) or str(article.get("id")) != article_id:
+            continue
+        if not titles_align(title, str(article.get("title") or "")):
+            continue
+        paragraphs = []
+        content = article.get("contentArrange")
+        for item in content if isinstance(content, list) else []:
+            if not isinstance(item, dict) or item.get("type") != "text" or not isinstance(item.get("content"), str):
+                continue
+            fragment = ArticleHTMLParser()
+            fragment.feed("<article>" + item["content"] + "</article>")
+            paragraph = clean(" ".join(fragment.raw_parts))
+            if paragraph:
+                paragraphs.append(paragraph)
+        return {"body": "\n".join(paragraphs), "published": article.get("published_time")}
+    return {}
+
+
+def extract_article_detail(html_text: str, listing_title: str = "", source_url: str = "") -> dict:
     parser = ArticleHTMLParser()
     try:
         parser.feed(html_text or "")
@@ -365,8 +414,18 @@ def extract_article_detail(html_text: str, listing_title: str = "") -> dict:
     ]
     explicit_body = max(target_bodies, key=len, default="")
     structured_body = clean(structured.get("articleBody"))
+    article_url = source_url or parser.meta.get("og:url") or str(structured.get("url") or "")
+    page_article = news1_page_article(parser.page_json_parts, title, article_url)
+    try:
+        news1_client_page = bool(parser.page_json_parts and urlsplit(article_url).hostname in {"news1.kr", "www.news1.kr"})
+    except ValueError:
+        news1_client_page = False
     # Explicit article text wins over longer publisher navigation/recommendations.
-    if len(explicit_body) >= 180:
+    if page_article:
+        body = page_article["body"]
+    elif news1_client_page:
+        body = ""
+    elif len(explicit_body) >= 180:
         body = explicit_body
     elif len(structured_body) >= 180:
         body = structured_body
@@ -381,6 +440,7 @@ def extract_article_detail(html_text: str, listing_title: str = "") -> dict:
         or parser.meta.get("date")
         or parser.meta.get("dc.date.issued")
         or structured.get("datePublished")
+        or page_article.get("published")
         or (parser.time_values[0] if parser.time_values else "")
         or visible_published
     )
@@ -392,4 +452,5 @@ def extract_article_detail(html_text: str, listing_title: str = "") -> dict:
         "published_kst": published.isoformat(timespec="seconds") if published else "",
         "title_aligned": aligned,
         "body_verified": bool(aligned and len(body) >= 180),
+        "body_source": "news1_article_view_text" if page_article else "html_or_newsarticle_json_ld",
     }

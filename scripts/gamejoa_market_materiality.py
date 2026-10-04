@@ -9,14 +9,14 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 54
+VERSION = 55
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
     r"\boil\b|brent|wti|\bgas\b|hormuz|iran|ukraine|russia|copper|lithium"
 )
 EARLY_SIGNAL = re.compile(
-    r"검토|추진|협상|논의|가능성|예정|계획|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
+    r"검토|추진|협상|논의|가능성|예정|계획|컨센서스|전망치|추정치|consensus|전망(?!치|을|보다)|예상(?!치|을|보다)|관측|소식통|제안|의견수렴|입법예고|"
     r"건의|요청|요구|제시|모색|촉구|해야|권고|제언|우려|필요|목표|보인다|나서야|시급|밑돌\s*듯|합의\s*(?:안\s*(?:됐|되)|하지\s*않)|미합의|consider|propos|draft|talks|negotiat|forecast|sources say|reportedly|\b(?:may|could|should|target|aim|expected)\b", re.I,
 )
 HEADLINE_EARLY = re.compile(
@@ -142,6 +142,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("military_reinforcement", r"(?:항모|항공모함|병력).{0,40}(?:추가\s*파견|증강)", r"추가\s*파견|병력.{0,20}증강"),
     ("trading_status", r"거래\s*재개|액면병합|주식병합", r"거래.{0,12}재개|재개.{0,12}거래|액면병합|주식병합"),
     ("sanctions_request", r"제재.{0,30}(?:요청|요구|해야)|sanctions?.{0,30}(?:request|call)", r"제재[^.!?]{0,35}(?:요청|요구|해달라|해야)|sanctions?.{0,35}(?:request|call)"),
+    ("economic_response", r"경제\s*전쟁|제재.{0,25}대응", r"경제\s*전쟁|제재|환율|필수\s*물자"),
     ("authorized_capital", r"수권\s*(?:자본|주식)|authorized (?:capital|shares)", r"수권\s*(?:자본|주식)|authorized (?:capital|shares)"),
     ("customer_implementation", r"1차\s*시공|초도\s*납품", r"1차\s*시공|초도\s*납품"),
     ("commercial_order", r"수주|공급\s*계약|납품\s*계약|발사\s*계약|\d+\s*년\s*계약(?!가)", r"수주|발주|계약"),
@@ -153,7 +154,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("labor_negotiation", r"임단협|임금.{0,12}(?:협상|합의)|단체협약", r"임단협|임금|단체협약|잠정합의안|교섭"),
     ("shareholder", r"자사주|자기주식|주주환원|배당", r"자사주|자기주식|주주환원|배당|(?:주식|지분).{0,30}(?:매수|취득|매입|처분)|buyback|dividend"),
     ("capital_listing", r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|신규\s*상장|ETF.{0,15}(?:출시|상장)", r"기업공개|\bipo\b|상장(?!지수)|ETF.{0,80}출시"),
-    ("financing", r"자금.{0,12}(?:투입|조달|유입)|대출|전환사채|전환\s*(?:선순위)?\s*채권|회사채\s*발행|funding|financing|loan|convertible (?:bond|note|debt)", r"자금|대출|투자(?!자)|조달|전환사채|전환\s*(?:선순위)?\s*채권|출자|납입|증자|확정된\s*사항|funding|financing|loan|convertible (?:bond|note|debt)"),
+    ("financing", r"자금.{0,12}(?:투입|조달|유입)|대출|전환사채|전환\s*(?:선순위)?\s*채권|회사채\s*발행|funding|financing|loan|convertible (?:bond|note|debt)", r"자금|외부\s*자본|대출|투자(?!자)|조달|전환사채|전환\s*(?:선순위)?\s*채권|출자|납입|증자|확정된\s*사항|funding|financing|loan|convertible (?:bond|note|debt)"),
     ("capital_spending", r"설비투자|capex|자본지출|capital expenditure", r"설비투자|capex|자본지출|capital expenditure"),
     ("industry_market_share", r"점유율|시장.{0,8}(?:\d위|순위)", r"점유율|market share"),
     ("trade_threat", r"관세.{0,35}(?:위협|경고|두\s*배|2\s*배)|(?:두\s*배|2\s*배).{0,15}(?:청구|관세)|알래스카.{0,55}(?:청구|부담|압박)|tariff.{0,30}(?:threat|doubl)|doubl.{0,15}tariff", r"관세|청구|tariff|charge"),
@@ -262,6 +263,8 @@ def focus_kind(title: str) -> str:
         return "tax_relief"
     if re.search(r"ETF.{0,15}(?:출시|상장)", title or "", re.I):
         return "capital_listing"
+    if re.search(r"자금\s*조달|외부\s*자본|funding|financing", title or "", re.I):
+        return "financing"
     # The changed measure/action outranks a company or commodity mentioned
     # earlier in a headline (e.g. DRAM share, not generic memory demand).
     for kind in ("project_response", "capital_spending", "industry_market_share", "trade_threat", "stockpile_release", "equity_compensation", "commercial_order", "breadth", "sanctions_request", "market_macro_response"):
@@ -295,6 +298,11 @@ def focus_matches(title: str, sentence: str) -> bool:
     if kind == "project_response":
         return bool(re.search(r"팩트시트|공동\s*합의|추진\s*여부", sentence)
                     and re.search(r"없|포함[^.!?]{0,15}않|말하기\s*어렵|밝히기\s*어렵", sentence))
+    if kind == "economic_response":
+        return bool(re.search(r"대통령|총리|정부|중앙은행", sentence)
+                    and re.search(r"경제\s*전쟁|제재", sentence)
+                    and re.search(r"새로운\s*조치|대응\s*조치|환율\s*(?:관리|통제)|필수\s*물자", sentence)
+                    and re.search(r"도입|발표|시행|검토|결정|밝혔", sentence))
     if kind == "ownership" and "자산" in title:
         return bool("자산" in sentence and re.search(r"인수|매입|취득|매각", sentence))
     if kind == "debt_repayment":
@@ -355,7 +363,12 @@ def focus_matches(title: str, sentence: str) -> bool:
 
 def period_matches(title: str, sentence: str) -> bool:
     months, source_months = set(MONTH.findall(title or "")), set(MONTH.findall(sentence or ""))
-    return not (months and source_months and months.isdisjoint(source_months))
+    if months and source_months and months.isdisjoint(source_months):
+        return False
+    quarter = re.compile(r"(?<!\d)([1-4])\s*(?:분기|Q\b)|\bQ([1-4])\b", re.I)
+    periods = {a or b for a, b in quarter.findall(title or "")}
+    source_periods = {a or b for a, b in quarter.findall(sentence or "")}
+    return not (periods and source_periods and periods.isdisjoint(source_periods))
 
 
 def focus_score(title: str, sentence: str) -> int:
@@ -370,6 +383,8 @@ def focus_score(title: str, sentence: str) -> int:
     if re.match(r"^\d{4}년\s*(?:출시|설립)", sentence):
         score -= 35
     if ASPIRATION.search(sentence):
+        score -= 25
+    if re.search(r"할\s*경우|한다면", sentence) and not re.search(r"검토\s*중|협상\s*중|계약을\s*체결", sentence):
         score -= 25
     if re.match(r"^(?:또|그리고|한편|이러한|이를|이\s*같은)\s", sentence):
         score -= 15
@@ -574,7 +589,7 @@ RULES = (
      r"방출|매입|재비축|채우|채운|채울|release|refill|purchase"),
     ("earnings_or_guidance", ("earnings",),
      r"매출|영업이익|순이익|영업손실|순손실|마진|실적|가이던스|출하|판매(?:량|실적|는|가)|시장점유율|revenue|earnings|profit|guidance|shipments",
-     r"증가|감소|상승|하락|상회|하회|상향|하향|달성|기록|집계|발표|전망|예상|적자\s*전환|적자로\s*전환|rise|fall|grow|cut|rais|report|forecast|beat|miss"),
+     r"증가|감소|상승|하락|상회|하회|상향|하향|달성|기록|집계|발표|공시|전망|예상|컨센서스|추정치|적자\s*전환|적자로\s*전환|rise|fall|grow|cut|rais|report|forecast|consensus|beat|miss"),
     ("product_sales_mix", ("earnings",),
      r"판매(?:량|대수|비중)?", r"\d+(?:\.\d+)?%\s*(?:를|을)?\s*차지|비중.{0,20}(?:높아|올라|낮아|줄어)"),
     ("industry_market_share", ("earnings",),
@@ -597,7 +612,7 @@ RULES = (
      r"받기로\s*합의|대출\s*(?:계약|약정).{0,15}(?:체결|서명)|대출.{0,20}(?:집행했다|승인했다)|agreed to (?:lend|borrow)|loan agreement.{0,20}(?:signed|executed)"),
     ("capital_or_shareholder_action", ("earnings", "timeline"),
      r"투자(?=\s*(?:\d|를|한다|한다고|하는|하고|해|했다|할|하겠|금|액|규모|계획|협약|계약|자금|라운드)|.{0,12}유치)|전략투자|설비투자|capex|자본지출|(?<!대)출자|자금\s*조달|자본\s*조달|회사채|전환사채|전환\s*(?:선순위)?\s*채권|주주환원|배당|자사주|자기주식|지분|funding|financing|buyback|dividend|bond issuance|stake",
-     r"체결|유치|출자|발행|증액|삭감|확대|축소|매입|매수|취득|소각|매각|인수|검토|추진|계획|증가|감소|늘리|결정|발표|승인|투입|금융\s*종결|납입|집행|투자\s*라운드.{0,10}참여|raise|issu|buy|repurchas|sell|acquir|announc|consider|approv|financing closed|funding disbursed"),
+     r"체결|유치|출자|발행|증액|삭감|확대|축소|매입|매수|취득|소각|매각|인수|검토|협상|추진|계획|증가|감소|늘리|결정|발표|승인|투입|금융\s*종결|납입|집행|투자\s*라운드.{0,10}참여|raise|issu|buy|repurchas|sell|acquir|announc|consider|negotiat|approv|financing closed|funding disbursed"),
     ("authorized_capital_proposal", ("flows", "timeline"),
      r"수권\s*(?:자본|주식)|authorized (?:capital|shares)", r"안건|상정|제안|표결|proposal|vote"),
     ("financing_infrastructure", ("earnings", "timeline"),
@@ -648,6 +663,8 @@ RULES = (
     ("policy_scope_or_stage", ("timeline",),
      r"관세|법인세|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
      r"제안|검토|추진|인상|인하|올리|올렸|낮추|낮췄|상향|하향|완화|강화|시행|발효|금지|제한|(?<!인)허가(?:했|한다|를\s*(?:내|받|취득))|승인(?:했|한다|을\s*(?:받|획득|취득))|제정|개정|철회|의견수렴|입법예고|면제|배정|의결|착수|발표|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
+    ("economic_restriction_response", ("discount_rate", "timeline"),
+     r"경제\s*전쟁|제재", r"새로운\s*조치.{0,30}(?:도입|발표)|대응\s*조치.{0,30}(?:도입|발표|시행)"),
     ("environmental_approval", ("timeline",),
      r"최종\s*환경평가|FONSI|환경영향평가서", r"완료|결정을\s*내렸|작성\s*없이|면제"),
     ("export_control_scope", ("earnings", "timeline"),
@@ -692,8 +709,8 @@ RULES = (
      r"폭염|폭우|홍수|태풍|정전|가뭄|산불|heatwave|flood|outage|drought|wildfire",
      r"전력|변압기|과부하|폐사|양식|농작물|생산|공급|항만|물류|공장|피해|사망|power|transformer|crop|production|supply|port|factory|damage|death"),
     ("labor_cost_or_execution", ("earnings", "timeline"),
-     r"파업|노조|성과급|임단협|(?<!금)감원|(?:인력|인원|일자리).{0,20}감축|임금|strike|union|layoff|wage",
-     r"생산|공장|운송|항만|비용|인상|교섭|협상|부결|타결|주식|지급|중단|감축|production|factory|port|cost|talks|shares|halt|cut"),
+     r"파업|노조|성과급|임단협|(?<!금)감원|해고|(?:인력|인원|일자리).{0,20}감축|임금|strike|union|layoff|laid off|wage",
+     r"생산|공장|운송|항만|비용|인상|교섭|협상|부결|타결|주식|지급|중단|감축|production|factory|plant|port|cost|talks|shares|halt|cut"),
     ("customer_discussions", ("earnings", "timeline"),
      CUSTOMER_DISCUSSION_SUBJECT,
      r"협상|논의|검토|회동|협력(?!사)|합의|협약|negotiat|discuss|consider|meeting|collaborat|agreement"),
@@ -854,7 +871,7 @@ def news_value_rank(evidence: list[dict]) -> int:
     if kinds & {"technology_or_clinical_stage", "space_execution_stage", "space_thermal_validation",
                 "cryogenic_propellant_storage", "biology_research_discovery", "research_validation_result", "model_operating_specification",
                 "customer_discussions", "industrial_partnership_execution", "corporate_action_clarification", "capital_or_shareholder_action", "capital_listing_stage",
-                "authorized_capital_proposal", "policy_agreement_clarification", "customer_financing_commitment", "public_program_cost_study", "project_cost_evaluation", "conditional_project_charge", "energy_stockpile_action", "energy_geopolitics_or_supply_risk"}:
+                "authorized_capital_proposal", "policy_agreement_clarification", "economic_restriction_response", "customer_financing_commitment", "public_program_cost_study", "project_cost_evaluation", "conditional_project_charge", "energy_stockpile_action", "energy_geopolitics_or_supply_risk"}:
         return 3
     return 2
 
@@ -863,6 +880,8 @@ def transmission_scope(title: str, evidence: list[dict]) -> tuple[int, str]:
     """Prioritize sourced market/industry changes, not merely dense issuer facts."""
     kinds = {item['kind'] for item in evidence}
     excerpts = ' '.join(item['source_excerpt'] for item in evidence)
+    if 'economic_restriction_response' in kinds:
+        return 2, 'announced_economic_response_without_specified_policy_terms'
     if focus_kind(title) == 'breadth' and 'market_price_or_flow' in kinds and QUANTITY.search(excerpts) and re.search(
         r"S&P\s*500|나스닥|러셀\s*2000|코스피|코스닥", excerpts, re.I,
     ):
@@ -1092,6 +1111,17 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
                 continue
             if focus_kind(title) == "project_response" and kind != "policy_agreement_clarification":
                 continue
+            if focus_kind(title) == "economic_response" and kind != "economic_restriction_response":
+                continue
+            if (focus_kind(title) == "financing"
+                    and re.search(r"자금\s*조달|자본\s*조달|외부\s*자본|대출|전환사채|전환\s*(?:선순위)?\s*채권|funding|financing|loan", title, re.I)
+                    and kind not in {
+                "capital_or_shareholder_action", "customer_financing_commitment", "capital_listing_stage",
+                "corporate_action_clarification", "financing_infrastructure", "operating_asset_transaction",
+            }):
+                continue
+            if focus_kind(title) == "earnings" and kind != "earnings_or_guidance":
+                continue
             if not evidence_is_new_event(kind, sentence):
                 continue
             # A late company-only forecast cannot replace an unrecognised
@@ -1105,7 +1135,14 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
                 continue
             # Campaign rhetoric and retrospective blame are not new macro data.
             # A concrete policy proposal or current escalation remains eligible.
-            if electoral and kind not in {"policy_scope_or_stage", "export_control_scope", "energy_geopolitics_or_supply_risk", "energy_stockpile_action", "conditional_project_charge"}:
+            factory_layoff = bool(
+                kind == "labor_cost_or_execution"
+                and re.search(r"공장|생산|factory|plant", title, re.I)
+                and re.search(r"해고|감원|감축|layoff|laid off", title, re.I)
+                and re.search(r"\d[\d,]*\s*(?:명|people|workers|jobs)", sentence, re.I)
+                and re.search(r"해고(?:됐|했|한다|하기로)|감원(?:했|한다|하기로)|감축(?:했|한다|하기로)|were laid off|laid off|cut\s+\d", sentence, re.I)
+            )
+            if electoral and not factory_layoff and kind not in {"policy_scope_or_stage", "export_control_scope", "energy_geopolitics_or_supply_risk", "energy_stockpile_action", "conditional_project_charge"}:
                 continue
             if not anchored and not adjacent and not focus_kind(title) and not subject.search(title):
                 continue
@@ -1136,8 +1173,8 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
                 continue
             if kind == "labor_cost_or_execution" and not re.search(
                 r"파업|임단협|단체협약|임금.{0,25}(?:인상|인하|교섭|협상|부결|타결)|성과급.{0,25}(?:주식|지급|변경)|"
-                r"(?<!금)감원|(?:인력|인원|일자리).{0,20}감축|(?:생산|공장|운송|항만).{0,25}(?:중단|차질)|"
-                r"strike|layoff|wage.{0,20}(?:talk|rais|cut)|(?:worker|job|labor|labour).{0,20}(?:cut|reduc)", sentence, re.I,
+                r"(?<!금)감원|해고|(?:인력|인원|일자리).{0,20}감축|(?:생산|공장|운송|항만).{0,25}(?:중단|차질)|"
+                r"strike|layoff|laid off|wage.{0,20}(?:talk|rais|cut)|(?:worker|job|labor|labour).{0,20}(?:cut|reduc)", sentence, re.I,
             ):
                 continue
             if kind == "physical_supply_or_capacity":
@@ -1183,13 +1220,22 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
                 continue
             if kind == "energy_geopolitics_or_supply_risk" and not ECONOMIC_GEOPOLITICS.search(sentence) and not re.search(r"브렌트|\bbrent\b|\bwti\b", sentence, re.I):
                 continue
+            if kind == "economic_restriction_response" and not re.search(r"환율|필수\s*물자|수출|수입|결제|외환", body):
+                continue
             if kind == "climate_operational_damage" and not re.search(
                 r"정전|과부하|폐사|사망|침수|소실|피해|차질|중단|손실|outage|overload|death|damage|disrupt|halt|loss", sentence, re.I,
             ):
                 continue
             if kind == "research_spending_change" and not QUANTITY.search(sentence):
                 continue
-            early = bool(EARLY_SIGNAL.search(sentence)) or kind in {"customer_discussions", "institutional_capital_access", "authorized_capital_proposal", "sector_demand_outlook", "policy_agreement_clarification"}
+            early = bool(EARLY_SIGNAL.search(sentence)) or kind in {"customer_discussions", "institutional_capital_access", "authorized_capital_proposal", "sector_demand_outlook", "policy_agreement_clarification", "economic_restriction_response"}
+            if re.search(r"(?:할|하는|하는\s*)\s*경우|한다면|if\s+", sentence, re.I):
+                early = True
+            if (kind == "earnings_or_guidance" and index > 0
+                    and EARLY_SIGNAL.search(sentences[index - 1])
+                    and re.match(r"^(?:이는|이\s*수치는|이\s*전망치는|전년\s*동기\s*대비)\s", sentence)
+                    and not re.search(r"발표했다|공시했다|잠정\s*실적|확정\s*실적", sentence)):
+                early = True
             if kind == "capital_listing_stage" and re.search(r"오는\s*\d{1,2}일|출시한다고|출시할|상장할", sentence):
                 early = True
             priority = 2 if early or kind in {"technology_or_clinical_stage", "research_validation_result", "market_infrastructure", "model_operating_specification", "industrial_architecture_adoption", "space_execution_stage", "space_thermal_validation", "cryogenic_propellant_storage", "biology_research_discovery", "public_program_cost_study", "project_cost_evaluation", "sector_demand_outlook", "market_outlook", "fund_assets_level", "financing_infrastructure", "equity_compensation_change"} else 3

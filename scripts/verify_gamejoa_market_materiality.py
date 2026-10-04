@@ -1982,6 +1982,87 @@ class MaterialityChecks(unittest.TestCase):
         self.assertEqual(assessment["evidence"][0]["stage"], "early_signal")
         self.assertNotEqual(materiality.focus_kind("상장지수펀드 시장 성장"), "capital_listing")
 
+    def test_funding_headline_owns_hbm_background_and_keeps_review_stage(self):
+        title = "HBM 투자 바쁜 메모리기업…미국 자회사 자금조달 고심"
+        body = ("메모리기업의 HBM 생산량은 전년보다 30% 증가했다. "
+                "이에 따라 메모리기업은 자회사의 외부자본 활용을 위해 내주는 지분 가치와 "
+                "메모리기업 자체 자금의 활용 가치를 면밀히 비교 검토 중인 것으로 알려졌다. "
+                "연구원은 지분을 매각할 경우 150억달러가 확보될 것으로 예상했다.")
+        item = {**alert(title, body), "telegram_core_fact": "메모리기업의 HBM 생산량은 전년보다 30% 증가했다."}
+        self.assertEqual(materiality.focus_kind(title), "financing")
+        core = radar.verified_alert_core(item, title)
+        for value in ("외부자본", "자체 자금", "검토 중", "알려졌다"):
+            self.assertIn(value, core)
+        self.assertNotIn("30%", core)
+        self.assertNotIn("150억", core)
+        self.assertFalse(radar.source_core_fact_errors({**item, "telegram_core_fact": core}))
+        self.assertTrue(all(e["stage"] == "early_signal" for e in materiality.assess(title, body)["evidence"]))
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 1)), 1)
+
+    def test_earnings_consensus_cannot_become_actual_or_old_quarter_results(self):
+        title = "메모리기업, 이번 주 3Q 실적 발표…영업이익 증가 전망"
+        body = ("증권사가 집계한 메모리기업의 3분기 실적 컨센서스는 매출 20조원, 영업이익 10조원이다. "
+                "전년 동기 대비 매출은 30%, 영업이익은 50% 증가한 규모다. "
+                "메모리기업은 지난 2분기 영업이익 8조원을 기록했다. "
+                "메모리기업은 오는 8일 잠정실적을 발표한다.")
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "keep")
+        self.assertTrue(all(e["stage"] == "early_signal" for e in audit["evidence"]), audit)
+        self.assertNotIn("8조", str(audit["evidence"]))
+        item = {**alert(title, body), "telegram_core_fact": "메모리기업은 지난 2분기 영업이익 8조원을 기록했다."}
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("컨센서스", core)
+        self.assertIn("10조", core)
+        self.assertNotIn("8조", core)
+        self.assertFalse(radar.source_core_fact_errors({**item, "telegram_core_fact": core}))
+
+    def test_current_earnings_beat_is_not_downgraded_by_previous_forecast(self):
+        title = "기업, 3분기 영업이익 발표…컨센서스 상회"
+        body = "증권사 컨센서스는 영업이익 1조원이었다. 기업은 3분기 영업이익 2조원을 공시했다."
+        self.assertTrue(any(e["stage"] == "reported_change" for e in materiality.assess(title, body)["evidence"]))
+
+    def test_sanctions_response_needs_source_economic_measures_not_political_rhetoric(self):
+        title = '이란 대통령 "경제전쟁 대응 새 조치 도입"'
+        body = ("이란 대통령은 경제전쟁 대응을 위한 새로운 조치를 도입하고 있다고 밝혔다. "
+                "이란 정부는 환율과 필수 물자 공급을 점검했다고 보도됐다.")
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("도입하고 있다고 밝혔다", core)
+        self.assertIn("환율·필수물자", core)
+        self.assertNotIn("이란 이란", core)
+        self.assertFalse(radar.source_core_fact_errors({**item, "telegram_core_fact": core}))
+        self.assertEqual(materiality.assess(title, body)["transmission_scope_rank"], 2)
+        vague = materiality.assess(title, "이란 대통령은 경제전쟁에서 반드시 승리해야 한다고 강조했다.")
+        self.assertNotEqual(vague["disposition"], "keep")
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 1)), 1)
+
+    def test_complete_low_materiality_core_is_not_telegram_eligible(self):
+        title = "원·달러 NDF 최종 호가"
+        body = "원·달러 NDF 1개월물은 1357.3/1357.7원에 최종 호가되며 거래를 마쳤다."
+        item = alert(title, body)
+        self.assertIn("NDF", radar.verified_alert_core(item, title))
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([item], 1), [])
+
+    def test_manufacturing_layoffs_are_not_discarded_as_campaign_rhetoric(self):
+        title = "트럼프 유세 앞두고 트럭 공장 1400명 해고"
+        body = "트럭 제조기업은 공장에서 직원 1400명을 해고했다. 트럼프의 선거 유세가 예정돼 있다."
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "keep")
+        self.assertIn("labor_cost_or_execution", {e["kind"] for e in audit["evidence"]})
+        self.assertNotEqual(materiality.assess("트럼프 유세, 고용 확대 약속", "트럼프는 유세에서 공장 일자리를 늘려야 한다고 강조했다.")["disposition"], "keep")
+
+    def test_similar_source_searches_are_configured_without_forcing_publication(self):
+        searches = dict(radar.KOREAN_BUSINESS_SEARCH_SOURCES)
+        for name in ("반도체 자회사·설비투자 자금조달", "AI 인프라 자산매각·담보금융·재임차", "국내외 제조업 공장 감원·생산축소"):
+            self.assertIn(name, searches)
+        self.assertIn("site:news1.kr", searches["중동 경제전·원유·해운 리스크"])
+        unverified = {**alert("AI 기업, GPU 매각 자금조달", "AI 기업은 GPU를 매각해 자금을 조달하는 거래를 검토한다."), "body_verified": False}
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([unverified], 1), [])
+
     def test_first_headline_event_precedes_secondary_bond_context(self):
         title = "원·달러 NDF 0.2원 하락, 미국채 금리 하락 vs 달러인덱스 연 최고"
         body = "원·달러 역외 NDF 환율은 전장 대비 0.2원 하락했다. 특히 미국채 2년물 금리는 10bp 넘게 급락했다."

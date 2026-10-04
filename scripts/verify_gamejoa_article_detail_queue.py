@@ -980,6 +980,67 @@ class DetailQueueChecks(unittest.TestCase):
 
 
 class SourceIsolationChecks(unittest.TestCase):
+    def test_news1_client_article_text_wins_over_related_story_html(self):
+        title = "기업, 3분기 잠정실적 발표 예고"
+        paragraphs = ["기업은 오는 8일 3분기 잠정실적을 발표한다.",
+                      "증권사 전망치 평균은 매출 2조원, 영업이익 3000억원으로 집계됐다.",
+                      "이번 수치는 확정 실적이 아닌 전망치이며, 메모리 가격 상승이 이익 증가를 뒷받침할 것으로 예상된다.",
+                      "환율 하락과 비메모리 부문 손실은 전망치의 하방 요인으로 꼽혔다.",
+                      "회사는 아직 이번 분기의 확정 실적을 공시하지 않았으며, 잠정 발표 이후 사업부별 세부 실적을 공개할 예정이다."]
+        data = {"props": {"pageProps": {"articleView": {"id": 123, "title": title,
+                "published_time": "2026-10-04T06:37:43+09:00",
+                "contentArrange": [{"type": "image", "content": "다른 회사 회장의 사진"},
+                                   *[{"type": "text", "content": item} for item in paragraphs],
+                                   {"type": "div", "content": "추천기사"}]}}}}
+        page = (f'<meta property="og:title" content="{html.escape(title, quote=True)}">'
+                '<meta property="og:url" content="https://www.news1.kr/industry/general-industry/123">'
+                '<div id="articleBodyContent" itemprop="articleBody"></div>'
+                '<article><p>' + "다른 회장의 지분 매각 기사와 연예인 근황입니다. " * 15 + '</p></article>'
+                '<script id="__NEXT_DATA__" type="application/json">' + json.dumps(data, ensure_ascii=False) + '</script>')
+        detail = extract_article_detail(page, title)
+        self.assertTrue(detail["body_verified"])
+        self.assertEqual(detail["body"], "\n".join(paragraphs))
+        self.assertEqual(detail["body_source"], "news1_article_view_text")
+        self.assertEqual(detail["published_kst"], "2026-10-04T06:37:43+09:00")
+        self.assertNotIn("회장", detail["body"])
+        self.assertNotIn("추천기사", detail["body"])
+        self.assertFalse(extract_article_detail(page, title, "https://www.news1.kr/industry/general-industry/999")["body_verified"])
+
+    def test_news1_short_article_cannot_be_padded_by_related_stories(self):
+        title = "정부, 경제 대책 예고"
+        data = {"props": {"pageProps": {"articleView": {"id": 123, "title": title,
+                "contentArrange": [{"type": "text", "content": "정부는 경제 대책을 예고했다."}]}}}}
+        page = (f'<meta property="og:title" content="{title}">'
+                '<meta property="og:url" content="https://www.news1.kr/economy/123">'
+                '<article>' + "다른 기업의 투자와 실적 증가 기사입니다. " * 20 + '</article>'
+                '<script id="__NEXT_DATA__" type="application/json">' + json.dumps(data, ensure_ascii=False) + '</script>')
+        detail = extract_article_detail(page, title)
+        self.assertFalse(detail["body_verified"])
+        self.assertEqual(detail["body"], "정부는 경제 대책을 예고했다.")
+
+    def test_news1_page_data_is_bound_to_original_article_identity(self):
+        title = "기업, 실적 발표"
+        for article_id, article_title in ((999, title), (123, "전혀 다른 주제와 주체의 기사")):
+            data = {"props": {"pageProps": {"articleView": {"id": article_id, "title": article_title,
+                    "contentArrange": [{"type": "text", "content": "기업 영업이익은 3000억원이다. " * 20}]}}}}
+            page = (f'<meta property="og:title" content="{title}">'
+                    '<meta property="og:url" content="https://www.news1.kr/economy/123">'
+                    '<div id="articleBodyContent" itemprop="articleBody"></div>'
+                    '<article>' + "엉뚱한 회사 영업이익 증가와 지분 매각 추천 기사입니다. " * 20 + '</article>'
+                    '<script id="__NEXT_DATA__" type="application/json">' + json.dumps(data, ensure_ascii=False) + '</script>')
+            self.assertFalse(extract_article_detail(page, title)["body_verified"])
+
+    def test_news1_invalid_client_data_cannot_fall_back_to_related_stories(self):
+        title = "기업, 실적 발표"
+        for value in ('{"props":', json.dumps({"props": {"pageProps": {"articleView": {
+                "id": 123, "title": title, "contentArrange": "not a paragraph list"}}}})):
+            page = (f'<meta property="og:title" content="{title}">'
+                    '<meta property="og:url" content="https://www.news1.kr/economy/123">'
+                    '<div id="articleBodyContent" itemprop="articleBody"></div>'
+                    '<article>' + "다른 회사 공급계약 체결 관련 기사입니다. " * 20 + '</article>'
+                    '<script id="__NEXT_DATA__" type="application/json">' + value + '</script>')
+            self.assertFalse(extract_article_detail(page, title)["body_verified"])
+
     def test_article_validation_requests_html_not_feed_content(self):
         validator = lambda text: None
         with patch.object(radar.base, "fetch_text", return_value=("body", None)) as fetch:

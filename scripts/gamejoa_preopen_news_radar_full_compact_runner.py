@@ -471,7 +471,35 @@ KOREAN_BUSINESS_SEARCH_SOURCES = [
             "(이란 OR Iran OR 테헤란 OR Tehran) "
             "(경제전쟁 OR 경제 전쟁 OR 제재 OR 원유 OR 석유 OR 브렌트 OR 운임 OR 해운) "
             "(site:reuters.com OR site:apnews.com OR site:cnbc.com OR site:yna.co.kr OR "
-            "site:edaily.co.kr OR site:mt.co.kr)"
+            "site:edaily.co.kr OR site:mt.co.kr OR site:news1.kr)"
+        ),
+    ),
+    (
+        "반도체 자회사·설비투자 자금조달",
+        (
+            "(반도체 OR HBM OR 메모리 OR 솔리다임 OR Solidigm) "
+            "(자금조달 OR 자금 조달 OR 외부자본 OR 자회사 상장 OR 지분 매각 OR funding) "
+            "(site:yna.co.kr OR site:news1.kr OR site:hankyung.com OR site:mk.co.kr OR "
+            "site:reuters.com OR site:edaily.co.kr)"
+        ),
+    ),
+    (
+        "AI 인프라 자산매각·담보금융·재임차",
+        (
+            "(AI OR GPU OR 엔비디아 OR 데이터센터) "
+            "(매각 OR 담보 OR 리스 OR 재임차 OR 자금조달 OR sale-leaseback OR financing) "
+            "(아마존 OR 빅테크 OR 클라우드 OR Amazon OR hyperscaler) "
+            "(site:hankyung.com OR site:yna.co.kr OR site:news1.kr OR site:reuters.com OR "
+            "site:ft.com OR site:edaily.co.kr OR site:mt.co.kr)"
+        ),
+    ),
+    (
+        "국내외 제조업 공장 감원·생산축소",
+        (
+            "(공장 OR 제조업 OR 자동차 OR 트럭 OR factory OR manufacturing) "
+            "(감원 OR 해고 OR 일자리 감축 OR 생산축소 OR layoffs OR laid off) "
+            "(site:apnews.com OR site:reuters.com OR site:yna.co.kr OR site:news1.kr OR "
+            "site:hankyung.com OR site:edaily.co.kr OR site:mk.co.kr)"
         ),
     ),
     (
@@ -2245,6 +2273,7 @@ def normalized_article_sentence(sentence: str) -> str:
     if attributed:
         text = f"{attributed.group(1)}은 {attributed.group(2)} 보도했다."
     replacements = (
+        (r"^이에\s*따라\s+", ""),
         (r"^[가-힣]{2,5}\s*(?:인턴\s*|수습\s*|객원\s*)?(?:기자|특파원)(?:\s+[가-힣]{2,5}\s*(?:기자|특파원))*\s*=\s*", ""),
         (r"^[▲△▶]\s*", ""),
         (
@@ -2254,8 +2283,7 @@ def normalized_article_sentence(sentence: str) -> str:
         ),
         (r"^\d{1,2}일\s+([A-Za-z0-9가-힣·&()]+)(?:은|는)\s+", r"\1, "),
         (r"^이날\s+([A-Za-z0-9가-힣·&()]+)(?:\s+이사회)?(?:은|는)\s+", r"\1, "),
-        (r"\b올해(?!\s+(?:대비|보다|수준|기준))\s+", ""),
-        (r"\b올(?!\s+(?:대비|보다|수준|기준))\s+", ""),
+        (r"^\d{1,2}일\s+([^.!?]{2,30}?)에\s*따르면\s*", r"\1에 따르면 "),
         (r"지배주주\s+당기순이익", "순이익"),
         (r"지배지분\s+기준\s+순이익", "순이익"),
         (r"전년\s+동기\s+대비", "전년비"),
@@ -2302,6 +2330,29 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         return ""
     focus = market_materiality.focus_kind(title)
     source = " ".join(sentences)
+    if focus == "financing":
+        for sentence in sentences:
+            if (re.search(r"외부\s*자본", sentence)
+                    and re.search(r"자체\s*자금", sentence)
+                    and re.search(r"비교\s*검토", sentence)):
+                fact = normalized_article_sentence(sentence)
+                if core_sentence_is_complete(fact):
+                    return fact
+    if focus == "economic_response":
+        for sentence in sentences:
+            if not market_materiality.focus_matches(title, sentence):
+                continue
+            speaker = re.search(r"([가-힣]{2,15})\s*대통령", sentence)
+            if not speaker or not re.search(r"도입.{0,20}밝혔다", sentence):
+                continue
+            country = "이란 " if "이란" in title or "이란" in sentence else ""
+            if speaker.group(1) == country.strip():
+                country = ""
+            fact = f"{country}{speaker.group(1)} 대통령은 경제전쟁 대응 조치를 도입하고 있다고 밝혔다."
+            if re.search(r"환율", source) and re.search(r"필수\s*물자", source) and re.search(r"점검", source):
+                fact += " 환율·필수물자 공급을 점검했다."
+            if core_sentence_is_complete(fact):
+                return fact
     if focus == "retail_fuel":
         observation = market_materiality.retail_fuel_observation(title, "\n".join(sentences))
         if observation:
@@ -7167,7 +7218,7 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
         title = str(row.get("title") or "")
 
         def validate_article_response(source_html: str) -> str | None:
-            candidate = extract_article_detail(source_html, title)
+            candidate = extract_article_detail(source_html, title, fetch_url)
             if candidate.get("body_verified"):
                 if row.get("_detail_from_queue") and not (row.get("published") or base.parse_date(candidate.get("published_kst"))):
                     return "resumed article publication time unavailable"
@@ -7178,7 +7229,7 @@ def hydrate_korean_business_details(rows: list[dict], now) -> list[str]:
             )
 
         detail_html, error = base.fetch(fetch_url, 16, response_validator=validate_article_response)
-        detail = extract_article_detail(detail_html, str(row.get("title") or "")) if detail_html and not error else {}
+        detail = extract_article_detail(detail_html, title, fetch_url) if detail_html and not error else {}
         if not error and not detail.get("body_verified"):
             error = (
                 "title/body mismatch "
@@ -9624,7 +9675,7 @@ def single_stock_leverage_core(alert: dict, title: str) -> str:
 
 
 def verified_alert_core(alert: dict, title: str) -> str:
-    """Recover a source-backed complete core or return an empty value for exclusion."""
+    """Recover a complete headline fact; publication still applies source guards."""
     is_business = bool(alert.get("korean_business_news"))
     source_title = clean_article_summary_text(
         alert.get("source_title") or alert.get("original_news") or title
@@ -9644,15 +9695,15 @@ def verified_alert_core(alert: dict, title: str) -> str:
                 return listing_fact
             body = str(alert.get("source_body") or alert.get("source_abstract") or "")
             revision_fact = financial_revision_fact(source_title or title, ranked_article_sentences(body, [], title=source_title or title), body)
-            if revision_fact:
+            if revision_fact and valid_source_fact(revision_fact):
                 return revision_fact
             financial_fact = headline_financial_fact(source_title or title, article_summary_body(body))
-            if financial_fact and (market_materiality.focus_kind(source_title) or valid_source_fact(financial_fact)):
+            if financial_fact and valid_source_fact(financial_fact):
                 return financial_fact
             focused_fact = source_focused_article_core(source_title or title, ranked_article_sentences(
                 body, korean_business_title_terms(source_title or title), title=source_title or title,
             ))
-            if focused_fact and (market_materiality.focus_kind(source_title) != "financing" or valid_source_fact(focused_fact)):
+            if focused_fact and valid_source_fact(focused_fact):
                 return focused_fact
         source_body = article_summary_body(
             "\n".join(
@@ -9682,7 +9733,7 @@ def verified_alert_core(alert: dict, title: str) -> str:
             ]
         )
 
-    if is_business and alert.get("body_verified") and not market_materiality.focus_kind(source_title):
+    if is_business and alert.get("body_verified"):
         for candidate in candidates:
             core = complete_prose_text(candidate, limit=GAMEJOA_CORE_MAX_CHARS)
             if valid_source_fact(core) and market_materiality.core_focus_aligned(source_title, core):
@@ -9694,6 +9745,8 @@ def verified_alert_core(alert: dict, title: str) -> str:
                 core = complete_prose_text(fact, limit=GAMEJOA_CORE_MAX_CHARS)
                 if valid_source_fact(core) and market_materiality.core_focus_aligned(source_title, core):
                     return core
+        # A complete but low-materiality fact remains inspectable. The final
+        # selection guard still excludes it; do not replace it with background.
     for candidate in candidates:
         core = complete_prose_text(candidate, limit=GAMEJOA_CORE_MAX_CHARS)
         if core_sentence_is_complete(core) and not subjectless_financial_core(core) and (
