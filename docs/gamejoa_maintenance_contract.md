@@ -90,6 +90,11 @@ Every defect or requested change must follow this sequence:
 - Conditional factory tariffs retain the construction condition, cited rate
   and any source-provided grace period. A previous LNG statement cannot own
   that headline; a campaign statement does not become an enacted tariff rule.
+- Semiconductor capacity outlooks retain the investment fiscal period and the
+  separately attributed production-effect horizon. Market-breadth comparisons
+  retain the index, constituent population and high/year-start comparison basis;
+  a background Treasury yield cannot replace the headline's actual dispersion.
+  Verified numeric index/constituent observations do not imply investor flows.
 - Entertainment/private-life articles cannot qualify as customer discussions
   from meeting or social-photo certification words. Apply the same genre and
   foreground check before body retrieval, alert construction and final output.

@@ -2350,6 +2350,33 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         return ""
     focus = market_materiality.focus_kind(title)
     source = " ".join(sentences)
+    if focus == "capital_spending" and re.search(r"공급|생산", title):
+        investment = re.search(
+            r"([A-Za-z가-힣]{2,20})(?:은|는)\s*(\d{4})\s*회계연도\s*(상반기|하반기)\s*"
+            r"(?:에\s*)?설비투자에\s*(\d[\d,.]*\s*(?:억|만|조)?\s*달러)", source,
+        )
+        effect = re.search(
+            r"([가-힣A-Za-z]{2,20}증권)\s*연구원은[^.!?]{0,100}?"
+            r"유의미한\s*생산\s*증가\s*효과는\s*(\d{4})년\s*(상반기|하반기)부터[^.!?]{0,50}?"
+            r"(?:분석했다|전망했다)", source,
+        )
+        if investment and effect:
+            name = investment.group(1)
+            amount = re.sub(r"\s+", "", investment.group(4))
+            return (f"{name}{korean_topic_particle(name)} {investment.group(2)}회계연도 {investment.group(3)} "
+                    f"설비투자 {amount}를 계획했다. {effect.group(1)}은 생산 증가 효과를 "
+                    f"{effect.group(2)}년 {effect.group(3)}부터로 전망했다.")
+    if focus == "breadth":
+        divergence = re.search(
+            r"(블룸버그(?:통신)?)은\s*(S&P\s*500|코스피|나스닥)(?:지수)?가\s*사상\s*최고치에서\s*"
+            r"(\d+(?:\.\d+)?)%도\s*떨어지지\s*않은[^.!?]{0,45}?"
+            r"상당수\s*업종과\s*종목이\s*고점\s*대비\s*(\d+(?:\.\d+)?)%\s*이상\s*하락[^.!?]{0,30}?전했다", source,
+        )
+        if divergence:
+            publisher = divergence.group(1).removesuffix("통신")
+            index = re.sub(r"\s+", "", divergence.group(2))
+            return (f"{publisher}는 {index}이 사상 최고치 대비 {divergence.group(3)}% 이내에 있지만, "
+                    f"상당수 업종·종목은 고점 대비 {divergence.group(4)}% 이상 하락했다고 전했다.")
     if focus == "factory_tariff":
         for sentence in sentences:
             if not market_materiality.focus_matches(title, sentence) or "트럼프" not in sentence or "말했다" not in sentence:
@@ -8403,7 +8430,7 @@ def has_korea_market_link(alert: dict) -> bool:
 
 def has_direct_market_path(text: str, alert: dict) -> bool:
     text = source_evidence_text(alert) or text
-    if verified_materiality_axes(alert):
+    if verified_materiality_axes(alert) or verified_market_breadth_change(alert):
         return True
     if stock_market_channels(alert):
         return True
@@ -8536,7 +8563,7 @@ def has_generic_explanation(alert: dict) -> bool:
 
 
 def has_decision_impact(alert: dict) -> bool:
-    if verified_materiality_axes(alert):
+    if verified_materiality_axes(alert) or verified_market_breadth_change(alert):
         return True
     labels = set(display_impacts(alert.get("impacts")))
     if not labels or labels == {LIMITED_DECISION_IMPACT}:
@@ -9323,6 +9350,17 @@ def verified_materiality_axes(alert: dict) -> list[str]:
     return list(audit["axes"])
 
 
+def verified_market_breadth_change(alert: dict) -> bool:
+    # Index/constituent dispersion is a market observation, not proof of flows.
+    audit = source_market_materiality(alert)
+    return bool(
+        alert.get("body_verified")
+        and audit["disposition"] == "keep"
+        and audit["priority"] >= 2
+        and audit.get("transmission_scope_reason") == "market_wide_breadth_change"
+    )
+
+
 def is_dedicated_fcc_robot_inverter_policy(alert: dict) -> bool:
     """Keep FCC robot/inverter Covered List chronology in the KHS policy owner lane.
 
@@ -9895,6 +9933,12 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         expected_tariff = source_focused_article_core(title, market_materiality.source_sentences(source))
         if expected_tariff and re.sub(r"\s+", "", expected_tariff) != re.sub(r"\s+", "", core):
             errors.append("factory_tariff_condition_rate_or_statement_mismatch")
+    if market_materiality.focus_kind(title) in {"capital_spending", "breadth"}:
+        expected_fact = source_focused_article_core(title, market_materiality.source_sentences(source))
+        if expected_fact:
+            comparable_core = re.sub(r"\(약[^)]*\)", "", core)
+            if re.sub(r"\s+", "", expected_fact) != re.sub(r"\s+", "", comparable_core):
+                errors.append("investment_horizon_or_market_population_mismatch")
     if market_materiality.focus_kind(title) == "fx" and re.search(r"전망|예상", title):
         expected_forecast = source_focused_article_core(title, market_materiality.source_sentences(source))
         if expected_forecast and re.sub(r"\s+", "", expected_forecast) != re.sub(r"\s+", "", core):

@@ -2227,6 +2227,47 @@ class MaterialityChecks(unittest.TestCase):
         with patch.object(radar.base, "kst_now", return_value=NOW):
             self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
 
+    def test_capex_supply_effect_core_keeps_fiscal_period_and_analyst_horizon(self):
+        title = '반도체 설비투자 확대로 공급 확대? "내후년 하반기는 돼야"'
+        body = ('마이크론은 2027 회계연도 상반기에 설비투자에 250억 달러를 투입하고 하반기는 더 늘어날 것이라는 청사진을 제시했다. '
+                '류형근 대신증권 연구원은 "설비투자 상향이 즉각적인 생산 증가를 일으키는 것은 아니다"라며 '
+                '"유의미한 생산 증가 효과는 2028년 하반기부터 나타날 것"이라고 분석했다.')
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        for expected in ("마이크론", "2027회계연도 상반기", "250억달러", "계획했다", "대신증권", "2028년 하반기", "전망했다"):
+            self.assertIn(expected, core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        self.assertLessEqual(len(core), radar.GAMEJOA_CORE_MAX_CHARS)
+        self.assertFalse(radar.source_core_fact_errors({**item, "telegram_core_fact": core}))
+        for wrong in (core.replace("2027회계연도", "2026회계연도"), core.replace("2028년", "2027년"),
+                      core.replace("전망했다", "확정했다")):
+            with self.subTest(wrong=wrong):
+                self.assertFalse(radar.source_output_aligned({**item, "telegram_core_fact": wrong}))
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 1)), 1)
+
+    def test_market_breadth_core_retains_population_and_comparison_basis(self):
+        title = "美 증시 사상 최고치의 착시…AI 빼면 이미 구멍 숭숭"
+        body = ('미국 10년물 국채금리가 지난 1일 5.34%까지 치솟았다. '
+                '블룸버그통신은 S&P500지수가 사상 최고치에서 2%도 떨어지지 않은 수준에 머물고 있음에도 '
+                '시장 내부에서는 상당수 업종과 종목이 고점 대비 5% 이상 하락한 상태라고 전했다.')
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        for expected in ("블룸버그", "S&P500", "사상 최고치 대비 2%", "상당수 업종·종목", "고점 대비 5%"):
+            self.assertIn(expected, core)
+        self.assertNotIn("국채금리", core)
+        self.assertFalse(radar.source_core_fact_errors({**item, "telegram_core_fact": core}))
+        self.assertEqual(radar.verified_materiality_axes(item), [])
+        self.assertTrue(radar.verified_market_breadth_change(item))
+        self.assertFalse(radar.verified_market_breadth_change({**item, "body_verified": False}))
+        self.assertFalse(radar.verified_market_breadth_change(alert(title, "시장 내부에서는 종목별 격차가 커지고 있다고 전했다.")))
+        for wrong in (core.replace("상당수 업종·종목", "모든 종목"), core.replace("고점 대비", "연초 대비"),
+                      core.replace("5%", "15%"), "미국 국채금리는 5.34%까지 치솟았다."):
+            with self.subTest(wrong=wrong):
+                self.assertFalse(radar.source_output_aligned({**item, "telegram_core_fact": wrong}))
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 1)), 1)
+
     def test_support_mou_needs_size_terms_or_committed_execution(self):
         title = "신한은행, 공제조합과 금융지원 업무협약"
         body = ("신한은행은 자본재공제조합과 플랫폼 기반 금융지원 업무협약을 체결했다. "
