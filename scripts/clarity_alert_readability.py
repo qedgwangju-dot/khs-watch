@@ -40,6 +40,8 @@ def event_rank(event):
         return 190
     if "원문·핵심 조항 수정" in et or "원문 버전" in et:
         return 180
+    if FMT.is_sec_3x_crypto_etp_approval(event):
+        return 185
     if FMT.is_sec_crypto_custody_2026(event):
         return 179
     if is_media_text_release(event):
@@ -75,6 +77,8 @@ def easy_takeaway(event, body_ko):
 
 def short_change(event, title_ko, body_ko):
     et = clean(event.get("event_type", ""))
+    if FMT.is_sec_3x_crypto_etp_approval(event):
+        return "SEC가 Cboe BZX의 3x Bitcoin·3x Ether ETP 상장 규칙을 승인했습니다. 실제 거래 개시는 등록신고서 효력·상장 공지를 별도로 확인해야 합니다."
     if FMT.is_vs_trust_3x_registration_effect(event):
         return "BITH·ETHK 등록서류의 Form EFFECT(효력발생 통지)가 확인돼 실제 출시에 한 단계 더 가까워졌습니다."
     if FMT.is_vs_trust_3x_final_prospectus(event):
@@ -166,6 +170,8 @@ def investment_lines(event):
 
 def impact_snapshot(event):
     et = clean(event.get("event_type", ""))
+    if FMT.is_sec_3x_crypto_etp_approval(event):
+        return "수급·거래수단 ↑ · 변동성 전달 ↑ · BTC/ETH 직접 · COIN 간접"
     if FMT.is_vs_trust_3x_registration_effect(event):
         return "시간표 ↑↑ · 실제거래 직전 단계 · BTC/ETH 선물수급은 아직 미발생"
     if FMT.is_vs_trust_3x_final_prospectus(event):
@@ -206,6 +212,12 @@ def sentence_bullets(text):
 
 
 def confirmed_fact_lines(event, body_ko):
+    if FMT.is_sec_3x_crypto_etp_approval(event):
+        return [
+            "SEC Release No. 34-106577 · File No. SR-CboeBZX-2026-065 · 승인일 2026-10-02.",
+            "VS Trust의 3x Bitcoin ETF·3x Ether ETF 등 6개 상품에 대해 Cboe BZX 상장·거래 규칙 승인.",
+            "목표는 기초자산의 하루 수익률 3배. 실제 거래 개시는 펀드 등록신고서 효력·상장 공지 확인 필요.",
+        ]
     if FMT.is_vs_trust_3x_registration_effect(event):
         detail = clean(event.get("detail", ""))
         form = "Form EFFECT(효력발생 통지)"
@@ -261,6 +273,8 @@ def confirmed_fact_lines(event, body_ko):
 
 
 def compact_status(event):
+    if FMT.is_sec_3x_crypto_etp_approval(event):
+        return "🟢 상장 규칙 승인 — SEC 승인 완료. 다만 실제 거래 개시는 아직 별도 확인."
     if FMT.is_vs_trust_3x_registration_effect(event):
         return "🟢 등록 효력 발생 — 증권 등록 단계 통과. 실제 첫 거래일은 별도 확인."
     if FMT.is_vs_trust_3x_final_prospectus(event):
@@ -283,6 +297,12 @@ def compact_status(event):
 
 def pending_lines(event):
     lines = []
+    if FMT.is_sec_3x_crypto_etp_approval(event):
+        return [
+            "3x Bitcoin ETF·3x Ether ETF 각각의 등록신고서 최종 효력",
+            "Cboe 실제 상장일·티커·거래개시 공지",
+            "초기 순자산·거래량·선물 포지션 규모",
+        ]
     verification = clean(event.get("verification_status", ""))
     if verification:
         for part in re.split(r"\s*/\s*", verification):
@@ -323,6 +343,12 @@ def pending_lines(event):
 
 def next_check_lines(event):
     et = clean(event.get("event_type", ""))
+    if FMT.is_sec_3x_crypto_etp_approval(event):
+        return [
+            "3x Bitcoin ETF 등록신고서 효력 예정 2026-10-18 재확인",
+            "3x Ether ETF 최신 등록신고서 효력일",
+            "Cboe 상장·거래개시 공지",
+        ]
     if FMT.is_vs_trust_3x_registration_effect(event):
         return [
             "Volatility Shares 공식 출시 공지",
