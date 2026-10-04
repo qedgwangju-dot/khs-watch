@@ -144,6 +144,37 @@ NVHBM_ARCH_BASELINE = {
     "as_of": "2026-10-03",
     "note": "NVIDIA 공식 수치와 SemiAnalysis 추정치를 분리 저장. Rubin 16%→Feynman 약 4% 및 Samsung PHY 8×4mm→D2D 8.5×1.5mm(약 60.2% 축소)는 SemiAnalysis 추정·Samsung Hot Chips 자료 인용이며 NVIDIA 공식 다이면적 실측치로 승격하지 않음. NVIDIA의 +25% compute die area와 상세 본문의 +30% main-die silicon은 서로 다른 공식 표현이라 합치지 않음.",
 }
+MORGAN_STANLEY_NVIDIA_HBM_MARGIN_TRACK_VERSION = 1
+MORGAN_STANLEY_NVIDIA_HBM_MARGIN_BASELINE = {
+    "gross_margin_floor_pct_reported": 72.0,
+    "base_hbm_unit_price_tolerance_pct_reported": 91.7,
+    "despec_hbm_unit_price_tolerance_pct_reported": 187.5,
+    "exact_tolerance_public_source_verified": False,
+    "full_spec_hbm_gb": OFFICIAL_RUBIN_GB,
+    "despec_hbm_gb": RUMORED_ULTRA_GB,
+    "derived_despec_tolerance_pct": ((1.0 + 91.7 / 100.0) * (OFFICIAL_RUBIN_GB / RUMORED_ULTRA_GB) - 1.0) * 100.0,
+    "despec_math_consistent": True,
+    "vr200_nvl72_rack_value_usd": 7803148.0,
+    "vr200_memory_line_usd": 2001600.0,
+    "vr200_memory_line_growth_pct": 435.0,
+    "vr200_memory_line_share_pct": 25.65,
+    "vr200_memory_line_scope": "public_recaps_conflict_on_hbm_inclusion_not_hbm_only_confirmed",
+    "nvidia_q2_fy27_gross_margin_pct": 75.0,
+    "nvidia_q3_fy27_gross_margin_outlook_mid_pct": 74.0,
+    "nvidia_q3_fy27_gross_margin_outlook_plusminus_pct": 0.5,
+    "morgan_stanley_next_year_gross_margin_range_low_pct": 72.0,
+    "morgan_stanley_next_year_gross_margin_range_high_pct": 73.0,
+    "morgan_stanley_next_year_gross_margin_estimate_pct": 72.5,
+    "source_kind": "user_provided_morgan_stanley_summary_for_exact_tolerance",
+    "source_url": "",
+    "public_bom_source_url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/nvidias-memory-costs-soar-485-percent-latest-ai-systems-now-cost-usd7-8-million-to-build-memory-now-comprises-25-percent-of-the-total-cost-rubin-gpus-a-mere-usd50-000-apiece",
+    "public_bom_secondary_url": "https://longbridge.com/news/287728024",
+    "nvidia_official_results_url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027/",
+    "morgan_stanley_public_recap_url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-delivers-strong-q2-long-150300603.html",
+    "as_of": "2026-10-04",
+    "note": "91.7%·187.5%·72% 조합은 사용자 제공 Morgan Stanley 요약으로 기준선에 보존하되, 공개 검색에서 원문 또는 exact 수치의 독립 2중 재확인은 아직 확보하지 못했으므로 exact_tolerance_public_source_verified=false. 187.5%는 288→192GB(-33.3%) 가정에서 91.7% 허용치를 용량비 1.5배로 조정하면 약 187.55%로 산술상 일치. VR200 $2.0016M memory line은 공개 2차 자료가 HBM 포함 여부를 다르게 설명하므로 HBM-only 비용으로 승격 금지.",
+}
+
 JPM_HBM_STRUCTURAL_TRACK_VERSION = 1
 JPM_HBM_STRUCTURAL_BASELINE = {
     "demand_cagr_2026_2028_pct": 63.0,
@@ -275,6 +306,10 @@ QUERIES = [
         '2027 HBM (contract OR price OR pricing OR LTA OR supply OR allocation OR volume OR negotiation OR agreement) (Samsung OR "SK hynix" OR Micron OR NVIDIA)',
     ),
     (
+        "morgan_stanley_nvidia_hbm_margin",
+        '("Morgan Stanley" OR 모건스탠리) NVIDIA Rubin HBM ("gross margin" OR margin OR "price increase" OR "unit price" OR tolerance OR "de-spec" OR despec OR 91.7 OR 187.5 OR 72% OR 매출총이익률 OR 단가 OR 가격 OR 디스펙)',
+    ),
+    (
         "jpm_hbm_structural",
         '("J.P. Morgan" OR JPMorgan OR JP모건) HBM (63% OR 54% OR 31% OR 163 billion OR 1630억 OR shortage OR deficit OR capacity OR wafer OR ASP OR ASIC)',
     ),
@@ -312,6 +347,7 @@ CATEGORY_KO = {
     "samsung_nextgen_hbm": "별도 알림 · 삼성 Custom HBM·HBM5·zHBM 맞춤형 로드맵",
     "nvhbm_architecture": "별도 알림 · NVIDIA NVHBM·Custom HBM 구조 전환",
     "hbm_2027_contract": "2027 HBM 계약가격·물량",
+    "morgan_stanley_nvidia_hbm_margin": "별도 알림 · Morgan Stanley NVIDIA HBM 가격 감내력·마진",
     "jpm_hbm_structural": "별도 알림 · J.P. Morgan HBM 구조적 수급·가격",
     "micron_sca_visibility": "별도 알림 · Micron 장기계약·RPO·예치금",
     "citi_hbm_outlook": "Citi HBM 2027~2028 수요·공급·가격",
@@ -328,6 +364,7 @@ TRUSTED_SOURCE_HINTS = (
     "tom's hardware", "toms hardware", "financial times", "wall street journal", "wsj", "cnbc",
     "investing.com",
     "thelec", "the elec", "연합뉴스", "yonhap", "매일경제", "mk.co.kr",
+    "yahoo finance", "mt newswires", "marketwatch", "investor's business daily", "investors.com",
 )
 LOW_VALUE_SOURCE_HINTS = (
     "finance.biggo", "aol", "24/7 wall st", "247wallst", "cryptobriefing",
@@ -434,6 +471,16 @@ def relevant(category: str, text: str) -> bool:
         )
     if category == "hbm_2027_contract":
         return "2027" in low and "hbm" in low and any(k in low for k in ("contract", "price", "pricing", "lta", "supply", "allocation", "volume", "agreement", "negotiation", "계약", "가격", "공급", "물량", "협상", "타결"))
+    if category == "morgan_stanley_nvidia_hbm_margin":
+        return (
+            ("morgan stanley" in low or "모건스탠리" in low)
+            and ("nvidia" in low or "엔비디아" in low)
+            and ("rubin" in low or "루빈" in low or "hbm" in low)
+            and any(k in low for k in (
+                "gross margin", "margin", "매출총이익률", "hbm", "price", "pricing", "단가", "가격",
+                "tolerance", "감내", "de-spec", "despec", "디스펙", "91.7", "187.5", "72%",
+            ))
+        )
     if category == "jpm_hbm_structural":
         return (
             ("j.p. morgan" in low or "jp morgan" in low or "jpmorgan" in low or "jp모건" in low)
@@ -729,6 +776,168 @@ def _citi_wpm(text: str, aliases: tuple[str, ...]) -> float | None:
                 return value * 1000.0
             return value
     return None
+
+
+def _ms_nvidia_margin_math(base_tolerance_pct: float, full_gb: float, despec_gb: float) -> float:
+    if full_gb <= 0 or despec_gb <= 0:
+        raise ValueError("positive HBM capacities required")
+    return ((1.0 + float(base_tolerance_pct) / 100.0) * (float(full_gb) / float(despec_gb)) - 1.0) * 100.0
+
+
+def extract_morgan_stanley_nvidia_hbm_margin(event: dict) -> dict | None:
+    text = compact_fact_text(event)
+    low = text.lower()
+    if not relevant("morgan_stanley_nvidia_hbm_margin", text):
+        return None
+
+    obs: dict = {}
+
+    # Exact HBM unit-price tolerance. Require local HBM/price/tolerance context.
+    for pat in (
+        r"(?:hbm)[^.]{0,180}?(?:unit\s*price|price|pricing|단가|가격)[^.]{0,160}?(?:increase|rise|인상|상승|감내|tolerat)[^%]{0,80}?([0-9]+(?:\.[0-9]+)?)\s*%",
+        r"([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:hbm)[^.]{0,140}?(?:unit\s*price|price|단가|가격)[^.]{0,100}?(?:increase|인상|감내|tolerat)",
+    ):
+        m = re.search(pat, low, re.I)
+        if m:
+            v = float(m.group(1))
+            if 20.0 <= v <= 300.0:
+                obs["base_hbm_unit_price_tolerance_pct_reported"] = v
+                break
+
+    # De-spec tolerance must appear in the same local clause as de-spec wording.
+    for pat in (
+        r"(?:de[- ]?spec|despec|디스펙)[^.]{0,180}?(?:hbm)[^.]{0,160}?(?:unit\s*price|price|단가|가격)?[^%]{0,120}?([0-9]+(?:\.[0-9]+)?)\s*%",
+        r"(?:de[- ]?spec|despec|디스펙)[^.]{0,180}?([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,120}?(?:hbm|price|단가|가격|감내|tolerat)",
+        r"([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,100}?(?:de[- ]?spec|despec|디스펙)[^.]{0,120}?(?:hbm|price|단가|가격|감내|tolerat)",
+    ):
+        m = re.search(pat, low, re.I)
+        if m:
+            v = float(m.group(1))
+            if 50.0 <= v <= 400.0:
+                obs["despec_hbm_unit_price_tolerance_pct_reported"] = v
+                break
+
+    # 72% is only eligible when tied to gross-margin floor/defense language.
+    for pat in (
+        r"(?:gross\s*margin|매출총이익률)[^.]{0,120}?(?:floor|lower\s*bound|하단|방어|유지)[^%]{0,60}?([0-9]+(?:\.[0-9]+)?)\s*%",
+        r"([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,80}?(?:gross\s*margin|매출총이익률)[^.]{0,100}?(?:floor|lower\s*bound|하단|방어|유지)",
+    ):
+        m = re.search(pat, low, re.I)
+        if m:
+            v = float(m.group(1))
+            if 50.0 <= v <= 90.0:
+                obs["gross_margin_floor_pct_reported"] = v
+                break
+
+    # Capacity assumptions. Never infer 192GB from the tolerance percentages alone.
+    full = re.search(r"(?:full[- ]?spec|standard|기존|원래|full)[^.]{0,100}?([0-9]{2,4})\s*gb[^.]{0,80}?(?:hbm)", low, re.I)
+    if not full:
+        full = re.search(r"(?:hbm)[^.]{0,80}?([0-9]{2,4})\s*gb[^.]{0,100}?(?:full[- ]?spec|standard|기존|원래)", low, re.I)
+    despec = re.search(r"(?:de[- ]?spec|despec|디스펙)[^.]{0,120}?([0-9]{2,4})\s*gb", low, re.I)
+    if full:
+        obs["full_spec_hbm_gb"] = float(full.group(1))
+    if despec:
+        obs["despec_hbm_gb"] = float(despec.group(1))
+
+    # Morgan Stanley VR200 rack value distribution. Keep "memory line" generic:
+    # public secondary sources disagree on whether HBM is in this line or inside GPU.
+    m = re.search(r"(?:vr200|vera\s+rubin)[^.]{0,180}?(?:rack|nvl72)[^.]{0,120}?(?:\$|usd\s*)?([0-9]+(?:\.[0-9]+)?)\s*(?:m|million)", low, re.I)
+    if m:
+        obs["vr200_nvl72_rack_value_usd"] = float(m.group(1)) * 1_000_000.0
+    m = re.search(r"(?:memory|메모리)[^.]{0,120}?(?:\$|usd\s*)?([0-9]+(?:\.[0-9]+)?)\s*(?:m|million)", low, re.I)
+    if m:
+        obs["vr200_memory_line_usd"] = float(m.group(1)) * 1_000_000.0
+        obs["vr200_memory_line_scope"] = "public_recaps_conflict_on_hbm_inclusion_not_hbm_only_confirmed"
+    m = re.search(r"(?:memory|메모리)[^.]{0,120}?([0-9]+(?:\.[0-9]+)?)\s*%[^.]{0,80}?(?:increase|jump|rise|증가|급증)", low, re.I)
+    if m:
+        v = float(m.group(1))
+        if 100.0 <= v <= 1000.0:
+            obs["vr200_memory_line_growth_pct"] = v
+
+    if not obs:
+        return None
+
+    full_gb = float(obs.get("full_spec_hbm_gb") or OFFICIAL_RUBIN_GB)
+    despec_gb = float(obs.get("despec_hbm_gb") or RUMORED_ULTRA_GB)
+    base = obs.get("base_hbm_unit_price_tolerance_pct_reported")
+    if base is not None:
+        derived = _ms_nvidia_margin_math(float(base), full_gb, despec_gb)
+        obs["derived_despec_tolerance_pct"] = derived
+        reported_despec = obs.get("despec_hbm_unit_price_tolerance_pct_reported")
+        if reported_despec is not None:
+            obs["despec_math_consistent"] = abs(float(reported_despec) - derived) <= 0.25
+
+    obs.update({
+        "source": event.get("origin_source") or event.get("source") or "",
+        "source_url": event.get("direct_link") or "",
+        "observed_at": event.get("published_at_kst") or "",
+    })
+    return obs
+
+
+def merge_morgan_stanley_nvidia_hbm_margin(old: dict, obs: dict) -> dict:
+    out = dict(old or {})
+    for key, value in obs.items():
+        if value not in (None, ""):
+            out[key] = value
+    return out
+
+
+def morgan_stanley_nvidia_hbm_margin_changes(old: dict, new: dict) -> list[str]:
+    reasons: list[str] = []
+    for field, label, threshold in (
+        ("gross_margin_floor_pct_reported", "매출총이익률 하단", 1.0),
+        ("base_hbm_unit_price_tolerance_pct_reported", "풀스펙 HBM 단가 인상 감내폭", 10.0),
+        ("despec_hbm_unit_price_tolerance_pct_reported", "디스펙 HBM 단가 인상 감내폭", 10.0),
+    ):
+        a, b = old.get(field), new.get(field)
+        if a is not None and b is not None and abs(float(b) - float(a)) >= threshold:
+            reasons.append(f"{label} {float(a):g}%→{float(b):g}%")
+        elif a is None and b is not None:
+            reasons.append(f"{label} {float(b):g}% 신규 확인")
+
+    for field, label in (
+        ("full_spec_hbm_gb", "풀스펙 HBM 용량"),
+        ("despec_hbm_gb", "디스펙 HBM 용량"),
+    ):
+        a, b = old.get(field), new.get(field)
+        if a is not None and b is not None and float(a) != float(b):
+            reasons.append(f"{label} {float(a):g}→{float(b):g}GB")
+
+    a, b = old.get("vr200_memory_line_usd"), new.get("vr200_memory_line_usd")
+    if a and b:
+        pct = (float(b) / float(a) - 1.0) * 100.0
+        if abs(pct) >= 10.0:
+            reasons.append(f"VR200 rack memory line {float(a)/1e6:.2f}→{float(b)/1e6:.2f}백만달러 ({pct:+.1f}%)")
+
+    if old.get("exact_tolerance_public_source_verified") is not True and new.get("exact_tolerance_public_source_verified") is True:
+        reasons.append("91.7%·187.5%·72% exact 수치 공개 원문/2중 출처 검증 완료")
+
+    if new.get("despec_math_consistent") is False:
+        reasons.append("디스펙 감내폭 산술 불일치 감지")
+    return reasons
+
+
+def morgan_stanley_nvidia_hbm_margin_event(state: dict, reasons: list[str]) -> dict:
+    return {
+        "category": "morgan_stanley_nvidia_hbm_margin",
+        "fact_key": "morgan_stanley_nvidia_hbm_margin_" + hashlib.sha256(("|".join(reasons) + "|" + (state.get("observed_at") or state.get("as_of") or "")).encode()).hexdigest()[:16],
+        "headline_ko": "Morgan Stanley NVIDIA HBM 가격 감내력·마진 변화",
+        "fact_bullets": reasons,
+        "verdict": (
+            "HBM 단가 감내력은 NVIDIA의 가격·원가·매출총이익률 가정을 묶은 시나리오이며 HBM 공급사 확정 계약가격이 아닙니다. "
+            "91.7%·187.5% exact 수치는 공개 원문 또는 독립 2중 출처가 확인될 때만 검증 완료로 승격합니다. "
+            "VR200 약 200만달러 'memory' line은 공개 2차 자료가 HBM 포함 범위를 다르게 설명하므로 HBM-only 비용으로 사용하지 않습니다."
+        ),
+        "verification": "Morgan Stanley 원문 우선·exact 수치 2중 검증·NVIDIA 공식 마진 교차",
+        "quality": "리서치 시나리오·공식 실적 분리",
+        "origin_source": state.get("source") or "Morgan Stanley 관련 공개자료",
+        "source": state.get("source") or "Morgan Stanley 관련 공개자료",
+        "published_at_kst": state.get("observed_at") or state.get("as_of") or "",
+        "direct_link": state.get("source_url") or state.get("morgan_stanley_public_recap_url") or "",
+        "article_text": "",
+        "morgan_stanley_nvidia_hbm_margin_state": state,
+    }
 
 
 def extract_jpm_hbm_structural(event: dict) -> dict | None:
@@ -2412,7 +2621,7 @@ def choose_verified_events(fresh_unseen: list[dict], raw_events: list[dict], see
     errors: list[str] = []
     candidates: list[dict] = []
     for raw in fresh_unseen:
-        if raw.get("category") in ("citi_hbm_outlook", "jpm_hbm_structural", "micron_sca_visibility", "samsung_hbm4_price", "hbm4e_thermal_package", "samsung_nextgen_hbm", "nvhbm_architecture", "rubin_hbm_option_set"):
+        if raw.get("category") in ("citi_hbm_outlook", "jpm_hbm_structural", "micron_sca_visibility", "samsung_hbm4_price", "hbm4e_thermal_package", "samsung_nextgen_hbm", "nvhbm_architecture", "morgan_stanley_nvidia_hbm_margin", "rubin_hbm_option_set"):
             continue
         source_low = (raw.get("source") or "").lower()
         if any(k in source_low for k in LOW_VALUE_SOURCE_HINTS):
@@ -2527,7 +2736,7 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
         grouped.setdefault(e["category"], []).append(e)
 
     n = 1
-    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "hbm4e_thermal_package", "rubin_shipments", "rubin_hbm_option_set", "samsung_hbm4_price", "samsung_nextgen_hbm", "nvhbm_architecture", "hbm_2027_contract", "jpm_hbm_structural", "micron_sca_visibility", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
+    for category in ("rubin_spec", "rubin_broker_model", "hbm_supplier_relative", "hbm4e_validation", "hbm4e_thermal_package", "rubin_shipments", "rubin_hbm_option_set", "samsung_hbm4_price", "samsung_nextgen_hbm", "nvhbm_architecture", "hbm_2027_contract", "morgan_stanley_nvidia_hbm_margin", "jpm_hbm_structural", "micron_sca_visibility", "citi_hbm_outlook", "hbm_wafer_economics", "memory_migration"):
         group = grouped.get(category) or []
         if not group:
             continue
@@ -2541,6 +2750,8 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 삼성 Custom HBM·HBM5·zHBM 맞춤형 로드맵 감시", ""]
         if category == "nvhbm_architecture" and n > 1:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 NVIDIA NVHBM·Custom HBM 구조 전환 감시", ""]
+        if category == "morgan_stanley_nvidia_hbm_margin" and n > 1:
+            lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 Morgan Stanley NVIDIA HBM 가격 감내력·마진 감시", ""]
         if category == "jpm_hbm_structural" and n > 1:
             lines += ["", "<<<TELEGRAM_MESSAGE_BREAK>>>", "🚨 J.P. Morgan HBM 구조적 수급·가격 감시", ""]
         if category == "micron_sca_visibility" and n > 1:
@@ -2672,6 +2883,39 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
                 )
                 lines.append(
                     "• 정확성 잠금: 16%→4%와 Samsung 약 60%는 리서치·발표자료 기반 추정/인용이고 NVIDIA 공식 다이면적 실측값이 아닙니다. +25%와 +30%도 서로 다른 NVIDIA 공식 면적 정의라 합산하지 않습니다."
+                )
+            if category == "morgan_stanley_nvidia_hbm_margin" and e.get("morgan_stanley_nvidia_hbm_margin_state"):
+                ms = e["morgan_stanley_nvidia_hbm_margin_state"]
+                lines.append(
+                    f"• HBM 단가 감내 시나리오: 풀스펙 +{float(ms.get('base_hbm_unit_price_tolerance_pct_reported') or 0):g}% · "
+                    f"디스펙 +{float(ms.get('despec_hbm_unit_price_tolerance_pct_reported') or 0):g}% · "
+                    f"매출총이익률 하단 {float(ms.get('gross_margin_floor_pct_reported') or 0):g}%"
+                )
+                lines.append(
+                    f"• 용량 가정: {float(ms.get('full_spec_hbm_gb') or 0):g}GB→{float(ms.get('despec_hbm_gb') or 0):g}GB · "
+                    f"산술 재계산 +{float(ms.get('derived_despec_tolerance_pct') or 0):.1f}% · "
+                    f"일치 {'예' if ms.get('despec_math_consistent') else '아니오'}"
+                )
+                lines.append(
+                    f"• exact 수치 공개 검증: {'완료' if ms.get('exact_tolerance_public_source_verified') else '미완료 — 원문/독립 2중 출처 확보 전'}"
+                )
+                if ms.get("vr200_nvl72_rack_value_usd") is not None:
+                    rack = float(ms["vr200_nvl72_rack_value_usd"])
+                    mem = float(ms.get("vr200_memory_line_usd") or 0)
+                    if rate:
+                        lines.append(
+                            f"• VR200 NVL72 가치배분: 랙 {rack/1e6:.3f}백만달러(약 {rack*rate/1e8:,.1f}억원) · "
+                            f"memory line {mem/1e6:.3f}백만달러(약 {mem*rate/1e8:,.1f}억원)"
+                        )
+                    else:
+                        lines.append(f"• VR200 NVL72 가치배분: 랙 {rack/1e6:.3f}백만달러 · memory line {mem/1e6:.3f}백만달러")
+                lines.append(
+                    "• 범위 잠금: 약 200만달러 memory line은 공개 2차 자료 간 HBM 포함 범위가 충돌하므로 HBM-only 비용으로 계산하지 않습니다."
+                )
+                lines.append(
+                    f"• NVIDIA 공식 마진: FY27 Q2 {float(ms.get('nvidia_q2_fy27_gross_margin_pct') or 0):g}% · "
+                    f"FY27 Q3 가이던스 {float(ms.get('nvidia_q3_fy27_gross_margin_outlook_mid_pct') or 0):g}%±"
+                    f"{float(ms.get('nvidia_q3_fy27_gross_margin_outlook_plusminus_pct') or 0):g}%p"
                 )
             if category == "jpm_hbm_structural" and e.get("jpm_hbm_state"):
                 js = e["jpm_hbm_state"]
@@ -2929,6 +3173,64 @@ def main() -> None:
     if thermal_changes and not first_run:
         verified_events.append(samsung_hbm4e_thermal_event(thermal_state, list(dict.fromkeys(thermal_changes))))
 
+    ms_margin_state = dict(state.get("morgan_stanley_nvidia_hbm_margin") or {})
+    ms_margin_track_version = int(state.get("morgan_stanley_nvidia_hbm_margin_track_version") or 0)
+    if ms_margin_track_version < MORGAN_STANLEY_NVIDIA_HBM_MARGIN_TRACK_VERSION:
+        seeded = dict(MORGAN_STANLEY_NVIDIA_HBM_MARGIN_BASELINE)
+        seeded.update({k: v for k, v in ms_margin_state.items() if v not in (None, "")})
+        ms_margin_state = seeded
+        ms_margin_track_version = MORGAN_STANLEY_NVIDIA_HBM_MARGIN_TRACK_VERSION
+
+    ms_margin_observations: list[dict] = []
+    ms_exact_sources: set[str] = set()
+    ms_direct = False
+    for raw in raw_events:
+        if raw.get("category") != "morgan_stanley_nvidia_hbm_margin":
+            continue
+        enriched = enrich_event(raw)
+        if not enriched.get("link_verified"):
+            continue
+        obs = extract_morgan_stanley_nvidia_hbm_margin(enriched)
+        if not obs:
+            continue
+        ms_margin_observations.append(obs)
+        src = (enriched.get("origin_source") or enriched.get("source") or "").strip().lower()
+        exact_bundle = (
+            obs.get("base_hbm_unit_price_tolerance_pct_reported") is not None
+            and obs.get("despec_hbm_unit_price_tolerance_pct_reported") is not None
+            and obs.get("gross_margin_floor_pct_reported") is not None
+            and obs.get("despec_math_consistent") is not False
+        )
+        if exact_bundle:
+            if src:
+                ms_exact_sources.add(src)
+            if "morgan stanley" in src or "모건스탠리" in src:
+                ms_direct = True
+
+    ms_margin_changes: list[str] = []
+    if ms_margin_observations:
+        candidate = dict(ms_margin_state)
+        for obs in sorted(ms_margin_observations, key=lambda x: x.get("observed_at") or ""):
+            # Never accept an internally inconsistent 91.7/187.5/capacity bundle.
+            if obs.get("despec_math_consistent") is False:
+                errors.append("Morgan Stanley HBM 감내폭 산술 불일치로 exact 수치 상태 갱신 보류")
+                filtered = {k: v for k, v in obs.items() if k not in (
+                    "base_hbm_unit_price_tolerance_pct_reported",
+                    "despec_hbm_unit_price_tolerance_pct_reported",
+                    "gross_margin_floor_pct_reported",
+                    "derived_despec_tolerance_pct",
+                    "despec_math_consistent",
+                )}
+                candidate = merge_morgan_stanley_nvidia_hbm_margin(candidate, filtered)
+            else:
+                candidate = merge_morgan_stanley_nvidia_hbm_margin(candidate, obs)
+        if ms_direct or len(ms_exact_sources) >= 2:
+            candidate["exact_tolerance_public_source_verified"] = True
+        ms_margin_changes = morgan_stanley_nvidia_hbm_margin_changes(ms_margin_state, candidate)
+        ms_margin_state = candidate
+    if ms_margin_changes and not first_run:
+        verified_events.append(morgan_stanley_nvidia_hbm_margin_event(ms_margin_state, list(dict.fromkeys(ms_margin_changes))))
+
     jpm_state = dict(state.get("jpm_hbm_structural") or {})
     jpm_track_version = int(state.get("jpm_hbm_structural_track_version") or 0)
     if jpm_track_version < JPM_HBM_STRUCTURAL_TRACK_VERSION:
@@ -3059,6 +3361,8 @@ def main() -> None:
         "nvhbm_architecture": nvhbm_state,
         "samsung_hbm4e_thermal_track_version": thermal_track_version,
         "samsung_hbm4e_thermal_package": thermal_state,
+        "morgan_stanley_nvidia_hbm_margin_track_version": ms_margin_track_version,
+        "morgan_stanley_nvidia_hbm_margin": ms_margin_state,
         "jpm_hbm_structural_track_version": jpm_track_version,
         "jpm_hbm_structural": jpm_state,
         "micron_sca_visibility_track_version": micron_track_version,
@@ -3095,6 +3399,7 @@ def main() -> None:
         f"- Samsung next-gen HBM typed changes: {len(nextgen_changes)}",
         f"- NVIDIA NVHBM/custom-HBM typed changes: {len(nvhbm_changes)}",
         f"- Samsung HBM4E thermal/package typed changes: {len(thermal_changes)}",
+        f"- Morgan Stanley NVIDIA HBM margin typed changes: {len(ms_margin_changes)}",
         f"- J.P. Morgan HBM structural typed changes: {len(jpm_changes)}",
         f"- Micron SCA/RPO typed changes: {len(micron_changes)}",
         f"- Citi HBM typed changes: {len(citi_changes)}",
