@@ -1599,7 +1599,46 @@ def key(item: dict) -> str:
     us_stage = _us_ess_stage(text, source)
     sdi_stage = _sdi_ess_stage(text, source)
     stage3 = _ess3_stage(text, source)
+    sodium_stage = _sodium_stage(text, source)
     ev46_stage = _ev46_stage(text, source)
+    if group == 'sodium_ion_battery' and sodium_stage:
+        actors = []
+        for name, pat in [
+            ('catl', r'CATL|宁德时代'),
+            ('hyperstrong', r'HyperStrong|海博思创'),
+            ('lges', r'LG에너지솔루션|LG\s*Energy\s*Solution'),
+            ('sdi', r'삼성SDI|Samsung\s*SDI'),
+            ('skon', r'SK온|SK\s*On'),
+            ('eve', r'EVE\s*Energy|亿纬锂能|이브에너지'),
+            ('hina', r'HiNa\s*Battery|中科海钠|하이나배터리'),
+            ('enertech', r'Enertech|에너테크'),
+        ]:
+            if re.search(pat, text, re.I):
+                actors.append(name)
+        nums = sorted(_numbers(text))
+        suffix = '|'.join(nums[:5]) if nums else 'no-number'
+        if sodium_stage == 'known_baseline':
+            if SODIUM_CATL_60_BASE.search(text):
+                return hashlib.sha256(b'sodium|catl-hyperstrong|60gwh|3y|2026-04-baseline').hexdigest()
+            if SODIUM_CATL_CAP_BASE.search(text):
+                return hashlib.sha256(b'sodium|catl|fuding40-jining160|capacity-baseline').hexdigest()
+            if SODIUM_CATL_DELIVERY_PLAN_BASE.search(text):
+                return hashlib.sha256(b'sodium|catl|ess-delivery-plan|2026-09|1gwh-2026|intl-2027-06').hexdigest()
+            if SODIUM_CATL_NAXTRA_BASE.search(text):
+                return hashlib.sha256(b'sodium|catl|naxtra|175whkg-baseline').hexdigest()
+            if SODIUM_EVE_BASE.search(text):
+                return hashlib.sha256(b'sodium|eve|nf155l|180kwh-grid|2026-batch-plan').hexdigest()
+            if SODIUM_LGES_BASE.search(text):
+                return hashlib.sha256(b'sodium|lges|commercialization-2027|ess-12v-baseline').hexdigest()
+            if SODIUM_SDI_BASE.search(text):
+                return hashlib.sha256(b'sodium|sdi|ups-grid-ess|development-baseline').hexdigest()
+            if SODIUM_SKON_BASE.search(text):
+                return hashlib.sha256(b'sodium|skon|ess-prototype-2027-baseline').hexdigest()
+            if SODIUM_ENERTECH_BASE.search(text):
+                return hashlib.sha256(b'sodium|enertech|140-160whkg|jan-2027-mp-plan').hexdigest()
+            if SODIUM_HINA_BASE.search(text):
+                return hashlib.sha256(b'sodium|hina|339kwh|15000km|7m-baseline').hexdigest()
+        return hashlib.sha256(f'sodium|{sodium_stage}|{"-".join(actors) or "no-actor"}|{suffix}'.encode()).hexdigest()
     if group == 'ev_46_series' and ev46_stage:
         customers = '-'.join(_ev46_customer_tags(text)) or 'no-oem'
         makers = '-'.join(_ev46_cellmaker_tags(text)) or 'no-maker'
@@ -1666,12 +1705,21 @@ def key(item: dict) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
+
+    priority_item = next((x for x in candidates if x.get('group') == 'sodium_ion_battery'), None)
+    if priority_item and not any(x.get('key') == priority_item.get('key') for x in chosen):
+        if len(chosen) < limit:
+            chosen = [priority_item, *chosen]
+        else:
+            chosen = [priority_item, *chosen[:-1]]
+
     ev46 = next((x for x in candidates if x.get('group') == 'ev_46_series'), None)
-    if not ev46 or any(x.get('key') == ev46.get('key') for x in chosen):
-        return chosen
-    if len(chosen) < limit:
-        return [ev46, *chosen]
-    return [ev46, *chosen[:-1]]
+    if ev46 and not any(x.get('key') == ev46.get('key') for x in chosen):
+        if len(chosen) < limit:
+            chosen = [ev46, *chosen]
+        else:
+            chosen = [ev46, *chosen[:-1]]
+    return chosen
 
 
 base.topic_group = topic_group
