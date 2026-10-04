@@ -120,7 +120,12 @@ bridge_attack = row(
 )
 check("oct04-bridge-attack-red", mod.final_color(bridge_attack) == "red")
 mix_verdict = mod.verdict([bridge_attack, lukoil])
-check("oct04-mixed-no-false-peace", "휴전 진전" not in mix_verdict and "실제 공격" in mix_verdict)
+check(
+    "oct04-mixed-no-false-peace",
+    "외교·휴전·종전 방향의 구체적 진전" not in mix_verdict
+    and "실제 공격" in mix_verdict
+    and "상업거래나 조건 제시를 휴전 진전으로 보지 않음" in mix_verdict
+)
 
 evac_warning = row(
     "Russia warns diplomats and foreigners to leave Kyiv immediately",
