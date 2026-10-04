@@ -13,6 +13,16 @@ SPEC.loader.exec_module(MOD)
 
 
 class Clarity3xEtpWatchTest(unittest.TestCase):
+    def test_crypto_regex_catches_named_asset_sec_orders(self):
+        samples = [
+            "Order Granting Approval to List and Trade Shares of a 3x Bitcoin ETF",
+            "Order Approving Listing of an Ether ETF",
+            "Order Granting Approval for a Solana ETP",
+            "Order Approving an XRP exchange-traded product",
+        ]
+        for sample in samples:
+            self.assertIsNotNone(MOD.CRYPTO_RE.search(sample), sample)
+
     def test_recent_submission_rows_aligns_parallel_arrays(self):
         payload = {
             "filings": {
