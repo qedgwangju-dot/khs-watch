@@ -126,6 +126,42 @@ class AIServerPhysicalBottleneckTests(unittest.TestCase):
         self.assertFalse(facts["five_micron_manifold_tolerance_confirmed"])
         self.assertFalse(facts["uqd_current_2026_shortage_confirmed"])
 
+
+    def test_semicap_equipment_bottleneck_parses_current_lead_time(self):
+        event = m.parse_event(
+            "Semiconductor equipment component shortage has stretched lead time to 40 months for a key laser-processing tool component.",
+            "https://www.trendforce.com/news/2026/09/18/example",
+            "Chip equipment component lead times stretch to 40 months",
+            "2026-10-04T10:00:00+09:00",
+        )
+        self.assertIn("SEMICAP_EQUIPMENT", event["categories"])
+        self.assertIn("40 months", event["metrics"])
+
+    def test_reuters_semicap_capacity_event_is_allowed_but_other_reuters_story_is_not(self):
+        semicap = m.parse_event(
+            "ASML chipmaking equipment production capacity expansion is 30% as AI demand fills EUV capacity.",
+            "https://www.reuters.com/business/example",
+            "ASML expands chipmaking equipment capacity",
+            "2026-10-04T10:00:00+09:00",
+        )
+        self.assertIn("SEMICAP_EQUIPMENT", semicap["categories"])
+        other = m.parse_event(
+            "AI server PSU shortage has extended lead time to 30 weeks.",
+            "https://www.reuters.com/business/example",
+            "PSU shortage",
+            "2026-10-04T10:00:00+09:00",
+        )
+        self.assertEqual(other, {})
+
+    def test_semicap_structural_baseline_is_kept_separate(self):
+        facts = m.BASELINE["facts"]
+        self.assertEqual(facts["ubs_semicap_project_leadtime_months_min"], 12.0)
+        self.assertEqual(facts["ubs_semicap_project_leadtime_months_max"], 24.0)
+        self.assertTrue(facts["ubs_semicap_metric_is_project_leadtime"])
+        self.assertEqual(facts["trendforce_major_semicap_tool_delivery_max_months"], 12.0)
+        self.assertEqual(facts["trendforce_semicap_component_max_leadtime_months"], 40.0)
+        self.assertEqual(facts["asml_euv_capacity_booked_through_year"], 2027)
+
     def test_uqd_alert_names_direct_suppliers(self):
         event = {
             "categories": ["UQD_MANIFOLD"],
