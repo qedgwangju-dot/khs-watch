@@ -504,6 +504,32 @@ def _money_tokens(text: str) -> list[str]:
     return tokens
 
 
+VOLANTIS_VERIFIED_BASELINE = {
+    "as_of": "2026-10-04",
+    "series_a_usd_m": 88.0,
+    "total_raised_usd_m": 97.0,
+    "first_customer_delivery_year": 2027,
+    "optical_reach_mm_min": 200.0,
+    "memory_chiplets_min": 220,
+    "bandwidth_tb_s_company": 240.0,
+    "memory_tb_company": 10.0,
+    "energy_pj_per_bit_lt": 1.0,
+    "latency_ns_lt": 5.0,
+    "ber_lt": 1e-12,
+    "external_laser_required": False,
+    "laser_architecture": "integrated micro-VCSEL",
+    "silicon_photonics_current_architecture_confirmed": False,
+    "company_site_model_target_gt_trillion": 10.0,
+    "press_release_model_target_gt_trillion": 20.0,
+    "model_target_public_material_discrepancy": True,
+    "sources": [
+        "https://volantissemi.ai/news-insights/our-88m-series-a-demolishing-the-memory-wall-with-photonics-post",
+        "https://volantissemi.ai/technology",
+        "https://volantissemi.ai/",
+        "https://www.prnewswire.com/news-releases/volantis-raises-88m-series-a-to-demolish-the-ai-memory-wall-with-photonics-302895940.html",
+    ],
+}
+
 KNOWN_PHOTONIC_BASELINE_KEYS = {
     "volantis|funding|series-a",
     "lightmatter|passage|sampling|1.6tbps-per-fiber",
@@ -542,7 +568,13 @@ def canonical_story_key(company: str, title: str) -> str | None:
             return f"volantis|funding|other|{suffix}"
         if re.search(r"customer sampling|customer delivery|customer deployment|integrated inference engines?", text, re.I):
             return "volantis|a1|customer"
-        if re.search(r"silicon|tape[- ]?out|benchmark|measured|prototype|240\s*tb/s|10\s*tb|1\s*pj/bit|tokens? per second|tok/s", text, re.I):
+        if re.search(
+            r"silicon|tape[- ]?out|benchmark|measured|prototype|240\s*tb/s|>200\s*tb/s|10\s*tb|"
+            r"1\s*pj/bit|sub[- ]?5\s*ns|ber\s*<?\s*1e-12|200\s*mm|220\s*memory\s*chiplets?|"
+            r"tokens? per second|tok/s",
+            text,
+            re.I,
+        ):
             return "volantis|a1|silicon-performance"
         if re.search(r"vcsel|micro[- ]?vcsel|foundry|wafer|laser|supply chain", text, re.I):
             return "volantis|a1|vcsel-supply"
@@ -796,7 +828,12 @@ def signal_score(title: str, source: str) -> int:
         score += 3
     if re.search(r"funding|financing|raises?|series\s+[abc]", text, re.I):
         score += 3
-    if re.search(r"tokens? per second|tok/s|20\s*trillion|10\s*trillion|240\s*TB/s|10\s*TB|1\s*pJ/bit|220\s*memory chips", text, re.I):
+    if re.search(
+        r"tokens? per second|tok/s|20\s*trillion|10\s*trillion|240\s*TB/s|>200\s*TB/s|10\s*TB|"
+        r"1\s*pJ/bit|sub[- ]?5\s*ns|BER\s*<?\s*1e-12|200\s*mm|220\s*memory\s*(?:chips|chiplets)",
+        text,
+        re.I,
+    ):
         score += 4
     if re.search(r"customer sampling|integrated inference engines?|silicon validation|tape[- ]?out|benchmark|commercialization", text, re.I):
         score += 5
@@ -915,7 +952,13 @@ def category_for(title: str, company: str) -> str:
             return "광메모리 투자·개발자금"
         if re.search(r"customer sampling|customer delivery|customer deployment|integrated inference engines?", title, re.I):
             return "광메모리 고객검증·상용화"
-        if re.search(r"silicon|tape[- ]?out|benchmark|measured|prototype|240\s*TB/s|10\s*TB|1\s*pJ/bit|tokens? per second|tok/s", title, re.I):
+        if re.search(
+            r"silicon|tape[- ]?out|benchmark|measured|prototype|240\s*TB/s|>200\s*TB/s|10\s*TB|"
+            r"1\s*pJ/bit|sub[- ]?5\s*ns|BER\s*<?\s*1e-12|200\s*mm|220\s*memory\s*chiplets?|"
+            r"tokens? per second|tok/s",
+            title,
+            re.I,
+        ):
             return "광메모리 성능·검증"
         if re.search(r"VCSEL|micro[- ]?VCSEL|supply chain|foundry|wafer|laser", title, re.I):
             return "VCSEL 광메모리 공급망"
@@ -1545,6 +1588,7 @@ def main() -> None:
         "korea_optics_version": 1,
         "optical_bottleneck_version": 1,
         "optical_packaging_version": 2,
+        "volantis_verified_baseline": VOLANTIS_VERIFIED_BASELINE,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "seen_keys": updated_seen,
         "seen_story_keys": updated_story_keys,

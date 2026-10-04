@@ -5,6 +5,7 @@ on:
     paths:
       - ".github/workflows/ai-networking-optics-telegram-watch.yml"
       - "scripts/ai_networking_optics_watch.py"
+      - "scripts/currency_krw_guard.py"
   schedule:
     # Direct twice-hourly check, away from top-of-hour congestion.
     - cron: "8,38 * * * *"
@@ -44,7 +45,7 @@ jobs:
           python-version: "3.12"
 
       - name: Validate watcher
-        run: python -m py_compile scripts/ai_networking_optics_watch.py
+        run: python -m py_compile scripts/ai_networking_optics_watch.py scripts/currency_krw_guard.py
 
       - name: Regression test event deduplication
         run: |
@@ -210,6 +211,18 @@ jobs:
           volantis_perf = "Volantis A-1 silicon demonstrates 240 TB/s optical memory bandwidth at under 1 pJ/bit"
           assert watch.signal_score(volantis_perf, "Volantis") >= 7, "Volantis measured-performance signal must trigger"
           assert watch.category_for(volantis_perf, "Volantis") == "광메모리 성능·검증"
+
+          volantis_reach = "Volantis A-1 measured optical interposer reaches 200mm with over 220 memory chiplets at sub-5ns latency and BER <1e-12"
+          assert watch.signal_score(volantis_reach, "Volantis") >= 7, "Volantis measured reach/latency/BER signal must trigger"
+          assert watch.category_for(volantis_reach, "Volantis") == "광메모리 성능·검증"
+          assert watch.canonical_story_key("Volantis", volantis_reach) == "volantis|a1|silicon-performance"
+
+          assert watch.VOLANTIS_VERIFIED_BASELINE["series_a_usd_m"] == 88.0
+          assert watch.VOLANTIS_VERIFIED_BASELINE["total_raised_usd_m"] == 97.0
+          assert watch.VOLANTIS_VERIFIED_BASELINE["first_customer_delivery_year"] == 2027
+          assert watch.VOLANTIS_VERIFIED_BASELINE["memory_chiplets_min"] == 220
+          assert watch.VOLANTIS_VERIFIED_BASELINE["silicon_photonics_current_architecture_confirmed"] is False
+          assert watch.VOLANTIS_VERIFIED_BASELINE["model_target_public_material_discrepancy"] is True
 
           lightmatter_sample = "Lightmatter Passage CPO begins customer sampling for AI scale-up deployment"
           assert watch.signal_score(lightmatter_sample, "Lightmatter") >= 7, "Lightmatter commercial photonics signal must trigger"
@@ -591,19 +604,8 @@ jobs:
                   continue
               if line.startswith("• 원문 제목:"):
                   raw_title = line.split(":", 1)[1].strip()
-                  money_items = extract_money(raw_title)
                   translated = translate_to_korean(raw_title)
                   output.append(f"• 제목: {html.escape(translated)}")
-                  if money_items:
-                      conversions = []
-                      for raw_amount, currency, amount in money_items:
-                          rate, fx_source, fx_date = fetch_fx(currency)
-                          krw = amount * rate
-                          conversions.append(
-                              f"{raw_amount} → {format_krw(krw)} "
-                              f"({currency}/KRW {rate:,.2f}원, {fx_date})"
-                          )
-                      output.append("• 원화 환산: " + html.escape(" / ".join(conversions)))
                   continue
               output.append(line)
 
@@ -616,7 +618,24 @@ jobs:
               raise RuntimeError("Chinese/Hanja remained in Telegram alert; refusing to send.")
 
           path.write_text(rendered, encoding="utf-8")
-          print("telegram_alert_korean_translation=true chinese_hanja_guard=true source_timestamp_removed=true krw_conversion=true")
+          print("telegram_alert_korean_translation=true chinese_hanja_guard=true source_timestamp_removed=true")
+          PY
+          python scripts/currency_krw_guard.py out/ai_networking_optics_watch_telegram.html
+
+      - name: Validate immediate KRW conversion rule
+        run: |
+          python - <<'PY'
+          import pathlib, sys
+          sys.path.insert(0, str(pathlib.Path("scripts").resolve()))
+          import currency_krw_guard as g
+          from unittest.mock import patch
+
+          with patch.object(g, "_rate", return_value=(1343.19, "test")):
+              out = g.enforce_text("Series A 8,800만달러")
+          assert "8,800만달러(" in out
+          assert "약 1,182억원" in out
+          g.validate_text(out)
+          print("immediate_krw_parentheses_rule=passed")
           PY
 
       - name: Publish watcher summary
