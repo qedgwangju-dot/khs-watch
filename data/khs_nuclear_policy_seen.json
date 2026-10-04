@@ -36,14 +36,14 @@
   "smr_state_model_version": 3,
   "updated_at_kst": "2026-10-04T09:38:05+09:00",
   "westinghouse_issue_state": {
-    "state_key": "approval:corporate_pending|approval:due_diligence_pending|approval:regulatory_pending|stage:definitive_agreement_pending|stake_range:5~10|status:framework_nonbinding|transaction:cornerstone_equity",
-    "status": "공식 프레임워크·최종계약 미체결",
-    "title": "Westinghouse 공식 한국 지분 5~10% 잠재 투자·비구속 프레임워크",
-    "source": "Westinghouse·Cameco 공식",
+    "correction_note": "2026-10-03 IT조선 이사회 진입 추진 보도는 신규 확정 상태가 아니므로 기준선에서 제외",
+    "first_seen_kst": "2026-10-04T09:38:05+09:00",
     "link": "https://info.westinghousenuclear.com/news/u.s.-korea-framework-advances-deployment-of-westinghouse-nuclear-technology-in-the-united-states",
     "published_utc": "2026-10-01T00:00:00+00:00",
-    "first_seen_kst": "2026-10-04T09:38:05+09:00",
-    "correction_note": "2026-10-03 IT조선 이사회 진입 추진 보도는 신규 확정 상태가 아니므로 기준선에서 제외"
+    "source": "Westinghouse·Cameco 공식",
+    "state_key": "approval:corporate_pending|approval:due_diligence_pending|approval:regulatory_pending|stage:definitive_agreement_pending|stake_range:5~10|status:framework_nonbinding|transaction:cornerstone_equity",
+    "status": "공식 프레임워크·최종계약 미체결",
+    "title": "Westinghouse 공식 한국 지분 5~10% 잠재 투자·비구속 프레임워크"
   },
   "westinghouse_state_model_version": 3
 }
