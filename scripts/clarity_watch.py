@@ -44,7 +44,9 @@ TOPIC_RE = re.compile(
     re.I,
 )
 CRYPTO_RE = re.compile(
-    r"\b(?:crypto(?:currency| asset)?s?|digital assets?|digital commodities?|blockchain|tokeni[sz](?:e|ed|ation)?|non-security crypto asset|stablecoin|decentralized finance|DeFi)\b",
+    r"\b(?:crypto(?:currency| asset)?s?|digital assets?|digital commodities?|blockchain|tokeni[sz](?:e|ed|ation)?|"
+    r"non-security crypto asset|stablecoin|decentralized finance|DeFi|bitcoin|BTC|ether|ethereum|ETH|solana|SOL|"
+    r"XRP|avalanche|cardano|dogecoin|litecoin|chainlink)\b",
     re.I,
 )
 REG_ACTION_RE = re.compile(
