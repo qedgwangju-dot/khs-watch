@@ -16,7 +16,13 @@
     "five_micron_manifold_tolerance_confirmed": false,
     "vertiv_100kw_plus_dlc_confirmed": true,
     "vertiv_vacuum_brazed_stainless_manifold_confirmed": true,
-    "nvent_stainless_manifold_parker_nsp06_confirmed": true
+    "nvent_stainless_manifold_parker_nsp06_confirmed": true,
+    "ubs_semicap_project_leadtime_months_min": 12.0,
+    "ubs_semicap_project_leadtime_months_max": 24.0,
+    "ubs_semicap_metric_is_project_leadtime": true,
+    "trendforce_major_semicap_tool_delivery_max_months": 12.0,
+    "trendforce_semicap_component_max_leadtime_months": 40.0,
+    "asml_euv_capacity_booked_through_year": 2027
   },
   "seen_urls": [
     "https://image.honhai.com/upload/202605/law_talk/Hon_Hai_1Q26_Results_Transcript_English_20260514_3576.pdf",
@@ -27,6 +33,9 @@
     "https://www.digitimes.com/news/a20240717PD200/ai-server-heat-dissipation-liquid-cooling-production-capacity.html",
     "https://www.nvent.com/en-us/hoffman/products/encrcm42001h",
     "https://www.opencompute.org/ai-marketplace/products/498/cejn-universal-blind-mate-quick-connector-bmqc",
+    "https://www.reuters.com/business/asml-breaks-ground-new-manufacturing-facilities-major-expansion-2026-09-08/",
+    "https://www.reuters.com/business/asml-tops-q2-estimates-ai-chip-demand-2026-07-15/",
+    "https://www.trendforce.com/news/2026/09/18/news-chip-equipment-component-lead-times-reportedly-double-stretching-to-40-months-as-price-pressures-mount/",
     "https://www.trendforce.com/presscenter/news/20260415-13013.html",
     "https://www.trendforce.com/presscenter/news/20260625-13121.html",
     "https://www.trendforce.com/presscenter/news/20260817-13183.html",
@@ -34,11 +43,11 @@
     "https://www.vertiv.com/en-asia/products-catalog/thermal-management/high-density-solutions/vertiv-coolchip-fluid-network-rack-manifolds/"
   ],
   "seen_signatures": [],
-  "last_checked_at_kst": "2026-10-04T18:24:05+09:00",
+  "last_checked_at_kst": "2026-10-04T18:26:03+09:00",
   "candidate_count": 0,
   "event_count": 0,
   "delivery_check": {
-    "checked_at_kst": "2026-10-04T18:24:11+09:00",
+    "checked_at_kst": "2026-10-04T18:26:08+09:00",
     "status": "no_message_due"
   }
 }
