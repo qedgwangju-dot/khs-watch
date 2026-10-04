@@ -67,7 +67,6 @@
     "a54fbf9fbcc300d493c57b3adce5544d6fb34b82563258633195802eb32f9105",
     "a952737f38e211e18e73458b8206c14bcef98f8f9e683ce840d398a7c8d3fbf3",
     "aa7fe35aaf265b5497141e84cea89d34be68473bf62013b17d5a1ab15389e875",
-    "aa9a2ceb058d1ab057212c67a42d85e512e7944fc8fafb3fefd797762d0bded0",
     "ab89d09c671a5e347356370e3b7574498ef473b6516da594841cd11880348469",
     "b692946e7c7a5c5614cd0169cbc0356da333936b8a988128ec16a15d5d30e3ba",
     "bf9b44a873c8795a1f97b064109b668b06aac2b0aff9892a938232e0d201c707",
@@ -94,5 +93,6 @@
   "source_errors": [
     "SEC SRO crypto orders https://www.sec.gov/taxonomy/term/193081: fetch failed: https://www.sec.gov/taxonomy/term/193081: HTTP Error 403: Forbidden",
     "SEC SRO crypto orders https://www.sec.gov/rules-regulations/self-regulatory-organization-rulemaking/national-securities-exchanges: fetch failed: https://www.sec.gov/rules-regulations/self-regulatory-organization-rulemaking/national-securities-exchanges: HTTP Error 403: Forbidden"
-  ]
+  ],
+  "realert_reason": "User-requested corrected 3x BTC/ETH ETP approval alert after precision/readability upgrade"
 }
