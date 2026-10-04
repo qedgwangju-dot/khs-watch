@@ -35,6 +35,15 @@ BASELINE = {
         "bizlink_aec_800g_plus_confirmed": True,
         "nvidia_vr200_power_kw": 225.0,
         "nvidia_800v_optional_vr200": True,
+        "uqd_current_2026_shortage_confirmed": False,
+        "uqd_historical_tight_supply_2024_reported": True,
+        "parker_uqd_exclusive_supply_confirmed": False,
+        "parker_uqd_multi_vendor_interchangeable": True,
+        "parker_uqdb_radial_compensation_mm": 1.0,
+        "five_micron_manifold_tolerance_confirmed": False,
+        "vertiv_100kw_plus_dlc_confirmed": True,
+        "vertiv_vacuum_brazed_stainless_manifold_confirmed": True,
+        "nvent_stainless_manifold_parker_nsp06_confirmed": True,
     },
     "seen_urls": [
         "https://www.trendforce.com/presscenter/news/20260415-13013.html",
@@ -44,6 +53,12 @@ BASELINE = {
         "https://telecom-networking.bizlinktech.com/applications/bizlink-data-center-solutions/",
         "https://www.deltaww.com/en-US/investors/chairman-statement",
         "https://image.honhai.com/upload/202605/law_talk/Hon_Hai_1Q26_Results_Transcript_English_20260514_3576.pdf",
+        "https://ph.parker.com/TR/en/parker-universal-quick-disconnect-blindmate-couplings-for-liquid-cooling-uqdb-series",
+        "https://www.nvent.com/en-us/hoffman/products/encrcm42001h",
+        "https://www.vertiv.com/en-asia/products-catalog/thermal-management/high-density-solutions/vertiv-coolchip-fluid-network-rack-manifolds/",
+        "https://www.coolitsystems.com/products-services/server-products/rack-manifolds/",
+        "https://www.opencompute.org/ai-marketplace/products/498/cejn-universal-blind-mate-quick-connector-bmqc",
+        "https://www.digitimes.com/news/a20240717PD200/ai-server-heat-dissipation-liquid-cooling-production-capacity.html",
     ],
     "seen_signatures": [],
     "last_checked_at_kst": "2026-10-03T21:09:00+09:00",
@@ -64,6 +79,12 @@ SEARCHES = [
     'site:avc.co 2026 AI server liquid cooling cold plate CDU capacity shipment',
     'site:liteon.com 2026 AI server power supply power shelf 800V capacity shipment',
     'site:tuc.com.tw 2026 AI server CCL copper clad laminate capacity shipment price',
+    'site:parker.com 2026 data center liquid cooling UQD UQDB quick disconnect capacity lead time shortage shipment qualification',
+    'site:nvent.com OR site:investors.nvent.com 2026 data center rack manifold liquid cooling capacity production shipment',
+    'site:vertiv.com 2026 rack manifold UQD quick disconnect liquid cooling capacity shipment',
+    'site:coolitsystems.com 2026 rack manifold quick disconnect liquid cooling capacity shipment',
+    'site:opencompute.org 2026 UQD UQDB BMQC PBMC liquid cooling manifold interoperability',
+    'site:digitimes.com 2026 UQD quick disconnect manifold liquid cooling shortage lead time AI server',
 ]
 
 OFFICIAL_DOMAINS = (
@@ -79,8 +100,18 @@ OFFICIAL_DOMAINS = (
     "avc.co",
     "liteon.com",
     "tuc.com.tw",
+    "parker.com",
+    "nvent.com",
+    "investors.nvent.com",
+    "vertiv.com",
+    "coolitsystems.com",
+    "opencompute.org",
     "nvidia.com",
     "investor.nvidia.com",
+)
+
+TRUSTED_DOMAINS = (
+    "digitimes.com",
 )
 
 CATEGORY_ALIASES = {
@@ -90,7 +121,14 @@ CATEGORY_ALIASES = {
     ),
     "LIQUID_COOLING": (
         "liquid cooling", "liquid-cooled", "cold plate", "cold plates", "cdu",
-        "coolant distribution unit", "manifold",
+        "coolant distribution unit",
+    ),
+    "UQD_MANIFOLD": (
+        "universal quick disconnect", "universal quick disconnects",
+        " uqd ", " uqds ", "uqdb", "blind mate quick", "blind-mate quick",
+        "bmqc", "pbmc", "rack manifold", "rack manifolds", "coolant manifold",
+        "fluid network rack manifold", "quick disconnect", "quick disconnects",
+        "dripless quick", "dry-break quick",
     ),
     "POWER": (
         "power supply", "power supplies", "psu", "power shelf", "power shelves",
@@ -118,6 +156,13 @@ COMPANY_MAP = {
     "avc.co": "AVC(Asia Vital Components)",
     "liteon.com": "Lite-On",
     "tuc.com.tw": "TUC",
+    "parker.com": "Parker Hannifin",
+    "nvent.com": "nVent",
+    "investors.nvent.com": "nVent",
+    "vertiv.com": "Vertiv",
+    "coolitsystems.com": "CoolIT Systems (Ecolab)",
+    "opencompute.org": "Open Compute Project",
+    "digitimes.com": "DIGITIMES",
     "nvidia.com": "NVIDIA",
     "investor.nvidia.com": "NVIDIA",
     "trendforce.com": "TrendForce",
@@ -126,6 +171,7 @@ COMPANY_MAP = {
 BENEFICIARIES = {
     "AEC": "BizLink-KY — AEC·고속 구리 인터커넥트",
     "LIQUID_COOLING": "AVC(Asia Vital Components)·Delta Electronics·Auras Technology·BOYD — 콜드플레이트·CDU·열관리",
+    "UQD_MANIFOLD": "Parker Hannifin·nVent·Vertiv·CoolIT Systems(Ecolab) — UQD/BMQC·드립리스 커플링·랙 매니폴드·유체 분배",
     "POWER": "Delta Electronics·Lite-On — PSU·고전력 전원변환·800V HVDC",
     "PCB_CCL": "Elite Material(台光電)·TUC — 고속·저손실 CCL / AI 서버 PCB 상류",
     "ODM_RACK": "Foxconn·Wistron·Quanta·Wiwynn — AI 서버·랙 통합",
@@ -134,6 +180,7 @@ BENEFICIARIES = {
 NEXT_CHECK = {
     "AEC": "리드타임·800G/1.6T 양산·고객 인증·생산능력",
     "LIQUID_COOLING": "콜드플레이트/CDU 인증·출하·생산능력·누수/신뢰성",
+    "UQD_MANIFOLD": "UQD/BMQC 리드타임·다중 공급사 인증·매니폴드 생산능력·누설 시험·고객 승인",
     "POWER": "PSU 납기·전력모듈 생산능력·800V 채택·랙당 kW",
     "PCB_CCL": "CCL 납기·가격·저손실 소재 생산능력·PCB 출하",
     "ODM_RACK": "랙 출하량·부품 부족에 따른 출하 지연·가동률",
@@ -209,6 +256,10 @@ def is_official(url: str) -> bool:
     host = host_of(url)
     return any(host == d or host.endswith("." + d) for d in OFFICIAL_DOMAINS)
 
+def is_trusted(url: str) -> bool:
+    host = host_of(url)
+    return any(host == d or host.endswith("." + d) for d in TRUSTED_DOMAINS)
+
 def company_for(url: str, text: str = "") -> str:
     host = host_of(url)
     for domain, company in COMPANY_MAP.items():
@@ -219,6 +270,8 @@ def company_for(url: str, text: str = "") -> str:
         ("foxconn", "Foxconn"), ("wistron", "Wistron"), ("quanta", "Quanta"),
         ("wiwynn", "Wiwynn"), ("bizlink", "BizLink-KY"), ("delta electronics", "Delta Electronics"),
         ("elite material", "Elite Material"), ("auras", "Auras Technology"),
+        ("parker hannifin", "Parker Hannifin"), ("nvent", "nVent"), ("vertiv", "Vertiv"),
+        ("coolit", "CoolIT Systems (Ecolab)"),
     ):
         if key in low:
             return company
@@ -254,6 +307,7 @@ def metric_snippets(text: str) -> list[str]:
         r"\b\d+(?:\.\d+)?\s*(?:[-–~]\s*\d+(?:\.\d+)?)?\s*(?:weeks?|months?|주|개월)\b",
         r"\b\d+(?:\.\d+)?\s*%",
         r"\b\d+(?:\.\d+)?\s*(?:MW|GW|kW)\b",
+        r"\b\d{1,3}(?:,\d{3})+\s*(?:square feet|sq\.?\s*ft\.?)\b",
         r"\b(?:more than|over|at least)\s+(?:double|twice)\b",
         r"\b\d+(?:\.\d+)?\s*(?:million|billion)?\s*(?:units?|racks?)\b",
     )
@@ -277,6 +331,8 @@ def strong_stage(text: str) -> str:
         ("sold out", "생산능력 소진"),
         ("caps output", "부품 부족으로 출하 제한"),
         ("capacity constraint", "생산능력 병목"),
+        ("capacity expansion", "생산능력 증설"),
+        ("expanded capacity", "생산능력 증설"),
         ("supply constraint", "공급 병목"),
         ("shortage", "공급 부족"),
     )
@@ -286,7 +342,9 @@ def strong_stage(text: str) -> str:
     return ""
 
 def parse_event(text: str, url: str, title: str, published: str) -> dict:
-    if not is_official(url):
+    source_official = is_official(url)
+    source_trusted = is_trusted(url)
+    if not source_official and not source_trusted:
         return {}
 
     sentences = re.split(r"(?<=[.!?])\s+", text)
@@ -295,6 +353,8 @@ def parse_event(text: str, url: str, title: str, published: str) -> dict:
         window = clean_text(sentence)
         categories = classify_categories(window)
         if not categories or not has_supply_change(window):
+            continue
+        if source_trusted and not source_official and "UQD_MANIFOLD" not in categories:
             continue
 
         low = window.lower()
@@ -407,6 +467,7 @@ def category_label(category: str) -> str:
     return {
         "AEC": "AEC(액티브 전기 케이블)",
         "LIQUID_COOLING": "액체냉각",
+        "UQD_MANIFOLD": "UQD·랙 매니폴드",
         "POWER": "PSU·전력",
         "PCB_CCL": "PCB·CCL",
         "ODM_RACK": "ODM·랙",
