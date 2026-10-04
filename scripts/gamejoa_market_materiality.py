@@ -9,7 +9,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 70
+VERSION = 71
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -1042,6 +1042,48 @@ def transmission_scope(title: str, evidence: list[dict]) -> tuple[int, str]:
     return 1, 'issuer_specific_event'
 
 
+def equity_publication_assessment(title: str, evidence: list[dict]) -> dict:
+    """Separate a true economic fact from a foreground stock-market catalyst."""
+    kinds = {item['kind'] for item in evidence}
+    if not kinds:
+        return {'eligible': False, 'reason': 'no_verified_economic_change'}
+    if (
+        re.search(r"대통령|정부|총리|장관|당국|금융위|금감원", title)
+        and re.search(r"철저|대책\s*마련|대응\s*강화|점검.{0,8}지시", title)
+        and kinds <= {'cyber_operational_incident'}
+    ):
+        return {'eligible': False, 'reason': 'generic_response_without_new_market_terms'}
+    if (
+        re.search(r"인터뷰|interview", title, re.I)
+        and not re.search(r"상장|기업공개|\bIPO\b|스팩\s*합병|첫\s*거래|listing|first trade", title, re.I)
+        and kinds <= {'capital_listing_stage'}
+    ):
+        return {'eligible': False, 'reason': 'secondary_listing_fact_in_business_vision_interview'}
+    overview = re.search(r"초격차|\[기획|체질|비전|성장\s*전략|반등\s*채비", title)
+    roadmap_kinds = {
+        'research_spending_change', 'earnings_or_guidance',
+        'physical_supply_or_capacity', 'industrial_architecture_adoption',
+    }
+    incremental_execution = re.compile(
+        r"상향|하향|증액|감액|취소|철회|착공|납입|집행|체결|"
+        r"(?:투자|예산|목표|생산|설비|가동|규격|규제|공급|수요|매출|영업이익).{0,60}"
+        r"(?:발표했다|발표했다고|공시했다|공시했다고|확정했다|결정했다|증가했다|감소했다|시작했다)|"
+        r"announced|signed|approved|revised|increased|decreased|started",
+        re.I,
+    )
+    if overview and kinds <= roadmap_kinds and all(
+        re.search(r"20\d{2}년까지|목표|구상|전략", item['source_excerpt'])
+        and not incremental_execution.search(item['source_excerpt'])
+        for item in evidence
+    ):
+        return {'eligible': False, 'reason': 'roadmap_overview_without_incremental_execution'}
+    return {
+        'eligible': True,
+        'reason': 'foreground_source_market_change',
+        'evidence_kinds': sorted(kinds),
+    }
+
+
 def source_sentences(text: str) -> list[str]:
     """Keep punctuation inside a quoted statement with its speaker."""
     sentences = []
@@ -1569,4 +1611,8 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
         result["reason"] = "existing_market_gate_required"
     if result['evidence']:
         result['transmission_scope_rank'], result['transmission_scope_reason'] = transmission_scope(title, result['evidence'])
+        result['equity_publication'] = equity_publication_assessment(title, result['evidence'])
+        if not result['equity_publication']['eligible']:
+            result['priority'] = min(result['priority'], 1)
+            result['scope_note'] = result['equity_publication']['reason']
     return result

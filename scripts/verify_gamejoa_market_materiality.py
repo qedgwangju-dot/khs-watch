@@ -2940,6 +2940,68 @@ class MaterialityChecks(unittest.TestCase):
 
 
 class ForegroundAndEventIdentityTests(unittest.TestCase):
+    def test_economic_fact_alone_does_not_fill_stock_market_news_slots(self):
+        cases = (
+            ("'친환경·고부가'로 체질 바꾼다…K철강·화학, 반등 채비[초격차 코리아]",
+             "LG화학은 오는 2035년까지 연구개발(R&D)에 총 15조원을 투자해 AI 기반 고부가 소재 기업으로 전환한다. "
+             "롯데케미칼도 2030년까지 연 매출 50조원 달성을 목표로 설정했다.",
+             'roadmap_overview_without_incremental_execution'),
+            ("대통령, 금융기관 개인정보 유출에 철저 조사·대책 마련 지시",
+             '대변인은 “대통령은 최근 금융기관의 개인정보 유출 사고와 대응 현황을 보고받았다”고 밝혔다. '
+             "대통령은 관련 사안을 엄중히 인식하고 철저한 조사와 대책 마련을 지시했다.",
+             'generic_response_without_new_market_terms'),
+            ("'최대 XRP DAT' 에버노스, 규제 열리면 한국 진출[인터뷰]",
+             "에버노스는 조만간 미국 나스닥시장에서 첫 거래를 시작한다. "
+             "CEO는 한국 규제가 명확해지면 사업을 확대하고 싶다고 말했다.",
+             'secondary_listing_fact_in_business_vision_interview'),
+        )
+        for title, body, reason in cases:
+            with self.subTest(title=title):
+                audit = materiality.assess(title, body)
+                self.assertTrue(audit['evidence'], audit)
+                self.assertLess(audit['priority'], 2, audit)
+                self.assertFalse(audit['equity_publication']['eligible'], audit)
+                self.assertEqual(audit['scope_note'], reason)
+                item = alert(title, body)
+                with patch.object(radar.base, 'kst_now', return_value=NOW):
+                    self.assertEqual(radar.quality_display_alerts([item], 7), [])
+                    self.assertEqual(radar.quality_display_alerts([item], 30), [])
+
+    def test_new_execution_survives_strategy_interview_and_response_genres(self):
+        cases = (
+            ("LG화학, 성장 전략 발표…R&D 투자 15조원 확정",
+             "LG화학은 2035년까지 연구개발에 총 15조원을 투자하기로 결정했다고 발표했다."),
+            ("반도체 성장 전략…새 공장 착공",
+             "기업은 신규 반도체 공장 생산설비 증설을 위한 300억원 투자 계약을 체결했다."),
+            ("AI 기업 CEO 인터뷰…고객 공급계약 체결",
+             "AI 기업은 데이터센터 고객과 500억원 공급계약을 체결했다."),
+            ("금융당국, 개인정보 유출 대응 강화…CEO 긴급 점검회의",
+             "금융위원장과 금융감독원장은 피해 금융사 CEO 긴급 점검회의를 열 예정이다."),
+            ("국가 금융당국, 대응 대책 마련…은행 신규 규제 시행",
+             "금융당국은 은행의 보안 규제를 강화하는 신규 고시를 개정하고 다음 달부터 시행한다고 발표했다."),
+            ("AI 기업, 나스닥 첫 거래 8일 예정[인터뷰]",
+             "AI 기업은 오는 8일 나스닥에서 첫 거래를 시작한다고 밝혔다."),
+        )
+        for title, body in cases:
+            with self.subTest(title=title):
+                audit = materiality.assess(title, body)
+                self.assertEqual(audit['disposition'], 'keep', audit)
+                self.assertGreaterEqual(audit['priority'], 2, audit)
+                self.assertTrue(audit['equity_publication']['eligible'], audit)
+
+    def test_global_catalysts_do_not_require_observed_price_reaction_or_korean_issuer(self):
+        cases = (
+            ("ECB cuts interest rates", "The ECB cut interest rates by 0.25 percentage points."),
+            ("US drafting import ban", "Sources say the US is drafting an import ban on Chinese data center devices."),
+            ("트럼프, 이란 협상 재개 발언", "트럼프는 이란에서 연락을 받았으며 이란이 협상을 원한다고 말했다."),
+            ("항만 파업으로 원유 공급 차질", "항만 노조 파업으로 원유 운송과 공급 일정에 차질이 발생했다."),
+        )
+        for title, body in cases:
+            with self.subTest(title=title):
+                audit = materiality.assess(title, body)
+                self.assertGreaterEqual(audit['priority'], 2, audit)
+                self.assertTrue(audit['equity_publication']['eligible'], audit)
+
     def test_remaining_publicity_cannot_borrow_background_market_facts(self):
         cases = (
             ('이스라엘 대통령 "트럼프, 최고의 친구" 우호 과시', '대통령은 트럼프와 좋은 관계라고 말했다. 영국은 앞서 정착촌 생산품 수입을 금지했다.'),

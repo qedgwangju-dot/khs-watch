@@ -69,6 +69,17 @@ Every defect or requested change must follow this sequence:
   historical company profiles cannot qualify through incidental economic words.
   Actual outages, deaths, production damage, customer negotiations and early
   policy changes remain eligible when the source establishes the mechanism.
+- Source accuracy alone is not a publication-quality pass. The live radar is
+  for domestic/international stock-market catalysts, not a quota of true business
+  facts. A strategy overview cannot qualify solely through a long-term roadmap;
+  a business-vision interview cannot qualify through a secondary listing detail;
+  a generic call for investigation/damage prevention cannot republish its incident
+  background without a new scoped regulatory or operational action. Keep concrete
+  investment decisions, customer contracts, headline listing events, actual damage,
+  emergency regulator meetings and enacted/proposed rule changes. Do not require
+  an observed share-price response or a named Korean issuer before an early global
+  rate, trade, energy or supply-chain catalyst can qualify. Publication limits are
+  ceilings, never minimums to fill with lower-quality articles.
 - A source headline consisting only of an issuer name is not a news event.
   Bank support MOUs need concrete size, financing terms or committed execution,
   not a platform-promotion paragraph. National export milestones prioritize the
