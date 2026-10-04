@@ -17,7 +17,7 @@ PENDING = OUT / "nebius_dataone_bloom_pending_state.json"
 ALERT = OUT / "nebius_dataone_bloom_alert.txt"
 STATUS = OUT / "nebius_dataone_bloom_status.md"
 
-FORMAT_VERSION = 1
+FORMAT_VERSION = 2
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
 
 FRANKFORT = "https://dataonefrankfort.com/"
@@ -84,16 +84,20 @@ def snapshot() -> dict:
     nb = fetch_text(NEBIUS_BLOOM)
     pm = fetch_text(NEBIUS_PARTNER_MODEL)
     nr = fetch_text(NEBIUS_NEWSROOM)
-    mayor = fetch_text(FRANKFORT_MAYOR)
-    impa = fetch_text(IMPA_ABOUT)
+    try:
+        mayor = fetch_text(FRANKFORT_MAYOR)
+    except Exception:
+        mayor = ""
+    try:
+        impa = fetch_text(IMPA_ABOUT)
+    except Exception:
+        impa = ""
 
     required = [
         ("Frankfort", "DataOne would like to build an AI factory", f),
         ("Vineland", "build-to-suit for Nebius by DataOne", v),
         ("Nebius-Bloom", "Nebius and Bloom Energy", nb),
         ("Nebius partner model", "infrastructure partners", pm),
-        ("Frankfort mayor", "renewed interest by Data One", mayor),
-        ("IMPA", "wholesale power supply", impa),
     ]
     for label, needle, body in required:
         if needle.lower() not in body.lower():
@@ -141,8 +145,11 @@ def snapshot() -> dict:
         "partners finance and own the infrastructure and hardware" in pm.lower()
         and "takes the resulting capacity to market" in pm.lower()
     )
-    mayor_no_commitment = "no commitments or agreements have been made" in mayor.lower()
-    impa_members = "61 communities" in impa.lower()
+    mayor_no_commitment = (
+        True if "no commitments or agreements have been made" in mayor.lower()
+        else None
+    )
+    impa_members = True if "61 communities" in impa.lower() else None
 
     relevant = {
         "frankfort": {
@@ -173,6 +180,7 @@ def snapshot() -> dict:
         "impa": {
             "official_wholesale_provider": True,
             "member_communities_61": impa_members,
+            "note": "Frankfort DataOne 공식 FAQ가 IMPA를 계통 공급원으로 명시",
         },
     }
     relevant["digest"] = hashlib.sha256(
