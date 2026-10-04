@@ -2528,6 +2528,36 @@ class MaterialityChecks(unittest.TestCase):
             self.assertIn("compensation_cost_forecast_actor_period_or_amount_mismatch",
                           radar.source_core_fact_errors({**item, "telegram_core_fact": wrong_core}))
 
+    def test_conditional_crypto_market_entry_keeps_issuer_date_and_precondition(self):
+        title = "'최대 XRP DAT' 에버노스 “XRP 굴려 운용수익 낸다, 규제 열리면 韓 진출”[인터뷰]"
+        body = ('조만간 미국 나스닥시장에서 첫 거래를 시작하는 에버노스 홀딩스(Evernoth Holdings·주식 티커명 ‘XRPN’)라는 기업이 XRP를 보유한 상장기업으로 등극하게 된다. '
+                'XRP 투자수단이 되겠다는 비전을 달성하기 위해 SPAC 합병을 통한 패스트트랙을 택했다. '
+                '에버노스 CEO는 “XRP를 체인 위에서 운용해 수익을 얻는 일을 할 것이고, 그 재원으로 더 많은 XRP를 축적할 것”이라고 밝혔다. '
+                '한국 내 규제가 명확해진다는 전제 하에서 한국 사업 확대와 법인 설립 가능성을 열어 두겠다고 강조했다. '
+                '오는 8일 나스닥에 상장돼 그 날부터 XRPN 티커로 첫 거래를 시작한다. '
+                '규제당국의 동의를 받은 뒤 진행하고 싶다. 그 이후에 검토할 것이다.')
+        item = alert(title, body)
+        audit = materiality.assess(title, body)
+        kinds = {row["kind"] for row in audit["evidence"]}
+        self.assertIn("capital_listing_stage", kinds)
+        self.assertNotIn("rates_fx_or_macro", kinds)
+        self.assertNotIn("market_price_or_flow", kinds)
+        core = radar.verified_alert_core(item, title)
+        for value in ("에버노스 CEO", "XRP 운용수익", "규제 명확화 후", "한국 진출 검토", "나스닥 상장·첫 거래", "8일 예정"):
+            self.assertIn(value, core)
+        self.assertFalse(radar.source_core_fact_errors({**item, "telegram_core_fact": core}))
+        for wrong_core in (core.replace("8일", "4일"), core.replace("규제 명확화 후 ", ""), core.replace("검토", "시행")):
+            self.assertIn("market_entry_conditions_issuer_or_first_trade_date_mismatch",
+                          radar.source_core_fact_errors({**item, "telegram_core_fact": wrong_core}))
+
+    def test_digital_treasury_and_spac_route_profile_are_not_macro_or_new_funding(self):
+        title = "에버노스 CEO, 기업 소개 인터뷰"
+        body = ('에버노스 CEO는 “우리는 액티브 트레저리(active treasury)이며 운용수익을 축적할 것”이라고 밝혔다. '
+                '투자수단이 되겠다는 비전을 달성하기 위해 SPAC 합병을 통한 패스트트랙을 택했다. '
+                '반면 XRPN(나스닥 상장사인 에버노스 홀딩스)은 다르다.')
+        audit = materiality.assess(title, body)
+        self.assertFalse(audit["evidence"], audit)
+
     def test_export_history_or_future_target_alone_is_not_current_data(self):
         title = "한국 연간 수출 1조 달러 목표 눈앞"
         for sentence in (

@@ -9,7 +9,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 69
+VERSION = 70
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -655,8 +655,8 @@ RULES = (
      r"거래\s*재개|매매\s*재개|액면병합|주식병합|거래정지|매매정지|보통주.{0,45}범위로\s*병합",
      r"재개|결정|발표|완료|정지"),
     ("capital_listing_stage", ("flows", "timeline"),
-     r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|ETF",
-     r"추진|예정|목표|신청|승인|상장(?:했다|한다고|한다|할)|연기|철회|마케팅|등록|출시|plan|aim|file|approv|delay|withdraw|market"),
+     r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|(?:나스닥|코스피|코스닥).{0,35}첫\s*거래|ETF",
+     r"추진|예정|목표|신청|승인|상장(?:했다|한다고|한다|할|돼)|첫\s*거래를\s*시작(?:한다|한다고|하는)|연기|철회|마케팅|등록|출시|plan|aim|file|approv|delay|withdraw|market"),
     ("commercial_order", ("earnings", "timeline"),
      r"수주|발주|공급계약|공급\s*계약|납품\s*계약|발사\s*계약|purchase order|supply contract|procurement contract|launch (?:contract|agreement)",
      r"체결|확정|수주|발주|갱신|취소|파기|해지|협상|추진|서명|sign|secure|award|agree|cancel|negotiat"),
@@ -758,7 +758,7 @@ RULES = (
      r"풍력|태양광|발전소|반도체|데이터센터|휴머노이드|자율주행|무인기|항공우주|wind power|solar|power plant|semiconductor|data center|humanoid|autonomous driving|drone|aerospace",
      r"(?:업무협약|공동개발\s*협약|MOU).{0,20}(?:체결|맺|서명)|(?:체결|맺|서명).{0,20}(?:업무협약|공동개발\s*협약|MOU)|signed.{0,30}(?:mou|joint development)"),
     ("rates_fx_or_macro", ("discount_rate",),
-     r"금리|국고채|모기지|주담대|주택담보대출|물가|인플레이션|고용|비농업\s*일자리|실업률|건설지출|환율|달러화|유동성|차입|구매관리자|\bpmi\b|cpi|pce|payroll|mortgage|interest rate|treasury|inflation|exchange rate|borrowing",
+     r"금리|국고채|모기지|주담대|주택담보대출|물가|인플레이션|고용|비농업\s*일자리|실업률|건설지출|환율|달러화|유동성|차입|구매관리자|\bpmi\b|cpi|pce|payroll|mortgage|interest rate|treasury (?:yield|bond|note|bill|securit|borrow)|(?:u\.?s\.?\s+|united states )treasury|inflation|exchange rate|borrowing",
      r"인상|(?<!할)인하|동결|상승|하락|오른|내린|올랐|내렸|둔화|급등|급락|상회|하회|밑돌|웃돌|발표|기록|증가|감소|결정|약세|강세|최고|치솟|cut|hike|hold|rise|fall|miss|beat|announc|estimat|record"),
     ("attributed_fx_forecast", ("discount_rate",),
      r"원[·/]달러|달러[·/]원|환율", r"전망|예상"),
@@ -853,6 +853,8 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
         r"(?:검토|의결권을\s*행사)할\s*충분한\s*시간", sentence,
     ):
         return False
+    if kind == "capital_or_shareholder_action" and re.search(r"비전을\s*달성하기\s*위해|패스트트랙을\s*택했다", sentence):
+        return False
     if kind == "authorized_capital_proposal":
         return focus_matches("수권자본 증액", sentence)
     if kind == "trading_status_change":
@@ -940,6 +942,8 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
         return bool(FORMAL_POLICY_EXECUTION.search(sentence) or trade_threat)
     if kind == "policy_scope_or_stage" and re.search(r"규제\s*명확성|규제.{0,15}명확해질|출발선", sentence):
         return bool(re.search(r"입법예고|시행일|제정|개정|발효|행정명령|규제안|법안", sentence))
+    if kind == "policy_scope_or_stage" and re.search(r"규제\s*명확화\s*후|규제가\s*통과된다면", sentence):
+        return bool(FORMAL_POLICY_EXECUTION.search(sentence))
     if kind == "market_infrastructure" and re.search(r"연결돼\s*있|연결되어\s*있|기반으로\s*작동", sentence):
         return bool(re.search(r"새로|처음|신규|도입했다|가동했다|출시했다", sentence))
     if kind == "technology_or_clinical_stage" and re.search(r"기대한다|기대된다|역량을|전문성을|소개하는\s*계기|학회.{0,20}(?:선정|채택)", sentence):
@@ -958,6 +962,10 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
     ):
         return bool(re.search(r"\d[\d,.]*\s*(?:GW|MW|조\s*원|억\s*원|톤|대)|계약\s*체결|착공했다|가동을\s*시작", sentence, re.I))
     if kind == "market_price_or_flow" and re.search(r"법률\s*(?:솔루션|자문)|투자유치\s*가이드|회수\s*전략", sentence):
+        return False
+    if kind == "market_price_or_flow" and re.search(r"상장\s*의미|상장기업으로\s*등극|상장사인|상장기업인", sentence) and not re.search(
+        r"주가|거래대금|순매수|순매도|(?:자금|투자금).{0,20}(?:유입|유출)|\d+(?:\.\d+)?%", sentence,
+    ):
         return False
     if kind == "market_price_or_flow" and re.search(r"투자할\s*수|투자가\s*가능|추종하는", sentence) and not re.search(
         r"순매수|순매도|유입|유출|거래대금|수익률|주가.{0,20}\d", sentence,
@@ -1320,6 +1328,10 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
                 r"주가|증시|코스피|코스닥|나스닥|S&P\s*500|러셀\s*2000|etf|etn|순매수|순매도|거래대금|수익률|주식|자금|자본|투자금|shares|stocks|equities|capital|fund flows", sentence, re.I,
             ):
                 continue
+            if kind == "market_price_or_flow" and re.search(r"(?:나스닥|코스피|코스닥).{0,35}첫\s*거래", sentence) and not re.search(
+                r"주가|거래대금|순매수|순매도|유입|유출|급등|급락", sentence,
+            ):
+                continue
             if kind == "market_price_or_flow" and re.search(r"ETF.{0,80}(?:상장|출시)", sentence, re.I) and not re.search(
                 r"순매수|순매도|유입|유출|거래대금|주가|수익률|올랐|내렸|상승|하락", sentence,
             ):
@@ -1398,7 +1410,7 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
                     and re.match(r"^(?:이는|이\s*수치는|이\s*전망치는|전년\s*동기\s*대비)\s", sentence)
                     and not re.search(r"발표했다|공시했다|잠정\s*실적|확정\s*실적", sentence)):
                 early = True
-            if kind == "capital_listing_stage" and re.search(r"오는\s*\d{1,2}일|출시한다고|출시할|상장할", sentence):
+            if kind == "capital_listing_stage" and re.search(r"오는\s*\d{1,2}일|조만간|출시한다고|출시할|상장할", sentence):
                 early = True
             priority = 2 if early or kind in {"technology_or_clinical_stage", "research_validation_result", "market_infrastructure", "model_operating_specification", "industrial_architecture_adoption", "space_execution_stage", "space_thermal_validation", "cryogenic_propellant_storage", "biology_research_discovery", "public_program_cost_study", "project_cost_evaluation", "sector_demand_outlook", "market_outlook", "fund_assets_level", "financing_infrastructure", "equity_compensation_change"} else 3
             if kind == "capital_listing_stage":

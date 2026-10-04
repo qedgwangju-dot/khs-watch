@@ -2438,6 +2438,26 @@ def contextual_commercial_fact(title: str, body: str) -> str:
     return ""
 
 
+def conditional_financial_market_entry_fact(title: str, body: str) -> str:
+    if not re.search(r"규제.{0,15}(?:열리면|명확).{0,15}(?:韓|한국)\s*진출", title):
+        return ""
+    source = article_summary_body(body)
+    issuer = re.search(r"([가-힣A-Za-z]{2,20})\s+홀딩스\([^)]*주식\s*티커명", source)
+    listed = re.search(r"오는\s*(\d{1,2})일\s*나스닥에\s*상장돼[^.!?]{0,50}첫\s*거래를\s*시작한다", source)
+    if not issuer or issuer.group(1) not in title or not listed:
+        return ""
+    if not (
+        re.search(r"CEO", source) and re.search(r"XRP를.{0,45}운용해\s*수익을\s*얻는.{0,60}더\s*많은\s*XRP를\s*축적", source)
+        and re.search(r"한국\s*내\s*규제가\s*명확해진다는\s*전제.{0,160}한국\s*사업\s*확대", source)
+        and re.search(r"그\s*이후에\s*검토할\s*것", source)
+    ):
+        return ""
+    name = issuer.group(1)
+    fact = (f"{name} CEO는 XRP 운용수익 확대와 규제 명확화 후 한국 진출 검토 방침을 밝혔다. "
+            f"나스닥 상장·첫 거래는 오는 {listed.group(1)}일 예정이라고 말했다.")
+    return fact if core_sentence_is_complete(fact) else ""
+
+
 def compensation_cost_forecast_fact(title: str, body: str) -> str:
     if not re.search(r"성과급|보상\s*비용", title) or not re.search(r"실적|이익|마진|수익성", title):
         return ""
@@ -2480,6 +2500,9 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
     compensation = compensation_cost_forecast_fact(title, "\n".join(sentences))
     if compensation:
         return compensation
+    entry = conditional_financial_market_entry_fact(title, "\n".join(sentences))
+    if entry:
+        return entry
     flow_actors = [actor for actor in ("외국인", "기관", "개인", "연기금") if actor in title]
     if flow_actors and re.search(r"순매수|순매도|팔아치|사들|매수|매도", title):
         for sentence in sentences:
@@ -3802,6 +3825,9 @@ def detailed_article_core(title: str, body: str) -> str:
             if body_tail.strip():
                 raw_body = body_tail
     body = article_summary_body(raw_body)
+    entry_fact = conditional_financial_market_entry_fact(title, body)
+    if entry_fact:
+        return entry_fact
     cyber_fact = financial_cyber_incident_fact(title, body)
     if cyber_fact:
         return cyber_fact
@@ -9987,10 +10013,13 @@ def verified_alert_core(alert: dict, title: str) -> str:
 
     if is_business:
         if alert.get("body_verified"):
+            body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+            entry_fact = conditional_financial_market_entry_fact(source_title or title, article_summary_body(body))
+            if entry_fact and valid_source_fact(entry_fact):
+                return entry_fact
             listing_fact = listing_maintenance_action_fact(source_title or title, str(alert.get("source_body") or ""))
             if listing_fact:
                 return listing_fact
-            body = str(alert.get("source_body") or alert.get("source_abstract") or "")
             cyber_fact = financial_cyber_incident_fact(source_title or title, article_summary_body(body))
             if cyber_fact and valid_source_fact(cyber_fact):
                 return cyber_fact
@@ -10109,6 +10138,9 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         comparable_core = re.sub(r"\((?:약[^)]*|원화\s*환산\s*확인\s*불가)\)", "", core)
         if re.sub(r"\s+", "", expected_compensation) != re.sub(r"\s+", "", comparable_core):
             errors.append("compensation_cost_forecast_actor_period_or_amount_mismatch")
+    expected_entry = conditional_financial_market_entry_fact(title, source)
+    if expected_entry and re.sub(r"\s+", "", expected_entry) != re.sub(r"\s+", "", core):
+        errors.append("market_entry_conditions_issuer_or_first_trade_date_mismatch")
     expected_loss = profit_loss_result_fact(title, market_materiality.source_sentences(source))
     if expected_loss:
         basis = re.search(r"(?:모회사\s*귀속\s*|지배주주\s*귀속\s*)?순손실", expected_loss).group(0)

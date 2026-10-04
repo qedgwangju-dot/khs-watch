@@ -131,6 +131,11 @@ Every defect or requested change must follow this sequence:
   combined cost components, additional cost forecast and profitability outlook.
   A combined bonus/startup cost is not a bonus-only amount. Repeated page heading
   and subheading blocks are not source economic-change evidence.
+- A financial-company interview retains its named speaker, scoped business
+  statement, regulatory preconditions and first-trade date when actually sourced.
+  Digital-asset treasury business is not a US Treasury macro release. A listed
+  company description is not a new price/flow event, and a SPAC route overview is
+  not fresh financing. First-trade plans remain plans, not completed trading.
 - Entertainment/private-life articles cannot qualify as customer discussions
   from meeting or social-photo certification words. Apply the same genre and
   foreground check before body retrieval, alert construction and final output.
