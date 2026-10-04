@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: One-time repair: enable and dispatch existing KHS policy watch
+      - name: "One-time repair: enable and dispatch existing KHS policy watch"
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
