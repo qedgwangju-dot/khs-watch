@@ -757,7 +757,24 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
                 facts.add("equity_regulatory_approval_status:approved")
             if any(term in low for term in ["equity investment closed", "transaction closed", "지분 취득 완료", "투자 종결"]):
                 facts.add("equity_closing_status:completed")
-        facts |= {x for x in raw if x.startswith("governance:")}
+        # 이사회·의결권은 '추진/가능/목표' 기사만으로 상태를 올리지 않는다.
+        # 실제 권리 확보가 공식자료에서 확인된 경우에만 물질적 상태변화로 채택한다.
+        governance_blob = low
+        speculative_governance = any(term in governance_blob for term in [
+            "노린", "추진", "목표", "가능", "관심", "검토", "협의", "협상",
+            "aim", "seek", "seeking", "target", "possible", "consider", "negotiat",
+        ])
+        if _is_official(row) and not speculative_governance:
+            if any(term in governance_blob for term in [
+                "이사회 지명권 확보", "이사회 참여권 확보", "이사 선임", "이사회 진입 확정",
+                "board seat secured", "board representation agreed", "appointed to the board",
+                "nomination right", "appointment right",
+            ]):
+                facts.add("governance:board")
+            if any(term in governance_blob for term in [
+                "의결권 확보", "의결권 부여", "voting rights secured", "voting rights granted",
+            ]):
+                facts.add("governance:voting")
         facts |= parties
         facts |= stages
         return facts
