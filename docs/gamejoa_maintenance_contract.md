@@ -95,6 +95,9 @@ Every defect or requested change must follow this sequence:
   retain the index, constituent population and high/year-start comparison basis;
   a background Treasury yield cannot replace the headline's actual dispersion.
   Verified numeric index/constituent observations do not imply investor flows.
+- A forum's agenda, keynote theme and discussion of expanding supply are not
+  new rules or new capacity. A sourced new instrument or quantified committed
+  budget remains eligible even when announced at a forum.
 - Entertainment/private-life articles cannot qualify as customer discussions
   from meeting or social-photo certification words. Apply the same genre and
   foreground check before body retrieval, alert construction and final output.

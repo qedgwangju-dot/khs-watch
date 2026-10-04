@@ -2281,6 +2281,23 @@ class MaterialityChecks(unittest.TestCase):
         with patch.object(radar.base, "kst_now", return_value=NOW):
             self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
 
+    def test_forum_agenda_is_not_policy_execution_or_new_housing_supply(self):
+        title = "서울 전월세시장 불안 해법은…민간임대·장기전세 머리 맞댄다"
+        body = ("7일 서울주거포럼 개최. 임대주택 공급체계·세입자 주거안정 논의. "
+                "서울시가 민간임대주택 공급 확대와 장기전세주택의 역할 등 세입자 주거 안정을 위한 해법을 모색한다. "
+                "이창무 서울특별시 총괄건축가는 '매매시장 규제 강화와 전·월세 시장 불안'을 주제로 기조 발제에 나선다.")
+        audit = materiality.assess(title, body)
+        self.assertLess(audit["priority"], 2, audit)
+        self.assertEqual(audit.get("scope_note"), "forum_policy_opinion_without_announced_instrument_change")
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
+        for change in (
+            "정부는 포럼에서 임대주택 신규 규제를 입법예고했다.",
+            "서울시는 포럼에서 임대주택 공급 확대 예산 1000억원을 확정했다.",
+        ):
+            with self.subTest(change=change):
+                self.assertGreaterEqual(materiality.assess("포럼서 임대주택 지원 새 대책 발표", change)["priority"], 2)
+
     def test_export_milestone_keeps_observed_total_not_conditional_calculation(self):
         title = "'1조 달러 수출국' 초읽기…11월 말~12월 초 한국 수출사 새로 쓴다"
         body = ("올해 1~9월 누적 수출액이 8145억 달러에 달하면서 연간 목표 달성이 가까워졌다. "

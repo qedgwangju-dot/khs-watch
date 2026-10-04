@@ -9,7 +9,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 61
+VERSION = 62
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -1388,9 +1388,16 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
         ):
             result["priority"] = 1
             result["scope_note"] = "target_reiteration_without_new_instrument_or_execution"
-        if re.search(r"포럼|패널토론|forum|panel discussion", headline_lead, re.I) and kinds <= {"policy_scope_or_stage", "customer_discussions", "financing_infrastructure", "market_infrastructure"} and not re.search(
-            r"(?:정부|금융위|국세청|국회|장관|부처).{0,80}(?:입법예고했다|발의했다|개정한다|시행한다|시행하기로\s*결정|공포했다)", body,
-        ):
+        forum_agenda = re.search(r"포럼|패널토론|토론회|기조\s*발제|forum|panel discussion", headline_lead + " " + body[:400], re.I)
+        forum_change = any(
+            not BACKGROUND.search(sentence) and not PAST_ACTION.search(sentence)
+            and (
+                re.search(r"(?:정부|금융위|국세청|국회|장관|부처|서울시).{0,80}(?:입법예고했다|발의했다|개정한다|시행한다|시행하기로\s*결정|공포했다)", sentence)
+                or (QUANTITY.search(sentence) and re.search(r"(?:공급|예산|보조금|지원금|조달|발주).{0,50}(?:확정했다|결정했다|증액했다|착공했다|집행했다|발주했다)", sentence))
+            )
+            for sentence in sentences
+        )
+        if forum_agenda and kinds <= {"policy_scope_or_stage", "customer_discussions", "financing_infrastructure", "market_infrastructure", "physical_supply_or_capacity"} and not forum_change:
             result["priority"] = 1
             result["scope_note"] = "forum_policy_opinion_without_announced_instrument_change"
         if SUPPORT_EVENT.search(title) and kinds <= {"capital_or_shareholder_action", "corporate_transaction", "institutional_capital_access", "financing_infrastructure"}:
