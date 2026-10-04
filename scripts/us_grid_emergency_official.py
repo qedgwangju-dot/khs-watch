@@ -83,7 +83,8 @@ def ko_datetime(value: dt.datetime | None, tz: ZoneInfo = KST) -> str:
     if value is None:
         return "확인 불가"
     local = value.astimezone(tz)
-    return f"{local.year}년 {local.month}월 {local.day}일 {local:%H:%M} {tz.key.split('/')[-1] if tz == KST else 'EPT'}"
+    label = "KST" if tz == KST else "EPT"
+    return f"{local.year}년 {local.month}월 {local.day}일 {local:%H:%M} {label}"
 
 
 def posting_window_from_body(body: str) -> tuple[dt.datetime | None, dt.datetime | None]:
@@ -371,7 +372,7 @@ def render_event(event: dict, now: dt.datetime) -> str:
                 f"• 실제 내용: {pjm_stage_explanation(event)}",
                 "• 다음 확인: EEA 단계 상·하향, 수요반응·백업발전 실제 동원 MW·MWh, 지정자원 운전지시, 비상조치 해제시각",
                 "",
-                f"원문: {event['url']}",
+                f'<a href="{event["url"]}">원문</a>',
             ]
         )
 
@@ -392,7 +393,7 @@ def render_event(event: dict, now: dt.datetime) -> str:
             f"• 구분: {distinction}",
             "• 다음 확인: 실제 발전자원 동원 MW·MWh, 계통 비상단계, 명령의 연장·종료, 후속 자원목록·운전지시",
             "",
-            f"원문: {event['url']}",
+            f'<a href="{event["url"]}">원문</a>',
         ]
     )
 
