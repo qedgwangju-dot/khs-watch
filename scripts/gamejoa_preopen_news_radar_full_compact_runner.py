@@ -9526,6 +9526,44 @@ def verified_market_breadth_change(alert: dict) -> bool:
     )
 
 
+def is_dedicated_fcc_optical_transceiver_policy(alert: dict) -> bool:
+    """Keep FCC optical-transceiver policy in the KHS policy owner lane.
+
+    GAMEJOA may still discover the article for research context, but it must not
+    deliver a second Telegram alert for the same FCC optics policy event.
+    """
+    text = " ".join(
+        str(alert.get(key) or "")
+        for key in (
+            "source_title", "original_news", "source_body", "source_abstract",
+            "summary", "telegram_core_fact", "policy_plain_summary", "link", "source",
+        )
+    ).lower()
+    has_fcc = (
+        "federal communications commission" in text
+        or re.search(r"\bfcc\b", text) is not None
+        or "docs.fcc.gov" in text
+        or "fcc.gov" in text
+    )
+    has_optics = any(
+        term in text
+        for term in (
+            "optical transceiver", "optical transceivers", "fiber optic transceiver",
+            "fiber-optic transceiver", "optical module", "optical modules",
+            "광트랜시버", "광모듈", "光收发器", "光模组",
+        )
+    )
+    has_policy_shape = any(
+        term in text
+        for term in (
+            "covered list", "equipment authorization", "ban", "bar", "prohibit",
+            "restriction", "restrictions", "3.2t", "65%", "65 percent",
+            "morgan stanley", "drafting", "phase in", "phased",
+        )
+    )
+    return bool(has_fcc and has_optics and has_policy_shape)
+
+
 def is_dedicated_fcc_robot_inverter_policy(alert: dict) -> bool:
     """Keep FCC robot/inverter Covered List chronology in the KHS policy owner lane.
 
@@ -9614,6 +9652,9 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             continue
         if alert["market_materiality"]["disposition"] != "keep" or alert["market_materiality"]["priority"] < 2:
             alert["_exclusion_reason"] = "no_source_market_change_evidence:" + alert["market_materiality"].get("scope_note", alert["market_materiality"]["reason"])
+            continue
+        if is_dedicated_fcc_optical_transceiver_policy(alert):
+            alert["_exclusion_reason"] = "dedicated_khs_policy_owner:fcc_optical_transceiver"
             continue
         if is_dedicated_fcc_robot_inverter_policy(alert):
             alert["_exclusion_reason"] = "dedicated_khs_policy_owner:fcc_robot_inverter_covered_list"
