@@ -111,7 +111,7 @@ MLCC_RELIEF = re.compile(r'이중\s*조달|dual\s*sourcing|재고\s*조정|inven
 MLCC_RELIABILITY = re.compile(r'고전압|high\s*voltage|고신뢰성|high\s*reliability|고온|high\s*temperature|검사|test|수율|yield|절연|insulation', re.I)
 HUMANOID_RE = re.compile(r'휴머노이드|humanoid|로봇용 배터리|robot battery|robotics battery', re.I)
 
-EV46_RE = re.compile(r'46\s*시리즈|46시리즈|46[-\s]*series|46\s*mm|46mm|\b4680\b|\b4695\b|\b46100\b|\b46120\b|46파이', re.I)
+EV46_RE = re.compile(r'46\s*시리즈|46시리즈|46[-\s]*series|46[-\s]*phi|46phi|46\s*mm|46mm|\b4680\b|\b4695\b|\b46100\b|\b46120\b|46파이', re.I)
 EV46_CELLMAKER = re.compile(r'LG에너지솔루션|LG\s*Energy\s*Solution|삼성SDI|Samsung\s*SDI|Tesla|테슬라|SK온|SK\s*On', re.I)
 EV46_OEM = re.compile(r'Rivian|리비안|BMW|Mercedes[-\s]*Benz|Mercedes|벤츠|Chery|체리|Volvo|볼보|indiGOtech|인디고테크|Tesla|테슬라|KGM|KG\s*Mobility', re.I)
 EV46_GWH = re.compile(r'\d[\d,.]*\s*GWh', re.I)
@@ -347,6 +347,16 @@ EV46_PLAN_ONLY = re.compile(r'계획|예정|검토|협의|전망|목표|추진|p
 
 def _ev46_known_baseline(text: str, source: str = '') -> bool:
     official = source in base.OFFICIAL_OR_PRIMARY
+    if EV46_MARKET_BASE.search(text):
+        return True
+    if EV46_LGES_CYL_15X_BASE.search(text):
+        return True
+    if EV46_SDI_EU_ORDER_BASE.search(text):
+        return True
+    if EV46_SDI_KGM_BASE.search(text):
+        return True
+    if EV46_SKON_DEV_BASE.search(text):
+        return True
     # User already surfaced the Mercedes 46100 / Poland 2027-line / 2028-supply
     # report. Keep the media report silent, but allow a later official Mercedes
     # or LGES confirmation to advance the state.
@@ -390,7 +400,12 @@ def _ev46_stage(text: str, source: str = '') -> str:
         return ''
     # Require a named cell maker/OEM/component supplier, otherwise generic
     # 46-series market-growth explainers remain discovery-only.
-    actor = bool(EV46_CELLMAKER.search(text) or EV46_OEM.search(text) or EV46_COMPONENT.search(text))
+    actor = bool(
+        EV46_CELLMAKER.search(text)
+        or EV46_OEM.search(text)
+        or EV46_COMPONENT.search(text)
+        or EV46_MARKET_FORECAST.search(text)
+    )
     if not actor:
         return ''
 
@@ -399,6 +414,30 @@ def _ev46_stage(text: str, source: str = '') -> str:
 
     if _ev46_known_baseline(text, source):
         return 'known_baseline'
+
+    if EV46_MARKET_FORECAST.search(text) and EV46_FORECAST_CHANGE.search(text) and re.search(r'\d[\d,.]*\s*(?:GWh|%|CAGR)', text, re.I):
+        return 'market_forecast_revision'
+
+    if EV46_SDI_EU_ORDER_CTX.search(text) and (
+        EV46_SDI_ORDER_DETAIL.search(text)
+        or (EV46_EXACT_FORMAT.search(text) and not re.search(r'46[-\s]*(?:series|phi)|46시리즈', text, re.I))
+        or EV46_OEM.search(text)
+    ):
+        return 'sdi_order_detail'
+
+    if re.search(r'SK\s*On|SK온', text, re.I) and EV46_SKON_QUALIFICATION.search(text):
+        return 'skon_customer_qualification'
+
+    if re.search(r'SK\s*On|SK온', text, re.I) and EV46_CONTRACT.search(text) and (
+        EV46_OEM.search(text) or EV46_ANON_OEM.search(text) or EV46_GWH.search(text)
+    ):
+        return 'skon_order'
+
+    if EV46_SHIPMENT_METRIC.search(text) and re.search(r'LG\s*Energy\s*Solution|LG에너지솔루션', text, re.I):
+        return 'shipment_metric'
+
+    if EV46_ANON_OEM.search(text) and EV46_CONTRACT.search(text) and EV46_CELLMAKER.search(text):
+        return 'anonymous_oem_order'
 
     if EV46_COMPONENT.search(text) and EV46_COMPONENT_ORDER.search(text):
         return 'component_order'
