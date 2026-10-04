@@ -351,7 +351,17 @@ def _ev46_known_baseline(text: str, source: str = '') -> bool:
         return True
     if EV46_LGES_CYL_15X_BASE.search(text):
         return True
-    if EV46_SDI_EU_ORDER_BASE.search(text):
+    if (
+        SDI_RE.search(text)
+        and EV46_RE.search(text)
+        and EV46_ANON_OEM.search(text)
+        and re.search(r'2028', text, re.I)
+        and re.search(r'Hungary|헝가리', text, re.I)
+        and EV46_CONTRACT.search(text)
+        and not EV46_GWH.search(text)
+        and not EV46_EXACT_FORMAT.search(text)
+        and not EV46_OEM.search(text)
+    ):
         return True
     if EV46_SDI_KGM_BASE.search(text):
         return True
@@ -420,7 +430,7 @@ def _ev46_stage(text: str, source: str = '') -> str:
 
     if EV46_SDI_EU_ORDER_CTX.search(text) and (
         EV46_SDI_ORDER_DETAIL.search(text)
-        or (EV46_EXACT_FORMAT.search(text) and not re.search(r'46[-\s]*(?:series|phi)|46시리즈', text, re.I))
+        or EV46_EXACT_FORMAT.search(text)
         or EV46_OEM.search(text)
     ):
         return 'sdi_order_detail'
