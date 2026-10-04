@@ -227,6 +227,36 @@ def is_china_mofcom_trade_control(item: dict) -> bool:
     return has_authority and has_action
 
 
+def is_fcc_robot_inverter_covered_policy(item: dict) -> bool:
+    """This FCC chronology has one delivery owner: trusted policy news watch."""
+    text = haystack_for(item)
+    source = str(item.get("source") or "").lower()
+    link = str(item.get("link") or "").lower()
+    has_fcc = (
+        "fcc" in source
+        or "federal communications commission" in text
+        or "fcc.gov" in link
+        or "docs.fcc.gov" in link
+    )
+    has_scope = has_any(
+        text,
+        [
+            "foreign-produced power inverter", "foreign-produced power inverters",
+            "power inverter", "power inverters",
+            "foreign-produced advanced robotic devices", "advanced robotic devices",
+            "robotic devices",
+        ],
+    )
+    has_action = has_any(
+        text,
+        [
+            "covered list", "equipment authorization", "conditional approval",
+            "da 26-786", "da 26-870", "da 26-957", "da 26-996",
+        ],
+    )
+    return bool(has_fcc and has_scope and has_action)
+
+
 def is_fcc_resilient_networks_policy(item: dict) -> bool:
     source = str(item.get("source") or "").lower()
     if "fcc" not in source and "federal communications commission" not in haystack_for(item):
@@ -287,6 +317,13 @@ def is_low_impact_false_positive(item: dict) -> bool:
     source = str(item.get("source") or "").lower()
     title = str(item.get("title") or "").lower()
     link = str(item.get("link") or "").lower()
+
+    if is_fcc_robot_inverter_covered_policy(item):
+        item["guardrail_note"] = (
+            "FCC 로봇·인버터 Covered List는 khs_trusted_policy_news_watch.py 한 경로에서 "
+            "공식 문서번호·Released 날짜 기준으로만 송출해 중복·기사 재게시 날짜 오인을 차단"
+        )
+        return True
 
     if is_whitehouse(item) and title.startswith("congressional bills ") and "signed into law" in title:
         item["guardrail_note"] = "법안 번호 묶음 서명 브리핑은 개별 법안별 시장 고충격성이 검증되지 않아 통합 고충격 알림에서 제외"
