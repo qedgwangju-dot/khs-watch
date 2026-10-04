@@ -44,6 +44,12 @@ BASELINE = {
         "vertiv_100kw_plus_dlc_confirmed": True,
         "vertiv_vacuum_brazed_stainless_manifold_confirmed": True,
         "nvent_stainless_manifold_parker_nsp06_confirmed": True,
+        "ubs_semicap_project_leadtime_months_min": 12.0,
+        "ubs_semicap_project_leadtime_months_max": 24.0,
+        "ubs_semicap_metric_is_project_leadtime": True,
+        "trendforce_major_semicap_tool_delivery_max_months": 12.0,
+        "trendforce_semicap_component_max_leadtime_months": 40.0,
+        "asml_euv_capacity_booked_through_year": 2027,
     },
     "seen_urls": [
         "https://www.trendforce.com/presscenter/news/20260415-13013.html",
@@ -59,6 +65,9 @@ BASELINE = {
         "https://www.coolitsystems.com/products-services/server-products/rack-manifolds/",
         "https://www.opencompute.org/ai-marketplace/products/498/cejn-universal-blind-mate-quick-connector-bmqc",
         "https://www.digitimes.com/news/a20240717PD200/ai-server-heat-dissipation-liquid-cooling-production-capacity.html",
+        "https://www.trendforce.com/news/2026/09/18/news-chip-equipment-component-lead-times-reportedly-double-stretching-to-40-months-as-price-pressures-mount/",
+        "https://www.reuters.com/business/asml-tops-q2-estimates-ai-chip-demand-2026-07-15/",
+        "https://www.reuters.com/business/asml-breaks-ground-new-manufacturing-facilities-major-expansion-2026-09-08/",
     ],
     "seen_signatures": [],
     "last_checked_at_kst": "2026-10-03T21:09:00+09:00",
@@ -85,6 +94,13 @@ SEARCHES = [
     'site:coolitsystems.com 2026 rack manifold quick disconnect liquid cooling capacity shipment',
     'site:opencompute.org 2026 UQD UQDB BMQC PBMC liquid cooling manifold interoperability',
     'site:digitimes.com 2026 UQD quick disconnect manifold liquid cooling shortage lead time AI server',
+    'site:trendforce.com 2026 semiconductor equipment component lead time lithography deposition etch packaging 40 months',
+    'site:asml.com 2026 EUV capacity booked production capacity AI demand',
+    'site:appliedmaterials.com 2026 AI semiconductor equipment capacity backlog shipment lead time',
+    'site:lamresearch.com 2026 AI wafer fabrication equipment capacity backlog shipment',
+    'site:kla.com 2026 AI semiconductor process control equipment capacity backlog shipment',
+    'site:tel.com 2026 semiconductor production equipment AI capacity shipment lead time',
+    'site:reuters.com 2026 ASML semiconductor equipment capacity booked EUV AI',
 ]
 
 OFFICIAL_DOMAINS = (
@@ -106,12 +122,19 @@ OFFICIAL_DOMAINS = (
     "vertiv.com",
     "coolitsystems.com",
     "opencompute.org",
+    "asml.com",
+    "appliedmaterials.com",
+    "lamresearch.com",
+    "kla.com",
+    "tel.com",
+    "semi.org",
     "nvidia.com",
     "investor.nvidia.com",
 )
 
 TRUSTED_DOMAINS = (
     "digitimes.com",
+    "reuters.com",
 )
 
 CATEGORY_ALIASES = {
@@ -129,6 +152,13 @@ CATEGORY_ALIASES = {
         "bmqc", "pbmc", "rack manifold", "rack manifolds", "coolant manifold",
         "fluid network rack manifold", "quick disconnect", "quick disconnects",
         "dripless quick", "dry-break quick",
+    ),
+    "SEMICAP_EQUIPMENT": (
+        "semiconductor equipment", "semicap equipment", "wafer fabrication equipment",
+        " wfe ", "lithography tool", "lithography tools", "euv tool", "euv tools",
+        "duv tool", "duv tools", "deposition equipment", "etch equipment",
+        "inspection equipment", "metrology equipment", "chipmaking equipment",
+        "chip-making equipment",
     ),
     "POWER": (
         "power supply", "power supplies", "psu", "power shelf", "power shelves",
@@ -162,6 +192,13 @@ COMPANY_MAP = {
     "vertiv.com": "Vertiv",
     "coolitsystems.com": "CoolIT Systems (Ecolab)",
     "opencompute.org": "Open Compute Project",
+    "asml.com": "ASML",
+    "appliedmaterials.com": "Applied Materials",
+    "lamresearch.com": "Lam Research",
+    "kla.com": "KLA",
+    "tel.com": "Tokyo Electron",
+    "semi.org": "SEMI",
+    "reuters.com": "Reuters",
     "digitimes.com": "DIGITIMES",
     "nvidia.com": "NVIDIA",
     "investor.nvidia.com": "NVIDIA",
@@ -172,6 +209,7 @@ BENEFICIARIES = {
     "AEC": "BizLink-KY — AEC·고속 구리 인터커넥트",
     "LIQUID_COOLING": "AVC(Asia Vital Components)·Delta Electronics·Auras Technology·BOYD — 콜드플레이트·CDU·열관리",
     "UQD_MANIFOLD": "Parker Hannifin·nVent·Vertiv·CoolIT Systems(Ecolab) — UQD/BMQC·드립리스 커플링·랙 매니폴드·유체 분배",
+    "SEMICAP_EQUIPMENT": "ASML·Applied Materials·Lam Research·Tokyo Electron·KLA — 노광·증착·식각·검사·계측 장비",
     "POWER": "Delta Electronics·Lite-On — PSU·고전력 전원변환·800V HVDC",
     "PCB_CCL": "Elite Material(台光電)·TUC — 고속·저손실 CCL / AI 서버 PCB 상류",
     "ODM_RACK": "Foxconn·Wistron·Quanta·Wiwynn — AI 서버·랙 통합",
@@ -181,6 +219,7 @@ NEXT_CHECK = {
     "AEC": "리드타임·800G/1.6T 양산·고객 인증·생산능력",
     "LIQUID_COOLING": "콜드플레이트/CDU 인증·출하·생산능력·누수/신뢰성",
     "UQD_MANIFOLD": "UQD/BMQC 리드타임·다중 공급사 인증·매니폴드 생산능력·누설 시험·고객 승인",
+    "SEMICAP_EQUIPMENT": "장비 납기·핵심 부품 납기·수주잔고·EUV/High-NA 예약연도·신공장 생산능력",
     "POWER": "PSU 납기·전력모듈 생산능력·800V 채택·랙당 kW",
     "PCB_CCL": "CCL 납기·가격·저손실 소재 생산능력·PCB 출하",
     "ODM_RACK": "랙 출하량·부품 부족에 따른 출하 지연·가동률",
@@ -354,7 +393,7 @@ def parse_event(text: str, url: str, title: str, published: str) -> dict:
         categories = classify_categories(window)
         if not categories or not has_supply_change(window):
             continue
-        if source_trusted and not source_official and "UQD_MANIFOLD" not in categories:
+        if source_trusted and not source_official and not ({"UQD_MANIFOLD", "SEMICAP_EQUIPMENT"} & set(categories)):
             continue
 
         low = window.lower()
@@ -468,6 +507,7 @@ def category_label(category: str) -> str:
         "AEC": "AEC(액티브 전기 케이블)",
         "LIQUID_COOLING": "액체냉각",
         "UQD_MANIFOLD": "UQD·랙 매니폴드",
+        "SEMICAP_EQUIPMENT": "반도체 장비",
         "POWER": "PSU·전력",
         "PCB_CCL": "PCB·CCL",
         "ODM_RACK": "ODM·랙",
