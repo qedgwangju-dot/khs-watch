@@ -892,6 +892,61 @@ def collect_volatility_shares_3x_crypto_launch(errors):
     return events
 
 
+def collect_sec_sro_crypto_orders(errors):
+    events = []
+    urls = [
+        "https://www.sec.gov/taxonomy/term/193081",
+        "https://www.sec.gov/rules-regulations/self-regulatory-organization-rulemaking/national-securities-exchanges",
+    ]
+    seen = set()
+    for url in urls:
+        try:
+            soup = soup_for(url)
+            for a in soup.find_all("a", href=True):
+                title = clean(a.get_text(" ", strip=True))
+                href = abs_url(url, a.get("href"))
+                signal = title.lower()
+                if not title or href in seen:
+                    continue
+                if "3x bitcoin etf" not in signal and "3x ether etf" not in signal:
+                    continue
+                if "order granting approval" not in signal and "granting approval" not in signal:
+                    continue
+                seen.add(href)
+                detail = ""
+                try:
+                    body = clean(soup_for(href).get_text(" ", strip=True))
+                    detail = body[:1600]
+                except Exception:
+                    detail = title
+                release = ""
+                file_no = ""
+                m = re.search(r"Release No\.\s*([0-9-]+)", detail, re.I)
+                if m:
+                    release = m.group(1)
+                m = re.search(r"File No\.\s*(SR-[A-Z0-9-]+)", detail, re.I)
+                if m:
+                    file_no = m.group(1)
+                extra = []
+                if release:
+                    extra.append(f"Release No. {release}")
+                if file_no:
+                    extra.append(f"File No. {file_no}")
+                if extra:
+                    detail = " | ".join(extra) + " | " + detail
+                events.append(Event(
+                    "SEC 거래소 규칙 승인명령",
+                    "SEC 암호자산 ETP 상장 승인",
+                    title,
+                    href,
+                    date="2026-10-02",
+                    detail=detail[:1800],
+                ))
+        except Exception as exc:
+            errors.append(f"SEC SRO crypto orders {url}: {exc}")
+    return list({e.key: e for e in events}.values())
+
+
 def collect_regulators(errors):
     events = []
     feeds = [
@@ -903,6 +958,7 @@ def collect_regulators(errors):
         events.extend(parse_rss(url, source, errors))
     events.extend(collect_federal_register(errors))
     events.extend(collect_reginfo_reviews(errors))
+    events.extend(collect_sec_sro_crypto_orders(errors))
     # SEC Newsroom HTML blocks GitHub-hosted runners with HTTP 403 and is
     # redundant for exchange-listing approvals. Use the dedicated SEC SRO
     # order pages/direct official order probes plus SEC press-release RSS.
