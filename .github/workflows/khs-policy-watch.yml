@@ -1,5 +1,7 @@
 name: KHS policy watch
 
+# live verification trigger: FCC optical transceiver 3.2T/65pct stage tracking
+
 on:
   push:
     branches: [main]
