@@ -118,8 +118,16 @@ bridge_attack = row(
     source="NYT",
     description="Russia attacked Kyiv bridges six times in three days; traffic restrictions followed.",
 )
+check("oct04-bridge-attack-red", mod.final_color(bridge_attack) == "red")
 mix_verdict = mod.verdict([bridge_attack, lukoil])
 check("oct04-mixed-no-false-peace", "휴전 진전" not in mix_verdict and "실제 공격" in mix_verdict)
+
+evac_warning = row(
+    "Russia warns diplomats and foreigners to leave Kyiv immediately",
+    source="AFP",
+    description="Russia said massive retaliatory strikes will continue and warned of mortal danger.",
+)
+check("oct04-kyiv-evac-warning-red", mod._kyiv_evacuation_strike_warning(evac_warning) and mod.final_color(evac_warning) == "red")
 
 # 8) 렌더링 색상/주제도 최종 출력에서 교정.
 now = dt.datetime.now(mod.watch.KST)
