@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-04T11:51:59+09:00",
+  "updated_at_kst": "2026-10-04T12:54:42+09:00",
   "seen_ids": [
     "06a59b34b1c9e4bb0d3987bd",
     "081d98bf0cc1d36b72de1345",
@@ -128,7 +128,7 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1348.28,
-    "date": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-04 11:52 KST · 보조 API 2026-10-04 · 차이 0.02% · 일중 기준시각 차이 가능",
+    "date": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-04 12:54 KST · 보조 API 2026-10-04 · 차이 0.02% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -181,13 +181,13 @@
       "https://insights.trendforce.com/p/weekly-radar-002",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-10-04T11:52:12+09:00",
+    "last_checked_at_kst": "2026-10-04T12:54:56+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-04T11:52:46+09:00",
+    "checked_at_kst": "2026-10-04T12:55:05+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-01T09:43:49+09:00",
@@ -257,7 +257,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-04",
-    "last_checked_at_kst": "2026-10-04T11:52:39+09:00"
+    "last_checked_at_kst": "2026-10-04T12:54:58+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -293,7 +293,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-04",
-    "last_checked_at_kst": "2026-10-04T11:52:42+09:00",
+    "last_checked_at_kst": "2026-10-04T12:55:01+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -337,7 +337,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-04T11:52:44+09:00",
+    "last_checked_at_kst": "2026-10-04T12:55:03+09:00",
     "candidate_count": 0,
     "event_count": 0
   },
@@ -526,5 +526,35 @@
     "research_source_url": "https://newsletter.semianalysis.com/p/ectc2026",
     "as_of": "2026-10-03",
     "note": "NVIDIA 공식 수치와 SemiAnalysis 추정치를 분리 저장. Rubin 16%→Feynman 약 4% 및 Samsung PHY 8×4mm→D2D 8.5×1.5mm(약 60.2% 축소)는 SemiAnalysis 추정·Samsung Hot Chips 자료 인용이며 NVIDIA 공식 다이면적 실측치로 승격하지 않음. NVIDIA의 +25% compute die area와 상세 본문의 +30% main-die silicon은 서로 다른 공식 표현이라 합치지 않음."
+  },
+  "morgan_stanley_nvidia_hbm_margin_track_version": 1,
+  "morgan_stanley_nvidia_hbm_margin": {
+    "gross_margin_floor_pct_reported": 72.0,
+    "base_hbm_unit_price_tolerance_pct_reported": 91.7,
+    "despec_hbm_unit_price_tolerance_pct_reported": 187.5,
+    "exact_tolerance_public_source_verified": false,
+    "full_spec_hbm_gb": 288,
+    "despec_hbm_gb": 192,
+    "derived_despec_tolerance_pct": 187.55,
+    "despec_math_consistent": true,
+    "vr200_nvl72_rack_value_usd": 7803148.0,
+    "vr200_memory_line_usd": 2001600.0,
+    "vr200_memory_line_growth_pct": 435.0,
+    "vr200_memory_line_share_pct": 25.65,
+    "vr200_memory_line_scope": "public_recaps_conflict_on_hbm_inclusion_not_hbm_only_confirmed",
+    "nvidia_q2_fy27_gross_margin_pct": 75.0,
+    "nvidia_q3_fy27_gross_margin_outlook_mid_pct": 74.0,
+    "nvidia_q3_fy27_gross_margin_outlook_plusminus_pct": 0.5,
+    "morgan_stanley_next_year_gross_margin_range_low_pct": 72.0,
+    "morgan_stanley_next_year_gross_margin_range_high_pct": 73.0,
+    "morgan_stanley_next_year_gross_margin_estimate_pct": 72.5,
+    "source_kind": "user_provided_morgan_stanley_summary_for_exact_tolerance",
+    "source_url": "",
+    "public_bom_source_url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/nvidias-memory-costs-soar-485-percent-latest-ai-systems-now-cost-usd7-8-million-to-build-memory-now-comprises-25-percent-of-the-total-cost-rubin-gpus-a-mere-usd50-000-apiece",
+    "public_bom_secondary_url": "https://longbridge.com/news/287728024",
+    "nvidia_official_results_url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027/",
+    "morgan_stanley_public_recap_url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-delivers-strong-q2-long-150300603.html",
+    "as_of": "2026-10-04",
+    "note": "91.7%·187.5%·72% 조합은 사용자 제공 Morgan Stanley 요약으로 기준선에 보존하되, 공개 검색에서 원문 또는 exact 수치의 독립 2중 재확인은 아직 확보하지 못했으므로 exact_tolerance_public_source_verified=false. 187.5%는 288→192GB(-33.3%) 가정에서 91.7% 허용치를 용량비 1.5배로 조정하면 약 187.55%로 산술상 일치. VR200 $2.0016M memory line은 공개 2차 자료가 HBM 포함 여부를 다르게 설명하므로 HBM-only 비용으로 승격 금지."
   }
 }
