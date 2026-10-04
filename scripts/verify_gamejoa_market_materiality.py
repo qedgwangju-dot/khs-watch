@@ -2479,6 +2479,40 @@ class MaterialityChecks(unittest.TestCase):
         with patch.object(radar.base, "kst_now", return_value=NOW):
             self.assertEqual(len(radar.quality_display_alerts([item], 1)), 1, item.get("_exclusion_reason"))
 
+    def test_export_history_cannot_replace_declared_current_release(self):
+        title = "건어물 팔던 나라서 반도체 수출국으로…韓수출 1조弗 눈앞 [세쓸통]"
+        history = ("1981년에는 수출액 200억 달러를 돌파했고 1986년에는 국제유가 하락과 "
+                   "원화 약세, 국제금리 하락 등에 힘입어 첫 무역흑자라는 기념비적인 기록을 세웠습니다.")
+        observed = ("산업통상부가 발표한 2026년 9월 수출입동향에 따르면 올해 1~9월 누적 수출액은 "
+                    "8145억 달러입니다.")
+        body = "우리나라 연간 수출이 1조 달러 시대를 앞두고 있습니다. " + observed + " " + history
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertIn(observed, [row["source_excerpt"] for row in audit["evidence"]])
+        self.assertNotIn(history, [row["source_excerpt"] for row in audit["evidence"]])
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        for value in ("올해", "1~9월", "8145억달러", "집계됐다"):
+            self.assertIn(value, core)
+        self.assertNotIn("1986", core)
+        self.assertFalse(radar.source_core_fact_errors({**item, "telegram_core_fact": core}))
+        for wrong_core in (core.replace("1~9월", "9월"), core.replace("8145", "1855"), history):
+            self.assertIn("national_export_observed_period_total_mismatch",
+                          radar.source_core_fact_errors({**item, "telegram_core_fact": wrong_core}))
+
+    def test_export_history_or_future_target_alone_is_not_current_data(self):
+        title = "한국 연간 수출 1조 달러 목표 눈앞"
+        for sentence in (
+            "1981년에는 수출액 200억 달러를 돌파했고 1986년에는 첫 무역흑자를 기록했습니다.",
+            "올해 10~12월 월평균 618억 달러를 수출하면 연간 수출액 1조 달러를 달성할 수 있다.",
+            "올해 1~9월 누적 수출액은 8145억 달러로 전망된다.",
+        ):
+            with self.subTest(sentence=sentence):
+                self.assertFalse(materiality.national_export_observation(sentence))
+                audit = materiality.assess(title, sentence)
+                self.assertLess(audit["priority"], 2, audit)
+                self.assertFalse(audit["evidence"], audit)
+
     def test_first_headline_event_precedes_secondary_bond_context(self):
         title = "원·달러 NDF 0.2원 하락, 미국채 금리 하락 vs 달러인덱스 연 최고"
         body = "원·달러 역외 NDF 환율은 전장 대비 0.2원 하락했다. 특히 미국채 2년물 금리는 10bp 넘게 급락했다."

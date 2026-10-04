@@ -2507,14 +2507,12 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
             if core_sentence_is_complete(fact):
                 return fact
     if focus == "national_exports":
-        observed = re.search(
-            r"올해\s*(\d{1,2}\s*[~∼~-]\s*\d{1,2}월)\s*누적\s*수출액(?:은|이|가)\s*"
-            r"(\d[\d,.]*\s*(?:조|억)?\s*달러)", source,
-        )
+        observed = next((fact for sentence in sentences
+                         if (fact := market_materiality.national_export_observation(sentence))), None)
         if observed and re.search(r"한국|韓|우리나라|대한민국", title + " " + " ".join(sentences[:3])):
-            period = re.sub(r"\s+", "", observed.group(1))
-            amount = re.sub(r"\s+", "", observed.group(2))
-            fact = f"한국의 {period} 누적 수출액은 {amount}로 집계됐다."
+            period = " ".join(value for value in (observed["year"], observed["period"]) if value)
+            metric = observed["metric"].replace("누적수출", "누적 수출").replace("월간수출", "월간 수출")
+            fact = f"한국의 {period} {metric}은 {observed['amount']}로 집계됐다."
             if re.search(r"지난해\s*연간\s*수출액[^.!?]{0,40}(?:넘어섰|넘어선)", source):
                 fact += " 지난해 연간 수출액을 이미 넘었다."
             if core_sentence_is_complete(fact):
@@ -10064,6 +10062,12 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         expected_forecast = source_focused_article_core(title, market_materiality.source_sentences(source))
         if expected_forecast and re.sub(r"\s+", "", expected_forecast) != re.sub(r"\s+", "", core):
             errors.append("fx_forecast_attribution_target_or_horizon_mismatch")
+    if market_materiality.focus_kind(title) == "national_exports":
+        expected_export = source_focused_article_core(title, market_materiality.source_sentences(source))
+        if expected_export:
+            comparable_core = re.sub(r"\(약[^)]*\)", "", core)
+            if re.sub(r"\s+", "", expected_export) != re.sub(r"\s+", "", comparable_core):
+                errors.append("national_export_observed_period_total_mismatch")
     expected_loss = profit_loss_result_fact(title, market_materiality.source_sentences(source))
     if expected_loss:
         basis = re.search(r"(?:모회사\s*귀속\s*|지배주주\s*귀속\s*)?순손실", expected_loss).group(0)

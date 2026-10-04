@@ -120,6 +120,10 @@ Every defect or requested change must follow this sequence:
   source lead. Existing project budgets in the exhibition's background are not
   a new investment announcement. Retain new executed construction or contracts
   when the headline or lead actually foregrounds that change.
+- National export evidence must bind an observed current-period total. Historical
+  milestone paragraphs and conditional amounts needed to meet a future target
+  are not a current statistical release. Preserve the observed period and total
+  in the core and check them again before delivery.
 - Entertainment/private-life articles cannot qualify as customer discussions
   from meeting or social-photo certification words. Apply the same genre and
   foreground check before body retrieval, alert construction and final output.

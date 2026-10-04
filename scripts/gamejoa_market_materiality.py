@@ -9,7 +9,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 67
+VERSION = 68
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -285,6 +285,8 @@ def focus_matches(title: str, sentence: str) -> bool:
     if DENIAL_HEADLINE.search(title) and not DENIAL_SOURCE.search(sentence):
         return False
     kind = focus_kind(title)
+    if kind == "national_exports":
+        return bool(national_export_observation(sentence))
     if kind == "cyber_incident":
         if re.search(r"예방|모의\s*훈련|모의\s*해킹|가상\s*공격|시연|가정|유출될|유출되지|유출로\s*이어지지|피해가\s*없", sentence):
             return False
@@ -531,6 +533,23 @@ def retail_fuel_observation(title: str, body: str) -> dict:
     return {}
 
 
+def national_export_observation(sentence: str) -> dict | None:
+    """Bind an observed current-period total, not historical or target figures."""
+    if re.search(r"당시|과거|추정치|전망치|예상치|수출하면|수출할\s*경우", sentence):
+        return None
+    match = re.search(
+        r"(?P<year>올해|금년)\s*(?P<period>(?:\d{1,2}\s*[~∼-]\s*)?\d{1,2}월|연간)?\s*"
+        r"(?P<metric>누적\s*수출액|월간\s*수출액|수출액)(?:은|이|가)\s*"
+        r"(?P<amount>\d[\d,.]*\s*(?:조|억|만)?\s*달러)\s*"
+        r"(?:에\s*달(?:했|하|해)|(?:로|으로)\s*(?:집계됐|집계되었|늘었|증가했|감소했|기록됐)|입니다|이다|였다|이었다)",
+        sentence,
+    )
+    if not match:
+        return None
+    return {key: re.sub(r"\s+", "", match.group(key) or "")
+            for key in ("year", "period", "metric", "amount")}
+
+
 def factory_tariff_observation(title: str, body: str) -> dict | None:
     """Bind a direct conditional quote even when its headline is generic."""
     kind = focus_kind(title)
@@ -661,7 +680,7 @@ RULES = (
      r"매출|영업이익|순이익|영업손실|순손실|마진|실적|가이던스|(?<!제)출하|판매(?:량|실적|는|가)|시장점유율|revenue|earnings|profit|guidance|shipments",
      r"증가|감소|상승|하락|상회|하회|상향|하향|달성|기록|집계|발표|공시|전망|예상|컨센서스|추정치|적자\s*전환|적자로\s*전환|rise|fall|grow|cut|rais|report|forecast|consensus|beat|miss"),
     ("national_export_release", ("earnings", "discount_rate"),
-     r"누적\s*수출|월간\s*수출|수출액", r"달(?:했|하|해)|늘었|증가|감소|기록|집계|넘어섰|달성"),
+     r"누적\s*수출|월간\s*수출|수출액", r"달(?:했|하|해)|늘었|증가|감소|기록|집계|넘어섰|달성|달러\s*(?:입니다|이다|였다|이었다)"),
     ("product_sales_mix", ("earnings",),
      r"판매(?:량|대수|비중)?", r"\d+(?:\.\d+)?%\s*(?:를|을)?\s*차지|비중.{0,20}(?:높아|올라|낮아|줄어)"),
     ("industry_market_share", ("earnings",),
@@ -805,6 +824,8 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
     """Do not promote service descriptions or event support into transactions."""
     if COMPANY_PROFILE.search(sentence) or ACCOUNTING_NOTE.search(sentence):
         return False
+    if kind == "national_export_release":
+        return bool(national_export_observation(sentence))
     if kind in {"cyber_operational_incident", "cyber_regulatory_response"}:
         return focus_matches("금융권 해킹", sentence)
     if kind in {"technology_or_clinical_stage", "physical_supply_or_capacity", "industrial_architecture_adoption"} and re.search(
