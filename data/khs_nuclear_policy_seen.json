@@ -36,13 +36,14 @@
   "smr_state_model_version": 3,
   "updated_at_kst": "2026-10-04T09:38:05+09:00",
   "westinghouse_issue_state": {
+    "state_key": "approval:corporate_pending|approval:due_diligence_pending|approval:regulatory_pending|stage:definitive_agreement_pending|stake_range:5~10|status:framework_nonbinding|transaction:cornerstone_equity",
+    "status": "공식 프레임워크·최종계약 미체결",
+    "title": "Westinghouse 공식 한국 지분 5~10% 잠재 투자·비구속 프레임워크",
+    "source": "Westinghouse·Cameco 공식",
+    "link": "https://info.westinghousenuclear.com/news/u.s.-korea-framework-advances-deployment-of-westinghouse-nuclear-technology-in-the-united-states",
+    "published_utc": "2026-10-01T00:00:00+00:00",
     "first_seen_kst": "2026-10-04T09:38:05+09:00",
-    "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1USGNXQ1pfemc3SzV6cHhWRW1xWXdpT2lDZ016enplbE1CcjBsWWZwV1Z0ZENIVEV1a1Y2OS1xUm9DeHE2cFFpTS1zZVVHRXZBSFowX25MNnJsZndvX0k1SVJCMnZSUEtNT2FoZ19JambSAXRBVV95cUxNQ0NsZ1k2S1lmQjNUN0hQcHNoY1dBZVBZN1hwSFF1eTBPWC1KSG5KQThwLWNMSUFrMTZyUm9CRjFoaHZZOVFoRWtkbU1mX21QdU1QMDJMTkZZZDhfT3I2aVhGSHZDQzFmZ09JX0U1VjYzdDAzdA?oc=5",
-    "published_utc": "2026-10-02T22:00:00+00:00",
-    "source": "IT조선",
-    "state_key": "governance:board|governance:voting_possible|stake:7+alpha|stake_korea_request:20|stake_range:5~10|stake_us_offer:7",
-    "status": "새 물질적 조건 확인",
-    "title": "시공 넘어 경영 참여로… 韓 기업, 웨스팅하우스 이사회 진입 노린다"
+    "correction_note": "2026-10-03 IT조선 이사회 진입 추진 보도는 신규 확정 상태가 아니므로 기준선에서 제외"
   },
-  "westinghouse_state_model_version": 2
+  "westinghouse_state_model_version": 3
 }
