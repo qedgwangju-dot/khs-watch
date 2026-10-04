@@ -85,6 +85,13 @@ def _official_prices() -> tuple[dict[str, float], dict[str, bool]]:
     return prices, fresh
 
 
+def _visible_text(block: str) -> str:
+    """Return only user-visible alert text so URL payloads cannot look like quantities."""
+    text = re.sub(r"<[^>]+>", " ", block)
+    text = re.sub(r"https?://\\S+", " ", text)
+    return html.unescape(text)
+
+
 def _num(v: str) -> int:
     return int(v.replace(",", ""))
 
@@ -118,7 +125,7 @@ def _fmt_usd(value: float) -> str:
 
 
 def _largest_qty(block: str, unit: str) -> int | None:
-    vals = [_num(n) for n, u in QTY_RE.findall(block) if u.lower() == unit.lower()]
+    vals = [_num(n) for n, u in QTY_RE.findall(_visible_text(block)) if u.lower() == unit.lower()]
     return max(vals) if vals else None
 
 
@@ -132,7 +139,7 @@ def _korean_man_qty(block: str, unit: str) -> int | None:
 def _qty_summary(block: str) -> str:
     found: list[str] = []
     seen: set[tuple[int, str]] = set()
-    for n, unit in QTY_RE.findall(block):
+    for n, unit in QTY_RE.findall(_visible_text(block)):
         key = (_num(n), unit.lower())
         if key in seen:
             continue
@@ -264,7 +271,7 @@ def enrich_quantity_values() -> None:
     if not base.ALERT_PATH.exists():
         return
     text = base.ALERT_PATH.read_text(encoding="utf-8")
-    if not QTY_RE.search(text):
+    if not QTY_RE.search(_visible_text(text)):
         return
 
     rate, _fresh_fx = current._usdkrw()
@@ -273,7 +280,7 @@ def enrich_quantity_values() -> None:
     changed = False
     enriched: list[str] = []
     for block in parts:
-        if not QTY_RE.search(block) or "💰 <b>대당·물량 환산</b>" in block or "💰 <b>물량 환산</b>" in block or "💰 <b>개당·물량 환산</b>" in block:
+        if not QTY_RE.search(_visible_text(block)) or "💰 <b>대당·물량 환산</b>" in block or "💰 <b>물량 환산</b>" in block or "💰 <b>개당·물량 환산</b>" in block:
             enriched.append(block)
             continue
         value_block = (
