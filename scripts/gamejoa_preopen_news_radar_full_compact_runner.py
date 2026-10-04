@@ -9269,6 +9269,51 @@ def verified_materiality_axes(alert: dict) -> list[str]:
     return list(audit["axes"])
 
 
+def is_dedicated_fcc_robot_inverter_policy(alert: dict) -> bool:
+    """Keep FCC robot/inverter Covered List chronology in the KHS policy owner lane.
+
+    GAMEJOA can still discover and analyze the source, but it must not deliver the
+    same FCC policy event through the shared policy Telegram route. This prevents
+    cross-workflow duplicate sends and article-date replays of the July 28, 2026
+    Covered List baseline.
+    """
+    text = " ".join(
+        str(alert.get(key) or "")
+        for key in (
+            "source_title", "original_news", "source_body", "source_abstract",
+            "summary", "telegram_core_fact", "policy_plain_summary", "link", "source",
+        )
+    ).lower()
+    has_fcc = (
+        "federal communications commission" in text
+        or re.search(r"\bfcc\b", text) is not None
+        or "docs.fcc.gov" in text
+        or "fcc.gov" in text
+    )
+    has_covered_action = (
+        "covered list" in text
+        or "equipment authorization" in text
+        or "da 26-786" in text
+        or "da-26-786" in text
+        or "da 26-870" in text
+        or "da-26-870" in text
+        or "da 26-957" in text
+        or "da-26-957" in text
+        or "da 26-996" in text
+        or "da-26-996" in text
+    )
+    has_robot_or_inverter = any(
+        term in text
+        for term in (
+            "advanced robotic device", "advanced robotic devices",
+            "foreign-produced robotic", "robot cleaner", "robotic lawn",
+            "pool-cleaning robot", "power inverter", "power inverters",
+            "foreign-produced power inverter",
+        )
+    )
+    return bool(has_fcc and has_covered_action and has_robot_or_inverter)
+
+
 def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     initial = telegram.display_alerts(alerts, min(max(limit * 3, 12), 30))
     candidates = list({id(alert): alert for alert in initial + alerts}.values())
@@ -9312,6 +9357,9 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             continue
         if alert["market_materiality"]["disposition"] != "keep" or alert["market_materiality"]["priority"] < 2:
             alert["_exclusion_reason"] = "no_source_market_change_evidence:" + alert["market_materiality"].get("scope_note", alert["market_materiality"]["reason"])
+            continue
+        if is_dedicated_fcc_robot_inverter_policy(alert):
+            alert["_exclusion_reason"] = "dedicated_khs_policy_owner:fcc_robot_inverter_covered_list"
             continue
         if is_polysilicon_11052_base_rehash(alert):
             alert["_exclusion_reason"] = "historical_polysilicon_11052_base_rehash"
