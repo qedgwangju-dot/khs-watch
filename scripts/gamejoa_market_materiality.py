@@ -9,7 +9,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 65
+VERSION = 66
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -136,6 +136,7 @@ def nonmarket_entertainment_reason(title: str, body: str = "", source_url: str =
 # the classifier. Reuse it for evidence ranking and compact-summary checks.
 HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) for name, head, source in (
     ("tax_relief", r"비과세|과세.{0,12}제외|특례\s*(?:관세|방안)|FTA.{0,12}특례", r"비과세|과세.{0,25}제외|특례|특혜관세"),
+    ("cyber_incident", r"해킹|(?:개인|고객)?\s*정보\s*유출|사이버\s*(?:공격|침해)|랜섬웨어|data breach|cyber.?attack|ransomware", r"해킹|정보|유출|침해|긴급\s*점검회의|data breach|cyber.?attack"),
     ("sanctions_exemption", r"제재.*(?:면제|예외)", r"(?:예외|면제|일반\s*허가|general licen[cs]e)"),
     ("monetary_guidance", r"(?:연준|ECB|한국은행).{0,15}(?:의장|총재)", r"(?:금리|통화|정책).{0,90}(?:밝혔|말했|강조|신중|시사|필요)"),
     ("nuclear_warning", r"핵\s*(?:대응|사용|공격|위협)|nuclear.{0,12}(?:threat|response)", r"(?:핵|특별한\s*수단|모든\s*무기).{0,80}(?:대응|사용|경고|위협|준비|불가피)"),
@@ -284,6 +285,22 @@ def focus_matches(title: str, sentence: str) -> bool:
     if DENIAL_HEADLINE.search(title) and not DENIAL_SOURCE.search(sentence):
         return False
     kind = focus_kind(title)
+    if kind == "cyber_incident":
+        if re.search(r"예방|모의\s*훈련|모의\s*해킹|가상\s*공격|시연|유출되지|유출로\s*이어지지|피해가\s*없", sentence):
+            return False
+        incident = bool(
+            re.search(r"해킹|사이버|랜섬웨어|침해|(?:개인|고객|임직원)\s*정보|data breach|ransomware", sentence, re.I)
+            and re.search(r"유출(?:됐|되었|됐다|되었다)|유출.{0,55}(?:밝혔다|확인했다|확인됐|파악했다)|"
+                          r"(?:서비스|운영|생산|거래).{0,20}(?:중단됐|중단했다)|피해.{0,20}(?:발생했|봤다)|"
+                          r"data breach.{0,35}(?:reported|confirmed)|ransomware.{0,35}(?:halted|disrupted)", sentence, re.I)
+        )
+        response = bool(
+            re.search(r"금융(?:당국|위원장|위원회|감독원장)|금감원장|금융위|금감원", sentence)
+            and re.search(r"CEO|최고경영자|금융사\s*대표", sentence, re.I)
+            and re.search(r"긴급\s*(?:점검|대응)?\s*회의|긴급\s*소집", sentence)
+            and re.search(r"연다|열었다|열\s*예정|개최한다|개최했다|개최할\s*예정|소집해", sentence)
+        )
+        return incident or response
     if kind == "trading_status":
         return bool(re.search(r"거래.{0,15}재개|재개.{0,15}거래|액면병합|주식병합|보통주.{0,45}범위로\s*병합", sentence)
                     and re.search(r"발표|상정|결정|승인|추진|시행|예정|재개(?:된|됐|한다|일|\s*기준가)|\d+\s*(?:대|:|주를)\s*\d+|announc|approv|plan", sentence, re.I)
@@ -703,6 +720,12 @@ RULES = (
     ("market_infrastructure", ("timeline",),
      r"증권계좌|거래시스템|결제망|증권거래소|오픈뱅킹|증권 거래|brokerage account|trading system|payment network",
      r"연결|도입|출시|가동|개편|허용|launch|deploy|connect|reform"),
+    ("cyber_operational_incident", ("earnings", "timeline"),
+     r"해킹|사이버|랜섬웨어|침해|(?:개인|고객|임직원)\s*정보|data breach|ransomware",
+     r"유출|서비스.{0,20}중단|운영.{0,20}중단|생산.{0,20}중단|피해|reported|confirmed|halted|disrupted"),
+    ("cyber_regulatory_response", ("timeline",),
+     r"금융(?:당국|위원장|위원회|감독원장)|금감원장|금융위|금감원",
+     r"긴급\s*(?:점검|대응)?\s*회의|긴급\s*소집"),
     ("model_operating_specification", ("earnings", "timeline"),
      r"모델|llm|ai model|language model|솔라 미니|gpu|npu",
      r"(?:gpu|npu|가속기)\s*(?:\d+|한|두|세)\s*(?:장|개)|\d+\s*(?:장|개)의?\s*(?:gpu|npu)|(?:메모리|전력|지연시간|추론비용|운용비용|토큰량|토큰\s*처리량).{0,25}\d+(?:\.\d+)?\s*(?:%|gb|w|배)|\d+(?:\.\d+)?\s*(?:배|%)\s*(?:빠르|절감|줄|감소)"),
@@ -782,6 +805,8 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
     """Do not promote service descriptions or event support into transactions."""
     if COMPANY_PROFILE.search(sentence) or ACCOUNTING_NOTE.search(sentence):
         return False
+    if kind in {"cyber_operational_incident", "cyber_regulatory_response"}:
+        return focus_matches("금융권 해킹", sentence)
     if kind in {"technology_or_clinical_stage", "physical_supply_or_capacity", "industrial_architecture_adoption"} and re.search(
         r"(?:움직임|추세|흐름|사례).{0,16}(?:이어지|이어지고|늘고|늘어나|확산)|"
         r"(?:활용|적용)\s*범위.{0,16}(?:넓어지고|확대되고)", sentence,
@@ -1201,6 +1226,10 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
             continue
         for kind, axes, subject, action in COMPILED_RULES:
             if not subject.search(sentence) or not action.search(sentence):
+                continue
+            if kind in {"cyber_operational_incident", "cyber_regulatory_response"} and focus_kind(title) != "cyber_incident":
+                continue
+            if focus_kind(title) == "cyber_incident" and kind not in {"cyber_operational_incident", "cyber_regulatory_response"}:
                 continue
             if focus_kind(title) == "industry_outlook" and kind != "sector_demand_outlook":
                 continue

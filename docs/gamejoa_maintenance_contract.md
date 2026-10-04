@@ -100,6 +100,11 @@ Every defect or requested change must follow this sequence:
   from verified nearby product context. Do not publish an anonymous contract
   core or invent an issuer when the article has no explicit subject. Preserve
   the source customer and execution stage when adding that subject.
+- A cyber incident headline must summarize the reported incident and current
+  response, not background AI or network-separation policy. Bind disclosed
+  record counts to the named institution and retain scheduled versus completed
+  meetings. Prevention drills and defended attempts are not actual breaches;
+  do not infer an institution from an anonymous or ambiguous count paragraph.
 - Semiconductor capacity outlooks retain the investment fiscal period and the
   separately attributed production-effect horizon. Market-breadth comparisons
   retain the index, constituent population and high/year-start comparison basis;

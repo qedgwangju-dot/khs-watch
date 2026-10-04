@@ -2331,6 +2331,52 @@ def asset_financing_observation(sentence: str) -> dict[str, str]:
     }
 
 
+def financial_cyber_incident_fact(title: str, body: str) -> str:
+    """Bind an observed bank disclosure count and the authority's meeting stage."""
+    if market_materiality.focus_kind(title) != "cyber_incident":
+        return ""
+    sentences = market_materiality.source_sentences(body)
+    incidents = []
+    bank_pattern = r"[A-Za-z가-힣]{2,18}(?:은행|캐피탈|금융지주)"
+    for index, sentence in enumerate(sentences):
+        count = re.search(r"개인정보\s*(\d[\d,]*(?:만[\d,]*)?)\s*건이\s*유출(?:됐다|되었다)", sentence)
+        if not count or not market_materiality.focus_matches(title, sentence) or market_materiality.BACKGROUND.search(sentence):
+            continue
+        context = sentence
+        if re.match(r"^이\s*과정에서\s", sentence) and index:
+            previous = sentences[index - 1]
+            if not market_materiality.BACKGROUND.search(previous):
+                context = previous + " " + sentence
+        banks = set(re.findall(bank_pattern, context))
+        if len(banks) == 1:
+            incidents.append((banks.pop(), count.group(1).replace(',', '')))
+    for response in sentences:
+        if not market_materiality.focus_matches(title, response) or market_materiality.BACKGROUND.search(response):
+            continue
+        if not all(term in response for term in ("금융위원장", "금융감독원장", "CEO", "긴급 점검회의")):
+            continue
+        future = re.search(r"회의를\s*(?:연다|열\s*예정|개최한다|개최할\s*예정)", response)
+        completed = re.search(r"회의를\s*(?:열었다|개최했다)", response)
+        if not incidents or not (future or completed):
+            continue
+        bank, count = incidents[0]
+        other_damage = any(
+            market_materiality.focus_matches(title, sentence) and "유출" in sentence
+            and any(other != bank for other in re.findall(bank_pattern, sentence))
+            for sentence in sentences
+        )
+        timing = re.search(r"(?:오늘|이날|내일|오는\s*\d{1,2}일)(?:\s*(?:오전|오후))?", response)
+        when = f"{timing.group(0)} " if timing else ""
+        affected = "피해 " if re.search(r"침해\s*사고가\s*발생한\s*금융회사|피해\s*금융사", response) else ""
+        stage = "열 예정이다" if future else "열었다"
+        scope = " 등이" if other_damage else "이"
+        fact = (f"{bank} 개인정보 {count}건{scope} 유출됐다. "
+                f"금융위원장·금감원장은 {when}{affected}금융사 CEO 긴급 점검회의를 {stage}.")
+        if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact):
+            return fact
+    return ""
+
+
 def contextual_commercial_fact(title: str, body: str) -> str:
     """Retain the supplier when a contract paragraph continues its product profile."""
     if market_materiality.focus_kind(title):
@@ -3683,6 +3729,9 @@ def detailed_article_core(title: str, body: str) -> str:
             if body_tail.strip():
                 raw_body = body_tail
     body = article_summary_body(raw_body)
+    cyber_fact = financial_cyber_incident_fact(title, body)
+    if cyber_fact:
+        return cyber_fact
     normalized_title = title.lower()
     if "sk하이닉스" in normalized_title and any(
         term in normalized_title for term in ("실적", "역대급")
@@ -9869,6 +9918,9 @@ def verified_alert_core(alert: dict, title: str) -> str:
             if listing_fact:
                 return listing_fact
             body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+            cyber_fact = financial_cyber_incident_fact(source_title or title, article_summary_body(body))
+            if cyber_fact and valid_source_fact(cyber_fact):
+                return cyber_fact
             commercial_fact = contextual_commercial_fact(source_title or title, article_summary_body(body))
             if commercial_fact and valid_source_fact(commercial_fact):
                 return commercial_fact
@@ -9949,6 +10001,10 @@ def source_core_fact_errors(alert: dict) -> list[str]:
             errors.append("commercial_contract_actor_customer_or_stage_mismatch")
     if not market_materiality.core_focus_aligned(title, core):
         errors.append("headline_event_or_period_mismatch")
+    if market_materiality.focus_kind(title) == "cyber_incident":
+        expected_cyber = financial_cyber_incident_fact(title, source)
+        if expected_cyber and re.sub(r"\s+", "", expected_cyber) != re.sub(r"\s+", "", core):
+            errors.append("cyber_incident_actor_count_or_response_stage_mismatch")
     if market_materiality.focus_kind(title) == "asset_financing":
         observations = [asset_financing_observation(sentence) for sentence in market_materiality.source_sentences(source)]
         observations = [item for item in observations if item]

@@ -2290,6 +2290,45 @@ class MaterialityChecks(unittest.TestCase):
         for title in ('트럼프, 이란 협상 재개', '트럼프, 격전지서 이란 협상 발언'):
             self.assertEqual(materiality.source_event_identity(alert(title, lead + quote)), "")
 
+    def test_financial_cyber_incident_core_keeps_bank_count_and_scheduled_response(self):
+        title = 'AI 해킹 금융권 전방위 확산…당국, 금융사 CEO 긴급소집'
+        body = ('예가람저축은행은 해킹 공격으로 약 4만명의 고객 정보가 유출됐다고 밝혔다.\n'
+                '이억원 금융위원장과 이찬진 금융감독원장은 이날 오후 정부서울청사에서 '
+                '침해 사고가 발생한 금융회사 CEO를 불러 긴급 점검회의를 연다.\n'
+                '신한은행이 국회에 제출한 자료에 따르면 공격은 지난달 30일까지 이어졌다.\n'
+                '이 과정에서 개인정보 2만5727건이 유출됐다.\n'
+                '당국은 금융사가 AI를 활용하도록 망분리 규제를 단계적으로 완화하는 방안을 추진 중이다.')
+        item = alert(title, body)
+        self.assertEqual(materiality.focus_kind(title), 'cyber_incident')
+        core = radar.verified_alert_core(item, title)
+        for expected in ('신한은행', '2만5727건', '등이 유출됐다', '금융위원장·금감원장', '이날 오후', '열 예정이다'):
+            self.assertIn(expected, core)
+        self.assertNotIn('망분리', core)
+        self.assertLessEqual(len(core), radar.GAMEJOA_CORE_MAX_CHARS)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        for wrong in (core.replace('신한은행', '농협은행'), core.replace('2만5727건', '4만건'),
+                      core.replace('열 예정이다', '열었다'), core.replace('등이', '모든 정보가'), body.split('\n')[-1]):
+            self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': wrong}))
+        with patch.object(radar.base, 'kst_now', return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 1)), 1)
+
+    def test_cyber_prevention_blocked_attempts_and_unbound_counts_are_not_breaches(self):
+        title = '금융권 AI 해킹 피해 점검'
+        for body in (
+            '은행은 AI 해킹을 예방하기 위한 모의 해킹 훈련을 했다. 개인정보 4만건 유출 상황을 시연했다.',
+            '농협은행은 해킹 공격을 차단했다. 개인정보 유출로 이어지지 않았으며 피해가 없다고 밝혔다.',
+        ):
+            self.assertNotEqual(materiality.assess(title, body)['disposition'], 'keep')
+            self.assertEqual(radar.financial_cyber_incident_fact(title, body), '')
+        meeting = ('금융위원장과 금융감독원장은 이날 오후 금융회사 CEO를 불러 긴급 점검회의를 연다.')
+        for body in (
+            '개인정보 2만5727건이 유출됐다.\n' + meeting,
+            '신한은행과 국민은행이 피해를 점검했다.\n이 과정에서 개인정보 2만5727건이 유출됐다.\n' + meeting,
+            '지난해 신한은행이 국회에 자료를 제출했다.\n이 과정에서 개인정보 2만5727건이 유출됐다.\n' + meeting,
+        ):
+            self.assertEqual(radar.financial_cyber_incident_fact(title, body), '')
+
     def test_product_profile_contract_summary_retains_the_contextual_supplier(self):
         title = '신생아 선별검사, 유전체 시대 열린다'
         body = ('쓰리빌리언은 해외에서는 자체 신생아 선별검사 3B-NEO를 앞세워 사업화에 나섰다.\n'
