@@ -190,10 +190,10 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
         }
         rendered = "\n".join(MOD.build_readable([event]))
         self.assertIn("미국 암호자산 규제 Watch", rendered)
-        self.assertIn("상장 규칙 승인", rendered)
-        self.assertIn("실제 거래 개시는 아직 별도 확인", rendered)
-        self.assertIn("2026-10-18", rendered)
-        self.assertIn("3x Ether ETF 최신 등록신고서 효력일", rendered)
+        self.assertIn("상장규칙 승인", rendered)
+        self.assertIn("실제 거래개시일·초기 AUM은 별도 확인", rendered)
+        self.assertNotIn("2026-10-18", rendered)
+        self.assertIn("VS Trust S-1 효력 발생 여부", rendered)
         self.assertNotIn("CLARITY 법안 Watch", rendered)
         self.assertNotIn("핵심 한 줄 요약", rendered)
 
