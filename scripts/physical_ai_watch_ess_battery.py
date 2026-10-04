@@ -152,8 +152,11 @@ EV46_MARKET_BASE = re.compile(
 EV46_MARKET_FORECAST = re.compile(r'SNE\s*Research|SNE리서치', re.I)
 EV46_FORECAST_CHANGE = re.compile(r'revis|raise|lower|upgrade|downgrade|상향|하향|수정|변경|새\s*전망|new\s*forecast', re.I)
 EV46_LGES_CYL_15X_BASE = re.compile(
-    r'(?:LG\s*Energy\s*Solution|LG에너지솔루션).{0,180}(?:cylindrical|원통형).{0,180}(?:46[-\s]*Series|46시리즈).{0,180}(?:1\.5\s*x|1\.5\s*times|1\.5배).{0,80}(?:year[-\s]*on[-\s]*year|YoY|전년\s*동기)|'
-    r'(?:1\.5\s*x|1\.5\s*times|1\.5배).{0,180}(?:cylindrical|원통형).{0,180}(?:LG\s*Energy\s*Solution|LG에너지솔루션)',
+    r'(?:LG\s*Energy\s*Solution|LG에너지솔루션).{0,220}(?:cylindrical|원통형|46[-\s]*Series|46시리즈).{0,180}'
+    r'(?:shipment|shipments|출하량|출하).{0,100}(?:1\.5\s*x|1\.5\s*times|1\.5배)|'
+    r'(?:LG\s*Energy\s*Solution|LG에너지솔루션).{0,220}(?:1\.5\s*x|1\.5\s*times|1\.5배).{0,140}'
+    r'(?:shipment|shipments|출하량|출하).{0,140}(?:cylindrical|원통형|46[-\s]*Series|46시리즈)|'
+    r'(?:1\.5\s*x|1\.5\s*times|1\.5배).{0,180}(?:cylindrical|원통형|46[-\s]*Series|46시리즈).{0,180}(?:LG\s*Energy\s*Solution|LG에너지솔루션)',
     re.I,
 )
 EV46_SHIPMENT_METRIC = re.compile(
