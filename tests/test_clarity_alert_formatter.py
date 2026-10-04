@@ -223,13 +223,13 @@ class ClarityFormatterTest(unittest.TestCase):
             "detail": "Release No. 34-106577 | File No. SR-CboeBZX-2026-065",
         }
         title, body = MOD.localize_event(event)
-        self.assertIn("3x Bitcoin·3x Ether", title)
-        self.assertIn("하루 수익률의 3배", body)
-        self.assertIn("즉시 거래를 시작했다는 뜻은 아닙니다", body)
+        self.assertIn("BITH·ETHK", title)
+        self.assertIn("CME 비트코인·이더 선물", body)
+        self.assertIn("실제 거래개시는 VS Trust 등록서류 효력", body)
         rendered = "\n".join(MOD.investment_lines(event))
-        self.assertIn("2026-10-18", rendered)
-        self.assertIn("등록신고서 효력", rendered)
-        self.assertIn("복리·변동성", MOD.core_summary(event))
+        self.assertNotIn("2026-10-18", rendered)
+        self.assertIn("BITH·ETHK 티커는 VS Trust S-1에서 이미 확인", rendered)
+        self.assertIn("현물 BTC·ETH 3배 보유 승인이 아니며", MOD.core_summary(event))
 
     def test_date_only_is_shown_in_korean_calendar_format(self):
         event = {
