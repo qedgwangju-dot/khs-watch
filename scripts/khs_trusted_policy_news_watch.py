@@ -3642,4 +3642,5 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    _self_test_fcc_optical_transceiver_event_model()
     raise SystemExit(main())
