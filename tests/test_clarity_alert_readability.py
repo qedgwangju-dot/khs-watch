@@ -179,6 +179,24 @@ class ClarityAlertReadabilityTest(unittest.TestCase):
         self.assertIn("첫 5거래일 AUM", rendered)
         self.assertNotIn("상장규칙 승인 — SEC 승인 완료", rendered)
 
+    def test_sec_3x_crypto_etp_alert_is_compact_and_has_launch_gate(self):
+        event = {
+            "source": "SEC 거래소 규칙 승인명령",
+            "event_type": "SEC 암호자산 ETP 상장 승인",
+            "title": "Order Granting Approval of a Proposed Rule Change to List and Trade Shares of the 3x Bitcoin ETF and 3x Ether ETF",
+            "url": "https://www.sec.gov/files/rules/sro/cboebzx/2026/34-106577.pdf",
+            "date": "2026-10-02",
+            "detail": "Release No. 34-106577 | File No. SR-CboeBZX-2026-065",
+        }
+        rendered = "\n".join(MOD.build_readable([event]))
+        self.assertIn("미국 암호자산 규제 Watch", rendered)
+        self.assertIn("상장 규칙 승인", rendered)
+        self.assertIn("실제 거래 개시는 아직 별도 확인", rendered)
+        self.assertIn("2026-10-18", rendered)
+        self.assertIn("3x Ether ETF 최신 등록신고서 효력일", rendered)
+        self.assertNotIn("CLARITY 법안 Watch", rendered)
+        self.assertNotIn("핵심 한 줄 요약", rendered)
+
     def test_multiple_distinct_events_keep_short_overview(self):
         events = [
             {
