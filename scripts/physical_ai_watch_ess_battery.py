@@ -280,7 +280,10 @@ def _sodium_stage(text: str, source: str = '') -> str:
         return 'known_baseline'
     if SODIUM_CATL_NAXTRA_BASE.search(text) and not SODIUM_NEW_EVENT.search(text):
         return 'known_baseline'
-    if SODIUM_EVE_BASE.search(text) and not SODIUM_SHIPMENT.search(text):
+    if SODIUM_EVE_BASE.search(text) and (
+        re.search(r'plan(?:ned|s)?|expected|target|by\s+the\s+end|예정|계획|목표|计划|预计', text, re.I)
+        or not SODIUM_SHIPMENT.search(text)
+    ):
         return 'known_baseline'
     if SODIUM_LGES_BASE.search(text) and not (SODIUM_VALIDATION.search(text) and re.search(r'completed|passed|approved|공급|승인|완료|통과', text, re.I)) and not SODIUM_SOP.search(text):
         return 'known_baseline'
