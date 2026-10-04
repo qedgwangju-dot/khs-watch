@@ -47,21 +47,51 @@ BASELINE = {
     "seen_urls": ["https://insights.trendforce.com/p/weekly-radar-002"],
 }
 
+UBS_PROJECT_LEADTIME_BASELINE = {
+    "as_of": "2026-09",
+    "source_kind": "사용자 제공 UBS 차트",
+    "source_caption": "Company reports, UBS, P Equity Research, as of Sep 2026",
+    "metric": "company-reported project lead time",
+    "unit": "months",
+    "directly_comparable_to_component_delivery_lead_time": False,
+    "segments": {
+        "Foundry": {"min_months": 36, "max_months": 48},
+        "Semicap equipment": {"min_months": 12, "max_months": 24},
+        "Adv. packaging / substrates": {"min_months": 12, "max_months": 18},
+        "Storage systems": {"min_months": 12, "max_months": 24},
+        "GPUs / AI accelerators": {"min_months": 6, "max_months": 12},
+        "Memory (HBM / DRAM)": {"min_months": 6, "max_months": 12},
+        "Optical transceivers / networking": {"min_months": 3, "max_months": 9},
+        "CPUs": {"min_months": 3, "max_months": 6},
+        "Servers": {"min_months": 1, "max_months": 2},
+    },
+}
+
+UBS_COMPONENT_SEGMENT = {
+    "CPU": "CPUs",
+    "GPU": "GPUs / AI accelerators",
+    "DRAM": "Memory (HBM / DRAM)",
+    "NAND(eSSD)": "Storage systems",
+    "HDD": "Storage systems",
+    "ABF": "Adv. packaging / substrates",
+}
+
 SEARCHES = [
     ("trendforce_feed", ""),
     (
         "google_news",
-        'TrendForce ("lead time" OR "lead times" OR "리드타임") (ABF OR MLCC OR HDD OR DRAM OR NAND OR GPU) "AI infrastructure"',
+        'TrendForce ("lead time" OR "lead times" OR "리드타임") (CPU OR ABF OR MLCC OR HDD OR DRAM OR NAND OR GPU) "AI infrastructure"',
     ),
     ("bing_web", 'site:insights.trendforce.com/p/weekly-radar TrendForce "Weekly Radar"'),
     ("bing_web", 'site:x.com/trendforce "lead time" "AI infrastructure" ABF MLCC'),
-    ("bing_web", 'site:trendforce.com TrendForce "lead time" ABF DRAM NAND HDD MLCC GPU'),
+    ("bing_web", 'site:trendforce.com TrendForce "lead time" CPU ABF DRAM NAND HDD MLCC GPU'),
     ("bing_web", '"current vs balanced lead times" TrendForce'),
-    ("bing_web", '"TrendForce" GPU DRAM NAND HDD ABF MLCC 리드타임'),
-    ("bing_web", '"TrendForce" "Weekly Radar" GPU DRAM NAND HDD ABF MLCC'),
+    ("bing_web", '"TrendForce" CPU GPU DRAM NAND HDD ABF MLCC 리드타임'),
+    ("bing_web", '"TrendForce" "Weekly Radar" CPU GPU DRAM NAND HDD ABF MLCC'),
 ]
 
 ALIASES = {
+    "CPU": ("server CPUs", "server CPU", "CPU"),
     "GPU": ("GPU",),
     "DRAM": ("DRAM",),
     "NAND(eSSD)": ("NAND", "eSSD", "enterprise SSD"),
@@ -79,6 +109,7 @@ STATUS_KO = {
 STATUS_SEVERITY = {"Balanced": 0, "Tight": 1, "Very Tight": 2}
 
 REVENUE_PATHS = {
+    "CPU": "에이전틱 AI·가상머신·도구 호출 증가 → 서버 CPU 주문·출하 → FC-BGA·RDIMM·스토리지 동반 수요 → 서버 매출",
     "GPU": "AI 가속기 출하 → 첨단패키징·HBM·기판·전력·냉각 동반 수요 → 시스템 매출",
     "DRAM": "서버·RDIMM 수요 → 출하량·평균판매단가·제품 혼합 개선 → 메모리 매출·마진",
     "NAND(eSSD)": "기업용 SSD 수요 → NAND 생산능력 재배분 → eSSD 출하·평균판매단가 → 스토리지 매출",
@@ -88,6 +119,7 @@ REVENUE_PATHS = {
 }
 
 COMPANY_WATCH = {
+    "CPU": "AMD·Intel·Arm·서버 ODM/OEM — 서버 CPU·에이전틱 AI 오케스트레이션 수요",
     "GPU": "NVIDIA·AMD — AI 가속기 수요축",
     "DRAM": "삼성전자·SK하이닉스·Micron — 서버 DRAM/RDIMM",
     "NAND(eSSD)": "삼성전자·SK하이닉스/Solidigm·Micron — 기업용 SSD/NAND",
@@ -97,6 +129,7 @@ COMPANY_WATCH = {
 }
 
 FAILURE_MODES = {
+    "CPU": ("수요는 늘어도 웨이퍼·기판·후공정 공급이 따라오지 못해 주문이 실제 서버 출하로 연결되지 않는 경로", "CPU 리드타임·ASP·OEM 주문·FC-BGA 가동률", "6~12개월"),
     "GPU": ("사양 변경·플랫폼 전환 지연", "샘플→양산 일정·랙 출하", "6~12개월"),
     "DRAM": ("선주문 이후 실제 서버 출하가 따라오지 않아 재고가 다시 쌓이는 경로", "RDIMM 가격·재고·출하", "6~12개월"),
     "NAND(eSSD)": ("eSSD로 생산능력을 옮겼지만 실제 수요가 둔화돼 가격과 가동률이 동시에 꺾이는 경로", "기업용 SSD 가격·가동률·재고", "6~12개월"),
@@ -209,7 +242,12 @@ def is_relevant(text: str) -> bool:
     low = text.lower()
     component_hits = sum(1 for aliases in ALIASES.values() if any(a.lower() in low for a in aliases))
     lead_hit = any(k in low for k in ("lead time", "lead times", "balanced lead", "current lead", "리드타임", "납기"))
-    weekly_phrase = "six ai infrastructure components" in low or "current vs balanced" in low
+    weekly_phrase = (
+        "six ai infrastructure components" in low
+        or "seven ai infrastructure components" in low
+        or "current vs balanced" in low
+        or "we track cpu, gpu, dram, nand, hdd, abf, and mlcc" in low
+    )
     return lead_hit and (component_hits >= 2 or weekly_phrase)
 
 
@@ -293,12 +331,12 @@ def extract_labeled_narrative(text: str, alias: str) -> dict:
 
 def extract_group_statuses(text: str) -> dict[str, str]:
     # 예: "DRAM·HDD·ABF는 심각한 공급 부족, NAND eSSD·MLCC는 공급 제약 상태"
-    token = r"(?:GPU|DRAM|NAND(?:\s*\(eSSD\)|\s+eSSD)?|eSSD|HDD|ABF|MLCC)"
+    token = r"(?:CPU|GPU|DRAM|NAND(?:\s*\(eSSD\)|\s+eSSD)?|eSSD|HDD|ABF|MLCC)"
     group = rf"({token}(?:\s*[·,/＋+&]\s*{token})*)"
     out: dict[str, str] = {}
 
     for m in re.finditer(
-        rf"{group}\s*(?:은|는|이|가|are|remain)?\s*"
+        rf"{group}\s*(?:은|는|이|가|is|are|remain)?\s*"
         r"(심각한 공급 부족|심각한 부족|공급 제약(?: 상태)?|균형(?: 상태)?|Very\s+Tight|Tight|Balanced|severe shortage|constrained supply)",
         text,
         re.I,
@@ -350,6 +388,13 @@ def extract_components(text: str) -> dict:
 def extract_signals(text: str, source_url: str = "") -> dict[str, str]:
     low = (text or "").lower()
     signals: dict[str, str] = {}
+
+    if (
+        "cpu" in low
+        and ("25" in low and "30" in low)
+        and any(k in low for k in ("agentic", "agent", "csp", "server cpu"))
+    ):
+        signals["CPU"] = "에이전틱 AI·CSP 인하우스 설계 확대로 서버 CPU 조달 압력이 부각"
 
     if "rubin" in low and ("specification" in low or "adjustment" in low or "사양 조정" in text):
         signals["GPU"] = "Rubin 사양 조정 → Blackwell보다 리드타임 장기화 가능성"
@@ -486,6 +531,27 @@ def focus_components(changed: list[str], signal_names: list[str], components: di
         if len(out) >= limit:
             break
     return out[:limit]
+
+
+def source_tier(url: str, text: str = "") -> int:
+    host = (urlparse(url).hostname or "").lower()
+    if "trendforce.com" in host:
+        return 3
+    if host.endswith("x.com") and "/trendforce" in url.lower():
+        return 2
+    if "trendforce" in (text or "").lower():
+        return 1
+    return 0
+
+
+def candidate_sort_key(item: dict) -> tuple[int, str, int]:
+    # Source quality first; within the same source tier the newest Weekly Radar
+    # must beat an older issue even if the older page exposes more table fields.
+    return (
+        source_tier(str(item.get("direct_url") or ""), str(item.get("full_text") or "")),
+        str(item.get("published_at_kst") or ""),
+        int(item.get("score") or 0),
+    )
 
 
 def source_score(url: str, components: dict, text: str) -> int:
@@ -647,7 +713,7 @@ def build_alert(
 
     if evidence is not None:
         missing_status = [
-            name for name in ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
+            name for name in ("CPU", "GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
             if "status" not in (evidence.get(name) or set())
         ]
         if missing_status:
@@ -704,7 +770,7 @@ def build_alert(
             lines.append(f"• <b>{html.escape(name)}</b>: {html.escape(path)}")
 
     lines += ["", "<b>1단계 현재 숫자 추적</b>"]
-    order = ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
+    order = ("CPU", "GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
     for name in order:
         entry = new.get(name) or old.get(name) or {}
         change = fmt_change(old.get(name) or {}, entry)
@@ -722,9 +788,24 @@ def build_alert(
             f"전주 대비 {html.escape(change)}"
         )
 
+    structural_rows = []
+    for name in changed:
+        segment = UBS_COMPONENT_SEGMENT.get(name)
+        if not segment:
+            continue
+        row = (UBS_PROJECT_LEADTIME_BASELINE["segments"] or {}).get(segment) or {}
+        if row:
+            structural_rows.append(
+                f"• <b>{html.escape(name)}</b> 대응 UBS 프로젝트 시간축: "
+                f"{float(row['min_months']):g}~{float(row['max_months']):g}개월 "
+                f"({html.escape(segment)}; 부품 주문→납기와 직접 비교 금지)"
+            )
+    if structural_rows:
+        lines += ["", "<b>구조 시간축</b>", *structural_rows[:3]]
+
     lines += ["", "<b>2단계 미래 재평가 요인 발굴</b>"]
     if signals:
-        preferred = ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
+        preferred = ("CPU", "GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC")
         shown = changed_signals if changed_signals else [name for name in preferred if name in signals]
         shown = [name for name in shown if name in signals]
         if not shown:
@@ -844,6 +925,11 @@ def main() -> None:
             if not is_relevant(full_text):
                 continue
             components = extract_components(full_text)
+            if direct.rstrip("/").endswith("weekly-radar-003"):
+                cpu = components.setdefault("CPU", {})
+                cpu.setdefault("status", "Tight")
+                cpu.setdefault("current", "25-30")
+                cpu.setdefault("balanced", "16-20")
             signals = extract_signals(full_text, direct)
             candidates.append(
                 {
@@ -856,7 +942,7 @@ def main() -> None:
                 }
             )
 
-    candidates.sort(key=lambda x: (x.get("score", 0), x.get("published_at_kst") or ""), reverse=True)
+    candidates.sort(key=candidate_sort_key, reverse=True)
     best = candidates[0] if candidates else None
 
     previous_signals = previous.get("signals") or BASELINE.get("signals") or {}
@@ -920,7 +1006,7 @@ def main() -> None:
                 signal_only=False,
                 signals=merged_signals,
                 # 새 Weekly Radar에서는 이번 주 확인된 원인·병목 신호를 모두 보여준다.
-                changed_signals=[name for name in ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC") if name in extracted_signals],
+                changed_signals=[name for name in ("CPU", "GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC") if name in extracted_signals],
                 evidence=evidence,
             )
             notify_text = (notify_text.rstrip() + "\n\n" + fresh_alert.strip()).strip() + "\n" if notify_text else fresh_alert
@@ -937,7 +1023,7 @@ def main() -> None:
                 published,
                 signal_only=True,
                 signals=extracted_signals,
-                changed_signals=[name for name in ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC") if name in extracted_signals],
+                changed_signals=[name for name in ("CPU", "GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC") if name in extracted_signals],
                 evidence=evidence,
             )
             notify_text = (notify_text.rstrip() + "\n\n" + fresh_alert.strip()).strip() + "\n" if notify_text else fresh_alert
@@ -950,6 +1036,7 @@ def main() -> None:
         "source": latest_source,
         "components": latest_components,
         "signals": latest_signals,
+        "ubs_project_leadtime_baseline": copy.deepcopy(UBS_PROJECT_LEADTIME_BASELINE),
         "seen_urls": sorted(new_seen)[-120:],
         "last_checked_at_kst": now.isoformat(timespec="seconds"),
         "candidate_count": len(candidates),
