@@ -10,6 +10,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: disaster-reconstruction-telegram-watch
@@ -22,6 +23,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: One-time repair: enable and dispatch existing KHS policy watch
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method PUT repos/${{ github.repository }}/actions/workflows/khs-policy-watch.yml/enable
+          gh workflow run khs-policy-watch.yml --ref main -f telegram_test=false -f telegram_dry_run=false
+          echo "khs_policy_repair_dispatch=created"
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
