@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "format_version": 2,
+  "format_version": 3,
   "facts": {
     "frankfort": {
       "investment_usd_b": 7.5,
@@ -25,22 +25,23 @@
     "confirmed_partner_chain": {
       "vineland_nebius_dataone_bloom": true,
       "nebius_bloom_long_term_328mw": true,
-      "nebius_partner_owned_capacity_model": true
+      "nebius_partner_owned_capacity_model": true,
+      "bloom_frankfort_official_announcement": false
     },
     "impa": {
       "official_wholesale_provider": true,
       "member_communities_61": true,
       "note": "Frankfort DataOne 공식 FAQ가 IMPA를 계통 공급원으로 명시"
     },
-    "digest": "6636854707dc9bae91cd6b4e5223383959d9dd789556563fce8b00045e4fc475"
+    "digest": "e6f3d49c4b9f40c2c24fd3bc57ab7f2801f757f548c3f13031d2503b3a4f9876"
   },
   "fx": {
     "usdkrw": 1348.28,
-    "basis": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-04 13:20 KST · 보조 API 2026-10-04 · 차이 0.02% · 일중 기준시각 차이 가능",
+    "basis": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-04 13:22 KST · 보조 API 2026-10-04 · 차이 0.02% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter"
   },
   "last_changes": [
-    "Nebius·DataOne·Bloom 파트너 인프라 기준선 신규 연결"
+    "Bloom Energy Frankfort·DataOne 공식 발표 약화/미확인"
   ],
-  "updated_at_utc": "2026-10-04T04:20:44+00:00"
+  "updated_at_utc": "2026-10-04T04:22:31+00:00"
 }
