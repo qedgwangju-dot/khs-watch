@@ -5,35 +5,127 @@
     "material_items": 0,
     "new_articles": 0,
     "new_events": 0,
-    "raw_items": 57
+    "raw_items": 55
   },
   "official_pages": {
+    "OpenAI GPT-5.6 Sol Ultrafast 미리보기": {
+      "candidate_count": 0,
+      "candidate_digest": null,
+      "candidate_first_seen_at": null,
+      "candidate_semantic": null,
+      "digest": "e08713eb091aa084f1d719c2fd3a640fb6aa6d1cb865bc806bedaa3e672d4a78",
+      "semantic": {
+        "kind": "immutable_reference",
+        "name": "OpenAI GPT-5.6 Sol Ultrafast 미리보기",
+        "url": "https://openai.com/index/previewing-ultrafast/"
+      },
+      "updated_at": "2026-10-04T00:19:23.713969+00:00",
+      "url": "https://openai.com/index/previewing-ultrafast/"
+    },
     "OpenAI GPT-6.1 Sol 모델": {
-      "digest": "482899cd9cb2673fd109547f04dfb7c7c4c85d08311fae43e0604686d2dd6a24",
-      "updated_at": "2026-10-03T21:27:29.774754+00:00",
+      "candidate_count": 0,
+      "candidate_digest": null,
+      "candidate_first_seen_at": null,
+      "candidate_semantic": null,
+      "digest": "4c9c8d8a7c597b34d80e502c0b1fce9cb2e5d7447e6524afa6ec76994e199d67",
+      "semantic": {
+        "batch_flex_discount_pct": 50.0,
+        "cache_write_usd_per_mtok": 2.5,
+        "cached_input_usd_per_mtok": 0.1,
+        "context_window": 1050000,
+        "eu_data_residency": true,
+        "fast_mode_mentioned": true,
+        "fast_multiplier_x": 2.0,
+        "input_usd_per_mtok": 2.0,
+        "kind": "openai_gpt_6_1_sol",
+        "max_output_tokens": 128000,
+        "output_usd_per_mtok": 10.0,
+        "ultrafast_mentioned": false,
+        "us_data_residency": true
+      },
+      "updated_at": "2026-10-04T00:19:23.713969+00:00",
       "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol"
     },
     "OpenAI Ultrafast 모드": {
-      "digest": "d04527690f6b572c25e9a3dd4cd4f0baf54d37d4cf36582bf3cf51af4457dc64",
-      "updated_at": "2026-10-03T21:27:29.774754+00:00",
+      "candidate_count": 0,
+      "candidate_digest": null,
+      "candidate_first_seen_at": null,
+      "candidate_semantic": null,
+      "digest": "d61ae1f794633bc64323435a704f77844f2dd6fd8691d663d909894d0eb8e2c1",
+      "semantic": {
+        "eu_regional_supported": false,
+        "gpt_5_6_sol_preview": true,
+        "gpt_6_1_sol_mentioned": false,
+        "gpt_6_astra_supported": true,
+        "kind": "openai_ultrafast",
+        "max_speed_x": 8.0,
+        "service_tier_ultrafast": true,
+        "tier_1_3_tpm": 500000,
+        "tier_4_tpm": 1000000,
+        "tier_5_tpm": 5000000,
+        "us_data_residency": true
+      },
+      "updated_at": "2026-10-04T00:19:23.713969+00:00",
       "url": "https://developers.openai.com/api/docs/guides/ultrafast-mode"
     },
+    "OpenAI·Cerebras 750MW 계약": {
+      "candidate_count": 0,
+      "candidate_digest": null,
+      "candidate_first_seen_at": null,
+      "candidate_semantic": null,
+      "digest": "e5664af2907ddf6ce8cfb60ca3db8e2aca6f6af8b147348d794437922a005a7b",
+      "semantic": {
+        "kind": "immutable_reference",
+        "name": "OpenAI·Cerebras 750MW 계약",
+        "url": "https://openai.com/index/cerebras-partnership/"
+      },
+      "updated_at": "2026-10-04T00:19:23.713969+00:00",
+      "url": "https://openai.com/index/cerebras-partnership/"
+    },
     "Synopsys 2026 Investor Day": {
-      "digest": "6c3534a5730ec4d1234053e53ae4f77c009847517b074c2e07549e97c0aaf173",
-      "updated_at": "2026-10-03T21:27:29.774754+00:00",
+      "candidate_count": 0,
+      "candidate_digest": null,
+      "candidate_first_seen_at": null,
+      "candidate_semantic": null,
+      "digest": "63db6d0496cc66e72d22289ae83ae50f908383ff16828c250fc210980d70c47f",
+      "semantic": {
+        "kind": "immutable_reference",
+        "name": "Synopsys 2026 Investor Day",
+        "url": "https://investor.synopsys.com/news/news-details/2026/Synopsys-Details-Growth-Strategy-and-Long-term-Financial-Model-at-2026-Investor-Day/"
+      },
+      "updated_at": "2026-10-04T00:19:23.713969+00:00",
       "url": "https://investor.synopsys.com/news/news-details/2026/Synopsys-Details-Growth-Strategy-and-Long-term-Financial-Model-at-2026-Investor-Day/"
     },
     "Synopsys Autopilot": {
-      "digest": "ef41c24f26f9c5ec47a52963466a629867ac2c31a70c29582685c1f28253e39d",
-      "updated_at": "2026-10-03T21:27:29.774754+00:00",
+      "candidate_count": 0,
+      "candidate_digest": null,
+      "candidate_first_seen_at": null,
+      "candidate_semantic": null,
+      "digest": "750d44ab71522edc2cde86633e7f0662c6df6c6bfe3a26305a1ec4ccbf78d383",
+      "semantic": {
+        "kind": "immutable_reference",
+        "name": "Synopsys Autopilot",
+        "url": "https://investor.synopsys.com/news/news-details/2026/Synopsys-Powers-Autonomous-Engineering-with-a-Broad-Portfolio-of-Long-Horizon-Agents-and-Autopilot-Platform/default.aspx"
+      },
+      "updated_at": "2026-10-04T00:19:23.713969+00:00",
       "url": "https://investor.synopsys.com/news/news-details/2026/Synopsys-Powers-Autonomous-Engineering-with-a-Broad-Portfolio-of-Long-Horizon-Agents-and-Autopilot-Platform/default.aspx"
     },
     "Synopsys GPT-Synopsys": {
-      "digest": "1c00ccddd86921be8b4197b0b87138c616bec668a1de117e4c23907ba7e4dc69",
-      "updated_at": "2026-10-03T21:27:29.774754+00:00",
+      "candidate_count": 0,
+      "candidate_digest": null,
+      "candidate_first_seen_at": null,
+      "candidate_semantic": null,
+      "digest": "a32fdbe8b1a65eec5314009572ced359aec285cb6a8d86b985ed7c1b0a87c4eb",
+      "semantic": {
+        "kind": "immutable_reference",
+        "name": "Synopsys GPT-Synopsys",
+        "url": "https://investor.synopsys.com/news/news-details/2026/OpenAI-and-Synopsys-Announce-GPT-Synopsys-Frontier-Intelligence-to-Revolutionize-Chip-Design/default.aspx"
+      },
+      "updated_at": "2026-10-04T00:19:23.713969+00:00",
       "url": "https://investor.synopsys.com/news/news-details/2026/OpenAI-and-Synopsys-Announce-GPT-Synopsys-Frontier-Intelligence-to-Revolutionize-Chip-Design/default.aspx"
     }
   },
+  "official_snapshot_schema_version": 2,
   "seen": {},
-  "updated_at_kst": "2026-10-04T06:27:29+09:00"
+  "updated_at_kst": "2026-10-04T09:19:23+09:00"
 }
