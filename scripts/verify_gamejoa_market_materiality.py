@@ -2257,6 +2257,39 @@ class MaterialityChecks(unittest.TestCase):
             self.assertEqual(fresh, [])
             self.assertEqual(len(skipped), 1)
 
+    def test_generic_campaign_headline_deduplicates_the_same_factory_tariff_quote(self):
+        quote = ('트럼프 대통령은 지원유세에서 "우리는 그들이 여기에 공장을 지을 수 있도록 약 1년 반 정도의 기회를 준다"며 '
+                 '"그들이 그렇게 하지 않으면 우리는 150, 200, 250, 300%의 관세를 부과한다"고 말했다.')
+        body = '트럼프 미국 대통령은 오하이오주에서 관세 정책을 통해 외국 기업들의 미국 내 투자를 유치한다고 밝혔다.\n' + quote
+        first = alert('트럼프 "美에 공장 안 지으면 관세 300%까지 부과"', body)
+        repeated = {**alert('격전지 간 트럼프', body), "link": "https://stock.mk.co.kr/news/view/1169503"}
+        identity = materiality.source_event_identity(first)
+        self.assertEqual(identity, materiality.source_event_identity(repeated))
+        self.assertEqual(radar.alert_dedup_key(first), radar.alert_dedup_key(repeated))
+        core = radar.verified_alert_core(repeated, repeated["source_title"])
+        for expected in ("약 1년 반", "미건설 시", "300%", "말했다"):
+            self.assertIn(expected, core)
+        self.assertFalse(radar.source_core_fact_errors({**repeated, "telegram_core_fact": core}))
+        self.assertTrue(radar.source_core_fact_errors({**repeated, "telegram_core_fact": body.split("\n")[0]}))
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([first, repeated], 7)), 1)
+        state = {"seen": {}}
+        with patch.object(radar.telegram, "load_seen_state", return_value=state), \
+                patch.object(radar.telegram, "save_seen_state", side_effect=lambda *_args: None):
+            radar.telegram.record_seen_alerts([first], NOW)
+            fresh, skipped = radar.telegram.filter_previously_seen_alerts([repeated], NOW, "live")
+        self.assertEqual(fresh, [])
+        self.assertEqual(len(skipped), 1)
+
+    def test_generic_factory_tariff_identity_cannot_use_an_old_or_unbound_quote(self):
+        quote = ('트럼프 대통령은 "공장을 지을 수 있도록 약 1년 반 기회를 준다"며 '
+                 '"그렇게 하지 않으면 300%의 관세를 부과한다"고 말했다.')
+        lead = '트럼프 대통령은 관세를 통해 외국 기업의 미국 내 투자를 유치한다고 밝혔다.\n'
+        for body in (quote, lead + '트럼프 대통령은 전날 ' + quote, lead + '행사를 찾았다.\n' * 3 + quote):
+            self.assertEqual(materiality.source_event_identity(alert('격전지 간 트럼프', body)), "")
+        for title in ('트럼프, 이란 협상 재개', '트럼프, 격전지서 이란 협상 발언'):
+            self.assertEqual(materiality.source_event_identity(alert(title, lead + quote)), "")
+
     def test_capex_supply_effect_core_keeps_fiscal_period_and_analyst_horizon(self):
         title = '반도체 설비투자 확대로 공급 확대? "내후년 하반기는 돼야"'
         body = ('마이크론은 2027 회계연도 상반기에 설비투자에 250억 달러를 투입하고 하반기는 더 늘어날 것이라는 청사진을 제시했다. '

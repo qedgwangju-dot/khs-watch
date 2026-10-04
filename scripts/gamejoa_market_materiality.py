@@ -9,7 +9,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 63
+VERSION = 64
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -514,6 +514,40 @@ def retail_fuel_observation(title: str, body: str) -> dict:
     return {}
 
 
+def factory_tariff_observation(title: str, body: str) -> dict | None:
+    """Bind a direct conditional quote even when its headline is generic."""
+    kind = focus_kind(title)
+    headline_bound = kind == "factory_tariff" and bool(re.search(r"미국|美", title))
+    lead_bound = (
+        not kind and "트럼프" in title
+        and bool(re.search(r"격전지|유세|선거|연설|발언", title))
+        and not re.search(ENERGY_SUBJECT, title, re.I)
+        and bool(re.search(r"미국\s*(?:내\s*(?:공장|투자)|공장)|미국에\s*공장", body[:800]))
+    )
+    if not headline_bound and not lead_bound:
+        return None
+    focus_title = title if headline_bound else "미국 공장 미건설 관세"
+    for index, sentence in enumerate(source_sentences(body)):
+        if not headline_bound and (
+            index > 2 or BACKGROUND.search(sentence) or re.search(r"전날|지난주|지난달|과거", sentence)
+        ):
+            continue
+        if "트럼프" not in sentence or "말했다" not in sentence or not focus_matches(focus_title, sentence):
+            continue
+        duration = re.search(r"약\s*((\d+(?:\.\d+)?)\s*(년\s*반|년|개월))", sentence)
+        rate = re.search(r"(\d+(?:\.\d+)?)%\s*(?:의\s*)?관세", sentence)
+        if not duration or not rate:
+            continue
+        number = float(duration.group(2))
+        unit = re.sub(r"\s", "", duration.group(3))
+        months = number if unit == "개월" else number * 12 + (6 if unit == "년반" else 0)
+        return {
+            "sentence": sentence, "grace": duration.group(1), "rate": rate.group(1),
+            "months": format(months, ".12g"),
+        }
+    return None
+
+
 def source_event_identity(alert: dict) -> str:
     """Identify a sourced action and its terms, not a company-wide theme.
 
@@ -529,19 +563,10 @@ def source_event_identity(alert: dict) -> str:
     title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
     body = str(alert.get("source_body") or "") if alert.get("body_verified") else ""
     kind = focus_kind(title)
-    if kind == "factory_tariff" and body and re.search(r"미국|美", title):
-        for sentence in source_sentences(body):
-            if "트럼프" not in sentence or "말했다" not in sentence or not focus_matches(title, sentence):
-                continue
-            duration = re.search(r"약\s*(\d+(?:\.\d+)?)\s*(년\s*반|년|개월)", sentence)
-            rate = re.search(r"(\d+(?:\.\d+)?)%\s*(?:의\s*)?관세", sentence)
-            if not duration or not rate:
-                continue
-            number = float(duration.group(1))
-            unit = re.sub(r"\s", "", duration.group(2))
-            months = number if unit == "개월" else number * 12 + (6 if unit == "년반" else 0)
-            return (f"source_event:v1:trump:us_factory_not_built:statement:"
-                    f"max_rate={float(rate.group(1)):.12g}:grace_approx_months={months:.12g}")
+    factory = factory_tariff_observation(title, body) if body else None
+    if factory:
+        return (f"source_event:v1:trump:us_factory_not_built:statement:"
+                f"max_rate={float(factory['rate']):.12g}:grace_approx_months={factory['months']}")
     facts = [sentence for sentence in source_sentences(body)
              if not BACKGROUND.search(sentence) and focus_matches(title, sentence)]
     foreground = title + " " + " ".join(facts[:3])

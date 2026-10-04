@@ -92,6 +92,10 @@ Every defect or requested change must follow this sequence:
   that headline; a campaign statement does not become an enacted tariff rule.
   Cross-publisher receipts use the verified condition, rate and grace period,
   not a dated country-wide trade label. Changed terms remain separate.
+  A generic campaign headline can share that identity only when the verified
+  article lead binds the US investment context and its current direct quote.
+  The core must retain the quoted terms, not a general investment boast.
+  Background quotes and articles foregrounding other actions remain distinct.
 - Semiconductor capacity outlooks retain the investment fiscal period and the
   separately attributed production-effect horizon. Market-breadth comparisons
   retain the index, constituent population and high/year-start comparison basis;

@@ -2333,6 +2333,10 @@ def asset_financing_observation(sentence: str) -> dict[str, str]:
 
 def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
+    factory = market_materiality.factory_tariff_observation(title, "\n".join(sentences))
+    if factory:
+        return (f"트럼프는 기업에 약 {factory['grace']}의 미국 공장 건설 시간을 주고, "
+                f"미건설 시 {factory['rate']}%까지 관세를 부과한다고 말했다.")
     flow_actors = [actor for actor in ("외국인", "기관", "개인", "연기금") if actor in title]
     if flow_actors and re.search(r"순매수|순매도|팔아치|사들|매수|매도", title):
         for sentence in sentences:
@@ -2377,15 +2381,6 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
             index = re.sub(r"\s+", "", divergence.group(2))
             return (f"{publisher}는 {index}이 사상 최고치 대비 {divergence.group(3)}% 이내에 있지만, "
                     f"상당수 업종·종목은 고점 대비 {divergence.group(4)}% 이상 하락했다고 전했다.")
-    if focus == "factory_tariff":
-        for sentence in sentences:
-            if not market_materiality.focus_matches(title, sentence) or "트럼프" not in sentence or "말했다" not in sentence:
-                continue
-            duration = re.search(r"약\s*(\d+(?:\.\d+)?\s*년(?:\s*반)?|\d+\s*개월)", sentence)
-            rate = re.search(r"(\d+(?:\.\d+)?)%\s*(?:의\s*)?관세", sentence)
-            if duration and rate:
-                return (f"트럼프는 기업에 약 {duration.group(1)}의 미국 공장 건설 시간을 주고, "
-                        f"미건설 시 {rate.group(1)}%까지 관세를 부과한다고 말했다.")
     if focus == "asset_financing":
         for sentence in sentences:
             observation = asset_financing_observation(sentence)
@@ -9929,7 +9924,7 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         core_observation = asset_financing_observation(core)
         if (observations or core_observation) and core_observation not in observations:
             errors.append("asset_financing_actor_amount_or_stage_mismatch")
-    if market_materiality.focus_kind(title) == "factory_tariff":
+    if market_materiality.focus_kind(title) == "factory_tariff" or market_materiality.factory_tariff_observation(title, source):
         expected_tariff = source_focused_article_core(title, market_materiality.source_sentences(source))
         if expected_tariff and re.sub(r"\s+", "", expected_tariff) != re.sub(r"\s+", "", core):
             errors.append("factory_tariff_condition_rate_or_statement_mismatch")
