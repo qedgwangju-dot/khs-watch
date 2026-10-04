@@ -708,28 +708,103 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git restore -- scripts/khs_policy_watch.py || true
-          for path in \
-            data/khs_policy_watch_seen.json \
-            data/khs_domestic_telecom_policy_seen.json \
-            data/khs_domestic_stablecoin_policy_seen.json \
-            data/khs_korea_nuclear_siting_policy_seen.json \
-            data/khs_transformer_tariff_policy_seen.json \
-            data/khs_nuclear_policy_seen.json \
-            data/khs_trusted_policy_news_seen.json \
-            data/khs_source_failure_seen.json \
+
+          state_paths=(
+            data/khs_policy_watch_seen.json
+            data/khs_domestic_telecom_policy_seen.json
+            data/khs_domestic_stablecoin_policy_seen.json
+            data/khs_korea_nuclear_siting_policy_seen.json
+            data/khs_transformer_tariff_policy_seen.json
+            data/khs_nuclear_policy_seen.json
+            data/khs_trusted_policy_news_seen.json
+            data/khs_source_failure_seen.json
             data/khs_telegram_delivery_seen.json
-          do
+          )
+
+          pending_dir="$RUNNER_TEMP/khs-confirmed-state"
+          rm -rf "$pending_dir"
+          mkdir -p "$pending_dir"
+          for path in "${state_paths[@]}"; do
             if [ -f "$path" ]; then
-              git add "$path"
+              cp "$path" "$pending_dir/$(basename "$path")"
             fi
           done
-          if git diff --cached --quiet; then
-            echo "KHS confirmed watch state: no changes"
-          else
+
+          for attempt in 1 2 3 4 5 6 7 8; do
+            git fetch origin main
+            git reset --hard origin/main
+
+            python - <<'PY'
+          import json
+          import os
+          import pathlib
+
+          pending_dir = pathlib.Path(os.environ["RUNNER_TEMP"]) / "khs-confirmed-state"
+          data_dir = pathlib.Path("data")
+
+          def merge(base, pending, key=""):
+              if isinstance(base, dict) and isinstance(pending, dict):
+                  out = dict(base)
+                  for child_key, value in pending.items():
+                      out[child_key] = merge(out.get(child_key), value, child_key)
+                  return out
+              if isinstance(base, list) and isinstance(pending, list):
+                  out = list(base)
+                  for value in pending:
+                      if value not in out:
+                          out.append(value)
+                  return out
+              if (
+                  isinstance(base, str)
+                  and isinstance(pending, str)
+                  and (key.endswith("_at_kst") or key.endswith("_at_utc"))
+              ):
+                  return max(base, pending)
+              return pending
+
+          for pending_path in sorted(pending_dir.glob("*.json")):
+              target = data_dir / pending_path.name
+              try:
+                  pending = json.loads(pending_path.read_text(encoding="utf-8"))
+              except Exception:
+                  continue
+              if target.exists():
+                  try:
+                      base = json.loads(target.read_text(encoding="utf-8"))
+                  except Exception:
+                      base = {}
+              else:
+                  base = {}
+              merged = merge(base, pending)
+              target.parent.mkdir(parents=True, exist_ok=True)
+              target.write_text(
+                  json.dumps(merged, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+                  encoding="utf-8",
+              )
+          PY
+
+            for path in "${state_paths[@]}"; do
+              if [ -f "$path" ]; then
+                git add "$path"
+              fi
+            done
+
+            if git diff --cached --quiet; then
+              echo "KHS confirmed watch state already present on main."
+              exit 0
+            fi
+
             git commit -m "Update confirmed KHS watch state"
-            git pull --rebase origin main
-            git push
-          fi
+            if git push origin HEAD:main; then
+              echo "khs_confirmed_state_push=success attempt=$attempt"
+              exit 0
+            fi
+            echo "KHS confirmed state push raced with main; retry=$attempt"
+            sleep "$attempt"
+          done
+
+          echo "KHS confirmed watch state was not persisted after eight attempts." >&2
+          exit 1
 
       - name: Record manual runtime verification
         if: github.event_name == 'workflow_dispatch' && success()
