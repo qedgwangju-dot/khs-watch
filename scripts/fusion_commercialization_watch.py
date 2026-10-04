@@ -25,7 +25,7 @@ GOOGLE_QUERIES=[
 OFFICIAL=("House Committee on Science, Space and Technology","U.S. Department of Energy","Department of Energy","Federal Register","Congress.gov","U.S. House of Representatives","U.S. Senate")
 TRUSTED=("Reuters","Bloomberg","AP News","Associated Press","CNBC","Financial Times","The Wall Street Journal","AIP","Physics Today")
 TOPIC=("fusion","핵융합","american leadership in fusion act","hts","rebco","high temperature superconductor","tritium","blanket","p-b11","hydrogen boron","helong-2","helong 2","pulsed power","z-pinch")
-HARD=("introduced","introduce","introduction","advances","advance","markup","ordered reported","reported favorably","committee vote","passed","approved","senate","companion bill","appropriation","appropriations","funding","award","awarded","selected","selection","contract","procurement","construction","groundbreaking","broke ground","first plasma","demonstration","prototype","commercial","deployment","grid","factory","capacity","qualified","qualification","signed into law","enacted","office of fusion")
+HARD=("introduced","introduce","introduction","advances","advance","markup","ordered reported","reported favorably","committee vote","passed","approved","senate","companion bill","appropriation","appropriations","funding","award","awarded","selected","selection","contract","procurement","construction","groundbreaking","broke ground","first plasma","demonstration","prototype","deployment","grid","factory","capacity","qualified","qualification","signed into law","enacted","establish","established","launch","launched","created","codif","codified","codifies")
 HOUSE_FUSION_NEWS_URL="https://democrats-science.house.gov/news/press-releases/table/"
 
 def now_kst(): return dt.datetime.now(KST)
@@ -98,6 +98,9 @@ def stage(text):
     if any(x in text for x in ("pulsed power","pulser","magnetic inertial","z-pinch")) and any(x in text for x in ("prototype","demonstration","facility","milestone","construction")): return "펄스파워·대안 핵융합 실증 진전",89
     if any(x in text for x in ("tritium","blanket","neutron","materials","fuel cycle")) and any(x in text for x in ("test facility","facility","award","selected","demonstration")): return "재료·연료주기 병목 투자",90
     return "기타 핵융합 변화",70
+NON_ALERT_STAGE="기타 핵융합 변화"
+def alertable_stage(stage_name): return stage_name != NON_ALERT_STAGE
+
 def event_key(t,s,p):
     txt=text_of(t,s,p); st,_=stage(txt)
     if "american leadership in fusion act" in txt: return "american-leadership-in-fusion-act:"+st
@@ -138,6 +141,8 @@ def collect_house_fusion_news(now):
         if not any(x in txt for x in HARD):
             continue
         st,score=stage(txt)
+        if not alertable_stage(st):
+            continue
         rows.append({
             "title":title,
             "link":href,
@@ -169,6 +174,8 @@ def collect(now):
             txt=text_of(t,s,p)
             if age < -2 or age > MAX_AGE_HOURS or not allowed(p) or not any(x in txt for x in TOPIC) or not any(x in txt for x in HARD): continue
             st,score=stage(txt)
+            if not alertable_stage(st):
+                continue
             rows.append({"title":t,"link":link,"summary":s,"publisher":p,"published_kst":pub.isoformat(timespec="seconds"),"stage":st,"score":score+(12 if srank(p)==0 else 5 if srank(p)==1 else 0),"event_key":event_key(t,s,p)})
             urls.add(link); n+=1
         notes.append(f"{q[:60]}: {n}건")
@@ -212,7 +219,7 @@ def main():
         new.append(r); seen[r["event_key"]]={"first_seen_kst":now.isoformat(timespec="seconds"),"title":r["title"],"stage":r["stage"],"publisher":r["publisher"],"url":r["link"]}
     PENDING.write_text(json.dumps({"updated_at_kst":now.isoformat(timespec="seconds"),"seen":seen},ensure_ascii=False,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     if new: ALERT.write_text(render(new,now),encoding="utf-8")
-    STATUS.write_text("\n".join(["# 핵융합 상용화·핵심기술 감시",f"- 조회: {now:%Y-%m-%d %H:%M KST}",f"- 후보: {len(rows)}건",f"- 신규 의미 변화: {len(new)}건",f"- 알림 생성: {'예' if new else '아니오'}","- 원칙: 법안 발의 ≠ 실제 예산 집행. 위원회·본회의·세출·DOE 선정/집행을 별도 단계로 추적.",""]+[f"- {x}" for x in notes])+"\n",encoding="utf-8")
+    STATUS.write_text("\n".join(["# 핵융합 상용화·핵심기술 감시",f"- 조회: {now:%Y-%m-%d %H:%M KST}",f"- 후보: {len(rows)}건",f"- 신규 의미 변화: {len(new)}건",f"- 알림 생성: {'예' if new else '아니오'}","- 원칙: 단순 기관·랜딩페이지·검색 재색인은 제외. 법안 단계·실제 예산·DOE 선정/집행·계약·착공·실증처럼 의미 단계가 바뀔 때만 알림.",""]+[f"- {x}" for x in notes])+"\n",encoding="utf-8")
     print(f"fusion_watch candidates={len(rows)} new={len(new)} alert={ALERT.exists()}")
     return 0
 if __name__=="__main__": raise SystemExit(main())
