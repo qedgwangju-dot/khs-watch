@@ -23,6 +23,7 @@ import re
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+from html.parser import HTMLParser
 from zoneinfo import ZoneInfo
 
 KST = ZoneInfo("Asia/Seoul")
@@ -45,6 +46,22 @@ USER_AGENT = "Mozilla/5.0 khs-ai-inference-accelerator-route-watch/1.0"
 MAX_AGE_HOURS = 120
 SEEN_RETENTION_DAYS = 45
 MAX_ALERT_EVENTS = 5
+OFFICIAL_SNAPSHOT_SCHEMA_VERSION = 2
+OFFICIAL_CHANGE_CONFIRM_RUNS = 2
+OFFICIAL_CHANGE_CONFIRM_SECONDS = 600
+
+IMMUTABLE_OFFICIAL_REFERENCE_PAGES = {
+    "OpenAI·Cerebras 750MW 계약",
+    "OpenAI GPT-5.6 Sol Ultrafast 미리보기",
+    "Synopsys 2026 Investor Day",
+    "Synopsys GPT-Synopsys",
+    "Synopsys Autopilot",
+}
+
+MUTABLE_SEMANTIC_OFFICIAL_PAGES = {
+    "OpenAI Ultrafast 모드",
+    "OpenAI GPT-6.1 Sol 모델",
+}
 
 NEWS_QUERIES = [
     '"OpenAI" Cerebras NVIDIA Ultrafast inference GPU accelerator',
@@ -339,49 +356,346 @@ def normalize(item: dict) -> dict:
     return out
 
 
+class _MainTextParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.main_depth = 0
+        self.ignore_depth = 0
+        self.saw_main = False
+        self.parts: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs) -> None:
+        tag = tag.lower()
+        if tag == "main":
+            self.saw_main = True
+            self.main_depth += 1
+            return
+        if self.main_depth and tag in {"script", "style", "noscript", "svg"}:
+            self.ignore_depth += 1
+
+    def handle_endtag(self, tag: str) -> None:
+        tag = tag.lower()
+        if self.main_depth and tag in {"script", "style", "noscript", "svg"} and self.ignore_depth:
+            self.ignore_depth -= 1
+            return
+        if tag == "main" and self.main_depth:
+            self.main_depth -= 1
+
+    def handle_data(self, data: str) -> None:
+        if self.main_depth and not self.ignore_depth:
+            value = " ".join((data or "").split())
+            if value:
+                self.parts.append(value)
+
+
+def extract_primary_text(raw_html: str) -> str:
+    parser = _MainTextParser()
+    try:
+        parser.feed(raw_html)
+        parser.close()
+    except Exception:
+        parser.parts = []
+    if parser.saw_main and parser.parts:
+        return " ".join(parser.parts)
+    return strip_html(raw_html)
+
+
+def _first_float(patterns: tuple[str, ...], text: str) -> float | None:
+    for pattern in patterns:
+        m = re.search(pattern, text, flags=re.I | re.S)
+        if m:
+            try:
+                return float(m.group(1).replace(",", ""))
+            except Exception:
+                continue
+    return None
+
+
+def _first_int(patterns: tuple[str, ...], text: str) -> int | None:
+    value = _first_float(patterns, text)
+    return int(value) if value is not None else None
+
+
+def semantic_official_snapshot(name: str, text: str) -> dict:
+    normalized = " ".join(text.split())
+    low = normalized.lower()
+
+    if name == "OpenAI Ultrafast 모드":
+        if "ultrafast mode" not in low or "gpt-6 astra" not in low:
+            raise RuntimeError("Ultrafast page semantic markers missing")
+
+        return {
+            "kind": "openai_ultrafast",
+            "gpt_6_astra_supported": bool(
+                re.search(r"(?:broadly\s+available|available).{0,90}gpt-6\s+astra|gpt-6\s+astra.{0,90}(?:available|ultrafast)", normalized, re.I)
+            ),
+            "gpt_5_6_sol_preview": bool(
+                re.search(r"(?:preview\s+access|preview).{0,100}gpt-5\.6\s+sol|gpt-5\.6\s+sol.{0,100}preview", normalized, re.I)
+            ),
+            "gpt_6_1_sol_mentioned": "gpt-6.1 sol" in low,
+            "service_tier_ultrafast": bool(re.search(r"service[_\s-]*tier.{0,40}ultrafast|ultrafast.{0,40}service[_\s-]*tier", normalized, re.I)),
+            "max_speed_x": _first_float((
+                r"up\s+to\s+([0-9.]+)\s*[x×]\s+faster",
+                r"([0-9.]+)\s*[x×]\s+faster",
+            ), normalized),
+            "tier_1_3_tpm": _first_int((r"Tiers?\s*1\s*[–-]\s*3\s+([0-9,]+)",), normalized),
+            "tier_4_tpm": _first_int((r"Tier\s*4\s+([0-9,]+)",), normalized),
+            "tier_5_tpm": _first_int((r"Tier\s*5\s+([0-9,]+)",), normalized),
+            "us_data_residency": "us data residency" in low,
+            "eu_regional_supported": not bool(re.search(r"does\s+not\s+support\s+eu|not\s+support\s+eu", normalized, re.I)),
+        }
+
+    if name == "OpenAI GPT-6.1 Sol 모델":
+        if "gpt-6.1 sol" not in low:
+            raise RuntimeError("GPT-6.1 Sol page semantic markers missing")
+
+        price_match = re.search(
+            r"Text\s+tokens.{0,160}?Per\s+1M\s+tokens.{0,160}?"
+            r"Input\s+\$?([0-9.]+).{0,100}?"
+            r"Cached\s+input\s+\$?([0-9.]+).{0,100}?"
+            r"Cache\s+writes\s+\$?([0-9.]+).{0,100}?"
+            r"Output\s+\$?([0-9.]+)",
+            normalized,
+            flags=re.I | re.S,
+        )
+        if not price_match:
+            raise RuntimeError("GPT-6.1 Sol pricing markers missing")
+
+        return {
+            "kind": "openai_gpt_6_1_sol",
+            "ultrafast_mentioned": "ultrafast" in low,
+            "fast_mode_mentioned": "fast mode" in low,
+            "input_usd_per_mtok": float(price_match.group(1)),
+            "cached_input_usd_per_mtok": float(price_match.group(2)),
+            "cache_write_usd_per_mtok": float(price_match.group(3)),
+            "output_usd_per_mtok": float(price_match.group(4)),
+            "fast_multiplier_x": _first_float((
+                r"Fast\s+mode\s+prices?\s+are\s+([0-9.]+)x\s+Standard",
+                r"Fast\s+mode.{0,60}?([0-9.]+)x\s+Standard",
+            ), normalized),
+            "batch_flex_discount_pct": _first_float((
+                r"Batch\s+and\s+Flex\s+prices?\s+are\s+([0-9.]+)%\s+lower",
+                r"Batch\s+and\s+Flex.{0,80}?([0-9.]+)%\s+lower",
+            ), normalized),
+            "context_window": _first_int((r"([0-9,]+)\s+context\s+window",), normalized),
+            "max_output_tokens": _first_int((r"([0-9,]+)\s+max\s+output\s+tokens",), normalized),
+            "us_data_residency": "us" in low and "data residency" in low,
+            "eu_data_residency": "eu data residency" in low,
+        }
+
+    raise RuntimeError(f"No semantic parser for mutable official page: {name}")
+
+
+def _semantic_digest(semantic: dict) -> str:
+    payload = json.dumps(semantic, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
 def official_page_snapshots() -> dict[str, dict]:
-    out = {}
-    keyword = re.compile(
-        r"(?i)(?:GPT-6\.1 Sol|GPT-6 Astra|GPT-5\.6 Sol|Ultrafast|Cerebras|NVIDIA|750\s*MW|tranche|"
-        r"tokens? per second|tokens?/s|service[_ -]?tier|batch(?: size)?|pricing|price|capacity|inference stack|"
-        r"Synopsys|Autopilot|AgentEngineer|consumption[-\s]*based|subscription|FY\s*2027|11\.15\s*billion|"
-        r"GPT[-\s]*Synopsys|Amazon|AWS|AOIP|Design Automation|EDA|operating margin)"
-    )
+    out: dict[str, dict] = {}
     for name, url in OFFICIAL_PAGES.items():
+        if name in IMMUTABLE_OFFICIAL_REFERENCE_PAGES:
+            semantic = {"kind": "immutable_reference", "name": name, "url": url}
+            out[name] = {
+                "url": url,
+                "digest": _semantic_digest(semantic),
+                "semantic": semantic,
+                "material": "",
+                "snapshot_type": "immutable",
+            }
+            continue
+
+        if name not in MUTABLE_SEMANTIC_OFFICIAL_PAGES:
+            continue
+
         try:
             raw = fetch_bytes(url).decode("utf-8", "ignore")
+            primary_text = extract_primary_text(raw)
+            semantic = semantic_official_snapshot(name, primary_text)
         except Exception as exc:
-            # OpenAI/Cerebras pages can sometimes block automated fetches.
-            # Keep monitoring the remaining official pages and news sources.
             print(f"ai_inference_route_official_page_skip={name}: {type(exc).__name__}: {exc}")
             continue
-        text = strip_html(raw)
-        pieces = []
-        for m in keyword.finditer(text):
-            start = max(0, m.start() - 140)
-            end = min(len(text), m.end() + 240)
-            piece = re.sub(r"\s+", " ", text[start:end]).strip()
-            if piece not in pieces:
-                pieces.append(piece)
-        material_text = "\n".join(pieces[:80]) if pieces else text[:8000]
+
         out[name] = {
             "url": url,
-            "digest": hashlib.sha256(material_text.encode("utf-8")).hexdigest(),
-            "material": material_text[:2200],
+            "digest": _semantic_digest(semantic),
+            "semantic": semantic,
+            "material": json.dumps(semantic, ensure_ascii=False, sort_keys=True),
+            "snapshot_type": "semantic",
         }
     return out
 
+
+def _parse_iso_utc(value: str | None) -> dt.datetime | None:
+    if not value:
+        return None
+    try:
+        return dt.datetime.fromisoformat(str(value).replace("Z", "+00:00")).astimezone(UTC)
+    except Exception:
+        return None
+
+
+def semantic_changes(old: dict, new: dict) -> list[tuple[str, object, object]]:
+    keys = sorted(set(old) | set(new))
+    return [(key, old.get(key), new.get(key)) for key in keys if old.get(key) != new.get(key)]
+
+
+def official_change_category(name: str, old: dict, new: dict) -> str:
+    changes = {key for key, _old, _new in semantic_changes(old, new)}
+    if name == "OpenAI Ultrafast 모드":
+        return "Ultrafast 출시·지원범위"
+    if name == "OpenAI GPT-6.1 Sol 모델":
+        if "ultrafast_mentioned" in changes:
+            return "Ultrafast 출시·지원범위"
+        return "속도·배치·가격 변화"
+    return "추론 라우팅 변화"
+
+
+def _fmt_value(value: object) -> str:
+    if isinstance(value, bool):
+        return "지원" if value else "미지원"
+    if isinstance(value, float):
+        if value.is_integer():
+            return str(int(value))
+        return f"{value:g}"
+    if isinstance(value, int):
+        return f"{value:,}"
+    if value is None:
+        return "확인 불가"
+    return str(value)
+
+
+def official_change_summary(name: str, old: dict, new: dict) -> str:
+    labels = {
+        "gpt_6_astra_supported": "GPT-6 Astra Ultrafast",
+        "gpt_5_6_sol_preview": "GPT-5.6 Sol 미리보기",
+        "gpt_6_1_sol_mentioned": "GPT-6.1 Sol Ultrafast 문서 언급",
+        "service_tier_ultrafast": "Ultrafast 서비스 계층",
+        "max_speed_x": "최대 속도 배수",
+        "tier_1_3_tpm": "1~3단계 분당 토큰",
+        "tier_4_tpm": "4단계 분당 토큰",
+        "tier_5_tpm": "5단계 분당 토큰",
+        "eu_regional_supported": "EU 지역 처리",
+        "ultrafast_mentioned": "GPT-6.1 Sol Ultrafast",
+        "fast_mode_mentioned": "GPT-6.1 Sol Fast",
+        "input_usd_per_mtok": "입력 100만 토큰 가격",
+        "cached_input_usd_per_mtok": "캐시 입력 100만 토큰 가격",
+        "cache_write_usd_per_mtok": "캐시 쓰기 100만 토큰 가격",
+        "output_usd_per_mtok": "출력 100만 토큰 가격",
+        "fast_multiplier_x": "Fast 가격 배수",
+        "batch_flex_discount_pct": "Batch·Flex 할인율",
+        "context_window": "컨텍스트 창",
+        "max_output_tokens": "최대 출력 토큰",
+    }
+    parts = []
+    for key, before, after in semantic_changes(old, new):
+        if key in {"kind", "us_data_residency", "eu_data_residency"}:
+            continue
+        label = labels.get(key, key)
+        if key.endswith("_usd_per_mtok") and before is not None and after is not None:
+            parts.append(label + " $" + _fmt_value(before) + "→$" + _fmt_value(after))
+        elif key in {"max_speed_x", "fast_multiplier_x"}:
+            parts.append(label + " " + _fmt_value(before) + "x→" + _fmt_value(after) + "x")
+        elif key == "batch_flex_discount_pct":
+            parts.append(label + " " + _fmt_value(before) + "%→" + _fmt_value(after) + "%")
+        else:
+            parts.append(label + " " + _fmt_value(before) + "→" + _fmt_value(after))
+    if not parts:
+        return f"{name} 공식 핵심 조건 변경"
+    return f"{name}: " + " · ".join(parts[:4])
+
+
+def advance_official_page_state(
+    name: str,
+    previous: dict | None,
+    snapshot: dict,
+    now: dt.datetime,
+    *,
+    rebaseline: bool = False,
+) -> tuple[dict, bool, dict | None, dict | None]:
+    previous = dict(previous or {})
+    digest = str(snapshot.get("digest") or "")
+    semantic = dict(snapshot.get("semantic") or {})
+    url = str(snapshot.get("url") or "")
+
+    if rebaseline or not previous.get("digest") or not previous.get("semantic"):
+        return {
+            "digest": digest,
+            "semantic": semantic,
+            "url": url,
+            "updated_at": now.isoformat(),
+            "candidate_digest": None,
+            "candidate_semantic": None,
+            "candidate_count": 0,
+            "candidate_first_seen_at": None,
+        }, False, None, None
+
+    if name in IMMUTABLE_OFFICIAL_REFERENCE_PAGES:
+        previous["url"] = url or previous.get("url")
+        previous["candidate_digest"] = None
+        previous["candidate_semantic"] = None
+        previous["candidate_count"] = 0
+        previous["candidate_first_seen_at"] = None
+        return previous, False, None, None
+
+    confirmed_digest = str(previous.get("digest") or "")
+    confirmed_semantic = dict(previous.get("semantic") or {})
+    if digest == confirmed_digest:
+        previous["url"] = url or previous.get("url")
+        previous["candidate_digest"] = None
+        previous["candidate_semantic"] = None
+        previous["candidate_count"] = 0
+        previous["candidate_first_seen_at"] = None
+        return previous, False, None, None
+
+    if str(previous.get("candidate_digest") or "") == digest:
+        count = int(previous.get("candidate_count") or 0) + 1
+        first_seen = _parse_iso_utc(previous.get("candidate_first_seen_at")) or now
+    else:
+        count = 1
+        first_seen = now
+
+    previous["url"] = url or previous.get("url")
+    previous["candidate_digest"] = digest
+    previous["candidate_semantic"] = semantic
+    previous["candidate_count"] = count
+    previous["candidate_first_seen_at"] = first_seen.isoformat()
+
+    age = max(0.0, (now - first_seen).total_seconds())
+    if count >= OFFICIAL_CHANGE_CONFIRM_RUNS and age >= OFFICIAL_CHANGE_CONFIRM_SECONDS:
+        previous["digest"] = digest
+        previous["semantic"] = semantic
+        previous["updated_at"] = now.isoformat()
+        previous["candidate_digest"] = None
+        previous["candidate_semantic"] = None
+        previous["candidate_count"] = 0
+        previous["candidate_first_seen_at"] = None
+        return previous, True, confirmed_semantic, semantic
+
+    return previous, False, None, None
+
 def load_state() -> dict:
     if not STATE_PATH.exists():
-        return {"initialized": False, "seen": {}, "official_pages": {}}
+        return {
+            "initialized": False,
+            "seen": {},
+            "official_pages": {},
+            "official_snapshot_schema_version": 0,
+        }
     try:
         obj = json.loads(STATE_PATH.read_text(encoding="utf-8"))
         obj.setdefault("initialized", False)
         obj.setdefault("seen", {})
         obj.setdefault("official_pages", {})
+        obj.setdefault("official_snapshot_schema_version", 0)
         return obj
     except Exception:
-        return {"initialized": False, "seen": {}, "official_pages": {}}
+        return {
+            "initialized": False,
+            "seen": {},
+            "official_pages": {},
+            "official_snapshot_schema_version": 0,
+        }
 
 
 def save_json(path: pathlib.Path, value: dict) -> None:
@@ -590,31 +904,43 @@ def main() -> int:
     ]
 
     official_pages = dict(state.get("official_pages") or {})
+    prior_snapshot_schema = int(state.get("official_snapshot_schema_version") or 0)
+    rebaseline_official_pages = prior_snapshot_schema != OFFICIAL_SNAPSHOT_SCHEMA_VERSION
     try:
         snapshots = official_page_snapshots()
         for name, snap in snapshots.items():
             previous = official_pages.get(name)
-            if previous and previous.get("digest") != snap["digest"]:
+            page_state, should_alert, old_semantic, new_semantic = advance_official_page_state(
+                name,
+                previous,
+                snap,
+                now,
+                rebaseline=rebaseline_official_pages,
+            )
+            official_pages[name] = page_state
+
+            if should_alert and old_semantic is not None and new_semantic is not None:
+                category = official_change_category(name, old_semantic, new_semantic)
+                summary = official_change_summary(name, old_semantic, new_semantic)
                 page_item = normalize({
                     "kind":"official_page",
-                    "query":"official page change",
-                    "title":f"{name} 공식 페이지 핵심 내용 변경",
-                    "description":snap.get("material",""),
-                    "source":"Synopsys" if name.startswith("Synopsys") else "OpenAI",
+                    "query":"confirmed semantic official page change",
+                    "title":summary,
+                    "description":json.dumps(new_semantic, ensure_ascii=False, sort_keys=True),
+                    "source":"OpenAI",
                     "url":snap["url"],
                     "published_at":now.isoformat(),
                 })
-                # Official-page extractor changes can alter the digest even when
-                # the underlying business state did not change. Re-run the same
-                # material gate used for news so known Synopsys investor-day
-                # baselines and other non-material rewrites stay silent.
-                if material(page_item):
-                    new_items.append(page_item)
-            official_pages[name] = {
-                "digest":snap["digest"],
-                "url":snap["url"],
-                "updated_at":now.isoformat(),
-            }
+                page_item["category"] = category
+                page_item["entity"] = "OpenAI 추론 인프라"
+                new_items.append(page_item)
+                print(f"ai_inference_route_official_change_confirmed={name} category={category}")
+
+        if rebaseline_official_pages:
+            print(
+                f"ai_inference_route_official_pages_rebaselined=true "
+                f"schema={OFFICIAL_SNAPSHOT_SCHEMA_VERSION}"
+            )
     except Exception as exc:
         errors.append(f"공식 페이지 감시 실패: {type(exc).__name__}: {exc}")
 
@@ -636,6 +962,7 @@ def main() -> int:
         "updated_at_kst": now.astimezone(KST).isoformat(timespec="seconds"),
         "seen": seen,
         "official_pages": official_pages,
+        "official_snapshot_schema_version": OFFICIAL_SNAPSHOT_SCHEMA_VERSION,
         "last_collection": {
             "raw_items":len(raw),
             "material_items":len(current),
