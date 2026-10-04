@@ -65,7 +65,7 @@ OFFICIAL_API_STORIES = {
 
 # FCC final Commission items are exposed as plain-text attachments even when
 # the public document landing page is not reliably indexed by Google News.
-# Fetching the official text directly keeps these three tracks first-party.
+# Fetching the official text directly keeps these three tracks first-party and replay-safe.
 OFFICIAL_TEXT_STORIES = {
     "us_fcc_space_nepa_reform": (
         (
