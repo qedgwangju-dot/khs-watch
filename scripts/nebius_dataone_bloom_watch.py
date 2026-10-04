@@ -17,7 +17,7 @@ PENDING = OUT / "nebius_dataone_bloom_pending_state.json"
 ALERT = OUT / "nebius_dataone_bloom_alert.txt"
 STATUS = OUT / "nebius_dataone_bloom_status.md"
 
-FORMAT_VERSION = 2
+FORMAT_VERSION = 3
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
 
 FRANKFORT = "https://dataonefrankfort.com/"
@@ -27,6 +27,7 @@ NEBIUS_PARTNER_MODEL = "https://nebius.com/newsroom/nebius-introduces-business-m
 NEBIUS_NEWSROOM = "https://nebius.com/newsroom"
 FRANKFORT_MAYOR = "https://frankfort-in.gov/egov/apps/document/center.egov?id=1579&view=item"
 IMPA_ABOUT = "https://www.impa.com/about-impa/"
+BLOOM_NEWSROOM = "https://www.bloomenergy.com/newsroom/"
 
 
 def fetch_text(url: str, timeout: int = 25) -> str:
@@ -92,6 +93,10 @@ def snapshot() -> dict:
         impa = fetch_text(IMPA_ABOUT)
     except Exception:
         impa = ""
+    try:
+        bloom_news = fetch_text(BLOOM_NEWSROOM)
+    except Exception:
+        bloom_news = ""
 
     required = [
         ("Frankfort", "DataOne would like to build an AI factory", f),
@@ -145,6 +150,10 @@ def snapshot() -> dict:
         "partners finance and own the infrastructure and hardware" in pm.lower()
         and "takes the resulting capacity to market" in pm.lower()
     )
+    bloom_frankfort_official = (
+        "frankfort" in bloom_news.lower()
+        and ("dataone" in bloom_news.lower() or "data one" in bloom_news.lower())
+    )
     mayor_no_commitment = (
         True if "no commitments or agreements have been made" in mayor.lower()
         else None
@@ -176,6 +185,7 @@ def snapshot() -> dict:
             "vineland_nebius_dataone_bloom": vineland_confirmed,
             "nebius_bloom_long_term_328mw": bloom_long_term,
             "nebius_partner_owned_capacity_model": partner_model,
+            "bloom_frankfort_official_announcement": bloom_frankfort_official,
         },
         "impa": {
             "official_wholesale_provider": True,
@@ -230,6 +240,7 @@ def changes(old: dict, new: dict) -> list[str]:
         ("vineland_nebius_dataone_bloom", "Vineland Nebius·DataOne·Bloom 3자 연결"),
         ("nebius_bloom_long_term_328mw", "Nebius·Bloom 장기 328MW+ 파트너십"),
         ("nebius_partner_owned_capacity_model", "Nebius 파트너 소유 인프라 사업모델"),
+        ("bloom_frankfort_official_announcement", "Bloom Energy Frankfort·DataOne 공식 발표"),
     ):
         if op.get(key) != np.get(key):
             out.append(f"{label} {'확인' if np.get(key) else '약화/미확인'}")
@@ -262,6 +273,7 @@ def render(facts: dict, chg: list[str], fxv: dict) -> str:
         f"• Vineland │ Nebius 임차인 + DataOne 소유·운영 + Bloom 연료전지: <b>{'확정' if p['vineland_nebius_dataone_bloom'] else '재확인 필요'}</b>",
         f"• Nebius·Bloom │ 장기 파트너십 + 첫 배치 328MW: <b>{'확정' if p['nebius_bloom_long_term_328mw'] else '재확인 필요'}</b>",
         f"• Nebius 파트너형 확장모델 │ 파트너가 인프라·하드웨어를 소유하고 Nebius가 아키텍처·소프트웨어·판매를 담당: <b>{'확정' if p['nebius_partner_owned_capacity_model'] else '재확인 필요'}</b>",
+        f"• Bloom Energy의 Frankfort·DataOne 직접 공식 발표 │ <b>{'확정' if p['bloom_frankfort_official_announcement'] else '아직 없음'}</b>",
     ]
 
     if chg:
@@ -294,6 +306,7 @@ def render(facts: dict, chg: list[str], fxv: dict) -> str:
         f'• <a href="{NEBIUS_PARTNER_MODEL}">Nebius 파트너 인프라 사업모델</a>',
         f'• <a href="{FRANKFORT_MAYOR}">Frankfort 시장 공식 입장</a>',
         f'• <a href="{IMPA_ABOUT}">IMPA 공식</a>',
+        f'• <a href="{BLOOM_NEWSROOM}">Bloom Energy 뉴스룸</a>',
     ]
     return "\n".join(lines).strip() + "\n"
 
