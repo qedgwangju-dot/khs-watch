@@ -242,7 +242,12 @@ def is_relevant(text: str) -> bool:
     low = text.lower()
     component_hits = sum(1 for aliases in ALIASES.values() if any(a.lower() in low for a in aliases))
     lead_hit = any(k in low for k in ("lead time", "lead times", "balanced lead", "current lead", "리드타임", "납기"))
-    weekly_phrase = "six ai infrastructure components" in low or "current vs balanced" in low
+    weekly_phrase = (
+        "six ai infrastructure components" in low
+        or "seven ai infrastructure components" in low
+        or "current vs balanced" in low
+        or "we track cpu, gpu, dram, nand, hdd, abf, and mlcc" in low
+    )
     return lead_hit and (component_hits >= 2 or weekly_phrase)
 
 
@@ -326,7 +331,7 @@ def extract_labeled_narrative(text: str, alias: str) -> dict:
 
 def extract_group_statuses(text: str) -> dict[str, str]:
     # 예: "DRAM·HDD·ABF는 심각한 공급 부족, NAND eSSD·MLCC는 공급 제약 상태"
-    token = r"(?:GPU|DRAM|NAND(?:\s*\(eSSD\)|\s+eSSD)?|eSSD|HDD|ABF|MLCC)"
+    token = r"(?:CPU|GPU|DRAM|NAND(?:\s*\(eSSD\)|\s+eSSD)?|eSSD|HDD|ABF|MLCC)"
     group = rf"({token}(?:\s*[·,/＋+&]\s*{token})*)"
     out: dict[str, str] = {}
 
@@ -605,7 +610,7 @@ def build_status_correction_alert(old: dict, corrected: dict, names: list[str], 
         new_status = fmt_status(corrected.get(name) or {})
         lines.append(f"• <b>{html.escape(name)}</b>: {html.escape(old_status)} → {html.escape(new_status)}")
     lines += ["", "<b>정정 후 6개 품목 상태</b>"]
-    for name in ("CPU", "GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC"):
+    for name in ("GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC"):
         entry = corrected.get(name) or {}
         lines.append(
             f"• <b>{html.escape(name)}</b> | 현재 {html.escape(fmt_week(entry.get('current')))} | "
