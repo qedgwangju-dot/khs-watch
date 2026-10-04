@@ -299,7 +299,12 @@ def pjm_title(event: dict) -> str:
     if "manual load dump" in low:
         return "PJM, EEA3·수동 부하차단 단계 진입"
     if "special notice" in low and "202(c)" in event.get("body", ""):
-        return "PJM, DOE 202(c) 명령의 운영 적용 공지"
+        body_low = event.get("body", "").lower()
+        if "request for 202(c)" in body_low or "requested a 202(c) order" in body_low:
+            return "PJM, DOE 202(c) 긴급명령 요청·사전 준비 공지"
+        if "has received doe 202(c)" in body_low or "applicability" in body_low:
+            return "PJM, DOE 202(c) 명령의 운영 적용 공지"
+        return "PJM, DOE 202(c) 관련 특별공지"
     return f"PJM, {t}"
 
 
@@ -314,6 +319,22 @@ def pjm_stage_explanation(event: dict) -> str:
     if "manual load dump" in low:
         return "EEA3에서 추가 비상자원으로도 부족해 강제 부하차단이 필요한 단계입니다."
     if "special notice" in low:
+        body_low = event.get("body", "").lower()
+        if "request for 202(c)" in body_low or "requested a 202(c) order" in body_low:
+            return (
+                "PJM이 DOE에 202(c) 긴급명령을 요청하거나 대형부하·발전자원에 사전 준비를 요구한 단계입니다. "
+                "DOE 명령 발령이나 백업발전 실제 동원을 뜻하지 않습니다."
+            )
+        if "has not identified a reliability need to utilize" in body_low:
+            return (
+                "DOE 202(c) 명령은 존재하지만 PJM이 해당 운영일에 지정자원을 사용할 신뢰도 필요를 확인하지 않았다는 공지입니다. "
+                "상시 최대출력 운전이나 백업발전 실제 동원을 뜻하지 않습니다."
+            )
+        if "has identified a reliability need to utilize" in body_low:
+            return (
+                "PJM이 해당 운영일에 DOE 202(c) 지정자원을 사용할 신뢰도 필요를 확인한 공지입니다. "
+                "다만 대형부하 백업발전 실제 가동은 별도의 Back-Up Generator Action을 확인해야 합니다."
+            )
         return "202(c) 관련 특별공지의 적용범위와 실제 필요 판정을 확인해야 하며, 명령 존재 자체가 최대출력 상시운전을 뜻하지 않습니다."
     return "PJM 공식 비상운영 단계의 실제 의미는 메시지 정의와 운영지시를 함께 확인해야 합니다."
 
@@ -431,6 +452,27 @@ def self_test() -> None:
     assert p["operational_end"] and p["operational_end"].date() == dt.date(2026, 9, 17)
     stale_now = dt.datetime(2026, 9, 19, 15, 27, tzinfo=KST)
     assert not event_is_alertable(p, stale_now), "expired 105520 must not re-alert on Sep 19"
+
+    pre_order_notice_html = """
+    <html><body>
+    Msg ID: 105521
+    Message Type: Special Notice
+    Priority: Informational
+    Effective Start Time: 09.16.2026 13:11
+    Regions PJM-RTO
+    A Special Notice : Request for 202(c) Emergency Use of Back-up Generators and Running Emissions Limited Generation
+    Additional Comments: PJM has requested a 202(c) order to permit use of emissions-limited generation and
+    emergency back-up generation and is coordinating with large loads in advance.
+    </body></html>
+    """
+    pre = parse_pjm_posting_html(
+        pre_order_notice_html, PJM_POSTING.format(msg_id="105521")
+    )
+    assert pre and pre["msg_id"] == "105521"
+    assert "요청·사전 준비" in pjm_title(pre)
+    assert "DOE 명령 발령" in pjm_stage_explanation(pre)
+    assert "실제 동원" in pjm_stage_explanation(pre)
+    assert "운영 적용" not in pjm_title(pre)
 
     doe45 = """
     On September 17, 2026, the Department of Energy (DOE) issued emergency DOE Order No. 202-26-45,
