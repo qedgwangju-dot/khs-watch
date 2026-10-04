@@ -1569,6 +1569,33 @@ g, s, c, k = classify(sodium_skon_baseline)
 assert g == "sodium_ion_battery", (g, s, c)
 assert s < 11, ("SK On 2027 prototype target is current baseline", s, c)
 
+sodium_eve_baseline = make(
+    "EVE Energy validates NF155L sodium-ion ESS",
+    "EVE Energy's NF155L sodium-ion cell was used in a 180kWh grid-connected energy storage system and batch delivery is planned by the end of 2026.",
+    "EVE Energy",
+)
+g, s, c, k = classify(sodium_eve_baseline)
+assert g == "sodium_ion_battery", (g, s, c)
+assert s < 11, ("EVE 180kWh grid-connected system and 2026 delivery plan are baseline", s, c)
+
+sodium_hina_baseline = make(
+    "HiNa Battery completes sodium-ion heavy truck test",
+    "HiNa Battery completed nearly 7 months and more than 15,000 km of road testing with a 339kWh sodium-ion battery.",
+    "HiNa Battery",
+)
+g, s, c, k = classify(sodium_hina_baseline)
+assert g == "sodium_ion_battery", (g, s, c)
+assert s < 11, ("HiNa 339kWh 15,000km validation is current baseline", s, c)
+
+sodium_enertech_baseline = make(
+    "Enertech plans sodium-ion mass production",
+    "Enertech developed a 140-160 Wh/kg sodium-ion prototype and plans mass production at Chungju in January 2027.",
+    "Enertech International",
+)
+g, s, c, k = classify(sodium_enertech_baseline)
+assert g == "sodium_ion_battery", (g, s, c)
+assert s < 11, ("Enertech January 2027 production plan is current baseline", s, c)
+
 sodium_catl_shipment = make(
     "CATL begins sodium-ion ESS customer shipments",
     "CATL completed its first commercial delivery of 1.2GWh of sodium-ion energy storage systems to customers.",
