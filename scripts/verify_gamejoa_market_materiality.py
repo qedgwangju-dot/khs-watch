@@ -2063,6 +2063,47 @@ class MaterialityChecks(unittest.TestCase):
         with patch.object(radar.base, "kst_now", return_value=NOW):
             self.assertEqual(radar.quality_display_alerts([unverified], 1), [])
 
+    def test_bare_issuer_metadata_cannot_be_a_market_news_headline(self):
+        title = "신한은행"
+        body = "신한은행은 자본재 산업 금융지원 업무협약을 체결했다. 양측은 생산자금 지원 플랫폼을 연계한다."
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "exclude")
+        self.assertEqual(audit["reason"], "source_headline_without_event")
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
+
+    def test_support_mou_needs_size_terms_or_committed_execution(self):
+        title = "은행, 공제조합과 금융지원 업무협약"
+        body = ("은행은 공제조합과 플랫폼 기반 금융지원 업무협약을 체결했다. "
+                "양측은 매출채권신용공제와 지급결제 플랫폼을 연계해 기업의 제조·생산자금을 지원한다.")
+        audit = materiality.assess(title, body)
+        self.assertLess(audit["priority"], 2, audit)
+        scoped = materiality.assess("은행, 제조기업과 1000억원 투자 자금조달 약정 체결",
+                                    body + " 은행은 제조기업과 투자 자금조달 대출 약정 1000억원을 체결했다.")
+        self.assertGreaterEqual(scoped["priority"], 2, scoped)
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
+
+    def test_export_milestone_keeps_observed_total_not_conditional_calculation(self):
+        title = "'1조 달러 수출국' 초읽기…11월 말~12월 초 한국 수출사 새로 쓴다"
+        body = ("올해 1~9월 누적 수출액이 8145억 달러에 달하면서 연간 목표 달성이 가까워졌다. "
+                "올해 1~9월 누적 수출액은 8145억 달러로 늘었다. "
+                "지난해 연간 수출액 7093억 달러를 이미 넘어섰다. "
+                "10~12월 월평균 약 618억 달러를 수출하면 1조 달러를 달성할 수 있다.")
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        self.assertIn("1~9월", core)
+        self.assertIn("8145억달러", core)
+        self.assertNotIn("618억", core)
+        self.assertIn("지난해 연간", core)
+        audit = materiality.assess(title, "우리나라의 연간 수출액 1조 달러 달성이 가시권에 들어왔다. " + body)
+        self.assertEqual(audit["transmission_scope_rank"], 3)
+        self.assertIn("8145", audit["evidence"][0]["source_excerpt"])
+        self.assertEqual(audit["evidence"][0]["stage"], "reported_change")
+        self.assertFalse(radar.source_core_fact_errors({**item, "telegram_core_fact": core}))
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 1)), 1, item.get("_exclusion_reason"))
+
     def test_first_headline_event_precedes_secondary_bond_context(self):
         title = "원·달러 NDF 0.2원 하락, 미국채 금리 하락 vs 달러인덱스 연 최고"
         body = "원·달러 역외 NDF 환율은 전장 대비 0.2원 하락했다. 특히 미국채 2년물 금리는 10bp 넘게 급락했다."

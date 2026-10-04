@@ -69,6 +69,10 @@ Every defect or requested change must follow this sequence:
   historical company profiles cannot qualify through incidental economic words.
   Actual outages, deaths, production damage, customer negotiations and early
   policy changes remain eligible when the source establishes the mechanism.
+- A source headline consisting only of an issuer name is not a news event.
+  Bank support MOUs need concrete size, financing terms or committed execution,
+  not a platform-promotion paragraph. National export milestones prioritize the
+  observed cumulative total and period over hypothetical required monthly sales.
 - Entertainment/private-life articles cannot qualify as customer discussions
   from meeting or social-photo certification words. Apply the same genre and
   foreground check before body retrieval, alert construction and final output.

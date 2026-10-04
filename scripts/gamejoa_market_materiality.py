@@ -9,7 +9,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 55
+VERSION = 56
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -143,6 +143,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("trading_status", r"거래\s*재개|액면병합|주식병합", r"거래.{0,12}재개|재개.{0,12}거래|액면병합|주식병합"),
     ("sanctions_request", r"제재.{0,30}(?:요청|요구|해야)|sanctions?.{0,30}(?:request|call)", r"제재[^.!?]{0,35}(?:요청|요구|해달라|해야)|sanctions?.{0,35}(?:request|call)"),
     ("economic_response", r"경제\s*전쟁|제재.{0,25}대응", r"경제\s*전쟁|제재|환율|필수\s*물자"),
+    ("national_exports", r"수출국|연간\s*수출", r"누적\s*수출|수출액|월간\s*수출"),
     ("authorized_capital", r"수권\s*(?:자본|주식)|authorized (?:capital|shares)", r"수권\s*(?:자본|주식)|authorized (?:capital|shares)"),
     ("customer_implementation", r"1차\s*시공|초도\s*납품", r"1차\s*시공|초도\s*납품"),
     ("commercial_order", r"수주|공급\s*계약|납품\s*계약|발사\s*계약|\d+\s*년\s*계약(?!가)", r"수주|발주|계약"),
@@ -362,6 +363,9 @@ def focus_matches(title: str, sentence: str) -> bool:
 
 
 def period_matches(title: str, sentence: str) -> bool:
+    if focus_kind(title) == "national_exports":
+        # A milestone's prospective date is not the observation's reference month.
+        return True
     months, source_months = set(MONTH.findall(title or "")), set(MONTH.findall(sentence or ""))
     if months and source_months and months.isdisjoint(source_months):
         return False
@@ -590,6 +594,8 @@ RULES = (
     ("earnings_or_guidance", ("earnings",),
      r"매출|영업이익|순이익|영업손실|순손실|마진|실적|가이던스|출하|판매(?:량|실적|는|가)|시장점유율|revenue|earnings|profit|guidance|shipments",
      r"증가|감소|상승|하락|상회|하회|상향|하향|달성|기록|집계|발표|공시|전망|예상|컨센서스|추정치|적자\s*전환|적자로\s*전환|rise|fall|grow|cut|rais|report|forecast|consensus|beat|miss"),
+    ("national_export_release", ("earnings", "discount_rate"),
+     r"누적\s*수출|월간\s*수출|수출액", r"달(?:했|하|해)|늘었|증가|감소|기록|집계|넘어섰|달성"),
     ("product_sales_mix", ("earnings",),
      r"판매(?:량|대수|비중)?", r"\d+(?:\.\d+)?%\s*(?:를|을)?\s*차지|비중.{0,20}(?:높아|올라|낮아|줄어)"),
     ("industry_market_share", ("earnings",),
@@ -864,7 +870,7 @@ def news_value_rank(evidence: list[dict]) -> int:
     """Economic mechanism outranks textual focus and announcement certainty."""
     kinds = {item["kind"] for item in evidence}
     if kinds & {"commercial_order", "order_backlog_level", "customer_supply_start", "procurement_execution_stage", "selling_price_or_cost",
-                "earnings_or_guidance", "industry_market_share", "export_results", "licensing_cashflow", "corporate_transaction", "corporate_ownership_execution", "export_control_scope",
+                "earnings_or_guidance", "industry_market_share", "export_results", "national_export_release", "licensing_cashflow", "corporate_transaction", "corporate_ownership_execution", "export_control_scope",
                 "policy_scope_or_stage", "environmental_approval", "industrial_architecture_adoption", "physical_supply_or_capacity",
                 "launch_turnaround_bottleneck", "sector_demand_outlook"}:
         return 4
@@ -880,6 +886,8 @@ def transmission_scope(title: str, evidence: list[dict]) -> tuple[int, str]:
     """Prioritize sourced market/industry changes, not merely dense issuer facts."""
     kinds = {item['kind'] for item in evidence}
     excerpts = ' '.join(item['source_excerpt'] for item in evidence)
+    if 'national_export_release' in kinds:
+        return 3, 'national_export_release'
     if 'economic_restriction_response' in kinds:
         return 2, 'announced_economic_response_without_specified_policy_terms'
     if focus_kind(title) == 'breadth' and 'market_price_or_flow' in kinds and QUANTITY.search(excerpts) and re.search(
@@ -941,6 +949,10 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     result = {"version": VERSION, "disposition": "review", "priority": 1, "axes": [], "evidence": []}
     if not title or not body:
         result["reason"] = "source_evidence_unavailable"
+        return result
+    if (re.fullmatch(r"[A-Za-z0-9가-힣&.·]{2,20}", title.strip())
+            and not HARD_HEADLINE.search(title) and not focus_kind(title)):
+        result.update(disposition="exclude", priority=0, reason="source_headline_without_event")
         return result
     if re.search(r"따라\s*투자하면|투자하면\s*돈\s*벌까|경제\s*용어|투자\s*방법", title) and not DIRECT_HEADLINE_CHANGE.search(title):
         result.update(disposition="exclude", priority=0, reason="investment_method_explainer_not_new_market_event")
@@ -1113,6 +1125,10 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
                 continue
             if focus_kind(title) == "economic_response" and kind != "economic_restriction_response":
                 continue
+            if focus_kind(title) == "national_exports" and kind != "national_export_release":
+                continue
+            if kind == "national_export_release" and focus_kind(title) != "national_exports":
+                continue
             if (focus_kind(title) == "financing"
                     and re.search(r"자금\s*조달|자본\s*조달|외부\s*자본|대출|전환사채|전환\s*(?:선순위)?\s*채권|funding|financing|loan", title, re.I)
                     and kind not in {
@@ -1229,7 +1245,9 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
             if kind == "research_spending_change" and not QUANTITY.search(sentence):
                 continue
             early = bool(EARLY_SIGNAL.search(sentence)) or kind in {"customer_discussions", "institutional_capital_access", "authorized_capital_proposal", "sector_demand_outlook", "policy_agreement_clarification", "economic_restriction_response"}
-            if re.search(r"(?:할|하는|하는\s*)\s*경우|한다면|if\s+", sentence, re.I):
+            if kind == "national_export_release" and re.search(r"가시권|달성할\s*수|달성\s*가능", sentence):
+                early = True
+            if re.search(r"(?:할|하는|하는\s*)\s*경우|한다면|하면.{0,30}(?:달성|가능)|if\s+", sentence, re.I):
                 early = True
             if (kind == "earnings_or_guidance" and index > 0
                     and EARLY_SIGNAL.search(sentences[index - 1])
@@ -1285,6 +1303,21 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
         result.update(disposition="keep", reason="source_change_evidence")
         result["news_value_rank"] = news_value_rank(result["evidence"])
         kinds = {item["kind"] for item in result["evidence"]}
+        support_mou = (re.search(r"은행|bank", headline_lead, re.I)
+                       and re.search(r"금융지원|금융\s*지원|제조.{0,10}자금|생산자금", headline_lead)
+                       and re.search(r"업무협약|지원\s*협약", headline_lead))
+        scoped_support = any(
+            not BACKGROUND.search(sentence) and not PAST_ACTION.search(sentence)
+            and QUANTITY.search(sentence)
+            and re.search(r"지원|대출|보증|금리|출자|납입|집행", sentence)
+            for sentence in sentences
+        )
+        if support_mou and not scoped_support and kinds <= {
+            "customer_discussions", "financing_infrastructure", "capital_or_shareholder_action",
+            "industrial_partnership_execution",
+        }:
+            result["priority"] = 1
+            result["scope_note"] = "support_mou_without_size_terms_or_committed_execution"
         if kinds == {"authorized_capital_proposal"}:
             result["priority"] = 1
             result["scope_note"] = "authorized_capacity_without_committed_financing_or_issuance"

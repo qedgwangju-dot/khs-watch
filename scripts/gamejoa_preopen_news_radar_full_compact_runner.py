@@ -2330,6 +2330,19 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         return ""
     focus = market_materiality.focus_kind(title)
     source = " ".join(sentences)
+    if focus == "national_exports":
+        observed = re.search(
+            r"올해\s*(\d{1,2}\s*[~∼~-]\s*\d{1,2}월)\s*누적\s*수출액(?:은|이|가)\s*"
+            r"(\d[\d,.]*\s*(?:조|억)?\s*달러)", source,
+        )
+        if observed and re.search(r"한국|韓|우리나라|대한민국", title + " " + " ".join(sentences[:3])):
+            period = re.sub(r"\s+", "", observed.group(1))
+            amount = re.sub(r"\s+", "", observed.group(2))
+            fact = f"한국의 {period} 누적 수출액은 {amount}로 집계됐다."
+            if re.search(r"지난해\s*연간\s*수출액[^.!?]{0,40}(?:넘어섰|넘어선)", source):
+                fact += " 지난해 연간 수출액을 이미 넘었다."
+            if core_sentence_is_complete(fact):
+                return fact
     if focus == "financing":
         for sentence in sentences:
             if (re.search(r"외부\s*자본", sentence)
@@ -7722,6 +7735,11 @@ def title_core_alignment_tokens(value: str) -> set[str]:
 
 
 def korean_title_core_aligned(title: str, core: str) -> bool:
+    if (market_materiality.focus_kind(title) == "national_exports"
+            and market_materiality.focus_matches(title, core)
+            and re.search(r"누적\s*수출액", core)
+            and market_materiality.QUANTITY.search(core)):
+        return True
     title_tokens = title_core_alignment_tokens(title)
     core_tokens = title_core_alignment_tokens(core)
     if not title_tokens or not core_tokens:
