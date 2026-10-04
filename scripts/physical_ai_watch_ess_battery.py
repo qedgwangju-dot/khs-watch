@@ -875,6 +875,8 @@ def topic_group(text: str) -> str | None:
     sodium_stage = _sodium_stage(text)
     if sodium_stage and sodium_stage != 'background':
         return 'sodium_ion_battery'
+    if SODIUM_RE.search(text) and SODIUM_ESS.search(text):
+        return 'sodium_ion_battery'
     ev46_stage = _ev46_stage(text)
     if ev46_stage and ev46_stage != 'background':
         return 'ev_46_series'
