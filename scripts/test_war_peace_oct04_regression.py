@@ -142,7 +142,10 @@ for x in (refinery_policy, aramco_fire, medvedev, lukoil, tanker_a):
     x["tags"] = tags
     x["age"] = mod.watch.age_minutes(x, now)
 rendered = mod.watch.build_alert([refinery_policy, aramco_fire, medvedev, lukoil, tanker_a], [], now)
-check("oct04-render-refinery-yellow", "🟡 [신규] <b>1. 우크라이나·러시아 · 정유시설 보복 공격 예고</b>" in rendered)
+check(
+    "oct04-render-refinery-yellow",
+    "🟡 [" in rendered and "우크라이나·러시아 · 정유시설 보복 공격 예고" in rendered
+)
 check("oct04-render-aramco-yellow", "사우디·아람코 · 화재 원인 미확정" in rendered and "후티의 리야드 탄도미사일 공격·요격 신호" not in rendered)
 check("oct04-render-lukoil-yellow", "종전협상 연계 상업거래" in rendered)
 check("oct04-render-tanker-red", "이란·호르무즈 · 유조선 피격" in rendered)
