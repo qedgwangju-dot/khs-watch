@@ -474,7 +474,7 @@ def relevant(category: str, text: str) -> bool:
     if category == "morgan_stanley_nvidia_hbm_margin":
         return (
             ("morgan stanley" in low or "모건스탠리" in low)
-            and ("nvidia" in low or "엔비디아" in low)
+            and ("nvidia" in low or "엔비디아" in low or "vr200" in low or "vera rubin" in low)
             and ("rubin" in low or "루빈" in low or "vera rubin" in low or "vr200" in low or "hbm" in low)
             and any(k in low for k in (
                 "gross margin", "margin", "매출총이익률", "hbm", "price", "pricing", "단가", "가격",
