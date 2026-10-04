@@ -1405,7 +1405,7 @@ def semantic_policy_event_key(item: dict) -> str:
             stage = "effective"
         elif any(term in title_text for term in ("court", "lawsuit", "challenge", "stay", "소송", "집행정지")):
             stage = "litigation"
-        elif any(term in title_text for term in ("proposed", "proposal", "notice of proposed", "제안", "초안")):
+        elif any(term in title_text for term in ("propose", "proposes", "proposed", "proposal", "notice of proposed", "제안", "초안")):
             stage = "proposal"
         return f"us-fcc-space-nepa-{stage}"
     # Distinguish the follow-on Ku/Ka/D-band proceeding from the already-adopted
