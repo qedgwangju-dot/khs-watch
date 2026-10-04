@@ -15,7 +15,6 @@ on:
 
 permissions:
   contents: read
-  actions: write
 
 jobs:
   verify-korean-alert:
@@ -24,16 +23,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: "One-time repair: enable and dispatch existing KHS policy watch"
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          echo "before_state=$(gh api repos/${{ github.repository }}/actions/workflows/khs-policy-watch.yml --jq .state)"
-          gh api --method PUT repos/${{ github.repository }}/actions/workflows/khs-policy-watch.yml/enable
-          echo "after_state=$(gh api repos/${{ github.repository }}/actions/workflows/khs-policy-watch.yml --jq .state)"
-          gh workflow run khs-policy-watch.yml --ref main -f telegram_test=false -f telegram_dry_run=false
-          echo "khs_policy_live_verification_dispatch=created"
 
       - name: Set up Python
         uses: actions/setup-python@v5
