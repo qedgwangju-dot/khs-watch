@@ -131,6 +131,28 @@ def _hormuz_tanker_attack(row):
     return hormuz and tanker and hit and (title_hit or recent)
 
 
+def _kyiv_bridge_attack(row):
+    t = _title(row)
+    kyiv = any(x in t for x in ("kyiv", "kiev", "키이우", "키예프"))
+    bridge = any(x in t for x in ("bridge", "bridges", "교량", "다리"))
+    strike = any(x in t for x in (
+        "strikes on", "attacks on", "bridge attack", "bridge strikes",
+        "공격", "공습", "피격",
+    ))
+    return kyiv and bridge and strike
+
+
+def _kyiv_evacuation_strike_warning(row):
+    t = _title(row)
+    kyiv = any(x in t for x in ("kyiv", "kiev", "키이우", "키예프"))
+    leave = any(x in t for x in ("leave kyiv", "leave kiev", "evacuate", "evacuation", "떠나라", "대피"))
+    threat = any(x in _text(row) for x in (
+        "massive retaliatory strikes", "massive strikes", "mortal danger",
+        "대규모 보복 공격", "대규모 공격", "최후통첩", "위험",
+    ))
+    return kyiv and leave and threat
+
+
 def _new_tanker_attack_variant(row):
     t = _title(row)
     return any(x in t for x in ("another tanker", "additional tanker", "fourth tanker", "fifth tanker", "추가 유조선", "또 다른 유조선", "4번째 유조선", "5번째 유조선"))
@@ -224,6 +246,10 @@ def score_item(row, now):
         tags = [t for t in tags if t not in ("휴전·평화", "재건", "종전·협상")]
         tags += ["이란·호르무즈", "확전", "해상안보", "유조선피격"]
         score = max(score, 100)
+    if _kyiv_bridge_attack(row) or _kyiv_evacuation_strike_warning(row):
+        tags = [t for t in tags if t not in ("휴전·평화", "재건", "종전·협상")]
+        tags += ["우크라이나·러시아", "확전", "인프라위험"]
+        score = max(score, 100)
     return min(score, 100), sorted(set(tags))
 
 
@@ -300,6 +326,8 @@ def final_color(row):
         return "yellow"
     if "호르무즈유조선피격클러스터" in ms:
         return "red"
+    if _kyiv_bridge_attack(row) or _kyiv_evacuation_strike_warning(row):
+        return "red"
     return _orig_final_color(row)
 
 
@@ -323,6 +351,8 @@ def verdict(items):
     yellow = "yellow" in colors
     all_marks = {m for x in items for m in marks(x)}
     peace = bool(all_marks & _PEACE_MARKS)
+    if any(_kyiv_bridge_attack(x) or _kyiv_evacuation_strike_warning(x) for x in items):
+        red = True
     if red and peace:
         return (
             "<b>투자 판정</b>\n"
