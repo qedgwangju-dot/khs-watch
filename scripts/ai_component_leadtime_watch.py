@@ -533,6 +533,27 @@ def focus_components(changed: list[str], signal_names: list[str], components: di
     return out[:limit]
 
 
+def source_tier(url: str, text: str = "") -> int:
+    host = (urlparse(url).hostname or "").lower()
+    if "trendforce.com" in host:
+        return 3
+    if host.endswith("x.com") and "/trendforce" in url.lower():
+        return 2
+    if "trendforce" in (text or "").lower():
+        return 1
+    return 0
+
+
+def candidate_sort_key(item: dict) -> tuple[int, str, int]:
+    # Source quality first; within the same source tier the newest Weekly Radar
+    # must beat an older issue even if the older page exposes more table fields.
+    return (
+        source_tier(str(item.get("direct_url") or ""), str(item.get("full_text") or "")),
+        str(item.get("published_at_kst") or ""),
+        int(item.get("score") or 0),
+    )
+
+
 def source_score(url: str, components: dict, text: str) -> int:
     host = (urlparse(url).hostname or "").lower()
     score = len(components) * 10
@@ -921,7 +942,7 @@ def main() -> None:
                 }
             )
 
-    candidates.sort(key=lambda x: (x.get("score", 0), x.get("published_at_kst") or ""), reverse=True)
+    candidates.sort(key=candidate_sort_key, reverse=True)
     best = candidates[0] if candidates else None
 
     previous_signals = previous.get("signals") or BASELINE.get("signals") or {}
