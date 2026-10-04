@@ -50,6 +50,7 @@ SCALE = {
     "십억": 1_000_000_000,
     "백만": 1_000_000,
     "천만": 10_000_000,
+    "만": 10_000,
 }
 PER_UNIT_PATTERN = r"(?:MWh|GWh|kWh|GPU|CPU|module|wafer|month|year|TiB|TB|GB|Gb|kW|MW|GW|Wh|kg|chip|서버|랙|주|개|대|g|t|W)"
 _RATE_CACHE: dict[str, tuple[float | None, str]] = {}
@@ -96,7 +97,7 @@ def _normalize_existing_separate_krw(text: str) -> str:
     # 아래 enforce 단계에서 실행 시점의 검증된 API 환율로 다시 계산한다.
     # 사용자가 요구한 표기는 항상 "외화금액(약 원화금액)"으로 통일한다.
     pat = re.compile(
-        r"(?P<fx>\d[\d,.]*(?:\.\d+)?\s*(?:조|십억|억|백만|천만)(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드))"
+        r"(?P<fx>\d[\d,.]*(?:\.\d+)?\s*(?:조|십억|억|백만|천만|만)(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드))"
         r"\s*(?:·|=|≈|≒)\s*(?:약\s*)?[\d,]+(?:조[\d,]*억|조|억)?원"
     )
     return pat.sub(lambda m: m.group("fx"), text)
@@ -107,9 +108,9 @@ def enforce_text(text: str) -> str:
 
     # Ranges that share a currency unit, e.g. 600억~640억달러.
     range_pat = re.compile(
-        r"(?P<a>\d[\d,.]*(?:\.\d+)?)\s*(?P<ua>조|십억|억|백만|천만)"
+        r"(?P<a>\d[\d,.]*(?:\.\d+)?)\s*(?P<ua>조|십억|억|백만|천만|만)"
         r"\s*(?P<sep>[~～–—-])\s*"
-        r"(?P<b>\d[\d,.]*(?:\.\d+)?)\s*(?P<ub>조|십억|억|백만|천만)?"
+        r"(?P<b>\d[\d,.]*(?:\.\d+)?)\s*(?P<ub>조|십억|억|백만|천만|만)?"
         r"(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)"
     )
     def repl_range(m):
@@ -126,7 +127,7 @@ def enforce_text(text: str) -> str:
 
     # Korean large-unit currency amounts.
     large_pat = re.compile(
-        r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*(?P<unit>조|십억|억|백만|천만)"
+        r"(?P<num>\d[\d,.]*(?:\.\d+)?)\s*(?P<unit>조|십억|억|백만|천만|만)"
         r"(?P<word>싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)(?P<per>/" + PER_UNIT_PATTERN + r")?",
         re.I,
     )
@@ -215,7 +216,7 @@ def enforce_text(text: str) -> str:
             return m.group(0)
         # Large-unit amounts were already handled.
         before = text[max(0, m.start()-4):m.start()]
-        if any(before.endswith(x) for x in ("조", "십억", "억", "백만", "천만")):
+        if any(before.endswith(x) for x in ("조", "십억", "억", "백만", "천만", "만")):
             return m.group(0)
         currency = CURRENCY_WORDS[m.group("word")]
         per = m.group("per") or ""
@@ -227,7 +228,7 @@ def enforce_text(text: str) -> str:
 
 def _money_candidates(text: str):
     word = (
-        r"\d[\d,.]*(?:\.\d+)?\s*(?:조|십억|억|백만|천만)?"
+        r"\d[\d,.]*(?:\.\d+)?\s*(?:조|십억|억|백만|천만|만)?"
         r"(?:싱가포르달러|홍콩달러|캐나다달러|대만달러|호주달러|스위스프랑|달러|유로|엔|링깃|위안|파운드)"
         r"(?:/" + PER_UNIT_PATTERN + r")?"
     )
