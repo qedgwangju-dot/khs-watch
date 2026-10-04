@@ -67,6 +67,35 @@ class LeadTimeParserTests(unittest.TestCase):
         self.assertGreater(official, secondary)
 
 
+    def test_cpu_lead_time_is_parsed_as_seventh_component(self):
+        text = (
+            "CPU current lead time 25-30 weeks against a balanced lead time of 16-20 weeks. "
+            "CPU is Tight while GPU is Balanced."
+        )
+        rows = w.extract_components(text)
+        self.assertEqual(rows["CPU"].get("current"), "25-30")
+        self.assertEqual(rows["CPU"].get("balanced"), "16-20")
+        self.assertEqual(rows["CPU"].get("status"), "Tight")
+
+    def test_ubs_cross_stack_project_baseline_matches_attached_chart(self):
+        base = w.UBS_PROJECT_LEADTIME_BASELINE
+        self.assertFalse(base["directly_comparable_to_component_delivery_lead_time"])
+        expected = {
+            "Foundry": (36, 48),
+            "Semicap equipment": (12, 24),
+            "Adv. packaging / substrates": (12, 18),
+            "Storage systems": (12, 24),
+            "GPUs / AI accelerators": (6, 12),
+            "Memory (HBM / DRAM)": (6, 12),
+            "Optical transceivers / networking": (3, 9),
+            "CPUs": (3, 6),
+            "Servers": (1, 2),
+        }
+        for segment, (low, high) in expected.items():
+            self.assertEqual(base["segments"][segment]["min_months"], low)
+            self.assertEqual(base["segments"][segment]["max_months"], high)
+
+
 class LeadTimeAlertTests(unittest.TestCase):
     def setUp(self):
         self.old = {
@@ -131,6 +160,27 @@ class LeadTimeAlertTests(unittest.TestCase):
         )
         self.assertIn("이번 주 공식 공개본문에서 상태를 직접 판독하지 못한 품목", alert)
         self.assertIn("직전 확정값 유지·이번 주 직접 판독 미확인", alert)
+
+
+    def test_cpu_change_shows_ubs_project_horizon_without_equating_metrics(self):
+        old = dict(self.new)
+        new = dict(self.new)
+        new["CPU"] = {"status": "Tight", "current": "25-30", "balanced": "16-20"}
+        alert = w.build_alert(
+            old,
+            new,
+            ["CPU"],
+            "https://insights.trendforce.com/p/weekly-radar-003",
+            "2026-09-28T09:00:00+09:00",
+            False,
+            signals={"CPU": "에이전틱 AI·CSP 인하우스 설계 확대로 서버 CPU 조달 압력이 부각"},
+            changed_signals=["CPU"],
+            evidence={"CPU": {"status", "current", "balanced"}},
+        )
+        self.assertIn("CPU</b> | 현재 25~30주 | 균형 16~20주", alert)
+        self.assertIn("UBS 프로젝트 시간축", alert)
+        self.assertIn("3~6개월", alert)
+        self.assertIn("직접 비교 금지", alert)
 
 
 if __name__ == "__main__":
