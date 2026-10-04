@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-08-24T21:32:19+09:00",
-  "last_checked_kst": "2026-10-04T08:17:31+09:00",
+  "last_checked_kst": "2026-10-04T17:44:23+09:00",
   "seen": {
     "74fd33cf93fb250c6b18ecd7": {
       "title": "리벨리온, 공공 CCTV 관제에 서버형 NPU 대규모 인프라 공급… 국산 AI 인프라 상용화로 기술 자립 가속",
@@ -2973,6 +2973,12 @@
       "material_stage": 2,
       "first_seen_kst": "2026-10-04T05:09:56+09:00",
       "suppressed_duplicate": "same_event:kepco|npu|power_video"
+    },
+    "d24d902739040af6ed49682c": {
+      "title": "리벨리온 NPU 국내 넘어 일본·영국서 랙 단위 공급 - 사이언스모니터",
+      "url": "https://news.google.com/rss/articles/CBMiqgJBVV95cUxNcnJ3T000blJvNFJmV0Q0NlRZdFJ4ZnBkR05OazhjRlA4SWFFc2xsay0tWjFiX3A5VHVUZTk5X01sWHQ3U2FJVXNwcFRRNTN6cTRWc0o5M3Q4ZkVLdVRtZXVVM1JCSlBrRzlEWWg3UUJMR0h6aTVkMTZCVy05N1hfTlFiZmhKLXdjUFhUdnUyZ3picGZyZ0IzWlg3amFvMWlnUTk1LVpzQ0tFYUt1TDlZM3VFNENwejQ0QXQ2T1ctNmJ6X3BOb3R2bS14cnNPaG1GMzJzdWxST2QxQWYtX1BWS1N3ZGpEQmFfX3AwdFV1MDFJbmhyTWhhQU9TVmNEUW9GWF95anFSb29rQkx6U1FMX0s5NXdXTlZOU2tYbnEyMkVoYmdKTy1CVUF3?oc=5",
+      "first_seen_kst": "2026-10-04T17:44:23+09:00",
+      "suppressed_stale": true
     }
   }
 }
