@@ -20,6 +20,8 @@ import html
 import json
 import pathlib
 import re
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -64,20 +66,10 @@ MUTABLE_SEMANTIC_OFFICIAL_PAGES = {
 }
 
 NEWS_QUERIES = [
-    '"OpenAI" Cerebras NVIDIA Ultrafast inference GPU accelerator',
-    '"GPT-6.1 Sol" Ultrafast NVIDIA Cerebras GPU',
-    '"GPT-6 Astra" Ultrafast Cerebras NVIDIA GPU',
-    '"OpenAI" "750MW" Cerebras tranche capacity online',
-    '"OpenAI" Cerebras contract capacity delay cancellation 750MW',
-    '"OpenAI" inference routing accelerator NVIDIA Cerebras AMD ASIC',
-    '"OpenAI" tokens per second Ultrafast batch size GPU Cerebras',
-    '"Cerebras" OpenAI model support GPT-6.1 Astra Ultrafast',
-    '"OpenAI" service_tier ultrafast pricing speed',
-    '"OpenAI" low batch NVIDIA GPU inference latency',
-    '"Synopsys" EDA consumption-based pricing AI agents tapeout output licensing',
-    '"Synopsys" FY2027 revenue guidance 11.15 billion investor day',
-    '"Synopsys" GPT-Synopsys OpenAI licensing revenue share general availability',
-    '"Synopsys" AWS licensing royalty output custom silicon Trainium Graviton',
+    '(OpenAI OR "GPT-6.1 Sol" OR "GPT-6 Astra") (Cerebras OR NVIDIA OR AMD) (Ultrafast OR inference OR accelerator OR "service tier" OR latency OR pricing)',
+    'OpenAI Cerebras (750MW OR "750 MW" OR tranche OR capacity OR contract OR delay OR cancellation)',
+    'Synopsys (EDA OR Autopilot) ("consumption-based" OR pricing OR FY2027 OR guidance OR "Investor Day" OR customer adoption)',
+    'Synopsys ("GPT-Synopsys" OR OpenAI OR AWS OR hyperscaler) (license OR licensing OR royalty OR revenue OR contract OR "general availability")',
 ]
 
 OFFICIAL_PAGES = {
@@ -193,13 +185,31 @@ IDENTIFIERS = (
 )
 
 
-def fetch_bytes(url: str, timeout: int = 25) -> bytes:
-    req = urllib.request.Request(
-        url,
-        headers={"User-Agent": USER_AGENT, "Accept": "application/rss+xml,application/xml,text/html,application/json,*/*"},
-    )
-    with urllib.request.urlopen(req, timeout=timeout) as resp:
-        return resp.read()
+def fetch_bytes(url: str, timeout: int = 25, attempts: int = 3) -> bytes:
+    last: Exception | None = None
+    for attempt in range(1, attempts + 1):
+        req = urllib.request.Request(
+            url,
+            headers={
+                "User-Agent": USER_AGENT,
+                "Accept": "application/rss+xml,application/xml,text/html,application/json,*/*",
+                "Accept-Language": "en-US,en;q=0.9",
+                "Cache-Control": "no-cache",
+            },
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                return resp.read()
+        except urllib.error.HTTPError as exc:
+            last = exc
+            if exc.code not in {429, 500, 502, 503, 504} or attempt >= attempts:
+                raise
+        except Exception as exc:
+            last = exc
+            if attempt >= attempts:
+                raise
+        time.sleep(min(8, attempt * 2))
+    raise RuntimeError(f"Fetch failed after {attempts} attempts: {last}")
 
 
 def strip_html(value: str) -> str:
@@ -218,17 +228,26 @@ def parse_pubdate(value: str | None) -> dt.datetime | None:
         return None
 
 
-def google_news_url(query: str) -> str:
-    return GOOGLE_NEWS + "?" + urllib.parse.urlencode({
-        "q": query,
-        "hl": "en-US",
-        "gl": "US",
-        "ceid": "US:en",
-    })
+def google_news_url(query: str, *, locale: str = "en") -> str:
+    if locale == "ko":
+        params = {"q": query, "hl": "ko", "gl": "KR", "ceid": "KR:ko"}
+    else:
+        params = {"q": query, "hl": "en-US", "gl": "US", "ceid": "US:en"}
+    return GOOGLE_NEWS + "?" + urllib.parse.urlencode(params)
 
 
 def parse_google_news(query: str, now: dt.datetime) -> list[dict]:
-    root = ET.fromstring(fetch_bytes(google_news_url(query)))
+    last: Exception | None = None
+    root = None
+    for locale in ("en", "ko"):
+        try:
+            root = ET.fromstring(fetch_bytes(google_news_url(query, locale=locale)))
+            break
+        except Exception as exc:
+            last = exc
+    if root is None:
+        raise RuntimeError(f"Google News primary+fallback failed: {last}")
+
     out = []
     for node in root.findall(".//item"):
         title = strip_html(node.findtext("title") or "")
@@ -884,11 +903,31 @@ def main() -> int:
     errors: list[str] = []
     raw: list[dict] = []
 
+    news_query_successes = 0
     for query in NEWS_QUERIES:
         try:
             raw.extend(parse_google_news(query, now))
+            news_query_successes += 1
         except Exception as exc:
-            errors.append(f"Google News 실패: {query[:55]} / {type(exc).__name__}: {exc}")
+            errors.append(f"Google News 실패: {query[:75]} / {type(exc).__name__}: {exc}")
+
+    if news_query_successes != len(NEWS_QUERIES):
+        STATUS_PATH.write_text(
+            "\n".join([
+                "# AI 반도체 설계·추론 가속기 Watch",
+                "",
+                f"- 조회시각: {now.astimezone(KST).strftime('%Y-%m-%d %H:%M:%S KST')}",
+                f"- 뉴스 검색 성공: {news_query_successes}/{len(NEWS_QUERIES)}",
+                "- 상태: 검색 원천 불완전으로 fail-closed",
+                *[f"- 오류: {x}" for x in errors[:10]],
+            ]) + "\n",
+            encoding="utf-8",
+        )
+        print(
+            f"ai_inference_route_feed_health=failed "
+            f"success={news_query_successes}/{len(NEWS_QUERIES)}"
+        )
+        return 2
 
     normalized = {}
     for row in raw:
