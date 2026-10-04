@@ -1526,6 +1526,14 @@ def semantic_policy_event_key(item: dict) -> str:
             for key in ("title", "description", "link", "source")
         )
     ).lower()
+    if (
+        "jay clayton" in text
+        and "ai czar" in text
+        and any(term in title_text for term in ("names", "named", "appoints", "appointed"))
+        and not any(term in title_text for term in ("expected to", "will name", "will appoint"))
+    ):
+        return "us-trump-ai-czar-jay-clayton-appointed-2026-10-03"
+
     if "project meridian" in text:
         stage = "commissioned"
         report_release_terms = (
@@ -1736,6 +1744,8 @@ def semantic_policy_event_key(item: dict) -> str:
 
 def semantic_policy_title(item: dict) -> str:
     key = semantic_policy_event_key(item)
+    if key == "us-trump-ai-czar-jay-clayton-appointed-2026-10-03":
+        return "트럼프, Jay Clayton 신임 AI 차르 임명"
     if key == "us-dow-project-meridian-commissioned":
         return "미 국방부 Project Meridian 출범: 미래전 기술 우선순위 연구"
     if key == "us-dow-project-meridian-report":
@@ -2455,7 +2465,7 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
             "revision": "us-dow-project-meridian-commissioned-ko-v1",
             "event_date": "2026년 9월 30일",
             "title": "미 국방부 Project Meridian 출범: 머스크·Palmer Luckey·Newt Gingrich 공동주도",
-            "core": "미 국방부가 Project Meridian을 출범시키고 Elon Musk·Palmer Luckey·Newt Gingrich를 공동주도자로 두며 MITRE가 독립 연구를 이끌도록 했습니다.",
+            "core": "미 국방부가 Project Meridian을 출범시켜 미래전 기술 우선순위를 연구합니다.",
             "stage": "공식 연구·자문 착수 단계 — 국방 계약·수주 확정이 아닙니다.",
             "actual": "미 국방부 CTO Emil Michael의 지휘 아래 미래 전장·필요 무기·기술을 연구하고 실행 가능한 개발·시험·전력화 과제를 제안합니다. MITRE 공개 명단은 현재 구성이고 향후 바뀔 수 있습니다.",
             "timeline": "2026년 9월 30일 국방부 발표·연구 착수 → 2026년 10월 2일 MITRE 구성 공개 → 120일 내 결과 제출 → 2027년 1월 28일 이전 최종 연구결과 목표",
@@ -2478,7 +2488,7 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
                 "revision": "us-dow-autonomous-warfare-fascom-ko-v1",
                 "event_date": "2026년 10월 2일",
                 "title": "미 육군 FASCOM 창설 지시: 자율무기 조달·전력화 실행 단계",
-                "core": "미 육군이 Futures and Autonomous Systems Command(FASCOM) 창설과 자율성 조달책임자 지정을 지시하며 조직·획득·전력화 단계로 이동했습니다.",
+                "core": "미 육군이 FASCOM 창설과 자율체계 획득·전력화를 지시했습니다.",
                 "stage": "미 육군 공식 시행 지시 — Project Meridian의 연구축보다 직접적인 조달·전력화 실행축입니다.",
                 "actual": "육군은 항공·기갑·화력·군수·공병·훈련 등 최소 6개 편성영역에 자율능력을 통합하고, Autonomy 담당 Portfolio Acquisition Executive를 두며 FY2028까지 자율 화력·전투차량·수상 보급·돌파·정찰감시표적획득 등의 획득·전력화를 우선하도록 했습니다.",
                 "timeline": "2026년 4월 21일 SOUTHCOM SAWC(별도 지역사령부) → 9월 30일 국방부 4성급 AUTOWARCOM·Project Agincourt 발표 → 10월 2일 미 육군 FASCOM 지시 → FY2028 우선 획득·전력화",
@@ -2511,7 +2521,7 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
             "revision": "us-dow-autonomous-warfare-execution-ko-v1",
             "event_date": "",
             "title": title_ko,
-            "core": "미 국방부가 자율·로봇 전력을 합동군 전반에 확대하기 위한 AUTOWARCOM·Project Agincourt 실행 단계를 추진하고 있습니다.",
+            "core": "미 국방부가 4성급 AUTOWARCOM 창설과 자율전투 신속획득을 추진합니다.",
             "stage": stage,
             "actual": "핵심은 자율·로봇 체계를 빠르게 획득·시험·배치하는 조직과 획득 권한을 묶는 것입니다.",
             "timeline": "9월 30일 AUTOWARCOM·Project Agincourt 발표 → 육군·각 군 조직·획득 후속 → 예산·조달·시험 → 실제 부대 전력화",
@@ -3146,6 +3156,20 @@ def _self_test_defense_future_warfare_event_model() -> None:
         "published_kst": "2026-10-02T12:00:00+09:00",
     }
     assert semantic_policy_event_key(fascom) == "us-dow-autonomous-warfare-army-fascom-2026-10-02"
+
+    clayton = {
+        "title": "Trump names intelligence chief Jay Clayton as AI czar, to head task force, WSJ reports",
+        "description": "Trump named Jay Clayton as AI czar.",
+        "link": "https://www.reuters.com/world/us/jay-clayton-lead-trumps-ai-task-force-deliver-report-120-days-wsj-reports-2026-10-03/",
+        "source": "Reuters",
+        "published_kst": "2026-10-03T12:00:00+09:00",
+    }
+    assert semantic_policy_event_key(clayton) == "us-trump-ai-czar-jay-clayton-appointed-2026-10-03"
+    expected_clayton = {
+        **clayton,
+        "title": "Trump expected to name Jay Clayton as AI czar",
+    }
+    assert semantic_policy_event_key(expected_clayton) != "us-trump-ai-czar-jay-clayton-appointed-2026-10-03"
 
     southcom = {
         "title": "SOUTHCOM Establishes Autonomous Warfare Command",
