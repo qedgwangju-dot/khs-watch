@@ -6,6 +6,7 @@ on:
       - ".github/workflows/data-center-growth-telegram-watch.yml"
       - "scripts/data_center_growth_watch.py"
       - "scripts/pjm_data_center_policy_watch.py"
+      - "scripts/us_grid_emergency_official.py"
       - "scripts/clean_pjm_alert_html.py"
       - "scripts/guard_pjm_baseline_source.py"
       - "scripts/us_data_center_time_to_power_watch.py"
@@ -84,6 +85,10 @@ jobs:
 
       - name: Check Korea AIDC special-law power and permit policy
         run: python scripts/korea_aidc_policy_watch_v2.py
+
+      - name: Validate PJM and DOE emergency source mapping
+        run: |
+          python scripts/us_grid_emergency_official.py
 
       - name: Check PJM RBP IRAS and large-load policy
         run: |
@@ -208,6 +213,7 @@ jobs:
               pathlib.Path("out/data_center_growth_alert.txt"),
               pathlib.Path("out/korea_aidc_policy_alert.txt"),
               pathlib.Path("out/pjm_data_center_policy_alert.txt"),
+              pathlib.Path("out/us_grid_emergency_alert.txt"),
               pathlib.Path("out/us_data_center_time_to_power_alert.txt"),
               pathlib.Path("out/us_data_center_generation_buildout_alert.txt"),
               pathlib.Path("out/us_data_center_cancellation_risk_alert.txt"),
