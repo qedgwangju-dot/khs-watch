@@ -2438,12 +2438,48 @@ def contextual_commercial_fact(title: str, body: str) -> str:
     return ""
 
 
+def compensation_cost_forecast_fact(title: str, body: str) -> str:
+    if not re.search(r"성과급|보상\s*비용", title) or not re.search(r"실적|이익|마진|수익성", title):
+        return ""
+    source = article_summary_body(body)
+    speakers = set(re.findall(r"([가-힣A-Za-z]+)\s+([가-힣A-Za-z]{2,20})\s+최고재무책임자\(CFO\)", source))
+    if len(speakers) != 1:
+        return ""
+    name, issuer = next(iter(speakers))
+    for sentence in market_materiality.source_sentences(source):
+        if not re.search(rf"{re.escape(name)}\s*CFO", sentence) or not re.search(
+            r"성과급과\s*신규\s*생산시설\s*초기\s*가동\s*비용\s*등", sentence,
+        ):
+            continue
+        cost = re.search(
+            r"(\d{4})회계연도\s*([1-4])분기[^!?]{0,35}?약\s*"
+            r"(\d[\d,.]*\s*(?:조|억|만)?\s*달러)(?:\([^)]{0,50}\))?의\s*추가\s*비용이\s*"
+            r"발생할\s*것으로\s*예상했다", sentence,
+        )
+        if not cost:
+            continue
+        amount = re.sub(r"\s+", "", cost.group(3))
+        fact = (f"{issuer}{korean_topic_particle(issuer)} 성과급·신규시설 초기 가동 등으로 "
+                f"{cost.group(1)}회계연도 {cost.group(2)}분기 추가 비용 {amount}를 예상했다.")
+        margin = re.search(
+            rf"{re.escape(issuer)}(?:은|는)\s*매출총이익률[^!?]{{0,100}}?다음\s*분기에는\s*"
+            r"약\s*(\d+(?:\.\d+)?)%로\s*낮아질\s*것으로\s*관측했다", source,
+        )
+        if margin:
+            fact += f" 다음 분기 매출총이익률은 {margin.group(1)}%로 전망했다."
+        return fact if core_sentence_is_complete(fact) else ""
+    return ""
+
+
 def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     factory = market_materiality.factory_tariff_observation(title, "\n".join(sentences))
     if factory:
         return (f"트럼프는 기업에 약 {factory['grace']}의 미국 공장 건설 시간을 주고, "
                 f"미건설 시 {factory['rate']}%까지 관세를 부과한다고 말했다.")
+    compensation = compensation_cost_forecast_fact(title, "\n".join(sentences))
+    if compensation:
+        return compensation
     flow_actors = [actor for actor in ("외국인", "기관", "개인", "연기금") if actor in title]
     if flow_actors and re.search(r"순매수|순매도|팔아치|사들|매수|매도", title):
         for sentence in sentences:
@@ -10065,9 +10101,14 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if market_materiality.focus_kind(title) == "national_exports":
         expected_export = source_focused_article_core(title, market_materiality.source_sentences(source))
         if expected_export:
-            comparable_core = re.sub(r"\(약[^)]*\)", "", core)
+            comparable_core = re.sub(r"\((?:약[^)]*|원화\s*환산\s*확인\s*불가)\)", "", core)
             if re.sub(r"\s+", "", expected_export) != re.sub(r"\s+", "", comparable_core):
                 errors.append("national_export_observed_period_total_mismatch")
+    expected_compensation = compensation_cost_forecast_fact(title, source)
+    if expected_compensation:
+        comparable_core = re.sub(r"\((?:약[^)]*|원화\s*환산\s*확인\s*불가)\)", "", core)
+        if re.sub(r"\s+", "", expected_compensation) != re.sub(r"\s+", "", comparable_core):
+            errors.append("compensation_cost_forecast_actor_period_or_amount_mismatch")
     expected_loss = profit_loss_result_fact(title, market_materiality.source_sentences(source))
     if expected_loss:
         basis = re.search(r"(?:모회사\s*귀속\s*|지배주주\s*귀속\s*)?순손실", expected_loss).group(0)

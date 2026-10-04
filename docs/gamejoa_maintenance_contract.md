@@ -124,6 +124,13 @@ Every defect or requested change must follow this sequence:
   milestone paragraphs and conditional amounts needed to meet a future target
   are not a current statistical release. Preserve the observed period and total
   in the core and check them again before delivery.
+- Same-run KRW conversion annotations cannot change a source event's original
+  foreign amount, observed period or stage, or make its correct core fail the
+  headline gate. Explicit unresolved conversion annotations are not estimates.
+- Compensation-cost earnings reports retain the CFO's company, fiscal quarter,
+  combined cost components, additional cost forecast and profitability outlook.
+  A combined bonus/startup cost is not a bonus-only amount. Repeated page heading
+  and subheading blocks are not source economic-change evidence.
 - Entertainment/private-life articles cannot qualify as customer discussions
   from meeting or social-photo certification words. Apply the same genre and
   foreground check before body retrieval, alert construction and final output.

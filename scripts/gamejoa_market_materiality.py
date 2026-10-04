@@ -9,7 +9,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 68
+VERSION = 69
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -269,6 +269,8 @@ def focus_kind(title: str) -> str:
         return "capital_listing"
     if re.search(r"자금\s*조달|외부\s*자본|funding|financing", title or "", re.I):
         return "financing"
+    if re.search(r"성과급|보상\s*비용", title or "") and re.search(r"매출|이익|마진|수익성|실적", title or ""):
+        return "earnings"
     # The changed measure/action outranks a company or commodity mentioned
     # earlier in a headline (e.g. DRAM share, not generic memory demand).
     for kind in ("project_response", "capital_spending", "industry_market_share", "trade_threat", "stockpile_release", "equity_compensation", "commercial_order", "breadth", "sanctions_request", "market_macro_response"):
@@ -535,6 +537,7 @@ def retail_fuel_observation(title: str, body: str) -> dict:
 
 def national_export_observation(sentence: str) -> dict | None:
     """Bind an observed current-period total, not historical or target figures."""
+    sentence = re.sub(r"\((?:약\s*\d[\d,.]*\s*(?:조|억|만)?\s*원|원화\s*환산\s*확인\s*불가)\)", "", sentence)
     if re.search(r"당시|과거|추정치|전망치|예상치|수출하면|수출할\s*경우", sentence):
         return None
     match = re.search(
@@ -1231,6 +1234,8 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     headline_text = re.sub(r"[\W_]+", "", title).casefold()
     for index, sentence in enumerate(sentences):
         if re.sub(r"[\W_]+", "", sentence).casefold() == headline_text:
+            continue
+        if title and sentence.startswith(title + " "):
             continue
         if PHOTO_DESCRIPTION.search(sentence):
             continue

@@ -2499,6 +2499,34 @@ class MaterialityChecks(unittest.TestCase):
         for wrong_core in (core.replace("1~9월", "9월"), core.replace("8145", "1855"), history):
             self.assertIn("national_export_observed_period_total_mismatch",
                           radar.source_core_fact_errors({**item, "telegram_core_fact": wrong_core}))
+        for annotation in ("(약 1,098조원)", "(원화 환산 확인 불가)"):
+            converted = core.replace("8145억달러", "8145억달러" + annotation)
+            self.assertTrue(materiality.core_focus_aligned(title, converted), converted)
+            self.assertFalse(radar.source_core_fact_errors({**item, "telegram_core_fact": converted}))
+            self.assertEqual(radar.compact_alert_block_errors(
+                f"1) {title}\n- 핵심: {converted}\n- 출처: https://www.newsis.com/view/export-current"
+            ), [])
+
+    def test_compensation_core_uses_issuer_cost_horizon_and_margin_forecast(self):
+        title = "반도체 호황에 성과급↑…메모리 3사 실적에 '보상비용' 변수"
+        heading = title + ' 마이크론 실적발표서 "성과급, 매출총이익률 전망에 큰 영향" 삼성·SK하이닉스 3분기 충당금 확대 전망'
+        cost = ('머피 CFO는 다음 분기 매출총이익률 전망과 관련한 질문에 "성과급은 매출총이익률 전망에 큰 영향을 미치는 요인"이라며 '
+                '성과급과 신규 생산시설 초기 가동 비용 등으로 2027회계연도 1분기(9∼11월)에 약 10억달러(1조3천500억원)의 추가 비용이 발생할 것으로 예상했다.')
+        body = (heading + '\n마크 머피 마이크론 최고재무책임자(CFO)는 최근 콘퍼런스콜에서 수익성 영향을 설명했다.\n'
+                + cost + '\n마이크론은 매출총이익률이 4분기 87%에서 성과급을 비롯한 비용 증가 영향에 따라 다음 분기에는 약 86.3%로 낮아질 것으로 관측했다.')
+        audit = materiality.assess(title, body)
+        self.assertNotIn(heading, [row["source_excerpt"] for row in audit["evidence"]])
+        self.assertEqual(materiality.focus_kind(title), "earnings")
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        for value in ("마이크론", "성과급·신규시설 초기 가동", "2027회계연도 1분기", "10억달러", "예상했다", "86.3%", "전망했다"):
+            self.assertIn(value, core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        self.assertLessEqual(len(core), 100)
+        self.assertFalse(radar.source_core_fact_errors({**item, "telegram_core_fact": core}))
+        for wrong_core in (core.replace("마이크론", "삼성전자"), core.replace("1분기", "4분기"), core.replace("10억", "26억"), core.replace("예상했다", "집행했다")):
+            self.assertIn("compensation_cost_forecast_actor_period_or_amount_mismatch",
+                          radar.source_core_fact_errors({**item, "telegram_core_fact": wrong_core}))
 
     def test_export_history_or_future_target_alone_is_not_current_data(self):
         title = "한국 연간 수출 1조 달러 목표 눈앞"
