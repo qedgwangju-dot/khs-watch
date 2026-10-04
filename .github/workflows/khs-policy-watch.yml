@@ -67,7 +67,9 @@ jobs:
           PYTHONPATH=. python - <<'PY'
           import scripts.khs_trusted_policy_news_watch as m
           m._self_test_defense_future_warfare_event_model()
+          m._self_test_fcc_optical_transceiver_event_model()
           print("defense_future_warfare_regression=passed")
+          print("fcc_optical_transceiver_regression=passed")
           PY
           python -m py_compile scripts/gamejoa_preopen_news_radar_full_compact_runner.py
           PYTHONPATH=. python tests/test_polysilicon_policy_guard.py
