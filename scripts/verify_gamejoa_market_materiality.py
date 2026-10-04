@@ -2072,12 +2072,28 @@ class MaterialityChecks(unittest.TestCase):
         with patch.object(radar.base, "kst_now", return_value=NOW):
             self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
 
+    def test_agency_program_overview_is_not_new_procurement_or_rule_change(self):
+        title = '"필수의약품 수급불안 없다"…정부주도 공급[식약처가 바꾼다]'
+        body = ("식약처, 의료현장 필수의약품 공적 공급 확대. "
+                "정부는 올해 6월부터 공적 공급체계를 가동했다. "
+                "지난 9월에는 기존 의약품 10개 품목을 긴급도입 대상으로 전환했다. "
+                "공적 공급제도를 활용하는 것은 민간 공급만으로 확보가 어려운 의약품에 정부가 개입하기 위해서다.")
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "exclude", audit)
+        self.assertEqual(audit["reason"], "agency_role_overview_not_new_industry_event")
+        current = materiality.assess(title, "식약처는 오늘 제조기업과 신규 의약품 공급 계약 500억원을 체결했다. " + body)
+        self.assertEqual(current["disposition"], "keep", current)
+        self.assertGreaterEqual(current["priority"], 2, current)
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
+
     def test_support_mou_needs_size_terms_or_committed_execution(self):
-        title = "은행, 공제조합과 금융지원 업무협약"
-        body = ("은행은 공제조합과 플랫폼 기반 금융지원 업무협약을 체결했다. "
-                "양측은 매출채권신용공제와 지급결제 플랫폼을 연계해 기업의 제조·생산자금을 지원한다.")
+        title = "신한은행, 공제조합과 금융지원 업무협약"
+        body = ("신한은행은 자본재공제조합과 플랫폼 기반 금융지원 업무협약을 체결했다. "
+                "양측은 자본재공제조합의 매출채권신용공제와 신한은행 지급결제 플랫폼을 연계해 기업의 제조·생산자금을 지원한다.")
         audit = materiality.assess(title, body)
         self.assertLess(audit["priority"], 2, audit)
+        self.assertEqual(audit.get("scope_note"), "support_mou_without_size_terms_or_committed_execution", audit)
         scoped = materiality.assess("은행, 제조기업과 1000억원 투자 자금조달 약정 체결",
                                     body + " 은행은 제조기업과 투자 자금조달 대출 약정 1000억원을 체결했다.")
         self.assertGreaterEqual(scoped["priority"], 2, scoped)

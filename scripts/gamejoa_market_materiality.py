@@ -9,7 +9,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 56
+VERSION = 57
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -1000,7 +1000,21 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     ) and re.search(r"가정하면|오를\s*경우|오르면|분석이\s*나왔다", lead):
         result.update(disposition="exclude", priority=0, reason="hypothetical_household_interest_calculation_not_new_rate")
         return result
-    if re.search(r"업무를[^.!?]{0,45}살펴보는\s*기획\s*기사|기관의\s*(?:역할|업무)[^.!?]{0,25}소개하는\s*기획", body[:800]) and not DIRECT_HEADLINE_CHANGE.search(title):
+    agency_overview = bool(
+        re.search(r"업무를[^.!?]{0,45}살펴보는\s*기획\s*기사|기관의\s*(?:역할|업무)[^.!?]{0,25}소개하는\s*기획", body[:800])
+        or re.search(r"\[[^\]]{2,25}(?:가\s*바꾼다|역할\s*소개|업무\s*소개)\]", title)
+    )
+    new_instrument = any(
+        not BACKGROUND.search(sentence) and not PAST_ACTION.search(sentence)
+        and re.search(
+            r"(?:고시|법률|법안|규칙|시행령).{0,30}(?:개정했다|제정했다|시행한다|공포했다)|"
+            r"(?:조달|공급|구매)\s*계약.{0,30}(?:체결|확정)|"
+            r"(?:예산|지원금|계약금액).{0,30}\d[\d,.]*\s*(?:억|조)\s*원.{0,20}(?:확정|증액|투입)|"
+            r"(?:새|신규)\s*(?:허가|규제|제도).{0,30}(?:시행일|시행|발효)", sentence,
+        )
+        for sentence in sentences
+    ) if agency_overview else False
+    if agency_overview and not new_instrument and not DIRECT_HEADLINE_CHANGE.search(title):
         result.update(disposition="exclude", priority=0, reason="agency_role_overview_not_new_industry_event")
         return result
     if re.search(r"화제의\s*바이오人|인물\s*탐구|CEO\s*프로필|경영자\s*약력|executive profile", title, re.I) and not (

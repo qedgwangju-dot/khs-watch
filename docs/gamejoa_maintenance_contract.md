@@ -73,6 +73,10 @@ Every defect or requested change must follow this sequence:
   Bank support MOUs need concrete size, financing terms or committed execution,
   not a platform-promotion paragraph. National export milestones prioritize the
   observed cumulative total and period over hypothetical required monthly sales.
+- Institutional role/program series cannot qualify on an expansion subheading
+  or a rationale for government intervention. Require a new scoped legal
+  instrument, budget or procurement commitment; retain actual new instruments
+  even when the source also describes the agency's existing mission.
 - Entertainment/private-life articles cannot qualify as customer discussions
   from meeting or social-photo certification words. Apply the same genre and
   foreground check before body retrieval, alert construction and final output.
