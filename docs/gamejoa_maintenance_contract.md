@@ -105,6 +105,9 @@ Every defect or requested change must follow this sequence:
   record counts to the named institution and retain scheduled versus completed
   meetings. Prevention drills and defended attempts are not actual breaches;
   do not infer an institution from an anonymous or ambiguous count paragraph.
+  Named multiple victims retain their separate populations and estimated versus
+  confirmed counts. Loan-broker disclosures are not customer disclosures;
+  uncertainty about AI use stays attributed to the affected institution.
 - Semiconductor capacity outlooks retain the investment fiscal period and the
   separately attributed production-effect horizon. Market-breadth comparisons
   retain the index, constituent population and high/year-start comparison basis;
@@ -113,6 +116,10 @@ Every defect or requested change must follow this sequence:
 - A forum's agenda, keynote theme and discussion of expanding supply are not
   new rules or new capacity. A sourced new instrument or quantified committed
   budget remains eligible even when announced at a forum.
+- An investment sum in a headline cannot hide exhibition attendance in the
+  source lead. Existing project budgets in the exhibition's background are not
+  a new investment announcement. Retain new executed construction or contracts
+  when the headline or lead actually foregrounds that change.
 - Entertainment/private-life articles cannot qualify as customer discussions
   from meeting or social-photo certification words. Apply the same genre and
   foreground check before body retrieval, alert construction and final output.

@@ -2133,6 +2133,18 @@ class MaterialityChecks(unittest.TestCase):
         with patch.object(radar.base, "kst_now", return_value=NOW):
             self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
 
+    def test_investment_headline_cannot_hide_exhibition_foreground_in_body(self):
+        title = '삼성전자, "360조 투자" 용인 반도체 산단 "이렇게 건설됩니다"'
+        body = ('삼성전자는 국가산업단지의 미래 모습과 에너지 관리 방안을 주민에게 소개했다.\n'
+                '삼성전자는 용인 사이버 과학축제에 참가했다.\n'
+                '청사진과 에너지 인프라를 주제로 전시를 구성했다.\n'
+                '삼성전자는 용인 국가산단에 약 360조원을 투자할 계획이다.')
+        self.assertEqual(materiality.assess(title, body)['reason'], 'exhibition_foreground_not_new_investment')
+        with patch.object(radar.base, 'kst_now', return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
+        actual = '삼성전자는 용인 반도체 공장을 오늘 착공했다.\n' + body
+        self.assertEqual(materiality.assess(title, actual)['disposition'], 'keep')
+
     def test_personal_finance_advice_is_not_new_market_flow(self):
         title = "배당주 말고 S&P500…전문가가 말한 자산 키우는 법"
         body = ("작가는 매달 배당금이 들어오는 대신 주가 상승에 따른 수익은 크지 않다고 설명했다. "
@@ -2328,6 +2340,27 @@ class MaterialityChecks(unittest.TestCase):
             '지난해 신한은행이 국회에 자료를 제출했다.\n이 과정에서 개인정보 2만5727건이 유출됐다.\n' + meeting,
         ):
             self.assertEqual(radar.financial_cyber_incident_fact(title, body), '')
+
+    def test_multiple_cyber_victims_retain_headcount_basis_and_uncertainty(self):
+        title = 'AI 해킹에 비상 걸린 금융…현대캐피탈·예가람저축은행도 뚫렸다'
+        body = ('예가람저축은행은 고객 개인정보가 유출된 정황을 확인했다고 밝혔다.\n'
+                '유출된 정보는 성명과 연락처다. 유출 규모는 약 4만명에 달하는 것으로 사측은 추정하고 있다.\n'
+                '현재까지 AI 침투 흔적은 발견되지 않았다. AI 이용 가능성도 배제할 수 없어 확인할 예정이다.\n'
+                '현대캐피탈도 해외 IP를 통한 주택대출 모집인 페이지 공격을 확인했다고 밝혔다.\n'
+                '공격받은 페이지는 공개 정보를 확인하는 페이지다.\n'
+                '회사는 주택대출 모집인 146명의 일부 개인정보가 유출된 것을 확인했다.')
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        for expected in ('현대캐피탈', '대출모집인 146명', '확인했다', '예가람저축은행', '약4만명', '추정했다', '예가람저축은행 공격의 AI 이용은 미확인'):
+            self.assertIn(expected, core)
+        self.assertLessEqual(len(core), radar.GAMEJOA_CORE_MAX_CHARS)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        for wrong in (core.replace('대출모집인 146명', '고객 146명'), core.replace('약4만명', '4만건'),
+                      core.replace('추정했다', '확정했다'), core.replace('AI 이용은 미확인', 'AI 이용을 확인한 것')):
+            self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': wrong}))
+        with patch.object(radar.base, 'kst_now', return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 1)), 1)
 
     def test_product_profile_contract_summary_retains_the_contextual_supplier(self):
         title = '신생아 선별검사, 유전체 시대 열린다'

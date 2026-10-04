@@ -2338,6 +2338,45 @@ def financial_cyber_incident_fact(title: str, body: str) -> str:
     sentences = market_materiality.source_sentences(body)
     incidents = []
     bank_pattern = r"[A-Za-z가-힣]{2,18}(?:은행|캐피탈|금융지주)"
+    headline_banks = list(dict.fromkeys(re.findall(bank_pattern, title)))
+    if len(headline_banks) == 2:
+        facts = []
+        for bank in headline_banks:
+            for index, sentence in enumerate(sentences):
+                if bank not in sentence or not re.search(r"공격|해킹|유출", sentence):
+                    continue
+                window = []
+                for row in sentences[index:index + 3]:
+                    if any(other != bank for other in re.findall(bank_pattern, row)):
+                        break
+                    window.append(row)
+                context = " ".join(window)
+                if not any(market_materiality.focus_matches(title, row) for row in window):
+                    continue
+                estimate = re.search(r"유출\s*규모는\s*(약\s*)?(\d[\d,]*(?:만[\d,]*)?)명.{0,35}추정", context)
+                broker = re.search(r"(?:주택\s*)?대출\s*모집인\s*(\d[\d,]*)명.{0,50}개인정보가\s*유출된.{0,20}확인", context)
+                if estimate:
+                    amount = f"{(estimate.group(1) or '').strip()}{estimate.group(2).replace(',', '')}명"
+                    facts.append(f"{bank}{korean_topic_particle(bank)} 개인정보 유출 규모를 {amount}으로 추정했다.")
+                elif broker:
+                    facts.append(f"{bank}{korean_topic_particle(bank)} 대출모집인 {broker.group(1)}명의 개인정보 유출을 확인했다.")
+                else:
+                    continue
+                break
+        if len(facts) == 2:
+            fact = " ".join(facts)
+            owner = ""
+            for index, sentence in enumerate(sentences):
+                banks = set(re.findall(bank_pattern, sentence))
+                if banks:
+                    owner = banks.pop() if len(banks) == 1 else ""
+                if (owner in headline_banks
+                        and re.search(r"AI\s*침투\s*흔적은\s*발견되지\s*않", sentence)
+                        and re.search(r"AI\s*이용\s*가능성", " ".join(sentences[index:index + 2]))):
+                    fact += f" {owner} 공격의 AI 이용은 미확인이다."
+                    break
+            if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact):
+                return fact
     for index, sentence in enumerate(sentences):
         count = re.search(r"개인정보\s*(\d[\d,]*(?:만[\d,]*)?)\s*건이\s*유출(?:됐다|되었다)", sentence)
         if not count or not market_materiality.focus_matches(title, sentence) or market_materiality.BACKGROUND.search(sentence):

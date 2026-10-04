@@ -9,7 +9,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 66
+VERSION = 67
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -286,11 +286,11 @@ def focus_matches(title: str, sentence: str) -> bool:
         return False
     kind = focus_kind(title)
     if kind == "cyber_incident":
-        if re.search(r"예방|모의\s*훈련|모의\s*해킹|가상\s*공격|시연|유출되지|유출로\s*이어지지|피해가\s*없", sentence):
+        if re.search(r"예방|모의\s*훈련|모의\s*해킹|가상\s*공격|시연|가정|유출될|유출되지|유출로\s*이어지지|피해가\s*없", sentence):
             return False
         incident = bool(
             re.search(r"해킹|사이버|랜섬웨어|침해|(?:개인|고객|임직원)\s*정보|data breach|ransomware", sentence, re.I)
-            and re.search(r"유출(?:됐|되었|됐다|되었다)|유출.{0,55}(?:밝혔다|확인했다|확인됐|파악했다)|"
+            and re.search(r"유출(?:됐|되었|됐다|되었다)|유출.{0,55}(?:밝혔다|확인했다|확인됐|파악했다|추정했다)|"
                           r"(?:서비스|운영|생산|거래).{0,20}(?:중단됐|중단했다)|피해.{0,20}(?:발생했|봤다)|"
                           r"data breach.{0,35}(?:reported|confirmed)|ransomware.{0,35}(?:halted|disrupted)", sentence, re.I)
         )
@@ -1048,7 +1048,11 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     if re.search(r"따라\s*투자하면|투자하면\s*돈\s*벌까|경제\s*용어|투자\s*방법|자산\s*(?:키우는|늘리는)\s*법|재테크\s*(?:방법|비법)|장기\s*투자\s*요령", title) and not DIRECT_HEADLINE_CHANGE.search(title):
         result.update(disposition="exclude", priority=0, reason="investment_method_explainer_not_new_market_event")
         return result
-    if re.search(r"(?:축제|박람회|전시회).{0,20}(?:참가|참여)|포토존|체험\s*행사", title) and not DIRECT_HEADLINE_CHANGE.search(title):
+    exhibition_lead = " ".join(source_sentences(body)[:3])
+    if re.search(r"(?:축제|박람회|전시회).{0,20}(?:참가|참여)|포토존|체험\s*행사", title + " " + exhibition_lead) and not (
+        DIRECT_HEADLINE_CHANGE.search(title)
+        or re.search(r"(?:공급|납품|기술이전)\s*계약을\s*체결했다|공장.{0,25}착공했다|양산을\s*시작했다", exhibition_lead)
+    ):
         result.update(disposition="exclude", priority=0, reason="exhibition_foreground_not_new_investment")
         return result
     routine_certificate = bool(re.search(r"보안인증|보안\s*인증|CSAP|ISMS|컴피턴시|competency", title, re.I)
