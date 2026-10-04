@@ -1,5 +1,6 @@
 name: AI Inference Accelerator Routing Watch
 
+# Semantic official-page snapshots + two-observation confirmation prevent render/parser jitter alerts.
 on:
   push:
     branches: [main]
