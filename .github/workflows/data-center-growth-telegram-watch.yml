@@ -77,7 +77,8 @@ jobs:
           username = data["result"].get("username", "")
           if username.lower() != "khs88790088790000887900_bot":
               raise SystemExit(f"Wrong Telegram bot: @{username}")
-          print(f"Telegram route OK: @{username}")
+          first_name = str(data["result"].get("first_name", ""))
+          print(f"Telegram route OK: @{username} first_name={first_name}")
           PY
 
       - name: Check official Census data center series
@@ -523,6 +524,7 @@ jobs:
             out/korea_aidc_policy_pending_state.json
             out/pjm_data_center_policy_status.md
             out/pjm_data_center_policy_alert.txt
+            out/us_grid_emergency_alert.txt
             out/pjm_data_center_policy_pending_state.json
             out/us_data_center_time_to_power_status.md
             out/us_data_center_time_to_power_alert.txt
