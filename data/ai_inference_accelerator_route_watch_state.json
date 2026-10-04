@@ -1,11 +1,26 @@
 {
   "initialized": true,
   "last_collection": {
-    "errors": [],
+    "errors": [
+      "Google News 실패: \"OpenAI\" Cerebras NVIDIA Ultrafast inference GPU accele / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"GPT-6.1 Sol\" Ultrafast NVIDIA Cerebras GPU / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"GPT-6 Astra\" Ultrafast Cerebras NVIDIA GPU / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"OpenAI\" \"750MW\" Cerebras tranche capacity online / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"OpenAI\" Cerebras contract capacity delay cancellation  / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"OpenAI\" inference routing accelerator NVIDIA Cerebras  / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"OpenAI\" tokens per second Ultrafast batch size GPU Cer / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"Cerebras\" OpenAI model support GPT-6.1 Astra Ultrafast / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"OpenAI\" service_tier ultrafast pricing speed / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"OpenAI\" low batch NVIDIA GPU inference latency / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"Synopsys\" EDA consumption-based pricing AI agents tape / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"Synopsys\" FY2027 revenue guidance 11.15 billion invest / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"Synopsys\" GPT-Synopsys OpenAI licensing revenue share  / HTTPError: HTTP Error 503: Service Unavailable",
+      "Google News 실패: \"Synopsys\" AWS licensing royalty output custom silicon  / HTTPError: HTTP Error 503: Service Unavailable"
+    ],
     "material_items": 0,
     "new_articles": 0,
     "new_events": 0,
-    "raw_items": 56
+    "raw_items": 0
   },
   "official_pages": {
     "OpenAI GPT-5.6 Sol Ultrafast 미리보기": {
@@ -127,5 +142,5 @@
   },
   "official_snapshot_schema_version": 2,
   "seen": {},
-  "updated_at_kst": "2026-10-04T09:20:03+09:00"
+  "updated_at_kst": "2026-10-04T09:21:01+09:00"
 }
