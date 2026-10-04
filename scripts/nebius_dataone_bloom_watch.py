@@ -18,6 +18,7 @@ ALERT = OUT / "nebius_dataone_bloom_alert.txt"
 STATUS = OUT / "nebius_dataone_bloom_status.md"
 
 FORMAT_VERSION = 4
+# Verification reruns must remain silent when extracted facts are unchanged.
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
 
 FRANKFORT = "https://dataonefrankfort.com/"
