@@ -2311,6 +2311,26 @@ def korean_topic_particle(name: str) -> str:
     return "은" if 0xAC00 <= last <= 0xD7A3 and (last - 0xAC00) % 28 else "는"
 
 
+def asset_financing_observation(sentence: str) -> dict[str, str]:
+    """Bind the financing actor, quantified asset and proposal stage together."""
+    proposal = re.search(
+        r"(?:특수목적기구|\bSPV\b).{0,20}이전하는\s*방안.{0,20}(논의|검토)", sentence, re.I,
+    )
+    issuer = re.search(r"([A-Za-z0-9가-힣&·]+)(?:은|는)\s", sentence)
+    asset = re.search(
+        r"(\d[\d,.]*\s*(?:억|만|조)?\s*달러)\s*(?:\(약[^)]*\))?\s*(?:규모의\s*)?"
+        r"([^.!?]{2,45}?\s*칩)(?:을|를)", sentence,
+    )
+    if not (proposal and issuer and asset):
+        return {}
+    return {
+        "issuer": issuer.group(1),
+        "amount": re.sub(r"\s+", "", asset.group(1)),
+        "asset": re.sub(r"[‘’'\"“”]", "", asset.group(2)).strip(),
+        "stage": proposal.group(1),
+    }
+
+
 def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     flow_actors = [actor for actor in ("외국인", "기관", "개인", "연기금") if actor in title]
@@ -2330,6 +2350,24 @@ def source_focused_article_core(title: str, sentences: list[str]) -> str:
         return ""
     focus = market_materiality.focus_kind(title)
     source = " ".join(sentences)
+    if focus == "asset_financing":
+        for sentence in sentences:
+            observation = asset_financing_observation(sentence)
+            if not observation:
+                continue
+            name = observation["issuer"]
+            fact = (f"{name}{korean_topic_particle(name)} {observation['amount']} {observation['asset']}을 "
+                    f"특수목적기구(SPV)로 이전하는 방안을 {observation['stage']} 중이다.")
+            if core_sentence_is_complete(fact):
+                return fact
+    if focus == "fx" and re.search(r"전망|예상", title):
+        brokers = set(re.findall(r"[A-Za-z가-힣]{2,20}증권", source))
+        target = re.search(r"(올해\s*연말|내년\s*연말)\s*환율은\s*(\d[\d,]*)\s*원\s*(전후|안팎)(?:로|으로)?\s*(?:예상|전망)", source)
+        if len(brokers) == 1 and target:
+            broker = next(iter(brokers))
+            fact = f"{broker}{korean_topic_particle(broker)} {target.group(1)} 원·달러 환율을 {target.group(2)}원 {target.group(3)}로 전망했다."
+            if core_sentence_is_complete(fact):
+                return fact
     if focus == "national_exports":
         observed = re.search(
             r"올해\s*(\d{1,2}\s*[~∼~-]\s*\d{1,2}월)\s*누적\s*수출액(?:은|이|가)\s*"
@@ -7777,6 +7815,13 @@ def korean_title_core_aligned(title: str, core: str) -> bool:
     if any(token not in entity_tokens for token in matched):
         return True
 
+    if market_materiality.focus_kind(title) == "asset_financing":
+        observation = asset_financing_observation(core)
+        return bool(
+            observation and observation["issuer"].casefold() in title.casefold()
+            and re.search(r"칩|GPU", title, re.I)
+        )
+
     event_terms = (
         "매수", "매각", "취득", "소각", "실적", "수주", "계약", "증설", "양산", "착공",
         "가동", "관세", "금리", "유가", "폭염", "정전", "수출", "상장", "인상", "하락",
@@ -9831,6 +9876,15 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     errors = []
     if not market_materiality.core_focus_aligned(title, core):
         errors.append("headline_event_or_period_mismatch")
+    if market_materiality.focus_kind(title) == "asset_financing":
+        observations = [asset_financing_observation(sentence) for sentence in market_materiality.source_sentences(source)]
+        observations = [item for item in observations if item]
+        if observations and asset_financing_observation(core) not in observations:
+            errors.append("asset_financing_actor_amount_or_stage_mismatch")
+    if market_materiality.focus_kind(title) == "fx" and re.search(r"전망|예상", title):
+        expected_forecast = source_focused_article_core(title, market_materiality.source_sentences(source))
+        if expected_forecast and re.sub(r"\s+", "", expected_forecast) != re.sub(r"\s+", "", core):
+            errors.append("fx_forecast_attribution_target_or_horizon_mismatch")
     expected_loss = profit_loss_result_fact(title, market_materiality.source_sentences(source))
     if expected_loss:
         basis = re.search(r"(?:모회사\s*귀속\s*|지배주주\s*귀속\s*)?순손실", expected_loss).group(0)

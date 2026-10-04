@@ -2110,6 +2110,91 @@ class MaterialityChecks(unittest.TestCase):
         with patch.object(radar.base, "kst_now", return_value=NOW):
             self.assertEqual(len(radar.quality_display_alerts([alert(title, body)], 1)), 1)
 
+    def test_submission_word_is_not_shipments(self):
+        title = "중학교 신입생 배정 계획 확정"
+        body = "졸업예정자들은 중학교에 대해 지망순위를 기록한 배정원서를 제출하면 된다."
+        audit = materiality.assess(title, body)
+        self.assertNotEqual(audit["disposition"], "keep", audit)
+        self.assertEqual(audit["evidence"], [])
+        actual = materiality.assess("반도체 기업, 3분기 출하량 30% 증가", "회사의 3분기 반도체 출하량은 전년비 30% 증가했다.")
+        self.assertEqual(actual["disposition"], "keep", actual)
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
+
+    def test_exhibition_cannot_republish_existing_investment_plan(self):
+        title = "삼성전자, 용인 과학축제 참가…국가산단 청사진 제시"
+        body = ("삼성전자는 과학축제에 참가해 전시를 운영했다. "
+                "삼성전자는 용인 국가산단에 약 360조원을 투자할 계획이다.")
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["reason"], "exhibition_foreground_not_new_investment")
+        actual = materiality.assess("삼성전자, 용인 새 공장 착공…축제서 진행 현황 공개",
+                                    "삼성전자는 오늘 용인 반도체 공장을 착공했다. " + body)
+        self.assertEqual(actual["disposition"], "keep", actual)
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
+
+    def test_personal_finance_advice_is_not_new_market_flow(self):
+        title = "배당주 말고 S&P500…전문가가 말한 자산 키우는 법"
+        body = ("작가는 매달 배당금이 들어오는 대신 주가 상승에 따른 수익은 크지 않다고 설명했다. "
+                "배당 상품의 수익률은 일반적으로 10% 정도이며 장기 투자자는 지수를 사라고 조언했다.")
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["reason"], "investment_method_explainer_not_new_market_event")
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
+
+    def test_fx_outlook_core_keeps_analyst_target_and_horizon(self):
+        title = "원·달러 환율 다시 오르나…1400원대 넘어설 전망"
+        body = ("원·달러 환율이 1330원대까지 급락한 뒤 다시 상승할 것이라는 전망이 나왔다. "
+                "4일 IBK투자증권에 따르면 향후 원·달러 환율이 다시 상승하는 흐름으로 전개될 것으로 전망했다. "
+                "올해 연말 환율은 1400원 전후로 예상했으며 대외 요인 악화 가능성도 열어둘 필요가 있다고 판단했다.")
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        for expected in ("IBK투자증권", "올해 연말", "1400원 전후", "전망했다"):
+            self.assertIn(expected, core)
+        self.assertNotIn("1330", core)
+        self.assertFalse(radar.source_core_fact_errors({**item, "telegram_core_fact": core}))
+        for wrong in (
+            core.replace("IBK투자증권", "다른증권"),
+            core.replace("1400", "1500"),
+            core.replace("올해 연말", "내년 연말"),
+            core.replace("전망했다", "기록했다"),
+        ):
+            with self.subTest(wrong=wrong):
+                self.assertIn("fx_forecast_attribution_target_or_horizon_mismatch",
+                              radar.source_core_fact_errors({**item, "telegram_core_fact": wrong}))
+                self.assertFalse(radar.source_output_aligned({**item, "telegram_core_fact": wrong}))
+        vague = materiality.assess(title, "전문가는 앞으로 환율 상승을 전망했다.")
+        self.assertNotIn("attributed_fx_forecast", {e["kind"] for e in vague["evidence"]})
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 1)), 1)
+
+    def test_gpu_asset_financing_core_preserves_discussion_not_sale_completion(self):
+        title = "11조 규모 엔비디아 칩 파는 아마존"
+        body = ("파이낸셜타임스에 따르면 아마존은 최근 투자자들과 접촉해 미국 데이터센터에 배치된 "
+                "약 80억달러(약 11조원) 규모의 엔비디아 그레이스 블랙웰 칩을 특수목적기구(SPV)로 이전하는 방안을 논의하고 있다. "
+                "엔비디아 역시 금융회사들과 AI 인프라 전용 금융 플랫폼을 구축하고 있다.")
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        self.assertEqual(materiality.focus_kind(title), "asset_financing")
+        for expected in ("아마존", "80억달러", "그레이스 블랙웰", "특수목적기구(SPV)", "논의 중"):
+            self.assertIn(expected, core)
+        self.assertLessEqual(len(core), radar.GAMEJOA_CORE_MAX_CHARS)
+        self.assertNotIn("완료", core)
+        self.assertFalse(radar.source_core_fact_errors({**item, "telegram_core_fact": core}))
+        for wrong in (
+            core.replace("아마존", "엔비디아"),
+            core.replace("80억", "90억"),
+            core.replace("그레이스 블랙웰", "호퍼"),
+            core.replace("논의 중이다", "완료했다"),
+            "엔비디아는 금융회사들과 AI 인프라 전용 금융 플랫폼을 구축하고 있다.",
+        ):
+            with self.subTest(wrong=wrong):
+                self.assertIn("asset_financing_actor_amount_or_stage_mismatch",
+                              radar.source_core_fact_errors({**item, "telegram_core_fact": wrong}))
+                self.assertFalse(radar.source_output_aligned({**item, "telegram_core_fact": wrong}))
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 1)), 1)
+
     def test_support_mou_needs_size_terms_or_committed_execution(self):
         title = "신한은행, 공제조합과 금융지원 업무협약"
         body = ("신한은행은 자본재공제조합과 플랫폼 기반 금융지원 업무협약을 체결했다. "

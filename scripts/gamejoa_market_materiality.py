@@ -9,7 +9,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 58
+VERSION = 59
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -145,6 +145,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("economic_response", r"경제\s*전쟁|제재.{0,25}대응", r"경제\s*전쟁|제재|환율|필수\s*물자"),
     ("national_exports", r"수출국|연간\s*수출", r"누적\s*수출|수출액|월간\s*수출"),
     ("authorized_capital", r"수권\s*(?:자본|주식)|authorized (?:capital|shares)", r"수권\s*(?:자본|주식)|authorized (?:capital|shares)"),
+    ("asset_financing", r"(?:칩|GPU|데이터센터|설비).{0,25}(?:파는|매각|담보|재임차)|sale.leaseback", r"특수목적기구|\bSPV\b|매각|담보|재임차|sale.leaseback"),
     ("customer_implementation", r"1차\s*시공|초도\s*납품", r"1차\s*시공|초도\s*납품"),
     ("commercial_order", r"수주|공급\s*계약|납품\s*계약|발사\s*계약|\d+\s*년\s*계약(?!가)", r"수주|발주|계약"),
     ("industrial_program", r"(?:SMR|원전|양자|반도체|로봇).{0,16}상용화", r"(?:상용화|사업화).{0,50}(?:출범|지원|시행|추진)|(?:출범|지원|시행|추진).{0,50}(?:상용화|사업화)"),
@@ -592,7 +593,7 @@ RULES = (
      r"비축\s*(?:유|원유|경유)|석유\s*비축|oil reserves|oil stockpile",
      r"방출|매입|재비축|채우|채운|채울|release|refill|purchase"),
     ("earnings_or_guidance", ("earnings",),
-     r"매출|영업이익|순이익|영업손실|순손실|마진|실적|가이던스|출하|판매(?:량|실적|는|가)|시장점유율|revenue|earnings|profit|guidance|shipments",
+     r"매출|영업이익|순이익|영업손실|순손실|마진|실적|가이던스|(?<!제)출하|판매(?:량|실적|는|가)|시장점유율|revenue|earnings|profit|guidance|shipments",
      r"증가|감소|상승|하락|상회|하회|상향|하향|달성|기록|집계|발표|공시|전망|예상|컨센서스|추정치|적자\s*전환|적자로\s*전환|rise|fall|grow|cut|rais|report|forecast|consensus|beat|miss"),
     ("national_export_release", ("earnings", "discount_rate"),
      r"누적\s*수출|월간\s*수출|수출액", r"달(?:했|하|해)|늘었|증가|감소|기록|집계|넘어섰|달성"),
@@ -646,8 +647,8 @@ RULES = (
      r"팩트시트|공동\s*합의|(?:사업|프로젝트)의?\s*추진\s*여부",
      r"포함[^.!?]{0,20}않|팩트시트[^.!?]{0,20}없|말하기\s*어렵|밝히기\s*어렵"),
     ("operating_asset_transaction", ("earnings", "timeline"),
-     r"(?:사옥|부동산|사업부|영업자산).{0,20}(?:매각|취득|매입)|operating asset|headquarters sale",
-     r"결정|확정|검토|추진|계약|매각했다|매입했다|decid|consider|contract|sold|acquir"),
+     r"(?:사옥|부동산|사업부|영업자산).{0,20}(?:매각|취득|매입)|(?:칩|GPU|데이터센터|설비).{0,100}(?:특수목적기구|\bSPV\b|담보|재임차)|operating asset|headquarters sale|sale.leaseback",
+     r"결정|확정|검토|추진|논의|계약|매각했다|매입했다|이전하는|decid|consider|discuss|contract|sold|acquir"),
     ("institutional_capital_access", ("earnings", "timeline"),
      r"국민연금|연기금|벤처캐피털|\bvc\b|pension fund|venture capital",
      r"투자\s*기회.{0,8}(?:확대|넓)|출자|투자협력|투자.{0,20}(?:협력|논의)|funding|investment opportunities|commitment"),
@@ -666,6 +667,8 @@ RULES = (
     ("rates_fx_or_macro", ("discount_rate",),
      r"금리|국고채|모기지|주담대|주택담보대출|물가|인플레이션|고용|비농업\s*일자리|실업률|건설지출|환율|달러화|유동성|차입|구매관리자|\bpmi\b|cpi|pce|payroll|mortgage|interest rate|treasury|inflation|exchange rate|borrowing",
      r"인상|(?<!할)인하|동결|상승|하락|오른|내린|올랐|내렸|둔화|급등|급락|상회|하회|밑돌|웃돌|발표|기록|증가|감소|결정|약세|강세|최고|치솟|cut|hike|hold|rise|fall|miss|beat|announc|estimat|record"),
+    ("attributed_fx_forecast", ("discount_rate",),
+     r"원[·/]달러|달러[·/]원|환율", r"전망|예상"),
     ("policy_scope_or_stage", ("timeline",),
      r"관세|법인세|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
      r"제안|검토|추진|인상|인하|올리|올렸|낮추|낮췄|상향|하향|완화|강화|시행|발효|금지|제한|(?<!인)허가(?:했|한다|를\s*(?:내|받|취득))|승인(?:했|한다|을\s*(?:받|획득|취득))|제정|개정|철회|의견수렴|입법예고|면제|배정|의결|착수|발표|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
@@ -768,6 +771,13 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
         return False
     if kind == "rates_fx_or_macro" and re.search(r"환율\s*환산|매출\s*인식|기간\s*귀속|기말\s*조정", sentence):
         return False
+    if kind == "attributed_fx_forecast":
+        return bool(
+            re.search(r"[A-Za-z가-힣]{2,20}증권", sentence)
+            and re.search(r"올해\s*연말|내년\s*연말", sentence)
+            and re.search(r"\d[\d,]*\s*원\s*(?:전후|안팎)", sentence)
+            and re.search(r"전망했다|예상했다", sentence)
+        )
     if re.match(r"^[■#]\s*", sentence) and not re.search(r"(?:다|요)[.!?]?$", sentence):
         return False
     if re.search(r"해당\s*수치|이번\s*공시는\s*실적\s*발표가\s*아니", sentence) and re.search(r"반영되지|실적\s*발표가\s*아니", sentence):
@@ -962,8 +972,11 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
             and not HARD_HEADLINE.search(title) and not focus_kind(title)):
         result.update(disposition="exclude", priority=0, reason="source_headline_without_event")
         return result
-    if re.search(r"따라\s*투자하면|투자하면\s*돈\s*벌까|경제\s*용어|투자\s*방법", title) and not DIRECT_HEADLINE_CHANGE.search(title):
+    if re.search(r"따라\s*투자하면|투자하면\s*돈\s*벌까|경제\s*용어|투자\s*방법|자산\s*(?:키우는|늘리는)\s*법|재테크\s*(?:방법|비법)|장기\s*투자\s*요령", title) and not DIRECT_HEADLINE_CHANGE.search(title):
         result.update(disposition="exclude", priority=0, reason="investment_method_explainer_not_new_market_event")
+        return result
+    if re.search(r"(?:축제|박람회|전시회).{0,20}(?:참가|참여)|포토존|체험\s*행사", title) and not DIRECT_HEADLINE_CHANGE.search(title):
+        result.update(disposition="exclude", priority=0, reason="exhibition_foreground_not_new_investment")
         return result
     routine_certificate = bool(re.search(r"보안인증|보안\s*인증|CSAP|ISMS|컴피턴시|competency", title, re.I)
                                and re.search(r"획득|취득|인정|certified|obtained", title, re.I))
@@ -1205,7 +1218,7 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
             ):
                 continue
             if kind == "earnings_or_guidance" and not re.search(
-                r"매출|영업(?:이익|익|손실)|순(?:이익|익|손실)|마진|가이던스|출하|판매(?:량|실적|는|가)|시장점유율|주당순이익|"
+                r"매출|영업(?:이익|익|손실)|순(?:이익|익|손실)|마진|가이던스|(?<!제)출하|판매(?:량|실적|는|가)|시장점유율|주당순이익|"
                 r"실적.{0,20}(?:어닝|상회|하회|흑자|적자)|\beps\b|revenue|earnings|profit|guidance|shipments", sentence, re.I,
             ):
                 continue

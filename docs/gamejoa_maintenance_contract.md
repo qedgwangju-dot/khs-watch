@@ -81,6 +81,12 @@ Every defect or requested change must follow this sequence:
   continuing" is not a concrete milestone without a measured result or a
   specific commitment. Weekly coverage is still eligible on a source-bound new
   commercial fact; its genre does not bypass the evidence requirement.
+- Korean submission words cannot match shipments. Exhibition attendance cannot
+  republish background CAPEX, and personal-finance instructions are not new
+  market flows. Preserve scoped new construction and real shipment changes.
+- Analyst FX outlooks retain the named source, target and horizon. Operating
+  asset financing retains the asset, amount and proposed transfer structure;
+  SPV discussions do not become completed chip sales or secured borrowing.
 - Entertainment/private-life articles cannot qualify as customer discussions
   from meeting or social-photo certification words. Apply the same genre and
   foreground check before body retrieval, alert construction and final output.
