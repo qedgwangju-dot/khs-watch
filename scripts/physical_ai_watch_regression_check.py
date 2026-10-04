@@ -1636,4 +1636,13 @@ assert g == "sodium_ion_battery", (g, s, c)
 assert c.endswith("나트륨이온 안전성 역풍"), c
 assert s >= 11, s
 
+sodium_generic_market_explainer = make(
+    "차세대 ESS 배터리로 떠오른 나트륨…한·중 대표기업 시장 선점 나서",
+    "나트륨이온 배터리는 ESS에서 LFP와 경쟁할 차세대 기술로 주목받고 있다.",
+    "한국경제",
+)
+g, s, c, k = classify(sodium_generic_market_explainer)
+assert g == "sodium_ion_battery", (g, s, c)
+assert s < 11, ("generic sodium-ion ESS market explainer must stay silent", s, c)
+
 print("Physical-AI watcher regression guards: PASS")
