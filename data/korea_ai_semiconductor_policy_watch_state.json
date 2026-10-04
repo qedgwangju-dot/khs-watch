@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-09-27T18:11:08+09:00",
-  "last_checked_kst": "2026-10-04T09:46:30+09:00",
+  "last_checked_kst": "2026-10-04T17:32:07+09:00",
   "seen": {
     "2b31306619b190498e7f41c7": {
       "title": "[입찰공고] 2026년 AI반도체 지원사업 성과조사분석 및 우수사례 발굴 용역 - 정보통신산업진흥원(NIPA)",
@@ -389,6 +389,15 @@
       "stage": 4,
       "category": "조달·선정·협약",
       "first_seen_kst": "2026-10-04T06:27:46+09:00",
+      "suppressed_duplicate": "same_title"
+    },
+    "5825784d7f773783cd6a56df": {
+      "title": "AI 반도체 2030년 1200조 전망⋯“해외진출 정부 지원 필요” - v.daum.net",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5DanBDZmZuM285M2syNjJMMWFjdlhxYkltS2VlNUtSOElWcEFPdG1aYlNaVFBfUWdNcUhsckdZY3FxVVlzbDlkNkg3QlFRNGc?oc=5",
+      "event_signature": "국산AI반도체산업|해외진출 지원|일반",
+      "stage": 3,
+      "category": "해외진출 지원",
+      "first_seen_kst": "2026-10-04T17:32:07+09:00",
       "suppressed_duplicate": "same_title"
     }
   }
