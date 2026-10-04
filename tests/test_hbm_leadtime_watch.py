@@ -96,6 +96,22 @@ class LeadTimeParserTests(unittest.TestCase):
             self.assertEqual(base["segments"][segment]["max_months"], high)
 
 
+    def test_newer_official_weekly_radar_beats_older_fuller_issue(self):
+        older = {
+            "direct_url": "https://insights.trendforce.com/p/weekly-radar-002",
+            "published_at_kst": "2026-09-21T09:00:00+09:00",
+            "score": 1100,
+            "full_text": "TrendForce Weekly Radar",
+        }
+        newer = {
+            "direct_url": "https://insights.trendforce.com/p/weekly-radar-003",
+            "published_at_kst": "2026-09-28T09:00:00+09:00",
+            "score": 1040,
+            "full_text": "TrendForce Weekly Radar",
+        }
+        self.assertGreater(w.candidate_sort_key(newer), w.candidate_sort_key(older))
+
+
 class LeadTimeAlertTests(unittest.TestCase):
     def setUp(self):
         self.old = {
