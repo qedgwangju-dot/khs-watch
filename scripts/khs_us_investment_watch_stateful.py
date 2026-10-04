@@ -50,32 +50,43 @@ def _is_official(row: dict) -> bool:
             return True
     except Exception:
         pass
-    blob = _norm(f"{row.get('title', '')} {row.get('source', '')}")
-    return any(
-        token in blob
-        for token in [
-            "정책브리핑",
-            "대한민국 정책브리핑",
-            "산업통상부",
-            "산업통상",
-            "재정경제부",
-            "기획재정부",
-            "과학기술정보통신부",
-            "과기정통부",
-            "ercot",
-            "puct",
-            "texas governor",
-            "white house",
-            "백악관",
-            "sec",
-            "westinghouse",
-            "cameco",
-            "brookfield",
-            "한국전력",
-            "한국수력원자력",
-            "kepco",
-            "khnp",
-        ]
+
+    # 기사 제목에 기관·기업명이 들어갔다는 이유만으로 '공식자료'로 승격하지 않는다.
+    # 발행 출처명 또는 실제 링크 도메인이 공식기관/공식회사인 경우만 fallback 공식으로 본다.
+    source_blob = _norm(str(row.get("source") or ""))
+    link_blob = _norm(str(row.get("link") or ""))
+    official_source_tokens = [
+        "정책브리핑",
+        "대한민국 정책브리핑",
+        "산업통상부",
+        "산업통상",
+        "재정경제부",
+        "기획재정부",
+        "과학기술정보통신부",
+        "과기정통부",
+        "ercot",
+        "puct",
+        "texas governor",
+        "white house",
+        "백악관",
+        "sec",
+        "westinghouse",
+        "cameco",
+        "brookfield",
+        "한국전력",
+        "한국수력원자력",
+        "kepco",
+        "khnp",
+    ]
+    official_domains = [
+        "korea.kr", "motir.go.kr", "moef.go.kr", "msit.go.kr",
+        "whitehouse.gov", "sec.gov", "ercot.com", "puc.texas.gov",
+        "westinghousenuclear.com", "cameco.com", "brookfield.com",
+        "kepco.co.kr", "khnp.co.kr",
+    ]
+    return (
+        any(token in source_blob for token in official_source_tokens)
+        or any(domain in link_blob for domain in official_domains)
     )
 
 
@@ -601,42 +612,50 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
                 facts.add("nuclear_longlead_order_status:ordered")
         if _is_official(row):
             source_low = _norm(str(row.get("source") or ""))
+            project_power_context = (
+                "project power" in low
+                or "한미 원전" in low
+                or (
+                    any(model in low for model in ["ap1000", "apr1400"])
+                    and any(place in low for place in ["미국", "united states", "u.s.", "usg", "korea", "한국"])
+                )
+            )
 
             # Project Power는 '프레임워크 합의'와 실제 실행단계를 분리한다.
-            # 아래 상태는 공식자료 1건 또는 독립 출처 2곳 이상에서만 승격된다.
-            if any(term in low for term in [
+            # 실행단계 승격은 Project Power/미국 배치 문맥 + 공식자료가 동시에 확인될 때만 허용한다.
+            if project_power_context and any(term in low for term in [
                 "framework signed", "framework has been signed", "signed the framework",
                 "프레임워크 서명 완료", "프레임워크에 서명했다", "프레임워크 공식 서명",
             ]):
                 facts.add("nuclear_framework_signature_status:signed")
 
-            if any(term in low for term in [
+            if project_power_context and any(term in low for term in [
                 "definitive agreement signed", "definitive agreements signed",
                 "definitive agreements executed", "최종 계약 체결", "본계약 체결",
             ]):
                 facts.add("nuclear_definitive_agreement_status:signed")
 
-            if any(term in low for term in [
-                "specific site selected", "specific sites selected", "site selected",
-                "site identified", "site designated", "개별 부지 확정", "부지 선정 완료",
-                "부지 확정", "사업 부지 선정",
+            if project_power_context and any(term in low for term in [
+                "specific site selected", "specific sites selected", "specific site identified",
+                "specific federal site selected", "specific federal site identified",
+                "개별 부지 확정", "부지 선정 완료", "부지 확정", "사업 부지 선정",
             ]):
                 facts.add("nuclear_federal_site_status:selected")
 
-            if any(term in low for term in [
+            if project_power_context and any(term in low for term in [
                 "waiver agreement signed", "waiver executed", "waiver finalized",
                 "one-time waiver approved", "예외 합의 체결", "예외 적용 확정",
                 "일회성 예외 확정", "타협협정 예외 체결",
             ]):
                 facts.add("nuclear_settlement_waiver_status:executed")
 
-            if any(term in low for term in [
+            if project_power_context and any(term in low for term in [
                 "financial close", "financing closed", "financing finalized",
                 "금융종결", "자금조달 종결", "금융약정 체결",
             ]):
                 facts.add("nuclear_financing_status:closed")
 
-            if any(term in low for term in [
+            if project_power_context and any(term in low for term in [
                 "combined license approved", "combined license issued",
                 "construction permit approved", "construction permit issued",
                 "복합허가 승인", "건설허가 승인", "건설허가 발급",
@@ -666,8 +685,7 @@ def _candidate_facts(row: dict, family: str) -> set[str]:
                 "beomhanmecatec": ["범한메카텍", "beomhan mecatec"],
                 "bhi": ["비에이치아이", "bhi"],
             }
-            project_context = any(term in low for term in ["project power", "ap1000", "apr1400", "한미 원전"])
-            if project_context:
+            if project_power_context:
                 for supplier, tokens in supplier_tokens.items():
                     if not any(token in low for token in tokens):
                         continue
