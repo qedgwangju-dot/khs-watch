@@ -1645,4 +1645,21 @@ g, s, c, k = classify(sodium_generic_market_explainer)
 assert g == "sodium_ion_battery", (g, s, c)
 assert s < 11, ("generic sodium-ion ESS market explainer must stay silent", s, c)
 
+# 36) Quantity enrichment must never parse opaque link payloads as physical quantities.
+# A prior Google News article URL contained the substring "25kM" and produced a
+# false "확인 물량 25kM" line. Only user-visible alert text may feed quantity parsing.
+url_quantity_noise = (
+    '<b>출처</b> 한국경제 · <a href="https://news.google.com/rss/articles/ABC25kMnNoSm1z?oc=5">'
+    '<b>원문</b></a>'
+)
+assert watcher.qty._qty_summary(url_quantity_noise) == "", (
+    "opaque URL payload must not become a quantity",
+    watcher.qty._qty_summary(url_quantity_noise),
+)
+visible_quantity = url_quantity_noise + "\\n현장 검증 주행거리 15,000km 완료"
+assert watcher.qty._qty_summary(visible_quantity) == "15,000km", (
+    "visible physical quantity must still be preserved",
+    watcher.qty._qty_summary(visible_quantity),
+)
+
 print("Physical-AI watcher regression guards: PASS")
