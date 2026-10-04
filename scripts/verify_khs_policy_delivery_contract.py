@@ -174,6 +174,7 @@ def main() -> int:
     assert_policy_timeline_dates_are_bold_and_source_is_clickable()
     assert_ai_force_has_exclusive_telegram_route()
     assert_upper_c_band_has_dedicated_telegram_route()
+    assert_westinghouse_equity_has_single_telegram_owner()
     assert_trusted_policy_bundle_dedupes_and_dates_are_source_faithful()
     assert_domestic_telecom_title_gate_and_semantic_dedupe()
     assert_router_explains_current_fcc_documents()
@@ -374,6 +375,50 @@ def assert_upper_c_band_has_dedicated_telegram_route() -> None:
         '"KHS trusted policy news alert", "policy"'
     ) not in workflow:
         raise AssertionError("General trusted-policy route must remain on the policy bot")
+
+
+def assert_westinghouse_equity_has_single_telegram_owner() -> None:
+    workflow = POLICY_WORKFLOW.read_text(encoding="utf-8")
+    required = [
+        "westinghouse_equity_topic = any(",
+        "westinghouse_governance_topic = any(",
+        'if route == "westinghouse" and (',
+        "westinghouse_equity_topic",
+        "westinghouse_governance_topic",
+        "delegated_to_us_investment_watch=true",
+    ]
+    for marker in required:
+        if marker not in workflow:
+            raise AssertionError(
+                f"Westinghouse single-owner Telegram delegation missing: {marker}"
+            )
+
+    stale_gate = 'if route == "westinghouse" and us_investment_topic and ('
+    if stale_gate in workflow:
+        raise AssertionError(
+            "Westinghouse delegation still incorrectly depends on the 대미투자 keyword"
+        )
+
+    if not khs_nuclear_policy_watch.WEC_EQUITY_ALERTS_DELEGATED_TO_US_INVESTMENT:
+        raise AssertionError(
+            "Nuclear policy watcher regained Westinghouse equity Telegram ownership"
+        )
+
+    false_positive = (
+        "시공 넘어 경영 참여로… 韓 기업, 웨스팅하우스 이사회 진입 노린다"
+    )
+    if khs_nuclear_policy_watch._is_material_westinghouse(false_positive, "IT조선"):
+        raise AssertionError(
+            "Speculative Westinghouse board-entry headline became a material state change"
+        )
+
+    confirmed = "Westinghouse 공식 한국 측 이사회 지명권 확보 합의"
+    if not khs_nuclear_policy_watch._is_material_westinghouse(
+        confirmed, "Westinghouse"
+    ):
+        raise AssertionError(
+            "Confirmed Westinghouse board-right event was overfiltered"
+        )
 
 
 def assert_trusted_policy_bundle_dedupes_and_dates_are_source_faithful() -> None:
