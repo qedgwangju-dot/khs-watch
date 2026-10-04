@@ -1415,4 +1415,109 @@ assert g == "nvidia_robotics_exec", (g, s, c)
 assert c.endswith("로봇 배치·생산·고객 정량 확대"), c
 assert s >= 11, s
 
+# 35) 46-series second-pass baseline and execution guards.
+# Lock the newly verified Samsung SDI / LGES / SK On / SNE facts as silent
+# baselines, but alert when customer identity, quantity, qualification, order,
+# shipment metrics or market forecasts materially advance.
+
+ev46_sdi_europe_order_baseline = make(
+    "Samsung SDI secured 46-phi order for European global EV",
+    "Samsung SDI secured an order for 46-phi cylindrical batteries for a European global EV premium lineup. The project targets mass production in 2028 through a new production line at the Hungary site. Customer, GWh and exact 46xx format were not disclosed.",
+    "Samsung SDI",
+)
+g, s, c, k = classify(ev46_sdi_europe_order_baseline)
+assert g == "ev_46_series", (g, s, c)
+assert c.endswith("현재 계약·양산 기준선"), c
+assert s < 11, ("Samsung SDI anonymous Europe order is current baseline", s, c)
+
+ev46_sdi_detail = make(
+    "Samsung SDI discloses 4695 customer for Europe order",
+    "Samsung SDI confirmed BMW as the customer for its 4695 46-series project at the Hungary plant with 40GWh supply and mass production from 2028.",
+    "Samsung SDI",
+)
+g, s, c, k = classify(ev46_sdi_detail)
+assert g == "ev_46_series", (g, s, c)
+assert c.endswith("삼성SDI 유럽 46파이 고객·물량·규격 공개"), c
+assert s >= 11, s
+
+ev46_kgm_mou_baseline = make(
+    "Samsung SDI and KGM sign MOU for 46-series battery pack",
+    "Samsung SDI and KG Mobility signed an MOU to jointly develop next-generation EV battery pack technologies using 46-series cylindrical batteries.",
+    "Samsung SDI",
+)
+g, s, c, k = classify(ev46_kgm_mou_baseline)
+assert g == "ev_46_series", (g, s, c)
+assert c.endswith("현재 계약·양산 기준선"), c
+assert s < 11, ("KGM 46-series pack MOU is current baseline", s, c)
+
+ev46_kgm_binding = make(
+    "Samsung SDI signs KGM 46-series supply contract",
+    "Samsung SDI signed a binding supply contract with KG Mobility for 46-series cylindrical batteries for a next-generation EV.",
+    "Samsung SDI",
+)
+g, s, c, k = classify(ev46_kgm_binding)
+assert g == "ev_46_series", (g, s, c)
+assert c.endswith("완성차 공급계약·GWh 수주"), c
+assert s >= 11, s
+
+ev46_skon_dev_baseline = make(
+    "SK On completes 46-series battery development",
+    "SK On completed development of 46-series cylindrical cells including 4680, 4695 and 46120 and is preparing production technology.",
+    "SK On",
+)
+g, s, c, k = classify(ev46_skon_dev_baseline)
+assert g == "ev_46_series", (g, s, c)
+assert c.endswith("현재 계약·양산 기준선"), c
+assert s < 11, ("SK On development completion is current baseline", s, c)
+
+ev46_skon_proto_baseline = make(
+    "SK On runs 46-series prototypes in Changzhou",
+    "SK On is producing 46-series cylindrical battery prototypes at Changzhou on a research line capable of 300,000 units per year.",
+    "TheElec",
+)
+g, s, c, k = classify(ev46_skon_proto_baseline)
+assert g == "ev_46_series", (g, s, c)
+assert c.endswith("현재 계약·양산 기준선"), c
+assert s < 11, ("SK On 300k prototype line is current baseline", s, c)
+
+ev46_skon_qualification = make(
+    "SK On 46-series passes customer qualification",
+    "SK On's 4695 46-series cells passed customer qualification and approval for an EV program.",
+    "SK On",
+)
+g, s, c, k = classify(ev46_skon_qualification)
+assert g == "ev_46_series", (g, s, c)
+assert c.endswith("SK온 46파이 고객 검증·승인"), c
+assert s >= 11, s
+
+ev46_lges_15x_baseline = make(
+    "LG Energy Solution Q2 cylindrical shipments rise 1.5x",
+    "LG Energy Solution said cylindrical battery shipments including 46-Series increased 1.5x year-on-year in Q2 2026.",
+    "LG Energy Solution",
+)
+g, s, c, k = classify(ev46_lges_15x_baseline)
+assert g == "ev_46_series", (g, s, c)
+assert c.endswith("현재 계약·양산 기준선"), c
+assert s < 11, ("LGES 1.5x cylindrical shipment figure is current baseline", s, c)
+
+ev46_market_baseline = make(
+    "SNE Research 46-series market outlook",
+    "SNE Research forecasts the global 46-series cylindrical battery market to grow from 155GWh in 2025 to 650GWh in 2030, a 33% CAGR.",
+    "SNE Research",
+)
+g, s, c, k = classify(ev46_market_baseline)
+assert g == "ev_46_series", (g, s, c)
+assert c.endswith("현재 계약·양산 기준선"), c
+assert s < 11, ("155GWh to 650GWh forecast is current baseline", s, c)
+
+ev46_market_revision = make(
+    "SNE Research revises 46-series outlook",
+    "SNE Research revised its 2030 46-series cylindrical battery market forecast upward to 800GWh.",
+    "SNE Research",
+)
+g, s, c, k = classify(ev46_market_revision)
+assert g == "ev_46_series", (g, s, c)
+assert c.endswith("46시리즈 시장전망 수정"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
