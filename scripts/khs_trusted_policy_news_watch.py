@@ -91,6 +91,14 @@ OFFICIAL_TEXT_STORIES = {
             "Federal Communications Commission",
         ),
     ),
+    "us_fcc_foreign_energy_inverter_ban": (
+        (
+            "https://docs.fcc.gov/public/attachments/DA-26-786A1.txt",
+            "https://docs.fcc.gov/public/attachments/DA-26-786A1.pdf",
+            "DA 26-786",
+            "Federal Communications Commission",
+        ),
+    ),
 }
 
 DIRECT_STORY_URLS = {
@@ -115,6 +123,11 @@ RULE_MAX_AGE_HOURS = {
     "us_fcc_space_nepa_reform": 24 * 14,
     "us_fcc_satellite_spectrum_abundance": 24 * 14,
     "us_fcc_satellite_spectrum_followon_fnprm": 24 * 14,
+    # The robot/inverter Covered List baseline was adopted on 2026-07-28.
+    # Keep a bounded recovery window for source verification, while the
+    # semantic event key below prevents article republication dates from
+    # becoming false "new official stage" alerts.
+    "us_fcc_foreign_energy_inverter_ban": 24 * 90,
 }
 
 def max_age_hours_for_rule(rule: "StoryRule") -> int:
@@ -242,28 +255,42 @@ STORY_RULES = (
     ),
     StoryRule(
         key="us_fcc_foreign_energy_inverter_ban",
-        title="미국 FCC, 외국산 에너지 인버터 수입금지 검토 보도",
+        title="미 FCC, 외국산 전력 인버터·첨단 로봇 Covered List 편입",
         google_queries=(
-            "Reuters FCC foreign energy inverters ban solar national security",
-            "Bloomberg FCC foreign inverters import ban solar stocks",
-            "Trump administration ban foreign energy inverters Reuters FCC",
-            "US working ban Chinese energy inverters FCC Reuters",
-            "\"foreign energy inverters\" \"FCC\" Reuters",
+            "\"DA 26-786\" FCC robots inverters Covered List",
+            "\"foreign-produced advanced robotic devices\" FCC Covered List",
+            "\"foreign-produced power inverters\" FCC Covered List",
+            "\"DA 26-870\" FCC power inverters",
+            "\"DA 26-996\" FCC advanced robotic devices conditional approval",
         ),
         required_groups=(
-            ("inverter", "inverters"),
-            ("ban", "barred", "imports", "import", "targeting", "foreign", "chinese", "national security"),
-            ("foreign", "chinese", "china"),
-            ("solar", "energy", "renewable", "grid"),
+            ("inverter", "inverters", "power inverter", "power inverters"),
+            ("robot", "robotic", "advanced robotic devices"),
+            ("covered list", "equipment authorization"),
+            ("foreign-produced", "foreign produced", "foreign country"),
         ),
-        core="Reuters·Bloomberg 계열 보도 기준, 미국 FCC가 국가안보 우려를 이유로 외국산 또는 중국산 에너지 인버터 신규 수입 제한·금지 조치를 검토 중이라는 예비 정책 신호입니다.",
-        impact="태양광 인버터·전력변환장치, 미국 태양광 밸류체인, 전력망 보안, 중국 대체 공급망 | 돈 버는 능력·수급·시간표",
-        point="인버터는 태양광 발전을 전력망에 연결하는 핵심 장비라 수입 금지가 공식화되면 미국 내 인버터/전력변환장치 업체의 가격결정력과 주문 기대, 중국산 부품 의존 리스크가 동시에 바뀔 수 있습니다.",
-        counter="아직 FCC 공식 규칙·수입금지 대상·적용일·기존 모델 예외가 확정되지 않은 보도 단계입니다. 미국 업체 주가 반응이 먼저 나온 만큼 단기 과열일 수 있습니다.",
-        sectors="태양광 인버터/전력변환장치, 전력기기/전력망 보안, 신재생에너지, 중국 대체 공급망",
+        core=(
+            "FCC는 2026년 7월 28일 DA 26-786으로 외국산 전력 인버터와 외국산 첨단 로봇을 Covered List에 추가했습니다. "
+            "Covered List 대상 신규 장비는 FCC 장비인증을 받을 수 없으며, 전력 인버터는 DoW 또는 DHS, 첨단 로봇은 DoW의 "
+            "조건부 승인을 받은 특정 장비·등급이 예외가 될 수 있습니다."
+        ),
+        impact="첨단 로봇·로봇청소기 등 이동형 연결 로봇, 전력 인버터·전력변환장치, 미국 수입·판매 인증 | 돈 버는 능력·수급·시간표",
+        point=(
+            "핵심은 기사 게시일이 아니라 FCC의 실제 정책 단계입니다. 최초 편입일은 2026년 7월 28일이며, "
+            "2026년 8월 20일에는 전력 인버터 정의·예외가 수정됐고 이후 조건부 승인 공지가 별도 단계로 이어집니다."
+        ),
+        counter=(
+            "모든 소비자 로봇이 자동으로 포함되는 것은 아닙니다. FCC의 '첨단 로봇' 정의를 충족해야 하며, "
+            "기존 승인 장비·허용된 소프트웨어/펌웨어 변경·조건부 승인 장비는 별도 예외를 확인해야 합니다."
+        ),
+        sectors="첨단 로봇/피지컬 AI, 태양광 인버터/전력변환장치, 미국 장비인증/공급망",
         impacts=("돈 버는 능력", "수급", "시간표"),
-        paths=("정책 타임라인", "공급망", "밸류체인", "수급"),
-        follow_up="핵심은 FCC가 실제 규칙안을 내고 적용 대상을 중국산 인버터 전체, 신규 모델, 특정 통신 모듈 내장 장비 중 어디까지로 확정하느냐입니다. 한국장에서는 인버터 직접 종목보다 전력변환장치, ESS/전력기기, 태양광 부품, 전력망 보안 밸류체인으로 연결되는지 확인해야 합니다.",
+        paths=("정책 타임라인", "장비인증", "공급망", "조건부 승인"),
+        follow_up=(
+            "새 알림은 FCC 공식 문서번호·Released 날짜가 바뀌는 경우에만 단계 변화로 처리합니다. "
+            "DA 26-786(7월 28일) 재인용·재게시를 9월 30일 신규 정책으로 다시 알리지 않고, "
+            "전력 인버터 정의 수정·조건부 승인·Covered List 추가 수정처럼 실제 공식 단계가 바뀔 때만 보냅니다."
+        ),
     ),
     StoryRule(
         key="us_fcc_chinese_optical_transceiver_ban",
@@ -1399,6 +1426,35 @@ def semantic_policy_event_key(item: dict) -> str:
         elif any(term in title_text for term in ("additional companies", "additional vendors", "designates", "designation", "추가 지정", "추가 기업")):
             stage = "additional-designation"
         return f"us-congress-chinese-optical-transceiver-{stage}"
+    fcc_robot_inverter = (
+        (
+            "da 26-786" in text
+            or "addition of foreign-produced power inverters and advanced robotic devices" in text
+            or (
+                "foreign-produced advanced robotic devices" in text
+                and "foreign-produced power inverters" in text
+                and "covered list" in text
+            )
+        )
+        and ("fcc" in text or "federal communications commission" in text or "docs.fcc.gov" in text)
+    )
+    if fcc_robot_inverter:
+        return "us-fcc-robot-inverter-covered-list-2026-07-28"
+    if (
+        ("da 26-870" in text or "modification of power inverters entry on the covered list" in text)
+        and ("power inverter" in text or "power inverters" in text)
+    ):
+        return "us-fcc-inverter-definition-modification-2026-08-20"
+    if (
+        ("da 26-957" in text or "conditional approval and exemption of certain routers and advanced robotic devices" in text)
+        and ("advanced robotic devices" in text or "robotic devices" in text)
+    ):
+        return "us-fcc-robot-conditional-approval-2026-09-09"
+    if (
+        ("da 26-996" in text or "conditional approval and exemption of certain advanced robotic devices" in text)
+        and ("advanced robotic devices" in text or "robotic devices" in text)
+    ):
+        return "us-fcc-robot-conditional-approval-2026-09-18"
     if "nepa" in text and ("space-based operations" in text or "space station" in text or "satellite" in text):
         stage = "adopted"
         if any(term in title_text for term in ("effective", "takes effect", "효력", "발효")):
@@ -1482,6 +1538,14 @@ def semantic_policy_event_key(item: dict) -> str:
 
 def semantic_policy_title(item: dict) -> str:
     key = semantic_policy_event_key(item)
+    if key == "us-fcc-robot-inverter-covered-list-2026-07-28":
+        return "미 FCC, 외국산 전력 인버터·첨단 로봇 Covered List 편입"
+    if key == "us-fcc-inverter-definition-modification-2026-08-20":
+        return "미 FCC, 외국산 전력 인버터 Covered List 정의·예외 수정"
+    if key == "us-fcc-robot-conditional-approval-2026-09-09":
+        return "미 FCC, 일부 첨단 로봇 조건부 승인·Covered List 예외"
+    if key == "us-fcc-robot-conditional-approval-2026-09-18":
+        return "미 FCC, 추가 첨단 로봇 조건부 승인·Covered List 예외"
     if key == "polysilicon-11052-stockpiling-tfr":
         return "미 상무부, 폴리실리콘 사재기 차단 규칙 시행"
     if key == "polysilicon-11052-base":
