@@ -87,6 +87,9 @@ Every defect or requested change must follow this sequence:
 - Analyst FX outlooks retain the named source, target and horizon. Operating
   asset financing retains the asset, amount and proposed transfer structure;
   SPV discussions do not become completed chip sales or secured borrowing.
+- Conditional factory tariffs retain the construction condition, cited rate
+  and any source-provided grace period. A previous LNG statement cannot own
+  that headline; a campaign statement does not become an enacted tariff rule.
 - Entertainment/private-life articles cannot qualify as customer discussions
   from meeting or social-photo certification words. Apply the same genre and
   foreground check before body retrieval, alert construction and final output.

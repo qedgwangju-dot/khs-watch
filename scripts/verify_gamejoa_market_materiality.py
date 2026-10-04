@@ -2192,8 +2192,40 @@ class MaterialityChecks(unittest.TestCase):
                 self.assertIn("asset_financing_actor_amount_or_stage_mismatch",
                               radar.source_core_fact_errors({**item, "telegram_core_fact": wrong}))
                 self.assertFalse(radar.source_output_aligned({**item, "telegram_core_fact": wrong}))
+        self.assertIn("asset_financing_actor_amount_or_stage_mismatch", radar.source_core_fact_errors({
+            **item, "source_body": "아마존은 80억달러 규모의 그레이스 블랙웰 칩 매각을 검토 중이다.",
+            "telegram_core_fact": core,
+        }))
         with patch.object(radar.base, "kst_now", return_value=NOW):
             self.assertEqual(len(radar.quality_display_alerts([item], 1)), 1)
+
+    def test_factory_tariff_statement_keeps_rate_condition_and_grace_period(self):
+        title = '격전지 간 트럼프 "美에 공장 안 지으면 관세 300%까지 부과"'
+        old = ('트럼프 대통령은 전날에도 한국이 알래스카 액화천연가스 사업에 투자하지 않을 경우 '
+               '관세 인상 가능성을 시사한 바 있다.')
+        body = ('트럼프 대통령은 지원유세에서 "우리는 그들이 여기에 공장을 지을 수 있도록 약 1년 반 정도의 기회를 준다"며 '
+                '"그들이 그렇게 하지 않으면 우리는 150, 200, 250, 300%의 관세를 부과한다"고 말했다. ' + old)
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        for expected in ("트럼프", "약 1년 반", "미국 공장", "미건설 시", "300%", "말했다"):
+            self.assertIn(expected, core)
+        self.assertNotIn("알래스카", core)
+        self.assertFalse(radar.source_core_fact_errors({**item, "telegram_core_fact": core}))
+        for wrong in (old, core.replace("300%", "600%"), core.replace("약 1년 반", "약 2년"),
+                      core.replace("미건설 시", "모든 기업에"), core.replace("부과한다고 말했다", "시행을 확정했다")):
+            with self.subTest(wrong=wrong):
+                self.assertTrue(radar.source_core_fact_errors({**item, "telegram_core_fact": wrong}))
+                self.assertFalse(radar.source_output_aligned({**item, "telegram_core_fact": wrong}))
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 1)), 1)
+
+    def test_old_lng_statement_cannot_support_new_factory_tariff_headline(self):
+        title = '트럼프 "美에 공장 안 지으면 관세 300%까지 부과"'
+        body = '트럼프 대통령은 전날 한국이 알래스카 LNG 사업에 투자하지 않을 경우 관세를 인상할 수 있다고 말했다.'
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["evidence"], [])
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
 
     def test_support_mou_needs_size_terms_or_committed_execution(self):
         title = "신한은행, 공제조합과 금융지원 업무협약"

@@ -9,7 +9,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 59
+VERSION = 60
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -146,6 +146,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("national_exports", r"수출국|연간\s*수출", r"누적\s*수출|수출액|월간\s*수출"),
     ("authorized_capital", r"수권\s*(?:자본|주식)|authorized (?:capital|shares)", r"수권\s*(?:자본|주식)|authorized (?:capital|shares)"),
     ("asset_financing", r"(?:칩|GPU|데이터센터|설비).{0,25}(?:파는|매각|담보|재임차)|sale.leaseback", r"특수목적기구|\bSPV\b|매각|담보|재임차|sale.leaseback"),
+    ("factory_tariff", r"공장.{0,20}(?:안|않|미건설).{0,25}관세", r"공장.{0,160}관세"),
     ("customer_implementation", r"1차\s*시공|초도\s*납품", r"1차\s*시공|초도\s*납품"),
     ("commercial_order", r"수주|공급\s*계약|납품\s*계약|발사\s*계약|\d+\s*년\s*계약(?!가)", r"수주|발주|계약"),
     ("industrial_program", r"(?:SMR|원전|양자|반도체|로봇).{0,16}상용화", r"(?:상용화|사업화).{0,50}(?:출범|지원|시행|추진)|(?:출범|지원|시행|추진).{0,50}(?:상용화|사업화)"),
@@ -319,6 +320,15 @@ def focus_matches(title: str, sentence: str) -> bool:
     if kind == "trade_threat":
         return bool(re.search(r"관세|청구|tariff|charge", sentence, re.I)
                     and re.search(r"위협|경고|두\s*배|2\s*배|인상|올리|threat|warn|doubl|raise", sentence, re.I))
+    if kind == "factory_tariff":
+        rates = {re.sub(r"\s+", "", value) for value in re.findall(r"\d+(?:\.\d+)?\s*%", title)}
+        source_rates = {re.sub(r"\s+", "", value) for value in re.findall(r"\d+(?:\.\d+)?\s*%", sentence)}
+        return bool(
+            "공장" in sentence and "관세" in sentence
+            and rates.issubset(source_rates)
+            and re.search(r"안\s*짓|짓지\s*않|건설하지\s*않|미건설|그렇게\s*하지\s*않으면", sentence)
+            and re.search(r"부과|청구|매기", sentence)
+        )
     if kind == "stockpile_release" and re.search(r"채운|재비축|refill", title, re.I):
         return bool(re.search(r"비축|reserve|stockpile", sentence, re.I)
                     and re.search(r"채우|채운|채울|재비축|refill", sentence, re.I))
@@ -671,7 +681,7 @@ RULES = (
      r"원[·/]달러|달러[·/]원|환율", r"전망|예상"),
     ("policy_scope_or_stage", ("timeline",),
      r"관세|법인세|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
-     r"제안|검토|추진|인상|인하|올리|올렸|낮추|낮췄|상향|하향|완화|강화|시행|발효|금지|제한|(?<!인)허가(?:했|한다|를\s*(?:내|받|취득))|승인(?:했|한다|을\s*(?:받|획득|취득))|제정|개정|철회|의견수렴|입법예고|면제|배정|의결|착수|발표|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
+     r"제안|검토|추진|인상|인하|부과|올리|올렸|낮추|낮췄|상향|하향|완화|강화|시행|발효|금지|제한|(?<!인)허가(?:했|한다|를\s*(?:내|받|취득))|승인(?:했|한다|을\s*(?:받|획득|취득))|제정|개정|철회|의견수렴|입법예고|면제|배정|의결|착수|발표|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
     ("economic_restriction_response", ("discount_rate", "timeline"),
      r"경제\s*전쟁|제재", r"새로운\s*조치.{0,30}(?:도입|발표)|대응\s*조치.{0,30}(?:도입|발표|시행)"),
     ("environmental_approval", ("timeline",),
@@ -1280,6 +1290,8 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
             if kind == "research_spending_change" and not QUANTITY.search(sentence):
                 continue
             early = bool(EARLY_SIGNAL.search(sentence)) or kind in {"customer_discussions", "institutional_capital_access", "authorized_capital_proposal", "sector_demand_outlook", "policy_agreement_clarification", "economic_restriction_response"}
+            if focus_kind(title) == "factory_tariff" and re.search(r"트럼프", sentence) and re.search(r"말했다|경고했다", sentence):
+                early = True
             if kind == "national_export_release" and re.search(r"가시권|달성할\s*수|달성\s*가능", sentence):
                 early = True
             if re.search(r"(?:할|하는|하는\s*)\s*경우|한다면|하면.{0,30}(?:달성|가능)|if\s+", sentence, re.I):
