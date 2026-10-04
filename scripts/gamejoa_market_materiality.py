@@ -9,7 +9,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 57
+VERSION = 58
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -730,6 +730,14 @@ COMPILED_RULES = tuple(
 def evidence_is_new_event(kind: str, sentence: str) -> bool:
     """Do not promote service descriptions or event support into transactions."""
     if COMPANY_PROFILE.search(sentence) or ACCOUNTING_NOTE.search(sentence):
+        return False
+    if kind in {"technology_or_clinical_stage", "physical_supply_or_capacity", "industrial_architecture_adoption"} and re.search(
+        r"(?:움직임|추세|흐름|사례).{0,16}(?:이어지|이어지고|늘고|늘어나|확산)|"
+        r"(?:활용|적용)\s*범위.{0,16}(?:넓어지고|확대되고)", sentence,
+    ) and not (
+        QUANTITY.search(sentence)
+        or re.search(r"(?:계약|발주).{0,20}(?:체결|확정)|(?:시험|검증|인증).{0,20}(?:완료|획득)|착공했다|가동을\s*시작", sentence)
+    ):
         return False
     if kind == "customer_discussions" and SOCIAL_MEETING_PROOF.search(sentence) and not SCOPED_BUSINESS_DISCUSSION.search(sentence):
         return False

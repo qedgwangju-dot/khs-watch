@@ -77,6 +77,10 @@ Every defect or requested change must follow this sequence:
   or a rationale for government intervention. Require a new scoped legal
   instrument, budget or procurement commitment; retain actual new instruments
   even when the source also describes the agency's existing mission.
+- A technology/industrial trend sentence such as "verification activity is
+  continuing" is not a concrete milestone without a measured result or a
+  specific commitment. Weekly coverage is still eligible on a source-bound new
+  commercial fact; its genre does not bypass the evidence requirement.
 - Entertainment/private-life articles cannot qualify as customer discussions
   from meeting or social-photo certification words. Apply the same genre and
   foreground check before body retrieval, alert construction and final output.

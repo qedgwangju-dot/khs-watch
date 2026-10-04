@@ -2087,6 +2087,29 @@ class MaterialityChecks(unittest.TestCase):
         with patch.object(radar.base, "kst_now", return_value=NOW):
             self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
 
+    def test_generic_technology_trend_cannot_own_the_core(self):
+        title = "[AI위클리] AI 경쟁 기준 달라졌다…성능 넘어 실행으로"
+        sentence = "국산 AI 반도체의 성능을 실제 산업 현장에서 검증하는 움직임도 이어지고 있다."
+        body = ("최근 AI 경쟁이 실제 업무와 산업 현장에서 성과를 내는 단계로 옮겨가고 있다. "
+                "AI 반도체와 보안 기술이 고도화되면서 실행하는 AI 경쟁이 본격화하고 있다. " + sentence)
+        self.assertFalse(materiality.evidence_is_new_event("technology_or_clinical_stage", sentence))
+        audit = materiality.assess(title, body)
+        self.assertNotEqual(audit["disposition"], "keep", audit)
+        self.assertLess(audit["priority"], 2, audit)
+        self.assertEqual(audit["evidence"], [])
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
+
+    def test_weekly_label_retains_specific_new_commercial_fact(self):
+        title = "[AI위클리] AI 반도체 경쟁, 성능 넘어 공급 계약으로"
+        body = ("AI 반도체 회사는 오늘 고객과 1조원 규모의 공급 계약을 체결했다. "
+                "AI 반도체 검증 움직임도 이어지고 있다.")
+        audit = materiality.assess(title, body)
+        self.assertEqual(audit["disposition"], "keep", audit)
+        self.assertGreaterEqual(audit["priority"], 2, audit)
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([alert(title, body)], 1)), 1)
+
     def test_support_mou_needs_size_terms_or_committed_execution(self):
         title = "신한은행, 공제조합과 금융지원 업무협약"
         body = ("신한은행은 자본재공제조합과 플랫폼 기반 금융지원 업무협약을 체결했다. "
