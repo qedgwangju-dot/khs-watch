@@ -98,6 +98,24 @@ OFFICIAL_TEXT_STORIES = {
             "DA 26-786",
             "Federal Communications Commission",
         ),
+        (
+            "https://docs.fcc.gov/public/attachments/DA-26-870A1.txt",
+            "https://docs.fcc.gov/public/attachments/DA-26-870A1.pdf",
+            "DA 26-870",
+            "Federal Communications Commission",
+        ),
+        (
+            "https://docs.fcc.gov/public/attachments/DA-26-957A1.txt",
+            "https://docs.fcc.gov/public/attachments/DA-26-957A1.pdf",
+            "DA 26-957",
+            "Federal Communications Commission",
+        ),
+        (
+            "https://docs.fcc.gov/public/attachments/DA-26-996A1.txt",
+            "https://docs.fcc.gov/public/attachments/DA-26-996A1.pdf",
+            "DA 26-996",
+            "Federal Communications Commission",
+        ),
     ),
 }
 
@@ -264,10 +282,15 @@ STORY_RULES = (
             "\"DA 26-996\" FCC advanced robotic devices conditional approval",
         ),
         required_groups=(
-            ("inverter", "inverters", "power inverter", "power inverters"),
-            ("robot", "robotic", "advanced robotic devices"),
-            ("covered list", "equipment authorization"),
-            ("foreign-produced", "foreign produced", "foreign country"),
+            (
+                "inverter", "inverters", "power inverter", "power inverters",
+                "robot", "robotic", "advanced robotic devices", "robotic devices",
+            ),
+            ("covered list", "equipment authorization", "conditional approval", "exemption"),
+            (
+                "foreign-produced", "foreign produced", "foreign country",
+                "conditional approval", "modification", "modified",
+            ),
         ),
         core=(
             "FCC는 2026년 7월 28일 DA 26-786으로 외국산 전력 인버터와 외국산 첨단 로봇을 Covered List에 추가했습니다. "
@@ -2159,6 +2182,68 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
         return None
     title = str(items[0].get("title", ""))
     semantic_key = semantic_policy_event_key(items[0])
+    if semantic_key == "us-fcc-robot-inverter-covered-list-2026-07-28":
+        return {
+            "revision": "us-fcc-robot-inverter-covered-list-ko-v1",
+            "event_date": "2026년 7월 28일",
+            "title": "미 FCC, 외국산 전력 인버터·첨단 로봇 Covered List 편입",
+            "core": "FCC가 외국산 전력 인버터와 외국산 첨단 로봇을 Covered List에 추가했습니다.",
+            "stage": "2026년 7월 28일 최초 편입 단계입니다. 기사 게시일·재게시일을 새 정책 날짜로 사용하지 않습니다.",
+            "actual": "Covered List 대상 신규 장비는 FCC 장비인증 제한을 받으며, 전력 인버터는 DoW 또는 DHS, 첨단 로봇은 DoW의 조건부 승인에 따라 예외가 가능합니다.",
+            "timeline": "2026년 7월 28일 DA 26-786 최초 편입 → 8월 20일 DA 26-870 인버터 정의 수정 → 9월 9일 DA 26-957 일부 장비 조건부 승인 → 9월 18일 DA 26-996 추가 첨단 로봇 조건부 승인",
+            "why": "정책의 기준일과 후속 예외·수정 단계를 분리해야 재게시 기사 때문에 같은 사건을 신규 변화로 잘못 알리는 것을 막을 수 있습니다.",
+            "next": "Covered List 추가 수정, 조건부 승인·철회, 장비인증 규칙 변경처럼 FCC 공식 문서번호와 Released 날짜가 실제로 바뀌는 경우만 신규 단계로 알립니다.",
+            "investment": "미국향 신규 외국산 로봇·전력변환장치의 인증·판매 경로에 영향을 주지만 개별 제품이 정의에 해당하는지와 예외 승인이 있는지는 별도 확인해야 합니다.",
+            "korea": "국내 기업은 미국향 해당 완제품의 생산국·FCC 장비인증·조건부 승인 여부가 확인될 때만 직접 실적 영향으로 연결합니다.",
+            "impacts": "매출·마진·현금흐름, 수급, 시간표",
+            "paths": "FCC 장비인증, Covered List, 조건부 승인, 공급망",
+            "sectors": "첨단 로봇/피지컬 AI, 전력 인버터/전력변환장치, 미국 장비인증",
+            "priced_in": "기존 정책. 7월 28일 최초 편입 자체는 재알림하지 않습니다.",
+            "counter": "모든 소비자 로봇이 자동 포함되는 것은 아니며 FCC의 첨단 로봇 정의와 예외를 제품별로 확인해야 합니다.",
+            "failure": "기사 게시일을 정책일로 오인하거나 조건부 승인 예외를 누락하면 규제 강도를 과대평가하게 됩니다.",
+        }
+    if semantic_key == "us-fcc-inverter-definition-modification-2026-08-20":
+        return {
+            "revision": "us-fcc-inverter-modification-ko-v1",
+            "event_date": "2026년 8월 20일",
+            "title": "미 FCC, 외국산 전력 인버터 Covered List 정의·예외 수정",
+            "core": "FCC가 DA 26-870으로 전력 인버터 Covered List 항목의 정의와 예외 범위를 수정했습니다.",
+            "stage": "7월 28일 최초 편입 이후의 공식 수정 단계입니다.",
+            "actual": "최초 편입 자체의 재게시가 아니라 전력 인버터 적용범위가 공식 문서로 조정된 후속 변화입니다.",
+            "timeline": "7월 28일 DA 26-786 최초 편입 → 8월 20일 DA 26-870 수정",
+            "why": "적용범위·예외가 달라지는 후속 문서이므로 별도 신규 단계로 취급합니다.",
+            "next": "추가 정의 수정, 조건부 승인, FCC 장비인증 집행 변화를 확인합니다.",
+            "investment": "실제 대상 제품 범위가 좁아지거나 넓어지는지가 미국향 인버터 공급 가능성을 바꿉니다.",
+            "korea": "미국향 인버터 완제품·전력변환장치의 생산국과 예외 적용 여부를 제품별로 확인해야 합니다.",
+            "impacts": "매출·마진·현금흐름, 시간표",
+            "paths": "Covered List, 장비인증, 예외 범위",
+            "sectors": "전력 인버터/전력변환장치, 미국 장비인증",
+            "priced_in": "공식 후속 단계.",
+            "counter": "정의 수정이 모든 기존 인증 장비의 즉시 판매중단을 뜻하지는 않습니다.",
+            "failure": "수정 전 문구를 계속 적용하면 대상 제품과 규제강도를 잘못 판단할 수 있습니다.",
+        }
+    if semantic_key in {"us-fcc-robot-conditional-approval-2026-09-09", "us-fcc-robot-conditional-approval-2026-09-18"}:
+        event_date = "2026년 9월 9일" if semantic_key.endswith("09-09") else "2026년 9월 18일"
+        doc = "DA 26-957" if semantic_key.endswith("09-09") else "DA 26-996"
+        return {
+            "revision": f"{semantic_key}-ko-v1",
+            "event_date": event_date,
+            "title": "미 FCC, 일부 첨단 로봇 조건부 승인·Covered List 예외",
+            "core": f"FCC가 {doc}으로 특정 첨단 로봇에 대한 조건부 승인·Covered List 예외를 공식 공지했습니다.",
+            "stage": f"{event_date} 조건부 승인 후속 단계입니다.",
+            "actual": "7월 28일 전체 외국산 첨단 로봇 범주 편입 뒤 특정 장비가 조건부 승인으로 예외 처리된 변화입니다.",
+            "timeline": f"7월 28일 최초 편입 → {event_date} {doc} 조건부 승인 공지",
+            "why": "규제가 일률적 전면금지가 아니라 조건부 승인 절차를 통해 제품별 예외가 실제 발생한다는 점을 보여줍니다.",
+            "next": "추가 승인·철회·승인조건 변경과 Covered List 갱신을 추적합니다.",
+            "investment": "개별 제조사의 미국 판매 가능성은 조건부 승인 여부에 따라 달라지므로 제품 단위 확인이 필요합니다.",
+            "korea": "한국 로봇 기업도 미국향 완제품이 Covered List 정의에 해당하면 생산국·승인상태를 제품별로 확인해야 합니다.",
+            "impacts": "매출·마진·현금흐름, 시간표",
+            "paths": "조건부 승인, Covered List, 장비인증",
+            "sectors": "첨단 로봇/피지컬 AI, 미국 장비인증",
+            "priced_in": "공식 후속 단계.",
+            "counter": "조건부 승인은 일부 특정 장비에 대한 예외이며 모든 외국산 로봇 규제가 해제된 것은 아닙니다.",
+            "failure": "예외 승인 대상을 전체 시장으로 일반화하면 규제영향을 과소평가할 수 있습니다.",
+        }
     if semantic_key == "polysilicon-11052-stockpiling-tfr":
         return {
             "revision": "polysilicon-11052-stockpiling-ko-v1",
