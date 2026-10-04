@@ -897,7 +897,7 @@ def score(item: dict) -> int:
 
     if group == 'sodium_ion_battery':
         stage = _sodium_stage(text, source)
-        if stage in {'known_baseline','background'}:
+        if stage in {'','known_baseline','background'}:
             return 0
         s = 20
         s += {
