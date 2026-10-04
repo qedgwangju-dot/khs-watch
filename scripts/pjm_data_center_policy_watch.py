@@ -13,12 +13,16 @@ from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
+from us_grid_emergency_official import collect_all as collect_grid_emergency_events
+from us_grid_emergency_official import event_is_alertable as grid_event_is_alertable
+from us_grid_emergency_official import render_event as render_grid_emergency_event
 
 OUT = Path("out")
 STATE = Path("data/pjm_data_center_policy_state.json")
 ALERT = OUT / "pjm_data_center_policy_alert.txt"
 PENDING = OUT / "pjm_data_center_policy_pending_state.json"
 STATUS = OUT / "pjm_data_center_policy_status.md"
+GRID_ALERT = OUT / "us_grid_emergency_alert.txt"
 
 PJM_HOME = "https://www.pjm.com/"
 PJM_RBP = "https://www.pjm.com/committees-and-groups/cifp-rbp"
@@ -314,7 +318,7 @@ def concise_title(title: str, max_len: int = 150) -> str:
 
 
 OUT.mkdir(exist_ok=True)
-for p in (ALERT, PENDING, STATUS):
+for p in (ALERT, PENDING, STATUS, GRID_ALERT):
     if p.exists():
         p.unlink()
 
@@ -352,6 +356,16 @@ new_items = [x for x in items if x["id"] not in old_ids]
 baseline_run = not old.get("initialized")
 format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
 
+grid_now = dt.datetime.now(dt.timezone.utc)
+grid_events, grid_errors = collect_grid_emergency_events(grid_now)
+old_grid_seen = list(old.get("grid_emergency_seen_ids", []))
+old_grid_ids = set(old_grid_seen)
+new_grid_events = [
+    event for event in grid_events
+    if event.get("id") not in old_grid_ids and grid_event_is_alertable(event, grid_now)
+]
+grid_seen = list(dict.fromkeys(old_grid_seen + [str(event.get("id")) for event in grid_events]))[-SEEN_ID_LIMIT:]
+
 changes = []
 for key, label in (
     ("target_mw", "RBP 목표 부족분"),
@@ -379,6 +393,9 @@ pending = {
     "fx_checked_utc": fx_checked,
     "updated_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
     "source_errors": errors,
+    "grid_emergency_initialized": True,
+    "grid_emergency_seen_ids": grid_seen,
+    "grid_emergency_source_errors": grid_errors,
 }
 PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
@@ -502,6 +519,16 @@ if should_alert:
 
     ALERT.write_text(text + "\n", encoding="utf-8")
 
+if new_grid_events:
+    GRID_ALERT.write_text(
+        "\n\n---\n\n".join(
+            render_grid_emergency_event(event, grid_now)
+            for event in new_grid_events[:4]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
 STATUS.write_text(
     "# PJM 데이터센터 전력정책 감시\n\n"
     f"- 형식 버전: **{FORMAT_VERSION}**\n"
@@ -512,10 +539,13 @@ STATUS.write_text(
     f"- 현재 신규 자료: **{len(new_items)}건**\n"
     f"- 숫자 변경: **{len(changes)}건**\n"
     f"- 알림: **{'예' if should_alert else '아니오'}**\n"
-    f"- 원천 오류: **{'; '.join(errors) if errors else '없음'}**\n",
+    f"- 원천 오류: **{'; '.join(errors) if errors else '없음'}**\n"
+    f"- PJM·DOE 비상운영 신규 이벤트: **{len(new_grid_events)}건**\n"
+    f"- PJM·DOE 비상운영 원천 오류: **{'; '.join(grid_errors) if grid_errors else '없음'}**\n",
     encoding="utf-8",
 )
 print(
     f"pjm_policy format={FORMAT_VERSION} baseline={baseline} "
-    f"new_items={len(new_items)} changes={len(changes)} format_upgrade={format_upgrade} alert={should_alert}"
+    f"new_items={len(new_items)} changes={len(changes)} format_upgrade={format_upgrade} "
+    f"grid_emergency={len(new_grid_events)} alert={should_alert or bool(new_grid_events)}"
 )
