@@ -124,7 +124,11 @@ EV46_RIVIAN_BASE = re.compile(r'(?:Rivian|리비안).{0,140}(?:4695).{0,140}(?:6
 EV46_CHERY_BASE = re.compile(r'(?:Chery|체리).{0,140}(?:46[-\s]*series|46시리즈).{0,140}(?:8\s*GWh|6\s*년|six\s*years?)|(?:8\s*GWh).{0,180}(?:Chery|체리)', re.I)
 EV46_BMW_BASE = re.compile(r'(?:BMW).{0,180}(?:46\s*mm|46mm).{0,180}(?:95\s*mm|120\s*mm)|(?:95\s*mm|120\s*mm).{0,180}(?:BMW).{0,180}(?:46\s*mm|46mm)', re.I)
 EV46_TESLA_BASE = re.compile(r'(?:Tesla|테슬라).{0,180}(?:4680).{0,180}(?:40\s*GWh|production|양산)|(?:40\s*GWh).{0,180}(?:4680)', re.I)
-EV46_SDI_BASE = re.compile(r'(?:Samsung\s*SDI|삼성SDI).{0,180}(?:4695).{0,180}(?:micro\s*mobility|마이크로\s*모빌리티|first\s*shipment|초도\s*공급|양산)|(?:4695).{0,180}(?:삼성SDI|Samsung\s*SDI)', re.I)
+EV46_SDI_BASE = re.compile(
+    r'(?:Samsung\s*SDI|삼성SDI).{0,220}(?:4695).{0,180}(?:micro\s*mobility|마이크로\s*모빌리티|first\s*shipment|initial\s*supply|초도\s*공급|초도\s*출하|Vietnam|베트남)|'
+    r'(?:micro\s*mobility|마이크로\s*모빌리티|first\s*shipment|initial\s*supply|초도\s*공급|초도\s*출하|Vietnam|베트남).{0,220}(?:4695).{0,180}(?:Samsung\s*SDI|삼성SDI)',
+    re.I,
+)
 EV46_MERCEDES_BASE = re.compile(r'(?:Mercedes[-\s]*Benz|Mercedes|벤츠).{0,180}(?:46100).{0,180}(?:2028|Poland|폴란드|Wroclaw|브로츠와프)|(?:46100).{0,180}(?:Mercedes[-\s]*Benz|Mercedes|벤츠)', re.I)
 EV46_INDIGO_BASE = re.compile(r'(?:indiGOtech|인디고테크).{0,180}(?:46[-\s]*series|46시리즈).{0,180}(?:2027|2030|MOU|협의|nonbinding)|(?:46[-\s]*series|46시리즈).{0,180}(?:indiGOtech|인디고테크)', re.I)
 EV46_ARIZONA_PLAN = re.compile(r'(?:Queen\s*Creek|퀸크릭|Arizona|애리조나).{0,180}(?:4680|4695|46100|46120|46[-\s]*series|46시리즈).{0,160}(?:2026|year[-\s]*end|연말|\bplan(?:s|ned)?\b|예정|계획)', re.I)
