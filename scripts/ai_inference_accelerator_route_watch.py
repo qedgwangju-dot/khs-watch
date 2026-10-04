@@ -51,6 +51,7 @@ MAX_ALERT_EVENTS = 5
 OFFICIAL_SNAPSHOT_SCHEMA_VERSION = 2
 OFFICIAL_CHANGE_CONFIRM_RUNS = 2
 OFFICIAL_CHANGE_CONFIRM_SECONDS = 600
+NEWS_BACKFILL_GRACE_HOURS = 6
 
 IMMUTABLE_OFFICIAL_REFERENCE_PAGES = {
     "OpenAI·Cerebras 750MW 계약",
@@ -554,6 +555,19 @@ def _parse_iso_utc(value: str | None) -> dt.datetime | None:
         return None
 
 
+def is_stale_news_backfill(
+    item: dict,
+    previous_watermark: dt.datetime | None,
+) -> bool:
+    if previous_watermark is None:
+        return False
+    published = _parse_iso_utc(item.get("published_at"))
+    if published is None:
+        return False
+    cutoff = previous_watermark - dt.timedelta(hours=NEWS_BACKFILL_GRACE_HOURS)
+    return published < cutoff
+
+
 def semantic_changes(old: dict, new: dict) -> list[tuple[str, object, object]]:
     keys = sorted(set(old) | set(new))
     return [(key, old.get(key), new.get(key)) for key in keys if old.get(key) != new.get(key)]
@@ -937,10 +951,26 @@ def main() -> int:
     current = list(normalized.values())
 
     seen = prune_seen(dict(state.get("seen") or {}), now)
-    new_items = [
+    candidate_news_items = [
         item for item in current
         if item["fingerprint"] not in seen and not previously_similar(item, seen)
     ]
+
+    previous_news_watermark = (
+        _parse_iso_utc(state.get("news_watermark_utc"))
+        or _parse_iso_utc(state.get("updated_at_kst"))
+    )
+    stale_backfill_suppressed = 0
+    new_items = []
+    for item in candidate_news_items:
+        if is_stale_news_backfill(item, previous_news_watermark):
+            stale_backfill_suppressed += 1
+            print(
+                f"ai_inference_route_stale_backfill_suppressed="
+                f"{item.get('published_at')} {item.get('source')} {item.get('title')}"
+            )
+            continue
+        new_items.append(item)
 
     official_pages = dict(state.get("official_pages") or {})
     prior_snapshot_schema = int(state.get("official_snapshot_schema_version") or 0)
@@ -1002,11 +1032,13 @@ def main() -> int:
         "seen": seen,
         "official_pages": official_pages,
         "official_snapshot_schema_version": OFFICIAL_SNAPSHOT_SCHEMA_VERSION,
+        "news_watermark_utc": now.isoformat(),
         "last_collection": {
             "raw_items":len(raw),
             "material_items":len(current),
             "new_articles":len(new_items),
             "new_events":len(events),
+            "stale_backfill_suppressed":stale_backfill_suppressed,
             "errors":errors,
         },
     }
@@ -1025,6 +1057,7 @@ def main() -> int:
         f"- 웹 수집: {len(raw)}건",
         f"- 중요 필터 통과: {len(current)}건",
         f"- 신규 중요 사건: {len(events)}건",
+        f"- 과거 기사 역유입 차단: {stale_backfill_suppressed}건",
         f"- 공식 페이지 기준선: {len(official_pages)}개",
         f"- 오류: {len(errors)}건",
     ]
