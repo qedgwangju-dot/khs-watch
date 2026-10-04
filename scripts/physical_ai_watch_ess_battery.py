@@ -1358,6 +1358,21 @@ def key(item: dict) -> str:
             if EV46_BMW_BASE.search(text): return hashlib.sha256(b'ev46|bmw|46mm|95-120mm-baseline').hexdigest()
             if EV46_TESLA_BASE.search(text): return hashlib.sha256(b'ev46|tesla|4680|40gwh-baseline').hexdigest()
             if EV46_SDI_BASE.search(text): return hashlib.sha256(b'ev46|sdi|4695|micromobility-baseline').hexdigest()
+            if EV46_SDI_KGM_BASE.search(text): return hashlib.sha256(b'ev46|sdi|kgm|pack-development-mou|2025-12-baseline').hexdigest()
+            if EV46_SKON_DEV_BASE.search(text):
+                if re.search(r'Changzhou|창저우|300,?000|30만', text, re.I):
+                    return hashlib.sha256(b'ev46|skon|changzhou|prototype|300k-year-baseline').hexdigest()
+                return hashlib.sha256(b'ev46|skon|development-complete|2025-baseline').hexdigest()
+            if EV46_LGES_CYL_15X_BASE.search(text): return hashlib.sha256(b'ev46|lges|q2-2026|cylindrical-including-46series|1.5x-yoy-baseline').hexdigest()
+            if EV46_MARKET_BASE.search(text): return hashlib.sha256(b'ev46|market|2025-155gwh|2030-650gwh|cagr33-baseline').hexdigest()
+            if (
+                SDI_RE.search(text)
+                and EV46_ANON_OEM.search(text)
+                and re.search(r'2028', text)
+                and re.search(r'Hungary|헝가리', text, re.I)
+                and EV46_CONTRACT.search(text)
+            ):
+                return hashlib.sha256(b'ev46|sdi|europe-premium-ev|anonymous-order|2028-hungary-baseline').hexdigest()
             if EV46_INDIGO_BASE.search(text): return hashlib.sha256(b'ev46|indigotech|2027-2030|mou-baseline').hexdigest()
             if EV46_BASELINE_BACKLOG.search(text): return hashlib.sha256(b'ev46|lges|440gwh-backlog|q1-2026-baseline').hexdigest()
             if EV46_ARIZONA_PLAN.search(text): return hashlib.sha256(b'ev46|lges|arizona|year-end-2026-plan-baseline').hexdigest()
