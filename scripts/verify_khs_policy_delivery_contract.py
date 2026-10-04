@@ -83,6 +83,19 @@ def assert_fcc_space_nepa_and_satellite_spectrum_are_monitored() -> None:
     if missing:
         raise AssertionError(f"FCC space-policy rules missing: {sorted(missing)}")
 
+    official_text = khs_trusted_policy_news_watch.OFFICIAL_TEXT_STORIES
+    expected_official_docs = {
+        "us_fcc_space_nepa_reform": "FCC 26-64",
+        "us_fcc_satellite_spectrum_abundance": "FCC 26-65",
+        "us_fcc_satellite_spectrum_followon_fnprm": "FCC 26-65",
+    }
+    for key, document_number in expected_official_docs.items():
+        rows = official_text.get(key, ())
+        if not any(document_number == row[2] and "docs.fcc.gov/public/attachments/" in row[0] for row in rows):
+            raise AssertionError(f"FCC official text source missing: {key} {document_number}")
+        if khs_trusted_policy_news_watch.RULE_MAX_AGE_HOURS.get(key, 0) < 24 * 7:
+            raise AssertionError(f"FCC recovery window missing: {key}")
+
     nepa = rules["us_fcc_space_nepa_reform"]
     if "FAA" not in nepa.counter or "모든 환경규제" not in nepa.counter:
         raise AssertionError("FCC NEPA rule must preserve the FAA/limited-scope caveat")
@@ -1903,7 +1916,7 @@ def assert_fcc_upper_c_band_auction115_is_monitored() -> None:
     telegram_html = khs_policy_telegram_formatter.prepare_telegram_html(title, formatted)
     expected_fcc = (
         '<a href="https://www.federalregister.gov/documents/2026/08/03/2026-15725/'
-        'auction-of-flexible-use-licenses-in-the-upper-c-band-for-next-generation-wireless-services-scheduled">FCC 원문</a>'
+        'auction-of-flexible-use-licenses-in-the-upper-c-band-for-next-generation-wireless-services-scheduled">원문</a>'
     )
     expected_reuters = (
         '<a href="https://www.reuters.com/business/media-telecom/'

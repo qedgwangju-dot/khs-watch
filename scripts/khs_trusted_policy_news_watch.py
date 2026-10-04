@@ -63,6 +63,36 @@ OFFICIAL_API_STORIES = {
     ),
 }
 
+# FCC final Commission items are exposed as plain-text attachments even when
+# the public document landing page is not reliably indexed by Google News.
+# Fetching the official text directly keeps these three tracks first-party.
+OFFICIAL_TEXT_STORIES = {
+    "us_fcc_space_nepa_reform": (
+        (
+            "https://docs.fcc.gov/public/attachments/FCC-26-64A1.txt",
+            "https://docs.fcc.gov/public/attachments/FCC-26-64A1.pdf",
+            "FCC 26-64",
+            "Federal Communications Commission",
+        ),
+    ),
+    "us_fcc_satellite_spectrum_abundance": (
+        (
+            "https://docs.fcc.gov/public/attachments/FCC-26-65A1.txt",
+            "https://docs.fcc.gov/public/attachments/FCC-26-65A1.pdf",
+            "FCC 26-65",
+            "Federal Communications Commission",
+        ),
+    ),
+    "us_fcc_satellite_spectrum_followon_fnprm": (
+        (
+            "https://docs.fcc.gov/public/attachments/FCC-26-65A1.txt",
+            "https://docs.fcc.gov/public/attachments/FCC-26-65A1.pdf",
+            "FCC 26-65",
+            "Federal Communications Commission",
+        ),
+    ),
+}
+
 DIRECT_STORY_URLS = {
     "us_fcc_chinese_optical_transceiver_ban": (
         (
@@ -79,6 +109,12 @@ RULE_MAX_AGE_HOURS = {
     # One-time recovery lane for the already-official Auction 115 schedule plus
     # the later FCC Chair $100B multi-auction context that was missed on Telegram.
     "us_fcc_upper_c_band_auction115": 24 * 75,
+    # These FCC items were released before their dedicated rules produced a
+    # confirmed Telegram delivery. Keep a bounded recovery window so the missed
+    # official stages can be sent once, then semantic seen-state prevents repeats.
+    "us_fcc_space_nepa_reform": 24 * 14,
+    "us_fcc_satellite_spectrum_abundance": 24 * 14,
+    "us_fcc_satellite_spectrum_followon_fnprm": 24 * 14,
 }
 
 def max_age_hours_for_rule(rule: "StoryRule") -> int:
@@ -975,6 +1011,59 @@ def load_seen() -> dict:
 def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
     items: list[dict] = []
     seen_links: set[str] = set()
+
+    # Some FCC Commission items are available first as official plain-text
+    # attachments. Read those exact documents before falling back to news RSS.
+    for fetch_url, canonical_url, document_number, source_label in OFFICIAL_TEXT_STORIES.get(rule.key, ()):
+        try:
+            raw = fetch_text(fetch_url, timeout=12)
+        except Exception as exc:
+            print(f"trusted_policy_news=official_text_failed key={rule.key} error={type(exc).__name__}: {exc}")
+            continue
+        raw_plain = clean_text(raw)
+        normalized_doc = re.sub(r"[^a-z0-9]", "", document_number.lower())
+        normalized_raw = re.sub(r"[^a-z0-9]", "", raw_plain.lower())
+        released_match = re.search(
+            r"\bReleased:\s*(January|February|March|April|May|June|July|August|September|October|November|December)\s+"
+            r"(\d{1,2}),\s+(20\d{2})\b",
+            raw_plain,
+            flags=re.I,
+        )
+        published = None
+        if released_match:
+            try:
+                published = dt.datetime.strptime(
+                    released_match.group(0).split(":", 1)[1].strip(),
+                    "%B %d, %Y",
+                ).replace(tzinfo=KST)
+            except ValueError:
+                published = None
+        title = rule.title
+        haystack = f"{title} {source_label} {document_number} {raw_plain}"
+        if (
+            normalized_doc not in normalized_raw
+            or not published
+            or (now - published).total_seconds() / 3600 > max_age_hours_for_rule(rule)
+            or not has_required_terms(haystack, rule)
+        ):
+            print(
+                f"trusted_policy_news=official_text_rejected key={rule.key} "
+                f"document={document_number!r} published={published!r}"
+            )
+            continue
+        seen_links.add(canonical_url)
+        items.append({
+            "title": title,
+            "description": raw_plain[:50000],
+            "link": canonical_url,
+            "source": source_label,
+            "published_kst": published.isoformat(timespec="seconds"),
+            "priority": 0,
+        })
+        print(
+            f"trusted_policy_news=official_text_verified key={rule.key} "
+            f"document={document_number!r}"
+        )
 
     # Federal Register JSON metadata is used for official notices whose HTML
     # layout is not reliably parsed by the generic article-body extractor.
