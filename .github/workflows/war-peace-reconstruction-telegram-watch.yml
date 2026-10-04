@@ -78,14 +78,17 @@ jobs:
           python -m py_compile scripts/war_peace_reconstruction_watch_hormuz_oman.py
           python -m py_compile scripts/war_peace_reconstruction_watch_energy_ceasefire.py
           python -m py_compile scripts/war_peace_reconstruction_watch_diplomacy_flash.py
+          python -m py_compile scripts/war_peace_reconstruction_watch_oct04_guard.py
           python -m py_compile scripts/test_war_peace_regression.py
+          python -m py_compile scripts/test_war_peace_oct04_regression.py
           python scripts/test_war_peace_regression.py
+          python scripts/test_war_peace_oct04_regression.py
       - name: Check war peace reconstruction conditions
         run: |
           if [ "$TELEGRAM_TEST" = "true" ]; then
-            python scripts/war_peace_reconstruction_watch_diplomacy_flash.py --telegram-test
+            python scripts/war_peace_reconstruction_watch_oct04_guard.py --telegram-test
           else
-            python scripts/war_peace_reconstruction_watch_diplomacy_flash.py
+            python scripts/war_peace_reconstruction_watch_oct04_guard.py
           fi
       - name: Publish status summary
         if: always()
@@ -117,7 +120,7 @@ jobs:
           PY
       - name: Finalize state after confirmed delivery
         if: success() && env.DRY_RUN != 'true' && hashFiles('out/war_peace_reconstruction_alert.txt') != ''
-        run: python scripts/war_peace_reconstruction_watch_diplomacy_flash.py --finalize
+        run: python scripts/war_peace_reconstruction_watch_oct04_guard.py --finalize
       - name: Commit confirmed alert state
         if: success() && env.DRY_RUN != 'true' && hashFiles('data/war_peace_reconstruction_watch_state.json') != ''
         run: |
