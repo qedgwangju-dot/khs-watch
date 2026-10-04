@@ -16,6 +16,7 @@ on:
       - "scripts/us_data_center_cancellation_risk_watch.py"
       - "scripts/us_ai_data_center_buildout_watch.py"
       - "scripts/spacexai_neocloud_watch.py"
+      - "scripts/nebius_dataone_bloom_watch.py"
       - "scripts/epoch_ai_dc_execution_watch.py"
       - "scripts/ai_dc_tam_revision_watch.py"
       - "scripts/us_hyperscaler_company_risk_watch.py"
@@ -187,6 +188,9 @@ jobs:
       - name: Check SpaceXAI external compute and neocloud monetization
         run: python scripts/spacexai_neocloud_watch.py
 
+      - name: Check Nebius DataOne Bloom partner infrastructure
+        run: python scripts/nebius_dataone_bloom_watch.py
+
       - name: Check Epoch AI aggregate US execution ratio
         run: python scripts/epoch_ai_dc_execution_watch.py
 
@@ -220,6 +224,7 @@ jobs:
               pathlib.Path("out/us_data_center_cancellation_risk_alert.txt"),
               pathlib.Path("out/us_ai_data_center_buildout_alert.txt"),
               pathlib.Path("out/spacexai_neocloud_alert.txt"),
+              pathlib.Path("out/nebius_dataone_bloom_alert.txt"),
               pathlib.Path("out/epoch_ai_dc_execution_alert.txt"),
               pathlib.Path("out/ai_dc_tam_revision_alert.txt"),
               pathlib.Path("out/us_hyperscaler_company_risk_alert.txt"),
@@ -363,6 +368,21 @@ jobs:
                           ],
                       ]
                   }
+              elif p.name == "nebius_dataone_bloom_alert.txt":
+                  payload["parse_mode"] = "HTML"
+                  payload["link_preview_options"] = {"is_disabled": True}
+                  payload["reply_markup"] = {
+                      "inline_keyboard": [
+                          [
+                              {"text": "🏗 DataOne Frankfort", "url": "https://dataonefrankfort.com/"},
+                              {"text": "🏢 Nebius Vineland", "url": "https://nebius.com/vinelandnj"},
+                          ],
+                          [
+                              {"text": "⚡ Nebius·Bloom", "url": "https://nebius.com/newsroom/nebius-and-bloom-energy-partner-to-power-ai-infrastructure-build-out"},
+                              {"text": "🤝 파트너 인프라 모델", "url": "https://nebius.com/newsroom/nebius-introduces-business-model-to-scale-ai-cloud-globally-through-infrastructure-partnerships"},
+                          ],
+                      ]
+                  }
               elif p.name == "us_hyperscaler_company_risk_alert.txt":
                   payload["parse_mode"] = "HTML"
                   payload["link_preview_options"] = {"is_disabled": True}
@@ -452,6 +472,7 @@ jobs:
           cp out/us_data_center_cancellation_risk_pending_state.json "$tmpdir/us_data_center_cancellation_risk_state.json"
           cp out/us_ai_data_center_buildout_pending_state.json "$tmpdir/us_ai_data_center_buildout_state.json"
           cp out/spacexai_neocloud_pending_state.json "$tmpdir/spacexai_neocloud_state.json"
+          cp out/nebius_dataone_bloom_pending_state.json "$tmpdir/nebius_dataone_bloom_state.json"
           cp out/epoch_ai_dc_execution_pending_state.json "$tmpdir/epoch_ai_dc_execution_state.json"
           cp out/ai_dc_tam_revision_pending_state.json "$tmpdir/ai_dc_tam_revision_state.json"
           cp out/us_hyperscaler_company_risk_pending_state.json "$tmpdir/us_hyperscaler_company_risk_state.json"
@@ -472,6 +493,7 @@ jobs:
             cp "$tmpdir/us_data_center_cancellation_risk_state.json" data/us_data_center_cancellation_risk_state.json
             cp "$tmpdir/us_ai_data_center_buildout_state.json" data/us_ai_data_center_buildout_state.json
             cp "$tmpdir/spacexai_neocloud_state.json" data/spacexai_neocloud_state.json
+            cp "$tmpdir/nebius_dataone_bloom_state.json" data/nebius_dataone_bloom_state.json
             cp "$tmpdir/epoch_ai_dc_execution_state.json" data/epoch_ai_dc_execution_state.json
             cp "$tmpdir/ai_dc_tam_revision_state.json" data/ai_dc_tam_revision_state.json
             cp "$tmpdir/us_hyperscaler_company_risk_state.json" data/us_hyperscaler_company_risk_state.json
@@ -484,6 +506,7 @@ jobs:
                     data/us_data_center_cancellation_risk_state.json \
                     data/us_ai_data_center_buildout_state.json \
                     data/spacexai_neocloud_state.json \
+                    data/nebius_dataone_bloom_state.json \
                     data/epoch_ai_dc_execution_state.json \
                     data/ai_dc_tam_revision_state.json \
                     data/us_hyperscaler_company_risk_state.json
@@ -541,6 +564,9 @@ jobs:
             out/spacexai_neocloud_status.md
             out/spacexai_neocloud_alert.txt
             out/spacexai_neocloud_pending_state.json
+            out/nebius_dataone_bloom_status.md
+            out/nebius_dataone_bloom_alert.txt
+            out/nebius_dataone_bloom_pending_state.json
             out/epoch_ai_dc_execution_status.md
             out/epoch_ai_dc_execution_alert.txt
             out/epoch_ai_dc_execution_pending_state.json
