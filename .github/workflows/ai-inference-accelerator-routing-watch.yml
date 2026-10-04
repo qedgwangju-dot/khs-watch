@@ -107,6 +107,7 @@ jobs:
               advance_official_page_state,
               official_page_snapshots,
               semantic_official_snapshot,
+              is_stale_news_backfill,
           )
 
           ultra_a = (
@@ -184,6 +185,21 @@ jobs:
           investor = live.get("Synopsys 2026 Investor Day")
           if not investor or investor.get("snapshot_type") != "immutable":
               raise RuntimeError("Synopsys Investor Day must be an immutable reference page")
+
+          watermark = dt.datetime(2026, 10, 4, 0, 0, tzinfo=UTC)
+          stale_item = {
+              "published_at": "2026-10-02T00:00:00+00:00",
+              "title": "Old official accelerator article discovered by a new query",
+          }
+          fresh_item = {
+              "published_at": "2026-10-03T20:00:00+00:00",
+              "title": "Fresh accelerator article",
+          }
+          if not is_stale_news_backfill(stale_item, watermark):
+              raise RuntimeError("Stale query-backfill article was not suppressed")
+          if is_stale_news_backfill(fresh_item, watermark):
+              raise RuntimeError("Fresh article was incorrectly suppressed as backfill")
+          print("ai_inference_backfill_guard=PASS")
           print("ai_inference_semantic_regression=PASS")
           PY
 
