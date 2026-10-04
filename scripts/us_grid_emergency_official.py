@@ -199,10 +199,16 @@ def doe_party(text: str) -> str:
         return "PJM"
     if "northern indiana public service company" in low and "midcontinent independent system operator" in low:
         return "NIPSCO·MISO"
-    if "midcontinent independent system operator" in low:
-        return "MISO"
+    if "centerpoint energy" in low and "midcontinent independent system operator" in low:
+        return "CenterPoint Energy·MISO"
+    if "duke energy carolinas" in low or "duke energy progress" in low:
+        return "Duke Energy"
+    if "southwest power pool" in low:
+        return "SPP"
     if "transalta centralia generation" in low:
         return "TransAlta"
+    if "midcontinent independent system operator" in low:
+        return "MISO"
     return "대상 기관 확인 필요"
 
 
@@ -284,7 +290,11 @@ def event_is_alertable(event: dict, now: dt.datetime) -> bool:
     issue = event.get("issue_date")
     if issue is None:
         return False
-    return (now_kst.date() - issue).days <= 2
+    if event.get("party") in {"", None, "대상 기관 확인 필요"}:
+        return False
+    if not event.get("order_no"):
+        return False
+    return 0 <= (now_kst.date() - issue).days <= 2
 
 
 def pjm_title(event: dict) -> str:
@@ -473,6 +483,11 @@ def self_test() -> None:
     assert "DOE 명령 발령" in pjm_stage_explanation(pre)
     assert "실제 동원" in pjm_stage_explanation(pre)
     assert "운영 적용" not in pjm_title(pre)
+    assert not event_is_alertable(pre, stale_now), "stale 105521 must not re-alert on Sep 19"
+    rendered_pre = render_event(pre, stale_now)
+    assert "요청·사전 준비" in rendered_pre
+    assert "실제 동원" in rendered_pre
+    assert "2026년 9월 17일 02:11 KST" in rendered_pre
 
     doe45 = """
     On September 17, 2026, the Department of Energy (DOE) issued emergency DOE Order No. 202-26-45,
@@ -504,6 +519,22 @@ def self_test() -> None:
     assert "NIPSCO·MISO에 202(c) 긴급명령 202-26-46" in rendered46
     assert "September" not in rendered46
     assert "2026년 9월 18일" in rendered46
+    assert "2026년 9월 20일" in rendered46
+    assert "2026년 12월 18일" in rendered46
+    assert "R.M. Schahfer 발전소 17·18호기" in rendered46
+    assert "경제급전" in rendered46
+    assert "대형부하 백업발전 명령이 아니며" in rendered46
+
+    unknown = {
+        "kind": "doe",
+        "id": "doe:202-26-99",
+        "order_no": "202-26-99",
+        "party": "대상 기관 확인 필요",
+        "issue_date": dt.date(2026, 10, 4),
+    }
+    assert not event_is_alertable(
+        unknown, dt.datetime(2026, 10, 4, 10, 0, tzinfo=KST)
+    ), "unknown DOE counterparty must fail closed"
     print("us_grid_emergency_official_self_test=passed")
 
 
