@@ -34,15 +34,19 @@ DIRECT_FINGERPRINT_VERSION = "ko-v2"
 
 # Westinghouse도 기사/URL 신규가 아니라 지분율·거버넌스·계약단계의 사건 상태를 감지한다.
 # 전환 이전의 기사들은 최신 상태의 기준선으로만 흡수하고 소급 재발송하지 않는다.
-WEC_STATE_MODEL_CUTOFF_UTC = dt.datetime(2026, 9, 24, 5, 0, tzinfo=UTC)
-WEC_STATE_MODEL_VERSION = 2
+WEC_STATE_MODEL_CUTOFF_UTC = dt.datetime(2026, 10, 2, 0, 0, tzinfo=UTC)
+WEC_STATE_MODEL_VERSION = 3
+# Westinghouse 지분/거버넌스 Telegram 단일 소유자는
+# khs-us-investment-telegram-watch.yml 이다. 이 정책 워처는 보조 증거를
+# 수집할 수 있지만 지분/이사회 기사만으로 별도 Telegram 상태변화를 만들지 않는다.
+WEC_EQUITY_ALERTS_DELEGATED_TO_US_INVESTMENT = True
 WEC_FIXED_BASELINE = {
-    "state_key": "governance:board_limited|governance:voting_possible|stake:7+alpha|stake_korea_request:20|stake_range:5~10|stake_us_offer:7",
-    "status": "5~10% 지분 협의·의결권 검토",
-    "published_utc": "2026-09-22T08:48:00+00:00",
-    "title": "웨스팅하우스 지분 5~10% 협의·의결권 가능 기준선",
-    "source": "2026-09-22 국회 보고·복수 보도",
-    "link": "",
+    "state_key": "approval:corporate_pending|approval:due_diligence_pending|approval:regulatory_pending|stage:definitive_agreement_pending|stake_range:5~10|status:framework_nonbinding|transaction:cornerstone_equity",
+    "status": "공식 프레임워크·최종계약 미체결",
+    "published_utc": "2026-10-01T00:00:00+00:00",
+    "title": "Westinghouse 공식 한국 지분 5~10% 잠재 투자·비구속 프레임워크",
+    "source": "Westinghouse·Cameco 공식",
+    "link": "https://info.westinghousenuclear.com/news/u.s.-korea-framework-advances-deployment-of-westinghouse-nuclear-technology-in-the-united-states",
 }
 
 # SMR는 새 기사 자체가 아니라 주제·사건의 구조화된 상태 변화를 감지한다.
@@ -306,9 +310,18 @@ def _wec_state_facts(title: str, outlet: str = "") -> tuple[str, ...]:
         facts.append("pricing:ipo_discount")
 
     if "이사회" in low or "board seat" in low or "board representation" in low:
-        if any(term in low for term in ("어려", "불가", "못해", "힘들", "difficult", "unlikely")):
+        # '진입 노린다/추진/가능/목표/검토'는 권리 확보가 아니라 협상 기대다.
+        # 물질적 상태 변화는 실제 지명권·이사회석 확보 또는 명시적 제한이 확인될 때만 만든다.
+        speculative_board = any(term in low for term in (
+            "노린", "추진", "목표", "가능", "관심", "검토", "협의", "협상",
+            "aim", "seek", "seeking", "target", "possible", "consider", "negotiat",
+        ))
+        if any(term in low for term in ("어려", "불가", "못해", "힘들", "부담", "difficult", "unlikely", "reluctant")):
             facts.append("governance:board_limited")
-        else:
+        elif any(term in low for term in (
+            "확보", "합의", "선임", "지명권", "진입 확정",
+            "secured", "agreed", "appointed", "appointment right", "nomination right",
+        )) and not speculative_board:
             facts.append("governance:board")
     if "의결권" in low or "voting right" in low:
         facts.append("governance:voting_possible")
@@ -376,6 +389,10 @@ def _self_test_material_filter() -> None:
         raise RuntimeError("Westinghouse generic-stake-wording regression")
     if not _is_material_westinghouse("웨스팅하우스 지분 5~10% 인수…의결권 가능", "한국경제"):
         raise RuntimeError("Westinghouse concrete-stake-range regression")
+    if _is_material_westinghouse("시공 넘어 경영 참여로… 韓 기업, 웨스팅하우스 이사회 진입 노린다", "IT조선"):
+        raise RuntimeError("Westinghouse speculative-board-headline must not trigger material state change")
+    if not _is_material_westinghouse("Westinghouse 공식 한국 측 이사회 지명권 확보 합의", "Westinghouse"):
+        raise RuntimeError("Westinghouse confirmed-board-right must remain material")
     official_framework = _wec_state_key(
         "Westinghouse 공식 한국 지분 5~10% cornerstone equity investment terms non-binding subject to definitive agreements due diligence corporate approvals regulatory approvals",
         "Westinghouse",
@@ -1112,6 +1129,14 @@ def main() -> int:
         }
 
     stake_items = collect_westinghouse_stake_items(now)
+    if WEC_EQUITY_ALERTS_DELEGATED_TO_US_INVESTMENT:
+        # 단일 소유권: 지분/거버넌스 알림은 대미투자 watcher만 송출한다.
+        # 여기서는 같은 기사나 RSS가 다시 나타나도 alert 후보로 만들지 않는다.
+        print(
+            "westinghouse_equity_alert_delegated_to_us_investment=true "
+            f"support_candidates={len(stake_items)}"
+        )
+        stake_items = []
     previous_state = seen.get("westinghouse_issue_state") or {}
     previous_model_version = int(seen.get("westinghouse_state_model_version") or 0)
 
