@@ -139,6 +139,52 @@ EV46_BMA_EXEC = re.compile(r'(?:BMA|battery\s*module\s*assembly|배터리\s*모�
 EV46_COMPONENT = re.compile(r'에코프로비엠|EcoPro\s*BM|케이엔에스|\bKNS\b|엠오티|\bMOT\b|원익피앤이|Wonik\s*PNE|양극재|cathode|리벳|rivet|용접|weld|검사\s*장비|inspection\s*equipment', re.I)
 EV46_COMPONENT_ORDER = re.compile(r'수주|공급\s*계약|계약|order|contract|award|납품|shipment|장비\s*발주|equipment\s*order', re.I)
 EV46_REVERSE = re.compile(r'(?:46[-\s]*series|46시리즈|4680|4695|46100|46120).{0,140}(?:cancel|terminate|delay|postpone|cut|reduce|중단|취소|해지|지연|연기|축소|감산)|(?:cancel|terminate|delay|postpone|중단|취소|해지|지연|연기|축소).{0,140}(?:46[-\s]*series|46시리즈|4680|4695|46100|46120)', re.I)
+EV46_MARKET_BASE = re.compile(
+    r'(?:155\s*GWh).{0,180}(?:650\s*GWh).{0,120}(?:2030|33\s*%)|'
+    r'(?:650\s*GWh).{0,180}(?:155\s*GWh).{0,120}(?:2030|33\s*%)|'
+    r'(?:33\s*%).{0,120}(?:155\s*GWh|650\s*GWh).{0,120}2030',
+    re.I,
+)
+EV46_MARKET_FORECAST = re.compile(r'SNE\s*Research|SNE리서치', re.I)
+EV46_FORECAST_CHANGE = re.compile(r'revis|raise|lower|upgrade|downgrade|상향|하향|수정|변경|새\s*전망|new\s*forecast', re.I)
+EV46_LGES_CYL_15X_BASE = re.compile(
+    r'(?:LG\s*Energy\s*Solution|LG에너지솔루션).{0,180}(?:cylindrical|원통형).{0,180}(?:46[-\s]*Series|46시리즈).{0,180}(?:1\.5\s*x|1\.5\s*times|1\.5배).{0,80}(?:year[-\s]*on[-\s]*year|YoY|전년\s*동기)|'
+    r'(?:1\.5\s*x|1\.5\s*times|1\.5배).{0,180}(?:cylindrical|원통형).{0,180}(?:LG\s*Energy\s*Solution|LG에너지솔루션)',
+    re.I,
+)
+EV46_SHIPMENT_METRIC = re.compile(
+    r'(?:shipment|shipments|출하량|출하).{0,100}(?:\d+(?:\.\d+)?\s*(?:x|배|%|GWh)|전년\s*동기)|'
+    r'(?:\d+(?:\.\d+)?\s*(?:x|배|%|GWh)).{0,100}(?:shipment|shipments|출하량|출하)',
+    re.I,
+)
+EV46_SDI_EU_ORDER_BASE = re.compile(
+    r'(?:Samsung\s*SDI|삼성SDI).{0,180}(?:European\s+global\s+EV|유럽\s*글로벌\s*(?:전기차|EV)|premium\s+EV|프리미엄\s*전기차).{0,180}'
+    r'(?:46[-\s]*phi|46[-\s]*series|46시리즈).{0,220}(?:2028).{0,120}(?:Hungary|헝가리)|'
+    r'(?:Samsung\s*SDI|삼성SDI).{0,180}(?:46[-\s]*phi|46[-\s]*series|46시리즈).{0,180}(?:2028).{0,120}(?:Hungary|헝가리).{0,120}(?:order|수주)',
+    re.I,
+)
+EV46_SDI_EU_ORDER_CTX = re.compile(
+    r'(?:Samsung\s*SDI|삼성SDI).{0,180}(?:46[-\s]*phi|46[-\s]*series|46시리즈).{0,180}(?:2028|Hungary|헝가리)',
+    re.I,
+)
+EV46_EXACT_FORMAT = re.compile(r'\b4680\b|\b4695\b|\b46100\b|\b46120\b', re.I)
+EV46_SDI_ORDER_DETAIL = re.compile(
+    r'customer\s*(?:is|named|identified)|고객사\s*(?:실명|공개|확인)|공급\s*물량\s*\d|'
+    r'contract\s*(?:volume|size)|계약\s*물량|\d[\d,.]*\s*GWh',
+    re.I,
+)
+EV46_SDI_KGM_BASE = re.compile(
+    r'(?:Samsung\s*SDI|삼성SDI).{0,160}(?:KGM|KG\s*Mobility|KG모빌리티).{0,180}(?:46[-\s]*series|46시리즈).{0,160}(?:MOU|공동\s*개발|joint\s*develop)|'
+    r'(?:KGM|KG\s*Mobility|KG모빌리티).{0,160}(?:Samsung\s*SDI|삼성SDI).{0,180}(?:46[-\s]*series|46시리즈).{0,160}(?:MOU|공동\s*개발|joint\s*develop)',
+    re.I,
+)
+EV46_SKON_DEV_BASE = re.compile(
+    r'(?:SK\s*On|SK온).{0,180}(?:46[-\s]*series|46시리즈).{0,160}(?:development\s*(?:is\s*)?complete|completed\s+development|개발\s*완료)|'
+    r'(?:SK\s*On|SK온).{0,180}(?:Changzhou|창저우).{0,180}(?:prototype|시제품).{0,120}(?:300,?000|30만)',
+    re.I,
+)
+EV46_SKON_QUALIFICATION = re.compile(r'customer\s*(?:qualification|validation|approval)|고객\s*(?:검증|인증|승인)|sample\s*(?:approved|qualification)|샘플\s*(?:승인|검증)', re.I)
+EV46_ANON_OEM = re.compile(r'European\s+global\s+(?:EV|automaker)|global\s+(?:EV|automaker|OEM)|유럽\s*글로벌\s*(?:완성차|전기차)|글로벌\s*(?:완성차|OEM)|U\.S\.\s*start[-\s]*up|미국\s*스타트업', re.I)
 SDI_RE = re.compile(r'삼성SDI|Samsung\s*SDI', re.I)
 SDI_STORAGE_RE = re.compile(r'\bESS\b|\bBESS\b|energy\s*storage|에너지저장|\bUPS\b|\bBBU\b|무정전전원장치|배터리백업유닛', re.I)
 SDI_ESS_MIX_MARGIN = re.compile(r'매출\s*비중|revenue\s*mix|sales\s*mix|영업이익률|operating\s*margin|margin|AMPC|관세\s*환급|tariff\s*refund|본업\s*(?:흑자|이익)', re.I)
