@@ -1348,6 +1348,35 @@ def risk(cat: str) -> str:
 
 def verification(item: dict, group: str, text: str) -> str:
     source = item.get('source') or ''
+    if group == 'sodium_ion_battery':
+        stage = _sodium_stage(text, source)
+        if stage == 'known_baseline':
+            if SODIUM_CATL_60_BASE.search(text):
+                return 'CATL 공식자료 기준선 · HyperStrong 3년 60GWh 계약은 새 이벤트 아님'
+            if SODIUM_CATL_CAP_BASE.search(text) or SODIUM_CATL_DELIVERY_PLAN_BASE.search(text):
+                return 'CATL 공식자료 기준선 · Fuding 40GWh 증설/Jining 160GWh 계획·2026년 9월 첫 ESS 납품 계획·연말 1GWh 목표·2027년 6월 해외납품 계획'
+            if SODIUM_EVE_BASE.search(text):
+                return 'EVE Energy 공식자료 기준선 · 180kWh 계통연계·2026년 말 대량납품 계획'
+            if SODIUM_LGES_BASE.search(text):
+                return 'LG에너지솔루션 공식자료 기준선 · 2027년 상용화 목표와 ESS 생산라인 준비 단계'
+            if SODIUM_SDI_BASE.search(text):
+                return '삼성SDI 공식 실적자료 기준선 · AI 데이터센터 UPS·전력망 ESS용 나트륨이온 개발 단계'
+            if SODIUM_SKON_BASE.search(text):
+                return 'SK온 관계자 인용 보도 기준선 · 2027년 시제품 개발 목표, 공식 양산계획 전'
+            if SODIUM_ENERTECH_BASE.search(text):
+                return 'Enertech 공식자료 기준선 · 140~160Wh/kg 시제품·2027년 1월 양산 계획'
+            if SODIUM_HINA_BASE.search(text):
+                return 'HiNa Battery 공식자료 기준선 · 339kWh 전기트럭 7개월·1.5만km 주행검증 완료'
+            return '기업 공식·신뢰자료 기준선 · 같은 개발/계획 재보도는 새 이벤트 아님'
+        if stage in {'binding_contract','capacity_execution','mass_production_start','first_or_batch_shipment','international_or_batch_shipment','customer_validation','field_validation','schedule_change','performance_change'}:
+            if source in base.OFFICIAL_OR_PRIMARY:
+                return '배터리 업체·고객 공식자료 · 계약/설비/양산/출하/고객검증 단계 직접 확인'
+            return '신뢰 매체 보도 · 배터리 업체·고객사 공식자료로 물량·일정·단계 교차확인'
+        if stage == 'price_parity_or_transaction':
+            return '실제 계약단가·거래가격·견적 기반만 허용 · LFP와 동일 조건 원/kWh·수명·효율 비교'
+        if stage in {'safety_event','reverse'}:
+            return '안전사고·계약취소·일정후퇴는 당사자 공식자료와 사고/취소 범위 교차확인'
+        return '나트륨이온 관련 보도 · 계약/양산/출하/가격을 1차자료로 추가 확인'
     if group == 'ev_46_series':
         stage = _ev46_stage(text, source)
         if stage == 'known_baseline':
