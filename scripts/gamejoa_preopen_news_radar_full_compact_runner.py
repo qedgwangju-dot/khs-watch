@@ -2331,6 +2331,28 @@ def asset_financing_observation(sentence: str) -> dict[str, str]:
     }
 
 
+def contextual_commercial_fact(title: str, body: str) -> str:
+    """Retain the supplier when a contract paragraph continues its product profile."""
+    if market_materiality.focus_kind(title):
+        return ""
+    sentences = market_materiality.source_sentences(body)
+    for index, sentence in enumerate(sentences):
+        if not re.match(r"^(?:출시|도입)\s*이후\s", sentence) or not re.search(r"공급\s*계약을\s*체결했다", sentence):
+            continue
+        for previous in reversed(sentences[max(0, index - 3):index]):
+            issuer = re.match(r"^([A-Za-z0-9가-힣&·]{2,30})(?:은|는)\s", previous)
+            if not issuer or issuer.group(1) in {"회사", "업체", "기업", "정부", "제품", "서비스", "우리회사"}:
+                continue
+            if not re.search(r"자체[^.!?]{0,60}(?:제품|서비스|검사)|사업화에\s*나섰다", previous):
+                continue
+            name = issuer.group(1)
+            fact = f"{name}{korean_topic_particle(name)} " + re.sub(r"^(?:출시|도입)\s*이후\s+", "", sentence)
+            fact = normalized_article_sentence(fact)
+            if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact):
+                return fact
+    return ""
+
+
 def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     factory = market_materiality.factory_tariff_observation(title, "\n".join(sentences))
@@ -9847,6 +9869,9 @@ def verified_alert_core(alert: dict, title: str) -> str:
             if listing_fact:
                 return listing_fact
             body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+            commercial_fact = contextual_commercial_fact(source_title or title, article_summary_body(body))
+            if commercial_fact and valid_source_fact(commercial_fact):
+                return commercial_fact
             revision_fact = financial_revision_fact(source_title or title, ranked_article_sentences(body, [], title=source_title or title), body)
             if revision_fact and valid_source_fact(revision_fact):
                 return revision_fact
@@ -9916,6 +9941,12 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if not source or not core:
         return []
     errors = []
+    if re.match(r"^(?:출시|도입)\s*이후\s", core) and re.search(r"공급\s*계약|사업\s*수행기관", core):
+        errors.append("commercial_contract_actor_missing")
+    expected_commercial = contextual_commercial_fact(title, source)
+    if expected_commercial and re.search(r"공급\s*계약|사업\s*수행기관", core):
+        if re.sub(r"\s+", "", expected_commercial) != re.sub(r"\s+", "", core):
+            errors.append("commercial_contract_actor_customer_or_stage_mismatch")
     if not market_materiality.core_focus_aligned(title, core):
         errors.append("headline_event_or_period_mismatch")
     if market_materiality.focus_kind(title) == "asset_financing":

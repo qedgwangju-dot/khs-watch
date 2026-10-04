@@ -2290,6 +2290,32 @@ class MaterialityChecks(unittest.TestCase):
         for title in ('트럼프, 이란 협상 재개', '트럼프, 격전지서 이란 협상 발언'):
             self.assertEqual(materiality.source_event_identity(alert(title, lead + quote)), "")
 
+    def test_product_profile_contract_summary_retains_the_contextual_supplier(self):
+        title = '신생아 선별검사, 유전체 시대 열린다'
+        body = ('쓰리빌리언은 해외에서는 자체 신생아 선별검사 3B-NEO를 앞세워 사업화에 나섰다.\n'
+                '올해 출시한 3B-NEO는 704개 핵심 유전자를 분석하는 서비스다.\n'
+                '출시 이후 필리핀 정부가 추진하는 신생아 유전체 진단 사업 수행기관으로 선정됐으며 '
+                '최근에는 도미니카공화국 모체태아의학 전문 의료센터와 공급 계약을 체결했다.')
+        item = alert(title, body)
+        core = radar.verified_alert_core(item, title)
+        for expected in ("쓰리빌리언은", "필리핀", "도미니카공화국", "공급 계약을 체결했다"):
+            self.assertIn(expected, core)
+        self.assertLessEqual(len(core), radar.GAMEJOA_CORE_MAX_CHARS)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        self.assertFalse(radar.source_core_fact_errors({**item, "telegram_core_fact": core}))
+        for wrong in (core.replace('쓰리빌리언은 ', ''), core.replace('쓰리빌리언', '삼성전자'),
+                      core.replace('도미니카공화국', '미국'), core.replace('체결했다', '검토 중이다')):
+            self.assertTrue(radar.source_core_fact_errors({**item, "telegram_core_fact": wrong}))
+        with patch.object(radar.base, "kst_now", return_value=NOW):
+            self.assertEqual(len(radar.quality_display_alerts([item], 1)), 1)
+
+    def test_subjectless_contract_cannot_invent_a_supplier(self):
+        title = '신생아 선별검사, 유전체 시대 열린다'
+        contract = '출시 이후 필리핀 정부의 사업 수행기관으로 선정됐으며 의료센터와 공급 계약을 체결했다.'
+        for body in (contract, '회사는 자체 신생아 검사를 출시했다.\n' + contract):
+            self.assertEqual(radar.contextual_commercial_fact(title, body), '')
+            self.assertIn('commercial_contract_actor_missing', radar.source_core_fact_errors({**alert(title, body), 'telegram_core_fact': contract}))
+
     def test_capex_supply_effect_core_keeps_fiscal_period_and_analyst_horizon(self):
         title = '반도체 설비투자 확대로 공급 확대? "내후년 하반기는 돼야"'
         body = ('마이크론은 2027 회계연도 상반기에 설비투자에 250억 달러를 투입하고 하반기는 더 늘어날 것이라는 청사진을 제시했다. '

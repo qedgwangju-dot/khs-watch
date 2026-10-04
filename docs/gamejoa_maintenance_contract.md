@@ -96,6 +96,10 @@ Every defect or requested change must follow this sequence:
   article lead binds the US investment context and its current direct quote.
   The core must retain the quoted terms, not a general investment boast.
   Background quotes and articles foregrounding other actions remain distinct.
+- A contract paragraph beginning with "after launch" must retain its supplier
+  from verified nearby product context. Do not publish an anonymous contract
+  core or invent an issuer when the article has no explicit subject. Preserve
+  the source customer and execution stage when adding that subject.
 - Semiconductor capacity outlooks retain the investment fiscal period and the
   separately attributed production-effect horizon. Market-breadth comparisons
   retain the index, constituent population and high/year-start comparison basis;
