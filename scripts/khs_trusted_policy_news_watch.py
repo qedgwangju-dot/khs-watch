@@ -1449,10 +1449,51 @@ def semantic_policy_event_key(item: dict) -> str:
         elif any(term in title_text for term in ("additional companies", "additional vendors", "designates", "designation", "추가 지정", "추가 기업")):
             stage = "additional-designation"
         return f"us-congress-chinese-optical-transceiver-{stage}"
+    # FCC follow-up notices quote the July 28 baseline internally, so identify
+    # the document carried by the current URL/headline before scanning body
+    # references. Otherwise DA 26-957/996 would collapse back into DA 26-786.
+    item_link = clean_text(str(item.get("link") or "")).lower()
+    if (
+        ("da-26-996" in item_link or "da 26-996" in title_text)
+        and ("advanced robotic devices" in text or "robotic devices" in text)
+    ):
+        return "us-fcc-robot-conditional-approval-2026-09-18"
+    if (
+        ("da-26-957" in item_link or "da 26-957" in title_text)
+        and ("advanced robotic devices" in text or "robotic devices" in text)
+    ):
+        return "us-fcc-robot-conditional-approval-2026-09-09"
+    if (
+        ("da-26-870" in item_link or "da 26-870" in title_text)
+        and ("power inverter" in text or "power inverters" in text)
+    ):
+        return "us-fcc-inverter-definition-modification-2026-08-20"
+    if (
+        ("da-26-786" in item_link or "da 26-786" in title_text)
+        and ("power inverter" in text or "advanced robotic devices" in text)
+    ):
+        return "us-fcc-robot-inverter-covered-list-2026-07-28"
+
+    # Headline/text fallbacks for trustworthy republications that lack the FCC
+    # document URL. Specific later stages stay ahead of the baseline fallback.
+    if (
+        "modification of power inverters entry on the covered list" in text
+        and ("power inverter" in text or "power inverters" in text)
+    ):
+        return "us-fcc-inverter-definition-modification-2026-08-20"
+    if (
+        "conditional approval and exemption of certain routers and advanced robotic devices" in text
+        and ("advanced robotic devices" in text or "robotic devices" in text)
+    ):
+        return "us-fcc-robot-conditional-approval-2026-09-09"
+    if (
+        "conditional approval and exemption of certain advanced robotic devices" in text
+        and ("advanced robotic devices" in text or "robotic devices" in text)
+    ):
+        return "us-fcc-robot-conditional-approval-2026-09-18"
     fcc_robot_inverter = (
         (
-            "da 26-786" in text
-            or "addition of foreign-produced power inverters and advanced robotic devices" in text
+            "addition of foreign-produced power inverters and advanced robotic devices" in text
             or (
                 "foreign-produced advanced robotic devices" in text
                 and "foreign-produced power inverters" in text
@@ -1463,21 +1504,6 @@ def semantic_policy_event_key(item: dict) -> str:
     )
     if fcc_robot_inverter:
         return "us-fcc-robot-inverter-covered-list-2026-07-28"
-    if (
-        ("da 26-870" in text or "modification of power inverters entry on the covered list" in text)
-        and ("power inverter" in text or "power inverters" in text)
-    ):
-        return "us-fcc-inverter-definition-modification-2026-08-20"
-    if (
-        ("da 26-957" in text or "conditional approval and exemption of certain routers and advanced robotic devices" in text)
-        and ("advanced robotic devices" in text or "robotic devices" in text)
-    ):
-        return "us-fcc-robot-conditional-approval-2026-09-09"
-    if (
-        ("da 26-996" in text or "conditional approval and exemption of certain advanced robotic devices" in text)
-        and ("advanced robotic devices" in text or "robotic devices" in text)
-    ):
-        return "us-fcc-robot-conditional-approval-2026-09-18"
     if "nepa" in text and ("space-based operations" in text or "space station" in text or "satellite" in text):
         stage = "adopted"
         if any(term in title_text for term in ("effective", "takes effect", "효력", "발효")):
