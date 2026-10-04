@@ -1520,4 +1520,93 @@ assert g == "ev_46_series", (g, s, c)
 assert c.endswith("46시리즈 시장전망 수정"), c
 assert s >= 11, s
 
+# 35) Sodium-ion commercialization lane. Current CATL/EVE/Korean
+# development milestones are baselines; actual shipments, customer validation,
+# price parity transactions, new contracts and safety/reversal events must alert.
+sodium_catl_contract_baseline = make(
+    "CATL and HyperStrong sign sodium-ion ESS cooperation",
+    "CATL and HyperStrong signed a three-year 60GWh sodium-ion battery supply agreement for energy storage.",
+    "CATL",
+)
+g, s, c, k = classify(sodium_catl_contract_baseline)
+assert g == "sodium_ion_battery", (g, s, c)
+assert c.endswith("현재 상용화 기준선"), c
+assert s < 11, ("CATL-HyperStrong 60GWh contract is current baseline", s, c)
+
+sodium_catl_capacity_baseline = make(
+    "CATL expands sodium-ion storage capacity",
+    "CATL added 40GWh at Fuding and plans 160GWh at Jining for sodium-ion energy storage.",
+    "CATL",
+)
+g, s, c, k = classify(sodium_catl_capacity_baseline)
+assert g == "sodium_ion_battery", (g, s, c)
+assert s < 11, ("CATL 40+160GWh capacity figures are current baseline", s, c)
+
+sodium_lges_baseline = make(
+    "LG Energy Solution develops sodium-ion battery",
+    "LG Energy Solution plans commercialization in 2027, preparing production lines for sodium-ion ESS batteries and 12V applications.",
+    "LG Energy Solution",
+)
+g, s, c, k = classify(sodium_lges_baseline)
+assert g == "sodium_ion_battery", (g, s, c)
+assert s < 11, ("LGES 2027 commercialization plan is current baseline", s, c)
+
+sodium_sdi_baseline = make(
+    "Samsung SDI develops sodium-ion batteries",
+    "Samsung SDI is developing sodium-ion batteries for AI data center UPS and utility-scale ESS with long life, high power and safety.",
+    "Samsung SDI",
+)
+g, s, c, k = classify(sodium_sdi_baseline)
+assert g == "sodium_ion_battery", (g, s, c)
+assert s < 11, ("Samsung SDI sodium development is current baseline", s, c)
+
+sodium_skon_baseline = make(
+    "SK On develops sodium-ion batteries for ESS",
+    "SK On aims to complete sodium-ion ESS prototype development by 2027.",
+    "매일경제",
+)
+g, s, c, k = classify(sodium_skon_baseline)
+assert g == "sodium_ion_battery", (g, s, c)
+assert s < 11, ("SK On 2027 prototype target is current baseline", s, c)
+
+sodium_catl_shipment = make(
+    "CATL begins sodium-ion ESS customer shipments",
+    "CATL completed its first commercial delivery of 1.2GWh of sodium-ion energy storage systems to customers.",
+    "CATL",
+)
+g, s, c, k = classify(sodium_catl_shipment)
+assert g == "sodium_ion_battery", (g, s, c)
+assert c.endswith("나트륨이온 첫·대량 출하"), c
+assert s >= 11, s
+
+sodium_lges_validation = make(
+    "LG Energy Solution completes sodium-ion ESS customer validation",
+    "LG Energy Solution completed customer validation of sodium-ion ESS samples and received customer approval for a 2027 production program.",
+    "LG Energy Solution",
+)
+g, s, c, k = classify(sodium_lges_validation)
+assert g == "sodium_ion_battery", (g, s, c)
+assert c.endswith("한국 나트륨이온 고객 검증·승인"), c
+assert s >= 11, s
+
+sodium_price_parity = make(
+    "CATL sodium-ion ESS contract price reaches LFP parity",
+    "CATL disclosed an actual contract price of 0.35 yuan/Wh for sodium-ion ESS cells versus 0.35 yuan/Wh for comparable LFP cells.",
+    "CATL",
+)
+g, s, c, k = classify(sodium_price_parity)
+assert g == "sodium_ion_battery", (g, s, c)
+assert c.endswith("나트륨이온 실제 가격·LFP 패리티"), c
+assert s >= 11, s
+
+sodium_safety = make(
+    "Sodium-ion ESS fire incident under investigation",
+    "CATL said a sodium-ion energy storage system fire incident is under investigation after thermal runaway was reported.",
+    "CATL",
+)
+g, s, c, k = classify(sodium_safety)
+assert g == "sodium_ion_battery", (g, s, c)
+assert c.endswith("나트륨이온 안전성 역풍"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
