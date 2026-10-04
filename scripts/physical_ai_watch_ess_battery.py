@@ -61,6 +61,14 @@ base.QUERIES.extend([
     '(SK온 OR "SK On") ("46시리즈" OR "46-series" OR 4680 OR 4695 OR 46120) (개발완료 OR development complete OR prototype OR 시제품 OR Changzhou OR 창저우 OR 300000 OR 300,000 OR 고객 OR customer OR 수주 OR order OR 공급계약 OR 양산 OR SOP OR 장비 OR equipment)',
     '("46시리즈" OR "46-series" OR 4680 OR 4695 OR 46100 OR 46120) ("SNE Research" OR SNE리서치) (155GWh OR 650GWh OR 33% OR 2030 OR 전망 OR forecast OR revised OR 상향 OR 하향)',
     '(LG에너지솔루션 OR "LG Energy Solution") (원통형 OR cylindrical) ("46시리즈" OR "46-series") (1.5배 OR 1.5x OR shipment OR 출하 OR utilization OR 가동률 OR yield OR 수율 OR Q2 OR 2분기)',
+    '(CATL OR 宁德时代) (NAXTRA OR 낙스트라 OR sodium-ion OR sodium ion OR 나트륨이온 OR 소듐이온 OR 钠离子) (HyperStrong OR 海博思创 OR 60GWh OR 60 GWh OR Fuding OR 福鼎 OR Jining OR 济宁 OR 40GWh OR 160GWh OR 200GWh OR 1GWh OR September OR June 2027 OR 공급 OR delivery OR shipment OR capacity OR 양산 OR ESS OR storage)',
+    '(LG에너지솔루션 OR "LG Energy Solution") (sodium-ion OR sodium ion OR 나트륨이온 OR 소듐이온) (2027 OR ESS OR UPS OR 12V OR pilot OR 파일럿 OR sample OR 샘플 OR customer OR 고객 OR production line OR 생산라인 OR SOP OR 양산 OR capacity OR 생산능력 OR energy density OR 에너지밀도)',
+    '(삼성SDI OR "Samsung SDI") (sodium-ion OR sodium ion OR 나트륨이온 OR 소듐이온) (UPS OR "data center" OR 데이터센터 OR ESS OR utility-scale OR 양산 OR mass production OR commercialization OR 상용화 OR customer OR 고객 OR sample OR 샘플 OR capacity OR GWh)',
+    '(SK온 OR "SK On") (sodium-ion OR sodium ion OR 나트륨이온 OR 소듐이온) (ESS OR prototype OR 시제품 OR 2027 OR pilot OR 파일럿 OR customer OR 고객 OR sample OR 샘플 OR mass production OR 양산 OR contract OR 수주)',
+    '(EVE Energy OR 亿纬锂能 OR 이브에너지) (sodium-ion OR sodium ion OR 钠离子 OR 나트륨이온) (NF155L OR 180kWh OR 180 kWh OR ESS OR grid OR 并网 OR batch delivery OR 批量交付 OR 2GWh OR 2 GWh OR capacity OR 생산능력 OR 양산)',
+    '(HiNa Battery OR 中科海钠 OR 하이나배터리) (sodium-ion OR sodium ion OR 钠离子 OR 나트륨이온) (339kWh OR 339 kWh OR 15000km OR 15,000km OR FAW OR 一汽解放 OR truck OR 트럭 OR ESS OR GWh OR mass production OR 양산)',
+    '(Enertech OR 에너테크인터내셔널 OR 에너테크) (sodium-ion OR sodium ion OR 나트륨이온 OR 소듐이온) (140Wh OR 160Wh OR 2027 OR January OR 1월 OR Chungju OR 충주 OR mass production OR 양산 OR supply OR 공급 OR customer OR 고객)',
+    '(sodium-ion OR sodium ion OR 나트륨이온 OR 소듐이온 OR 钠离子) (ESS OR BESS OR energy storage OR 에너지저장 OR UPS) (price parity OR LFP parity OR cost parity OR 가격 경쟁력 OR 가격 동등 OR price OR 가격 OR "$/kWh" OR yuan/Wh OR 위안/Wh) (contract OR transaction OR quotation OR supply OR 계약 OR 거래 OR 견적 OR 공급)',
 ])
 
 base.TRUSTED.update({
@@ -88,6 +96,8 @@ base.OFFICIAL_OR_PRIMARY.update({
     'BMW Group', 'BMW', 'Rivian', 'Tesla', 'Mercedes-Benz', 'Chery Automobile',
     'Chery', 'indiGOtech', '에코프로비엠', 'EcoPro BM',
     'KGM', 'KG Mobility', 'KG모빌리티', 'Samsung SDI Europe GmbH',
+    'EVE Energy', '亿纬锂能', 'HiNa Battery', '中科海钠',
+    'Enertech International', '에너테크인터내셔널', 'HyperStrong', '海博思创',
 })
 
 _orig_topic_group = base.topic_group
