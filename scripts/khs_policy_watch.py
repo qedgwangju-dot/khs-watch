@@ -124,6 +124,8 @@ STAGE_KEYWORDS = {
         "covered list", "equipment authorization", "national security", "foreign adversary",
         "secure equipment", "communications supply chain", "connected device", "connected devices",
         "internet of things", "iot", "cyber trust mark", "inverter", "energy inverter",
+        "optical transceiver", "optical transceivers", "fiber optic transceiver", "fiber-optic transceiver",
+        "optical module", "optical modules", "3.2t", "1.6t", "800g",
     ],
     "presidential_action": [
         "executive order", "presidential memorandum", "presidential determination", "national security memorandum",
@@ -187,6 +189,12 @@ SECTOR_KEYWORDS = {
         "telecommunications", "auction", "covered list", "national security", "foreign adversary",
         "secure equipment", "communications supply chain", "connected device", "connected devices",
         "internet of things", "iot", "cyber trust mark", "inverter",
+        "optical transceiver", "optical transceivers", "fiber optic transceiver", "fiber-optic transceiver",
+        "optical module", "optical modules", "3.2t", "1.6t", "800g",
+    ],
+    "광통신/AI 데이터센터": [
+        "optical transceiver", "optical transceivers", "fiber optic transceiver", "fiber-optic transceiver",
+        "optical module", "optical modules", "3.2t", "1.6t", "800g", "dsp", "laser", "inp substrate",
     ],
     "행정명령/대통령문서": [
         "executive order", "presidential memorandum", "presidential determination", "national security memorandum",
@@ -247,6 +255,8 @@ FCC_STRONG_TERMS = [
     "wireless", "wireline", "net neutrality", "universal service", "equipment authorization",
     "covered list", "national security", "foreign adversary", "secure equipment",
     "communications supply chain", "inverter", "energy inverter", "solar inverter",
+    "optical transceiver", "optical transceivers", "fiber optic transceiver", "fiber-optic transceiver",
+    "optical module", "optical modules", "3.2t", "1.6t", "800g",
     "connected device", "connected devices", "internet of things", "iot", "cyber trust mark",
     "drone", "camera", "router", "robocall", "cybersecurity", "emergency alert", "911",
 ]
