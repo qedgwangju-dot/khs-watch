@@ -903,7 +903,9 @@ def collect_regulators(errors):
         events.extend(parse_rss(url, source, errors))
     events.extend(collect_federal_register(errors))
     events.extend(collect_reginfo_reviews(errors))
-    events.extend(collect_sec_newsroom_crypto_orders(errors))
+    # SEC Newsroom HTML blocks GitHub-hosted runners with HTTP 403 and is
+    # redundant for exchange-listing approvals. Use the dedicated SEC SRO
+    # order pages/direct official order probes plus SEC press-release RSS.
     events.extend(collect_sec_exchange_orders(errors))
     # SEC EDGAR discovery endpoints currently return 403 from GitHub-hosted
     # runners. Do not pretend that EFFECT/prospectus polling is live when the
