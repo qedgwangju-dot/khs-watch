@@ -9,7 +9,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 62
+VERSION = 63
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -529,6 +529,19 @@ def source_event_identity(alert: dict) -> str:
     title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
     body = str(alert.get("source_body") or "") if alert.get("body_verified") else ""
     kind = focus_kind(title)
+    if kind == "factory_tariff" and body and re.search(r"미국|美", title):
+        for sentence in source_sentences(body):
+            if "트럼프" not in sentence or "말했다" not in sentence or not focus_matches(title, sentence):
+                continue
+            duration = re.search(r"약\s*(\d+(?:\.\d+)?)\s*(년\s*반|년|개월)", sentence)
+            rate = re.search(r"(\d+(?:\.\d+)?)%\s*(?:의\s*)?관세", sentence)
+            if not duration or not rate:
+                continue
+            number = float(duration.group(1))
+            unit = re.sub(r"\s", "", duration.group(2))
+            months = number if unit == "개월" else number * 12 + (6 if unit == "년반" else 0)
+            return (f"source_event:v1:trump:us_factory_not_built:statement:"
+                    f"max_rate={float(rate.group(1)):.12g}:grace_approx_months={months:.12g}")
     facts = [sentence for sentence in source_sentences(body)
              if not BACKGROUND.search(sentence) and focus_matches(title, sentence)]
     foreground = title + " " + " ".join(facts[:3])

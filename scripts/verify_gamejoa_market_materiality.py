@@ -2227,6 +2227,36 @@ class MaterialityChecks(unittest.TestCase):
         with patch.object(radar.base, "kst_now", return_value=NOW):
             self.assertEqual(radar.quality_display_alerts([alert(title, body)], 1), [])
 
+    def test_factory_tariff_identity_is_terms_bound_not_publisher_or_day_bound(self):
+        title = '트럼프 "美에 공장 안 지으면 관세 300%까지 부과"'
+        body = ('트럼프 대통령은 "우리는 그들이 여기에 공장을 지을 수 있도록 약 1년 반 정도의 작은 기회를 준다"며 '
+                '"그들이 그렇게 하지 않으면 우리는 150, 200, 250, 300%의 관세를 부과한다"고 말했다.')
+        first = {**alert(title, body), "supply_chain_theme": "us_canada_tariff_trade:2026-10-04"}
+        repeated = {**first, "news": '"미국에 공장 안 지으면 관세 300%"…트럼프 또 압박',
+                    "source_title": '"미국에 공장 안 지으면 관세 300%"…트럼프 또 압박',
+                    "link": "https://www.etoday.co.kr/news/view/repeated-tariff",
+                    "published": "2026-10-05T08:00:00+09:00"}
+        identity = materiality.source_event_identity(first)
+        self.assertIn("max_rate=300:grace_approx_months=18", identity)
+        self.assertEqual(identity, materiality.source_event_identity(repeated))
+        self.assertEqual(radar.alert_dedup_key(first), (identity, "event"))
+        self.assertEqual(radar.normalize_alert_for_output(first)["supply_chain_theme"], identity)
+        for changed in (
+            {**first, "source_title": title.replace("300%", "600%"), "source_body": body.replace("300%", "600%")},
+            {**first, "source_body": body.replace("약 1년 반", "약 2년")},
+            {**first, "source_body": body.replace("그렇게 하지 않으면", "그렇게 하면")},
+            {**first, "source_body": body.replace("말했다", "시행을 확정했다")},
+            {**first, "body_verified": False},
+        ):
+            self.assertNotEqual(identity, materiality.source_event_identity(changed))
+        state = {"seen": {}}
+        with patch.object(radar.telegram, "load_seen_state", return_value=state), \
+                patch.object(radar.telegram, "save_seen_state", side_effect=lambda *_args: None):
+            radar.telegram.record_seen_alerts([first], NOW)
+            fresh, skipped = radar.telegram.filter_previously_seen_alerts([repeated], NOW, "live")
+            self.assertEqual(fresh, [])
+            self.assertEqual(len(skipped), 1)
+
     def test_capex_supply_effect_core_keeps_fiscal_period_and_analyst_horizon(self):
         title = '반도체 설비투자 확대로 공급 확대? "내후년 하반기는 돼야"'
         body = ('마이크론은 2027 회계연도 상반기에 설비투자에 250억 달러를 투입하고 하반기는 더 늘어날 것이라는 청사진을 제시했다. '

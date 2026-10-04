@@ -90,6 +90,8 @@ Every defect or requested change must follow this sequence:
 - Conditional factory tariffs retain the construction condition, cited rate
   and any source-provided grace period. A previous LNG statement cannot own
   that headline; a campaign statement does not become an enacted tariff rule.
+  Cross-publisher receipts use the verified condition, rate and grace period,
+  not a dated country-wide trade label. Changed terms remain separate.
 - Semiconductor capacity outlooks retain the investment fiscal period and the
   separately attributed production-effect horizon. Market-breadth comparisons
   retain the index, constituent population and high/year-start comparison basis;
