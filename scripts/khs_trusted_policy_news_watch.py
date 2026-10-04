@@ -51,6 +51,30 @@ OFFICIAL_DIRECT_STORIES = {
             "U.S. Senate (Sen. Dave McCormick)",
         ),
     ),
+    "us_dow_project_meridian_future_warfare": (
+        (
+            "https://www.mitre.org/news-insights/publication/project-meridian",
+            "Project Meridian",
+            "MITRE",
+        ),
+        (
+            "https://www.army.mil/article/295897/hegseth_delivers_state_of_the_force_address_outlines_series_of_new_initiatives",
+            "Hegseth delivers 'State of the Force' address, outlines series of new initiatives",
+            "U.S. Army",
+        ),
+    ),
+    "us_dow_autonomous_warfare_execution": (
+        (
+            "https://www.army.mil/article/295897/hegseth_delivers_state_of_the_force_address_outlines_series_of_new_initiatives",
+            "Hegseth delivers 'State of the Force' address, outlines series of new initiatives",
+            "U.S. Army",
+        ),
+        (
+            "https://www.army.mil/article/295913/army_announces_futures_and_autonomous_systems_command",
+            "Army announces Futures and Autonomous Systems Command",
+            "U.S. Army",
+        ),
+    ),
 }
 
 OFFICIAL_API_STORIES = {
@@ -146,6 +170,10 @@ RULE_MAX_AGE_HOURS = {
     # semantic event key below prevents article republication dates from
     # becoming false "new official stage" alerts.
     "us_fcc_foreign_energy_inverter_ban": 24 * 90,
+    # Backfill only the verified launch/current execution stages once; after
+    # that semantic event keys prevent republications from becoming new alerts.
+    "us_dow_project_meridian_future_warfare": 24 * 7,
+    "us_dow_autonomous_warfare_execution": 24 * 7,
 }
 
 def max_age_hours_for_rule(rule: "StoryRule") -> int:
@@ -210,6 +238,9 @@ SOURCE_PRIORITY = {
     "world meteorological organization": 0,
     "world meteorological organization (wmo)": 0,
     "wmo": 0,
+    "mitre": 0,
+    "u.s. army": 0,
+    "us army": 0,
     "politico": 8,
 }
 
@@ -270,6 +301,88 @@ STORY_RULES = (
         impacts=("매출·마진·현금흐름", "수급", "시간표"),
         paths=("공급·수요", "원자재 비용", "공급망", "정책 타임라인"),
         follow_up="중국 상무부 공식 공고에서 품목·HS코드·대상국·시행일·예외 허가를 확인하고, 현물가격·리드타임·한국 기업의 중국산 조달 비중이 실제로 변하는지 재확인합니다.",
+    ),
+    StoryRule(
+        key="us_dow_project_meridian_future_warfare",
+        title="미 국방부 Project Meridian 미래전 연구·권고 변화",
+        google_queries=(
+            "\"Project Meridian\" Musk Luckey Gingrich MITRE future warfare",
+            "\"Project Meridian\" report recommendations January 28 2027",
+            "\"Project Meridian\" Department of War MITRE",
+            "\"Project Meridian\" procurement testing fielding contract award",
+        ),
+        required_groups=(
+            ("project meridian",),
+            ("future warfare", "future of warfare", "battlefields of the future", "warfare"),
+            ("musk", "luckey", "gingrich", "mitre", "emil michael", "chief technology officer", "technology"),
+            (
+                "commission", "commissioned", "co-direct", "co-director", "participant", "participants",
+                "report", "recommendation", "recommendations", "actionable solutions",
+                "developing", "testing", "fielding", "submitted", "released",
+            ),
+        ),
+        core=(
+            "미 국방부가 Project Meridian을 통해 미래 전장을 연구하고 필요한 무기·기술과 실행 가능한 개발·시험·전력화 과제를 "
+            "도출하도록 했습니다. Elon Musk·Palmer Luckey·Newt Gingrich가 공동주도하고 MITRE가 독립 연구를 이끕니다."
+        ),
+        impact="미 국방 기술 우선순위, AI·자율·로봇·지향성에너지·바이오, 방산기술 생태계 | 시간표·수급·돈 버는 능력",
+        point=(
+            "핵심은 인물 참여 자체가 아니라 120일 연구 결과가 실제 예산·조달·시험·전력화 우선순위로 연결되는지입니다. "
+            "공개 보고서와 기밀 부록의 권고가 후속 프로그램으로 전환될 때 투자 영향이 커집니다."
+        ),
+        counter=(
+            "Project Meridian은 현재 연구·자문 프로젝트입니다. 공동주도자나 참가자 선정만으로 SpaceX·Anduril 등 특정 회사의 "
+            "국방 계약·수주가 확정됐다고 해석하면 안 됩니다."
+        ),
+        sectors="AI/자율·로봇, 우주·통신, 지향성에너지, 바이오·국방기술, 신속획득",
+        impacts=("시간표", "수급", "돈 버는 능력"),
+        paths=("기술 우선순위", "예산", "조달", "시험·전력화"),
+        follow_up=(
+            "2027년 1월 28일 이전 최종 연구결과 제출 여부, 공개 보고서·기밀 부록, 참가자 변화, "
+            "권고가 예산·BAA·OTA·RFP·계약·시험·전력화로 전환되는지를 추적합니다."
+        ),
+        trusted_sources=("MITRE", "U.S. Army", "US Army", "U.S. Department of Defense", "U.S. Department of War", "Department of War"),
+    ),
+    StoryRule(
+        key="us_dow_autonomous_warfare_execution",
+        title="미 국방부 자율전투 지휘체계·조달 실행 변화",
+        google_queries=(
+            "\"Autonomous Warfare Command\" Project Agincourt four-star acquisition fielding",
+            "\"AUTOWARCOM\" procurement budget contract fielding",
+            "\"Futures and Autonomous Systems Command\" FASCOM Army acquisition",
+            "\"Portfolio Acquisition Executive for Autonomy\" Army",
+        ),
+        required_groups=(
+            ("autowarcom", "autonomous warfare command", "futures and autonomous systems command", "fascom", "project agincourt"),
+            ("autonomous", "autonomy", "robotic", "robotics", "unmanned", "drone"),
+            (
+                "establish", "establishment", "stand up", "operational", "acquisition", "procurement",
+                "fielding", "budget", "contract", "award", "portfolio acquisition executive",
+                "acquisition executive", "project agincourt",
+            ),
+            ("four-star", "joint force", "project agincourt", "fascom", "futures and autonomous systems command", "portfolio acquisition executive"),
+        ),
+        core=(
+            "9월 30일 미 국방부의 4성급 Autonomous Warfare Command 구상 뒤, 미 육군이 10월 2일 "
+            "Futures and Autonomous Systems Command(FASCOM) 창설과 자율체계 조달·전력화 지시를 발표했습니다."
+        ),
+        impact="드론·무인체계·자율전투차량·센서·통신·엣지컴퓨팅·자율 소프트웨어 | 돈 버는 능력·수급·시간표",
+        point=(
+            "Project Meridian이 미래 기술을 고르는 연구축이라면 AUTOWARCOM·FASCOM·Project Agincourt는 실제 조직·획득·전력화 축입니다. "
+            "예산과 조달 공고가 붙는 순간 특정 공급사 매출로 연결될 가능성이 더 높습니다."
+        ),
+        counter=(
+            "조직 창설 지시와 예산 요청은 확정 계약이 아닙니다. 의회 예산, 조달 공고, 시험평가, 상호운용성·사이버·전자전 검증을 거쳐야 하며, "
+            "2026년 4월 SOUTHCOM Autonomous Warfare Command는 이번 국방부 전체 4성급 AUTOWARCOM과 별도입니다."
+        ),
+        sectors="드론/무인기, 로봇·자율전투차량, 센서·C2·통신, 엣지컴퓨팅·AI, 대드론",
+        impacts=("돈 버는 능력", "수급", "시간표"),
+        paths=("조직 창설", "예산", "신속획득", "조달·계약", "시험·전력화"),
+        follow_up=(
+            "AUTOWARCOM 실제 창설·지휘관 임명, Project Agincourt 신속획득 구조, FASCOM·자율성 조달책임자, "
+            "FY2028 전력화 일정, 의회 예산 확정, RFI·BAA·OTA·RFP·계약·대량구매를 추적합니다."
+        ),
+        trusted_sources=("U.S. Army", "US Army", "U.S. Department of Defense", "U.S. Department of War", "Department of War"),
     ),
     StoryRule(
         key="us_fcc_foreign_energy_inverter_ban",
@@ -1413,6 +1526,42 @@ def semantic_policy_event_key(item: dict) -> str:
             for key in ("title", "description", "link", "source")
         )
     ).lower()
+    if "project meridian" in text:
+        stage = "commissioned"
+        report_release_terms = (
+            "final report released", "final report published", "final report submitted",
+            "findings released", "findings published", "findings submitted",
+            "recommendations released", "recommendations published", "recommendations submitted",
+            "public report released", "public report published", "public report submitted",
+        )
+        if any(term in text for term in report_release_terms):
+            stage = "report"
+        elif any(term in title_text for term in ("new participant", "joins project meridian", "adds participant", "expands roster", "membership update")):
+            stage = "participants-" + hashlib.sha1(title_text.encode("utf-8")).hexdigest()[:10]
+        elif (
+            any(term in text for term in ("contract award", "contract awarded", "procurement award", "ota award", "baa award", "rfp issued"))
+            and any(term in text for term in ("developing", "testing", "fielding", "procurement", "acquisition"))
+        ):
+            stage = "implementation-" + hashlib.sha1(title_text.encode("utf-8")).hexdigest()[:10]
+        return f"us-dow-project-meridian-{stage}"
+
+    if "futures and autonomous systems command" in text or re.search(r"\bfascom\b", text):
+        return "us-dow-autonomous-warfare-army-fascom-2026-10-02"
+
+    if ("autowarcom" in text or "autonomous warfare command" in text) and not (
+        "southcom autonomous warfare command" in text
+        or "u.s. southern command" in text
+        or "us southern command" in text
+    ):
+        stage = "announced"
+        if any(term in title_text for term in ("activated", "operational", "stands up", "stood up", "stand-up", "command established")):
+            stage = "activated"
+        elif any(term in text for term in ("appropriation", "appropriations", "funding approved", "budget enacted", "budget passed")):
+            stage = "funding"
+        elif any(term in text for term in ("contract award", "contract awarded", "ota award", "baa award", "procurement award", "rfp issued")):
+            stage = "procurement-" + hashlib.sha1(title_text.encode("utf-8")).hexdigest()[:10]
+        return f"us-dow-autonomous-warfare-{stage}"
+
     optical_bill = (
         "securing national security systems from chinese optical transceivers act" in text
         or (
@@ -1587,6 +1736,24 @@ def semantic_policy_event_key(item: dict) -> str:
 
 def semantic_policy_title(item: dict) -> str:
     key = semantic_policy_event_key(item)
+    if key == "us-dow-project-meridian-commissioned":
+        return "미 국방부 Project Meridian 출범: 미래전 기술 우선순위 연구"
+    if key == "us-dow-project-meridian-report":
+        return "미 국방부 Project Meridian 최종 보고서·권고 공개"
+    if key.startswith("us-dow-project-meridian-participants-"):
+        return "미 국방부 Project Meridian 참가자 구성 변화"
+    if key.startswith("us-dow-project-meridian-implementation-"):
+        return "Project Meridian 권고, 실제 개발·조달 단계로 전환"
+    if key == "us-dow-autonomous-warfare-army-fascom-2026-10-02":
+        return "미 육군 FASCOM 창설 지시: 자율무기 조달·전력화 실행"
+    if key == "us-dow-autonomous-warfare-announced":
+        return "미 국방부 4성급 AUTOWARCOM 창설 구상"
+    if key == "us-dow-autonomous-warfare-activated":
+        return "미 국방부 AUTOWARCOM 실제 창설·가동"
+    if key == "us-dow-autonomous-warfare-funding":
+        return "미 국방부 자율전투 예산·재원 확정 단계"
+    if key.startswith("us-dow-autonomous-warfare-procurement-"):
+        return "미 국방부 자율전투 조달·계약 실행 단계"
     if key == "us-fcc-robot-inverter-covered-list-2026-07-28":
         return "미 FCC, 외국산 전력 인버터·첨단 로봇 Covered List 편입"
     if key == "us-fcc-inverter-definition-modification-2026-08-20":
@@ -1712,6 +1879,15 @@ def alert_item_groups(rule: StoryRule, items: list[dict]) -> list[list[dict]]:
         "iran_hormuz_military_escalation",
     }:
         return [[item] for item in items]
+    if rule.key in {
+        "us_dow_project_meridian_future_warfare",
+        "us_dow_autonomous_warfare_execution",
+    }:
+        grouped: dict[str, list[dict]] = {}
+        for item in items:
+            key = semantic_policy_event_key(item) or story_identity(item)
+            grouped.setdefault(key, []).append(item)
+        return list(grouped.values())
     return [items] if items else []
 
 
@@ -2208,6 +2384,150 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
         return None
     title = str(items[0].get("title", ""))
     semantic_key = semantic_policy_event_key(items[0])
+    if rule.key == "us_dow_project_meridian_future_warfare":
+        if semantic_key == "us-dow-project-meridian-report":
+            return {
+                "revision": "us-dow-project-meridian-report-ko-v1",
+                "event_date": "",
+                "title": "미 국방부 Project Meridian 최종 보고서·권고 공개",
+                "core": "Project Meridian의 미래전 연구 결과와 권고가 공개·제출된 단계입니다.",
+                "stage": "보고서 공개·제출 단계 — 예산·조달·계약 반영은 별도 확인이 필요합니다.",
+                "actual": "공개 보고서와 기밀 부록이 미래전의 핵심 능력 격차와 개발·시험·전력화 우선순위를 제시하는 단계입니다.",
+                "timeline": "2026년 9월 30일 Project Meridian 출범 → 120일 연구 → 2027년 1월 28일 이전 결과 제출 목표 → 예산·조달 반영 여부 확인",
+                "why": "연구 단계의 아이디어가 어떤 기술·프로그램을 우선 개발할지 공식 권고로 좁혀지는 첫 전환점입니다.",
+                "next": "예산안, Program Executive Office, BAA·OTA·RFI·RFP, 시험평가·전력화 일정, 실제 계약·수주",
+                "investment": "특정 기업 수혜는 권고만으로 확정하지 않고 후속 예산·조달·계약이 확인될 때만 매출로 연결합니다.",
+                "korea": "한국 기업은 미 국방부 공급망·FMS·미국 현지 조달 또는 미국 주계약자 공급계약이 확인될 때만 직접 수혜로 분류합니다.",
+                "headwind": "권고가 예산에 반영되지 않거나 의회 승인·획득절차·시험평가에서 지연되면 실적 전환이 늦어집니다.",
+                "scope_note": "보고서 권고와 계약은 별개이며, 참가자 소속 기업의 수주를 자동 의미하지 않습니다.",
+                "impacts": "매출·마진·현금흐름, 수급, 시간표",
+                "paths": "기술 우선순위, 예산, 조달, 시험·전력화",
+                "sectors": "AI/자율·로봇, 우주·통신, 지향성에너지, 바이오·국방기술",
+                "priced_in": "보고서 내용과 후속 예산·조달 강도에 따라 달라집니다.",
+                "counter": "공개 권고가 장기 연구 의제로만 남고 예산·조달로 이어지지 않을 수 있습니다.",
+                "failure": "3~6개월 내 예산·조달 문서나 시험·계약 후속이 없으면 테마 기대가 실적 기대보다 앞선 상태입니다.",
+            }
+        if semantic_key.startswith("us-dow-project-meridian-participants-"):
+            return {
+                "revision": "us-dow-project-meridian-participants-ko-v1",
+                "event_date": "",
+                "title": "미 국방부 Project Meridian 참가자 구성 변화",
+                "core": "Project Meridian의 공동주도·참가자 구성이 새로 바뀐 단계입니다.",
+                "stage": "자문단 구성 변화 — 계약·수주 변화가 아닙니다.",
+                "actual": "MITRE가 공개한 현 구성은 프로젝트 진행 과정에서 계속 바뀔 수 있으며, 새 인물 추가는 전문영역 우선순위를 보여주는 보조 신호입니다.",
+                "timeline": "2026년 9월 30일 출범 → 2026년 10월 2일 MITRE 구성 공개 → 이후 참가자 업데이트",
+                "why": "어떤 기술·산업 전문가가 추가되는지는 연구 초점 변화를 보여줄 수 있지만 매출 신호는 아닙니다.",
+                "next": "최종 보고서, 공식 기술 우선순위, 예산·조달·계약 전환 여부",
+                "investment": "참가자 소속기업을 수혜주로 자동 연결하지 않습니다.",
+                "korea": "국내 기업 직접 영향은 공식 조달·공급망 편입이 확인될 때만 반영합니다.",
+                "headwind": "이해상충 논란과 자문·조달 분리, 의회·획득 절차가 실제 사업화 속도를 제한할 수 있습니다.",
+                "scope_note": "인물 참여는 기업 계약이 아닙니다.",
+                "impacts": "수급, 시간표",
+                "paths": "자문단, 기술 우선순위, 정책 시간표",
+                "sectors": "AI/자율·로봇, 우주·통신, 방산기술",
+                "priced_in": "낮음. 인물 변화만으로 실적이 바뀌지는 않습니다.",
+                "counter": "참가자 확대가 프로젝트 권고나 예산을 실제로 바꾸지 않을 수 있습니다.",
+                "failure": "후속 보고서·예산·조달 변화가 없으면 인물 뉴스로 끝납니다.",
+            }
+        if semantic_key.startswith("us-dow-project-meridian-implementation-"):
+            return {
+                "revision": "us-dow-project-meridian-implementation-ko-v1",
+                "event_date": "",
+                "title": "Project Meridian 권고, 실제 개발·조달 단계로 전환",
+                "core": "Project Meridian과 연결된 기술 우선순위가 실제 개발·시험·조달 문서로 전환된 단계입니다.",
+                "stage": "실행 전환 단계 — 개별 계약과 수주 금액을 별도 확인합니다.",
+                "actual": "BAA·OTA·RFI·RFP·계약·시험평가 문서처럼 돈과 일정이 붙는 후속 단계입니다.",
+                "timeline": "연구·자문 → 권고 → 예산·획득 문서 → 시험·계약 → 전력화",
+                "why": "이 단계부터 특정 기술·공급사에 실제 매출 경로가 생길 수 있습니다.",
+                "next": "계약 당사자, 계약금액, 납기, 시험평가, 양산·전력화 일정",
+                "investment": "확정 계약만 직접 매출로 분류하고 제안·실증은 고객 검증 단계로 낮춰 봅니다.",
+                "korea": "한국 기업은 미국 조달 직접계약·미국 주계약자 공급계약·FMS 연결이 확인될 때만 직접 수혜로 봅니다.",
+                "headwind": "예산 미확정, 경쟁입찰, 시험 실패, 사이버·전자전·안전 인증이 병목입니다.",
+                "scope_note": "Project Meridian 명칭이 언급됐다는 이유만으로 모든 후속 방산 계약을 연결하지 않습니다.",
+                "impacts": "매출·마진·현금흐름, 수급, 시간표",
+                "paths": "예산, 조달, 계약, 시험·전력화",
+                "sectors": "AI/자율·로봇, 우주·통신, 방산기술",
+                "priced_in": "후속 계약 강도에 따라 낮음~중간.",
+                "counter": "실제 계약·시험대상이 제한적이면 산업 전체 수혜로 확장하기 어렵습니다.",
+                "failure": "계약·시험·전력화 일정이 후속 문서로 이어지지 않으면 연구 테마에 머뭅니다.",
+            }
+        return {
+            "revision": "us-dow-project-meridian-commissioned-ko-v1",
+            "event_date": "2026년 9월 30일",
+            "title": "미 국방부 Project Meridian 출범: 머스크·Palmer Luckey·Newt Gingrich 공동주도",
+            "core": "미 국방부가 Project Meridian을 출범시키고 Elon Musk·Palmer Luckey·Newt Gingrich를 공동주도자로 두며 MITRE가 독립 연구를 이끌도록 했습니다.",
+            "stage": "공식 연구·자문 착수 단계 — 국방 계약·수주 확정이 아닙니다.",
+            "actual": "미 국방부 CTO Emil Michael의 지휘 아래 미래 전장·필요 무기·기술을 연구하고 실행 가능한 개발·시험·전력화 과제를 제안합니다. MITRE 공개 명단은 현재 구성이고 향후 바뀔 수 있습니다.",
+            "timeline": "2026년 9월 30일 국방부 발표·연구 착수 → 2026년 10월 2일 MITRE 구성 공개 → 120일 내 결과 제출 → 2027년 1월 28일 이전 최종 연구결과 목표",
+            "why": "미래전 기술 우선순위를 민간 기술리더와 FFRDC가 함께 좁히는 공식 연구축이 생겼다는 점이 중요합니다. 다만 돈이 움직이는 시점은 후속 예산·조달부터입니다.",
+            "next": "최종 보고서·기밀 부록, 기술 우선순위, 참가자 변화, 예산·BAA·OTA·RFI·RFP·계약, 시험·전력화 일정",
+            "investment": "Musk·Luckey 참여는 SpaceX·Anduril의 자동 수주를 뜻하지 않습니다. 실제 투자 재료는 권고가 특정 프로그램·예산·계약으로 전환되는지입니다.",
+            "korea": "현재 한국 상장사의 Project Meridian 직접 계약은 확인되지 않았습니다. 미 조달·FMS·미국 주계약자 공급망 편입이 확인될 때 실적 연결을 판단합니다.",
+            "headwind": "이해상충 논란, 의회 예산, 획득절차, 시험·안전·사이버·전자전 검증이 실제 사업화 속도를 늦출 수 있습니다.",
+            "scope_note": "미 육군 공식 설명은 Project Meridian을 새 전략·정책을 만드는 사업이 아니라 미래 도메인·역량을 식별하는 미래전 연구로 규정합니다.",
+            "impacts": "수급, 시간표, 향후 매출·마진·현금흐름",
+            "paths": "기술 우선순위, 예산, 조달, 시험·전력화",
+            "sectors": "AI/자율·로봇, 우주·통신, 지향성에너지, 바이오·국방기술",
+            "priced_in": "중간. 인물 참여는 공개됐지만 실제 권고·예산·계약은 아직 없습니다.",
+            "counter": "120일 연구가 장기 비전 제시에 그치고 실제 예산·조달 우선순위를 바꾸지 않을 수 있습니다.",
+            "failure": "2027년 1분기 이후에도 구체 프로그램·예산·조달·시험 일정이 없으면 직접 실적 재료보다 정책 테마에 머뭅니다.",
+        }
+    if rule.key == "us_dow_autonomous_warfare_execution":
+        if semantic_key == "us-dow-autonomous-warfare-army-fascom-2026-10-02":
+            return {
+                "revision": "us-dow-autonomous-warfare-fascom-ko-v1",
+                "event_date": "2026년 10월 2일",
+                "title": "미 육군 FASCOM 창설 지시: 자율무기 조달·전력화 실행 단계",
+                "core": "미 육군이 Futures and Autonomous Systems Command(FASCOM) 창설과 자율성 조달책임자 지정을 지시하며 조직·획득·전력화 단계로 이동했습니다.",
+                "stage": "미 육군 공식 시행 지시 — Project Meridian의 연구축보다 직접적인 조달·전력화 실행축입니다.",
+                "actual": "육군은 항공·기갑·화력·군수·공병·훈련 등 최소 6개 편성영역에 자율능력을 통합하고, Autonomy 담당 Portfolio Acquisition Executive를 두며 FY2028까지 자율 화력·전투차량·수상 보급·돌파·정찰감시표적획득 등의 획득·전력화를 우선하도록 했습니다.",
+                "timeline": "2026년 4월 21일 SOUTHCOM SAWC(별도 지역사령부) → 9월 30일 국방부 4성급 AUTOWARCOM·Project Agincourt 발표 → 10월 2일 미 육군 FASCOM 지시 → FY2028 우선 획득·전력화",
+                "why": "자문·연구가 아니라 실제 조직·획득책임자·전력화 대상과 기한이 붙은 후속 단계여서 돈이 조달로 이동할 가능성이 더 높습니다.",
+                "next": "FASCOM 실제 가동, Autonomy 조달책임자 임명, 예산 확정, RFI·BAA·OTA·RFP, 시험평가, 계약·대량구매, 부대 배치",
+                "investment": "드론·무인차량·센서·C2·통신·엣지컴퓨팅·자율소프트웨어는 조달 공고와 계약이 확인될 때 직접 매출로 전환됩니다.",
+                "korea": "한국 방산사는 미국 조달 자격·현지 파트너·FMS 또는 미국 주계약자 공급계약이 확인돼야 직접 수혜로 분류합니다.",
+                "headwind": "의회 예산, 상호운용성, 전자전·통신교란, 사이버보안, 안전·책임, 대량생산 수율·원가가 병목입니다.",
+                "scope_note": "2026년 4월 SOUTHCOM Autonomous Warfare Command와 9월 30일 발표된 국방부 전체 4성급 AUTOWARCOM을 같은 조직으로 합치지 않습니다.",
+                "impacts": "매출·마진·현금흐름, 수급, 시간표",
+                "paths": "조직 창설, 예산, 신속획득, 조달·계약, 시험·전력화",
+                "sectors": "드론/무인기, 로봇·자율전투차량, 센서·C2·통신, 엣지컴퓨팅·AI, 대드론",
+                "priced_in": "낮음~중간. 조직 방향은 공개됐지만 공급사·계약금액·대량구매는 아직 대부분 미확정입니다.",
+                "counter": "조직 창설만으로 조달예산이 자동 집행되는 것은 아니며 서비스별 기존 프로그램과 역할 조정이 남습니다.",
+                "failure": "6~12개월 내 예산·조달 공고·시험평가·계약이 따라오지 않으면 조직개편 기대가 실적보다 앞선 상태입니다.",
+            }
+        if semantic_key == "us-dow-autonomous-warfare-activated":
+            stage = "실제 창설·가동 단계"
+            title_ko = "미 국방부 AUTOWARCOM 실제 창설·가동"
+        elif semantic_key == "us-dow-autonomous-warfare-funding":
+            stage = "예산·재원 확정 단계"
+            title_ko = "미 국방부 자율전투 예산·재원 확정"
+        elif semantic_key.startswith("us-dow-autonomous-warfare-procurement-"):
+            stage = "조달·계약 실행 단계"
+            title_ko = "미 국방부 자율전투 조달·계약 실행"
+        else:
+            stage = "4성급 지휘체계 창설 발표 단계"
+            title_ko = "미 국방부 4성급 AUTOWARCOM 창설 구상"
+        return {
+            "revision": "us-dow-autonomous-warfare-execution-ko-v1",
+            "event_date": "",
+            "title": title_ko,
+            "core": "미 국방부가 자율·로봇 전력을 합동군 전반에 확대하기 위한 AUTOWARCOM·Project Agincourt 실행 단계를 추진하고 있습니다.",
+            "stage": stage,
+            "actual": "핵심은 자율·로봇 체계를 빠르게 획득·시험·배치하는 조직과 획득 권한을 묶는 것입니다.",
+            "timeline": "9월 30일 AUTOWARCOM·Project Agincourt 발표 → 육군·각 군 조직·획득 후속 → 예산·조달·시험 → 실제 부대 전력화",
+            "why": "Project Meridian보다 직접적으로 예산·획득·계약·전력화로 이어지는 실행축입니다.",
+            "next": "지휘관·조직 확정, 의회 예산, 조달 공고, 계약 당사자·금액, 시험평가, 배치 수량·일정",
+            "investment": "공급사 실적은 발표가 아니라 계약·납품·시험통과·대량배치로 확인합니다.",
+            "korea": "한국 기업은 미국 조달·FMS·현지 생산·미국 주계약자 공급망 연결이 확인될 때만 직접 수혜로 봅니다.",
+            "headwind": "예산, 규제·책임, 사이버·전자전, 통신·항법 교란, 대량생산·유지보수 비용이 실패 경로입니다.",
+            "scope_note": "SOUTHCOM의 4월 지역 자율전투 사령부와 국방부 전체 4성급 AUTOWARCOM은 별개로 추적합니다.",
+            "impacts": "매출·마진·현금흐름, 수급, 시간표",
+            "paths": "조직 창설, 예산, 조달, 시험·전력화",
+            "sectors": "드론/무인기, 로봇·자율체계, 센서·C2·통신, 엣지AI, 대드론",
+            "priced_in": "실제 예산·계약 단계에 따라 달라집니다.",
+            "counter": "조직·정책 발표만으로 특정 기업 수주를 단정할 수 없습니다.",
+            "failure": "예산·조달·시험·대량배치가 지연되면 관련 기업의 매출 전환도 늦어집니다.",
+        }
     if semantic_key == "us-fcc-robot-inverter-covered-list-2026-07-28":
         return {
             "revision": "us-fcc-robot-inverter-covered-list-ko-v1",
@@ -2697,6 +3017,19 @@ def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, 
     """Return a conservative status, upgrading only first-party verified events."""
     if (
         rule.key in {
+            "us_dow_project_meridian_future_warfare",
+            "us_dow_autonomous_warfare_execution",
+        }
+        and any(
+            "army.mil" in str(item.get("link") or "").lower()
+            or "mitre.org" in str(item.get("link") or "").lower()
+            or str(item.get("source") or "").strip().lower() in {"u.s. army", "us army", "mitre"}
+            for item in items
+        )
+    ):
+        return "공식 확인", "미 육군·MITRE 1차 자료 확인 완료"
+    if (
+        rule.key in {
             "us_fcc_space_nepa_reform",
             "us_fcc_satellite_spectrum_abundance",
             "us_fcc_satellite_spectrum_followon_fnprm",
@@ -2785,6 +3118,60 @@ def render_auction115_compact_body(now: dt.datetime) -> str:
         f'- 다음: 낙찰자 → 통신사 CAPEX → 삼성전자·Ericsson·Nokia 수주 → 국내 주문 · <a href="{reuters_url}">Reuters</a>',
         f'- 출처: <a href="{fcc_url}">FCC 원문</a>',
     ]) + "\n"
+
+
+def _self_test_defense_future_warfare_event_model() -> None:
+    meridian = {
+        "title": "Project Meridian",
+        "description": "Project Meridian will study the battlefields of the future. Elon Musk, Palmer Luckey and Newt Gingrich are co-directors. MITRE leads the independent effort.",
+        "link": "https://www.mitre.org/news-insights/publication/project-meridian",
+        "source": "MITRE",
+        "published_kst": "2026-10-02T12:00:00+09:00",
+    }
+    assert semantic_policy_event_key(meridian) == "us-dow-project-meridian-commissioned"
+
+    report = {
+        **meridian,
+        "title": "Project Meridian final report released",
+        "description": "Project Meridian final report released with findings and recommendations submitted to the Secretary.",
+        "published_kst": "2027-01-28T12:00:00+09:00",
+    }
+    assert semantic_policy_event_key(report) == "us-dow-project-meridian-report"
+
+    fascom = {
+        "title": "Army announces Futures and Autonomous Systems Command",
+        "description": "The Army establishes FASCOM, a Portfolio Acquisition Executive for Autonomy, and prioritizes acquisition and fielding across the joint force.",
+        "link": "https://www.army.mil/article/295913/army_announces_futures_and_autonomous_systems_command",
+        "source": "U.S. Army",
+        "published_kst": "2026-10-02T12:00:00+09:00",
+    }
+    assert semantic_policy_event_key(fascom) == "us-dow-autonomous-warfare-army-fascom-2026-10-02"
+
+    southcom = {
+        "title": "SOUTHCOM Establishes Autonomous Warfare Command",
+        "description": "U.S. Southern Command established a regional autonomous warfare command.",
+        "link": "https://www.southcom.mil/example",
+        "source": "U.S. Southern Command",
+        "published_kst": "2026-04-21T12:00:00+09:00",
+    }
+    assert semantic_policy_event_key(southcom) == ""
+
+    rules = {rule.key: rule for rule in STORY_RULES}
+    assert alert_confirmation_status(
+        rules["us_dow_project_meridian_future_warfare"], [meridian]
+    )[0] == "공식 확인"
+    assert alert_confirmation_status(
+        rules["us_dow_autonomous_warfare_execution"], [fascom]
+    )[0] == "공식 확인"
+
+    meridian_profile = item_story_profile(
+        rules["us_dow_project_meridian_future_warfare"], [meridian]
+    )
+    assert meridian_profile and "계약·수주 확정이 아닙니다" in str(meridian_profile.get("stage"))
+    fascom_profile = item_story_profile(
+        rules["us_dow_autonomous_warfare_execution"], [fascom]
+    )
+    assert fascom_profile and "6개" in str(fascom_profile.get("actual"))
 
 
 def render_alert(rule: StoryRule, items: list[dict], now: dt.datetime) -> str:
