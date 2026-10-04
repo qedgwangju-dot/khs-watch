@@ -487,11 +487,23 @@
       "source": "winbuzzer.com",
       "published_kst": "2026-10-02T00:47:34+09:00",
       "first_seen_kst": "2026-10-04T09:07:35+09:00"
+    },
+    "47656cf8661869018d8dc908": {
+      "title": "NVIDIA DGX Spark 64GB Launched and Big 128GB GB10 Price Increases - news.lavx.hu",
+      "source": "news.lavx.hu",
+      "published_kst": "2026-10-04T05:29:35+09:00",
+      "first_seen_kst": "2026-10-04T17:26:31+09:00"
+    },
+    "cd226fb6873463321223f0f2": {
+      "title": "'메모리 풍향계' 마이크론 \"내년이 정점? 2028년 메모리 공급 부족 더 심화\"… 삼전닉스 실적 기대감 커져 - Chosunbiz",
+      "source": "Chosunbiz",
+      "published_kst": "2026-10-01T11:45:00+09:00",
+      "first_seen_kst": "2026-10-04T17:26:31+09:00"
     }
   },
-  "updated_at_kst": "2026-10-04T11:52:15+09:00",
-  "last_scan_count": 32,
-  "last_new_count": 0,
+  "updated_at_kst": "2026-10-04T17:26:31+09:00",
+  "last_scan_count": 33,
+  "last_new_count": 1,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
@@ -514,7 +526,7 @@
     "shortage_through_year": 2027,
     "normalization_year": 2028,
     "lta_caps_price_increases": true,
-    "source": "news.futunn.com",
+    "source": "富途牛牛",
     "source_url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPNFdrSDB0QlZNSmRraUF4ejZuY0Y4RTAyX2MtWGh5NVppZXFycFJTdU11YTh1dldkSVZQNjYwYzlrQTNhOWNEbmIwSFhzZXhtYzAyRzRyaDQxbjhxTExzYmZKMU5aVnV0SmszWllZSDFDRFNFb1RtR1BsZHFIZGktazE5UkI4ZFhsdmtvbHFuakU5YTFPMDlic1N0elM3Y1NGVmY0TjEtT0F2N0U?oc=5",
     "source_rank": 2,
     "as_of": "2026-09-29"
@@ -536,20 +548,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-04T00:21:23+09:00",
+  "last_successful_delivery_kst": "2026-10-04T17:26:35+09:00",
   "telegram_message_ids": [
-    227
+    229
   ],
-  "telegram_message_id": 227,
+  "telegram_message_id": 229,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      227
+      229
     ],
-    "confirmed_at_kst": "2026-10-04T00:21:23+09:00",
-    "alert_signature": "48594c7cef73a5092dd78f2276653ea855bf98b5a3c42ef24e17001b744294a7"
+    "confirmed_at_kst": "2026-10-04T17:26:35+09:00",
+    "alert_signature": "05b73a9cfc7878c61ae8c7941330f7683af5142b6b92426036709e01096de707"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
