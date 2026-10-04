@@ -869,6 +869,9 @@ def _is_ess_battery(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    sodium_stage = _sodium_stage(text)
+    if sodium_stage and sodium_stage != 'background':
+        return 'sodium_ion_battery'
     ev46_stage = _ev46_stage(text)
     if ev46_stage and ev46_stage != 'background':
         return 'ev_46_series'
@@ -886,6 +889,30 @@ def score(item: dict) -> int:
     text = f"{title} {item.get('description','')} {item.get('source','')}"
     group = topic_group(text)
     source = item.get('source') or ''
+
+    if group == 'sodium_ion_battery':
+        stage = _sodium_stage(text, source)
+        if stage in {'known_baseline','background'}:
+            return 0
+        s = 20
+        s += {
+            'binding_contract': 18,
+            'capacity_execution': 14,
+            'mass_production_start': 18,
+            'first_or_batch_shipment': 18,
+            'international_or_batch_shipment': 19,
+            'customer_validation': 14,
+            'field_validation': 12,
+            'price_parity_or_transaction': 16,
+            'schedule_change': 13,
+            'performance_change': 11,
+            'safety_event': 17,
+            'reverse': 18,
+        }.get(stage, 0)
+        if base.NUMERIC.search(text): s += 3
+        if source in base.OFFICIAL_OR_PRIMARY: s += 7
+        elif source in base.TRUSTED: s += 3
+        return s
 
     if group == 'ev_46_series':
         stage = _ev46_stage(text, source)
@@ -1068,6 +1095,24 @@ def _raw_cat(text: str) -> str:
 
 
 def category(text: str, group: str) -> str:
+    if group == 'sodium_ion_battery':
+        stage = _sodium_stage(text)
+        raw = {
+            'known_baseline': '현재 상용화 기준선',
+            'binding_contract': '나트륨이온 대형 공급계약',
+            'capacity_execution': '나트륨이온 생산능력 실제 가동',
+            'mass_production_start': '나트륨이온 양산 개시',
+            'first_or_batch_shipment': '나트륨이온 첫·대량 출하',
+            'international_or_batch_shipment': '나트륨이온 해외·대량 출하',
+            'customer_validation': '한국 나트륨이온 고객 검증·승인',
+            'field_validation': '나트륨이온 현장·주행 검증',
+            'price_parity_or_transaction': '나트륨이온 실제 가격·LFP 패리티',
+            'schedule_change': '나트륨이온 상용화 일정 변경',
+            'performance_change': '나트륨이온 에너지밀도·성능 변경',
+            'safety_event': '나트륨이온 안전성 역풍',
+            'reverse': '나트륨이온 계약·양산 후퇴',
+        }.get(stage, '나트륨이온 시장 배경')
+        return f"나트륨이온 배터리 · {raw}"
     if group == 'ev_46_series':
         stage = _ev46_stage(text)
         raw = {
