@@ -143,6 +143,25 @@ OFFICIAL_TEXT_STORIES = {
     ),
 }
 
+ANALYST_DIRECT_STORIES = {
+    "us_fcc_chinese_optical_transceiver_ban": (
+        (
+            "https://money.udn.com/money/story/5612/9791710",
+            "https://money.udn.com/money/story/5612/9791710",
+            "美訂光通訊新規 台鏈利多 聯亞、華星光等迎轉單",
+            "經濟日報",
+            "2026-10-03T02:43:54+08:00",
+        ),
+        (
+            "https://money.udn.com/money/story/5612/9790549",
+            "https://money.udn.com/money/story/5612/9790549",
+            "FCC 光模組限制即將出爐？台、美供應鏈皆有望受惠",
+            "經濟日報",
+            "2026-10-02T13:14:04+08:00",
+        ),
+    ),
+}
+
 DIRECT_STORY_URLS = {
     "us_fcc_chinese_optical_transceiver_ban": (
         (
@@ -1367,6 +1386,60 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             "priority": 0,
         })
         print(f"trusted_policy_news=official_direct_verified key={rule.key} title={title!r}")
+    # Direct analyst/reporting pages are tracked separately from first-party FCC
+    # material.  They may trigger a research-stage alert, but never upgrade the
+    # event to "공식 확인" unless a genuine FCC/Federal Register source is present.
+    for fetch_url, canonical_url, expected_title, source_label, fallback_published in ANALYST_DIRECT_STORIES.get(rule.key, ()):
+        try:
+            raw = fetch_text(fetch_url, timeout=12)
+            detail = extract_article_detail(raw, expected_title)
+        except Exception as exc:
+            print(f"trusted_policy_news=analyst_direct_failed key={rule.key} source={source_label!r} error={type(exc).__name__}: {exc}")
+            continue
+        title = clean_text(detail.get("title")) or expected_title
+        description = clean_text(f"{detail.get('abstract') or ''} {detail.get('body') or ''}")
+        published = parse_pub_date(detail.get("published_kst")) or parse_pub_date(fallback_published)
+        verified = bool(detail.get("body_verified"))
+        raw_plain = clean_text(raw)
+        # Source-specific fallback: UDN pages can vary their article container.
+        # Require the report identity plus all distinctive policy terms before
+        # treating the direct page as body-verified.
+        if (
+            not verified
+            and "money.udn.com" in fetch_url
+            and ("Morgan Stanley" in raw_plain or "摩根士丹利" in raw_plain or "大摩" in raw_plain)
+            and "FCC" in raw_plain
+            and "3.2T" in raw_plain
+            and ("65%" in raw_plain or "65％" in raw_plain)
+        ):
+            description = raw_plain[:50000]
+            verified = True
+        haystack = f"{title} {source_label} {description}"
+        if (
+            not verified
+            or not published
+            or (now - published).total_seconds() / 3600 > max_age_hours_for_rule(rule)
+            or not has_required_terms(haystack, rule)
+        ):
+            print(
+                f"trusted_policy_news=analyst_direct_rejected key={rule.key} source={source_label!r} "
+                f"verified={verified!r} published={published!r}"
+            )
+            continue
+        seen_links.add(canonical_url)
+        items.append({
+            "title": title,
+            "description": description,
+            "link": canonical_url,
+            "source": source_label,
+            "published_kst": published.isoformat(timespec="seconds"),
+            "priority": 8,
+        })
+        print(
+            f"trusted_policy_news=analyst_direct_verified key={rule.key} source={source_label!r} "
+            f"title={title!r}"
+        )
+
     for fetch_url, canonical_url in DIRECT_STORY_URLS.get(rule.key, ()):
         try:
             raw = fetch_text(fetch_url)
