@@ -1,26 +1,11 @@
 {
   "initialized": true,
   "last_collection": {
-    "errors": [
-      "Google News 실패: \"OpenAI\" Cerebras NVIDIA Ultrafast inference GPU accele / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News 실패: \"GPT-6.1 Sol\" Ultrafast NVIDIA Cerebras GPU / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News 실패: \"GPT-6 Astra\" Ultrafast Cerebras NVIDIA GPU / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News 실패: \"OpenAI\" \"750MW\" Cerebras tranche capacity online / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News 실패: \"OpenAI\" Cerebras contract capacity delay cancellation  / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News 실패: \"OpenAI\" inference routing accelerator NVIDIA Cerebras  / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News 실패: \"OpenAI\" tokens per second Ultrafast batch size GPU Cer / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News 실패: \"Cerebras\" OpenAI model support GPT-6.1 Astra Ultrafast / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News 실패: \"OpenAI\" service_tier ultrafast pricing speed / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News 실패: \"OpenAI\" low batch NVIDIA GPU inference latency / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News 실패: \"Synopsys\" EDA consumption-based pricing AI agents tape / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News 실패: \"Synopsys\" FY2027 revenue guidance 11.15 billion invest / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News 실패: \"Synopsys\" GPT-Synopsys OpenAI licensing revenue share  / HTTPError: HTTP Error 503: Service Unavailable",
-      "Google News 실패: \"Synopsys\" AWS licensing royalty output custom silicon  / HTTPError: HTTP Error 503: Service Unavailable"
-    ],
-    "material_items": 0,
-    "new_articles": 0,
-    "new_events": 0,
-    "raw_items": 0
+    "errors": [],
+    "material_items": 1,
+    "new_articles": 1,
+    "new_events": 1,
+    "raw_items": 104
   },
   "official_pages": {
     "OpenAI GPT-5.6 Sol Ultrafast 미리보기": {
@@ -141,6 +126,16 @@
     }
   },
   "official_snapshot_schema_version": 2,
-  "seen": {},
-  "updated_at_kst": "2026-10-04T09:21:01+09:00"
+  "seen": {
+    "ee155318aa8c738a7b68d904": {
+      "category": "모델→가속기 배치 확정",
+      "entity": "OpenAI · NVIDIA",
+      "first_seen_at": "2026-10-04T00:25:22.426757+00:00",
+      "published_at": "2026-10-01T23:53:12+00:00",
+      "source": "NVIDIA Blog",
+      "title": "How NVIDIA GPUs Help Accelerate OpenAI’s GPT-6 Astra Ultrafast - NVIDIA Blog",
+      "url": "https://news.google.com/rss/articles/CBMickFVX3lxTE9KcU1JWEFGdV96M2o5aF9HdU14SzRNTU5PVWh3RnRQUUJTa3RZT05YZkJNTHZ0RnpveXBhODdoSnNxcU1DSmg2dUFpWGV6c2FPR1FoV3B4QnB2MWJkXzhNbWdTdjVZaW5adDV2SlFYWXAwQQ?oc=5"
+    }
+  },
+  "updated_at_kst": "2026-10-04T09:25:22+09:00"
 }
