@@ -130,7 +130,7 @@ def _largest_qty(block: str, unit: str) -> int | None:
 
 
 def _korean_man_qty(block: str, unit: str) -> int | None:
-    m = re.search(rf"(?<![\d.])(\d+(?:\.\d+)?)\s*만\s*{re.escape(unit)}", block)
+    m = re.search(rf"(?<![\d.])(\d+(?:\.\d+)?)\s*만\s*{re.escape(unit)}", _visible_text(block))
     if not m:
         return None
     return int(round(float(m.group(1)) * 10_000))
