@@ -250,6 +250,17 @@ SODIUM_LGES_BASE = re.compile(
 SODIUM_SDI_BASE = re.compile(r'(?:삼성SDI|Samsung\s*SDI).{0,180}(?:sodium[-\s]*ion|나트륨이온|소듐이온).{0,180}(?:UPS|utility[-\s]*scale|ESS|long\s*lif|장수명|high\s*power|고출력|safety|안전)', re.I)
 SODIUM_SKON_BASE = re.compile(r'(?:SK온|SK\s*On).{0,180}(?:sodium[-\s]*ion|나트륨이온|소듐이온).{0,180}(?:prototype|시제품).{0,80}2027|2027.{0,120}(?:prototype|시제품).{0,140}(?:SK온|SK\s*On)', re.I)
 SODIUM_ENERTECH_BASE = re.compile(r'(?:Enertech|에너테크).{0,180}(?:140\s*[-~–]\s*160\s*Wh/kg|140\s*[-~–]\s*160\s*Wh/㎏|2027).{0,180}(?:January|1월|mass\s*production|양산|Chungju|충주)', re.I)
+SODIUM_HINA_BASE = re.compile(
+    r'(?:HiNa\s*Battery|中科海钠|하이나배터리).{0,220}(?:339\s*kWh).{0,220}(?:15,?000\s*km|15000\s*km|7\s*months?|7个月)|'
+    r'(?:15,?000\s*km|15000\s*km).{0,220}(?:339\s*kWh).{0,220}(?:HiNa\s*Battery|中科海钠)',
+    re.I,
+)
+SODIUM_FIELD_VALIDATION = re.compile(
+    r'field[-\s]*validated|road\s*test|field\s*test|grid[-\s]*connected|grid\s*operation|'
+    r'路试|并网|运行验证|현장\s*검증|주행\s*시험|계통\s*연계|실증',
+    re.I,
+)
+SODIUM_FIELD_COMPLETE = re.compile(r'completed|passed|validated|successfully|完成|通过|成功|완료|통과|성공', re.I)
 
 
 def _sodium_stage(text: str, source: str = '') -> str:
@@ -279,6 +290,8 @@ def _sodium_stage(text: str, source: str = '') -> str:
         return 'known_baseline'
     if SODIUM_ENERTECH_BASE.search(text) and not re.search(r'(?:started|began|commenced|개시|시작|돌입).{0,60}(?:mass\s*production|양산)|(?:mass\s*production|양산).{0,60}(?:started|began|commenced|개시|시작|돌입)', text, re.I):
         return 'known_baseline'
+    if SODIUM_HINA_BASE.search(text):
+        return 'known_baseline'
 
     if SODIUM_PRICE.search(text) and SODIUM_PRICE_CONFIRMED.search(text):
         return 'price_parity_or_transaction'
@@ -288,6 +301,8 @@ def _sodium_stage(text: str, source: str = '') -> str:
         return 'mass_production_start'
     if SODIUM_VALIDATION.search(text) and re.search(r'completed|passed|approved|selected|qualified|완료|통과|승인|선정|공급', text, re.I):
         return 'customer_validation'
+    if SODIUM_FIELD_VALIDATION.search(text) and SODIUM_FIELD_COMPLETE.search(text) and re.search(r'\d[\d,.]*\s*(?:km|kWh|MWh|GWh|cycles?|회)', text, re.I):
+        return 'field_validation'
     if SODIUM_BINDING.search(text) and SODIUM_GWH.search(text) and not SODIUM_MOU.search(text):
         return 'binding_contract'
     if SODIUM_CAPACITY.search(text) and re.search(r'commissioned|operational|started|completed|投产|建成|投运|가동|완공|반입|설치', text, re.I):
