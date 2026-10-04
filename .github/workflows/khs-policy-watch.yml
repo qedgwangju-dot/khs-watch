@@ -478,9 +478,25 @@ jobs:
                       "cornerstone equity investment",
                   )
               )
-              if route == "westinghouse" and us_investment_topic and (
-                  reactor_mix_topic or westinghouse_equity_topic
+              westinghouse_governance_topic = any(
+                  marker in raw_combined
+                  for marker in (
+                      "지분 참여",
+                      "경영 참여",
+                      "이사회",
+                      "의결권",
+                      "board seat",
+                      "board representation",
+                      "voting right",
+                  )
+              )
+              if route == "westinghouse" and (
+                  westinghouse_equity_topic
+                  or westinghouse_governance_topic
+                  or (us_investment_topic and reactor_mix_topic)
               ):
+                  # 단일 소유권: Westinghouse 지분·거버넌스 및 Project Power 원전 구성은
+                  # khs-us-investment-telegram-watch.yml 에서만 Telegram으로 송출한다.
                   print(
                       "delegated_to_us_investment_watch=true "
                       f"body_file={body_file.name} route={route}"
