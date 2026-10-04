@@ -56,6 +56,11 @@ base.QUERIES.extend([
     '(삼성SDI OR "Samsung SDI") ("46시리즈" OR "46-series" OR 4680 OR 4695 OR 46100 OR 46120) (EV OR 전기차 OR 고객 OR customer OR supply OR 공급 OR order OR 수주 OR production OR 양산 OR capacity OR GWh OR BMW OR KGM)',
     '(Volvo OR 볼보 OR Mercedes-Benz OR Mercedes OR 벤츠 OR BMW OR Rivian OR 리비안 OR Chery OR 체리 OR Tesla OR 테슬라) ("46 mm" OR 46mm OR "46시리즈" OR "46-series" OR 4680 OR 4695 OR 46100 OR 46120) (confirm OR confirmed OR contract OR supplier OR supply OR award OR 채택 OR 확정 OR 계약 OR 공급사 OR 수주)',
     '(에코프로비엠 OR "EcoPro BM" OR 케이엔에스 OR KNS OR 엠오티 OR MOT OR "Wonik PNE" OR 원익피앤이) ("46시리즈" OR "46-series" OR 4680 OR 4695 OR 46100 OR 46120) (수주 OR 공급 OR contract OR order OR 장비 OR equipment OR 양극재 OR cathode OR 고객 OR customer)',
+    '(삼성SDI OR "Samsung SDI") ("46시리즈" OR "46-series" OR "46-phi") ("European global EV" OR "global EV" OR 유럽 글로벌 OR 프리미엄 전기차 OR premium EV OR 헝가리 OR Hungary) (수주 OR order OR customer OR 고객 OR 2028 OR 장비 OR equipment OR 양산 OR SOP OR GWh)',
+    '(삼성SDI OR "Samsung SDI") (KGM OR "KG Mobility" OR KG모빌리티) ("46시리즈" OR "46-series") (MOU OR 공동개발 OR 공급계약 OR 양산 OR 적용 OR 탑재 OR SOP)',
+    '(SK온 OR "SK On") ("46시리즈" OR "46-series" OR 4680 OR 4695 OR 46120) (개발완료 OR development complete OR prototype OR 시제품 OR Changzhou OR 창저우 OR 300000 OR 300,000 OR 고객 OR customer OR 수주 OR order OR 공급계약 OR 양산 OR SOP OR 장비 OR equipment)',
+    '("46시리즈" OR "46-series" OR 4680 OR 4695 OR 46100 OR 46120) ("SNE Research" OR SNE리서치) (155GWh OR 650GWh OR 33% OR 2030 OR 전망 OR forecast OR revised OR 상향 OR 하향)',
+    '(LG에너지솔루션 OR "LG Energy Solution") (원통형 OR cylindrical) ("46시리즈" OR "46-series") (1.5배 OR 1.5x OR shipment OR 출하 OR utilization OR 가동률 OR yield OR 수율 OR Q2 OR 2분기)',
 ])
 
 base.TRUSTED.update({
@@ -64,7 +69,8 @@ base.TRUSTED.update({
     'Wood Mackenzie', 'Utility Dive', 'Canary Media',
     '한국경제TV', 'WOWTV', '뉴시스', 'Newsis', 'TrendForce', '集邦咨询',
     '中国基金报', '中国基金报社', '中国基金报·机会宝',
-    '디일렉', 'TheElec', 'THE ELEC',
+    '디일렉', 'TheElec', 'THE ELEC', 'SNE Research', 'SNE리서치',
+    'Korea Herald', 'The Korea Herald', 'Korea JoongAng Daily',
 })
 base.OFFICIAL_OR_PRIMARY.update({
     '국가세무총국', '중국 재정부', 'Ministry of Finance of China',
@@ -81,6 +87,7 @@ base.OFFICIAL_OR_PRIMARY.update({
     'LG에너지솔루션', 'LG Energy Solution', '삼성SDI', 'Samsung SDI',
     'BMW Group', 'BMW', 'Rivian', 'Tesla', 'Mercedes-Benz', 'Chery Automobile',
     'Chery', 'indiGOtech', '에코프로비엠', 'EcoPro BM',
+    'KGM', 'KG Mobility', 'KG모빌리티', 'Samsung SDI Europe GmbH',
 })
 
 _orig_topic_group = base.topic_group
