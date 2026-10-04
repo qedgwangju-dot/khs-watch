@@ -993,7 +993,7 @@ def meaning(cat: str) -> str:
     raw = cat.split(' · ', 1)[-1]
     if cat.startswith('46파이 EV 배터리 · '):
         return {
-            '현재 계약·양산 기준선': 'LG에너지솔루션 46시리즈 수주잔고 440GWh+, Rivian 4695 67GWh/5년, Chery 8GWh/6년, BMW 46mm 95·120mm, Tesla 4680 40GWh 생산, 삼성SDI 4695 초도양산, Mercedes-Benz 46100 보도, indiGOtech 비구속 MOU를 현재 기준선으로 고정합니다. 같은 내용 재보도는 침묵합니다.',
+            '현재 계약·양산 기준선': 'LG에너지솔루션 46시리즈 수주잔고 440GWh+, Rivian 4695 67GWh/5년, 원통형 전체 출하 1.5배(46시리즈 포함), Chery 8GWh/6년, BMW 46mm 95·120mm, Tesla 4680 40GWh 생산, 삼성SDI 4695 초도양산·유럽 글로벌 프리미엄 EV 46파이 수주(고객·GWh 비공개, 2028 헝가리 양산 목표)·KGM 공동개발 MOU, SK온 46시리즈 개발완료·창저우 시제품 라인, Mercedes-Benz 46100 보도, indiGOtech 비구속 MOU, SNE리서치 2025년 155GWh→2030년 650GWh 전망을 현재 기준선으로 고정합니다. 같은 내용 재보도는 침묵합니다.',
             '비구속 협의·MOU': '업무협약·공급협의는 확정 수주가 아닙니다. 최종 본계약, GWh, 공급기간, SOP와 실제 출하가 확인될 때 상업 매출 단계로 승격합니다.',
             '완성차 공급계약·GWh 수주': '46파이 시장이 기술 기대에서 실제 주문으로 넘어가는 가장 직접적인 수요 신호입니다. 완성차 실명, 정확한 46xx 규격, GWh, 기간, 공급공장과 매출 인식 시점을 연결합니다.',
             '익명 완성차 46파이 본수주': '고객 실명이 NDA로 비공개여도 셀 업체가 46파이 본수주를 공식 확인한 단계입니다. 고객 지역·차급·양산연도·생산공장은 확정 사실로 두고, 고객 실명·GWh·정확한 46xx 규격이 공개될 때 별도 단계 상승으로 봅니다.',
@@ -1146,13 +1146,25 @@ def verification(item: dict, group: str, text: str) -> str:
         if stage == 'known_baseline':
             if EV46_MERCEDES_BASE.search(text) and source not in base.OFFICIAL_OR_PRIMARY:
                 return '디일렉 업계 취재 기준선 · Mercedes-Benz/LG에너지솔루션 공식 46100 확인 전'
+            if EV46_MARKET_BASE.search(text):
+                return 'SNE리서치 2025년 155GWh→2030년 650GWh·연평균 33% 시장전망 기준선 · 실제 주문 아님'
+            if EV46_LGES_CYL_15X_BASE.search(text):
+                return 'LG에너지솔루션 2026년 2분기 공식 실적 · 원통형 배터리 전체 출하량 1.5배 YoY이며 46시리즈 단독 증가율 아님'
+            if EV46_SDI_KGM_BASE.search(text):
+                return '삼성SDI·KGM 공식 MOU 기준선 · 46시리즈 배터리팩 공동개발이며 확정 공급계약·GWh·SOP 전'
+            if EV46_SKON_DEV_BASE.search(text):
+                return 'SK온 개발완료·시제품 검증 기준선 · 창저우 연구라인 연 30만개 수준, 고객 본수주·양산 전'
+            if SDI_RE.search(text) and EV46_ANON_OEM.search(text) and re.search(r'2028', text) and re.search(r'Hungary|헝가리', text, re.I):
+                return '삼성SDI 2025년 2분기 실적발표 기준선 · 유럽 글로벌 프리미엄 EV 46파이 수주 확정, 고객·GWh·정확 규격은 NDA 비공개, 2028 헝가리 신규라인 양산 목표'
             return '기업·완성차 공식자료 기준선 · 같은 계약·양산 숫자 재보도는 새 이벤트 아님'
         if stage == 'mou':
             return '기업 공식 MOU라도 비구속 협의 단계 · 최종 공급계약/GWh/SOP 전'
-        if stage in {'oem_contract','format_confirmation','backlog_change','sop','first_shipment','ramp_metrics','bma_integration'}:
+        if stage in {'oem_contract','anonymous_oem_order','sdi_order_detail','skon_customer_qualification','skon_order','format_confirmation','backlog_change','shipment_metric','sop','first_shipment','ramp_metrics','bma_integration'}:
             if source in base.OFFICIAL_OR_PRIMARY:
                 return '셀 업체·완성차 공식자료 · 규격/계약/GWh/양산/출하 단계 직접 확인'
             return '신뢰 매체 보도 · 셀 업체·완성차 공식자료로 고객·규격·물량·일정 교차확인'
+        if stage == 'market_forecast_revision':
+            return 'SNE리서치 등 시장전망 원자료 · 2025년 155GWh→2030년 650GWh·연평균 33% 기준선 대비 수정폭 확인'
         if stage in {'construction_execution','equipment_execution','component_order'}:
             if source in base.OFFICIAL_OR_PRIMARY:
                 return '기업 공식자료 · 46파이 전용 설비/장비/소재 수주와 납기 직접 확인'
