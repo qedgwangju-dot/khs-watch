@@ -262,6 +262,16 @@ def is_sec_3x_crypto_etp_approval(event):
     )
 
 
+def is_sec_3x_crypto_etp_approval(event):
+    signal = clean(
+        f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}"
+    ).lower()
+    return (
+        ("3x bitcoin etf" in signal or "3x ether etf" in signal)
+        and ("granting approval" in signal or "상장 승인" in signal or "34-106577" in signal)
+    )
+
+
 def is_sec_crypto_custody_2026(event):
     signal = clean(
         f"{event.get('title','')} {event.get('detail','')} {event.get('source','')}"
@@ -294,6 +304,8 @@ def semantic_group(event):
         return ("sec_3x_btc_eth_etp_sr_cboebzx_2026_065", day)
     if is_volatility_3x_crypto_launch(event):
         return ("volatility_3x_crypto_launch", day)
+    if is_sec_3x_crypto_etp_approval(event):
+        return ("sec_3x_crypto_etp_listing_34_106577", day)
     if is_sec_crypto_custody_2026(event):
         return ("sec_crypto_custody_s7_2026_35", day)
     if source == "상원 은행위원회" and (
@@ -322,6 +334,9 @@ def event_priority(event):
         score += 260
     if is_sec_3x_crypto_etp_approval(event):
         score += 320
+    if is_sec_3x_crypto_etp_approval(event):
+        if source == "SEC 거래소 규칙 승인명령":
+            score += 350
     if is_sec_crypto_custody_2026(event):
         if source == "SEC 보도자료":
             score += 250
@@ -385,6 +400,13 @@ def filter_alertable_events(events, now=None, freshness_days=7):
                 "Volatility Shares 등록서류",
             ]
             event["semantic_event"] = "sec_3x_btc_eth_etp_sr_cboebzx_2026_065"
+        if key and key[0] == "sec_3x_crypto_etp_listing_34_106577":
+            event["evidence_sources"] = [
+                "SEC 승인명령 Release 34-106577",
+                "Cboe BZX SR-CboeBZX-2026-065",
+                "VS Trust SEC 등록신고서",
+            ]
+            event["semantic_event"] = "sec_3x_crypto_etp_listing_34_106577"
         if key and key[0] == "sec_crypto_custody_s7_2026_35":
             event["evidence_sources"] = [
                 "SEC 보도자료 2026-100",
@@ -417,6 +439,15 @@ def special_translation(event):
     title = clean(event.get("title", ""))
     detail = clean(event.get("detail", ""))
     signal = f"{title} {detail}".lower()
+    if is_sec_3x_crypto_etp_approval(event):
+        return (
+            "SEC, Cboe BZX의 3x Bitcoin·3x Ether ETP 상장 규칙 승인",
+            "SEC는 2026년 10월 2일 Release No. 34-106577에서 Cboe BZX가 VS Trust의 3x Bitcoin ETF와 3x Ether ETF를 포함한 "
+            "6개 3배 레버리지 상품을 상장·거래할 수 있도록 거래소 규칙변경을 승인했습니다. "
+            "각 상품은 기초자산의 장기 수익률이 아니라 하루 수익률의 3배를 목표로 하며 매일 재설정됩니다. "
+            "중요하게도 이번 명령은 거래소의 상장 규칙 승인이지 상품이 즉시 거래를 시작했다는 뜻은 아닙니다. "
+            "각 펀드의 Securities Act 등록신고서가 효력을 가져야 실제 상장이 가능합니다.",
+        )
     if is_vs_trust_3x_registration_effect(event):
         return (
             "VS Trust, BITH·ETHK 등록서류 효력 발생",
@@ -552,6 +583,11 @@ def localize_event(event):
 def easy_meaning(event, body_ko):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_sec_3x_crypto_etp_approval(event):
+        return (
+            "쉽게 말하면, 미국 거래소가 비트코인·이더리움의 하루 움직임을 3배로 추종하는 초고레버리지 상품을 상장할 수 있도록 SEC가 길을 열어준 것입니다. "
+            "다만 ‘상장 규칙 승인’과 ‘실제 거래 개시’는 다르며, 등록신고서 효력과 실제 상장일을 따로 확인해야 합니다."
+        )
     if is_vs_trust_3x_registration_effect(event):
         return (
             "쉽게 말하면, SEC가 ‘상장할 수 있다’고 승인한 데 이어 BITH·ETHK의 증권 등록 자체도 효력이 생긴 것입니다. "
@@ -603,6 +639,13 @@ def easy_meaning(event, body_ko):
 def investment_lines(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_sec_3x_crypto_etp_approval(event):
+        return [
+            "BTC·ETH: 현물 자체의 규제 지위가 바뀐 것은 아니지만 미국 투자자가 고레버리지 방향성 노출을 ETF/ETP 형태로 쉽게 얻을 수 있어 단기 거래수요·변동성 전달 경로가 커질 수 있습니다.",
+            "COIN: Coinbase 거래소의 직접 승인 사건은 아니어서 즉시 매출 수혜로 연결하면 안 됩니다. 다만 BTC·ETH 거래·헤지 수요 확대가 현물·파생 거래량으로 번지는지 확인할 필요가 있습니다.",
+            "상품 구조: 3x는 ‘하루 수익률’ 기준입니다. 며칠 이상 보유하면 일일 복리·변동성 때문에 기초자산 누적수익률의 정확한 3배가 아니며 방향까지 달라질 수 있습니다.",
+            "시간표: Cboe 상장 규칙은 승인됐지만 실제 거래 개시는 각 펀드 등록신고서 효력·상장 공지 확인이 필요합니다. 3x Bitcoin ETF의 485BXT는 현재 2026-10-18 효력 예정으로 제출돼 있습니다.",
+        ]
     if is_vs_trust_3x_registration_effect(event):
         return [
             "시간표: SEC 상장규칙 승인 → 등록서류 효력 발생까지 왔습니다. 다음 관문은 Volatility Shares 공식 출시·Cboe 첫 거래입니다.",
@@ -734,6 +777,11 @@ def investment_lines(event):
 def core_summary(event):
     stage = rule_stage(event)
     signal = f"{event.get('event_type','')} {event.get('source','')} {event.get('title','')} {event.get('detail','')}".lower()
+    if is_sec_3x_crypto_etp_approval(event):
+        return (
+            "SEC의 34-106577은 미국 시장에서 3x Bitcoin·3x Ether ETP 상장 경로를 열었다는 점에서 위험선호·거래수단 확대에는 의미가 크지만, "
+            "현물 BTC·ETH의 법적 지위 변경이나 즉시 거래 개시를 뜻하지 않으며, 하루 3배 구조의 복리·변동성 손실과 등록신고서 효력 여부가 핵심 확인사항입니다."
+        )
     if is_vs_trust_3x_registration_effect(event):
         return (
             "BITH·ETHK는 SEC 상장규칙 승인에 이어 등록서류 효력까지 발생한 출시 직전 단계로 진전했으며, "
