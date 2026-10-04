@@ -95,6 +95,97 @@ jobs:
       - name: Validate watcher
         run: python -m py_compile scripts/ai_inference_accelerator_route_watch.py
 
+      - name: Verify semantic official-page guards
+        shell: bash
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          from scripts.ai_inference_accelerator_route_watch import (
+              UTC,
+              _semantic_digest,
+              advance_official_page_state,
+              official_page_snapshots,
+              semantic_official_snapshot,
+          )
+
+          ultra_a = (
+              "Ultrafast mode is our fastest API service tier, with up to 8x faster speeds than Standard mode. "
+              "It is broadly available for GPT-6 Astra, with preview access for GPT-5.6 Sol. "
+              "Set service_tier to ultrafast. Tiers 1–3 500,000 Tier 4 1,000,000 Tier 5 5,000,000. "
+              "Ultrafast supports US data residency and does not support EU regional processing."
+          )
+          ultra_jitter = (
+              "Unrelated navigation changed. " + ultra_a + " Footer order changed."
+          )
+          ultra_b = ultra_a + " GPT-6.1 Sol is now mentioned for Ultrafast."
+
+          sem_a = semantic_official_snapshot("OpenAI Ultrafast 모드", ultra_a)
+          sem_jitter = semantic_official_snapshot("OpenAI Ultrafast 모드", ultra_jitter)
+          sem_b = semantic_official_snapshot("OpenAI Ultrafast 모드", ultra_b)
+          if _semantic_digest(sem_a) != _semantic_digest(sem_jitter):
+              raise RuntimeError("Non-semantic render jitter changed Ultrafast semantic digest")
+          if _semantic_digest(sem_a) == _semantic_digest(sem_b):
+              raise RuntimeError("Material Ultrafast support change was not detected")
+
+          t0 = dt.datetime(2026, 10, 4, 0, 0, tzinfo=UTC)
+          previous = {
+              "digest": _semantic_digest(sem_a),
+              "semantic": sem_a,
+              "url": "https://developers.openai.com/api/docs/guides/ultrafast-mode",
+              "updated_at": t0.isoformat(),
+          }
+          snap_b = {
+              "digest": _semantic_digest(sem_b),
+              "semantic": sem_b,
+              "url": previous["url"],
+          }
+          s1, a1, _, _ = advance_official_page_state(
+              "OpenAI Ultrafast 모드", previous, snap_b, t0
+          )
+          s2, a2, old2, new2 = advance_official_page_state(
+              "OpenAI Ultrafast 모드", s1, snap_b, t0 + dt.timedelta(minutes=11)
+          )
+          print(f"ai_inference_semantic_confirm={a1},{a2}")
+          if a1 or not a2 or old2 is None or new2 is None:
+              raise RuntimeError("Two-observation semantic confirmation guard failed")
+
+          immutable_previous = {
+              "digest": "A",
+              "semantic": {"kind": "immutable_reference", "name": "Synopsys 2026 Investor Day"},
+              "url": "https://example.com/investor-day",
+              "updated_at": t0.isoformat(),
+          }
+          immutable_snapshot = {
+              "digest": "B",
+              "semantic": {"kind": "immutable_reference", "name": "Synopsys 2026 Investor Day"},
+              "url": immutable_previous["url"],
+          }
+          immutable_state, immutable_alert, _, _ = advance_official_page_state(
+              "Synopsys 2026 Investor Day",
+              immutable_previous,
+              immutable_snapshot,
+              t0 + dt.timedelta(hours=1),
+          )
+          print(
+              f"ai_inference_immutable_guard={immutable_alert} "
+              f"digest={immutable_state.get('digest')}"
+          )
+          if immutable_alert or immutable_state.get("digest") != "A":
+              raise RuntimeError("Synopsys immutable reference could generate a false page-change alert")
+
+          live = official_page_snapshots()
+          for name in ("OpenAI Ultrafast 모드", "OpenAI GPT-6.1 Sol 모델"):
+              snap = live.get(name)
+              if not snap or snap.get("snapshot_type") != "semantic" or not snap.get("semantic"):
+                  raise RuntimeError(f"Live semantic snapshot unavailable: {name}")
+              print(f"ai_inference_live_semantic={name} {snap['semantic']}")
+
+          investor = live.get("Synopsys 2026 Investor Day")
+          if not investor or investor.get("snapshot_type") != "immutable":
+              raise RuntimeError("Synopsys Investor Day must be an immutable reference page")
+          print("ai_inference_semantic_regression=PASS")
+          PY
+
       - name: Verify Korean alert translation on push
         if: github.event_name == 'push'
         shell: bash
