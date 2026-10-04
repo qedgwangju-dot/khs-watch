@@ -725,3 +725,68 @@ jobs:
             git pull --rebase origin main
             git push
           fi
+
+      - name: Record manual runtime verification
+        if: github.event_name == 'workflow_dispatch' && success()
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import json
+          from pathlib import Path
+
+          nuclear_alert = Path("out/khs_nuclear_policy_alert.md")
+          text = nuclear_alert.read_text(encoding="utf-8").lower() if nuclear_alert.exists() else ""
+          equity_markers = (
+              "westinghouse", "웨스팅하우스", "지분", "이사회", "의결권",
+              "board seat", "board representation", "voting right",
+          )
+          equity_governance_alert_present = (
+              nuclear_alert.exists()
+              and ("westinghouse" in text or "웨스팅하우스" in text)
+              and any(marker in text for marker in equity_markers[2:])
+          )
+
+          delivery = Path("out/khs_telegram_delivery_confirmed.json")
+          delivery_payload = {}
+          if delivery.exists():
+              try:
+                  delivery_payload = json.loads(delivery.read_text(encoding="utf-8"))
+              except Exception:
+                  delivery_payload = {}
+
+          payload = {
+              "status": "completed",
+              "event": "workflow_dispatch",
+              "westinghouse_equity_single_owner": "khs-us-investment-telegram-watch.yml",
+              "policy_equity_governance_alert_present": equity_governance_alert_present,
+              "nuclear_policy_alert_file_present": nuclear_alert.exists(),
+              "delivery_confirmation_present": delivery.exists(),
+              "message_ids": delivery_payload.get("message_ids", []),
+              "validated_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+          }
+          Path("/tmp/khs_policy_runtime_health.json").write_text(
+              json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(payload, ensure_ascii=False))
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/khs_policy_runtime_health.json data/khs_policy_runtime_health.json
+            git add data/khs_policy_runtime_health.json
+            if git diff --cached --quiet; then
+              echo "policy runtime health unchanged"
+              exit 0
+            fi
+            git commit -m "Record KHS policy runtime health [skip ci]"
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 2))
+          done
+          exit 1
