@@ -213,6 +213,24 @@ class ClarityFormatterTest(unittest.TestCase):
         invest = "\n".join(MOD.investment_lines(event))
         self.assertIn("첫 5거래일 AUM", invest)
 
+    def test_sec_3x_crypto_etp_approval_is_specific_and_not_called_trading_live(self):
+        event = {
+            "source": "SEC 거래소 규칙 승인명령",
+            "event_type": "SEC 암호자산 ETP 상장 승인",
+            "title": "Order Granting Approval of a Proposed Rule Change to List and Trade Shares of the 3x Gold ETF, 3x Silver ETF, 3x Bitcoin ETF, 3x Ether ETF, 3x Crude Oil ETF, and 3x Natural Gas ETF",
+            "url": "https://www.sec.gov/files/rules/sro/cboebzx/2026/34-106577.pdf",
+            "date": "2026-10-02",
+            "detail": "Release No. 34-106577 | File No. SR-CboeBZX-2026-065",
+        }
+        title, body = MOD.localize_event(event)
+        self.assertIn("3x Bitcoin·3x Ether", title)
+        self.assertIn("하루 수익률의 3배", body)
+        self.assertIn("즉시 거래를 시작했다는 뜻은 아닙니다", body)
+        rendered = "\n".join(MOD.investment_lines(event))
+        self.assertIn("2026-10-18", rendered)
+        self.assertIn("등록신고서 효력", rendered)
+        self.assertIn("복리·변동성", MOD.core_summary(event))
+
     def test_date_only_is_shown_in_korean_calendar_format(self):
         event = {
             "source": "상원 은행위원회",
