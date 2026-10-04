@@ -122,6 +122,7 @@ WEC_TRANSACTION = [
     "지분", "인수", "투자", "공동 인수", "공동인수", "출자", "주주", "경영 참여", "stake", "equity", "acquisition", "invest",
     "shareholder", "buyout", "ipo", "상장", "기업공개", "brookfield", "브룩필드", "cameco", "카메코", "kepco", "한국전력", "한전",
     "khnp", "한수원", "산업통상부", "산업부", "미국 정부", "u.s. government", "ap1000", "지식재산", "입찰 제한",
+    "이사회", "의결권", "경영권", "board seat", "board representation", "voting right", "governance",
 ]
 WEC_MATERIAL = [
     "공식 발표", "공식 확인", "공식 부인", "사실과 다르", "부인", "합의", "계약", "loi", "mou", "양해각서", "실사", "due diligence",
