@@ -1484,6 +1484,27 @@ def _same_event(a: dict, b: dict) -> bool:
         return False
     ta = f"{a.get('title','')} {a.get('description','')}"
     tb = f"{b.get('title','')} {b.get('description','')}"
+    if a.get('group') == 'sodium_ion_battery':
+        sa = _sodium_stage(ta, a.get('source') or '')
+        sb = _sodium_stage(tb, b.get('source') or '')
+        if sa != sb:
+            return False
+        actor_patterns = [
+            r'CATL|宁德时代', r'HyperStrong|海博思创',
+            r'LG에너지솔루션|LG\s*Energy\s*Solution',
+            r'삼성SDI|Samsung\s*SDI', r'SK온|SK\s*On',
+            r'EVE\s*Energy|亿纬锂能|이브에너지',
+            r'HiNa\s*Battery|中科海钠|하이나배터리',
+            r'Enertech|에너테크'
+        ]
+        aa = {str(i) for i,pat in enumerate(actor_patterns) if re.search(pat, ta, re.I)}
+        ab = {str(i) for i,pat in enumerate(actor_patterns) if re.search(pat, tb, re.I)}
+        if aa and ab and not (aa & ab):
+            return False
+        na, nb = _numbers(ta), _numbers(tb)
+        if na and nb:
+            return bool(na & nb)
+        return True
     if a.get('group') == 'ev_46_series':
         sa = _ev46_stage(ta, a.get('source') or '')
         sb = _ev46_stage(tb, b.get('source') or '')
