@@ -336,7 +336,7 @@ def extract_group_statuses(text: str) -> dict[str, str]:
     out: dict[str, str] = {}
 
     for m in re.finditer(
-        rf"{group}\s*(?:은|는|이|가|are|remain)?\s*"
+        rf"{group}\s*(?:은|는|이|가|is|are|remain)?\s*"
         r"(심각한 공급 부족|심각한 부족|공급 제약(?: 상태)?|균형(?: 상태)?|Very\s+Tight|Tight|Balanced|severe shortage|constrained supply)",
         text,
         re.I,
