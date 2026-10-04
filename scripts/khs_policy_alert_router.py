@@ -229,6 +229,36 @@ def is_fcc_upper_c_band_auction(alert: dict) -> bool:
     )
 
 
+def is_fcc_optical_transceiver_policy(alert: dict) -> bool:
+    text = alert_text(alert)
+    source = str(alert.get("source") or "").lower()
+    has_fcc = (
+        "fcc" in source
+        or "federal communications commission" in text
+        or "federalregister.gov" in text
+        or "fcc.gov" in text
+        or "docs.fcc.gov" in text
+    )
+    has_optics = any(
+        term in text
+        for term in (
+            "optical transceiver", "optical transceivers", "fiber optic transceiver",
+            "fiber-optic transceiver", "optical module", "optical modules",
+            "광트랜시버", "광모듈",
+        )
+    )
+    has_action = any(
+        term in text
+        for term in (
+            "covered list", "equipment authorization", "ban", "bar", "prohibit",
+            "restriction", "restrictions", "importation", "marketing", "final rule",
+            "report and order", "notice of proposed rulemaking", "nprm", "proposed rule",
+            "conditional approval", "waiver", "exemption",
+        )
+    )
+    return bool(has_fcc and has_optics and has_action)
+
+
 def is_fcc_foreign_equipment_proposal(alert: dict) -> bool:
     text = alert_text(alert)
     return (
@@ -331,6 +361,51 @@ def safe_title(alert: dict) -> str:
         return "FCC, 해저케이블 랜딩 라이선스 국가안보 심사 규칙 재검토"
     if is_fcc_upper_c_band_auction(alert):
         return "FCC, 상단 C대역 차세대 무선통신 주파수 경매 일정 공표"
+    if is_fcc_optical_transceiver_policy(alert):
+        alert["importance"] = "상"
+        official_text = text
+        has_3p2 = "3.2t" in official_text
+        has_65 = any(term in official_text for term in ("65%", "65 percent", "65 per cent"))
+        if any(term in official_text for term in ("takes effect", "effective date", "effective on", "발효", "시행")):
+            alert["title_ko"] = "FCC, 중국산 데이터센터 광트랜시버 규제 발효·집행 변화"
+        elif any(term in official_text for term in ("final rule", "report and order", "added to the covered list", "adds to the covered list")):
+            alert["title_ko"] = "FCC, 중국산 데이터센터 광트랜시버 최종 규제범위 확정"
+        elif any(term in official_text for term in ("notice of proposed rulemaking", "nprm", "proposed rule", "seeking comment", "request for comment")):
+            alert["title_ko"] = "FCC, 중국산 데이터센터 광트랜시버 규칙안·의견수렴"
+        else:
+            alert["title_ko"] = "FCC, 중국산 데이터센터 광트랜시버 규제 단계 변화"
+        scope_bits = []
+        if has_3p2:
+            scope_bits.append("3.2T")
+        if has_65:
+            scope_bits.append("65% BOM")
+        scope_suffix = f" ({'·'.join(scope_bits)} 문구 확인)" if scope_bits else ""
+        alert["policy_plain_summary"] = (
+            "FCC 공식자료에서 중국산 데이터센터 광트랜시버의 Covered List·장비인증·수입/판매 제한 범위가 "
+            f"새 단계로 확인된 사안입니다{scope_suffix}. 적용 세대·부품가치 기준·유예·예외는 원문 문구만 확정값으로 사용합니다."
+        )
+        alert["investment_view"] = (
+            "3.2T·65% 기준이 실제 공식문구로 확인될 경우 기존 800G·1.6T보다 차세대 DSP·레이저의 원산지·가치비중과 "
+            "인증된 공급능력이 더 중요해질 수 있습니다. 해당 문구가 없으면 Morgan Stanley 시나리오를 공식 조건으로 끌어오지 않습니다."
+        )
+        alert["korea_market_impact"] = (
+            "한국장에서는 미국향 광트랜시버·광부품 업체의 고객, 적용 세대, 미국/우방국 부품 비중, 고객 인증, 실제 수주가 "
+            "확인되는 기업만 직접 실적 영향으로 분류합니다."
+        )
+        alert["impacts"] = ["매출·마진·현금흐름", "수급", "시간표"]
+        alert["paths"] = ["FCC 장비인증", "Covered List", "세대 전환", "BOM 가치비중", "고객 인증"]
+        alert["sectors"] = ["광통신/광트랜시버", "DSP", "레이저·InP 광원", "AI 데이터센터 네트워크"]
+        alert["korea_value_chain"] = ["광트랜시버", "레이저·광원", "광부품", "데이터센터 광인터커넥트"]
+        alert["priced_in"] = "중간. 관련 광통신주는 정책 기대를 선반영할 수 있으나 최종 규칙·수주·인증은 별개입니다."
+        alert["counter"] = (
+            "FCC가 광트랜시버를 최종 대상에서 제외하거나 3.2T가 아닌 다른 세대·다른 원산지 기준을 택할 수 있습니다. "
+            "65% BOM 예외는 공식문서에 실제 등장하기 전까지 확정하지 않습니다."
+        )
+        alert["failure_signal"] = (
+            "FCC 문서번호·적용 세대·발효일·BOM 산식·기존모델 유예·면제가 확인되지 않거나 하이퍼스케일러 조달·고객 인증 변화가 "
+            "뒤따르지 않으면 정책 기대가 실적보다 앞선 상태입니다."
+        )
+        return
     if is_fcc_foreign_equipment_proposal(alert):
         return "FCC, 외국산 군용급 무인기·핵심부품 수입·판매 금지안 의견수렴"
     if is_china_mofcom_trade_control(alert):
