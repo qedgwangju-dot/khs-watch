@@ -479,6 +479,7 @@ def relevant(category: str, text: str) -> bool:
             and any(k in low for k in (
                 "gross margin", "margin", "매출총이익률", "hbm", "price", "pricing", "단가", "가격",
                 "tolerance", "감내", "de-spec", "despec", "디스펙", "91.7", "187.5", "72%",
+                "memory", "메모리", "bom", "rack", "nvl72",
             ))
         )
     if category == "jpm_hbm_structural":
