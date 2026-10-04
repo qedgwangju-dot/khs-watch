@@ -430,34 +430,57 @@ STORY_RULES = (
     ),
     StoryRule(
         key="us_fcc_chinese_optical_transceiver_ban",
-        title="미 FCC, 중국산 데이터센터 광트랜시버 수입금지 검토",
+        title="미 FCC, 중국산 데이터센터 광트랜시버 규제 단계 변화",
         google_queries=(
             "Reuters Trump administration drafting ban Chinese data center devices optical transceivers FCC",
             '"drafting ban on Chinese data center devices" Reuters',
             '"Chinese optical transceivers" FCC data centers ban',
             "FCC Chinese fiber optic transceivers import ban Reuters",
+            '"3.2T" FCC optical transceiver Covered List Morgan Stanley',
+            '"65%" BOM optical transceiver FCC 3.2T',
+            '"800G" "1.6T" "3.2T" optical transceiver FCC',
+            '"Marvell" Lumentum Coherent FCC optical transceiver 3.2T',
+            '"FCC" "optical transceiver" "Covered List" 3.2T',
         ),
         required_groups=(
-            ("optical transceiver", "optical transceivers", "fiber optic transceiver", "fiber-optic transceiver"),
-            ("data center", "data centers"),
+            (
+                "optical transceiver", "optical transceivers", "fiber optic transceiver",
+                "fiber-optic transceiver", "optical module", "optical modules",
+                "광트랜시버", "광모듈", "光收发器", "光模组",
+            ),
             ("fcc", "federal communications commission"),
-            ("ban", "bar", "prohibit", "import", "imports", "drafting"),
-            ("china", "chinese"),
+            ("china", "chinese", "중국", "中國", "中国产", "中國製"),
+            (
+                "ban", "bar", "prohibit", "import", "imports", "drafting", "restriction", "restrictions",
+                "covered list", "equipment authorization", "3.2t", "65%", "65 percent",
+                "phase in", "phased", "미국산", "미국 함량", "美国产", "美國含量",
+            ),
         ),
         core=(
-            "Reuters는 미 FCC가 데이터센터 광섬유망에 쓰이는 신규 중국산 광트랜시버의 "
-            "수입금지안을 마련 중이라고 보도했습니다. 아직 초안 단계로 적용 기업·제품·시행일은 확정 전입니다."
+            "현재 공개 FCC 문서에서는 중국산 데이터센터 광트랜시버를 겨냥한 최종 규칙이 확인되지 않았습니다. "
+            "Reuters는 2026년 8월 4일 신규 중국산 광트랜시버 수입제한 초안을 보도했고, "
+            "Morgan Stanley의 10월 1일 보고서는 3.2T부터 제한하고 미국산 부품의 BOM 가치가 65% 이상이면 "
+            "예외가 가능할 수 있다는 정책 시나리오를 제시했습니다."
         ),
-        impact="광통신/광트랜시버, 데이터센터 네트워크, 중국 대체 공급망 | 매출·마진·현금흐름·수급·시간표",
-        point="금지가 확정되면 미국 데이터센터의 중국산 광모듈 대체 수요와 비중국 공급사의 주문·가격결정력이 커질 수 있습니다.",
-        counter="소식통 보도와 초안 단계이며 FCC 공식 문서, 대상 업체·모델, 기존 장비 예외와 시행일이 확인되지 않았습니다.",
-        sectors="광트랜시버/광통신, 데이터센터 네트워크, AI 인프라, 중국 대체 공급망",
+        impact="광트랜시버/광통신, DSP·레이저·InP 광원 공급망, AI 데이터센터 네트워크 | 매출·마진·현금흐름·수급·시간표",
+        point=(
+            "3.2T·65% 시나리오가 공식화되면 800G·1.6T 기존 세대의 단기 공급 충격보다 "
+            "3.2T에서 Marvell 계열 DSP와 Lumentum·Coherent 계열 레이저처럼 고가 핵심부품의 원산지·가치비중이 더 중요해집니다."
+        ),
+        counter=(
+            "3.2T 적용, 65% BOM 기준, 이르면 10월 발표, 2028년 출하 확대·2029년 광범위 배포는 "
+            "현재 FCC 확정 문구가 아니라 Morgan Stanley 분석과 업계 전망입니다. FCC가 범위를 바꾸거나 연기·철회할 수도 있습니다."
+        ),
+        sectors="광트랜시버/광통신, DSP, 레이저·InP 광원, AI 데이터센터 네트워크, 중국 대체·우방국 공급망",
         impacts=("매출·마진·현금흐름", "수급", "시간표"),
-        paths=("정책 타임라인", "공급망", "밸류체인", "수급"),
+        paths=("정책 타임라인", "세대 전환", "BOM 가치비중", "공급망", "고객 인증"),
         follow_up=(
-            "FCC 공식안과 Covered List 적용 범위, 신규·기존 모델 구분, 미국 클라우드 업체 조달 변경, "
-            "한국 광통신 업체의 미국향 매출·수주 노출을 확인해야 합니다."
+            "신규 알림은 ① FCC 공식 문서번호·Covered List 편입 ② 800G·1.6T·3.2T 중 실제 적용 세대 "
+            "③ 65% 기준의 분모·원산지·미국/우방국 인정범위 ④ 중국 조립 허용 여부 ⑤ 발효일·기존모델 유예 "
+            "⑥ 조건부 승인·면제 ⑦ Marvell DSP·Lumentum/Coherent 레이저·InP 기판 공급과 하이퍼스케일러 인증 변화가 "
+            "실제로 확인될 때 단계 변화로 보냅니다."
         ),
+        trusted_sources=("經濟日報", "Economic Daily News"),
     ),
     StoryRule(
         key="us_congress_chinese_optical_transceiver_restriction",
@@ -1570,6 +1593,66 @@ def semantic_policy_event_key(item: dict) -> str:
             stage = "procurement-" + hashlib.sha1(title_text.encode("utf-8")).hexdigest()[:10]
         return f"us-dow-autonomous-warfare-{stage}"
 
+    fcc_optical_transceiver = (
+        (
+            "optical transceiver" in text
+            or "optical transceivers" in text
+            or "fiber optic transceiver" in text
+            or "fiber-optic transceiver" in text
+            or "optical module" in text
+            or "optical modules" in text
+            or "광트랜시버" in text
+            or "광모듈" in text
+            or "光收发器" in text
+            or "光模组" in text
+        )
+        and (
+            "fcc" in text
+            or "federal communications commission" in text
+            or "fcc.gov" in text
+            or "docs.fcc.gov" in text
+        )
+        and any(term in text for term in ("china", "chinese", "중국", "中國", "中国产", "中國製"))
+    )
+    if fcc_optical_transceiver:
+        final_terms = (
+            "added to the covered list", "adds to the covered list", "addition to the covered list",
+            "final rule", "report and order", "adopted", "finalized",
+            "covered list에 추가", "covered list 편입", "최종 규칙", "최종규칙", "채택",
+        )
+        effective_terms = (
+            "takes effect", "effective date", "effective on", "becomes effective",
+            "발효", "시행일", "효력 발생",
+        )
+        proposal_terms = (
+            "notice of proposed rulemaking", "nprm", "proposed rule", "proposal",
+            "draft order", "seeking comment", "request for comment", "의견수렴", "규칙안", "제안",
+        )
+        exemption_terms = (
+            "conditional approval", "waiver", "exemption", "exception",
+            "조건부 승인", "면제", "예외",
+        )
+        research_terms = (
+            "morgan stanley", "3.2t", "65%", "65 percent",
+            "800g", "1.6t", "2028", "2029",
+        )
+        if any(term in title_text for term in final_terms) or (
+            "covered list" in text
+            and any(term in title_text for term in ("adds", "added", "addition", "final", "adopts", "adopted"))
+        ):
+            stage = "covered-list-final"
+        elif any(term in title_text for term in effective_terms):
+            stage = "effective"
+        elif any(term in title_text for term in proposal_terms):
+            stage = "proposal"
+        elif any(term in title_text for term in exemption_terms):
+            stage = "exemption"
+        elif any(term in text for term in research_terms):
+            stage = "3p2t-65pct-research-2026-10-01"
+        else:
+            stage = "draft"
+        return f"us-fcc-optical-transceiver-{stage}"
+
     optical_bill = (
         "securing national security systems from chinese optical transceivers act" in text
         or (
@@ -1764,6 +1847,18 @@ def semantic_policy_title(item: dict) -> str:
         return "미 국방부 자율전투 예산·재원 확정 단계"
     if key.startswith("us-dow-autonomous-warfare-procurement-"):
         return "미 국방부 자율전투 조달·계약 실행 단계"
+    if key == "us-fcc-optical-transceiver-draft":
+        return "미 FCC, 중국산 데이터센터 광트랜시버 수입제한 초안"
+    if key == "us-fcc-optical-transceiver-3p2t-65pct-research-2026-10-01":
+        return "FCC 광트랜시버 규제 경로 업데이트: 3.2T·65% BOM은 Morgan Stanley 시나리오"
+    if key == "us-fcc-optical-transceiver-proposal":
+        return "미 FCC, 중국산 데이터센터 광트랜시버 규칙안·의견수렴"
+    if key == "us-fcc-optical-transceiver-covered-list-final":
+        return "미 FCC, 중국산 데이터센터 광트랜시버 Covered List 최종 범위 확정"
+    if key == "us-fcc-optical-transceiver-effective":
+        return "미 FCC, 중국산 데이터센터 광트랜시버 규제 발효"
+    if key == "us-fcc-optical-transceiver-exemption":
+        return "미 FCC, 광트랜시버 규제 조건부 승인·면제 변화"
     if key == "us-fcc-robot-inverter-covered-list-2026-07-28":
         return "미 FCC, 외국산 전력 인버터·첨단 로봇 Covered List 편입"
     if key == "us-fcc-inverter-definition-modification-2026-08-20":
@@ -2394,6 +2489,61 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
         return None
     title = str(items[0].get("title", ""))
     semantic_key = semantic_policy_event_key(items[0])
+    if rule.key == "us_fcc_chinese_optical_transceiver_ban":
+        if semantic_key == "us-fcc-optical-transceiver-3p2t-65pct-research-2026-10-01":
+            return {
+                "revision": "us-fcc-optical-transceiver-3p2t-65pct-research-ko-v1",
+                "event_date": "2026년 10월 1일",
+                "title": "FCC 광트랜시버 규제 경로 업데이트: 3.2T·65% BOM은 Morgan Stanley 시나리오",
+                "core": "Morgan Stanley는 워싱턴 정책 미팅을 근거로 FCC의 중국산 광트랜시버 제한이 3.2T 세대부터 적용될 가능성과 미국산 부품 가치 65% 이상 예외 가능성을 제시했습니다.",
+                "stage": "증권사 정책경로 추정 단계 — FCC 공식 규칙·Covered List 편입 확정이 아닙니다.",
+                "actual": "공개 FCC 확정문서에서는 아직 중국산 데이터센터 광트랜시버를 특정해 3.2T 또는 65% BOM 기준을 채택한 문구가 확인되지 않았습니다.",
+                "timeline": "2026년 8월 4일 Reuters 수입제한 초안 보도 → 9월 장비인증 규칙 개정에서 광트랜시버 직접 대상 미확인 → 10월 1일 Morgan Stanley 3.2T·65% 시나리오 → FCC 공식 문서 대기",
+                "why": "정책이 현행 800G·1.6T를 즉시 막기보다 차세대 3.2T의 고부가 DSP·레이저 가치비중을 미국·우방국 쪽으로 유도할 가능성을 시사합니다.",
+                "next": "FCC 문서번호·Covered List, 실제 적용 세대, 65% 산식과 원산지 인정범위, 중국 조립 허용 여부, 발효일·기존모델 유예, 조건부 승인·면제",
+                "investment": "공식화될 경우 모듈 조립 점유율 이동보다 DSP·레이저의 가격결정력과 인증된 공급능력이 더 중요해질 수 있습니다. 현재는 확정 수주·매출이 아니라 정책 시나리오입니다.",
+                "korea": "국내 기업은 3.2T 광모듈·레이저·광부품의 미국 하이퍼스케일러 인증과 실제 미국향 수주가 확인될 때만 직접 수혜로 분류합니다.",
+                "headwind": "FCC가 규칙을 연기·철회하거나 65% 예외를 채택하지 않을 수 있고, InP 기판·레이저 공급능력과 고객 인증이 새 병목이 될 수 있습니다.",
+                "scope_note": "3.2T·65%·이르면 10월·2028~2029 확산 일정은 FCC 확정치가 아니라 Morgan Stanley 분석·업계 전망으로 유지합니다.",
+                "impacts": "매출·마진·현금흐름, 수급, 시간표",
+                "paths": "정책 타임라인, 3.2T 세대전환, BOM 가치비중, DSP·레이저 공급망, 고객 인증",
+                "sectors": "광트랜시버/광통신, DSP, 레이저·InP 광원, AI 데이터센터 네트워크",
+                "priced_in": "중간. 광통신 종목 주가가 먼저 반응했지만 FCC 최종 규칙과 기업별 주문은 미확정입니다.",
+                "counter": "9월 공개 FCC 장비인증 규칙에서 광트랜시버가 직접 대상이 아니었던 만큼 3.2T·65% 경로가 최종안과 다를 가능성이 남아 있습니다.",
+                "failure": "FCC 공식 문서에서 3.2T·65%·적용일이 확인되지 않거나 2027~2028년 고객 인증·부품 수급이 따라오지 않으면 정책 기대가 실적보다 앞선 상태입니다.",
+            }
+        stage_map = {
+            "us-fcc-optical-transceiver-draft": ("수입제한 초안 보도 단계", "미 FCC, 중국산 데이터센터 광트랜시버 수입제한 초안"),
+            "us-fcc-optical-transceiver-proposal": ("FCC 규칙안·의견수렴 단계", "미 FCC, 중국산 데이터센터 광트랜시버 규칙안·의견수렴"),
+            "us-fcc-optical-transceiver-covered-list-final": ("FCC Covered List·최종 규칙 확정 단계", "미 FCC, 중국산 데이터센터 광트랜시버 Covered List 최종 범위 확정"),
+            "us-fcc-optical-transceiver-effective": ("규제 발효·집행 단계", "미 FCC, 중국산 데이터센터 광트랜시버 규제 발효"),
+            "us-fcc-optical-transceiver-exemption": ("조건부 승인·면제 변화 단계", "미 FCC, 광트랜시버 규제 조건부 승인·면제 변화"),
+        }
+        stage, title_ko = stage_map.get(
+            semantic_key,
+            ("정책 경로 확인 단계", "미 FCC, 중국산 데이터센터 광트랜시버 규제 단계 변화"),
+        )
+        return {
+            "revision": f"{semantic_key or 'us-fcc-optical-transceiver'}-ko-v1",
+            "event_date": "",
+            "title": title_ko,
+            "core": "FCC의 중국산 데이터센터 광트랜시버 규제 범위·장비인증·Covered List 단계가 변했는지 확인하는 이벤트입니다.",
+            "stage": stage,
+            "actual": "적용 세대·BOM 기준·생산국·조립국·대상 업체·기존모델 유예·조건부 승인·면제는 해당 FCC 원문에 실제 적힌 항목만 확정값으로 사용합니다.",
+            "timeline": "Reuters 초안 보도 → FCC 규칙안/의견수렴 → Covered List·최종 규칙 → 발효·장비인증 집행 → 면제·조건부 승인 후속",
+            "why": "규제의 실제 경제효과는 중국 조립 여부보다 어느 세대·어느 부품가치·어느 인증단계까지 제한하는지에 따라 달라집니다.",
+            "next": "3.2T·800G·1.6T 적용 여부, 65% 산식, 미국/우방국 인정범위, 발효일, 기존모델 유예, hyperscaler 인증·조달 변경",
+            "investment": "확정 규칙이 3.2T·핵심부품 중심이면 DSP·레이저 공급자의 가격결정력이 상대적으로 커질 수 있고, 전면금지이면 모듈 대체 공급사의 생산능력이 더 중요해집니다.",
+            "korea": "한국 기업은 미국향 실제 고객·제품세대·수주·양산·인증이 확인될 때만 직접 실적 영향으로 연결합니다.",
+            "headwind": "대체 생산능력 부족, InP 기판·레이저 공급, 고객 인증, 규칙 지연·철회·예외 확대가 가장 현실적인 변동요인입니다.",
+            "scope_note": "Morgan Stanley의 3.2T·65% 시나리오와 FCC 공식 확정문구를 절대 혼합하지 않습니다.",
+            "impacts": "매출·마진·현금흐름, 수급, 시간표",
+            "paths": "장비인증, Covered List, 세대전환, BOM 가치비중, 공급망",
+            "sectors": "광트랜시버/광통신, DSP, 레이저·InP 광원, AI 데이터센터 네트워크",
+            "priced_in": "공식 단계와 기업별 수주 확인 수준에 따라 달라집니다.",
+            "counter": "FCC가 광트랜시버를 최종 대상에서 제외하거나 규제 범위를 좁힐 수 있습니다.",
+            "failure": "공식 문서·발효일·고객 조달변화가 뒤따르지 않으면 관련주 반응은 정책 기대에 그칠 수 있습니다.",
+        }
     if rule.key == "us_dow_project_meridian_future_warfare":
         if semantic_key == "us-dow-project-meridian-report":
             return {
@@ -3053,6 +3203,18 @@ def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, 
     ):
         return "공식 확인", "미 FCC 공식자료 확인 완료"
     if (
+        rule.key == "us_fcc_chinese_optical_transceiver_ban"
+        and any(
+            "fcc.gov" in str(item.get("link") or "").lower()
+            or "docs.fcc.gov" in str(item.get("link") or "").lower()
+            or "federalregister.gov" in str(item.get("link") or "").lower()
+            or "federal communications commission" in str(item.get("source") or "").lower()
+            or str(item.get("source") or "").strip().lower() == "fcc"
+            for item in items
+        )
+    ):
+        return "공식 확인", "미 FCC·연방관보 공식자료 확인 완료"
+    if (
         rule.key == "us_fcc_upper_c_band_auction115"
         and any(
             "federalregister.gov" in str(item.get("link") or "").lower()
@@ -3128,6 +3290,52 @@ def render_auction115_compact_body(now: dt.datetime) -> str:
         f'- 다음: 낙찰자 → 통신사 CAPEX → 삼성전자·Ericsson·Nokia 수주 → 국내 주문 · <a href="{reuters_url}">Reuters</a>',
         f'- 출처: <a href="{fcc_url}">FCC 원문</a>',
     ]) + "\n"
+
+
+def _self_test_fcc_optical_transceiver_event_model() -> None:
+    research = {
+        "title": "Potential FCC Rules on Optical Transceivers More Likely to Come in at 3.2T",
+        "description": (
+            "Morgan Stanley says FCC restrictions would likely start at 3.2T modules made in China; "
+            "800G and 1.6T would be left alone and a 65% U.S.-value BOM threshold is under discussion."
+        ),
+        "link": "https://money.udn.com/example",
+        "source": "經濟日報",
+        "published_kst": "2026-10-02T13:14:04+09:00",
+    }
+    assert semantic_policy_event_key(research) == "us-fcc-optical-transceiver-3p2t-65pct-research-2026-10-01"
+    rules = {rule.key: rule for rule in STORY_RULES}
+    assert alert_confirmation_status(
+        rules["us_fcc_chinese_optical_transceiver_ban"], [research]
+    )[0] == "공식 확인 전"
+    research_profile = item_story_profile(
+        rules["us_fcc_chinese_optical_transceiver_ban"], [research]
+    )
+    assert research_profile and "FCC 공식 규칙" in str(research_profile.get("stage"))
+
+    draft = {
+        "title": "Trump administration drafting ban on Chinese data center optical transceivers",
+        "description": "The FCC is drafting a ban on new Chinese optical transceiver models used in data centers.",
+        "link": "https://www.reuters.com/example",
+        "source": "Reuters",
+        "published_kst": "2026-08-04T12:00:00+09:00",
+    }
+    assert semantic_policy_event_key(draft) == "us-fcc-optical-transceiver-draft"
+
+    official = {
+        "title": "FCC Adds Chinese Optical Transceivers to the Covered List",
+        "description": (
+            "The Federal Communications Commission adopts a final rule covering 3.2T optical transceivers made in China "
+            "and specifies equipment authorization conditions."
+        ),
+        "link": "https://www.fcc.gov/document/example",
+        "source": "Federal Communications Commission",
+        "published_kst": "2026-10-20T12:00:00+09:00",
+    }
+    assert semantic_policy_event_key(official) == "us-fcc-optical-transceiver-covered-list-final"
+    assert alert_confirmation_status(
+        rules["us_fcc_chinese_optical_transceiver_ban"], [official]
+    )[0] == "공식 확인"
 
 
 def _self_test_defense_future_warfare_event_model() -> None:
