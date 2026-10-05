@@ -494,25 +494,20 @@
     "event:1efbd1f63c0f645d03fefda2": {
       "first_seen_kst": "2026-10-05T02:04:15+09:00",
       "lanes": {
-        "live": "2026-10-05T22:30:10+09:00"
+        "live": "2026-10-05T22:49:24+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:30:10+09:00",
-      "link": "https://www.hankyung.com/article/202610042690i",
-      "source": "한국경제",
-      "source_body_digest": "245f8781b51a801aadc318af1b95998d4e04a75097ef3ec6ef7d8421dc97b25f",
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://www.fnnews.com/news/202610051901312958",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2de33cf76172fea8699e63841675a5b6e2704cc39a4801fdbb2db5fee4f25394",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:af81f563a3a59d62d00d13042752a5f0a2fc7822873bab9c65a215f56115d8b1",
+      "source_fact_identity": "source_facts:v1:ab420d15f1e6258ed2dff9f18882b3708943ab749a2d58b47e2971d4e84d5556",
       "source_fact_keys": [
-        "source_fact:v1:099329c8df48899e9a9ee856512931b49e6757efedd45ff72b8bba76d7527345",
-        "source_fact:v1:ba9ffdf56ff315d92a8fd07c02fea1f18c6dbff16a4ff162e334c13298443b9d",
-        "source_fact:v1:c48d41f6130f7486a09260d4a2d2e776a7f7965920dd6ea53c5b2abe9b9fc112",
-        "source_fact:v1:c505bd93a24f956d137be2baddd1e11af296575eafe013ed700e676e3c7d1649",
-        "source_fact:v1:c5b083abf9abfbe42390711f93d545046d05a01905f74e2bd07209529febe689",
-        "source_fact:v1:d5f1264c5e92def41d056a92346c8af094e9ede3eaa2499966d0b997f03894e1",
-        "source_fact:v1:e6155a2b31cafd6802a36dbfa054d750823d9f8c52293dd013d926a4d05aad90"
+        "source_fact:v1:6eef2147cf39946803ab7b6e728466e155b1d3ae91868eb35886b391aa943866",
+        "source_fact:v1:c757992476ea147897840b9d26eea54c32b753857fcf2e82948b28314c664afd"
       ],
-      "source_published_kst": "2026-10-05T08:00+09:00",
-      "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
+      "source_published_kst": "2026-10-05T19:02+09:00",
+      "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
     },
     "event:2031f599de2458ceac1e4b44": {
       "first_seen_kst": "2026-10-03T09:48:18+09:00",
@@ -4896,6 +4891,28 @@
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
     },
+    "fact:0eb6d4a56a7d159a61e55f3d": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169837",
+      "source": "매일경제",
+      "source_body_digest": "3ddfbf121f73f18d561448a6f04d78de6b8ab6bb7565518a83cb6857586506c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1fd22575c3dee0b6b1bd29a36d673880530626be87af814577ef9a51e1966f54",
+      "source_fact_keys": [
+        "source_fact:v1:18ba0e82d3c711d7d4da2dda0a98a84d6a22ee3a05f30355d359001c082b2964",
+        "source_fact:v1:348ddcf316903bbc59504fb3aa26a9d7eb2670ad07a096753685f6b98f54437d",
+        "source_fact:v1:61ac0b4c376c75588f035936eb585f2ef389cfcfc38fd522b5e602c0c4ba60ea",
+        "source_fact:v1:c35585ebe3139e7a1bce09c32bfb0bdbceaae0b28e450a7a6c5d4b2662cb3d52",
+        "source_fact:v1:e70bba2c162a57436ca0be5dedc5a6c464fab86d214b8bd3fee561b4a7787424",
+        "source_fact:v1:eaf33499334e38d09f57bcabb8084330bbd3c058a80a4e8b3ade53cd6fc709fe"
+      ],
+      "source_published_kst": "2026-10-05T22:27+09:00",
+      "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
+    },
     "fact:0fa78844e6f0e29da2be1568": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -4947,6 +4964,23 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "fact:119e96057555f5d61ef357c4": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169762",
+      "source": "매일경제",
+      "source_body_digest": "d3b398cb48acfbf1ad5f8e28cca51d0b8e14e73f6cfa2bc3493f17b521619f26",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9d6d38e6d76a4853afdd282fd56d7d012c888cbb5420ebe91080d1387111dc3",
+      "source_fact_keys": [
+        "source_fact:v1:81dda4dd4bd88de1e37bdaa898d817c5aa3c5a862c1f0246d51d9340aab6c072"
+      ],
+      "source_published_kst": "2026-10-05T20:06+09:00",
+      "title": "터보젠, 20kW 시스템 양산 장기계약..5년 자동갱신"
     },
     "fact:124879f1069d95839cb1b958": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
@@ -6357,6 +6391,24 @@
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
+    "fact:c1a7311460f64113df097e74": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169838",
+      "source": "매일경제",
+      "source_body_digest": "466736c34b2a73489b6064ec09f6ef8329d62ccd9f70da44803a84885d8c2c96",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b32f7c026b46ed481a34bd40daadd11970bfb3e46f5caaaa37504e3628cf9d7",
+      "source_fact_keys": [
+        "source_fact:v1:621212f1377f6478881975545002f23f3ac91e46e720cb4a47be2c0e1f7da2e6",
+        "source_fact:v1:b6b486f42ef0786084a6cc10ee4c2f00ab995d3cb28671c70b00d39c42d45007"
+      ],
+      "source_published_kst": "2026-10-05T22:29+09:00",
+      "title": "유나이티드 마이크로일렉, 18억 달러 전환사채 발행 확정..쿠폰 0%"
+    },
     "fact:c27a22978ff96f23fdc574fe": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -6584,6 +6636,24 @@
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
     },
+    "fact:e74cfd13ce7522a617419190": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://www.fnnews.com/news/202610051901312958",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2de33cf76172fea8699e63841675a5b6e2704cc39a4801fdbb2db5fee4f25394",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab420d15f1e6258ed2dff9f18882b3708943ab749a2d58b47e2971d4e84d5556",
+      "source_fact_keys": [
+        "source_fact:v1:6eef2147cf39946803ab7b6e728466e155b1d3ae91868eb35886b391aa943866",
+        "source_fact:v1:c757992476ea147897840b9d26eea54c32b753857fcf2e82948b28314c664afd"
+      ],
+      "source_published_kst": "2026-10-05T19:02+09:00",
+      "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
+    },
     "fact:e9689b6fcf6f67c7d13a7d4d": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -6600,6 +6670,24 @@
       ],
       "source_published_kst": "2026-10-05T16:00+09:00",
       "title": "현대차 8세대 아반떼·BMW iX3, '초기 부진설' 실체는 '공급 시차'"
+    },
+    "fact:eb431093ac66c049fd673ccd": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169843",
+      "source": "매일경제",
+      "source_body_digest": "9ceb49892da4903d57792a2d37d719602c2228f5e8af1e85047aa96323a916c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0152a6269ed012ba82e54ae24b2ea42719acf42eef7427dc0e75897f9f2f5328",
+      "source_fact_keys": [
+        "source_fact:v1:74a4f136bbbb061a7e1be517f37d79f5ce11d50e2a74442a56fb801183cbbfd1",
+        "source_fact:v1:79436e2c74ce0b5ba92cc935d34325fc90a9a09dd5ffe3e324ee32ef048b1c64"
+      ],
+      "source_published_kst": "2026-10-05T22:40+09:00",
+      "title": "C.H.로빈슨, RXO 58억 달러 인수 발표 후 차입 부담에 투자심리 위축"
     },
     "fact:ec037eaaf6d2f5883b292d9b": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -8078,6 +8166,24 @@
       "source": "연합뉴스",
       "title": "미국 '산업역군' 경유 수출 금지 땐 세계경제 충격 도미노 | 연합뉴스"
     },
+    "link:189e9797539f46cf5ca99f09": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://www.fnnews.com/news/202610051901312958",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2de33cf76172fea8699e63841675a5b6e2704cc39a4801fdbb2db5fee4f25394",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab420d15f1e6258ed2dff9f18882b3708943ab749a2d58b47e2971d4e84d5556",
+      "source_fact_keys": [
+        "source_fact:v1:6eef2147cf39946803ab7b6e728466e155b1d3ae91868eb35886b391aa943866",
+        "source_fact:v1:c757992476ea147897840b9d26eea54c32b753857fcf2e82948b28314c664afd"
+      ],
+      "source_published_kst": "2026-10-05T19:02+09:00",
+      "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
+    },
     "link:18bb5776a49881c20c801d51": {
       "first_seen_kst": "2026-10-03T22:08:29+09:00",
       "lanes": {
@@ -8702,6 +8808,28 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003811694",
       "source": "뉴시스",
       "title": "aT 수입 미국산 콩서 GMO 성분 400건 검출…중·러시아 산은 0건"
+    },
+    "link:25401c9019c81cd9cf581967": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169837",
+      "source": "매일경제",
+      "source_body_digest": "3ddfbf121f73f18d561448a6f04d78de6b8ab6bb7565518a83cb6857586506c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1fd22575c3dee0b6b1bd29a36d673880530626be87af814577ef9a51e1966f54",
+      "source_fact_keys": [
+        "source_fact:v1:18ba0e82d3c711d7d4da2dda0a98a84d6a22ee3a05f30355d359001c082b2964",
+        "source_fact:v1:348ddcf316903bbc59504fb3aa26a9d7eb2670ad07a096753685f6b98f54437d",
+        "source_fact:v1:61ac0b4c376c75588f035936eb585f2ef389cfcfc38fd522b5e602c0c4ba60ea",
+        "source_fact:v1:c35585ebe3139e7a1bce09c32bfb0bdbceaae0b28e450a7a6c5d4b2662cb3d52",
+        "source_fact:v1:e70bba2c162a57436ca0be5dedc5a6c464fab86d214b8bd3fee561b4a7787424",
+        "source_fact:v1:eaf33499334e38d09f57bcabb8084330bbd3c058a80a4e8b3ade53cd6fc709fe"
+      ],
+      "source_published_kst": "2026-10-05T22:27+09:00",
+      "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
     },
     "link:25b524a2a73ef83fb37198b1": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
@@ -12466,6 +12594,24 @@
       "source": "연합뉴스",
       "title": "상반기 글로벌 ESS용 배터리 출하 71% 급증…각형이 전체의 94% | 연합뉴스"
     },
+    "link:5eb0559a3e770a5cdfe19ed3": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169838",
+      "source": "매일경제",
+      "source_body_digest": "466736c34b2a73489b6064ec09f6ef8329d62ccd9f70da44803a84885d8c2c96",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b32f7c026b46ed481a34bd40daadd11970bfb3e46f5caaaa37504e3628cf9d7",
+      "source_fact_keys": [
+        "source_fact:v1:621212f1377f6478881975545002f23f3ac91e46e720cb4a47be2c0e1f7da2e6",
+        "source_fact:v1:b6b486f42ef0786084a6cc10ee4c2f00ab995d3cb28671c70b00d39c42d45007"
+      ],
+      "source_published_kst": "2026-10-05T22:29+09:00",
+      "title": "유나이티드 마이크로일렉, 18억 달러 전환사채 발행 확정..쿠폰 0%"
+    },
     "link:5ef90f7058214efd86055f24": {
       "first_seen_kst": "2026-09-28T18:02:59+09:00",
       "lanes": {
@@ -12527,6 +12673,21 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812956",
       "source": "뉴시스",
       "title": "[영천소식] 시, 내년도 교육경비보조금 24.8억 지원 등"
+    },
+    "link:5f424601e91504363fdf1ef8": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169836",
+      "source": "매일경제",
+      "source_body_digest": "d1e17d56ae7bc24387e2e93610a37f7f10320f1efacd08853dbef65a2946d891",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:26+09:00",
+      "title": "하프니아, 신주 3549만주 발행·등록..3억 달러 증자 마무리"
     },
     "link:5f6ec25067ea21097df0dffa": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
@@ -14670,6 +14831,21 @@
       "link": "https://www.yna.co.kr/view/AKR20261001143000008",
       "source": "연합뉴스",
       "title": "'마이크론·반도체 수출' 훈풍…코스피 1.95%·코스닥 4.48%↑ | 연합뉴스"
+    },
+    "link:82069c75f82bc9d9694d8005": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169783",
+      "source": "매일경제",
+      "source_body_digest": "3063eb799c22f9c298097848422592b12e74d52d87860abc7ab514747f5f7d1d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T21:01+09:00",
+      "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
     },
     "link:820f3911d9f3feb30717a9cd": {
       "first_seen_kst": "2026-09-18T11:26:24+09:00",
@@ -17055,6 +17231,24 @@
       "link": "https://www.etnews.com/20260926000048",
       "source": "전자신문",
       "title": "“비정형 공정 난제 AI로 푼다”…카본식스, 피지컬 AI로 제조 혁신"
+    },
+    "link:a5e65a898d0d3ff9ea2a1cbe": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169843",
+      "source": "매일경제",
+      "source_body_digest": "9ceb49892da4903d57792a2d37d719602c2228f5e8af1e85047aa96323a916c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0152a6269ed012ba82e54ae24b2ea42719acf42eef7427dc0e75897f9f2f5328",
+      "source_fact_keys": [
+        "source_fact:v1:74a4f136bbbb061a7e1be517f37d79f5ce11d50e2a74442a56fb801183cbbfd1",
+        "source_fact:v1:79436e2c74ce0b5ba92cc935d34325fc90a9a09dd5ffe3e324ee32ef048b1c64"
+      ],
+      "source_published_kst": "2026-10-05T22:40+09:00",
+      "title": "C.H.로빈슨, RXO 58억 달러 인수 발표 후 차입 부담에 투자심리 위축"
     },
     "link:a63bea2edb83223cf6f138df": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
@@ -22512,6 +22706,23 @@
       "source": "뉴시스",
       "title": "코오롱티슈진 노문종 대표 사임…\"일신상 사유\""
     },
+    "link:fe3ae0a68af7d866f9313e83": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169762",
+      "source": "매일경제",
+      "source_body_digest": "d3b398cb48acfbf1ad5f8e28cca51d0b8e14e73f6cfa2bc3493f17b521619f26",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9d6d38e6d76a4853afdd282fd56d7d012c888cbb5420ebe91080d1387111dc3",
+      "source_fact_keys": [
+        "source_fact:v1:81dda4dd4bd88de1e37bdaa898d817c5aa3c5a862c1f0246d51d9340aab6c072"
+      ],
+      "source_published_kst": "2026-10-05T20:06+09:00",
+      "title": "터보젠, 20kW 시스템 양산 장기계약..5년 자동갱신"
+    },
     "link:fe9526086ec2db6f99fb33d3": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
       "lanes": {
@@ -25807,6 +26018,28 @@
       "source_published_kst": "2026-10-04T06:03+09:00",
       "title": "[AI해킹] ① OTT·미용·결제 이어 은행까지…내 개인정보 어디까지 샜나 | 연합뉴스"
     },
+    "original:39534c79430d82cd42700ca7": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169837",
+      "source": "매일경제",
+      "source_body_digest": "3ddfbf121f73f18d561448a6f04d78de6b8ab6bb7565518a83cb6857586506c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1fd22575c3dee0b6b1bd29a36d673880530626be87af814577ef9a51e1966f54",
+      "source_fact_keys": [
+        "source_fact:v1:18ba0e82d3c711d7d4da2dda0a98a84d6a22ee3a05f30355d359001c082b2964",
+        "source_fact:v1:348ddcf316903bbc59504fb3aa26a9d7eb2670ad07a096753685f6b98f54437d",
+        "source_fact:v1:61ac0b4c376c75588f035936eb585f2ef389cfcfc38fd522b5e602c0c4ba60ea",
+        "source_fact:v1:c35585ebe3139e7a1bce09c32bfb0bdbceaae0b28e450a7a6c5d4b2662cb3d52",
+        "source_fact:v1:e70bba2c162a57436ca0be5dedc5a6c464fab86d214b8bd3fee561b4a7787424",
+        "source_fact:v1:eaf33499334e38d09f57bcabb8084330bbd3c058a80a4e8b3ade53cd6fc709fe"
+      ],
+      "source_published_kst": "2026-10-05T22:27+09:00",
+      "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
+    },
     "original:3973b0badad2736b86882a9c": {
       "first_seen_kst": "2026-10-05T18:29:33+09:00",
       "lanes": {
@@ -27280,6 +27513,21 @@
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
     },
+    "original:4cb37ab8f421e9d81096f901": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169783",
+      "source": "매일경제",
+      "source_body_digest": "3063eb799c22f9c298097848422592b12e74d52d87860abc7ab514747f5f7d1d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T21:01+09:00",
+      "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
+    },
     "original:4d03f2779165f859b4df61f0": {
       "first_seen_kst": "2026-10-05T09:13:59+09:00",
       "lanes": {
@@ -27485,6 +27733,24 @@
       "link": "https://www.mk.co.kr/news/stock/12163310",
       "source": "매일경제",
       "title": "레버리지ETF랑 스페이스X에 속이 ‘부글부글’ …금융투자 민원 86% 급증"
+    },
+    "original:5035bb8ffb1cb3ab5906cb80": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://www.fnnews.com/news/202610051901312958",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2de33cf76172fea8699e63841675a5b6e2704cc39a4801fdbb2db5fee4f25394",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab420d15f1e6258ed2dff9f18882b3708943ab749a2d58b47e2971d4e84d5556",
+      "source_fact_keys": [
+        "source_fact:v1:6eef2147cf39946803ab7b6e728466e155b1d3ae91868eb35886b391aa943866",
+        "source_fact:v1:c757992476ea147897840b9d26eea54c32b753857fcf2e82948b28314c664afd"
+      ],
+      "source_published_kst": "2026-10-05T19:02+09:00",
+      "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
     },
     "original:511e0f15b7a3c71146eeb66a": {
       "first_seen_kst": "2026-09-22T16:30:20+09:00",
@@ -29948,6 +30214,21 @@
       "source": "뉴시스",
       "title": "트럼프 핵심 참모들 캠프 데이비드 긴급회동…이란전 확전 논의"
     },
+    "original:78f8fc6fc551cfa5b54d5001": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169836",
+      "source": "매일경제",
+      "source_body_digest": "d1e17d56ae7bc24387e2e93610a37f7f10320f1efacd08853dbef65a2946d891",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:26+09:00",
+      "title": "하프니아, 신주 3549만주 발행·등록..3억 달러 증자 마무리"
+    },
     "original:790766b9ba0af7a0e9deb87e": {
       "first_seen_kst": "2026-10-05T08:48:57+09:00",
       "lanes": {
@@ -30637,6 +30918,24 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "original:861adbda6e13c6466c6dadbe": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169843",
+      "source": "매일경제",
+      "source_body_digest": "9ceb49892da4903d57792a2d37d719602c2228f5e8af1e85047aa96323a916c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0152a6269ed012ba82e54ae24b2ea42719acf42eef7427dc0e75897f9f2f5328",
+      "source_fact_keys": [
+        "source_fact:v1:74a4f136bbbb061a7e1be517f37d79f5ce11d50e2a74442a56fb801183cbbfd1",
+        "source_fact:v1:79436e2c74ce0b5ba92cc935d34325fc90a9a09dd5ffe3e324ee32ef048b1c64"
+      ],
+      "source_published_kst": "2026-10-05T22:40+09:00",
+      "title": "C.H.로빈슨, RXO 58억 달러 인수 발표 후 차입 부담에 투자심리 위축"
     },
     "original:86302a19608e3a92f59be73a": {
       "first_seen_kst": "2026-09-22T10:35:36+09:00",
@@ -33149,6 +33448,24 @@
       "source": "전자신문",
       "title": "HL그룹, 구글 웨이모 뚫었다…전자 브레이크 시스템 첫 공급"
     },
+    "original:ae1807de7f88c024125552c3": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169838",
+      "source": "매일경제",
+      "source_body_digest": "466736c34b2a73489b6064ec09f6ef8329d62ccd9f70da44803a84885d8c2c96",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b32f7c026b46ed481a34bd40daadd11970bfb3e46f5caaaa37504e3628cf9d7",
+      "source_fact_keys": [
+        "source_fact:v1:621212f1377f6478881975545002f23f3ac91e46e720cb4a47be2c0e1f7da2e6",
+        "source_fact:v1:b6b486f42ef0786084a6cc10ee4c2f00ab995d3cb28671c70b00d39c42d45007"
+      ],
+      "source_published_kst": "2026-10-05T22:29+09:00",
+      "title": "유나이티드 마이크로일렉, 18억 달러 전환사채 발행 확정..쿠폰 0%"
+    },
     "original:ae221660f326e199150f6e9f": {
       "first_seen_kst": "2026-10-02T15:48:44+09:00",
       "lanes": {
@@ -34129,15 +34446,17 @@
     "original:bd56949e41018143be4b7e53": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
-        "live": "2026-10-05T22:21:29+09:00"
+        "live": "2026-10-05T22:49:24+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:21:29+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12168691",
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169762",
       "source": "매일경제",
-      "source_body_digest": "372ca517628ac3c96a25a99b0b6433e5140f12072fe993a32078e8e88dadc9c3",
+      "source_body_digest": "d3b398cb48acfbf1ad5f8e28cca51d0b8e14e73f6cfa2bc3493f17b521619f26",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
+      "source_fact_identity": "source_facts:v1:d9d6d38e6d76a4853afdd282fd56d7d012c888cbb5420ebe91080d1387111dc3",
+      "source_fact_keys": [
+        "source_fact:v1:81dda4dd4bd88de1e37bdaa898d817c5aa3c5a862c1f0246d51d9340aab6c072"
+      ],
       "source_published_kst": "2026-10-05T20:06+09:00",
       "title": "터보젠, 20kW 시스템 양산 장기계약..5년 자동갱신"
     },
@@ -38103,6 +38422,24 @@
       "source_published_kst": "2026-10-05T09:06+09:00",
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     },
+    "source_fact:012ed2f7f7adec33dc278a02": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://www.fnnews.com/news/202610051901312958",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2de33cf76172fea8699e63841675a5b6e2704cc39a4801fdbb2db5fee4f25394",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab420d15f1e6258ed2dff9f18882b3708943ab749a2d58b47e2971d4e84d5556",
+      "source_fact_keys": [
+        "source_fact:v1:6eef2147cf39946803ab7b6e728466e155b1d3ae91868eb35886b391aa943866",
+        "source_fact:v1:c757992476ea147897840b9d26eea54c32b753857fcf2e82948b28314c664afd"
+      ],
+      "source_published_kst": "2026-10-05T19:02+09:00",
+      "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
+    },
     "source_fact:01d48911be74633c8ce98c13": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -38327,6 +38664,23 @@
       ],
       "source_published_kst": "2026-10-05T10:42+09:00",
       "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
+    },
+    "source_fact:0810733fb08fe916b9b61179": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169762",
+      "source": "매일경제",
+      "source_body_digest": "d3b398cb48acfbf1ad5f8e28cca51d0b8e14e73f6cfa2bc3493f17b521619f26",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9d6d38e6d76a4853afdd282fd56d7d012c888cbb5420ebe91080d1387111dc3",
+      "source_fact_keys": [
+        "source_fact:v1:81dda4dd4bd88de1e37bdaa898d817c5aa3c5a862c1f0246d51d9340aab6c072"
+      ],
+      "source_published_kst": "2026-10-05T20:06+09:00",
+      "title": "터보젠, 20kW 시스템 양산 장기계약..5년 자동갱신"
     },
     "source_fact:08986bd9bb22a90964311dc8": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -40008,6 +40362,28 @@
       ],
       "source_published_kst": "2026-10-05T22:37+09:00",
       "title": "농식품부 고위공직자 모친 농지 '미경작'…\"전수조사, 현실 못담아\""
+    },
+    "source_fact:3e82a08362e90191caf45ec8": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169837",
+      "source": "매일경제",
+      "source_body_digest": "3ddfbf121f73f18d561448a6f04d78de6b8ab6bb7565518a83cb6857586506c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1fd22575c3dee0b6b1bd29a36d673880530626be87af814577ef9a51e1966f54",
+      "source_fact_keys": [
+        "source_fact:v1:18ba0e82d3c711d7d4da2dda0a98a84d6a22ee3a05f30355d359001c082b2964",
+        "source_fact:v1:348ddcf316903bbc59504fb3aa26a9d7eb2670ad07a096753685f6b98f54437d",
+        "source_fact:v1:61ac0b4c376c75588f035936eb585f2ef389cfcfc38fd522b5e602c0c4ba60ea",
+        "source_fact:v1:c35585ebe3139e7a1bce09c32bfb0bdbceaae0b28e450a7a6c5d4b2662cb3d52",
+        "source_fact:v1:e70bba2c162a57436ca0be5dedc5a6c464fab86d214b8bd3fee561b4a7787424",
+        "source_fact:v1:eaf33499334e38d09f57bcabb8084330bbd3c058a80a4e8b3ade53cd6fc709fe"
+      ],
+      "source_published_kst": "2026-10-05T22:27+09:00",
+      "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
     },
     "source_fact:3eb6017675c11d270d44580f": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
@@ -41713,6 +42089,28 @@
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
     },
+    "source_fact:6be07b4c46b9f8eb9b6e2692": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169837",
+      "source": "매일경제",
+      "source_body_digest": "3ddfbf121f73f18d561448a6f04d78de6b8ab6bb7565518a83cb6857586506c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1fd22575c3dee0b6b1bd29a36d673880530626be87af814577ef9a51e1966f54",
+      "source_fact_keys": [
+        "source_fact:v1:18ba0e82d3c711d7d4da2dda0a98a84d6a22ee3a05f30355d359001c082b2964",
+        "source_fact:v1:348ddcf316903bbc59504fb3aa26a9d7eb2670ad07a096753685f6b98f54437d",
+        "source_fact:v1:61ac0b4c376c75588f035936eb585f2ef389cfcfc38fd522b5e602c0c4ba60ea",
+        "source_fact:v1:c35585ebe3139e7a1bce09c32bfb0bdbceaae0b28e450a7a6c5d4b2662cb3d52",
+        "source_fact:v1:e70bba2c162a57436ca0be5dedc5a6c464fab86d214b8bd3fee561b4a7787424",
+        "source_fact:v1:eaf33499334e38d09f57bcabb8084330bbd3c058a80a4e8b3ade53cd6fc709fe"
+      ],
+      "source_published_kst": "2026-10-05T22:27+09:00",
+      "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
+    },
     "source_fact:6c6df5436c0162eb1fec32af": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -42253,6 +42651,28 @@
       ],
       "source_published_kst": "2026-10-05T17:30+09:00",
       "title": "이란, 호르무즈 공격 재개 … 중동 원유 수출 회복세에 '찬물'"
+    },
+    "source_fact:742a9581820a29880aea51cd": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169837",
+      "source": "매일경제",
+      "source_body_digest": "3ddfbf121f73f18d561448a6f04d78de6b8ab6bb7565518a83cb6857586506c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1fd22575c3dee0b6b1bd29a36d673880530626be87af814577ef9a51e1966f54",
+      "source_fact_keys": [
+        "source_fact:v1:18ba0e82d3c711d7d4da2dda0a98a84d6a22ee3a05f30355d359001c082b2964",
+        "source_fact:v1:348ddcf316903bbc59504fb3aa26a9d7eb2670ad07a096753685f6b98f54437d",
+        "source_fact:v1:61ac0b4c376c75588f035936eb585f2ef389cfcfc38fd522b5e602c0c4ba60ea",
+        "source_fact:v1:c35585ebe3139e7a1bce09c32bfb0bdbceaae0b28e450a7a6c5d4b2662cb3d52",
+        "source_fact:v1:e70bba2c162a57436ca0be5dedc5a6c464fab86d214b8bd3fee561b4a7787424",
+        "source_fact:v1:eaf33499334e38d09f57bcabb8084330bbd3c058a80a4e8b3ade53cd6fc709fe"
+      ],
+      "source_published_kst": "2026-10-05T22:27+09:00",
+      "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
     },
     "source_fact:74519f8a7b5d8a11ff2949fd": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -43436,6 +43856,28 @@
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
     },
+    "source_fact:90b92cbab6d22d63f2ab92c6": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169837",
+      "source": "매일경제",
+      "source_body_digest": "3ddfbf121f73f18d561448a6f04d78de6b8ab6bb7565518a83cb6857586506c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1fd22575c3dee0b6b1bd29a36d673880530626be87af814577ef9a51e1966f54",
+      "source_fact_keys": [
+        "source_fact:v1:18ba0e82d3c711d7d4da2dda0a98a84d6a22ee3a05f30355d359001c082b2964",
+        "source_fact:v1:348ddcf316903bbc59504fb3aa26a9d7eb2670ad07a096753685f6b98f54437d",
+        "source_fact:v1:61ac0b4c376c75588f035936eb585f2ef389cfcfc38fd522b5e602c0c4ba60ea",
+        "source_fact:v1:c35585ebe3139e7a1bce09c32bfb0bdbceaae0b28e450a7a6c5d4b2662cb3d52",
+        "source_fact:v1:e70bba2c162a57436ca0be5dedc5a6c464fab86d214b8bd3fee561b4a7787424",
+        "source_fact:v1:eaf33499334e38d09f57bcabb8084330bbd3c058a80a4e8b3ade53cd6fc709fe"
+      ],
+      "source_published_kst": "2026-10-05T22:27+09:00",
+      "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
+    },
     "source_fact:90f9063781048908e2c23680": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -43571,6 +44013,24 @@
       ],
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
+    "source_fact:96bcda0b0de8fddcaa241657": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169843",
+      "source": "매일경제",
+      "source_body_digest": "9ceb49892da4903d57792a2d37d719602c2228f5e8af1e85047aa96323a916c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0152a6269ed012ba82e54ae24b2ea42719acf42eef7427dc0e75897f9f2f5328",
+      "source_fact_keys": [
+        "source_fact:v1:74a4f136bbbb061a7e1be517f37d79f5ce11d50e2a74442a56fb801183cbbfd1",
+        "source_fact:v1:79436e2c74ce0b5ba92cc935d34325fc90a9a09dd5ffe3e324ee32ef048b1c64"
+      ],
+      "source_published_kst": "2026-10-05T22:40+09:00",
+      "title": "C.H.로빈슨, RXO 58억 달러 인수 발표 후 차입 부담에 투자심리 위축"
     },
     "source_fact:9755a19ade0538d552272e39": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -44004,6 +44464,24 @@
       "source_published_kst": "2026-10-05T21:41+09:00",
       "title": "ESS 테크, NYSE 거래정지·상장폐지 개시..OTC서 GWHT 거래"
     },
+    "source_fact:a0a6d3b75f0ac56a12f653a0": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169838",
+      "source": "매일경제",
+      "source_body_digest": "466736c34b2a73489b6064ec09f6ef8329d62ccd9f70da44803a84885d8c2c96",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b32f7c026b46ed481a34bd40daadd11970bfb3e46f5caaaa37504e3628cf9d7",
+      "source_fact_keys": [
+        "source_fact:v1:621212f1377f6478881975545002f23f3ac91e46e720cb4a47be2c0e1f7da2e6",
+        "source_fact:v1:b6b486f42ef0786084a6cc10ee4c2f00ab995d3cb28671c70b00d39c42d45007"
+      ],
+      "source_published_kst": "2026-10-05T22:29+09:00",
+      "title": "유나이티드 마이크로일렉, 18억 달러 전환사채 발행 확정..쿠폰 0%"
+    },
     "source_fact:a0a8066eaaa215cc153a09aa": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -44021,6 +44499,24 @@
       ],
       "source_published_kst": "2026-10-05T22:21+09:00",
       "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
+    },
+    "source_fact:a0dc08a5e4ed7ea9305253f0": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169843",
+      "source": "매일경제",
+      "source_body_digest": "9ceb49892da4903d57792a2d37d719602c2228f5e8af1e85047aa96323a916c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0152a6269ed012ba82e54ae24b2ea42719acf42eef7427dc0e75897f9f2f5328",
+      "source_fact_keys": [
+        "source_fact:v1:74a4f136bbbb061a7e1be517f37d79f5ce11d50e2a74442a56fb801183cbbfd1",
+        "source_fact:v1:79436e2c74ce0b5ba92cc935d34325fc90a9a09dd5ffe3e324ee32ef048b1c64"
+      ],
+      "source_published_kst": "2026-10-05T22:40+09:00",
+      "title": "C.H.로빈슨, RXO 58억 달러 인수 발표 후 차입 부담에 투자심리 위축"
     },
     "source_fact:a1b076fb690b3f4cea4c0016": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -44474,6 +44970,28 @@
       ],
       "source_published_kst": "2026-10-05T05:47+09:00",
       "title": "단일 레버리지 20주 미만 단주, 시간외 종가매매로 '출구 마련' | 연합뉴스"
+    },
+    "source_fact:ac4b8f6ae28cb08fe9684aef": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169837",
+      "source": "매일경제",
+      "source_body_digest": "3ddfbf121f73f18d561448a6f04d78de6b8ab6bb7565518a83cb6857586506c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1fd22575c3dee0b6b1bd29a36d673880530626be87af814577ef9a51e1966f54",
+      "source_fact_keys": [
+        "source_fact:v1:18ba0e82d3c711d7d4da2dda0a98a84d6a22ee3a05f30355d359001c082b2964",
+        "source_fact:v1:348ddcf316903bbc59504fb3aa26a9d7eb2670ad07a096753685f6b98f54437d",
+        "source_fact:v1:61ac0b4c376c75588f035936eb585f2ef389cfcfc38fd522b5e602c0c4ba60ea",
+        "source_fact:v1:c35585ebe3139e7a1bce09c32bfb0bdbceaae0b28e450a7a6c5d4b2662cb3d52",
+        "source_fact:v1:e70bba2c162a57436ca0be5dedc5a6c464fab86d214b8bd3fee561b4a7787424",
+        "source_fact:v1:eaf33499334e38d09f57bcabb8084330bbd3c058a80a4e8b3ade53cd6fc709fe"
+      ],
+      "source_published_kst": "2026-10-05T22:27+09:00",
+      "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
     },
     "source_fact:ad60dee9dd63e894a9412073": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -45632,6 +46150,24 @@
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
     },
+    "source_fact:d54f7c0a9ebf057c1fe91a5d": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://www.fnnews.com/news/202610051901312958",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2de33cf76172fea8699e63841675a5b6e2704cc39a4801fdbb2db5fee4f25394",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab420d15f1e6258ed2dff9f18882b3708943ab749a2d58b47e2971d4e84d5556",
+      "source_fact_keys": [
+        "source_fact:v1:6eef2147cf39946803ab7b6e728466e155b1d3ae91868eb35886b391aa943866",
+        "source_fact:v1:c757992476ea147897840b9d26eea54c32b753857fcf2e82948b28314c664afd"
+      ],
+      "source_published_kst": "2026-10-05T19:02+09:00",
+      "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
+    },
     "source_fact:d62400604a59103c7f580157": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -45883,6 +46419,28 @@
       ],
       "source_published_kst": "2026-10-05T17:46+09:00",
       "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
+    },
+    "source_fact:de7743d68398e29442347803": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169837",
+      "source": "매일경제",
+      "source_body_digest": "3ddfbf121f73f18d561448a6f04d78de6b8ab6bb7565518a83cb6857586506c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1fd22575c3dee0b6b1bd29a36d673880530626be87af814577ef9a51e1966f54",
+      "source_fact_keys": [
+        "source_fact:v1:18ba0e82d3c711d7d4da2dda0a98a84d6a22ee3a05f30355d359001c082b2964",
+        "source_fact:v1:348ddcf316903bbc59504fb3aa26a9d7eb2670ad07a096753685f6b98f54437d",
+        "source_fact:v1:61ac0b4c376c75588f035936eb585f2ef389cfcfc38fd522b5e602c0c4ba60ea",
+        "source_fact:v1:c35585ebe3139e7a1bce09c32bfb0bdbceaae0b28e450a7a6c5d4b2662cb3d52",
+        "source_fact:v1:e70bba2c162a57436ca0be5dedc5a6c464fab86d214b8bd3fee561b4a7787424",
+        "source_fact:v1:eaf33499334e38d09f57bcabb8084330bbd3c058a80a4e8b3ade53cd6fc709fe"
+      ],
+      "source_published_kst": "2026-10-05T22:27+09:00",
+      "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
     },
     "source_fact:dff8beb44be29d83358d0f8b": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -46602,6 +47160,24 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
+    "source_fact:f0b3dbe53cb417385656719d": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169838",
+      "source": "매일경제",
+      "source_body_digest": "466736c34b2a73489b6064ec09f6ef8329d62ccd9f70da44803a84885d8c2c96",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b32f7c026b46ed481a34bd40daadd11970bfb3e46f5caaaa37504e3628cf9d7",
+      "source_fact_keys": [
+        "source_fact:v1:621212f1377f6478881975545002f23f3ac91e46e720cb4a47be2c0e1f7da2e6",
+        "source_fact:v1:b6b486f42ef0786084a6cc10ee4c2f00ab995d3cb28671c70b00d39c42d45007"
+      ],
+      "source_published_kst": "2026-10-05T22:29+09:00",
+      "title": "유나이티드 마이크로일렉, 18억 달러 전환사채 발행 확정..쿠폰 0%"
     },
     "source_fact:f17fa47e5eac952ea3a03e11": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -50296,6 +50872,28 @@
       "source_published_kst": "2026-10-04T06:03+09:00",
       "title": "[AI해킹] ① OTT·미용·결제 이어 은행까지…내 개인정보 어디까지 샜나 | 연합뉴스"
     },
+    "title:39534c79430d82cd42700ca7": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169837",
+      "source": "매일경제",
+      "source_body_digest": "3ddfbf121f73f18d561448a6f04d78de6b8ab6bb7565518a83cb6857586506c9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1fd22575c3dee0b6b1bd29a36d673880530626be87af814577ef9a51e1966f54",
+      "source_fact_keys": [
+        "source_fact:v1:18ba0e82d3c711d7d4da2dda0a98a84d6a22ee3a05f30355d359001c082b2964",
+        "source_fact:v1:348ddcf316903bbc59504fb3aa26a9d7eb2670ad07a096753685f6b98f54437d",
+        "source_fact:v1:61ac0b4c376c75588f035936eb585f2ef389cfcfc38fd522b5e602c0c4ba60ea",
+        "source_fact:v1:c35585ebe3139e7a1bce09c32bfb0bdbceaae0b28e450a7a6c5d4b2662cb3d52",
+        "source_fact:v1:e70bba2c162a57436ca0be5dedc5a6c464fab86d214b8bd3fee561b4a7787424",
+        "source_fact:v1:eaf33499334e38d09f57bcabb8084330bbd3c058a80a4e8b3ade53cd6fc709fe"
+      ],
+      "source_published_kst": "2026-10-05T22:27+09:00",
+      "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
+    },
     "title:3973b0badad2736b86882a9c": {
       "first_seen_kst": "2026-10-05T18:29:33+09:00",
       "lanes": {
@@ -51779,6 +52377,21 @@
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
     },
+    "title:4cb37ab8f421e9d81096f901": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169783",
+      "source": "매일경제",
+      "source_body_digest": "3063eb799c22f9c298097848422592b12e74d52d87860abc7ab514747f5f7d1d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T21:01+09:00",
+      "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
+    },
     "title:4d03f2779165f859b4df61f0": {
       "first_seen_kst": "2026-10-05T09:13:59+09:00",
       "lanes": {
@@ -51984,6 +52597,24 @@
       "link": "https://www.mk.co.kr/news/stock/12163310",
       "source": "매일경제",
       "title": "레버리지ETF랑 스페이스X에 속이 ‘부글부글’ …금융투자 민원 86% 급증"
+    },
+    "title:5035bb8ffb1cb3ab5906cb80": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://www.fnnews.com/news/202610051901312958",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "2de33cf76172fea8699e63841675a5b6e2704cc39a4801fdbb2db5fee4f25394",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ab420d15f1e6258ed2dff9f18882b3708943ab749a2d58b47e2971d4e84d5556",
+      "source_fact_keys": [
+        "source_fact:v1:6eef2147cf39946803ab7b6e728466e155b1d3ae91868eb35886b391aa943866",
+        "source_fact:v1:c757992476ea147897840b9d26eea54c32b753857fcf2e82948b28314c664afd"
+      ],
+      "source_published_kst": "2026-10-05T19:02+09:00",
+      "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
     },
     "title:511e0f15b7a3c71146eeb66a": {
       "first_seen_kst": "2026-09-22T16:30:20+09:00",
@@ -54468,6 +55099,21 @@
       "source": "뉴시스",
       "title": "트럼프 핵심 참모들 캠프 데이비드 긴급회동…이란전 확전 논의"
     },
+    "title:78f8fc6fc551cfa5b54d5001": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169836",
+      "source": "매일경제",
+      "source_body_digest": "d1e17d56ae7bc24387e2e93610a37f7f10320f1efacd08853dbef65a2946d891",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:26+09:00",
+      "title": "하프니아, 신주 3549만주 발행·등록..3억 달러 증자 마무리"
+    },
     "title:790766b9ba0af7a0e9deb87e": {
       "first_seen_kst": "2026-10-05T08:48:57+09:00",
       "lanes": {
@@ -55186,6 +55832,24 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "title:861adbda6e13c6466c6dadbe": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169843",
+      "source": "매일경제",
+      "source_body_digest": "9ceb49892da4903d57792a2d37d719602c2228f5e8af1e85047aa96323a916c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0152a6269ed012ba82e54ae24b2ea42719acf42eef7427dc0e75897f9f2f5328",
+      "source_fact_keys": [
+        "source_fact:v1:74a4f136bbbb061a7e1be517f37d79f5ce11d50e2a74442a56fb801183cbbfd1",
+        "source_fact:v1:79436e2c74ce0b5ba92cc935d34325fc90a9a09dd5ffe3e324ee32ef048b1c64"
+      ],
+      "source_published_kst": "2026-10-05T22:40+09:00",
+      "title": "C.H.로빈슨, RXO 58억 달러 인수 발표 후 차입 부담에 투자심리 위축"
     },
     "title:86302a19608e3a92f59be73a": {
       "first_seen_kst": "2026-09-22T10:35:36+09:00",
@@ -57732,6 +58396,24 @@
       "source_event_identity": "",
       "title": "중남미 7개 대선 모두 우파 승리…룰라·보우소나루 아들 4일 격돌(종합)"
     },
+    "title:ae1807de7f88c024125552c3": {
+      "first_seen_kst": "2026-10-05T22:49:24+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:49:24+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169838",
+      "source": "매일경제",
+      "source_body_digest": "466736c34b2a73489b6064ec09f6ef8329d62ccd9f70da44803a84885d8c2c96",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0b32f7c026b46ed481a34bd40daadd11970bfb3e46f5caaaa37504e3628cf9d7",
+      "source_fact_keys": [
+        "source_fact:v1:621212f1377f6478881975545002f23f3ac91e46e720cb4a47be2c0e1f7da2e6",
+        "source_fact:v1:b6b486f42ef0786084a6cc10ee4c2f00ab995d3cb28671c70b00d39c42d45007"
+      ],
+      "source_published_kst": "2026-10-05T22:29+09:00",
+      "title": "유나이티드 마이크로일렉, 18억 달러 전환사채 발행 확정..쿠폰 0%"
+    },
     "title:ae221660f326e199150f6e9f": {
       "first_seen_kst": "2026-10-02T15:48:44+09:00",
       "lanes": {
@@ -58722,15 +59404,17 @@
     "title:bd56949e41018143be4b7e53": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
-        "live": "2026-10-05T22:21:29+09:00"
+        "live": "2026-10-05T22:49:24+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:21:29+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12168691",
+      "last_seen_kst": "2026-10-05T22:49:24+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169762",
       "source": "매일경제",
-      "source_body_digest": "372ca517628ac3c96a25a99b0b6433e5140f12072fe993a32078e8e88dadc9c3",
+      "source_body_digest": "d3b398cb48acfbf1ad5f8e28cca51d0b8e14e73f6cfa2bc3493f17b521619f26",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
+      "source_fact_identity": "source_facts:v1:d9d6d38e6d76a4853afdd282fd56d7d012c888cbb5420ebe91080d1387111dc3",
+      "source_fact_keys": [
+        "source_fact:v1:81dda4dd4bd88de1e37bdaa898d817c5aa3c5a862c1f0246d51d9340aab6c072"
+      ],
       "source_published_kst": "2026-10-05T20:06+09:00",
       "title": "터보젠, 20kW 시스템 양산 장기계약..5년 자동갱신"
     },
@@ -62739,5 +63423,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T22:39:48+09:00"
+  "updated_at_kst": "2026-10-05T22:49:24+09:00"
 }
