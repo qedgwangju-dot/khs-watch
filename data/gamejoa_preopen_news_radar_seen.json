@@ -441,14 +441,23 @@
     "event:1ced2ff2ebc3ffb6232ac788": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
       "lanes": {
-        "live": "2026-10-05T10:24:46+09:00"
+        "live": "2026-10-05T22:30:10+09:00"
       },
-      "last_seen_kst": "2026-10-05T10:24:46+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01767926645609968",
-      "source": "이데일리",
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
+      "source": "머니투데이",
+      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
       "source_event_identity": "",
-      "source_published_kst": "2026-10-05T10:04+09:00",
-      "title": "美 국채·주식 아슬아슬한 ‘디커플링’…증시 떠받치는 AI"
+      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_keys": [
+        "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
+        "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
+        "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
+        "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
+        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+      ],
+      "source_published_kst": "2026-10-05T22:07+09:00",
+      "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
     "event:1d3a02c788288176f1db911e": {
       "first_seen_kst": "2026-09-30T10:30:58+09:00",
@@ -485,19 +494,25 @@
     "event:1efbd1f63c0f645d03fefda2": {
       "first_seen_kst": "2026-10-05T02:04:15+09:00",
       "lanes": {
-        "live": "2026-10-05T22:12:53+09:00"
+        "live": "2026-10-05T22:30:10+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:12:53+09:00",
-      "link": "https://www.mt.co.kr/index.php/finance/2026/10/05/2026100514541723847",
-      "source": "머니투데이",
-      "source_body_digest": "df4cb204a2ec3d3e0c0dd589c8c41236ba0d4a344a4b69c19152aba76eb195b4",
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.hankyung.com/article/202610042690i",
+      "source": "한국경제",
+      "source_body_digest": "245f8781b51a801aadc318af1b95998d4e04a75097ef3ec6ef7d8421dc97b25f",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d17711413fd0f22ddc6da8be83725d64683fa286cd0b83c35ad22102684254f6",
+      "source_fact_identity": "source_facts:v1:af81f563a3a59d62d00d13042752a5f0a2fc7822873bab9c65a215f56115d8b1",
       "source_fact_keys": [
-        "source_fact:v1:716dfff7d537a700bac66dd2bcfda289b7a2463f57cc923e6c72f30d368f3929"
+        "source_fact:v1:099329c8df48899e9a9ee856512931b49e6757efedd45ff72b8bba76d7527345",
+        "source_fact:v1:ba9ffdf56ff315d92a8fd07c02fea1f18c6dbff16a4ff162e334c13298443b9d",
+        "source_fact:v1:c48d41f6130f7486a09260d4a2d2e776a7f7965920dd6ea53c5b2abe9b9fc112",
+        "source_fact:v1:c505bd93a24f956d137be2baddd1e11af296575eafe013ed700e676e3c7d1649",
+        "source_fact:v1:c5b083abf9abfbe42390711f93d545046d05a01905f74e2bd07209529febe689",
+        "source_fact:v1:d5f1264c5e92def41d056a92346c8af094e9ede3eaa2499966d0b997f03894e1",
+        "source_fact:v1:e6155a2b31cafd6802a36dbfa054d750823d9f8c52293dd013d926a4d05aad90"
       ],
-      "source_published_kst": "2026-10-05T16:20+09:00",
-      "title": "'해킹 사태' 은행장 국감 줄줄이 소환될듯..연말 CEO 연임 '브레이크'"
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
     },
     "event:2031f599de2458ceac1e4b44": {
       "first_seen_kst": "2026-10-03T09:48:18+09:00",
@@ -5364,6 +5379,25 @@
       "source_published_kst": "2026-10-05T09:45+09:00",
       "title": "LG유플러스, 해외 AI 서비스 ‘유독’에 들여온다…11월 첫 상품 출시"
     },
+    "fact:546065340ceceaa6c8f66eb6": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168764",
+      "source": "매일경제",
+      "source_body_digest": "5eb1c5fe26b697aef92c728bfcce4e7016891bfd9ac955998d770641749851e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:610c61482fe80dd3b56dd47046000ef165c004d3aa5270c4b9ec5f39b16ef984",
+      "source_fact_keys": [
+        "source_fact:v1:1b09f812ff56f38f1088af24b44d590930b2880dda2fc0376df6c5b6da7647ba",
+        "source_fact:v1:b7809d5851e1a22ee50dce0b07882f1e3efbc3a17b6c24f94ad459705140265f",
+        "source_fact:v1:c1ee5e27064ec58112613f0aed6da4b120d6b35f97bd84d268abf148716e878b"
+      ],
+      "source_published_kst": "2026-10-05T22:19+09:00",
+      "title": "세노버스 에너지, 아사바스카오일 57억 캐나다달러 인수 합의"
+    },
     "fact:55c50bb7ff39d169933f4fd7": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -5728,6 +5762,29 @@
       ],
       "source_published_kst": "2026-10-05T20:37+09:00",
       "title": "마타도르 리소시즈, 팔로마 인수 완료..12억5500만 달러·시추 156곳"
+    },
+    "fact:79a1c4f702d43db61e8a8d5e": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.hankyung.com/article/202610042690i",
+      "source": "한국경제",
+      "source_body_digest": "245f8781b51a801aadc318af1b95998d4e04a75097ef3ec6ef7d8421dc97b25f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af81f563a3a59d62d00d13042752a5f0a2fc7822873bab9c65a215f56115d8b1",
+      "source_fact_keys": [
+        "source_fact:v1:099329c8df48899e9a9ee856512931b49e6757efedd45ff72b8bba76d7527345",
+        "source_fact:v1:ba9ffdf56ff315d92a8fd07c02fea1f18c6dbff16a4ff162e334c13298443b9d",
+        "source_fact:v1:c48d41f6130f7486a09260d4a2d2e776a7f7965920dd6ea53c5b2abe9b9fc112",
+        "source_fact:v1:c505bd93a24f956d137be2baddd1e11af296575eafe013ed700e676e3c7d1649",
+        "source_fact:v1:c5b083abf9abfbe42390711f93d545046d05a01905f74e2bd07209529febe689",
+        "source_fact:v1:d5f1264c5e92def41d056a92346c8af094e9ede3eaa2499966d0b997f03894e1",
+        "source_fact:v1:e6155a2b31cafd6802a36dbfa054d750823d9f8c52293dd013d926a4d05aad90"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
     },
     "fact:7a1f163e78e938bc25c5826e": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -6165,6 +6222,27 @@
       "source_published_kst": "2026-10-05T12:37+09:00",
       "title": "\"메가·컴포즈 점주들 돈 많이 벌었겠네\"…실상은 달랐다"
     },
+    "fact:af4077c7f3992b8137491a24": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
+      "source": "머니투데이",
+      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_keys": [
+        "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
+        "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
+        "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
+        "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
+        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+      ],
+      "source_published_kst": "2026-10-05T22:07+09:00",
+      "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
+    },
     "fact:b0597d06268f4d267eb39259": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -6507,6 +6585,24 @@
       ],
       "source_published_kst": "2026-10-05T20:22+09:00",
       "title": "스트라타시스, 방산 전문가 데이비드 친 이사 후보 지명"
+    },
+    "fact:ee44a8767d1112c319e9edf9": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168721",
+      "source": "매일경제",
+      "source_body_digest": "523bb67e0e6e546ca66882f58f101084603e4f0a07231207a473bb71da16f296",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:40f44548339fb36b9aa123e1b14a6643ee1b72763486372a0a6ab19a2ba83910",
+      "source_fact_keys": [
+        "source_fact:v1:2fba009f6d86bec89df929e79fad59400e505201f23cd9060eb2a99ad0ac9180",
+        "source_fact:v1:979a05763515392dd7c566d393d1af10381486bfab46e2403192fea4505bcd04"
+      ],
+      "source_published_kst": "2026-10-05T21:09+09:00",
+      "title": "플렉스, 액시엄 20억달러 우선주 유치..가치 375억달러"
     },
     "fact:f5941e8f9802f45e66242eaa": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -8679,6 +8775,21 @@
       "source": "머니투데이",
       "title": "中·홍콩 휴장 속 日 증시 3% 급등…마이크론 실적호재[Asia마감]"
     },
+    "link:27cebe4c3565aa74c564ac87": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168765",
+      "source": "매일경제",
+      "source_body_digest": "98286c44bf7b01f3d5107e263c1b61e4af0d1187c640fb180f2445dc3766332d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:22+09:00",
+      "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
+    },
     "link:27e5802236f1f31e8056a29d": {
       "first_seen_kst": "2026-10-03T21:21:44+09:00",
       "lanes": {
@@ -9703,6 +9814,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:15+09:00",
       "title": "CJ대한통운·토스, 소상공인·소비자 택배 서비스 확대 | 연합뉴스"
+    },
+    "link:3868b146c0c0e38b05ac8c1f": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
+      "source": "머니투데이",
+      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_keys": [
+        "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
+        "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
+        "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
+        "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
+        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+      ],
+      "source_published_kst": "2026-10-05T22:07+09:00",
+      "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
     "link:38a8f846e331a584b663b40a": {
       "first_seen_kst": "2026-10-02T17:14:32+09:00",
@@ -15114,6 +15246,25 @@
       "source": "뉴시스",
       "title": "美, 이란 경제 옥죄기 계속…자동차·철도 기업들 제재"
     },
+    "link:8e34b471b5d30a28dbefcca8": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168764",
+      "source": "매일경제",
+      "source_body_digest": "5eb1c5fe26b697aef92c728bfcce4e7016891bfd9ac955998d770641749851e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:610c61482fe80dd3b56dd47046000ef165c004d3aa5270c4b9ec5f39b16ef984",
+      "source_fact_keys": [
+        "source_fact:v1:1b09f812ff56f38f1088af24b44d590930b2880dda2fc0376df6c5b6da7647ba",
+        "source_fact:v1:b7809d5851e1a22ee50dce0b07882f1e3efbc3a17b6c24f94ad459705140265f",
+        "source_fact:v1:c1ee5e27064ec58112613f0aed6da4b120d6b35f97bd84d268abf148716e878b"
+      ],
+      "source_published_kst": "2026-10-05T22:19+09:00",
+      "title": "세노버스 에너지, 아사바스카오일 57억 캐나다달러 인수 합의"
+    },
     "link:8e40bb47157615a5ad26b237": {
       "first_seen_kst": "2026-09-30T13:59:20+09:00",
       "lanes": {
@@ -17064,6 +17215,29 @@
       "source_published_kst": "2026-10-04T21:00+09:00",
       "title": "나주혁신도시 한 아파트 정전…919가구 불편 겪어"
     },
+    "link:ab44b48378eafa2222a54097": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.hankyung.com/article/202610042690i",
+      "source": "한국경제",
+      "source_body_digest": "245f8781b51a801aadc318af1b95998d4e04a75097ef3ec6ef7d8421dc97b25f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af81f563a3a59d62d00d13042752a5f0a2fc7822873bab9c65a215f56115d8b1",
+      "source_fact_keys": [
+        "source_fact:v1:099329c8df48899e9a9ee856512931b49e6757efedd45ff72b8bba76d7527345",
+        "source_fact:v1:ba9ffdf56ff315d92a8fd07c02fea1f18c6dbff16a4ff162e334c13298443b9d",
+        "source_fact:v1:c48d41f6130f7486a09260d4a2d2e776a7f7965920dd6ea53c5b2abe9b9fc112",
+        "source_fact:v1:c505bd93a24f956d137be2baddd1e11af296575eafe013ed700e676e3c7d1649",
+        "source_fact:v1:c5b083abf9abfbe42390711f93d545046d05a01905f74e2bd07209529febe689",
+        "source_fact:v1:d5f1264c5e92def41d056a92346c8af094e9ede3eaa2499966d0b997f03894e1",
+        "source_fact:v1:e6155a2b31cafd6802a36dbfa054d750823d9f8c52293dd013d926a4d05aad90"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
+    },
     "link:ab4586823012230850ac79b7": {
       "first_seen_kst": "2026-09-17T16:43:25+09:00",
       "lanes": {
@@ -17372,6 +17546,24 @@
       "link": "https://www.fnnews.com/news/202610011705298644",
       "source": "파이낸셜뉴스",
       "title": "'대전 D-성장펀드' 결성…지역기업·기관출자 543억 조성"
+    },
+    "link:b31f7ebf6a28d6b82cf865a9": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168721",
+      "source": "매일경제",
+      "source_body_digest": "523bb67e0e6e546ca66882f58f101084603e4f0a07231207a473bb71da16f296",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:40f44548339fb36b9aa123e1b14a6643ee1b72763486372a0a6ab19a2ba83910",
+      "source_fact_keys": [
+        "source_fact:v1:2fba009f6d86bec89df929e79fad59400e505201f23cd9060eb2a99ad0ac9180",
+        "source_fact:v1:979a05763515392dd7c566d393d1af10381486bfab46e2403192fea4505bcd04"
+      ],
+      "source_published_kst": "2026-10-05T21:09+09:00",
+      "title": "플렉스, 액시엄 20억달러 우선주 유치..가치 375억달러"
     },
     "link:b32ee34fc6687ef34b92d489": {
       "first_seen_kst": "2026-09-26T14:03:52+09:00",
@@ -24896,6 +25088,21 @@
       "source": "뉴시스",
       "title": "\"삼성전자·SK하이닉스 독주 체제 강화\"…증시 쏠림 속 AI 데이터센터 수혜주 주목"
     },
+    "original:3058e5456c9acb36f6ddc167": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168765",
+      "source": "매일경제",
+      "source_body_digest": "98286c44bf7b01f3d5107e263c1b61e4af0d1187c640fb180f2445dc3766332d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:22+09:00",
+      "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
+    },
     "original:30e5d112f50b7476124611fe": {
       "first_seen_kst": "2026-09-18T14:19:18+09:00",
       "lanes": {
@@ -28955,6 +29162,27 @@
       "source": "연합뉴스",
       "title": "광주 반도체 클러스터 조성 설비 투자 본격 시동 | 연합뉴스"
     },
+    "original:71b692d828b4c094a6311e99": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
+      "source": "머니투데이",
+      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_keys": [
+        "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
+        "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
+        "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
+        "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
+        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+      ],
+      "source_published_kst": "2026-10-05T22:07+09:00",
+      "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
+    },
     "original:71bab4578d2a6a7c9cc33c58": {
       "first_seen_kst": "2026-10-02T15:40:35+09:00",
       "lanes": {
@@ -29952,6 +30180,29 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811439",
       "source": "뉴시스",
       "title": "\"로봇 한 대에 메모리 수백 GB\"…삼전·닉스, 로봇서 새 시장 바라본다"
+    },
+    "original:83ca80210380fa5c66da39c1": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.hankyung.com/article/202610042690i",
+      "source": "한국경제",
+      "source_body_digest": "245f8781b51a801aadc318af1b95998d4e04a75097ef3ec6ef7d8421dc97b25f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af81f563a3a59d62d00d13042752a5f0a2fc7822873bab9c65a215f56115d8b1",
+      "source_fact_keys": [
+        "source_fact:v1:099329c8df48899e9a9ee856512931b49e6757efedd45ff72b8bba76d7527345",
+        "source_fact:v1:ba9ffdf56ff315d92a8fd07c02fea1f18c6dbff16a4ff162e334c13298443b9d",
+        "source_fact:v1:c48d41f6130f7486a09260d4a2d2e776a7f7965920dd6ea53c5b2abe9b9fc112",
+        "source_fact:v1:c505bd93a24f956d137be2baddd1e11af296575eafe013ed700e676e3c7d1649",
+        "source_fact:v1:c5b083abf9abfbe42390711f93d545046d05a01905f74e2bd07209529febe689",
+        "source_fact:v1:d5f1264c5e92def41d056a92346c8af094e9ede3eaa2499966d0b997f03894e1",
+        "source_fact:v1:e6155a2b31cafd6802a36dbfa054d750823d9f8c52293dd013d926a4d05aad90"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
     },
     "original:83d2f03f5826b34168905f1b": {
       "first_seen_kst": "2026-09-30T06:14:07+09:00",
@@ -30982,6 +31233,25 @@
       "link": "https://www.dailian.co.kr/news/view/1694060/",
       "source": "데일리안",
       "title": "AI가 공장을 움직인다…피지컬 AI, '로봇 두뇌' 경쟁 본격화"
+    },
+    "original:91661105d0ca81a57c3f866e": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168764",
+      "source": "매일경제",
+      "source_body_digest": "5eb1c5fe26b697aef92c728bfcce4e7016891bfd9ac955998d770641749851e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:610c61482fe80dd3b56dd47046000ef165c004d3aa5270c4b9ec5f39b16ef984",
+      "source_fact_keys": [
+        "source_fact:v1:1b09f812ff56f38f1088af24b44d590930b2880dda2fc0376df6c5b6da7647ba",
+        "source_fact:v1:b7809d5851e1a22ee50dce0b07882f1e3efbc3a17b6c24f94ad459705140265f",
+        "source_fact:v1:c1ee5e27064ec58112613f0aed6da4b120d6b35f97bd84d268abf148716e878b"
+      ],
+      "source_published_kst": "2026-10-05T22:19+09:00",
+      "title": "세노버스 에너지, 아사바스카오일 57억 캐나다달러 인수 합의"
     },
     "original:9167efbf51dd767a45d9b113": {
       "first_seen_kst": "2026-09-25T06:36:26+09:00",
@@ -33429,6 +33699,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:04+09:00",
       "title": "美 국채·주식 아슬아슬한 ‘디커플링’…증시 떠받치는 AI"
+    },
+    "original:bbb8e477c3ccec25bc9f53d4": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168721",
+      "source": "매일경제",
+      "source_body_digest": "523bb67e0e6e546ca66882f58f101084603e4f0a07231207a473bb71da16f296",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:40f44548339fb36b9aa123e1b14a6643ee1b72763486372a0a6ab19a2ba83910",
+      "source_fact_keys": [
+        "source_fact:v1:2fba009f6d86bec89df929e79fad59400e505201f23cd9060eb2a99ad0ac9180",
+        "source_fact:v1:979a05763515392dd7c566d393d1af10381486bfab46e2403192fea4505bcd04"
+      ],
+      "source_published_kst": "2026-10-05T21:09+09:00",
+      "title": "플렉스, 액시엄 20억달러 우선주 유치..가치 375억달러"
     },
     "original:bbd23b7d1155b4b9e6131cae": {
       "first_seen_kst": "2026-10-05T12:09:30+09:00",
@@ -37552,6 +37840,24 @@
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
+    "source_fact:051537482cb34b15f181cb3f": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168721",
+      "source": "매일경제",
+      "source_body_digest": "523bb67e0e6e546ca66882f58f101084603e4f0a07231207a473bb71da16f296",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:40f44548339fb36b9aa123e1b14a6643ee1b72763486372a0a6ab19a2ba83910",
+      "source_fact_keys": [
+        "source_fact:v1:2fba009f6d86bec89df929e79fad59400e505201f23cd9060eb2a99ad0ac9180",
+        "source_fact:v1:979a05763515392dd7c566d393d1af10381486bfab46e2403192fea4505bcd04"
+      ],
+      "source_published_kst": "2026-10-05T21:09+09:00",
+      "title": "플렉스, 액시엄 20억달러 우선주 유치..가치 375억달러"
+    },
     "source_fact:058433f0b3ef20ee2d112bbf": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -37858,6 +38164,29 @@
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
     },
+    "source_fact:0cb75d8d70c81115d90ea2bf": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.hankyung.com/article/202610042690i",
+      "source": "한국경제",
+      "source_body_digest": "245f8781b51a801aadc318af1b95998d4e04a75097ef3ec6ef7d8421dc97b25f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af81f563a3a59d62d00d13042752a5f0a2fc7822873bab9c65a215f56115d8b1",
+      "source_fact_keys": [
+        "source_fact:v1:099329c8df48899e9a9ee856512931b49e6757efedd45ff72b8bba76d7527345",
+        "source_fact:v1:ba9ffdf56ff315d92a8fd07c02fea1f18c6dbff16a4ff162e334c13298443b9d",
+        "source_fact:v1:c48d41f6130f7486a09260d4a2d2e776a7f7965920dd6ea53c5b2abe9b9fc112",
+        "source_fact:v1:c505bd93a24f956d137be2baddd1e11af296575eafe013ed700e676e3c7d1649",
+        "source_fact:v1:c5b083abf9abfbe42390711f93d545046d05a01905f74e2bd07209529febe689",
+        "source_fact:v1:d5f1264c5e92def41d056a92346c8af094e9ede3eaa2499966d0b997f03894e1",
+        "source_fact:v1:e6155a2b31cafd6802a36dbfa054d750823d9f8c52293dd013d926a4d05aad90"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
+    },
     "source_fact:0e4497a88145848d20300177": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -37898,6 +38227,27 @@
       ],
       "source_published_kst": "2026-10-05T19:05+09:00",
       "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
+    },
+    "source_fact:10f976777949aaa962c347f1": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
+      "source": "머니투데이",
+      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_keys": [
+        "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
+        "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
+        "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
+        "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
+        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+      ],
+      "source_published_kst": "2026-10-05T22:07+09:00",
+      "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
     "source_fact:133e9cb9a8a1f205ae4ce682": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -38367,6 +38717,29 @@
       ],
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
+    },
+    "source_fact:223e08442e75d06c8e69b371": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.hankyung.com/article/202610042690i",
+      "source": "한국경제",
+      "source_body_digest": "245f8781b51a801aadc318af1b95998d4e04a75097ef3ec6ef7d8421dc97b25f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af81f563a3a59d62d00d13042752a5f0a2fc7822873bab9c65a215f56115d8b1",
+      "source_fact_keys": [
+        "source_fact:v1:099329c8df48899e9a9ee856512931b49e6757efedd45ff72b8bba76d7527345",
+        "source_fact:v1:ba9ffdf56ff315d92a8fd07c02fea1f18c6dbff16a4ff162e334c13298443b9d",
+        "source_fact:v1:c48d41f6130f7486a09260d4a2d2e776a7f7965920dd6ea53c5b2abe9b9fc112",
+        "source_fact:v1:c505bd93a24f956d137be2baddd1e11af296575eafe013ed700e676e3c7d1649",
+        "source_fact:v1:c5b083abf9abfbe42390711f93d545046d05a01905f74e2bd07209529febe689",
+        "source_fact:v1:d5f1264c5e92def41d056a92346c8af094e9ede3eaa2499966d0b997f03894e1",
+        "source_fact:v1:e6155a2b31cafd6802a36dbfa054d750823d9f8c52293dd013d926a4d05aad90"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
     },
     "source_fact:2289ec8ff19d94ffb2b72b7d": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -39452,6 +39825,25 @@
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
     },
+    "source_fact:42b4c335b54d8c037577fff1": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168764",
+      "source": "매일경제",
+      "source_body_digest": "5eb1c5fe26b697aef92c728bfcce4e7016891bfd9ac955998d770641749851e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:610c61482fe80dd3b56dd47046000ef165c004d3aa5270c4b9ec5f39b16ef984",
+      "source_fact_keys": [
+        "source_fact:v1:1b09f812ff56f38f1088af24b44d590930b2880dda2fc0376df6c5b6da7647ba",
+        "source_fact:v1:b7809d5851e1a22ee50dce0b07882f1e3efbc3a17b6c24f94ad459705140265f",
+        "source_fact:v1:c1ee5e27064ec58112613f0aed6da4b120d6b35f97bd84d268abf148716e878b"
+      ],
+      "source_published_kst": "2026-10-05T22:19+09:00",
+      "title": "세노버스 에너지, 아사바스카오일 57억 캐나다달러 인수 합의"
+    },
     "source_fact:42cb2ef6854f4adb2d774367": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -39897,6 +40289,25 @@
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
     },
+    "source_fact:4c16ce9737ff51ee00f41088": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168764",
+      "source": "매일경제",
+      "source_body_digest": "5eb1c5fe26b697aef92c728bfcce4e7016891bfd9ac955998d770641749851e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:610c61482fe80dd3b56dd47046000ef165c004d3aa5270c4b9ec5f39b16ef984",
+      "source_fact_keys": [
+        "source_fact:v1:1b09f812ff56f38f1088af24b44d590930b2880dda2fc0376df6c5b6da7647ba",
+        "source_fact:v1:b7809d5851e1a22ee50dce0b07882f1e3efbc3a17b6c24f94ad459705140265f",
+        "source_fact:v1:c1ee5e27064ec58112613f0aed6da4b120d6b35f97bd84d268abf148716e878b"
+      ],
+      "source_published_kst": "2026-10-05T22:19+09:00",
+      "title": "세노버스 에너지, 아사바스카오일 57억 캐나다달러 인수 합의"
+    },
     "source_fact:4ea88256bb5436c1ea10aa4f": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -40182,6 +40593,29 @@
       ],
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+    },
+    "source_fact:58096016080bba0c3ab057b7": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.hankyung.com/article/202610042690i",
+      "source": "한국경제",
+      "source_body_digest": "245f8781b51a801aadc318af1b95998d4e04a75097ef3ec6ef7d8421dc97b25f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af81f563a3a59d62d00d13042752a5f0a2fc7822873bab9c65a215f56115d8b1",
+      "source_fact_keys": [
+        "source_fact:v1:099329c8df48899e9a9ee856512931b49e6757efedd45ff72b8bba76d7527345",
+        "source_fact:v1:ba9ffdf56ff315d92a8fd07c02fea1f18c6dbff16a4ff162e334c13298443b9d",
+        "source_fact:v1:c48d41f6130f7486a09260d4a2d2e776a7f7965920dd6ea53c5b2abe9b9fc112",
+        "source_fact:v1:c505bd93a24f956d137be2baddd1e11af296575eafe013ed700e676e3c7d1649",
+        "source_fact:v1:c5b083abf9abfbe42390711f93d545046d05a01905f74e2bd07209529febe689",
+        "source_fact:v1:d5f1264c5e92def41d056a92346c8af094e9ede3eaa2499966d0b997f03894e1",
+        "source_fact:v1:e6155a2b31cafd6802a36dbfa054d750823d9f8c52293dd013d926a4d05aad90"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
     },
     "source_fact:589011f09eb1fcb1dbc42db2": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -41250,6 +41684,27 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
+    "source_fact:72481fcac49762157f32090f": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
+      "source": "머니투데이",
+      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_keys": [
+        "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
+        "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
+        "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
+        "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
+        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+      ],
+      "source_published_kst": "2026-10-05T22:07+09:00",
+      "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
     "source_fact:72d1032d9d14677ed04a110a": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -42476,6 +42931,29 @@
       "source_published_kst": "2026-10-05T20:01+09:00",
       "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
     },
+    "source_fact:8d7eb9e00ffe523e0e0d2f70": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.hankyung.com/article/202610042690i",
+      "source": "한국경제",
+      "source_body_digest": "245f8781b51a801aadc318af1b95998d4e04a75097ef3ec6ef7d8421dc97b25f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af81f563a3a59d62d00d13042752a5f0a2fc7822873bab9c65a215f56115d8b1",
+      "source_fact_keys": [
+        "source_fact:v1:099329c8df48899e9a9ee856512931b49e6757efedd45ff72b8bba76d7527345",
+        "source_fact:v1:ba9ffdf56ff315d92a8fd07c02fea1f18c6dbff16a4ff162e334c13298443b9d",
+        "source_fact:v1:c48d41f6130f7486a09260d4a2d2e776a7f7965920dd6ea53c5b2abe9b9fc112",
+        "source_fact:v1:c505bd93a24f956d137be2baddd1e11af296575eafe013ed700e676e3c7d1649",
+        "source_fact:v1:c5b083abf9abfbe42390711f93d545046d05a01905f74e2bd07209529febe689",
+        "source_fact:v1:d5f1264c5e92def41d056a92346c8af094e9ede3eaa2499966d0b997f03894e1",
+        "source_fact:v1:e6155a2b31cafd6802a36dbfa054d750823d9f8c52293dd013d926a4d05aad90"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
+    },
     "source_fact:8e31d60ed9f4f8dc3cb22556": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -42529,6 +43007,24 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:8ec8517298819a0f59f1c955": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168721",
+      "source": "매일경제",
+      "source_body_digest": "523bb67e0e6e546ca66882f58f101084603e4f0a07231207a473bb71da16f296",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:40f44548339fb36b9aa123e1b14a6643ee1b72763486372a0a6ab19a2ba83910",
+      "source_fact_keys": [
+        "source_fact:v1:2fba009f6d86bec89df929e79fad59400e505201f23cd9060eb2a99ad0ac9180",
+        "source_fact:v1:979a05763515392dd7c566d393d1af10381486bfab46e2403192fea4505bcd04"
+      ],
+      "source_published_kst": "2026-10-05T21:09+09:00",
+      "title": "플렉스, 액시엄 20억달러 우선주 유치..가치 375억달러"
     },
     "source_fact:8f432253e3965967923854f3": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -42898,6 +43394,27 @@
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "C.H.로빈슨, RXO 58억달러 인수 합의 후 재무 부담·주식 희석 우려 부각"
     },
+    "source_fact:9c2011f5165effe9e2d564f1": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
+      "source": "머니투데이",
+      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_keys": [
+        "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
+        "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
+        "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
+        "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
+        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+      ],
+      "source_published_kst": "2026-10-05T22:07+09:00",
+      "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
+    },
     "source_fact:9c2c2bee21fc9b881800e687": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -42945,6 +43462,29 @@
       ],
       "source_published_kst": "2026-10-05T21:54+09:00",
       "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
+    },
+    "source_fact:9d0f7a9705962412d25f433e": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.hankyung.com/article/202610042690i",
+      "source": "한국경제",
+      "source_body_digest": "245f8781b51a801aadc318af1b95998d4e04a75097ef3ec6ef7d8421dc97b25f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af81f563a3a59d62d00d13042752a5f0a2fc7822873bab9c65a215f56115d8b1",
+      "source_fact_keys": [
+        "source_fact:v1:099329c8df48899e9a9ee856512931b49e6757efedd45ff72b8bba76d7527345",
+        "source_fact:v1:ba9ffdf56ff315d92a8fd07c02fea1f18c6dbff16a4ff162e334c13298443b9d",
+        "source_fact:v1:c48d41f6130f7486a09260d4a2d2e776a7f7965920dd6ea53c5b2abe9b9fc112",
+        "source_fact:v1:c505bd93a24f956d137be2baddd1e11af296575eafe013ed700e676e3c7d1649",
+        "source_fact:v1:c5b083abf9abfbe42390711f93d545046d05a01905f74e2bd07209529febe689",
+        "source_fact:v1:d5f1264c5e92def41d056a92346c8af094e9ede3eaa2499966d0b997f03894e1",
+        "source_fact:v1:e6155a2b31cafd6802a36dbfa054d750823d9f8c52293dd013d926a4d05aad90"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
     },
     "source_fact:9e6c9614545d6db1412073c4": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -43034,6 +43574,27 @@
       ],
       "source_published_kst": "2026-10-05T08:05+09:00",
       "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
+    },
+    "source_fact:a01f9ce481e17f06363194b3": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
+      "source": "머니투데이",
+      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_keys": [
+        "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
+        "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
+        "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
+        "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
+        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+      ],
+      "source_published_kst": "2026-10-05T22:07+09:00",
+      "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
     "source_fact:a094d2a92625ea2eedb6e8a4": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -43451,6 +44012,27 @@
       ],
       "source_published_kst": "2026-10-05T13:29+09:00",
       "title": "JP모간, 10월 '콕' 집은 종목은…아멕스·써모피셔·리버티"
+    },
+    "source_fact:ab2b79d56ef4f1d90c69a544": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
+      "source": "머니투데이",
+      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_keys": [
+        "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
+        "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
+        "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
+        "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
+        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+      ],
+      "source_published_kst": "2026-10-05T22:07+09:00",
+      "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
     "source_fact:abf942a098423ae6812f6571": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -44425,6 +45007,29 @@
       "source_published_kst": "2026-10-05T19:06+09:00",
       "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
     },
+    "source_fact:cf015d9c81186f669ba3f9bb": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.hankyung.com/article/202610042690i",
+      "source": "한국경제",
+      "source_body_digest": "245f8781b51a801aadc318af1b95998d4e04a75097ef3ec6ef7d8421dc97b25f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af81f563a3a59d62d00d13042752a5f0a2fc7822873bab9c65a215f56115d8b1",
+      "source_fact_keys": [
+        "source_fact:v1:099329c8df48899e9a9ee856512931b49e6757efedd45ff72b8bba76d7527345",
+        "source_fact:v1:ba9ffdf56ff315d92a8fd07c02fea1f18c6dbff16a4ff162e334c13298443b9d",
+        "source_fact:v1:c48d41f6130f7486a09260d4a2d2e776a7f7965920dd6ea53c5b2abe9b9fc112",
+        "source_fact:v1:c505bd93a24f956d137be2baddd1e11af296575eafe013ed700e676e3c7d1649",
+        "source_fact:v1:c5b083abf9abfbe42390711f93d545046d05a01905f74e2bd07209529febe689",
+        "source_fact:v1:d5f1264c5e92def41d056a92346c8af094e9ede3eaa2499966d0b997f03894e1",
+        "source_fact:v1:e6155a2b31cafd6802a36dbfa054d750823d9f8c52293dd013d926a4d05aad90"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
+    },
     "source_fact:cf9074b1490ff26fdaa2544e": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -45366,6 +45971,25 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:ec89db2fb9a4a04a1fb4921c": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168764",
+      "source": "매일경제",
+      "source_body_digest": "5eb1c5fe26b697aef92c728bfcce4e7016891bfd9ac955998d770641749851e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:610c61482fe80dd3b56dd47046000ef165c004d3aa5270c4b9ec5f39b16ef984",
+      "source_fact_keys": [
+        "source_fact:v1:1b09f812ff56f38f1088af24b44d590930b2880dda2fc0376df6c5b6da7647ba",
+        "source_fact:v1:b7809d5851e1a22ee50dce0b07882f1e3efbc3a17b6c24f94ad459705140265f",
+        "source_fact:v1:c1ee5e27064ec58112613f0aed6da4b120d6b35f97bd84d268abf148716e878b"
+      ],
+      "source_published_kst": "2026-10-05T22:19+09:00",
+      "title": "세노버스 에너지, 아사바스카오일 57억 캐나다달러 인수 합의"
+    },
     "source_fact:ecd68d0bc978e1ccd8d21e7f": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -45845,6 +46469,29 @@
       ],
       "source_published_kst": "2026-10-05T20:34+09:00",
       "title": "해로우 헬스, 티르바야 인수 완료..선지급 3000만달러"
+    },
+    "source_fact:fe22db0c5f7685aa6572d276": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.hankyung.com/article/202610042690i",
+      "source": "한국경제",
+      "source_body_digest": "245f8781b51a801aadc318af1b95998d4e04a75097ef3ec6ef7d8421dc97b25f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af81f563a3a59d62d00d13042752a5f0a2fc7822873bab9c65a215f56115d8b1",
+      "source_fact_keys": [
+        "source_fact:v1:099329c8df48899e9a9ee856512931b49e6757efedd45ff72b8bba76d7527345",
+        "source_fact:v1:ba9ffdf56ff315d92a8fd07c02fea1f18c6dbff16a4ff162e334c13298443b9d",
+        "source_fact:v1:c48d41f6130f7486a09260d4a2d2e776a7f7965920dd6ea53c5b2abe9b9fc112",
+        "source_fact:v1:c505bd93a24f956d137be2baddd1e11af296575eafe013ed700e676e3c7d1649",
+        "source_fact:v1:c5b083abf9abfbe42390711f93d545046d05a01905f74e2bd07209529febe689",
+        "source_fact:v1:d5f1264c5e92def41d056a92346c8af094e9ede3eaa2499966d0b997f03894e1",
+        "source_fact:v1:e6155a2b31cafd6802a36dbfa054d750823d9f8c52293dd013d926a4d05aad90"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
     },
     "source_fact:fe37505b340724f92848ff43": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -48647,6 +49294,21 @@
       "link": "https://www.newsis.com/view/NISX20260922_0003800430",
       "source": "뉴시스",
       "title": "\"삼성전자·SK하이닉스 독주 체제 강화\"…증시 쏠림 속 AI 데이터센터 수혜주 주목"
+    },
+    "title:3058e5456c9acb36f6ddc167": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168765",
+      "source": "매일경제",
+      "source_body_digest": "98286c44bf7b01f3d5107e263c1b61e4af0d1187c640fb180f2445dc3766332d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:22+09:00",
+      "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
     },
     "title:30e5d112f50b7476124611fe": {
       "first_seen_kst": "2026-09-18T14:19:18+09:00",
@@ -52738,6 +53400,27 @@
       "source": "연합뉴스",
       "title": "광주 반도체 클러스터 조성 설비 투자 본격 시동 | 연합뉴스"
     },
+    "title:71b692d828b4c094a6311e99": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
+      "source": "머니투데이",
+      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_keys": [
+        "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
+        "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
+        "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
+        "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
+        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+      ],
+      "source_published_kst": "2026-10-05T22:07+09:00",
+      "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
+    },
     "title:71bab4578d2a6a7c9cc33c58": {
       "first_seen_kst": "2026-10-02T15:40:35+09:00",
       "lanes": {
@@ -53776,6 +54459,29 @@
       "source": "뉴시스",
       "title": "\"로봇 한 대에 메모리 수백 GB\"…삼전·닉스, 로봇서 새 시장 바라본다"
     },
+    "title:83ca80210380fa5c66da39c1": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.hankyung.com/article/202610042690i",
+      "source": "한국경제",
+      "source_body_digest": "245f8781b51a801aadc318af1b95998d4e04a75097ef3ec6ef7d8421dc97b25f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:af81f563a3a59d62d00d13042752a5f0a2fc7822873bab9c65a215f56115d8b1",
+      "source_fact_keys": [
+        "source_fact:v1:099329c8df48899e9a9ee856512931b49e6757efedd45ff72b8bba76d7527345",
+        "source_fact:v1:ba9ffdf56ff315d92a8fd07c02fea1f18c6dbff16a4ff162e334c13298443b9d",
+        "source_fact:v1:c48d41f6130f7486a09260d4a2d2e776a7f7965920dd6ea53c5b2abe9b9fc112",
+        "source_fact:v1:c505bd93a24f956d137be2baddd1e11af296575eafe013ed700e676e3c7d1649",
+        "source_fact:v1:c5b083abf9abfbe42390711f93d545046d05a01905f74e2bd07209529febe689",
+        "source_fact:v1:d5f1264c5e92def41d056a92346c8af094e9ede3eaa2499966d0b997f03894e1",
+        "source_fact:v1:e6155a2b31cafd6802a36dbfa054d750823d9f8c52293dd013d926a4d05aad90"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
+    },
     "title:83d2f03f5826b34168905f1b": {
       "first_seen_kst": "2026-09-30T06:14:07+09:00",
       "lanes": {
@@ -54805,6 +55511,25 @@
       "link": "https://www.dailian.co.kr/news/view/1694060/",
       "source": "데일리안",
       "title": "AI가 공장을 움직인다…피지컬 AI, '로봇 두뇌' 경쟁 본격화"
+    },
+    "title:91661105d0ca81a57c3f866e": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168764",
+      "source": "매일경제",
+      "source_body_digest": "5eb1c5fe26b697aef92c728bfcce4e7016891bfd9ac955998d770641749851e3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:610c61482fe80dd3b56dd47046000ef165c004d3aa5270c4b9ec5f39b16ef984",
+      "source_fact_keys": [
+        "source_fact:v1:1b09f812ff56f38f1088af24b44d590930b2880dda2fc0376df6c5b6da7647ba",
+        "source_fact:v1:b7809d5851e1a22ee50dce0b07882f1e3efbc3a17b6c24f94ad459705140265f",
+        "source_fact:v1:c1ee5e27064ec58112613f0aed6da4b120d6b35f97bd84d268abf148716e878b"
+      ],
+      "source_published_kst": "2026-10-05T22:19+09:00",
+      "title": "세노버스 에너지, 아사바스카오일 57억 캐나다달러 인수 합의"
     },
     "title:9167efbf51dd767a45d9b113": {
       "first_seen_kst": "2026-09-25T06:36:26+09:00",
@@ -57296,6 +58021,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:04+09:00",
       "title": "美 국채·주식 아슬아슬한 ‘디커플링’…증시 떠받치는 AI"
+    },
+    "title:bbb8e477c3ccec25bc9f53d4": {
+      "first_seen_kst": "2026-10-05T22:30:10+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:30:10+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:30:10+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168721",
+      "source": "매일경제",
+      "source_body_digest": "523bb67e0e6e546ca66882f58f101084603e4f0a07231207a473bb71da16f296",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:40f44548339fb36b9aa123e1b14a6643ee1b72763486372a0a6ab19a2ba83910",
+      "source_fact_keys": [
+        "source_fact:v1:2fba009f6d86bec89df929e79fad59400e505201f23cd9060eb2a99ad0ac9180",
+        "source_fact:v1:979a05763515392dd7c566d393d1af10381486bfab46e2403192fea4505bcd04"
+      ],
+      "source_published_kst": "2026-10-05T21:09+09:00",
+      "title": "플렉스, 액시엄 20억달러 우선주 유치..가치 375억달러"
     },
     "title:bbd23b7d1155b4b9e6131cae": {
       "first_seen_kst": "2026-10-05T12:09:30+09:00",
@@ -61413,5 +62156,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T22:21:29+09:00"
+  "updated_at_kst": "2026-10-05T22:30:10+09:00"
 }
