@@ -155,6 +155,43 @@ class YenCarryCompositeWatchTests(unittest.TestCase):
         )
         self.assertEqual(verdict.unwind_level, 0)
 
+    def test_transient_optional_source_failure_preserves_comparison_baseline(self):
+        previous = {
+            "initialized": True,
+            "source_dates": {
+                "cftc": "2026-09-29",
+                "mof_week": "2026-09-20~09-26",
+                "policy_action": "2026-07-31",
+            },
+            "values": {
+                "cftc_net_short": 14161,
+                "cftc_net_short_pct_oi": 3.93,
+                "mof_latest_2w_outward_trillion_yen": -2.3194,
+                "mof_prior_2w_outward_trillion_yen": 0.8836,
+            },
+        }
+        pending = {
+            "source_dates": {"cftc": None, "mof_week": None, "policy_action": None},
+            "values": {
+                "cftc_net_short": None,
+                "cftc_net_short_pct_oi": None,
+                "mof_latest_2w_outward_trillion_yen": None,
+                "mof_prior_2w_outward_trillion_yen": None,
+            },
+        }
+        result = watch.preserve_missing_source_state(
+            pending,
+            previous,
+            cftc=None,
+            mof=None,
+            policy=None,
+        )
+        self.assertEqual(result["source_dates"]["cftc"], "2026-09-29")
+        self.assertEqual(result["source_dates"]["mof_week"], "2026-09-20~09-26")
+        self.assertEqual(result["source_dates"]["policy_action"], "2026-07-31")
+        self.assertEqual(result["values"]["cftc_net_short"], 14161)
+        self.assertAlmostEqual(result["values"]["mof_latest_2w_outward_trillion_yen"], -2.3194)
+
     def test_initial_baseline_does_not_send(self):
         pending = {"initialized": True, "source_dates": {"cftc": "2026-08-11", "mof_week": "w2"}}
         verdict = watch.CompositeVerdict(0, "엔캐리 청산 미확인", 2, "엔화 재약세·캐리 재구축 압력 강화", True, {})
