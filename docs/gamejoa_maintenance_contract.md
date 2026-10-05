@@ -231,6 +231,30 @@ Every defect or requested change must follow this sequence:
 - A maritime-attack headline must lead with reported attacks or actual shipping
   disruption and its attribution/observation window, not hypothetical oil-price
   effects. A notice date is not an undisclosed incident-occurrence date.
+- A production-target decision leads with the acting producer group, affected
+  month and decision, not earlier oil-price or stockpile background. A facility
+  approval leads with regulator, product, facility, supply scope and any sourced
+  capacity change, not an analyst's unrelated annual revenue forecast.
+- An issuer's NAV estimate retains its observation date, comparison date,
+  forecast status and unaudited limitation. A weekly outlook may qualify through
+  a source-bound quantitative consensus revision, but company-name overlap and
+  generic optimism cannot substitute for that revision. Broker consensus is not
+  company guidance. A historical unlisted-business survey and policy advice need
+  new execution to qualify.
+- Acquisition-agreement synopsis and full-report copies compare sourced buyer,
+  target, currency, complete original consideration amount and announced stage.
+  Preserve explicit revised terms as new facts. Do not split dotted issuer names
+  into sentences or treat negotiations as signed agreements. Receipt migration
+  uses only audited already-sent articles, never a theme-wide suppression list.
+- Buyer- and target-perspective reports of the same acquisition use one event
+  identity. Total deal consideration must not be replaced by a per-share price
+  merely because the per-share amount appears first in the source lead.
+- Consumer fashion publicity, municipal student-welfare notices and startup
+  profiles without new execution are not equity catalysts. Actual issuer
+  earnings, signed supply contracts, factory permits and quantified customer
+  validation remain eligible under the source guards. Productivity services
+  are not industrial production capacity; reused commercialization history is
+  not a newly validated cooling technology.
 - DRAM market share must retain its source, period and revenue/bit basis.
   CAPEX plans must retain their fiscal period and net/gross basis. A reporter's
   annual extrapolation is not company guidance. A project bill is not a tariff.

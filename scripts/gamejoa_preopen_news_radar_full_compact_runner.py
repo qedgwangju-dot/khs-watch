@@ -2525,11 +2525,30 @@ def acquisition_negotiation_fact(title: str, body: str) -> str:
 def reported_issuer_announcement_fact(title: str, body: str) -> str:
     """Bind a declared issuer action before analyst forecasts or commentary."""
     body = market_materiality.source_reported_body(body)
-    issuer = re.search(r"(?m)^([A-Za-z가-힣][^.!?\n]{1,35}?)\(([A-Z0-9.]{2,10})\)(?:은|는|가|이)\s+", body)
+    issuer = re.search(r"(?m)^([A-Za-z가-힣][^!?\n]{1,45}?)\(([A-Z0-9.]{2,10})\)(?:은|는|가|이)\s+", body)
     if not issuer:
         return ""
     actor = issuer.group(1).strip()
     lead = body[issuer.end():].splitlines()[0]
+    if market_materiality.focus_kind(title) == "nav_forecast":
+        reference = re.search(r"(\d{1,2}월\s*\d{1,2}일)\s*기준\s*잠정", lead)
+        nav = re.search(r"주당\s*순자산가치\(NAV\)가\s*(\d{1,2}월\s*\d{1,2}일)\s*대비\s*(\d+(?:\.\d+)?)%\s*넘게\s*증가할\s*것으로\s*예상", lead)
+        if reference and nav:
+            fact = (f"{actor}{korean_topic_particle(actor)} {reference.group(1)} 잠정치에서 주당 NAV가 "
+                    f"{nav.group(1)} 대비 {nav.group(2)}% 넘게 증가할 것으로 예상했다.")
+            if re.search(r"감사를\s*거치지\s*않은\s*잠정치", body):
+                fact += " 감사 전 추정치로 최종 결산에서 달라질 수 있다."
+            return fact if core_sentence_is_complete(fact) else ""
+    if market_materiality.focus_kind(title) == "facility_approval":
+        product = re.search(r"FDA\s*([A-Za-z가-힣0-9]+)\s*(?:美|미국)", title)
+        facility = re.search(r"생산\s*설비\(([A-Z0-9]+)\)", lead)
+        if product and facility and product.group(1) in lead and re.search(r"FDA[^\n]{0,400}승인해", lead):
+            fact = (f"{actor}{korean_topic_particle(actor)} FDA의 추가 승인으로 {product.group(1)}를 "
+                    f"{facility.group(1)}에서도 미국용 원료의약품으로 생산할 수 있게 됐다.")
+            capacity = re.search(r"미국\s*공급[^\n]{0,50}?생산능력이\s*사실상\s*(\d+)배로\s*늘었다고\s*밝혔다", body)
+            if capacity:
+                fact += f" 회사는 미국 공급용 생산능력이 사실상 {capacity.group(1)}배로 늘었다고 밝혔다."
+            return fact if core_sentence_is_complete(fact) else ""
     currency = r"\d[\d,.]*(?:\s*[조억만천]\s*\d[\d,.]*)*\s*[조억만천]?\s*(?:달러|유로|원)"
     acquisition = re.search(rf"^(.+?)(?:을|를)\s*(약\s*)?({currency})에\s*인수하는\s*(?:최종\s*)?계약을\s*체결", lead)
     if "인수" in title and acquisition:
@@ -2571,10 +2590,40 @@ def reported_issuer_announcement_fact(title: str, body: str) -> str:
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
+    merger = market_materiality.merger_agreement_terms(title, body)
+    if merger:
+        source = market_materiality.source_reported_body(body)
+        amount = next(item for item in re.finditer(market_materiality.SOURCE_MONEY, " ".join(market_materiality.source_sentences(source)[:2]))
+                      if [item.group(2), market_materiality.korean_amount_value(item.group(1))] == merger["amount"])
+        actor = title.split(",", 1)[0].strip()
+        target_view = re.match(r"^[^,，]+[,，]\s*([^,，]{2,40}?)의\s+\d", title)
+        if target_view:
+            actor = target_view.group(1).strip()
+        fact = f"{actor}{korean_topic_particle(actor)} {amount.group(1).strip()}{amount.group(2)} 규모의 {merger['target']} 인수에 합의했다."
+        closing = re.search(r"거래\s*(?:종료|종결)는\s*(\d{4})년\s*(상반기|하반기|[1-4]분기)[^.!?]{0,20}예상", source)
+        if closing and re.search(r"규제\s*당국\s*승인", source):
+            fact += f" {closing.group(1)}년 {closing.group(2)} 종결 예상이며 규제 승인 등이 필요하다."
+        return fact if core_sentence_is_complete(fact) else ""
     reported_fact = reported_issuer_announcement_fact(title, body)
     if reported_fact:
         return reported_fact
     source = re.sub(r"\s+", " ", market_materiality.source_reported_body(body))
+    if "주간증시전망" in title:
+        revision = re.search(
+            r"([A-Za-z가-힣]+증권)에\s*따르면\s*([A-Za-z가-힣0-9]+)\s*([1-4])분기\s*영업이익\s*컨센서스는\s*"
+            r"(\d{1,2}월\s*(?:초|중순|말))\s*(\d[\d,.\s조억만천백십]*원)으로\s*고점을\s*찍은\s*뒤\s*현재\s*"
+            r"(\d[\d,.\s조억만천백십]*원)까지\s*하향\s*조정됐다", source,
+        )
+        if revision and revision.group(2) in title:
+            broker, actor, quarter, period, previous, current = revision.groups()
+            fact = (f"{broker}에 따르면 {actor} {quarter}분기 영업이익 컨센서스는 "
+                    f"{period} {previous.strip()}에서 현재 {current.strip()}으로 하향 조정됐다.")
+            return fact if core_sentence_is_complete(fact) else ""
+    if focus == "production_target":
+        decision = re.search(r"(OPEC\+)\s*내\s*(\d+)개국[^.!?]{0,100}?(내달|다음\s*달|\d{1,2}월)\s*생산\s*목표를\s*현\s*수준으로\s*유지하기로\s*합의했다", source)
+        if decision:
+            group, count, period = decision.groups()
+            return f"{group} {count}개국은 {period} 원유 생산 목표를 현 수준으로 유지하기로 합의했다."
     if focus == "maritime_attack":
         observation = re.search(
             r"UKMTO\)(?:는|은)\s*(지난달\s*\d{1,2}일)\s*이후\s*(이달\s*\d{1,2}일)까지"
@@ -8332,6 +8381,15 @@ def source_output_aligned(alert: dict) -> bool:
                 and normalized_article_sentence(item["source_excerpt"]) == summary
                 for item in source_market_materiality(alert)["evidence"]
             )
+        preview_revision_alignment = False
+        if alert.get("body_verified") and "주간증시전망" in source_title:
+            observation = source_headline_event_fact(
+                str(alert.get("source_title") or ""), str(alert.get("source_body") or ""),
+            )
+            preview_revision_alignment = bool(
+                observation and "컨센서스" in observation and "하향 조정" in observation
+                and market_materiality.canonical_source_fact(observation) == market_materiality.canonical_source_fact(summary)
+            )
         return bool(
             (alert.get("body_verified") or alert.get("title_fact_verified"))
             and source_title
@@ -8339,7 +8397,7 @@ def source_output_aligned(alert: dict) -> bool:
             and len(summary) >= 12
             and not core_has_ui_garbage(summary)
             and korean_business_source_allowed(alert)
-            and (korean_title_core_aligned(source_title, summary) or financing_alignment)
+            and (korean_title_core_aligned(source_title, summary) or financing_alignment or preview_revision_alignment)
             and macro_release_core_aligned(source_title, summary)
             and market_materiality.core_focus_aligned(source_title, summary)
             and not source_core_fact_errors(alert)

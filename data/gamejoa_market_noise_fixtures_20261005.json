@@ -1,0 +1,72 @@
+{
+  "run_id": 37312001880,
+  "message_id": 2237,
+  "query_time_kst": "2026-10-05T21:53:16+09:00",
+  "external_delivery": true,
+  "body_basis": "Bounded reported-body excerpts from the actual sent artifact. full_body_sha256 refers to its full saved source_body, not the excerpt.",
+  "cases": [
+    {
+      "id": "shipping_attack_not_consumer_noise",
+      "title": "이란, 호르무즈 공격 재개 … 중동 원유 수출 회복세에 '찬물'",
+      "url": "https://www.mk.co.kr/news/world/12168604",
+      "published": "2026-10-05T17:30+09:00",
+      "full_body_sha256": "fc325185013ef42076f824b8e9add79f431253b3dff541d28fe0ae3b25a2a2f4",
+      "body": "걸프 지역 산유국들의 원유 수출량이 지난달 전쟁 전 수준으로 회복되자 호르무즈 해협 일대에서 이란의 선박 공격이 재개됐다. 공세 여파로 원유 수송량이 줄어들 것으로 전망되는 상황에서 친이란 예멘 후티 반군이 사우디아라비아 석유 시설을 공습하면서 국제 유가가 요동칠 것으로 보인다.\n영국 해사무역기구(UKMTO)는 지난달 28일 이후 호르무즈 해협 주변에서 선박을 대상으로 한 7건의 공습을 보고했다. UKMTO는 이날도 또 다른 선박이 공격받았다고 밝혔다.",
+      "expected_keep": true
+    },
+    {
+      "id": "same_merger_from_target_perspective",
+      "title": "RXO, C.H.로빈슨의 58억달러 인수 합의에 29% 프리미엄 주목",
+      "url": "https://stock.mk.co.kr/news/view/1169799",
+      "published": "2026-10-05T21:20+09:00",
+      "full_body_sha256": "379b044e57af6f6a3d2ab1f64a513c58866c4b5197679f66f4562fbe95d5dc27",
+      "body": "C.H.로빈슨이 주당 30.25달러, 총 58억달러에 인수하기로 합의했습니다. 현금 17.25달러와 주식 0.0856주를 지급하며 직전 종가보다 29% 높은 프리미엄이 책정됐습니다. 연 3억달러 규모 시너지도 기대되어 주가가 인수가 부근으로 빠르게 다가서고 있습니다.",
+      "expected_keep": true
+    },
+    {
+      "id": "subscription_productivity_not_factory_capacity",
+      "title": "KT 이어 LG유플러스도 뱅고와 손잡았다…‘유독’에 해외 AI 서비스 확대",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=01646566645609968",
+      "published": "2026-10-05T09:00+09:00",
+      "full_body_sha256": "d10ea1c1d9a01fbd3aad23b55b96b5ee69a5fb679a8512fcaeea042824a9cdb2",
+      "body": "LG유플러스(032640)가 KT(030200)에 이어 영국의 글로벌 구독 플랫폼 기업 뱅고(Bango)와 손잡고 해외 AI 서비스 확보에 나선다. 국내에서 개별적으로 이용하기 어려웠던 글로벌 AI 서비스를 구독 플랫폼 ‘유독’에 들여와 AI 구독 경쟁력을 높인다는 전략이다.\n양사는 오는 11월 영상 편집 AI 서비스를 시작으로 생성형 AI, 생산성 AI, 크리에이티브 AI 등 다양한 글로벌 서비스를 유독에 순차적으로 선보일 계획이다.\n조용성 LG유플러스 제휴사업담당(상무)은 “고객의 구독 수요가 콘텐츠를 넘어 AI와 생산성 서비스 영역으로 빠르게 확대되고 있다”며 “국내 고객들이 다양한 글로벌 AI 서비스를 보다 쉽고 편리하게 이용할 수 있도록 하고 유독의 AI 구독 경쟁력도 지속 강화하겠다”고 말했다.",
+      "expected_keep": false
+    },
+    {
+      "id": "startup_profile_not_new_cooling_execution",
+      "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다",
+      "url": "https://www.mk.co.kr/news/business/12167055",
+      "published": "2026-10-05T08:05+09:00",
+      "full_body_sha256": "6beb04a1d42c2077e04341878322f449820f5a693a650d0429fa8422438a917a",
+      "body": "판교 창업존은 중소벤처기업부가 신산업 분야 유망 창업자를 집중 육성하기 위해 2017년 설립한 국내 최대 창업지원 클러스터다. 미래 유니콘을 꿈꾸고 있는 입주기업 대표를 만나본다. [2026 판교 창업존 입주기업 인터뷰 ②] 이주예 씨이앤에스(CENS) 대표이사\n이 기업은 발열이 집중되는 핵심 부위에 비전도성 절연 유체를 미스트 형태로 정밀 직접 분사하는 기술을 개발해 기존 액침 방식 대비 냉각액 사용량을 95% 줄이고 구조 하중을 70% 절감했다.\n당사는 친환경 선박의 전력변환장치(VFD) 수냉식 냉각 시스템(CENS-P)을 상용화하며 축적한 고신뢰성 유체 제어 기술을 바탕으로 AI 데이터센터용 정밀 액체냉각 시스템인 ‘CENS-D’를 개발했다.\n2024년 4월 예비창업패키지 선정을 시작으로 친환경 선박용 수냉식 냉각 시스템 CENS-P를 출시했으며, 중견기업 2개사와 산업설비 냉각 설계용역 계약을 체결했다. 2025년에는 CENS-P 실물 납품을 시작했다.",
+      "expected_keep": false
+    },
+    {
+      "id": "fashion_collection_not_industrial_capacity",
+      "title": "태극기 스니커즈에 호랑이 티셔츠까지…패션에 스민 '한국' | 연합뉴스",
+      "url": "https://www.yna.co.kr/view/AKR20261003023500030",
+      "published": "2026-10-05T07:31+09:00",
+      "full_body_sha256": "5ba98fb6cc03f55158ed0511fc773300e16c1e78095fc69e620705c048adab5f",
+      "body": "한글날을 앞두고 패션업계에서 한글과 태극기, 호랑이 등 한국적 요소를 현대적인 감각으로 재해석한 상품이 잇달아 등장하고 있다.\n과거 전통문화 상품이나 관광 기념품에 주로 활용되던 한국적 이미지가 스니커즈와 일상복, 생활소품 등으로 영역을 넓히면서 젊은 소비자와 외국인 관광객의 구매로도 이어지는 모습이다.\n이 상품은 서울 영문 로고와 호랑이 그래픽 등 한국적인 요소를 현대적으로 재해석한 것으로, 지난 1월 23개 품목으로 출발한 뒤 완판과 추가 생산이 이어지면서 5월에는 26개 품목으로 확대됐다.",
+      "expected_keep": false
+    },
+    {
+      "id": "telecom_operating_requirement_is_policy_change",
+      "title": "[단독]\"알뜰폰 1만명당 1명\"이라더니…정부, 상담사 수도 몰랐다",
+      "url": "https://www.edaily.co.kr/News/Read?newsId=01649846645609968",
+      "published": "2026-10-05T09:01+09:00",
+      "full_body_sha256": "c650d405dc78d60b0705306b38f1bf8fa65e530d2706422216236f3ea8b08cc5",
+      "body": "저렴한 통신비를 앞세워 알뜰폰 가입자가 1000만명을 돌파했으나 고객센터 이용자들 사이 불만이 커지고 있다.\n정부는 현재 SK텔레콤(SKT) 망 알뜰폰 사업자에 적용되는 ‘가입자 1만명당 상담 인력 1명 이상’ 기준을 KT·LG유플러스 망 사업자까지 확대하고, 사업자별 최소 3명 이상의 상담 인력을 두도록 규제를 강화하는 방안을 추진하고 있다.\n정부는 실제 인원수를 별도로 제출받지 않은 채 요건 충족 여부만 확인해온 것으로 나타났다.",
+      "expected_keep": true
+    },
+    {
+      "id": "municipal_student_welfare_not_equity_policy",
+      "title": "순창군, 대학생 생활비 지원사업 전개…10월6~23일 접수",
+      "url": "https://www.newsis.com/view/NISX20261002_0003812853",
+      "published": "2026-10-05T09:00+09:00",
+      "full_body_sha256": "f1b91cc2f423b12f9710c7cd8abef36dcf52a672c993f829d46d47871dece3b5",
+      "body": "전북 순창군과 순창군옥천장학회가 지역 대학생들의 생활비 부담을 덜어주기 위해 추진하는 '2026년 하반기 대학생 생활지원금 지원사업' 신청을 오는 6~23일 접수한다고 5일 밝혔다.\n민선 8기 공약사업으로 시작된 교육복지사업이다. 지원대상은 지난 9월30일 공고일 기준 만 40세 미만 순창군 출신 대학 재학생이며 학기당 100만원에서 최대 200만원까지 지원된다.",
+      "expected_keep": false
+    }
+  ]
+}
