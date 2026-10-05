@@ -4,7 +4,7 @@
   "baseline_cutoff_kst": "2026-10-05T19:05:00+09:00",
   "baseline": {
     "historical_concentration": {
-      "east_asia_china_semiconductor_manufacturing_capacity_pct": 75,
+      "east_asia_china_semiconductor_manufacturing_capacity_pct": 75.0,
       "vintage": "2021",
       "scope": "전체 반도체 제조능력에 대한 SIA·BCG 당시 추정",
       "current_live_metric": false,
@@ -69,11 +69,16 @@
       "comparable_75pct_refresh_public": false
     }
   },
-  "updated_at_kst": "2026-10-05T19:05:00+09:00",
-  "last_scan_count": 0,
+  "updated_at_kst": "2026-10-05T19:16:03+09:00",
+  "last_scan_count": 4,
   "last_eligible_count": 0,
   "last_held_count": 0,
-  "seen_fingerprints": [],
+  "seen_fingerprints": [
+    "55bbf1575d333d5e4db815d4",
+    "ab4bbf5bf49f2f1ddd6aba5b",
+    "e3172365bd8c10ce9681459f",
+    "ef0347fedd892f8507e3e383"
+  ],
   "delivered_event_keys": [],
   "last_held": []
 }
