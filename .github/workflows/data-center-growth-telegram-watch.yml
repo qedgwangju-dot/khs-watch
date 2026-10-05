@@ -281,7 +281,7 @@ jobs:
                   payload["reply_markup"] = {
                       "inline_keyboard": [
                           [
-                              {"text": "📌 PJM RBP 원문", "url": "https://www.pjm.com/committees-and-groups/cifp-rbp"},
+                              {"text": "📌 PJM FERC 결정", "url": "https://insidelines.pjm.com/ferc-accepts-pjm-reliability-backstop-proposal/"},
                               {"text": "⚖️ FERC 원문", "url": "https://www.ferc.gov/news-events/news/decisions-notices"},
                           ],
                           [
