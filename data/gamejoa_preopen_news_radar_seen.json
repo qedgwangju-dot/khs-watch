@@ -305,6 +305,26 @@
       "source": "전자신문",
       "title": "“어게인 9000? 내년 코스피 5200 밑돌 수도”…현금 늘리라는 경고 나왔다, 왜?"
     },
+    "event:18704460f8cae57698dfd9c0": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/202610053873i",
+      "source": "한국경제",
+      "source_body_digest": "c5b2cd64ed1647deb062d0d5b477a4b55d9425eb4d8b49e16b9309da858d55e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:959178ce90d2adf63f920784adcb9cb8b5a43e060f36d8b479f237df3241ee28",
+      "source_fact_keys": [
+        "source_fact:v1:1d62df93b68939423b1a21290af451b326dd399f276609f9a85a48a3f31585ca",
+        "source_fact:v1:a75b27fa7f704474498b8cee4d7d84799d12a44f9a17ac7a831744fcaa559852",
+        "source_fact:v1:dfd978118f501f59dc0010ac33f09ded2535f443543e1938358e97fc27164ab0",
+        "source_fact:v1:e483d410ac1bc0019194baa802b1e4ff13144f7bb1c4723c92316467115f8708"
+      ],
+      "source_published_kst": "2026-10-05T19:19+09:00",
+      "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
+    },
     "event:18832e728a587e71cee3bd51": {
       "first_seen_kst": "2026-10-02T07:58:50+09:00",
       "lanes": {
@@ -1221,14 +1241,19 @@
     "event:4c60ef5885703c4873ef90e7": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
       "lanes": {
-        "live": "2026-10-05T07:03:44+09:00"
+        "live": "2026-10-05T20:22:49+09:00"
       },
-      "last_seen_kst": "2026-10-05T07:03:44+09:00",
-      "link": "https://www.newsis.com/view/NISX20261002_0003813107",
-      "source": "뉴시스",
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03125846645609968",
+      "source": "이데일리",
+      "source_body_digest": "55c74c21efd1679b1d31462bf5371118dc0cbefc7ce844d37a8985bc4e059e66",
       "source_event_identity": "",
-      "source_published_kst": "2026-10-05T07:00+09:00",
-      "title": "판 커지는 'AI 데이터센터'…삼성·SK·LG도 투자 확대 나서"
+      "source_fact_identity": "source_facts:v1:d7efe74039266d67a2d5cd248604ae767d30d9567d44590aeaa3a9e5dd5e56a8",
+      "source_fact_keys": [
+        "source_fact:v1:4c9b4d08793e8ee31ad832ccfcc78f4d34ac8d7853648f0efe7261b5fcf4dbef"
+      ],
+      "source_published_kst": "2026-10-05T20:05+09:00",
+      "title": "마이크로소프트, 기업 보안 수요 확대…투자의견↑-멜리우스"
     },
     "event:4dabb2eed3d09dde52454678": {
       "first_seen_kst": "2026-09-18T13:11:00+09:00",
@@ -2050,21 +2075,23 @@
     "event:78c48063ad6f5facdfb0aa71": {
       "first_seen_kst": "2026-10-05T14:14:24+09:00",
       "lanes": {
-        "live": "2026-10-05T20:04:01+09:00"
+        "live": "2026-10-05T20:22:49+09:00"
       },
-      "last_seen_kst": "2026-10-05T20:04:01+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2632476",
-      "source": "이투데이",
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/2026100537881",
+      "source": "한국경제",
+      "source_body_digest": "37cc2f9ab72e9de5d2dcd7784f707e86b98c438806661db2d758ce57d2c025c2",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:a3ef9f4ed4c87f23cbb2959de9ef2c056a02e3841194acbb21465d983c6cfd1e",
+      "source_fact_identity": "source_facts:v1:aec3f22aab6607a7c9b5cf4eb31b775b59b1afa268094a732be1cb40fd1898a4",
       "source_fact_keys": [
-        "source_fact:v1:2fef3d2fef46b6be913aa83c041689227b3811e3d21052a156e5c29815250860",
-        "source_fact:v1:59518b984ff0dbbb17f7c407504a360c395ace305a856de4ba477a062fe4b767",
-        "source_fact:v1:6a05872f571d99dba4775731fcf59d2d620fd4f1fe7f63c25295cd5f1a01ba0c",
-        "source_fact:v1:e6eab55dae1a46a12aff69063108d49e5276813116edcb9d45b02ee7b26037b4"
+        "source_fact:v1:2f902f6f28a606483fb4575330415819f64a791b272f93042a95768bc5842b04",
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:7b996e132cd1748ada89df98b16959b420786d141de54f582acdb8b2d0ec1d2d",
+        "source_fact:v1:90f9be610d6fc5efb061cb34bd44d6a6266dfffd29926486e838b0d717979b21",
+        "source_fact:v1:a4aab8926acb79895e835da9eab3fe991c15da2f95ad04169f384eb975a701f2"
       ],
-      "source_published_kst": "2026-10-05T16:40+09:00",
-      "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+      "source_published_kst": "2026-10-05T17:46+09:00",
+      "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
     },
     "event:78cea877cce544763b26037b": {
       "first_seen_kst": "2026-10-02T18:51:02+09:00",
@@ -4599,6 +4626,23 @@
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
     },
+    "fact:324e453978b86897f66191c5": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03125846645609968",
+      "source": "이데일리",
+      "source_body_digest": "55c74c21efd1679b1d31462bf5371118dc0cbefc7ce844d37a8985bc4e059e66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7efe74039266d67a2d5cd248604ae767d30d9567d44590aeaa3a9e5dd5e56a8",
+      "source_fact_keys": [
+        "source_fact:v1:4c9b4d08793e8ee31ad832ccfcc78f4d34ac8d7853648f0efe7261b5fcf4dbef"
+      ],
+      "source_published_kst": "2026-10-05T20:05+09:00",
+      "title": "마이크로소프트, 기업 보안 수요 확대…투자의견↑-멜리우스"
+    },
     "fact:37db517fa4219a41cccd8216": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -4677,6 +4721,26 @@
       ],
       "source_published_kst": "2026-10-05T05:47+09:00",
       "title": "단일 레버리지 20주 미만 단주, 시간외 종가매매로 '출구 마련' | 연합뉴스"
+    },
+    "fact:55c50bb7ff39d169933f4fd7": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168692",
+      "source": "매일경제",
+      "source_body_digest": "ca79b6c7a8a91e83829017d1e1ec500d00731312ed2d21f9958913552a72fc09",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5391b22fbd90e28891abb0ffd5dccf6628c806ada859ecc47c2c1fafbe89f603",
+      "source_fact_keys": [
+        "source_fact:v1:11749eacfa4109f311fef4f7a12810759cd3afe35c8d240cfe7262dce446b564",
+        "source_fact:v1:ce832967bb34d544f5efa89e10c3e509f034e3853107b94171e16ea88c4d2bae",
+        "source_fact:v1:d18b3bd7e5518574d3a17fbbac5f51e7c0e590ecf204f93f1b3e8e12aedcd293",
+        "source_fact:v1:f3519759731d234170e3dfdd24802384efe961323ec904642364821d686f9dc1"
+      ],
+      "source_published_kst": "2026-10-05T20:07+09:00",
+      "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
     },
     "fact:56f9ba7b5617febe3d3a5db6": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -4905,6 +4969,26 @@
       "source_published_kst": "2026-10-05T12:59+09:00",
       "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
     },
+    "fact:95d4cafd891b1749ccea80fc": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/202610053873i",
+      "source": "한국경제",
+      "source_body_digest": "c5b2cd64ed1647deb062d0d5b477a4b55d9425eb4d8b49e16b9309da858d55e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:959178ce90d2adf63f920784adcb9cb8b5a43e060f36d8b479f237df3241ee28",
+      "source_fact_keys": [
+        "source_fact:v1:1d62df93b68939423b1a21290af451b326dd399f276609f9a85a48a3f31585ca",
+        "source_fact:v1:a75b27fa7f704474498b8cee4d7d84799d12a44f9a17ac7a831744fcaa559852",
+        "source_fact:v1:dfd978118f501f59dc0010ac33f09ded2535f443543e1938358e97fc27164ab0",
+        "source_fact:v1:e483d410ac1bc0019194baa802b1e4ff13144f7bb1c4723c92316467115f8708"
+      ],
+      "source_published_kst": "2026-10-05T19:19+09:00",
+      "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
+    },
     "fact:9eef7b72dc8d62d084275aef": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
       "lanes": {
@@ -4923,6 +5007,27 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "fact:a954ccb993a69dd7768eb9d4": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/2026100537881",
+      "source": "한국경제",
+      "source_body_digest": "37cc2f9ab72e9de5d2dcd7784f707e86b98c438806661db2d758ce57d2c025c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aec3f22aab6607a7c9b5cf4eb31b775b59b1afa268094a732be1cb40fd1898a4",
+      "source_fact_keys": [
+        "source_fact:v1:2f902f6f28a606483fb4575330415819f64a791b272f93042a95768bc5842b04",
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:7b996e132cd1748ada89df98b16959b420786d141de54f582acdb8b2d0ec1d2d",
+        "source_fact:v1:90f9be610d6fc5efb061cb34bd44d6a6266dfffd29926486e838b0d717979b21",
+        "source_fact:v1:a4aab8926acb79895e835da9eab3fe991c15da2f95ad04169f384eb975a701f2"
+      ],
+      "source_published_kst": "2026-10-05T17:46+09:00",
+      "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
     },
     "fact:af0bff465b93656cbe86e2e5": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -7605,6 +7710,26 @@
       "link": "https://www.mt.co.kr/politics/2026/10/01/2026100110563970102",
       "source": "머니투데이",
       "title": "물가 상승, 수요보다 유가·환율 영향…김영환 \"추가 금리인상 신중해야\""
+    },
+    "link:2e70b20478ba155809e9f1b6": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/202610053873i",
+      "source": "한국경제",
+      "source_body_digest": "c5b2cd64ed1647deb062d0d5b477a4b55d9425eb4d8b49e16b9309da858d55e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:959178ce90d2adf63f920784adcb9cb8b5a43e060f36d8b479f237df3241ee28",
+      "source_fact_keys": [
+        "source_fact:v1:1d62df93b68939423b1a21290af451b326dd399f276609f9a85a48a3f31585ca",
+        "source_fact:v1:a75b27fa7f704474498b8cee4d7d84799d12a44f9a17ac7a831744fcaa559852",
+        "source_fact:v1:dfd978118f501f59dc0010ac33f09ded2535f443543e1938358e97fc27164ab0",
+        "source_fact:v1:e483d410ac1bc0019194baa802b1e4ff13144f7bb1c4723c92316467115f8708"
+      ],
+      "source_published_kst": "2026-10-05T19:19+09:00",
+      "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
     },
     "link:2ebe7c423b86ab9de97e13c4": {
       "first_seen_kst": "2026-10-05T16:27:40+09:00",
@@ -12027,6 +12152,26 @@
       "source": "뉴시스",
       "title": "\"주식 시장 조정 끝…10월 중순 반등해 2028년 초까지 상승\" 전문가의 근거는"
     },
+    "link:7d080802ef4686885af69484": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168692",
+      "source": "매일경제",
+      "source_body_digest": "ca79b6c7a8a91e83829017d1e1ec500d00731312ed2d21f9958913552a72fc09",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5391b22fbd90e28891abb0ffd5dccf6628c806ada859ecc47c2c1fafbe89f603",
+      "source_fact_keys": [
+        "source_fact:v1:11749eacfa4109f311fef4f7a12810759cd3afe35c8d240cfe7262dce446b564",
+        "source_fact:v1:ce832967bb34d544f5efa89e10c3e509f034e3853107b94171e16ea88c4d2bae",
+        "source_fact:v1:d18b3bd7e5518574d3a17fbbac5f51e7c0e590ecf204f93f1b3e8e12aedcd293",
+        "source_fact:v1:f3519759731d234170e3dfdd24802384efe961323ec904642364821d686f9dc1"
+      ],
+      "source_published_kst": "2026-10-05T20:07+09:00",
+      "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
+    },
     "link:7dcb6b4d6338a1c515e66a71": {
       "first_seen_kst": "2026-09-25T14:18:58+09:00",
       "lanes": {
@@ -12955,6 +13100,23 @@
       "source": "뉴시스",
       "source_event_identity": "",
       "title": "러, 우크라 데이터센터까지 노린다…제트드론 막을 F-16은 정비 지연"
+    },
+    "link:8fad9d0c7e6044ea18c6705e": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03125846645609968",
+      "source": "이데일리",
+      "source_body_digest": "55c74c21efd1679b1d31462bf5371118dc0cbefc7ce844d37a8985bc4e059e66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7efe74039266d67a2d5cd248604ae767d30d9567d44590aeaa3a9e5dd5e56a8",
+      "source_fact_keys": [
+        "source_fact:v1:4c9b4d08793e8ee31ad832ccfcc78f4d34ac8d7853648f0efe7261b5fcf4dbef"
+      ],
+      "source_published_kst": "2026-10-05T20:05+09:00",
+      "title": "마이크로소프트, 기업 보안 수요 확대…투자의견↑-멜리우스"
     },
     "link:8fcbde5662d4d0354fc8191a": {
       "first_seen_kst": "2026-10-04T01:14:42+09:00",
@@ -15731,6 +15893,27 @@
       "link": "https://www.etoday.co.kr/news/view/2632274",
       "source": "이투데이",
       "title": "정부, G20 준비회의서 “에너지 공급 선박 안전통항 보장해야”"
+    },
+    "link:c08c4904c4b99fa3ccafb687": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/2026100537881",
+      "source": "한국경제",
+      "source_body_digest": "37cc2f9ab72e9de5d2dcd7784f707e86b98c438806661db2d758ce57d2c025c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aec3f22aab6607a7c9b5cf4eb31b775b59b1afa268094a732be1cb40fd1898a4",
+      "source_fact_keys": [
+        "source_fact:v1:2f902f6f28a606483fb4575330415819f64a791b272f93042a95768bc5842b04",
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:7b996e132cd1748ada89df98b16959b420786d141de54f582acdb8b2d0ec1d2d",
+        "source_fact:v1:90f9be610d6fc5efb061cb34bd44d6a6266dfffd29926486e838b0d717979b21",
+        "source_fact:v1:a4aab8926acb79895e835da9eab3fe991c15da2f95ad04169f384eb975a701f2"
+      ],
+      "source_published_kst": "2026-10-05T17:46+09:00",
+      "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
     },
     "link:c1039f20efc1df9de8df0017": {
       "first_seen_kst": "2026-10-02T19:08:27+09:00",
@@ -24009,6 +24192,26 @@
       "source": "머니투데이",
       "title": "씨비에이파트너스-마컴아시아, 'GoIPO 나스닥 세미나 2026' 성료"
     },
+    "original:540ba18ad3225bc438cda979": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/202610053873i",
+      "source": "한국경제",
+      "source_body_digest": "c5b2cd64ed1647deb062d0d5b477a4b55d9425eb4d8b49e16b9309da858d55e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:959178ce90d2adf63f920784adcb9cb8b5a43e060f36d8b479f237df3241ee28",
+      "source_fact_keys": [
+        "source_fact:v1:1d62df93b68939423b1a21290af451b326dd399f276609f9a85a48a3f31585ca",
+        "source_fact:v1:a75b27fa7f704474498b8cee4d7d84799d12a44f9a17ac7a831744fcaa559852",
+        "source_fact:v1:dfd978118f501f59dc0010ac33f09ded2535f443543e1938358e97fc27164ab0",
+        "source_fact:v1:e483d410ac1bc0019194baa802b1e4ff13144f7bb1c4723c92316467115f8708"
+      ],
+      "source_published_kst": "2026-10-05T19:19+09:00",
+      "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
+    },
     "original:542d6f61bdc22b59de3cfaae": {
       "first_seen_kst": "2026-10-04T04:04:22+09:00",
       "lanes": {
@@ -24691,6 +24894,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T17:02+09:00",
       "title": "“내놓기 무섭게 완판”…증권사가 원금보장 하는 ‘이 상품’에 돈 몰린다"
+    },
+    "original:6262e4d60bdfe1d8e6ed0d7c": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03125846645609968",
+      "source": "이데일리",
+      "source_body_digest": "55c74c21efd1679b1d31462bf5371118dc0cbefc7ce844d37a8985bc4e059e66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7efe74039266d67a2d5cd248604ae767d30d9567d44590aeaa3a9e5dd5e56a8",
+      "source_fact_keys": [
+        "source_fact:v1:4c9b4d08793e8ee31ad832ccfcc78f4d34ac8d7853648f0efe7261b5fcf4dbef"
+      ],
+      "source_published_kst": "2026-10-05T20:05+09:00",
+      "title": "마이크로소프트, 기업 보안 수요 확대…투자의견↑-멜리우스"
     },
     "original:628c033cd14a2df50403ee7b": {
       "first_seen_kst": "2026-10-02T18:23:52+09:00",
@@ -30227,6 +30447,27 @@
       "source_published_kst": "2026-10-04T02:21+09:00",
       "title": "美, 기존 합의 토대로 핵 협상 조기 추진…이란 \"약속 이행 먼저\""
     },
+    "original:caa3643882e5e0ac8836639b": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/2026100537881",
+      "source": "한국경제",
+      "source_body_digest": "37cc2f9ab72e9de5d2dcd7784f707e86b98c438806661db2d758ce57d2c025c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aec3f22aab6607a7c9b5cf4eb31b775b59b1afa268094a732be1cb40fd1898a4",
+      "source_fact_keys": [
+        "source_fact:v1:2f902f6f28a606483fb4575330415819f64a791b272f93042a95768bc5842b04",
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:7b996e132cd1748ada89df98b16959b420786d141de54f582acdb8b2d0ec1d2d",
+        "source_fact:v1:90f9be610d6fc5efb061cb34bd44d6a6266dfffd29926486e838b0d717979b21",
+        "source_fact:v1:a4aab8926acb79895e835da9eab3fe991c15da2f95ad04169f384eb975a701f2"
+      ],
+      "source_published_kst": "2026-10-05T17:46+09:00",
+      "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
+    },
     "original:cabaa3581c8dcb78a3220ba0": {
       "first_seen_kst": "2026-10-04T06:34:33+09:00",
       "lanes": {
@@ -31129,6 +31370,26 @@
       ],
       "source_published_kst": "2026-10-05T18:18+09:00",
       "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
+    },
+    "original:d87c995e03be8309a081f39e": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168692",
+      "source": "매일경제",
+      "source_body_digest": "ca79b6c7a8a91e83829017d1e1ec500d00731312ed2d21f9958913552a72fc09",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5391b22fbd90e28891abb0ffd5dccf6628c806ada859ecc47c2c1fafbe89f603",
+      "source_fact_keys": [
+        "source_fact:v1:11749eacfa4109f311fef4f7a12810759cd3afe35c8d240cfe7262dce446b564",
+        "source_fact:v1:ce832967bb34d544f5efa89e10c3e509f034e3853107b94171e16ea88c4d2bae",
+        "source_fact:v1:d18b3bd7e5518574d3a17fbbac5f51e7c0e590ecf204f93f1b3e8e12aedcd293",
+        "source_fact:v1:f3519759731d234170e3dfdd24802384efe961323ec904642364821d686f9dc1"
+      ],
+      "source_published_kst": "2026-10-05T20:07+09:00",
+      "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
     },
     "original:d893d7ada9b0d4530e9a505c": {
       "first_seen_kst": "2026-10-02T19:26:27+09:00",
@@ -33440,6 +33701,27 @@
       "source_published_kst": "2026-10-05T20:03+09:00",
       "title": "인스메드, CFO 10월 30일 사임…연간 매출 가이던스 유지"
     },
+    "source_fact:1472b743a48aefafa33a97d8": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/2026100537881",
+      "source": "한국경제",
+      "source_body_digest": "37cc2f9ab72e9de5d2dcd7784f707e86b98c438806661db2d758ce57d2c025c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aec3f22aab6607a7c9b5cf4eb31b775b59b1afa268094a732be1cb40fd1898a4",
+      "source_fact_keys": [
+        "source_fact:v1:2f902f6f28a606483fb4575330415819f64a791b272f93042a95768bc5842b04",
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:7b996e132cd1748ada89df98b16959b420786d141de54f582acdb8b2d0ec1d2d",
+        "source_fact:v1:90f9be610d6fc5efb061cb34bd44d6a6266dfffd29926486e838b0d717979b21",
+        "source_fact:v1:a4aab8926acb79895e835da9eab3fe991c15da2f95ad04169f384eb975a701f2"
+      ],
+      "source_published_kst": "2026-10-05T17:46+09:00",
+      "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
+    },
     "source_fact:161ab13882d08365c5d13415": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -33687,6 +33969,47 @@
       ],
       "source_published_kst": "2026-10-05T15:17+09:00",
       "title": "자사주 '버팀목' 빠지는 삼성전자… 100조원대 영업익으로 극복할까?"
+    },
+    "source_fact:27147610beba594e496326c8": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/2026100537881",
+      "source": "한국경제",
+      "source_body_digest": "37cc2f9ab72e9de5d2dcd7784f707e86b98c438806661db2d758ce57d2c025c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aec3f22aab6607a7c9b5cf4eb31b775b59b1afa268094a732be1cb40fd1898a4",
+      "source_fact_keys": [
+        "source_fact:v1:2f902f6f28a606483fb4575330415819f64a791b272f93042a95768bc5842b04",
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:7b996e132cd1748ada89df98b16959b420786d141de54f582acdb8b2d0ec1d2d",
+        "source_fact:v1:90f9be610d6fc5efb061cb34bd44d6a6266dfffd29926486e838b0d717979b21",
+        "source_fact:v1:a4aab8926acb79895e835da9eab3fe991c15da2f95ad04169f384eb975a701f2"
+      ],
+      "source_published_kst": "2026-10-05T17:46+09:00",
+      "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
+    },
+    "source_fact:271674baac6d0085939df3af": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168692",
+      "source": "매일경제",
+      "source_body_digest": "ca79b6c7a8a91e83829017d1e1ec500d00731312ed2d21f9958913552a72fc09",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5391b22fbd90e28891abb0ffd5dccf6628c806ada859ecc47c2c1fafbe89f603",
+      "source_fact_keys": [
+        "source_fact:v1:11749eacfa4109f311fef4f7a12810759cd3afe35c8d240cfe7262dce446b564",
+        "source_fact:v1:ce832967bb34d544f5efa89e10c3e509f034e3853107b94171e16ea88c4d2bae",
+        "source_fact:v1:d18b3bd7e5518574d3a17fbbac5f51e7c0e590ecf204f93f1b3e8e12aedcd293",
+        "source_fact:v1:f3519759731d234170e3dfdd24802384efe961323ec904642364821d686f9dc1"
+      ],
+      "source_published_kst": "2026-10-05T20:07+09:00",
+      "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
     },
     "source_fact:273152bf0616d4c45f5797ae": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -34137,6 +34460,26 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "source_fact:3e11f48d56b390a31413a947": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/202610053873i",
+      "source": "한국경제",
+      "source_body_digest": "c5b2cd64ed1647deb062d0d5b477a4b55d9425eb4d8b49e16b9309da858d55e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:959178ce90d2adf63f920784adcb9cb8b5a43e060f36d8b479f237df3241ee28",
+      "source_fact_keys": [
+        "source_fact:v1:1d62df93b68939423b1a21290af451b326dd399f276609f9a85a48a3f31585ca",
+        "source_fact:v1:a75b27fa7f704474498b8cee4d7d84799d12a44f9a17ac7a831744fcaa559852",
+        "source_fact:v1:dfd978118f501f59dc0010ac33f09ded2535f443543e1938358e97fc27164ab0",
+        "source_fact:v1:e483d410ac1bc0019194baa802b1e4ff13144f7bb1c4723c92316467115f8708"
+      ],
+      "source_published_kst": "2026-10-05T19:19+09:00",
+      "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
+    },
     "source_fact:3eb6017675c11d270d44580f": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
       "lanes": {
@@ -34215,6 +34558,26 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "source_fact:43a882c1e5c9f6963faaaa41": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168692",
+      "source": "매일경제",
+      "source_body_digest": "ca79b6c7a8a91e83829017d1e1ec500d00731312ed2d21f9958913552a72fc09",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5391b22fbd90e28891abb0ffd5dccf6628c806ada859ecc47c2c1fafbe89f603",
+      "source_fact_keys": [
+        "source_fact:v1:11749eacfa4109f311fef4f7a12810759cd3afe35c8d240cfe7262dce446b564",
+        "source_fact:v1:ce832967bb34d544f5efa89e10c3e509f034e3853107b94171e16ea88c4d2bae",
+        "source_fact:v1:d18b3bd7e5518574d3a17fbbac5f51e7c0e590ecf204f93f1b3e8e12aedcd293",
+        "source_fact:v1:f3519759731d234170e3dfdd24802384efe961323ec904642364821d686f9dc1"
+      ],
+      "source_published_kst": "2026-10-05T20:07+09:00",
+      "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
+    },
     "source_fact:43f037fcf6b17fd60d1adb70": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -34249,6 +34612,23 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:4417b8f3114622744ab45890": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03125846645609968",
+      "source": "이데일리",
+      "source_body_digest": "55c74c21efd1679b1d31462bf5371118dc0cbefc7ce844d37a8985bc4e059e66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7efe74039266d67a2d5cd248604ae767d30d9567d44590aeaa3a9e5dd5e56a8",
+      "source_fact_keys": [
+        "source_fact:v1:4c9b4d08793e8ee31ad832ccfcc78f4d34ac8d7853648f0efe7261b5fcf4dbef"
+      ],
+      "source_published_kst": "2026-10-05T20:05+09:00",
+      "title": "마이크로소프트, 기업 보안 수요 확대…투자의견↑-멜리우스"
     },
     "source_fact:447a34b5fc5ebda26db87371": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -34616,6 +34996,26 @@
       "source_published_kst": "2026-10-05T05:47+09:00",
       "title": "단일 레버리지 20주 미만 단주, 시간외 종가매매로 '출구 마련' | 연합뉴스"
     },
+    "source_fact:5bb16f54ecee7d768c02b922": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/202610053873i",
+      "source": "한국경제",
+      "source_body_digest": "c5b2cd64ed1647deb062d0d5b477a4b55d9425eb4d8b49e16b9309da858d55e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:959178ce90d2adf63f920784adcb9cb8b5a43e060f36d8b479f237df3241ee28",
+      "source_fact_keys": [
+        "source_fact:v1:1d62df93b68939423b1a21290af451b326dd399f276609f9a85a48a3f31585ca",
+        "source_fact:v1:a75b27fa7f704474498b8cee4d7d84799d12a44f9a17ac7a831744fcaa559852",
+        "source_fact:v1:dfd978118f501f59dc0010ac33f09ded2535f443543e1938358e97fc27164ab0",
+        "source_fact:v1:e483d410ac1bc0019194baa802b1e4ff13144f7bb1c4723c92316467115f8708"
+      ],
+      "source_published_kst": "2026-10-05T19:19+09:00",
+      "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
+    },
     "source_fact:5c73766015099eb73d0780e4": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
       "lanes": {
@@ -34950,6 +35350,46 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:714604805898407311bd5a31": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/202610053873i",
+      "source": "한국경제",
+      "source_body_digest": "c5b2cd64ed1647deb062d0d5b477a4b55d9425eb4d8b49e16b9309da858d55e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:959178ce90d2adf63f920784adcb9cb8b5a43e060f36d8b479f237df3241ee28",
+      "source_fact_keys": [
+        "source_fact:v1:1d62df93b68939423b1a21290af451b326dd399f276609f9a85a48a3f31585ca",
+        "source_fact:v1:a75b27fa7f704474498b8cee4d7d84799d12a44f9a17ac7a831744fcaa559852",
+        "source_fact:v1:dfd978118f501f59dc0010ac33f09ded2535f443543e1938358e97fc27164ab0",
+        "source_fact:v1:e483d410ac1bc0019194baa802b1e4ff13144f7bb1c4723c92316467115f8708"
+      ],
+      "source_published_kst": "2026-10-05T19:19+09:00",
+      "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
+    },
+    "source_fact:719ccc46e6f9215f2b0d2b5b": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/202610053873i",
+      "source": "한국경제",
+      "source_body_digest": "c5b2cd64ed1647deb062d0d5b477a4b55d9425eb4d8b49e16b9309da858d55e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:959178ce90d2adf63f920784adcb9cb8b5a43e060f36d8b479f237df3241ee28",
+      "source_fact_keys": [
+        "source_fact:v1:1d62df93b68939423b1a21290af451b326dd399f276609f9a85a48a3f31585ca",
+        "source_fact:v1:a75b27fa7f704474498b8cee4d7d84799d12a44f9a17ac7a831744fcaa559852",
+        "source_fact:v1:dfd978118f501f59dc0010ac33f09ded2535f443543e1938358e97fc27164ab0",
+        "source_fact:v1:e483d410ac1bc0019194baa802b1e4ff13144f7bb1c4723c92316467115f8708"
+      ],
+      "source_published_kst": "2026-10-05T19:19+09:00",
+      "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
+    },
     "source_fact:72d1032d9d14677ed04a110a": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -35260,6 +35700,26 @@
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
     },
+    "source_fact:806f2cb69cf5aaa9842021d1": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168692",
+      "source": "매일경제",
+      "source_body_digest": "ca79b6c7a8a91e83829017d1e1ec500d00731312ed2d21f9958913552a72fc09",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5391b22fbd90e28891abb0ffd5dccf6628c806ada859ecc47c2c1fafbe89f603",
+      "source_fact_keys": [
+        "source_fact:v1:11749eacfa4109f311fef4f7a12810759cd3afe35c8d240cfe7262dce446b564",
+        "source_fact:v1:ce832967bb34d544f5efa89e10c3e509f034e3853107b94171e16ea88c4d2bae",
+        "source_fact:v1:d18b3bd7e5518574d3a17fbbac5f51e7c0e590ecf204f93f1b3e8e12aedcd293",
+        "source_fact:v1:f3519759731d234170e3dfdd24802384efe961323ec904642364821d686f9dc1"
+      ],
+      "source_published_kst": "2026-10-05T20:07+09:00",
+      "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
+    },
     "source_fact:80f1100af4bc8693f2d2a9e2": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -35436,6 +35896,27 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
+    },
+    "source_fact:874608288818910dc79b8356": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/2026100537881",
+      "source": "한국경제",
+      "source_body_digest": "37cc2f9ab72e9de5d2dcd7784f707e86b98c438806661db2d758ce57d2c025c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aec3f22aab6607a7c9b5cf4eb31b775b59b1afa268094a732be1cb40fd1898a4",
+      "source_fact_keys": [
+        "source_fact:v1:2f902f6f28a606483fb4575330415819f64a791b272f93042a95768bc5842b04",
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:7b996e132cd1748ada89df98b16959b420786d141de54f582acdb8b2d0ec1d2d",
+        "source_fact:v1:90f9be610d6fc5efb061cb34bd44d6a6266dfffd29926486e838b0d717979b21",
+        "source_fact:v1:a4aab8926acb79895e835da9eab3fe991c15da2f95ad04169f384eb975a701f2"
+      ],
+      "source_published_kst": "2026-10-05T17:46+09:00",
+      "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
     },
     "source_fact:87ce9daca57f3c45915fd07f": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
@@ -35655,6 +36136,26 @@
       ],
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+    },
+    "source_fact:9a248fba2704a96bfdb26342": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168692",
+      "source": "매일경제",
+      "source_body_digest": "ca79b6c7a8a91e83829017d1e1ec500d00731312ed2d21f9958913552a72fc09",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5391b22fbd90e28891abb0ffd5dccf6628c806ada859ecc47c2c1fafbe89f603",
+      "source_fact_keys": [
+        "source_fact:v1:11749eacfa4109f311fef4f7a12810759cd3afe35c8d240cfe7262dce446b564",
+        "source_fact:v1:ce832967bb34d544f5efa89e10c3e509f034e3853107b94171e16ea88c4d2bae",
+        "source_fact:v1:d18b3bd7e5518574d3a17fbbac5f51e7c0e590ecf204f93f1b3e8e12aedcd293",
+        "source_fact:v1:f3519759731d234170e3dfdd24802384efe961323ec904642364821d686f9dc1"
+      ],
+      "source_published_kst": "2026-10-05T20:07+09:00",
+      "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
     },
     "source_fact:9e6c9614545d6db1412073c4": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -36114,6 +36615,27 @@
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
     },
+    "source_fact:bb7d517eff29c2b7b8c82006": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/2026100537881",
+      "source": "한국경제",
+      "source_body_digest": "37cc2f9ab72e9de5d2dcd7784f707e86b98c438806661db2d758ce57d2c025c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aec3f22aab6607a7c9b5cf4eb31b775b59b1afa268094a732be1cb40fd1898a4",
+      "source_fact_keys": [
+        "source_fact:v1:2f902f6f28a606483fb4575330415819f64a791b272f93042a95768bc5842b04",
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:7b996e132cd1748ada89df98b16959b420786d141de54f582acdb8b2d0ec1d2d",
+        "source_fact:v1:90f9be610d6fc5efb061cb34bd44d6a6266dfffd29926486e838b0d717979b21",
+        "source_fact:v1:a4aab8926acb79895e835da9eab3fe991c15da2f95ad04169f384eb975a701f2"
+      ],
+      "source_published_kst": "2026-10-05T17:46+09:00",
+      "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
+    },
     "source_fact:bdc87b2d555f987a68140c7c": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -36411,6 +36933,27 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
+    },
+    "source_fact:de7038fe0a251c3527ebb96e": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/2026100537881",
+      "source": "한국경제",
+      "source_body_digest": "37cc2f9ab72e9de5d2dcd7784f707e86b98c438806661db2d758ce57d2c025c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aec3f22aab6607a7c9b5cf4eb31b775b59b1afa268094a732be1cb40fd1898a4",
+      "source_fact_keys": [
+        "source_fact:v1:2f902f6f28a606483fb4575330415819f64a791b272f93042a95768bc5842b04",
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:7b996e132cd1748ada89df98b16959b420786d141de54f582acdb8b2d0ec1d2d",
+        "source_fact:v1:90f9be610d6fc5efb061cb34bd44d6a6266dfffd29926486e838b0d717979b21",
+        "source_fact:v1:a4aab8926acb79895e835da9eab3fe991c15da2f95ad04169f384eb975a701f2"
+      ],
+      "source_published_kst": "2026-10-05T17:46+09:00",
+      "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
     },
     "source_fact:e043ba9d25707d984107be82": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -41587,6 +42130,26 @@
       "source": "머니투데이",
       "title": "씨비에이파트너스-마컴아시아, 'GoIPO 나스닥 세미나 2026' 성료"
     },
+    "title:540ba18ad3225bc438cda979": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/202610053873i",
+      "source": "한국경제",
+      "source_body_digest": "c5b2cd64ed1647deb062d0d5b477a4b55d9425eb4d8b49e16b9309da858d55e4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:959178ce90d2adf63f920784adcb9cb8b5a43e060f36d8b479f237df3241ee28",
+      "source_fact_keys": [
+        "source_fact:v1:1d62df93b68939423b1a21290af451b326dd399f276609f9a85a48a3f31585ca",
+        "source_fact:v1:a75b27fa7f704474498b8cee4d7d84799d12a44f9a17ac7a831744fcaa559852",
+        "source_fact:v1:dfd978118f501f59dc0010ac33f09ded2535f443543e1938358e97fc27164ab0",
+        "source_fact:v1:e483d410ac1bc0019194baa802b1e4ff13144f7bb1c4723c92316467115f8708"
+      ],
+      "source_published_kst": "2026-10-05T19:19+09:00",
+      "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
+    },
     "title:542d6f61bdc22b59de3cfaae": {
       "first_seen_kst": "2026-10-04T04:04:22+09:00",
       "lanes": {
@@ -42269,6 +42832,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T17:02+09:00",
       "title": "“내놓기 무섭게 완판”…증권사가 원금보장 하는 ‘이 상품’에 돈 몰린다"
+    },
+    "title:6262e4d60bdfe1d8e6ed0d7c": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03125846645609968",
+      "source": "이데일리",
+      "source_body_digest": "55c74c21efd1679b1d31462bf5371118dc0cbefc7ce844d37a8985bc4e059e66",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d7efe74039266d67a2d5cd248604ae767d30d9567d44590aeaa3a9e5dd5e56a8",
+      "source_fact_keys": [
+        "source_fact:v1:4c9b4d08793e8ee31ad832ccfcc78f4d34ac8d7853648f0efe7261b5fcf4dbef"
+      ],
+      "source_published_kst": "2026-10-05T20:05+09:00",
+      "title": "마이크로소프트, 기업 보안 수요 확대…투자의견↑-멜리우스"
     },
     "title:628c033cd14a2df50403ee7b": {
       "first_seen_kst": "2026-10-02T18:23:52+09:00",
@@ -47880,6 +48460,27 @@
       "source_published_kst": "2026-10-04T02:21+09:00",
       "title": "美, 기존 합의 토대로 핵 협상 조기 추진…이란 \"약속 이행 먼저\""
     },
+    "title:caa3643882e5e0ac8836639b": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.hankyung.com/article/2026100537881",
+      "source": "한국경제",
+      "source_body_digest": "37cc2f9ab72e9de5d2dcd7784f707e86b98c438806661db2d758ce57d2c025c2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aec3f22aab6607a7c9b5cf4eb31b775b59b1afa268094a732be1cb40fd1898a4",
+      "source_fact_keys": [
+        "source_fact:v1:2f902f6f28a606483fb4575330415819f64a791b272f93042a95768bc5842b04",
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:7b996e132cd1748ada89df98b16959b420786d141de54f582acdb8b2d0ec1d2d",
+        "source_fact:v1:90f9be610d6fc5efb061cb34bd44d6a6266dfffd29926486e838b0d717979b21",
+        "source_fact:v1:a4aab8926acb79895e835da9eab3fe991c15da2f95ad04169f384eb975a701f2"
+      ],
+      "source_published_kst": "2026-10-05T17:46+09:00",
+      "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
+    },
     "title:cabaa3581c8dcb78a3220ba0": {
       "first_seen_kst": "2026-10-04T06:34:33+09:00",
       "lanes": {
@@ -48793,6 +49394,26 @@
       ],
       "source_published_kst": "2026-10-05T18:18+09:00",
       "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
+    },
+    "title:d87c995e03be8309a081f39e": {
+      "first_seen_kst": "2026-10-05T20:22:49+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:22:49+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:22:49+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168692",
+      "source": "매일경제",
+      "source_body_digest": "ca79b6c7a8a91e83829017d1e1ec500d00731312ed2d21f9958913552a72fc09",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5391b22fbd90e28891abb0ffd5dccf6628c806ada859ecc47c2c1fafbe89f603",
+      "source_fact_keys": [
+        "source_fact:v1:11749eacfa4109f311fef4f7a12810759cd3afe35c8d240cfe7262dce446b564",
+        "source_fact:v1:ce832967bb34d544f5efa89e10c3e509f034e3853107b94171e16ea88c4d2bae",
+        "source_fact:v1:d18b3bd7e5518574d3a17fbbac5f51e7c0e590ecf204f93f1b3e8e12aedcd293",
+        "source_fact:v1:f3519759731d234170e3dfdd24802384efe961323ec904642364821d686f9dc1"
+      ],
+      "source_published_kst": "2026-10-05T20:07+09:00",
+      "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
     },
     "title:d893d7ada9b0d4530e9a505c": {
       "first_seen_kst": "2026-10-02T19:26:27+09:00",
@@ -51014,5 +51635,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T20:12:05+09:00"
+  "updated_at_kst": "2026-10-05T20:22:49+09:00"
 }
