@@ -44,6 +44,8 @@ if latest.get('monitor_started_at_kst'):
     merged['monitor_started_at_kst'] = latest['monitor_started_at_kst']
 merged['alert_basis'] = 'topic_event_official_state_change'
 merged['article_role'] = 'evidence_and_crosscheck_only'
+merged['baseline_guard'] = 'canonical_url_title_dedupe_plus_family_action_level_state_machine'
+merged['dedupe_policy'] = 'canonical_google_news_url_plus_canonical_headline_plus_event_family'
 
 out_path.write_text(json.dumps(merged, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 print('state_merged=true')
