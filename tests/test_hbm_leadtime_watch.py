@@ -158,6 +158,7 @@ class LeadTimeAlertTests(unittest.TestCase):
         self.assertNotIn("<b>수익구조</b>", alert)
         self.assertNotIn("<b>공정 병목 후보</b>", alert)
         self.assertNotIn("<b>추적 기준</b>", alert)
+        self.assertLess(len(alert), 2400)
 
     def test_unverified_status_is_labeled_not_silently_claimed(self):
         evidence = {name: {"current", "balanced"} for name in self.new}
