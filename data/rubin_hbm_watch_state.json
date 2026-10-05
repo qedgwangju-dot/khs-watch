@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-06T08:00:43+09:00",
+  "updated_at_kst": "2026-10-06T08:05:17+09:00",
   "seen_ids": [
     "01899de42b17bb25951592cf",
     "0477059e619a2672dbae4b30",
@@ -141,13 +141,13 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 1,
+  "last_unseen_raw_count": 0,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1343.98,
-    "date": "2026-10-05 일일 기준 · ECB/Frankfurter · 조회 2026-10-06 08:00 KST · 보조 API 2026-10-05 · 차이 0.05% · 일중 기준시각 차이 가능",
+    "date": "2026-10-05 일일 기준 · ECB/Frankfurter · 조회 2026-10-06 08:05 KST · 보조 API 2026-10-05 · 차이 0.05% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -213,6 +213,7 @@
       "toshiba_expanded_nearline_line_first_shipment_confirmed": true,
       "toshiba_fy2027_capacity_nearly_double_target": true,
       "toshiba_official_source": "https://toshiba.semicon-storage.com/ap-en/company/news/news-topics/2026/10/storage-20261002-1.html",
+      "nand_controller_direct_constraint_detection_enabled": true,
       "nand_controller_direct_constraint_confirmed": false,
       "scope_note": "확인 범위는 DRAM 부족이 일부 NAND 공급사의 기업용 SSD 솔루션 지원 능력을 제약한다는 것. NAND 컨트롤러 출하 자체의 직접 병목은 별도 확인 전까지 확정하지 않음. HDD late-2027은 시장 전체 정상화 전망이며 Toshiba 증설 라인 가동 개시 여부와 별도 관리."
     },
@@ -269,13 +270,13 @@
       "https://insights.trendforce.com/p/weekly-radar-004",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-10-06T08:00:57+09:00",
+    "last_checked_at_kst": "2026-10-06T08:05:30+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-06T08:01:07+09:00",
+    "checked_at_kst": "2026-10-06T08:06:09+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-06T07:58:37+09:00",
@@ -343,7 +344,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-06",
-    "last_checked_at_kst": "2026-10-06T08:01:00+09:00"
+    "last_checked_at_kst": "2026-10-06T08:06:02+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -379,7 +380,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-06",
-    "last_checked_at_kst": "2026-10-06T08:01:03+09:00",
+    "last_checked_at_kst": "2026-10-06T08:06:05+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -423,7 +424,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-06T08:01:04+09:00",
+    "last_checked_at_kst": "2026-10-06T08:06:06+09:00",
     "candidate_count": 0,
     "event_count": 0
   },
