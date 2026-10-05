@@ -1594,23 +1594,24 @@
     "event:60e7541ea03f10fd44e77cd2": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
-        "live": "2026-10-05T22:02:54+09:00"
+        "live": "2026-10-05T22:21:29+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:02:54+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169793",
-      "source": "매일경제",
-      "source_body_digest": "d02f866d78aa8342e634111ce42c82016af32b7d5fbe4b8e5f92fe4941b11de8",
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005036700003",
+      "source": "연합뉴스",
+      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0d66db6488d26af2788da65c08cebcf539421f3d19ad0680d5ff91f24ca12185",
+      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
       "source_fact_keys": [
-        "source_fact:v1:128f7f026d5e37557aa8a20eca223e7bbf5f92a83a3695d972fcab6345080883",
-        "source_fact:v1:513c251b9520f22b43636dadd9d215423a34f0aee2da8dcb366630027c5f55f3",
-        "source_fact:v1:51835821edbe8594c8ee998025e79c19ca651080a2eb4fce879189e1a28364d0",
-        "source_fact:v1:b89ed91311099b8d55ca1f1ef6c09171fd887f23ba9962adaf6bd2270e6d921f",
-        "source_fact:v1:e174793a349f1fadc0f3ffdb30b4b23339a68983c8718b766f99c1e8fef2f75c"
+        "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
+        "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
+        "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
+        "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
       ],
-      "source_published_kst": "2026-10-05T21:08+09:00",
-      "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
     "event:612db7037d1e2d76899788d0": {
       "first_seen_kst": "2026-09-28T10:16:02+09:00",
@@ -4932,6 +4933,28 @@
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
     },
+    "fact:124879f1069d95839cb1b958": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005036700003",
+      "source": "연합뉴스",
+      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_keys": [
+        "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
+        "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
+        "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
+        "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
+      ],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
     "fact:15c34bd1a769d14839872339": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -5064,6 +5087,27 @@
       ],
       "source_published_kst": "2026-10-05T19:53+09:00",
       "title": "재개봉 '어벤져스: 엔드게임', '아바타' 다시 제치고 세계 1위"
+    },
+    "fact:2902ab2e0fb83048bed891ee": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.hankyung.com/article/202610053953i",
+      "source": "한국경제",
+      "source_body_digest": "8a80ba12b6f6336acad15b9eeea883812ed7b8ccbcd8da18812e25392bc417d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4c2979c76ad273fdba78df44e26c30b9b74a8f386b18ba7d091ee17c8d11f40",
+      "source_fact_keys": [
+        "source_fact:v1:17333ce98c6cc97bba94efb6ecac119d88fe581088e411f0d568675a7b7838eb",
+        "source_fact:v1:4165c9264801001c42241ea8ec4d7e6a22e23ce4745b9bfd7fa5941bb8ce20dc",
+        "source_fact:v1:97c088c649f224539ee1b3117c883984e2f5197fe0e3063af4d399e0a15fa98a",
+        "source_fact:v1:bccba887b23bd4af28b587409fe75e4d5509703bfe685b85a5553bcdeb02e477",
+        "source_fact:v1:f9c7b27dbe78dec25baa888a376eb3ff234c218f7143b4acee412fb5093e4555"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
     },
     "fact:2c4b962f6c64cc7b99f6e122": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -6411,6 +6455,23 @@
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
     },
+    "fact:e9689b6fcf6f67c7d13a7d4d": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.etnews.com/20261005000051",
+      "source": "전자신문",
+      "source_body_digest": "1ae09653a29ab5d2d5afbe183eb4727b0959e6c2ce2036f92b4c76fb1f19ea16",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6ac0c76553bea7e7df6053a1a116740a3c6fc00dd046e4d04bbe77ff83a9820",
+      "source_fact_keys": [
+        "source_fact:v1:bcfdb8ce5f51259a0ed19b742210630aa69b740472d03dc41536b6034980947d"
+      ],
+      "source_published_kst": "2026-10-05T16:00+09:00",
+      "title": "현대차 8세대 아반떼·BMW iX3, '초기 부진설' 실체는 '공급 시차'"
+    },
     "fact:ed2a4f20e1835c85d00d1b6d": {
       "first_seen_kst": "2026-10-05T20:38:34+09:00",
       "lanes": {
@@ -7526,6 +7587,21 @@
       "link": "https://magazine.hankyung.com/business/article/202610029672b",
       "source": "한국경제",
       "title": "스웨덴 방산기업 사브, 스테판 엥스트룀 한국 대표 선임"
+    },
+    "link:1354253e1e196b85b17217e2": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168691",
+      "source": "매일경제",
+      "source_body_digest": "372ca517628ac3c96a25a99b0b6433e5140f12072fe993a32078e8e88dadc9c3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T20:06+09:00",
+      "title": "터보젠, 20kW 시스템 양산 장기계약..5년 자동갱신"
     },
     "link:13559f21ddbf939b90f8b0a2": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
@@ -14357,6 +14433,28 @@
       "source_event_identity": "",
       "title": "나노 뉴클리어 에너지, NRC 인허가 핵연료 자산 1350만 달러 인수"
     },
+    "link:82ef9ee8bef53c50fd1df303": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005036700003",
+      "source": "연합뉴스",
+      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_keys": [
+        "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
+        "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
+        "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
+        "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
+      ],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
     "link:834ff9d156fcfc5bf7a3dcdd": {
       "first_seen_kst": "2026-10-02T13:04:47+09:00",
       "lanes": {
@@ -18508,6 +18606,27 @@
       "source_published_kst": "2026-10-05T05:55+09:00",
       "title": "길거리 방치 킥보드 '철퇴'…서울시, 업체평가·전용주차 도입 | 연합뉴스"
     },
+    "link:c5cc1b4b14d708059b1e7a1b": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.hankyung.com/article/202610053953i",
+      "source": "한국경제",
+      "source_body_digest": "8a80ba12b6f6336acad15b9eeea883812ed7b8ccbcd8da18812e25392bc417d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4c2979c76ad273fdba78df44e26c30b9b74a8f386b18ba7d091ee17c8d11f40",
+      "source_fact_keys": [
+        "source_fact:v1:17333ce98c6cc97bba94efb6ecac119d88fe581088e411f0d568675a7b7838eb",
+        "source_fact:v1:4165c9264801001c42241ea8ec4d7e6a22e23ce4745b9bfd7fa5941bb8ce20dc",
+        "source_fact:v1:97c088c649f224539ee1b3117c883984e2f5197fe0e3063af4d399e0a15fa98a",
+        "source_fact:v1:bccba887b23bd4af28b587409fe75e4d5509703bfe685b85a5553bcdeb02e477",
+        "source_fact:v1:f9c7b27dbe78dec25baa888a376eb3ff234c218f7143b4acee412fb5093e4555"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
+    },
     "link:c5e6dc41c03d4c9b19f603f0": {
       "first_seen_kst": "2026-09-21T20:40:44+09:00",
       "lanes": {
@@ -21881,6 +22000,23 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01252966645609312",
       "source": "이데일리",
       "title": "[美특징주]바일러, 상승…인적분할 이후 S&P500지수 편입"
+    },
+    "link:fcf462d828d22397a0b1382d": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.etnews.com/20261005000051",
+      "source": "전자신문",
+      "source_body_digest": "1ae09653a29ab5d2d5afbe183eb4727b0959e6c2ce2036f92b4c76fb1f19ea16",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6ac0c76553bea7e7df6053a1a116740a3c6fc00dd046e4d04bbe77ff83a9820",
+      "source_fact_keys": [
+        "source_fact:v1:bcfdb8ce5f51259a0ed19b742210630aa69b740472d03dc41536b6034980947d"
+      ],
+      "source_published_kst": "2026-10-05T16:00+09:00",
+      "title": "현대차 8세대 아반떼·BMW iX3, '초기 부진설' 실체는 '공급 시차'"
     },
     "link:fcff7d75431adf6d962c3dd0": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
@@ -28645,6 +28781,23 @@
       "source": "이데일리",
       "title": "카시카리 “물가 잡으려면 금리 얼마나 올려야 할지 몰라”"
     },
+    "original:6edec311d6355ec2873b40cc": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.etnews.com/20261005000051",
+      "source": "전자신문",
+      "source_body_digest": "1ae09653a29ab5d2d5afbe183eb4727b0959e6c2ce2036f92b4c76fb1f19ea16",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6ac0c76553bea7e7df6053a1a116740a3c6fc00dd046e4d04bbe77ff83a9820",
+      "source_fact_keys": [
+        "source_fact:v1:bcfdb8ce5f51259a0ed19b742210630aa69b740472d03dc41536b6034980947d"
+      ],
+      "source_published_kst": "2026-10-05T16:00+09:00",
+      "title": "현대차 8세대 아반떼·BMW iX3, '초기 부진설' 실체는 '공급 시차'"
+    },
     "original:6f04be31a66d49d10f257ad7": {
       "first_seen_kst": "2026-10-04T04:29:39+09:00",
       "lanes": {
@@ -29209,6 +29362,28 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T15:00+09:00",
       "title": "상반기 자금 쓸어담은 증권사, 3분기 급감…실적잔치는 끝났다"
+    },
+    "original:774c616bbe9e8e2a611eb99f": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005036700003",
+      "source": "연합뉴스",
+      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_keys": [
+        "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
+        "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
+        "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
+        "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
+      ],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
     "original:77d194d1aa05fef7201945d5": {
       "first_seen_kst": "2026-10-05T16:44:43+09:00",
@@ -30257,6 +30432,27 @@
       "link": "https://www.yna.co.kr/view/AKR20260923035700008",
       "source": "연합뉴스",
       "title": "타임폴리오운용, 'TIME KOREA플러스배당액티브' 9월 특별배당 | 연합뉴스"
+    },
+    "original:8a265bbfe06053533144a790": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.hankyung.com/article/202610053953i",
+      "source": "한국경제",
+      "source_body_digest": "8a80ba12b6f6336acad15b9eeea883812ed7b8ccbcd8da18812e25392bc417d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4c2979c76ad273fdba78df44e26c30b9b74a8f386b18ba7d091ee17c8d11f40",
+      "source_fact_keys": [
+        "source_fact:v1:17333ce98c6cc97bba94efb6ecac119d88fe581088e411f0d568675a7b7838eb",
+        "source_fact:v1:4165c9264801001c42241ea8ec4d7e6a22e23ce4745b9bfd7fa5941bb8ce20dc",
+        "source_fact:v1:97c088c649f224539ee1b3117c883984e2f5197fe0e3063af4d399e0a15fa98a",
+        "source_fact:v1:bccba887b23bd4af28b587409fe75e4d5509703bfe685b85a5553bcdeb02e477",
+        "source_fact:v1:f9c7b27dbe78dec25baa888a376eb3ff234c218f7143b4acee412fb5093e4555"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
     },
     "original:8a31cc664a2cc40ddcf05129": {
       "first_seen_kst": "2026-10-01T14:33:11+09:00",
@@ -33344,6 +33540,21 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T07:00+09:00",
       "title": "한국 바람에 20년 투자, 외국 투자자는 무엇을 보나 [지평 기후에너지리포트]"
+    },
+    "original:bd56949e41018143be4b7e53": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168691",
+      "source": "매일경제",
+      "source_body_digest": "372ca517628ac3c96a25a99b0b6433e5140f12072fe993a32078e8e88dadc9c3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T20:06+09:00",
+      "title": "터보젠, 20kW 시스템 양산 장기계약..5년 자동갱신"
     },
     "original:bd6e4ffa0f97b046004abe39": {
       "first_seen_kst": "2026-10-05T09:59:51+09:00",
@@ -37319,6 +37530,28 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:04d3d9fd880435c004d4ea30": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005036700003",
+      "source": "연합뉴스",
+      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_keys": [
+        "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
+        "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
+        "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
+        "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
+      ],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
     "source_fact:058433f0b3ef20ee2d112bbf": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -37582,6 +37815,28 @@
       "source_published_kst": "2026-10-05T21:32+09:00",
       "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
     },
+    "source_fact:0adb9d134732fdd0f6e74349": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005036700003",
+      "source": "연합뉴스",
+      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_keys": [
+        "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
+        "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
+        "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
+        "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
+      ],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
     "source_fact:0b36dda1ce10ca0fe5e53076": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -37810,6 +38065,28 @@
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
     },
+    "source_fact:1767eca38ceb232ffdc8f0fd": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005036700003",
+      "source": "연합뉴스",
+      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_keys": [
+        "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
+        "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
+        "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
+        "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
+      ],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
     "source_fact:179ea0b6289d8450782c15e3": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -38032,6 +38309,23 @@
       ],
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
+    },
+    "source_fact:215a161f355ed6d1ae32c0e9": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.etnews.com/20261005000051",
+      "source": "전자신문",
+      "source_body_digest": "1ae09653a29ab5d2d5afbe183eb4727b0959e6c2ce2036f92b4c76fb1f19ea16",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6ac0c76553bea7e7df6053a1a116740a3c6fc00dd046e4d04bbe77ff83a9820",
+      "source_fact_keys": [
+        "source_fact:v1:bcfdb8ce5f51259a0ed19b742210630aa69b740472d03dc41536b6034980947d"
+      ],
+      "source_published_kst": "2026-10-05T16:00+09:00",
+      "title": "현대차 8세대 아반떼·BMW iX3, '초기 부진설' 실체는 '공급 시차'"
     },
     "source_fact:220b5592467dde2984519efb": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -38667,6 +38961,28 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "source_fact:353b688c066a13e4d4d2eada": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005036700003",
+      "source": "연합뉴스",
+      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_keys": [
+        "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
+        "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
+        "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
+        "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
+      ],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
     "source_fact:3590310bf437e78b463cdeba": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -38877,6 +39193,28 @@
       ],
       "source_published_kst": "2026-10-05T21:05+09:00",
       "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
+    },
+    "source_fact:3c6f9439fb3c8dd4d57e78dd": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005036700003",
+      "source": "연합뉴스",
+      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_keys": [
+        "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
+        "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
+        "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
+        "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
+      ],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
     "source_fact:3c9392f8b7d526a65a8f1179": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -42215,6 +42553,27 @@
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
     },
+    "source_fact:908b585ec018ea9f37ae5f90": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.hankyung.com/article/202610053953i",
+      "source": "한국경제",
+      "source_body_digest": "8a80ba12b6f6336acad15b9eeea883812ed7b8ccbcd8da18812e25392bc417d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4c2979c76ad273fdba78df44e26c30b9b74a8f386b18ba7d091ee17c8d11f40",
+      "source_fact_keys": [
+        "source_fact:v1:17333ce98c6cc97bba94efb6ecac119d88fe581088e411f0d568675a7b7838eb",
+        "source_fact:v1:4165c9264801001c42241ea8ec4d7e6a22e23ce4745b9bfd7fa5941bb8ce20dc",
+        "source_fact:v1:97c088c649f224539ee1b3117c883984e2f5197fe0e3063af4d399e0a15fa98a",
+        "source_fact:v1:bccba887b23bd4af28b587409fe75e4d5509703bfe685b85a5553bcdeb02e477",
+        "source_fact:v1:f9c7b27dbe78dec25baa888a376eb3ff234c218f7143b4acee412fb5093e4555"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
+    },
     "source_fact:90f9063781048908e2c23680": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -42814,6 +43173,27 @@
       ],
       "source_published_kst": "2026-10-05T21:32+09:00",
       "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
+    },
+    "source_fact:a38b9ed96b7063f7f8775b0c": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.hankyung.com/article/202610053953i",
+      "source": "한국경제",
+      "source_body_digest": "8a80ba12b6f6336acad15b9eeea883812ed7b8ccbcd8da18812e25392bc417d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4c2979c76ad273fdba78df44e26c30b9b74a8f386b18ba7d091ee17c8d11f40",
+      "source_fact_keys": [
+        "source_fact:v1:17333ce98c6cc97bba94efb6ecac119d88fe581088e411f0d568675a7b7838eb",
+        "source_fact:v1:4165c9264801001c42241ea8ec4d7e6a22e23ce4745b9bfd7fa5941bb8ce20dc",
+        "source_fact:v1:97c088c649f224539ee1b3117c883984e2f5197fe0e3063af4d399e0a15fa98a",
+        "source_fact:v1:bccba887b23bd4af28b587409fe75e4d5509703bfe685b85a5553bcdeb02e477",
+        "source_fact:v1:f9c7b27dbe78dec25baa888a376eb3ff234c218f7143b4acee412fb5093e4555"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
     },
     "source_fact:a45561b846dab7bbe1c3d240": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -43604,6 +43984,48 @@
       ],
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
+    "source_fact:be5b20f40d4deb55163cc6d5": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.hankyung.com/article/202610053953i",
+      "source": "한국경제",
+      "source_body_digest": "8a80ba12b6f6336acad15b9eeea883812ed7b8ccbcd8da18812e25392bc417d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4c2979c76ad273fdba78df44e26c30b9b74a8f386b18ba7d091ee17c8d11f40",
+      "source_fact_keys": [
+        "source_fact:v1:17333ce98c6cc97bba94efb6ecac119d88fe581088e411f0d568675a7b7838eb",
+        "source_fact:v1:4165c9264801001c42241ea8ec4d7e6a22e23ce4745b9bfd7fa5941bb8ce20dc",
+        "source_fact:v1:97c088c649f224539ee1b3117c883984e2f5197fe0e3063af4d399e0a15fa98a",
+        "source_fact:v1:bccba887b23bd4af28b587409fe75e4d5509703bfe685b85a5553bcdeb02e477",
+        "source_fact:v1:f9c7b27dbe78dec25baa888a376eb3ff234c218f7143b4acee412fb5093e4555"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
+    },
+    "source_fact:bf8676ad0ad44fe885c173ec": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.hankyung.com/article/202610053953i",
+      "source": "한국경제",
+      "source_body_digest": "8a80ba12b6f6336acad15b9eeea883812ed7b8ccbcd8da18812e25392bc417d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4c2979c76ad273fdba78df44e26c30b9b74a8f386b18ba7d091ee17c8d11f40",
+      "source_fact_keys": [
+        "source_fact:v1:17333ce98c6cc97bba94efb6ecac119d88fe581088e411f0d568675a7b7838eb",
+        "source_fact:v1:4165c9264801001c42241ea8ec4d7e6a22e23ce4745b9bfd7fa5941bb8ce20dc",
+        "source_fact:v1:97c088c649f224539ee1b3117c883984e2f5197fe0e3063af4d399e0a15fa98a",
+        "source_fact:v1:bccba887b23bd4af28b587409fe75e4d5509703bfe685b85a5553bcdeb02e477",
+        "source_fact:v1:f9c7b27dbe78dec25baa888a376eb3ff234c218f7143b4acee412fb5093e4555"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
     },
     "source_fact:bf8837dcfe760b1333f636be": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -44446,6 +44868,27 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:e0a44a6b37af5fe952fe8b52": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.hankyung.com/article/202610053953i",
+      "source": "한국경제",
+      "source_body_digest": "8a80ba12b6f6336acad15b9eeea883812ed7b8ccbcd8da18812e25392bc417d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4c2979c76ad273fdba78df44e26c30b9b74a8f386b18ba7d091ee17c8d11f40",
+      "source_fact_keys": [
+        "source_fact:v1:17333ce98c6cc97bba94efb6ecac119d88fe581088e411f0d568675a7b7838eb",
+        "source_fact:v1:4165c9264801001c42241ea8ec4d7e6a22e23ce4745b9bfd7fa5941bb8ce20dc",
+        "source_fact:v1:97c088c649f224539ee1b3117c883984e2f5197fe0e3063af4d399e0a15fa98a",
+        "source_fact:v1:bccba887b23bd4af28b587409fe75e4d5509703bfe685b85a5553bcdeb02e477",
+        "source_fact:v1:f9c7b27dbe78dec25baa888a376eb3ff234c218f7143b4acee412fb5093e4555"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
+    },
     "source_fact:e0b9d36e4e38409eb1a00dd4": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -44614,6 +45057,28 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:e5094878382867b0149a35d2": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005036700003",
+      "source": "연합뉴스",
+      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_keys": [
+        "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
+        "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
+        "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
+        "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
+      ],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
     "source_fact:e5f41f1e01d1e99870e4fda2": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -52099,6 +52564,23 @@
       "source": "이데일리",
       "title": "카시카리 “물가 잡으려면 금리 얼마나 올려야 할지 몰라”"
     },
+    "title:6edec311d6355ec2873b40cc": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.etnews.com/20261005000051",
+      "source": "전자신문",
+      "source_body_digest": "1ae09653a29ab5d2d5afbe183eb4727b0959e6c2ce2036f92b4c76fb1f19ea16",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6ac0c76553bea7e7df6053a1a116740a3c6fc00dd046e4d04bbe77ff83a9820",
+      "source_fact_keys": [
+        "source_fact:v1:bcfdb8ce5f51259a0ed19b742210630aa69b740472d03dc41536b6034980947d"
+      ],
+      "source_published_kst": "2026-10-05T16:00+09:00",
+      "title": "현대차 8세대 아반떼·BMW iX3, '초기 부진설' 실체는 '공급 시차'"
+    },
     "title:6f04be31a66d49d10f257ad7": {
       "first_seen_kst": "2026-10-04T04:29:39+09:00",
       "lanes": {
@@ -52674,6 +53156,28 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T15:00+09:00",
       "title": "상반기 자금 쓸어담은 증권사, 3분기 급감…실적잔치는 끝났다"
+    },
+    "title:774c616bbe9e8e2a611eb99f": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005036700003",
+      "source": "연합뉴스",
+      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_keys": [
+        "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
+        "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
+        "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
+        "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
+      ],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
     "title:77d194d1aa05fef7201945d5": {
       "first_seen_kst": "2026-10-05T16:44:43+09:00",
@@ -53751,6 +54255,27 @@
       "link": "https://www.yna.co.kr/view/AKR20260923035700008",
       "source": "연합뉴스",
       "title": "타임폴리오운용, 'TIME KOREA플러스배당액티브' 9월 특별배당 | 연합뉴스"
+    },
+    "title:8a265bbfe06053533144a790": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.hankyung.com/article/202610053953i",
+      "source": "한국경제",
+      "source_body_digest": "8a80ba12b6f6336acad15b9eeea883812ed7b8ccbcd8da18812e25392bc417d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4c2979c76ad273fdba78df44e26c30b9b74a8f386b18ba7d091ee17c8d11f40",
+      "source_fact_keys": [
+        "source_fact:v1:17333ce98c6cc97bba94efb6ecac119d88fe581088e411f0d568675a7b7838eb",
+        "source_fact:v1:4165c9264801001c42241ea8ec4d7e6a22e23ce4745b9bfd7fa5941bb8ce20dc",
+        "source_fact:v1:97c088c649f224539ee1b3117c883984e2f5197fe0e3063af4d399e0a15fa98a",
+        "source_fact:v1:bccba887b23bd4af28b587409fe75e4d5509703bfe685b85a5553bcdeb02e477",
+        "source_fact:v1:f9c7b27dbe78dec25baa888a376eb3ff234c218f7143b4acee412fb5093e4555"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
     },
     "title:8a31cc664a2cc40ddcf05129": {
       "first_seen_kst": "2026-10-01T14:33:11+09:00",
@@ -56882,6 +57407,21 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-03T07:00+09:00",
       "title": "한국 바람에 20년 투자, 외국 투자자는 무엇을 보나 [지평 기후에너지리포트]"
+    },
+    "title:bd56949e41018143be4b7e53": {
+      "first_seen_kst": "2026-10-05T22:21:29+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:21:29+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168691",
+      "source": "매일경제",
+      "source_body_digest": "372ca517628ac3c96a25a99b0b6433e5140f12072fe993a32078e8e88dadc9c3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T20:06+09:00",
+      "title": "터보젠, 20kW 시스템 양산 장기계약..5년 자동갱신"
     },
     "title:bd6e4ffa0f97b046004abe39": {
       "first_seen_kst": "2026-10-05T09:59:51+09:00",
@@ -60873,5 +61413,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T22:12:53+09:00"
+  "updated_at_kst": "2026-10-05T22:21:29+09:00"
 }
