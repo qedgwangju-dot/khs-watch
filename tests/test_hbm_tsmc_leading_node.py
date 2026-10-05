@@ -66,6 +66,115 @@ class TSMCLeadingNodeTests(unittest.TestCase):
         }
         self.assertEqual(w.material_changes(cur, copy.deepcopy(cur)), [])
 
+    def test_terafab_musk_confirmation_is_discussion_not_deal(self):
+        e = {
+            "title": "Elon Musk confirms TSMC-Terafab talks",
+            "description": "",
+            "source": "Culpium",
+            "published_at_kst": "2026-10-03T07:51:00+09:00",
+            "direct_link": w.TERAFAB_CULPIUM_URL,
+            "evidence_state": "reported",
+        }
+        text = (
+            "TSMC is exploring ways to work with Elon Musk's Terafab in Texas. "
+            "Terafab may become an anchor customer for a future TSMC Texas factory. "
+            "The most likely scenario is for TSMC to own and operate the new factory. "
+            "Musk wrote: Just discussions, but something may come of it."
+        )
+        p = w.terafab_patch_from_text(e, text)
+        self.assertEqual(p["stage"], "confirmed_discussions")
+        self.assertTrue(p["musk_confirmed_discussions"])
+        self.assertEqual(p["evidence_state"], "founder_confirmation")
+        self.assertEqual(p["terafab_anchor_customer_stage"], "reported_option")
+        self.assertEqual(p["tsmc_factory_role"], "reported_possible_owner_operator")
+        self.assertFalse(p.get("definitive_agreement", False))
+        self.assertFalse(p.get("tsmc_official_confirmation", False))
+
+    def test_terafab_baseline_same_state_is_silent(self):
+        old = copy.deepcopy(w.TERAFAB_BASELINE)
+        self.assertEqual(w.terafab_material_changes(old, copy.deepcopy(old)), [])
+
+    def test_tsmc_official_definitive_agreement_is_material(self):
+        old = copy.deepcopy(w.TERAFAB_BASELINE)
+        e = {
+            "title": "TSMC and Terafab sign definitive agreement",
+            "description": "",
+            "source": "TSMC",
+            "published_at_kst": "2026-11-01T10:00:00+09:00",
+            "direct_link": "https://www.tsmc.com/english/news/terafab",
+            "evidence_state": "official",
+        }
+        p = w.terafab_patch_from_text(
+            e,
+            "TSMC and Terafab signed a definitive agreement for a Texas facility. TSMC will build and operate the fab."
+        )
+        new = w.merge_terafab_state(old, p)
+        reasons = w.terafab_material_changes(old, new)
+        self.assertTrue(new["tsmc_official_confirmation"])
+        self.assertTrue(new["definitive_agreement"])
+        self.assertEqual(new["stage"], "definitive_agreement")
+        self.assertTrue(any("본계약" in x for x in reasons))
+        self.assertTrue(any("TSMC 공식 확인" in x for x in reasons))
+
+    def test_arizona_265b_is_not_reused_as_texas_capex(self):
+        e = {
+            "title": "TSMC Texas discussion",
+            "description": "",
+            "source": "Reuters",
+            "published_at_kst": "2026-10-05T10:00:00+09:00",
+            "direct_link": w.TERAFAB_REUTERS_TEXAS_URL,
+            "evidence_state": "top_tier_report",
+        }
+        text = (
+            "TSMC is evaluating a Texas collaboration with Terafab. "
+            "Separately, TSMC has committed $265 billion to Arizona."
+        )
+        p = w.terafab_patch_from_text(e, text)
+        self.assertNotIn("tsmc_texas_capex_usd", p)
+
+    def test_intel_14a_context_does_not_become_tsmc_node_or_replacement(self):
+        e = {
+            "title": "TSMC-Terafab talks",
+            "description": "",
+            "source": "Culpium",
+            "published_at_kst": "2026-10-05T10:00:00+09:00",
+            "direct_link": w.TERAFAB_CULPIUM_URL,
+            "evidence_state": "reported",
+        }
+        p = w.terafab_patch_from_text(
+            e,
+            "TSMC is in discussions with Terafab in Texas. Intel remains an existing Terafab partner using Intel 14A. "
+            "TSMC may supplement Intel rather than replace it."
+        )
+        self.assertEqual(p["intel_role"], "existing_14A_partner")
+        self.assertEqual(p["intel_displacement_status"], "not_confirmed_supplementary")
+        self.assertNotIn("tsmc_terafab_process_node", p)
+
+    def test_terafab_capacity_and_process_first_disclosure_alert(self):
+        old = copy.deepcopy(w.TERAFAB_BASELINE)
+        e = {
+            "title": "TSMC confirms Texas Terafab capacity",
+            "description": "",
+            "source": "TSMC",
+            "published_at_kst": "2026-12-01T10:00:00+09:00",
+            "direct_link": "https://www.tsmc.com/english/news/terafab",
+            "evidence_state": "official",
+        }
+        p = w.terafab_patch_from_text(
+            e,
+            "TSMC and Terafab will build a Texas N2 fab. TSMC Texas Terafab capacity will be 40,000 wafers per month."
+        )
+        new = w.merge_terafab_state(old, p)
+        reasons = w.terafab_material_changes(old, new)
+        self.assertEqual(new["tsmc_terafab_process_node"], "N2")
+        self.assertEqual(new["tsmc_texas_capacity_wpm"], 40000)
+        self.assertTrue(any("TSMC 적용 공정" in x for x in reasons))
+        self.assertTrue(any("월 생산능력" in x and "최초 공개" in x for x in reasons))
+
+    def test_node_and_terafab_alerts_are_separate_telegram_messages(self):
+        payload = w.compose_alerts("<b>node</b>", "<b>terafab</b>")
+        self.assertIn("<<<TELEGRAM_MESSAGE_BREAK>>>", payload)
+
     def test_alert_has_no_hanja(self):
         state = {
             "capacity_targets": {"N2|2026YE": {"value": 120000}, "N3|2026Q4": {"value": 180000}, "N3|2027": {"min": 200000, "max": 210000}},
