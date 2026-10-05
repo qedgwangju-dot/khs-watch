@@ -44,6 +44,8 @@ VERTIV_DSX_CDU = "https://www.vertiv.com/en-emea/about/news-and-events/news-rele
 NVIDIA_DSX = "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Releases-Vera-Rubin-DSX-AI-Factory-Reference-Design-and-Omniverse-DSX-Digital-Twin-Blueprint-With-Broad-Industry-Support/default.aspx"
 SGC_VERTIV_DCD = "https://www.datacenterdynamics.com/en/news/sgc-energy-partners-with-vertiv-to-deploy-powernexus-at-planned-ai-data-center-in-gunsan-south-korea/"
 SGC_VERTIV_SED = "https://en.sedaily.ai/finance/2026/09/08/sgc-energy-partners-with-vertiv-on-gunsan-ai-data-center"
+SGC_HYUNDAI_EPC = "https://m.hec.co.kr/ko/pr/press-news/press-release/7999"
+SGC_EPC_NEWSIS = "https://www.newsis.com/view/NISX20260928_0003805922"
 
 SOURCES = {
     "nvidia_blog": NVIDIA_BLOG,
@@ -67,6 +69,8 @@ SOURCES = {
     "nvidia_dsx": NVIDIA_DSX,
     "sgc_vertiv_dcd": SGC_VERTIV_DCD,
     "sgc_vertiv_sed": SGC_VERTIV_SED,
+    "sgc_hyundai_epc": SGC_HYUNDAI_EPC,
+    "sgc_epc_newsis": SGC_EPC_NEWSIS,
 }
 
 
@@ -160,6 +164,8 @@ def snapshot(texts: dict[str, str]) -> dict:
     nvidia_dsx = texts.get("nvidia_dsx", "")
     sgc_dcd = texts.get("sgc_vertiv_dcd", "")
     sgc_sed = texts.get("sgc_vertiv_sed", "")
+    sgc_hyundai_epc = texts.get("sgc_hyundai_epc", "")
+    sgc_epc_newsis = texts.get("sgc_epc_newsis", "")
 
     partner_count_min = regex_value(
         texts,
@@ -337,6 +343,26 @@ def snapshot(texts: dict[str, str]) -> dict:
         "sgc_phase1_energization_q1_2028": bool(
             sgc_dcd and ("q1 2028" in sgc_dcd.lower() or "first quarter of 2028" in sgc_dcd.lower())
         ),
+        "sgc_hyundai_epc_contract_confirmed": bool(
+            sgc_hyundai_epc
+            and sgc_epc_newsis
+            and ("8,700" in sgc_hyundai_epc or "8700" in sgc_hyundai_epc)
+            and ("8700" in sgc_epc_newsis.replace(",", ""))
+        ),
+        "sgc_phase1_epc_krw_billion": 870.0 if (
+            ("8,700" in sgc_hyundai_epc or "8700" in sgc_hyundai_epc)
+            and "8700" in sgc_epc_newsis.replace(",", "")
+        ) else None,
+        "sgc_phase1_construction_start_2026_10": bool(
+            ("10월" in sgc_hyundai_epc or "October" in sgc_hyundai_epc)
+            and ("10월" in sgc_epc_newsis or "October" in sgc_epc_newsis)
+        ),
+        "sgc_epc_cooling_tower_switchgear_scope_reported": bool(
+            sgc_epc_newsis and "냉각탑" in sgc_epc_newsis and "수배전반" in sgc_epc_newsis
+        ),
+        "sgc_ktcloud_ups_battery_role_reported": bool(
+            sgc_epc_newsis and "kt cloud" in sgc_epc_newsis.lower() and "UPS" in sgc_epc_newsis and "배터리" in sgc_epc_newsis
+        ),
         "scope_note": "LG-AIR는 공식 장기공급계약. SGC-Vertiv는 비구속 MOU·기술검토/적용 계획이며 확정 공급계약으로 승격 금지. 7조달러는 산업 투자전망이지 Vertiv 계약금액이 아님.",
     }
     live_vendor_800v = 0
@@ -471,6 +497,9 @@ def changes(old: dict, new: dict) -> list[str]:
             ("sgc_vertiv_max_mw", "SGC-Vertiv 최대 계획 용량"),
             ("sgc_vertiv_binding_supply_contract_confirmed", "SGC-Vertiv 확정 공급계약"),
             ("sgc_phase1_energization_q1_2028", "SGC 군산 1단계 2028년 1분기 전원 인가 목표"),
+            ("sgc_hyundai_epc_contract_confirmed", "SGC 군산 1단계 현대엔지니어링 EPC 수주"),
+            ("sgc_phase1_epc_krw_billion", "SGC 군산 1단계 EPC 사업규모(십억원)"),
+            ("sgc_phase1_construction_start_2026_10", "SGC 군산 1단계 2026년 10월 착공"),
         ):
             before, after = pe.get(key), ne.get(key)
             if before is not None and after is not None and before != after:
@@ -533,7 +562,8 @@ def render(facts: dict, chg: list[str], errors: list[str], fxv: dict) -> str:
         f"• LG 실행능력 │ 상반기 AIDC 냉각 수주 USD {e.get('lg_first_half_aidc_cooling_orders_usd_m') or 428:g}M · 2027 칠러 매출목표 USD {e.get('lg_2027_chiller_revenue_target_usd_m') or 680:g}M · 생산능력 투자 {e.get('lg_chiller_capacity_investment_krw_billion') or 150:g}0억원",
         f"• Vertiv-NVIDIA │ Vera Rubin DSX 공식 공동개발={e.get('vertiv_nvidia_vera_rubin_dsx_official')} · OneCore 표준 블록 {e.get('vertiv_onecore_standard_block_mw') or 12.5:g}MW · DSX Ready CDU {e.get('vertiv_dsx_ready_cdu_mw') or 2.3:g}MW",
         f"• SGC에너지-Vertiv │ 군산 초기 {e.get('sgc_vertiv_initial_mw') or 60:g}MW → 최대 {e.get('sgc_vertiv_max_mw') or 300:g}MW · PowerNexus 적용 계획={e.get('sgc_vertiv_powernexus_planned')}",
-        f"  └ 현재 단계는 <b>{'비구속 MOU' if e.get('sgc_vertiv_non_binding_mou') else 'MOU/기술검토'}</b> · 확정 공급계약={e.get('sgc_vertiv_binding_supply_contract_confirmed')} · 1단계 전원 인가 Q1 2028 목표={e.get('sgc_phase1_energization_q1_2028')}",
+        f"  └ Vertiv 관계는 <b>{'비구속 MOU' if e.get('sgc_vertiv_non_binding_mou') else 'MOU/기술검토'}</b> · Vertiv 확정 공급계약={e.get('sgc_vertiv_binding_supply_contract_confirmed')}",
+        f"  └ 프로젝트 실행은 현대엔지니어링 60MW EPC 수주={e.get('sgc_hyundai_epc_contract_confirmed')} · 약 {e.get('sgc_phase1_epc_krw_billion') * 10:,.0f}억원 · 2026년 10월 착공={e.get('sgc_phase1_construction_start_2026_10')} · Q1 2028 전원 인가 목표={e.get('sgc_phase1_energization_q1_2028')}" if e.get("sgc_phase1_epc_krw_billion") is not None else "  └ 프로젝트 EPC 금액 원천 재확인 필요",
         "• 기사 제목의 7조달러는 글로벌 데이터센터 투자 전망치이며 Vertiv 수주액·SGC 사업비가 아님",
         "",
         "<b>🏭 관련 기업 지도</b>",
@@ -551,7 +581,8 @@ def render(facts: dict, chg: list[str], errors: list[str], fxv: dict) -> str:
         "• 기존 AC 배전·UPS·변압기·스위치기어를 보존하는 하이브리드 기간이 연장/단축되는 공식 증거",
         "• 시설 전체 800 VDC 또는 SST가 실제 대규모 상업 데이터센터에 채택되는 첫 확정 사례",
         "• LG-AIR 5GW+ 프로그램의 실제 발주·납품 일정·공식 계약금액·고객 실명·CDU 추가 공급",
-        "• SGC-Vertiv가 비구속 MOU→구속력 있는 공급계약/발주→착공→Q1 2028 전원 인가로 승격",
+        "• SGC-Vertiv가 비구속 MOU→구속력 있는 공급계약/실제 납품으로 승격",
+        "• 군산 60MW 1단계가 2026년 10월 착공→Q1 2028 전원 인가 일정대로 진행되는지",
         "• 제품 단품이 아니라 EPC·보호·계측·에너지저장·냉각·운영SW·서비스를 묶은 턴키 수주",
         "",
         "<b>⚠️ 공정 병목 후보</b>",
@@ -576,6 +607,7 @@ def render(facts: dict, chg: list[str], errors: list[str], fxv: dict) -> str:
         f'• <a href="{AIR_LG}">AIR 공식 LG 장기공급계약</a>',
         f'• <a href="{VERTIV_DSX}">Vertiv Vera Rubin DSX</a>',
         f'• <a href="{SGC_VERTIV_DCD}">SGC에너지-Vertiv 군산 AIDC MOU 교차검증</a>',
+        f'• <a href="{SGC_HYUNDAI_EPC}">현대엔지니어링 군산 SGC AIDC EPC 수주</a>',
     ]
 
     if chg:
@@ -639,6 +671,7 @@ def main() -> int:
         f"- 공식 800 VDC 직접 참여 공급사: **{facts['market']['official_multi_vendor_800v_count']}개**\n"
         f"- LG전자-AIR 북미 칠러 장기계약: **{facts['execution'].get('lg_air_capacity_gw_min') or 5}GW+ / 공식 계약금액 미공개**\n"
         f"- SGC에너지-Vertiv: **{facts['execution'].get('sgc_vertiv_initial_mw') or 60:.0f}MW→최대 {facts['execution'].get('sgc_vertiv_max_mw') or 300:.0f}MW / 비구속 MOU**\n"
+        f"- SGC 군산 1단계 실행: **현대엔지니어링 EPC 약 {facts['execution'].get('sgc_phase1_epc_krw_billion') * 10:,.0f}억원 / 2026년 10월 착공 / Q1 2028 전원 인가 목표**\n" if facts["execution"].get("sgc_phase1_epc_krw_billion") is not None else ""
         f"- 의미 변화: **{len(chg)}건**\n"
         f"- 알림: **{'예' if should_alert else '아니오'}**\n"
         f"- 원천 오류: **{'; '.join(errors) if errors else '없음'}**\n",
