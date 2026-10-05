@@ -107,6 +107,21 @@ def parse_num(x):
     return float(m.group()) if m else None
 
 
+def option_regimes(eq_pc, idx_pc):
+    eq = "call" if eq_pc < 0.80 else "neutral" if eq_pc <= 1.00 else "put"
+    idx = "call" if idx_pc < 0.90 else "neutral" if idx_pc <= 1.10 else "put"
+    return eq, idx
+
+
+# Deterministic guard for the alert's option-direction taxonomy.
+if option_regimes(0.58, 0.86) != ("call", "call"):
+    raise RuntimeError("option regime self-test failed for aligned call case")
+if option_regimes(0.58, 1.05) != ("call", "neutral"):
+    raise RuntimeError("option regime self-test failed for call/neutral case")
+if option_regimes(1.05, 1.20) != ("put", "put"):
+    raise RuntimeError("option regime self-test failed for aligned put case")
+
+
 def int_list(text):
     vals = re.findall(r"[-+]?(?:\d{1,3}(?:,\d{3})+|\d+)", text)
     return [int(x.replace(",", "")) for x in vals]
@@ -1281,8 +1296,7 @@ if quality_gate_ok and (updates or force):
             body.append(f"• 전체 풋/콜 {total_pc:.2f}")
 
         if eq_pc is not None and idx_pc is not None:
-            eq_regime = "call" if eq_pc < 0.80 else "neutral" if eq_pc <= 1.00 else "put"
-            idx_regime = "call" if idx_pc < 0.90 else "neutral" if idx_pc <= 1.10 else "put"
+            eq_regime, idx_regime = option_regimes(eq_pc, idx_pc)
 
             if eq_regime == "call" and idx_regime == "call":
                 option_combo = (
