@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: robotis-physical-ai-telegram-watch
@@ -51,6 +52,21 @@ jobs:
               echo "Push trigger force summary: OFF"
               ;;
           esac
+
+      - name: Reactivate KHS policy watch once
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          flag="$(awk -F= '$1=="reactivate_khs_policy" {print tolower($2)}' .github/robotis-physical-ai-trigger.txt | tail -n 1 | tr -d '[:space:]')"
+          if [ "$flag" = "true" ] || [ "$flag" = "1" ] || [ "$flag" = "yes" ] || [ "$flag" = "on" ]; then
+            gh api -X PUT "/repos/${GITHUB_REPOSITORY}/actions/workflows/khs-policy-watch.yml/enable"
+            gh api -X POST "/repos/${GITHUB_REPOSITORY}/actions/workflows/khs-policy-watch.yml/dispatches" -f ref=main
+            echo "khs_policy_reactivate_and_dispatch=confirmed"
+          else
+            echo "khs_policy_reactivate_and_dispatch=skipped"
+          fi
 
       - name: Set up Python
         uses: actions/setup-python@v5
