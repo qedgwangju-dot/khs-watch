@@ -3308,6 +3308,21 @@
       "source": "전자신문",
       "title": "李대통령, 멕시코와 정상회담…“무역협정 체결 긴요”"
     },
+    "event:bc24083a4ed4e29f6523f79f": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005048700073",
+      "source": "연합뉴스",
+      "source_body_digest": "67ea860cf5709e5d086d4361e476ce984d445c6b6308820ec4935188a89183f8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T17:59+09:00",
+      "title": "\"글로벌 방산 스타트업에 투자금 쇄도…올 상반기, 10년來 최고\" | 연합뉴스"
+    },
     "event:bc78b83497820ad2656fec18": {
       "first_seen_kst": "2026-10-04T11:57:24+09:00",
       "lanes": {
@@ -5155,6 +5170,26 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "어드밴스드 드레니쥐 시스, 스톰트랩 5억3000만 달러 인수..4분기 완료 예정"
     },
+    "fact:dbeb5fd6614dbec10b54f316": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169743",
+      "source": "매일경제",
+      "source_body_digest": "3d3082c78c119c3be2b9b2c1921e93aadbe0207cf3228c5a69a0f89542795fca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e3c1b1c5372635d202635f796c9e27695f7e2c6829ccc921af8ca6292cba7bc",
+      "source_fact_keys": [
+        "source_fact:v1:391848d82249ae3d05a9dd89421660d7ec285443328d6277027dc49d73905433",
+        "source_fact:v1:39daa9f15724f93deeb6f1a5991d2270700cb65aad8841e18496c116214a810a",
+        "source_fact:v1:549eee4bb48596a418952bbfa1be935e1af600cc9491cee6726f5102bcfa8ae2",
+        "source_fact:v1:6bc2bd5e5a0f9d0814f8d2b097c76a3ccf46c584e56c83a19b803c6a25073d54"
+      ],
+      "source_published_kst": "2026-10-05T19:05+09:00",
+      "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
+    },
     "fact:e58601b09cd1e4a46b8a599f": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -5176,6 +5211,24 @@
       ],
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
+    "fact:ed5109e8afbe8439bacdc49a": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169770",
+      "source": "매일경제",
+      "source_body_digest": "580e4b7d057accb2c565794e0a9652812e7420c35de667ae2dc6ac9063d35846",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2898f3b646d937139017d4d6407d7f4718a995ae0d59a83281dea118a71c65ad",
+      "source_fact_keys": [
+        "source_fact:v1:ad41f27f3c21f235d7ee50a747a7939c3cb8d5cc20581961cbda33d95cf31901",
+        "source_fact:v1:bc93bfab86f6169a11aa01d50ef2977db732fa8fd93f9056b9828b05bd4065ef"
+      ],
+      "source_published_kst": "2026-10-05T20:22+09:00",
+      "title": "스트라타시스, 방산 전문가 데이비드 친 이사 후보 지명"
     },
     "fact:f5941e8f9802f45e66242eaa": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -8571,6 +8624,21 @@
       "source": "연합뉴스",
       "title": "美재무 \"연준, 열린 마음 가져야…그린스펀은 경기 달리게 뒀다\" | 연합뉴스"
     },
+    "link:3e42bf5a716c1e0a0d17cc22": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005048700073",
+      "source": "연합뉴스",
+      "source_body_digest": "67ea860cf5709e5d086d4361e476ce984d445c6b6308820ec4935188a89183f8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T17:59+09:00",
+      "title": "\"글로벌 방산 스타트업에 투자금 쇄도…올 상반기, 10년來 최고\" | 연합뉴스"
+    },
     "link:3e9ff6b040017f60776024b8": {
       "first_seen_kst": "2026-10-02T17:34:05+09:00",
       "lanes": {
@@ -9507,6 +9575,26 @@
       "link": "https://www.fnnews.com/news/202609190802215037",
       "source": "파이낸셜뉴스",
       "title": "삼전·닉스, 'AI 생태계' 투자 넓힌다…\"칩 넘어 데이터센터·SW까지\""
+    },
+    "link:4ef8fe7c5e4cbc2333d1ed3c": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169743",
+      "source": "매일경제",
+      "source_body_digest": "3d3082c78c119c3be2b9b2c1921e93aadbe0207cf3228c5a69a0f89542795fca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e3c1b1c5372635d202635f796c9e27695f7e2c6829ccc921af8ca6292cba7bc",
+      "source_fact_keys": [
+        "source_fact:v1:391848d82249ae3d05a9dd89421660d7ec285443328d6277027dc49d73905433",
+        "source_fact:v1:39daa9f15724f93deeb6f1a5991d2270700cb65aad8841e18496c116214a810a",
+        "source_fact:v1:549eee4bb48596a418952bbfa1be935e1af600cc9491cee6726f5102bcfa8ae2",
+        "source_fact:v1:6bc2bd5e5a0f9d0814f8d2b097c76a3ccf46c584e56c83a19b803c6a25073d54"
+      ],
+      "source_published_kst": "2026-10-05T19:05+09:00",
+      "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
     },
     "link:4efe5e62f9491947eb0a7fb3": {
       "first_seen_kst": "2026-10-03T01:23:19+09:00",
@@ -13057,6 +13145,24 @@
       "link": "https://www.mk.co.kr/news/economy/12165415",
       "source": "매일경제",
       "title": "“이란전쟁 소풍 끝나면 유가 정상화”…금리발작 못본체하는 트럼프"
+    },
+    "link:8edd51ee2ddea8d703b37f20": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169770",
+      "source": "매일경제",
+      "source_body_digest": "580e4b7d057accb2c565794e0a9652812e7420c35de667ae2dc6ac9063d35846",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2898f3b646d937139017d4d6407d7f4718a995ae0d59a83281dea118a71c65ad",
+      "source_fact_keys": [
+        "source_fact:v1:ad41f27f3c21f235d7ee50a747a7939c3cb8d5cc20581961cbda33d95cf31901",
+        "source_fact:v1:bc93bfab86f6169a11aa01d50ef2977db732fa8fd93f9056b9828b05bd4065ef"
+      ],
+      "source_published_kst": "2026-10-05T20:22+09:00",
+      "title": "스트라타시스, 방산 전문가 데이비드 친 이사 후보 지명"
     },
     "link:8f2b7d721104ef9227f9bad3": {
       "first_seen_kst": "2026-10-02T21:04:53+09:00",
@@ -22987,6 +23093,21 @@
       "source": "매일경제",
       "title": "‘최윤범號’ 고려아연 美 제련소 사업 순항…환경영향 평가 통과"
     },
+    "original:3f74928eb45941a1c42aa32e": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005048700073",
+      "source": "연합뉴스",
+      "source_body_digest": "67ea860cf5709e5d086d4361e476ce984d445c6b6308820ec4935188a89183f8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T17:59+09:00",
+      "title": "\"글로벌 방산 스타트업에 투자금 쇄도…올 상반기, 10년來 최고\" | 연합뉴스"
+    },
     "original:3f7c9fad52b83aa39a19e568": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
       "lanes": {
@@ -27320,6 +27441,26 @@
       "source": "머니투데이",
       "title": "ETF 쏠림의 그늘…'자투리 펀드' 올해만 50개 늘었다"
     },
+    "original:8e19383f17982e4c0ef63757": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169743",
+      "source": "매일경제",
+      "source_body_digest": "3d3082c78c119c3be2b9b2c1921e93aadbe0207cf3228c5a69a0f89542795fca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e3c1b1c5372635d202635f796c9e27695f7e2c6829ccc921af8ca6292cba7bc",
+      "source_fact_keys": [
+        "source_fact:v1:391848d82249ae3d05a9dd89421660d7ec285443328d6277027dc49d73905433",
+        "source_fact:v1:39daa9f15724f93deeb6f1a5991d2270700cb65aad8841e18496c116214a810a",
+        "source_fact:v1:549eee4bb48596a418952bbfa1be935e1af600cc9491cee6726f5102bcfa8ae2",
+        "source_fact:v1:6bc2bd5e5a0f9d0814f8d2b097c76a3ccf46c584e56c83a19b803c6a25073d54"
+      ],
+      "source_published_kst": "2026-10-05T19:05+09:00",
+      "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
+    },
     "original:8e3180c030ac23e8315b77a3": {
       "first_seen_kst": "2026-09-17T16:43:25+09:00",
       "lanes": {
@@ -27520,6 +27661,24 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03247206645583400",
       "source": "이데일리",
       "title": "美장기금리 어디까지 오를까…'기간 프리미엄'에 달렸다"
+    },
+    "original:91d1eeafa36b03a27c67a2a8": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169770",
+      "source": "매일경제",
+      "source_body_digest": "580e4b7d057accb2c565794e0a9652812e7420c35de667ae2dc6ac9063d35846",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2898f3b646d937139017d4d6407d7f4718a995ae0d59a83281dea118a71c65ad",
+      "source_fact_keys": [
+        "source_fact:v1:ad41f27f3c21f235d7ee50a747a7939c3cb8d5cc20581961cbda33d95cf31901",
+        "source_fact:v1:bc93bfab86f6169a11aa01d50ef2977db732fa8fd93f9056b9828b05bd4065ef"
+      ],
+      "source_published_kst": "2026-10-05T20:22+09:00",
+      "title": "스트라타시스, 방산 전문가 데이비드 친 이사 후보 지명"
     },
     "original:91d495bb5f3ae74051454b4e": {
       "first_seen_kst": "2026-10-05T18:29:33+09:00",
@@ -33701,6 +33860,26 @@
       "source_published_kst": "2026-10-05T20:03+09:00",
       "title": "인스메드, CFO 10월 30일 사임…연간 매출 가이던스 유지"
     },
+    "source_fact:0eee27c71c652b76199e16e5": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169743",
+      "source": "매일경제",
+      "source_body_digest": "3d3082c78c119c3be2b9b2c1921e93aadbe0207cf3228c5a69a0f89542795fca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e3c1b1c5372635d202635f796c9e27695f7e2c6829ccc921af8ca6292cba7bc",
+      "source_fact_keys": [
+        "source_fact:v1:391848d82249ae3d05a9dd89421660d7ec285443328d6277027dc49d73905433",
+        "source_fact:v1:39daa9f15724f93deeb6f1a5991d2270700cb65aad8841e18496c116214a810a",
+        "source_fact:v1:549eee4bb48596a418952bbfa1be935e1af600cc9491cee6726f5102bcfa8ae2",
+        "source_fact:v1:6bc2bd5e5a0f9d0814f8d2b097c76a3ccf46c584e56c83a19b803c6a25073d54"
+      ],
+      "source_published_kst": "2026-10-05T19:05+09:00",
+      "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
+    },
     "source_fact:1472b743a48aefafa33a97d8": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -33949,6 +34128,24 @@
       ],
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+    },
+    "source_fact:25aaab3d2c93aaddeda021b9": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169770",
+      "source": "매일경제",
+      "source_body_digest": "580e4b7d057accb2c565794e0a9652812e7420c35de667ae2dc6ac9063d35846",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2898f3b646d937139017d4d6407d7f4718a995ae0d59a83281dea118a71c65ad",
+      "source_fact_keys": [
+        "source_fact:v1:ad41f27f3c21f235d7ee50a747a7939c3cb8d5cc20581961cbda33d95cf31901",
+        "source_fact:v1:bc93bfab86f6169a11aa01d50ef2977db732fa8fd93f9056b9828b05bd4065ef"
+      ],
+      "source_published_kst": "2026-10-05T20:22+09:00",
+      "title": "스트라타시스, 방산 전문가 데이비드 친 이사 후보 지명"
     },
     "source_fact:26db737403ef3e17a1ef47ef": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -34648,6 +34845,26 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "주담대 금리도 '들썩'…한은 추가 인상에 이자 더 오르나[금리 쇼크③]"
+    },
+    "source_fact:4533ac1d3147c34f308c18d8": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169743",
+      "source": "매일경제",
+      "source_body_digest": "3d3082c78c119c3be2b9b2c1921e93aadbe0207cf3228c5a69a0f89542795fca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e3c1b1c5372635d202635f796c9e27695f7e2c6829ccc921af8ca6292cba7bc",
+      "source_fact_keys": [
+        "source_fact:v1:391848d82249ae3d05a9dd89421660d7ec285443328d6277027dc49d73905433",
+        "source_fact:v1:39daa9f15724f93deeb6f1a5991d2270700cb65aad8841e18496c116214a810a",
+        "source_fact:v1:549eee4bb48596a418952bbfa1be935e1af600cc9491cee6726f5102bcfa8ae2",
+        "source_fact:v1:6bc2bd5e5a0f9d0814f8d2b097c76a3ccf46c584e56c83a19b803c6a25073d54"
+      ],
+      "source_published_kst": "2026-10-05T19:05+09:00",
+      "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
     },
     "source_fact:47a6af4935a0feadd8f52f2a": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
@@ -35349,6 +35566,26 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:7040aaad9f67b192b196ae27": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169743",
+      "source": "매일경제",
+      "source_body_digest": "3d3082c78c119c3be2b9b2c1921e93aadbe0207cf3228c5a69a0f89542795fca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e3c1b1c5372635d202635f796c9e27695f7e2c6829ccc921af8ca6292cba7bc",
+      "source_fact_keys": [
+        "source_fact:v1:391848d82249ae3d05a9dd89421660d7ec285443328d6277027dc49d73905433",
+        "source_fact:v1:39daa9f15724f93deeb6f1a5991d2270700cb65aad8841e18496c116214a810a",
+        "source_fact:v1:549eee4bb48596a418952bbfa1be935e1af600cc9491cee6726f5102bcfa8ae2",
+        "source_fact:v1:6bc2bd5e5a0f9d0814f8d2b097c76a3ccf46c584e56c83a19b803c6a25073d54"
+      ],
+      "source_published_kst": "2026-10-05T19:05+09:00",
+      "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
     },
     "source_fact:714604805898407311bd5a31": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -36112,6 +36349,24 @@
       ],
       "source_published_kst": "2026-10-05T12:37+09:00",
       "title": "\"메가·컴포즈 점주들 돈 많이 벌었겠네\"…실상은 달랐다"
+    },
+    "source_fact:98650a93162d36332580536a": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169770",
+      "source": "매일경제",
+      "source_body_digest": "580e4b7d057accb2c565794e0a9652812e7420c35de667ae2dc6ac9063d35846",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2898f3b646d937139017d4d6407d7f4718a995ae0d59a83281dea118a71c65ad",
+      "source_fact_keys": [
+        "source_fact:v1:ad41f27f3c21f235d7ee50a747a7939c3cb8d5cc20581961cbda33d95cf31901",
+        "source_fact:v1:bc93bfab86f6169a11aa01d50ef2977db732fa8fd93f9056b9828b05bd4065ef"
+      ],
+      "source_published_kst": "2026-10-05T20:22+09:00",
+      "title": "스트라타시스, 방산 전문가 데이비드 친 이사 후보 지명"
     },
     "source_fact:9964552c76bfe80f857817ef": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -37304,6 +37559,26 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:fb9fd42ffae85c0bb4f28c8f": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169743",
+      "source": "매일경제",
+      "source_body_digest": "3d3082c78c119c3be2b9b2c1921e93aadbe0207cf3228c5a69a0f89542795fca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e3c1b1c5372635d202635f796c9e27695f7e2c6829ccc921af8ca6292cba7bc",
+      "source_fact_keys": [
+        "source_fact:v1:391848d82249ae3d05a9dd89421660d7ec285443328d6277027dc49d73905433",
+        "source_fact:v1:39daa9f15724f93deeb6f1a5991d2270700cb65aad8841e18496c116214a810a",
+        "source_fact:v1:549eee4bb48596a418952bbfa1be935e1af600cc9491cee6726f5102bcfa8ae2",
+        "source_fact:v1:6bc2bd5e5a0f9d0814f8d2b097c76a3ccf46c584e56c83a19b803c6a25073d54"
+      ],
+      "source_published_kst": "2026-10-05T19:05+09:00",
+      "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
     },
     "source_fact:fc200f9b0eab648c383af9a7": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
@@ -40924,6 +41199,21 @@
       "link": "https://www.mk.co.kr/news/business/12159064",
       "source": "매일경제",
       "title": "‘최윤범號’ 고려아연 美 제련소 사업 순항…환경영향 평가 통과"
+    },
+    "title:3f74928eb45941a1c42aa32e": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005048700073",
+      "source": "연합뉴스",
+      "source_body_digest": "67ea860cf5709e5d086d4361e476ce984d445c6b6308820ec4935188a89183f8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T17:59+09:00",
+      "title": "\"글로벌 방산 스타트업에 투자금 쇄도…올 상반기, 10년來 최고\" | 연합뉴스"
     },
     "title:3f7c9fad52b83aa39a19e568": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
@@ -45289,6 +45579,26 @@
       "source": "머니투데이",
       "title": "ETF 쏠림의 그늘…'자투리 펀드' 올해만 50개 늘었다"
     },
+    "title:8e19383f17982e4c0ef63757": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169743",
+      "source": "매일경제",
+      "source_body_digest": "3d3082c78c119c3be2b9b2c1921e93aadbe0207cf3228c5a69a0f89542795fca",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2e3c1b1c5372635d202635f796c9e27695f7e2c6829ccc921af8ca6292cba7bc",
+      "source_fact_keys": [
+        "source_fact:v1:391848d82249ae3d05a9dd89421660d7ec285443328d6277027dc49d73905433",
+        "source_fact:v1:39daa9f15724f93deeb6f1a5991d2270700cb65aad8841e18496c116214a810a",
+        "source_fact:v1:549eee4bb48596a418952bbfa1be935e1af600cc9491cee6726f5102bcfa8ae2",
+        "source_fact:v1:6bc2bd5e5a0f9d0814f8d2b097c76a3ccf46c584e56c83a19b803c6a25073d54"
+      ],
+      "source_published_kst": "2026-10-05T19:05+09:00",
+      "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
+    },
     "title:8e3180c030ac23e8315b77a3": {
       "first_seen_kst": "2026-09-17T16:43:25+09:00",
       "lanes": {
@@ -45489,6 +45799,24 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03247206645583400",
       "source": "이데일리",
       "title": "美장기금리 어디까지 오를까…'기간 프리미엄'에 달렸다"
+    },
+    "title:91d1eeafa36b03a27c67a2a8": {
+      "first_seen_kst": "2026-10-05T20:31:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:31:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:31:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169770",
+      "source": "매일경제",
+      "source_body_digest": "580e4b7d057accb2c565794e0a9652812e7420c35de667ae2dc6ac9063d35846",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2898f3b646d937139017d4d6407d7f4718a995ae0d59a83281dea118a71c65ad",
+      "source_fact_keys": [
+        "source_fact:v1:ad41f27f3c21f235d7ee50a747a7939c3cb8d5cc20581961cbda33d95cf31901",
+        "source_fact:v1:bc93bfab86f6169a11aa01d50ef2977db732fa8fd93f9056b9828b05bd4065ef"
+      ],
+      "source_published_kst": "2026-10-05T20:22+09:00",
+      "title": "스트라타시스, 방산 전문가 데이비드 친 이사 후보 지명"
     },
     "title:91d495bb5f3ae74051454b4e": {
       "first_seen_kst": "2026-10-05T18:29:33+09:00",
@@ -51635,5 +51963,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T20:22:49+09:00"
+  "updated_at_kst": "2026-10-05T20:31:34+09:00"
 }
