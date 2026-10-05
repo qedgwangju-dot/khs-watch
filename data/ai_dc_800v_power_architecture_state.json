@@ -36,7 +36,7 @@
       },
       "Siemens": {
         "stage": "SST 개발·산업화",
-        "sst_36kv_to_800v": false,
+        "sst_36kv_to_800v": true,
         "software_protection_scope": true
       },
       "LS ELECTRIC": {
@@ -56,7 +56,7 @@
       "moat_check_basis": "OCP 공개 표준 + 다수 공식 공급사. 실제 해자는 양산·안전인증·통합 EPC·제어/운영SW·서비스에서 재검증",
       "jpm_user_note_status": "사용자 제공 리서치 요약은 독립 공식 원문 미확보라 알림 트리거 기준으로 사용하지 않음"
     },
-    "digest": "a5a06c6c98d2375a1baf516b41501ea1f6c281cc76b8a3d8d9f26f8e318e75d4"
+    "digest": "0067669fd5ab9a97bb1099baa5d170e4e59a6ce79b44258c6a8f5dfea59f89cf"
   },
   "source_cache": {
     "nvidia_blog": {
@@ -120,11 +120,9 @@
   ],
   "fx": {
     "usdkrw": 1348.28,
-    "basis": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-05 21:52 KST · 보조 API 2026-10-05 · 차이 0.27% · 일중 기준시각 차이 가능",
+    "basis": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-05 21:55 KST · 보조 API 2026-10-05 · 차이 0.27% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter"
   },
-  "last_changes": [
-    "AI 데이터센터 800 VDC 전환 기준선 신규 연결"
-  ],
-  "updated_at_utc": "2026-10-05T12:52:35+00:00"
+  "last_changes": [],
+  "updated_at_utc": "2026-10-05T12:55:52+00:00"
 }
