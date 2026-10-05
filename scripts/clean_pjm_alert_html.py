@@ -14,6 +14,8 @@ HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-
 # Frequently recurring PJM headlines are translated deterministically first.
 # This avoids translation drift in the most important policy alerts.
 KNOWN_TRANSLATIONS = {
+    "FERC asks grid operator PJM to revise plan to shield homes from data center costs":
+        "FERC, 데이터센터 전력비의 가정 전가 방지를 위해 PJM 백스톱 조달안 수정 요구",
     "H.R. 9340 Ratepayer Protection Act": "H.R.9340 데이터센터 전력비 비용배분 법안",
     "S. 5028 Ratepayer Protection Act": "S.5028 데이터센터 전력비 비용배분 법안",
     "S. 5199 GRID Savings Act": "S.5199 GRID Savings Act 대형부하 접속비용 법안",
