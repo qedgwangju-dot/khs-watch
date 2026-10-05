@@ -199,7 +199,30 @@ rendered_red_yellow = mod.watch.build_alert([bridge_attack, lukoil], [], now)
 check("oct04-red-yellow-no-green-header", "🟢 <b>재건·휴전</b>" not in rendered_red_yellow)
 check("oct04-red-yellow-keeps-red", "🔴 <b>공격·확전</b>" in rendered_red_yellow)
 
-# 9) 품질 게이트는 과거 실제 오판 문구를 거부.
+# 9) Telegram 길이 제한으로 뒤쪽 항목이 잘려도 미전송 ID를 seen 처리하지 않는다.
+rendered_delivery = """<b>전쟁·종전·재건 웹감시</b>
+🔴 <b>공격·확전</b>
+[신규] <b>1. 우크라이나·러시아</b>
+항목 1
+[신규] <b>2. 이란·호르무즈</b>
+항목 2
+[신규] <b>3. 우크라이나·러시아</b>
+항목 3
+[신규] <b>4. 이란·호르무즈</b>
+항목 4
+"""
+mod.watch.ALERT.parent.mkdir(parents=True, exist_ok=True)
+mod.watch.ALERT.write_text(rendered_delivery, encoding="utf-8")
+mod.watch.PENDING.write_text(
+    '{"ids":["id1","id2","id3","id4","id5","id6","id7","id8"]}',
+    encoding="utf-8",
+)
+mod._sync_pending_to_rendered_alert()
+pending_after = __import__("json").loads(mod.watch.PENDING.read_text(encoding="utf-8"))
+check("oct04-delivery-pending-only-rendered", pending_after.get("ids") == ["id1", "id2", "id3", "id4"])
+check("oct04-delivery-deferred-preserved", pending_after.get("deferred_ids") == ["id5", "id6", "id7", "id8"])
+
+# 10) 품질 게이트는 과거 실제 오판 문구를 거부.
 bad_aramco = """<b>전쟁·종전·재건 웹감시</b>
 🔴 <b>공격·확전</b>
 <b>핵심 변화</b>
