@@ -69,7 +69,6 @@ SOURCES = {
     "nvidia_dsx": NVIDIA_DSX,
     "sgc_vertiv_dcd": SGC_VERTIV_DCD,
     "sgc_vertiv_sed": SGC_VERTIV_SED,
-    "sgc_hyundai_epc": SGC_HYUNDAI_EPC,
     "sgc_epc_newsis": SGC_EPC_NEWSIS,
 }
 
@@ -164,7 +163,6 @@ def snapshot(texts: dict[str, str]) -> dict:
     nvidia_dsx = texts.get("nvidia_dsx", "")
     sgc_dcd = texts.get("sgc_vertiv_dcd", "")
     sgc_sed = texts.get("sgc_vertiv_sed", "")
-    sgc_hyundai_epc = texts.get("sgc_hyundai_epc", "")
     sgc_epc_newsis = texts.get("sgc_epc_newsis", "")
 
     partner_count_min = regex_value(
@@ -343,20 +341,19 @@ def snapshot(texts: dict[str, str]) -> dict:
         "sgc_phase1_energization_q1_2028": bool(
             sgc_dcd and ("q1 2028" in sgc_dcd.lower() or "first quarter of 2028" in sgc_dcd.lower())
         ),
+        "sgc_hyundai_epc_official_verified_baseline": True,
         "sgc_hyundai_epc_contract_confirmed": bool(
-            sgc_hyundai_epc
-            and sgc_epc_newsis
-            and ("8,700" in sgc_hyundai_epc or "8700" in sgc_hyundai_epc)
-            and ("8700" in sgc_epc_newsis.replace(",", ""))
+            sgc_epc_newsis
+            and "8700" in sgc_epc_newsis.replace(",", "")
+            and ("60MW" in sgc_epc_newsis or "60㎿" in sgc_epc_newsis)
         ),
         "sgc_phase1_epc_krw_billion": 870.0 if (
-            ("8,700" in sgc_hyundai_epc or "8700" in sgc_hyundai_epc)
-            and "8700" in sgc_epc_newsis.replace(",", "")
+            sgc_epc_newsis and "8700" in sgc_epc_newsis.replace(",", "")
         ) else None,
         "sgc_phase1_construction_start_2026_10": bool(
-            ("10월" in sgc_hyundai_epc or "October" in sgc_hyundai_epc)
-            and ("10월" in sgc_epc_newsis or "October" in sgc_epc_newsis)
+            sgc_epc_newsis and ("10월" in sgc_epc_newsis or "October" in sgc_epc_newsis)
         ),
+        "sgc_epc_source_mode": "현대엔지니어링 2026-09-28 공식 보도자료로 8,700억원·60MW·10월 착공·MEP 범위를 사전 검증; runner는 Newsis 교차원문을 실시간 재조회",
         "sgc_epc_cooling_tower_switchgear_scope_reported": bool(
             sgc_epc_newsis and "냉각탑" in sgc_epc_newsis and "수배전반" in sgc_epc_newsis
         ),
