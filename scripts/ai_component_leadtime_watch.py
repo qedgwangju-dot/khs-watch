@@ -69,10 +69,22 @@ WEEKLY_004_LOCK = {
         "GPU": "Blackwell은 2026년 주력 출하·수요 1H27 연장, Rubin은 시스템 테스트·검증 이슈로 4Q26~1Q27부터 점진 램프",
         "DRAM": "4Q26 계약가격 협상에서 인상 신호가 이어지고 미국 CSP 수요가 견조",
         "NAND(eSSD)": "DRAM 부족이 일부 NAND 업체의 기업용 SSD 지원 능력까지 제약",
-        "HDD": "Toshiba 증설은 가동까지 12~24개월이 필요해 납기 완화는 빨라도 2027년 말",
+        "HDD": "HDD 50주 병목 → TrendForce는 시장 완화가 빨라도 2027년 말이라고 전망. Toshiba 공식은 10/2 증설 nearline HDD 라인 첫 출하와 FY2027 생산능력 약 2배 목표를 확인",
         "ABF": "수급 격차가 단기간 닫히기 어렵고 3Q26~4Q27 장기계약 가격은 분기당 10~15% 인상 전망",
         "MLCC": "저가 소비자용은 둔화하지만 AI용 고급 0805는 부족해 수요 양극화",
     },
+}
+
+TOSHIBA_HDD_OFFICIAL = {
+    "as_of": "2026-10-02",
+    "source": "https://toshiba.semicon-storage.com/ap-en/company/news/news-topics/2026/10/storage-20261002-1.html",
+    "expanded_nearline_line_first_shipment": True,
+    "fy2027_capacity_target_vs_fy2025": "nearly_double",
+    "scope_note": (
+        "Toshiba 공식자료는 Laguna Technopark 증설 nearline HDD 라인의 생산·첫 출하 시작과 "
+        "FY2027 생산능력 약 2배 목표를 확인한다. TrendForce의 'late 2027 relief'는 시장 전체 "
+        "리드타임 정상화 전망으로 분리하며, Toshiba 라인이 2027년 말까지 전혀 가동되지 않는다는 뜻으로 해석하지 않는다."
+    ),
 }
 
 UBS_PROJECT_LEADTIME_BASELINE = {
@@ -579,16 +591,22 @@ def memory_storage_chain_state(components: dict, signals: dict) -> dict:
         and hdd_late_2027
     )
     return {
+        "version": 2,
         "active": active,
         "dram_lead_ratio": round(dram_ratio, 3) if dram_ratio is not None else None,
         "nand_essd_lead_ratio": round(nand_ratio, 3) if nand_ratio is not None else None,
         "hdd_lead_ratio": round(hdd_ratio, 3) if hdd_ratio is not None else None,
         "dram_to_enterprise_ssd_constraint_confirmed": dram_to_essd,
         "hdd_relief_late_2027_or_later": hdd_late_2027,
+        "hdd_relief_is_market_normalization_outlook": hdd_late_2027,
+        "toshiba_expanded_nearline_line_first_shipment_confirmed": bool(TOSHIBA_HDD_OFFICIAL["expanded_nearline_line_first_shipment"]),
+        "toshiba_fy2027_capacity_nearly_double_target": TOSHIBA_HDD_OFFICIAL["fy2027_capacity_target_vs_fy2025"] == "nearly_double",
+        "toshiba_official_source": TOSHIBA_HDD_OFFICIAL["source"],
         "nand_controller_direct_constraint_confirmed": False,
         "scope_note": (
             "확인 범위는 DRAM 부족이 일부 NAND 공급사의 기업용 SSD 솔루션 지원 능력을 제약한다는 것. "
-            "NAND 컨트롤러 출하 자체의 직접 병목은 별도 확인 전까지 확정하지 않음."
+            "NAND 컨트롤러 출하 자체의 직접 병목은 별도 확인 전까지 확정하지 않음. "
+            "HDD late-2027은 시장 전체 정상화 전망이며 Toshiba 증설 라인 가동 개시 여부와 별도 관리."
         ),
     }
 
@@ -603,17 +621,20 @@ def build_memory_storage_chain_alert(chain: dict, components: dict, source_url: 
         "TrendForce 10/5 기준으로 개별 부품이 아니라 DRAM→기업용 SSD→HDD의 연쇄 병목을 기존 알림에서 함께 추적합니다.",
         f"• <b>DRAM:</b> {html.escape(fmt_week(dram.get('current')))} / 균형 {html.escape(fmt_week(dram.get('balanced')))} · {chain.get('dram_lead_ratio', 0):.1f}배 · {html.escape(fmt_status(dram))}",
         f"• <b>기업용 SSD:</b> {html.escape(fmt_week(nand.get('current')))} / 균형 {html.escape(fmt_week(nand.get('balanced')))} · DRAM 부족이 일부 NAND 공급사의 eSSD 솔루션 지원 능력을 제약",
-        f"• <b>HDD:</b> {html.escape(fmt_week(hdd.get('current')))} / 균형 {html.escape(fmt_week(hdd.get('balanced')))} · {chain.get('hdd_lead_ratio', 0):.1f}배 · 공급 완화는 빨라도 2027년 말",
+        f"• <b>HDD:</b> {html.escape(fmt_week(hdd.get('current')))} / 균형 {html.escape(fmt_week(hdd.get('balanced')))} · {chain.get('hdd_lead_ratio', 0):.1f}배 · TrendForce 시장 전망상 정상화는 빨라도 2027년 말",
+        f"• <b>Toshiba 공식:</b> 10/2 Laguna 증설 nearline HDD 라인 첫 출하 완료 · FY2027 생산능력은 FY2025 대비 약 2배 목표",
         "",
         "<b>정확도 경계</b>",
         "• TrendForce 확인 범위는 ‘DRAM 부족 → 일부 NAND 공급사의 기업용 SSD 솔루션 지원 제약’입니다.",
         "• <b>NAND 컨트롤러 출하가 DRAM 때문에 직접 제한된다는 주장은 이번 원문에서 확인되지 않아 알림 확정조건에 넣지 않았습니다.</b>",
+        "• Toshiba는 이미 증설 라인에서 첫 출하를 시작했습니다. 따라서 ‘2027년 말’은 개별 Toshiba 라인의 미가동 시점이 아니라 시장 전체 리드타임 정상화 전망으로만 추적합니다.",
         "",
         "<b>다음 확인</b>",
         "• DRAM 리드타임·서버 DRAM 가격 / eSSD 리드타임·가격·출하 / HDD 리드타임·증설 가동시점이 함께 꺾이는지 확인",
     ]
     if source_url:
         lines.append(f'• <a href="{html.escape(source_url, quote=True)}">TrendForce 원문</a>')
+    lines.append(f'• <a href="{html.escape(TOSHIBA_HDD_OFFICIAL["source"], quote=True)}">Toshiba 공식 HDD 증설·첫 출하</a>')
     return "\n".join(lines).strip() + "\n"
 
 
@@ -1219,7 +1240,10 @@ def main() -> None:
     latest_chain = memory_storage_chain_state(latest_components, latest_signals)
     if (
         latest_chain.get("active")
-        and not previous_chain.get("active")
+        and (
+            not previous_chain.get("active")
+            or int(previous_chain.get("version") or 0) < int(latest_chain.get("version") or 1)
+        )
         and str(latest_source or "").rstrip("/").endswith("weekly-radar-004")
     ):
         chain_alert = build_memory_storage_chain_alert(latest_chain, latest_components, str(latest_source or ""))
