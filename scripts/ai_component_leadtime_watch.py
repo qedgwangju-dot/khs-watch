@@ -561,7 +561,7 @@ def memory_storage_chain_state(components: dict, signals: dict) -> dict:
     nand_signal = str((signals or {}).get("NAND(eSSD)") or "")
     hdd_signal = str((signals or {}).get("HDD") or "")
     dram_to_essd = (
-        "DRAM 공급 부족" in nand_signal
+        ("DRAM 공급 부족" in nand_signal or "DRAM 부족" in nand_signal)
         and "기업용 SSD" in nand_signal
     )
     hdd_late_2027 = (
