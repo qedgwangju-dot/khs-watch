@@ -1,25 +1,44 @@
 {
   "schema_version": 1,
-  "initial_alert_sent": false,
-  "seen": [],
-  "seen_fact_keys": [],
+  "updated_at_kst": "2026-10-05T16:44:18+09:00",
+  "initial_alert_sent": true,
+  "seen": [
+    "403a012a2689d944b3cdcf73",
+    "83f34d8224192a5cf30078cc"
+  ],
+  "seen_fact_keys": [
+    "s27_korea_hike_100000_130000",
+    "s27_price_hike_rumor_unspecified"
+  ],
   "metrics": {
     "s27_korea_hike_low_krw": 100000,
     "s27_korea_hike_high_krw": 130000,
     "s27_status": "단일 한국 팁스터(Lanzuk/yeux1122)발 루머·삼성전자 공식 미확인",
-    "counterpoint_existing_phone_price_yoy_pct": 15,
-    "counterpoint_new_launch_price_yoy_pct": 25,
-    "counterpoint_models_hiked_share_pct": 40,
-    "trendforce_q4_dram_qoq_low_pct": 10,
-    "trendforce_q4_dram_qoq_high_pct": 15,
-    "trendforce_q4_nand_qoq_low_pct": 15,
-    "trendforce_q4_nand_qoq_high_pct": 20
+    "counterpoint_existing_phone_price_yoy_pct": 15.0,
+    "counterpoint_new_launch_price_yoy_pct": 25.0,
+    "counterpoint_models_hiked_share_pct": 40.0,
+    "trendforce_q4_dram_qoq_low_pct": 10.0,
+    "trendforce_q4_dram_qoq_high_pct": 15.0,
+    "trendforce_q4_nand_qoq_low_pct": 15.0,
+    "trendforce_q4_nand_qoq_high_pct": 20.0
   },
   "confirmations": {
     "s27": "단일 한국 팁스터(Lanzuk/yeux1122)발 루머·삼성전자 공식 미확인",
     "industry_price_pass_through": "Counterpoint·TrendForce 공식자료 확인"
   },
-  "last_scan_items": 0,
+  "last_scan_items": 2,
   "last_signal_count": 0,
-  "last_alert": null
-}\n
+  "last_alert": {
+    "at_kst": "2026-10-05T16:44:18+09:00",
+    "kind": "baseline"
+  },
+  "delivery_receipt": {
+    "status": "confirmed",
+    "bot_username": "khs88798879887988798879_bot",
+    "message_ids": [
+      232
+    ],
+    "confirmed_at_kst": "2026-10-05T16:44:21+09:00",
+    "alert_signature": "c4416ad246b1273232d5f2ddb1c822e811f131e5488358f62113055ae44f6fd2"
+  }
+}
