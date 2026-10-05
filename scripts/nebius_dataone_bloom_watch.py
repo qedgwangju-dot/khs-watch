@@ -17,7 +17,7 @@ PENDING = OUT / "nebius_dataone_bloom_pending_state.json"
 ALERT = OUT / "nebius_dataone_bloom_alert.txt"
 STATUS = OUT / "nebius_dataone_bloom_status.md"
 
-FORMAT_VERSION = 6
+FORMAT_VERSION = 7
 # Verification reruns must remain silent when extracted facts are unchanged.
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
 
@@ -384,95 +384,56 @@ def changes(old: dict, new: dict) -> list[str]:
     return out
 
 
-def render(facts: dict, chg: list[str], fxv: dict) -> str:
+def render(facts: dict, chg: list[str], fxv: dict, format_upgrade: bool = False) -> str:
     f = facts["frankfort"]
     p = facts["confirmed_partner_chain"]
     bm = facts.get("bloom_ai_market") or {}
     rate = float(fxv["usdkrw"])
     investment_krw = krw_from_usd_b(float(f["investment_usd_b"]), rate)
 
+    title = (
+        "✅ Nebius·DataOne·Bloom 알림 가독성 업그레이드"
+        if format_upgrade and not chg
+        else "⚡ Nebius·DataOne·Bloom 실행 변화"
+    )
     lines = [
-        "<b>⚡ Nebius·DataOne·Bloom 파트너 인프라 감시</b>",
+        f"<b>{title}</b>",
         "",
-        "<b>📌 Frankfort 직접 확인 사실</b>",
-        f"• DataOne 제안 AI Factory │ <b>{f['building_sqft']:,}sqft</b> · {f['land_acres']}에이커 · 투자 <b>${f['investment_usd_b']:.1f}B</b> ({investment_krw})",
-        f"• 전력 │ IMPA 계통 <b>{f['grid_mw']}MW</b> + 현장 연료전지 <b>{f['onsite_fuel_cell_mw']}MW</b> = 총 <b>{f['total_mw']}MW</b>",
-        f"• 현장전원 │ Bloom 명시 <b>{'예' if f['bloom_named'] else '아니오'}</b> · 천연가스 원료 <b>{'예' if f['natural_gas_feedstock'] else '확인 필요'}</b> · 공급사 {html.escape(str(f['gas_supplier'] or '확인 필요'))}",
-        f"• LNG 백업 탱크 예상 │ <b>{'예' if f['lng_backup_expected'] else '확인 필요'}</b> · 변전소 {f['substations'] if f['substations'] is not None else '확인 필요'}개",
-        f"• 일정 │ {html.escape(f['groundbreaking_window'])} · 공사 {html.escape(str(f['construction_duration'] or '확인 필요'))}",
-        f"• 물 사용 │ 연 {f['water_million_gal_per_year']:.0f}백만 갤런",
+        "<b>🧭 핵심</b>",
+        f"• <b>Frankfort</b> │ 투자 {f['investment_usd_b']:.1f}B달러 ({investment_krw}) │ 계통 {f['grid_mw']}MW + Bloom 연료전지 {f['onsite_fuel_cell_mw']}MW = <b>{f['total_mw']}MW</b>",
+        f"• <b>일정</b> │ {html.escape(f['groundbreaking_window'])} · 공사 {html.escape(str(f['construction_duration'] or '확인 필요'))}",
+        f"• <b>고객</b> │ {html.escape(f['tenant_name'] or f['tenant_status'])} · Frankfort→Nebius 직접 연결 <b>{'확인' if f['nebius_official_link'] else '미확인'}</b> → <b>525MW를 NBIS 확정용량에 합산하지 않음</b>",
         "",
-        "<b>🚨 가장 중요한 구분</b>",
-        f"• Frankfort 고객/임차인 │ <b>{html.escape(f['tenant_name'] or f['tenant_status'])}</b>",
-        f"• Frankfort→Nebius 직접 연결 │ <b>{'공식 확인' if f['nebius_official_link'] else '미확인'}</b>",
-        "• 따라서 현재는 Frankfort 525MW를 NBIS 확정 용량으로 합산하지 않음",
+        "<b>⚡ Bloom 실제 실행</b>",
+        f"• <b>Equinix</b> │ 계약 100MW+ · 운영 약 {bm.get('equinix_operational_mw', 0):g}MW · 건설 약 {bm.get('equinix_under_construction_mw', 0):g}MW",
+        f"• <b>Oracle</b> │ 초기 계약 {bm.get('oracle_initial_contracted_gw', 0):g}GW · 마스터 상단 {bm.get('oracle_master_agreement_gw', 0):g}GW",
+        f"• <b>Nebius·Bloom</b> │ 첫 배치 328MW {'확정' if p['nebius_bloom_long_term_328mw'] else '재확인 필요'} · Vineland 3자 연결 {'확정' if p['vineland_nebius_dataone_bloom'] else '재확인 필요'}",
+        f"• <b>Brookfield</b> │ AI 전력 금융 프레임 {bm.get('brookfield_financing_framework_usd_b', 0):g}B달러",
         "",
-        "<b>🔗 이미 확정된 파트너 연결</b>",
-        f"• Vineland │ Nebius 임차인 + DataOne 소유·운영 + Bloom 연료전지: <b>{'확정' if p['vineland_nebius_dataone_bloom'] else '재확인 필요'}</b>",
-        f"• Nebius·Bloom │ 장기 파트너십 + 첫 배치 328MW: <b>{'확정' if p['nebius_bloom_long_term_328mw'] else '재확인 필요'}</b>",
-        f"• Nebius 파트너형 확장모델 │ 파트너가 인프라·하드웨어를 소유하고 Nebius가 아키텍처·소프트웨어·판매를 담당: <b>{'확정' if p['nebius_partner_owned_capacity_model'] else '재확인 필요'}</b>",
-        f"• Bloom Energy의 Frankfort·DataOne 직접 공식 발표 │ <b>{'확정' if p['bloom_frankfort_official_announcement'] else '아직 없음'}</b>",
-        "",
-        "<b>⚙️ Bloom AI 현장전원·800V DC 기준선</b>",
-        f"• Oracle │ 마스터계약 최대 <b>{bm.get('oracle_master_agreement_gw', 0):g}GW</b> · 초기 계약 <b>{bm.get('oracle_initial_contracted_gw', 0):g}GW</b>",
-        f"• AI 인프라 고객군 │ 약 <b>{bm.get('ai_infrastructure_segment_mw_approx', 0):g}MW</b> · 회사 발표 기준 근사치",
-        f"• Equinix │ 총 계약용량 <b>100MW+</b> · 운영중 약 <b>{bm.get('equinix_operational_mw', 0):g}MW</b> · 건설중 약 <b>{bm.get('equinix_under_construction_mw', 0):g}MW</b>",
-        f"• Brookfield │ AI 인프라 전력 금융 프레임 <b>${bm.get('brookfield_financing_framework_usd_b', 0):g}B</b>",
-        f"• Bloom 2026 설문 │ 계통 부족 시 BYOP 계획 <b>{bm.get('developer_byop_share_pct', 0):g}%</b> · 시장 전체 확정치가 아닌 회사 의뢰 설문",
-        f"• Power Connect │ 현장 설치시간 <b>{bm.get('power_connect_install_time_reduction_pct', 0):g}%+</b> 단축 목표 · 실제 프로젝트별 인허가 기간과 분리",
-        f"• 1GW AI 데이터센터 800V DC 비교모델 │ 비연산 CAPEX <b>{bm.get('dc_800v_noncompute_capex_saving_usd_b', 0):g}십억달러</b>·{bm.get('dc_800v_noncompute_capex_saving_pct', 0):g}% 절감",
-        f"• 5년 총비용 비교모델 │ <b>{bm.get('dc_800v_tco5_saving_usd_b', 0):g}십억달러</b>·{bm.get('dc_800v_tco5_saving_pct', 0):g}% 절감",
-        "• 위 비용절감 수치는 Bloom 자체 모델이며 실제 고객의 실현 절감액과 분리합니다.",
+        "<b>📐 모델·설문은 분리</b>",
+        f"• BYOP 의향 {bm.get('developer_byop_share_pct', 0):g}% · Power Connect 설치시간 {bm.get('power_connect_install_time_reduction_pct', 0):g}%+ 단축은 <b>Bloom 설문·목표</b>",
+        f"• 1GW 800V 비교모델 │ 비연산 CAPEX {bm.get('dc_800v_noncompute_capex_saving_usd_b', 0):g}B달러·{bm.get('dc_800v_noncompute_capex_saving_pct', 0):g}% / 5년 TCO {bm.get('dc_800v_tco5_saving_usd_b', 0):g}B달러·{bm.get('dc_800v_tco5_saving_pct', 0):g}% 절감 → <b>고객 실현값 아님</b>",
     ]
-
-    if bm.get("source_errors"):
-        lines.append("• Bloom 공식 원문 일부 조회 실패 시 직전 검증값을 유지하고 오류 자체로는 변화 알림을 만들지 않습니다.")
 
     if chg:
         lines += ["", "<b>🔄 이번 변화</b>"]
-        lines += [f"• {html.escape(x)}" for x in chg[:10]]
+        lines += [f"• {html.escape(x)}" for x in chg[:8]]
 
     lines += [
         "",
-        "<b>🔔 앞으로 즉시 알림</b>",
-        "• DataOne이 Frankfort 고객/임차인 실명 공개",
-        "• Nebius가 Frankfort·Indiana·Logix를 공식 발표에 직접 언급",
-        "• 350MW 계통·175MW 연료전지·525MW 총량 변경",
-        "• Bloom 연료전지 발주·납품·가동 일정 또는 용량 확정",
-        "• Oracle 1.2GW 초기계약의 실제 설치·가동 MW와 2.8GW 상단의 추가 발주 전환",
-        "• 800V DC 고객 채택·실제 CAPEX·효율·가동률 실측이 Bloom 자체 모델과 얼마나 일치하는지",
-        "• Frankfort 시 승인·건축허가·착공·점유허가 단계 전환",
-        "• CenterPoint 가스·LNG 백업·변전소 계획 변경",
-        "• Nebius가 파트너형 용량을 실제 계약전력·connected power·매출로 편입",
+        "<b>📊 투자 의미</b>",
+        "• <b>매출 연결</b> │ 연료전지 발주·설치·가동 MW와 전력설비·장기 서비스가 실제 실적 신호",
+        "• <b>실패모드</b> │ 고객 미공개·인허가·가스 연결·LNG 안전규정 지연. 천연가스 SOFC는 저대기오염이지만 <b>CO₂ 0이 아님</b>",
+        f"• <b>현장 제약</b> │ LNG 백업 {'예' if f['lng_backup_expected'] else '확인 필요'} · 변전소 {f['substations'] if f['substations'] is not None else '확인 필요'}개 · 물 연 {f['water_million_gal_per_year']:.0f}백만 갤런",
         "",
-        "<b>⚠️ 실패모드</b>",
-        "• 고객 미공개 상태가 장기화되면 525MW를 NBIS 수혜로 선반영할 수 없음",
-        "• 시 승인·환경영향·건축허가 지연 시 착공이 2027년 이후로 밀릴 수 있음",
-        "• 계통 350MW와 현장 175MW 중 한 축이 지연되면 전체 525MW 동시 가동이 어려움",
-        "• 연료전지는 천연가스 공급·현장 인허가·LNG 백업 안전규정이 추가 병목",
-        "• 천연가스 SOFC는 비연소라 NOx·SOx·입자상물질이 매우 낮지만 CO2 배출은 0이 아니므로 무배출 발전원으로 분류하지 않음",
-        "• 천연가스 SOFC의 저대기오염·저용수 특성과 청정전력 규정 적격성은 별개이며, Massachusetts CES·Pennsylvania 청정·상시전원 기준을 자동 충족한다고 보지 않음",
-        "",
-        f"💱 1달러 = {rate:,.2f}원 · {html.escape(str(fxv.get('source','')))}",
-        "",
-        "<b>🔗 원문</b>",
-        f'• <a href="{FRANKFORT}">DataOne Frankfort 공식</a>',
-        f'• <a href="{NEBIUS_VINELAND}">Nebius Vineland 공식</a>',
-        f'• <a href="{NEBIUS_BLOOM}">Nebius·Bloom 공식 파트너십</a>',
-        f'• <a href="{NEBIUS_PARTNER_MODEL}">Nebius 파트너 인프라 사업모델</a>',
-        f'• <a href="{FRANKFORT_MAYOR}">Frankfort 시장 공식 입장</a>',
-        f'• <a href="{IMPA_ABOUT}">IMPA 공식</a>',
-        f'• <a href="{BLOOM_NEWSROOM}">Bloom Energy 뉴스룸</a>',
-        f'• <a href="{BLOOM_ORACLE}">Bloom·Oracle 2.8GW 마스터계약</a>',
-        f'• <a href="{BLOOM_MITAC}">Bloom AI 인프라 고객군·MiTAC</a>',
-        f'• <a href="{BLOOM_800V}">Bloom 800V DC 비용모델</a>',
-        f'• <a href="{BLOOM_BROOKFIELD_25B}">Bloom·Brookfield 250억달러 AI 전력 금융 프레임</a>',
-        f'• <a href="{BLOOM_EQUINIX_100MW}">Bloom·Equinix 100MW+ 데이터센터 현장전원</a>',
-        f'• <a href="{BLOOM_MIDYEAR_2026}">Bloom 2026 데이터센터 전력 설문</a>',
-        f'• <a href="{BLOOM_POWER_CONNECT}">Bloom Power Connect</a>',
-        f'• <a href="{BLOOM_ENERGY_SERVER}">Bloom Energy Server 배출·운영 사양</a>',
+        f"<b>💱 1달러 = {rate:,.2f}원</b> · {html.escape(str(fxv.get('source','')))}",
     ]
-    return "\n".join(lines).strip() + "\n"
+
+    text = "\n".join(lines).strip() + "\n"
+    visible = html.unescape(re.sub(r"<[^>]+>", "", text))
+    if len(visible) > 2800:
+        raise RuntimeError(f"compact Nebius/Bloom alert too long: {len(visible)} chars")
+    return text
 
 
 def main() -> int:
@@ -498,7 +459,7 @@ def main() -> int:
     }
     PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if should_alert:
-        ALERT.write_text(render(facts, chg, fxv), encoding="utf-8")
+        ALERT.write_text(render(facts, chg, fxv, format_upgrade=format_upgrade), encoding="utf-8")
 
     STATUS.write_text(
         "# Nebius·DataOne·Bloom 파트너 인프라 감시\n\n"
