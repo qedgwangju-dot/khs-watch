@@ -53,6 +53,16 @@ BASELINE = {
         "ms_gross_gap_gw": 57.0,
         "ms_mitigation_gw": 24.0,
         "ms_residual_gap_gw": 33.0,
+        "cw_padmount_transformer_low_weeks": 68.0,
+        "cw_padmount_transformer_high_weeks": 113.0,
+        "cw_generator_low_weeks": 60.0,
+        "cw_generator_high_weeks": 100.0,
+        "cw_mv_switchgear_low_weeks": 38.0,
+        "cw_mv_switchgear_high_weeks": 63.0,
+        "cw_lv_switchgear_low_weeks": 36.0,
+        "cw_lv_switchgear_high_weeks": 60.0,
+        "cw_ups_low_weeks": 36.0,
+        "cw_ups_high_weeks": 42.0,
     },
     "sources": {
         "dc_demand": {
@@ -75,6 +85,14 @@ BASELINE = {
             "url": "",
             "kind": "사용자 제공 2차 기준선·공식 원천 확인 전",
         },
+        "cw_equipment_2026": {
+            "url": "https://www.cushmanwakefield.com/en/united-states/insights/data-center-development-cost-guide",
+            "kind": "Cushman & Wakefield 2026 Data Center Development Cost Guide / 사용자 제공 현대차증권 도표 교차기준",
+        },
+        "jll_equipment_2026": {
+            "url": "https://www.jll.com/content/dam/jllcom/en/global/documents/reports/research-reports/26-research-global-data-center-outlook-new.pdf",
+            "kind": "JLL 2026 Global Data Center Outlook 교차검증",
+        },
     },
     "seen_urls": [],
     "last_checked_at_kst": "",
@@ -88,6 +106,14 @@ SEARCHES = [
     ("google", '"power transformer" lead time data center 2026 Reuters'),
     ("google", '"generator step-up" transformer lead time 2026'),
     ("google", '"transformer bushing" lead time weeks 2026 high voltage'),
+    ("google", 'site:cushmanwakefield.com 2026 data center transformer generator switchgear UPS lead time'),
+    ("google", 'site:jll.com 2026 data center equipment lead time transformer generator switchgear UPS PDU chiller'),
+    ("google", '"medium voltage switchgear" "lead time" data center 2026'),
+    ("google", '"low voltage switchgear" "lead time" data center 2026'),
+    ("google", '"UPS" "lead time" data center 2026'),
+    ("google", '"data center" generator lead time 2026 Caterpillar Cummins Rolls-Royce'),
+    ("google", 'site:eaton.com 2026 data center switchgear factory production'),
+    ("google", 'site:se.com 2026 data center switchgear supply capacity agreement'),
     ("google", '"345 kV" transmission miles 2026 United States'),
     ("google", 'site:ferc.gov data center large load interconnection transmission 2026'),
     ("google", 'site:nerc.com large load data center reliability guideline 2026'),
@@ -108,19 +134,21 @@ OFFICIAL_DOMAINS = (
     "lbl.gov", "escholarship.org", "emp.lbl.gov", "nerc.com", "energy.gov", "ferc.gov",
     "pjm.com", "misoenergy.org", "ercot.com", "hitachienergy.com", "gevernova.com",
     "siemens-energy.com", "ls-electric.com", "hyosungheavyindustries.com",
-    "hd-hyundaielectric.com",
+    "hd-hyundaielectric.com", "eaton.com", "se.com", "abb.com", "vertiv.com",
+    "cat.com", "cummins.com", "rolls-royce.com", "cushmanwakefield.com", "jll.com",
 )
 
 TRUSTED_DOMAINS = (
     "reuters.com", "utilitydive.com", "datacenterdynamics.com", "cleanenergygrid.org",
     "woodmac.com", "spglobal.com", "bloomberg.com", "ft.com",
-    "finance.yahoo.com", "investing.com",
+    "finance.yahoo.com", "investing.com", "credaily.com", "datacenterscouts.com",
 )
 
 MATERIAL_TERMS = (
     "transformer", "bushing", "transmission", "interconnection", "grid", "substation",
     "energization", "energized", "large load", "data center", "datacenter",
-    "변압기", "부싱", "송전", "계통", "변전소", "전원",
+    "switchgear", "generator", "ups", "pdu", "power distribution", "electrical equipment",
+    "변압기", "부싱", "송전", "계통", "변전소", "전원", "배전반", "발전기", "무정전전원",
 )
 
 
