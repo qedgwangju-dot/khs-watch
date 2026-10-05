@@ -307,7 +307,7 @@ jobs:
           with urllib.request.urlopen(req,timeout=25) as r:
               root=ET.fromstring(r.read())
 
-          trusted={"Reuters","AP News","Associated Press","The Wall Street Journal","Wall Street Journal"}
+          trusted={"Reuters","AP News","Associated Press","The Associated Press","The Wall Street Journal","Wall Street Journal"}
           rows=[]
           for node in root.findall("./channel/item"):
               title=html.unescape(re.sub(r"<[^>]+>"," ",node.findtext("title") or ""))
@@ -321,6 +321,22 @@ jobs:
               if "super intelligence force" not in text and "superintelligence force" not in text:
                   continue
               rows.append({"title":title.strip(),"description":desc.strip(),"source":source,"link":link,"text":text})
+
+          # One-time first-party recovery for the confirmed Oct. 4 formation.
+          # Semantic state prevents this baseline from ever being resent.
+          rows.append({
+              "title":"Trump announces formation of the Super Intelligence Force",
+              "description":(
+                  "Trump announced the formation of the Super Intelligence Force to coordinate federal efforts. "
+                  "The group is led by Jay Clayton, Andrew Ferguson, Emil Michael and Scott Kupor."
+              ),
+              "source":"Trump Truth Social",
+              "link":"https://truthsocial.com/@realDonaldTrump/117382616783706638",
+              "text":(
+                  "trump announced the formation of the super intelligence force to coordinate federal efforts. "
+                  "the group is led by jay clayton, andrew ferguson, emil michael and scott kupor."
+              ),
+          })
 
           def stage(row):
               text=row["text"]
