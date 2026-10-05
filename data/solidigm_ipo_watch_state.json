@@ -1,12 +1,12 @@
 {
-  "watch_version": 1,
-  "topic": "Solidigm IPO",
+  "watch_version": 2,
+  "topic": "Solidigm IPO + eSSD manufacturing",
   "baseline_as_of": "2026-09-25",
   "current_state": {
     "stage": "bank_bakeoff",
     "target_year": 2027,
-    "valuation_max_usd": 150000000000.0,
-    "raise_target_usd": 15000000000.0,
+    "valuation_max_usd": 150000000000,
+    "raise_target_usd": 15000000000,
     "evidence_state": "top_tier_report",
     "source_url": "https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/",
     "source_name": "Reuters",
@@ -16,7 +16,7 @@
     "parent_post_ipo_stake_pct": null,
     "use_of_proceeds": [],
     "us_fab_link": "considering",
-    "pre_ipo_raise_usd": 3600000000.0
+    "pre_ipo_raise_usd": 3600000000
   },
   "last_checked_at_kst": "2026-10-05T18:19:07+09:00",
   "last_alert_at_kst": "2026-10-03T21:03:21+09:00",
@@ -53,5 +53,33 @@
   "historical_context": {
     "pre_ipo_raise_usd": 3600000000,
     "note": "별도 선행 보도에서 검토된 Pre-IPO 규모. 현재 IPO 본공모 조달액과 합산하지 않음."
+  },
+  "manufacturing_state": {
+    "stage": "pcn_announced",
+    "pcn_number": "0000048112-00",
+    "pcn_publish_date": "2026-09-25",
+    "pcn_change_title": "Additional Manufacturing Site for all Solidigm Datacenter SSDs",
+    "official_pcn_verified": true,
+    "affected_scope": "all_solidigm_datacenter_ssds",
+    "manufacturing_scope": "ssd_manufacturing_not_nand_wafer_fab",
+    "reported_site_country": "Taiwan",
+    "reported_manufacturing_model": "ODM",
+    "reported_ship_start_month": "2026-12",
+    "reported_quality_standard_unchanged": true,
+    "reported_existing_odm_partners": [
+      "PTI",
+      "Pegatron"
+    ],
+    "pti_partnership_officially_supported": true,
+    "pegatron_partnership_evidence": "reported",
+    "confirmed_direct_server_customers": [],
+    "capacity_units_per_month": null,
+    "capacity_eb_per_year": null,
+    "official_source_url": "https://www.solidigm.com/products/document-management-system.html",
+    "reported_source_url": "https://www.ajunews.com/view/20261005160404868",
+    "secondary_reported_source_url": "https://en.sedaily.com/finance/2026/10/05/solidigm-to-expand-ssd-production-sites-in-taiwan",
+    "pti_official_source_url": "https://www.pti.com.tw/Handlers/ConferenceDownload.ashx?col=briefing&id=1ddf8d0a-0ca9-4271-ad0e-71812b1beadb&lang=en",
+    "as_of": "2026-10-05",
+    "note": "Solidigm 공식 DMS는 PCN 0000048112-00과 'all Solidigm Datacenter SSDs' 대상 추가 제조거점을 확인. 대만·ODM·12월 출하·Pegatron은 아주경제/서울경제 보도 단계. PTI는 과거 PTI 공식 IR에서 Solidigm 파트너 관계가 확인됨. 신규 거점의 생산능력 수치는 미공개이며 NAND 웨이퍼 팹 증설로 해석하지 않음."
   }
 }

@@ -78,6 +78,62 @@ class SolidigmIPOTests(unittest.TestCase):
         self.assertEqual(merged["evidence_state"], "top_tier_report")
         self.assertEqual(merged["source_name"], "Reuters")
 
+    def test_manufacturing_article_extracts_taiwan_odm_without_fake_customer(self):
+        item = {
+            "title": "AI 서버 붐 탄 솔리다임, 대만 SSD 위탁생산 거점 확대",
+            "description": "Solidigm adds a Taiwan ODM manufacturing site for data center SSDs.",
+            "source": "아주경제",
+            "published_at_kst": "2026-10-05T16:09:00+09:00",
+            "direct_link": "https://www.ajunews.com/view/20261005160404868",
+        }
+        body = (
+            "솔리다임은 대만 내 데이터센터용 SSD 위탁생산(ODM) 제조 거점을 신규 추가한다. "
+            "새 거점 제품은 기존 품질 표준을 유지한 채 오는 12월부터 글로벌 고객사로 출하될 예정이다. "
+            "파워텍테크놀로지(PTI), 페가트론 등 현지 파트너사를 활용해 위탁생산을 진행해왔다. "
+            "폭스콘, 콴타, 위스트론은 대만의 주요 AI 서버 업체다."
+        )
+        with patch.object(w, "article_text", return_value=body):
+            data = w.extract_manufacturing_patch(item)
+        self.assertEqual(data["reported_site_country"], "Taiwan")
+        self.assertEqual(data["reported_manufacturing_model"], "ODM")
+        self.assertEqual(data["reported_ship_start_month"], "2026-12")
+        self.assertTrue(data["reported_quality_standard_unchanged"])
+        self.assertEqual(set(data["reported_existing_odm_partners"]), {"PTI", "Pegatron"})
+        self.assertEqual(data.get("confirmed_direct_server_customers", []), [])
+        self.assertEqual(data["manufacturing_scope"], "ssd_manufacturing_not_nand_wafer_fab")
+
+    def test_official_pcn_scope_is_all_datacenter_ssds(self):
+        item = {
+            "title": "Additional Manufacturing Site for all Solidigm Datacenter SSDs",
+            "description": "PCN 0000048112-00",
+            "source": "Solidigm",
+            "published_at_kst": "2026-09-25T00:00:00+09:00",
+            "direct_link": "https://www.solidigm.com/products/document-management-system.html",
+        }
+        data = w.manufacturing_patch_from_text(
+            item,
+            "Solidigm PCN 0000048112-00 Additional Manufacturing Site for all Solidigm Datacenter SSDs",
+        )
+        self.assertEqual(data["pcn_number"], "0000048112-00")
+        self.assertEqual(data["affected_scope"], "all_solidigm_datacenter_ssds")
+
+    def test_manufacturing_baseline_current_story_is_silent(self):
+        old = dict(w.MANUFACTURING_BASELINE)
+        new = dict(old)
+        self.assertEqual(w.manufacturing_material_changes(old, new), [])
+
+    def test_actual_shipping_is_material(self):
+        old = dict(w.MANUFACTURING_BASELINE)
+        new = dict(old, stage="shipping")
+        reasons = w.manufacturing_material_changes(old, new)
+        self.assertTrue(any("출하 시작" in x for x in reasons))
+
+    def test_capacity_first_disclosure_is_material(self):
+        old = dict(w.MANUFACTURING_BASELINE)
+        new = dict(old, capacity_units_per_month=250000)
+        reasons = w.manufacturing_material_changes(old, new)
+        self.assertTrue(any("생산능력" in x and "최초 공개" in x for x in reasons))
+
     def test_generic_ai_ssd_business_text_is_not_use_of_proceeds(self):
         item = {
             "title": "Solidigm weighs IPO",

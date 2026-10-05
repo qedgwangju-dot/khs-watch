@@ -21,8 +21,43 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE = ROOT / "data" / "solidigm_ipo_watch_state.json"
 ALERT = ROOT / "out" / "solidigm_ipo_alert.html"
 UA = "Mozilla/5.0 (compatible; khs-watch/2.0; +https://github.com/qedgwangju-dot/khs-watch)"
-WATCH_VERSION = 1
+WATCH_VERSION = 2
 CANONICAL_REUTERS_URL = "https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/"
+SOLIDIGM_DMS_URL = "https://www.solidigm.com/products/document-management-system.html"
+MANUFACTURING_BASELINE = {
+    "stage": "pcn_announced",
+    "pcn_number": "0000048112-00",
+    "pcn_publish_date": "2026-09-25",
+    "pcn_change_title": "Additional Manufacturing Site for all Solidigm Datacenter SSDs",
+    "official_pcn_verified": True,
+    "affected_scope": "all_solidigm_datacenter_ssds",
+    "manufacturing_scope": "ssd_manufacturing_not_nand_wafer_fab",
+    "reported_site_country": "Taiwan",
+    "reported_manufacturing_model": "ODM",
+    "reported_ship_start_month": "2026-12",
+    "reported_quality_standard_unchanged": True,
+    "reported_existing_odm_partners": ["PTI", "Pegatron"],
+    "pti_partnership_officially_supported": True,
+    "pegatron_partnership_evidence": "reported",
+    "confirmed_direct_server_customers": [],
+    "capacity_units_per_month": None,
+    "capacity_eb_per_year": None,
+    "official_source_url": SOLIDIGM_DMS_URL,
+    "reported_source_url": "https://www.ajunews.com/view/20261005160404868",
+    "secondary_reported_source_url": "https://en.sedaily.com/finance/2026/10/05/solidigm-to-expand-ssd-production-sites-in-taiwan",
+    "pti_official_source_url": "https://www.pti.com.tw/Handlers/ConferenceDownload.ashx?col=briefing&id=1ddf8d0a-0ca9-4271-ad0e-71812b1beadb&lang=en",
+    "as_of": "2026-10-05",
+    "note": "Solidigm 공식 DMS는 PCN 0000048112-00과 'all Solidigm Datacenter SSDs' 대상 추가 제조거점을 확인. 대만·ODM·12월 출하·Pegatron은 아주경제/서울경제 보도 단계. PTI는 과거 PTI 공식 IR에서 Solidigm 파트너 관계가 확인됨. 신규 거점의 생산능력 수치는 미공개이며 NAND 웨이퍼 팹 증설로 해석하지 않음.",
+}
+
+MANUFACTURING_QUERIES = [
+    '"Solidigm" "Additional Manufacturing Site" SSD',
+    '"Solidigm" Taiwan ODM SSD',
+    '"Solidigm" manufacturing site datacenter SSD',
+    '"Solidigm" PCN datacenter SSD manufacturing',
+    '"솔리다임" 대만 SSD 위탁생산',
+    '"솔리다임" SSD 생산거점',
+]
 
 QUERIES = [
     '"Solidigm" IPO',
@@ -39,7 +74,8 @@ QUERIES = [
 TRUSTED = (
     "reuters", "bloomberg", "financial times", "ft.com", "wall street journal", "wsj",
     "cnbc", "business times", "korea times", "investing.com", "seoul economic",
-    "서울경제", "sk hynix", "sk하이닉스", "solidigm", "sec",
+    "서울경제", "seoul economic", "아주경제", "ajunews", "sk hynix", "sk하이닉스", "solidigm", "sec",
+    "powertech", "pti",
 )
 
 EVIDENCE_RANK = {"reported": 1, "top_tier_report": 2, "official": 3}
@@ -179,6 +215,48 @@ def read_events():
                 }
     return sorted(rows.values(), key=lambda x: (x.get("published_at_kst") or "", x.get("rank", 0)))
 
+
+def read_manufacturing_events():
+    rows = {}
+    for q in MANUFACTURING_QUERIES:
+        for lang in ("en", "ko"):
+            try:
+                root = ET.fromstring(fetch(rss_url(q, lang)))
+            except Exception:
+                continue
+            for item in root.findall("./channel/item"):
+                title = clean(item.findtext("title") or "")
+                desc = clean(item.findtext("description") or "")
+                link = clean(item.findtext("link") or "")
+                source_node = item.find("source")
+                source = clean(source_node.text if source_node is not None and source_node.text else "")
+                pub = parse_pub(clean(item.findtext("pubDate") or ""))
+                low = (title + " " + desc).lower()
+                if "solidigm" not in low and "솔리다임" not in low:
+                    continue
+                if not any(k in low for k in (
+                    "manufacturing", "factory", "production site", "odm", "pcn",
+                    "생산거점", "제조거점", "위탁생산", "생산 기반", "공장",
+                )):
+                    continue
+                if not any(k in low for k in ("ssd", "datacenter", "data center", "데이터센터", "기업용")):
+                    continue
+                direct = decode_google(link)
+                if not direct:
+                    continue
+                source_host = urllib.parse.urlparse(direct).hostname or ""
+                trust_text = (source + " " + source_host).lower()
+                if not any(x in trust_text for x in TRUSTED):
+                    continue
+                key = hashlib.sha256(("manufacturing|" + title + "|" + source).encode()).hexdigest()[:24]
+                rows[key] = {
+                    "id": key, "title": title, "description": desc, "source": source or "출처 미표시",
+                    "published_at_kst": pub.isoformat(timespec="seconds") if pub else "",
+                    "direct_link": direct, "rank": source_rank(source, direct),
+                }
+    return sorted(rows.values(), key=lambda x: (x.get("published_at_kst") or "", x.get("rank", 0)))
+
+
 def article_text(event):
     url = event.get("direct_link") or ""
     try:
@@ -309,6 +387,191 @@ def extract_patch(event):
     patch["source_name"] = source_name
     patch["source_published_at_kst"] = event.get("published_at_kst") or ""
     return patch
+
+
+def _month_from_text(text, published_at=""):
+    low = text.lower()
+    m = re.search(r"(20\d{2})[-./년]\s*(1[0-2]|0?[1-9])\s*(?:월)?", text)
+    if m:
+        return f"{int(m.group(1)):04d}-{int(m.group(2)):02d}"
+    m = re.search(r"(?:from|starting|beginning|오는|올해\s*)\s*(?:in\s*)?(january|february|march|april|may|june|july|august|september|october|november|december|1[0-2]|[1-9])(?:\s*월)?", low, re.I)
+    if not m:
+        m = re.search(r"(1[0-2]|[1-9])\s*월(?:부터|에)", text)
+    if not m:
+        return ""
+    names = {
+        "january":1,"february":2,"march":3,"april":4,"may":5,"june":6,
+        "july":7,"august":8,"september":9,"october":10,"november":11,"december":12,
+    }
+    token = m.group(1).lower()
+    month = names.get(token, int(token) if token.isdigit() else 0)
+    if not month:
+        return ""
+    year = int(published_at[:4]) if re.match(r"^20\d{2}", published_at or "") else now_kst().year
+    return f"{year:04d}-{month:02d}"
+
+
+def manufacturing_patch_from_text(event, text):
+    low = text.lower()
+    if ("solidigm" not in low and "솔리다임" not in low) or not any(k in low for k in ("ssd", "datacenter", "data center", "데이터센터", "기업용")):
+        return {}
+    if not any(k in low for k in ("manufacturing", "production site", "odm", "pcn", "생산거점", "제조거점", "위탁생산", "생산 기반")):
+        return {}
+
+    patch = {}
+    pcn = re.search(r"\b(0000\d{6}-\d{2})\b", text)
+    if pcn:
+        patch["pcn_number"] = pcn.group(1)
+
+    if re.search(r"additional manufacturing site|제조\s*거점[^.]{0,40}?(?:추가|신규)|생산\s*거점[^.]{0,40}?(?:확대|추가|신규)", text, re.I):
+        patch["stage"] = "pcn_announced"
+
+    if re.search(r"all\s+solidigm\s+datacenter\s+ssds", text, re.I):
+        patch["affected_scope"] = "all_solidigm_datacenter_ssds"
+
+    if re.search(r"\btaiwan\b|대만", text, re.I):
+        patch["reported_site_country"] = "Taiwan"
+    if re.search(r"\bodm\b|original\s+design\s+manufactur|위탁\s*생산", text, re.I):
+        patch["reported_manufacturing_model"] = "ODM"
+
+    month = _month_from_text(text, event.get("published_at_kst") or "")
+    if month and re.search(r"(?:ship|shipment|supply|출하|공급)", text, re.I):
+        patch["reported_ship_start_month"] = month
+
+    if re.search(r"(?:same|existing)[^.]{0,50}?(?:quality|terms|standard)|기존[^.]{0,40}?(?:품질|조건|표준)[^.]{0,40}?(?:유지|동일)", text, re.I):
+        patch["reported_quality_standard_unchanged"] = True
+
+    partners = []
+    if re.search(r"\bPTI\b|Powertech\s+Technology|파워텍테크놀로지", text, re.I):
+        partners.append("PTI")
+    if re.search(r"\bPegatron\b|페가트론", text, re.I):
+        partners.append("Pegatron")
+    if partners:
+        patch["reported_existing_odm_partners"] = sorted(set(partners))
+
+    # Named Taiwan server assemblers are ecosystem targets unless the article
+    # explicitly says they are Solidigm's direct SSD customers/contracts.
+    customers = []
+    for name, pat in (
+        ("Foxconn", r"\bFoxconn\b|폭스콘"),
+        ("Quanta", r"\bQuanta\b|콴타"),
+        ("Wistron", r"\bWistron\b|위스트론"),
+        ("Wiwynn", r"\bWiwynn\b|위윈"),
+    ):
+        if re.search(pat, text, re.I) and re.search(
+            rf"(?:Solidigm|솔리다임)[^.]{{0,120}}?(?:direct\s+customer|customer\s+contract|supply\s+contract|직접\s*고객|공급\s*계약)[^.]*?(?:{pat})|"
+            rf"(?:{pat})[^.]{{0,120}}?(?:Solidigm|솔리다임)[^.]*?(?:direct\s+customer|customer\s+contract|supply\s+contract|직접\s*고객|공급\s*계약)",
+            text, re.I
+        ):
+            customers.append(name)
+    if customers:
+        patch["confirmed_direct_server_customers"] = sorted(set(customers))
+
+    # Capacity numbers require an explicit production-capacity denominator.
+    cap = re.search(r"(?:production\s+capacity|output\s+capacity|생산능력|생산\s*능력)[^0-9]{0,60}([\d,.]+)\s*(?:units?|drives?|대|개)\s*(?:per\s+month|monthly|월)", text, re.I)
+    if cap:
+        patch["capacity_units_per_month"] = float(cap.group(1).replace(",", ""))
+
+    if re.search(r"(?:began|started|commenced)[^.]{0,60}?(?:ship|supply)|출하\s*(?:시작|개시)|공급\s*(?:시작|개시)", text, re.I):
+        patch["stage"] = "shipping"
+    if re.search(r"(?:delayed|postponed)[^.]{0,60}?(?:ship|production)|출하[^.]{0,40}?(?:지연|연기)|생산[^.]{0,40}?(?:지연|연기)", text, re.I):
+        patch["stage"] = "delayed"
+
+    patch["manufacturing_scope"] = "ssd_manufacturing_not_nand_wafer_fab"
+    patch["reported_source_url"] = event.get("direct_link") or ""
+    patch["reported_source_name"] = event.get("source") or ""
+    patch["reported_source_published_at_kst"] = event.get("published_at_kst") or ""
+    return patch
+
+
+def extract_manufacturing_patch(event):
+    base = clean(f"{event.get('title','')} {event.get('description','')}")
+    page = article_text(event)
+    return manufacturing_patch_from_text(event, (base + " " + page).strip())
+
+
+def merge_manufacturing_state(current, patch):
+    out = dict(current or {})
+    old_stage = out.get("stage", "")
+    new_stage = patch.get("stage", "")
+    rank = {"pcn_announced":1, "shipping":2, "delayed":2}
+    for k, v in patch.items():
+        if k == "stage":
+            continue
+        if k in ("reported_existing_odm_partners", "confirmed_direct_server_customers") and v:
+            out[k] = sorted(set(out.get(k) or []) | set(v))
+        elif v not in (None, "", []):
+            out[k] = v
+    if new_stage:
+        if new_stage == "delayed":
+            out["stage"] = new_stage
+        elif old_stage == "delayed" and new_stage != "shipping":
+            pass
+        elif rank.get(new_stage, 0) >= rank.get(old_stage, 0):
+            out["stage"] = new_stage
+    return out
+
+
+def manufacturing_material_changes(old, new):
+    reasons = []
+    if old.get("stage") != new.get("stage"):
+        labels = {"pcn_announced":"추가 제조거점 PCN 공지","shipping":"신규 거점 제품 출하 시작","delayed":"신규 거점 출하·생산 지연"}
+        reasons.append(f"제조 단계 {labels.get(old.get('stage'), old.get('stage','미확인'))}→{labels.get(new.get('stage'), new.get('stage','미확인'))}")
+    if old.get("pcn_number") != new.get("pcn_number") and new.get("pcn_number"):
+        reasons.append(f"제조거점 PCN {old.get('pcn_number') or '미확인'}→{new['pcn_number']}")
+    if old.get("reported_site_country") != new.get("reported_site_country") and new.get("reported_site_country"):
+        reasons.append(f"제조거점 국가 {old.get('reported_site_country') or '미확인'}→{new['reported_site_country']}")
+    if old.get("reported_ship_start_month") != new.get("reported_ship_start_month") and new.get("reported_ship_start_month"):
+        reasons.append(f"출하 시작 {old.get('reported_ship_start_month') or '미확인'}→{new['reported_ship_start_month']}")
+    oldp, newp = set(old.get("reported_existing_odm_partners") or []), set(new.get("reported_existing_odm_partners") or [])
+    added = sorted(newp - oldp)
+    if added:
+        reasons.append("ODM 파트너 신규 확인: " + ", ".join(added))
+    oldc, newc = set(old.get("confirmed_direct_server_customers") or []), set(new.get("confirmed_direct_server_customers") or [])
+    addedc = sorted(newc - oldc)
+    if addedc:
+        reasons.append("직접 서버 고객·공급계약 실명 신규 확인: " + ", ".join(addedc))
+    a, b = old.get("capacity_units_per_month"), new.get("capacity_units_per_month")
+    if a and b:
+        pct = (float(b) / float(a) - 1.0) * 100.0
+        if abs(pct) >= 10.0:
+            reasons.append(f"신규 거점 생산능력 월 {float(a):,.0f}→{float(b):,.0f}대 ({pct:+.1f}%)")
+    elif a is None and b is not None:
+        reasons.append(f"신규 거점 생산능력 월 {float(b):,.0f}대 최초 공개")
+    if old.get("official_pcn_verified") is not True and new.get("official_pcn_verified") is True:
+        reasons.append("Solidigm 공식 PCN 확인")
+    return reasons
+
+
+def manufacturing_alert_text(old, new, reasons, checked):
+    lines = [
+        "🚨 <b>Solidigm eSSD 생산거점·ODM 변화</b>",
+        "━━━━━━━━━━━━━━━━",
+        f"• 현재 단계: <b>{html.escape(new.get('stage') or '확인 불가')}</b>",
+        f"• 공식 PCN: <b>{html.escape(new.get('pcn_number') or '확인 불가')}</b> · {html.escape(new.get('pcn_publish_date') or '날짜 미확인')}",
+        f"• 적용 범위: <b>{'전체 Solidigm 데이터센터 SSD' if new.get('affected_scope') == 'all_solidigm_datacenter_ssds' else html.escape(str(new.get('affected_scope') or '미확인'))}</b>",
+    ]
+    if new.get("reported_site_country"):
+        lines.append(f"• 제조거점: {html.escape(new['reported_site_country'])} · 모델 {html.escape(new.get('reported_manufacturing_model') or '미확인')}")
+    if new.get("reported_ship_start_month"):
+        lines.append(f"• 출하 시작 보도: {html.escape(new['reported_ship_start_month'])}")
+    if new.get("reported_existing_odm_partners"):
+        lines.append("• 기존 ODM 파트너 보도: " + html.escape(", ".join(new["reported_existing_odm_partners"])))
+    if new.get("capacity_units_per_month") is None and new.get("capacity_eb_per_year") is None:
+        lines.append("• 생산능력: 수량·EB 기준 미공개 — 기사 제목만으로 증설률을 계산하지 않습니다.")
+    if new.get("confirmed_direct_server_customers"):
+        lines.append("• 직접 서버 고객 확인: " + html.escape(", ".join(new["confirmed_direct_server_customers"])))
+    else:
+        lines.append("• 고객 구분: Foxconn·Quanta·Wistron 등은 대만 AI 서버 생태계 설명이며 Solidigm 직접 고객·공급계약으로 승격하지 않습니다.")
+    lines.append("• 공정 구분: 대만 SSD 제조·조립 거점 확대이며 NAND 웨이퍼 팹 증설과 분리합니다.")
+    lines.append("• 이번 변화: <b>" + html.escape(" · ".join(reasons)) + "</b>")
+    lines.append("• 다음 확인: 실제 12월 출하 · 생산능력 수치 · 신규 ODM 실명 · 고객 인증·직접 공급계약 · 품질·수율 이슈 · 일정 지연")
+    src = new.get("official_source_url") or SOLIDIGM_DMS_URL
+    lines.append("• 공식 근거: Solidigm PCN/DMS · " + href(src))
+    if new.get("reported_source_url"):
+        lines.append("• 보도 근거: " + html.escape(new.get("reported_source_name") or "보도") + " · " + href(new["reported_source_url"]))
+    lines.append("• 조회: " + checked.strftime("%Y-%m-%d %H:%M KST"))
+    return "\n".join(lines) + "\n"
 
 def merge_state(current, patch):
     out = dict(current or {})
@@ -443,6 +706,8 @@ def alert_text(old, new, reasons, checked):
 def main():
     checked = now_kst()
     state = load_state()
+
+    # --- IPO lane (existing) ---
     current = dict(state.get("current_state") or {})
     candidate = dict(current)
     best_source = None
@@ -463,25 +728,66 @@ def main():
         if candidate != before:
             best_source = event
 
-    reasons = material_changes(current, candidate)
-    # Baseline carries the current Reuters report so initial integration stays silent.
+    ipo_reasons = material_changes(current, candidate)
+
+    # --- Manufacturing / Taiwan ODM lane (new, same existing route) ---
+    if int(state.get("watch_version") or 0) < 2 or not state.get("manufacturing_state"):
+        manufacturing_current = dict(MANUFACTURING_BASELINE)
+    else:
+        manufacturing_current = dict(state.get("manufacturing_state") or {})
+    manufacturing_candidate = dict(manufacturing_current)
+    manufacturing_best_source = None
+
+    for event in read_manufacturing_events():
+        try:
+            dt = datetime.fromisoformat(event.get("published_at_kst") or "")
+        except Exception:
+            continue
+        if dt < cutoff or dt > checked + timedelta(minutes=10):
+            continue
+        patch = extract_manufacturing_patch(event)
+        if not patch:
+            continue
+        before = dict(manufacturing_candidate)
+        manufacturing_candidate = merge_manufacturing_state(manufacturing_candidate, patch)
+        if manufacturing_candidate != before:
+            manufacturing_best_source = event
+
+    manufacturing_reasons = manufacturing_material_changes(manufacturing_current, manufacturing_candidate)
+
     state["watch_version"] = WATCH_VERSION
     state["last_checked_at_kst"] = checked.isoformat(timespec="seconds")
     state["current_state"] = candidate
+    state["manufacturing_state"] = manufacturing_candidate
+
     if best_source:
         state["last_evidence_url"] = best_source.get("direct_link") or ""
         state["last_evidence_published_at_kst"] = best_source.get("published_at_kst") or ""
+    if manufacturing_best_source:
+        state["last_manufacturing_evidence_url"] = manufacturing_best_source.get("direct_link") or ""
+        state["last_manufacturing_evidence_published_at_kst"] = manufacturing_best_source.get("published_at_kst") or ""
+
+    sections = []
+    if ipo_reasons:
+        sections.append(alert_text(current, candidate, ipo_reasons, checked).strip())
+        state["last_alert_reasons"] = ipo_reasons
+        state["last_alert_at_kst"] = checked.isoformat(timespec="seconds")
+    if manufacturing_reasons:
+        sections.append(manufacturing_alert_text(manufacturing_current, manufacturing_candidate, manufacturing_reasons, checked).strip())
+        state["last_manufacturing_alert_reasons"] = manufacturing_reasons
+        state["last_manufacturing_alert_at_kst"] = checked.isoformat(timespec="seconds")
 
     ALERT.parent.mkdir(exist_ok=True)
-    if reasons:
-        ALERT.write_text(alert_text(current, candidate, reasons, checked), encoding="utf-8")
-        state["last_alert_reasons"] = reasons
-        state["last_alert_at_kst"] = checked.isoformat(timespec="seconds")
+    if sections:
+        ALERT.write_text(("\n\n<<<TELEGRAM_MESSAGE_BREAK>>>\n\n".join(sections)).strip() + "\n", encoding="utf-8")
     else:
         ALERT.unlink(missing_ok=True)
 
     save_state(state)
-    print("solidigm_ipo_watch=true changes=" + str(len(reasons)))
+    print(
+        "solidigm_ipo_watch=true ipo_changes=" + str(len(ipo_reasons))
+        + " manufacturing_changes=" + str(len(manufacturing_reasons))
+    )
 
 
 if __name__ == "__main__":
