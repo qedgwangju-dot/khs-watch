@@ -62,6 +62,24 @@ class SmartphoneMemoryPassThroughTests(unittest.TestCase):
         self.assertNotIn("s27_usd_start_price", m.BASELINE)
         self.assertNotIn("s26_usd_start_price", m.BASELINE)
 
+    def test_component_memory_pct_is_not_phone_price_pct(self):
+        item = self.item(
+            "Samsung memory prices rise 80% QoQ",
+            "LPDDR memory price increased 80%, pressuring smartphone makers.",
+            "Counterpoint Research",
+        )
+        self.assertIsNone(m._signal(item, self.state()))
+
+    def test_explicit_phone_retail_price_pct_can_trigger(self):
+        item = self.item(
+            "Samsung smartphone retail price rises 8% as memory costs climb",
+            "Samsung smartphone price increased 8% due to DRAM and NAND costs.",
+            "Reuters",
+        )
+        signal = m._signal(item, self.state())
+        self.assertIsNotNone(signal)
+        self.assertGreaterEqual(signal["stage"], 2)
+
     def test_low_source_cannot_trigger(self):
         item = self.item(
             "Galaxy S27 price may jump 300,000 won",
