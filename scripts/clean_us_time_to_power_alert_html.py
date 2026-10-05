@@ -10,6 +10,12 @@ ALERT = Path("out/us_data_center_time_to_power_alert.txt")
 
 HEADINGS = [
     "<b>⚡ 전력 인가 실행판</b>",
+    "<b>🔌 800V DC·SiC/GaN 실행판</b>",
+    "<b>🔄 800V DC·SiC/GaN 기준 변경</b>",
+    "<b>🏛️ 주정부 인허가·비용부담 실행판</b>",
+    "<b>🔄 주정부 인허가·비용부담 기준 변경</b>",
+    "<b>🧠 유연부하·수요반응 실행판</b>",
+    "<b>🔄 유연부하 숫자 변경</b>",
     "<b>🔄 실행 숫자 변경</b>",
     "<b>🆕 핵심 신규 변화</b>",
     "<b>👀 새 감시 범위</b>",
@@ -124,12 +130,49 @@ def format_fx(rows: list[str]) -> list[str]:
     return out
 
 
+def _first_matching(rows: list[str], prefixes: tuple[str, ...]) -> list[str]:
+    picked = []
+    for row in rows:
+        plain = strip_tags(row)
+        if any(plain.startswith(prefix) for prefix in prefixes):
+            picked.append(row)
+    return picked
+
+
+def _compact_policy(rows: list[str]) -> list[str]:
+    picked = []
+    for prefix in ("• Massachusetts", "• Pennsylvania", "• Virginia"):
+        match = next((row for row in rows if strip_tags(row).startswith(prefix)), None)
+        if match:
+            picked.append(match)
+    return picked
+
+
+def _compact_800v(rows: list[str]) -> list[str]:
+    keep = []
+    for prefix in ("• NVIDIA 시간표", "• 공식 공급 검증", "• DIGITIMES Research"):
+        row = next((x for x in rows if strip_tags(x).startswith(prefix)), None)
+        if row:
+            keep.append(row)
+    return keep[:3]
+
+
+def _compact_flexible(rows: list[str]) -> list[str]:
+    keep = []
+    for prefix in ("• Google 상업 계약", "• 부하감축 성능", "• 계통접속 적체"):
+        row = next((x for x in rows if strip_tags(x).startswith(prefix)), None)
+        if row:
+            keep.append(row)
+    return keep[:3]
+
+
 def main() -> None:
     if not ALERT.exists():
         return
     raw = ALERT.read_text(encoding="utf-8").strip()
     if not raw:
         return
+
     lines = raw.splitlines()
     headline = lines[0] if lines else "<b>🚨 미국 데이터센터 전력 인가 실행 변화</b>"
 
@@ -139,69 +182,103 @@ def main() -> None:
     watch_rows = section(lines, "<b>👀 새 감시 범위</b>")
     invest = section(lines, "<b>📊 투자 해석</b>")
     fx = section(lines, "<b>💱 환율</b>")
+    semi = section(lines, "<b>🔌 800V DC·SiC/GaN 실행판</b>")
+    semi_changes = section(lines, "<b>🔄 800V DC·SiC/GaN 기준 변경</b>")
+    policy = section(lines, "<b>🏛️ 주정부 인허가·비용부담 실행판</b>")
+    policy_changes = section(lines, "<b>🔄 주정부 인허가·비용부담 기준 변경</b>")
+    flexible = section(lines, "<b>🧠 유연부하·수요반응 실행판</b>")
+    flexible_changes = section(lines, "<b>🔄 유연부하 숫자 변경</b>")
 
     summary, items, hidden = parse_new_items(new_rows)
+    is_upgrade = "업그레이드 완료" in strip_tags(headline) or "확장 완료" in strip_tags(headline)
 
-    out = [headline, "", "<b>🧭 한눈에</b>"]
-    if metric:
-        first = strip_tags(metric[0]).lstrip("• ")
-        out.append(f"• <b>이번 핵심 변화</b> │ {html.escape(first)}")
+    out = [headline, "", "<b>🧭 핵심</b>"]
+    if policy_changes:
+        first = strip_tags(policy_changes[0]).lstrip("• ")
+        if "Pennsylvania 신규 전력인프라 전액 부담" in first and "False" in first and "True" in first:
+            out.append("• <b>정정</b> │ Pennsylvania의 프로젝트 유발 전력비용 100% 부담은 <b>새 정책 변화가 아니라 기존 공식 기준 재검증</b>")
+        else:
+            out.append(f"• <b>변화</b> │ {html.escape(first)}")
+    elif metric:
+        out.append(f"• <b>변화</b> │ {html.escape(strip_tags(metric[0]).lstrip('• '))}")
+    elif semi_changes:
+        out.append(f"• <b>변화</b> │ {html.escape(strip_tags(semi_changes[0]).lstrip('• '))}")
+    elif flexible_changes:
+        out.append(f"• <b>변화</b> │ {html.escape(strip_tags(flexible_changes[0]).lstrip('• '))}")
     elif items:
-        out.append(f"• <b>이번 핵심 변화</b> │ {items[0][3]}")
-    elif watch_rows:
-        out.append("• <b>이번 핵심 변화</b> │ 미국 데이터센터 전력 인가 감시 범위 확대")
+        out.append(f"• <b>변화</b> │ {items[0][3]}")
+    elif is_upgrade:
+        out.append("• <b>변화</b> │ 알림을 현재 숫자·새 변화·투자 의미·실패모드 중심으로 압축")
     else:
-        out.append("• <b>이번 핵심 변화</b> │ 공식 실행 단계 변화 확인")
-    out.append("• <b>판단 기준</b> │ 발표 GW보다 GIA → 착공 → 전원 인가 → 상업운전 전환을 우선")
+        out.append("• <b>변화</b> │ 공식 실행 단계 변화 확인")
+    out.append("• <b>판정</b> │ 계획 GW보다 GIA → 착공 → 전원 인가 → 상업운전 전환을 우선")
 
-    out += ["", "<b>⚡ 전력 인가 실행판</b>"] + format_dashboard(dash)
+    compact_dash = format_dashboard(dash)
+    # Keep the four execution anchors only; detailed technology mix remains in state/artifacts.
+    selected_dash = []
+    for row in compact_dash:
+        plain = strip_tags(row)
+        if plain.startswith(("• PJM", "• MISO", "• ERCOT", "• FERC")):
+            selected_dash.append(row)
+        elif plain.startswith("↳ 제5차") or plain.startswith("↳제5차"):
+            if selected_dash and "MISO" in strip_tags(selected_dash[-1]):
+                selected_dash.append(row)
+    if selected_dash:
+        out += ["", "<b>⚡ 현재 실행 숫자</b>"] + selected_dash[:5]
 
-    if metric:
-        out += ["", "<b>🔄 이번에 바뀐 실행 숫자</b>"]
-        for row in metric[:6]:
+    show_policy = bool(policy_changes) or is_upgrade
+    show_semi = bool(semi_changes)
+    show_flexible = bool(flexible_changes)
+
+    if show_policy and policy:
+        out += ["", "<b>🏛️ 주정부 규제</b>"] + _compact_policy(policy)
+        out.append("• <b>구분</b> │ 주별 규정이며 미국 전체 단일 의무로 일반화하지 않음")
+    if show_semi and semi:
+        out += ["", "<b>🔌 800V DC·SiC/GaN</b>"] + _compact_800v(semi)
+    if show_flexible and flexible:
+        out += ["", "<b>🧠 유연부하</b>"] + _compact_flexible(flexible)
+
+    changes = []
+    for group in (metric, policy_changes, semi_changes, flexible_changes):
+        for row in group:
             plain = strip_tags(row).lstrip("• ")
-            # State repair should never be presented as a real project withdrawal.
-            if "제외·철회 가능성" in plain:
-                out.append(f"• <i>기준값 재검증 항목</i> │ {html.escape(plain.replace('제외·철회 가능성:', '').strip())}")
-            else:
-                out.append(f"• <b>{html.escape(plain)}</b>")
+            if "False" in plain and "True" in plain and "Pennsylvania 신규 전력인프라 전액 부담" in plain:
+                continue
+            changes.append(f"• {html.escape(plain)}")
+    if changes:
+        out += ["", "<b>🔄 이번 변화</b>"] + changes[:6]
 
-    if items or summary:
-        out += ["", "<b>🆕 핵심 신규 자료</b>"]
-        if summary:
-            # Keep counts, but make them visually secondary.
-            out.append(summary.replace("• 새 자료", "• 전체 신규"))
-        for idx, (theme, badge, source, linked) in enumerate(items, 1):
+    if items:
+        out += ["", "<b>🆕 신규 자료</b>"]
+        for idx, (theme, badge, source, linked) in enumerate(items[:4], 1):
             source_ko = source.replace("Federal Register", "미국 연방관보")
             out.append(f"{idx}. {linked}")
             out.append(f"   <i>{html.escape(theme)} · {badge} · {html.escape(source_ko)}</i>")
-        if hidden:
-            out.append(hidden)
+        if len(items) > 4 or hidden:
+            out.append(f"• 추가 자료는 중복방지 상태에 저장해 다음 단계 변화 판정에 반영")
 
-    if watch_rows:
-        out += ["", "<b>👀 새 감시 범위</b>"] + watch_rows
+    out += [
+        "",
+        "<b>📊 투자 의미</b>",
+        "• <b>매출 연결</b> │ GIA·착공·전원 인가·상업운전으로 내려와야 실적 전환",
+        "• <b>실패모드</b> │ 발전원과 부하 위치 불일치·변전소·송전선·허가 지연이 먼저 비용과 일정에 반영",
+    ]
 
-    if invest:
-        out += ["", "<b>📊 투자 판단</b>"]
-        for row in invest:
-            plain = strip_tags(row)
-            if plain.startswith("• 핵심 순서:"):
-                out.append("• <b>실행순서</b> │ 계획 → 심사 → GIA → 착공 → 상업운전")
-            elif "발표 용량이 늘어도" in plain:
-                out.append("• <b>매출 연결</b> │ GIA·착공·전원 인가로 내려와야 실적 전환으로 판단")
-            elif "500MW 이상" in plain:
-                out.append("• <b>알림 우선순위</b> │ 500MW 이상 신규·취소·용량 변경·단계 전환")
-            elif "발전·BESS와 부하 위치" in plain:
-                out.append("• <b>다음 병목</b> │ 발전·BESS와 부하 위치가 다르면 변전소·송전선 비용 확인")
-            else:
-                out.append(row)
+    fx_rows = format_fx(fx)
+    if fx_rows:
+        out += ["", "<b>💱 환율</b>", fx_rows[0]]
 
-    out += ["", "<b>💱 환율</b>"] + format_fx(fx)
-    out += ["", "<b>🔗 원문</b>", "• 위 신규 자료는 <b>한국어 제목 자체를 누르면 원문으로 이동</b>합니다.", "• FERC·MISO·ERCOT 공식 페이지는 아래 버튼에서 바로 열 수 있습니다."]
-
+    # Source URLs are intentionally removed from the body: the existing Telegram
+    # inline buttons remain the canonical navigation path. This keeps one alert on one screen.
     text = "\n".join(out).strip() + "\n"
+    visible = strip_tags(text)
+    if len(visible) > 3000:
+        raise RuntimeError(f"compact time-to-power alert too long: {len(visible)} chars")
     ALERT.write_text(text, encoding="utf-8")
-    print(f"time_to_power_readability items={len(items)} metric_changes={len(metric)}")
+    print(
+        f"time_to_power_compact chars={len(visible)} items={len(items)} "
+        f"metric={len(metric)} policy={len(policy_changes)} semi={len(semi_changes)} flex={len(flexible_changes)}"
+    )
 
 
 if __name__ == "__main__":
