@@ -1,0 +1,273 @@
+name: Smartphone Memory Pass Through Telegram Watch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/smartphone-memory-pass-through-telegram-watch.yml"
+      - "scripts/smartphone_memory_pass_through_watch.py"
+      - "tests/test_smartphone_memory_pass_through_watch.py"
+      - "scripts/currency_krw_guard.py"
+      - "scripts/fx_api.py"
+  schedule:
+    - cron: "12,42 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: smartphone-memory-pass-through-telegram-watch
+  # Never cancel after Telegram may have accepted a message but before state
+  # checkpointing completes.
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs88798879887988798879_bot"
+
+    steps:
+      - name: Checkout latest production main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate watcher
+        run: |
+          python -m py_compile scripts/smartphone_memory_pass_through_watch.py
+          python -m py_compile tests/test_smartphone_memory_pass_through_watch.py
+          python tests/test_smartphone_memory_pass_through_watch.py
+          python -m py_compile scripts/currency_krw_guard.py scripts/fx_api.py
+
+      - name: Validate Telegram route without sending
+        env:
+          TELEGRAM_BOT_TOKEN_PRIMARY: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.parse
+          import urllib.request
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN_PRIMARY") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token:
+              raise RuntimeError("Telegram bot token is missing: HBM_TELEGRAM_BOT_TOKEN")
+          if not chat_id:
+              raise RuntimeError("Telegram chat id is missing: HBM_TELEGRAM_CHAT_ID")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          query = urllib.parse.urlencode({"chat_id": chat_id})
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getChat?{query}", timeout=25) as response:
+              chat = json.loads(response.read().decode("utf-8"))
+          result = chat.get("result") or {}
+          if not chat.get("ok") or result.get("id") is None:
+              raise RuntimeError("HBM_TELEGRAM_CHAT_ID is unreachable")
+          print(f"telegram_route_valid=true bot=@{username} chat_type={result.get('type','unknown')}")
+          PY
+
+      - name: Scan smartphone memory cost pass-through signals
+        run: python scripts/smartphone_memory_pass_through_watch.py
+
+      - name: Publish watcher summary
+        if: always()
+        run: |
+          if [ -f out/smartphone_memory_pass_through_status.md ]; then
+            cat out/smartphone_memory_pass_through_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "스마트폰 메모리 원가 전가 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/smartphone_memory_pass_through_telegram.txt ]; then
+            printf '\n---\n\nTelegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/smartphone_memory_pass_through_telegram.txt >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Enforce KRW immediately after every foreign-currency amount
+        if: hashFiles('out/smartphone_memory_pass_through_telegram.txt') != ''
+        run: python scripts/currency_krw_guard.py out/smartphone_memory_pass_through_telegram.txt
+
+      - name: Send meaningful smartphone pass-through change to Telegram
+        if: hashFiles('out/smartphone_memory_pass_through_telegram.txt') != ''
+        env:
+          TELEGRAM_BOT_TOKEN_PRIMARY: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID_PRIMARY: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import hashlib
+          import json
+          import os
+          import pathlib
+          import re
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN_PRIMARY") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID_PRIMARY") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("Telegram route secrets are missing")
+
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as response:
+              identity = json.loads(response.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          text = pathlib.Path("out/smartphone_memory_pass_through_telegram.txt").read_text(encoding="utf-8").strip()
+          if not text:
+              raise RuntimeError("Telegram alert is empty")
+
+          normalized = re.sub(r"[ \t]+", " ", text)
+          normalized = re.sub(r"\n{3,}", "\n\n", normalized).strip()
+          alert_signature = hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+
+          ids = []
+          for segment in text.split("<<<TELEGRAM_MESSAGE_BREAK>>>"):
+              chunk = segment.strip()
+              if not chunk:
+                  continue
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              with urllib.request.urlopen(req, timeout=25) as response:
+                  result = json.loads(response.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram rejected message: {result}")
+              ids.append((result.get("result") or {}).get("message_id"))
+
+          confirmed = {
+              "status": "confirmed",
+              "bot_username": username,
+              "message_ids": ids,
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+              "alert_signature": alert_signature,
+          }
+          pathlib.Path("out/smartphone_memory_pass_through_telegram_confirmed.json").write_text(
+              json.dumps(confirmed, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"smartphone_pass_through_delivery_confirmed=true bot=@{username} message_ids={ids}")
+          PY
+
+      - name: Persist confirmed or no-alert state
+        if: success() && hashFiles('out/smartphone_memory_pass_through_pending_state.json') != ''
+        run: |
+          cp out/smartphone_memory_pass_through_pending_state.json data/smartphone_memory_pass_through_state.json
+          if [ -f out/smartphone_memory_pass_through_telegram_confirmed.json ]; then
+            python - <<'PY'
+          import json
+          import pathlib
+          state_path = pathlib.Path("data/smartphone_memory_pass_through_state.json")
+          receipt_path = pathlib.Path("out/smartphone_memory_pass_through_telegram_confirmed.json")
+          state = json.loads(state_path.read_text(encoding="utf-8"))
+          state["delivery_receipt"] = json.loads(receipt_path.read_text(encoding="utf-8"))
+          state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+          fi
+
+      - name: Commit watcher state safely
+        if: success() && hashFiles('data/smartphone_memory_pass_through_state.json') != ''
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp data/smartphone_memory_pass_through_state.json /tmp/smartphone_memory_pass_through_state.local.json
+
+          pushed=false
+          for attempt in 1 2 3 4; do
+            git rebase --abort 2>/dev/null || true
+            git fetch origin main
+            git reset --hard origin/main
+
+            python - <<'PY'
+          import json
+          import pathlib
+
+          remote_path = pathlib.Path("data/smartphone_memory_pass_through_state.json")
+          local_path = pathlib.Path("/tmp/smartphone_memory_pass_through_state.local.json")
+          remote = json.loads(remote_path.read_text(encoding="utf-8")) if remote_path.exists() else {}
+          local = json.loads(local_path.read_text(encoding="utf-8"))
+
+          def ts(obj):
+              return str(obj.get("updated_at_kst") or "")
+
+          newer = local if ts(local) >= ts(remote) else remote
+          older = remote if newer is local else local
+          merged = dict(older)
+          merged.update(newer)
+
+          merged["seen"] = sorted(set(remote.get("seen") or []) | set(local.get("seen") or []))[-700:]
+          merged["seen_fact_keys"] = sorted(
+              set(remote.get("seen_fact_keys") or []) | set(local.get("seen_fact_keys") or [])
+          )[-300:]
+
+          def rec_time(obj):
+              rec = obj.get("delivery_receipt") or {}
+              return str(rec.get("confirmed_at_kst") or "")
+          if rec_time(local) >= rec_time(remote):
+              if local.get("delivery_receipt"):
+                  merged["delivery_receipt"] = local["delivery_receipt"]
+          elif remote.get("delivery_receipt"):
+              merged["delivery_receipt"] = remote["delivery_receipt"]
+
+          remote_path.write_text(json.dumps(merged, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+
+            git add data/smartphone_memory_pass_through_state.json
+            if git diff --cached --quiet; then
+              echo "Smartphone pass-through state already checkpointed"
+              pushed=true
+              break
+            fi
+            git commit -m "Update smartphone memory pass-through state"
+            if git push; then
+              pushed=true
+              break
+            fi
+            sleep $((attempt * 2))
+          done
+
+          if [ "$pushed" != "true" ]; then
+            echo "Smartphone pass-through state checkpoint failed"
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smartphone-memory-pass-through-${{ github.run_id }}
+          path: |
+            out/smartphone_memory_pass_through_status.md
+            out/smartphone_memory_pass_through_alert.html
+            out/smartphone_memory_pass_through_telegram.txt
+            out/smartphone_memory_pass_through_pending_state.json
+            out/smartphone_memory_pass_through_telegram_confirmed.json
+          if-no-files-found: ignore
+          retention-days: 14
