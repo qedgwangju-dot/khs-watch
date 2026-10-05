@@ -403,6 +403,7 @@ def render(facts: dict, chg: list[str], fxv: dict) -> str:
         "• 시 승인·환경영향·건축허가 지연 시 착공이 2027년 이후로 밀릴 수 있음",
         "• 계통 350MW와 현장 175MW 중 한 축이 지연되면 전체 525MW 동시 가동이 어려움",
         "• 연료전지는 천연가스 공급·현장 인허가·LNG 백업 안전규정이 추가 병목",
+        "• 천연가스 SOFC의 비연소·저대기오염·저용수 특성과 청정전력 규정 적격성은 별개이며, Massachusetts CES·Pennsylvania 청정·상시전원 기준을 자동 충족한다고 보지 않음",
         "",
         f"💱 1달러 = {rate:,.2f}원 · {html.escape(str(fxv.get('source','')))}",
         "",
