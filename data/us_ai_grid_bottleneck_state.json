@@ -1,30 +1,40 @@
 {
   "as_of": "2026-09-27",
   "metrics": {
-    "dc_electricity_2024_twh": 192.0,
-    "dc_electricity_2030_twh": 649.0,
-    "dc_electricity_2030_low_twh": 521.0,
-    "dc_electricity_2030_high_twh": 843.0,
+    "dc_electricity_2024_twh": 192,
+    "dc_electricity_2030_twh": 649,
+    "dc_electricity_2030_low_twh": 521,
+    "dc_electricity_2030_high_twh": 843,
     "dc_share_2030_pct": 11.8,
-    "transformer_avg_lead_weeks": 120.0,
-    "large_transformer_low_weeks": 80.0,
-    "large_transformer_high_weeks": 210.0,
-    "queue_projects": 8200.0,
-    "queue_gw": 2060.0,
-    "transmission_345kv_plus_miles_2024": 888.0,
-    "bushing_lead_low_weeks_secondary": 135.0,
-    "bushing_lead_high_weeks_secondary": 145.0,
+    "transformer_avg_lead_weeks": 120,
+    "large_transformer_low_weeks": 80,
+    "large_transformer_high_weeks": 210,
+    "queue_projects": 8200,
+    "queue_gw": 2060,
+    "transmission_345kv_plus_miles_2024": 888,
+    "bushing_lead_low_weeks_secondary": 135,
+    "bushing_lead_high_weeks_secondary": 145,
     "ms_it_power_2025_gw": 9.19,
     "ms_it_power_2026_gw": 17.96,
     "ms_it_power_2027_gw": 35.46,
     "ms_it_power_2028_gw": 52.31,
     "ms_it_power_2029_gw": 78.57,
-    "ms_new_power_need_2026_2028_gw": 97.0,
-    "ms_under_construction_gw": 21.0,
-    "ms_grid_available_gw": 19.0,
-    "ms_gross_gap_gw": 57.0,
-    "ms_mitigation_gw": 24.0,
-    "ms_residual_gap_gw": 33.0
+    "ms_new_power_need_2026_2028_gw": 97,
+    "ms_under_construction_gw": 21,
+    "ms_grid_available_gw": 19,
+    "ms_gross_gap_gw": 57,
+    "ms_mitigation_gw": 24,
+    "ms_residual_gap_gw": 33,
+    "cw_padmount_transformer_low_weeks": 68,
+    "cw_padmount_transformer_high_weeks": 113,
+    "cw_generator_low_weeks": 60,
+    "cw_generator_high_weeks": 100,
+    "cw_mv_switchgear_low_weeks": 38,
+    "cw_mv_switchgear_high_weeks": 63,
+    "cw_lv_switchgear_low_weeks": 36,
+    "cw_lv_switchgear_high_weeks": 60,
+    "cw_ups_low_weeks": 36,
+    "cw_ups_high_weeks": 42
   },
   "sources": {
     "dc_demand": {
@@ -46,9 +56,24 @@
     "bushing": {
       "url": "",
       "kind": "사용자 제공 2차 기준선·공식 원천 확인 전"
+    },
+    "cw_equipment_2026": {
+      "url": "https://www.cushmanwakefield.com/en/united-states/insights/data-center-development-cost-guide",
+      "kind": "Cushman & Wakefield 2026 Data Center Development Cost Guide / 사용자 제공 현대차증권 도표 교차기준"
+    },
+    "jll_equipment_2026": {
+      "url": "https://www.jll.com/content/dam/jllcom/en/global/documents/reports/research-reports/26-research-global-data-center-outlook-new.pdf",
+      "kind": "JLL 2026 Global Data Center Outlook 교차검증"
     }
   },
-  "seen_urls": [],
+  "seen_urls": [
+    "https://www.cushmanwakefield.com/en/united-states/insights/data-center-development-cost-guide",
+    "https://www.eaton.com/us/en-us/company/news-insights/news-releases/2026/eaton-expands-operations-in-nebraska-with-new-manufacturing-facility.html",
+    "https://www.hitachienergy.com/news-and-events/press-releases/2026/09/hitachi-deepens-commitment-to-u-s-manufacturing-with-528-million-mississippi-transformer-factory",
+    "https://www.hitachienergy.com/us/en/news-and-events/press-releases/2026/06/hitachi-energy-breaks-ground-on-the-nation-s-largest-facility-for-the-production-of-large-power-transformers-in-south-boston-virginia",
+    "https://www.jll.com/content/dam/jllcom/en/global/documents/reports/research-reports/26-research-global-data-center-outlook-new.pdf",
+    "https://www.se.com/us/en/about-us/newsroom/news/press-releases/schneider-electric-and-digital-realty-announce-373m-supply-capacity-agreement-to-meet-rising-data-center-demand-691d192005c0c16f5902ca3c/"
+  ],
   "last_checked_at_kst": "2026-10-05T15:09:53+09:00",
   "metric_observation_count": 0,
   "event_count": 0,
