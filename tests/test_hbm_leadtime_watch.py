@@ -131,7 +131,7 @@ class LeadTimeAlertTests(unittest.TestCase):
             "MLCC": {"status": "Tight", "current": "32", "balanced": "12"},
         }
 
-    def test_alert_contains_biggest_change_and_correct_statuses(self):
+    def test_alert_is_compact_and_keeps_all_current_numbers(self):
         alert = w.build_alert(
             self.old,
             self.new,
@@ -140,28 +140,24 @@ class LeadTimeAlertTests(unittest.TestCase):
             "2026-09-21T19:01:52+09:00",
             False,
             signals=w.BASELINE["signals"],
-            changed_signals=list(w.BASELINE["signals"]),
+            changed_signals=["GPU", "MLCC"],
             evidence={name: {"status", "current", "balanced"} for name in self.new},
         )
-        self.assertIn("가장 큰 수치 변화", alert)
-        self.assertIn("GPU 리드타임 상승", alert)
-        self.assertIn("DRAM</b> | 현재 20주 | 균형 8주 | 격차 2.5배 | 상태 심각한 공급 부족", alert)
-        self.assertIn("NAND(eSSD)</b> | 현재 16주 | 균형 8주 | 격차 2.0배 | 상태 공급 제약", alert)
-        self.assertIn("ABF</b> | 현재 48~56주 | 균형 12주 | 격차 4.3배 | 상태 심각한 공급 부족", alert)
-        self.assertIn("MLCC</b> | 현재 32주 | 균형 12주 | 격차 2.7배 | 상태 공급 제약", alert)
-        self.assertIn("Rubin 사양 조정", alert)
-        self.assertIn("RDIMM 수요 증가", alert)
-        self.assertIn("기업용 SSD로 생산능력 재배분", alert)
-        self.assertIn("<b>수익구조</b>", alert)
-        self.assertIn("<b>1단계 현재 숫자 추적</b>", alert)
-        self.assertIn("<b>2단계 미래 재평가 요인 발굴</b>", alert)
-        self.assertIn("<b>관련 기업 지도</b>", alert)
-        self.assertIn("<b>공정 병목 후보</b>", alert)
-        self.assertIn("<b>숨은 역풍·실패모드</b>", alert)
-        self.assertIn("<b>결론</b>", alert)
-        self.assertIn("<b>핵심 한 줄 요약</b>", alert)
-        self.assertIn("ABF</b> | 현재 48~56주 | 균형 12주 | 격차 4.3배", alert)
+        self.assertIn("<b>핵심 변화</b>", alert)
+        self.assertIn("<b>현재 숫자</b>", alert)
+        self.assertIn("<b>미래 재평가</b>", alert)
+        self.assertIn("<b>관련 기업</b>", alert)
+        self.assertIn("<b>역풍·다음 확인</b>", alert)
+        self.assertIn("ABF 48~56주/12주 (4.3배)", alert)
+        self.assertIn("HDD 50주/16주 (3.1배)", alert)
+        self.assertIn("DRAM 20주/8주 (2.5배)", alert)
+        self.assertIn("NAND(eSSD) 16주/8주 (2.0배)", alert)
+        self.assertIn("MLCC 32주/12주 (2.7배)", alert)
+        self.assertIn("GPU 30~40주/30~40주 (1.0배)", alert)
         self.assertIn("삼성전기·Ibiden·Unimicron·Nan Ya PCB", alert)
+        self.assertNotIn("<b>수익구조</b>", alert)
+        self.assertNotIn("<b>공정 병목 후보</b>", alert)
+        self.assertNotIn("<b>추적 기준</b>", alert)
 
     def test_unverified_status_is_labeled_not_silently_claimed(self):
         evidence = {name: {"current", "balanced"} for name in self.new}
@@ -174,8 +170,8 @@ class LeadTimeAlertTests(unittest.TestCase):
             True,
             evidence=evidence,
         )
-        self.assertIn("이번 주 공식 공개본문에서 상태를 직접 판독하지 못한 품목", alert)
-        self.assertIn("직전 확정값 유지·이번 주 직접 판독 미확인", alert)
+        self.assertIn("이전 확정값 유지:", alert)
+        self.assertNotIn("직전 확정값 유지·이번 주 직접 판독 미확인", alert)
 
 
     def test_cpu_change_shows_ubs_project_horizon_without_equating_metrics(self):
@@ -193,10 +189,12 @@ class LeadTimeAlertTests(unittest.TestCase):
             changed_signals=["CPU"],
             evidence={"CPU": {"status", "current", "balanced"}},
         )
-        self.assertIn("CPU</b> | 현재 25~30주 | 균형 16~20주", alert)
-        self.assertIn("UBS 프로젝트 시간축", alert)
-        self.assertIn("3~6개월", alert)
+        self.assertIn("<b>신규 추적 CPU:</b> 25~30주 / 균형 16~20주 / 공급 제약", alert)
+        self.assertIn("UBS 프로젝트 기준", alert)
+        self.assertIn("CPU 3~6개월", alert)
         self.assertIn("직접 비교 금지", alert)
+        direction, worse, better = w.supply_direction(old, new)
+        self.assertEqual((direction, worse, better), ("→ 변화 제한", 0, 0))
 
 
 if __name__ == "__main__":
