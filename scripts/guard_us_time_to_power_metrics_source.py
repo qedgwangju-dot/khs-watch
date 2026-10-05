@@ -1652,7 +1652,7 @@ s = s.replace(semi_links_old, semi_links_new, 1)
 # Add state-level data-center permitting / cost-allocation requirements to the
 # SAME time-to-power watcher. These are state-specific rules, not a nationwide
 # uniform mandate, and are kept separate from FERC/RTO interconnection rules.
-s = s.replace("FORMAT_VERSION = 4", "FORMAT_VERSION = 5", 1)
+s = s.replace("FORMAT_VERSION = 4", "FORMAT_VERSION = 6", 1)
 
 state_policy_const_anchor = 'DIGITIMES_SIC_RESEARCH = "https://apps.digitimes.com/reports/item.php?id=20260929RS400"\n'
 state_policy_const_new = state_policy_const_anchor + '''MA_EO_658 = "https://www.mass.gov/executive-orders/no-658-establishing-requirements-for-responsible-data-center-development-and-operations-in-massachusetts-to-protect-and-support-ratepayers-communities-and-the-environment"
@@ -1699,15 +1699,12 @@ def parse_state_policy_metrics(previous: dict | None = None) -> tuple[dict, list
         low = text.lower()
         if "twenty-five megawatts" in low or re.search(r"\b25\s*(?:mw|megawatts?)\b", text, re.I):
             metrics["ma_threshold_mw"] = 25.0
-        metrics["ma_grid_upgrade_cost_shift_prohibited"] = bool(
-            re.search(r"other ratepayers do not pay distribution grid upgrades", text, re.I)
-        )
-        metrics["ma_incremental_clean_energy_required"] = bool(
-            re.search(r"sufficient incremental new clean electricity generation", text, re.I)
-        )
-        metrics["ma_community_benefits_required"] = bool(
-            re.search(r"community benefits agreement", text, re.I)
-        )
+        if re.search(r"other ratepayers do not pay distribution grid upgrades", text, re.I):
+            metrics["ma_grid_upgrade_cost_shift_prohibited"] = True
+        if re.search(r"sufficient incremental new clean electricity generation", text, re.I):
+            metrics["ma_incremental_clean_energy_required"] = True
+        if re.search(r"community benefits agreement", text, re.I):
+            metrics["ma_community_benefits_required"] = True
         if re.search(r"December\s+31,\s+2026", text, re.I):
             metrics["ma_acp_deadline"] = "2026-12-31"
     except Exception as exc:
@@ -1715,17 +1712,22 @@ def parse_state_policy_metrics(previous: dict | None = None) -> tuple[dict, list
 
     try:
         text = _state_policy_page_text(PA_GRID_REQUIREMENTS)
-        metrics["pa_full_incremental_power_cost_required"] = bool(
+        if (
             re.search(
-                r"pay all costs associated with interconnection, transmission, distribution, network upgrades",
+                r"pay all costs associated with.*?interconnection.*?transmission.*?distribution.*?"
+                r"(?:network upgrades|dedicated facilities)",
                 text,
                 re.I,
             )
-            or re.search(r"full cost of new electricity generation, transmission, distribution", text, re.I)
-        )
-        metrics["pa_local_approval_required"] = bool(
-            re.search(r"local approval", text, re.I)
-        )
+            or re.search(
+                r"full cost of new electricity generation.*?transmission.*?distribution",
+                text,
+                re.I,
+            )
+        ):
+            metrics["pa_full_incremental_power_cost_required"] = True
+        if re.search(r"local approval", text, re.I):
+            metrics["pa_local_approval_required"] = True
         m = re.search(r"up to\s+([0-9.]+)\s*percent\s+in\s+2035", text, re.I)
         if m:
             metrics["pa_clean_firm_share_2035_pct"] = float(m.group(1))
