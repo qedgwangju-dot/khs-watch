@@ -166,6 +166,29 @@
       "source_event_identity": "",
       "title": "연간 설비투자 '2배' 늘리는 마이크론…삼성·SK 압박"
     },
+    "event:087c305bc315b7821cf02723": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814697",
+      "source": "뉴시스",
+      "source_body_digest": "e01502793dc8351aa46a9a32df2612cb8886c684d99b7392ff1ffda0582784d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06c1622cd1e420507a25f07ee0f5725b450d15da8dca2d7af53c8465e3b26d55",
+      "source_fact_keys": [
+        "source_fact:v1:1b19720f327679c7a471cc8ab289b68f6886e0d0540a3a6e78b56559f8f721ef",
+        "source_fact:v1:2ed62d1416ae40625ee0e89444d779d0e83366dede4054d663cbfb2356a42084",
+        "source_fact:v1:40cfef47f8a1edef7d3a8845ae5ec7a646e04d451175e210dc8fd4376d66dfdc",
+        "source_fact:v1:41ed506374025aa0046b5c3d6114c971a649ed6ba3123d54cdb236007e4cb800",
+        "source_fact:v1:7fb18f8f2e3e84b70cab20e842bb97cd888022504e7e7cdee003b9385296687a",
+        "source_fact:v1:81841312373821ed1f919d02a82b481f61db44d3423ef14ce05a64fe62a333ec",
+        "source_fact:v1:e0d9adb71d22c494125bfd0d04b7168738dc6a46b42d59a541d9dea71ab40090"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
     "event:09792c32cabb5ad7e6283b23": {
       "first_seen_kst": "2026-10-05T07:34:11+09:00",
       "lanes": {
@@ -871,6 +894,25 @@
       "link": "https://www.mk.co.kr/news/stock/12161196",
       "source": "매일경제",
       "title": "코스트코 홀세일, 4분기 매출 939억 달러..전년비 11% 증가"
+    },
+    "event:2ef07d2942e08da44fb63386": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.hankyung.com/article/202610053627i",
+      "source": "한국경제",
+      "source_body_digest": "8b8c8ff80c4fc02a45a81985a5a77372b2c5ea339a97e9d2b36a18839274dd8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d704e6b1fe4bf3eada1f82185a5a482dd5950ba86cbbb6b930b02321dbb34cb",
+      "source_fact_keys": [
+        "source_fact:v1:3797337e9b5f65500196c662d179837e50258497430137eb83766cdeb49237cb",
+        "source_fact:v1:486120dba2b2f2cb996664c200dc42d21ba277e65d61fc41949e51d2f7883a64",
+        "source_fact:v1:80562f8765a0b042e3fa7a8f6dba392913aa9f21a9704bce3b093e7f94a53986"
+      ],
+      "source_published_kst": "2026-10-06T07:30+09:00",
+      "title": "원화 강세의 그늘…실적시즌 앞두고 이익전망 '뒷걸음질'"
     },
     "event:2f4b338ca1206546e4a0ab08": {
       "first_seen_kst": "2026-09-19T12:24:36+09:00",
@@ -3521,6 +3563,37 @@
       "source": "전자신문",
       "title": "고려아연, 국내서 '친환경에너지' 20년간 확보…연간 11GWh 규모"
     },
+    "event:b89b7841dedefa99493e038b": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
     "event:b951ffa9a7b785398baf2da0": {
       "first_seen_kst": "2026-09-22T10:35:36+09:00",
       "lanes": {
@@ -5987,6 +6060,27 @@
       "source_published_kst": "2026-10-06T00:12+09:00",
       "title": "\"AI 말고는 쳐다볼 게 없다\"…글로벌 투자 지도 바꾸는 '빅머니'"
     },
+    "fact:321505a3dd3646769996176d": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632527",
+      "source": "이투데이",
+      "source_body_digest": "388fa6432deef762865a66b5d5ed09808f755cc3cc05e832bd4961589446699b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c429c94851916a520e9ee8bef096cc84d856ed24ea767fe7197ffa77eeb2535",
+      "source_fact_keys": [
+        "source_fact:v1:4d8b3a77cba561f5fcc1bcb62a011e0a0a67634e9bd7b0ef33f498a3a60888e1",
+        "source_fact:v1:9ec39328ac41ca02b148055b6c3a47c2848b45890f2c0977a754b2327d90913a",
+        "source_fact:v1:b2854d47008ec452838e8bba23e12eb3678ca870ca97583254829397e8867f12",
+        "source_fact:v1:c1462054b9f8d694e0f04ec531e6a29945e78bdd199c0cee48c51a712b85bc4e",
+        "source_fact:v1:c24be5d74f5e959287d1f960649de71529b745adcf2d8e1af201d082b55ea255"
+      ],
+      "source_published_kst": "2026-10-06T07:35+09:00",
+      "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
+    },
     "fact:324e453978b86897f66191c5": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -6003,6 +6097,23 @@
       ],
       "source_published_kst": "2026-10-05T20:05+09:00",
       "title": "마이크로소프트, 기업 보안 수요 확대…투자의견↑-멜리우스"
+    },
+    "fact:3254cb1d1faf1a961b7d1d02": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632516",
+      "source": "이투데이",
+      "source_body_digest": "bc8edf618ebed245abd1a5ea7e800c6cc9330a744bbe487cc9c7de72e95575ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36bb54a5c373204c89a8e72284a18013e54b75f6c53306cd06d2c98c14e7945c",
+      "source_fact_keys": [
+        "source_fact:v1:17c66ff2f2b0ab51ddd76e02059a4d2494c5c1e0e264a388c366276035fe1dd4"
+      ],
+      "source_published_kst": "2026-10-06T06:34+09:00",
+      "title": "밴스 “알래스카 LNG, 韓과 세부 협의 남아”⋯트럼프 ‘투자 확정’과 온도차"
     },
     "fact:34938c9db2b3cd0735085554": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
@@ -6440,6 +6551,25 @@
       ],
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "[TODAY엔비디아]개장전 '상승'…월가, 신고가 경신에도 여전히 \"밸류 매력\""
+    },
+    "fact:507010afb2ce2333aa6cd647": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.hankyung.com/article/202610053627i",
+      "source": "한국경제",
+      "source_body_digest": "8b8c8ff80c4fc02a45a81985a5a77372b2c5ea339a97e9d2b36a18839274dd8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d704e6b1fe4bf3eada1f82185a5a482dd5950ba86cbbb6b930b02321dbb34cb",
+      "source_fact_keys": [
+        "source_fact:v1:3797337e9b5f65500196c662d179837e50258497430137eb83766cdeb49237cb",
+        "source_fact:v1:486120dba2b2f2cb996664c200dc42d21ba277e65d61fc41949e51d2f7883a64",
+        "source_fact:v1:80562f8765a0b042e3fa7a8f6dba392913aa9f21a9704bce3b093e7f94a53986"
+      ],
+      "source_published_kst": "2026-10-06T07:30+09:00",
+      "title": "원화 강세의 그늘…실적시즌 앞두고 이익전망 '뒷걸음질'"
     },
     "fact:5185b8e00ff0bd3e5e0f2bfa": {
       "first_seen_kst": "2026-10-06T00:41:11+09:00",
@@ -7824,6 +7954,29 @@
       "source_published_kst": "2026-10-05T19:19+09:00",
       "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
     },
+    "fact:965fe36f6d9075511c059356": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814697",
+      "source": "뉴시스",
+      "source_body_digest": "e01502793dc8351aa46a9a32df2612cb8886c684d99b7392ff1ffda0582784d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06c1622cd1e420507a25f07ee0f5725b450d15da8dca2d7af53c8465e3b26d55",
+      "source_fact_keys": [
+        "source_fact:v1:1b19720f327679c7a471cc8ab289b68f6886e0d0540a3a6e78b56559f8f721ef",
+        "source_fact:v1:2ed62d1416ae40625ee0e89444d779d0e83366dede4054d663cbfb2356a42084",
+        "source_fact:v1:40cfef47f8a1edef7d3a8845ae5ec7a646e04d451175e210dc8fd4376d66dfdc",
+        "source_fact:v1:41ed506374025aa0046b5c3d6114c971a649ed6ba3123d54cdb236007e4cb800",
+        "source_fact:v1:7fb18f8f2e3e84b70cab20e842bb97cd888022504e7e7cdee003b9385296687a",
+        "source_fact:v1:81841312373821ed1f919d02a82b481f61db44d3423ef14ce05a64fe62a333ec",
+        "source_fact:v1:e0d9adb71d22c494125bfd0d04b7168738dc6a46b42d59a541d9dea71ab40090"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
     "fact:975d78e94fdd6f2c8b96692b": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -7955,6 +8108,55 @@
       ],
       "source_published_kst": "2026-10-06T00:51+09:00",
       "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
+    },
+    "fact:9c751b2de7a6d378b0f51b1d": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
+    "fact:9cad4df423285454f52b7213": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632525",
+      "source": "이투데이",
+      "source_body_digest": "22f5fd0224258a49e1890a5af2238d5bdd73867369efb17dfaad6a92b9c73a74",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057bacafb4ea75d7132f1a7404efde290e473a190f04896c5948f58ff7f655a3",
+      "source_fact_keys": [
+        "source_fact:v1:17f90db3cbe105e5238bfc8d784314312f5e2d2fed721a48c529d6e1b8a9f3f4",
+        "source_fact:v1:d5e273d276bf9b0193d3871816835df6698e6438a88f844bac450b11cc03cbd9"
+      ],
+      "source_published_kst": "2026-10-06T07:34+09:00",
+      "title": "KB증권 \"HPSP, 4분기부터 낸드 수혜 본격화…목표가 31%↑\""
     },
     "fact:9d60928f4b4ccbe8977b7741": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -8725,6 +8927,24 @@
       ],
       "source_published_kst": "2026-10-05T21:07+09:00",
       "title": "텔라 바이오, 완전 흡수성 메시 '리오라' FDA 허가 획득"
+    },
+    "fact:d5d7803fa25aad6c5732829d": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814709",
+      "source": "뉴시스",
+      "source_body_digest": "01797105bd29a2c83fb556abfad76f7d3176acdfa648be92b0744ab4d086cdf8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9131c7d46f7f572155237bc96d821ef17d9a9017fbe3b6e7adf0202bf73ec035",
+      "source_fact_keys": [
+        "source_fact:v1:76d06bbcc22044a756f9f2e0ccbc0e257dbf1d47f87cf79132a95d9bf8fbf73d",
+        "source_fact:v1:a50099c8399a4a7d1cd331312161d6ddc7dd1dad73a99e5bac453bfe13c299d8"
+      ],
+      "source_published_kst": "2026-10-06T07:29+09:00",
+      "title": "부산 청년기업, 국내 최초 디지털제품여권 상용화"
     },
     "fact:d6c7e05719245b80b339f5cf": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -11653,6 +11873,25 @@
       "source": "디지털타임스",
       "title": "마이크론, 4분기 매출 542억달러…AI 메모리 수요에 ‘어닝 서프라이즈’"
     },
+    "link:24de9db8d496e99858ac22a7": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.hankyung.com/article/202610053627i",
+      "source": "한국경제",
+      "source_body_digest": "8b8c8ff80c4fc02a45a81985a5a77372b2c5ea339a97e9d2b36a18839274dd8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d704e6b1fe4bf3eada1f82185a5a482dd5950ba86cbbb6b930b02321dbb34cb",
+      "source_fact_keys": [
+        "source_fact:v1:3797337e9b5f65500196c662d179837e50258497430137eb83766cdeb49237cb",
+        "source_fact:v1:486120dba2b2f2cb996664c200dc42d21ba277e65d61fc41949e51d2f7883a64",
+        "source_fact:v1:80562f8765a0b042e3fa7a8f6dba392913aa9f21a9704bce3b093e7f94a53986"
+      ],
+      "source_published_kst": "2026-10-06T07:30+09:00",
+      "title": "원화 강세의 그늘…실적시즌 앞두고 이익전망 '뒷걸음질'"
+    },
     "link:24f97160f56d73ff3d084100": {
       "first_seen_kst": "2026-09-18T13:11:00+09:00",
       "lanes": {
@@ -11871,6 +12110,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T08:45+09:00",
       "title": "[AI픽] '예·아니오'만 답하는 AI가 뜬다…0.1초 판단 '제브' | 연합뉴스"
+    },
+    "link:272c2dfa8311af6caafeda53": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632525",
+      "source": "이투데이",
+      "source_body_digest": "22f5fd0224258a49e1890a5af2238d5bdd73867369efb17dfaad6a92b9c73a74",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057bacafb4ea75d7132f1a7404efde290e473a190f04896c5948f58ff7f655a3",
+      "source_fact_keys": [
+        "source_fact:v1:17f90db3cbe105e5238bfc8d784314312f5e2d2fed721a48c529d6e1b8a9f3f4",
+        "source_fact:v1:d5e273d276bf9b0193d3871816835df6698e6438a88f844bac450b11cc03cbd9"
+      ],
+      "source_published_kst": "2026-10-06T07:34+09:00",
+      "title": "KB증권 \"HPSP, 4분기부터 낸드 수혜 본격화…목표가 31%↑\""
     },
     "link:274c131f09fbcca883392a7c": {
       "first_seen_kst": "2026-10-02T16:06:36+09:00",
@@ -15023,6 +15280,27 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "\"속옷도 가성비\"…롯데마트, 언더웨어 3000·5000원 균일가"
     },
+    "link:50dd900aeb41df2faa10cb5b": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632527",
+      "source": "이투데이",
+      "source_body_digest": "388fa6432deef762865a66b5d5ed09808f755cc3cc05e832bd4961589446699b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c429c94851916a520e9ee8bef096cc84d856ed24ea767fe7197ffa77eeb2535",
+      "source_fact_keys": [
+        "source_fact:v1:4d8b3a77cba561f5fcc1bcb62a011e0a0a67634e9bd7b0ef33f498a3a60888e1",
+        "source_fact:v1:9ec39328ac41ca02b148055b6c3a47c2848b45890f2c0977a754b2327d90913a",
+        "source_fact:v1:b2854d47008ec452838e8bba23e12eb3678ca870ca97583254829397e8867f12",
+        "source_fact:v1:c1462054b9f8d694e0f04ec531e6a29945e78bdd199c0cee48c51a712b85bc4e",
+        "source_fact:v1:c24be5d74f5e959287d1f960649de71529b745adcf2d8e1af201d082b55ea255"
+      ],
+      "source_published_kst": "2026-10-06T07:35+09:00",
+      "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
+    },
     "link:51119bce5af472351a3dc5a3": {
       "first_seen_kst": "2026-10-04T15:45:24+09:00",
       "lanes": {
@@ -17860,6 +18138,37 @@
       "link": "https://www.newsis.com/view/NISX20260917_0003794038",
       "source": "뉴시스",
       "title": "\"86주 연속 서울 집값 상승\"…과거엔 '이것' 나오자 꺾였다"
+    },
+    "link:77758ac6a00c095147744aea": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
     },
     "link:7780f3c4f1ac4b770f874c5c": {
       "first_seen_kst": "2026-10-04T08:04:25+09:00",
@@ -20748,6 +21057,29 @@
       "source_published_kst": "2026-10-05T07:01+09:00",
       "title": "기아, 영국서도 '질주'…1∼8월 판매 폭스바겐 이어 2위 | 연합뉴스"
     },
+    "link:9d3c47d3197418634a0cf7b9": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814697",
+      "source": "뉴시스",
+      "source_body_digest": "e01502793dc8351aa46a9a32df2612cb8886c684d99b7392ff1ffda0582784d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06c1622cd1e420507a25f07ee0f5725b450d15da8dca2d7af53c8465e3b26d55",
+      "source_fact_keys": [
+        "source_fact:v1:1b19720f327679c7a471cc8ab289b68f6886e0d0540a3a6e78b56559f8f721ef",
+        "source_fact:v1:2ed62d1416ae40625ee0e89444d779d0e83366dede4054d663cbfb2356a42084",
+        "source_fact:v1:40cfef47f8a1edef7d3a8845ae5ec7a646e04d451175e210dc8fd4376d66dfdc",
+        "source_fact:v1:41ed506374025aa0046b5c3d6114c971a649ed6ba3123d54cdb236007e4cb800",
+        "source_fact:v1:7fb18f8f2e3e84b70cab20e842bb97cd888022504e7e7cdee003b9385296687a",
+        "source_fact:v1:81841312373821ed1f919d02a82b481f61db44d3423ef14ce05a64fe62a333ec",
+        "source_fact:v1:e0d9adb71d22c494125bfd0d04b7168738dc6a46b42d59a541d9dea71ab40090"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
     "link:9d525d9c9a8c21b37875669c": {
       "first_seen_kst": "2026-09-22T06:33:14+09:00",
       "lanes": {
@@ -22778,6 +23110,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261001084600073",
       "source": "연합뉴스",
       "title": "일본은행 9월 금리회의서 물가 경계감…\"10월도 인상 가능성\" | 연합뉴스"
+    },
+    "link:ba3107a061510c63cc4f2e75": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814709",
+      "source": "뉴시스",
+      "source_body_digest": "01797105bd29a2c83fb556abfad76f7d3176acdfa648be92b0744ab4d086cdf8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9131c7d46f7f572155237bc96d821ef17d9a9017fbe3b6e7adf0202bf73ec035",
+      "source_fact_keys": [
+        "source_fact:v1:76d06bbcc22044a756f9f2e0ccbc0e257dbf1d47f87cf79132a95d9bf8fbf73d",
+        "source_fact:v1:a50099c8399a4a7d1cd331312161d6ddc7dd1dad73a99e5bac453bfe13c299d8"
+      ],
+      "source_published_kst": "2026-10-06T07:29+09:00",
+      "title": "부산 청년기업, 국내 최초 디지털제품여권 상용화"
     },
     "link:ba9d199b14b58d9849b2bf17": {
       "first_seen_kst": "2026-10-05T12:09:30+09:00",
@@ -25839,6 +26189,23 @@
       "source_published_kst": "2026-10-05T11:10+09:00",
       "title": "'코브라' 헬기 명가 벨텍스트론 방한…K-항공부품 러브콜 | 연합뉴스"
     },
+    "link:e4cf8c5c46d611a1bc364f5f": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632516",
+      "source": "이투데이",
+      "source_body_digest": "bc8edf618ebed245abd1a5ea7e800c6cc9330a744bbe487cc9c7de72e95575ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36bb54a5c373204c89a8e72284a18013e54b75f6c53306cd06d2c98c14e7945c",
+      "source_fact_keys": [
+        "source_fact:v1:17c66ff2f2b0ab51ddd76e02059a4d2494c5c1e0e264a388c366276035fe1dd4"
+      ],
+      "source_published_kst": "2026-10-06T06:34+09:00",
+      "title": "밴스 “알래스카 LNG, 韓과 세부 협의 남아”⋯트럼프 ‘투자 확정’과 온도차"
+    },
     "link:e4e2c78d1b86dca02acf0ffb": {
       "first_seen_kst": "2026-09-30T15:16:38+09:00",
       "lanes": {
@@ -28038,6 +28405,25 @@
       "link": "https://www.mk.co.kr/news/stock/12165523",
       "source": "매일경제",
       "title": "콜플랜트 홀딩스, 2분기 매출 11만 달러..전년비 40% 감소"
+    },
+    "original:01eaccd9c38b4bb9823e0596": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.hankyung.com/article/202610053627i",
+      "source": "한국경제",
+      "source_body_digest": "8b8c8ff80c4fc02a45a81985a5a77372b2c5ea339a97e9d2b36a18839274dd8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d704e6b1fe4bf3eada1f82185a5a482dd5950ba86cbbb6b930b02321dbb34cb",
+      "source_fact_keys": [
+        "source_fact:v1:3797337e9b5f65500196c662d179837e50258497430137eb83766cdeb49237cb",
+        "source_fact:v1:486120dba2b2f2cb996664c200dc42d21ba277e65d61fc41949e51d2f7883a64",
+        "source_fact:v1:80562f8765a0b042e3fa7a8f6dba392913aa9f21a9704bce3b093e7f94a53986"
+      ],
+      "source_published_kst": "2026-10-06T07:30+09:00",
+      "title": "원화 강세의 그늘…실적시즌 앞두고 이익전망 '뒷걸음질'"
     },
     "original:01fb7a3ef51821d0a879ee93": {
       "first_seen_kst": "2026-10-02T09:01:13+09:00",
@@ -34050,6 +34436,24 @@
       "source": "머니투데이",
       "title": "한미 알래스카 투자 온도차…봉합 나선 美국무부 \"상호 윈윈\""
     },
+    "original:5812f3014a65353f2643ae68": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632525",
+      "source": "이투데이",
+      "source_body_digest": "22f5fd0224258a49e1890a5af2238d5bdd73867369efb17dfaad6a92b9c73a74",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057bacafb4ea75d7132f1a7404efde290e473a190f04896c5948f58ff7f655a3",
+      "source_fact_keys": [
+        "source_fact:v1:17f90db3cbe105e5238bfc8d784314312f5e2d2fed721a48c529d6e1b8a9f3f4",
+        "source_fact:v1:d5e273d276bf9b0193d3871816835df6698e6438a88f844bac450b11cc03cbd9"
+      ],
+      "source_published_kst": "2026-10-06T07:34+09:00",
+      "title": "KB증권 \"HPSP, 4분기부터 낸드 수혜 본격화…목표가 31%↑\""
+    },
     "original:581aaaa01b57644307a961bc": {
       "first_seen_kst": "2026-10-02T15:29:23+09:00",
       "lanes": {
@@ -36482,6 +36886,37 @@
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
     },
+    "original:7a0067a2937fb562b5b5b3bf": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
     "original:7a171dff40f6dc8d9148c54d": {
       "first_seen_kst": "2026-10-04T02:31:20+09:00",
       "lanes": {
@@ -37798,6 +38233,27 @@
       "link": "https://www.newsis.com/view/NISX20260929_0003807049",
       "source": "뉴시스",
       "title": "\"주가 오르는데 웃지 못한다…신고가보다 신저가 종목이 더 많은 기현상\""
+    },
+    "original:8cacd3b89241ea7c5443fc1c": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632527",
+      "source": "이투데이",
+      "source_body_digest": "388fa6432deef762865a66b5d5ed09808f755cc3cc05e832bd4961589446699b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c429c94851916a520e9ee8bef096cc84d856ed24ea767fe7197ffa77eeb2535",
+      "source_fact_keys": [
+        "source_fact:v1:4d8b3a77cba561f5fcc1bcb62a011e0a0a67634e9bd7b0ef33f498a3a60888e1",
+        "source_fact:v1:9ec39328ac41ca02b148055b6c3a47c2848b45890f2c0977a754b2327d90913a",
+        "source_fact:v1:b2854d47008ec452838e8bba23e12eb3678ca870ca97583254829397e8867f12",
+        "source_fact:v1:c1462054b9f8d694e0f04ec531e6a29945e78bdd199c0cee48c51a712b85bc4e",
+        "source_fact:v1:c24be5d74f5e959287d1f960649de71529b745adcf2d8e1af201d082b55ea255"
+      ],
+      "source_published_kst": "2026-10-06T07:35+09:00",
+      "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
     },
     "original:8cb8952996ba7e1c0ad5dd57": {
       "first_seen_kst": "2026-09-21T08:32:45+09:00",
@@ -41907,6 +42363,29 @@
       "source": "이투데이",
       "title": "씨티, 원·달러 환율 장기 전망 1250원으로 하향…“대미투자 영향 제한적”"
     },
+    "original:caf2d37d1990c431a0b502c8": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814697",
+      "source": "뉴시스",
+      "source_body_digest": "e01502793dc8351aa46a9a32df2612cb8886c684d99b7392ff1ffda0582784d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06c1622cd1e420507a25f07ee0f5725b450d15da8dca2d7af53c8465e3b26d55",
+      "source_fact_keys": [
+        "source_fact:v1:1b19720f327679c7a471cc8ab289b68f6886e0d0540a3a6e78b56559f8f721ef",
+        "source_fact:v1:2ed62d1416ae40625ee0e89444d779d0e83366dede4054d663cbfb2356a42084",
+        "source_fact:v1:40cfef47f8a1edef7d3a8845ae5ec7a646e04d451175e210dc8fd4376d66dfdc",
+        "source_fact:v1:41ed506374025aa0046b5c3d6114c971a649ed6ba3123d54cdb236007e4cb800",
+        "source_fact:v1:7fb18f8f2e3e84b70cab20e842bb97cd888022504e7e7cdee003b9385296687a",
+        "source_fact:v1:81841312373821ed1f919d02a82b481f61db44d3423ef14ce05a64fe62a333ec",
+        "source_fact:v1:e0d9adb71d22c494125bfd0d04b7168738dc6a46b42d59a541d9dea71ab40090"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
     "original:cb2c4c1c5701bc42869f84b9": {
       "first_seen_kst": "2026-10-02T10:30:30+09:00",
       "lanes": {
@@ -42996,6 +43475,24 @@
       "link": "https://www.etnews.com/20260923000014",
       "source": "전자신문",
       "title": "증시 떠받친 삼전닉스 자사주 매입 막바지…추석 후 '수급 절벽' 어쩌나"
+    },
+    "original:d7c8a60ef171fdfb52c53031": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814709",
+      "source": "뉴시스",
+      "source_body_digest": "01797105bd29a2c83fb556abfad76f7d3176acdfa648be92b0744ab4d086cdf8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9131c7d46f7f572155237bc96d821ef17d9a9017fbe3b6e7adf0202bf73ec035",
+      "source_fact_keys": [
+        "source_fact:v1:76d06bbcc22044a756f9f2e0ccbc0e257dbf1d47f87cf79132a95d9bf8fbf73d",
+        "source_fact:v1:a50099c8399a4a7d1cd331312161d6ddc7dd1dad73a99e5bac453bfe13c299d8"
+      ],
+      "source_published_kst": "2026-10-06T07:29+09:00",
+      "title": "부산 청년기업, 국내 최초 디지털제품여권 상용화"
     },
     "original:d838924bcfc62a23d8ee0472": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -44585,6 +45082,23 @@
       "source": "매일경제",
       "title": "리토 에코 솔루션즈, 1,500만 달러 유상증자 완료..주당 1.5달러"
     },
+    "original:ef6b9531695c4f949aa69f30": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632516",
+      "source": "이투데이",
+      "source_body_digest": "bc8edf618ebed245abd1a5ea7e800c6cc9330a744bbe487cc9c7de72e95575ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36bb54a5c373204c89a8e72284a18013e54b75f6c53306cd06d2c98c14e7945c",
+      "source_fact_keys": [
+        "source_fact:v1:17c66ff2f2b0ab51ddd76e02059a4d2494c5c1e0e264a388c366276035fe1dd4"
+      ],
+      "source_published_kst": "2026-10-06T06:34+09:00",
+      "title": "밴스 “알래스카 LNG, 韓과 세부 협의 남아”⋯트럼프 ‘투자 확정’과 온도차"
+    },
     "original:ef8df5fbe33de59e2dab0d76": {
       "first_seen_kst": "2026-10-04T00:19:00+09:00",
       "lanes": {
@@ -46092,6 +46606,29 @@
       "source_published_kst": "2026-10-05T20:16+09:00",
       "title": "\"역사상 가장 어려운 시기\"…이란 안보수장, 경제난 공식 시인"
     },
+    "source_fact:039e3bf47e53a7e2b4cf6c37": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814697",
+      "source": "뉴시스",
+      "source_body_digest": "e01502793dc8351aa46a9a32df2612cb8886c684d99b7392ff1ffda0582784d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06c1622cd1e420507a25f07ee0f5725b450d15da8dca2d7af53c8465e3b26d55",
+      "source_fact_keys": [
+        "source_fact:v1:1b19720f327679c7a471cc8ab289b68f6886e0d0540a3a6e78b56559f8f721ef",
+        "source_fact:v1:2ed62d1416ae40625ee0e89444d779d0e83366dede4054d663cbfb2356a42084",
+        "source_fact:v1:40cfef47f8a1edef7d3a8845ae5ec7a646e04d451175e210dc8fd4376d66dfdc",
+        "source_fact:v1:41ed506374025aa0046b5c3d6114c971a649ed6ba3123d54cdb236007e4cb800",
+        "source_fact:v1:7fb18f8f2e3e84b70cab20e842bb97cd888022504e7e7cdee003b9385296687a",
+        "source_fact:v1:81841312373821ed1f919d02a82b481f61db44d3423ef14ce05a64fe62a333ec",
+        "source_fact:v1:e0d9adb71d22c494125bfd0d04b7168738dc6a46b42d59a541d9dea71ab40090"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
     "source_fact:04d3d9fd880435c004d4ea30": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -46884,6 +47421,29 @@
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
     },
+    "source_fact:0d3c0b727b7c6ce8c6e4590d": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814697",
+      "source": "뉴시스",
+      "source_body_digest": "e01502793dc8351aa46a9a32df2612cb8886c684d99b7392ff1ffda0582784d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06c1622cd1e420507a25f07ee0f5725b450d15da8dca2d7af53c8465e3b26d55",
+      "source_fact_keys": [
+        "source_fact:v1:1b19720f327679c7a471cc8ab289b68f6886e0d0540a3a6e78b56559f8f721ef",
+        "source_fact:v1:2ed62d1416ae40625ee0e89444d779d0e83366dede4054d663cbfb2356a42084",
+        "source_fact:v1:40cfef47f8a1edef7d3a8845ae5ec7a646e04d451175e210dc8fd4376d66dfdc",
+        "source_fact:v1:41ed506374025aa0046b5c3d6114c971a649ed6ba3123d54cdb236007e4cb800",
+        "source_fact:v1:7fb18f8f2e3e84b70cab20e842bb97cd888022504e7e7cdee003b9385296687a",
+        "source_fact:v1:81841312373821ed1f919d02a82b481f61db44d3423ef14ce05a64fe62a333ec",
+        "source_fact:v1:e0d9adb71d22c494125bfd0d04b7168738dc6a46b42d59a541d9dea71ab40090"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
     "source_fact:0e4497a88145848d20300177": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -46924,6 +47484,25 @@
       ],
       "source_published_kst": "2026-10-05T19:05+09:00",
       "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
+    },
+    "source_fact:0f0e2c15c75504fe36f79848": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.hankyung.com/article/202610053627i",
+      "source": "한국경제",
+      "source_body_digest": "8b8c8ff80c4fc02a45a81985a5a77372b2c5ea339a97e9d2b36a18839274dd8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d704e6b1fe4bf3eada1f82185a5a482dd5950ba86cbbb6b930b02321dbb34cb",
+      "source_fact_keys": [
+        "source_fact:v1:3797337e9b5f65500196c662d179837e50258497430137eb83766cdeb49237cb",
+        "source_fact:v1:486120dba2b2f2cb996664c200dc42d21ba277e65d61fc41949e51d2f7883a64",
+        "source_fact:v1:80562f8765a0b042e3fa7a8f6dba392913aa9f21a9704bce3b093e7f94a53986"
+      ],
+      "source_published_kst": "2026-10-06T07:30+09:00",
+      "title": "원화 강세의 그늘…실적시즌 앞두고 이익전망 '뒷걸음질'"
     },
     "source_fact:0f38fe5de47bbe6ae3719469": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -47435,6 +48014,23 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
     },
+    "source_fact:15d087abae02fa7187593653": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632516",
+      "source": "이투데이",
+      "source_body_digest": "bc8edf618ebed245abd1a5ea7e800c6cc9330a744bbe487cc9c7de72e95575ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36bb54a5c373204c89a8e72284a18013e54b75f6c53306cd06d2c98c14e7945c",
+      "source_fact_keys": [
+        "source_fact:v1:17c66ff2f2b0ab51ddd76e02059a4d2494c5c1e0e264a388c366276035fe1dd4"
+      ],
+      "source_published_kst": "2026-10-06T06:34+09:00",
+      "title": "밴스 “알래스카 LNG, 韓과 세부 협의 남아”⋯트럼프 ‘투자 확정’과 온도차"
+    },
     "source_fact:161ab13882d08365c5d13415": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -47762,6 +48358,29 @@
       "source_published_kst": "2026-10-05T21:41+09:00",
       "title": "ESS 테크, NYSE 거래정지·상장폐지 개시..OTC서 GWHT 거래"
     },
+    "source_fact:1bc30228a73128fec1a01f07": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814697",
+      "source": "뉴시스",
+      "source_body_digest": "e01502793dc8351aa46a9a32df2612cb8886c684d99b7392ff1ffda0582784d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06c1622cd1e420507a25f07ee0f5725b450d15da8dca2d7af53c8465e3b26d55",
+      "source_fact_keys": [
+        "source_fact:v1:1b19720f327679c7a471cc8ab289b68f6886e0d0540a3a6e78b56559f8f721ef",
+        "source_fact:v1:2ed62d1416ae40625ee0e89444d779d0e83366dede4054d663cbfb2356a42084",
+        "source_fact:v1:40cfef47f8a1edef7d3a8845ae5ec7a646e04d451175e210dc8fd4376d66dfdc",
+        "source_fact:v1:41ed506374025aa0046b5c3d6114c971a649ed6ba3123d54cdb236007e4cb800",
+        "source_fact:v1:7fb18f8f2e3e84b70cab20e842bb97cd888022504e7e7cdee003b9385296687a",
+        "source_fact:v1:81841312373821ed1f919d02a82b481f61db44d3423ef14ce05a64fe62a333ec",
+        "source_fact:v1:e0d9adb71d22c494125bfd0d04b7168738dc6a46b42d59a541d9dea71ab40090"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
     "source_fact:1bfa59248636bfcdc962561c": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
       "lanes": {
@@ -47875,6 +48494,27 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
+    "source_fact:1d064d998bae47cc6352adc4": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632527",
+      "source": "이투데이",
+      "source_body_digest": "388fa6432deef762865a66b5d5ed09808f755cc3cc05e832bd4961589446699b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c429c94851916a520e9ee8bef096cc84d856ed24ea767fe7197ffa77eeb2535",
+      "source_fact_keys": [
+        "source_fact:v1:4d8b3a77cba561f5fcc1bcb62a011e0a0a67634e9bd7b0ef33f498a3a60888e1",
+        "source_fact:v1:9ec39328ac41ca02b148055b6c3a47c2848b45890f2c0977a754b2327d90913a",
+        "source_fact:v1:b2854d47008ec452838e8bba23e12eb3678ca870ca97583254829397e8867f12",
+        "source_fact:v1:c1462054b9f8d694e0f04ec531e6a29945e78bdd199c0cee48c51a712b85bc4e",
+        "source_fact:v1:c24be5d74f5e959287d1f960649de71529b745adcf2d8e1af201d082b55ea255"
+      ],
+      "source_published_kst": "2026-10-06T07:35+09:00",
+      "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
     },
     "source_fact:1d2ef2570b5b773f0ad13f3a": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -48532,6 +49172,37 @@
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
     },
+    "source_fact:25a8dd19279a11a461172129": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
     "source_fact:25aaab3d2c93aaddeda021b9": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
       "lanes": {
@@ -48549,6 +49220,27 @@
       ],
       "source_published_kst": "2026-10-05T20:22+09:00",
       "title": "스트라타시스, 방산 전문가 데이비드 친 이사 후보 지명"
+    },
+    "source_fact:25b06612b07d8f10fc47286e": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632527",
+      "source": "이투데이",
+      "source_body_digest": "388fa6432deef762865a66b5d5ed09808f755cc3cc05e832bd4961589446699b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c429c94851916a520e9ee8bef096cc84d856ed24ea767fe7197ffa77eeb2535",
+      "source_fact_keys": [
+        "source_fact:v1:4d8b3a77cba561f5fcc1bcb62a011e0a0a67634e9bd7b0ef33f498a3a60888e1",
+        "source_fact:v1:9ec39328ac41ca02b148055b6c3a47c2848b45890f2c0977a754b2327d90913a",
+        "source_fact:v1:b2854d47008ec452838e8bba23e12eb3678ca870ca97583254829397e8867f12",
+        "source_fact:v1:c1462054b9f8d694e0f04ec531e6a29945e78bdd199c0cee48c51a712b85bc4e",
+        "source_fact:v1:c24be5d74f5e959287d1f960649de71529b745adcf2d8e1af201d082b55ea255"
+      ],
+      "source_published_kst": "2026-10-06T07:35+09:00",
+      "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
     },
     "source_fact:2619b8baa7bd80d6845f0afc": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -49001,6 +49693,29 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
+    },
+    "source_fact:2c91def54c749e69d5a44ca5": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814697",
+      "source": "뉴시스",
+      "source_body_digest": "e01502793dc8351aa46a9a32df2612cb8886c684d99b7392ff1ffda0582784d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06c1622cd1e420507a25f07ee0f5725b450d15da8dca2d7af53c8465e3b26d55",
+      "source_fact_keys": [
+        "source_fact:v1:1b19720f327679c7a471cc8ab289b68f6886e0d0540a3a6e78b56559f8f721ef",
+        "source_fact:v1:2ed62d1416ae40625ee0e89444d779d0e83366dede4054d663cbfb2356a42084",
+        "source_fact:v1:40cfef47f8a1edef7d3a8845ae5ec7a646e04d451175e210dc8fd4376d66dfdc",
+        "source_fact:v1:41ed506374025aa0046b5c3d6114c971a649ed6ba3123d54cdb236007e4cb800",
+        "source_fact:v1:7fb18f8f2e3e84b70cab20e842bb97cd888022504e7e7cdee003b9385296687a",
+        "source_fact:v1:81841312373821ed1f919d02a82b481f61db44d3423ef14ce05a64fe62a333ec",
+        "source_fact:v1:e0d9adb71d22c494125bfd0d04b7168738dc6a46b42d59a541d9dea71ab40090"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
     },
     "source_fact:2cab51eb5a6188fcdee9665f": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
@@ -49481,6 +50196,27 @@
       ],
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
+    },
+    "source_fact:3332ecbfcdde81e8f35a76f3": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632527",
+      "source": "이투데이",
+      "source_body_digest": "388fa6432deef762865a66b5d5ed09808f755cc3cc05e832bd4961589446699b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c429c94851916a520e9ee8bef096cc84d856ed24ea767fe7197ffa77eeb2535",
+      "source_fact_keys": [
+        "source_fact:v1:4d8b3a77cba561f5fcc1bcb62a011e0a0a67634e9bd7b0ef33f498a3a60888e1",
+        "source_fact:v1:9ec39328ac41ca02b148055b6c3a47c2848b45890f2c0977a754b2327d90913a",
+        "source_fact:v1:b2854d47008ec452838e8bba23e12eb3678ca870ca97583254829397e8867f12",
+        "source_fact:v1:c1462054b9f8d694e0f04ec531e6a29945e78bdd199c0cee48c51a712b85bc4e",
+        "source_fact:v1:c24be5d74f5e959287d1f960649de71529b745adcf2d8e1af201d082b55ea255"
+      ],
+      "source_published_kst": "2026-10-06T07:35+09:00",
+      "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
     },
     "source_fact:3349d56f291b43d44c28987d": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -50770,6 +51506,37 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:43f61180c103d450b1f83aed": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
     "source_fact:4417b8f3114622744ab45890": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -50994,6 +51761,25 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:467d9d8883e268d7330bbc74": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.hankyung.com/article/202610053627i",
+      "source": "한국경제",
+      "source_body_digest": "8b8c8ff80c4fc02a45a81985a5a77372b2c5ea339a97e9d2b36a18839274dd8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d704e6b1fe4bf3eada1f82185a5a482dd5950ba86cbbb6b930b02321dbb34cb",
+      "source_fact_keys": [
+        "source_fact:v1:3797337e9b5f65500196c662d179837e50258497430137eb83766cdeb49237cb",
+        "source_fact:v1:486120dba2b2f2cb996664c200dc42d21ba277e65d61fc41949e51d2f7883a64",
+        "source_fact:v1:80562f8765a0b042e3fa7a8f6dba392913aa9f21a9704bce3b093e7f94a53986"
+      ],
+      "source_published_kst": "2026-10-06T07:30+09:00",
+      "title": "원화 강세의 그늘…실적시즌 앞두고 이익전망 '뒷걸음질'"
     },
     "source_fact:467e3d1edf0da9e15d3738c9": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -53409,6 +54195,37 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
     },
+    "source_fact:65177694dd8470e009a7c8af": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
     "source_fact:653f51700bb04df4cdcc3424": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -54081,6 +54898,24 @@
       "source_published_kst": "2026-10-06T06:31+09:00",
       "title": "GKL, 해외서 고객 접촉 논란…\"현지법·중국 형법 저촉 소지\" | 연합뉴스"
     },
+    "source_fact:6fa0b3735250e5a4f1a1fb6b": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814709",
+      "source": "뉴시스",
+      "source_body_digest": "01797105bd29a2c83fb556abfad76f7d3176acdfa648be92b0744ab4d086cdf8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9131c7d46f7f572155237bc96d821ef17d9a9017fbe3b6e7adf0202bf73ec035",
+      "source_fact_keys": [
+        "source_fact:v1:76d06bbcc22044a756f9f2e0ccbc0e257dbf1d47f87cf79132a95d9bf8fbf73d",
+        "source_fact:v1:a50099c8399a4a7d1cd331312161d6ddc7dd1dad73a99e5bac453bfe13c299d8"
+      ],
+      "source_published_kst": "2026-10-06T07:29+09:00",
+      "title": "부산 청년기업, 국내 최초 디지털제품여권 상용화"
+    },
     "source_fact:6fba241373d124a76714bc2d": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -54660,6 +55495,27 @@
       "source_published_kst": "2026-10-05T10:59+09:00",
       "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
     },
+    "source_fact:74bcd3302788dd7a88bc0777": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632527",
+      "source": "이투데이",
+      "source_body_digest": "388fa6432deef762865a66b5d5ed09808f755cc3cc05e832bd4961589446699b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c429c94851916a520e9ee8bef096cc84d856ed24ea767fe7197ffa77eeb2535",
+      "source_fact_keys": [
+        "source_fact:v1:4d8b3a77cba561f5fcc1bcb62a011e0a0a67634e9bd7b0ef33f498a3a60888e1",
+        "source_fact:v1:9ec39328ac41ca02b148055b6c3a47c2848b45890f2c0977a754b2327d90913a",
+        "source_fact:v1:b2854d47008ec452838e8bba23e12eb3678ca870ca97583254829397e8867f12",
+        "source_fact:v1:c1462054b9f8d694e0f04ec531e6a29945e78bdd199c0cee48c51a712b85bc4e",
+        "source_fact:v1:c24be5d74f5e959287d1f960649de71529b745adcf2d8e1af201d082b55ea255"
+      ],
+      "source_published_kst": "2026-10-06T07:35+09:00",
+      "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
+    },
     "source_fact:7501596ff69142caf6af88f9": {
       "first_seen_kst": "2026-10-06T00:26:07+09:00",
       "lanes": {
@@ -54750,6 +55606,68 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:76e427c0f3afa8ca652b0ec6": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
+    "source_fact:772680bf410fa23385e654cb": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
     },
     "source_fact:7764e001a7d6db66f4de3710": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -55877,6 +56795,37 @@
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
+    "source_fact:843ca9af477de2addc3b921b": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
     "source_fact:84cb41af8ea390df4f18d934": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -55916,6 +56865,24 @@
       ],
       "source_published_kst": "2026-10-05T19:55+09:00",
       "title": "[美특징주]인텔, 개장 전 4%↓…머스크의 테라팹-TSMC 협력 논의"
+    },
+    "source_fact:852f31a1293c3fd40b880686": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632525",
+      "source": "이투데이",
+      "source_body_digest": "22f5fd0224258a49e1890a5af2238d5bdd73867369efb17dfaad6a92b9c73a74",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057bacafb4ea75d7132f1a7404efde290e473a190f04896c5948f58ff7f655a3",
+      "source_fact_keys": [
+        "source_fact:v1:17f90db3cbe105e5238bfc8d784314312f5e2d2fed721a48c529d6e1b8a9f3f4",
+        "source_fact:v1:d5e273d276bf9b0193d3871816835df6698e6438a88f844bac450b11cc03cbd9"
+      ],
+      "source_published_kst": "2026-10-06T07:34+09:00",
+      "title": "KB증권 \"HPSP, 4분기부터 낸드 수혜 본격화…목표가 31%↑\""
     },
     "source_fact:85326e60073126f382b95369": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
@@ -56514,6 +57481,37 @@
       "source_published_kst": "2026-10-05T17:54+09:00",
       "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
     },
+    "source_fact:8d48ca6fe4de5bd2eb8cc92c": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
     "source_fact:8d7eb9e00ffe523e0e0d2f70": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
@@ -57035,6 +58033,37 @@
       "source_published_kst": "2026-10-05T19:04+09:00",
       "title": "니우 테크놀러지스, 3분기 판매 54만대..전년비 15% 증가·해외 3배 확대"
     },
+    "source_fact:960b84e54fc29bb7972e8350": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
     "source_fact:961c0239eb3288635c91b1d6": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -57349,6 +58378,29 @@
       "source_published_kst": "2026-10-05T16:00+09:00",
       "title": "[기획]한국재료연구원, AI·데이터로 '예측하고 설계하는' 소재 연구시대 연다"
     },
+    "source_fact:990e9b90e9783c4817dc209b": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814697",
+      "source": "뉴시스",
+      "source_body_digest": "e01502793dc8351aa46a9a32df2612cb8886c684d99b7392ff1ffda0582784d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06c1622cd1e420507a25f07ee0f5725b450d15da8dca2d7af53c8465e3b26d55",
+      "source_fact_keys": [
+        "source_fact:v1:1b19720f327679c7a471cc8ab289b68f6886e0d0540a3a6e78b56559f8f721ef",
+        "source_fact:v1:2ed62d1416ae40625ee0e89444d779d0e83366dede4054d663cbfb2356a42084",
+        "source_fact:v1:40cfef47f8a1edef7d3a8845ae5ec7a646e04d451175e210dc8fd4376d66dfdc",
+        "source_fact:v1:41ed506374025aa0046b5c3d6114c971a649ed6ba3123d54cdb236007e4cb800",
+        "source_fact:v1:7fb18f8f2e3e84b70cab20e842bb97cd888022504e7e7cdee003b9385296687a",
+        "source_fact:v1:81841312373821ed1f919d02a82b481f61db44d3423ef14ce05a64fe62a333ec",
+        "source_fact:v1:e0d9adb71d22c494125bfd0d04b7168738dc6a46b42d59a541d9dea71ab40090"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
     "source_fact:994eb342a2809132b9a96aed": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -57661,6 +58713,37 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
+    },
+    "source_fact:9d68c9c301c19ee41967a74c": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
     },
     "source_fact:9e6c9614545d6db1412073c4": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -58777,6 +59860,29 @@
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
+    "source_fact:ab6176bf5e22d68b4c423646": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814697",
+      "source": "뉴시스",
+      "source_body_digest": "e01502793dc8351aa46a9a32df2612cb8886c684d99b7392ff1ffda0582784d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06c1622cd1e420507a25f07ee0f5725b450d15da8dca2d7af53c8465e3b26d55",
+      "source_fact_keys": [
+        "source_fact:v1:1b19720f327679c7a471cc8ab289b68f6886e0d0540a3a6e78b56559f8f721ef",
+        "source_fact:v1:2ed62d1416ae40625ee0e89444d779d0e83366dede4054d663cbfb2356a42084",
+        "source_fact:v1:40cfef47f8a1edef7d3a8845ae5ec7a646e04d451175e210dc8fd4376d66dfdc",
+        "source_fact:v1:41ed506374025aa0046b5c3d6114c971a649ed6ba3123d54cdb236007e4cb800",
+        "source_fact:v1:7fb18f8f2e3e84b70cab20e842bb97cd888022504e7e7cdee003b9385296687a",
+        "source_fact:v1:81841312373821ed1f919d02a82b481f61db44d3423ef14ce05a64fe62a333ec",
+        "source_fact:v1:e0d9adb71d22c494125bfd0d04b7168738dc6a46b42d59a541d9dea71ab40090"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
     "source_fact:abb461fca8ff9fe54e3b091c": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -59318,6 +60424,24 @@
       "source_published_kst": "2026-10-05T19:04+09:00",
       "title": "니우 테크놀러지스, 3분기 판매 54만대..전년비 15% 증가·해외 3배 확대"
     },
+    "source_fact:b244046fbab8a4f51d3d8230": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632525",
+      "source": "이투데이",
+      "source_body_digest": "22f5fd0224258a49e1890a5af2238d5bdd73867369efb17dfaad6a92b9c73a74",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057bacafb4ea75d7132f1a7404efde290e473a190f04896c5948f58ff7f655a3",
+      "source_fact_keys": [
+        "source_fact:v1:17f90db3cbe105e5238bfc8d784314312f5e2d2fed721a48c529d6e1b8a9f3f4",
+        "source_fact:v1:d5e273d276bf9b0193d3871816835df6698e6438a88f844bac450b11cc03cbd9"
+      ],
+      "source_published_kst": "2026-10-06T07:34+09:00",
+      "title": "KB증권 \"HPSP, 4분기부터 낸드 수혜 본격화…목표가 31%↑\""
+    },
     "source_fact:b247b648e0932709e50af257": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
       "lanes": {
@@ -59353,6 +60477,37 @@
       "source_published_kst": "2026-10-05T22:21+09:00",
       "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
     },
+    "source_fact:b30afddc30aaf58bd9ee7dcb": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
     "source_fact:b365ebe79dc1811e9a472b7b": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -59381,6 +60536,29 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:b40649db1e703ee9e8d19acb": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814697",
+      "source": "뉴시스",
+      "source_body_digest": "e01502793dc8351aa46a9a32df2612cb8886c684d99b7392ff1ffda0582784d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06c1622cd1e420507a25f07ee0f5725b450d15da8dca2d7af53c8465e3b26d55",
+      "source_fact_keys": [
+        "source_fact:v1:1b19720f327679c7a471cc8ab289b68f6886e0d0540a3a6e78b56559f8f721ef",
+        "source_fact:v1:2ed62d1416ae40625ee0e89444d779d0e83366dede4054d663cbfb2356a42084",
+        "source_fact:v1:40cfef47f8a1edef7d3a8845ae5ec7a646e04d451175e210dc8fd4376d66dfdc",
+        "source_fact:v1:41ed506374025aa0046b5c3d6114c971a649ed6ba3123d54cdb236007e4cb800",
+        "source_fact:v1:7fb18f8f2e3e84b70cab20e842bb97cd888022504e7e7cdee003b9385296687a",
+        "source_fact:v1:81841312373821ed1f919d02a82b481f61db44d3423ef14ce05a64fe62a333ec",
+        "source_fact:v1:e0d9adb71d22c494125bfd0d04b7168738dc6a46b42d59a541d9dea71ab40090"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
     },
     "source_fact:b41de59c1e944c52f7846326": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -59642,6 +60820,37 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "source_fact:b82d4d832ed14a5a96cb8204": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
     },
     "source_fact:b8b97ff00e8da2a841a8d664": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -60765,6 +61974,25 @@
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
     },
+    "source_fact:c8ece71d3ada248ba5dbca4f": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.hankyung.com/article/202610053627i",
+      "source": "한국경제",
+      "source_body_digest": "8b8c8ff80c4fc02a45a81985a5a77372b2c5ea339a97e9d2b36a18839274dd8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d704e6b1fe4bf3eada1f82185a5a482dd5950ba86cbbb6b930b02321dbb34cb",
+      "source_fact_keys": [
+        "source_fact:v1:3797337e9b5f65500196c662d179837e50258497430137eb83766cdeb49237cb",
+        "source_fact:v1:486120dba2b2f2cb996664c200dc42d21ba277e65d61fc41949e51d2f7883a64",
+        "source_fact:v1:80562f8765a0b042e3fa7a8f6dba392913aa9f21a9704bce3b093e7f94a53986"
+      ],
+      "source_published_kst": "2026-10-06T07:30+09:00",
+      "title": "원화 강세의 그늘…실적시즌 앞두고 이익전망 '뒷걸음질'"
+    },
     "source_fact:c9953c832fdef60fcf03c808": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
       "lanes": {
@@ -61706,6 +62934,37 @@
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
+    "source_fact:d61bd6a3f3102ce18d3afc79": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
     "source_fact:d62400604a59103c7f580157": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -61894,6 +63153,37 @@
       ],
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
+    },
+    "source_fact:d7741a2dd2b274ddd1360cb2": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
     },
     "source_fact:d776112042d976057de68d72": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
@@ -63229,6 +64519,58 @@
       "source_published_kst": "2026-10-05T18:03+09:00",
       "title": "'빚의 제국 빛을 잃다' 보도 인상적 … 고금리 위험요인 더 짚어달라"
     },
+    "source_fact:e8d7e18b8d1e39ac3b690f74": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632527",
+      "source": "이투데이",
+      "source_body_digest": "388fa6432deef762865a66b5d5ed09808f755cc3cc05e832bd4961589446699b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c429c94851916a520e9ee8bef096cc84d856ed24ea767fe7197ffa77eeb2535",
+      "source_fact_keys": [
+        "source_fact:v1:4d8b3a77cba561f5fcc1bcb62a011e0a0a67634e9bd7b0ef33f498a3a60888e1",
+        "source_fact:v1:9ec39328ac41ca02b148055b6c3a47c2848b45890f2c0977a754b2327d90913a",
+        "source_fact:v1:b2854d47008ec452838e8bba23e12eb3678ca870ca97583254829397e8867f12",
+        "source_fact:v1:c1462054b9f8d694e0f04ec531e6a29945e78bdd199c0cee48c51a712b85bc4e",
+        "source_fact:v1:c24be5d74f5e959287d1f960649de71529b745adcf2d8e1af201d082b55ea255"
+      ],
+      "source_published_kst": "2026-10-06T07:35+09:00",
+      "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
+    },
+    "source_fact:e8fcfdb5dd31fca11bb40af6": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
     "source_fact:e98c0f4202cf299eda9489d7": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -63942,6 +65284,37 @@
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
     },
+    "source_fact:f379b7c1da882a1e8d58b606": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
     "source_fact:f389d5d6e802f4c595231310": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -64086,6 +65459,24 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:f7385c35d1e4b00da709dca5": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814709",
+      "source": "뉴시스",
+      "source_body_digest": "01797105bd29a2c83fb556abfad76f7d3176acdfa648be92b0744ab4d086cdf8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9131c7d46f7f572155237bc96d821ef17d9a9017fbe3b6e7adf0202bf73ec035",
+      "source_fact_keys": [
+        "source_fact:v1:76d06bbcc22044a756f9f2e0ccbc0e257dbf1d47f87cf79132a95d9bf8fbf73d",
+        "source_fact:v1:a50099c8399a4a7d1cd331312161d6ddc7dd1dad73a99e5bac453bfe13c299d8"
+      ],
+      "source_published_kst": "2026-10-06T07:29+09:00",
+      "title": "부산 청년기업, 국내 최초 디지털제품여권 상용화"
     },
     "source_fact:f7b276b67284eab0ec75402a": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -65077,6 +66468,25 @@
       "link": "https://www.mk.co.kr/news/stock/12165523",
       "source": "매일경제",
       "title": "콜플랜트 홀딩스, 2분기 매출 11만 달러..전년비 40% 감소"
+    },
+    "title:01eaccd9c38b4bb9823e0596": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.hankyung.com/article/202610053627i",
+      "source": "한국경제",
+      "source_body_digest": "8b8c8ff80c4fc02a45a81985a5a77372b2c5ea339a97e9d2b36a18839274dd8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d704e6b1fe4bf3eada1f82185a5a482dd5950ba86cbbb6b930b02321dbb34cb",
+      "source_fact_keys": [
+        "source_fact:v1:3797337e9b5f65500196c662d179837e50258497430137eb83766cdeb49237cb",
+        "source_fact:v1:486120dba2b2f2cb996664c200dc42d21ba277e65d61fc41949e51d2f7883a64",
+        "source_fact:v1:80562f8765a0b042e3fa7a8f6dba392913aa9f21a9704bce3b093e7f94a53986"
+      ],
+      "source_published_kst": "2026-10-06T07:30+09:00",
+      "title": "원화 강세의 그늘…실적시즌 앞두고 이익전망 '뒷걸음질'"
     },
     "title:01fb7a3ef51821d0a879ee93": {
       "first_seen_kst": "2026-10-02T09:01:13+09:00",
@@ -71110,6 +72520,24 @@
       "source": "머니투데이",
       "title": "한미 알래스카 투자 온도차…봉합 나선 美국무부 \"상호 윈윈\""
     },
+    "title:5812f3014a65353f2643ae68": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632525",
+      "source": "이투데이",
+      "source_body_digest": "22f5fd0224258a49e1890a5af2238d5bdd73867369efb17dfaad6a92b9c73a74",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:057bacafb4ea75d7132f1a7404efde290e473a190f04896c5948f58ff7f655a3",
+      "source_fact_keys": [
+        "source_fact:v1:17f90db3cbe105e5238bfc8d784314312f5e2d2fed721a48c529d6e1b8a9f3f4",
+        "source_fact:v1:d5e273d276bf9b0193d3871816835df6698e6438a88f844bac450b11cc03cbd9"
+      ],
+      "source_published_kst": "2026-10-06T07:34+09:00",
+      "title": "KB증권 \"HPSP, 4분기부터 낸드 수혜 본격화…목표가 31%↑\""
+    },
     "title:581aaaa01b57644307a961bc": {
       "first_seen_kst": "2026-10-02T15:29:23+09:00",
       "lanes": {
@@ -73563,6 +74991,37 @@
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
     },
+    "title:7a0067a2937fb562b5b5b3bf": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632278",
+      "source": "이투데이",
+      "source_body_digest": "3d578fca4e01354235282a864e2ec36b2c30ab7266e37cd2ffb349b079391b17",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2482a1633b97568337e67f25c9fc191c9fe94c06a3fb3689b5c0c1efa19ecab9",
+      "source_fact_keys": [
+        "source_fact:v1:013f154d2e2223df380d9b9ad958a952ccd440b1f95037cb3781f01b9a3ddf95",
+        "source_fact:v1:0bace164d8c711d2b7c6d86fd0ae4f3481deb4071998d2deffa96066f3c02394",
+        "source_fact:v1:0fecafb8f105cd112efaf81c2e9393806206811f0142cf0ad4903a358cc9e20f",
+        "source_fact:v1:23667d5fffb0abe41e1414bf59f18a6e73af62722cf7db4fa4f947d204bb0dce",
+        "source_fact:v1:35d4468a96536bc77a7d98a39f54049f21ca53eb877d0b599a08c132ba70f78c",
+        "source_fact:v1:363181b5efb543243c25e18254958048ca726668eb19bc145dbfc2fc3173913c",
+        "source_fact:v1:390155484e1ad763f62b51a705de27c804b670a63332df0eaa0f2e3a77442b56",
+        "source_fact:v1:46b5f2a53eebe1b0e04fe24b694c6c335df1a3e3e14a43502a95e08585e01d99",
+        "source_fact:v1:55cb237f82cbf2ae3d8071ecd3866b5951177d3c3dfc0857338f5c083c319924",
+        "source_fact:v1:640172b967c33f44927fad5142fc649801bbd39540fb15f57839f7ad55ea9501",
+        "source_fact:v1:b66c6988c27f74fe110b27dd83bf34f66bf183c9435fdc74b1c8b031d1fbba46",
+        "source_fact:v1:df0917900cbf547e997291d0deb669017d9501b38226a96b89f36dcd23f55525",
+        "source_fact:v1:e348c7edb51e496ee0b133cb49fca9ee1b371bb166b3584fad31501e34a08c3e",
+        "source_fact:v1:ece5148f311d5476e2ef1fe42f6aa2b59bcd25f6aedd49817e0599f21efc1dff",
+        "source_fact:v1:f91343239dcfb3cb967673011aa5d3611eb7e4a2328a1645760c21bd10f93d72"
+      ],
+      "source_published_kst": "2026-10-06T06:10+09:00",
+      "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
     "title:7a171dff40f6dc8d9148c54d": {
       "first_seen_kst": "2026-10-04T02:31:20+09:00",
       "lanes": {
@@ -74908,6 +76367,27 @@
       "link": "https://www.newsis.com/view/NISX20260929_0003807049",
       "source": "뉴시스",
       "title": "\"주가 오르는데 웃지 못한다…신고가보다 신저가 종목이 더 많은 기현상\""
+    },
+    "title:8cacd3b89241ea7c5443fc1c": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632527",
+      "source": "이투데이",
+      "source_body_digest": "388fa6432deef762865a66b5d5ed09808f755cc3cc05e832bd4961589446699b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2c429c94851916a520e9ee8bef096cc84d856ed24ea767fe7197ffa77eeb2535",
+      "source_fact_keys": [
+        "source_fact:v1:4d8b3a77cba561f5fcc1bcb62a011e0a0a67634e9bd7b0ef33f498a3a60888e1",
+        "source_fact:v1:9ec39328ac41ca02b148055b6c3a47c2848b45890f2c0977a754b2327d90913a",
+        "source_fact:v1:b2854d47008ec452838e8bba23e12eb3678ca870ca97583254829397e8867f12",
+        "source_fact:v1:c1462054b9f8d694e0f04ec531e6a29945e78bdd199c0cee48c51a712b85bc4e",
+        "source_fact:v1:c24be5d74f5e959287d1f960649de71529b745adcf2d8e1af201d082b55ea255"
+      ],
+      "source_published_kst": "2026-10-06T07:35+09:00",
+      "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
     },
     "title:8cb8952996ba7e1c0ad5dd57": {
       "first_seen_kst": "2026-09-21T08:32:45+09:00",
@@ -79097,6 +80577,29 @@
       "source": "이투데이",
       "title": "씨티, 원·달러 환율 장기 전망 1250원으로 하향…“대미투자 영향 제한적”"
     },
+    "title:caf2d37d1990c431a0b502c8": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814697",
+      "source": "뉴시스",
+      "source_body_digest": "e01502793dc8351aa46a9a32df2612cb8886c684d99b7392ff1ffda0582784d2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06c1622cd1e420507a25f07ee0f5725b450d15da8dca2d7af53c8465e3b26d55",
+      "source_fact_keys": [
+        "source_fact:v1:1b19720f327679c7a471cc8ab289b68f6886e0d0540a3a6e78b56559f8f721ef",
+        "source_fact:v1:2ed62d1416ae40625ee0e89444d779d0e83366dede4054d663cbfb2356a42084",
+        "source_fact:v1:40cfef47f8a1edef7d3a8845ae5ec7a646e04d451175e210dc8fd4376d66dfdc",
+        "source_fact:v1:41ed506374025aa0046b5c3d6114c971a649ed6ba3123d54cdb236007e4cb800",
+        "source_fact:v1:7fb18f8f2e3e84b70cab20e842bb97cd888022504e7e7cdee003b9385296687a",
+        "source_fact:v1:81841312373821ed1f919d02a82b481f61db44d3423ef14ce05a64fe62a333ec",
+        "source_fact:v1:e0d9adb71d22c494125bfd0d04b7168738dc6a46b42d59a541d9dea71ab40090"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
     "title:cb2c4c1c5701bc42869f84b9": {
       "first_seen_kst": "2026-10-02T10:30:30+09:00",
       "lanes": {
@@ -80185,6 +81688,24 @@
       "link": "https://www.etnews.com/20260923000014",
       "source": "전자신문",
       "title": "증시 떠받친 삼전닉스 자사주 매입 막바지…추석 후 '수급 절벽' 어쩌나"
+    },
+    "title:d7c8a60ef171fdfb52c53031": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814709",
+      "source": "뉴시스",
+      "source_body_digest": "01797105bd29a2c83fb556abfad76f7d3176acdfa648be92b0744ab4d086cdf8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9131c7d46f7f572155237bc96d821ef17d9a9017fbe3b6e7adf0202bf73ec035",
+      "source_fact_keys": [
+        "source_fact:v1:76d06bbcc22044a756f9f2e0ccbc0e257dbf1d47f87cf79132a95d9bf8fbf73d",
+        "source_fact:v1:a50099c8399a4a7d1cd331312161d6ddc7dd1dad73a99e5bac453bfe13c299d8"
+      ],
+      "source_published_kst": "2026-10-06T07:29+09:00",
+      "title": "부산 청년기업, 국내 최초 디지털제품여권 상용화"
     },
     "title:d838924bcfc62a23d8ee0472": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -81794,6 +83315,23 @@
       "source": "매일경제",
       "title": "리토 에코 솔루션즈, 1,500만 달러 유상증자 완료..주당 1.5달러"
     },
+    "title:ef6b9531695c4f949aa69f30": {
+      "first_seen_kst": "2026-10-06T07:52:55+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:52:55+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:52:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632516",
+      "source": "이투데이",
+      "source_body_digest": "bc8edf618ebed245abd1a5ea7e800c6cc9330a744bbe487cc9c7de72e95575ab",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:36bb54a5c373204c89a8e72284a18013e54b75f6c53306cd06d2c98c14e7945c",
+      "source_fact_keys": [
+        "source_fact:v1:17c66ff2f2b0ab51ddd76e02059a4d2494c5c1e0e264a388c366276035fe1dd4"
+      ],
+      "source_published_kst": "2026-10-06T06:34+09:00",
+      "title": "밴스 “알래스카 LNG, 韓과 세부 협의 남아”⋯트럼프 ‘투자 확정’과 온도차"
+    },
     "title:ef8df5fbe33de59e2dab0d76": {
       "first_seen_kst": "2026-10-04T00:19:00+09:00",
       "lanes": {
@@ -82986,5 +84524,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T07:30:15+09:00"
+  "updated_at_kst": "2026-10-06T07:52:55+09:00"
 }
