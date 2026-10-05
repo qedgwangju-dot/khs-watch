@@ -5459,6 +5459,23 @@
       "source_published_kst": "2026-10-05T21:32+09:00",
       "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
     },
+    "fact:2d5f01f19c97067e06a0014e": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169859",
+      "source": "매일경제",
+      "source_body_digest": "dac68a868d11ace138556ee5a088e811ea68e8735fa75070957b56e5ee6d5ba3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e28a15f4a12667edfd1f9876d0685bcc845390579ac1bc78840850ede750fbb",
+      "source_fact_keys": [
+        "source_fact:v1:32531d65ed230b072738b8fc5f696134bbc153204ae8f374fcada55eca5b5149"
+      ],
+      "source_published_kst": "2026-10-06T00:39+09:00",
+      "title": "美 9월 서비스업 확장세 둔화…물가 압력 4년여만에 최고"
+    },
     "fact:30126cba90e27cfc9089c63a": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -6807,6 +6824,27 @@
       ],
       "source_published_kst": "2026-10-05T23:10+09:00",
       "title": "유나이티드마이크로일렉, 18억 달러 해외CB 발행 확정에 지분 희석·매물 부담 부각"
+    },
+    "fact:9ad91192d69f754d68e0a973": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01216886645610296",
+      "source": "이데일리",
+      "source_body_digest": "6fa0eb19597ba139203de3c95aaa502910cf9ce79b3dddff6aef61b50478acad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08512eb0f38a5f5dfe615c5829369bfb77de30289b0d46020cb907ec930cf1ab",
+      "source_fact_keys": [
+        "source_fact:v1:2232fc1c3aa72004bcaf46457196d3fc25f5b956f9118b169a56f5c7fcb93384",
+        "source_fact:v1:e3ad12cfc23ccc4cca27ffee6c31ae89c836ce58930b0960c1b2100413b2eeb5",
+        "source_fact:v1:f2a5a4212157c2c5aa86d633e14bd82a10179aff2fec7fae7788f1e8e2416f6a",
+        "source_fact:v1:f5fb61db4f8776e5195d296d72277d768f645772c58fa4294243058e315b3d46",
+        "source_fact:v1:f7f316c00edfae7d97013fe4fe5fdfeae9fbc4af1ee6688e39e46077bef2a9fb"
+      ],
+      "source_published_kst": "2026-10-06T00:51+09:00",
+      "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
     },
     "fact:9d60928f4b4ccbe8977b7741": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -10985,6 +11023,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T10:01+09:00",
       "title": "\"필수의약품 수급불안 없다\"…정부주도 공급[식약처가 바꾼다]"
+    },
+    "link:3519d24c93842073c2ec05d4": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01216886645610296",
+      "source": "이데일리",
+      "source_body_digest": "6fa0eb19597ba139203de3c95aaa502910cf9ce79b3dddff6aef61b50478acad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08512eb0f38a5f5dfe615c5829369bfb77de30289b0d46020cb907ec930cf1ab",
+      "source_fact_keys": [
+        "source_fact:v1:2232fc1c3aa72004bcaf46457196d3fc25f5b956f9118b169a56f5c7fcb93384",
+        "source_fact:v1:e3ad12cfc23ccc4cca27ffee6c31ae89c836ce58930b0960c1b2100413b2eeb5",
+        "source_fact:v1:f2a5a4212157c2c5aa86d633e14bd82a10179aff2fec7fae7788f1e8e2416f6a",
+        "source_fact:v1:f5fb61db4f8776e5195d296d72277d768f645772c58fa4294243058e315b3d46",
+        "source_fact:v1:f7f316c00edfae7d97013fe4fe5fdfeae9fbc4af1ee6688e39e46077bef2a9fb"
+      ],
+      "source_published_kst": "2026-10-06T00:51+09:00",
+      "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
     },
     "link:3524658300828a5083c41e46": {
       "first_seen_kst": "2026-10-01T21:06:52+09:00",
@@ -16138,6 +16197,21 @@
       "source": "뉴시스",
       "title": "국힘, 장외투쟁 신중론…\"국감 등 원내에서 현안 대응 우선\""
     },
+    "link:7f155e86b19fd9ec35a34ac4": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168718",
+      "source": "매일경제",
+      "source_body_digest": "a634770de149ed40b2e95957f4e1cb2558f180687a526bfe1b2e786cea5c3358",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T21:07+09:00",
+      "title": "스테이블코인 디벨롭먼트, SKY 23억개 보유..공급량 10% 차지"
+    },
     "link:7f3f2fe004de05d6993876c4": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
       "lanes": {
@@ -19027,6 +19101,23 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T22:34+09:00",
       "title": "[美특징주]할리데이비슨, 씨티 '매수' 상향에 상승"
+    },
+    "link:a8cef0ff475c58080ce12ac5": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169859",
+      "source": "매일경제",
+      "source_body_digest": "dac68a868d11ace138556ee5a088e811ea68e8735fa75070957b56e5ee6d5ba3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e28a15f4a12667edfd1f9876d0685bcc845390579ac1bc78840850ede750fbb",
+      "source_fact_keys": [
+        "source_fact:v1:32531d65ed230b072738b8fc5f696134bbc153204ae8f374fcada55eca5b5149"
+      ],
+      "source_published_kst": "2026-10-06T00:39+09:00",
+      "title": "美 9월 서비스업 확장세 둔화…물가 압력 4년여만에 최고"
     },
     "link:a8f4c60463b5907c8a9a63dc": {
       "first_seen_kst": "2026-09-29T20:13:32+09:00",
@@ -34811,6 +34902,21 @@
       "source_event_identity": "",
       "title": "美 9월 고용 2만9000명, 예상 3분의 1…10월 금리동결 확률 82.8%"
     },
+    "original:99de6d9e73fc3cda894f571c": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168718",
+      "source": "매일경제",
+      "source_body_digest": "a634770de149ed40b2e95957f4e1cb2558f180687a526bfe1b2e786cea5c3358",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T21:07+09:00",
+      "title": "스테이블코인 디벨롭먼트, SKY 23억개 보유..공급량 10% 차지"
+    },
     "original:99e6fc014471d5825e01fec5": {
       "first_seen_kst": "2026-10-01T19:33:29+09:00",
       "lanes": {
@@ -35055,6 +35161,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T05:50+09:00",
       "title": "올해 5대 은행 가계대출 중도상환 13% 감소…수수료 40% 줄어"
+    },
+    "original:9e290a15bff7f109dd3b65f0": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01216886645610296",
+      "source": "이데일리",
+      "source_body_digest": "6fa0eb19597ba139203de3c95aaa502910cf9ce79b3dddff6aef61b50478acad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08512eb0f38a5f5dfe615c5829369bfb77de30289b0d46020cb907ec930cf1ab",
+      "source_fact_keys": [
+        "source_fact:v1:2232fc1c3aa72004bcaf46457196d3fc25f5b956f9118b169a56f5c7fcb93384",
+        "source_fact:v1:e3ad12cfc23ccc4cca27ffee6c31ae89c836ce58930b0960c1b2100413b2eeb5",
+        "source_fact:v1:f2a5a4212157c2c5aa86d633e14bd82a10179aff2fec7fae7788f1e8e2416f6a",
+        "source_fact:v1:f5fb61db4f8776e5195d296d72277d768f645772c58fa4294243058e315b3d46",
+        "source_fact:v1:f7f316c00edfae7d97013fe4fe5fdfeae9fbc4af1ee6688e39e46077bef2a9fb"
+      ],
+      "source_published_kst": "2026-10-06T00:51+09:00",
+      "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
     },
     "original:9e33b7b8b1d7941bbcd3d8a2": {
       "first_seen_kst": "2026-10-02T06:23:07+09:00",
@@ -38289,6 +38416,23 @@
       "link": "https://www.mk.co.kr/news/stock/12156819",
       "source": "매일경제",
       "title": "카바 그룹, 1억 달러 자사주 매입 프로그램 승인"
+    },
+    "original:d2732180359972d9693731c6": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169859",
+      "source": "매일경제",
+      "source_body_digest": "dac68a868d11ace138556ee5a088e811ea68e8735fa75070957b56e5ee6d5ba3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e28a15f4a12667edfd1f9876d0685bcc845390579ac1bc78840850ede750fbb",
+      "source_fact_keys": [
+        "source_fact:v1:32531d65ed230b072738b8fc5f696134bbc153204ae8f374fcada55eca5b5149"
+      ],
+      "source_published_kst": "2026-10-06T00:39+09:00",
+      "title": "美 9월 서비스업 확장세 둔화…물가 압력 4년여만에 최고"
     },
     "original:d279fb60744f0dec8f0194ba": {
       "first_seen_kst": "2026-09-22T16:30:20+09:00",
@@ -43848,6 +43992,27 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "source_fact:37119c29b7e772f9a9bd2846": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01216886645610296",
+      "source": "이데일리",
+      "source_body_digest": "6fa0eb19597ba139203de3c95aaa502910cf9ce79b3dddff6aef61b50478acad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08512eb0f38a5f5dfe615c5829369bfb77de30289b0d46020cb907ec930cf1ab",
+      "source_fact_keys": [
+        "source_fact:v1:2232fc1c3aa72004bcaf46457196d3fc25f5b956f9118b169a56f5c7fcb93384",
+        "source_fact:v1:e3ad12cfc23ccc4cca27ffee6c31ae89c836ce58930b0960c1b2100413b2eeb5",
+        "source_fact:v1:f2a5a4212157c2c5aa86d633e14bd82a10179aff2fec7fae7788f1e8e2416f6a",
+        "source_fact:v1:f5fb61db4f8776e5195d296d72277d768f645772c58fa4294243058e315b3d46",
+        "source_fact:v1:f7f316c00edfae7d97013fe4fe5fdfeae9fbc4af1ee6688e39e46077bef2a9fb"
+      ],
+      "source_published_kst": "2026-10-06T00:51+09:00",
+      "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
+    },
     "source_fact:371638200bb61eb9c734156f": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -44968,6 +45133,27 @@
       ],
       "source_published_kst": "2026-10-05T23:10+09:00",
       "title": "LG전자, 북미서 5GW 대형 AIDC 칠러 장기 공급계약"
+    },
+    "source_fact:4dec6f2f2bf9093a81a5b010": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01216886645610296",
+      "source": "이데일리",
+      "source_body_digest": "6fa0eb19597ba139203de3c95aaa502910cf9ce79b3dddff6aef61b50478acad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08512eb0f38a5f5dfe615c5829369bfb77de30289b0d46020cb907ec930cf1ab",
+      "source_fact_keys": [
+        "source_fact:v1:2232fc1c3aa72004bcaf46457196d3fc25f5b956f9118b169a56f5c7fcb93384",
+        "source_fact:v1:e3ad12cfc23ccc4cca27ffee6c31ae89c836ce58930b0960c1b2100413b2eeb5",
+        "source_fact:v1:f2a5a4212157c2c5aa86d633e14bd82a10179aff2fec7fae7788f1e8e2416f6a",
+        "source_fact:v1:f5fb61db4f8776e5195d296d72277d768f645772c58fa4294243058e315b3d46",
+        "source_fact:v1:f7f316c00edfae7d97013fe4fe5fdfeae9fbc4af1ee6688e39e46077bef2a9fb"
+      ],
+      "source_published_kst": "2026-10-06T00:51+09:00",
+      "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
     },
     "source_fact:4dec8f40971941d572160104": {
       "first_seen_kst": "2026-10-06T00:26:07+09:00",
@@ -49528,6 +49714,27 @@
       "source_published_kst": "2026-10-05T22:40+09:00",
       "title": "C.H.로빈슨, RXO 58억 달러 인수 발표 후 차입 부담에 투자심리 위축"
     },
+    "source_fact:a0dd19d698996d954ead017e": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01216886645610296",
+      "source": "이데일리",
+      "source_body_digest": "6fa0eb19597ba139203de3c95aaa502910cf9ce79b3dddff6aef61b50478acad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08512eb0f38a5f5dfe615c5829369bfb77de30289b0d46020cb907ec930cf1ab",
+      "source_fact_keys": [
+        "source_fact:v1:2232fc1c3aa72004bcaf46457196d3fc25f5b956f9118b169a56f5c7fcb93384",
+        "source_fact:v1:e3ad12cfc23ccc4cca27ffee6c31ae89c836ce58930b0960c1b2100413b2eeb5",
+        "source_fact:v1:f2a5a4212157c2c5aa86d633e14bd82a10179aff2fec7fae7788f1e8e2416f6a",
+        "source_fact:v1:f5fb61db4f8776e5195d296d72277d768f645772c58fa4294243058e315b3d46",
+        "source_fact:v1:f7f316c00edfae7d97013fe4fe5fdfeae9fbc4af1ee6688e39e46077bef2a9fb"
+      ],
+      "source_published_kst": "2026-10-06T00:51+09:00",
+      "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
+    },
     "source_fact:a1b076fb690b3f4cea4c0016": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -51540,6 +51747,27 @@
       "source_published_kst": "2026-10-05T22:23+09:00",
       "title": "시놉시스, 10억달러 자사주 ASR 체결..173만5천주 우선 인도"
     },
+    "source_fact:d25eb4396bb374a06428427d": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01216886645610296",
+      "source": "이데일리",
+      "source_body_digest": "6fa0eb19597ba139203de3c95aaa502910cf9ce79b3dddff6aef61b50478acad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08512eb0f38a5f5dfe615c5829369bfb77de30289b0d46020cb907ec930cf1ab",
+      "source_fact_keys": [
+        "source_fact:v1:2232fc1c3aa72004bcaf46457196d3fc25f5b956f9118b169a56f5c7fcb93384",
+        "source_fact:v1:e3ad12cfc23ccc4cca27ffee6c31ae89c836ce58930b0960c1b2100413b2eeb5",
+        "source_fact:v1:f2a5a4212157c2c5aa86d633e14bd82a10179aff2fec7fae7788f1e8e2416f6a",
+        "source_fact:v1:f5fb61db4f8776e5195d296d72277d768f645772c58fa4294243058e315b3d46",
+        "source_fact:v1:f7f316c00edfae7d97013fe4fe5fdfeae9fbc4af1ee6688e39e46077bef2a9fb"
+      ],
+      "source_published_kst": "2026-10-06T00:51+09:00",
+      "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
+    },
     "source_fact:d298fd20dec3dbddefaac06c": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -51855,6 +52083,27 @@
       ],
       "source_published_kst": "2026-10-05T23:08+09:00",
       "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
+    },
+    "source_fact:d986d6b39fe3e19f9c23d690": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01216886645610296",
+      "source": "이데일리",
+      "source_body_digest": "6fa0eb19597ba139203de3c95aaa502910cf9ce79b3dddff6aef61b50478acad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08512eb0f38a5f5dfe615c5829369bfb77de30289b0d46020cb907ec930cf1ab",
+      "source_fact_keys": [
+        "source_fact:v1:2232fc1c3aa72004bcaf46457196d3fc25f5b956f9118b169a56f5c7fcb93384",
+        "source_fact:v1:e3ad12cfc23ccc4cca27ffee6c31ae89c836ce58930b0960c1b2100413b2eeb5",
+        "source_fact:v1:f2a5a4212157c2c5aa86d633e14bd82a10179aff2fec7fae7788f1e8e2416f6a",
+        "source_fact:v1:f5fb61db4f8776e5195d296d72277d768f645772c58fa4294243058e315b3d46",
+        "source_fact:v1:f7f316c00edfae7d97013fe4fe5fdfeae9fbc4af1ee6688e39e46077bef2a9fb"
+      ],
+      "source_published_kst": "2026-10-06T00:51+09:00",
+      "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
     },
     "source_fact:da98718751333946deba1761": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -53177,6 +53426,23 @@
       ],
       "source_published_kst": "2026-10-05T13:29+09:00",
       "title": "JP모간, 10월 '콕' 집은 종목은…아멕스·써모피셔·리버티"
+    },
+    "source_fact:fa5a79c292035a14f0a79bfa": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169859",
+      "source": "매일경제",
+      "source_body_digest": "dac68a868d11ace138556ee5a088e811ea68e8735fa75070957b56e5ee6d5ba3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e28a15f4a12667edfd1f9876d0685bcc845390579ac1bc78840850ede750fbb",
+      "source_fact_keys": [
+        "source_fact:v1:32531d65ed230b072738b8fc5f696134bbc153204ae8f374fcada55eca5b5149"
+      ],
+      "source_published_kst": "2026-10-06T00:39+09:00",
+      "title": "美 9월 서비스업 확장세 둔화…물가 압력 4년여만에 최고"
     },
     "source_fact:fb20196bd291f3f6abb94c70": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -63686,6 +63952,21 @@
       "source_event_identity": "",
       "title": "美 9월 고용 2만9000명, 예상 3분의 1…10월 금리동결 확률 82.8%"
     },
+    "title:99de6d9e73fc3cda894f571c": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168718",
+      "source": "매일경제",
+      "source_body_digest": "a634770de149ed40b2e95957f4e1cb2558f180687a526bfe1b2e786cea5c3358",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T21:07+09:00",
+      "title": "스테이블코인 디벨롭먼트, SKY 23억개 보유..공급량 10% 차지"
+    },
     "title:99e6fc014471d5825e01fec5": {
       "first_seen_kst": "2026-10-01T19:33:29+09:00",
       "lanes": {
@@ -63930,6 +64211,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T05:50+09:00",
       "title": "올해 5대 은행 가계대출 중도상환 13% 감소…수수료 40% 줄어"
+    },
+    "title:9e290a15bff7f109dd3b65f0": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01216886645610296",
+      "source": "이데일리",
+      "source_body_digest": "6fa0eb19597ba139203de3c95aaa502910cf9ce79b3dddff6aef61b50478acad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:08512eb0f38a5f5dfe615c5829369bfb77de30289b0d46020cb907ec930cf1ab",
+      "source_fact_keys": [
+        "source_fact:v1:2232fc1c3aa72004bcaf46457196d3fc25f5b956f9118b169a56f5c7fcb93384",
+        "source_fact:v1:e3ad12cfc23ccc4cca27ffee6c31ae89c836ce58930b0960c1b2100413b2eeb5",
+        "source_fact:v1:f2a5a4212157c2c5aa86d633e14bd82a10179aff2fec7fae7788f1e8e2416f6a",
+        "source_fact:v1:f5fb61db4f8776e5195d296d72277d768f645772c58fa4294243058e315b3d46",
+        "source_fact:v1:f7f316c00edfae7d97013fe4fe5fdfeae9fbc4af1ee6688e39e46077bef2a9fb"
+      ],
+      "source_published_kst": "2026-10-06T00:51+09:00",
+      "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
     },
     "title:9e33b7b8b1d7941bbcd3d8a2": {
       "first_seen_kst": "2026-10-02T06:23:07+09:00",
@@ -67209,6 +67511,23 @@
       "source": "매일경제",
       "title": "카바 그룹, 1억 달러 자사주 매입 프로그램 승인"
     },
+    "title:d2732180359972d9693731c6": {
+      "first_seen_kst": "2026-10-06T01:16:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:16:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:16:46+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169859",
+      "source": "매일경제",
+      "source_body_digest": "dac68a868d11ace138556ee5a088e811ea68e8735fa75070957b56e5ee6d5ba3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e28a15f4a12667edfd1f9876d0685bcc845390579ac1bc78840850ede750fbb",
+      "source_fact_keys": [
+        "source_fact:v1:32531d65ed230b072738b8fc5f696134bbc153204ae8f374fcada55eca5b5149"
+      ],
+      "source_published_kst": "2026-10-06T00:39+09:00",
+      "title": "美 9월 서비스업 확장세 둔화…물가 압력 4년여만에 최고"
+    },
     "title:d279fb60744f0dec8f0194ba": {
       "first_seen_kst": "2026-09-22T16:30:20+09:00",
       "lanes": {
@@ -70297,5 +70616,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T01:05:54+09:00"
+  "updated_at_kst": "2026-10-06T01:16:46+09:00"
 }
