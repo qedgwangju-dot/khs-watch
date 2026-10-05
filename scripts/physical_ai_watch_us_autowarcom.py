@@ -15,6 +15,10 @@ Baseline locked as of 2026-09-30:
 - Project Meridian is a future-warfare study co-led by Elon Musk, Palmer Luckey
   and Newt Gingrich; its role is advisory/study, not operational command. The
   reported due date for the study is 2027-01-28.
+- On 2026-10-05 MITRE and Agility Robotics confirmed Peggy Johnson as a Project
+  Meridian participant in an individual consultant capacity. Agility explicitly
+  says this is separate from its commercial operations; this known participation
+  is a silent baseline, not a defense contract or Digit deployment.
 - Repeated articles about those announcements are silent baselines.
 
 New alerts require an execution-stage change: legislation/authorization/funding,
@@ -50,6 +54,9 @@ for q in [
     '("Project Agincourt") (contract OR award OR prototype OR production OR procurement OR quantity OR deployment OR DIU OR "Defense Innovation Unit")',
     '("Project Meridian") ("Elon Musk" OR "Palmer Luckey" OR "Newt Gingrich") (report OR recommendation OR January 28 2027 OR capability gap OR future warfare)',
     '("Project Meridian") (Pentagon OR "Department of Defense") (released OR report OR recommendations OR procurement OR autonomy OR robotics OR AI)',
+    '("Project Meridian") (participant OR member OR selected OR joins OR advisor OR consultant) (robotics OR humanoid OR autonomy OR AI OR logistics OR defense technology)',
+    '("Project Meridian") ("Agility Robotics" OR "Peggy Johnson" OR Digit OR humanoid OR robotics OR logistics)',
+    '("Agility Robotics" OR Digit) (Pentagon OR "Department of War" OR "Department of Defense" OR MITRE OR military) (contract OR award OR procurement OR pilot OR trial OR evaluation OR deployment OR logistics)',
     '("Defense Autonomous Warfare Group" OR DAWG) (budget OR procurement OR contract OR award OR production OR deployment OR autonomous OR robotic OR drone)',
     '("Autonomous Warfare Command" OR AUTOWARCOM OR "Defense Autonomous Warfare Group") (Anduril OR SpaceX OR "Shield AI" OR Skydio OR AeroVironment OR contract OR award OR order OR production)',
     '("SOUTHCOM" OR "U.S. Southern Command") "Autonomous Warfare Command" (deployment OR fielded OR contract OR exercise OR operational)',
@@ -67,13 +74,14 @@ base.OFFICIAL_OR_PRIMARY.update({
     'U.S. Department of War', 'Department of War', 'War.gov',
     'U.S. Southern Command', 'SOUTHCOM', 'U.S. Special Operations Command', 'USSOCOM',
     'Defense Innovation Unit', 'DIU', 'Congress.gov', 'U.S. Congress',
+    'MITRE', 'The MITRE Corporation', 'Agility Robotics',
     'U.S. Senate Armed Services Committee', 'Senate Armed Services Committee',
     'U.S. House Armed Services Committee', 'House Armed Services Committee',
 })
 base.TRUSTED.update({
     'Reuters', 'Breaking Defense', 'Defense News', 'Defense One', 'Defense Daily', 'The War Zone',
     'Air & Space Forces Magazine', 'The Wall Street Journal', 'Financial Times',
-    'Bloomberg', 'Associated Press', 'AP', '서울경제',
+    'Bloomberg', 'Associated Press', 'AP', 'PR Newswire', 'Business Wire', '서울경제',
 })
 
 PRICE_ONLY = re.compile(
@@ -168,6 +176,46 @@ MERIDIAN_REPORT = re.compile(
     r'(?:report|recommendation|findings?|released|published|제언|권고|보고서|결과\s*발표)',
     re.I | re.S,
 )
+
+MERIDIAN_MEMBER_ACTION = re.compile(
+    r'selected\s+to\s+join|selected\s+for|joins?\s+Project\s+Meridian|'
+    r'will\s+participate|new\s+participant|added\s+to|appointed\s+(?:to|as)|'
+    r'named\s+(?:to|as)|participant(?:s)?|member(?:s)?|advisor|consultant|'
+    r'참여\s*선정|참여한다|참여\s*예정|신규\s*참여|위원\s*선정|자문',
+    re.I,
+)
+MERIDIAN_ROBOTICS_CTX = re.compile(
+    r'Agility\s+Robotics|Peggy\s+Johnson|Digit\b|humanoid|robotics?|autonomous|'
+    r'physical\s+AI|logistics?|operational\s+support|휴머노이드|로봇|자율|군수|물류',
+    re.I,
+)
+MERIDIAN_PEGGY_BASELINE = re.compile(
+    r'(?:Peggy\s+Johnson|Agility\s+Robotics).{0,260}(?:Project\s+Meridian|메리디언)|'
+    r'(?:Project\s+Meridian|메리디언).{0,260}(?:Peggy\s+Johnson|Agility\s+Robotics)',
+    re.I | re.S,
+)
+MERIDIAN_ROLE_UPGRADE = re.compile(
+    r'co[-\s]*director|director|chair|lead(?:er|ing)?|expanded\s+role|'
+    r'공동\s*책임자|공동\s*디렉터|책임자|의장|역할\s*확대',
+    re.I,
+)
+AGILITY_DEFENSE = re.compile(r'Agility\s+Robotics|\bDigit(?:\s*5)?\b|Peggy\s+Johnson', re.I)
+AGILITY_DEFENSE_CONTRACT = re.compile(
+    r'contract|award|purchase\s+order|task\s+order|procurement|production\s+award|'
+    r'공급\s*계약|본계약|수주|발주|조달|구매\s*계약|양산\s*계약',
+    re.I,
+)
+AGILITY_DEFENSE_PILOT = re.compile(
+    r'pilot\s+program|field\s+trial|operational\s+evaluation|military\s+evaluation|'
+    r'defense\s+trial|deployed\s+(?:to|at|with)|deployment\s+(?:to|at|with)|'
+    r'군\s*실증|군수\s*실증|현장\s*시험|운용\s*평가|군\s*배치',
+    re.I,
+)
+MERIDIAN_INDIVIDUAL_CAPACITY = re.compile(
+    r'individual\s+consultant|individual\s+capacity|separate\s+from\s+Agility(?:\'s)?\s+commercial\s+operations|'
+    r'개인\s*컨설턴트|개인\s*자격|상업\s*사업과\s*독립|상업\s*운영과\s*분리',
+    re.I,
+)
 AUTONOMY_POLICY = re.compile(
     r'Directive\s+3000\.09|DoD\s+Directive\s+3000\.09|'
     r'autonomy\s+in\s+weapon\s+systems|자율\s*무기\s*체계|자율무기',
@@ -196,7 +244,8 @@ def _is_lane(text: str) -> bool:
         or DAWG.search(text)
         or SOUTHCOM_AWC.search(text)
         or (DRONE_BUDGET_BASELINE.search(text) and DEFENSE_CTX.search(text))
-        or (MERIDIAN.search(text) and (MUSK_GROUP.search(text) or DEFENSE_CTX.search(text)))
+        or (MERIDIAN.search(text) and (MUSK_GROUP.search(text) or DEFENSE_CTX.search(text) or MERIDIAN_ROBOTICS_CTX.search(text)))
+        or (AGILITY_DEFENSE.search(text) and DEFENSE_CTX.search(text))
         or (AUTONOMY_POLICY.search(text) and DEFENSE_CTX.search(text))
     )
 
@@ -206,6 +255,22 @@ def _stage(text: str) -> str:
         return 'reverse'
     if MERIDIAN_REPORT.search(text):
         return 'meridian_report'
+    # Company execution is stronger than advisory participation. Keep a future
+    # Agility/Digit defense award or military pilot out of the current
+    # Peggy-Johnson advisory baseline.
+    if AGILITY_DEFENSE.search(text) and DEFENSE_CTX.search(text) and AGILITY_DEFENSE_CONTRACT.search(text):
+        return 'agility_defense_contract'
+    if AGILITY_DEFENSE.search(text) and DEFENSE_CTX.search(text) and AGILITY_DEFENSE_PILOT.search(text):
+        return 'agility_defense_pilot'
+    if MERIDIAN.search(text) and MERIDIAN_MEMBER_ACTION.search(text) and MERIDIAN_ROBOTICS_CTX.search(text):
+        if (
+            MERIDIAN_PEGGY_BASELINE.search(text)
+            and not MERIDIAN_ROLE_UPGRADE.search(text)
+            and not AGILITY_DEFENSE_CONTRACT.search(text)
+            and not AGILITY_DEFENSE_PILOT.search(text)
+        ):
+            return 'meridian_participant_baseline'
+        return 'meridian_participant_change'
     if AUTONOMY_POLICY.search(text) and POLICY_UPDATE.search(text):
         return 'autonomy_policy'
     if SOUTHCOM_AWC.search(text) and (
@@ -263,7 +328,7 @@ def score(item: dict) -> int:
         return _orig_score(item)
 
     stage = _stage(text)
-    if stage in {'baseline', 'southcom_baseline', 'budget_baseline', 'monitor'}:
+    if stage in {'baseline', 'southcom_baseline', 'budget_baseline', 'meridian_participant_baseline', 'monitor'}:
         return 0
     if PRICE_ONLY.search(title):
         return -20
@@ -287,6 +352,9 @@ def score(item: dict) -> int:
         'production': 14,
         'deployment': 16,
         'meridian_report': 12,
+        'meridian_participant_change': 10,
+        'agility_defense_pilot': 15,
+        'agility_defense_contract': 18,
         'autonomy_policy': 11,
         'reverse': 15,
     }.get(stage, 0)
@@ -300,6 +368,10 @@ def category(text: str, group: str) -> str:
         'baseline': '미국 자율전쟁 · AUTOWARCOM·Project Meridian 기준선',
         'southcom_baseline': '미국 자율전쟁 · SOUTHCOM 지역사령부 기준선',
         'budget_baseline': '미국 자율전쟁 · FY2027 드론예산 제안 기준선',
+        'meridian_participant_baseline': '미국 자율전쟁 · Project Meridian 휴머노이드 자문 참여 기준선',
+        'meridian_participant_change': '미국 자율전쟁 · Project Meridian 로봇·AI 자문진 확대',
+        'agility_defense_pilot': '미국 자율전쟁 · Agility Digit 국방 실증·운용평가',
+        'agility_defense_contract': '미국 자율전쟁 · Agility Digit 국방 조달·수주',
         'legislation': '미국 자율전쟁 · AUTOWARCOM 법제화·승인',
         'funding': '미국 자율전쟁 · AUTOWARCOM 예산·재원 확정',
         'formal_standup': '미국 자율전쟁 · AUTOWARCOM 정식 창설·작전능력',
@@ -330,6 +402,10 @@ def meaning(cat: str) -> str:
         '드론·로봇 양산 확대': '계약이 월 생산량·공장 증설·연간 생산능력으로 이어지는 단계입니다. 명목 생산능력과 실제 주문·출하량을 분리합니다.',
         '자율·로봇 전력 실제 배치': '조달된 자율체계가 훈련·작전부대에 실제 전력화되는 단계입니다. 배치 수량, 가동률, 손실률, 임무성공률과 재발주를 추적합니다.',
         'Project Meridian 보고서·권고': '머스크·럭키·깅리치 등이 참여한 미래전 연구가 구체적인 능력격차와 조달·조직 권고로 바뀌는 단계입니다. 자문보고서와 실제 국방부 채택·예산을 분리합니다.',
+        'Project Meridian 휴머노이드 자문 참여 기준선': '2026년 10월 5일 MITRE와 Agility Robotics가 Peggy Johnson의 Project Meridian 참여를 확인했습니다. 개인 컨설턴트 자격이며 Agility의 상업사업과 분리된 자문 참여이므로 국방 매출·Digit 조달로 해석하지 않습니다.',
+        'Project Meridian 로봇·AI 자문진 확대': 'Project Meridian의 참여구성이 로봇·AI·자율체계 전문가 쪽으로 추가 확대되는 정책·시간표 신호입니다. 자문 참여가 실제 권고문·시험평가·조달품목으로 이어지는지를 별도로 확인합니다.',
+        'Agility Digit 국방 실증·운용평가': 'Agility의 상업 배치 경험이 개인 자문을 넘어 실제 군수·지원 현장의 Digit 시험·운용평가로 전환되는 단계입니다. 로봇 대수·시험장소·임무·가동률·안전평가와 후속 조달 여부를 확인합니다.',
+        'Agility Digit 국방 조달·수주': '개인 자문과 별개로 Agility Robotics가 실제 국방 계약·구매주문·조달을 확보한 직접 매출 신호입니다. 계약금액·Digit 대수·납기·반복조달과 서비스·유지보수 범위를 분리합니다.',
         '자율무기 정책 개정': 'AI·자율무기 도입의 승인·시험·인간통제 기준이 바뀌는 규제 신호입니다. 정책 완화·강화가 실제 배치속도와 시험기간에 미치는 영향을 봅니다.',
         '일정·예산·승인 후퇴': 'AUTOWARCOM·Agincourt·Meridian의 법제화·예산·창설 시간표가 뒤로 밀리는 역방향 신호입니다. 지연원인이 의회, 예산, 기술검증, 안전인지 분리합니다.',
     }
@@ -345,6 +421,14 @@ def risk(cat: str) -> str:
     raw = cat.split(' · ', 1)[-1]
     if raw == 'Project Meridian 보고서·권고':
         return 'Project Meridian은 미래전 연구·자문기구입니다. 머스크 등이 군 지휘권이나 조달권을 직접 가진다고 해석하지 않고, 보고서 권고와 실제 국방부 채택·계약을 분리합니다.'
+    if raw == 'Project Meridian 휴머노이드 자문 참여 기준선':
+        return 'Peggy Johnson은 개인 컨설턴트 자격으로 참여하며 Agility Robotics는 이 활동이 자사 상업운영과 분리돼 있다고 명시했습니다. 따라서 현재 단계의 직접 국방매출은 0으로 두고, 회사 명의의 실증·계약이 나올 때만 상업 단계로 승격합니다.'
+    if raw == 'Project Meridian 로봇·AI 자문진 확대':
+        return '자문위원 추가는 계약이나 예산 배정이 아닙니다. 먼저 볼 지표는 MITRE 공식 명단 변경, 최종 보고서의 로봇·군수 권고, 국방부 채택 여부이며 실제 조달 전에는 매출로 계산하지 않습니다.'
+    if raw == 'Agility Digit 국방 실증·운용평가':
+        return '실증은 양산조달과 다릅니다. 안전성·가동률·원격지원·정비비용·군 환경 신뢰성 시험이 부족하면 후속 발주가 지연될 수 있습니다.'
+    if raw == 'Agility Digit 국방 조달·수주':
+        return '계약 총액과 실제 인식매출은 다를 수 있습니다. 옵션 물량·검수·성능보증·납기·취소조항을 확인하고 장기 유지보수 계약 포함 여부를 분리합니다.'
     if raw == 'AUTOWARCOM 법제화·승인':
         return '국방부의 창설 의지만으로 전투사령부의 획득권한이 자동 생기지는 않습니다. 의회 법안·최종 법률·예산·시행을 단계별로 확인합니다.'
     if raw == 'AUTOWARCOM 획득·조달권한':
@@ -364,8 +448,13 @@ def verification(item: dict, group: str, text: str) -> str:
     if group != 'us_autonomous_warfare':
         return _orig_verification(item, group, text)
     src = item.get('source') or ''
+    stage = _stage(text)
+    if stage == 'meridian_participant_baseline':
+        return 'MITRE·Agility Robotics 공식 확인 · Peggy Johnson 개인 컨설턴트 참여, Agility 상업운영과 분리 · 계약/조달 아님'
+    if stage == 'meridian_participant_change' and src in {'MITRE', 'The MITRE Corporation', 'Agility Robotics'}:
+        return 'MITRE 또는 참여기업 공식자료 · 자문 참여와 회사 계약·조달을 분리'
     if src in base.OFFICIAL_OR_PRIMARY:
-        return '미 국방부·의회·DIU 공식자료 · 발표/법제화/예산/계약/배치 단계 분리'
+        return '미 국방부·의회·DIU·MITRE·참여기업 공식자료 · 자문/정책/계약/배치 단계 분리'
     if src in base.TRUSTED:
         return '신뢰 국방·통신 보도 · 미 국방부·의회·DIU 공식자료 교차확인'
     return '보도 단계 · 미 국방부·의회·DIU 1차 자료 후속 확인'
@@ -380,6 +469,32 @@ def key(item: dict) -> str:
         return hashlib.sha256(b'us-autowar|2026-09-30|baseline').hexdigest()
     if stage == 'meridian_report':
         return hashlib.sha256(b'us-autowar|project-meridian|report').hexdigest()
+    if stage == 'meridian_participant_baseline':
+        return hashlib.sha256(b'us-autowar|project-meridian|peggy-johnson|individual-consultant|2026-10-05').hexdigest()
+    if stage == 'meridian_participant_change':
+        m = re.search(
+            r'(?:CEO|CTO|President|Founder|General|Dr\.?|Ms\.?|Mr\.?)\s+'
+            r'([A-Z][A-Za-z.\'-]+(?:\s+[A-Z][A-Za-z.\'-]+){1,3})\s+'
+            r'(?:selected|joins?|appointed|named|will\s+participate)',
+            text,
+            re.I,
+        )
+        if not m:
+            m = re.search(
+                r'([A-Z][A-Za-z.\'-]+(?:\s+[A-Z][A-Za-z.\'-]+){1,3})\s+'
+                r'(?:selected\s+to\s+join|joins?|appointed|named).{0,40}Project\s+Meridian',
+                text,
+                re.I,
+            )
+        who = re.sub(r'[^a-z0-9]+', '-', (m.group(1) if m else clean_title(item.get('title',''), item.get('source',''))).lower()).strip('-')
+        return hashlib.sha256(f'us-autowar|project-meridian|participant|{who}'.encode()).hexdigest()
+    if stage in {'agility_defense_pilot', 'agility_defense_contract'}:
+        nums = '|'.join(sorted(set(re.findall(
+            r'\$?\s*\d[\d,.]*\s*(?:million|billion|m|bn|robots?|units?|Digit|대|개)?',
+            text,
+            re.I,
+        )))[:6])
+        return hashlib.sha256(f'us-autowar|agility-digit|{stage}|{nums}'.encode()).hexdigest()
     if stage == 'autonomy_policy':
         return hashlib.sha256(b'us-autowar|dod-3000.09|policy-update').hexdigest()
     if stage in {'legislation', 'funding', 'formal_standup', 'commander', 'acquisition_authority'}:
@@ -435,6 +550,10 @@ def clean_title(title: str, source: str) -> str:
         'production': '미 자율전쟁 드론·로봇 양산 확대',
         'deployment': '미군 자율·로봇 전력 실제 배치 확대',
         'meridian_report': 'Project Meridian 미래전 보고서·권고 공개',
+        'meridian_participant_baseline': 'Agility CEO Peggy Johnson, Project Meridian 개인자문 참여 기준선',
+        'meridian_participant_change': 'Project Meridian 로봇·AI 자문진 구성 변경',
+        'agility_defense_pilot': 'Agility Digit, 미 국방 실증·운용평가 단계 진입',
+        'agility_defense_contract': 'Agility Digit, 미 국방 조달·수주 발생',
         'autonomy_policy': '미 국방부 자율무기 정책 개정',
         'reverse': '미 AUTOWARCOM·자율전력 계획 일정·예산 후퇴',
     }.get(_stage(text), _orig_clean_title(title, source))
