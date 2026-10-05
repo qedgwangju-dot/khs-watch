@@ -97,7 +97,7 @@ REGION_ENTITIES = {
         "function": "선단 로직 파운드리·첨단 패키징",
         "entities": {
             "TSMC": ("tsmc", "台積電", "台积电"),
-            "ASE": ("ase technology", "advanced semiconductor engineering", "aseh", "日月光"),
+            "ASE": ("ase ", "ase technology", "advanced semiconductor engineering", "aseh", "日月光"),
         },
     },
     "korea": {
@@ -123,7 +123,7 @@ REGION_ENTITIES = {
         "entities": {
             "Tokyo Electron": ("tokyo electron", "tel ", "東京エレクトロン", "도쿄일렉트론"),
             "Advantest": ("advantest", "アドバンテスト", "어드밴테스트"),
-            "DISCO": ("disco corporation", "disco corp", "ディスコ", "디스코"),
+            "DISCO": ("disco ", "disco corporation", "disco corp", "ディスコ", "디스코"),
             "Lasertec": ("lasertec", "レーザーテック", "레이저텍"),
             "Shin-Etsu Chemical": ("shin-etsu", "shin etsu", "信越化学", "신에츠"),
             "SUMCO": ("sumco", "섬코"),
@@ -158,7 +158,7 @@ OFFICIAL_DOMAINS = {
     "meti.go.jp", "commerce.gov", "bis.gov", "fcc.gov", "congress.gov", "sec.gov",
 }
 OFFICIAL_SOURCE_EXACT = {
-    "semi", "tsmc", "ase", "sk hynix", "sk하이닉스", "samsung", "samsung electronics",
+    "semi", "sia", "bcg", "tsmc", "ase", "sk hynix", "sk하이닉스", "samsung", "samsung electronics",
     "hanmi semiconductor", "zhongji innolight", "eoptolink", "tokyo electron", "advantest",
     "disco", "lasertec", "shin-etsu chemical", "sumco", "jsr", "tokyo ohka kogyo",
     "meti", "fcc", "u.s. congress", "semiconductor industry association",
