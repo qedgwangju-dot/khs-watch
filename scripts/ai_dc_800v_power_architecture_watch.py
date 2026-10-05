@@ -19,6 +19,7 @@ STATUS = OUT / "ai_dc_800v_power_architecture_status.md"
 
 FORMAT_VERSION = 5
 # Dedupe validation: unchanged extracted facts must remain Telegram-silent.
+# Timing-benchmark validation reruns must also remain silent when official facts are unchanged.
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
 
 NVIDIA_BLOG = "https://blogs.nvidia.com/blog/800-vdc-power-architecture-ai-factory/"
