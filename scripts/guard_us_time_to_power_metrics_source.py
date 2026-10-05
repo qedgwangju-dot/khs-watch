@@ -1870,7 +1870,8 @@ state_policy_msg_block = '''    sp = state_policy_metrics
             f"· 신규계약 <b>{int(sp['va_new_contract_effective_year'])}년</b> 적용"
         )
         msg.append("• <b>판정:</b> 미국 전체의 단일 규정이 아니라 주별 인허가·요금·비용배분 조건이 강화되는 흐름으로 봅니다.")
-        msg.append("• <b>투자 연결:</b> 계통증설 비용과 허가기간을 직접 부담할수록 빠른 현장전원·연료전지·가스·BESS의 상대가치가 올라갈 수 있습니다.")
+        msg.append("• <b>투자 연결:</b> 계통증설 비용과 허가기간을 직접 부담할수록 빠른 현장전원의 상대가치는 올라갈 수 있지만, 연료별 환경 적격성은 별도입니다.")
+        msg.append("  ↳ 천연가스 SOFC는 비연소·저대기오염·저용수 장점이 있어도 Massachusetts CES나 Pennsylvania 청정·상시전원 기준 충족을 자동으로 가정하지 않습니다. 저탄소 연료·탄소포집·별도 청정전력 조달 여부를 따로 확인합니다.")
         if state_policy_errors:
             msg.append("• 일부 공식 페이지 조회 실패 시 직전 검증값을 유지하고, 오류 자체는 변화로 알리지 않습니다.")
 
