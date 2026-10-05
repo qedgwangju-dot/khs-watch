@@ -1,0 +1,79 @@
+{
+  "initialized": true,
+  "baseline_version": 1,
+  "baseline_cutoff_kst": "2026-10-05T19:05:00+09:00",
+  "baseline": {
+    "historical_concentration": {
+      "east_asia_china_semiconductor_manufacturing_capacity_pct": 75,
+      "vintage": "2021",
+      "scope": "전체 반도체 제조능력에 대한 SIA·BCG 당시 추정",
+      "current_live_metric": false,
+      "source": "SIA / BCG",
+      "source_url": "https://www.semiconductors.org/strengthening-the-global-semiconductor-supply-chain-in-an-uncertain-era/"
+    },
+    "taiwan": {
+      "role": "선단 로직 파운드리·첨단 패키징",
+      "leaders": [
+        "TSMC",
+        "ASE"
+      ],
+      "notes": [
+        "TSMC는 선단 로직 파운드리뿐 아니라 3DFabric/CoWoS 등 첨단 패키징도 핵심",
+        "ASE는 대형 OSAT·첨단 패키징/테스트 핵심사"
+      ]
+    },
+    "korea": {
+      "role": "HBM·고성능 메모리",
+      "leaders": [
+        "SK hynix",
+        "Samsung Electronics"
+      ],
+      "adjacent_equipment": [
+        "Hanmi Semiconductor"
+      ],
+      "notes": [
+        "Micron은 미국 업체이지만 글로벌 HBM 3대 공급사 중 하나",
+        "Hanmi Semiconductor는 HBM 메모리 제조사가 아니라 TC bonder 장비사"
+      ]
+    },
+    "china": {
+      "role": "AI 데이터센터 광트랜시버·광인터커넥트 대량생산",
+      "leaders": [
+        "Zhongji Innolight",
+        "Eoptolink"
+      ],
+      "notes": [
+        "중국 업체의 모듈 대량생산 강점과 미국 규제·고객 다변화 리스크를 동시에 추적"
+      ]
+    },
+    "japan": {
+      "role": "반도체 제조장비·검사·정밀가공·핵심 소재",
+      "leaders": [
+        "Tokyo Electron",
+        "Advantest",
+        "DISCO",
+        "Lasertec"
+      ],
+      "materials": [
+        "Shin-Etsu Chemical",
+        "SUMCO",
+        "JSR",
+        "Tokyo Ohka Kogyo"
+      ],
+      "notes": [
+        "장비뿐 아니라 실리콘 웨이퍼·포토레지스트 등 핵심 소재 집중도도 별도 추적"
+      ]
+    },
+    "current_public_context": {
+      "semi_q3_2026": "SEMI Q3 2026 World Fab Forecast 공개 요약상 중국은 2026·2027 설치 생산능력 1위 전망",
+      "comparable_75pct_refresh_public": false
+    }
+  },
+  "updated_at_kst": "2026-10-05T19:05:00+09:00",
+  "last_scan_count": 0,
+  "last_eligible_count": 0,
+  "last_held_count": 0,
+  "seen_fingerprints": [],
+  "delivered_event_keys": [],
+  "last_held": []
+}
