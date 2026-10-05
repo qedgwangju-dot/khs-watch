@@ -130,14 +130,17 @@ def _active_direction_scores(payload: dict) -> tuple[int, int]:
     if signals.get("target_currency_spread_confirmation"):
         unwind_score += 3
 
-    if evidence.get("rebuild::USD/JPY 상승·엔화 재약세"):
+    yen_weak_fast = bool(evidence.get("rebuild::USD/JPY 상승·엔화 재약세"))
+    yen_weak_direction = bool(evidence.get("rebuild::USD/JPY 완만한 상승 방향"))
+    if yen_weak_fast:
         carry_score += 4
-    elif evidence.get("rebuild::USD/JPY 완만한 상승 방향"):
+    elif yen_weak_direction:
         carry_score += 2
 
     if evidence.get("rebuild::미·일 2년 금리차 재확대"):
         carry_score += 3
-    elif evidence.get("rebuild::미·일 2년 금리차 여전히 넓음"):
+    elif evidence.get("rebuild::미·일 2년 금리차 여전히 넓음") and (yen_weak_fast or yen_weak_direction):
+        # A wide spread is a carry cushion, not a direction by itself.
         carry_score += 1
 
     return unwind_score, carry_score
