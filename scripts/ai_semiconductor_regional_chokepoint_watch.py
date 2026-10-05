@@ -157,11 +157,17 @@ OFFICIAL_DOMAINS = {
     "shinetsu.co.jp", "sumcosi.com", "jsr.co.jp", "tok.co.jp",
     "meti.go.jp", "commerce.gov", "bis.gov", "fcc.gov", "congress.gov", "sec.gov",
 }
+OFFICIAL_SOURCE_EXACT = {
+    "semi", "tsmc", "ase", "sk hynix", "sk하이닉스", "samsung", "samsung electronics",
+    "hanmi semiconductor", "zhongji innolight", "eoptolink", "tokyo electron", "advantest",
+    "disco", "lasertec", "shin-etsu chemical", "sumco", "jsr", "tokyo ohka kogyo",
+    "meti", "fcc", "u.s. congress", "semiconductor industry association",
+    "boston consulting group",
+}
 OFFICIAL_SOURCE_MARKERS = (
-    "semiconductor industry association", "sia", "boston consulting group", "bcg",
-    "semi", "tsmc", "ase", "sk hynix", "sk하이닉스", "samsung", "hanmi semiconductor",
-    "zhongji innolight", "eoptolink", "tokyo electron", "advantest", "disco", "lasertec",
-    "shin-etsu", "sumco", "jsr", "tokyo ohka", "meti", "fcc", "u.s. congress",
+    "semiconductor industry association", "boston consulting group",
+    "taiwan semiconductor manufacturing", "ase technology holding",
+    "ministry of economy, trade and industry", "federal communications commission",
 )
 TIER1_DOMAINS = {
     "reuters.com", "bloomberg.com", "ft.com", "wsj.com", "nikkei.com", "trendforce.com",
@@ -300,7 +306,9 @@ def _source_level(item: dict) -> str:
         return "official"
     # When Google News decoding fails, publisher identity still provides a useful
     # official signal, but require a reasonably specific organization marker.
-    if any(marker == source or marker in source for marker in OFFICIAL_SOURCE_MARKERS):
+    if source in OFFICIAL_SOURCE_EXACT:
+        return "official"
+    if any(marker in source for marker in OFFICIAL_SOURCE_MARKERS):
         return "official"
     if any(host == d or host.endswith("." + d) for d in TIER1_DOMAINS):
         return "tier1"
