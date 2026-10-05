@@ -22,6 +22,7 @@ on:
       - "tests/test_polysilicon_policy_guard.py"
   schedule:
     # Run every 15 minutes, offset from crowded 00/15/30/45 slots.
+    # UK-China EV tariff stages are handled by the existing trusted-policy lane.
     - cron: "2,17,32,47 * * * *"
   workflow_dispatch:
     inputs:
