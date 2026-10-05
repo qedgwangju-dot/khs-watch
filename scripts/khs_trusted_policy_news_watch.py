@@ -228,6 +228,10 @@ TRUSTED_SOURCES = {
     "world meteorological organization",
     "world meteorological organization (wmo)",
     "wmo",
+    "gov.uk",
+    "uk government",
+    "department for business and trade",
+    "trade remedies authority",
 }
 
 SOURCE_PRIORITY = {
@@ -257,6 +261,10 @@ SOURCE_PRIORITY = {
     "world meteorological organization": 0,
     "world meteorological organization (wmo)": 0,
     "wmo": 0,
+    "gov.uk": 0,
+    "uk government": 0,
+    "department for business and trade": 0,
+    "trade remedies authority": 0,
     "mitre": 0,
     "u.s. army": 0,
     "us army": 0,
@@ -736,6 +744,50 @@ STORY_RULES = (
         impacts=("시간표", "수급", "돈 버는 능력"),
         paths=("정책 타임라인", "수급", "중국 대체 공급망"),
         follow_up="오늘 바뀐 것은 확정 매출이 아니라 정책 시간표·테마 수급입니다. 공식 상무부 발표, 관세/수입제한 품목, OSC 대출 조건을 후속 확인해야 합니다.",
+    ),
+    StoryRule(
+        key="uk_china_ev_tariff_review",
+        title="영국, 중국산 전기차 관세 검토·도입 준비",
+        google_queries=(
+            "Reuters Britain Chinese electric vehicles tariffs The Times",
+            "Reuters UK Chinese electric vehicles tariffs dumping subsidies",
+            "Bloomberg UK Chinese electric vehicles tariffs subsidies",
+            "UK government Chinese electric vehicles tariffs Trade Remedies Authority",
+            "Department for Business and Trade Chinese electric vehicles tariff",
+            "\"Chinese electric vehicles\" tariffs Britain GOV.UK Trade Remedies Authority",
+        ),
+        required_groups=(
+            ("uk", "britain", "british", "united kingdom", "영국"),
+            ("china", "chinese", "중국"),
+            ("electric vehicle", "electric vehicles", "electric car", "electric cars", "battery electric vehicle", "battery electric vehicles", "전기차"),
+            (
+                "tariff", "tariffs", "levy", "levies", "anti-subsidy", "countervailing",
+                "anti-dumping", "antidumping", "trade remedy", "trade remedies",
+                "dumping", "subsidised", "subsidized", "관세", "상계관세", "반덤핑",
+            ),
+        ),
+        core=(
+            "Reuters가 The Times를 인용해 영국 정부가 중국산 전기차에 대한 잠재적 관세 패키지를 검토·준비 중이라고 보도한 사안입니다. "
+            "영국 정부는 Reuters에 현재 중국산 전기차 관세가 부과된 상태는 아니라고 확인했습니다."
+        ),
+        impact="영국 자동차시장, 중국 전기차, 유럽 자동차 공급망, 배터리·자동차부품 | 돈 버는 능력·수급·시간표",
+        point=(
+            "공식 조사·잠정조치·최종 관세로 진전되면 중국산 전기차의 영국 가격경쟁력과 판매량, "
+            "영국·유럽 현지생산 및 비중국 공급망의 주문 구조가 바뀔 수 있습니다."
+        ),
+        counter=(
+            "현재 단계는 관세 확정이 아닙니다. Reuters도 The Times 보도를 독자적으로 즉시 확인하지 못했다고 밝혔고, "
+            "45% 수준 역시 공식 영국 세율이 아니라 보도상 가능성입니다."
+        ),
+        sectors="자동차/전기차, 배터리/자동차부품, 영국·유럽 현지생산, 중국 대체 공급망",
+        impacts=("돈 버는 능력", "수급", "시간표"),
+        paths=("무역규제", "가격경쟁력", "공급망", "정책 타임라인"),
+        follow_up=(
+            "영국 정부·Department for Business and Trade·Trade Remedies Authority의 공식 조사 개시 여부를 우선 확인합니다. "
+            "이후 잠정관세·보증금, 최종 세율, 대상 HS코드·차종·원산지, 업체별 세율, 시행일, 예외, 경제적 이익 테스트, "
+            "EU Made in Europe 연계와 중국의 보복 가능성을 단계별로 추적합니다."
+        ),
+        trusted_sources=("GOV.UK", "UK Government", "Department for Business and Trade", "Trade Remedies Authority"),
     ),
     StoryRule(
         key="eu_korea_steel_safeguard_relief",
@@ -1665,6 +1717,54 @@ def semantic_policy_event_key(item: dict) -> str:
         elif any(term in text for term in ("contract award", "contract awarded", "ota award", "baa award", "procurement award", "rfp issued")):
             stage = "procurement-" + hashlib.sha1(title_text.encode("utf-8")).hexdigest()[:10]
         return f"us-dow-autonomous-warfare-{stage}"
+
+    uk_china_ev_tariff = (
+        any(term in text for term in ("britain", "british", "united kingdom", "영국"))
+        and any(term in text for term in ("china", "chinese", "중국"))
+        and any(term in text for term in (
+            "electric vehicle", "electric vehicles", "electric car", "electric cars",
+            "battery electric vehicle", "battery electric vehicles", "전기차",
+        ))
+        and any(term in text for term in (
+            "tariff", "tariffs", "levy", "levies", "anti-subsidy", "countervailing",
+            "anti-dumping", "antidumping", "trade remedy", "trade remedies",
+            "dumping", "subsidised", "subsidized", "관세", "상계관세", "반덤핑",
+        ))
+    )
+    if uk_china_ev_tariff:
+        if any(term in title_text for term in (
+            "definitive", "final tariff", "final tariffs", "imposes tariff", "imposes tariffs",
+            "tariffs imposed", "duty imposed", "final measure", "최종 관세", "관세 부과 확정",
+        )):
+            stage = "definitive"
+        elif any(term in title_text for term in (
+            "provisional", "temporary duty", "interim tariff", "잠정 관세", "잠정관세",
+        )):
+            stage = "provisional"
+        elif any(term in title_text for term in (
+            "launches investigation", "opens investigation", "initiates investigation",
+            "investigation launched", "trade remedies authority investigates",
+            "조사 개시", "조사 착수",
+        )):
+            stage = "investigation"
+        elif any(term in title_text for term in (
+            "consultation", "seeks views", "call for evidence", "의견수렴", "업계 협의",
+        )):
+            stage = "consultation"
+        elif any(term in title_text for term in (
+            "withdraws", "scraps", "drops tariffs", "abandons", "철회", "백지화",
+        )):
+            stage = "withdrawn"
+        elif any(term in title_text for term in (
+            "amends", "changes tariff", "changes tariffs", "varies duty", "review outcome",
+            "수정", "변경", "재검토 결과",
+        )):
+            stage = "amended"
+        else:
+            # The 2026-10-04 Times/Reuters report is a policy-preparation signal,
+            # not an imposed tariff. Keep all republications on one semantic key.
+            stage = "preparation-report-2026-10-04"
+        return f"uk-china-ev-tariff-{stage}"
 
     fcc_optical_transceiver = (
         (
