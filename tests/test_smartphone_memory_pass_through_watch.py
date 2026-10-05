@@ -65,6 +65,26 @@ class SmartphoneMemoryPassThroughTests(unittest.TestCase):
         self.assertGreaterEqual(signal["stage"], 3)
         self.assertEqual(signal["status"], "공식 가격 확인")
 
+    def test_same_range_official_confirmation_is_not_suppressed(self):
+        blob = "Samsung officially announces Galaxy S27 price increase of 100,000 to 130,000 won"
+        seen = {"s27_korea_hike_100000_130000"}
+        self.assertFalse(m._should_suppress_seen_fact(blob, "Samsung Newsroom", seen))
+        item = self.item(blob, "Official launch price announcement.", "Samsung Newsroom")
+        signal = m._signal(item, self.state())
+        self.assertIsNotNone(signal)
+        self.assertEqual(signal["stage"], 3)
+        self.assertEqual(signal["status"], "공식 가격 확인")
+
+    def test_same_range_independent_high_trust_confirmation_is_not_suppressed(self):
+        blob = "Galaxy S27 price will increase 100,000 to 130,000 won due to memory costs"
+        seen = {"s27_korea_hike_100000_130000"}
+        self.assertFalse(m._should_suppress_seen_fact(blob, "Reuters", seen))
+        item = self.item(blob, "Independent supply-chain confirmation.", "Reuters")
+        signal = m._signal(item, self.state())
+        self.assertIsNotNone(signal)
+        self.assertGreaterEqual(signal["stage"], 2)
+        self.assertEqual(signal["status"], "독립 고신뢰 확인·삼성 공식은 아님")
+
     def test_udn_1400_is_not_baseline_metric(self):
         self.assertNotIn("s27_usd_start_price", m.BASELINE)
         self.assertNotIn("s26_usd_start_price", m.BASELINE)
