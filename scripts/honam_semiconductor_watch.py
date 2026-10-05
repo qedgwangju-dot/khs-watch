@@ -207,9 +207,20 @@ def resolve_google_news_url(url: str):
     return url, False
 
 
+def normalize_publisher_name(value: str) -> str:
+    raw = (value or "").strip()
+    low = raw.lower()
+    aliases = {
+        "news1.kr": "뉴스1",
+        "news1": "뉴스1",
+        "뉴스1": "뉴스1",
+    }
+    return aliases.get(low, raw)
+
+
 def identify_publisher(url: str, fallback: str):
     host = (urllib.parse.urlparse(url).hostname or "").lower()
-    fallback = (fallback or "").strip()
+    fallback = normalize_publisher_name(fallback)
     if host == "news.google.com":
         return f"Google 뉴스 경유 · {fallback}" if fallback else "Google 뉴스 경유"
     if host in {"n.news.naver.com", "news.naver.com"}:
