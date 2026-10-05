@@ -172,8 +172,32 @@ check(
     "🟡 [" in rendered and "우크라이나·러시아 · 정유시설 보복 공격 예고" in rendered
 )
 check("oct04-render-aramco-yellow", "사우디·아람코 · 화재 원인 미확정" in rendered and "후티의 리야드 탄도미사일 공격·요격 신호" not in rendered)
-check("oct04-render-lukoil-yellow", "종전협상 연계 상업거래" in rendered)
-check("oct04-render-tanker-red", "이란·호르무즈 · 유조선 피격" in rendered)
+rendered_lukoil = mod.watch.build_alert([lukoil], [], now)
+check(
+    "oct04-render-lukoil-yellow",
+    "🟡 [" in rendered_lukoil and "종전협상 연계 상업거래" in rendered_lukoil
+)
+rendered_tanker = mod.watch.build_alert([tanker_a], [], now)
+check(
+    "oct04-render-tanker-red",
+    "🔴 [" in rendered_tanker and "이란·호르무즈 · 유조선 피격" in rendered_tanker
+)
+
+# 8-b) 10/4 16:30형: 미래 정유시설 공격 예고 + Lukoil 상업거래만 있으면
+# 전체를 재건·휴전 진전으로 판정하면 안 된다.
+rendered_yellow_mix = mod.watch.build_alert([refinery_policy, lukoil], [], now)
+check("oct04-yellow-mix-no-green-header", "🟢 <b>재건·휴전</b>" not in rendered_yellow_mix)
+check("oct04-yellow-mix-has-yellow-header", "🟡 <b>군사위협·협상 제약</b>" in rendered_yellow_mix)
+
+# 실제 공격 + 상업거래 혼재도 '휴전 진전'으로 뒤집히면 안 된다.
+for x in (bridge_attack, lukoil):
+    score, tags = mod.score_item(x, now)
+    x["score"] = score
+    x["tags"] = tags
+    x["age"] = mod.watch.age_minutes(x, now)
+rendered_red_yellow = mod.watch.build_alert([bridge_attack, lukoil], [], now)
+check("oct04-red-yellow-no-green-header", "🟢 <b>재건·휴전</b>" not in rendered_red_yellow)
+check("oct04-red-yellow-keeps-red", "🔴 <b>공격·확전</b>" in rendered_red_yellow)
 
 # 9) 품질 게이트는 과거 실제 오판 문구를 거부.
 bad_aramco = """<b>전쟁·종전·재건 웹감시</b>
