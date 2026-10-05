@@ -180,6 +180,36 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
             self.assertNotIn("<b>", result)
             self.assertNotIn("</b>", result)
 
+    def test_tiny_live_usdjpy_move_is_treated_as_flat(self):
+        payload = {
+            "verdict": {
+                "unwind_level": 0,
+                "rebuild_level": 0,
+                "evidence": {
+                    "rebuild::USD/JPY 완만한 상승 방향": True,
+                    "rebuild::미·일 2년 금리차 여전히 넓음": True,
+                },
+            },
+            "refined_risk": {
+                "level": 1,
+                "structural_floor": "JGB 10년 3% 이상 공식 종가",
+                "signals": {},
+            },
+        }
+        pending = {
+            "values": {
+                "usdjpy": 157.663,
+                "usdjpy_15m_pct": -0.02,
+                "usdjpy_30m_pct": -0.05,
+                "usdjpy_60m_pct": -0.02,
+            }
+        }
+        title, direction, impact = compact.direction_call(payload, pending)
+        self.assertIn("↔ 중립·구조 경계", title)
+        self.assertEqual(direction, "↔ 중립·방향 확인 대기")
+        self.assertEqual(impact, "🟡 중립 / 구조 변동성 주의")
+        self.assertIn("사실상 보합", compact.live_fx_line(pending))
+
     def test_structural_floor_without_direction_is_neutral(self):
         payload = {
             "verdict": {"unwind_level": 0, "rebuild_level": 0, "evidence": {}},
