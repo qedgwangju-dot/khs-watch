@@ -1,8 +1,60 @@
 {
   "schema_version": 1,
-  "initial_alert_sent": false,
-  "seen": [],
-  "seen_fact_keys": [],
+  "updated_at_kst": "2026-10-05T17:15:25+09:00",
+  "initial_alert_sent": true,
+  "seen": [
+    "04aa48074903f859c592dc45",
+    "097e91ce786f6234834bf1f1",
+    "0f2adf3e422a894101f17ca1",
+    "17745657f32858ecece2db41",
+    "18fe1373dd2f9c2f85e515bd",
+    "1cb0a3d33eeaa9a11b9ba6c7",
+    "1cc906455661df7ef2b3f879",
+    "1d87b059909f2845ebcaf31d",
+    "22a9623cd2e157544d1db4c5",
+    "22cbb65ff99f611ae34a1b80",
+    "2323e60889413be9264796c3",
+    "265a271e7faee58c7f9665c9",
+    "2ec5b5d0171a0016f4a20807",
+    "3402c4872874869479c09078",
+    "35db90a45a260ecf82ae97be",
+    "3e5258c25745eb3a2d2ec8a9",
+    "4546946aa8f88aec4ff2155a",
+    "57b2a8291a3f9f7d75feeeae",
+    "58f529b206687c93b436218b",
+    "59f1a570cd2c2218b3205223",
+    "65f2f2cf258a0b1465d87747",
+    "6a38f5222bfa371112b627dc",
+    "6b5f72f7c89007cc71925f36",
+    "8c998efb7e725880dff1daa0",
+    "8e5cf73dadcf4d4744061885",
+    "91903d053265dbadd6b2ae68",
+    "9253340403bfc021906fffd1",
+    "93c5d5229ae900f3908b700d",
+    "93e30c314e2322c2bc2cad3b",
+    "966d577b17e0ba00d3e4e481",
+    "99c0b127d051e4ca800a0230",
+    "a413edfb12f4f465eb10fe30",
+    "a72aa84e35673c08441c4f5c",
+    "aded79cdd9430373589246ab",
+    "b810aae3c52b4431c39ab399",
+    "ba3a239134b1b2bf1c22eb4a",
+    "c279ae5d554efd3aa7833543",
+    "c62b2cb4b1f7049cdf3637f7",
+    "c69c38157b50d580916c8672",
+    "da9ccef98ac9c153a716deb5",
+    "ddc0f888057d92966aa54c9d",
+    "eb876c066025e7c2ec92676f",
+    "efb9f684b8ced9d99d57eb1b",
+    "f09b2d9252f57a2179307361",
+    "f29aef84042bfc56991ee983",
+    "f3653982c2ccea05455fedab",
+    "f56fb20efa0b558fe64c3863"
+  ],
+  "seen_fact_keys": [
+    "s27_korea_price_hike_13_13_manwon",
+    "s27_lpddr6_ufs51_rumor"
+  ],
   "metrics": {
     "s27_korea_hike_low_krw": 100000,
     "s27_korea_hike_high_krw": 130000,
@@ -14,7 +66,16 @@
     "nand_2h27_easing": true,
     "s27_lpddr6_ufs51_some_models_status": "루머"
   },
-  "last_scan_items": 0,
+  "confirmations": {
+    "s27": "팁스터 기반 전망·삼성전자 공식 미확정",
+    "s26": "Reuters/연합뉴스가 메모리 비용 상승에 따른 가격 인상 보도",
+    "dram_2027": "TrendForce 공식: 타이트한 모바일 DRAM 공급·높은 비용 압력",
+    "nand_2h27": "TrendForce 공식: 2027 하반기 NAND 공급 완화 가능성"
+  },
+  "last_scan_items": 47,
   "last_signal_count": 0,
-  "last_alert": null
-}\n
+  "last_alert": {
+    "at_kst": "2026-10-05T17:15:25+09:00",
+    "kind": "baseline"
+  }
+}
