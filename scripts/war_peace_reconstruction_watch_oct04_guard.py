@@ -532,7 +532,7 @@ runner.verify_alert = verify_alert
 
 
 def _rendered_item_count(text):
-    return len(re.findall(r"(?m)^[🔴🟢🟡]?\\s*\\[(?:속보|신규|후속)\\]\\s+<b>\\d+\\.", text or ""))
+    return len(re.findall(r"(?m)^[🔴🟢🟡]?\s*\[(?:속보|신규|후속)\]\s+<b>\d+\.", text or ""))
 
 
 def _sync_pending_to_rendered_alert():
