@@ -1653,7 +1653,7 @@ s = s.replace(semi_links_old, semi_links_new, 1)
 # Add state-level data-center permitting / cost-allocation requirements to the
 # SAME time-to-power watcher. These are state-specific rules, not a nationwide
 # uniform mandate, and are kept separate from FERC/RTO interconnection rules.
-s = s.replace("FORMAT_VERSION = 4", "FORMAT_VERSION = 7", 1)
+s = s.replace("FORMAT_VERSION = 4", "FORMAT_VERSION = 8", 1)
 
 state_policy_const_anchor = 'DIGITIMES_SIC_RESEARCH = "https://apps.digitimes.com/reports/item.php?id=20260929RS400"\n'
 state_policy_const_new = state_policy_const_anchor + '''MA_EO_658 = "https://www.mass.gov/executive-orders/no-658-establishing-requirements-for-responsible-data-center-development-and-operations-in-massachusetts-to-protect-and-support-ratepayers-communities-and-the-environment"
