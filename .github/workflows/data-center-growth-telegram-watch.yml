@@ -17,6 +17,7 @@ on:
       - "scripts/us_ai_data_center_buildout_watch.py"
       - "scripts/spacexai_neocloud_watch.py"
       - "scripts/nebius_dataone_bloom_watch.py"
+      - "scripts/ai_dc_800v_power_architecture_watch.py"
       - "scripts/epoch_ai_dc_execution_watch.py"
       - "scripts/ai_dc_tam_revision_watch.py"
       - "scripts/us_hyperscaler_company_risk_watch.py"
@@ -191,6 +192,9 @@ jobs:
       - name: Check Nebius DataOne Bloom partner infrastructure
         run: python scripts/nebius_dataone_bloom_watch.py
 
+      - name: Check AI data center 800V power architecture
+        run: python scripts/ai_dc_800v_power_architecture_watch.py
+
       - name: Check Epoch AI aggregate US execution ratio
         run: python scripts/epoch_ai_dc_execution_watch.py
 
@@ -225,6 +229,7 @@ jobs:
               pathlib.Path("out/us_ai_data_center_buildout_alert.txt"),
               pathlib.Path("out/spacexai_neocloud_alert.txt"),
               pathlib.Path("out/nebius_dataone_bloom_alert.txt"),
+              pathlib.Path("out/ai_dc_800v_power_architecture_alert.txt"),
               pathlib.Path("out/epoch_ai_dc_execution_alert.txt"),
               pathlib.Path("out/ai_dc_tam_revision_alert.txt"),
               pathlib.Path("out/us_hyperscaler_company_risk_alert.txt"),
@@ -395,6 +400,25 @@ jobs:
                           ],
                       ]
                   }
+              elif p.name == "ai_dc_800v_power_architecture_alert.txt":
+                  payload["parse_mode"] = "HTML"
+                  payload["link_preview_options"] = {"is_disabled": True}
+                  payload["reply_markup"] = {
+                      "inline_keyboard": [
+                          [
+                              {"text": "⚡ NVIDIA 800 VDC", "url": "https://blogs.nvidia.com/blog/800-vdc-power-architecture-ai-factory/"},
+                              {"text": "📐 OCP LVDC·SST", "url": "https://www.opencompute.org/index.php/blog/powering-the-next-era-of-ai-how-google-microsoft-and-nvidia-are-standardizing-and-accelerating-the-industry-transition-to-lvdc"},
+                          ],
+                          [
+                              {"text": "🔌 Schneider", "url": "https://www.se.com/ww/en/work/products/product-reveal/net-shelter-power-rack-800-vdc/"},
+                              {"text": "🏭 Vertiv", "url": "https://www.vertiv.com/en-ca/insights/articles/educational-articles/the-800-vdc-decision-a-practical-guide-for-ai-power-architecture/"},
+                          ],
+                          [
+                              {"text": "⚙️ Siemens SST", "url": "https://press.siemens.com/global/en/pressrelease/siemens-and-reinhausen-develop-direct-current-power-solutions-ai-data-centers"},
+                              {"text": "🇰🇷 LS ELECTRIC", "url": "https://nahpdev.ls-electric.com/company/articles/2759/industry-usa-ls-electric-america-to-highlight-dc-grid-solutions-for-ai-data-centers-at-data-center-world-2026"},
+                          ],
+                      ]
+                  }
               elif p.name == "us_hyperscaler_company_risk_alert.txt":
                   payload["parse_mode"] = "HTML"
                   payload["link_preview_options"] = {"is_disabled": True}
@@ -485,6 +509,7 @@ jobs:
           cp out/us_ai_data_center_buildout_pending_state.json "$tmpdir/us_ai_data_center_buildout_state.json"
           cp out/spacexai_neocloud_pending_state.json "$tmpdir/spacexai_neocloud_state.json"
           cp out/nebius_dataone_bloom_pending_state.json "$tmpdir/nebius_dataone_bloom_state.json"
+          cp out/ai_dc_800v_power_architecture_pending_state.json "$tmpdir/ai_dc_800v_power_architecture_state.json"
           cp out/epoch_ai_dc_execution_pending_state.json "$tmpdir/epoch_ai_dc_execution_state.json"
           cp out/ai_dc_tam_revision_pending_state.json "$tmpdir/ai_dc_tam_revision_state.json"
           cp out/us_hyperscaler_company_risk_pending_state.json "$tmpdir/us_hyperscaler_company_risk_state.json"
@@ -506,6 +531,7 @@ jobs:
             cp "$tmpdir/us_ai_data_center_buildout_state.json" data/us_ai_data_center_buildout_state.json
             cp "$tmpdir/spacexai_neocloud_state.json" data/spacexai_neocloud_state.json
             cp "$tmpdir/nebius_dataone_bloom_state.json" data/nebius_dataone_bloom_state.json
+            cp "$tmpdir/ai_dc_800v_power_architecture_state.json" data/ai_dc_800v_power_architecture_state.json
             cp "$tmpdir/epoch_ai_dc_execution_state.json" data/epoch_ai_dc_execution_state.json
             cp "$tmpdir/ai_dc_tam_revision_state.json" data/ai_dc_tam_revision_state.json
             cp "$tmpdir/us_hyperscaler_company_risk_state.json" data/us_hyperscaler_company_risk_state.json
@@ -519,6 +545,7 @@ jobs:
                     data/us_ai_data_center_buildout_state.json \
                     data/spacexai_neocloud_state.json \
                     data/nebius_dataone_bloom_state.json \
+                    data/ai_dc_800v_power_architecture_state.json \
                     data/epoch_ai_dc_execution_state.json \
                     data/ai_dc_tam_revision_state.json \
                     data/us_hyperscaler_company_risk_state.json
@@ -579,6 +606,9 @@ jobs:
             out/nebius_dataone_bloom_status.md
             out/nebius_dataone_bloom_alert.txt
             out/nebius_dataone_bloom_pending_state.json
+            out/ai_dc_800v_power_architecture_status.md
+            out/ai_dc_800v_power_architecture_alert.txt
+            out/ai_dc_800v_power_architecture_pending_state.json
             out/epoch_ai_dc_execution_status.md
             out/epoch_ai_dc_execution_alert.txt
             out/epoch_ai_dc_execution_pending_state.json
