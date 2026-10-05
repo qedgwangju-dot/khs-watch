@@ -521,22 +521,23 @@
     "event:2040de76bfabafead1b43434": {
       "first_seen_kst": "2026-10-05T00:49:19+09:00",
       "lanes": {
-        "live": "2026-10-06T00:26:07+09:00",
+        "live": "2026-10-06T00:49:05+09:00",
         "preopen": "2026-10-05T06:34:55+09:00"
       },
-      "last_seen_kst": "2026-10-06T00:26:07+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261005030600009",
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005001500099",
       "source": "연합뉴스",
-      "source_body_digest": "840220618969272b86d10a2fd6c64cc233c609c81f378651f50b2775c8e05db6",
+      "source_body_digest": "e0c7e660b0c4e7ea2d5a4c9c43e8f11dfba590821c9a05b96468a9f897edac35",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:8a3c5d07a18c213c6791dd061507e0d24efed79a21853976c36a5ba4e78be85b",
+      "source_fact_identity": "source_facts:v1:4d35f97c4aa1ac0aeac69aac2400a2afe853e01291dc389a11c4dea7be802ffd",
       "source_fact_keys": [
-        "source_fact:v1:6624cad7b24698c569ee8d3b4868c702c904846521b0c9c4c3a9f5e39418ce48",
-        "source_fact:v1:b1d7a515fec2f1ea7bc12b950bb2a5ff3e9fe0b0bb7e8b09d2fee1c51cbd9014",
-        "source_fact:v1:d2140a9342ac80ee3c192396d4f72ca219f62e3fdb4d0f18db0936ac10bfc6bb"
+        "source_fact:v1:1c8bf0cfc2d9aeaaa78bd1cc4cc37ff07487882a43ab640b702b8b13417f6ed9",
+        "source_fact:v1:5d40ed51239e1f316e95886fdc87092cf223f44f07f4c0145371d6b930ec87f9",
+        "source_fact:v1:dfc03c8ead56809d790b2beee569512c8f20320eb08ae631b3eabfaafeb02be5",
+        "source_fact:v1:edcaadf72f8609f02afea6233a0bc1b2002fd1a7aa75633205ee8ab9d6995f96"
       ],
-      "source_published_kst": "2026-10-05T12:55+09:00",
-      "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
+      "source_published_kst": "2026-10-05T03:42+09:00",
+      "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
     },
     "event:20559afaa46c8beb4ac5c20d": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -3050,19 +3051,21 @@
     "event:a408adb75e5be4597908dc18": {
       "first_seen_kst": "2026-10-05T10:39:16+09:00",
       "lanes": {
-        "live": "2026-10-05T18:49:55+09:00"
+        "live": "2026-10-06T00:49:05+09:00"
       },
-      "last_seen_kst": "2026-10-05T18:49:55+09:00",
-      "link": "https://www.hankyung.com/article/2026100537351",
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.hankyung.com/article/202610042842i",
       "source": "한국경제",
+      "source_body_digest": "22e7d3b7fe060a900a92ddd5a6b2309ed5a48e105f8deb6e3d9cf8d836025676",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2d3977d8830d9fe9184d267ce7aad2e9e99c88bfbf10b463ef03289a660650e9",
+      "source_fact_identity": "source_facts:v1:ec3ab0cb1a4f7c9becafc3bd104322fe79de683e65f262c9a1432c1c4d02006b",
       "source_fact_keys": [
-        "source_fact:v1:79500a87a79a49556291e2c35f06be0b7c9bc4d94ca787d478d3e6bf339c3f05",
-        "source_fact:v1:fd0ae1e9f1f684353bf9f1a95df29f4e0c4b2bd11eaad6408587379c8e9da692"
+        "source_fact:v1:3d4924887547ada8b3afa937aefe0ca0b31208fcf9d69f037b91f0da78638e48",
+        "source_fact:v1:71c5340958be8fce64067b6aa78fc8737b3a2e228a859b51948760f8efb14330",
+        "source_fact:v1:f42ad01a00705dcfb8f50b0bf8940136d99df6c4f56e92167cbdfa7b825b0444"
       ],
-      "source_published_kst": "2026-10-05T18:18+09:00",
-      "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
+      "source_published_kst": "2026-10-05T09:13+09:00",
+      "title": "\"국채 5%에도 주식이 낫다…반도체 대형주 쥐고 오래 기다려라\""
     },
     "event:a46dc68575604c3391596e57": {
       "first_seen_kst": "2026-10-03T19:02:18+09:00",
@@ -4801,6 +4804,26 @@
       "source_published_kst": "2026-10-05T05:01+09:00",
       "title": "국회 정무위 6일 국감 돌입…금융권 해킹에 5대 은행장 줄소환되나"
     },
+    "fact:05d036953aff39988c881c84": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005001500099",
+      "source": "연합뉴스",
+      "source_body_digest": "e0c7e660b0c4e7ea2d5a4c9c43e8f11dfba590821c9a05b96468a9f897edac35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d35f97c4aa1ac0aeac69aac2400a2afe853e01291dc389a11c4dea7be802ffd",
+      "source_fact_keys": [
+        "source_fact:v1:1c8bf0cfc2d9aeaaa78bd1cc4cc37ff07487882a43ab640b702b8b13417f6ed9",
+        "source_fact:v1:5d40ed51239e1f316e95886fdc87092cf223f44f07f4c0145371d6b930ec87f9",
+        "source_fact:v1:dfc03c8ead56809d790b2beee569512c8f20320eb08ae631b3eabfaafeb02be5",
+        "source_fact:v1:edcaadf72f8609f02afea6233a0bc1b2002fd1a7aa75633205ee8ab9d6995f96"
+      ],
+      "source_published_kst": "2026-10-05T03:42+09:00",
+      "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
+    },
     "fact:0800e69c81117652619f8305": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -5280,6 +5303,23 @@
       ],
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
+    },
+    "fact:228fb4b90fbea63e6b1466de": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169782",
+      "source": "매일경제",
+      "source_body_digest": "dce448908483daec120da7cdf1d2bcdc210e8960b7eb0e62435231b4683e9197",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b879132a8345d9260cbdcf84821270602b763220c4ddea70708fc40b1e54609",
+      "source_fact_keys": [
+        "source_fact:v1:2e5abdc780e10de2d53c18c14d566ac7919bd82776e06db5e9a1a006c5d1a96b"
+      ],
+      "source_published_kst": "2026-10-05T21:00+09:00",
+      "title": "알보테크, FDA 심랜디 미국 생산설비 추가 승인에 공급능력 2배 확대 기대"
     },
     "fact:2296c627d4c6d749556e869d": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
@@ -6341,6 +6381,23 @@
       "source_published_kst": "2026-10-05T15:38+09:00",
       "title": "김민석 \"李대통령의 '3대 사회정책' 환영…국민 삶 위해 민생 올인\""
     },
+    "fact:8520a30d00b855ecb9f17dfa": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168245",
+      "source": "매일경제",
+      "source_body_digest": "dfce7625ec8085df128c9207b869982689bbf4ffa342d09c7b0dc2a7117024e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11bbcf92619dcbbfcb148da32d164fb004bb784aeffafeecd74d4473bb9837f9",
+      "source_fact_keys": [
+        "source_fact:v1:34056b200cdafee042a332c9c8cb9ee6cb0bb6906a9169920752c7a6c881ec98"
+      ],
+      "source_published_kst": "2026-10-05T06:05+09:00",
+      "title": "“안 털린 은행이 없네, 내 정보 어디로”…정보유출에 흔들리는 금융권"
+    },
     "fact:85a1db6fe38ec6a4eb60a08a": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -6741,6 +6798,25 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "fact:a028930c37abd9dc47294bfe": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.hankyung.com/article/202610042842i",
+      "source": "한국경제",
+      "source_body_digest": "22e7d3b7fe060a900a92ddd5a6b2309ed5a48e105f8deb6e3d9cf8d836025676",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ec3ab0cb1a4f7c9becafc3bd104322fe79de683e65f262c9a1432c1c4d02006b",
+      "source_fact_keys": [
+        "source_fact:v1:3d4924887547ada8b3afa937aefe0ca0b31208fcf9d69f037b91f0da78638e48",
+        "source_fact:v1:71c5340958be8fce64067b6aa78fc8737b3a2e228a859b51948760f8efb14330",
+        "source_fact:v1:f42ad01a00705dcfb8f50b0bf8940136d99df6c4f56e92167cbdfa7b825b0444"
+      ],
+      "source_published_kst": "2026-10-05T09:13+09:00",
+      "title": "\"국채 5%에도 주식이 낫다…반도체 대형주 쥐고 오래 기다려라\""
+    },
     "fact:a327b98dabaf58b74c0fc915": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -6950,6 +7026,26 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "독파모, '프런티어 AI·산업 확산' 투트랙 재편…중국 넘는다"
+    },
+    "fact:b1d630496039e06bbac0548c": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04477206645609968",
+      "source": "이데일리",
+      "source_body_digest": "cffbeb7993812f04d97bc124ec30a8780cffe3bd26b5ad8d2d843d1016324f21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:985ae013a4ee10f6f3d732a397292ab1285ef64a35140b5c9ded5ae3d367165c",
+      "source_fact_keys": [
+        "source_fact:v1:01d33e8fbaecd5106ee3ed93d99f0b9b841b86439c68945aa53468eb536f8413",
+        "source_fact:v1:7014234915e049fbce05efb4340ceaddf271c3cf93cf32f6bb775f0e681939f6",
+        "source_fact:v1:85ab16d136e14d9a958853673518133148429e538a69618ba1260d8e4700be7b",
+        "source_fact:v1:8e47929a258084cd8f6c9aabf5f469eb3e4e89f38b17ddf04eba4569cb56f671"
+      ],
+      "source_published_kst": "2026-10-05T22:45+09:00",
+      "title": "[美특징주]PTC, 슈나이더일렉트릭에 피인수 소식에 급등"
     },
     "fact:b57857aa815d46a8e25cd63c": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -7583,6 +7679,26 @@
       "source_published_kst": "2026-10-04T22:38+09:00",
       "title": "\"사우디, 2034 월드컵 경기장 '네옴 스타디움' 건설 계획 보류\" | 연합뉴스"
     },
+    "fact:fc81ef9db168e106aae67768": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168710",
+      "source": "매일경제",
+      "source_body_digest": "23977261d24fddd7e098b2e32743364a454efdd3ec6ca4b0deb59333aeb55fa9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7451cfd1b9795e59c6d935b07d00b1bfe3c573ffd3131ad688341eebdae7d0f2",
+      "source_fact_keys": [
+        "source_fact:v1:585f09d1b506098d7c28158965555c7f4ec9d087cb3ff9f142feac02c8a115c7",
+        "source_fact:v1:c587ed2a8931e880684df9db7b808ae52881fc0fa1ad3a59db79880e67d58bc8",
+        "source_fact:v1:e44a4d201ed34fee2b2245e12fd825b062aad305f8c1ac5c5dbe7f7d740caec4",
+        "source_fact:v1:ffec7eadf5720e70321231f614fb7251d5db584f62dc1149a85a7e9361c5e860"
+      ],
+      "source_published_kst": "2026-10-05T21:02+09:00",
+      "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
+    },
     "fact:ff4d615e58fc5d7ecdadb822": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -7637,6 +7753,25 @@
       "link": "https://www.fnnews.com/news/202609220924088819",
       "source": "파이낸셜뉴스",
       "title": "AI 특수에 삼성전자 HBM4 매출 비중 내년 2배 증가-KB證"
+    },
+    "link:006715de712b83397526b087": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.hankyung.com/article/202610042842i",
+      "source": "한국경제",
+      "source_body_digest": "22e7d3b7fe060a900a92ddd5a6b2309ed5a48e105f8deb6e3d9cf8d836025676",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ec3ab0cb1a4f7c9becafc3bd104322fe79de683e65f262c9a1432c1c4d02006b",
+      "source_fact_keys": [
+        "source_fact:v1:3d4924887547ada8b3afa937aefe0ca0b31208fcf9d69f037b91f0da78638e48",
+        "source_fact:v1:71c5340958be8fce64067b6aa78fc8737b3a2e228a859b51948760f8efb14330",
+        "source_fact:v1:f42ad01a00705dcfb8f50b0bf8940136d99df6c4f56e92167cbdfa7b825b0444"
+      ],
+      "source_published_kst": "2026-10-05T09:13+09:00",
+      "title": "\"국채 5%에도 주식이 낫다…반도체 대형주 쥐고 오래 기다려라\""
     },
     "link:0076e544267b8785c5fe50ec": {
       "first_seen_kst": "2026-10-03T13:31:23+09:00",
@@ -7746,6 +7881,26 @@
       ],
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "link:017ecc76ca1d8191777b3985": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168710",
+      "source": "매일경제",
+      "source_body_digest": "23977261d24fddd7e098b2e32743364a454efdd3ec6ca4b0deb59333aeb55fa9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7451cfd1b9795e59c6d935b07d00b1bfe3c573ffd3131ad688341eebdae7d0f2",
+      "source_fact_keys": [
+        "source_fact:v1:585f09d1b506098d7c28158965555c7f4ec9d087cb3ff9f142feac02c8a115c7",
+        "source_fact:v1:c587ed2a8931e880684df9db7b808ae52881fc0fa1ad3a59db79880e67d58bc8",
+        "source_fact:v1:e44a4d201ed34fee2b2245e12fd825b062aad305f8c1ac5c5dbe7f7d740caec4",
+        "source_fact:v1:ffec7eadf5720e70321231f614fb7251d5db584f62dc1149a85a7e9361c5e860"
+      ],
+      "source_published_kst": "2026-10-05T21:02+09:00",
+      "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
     },
     "link:0192bce21a4f9ee5d0bfa1da": {
       "first_seen_kst": "2026-10-01T18:06:18+09:00",
@@ -15388,6 +15543,26 @@
       "source": "머니투데이",
       "title": "정점식 \"국민 위해 필요한 건 '공소취소 특검' 아니라 '레버리지 특검'\""
     },
+    "link:7742de561c79c7b71e4c981e": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005001500099",
+      "source": "연합뉴스",
+      "source_body_digest": "e0c7e660b0c4e7ea2d5a4c9c43e8f11dfba590821c9a05b96468a9f897edac35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d35f97c4aa1ac0aeac69aac2400a2afe853e01291dc389a11c4dea7be802ffd",
+      "source_fact_keys": [
+        "source_fact:v1:1c8bf0cfc2d9aeaaa78bd1cc4cc37ff07487882a43ab640b702b8b13417f6ed9",
+        "source_fact:v1:5d40ed51239e1f316e95886fdc87092cf223f44f07f4c0145371d6b930ec87f9",
+        "source_fact:v1:dfc03c8ead56809d790b2beee569512c8f20320eb08ae631b3eabfaafeb02be5",
+        "source_fact:v1:edcaadf72f8609f02afea6233a0bc1b2002fd1a7aa75633205ee8ab9d6995f96"
+      ],
+      "source_published_kst": "2026-10-05T03:42+09:00",
+      "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
+    },
     "link:7760d7b99b66e5ee059d2593": {
       "first_seen_kst": "2026-09-18T06:33:53+09:00",
       "lanes": {
@@ -15585,6 +15760,26 @@
       "link": "https://www.mk.co.kr/news/stock/12158557",
       "source": "매일경제",
       "title": "'日 글로벌X 닛케이 ETF' 일학개미 이달 순매수 1위"
+    },
+    "link:7a0da625f9d6ce26d7c55640": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04477206645609968",
+      "source": "이데일리",
+      "source_body_digest": "cffbeb7993812f04d97bc124ec30a8780cffe3bd26b5ad8d2d843d1016324f21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:985ae013a4ee10f6f3d732a397292ab1285ef64a35140b5c9ded5ae3d367165c",
+      "source_fact_keys": [
+        "source_fact:v1:01d33e8fbaecd5106ee3ed93d99f0b9b841b86439c68945aa53468eb536f8413",
+        "source_fact:v1:7014234915e049fbce05efb4340ceaddf271c3cf93cf32f6bb775f0e681939f6",
+        "source_fact:v1:85ab16d136e14d9a958853673518133148429e538a69618ba1260d8e4700be7b",
+        "source_fact:v1:8e47929a258084cd8f6c9aabf5f469eb3e4e89f38b17ddf04eba4569cb56f671"
+      ],
+      "source_published_kst": "2026-10-05T22:45+09:00",
+      "title": "[美특징주]PTC, 슈나이더일렉트릭에 피인수 소식에 급등"
     },
     "link:7aa2c1e050efb6bd5a316769": {
       "first_seen_kst": "2026-09-18T20:38:14+09:00",
@@ -16407,6 +16602,23 @@
       "link": "https://www.mt.co.kr/index.php/stock/2026/09/24/2026092410095954279",
       "source": "머니투데이",
       "title": "HLB, 담관암 신약 승인 다음은 간암 신약…남은 이벤트는"
+    },
+    "link:880b40d1a91cf15370d2217a": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168245",
+      "source": "매일경제",
+      "source_body_digest": "dfce7625ec8085df128c9207b869982689bbf4ffa342d09c7b0dc2a7117024e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11bbcf92619dcbbfcb148da32d164fb004bb784aeffafeecd74d4473bb9837f9",
+      "source_fact_keys": [
+        "source_fact:v1:34056b200cdafee042a332c9c8cb9ee6cb0bb6906a9169920752c7a6c881ec98"
+      ],
+      "source_published_kst": "2026-10-05T06:05+09:00",
+      "title": "“안 털린 은행이 없네, 내 정보 어디로”…정보유출에 흔들리는 금융권"
     },
     "link:883bde6ea1f7bb2b0af55f49": {
       "first_seen_kst": "2026-09-25T04:05:10+09:00",
@@ -20577,6 +20789,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:01+09:00",
       "title": "‘미토스 쇼크'가 경고한 AI 해킹 현실화…금융권 공격서 드러난 흔적"
+    },
+    "link:c521a94e509eadb69baec28e": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169782",
+      "source": "매일경제",
+      "source_body_digest": "dce448908483daec120da7cdf1d2bcdc210e8960b7eb0e62435231b4683e9197",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b879132a8345d9260cbdcf84821270602b763220c4ddea70708fc40b1e54609",
+      "source_fact_keys": [
+        "source_fact:v1:2e5abdc780e10de2d53c18c14d566ac7919bd82776e06db5e9a1a006c5d1a96b"
+      ],
+      "source_published_kst": "2026-10-05T21:00+09:00",
+      "title": "알보테크, FDA 심랜디 미국 생산설비 추가 승인에 공급능력 2배 확대 기대"
     },
     "link:c5672edd84c549f009cea73e": {
       "first_seen_kst": "2026-09-20T06:33:23+09:00",
@@ -28096,6 +28325,26 @@
       "source": "아시아경제",
       "title": "[Why&Next]노스페이스와 맞짱?…네파 품은 K2, '카니발리제이션' 리스크"
     },
+    "original:3b367c929ccff7c0076e98c8": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005001500099",
+      "source": "연합뉴스",
+      "source_body_digest": "e0c7e660b0c4e7ea2d5a4c9c43e8f11dfba590821c9a05b96468a9f897edac35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d35f97c4aa1ac0aeac69aac2400a2afe853e01291dc389a11c4dea7be802ffd",
+      "source_fact_keys": [
+        "source_fact:v1:1c8bf0cfc2d9aeaaa78bd1cc4cc37ff07487882a43ab640b702b8b13417f6ed9",
+        "source_fact:v1:5d40ed51239e1f316e95886fdc87092cf223f44f07f4c0145371d6b930ec87f9",
+        "source_fact:v1:dfc03c8ead56809d790b2beee569512c8f20320eb08ae631b3eabfaafeb02be5",
+        "source_fact:v1:edcaadf72f8609f02afea6233a0bc1b2002fd1a7aa75633205ee8ab9d6995f96"
+      ],
+      "source_published_kst": "2026-10-05T03:42+09:00",
+      "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
+    },
     "original:3b5fb874c2cde6de71e41e99": {
       "first_seen_kst": "2026-10-05T11:24:20+09:00",
       "lanes": {
@@ -28851,6 +29100,23 @@
       "source": "전자신문",
       "title": "삼성바이오에피스, 테바와 바이오시밀러 2종 개발·상업화 협력"
     },
+    "original:4552aaf1f3b572285f222d38": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168245",
+      "source": "매일경제",
+      "source_body_digest": "dfce7625ec8085df128c9207b869982689bbf4ffa342d09c7b0dc2a7117024e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11bbcf92619dcbbfcb148da32d164fb004bb784aeffafeecd74d4473bb9837f9",
+      "source_fact_keys": [
+        "source_fact:v1:34056b200cdafee042a332c9c8cb9ee6cb0bb6906a9169920752c7a6c881ec98"
+      ],
+      "source_published_kst": "2026-10-05T06:05+09:00",
+      "title": "“안 털린 은행이 없네, 내 정보 어디로”…정보유출에 흔들리는 금융권"
+    },
     "original:456823dc0834bd9238e4b9aa": {
       "first_seen_kst": "2026-10-05T05:59:37+09:00",
       "lanes": {
@@ -29361,16 +29627,21 @@
     "original:4cb37ab8f421e9d81096f901": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
       "lanes": {
-        "live": "2026-10-05T22:49:24+09:00"
+        "live": "2026-10-06T00:49:05+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:49:24+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169783",
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168710",
       "source": "매일경제",
-      "source_body_digest": "3063eb799c22f9c298097848422592b12e74d52d87860abc7ab514747f5f7d1d",
+      "source_body_digest": "23977261d24fddd7e098b2e32743364a454efdd3ec6ca4b0deb59333aeb55fa9",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-05T21:01+09:00",
+      "source_fact_identity": "source_facts:v1:7451cfd1b9795e59c6d935b07d00b1bfe3c573ffd3131ad688341eebdae7d0f2",
+      "source_fact_keys": [
+        "source_fact:v1:585f09d1b506098d7c28158965555c7f4ec9d087cb3ff9f142feac02c8a115c7",
+        "source_fact:v1:c587ed2a8931e880684df9db7b808ae52881fc0fa1ad3a59db79880e67d58bc8",
+        "source_fact:v1:e44a4d201ed34fee2b2245e12fd825b062aad305f8c1ac5c5dbe7f7d740caec4",
+        "source_fact:v1:ffec7eadf5720e70321231f614fb7251d5db584f62dc1149a85a7e9361c5e860"
+      ],
+      "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
     },
     "original:4d03f2779165f859b4df61f0": {
@@ -33565,6 +33836,25 @@
       "source": "뉴시스",
       "title": "뉴욕증시, 강보합 마감…브렌트유 '美 중동 항모 추가'에 4%↑"
     },
+    "original:8c7592ca8de2462f973cc6ac": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.hankyung.com/article/202610042842i",
+      "source": "한국경제",
+      "source_body_digest": "22e7d3b7fe060a900a92ddd5a6b2309ed5a48e105f8deb6e3d9cf8d836025676",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ec3ab0cb1a4f7c9becafc3bd104322fe79de683e65f262c9a1432c1c4d02006b",
+      "source_fact_keys": [
+        "source_fact:v1:3d4924887547ada8b3afa937aefe0ca0b31208fcf9d69f037b91f0da78638e48",
+        "source_fact:v1:71c5340958be8fce64067b6aa78fc8737b3a2e228a859b51948760f8efb14330",
+        "source_fact:v1:f42ad01a00705dcfb8f50b0bf8940136d99df6c4f56e92167cbdfa7b825b0444"
+      ],
+      "source_published_kst": "2026-10-05T09:13+09:00",
+      "title": "\"국채 5%에도 주식이 낫다…반도체 대형주 쥐고 오래 기다려라\""
+    },
     "original:8c7b9d58f6ee793e5fda73b1": {
       "first_seen_kst": "2026-09-18T09:03:50+09:00",
       "lanes": {
@@ -33668,6 +33958,26 @@
       "link": "https://www.mt.co.kr/stock/2026/09/21/2026092116320153854",
       "source": "머니투데이",
       "title": "ETF 쏠림의 그늘…'자투리 펀드' 올해만 50개 늘었다"
+    },
+    "original:8e091a9327fe76de82af8786": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04477206645609968",
+      "source": "이데일리",
+      "source_body_digest": "cffbeb7993812f04d97bc124ec30a8780cffe3bd26b5ad8d2d843d1016324f21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:985ae013a4ee10f6f3d732a397292ab1285ef64a35140b5c9ded5ae3d367165c",
+      "source_fact_keys": [
+        "source_fact:v1:01d33e8fbaecd5106ee3ed93d99f0b9b841b86439c68945aa53468eb536f8413",
+        "source_fact:v1:7014234915e049fbce05efb4340ceaddf271c3cf93cf32f6bb775f0e681939f6",
+        "source_fact:v1:85ab16d136e14d9a958853673518133148429e538a69618ba1260d8e4700be7b",
+        "source_fact:v1:8e47929a258084cd8f6c9aabf5f469eb3e4e89f38b17ddf04eba4569cb56f671"
+      ],
+      "source_published_kst": "2026-10-05T22:45+09:00",
+      "title": "[美특징주]PTC, 슈나이더일렉트릭에 피인수 소식에 급등"
     },
     "original:8e19383f17982e4c0ef63757": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
@@ -37345,6 +37655,23 @@
       "source": "이투데이",
       "title": "SK하이닉스, 솔리다임 자금조달 방식 미정…“주주가치 최우선”"
     },
+    "original:cb78bde6d5ca33031e515fe5": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169782",
+      "source": "매일경제",
+      "source_body_digest": "dce448908483daec120da7cdf1d2bcdc210e8960b7eb0e62435231b4683e9197",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b879132a8345d9260cbdcf84821270602b763220c4ddea70708fc40b1e54609",
+      "source_fact_keys": [
+        "source_fact:v1:2e5abdc780e10de2d53c18c14d566ac7919bd82776e06db5e9a1a006c5d1a96b"
+      ],
+      "source_published_kst": "2026-10-05T21:00+09:00",
+      "title": "알보테크, FDA 심랜디 미국 생산설비 추가 승인에 공급능력 2배 확대 기대"
+    },
     "original:cb8663142e6e4babfb311976": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -40818,6 +41145,25 @@
       "source_published_kst": "2026-10-05T09:06+09:00",
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     },
+    "source_fact:00d769a912ee4fe70bfd1118": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.hankyung.com/article/202610042842i",
+      "source": "한국경제",
+      "source_body_digest": "22e7d3b7fe060a900a92ddd5a6b2309ed5a48e105f8deb6e3d9cf8d836025676",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ec3ab0cb1a4f7c9becafc3bd104322fe79de683e65f262c9a1432c1c4d02006b",
+      "source_fact_keys": [
+        "source_fact:v1:3d4924887547ada8b3afa937aefe0ca0b31208fcf9d69f037b91f0da78638e48",
+        "source_fact:v1:71c5340958be8fce64067b6aa78fc8737b3a2e228a859b51948760f8efb14330",
+        "source_fact:v1:f42ad01a00705dcfb8f50b0bf8940136d99df6c4f56e92167cbdfa7b825b0444"
+      ],
+      "source_published_kst": "2026-10-05T09:13+09:00",
+      "title": "\"국채 5%에도 주식이 낫다…반도체 대형주 쥐고 오래 기다려라\""
+    },
     "source_fact:012ed2f7f7adec33dc278a02": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
       "lanes": {
@@ -41578,6 +41924,25 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "KAIST, 데이터 추가·삭제에도 검색 정확도 유지하는 'CONDA' 개발"
     },
+    "source_fact:122ab596e9ca57db761eb14c": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.hankyung.com/article/202610042842i",
+      "source": "한국경제",
+      "source_body_digest": "22e7d3b7fe060a900a92ddd5a6b2309ed5a48e105f8deb6e3d9cf8d836025676",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ec3ab0cb1a4f7c9becafc3bd104322fe79de683e65f262c9a1432c1c4d02006b",
+      "source_fact_keys": [
+        "source_fact:v1:3d4924887547ada8b3afa937aefe0ca0b31208fcf9d69f037b91f0da78638e48",
+        "source_fact:v1:71c5340958be8fce64067b6aa78fc8737b3a2e228a859b51948760f8efb14330",
+        "source_fact:v1:f42ad01a00705dcfb8f50b0bf8940136d99df6c4f56e92167cbdfa7b825b0444"
+      ],
+      "source_published_kst": "2026-10-05T09:13+09:00",
+      "title": "\"국채 5%에도 주식이 낫다…반도체 대형주 쥐고 오래 기다려라\""
+    },
     "source_fact:12b70517195b31b38ee58bd3": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -41629,6 +41994,26 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:13841c025cbc0731ce7eee45": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168710",
+      "source": "매일경제",
+      "source_body_digest": "23977261d24fddd7e098b2e32743364a454efdd3ec6ca4b0deb59333aeb55fa9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7451cfd1b9795e59c6d935b07d00b1bfe3c573ffd3131ad688341eebdae7d0f2",
+      "source_fact_keys": [
+        "source_fact:v1:585f09d1b506098d7c28158965555c7f4ec9d087cb3ff9f142feac02c8a115c7",
+        "source_fact:v1:c587ed2a8931e880684df9db7b808ae52881fc0fa1ad3a59db79880e67d58bc8",
+        "source_fact:v1:e44a4d201ed34fee2b2245e12fd825b062aad305f8c1ac5c5dbe7f7d740caec4",
+        "source_fact:v1:ffec7eadf5720e70321231f614fb7251d5db584f62dc1149a85a7e9361c5e860"
+      ],
+      "source_published_kst": "2026-10-05T21:02+09:00",
+      "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
     },
     "source_fact:13dda5694f1aca376ee80a47": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -41839,6 +42224,26 @@
       ],
       "source_published_kst": "2026-10-05T20:03+09:00",
       "title": "인스메드, CFO 10월 30일 사임…연간 매출 가이던스 유지"
+    },
+    "source_fact:17e91e4ced04ac1d22458b07": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04477206645609968",
+      "source": "이데일리",
+      "source_body_digest": "cffbeb7993812f04d97bc124ec30a8780cffe3bd26b5ad8d2d843d1016324f21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:985ae013a4ee10f6f3d732a397292ab1285ef64a35140b5c9ded5ae3d367165c",
+      "source_fact_keys": [
+        "source_fact:v1:01d33e8fbaecd5106ee3ed93d99f0b9b841b86439c68945aa53468eb536f8413",
+        "source_fact:v1:7014234915e049fbce05efb4340ceaddf271c3cf93cf32f6bb775f0e681939f6",
+        "source_fact:v1:85ab16d136e14d9a958853673518133148429e538a69618ba1260d8e4700be7b",
+        "source_fact:v1:8e47929a258084cd8f6c9aabf5f469eb3e4e89f38b17ddf04eba4569cb56f671"
+      ],
+      "source_published_kst": "2026-10-05T22:45+09:00",
+      "title": "[美특징주]PTC, 슈나이더일렉트릭에 피인수 소식에 급등"
     },
     "source_fact:18d6a6ba65320d94e50ed9c2": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
@@ -42080,6 +42485,26 @@
       "source_published_kst": "2026-10-05T12:59+09:00",
       "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
     },
+    "source_fact:1e4b7b3dba0af7a503dcb8b1": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168710",
+      "source": "매일경제",
+      "source_body_digest": "23977261d24fddd7e098b2e32743364a454efdd3ec6ca4b0deb59333aeb55fa9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7451cfd1b9795e59c6d935b07d00b1bfe3c573ffd3131ad688341eebdae7d0f2",
+      "source_fact_keys": [
+        "source_fact:v1:585f09d1b506098d7c28158965555c7f4ec9d087cb3ff9f142feac02c8a115c7",
+        "source_fact:v1:c587ed2a8931e880684df9db7b808ae52881fc0fa1ad3a59db79880e67d58bc8",
+        "source_fact:v1:e44a4d201ed34fee2b2245e12fd825b062aad305f8c1ac5c5dbe7f7d740caec4",
+        "source_fact:v1:ffec7eadf5720e70321231f614fb7251d5db584f62dc1149a85a7e9361c5e860"
+      ],
+      "source_published_kst": "2026-10-05T21:02+09:00",
+      "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
+    },
     "source_fact:1f2ec15451c111ca31950500": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -42218,6 +42643,26 @@
       ],
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
+    },
+    "source_fact:2346ec43fd4d6b937b1c938d": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04477206645609968",
+      "source": "이데일리",
+      "source_body_digest": "cffbeb7993812f04d97bc124ec30a8780cffe3bd26b5ad8d2d843d1016324f21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:985ae013a4ee10f6f3d732a397292ab1285ef64a35140b5c9ded5ae3d367165c",
+      "source_fact_keys": [
+        "source_fact:v1:01d33e8fbaecd5106ee3ed93d99f0b9b841b86439c68945aa53468eb536f8413",
+        "source_fact:v1:7014234915e049fbce05efb4340ceaddf271c3cf93cf32f6bb775f0e681939f6",
+        "source_fact:v1:85ab16d136e14d9a958853673518133148429e538a69618ba1260d8e4700be7b",
+        "source_fact:v1:8e47929a258084cd8f6c9aabf5f469eb3e4e89f38b17ddf04eba4569cb56f671"
+      ],
+      "source_published_kst": "2026-10-05T22:45+09:00",
+      "title": "[美특징주]PTC, 슈나이더일렉트릭에 피인수 소식에 급등"
     },
     "source_fact:237a531b061389d59764c34c": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -42581,6 +43026,26 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:2ddfeb82cfa6806a46193712": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04477206645609968",
+      "source": "이데일리",
+      "source_body_digest": "cffbeb7993812f04d97bc124ec30a8780cffe3bd26b5ad8d2d843d1016324f21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:985ae013a4ee10f6f3d732a397292ab1285ef64a35140b5c9ded5ae3d367165c",
+      "source_fact_keys": [
+        "source_fact:v1:01d33e8fbaecd5106ee3ed93d99f0b9b841b86439c68945aa53468eb536f8413",
+        "source_fact:v1:7014234915e049fbce05efb4340ceaddf271c3cf93cf32f6bb775f0e681939f6",
+        "source_fact:v1:85ab16d136e14d9a958853673518133148429e538a69618ba1260d8e4700be7b",
+        "source_fact:v1:8e47929a258084cd8f6c9aabf5f469eb3e4e89f38b17ddf04eba4569cb56f671"
+      ],
+      "source_published_kst": "2026-10-05T22:45+09:00",
+      "title": "[美특징주]PTC, 슈나이더일렉트릭에 피인수 소식에 급등"
     },
     "source_fact:2f1ccf96d52dd3e529406194": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -44608,6 +45073,26 @@
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
     },
+    "source_fact:5560ed5e579dd2eea18340d2": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168710",
+      "source": "매일경제",
+      "source_body_digest": "23977261d24fddd7e098b2e32743364a454efdd3ec6ca4b0deb59333aeb55fa9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7451cfd1b9795e59c6d935b07d00b1bfe3c573ffd3131ad688341eebdae7d0f2",
+      "source_fact_keys": [
+        "source_fact:v1:585f09d1b506098d7c28158965555c7f4ec9d087cb3ff9f142feac02c8a115c7",
+        "source_fact:v1:c587ed2a8931e880684df9db7b808ae52881fc0fa1ad3a59db79880e67d58bc8",
+        "source_fact:v1:e44a4d201ed34fee2b2245e12fd825b062aad305f8c1ac5c5dbe7f7d740caec4",
+        "source_fact:v1:ffec7eadf5720e70321231f614fb7251d5db584f62dc1149a85a7e9361c5e860"
+      ],
+      "source_published_kst": "2026-10-05T21:02+09:00",
+      "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
+    },
     "source_fact:5623479559fcc1071ed4b838": {
       "first_seen_kst": "2026-10-06T00:26:07+09:00",
       "lanes": {
@@ -45166,6 +45651,26 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "source_fact:5d4a83512fdd37eb52951be5": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168710",
+      "source": "매일경제",
+      "source_body_digest": "23977261d24fddd7e098b2e32743364a454efdd3ec6ca4b0deb59333aeb55fa9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7451cfd1b9795e59c6d935b07d00b1bfe3c573ffd3131ad688341eebdae7d0f2",
+      "source_fact_keys": [
+        "source_fact:v1:585f09d1b506098d7c28158965555c7f4ec9d087cb3ff9f142feac02c8a115c7",
+        "source_fact:v1:c587ed2a8931e880684df9db7b808ae52881fc0fa1ad3a59db79880e67d58bc8",
+        "source_fact:v1:e44a4d201ed34fee2b2245e12fd825b062aad305f8c1ac5c5dbe7f7d740caec4",
+        "source_fact:v1:ffec7eadf5720e70321231f614fb7251d5db584f62dc1149a85a7e9361c5e860"
+      ],
+      "source_published_kst": "2026-10-05T21:02+09:00",
+      "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
+    },
     "source_fact:5dd806d7a2801ff9f76461d3": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -45690,6 +46195,25 @@
       ],
       "source_published_kst": "2026-10-05T21:22+09:00",
       "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
+    },
+    "source_fact:6af975749066721a43d2cef2": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.hankyung.com/article/202610042842i",
+      "source": "한국경제",
+      "source_body_digest": "22e7d3b7fe060a900a92ddd5a6b2309ed5a48e105f8deb6e3d9cf8d836025676",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ec3ab0cb1a4f7c9becafc3bd104322fe79de683e65f262c9a1432c1c4d02006b",
+      "source_fact_keys": [
+        "source_fact:v1:3d4924887547ada8b3afa937aefe0ca0b31208fcf9d69f037b91f0da78638e48",
+        "source_fact:v1:71c5340958be8fce64067b6aa78fc8737b3a2e228a859b51948760f8efb14330",
+        "source_fact:v1:f42ad01a00705dcfb8f50b0bf8940136d99df6c4f56e92167cbdfa7b825b0444"
+      ],
+      "source_published_kst": "2026-10-05T09:13+09:00",
+      "title": "\"국채 5%에도 주식이 낫다…반도체 대형주 쥐고 오래 기다려라\""
     },
     "source_fact:6be07b4c46b9f8eb9b6e2692": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -47789,6 +48313,26 @@
       "source_published_kst": "2026-10-05T22:55+09:00",
       "title": "美국채금리 5.3%에 다우 ‘주춤’… 뉴욕증시 혼조 출발"
     },
+    "source_fact:91f3f2e277bc85f05e4d3c09": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005001500099",
+      "source": "연합뉴스",
+      "source_body_digest": "e0c7e660b0c4e7ea2d5a4c9c43e8f11dfba590821c9a05b96468a9f897edac35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d35f97c4aa1ac0aeac69aac2400a2afe853e01291dc389a11c4dea7be802ffd",
+      "source_fact_keys": [
+        "source_fact:v1:1c8bf0cfc2d9aeaaa78bd1cc4cc37ff07487882a43ab640b702b8b13417f6ed9",
+        "source_fact:v1:5d40ed51239e1f316e95886fdc87092cf223f44f07f4c0145371d6b930ec87f9",
+        "source_fact:v1:dfc03c8ead56809d790b2beee569512c8f20320eb08ae631b3eabfaafeb02be5",
+        "source_fact:v1:edcaadf72f8609f02afea6233a0bc1b2002fd1a7aa75633205ee8ab9d6995f96"
+      ],
+      "source_published_kst": "2026-10-05T03:42+09:00",
+      "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
+    },
     "source_fact:92d93625f62a5ca426cf648d": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -48812,6 +49356,23 @@
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "디파이 디벨롭먼트, 3분기 주당 NAV 2배 이상 전망..SOL 보유 11%↑"
     },
+    "source_fact:a6c6e4acb4228d6bd34a244f": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168245",
+      "source": "매일경제",
+      "source_body_digest": "dfce7625ec8085df128c9207b869982689bbf4ffa342d09c7b0dc2a7117024e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11bbcf92619dcbbfcb148da32d164fb004bb784aeffafeecd74d4473bb9837f9",
+      "source_fact_keys": [
+        "source_fact:v1:34056b200cdafee042a332c9c8cb9ee6cb0bb6906a9169920752c7a6c881ec98"
+      ],
+      "source_published_kst": "2026-10-05T06:05+09:00",
+      "title": "“안 털린 은행이 없네, 내 정보 어디로”…정보유출에 흔들리는 금융권"
+    },
     "source_fact:a714bfe7d8e79c2c5a5df1dc": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -49041,6 +49602,26 @@
       ],
       "source_published_kst": "2026-10-05T22:27+09:00",
       "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
+    },
+    "source_fact:acb82102db0f34db779c825b": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005001500099",
+      "source": "연합뉴스",
+      "source_body_digest": "e0c7e660b0c4e7ea2d5a4c9c43e8f11dfba590821c9a05b96468a9f897edac35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d35f97c4aa1ac0aeac69aac2400a2afe853e01291dc389a11c4dea7be802ffd",
+      "source_fact_keys": [
+        "source_fact:v1:1c8bf0cfc2d9aeaaa78bd1cc4cc37ff07487882a43ab640b702b8b13417f6ed9",
+        "source_fact:v1:5d40ed51239e1f316e95886fdc87092cf223f44f07f4c0145371d6b930ec87f9",
+        "source_fact:v1:dfc03c8ead56809d790b2beee569512c8f20320eb08ae631b3eabfaafeb02be5",
+        "source_fact:v1:edcaadf72f8609f02afea6233a0bc1b2002fd1a7aa75633205ee8ab9d6995f96"
+      ],
+      "source_published_kst": "2026-10-05T03:42+09:00",
+      "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
     },
     "source_fact:ad60dee9dd63e894a9412073": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -49452,6 +50033,26 @@
       ],
       "source_published_kst": "2026-10-05T16:20+09:00",
       "title": "'해킹 사태' 은행장 국감 줄줄이 소환될듯..연말 CEO 연임 '브레이크'"
+    },
+    "source_fact:b800a8894904fdea5703a893": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04477206645609968",
+      "source": "이데일리",
+      "source_body_digest": "cffbeb7993812f04d97bc124ec30a8780cffe3bd26b5ad8d2d843d1016324f21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:985ae013a4ee10f6f3d732a397292ab1285ef64a35140b5c9ded5ae3d367165c",
+      "source_fact_keys": [
+        "source_fact:v1:01d33e8fbaecd5106ee3ed93d99f0b9b841b86439c68945aa53468eb536f8413",
+        "source_fact:v1:7014234915e049fbce05efb4340ceaddf271c3cf93cf32f6bb775f0e681939f6",
+        "source_fact:v1:85ab16d136e14d9a958853673518133148429e538a69618ba1260d8e4700be7b",
+        "source_fact:v1:8e47929a258084cd8f6c9aabf5f469eb3e4e89f38b17ddf04eba4569cb56f671"
+      ],
+      "source_published_kst": "2026-10-05T22:45+09:00",
+      "title": "[美특징주]PTC, 슈나이더일렉트릭에 피인수 소식에 급등"
     },
     "source_fact:b81228cd3d9755329cbbd030": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -51755,6 +52356,23 @@
       "source_published_kst": "2026-10-05T22:29+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 전환사채 발행 확정..쿠폰 0%"
     },
+    "source_fact:f0ea3b0eab4354177fc967e9": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169782",
+      "source": "매일경제",
+      "source_body_digest": "dce448908483daec120da7cdf1d2bcdc210e8960b7eb0e62435231b4683e9197",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b879132a8345d9260cbdcf84821270602b763220c4ddea70708fc40b1e54609",
+      "source_fact_keys": [
+        "source_fact:v1:2e5abdc780e10de2d53c18c14d566ac7919bd82776e06db5e9a1a006c5d1a96b"
+      ],
+      "source_published_kst": "2026-10-05T21:00+09:00",
+      "title": "알보테크, FDA 심랜디 미국 생산설비 추가 승인에 공급능력 2배 확대 기대"
+    },
     "source_fact:f17fa47e5eac952ea3a03e11": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -51771,6 +52389,26 @@
       ],
       "source_published_kst": "2026-10-05T19:53+09:00",
       "title": "재개봉 '어벤져스: 엔드게임', '아바타' 다시 제치고 세계 1위"
+    },
+    "source_fact:f183623a396b0d8df689b074": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005001500099",
+      "source": "연합뉴스",
+      "source_body_digest": "e0c7e660b0c4e7ea2d5a4c9c43e8f11dfba590821c9a05b96468a9f897edac35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d35f97c4aa1ac0aeac69aac2400a2afe853e01291dc389a11c4dea7be802ffd",
+      "source_fact_keys": [
+        "source_fact:v1:1c8bf0cfc2d9aeaaa78bd1cc4cc37ff07487882a43ab640b702b8b13417f6ed9",
+        "source_fact:v1:5d40ed51239e1f316e95886fdc87092cf223f44f07f4c0145371d6b930ec87f9",
+        "source_fact:v1:dfc03c8ead56809d790b2beee569512c8f20320eb08ae631b3eabfaafeb02be5",
+        "source_fact:v1:edcaadf72f8609f02afea6233a0bc1b2002fd1a7aa75633205ee8ab9d6995f96"
+      ],
+      "source_published_kst": "2026-10-05T03:42+09:00",
+      "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
     },
     "source_fact:f389d5d6e802f4c595231310": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -52166,6 +52804,26 @@
       ],
       "source_published_kst": "2026-10-05T20:34+09:00",
       "title": "해로우 헬스, 티르바야 인수 완료..선지급 3000만달러"
+    },
+    "source_fact:fdf0f2293cc8cccf7fdcb62b": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005001500099",
+      "source": "연합뉴스",
+      "source_body_digest": "e0c7e660b0c4e7ea2d5a4c9c43e8f11dfba590821c9a05b96468a9f897edac35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d35f97c4aa1ac0aeac69aac2400a2afe853e01291dc389a11c4dea7be802ffd",
+      "source_fact_keys": [
+        "source_fact:v1:1c8bf0cfc2d9aeaaa78bd1cc4cc37ff07487882a43ab640b702b8b13417f6ed9",
+        "source_fact:v1:5d40ed51239e1f316e95886fdc87092cf223f44f07f4c0145371d6b930ec87f9",
+        "source_fact:v1:dfc03c8ead56809d790b2beee569512c8f20320eb08ae631b3eabfaafeb02be5",
+        "source_fact:v1:edcaadf72f8609f02afea6233a0bc1b2002fd1a7aa75633205ee8ab9d6995f96"
+      ],
+      "source_published_kst": "2026-10-05T03:42+09:00",
+      "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
     },
     "source_fact:fe22db0c5f7685aa6572d276": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -56029,6 +56687,26 @@
       "source": "아시아경제",
       "title": "[Why&Next]노스페이스와 맞짱?…네파 품은 K2, '카니발리제이션' 리스크"
     },
+    "title:3b367c929ccff7c0076e98c8": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005001500099",
+      "source": "연합뉴스",
+      "source_body_digest": "e0c7e660b0c4e7ea2d5a4c9c43e8f11dfba590821c9a05b96468a9f897edac35",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d35f97c4aa1ac0aeac69aac2400a2afe853e01291dc389a11c4dea7be802ffd",
+      "source_fact_keys": [
+        "source_fact:v1:1c8bf0cfc2d9aeaaa78bd1cc4cc37ff07487882a43ab640b702b8b13417f6ed9",
+        "source_fact:v1:5d40ed51239e1f316e95886fdc87092cf223f44f07f4c0145371d6b930ec87f9",
+        "source_fact:v1:dfc03c8ead56809d790b2beee569512c8f20320eb08ae631b3eabfaafeb02be5",
+        "source_fact:v1:edcaadf72f8609f02afea6233a0bc1b2002fd1a7aa75633205ee8ab9d6995f96"
+      ],
+      "source_published_kst": "2026-10-05T03:42+09:00",
+      "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
+    },
     "title:3b5fb874c2cde6de71e41e99": {
       "first_seen_kst": "2026-10-05T11:24:20+09:00",
       "lanes": {
@@ -56794,6 +57472,23 @@
       "source": "전자신문",
       "title": "삼성바이오에피스, 테바와 바이오시밀러 2종 개발·상업화 협력"
     },
+    "title:4552aaf1f3b572285f222d38": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168245",
+      "source": "매일경제",
+      "source_body_digest": "dfce7625ec8085df128c9207b869982689bbf4ffa342d09c7b0dc2a7117024e1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11bbcf92619dcbbfcb148da32d164fb004bb784aeffafeecd74d4473bb9837f9",
+      "source_fact_keys": [
+        "source_fact:v1:34056b200cdafee042a332c9c8cb9ee6cb0bb6906a9169920752c7a6c881ec98"
+      ],
+      "source_published_kst": "2026-10-05T06:05+09:00",
+      "title": "“안 털린 은행이 없네, 내 정보 어디로”…정보유출에 흔들리는 금융권"
+    },
     "title:456823dc0834bd9238e4b9aa": {
       "first_seen_kst": "2026-10-05T05:59:37+09:00",
       "lanes": {
@@ -57304,16 +57999,21 @@
     "title:4cb37ab8f421e9d81096f901": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
       "lanes": {
-        "live": "2026-10-05T22:49:24+09:00"
+        "live": "2026-10-06T00:49:05+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:49:24+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169783",
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168710",
       "source": "매일경제",
-      "source_body_digest": "3063eb799c22f9c298097848422592b12e74d52d87860abc7ab514747f5f7d1d",
+      "source_body_digest": "23977261d24fddd7e098b2e32743364a454efdd3ec6ca4b0deb59333aeb55fa9",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-05T21:01+09:00",
+      "source_fact_identity": "source_facts:v1:7451cfd1b9795e59c6d935b07d00b1bfe3c573ffd3131ad688341eebdae7d0f2",
+      "source_fact_keys": [
+        "source_fact:v1:585f09d1b506098d7c28158965555c7f4ec9d087cb3ff9f142feac02c8a115c7",
+        "source_fact:v1:c587ed2a8931e880684df9db7b808ae52881fc0fa1ad3a59db79880e67d58bc8",
+        "source_fact:v1:e44a4d201ed34fee2b2245e12fd825b062aad305f8c1ac5c5dbe7f7d740caec4",
+        "source_fact:v1:ffec7eadf5720e70321231f614fb7251d5db584f62dc1149a85a7e9361c5e860"
+      ],
+      "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
     },
     "title:4d03f2779165f859b4df61f0": {
@@ -61558,6 +62258,25 @@
       "source": "뉴시스",
       "title": "뉴욕증시, 강보합 마감…브렌트유 '美 중동 항모 추가'에 4%↑"
     },
+    "title:8c7592ca8de2462f973cc6ac": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.hankyung.com/article/202610042842i",
+      "source": "한국경제",
+      "source_body_digest": "22e7d3b7fe060a900a92ddd5a6b2309ed5a48e105f8deb6e3d9cf8d836025676",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ec3ab0cb1a4f7c9becafc3bd104322fe79de683e65f262c9a1432c1c4d02006b",
+      "source_fact_keys": [
+        "source_fact:v1:3d4924887547ada8b3afa937aefe0ca0b31208fcf9d69f037b91f0da78638e48",
+        "source_fact:v1:71c5340958be8fce64067b6aa78fc8737b3a2e228a859b51948760f8efb14330",
+        "source_fact:v1:f42ad01a00705dcfb8f50b0bf8940136d99df6c4f56e92167cbdfa7b825b0444"
+      ],
+      "source_published_kst": "2026-10-05T09:13+09:00",
+      "title": "\"국채 5%에도 주식이 낫다…반도체 대형주 쥐고 오래 기다려라\""
+    },
     "title:8c7b9d58f6ee793e5fda73b1": {
       "first_seen_kst": "2026-09-18T09:03:50+09:00",
       "lanes": {
@@ -61661,6 +62380,26 @@
       "link": "https://www.mt.co.kr/stock/2026/09/21/2026092116320153854",
       "source": "머니투데이",
       "title": "ETF 쏠림의 그늘…'자투리 펀드' 올해만 50개 늘었다"
+    },
+    "title:8e091a9327fe76de82af8786": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04477206645609968",
+      "source": "이데일리",
+      "source_body_digest": "cffbeb7993812f04d97bc124ec30a8780cffe3bd26b5ad8d2d843d1016324f21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:985ae013a4ee10f6f3d732a397292ab1285ef64a35140b5c9ded5ae3d367165c",
+      "source_fact_keys": [
+        "source_fact:v1:01d33e8fbaecd5106ee3ed93d99f0b9b841b86439c68945aa53468eb536f8413",
+        "source_fact:v1:7014234915e049fbce05efb4340ceaddf271c3cf93cf32f6bb775f0e681939f6",
+        "source_fact:v1:85ab16d136e14d9a958853673518133148429e538a69618ba1260d8e4700be7b",
+        "source_fact:v1:8e47929a258084cd8f6c9aabf5f469eb3e4e89f38b17ddf04eba4569cb56f671"
+      ],
+      "source_published_kst": "2026-10-05T22:45+09:00",
+      "title": "[美특징주]PTC, 슈나이더일렉트릭에 피인수 소식에 급등"
     },
     "title:8e19383f17982e4c0ef63757": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
@@ -65394,6 +66133,23 @@
       "source": "이투데이",
       "title": "SK하이닉스, 솔리다임 자금조달 방식 미정…“주주가치 최우선”"
     },
+    "title:cb78bde6d5ca33031e515fe5": {
+      "first_seen_kst": "2026-10-06T00:49:05+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:49:05+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:49:05+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169782",
+      "source": "매일경제",
+      "source_body_digest": "dce448908483daec120da7cdf1d2bcdc210e8960b7eb0e62435231b4683e9197",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8b879132a8345d9260cbdcf84821270602b763220c4ddea70708fc40b1e54609",
+      "source_fact_keys": [
+        "source_fact:v1:2e5abdc780e10de2d53c18c14d566ac7919bd82776e06db5e9a1a006c5d1a96b"
+      ],
+      "source_published_kst": "2026-10-05T21:00+09:00",
+      "title": "알보테크, FDA 심랜디 미국 생산설비 추가 승인에 공급능력 2배 확대 기대"
+    },
     "title:cb8663142e6e4babfb311976": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -68898,5 +69654,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T00:41:11+09:00"
+  "updated_at_kst": "2026-10-06T00:49:05+09:00"
 }
