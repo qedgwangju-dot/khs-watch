@@ -230,9 +230,9 @@ PRODUCTION = re.compile(r'mass\s+production|production\s+rate|monthly\s+output|a
 SOUTHCOM_BASELINE = re.compile(r'April\s+23,?\s*2026|Apr\.?\s*23,?\s*2026|2026.{0,20}4월\s*23', re.I)
 REVERSE = re.compile(
     r'(?:AUTOWARCOM|Autonomous\s+Warfare\s+Command|Project\s+Agincourt|Project\s+Meridian|자율전쟁사령부).{0,120}'
-    r'(?:delay|postpone|cancel|blocked|rejected|cut|defund|suspend|연기|지연|취소|'
+    r'(?:delay|postpone|cancel|blocked|rejected|\bcut\b|defund|suspend|연기|지연|취소|'
     r'무산|차단|부결|삭감|중단)|'
-    r'(?:funding|budget|authorization|예산|승인).{0,100}(?:cut|rejected|blocked|삭감|부결|차단)',
+    r'(?:funding|budget|authorization|예산|승인).{0,100}(?:\bcut\b|rejected|blocked|삭감|부결|차단)',
     re.I | re.S,
 )
 
