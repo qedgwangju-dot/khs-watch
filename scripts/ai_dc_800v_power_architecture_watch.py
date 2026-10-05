@@ -246,13 +246,13 @@ def snapshot(texts: dict[str, str]) -> dict:
     lg_first_half_orders_usd_m = regex_value(
         texts,
         "lg_air",
-        r"first-half orders[^.]{0,120}?\$([0-9]+(?:\.[0-9]+)?)\s*million",
+        r"first-half orders[^.]{0,160}?(?:\$|USD\s*)([0-9]+(?:\.[0-9]+)?)\s*million",
         float,
     )
     lg_2027_chiller_target_usd_m = regex_value(
         texts,
         "lg_air",
-        r"2027 chiller business revenue target[^.]{0,120}?\$([0-9]+(?:\.[0-9]+)?)\s*million",
+        r"2027 chiller business revenue target[^.]{0,160}?(?:\$|USD\s*)([0-9]+(?:\.[0-9]+)?)\s*million",
         float,
     )
     lg_capacity_investment_krw_billion = None
@@ -273,8 +273,25 @@ def snapshot(texts: dict[str, str]) -> dict:
     )
 
     sgc_pair_text = sgc_dcd + " " + sgc_sed
-    sgc_initial_mw = 60.0 if re.search(r"(?:initial|초기)[^.]{0,100}?60\s*(?:MW|megawatt)", sgc_pair_text, re.I) else None
-    sgc_max_mw = 300.0 if re.search(r"(?:up to|최대)[^.]{0,100}?300\s*(?:MW|megawatt)", sgc_pair_text, re.I) else None
+    sgc_initial_mw = regex_value(
+        texts,
+        "sgc_vertiv_sed",
+        r"initial\s+([0-9]+(?:\.[0-9]+)?)\s*(?:MW|-?megawatts?)",
+        float,
+    )
+    if sgc_initial_mw is None:
+        m = re.search(
+            r"capacity of\s+([0-9]+(?:\.[0-9]+)?)\s*MW[^.]{0,80}?initial phase",
+            sgc_dcd,
+            re.I,
+        )
+        sgc_initial_mw = float(m.group(1)) if m else None
+    m = re.search(
+        r"(?:up to|as much as)\s+([0-9]+(?:\.[0-9]+)?)\s*(?:MW|megawatts?)",
+        sgc_pair_text,
+        re.I,
+    )
+    sgc_max_mw = float(m.group(1)) if m else None
 
     facts["execution"] = {
         "lg_air_bilateral_official_long_term_contract": bool(
