@@ -334,6 +334,8 @@ def score(item: dict) -> int:
         return -20
 
     src = item.get('source') or ''
+    if stage == 'meridian_participant_change' and src not in base.OFFICIAL_OR_PRIMARY and src not in base.TRUSTED:
+        return 0
     s = 20
     if base.NUMERIC.search(text):
         s += 3
@@ -455,8 +457,10 @@ def verification(item: dict, group: str, text: str) -> str:
         return 'MITRE 또는 참여기업 공식자료 · 자문 참여와 회사 계약·조달을 분리'
     if src in base.OFFICIAL_OR_PRIMARY:
         return '미 국방부·의회·DIU·MITRE·참여기업 공식자료 · 자문/정책/계약/배치 단계 분리'
+    if src in {'PR Newswire', 'Business Wire'}:
+        return '기업 배포 보도자료 · MITRE·참여기업 공식자료로 자문/계약 단계 교차확인'
     if src in base.TRUSTED:
-        return '신뢰 국방·통신 보도 · 미 국방부·의회·DIU 공식자료 교차확인'
+        return '신뢰 국방·통신 보도 · 미 국방부·의회·DIU·MITRE 공식자료 교차확인'
     return '보도 단계 · 미 국방부·의회·DIU 1차 자료 후속 확인'
 
 
