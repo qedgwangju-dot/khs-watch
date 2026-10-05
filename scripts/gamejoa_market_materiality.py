@@ -11,7 +11,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 74
+VERSION = 75
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -166,6 +166,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("nuclear_warning", r"핵\s*(?:대응|사용|공격|위협)|nuclear.{0,12}(?:threat|response)", r"(?:핵|특별한\s*수단|모든\s*무기).{0,80}(?:대응|사용|경고|위협|준비|불가피)"),
     ("military_reinforcement", r"(?:항모|항공모함|병력).{0,40}(?:추가\s*파견|증강)", r"추가\s*파견|병력.{0,20}증강"),
     ("trading_status", r"거래\s*재개|액면병합|주식병합", r"거래.{0,12}재개|재개.{0,12}거래|액면병합|주식병합"),
+    ("trading_rule", r"단주|최소\s*(?:매매|거래)\s*(?:수량|단위)|시간외\s*종가매매", r"단주|매매수량단위|시간외\s*종가매매"),
     ("sanctions_request", r"제재.{0,30}(?:요청|요구|해야)|sanctions?.{0,30}(?:request|call)", r"제재[^.!?]{0,35}(?:요청|요구|해달라|해야)|sanctions?.{0,35}(?:request|call)"),
     ("economic_response", r"경제\s*전쟁|제재.{0,25}대응", r"경제\s*전쟁|제재|환율|필수\s*물자"),
     ("national_exports", r"수출국|연간\s*수출", r"누적\s*수출|수출액|월간\s*수출"),
@@ -198,6 +199,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("retail_fuel", r"주유소.{0,30}(?:기름값|휘발유|경유)|(?:휘발유|경유).{0,15}(?:L당|리터당)", r"(?:휘발유|경유).{0,55}(?:L|리터)(?:\(L\))?\s*당\s*\d[\d,.]*원"),
     ("commodity_price_release", r"세계\s*식량\s*가격|식량가격지수|FAO.{0,20}(?:식량|지수)", r"(?:세계\s*)?식량\s*가격\s*지수.{0,45}\d"),
     ("product_sales_mix", r"판매.{0,35}(?:비중|중.{0,15}(?:친환경|전기차|하이브리드))|제품\s*믹스|판매\s*믹스", r"판매(?:량|대수|비중)?.{0,100}(?:차지|비중|%)"),
+    ("product_volume", r"[1-4]분기\s*판매\s*\d|판매량.{0,25}(?:증가|감소)", r"판매량|출고"),
     ("energy_import_mix", r"원유\s*도입\s*비중", r"원유\s*도입\s*비중|(?:중동|미주|사우디|미국)산"),
     ("energy_supply", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|\bbrent\b|\boil\b|hormuz|tanker", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|항행|통항|brent|\boil\b|hormuz|tanker|shipping"),
     ("bond_yield", r"금리|국채.{0,8}(?:투매|수익률)|bond yields|treasury yields", r"금리|국채.{0,8}수익률|bond yields|treasury yields|interest rates"),
@@ -323,6 +325,14 @@ def focus_matches(title: str, sentence: str) -> bool:
     if DENIAL_HEADLINE.search(title) and not DENIAL_SOURCE.search(sentence):
         return False
     kind = focus_kind(title)
+    if kind == "trading_rule":
+        return bool(re.search(r"단주|매매수량단위|시간외\s*종가매매", sentence)
+                    and re.search(r"허용|검토|확대|처분|변경|시행|발표", sentence))
+    if kind == "product_volume":
+        return bool(re.search(r"판매량|출고", sentence) and (
+            re.search(r"\d[\d,.]*(?:만\d[\d,.]*)?대", sentence)
+            or re.search(r"\d[\d,.]*%\s*(?:증가|감소|늘|줄)", sentence)
+        ))
     if kind == "technical_standard":
         return bool(re.search(r"표준|규격", sentence) and re.search(r"발표|제정|채택", sentence)
                     and re.search(r"JESD\d+[A-Z0-9.-]*|IEEE\s*\d+[A-Z0-9.-]*|ISO\s*\d+[A-Z0-9.-]*", sentence, re.I))
@@ -472,6 +482,11 @@ def period_matches(title: str, sentence: str) -> bool:
     quarter = re.compile(r"(?<!\d)([1-4])\s*(?:분기|Q\b)|\bQ([1-4])\b", re.I)
     periods = {a or b for a, b in quarter.findall(title or "")}
     source_periods = {a or b for a, b in quarter.findall(sentence or "")}
+    quarter_range = re.compile(r"(?<!\d)[1-4]\s*[~∼-]\s*[1-4]\s*분기")
+    if periods and quarter_range.search(sentence or "") and not quarter_range.search(title or ""):
+        distinct_periods = {a or b for a, b in quarter.findall(quarter_range.sub("", sentence or ""))}
+        if not periods.intersection(distinct_periods):
+            return False
     return not (periods and source_periods and periods.isdisjoint(source_periods))
 
 
@@ -690,12 +705,8 @@ def verified_source_fact_keys(alert: dict) -> list[str]:
     return list(_verified_source_fact_keys(title, body, str(alert.get("link") or "")))
 
 
-@lru_cache(maxsize=256)
-def _verified_source_fact_keys(title: str, body: str, source_url: str) -> tuple[str, ...]:
-    # Cache computation only within this process, keyed by the entire fresh body.
-    # Do not persist source bodies or reuse a previous run's retrieval evidence.
-    # The displayed core excludes recommendation sections. Event identities
-    # must respect that same article boundary when recommendation cards rotate.
+def source_article_body(body: str) -> str:
+    """Match the display boundary, excluding rotating recommendation cards."""
     paragraphs = []
     for line in body.splitlines():
         line = line.strip()
@@ -706,7 +717,22 @@ def _verified_source_fact_keys(title: str, body: str, source_url: str) -> tuple[
         ):
             break
         paragraphs.append(line)
-    body = "\n".join(paragraphs)
+    return "\n".join(paragraphs)
+
+
+def verified_source_body_digest(alert: dict) -> str:
+    """An unchanged-body receipt independent of classification rule versions."""
+    if not alert.get("body_verified"):
+        return ""
+    body = canonical_source_fact(source_article_body(str(alert.get("source_body") or "")))
+    return hashlib.sha256(body.encode("utf-8")).hexdigest() if body else ""
+
+
+@lru_cache(maxsize=256)
+def _verified_source_fact_keys(title: str, body: str, source_url: str) -> tuple[str, ...]:
+    # Cache computation only within this process, keyed by the entire fresh body.
+    # Do not persist source bodies or reuse a previous run's retrieval evidence.
+    body = source_article_body(body)
     assessment = assess(title, body, source_url=source_url)
     if assessment["disposition"] != "keep" or assessment["priority"] < 2:
         return ()
@@ -934,6 +960,7 @@ RULES = (
      r"급등|급락|상승|하락|순매수|순매도|유입|유출|이동|상장|편입|편출|증가|감소|surge|slump|rise|fall|inflows|outflows|list|rebalance"),
     ("energy_import_mix", ("earnings", "timeline"), r"원유\s*도입\s*비중", r"\d+(?:\.\d+)?%"),
     ("technical_standard", ("timeline",), r"JESD\d+[A-Z0-9.-]*|IEEE\s*\d+[A-Z0-9.-]*|ISO\s*\d+[A-Z0-9.-]*", r"표준|규격"),
+    ("trading_rule", ("flows", "timeline"), r"단주|최소\s*(?:매매|거래)\s*(?:수량|단위)|매매수량단위|시간외\s*종가매매", r"검토|허용|확대|변경|시행|발표"),
     ("physical_supply_or_capacity", ("earnings", "timeline"),
      r"공장|(?<!재)생산(?!자|유발)|설비|공급|수요|재고|수율|리드타임|부족|품귀|항만|물류|운송|데이터센터|AI\s*팩토리|factory|production|supply|demand|inventory|lead time|port|freight|data cent(?:er|re)",
      r"증설|착공|가동|증가|감소|중단|차질|부족|품귀|지연|연장|매각|검토|확대|축소|상용화|구축|건설\s*(?:하|할|을|에|계획|계약|추진)|신설|짓고|짓는다|도입|생산할|늘고|늘었|expand|start|halt|disrupt|shortage|delay|consider|launch|build|deploy"),
@@ -1166,7 +1193,7 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
 def news_value_rank(evidence: list[dict]) -> int:
     """Economic mechanism outranks textual focus and announcement certainty."""
     kinds = {item["kind"] for item in evidence}
-    if kinds & {"energy_import_mix", "network_segmentation_policy", "housing_supply_policy", "commercial_order", "order_backlog_level", "customer_supply_start", "procurement_execution_stage", "selling_price_or_cost",
+    if kinds & {"trading_rule", "energy_import_mix", "network_segmentation_policy", "housing_supply_policy", "commercial_order", "order_backlog_level", "customer_supply_start", "procurement_execution_stage", "selling_price_or_cost",
                 "earnings_or_guidance", "industry_market_share", "export_results", "national_export_release", "licensing_cashflow", "corporate_transaction", "corporate_ownership_execution", "export_control_scope",
                 "policy_scope_or_stage", "environmental_approval", "industrial_architecture_adoption", "physical_supply_or_capacity",
                 "launch_turnaround_bottleneck", "sector_demand_outlook"}:
@@ -1187,7 +1214,7 @@ def transmission_scope(title: str, evidence: list[dict]) -> tuple[int, str]:
         return 3, 'national_energy_import_mix'
     if "technical_standard" in kinds and re.search(r"반도체|실리콘\s*포토닉스|광통신|전력망|데이터센터", title):
         return 2, 'industry_technical_standard'
-    if kinds & {"network_segmentation_policy", "housing_supply_policy"}:
+    if kinds & {"trading_rule", "network_segmentation_policy", "housing_supply_policy"}:
         return 3, 'scoped_national_regulatory_or_supply_action'
     if 'national_export_release' in kinds:
         return 3, 'national_export_release'

@@ -2522,6 +2522,27 @@ def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
     source = re.sub(r"\s+", " ", body)
+    if focus == "product_volume":
+        volume = re.search(
+            r"([A-Za-z가-힣]+(?:\s+[A-Za-z가-힣]+)?)\([A-Z]+\)(?:은|는)\s*(\d{4})년\s*([1-4])분기"
+            r"[^.!?]{0,130}?총\s*판매량이\s*(\d[\d,.]*(?:만\d[\d,.]*)?대)로\s*전년\s*동기"
+            r"\([^)]*\)\s*대비\s*(\d+(?:\.\d+)?)%\s*증가", source,
+        )
+        if volume and re.search(r"공장\s*출고\([^)]*\)\s*기준", source):
+            actor, year, quarter, units, growth = volume.groups()
+            fact = f"{actor}{korean_topic_particle(actor)} {year}년 {quarter}분기 출고 기준 판매량이 {units}로 전년비 {growth}% 증가했다."
+            overseas = re.search(r"해외\s*판매량은\s*(\d[\d,.]*(?:만\d[\d,.]*)?대)로\s*전년\s*동기\([^)]*\)\s*대비\s*(\d+(?:\.\d+)?)%", source)
+            if overseas:
+                combined = fact + f" 해외는 {overseas.group(1)}로 {overseas.group(2)}% 늘었다."
+                if core_sentence_is_complete(combined):
+                    return combined
+            return fact if core_sentence_is_complete(fact) else ""
+    if focus == "trading_rule":
+        lot = re.search(r"(\d+)주\s*미만\s*단주를\s*일정기간\s*시간외\s*종가매매로\s*장내에서\s*처분[^.!?]{0,45}검토\s*중", source)
+        if lot and "단일종목" in source and "금융위" in source and re.search(r"다음\s*달[^.!?]{0,70}세부방안을\s*발표할\s*계획", source):
+            fact = (f"금융위는 단일종목 레버리지 ETF의 {lot.group(1)}주 미만 단주를 시간외 종가매매로 "
+                    "처분하도록 허용하는 방안을 검토 중으로 알려졌다. 세부안은 내달 발표 예정이다.")
+            return fact if core_sentence_is_complete(fact) else ""
     if focus == "technical_standard":
         standard = re.search(
             r"([A-Za-z가-힣]{2,25})(?:이|가)\s*발표한\s*['‘\"]?"

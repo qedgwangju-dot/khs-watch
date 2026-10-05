@@ -27,6 +27,8 @@ LIVE_FIXTURE = json.loads((ROOT / "data/gamejoa_live_selection_fixtures_20261005
 LIVE_CASES = {case["id"]: case for case in LIVE_FIXTURE["cases"]}
 FOREGROUND_FIXTURE = json.loads((ROOT / "data/gamejoa_foreground_selection_fixtures_20261005.json").read_text(encoding="utf-8"))
 FOREGROUND_CASES = {case["id"]: case for case in FOREGROUND_FIXTURE["cases"]}
+RUNTIME_FIXTURE = json.loads((ROOT / "data/gamejoa_runtime_selection_fixtures_20261005.json").read_text(encoding="utf-8"))
+RUNTIME_CASES = {case["id"]: case for case in RUNTIME_FIXTURE["cases"]}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -68,6 +70,46 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def test_real_runtime_report_is_replayed_with_its_three_original_bodies(self):
+        self.assertEqual(len(RUNTIME_CASES), 3)
+        for case in RUNTIME_CASES.values():
+            candidate = classify(case, LIVE_NOW.replace(hour=20))
+            with patch.object(radar.base, "kst_now", return_value=LIVE_NOW.replace(hour=20)):
+                selected = radar.quality_display_alerts([candidate], 30) if candidate else []
+            with self.subTest(case=case["id"]):
+                self.assertEqual(len(selected), 1)
+                self.assertFalse(radar.source_core_fact_errors(selected[0]))
+
+    def test_quarter_volume_retains_issuer_units_delivery_basis_and_growth(self):
+        case = RUNTIME_CASES["quarter_delivery_volume"]
+        item = radar.normalize_alert_for_output(classify(case, LIVE_NOW.replace(hour=20)))
+        for term in ("니우 테크놀러지스", "2026년 3분기", "출고 기준", "53만7457대", "15.4%", "4만7051대", "226.3%"):
+            self.assertIn(term, item["telegram_core_fact"])
+        self.assertTrue(radar.source_core_fact_errors({**item, "telegram_core_fact": case["old_core"]}))
+
+    def test_single_quarter_cannot_be_replaced_by_year_to_date(self):
+        self.assertFalse(materiality.period_matches("3분기 판매 54만대", "1~3분기 누적 판매량은 123만대로 증가했다."))
+
+    def test_volume_growth_percentage_without_absolute_units_is_preserved(self):
+        self.assertTrue(eligible("아이폰 리뷰…분기 판매량 12% 증가", "아이폰의 분기 판매량이 12% 증가했다고 회사가 밝혔다."))
+
+    def test_primary_quarter_with_explicit_cumulative_context_is_preserved(self):
+        self.assertTrue(materiality.period_matches("3분기 판매 54만대", "3분기 판매량은 54만대다. 1~3분기 누적 판매량은 123만대다."))
+
+    def test_odd_lot_core_retains_lot_exception_and_pending_stage(self):
+        case = RUNTIME_CASES["odd_lot_trading_rule"]
+        item = radar.normalize_alert_for_output(classify(case, LIVE_NOW.replace(hour=20)))
+        for term in ("금융위", "단일종목 레버리지 ETF", "20주 미만 단주", "시간외 종가매매", "검토 중", "내달", "예정"):
+            self.assertIn(term, item["telegram_core_fact"])
+        self.assertNotIn("발행가격", item["telegram_core_fact"])
+        self.assertTrue(radar.source_core_fact_errors({**item, "telegram_core_fact": case["old_core"]}))
+
+    def test_odd_lot_quantity_is_source_bound_not_hardcoded(self):
+        case = RUNTIME_CASES["odd_lot_trading_rule"]
+        fact = radar.source_headline_event_fact(case["title"].replace("20주", "10주"), case["body"].replace("20주", "10주"))
+        self.assertIn("10주 미만 단주", fact)
+        self.assertNotIn("20주", fact)
+
     def test_final_remote_foreground_report_is_replayed_with_source_bodies(self):
         self.assertEqual(len(FOREGROUND_CASES), 4)
         for case in FOREGROUND_CASES.values():
@@ -380,6 +422,82 @@ class IncrementalNewsTests(unittest.TestCase):
             self.assertFalse(fresh)
             self.assertEqual(len(skipped), 1)
 
+    def test_actual_legacy_fact_receipt_blocks_tracking_url_repeat(self):
+        case = RUNTIME_CASES["foreign_issuer_weekly_flow"]
+        receipt = RUNTIME_FIXTURE["previous_foreign_flow_receipt"]
+        item = radar.normalize_alert_for_output(classify(case, LIVE_NOW.replace(hour=20)))
+        self.assertNotEqual(materiality.verified_source_fact_identity(item), receipt["source_fact_identity"])
+        with tempfile.TemporaryDirectory() as folder, patch.object(telegram, "SEEN_PATH", Path(folder) / "seen.json"):
+            key = "link:" + telegram.digest_seen(receipt["link"])
+            telegram.SEEN_PATH.write_text(json.dumps({"seen": {key: receipt}}), encoding="utf-8")
+            before = telegram.SEEN_PATH.read_bytes()
+            fresh, skipped = telegram.filter_previously_seen_alerts([item], LIVE_NOW.replace(hour=20), "live")
+            self.assertFalse(fresh)
+            self.assertEqual(len(skipped), 1)
+            self.assertEqual(before, telegram.SEEN_PATH.read_bytes())
+
+    def test_known_tracking_url_normalization_preserves_article_parameters(self):
+        self.assertEqual(telegram.canonical_article_url("https://www.etoday.co.kr/news/view/2632237?trc=main_list_pick"),
+                         "https://www.etoday.co.kr/news/view/2632237")
+        self.assertNotEqual(telegram.canonical_article_url("https://www.edaily.co.kr/News/Read?newsId=100&mediaCodeNo=257"),
+                            telegram.canonical_article_url("https://www.edaily.co.kr/News/Read?newsId=200&mediaCodeNo=257"))
+        self.assertIn("trc=article_id", telegram.canonical_article_url("https://example.com/news?trc=article_id"))
+
+    def test_legacy_unknown_revision_is_not_republished_as_proven_new(self):
+        with tempfile.TemporaryDirectory() as folder, patch.object(telegram, "SEEN_PATH", Path(folder) / "seen.json"):
+            old = alert()
+            key = "link:" + telegram.digest_seen(old["link"])
+            receipt = {"title": old["news"], "link": old["link"], "first_seen_kst": NOW.isoformat(),
+                       "lanes": {"live": NOW.isoformat()}, "source_fact_identity": "source_facts:v1:old-rule"}
+            telegram.SEEN_PATH.write_text(json.dumps({"seen": {key: receipt}}), encoding="utf-8")
+            fresh, _ = telegram.filter_previously_seen_alerts([alert(body=CONTRACT_BODY + ADDITIONAL_FACT)], NOW, "live")
+            self.assertFalse(fresh)
+
+    def test_body_receipt_is_recorded_and_survives_fact_rule_upgrade(self):
+        with tempfile.TemporaryDirectory() as folder, patch.object(telegram, "SEEN_PATH", Path(folder) / "seen.json"), patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            first = alert()
+            telegram.record_seen_alerts([first], NOW)
+            state = telegram.load_seen_state()
+            state["seen"] = {key: {**value, "source_fact_identity": "source_facts:v1:old-rule", "source_fact_keys": []}
+                             for key, value in state["seen"].items() if key.startswith("link:")}
+            for value in state["seen"].values():
+                self.assertEqual(value["source_body_digest"], materiality.verified_source_body_digest(first))
+            telegram.SEEN_PATH.write_text(json.dumps(state), encoding="utf-8")
+            repeat = {**first, "link": first["link"] + "?trc=main_list_pick"}
+            fresh, skipped = telegram.filter_previously_seen_alerts([repeat], NOW, "live")
+            self.assertFalse(fresh)
+            self.assertEqual(len(skipped), 1)
+
+    def test_legacy_fact_receipt_does_not_hide_new_terms_on_a_new_source_url(self):
+        with tempfile.TemporaryDirectory() as folder, patch.object(telegram, "SEEN_PATH", Path(folder) / "seen.json"):
+            old = alert()
+            key = "link:" + telegram.digest_seen(old["link"])
+            receipt = {"title": old["news"], "link": old["link"], "first_seen_kst": NOW.isoformat(),
+                       "lanes": {"live": NOW.isoformat()}, "source_fact_identity": "source_facts:v1:old-rule"}
+            telegram.SEEN_PATH.write_text(json.dumps({"seen": {key: receipt}}), encoding="utf-8")
+            followup = alert(body=CONTRACT_BODY.replace("100억원", "200억원"), url=old["link"] + "new")
+            fresh, skipped = telegram.filter_previously_seen_alerts([followup], NOW, "live")
+            self.assertEqual(len(fresh), 1)
+            self.assertFalse(skipped)
+
+    def test_body_receipt_does_not_hide_a_sourced_revision(self):
+        with tempfile.TemporaryDirectory() as folder, patch.object(telegram, "SEEN_PATH", Path(folder) / "seen.json"), patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            telegram.record_seen_alerts([alert()], NOW)
+            for body in (CONTRACT_BODY.replace("100억원", "200억원"), CONTRACT_BODY.replace("2027년", "2028년"),
+                         CONTRACT_BODY.replace("삼성전자", "SK하이닉스"), CONTRACT_BODY + ADDITIONAL_FACT):
+                with self.subTest(body=body):
+                    fresh, skipped = telegram.filter_previously_seen_alerts([alert(body=body)], NOW, "live")
+                    self.assertEqual(len(fresh), 1)
+                    self.assertFalse(skipped)
+
+    def test_body_digest_ignores_rotating_related_news(self):
+        first = alert()
+        footer = alert(body=CONTRACT_BODY + "\n관련 뉴스\n" + ADDITIONAL_FACT)
+        self.assertEqual(materiality.verified_source_body_digest(first), materiality.verified_source_body_digest(footer))
+
+    def test_unverified_body_does_not_create_a_body_receipt(self):
+        self.assertFalse(materiality.verified_source_body_digest({**alert(), "body_verified": False}))
+
     def test_fact_aliases_survive_seen_state_reload(self):
         with tempfile.TemporaryDirectory() as folder, patch.object(telegram, "SEEN_PATH", Path(folder) / "seen.json"), patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
             telegram.record_seen_alerts([alert()], NOW)
@@ -432,7 +550,8 @@ if __name__ == "__main__":
               "eligible_unique_events": 2, "excluded_unique_events": 6, "event_groups": FIXTURE["event_groups"], "external_delivery": False,
               "seen_state_modified": False, "cases": replay(), "remote_replay_run_id": LIVE_FIXTURE["run_id"],
               "remote_replay_articles": len(LIVE_CASES), "foreground_replay_run_id": FOREGROUND_FIXTURE["run_id"],
-              "foreground_replay_articles": len(FOREGROUND_CASES)}
+              "foreground_replay_articles": len(FOREGROUND_CASES), "runtime_replay_run_id": RUNTIME_FIXTURE["run_id"],
+              "runtime_replay_articles": len(RUNTIME_CASES)}
     path = ROOT / "out/gamejoa_incremental_news_verification.json"
     path.parent.mkdir(exist_ok=True)
     path.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

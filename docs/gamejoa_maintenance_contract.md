@@ -201,6 +201,18 @@ Every defect or requested change must follow this sequence:
   publication stage and scope. Capacity words such as `고용량` are not employment
   data. An import-share observation retains its cumulative period and decimal
   comparison, not merely a headline's threshold crossing.
+- A single-quarter operating result cannot be replaced by a year-to-date
+  quarter range. Preserve the issuer, delivery-versus-accounting basis and
+  actual quantity/growth. A minimum-lot trading exception retains its lot size,
+  disposal mechanism, proposal stage and announcement plan instead of quoting
+  an existing product's unit price or generic investability.
+- A selection-rule upgrade or known URL tracking parameter is not a new event.
+  Successful delivery receipts retain a classification-independent digest of
+  the verified article body, excluding rotating recommendation sections. A
+  changed sourced amount, counterparty, period or new fact remains eligible.
+  Old fact receipts without a body digest conservatively protect the same
+  canonical source URL; they cannot prove that an in-place revision is new.
+  A new follow-up source URL is not blocked by that legacy fallback alone.
 - DRAM market share must retain its source, period and revenue/bit basis.
   CAPEX plans must retain their fiscal period and net/gross basis. A reporter's
   annual extrapolation is not company guidance. A project bill is not a tariff.
