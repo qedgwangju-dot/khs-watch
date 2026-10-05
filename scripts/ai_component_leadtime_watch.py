@@ -128,6 +128,8 @@ SEARCHES = [
     ("bing_web", '"current vs balanced lead times" TrendForce'),
     ("bing_web", '"TrendForce" CPU GPU DRAM NAND HDD ABF MLCC 리드타임'),
     ("bing_web", '"TrendForce" "Weekly Radar" CPU GPU DRAM NAND HDD ABF MLCC'),
+    ("google_news", 'TrendForce ("NAND controller" OR "SSD controller") (DRAM shortage OR DRAM tightness) enterprise SSD'),
+    ("bing_web", 'site:trendforce.com ("NAND controller" OR "SSD controller") DRAM enterprise SSD shortage'),
 ]
 
 ALIASES = {
@@ -497,6 +499,30 @@ def extract_signals(text: str, source_url: str = "") -> dict[str, str]:
     return signals
 
 
+def extract_nand_controller_direct_constraint(text: str) -> bool:
+    """Only confirm a DRAM-caused controller bottleneck when one sentence states it directly."""
+    if not text:
+        return False
+    sentences = re.split(r"(?<=[.!?])\\s+|[\\n\\r]+", clean_text(text))
+    for sentence in sentences:
+        low = sentence.lower()
+        controller_hit = any(k in low for k in (
+            "nand controller", "ssd controller", "enterprise ssd controller",
+            "낸드 컨트롤러", "ssd 컨트롤러", "기업용 ssd 컨트롤러",
+        ))
+        dram_hit = any(k in low for k in (
+            "dram shortage", "dram tightness", "dram supply shortage", "dram constraint",
+            "dram 공급 부족", "dram 부족", "dram 공급 제약",
+        ))
+        causal_hit = any(k in low for k in (
+            "constrain", "constraining", "limit", "limiting", "restrict", "bottleneck", "shortage",
+            "제약", "제한", "병목", "부족",
+        ))
+        if controller_hit and dram_hit and causal_hit:
+            return True
+    return False
+
+
 def canonical_component(entry: dict) -> tuple[str, str, str]:
     return (
         str(entry.get("status") or ""),
@@ -555,7 +581,11 @@ def bottleneck_ranking(components: dict) -> list[tuple[float, str, dict]]:
     return ranked
 
 
-def memory_storage_chain_state(components: dict, signals: dict) -> dict:
+def memory_storage_chain_state(
+    components: dict,
+    signals: dict,
+    nand_controller_direct_constraint_confirmed: bool = False,
+) -> dict:
     """Track the DRAM -> enterprise-SSD -> HDD storage bottleneck as a causal chain.
 
     TrendForce Weekly Radar 004 says DRAM tightness limits some NAND suppliers'
@@ -602,7 +632,8 @@ def memory_storage_chain_state(components: dict, signals: dict) -> dict:
         "toshiba_expanded_nearline_line_first_shipment_confirmed": bool(TOSHIBA_HDD_OFFICIAL["expanded_nearline_line_first_shipment"]),
         "toshiba_fy2027_capacity_nearly_double_target": TOSHIBA_HDD_OFFICIAL["fy2027_capacity_target_vs_fy2025"] == "nearly_double",
         "toshiba_official_source": TOSHIBA_HDD_OFFICIAL["source"],
-        "nand_controller_direct_constraint_confirmed": False,
+        "nand_controller_direct_constraint_detection_enabled": True,
+        "nand_controller_direct_constraint_confirmed": bool(nand_controller_direct_constraint_confirmed),
         "scope_note": (
             "확인 범위는 DRAM 부족이 일부 NAND 공급사의 기업용 SSD 솔루션 지원 능력을 제약한다는 것. "
             "NAND 컨트롤러 출하 자체의 직접 병목은 별도 확인 전까지 확정하지 않음. "
@@ -626,7 +657,11 @@ def build_memory_storage_chain_alert(chain: dict, components: dict, source_url: 
         "",
         "<b>정확도 경계</b>",
         "• TrendForce 확인 범위는 ‘DRAM 부족 → 일부 NAND 공급사의 기업용 SSD 솔루션 지원 제약’입니다.",
-        "• <b>NAND 컨트롤러 출하가 DRAM 때문에 직접 제한된다는 주장은 이번 원문에서 확인되지 않아 알림 확정조건에 넣지 않았습니다.</b>",
+        (
+            "• <b>NAND 컨트롤러:</b> DRAM 부족이 컨트롤러 출하를 직접 제약한다는 문장이 공식 원문에서 확인됐습니다."
+            if chain.get("nand_controller_direct_constraint_confirmed")
+            else "• <b>NAND 컨트롤러 출하가 DRAM 때문에 직접 제한된다는 주장은 이번 원문에서 확인되지 않아 알림 확정조건에 넣지 않았습니다.</b>"
+        ),
         "• Toshiba는 이미 증설 라인에서 첫 출하를 시작했습니다. 따라서 ‘2027년 말’은 개별 Toshiba 라인의 미가동 시점이 아니라 시장 전체 리드타임 정상화 전망으로만 추적합니다.",
         "",
         "<b>다음 확인</b>",
@@ -1135,6 +1170,7 @@ def main() -> None:
                     "full_text": full_text,
                     "components": components,
                     "signals": signals,
+                    "nand_controller_direct_constraint": extract_nand_controller_direct_constraint(full_text),
                     "score": source_score(direct, components, full_text) + len(signals) * 3,
                 }
             )
@@ -1147,6 +1183,8 @@ def main() -> None:
     latest_signals = copy.deepcopy(previous_signals)
     latest_source = previous.get("source") or BASELINE["source"]
     latest_as_of = previous.get("as_of") or BASELINE_DATE
+    previous_chain = previous.get("memory_storage_chain") or {}
+    controller_direct_confirmed = bool(previous_chain.get("nand_controller_direct_constraint_confirmed"))
     notify_text = ""
     if repaired_status_names:
         notify_text = build_status_correction_alert(
@@ -1172,6 +1210,7 @@ def main() -> None:
             new_seen.add(url)
         extracted = best.get("components") or {}
         extracted_signals = best.get("signals") or {}
+        candidate_controller_direct = bool(best.get("nand_controller_direct_constraint"))
         evidence = {name: set(entry.keys()) for name, entry in extracted.items()}
 
         merged = copy.deepcopy(previous_components)
@@ -1193,6 +1232,8 @@ def main() -> None:
         previous_as_of = str(previous.get("as_of") or BASELINE_DATE)
         is_new_url = bool(url and url not in seen_urls)
         is_new_release = bool(published_date and published_date > previous_as_of)
+        if candidate_controller_direct and (is_new_url or is_new_release):
+            controller_direct_confirmed = True
         exact_weekly_signal = (
             "current vs balanced" in (best.get("full_text") or "").lower()
             or "six ai infrastructure components" in (best.get("full_text") or "").lower()
@@ -1236,13 +1277,20 @@ def main() -> None:
             latest_source = url or latest_source
             latest_as_of = published_date
 
-    previous_chain = previous.get("memory_storage_chain") or {}
-    latest_chain = memory_storage_chain_state(latest_components, latest_signals)
+    latest_chain = memory_storage_chain_state(
+        latest_components,
+        latest_signals,
+        nand_controller_direct_constraint_confirmed=controller_direct_confirmed,
+    )
     if (
         latest_chain.get("active")
         and (
             not previous_chain.get("active")
             or int(previous_chain.get("version") or 0) < int(latest_chain.get("version") or 1)
+            or (
+                latest_chain.get("nand_controller_direct_constraint_confirmed")
+                and not previous_chain.get("nand_controller_direct_constraint_confirmed")
+            )
         )
         and str(latest_source or "").rstrip("/").endswith("weekly-radar-004")
     ):
