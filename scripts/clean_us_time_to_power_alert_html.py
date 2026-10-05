@@ -209,6 +209,7 @@ def main() -> None:
         out.append(f"• <b>변화</b> │ {items[0][3]}")
     elif is_upgrade:
         out.append("• <b>변화</b> │ 알림을 현재 숫자·새 변화·투자 의미·실패모드 중심으로 압축")
+        out.append("• <b>정정</b> │ 앞선 ‘Pennsylvania False→True’ 표시는 정책이 새로 바뀐 것이 아니라 <b>기존 100% 비용부담 기준의 파서 재검증</b>")
     else:
         out.append("• <b>변화</b> │ 공식 실행 단계 변화 확인")
     out.append("• <b>판정</b> │ 계획 GW보다 GIA → 착공 → 전원 인가 → 상업운전 전환을 우선")
