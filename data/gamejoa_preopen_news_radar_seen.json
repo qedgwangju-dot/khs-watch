@@ -3871,6 +3871,25 @@
       "source_published_kst": "2026-10-05T15:13+09:00",
       "title": "환율에 노사 리스크까지…HD현대重·한화오션 3분기 실적 '이중고'"
     },
+    "event:c692fcae1c2d752b2a273c5a": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814455",
+      "source": "뉴시스",
+      "source_body_digest": "2671a152f9785c90f46bcbe7f02808db57be3e454f0273296789db55a7f8a06d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de21faa88ba243fe150d559c42459c8cae6347e8451bdb57d8c5fa515e83cfa3",
+      "source_fact_keys": [
+        "source_fact:v1:8992dc402a780a04a6bd1e949d075c38d4cba11e4f0c45aabc46cddcb0ded515",
+        "source_fact:v1:9928c1615e1acc538d8495f1674aa6c9089ab9f61e63fe0dd65323295cb452c4",
+        "source_fact:v1:be5e19c3f2bdb296c21b5d130bedc703483f70fcdd21a0af621e4e5e20139544"
+      ],
+      "source_published_kst": "2026-10-06T07:04+09:00",
+      "title": "\"AI가 돈 될까 고민은 시대착오…반도체 상승장 2028년까지 간다\""
+    },
     "event:c7665659dc86a28aa339445b": {
       "first_seen_kst": "2026-09-30T15:58:34+09:00",
       "lanes": {
@@ -4992,6 +5011,23 @@
       ],
       "source_published_kst": "2026-10-05T05:01+09:00",
       "title": "국회 정무위 6일 국감 돌입…금융권 해킹에 5대 은행장 줄소환되나"
+    },
+    "fact:05a0e20af25d126bfb9361fe": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632508",
+      "source": "이투데이",
+      "source_body_digest": "8d63ca88752b2b23d32906fbd6f4518e308ac71cde0993413303d1b369f37772",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:289e3366f96984d4e13ce2c35c70bd73d9272a9e20d82374c23c91d9087d62fb",
+      "source_fact_keys": [
+        "source_fact:v1:3a36edabc54741fe101dbcc800ffbd544fcbe6ac56d11a933e6c800fad933111"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "\"예수금 줄고 대미투자 송금까지\"⋯9월 외환보유액, 넉 달 만에 감소"
     },
     "fact:05d036953aff39988c881c84": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
@@ -6246,6 +6282,35 @@
       "source_published_kst": "2026-10-05T19:58+09:00",
       "title": "특정 뇌세포 '빛'으로 제어 … 光유전학 개척한 3人"
     },
+    "fact:4913aa99c90153d2bc3abc6d": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
     "fact:49df6cf4b5aa9c49bd2f2492": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -6830,6 +6895,27 @@
       ],
       "source_published_kst": "2026-10-06T00:10+09:00",
       "title": "\"숫자와 스토리 모두 찾아야\"…월가 트레이더·퀀트 우승자의 투자 전략"
+    },
+    "fact:69853f771fa85a133e9c304c": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632520",
+      "source": "이투데이",
+      "source_body_digest": "d37effa9aeb463ea765b2bdd952de92018cbb9f9c4ba8a6239b34adf0f4d78cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:16d5e0e60a627c4e56f8aee30e4146a6b0970873e030ee7823c7c2cc52f74651",
+      "source_fact_keys": [
+        "source_fact:v1:29637723dc02beaa707e50fbafef78dee7c41ebf38b6210d3e9093528d124529",
+        "source_fact:v1:797c4d387f08ec5cf64b757b5f44f280c3e12a1017292ce07b05a44f9ed52411",
+        "source_fact:v1:98ab43c09db39a2a53e36f4eacd5d21a32d77ae9ee3315865f789bc813f9a8f3",
+        "source_fact:v1:f0dbf2fa86c0dfbafb3a18d938b9ac0c8b614a738894604564e422651025786a",
+        "source_fact:v1:f2cc972d47f765de4d3c7ab1524f2888ffe1488593c6ae771819c50b62908a4c"
+      ],
+      "source_published_kst": "2026-10-06T07:07+09:00",
+      "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
     },
     "fact:69c65f29af273648966d6a72": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -7983,6 +8069,26 @@
       "source_published_kst": "2026-10-05T17:46+09:00",
       "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
     },
+    "fact:a95fc6f3c8cb58a06aa76b9c": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02223846645610296",
+      "source": "이데일리",
+      "source_body_digest": "7dd939a7cdd6608e9a95f118e63a2688db1b88c9110c2b7df020d629b3dcd198",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5bbfcb55b32520676cae833afb5c1ee0e9c3fa7709fd27d6a71a30eaf884590",
+      "source_fact_keys": [
+        "source_fact:v1:456f4d8a9e928fea408d0766c8d2b6dc229ec6837d8bd8758797250dbae4090f",
+        "source_fact:v1:6710b721253f36352b7fbab324cddc54f36a3909cc36d1f1eaff55c06e0a469a",
+        "source_fact:v1:6f0dcb4bb0e2c00fcacafc987fbf8da58f91e09ea613f4fadff12b7fe9f21b71",
+        "source_fact:v1:e4dd051608ebbc5a7e75b2e0864c68e185d306ffff72ef36342942b29314a5fe"
+      ],
+      "source_published_kst": "2026-10-06T06:28+09:00",
+      "title": "트럼프, 면세 경유 사용처 제한 완화…기름값 낮추려 안간힘"
+    },
     "fact:aaf7c43f9e99895c3688dc37": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -8025,6 +8131,25 @@
       ],
       "source_published_kst": "2026-10-05T12:02+09:00",
       "title": "LTE 대역서 5G 기지국 쓴다…용도전환 제도 기반 마련"
+    },
+    "fact:abc2581b7338e10906fb0d69": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814455",
+      "source": "뉴시스",
+      "source_body_digest": "2671a152f9785c90f46bcbe7f02808db57be3e454f0273296789db55a7f8a06d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de21faa88ba243fe150d559c42459c8cae6347e8451bdb57d8c5fa515e83cfa3",
+      "source_fact_keys": [
+        "source_fact:v1:8992dc402a780a04a6bd1e949d075c38d4cba11e4f0c45aabc46cddcb0ded515",
+        "source_fact:v1:9928c1615e1acc538d8495f1674aa6c9089ab9f61e63fe0dd65323295cb452c4",
+        "source_fact:v1:be5e19c3f2bdb296c21b5d130bedc703483f70fcdd21a0af621e4e5e20139544"
+      ],
+      "source_published_kst": "2026-10-06T07:04+09:00",
+      "title": "\"AI가 돈 될까 고민은 시대착오…반도체 상승장 2028년까지 간다\""
     },
     "fact:aed4ab279de3522b573f5db9": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -8513,6 +8638,23 @@
       ],
       "source_published_kst": "2026-10-04T23:56+09:00",
       "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
+    },
+    "fact:d2392440ec3837ef2f90e591": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632244",
+      "source": "이투데이",
+      "source_body_digest": "ce802c598777a69ba09eb79ed946205db60421e18d9b59bea8c2692d4975c2d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:14cdbfbf308c5f7446fe07e9b73a0440267cbd545d1a1d1e6cd8022e136fb827",
+      "source_fact_keys": [
+        "source_fact:v1:7bab26bc484c1359a96af613ff446b18032cf867b306b61cf9a6ca88efe1260b"
+      ],
+      "source_published_kst": "2026-10-06T07:05+09:00",
+      "title": "한강신도시 때도 그러더니⋯반복되는 ‘교통난’ [교통지옥 김포②]"
     },
     "fact:d38afa3894708fd1720bcb0e": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -10787,6 +10929,23 @@
       "source": "이데일리",
       "title": "[美특징주]그랩홀딩스, CEO 1040만주 자사주 매입…주가 10%↑"
     },
+    "link:1a4b2dcce605ccdfa8dc712d": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632508",
+      "source": "이투데이",
+      "source_body_digest": "8d63ca88752b2b23d32906fbd6f4518e308ac71cde0993413303d1b369f37772",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:289e3366f96984d4e13ce2c35c70bd73d9272a9e20d82374c23c91d9087d62fb",
+      "source_fact_keys": [
+        "source_fact:v1:3a36edabc54741fe101dbcc800ffbd544fcbe6ac56d11a933e6c800fad933111"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "\"예수금 줄고 대미투자 송금까지\"⋯9월 외환보유액, 넉 달 만에 감소"
+    },
     "link:1a80e4eae10a2472d119242d": {
       "first_seen_kst": "2026-10-02T15:29:23+09:00",
       "lanes": {
@@ -11254,6 +11413,25 @@
       "link": "https://www.mt.co.kr/index.php/politics/2026/09/29/2026092908220599504",
       "source": "머니투데이",
       "title": "김민석 \"이제는 '정주 여건'…메가프로젝트, 교육·문화 ·의료 갖춰야\""
+    },
+    "link:233d6b98c82c7ae619eb52b0": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814455",
+      "source": "뉴시스",
+      "source_body_digest": "2671a152f9785c90f46bcbe7f02808db57be3e454f0273296789db55a7f8a06d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de21faa88ba243fe150d559c42459c8cae6347e8451bdb57d8c5fa515e83cfa3",
+      "source_fact_keys": [
+        "source_fact:v1:8992dc402a780a04a6bd1e949d075c38d4cba11e4f0c45aabc46cddcb0ded515",
+        "source_fact:v1:9928c1615e1acc538d8495f1674aa6c9089ab9f61e63fe0dd65323295cb452c4",
+        "source_fact:v1:be5e19c3f2bdb296c21b5d130bedc703483f70fcdd21a0af621e4e5e20139544"
+      ],
+      "source_published_kst": "2026-10-06T07:04+09:00",
+      "title": "\"AI가 돈 될까 고민은 시대착오…반도체 상승장 2028년까지 간다\""
     },
     "link:23716e821ade903d790af150": {
       "first_seen_kst": "2026-10-01T21:17:39+09:00",
@@ -12190,6 +12368,27 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=02164806645608984",
       "source": "이데일리",
       "title": "[바이오맥짚기] '로열티·기술이전·독점권' 모멘텀 장착…헬릭스미스·지놈앤컴퍼니 급등"
+    },
+    "link:2cf2b1a303c37515f127b0ab": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632520",
+      "source": "이투데이",
+      "source_body_digest": "d37effa9aeb463ea765b2bdd952de92018cbb9f9c4ba8a6239b34adf0f4d78cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:16d5e0e60a627c4e56f8aee30e4146a6b0970873e030ee7823c7c2cc52f74651",
+      "source_fact_keys": [
+        "source_fact:v1:29637723dc02beaa707e50fbafef78dee7c41ebf38b6210d3e9093528d124529",
+        "source_fact:v1:797c4d387f08ec5cf64b757b5f44f280c3e12a1017292ce07b05a44f9ed52411",
+        "source_fact:v1:98ab43c09db39a2a53e36f4eacd5d21a32d77ae9ee3315865f789bc813f9a8f3",
+        "source_fact:v1:f0dbf2fa86c0dfbafb3a18d938b9ac0c8b614a738894604564e422651025786a",
+        "source_fact:v1:f2cc972d47f765de4d3c7ab1524f2888ffe1488593c6ae771819c50b62908a4c"
+      ],
+      "source_published_kst": "2026-10-06T07:07+09:00",
+      "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
     },
     "link:2d013c199f4e7ea3fe445fa6": {
       "first_seen_kst": "2026-09-22T17:04:40+09:00",
@@ -16740,6 +16939,35 @@
       "source_published_kst": "2026-10-05T11:16+09:00",
       "title": "딥시크·화웨이, AI 칩 SW 맞손…\"엔비디아 의존 낮춰\""
     },
+    "link:6c6edb30d4332f19477ca2e5": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
     "link:6c7b222b3baf3bcce5ad8570": {
       "first_seen_kst": "2026-10-01T22:33:20+09:00",
       "lanes": {
@@ -20784,6 +21012,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T06:00+09:00",
       "title": "글로벌 지수 편입에 꿈틀…'베트남 ETF'에 자금 몰린다"
+    },
+    "link:a1d7956c7fb70d8a6214a5bb": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632244",
+      "source": "이투데이",
+      "source_body_digest": "ce802c598777a69ba09eb79ed946205db60421e18d9b59bea8c2692d4975c2d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:14cdbfbf308c5f7446fe07e9b73a0440267cbd545d1a1d1e6cd8022e136fb827",
+      "source_fact_keys": [
+        "source_fact:v1:7bab26bc484c1359a96af613ff446b18032cf867b306b61cf9a6ca88efe1260b"
+      ],
+      "source_published_kst": "2026-10-06T07:05+09:00",
+      "title": "한강신도시 때도 그러더니⋯반복되는 ‘교통난’ [교통지옥 김포②]"
     },
     "link:a1edbc676287517fe163ba8a": {
       "first_seen_kst": "2026-09-28T10:52:51+09:00",
@@ -26012,6 +26257,26 @@
       "source": "한국경제",
       "title": "건원엔지니어링, 목동4단지 재건축 CM 우선협상대상자 선정"
     },
+    "link:ec0eaad9202cb5c25b5e563b": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02223846645610296",
+      "source": "이데일리",
+      "source_body_digest": "7dd939a7cdd6608e9a95f118e63a2688db1b88c9110c2b7df020d629b3dcd198",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5bbfcb55b32520676cae833afb5c1ee0e9c3fa7709fd27d6a71a30eaf884590",
+      "source_fact_keys": [
+        "source_fact:v1:456f4d8a9e928fea408d0766c8d2b6dc229ec6837d8bd8758797250dbae4090f",
+        "source_fact:v1:6710b721253f36352b7fbab324cddc54f36a3909cc36d1f1eaff55c06e0a469a",
+        "source_fact:v1:6f0dcb4bb0e2c00fcacafc987fbf8da58f91e09ea613f4fadff12b7fe9f21b71",
+        "source_fact:v1:e4dd051608ebbc5a7e75b2e0864c68e185d306ffff72ef36342942b29314a5fe"
+      ],
+      "source_published_kst": "2026-10-06T06:28+09:00",
+      "title": "트럼프, 면세 경유 사용처 제한 완화…기름값 낮추려 안간힘"
+    },
     "link:ec68090b2fbc5250fa4ba59d": {
       "first_seen_kst": "2026-10-02T17:56:05+09:00",
       "lanes": {
@@ -28183,6 +28448,26 @@
       "source_event_identity": "",
       "title": "뉴로센스 테라퓨틱스, 나스닥 상장폐지 통보..청문 신청·최저호가 회복"
     },
+    "original:0a71a7e57d5abc1d859fcc69": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02223846645610296",
+      "source": "이데일리",
+      "source_body_digest": "7dd939a7cdd6608e9a95f118e63a2688db1b88c9110c2b7df020d629b3dcd198",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5bbfcb55b32520676cae833afb5c1ee0e9c3fa7709fd27d6a71a30eaf884590",
+      "source_fact_keys": [
+        "source_fact:v1:456f4d8a9e928fea408d0766c8d2b6dc229ec6837d8bd8758797250dbae4090f",
+        "source_fact:v1:6710b721253f36352b7fbab324cddc54f36a3909cc36d1f1eaff55c06e0a469a",
+        "source_fact:v1:6f0dcb4bb0e2c00fcacafc987fbf8da58f91e09ea613f4fadff12b7fe9f21b71",
+        "source_fact:v1:e4dd051608ebbc5a7e75b2e0864c68e185d306ffff72ef36342942b29314a5fe"
+      ],
+      "source_published_kst": "2026-10-06T06:28+09:00",
+      "title": "트럼프, 면세 경유 사용처 제한 완화…기름값 낮추려 안간힘"
+    },
     "original:0a79971e27acf286dff239ba": {
       "first_seen_kst": "2026-09-28T06:33:23+09:00",
       "lanes": {
@@ -28486,6 +28771,23 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
+    },
+    "original:0ed56bc3dc0419e39dfb2a8a": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632244",
+      "source": "이투데이",
+      "source_body_digest": "ce802c598777a69ba09eb79ed946205db60421e18d9b59bea8c2692d4975c2d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:14cdbfbf308c5f7446fe07e9b73a0440267cbd545d1a1d1e6cd8022e136fb827",
+      "source_fact_keys": [
+        "source_fact:v1:7bab26bc484c1359a96af613ff446b18032cf867b306b61cf9a6ca88efe1260b"
+      ],
+      "source_published_kst": "2026-10-06T07:05+09:00",
+      "title": "한강신도시 때도 그러더니⋯반복되는 ‘교통난’ [교통지옥 김포②]"
     },
     "original:0f071fe05d249ef81b01f5c4": {
       "first_seen_kst": "2026-10-02T19:41:23+09:00",
@@ -29825,6 +30127,35 @@
       "source_published_kst": "2026-10-04T07:00+09:00",
       "title": "美 기관 코인 투자 문턱 낮아진다…SEC, '셀프 커스터디' 허용 추진"
     },
+    "original:248971a7623f5a7099f0c990": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
     "original:24a6a89a393ba6059ec3d0fd": {
       "first_seen_kst": "2026-10-03T10:28:46+09:00",
       "lanes": {
@@ -29993,6 +30324,27 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01295606645609312",
       "source": "이데일리",
       "title": "[美특징주]나이키, 1Q 매출 예상 하회·中 판매 부진…주가 5%↓"
+    },
+    "original:274f40982b2f98cdcacb9050": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632520",
+      "source": "이투데이",
+      "source_body_digest": "d37effa9aeb463ea765b2bdd952de92018cbb9f9c4ba8a6239b34adf0f4d78cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:16d5e0e60a627c4e56f8aee30e4146a6b0970873e030ee7823c7c2cc52f74651",
+      "source_fact_keys": [
+        "source_fact:v1:29637723dc02beaa707e50fbafef78dee7c41ebf38b6210d3e9093528d124529",
+        "source_fact:v1:797c4d387f08ec5cf64b757b5f44f280c3e12a1017292ce07b05a44f9ed52411",
+        "source_fact:v1:98ab43c09db39a2a53e36f4eacd5d21a32d77ae9ee3315865f789bc813f9a8f3",
+        "source_fact:v1:f0dbf2fa86c0dfbafb3a18d938b9ac0c8b614a738894604564e422651025786a",
+        "source_fact:v1:f2cc972d47f765de4d3c7ab1524f2888ffe1488593c6ae771819c50b62908a4c"
+      ],
+      "source_published_kst": "2026-10-06T07:07+09:00",
+      "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
     },
     "original:2755b59c11599860e5aac7d3": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
@@ -39497,6 +39849,23 @@
       "source": "이투데이",
       "title": "산은·기업은행 “‘암살자(들)’ 투자에 외부 개입 없었어\""
     },
+    "original:ad73539edb3392b6e4588040": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632508",
+      "source": "이투데이",
+      "source_body_digest": "8d63ca88752b2b23d32906fbd6f4518e308ac71cde0993413303d1b369f37772",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:289e3366f96984d4e13ce2c35c70bd73d9272a9e20d82374c23c91d9087d62fb",
+      "source_fact_keys": [
+        "source_fact:v1:3a36edabc54741fe101dbcc800ffbd544fcbe6ac56d11a933e6c800fad933111"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "\"예수금 줄고 대미투자 송금까지\"⋯9월 외환보유액, 넉 달 만에 감소"
+    },
     "original:ad9b96299f5d7f74b6da38bc": {
       "first_seen_kst": "2026-10-02T13:04:47+09:00",
       "lanes": {
@@ -43318,6 +43687,25 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03657206645581432",
       "source": "이데일리",
       "title": "日 31년 만의 최고금리에도 엔화 약세…원·달러 1380원대 중반으로"
+    },
+    "original:e5d140d28508b6634ad502ff": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814455",
+      "source": "뉴시스",
+      "source_body_digest": "2671a152f9785c90f46bcbe7f02808db57be3e454f0273296789db55a7f8a06d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de21faa88ba243fe150d559c42459c8cae6347e8451bdb57d8c5fa515e83cfa3",
+      "source_fact_keys": [
+        "source_fact:v1:8992dc402a780a04a6bd1e949d075c38d4cba11e4f0c45aabc46cddcb0ded515",
+        "source_fact:v1:9928c1615e1acc538d8495f1674aa6c9089ab9f61e63fe0dd65323295cb452c4",
+        "source_fact:v1:be5e19c3f2bdb296c21b5d130bedc703483f70fcdd21a0af621e4e5e20139544"
+      ],
+      "source_published_kst": "2026-10-06T07:04+09:00",
+      "title": "\"AI가 돈 될까 고민은 시대착오…반도체 상승장 2028년까지 간다\""
     },
     "original:e5d853bdbca267264e8c51b2": {
       "first_seen_kst": "2026-10-01T00:02:50+09:00",
@@ -47236,6 +47624,35 @@
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
+    "source_fact:1d2ef2570b5b773f0ad13f3a": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
     "source_fact:1d3a1faae44e0024f388e1f9": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -49721,6 +50138,25 @@
       "source_published_kst": "2026-10-05T10:42+09:00",
       "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
     },
+    "source_fact:400832735044f700baa6e320": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814455",
+      "source": "뉴시스",
+      "source_body_digest": "2671a152f9785c90f46bcbe7f02808db57be3e454f0273296789db55a7f8a06d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de21faa88ba243fe150d559c42459c8cae6347e8451bdb57d8c5fa515e83cfa3",
+      "source_fact_keys": [
+        "source_fact:v1:8992dc402a780a04a6bd1e949d075c38d4cba11e4f0c45aabc46cddcb0ded515",
+        "source_fact:v1:9928c1615e1acc538d8495f1674aa6c9089ab9f61e63fe0dd65323295cb452c4",
+        "source_fact:v1:be5e19c3f2bdb296c21b5d130bedc703483f70fcdd21a0af621e4e5e20139544"
+      ],
+      "source_published_kst": "2026-10-06T07:04+09:00",
+      "title": "\"AI가 돈 될까 고민은 시대착오…반도체 상승장 2028년까지 간다\""
+    },
     "source_fact:407497ab12a9705701544c3e": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -49830,6 +50266,35 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
+    },
+    "source_fact:41baed0732cfa75a69eeda86": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
     "source_fact:41f376e4b65cb9bdf40eed92": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -50089,6 +50554,27 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "주담대 금리도 '들썩'…한은 추가 인상에 이자 더 오르나[금리 쇼크③]"
     },
+    "source_fact:44956f637aad67b691e49b1c": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632520",
+      "source": "이투데이",
+      "source_body_digest": "d37effa9aeb463ea765b2bdd952de92018cbb9f9c4ba8a6239b34adf0f4d78cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:16d5e0e60a627c4e56f8aee30e4146a6b0970873e030ee7823c7c2cc52f74651",
+      "source_fact_keys": [
+        "source_fact:v1:29637723dc02beaa707e50fbafef78dee7c41ebf38b6210d3e9093528d124529",
+        "source_fact:v1:797c4d387f08ec5cf64b757b5f44f280c3e12a1017292ce07b05a44f9ed52411",
+        "source_fact:v1:98ab43c09db39a2a53e36f4eacd5d21a32d77ae9ee3315865f789bc813f9a8f3",
+        "source_fact:v1:f0dbf2fa86c0dfbafb3a18d938b9ac0c8b614a738894604564e422651025786a",
+        "source_fact:v1:f2cc972d47f765de4d3c7ab1524f2888ffe1488593c6ae771819c50b62908a4c"
+      ],
+      "source_published_kst": "2026-10-06T07:07+09:00",
+      "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
+    },
     "source_fact:4533ac1d3147c34f308c18d8": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
       "lanes": {
@@ -50236,6 +50722,35 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:467e3d1edf0da9e15d3738c9": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
     "source_fact:467eda62f2b559174370ee6b": {
       "first_seen_kst": "2026-10-06T01:05:54+09:00",
@@ -51309,6 +51824,35 @@
       "source_published_kst": "2026-10-06T06:04+09:00",
       "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
     },
+    "source_fact:54e6160128ab0221fd0b163c": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
     "source_fact:5560ed5e579dd2eea18340d2": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -51761,6 +52305,35 @@
       ],
       "source_published_kst": "2026-10-05T21:07+09:00",
       "title": "텔라 바이오, 완전 흡수성 메시 '리오라' FDA 허가 획득"
+    },
+    "source_fact:5afb1037b50cc0c9fe6764e4": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
     "source_fact:5afde23e68a43653c17370d1": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -52337,6 +52910,27 @@
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
+    "source_fact:61d7912ca5f779a387a868fd": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632520",
+      "source": "이투데이",
+      "source_body_digest": "d37effa9aeb463ea765b2bdd952de92018cbb9f9c4ba8a6239b34adf0f4d78cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:16d5e0e60a627c4e56f8aee30e4146a6b0970873e030ee7823c7c2cc52f74651",
+      "source_fact_keys": [
+        "source_fact:v1:29637723dc02beaa707e50fbafef78dee7c41ebf38b6210d3e9093528d124529",
+        "source_fact:v1:797c4d387f08ec5cf64b757b5f44f280c3e12a1017292ce07b05a44f9ed52411",
+        "source_fact:v1:98ab43c09db39a2a53e36f4eacd5d21a32d77ae9ee3315865f789bc813f9a8f3",
+        "source_fact:v1:f0dbf2fa86c0dfbafb3a18d938b9ac0c8b614a738894604564e422651025786a",
+        "source_fact:v1:f2cc972d47f765de4d3c7ab1524f2888ffe1488593c6ae771819c50b62908a4c"
+      ],
+      "source_published_kst": "2026-10-06T07:07+09:00",
+      "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
+    },
     "source_fact:62823c9f4633912ff7baa49a": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -52428,6 +53022,35 @@
       ],
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
+    },
+    "source_fact:6396206163ed13d8642ee596": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
     "source_fact:63fe7bcf92381f0916c9ad65": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -52714,6 +53337,25 @@
       ],
       "source_published_kst": "2026-10-05T10:20+09:00",
       "title": "[반도체 라이징 스타]<6>엑시나, 스스로 계산하는 메모리로 AI 인프라 비용 낮춘다"
+    },
+    "source_fact:696eb9a4f519d9b276823134": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814455",
+      "source": "뉴시스",
+      "source_body_digest": "2671a152f9785c90f46bcbe7f02808db57be3e454f0273296789db55a7f8a06d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de21faa88ba243fe150d559c42459c8cae6347e8451bdb57d8c5fa515e83cfa3",
+      "source_fact_keys": [
+        "source_fact:v1:8992dc402a780a04a6bd1e949d075c38d4cba11e4f0c45aabc46cddcb0ded515",
+        "source_fact:v1:9928c1615e1acc538d8495f1674aa6c9089ab9f61e63fe0dd65323295cb452c4",
+        "source_fact:v1:be5e19c3f2bdb296c21b5d130bedc703483f70fcdd21a0af621e4e5e20139544"
+      ],
+      "source_published_kst": "2026-10-06T07:04+09:00",
+      "title": "\"AI가 돈 될까 고민은 시대착오…반도체 상승장 2028년까지 간다\""
     },
     "source_fact:698529b9c97d9d18306499a4": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -53709,6 +54351,25 @@
       "source_published_kst": "2026-10-05T12:55+09:00",
       "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
     },
+    "source_fact:75be591f172a60731fc4cf90": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814455",
+      "source": "뉴시스",
+      "source_body_digest": "2671a152f9785c90f46bcbe7f02808db57be3e454f0273296789db55a7f8a06d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de21faa88ba243fe150d559c42459c8cae6347e8451bdb57d8c5fa515e83cfa3",
+      "source_fact_keys": [
+        "source_fact:v1:8992dc402a780a04a6bd1e949d075c38d4cba11e4f0c45aabc46cddcb0ded515",
+        "source_fact:v1:9928c1615e1acc538d8495f1674aa6c9089ab9f61e63fe0dd65323295cb452c4",
+        "source_fact:v1:be5e19c3f2bdb296c21b5d130bedc703483f70fcdd21a0af621e4e5e20139544"
+      ],
+      "source_published_kst": "2026-10-06T07:04+09:00",
+      "title": "\"AI가 돈 될까 고민은 시대착오…반도체 상승장 2028년까지 간다\""
+    },
     "source_fact:75cfa28522e872ab85e82246": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -54157,6 +54818,27 @@
       ],
       "source_published_kst": "2026-10-05T20:01+09:00",
       "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
+    },
+    "source_fact:7cae2c73af8a3a441cdb972e": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632520",
+      "source": "이투데이",
+      "source_body_digest": "d37effa9aeb463ea765b2bdd952de92018cbb9f9c4ba8a6239b34adf0f4d78cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:16d5e0e60a627c4e56f8aee30e4146a6b0970873e030ee7823c7c2cc52f74651",
+      "source_fact_keys": [
+        "source_fact:v1:29637723dc02beaa707e50fbafef78dee7c41ebf38b6210d3e9093528d124529",
+        "source_fact:v1:797c4d387f08ec5cf64b757b5f44f280c3e12a1017292ce07b05a44f9ed52411",
+        "source_fact:v1:98ab43c09db39a2a53e36f4eacd5d21a32d77ae9ee3315865f789bc813f9a8f3",
+        "source_fact:v1:f0dbf2fa86c0dfbafb3a18d938b9ac0c8b614a738894604564e422651025786a",
+        "source_fact:v1:f2cc972d47f765de4d3c7ab1524f2888ffe1488593c6ae771819c50b62908a4c"
+      ],
+      "source_published_kst": "2026-10-06T07:07+09:00",
+      "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
     },
     "source_fact:7d055fe658657beecb418986": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -54937,6 +55619,26 @@
       "source_published_kst": "2026-10-06T06:25+09:00",
       "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
     },
+    "source_fact:8593c0bd43d2833b2d7a930d": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02223846645610296",
+      "source": "이데일리",
+      "source_body_digest": "7dd939a7cdd6608e9a95f118e63a2688db1b88c9110c2b7df020d629b3dcd198",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5bbfcb55b32520676cae833afb5c1ee0e9c3fa7709fd27d6a71a30eaf884590",
+      "source_fact_keys": [
+        "source_fact:v1:456f4d8a9e928fea408d0766c8d2b6dc229ec6837d8bd8758797250dbae4090f",
+        "source_fact:v1:6710b721253f36352b7fbab324cddc54f36a3909cc36d1f1eaff55c06e0a469a",
+        "source_fact:v1:6f0dcb4bb0e2c00fcacafc987fbf8da58f91e09ea613f4fadff12b7fe9f21b71",
+        "source_fact:v1:e4dd051608ebbc5a7e75b2e0864c68e185d306ffff72ef36342942b29314a5fe"
+      ],
+      "source_published_kst": "2026-10-06T06:28+09:00",
+      "title": "트럼프, 면세 경유 사용처 제한 완화…기름값 낮추려 안간힘"
+    },
     "source_fact:85bb168eb482a0835126a24f": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -55711,6 +56413,26 @@
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
+    "source_fact:913b6b230861f12e9d1d1ab0": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02223846645610296",
+      "source": "이데일리",
+      "source_body_digest": "7dd939a7cdd6608e9a95f118e63a2688db1b88c9110c2b7df020d629b3dcd198",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5bbfcb55b32520676cae833afb5c1ee0e9c3fa7709fd27d6a71a30eaf884590",
+      "source_fact_keys": [
+        "source_fact:v1:456f4d8a9e928fea408d0766c8d2b6dc229ec6837d8bd8758797250dbae4090f",
+        "source_fact:v1:6710b721253f36352b7fbab324cddc54f36a3909cc36d1f1eaff55c06e0a469a",
+        "source_fact:v1:6f0dcb4bb0e2c00fcacafc987fbf8da58f91e09ea613f4fadff12b7fe9f21b71",
+        "source_fact:v1:e4dd051608ebbc5a7e75b2e0864c68e185d306ffff72ef36342942b29314a5fe"
+      ],
+      "source_published_kst": "2026-10-06T06:28+09:00",
+      "title": "트럼프, 면세 경유 사용처 제한 완화…기름값 낮추려 안간힘"
+    },
     "source_fact:918004b24608f82aea66bb5f": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -55840,6 +56562,35 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
     },
+    "source_fact:938f920e947db5e1e3e54021": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
     "source_fact:940f235d897aafb96fc62c92": {
       "first_seen_kst": "2026-10-06T00:03:48+09:00",
       "lanes": {
@@ -55935,6 +56686,35 @@
       ],
       "source_published_kst": "2026-10-05T19:04+09:00",
       "title": "니우 테크놀러지스, 3분기 판매 54만대..전년비 15% 증가·해외 3배 확대"
+    },
+    "source_fact:961c0239eb3288635c91b1d6": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
     "source_fact:9626a125516b4e78a64767fe": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -56917,6 +57697,26 @@
       "source_published_kst": "2026-10-05T20:03+09:00",
       "title": "인스메드, CFO 10월 30일 사임…연간 매출 가이던스 유지"
     },
+    "source_fact:a35018a5612e1f442e277495": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02223846645610296",
+      "source": "이데일리",
+      "source_body_digest": "7dd939a7cdd6608e9a95f118e63a2688db1b88c9110c2b7df020d629b3dcd198",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5bbfcb55b32520676cae833afb5c1ee0e9c3fa7709fd27d6a71a30eaf884590",
+      "source_fact_keys": [
+        "source_fact:v1:456f4d8a9e928fea408d0766c8d2b6dc229ec6837d8bd8758797250dbae4090f",
+        "source_fact:v1:6710b721253f36352b7fbab324cddc54f36a3909cc36d1f1eaff55c06e0a469a",
+        "source_fact:v1:6f0dcb4bb0e2c00fcacafc987fbf8da58f91e09ea613f4fadff12b7fe9f21b71",
+        "source_fact:v1:e4dd051608ebbc5a7e75b2e0864c68e185d306ffff72ef36342942b29314a5fe"
+      ],
+      "source_published_kst": "2026-10-06T06:28+09:00",
+      "title": "트럼프, 면세 경유 사용처 제한 완화…기름값 낮추려 안간힘"
+    },
     "source_fact:a350f9edb034f4a6f33f200e": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -57579,6 +58379,35 @@
       "source_published_kst": "2026-10-05T13:29+09:00",
       "title": "JP모간, 10월 '콕' 집은 종목은…아멕스·써모피셔·리버티"
     },
+    "source_fact:aaa1125757dd87b078bc0c21": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
     "source_fact:ab2b79d56ef4f1d90c69a544": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
@@ -57930,6 +58759,35 @@
       ],
       "source_published_kst": "2026-10-05T09:55+09:00",
       "title": "日라피더스, 삼성·TSMC식 설계동맹 생태계 구축"
+    },
+    "source_fact:b0d8722505a481d130ca2dc7": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
     "source_fact:b0edf5f3c835dbc4c3079d32": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -58510,6 +59368,35 @@
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
     },
+    "source_fact:b9e4e20925b73bab1f1b875e": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
     "source_fact:bb472372a84b50d9323ed8ed": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -59035,6 +59922,27 @@
       ],
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "디파이 디벨롭먼트, 3분기 주당 NAV 2배 이상 전망..SOL 보유 11%↑"
+    },
+    "source_fact:c231985322196f7a62e3158a": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632520",
+      "source": "이투데이",
+      "source_body_digest": "d37effa9aeb463ea765b2bdd952de92018cbb9f9c4ba8a6239b34adf0f4d78cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:16d5e0e60a627c4e56f8aee30e4146a6b0970873e030ee7823c7c2cc52f74651",
+      "source_fact_keys": [
+        "source_fact:v1:29637723dc02beaa707e50fbafef78dee7c41ebf38b6210d3e9093528d124529",
+        "source_fact:v1:797c4d387f08ec5cf64b757b5f44f280c3e12a1017292ce07b05a44f9ed52411",
+        "source_fact:v1:98ab43c09db39a2a53e36f4eacd5d21a32d77ae9ee3315865f789bc813f9a8f3",
+        "source_fact:v1:f0dbf2fa86c0dfbafb3a18d938b9ac0c8b614a738894604564e422651025786a",
+        "source_fact:v1:f2cc972d47f765de4d3c7ab1524f2888ffe1488593c6ae771819c50b62908a4c"
+      ],
+      "source_published_kst": "2026-10-06T07:07+09:00",
+      "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
     },
     "source_fact:c3417a4ede91bf68f5607be7": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
@@ -59655,6 +60563,35 @@
       ],
       "source_published_kst": "2026-10-06T03:30+09:00",
       "title": "[美특징주]할리-데이비슨, 신제품·비용절감 기대에 월가 ‘매수’ 상향…주가 8%↑"
+    },
+    "source_fact:cbbb45b6d4ae89fde61bb5aa": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
     "source_fact:cbd11c18f9e71d2ba852af7c": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -60629,6 +61566,35 @@
       "source_published_kst": "2026-10-06T03:34+09:00",
       "title": "[美특징주]백사이트, 폐렴구균 백신 3상 긍정적 결과에 주가 32%↑"
     },
+    "source_fact:d79127a0ceb4408b3c64efed": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
     "source_fact:d7adfe2501346a6a333789df": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -61137,6 +62103,26 @@
       "source_published_kst": "2026-10-05T21:36+09:00",
       "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
     },
+    "source_fact:df34fcd20c0b4ac2533fface": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02223846645610296",
+      "source": "이데일리",
+      "source_body_digest": "7dd939a7cdd6608e9a95f118e63a2688db1b88c9110c2b7df020d629b3dcd198",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5bbfcb55b32520676cae833afb5c1ee0e9c3fa7709fd27d6a71a30eaf884590",
+      "source_fact_keys": [
+        "source_fact:v1:456f4d8a9e928fea408d0766c8d2b6dc229ec6837d8bd8758797250dbae4090f",
+        "source_fact:v1:6710b721253f36352b7fbab324cddc54f36a3909cc36d1f1eaff55c06e0a469a",
+        "source_fact:v1:6f0dcb4bb0e2c00fcacafc987fbf8da58f91e09ea613f4fadff12b7fe9f21b71",
+        "source_fact:v1:e4dd051608ebbc5a7e75b2e0864c68e185d306ffff72ef36342942b29314a5fe"
+      ],
+      "source_published_kst": "2026-10-06T06:28+09:00",
+      "title": "트럼프, 면세 경유 사용처 제한 완화…기름값 낮추려 안간힘"
+    },
     "source_fact:dff8beb44be29d83358d0f8b": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -61304,6 +62290,27 @@
       ],
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
+    },
+    "source_fact:e18011da8aeac730ef3389aa": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632520",
+      "source": "이투데이",
+      "source_body_digest": "d37effa9aeb463ea765b2bdd952de92018cbb9f9c4ba8a6239b34adf0f4d78cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:16d5e0e60a627c4e56f8aee30e4146a6b0970873e030ee7823c7c2cc52f74651",
+      "source_fact_keys": [
+        "source_fact:v1:29637723dc02beaa707e50fbafef78dee7c41ebf38b6210d3e9093528d124529",
+        "source_fact:v1:797c4d387f08ec5cf64b757b5f44f280c3e12a1017292ce07b05a44f9ed52411",
+        "source_fact:v1:98ab43c09db39a2a53e36f4eacd5d21a32d77ae9ee3315865f789bc813f9a8f3",
+        "source_fact:v1:f0dbf2fa86c0dfbafb3a18d938b9ac0c8b614a738894604564e422651025786a",
+        "source_fact:v1:f2cc972d47f765de4d3c7ab1524f2888ffe1488593c6ae771819c50b62908a4c"
+      ],
+      "source_published_kst": "2026-10-06T07:07+09:00",
+      "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
     },
     "source_fact:e1c1351189fd6262fd3a2442": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -62815,6 +63822,23 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
+    "source_fact:fa1abc1a8c2a9e9a43cab46c": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632244",
+      "source": "이투데이",
+      "source_body_digest": "ce802c598777a69ba09eb79ed946205db60421e18d9b59bea8c2692d4975c2d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:14cdbfbf308c5f7446fe07e9b73a0440267cbd545d1a1d1e6cd8022e136fb827",
+      "source_fact_keys": [
+        "source_fact:v1:7bab26bc484c1359a96af613ff446b18032cf867b306b61cf9a6ca88efe1260b"
+      ],
+      "source_published_kst": "2026-10-06T07:05+09:00",
+      "title": "한강신도시 때도 그러더니⋯반복되는 ‘교통난’ [교통지옥 김포②]"
+    },
     "source_fact:fa5a79c292035a14f0a79bfa": {
       "first_seen_kst": "2026-10-06T01:16:46+09:00",
       "lanes": {
@@ -63364,6 +64388,23 @@
       ],
       "source_published_kst": "2026-10-06T06:40+09:00",
       "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
+    },
+    "source_fact:ff5719b3c6323fa95f36f320": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632508",
+      "source": "이투데이",
+      "source_body_digest": "8d63ca88752b2b23d32906fbd6f4518e308ac71cde0993413303d1b369f37772",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:289e3366f96984d4e13ce2c35c70bd73d9272a9e20d82374c23c91d9087d62fb",
+      "source_fact_keys": [
+        "source_fact:v1:3a36edabc54741fe101dbcc800ffbd544fcbe6ac56d11a933e6c800fad933111"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "\"예수금 줄고 대미투자 송금까지\"⋯9월 외환보유액, 넉 달 만에 감소"
     },
     "source_fact:ff5d5a838c045b13bd796dd7": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -64221,6 +65262,26 @@
       "source_event_identity": "",
       "title": "뉴로센스 테라퓨틱스, 나스닥 상장폐지 통보..청문 신청·최저호가 회복"
     },
+    "title:0a71a7e57d5abc1d859fcc69": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02223846645610296",
+      "source": "이데일리",
+      "source_body_digest": "7dd939a7cdd6608e9a95f118e63a2688db1b88c9110c2b7df020d629b3dcd198",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e5bbfcb55b32520676cae833afb5c1ee0e9c3fa7709fd27d6a71a30eaf884590",
+      "source_fact_keys": [
+        "source_fact:v1:456f4d8a9e928fea408d0766c8d2b6dc229ec6837d8bd8758797250dbae4090f",
+        "source_fact:v1:6710b721253f36352b7fbab324cddc54f36a3909cc36d1f1eaff55c06e0a469a",
+        "source_fact:v1:6f0dcb4bb0e2c00fcacafc987fbf8da58f91e09ea613f4fadff12b7fe9f21b71",
+        "source_fact:v1:e4dd051608ebbc5a7e75b2e0864c68e185d306ffff72ef36342942b29314a5fe"
+      ],
+      "source_published_kst": "2026-10-06T06:28+09:00",
+      "title": "트럼프, 면세 경유 사용처 제한 완화…기름값 낮추려 안간힘"
+    },
     "title:0a79971e27acf286dff239ba": {
       "first_seen_kst": "2026-09-28T06:33:23+09:00",
       "lanes": {
@@ -64524,6 +65585,23 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
+    },
+    "title:0ed56bc3dc0419e39dfb2a8a": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632244",
+      "source": "이투데이",
+      "source_body_digest": "ce802c598777a69ba09eb79ed946205db60421e18d9b59bea8c2692d4975c2d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:14cdbfbf308c5f7446fe07e9b73a0440267cbd545d1a1d1e6cd8022e136fb827",
+      "source_fact_keys": [
+        "source_fact:v1:7bab26bc484c1359a96af613ff446b18032cf867b306b61cf9a6ca88efe1260b"
+      ],
+      "source_published_kst": "2026-10-06T07:05+09:00",
+      "title": "한강신도시 때도 그러더니⋯반복되는 ‘교통난’ [교통지옥 김포②]"
     },
     "title:0f071fe05d249ef81b01f5c4": {
       "first_seen_kst": "2026-10-02T19:41:23+09:00",
@@ -65863,6 +66941,35 @@
       "source_published_kst": "2026-10-04T07:00+09:00",
       "title": "美 기관 코인 투자 문턱 낮아진다…SEC, '셀프 커스터디' 허용 추진"
     },
+    "title:248971a7623f5a7099f0c990": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100606063797369",
+      "source": "머니투데이",
+      "source_body_digest": "9c7fc51b2f698c473dade2c14bd192782852710bacf463dc01320fc7f34e3948",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dfe2b1ccbd3e1c37a953259317926cd26b3ae2241b2e41d62e32d4b2dcaee898",
+      "source_fact_keys": [
+        "source_fact:v1:0ceb7dc91a8309d9b0184866ac056fc6f3b913cd14be79ae852b7017ed806992",
+        "source_fact:v1:425babe031a8f6a68b7acbcf7ef859c19b0a0160e6691de7aaf531323f57d5e5",
+        "source_fact:v1:551dd58f31225ff1de5d0782d2f9e318769692c032758f6c8a2ceceef355df7c",
+        "source_fact:v1:5e9a78696eb6d60a7e57880d23c8dfa4b77c94f8aa4e2d12864e916bf4b9a941",
+        "source_fact:v1:60358a75d3dc9f4d76236a4e596551739fcd992848bdeb6b0b261057fe6bc59b",
+        "source_fact:v1:8f5c725a23b593c961ba840d135805642499b34f03d5f1de1b99870f7c7dc73b",
+        "source_fact:v1:92e53183b2dd9fafe22c05d518389d0cd71ca4bb9e7ac2c422848de49bcd2d1f",
+        "source_fact:v1:aa123b29ae0d5bf28f4082496a0ffdc98868ccd9a28e663a6530c9906e62e3d8",
+        "source_fact:v1:ab61734674029182be671f95a504316a94deb3663b33448bf85e4975392e009a",
+        "source_fact:v1:b15d8ff46be15f3d41cfe4f6cd6f15633a558dc3966df409e3c7cd6aca80ad81",
+        "source_fact:v1:b3a039d5f24330a6fdee6aaf9ae094e08bf28599d60455c2ab2072a201ad81dc",
+        "source_fact:v1:b4082dc4c8f663ad4145a1dabf38892e26706bc42497b1223122611c35dab5ac",
+        "source_fact:v1:bf41a7234deb9f5689ea504f3c359562143c34df606e6108b7a2532788c22d98"
+      ],
+      "source_published_kst": "2026-10-06T06:38+09:00",
+      "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
+    },
     "title:24a6a89a393ba6059ec3d0fd": {
       "first_seen_kst": "2026-10-03T10:28:46+09:00",
       "lanes": {
@@ -66031,6 +67138,27 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=01295606645609312",
       "source": "이데일리",
       "title": "[美특징주]나이키, 1Q 매출 예상 하회·中 판매 부진…주가 5%↓"
+    },
+    "title:274f40982b2f98cdcacb9050": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632520",
+      "source": "이투데이",
+      "source_body_digest": "d37effa9aeb463ea765b2bdd952de92018cbb9f9c4ba8a6239b34adf0f4d78cd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:16d5e0e60a627c4e56f8aee30e4146a6b0970873e030ee7823c7c2cc52f74651",
+      "source_fact_keys": [
+        "source_fact:v1:29637723dc02beaa707e50fbafef78dee7c41ebf38b6210d3e9093528d124529",
+        "source_fact:v1:797c4d387f08ec5cf64b757b5f44f280c3e12a1017292ce07b05a44f9ed52411",
+        "source_fact:v1:98ab43c09db39a2a53e36f4eacd5d21a32d77ae9ee3315865f789bc813f9a8f3",
+        "source_fact:v1:f0dbf2fa86c0dfbafb3a18d938b9ac0c8b614a738894604564e422651025786a",
+        "source_fact:v1:f2cc972d47f765de4d3c7ab1524f2888ffe1488593c6ae771819c50b62908a4c"
+      ],
+      "source_published_kst": "2026-10-06T07:07+09:00",
+      "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
     },
     "title:2755b59c11599860e5aac7d3": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
@@ -75653,6 +76781,23 @@
       "source": "이투데이",
       "title": "산은·기업은행 “‘암살자(들)’ 투자에 외부 개입 없었어\""
     },
+    "title:ad73539edb3392b6e4588040": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632508",
+      "source": "이투데이",
+      "source_body_digest": "8d63ca88752b2b23d32906fbd6f4518e308ac71cde0993413303d1b369f37772",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:289e3366f96984d4e13ce2c35c70bd73d9272a9e20d82374c23c91d9087d62fb",
+      "source_fact_keys": [
+        "source_fact:v1:3a36edabc54741fe101dbcc800ffbd544fcbe6ac56d11a933e6c800fad933111"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "\"예수금 줄고 대미투자 송금까지\"⋯9월 외환보유액, 넉 달 만에 감소"
+    },
     "title:ad9b96299f5d7f74b6da38bc": {
       "first_seen_kst": "2026-10-02T13:04:47+09:00",
       "lanes": {
@@ -79517,6 +80662,25 @@
       "source": "이데일리",
       "title": "日 31년 만의 최고금리에도 엔화 약세…원·달러 1380원대 중반으로"
     },
+    "title:e5d140d28508b6634ad502ff": {
+      "first_seen_kst": "2026-10-06T07:08:46+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:08:46+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:08:46+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814455",
+      "source": "뉴시스",
+      "source_body_digest": "2671a152f9785c90f46bcbe7f02808db57be3e454f0273296789db55a7f8a06d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de21faa88ba243fe150d559c42459c8cae6347e8451bdb57d8c5fa515e83cfa3",
+      "source_fact_keys": [
+        "source_fact:v1:8992dc402a780a04a6bd1e949d075c38d4cba11e4f0c45aabc46cddcb0ded515",
+        "source_fact:v1:9928c1615e1acc538d8495f1674aa6c9089ab9f61e63fe0dd65323295cb452c4",
+        "source_fact:v1:be5e19c3f2bdb296c21b5d130bedc703483f70fcdd21a0af621e4e5e20139544"
+      ],
+      "source_published_kst": "2026-10-06T07:04+09:00",
+      "title": "\"AI가 돈 될까 고민은 시대착오…반도체 상승장 2028년까지 간다\""
+    },
     "title:e5d853bdbca267264e8c51b2": {
       "first_seen_kst": "2026-10-01T00:02:50+09:00",
       "lanes": {
@@ -81384,5 +82548,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T07:00:19+09:00"
+  "updated_at_kst": "2026-10-06T07:08:46+09:00"
 }
