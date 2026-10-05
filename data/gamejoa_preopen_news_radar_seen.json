@@ -520,20 +520,20 @@
     "event:2040de76bfabafead1b43434": {
       "first_seen_kst": "2026-10-05T00:49:19+09:00",
       "lanes": {
-        "live": "2026-10-05T21:32:34+09:00",
+        "live": "2026-10-05T21:53:16+09:00",
         "preopen": "2026-10-05T06:34:55+09:00"
       },
-      "last_seen_kst": "2026-10-05T21:32:34+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2632450",
-      "source": "이투데이",
-      "source_body_digest": "33037981030913bc216fa50543ac62174c7eb79b53ec25c181ed5ce0d5cff56e",
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/world/12168604",
+      "source": "매일경제",
+      "source_body_digest": "8b1f571b28cb931d1268e281e35d968e75502abd380b608a34069d0e014a587b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:5a929d1eda3a155587f0287b8164e1cf2574e7f7221b937f77bb26e8d86955d8",
+      "source_fact_identity": "source_facts:v1:c4a441b03bcb6afbad97aba3996ca8ec0ed481a8a04e6a13be86ca1928cbe377",
       "source_fact_keys": [
-        "source_fact:v1:339febd177dd9c2048f679c7f2d11b92770e553d12574ac8b75233baa7056ba5"
+        "source_fact:v1:4cd3bec70da28b93f9924eb26b028f0dbd103866168cb2ff9e961207ac5a3adc"
       ],
-      "source_published_kst": "2026-10-05T14:01+09:00",
-      "title": "OPEC+, 11월 원유 생산 목표 동결⋯중동 전쟁에 증산 효과 제한"
+      "source_published_kst": "2026-10-05T17:30+09:00",
+      "title": "이란, 호르무즈 공격 재개 … 중동 원유 수출 회복세에 '찬물'"
     },
     "event:20559afaa46c8beb4ac5c20d": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -1468,20 +1468,26 @@
     "event:594d140bf6bb143bcb4d8c01": {
       "first_seen_kst": "2026-10-05T20:38:34+09:00",
       "lanes": {
-        "live": "2026-10-05T20:38:34+09:00"
+        "live": "2026-10-05T21:53:16+09:00"
       },
-      "last_seen_kst": "2026-10-05T20:38:34+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=03188166645609968",
-      "source": "이데일리",
-      "source_body_digest": "0b675d50cc811b8e7d7ed0a9d73693fe5e60eaad9e25991ed31ff98ebb91f8c5",
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/business/12167055",
+      "source": "매일경제",
+      "source_body_digest": "22882ceadaac31e38ab939bf4b34e1acc52aac3e0d4c4e6e640d38c13845324c",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4adc393f7023987f13db17ed16af351a65c3f6250e683455ad1ed798efde22c1",
+      "source_fact_identity": "source_facts:v1:e90e30c61d7b2503568c5bf279dca82e090da5fba993e9354f0f9af8f5ef94a7",
       "source_fact_keys": [
-        "source_fact:v1:4606480719d3b93a23f1dbe5d5247156e9c5af6fa387f64c4bba1b81f9fc8441",
-        "source_fact:v1:9579d838fd9efee541d860343bb44d5e154fe97b43118bd5a352cd4a6ff1cb81"
+        "source_fact:v1:032bb99d3710f338cd8fc24cc409e349112d98b5c936fe33ee8204edd666f6f7",
+        "source_fact:v1:39b90662b8881723319fe15bf19f0fdb69a892afe882e2f7fdba504f08b56b89",
+        "source_fact:v1:4bd2681346aaf842959d39e042ee6108c454d84cee4a7d0754672034211c5407",
+        "source_fact:v1:50dc0e214f737627966ac0818b8e4296ddc3ce8940a43ce4221b7383e4a710c0",
+        "source_fact:v1:8c71560304b1e8e09cee99cacc8baa0bca845459d4e24a0efe6e2c21ae4af092",
+        "source_fact:v1:8d75c14303b8b55d34a906b36651f64c849f554ce7c0d7c9b5be8a1646089cbe",
+        "source_fact:v1:9341d0e111e9149dfd899adebb288f49fa1d6df6b010cc329342dd61c9f56a1d",
+        "source_fact:v1:dd2eed27180e29eba6504000ff4e4a1ba1d975a0aaaeba14959f08a8f1159db4"
       ],
-      "source_published_kst": "2026-10-05T20:21+09:00",
-      "title": "[美특징주]코어위브, 연이은 제품 가격 인상에 월가 호평…개장전 '강보합'"
+      "source_published_kst": "2026-10-05T08:05+09:00",
+      "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
     },
     "event:5b4ee437f1fc9c90592a5e3d": {
       "first_seen_kst": "2026-09-29T15:27:46+09:00",
@@ -5065,6 +5071,23 @@
       "source_published_kst": "2026-10-05T19:06+09:00",
       "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
     },
+    "fact:39ab96b2ff0524ea256ed012": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/world/12168604",
+      "source": "매일경제",
+      "source_body_digest": "8b1f571b28cb931d1268e281e35d968e75502abd380b608a34069d0e014a587b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a441b03bcb6afbad97aba3996ca8ec0ed481a8a04e6a13be86ca1928cbe377",
+      "source_fact_keys": [
+        "source_fact:v1:4cd3bec70da28b93f9924eb26b028f0dbd103866168cb2ff9e961207ac5a3adc"
+      ],
+      "source_published_kst": "2026-10-05T17:30+09:00",
+      "title": "이란, 호르무즈 공격 재개 … 중동 원유 수출 회복세에 '찬물'"
+    },
     "fact:3e40f5e3d21f980b3e7ffda2": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -5106,6 +5129,23 @@
       ],
       "source_published_kst": "2026-10-05T15:17+09:00",
       "title": "자사주 '버팀목' 빠지는 삼성전자… 100조원대 영업익으로 극복할까?"
+    },
+    "fact:4cbaae6970c4c5a19676fdcf": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01649846645609968",
+      "source": "이데일리",
+      "source_body_digest": "8ff0dff31ba03783c39e74a3ae7f52105412f0867c0e49685013108f1c9f677a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85cefbc29641e01a8a604e317497bb5c4584b9d395282b28710a6cacfbf00803",
+      "source_fact_keys": [
+        "source_fact:v1:4e6b18dd6ee8e20141857cfdb0c8b92bebedd275fe2fb3bd7745dcc36fe3d7a9"
+      ],
+      "source_published_kst": "2026-10-05T09:01+09:00",
+      "title": "[단독]\"알뜰폰 1만명당 1명\"이라더니…정부, 상담사 수도 몰랐다"
     },
     "fact:51b905a85423905ac39196e5": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -5341,6 +5381,30 @@
       "source_published_kst": "2026-10-05T12:59+09:00",
       "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
     },
+    "fact:69c65f29af273648966d6a72": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/business/12167055",
+      "source": "매일경제",
+      "source_body_digest": "22882ceadaac31e38ab939bf4b34e1acc52aac3e0d4c4e6e640d38c13845324c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e90e30c61d7b2503568c5bf279dca82e090da5fba993e9354f0f9af8f5ef94a7",
+      "source_fact_keys": [
+        "source_fact:v1:032bb99d3710f338cd8fc24cc409e349112d98b5c936fe33ee8204edd666f6f7",
+        "source_fact:v1:39b90662b8881723319fe15bf19f0fdb69a892afe882e2f7fdba504f08b56b89",
+        "source_fact:v1:4bd2681346aaf842959d39e042ee6108c454d84cee4a7d0754672034211c5407",
+        "source_fact:v1:50dc0e214f737627966ac0818b8e4296ddc3ce8940a43ce4221b7383e4a710c0",
+        "source_fact:v1:8c71560304b1e8e09cee99cacc8baa0bca845459d4e24a0efe6e2c21ae4af092",
+        "source_fact:v1:8d75c14303b8b55d34a906b36651f64c849f554ce7c0d7c9b5be8a1646089cbe",
+        "source_fact:v1:9341d0e111e9149dfd899adebb288f49fa1d6df6b010cc329342dd61c9f56a1d",
+        "source_fact:v1:dd2eed27180e29eba6504000ff4e4a1ba1d975a0aaaeba14959f08a8f1159db4"
+      ],
+      "source_published_kst": "2026-10-05T08:05+09:00",
+      "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
+    },
     "fact:6b1c4e42c745bf0440d50916": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -5359,6 +5423,24 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
+    },
+    "fact:6b25f374fa408b9812e9b08b": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261003023500030",
+      "source": "연합뉴스",
+      "source_body_digest": "83445351e8bfc7d23dbd77af36d55cc972ba08cf84efd973aeb65a430008dc4a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b53e47a275b2431ebe483da4b298cc31e2504a5d255d99746cc99531955a739e",
+      "source_fact_keys": [
+        "source_fact:v1:8ec2a1e2497e7da34441796242ef8315cfc91c2041c9ffe7d4282850bd5967f6",
+        "source_fact:v1:ea08367e3bef68d3ff69263448af304c1241dfa77f3ffd2268c187ad24c1a639"
+      ],
+      "source_published_kst": "2026-10-05T07:31+09:00",
+      "title": "태극기 스니커즈에 호랑이 티셔츠까지…패션에 스민 '한국' | 연합뉴스"
     },
     "fact:6b779d20bc514550bf88de88": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -5415,6 +5497,23 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "C.H.로빈슨, RXO 58억달러 인수 합의 후 재무 부담·주식 희석 우려 부각"
+    },
+    "fact:7783fe8de0ad56edc7448968": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812853",
+      "source": "뉴시스",
+      "source_body_digest": "c6bae69d79eec68f5949fea3b928965fe032c41db313357aecf7afc07ed09d19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a5a86be580a5910d9fa5d801f268febdb031291fb2fe1c1971eefbf5578423a",
+      "source_fact_keys": [
+        "source_fact:v1:9173183185be0c64923cdb026812b36a1a7fd670be9791dc8f3c2a65599df0f2"
+      ],
+      "source_published_kst": "2026-10-05T09:00+09:00",
+      "title": "순창군, 대학생 생활비 지원사업 전개…10월6~23일 접수"
     },
     "fact:77bc4700a45c5d14b5933afa": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -5583,6 +5682,23 @@
       ],
       "source_published_kst": "2026-10-05T18:43+09:00",
       "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
+    },
+    "fact:8f6be8e4d786f9c623741804": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01646566645609968",
+      "source": "이데일리",
+      "source_body_digest": "2cba3dfb67753eacf63179f8a30405e3569756e06c711020b5309090245b0e06",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de31a4c2bb86904fac805153afdb98a4f41b7de01080bac8907f36bb2cd75b5c",
+      "source_fact_keys": [
+        "source_fact:v1:2c573b29ab7e90fa61be75823b5d34529dc11a7c6d0f8ff0fabaa52cdff0259e"
+      ],
+      "source_published_kst": "2026-10-05T09:00+09:00",
+      "title": "KT 이어 LG유플러스도 뱅고와 손잡았다…‘유독’에 해외 AI 서비스 확대"
     },
     "fact:907fd9ff8446573ba25001bf": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -7374,6 +7490,21 @@
       ],
       "source_published_kst": "2026-10-05T21:07+09:00",
       "title": "텔라 바이오, 완전 흡수성 메시 '리오라' FDA 허가 획득"
+    },
+    "link:16ef2111ccd07a9b6fead8c6": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169799",
+      "source": "매일경제",
+      "source_body_digest": "4fa1c66f0afdbd1d33a8e514bca764ffec2545b48596537c7b338b4093bd853f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "RXO, C.H.로빈슨의 58억달러 인수 합의에 29% 프리미엄 주목"
     },
     "link:171c61a397e4baaac392fc6e": {
       "first_seen_kst": "2026-10-02T19:26:27+09:00",
@@ -11637,6 +11768,23 @@
       "source": "파이낸셜뉴스",
       "title": "바이오협, 바이오기업 31곳 투자유치 지원…투자자 미팅 20건 연계"
     },
+    "link:5d5eab8ed79d620038442aff": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812853",
+      "source": "뉴시스",
+      "source_body_digest": "c6bae69d79eec68f5949fea3b928965fe032c41db313357aecf7afc07ed09d19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a5a86be580a5910d9fa5d801f268febdb031291fb2fe1c1971eefbf5578423a",
+      "source_fact_keys": [
+        "source_fact:v1:9173183185be0c64923cdb026812b36a1a7fd670be9791dc8f3c2a65599df0f2"
+      ],
+      "source_published_kst": "2026-10-05T09:00+09:00",
+      "title": "순창군, 대학생 생활비 지원사업 전개…10월6~23일 접수"
+    },
     "link:5d7fc07d65fc52da526c464f": {
       "first_seen_kst": "2026-10-01T21:17:39+09:00",
       "lanes": {
@@ -12284,6 +12432,23 @@
       "link": "https://www.etoday.co.kr/news/view/2631622",
       "source": "이투데이",
       "title": "상승 종목 ‘743곳→265곳’ 급감⋯9월 코스피 순환매 꺾였다"
+    },
+    "link:66dee67cd2fb9bc7b5ecb340": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01649846645609968",
+      "source": "이데일리",
+      "source_body_digest": "8ff0dff31ba03783c39e74a3ae7f52105412f0867c0e49685013108f1c9f677a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85cefbc29641e01a8a604e317497bb5c4584b9d395282b28710a6cacfbf00803",
+      "source_fact_keys": [
+        "source_fact:v1:4e6b18dd6ee8e20141857cfdb0c8b92bebedd275fe2fb3bd7745dcc36fe3d7a9"
+      ],
+      "source_published_kst": "2026-10-05T09:01+09:00",
+      "title": "[단독]\"알뜰폰 1만명당 1명\"이라더니…정부, 상담사 수도 몰랐다"
     },
     "link:66f4dd429d210cac94acc8c4": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
@@ -14622,6 +14787,24 @@
       "source": "뉴시스",
       "title": "\"부산대 작년 지역 생산유발 1.5조원, 일자리 창출 1.2만명\""
     },
+    "link:90597130adc7d546ee998c8a": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261003023500030",
+      "source": "연합뉴스",
+      "source_body_digest": "83445351e8bfc7d23dbd77af36d55cc972ba08cf84efd973aeb65a430008dc4a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b53e47a275b2431ebe483da4b298cc31e2504a5d255d99746cc99531955a739e",
+      "source_fact_keys": [
+        "source_fact:v1:8ec2a1e2497e7da34441796242ef8315cfc91c2041c9ffe7d4282850bd5967f6",
+        "source_fact:v1:ea08367e3bef68d3ff69263448af304c1241dfa77f3ffd2268c187ad24c1a639"
+      ],
+      "source_published_kst": "2026-10-05T07:31+09:00",
+      "title": "태극기 스니커즈에 호랑이 티셔츠까지…패션에 스민 '한국' | 연합뉴스"
+    },
     "link:909749cf4a07233fbf450ac3": {
       "first_seen_kst": "2026-09-22T16:30:20+09:00",
       "lanes": {
@@ -16957,6 +17140,30 @@
       "source": "뉴시스",
       "title": "9월 1~20일 수출 714억 달러…반도체 341억 달러 '역대 최대'(종합)"
     },
+    "link:b67866f3115e3a39893cf3ab": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/business/12167055",
+      "source": "매일경제",
+      "source_body_digest": "22882ceadaac31e38ab939bf4b34e1acc52aac3e0d4c4e6e640d38c13845324c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e90e30c61d7b2503568c5bf279dca82e090da5fba993e9354f0f9af8f5ef94a7",
+      "source_fact_keys": [
+        "source_fact:v1:032bb99d3710f338cd8fc24cc409e349112d98b5c936fe33ee8204edd666f6f7",
+        "source_fact:v1:39b90662b8881723319fe15bf19f0fdb69a892afe882e2f7fdba504f08b56b89",
+        "source_fact:v1:4bd2681346aaf842959d39e042ee6108c454d84cee4a7d0754672034211c5407",
+        "source_fact:v1:50dc0e214f737627966ac0818b8e4296ddc3ce8940a43ce4221b7383e4a710c0",
+        "source_fact:v1:8c71560304b1e8e09cee99cacc8baa0bca845459d4e24a0efe6e2c21ae4af092",
+        "source_fact:v1:8d75c14303b8b55d34a906b36651f64c849f554ce7c0d7c9b5be8a1646089cbe",
+        "source_fact:v1:9341d0e111e9149dfd899adebb288f49fa1d6df6b010cc329342dd61c9f56a1d",
+        "source_fact:v1:dd2eed27180e29eba6504000ff4e4a1ba1d975a0aaaeba14959f08a8f1159db4"
+      ],
+      "source_published_kst": "2026-10-05T08:05+09:00",
+      "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
+    },
     "link:b6c0d7ab9734d45d7766bcfc": {
       "first_seen_kst": "2026-09-29T16:50:36+09:00",
       "lanes": {
@@ -17616,6 +17823,23 @@
       "link": "https://www.mk.co.kr/news/business/12164742",
       "source": "매일경제",
       "title": "HBM 수요·장기계약…NH證 “SK하닉 340만원 간다” [오늘, 이 종목]- 매경ECONOMY"
+    },
+    "link:c168e3c62ad0c70ae66cafb1": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01646566645609968",
+      "source": "이데일리",
+      "source_body_digest": "2cba3dfb67753eacf63179f8a30405e3569756e06c711020b5309090245b0e06",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de31a4c2bb86904fac805153afdb98a4f41b7de01080bac8907f36bb2cd75b5c",
+      "source_fact_keys": [
+        "source_fact:v1:2c573b29ab7e90fa61be75823b5d34529dc11a7c6d0f8ff0fabaa52cdff0259e"
+      ],
+      "source_published_kst": "2026-10-05T09:00+09:00",
+      "title": "KT 이어 LG유플러스도 뱅고와 손잡았다…‘유독’에 해외 AI 서비스 확대"
     },
     "link:c1a4fb3c441921378a7dc17b": {
       "first_seen_kst": "2026-10-03T01:16:26+09:00",
@@ -18859,6 +19083,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260928011600009",
       "source": "연합뉴스",
       "title": "'메디케어 해킹' 호주상원, 올트먼 등에 청문회 출석 요구 | 연합뉴스"
+    },
+    "link:d4678b023adaf29f7760ddbe": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/world/12168604",
+      "source": "매일경제",
+      "source_body_digest": "8b1f571b28cb931d1268e281e35d968e75502abd380b608a34069d0e014a587b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a441b03bcb6afbad97aba3996ca8ec0ed481a8a04e6a13be86ca1928cbe377",
+      "source_fact_keys": [
+        "source_fact:v1:4cd3bec70da28b93f9924eb26b028f0dbd103866168cb2ff9e961207ac5a3adc"
+      ],
+      "source_published_kst": "2026-10-05T17:30+09:00",
+      "title": "이란, 호르무즈 공격 재개 … 중동 원유 수출 회복세에 '찬물'"
     },
     "link:d4b0b26f161cd2205472515c": {
       "first_seen_kst": "2026-10-01T21:33:24+09:00",
@@ -23486,6 +23727,23 @@
       "source_published_kst": "2026-10-05T16:41+09:00",
       "title": "에비던트, 크레스트옵틱스 인수 완료"
     },
+    "original:26477187867b2ee558c3f5e6": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812853",
+      "source": "뉴시스",
+      "source_body_digest": "c6bae69d79eec68f5949fea3b928965fe032c41db313357aecf7afc07ed09d19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a5a86be580a5910d9fa5d801f268febdb031291fb2fe1c1971eefbf5578423a",
+      "source_fact_keys": [
+        "source_fact:v1:9173183185be0c64923cdb026812b36a1a7fd670be9791dc8f3c2a65599df0f2"
+      ],
+      "source_published_kst": "2026-10-05T09:00+09:00",
+      "title": "순창군, 대학생 생활비 지원사업 전개…10월6~23일 접수"
+    },
     "original:266494eecb47dd15af2cac17": {
       "first_seen_kst": "2026-10-02T12:31:36+09:00",
       "lanes": {
@@ -26813,6 +27071,24 @@
       "source": "뉴시스",
       "title": "[올댓차이나] 대만 증시, 韓美 반도체 호조에 0.86%↑ 상승 마감…1주 만에 사상최고 경신"
     },
+    "original:5d7bffcccae249d53af9dd3e": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261003023500030",
+      "source": "연합뉴스",
+      "source_body_digest": "83445351e8bfc7d23dbd77af36d55cc972ba08cf84efd973aeb65a430008dc4a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b53e47a275b2431ebe483da4b298cc31e2504a5d255d99746cc99531955a739e",
+      "source_fact_keys": [
+        "source_fact:v1:8ec2a1e2497e7da34441796242ef8315cfc91c2041c9ffe7d4282850bd5967f6",
+        "source_fact:v1:ea08367e3bef68d3ff69263448af304c1241dfa77f3ffd2268c187ad24c1a639"
+      ],
+      "source_published_kst": "2026-10-05T07:31+09:00",
+      "title": "태극기 스니커즈에 호랑이 티셔츠까지…패션에 스민 '한국' | 연합뉴스"
+    },
     "original:5d7f6b7b79a6ccd04ab62bc2": {
       "first_seen_kst": "2026-10-03T12:26:15+09:00",
       "lanes": {
@@ -28234,6 +28510,23 @@
       "source": "매일경제",
       "source_event_identity": "",
       "title": "뱅코 BBVA 아르헨티나, 2분기 순이익 1300억 페소..전년비 65% 증가"
+    },
+    "original:73f2bea01ef20bb2e89ed391": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01649846645609968",
+      "source": "이데일리",
+      "source_body_digest": "8ff0dff31ba03783c39e74a3ae7f52105412f0867c0e49685013108f1c9f677a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85cefbc29641e01a8a604e317497bb5c4584b9d395282b28710a6cacfbf00803",
+      "source_fact_keys": [
+        "source_fact:v1:4e6b18dd6ee8e20141857cfdb0c8b92bebedd275fe2fb3bd7745dcc36fe3d7a9"
+      ],
+      "source_published_kst": "2026-10-05T09:01+09:00",
+      "title": "[단독]\"알뜰폰 1만명당 1명\"이라더니…정부, 상담사 수도 몰랐다"
     },
     "original:74270581d1fc3a0ec368e64a": {
       "first_seen_kst": "2026-09-25T15:18:56+09:00",
@@ -30407,6 +30700,21 @@
       "link": "https://www.yna.co.kr/view/AKR20260929035400008",
       "source": "연합뉴스",
       "title": "한투운용 \"'ACE 미국나스닥100' 연초 이후 개인 순매수 5천억원\" | 연합뉴스"
+    },
+    "original:9beef5adafe5320922165a75": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169799",
+      "source": "매일경제",
+      "source_body_digest": "4fa1c66f0afdbd1d33a8e514bca764ffec2545b48596537c7b338b4093bd853f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "RXO, C.H.로빈슨의 58억달러 인수 합의에 29% 프리미엄 주목"
     },
     "original:9c24d95c1be197fe7cdbc5d6": {
       "first_seen_kst": "2026-10-02T08:38:38+09:00",
@@ -33887,6 +34195,30 @@
       "source": "뉴시스",
       "title": "\"주식 시장 조정 끝…10월 중순 반등해 2028년 초까지 상승\" 전문가의 근거는"
     },
+    "original:d700d974b7b4c786e8bcd90a": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/business/12167055",
+      "source": "매일경제",
+      "source_body_digest": "22882ceadaac31e38ab939bf4b34e1acc52aac3e0d4c4e6e640d38c13845324c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e90e30c61d7b2503568c5bf279dca82e090da5fba993e9354f0f9af8f5ef94a7",
+      "source_fact_keys": [
+        "source_fact:v1:032bb99d3710f338cd8fc24cc409e349112d98b5c936fe33ee8204edd666f6f7",
+        "source_fact:v1:39b90662b8881723319fe15bf19f0fdb69a892afe882e2f7fdba504f08b56b89",
+        "source_fact:v1:4bd2681346aaf842959d39e042ee6108c454d84cee4a7d0754672034211c5407",
+        "source_fact:v1:50dc0e214f737627966ac0818b8e4296ddc3ce8940a43ce4221b7383e4a710c0",
+        "source_fact:v1:8c71560304b1e8e09cee99cacc8baa0bca845459d4e24a0efe6e2c21ae4af092",
+        "source_fact:v1:8d75c14303b8b55d34a906b36651f64c849f554ce7c0d7c9b5be8a1646089cbe",
+        "source_fact:v1:9341d0e111e9149dfd899adebb288f49fa1d6df6b010cc329342dd61c9f56a1d",
+        "source_fact:v1:dd2eed27180e29eba6504000ff4e4a1ba1d975a0aaaeba14959f08a8f1159db4"
+      ],
+      "source_published_kst": "2026-10-05T08:05+09:00",
+      "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
+    },
     "original:d718b180c7adb58b4bf75dd1": {
       "first_seen_kst": "2026-10-01T23:40:24+09:00",
       "lanes": {
@@ -35381,6 +35713,23 @@
       "source_published_kst": "2026-10-05T15:32+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 10대 바이오 거래 선정"
     },
+    "original:f107ab0f309b3411bcb4915e": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01646566645609968",
+      "source": "이데일리",
+      "source_body_digest": "2cba3dfb67753eacf63179f8a30405e3569756e06c711020b5309090245b0e06",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de31a4c2bb86904fac805153afdb98a4f41b7de01080bac8907f36bb2cd75b5c",
+      "source_fact_keys": [
+        "source_fact:v1:2c573b29ab7e90fa61be75823b5d34529dc11a7c6d0f8ff0fabaa52cdff0259e"
+      ],
+      "source_published_kst": "2026-10-05T09:00+09:00",
+      "title": "KT 이어 LG유플러스도 뱅고와 손잡았다…‘유독’에 해외 AI 서비스 확대"
+    },
     "original:f108cdcd2ae22b95a68dfafd": {
       "first_seen_kst": "2026-09-26T15:38:31+09:00",
       "lanes": {
@@ -35830,6 +36179,23 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=04854406645608656",
       "source": "이데일리",
       "title": "LH, 호남 반도체 국가산단 설계 착수…내년 중순 승인 목표"
+    },
+    "original:f7ed3380ceeac44eebb76d53": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/world/12168604",
+      "source": "매일경제",
+      "source_body_digest": "8b1f571b28cb931d1268e281e35d968e75502abd380b608a34069d0e014a587b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a441b03bcb6afbad97aba3996ca8ec0ed481a8a04e6a13be86ca1928cbe377",
+      "source_fact_keys": [
+        "source_fact:v1:4cd3bec70da28b93f9924eb26b028f0dbd103866168cb2ff9e961207ac5a3adc"
+      ],
+      "source_published_kst": "2026-10-05T17:30+09:00",
+      "title": "이란, 호르무즈 공격 재개 … 중동 원유 수출 회복세에 '찬물'"
     },
     "original:f82f07b9bb682f280b2a64a0": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
@@ -37909,6 +38275,30 @@
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
     },
+    "source_fact:42cb2ef6854f4adb2d774367": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/business/12167055",
+      "source": "매일경제",
+      "source_body_digest": "22882ceadaac31e38ab939bf4b34e1acc52aac3e0d4c4e6e640d38c13845324c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e90e30c61d7b2503568c5bf279dca82e090da5fba993e9354f0f9af8f5ef94a7",
+      "source_fact_keys": [
+        "source_fact:v1:032bb99d3710f338cd8fc24cc409e349112d98b5c936fe33ee8204edd666f6f7",
+        "source_fact:v1:39b90662b8881723319fe15bf19f0fdb69a892afe882e2f7fdba504f08b56b89",
+        "source_fact:v1:4bd2681346aaf842959d39e042ee6108c454d84cee4a7d0754672034211c5407",
+        "source_fact:v1:50dc0e214f737627966ac0818b8e4296ddc3ce8940a43ce4221b7383e4a710c0",
+        "source_fact:v1:8c71560304b1e8e09cee99cacc8baa0bca845459d4e24a0efe6e2c21ae4af092",
+        "source_fact:v1:8d75c14303b8b55d34a906b36651f64c849f554ce7c0d7c9b5be8a1646089cbe",
+        "source_fact:v1:9341d0e111e9149dfd899adebb288f49fa1d6df6b010cc329342dd61c9f56a1d",
+        "source_fact:v1:dd2eed27180e29eba6504000ff4e4a1ba1d975a0aaaeba14959f08a8f1159db4"
+      ],
+      "source_published_kst": "2026-10-05T08:05+09:00",
+      "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
+    },
     "source_fact:43474c80a971fb128f3d3a7b": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -38898,6 +39288,24 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "source_fact:5e5e61f6464f28c6fcb53d26": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261003023500030",
+      "source": "연합뉴스",
+      "source_body_digest": "83445351e8bfc7d23dbd77af36d55cc972ba08cf84efd973aeb65a430008dc4a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b53e47a275b2431ebe483da4b298cc31e2504a5d255d99746cc99531955a739e",
+      "source_fact_keys": [
+        "source_fact:v1:8ec2a1e2497e7da34441796242ef8315cfc91c2041c9ffe7d4282850bd5967f6",
+        "source_fact:v1:ea08367e3bef68d3ff69263448af304c1241dfa77f3ffd2268c187ad24c1a639"
+      ],
+      "source_published_kst": "2026-10-05T07:31+09:00",
+      "title": "태극기 스니커즈에 호랑이 티셔츠까지…패션에 스민 '한국' | 연합뉴스"
+    },
     "source_fact:5ed0dea385a36ac2ffe5be1a": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -39296,6 +39704,23 @@
       "source_published_kst": "2026-10-05T21:32+09:00",
       "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
     },
+    "source_fact:6dba16e0994ee47bfb79a701": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812853",
+      "source": "뉴시스",
+      "source_body_digest": "c6bae69d79eec68f5949fea3b928965fe032c41db313357aecf7afc07ed09d19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a5a86be580a5910d9fa5d801f268febdb031291fb2fe1c1971eefbf5578423a",
+      "source_fact_keys": [
+        "source_fact:v1:9173183185be0c64923cdb026812b36a1a7fd670be9791dc8f3c2a65599df0f2"
+      ],
+      "source_published_kst": "2026-10-05T09:00+09:00",
+      "title": "순창군, 대학생 생활비 지원사업 전개…10월6~23일 접수"
+    },
     "source_fact:6e1cd91e47f858641473a7a6": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
       "lanes": {
@@ -39674,6 +40099,23 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:742988f6b4e29f5b249d7f4a": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/world/12168604",
+      "source": "매일경제",
+      "source_body_digest": "8b1f571b28cb931d1268e281e35d968e75502abd380b608a34069d0e014a587b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a441b03bcb6afbad97aba3996ca8ec0ed481a8a04e6a13be86ca1928cbe377",
+      "source_fact_keys": [
+        "source_fact:v1:4cd3bec70da28b93f9924eb26b028f0dbd103866168cb2ff9e961207ac5a3adc"
+      ],
+      "source_published_kst": "2026-10-05T17:30+09:00",
+      "title": "이란, 호르무즈 공격 재개 … 중동 원유 수출 회복세에 '찬물'"
     },
     "source_fact:74519f8a7b5d8a11ff2949fd": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -40154,6 +40596,30 @@
       ],
       "source_published_kst": "2026-10-05T20:07+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
+    },
+    "source_fact:80d9486ec11a2bf8ad271a92": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/business/12167055",
+      "source": "매일경제",
+      "source_body_digest": "22882ceadaac31e38ab939bf4b34e1acc52aac3e0d4c4e6e640d38c13845324c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e90e30c61d7b2503568c5bf279dca82e090da5fba993e9354f0f9af8f5ef94a7",
+      "source_fact_keys": [
+        "source_fact:v1:032bb99d3710f338cd8fc24cc409e349112d98b5c936fe33ee8204edd666f6f7",
+        "source_fact:v1:39b90662b8881723319fe15bf19f0fdb69a892afe882e2f7fdba504f08b56b89",
+        "source_fact:v1:4bd2681346aaf842959d39e042ee6108c454d84cee4a7d0754672034211c5407",
+        "source_fact:v1:50dc0e214f737627966ac0818b8e4296ddc3ce8940a43ce4221b7383e4a710c0",
+        "source_fact:v1:8c71560304b1e8e09cee99cacc8baa0bca845459d4e24a0efe6e2c21ae4af092",
+        "source_fact:v1:8d75c14303b8b55d34a906b36651f64c849f554ce7c0d7c9b5be8a1646089cbe",
+        "source_fact:v1:9341d0e111e9149dfd899adebb288f49fa1d6df6b010cc329342dd61c9f56a1d",
+        "source_fact:v1:dd2eed27180e29eba6504000ff4e4a1ba1d975a0aaaeba14959f08a8f1159db4"
+      ],
+      "source_published_kst": "2026-10-05T08:05+09:00",
+      "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
     },
     "source_fact:80e3427f794898627bdfc03e": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -40656,6 +41122,30 @@
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
     },
+    "source_fact:918004b24608f82aea66bb5f": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/business/12167055",
+      "source": "매일경제",
+      "source_body_digest": "22882ceadaac31e38ab939bf4b34e1acc52aac3e0d4c4e6e640d38c13845324c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e90e30c61d7b2503568c5bf279dca82e090da5fba993e9354f0f9af8f5ef94a7",
+      "source_fact_keys": [
+        "source_fact:v1:032bb99d3710f338cd8fc24cc409e349112d98b5c936fe33ee8204edd666f6f7",
+        "source_fact:v1:39b90662b8881723319fe15bf19f0fdb69a892afe882e2f7fdba504f08b56b89",
+        "source_fact:v1:4bd2681346aaf842959d39e042ee6108c454d84cee4a7d0754672034211c5407",
+        "source_fact:v1:50dc0e214f737627966ac0818b8e4296ddc3ce8940a43ce4221b7383e4a710c0",
+        "source_fact:v1:8c71560304b1e8e09cee99cacc8baa0bca845459d4e24a0efe6e2c21ae4af092",
+        "source_fact:v1:8d75c14303b8b55d34a906b36651f64c849f554ce7c0d7c9b5be8a1646089cbe",
+        "source_fact:v1:9341d0e111e9149dfd899adebb288f49fa1d6df6b010cc329342dd61c9f56a1d",
+        "source_fact:v1:dd2eed27180e29eba6504000ff4e4a1ba1d975a0aaaeba14959f08a8f1159db4"
+      ],
+      "source_published_kst": "2026-10-05T08:05+09:00",
+      "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
+    },
     "source_fact:92d93625f62a5ca426cf648d": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -40927,6 +41417,30 @@
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "C.H.로빈슨, RXO 58억달러 인수 합의 후 재무 부담·주식 희석 우려 부각"
     },
+    "source_fact:9c2c2bee21fc9b881800e687": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/business/12167055",
+      "source": "매일경제",
+      "source_body_digest": "22882ceadaac31e38ab939bf4b34e1acc52aac3e0d4c4e6e640d38c13845324c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e90e30c61d7b2503568c5bf279dca82e090da5fba993e9354f0f9af8f5ef94a7",
+      "source_fact_keys": [
+        "source_fact:v1:032bb99d3710f338cd8fc24cc409e349112d98b5c936fe33ee8204edd666f6f7",
+        "source_fact:v1:39b90662b8881723319fe15bf19f0fdb69a892afe882e2f7fdba504f08b56b89",
+        "source_fact:v1:4bd2681346aaf842959d39e042ee6108c454d84cee4a7d0754672034211c5407",
+        "source_fact:v1:50dc0e214f737627966ac0818b8e4296ddc3ce8940a43ce4221b7383e4a710c0",
+        "source_fact:v1:8c71560304b1e8e09cee99cacc8baa0bca845459d4e24a0efe6e2c21ae4af092",
+        "source_fact:v1:8d75c14303b8b55d34a906b36651f64c849f554ce7c0d7c9b5be8a1646089cbe",
+        "source_fact:v1:9341d0e111e9149dfd899adebb288f49fa1d6df6b010cc329342dd61c9f56a1d",
+        "source_fact:v1:dd2eed27180e29eba6504000ff4e4a1ba1d975a0aaaeba14959f08a8f1159db4"
+      ],
+      "source_published_kst": "2026-10-05T08:05+09:00",
+      "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
+    },
     "source_fact:9e6c9614545d6db1412073c4": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -40991,6 +41505,30 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "source_fact:9ff87ba16c88e98f3029ac72": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/business/12167055",
+      "source": "매일경제",
+      "source_body_digest": "22882ceadaac31e38ab939bf4b34e1acc52aac3e0d4c4e6e640d38c13845324c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e90e30c61d7b2503568c5bf279dca82e090da5fba993e9354f0f9af8f5ef94a7",
+      "source_fact_keys": [
+        "source_fact:v1:032bb99d3710f338cd8fc24cc409e349112d98b5c936fe33ee8204edd666f6f7",
+        "source_fact:v1:39b90662b8881723319fe15bf19f0fdb69a892afe882e2f7fdba504f08b56b89",
+        "source_fact:v1:4bd2681346aaf842959d39e042ee6108c454d84cee4a7d0754672034211c5407",
+        "source_fact:v1:50dc0e214f737627966ac0818b8e4296ddc3ce8940a43ce4221b7383e4a710c0",
+        "source_fact:v1:8c71560304b1e8e09cee99cacc8baa0bca845459d4e24a0efe6e2c21ae4af092",
+        "source_fact:v1:8d75c14303b8b55d34a906b36651f64c849f554ce7c0d7c9b5be8a1646089cbe",
+        "source_fact:v1:9341d0e111e9149dfd899adebb288f49fa1d6df6b010cc329342dd61c9f56a1d",
+        "source_fact:v1:dd2eed27180e29eba6504000ff4e4a1ba1d975a0aaaeba14959f08a8f1159db4"
+      ],
+      "source_published_kst": "2026-10-05T08:05+09:00",
+      "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
     },
     "source_fact:a1b076fb690b3f4cea4c0016": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -41343,6 +41881,23 @@
       "source_published_kst": "2026-10-05T15:21+09:00",
       "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
     },
+    "source_fact:af683856d25d705e1b787d24": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01646566645609968",
+      "source": "이데일리",
+      "source_body_digest": "2cba3dfb67753eacf63179f8a30405e3569756e06c711020b5309090245b0e06",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de31a4c2bb86904fac805153afdb98a4f41b7de01080bac8907f36bb2cd75b5c",
+      "source_fact_keys": [
+        "source_fact:v1:2c573b29ab7e90fa61be75823b5d34529dc11a7c6d0f8ff0fabaa52cdff0259e"
+      ],
+      "source_published_kst": "2026-10-05T09:00+09:00",
+      "title": "KT 이어 LG유플러스도 뱅고와 손잡았다…‘유독’에 해외 AI 서비스 확대"
+    },
     "source_fact:b00d4410eaafa189ec7f3616": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -41436,6 +41991,23 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:b211221c166d93a66ca401ec": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01649846645609968",
+      "source": "이데일리",
+      "source_body_digest": "8ff0dff31ba03783c39e74a3ae7f52105412f0867c0e49685013108f1c9f677a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85cefbc29641e01a8a604e317497bb5c4584b9d395282b28710a6cacfbf00803",
+      "source_fact_keys": [
+        "source_fact:v1:4e6b18dd6ee8e20141857cfdb0c8b92bebedd275fe2fb3bd7745dcc36fe3d7a9"
+      ],
+      "source_published_kst": "2026-10-05T09:01+09:00",
+      "title": "[단독]\"알뜰폰 1만명당 1명\"이라더니…정부, 상담사 수도 몰랐다"
     },
     "source_fact:b2347c09adca76104cbadc07": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
@@ -41782,6 +42354,30 @@
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
     },
+    "source_fact:c1e7f56181b16e7577869d9c": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/business/12167055",
+      "source": "매일경제",
+      "source_body_digest": "22882ceadaac31e38ab939bf4b34e1acc52aac3e0d4c4e6e640d38c13845324c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e90e30c61d7b2503568c5bf279dca82e090da5fba993e9354f0f9af8f5ef94a7",
+      "source_fact_keys": [
+        "source_fact:v1:032bb99d3710f338cd8fc24cc409e349112d98b5c936fe33ee8204edd666f6f7",
+        "source_fact:v1:39b90662b8881723319fe15bf19f0fdb69a892afe882e2f7fdba504f08b56b89",
+        "source_fact:v1:4bd2681346aaf842959d39e042ee6108c454d84cee4a7d0754672034211c5407",
+        "source_fact:v1:50dc0e214f737627966ac0818b8e4296ddc3ce8940a43ce4221b7383e4a710c0",
+        "source_fact:v1:8c71560304b1e8e09cee99cacc8baa0bca845459d4e24a0efe6e2c21ae4af092",
+        "source_fact:v1:8d75c14303b8b55d34a906b36651f64c849f554ce7c0d7c9b5be8a1646089cbe",
+        "source_fact:v1:9341d0e111e9149dfd899adebb288f49fa1d6df6b010cc329342dd61c9f56a1d",
+        "source_fact:v1:dd2eed27180e29eba6504000ff4e4a1ba1d975a0aaaeba14959f08a8f1159db4"
+      ],
+      "source_published_kst": "2026-10-05T08:05+09:00",
+      "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
+    },
     "source_fact:c227b5b5ed8f99ebb85993fc": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -41853,6 +42449,30 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:c597721be0cd07386cf6eed5": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/business/12167055",
+      "source": "매일경제",
+      "source_body_digest": "22882ceadaac31e38ab939bf4b34e1acc52aac3e0d4c4e6e640d38c13845324c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e90e30c61d7b2503568c5bf279dca82e090da5fba993e9354f0f9af8f5ef94a7",
+      "source_fact_keys": [
+        "source_fact:v1:032bb99d3710f338cd8fc24cc409e349112d98b5c936fe33ee8204edd666f6f7",
+        "source_fact:v1:39b90662b8881723319fe15bf19f0fdb69a892afe882e2f7fdba504f08b56b89",
+        "source_fact:v1:4bd2681346aaf842959d39e042ee6108c454d84cee4a7d0754672034211c5407",
+        "source_fact:v1:50dc0e214f737627966ac0818b8e4296ddc3ce8940a43ce4221b7383e4a710c0",
+        "source_fact:v1:8c71560304b1e8e09cee99cacc8baa0bca845459d4e24a0efe6e2c21ae4af092",
+        "source_fact:v1:8d75c14303b8b55d34a906b36651f64c849f554ce7c0d7c9b5be8a1646089cbe",
+        "source_fact:v1:9341d0e111e9149dfd899adebb288f49fa1d6df6b010cc329342dd61c9f56a1d",
+        "source_fact:v1:dd2eed27180e29eba6504000ff4e4a1ba1d975a0aaaeba14959f08a8f1159db4"
+      ],
+      "source_published_kst": "2026-10-05T08:05+09:00",
+      "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
     },
     "source_fact:c5ddc310370e4ee7a6b07c65": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -42862,6 +43482,48 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:ed6c91fce142c1425385d5a6": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261003023500030",
+      "source": "연합뉴스",
+      "source_body_digest": "83445351e8bfc7d23dbd77af36d55cc972ba08cf84efd973aeb65a430008dc4a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b53e47a275b2431ebe483da4b298cc31e2504a5d255d99746cc99531955a739e",
+      "source_fact_keys": [
+        "source_fact:v1:8ec2a1e2497e7da34441796242ef8315cfc91c2041c9ffe7d4282850bd5967f6",
+        "source_fact:v1:ea08367e3bef68d3ff69263448af304c1241dfa77f3ffd2268c187ad24c1a639"
+      ],
+      "source_published_kst": "2026-10-05T07:31+09:00",
+      "title": "태극기 스니커즈에 호랑이 티셔츠까지…패션에 스민 '한국' | 연합뉴스"
+    },
+    "source_fact:ef5888bca156698d2067c5f8": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/business/12167055",
+      "source": "매일경제",
+      "source_body_digest": "22882ceadaac31e38ab939bf4b34e1acc52aac3e0d4c4e6e640d38c13845324c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e90e30c61d7b2503568c5bf279dca82e090da5fba993e9354f0f9af8f5ef94a7",
+      "source_fact_keys": [
+        "source_fact:v1:032bb99d3710f338cd8fc24cc409e349112d98b5c936fe33ee8204edd666f6f7",
+        "source_fact:v1:39b90662b8881723319fe15bf19f0fdb69a892afe882e2f7fdba504f08b56b89",
+        "source_fact:v1:4bd2681346aaf842959d39e042ee6108c454d84cee4a7d0754672034211c5407",
+        "source_fact:v1:50dc0e214f737627966ac0818b8e4296ddc3ce8940a43ce4221b7383e4a710c0",
+        "source_fact:v1:8c71560304b1e8e09cee99cacc8baa0bca845459d4e24a0efe6e2c21ae4af092",
+        "source_fact:v1:8d75c14303b8b55d34a906b36651f64c849f554ce7c0d7c9b5be8a1646089cbe",
+        "source_fact:v1:9341d0e111e9149dfd899adebb288f49fa1d6df6b010cc329342dd61c9f56a1d",
+        "source_fact:v1:dd2eed27180e29eba6504000ff4e4a1ba1d975a0aaaeba14959f08a8f1159db4"
+      ],
+      "source_published_kst": "2026-10-05T08:05+09:00",
+      "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
     },
     "source_fact:f03038a3aa31943d0a9ee3c2": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -45465,6 +46127,23 @@
       ],
       "source_published_kst": "2026-10-05T16:41+09:00",
       "title": "에비던트, 크레스트옵틱스 인수 완료"
+    },
+    "title:26477187867b2ee558c3f5e6": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812853",
+      "source": "뉴시스",
+      "source_body_digest": "c6bae69d79eec68f5949fea3b928965fe032c41db313357aecf7afc07ed09d19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1a5a86be580a5910d9fa5d801f268febdb031291fb2fe1c1971eefbf5578423a",
+      "source_fact_keys": [
+        "source_fact:v1:9173183185be0c64923cdb026812b36a1a7fd670be9791dc8f3c2a65599df0f2"
+      ],
+      "source_published_kst": "2026-10-05T09:00+09:00",
+      "title": "순창군, 대학생 생활비 지원사업 전개…10월6~23일 접수"
     },
     "title:266494eecb47dd15af2cac17": {
       "first_seen_kst": "2026-10-02T12:31:36+09:00",
@@ -48814,6 +49493,24 @@
       "source": "뉴시스",
       "title": "[올댓차이나] 대만 증시, 韓美 반도체 호조에 0.86%↑ 상승 마감…1주 만에 사상최고 경신"
     },
+    "title:5d7bffcccae249d53af9dd3e": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261003023500030",
+      "source": "연합뉴스",
+      "source_body_digest": "83445351e8bfc7d23dbd77af36d55cc972ba08cf84efd973aeb65a430008dc4a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b53e47a275b2431ebe483da4b298cc31e2504a5d255d99746cc99531955a739e",
+      "source_fact_keys": [
+        "source_fact:v1:8ec2a1e2497e7da34441796242ef8315cfc91c2041c9ffe7d4282850bd5967f6",
+        "source_fact:v1:ea08367e3bef68d3ff69263448af304c1241dfa77f3ffd2268c187ad24c1a639"
+      ],
+      "source_published_kst": "2026-10-05T07:31+09:00",
+      "title": "태극기 스니커즈에 호랑이 티셔츠까지…패션에 스민 '한국' | 연합뉴스"
+    },
     "title:5d7f6b7b79a6ccd04ab62bc2": {
       "first_seen_kst": "2026-10-03T12:26:15+09:00",
       "lanes": {
@@ -50256,6 +50953,23 @@
       "source": "매일경제",
       "source_event_identity": "",
       "title": "뱅코 BBVA 아르헨티나, 2분기 순이익 1300억 페소..전년비 65% 증가"
+    },
+    "title:73f2bea01ef20bb2e89ed391": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01649846645609968",
+      "source": "이데일리",
+      "source_body_digest": "8ff0dff31ba03783c39e74a3ae7f52105412f0867c0e49685013108f1c9f677a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85cefbc29641e01a8a604e317497bb5c4584b9d395282b28710a6cacfbf00803",
+      "source_fact_keys": [
+        "source_fact:v1:4e6b18dd6ee8e20141857cfdb0c8b92bebedd275fe2fb3bd7745dcc36fe3d7a9"
+      ],
+      "source_published_kst": "2026-10-05T09:01+09:00",
+      "title": "[단독]\"알뜰폰 1만명당 1명\"이라더니…정부, 상담사 수도 몰랐다"
     },
     "title:74270581d1fc3a0ec368e64a": {
       "first_seen_kst": "2026-09-25T15:18:56+09:00",
@@ -52469,6 +53183,21 @@
       "link": "https://www.yna.co.kr/view/AKR20260929035400008",
       "source": "연합뉴스",
       "title": "한투운용 \"'ACE 미국나스닥100' 연초 이후 개인 순매수 5천억원\" | 연합뉴스"
+    },
+    "title:9beef5adafe5320922165a75": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169799",
+      "source": "매일경제",
+      "source_body_digest": "4fa1c66f0afdbd1d33a8e514bca764ffec2545b48596537c7b338b4093bd853f",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "RXO, C.H.로빈슨의 58억달러 인수 합의에 29% 프리미엄 주목"
     },
     "title:9c24d95c1be197fe7cdbc5d6": {
       "first_seen_kst": "2026-10-02T08:38:38+09:00",
@@ -55993,6 +56722,30 @@
       "source": "뉴시스",
       "title": "\"주식 시장 조정 끝…10월 중순 반등해 2028년 초까지 상승\" 전문가의 근거는"
     },
+    "title:d700d974b7b4c786e8bcd90a": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/business/12167055",
+      "source": "매일경제",
+      "source_body_digest": "22882ceadaac31e38ab939bf4b34e1acc52aac3e0d4c4e6e640d38c13845324c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e90e30c61d7b2503568c5bf279dca82e090da5fba993e9354f0f9af8f5ef94a7",
+      "source_fact_keys": [
+        "source_fact:v1:032bb99d3710f338cd8fc24cc409e349112d98b5c936fe33ee8204edd666f6f7",
+        "source_fact:v1:39b90662b8881723319fe15bf19f0fdb69a892afe882e2f7fdba504f08b56b89",
+        "source_fact:v1:4bd2681346aaf842959d39e042ee6108c454d84cee4a7d0754672034211c5407",
+        "source_fact:v1:50dc0e214f737627966ac0818b8e4296ddc3ce8940a43ce4221b7383e4a710c0",
+        "source_fact:v1:8c71560304b1e8e09cee99cacc8baa0bca845459d4e24a0efe6e2c21ae4af092",
+        "source_fact:v1:8d75c14303b8b55d34a906b36651f64c849f554ce7c0d7c9b5be8a1646089cbe",
+        "source_fact:v1:9341d0e111e9149dfd899adebb288f49fa1d6df6b010cc329342dd61c9f56a1d",
+        "source_fact:v1:dd2eed27180e29eba6504000ff4e4a1ba1d975a0aaaeba14959f08a8f1159db4"
+      ],
+      "source_published_kst": "2026-10-05T08:05+09:00",
+      "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
+    },
     "title:d718b180c7adb58b4bf75dd1": {
       "first_seen_kst": "2026-10-01T23:40:24+09:00",
       "lanes": {
@@ -57507,6 +58260,23 @@
       "source_published_kst": "2026-10-05T15:32+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 10대 바이오 거래 선정"
     },
+    "title:f107ab0f309b3411bcb4915e": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01646566645609968",
+      "source": "이데일리",
+      "source_body_digest": "2cba3dfb67753eacf63179f8a30405e3569756e06c711020b5309090245b0e06",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de31a4c2bb86904fac805153afdb98a4f41b7de01080bac8907f36bb2cd75b5c",
+      "source_fact_keys": [
+        "source_fact:v1:2c573b29ab7e90fa61be75823b5d34529dc11a7c6d0f8ff0fabaa52cdff0259e"
+      ],
+      "source_published_kst": "2026-10-05T09:00+09:00",
+      "title": "KT 이어 LG유플러스도 뱅고와 손잡았다…‘유독’에 해외 AI 서비스 확대"
+    },
     "title:f108cdcd2ae22b95a68dfafd": {
       "first_seen_kst": "2026-09-26T15:38:31+09:00",
       "lanes": {
@@ -57956,6 +58726,23 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=04854406645608656",
       "source": "이데일리",
       "title": "LH, 호남 반도체 국가산단 설계 착수…내년 중순 승인 목표"
+    },
+    "title:f7ed3380ceeac44eebb76d53": {
+      "first_seen_kst": "2026-10-05T21:53:16+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:53:16+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:53:16+09:00",
+      "link": "https://www.mk.co.kr/news/world/12168604",
+      "source": "매일경제",
+      "source_body_digest": "8b1f571b28cb931d1268e281e35d968e75502abd380b608a34069d0e014a587b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4a441b03bcb6afbad97aba3996ca8ec0ed481a8a04e6a13be86ca1928cbe377",
+      "source_fact_keys": [
+        "source_fact:v1:4cd3bec70da28b93f9924eb26b028f0dbd103866168cb2ff9e961207ac5a3adc"
+      ],
+      "source_published_kst": "2026-10-05T17:30+09:00",
+      "title": "이란, 호르무즈 공격 재개 … 중동 원유 수출 회복세에 '찬물'"
     },
     "title:f82f07b9bb682f280b2a64a0": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
@@ -58426,5 +59213,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T21:42:22+09:00"
+  "updated_at_kst": "2026-10-05T21:53:16+09:00"
 }
