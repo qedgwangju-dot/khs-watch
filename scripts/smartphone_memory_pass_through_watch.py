@@ -196,14 +196,39 @@ def _is_official_like(blob: str, source: str) -> bool:
 def _krw_amounts(blob: str) -> list[int]:
     text = blob.replace(",", "")
     vals: list[int] = []
+
+    # Ranges may carry the unit only once at the end:
+    # "100,000 to 130,000 won", "100000~130000원", "10만~13만원".
+    for m in re.finditer(
+        r"(\d{4,7})\s*(?:to|~|[-–—])\s*(\d{4,7})\s*(?:원|won|krw|韩元|韓元)",
+        text,
+        re.I,
+    ):
+        for raw in m.groups():
+            val = int(raw)
+            if 10_000 <= val <= 2_000_000:
+                vals.append(val)
+
+    for m in re.finditer(
+        r"(\d+(?:\.\d+)?)\s*만\s*(?:원)?\s*(?:to|~|[-–—])\s*(\d+(?:\.\d+)?)\s*만\s*원",
+        text,
+        re.I,
+    ):
+        for raw in m.groups():
+            val = int(round(float(raw) * 10_000))
+            if 10_000 <= val <= 2_000_000:
+                vals.append(val)
+
     for m in re.finditer(r"(\d+(?:\.\d+)?)\s*만\s*원", text):
         val = int(round(float(m.group(1)) * 10_000))
         if 10_000 <= val <= 2_000_000:
             vals.append(val)
+
     for m in re.finditer(r"(\d{4,7})\s*(?:원|won|krw|韩元|韓元)", text, re.I):
         val = int(m.group(1))
         if 10_000 <= val <= 2_000_000:
             vals.append(val)
+
     return sorted(set(vals))
 
 
