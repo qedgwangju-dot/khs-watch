@@ -390,6 +390,38 @@
       "source_published_kst": "2026-10-05T19:19+09:00",
       "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
     },
+    "event:1882b033e1540f875d379936": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
     "event:18832e728a587e71cee3bd51": {
       "first_seen_kst": "2026-10-02T07:58:50+09:00",
       "lanes": {
@@ -1013,21 +1045,22 @@
     "event:357501917a7f635b2fa6a147": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
       "lanes": {
-        "live": "2026-10-06T06:27:01+09:00",
+        "live": "2026-10-06T08:12:20+09:00",
         "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T06:36:31+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003814677",
-      "source": "뉴시스",
-      "source_body_digest": "fbf645f58cf09c8174f46f858b4ca8bfc8f9aa4a5431728bb363fce607d25fbe",
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893496",
+      "source": "헤럴드경제",
+      "source_body_digest": "e1f259c4fca00d07f84090bd5ffdcb6dd6a8228b9548c49141af5f2910c6f3a8",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:74d783d028aa1fec333ea0b786a19780b244ceccd83c45b6c255f8a82ae09377",
+      "source_fact_identity": "source_facts:v1:fb2b3a234bf3dda331d57cdaa9e19c39639a9366c861816200ffa7afdab7f174",
       "source_fact_keys": [
-        "source_fact:v1:164dcb7142ff97332ccb4d1e9a893e9cfad1c0aefa574ce5b6890a259c53a639",
-        "source_fact:v1:23075857b847724c4e9d70d715a0df916130b581c6dc0e63e3b063e3e5dd3100"
+        "source_fact:v1:10b8fb4cd88cf9883545b1ee2ef4dfe9a75483328b16cc345232d21170020740",
+        "source_fact:v1:7bff5802d2e40e83c103746a2afbde2c59d5422d7cf9b52d996f77b7e67b0f7a",
+        "source_fact:v1:fb32cef52e7c74f1930d3eca53522a177a13e9887feb7e2fedd6aca202aaf663"
       ],
-      "source_published_kst": "2026-10-06T06:27+09:00",
-      "title": "국제유가, 1%대 하락…중동 원유 수출 회복·G7 비축유 방출"
+      "source_published_kst": "2026-10-06T06:29+09:00",
+      "title": "사우디 투트랙 수출·G7 비축유 방출 약속에 국제유가 1.8% 하락"
     },
     "event:35c61e03fc529e43f46f2a91": {
       "first_seen_kst": "2026-10-02T12:31:36+09:00",
@@ -2323,23 +2356,24 @@
     "event:78c48063ad6f5facdfb0aa71": {
       "first_seen_kst": "2026-10-05T14:14:24+09:00",
       "lanes": {
-        "live": "2026-10-05T20:22:49+09:00"
+        "live": "2026-10-06T08:12:20+09:00"
       },
-      "last_seen_kst": "2026-10-05T20:22:49+09:00",
-      "link": "https://www.hankyung.com/article/2026100537881",
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/2026100537821",
       "source": "한국경제",
-      "source_body_digest": "37cc2f9ab72e9de5d2dcd7784f707e86b98c438806661db2d758ce57d2c025c2",
+      "source_body_digest": "11eda218c905efb45e62ee1aeede1e44665b0d0ac3e43f49c77a555c03a4e31d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:aec3f22aab6607a7c9b5cf4eb31b775b59b1afa268094a732be1cb40fd1898a4",
+      "source_fact_identity": "source_facts:v1:589f49d3967b312d30922aa43c36ca36a9a44ae91840718b84d9661424e61f5b",
       "source_fact_keys": [
-        "source_fact:v1:2f902f6f28a606483fb4575330415819f64a791b272f93042a95768bc5842b04",
         "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
-        "source_fact:v1:7b996e132cd1748ada89df98b16959b420786d141de54f582acdb8b2d0ec1d2d",
-        "source_fact:v1:90f9be610d6fc5efb061cb34bd44d6a6266dfffd29926486e838b0d717979b21",
-        "source_fact:v1:a4aab8926acb79895e835da9eab3fe991c15da2f95ad04169f384eb975a701f2"
+        "source_fact:v1:4964727bc147257efdc64f65dacb6ce3f6acbe4abbf69bb9c9c47e15852dee35",
+        "source_fact:v1:7f65da27784022882fa544bc63816f7db922e3cfa2a59cbc71ddaa923b3fce22",
+        "source_fact:v1:92eb86a26a279e10ad4ff00fb1ff45d5fd061a698f8ee5ae2730b2d0feeeda63",
+        "source_fact:v1:b7a7bb1312c4647dcd0c14933ab1feaaadf63ce81cab6e365d85caa24b1d8e12",
+        "source_fact:v1:dd6b22b63286fb0bce65e58e6bd39441ab71a2a951ee6ccccf0186dfec5c83aa"
       ],
-      "source_published_kst": "2026-10-05T17:46+09:00",
-      "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
+      "source_published_kst": "2026-10-05T17:44+09:00",
+      "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
     },
     "event:78cea877cce544763b26037b": {
       "first_seen_kst": "2026-10-02T18:51:02+09:00",
@@ -2455,6 +2489,27 @@
       "link": "https://www.fnnews.com/news/202609230919540789",
       "source": "파이낸셜뉴스",
       "title": "수익률·개인 매수·연금 활용까지…한투운용, 추석 ETF 4종 제안"
+    },
+    "event:7c6939491963b47e90e9bad7": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632539",
+      "source": "이투데이",
+      "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
+      "source_fact_keys": [
+        "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
+        "source_fact:v1:53c9d8c8bc7127431dc145d02f13a9eb0151688173b3d0c55d581d8d7c9f1514",
+        "source_fact:v1:5efa4155243f43778ec9999fa28dc216e2a851055838366d1cd6d5dc7820c4d5",
+        "source_fact:v1:9283ca73728ebd53357827958bee721bc8fe439d0e3e7e32226b45223902be33",
+        "source_fact:v1:b8ba89ba8114c8d83205a7bb54810fc4ab2ad8cee24b641709fbcac1ebafb6a7"
+      ],
+      "source_published_kst": "2026-10-06T08:03+09:00",
+      "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
     },
     "event:7c70eaa8c1320c52347eb0be": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
@@ -5063,6 +5118,29 @@
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
     },
+    "fact:02003ea881d16f0d401c1545": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/202610064140g",
+      "source": "한국경제",
+      "source_body_digest": "bec2566002c0751d274e376198c874dc1be9cf4e4f88de2d93b5879700c6fb29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b410561ee60d440d7ceb0660893754198ee2ea57b8bd15f087b583d8d63c7552",
+      "source_fact_keys": [
+        "source_fact:v1:0fcd4cc3127b24d5b334c0889bef1c66241e7c8015fcdb97bc8d263350edb131",
+        "source_fact:v1:3ba910d70460608f8ab91c9be7f8e9697b3f07b458c6d5c31a772181d4dd2fca",
+        "source_fact:v1:64095e79f49f0d2a2670f4862e2de3218066fbe89a83c1c704aee92268a57b1e",
+        "source_fact:v1:b9cfd260cca886365a209a13fb90bc5cfb949b90a73b1622e6c088ff16dc8fb3",
+        "source_fact:v1:e638eda450545535c25cc6e6176f4055910d5dd28796eee81da1758857054f7b",
+        "source_fact:v1:fcc6793f62045b93fe350e7881a6c43b0dacb33af292bdb01087b0f3f668e2a5",
+        "source_fact:v1:ffa34a889ee417d50fbea6ea1d28455925e3714699b0b8486593595d67142ea3"
+      ],
+      "source_published_kst": "2026-10-06T07:48+09:00",
+      "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
+    },
     "fact:0207dec4552498e1e34fbe07": {
       "first_seen_kst": "2026-10-06T00:26:07+09:00",
       "lanes": {
@@ -5982,6 +6060,46 @@
       ],
       "source_published_kst": "2026-10-05T21:32+09:00",
       "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
+    },
+    "fact:2cfaa2443af3aa07259ce343": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814722",
+      "source": "뉴시스",
+      "source_body_digest": "0bbcb601c30c5e256ed83e277f66b99c27c4548602c4d85db5347b3802031de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536f2732d0dc353dd5f5c7820b5fcbf7241d875d5bc036b79f2e8c7b0579c8b5",
+      "source_fact_keys": [
+        "source_fact:v1:6822bc05b383b0350922a5d02dfaaa7d85a1f95aec35e45559b8515937d99f6c",
+        "source_fact:v1:6dd8cda9347400890945ca0e168ae993dc4aebc05a27589dc68e858ff9089ab1"
+      ],
+      "source_published_kst": "2026-10-06T08:10+09:00",
+      "title": "씨엑스아이, 고수 보이차 폴리페놀 공급 사업 추진"
+    },
+    "fact:2d4d3a2ce7768912550af2de": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632554",
+      "source": "이투데이",
+      "source_body_digest": "700ec8d80af55057c7f31f1b58a677ea5977fdce6248aa7bb91bad399cf0eb3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4a85725738e0265ffc6b35e17ee8f847a526f4f31864e7d829b4bf2ba700a7f",
+      "source_fact_keys": [
+        "source_fact:v1:2fb91f62096601fc251e0cb3a7878dc6e3ad6e80beb3d1656cf29bcc7db9b799",
+        "source_fact:v1:38ec78fff6d84fdfcf81d13e026962c72719ef08bef1fbb7a75125018cc28d87",
+        "source_fact:v1:3cca9a178b03b551f480f1c8ded57b8a526e96e2514237a59bc33d28a1ff0a63",
+        "source_fact:v1:5ab98c41ded0cf66f76f714d76c08a6df7ce8dfadfa3d23332d980d77c6e6d1a",
+        "source_fact:v1:c5216479a658bb333c7565904b72add585b85b738fabfac2dea2cd5353b5e382",
+        "source_fact:v1:c9e8872ea5040d39d6036c8fb76053fce7363fe03d0900d230010b35ab06acd8"
+      ],
+      "source_published_kst": "2026-10-06T08:10+09:00",
+      "title": "현대차證 \"동국제강, 견조한 실적…목표가 1만3800원↑\""
     },
     "fact:2d5f01f19c97067e06a0014e": {
       "first_seen_kst": "2026-10-06T01:16:46+09:00",
@@ -7022,6 +7140,28 @@
       "source_published_kst": "2026-10-05T12:59+09:00",
       "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
     },
+    "fact:6371ac125fbebb33234a7f3c": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/2026100537821",
+      "source": "한국경제",
+      "source_body_digest": "11eda218c905efb45e62ee1aeede1e44665b0d0ac3e43f49c77a555c03a4e31d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:589f49d3967b312d30922aa43c36ca36a9a44ae91840718b84d9661424e61f5b",
+      "source_fact_keys": [
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:4964727bc147257efdc64f65dacb6ce3f6acbe4abbf69bb9c9c47e15852dee35",
+        "source_fact:v1:7f65da27784022882fa544bc63816f7db922e3cfa2a59cbc71ddaa923b3fce22",
+        "source_fact:v1:92eb86a26a279e10ad4ff00fb1ff45d5fd061a698f8ee5ae2730b2d0feeeda63",
+        "source_fact:v1:b7a7bb1312c4647dcd0c14933ab1feaaadf63ce81cab6e365d85caa24b1d8e12",
+        "source_fact:v1:dd6b22b63286fb0bce65e58e6bd39441ab71a2a951ee6ccccf0186dfec5c83aa"
+      ],
+      "source_published_kst": "2026-10-05T17:44+09:00",
+      "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
+    },
     "fact:642de6b6bce0e6937ce97c3f": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -7573,6 +7713,38 @@
       ],
       "source_published_kst": "2026-10-05T14:48+09:00",
       "title": "예멘 정부군 \"후티 군사시설 1122곳 공격…1747명 사망\""
+    },
+    "fact:8218ae27c4013d18b578eb2d": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
     "fact:8285254795c56e137177681b": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -8744,6 +8916,27 @@
       "source_published_kst": "2026-10-05T08:15+09:00",
       "title": "함안군, 택시 기본요금 5천500원→6천원 인상 추진 | 연합뉴스"
     },
+    "fact:c830770ed4b7f6b699d0bcfd": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632539",
+      "source": "이투데이",
+      "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
+      "source_fact_keys": [
+        "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
+        "source_fact:v1:53c9d8c8bc7127431dc145d02f13a9eb0151688173b3d0c55d581d8d7c9f1514",
+        "source_fact:v1:5efa4155243f43778ec9999fa28dc216e2a851055838366d1cd6d5dc7820c4d5",
+        "source_fact:v1:9283ca73728ebd53357827958bee721bc8fe439d0e3e7e32226b45223902be33",
+        "source_fact:v1:b8ba89ba8114c8d83205a7bb54810fc4ab2ad8cee24b641709fbcac1ebafb6a7"
+      ],
+      "source_published_kst": "2026-10-06T08:03+09:00",
+      "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
+    },
     "fact:c8f3bae7353731e446e66337": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -8839,6 +9032,25 @@
       ],
       "source_published_kst": "2026-10-05T21:54+09:00",
       "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
+    },
+    "fact:cdc1e8bfb66eeb50e2846c2e": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893496",
+      "source": "헤럴드경제",
+      "source_body_digest": "e1f259c4fca00d07f84090bd5ffdcb6dd6a8228b9548c49141af5f2910c6f3a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb2b3a234bf3dda331d57cdaa9e19c39639a9366c861816200ffa7afdab7f174",
+      "source_fact_keys": [
+        "source_fact:v1:10b8fb4cd88cf9883545b1ee2ef4dfe9a75483328b16cc345232d21170020740",
+        "source_fact:v1:7bff5802d2e40e83c103746a2afbde2c59d5422d7cf9b52d996f77b7e67b0f7a",
+        "source_fact:v1:fb32cef52e7c74f1930d3eca53522a177a13e9887feb7e2fedd6aca202aaf663"
+      ],
+      "source_published_kst": "2026-10-06T06:29+09:00",
+      "title": "사우디 투트랙 수출·G7 비축유 방출 약속에 국제유가 1.8% 하락"
     },
     "fact:ce10578d071ab7da0693ead2": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -12044,6 +12256,38 @@
       "link": "https://www.etnews.com/20261002000076",
       "source": "전자신문",
       "title": "르노코리아, 부산에 700억 들여 '뉴 테크 센터' 구축"
+    },
+    "link:265918a9e9df0d2c9397c96d": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
     "link:266685c54b04cfa1d5069493": {
       "first_seen_kst": "2026-10-02T18:09:15+09:00",
@@ -21980,6 +22224,25 @@
       "source_published_kst": "2026-10-05T08:34+09:00",
       "title": "걸프국 원유 수출 회복세에 ‘먹구름’⋯호르무즈 선박 피격 나흘새 4건"
     },
+    "link:a97db9746d9359f539d1adf5": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893496",
+      "source": "헤럴드경제",
+      "source_body_digest": "e1f259c4fca00d07f84090bd5ffdcb6dd6a8228b9548c49141af5f2910c6f3a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb2b3a234bf3dda331d57cdaa9e19c39639a9366c861816200ffa7afdab7f174",
+      "source_fact_keys": [
+        "source_fact:v1:10b8fb4cd88cf9883545b1ee2ef4dfe9a75483328b16cc345232d21170020740",
+        "source_fact:v1:7bff5802d2e40e83c103746a2afbde2c59d5422d7cf9b52d996f77b7e67b0f7a",
+        "source_fact:v1:fb32cef52e7c74f1930d3eca53522a177a13e9887feb7e2fedd6aca202aaf663"
+      ],
+      "source_published_kst": "2026-10-06T06:29+09:00",
+      "title": "사우디 투트랙 수출·G7 비축유 방출 약속에 국제유가 1.8% 하락"
+    },
     "link:a9a757e59f7182af061424c4": {
       "first_seen_kst": "2026-10-03T12:48:39+09:00",
       "lanes": {
@@ -22367,6 +22630,27 @@
       "source_published_kst": "2026-10-06T05:01+09:00",
       "title": "\"최태원 회장 지분 매각부터 솔리다임까지\"…SK, '주주가치' 앞세운다"
     },
+    "link:af575f3a35694e1f709c1399": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632539",
+      "source": "이투데이",
+      "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
+      "source_fact_keys": [
+        "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
+        "source_fact:v1:53c9d8c8bc7127431dc145d02f13a9eb0151688173b3d0c55d581d8d7c9f1514",
+        "source_fact:v1:5efa4155243f43778ec9999fa28dc216e2a851055838366d1cd6d5dc7820c4d5",
+        "source_fact:v1:9283ca73728ebd53357827958bee721bc8fe439d0e3e7e32226b45223902be33",
+        "source_fact:v1:b8ba89ba8114c8d83205a7bb54810fc4ab2ad8cee24b641709fbcac1ebafb6a7"
+      ],
+      "source_published_kst": "2026-10-06T08:03+09:00",
+      "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
+    },
     "link:af85b831aad1ee980840a316": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
       "lanes": {
@@ -22721,6 +23005,24 @@
       "link": "https://www.etoday.co.kr/news/view/2632212",
       "source": "이투데이",
       "title": "[단독] ‘웨이팅 지옥’ 끝난다…CU, SNS서 뜬 ‘피자절편’ 전국 출시"
+    },
+    "link:b4b5a136498e0826223a86e0": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814722",
+      "source": "뉴시스",
+      "source_body_digest": "0bbcb601c30c5e256ed83e277f66b99c27c4548602c4d85db5347b3802031de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536f2732d0dc353dd5f5c7820b5fcbf7241d875d5bc036b79f2e8c7b0579c8b5",
+      "source_fact_keys": [
+        "source_fact:v1:6822bc05b383b0350922a5d02dfaaa7d85a1f95aec35e45559b8515937d99f6c",
+        "source_fact:v1:6dd8cda9347400890945ca0e168ae993dc4aebc05a27589dc68e858ff9089ab1"
+      ],
+      "source_published_kst": "2026-10-06T08:10+09:00",
+      "title": "씨엑스아이, 고수 보이차 폴리페놀 공급 사업 추진"
     },
     "link:b4becf01c4e8f9cd10327897": {
       "first_seen_kst": "2026-10-01T19:33:29+09:00",
@@ -25512,6 +25814,28 @@
       "source_event_identity": "",
       "title": "상고마 테크놀러지스, BRC그룹 피인수 계약..주당 현금 4.925달러+주식"
     },
+    "link:da57c650c7823f10c55bc980": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/2026100537821",
+      "source": "한국경제",
+      "source_body_digest": "11eda218c905efb45e62ee1aeede1e44665b0d0ac3e43f49c77a555c03a4e31d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:589f49d3967b312d30922aa43c36ca36a9a44ae91840718b84d9661424e61f5b",
+      "source_fact_keys": [
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:4964727bc147257efdc64f65dacb6ce3f6acbe4abbf69bb9c9c47e15852dee35",
+        "source_fact:v1:7f65da27784022882fa544bc63816f7db922e3cfa2a59cbc71ddaa923b3fce22",
+        "source_fact:v1:92eb86a26a279e10ad4ff00fb1ff45d5fd061a698f8ee5ae2730b2d0feeeda63",
+        "source_fact:v1:b7a7bb1312c4647dcd0c14933ab1feaaadf63ce81cab6e365d85caa24b1d8e12",
+        "source_fact:v1:dd6b22b63286fb0bce65e58e6bd39441ab71a2a951ee6ccccf0186dfec5c83aa"
+      ],
+      "source_published_kst": "2026-10-05T17:44+09:00",
+      "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
+    },
     "link:da594c8d4e5757196b83d36f": {
       "first_seen_kst": "2026-09-20T12:10:20+09:00",
       "lanes": {
@@ -25623,6 +25947,28 @@
       "link": "https://biz.heraldcorp.com/article/10891270",
       "source": "헤럴드경제",
       "title": "일진전기, 1871억원 규모 英 사업 추가 수주…창사 이래 최대 프로젝트"
+    },
+    "link:dc345f4598ae6dd164c9c7f4": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632554",
+      "source": "이투데이",
+      "source_body_digest": "700ec8d80af55057c7f31f1b58a677ea5977fdce6248aa7bb91bad399cf0eb3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4a85725738e0265ffc6b35e17ee8f847a526f4f31864e7d829b4bf2ba700a7f",
+      "source_fact_keys": [
+        "source_fact:v1:2fb91f62096601fc251e0cb3a7878dc6e3ad6e80beb3d1656cf29bcc7db9b799",
+        "source_fact:v1:38ec78fff6d84fdfcf81d13e026962c72719ef08bef1fbb7a75125018cc28d87",
+        "source_fact:v1:3cca9a178b03b551f480f1c8ded57b8a526e96e2514237a59bc33d28a1ff0a63",
+        "source_fact:v1:5ab98c41ded0cf66f76f714d76c08a6df7ce8dfadfa3d23332d980d77c6e6d1a",
+        "source_fact:v1:c5216479a658bb333c7565904b72add585b85b738fabfac2dea2cd5353b5e382",
+        "source_fact:v1:c9e8872ea5040d39d6036c8fb76053fce7363fe03d0900d230010b35ab06acd8"
+      ],
+      "source_published_kst": "2026-10-06T08:10+09:00",
+      "title": "현대차證 \"동국제강, 견조한 실적…목표가 1만3800원↑\""
     },
     "link:dc7d47737357e4d1d29ffe7a": {
       "first_seen_kst": "2026-10-05T07:24:39+09:00",
@@ -26795,6 +27141,29 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812801",
       "source": "뉴시스",
       "title": "원·달러 환율, 7.8원 내린 1350.6원 마감(종합)"
+    },
+    "link:ecd8d460e6949d3bf9fd1969": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/202610064140g",
+      "source": "한국경제",
+      "source_body_digest": "bec2566002c0751d274e376198c874dc1be9cf4e4f88de2d93b5879700c6fb29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b410561ee60d440d7ceb0660893754198ee2ea57b8bd15f087b583d8d63c7552",
+      "source_fact_keys": [
+        "source_fact:v1:0fcd4cc3127b24d5b334c0889bef1c66241e7c8015fcdb97bc8d263350edb131",
+        "source_fact:v1:3ba910d70460608f8ab91c9be7f8e9697b3f07b458c6d5c31a772181d4dd2fca",
+        "source_fact:v1:64095e79f49f0d2a2670f4862e2de3218066fbe89a83c1c704aee92268a57b1e",
+        "source_fact:v1:b9cfd260cca886365a209a13fb90bc5cfb949b90a73b1622e6c088ff16dc8fb3",
+        "source_fact:v1:e638eda450545535c25cc6e6176f4055910d5dd28796eee81da1758857054f7b",
+        "source_fact:v1:fcc6793f62045b93fe350e7881a6c43b0dacb33af292bdb01087b0f3f668e2a5",
+        "source_fact:v1:ffa34a889ee417d50fbea6ea1d28455925e3714699b0b8486593595d67142ea3"
+      ],
+      "source_published_kst": "2026-10-06T07:48+09:00",
+      "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
     },
     "link:ecfb3b826666e3a576fce80f": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
@@ -29443,6 +29812,25 @@
       "source": "뉴시스",
       "title": "\"나스닥 신고가인데 신저가 종목 속출…확실한 주도주로 좁혀야\""
     },
+    "original:1081f69ac55d2f7131e070d6": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893496",
+      "source": "헤럴드경제",
+      "source_body_digest": "e1f259c4fca00d07f84090bd5ffdcb6dd6a8228b9548c49141af5f2910c6f3a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb2b3a234bf3dda331d57cdaa9e19c39639a9366c861816200ffa7afdab7f174",
+      "source_fact_keys": [
+        "source_fact:v1:10b8fb4cd88cf9883545b1ee2ef4dfe9a75483328b16cc345232d21170020740",
+        "source_fact:v1:7bff5802d2e40e83c103746a2afbde2c59d5422d7cf9b52d996f77b7e67b0f7a",
+        "source_fact:v1:fb32cef52e7c74f1930d3eca53522a177a13e9887feb7e2fedd6aca202aaf663"
+      ],
+      "source_published_kst": "2026-10-06T06:29+09:00",
+      "title": "사우디 투트랙 수출·G7 비축유 방출 약속에 국제유가 1.8% 하락"
+    },
     "original:10e0f9aa091a2c269254821b": {
       "first_seen_kst": "2026-09-20T06:33:23+09:00",
       "lanes": {
@@ -30544,6 +30932,28 @@
       "source": "헤럴드경제",
       "title": "이란 “美가 수용하면 7일 내 호르무즈 재개방…선택은 美에 달려”"
     },
+    "original:22ab39b5c66ec9a302726ddc": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/2026100537821",
+      "source": "한국경제",
+      "source_body_digest": "11eda218c905efb45e62ee1aeede1e44665b0d0ac3e43f49c77a555c03a4e31d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:589f49d3967b312d30922aa43c36ca36a9a44ae91840718b84d9661424e61f5b",
+      "source_fact_keys": [
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:4964727bc147257efdc64f65dacb6ce3f6acbe4abbf69bb9c9c47e15852dee35",
+        "source_fact:v1:7f65da27784022882fa544bc63816f7db922e3cfa2a59cbc71ddaa923b3fce22",
+        "source_fact:v1:92eb86a26a279e10ad4ff00fb1ff45d5fd061a698f8ee5ae2730b2d0feeeda63",
+        "source_fact:v1:b7a7bb1312c4647dcd0c14933ab1feaaadf63ce81cab6e365d85caa24b1d8e12",
+        "source_fact:v1:dd6b22b63286fb0bce65e58e6bd39441ab71a2a951ee6ccccf0186dfec5c83aa"
+      ],
+      "source_published_kst": "2026-10-05T17:44+09:00",
+      "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
+    },
     "original:22c646c32cc523a19149ea3e": {
       "first_seen_kst": "2026-10-01T16:57:16+09:00",
       "lanes": {
@@ -31344,6 +31754,29 @@
       "link": "https://www.asiae.co.kr/article/2026100117530726987",
       "source": "아시아경제",
       "title": "금리 급등에 놀란 정부…초과세수 풀어 국고채 발행량 5兆 축소"
+    },
+    "original:2d50e6b21e4612c428965621": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/202610064140g",
+      "source": "한국경제",
+      "source_body_digest": "bec2566002c0751d274e376198c874dc1be9cf4e4f88de2d93b5879700c6fb29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b410561ee60d440d7ceb0660893754198ee2ea57b8bd15f087b583d8d63c7552",
+      "source_fact_keys": [
+        "source_fact:v1:0fcd4cc3127b24d5b334c0889bef1c66241e7c8015fcdb97bc8d263350edb131",
+        "source_fact:v1:3ba910d70460608f8ab91c9be7f8e9697b3f07b458c6d5c31a772181d4dd2fca",
+        "source_fact:v1:64095e79f49f0d2a2670f4862e2de3218066fbe89a83c1c704aee92268a57b1e",
+        "source_fact:v1:b9cfd260cca886365a209a13fb90bc5cfb949b90a73b1622e6c088ff16dc8fb3",
+        "source_fact:v1:e638eda450545535c25cc6e6176f4055910d5dd28796eee81da1758857054f7b",
+        "source_fact:v1:fcc6793f62045b93fe350e7881a6c43b0dacb33af292bdb01087b0f3f668e2a5",
+        "source_fact:v1:ffa34a889ee417d50fbea6ea1d28455925e3714699b0b8486593595d67142ea3"
+      ],
+      "source_published_kst": "2026-10-06T07:48+09:00",
+      "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
     },
     "original:2d9f08258e7caa0981dfcb06": {
       "first_seen_kst": "2026-10-03T06:13:51+09:00",
@@ -36351,6 +36784,24 @@
       "source": "머니투데이",
       "title": "\"더 시간이 필요할 수도\"...연준 부의장, 추가 금리인상 '신중론'"
     },
+    "original:72d535483e00ffab8aeefc17": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814722",
+      "source": "뉴시스",
+      "source_body_digest": "0bbcb601c30c5e256ed83e277f66b99c27c4548602c4d85db5347b3802031de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536f2732d0dc353dd5f5c7820b5fcbf7241d875d5bc036b79f2e8c7b0579c8b5",
+      "source_fact_keys": [
+        "source_fact:v1:6822bc05b383b0350922a5d02dfaaa7d85a1f95aec35e45559b8515937d99f6c",
+        "source_fact:v1:6dd8cda9347400890945ca0e168ae993dc4aebc05a27589dc68e858ff9089ab1"
+      ],
+      "source_published_kst": "2026-10-06T08:10+09:00",
+      "title": "씨엑스아이, 고수 보이차 폴리페놀 공급 사업 추진"
+    },
     "original:72f97f2373675a552dd5df39": {
       "first_seen_kst": "2026-10-05T16:09:26+09:00",
       "lanes": {
@@ -39402,6 +39853,27 @@
       "link": "https://www.etnews.com/20261002000229",
       "source": "전자신문",
       "title": "화장품 수출 111억달러로 역대 최대…3분기 만에 지난해 연간치 육박"
+    },
+    "original:9e1062a45f32c8a120168076": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632539",
+      "source": "이투데이",
+      "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
+      "source_fact_keys": [
+        "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
+        "source_fact:v1:53c9d8c8bc7127431dc145d02f13a9eb0151688173b3d0c55d581d8d7c9f1514",
+        "source_fact:v1:5efa4155243f43778ec9999fa28dc216e2a851055838366d1cd6d5dc7820c4d5",
+        "source_fact:v1:9283ca73728ebd53357827958bee721bc8fe439d0e3e7e32226b45223902be33",
+        "source_fact:v1:b8ba89ba8114c8d83205a7bb54810fc4ab2ad8cee24b641709fbcac1ebafb6a7"
+      ],
+      "source_published_kst": "2026-10-06T08:03+09:00",
+      "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
     },
     "original:9e20611a85c03d65b31628af": {
       "first_seen_kst": "2026-10-05T07:59:22+09:00",
@@ -42925,6 +43397,28 @@
       "source_published_kst": "2026-10-05T07:00+09:00",
       "title": "약한 고리 노린 해킹에 속수무책 은행권…'인증우회 취약' 알고도 뚫렸다"
     },
+    "original:d2bd66492645ac93d61d43d2": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632554",
+      "source": "이투데이",
+      "source_body_digest": "700ec8d80af55057c7f31f1b58a677ea5977fdce6248aa7bb91bad399cf0eb3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4a85725738e0265ffc6b35e17ee8f847a526f4f31864e7d829b4bf2ba700a7f",
+      "source_fact_keys": [
+        "source_fact:v1:2fb91f62096601fc251e0cb3a7878dc6e3ad6e80beb3d1656cf29bcc7db9b799",
+        "source_fact:v1:38ec78fff6d84fdfcf81d13e026962c72719ef08bef1fbb7a75125018cc28d87",
+        "source_fact:v1:3cca9a178b03b551f480f1c8ded57b8a526e96e2514237a59bc33d28a1ff0a63",
+        "source_fact:v1:5ab98c41ded0cf66f76f714d76c08a6df7ce8dfadfa3d23332d980d77c6e6d1a",
+        "source_fact:v1:c5216479a658bb333c7565904b72add585b85b738fabfac2dea2cd5353b5e382",
+        "source_fact:v1:c9e8872ea5040d39d6036c8fb76053fce7363fe03d0900d230010b35ab06acd8"
+      ],
+      "source_published_kst": "2026-10-06T08:10+09:00",
+      "title": "현대차證 \"동국제강, 견조한 실적…목표가 1만3800원↑\""
+    },
     "original:d2ce16d903712ab62df404ea": {
       "first_seen_kst": "2026-10-02T16:06:36+09:00",
       "lanes": {
@@ -43214,6 +43708,38 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
+    },
+    "original:d5d36465f29a304ee24fab61": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
     "original:d5e6640c4f9606201f5ef134": {
       "first_seen_kst": "2026-10-02T16:53:54+09:00",
@@ -47275,6 +47801,38 @@
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
     },
+    "source_fact:0b374561c160c21fb6914e30": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
     "source_fact:0b581d658a6f90bb014137a1": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -47544,6 +48102,29 @@
       ],
       "source_published_kst": "2026-10-05T17:54+09:00",
       "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
+    },
+    "source_fact:0fadc697014e501aaf0ad51d": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/202610064140g",
+      "source": "한국경제",
+      "source_body_digest": "bec2566002c0751d274e376198c874dc1be9cf4e4f88de2d93b5879700c6fb29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b410561ee60d440d7ceb0660893754198ee2ea57b8bd15f087b583d8d63c7552",
+      "source_fact_keys": [
+        "source_fact:v1:0fcd4cc3127b24d5b334c0889bef1c66241e7c8015fcdb97bc8d263350edb131",
+        "source_fact:v1:3ba910d70460608f8ab91c9be7f8e9697b3f07b458c6d5c31a772181d4dd2fca",
+        "source_fact:v1:64095e79f49f0d2a2670f4862e2de3218066fbe89a83c1c704aee92268a57b1e",
+        "source_fact:v1:b9cfd260cca886365a209a13fb90bc5cfb949b90a73b1622e6c088ff16dc8fb3",
+        "source_fact:v1:e638eda450545535c25cc6e6176f4055910d5dd28796eee81da1758857054f7b",
+        "source_fact:v1:fcc6793f62045b93fe350e7881a6c43b0dacb33af292bdb01087b0f3f668e2a5",
+        "source_fact:v1:ffa34a889ee417d50fbea6ea1d28455925e3714699b0b8486593595d67142ea3"
+      ],
+      "source_published_kst": "2026-10-06T07:48+09:00",
+      "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
     },
     "source_fact:0fcb0023fdebee5e16415a91": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -48283,6 +48864,25 @@
       "source_published_kst": "2026-10-05T15:17+09:00",
       "title": "자사주 '버팀목' 빠지는 삼성전자… 100조원대 영업익으로 극복할까?"
     },
+    "source_fact:1af629ff72944e5c720b8cfa": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893496",
+      "source": "헤럴드경제",
+      "source_body_digest": "e1f259c4fca00d07f84090bd5ffdcb6dd6a8228b9548c49141af5f2910c6f3a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb2b3a234bf3dda331d57cdaa9e19c39639a9366c861816200ffa7afdab7f174",
+      "source_fact_keys": [
+        "source_fact:v1:10b8fb4cd88cf9883545b1ee2ef4dfe9a75483328b16cc345232d21170020740",
+        "source_fact:v1:7bff5802d2e40e83c103746a2afbde2c59d5422d7cf9b52d996f77b7e67b0f7a",
+        "source_fact:v1:fb32cef52e7c74f1930d3eca53522a177a13e9887feb7e2fedd6aca202aaf663"
+      ],
+      "source_published_kst": "2026-10-06T06:29+09:00",
+      "title": "사우디 투트랙 수출·G7 비축유 방출 약속에 국제유가 1.8% 하락"
+    },
     "source_fact:1b42ab62934e4322db484a0e": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -48592,6 +49192,29 @@
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "레드 로빈 고메 버거, 1억1500만 달러 대출 재융자 완료..2031년 만기"
     },
+    "source_fact:1d4ee86ecf0f11f1a0c4c9df": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/202610064140g",
+      "source": "한국경제",
+      "source_body_digest": "bec2566002c0751d274e376198c874dc1be9cf4e4f88de2d93b5879700c6fb29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b410561ee60d440d7ceb0660893754198ee2ea57b8bd15f087b583d8d63c7552",
+      "source_fact_keys": [
+        "source_fact:v1:0fcd4cc3127b24d5b334c0889bef1c66241e7c8015fcdb97bc8d263350edb131",
+        "source_fact:v1:3ba910d70460608f8ab91c9be7f8e9697b3f07b458c6d5c31a772181d4dd2fca",
+        "source_fact:v1:64095e79f49f0d2a2670f4862e2de3218066fbe89a83c1c704aee92268a57b1e",
+        "source_fact:v1:b9cfd260cca886365a209a13fb90bc5cfb949b90a73b1622e6c088ff16dc8fb3",
+        "source_fact:v1:e638eda450545535c25cc6e6176f4055910d5dd28796eee81da1758857054f7b",
+        "source_fact:v1:fcc6793f62045b93fe350e7881a6c43b0dacb33af292bdb01087b0f3f668e2a5",
+        "source_fact:v1:ffa34a889ee417d50fbea6ea1d28455925e3714699b0b8486593595d67142ea3"
+      ],
+      "source_published_kst": "2026-10-06T07:48+09:00",
+      "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
+    },
     "source_fact:1d674e5061de9f9f3f209f2a": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -48629,6 +49252,27 @@
       ],
       "source_published_kst": "2026-10-05T12:59+09:00",
       "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
+    },
+    "source_fact:1de1a4571b2d368d0c501614": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632539",
+      "source": "이투데이",
+      "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
+      "source_fact_keys": [
+        "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
+        "source_fact:v1:53c9d8c8bc7127431dc145d02f13a9eb0151688173b3d0c55d581d8d7c9f1514",
+        "source_fact:v1:5efa4155243f43778ec9999fa28dc216e2a851055838366d1cd6d5dc7820c4d5",
+        "source_fact:v1:9283ca73728ebd53357827958bee721bc8fe439d0e3e7e32226b45223902be33",
+        "source_fact:v1:b8ba89ba8114c8d83205a7bb54810fc4ab2ad8cee24b641709fbcac1ebafb6a7"
+      ],
+      "source_published_kst": "2026-10-06T08:03+09:00",
+      "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
     },
     "source_fact:1e4b7b3dba0af7a503dcb8b1": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
@@ -48723,6 +49367,38 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
+    },
+    "source_fact:1f66c21ee0ddc8c5130f9588": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
     "source_fact:1fac88cbbfd5bdf40a35eeef": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -49241,6 +49917,28 @@
       ],
       "source_published_kst": "2026-10-06T07:35+09:00",
       "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
+    },
+    "source_fact:25f167a718e3943b033d764f": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/2026100537821",
+      "source": "한국경제",
+      "source_body_digest": "11eda218c905efb45e62ee1aeede1e44665b0d0ac3e43f49c77a555c03a4e31d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:589f49d3967b312d30922aa43c36ca36a9a44ae91840718b84d9661424e61f5b",
+      "source_fact_keys": [
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:4964727bc147257efdc64f65dacb6ce3f6acbe4abbf69bb9c9c47e15852dee35",
+        "source_fact:v1:7f65da27784022882fa544bc63816f7db922e3cfa2a59cbc71ddaa923b3fce22",
+        "source_fact:v1:92eb86a26a279e10ad4ff00fb1ff45d5fd061a698f8ee5ae2730b2d0feeeda63",
+        "source_fact:v1:b7a7bb1312c4647dcd0c14933ab1feaaadf63ce81cab6e365d85caa24b1d8e12",
+        "source_fact:v1:dd6b22b63286fb0bce65e58e6bd39441ab71a2a951ee6ccccf0186dfec5c83aa"
+      ],
+      "source_published_kst": "2026-10-05T17:44+09:00",
+      "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
     },
     "source_fact:2619b8baa7bd80d6845f0afc": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -50197,6 +50895,28 @@
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
     },
+    "source_fact:33037c65346b1203ada47f44": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/2026100537821",
+      "source": "한국경제",
+      "source_body_digest": "11eda218c905efb45e62ee1aeede1e44665b0d0ac3e43f49c77a555c03a4e31d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:589f49d3967b312d30922aa43c36ca36a9a44ae91840718b84d9661424e61f5b",
+      "source_fact_keys": [
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:4964727bc147257efdc64f65dacb6ce3f6acbe4abbf69bb9c9c47e15852dee35",
+        "source_fact:v1:7f65da27784022882fa544bc63816f7db922e3cfa2a59cbc71ddaa923b3fce22",
+        "source_fact:v1:92eb86a26a279e10ad4ff00fb1ff45d5fd061a698f8ee5ae2730b2d0feeeda63",
+        "source_fact:v1:b7a7bb1312c4647dcd0c14933ab1feaaadf63ce81cab6e365d85caa24b1d8e12",
+        "source_fact:v1:dd6b22b63286fb0bce65e58e6bd39441ab71a2a951ee6ccccf0186dfec5c83aa"
+      ],
+      "source_published_kst": "2026-10-05T17:44+09:00",
+      "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
+    },
     "source_fact:3332ecbfcdde81e8f35a76f3": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -50699,6 +51419,38 @@
       ],
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
+    },
+    "source_fact:38d284f6cc76ab76c45b7a95": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
     "source_fact:3a2e5f5e1c06b6586910e5af": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -52302,6 +53054,28 @@
       "source_published_kst": "2026-10-06T07:18+09:00",
       "title": "이집트대통령, \"어떤 일이 있어도 나일강 물 권리 지켜낼 것\" 연설"
     },
+    "source_fact:4da19f0b6e512be5091069aa": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632554",
+      "source": "이투데이",
+      "source_body_digest": "700ec8d80af55057c7f31f1b58a677ea5977fdce6248aa7bb91bad399cf0eb3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4a85725738e0265ffc6b35e17ee8f847a526f4f31864e7d829b4bf2ba700a7f",
+      "source_fact_keys": [
+        "source_fact:v1:2fb91f62096601fc251e0cb3a7878dc6e3ad6e80beb3d1656cf29bcc7db9b799",
+        "source_fact:v1:38ec78fff6d84fdfcf81d13e026962c72719ef08bef1fbb7a75125018cc28d87",
+        "source_fact:v1:3cca9a178b03b551f480f1c8ded57b8a526e96e2514237a59bc33d28a1ff0a63",
+        "source_fact:v1:5ab98c41ded0cf66f76f714d76c08a6df7ce8dfadfa3d23332d980d77c6e6d1a",
+        "source_fact:v1:c5216479a658bb333c7565904b72add585b85b738fabfac2dea2cd5353b5e382",
+        "source_fact:v1:c9e8872ea5040d39d6036c8fb76053fce7363fe03d0900d230010b35ab06acd8"
+      ],
+      "source_published_kst": "2026-10-06T08:10+09:00",
+      "title": "현대차證 \"동국제강, 견조한 실적…목표가 1만3800원↑\""
+    },
     "source_fact:4dab6466b40db44962822b8f": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
       "lanes": {
@@ -53607,6 +54381,27 @@
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "레졸루트, FDA 3상 실패에도 BLA 사전회의 권고"
     },
+    "source_fact:5c3df9bdfcc37700c14efc18": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632539",
+      "source": "이투데이",
+      "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
+      "source_fact_keys": [
+        "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
+        "source_fact:v1:53c9d8c8bc7127431dc145d02f13a9eb0151688173b3d0c55d581d8d7c9f1514",
+        "source_fact:v1:5efa4155243f43778ec9999fa28dc216e2a851055838366d1cd6d5dc7820c4d5",
+        "source_fact:v1:9283ca73728ebd53357827958bee721bc8fe439d0e3e7e32226b45223902be33",
+        "source_fact:v1:b8ba89ba8114c8d83205a7bb54810fc4ab2ad8cee24b641709fbcac1ebafb6a7"
+      ],
+      "source_published_kst": "2026-10-06T08:03+09:00",
+      "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
+    },
     "source_fact:5c73766015099eb73d0780e4": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
       "lanes": {
@@ -53666,6 +54461,38 @@
       ],
       "source_published_kst": "2026-10-05T22:17+09:00",
       "title": "컨스트럭션 파트너스, 텍사스 아스팔트업체 인수..플랜트 2곳 확보"
+    },
+    "source_fact:5cd034506bf019e7b42281b0": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
     "source_fact:5cf71cde662227b7e587b3a8": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -53877,6 +54704,38 @@
       ],
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
+    },
+    "source_fact:5f7b03248985ce41d7c450b2": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
     "source_fact:5f91f642a35dc7e8d7476d06": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -54377,6 +55236,27 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:6805bfa6b3979eb5ac07b94c": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632539",
+      "source": "이투데이",
+      "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
+      "source_fact_keys": [
+        "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
+        "source_fact:v1:53c9d8c8bc7127431dc145d02f13a9eb0151688173b3d0c55d581d8d7c9f1514",
+        "source_fact:v1:5efa4155243f43778ec9999fa28dc216e2a851055838366d1cd6d5dc7820c4d5",
+        "source_fact:v1:9283ca73728ebd53357827958bee721bc8fe439d0e3e7e32226b45223902be33",
+        "source_fact:v1:b8ba89ba8114c8d83205a7bb54810fc4ab2ad8cee24b641709fbcac1ebafb6a7"
+      ],
+      "source_published_kst": "2026-10-06T08:03+09:00",
+      "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
     },
     "source_fact:68526fe088313532b0db9049": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -55103,6 +55983,38 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
+    "source_fact:71d46a8cd3ceb12b0fb3bbef": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
     "source_fact:721f459749f363255ccccf97": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -56141,6 +57053,29 @@
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "[TODAY엔비디아]개장전 '상승'…월가, 신고가 경신에도 여전히 \"밸류 매력\""
     },
+    "source_fact:7d2a74e5bb49edb50ba2f6b9": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/202610064140g",
+      "source": "한국경제",
+      "source_body_digest": "bec2566002c0751d274e376198c874dc1be9cf4e4f88de2d93b5879700c6fb29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b410561ee60d440d7ceb0660893754198ee2ea57b8bd15f087b583d8d63c7552",
+      "source_fact_keys": [
+        "source_fact:v1:0fcd4cc3127b24d5b334c0889bef1c66241e7c8015fcdb97bc8d263350edb131",
+        "source_fact:v1:3ba910d70460608f8ab91c9be7f8e9697b3f07b458c6d5c31a772181d4dd2fca",
+        "source_fact:v1:64095e79f49f0d2a2670f4862e2de3218066fbe89a83c1c704aee92268a57b1e",
+        "source_fact:v1:b9cfd260cca886365a209a13fb90bc5cfb949b90a73b1622e6c088ff16dc8fb3",
+        "source_fact:v1:e638eda450545535c25cc6e6176f4055910d5dd28796eee81da1758857054f7b",
+        "source_fact:v1:fcc6793f62045b93fe350e7881a6c43b0dacb33af292bdb01087b0f3f668e2a5",
+        "source_fact:v1:ffa34a889ee417d50fbea6ea1d28455925e3714699b0b8486593595d67142ea3"
+      ],
+      "source_published_kst": "2026-10-06T07:48+09:00",
+      "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
+    },
     "source_fact:7d77a85eb798cb85d74ef131": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -56410,6 +57345,38 @@
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
+    "source_fact:8059ac53c90c8e354982452f": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
     "source_fact:806f2cb69cf5aaa9842021d1": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -56453,6 +57420,28 @@
       ],
       "source_published_kst": "2026-10-05T08:05+09:00",
       "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
+    },
+    "source_fact:80e2c3f29b0a2b24375f6091": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/2026100537821",
+      "source": "한국경제",
+      "source_body_digest": "11eda218c905efb45e62ee1aeede1e44665b0d0ac3e43f49c77a555c03a4e31d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:589f49d3967b312d30922aa43c36ca36a9a44ae91840718b84d9661424e61f5b",
+      "source_fact_keys": [
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:4964727bc147257efdc64f65dacb6ce3f6acbe4abbf69bb9c9c47e15852dee35",
+        "source_fact:v1:7f65da27784022882fa544bc63816f7db922e3cfa2a59cbc71ddaa923b3fce22",
+        "source_fact:v1:92eb86a26a279e10ad4ff00fb1ff45d5fd061a698f8ee5ae2730b2d0feeeda63",
+        "source_fact:v1:b7a7bb1312c4647dcd0c14933ab1feaaadf63ce81cab6e365d85caa24b1d8e12",
+        "source_fact:v1:dd6b22b63286fb0bce65e58e6bd39441ab71a2a951ee6ccccf0186dfec5c83aa"
+      ],
+      "source_published_kst": "2026-10-05T17:44+09:00",
+      "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
     },
     "source_fact:80e3427f794898627bdfc03e": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -57152,23 +58141,24 @@
     "source_fact:874608288818910dc79b8356": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
-        "live": "2026-10-05T20:22:49+09:00"
+        "live": "2026-10-06T08:12:20+09:00"
       },
-      "last_seen_kst": "2026-10-05T20:22:49+09:00",
-      "link": "https://www.hankyung.com/article/2026100537881",
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/2026100537821",
       "source": "한국경제",
-      "source_body_digest": "37cc2f9ab72e9de5d2dcd7784f707e86b98c438806661db2d758ce57d2c025c2",
+      "source_body_digest": "11eda218c905efb45e62ee1aeede1e44665b0d0ac3e43f49c77a555c03a4e31d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:aec3f22aab6607a7c9b5cf4eb31b775b59b1afa268094a732be1cb40fd1898a4",
+      "source_fact_identity": "source_facts:v1:589f49d3967b312d30922aa43c36ca36a9a44ae91840718b84d9661424e61f5b",
       "source_fact_keys": [
-        "source_fact:v1:2f902f6f28a606483fb4575330415819f64a791b272f93042a95768bc5842b04",
         "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
-        "source_fact:v1:7b996e132cd1748ada89df98b16959b420786d141de54f582acdb8b2d0ec1d2d",
-        "source_fact:v1:90f9be610d6fc5efb061cb34bd44d6a6266dfffd29926486e838b0d717979b21",
-        "source_fact:v1:a4aab8926acb79895e835da9eab3fe991c15da2f95ad04169f384eb975a701f2"
+        "source_fact:v1:4964727bc147257efdc64f65dacb6ce3f6acbe4abbf69bb9c9c47e15852dee35",
+        "source_fact:v1:7f65da27784022882fa544bc63816f7db922e3cfa2a59cbc71ddaa923b3fce22",
+        "source_fact:v1:92eb86a26a279e10ad4ff00fb1ff45d5fd061a698f8ee5ae2730b2d0feeeda63",
+        "source_fact:v1:b7a7bb1312c4647dcd0c14933ab1feaaadf63ce81cab6e365d85caa24b1d8e12",
+        "source_fact:v1:dd6b22b63286fb0bce65e58e6bd39441ab71a2a951ee6ccccf0186dfec5c83aa"
       ],
-      "source_published_kst": "2026-10-05T17:46+09:00",
-      "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
+      "source_published_kst": "2026-10-05T17:44+09:00",
+      "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
     },
     "source_fact:87ce9daca57f3c45915fd07f": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
@@ -57394,6 +58384,27 @@
       ],
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
+    },
+    "source_fact:8b4478b3fa79fe414606014b": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632539",
+      "source": "이투데이",
+      "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
+      "source_fact_keys": [
+        "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
+        "source_fact:v1:53c9d8c8bc7127431dc145d02f13a9eb0151688173b3d0c55d581d8d7c9f1514",
+        "source_fact:v1:5efa4155243f43778ec9999fa28dc216e2a851055838366d1cd6d5dc7820c4d5",
+        "source_fact:v1:9283ca73728ebd53357827958bee721bc8fe439d0e3e7e32226b45223902be33",
+        "source_fact:v1:b8ba89ba8114c8d83205a7bb54810fc4ab2ad8cee24b641709fbcac1ebafb6a7"
+      ],
+      "source_published_kst": "2026-10-06T08:03+09:00",
+      "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
     },
     "source_fact:8b96c74abdc781b5acff1e73": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
@@ -58468,6 +59479,60 @@
       "source_published_kst": "2026-10-05T21:05+09:00",
       "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
     },
+    "source_fact:99b619f440f0a0e186f31393": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
+    "source_fact:9a1ab1b918cf84196c373174": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632554",
+      "source": "이투데이",
+      "source_body_digest": "700ec8d80af55057c7f31f1b58a677ea5977fdce6248aa7bb91bad399cf0eb3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4a85725738e0265ffc6b35e17ee8f847a526f4f31864e7d829b4bf2ba700a7f",
+      "source_fact_keys": [
+        "source_fact:v1:2fb91f62096601fc251e0cb3a7878dc6e3ad6e80beb3d1656cf29bcc7db9b799",
+        "source_fact:v1:38ec78fff6d84fdfcf81d13e026962c72719ef08bef1fbb7a75125018cc28d87",
+        "source_fact:v1:3cca9a178b03b551f480f1c8ded57b8a526e96e2514237a59bc33d28a1ff0a63",
+        "source_fact:v1:5ab98c41ded0cf66f76f714d76c08a6df7ce8dfadfa3d23332d980d77c6e6d1a",
+        "source_fact:v1:c5216479a658bb333c7565904b72add585b85b738fabfac2dea2cd5353b5e382",
+        "source_fact:v1:c9e8872ea5040d39d6036c8fb76053fce7363fe03d0900d230010b35ab06acd8"
+      ],
+      "source_published_kst": "2026-10-06T08:10+09:00",
+      "title": "현대차證 \"동국제강, 견조한 실적…목표가 1만3800원↑\""
+    },
     "source_fact:9a248fba2704a96bfdb26342": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -58565,6 +59630,25 @@
       ],
       "source_published_kst": "2026-10-05T23:08+09:00",
       "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
+    },
+    "source_fact:9bbe63567f29a3bf8e64c9e3": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893496",
+      "source": "헤럴드경제",
+      "source_body_digest": "e1f259c4fca00d07f84090bd5ffdcb6dd6a8228b9548c49141af5f2910c6f3a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb2b3a234bf3dda331d57cdaa9e19c39639a9366c861816200ffa7afdab7f174",
+      "source_fact_keys": [
+        "source_fact:v1:10b8fb4cd88cf9883545b1ee2ef4dfe9a75483328b16cc345232d21170020740",
+        "source_fact:v1:7bff5802d2e40e83c103746a2afbde2c59d5422d7cf9b52d996f77b7e67b0f7a",
+        "source_fact:v1:fb32cef52e7c74f1930d3eca53522a177a13e9887feb7e2fedd6aca202aaf663"
+      ],
+      "source_published_kst": "2026-10-06T06:29+09:00",
+      "title": "사우디 투트랙 수출·G7 비축유 방출 약속에 국제유가 1.8% 하락"
     },
     "source_fact:9bc55dc197dbc40402e1ffa4": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -59085,6 +60169,28 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
+    "source_fact:a29b37aac7bf8cbf7e8088e9": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632554",
+      "source": "이투데이",
+      "source_body_digest": "700ec8d80af55057c7f31f1b58a677ea5977fdce6248aa7bb91bad399cf0eb3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4a85725738e0265ffc6b35e17ee8f847a526f4f31864e7d829b4bf2ba700a7f",
+      "source_fact_keys": [
+        "source_fact:v1:2fb91f62096601fc251e0cb3a7878dc6e3ad6e80beb3d1656cf29bcc7db9b799",
+        "source_fact:v1:38ec78fff6d84fdfcf81d13e026962c72719ef08bef1fbb7a75125018cc28d87",
+        "source_fact:v1:3cca9a178b03b551f480f1c8ded57b8a526e96e2514237a59bc33d28a1ff0a63",
+        "source_fact:v1:5ab98c41ded0cf66f76f714d76c08a6df7ce8dfadfa3d23332d980d77c6e6d1a",
+        "source_fact:v1:c5216479a658bb333c7565904b72add585b85b738fabfac2dea2cd5353b5e382",
+        "source_fact:v1:c9e8872ea5040d39d6036c8fb76053fce7363fe03d0900d230010b35ab06acd8"
+      ],
+      "source_published_kst": "2026-10-06T08:10+09:00",
+      "title": "현대차證 \"동국제강, 견조한 실적…목표가 1만3800원↑\""
     },
     "source_fact:a2fc4dcc5792360af44e9d07": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
@@ -60068,6 +61174,27 @@
       "source_published_kst": "2026-10-05T22:23+09:00",
       "title": "시놉시스, 10억달러 자사주 ASR 체결..173만5천주 우선 인도"
     },
+    "source_fact:addcc2a12581a086d2e7cc36": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632539",
+      "source": "이투데이",
+      "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
+      "source_fact_keys": [
+        "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
+        "source_fact:v1:53c9d8c8bc7127431dc145d02f13a9eb0151688173b3d0c55d581d8d7c9f1514",
+        "source_fact:v1:5efa4155243f43778ec9999fa28dc216e2a851055838366d1cd6d5dc7820c4d5",
+        "source_fact:v1:9283ca73728ebd53357827958bee721bc8fe439d0e3e7e32226b45223902be33",
+        "source_fact:v1:b8ba89ba8114c8d83205a7bb54810fc4ab2ad8cee24b641709fbcac1ebafb6a7"
+      ],
+      "source_published_kst": "2026-10-06T08:03+09:00",
+      "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
+    },
     "source_fact:aec0ca92e078e2470990fadf": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
       "lanes": {
@@ -60329,6 +61456,25 @@
       ],
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
+    },
+    "source_fact:b167e51ae9a6821bb73dd8fc": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893496",
+      "source": "헤럴드경제",
+      "source_body_digest": "e1f259c4fca00d07f84090bd5ffdcb6dd6a8228b9548c49141af5f2910c6f3a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb2b3a234bf3dda331d57cdaa9e19c39639a9366c861816200ffa7afdab7f174",
+      "source_fact_keys": [
+        "source_fact:v1:10b8fb4cd88cf9883545b1ee2ef4dfe9a75483328b16cc345232d21170020740",
+        "source_fact:v1:7bff5802d2e40e83c103746a2afbde2c59d5422d7cf9b52d996f77b7e67b0f7a",
+        "source_fact:v1:fb32cef52e7c74f1930d3eca53522a177a13e9887feb7e2fedd6aca202aaf663"
+      ],
+      "source_published_kst": "2026-10-06T06:29+09:00",
+      "title": "사우디 투트랙 수출·G7 비축유 방출 약속에 국제유가 1.8% 하락"
     },
     "source_fact:b1df16b0485255c9d48ab7fa": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -61501,6 +62647,61 @@
       "source_published_kst": "2026-10-06T07:07+09:00",
       "title": "스페이스X 주가 급등에 머스크 다시 조만장자 [마켓핫]"
     },
+    "source_fact:c2c48154aab9d1735719fd76": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
+    "source_fact:c33c1bee78a25397440ae0fa": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/202610064140g",
+      "source": "한국경제",
+      "source_body_digest": "bec2566002c0751d274e376198c874dc1be9cf4e4f88de2d93b5879700c6fb29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b410561ee60d440d7ceb0660893754198ee2ea57b8bd15f087b583d8d63c7552",
+      "source_fact_keys": [
+        "source_fact:v1:0fcd4cc3127b24d5b334c0889bef1c66241e7c8015fcdb97bc8d263350edb131",
+        "source_fact:v1:3ba910d70460608f8ab91c9be7f8e9697b3f07b458c6d5c31a772181d4dd2fca",
+        "source_fact:v1:64095e79f49f0d2a2670f4862e2de3218066fbe89a83c1c704aee92268a57b1e",
+        "source_fact:v1:b9cfd260cca886365a209a13fb90bc5cfb949b90a73b1622e6c088ff16dc8fb3",
+        "source_fact:v1:e638eda450545535c25cc6e6176f4055910d5dd28796eee81da1758857054f7b",
+        "source_fact:v1:fcc6793f62045b93fe350e7881a6c43b0dacb33af292bdb01087b0f3f668e2a5",
+        "source_fact:v1:ffa34a889ee417d50fbea6ea1d28455925e3714699b0b8486593595d67142ea3"
+      ],
+      "source_published_kst": "2026-10-06T07:48+09:00",
+      "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
+    },
     "source_fact:c3417a4ede91bf68f5607be7": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -61992,6 +63193,24 @@
       ],
       "source_published_kst": "2026-10-06T07:30+09:00",
       "title": "원화 강세의 그늘…실적시즌 앞두고 이익전망 '뒷걸음질'"
+    },
+    "source_fact:c951db2c6ea3d151698a719c": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814722",
+      "source": "뉴시스",
+      "source_body_digest": "0bbcb601c30c5e256ed83e277f66b99c27c4548602c4d85db5347b3802031de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536f2732d0dc353dd5f5c7820b5fcbf7241d875d5bc036b79f2e8c7b0579c8b5",
+      "source_fact_keys": [
+        "source_fact:v1:6822bc05b383b0350922a5d02dfaaa7d85a1f95aec35e45559b8515937d99f6c",
+        "source_fact:v1:6dd8cda9347400890945ca0e168ae993dc4aebc05a27589dc68e858ff9089ab1"
+      ],
+      "source_published_kst": "2026-10-06T08:10+09:00",
+      "title": "씨엑스아이, 고수 보이차 폴리페놀 공급 사업 추진"
     },
     "source_fact:c9953c832fdef60fcf03c808": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
@@ -62544,6 +63763,28 @@
       "source_published_kst": "2026-10-06T03:34+09:00",
       "title": "[美특징주]백사이트, 폐렴구균 백신 3상 긍정적 결과에 주가 32%↑"
     },
+    "source_fact:cfe3d6f761a473b012d942fb": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/2026100537821",
+      "source": "한국경제",
+      "source_body_digest": "11eda218c905efb45e62ee1aeede1e44665b0d0ac3e43f49c77a555c03a4e31d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:589f49d3967b312d30922aa43c36ca36a9a44ae91840718b84d9661424e61f5b",
+      "source_fact_keys": [
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:4964727bc147257efdc64f65dacb6ce3f6acbe4abbf69bb9c9c47e15852dee35",
+        "source_fact:v1:7f65da27784022882fa544bc63816f7db922e3cfa2a59cbc71ddaa923b3fce22",
+        "source_fact:v1:92eb86a26a279e10ad4ff00fb1ff45d5fd061a698f8ee5ae2730b2d0feeeda63",
+        "source_fact:v1:b7a7bb1312c4647dcd0c14933ab1feaaadf63ce81cab6e365d85caa24b1d8e12",
+        "source_fact:v1:dd6b22b63286fb0bce65e58e6bd39441ab71a2a951ee6ccccf0186dfec5c83aa"
+      ],
+      "source_published_kst": "2026-10-05T17:44+09:00",
+      "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
+    },
     "source_fact:d07541f99330a78473dc6e57": {
       "first_seen_kst": "2026-10-05T20:38:34+09:00",
       "lanes": {
@@ -62718,6 +63959,38 @@
       ],
       "source_published_kst": "2026-10-05T17:54+09:00",
       "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
+    },
+    "source_fact:d33808e605fe81dea5db8f49": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
     "source_fact:d36258145ce84f7a38d02dd4": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -63461,6 +64734,29 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
     },
+    "source_fact:dab6c16b1faeab1bd66ca0b2": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/202610064140g",
+      "source": "한국경제",
+      "source_body_digest": "bec2566002c0751d274e376198c874dc1be9cf4e4f88de2d93b5879700c6fb29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b410561ee60d440d7ceb0660893754198ee2ea57b8bd15f087b583d8d63c7552",
+      "source_fact_keys": [
+        "source_fact:v1:0fcd4cc3127b24d5b334c0889bef1c66241e7c8015fcdb97bc8d263350edb131",
+        "source_fact:v1:3ba910d70460608f8ab91c9be7f8e9697b3f07b458c6d5c31a772181d4dd2fca",
+        "source_fact:v1:64095e79f49f0d2a2670f4862e2de3218066fbe89a83c1c704aee92268a57b1e",
+        "source_fact:v1:b9cfd260cca886365a209a13fb90bc5cfb949b90a73b1622e6c088ff16dc8fb3",
+        "source_fact:v1:e638eda450545535c25cc6e6176f4055910d5dd28796eee81da1758857054f7b",
+        "source_fact:v1:fcc6793f62045b93fe350e7881a6c43b0dacb33af292bdb01087b0f3f668e2a5",
+        "source_fact:v1:ffa34a889ee417d50fbea6ea1d28455925e3714699b0b8486593595d67142ea3"
+      ],
+      "source_published_kst": "2026-10-06T07:48+09:00",
+      "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
+    },
     "source_fact:dac27d054a82fb27a2adad9e": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -63761,6 +65057,56 @@
       "source_published_kst": "2026-10-06T06:28+09:00",
       "title": "트럼프, 면세 경유 사용처 제한 완화…기름값 낮추려 안간힘"
     },
+    "source_fact:dfb2d2bda1121f8c34bc2812": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814722",
+      "source": "뉴시스",
+      "source_body_digest": "0bbcb601c30c5e256ed83e277f66b99c27c4548602c4d85db5347b3802031de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536f2732d0dc353dd5f5c7820b5fcbf7241d875d5bc036b79f2e8c7b0579c8b5",
+      "source_fact_keys": [
+        "source_fact:v1:6822bc05b383b0350922a5d02dfaaa7d85a1f95aec35e45559b8515937d99f6c",
+        "source_fact:v1:6dd8cda9347400890945ca0e168ae993dc4aebc05a27589dc68e858ff9089ab1"
+      ],
+      "source_published_kst": "2026-10-06T08:10+09:00",
+      "title": "씨엑스아이, 고수 보이차 폴리페놀 공급 사업 추진"
+    },
+    "source_fact:dfc9ff0bcd8ec9668dfc2c52": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
     "source_fact:dff8beb44be29d83358d0f8b": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -64050,6 +65396,29 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
+    "source_fact:e2fdf413219258a2fdc0311a": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/202610064140g",
+      "source": "한국경제",
+      "source_body_digest": "bec2566002c0751d274e376198c874dc1be9cf4e4f88de2d93b5879700c6fb29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b410561ee60d440d7ceb0660893754198ee2ea57b8bd15f087b583d8d63c7552",
+      "source_fact_keys": [
+        "source_fact:v1:0fcd4cc3127b24d5b334c0889bef1c66241e7c8015fcdb97bc8d263350edb131",
+        "source_fact:v1:3ba910d70460608f8ab91c9be7f8e9697b3f07b458c6d5c31a772181d4dd2fca",
+        "source_fact:v1:64095e79f49f0d2a2670f4862e2de3218066fbe89a83c1c704aee92268a57b1e",
+        "source_fact:v1:b9cfd260cca886365a209a13fb90bc5cfb949b90a73b1622e6c088ff16dc8fb3",
+        "source_fact:v1:e638eda450545535c25cc6e6176f4055910d5dd28796eee81da1758857054f7b",
+        "source_fact:v1:fcc6793f62045b93fe350e7881a6c43b0dacb33af292bdb01087b0f3f668e2a5",
+        "source_fact:v1:ffa34a889ee417d50fbea6ea1d28455925e3714699b0b8486593595d67142ea3"
+      ],
+      "source_published_kst": "2026-10-06T07:48+09:00",
+      "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
     },
     "source_fact:e35eba7097bea2853ea69f50": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -64932,6 +66301,28 @@
       "source_published_kst": "2026-10-05T22:55+09:00",
       "title": "美국채금리 5.3%에 다우 ‘주춤’… 뉴욕증시 혼조 출발"
     },
+    "source_fact:ee3d5908d53afaab1b916f4f": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632554",
+      "source": "이투데이",
+      "source_body_digest": "700ec8d80af55057c7f31f1b58a677ea5977fdce6248aa7bb91bad399cf0eb3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4a85725738e0265ffc6b35e17ee8f847a526f4f31864e7d829b4bf2ba700a7f",
+      "source_fact_keys": [
+        "source_fact:v1:2fb91f62096601fc251e0cb3a7878dc6e3ad6e80beb3d1656cf29bcc7db9b799",
+        "source_fact:v1:38ec78fff6d84fdfcf81d13e026962c72719ef08bef1fbb7a75125018cc28d87",
+        "source_fact:v1:3cca9a178b03b551f480f1c8ded57b8a526e96e2514237a59bc33d28a1ff0a63",
+        "source_fact:v1:5ab98c41ded0cf66f76f714d76c08a6df7ce8dfadfa3d23332d980d77c6e6d1a",
+        "source_fact:v1:c5216479a658bb333c7565904b72add585b85b738fabfac2dea2cd5353b5e382",
+        "source_fact:v1:c9e8872ea5040d39d6036c8fb76053fce7363fe03d0900d230010b35ab06acd8"
+      ],
+      "source_published_kst": "2026-10-06T08:10+09:00",
+      "title": "현대차證 \"동국제강, 견조한 실적…목표가 1만3800원↑\""
+    },
     "source_fact:ee6caa1ad97e965c44058dd2": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
       "lanes": {
@@ -65164,6 +66555,28 @@
       "source_published_kst": "2026-10-05T21:00+09:00",
       "title": "알보테크, FDA 심랜디 미국 생산설비 추가 승인에 공급능력 2배 확대 기대"
     },
+    "source_fact:f17591b4f643e1e406c5412e": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632554",
+      "source": "이투데이",
+      "source_body_digest": "700ec8d80af55057c7f31f1b58a677ea5977fdce6248aa7bb91bad399cf0eb3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4a85725738e0265ffc6b35e17ee8f847a526f4f31864e7d829b4bf2ba700a7f",
+      "source_fact_keys": [
+        "source_fact:v1:2fb91f62096601fc251e0cb3a7878dc6e3ad6e80beb3d1656cf29bcc7db9b799",
+        "source_fact:v1:38ec78fff6d84fdfcf81d13e026962c72719ef08bef1fbb7a75125018cc28d87",
+        "source_fact:v1:3cca9a178b03b551f480f1c8ded57b8a526e96e2514237a59bc33d28a1ff0a63",
+        "source_fact:v1:5ab98c41ded0cf66f76f714d76c08a6df7ce8dfadfa3d23332d980d77c6e6d1a",
+        "source_fact:v1:c5216479a658bb333c7565904b72add585b85b738fabfac2dea2cd5353b5e382",
+        "source_fact:v1:c9e8872ea5040d39d6036c8fb76053fce7363fe03d0900d230010b35ab06acd8"
+      ],
+      "source_published_kst": "2026-10-06T08:10+09:00",
+      "title": "현대차證 \"동국제강, 견조한 실적…목표가 1만3800원↑\""
+    },
     "source_fact:f17fa47e5eac952ea3a03e11": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -65225,6 +66638,28 @@
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
+    "source_fact:f24dc15a69baafab48334efe": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632554",
+      "source": "이투데이",
+      "source_body_digest": "700ec8d80af55057c7f31f1b58a677ea5977fdce6248aa7bb91bad399cf0eb3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4a85725738e0265ffc6b35e17ee8f847a526f4f31864e7d829b4bf2ba700a7f",
+      "source_fact_keys": [
+        "source_fact:v1:2fb91f62096601fc251e0cb3a7878dc6e3ad6e80beb3d1656cf29bcc7db9b799",
+        "source_fact:v1:38ec78fff6d84fdfcf81d13e026962c72719ef08bef1fbb7a75125018cc28d87",
+        "source_fact:v1:3cca9a178b03b551f480f1c8ded57b8a526e96e2514237a59bc33d28a1ff0a63",
+        "source_fact:v1:5ab98c41ded0cf66f76f714d76c08a6df7ce8dfadfa3d23332d980d77c6e6d1a",
+        "source_fact:v1:c5216479a658bb333c7565904b72add585b85b738fabfac2dea2cd5353b5e382",
+        "source_fact:v1:c9e8872ea5040d39d6036c8fb76053fce7363fe03d0900d230010b35ab06acd8"
+      ],
+      "source_published_kst": "2026-10-06T08:10+09:00",
+      "title": "현대차證 \"동국제강, 견조한 실적…목표가 1만3800원↑\""
+    },
     "source_fact:f26c3935474e34630937e18a": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
       "lanes": {
@@ -65283,6 +66718,38 @@
       ],
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
+    },
+    "source_fact:f2a41e098093763dfb6c5caf": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
     "source_fact:f379b7c1da882a1e8d58b606": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -65373,6 +66840,28 @@
       "source_published_kst": "2026-10-06T03:54+09:00",
       "title": "[美특징주]웰스파고, 모건스탠리 ‘매수’ 상향에 주가 2%↑"
     },
+    "source_fact:f48a80f29f8395fc30e1d4fc": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/2026100537821",
+      "source": "한국경제",
+      "source_body_digest": "11eda218c905efb45e62ee1aeede1e44665b0d0ac3e43f49c77a555c03a4e31d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:589f49d3967b312d30922aa43c36ca36a9a44ae91840718b84d9661424e61f5b",
+      "source_fact_keys": [
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:4964727bc147257efdc64f65dacb6ce3f6acbe4abbf69bb9c9c47e15852dee35",
+        "source_fact:v1:7f65da27784022882fa544bc63816f7db922e3cfa2a59cbc71ddaa923b3fce22",
+        "source_fact:v1:92eb86a26a279e10ad4ff00fb1ff45d5fd061a698f8ee5ae2730b2d0feeeda63",
+        "source_fact:v1:b7a7bb1312c4647dcd0c14933ab1feaaadf63ce81cab6e365d85caa24b1d8e12",
+        "source_fact:v1:dd6b22b63286fb0bce65e58e6bd39441ab71a2a951ee6ccccf0186dfec5c83aa"
+      ],
+      "source_published_kst": "2026-10-05T17:44+09:00",
+      "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
+    },
     "source_fact:f4b7129a23a0aa50372c181b": {
       "first_seen_kst": "2026-10-06T00:03:48+09:00",
       "lanes": {
@@ -65413,6 +66902,38 @@
       ],
       "source_published_kst": "2026-10-06T00:04+09:00",
       "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
+    },
+    "source_fact:f5fd8150612350b261757681": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
     "source_fact:f66b0d1f25af4c66a1fcca49": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -65928,6 +67449,38 @@
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
+    "source_fact:fcf64cd9e1937c6b529027be": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
     "source_fact:fd5f1e32a701a781ea219c05": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -66086,6 +67639,29 @@
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
     },
+    "source_fact:fedd617f4cbeb18509e4e0f8": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/202610064140g",
+      "source": "한국경제",
+      "source_body_digest": "bec2566002c0751d274e376198c874dc1be9cf4e4f88de2d93b5879700c6fb29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b410561ee60d440d7ceb0660893754198ee2ea57b8bd15f087b583d8d63c7552",
+      "source_fact_keys": [
+        "source_fact:v1:0fcd4cc3127b24d5b334c0889bef1c66241e7c8015fcdb97bc8d263350edb131",
+        "source_fact:v1:3ba910d70460608f8ab91c9be7f8e9697b3f07b458c6d5c31a772181d4dd2fca",
+        "source_fact:v1:64095e79f49f0d2a2670f4862e2de3218066fbe89a83c1c704aee92268a57b1e",
+        "source_fact:v1:b9cfd260cca886365a209a13fb90bc5cfb949b90a73b1622e6c088ff16dc8fb3",
+        "source_fact:v1:e638eda450545535c25cc6e6176f4055910d5dd28796eee81da1758857054f7b",
+        "source_fact:v1:fcc6793f62045b93fe350e7881a6c43b0dacb33af292bdb01087b0f3f668e2a5",
+        "source_fact:v1:ffa34a889ee417d50fbea6ea1d28455925e3714699b0b8486593595d67142ea3"
+      ],
+      "source_published_kst": "2026-10-06T07:48+09:00",
+      "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
+    },
     "source_fact:ff09da0ba5a5315656899961": {
       "first_seen_kst": "2026-10-06T00:26:07+09:00",
       "lanes": {
@@ -66105,6 +67681,38 @@
       ],
       "source_published_kst": "2026-10-05T23:29+09:00",
       "title": "[단독] 조원태 한진 회장 ‘배임’ 혐의 경찰 수사 본격화"
+    },
+    "source_fact:ff2c2bce81d94b2d2aaefe5e": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
     "source_fact:ff38c02364192fce0477a47f": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
@@ -66163,6 +67771,38 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "\"예수금 줄고 대미투자 송금까지\"⋯9월 외환보유액, 넉 달 만에 감소"
+    },
+    "source_fact:ff588a2163c27bce8aca1847": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
     "source_fact:ff5d5a838c045b13bd796dd7": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -67506,6 +69146,25 @@
       "source": "뉴시스",
       "title": "\"나스닥 신고가인데 신저가 종목 속출…확실한 주도주로 좁혀야\""
     },
+    "title:1081f69ac55d2f7131e070d6": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893496",
+      "source": "헤럴드경제",
+      "source_body_digest": "e1f259c4fca00d07f84090bd5ffdcb6dd6a8228b9548c49141af5f2910c6f3a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb2b3a234bf3dda331d57cdaa9e19c39639a9366c861816200ffa7afdab7f174",
+      "source_fact_keys": [
+        "source_fact:v1:10b8fb4cd88cf9883545b1ee2ef4dfe9a75483328b16cc345232d21170020740",
+        "source_fact:v1:7bff5802d2e40e83c103746a2afbde2c59d5422d7cf9b52d996f77b7e67b0f7a",
+        "source_fact:v1:fb32cef52e7c74f1930d3eca53522a177a13e9887feb7e2fedd6aca202aaf663"
+      ],
+      "source_published_kst": "2026-10-06T06:29+09:00",
+      "title": "사우디 투트랙 수출·G7 비축유 방출 약속에 국제유가 1.8% 하락"
+    },
     "title:10e0f9aa091a2c269254821b": {
       "first_seen_kst": "2026-09-20T06:33:23+09:00",
       "lanes": {
@@ -68607,6 +70266,28 @@
       "source": "헤럴드경제",
       "title": "이란 “美가 수용하면 7일 내 호르무즈 재개방…선택은 美에 달려”"
     },
+    "title:22ab39b5c66ec9a302726ddc": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/2026100537821",
+      "source": "한국경제",
+      "source_body_digest": "11eda218c905efb45e62ee1aeede1e44665b0d0ac3e43f49c77a555c03a4e31d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:589f49d3967b312d30922aa43c36ca36a9a44ae91840718b84d9661424e61f5b",
+      "source_fact_keys": [
+        "source_fact:v1:307b1a48d6951927b6a4686a2b63b08ef4a9742e230e61a92f070336c3717dbe",
+        "source_fact:v1:4964727bc147257efdc64f65dacb6ce3f6acbe4abbf69bb9c9c47e15852dee35",
+        "source_fact:v1:7f65da27784022882fa544bc63816f7db922e3cfa2a59cbc71ddaa923b3fce22",
+        "source_fact:v1:92eb86a26a279e10ad4ff00fb1ff45d5fd061a698f8ee5ae2730b2d0feeeda63",
+        "source_fact:v1:b7a7bb1312c4647dcd0c14933ab1feaaadf63ce81cab6e365d85caa24b1d8e12",
+        "source_fact:v1:dd6b22b63286fb0bce65e58e6bd39441ab71a2a951ee6ccccf0186dfec5c83aa"
+      ],
+      "source_published_kst": "2026-10-05T17:44+09:00",
+      "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
+    },
     "title:22c646c32cc523a19149ea3e": {
       "first_seen_kst": "2026-10-01T16:57:16+09:00",
       "lanes": {
@@ -69407,6 +71088,29 @@
       "link": "https://www.asiae.co.kr/article/2026100117530726987",
       "source": "아시아경제",
       "title": "금리 급등에 놀란 정부…초과세수 풀어 국고채 발행량 5兆 축소"
+    },
+    "title:2d50e6b21e4612c428965621": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.hankyung.com/article/202610064140g",
+      "source": "한국경제",
+      "source_body_digest": "bec2566002c0751d274e376198c874dc1be9cf4e4f88de2d93b5879700c6fb29",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b410561ee60d440d7ceb0660893754198ee2ea57b8bd15f087b583d8d63c7552",
+      "source_fact_keys": [
+        "source_fact:v1:0fcd4cc3127b24d5b334c0889bef1c66241e7c8015fcdb97bc8d263350edb131",
+        "source_fact:v1:3ba910d70460608f8ab91c9be7f8e9697b3f07b458c6d5c31a772181d4dd2fca",
+        "source_fact:v1:64095e79f49f0d2a2670f4862e2de3218066fbe89a83c1c704aee92268a57b1e",
+        "source_fact:v1:b9cfd260cca886365a209a13fb90bc5cfb949b90a73b1622e6c088ff16dc8fb3",
+        "source_fact:v1:e638eda450545535c25cc6e6176f4055910d5dd28796eee81da1758857054f7b",
+        "source_fact:v1:fcc6793f62045b93fe350e7881a6c43b0dacb33af292bdb01087b0f3f668e2a5",
+        "source_fact:v1:ffa34a889ee417d50fbea6ea1d28455925e3714699b0b8486593595d67142ea3"
+      ],
+      "source_published_kst": "2026-10-06T07:48+09:00",
+      "title": "본사 곳간 찰 때 점주는 울었다…프랜차이즈 매출 양극화 심화"
     },
     "title:2d9f08258e7caa0981dfcb06": {
       "first_seen_kst": "2026-10-03T06:13:51+09:00",
@@ -74445,6 +76149,24 @@
       "source": "머니투데이",
       "title": "\"더 시간이 필요할 수도\"...연준 부의장, 추가 금리인상 '신중론'"
     },
+    "title:72d535483e00ffab8aeefc17": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814722",
+      "source": "뉴시스",
+      "source_body_digest": "0bbcb601c30c5e256ed83e277f66b99c27c4548602c4d85db5347b3802031de0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:536f2732d0dc353dd5f5c7820b5fcbf7241d875d5bc036b79f2e8c7b0579c8b5",
+      "source_fact_keys": [
+        "source_fact:v1:6822bc05b383b0350922a5d02dfaaa7d85a1f95aec35e45559b8515937d99f6c",
+        "source_fact:v1:6dd8cda9347400890945ca0e168ae993dc4aebc05a27589dc68e858ff9089ab1"
+      ],
+      "source_published_kst": "2026-10-06T08:10+09:00",
+      "title": "씨엑스아이, 고수 보이차 폴리페놀 공급 사업 추진"
+    },
     "title:72f97f2373675a552dd5df39": {
       "first_seen_kst": "2026-10-05T16:09:26+09:00",
       "lanes": {
@@ -77547,6 +79269,27 @@
       "link": "https://www.etnews.com/20261002000229",
       "source": "전자신문",
       "title": "화장품 수출 111억달러로 역대 최대…3분기 만에 지난해 연간치 육박"
+    },
+    "title:9e1062a45f32c8a120168076": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632539",
+      "source": "이투데이",
+      "source_body_digest": "8c991b54bf21cf21ad70abe1e92d1ba97fdfcc8c60827bcd293383dec311a7d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76e404a8dca3bb40adb91d8f28048b80a353340b2481ff7e22b792bfcf5bea11",
+      "source_fact_keys": [
+        "source_fact:v1:41c8c4478e415c6be48d313a55f448cb69930dcc2db8e8491232a0c22bd585c4",
+        "source_fact:v1:53c9d8c8bc7127431dc145d02f13a9eb0151688173b3d0c55d581d8d7c9f1514",
+        "source_fact:v1:5efa4155243f43778ec9999fa28dc216e2a851055838366d1cd6d5dc7820c4d5",
+        "source_fact:v1:9283ca73728ebd53357827958bee721bc8fe439d0e3e7e32226b45223902be33",
+        "source_fact:v1:b8ba89ba8114c8d83205a7bb54810fc4ab2ad8cee24b641709fbcac1ebafb6a7"
+      ],
+      "source_published_kst": "2026-10-06T08:03+09:00",
+      "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
     },
     "title:9e20611a85c03d65b31628af": {
       "first_seen_kst": "2026-10-05T07:59:22+09:00",
@@ -81138,6 +82881,28 @@
       "source_published_kst": "2026-10-05T07:00+09:00",
       "title": "약한 고리 노린 해킹에 속수무책 은행권…'인증우회 취약' 알고도 뚫렸다"
     },
+    "title:d2bd66492645ac93d61d43d2": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632554",
+      "source": "이투데이",
+      "source_body_digest": "700ec8d80af55057c7f31f1b58a677ea5977fdce6248aa7bb91bad399cf0eb3b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e4a85725738e0265ffc6b35e17ee8f847a526f4f31864e7d829b4bf2ba700a7f",
+      "source_fact_keys": [
+        "source_fact:v1:2fb91f62096601fc251e0cb3a7878dc6e3ad6e80beb3d1656cf29bcc7db9b799",
+        "source_fact:v1:38ec78fff6d84fdfcf81d13e026962c72719ef08bef1fbb7a75125018cc28d87",
+        "source_fact:v1:3cca9a178b03b551f480f1c8ded57b8a526e96e2514237a59bc33d28a1ff0a63",
+        "source_fact:v1:5ab98c41ded0cf66f76f714d76c08a6df7ce8dfadfa3d23332d980d77c6e6d1a",
+        "source_fact:v1:c5216479a658bb333c7565904b72add585b85b738fabfac2dea2cd5353b5e382",
+        "source_fact:v1:c9e8872ea5040d39d6036c8fb76053fce7363fe03d0900d230010b35ab06acd8"
+      ],
+      "source_published_kst": "2026-10-06T08:10+09:00",
+      "title": "현대차證 \"동국제강, 견조한 실적…목표가 1만3800원↑\""
+    },
     "title:d2ce16d903712ab62df404ea": {
       "first_seen_kst": "2026-10-02T16:06:36+09:00",
       "lanes": {
@@ -81427,6 +83192,38 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
+    },
+    "title:d5d36465f29a304ee24fab61": {
+      "first_seen_kst": "2026-10-06T08:12:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T08:12:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T08:12:20+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02528886645610296",
+      "source": "이데일리",
+      "source_body_digest": "99de738dc6948083f12e85ad274b2f983337e0e58aa5040c1d37854bb0f9b625",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d63d47656e7666af99695426f70e744cc68e4a9ec20cb72025e550c708a1b66d",
+      "source_fact_keys": [
+        "source_fact:v1:0c129275dbf10249f74cb45c853853c4a41877c1e9a1bf1782bb7a994c1ea158",
+        "source_fact:v1:15b2c16f3107c8fc38aec6d795d6cc65bd7c4099476f5e6cb8f969c6e72b0fb6",
+        "source_fact:v1:33f010f2142cac2648476b7d41cbe07e3ae7c984e0ec15467b63fb7edd928947",
+        "source_fact:v1:46ea42295094cb1ca3fadf98d4bd852f4008199af5c024823b1b90250fda463b",
+        "source_fact:v1:53fccb5bf5febd32e5184defed0c0a2137738d50b72c9ef4e9293dbd7fe6d360",
+        "source_fact:v1:58db0a7c6a8f261d7a01ac67d64e0561ded92fc1376fb844da3d9540a199eaf9",
+        "source_fact:v1:67f37fd14ee2cfefad266dce6d9c5d2ae2961468ee8ac68efb7d5b1580d935b6",
+        "source_fact:v1:a188c1e08cf188a5cc7c604dfb190de4d9e298330039bad4d7b742a43e151a2d",
+        "source_fact:v1:a625e848364123d39c5a0b8e2bed206b42d9338897b5e9755e9d9c8bbd746054",
+        "source_fact:v1:bd6994a1282c747bc4b6c67ecc4945fbd5a9861d73bf99685bfca95ddb0648ec",
+        "source_fact:v1:d3d6cbe17a1e1a45724173e688cdaf9c6e4db414cb3b33a673078bf970f0eb8b",
+        "source_fact:v1:db06517dad260c4862305518879bfecfa778c29ad5ebab2f433a75f88005ca1e",
+        "source_fact:v1:f0a36c64bfaf4f4915b3dfa343353450372394f95fec3ed06a8e135cdabb9467",
+        "source_fact:v1:f2dd2dc059cfebabedd47d93e105d6d72a120e5f4bd921c7272ad84c582a4b72",
+        "source_fact:v1:f999ba6a8ade0c359b61d9e3d786d49c5d5a77cf0ba2a6a0b03a673585217ec2",
+        "source_fact:v1:fc0290d0c875a08789e704f90083507163937b76998010c0790dfc5248a63ce0"
+      ],
+      "source_published_kst": "2026-10-06T08:02+09:00",
+      "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
     "title:d5e6640c4f9606201f5ef134": {
       "first_seen_kst": "2026-10-02T16:53:54+09:00",
@@ -84524,5 +86321,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T07:52:55+09:00"
+  "updated_at_kst": "2026-10-06T08:12:20+09:00"
 }
