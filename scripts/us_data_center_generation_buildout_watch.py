@@ -493,7 +493,8 @@ if should_alert:
     msg.append(f"• {a('IEA 미국 데이터센터 전력수요', IEA_AI)}")
     msg.append(f"• {a('EIA 고수요 가스발전 시나리오', EIA_HIGH_DEMAND)}")
     msg.append(f"• {a('GE Vernova 가스터빈 공급능력', GEV_Q2_2026)}")
-    msg = compact_generation_message(msg)\n    ALERT.write_text("\n".join(msg).strip() + "\n", encoding="utf-8")
+    msg = compact_generation_message(msg)
+    ALERT.write_text("\n".join(msg).strip() + "\n", encoding="utf-8")
 
 STATUS.write_text(
     "# 미국 데이터센터 발전설비 실행 감시\n\n"
