@@ -268,6 +268,29 @@ def _s27_fact_key(blob: str) -> str:
     return ""
 
 
+def _should_suppress_seen_fact(
+    blob: str,
+    source: str,
+    seen_fact_keys: set[str],
+) -> bool:
+    key = _s27_fact_key(blob)
+    if not key or key not in seen_fact_keys:
+        return False
+
+    # A source-quality/status upgrade is new information even when the price
+    # range is numerically unchanged. Never suppress an OEM official price
+    # announcement just because the earlier rumor used the same number.
+    if _is_official_like(blob, source):
+        return False
+
+    # Likewise, allow a high-trust independent, non-rumor confirmation to move
+    # the item from "single-source rumor" to "high-trust confirmation".
+    if _source_rank(source) >= 3 and not _is_rumor(blob):
+        return False
+
+    return True
+
+
 def _collect() -> tuple[list[dict], list[str]]:
     now = dt.datetime.now(KST)
     cutoff = now - dt.timedelta(days=14)
@@ -349,10 +372,12 @@ def _signal(item: dict, state: dict) -> dict | None:
             low_krw, high_krw = min(vals), max(vals)
             prev_low = int(metrics.get("s27_korea_hike_low_krw") or 0)
             prev_high = int(metrics.get("s27_korea_hike_high_krw") or 0)
+            independent_confirmation = rank >= 3 and not rumor
             materially_new = (
                 abs(low_krw - prev_low) >= 50_000
                 or abs(high_krw - prev_high) >= 50_000
                 or official
+                or independent_confirmation
             )
             if materially_new:
                 reasons.append(
@@ -361,7 +386,7 @@ def _signal(item: dict, state: dict) -> dict | None:
                 )
                 changes["s27_korea_hike_low_krw"] = low_krw
                 changes["s27_korea_hike_high_krw"] = high_krw
-                stage = max(stage, 3 if official else 1)
+                stage = max(stage, 3 if official else (2 if independent_confirmation else 1))
         elif official:
             reasons.append("Samsung 공식 Galaxy S27 가격 발표 감지")
             stage = max(stage, 3)
@@ -381,10 +406,12 @@ def _signal(item: dict, state: dict) -> dict | None:
     if not reasons:
         return None
 
-    if rumor and not official:
-        status = "루머·공식 미확인"
-    elif official:
+    if official:
         status = "공식 가격 확인"
+    elif rank >= 3 and not rumor and any(x in low for x in S27_MARKERS):
+        status = "독립 고신뢰 확인·삼성 공식은 아님"
+    elif rumor:
+        status = "루머·공식 미확인"
     else:
         status = "고신뢰 업황·가격전가 보도"
 
@@ -499,7 +526,7 @@ def main() -> None:
                 continue
             blob = f"{item['title']} {item.get('description','')}"
             fact_key = _s27_fact_key(blob)
-            if fact_key and fact_key in seen_fact_keys:
+            if _should_suppress_seen_fact(blob, item.get("source", ""), seen_fact_keys):
                 seen.add(fid)
                 continue
             signal = _signal(item, {**state, "metrics": metrics})
