@@ -47,6 +47,34 @@ BASELINE = {
     "seen_urls": ["https://insights.trendforce.com/p/weekly-radar-002"],
 }
 
+# TrendForce Weekly Radar 004 (2026-10-05) exact table lock.
+# The seven row values below are transcribed from the user-provided TrendForce original screenshot.
+# This lock only applies to Weekly Radar 004 and prevents partial HTML/search-index parsing from
+# silently carrying an older weekly value into the current snapshot.
+WEEKLY_004_LOCK = {
+    "as_of": "2026-10-05",
+    "source": "https://insights.trendforce.com/p/weekly-radar-004",
+    "source_kind": "TrendForce Weekly Radar 004 / 사용자 제공 원본 캡처 직접 판독",
+    "components": {
+        "CPU": {"status": "Tight", "current": "25-30", "balanced": "16-20"},
+        "GPU": {"status": "Balanced", "current": "30-40", "balanced": "30-40"},
+        "DRAM": {"status": "Very Tight", "current": "20", "balanced": "8"},
+        "NAND(eSSD)": {"status": "Tight", "current": "16", "balanced": "8"},
+        "HDD": {"status": "Very Tight", "current": "50", "balanced": "16"},
+        "ABF": {"status": "Very Tight", "current": "48-56", "balanced": "12"},
+        "MLCC": {"status": "Tight", "current": "35", "balanced": "12"},
+    },
+    "signals": {
+        "CPU": "AI 추론 부하가 서버 CPU 수요를 지지하며 공급 제약이 지속",
+        "GPU": "Blackwell은 2026년 주력 출하·수요 1H27 연장, Rubin은 시스템 테스트·검증 이슈로 4Q26~1Q27부터 점진 램프",
+        "DRAM": "4Q26 계약가격 협상에서 인상 신호가 이어지고 미국 CSP 수요가 견조",
+        "NAND(eSSD)": "DRAM 부족이 일부 NAND 업체의 기업용 SSD 지원 능력까지 제약",
+        "HDD": "Toshiba 증설은 가동까지 12~24개월이 필요해 납기 완화는 빨라도 2027년 말",
+        "ABF": "수급 격차가 단기간 닫히기 어렵고 3Q26~4Q27 장기계약 가격은 분기당 10~15% 인상 전망",
+        "MLCC": "저가 소비자용은 둔화하지만 AI용 고급 0805는 부족해 수요 양극화",
+    },
+}
+
 UBS_PROJECT_LEADTIME_BASELINE = {
     "as_of": "2026-09",
     "source_kind": "사용자 제공 UBS 차트",
@@ -428,6 +456,12 @@ def extract_signals(text: str, source_url: str = "") -> dict[str, str]:
         for name, value in BASELINE["signals"].items():
             signals.setdefault(name, value)
 
+    if source_url.rstrip("/").endswith("weekly-radar-004"):
+        # Weekly Radar 004's table is image-led. Keep the directly read screenshot narrative
+        # as the source-specific fallback when the HTML/index exposes only partial row text.
+        for name, value in WEEKLY_004_LOCK["signals"].items():
+            signals.setdefault(name, value)
+
     return signals
 
 
@@ -621,6 +655,83 @@ def repair_weekly_002_state(previous: dict) -> tuple[dict, list[str]]:
             changed.append(name)
     repaired["signals"] = copy.deepcopy(BASELINE.get("signals") or repaired.get("signals") or {})
     return repaired, changed
+
+
+def repair_weekly_004_state(previous: dict) -> tuple[dict, list[str], list[str]]:
+    """Lock Weekly Radar 004 to the seven rows directly visible in the provided TrendForce table."""
+    if not str(previous.get("source") or "").rstrip("/").endswith("weekly-radar-004"):
+        return previous, [], []
+
+    repaired = copy.deepcopy(previous)
+    repaired.setdefault("components", {})
+    component_changes: list[str] = []
+    for name, expected in WEEKLY_004_LOCK["components"].items():
+        current = dict(repaired["components"].get(name) or {})
+        if canonical_component(current) != canonical_component(expected):
+            repaired["components"][name] = copy.deepcopy(expected)
+            component_changes.append(name)
+
+    old_signals = dict(repaired.get("signals") or {})
+    signal_changes = [
+        name for name, value in WEEKLY_004_LOCK["signals"].items()
+        if str(old_signals.get(name) or "") != str(value)
+    ]
+    repaired["signals"] = copy.deepcopy(WEEKLY_004_LOCK["signals"])
+    repaired["as_of"] = WEEKLY_004_LOCK["as_of"]
+    repaired["source"] = WEEKLY_004_LOCK["source"]
+    return repaired, component_changes, signal_changes
+
+
+def build_weekly_004_correction_alert(
+    old: dict,
+    corrected: dict,
+    component_names: list[str],
+    signal_names: list[str],
+) -> str:
+    lines = [
+        "<b>⚠️ AI 부품 리드타임 감시 — 10/5 원본 표 재대조</b>",
+        "",
+        "TrendForce Weekly Radar 004 원본 표와 저장값을 다시 대조해 파서 누락·이월값을 바로잡았습니다.",
+    ]
+
+    if "DRAM" in component_names:
+        before = old.get("DRAM") or {}
+        after = corrected.get("DRAM") or {}
+        lines.append(
+            f"• <b>DRAM 상태 정정:</b> {html.escape(fmt_status(before))} → {html.escape(fmt_status(after))} "
+            f"(현재 {html.escape(fmt_week(after.get('current')))} / 균형 {html.escape(fmt_week(after.get('balanced')))})"
+        )
+    if "MLCC" in component_names:
+        before = old.get("MLCC") or {}
+        after = corrected.get("MLCC") or {}
+        old_mid = midpoint_week(str(before.get("current") or ""))
+        new_mid = midpoint_week(str(after.get("current") or ""))
+        delta = "" if old_mid is None or new_mid is None else f" · {new_mid-old_mid:+.0f}주"
+        lines.append(
+            f"• <b>MLCC 최신값:</b> {html.escape(fmt_week(before.get('current')))} → "
+            f"{html.escape(fmt_week(after.get('current')))}{delta} / 균형 {html.escape(fmt_week(after.get('balanced')))}"
+        )
+
+    other = [name for name in component_names if name not in {"DRAM", "MLCC"}]
+    for name in other:
+        lines.append(f"• <b>{html.escape(name)}:</b> {html.escape(fmt_entry(corrected.get(name) or {}))}")
+
+    lines += ["", "<b>10/5 확정 표 — 7개 품목</b>"]
+    lines.extend(_compact_status_groups(corrected))
+
+    if signal_names:
+        lines += ["", "<b>원인·시간표 업데이트</b>"]
+        for name in ("CPU", "GPU", "DRAM", "NAND(eSSD)", "HDD", "ABF", "MLCC"):
+            if name in signal_names:
+                lines.append(f"• <b>{html.escape(name)}:</b> {html.escape(WEEKLY_004_LOCK['signals'][name])}")
+
+    lines += [
+        "",
+        "• 교차검증: TrendForce 공식 Weekly Radar 004는 DRAM 20주/균형 8주·Very Tight를 명시하고, "
+        "9/30 공식 메모리 자료는 4Q26 서버 DRAM·기업용 SSD의 공급 제약을 별도로 확인합니다.",
+        f'• <a href="{html.escape(WEEKLY_004_LOCK["source"], quote=True)}">TrendForce 원문</a>',
+    ]
+    return "\n".join(lines).strip() + "\n"
 
 
 def build_status_correction_alert(old: dict, corrected: dict, names: list[str], source_url: str) -> str:
@@ -856,7 +967,9 @@ def main() -> None:
     pending = load_json(PENDING_PATH)
     raw_previous = repair_bad_initial_state(state.get("ai_component_leadtime") or copy.deepcopy(BASELINE))
     raw_previous_components = copy.deepcopy(raw_previous.get("components") or BASELINE["components"])
-    previous, repaired_status_names = repair_weekly_002_state(raw_previous)
+    weekly_002_previous, repaired_status_names = repair_weekly_002_state(raw_previous)
+    weekly_002_components = copy.deepcopy(weekly_002_previous.get("components") or BASELINE["components"])
+    previous, repaired_004_components, repaired_004_signals = repair_weekly_004_state(weekly_002_previous)
     previous_components = previous.get("components") or BASELINE["components"]
     seen_urls = set(previous.get("seen_urls") or [])
 
@@ -895,6 +1008,10 @@ def main() -> None:
                 cpu.setdefault("status", "Tight")
                 cpu.setdefault("current", "25-30")
                 cpu.setdefault("balanced", "16-20")
+            if direct.rstrip("/").endswith("weekly-radar-004"):
+                # The 10/5 source is image-led; use the directly transcribed seven-row table
+                # instead of allowing a partial HTML/index parse to inherit stale prior values.
+                components = copy.deepcopy(WEEKLY_004_LOCK["components"])
             signals = extract_signals(full_text, direct)
             candidates.append(
                 {
@@ -919,10 +1036,18 @@ def main() -> None:
     if repaired_status_names:
         notify_text = build_status_correction_alert(
             raw_previous_components,
-            previous_components,
+            weekly_002_components,
             repaired_status_names,
-            str(previous.get("source") or BASELINE["source"]),
+            str(weekly_002_previous.get("source") or BASELINE["source"]),
         )
+    if repaired_004_components or repaired_004_signals:
+        correction = build_weekly_004_correction_alert(
+            weekly_002_components,
+            previous_components,
+            repaired_004_components,
+            repaired_004_signals,
+        )
+        notify_text = (notify_text.rstrip() + "\n\n" + correction.strip()).strip() + "\n" if notify_text else correction
     new_seen = set(seen_urls)
 
     if best:
