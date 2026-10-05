@@ -152,6 +152,38 @@ def story_key(title: str, source: str, pub: str) -> str:
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
 
 
+
+def canonical_headline_key(title: str, pub: str) -> str:
+    # Google News RSS 제목은 보통 마지막 " - 매체명"을 붙인다.
+    # 매체명이 뉴스1 / news1.kr처럼 바뀌어도 같은 기사로 보도록 제거한다.
+    normalized = re.sub(r"\s+", " ", (title or "").strip().lower())
+    if " - " in normalized:
+        normalized = normalized.rsplit(" - ", 1)[0].strip()
+    published = parse_news_date(pub)
+    day = published.strftime("%Y-%m-%d") if published else "unknown"
+    return hashlib.sha256(f"{normalized}\n{day}".encode("utf-8")).hexdigest()[:24]
+
+
+def canonical_url_key(url: str) -> str:
+    parsed = urllib.parse.urlparse((url or "").strip())
+    host = (parsed.hostname or "").lower()
+    path = re.sub(r"/+$", "", parsed.path or "/")
+    if host == "news.google.com":
+        # oc, hl 등 추적 쿼리가 달라도 같은 Google News 기사 ID면 동일 근거다.
+        basis = f"{host}{path}"
+    else:
+        pairs = urllib.parse.parse_qsl(parsed.query, keep_blank_values=True)
+        kept = []
+        for key, value in pairs:
+            low = key.lower()
+            if low.startswith("utm_") or low in {"oc", "gclid", "fbclid", "ref", "from"}:
+                continue
+            kept.append((key, value))
+        query = urllib.parse.urlencode(sorted(kept))
+        basis = f"{host}{path}" + (f"?{query}" if query else "")
+    return hashlib.sha256(basis.encode("utf-8")).hexdigest()[:24]
+
+
 def resolve_google_news_url(url: str):
     if (urllib.parse.urlparse(url).hostname or "").lower() != "news.google.com":
         return url, False
@@ -198,7 +230,17 @@ def google_news_items(query: str):
         pub = clean_text(node.findtext("pubDate") or "")
         source_el = node.find("source")
         source = clean_text(source_el.text if source_el is not None and source_el.text else "")
-        items.append({"id": hashlib.sha256((title + "\n" + link).encode()).hexdigest()[:24], "story_key": story_key(title, source, pub), "title": title, "link": link, "description": desc, "pubDate": pub, "source": source})
+        items.append({
+            "id": hashlib.sha256((title + "\n" + link).encode()).hexdigest()[:24],
+            "story_key": story_key(title, source, pub),
+            "headline_key": canonical_headline_key(title, pub),
+            "url_key": canonical_url_key(link),
+            "title": title,
+            "link": link,
+            "description": desc,
+            "pubDate": pub,
+            "source": source,
+        })
     return items
 
 
@@ -293,11 +335,13 @@ def compact_news_item(item):
 
 def load_state():
     if not STATE_PATH.exists():
-        return {"initialized": False, "seen_ids": [], "seen_story_keys": [], "official_page_signatures": {}}
+        return {"initialized": False, "seen_ids": [], "seen_story_keys": [], "seen_headline_keys": [], "seen_url_keys": [], "official_page_signatures": {}}
     try:
         state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
         state.setdefault("seen_ids", [])
         state.setdefault("seen_story_keys", [])
+        state.setdefault("seen_headline_keys", [])
+        state.setdefault("seen_url_keys", [])
         state.setdefault("official_page_signatures", {})
         return state
     except Exception:
@@ -323,6 +367,8 @@ def main():
     monitor_started = parse_iso_kst(state.get("monitor_started_at_kst", "")) or parse_iso_kst(state.get("updated_at_kst", "")) or now_dt
     seen_ids = set(state.get("seen_ids", []))
     seen_keys = set(state.get("seen_story_keys", []))
+    seen_headlines = set(state.get("seen_headline_keys", []))
+    seen_urls = set(state.get("seen_url_keys", []))
     errors, all_items = [], []
 
     for query in QUERIES:
@@ -345,7 +391,12 @@ def main():
     new_items, stale = [], []
     broad_cutoff = max(monitor_started, now_dt - dt.timedelta(days=7))
     for item in relevant_items:
-        if item["id"] in seen_ids or item["story_key"] in seen_keys:
+        if (
+            item["id"] in seen_ids
+            or item["story_key"] in seen_keys
+            or item.get("headline_key") in seen_headlines
+            or item.get("url_key") in seen_urls
+        ):
             continue
         published = parse_news_date(item.get("pubDate", ""))
         cutoff = broad_cutoff if set(item.get("stages", [])) & BROAD_STAGES else monitor_started
@@ -408,7 +459,9 @@ def main():
         "monitor_started_at_kst": state.get("monitor_started_at_kst") or monitor_started.isoformat(timespec="seconds"),
         "updated_at_kst": now,
         "seen_ids": list(dict.fromkeys([i["id"] for i in relevant_items] + list(seen_ids)))[:2000],
-        "seen_story_keys": list(dict.fromkeys([i["story_key"] for i in relevant_items] + list(seen_keys)))[:2000],
+        "seen_story_keys": list(dict.fromkeys([i["story_key"] for i in relevant_items] + list(seen_keys)))[:3000],
+        "seen_headline_keys": list(dict.fromkeys([i.get("headline_key") for i in relevant_items if i.get("headline_key")] + list(seen_headlines)))[:3000],
+        "seen_url_keys": list(dict.fromkeys([i.get("url_key") for i in relevant_items if i.get("url_key")] + list(seen_urls)))[:3000],
         "official_page_signatures": signatures,
         "last_relevant_count": len(relevant_items),
         "last_stale_suppressed_count": len(stale),
