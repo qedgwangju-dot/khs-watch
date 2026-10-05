@@ -37,6 +37,31 @@
       "source_published_kst": "2026-10-05T13:29+09:00",
       "title": "JP모간, 10월 '콕' 집은 종목은…아멕스·써모피셔·리버티"
     },
+    "event:0299202f202670e087ceb126": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://biz.chosun.com/international/international_general/2026/10/06/UK3OIVXAARFDJNT56L5QQLNCKU/",
+      "source": "조선비즈",
+      "source_body_digest": "885af90ddf1de6a9142e284265e6b687273fcc5e9da7cd14c11d7c9d3c07fd19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74391062c160e5b2383cda71d966331c94dab07f26edb8515743ec4f85034b45",
+      "source_fact_keys": [
+        "source_fact:v1:27d6f6aca2eb1fd3e228a65b8994a33d6c6ce4a13295940e70331375c7cf92ab",
+        "source_fact:v1:2c7bd9ba7540814e7cda6e398644ae3bf8a2c2dd611fbbaf2f946a82c26c531d",
+        "source_fact:v1:2da1ce189455b09869a0310f5ada4eadd48f97a1834dce72514aa2b31b0eefa9",
+        "source_fact:v1:31c100d18ef6c4c096dc27f769c162c45532f6fce4c68753e4bbe64509f3b081",
+        "source_fact:v1:3be2b53f414795b81801bd6397edd6afa434e395403d76a7bc7ef917b50f9b62",
+        "source_fact:v1:498c2a97d8dcca9ce5b09b230fa1ef3c996b07f8918cead50cf3fe1828112ada",
+        "source_fact:v1:5ca426bd25914d5f892d592f15dc273c5eaac02d6fb579198fed5afccd4f8a8e",
+        "source_fact:v1:8d4674d506d1ca6b3389ddc775fba5d1b666ad7758da7052690eac4b2ca12df8",
+        "source_fact:v1:edc24ff29e32637963f3c3d2c9c4a83bc6c0e5a8c7f9ed93bff103c3c9762c3f"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
+    },
     "event:033917d192b9a4d16c4f65fd": {
       "first_seen_kst": "2026-09-19T08:53:16+09:00",
       "lanes": {
@@ -2806,17 +2831,24 @@
     "event:95558ce4c0404dcf842af73f": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
-        "live": "2026-10-06T05:21:17+09:00"
+        "live": "2026-10-06T07:00:19+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:21:17+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261006004300072",
-      "source": "연합뉴스",
-      "source_body_digest": "6b11ac47dab9497c669508e8040163cb170b7cefaaa247962304fc5c621cebdf",
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261006063959fPF",
+      "source": "연합뉴스TV",
+      "source_body_digest": "12040bc5cf718a8a05eb0fb3151d848730ebccc5eae82472b504eabd0e8d3b8a",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-06T04:57+09:00",
-      "title": "국제유가, 중동 원유수출 증가·G7 비축유 방출 약속에 1.8%↓ | 연합뉴스"
+      "source_fact_identity": "source_facts:v1:211e04a9c899dcefc1c328f9a07063bf6129885cadd50976199ccfd196910fb2",
+      "source_fact_keys": [
+        "source_fact:v1:2540990def5430f41f1f17be9f5bab072adea29aea0a2a51dae5a139f8994ffc",
+        "source_fact:v1:294f1fc9bbebba6879e486c2e34899bf20e153581fa1b83023d83d37c4609d7b",
+        "source_fact:v1:385b4e576fe1184cff914ffd271c0d33c2f2f61016857e0b2d1df4671df7e933",
+        "source_fact:v1:a47b509bb93c99271279ba3035301d35a807fce92685b6ecf000e313ae797c94",
+        "source_fact:v1:e1fdb14abcb25eb1e976db50984d8adff4867b6b7d4611b3bfd6c89ded668650",
+        "source_fact:v1:fefa06f4eab36e5d796e10e380169b916eaaec42d086542e05a9e4d9b9b7ae32"
+      ],
+      "source_published_kst": "2026-10-06T06:40+09:00",
+      "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
     },
     "event:9567252196d32795cfe527fe": {
       "first_seen_kst": "2026-10-01T18:06:18+09:00",
@@ -5330,6 +5362,26 @@
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
+    "fact:12dc10c803a84901c3caa566": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.fnnews.com/news/202610060615255244",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6e6d7e0134558d16bce459ec005a78eaf78ae439f34d08ba141be6d6f86bf55c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c8dd5ca23659c5a2c602c71c3d952f2f1c3d903cc4aefea8cf342c23d0254c7",
+      "source_fact_keys": [
+        "source_fact:v1:3ace8b45b34ff2e8f510a1be00bbee65544588997fa5722542e0f4a0c2257c9f",
+        "source_fact:v1:85ecae72f8199ebdcc25ef52200912c7239701440bbc2a0dad59ab04aa823e11",
+        "source_fact:v1:c638638c5cffe0fe3d19f38946e0b6f5a5fd88e610de043a5d516140e025a9f1",
+        "source_fact:v1:c73210e689635c3bf825f3395fd7ed3a84a16d97347c91896c25bba754e588da"
+      ],
+      "source_published_kst": "2026-10-06T06:15+09:00",
+      "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
+    },
     "fact:141e69347ed926b17a0db065": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -5804,6 +5856,31 @@
       "source_published_kst": "2026-10-06T00:39+09:00",
       "title": "美 9월 서비스업 확장세 둔화…물가 압력 4년여만에 최고"
     },
+    "fact:2e65e9ca99a737663f7fa476": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://biz.chosun.com/international/international_general/2026/10/06/UK3OIVXAARFDJNT56L5QQLNCKU/",
+      "source": "조선비즈",
+      "source_body_digest": "885af90ddf1de6a9142e284265e6b687273fcc5e9da7cd14c11d7c9d3c07fd19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74391062c160e5b2383cda71d966331c94dab07f26edb8515743ec4f85034b45",
+      "source_fact_keys": [
+        "source_fact:v1:27d6f6aca2eb1fd3e228a65b8994a33d6c6ce4a13295940e70331375c7cf92ab",
+        "source_fact:v1:2c7bd9ba7540814e7cda6e398644ae3bf8a2c2dd611fbbaf2f946a82c26c531d",
+        "source_fact:v1:2da1ce189455b09869a0310f5ada4eadd48f97a1834dce72514aa2b31b0eefa9",
+        "source_fact:v1:31c100d18ef6c4c096dc27f769c162c45532f6fce4c68753e4bbe64509f3b081",
+        "source_fact:v1:3be2b53f414795b81801bd6397edd6afa434e395403d76a7bc7ef917b50f9b62",
+        "source_fact:v1:498c2a97d8dcca9ce5b09b230fa1ef3c996b07f8918cead50cf3fe1828112ada",
+        "source_fact:v1:5ca426bd25914d5f892d592f15dc273c5eaac02d6fb579198fed5afccd4f8a8e",
+        "source_fact:v1:8d4674d506d1ca6b3389ddc775fba5d1b666ad7758da7052690eac4b2ca12df8",
+        "source_fact:v1:edc24ff29e32637963f3c3d2c9c4a83bc6c0e5a8c7f9ed93bff103c3c9762c3f"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
+    },
     "fact:30126cba90e27cfc9089c63a": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -6048,6 +6125,28 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "fact:3e5f6247025ad4d623002074": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100606293947553",
+      "source": "머니투데이",
+      "source_body_digest": "4adaa2b21018aa7fe73776cea16d95ebb07168ba68910e9a90653da4f67f846e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92b1db87fd8d6c8927cf4d3ad8d4d359330cc90c6a45e3ead27c27f808ac083a",
+      "source_fact_keys": [
+        "source_fact:v1:11ed9e98a9ed537253d1dad3af7f56ef911b866fde7016a2ad1784c1fc7ff3d6",
+        "source_fact:v1:3bf24a5dae7fea4626280a89f1b99467a2320049b5480265463b915bcf6759f8",
+        "source_fact:v1:50935f62f4b186fe2857e554ab294a3e3f020ae5e735705c8530744d9cf433da",
+        "source_fact:v1:510b4f0cdc1cab567a5cffa82c1bc7b9723204bfbfb4fed85660badb45df60ec",
+        "source_fact:v1:efb74847e696b812fac32df72d660a42cf2d0cf5a17e3d37fe5545774cd048ae",
+        "source_fact:v1:fa64d357600a9ed8e1d98571595f7d0e42eb3c8f3a1c8681aa99ed72e50638f6"
+      ],
+      "source_published_kst": "2026-10-06T06:37+09:00",
+      "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
+    },
     "fact:3e7688ff957ae9b442ab282b": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
       "lanes": {
@@ -6163,6 +6262,26 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "KAIST, 데이터 추가·삭제에도 검색 정확도 유지하는 'CONDA' 개발"
+    },
+    "fact:4b7f9f611cff68387e734425": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01371046645610296",
+      "source": "이데일리",
+      "source_body_digest": "de8425ecbc0f55c075a07f92998e13fc38b5350c573cb550e82c69d575d9fb7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9eef9e2f09c4e4cfc387c6451fa6bbf7b4ac1b30e47b19b5ff5222f4c7d69a40",
+      "source_fact_keys": [
+        "source_fact:v1:2239b2c782c6573601633670dbd0b23f583bb1151485b1131b813efecaf5e5a8",
+        "source_fact:v1:52a876808a25122a9ea2d00dfa9ffb9c3cac3625b9f49aaba28302fd41271331",
+        "source_fact:v1:a9395aaa2bbd3d77089c6231fc3099ca2c3d2dd2a0393633d4fde8cf9bd576fb",
+        "source_fact:v1:e9d49e3edec4cd9796148f436c7e3c3180591c299de636bb34eaf089f00caf52"
+      ],
+      "source_published_kst": "2026-10-06T03:38+09:00",
+      "title": "[美특징주]TSMC, 머스크 ‘테라팹’ 협력 논의 확인…주가 3%↑"
     },
     "fact:4b90f663a49f91d6ef0add41": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
@@ -7203,6 +7322,25 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "[단독]새일여성 97% 취업 전환…1년 뒤 고용유지율은 60% 그쳐"
+    },
+    "fact:82c8af93d6dca554e9e96fd6": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100514275318974",
+      "source": "머니투데이",
+      "source_body_digest": "f5f67b93b7705b713b6c1270e06e24b08282e5d49a0e4d50ab7d34cd6d9cc26e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e7e4ad7a340f8dda403ea4db7749fc2993c2fd287140348df1b6b66450dd8cf",
+      "source_fact_keys": [
+        "source_fact:v1:050830ac89d5b597bbb1446b766e1232d3725380c915a05eb6213d141912f08b",
+        "source_fact:v1:1c5f943522c452089b778268e28222ad35d4e3bcea7e4d9e750a6c9fd7288605",
+        "source_fact:v1:d9715a3501419f7aebeb3f191741e7f00117979dea41ebccc08f162fbfefe097"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외환보유액, 넉 달 만에 감소…대미투자 자산위탁 영향"
     },
     "fact:84c27cfd1cfdcf7bb4a10974": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -8639,6 +8777,28 @@
       "source_published_kst": "2026-10-05T16:00+09:00",
       "title": "현대차 8세대 아반떼·BMW iX3, '초기 부진설' 실체는 '공급 시차'"
     },
+    "fact:ea5cd986d5cd7934dc7c9a29": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261006063959fPF",
+      "source": "연합뉴스TV",
+      "source_body_digest": "12040bc5cf718a8a05eb0fb3151d848730ebccc5eae82472b504eabd0e8d3b8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:211e04a9c899dcefc1c328f9a07063bf6129885cadd50976199ccfd196910fb2",
+      "source_fact_keys": [
+        "source_fact:v1:2540990def5430f41f1f17be9f5bab072adea29aea0a2a51dae5a139f8994ffc",
+        "source_fact:v1:294f1fc9bbebba6879e486c2e34899bf20e153581fa1b83023d83d37c4609d7b",
+        "source_fact:v1:385b4e576fe1184cff914ffd271c0d33c2f2f61016857e0b2d1df4671df7e933",
+        "source_fact:v1:a47b509bb93c99271279ba3035301d35a807fce92685b6ecf000e313ae797c94",
+        "source_fact:v1:e1fdb14abcb25eb1e976db50984d8adff4867b6b7d4611b3bfd6c89ded668650",
+        "source_fact:v1:fefa06f4eab36e5d796e10e380169b916eaaec42d086542e05a9e4d9b9b7ae32"
+      ],
+      "source_published_kst": "2026-10-06T06:40+09:00",
+      "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
+    },
     "fact:eb2724262af3cb1d922612b6": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -9857,6 +10017,28 @@
       "source": "연합뉴스",
       "title": "뉴욕증시, 비농업 고용지표 소화하며 상승 출발 | 연합뉴스"
     },
+    "link:0e1cf74a1cb5b1fc663ee6cb": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261006063959fPF",
+      "source": "연합뉴스TV",
+      "source_body_digest": "12040bc5cf718a8a05eb0fb3151d848730ebccc5eae82472b504eabd0e8d3b8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:211e04a9c899dcefc1c328f9a07063bf6129885cadd50976199ccfd196910fb2",
+      "source_fact_keys": [
+        "source_fact:v1:2540990def5430f41f1f17be9f5bab072adea29aea0a2a51dae5a139f8994ffc",
+        "source_fact:v1:294f1fc9bbebba6879e486c2e34899bf20e153581fa1b83023d83d37c4609d7b",
+        "source_fact:v1:385b4e576fe1184cff914ffd271c0d33c2f2f61016857e0b2d1df4671df7e933",
+        "source_fact:v1:a47b509bb93c99271279ba3035301d35a807fce92685b6ecf000e313ae797c94",
+        "source_fact:v1:e1fdb14abcb25eb1e976db50984d8adff4867b6b7d4611b3bfd6c89ded668650",
+        "source_fact:v1:fefa06f4eab36e5d796e10e380169b916eaaec42d086542e05a9e4d9b9b7ae32"
+      ],
+      "source_published_kst": "2026-10-06T06:40+09:00",
+      "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
+    },
     "link:0e246270bf1d08baaac70113": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -10160,6 +10342,26 @@
       "source": "매일경제",
       "source_event_identity": "",
       "title": "커프리나, 싱가포르 7개 클리닉 인수 발표 후 신주 발행 부담에 투자심리 위축"
+    },
+    "link:13886be17d5d990350ee5319": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.fnnews.com/news/202610060615255244",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6e6d7e0134558d16bce459ec005a78eaf78ae439f34d08ba141be6d6f86bf55c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c8dd5ca23659c5a2c602c71c3d952f2f1c3d903cc4aefea8cf342c23d0254c7",
+      "source_fact_keys": [
+        "source_fact:v1:3ace8b45b34ff2e8f510a1be00bbee65544588997fa5722542e0f4a0c2257c9f",
+        "source_fact:v1:85ecae72f8199ebdcc25ef52200912c7239701440bbc2a0dad59ab04aa823e11",
+        "source_fact:v1:c638638c5cffe0fe3d19f38946e0b6f5a5fd88e610de043a5d516140e025a9f1",
+        "source_fact:v1:c73210e689635c3bf825f3395fd7ed3a84a16d97347c91896c25bba754e588da"
+      ],
+      "source_published_kst": "2026-10-06T06:15+09:00",
+      "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
     },
     "link:13f7a2ad28ee9b8b9ddbdf76": {
       "first_seen_kst": "2026-09-28T23:22:54+09:00",
@@ -13178,6 +13380,28 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "“내년에 터진다”…서울 전월세 대란 속 수도권 집값 동반 상승 우려"
+    },
+    "link:3e8417aa06070d2946c8d685": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100606293947553",
+      "source": "머니투데이",
+      "source_body_digest": "4adaa2b21018aa7fe73776cea16d95ebb07168ba68910e9a90653da4f67f846e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92b1db87fd8d6c8927cf4d3ad8d4d359330cc90c6a45e3ead27c27f808ac083a",
+      "source_fact_keys": [
+        "source_fact:v1:11ed9e98a9ed537253d1dad3af7f56ef911b866fde7016a2ad1784c1fc7ff3d6",
+        "source_fact:v1:3bf24a5dae7fea4626280a89f1b99467a2320049b5480265463b915bcf6759f8",
+        "source_fact:v1:50935f62f4b186fe2857e554ab294a3e3f020ae5e735705c8530744d9cf433da",
+        "source_fact:v1:510b4f0cdc1cab567a5cffa82c1bc7b9723204bfbfb4fed85660badb45df60ec",
+        "source_fact:v1:efb74847e696b812fac32df72d660a42cf2d0cf5a17e3d37fe5545774cd048ae",
+        "source_fact:v1:fa64d357600a9ed8e1d98571595f7d0e42eb3c8f3a1c8681aa99ed72e50638f6"
+      ],
+      "source_published_kst": "2026-10-06T06:37+09:00",
+      "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
     },
     "link:3e9ff6b040017f60776024b8": {
       "first_seen_kst": "2026-10-02T17:34:05+09:00",
@@ -22811,6 +23035,26 @@
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "지오그룹, ICE 시설 9억5000만 달러 매각에 자사주 매입 확대까지 주목"
     },
+    "link:c26168e03478869a16db0b6d": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01371046645610296",
+      "source": "이데일리",
+      "source_body_digest": "de8425ecbc0f55c075a07f92998e13fc38b5350c573cb550e82c69d575d9fb7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9eef9e2f09c4e4cfc387c6451fa6bbf7b4ac1b30e47b19b5ff5222f4c7d69a40",
+      "source_fact_keys": [
+        "source_fact:v1:2239b2c782c6573601633670dbd0b23f583bb1151485b1131b813efecaf5e5a8",
+        "source_fact:v1:52a876808a25122a9ea2d00dfa9ffb9c3cac3625b9f49aaba28302fd41271331",
+        "source_fact:v1:a9395aaa2bbd3d77089c6231fc3099ca2c3d2dd2a0393633d4fde8cf9bd576fb",
+        "source_fact:v1:e9d49e3edec4cd9796148f436c7e3c3180591c299de636bb34eaf089f00caf52"
+      ],
+      "source_published_kst": "2026-10-06T03:38+09:00",
+      "title": "[美특징주]TSMC, 머스크 ‘테라팹’ 협력 논의 확인…주가 3%↑"
+    },
     "link:c2b3bfde0ae38a2e29b477ca": {
       "first_seen_kst": "2026-10-04T08:29:55+09:00",
       "lanes": {
@@ -24735,6 +24979,25 @@
       "source": "전자신문",
       "title": "최윤범 고려아연 회장, “향후 5년간 제품 포트폴리오 30종으로 확대”"
     },
+    "link:de3d39907f29bf15e031daf7": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100514275318974",
+      "source": "머니투데이",
+      "source_body_digest": "f5f67b93b7705b713b6c1270e06e24b08282e5d49a0e4d50ab7d34cd6d9cc26e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e7e4ad7a340f8dda403ea4db7749fc2993c2fd287140348df1b6b66450dd8cf",
+      "source_fact_keys": [
+        "source_fact:v1:050830ac89d5b597bbb1446b766e1232d3725380c915a05eb6213d141912f08b",
+        "source_fact:v1:1c5f943522c452089b778268e28222ad35d4e3bcea7e4d9e750a6c9fd7288605",
+        "source_fact:v1:d9715a3501419f7aebeb3f191741e7f00117979dea41ebccc08f162fbfefe097"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외환보유액, 넉 달 만에 감소…대미투자 자산위탁 영향"
+    },
     "link:de725e6f8ba5c64fa35e0749": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -25902,6 +26165,31 @@
       "link": "https://www.yna.co.kr/view/AKR20260928094500002",
       "source": "연합뉴스",
       "title": "AIA생명, 차기 대표이사에 리오 응 내정 | 연합뉴스"
+    },
+    "link:eeaebdb44765ce8d533eab37": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://biz.chosun.com/international/international_general/2026/10/06/UK3OIVXAARFDJNT56L5QQLNCKU/",
+      "source": "조선비즈",
+      "source_body_digest": "885af90ddf1de6a9142e284265e6b687273fcc5e9da7cd14c11d7c9d3c07fd19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74391062c160e5b2383cda71d966331c94dab07f26edb8515743ec4f85034b45",
+      "source_fact_keys": [
+        "source_fact:v1:27d6f6aca2eb1fd3e228a65b8994a33d6c6ce4a13295940e70331375c7cf92ab",
+        "source_fact:v1:2c7bd9ba7540814e7cda6e398644ae3bf8a2c2dd611fbbaf2f946a82c26c531d",
+        "source_fact:v1:2da1ce189455b09869a0310f5ada4eadd48f97a1834dce72514aa2b31b0eefa9",
+        "source_fact:v1:31c100d18ef6c4c096dc27f769c162c45532f6fce4c68753e4bbe64509f3b081",
+        "source_fact:v1:3be2b53f414795b81801bd6397edd6afa434e395403d76a7bc7ef917b50f9b62",
+        "source_fact:v1:498c2a97d8dcca9ce5b09b230fa1ef3c996b07f8918cead50cf3fe1828112ada",
+        "source_fact:v1:5ca426bd25914d5f892d592f15dc273c5eaac02d6fb579198fed5afccd4f8a8e",
+        "source_fact:v1:8d4674d506d1ca6b3389ddc775fba5d1b666ad7758da7052690eac4b2ca12df8",
+        "source_fact:v1:edc24ff29e32637963f3c3d2c9c4a83bc6c0e5a8c7f9ed93bff103c3c9762c3f"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
     },
     "link:eeb43a43866d84f2ca247de9": {
       "first_seen_kst": "2026-10-02T08:11:59+09:00",
@@ -35169,6 +35457,26 @@
       "source_published_kst": "2026-10-05T20:21+09:00",
       "title": "[美특징주]코어위브, 연이은 제품 가격 인상에 월가 호평…개장전 '강보합'"
     },
+    "original:734e2a7a793173e1af0f987f": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.fnnews.com/news/202610060615255244",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6e6d7e0134558d16bce459ec005a78eaf78ae439f34d08ba141be6d6f86bf55c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c8dd5ca23659c5a2c602c71c3d952f2f1c3d903cc4aefea8cf342c23d0254c7",
+      "source_fact_keys": [
+        "source_fact:v1:3ace8b45b34ff2e8f510a1be00bbee65544588997fa5722542e0f4a0c2257c9f",
+        "source_fact:v1:85ecae72f8199ebdcc25ef52200912c7239701440bbc2a0dad59ab04aa823e11",
+        "source_fact:v1:c638638c5cffe0fe3d19f38946e0b6f5a5fd88e610de043a5d516140e025a9f1",
+        "source_fact:v1:c73210e689635c3bf825f3395fd7ed3a84a16d97347c91896c25bba754e588da"
+      ],
+      "source_published_kst": "2026-10-06T06:15+09:00",
+      "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
+    },
     "original:738d47bda2bc87efe4d59a0a": {
       "first_seen_kst": "2026-10-02T02:33:30+09:00",
       "lanes": {
@@ -36786,6 +37094,26 @@
       "source": "연합뉴스",
       "title": "'마이크론·반도체 수출' 훈풍…코스피 1.95%·코스닥 4.48%↑ | 연합뉴스"
     },
+    "original:8b9b9ec52587d2e0aa6bb645": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01371046645610296",
+      "source": "이데일리",
+      "source_body_digest": "de8425ecbc0f55c075a07f92998e13fc38b5350c573cb550e82c69d575d9fb7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9eef9e2f09c4e4cfc387c6451fa6bbf7b4ac1b30e47b19b5ff5222f4c7d69a40",
+      "source_fact_keys": [
+        "source_fact:v1:2239b2c782c6573601633670dbd0b23f583bb1151485b1131b813efecaf5e5a8",
+        "source_fact:v1:52a876808a25122a9ea2d00dfa9ffb9c3cac3625b9f49aaba28302fd41271331",
+        "source_fact:v1:a9395aaa2bbd3d77089c6231fc3099ca2c3d2dd2a0393633d4fde8cf9bd576fb",
+        "source_fact:v1:e9d49e3edec4cd9796148f436c7e3c3180591c299de636bb34eaf089f00caf52"
+      ],
+      "source_published_kst": "2026-10-06T03:38+09:00",
+      "title": "[美특징주]TSMC, 머스크 ‘테라팹’ 협력 논의 확인…주가 3%↑"
+    },
     "original:8ba88cf87de50eddd5bca99b": {
       "first_seen_kst": "2026-10-05T17:45:06+09:00",
       "lanes": {
@@ -37978,6 +38306,25 @@
       "source": "이투데이",
       "title": "[특징주] 에스제이그룹, 자사주 취득 소식에 장 초반 상한가 직행"
     },
+    "original:9ccc865d3595fdd500bb5234": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100514275318974",
+      "source": "머니투데이",
+      "source_body_digest": "f5f67b93b7705b713b6c1270e06e24b08282e5d49a0e4d50ab7d34cd6d9cc26e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e7e4ad7a340f8dda403ea4db7749fc2993c2fd287140348df1b6b66450dd8cf",
+      "source_fact_keys": [
+        "source_fact:v1:050830ac89d5b597bbb1446b766e1232d3725380c915a05eb6213d141912f08b",
+        "source_fact:v1:1c5f943522c452089b778268e28222ad35d4e3bcea7e4d9e750a6c9fd7288605",
+        "source_fact:v1:d9715a3501419f7aebeb3f191741e7f00117979dea41ebccc08f162fbfefe097"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외환보유액, 넉 달 만에 감소…대미투자 자산위탁 영향"
+    },
     "original:9cdfa1d659e42a8893fff729": {
       "first_seen_kst": "2026-10-04T08:04:25+09:00",
       "lanes": {
@@ -38128,6 +38475,28 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003811630",
       "source": "뉴시스",
       "title": "트럼프 \"이스라엘행 여객기 사건, 이란 연관 조사…맞으면 강력보복\""
+    },
+    "original:9ea31601591e797ab4494fb9": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261006063959fPF",
+      "source": "연합뉴스TV",
+      "source_body_digest": "12040bc5cf718a8a05eb0fb3151d848730ebccc5eae82472b504eabd0e8d3b8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:211e04a9c899dcefc1c328f9a07063bf6129885cadd50976199ccfd196910fb2",
+      "source_fact_keys": [
+        "source_fact:v1:2540990def5430f41f1f17be9f5bab072adea29aea0a2a51dae5a139f8994ffc",
+        "source_fact:v1:294f1fc9bbebba6879e486c2e34899bf20e153581fa1b83023d83d37c4609d7b",
+        "source_fact:v1:385b4e576fe1184cff914ffd271c0d33c2f2f61016857e0b2d1df4671df7e933",
+        "source_fact:v1:a47b509bb93c99271279ba3035301d35a807fce92685b6ecf000e313ae797c94",
+        "source_fact:v1:e1fdb14abcb25eb1e976db50984d8adff4867b6b7d4611b3bfd6c89ded668650",
+        "source_fact:v1:fefa06f4eab36e5d796e10e380169b916eaaec42d086542e05a9e4d9b9b7ae32"
+      ],
+      "source_published_kst": "2026-10-06T06:40+09:00",
+      "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
     },
     "original:9eab8aa8f3ffaeea8adb6981": {
       "first_seen_kst": "2026-10-02T06:53:18+09:00",
@@ -39784,6 +40153,28 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=02538726645584712",
       "source": "이데일리",
       "title": "엔비디아 황 CEO 수상식에 삼성·SK 총수 동석…차세대 HBM 협력 논의 주목"
+    },
+    "original:b8bd8fa52449ea5e5170bcd0": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100606293947553",
+      "source": "머니투데이",
+      "source_body_digest": "4adaa2b21018aa7fe73776cea16d95ebb07168ba68910e9a90653da4f67f846e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92b1db87fd8d6c8927cf4d3ad8d4d359330cc90c6a45e3ead27c27f808ac083a",
+      "source_fact_keys": [
+        "source_fact:v1:11ed9e98a9ed537253d1dad3af7f56ef911b866fde7016a2ad1784c1fc7ff3d6",
+        "source_fact:v1:3bf24a5dae7fea4626280a89f1b99467a2320049b5480265463b915bcf6759f8",
+        "source_fact:v1:50935f62f4b186fe2857e554ab294a3e3f020ae5e735705c8530744d9cf433da",
+        "source_fact:v1:510b4f0cdc1cab567a5cffa82c1bc7b9723204bfbfb4fed85660badb45df60ec",
+        "source_fact:v1:efb74847e696b812fac32df72d660a42cf2d0cf5a17e3d37fe5545774cd048ae",
+        "source_fact:v1:fa64d357600a9ed8e1d98571595f7d0e42eb3c8f3a1c8681aa99ed72e50638f6"
+      ],
+      "source_published_kst": "2026-10-06T06:37+09:00",
+      "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
     },
     "original:b8c4e8aa9f19f73138c17aa4": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
@@ -43943,6 +44334,31 @@
       "source_published_kst": "2026-10-05T08:01+09:00",
       "title": "美 의약품 관세 발효…삼성에피스, 테바와 시밀러 동맹 확대 [바이오 주간 결산]"
     },
+    "original:f3cd3f7d2311debfe5c9f456": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://biz.chosun.com/international/international_general/2026/10/06/UK3OIVXAARFDJNT56L5QQLNCKU/",
+      "source": "조선비즈",
+      "source_body_digest": "885af90ddf1de6a9142e284265e6b687273fcc5e9da7cd14c11d7c9d3c07fd19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74391062c160e5b2383cda71d966331c94dab07f26edb8515743ec4f85034b45",
+      "source_fact_keys": [
+        "source_fact:v1:27d6f6aca2eb1fd3e228a65b8994a33d6c6ce4a13295940e70331375c7cf92ab",
+        "source_fact:v1:2c7bd9ba7540814e7cda6e398644ae3bf8a2c2dd611fbbaf2f946a82c26c531d",
+        "source_fact:v1:2da1ce189455b09869a0310f5ada4eadd48f97a1834dce72514aa2b31b0eefa9",
+        "source_fact:v1:31c100d18ef6c4c096dc27f769c162c45532f6fce4c68753e4bbe64509f3b081",
+        "source_fact:v1:3be2b53f414795b81801bd6397edd6afa434e395403d76a7bc7ef917b50f9b62",
+        "source_fact:v1:498c2a97d8dcca9ce5b09b230fa1ef3c996b07f8918cead50cf3fe1828112ada",
+        "source_fact:v1:5ca426bd25914d5f892d592f15dc273c5eaac02d6fb579198fed5afccd4f8a8e",
+        "source_fact:v1:8d4674d506d1ca6b3389ddc775fba5d1b666ad7758da7052690eac4b2ca12df8",
+        "source_fact:v1:edc24ff29e32637963f3c3d2c9c4a83bc6c0e5a8c7f9ed93bff103c3c9762c3f"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
+    },
     "original:f3f0438600c29e0393264f9e": {
       "first_seen_kst": "2026-09-30T10:08:34+09:00",
       "lanes": {
@@ -44859,6 +45275,26 @@
       "source_published_kst": "2026-10-05T23:08+09:00",
       "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
     },
+    "source_fact:014c1e37787c578f4863be36": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01371046645610296",
+      "source": "이데일리",
+      "source_body_digest": "de8425ecbc0f55c075a07f92998e13fc38b5350c573cb550e82c69d575d9fb7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9eef9e2f09c4e4cfc387c6451fa6bbf7b4ac1b30e47b19b5ff5222f4c7d69a40",
+      "source_fact_keys": [
+        "source_fact:v1:2239b2c782c6573601633670dbd0b23f583bb1151485b1131b813efecaf5e5a8",
+        "source_fact:v1:52a876808a25122a9ea2d00dfa9ffb9c3cac3625b9f49aaba28302fd41271331",
+        "source_fact:v1:a9395aaa2bbd3d77089c6231fc3099ca2c3d2dd2a0393633d4fde8cf9bd576fb",
+        "source_fact:v1:e9d49e3edec4cd9796148f436c7e3c3180591c299de636bb34eaf089f00caf52"
+      ],
+      "source_published_kst": "2026-10-06T03:38+09:00",
+      "title": "[美특징주]TSMC, 머스크 ‘테라팹’ 협력 논의 확인…주가 3%↑"
+    },
     "source_fact:01c89754907a416159a6fb96": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -45286,6 +45722,28 @@
       ],
       "source_published_kst": "2026-10-05T21:36+09:00",
       "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
+    },
+    "source_fact:073595d1f10eab0f3f99db88": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100606293947553",
+      "source": "머니투데이",
+      "source_body_digest": "4adaa2b21018aa7fe73776cea16d95ebb07168ba68910e9a90653da4f67f846e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92b1db87fd8d6c8927cf4d3ad8d4d359330cc90c6a45e3ead27c27f808ac083a",
+      "source_fact_keys": [
+        "source_fact:v1:11ed9e98a9ed537253d1dad3af7f56ef911b866fde7016a2ad1784c1fc7ff3d6",
+        "source_fact:v1:3bf24a5dae7fea4626280a89f1b99467a2320049b5480265463b915bcf6759f8",
+        "source_fact:v1:50935f62f4b186fe2857e554ab294a3e3f020ae5e735705c8530744d9cf433da",
+        "source_fact:v1:510b4f0cdc1cab567a5cffa82c1bc7b9723204bfbfb4fed85660badb45df60ec",
+        "source_fact:v1:efb74847e696b812fac32df72d660a42cf2d0cf5a17e3d37fe5545774cd048ae",
+        "source_fact:v1:fa64d357600a9ed8e1d98571595f7d0e42eb3c8f3a1c8681aa99ed72e50638f6"
+      ],
+      "source_published_kst": "2026-10-06T06:37+09:00",
+      "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
     },
     "source_fact:079456fa24f3f3e66b10a3d6": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -45847,6 +46305,26 @@
       "source_published_kst": "2026-10-05T19:05+09:00",
       "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
     },
+    "source_fact:0f38fe5de47bbe6ae3719469": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.fnnews.com/news/202610060615255244",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6e6d7e0134558d16bce459ec005a78eaf78ae439f34d08ba141be6d6f86bf55c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c8dd5ca23659c5a2c602c71c3d952f2f1c3d903cc4aefea8cf342c23d0254c7",
+      "source_fact_keys": [
+        "source_fact:v1:3ace8b45b34ff2e8f510a1be00bbee65544588997fa5722542e0f4a0c2257c9f",
+        "source_fact:v1:85ecae72f8199ebdcc25ef52200912c7239701440bbc2a0dad59ab04aa823e11",
+        "source_fact:v1:c638638c5cffe0fe3d19f38946e0b6f5a5fd88e610de043a5d516140e025a9f1",
+        "source_fact:v1:c73210e689635c3bf825f3395fd7ed3a84a16d97347c91896c25bba754e588da"
+      ],
+      "source_published_kst": "2026-10-06T06:15+09:00",
+      "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
+    },
     "source_fact:0f6ff7cbfe04feb2bd1df40e": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -45867,6 +46345,28 @@
       ],
       "source_published_kst": "2026-10-05T17:54+09:00",
       "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
+    },
+    "source_fact:0fcb0023fdebee5e16415a91": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261006063959fPF",
+      "source": "연합뉴스TV",
+      "source_body_digest": "12040bc5cf718a8a05eb0fb3151d848730ebccc5eae82472b504eabd0e8d3b8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:211e04a9c899dcefc1c328f9a07063bf6129885cadd50976199ccfd196910fb2",
+      "source_fact_keys": [
+        "source_fact:v1:2540990def5430f41f1f17be9f5bab072adea29aea0a2a51dae5a139f8994ffc",
+        "source_fact:v1:294f1fc9bbebba6879e486c2e34899bf20e153581fa1b83023d83d37c4609d7b",
+        "source_fact:v1:385b4e576fe1184cff914ffd271c0d33c2f2f61016857e0b2d1df4671df7e933",
+        "source_fact:v1:a47b509bb93c99271279ba3035301d35a807fce92685b6ecf000e313ae797c94",
+        "source_fact:v1:e1fdb14abcb25eb1e976db50984d8adff4867b6b7d4611b3bfd6c89ded668650",
+        "source_fact:v1:fefa06f4eab36e5d796e10e380169b916eaaec42d086542e05a9e4d9b9b7ae32"
+      ],
+      "source_published_kst": "2026-10-06T06:40+09:00",
+      "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
     },
     "source_fact:0fcfaa67ac88c88d0fe8ea3d": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
@@ -47338,6 +47838,31 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
     },
+    "source_fact:25474b05fa9239f0b9399b3b": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://biz.chosun.com/international/international_general/2026/10/06/UK3OIVXAARFDJNT56L5QQLNCKU/",
+      "source": "조선비즈",
+      "source_body_digest": "885af90ddf1de6a9142e284265e6b687273fcc5e9da7cd14c11d7c9d3c07fd19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74391062c160e5b2383cda71d966331c94dab07f26edb8515743ec4f85034b45",
+      "source_fact_keys": [
+        "source_fact:v1:27d6f6aca2eb1fd3e228a65b8994a33d6c6ce4a13295940e70331375c7cf92ab",
+        "source_fact:v1:2c7bd9ba7540814e7cda6e398644ae3bf8a2c2dd611fbbaf2f946a82c26c531d",
+        "source_fact:v1:2da1ce189455b09869a0310f5ada4eadd48f97a1834dce72514aa2b31b0eefa9",
+        "source_fact:v1:31c100d18ef6c4c096dc27f769c162c45532f6fce4c68753e4bbe64509f3b081",
+        "source_fact:v1:3be2b53f414795b81801bd6397edd6afa434e395403d76a7bc7ef917b50f9b62",
+        "source_fact:v1:498c2a97d8dcca9ce5b09b230fa1ef3c996b07f8918cead50cf3fe1828112ada",
+        "source_fact:v1:5ca426bd25914d5f892d592f15dc273c5eaac02d6fb579198fed5afccd4f8a8e",
+        "source_fact:v1:8d4674d506d1ca6b3389ddc775fba5d1b666ad7758da7052690eac4b2ca12df8",
+        "source_fact:v1:edc24ff29e32637963f3c3d2c9c4a83bc6c0e5a8c7f9ed93bff103c3c9762c3f"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
+    },
     "source_fact:25aaab3d2c93aaddeda021b9": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
       "lanes": {
@@ -48137,6 +48662,31 @@
       "source_published_kst": "2026-10-05T22:55+09:00",
       "title": "美국채금리 5.3%에 다우 ‘주춤’… 뉴욕증시 혼조 출발"
     },
+    "source_fact:3220d9853cacab5d84203ec0": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://biz.chosun.com/international/international_general/2026/10/06/UK3OIVXAARFDJNT56L5QQLNCKU/",
+      "source": "조선비즈",
+      "source_body_digest": "885af90ddf1de6a9142e284265e6b687273fcc5e9da7cd14c11d7c9d3c07fd19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74391062c160e5b2383cda71d966331c94dab07f26edb8515743ec4f85034b45",
+      "source_fact_keys": [
+        "source_fact:v1:27d6f6aca2eb1fd3e228a65b8994a33d6c6ce4a13295940e70331375c7cf92ab",
+        "source_fact:v1:2c7bd9ba7540814e7cda6e398644ae3bf8a2c2dd611fbbaf2f946a82c26c531d",
+        "source_fact:v1:2da1ce189455b09869a0310f5ada4eadd48f97a1834dce72514aa2b31b0eefa9",
+        "source_fact:v1:31c100d18ef6c4c096dc27f769c162c45532f6fce4c68753e4bbe64509f3b081",
+        "source_fact:v1:3be2b53f414795b81801bd6397edd6afa434e395403d76a7bc7ef917b50f9b62",
+        "source_fact:v1:498c2a97d8dcca9ce5b09b230fa1ef3c996b07f8918cead50cf3fe1828112ada",
+        "source_fact:v1:5ca426bd25914d5f892d592f15dc273c5eaac02d6fb579198fed5afccd4f8a8e",
+        "source_fact:v1:8d4674d506d1ca6b3389ddc775fba5d1b666ad7758da7052690eac4b2ca12df8",
+        "source_fact:v1:edc24ff29e32637963f3c3d2c9c4a83bc6c0e5a8c7f9ed93bff103c3c9762c3f"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
+    },
     "source_fact:3229fb7d7e568c6a62073508": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
       "lanes": {
@@ -48699,6 +49249,31 @@
       ],
       "source_published_kst": "2026-10-05T19:04+09:00",
       "title": "니우 테크놀러지스, 3분기 판매 54만대..전년비 15% 증가·해외 3배 확대"
+    },
+    "source_fact:38720f7078707b78f7f0cc75": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://biz.chosun.com/international/international_general/2026/10/06/UK3OIVXAARFDJNT56L5QQLNCKU/",
+      "source": "조선비즈",
+      "source_body_digest": "885af90ddf1de6a9142e284265e6b687273fcc5e9da7cd14c11d7c9d3c07fd19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74391062c160e5b2383cda71d966331c94dab07f26edb8515743ec4f85034b45",
+      "source_fact_keys": [
+        "source_fact:v1:27d6f6aca2eb1fd3e228a65b8994a33d6c6ce4a13295940e70331375c7cf92ab",
+        "source_fact:v1:2c7bd9ba7540814e7cda6e398644ae3bf8a2c2dd611fbbaf2f946a82c26c531d",
+        "source_fact:v1:2da1ce189455b09869a0310f5ada4eadd48f97a1834dce72514aa2b31b0eefa9",
+        "source_fact:v1:31c100d18ef6c4c096dc27f769c162c45532f6fce4c68753e4bbe64509f3b081",
+        "source_fact:v1:3be2b53f414795b81801bd6397edd6afa434e395403d76a7bc7ef917b50f9b62",
+        "source_fact:v1:498c2a97d8dcca9ce5b09b230fa1ef3c996b07f8918cead50cf3fe1828112ada",
+        "source_fact:v1:5ca426bd25914d5f892d592f15dc273c5eaac02d6fb579198fed5afccd4f8a8e",
+        "source_fact:v1:8d4674d506d1ca6b3389ddc775fba5d1b666ad7758da7052690eac4b2ca12df8",
+        "source_fact:v1:edc24ff29e32637963f3c3d2c9c4a83bc6c0e5a8c7f9ed93bff103c3c9762c3f"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
     },
     "source_fact:3a2e5f5e1c06b6586910e5af": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -49277,6 +49852,26 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:42630be558b1bc0e83ac14f2": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01371046645610296",
+      "source": "이데일리",
+      "source_body_digest": "de8425ecbc0f55c075a07f92998e13fc38b5350c573cb550e82c69d575d9fb7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9eef9e2f09c4e4cfc387c6451fa6bbf7b4ac1b30e47b19b5ff5222f4c7d69a40",
+      "source_fact_keys": [
+        "source_fact:v1:2239b2c782c6573601633670dbd0b23f583bb1151485b1131b813efecaf5e5a8",
+        "source_fact:v1:52a876808a25122a9ea2d00dfa9ffb9c3cac3625b9f49aaba28302fd41271331",
+        "source_fact:v1:a9395aaa2bbd3d77089c6231fc3099ca2c3d2dd2a0393633d4fde8cf9bd576fb",
+        "source_fact:v1:e9d49e3edec4cd9796148f436c7e3c3180591c299de636bb34eaf089f00caf52"
+      ],
+      "source_published_kst": "2026-10-06T03:38+09:00",
+      "title": "[美특징주]TSMC, 머스크 ‘테라팹’ 협력 논의 확인…주가 3%↑"
     },
     "source_fact:426d7fda0926f4b2472da0e6": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -49951,6 +50546,31 @@
       ],
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
+    },
+    "source_fact:4aa7902c1006bc1fe5892baa": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://biz.chosun.com/international/international_general/2026/10/06/UK3OIVXAARFDJNT56L5QQLNCKU/",
+      "source": "조선비즈",
+      "source_body_digest": "885af90ddf1de6a9142e284265e6b687273fcc5e9da7cd14c11d7c9d3c07fd19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74391062c160e5b2383cda71d966331c94dab07f26edb8515743ec4f85034b45",
+      "source_fact_keys": [
+        "source_fact:v1:27d6f6aca2eb1fd3e228a65b8994a33d6c6ce4a13295940e70331375c7cf92ab",
+        "source_fact:v1:2c7bd9ba7540814e7cda6e398644ae3bf8a2c2dd611fbbaf2f946a82c26c531d",
+        "source_fact:v1:2da1ce189455b09869a0310f5ada4eadd48f97a1834dce72514aa2b31b0eefa9",
+        "source_fact:v1:31c100d18ef6c4c096dc27f769c162c45532f6fce4c68753e4bbe64509f3b081",
+        "source_fact:v1:3be2b53f414795b81801bd6397edd6afa434e395403d76a7bc7ef917b50f9b62",
+        "source_fact:v1:498c2a97d8dcca9ce5b09b230fa1ef3c996b07f8918cead50cf3fe1828112ada",
+        "source_fact:v1:5ca426bd25914d5f892d592f15dc273c5eaac02d6fb579198fed5afccd4f8a8e",
+        "source_fact:v1:8d4674d506d1ca6b3389ddc775fba5d1b666ad7758da7052690eac4b2ca12df8",
+        "source_fact:v1:edc24ff29e32637963f3c3d2c9c4a83bc6c0e5a8c7f9ed93bff103c3c9762c3f"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
     },
     "source_fact:4ae6ea37c7952c735664b148": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -51451,6 +52071,28 @@
       "source_published_kst": "2026-10-05T07:31+09:00",
       "title": "태극기 스니커즈에 호랑이 티셔츠까지…패션에 스민 '한국' | 연합뉴스"
     },
+    "source_fact:5e7a2af87e44d9975bf0684b": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261006063959fPF",
+      "source": "연합뉴스TV",
+      "source_body_digest": "12040bc5cf718a8a05eb0fb3151d848730ebccc5eae82472b504eabd0e8d3b8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:211e04a9c899dcefc1c328f9a07063bf6129885cadd50976199ccfd196910fb2",
+      "source_fact_keys": [
+        "source_fact:v1:2540990def5430f41f1f17be9f5bab072adea29aea0a2a51dae5a139f8994ffc",
+        "source_fact:v1:294f1fc9bbebba6879e486c2e34899bf20e153581fa1b83023d83d37c4609d7b",
+        "source_fact:v1:385b4e576fe1184cff914ffd271c0d33c2f2f61016857e0b2d1df4671df7e933",
+        "source_fact:v1:a47b509bb93c99271279ba3035301d35a807fce92685b6ecf000e313ae797c94",
+        "source_fact:v1:e1fdb14abcb25eb1e976db50984d8adff4867b6b7d4611b3bfd6c89ded668650",
+        "source_fact:v1:fefa06f4eab36e5d796e10e380169b916eaaec42d086542e05a9e4d9b9b7ae32"
+      ],
+      "source_published_kst": "2026-10-06T06:40+09:00",
+      "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
+    },
     "source_fact:5ed0dea385a36ac2ffe5be1a": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -51478,6 +52120,31 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
+    "source_fact:5ed99b96d8bf67ab74b07028": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://biz.chosun.com/international/international_general/2026/10/06/UK3OIVXAARFDJNT56L5QQLNCKU/",
+      "source": "조선비즈",
+      "source_body_digest": "885af90ddf1de6a9142e284265e6b687273fcc5e9da7cd14c11d7c9d3c07fd19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74391062c160e5b2383cda71d966331c94dab07f26edb8515743ec4f85034b45",
+      "source_fact_keys": [
+        "source_fact:v1:27d6f6aca2eb1fd3e228a65b8994a33d6c6ce4a13295940e70331375c7cf92ab",
+        "source_fact:v1:2c7bd9ba7540814e7cda6e398644ae3bf8a2c2dd611fbbaf2f946a82c26c531d",
+        "source_fact:v1:2da1ce189455b09869a0310f5ada4eadd48f97a1834dce72514aa2b31b0eefa9",
+        "source_fact:v1:31c100d18ef6c4c096dc27f769c162c45532f6fce4c68753e4bbe64509f3b081",
+        "source_fact:v1:3be2b53f414795b81801bd6397edd6afa434e395403d76a7bc7ef917b50f9b62",
+        "source_fact:v1:498c2a97d8dcca9ce5b09b230fa1ef3c996b07f8918cead50cf3fe1828112ada",
+        "source_fact:v1:5ca426bd25914d5f892d592f15dc273c5eaac02d6fb579198fed5afccd4f8a8e",
+        "source_fact:v1:8d4674d506d1ca6b3389ddc775fba5d1b666ad7758da7052690eac4b2ca12df8",
+        "source_fact:v1:edc24ff29e32637963f3c3d2c9c4a83bc6c0e5a8c7f9ed93bff103c3c9762c3f"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
     },
     "source_fact:5edb71bdbcf46c7ff40c9f2a": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
@@ -51547,6 +52214,26 @@
       ],
       "source_published_kst": "2026-10-05T21:54+09:00",
       "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
+    },
+    "source_fact:5faee85bfeb9249f5283a58b": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.fnnews.com/news/202610060615255244",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6e6d7e0134558d16bce459ec005a78eaf78ae439f34d08ba141be6d6f86bf55c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c8dd5ca23659c5a2c602c71c3d952f2f1c3d903cc4aefea8cf342c23d0254c7",
+      "source_fact_keys": [
+        "source_fact:v1:3ace8b45b34ff2e8f510a1be00bbee65544588997fa5722542e0f4a0c2257c9f",
+        "source_fact:v1:85ecae72f8199ebdcc25ef52200912c7239701440bbc2a0dad59ab04aa823e11",
+        "source_fact:v1:c638638c5cffe0fe3d19f38946e0b6f5a5fd88e610de043a5d516140e025a9f1",
+        "source_fact:v1:c73210e689635c3bf825f3395fd7ed3a84a16d97347c91896c25bba754e588da"
+      ],
+      "source_published_kst": "2026-10-06T06:15+09:00",
+      "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
     },
     "source_fact:603fe47283fa155a1d57da60": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -51843,6 +52530,28 @@
       ],
       "source_published_kst": "2026-10-05T17:22+09:00",
       "title": "\"美中의존 줄이자\"…정부, CPTPP 가입 속도"
+    },
+    "source_fact:671555e8e7d6070b710418bc": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261006063959fPF",
+      "source": "연합뉴스TV",
+      "source_body_digest": "12040bc5cf718a8a05eb0fb3151d848730ebccc5eae82472b504eabd0e8d3b8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:211e04a9c899dcefc1c328f9a07063bf6129885cadd50976199ccfd196910fb2",
+      "source_fact_keys": [
+        "source_fact:v1:2540990def5430f41f1f17be9f5bab072adea29aea0a2a51dae5a139f8994ffc",
+        "source_fact:v1:294f1fc9bbebba6879e486c2e34899bf20e153581fa1b83023d83d37c4609d7b",
+        "source_fact:v1:385b4e576fe1184cff914ffd271c0d33c2f2f61016857e0b2d1df4671df7e933",
+        "source_fact:v1:a47b509bb93c99271279ba3035301d35a807fce92685b6ecf000e313ae797c94",
+        "source_fact:v1:e1fdb14abcb25eb1e976db50984d8adff4867b6b7d4611b3bfd6c89ded668650",
+        "source_fact:v1:fefa06f4eab36e5d796e10e380169b916eaaec42d086542e05a9e4d9b9b7ae32"
+      ],
+      "source_published_kst": "2026-10-06T06:40+09:00",
+      "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
     },
     "source_fact:679d0c44eb85de31738de029": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -52589,6 +53298,28 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
+    "source_fact:721f459749f363255ccccf97": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100606293947553",
+      "source": "머니투데이",
+      "source_body_digest": "4adaa2b21018aa7fe73776cea16d95ebb07168ba68910e9a90653da4f67f846e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92b1db87fd8d6c8927cf4d3ad8d4d359330cc90c6a45e3ead27c27f808ac083a",
+      "source_fact_keys": [
+        "source_fact:v1:11ed9e98a9ed537253d1dad3af7f56ef911b866fde7016a2ad1784c1fc7ff3d6",
+        "source_fact:v1:3bf24a5dae7fea4626280a89f1b99467a2320049b5480265463b915bcf6759f8",
+        "source_fact:v1:50935f62f4b186fe2857e554ab294a3e3f020ae5e735705c8530744d9cf433da",
+        "source_fact:v1:510b4f0cdc1cab567a5cffa82c1bc7b9723204bfbfb4fed85660badb45df60ec",
+        "source_fact:v1:efb74847e696b812fac32df72d660a42cf2d0cf5a17e3d37fe5545774cd048ae",
+        "source_fact:v1:fa64d357600a9ed8e1d98571595f7d0e42eb3c8f3a1c8681aa99ed72e50638f6"
+      ],
+      "source_published_kst": "2026-10-06T06:37+09:00",
+      "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
     },
     "source_fact:72481fcac49762157f32090f": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -53831,6 +54562,26 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "주담대 금리도 '들썩'…한은 추가 인상에 이자 더 오르나[금리 쇼크③]"
     },
+    "source_fact:817e7b8281469189bce72c9a": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01371046645610296",
+      "source": "이데일리",
+      "source_body_digest": "de8425ecbc0f55c075a07f92998e13fc38b5350c573cb550e82c69d575d9fb7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9eef9e2f09c4e4cfc387c6451fa6bbf7b4ac1b30e47b19b5ff5222f4c7d69a40",
+      "source_fact_keys": [
+        "source_fact:v1:2239b2c782c6573601633670dbd0b23f583bb1151485b1131b813efecaf5e5a8",
+        "source_fact:v1:52a876808a25122a9ea2d00dfa9ffb9c3cac3625b9f49aaba28302fd41271331",
+        "source_fact:v1:a9395aaa2bbd3d77089c6231fc3099ca2c3d2dd2a0393633d4fde8cf9bd576fb",
+        "source_fact:v1:e9d49e3edec4cd9796148f436c7e3c3180591c299de636bb34eaf089f00caf52"
+      ],
+      "source_published_kst": "2026-10-06T03:38+09:00",
+      "title": "[美특징주]TSMC, 머스크 ‘테라팹’ 협력 논의 확인…주가 3%↑"
+    },
     "source_fact:81f2568c854462b48c31cc43": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -53963,6 +54714,28 @@
       ],
       "source_published_kst": "2026-10-06T04:20+09:00",
       "title": "[美특징주]에스티로더, 성장 회복 기대에 월가 투자의견 ‘매수’ 상향…주가 2%↑"
+    },
+    "source_fact:82d8f26422039973e5ede439": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261006063959fPF",
+      "source": "연합뉴스TV",
+      "source_body_digest": "12040bc5cf718a8a05eb0fb3151d848730ebccc5eae82472b504eabd0e8d3b8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:211e04a9c899dcefc1c328f9a07063bf6129885cadd50976199ccfd196910fb2",
+      "source_fact_keys": [
+        "source_fact:v1:2540990def5430f41f1f17be9f5bab072adea29aea0a2a51dae5a139f8994ffc",
+        "source_fact:v1:294f1fc9bbebba6879e486c2e34899bf20e153581fa1b83023d83d37c4609d7b",
+        "source_fact:v1:385b4e576fe1184cff914ffd271c0d33c2f2f61016857e0b2d1df4671df7e933",
+        "source_fact:v1:a47b509bb93c99271279ba3035301d35a807fce92685b6ecf000e313ae797c94",
+        "source_fact:v1:e1fdb14abcb25eb1e976db50984d8adff4867b6b7d4611b3bfd6c89ded668650",
+        "source_fact:v1:fefa06f4eab36e5d796e10e380169b916eaaec42d086542e05a9e4d9b9b7ae32"
+      ],
+      "source_published_kst": "2026-10-06T06:40+09:00",
+      "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
     },
     "source_fact:82e31d4206829863af452581": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -54580,6 +55353,31 @@
       "source_published_kst": "2026-10-06T06:25+09:00",
       "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
     },
+    "source_fact:8afe2cb6f66830420ce141e2": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://biz.chosun.com/international/international_general/2026/10/06/UK3OIVXAARFDJNT56L5QQLNCKU/",
+      "source": "조선비즈",
+      "source_body_digest": "885af90ddf1de6a9142e284265e6b687273fcc5e9da7cd14c11d7c9d3c07fd19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74391062c160e5b2383cda71d966331c94dab07f26edb8515743ec4f85034b45",
+      "source_fact_keys": [
+        "source_fact:v1:27d6f6aca2eb1fd3e228a65b8994a33d6c6ce4a13295940e70331375c7cf92ab",
+        "source_fact:v1:2c7bd9ba7540814e7cda6e398644ae3bf8a2c2dd611fbbaf2f946a82c26c531d",
+        "source_fact:v1:2da1ce189455b09869a0310f5ada4eadd48f97a1834dce72514aa2b31b0eefa9",
+        "source_fact:v1:31c100d18ef6c4c096dc27f769c162c45532f6fce4c68753e4bbe64509f3b081",
+        "source_fact:v1:3be2b53f414795b81801bd6397edd6afa434e395403d76a7bc7ef917b50f9b62",
+        "source_fact:v1:498c2a97d8dcca9ce5b09b230fa1ef3c996b07f8918cead50cf3fe1828112ada",
+        "source_fact:v1:5ca426bd25914d5f892d592f15dc273c5eaac02d6fb579198fed5afccd4f8a8e",
+        "source_fact:v1:8d4674d506d1ca6b3389ddc775fba5d1b666ad7758da7052690eac4b2ca12df8",
+        "source_fact:v1:edc24ff29e32637963f3c3d2c9c4a83bc6c0e5a8c7f9ed93bff103c3c9762c3f"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
+    },
     "source_fact:8b96c74abdc781b5acff1e73": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -54760,6 +55558,26 @@
       ],
       "source_published_kst": "2026-10-05T21:09+09:00",
       "title": "플렉스, 액시엄 20억달러 우선주 유치..가치 375억달러"
+    },
+    "source_fact:8ee39840edc9c5a04b0f188b": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01371046645610296",
+      "source": "이데일리",
+      "source_body_digest": "de8425ecbc0f55c075a07f92998e13fc38b5350c573cb550e82c69d575d9fb7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9eef9e2f09c4e4cfc387c6451fa6bbf7b4ac1b30e47b19b5ff5222f4c7d69a40",
+      "source_fact_keys": [
+        "source_fact:v1:2239b2c782c6573601633670dbd0b23f583bb1151485b1131b813efecaf5e5a8",
+        "source_fact:v1:52a876808a25122a9ea2d00dfa9ffb9c3cac3625b9f49aaba28302fd41271331",
+        "source_fact:v1:a9395aaa2bbd3d77089c6231fc3099ca2c3d2dd2a0393633d4fde8cf9bd576fb",
+        "source_fact:v1:e9d49e3edec4cd9796148f436c7e3c3180591c299de636bb34eaf089f00caf52"
+      ],
+      "source_published_kst": "2026-10-06T03:38+09:00",
+      "title": "[美특징주]TSMC, 머스크 ‘테라팹’ 협력 논의 확인…주가 3%↑"
     },
     "source_fact:8f432253e3965967923854f3": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -55988,6 +56806,28 @@
       "source_published_kst": "2026-10-06T00:51+09:00",
       "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
     },
+    "source_fact:a154b415c98114c1ea11611b": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100606293947553",
+      "source": "머니투데이",
+      "source_body_digest": "4adaa2b21018aa7fe73776cea16d95ebb07168ba68910e9a90653da4f67f846e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92b1db87fd8d6c8927cf4d3ad8d4d359330cc90c6a45e3ead27c27f808ac083a",
+      "source_fact_keys": [
+        "source_fact:v1:11ed9e98a9ed537253d1dad3af7f56ef911b866fde7016a2ad1784c1fc7ff3d6",
+        "source_fact:v1:3bf24a5dae7fea4626280a89f1b99467a2320049b5480265463b915bcf6759f8",
+        "source_fact:v1:50935f62f4b186fe2857e554ab294a3e3f020ae5e735705c8530744d9cf433da",
+        "source_fact:v1:510b4f0cdc1cab567a5cffa82c1bc7b9723204bfbfb4fed85660badb45df60ec",
+        "source_fact:v1:efb74847e696b812fac32df72d660a42cf2d0cf5a17e3d37fe5545774cd048ae",
+        "source_fact:v1:fa64d357600a9ed8e1d98571595f7d0e42eb3c8f3a1c8681aa99ed72e50638f6"
+      ],
+      "source_published_kst": "2026-10-06T06:37+09:00",
+      "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
+    },
     "source_fact:a1b076fb690b3f4cea4c0016": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -56146,6 +56986,25 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
+    },
+    "source_fact:a3f4c04b37c8cd5d155f0dd4": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100514275318974",
+      "source": "머니투데이",
+      "source_body_digest": "f5f67b93b7705b713b6c1270e06e24b08282e5d49a0e4d50ab7d34cd6d9cc26e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e7e4ad7a340f8dda403ea4db7749fc2993c2fd287140348df1b6b66450dd8cf",
+      "source_fact_keys": [
+        "source_fact:v1:050830ac89d5b597bbb1446b766e1232d3725380c915a05eb6213d141912f08b",
+        "source_fact:v1:1c5f943522c452089b778268e28222ad35d4e3bcea7e4d9e750a6c9fd7288605",
+        "source_fact:v1:d9715a3501419f7aebeb3f191741e7f00117979dea41ebccc08f162fbfefe097"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외환보유액, 넉 달 만에 감소…대미투자 자산위탁 영향"
     },
     "source_fact:a411f85a49b17a8bf96a64ee": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -56483,6 +57342,25 @@
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "국제유가, 1%대 하락…중동 원유 수출 회복·G7 비축유 방출"
     },
+    "source_fact:a802ab09750838efd99f4761": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100514275318974",
+      "source": "머니투데이",
+      "source_body_digest": "f5f67b93b7705b713b6c1270e06e24b08282e5d49a0e4d50ab7d34cd6d9cc26e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e7e4ad7a340f8dda403ea4db7749fc2993c2fd287140348df1b6b66450dd8cf",
+      "source_fact_keys": [
+        "source_fact:v1:050830ac89d5b597bbb1446b766e1232d3725380c915a05eb6213d141912f08b",
+        "source_fact:v1:1c5f943522c452089b778268e28222ad35d4e3bcea7e4d9e750a6c9fd7288605",
+        "source_fact:v1:d9715a3501419f7aebeb3f191741e7f00117979dea41ebccc08f162fbfefe097"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외환보유액, 넉 달 만에 감소…대미투자 자산위탁 영향"
+    },
     "source_fact:a8443956bf0777a4a89408fb": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -56760,6 +57638,31 @@
       ],
       "source_published_kst": "2026-10-05T20:25+09:00",
       "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
+    },
+    "source_fact:abfc60082b55ec0bd55b7626": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://biz.chosun.com/international/international_general/2026/10/06/UK3OIVXAARFDJNT56L5QQLNCKU/",
+      "source": "조선비즈",
+      "source_body_digest": "885af90ddf1de6a9142e284265e6b687273fcc5e9da7cd14c11d7c9d3c07fd19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74391062c160e5b2383cda71d966331c94dab07f26edb8515743ec4f85034b45",
+      "source_fact_keys": [
+        "source_fact:v1:27d6f6aca2eb1fd3e228a65b8994a33d6c6ce4a13295940e70331375c7cf92ab",
+        "source_fact:v1:2c7bd9ba7540814e7cda6e398644ae3bf8a2c2dd611fbbaf2f946a82c26c531d",
+        "source_fact:v1:2da1ce189455b09869a0310f5ada4eadd48f97a1834dce72514aa2b31b0eefa9",
+        "source_fact:v1:31c100d18ef6c4c096dc27f769c162c45532f6fce4c68753e4bbe64509f3b081",
+        "source_fact:v1:3be2b53f414795b81801bd6397edd6afa434e395403d76a7bc7ef917b50f9b62",
+        "source_fact:v1:498c2a97d8dcca9ce5b09b230fa1ef3c996b07f8918cead50cf3fe1828112ada",
+        "source_fact:v1:5ca426bd25914d5f892d592f15dc273c5eaac02d6fb579198fed5afccd4f8a8e",
+        "source_fact:v1:8d4674d506d1ca6b3389ddc775fba5d1b666ad7758da7052690eac4b2ca12df8",
+        "source_fact:v1:edc24ff29e32637963f3c3d2c9c4a83bc6c0e5a8c7f9ed93bff103c3c9762c3f"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
     },
     "source_fact:ac05de7606b7a885c6106cfb": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
@@ -57670,6 +58573,28 @@
       ],
       "source_published_kst": "2026-10-05T17:46+09:00",
       "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
+    },
+    "source_fact:bb95f84350cf4e03f739b69e": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100606293947553",
+      "source": "머니투데이",
+      "source_body_digest": "4adaa2b21018aa7fe73776cea16d95ebb07168ba68910e9a90653da4f67f846e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92b1db87fd8d6c8927cf4d3ad8d4d359330cc90c6a45e3ead27c27f808ac083a",
+      "source_fact_keys": [
+        "source_fact:v1:11ed9e98a9ed537253d1dad3af7f56ef911b866fde7016a2ad1784c1fc7ff3d6",
+        "source_fact:v1:3bf24a5dae7fea4626280a89f1b99467a2320049b5480265463b915bcf6759f8",
+        "source_fact:v1:50935f62f4b186fe2857e554ab294a3e3f020ae5e735705c8530744d9cf433da",
+        "source_fact:v1:510b4f0cdc1cab567a5cffa82c1bc7b9723204bfbfb4fed85660badb45df60ec",
+        "source_fact:v1:efb74847e696b812fac32df72d660a42cf2d0cf5a17e3d37fe5545774cd048ae",
+        "source_fact:v1:fa64d357600a9ed8e1d98571595f7d0e42eb3c8f3a1c8681aa99ed72e50638f6"
+      ],
+      "source_published_kst": "2026-10-06T06:37+09:00",
+      "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
     },
     "source_fact:bbe9c5e6dfaa8f2f3b93bab9": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
@@ -59176,6 +60101,28 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
+    "source_fact:d17673f981ceb82e355d7371": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100606293947553",
+      "source": "머니투데이",
+      "source_body_digest": "4adaa2b21018aa7fe73776cea16d95ebb07168ba68910e9a90653da4f67f846e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92b1db87fd8d6c8927cf4d3ad8d4d359330cc90c6a45e3ead27c27f808ac083a",
+      "source_fact_keys": [
+        "source_fact:v1:11ed9e98a9ed537253d1dad3af7f56ef911b866fde7016a2ad1784c1fc7ff3d6",
+        "source_fact:v1:3bf24a5dae7fea4626280a89f1b99467a2320049b5480265463b915bcf6759f8",
+        "source_fact:v1:50935f62f4b186fe2857e554ab294a3e3f020ae5e735705c8530744d9cf433da",
+        "source_fact:v1:510b4f0cdc1cab567a5cffa82c1bc7b9723204bfbfb4fed85660badb45df60ec",
+        "source_fact:v1:efb74847e696b812fac32df72d660a42cf2d0cf5a17e3d37fe5545774cd048ae",
+        "source_fact:v1:fa64d357600a9ed8e1d98571595f7d0e42eb3c8f3a1c8681aa99ed72e50638f6"
+      ],
+      "source_published_kst": "2026-10-06T06:37+09:00",
+      "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
+    },
     "source_fact:d1afd21e5b99771be575ae1a": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -59344,6 +60291,28 @@
       ],
       "source_published_kst": "2026-10-06T04:53+09:00",
       "title": "트럼프 \"휘발윳값 상승, 호르무즈 때문 아냐\"…우크라전쟁·야당 탓"
+    },
+    "source_fact:d3f29895f8cdd5eb3f06f4cf": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100606293947553",
+      "source": "머니투데이",
+      "source_body_digest": "4adaa2b21018aa7fe73776cea16d95ebb07168ba68910e9a90653da4f67f846e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92b1db87fd8d6c8927cf4d3ad8d4d359330cc90c6a45e3ead27c27f808ac083a",
+      "source_fact_keys": [
+        "source_fact:v1:11ed9e98a9ed537253d1dad3af7f56ef911b866fde7016a2ad1784c1fc7ff3d6",
+        "source_fact:v1:3bf24a5dae7fea4626280a89f1b99467a2320049b5480265463b915bcf6759f8",
+        "source_fact:v1:50935f62f4b186fe2857e554ab294a3e3f020ae5e735705c8530744d9cf433da",
+        "source_fact:v1:510b4f0cdc1cab567a5cffa82c1bc7b9723204bfbfb4fed85660badb45df60ec",
+        "source_fact:v1:efb74847e696b812fac32df72d660a42cf2d0cf5a17e3d37fe5545774cd048ae",
+        "source_fact:v1:fa64d357600a9ed8e1d98571595f7d0e42eb3c8f3a1c8681aa99ed72e50638f6"
+      ],
+      "source_published_kst": "2026-10-06T06:37+09:00",
+      "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
     },
     "source_fact:d41f02e2b3741c184780743c": {
       "first_seen_kst": "2026-10-06T01:26:06+09:00",
@@ -59702,6 +60671,31 @@
       ],
       "source_published_kst": "2026-10-05T17:54+09:00",
       "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
+    },
+    "source_fact:d7eb2dd0a7979e00bab73e4e": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://biz.chosun.com/international/international_general/2026/10/06/UK3OIVXAARFDJNT56L5QQLNCKU/",
+      "source": "조선비즈",
+      "source_body_digest": "885af90ddf1de6a9142e284265e6b687273fcc5e9da7cd14c11d7c9d3c07fd19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74391062c160e5b2383cda71d966331c94dab07f26edb8515743ec4f85034b45",
+      "source_fact_keys": [
+        "source_fact:v1:27d6f6aca2eb1fd3e228a65b8994a33d6c6ce4a13295940e70331375c7cf92ab",
+        "source_fact:v1:2c7bd9ba7540814e7cda6e398644ae3bf8a2c2dd611fbbaf2f946a82c26c531d",
+        "source_fact:v1:2da1ce189455b09869a0310f5ada4eadd48f97a1834dce72514aa2b31b0eefa9",
+        "source_fact:v1:31c100d18ef6c4c096dc27f769c162c45532f6fce4c68753e4bbe64509f3b081",
+        "source_fact:v1:3be2b53f414795b81801bd6397edd6afa434e395403d76a7bc7ef917b50f9b62",
+        "source_fact:v1:498c2a97d8dcca9ce5b09b230fa1ef3c996b07f8918cead50cf3fe1828112ada",
+        "source_fact:v1:5ca426bd25914d5f892d592f15dc273c5eaac02d6fb579198fed5afccd4f8a8e",
+        "source_fact:v1:8d4674d506d1ca6b3389ddc775fba5d1b666ad7758da7052690eac4b2ca12df8",
+        "source_fact:v1:edc24ff29e32637963f3c3d2c9c4a83bc6c0e5a8c7f9ed93bff103c3c9762c3f"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
     },
     "source_fact:d8647a36cd26de362e3902c8": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
@@ -60166,6 +61160,31 @@
       ],
       "source_published_kst": "2026-10-05T21:54+09:00",
       "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
+    },
+    "source_fact:e00fe8768ef59bb751b8aae2": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://biz.chosun.com/international/international_general/2026/10/06/UK3OIVXAARFDJNT56L5QQLNCKU/",
+      "source": "조선비즈",
+      "source_body_digest": "885af90ddf1de6a9142e284265e6b687273fcc5e9da7cd14c11d7c9d3c07fd19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74391062c160e5b2383cda71d966331c94dab07f26edb8515743ec4f85034b45",
+      "source_fact_keys": [
+        "source_fact:v1:27d6f6aca2eb1fd3e228a65b8994a33d6c6ce4a13295940e70331375c7cf92ab",
+        "source_fact:v1:2c7bd9ba7540814e7cda6e398644ae3bf8a2c2dd611fbbaf2f946a82c26c531d",
+        "source_fact:v1:2da1ce189455b09869a0310f5ada4eadd48f97a1834dce72514aa2b31b0eefa9",
+        "source_fact:v1:31c100d18ef6c4c096dc27f769c162c45532f6fce4c68753e4bbe64509f3b081",
+        "source_fact:v1:3be2b53f414795b81801bd6397edd6afa434e395403d76a7bc7ef917b50f9b62",
+        "source_fact:v1:498c2a97d8dcca9ce5b09b230fa1ef3c996b07f8918cead50cf3fe1828112ada",
+        "source_fact:v1:5ca426bd25914d5f892d592f15dc273c5eaac02d6fb579198fed5afccd4f8a8e",
+        "source_fact:v1:8d4674d506d1ca6b3389ddc775fba5d1b666ad7758da7052690eac4b2ca12df8",
+        "source_fact:v1:edc24ff29e32637963f3c3d2c9c4a83bc6c0e5a8c7f9ed93bff103c3c9762c3f"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
     },
     "source_fact:e043ba9d25707d984107be82": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -60879,6 +61898,47 @@
       "source_published_kst": "2026-10-05T21:54+09:00",
       "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
     },
+    "source_fact:e9afdf130266556431e0335c": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100514275318974",
+      "source": "머니투데이",
+      "source_body_digest": "f5f67b93b7705b713b6c1270e06e24b08282e5d49a0e4d50ab7d34cd6d9cc26e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e7e4ad7a340f8dda403ea4db7749fc2993c2fd287140348df1b6b66450dd8cf",
+      "source_fact_keys": [
+        "source_fact:v1:050830ac89d5b597bbb1446b766e1232d3725380c915a05eb6213d141912f08b",
+        "source_fact:v1:1c5f943522c452089b778268e28222ad35d4e3bcea7e4d9e750a6c9fd7288605",
+        "source_fact:v1:d9715a3501419f7aebeb3f191741e7f00117979dea41ebccc08f162fbfefe097"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외환보유액, 넉 달 만에 감소…대미투자 자산위탁 영향"
+    },
+    "source_fact:e9de1f4246e5d0ab85f0bffb": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261006063959fPF",
+      "source": "연합뉴스TV",
+      "source_body_digest": "12040bc5cf718a8a05eb0fb3151d848730ebccc5eae82472b504eabd0e8d3b8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:211e04a9c899dcefc1c328f9a07063bf6129885cadd50976199ccfd196910fb2",
+      "source_fact_keys": [
+        "source_fact:v1:2540990def5430f41f1f17be9f5bab072adea29aea0a2a51dae5a139f8994ffc",
+        "source_fact:v1:294f1fc9bbebba6879e486c2e34899bf20e153581fa1b83023d83d37c4609d7b",
+        "source_fact:v1:385b4e576fe1184cff914ffd271c0d33c2f2f61016857e0b2d1df4671df7e933",
+        "source_fact:v1:a47b509bb93c99271279ba3035301d35a807fce92685b6ecf000e313ae797c94",
+        "source_fact:v1:e1fdb14abcb25eb1e976db50984d8adff4867b6b7d4611b3bfd6c89ded668650",
+        "source_fact:v1:fefa06f4eab36e5d796e10e380169b916eaaec42d086542e05a9e4d9b9b7ae32"
+      ],
+      "source_published_kst": "2026-10-06T06:40+09:00",
+      "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
+    },
     "source_fact:eb1b9f66bbe905e3cb178657": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -60989,6 +62049,26 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
+    "source_fact:ec610a565a8370771b55d482": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.fnnews.com/news/202610060615255244",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6e6d7e0134558d16bce459ec005a78eaf78ae439f34d08ba141be6d6f86bf55c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c8dd5ca23659c5a2c602c71c3d952f2f1c3d903cc4aefea8cf342c23d0254c7",
+      "source_fact_keys": [
+        "source_fact:v1:3ace8b45b34ff2e8f510a1be00bbee65544588997fa5722542e0f4a0c2257c9f",
+        "source_fact:v1:85ecae72f8199ebdcc25ef52200912c7239701440bbc2a0dad59ab04aa823e11",
+        "source_fact:v1:c638638c5cffe0fe3d19f38946e0b6f5a5fd88e610de043a5d516140e025a9f1",
+        "source_fact:v1:c73210e689635c3bf825f3395fd7ed3a84a16d97347c91896c25bba754e588da"
+      ],
+      "source_published_kst": "2026-10-06T06:15+09:00",
+      "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
     },
     "source_fact:ec788c5c0d8fb24106364e81": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -61212,6 +62292,26 @@
       ],
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
+    "source_fact:ef402e514c69b758444f8164": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.fnnews.com/news/202610060615255244",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6e6d7e0134558d16bce459ec005a78eaf78ae439f34d08ba141be6d6f86bf55c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c8dd5ca23659c5a2c602c71c3d952f2f1c3d903cc4aefea8cf342c23d0254c7",
+      "source_fact_keys": [
+        "source_fact:v1:3ace8b45b34ff2e8f510a1be00bbee65544588997fa5722542e0f4a0c2257c9f",
+        "source_fact:v1:85ecae72f8199ebdcc25ef52200912c7239701440bbc2a0dad59ab04aa823e11",
+        "source_fact:v1:c638638c5cffe0fe3d19f38946e0b6f5a5fd88e610de043a5d516140e025a9f1",
+        "source_fact:v1:c73210e689635c3bf825f3395fd7ed3a84a16d97347c91896c25bba754e588da"
+      ],
+      "source_published_kst": "2026-10-06T06:15+09:00",
+      "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
     },
     "source_fact:ef5888bca156698d2067c5f8": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -62242,6 +63342,28 @@
       ],
       "source_published_kst": "2026-10-05T22:31+09:00",
       "title": "메틀렌: 일본 주요 화학 기업과 신규 갈륨 공급 계약 체결"
+    },
+    "source_fact:ff47084e20568f4405ebb2ee": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261006063959fPF",
+      "source": "연합뉴스TV",
+      "source_body_digest": "12040bc5cf718a8a05eb0fb3151d848730ebccc5eae82472b504eabd0e8d3b8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:211e04a9c899dcefc1c328f9a07063bf6129885cadd50976199ccfd196910fb2",
+      "source_fact_keys": [
+        "source_fact:v1:2540990def5430f41f1f17be9f5bab072adea29aea0a2a51dae5a139f8994ffc",
+        "source_fact:v1:294f1fc9bbebba6879e486c2e34899bf20e153581fa1b83023d83d37c4609d7b",
+        "source_fact:v1:385b4e576fe1184cff914ffd271c0d33c2f2f61016857e0b2d1df4671df7e933",
+        "source_fact:v1:a47b509bb93c99271279ba3035301d35a807fce92685b6ecf000e313ae797c94",
+        "source_fact:v1:e1fdb14abcb25eb1e976db50984d8adff4867b6b7d4611b3bfd6c89ded668650",
+        "source_fact:v1:fefa06f4eab36e5d796e10e380169b916eaaec42d086542e05a9e4d9b9b7ae32"
+      ],
+      "source_published_kst": "2026-10-06T06:40+09:00",
+      "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
     },
     "source_fact:ff5d5a838c045b13bd796dd7": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -70404,6 +71526,26 @@
       "source_published_kst": "2026-10-05T20:21+09:00",
       "title": "[美특징주]코어위브, 연이은 제품 가격 인상에 월가 호평…개장전 '강보합'"
     },
+    "title:734e2a7a793173e1af0f987f": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.fnnews.com/news/202610060615255244",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "6e6d7e0134558d16bce459ec005a78eaf78ae439f34d08ba141be6d6f86bf55c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c8dd5ca23659c5a2c602c71c3d952f2f1c3d903cc4aefea8cf342c23d0254c7",
+      "source_fact_keys": [
+        "source_fact:v1:3ace8b45b34ff2e8f510a1be00bbee65544588997fa5722542e0f4a0c2257c9f",
+        "source_fact:v1:85ecae72f8199ebdcc25ef52200912c7239701440bbc2a0dad59ab04aa823e11",
+        "source_fact:v1:c638638c5cffe0fe3d19f38946e0b6f5a5fd88e610de043a5d516140e025a9f1",
+        "source_fact:v1:c73210e689635c3bf825f3395fd7ed3a84a16d97347c91896c25bba754e588da"
+      ],
+      "source_published_kst": "2026-10-06T06:15+09:00",
+      "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
+    },
     "title:738d47bda2bc87efe4d59a0a": {
       "first_seen_kst": "2026-10-02T02:33:30+09:00",
       "lanes": {
@@ -72061,6 +73203,26 @@
       "source": "연합뉴스",
       "title": "'마이크론·반도체 수출' 훈풍…코스피 1.95%·코스닥 4.48%↑ | 연합뉴스"
     },
+    "title:8b9b9ec52587d2e0aa6bb645": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01371046645610296",
+      "source": "이데일리",
+      "source_body_digest": "de8425ecbc0f55c075a07f92998e13fc38b5350c573cb550e82c69d575d9fb7e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9eef9e2f09c4e4cfc387c6451fa6bbf7b4ac1b30e47b19b5ff5222f4c7d69a40",
+      "source_fact_keys": [
+        "source_fact:v1:2239b2c782c6573601633670dbd0b23f583bb1151485b1131b813efecaf5e5a8",
+        "source_fact:v1:52a876808a25122a9ea2d00dfa9ffb9c3cac3625b9f49aaba28302fd41271331",
+        "source_fact:v1:a9395aaa2bbd3d77089c6231fc3099ca2c3d2dd2a0393633d4fde8cf9bd576fb",
+        "source_fact:v1:e9d49e3edec4cd9796148f436c7e3c3180591c299de636bb34eaf089f00caf52"
+      ],
+      "source_published_kst": "2026-10-06T03:38+09:00",
+      "title": "[美특징주]TSMC, 머스크 ‘테라팹’ 협력 논의 확인…주가 3%↑"
+    },
     "title:8ba88cf87de50eddd5bca99b": {
       "first_seen_kst": "2026-10-05T17:45:06+09:00",
       "lanes": {
@@ -73264,6 +74426,25 @@
       "source": "이투데이",
       "title": "[특징주] 에스제이그룹, 자사주 취득 소식에 장 초반 상한가 직행"
     },
+    "title:9ccc865d3595fdd500bb5234": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100514275318974",
+      "source": "머니투데이",
+      "source_body_digest": "f5f67b93b7705b713b6c1270e06e24b08282e5d49a0e4d50ab7d34cd6d9cc26e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e7e4ad7a340f8dda403ea4db7749fc2993c2fd287140348df1b6b66450dd8cf",
+      "source_fact_keys": [
+        "source_fact:v1:050830ac89d5b597bbb1446b766e1232d3725380c915a05eb6213d141912f08b",
+        "source_fact:v1:1c5f943522c452089b778268e28222ad35d4e3bcea7e4d9e750a6c9fd7288605",
+        "source_fact:v1:d9715a3501419f7aebeb3f191741e7f00117979dea41ebccc08f162fbfefe097"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외환보유액, 넉 달 만에 감소…대미투자 자산위탁 영향"
+    },
     "title:9cdfa1d659e42a8893fff729": {
       "first_seen_kst": "2026-10-04T08:04:25+09:00",
       "lanes": {
@@ -73414,6 +74595,28 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003811630",
       "source": "뉴시스",
       "title": "트럼프 \"이스라엘행 여객기 사건, 이란 연관 조사…맞으면 강력보복\""
+    },
+    "title:9ea31601591e797ab4494fb9": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.yonhapnewstv.co.kr/news/AKR20261006063959fPF",
+      "source": "연합뉴스TV",
+      "source_body_digest": "12040bc5cf718a8a05eb0fb3151d848730ebccc5eae82472b504eabd0e8d3b8a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:211e04a9c899dcefc1c328f9a07063bf6129885cadd50976199ccfd196910fb2",
+      "source_fact_keys": [
+        "source_fact:v1:2540990def5430f41f1f17be9f5bab072adea29aea0a2a51dae5a139f8994ffc",
+        "source_fact:v1:294f1fc9bbebba6879e486c2e34899bf20e153581fa1b83023d83d37c4609d7b",
+        "source_fact:v1:385b4e576fe1184cff914ffd271c0d33c2f2f61016857e0b2d1df4671df7e933",
+        "source_fact:v1:a47b509bb93c99271279ba3035301d35a807fce92685b6ecf000e313ae797c94",
+        "source_fact:v1:e1fdb14abcb25eb1e976db50984d8adff4867b6b7d4611b3bfd6c89ded668650",
+        "source_fact:v1:fefa06f4eab36e5d796e10e380169b916eaaec42d086542e05a9e4d9b9b7ae32"
+      ],
+      "source_published_kst": "2026-10-06T06:40+09:00",
+      "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
     },
     "title:9eab8aa8f3ffaeea8adb6981": {
       "first_seen_kst": "2026-10-02T06:53:18+09:00",
@@ -75127,6 +76330,28 @@
       "link": "https://www.newsis.com/view/NISX20260921_0003797675",
       "source": "뉴시스",
       "title": "9월 1~20일 수출 714억 달러…반도체 341억 달러 '역대 최대'(종합)"
+    },
+    "title:b8bd8fa52449ea5e5170bcd0": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100606293947553",
+      "source": "머니투데이",
+      "source_body_digest": "4adaa2b21018aa7fe73776cea16d95ebb07168ba68910e9a90653da4f67f846e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:92b1db87fd8d6c8927cf4d3ad8d4d359330cc90c6a45e3ead27c27f808ac083a",
+      "source_fact_keys": [
+        "source_fact:v1:11ed9e98a9ed537253d1dad3af7f56ef911b866fde7016a2ad1784c1fc7ff3d6",
+        "source_fact:v1:3bf24a5dae7fea4626280a89f1b99467a2320049b5480265463b915bcf6759f8",
+        "source_fact:v1:50935f62f4b186fe2857e554ab294a3e3f020ae5e735705c8530744d9cf433da",
+        "source_fact:v1:510b4f0cdc1cab567a5cffa82c1bc7b9723204bfbfb4fed85660badb45df60ec",
+        "source_fact:v1:efb74847e696b812fac32df72d660a42cf2d0cf5a17e3d37fe5545774cd048ae",
+        "source_fact:v1:fa64d357600a9ed8e1d98571595f7d0e42eb3c8f3a1c8681aa99ed72e50638f6"
+      ],
+      "source_published_kst": "2026-10-06T06:37+09:00",
+      "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
     },
     "title:b8c4e8aa9f19f73138c17aa4": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
@@ -79317,6 +80542,31 @@
       "source_published_kst": "2026-10-05T08:01+09:00",
       "title": "美 의약품 관세 발효…삼성에피스, 테바와 시밀러 동맹 확대 [바이오 주간 결산]"
     },
+    "title:f3cd3f7d2311debfe5c9f456": {
+      "first_seen_kst": "2026-10-06T07:00:19+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:00:19+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:00:19+09:00",
+      "link": "https://biz.chosun.com/international/international_general/2026/10/06/UK3OIVXAARFDJNT56L5QQLNCKU/",
+      "source": "조선비즈",
+      "source_body_digest": "885af90ddf1de6a9142e284265e6b687273fcc5e9da7cd14c11d7c9d3c07fd19",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74391062c160e5b2383cda71d966331c94dab07f26edb8515743ec4f85034b45",
+      "source_fact_keys": [
+        "source_fact:v1:27d6f6aca2eb1fd3e228a65b8994a33d6c6ce4a13295940e70331375c7cf92ab",
+        "source_fact:v1:2c7bd9ba7540814e7cda6e398644ae3bf8a2c2dd611fbbaf2f946a82c26c531d",
+        "source_fact:v1:2da1ce189455b09869a0310f5ada4eadd48f97a1834dce72514aa2b31b0eefa9",
+        "source_fact:v1:31c100d18ef6c4c096dc27f769c162c45532f6fce4c68753e4bbe64509f3b081",
+        "source_fact:v1:3be2b53f414795b81801bd6397edd6afa434e395403d76a7bc7ef917b50f9b62",
+        "source_fact:v1:498c2a97d8dcca9ce5b09b230fa1ef3c996b07f8918cead50cf3fe1828112ada",
+        "source_fact:v1:5ca426bd25914d5f892d592f15dc273c5eaac02d6fb579198fed5afccd4f8a8e",
+        "source_fact:v1:8d4674d506d1ca6b3389ddc775fba5d1b666ad7758da7052690eac4b2ca12df8",
+        "source_fact:v1:edc24ff29e32637963f3c3d2c9c4a83bc6c0e5a8c7f9ed93bff103c3c9762c3f"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
+    },
     "title:f3f0438600c29e0393264f9e": {
       "first_seen_kst": "2026-09-30T10:08:34+09:00",
       "lanes": {
@@ -80134,5 +81384,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T06:44:01+09:00"
+  "updated_at_kst": "2026-10-06T07:00:19+09:00"
 }
