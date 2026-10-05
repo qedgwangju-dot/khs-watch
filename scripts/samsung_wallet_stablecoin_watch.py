@@ -33,6 +33,8 @@ WORKDAY_JOB_URL = (
     "Senior-Manager--Business-Development--Payments---Samsung-Wallet_R118656"
 )
 DIGITAL_ASSET_URL = "https://www.digitalasset.works/news/articleView.html?idxno=43115"
+KBW_FN_URL = "https://www.fnnews.com/news/202610011830546063"
+KBW_NEWSWHO_URL = "https://www.newswhoplus.com/news/articleView.html?idxno=70890"
 
 RSS_URLS = [
     "https://news.google.com/rss/search?q="
@@ -134,6 +136,8 @@ def official_context() -> dict:
         "job_stablecoin_confirmed": False,
         "job_fetch_ok": False,
         "article_confirmed": False,
+        "kbw_executive_primary_confirmed": False,
+        "kbw_executive_crosscheck_confirmed": False,
         "explicit_reversal_confirmed": False,
         "errors": [],
     }
@@ -199,6 +203,38 @@ def official_context() -> dict:
     except Exception as exc:
         result["errors"].append(f"digitalasset: {exc}")
 
+    # KBW2026 milestone: distinguish a direct public statement by the Samsung Wallet
+    # payments/ID/blockchain lead from a mere article headline or hiring inference.
+    # Require two separately published reports of the same on-stage statement.
+    try:
+        text = clean_text(fetch(KBW_FN_URL)).lower()
+        result["kbw_executive_primary_confirmed"] = bool(
+            "백원석" in text
+            and "삼성월렛" in text
+            and "스테이블코인" in text
+            and "기본 기능" in text
+            and "지원" in text
+            and ("노력" in text or "속도" in text)
+        )
+    except Exception as exc:
+        result["errors"].append(f"kbw_fn: {exc}")
+
+    try:
+        text = clean_text(fetch(KBW_NEWSWHO_URL)).lower()
+        result["kbw_executive_crosscheck_confirmed"] = bool(
+            "백원석" in text
+            and "삼성월렛" in text
+            and "스테이블코인" in text
+            and (
+                "직접 지원" in text
+                or "네이티브 지원" in text
+                or "지원하는 방향" in text
+            )
+            and ("송금" in text or "결제" in text or "자금" in text)
+        )
+    except Exception as exc:
+        result["errors"].append(f"kbw_newswho: {exc}")
+
     return result
 
 
@@ -232,6 +268,14 @@ def topic_state(official: dict, candidates: list[dict], previous: dict | None = 
     )
     stablecoin_bd_now = bool(official.get("job_stablecoin_confirmed")) or report_bd_scope
     stablecoin_bd_scope = stablecoin_bd_now or bool(previous.get("stablecoin_bd_scope"))
+
+    executive_now = bool(
+        official.get("kbw_executive_primary_confirmed")
+        and official.get("kbw_executive_crosscheck_confirmed")
+    )
+    executive_default_feature_confirmation = (
+        executive_now or bool(previous.get("executive_default_feature_confirmation"))
+    )
 
     # Partner/pilot signals require explicit semantic binding to stablecoin.
     # Mere co-occurrence (e.g. Galaxy Card launched with Visa in the same article)
@@ -326,6 +370,7 @@ def topic_state(official: dict, candidates: list[dict], previous: dict | None = 
         "support_plan": support_plan,
         "job_exists": job_exists,
         "stablecoin_bd_scope": stablecoin_bd_scope,
+        "executive_default_feature_confirmation": executive_default_feature_confirmation,
         "stablecoin_partner": stablecoin_partner,
         "pilot_or_launch": pilot_or_launch,
         "explicit_reversal_confirmed": reversal,
@@ -358,6 +403,14 @@ def state_changed(old_state: dict, new_state: dict) -> tuple[bool, list[str]]:
 
     if not bool(old_state.get("support_plan")) and bool(new_state.get("support_plan")):
         changes.append("Samsung Wallet 스테이블코인 지원 계획 공식 확인")
+
+    if (
+        not bool(old_state.get("executive_default_feature_confirmation"))
+        and bool(new_state.get("executive_default_feature_confirmation"))
+    ):
+        changes.append(
+            "단계 2 강화: Samsung Wallet 담당 그룹장이 KBW2026에서 스테이블코인을 기본 기능으로 지원하는 방향을 공개 확인"
+        )
 
     if (
         not bool(old_state.get("explicit_reversal_confirmed"))
@@ -445,6 +498,11 @@ def main() -> int:
             f"• <b>{html.escape(str(current['stage_name']))}</b> · 단계 {current['stage']}",
             f"• Samsung Wallet stablecoin 지원 계획: <b>{support}</b>",
             f"• 결제 BD 실행 신호: {html.escape(job)}",
+            (
+                "• KBW2026 담당 임원 공개 발언: <b>기본 기능 지원 추진 교차확인</b>"
+                if current.get("executive_default_feature_confirmation")
+                else "• KBW2026 담당 임원 공개 발언: 미확정"
+            ),
         ]
         if current.get("stablecoin_partner"):
             lines.append(
@@ -459,11 +517,17 @@ def main() -> int:
             "• <b>기사 자체가 아니라 Samsung Wallet의 스테이블코인 사업 상태가 실제로 바뀔 때만 알림</b>",
             "• 기사 만료·검색 누락·파서 실패만으로 기존 확인 상태를 낮추거나 알림하지 않음",
             "• 다음 상태 변화: 발행사/결제망 실명 → 파일럿 → 출시국·출시일 → Wallet 기능 공개 → 상용화·수수료 구조",
+            "• <b>이번 건은 단계 3 승격이 아님</b> — 발행사·체인·결제 파트너 실명, 파일럿, 출시국·출시일은 아직 확인되지 않음",
             "",
             "<b>근거·교차검증</b>",
             f'• Samsung Business Insights: <a href="{SAMSUNG_INSIGHTS_URL}">원문</a>',
             f'• Samsung Careers R118656: <a href="{WORKDAY_JOB_URL}">원문</a>',
         ]
+        if current.get("executive_default_feature_confirmation"):
+            lines += [
+                f'• KBW2026 직접 발언 보도 · 파이낸셜뉴스: <a href="{KBW_FN_URL}">원문</a>',
+                f'• KBW2026 교차검증 · 뉴스후플러스: <a href="{KBW_NEWSWHO_URL}">원문</a>',
+            ]
         if official["article_confirmed"]:
             lines.append(f'• Digital Asset 확인 기사: <a href="{DIGITAL_ASSET_URL}">근거</a>')
         for item in evidence[:3]:
@@ -482,6 +546,7 @@ def main() -> int:
         f"- Samsung official support signal: {official['samsung_support_confirmed']}",
         f"- Workday job exists: {official['job_fetch_ok']}",
         f"- stablecoin BD scope: {'확인 유지' if current['stablecoin_bd_scope'] else '미확인'}",
+        f"- KBW executive default-feature confirmation: {current.get('executive_default_feature_confirmation', False)}",
         f"- partner: {current['stablecoin_partner'] or 'unconfirmed'}",
         f"- pilot/live: {current['pilot_or_launch']}",
         f"- evidence count: {len(evidence)}",
