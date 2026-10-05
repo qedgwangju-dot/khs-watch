@@ -15,6 +15,8 @@ merged.update(pending)
 for key, limit in [
     ('seen_ids', 3000),
     ('seen_story_keys', 3000),
+    ('seen_headline_keys', 3000),
+    ('seen_url_keys', 3000),
     ('seen_event_keys', 3000),
 ]:
     vals = []
@@ -23,6 +25,19 @@ for key, limit in [
             if v not in vals:
                 vals.append(v)
     merged[key] = vals[:limit]
+
+# Merge per-event verification/action levels monotonically so concurrent runs
+# cannot lower a previously confirmed state.
+for dict_key in ('event_status_levels', 'event_action_levels'):
+    merged_levels = {}
+    for src in [latest.get(dict_key, {}), pending.get(dict_key, {})]:
+        for key, value in (src or {}).items():
+            try:
+                level = int(value)
+            except (TypeError, ValueError):
+                continue
+            merged_levels[str(key)] = max(level, merged_levels.get(str(key), 0))
+    merged[dict_key] = merged_levels
 
 # Preserve the earliest monitor start and the newest explicit event-state policy.
 if latest.get('monitor_started_at_kst'):
