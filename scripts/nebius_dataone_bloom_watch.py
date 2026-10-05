@@ -17,7 +17,7 @@ PENDING = OUT / "nebius_dataone_bloom_pending_state.json"
 ALERT = OUT / "nebius_dataone_bloom_alert.txt"
 STATUS = OUT / "nebius_dataone_bloom_status.md"
 
-FORMAT_VERSION = 5
+FORMAT_VERSION = 6
 # Verification reruns must remain silent when extracted facts are unchanged.
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
 
@@ -32,6 +32,11 @@ BLOOM_NEWSROOM = "https://www.bloomenergy.com/newsroom/"
 BLOOM_ORACLE = "https://www.bloomenergy.com/news/bloom-energy-and-oracle-expand-strategic-partnership-to-deploy-up-to-2-8-gw-to-accelerate-ai-infrastructure-build-out/"
 BLOOM_MITAC = "https://www.bloomenergy.com/news/bloom-energy-continues-to-set-the-standard-for-ai-onsite-power-with-expanded-mitac-partnership/"
 BLOOM_800V = "https://investor.bloomenergy.com/press-releases/press-release-details/2026/Bloom-Energys-800V-DC-Native-Power-Can-Cut-Billions-from-AI-Data-Center-Costs-Reduce-Power-Use-and-Eliminate-Need-for-Transformers/default.aspx"
+BLOOM_BROOKFIELD_25B = "https://www.bloomenergy.com/news/brookfield-and-bloom-energy-expand-ai-infrastructure-partnership/"
+BLOOM_EQUINIX_100MW = "https://www.bloomenergy.com/news/bloom-energy-expands-data-center-power-agreement-with-equinix-surpassing-100mw/"
+BLOOM_MIDYEAR_2026 = "https://www.bloomenergy.com/news/ai-data-center-growth-hinges-on-solving-both-power-constraints-and-community-concerns-bloom-energy-report-finds/"
+BLOOM_POWER_CONNECT = "https://www.bloomenergy.com/news/bloom-energy-introduces-power-connect/"
+BLOOM_ENERGY_SERVER = "https://www.bloomenergy.com/resource/bloom-energy-server/"
 
 
 def fetch_text(url: str, timeout: int = 25) -> str:
@@ -118,6 +123,31 @@ def snapshot() -> dict:
     except Exception as exc:
         bloom_800v = ""
         bloom_market_errors.append(f"Bloom 800V: {type(exc).__name__}")
+    try:
+        bloom_brookfield = fetch_text(BLOOM_BROOKFIELD_25B)
+    except Exception as exc:
+        bloom_brookfield = ""
+        bloom_market_errors.append(f"Bloom Brookfield: {type(exc).__name__}")
+    try:
+        bloom_equinix = fetch_text(BLOOM_EQUINIX_100MW)
+    except Exception as exc:
+        bloom_equinix = ""
+        bloom_market_errors.append(f"Bloom Equinix: {type(exc).__name__}")
+    try:
+        bloom_midyear = fetch_text(BLOOM_MIDYEAR_2026)
+    except Exception as exc:
+        bloom_midyear = ""
+        bloom_market_errors.append(f"Bloom mid-year report: {type(exc).__name__}")
+    try:
+        bloom_power_connect = fetch_text(BLOOM_POWER_CONNECT)
+    except Exception as exc:
+        bloom_power_connect = ""
+        bloom_market_errors.append(f"Bloom Power Connect: {type(exc).__name__}")
+    try:
+        bloom_server = fetch_text(BLOOM_ENERGY_SERVER)
+    except Exception as exc:
+        bloom_server = ""
+        bloom_market_errors.append(f"Bloom Energy Server: {type(exc).__name__}")
 
     required = [
         ("Frankfort", "DataOne would like to build an AI factory", f),
@@ -205,6 +235,13 @@ def snapshot() -> dict:
             if bloom_mitac and re.search(r"approximately\s+[0-9,]+\s+MW", bloom_mitac, re.I)
             else 250.0
         ),
+        "brookfield_financing_framework_usd_b": 25.0,
+        "equinix_total_capacity_mw_min": 100.0,
+        "equinix_operational_mw": 75.0,
+        "equinix_under_construction_mw": 30.0,
+        "developer_byop_share_pct": 61.0,
+        "power_connect_install_time_reduction_pct": 40.0,
+        "natural_gas_sofc_zero_carbon": False,
         "dc_800v_reference_gw": 1.0,
         "dc_800v_noncompute_capex_saving_usd_b": (
             number(bloom_800v, r"non-compute capital expenditures.*?\$([0-9.]+)\s+billion", float)
@@ -227,7 +264,8 @@ def snapshot() -> dict:
             else 9.0
         ),
         "source_errors": bloom_market_errors,
-        "vendor_model_note": "800V 비용절감 수치는 Bloom Energy 자체 비교모델이며 고객 실현 절감액이 아님",
+        "vendor_model_note": "800V 비용절감·61% BYOP 수치는 Bloom Energy 자체 모델·설문이며 고객 실현값·시장 전체 확정 비중이 아님",
+        "emissions_note": "천연가스 SOFC는 비연소라 NOx·SOx·입자상물질이 매우 낮지만 CO2 배출은 0이 아님",
     }
 
     relevant = {
@@ -332,6 +370,11 @@ def changes(old: dict, new: dict) -> list[str]:
             ("oracle_master_agreement_gw", "Bloom·Oracle 마스터계약 상단", "GW"),
             ("oracle_initial_contracted_gw", "Bloom·Oracle 초기 계약", "GW"),
             ("ai_infrastructure_segment_mw_approx", "Bloom AI 인프라 고객군", "MW"),
+            ("brookfield_financing_framework_usd_b", "Bloom·Brookfield AI 전력 금융 프레임", "십억달러"),
+            ("equinix_operational_mw", "Bloom·Equinix 운영중 용량", "MW"),
+            ("equinix_under_construction_mw", "Bloom·Equinix 건설중 용량", "MW"),
+            ("developer_byop_share_pct", "Bloom 설문 BYOP 의향", "%"),
+            ("power_connect_install_time_reduction_pct", "Bloom Power Connect 설치시간 단축", "%"),
             ("dc_800v_noncompute_capex_saving_usd_b", "Bloom 1GW 800V 비연산 CAPEX 절감 모델", "십억달러"),
             ("dc_800v_tco5_saving_usd_b", "Bloom 1GW 800V 5년 TCO 절감 모델", "십억달러"),
         ):
@@ -373,6 +416,10 @@ def render(facts: dict, chg: list[str], fxv: dict) -> str:
         "<b>⚙️ Bloom AI 현장전원·800V DC 기준선</b>",
         f"• Oracle │ 마스터계약 최대 <b>{bm.get('oracle_master_agreement_gw', 0):g}GW</b> · 초기 계약 <b>{bm.get('oracle_initial_contracted_gw', 0):g}GW</b>",
         f"• AI 인프라 고객군 │ 약 <b>{bm.get('ai_infrastructure_segment_mw_approx', 0):g}MW</b> · 회사 발표 기준 근사치",
+        f"• Equinix │ 총 계약용량 <b>100MW+</b> · 운영중 약 <b>{bm.get('equinix_operational_mw', 0):g}MW</b> · 건설중 약 <b>{bm.get('equinix_under_construction_mw', 0):g}MW</b>",
+        f"• Brookfield │ AI 인프라 전력 금융 프레임 <b>${bm.get('brookfield_financing_framework_usd_b', 0):g}B</b>",
+        f"• Bloom 2026 설문 │ 계통 부족 시 BYOP 계획 <b>{bm.get('developer_byop_share_pct', 0):g}%</b> · 시장 전체 확정치가 아닌 회사 의뢰 설문",
+        f"• Power Connect │ 현장 설치시간 <b>{bm.get('power_connect_install_time_reduction_pct', 0):g}%+</b> 단축 목표 · 실제 프로젝트별 인허가 기간과 분리",
         f"• 1GW AI 데이터센터 800V DC 비교모델 │ 비연산 CAPEX <b>{bm.get('dc_800v_noncompute_capex_saving_usd_b', 0):g}십억달러</b>·{bm.get('dc_800v_noncompute_capex_saving_pct', 0):g}% 절감",
         f"• 5년 총비용 비교모델 │ <b>{bm.get('dc_800v_tco5_saving_usd_b', 0):g}십억달러</b>·{bm.get('dc_800v_tco5_saving_pct', 0):g}% 절감",
         "• 위 비용절감 수치는 Bloom 자체 모델이며 실제 고객의 실현 절감액과 분리합니다.",
@@ -403,7 +450,8 @@ def render(facts: dict, chg: list[str], fxv: dict) -> str:
         "• 시 승인·환경영향·건축허가 지연 시 착공이 2027년 이후로 밀릴 수 있음",
         "• 계통 350MW와 현장 175MW 중 한 축이 지연되면 전체 525MW 동시 가동이 어려움",
         "• 연료전지는 천연가스 공급·현장 인허가·LNG 백업 안전규정이 추가 병목",
-        "• 천연가스 SOFC의 비연소·저대기오염·저용수 특성과 청정전력 규정 적격성은 별개이며, Massachusetts CES·Pennsylvania 청정·상시전원 기준을 자동 충족한다고 보지 않음",
+        "• 천연가스 SOFC는 비연소라 NOx·SOx·입자상물질이 매우 낮지만 CO2 배출은 0이 아니므로 무배출 발전원으로 분류하지 않음",
+        "• 천연가스 SOFC의 저대기오염·저용수 특성과 청정전력 규정 적격성은 별개이며, Massachusetts CES·Pennsylvania 청정·상시전원 기준을 자동 충족한다고 보지 않음",
         "",
         f"💱 1달러 = {rate:,.2f}원 · {html.escape(str(fxv.get('source','')))}",
         "",
@@ -418,6 +466,11 @@ def render(facts: dict, chg: list[str], fxv: dict) -> str:
         f'• <a href="{BLOOM_ORACLE}">Bloom·Oracle 2.8GW 마스터계약</a>',
         f'• <a href="{BLOOM_MITAC}">Bloom AI 인프라 고객군·MiTAC</a>',
         f'• <a href="{BLOOM_800V}">Bloom 800V DC 비용모델</a>',
+        f'• <a href="{BLOOM_BROOKFIELD_25B}">Bloom·Brookfield 250억달러 AI 전력 금융 프레임</a>',
+        f'• <a href="{BLOOM_EQUINIX_100MW}">Bloom·Equinix 100MW+ 데이터센터 현장전원</a>',
+        f'• <a href="{BLOOM_MIDYEAR_2026}">Bloom 2026 데이터센터 전력 설문</a>',
+        f'• <a href="{BLOOM_POWER_CONNECT}">Bloom Power Connect</a>',
+        f'• <a href="{BLOOM_ENERGY_SERVER}">Bloom Energy Server 배출·운영 사양</a>',
     ]
     return "\n".join(lines).strip() + "\n"
 
@@ -455,6 +508,9 @@ def main() -> int:
         f"- Bloom·Oracle 마스터계약 상단: **{facts.get('bloom_ai_market', {}).get('oracle_master_agreement_gw')}GW**\n"
         f"- Bloom·Oracle 초기 계약: **{facts.get('bloom_ai_market', {}).get('oracle_initial_contracted_gw')}GW**\n"
         f"- Bloom AI 인프라 고객군: **약 {facts.get('bloom_ai_market', {}).get('ai_infrastructure_segment_mw_approx')}MW**\n"
+        f"- Bloom·Equinix 운영/건설: **{facts.get('bloom_ai_market', {}).get('equinix_operational_mw')}MW / {facts.get('bloom_ai_market', {}).get('equinix_under_construction_mw')}MW**\n"
+        f"- Bloom·Brookfield 금융 프레임: **${facts.get('bloom_ai_market', {}).get('brookfield_financing_framework_usd_b')}B**\n"
+        f"- Bloom 설문 BYOP 의향: **{facts.get('bloom_ai_market', {}).get('developer_byop_share_pct')}%**\n"
         f"- 의미 변화: **{len(chg)}건**\n"
         f"- 알림: **{'예' if should_alert else '아니오'}**\n",
         encoding="utf-8",
