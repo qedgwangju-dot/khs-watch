@@ -6,11 +6,12 @@ on:
       - ".github/workflows/memory-spot-cycle-telegram-watch.yml"
       - "scripts/memory_spot_cycle_watch.py"
       - "scripts/apple_memory_procurement_watch.py"
+      - "scripts/smartphone_memory_pass_through_watch.py"
+      - "tests/test_smartphone_memory_pass_through_watch.py"
       - "scripts/currency_krw_guard.py"
       - "scripts/fx_api.py"
       - "tests/test_memory_spot_cycle_watch.py"
       - "tests/test_hbm_currency_krw_guard.py"
-      - "data/apple_memory_procurement_watch_state.json"
   schedule:
     - cron: "17,47 * * * *"
   workflow_dispatch:
@@ -55,6 +56,9 @@ jobs:
         run: |
           python -m py_compile scripts/memory_spot_cycle_watch.py
           python -m py_compile scripts/apple_memory_procurement_watch.py
+          python -m py_compile scripts/smartphone_memory_pass_through_watch.py
+          python -m py_compile tests/test_smartphone_memory_pass_through_watch.py
+          python tests/test_smartphone_memory_pass_through_watch.py
           python -m py_compile scripts/currency_krw_guard.py scripts/fx_api.py
           python -m unittest discover -s tests -p 'test_memory_spot_cycle_watch.py' -v
           python -m unittest discover -s tests -p 'test_hbm_currency_krw_guard.py' -v
@@ -67,6 +71,9 @@ jobs:
       - name: Scan Apple memory procurement and contract-price signals
         run: python scripts/apple_memory_procurement_watch.py
 
+      - name: Scan smartphone memory cost pass-through signals
+        run: python scripts/smartphone_memory_pass_through_watch.py
+
       - name: Publish watcher summary
         if: always()
         run: |
@@ -78,6 +85,10 @@ jobs:
           if [ -f out/apple_memory_procurement_watch_status.md ]; then
             printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
             cat out/apple_memory_procurement_watch_status.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/smartphone_memory_pass_through_status.md ]; then
+            printf '\n---\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/smartphone_memory_pass_through_status.md >> "$GITHUB_STEP_SUMMARY"
           fi
           if [ -f out/memory_spot_cycle_watch_telegram.txt ]; then
             printf '\n---\n\nTelegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
@@ -283,6 +294,14 @@ jobs:
         if: success() && hashFiles('out/memory_spot_cycle_watch_telegram.txt') == '' && hashFiles('out/apple_memory_procurement_watch_pending_state.json') != ''
         run: cp out/apple_memory_procurement_watch_pending_state.json data/apple_memory_procurement_watch_state.json
 
+      - name: Persist smartphone pass-through state after confirmed Telegram delivery
+        if: success() && hashFiles('out/memory_spot_cycle_watch_telegram.txt') != '' && hashFiles('out/memory_spot_cycle_watch_telegram_confirmed.json') != '' && hashFiles('out/smartphone_memory_pass_through_pending_state.json') != ''
+        run: cp out/smartphone_memory_pass_through_pending_state.json data/smartphone_memory_pass_through_state.json
+
+      - name: Persist smartphone pass-through no-alert state
+        if: success() && hashFiles('out/memory_spot_cycle_watch_telegram.txt') == '' && hashFiles('out/smartphone_memory_pass_through_pending_state.json') != ''
+        run: cp out/smartphone_memory_pass_through_pending_state.json data/smartphone_memory_pass_through_state.json
+
       - name: Commit watcher state
         if: success()
         run: |
@@ -296,6 +315,10 @@ jobs:
           if [ -f data/apple_memory_procurement_watch_state.json ]; then
             cp data/apple_memory_procurement_watch_state.json /tmp/apple_memory_procurement_watch_state.json
             git checkout -- data/apple_memory_procurement_watch_state.json 2>/dev/null || true
+          fi
+          if [ -f data/smartphone_memory_pass_through_state.json ]; then
+            cp data/smartphone_memory_pass_through_state.json /tmp/smartphone_memory_pass_through_state.json
+            git checkout -- data/smartphone_memory_pass_through_state.json 2>/dev/null || true
           fi
 
           if [ -f data/memory_spot_cycle_watch_state.json ]; then
@@ -389,6 +412,24 @@ jobs:
             fi
           fi
 
+          # Smartphone price-pass-through state is also best-effort and must not
+          # make a confirmed memory Telegram delivery look failed.
+          if [ -f /tmp/smartphone_memory_pass_through_state.json ]; then
+            cp /tmp/smartphone_memory_pass_through_state.json data/smartphone_memory_pass_through_state.json
+            git add data/smartphone_memory_pass_through_state.json
+            if ! git diff --cached --quiet; then
+              git commit -m "Update smartphone memory pass-through state"
+              if git pull --rebase origin main && git push; then
+                echo "Smartphone pass-through state checkpointed"
+              else
+                git rebase --abort 2>/dev/null || true
+                git fetch origin main
+                git reset --hard origin/main
+                echo "Smartphone pass-through state advanced concurrently; kept newer remote state"
+              fi
+            fi
+          fi
+
       - name: Upload verification artifacts
         if: always()
         uses: actions/upload-artifact@v4
@@ -399,6 +440,9 @@ jobs:
             out/apple_memory_procurement_watch_status.md
             out/apple_memory_procurement_watch_alert.html
             out/apple_memory_procurement_watch_pending_state.json
+            out/smartphone_memory_pass_through_status.md
+            out/smartphone_memory_pass_through_alert.html
+            out/smartphone_memory_pass_through_pending_state.json
             out/memory_spot_cycle_watch_telegram.txt
             out/memory_spot_cycle_watch_pending_state.json
             out/memory_spot_cycle_watch_telegram_confirmed.json
