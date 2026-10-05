@@ -399,7 +399,7 @@ def snapshot_block(state: dict, fx: float | None, fx_date: str, changed: list[di
         if base:
             lines.append("• 기준: " + " / ".join(html.escape(x) for x in base))
         lines.append("• 구조: CPU:GPU 챗봇형 1:4~8 → 에이전트형 약 1:1 방향")
-        lines.append("• 의미: CPU 주문·출하가 늘면 DDR5 RDIMM·eSSD·FC-BGA/ABF가 동반 수혜")
+        lines.append("• 의미: CPU 주문·출하가 늘면 DDR5 RDIMM·기업용 SSD·FC-BGA/ABF가 동반 수혜")
         lines.append("• 다음: AMD·Intel 주문·출하 / OEM 서버 주문 / CPU:GPU 실제 배치비율")
         if state.get("source"):
             lines.append(f'• <a href="{html.escape(str(state["source"]), quote=True)}">BofA 전망</a> · <a href="{html.escape(AMD_RATIO_URL, quote=True)}">AMD 공식</a>')
