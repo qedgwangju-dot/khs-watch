@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "initial_alert_sent": false,
+  "seen": [],
+  "seen_fact_keys": [],
+  "metrics": {
+    "s27_korea_hike_low_krw": 100000,
+    "s27_korea_hike_high_krw": 130000,
+    "s27_status": "단일 한국 팁스터(Lanzuk/yeux1122)발 루머·삼성전자 공식 미확인",
+    "counterpoint_existing_phone_price_yoy_pct": 15,
+    "counterpoint_new_launch_price_yoy_pct": 25,
+    "counterpoint_models_hiked_share_pct": 40,
+    "trendforce_q4_dram_qoq_low_pct": 10,
+    "trendforce_q4_dram_qoq_high_pct": 15,
+    "trendforce_q4_nand_qoq_low_pct": 15,
+    "trendforce_q4_nand_qoq_high_pct": 20
+  },
+  "confirmations": {
+    "s27": "단일 한국 팁스터(Lanzuk/yeux1122)발 루머·삼성전자 공식 미확인",
+    "industry_price_pass_through": "Counterpoint·TrendForce 공식자료 확인"
+  },
+  "last_scan_items": 0,
+  "last_signal_count": 0,
+  "last_alert": null
+}\n
