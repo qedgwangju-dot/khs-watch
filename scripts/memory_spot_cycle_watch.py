@@ -220,6 +220,31 @@ DGX_SPARK_MEMORY_PRICE_BASELINE = {
     "source_rank": 3,
 }
 
+GOLDMAN_STRUCTURAL_MEMORY_TRACK_VERSION = 1
+GOLDMAN_STRUCTURAL_MEMORY_BASELINE = {
+    "token_consumption_2030_x": 24.0,
+    "token_consumption_2030_monthly_quadrillion": 120.0,
+    "token_forecast_official_confirmed": True,
+    "dram_undersupply_2026_pct": 5.0,
+    "dram_undersupply_2027_pct": 5.9,
+    "dram_undersupply_2028_pct": 3.9,
+    "nand_undersupply_2026_pct": 4.4,
+    "nand_undersupply_2027_pct": 4.6,
+    "nand_undersupply_2028_pct": 3.0,
+    "undersupply_2029_2030_likely": True,
+    "undersupply_2029_2030_official_public_confirmed": False,
+    "token_source": "Goldman Sachs Research",
+    "token_source_kind": "Goldman Sachs 공식 공개자료",
+    "token_source_url": "https://www.goldmansachs.com/insights/articles/ai-agents-forecast-to-boost-tech-cash-flow-as-usage-soars",
+    "deficit_source": "Goldman Sachs Research chart reproduced in user-provided Exhibit 19 screenshot",
+    "deficit_source_kind": "사용자 제공 Goldman Sachs Exhibit 19 캡처 + 복수 2차 리포트 해설의 2026E~2028E 숫자 교차확인",
+    "deficit_source_url": "https://www.xxquant.com/en/institution/institutional-research/e4559cb64799383337f1531cfa347ef3",
+    "secondary_source_url": "https://www.macrostream.ai/articles/6a1d0385e33ff44036068221",
+    "as_of": "2026-10-05",
+    "source": "Goldman Sachs Research + secondary reproductions",
+    "source_rank": 2,
+}
+
 TREND_PINNED_PRESS_URLS = [
     "https://www.trendforce.com/presscenter/news/20260930-13258.html",
     "https://www.trendforce.com/presscenter/news/20260929-13255.html",
@@ -253,6 +278,9 @@ QUERIES = [
     ("ko", 'Bernstein 메모리 2028 정상화 2027 공급부족 장기계약 LTA 가격 상한'),
     ("ko", 'Goldman Sachs 메모리 4분기 ASP 전망 상향 eSSD 채택 삼성전자 SK하이닉스'),
     ("ko", '골드만삭스 메모리 DRAM NAND 기업용 SSD 4분기 평균판매단가 전망 삼성전자 SK하이닉스'),
+    ("ko", 'Goldman Sachs DRAM NAND 공급부족 2026 2027 2028 5.0 5.9 3.9 4.4 4.6 3.0'),
+    ("ko", '골드만삭스 DRAM NAND 2029 2030 공급 부족 AI 에이전트 토큰 24배'),
+    ("ko", 'Goldman Sachs AI agent token 2030 24배 120 quadrillion 메모리'),
     ("ko", 'Micron CEO 2027 메모리 공급 75% committed 계약 SCA'),
     ("ko", '마이크론 2027 공급 75% 확약 장기계약 메모리 CEO'),
     ("ko", '마이크론 SCA 2031 26개 RPO 1500억달러 Q1 FY2027 영업이익'),
@@ -276,6 +304,9 @@ QUERIES = [
     ("en", 'Bernstein memory 2028 normalization 2027 shortage long-term agreements cap price increases'),
     ("en", 'Goldman Sachs memory Q4 ASP forecast eSSD adoption Samsung SK hynix DRAM NAND'),
     ("en", 'Goldman Sachs storage price eSSD enterprise SSD Q4 ASP Samsung SK hynix'),
+    ("en", 'Goldman Sachs DRAM NAND undersupply 2026 2027 2028 5.0 5.9 3.9 4.4 4.6 3.0'),
+    ("en", 'Goldman Sachs DRAM NAND undersupply 2029 2030 token consumption 24x'),
+    ("en", 'Goldman Sachs agentic AI token consumption 24 times 2030 120 quadrillion memory'),
     ("en", 'Micron CEO 2027 output 75% committed memory supply SCA'),
     ("en", 'Micron 2027 memory supply committed 75 percent strategic customer agreements'),
     ("en", 'Micron 26 SCAs 2031 RPO 150 billion Q1 FY2027 operating profit guidance'),
@@ -1553,6 +1584,203 @@ def _micron_supply_commitment_changes(old: dict, new: dict) -> list[str]:
 
 
 
+def _goldman_structural_memory_source_rank(item: dict) -> int:
+    source = str(item.get("source") or "").lower()
+    link = str(item.get("link") or "")
+    host = urllib.parse.urlparse(link).netloc.lower()
+    if host == "goldmansachs.com" or host.endswith(".goldmansachs.com"):
+        return 3
+    trusted = (
+        "xxquant.com", "macrostream.ai", "finvaulta.com",
+        "theblockbeats.news", "gcsa.ai", "wallstreetcn.com",
+    )
+    if any(host == h or host.endswith("." + h) for h in trusted):
+        return 2
+    if any(k in source for k in ("goldman sachs", "hilo research", "macrostream", "finvaulta", "wallstreetcn")):
+        return 2
+    return 0
+
+
+def _is_goldman_structural_memory_item(item: dict) -> bool:
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    if not any(k in low for k in ("goldman sachs", "goldman", "골드만", "高盛")):
+        return False
+    memory_axis = (
+        ("dram" in low and "nand" in low)
+        and any(k in low for k in (
+            "undersupply", "undersupplied", "supply-demand", "supply/demand",
+            "short of demand", "supply gap", "deficit", "공급 부족", "수급",
+        ))
+    )
+    token_axis = (
+        "token" in low and "2030" in low
+        and any(k in low for k in ("24x", "24-fold", "24 fold", "24 times", "120 quadrillion", "24배"))
+    )
+    return bool(memory_axis or token_axis)
+
+
+def _extract_goldman_structural_memory(item: dict) -> dict | None:
+    if not _is_goldman_structural_memory_item(item):
+        return None
+    rank = _goldman_structural_memory_source_rank(item)
+    if rank < 2:
+        return None
+
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    obs: dict = {}
+
+    token_x = None
+    for pat in (
+        r"(\d+(?:\.\d+)?)\s*(?:x|[- ]?fold|times)\b[^.]{0,100}?2030",
+        r"2030[^.]{0,100}?(\d+(?:\.\d+)?)\s*(?:x|[- ]?fold|times)\b",
+        r"2030[^.]{0,100}?(\d+(?:\.\d+)?)\s*배",
+    ):
+        m = re.search(pat, low, re.I)
+        if m:
+            token_x = float(m.group(1))
+            break
+    if token_x is not None and 5 <= token_x <= 100:
+        obs["token_consumption_2030_x"] = token_x
+        obs["token_forecast_official_confirmed"] = rank >= 3
+        obs["token_source_url"] = item.get("link") or ""
+        obs["token_source_kind"] = "Goldman Sachs 공식 공개자료" if rank >= 3 else "Goldman Sachs 전망 인용 2차 자료"
+
+    m120 = re.search(r"(\d+(?:\.\d+)?)\s*quadrillion[^.]{0,120}?(?:per\s+month|monthly|tokens)", low, re.I)
+    if not m120:
+        m120 = re.search(r"(?:per\s+month|monthly)[^.]{0,120}?(\d+(?:\.\d+)?)\s*quadrillion", low, re.I)
+    if m120:
+        val = float(m120.group(1))
+        if 10 <= val <= 1000:
+            obs["token_consumption_2030_monthly_quadrillion"] = val
+            obs["token_forecast_official_confirmed"] = rank >= 3
+            obs["token_source_url"] = item.get("link") or ""
+
+    def parse_series(label: str) -> tuple[float, float, float] | None:
+        patterns = (
+            rf"{label}[^.\n]{{0,140}}?(?:undersupply|deficit|supply[- /]?demand gap|supply gap)[^0-9]{{0,60}}([0-9]+(?:\.[0-9]+)?)\s*%\s*[/,]\s*([0-9]+(?:\.[0-9]+)?)\s*%\s*[/,]\s*([0-9]+(?:\.[0-9]+)?)\s*%",
+            rf"{label}[^.\n]{{0,100}}?([0-9]+(?:\.[0-9]+)?)\s*%\s*/\s*([0-9]+(?:\.[0-9]+)?)\s*%\s*/\s*([0-9]+(?:\.[0-9]+)?)\s*%[^.\n]{{0,100}}?(?:2026|2026e)[^.\n]{{0,30}}?(?:2027|2027e)[^.\n]{{0,30}}?(?:2028|2028e)",
+        )
+        for pat in patterns:
+            m = re.search(pat, low, re.I)
+            if m:
+                vals = tuple(float(m.group(i)) for i in range(1, 4))
+                if all(0 <= v <= 20 for v in vals):
+                    return vals
+        return None
+
+    dram = parse_series("dram")
+    nand = parse_series("nand")
+    if dram:
+        obs["dram_undersupply_2026_pct"], obs["dram_undersupply_2027_pct"], obs["dram_undersupply_2028_pct"] = dram
+    if nand:
+        obs["nand_undersupply_2026_pct"], obs["nand_undersupply_2027_pct"], obs["nand_undersupply_2028_pct"] = nand
+
+    # Also capture a single-year 2027 update when the full 3-year table is not repeated.
+    for year, dkey, nkey in (
+        (2026, "dram_undersupply_2026_pct", "nand_undersupply_2026_pct"),
+        (2027, "dram_undersupply_2027_pct", "nand_undersupply_2027_pct"),
+        (2028, "dram_undersupply_2028_pct", "nand_undersupply_2028_pct"),
+    ):
+        if dkey not in obs:
+            for pat in (
+                rf"{year}e?[^.\n]{{0,120}}?dram[^0-9%]{{0,50}}([0-9]+(?:\.[0-9]+)?)\s*%",
+                rf"dram[^.\n]{{0,120}}?{year}e?[^0-9%]{{0,50}}([0-9]+(?:\.[0-9]+)?)\s*%",
+            ):
+                m = re.search(pat, low, re.I)
+                if m and 0 <= float(m.group(1)) <= 20:
+                    obs[dkey] = float(m.group(1))
+                    break
+        if nkey not in obs:
+            for pat in (
+                rf"{year}e?[^.\n]{{0,160}}?nand[^0-9%]{{0,50}}([0-9]+(?:\.[0-9]+)?)\s*%",
+                rf"nand[^.\n]{{0,120}}?{year}e?[^0-9%]{{0,50}}([0-9]+(?:\.[0-9]+)?)\s*%",
+            ):
+                m = re.search(pat, low, re.I)
+                if m and 0 <= float(m.group(1)) <= 20:
+                    obs[nkey] = float(m.group(1))
+                    break
+
+    has_deficit = any(k.startswith("dram_undersupply_") or k.startswith("nand_undersupply_") for k in obs)
+    if has_deficit:
+        obs["deficit_source_url"] = item.get("link") or ""
+        obs["deficit_source_kind"] = (
+            "Goldman Sachs 공식 공개자료" if rank >= 3
+            else "Goldman Sachs 수급모델 인용·재현 2차 자료"
+        )
+
+    long_horizon = bool(
+        re.search(r"2029\s*(?:[-–—/]|to)\s*2030|2029\s*[-–—]\s*30|2029\s*(?:and|&|·)\s*2030", low, re.I)
+        and any(k in low for k in (
+            "undersupply", "undersupplied", "short of demand", "supply shortage",
+            "supply deficit", "공급 부족", "供不应求",
+        ))
+    )
+    if long_horizon:
+        obs["undersupply_2029_2030_likely"] = True
+        if rank >= 3:
+            obs["undersupply_2029_2030_official_public_confirmed"] = True
+
+    if not obs:
+        return None
+    obs.update({
+        "source": item.get("source") or urllib.parse.urlparse(str(item.get("link") or "")).netloc or "출처 미표시",
+        "source_url": item.get("link") or "",
+        "as_of": (item.get("published_kst") or "")[:10] or "",
+        "source_rank": rank,
+    })
+    return obs
+
+
+def _goldman_structural_memory_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+    for key, label, threshold in (
+        ("dram_undersupply_2026_pct", "Goldman DRAM 2026E 공급부족", 0.5),
+        ("dram_undersupply_2027_pct", "Goldman DRAM 2027E 공급부족", 0.5),
+        ("dram_undersupply_2028_pct", "Goldman DRAM 2028E 공급부족", 0.5),
+        ("nand_undersupply_2026_pct", "Goldman NAND 2026E 공급부족", 0.5),
+        ("nand_undersupply_2027_pct", "Goldman NAND 2027E 공급부족", 0.5),
+        ("nand_undersupply_2028_pct", "Goldman NAND 2028E 공급부족", 0.5),
+    ):
+        a, b = old.get(key), new.get(key)
+        if b is None:
+            continue
+        if a is None:
+            changes.append(f"{label}: {float(b):.1f}% 신규 확인")
+        elif abs(float(b) - float(a)) >= threshold:
+            changes.append(f"{label}: {float(a):.1f}%→{float(b):.1f}%")
+
+    a, b = old.get("token_consumption_2030_x"), new.get("token_consumption_2030_x")
+    if b is not None:
+        if a is None:
+            changes.append(f"Goldman 2030 토큰 소비: 현재 대비 {float(b):.0f}배 신규 확인")
+        elif abs(float(b) - float(a)) >= 2:
+            changes.append(f"Goldman 2030 토큰 소비: {float(a):.0f}배→{float(b):.0f}배")
+
+    a, b = old.get("token_consumption_2030_monthly_quadrillion"), new.get("token_consumption_2030_monthly_quadrillion")
+    if b is not None:
+        if a is None:
+            changes.append(f"Goldman 2030 월간 토큰: {float(b):.0f}경(quadrillion) 신규 확인")
+        elif abs(float(b) - float(a)) >= 10:
+            changes.append(f"Goldman 2030 월간 토큰: {float(a):.0f}→{float(b):.0f}경(quadrillion)")
+
+    a, b = old.get("undersupply_2029_2030_likely"), new.get("undersupply_2029_2030_likely")
+    if b is not None and a is not None and bool(a) != bool(b):
+        changes.append(
+            "Goldman 2029~2030 공급부족 지속 전망: "
+            + ("유지" if a else "미확인") + "→" + ("유지" if b else "해제")
+        )
+    elif b is True and a is None:
+        changes.append("Goldman 2029~2030 공급부족 지속 전망: 신규 확인")
+
+    a, b = old.get("undersupply_2029_2030_official_public_confirmed"), new.get("undersupply_2029_2030_official_public_confirmed")
+    if b is True and not a:
+        changes.append("Goldman 2029~2030 공급부족 지속 전망: 공개 공식자료 확인으로 승격")
+
+    return changes
+
+
 def _dgx_spark_source_rank(item: dict) -> int:
     source = str(item.get("source") or "").lower()
     link = str(item.get("link") or "")
@@ -2253,6 +2481,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         dgx_spark_state = _merge_typed_state(DGX_SPARK_MEMORY_PRICE_BASELINE, dgx_spark_state)
         state["dgx_spark_memory_price_track_version"] = DGX_SPARK_MEMORY_PRICE_TRACK_VERSION
 
+    goldman_structural_state = dict(state.get("goldman_structural_memory") or {})
+    if int(state.get("goldman_structural_memory_track_version") or 0) < GOLDMAN_STRUCTURAL_MEMORY_TRACK_VERSION:
+        goldman_structural_state = _merge_typed_state(GOLDMAN_STRUCTURAL_MEMORY_BASELINE, goldman_structural_state)
+        state["goldman_structural_memory_track_version"] = GOLDMAN_STRUCTURAL_MEMORY_TRACK_VERSION
+
     bernstein_state = dict(state.get("bernstein_memory_cycle") or {})
     if int(state.get("bernstein_memory_cycle_track_version") or 0) < BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION:
         bernstein_state = _merge_bernstein_memory_cycle(bernstein_state, BERNSTEIN_MEMORY_CYCLE_BASELINE)
@@ -2352,6 +2585,23 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             dgx_spark_changes.extend(changes)
             dgx_spark_source_url = dgx_spark_state.get("source_url") or dgx_spark_source_url
 
+    goldman_structural_changes: list[str] = []
+    goldman_structural_source_url = ""
+    for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
+        obs = _extract_goldman_structural_memory(item)
+        if not obs:
+            continue
+        merged = _merge_typed_state(goldman_structural_state, obs)
+        changes = _goldman_structural_memory_changes(goldman_structural_state, merged)
+        goldman_structural_state = merged
+        if changes:
+            goldman_structural_changes.extend(changes)
+            goldman_structural_source_url = (
+                goldman_structural_state.get("source_url")
+                or obs.get("source_url")
+                or goldman_structural_source_url
+            )
+
     bernstein_changes: list[str] = []
     bernstein_source_url = ""
     for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
@@ -2410,6 +2660,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             continue
         if _extract_dgx_spark_memory_price(x) or _is_dgx_spark_memory_price_item(x):
             continue
+        if _extract_goldman_structural_memory(x) or _is_goldman_structural_memory_item(x):
+            continue
         if _extract_trendforce_4q26_revision(x):
             continue
         if _extract_nand_divergence(x) or _extract_legacy_dram_state(x):
@@ -2453,6 +2705,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "micron_supply_commitment": micron_supply_state,
         "dgx_spark_memory_price_track_version": DGX_SPARK_MEMORY_PRICE_TRACK_VERSION,
         "dgx_spark_memory_price": dgx_spark_state,
+        "goldman_structural_memory_track_version": GOLDMAN_STRUCTURAL_MEMORY_TRACK_VERSION,
+        "goldman_structural_memory": goldman_structural_state,
         "trendforce_4q26_revision_track_version": TREND_4Q26_REVISION_TRACK_VERSION,
         "trendforce_4q26_revision": trend_4q26_state,
         "trendforce_3q4q_pace_track_version": TREND_3Q4Q_PACE_TRACK_VERSION,
@@ -2485,6 +2739,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- 삼성전자·SK하이닉스 영업이익 컨센서스 변화: {len(korea_earnings_changes)}건",
         f"- Micron 2027 공급 확약 변화: {len(micron_supply_changes)}건",
         f"- NVIDIA DGX Spark 메모리·가격 전가 변화: {len(dgx_spark_changes)}건",
+        f"- Goldman 장기 DRAM·NAND 수급 변화: {len(goldman_structural_changes)}건",
         f"- TrendForce 4Q26 전망 리비전 변화: {len(trend_4q26_changes)}건",
         f"- TrendForce 3Q→4Q 가격속도 변화: {len(trend_3q4q_changes)}건",
         f"- NAND 소비자↔기업용 eSSD 양극화 변화: {len(divergence_changes)}건",
@@ -2497,11 +2752,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
+    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(legacy_changes)
+    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(legacy_changes)
     total_visible = typed_changes + len(prepared_items)
     lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
     if trend_4q26_changes:
@@ -2522,6 +2777,9 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
     elif dgx_spark_changes:
         one = dgx_spark_changes[0]
+        lines.append("한눈에: <b>" + html.escape(one) + "</b>")
+    elif goldman_structural_changes:
+        one = goldman_structural_changes[0]
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
     elif micron_supply_changes:
         one = micron_supply_changes[0]
@@ -2730,6 +2988,56 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         if prior_source:
             lines.append('  <a href="' + html.escape(str(prior_source), quote=True) + '">NVIDIA 공식 2026-02 가격변경 공지</a>')
 
+    if goldman_structural_changes:
+        lines.append("• <b>Goldman Sachs 장기 DRAM·NAND 수급 기간 변화</b>")
+        for change in list(dict.fromkeys(goldman_structural_changes)):
+            lines.append("  " + html.escape(change))
+        dx = goldman_structural_state
+        lines.append(
+            "  DRAM 공급부족률: "
+            f"2026E <b>{float(dx.get('dram_undersupply_2026_pct') or 0):.1f}%</b> → "
+            f"2027E <b>{float(dx.get('dram_undersupply_2027_pct') or 0):.1f}%</b> → "
+            f"2028E <b>{float(dx.get('dram_undersupply_2028_pct') or 0):.1f}%</b>"
+        )
+        lines.append(
+            "  NAND 공급부족률: "
+            f"2026E <b>{float(dx.get('nand_undersupply_2026_pct') or 0):.1f}%</b> → "
+            f"2027E <b>{float(dx.get('nand_undersupply_2027_pct') or 0):.1f}%</b> → "
+            f"2028E <b>{float(dx.get('nand_undersupply_2028_pct') or 0):.1f}%</b>"
+        )
+        if dx.get("token_consumption_2030_x") is not None:
+            lines.append(
+                f"  수요축: Goldman Sachs 공식 전망상 2030년 월간 토큰 소비는 2026년 대비 <b>{float(dx['token_consumption_2030_x']):.0f}배</b>"
+                + (
+                    f", <b>{float(dx.get('token_consumption_2030_monthly_quadrillion') or 0):.0f} quadrillion tokens/월</b>"
+                    if dx.get("token_consumption_2030_monthly_quadrillion") is not None else ""
+                )
+            )
+        if dx.get("undersupply_2029_2030_likely"):
+            status = (
+                "Goldman Sachs 공개 공식자료 확인"
+                if dx.get("undersupply_2029_2030_official_public_confirmed")
+                else "사용자 제공 Goldman Exhibit 19 캡처 문구 · 공개 공식자료 직접 확인 전"
+            )
+            lines.append("  2029~2030: 공급부족 지속 가능성 표기 · <b>" + html.escape(status) + "</b>")
+        lines.append(
+            "  기간 차이: 기존 Bernstein 기준은 2028년 정상화, 반면 Goldman 수급모델은 "
+            "2028E에도 DRAM 3.9%·NAND 3.0% 공급부족 — 기관별 정상화 시점을 별도 상태로 추적"
+        )
+        lines.append(
+            "  실패 경로: 신규 팹 램프·수율 안정이 예상보다 빠르거나, AI 토큰당 메모리 사용량·KV 캐시 효율이 크게 개선되면 "
+            "2028~2030 부족폭이 축소될 수 있음"
+        )
+        lines.append("  다음 확인: Goldman 수급모델 리비전 · 2029~2030 공식 공개자료 · DRAM/NAND 웨이퍼 캐파 · eSSD EB 수요 · 실제 계약가")
+        token_url = dx.get("token_source_url") or GOLDMAN_STRUCTURAL_MEMORY_BASELINE.get("token_source_url")
+        deficit_url = dx.get("deficit_source_url") or GOLDMAN_STRUCTURAL_MEMORY_BASELINE.get("deficit_source_url")
+        if goldman_structural_source_url:
+            lines.append('  <a href="' + html.escape(str(goldman_structural_source_url), quote=True) + '">이번 변화 근거</a>')
+        if token_url:
+            lines.append('  <a href="' + html.escape(str(token_url), quote=True) + '">Goldman Sachs 공식 2030 토큰 전망</a>')
+        if deficit_url:
+            lines.append('  <a href="' + html.escape(str(deficit_url), quote=True) + '">수급 숫자 교차확인</a>')
+
     if bernstein_changes:
         lines.append("• <b>Bernstein 메모리 가격 사이클 상태 변화</b>")
         for change in bernstein_changes:
@@ -2808,13 +3116,13 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
+    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
 
     if legacy_changes:
-        has_other_content = bool(market_changes or bernstein_changes or korea_earnings_changes or micron_supply_changes or dgx_spark_changes or divergence_changes or prepared_items)
+        has_other_content = bool(market_changes or bernstein_changes or korea_earnings_changes or micron_supply_changes or dgx_spark_changes or goldman_structural_changes or divergence_changes or prepared_items)
         if has_other_content:
             lines.append("<<<TELEGRAM_MESSAGE_BREAK>>>")
         else:
