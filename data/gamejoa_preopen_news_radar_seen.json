@@ -485,27 +485,19 @@
     "event:1efbd1f63c0f645d03fefda2": {
       "first_seen_kst": "2026-10-05T02:04:15+09:00",
       "lanes": {
-        "live": "2026-10-05T20:12:05+09:00"
+        "live": "2026-10-05T22:12:53+09:00"
       },
-      "last_seen_kst": "2026-10-05T20:12:05+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12168504",
-      "source": "매일경제",
-      "source_body_digest": "18f2f7cff51dd5a1a4d478d4ad6aaaf06f2e86224184f7de6bb489cb52e96049",
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mt.co.kr/index.php/finance/2026/10/05/2026100514541723847",
+      "source": "머니투데이",
+      "source_body_digest": "df4cb204a2ec3d3e0c0dd589c8c41236ba0d4a344a4b69c19152aba76eb195b4",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:eaee136c52cea7df60df1b4d3cb6fcdc990652eb33f4575473089c85adb6bc7f",
+      "source_fact_identity": "source_facts:v1:d17711413fd0f22ddc6da8be83725d64683fa286cd0b83c35ad22102684254f6",
       "source_fact_keys": [
-        "source_fact:v1:25fda1bc41b61c93c60ff3aad4b05fded1b90a00414d1dcf977d3e78b82661f5",
-        "source_fact:v1:4c4d45b741494d71aef5ee6d51069ca52a5e14f88b9165a422796aef6db0595c",
-        "source_fact:v1:6713816332b9c53955149d150e3e202311e68cfdf038f02662c2eb6ab01cf5a0",
-        "source_fact:v1:6bee649009c37d0e073ee07f61009cbfeeefc90471d5e9bf8a47f3c5c210e6bb",
-        "source_fact:v1:794599a1d541d8ecbaeeac8c1db478eca5eb1a9b7e30a3058302d897b877e48a",
-        "source_fact:v1:7ecac777a9352bfa456accab82d689fa1cea7ff48231df88f429c4d319555610",
-        "source_fact:v1:99d0834aada975d5dd978f48e88f9f4337f9922de1bd0a48c76e0c866aab5ab4",
-        "source_fact:v1:c53200aa1a315a260e02f27938570b6b39443f569c8f352b0943f7330f268cbc",
-        "source_fact:v1:cafb903ebf201997c448d082f65b91923ac43b501c9cedd9d4d1bdc3827f983f"
+        "source_fact:v1:716dfff7d537a700bac66dd2bcfda289b7a2463f57cc923e6c72f30d368f3929"
       ],
-      "source_published_kst": "2026-10-05T16:51+09:00",
-      "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
+      "source_published_kst": "2026-10-05T16:20+09:00",
+      "title": "'해킹 사태' 은행장 국감 줄줄이 소환될듯..연말 CEO 연임 '브레이크'"
     },
     "event:2031f599de2458ceac1e4b44": {
       "first_seen_kst": "2026-10-03T09:48:18+09:00",
@@ -5112,6 +5104,33 @@
       "source_published_kst": "2026-10-05T20:05+09:00",
       "title": "마이크로소프트, 기업 보안 수요 확대…투자의견↑-멜리우스"
     },
+    "fact:34938c9db2b3cd0735085554": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814461",
+      "source": "뉴시스",
+      "source_body_digest": "9894ace8a2926ee4307cbc52c23b9b9d884e8200b829797113c7ad2d3ce1b85f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8046200015e1678c3bee7fe2f44d6a5dfee29b91011d508d009217af9711cfb",
+      "source_fact_keys": [
+        "source_fact:v1:1f09b799a8510a7f4a6f4407788a0e05df507969ccc9f6facf9f5839eee36e4a",
+        "source_fact:v1:308619407897c2ef1cc3549751ee78ac3a8826428da814e7886322054c1c07ec",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:4bf0b95ccb48660e1cbd6f122fd79275c0a0506e352b403591e3dab8b5f45096",
+        "source_fact:v1:761b10675bdc6d8f74b032ff3a1ad25e537060a3f16442e89df90bc5ff86201b",
+        "source_fact:v1:928e3ae34b1f371e62e59fb57640acb892abd3af706d53c6e5f8591d96bb6d85",
+        "source_fact:v1:9c3a2c2e5a22630e9b61e02cdf1a676088b6117fa25d9df4cbe0c1c22e56eeb7",
+        "source_fact:v1:a3f05db631d45eb325bb27852c52fe7ce4cc79ba4c69687600ccec1caefd95b8",
+        "source_fact:v1:a644c523cd2eb13b7cb3f830d6ff201c9f45173dcdddeb684425c82839539007",
+        "source_fact:v1:dbba7fbebe18382370b5f00ce32c3d8620f61d166066e490fbb56cb526b79322",
+        "source_fact:v1:f9957dce89d4d12149c39aaf60585bba9533847ec97cd1a2587f6641d33f7b8a"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
     "fact:37db517fa4219a41cccd8216": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -5148,6 +5167,23 @@
       ],
       "source_published_kst": "2026-10-05T17:30+09:00",
       "title": "이란, 호르무즈 공격 재개 … 중동 원유 수출 회복세에 '찬물'"
+    },
+    "fact:3aaa85a21aa1134a42ca5dbb": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mt.co.kr/index.php/finance/2026/10/05/2026100514541723847",
+      "source": "머니투데이",
+      "source_body_digest": "df4cb204a2ec3d3e0c0dd589c8c41236ba0d4a344a4b69c19152aba76eb195b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d17711413fd0f22ddc6da8be83725d64683fa286cd0b83c35ad22102684254f6",
+      "source_fact_keys": [
+        "source_fact:v1:716dfff7d537a700bac66dd2bcfda289b7a2463f57cc923e6c72f30d368f3929"
+      ],
+      "source_published_kst": "2026-10-05T16:20+09:00",
+      "title": "'해킹 사태' 은행장 국감 줄줄이 소환될듯..연말 CEO 연임 '브레이크'"
     },
     "fact:3e40f5e3d21f980b3e7ffda2": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -6023,6 +6059,30 @@
       ],
       "source_published_kst": "2026-10-05T17:46+09:00",
       "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
+    },
+    "fact:aaf7c43f9e99895c3688dc37": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168748",
+      "source": "매일경제",
+      "source_body_digest": "f48cfc61fc39a645cc91003ac60eb19176ffe11a9c69f0a10ad18def1929ec69",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2a9ae53aef3212ff0d5a752e9908d9a3e93b8b18d62732224792098ab6ab590",
+      "source_fact_keys": [
+        "source_fact:v1:13b75a599669876641fb57a62960959eb36d53145356fc92ba412ae7f9eb856d",
+        "source_fact:v1:16871cc87558602445696ebb336657c8e646e1de5d38271dafab9cbd2194059e",
+        "source_fact:v1:317e63addfabc1d17ecec1f5715007a489b838e6b5c4f4ffddee64829a74d54f",
+        "source_fact:v1:9c49d64e7a9180554086bb25310f66af6a4757227330a9a0d0afdf27aebff2da",
+        "source_fact:v1:a03cbeca546fc37cebbe7d31cf7ddcee3867232e9460c21f98c5055f1a887ee2",
+        "source_fact:v1:c7ed4342542d2b9f08b3f3852012fe4399ba011030faeb28375bd79f91e9f0f9",
+        "source_fact:v1:e4c677fb3cfeec2a7b5472e8a831a78d98f535f4329e40f565cc31490d800951",
+        "source_fact:v1:fdc44bea9c16db5f986aa7fa1961f2c53f239e67f1d17e523bb2a5d5d61eca7d"
+      ],
+      "source_published_kst": "2026-10-05T21:54+09:00",
+      "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
     },
     "fact:af0bff465b93656cbe86e2e5": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -7206,6 +7266,21 @@
       "link": "https://www.yna.co.kr/view/AKR20261002183900009",
       "source": "연합뉴스",
       "title": "뉴욕증시, 비농업 고용지표 소화하며 상승 출발 | 연합뉴스"
+    },
+    "link:0e246270bf1d08baaac70113": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632452",
+      "source": "이투데이",
+      "source_body_digest": "fcb44fa685be1e7b79548f1835a4f0a21b500b2dc616e8ef168d967a04e93351",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미서 5GW 규모 AI 데이터센터 냉각 솔루션 수주"
     },
     "link:0e59f5700c473e3c442d8d0f": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -9615,6 +9690,30 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T06:38+09:00",
       "title": "'1조 달러 수출국' 초읽기…11월 말~12월 초 韓 수출사 새로 쓴다"
+    },
+    "link:393bc373deb4f8da154b1cc6": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168748",
+      "source": "매일경제",
+      "source_body_digest": "f48cfc61fc39a645cc91003ac60eb19176ffe11a9c69f0a10ad18def1929ec69",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2a9ae53aef3212ff0d5a752e9908d9a3e93b8b18d62732224792098ab6ab590",
+      "source_fact_keys": [
+        "source_fact:v1:13b75a599669876641fb57a62960959eb36d53145356fc92ba412ae7f9eb856d",
+        "source_fact:v1:16871cc87558602445696ebb336657c8e646e1de5d38271dafab9cbd2194059e",
+        "source_fact:v1:317e63addfabc1d17ecec1f5715007a489b838e6b5c4f4ffddee64829a74d54f",
+        "source_fact:v1:9c49d64e7a9180554086bb25310f66af6a4757227330a9a0d0afdf27aebff2da",
+        "source_fact:v1:a03cbeca546fc37cebbe7d31cf7ddcee3867232e9460c21f98c5055f1a887ee2",
+        "source_fact:v1:c7ed4342542d2b9f08b3f3852012fe4399ba011030faeb28375bd79f91e9f0f9",
+        "source_fact:v1:e4c677fb3cfeec2a7b5472e8a831a78d98f535f4329e40f565cc31490d800951",
+        "source_fact:v1:fdc44bea9c16db5f986aa7fa1961f2c53f239e67f1d17e523bb2a5d5d61eca7d"
+      ],
+      "source_published_kst": "2026-10-05T21:54+09:00",
+      "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
     },
     "link:3949b7d1b8dbe1094c47a894": {
       "first_seen_kst": "2026-09-17T20:51:45+09:00",
@@ -12313,6 +12412,33 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T09:00+09:00",
       "title": "신한은행"
+    },
+    "link:635c7b3b0fc25c3388e9e134": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814461",
+      "source": "뉴시스",
+      "source_body_digest": "9894ace8a2926ee4307cbc52c23b9b9d884e8200b829797113c7ad2d3ce1b85f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8046200015e1678c3bee7fe2f44d6a5dfee29b91011d508d009217af9711cfb",
+      "source_fact_keys": [
+        "source_fact:v1:1f09b799a8510a7f4a6f4407788a0e05df507969ccc9f6facf9f5839eee36e4a",
+        "source_fact:v1:308619407897c2ef1cc3549751ee78ac3a8826428da814e7886322054c1c07ec",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:4bf0b95ccb48660e1cbd6f122fd79275c0a0506e352b403591e3dab8b5f45096",
+        "source_fact:v1:761b10675bdc6d8f74b032ff3a1ad25e537060a3f16442e89df90bc5ff86201b",
+        "source_fact:v1:928e3ae34b1f371e62e59fb57640acb892abd3af706d53c6e5f8591d96bb6d85",
+        "source_fact:v1:9c3a2c2e5a22630e9b61e02cdf1a676088b6117fa25d9df4cbe0c1c22e56eeb7",
+        "source_fact:v1:a3f05db631d45eb325bb27852c52fe7ce4cc79ba4c69687600ccec1caefd95b8",
+        "source_fact:v1:a644c523cd2eb13b7cb3f830d6ff201c9f45173dcdddeb684425c82839539007",
+        "source_fact:v1:dbba7fbebe18382370b5f00ce32c3d8620f61d166066e490fbb56cb526b79322",
+        "source_fact:v1:f9957dce89d4d12149c39aaf60585bba9533847ec97cd1a2587f6641d33f7b8a"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
     "link:6396b09e6cce5a689cf1e2ab": {
       "first_seen_kst": "2026-09-30T01:58:47+09:00",
@@ -19942,6 +20068,21 @@
       "source": "뉴시스",
       "title": "트럼프 \"이란 추가 공격할지, 합의할지 곧 결정\""
     },
+    "link:df1de6f28e4b875517099076": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mk.co.kr/news/business/12168674",
+      "source": "매일경제",
+      "source_body_digest": "0fb20b5d4e6353326ec7c43a0a5e4aebd9b8196783b792d71336a53603a4ecc2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:00+09:00",
+      "title": "LG전자 냉각솔루션 앞세워 북미서 5GW급 '칠러' 수주"
+    },
     "link:df3c876e5a095ee707d77efd": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
       "lanes": {
@@ -21486,6 +21627,23 @@
       "link": "https://www.newsis.com/view/NISX20260930_0003808025",
       "source": "뉴시스",
       "title": "\"마이크론 90% 상승 여력\" 월가 파격 전망에…삼성전자·SK하이닉스도 기대감"
+    },
+    "link:f7089adb9a24ae9f2a2afb6c": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mt.co.kr/index.php/finance/2026/10/05/2026100514541723847",
+      "source": "머니투데이",
+      "source_body_digest": "df4cb204a2ec3d3e0c0dd589c8c41236ba0d4a344a4b69c19152aba76eb195b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d17711413fd0f22ddc6da8be83725d64683fa286cd0b83c35ad22102684254f6",
+      "source_fact_keys": [
+        "source_fact:v1:716dfff7d537a700bac66dd2bcfda289b7a2463f57cc923e6c72f30d368f3929"
+      ],
+      "source_published_kst": "2026-10-05T16:20+09:00",
+      "title": "'해킹 사태' 은행장 국감 줄줄이 소환될듯..연말 CEO 연임 '브레이크'"
     },
     "link:f7f4121ee81214e2e88c15d7": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -23035,6 +23193,21 @@
       "source": "뉴시스",
       "source_event_identity": "",
       "title": "러 드론, 키이우 남부교 이틀새 4번 타격…차량'지하철 통행 끊겼다"
+    },
+    "original:1492b005303baef48b8538a1": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mk.co.kr/news/business/12168674",
+      "source": "매일경제",
+      "source_body_digest": "0fb20b5d4e6353326ec7c43a0a5e4aebd9b8196783b792d71336a53603a4ecc2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:00+09:00",
+      "title": "LG전자 냉각솔루션 앞세워 북미서 5GW급 '칠러' 수주"
     },
     "original:149d4a0d021a3e1cbaf1add7": {
       "first_seen_kst": "2026-09-20T06:23:53+09:00",
@@ -26322,6 +26495,21 @@
       "source_published_kst": "2026-10-04T13:00+09:00",
       "title": "건어물 팔던 나라서 반도체 수출국으로…韓수출 1조弗 눈앞 [세쓸통]"
     },
+    "original:49167d6365227167c1b43ca0": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632452",
+      "source": "이투데이",
+      "source_body_digest": "fcb44fa685be1e7b79548f1835a4f0a21b500b2dc616e8ef168d967a04e93351",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미서 5GW 규모 AI 데이터센터 냉각 솔루션 수주"
+    },
     "original:4925ba62c4516b4af9e3f084": {
       "first_seen_kst": "2026-10-03T05:48:31+09:00",
       "lanes": {
@@ -29224,6 +29412,33 @@
       "source_published_kst": "2026-10-05T06:00+09:00",
       "title": "4대 금융그룹, 3분기도 호실적…'역대급 연간 순이익' 예고"
     },
+    "original:7cc0693dff9d1639f75cbb68": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814461",
+      "source": "뉴시스",
+      "source_body_digest": "9894ace8a2926ee4307cbc52c23b9b9d884e8200b829797113c7ad2d3ce1b85f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8046200015e1678c3bee7fe2f44d6a5dfee29b91011d508d009217af9711cfb",
+      "source_fact_keys": [
+        "source_fact:v1:1f09b799a8510a7f4a6f4407788a0e05df507969ccc9f6facf9f5839eee36e4a",
+        "source_fact:v1:308619407897c2ef1cc3549751ee78ac3a8826428da814e7886322054c1c07ec",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:4bf0b95ccb48660e1cbd6f122fd79275c0a0506e352b403591e3dab8b5f45096",
+        "source_fact:v1:761b10675bdc6d8f74b032ff3a1ad25e537060a3f16442e89df90bc5ff86201b",
+        "source_fact:v1:928e3ae34b1f371e62e59fb57640acb892abd3af706d53c6e5f8591d96bb6d85",
+        "source_fact:v1:9c3a2c2e5a22630e9b61e02cdf1a676088b6117fa25d9df4cbe0c1c22e56eeb7",
+        "source_fact:v1:a3f05db631d45eb325bb27852c52fe7ce4cc79ba4c69687600ccec1caefd95b8",
+        "source_fact:v1:a644c523cd2eb13b7cb3f830d6ff201c9f45173dcdddeb684425c82839539007",
+        "source_fact:v1:dbba7fbebe18382370b5f00ce32c3d8620f61d166066e490fbb56cb526b79322",
+        "source_fact:v1:f9957dce89d4d12149c39aaf60585bba9533847ec97cd1a2587f6641d33f7b8a"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
     "original:7ce4fcae2fe2ed1fdb845777": {
       "first_seen_kst": "2026-10-02T22:19:09+09:00",
       "lanes": {
@@ -29363,6 +29578,23 @@
       "link": "https://www.edaily.co.kr/news/read?newsid=01640006645585040&parentid=02958566645585040&gubun=E",
       "source": "이데일리",
       "title": "\"AI 거품론 정면돌파\" 엔비디아, 204조 자사주 베팅한 이유"
+    },
+    "original:7f8ef7f20c213cda148d2d3e": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mt.co.kr/index.php/finance/2026/10/05/2026100514541723847",
+      "source": "머니투데이",
+      "source_body_digest": "df4cb204a2ec3d3e0c0dd589c8c41236ba0d4a344a4b69c19152aba76eb195b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d17711413fd0f22ddc6da8be83725d64683fa286cd0b83c35ad22102684254f6",
+      "source_fact_keys": [
+        "source_fact:v1:716dfff7d537a700bac66dd2bcfda289b7a2463f57cc923e6c72f30d368f3929"
+      ],
+      "source_published_kst": "2026-10-05T16:20+09:00",
+      "title": "'해킹 사태' 은행장 국감 줄줄이 소환될듯..연말 CEO 연임 '브레이크'"
     },
     "original:7fd5e5d86dd47c62f603c6f2": {
       "first_seen_kst": "2026-09-18T20:38:14+09:00",
@@ -32502,20 +32734,21 @@
     "original:b3e169e954d551ba3835b847": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
-        "live": "2026-10-05T22:02:54+09:00"
+        "live": "2026-10-05T22:12:53+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:02:54+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169819",
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168748",
       "source": "매일경제",
-      "source_body_digest": "af54d0df4ce29ff0bbef17adc58acbc9a608f07edc414d94c673b4da25c137db",
+      "source_body_digest": "f48cfc61fc39a645cc91003ac60eb19176ffe11a9c69f0a10ad18def1929ec69",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6742a14e638c64e268cff6091c216effa122aa35ae4fd1a3b60d09e7ccdb1e3e",
+      "source_fact_identity": "source_facts:v1:b2a9ae53aef3212ff0d5a752e9908d9a3e93b8b18d62732224792098ab6ab590",
       "source_fact_keys": [
         "source_fact:v1:13b75a599669876641fb57a62960959eb36d53145356fc92ba412ae7f9eb856d",
         "source_fact:v1:16871cc87558602445696ebb336657c8e646e1de5d38271dafab9cbd2194059e",
         "source_fact:v1:317e63addfabc1d17ecec1f5715007a489b838e6b5c4f4ffddee64829a74d54f",
         "source_fact:v1:9c49d64e7a9180554086bb25310f66af6a4757227330a9a0d0afdf27aebff2da",
         "source_fact:v1:a03cbeca546fc37cebbe7d31cf7ddcee3867232e9460c21f98c5055f1a887ee2",
+        "source_fact:v1:c7ed4342542d2b9f08b3f3852012fe4399ba011030faeb28375bd79f91e9f0f9",
         "source_fact:v1:e4c677fb3cfeec2a7b5472e8a831a78d98f535f4329e40f565cc31490d800951",
         "source_fact:v1:fdc44bea9c16db5f986aa7fa1961f2c53f239e67f1d17e523bb2a5d5d61eca7d"
       ],
@@ -37125,6 +37358,30 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
     },
+    "source_fact:060bbe26a6926a33fa38087b": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168748",
+      "source": "매일경제",
+      "source_body_digest": "f48cfc61fc39a645cc91003ac60eb19176ffe11a9c69f0a10ad18def1929ec69",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b2a9ae53aef3212ff0d5a752e9908d9a3e93b8b18d62732224792098ab6ab590",
+      "source_fact_keys": [
+        "source_fact:v1:13b75a599669876641fb57a62960959eb36d53145356fc92ba412ae7f9eb856d",
+        "source_fact:v1:16871cc87558602445696ebb336657c8e646e1de5d38271dafab9cbd2194059e",
+        "source_fact:v1:317e63addfabc1d17ecec1f5715007a489b838e6b5c4f4ffddee64829a74d54f",
+        "source_fact:v1:9c49d64e7a9180554086bb25310f66af6a4757227330a9a0d0afdf27aebff2da",
+        "source_fact:v1:a03cbeca546fc37cebbe7d31cf7ddcee3867232e9460c21f98c5055f1a887ee2",
+        "source_fact:v1:c7ed4342542d2b9f08b3f3852012fe4399ba011030faeb28375bd79f91e9f0f9",
+        "source_fact:v1:e4c677fb3cfeec2a7b5472e8a831a78d98f535f4329e40f565cc31490d800951",
+        "source_fact:v1:fdc44bea9c16db5f986aa7fa1961f2c53f239e67f1d17e523bb2a5d5d61eca7d"
+      ],
+      "source_published_kst": "2026-10-05T21:54+09:00",
+      "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
+    },
     "source_fact:061f22d1f79544d3c4fffbea": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -38645,6 +38902,33 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "source_fact:3cfbca4f99820f5cc38cbe67": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814461",
+      "source": "뉴시스",
+      "source_body_digest": "9894ace8a2926ee4307cbc52c23b9b9d884e8200b829797113c7ad2d3ce1b85f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8046200015e1678c3bee7fe2f44d6a5dfee29b91011d508d009217af9711cfb",
+      "source_fact_keys": [
+        "source_fact:v1:1f09b799a8510a7f4a6f4407788a0e05df507969ccc9f6facf9f5839eee36e4a",
+        "source_fact:v1:308619407897c2ef1cc3549751ee78ac3a8826428da814e7886322054c1c07ec",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:4bf0b95ccb48660e1cbd6f122fd79275c0a0506e352b403591e3dab8b5f45096",
+        "source_fact:v1:761b10675bdc6d8f74b032ff3a1ad25e537060a3f16442e89df90bc5ff86201b",
+        "source_fact:v1:928e3ae34b1f371e62e59fb57640acb892abd3af706d53c6e5f8591d96bb6d85",
+        "source_fact:v1:9c3a2c2e5a22630e9b61e02cdf1a676088b6117fa25d9df4cbe0c1c22e56eeb7",
+        "source_fact:v1:a3f05db631d45eb325bb27852c52fe7ce4cc79ba4c69687600ccec1caefd95b8",
+        "source_fact:v1:a644c523cd2eb13b7cb3f830d6ff201c9f45173dcdddeb684425c82839539007",
+        "source_fact:v1:dbba7fbebe18382370b5f00ce32c3d8620f61d166066e490fbb56cb526b79322",
+        "source_fact:v1:f9957dce89d4d12149c39aaf60585bba9533847ec97cd1a2587f6641d33f7b8a"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
     "source_fact:3e11f48d56b390a31413a947": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -39882,6 +40166,33 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "source_fact:5dd806d7a2801ff9f76461d3": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814461",
+      "source": "뉴시스",
+      "source_body_digest": "9894ace8a2926ee4307cbc52c23b9b9d884e8200b829797113c7ad2d3ce1b85f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8046200015e1678c3bee7fe2f44d6a5dfee29b91011d508d009217af9711cfb",
+      "source_fact_keys": [
+        "source_fact:v1:1f09b799a8510a7f4a6f4407788a0e05df507969ccc9f6facf9f5839eee36e4a",
+        "source_fact:v1:308619407897c2ef1cc3549751ee78ac3a8826428da814e7886322054c1c07ec",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:4bf0b95ccb48660e1cbd6f122fd79275c0a0506e352b403591e3dab8b5f45096",
+        "source_fact:v1:761b10675bdc6d8f74b032ff3a1ad25e537060a3f16442e89df90bc5ff86201b",
+        "source_fact:v1:928e3ae34b1f371e62e59fb57640acb892abd3af706d53c6e5f8591d96bb6d85",
+        "source_fact:v1:9c3a2c2e5a22630e9b61e02cdf1a676088b6117fa25d9df4cbe0c1c22e56eeb7",
+        "source_fact:v1:a3f05db631d45eb325bb27852c52fe7ce4cc79ba4c69687600ccec1caefd95b8",
+        "source_fact:v1:a644c523cd2eb13b7cb3f830d6ff201c9f45173dcdddeb684425c82839539007",
+        "source_fact:v1:dbba7fbebe18382370b5f00ce32c3d8620f61d166066e490fbb56cb526b79322",
+        "source_fact:v1:f9957dce89d4d12149c39aaf60585bba9533847ec97cd1a2587f6641d33f7b8a"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
     "source_fact:5e5e61f6464f28c6fcb53d26": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -39931,20 +40242,21 @@
     "source_fact:5f91f642a35dc7e8d7476d06": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
-        "live": "2026-10-05T22:02:54+09:00"
+        "live": "2026-10-05T22:12:53+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:02:54+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169819",
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168748",
       "source": "매일경제",
-      "source_body_digest": "af54d0df4ce29ff0bbef17adc58acbc9a608f07edc414d94c673b4da25c137db",
+      "source_body_digest": "f48cfc61fc39a645cc91003ac60eb19176ffe11a9c69f0a10ad18def1929ec69",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6742a14e638c64e268cff6091c216effa122aa35ae4fd1a3b60d09e7ccdb1e3e",
+      "source_fact_identity": "source_facts:v1:b2a9ae53aef3212ff0d5a752e9908d9a3e93b8b18d62732224792098ab6ab590",
       "source_fact_keys": [
         "source_fact:v1:13b75a599669876641fb57a62960959eb36d53145356fc92ba412ae7f9eb856d",
         "source_fact:v1:16871cc87558602445696ebb336657c8e646e1de5d38271dafab9cbd2194059e",
         "source_fact:v1:317e63addfabc1d17ecec1f5715007a489b838e6b5c4f4ffddee64829a74d54f",
         "source_fact:v1:9c49d64e7a9180554086bb25310f66af6a4757227330a9a0d0afdf27aebff2da",
         "source_fact:v1:a03cbeca546fc37cebbe7d31cf7ddcee3867232e9460c21f98c5055f1a887ee2",
+        "source_fact:v1:c7ed4342542d2b9f08b3f3852012fe4399ba011030faeb28375bd79f91e9f0f9",
         "source_fact:v1:e4c677fb3cfeec2a7b5472e8a831a78d98f535f4329e40f565cc31490d800951",
         "source_fact:v1:fdc44bea9c16db5f986aa7fa1961f2c53f239e67f1d17e523bb2a5d5d61eca7d"
       ],
@@ -40574,6 +40886,33 @@
       "source_published_kst": "2026-10-05T19:19+09:00",
       "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
     },
+    "source_fact:71b9978bc81c18699bf6f1e5": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814461",
+      "source": "뉴시스",
+      "source_body_digest": "9894ace8a2926ee4307cbc52c23b9b9d884e8200b829797113c7ad2d3ce1b85f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8046200015e1678c3bee7fe2f44d6a5dfee29b91011d508d009217af9711cfb",
+      "source_fact_keys": [
+        "source_fact:v1:1f09b799a8510a7f4a6f4407788a0e05df507969ccc9f6facf9f5839eee36e4a",
+        "source_fact:v1:308619407897c2ef1cc3549751ee78ac3a8826428da814e7886322054c1c07ec",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:4bf0b95ccb48660e1cbd6f122fd79275c0a0506e352b403591e3dab8b5f45096",
+        "source_fact:v1:761b10675bdc6d8f74b032ff3a1ad25e537060a3f16442e89df90bc5ff86201b",
+        "source_fact:v1:928e3ae34b1f371e62e59fb57640acb892abd3af706d53c6e5f8591d96bb6d85",
+        "source_fact:v1:9c3a2c2e5a22630e9b61e02cdf1a676088b6117fa25d9df4cbe0c1c22e56eeb7",
+        "source_fact:v1:a3f05db631d45eb325bb27852c52fe7ce4cc79ba4c69687600ccec1caefd95b8",
+        "source_fact:v1:a644c523cd2eb13b7cb3f830d6ff201c9f45173dcdddeb684425c82839539007",
+        "source_fact:v1:dbba7fbebe18382370b5f00ce32c3d8620f61d166066e490fbb56cb526b79322",
+        "source_fact:v1:f9957dce89d4d12149c39aaf60585bba9533847ec97cd1a2587f6641d33f7b8a"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
     "source_fact:72d1032d9d14677ed04a110a": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -40783,6 +41122,33 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:747925712a1fd1b61cf89af3": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814461",
+      "source": "뉴시스",
+      "source_body_digest": "9894ace8a2926ee4307cbc52c23b9b9d884e8200b829797113c7ad2d3ce1b85f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8046200015e1678c3bee7fe2f44d6a5dfee29b91011d508d009217af9711cfb",
+      "source_fact_keys": [
+        "source_fact:v1:1f09b799a8510a7f4a6f4407788a0e05df507969ccc9f6facf9f5839eee36e4a",
+        "source_fact:v1:308619407897c2ef1cc3549751ee78ac3a8826428da814e7886322054c1c07ec",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:4bf0b95ccb48660e1cbd6f122fd79275c0a0506e352b403591e3dab8b5f45096",
+        "source_fact:v1:761b10675bdc6d8f74b032ff3a1ad25e537060a3f16442e89df90bc5ff86201b",
+        "source_fact:v1:928e3ae34b1f371e62e59fb57640acb892abd3af706d53c6e5f8591d96bb6d85",
+        "source_fact:v1:9c3a2c2e5a22630e9b61e02cdf1a676088b6117fa25d9df4cbe0c1c22e56eeb7",
+        "source_fact:v1:a3f05db631d45eb325bb27852c52fe7ce4cc79ba4c69687600ccec1caefd95b8",
+        "source_fact:v1:a644c523cd2eb13b7cb3f830d6ff201c9f45173dcdddeb684425c82839539007",
+        "source_fact:v1:dbba7fbebe18382370b5f00ce32c3d8620f61d166066e490fbb56cb526b79322",
+        "source_fact:v1:f9957dce89d4d12149c39aaf60585bba9533847ec97cd1a2587f6641d33f7b8a"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
     "source_fact:74bbabdcc444726d8cbf65bf": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -40882,6 +41248,33 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
+    "source_fact:77683e5a7c17a268a15225fd": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814461",
+      "source": "뉴시스",
+      "source_body_digest": "9894ace8a2926ee4307cbc52c23b9b9d884e8200b829797113c7ad2d3ce1b85f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8046200015e1678c3bee7fe2f44d6a5dfee29b91011d508d009217af9711cfb",
+      "source_fact_keys": [
+        "source_fact:v1:1f09b799a8510a7f4a6f4407788a0e05df507969ccc9f6facf9f5839eee36e4a",
+        "source_fact:v1:308619407897c2ef1cc3549751ee78ac3a8826428da814e7886322054c1c07ec",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:4bf0b95ccb48660e1cbd6f122fd79275c0a0506e352b403591e3dab8b5f45096",
+        "source_fact:v1:761b10675bdc6d8f74b032ff3a1ad25e537060a3f16442e89df90bc5ff86201b",
+        "source_fact:v1:928e3ae34b1f371e62e59fb57640acb892abd3af706d53c6e5f8591d96bb6d85",
+        "source_fact:v1:9c3a2c2e5a22630e9b61e02cdf1a676088b6117fa25d9df4cbe0c1c22e56eeb7",
+        "source_fact:v1:a3f05db631d45eb325bb27852c52fe7ce4cc79ba4c69687600ccec1caefd95b8",
+        "source_fact:v1:a644c523cd2eb13b7cb3f830d6ff201c9f45173dcdddeb684425c82839539007",
+        "source_fact:v1:dbba7fbebe18382370b5f00ce32c3d8620f61d166066e490fbb56cb526b79322",
+        "source_fact:v1:f9957dce89d4d12149c39aaf60585bba9533847ec97cd1a2587f6641d33f7b8a"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
     "source_fact:78bef282f8b77ba45a50c8f3": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -41216,6 +41609,33 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "source_fact:7e54f3fa4b282d5f2dda29e6": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814461",
+      "source": "뉴시스",
+      "source_body_digest": "9894ace8a2926ee4307cbc52c23b9b9d884e8200b829797113c7ad2d3ce1b85f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8046200015e1678c3bee7fe2f44d6a5dfee29b91011d508d009217af9711cfb",
+      "source_fact_keys": [
+        "source_fact:v1:1f09b799a8510a7f4a6f4407788a0e05df507969ccc9f6facf9f5839eee36e4a",
+        "source_fact:v1:308619407897c2ef1cc3549751ee78ac3a8826428da814e7886322054c1c07ec",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:4bf0b95ccb48660e1cbd6f122fd79275c0a0506e352b403591e3dab8b5f45096",
+        "source_fact:v1:761b10675bdc6d8f74b032ff3a1ad25e537060a3f16442e89df90bc5ff86201b",
+        "source_fact:v1:928e3ae34b1f371e62e59fb57640acb892abd3af706d53c6e5f8591d96bb6d85",
+        "source_fact:v1:9c3a2c2e5a22630e9b61e02cdf1a676088b6117fa25d9df4cbe0c1c22e56eeb7",
+        "source_fact:v1:a3f05db631d45eb325bb27852c52fe7ce4cc79ba4c69687600ccec1caefd95b8",
+        "source_fact:v1:a644c523cd2eb13b7cb3f830d6ff201c9f45173dcdddeb684425c82839539007",
+        "source_fact:v1:dbba7fbebe18382370b5f00ce32c3d8620f61d166066e490fbb56cb526b79322",
+        "source_fact:v1:f9957dce89d4d12149c39aaf60585bba9533847ec97cd1a2587f6641d33f7b8a"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
     "source_fact:7fada13fdb5c12748c082d88": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -41652,6 +42072,33 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
+    "source_fact:8b96c74abdc781b5acff1e73": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814461",
+      "source": "뉴시스",
+      "source_body_digest": "9894ace8a2926ee4307cbc52c23b9b9d884e8200b829797113c7ad2d3ce1b85f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8046200015e1678c3bee7fe2f44d6a5dfee29b91011d508d009217af9711cfb",
+      "source_fact_keys": [
+        "source_fact:v1:1f09b799a8510a7f4a6f4407788a0e05df507969ccc9f6facf9f5839eee36e4a",
+        "source_fact:v1:308619407897c2ef1cc3549751ee78ac3a8826428da814e7886322054c1c07ec",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:4bf0b95ccb48660e1cbd6f122fd79275c0a0506e352b403591e3dab8b5f45096",
+        "source_fact:v1:761b10675bdc6d8f74b032ff3a1ad25e537060a3f16442e89df90bc5ff86201b",
+        "source_fact:v1:928e3ae34b1f371e62e59fb57640acb892abd3af706d53c6e5f8591d96bb6d85",
+        "source_fact:v1:9c3a2c2e5a22630e9b61e02cdf1a676088b6117fa25d9df4cbe0c1c22e56eeb7",
+        "source_fact:v1:a3f05db631d45eb325bb27852c52fe7ce4cc79ba4c69687600ccec1caefd95b8",
+        "source_fact:v1:a644c523cd2eb13b7cb3f830d6ff201c9f45173dcdddeb684425c82839539007",
+        "source_fact:v1:dbba7fbebe18382370b5f00ce32c3d8620f61d166066e490fbb56cb526b79322",
+        "source_fact:v1:f9957dce89d4d12149c39aaf60585bba9533847ec97cd1a2587f6641d33f7b8a"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
     "source_fact:8bc4efa03764b074d5a3b107": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -42119,20 +42566,21 @@
     "source_fact:9cf63cb3e4f296755c62543a": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
-        "live": "2026-10-05T22:02:54+09:00"
+        "live": "2026-10-05T22:12:53+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:02:54+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169819",
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168748",
       "source": "매일경제",
-      "source_body_digest": "af54d0df4ce29ff0bbef17adc58acbc9a608f07edc414d94c673b4da25c137db",
+      "source_body_digest": "f48cfc61fc39a645cc91003ac60eb19176ffe11a9c69f0a10ad18def1929ec69",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6742a14e638c64e268cff6091c216effa122aa35ae4fd1a3b60d09e7ccdb1e3e",
+      "source_fact_identity": "source_facts:v1:b2a9ae53aef3212ff0d5a752e9908d9a3e93b8b18d62732224792098ab6ab590",
       "source_fact_keys": [
         "source_fact:v1:13b75a599669876641fb57a62960959eb36d53145356fc92ba412ae7f9eb856d",
         "source_fact:v1:16871cc87558602445696ebb336657c8e646e1de5d38271dafab9cbd2194059e",
         "source_fact:v1:317e63addfabc1d17ecec1f5715007a489b838e6b5c4f4ffddee64829a74d54f",
         "source_fact:v1:9c49d64e7a9180554086bb25310f66af6a4757227330a9a0d0afdf27aebff2da",
         "source_fact:v1:a03cbeca546fc37cebbe7d31cf7ddcee3867232e9460c21f98c5055f1a887ee2",
+        "source_fact:v1:c7ed4342542d2b9f08b3f3852012fe4399ba011030faeb28375bd79f91e9f0f9",
         "source_fact:v1:e4c677fb3cfeec2a7b5472e8a831a78d98f535f4329e40f565cc31490d800951",
         "source_fact:v1:fdc44bea9c16db5f986aa7fa1961f2c53f239e67f1d17e523bb2a5d5d61eca7d"
       ],
@@ -42425,6 +42873,33 @@
       "source_published_kst": "2026-10-04T23:56+09:00",
       "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
     },
+    "source_fact:a55b6bbe3bc49481d6a7e9c1": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814461",
+      "source": "뉴시스",
+      "source_body_digest": "9894ace8a2926ee4307cbc52c23b9b9d884e8200b829797113c7ad2d3ce1b85f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8046200015e1678c3bee7fe2f44d6a5dfee29b91011d508d009217af9711cfb",
+      "source_fact_keys": [
+        "source_fact:v1:1f09b799a8510a7f4a6f4407788a0e05df507969ccc9f6facf9f5839eee36e4a",
+        "source_fact:v1:308619407897c2ef1cc3549751ee78ac3a8826428da814e7886322054c1c07ec",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:4bf0b95ccb48660e1cbd6f122fd79275c0a0506e352b403591e3dab8b5f45096",
+        "source_fact:v1:761b10675bdc6d8f74b032ff3a1ad25e537060a3f16442e89df90bc5ff86201b",
+        "source_fact:v1:928e3ae34b1f371e62e59fb57640acb892abd3af706d53c6e5f8591d96bb6d85",
+        "source_fact:v1:9c3a2c2e5a22630e9b61e02cdf1a676088b6117fa25d9df4cbe0c1c22e56eeb7",
+        "source_fact:v1:a3f05db631d45eb325bb27852c52fe7ce4cc79ba4c69687600ccec1caefd95b8",
+        "source_fact:v1:a644c523cd2eb13b7cb3f830d6ff201c9f45173dcdddeb684425c82839539007",
+        "source_fact:v1:dbba7fbebe18382370b5f00ce32c3d8620f61d166066e490fbb56cb526b79322",
+        "source_fact:v1:f9957dce89d4d12149c39aaf60585bba9533847ec97cd1a2587f6641d33f7b8a"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
     "source_fact:a6246fdc73b46fdb0fd25c54": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -42474,25 +42949,53 @@
     "source_fact:a714bfe7d8e79c2c5a5df1dc": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
-        "live": "2026-10-05T22:02:54+09:00"
+        "live": "2026-10-05T22:12:53+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:02:54+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169819",
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168748",
       "source": "매일경제",
-      "source_body_digest": "af54d0df4ce29ff0bbef17adc58acbc9a608f07edc414d94c673b4da25c137db",
+      "source_body_digest": "f48cfc61fc39a645cc91003ac60eb19176ffe11a9c69f0a10ad18def1929ec69",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6742a14e638c64e268cff6091c216effa122aa35ae4fd1a3b60d09e7ccdb1e3e",
+      "source_fact_identity": "source_facts:v1:b2a9ae53aef3212ff0d5a752e9908d9a3e93b8b18d62732224792098ab6ab590",
       "source_fact_keys": [
         "source_fact:v1:13b75a599669876641fb57a62960959eb36d53145356fc92ba412ae7f9eb856d",
         "source_fact:v1:16871cc87558602445696ebb336657c8e646e1de5d38271dafab9cbd2194059e",
         "source_fact:v1:317e63addfabc1d17ecec1f5715007a489b838e6b5c4f4ffddee64829a74d54f",
         "source_fact:v1:9c49d64e7a9180554086bb25310f66af6a4757227330a9a0d0afdf27aebff2da",
         "source_fact:v1:a03cbeca546fc37cebbe7d31cf7ddcee3867232e9460c21f98c5055f1a887ee2",
+        "source_fact:v1:c7ed4342542d2b9f08b3f3852012fe4399ba011030faeb28375bd79f91e9f0f9",
         "source_fact:v1:e4c677fb3cfeec2a7b5472e8a831a78d98f535f4329e40f565cc31490d800951",
         "source_fact:v1:fdc44bea9c16db5f986aa7fa1961f2c53f239e67f1d17e523bb2a5d5d61eca7d"
       ],
       "source_published_kst": "2026-10-05T21:54+09:00",
       "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
+    },
+    "source_fact:a78181e73107e3e4ca7d525f": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814461",
+      "source": "뉴시스",
+      "source_body_digest": "9894ace8a2926ee4307cbc52c23b9b9d884e8200b829797113c7ad2d3ce1b85f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8046200015e1678c3bee7fe2f44d6a5dfee29b91011d508d009217af9711cfb",
+      "source_fact_keys": [
+        "source_fact:v1:1f09b799a8510a7f4a6f4407788a0e05df507969ccc9f6facf9f5839eee36e4a",
+        "source_fact:v1:308619407897c2ef1cc3549751ee78ac3a8826428da814e7886322054c1c07ec",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:4bf0b95ccb48660e1cbd6f122fd79275c0a0506e352b403591e3dab8b5f45096",
+        "source_fact:v1:761b10675bdc6d8f74b032ff3a1ad25e537060a3f16442e89df90bc5ff86201b",
+        "source_fact:v1:928e3ae34b1f371e62e59fb57640acb892abd3af706d53c6e5f8591d96bb6d85",
+        "source_fact:v1:9c3a2c2e5a22630e9b61e02cdf1a676088b6117fa25d9df4cbe0c1c22e56eeb7",
+        "source_fact:v1:a3f05db631d45eb325bb27852c52fe7ce4cc79ba4c69687600ccec1caefd95b8",
+        "source_fact:v1:a644c523cd2eb13b7cb3f830d6ff201c9f45173dcdddeb684425c82839539007",
+        "source_fact:v1:dbba7fbebe18382370b5f00ce32c3d8620f61d166066e490fbb56cb526b79322",
+        "source_fact:v1:f9957dce89d4d12149c39aaf60585bba9533847ec97cd1a2587f6641d33f7b8a"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
     "source_fact:a89e859fdbfade7a0eea29db": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -42886,6 +43389,23 @@
       "source_published_kst": "2026-10-05T13:25+09:00",
       "title": "'北 책임 추궁'과 '한반도 긴장 완화'…DMZ 지뢰사고 대응 딜레마"
     },
+    "source_fact:b7d546416865a043fd65f919": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mt.co.kr/index.php/finance/2026/10/05/2026100514541723847",
+      "source": "머니투데이",
+      "source_body_digest": "df4cb204a2ec3d3e0c0dd589c8c41236ba0d4a344a4b69c19152aba76eb195b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d17711413fd0f22ddc6da8be83725d64683fa286cd0b83c35ad22102684254f6",
+      "source_fact_keys": [
+        "source_fact:v1:716dfff7d537a700bac66dd2bcfda289b7a2463f57cc923e6c72f30d368f3929"
+      ],
+      "source_published_kst": "2026-10-05T16:20+09:00",
+      "title": "'해킹 사태' 은행장 국감 줄줄이 소환될듯..연말 CEO 연임 '브레이크'"
+    },
     "source_fact:b81228cd3d9755329cbbd030": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -42996,6 +43516,33 @@
       ],
       "source_published_kst": "2026-10-05T17:46+09:00",
       "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
+    },
+    "source_fact:bc6e13b7b1742874c357b996": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814461",
+      "source": "뉴시스",
+      "source_body_digest": "9894ace8a2926ee4307cbc52c23b9b9d884e8200b829797113c7ad2d3ce1b85f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8046200015e1678c3bee7fe2f44d6a5dfee29b91011d508d009217af9711cfb",
+      "source_fact_keys": [
+        "source_fact:v1:1f09b799a8510a7f4a6f4407788a0e05df507969ccc9f6facf9f5839eee36e4a",
+        "source_fact:v1:308619407897c2ef1cc3549751ee78ac3a8826428da814e7886322054c1c07ec",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:4bf0b95ccb48660e1cbd6f122fd79275c0a0506e352b403591e3dab8b5f45096",
+        "source_fact:v1:761b10675bdc6d8f74b032ff3a1ad25e537060a3f16442e89df90bc5ff86201b",
+        "source_fact:v1:928e3ae34b1f371e62e59fb57640acb892abd3af706d53c6e5f8591d96bb6d85",
+        "source_fact:v1:9c3a2c2e5a22630e9b61e02cdf1a676088b6117fa25d9df4cbe0c1c22e56eeb7",
+        "source_fact:v1:a3f05db631d45eb325bb27852c52fe7ce4cc79ba4c69687600ccec1caefd95b8",
+        "source_fact:v1:a644c523cd2eb13b7cb3f830d6ff201c9f45173dcdddeb684425c82839539007",
+        "source_fact:v1:dbba7fbebe18382370b5f00ce32c3d8620f61d166066e490fbb56cb526b79322",
+        "source_fact:v1:f9957dce89d4d12149c39aaf60585bba9533847ec97cd1a2587f6641d33f7b8a"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
     "source_fact:bdc87b2d555f987a68140c7c": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -43636,20 +44183,21 @@
     "source_fact:d69d90835583eb5d7319d665": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
-        "live": "2026-10-05T22:02:54+09:00"
+        "live": "2026-10-05T22:12:53+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:02:54+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169819",
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168748",
       "source": "매일경제",
-      "source_body_digest": "af54d0df4ce29ff0bbef17adc58acbc9a608f07edc414d94c673b4da25c137db",
+      "source_body_digest": "f48cfc61fc39a645cc91003ac60eb19176ffe11a9c69f0a10ad18def1929ec69",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6742a14e638c64e268cff6091c216effa122aa35ae4fd1a3b60d09e7ccdb1e3e",
+      "source_fact_identity": "source_facts:v1:b2a9ae53aef3212ff0d5a752e9908d9a3e93b8b18d62732224792098ab6ab590",
       "source_fact_keys": [
         "source_fact:v1:13b75a599669876641fb57a62960959eb36d53145356fc92ba412ae7f9eb856d",
         "source_fact:v1:16871cc87558602445696ebb336657c8e646e1de5d38271dafab9cbd2194059e",
         "source_fact:v1:317e63addfabc1d17ecec1f5715007a489b838e6b5c4f4ffddee64829a74d54f",
         "source_fact:v1:9c49d64e7a9180554086bb25310f66af6a4757227330a9a0d0afdf27aebff2da",
         "source_fact:v1:a03cbeca546fc37cebbe7d31cf7ddcee3867232e9460c21f98c5055f1a887ee2",
+        "source_fact:v1:c7ed4342542d2b9f08b3f3852012fe4399ba011030faeb28375bd79f91e9f0f9",
         "source_fact:v1:e4c677fb3cfeec2a7b5472e8a831a78d98f535f4329e40f565cc31490d800951",
         "source_fact:v1:fdc44bea9c16db5f986aa7fa1961f2c53f239e67f1d17e523bb2a5d5d61eca7d"
       ],
@@ -43850,20 +44398,21 @@
     "source_fact:dff8beb44be29d83358d0f8b": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
-        "live": "2026-10-05T22:02:54+09:00"
+        "live": "2026-10-05T22:12:53+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:02:54+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169819",
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168748",
       "source": "매일경제",
-      "source_body_digest": "af54d0df4ce29ff0bbef17adc58acbc9a608f07edc414d94c673b4da25c137db",
+      "source_body_digest": "f48cfc61fc39a645cc91003ac60eb19176ffe11a9c69f0a10ad18def1929ec69",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6742a14e638c64e268cff6091c216effa122aa35ae4fd1a3b60d09e7ccdb1e3e",
+      "source_fact_identity": "source_facts:v1:b2a9ae53aef3212ff0d5a752e9908d9a3e93b8b18d62732224792098ab6ab590",
       "source_fact_keys": [
         "source_fact:v1:13b75a599669876641fb57a62960959eb36d53145356fc92ba412ae7f9eb856d",
         "source_fact:v1:16871cc87558602445696ebb336657c8e646e1de5d38271dafab9cbd2194059e",
         "source_fact:v1:317e63addfabc1d17ecec1f5715007a489b838e6b5c4f4ffddee64829a74d54f",
         "source_fact:v1:9c49d64e7a9180554086bb25310f66af6a4757227330a9a0d0afdf27aebff2da",
         "source_fact:v1:a03cbeca546fc37cebbe7d31cf7ddcee3867232e9460c21f98c5055f1a887ee2",
+        "source_fact:v1:c7ed4342542d2b9f08b3f3852012fe4399ba011030faeb28375bd79f91e9f0f9",
         "source_fact:v1:e4c677fb3cfeec2a7b5472e8a831a78d98f535f4329e40f565cc31490d800951",
         "source_fact:v1:fdc44bea9c16db5f986aa7fa1961f2c53f239e67f1d17e523bb2a5d5d61eca7d"
       ],
@@ -43942,20 +44491,21 @@
     "source_fact:e1c1351189fd6262fd3a2442": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
-        "live": "2026-10-05T22:02:54+09:00"
+        "live": "2026-10-05T22:12:53+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:02:54+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169819",
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168748",
       "source": "매일경제",
-      "source_body_digest": "af54d0df4ce29ff0bbef17adc58acbc9a608f07edc414d94c673b4da25c137db",
+      "source_body_digest": "f48cfc61fc39a645cc91003ac60eb19176ffe11a9c69f0a10ad18def1929ec69",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6742a14e638c64e268cff6091c216effa122aa35ae4fd1a3b60d09e7ccdb1e3e",
+      "source_fact_identity": "source_facts:v1:b2a9ae53aef3212ff0d5a752e9908d9a3e93b8b18d62732224792098ab6ab590",
       "source_fact_keys": [
         "source_fact:v1:13b75a599669876641fb57a62960959eb36d53145356fc92ba412ae7f9eb856d",
         "source_fact:v1:16871cc87558602445696ebb336657c8e646e1de5d38271dafab9cbd2194059e",
         "source_fact:v1:317e63addfabc1d17ecec1f5715007a489b838e6b5c4f4ffddee64829a74d54f",
         "source_fact:v1:9c49d64e7a9180554086bb25310f66af6a4757227330a9a0d0afdf27aebff2da",
         "source_fact:v1:a03cbeca546fc37cebbe7d31cf7ddcee3867232e9460c21f98c5055f1a887ee2",
+        "source_fact:v1:c7ed4342542d2b9f08b3f3852012fe4399ba011030faeb28375bd79f91e9f0f9",
         "source_fact:v1:e4c677fb3cfeec2a7b5472e8a831a78d98f535f4329e40f565cc31490d800951",
         "source_fact:v1:fdc44bea9c16db5f986aa7fa1961f2c53f239e67f1d17e523bb2a5d5d61eca7d"
       ],
@@ -44221,20 +44771,21 @@
     "source_fact:e98c0f4202cf299eda9489d7": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
-        "live": "2026-10-05T22:02:54+09:00"
+        "live": "2026-10-05T22:12:53+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:02:54+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169819",
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168748",
       "source": "매일경제",
-      "source_body_digest": "af54d0df4ce29ff0bbef17adc58acbc9a608f07edc414d94c673b4da25c137db",
+      "source_body_digest": "f48cfc61fc39a645cc91003ac60eb19176ffe11a9c69f0a10ad18def1929ec69",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6742a14e638c64e268cff6091c216effa122aa35ae4fd1a3b60d09e7ccdb1e3e",
+      "source_fact_identity": "source_facts:v1:b2a9ae53aef3212ff0d5a752e9908d9a3e93b8b18d62732224792098ab6ab590",
       "source_fact_keys": [
         "source_fact:v1:13b75a599669876641fb57a62960959eb36d53145356fc92ba412ae7f9eb856d",
         "source_fact:v1:16871cc87558602445696ebb336657c8e646e1de5d38271dafab9cbd2194059e",
         "source_fact:v1:317e63addfabc1d17ecec1f5715007a489b838e6b5c4f4ffddee64829a74d54f",
         "source_fact:v1:9c49d64e7a9180554086bb25310f66af6a4757227330a9a0d0afdf27aebff2da",
         "source_fact:v1:a03cbeca546fc37cebbe7d31cf7ddcee3867232e9460c21f98c5055f1a887ee2",
+        "source_fact:v1:c7ed4342542d2b9f08b3f3852012fe4399ba011030faeb28375bd79f91e9f0f9",
         "source_fact:v1:e4c677fb3cfeec2a7b5472e8a831a78d98f535f4329e40f565cc31490d800951",
         "source_fact:v1:fdc44bea9c16db5f986aa7fa1961f2c53f239e67f1d17e523bb2a5d5d61eca7d"
       ],
@@ -44287,6 +44838,33 @@
       ],
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
+    "source_fact:ec5a11e656b407ba6c1bdcc3": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814461",
+      "source": "뉴시스",
+      "source_body_digest": "9894ace8a2926ee4307cbc52c23b9b9d884e8200b829797113c7ad2d3ce1b85f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8046200015e1678c3bee7fe2f44d6a5dfee29b91011d508d009217af9711cfb",
+      "source_fact_keys": [
+        "source_fact:v1:1f09b799a8510a7f4a6f4407788a0e05df507969ccc9f6facf9f5839eee36e4a",
+        "source_fact:v1:308619407897c2ef1cc3549751ee78ac3a8826428da814e7886322054c1c07ec",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:4bf0b95ccb48660e1cbd6f122fd79275c0a0506e352b403591e3dab8b5f45096",
+        "source_fact:v1:761b10675bdc6d8f74b032ff3a1ad25e537060a3f16442e89df90bc5ff86201b",
+        "source_fact:v1:928e3ae34b1f371e62e59fb57640acb892abd3af706d53c6e5f8591d96bb6d85",
+        "source_fact:v1:9c3a2c2e5a22630e9b61e02cdf1a676088b6117fa25d9df4cbe0c1c22e56eeb7",
+        "source_fact:v1:a3f05db631d45eb325bb27852c52fe7ce4cc79ba4c69687600ccec1caefd95b8",
+        "source_fact:v1:a644c523cd2eb13b7cb3f830d6ff201c9f45173dcdddeb684425c82839539007",
+        "source_fact:v1:dbba7fbebe18382370b5f00ce32c3d8620f61d166066e490fbb56cb526b79322",
+        "source_fact:v1:f9957dce89d4d12149c39aaf60585bba9533847ec97cd1a2587f6641d33f7b8a"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
     "source_fact:ec788c5c0d8fb24106364e81": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -46038,6 +46616,21 @@
       "source": "뉴시스",
       "source_event_identity": "",
       "title": "러 드론, 키이우 남부교 이틀새 4번 타격…차량'지하철 통행 끊겼다"
+    },
+    "title:1492b005303baef48b8538a1": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mk.co.kr/news/business/12168674",
+      "source": "매일경제",
+      "source_body_digest": "0fb20b5d4e6353326ec7c43a0a5e4aebd9b8196783b792d71336a53603a4ecc2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:00+09:00",
+      "title": "LG전자 냉각솔루션 앞세워 북미서 5GW급 '칠러' 수주"
     },
     "title:149d4a0d021a3e1cbaf1add7": {
       "first_seen_kst": "2026-09-20T06:23:53+09:00",
@@ -49346,6 +49939,21 @@
       "source_published_kst": "2026-10-04T13:00+09:00",
       "title": "건어물 팔던 나라서 반도체 수출국으로…韓수출 1조弗 눈앞 [세쓸통]"
     },
+    "title:49167d6365227167c1b43ca0": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632452",
+      "source": "이투데이",
+      "source_body_digest": "fcb44fa685be1e7b79548f1835a4f0a21b500b2dc616e8ef168d967a04e93351",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미서 5GW 규모 AI 데이터센터 냉각 솔루션 수주"
+    },
     "title:4925ba62c4516b4af9e3f084": {
       "first_seen_kst": "2026-10-03T05:48:31+09:00",
       "lanes": {
@@ -52269,6 +52877,33 @@
       "source_published_kst": "2026-10-05T06:00+09:00",
       "title": "4대 금융그룹, 3분기도 호실적…'역대급 연간 순이익' 예고"
     },
+    "title:7cc0693dff9d1639f75cbb68": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814461",
+      "source": "뉴시스",
+      "source_body_digest": "9894ace8a2926ee4307cbc52c23b9b9d884e8200b829797113c7ad2d3ce1b85f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d8046200015e1678c3bee7fe2f44d6a5dfee29b91011d508d009217af9711cfb",
+      "source_fact_keys": [
+        "source_fact:v1:1f09b799a8510a7f4a6f4407788a0e05df507969ccc9f6facf9f5839eee36e4a",
+        "source_fact:v1:308619407897c2ef1cc3549751ee78ac3a8826428da814e7886322054c1c07ec",
+        "source_fact:v1:3a520bc83bf7dc22c47db63235288a473607de468224034e0738ce096809f2ee",
+        "source_fact:v1:4bf0b95ccb48660e1cbd6f122fd79275c0a0506e352b403591e3dab8b5f45096",
+        "source_fact:v1:761b10675bdc6d8f74b032ff3a1ad25e537060a3f16442e89df90bc5ff86201b",
+        "source_fact:v1:928e3ae34b1f371e62e59fb57640acb892abd3af706d53c6e5f8591d96bb6d85",
+        "source_fact:v1:9c3a2c2e5a22630e9b61e02cdf1a676088b6117fa25d9df4cbe0c1c22e56eeb7",
+        "source_fact:v1:a3f05db631d45eb325bb27852c52fe7ce4cc79ba4c69687600ccec1caefd95b8",
+        "source_fact:v1:a644c523cd2eb13b7cb3f830d6ff201c9f45173dcdddeb684425c82839539007",
+        "source_fact:v1:dbba7fbebe18382370b5f00ce32c3d8620f61d166066e490fbb56cb526b79322",
+        "source_fact:v1:f9957dce89d4d12149c39aaf60585bba9533847ec97cd1a2587f6641d33f7b8a"
+      ],
+      "source_published_kst": "2026-10-05T22:05+09:00",
+      "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
     "title:7ce4fcae2fe2ed1fdb845777": {
       "first_seen_kst": "2026-10-02T22:19:09+09:00",
       "lanes": {
@@ -52408,6 +53043,23 @@
       "link": "https://www.edaily.co.kr/news/read?newsid=01640006645585040&parentid=02958566645585040&gubun=E",
       "source": "이데일리",
       "title": "\"AI 거품론 정면돌파\" 엔비디아, 204조 자사주 베팅한 이유"
+    },
+    "title:7f8ef7f20c213cda148d2d3e": {
+      "first_seen_kst": "2026-10-05T22:12:53+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:12:53+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mt.co.kr/index.php/finance/2026/10/05/2026100514541723847",
+      "source": "머니투데이",
+      "source_body_digest": "df4cb204a2ec3d3e0c0dd589c8c41236ba0d4a344a4b69c19152aba76eb195b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d17711413fd0f22ddc6da8be83725d64683fa286cd0b83c35ad22102684254f6",
+      "source_fact_keys": [
+        "source_fact:v1:716dfff7d537a700bac66dd2bcfda289b7a2463f57cc923e6c72f30d368f3929"
+      ],
+      "source_published_kst": "2026-10-05T16:20+09:00",
+      "title": "'해킹 사태' 은행장 국감 줄줄이 소환될듯..연말 CEO 연임 '브레이크'"
     },
     "title:7fd5e5d86dd47c62f603c6f2": {
       "first_seen_kst": "2026-09-18T20:38:14+09:00",
@@ -55610,20 +56262,21 @@
     "title:b3e169e954d551ba3835b847": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
-        "live": "2026-10-05T22:02:54+09:00"
+        "live": "2026-10-05T22:12:53+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:02:54+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169819",
+      "last_seen_kst": "2026-10-05T22:12:53+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168748",
       "source": "매일경제",
-      "source_body_digest": "af54d0df4ce29ff0bbef17adc58acbc9a608f07edc414d94c673b4da25c137db",
+      "source_body_digest": "f48cfc61fc39a645cc91003ac60eb19176ffe11a9c69f0a10ad18def1929ec69",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6742a14e638c64e268cff6091c216effa122aa35ae4fd1a3b60d09e7ccdb1e3e",
+      "source_fact_identity": "source_facts:v1:b2a9ae53aef3212ff0d5a752e9908d9a3e93b8b18d62732224792098ab6ab590",
       "source_fact_keys": [
         "source_fact:v1:13b75a599669876641fb57a62960959eb36d53145356fc92ba412ae7f9eb856d",
         "source_fact:v1:16871cc87558602445696ebb336657c8e646e1de5d38271dafab9cbd2194059e",
         "source_fact:v1:317e63addfabc1d17ecec1f5715007a489b838e6b5c4f4ffddee64829a74d54f",
         "source_fact:v1:9c49d64e7a9180554086bb25310f66af6a4757227330a9a0d0afdf27aebff2da",
         "source_fact:v1:a03cbeca546fc37cebbe7d31cf7ddcee3867232e9460c21f98c5055f1a887ee2",
+        "source_fact:v1:c7ed4342542d2b9f08b3f3852012fe4399ba011030faeb28375bd79f91e9f0f9",
         "source_fact:v1:e4c677fb3cfeec2a7b5472e8a831a78d98f535f4329e40f565cc31490d800951",
         "source_fact:v1:fdc44bea9c16db5f986aa7fa1961f2c53f239e67f1d17e523bb2a5d5d61eca7d"
       ],
@@ -60220,5 +60873,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T22:02:54+09:00"
+  "updated_at_kst": "2026-10-05T22:12:53+09:00"
 }
