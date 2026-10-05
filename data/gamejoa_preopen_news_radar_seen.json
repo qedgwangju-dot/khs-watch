@@ -6241,6 +6241,27 @@
       "source_published_kst": "2026-10-05T22:55+09:00",
       "title": "美국채금리 5.3%에 다우 ‘주춤’… 뉴욕증시 혼조 출발"
     },
+    "fact:72e73ef5b34240be9eee2cbe": {
+      "first_seen_kst": "2026-10-06T01:05:54+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:05:54+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:05:54+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261005_0000007760",
+      "source": "뉴시스",
+      "source_body_digest": "5299bb6fe4267153c0f16ad8c6d84dbd1b975291c7f13282eddbd2fe0b66a533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:987f003eb6290ffb81a3ba71b799cbae38f79db12e6dc48c02fe4cc24dfdc788",
+      "source_fact_keys": [
+        "source_fact:v1:156bc79377ecf23019713205678e499f8958dcbd473eedde096141fc874740f2",
+        "source_fact:v1:614fb150df830e43d86034b4a299594458dfadc99b939554821f90777a984bb8",
+        "source_fact:v1:9ca412aa26adb936e2195742c47df10233236c405b5665ad11214501a6ab68ca",
+        "source_fact:v1:9f13e61bf89133ce4816dcd10dde05d9be2e4abe2563778541dc5a447ceea824",
+        "source_fact:v1:b2fa5a3bae6474efc63617442e55e08032a3281a3b55c9d7130c5c1b3cad0204"
+      ],
+      "source_published_kst": "2026-10-05T20:21+09:00",
+      "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
+    },
     "fact:741211d482cbb8cff92e5b42": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -20648,6 +20669,21 @@
       "source": "파이낸셜뉴스",
       "title": "iM금융, 얼라이언스번스틴과 전략적 협력 확대 추진"
     },
+    "link:c203c3dbcd5e23031ef32e48": {
+      "first_seen_kst": "2026-10-06T01:05:54+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:05:54+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:05:54+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168789",
+      "source": "매일경제",
+      "source_body_digest": "ff3082e8ac5e6492c76e5fdd0d7b66df5c069d6a078149dd94d9763f88670a50",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "지오그룹, ICE 시설 9억5000만 달러 매각에 자사주 매입 확대까지 주목"
+    },
     "link:c2b3bfde0ae38a2e29b477ca": {
       "first_seen_kst": "2026-10-04T08:29:55+09:00",
       "lanes": {
@@ -21708,6 +21744,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T12:13+09:00",
       "title": "고금리·고유가에도 나스닥100 굳건한 이유- 매경ECONOMY"
+    },
+    "link:d135ba65232f922d98fd3b3d": {
+      "first_seen_kst": "2026-10-06T01:05:54+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:05:54+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:05:54+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261005_0000007760",
+      "source": "뉴시스",
+      "source_body_digest": "5299bb6fe4267153c0f16ad8c6d84dbd1b975291c7f13282eddbd2fe0b66a533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:987f003eb6290ffb81a3ba71b799cbae38f79db12e6dc48c02fe4cc24dfdc788",
+      "source_fact_keys": [
+        "source_fact:v1:156bc79377ecf23019713205678e499f8958dcbd473eedde096141fc874740f2",
+        "source_fact:v1:614fb150df830e43d86034b4a299594458dfadc99b939554821f90777a984bb8",
+        "source_fact:v1:9ca412aa26adb936e2195742c47df10233236c405b5665ad11214501a6ab68ca",
+        "source_fact:v1:9f13e61bf89133ce4816dcd10dde05d9be2e4abe2563778541dc5a447ceea824",
+        "source_fact:v1:b2fa5a3bae6474efc63617442e55e08032a3281a3b55c9d7130c5c1b3cad0204"
+      ],
+      "source_published_kst": "2026-10-05T20:21+09:00",
+      "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
     },
     "link:d1948158db726ecf49fbdccf": {
       "first_seen_kst": "2026-10-03T19:42:44+09:00",
@@ -25532,6 +25589,21 @@
       "link": "https://www.yna.co.kr/view/AKR20260928063500009",
       "source": "연합뉴스",
       "title": "日 비상장주, 연내 美·유럽서도 거래된다 | 연합뉴스"
+    },
+    "original:0c98bcd3e473dde27111dfca": {
+      "first_seen_kst": "2026-10-06T01:05:54+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:05:54+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:05:54+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168789",
+      "source": "매일경제",
+      "source_body_digest": "ff3082e8ac5e6492c76e5fdd0d7b66df5c069d6a078149dd94d9763f88670a50",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "지오그룹, ICE 시설 9억5000만 달러 매각에 자사주 매입 확대까지 주목"
     },
     "original:0ce210bc4908dbd6372c2367": {
       "first_seen_kst": "2026-09-22T14:10:28+09:00",
@@ -36232,6 +36304,27 @@
       "source_published_kst": "2026-10-04T18:14+09:00",
       "title": "국제유가 급등 효과…원유 ETF, 수익률 1위"
     },
+    "original:b1595482286f1fd14e4353e6": {
+      "first_seen_kst": "2026-10-06T01:05:54+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:05:54+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:05:54+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261005_0000007760",
+      "source": "뉴시스",
+      "source_body_digest": "5299bb6fe4267153c0f16ad8c6d84dbd1b975291c7f13282eddbd2fe0b66a533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:987f003eb6290ffb81a3ba71b799cbae38f79db12e6dc48c02fe4cc24dfdc788",
+      "source_fact_keys": [
+        "source_fact:v1:156bc79377ecf23019713205678e499f8958dcbd473eedde096141fc874740f2",
+        "source_fact:v1:614fb150df830e43d86034b4a299594458dfadc99b939554821f90777a984bb8",
+        "source_fact:v1:9ca412aa26adb936e2195742c47df10233236c405b5665ad11214501a6ab68ca",
+        "source_fact:v1:9f13e61bf89133ce4816dcd10dde05d9be2e4abe2563778541dc5a447ceea824",
+        "source_fact:v1:b2fa5a3bae6474efc63617442e55e08032a3281a3b55c9d7130c5c1b3cad0204"
+      ],
+      "source_published_kst": "2026-10-05T20:21+09:00",
+      "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
+    },
     "original:b18679b05eda2f9ea8da388e": {
       "first_seen_kst": "2026-10-03T09:05:24+09:00",
       "lanes": {
@@ -41253,6 +41346,27 @@
       "source_published_kst": "2026-10-05T09:06+09:00",
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     },
+    "source_fact:0086d3c485895968a04e8311": {
+      "first_seen_kst": "2026-10-06T01:05:54+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:05:54+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:05:54+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261005_0000007760",
+      "source": "뉴시스",
+      "source_body_digest": "5299bb6fe4267153c0f16ad8c6d84dbd1b975291c7f13282eddbd2fe0b66a533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:987f003eb6290ffb81a3ba71b799cbae38f79db12e6dc48c02fe4cc24dfdc788",
+      "source_fact_keys": [
+        "source_fact:v1:156bc79377ecf23019713205678e499f8958dcbd473eedde096141fc874740f2",
+        "source_fact:v1:614fb150df830e43d86034b4a299594458dfadc99b939554821f90777a984bb8",
+        "source_fact:v1:9ca412aa26adb936e2195742c47df10233236c405b5665ad11214501a6ab68ca",
+        "source_fact:v1:9f13e61bf89133ce4816dcd10dde05d9be2e4abe2563778541dc5a447ceea824",
+        "source_fact:v1:b2fa5a3bae6474efc63617442e55e08032a3281a3b55c9d7130c5c1b3cad0204"
+      ],
+      "source_published_kst": "2026-10-05T20:21+09:00",
+      "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
+    },
     "source_fact:00d769a912ee4fe70bfd1118": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -44512,6 +44626,27 @@
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
     },
+    "source_fact:467eda62f2b559174370ee6b": {
+      "first_seen_kst": "2026-10-06T01:05:54+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:05:54+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:05:54+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261005_0000007760",
+      "source": "뉴시스",
+      "source_body_digest": "5299bb6fe4267153c0f16ad8c6d84dbd1b975291c7f13282eddbd2fe0b66a533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:987f003eb6290ffb81a3ba71b799cbae38f79db12e6dc48c02fe4cc24dfdc788",
+      "source_fact_keys": [
+        "source_fact:v1:156bc79377ecf23019713205678e499f8958dcbd473eedde096141fc874740f2",
+        "source_fact:v1:614fb150df830e43d86034b4a299594458dfadc99b939554821f90777a984bb8",
+        "source_fact:v1:9ca412aa26adb936e2195742c47df10233236c405b5665ad11214501a6ab68ca",
+        "source_fact:v1:9f13e61bf89133ce4816dcd10dde05d9be2e4abe2563778541dc5a447ceea824",
+        "source_fact:v1:b2fa5a3bae6474efc63617442e55e08032a3281a3b55c9d7130c5c1b3cad0204"
+      ],
+      "source_published_kst": "2026-10-05T20:21+09:00",
+      "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
+    },
     "source_fact:470fa28fbfe1e8691ac29a65": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -46564,6 +46699,27 @@
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "순창군, 대학생 생활비 지원사업 전개…10월6~23일 접수"
     },
+    "source_fact:6e12c532b66e32960c56b8f4": {
+      "first_seen_kst": "2026-10-06T01:05:54+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:05:54+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:05:54+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261005_0000007760",
+      "source": "뉴시스",
+      "source_body_digest": "5299bb6fe4267153c0f16ad8c6d84dbd1b975291c7f13282eddbd2fe0b66a533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:987f003eb6290ffb81a3ba71b799cbae38f79db12e6dc48c02fe4cc24dfdc788",
+      "source_fact_keys": [
+        "source_fact:v1:156bc79377ecf23019713205678e499f8958dcbd473eedde096141fc874740f2",
+        "source_fact:v1:614fb150df830e43d86034b4a299594458dfadc99b939554821f90777a984bb8",
+        "source_fact:v1:9ca412aa26adb936e2195742c47df10233236c405b5665ad11214501a6ab68ca",
+        "source_fact:v1:9f13e61bf89133ce4816dcd10dde05d9be2e4abe2563778541dc5a447ceea824",
+        "source_fact:v1:b2fa5a3bae6474efc63617442e55e08032a3281a3b55c9d7130c5c1b3cad0204"
+      ],
+      "source_published_kst": "2026-10-05T20:21+09:00",
+      "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
+    },
     "source_fact:6e1cd91e47f858641473a7a6": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
       "lanes": {
@@ -47710,6 +47866,27 @@
       ],
       "source_published_kst": "2026-10-05T22:50+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 해외CB 가격 확정..표면금리 0%"
+    },
+    "source_fact:7eca168de0771a546132b88e": {
+      "first_seen_kst": "2026-10-06T01:05:54+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:05:54+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:05:54+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261005_0000007760",
+      "source": "뉴시스",
+      "source_body_digest": "5299bb6fe4267153c0f16ad8c6d84dbd1b975291c7f13282eddbd2fe0b66a533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:987f003eb6290ffb81a3ba71b799cbae38f79db12e6dc48c02fe4cc24dfdc788",
+      "source_fact_keys": [
+        "source_fact:v1:156bc79377ecf23019713205678e499f8958dcbd473eedde096141fc874740f2",
+        "source_fact:v1:614fb150df830e43d86034b4a299594458dfadc99b939554821f90777a984bb8",
+        "source_fact:v1:9ca412aa26adb936e2195742c47df10233236c405b5665ad11214501a6ab68ca",
+        "source_fact:v1:9f13e61bf89133ce4816dcd10dde05d9be2e4abe2563778541dc5a447ceea824",
+        "source_fact:v1:b2fa5a3bae6474efc63617442e55e08032a3281a3b55c9d7130c5c1b3cad0204"
+      ],
+      "source_published_kst": "2026-10-05T20:21+09:00",
+      "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
     },
     "source_fact:7fada13fdb5c12748c082d88": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -51058,6 +51235,27 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:cb658a5584b8a32deb357e22": {
+      "first_seen_kst": "2026-10-06T01:05:54+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:05:54+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:05:54+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261005_0000007760",
+      "source": "뉴시스",
+      "source_body_digest": "5299bb6fe4267153c0f16ad8c6d84dbd1b975291c7f13282eddbd2fe0b66a533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:987f003eb6290ffb81a3ba71b799cbae38f79db12e6dc48c02fe4cc24dfdc788",
+      "source_fact_keys": [
+        "source_fact:v1:156bc79377ecf23019713205678e499f8958dcbd473eedde096141fc874740f2",
+        "source_fact:v1:614fb150df830e43d86034b4a299594458dfadc99b939554821f90777a984bb8",
+        "source_fact:v1:9ca412aa26adb936e2195742c47df10233236c405b5665ad11214501a6ab68ca",
+        "source_fact:v1:9f13e61bf89133ce4816dcd10dde05d9be2e4abe2563778541dc5a447ceea824",
+        "source_fact:v1:b2fa5a3bae6474efc63617442e55e08032a3281a3b55c9d7130c5c1b3cad0204"
+      ],
+      "source_published_kst": "2026-10-05T20:21+09:00",
+      "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
+    },
     "source_fact:cbd11c18f9e71d2ba852af7c": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -54184,6 +54382,21 @@
       "link": "https://www.yna.co.kr/view/AKR20260928063500009",
       "source": "연합뉴스",
       "title": "日 비상장주, 연내 美·유럽서도 거래된다 | 연합뉴스"
+    },
+    "title:0c98bcd3e473dde27111dfca": {
+      "first_seen_kst": "2026-10-06T01:05:54+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:05:54+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:05:54+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168789",
+      "source": "매일경제",
+      "source_body_digest": "ff3082e8ac5e6492c76e5fdd0d7b66df5c069d6a078149dd94d9763f88670a50",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "지오그룹, ICE 시설 9억5000만 달러 매각에 자사주 매입 확대까지 주목"
     },
     "title:0ce210bc4908dbd6372c2367": {
       "first_seen_kst": "2026-09-22T14:10:28+09:00",
@@ -64989,6 +65202,27 @@
       "source_published_kst": "2026-10-04T18:14+09:00",
       "title": "국제유가 급등 효과…원유 ETF, 수익률 1위"
     },
+    "title:b1595482286f1fd14e4353e6": {
+      "first_seen_kst": "2026-10-06T01:05:54+09:00",
+      "lanes": {
+        "live": "2026-10-06T01:05:54+09:00"
+      },
+      "last_seen_kst": "2026-10-06T01:05:54+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261005_0000007760",
+      "source": "뉴시스",
+      "source_body_digest": "5299bb6fe4267153c0f16ad8c6d84dbd1b975291c7f13282eddbd2fe0b66a533",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:987f003eb6290ffb81a3ba71b799cbae38f79db12e6dc48c02fe4cc24dfdc788",
+      "source_fact_keys": [
+        "source_fact:v1:156bc79377ecf23019713205678e499f8958dcbd473eedde096141fc874740f2",
+        "source_fact:v1:614fb150df830e43d86034b4a299594458dfadc99b939554821f90777a984bb8",
+        "source_fact:v1:9ca412aa26adb936e2195742c47df10233236c405b5665ad11214501a6ab68ca",
+        "source_fact:v1:9f13e61bf89133ce4816dcd10dde05d9be2e4abe2563778541dc5a447ceea824",
+        "source_fact:v1:b2fa5a3bae6474efc63617442e55e08032a3281a3b55c9d7130c5c1b3cad0204"
+      ],
+      "source_published_kst": "2026-10-05T20:21+09:00",
+      "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
+    },
     "title:b18679b05eda2f9ea8da388e": {
       "first_seen_kst": "2026-10-03T09:05:24+09:00",
       "lanes": {
@@ -70063,5 +70297,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T00:57:01+09:00"
+  "updated_at_kst": "2026-10-06T01:05:54+09:00"
 }
