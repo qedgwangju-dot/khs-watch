@@ -4186,6 +4186,30 @@
       "source": "머니투데이",
       "title": "트럼프 '알래스카 LNG' 콕 찍은 배경에 '폭발 직전' 고유가 민심"
     },
+    "event:d9f68e9c742b0457f3d6101b": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
+      "source": "뉴시스",
+      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_keys": [
+        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
+        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
+        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
+        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
+        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
+        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
+        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
     "event:d9fdb3c71a63bdf3e971c5af": {
       "first_seen_kst": "2026-10-01T06:08:16+09:00",
       "lanes": {
@@ -5761,6 +5785,23 @@
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "韓 비료, 브라질 진출 교두보…콩·옥수수 시장 겨냥"
     },
+    "fact:36c6d5d0923d3be57ddc097c": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814495",
+      "source": "뉴시스",
+      "source_body_digest": "d1084baf9d05e146aca2d33bb9c410f1b5fdb57b8a7c1a2fa64fbf9ffc7c7880",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:209851d73d0ffb0f7a6b59db88ea5601de6d2efed453fd9a74c2b2b631323946",
+      "source_fact_keys": [
+        "source_fact:v1:13e529417b5a7679c673a6c792f5d0120a12bc5e6459c000a14064526d6ed898"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "\"속옷도 가성비\"…롯데마트, 언더웨어 3000·5000원 균일가"
+    },
     "fact:3719606fa7a2a173f8a8a8df": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
       "lanes": {
@@ -5912,6 +5953,30 @@
       ],
       "source_published_kst": "2026-10-06T03:54+09:00",
       "title": "[美특징주]웰스파고, 모건스탠리 ‘매수’ 상향에 주가 2%↑"
+    },
+    "fact:42494d706b0f65b75cc2ed03": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
+      "source": "뉴시스",
+      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_keys": [
+        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
+        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
+        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
+        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
+        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
+        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
+        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "fact:48196e97d386c7c9195d05f4": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
@@ -6157,6 +6222,23 @@
       ],
       "source_published_kst": "2026-10-06T03:30+09:00",
       "title": "[美특징주]할리-데이비슨, 신제품·비용절감 기대에 월가 ‘매수’ 상향…주가 8%↑"
+    },
+    "fact:556f95296da6549b88eb3a52": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100605320427670",
+      "source": "머니투데이",
+      "source_body_digest": "ab5ac4291cf54b7e6fb3c29d5b4e42ccc50a2d0d425543a1c06efef44c60a159",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:236f9aea8e017b7cc6db7b476984fdb64746b5b6bfce55d49ea49a1cacbaed9c",
+      "source_fact_keys": [
+        "source_fact:v1:38d0719774c9e9df7a2b140604d319d0fd9ca1cbb8b47fb167c7267e26ef09d7"
+      ],
+      "source_published_kst": "2026-10-06T05:43+09:00",
+      "title": "美 부통령 \"알래스카 LNG 사업 투자, 한국과 세부사항 조율해야\""
     },
     "fact:55c50bb7ff39d169933f4fd7": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -6860,6 +6942,23 @@
       "source_published_kst": "2026-10-05T14:48+09:00",
       "title": "예멘 정부군 \"후티 군사시설 1122곳 공격…1747명 사망\""
     },
+    "fact:8285254795c56e137177681b": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812838",
+      "source": "뉴시스",
+      "source_body_digest": "feee650e15ba4ea27f9a6a73821b61db0660492405fa749951c308567d1dd1b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a32c977368499c83ceab2b848c790c1e0c6422ce5ae61a7d73f3ee759fc61534",
+      "source_fact_keys": [
+        "source_fact:v1:00a97334936d3a28cc4c3227be696219f16cc478854b7e39d755921be688dc9f"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[단독]새일여성 97% 취업 전환…1년 뒤 고용유지율은 60% 그쳐"
+    },
     "fact:84c27cfd1cfdcf7bb4a10974": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -7200,6 +7299,24 @@
       ],
       "source_published_kst": "2026-10-05T19:55+09:00",
       "title": "[美특징주]인텔, 개장 전 4%↓…머스크의 테라팹-TSMC 협력 논의"
+    },
+    "fact:97fff1a080bfa58c5e9a2ccc": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814483",
+      "source": "뉴시스",
+      "source_body_digest": "74e836970aed1e1f12eeb333d32d9ede9c6c8155d87c8dc7b711e81e00c9b10b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a130d6f0a7d186745e0cb0a75fe7897e6077efbee451dea5de52338a94a4ac92",
+      "source_fact_keys": [
+        "source_fact:v1:6317ec627b05bfb8f7f54a40321bf8f5139d4493e0d577eb384c1f9a74bc9b31",
+        "source_fact:v1:ed4a1657e482321ef96b1400d46463c19b61825faca1b146fd5d1bbf91bd5f8c"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "“내년에 터진다”…서울 전월세 대란 속 수도권 집값 동반 상승 우려"
     },
     "fact:98ff36873b676081b823c905": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -8093,6 +8210,30 @@
       ],
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
+    },
+    "fact:e53d2327261a87e60651a8eb": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814227",
+      "source": "뉴시스",
+      "source_body_digest": "4ffb41468b2cfa61934316874262a77030fcefac62319adb45c5247ae3feea7f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2317ed5149a2b40ffea4bb16952c03d5439891d60cd0c3cad99fd652f6baccd",
+      "source_fact_keys": [
+        "source_fact:v1:0d95ea9ba64ab2d658f173011c42ff0bc205d2c9f6019175d3b9711ea1a96f73",
+        "source_fact:v1:25a8b0b123a81f9c3bfed956f7e13ab42b453477bc4255ec597abba82f59a5a0",
+        "source_fact:v1:278492d389caaf246a1a7b4c296b3a1df6d888da552ac0934b64435db621d70e",
+        "source_fact:v1:2fa7e7d109d60440adf94a78c8e19025eae389f9e493b3f13083e71703988cad",
+        "source_fact:v1:31f38a345d3f9cda16dcb0d607135341825656c50ae30dca60c02dd3e8472090",
+        "source_fact:v1:7bd3858e44e29044f9a79c9f4ceea81b0aec4307a011a9af1067e63f7f5891a7",
+        "source_fact:v1:addd993048b5426a19b92492af4cc50fcb6deae4f1e8e9175b7d4c9e8a167d30",
+        "source_fact:v1:df669424c9d8132d4e26cbd93398cf9275bf9332e6a8e7e34b9a5db2360ef094"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
     "fact:e58601b09cd1e4a46b8a599f": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -9129,6 +9270,30 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003813064",
       "source": "뉴시스",
       "title": "AI 해킹 먹잇감 된 은행권…금융당국도 보안 대응 '비상'"
+    },
+    "link:0b50d9eac59db2726bbb7d9e": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
+      "source": "뉴시스",
+      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_keys": [
+        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
+        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
+        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
+        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
+        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
+        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
+        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "link:0b5567417310ca748146efdb": {
       "first_seen_kst": "2026-09-27T04:31:07+09:00",
@@ -10937,6 +11102,23 @@
       "source_published_kst": "2026-10-05T10:52+09:00",
       "title": "\"연어 30톤 풀었다\"…쿠팡, 항공 직송 생연어 최대 10% 할인"
     },
+    "link:28e6aa0acac7ca0f62ad2ba2": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812838",
+      "source": "뉴시스",
+      "source_body_digest": "feee650e15ba4ea27f9a6a73821b61db0660492405fa749951c308567d1dd1b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a32c977368499c83ceab2b848c790c1e0c6422ce5ae61a7d73f3ee759fc61534",
+      "source_fact_keys": [
+        "source_fact:v1:00a97334936d3a28cc4c3227be696219f16cc478854b7e39d755921be688dc9f"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[단독]새일여성 97% 취업 전환…1년 뒤 고용유지율은 60% 그쳐"
+    },
     "link:28f62282c217d01ced579f89": {
       "first_seen_kst": "2026-10-04T22:49:21+09:00",
       "lanes": {
@@ -12531,6 +12713,24 @@
       "source_published_kst": "2026-10-05T17:59+09:00",
       "title": "\"글로벌 방산 스타트업에 투자금 쇄도…올 상반기, 10년來 최고\" | 연합뉴스"
     },
+    "link:3e80868991bc311c69ca5fbb": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814483",
+      "source": "뉴시스",
+      "source_body_digest": "74e836970aed1e1f12eeb333d32d9ede9c6c8155d87c8dc7b711e81e00c9b10b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a130d6f0a7d186745e0cb0a75fe7897e6077efbee451dea5de52338a94a4ac92",
+      "source_fact_keys": [
+        "source_fact:v1:6317ec627b05bfb8f7f54a40321bf8f5139d4493e0d577eb384c1f9a74bc9b31",
+        "source_fact:v1:ed4a1657e482321ef96b1400d46463c19b61825faca1b146fd5d1bbf91bd5f8c"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "“내년에 터진다”…서울 전월세 대란 속 수도권 집값 동반 상승 우려"
+    },
     "link:3e9ff6b040017f60776024b8": {
       "first_seen_kst": "2026-10-02T17:34:05+09:00",
       "lanes": {
@@ -13829,6 +14029,23 @@
       "link": "https://www.yna.co.kr/view/AKR20261003005400072",
       "source": "연합뉴스",
       "title": "美고용 부진에 금리인상 우려 완화…나스닥 1.2%↑ | 연합뉴스"
+    },
+    "link:509c1341a632a2ad98fa61f5": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814495",
+      "source": "뉴시스",
+      "source_body_digest": "d1084baf9d05e146aca2d33bb9c410f1b5fdb57b8a7c1a2fa64fbf9ffc7c7880",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:209851d73d0ffb0f7a6b59db88ea5601de6d2efed453fd9a74c2b2b631323946",
+      "source_fact_keys": [
+        "source_fact:v1:13e529417b5a7679c673a6c792f5d0120a12bc5e6459c000a14064526d6ed898"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "\"속옷도 가성비\"…롯데마트, 언더웨어 3000·5000원 균일가"
     },
     "link:51119bce5af472351a3dc5a3": {
       "first_seen_kst": "2026-10-04T15:45:24+09:00",
@@ -22861,6 +23078,30 @@
       "source_published_kst": "2026-10-03T05:28+09:00",
       "title": "\"알래스카 등 트럼프 프로젝트, 선거 판도 뒤집기엔 역부족\""
     },
+    "link:cf3220f2f3187083a1f4ebfc": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814227",
+      "source": "뉴시스",
+      "source_body_digest": "4ffb41468b2cfa61934316874262a77030fcefac62319adb45c5247ae3feea7f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2317ed5149a2b40ffea4bb16952c03d5439891d60cd0c3cad99fd652f6baccd",
+      "source_fact_keys": [
+        "source_fact:v1:0d95ea9ba64ab2d658f173011c42ff0bc205d2c9f6019175d3b9711ea1a96f73",
+        "source_fact:v1:25a8b0b123a81f9c3bfed956f7e13ab42b453477bc4255ec597abba82f59a5a0",
+        "source_fact:v1:278492d389caaf246a1a7b4c296b3a1df6d888da552ac0934b64435db621d70e",
+        "source_fact:v1:2fa7e7d109d60440adf94a78c8e19025eae389f9e493b3f13083e71703988cad",
+        "source_fact:v1:31f38a345d3f9cda16dcb0d607135341825656c50ae30dca60c02dd3e8472090",
+        "source_fact:v1:7bd3858e44e29044f9a79c9f4ceea81b0aec4307a011a9af1067e63f7f5891a7",
+        "source_fact:v1:addd993048b5426a19b92492af4cc50fcb6deae4f1e8e9175b7d4c9e8a167d30",
+        "source_fact:v1:df669424c9d8132d4e26cbd93398cf9275bf9332e6a8e7e34b9a5db2360ef094"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
+    },
     "link:cf6efa15e666aa325632d1b5": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
       "lanes": {
@@ -24665,6 +24906,23 @@
       "source_event_identity": "",
       "title": "네비우스, 인퍼라이즈 인수로 AI 추론 스택 확장 나서"
     },
+    "link:e888deea3e7a4790146857ba": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100605320427670",
+      "source": "머니투데이",
+      "source_body_digest": "ab5ac4291cf54b7e6fb3c29d5b4e42ccc50a2d0d425543a1c06efef44c60a159",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:236f9aea8e017b7cc6db7b476984fdb64746b5b6bfce55d49ea49a1cacbaed9c",
+      "source_fact_keys": [
+        "source_fact:v1:38d0719774c9e9df7a2b140604d319d0fd9ca1cbb8b47fb167c7267e26ef09d7"
+      ],
+      "source_published_kst": "2026-10-06T05:43+09:00",
+      "title": "美 부통령 \"알래스카 LNG 사업 투자, 한국과 세부사항 조율해야\""
+    },
     "link:e88ff8fab441a751515ffce7": {
       "first_seen_kst": "2026-09-29T15:27:46+09:00",
       "lanes": {
@@ -24695,6 +24953,21 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03371846645608984",
       "source": "이데일리",
       "title": "일진전기, 英 해상풍력 전략망 2716억 수주"
+    },
+    "link:e999788645f62a4ee0e9969c": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01889286645610296",
+      "source": "이데일리",
+      "source_body_digest": "9c03daf935d48d79783fbab0011e67ccc4898d4b39713d5b5a5f4906390bd3a7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T05:36+09:00",
+      "title": "[오후장특징주]PTC, 스피어 엔터테인먼트, 백사이트"
     },
     "link:e9b5ac37a7e56e13e903cc47": {
       "first_seen_kst": "2026-10-02T15:05:30+09:00",
@@ -26708,6 +26981,24 @@
       "link": "https://www.mt.co.kr/world/2026/10/01/2026100117194515902",
       "source": "머니투데이",
       "title": "中·홍콩 휴장 속 日 증시 3% 급등…마이크론 실적호재[Asia마감]"
+    },
+    "original:0710c1d4f74e4b8b6fa1bfdf": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814483",
+      "source": "뉴시스",
+      "source_body_digest": "74e836970aed1e1f12eeb333d32d9ede9c6c8155d87c8dc7b711e81e00c9b10b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a130d6f0a7d186745e0cb0a75fe7897e6077efbee451dea5de52338a94a4ac92",
+      "source_fact_keys": [
+        "source_fact:v1:6317ec627b05bfb8f7f54a40321bf8f5139d4493e0d577eb384c1f9a74bc9b31",
+        "source_fact:v1:ed4a1657e482321ef96b1400d46463c19b61825faca1b146fd5d1bbf91bd5f8c"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "“내년에 터진다”…서울 전월세 대란 속 수도권 집값 동반 상승 우려"
     },
     "original:07174b1ad84c7bf4f08ee54f": {
       "first_seen_kst": "2026-09-18T21:48:27+09:00",
@@ -30950,6 +31241,21 @@
       "source_published_kst": "2026-10-05T16:01+09:00",
       "title": "\"독감백신 스카이셀플루\"…SK바사, 광고공개"
     },
+    "original:4668d69ba37d00c2c29f3cce": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01889286645610296",
+      "source": "이데일리",
+      "source_body_digest": "9c03daf935d48d79783fbab0011e67ccc4898d4b39713d5b5a5f4906390bd3a7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T05:36+09:00",
+      "title": "[오후장특징주]PTC, 스피어 엔터테인먼트, 백사이트"
+    },
     "original:468108a401a8b35d8bff0dae": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -31261,6 +31567,30 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=02633846645585368",
       "source": "이데일리",
       "title": "SK스퀘어, 자사주 매입 후 추가 주주환원 기대…'매수'-SK"
+    },
+    "original:4a14f8982a471f7a46105a4c": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
+      "source": "뉴시스",
+      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_keys": [
+        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
+        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
+        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
+        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
+        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
+        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
+        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "original:4a7fb88e6bf21b8afb1da61c": {
       "first_seen_kst": "2026-10-04T15:04:58+09:00",
@@ -31856,6 +32186,23 @@
       "link": "https://www.mk.co.kr/news/stock/12164125",
       "source": "매일경제",
       "title": "AAR, MRO홀딩스 65% 인수..기업가치 40억달러 빅딜"
+    },
+    "original:54ae2d6337f5303111d69918": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814495",
+      "source": "뉴시스",
+      "source_body_digest": "d1084baf9d05e146aca2d33bb9c410f1b5fdb57b8a7c1a2fa64fbf9ffc7c7880",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:209851d73d0ffb0f7a6b59db88ea5601de6d2efed453fd9a74c2b2b631323946",
+      "source_fact_keys": [
+        "source_fact:v1:13e529417b5a7679c673a6c792f5d0120a12bc5e6459c000a14064526d6ed898"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "\"속옷도 가성비\"…롯데마트, 언더웨어 3000·5000원 균일가"
     },
     "original:54af6a37b773459125abeaf5": {
       "first_seen_kst": "2026-10-05T16:09:26+09:00",
@@ -34406,6 +34753,30 @@
       "link": "https://www.newsis.com/view/NISX20261003_0003813582",
       "source": "뉴시스",
       "title": "트럼프 핵심 참모들 캠프 데이비드 긴급회동…이란전 확전 논의"
+    },
+    "original:78e9efbbd285ab57c4121cd9": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814227",
+      "source": "뉴시스",
+      "source_body_digest": "4ffb41468b2cfa61934316874262a77030fcefac62319adb45c5247ae3feea7f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2317ed5149a2b40ffea4bb16952c03d5439891d60cd0c3cad99fd652f6baccd",
+      "source_fact_keys": [
+        "source_fact:v1:0d95ea9ba64ab2d658f173011c42ff0bc205d2c9f6019175d3b9711ea1a96f73",
+        "source_fact:v1:25a8b0b123a81f9c3bfed956f7e13ab42b453477bc4255ec597abba82f59a5a0",
+        "source_fact:v1:278492d389caaf246a1a7b4c296b3a1df6d888da552ac0934b64435db621d70e",
+        "source_fact:v1:2fa7e7d109d60440adf94a78c8e19025eae389f9e493b3f13083e71703988cad",
+        "source_fact:v1:31f38a345d3f9cda16dcb0d607135341825656c50ae30dca60c02dd3e8472090",
+        "source_fact:v1:7bd3858e44e29044f9a79c9f4ceea81b0aec4307a011a9af1067e63f7f5891a7",
+        "source_fact:v1:addd993048b5426a19b92492af4cc50fcb6deae4f1e8e9175b7d4c9e8a167d30",
+        "source_fact:v1:df669424c9d8132d4e26cbd93398cf9275bf9332e6a8e7e34b9a5db2360ef094"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
     "original:78f8fc6fc551cfa5b54d5001": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -38407,6 +38778,23 @@
       "link": "https://www.yna.co.kr/view/AKR20261002072600061",
       "source": "연합뉴스",
       "title": "경기 버스업체 29곳 노조 \"임금협상 결렬 시 이달 말 총파업\" | 연합뉴스"
+    },
+    "original:b5741091ce5981bbfd93d17d": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812838",
+      "source": "뉴시스",
+      "source_body_digest": "feee650e15ba4ea27f9a6a73821b61db0660492405fa749951c308567d1dd1b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a32c977368499c83ceab2b848c790c1e0c6422ce5ae61a7d73f3ee759fc61534",
+      "source_fact_keys": [
+        "source_fact:v1:00a97334936d3a28cc4c3227be696219f16cc478854b7e39d755921be688dc9f"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[단독]새일여성 97% 취업 전환…1년 뒤 고용유지율은 60% 그쳐"
     },
     "original:b5c13c5ffa7513ce8ada1941": {
       "first_seen_kst": "2026-09-18T14:40:33+09:00",
@@ -43049,6 +43437,23 @@
       "source": "매일경제",
       "title": "금융위원장 앞에서 아이돌 춤춘 로봇…“피지컬 AI 지역거점 지원”"
     },
+    "original:fa695507e7420b968541cbc1": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100605320427670",
+      "source": "머니투데이",
+      "source_body_digest": "ab5ac4291cf54b7e6fb3c29d5b4e42ccc50a2d0d425543a1c06efef44c60a159",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:236f9aea8e017b7cc6db7b476984fdb64746b5b6bfce55d49ea49a1cacbaed9c",
+      "source_fact_keys": [
+        "source_fact:v1:38d0719774c9e9df7a2b140604d319d0fd9ca1cbb8b47fb167c7267e26ef09d7"
+      ],
+      "source_published_kst": "2026-10-06T05:43+09:00",
+      "title": "美 부통령 \"알래스카 LNG 사업 투자, 한국과 세부사항 조율해야\""
+    },
     "original:fae515231126d515383fb973": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -44500,6 +44905,23 @@
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
     },
+    "source_fact:11dec6d126206d51c607fbaf": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814495",
+      "source": "뉴시스",
+      "source_body_digest": "d1084baf9d05e146aca2d33bb9c410f1b5fdb57b8a7c1a2fa64fbf9ffc7c7880",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:209851d73d0ffb0f7a6b59db88ea5601de6d2efed453fd9a74c2b2b631323946",
+      "source_fact_keys": [
+        "source_fact:v1:13e529417b5a7679c673a6c792f5d0120a12bc5e6459c000a14064526d6ed898"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "\"속옷도 가성비\"…롯데마트, 언더웨어 3000·5000원 균일가"
+    },
     "source_fact:120708d27433c232410480ec": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -45212,6 +45634,30 @@
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
     },
+    "source_fact:1ceedd2741a3be86dd865adf": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
+      "source": "뉴시스",
+      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_keys": [
+        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
+        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
+        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
+        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
+        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
+        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
+        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
     "source_fact:1d3a1faae44e0024f388e1f9": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -45779,6 +46225,30 @@
       "source_published_kst": "2026-10-05T15:17+09:00",
       "title": "자사주 '버팀목' 빠지는 삼성전자… 100조원대 영업익으로 극복할까?"
     },
+    "source_fact:26fd70297908bed53ffbe559": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
+      "source": "뉴시스",
+      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_keys": [
+        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
+        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
+        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
+        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
+        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
+        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
+        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
     "source_fact:27147610beba594e496326c8": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -46091,6 +46561,30 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:2c8cb62a296cddfaf27d8ecc": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814227",
+      "source": "뉴시스",
+      "source_body_digest": "4ffb41468b2cfa61934316874262a77030fcefac62319adb45c5247ae3feea7f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2317ed5149a2b40ffea4bb16952c03d5439891d60cd0c3cad99fd652f6baccd",
+      "source_fact_keys": [
+        "source_fact:v1:0d95ea9ba64ab2d658f173011c42ff0bc205d2c9f6019175d3b9711ea1a96f73",
+        "source_fact:v1:25a8b0b123a81f9c3bfed956f7e13ab42b453477bc4255ec597abba82f59a5a0",
+        "source_fact:v1:278492d389caaf246a1a7b4c296b3a1df6d888da552ac0934b64435db621d70e",
+        "source_fact:v1:2fa7e7d109d60440adf94a78c8e19025eae389f9e493b3f13083e71703988cad",
+        "source_fact:v1:31f38a345d3f9cda16dcb0d607135341825656c50ae30dca60c02dd3e8472090",
+        "source_fact:v1:7bd3858e44e29044f9a79c9f4ceea81b0aec4307a011a9af1067e63f7f5891a7",
+        "source_fact:v1:addd993048b5426a19b92492af4cc50fcb6deae4f1e8e9175b7d4c9e8a167d30",
+        "source_fact:v1:df669424c9d8132d4e26cbd93398cf9275bf9332e6a8e7e34b9a5db2360ef094"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
     "source_fact:2cab51eb5a6188fcdee9665f": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
@@ -48183,6 +48677,23 @@
       "source_published_kst": "2026-10-05T22:19+09:00",
       "title": "세노버스 에너지, 아사바스카오일 57억 캐나다달러 인수 합의"
     },
+    "source_fact:4ca7c401f0fb3c7a8c9293e6": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100605320427670",
+      "source": "머니투데이",
+      "source_body_digest": "ab5ac4291cf54b7e6fb3c29d5b4e42ccc50a2d0d425543a1c06efef44c60a159",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:236f9aea8e017b7cc6db7b476984fdb64746b5b6bfce55d49ea49a1cacbaed9c",
+      "source_fact_keys": [
+        "source_fact:v1:38d0719774c9e9df7a2b140604d319d0fd9ca1cbb8b47fb167c7267e26ef09d7"
+      ],
+      "source_published_kst": "2026-10-06T05:43+09:00",
+      "title": "美 부통령 \"알래스카 LNG 사업 투자, 한국과 세부사항 조율해야\""
+    },
     "source_fact:4dab6466b40db44962822b8f": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
       "lanes": {
@@ -48796,6 +49307,24 @@
       ],
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
+    },
+    "source_fact:55aa7b110aa78ac2e4439998": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814483",
+      "source": "뉴시스",
+      "source_body_digest": "74e836970aed1e1f12eeb333d32d9ede9c6c8155d87c8dc7b711e81e00c9b10b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a130d6f0a7d186745e0cb0a75fe7897e6077efbee451dea5de52338a94a4ac92",
+      "source_fact_keys": [
+        "source_fact:v1:6317ec627b05bfb8f7f54a40321bf8f5139d4493e0d577eb384c1f9a74bc9b31",
+        "source_fact:v1:ed4a1657e482321ef96b1400d46463c19b61825faca1b146fd5d1bbf91bd5f8c"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "“내년에 터진다”…서울 전월세 대란 속 수도권 집값 동반 상승 우려"
     },
     "source_fact:5623479559fcc1071ed4b838": {
       "first_seen_kst": "2026-10-06T00:26:07+09:00",
@@ -49665,6 +50194,30 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
+    },
+    "source_fact:61ac83ec4b0b4abbd7554865": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
+      "source": "뉴시스",
+      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_keys": [
+        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
+        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
+        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
+        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
+        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
+        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
+        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "source_fact:62823c9f4633912ff7baa49a": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -50660,6 +51213,30 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:738ebdba685bc01302a1e208": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814227",
+      "source": "뉴시스",
+      "source_body_digest": "4ffb41468b2cfa61934316874262a77030fcefac62319adb45c5247ae3feea7f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2317ed5149a2b40ffea4bb16952c03d5439891d60cd0c3cad99fd652f6baccd",
+      "source_fact_keys": [
+        "source_fact:v1:0d95ea9ba64ab2d658f173011c42ff0bc205d2c9f6019175d3b9711ea1a96f73",
+        "source_fact:v1:25a8b0b123a81f9c3bfed956f7e13ab42b453477bc4255ec597abba82f59a5a0",
+        "source_fact:v1:278492d389caaf246a1a7b4c296b3a1df6d888da552ac0934b64435db621d70e",
+        "source_fact:v1:2fa7e7d109d60440adf94a78c8e19025eae389f9e493b3f13083e71703988cad",
+        "source_fact:v1:31f38a345d3f9cda16dcb0d607135341825656c50ae30dca60c02dd3e8472090",
+        "source_fact:v1:7bd3858e44e29044f9a79c9f4ceea81b0aec4307a011a9af1067e63f7f5891a7",
+        "source_fact:v1:addd993048b5426a19b92492af4cc50fcb6deae4f1e8e9175b7d4c9e8a167d30",
+        "source_fact:v1:df669424c9d8132d4e26cbd93398cf9275bf9332e6a8e7e34b9a5db2360ef094"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
     "source_fact:7391ff86c9f5c98fb7d974db": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -51785,6 +52362,30 @@
       "source_published_kst": "2026-10-06T04:20+09:00",
       "title": "[美특징주]에스티로더, 성장 회복 기대에 월가 투자의견 ‘매수’ 상향…주가 2%↑"
     },
+    "source_fact:82e31d4206829863af452581": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814227",
+      "source": "뉴시스",
+      "source_body_digest": "4ffb41468b2cfa61934316874262a77030fcefac62319adb45c5247ae3feea7f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2317ed5149a2b40ffea4bb16952c03d5439891d60cd0c3cad99fd652f6baccd",
+      "source_fact_keys": [
+        "source_fact:v1:0d95ea9ba64ab2d658f173011c42ff0bc205d2c9f6019175d3b9711ea1a96f73",
+        "source_fact:v1:25a8b0b123a81f9c3bfed956f7e13ab42b453477bc4255ec597abba82f59a5a0",
+        "source_fact:v1:278492d389caaf246a1a7b4c296b3a1df6d888da552ac0934b64435db621d70e",
+        "source_fact:v1:2fa7e7d109d60440adf94a78c8e19025eae389f9e493b3f13083e71703988cad",
+        "source_fact:v1:31f38a345d3f9cda16dcb0d607135341825656c50ae30dca60c02dd3e8472090",
+        "source_fact:v1:7bd3858e44e29044f9a79c9f4ceea81b0aec4307a011a9af1067e63f7f5891a7",
+        "source_fact:v1:addd993048b5426a19b92492af4cc50fcb6deae4f1e8e9175b7d4c9e8a167d30",
+        "source_fact:v1:df669424c9d8132d4e26cbd93398cf9275bf9332e6a8e7e34b9a5db2360ef094"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
+    },
     "source_fact:82f7ac3cbf1eb9735260a060": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -51846,6 +52447,30 @@
       ],
       "source_published_kst": "2026-10-06T03:34+09:00",
       "title": "[美특징주]백사이트, 폐렴구균 백신 3상 긍정적 결과에 주가 32%↑"
+    },
+    "source_fact:83edbc771175f54855f25701": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
+      "source": "뉴시스",
+      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_keys": [
+        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
+        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
+        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
+        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
+        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
+        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
+        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "source_fact:84cb41af8ea390df4f18d934": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -52047,6 +52672,30 @@
       "source_published_kst": "2026-10-05T20:25+09:00",
       "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
     },
+    "source_fact:86e206ed0cd60af42337eb06": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814227",
+      "source": "뉴시스",
+      "source_body_digest": "4ffb41468b2cfa61934316874262a77030fcefac62319adb45c5247ae3feea7f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2317ed5149a2b40ffea4bb16952c03d5439891d60cd0c3cad99fd652f6baccd",
+      "source_fact_keys": [
+        "source_fact:v1:0d95ea9ba64ab2d658f173011c42ff0bc205d2c9f6019175d3b9711ea1a96f73",
+        "source_fact:v1:25a8b0b123a81f9c3bfed956f7e13ab42b453477bc4255ec597abba82f59a5a0",
+        "source_fact:v1:278492d389caaf246a1a7b4c296b3a1df6d888da552ac0934b64435db621d70e",
+        "source_fact:v1:2fa7e7d109d60440adf94a78c8e19025eae389f9e493b3f13083e71703988cad",
+        "source_fact:v1:31f38a345d3f9cda16dcb0d607135341825656c50ae30dca60c02dd3e8472090",
+        "source_fact:v1:7bd3858e44e29044f9a79c9f4ceea81b0aec4307a011a9af1067e63f7f5891a7",
+        "source_fact:v1:addd993048b5426a19b92492af4cc50fcb6deae4f1e8e9175b7d4c9e8a167d30",
+        "source_fact:v1:df669424c9d8132d4e26cbd93398cf9275bf9332e6a8e7e34b9a5db2360ef094"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
+    },
     "source_fact:874608288818910dc79b8356": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -52139,6 +52788,24 @@
       ],
       "source_published_kst": "2026-10-06T03:30+09:00",
       "title": "[美특징주]할리-데이비슨, 신제품·비용절감 기대에 월가 ‘매수’ 상향…주가 8%↑"
+    },
+    "source_fact:89a35766f22f3f24f7c9f322": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814483",
+      "source": "뉴시스",
+      "source_body_digest": "74e836970aed1e1f12eeb333d32d9ede9c6c8155d87c8dc7b711e81e00c9b10b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a130d6f0a7d186745e0cb0a75fe7897e6077efbee451dea5de52338a94a4ac92",
+      "source_fact_keys": [
+        "source_fact:v1:6317ec627b05bfb8f7f54a40321bf8f5139d4493e0d577eb384c1f9a74bc9b31",
+        "source_fact:v1:ed4a1657e482321ef96b1400d46463c19b61825faca1b146fd5d1bbf91bd5f8c"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "“내년에 터진다”…서울 전월세 대란 속 수도권 집값 동반 상승 우려"
     },
     "source_fact:8a11e0c3b48a63696aac46ce": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
@@ -53590,6 +54257,30 @@
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "데이터센터 반대여론에도 美건설 계속…2027년 90GW 전망"
     },
+    "source_fact:a411f85a49b17a8bf96a64ee": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
+      "source": "뉴시스",
+      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_keys": [
+        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
+        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
+        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
+        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
+        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
+        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
+        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
     "source_fact:a45561b846dab7bbe1c3d240": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -54137,6 +54828,30 @@
       ],
       "source_published_kst": "2026-10-05T22:27+09:00",
       "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
+    },
+    "source_fact:ac81b037fb13da4d76bce350": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814227",
+      "source": "뉴시스",
+      "source_body_digest": "4ffb41468b2cfa61934316874262a77030fcefac62319adb45c5247ae3feea7f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2317ed5149a2b40ffea4bb16952c03d5439891d60cd0c3cad99fd652f6baccd",
+      "source_fact_keys": [
+        "source_fact:v1:0d95ea9ba64ab2d658f173011c42ff0bc205d2c9f6019175d3b9711ea1a96f73",
+        "source_fact:v1:25a8b0b123a81f9c3bfed956f7e13ab42b453477bc4255ec597abba82f59a5a0",
+        "source_fact:v1:278492d389caaf246a1a7b4c296b3a1df6d888da552ac0934b64435db621d70e",
+        "source_fact:v1:2fa7e7d109d60440adf94a78c8e19025eae389f9e493b3f13083e71703988cad",
+        "source_fact:v1:31f38a345d3f9cda16dcb0d607135341825656c50ae30dca60c02dd3e8472090",
+        "source_fact:v1:7bd3858e44e29044f9a79c9f4ceea81b0aec4307a011a9af1067e63f7f5891a7",
+        "source_fact:v1:addd993048b5426a19b92492af4cc50fcb6deae4f1e8e9175b7d4c9e8a167d30",
+        "source_fact:v1:df669424c9d8132d4e26cbd93398cf9275bf9332e6a8e7e34b9a5db2360ef094"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
     "source_fact:acb82102db0f34db779c825b": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
@@ -55021,6 +55736,30 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:bdf6c7b2d28ccd304e5a3744": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
+      "source": "뉴시스",
+      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_keys": [
+        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
+        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
+        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
+        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
+        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
+        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
+        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
     "source_fact:be185fb4c25596f405b2e6f3": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
       "lanes": {
@@ -55885,6 +56624,30 @@
       "source_published_kst": "2026-10-05T07:26+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가 | 연합뉴스"
     },
+    "source_fact:ce50a1f05eea87298901624c": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814227",
+      "source": "뉴시스",
+      "source_body_digest": "4ffb41468b2cfa61934316874262a77030fcefac62319adb45c5247ae3feea7f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2317ed5149a2b40ffea4bb16952c03d5439891d60cd0c3cad99fd652f6baccd",
+      "source_fact_keys": [
+        "source_fact:v1:0d95ea9ba64ab2d658f173011c42ff0bc205d2c9f6019175d3b9711ea1a96f73",
+        "source_fact:v1:25a8b0b123a81f9c3bfed956f7e13ab42b453477bc4255ec597abba82f59a5a0",
+        "source_fact:v1:278492d389caaf246a1a7b4c296b3a1df6d888da552ac0934b64435db621d70e",
+        "source_fact:v1:2fa7e7d109d60440adf94a78c8e19025eae389f9e493b3f13083e71703988cad",
+        "source_fact:v1:31f38a345d3f9cda16dcb0d607135341825656c50ae30dca60c02dd3e8472090",
+        "source_fact:v1:7bd3858e44e29044f9a79c9f4ceea81b0aec4307a011a9af1067e63f7f5891a7",
+        "source_fact:v1:addd993048b5426a19b92492af4cc50fcb6deae4f1e8e9175b7d4c9e8a167d30",
+        "source_fact:v1:df669424c9d8132d4e26cbd93398cf9275bf9332e6a8e7e34b9a5db2360ef094"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
+    },
     "source_fact:ceb11bf2d1500bfc2c6caf7c": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
       "lanes": {
@@ -56055,6 +56818,30 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:d14bb68612ab48ec426ec947": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814227",
+      "source": "뉴시스",
+      "source_body_digest": "4ffb41468b2cfa61934316874262a77030fcefac62319adb45c5247ae3feea7f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2317ed5149a2b40ffea4bb16952c03d5439891d60cd0c3cad99fd652f6baccd",
+      "source_fact_keys": [
+        "source_fact:v1:0d95ea9ba64ab2d658f173011c42ff0bc205d2c9f6019175d3b9711ea1a96f73",
+        "source_fact:v1:25a8b0b123a81f9c3bfed956f7e13ab42b453477bc4255ec597abba82f59a5a0",
+        "source_fact:v1:278492d389caaf246a1a7b4c296b3a1df6d888da552ac0934b64435db621d70e",
+        "source_fact:v1:2fa7e7d109d60440adf94a78c8e19025eae389f9e493b3f13083e71703988cad",
+        "source_fact:v1:31f38a345d3f9cda16dcb0d607135341825656c50ae30dca60c02dd3e8472090",
+        "source_fact:v1:7bd3858e44e29044f9a79c9f4ceea81b0aec4307a011a9af1067e63f7f5891a7",
+        "source_fact:v1:addd993048b5426a19b92492af4cc50fcb6deae4f1e8e9175b7d4c9e8a167d30",
+        "source_fact:v1:df669424c9d8132d4e26cbd93398cf9275bf9332e6a8e7e34b9a5db2360ef094"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
     "source_fact:d1afd21e5b99771be575ae1a": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -56589,6 +57376,23 @@
       ],
       "source_published_kst": "2026-10-06T00:51+09:00",
       "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
+    },
+    "source_fact:d9aae2ba497d879d52fe9694": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812838",
+      "source": "뉴시스",
+      "source_body_digest": "feee650e15ba4ea27f9a6a73821b61db0660492405fa749951c308567d1dd1b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a32c977368499c83ceab2b848c790c1e0c6422ce5ae61a7d73f3ee759fc61534",
+      "source_fact_keys": [
+        "source_fact:v1:00a97334936d3a28cc4c3227be696219f16cc478854b7e39d755921be688dc9f"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[단독]새일여성 97% 취업 전환…1년 뒤 고용유지율은 60% 그쳐"
     },
     "source_fact:da6c1bf5db8eb5c538cbfb26": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -57229,6 +58033,30 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:e46e558b8945ed473c7ebd03": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
+      "source": "뉴시스",
+      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_keys": [
+        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
+        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
+        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
+        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
+        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
+        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
+        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "source_fact:e5094878382867b0149a35d2": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
@@ -58031,6 +58859,30 @@
       "source_published_kst": "2026-10-05T03:42+09:00",
       "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
     },
+    "source_fact:f22cdb3a91e716169f93b039": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
+      "source": "뉴시스",
+      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_keys": [
+        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
+        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
+        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
+        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
+        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
+        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
+        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
     "source_fact:f26c3935474e34630937e18a": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
       "lanes": {
@@ -58310,6 +59162,30 @@
       ],
       "source_published_kst": "2026-10-05T13:29+09:00",
       "title": "JP모간, 10월 '콕' 집은 종목은…아멕스·써모피셔·리버티"
+    },
+    "source_fact:fa0de5e477c5a21c122e6b22": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814227",
+      "source": "뉴시스",
+      "source_body_digest": "4ffb41468b2cfa61934316874262a77030fcefac62319adb45c5247ae3feea7f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2317ed5149a2b40ffea4bb16952c03d5439891d60cd0c3cad99fd652f6baccd",
+      "source_fact_keys": [
+        "source_fact:v1:0d95ea9ba64ab2d658f173011c42ff0bc205d2c9f6019175d3b9711ea1a96f73",
+        "source_fact:v1:25a8b0b123a81f9c3bfed956f7e13ab42b453477bc4255ec597abba82f59a5a0",
+        "source_fact:v1:278492d389caaf246a1a7b4c296b3a1df6d888da552ac0934b64435db621d70e",
+        "source_fact:v1:2fa7e7d109d60440adf94a78c8e19025eae389f9e493b3f13083e71703988cad",
+        "source_fact:v1:31f38a345d3f9cda16dcb0d607135341825656c50ae30dca60c02dd3e8472090",
+        "source_fact:v1:7bd3858e44e29044f9a79c9f4ceea81b0aec4307a011a9af1067e63f7f5891a7",
+        "source_fact:v1:addd993048b5426a19b92492af4cc50fcb6deae4f1e8e9175b7d4c9e8a167d30",
+        "source_fact:v1:df669424c9d8132d4e26cbd93398cf9275bf9332e6a8e7e34b9a5db2360ef094"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
     "source_fact:fa5a79c292035a14f0a79bfa": {
       "first_seen_kst": "2026-10-06T01:16:46+09:00",
@@ -59307,6 +60183,24 @@
       "link": "https://www.mt.co.kr/world/2026/10/01/2026100117194515902",
       "source": "머니투데이",
       "title": "中·홍콩 휴장 속 日 증시 3% 급등…마이크론 실적호재[Asia마감]"
+    },
+    "title:0710c1d4f74e4b8b6fa1bfdf": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814483",
+      "source": "뉴시스",
+      "source_body_digest": "74e836970aed1e1f12eeb333d32d9ede9c6c8155d87c8dc7b711e81e00c9b10b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a130d6f0a7d186745e0cb0a75fe7897e6077efbee451dea5de52338a94a4ac92",
+      "source_fact_keys": [
+        "source_fact:v1:6317ec627b05bfb8f7f54a40321bf8f5139d4493e0d577eb384c1f9a74bc9b31",
+        "source_fact:v1:ed4a1657e482321ef96b1400d46463c19b61825faca1b146fd5d1bbf91bd5f8c"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "“내년에 터진다”…서울 전월세 대란 속 수도권 집값 동반 상승 우려"
     },
     "title:07174b1ad84c7bf4f08ee54f": {
       "first_seen_kst": "2026-09-18T21:48:27+09:00",
@@ -63570,6 +64464,21 @@
       "source_published_kst": "2026-10-05T16:01+09:00",
       "title": "\"독감백신 스카이셀플루\"…SK바사, 광고공개"
     },
+    "title:4668d69ba37d00c2c29f3cce": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01889286645610296",
+      "source": "이데일리",
+      "source_body_digest": "9c03daf935d48d79783fbab0011e67ccc4898d4b39713d5b5a5f4906390bd3a7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T05:36+09:00",
+      "title": "[오후장특징주]PTC, 스피어 엔터테인먼트, 백사이트"
+    },
     "title:468108a401a8b35d8bff0dae": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -63881,6 +64790,30 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=02633846645585368",
       "source": "이데일리",
       "title": "SK스퀘어, 자사주 매입 후 추가 주주환원 기대…'매수'-SK"
+    },
+    "title:4a14f8982a471f7a46105a4c": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
+      "source": "뉴시스",
+      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_keys": [
+        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
+        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
+        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
+        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
+        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
+        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
+        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "title:4a7fb88e6bf21b8afb1da61c": {
       "first_seen_kst": "2026-10-04T15:04:58+09:00",
@@ -64476,6 +65409,23 @@
       "link": "https://www.mk.co.kr/news/stock/12164125",
       "source": "매일경제",
       "title": "AAR, MRO홀딩스 65% 인수..기업가치 40억달러 빅딜"
+    },
+    "title:54ae2d6337f5303111d69918": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814495",
+      "source": "뉴시스",
+      "source_body_digest": "d1084baf9d05e146aca2d33bb9c410f1b5fdb57b8a7c1a2fa64fbf9ffc7c7880",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:209851d73d0ffb0f7a6b59db88ea5601de6d2efed453fd9a74c2b2b631323946",
+      "source_fact_keys": [
+        "source_fact:v1:13e529417b5a7679c673a6c792f5d0120a12bc5e6459c000a14064526d6ed898"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "\"속옷도 가성비\"…롯데마트, 언더웨어 3000·5000원 균일가"
     },
     "title:54af6a37b773459125abeaf5": {
       "first_seen_kst": "2026-10-05T16:09:26+09:00",
@@ -67047,6 +67997,30 @@
       "link": "https://www.newsis.com/view/NISX20261003_0003813582",
       "source": "뉴시스",
       "title": "트럼프 핵심 참모들 캠프 데이비드 긴급회동…이란전 확전 논의"
+    },
+    "title:78e9efbbd285ab57c4121cd9": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814227",
+      "source": "뉴시스",
+      "source_body_digest": "4ffb41468b2cfa61934316874262a77030fcefac62319adb45c5247ae3feea7f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e2317ed5149a2b40ffea4bb16952c03d5439891d60cd0c3cad99fd652f6baccd",
+      "source_fact_keys": [
+        "source_fact:v1:0d95ea9ba64ab2d658f173011c42ff0bc205d2c9f6019175d3b9711ea1a96f73",
+        "source_fact:v1:25a8b0b123a81f9c3bfed956f7e13ab42b453477bc4255ec597abba82f59a5a0",
+        "source_fact:v1:278492d389caaf246a1a7b4c296b3a1df6d888da552ac0934b64435db621d70e",
+        "source_fact:v1:2fa7e7d109d60440adf94a78c8e19025eae389f9e493b3f13083e71703988cad",
+        "source_fact:v1:31f38a345d3f9cda16dcb0d607135341825656c50ae30dca60c02dd3e8472090",
+        "source_fact:v1:7bd3858e44e29044f9a79c9f4ceea81b0aec4307a011a9af1067e63f7f5891a7",
+        "source_fact:v1:addd993048b5426a19b92492af4cc50fcb6deae4f1e8e9175b7d4c9e8a167d30",
+        "source_fact:v1:df669424c9d8132d4e26cbd93398cf9275bf9332e6a8e7e34b9a5db2360ef094"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
     "title:78f8fc6fc551cfa5b54d5001": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -71111,6 +72085,23 @@
       "link": "https://www.yna.co.kr/view/AKR20261002072600061",
       "source": "연합뉴스",
       "title": "경기 버스업체 29곳 노조 \"임금협상 결렬 시 이달 말 총파업\" | 연합뉴스"
+    },
+    "title:b5741091ce5981bbfd93d17d": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812838",
+      "source": "뉴시스",
+      "source_body_digest": "feee650e15ba4ea27f9a6a73821b61db0660492405fa749951c308567d1dd1b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a32c977368499c83ceab2b848c790c1e0c6422ce5ae61a7d73f3ee759fc61534",
+      "source_fact_keys": [
+        "source_fact:v1:00a97334936d3a28cc4c3227be696219f16cc478854b7e39d755921be688dc9f"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[단독]새일여성 97% 취업 전환…1년 뒤 고용유지율은 60% 그쳐"
     },
     "title:b5c13c5ffa7513ce8ada1941": {
       "first_seen_kst": "2026-09-18T14:40:33+09:00",
@@ -75794,6 +76785,23 @@
       "source": "매일경제",
       "title": "금융위원장 앞에서 아이돌 춤춘 로봇…“피지컬 AI 지역거점 지원”"
     },
+    "title:fa695507e7420b968541cbc1": {
+      "first_seen_kst": "2026-10-06T06:01:11+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:01:11+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:01:11+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/06/2026100605320427670",
+      "source": "머니투데이",
+      "source_body_digest": "ab5ac4291cf54b7e6fb3c29d5b4e42ccc50a2d0d425543a1c06efef44c60a159",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:236f9aea8e017b7cc6db7b476984fdb64746b5b6bfce55d49ea49a1cacbaed9c",
+      "source_fact_keys": [
+        "source_fact:v1:38d0719774c9e9df7a2b140604d319d0fd9ca1cbb8b47fb167c7267e26ef09d7"
+      ],
+      "source_published_kst": "2026-10-06T05:43+09:00",
+      "title": "美 부통령 \"알래스카 LNG 사업 투자, 한국과 세부사항 조율해야\""
+    },
     "title:fae515231126d515383fb973": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -76196,5 +77204,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T05:44:59+09:00"
+  "updated_at_kst": "2026-10-06T06:01:11+09:00"
 }
