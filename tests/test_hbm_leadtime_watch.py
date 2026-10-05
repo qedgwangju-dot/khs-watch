@@ -135,7 +135,19 @@ class LeadTimeParserTests(unittest.TestCase):
         self.assertEqual(chain["hdd_lead_ratio"], 3.125)
         self.assertTrue(chain["dram_to_enterprise_ssd_constraint_confirmed"])
         self.assertTrue(chain["hdd_relief_late_2027_or_later"])
+        self.assertEqual(chain["version"], 2)
+        self.assertTrue(chain["hdd_relief_is_market_normalization_outlook"])
+        self.assertTrue(chain["toshiba_expanded_nearline_line_first_shipment_confirmed"])
+        self.assertTrue(chain["toshiba_fy2027_capacity_nearly_double_target"])
         self.assertFalse(chain["nand_controller_direct_constraint_confirmed"])
+
+    def test_weekly_004_hdd_signal_separates_toshiba_first_shipment_from_market_relief(self):
+        signal = w.WEEKLY_004_LOCK["signals"]["HDD"]
+        self.assertIn("HDD 50주", signal)
+        self.assertIn("시장 완화가 빨라도 2027년 말", signal)
+        self.assertIn("10/2 증설 nearline HDD 라인 첫 출하", signal)
+        self.assertNotIn("가동까지 12~24개월이 필요", signal)
+
 
     def test_memory_storage_chain_alert_has_accuracy_boundary(self):
         components = w.WEEKLY_004_LOCK["components"]
@@ -150,6 +162,8 @@ class LeadTimeParserTests(unittest.TestCase):
         self.assertIn("기업용 SSD", alert)
         self.assertIn("HDD", alert)
         self.assertIn("NAND 컨트롤러 출하가 DRAM 때문에 직접 제한된다는 주장은", alert)
+        self.assertIn("10/2 Laguna 증설 nearline HDD 라인 첫 출하 완료", alert)
+        self.assertIn("시장 전체 리드타임 정상화 전망", alert)
         self.assertIn("20주", alert)
         self.assertIn("50주", alert)
 
