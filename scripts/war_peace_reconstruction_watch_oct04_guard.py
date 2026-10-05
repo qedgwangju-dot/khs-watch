@@ -467,6 +467,15 @@ def semantic_fix(text):
             marker, topic = "🟡", "우크라이나·러시아 · 종전 조건 입장"
         elif any(x in block for x in ("루코일 해외자산 매각", "휴전 진전과 별개의 상업거래")):
             marker, topic = "🟡", "우크라이나·러시아 · 종전협상 연계 상업거래"
+        elif (
+            " · 확전" in block
+            or any(x in block for x in (
+                "strikes on", "bridge attack", "bridge strikes", "massive retaliatory strikes",
+                "미사일 공격", "드론 공격", "공습", "피격", "보복 공습", "대규모 보복",
+            ))
+        ):
+            marker = "🔴"
+            topic = m.group(3).strip()
         if marker:
             lines[i] = f"{marker} [{level}] <b>{idx}. {topic}</b>"
             rendered.append((marker, block))
@@ -479,14 +488,17 @@ def semantic_fix(text):
         )]
         badges = []
         all_headers = "\n".join(lines).lower()
-        if any(m == "🔴" for m, _ in rendered) or "🔴 [신규]" in all_headers or "🔴 [속보]" in all_headers:
+        has_red_line = bool(re.search(r"(?m)^🔴\s+\[(?:속보|신규|후속)\]", all_headers))
+        has_green_line = bool(re.search(r"(?m)^🟢\s+\[(?:속보|신규|후속)\]", all_headers))
+        has_yellow_line = bool(re.search(r"(?m)^🟡\s+\[(?:속보|신규|후속)\]", all_headers))
+        if any(m == "🔴" for m, _ in rendered) or has_red_line:
             badges.append("🔴 <b>공격·확전</b>")
-        if "🟢 [신규]" in all_headers or "🟢 [속보]" in all_headers or "🟢 [후속]" in all_headers:
+        if has_green_line:
             if any(x in all_headers for x in ("실물물동량", "원유공급회복", "원유 물동량 회복")):
                 badges.append("🟢 <b>실물 공급회복</b>")
             else:
                 badges.append("🟢 <b>재건·휴전</b>")
-        if any(m == "🟡" for m, _ in rendered) or "🟡 [신규]" in all_headers or "🟡 [속보]" in all_headers:
+        if any(m == "🟡" for m, _ in rendered) or has_yellow_line:
             badges.append("🟡 <b>군사위협·협상 제약</b>")
         if badges and lines:
             lines.insert(1, "  |  ".join(dict.fromkeys(badges)))
