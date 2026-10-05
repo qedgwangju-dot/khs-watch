@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-05T17:55:17+09:00",
+  "updated_at_kst": "2026-10-05T18:17:21+09:00",
   "seen_ids": [
     "01899de42b17bb25951592cf",
     "0477059e619a2672dbae4b30",
@@ -18,6 +18,7 @@
     "1f7c1f701db354f9e408d486",
     "20a5c84026d1bbe9b4f60398",
     "21e84f4d7bcbfa46a6b63dee",
+    "27f85e070f62c260de7cb002",
     "2d27da4b09baa1d0f61ace3d",
     "2d9314e7dce8075fefab9289",
     "2dc1704a7586d7a72e6bb296",
@@ -135,13 +136,13 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 0,
+  "last_unseen_raw_count": 1,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1348.28,
-    "date": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-05 17:55 KST · 보조 API 2026-10-05 · 차이 0.27% · 일중 기준시각 차이 가능",
+    "date": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-05 18:17 KST · 보조 API 2026-10-05 · 차이 0.27% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -247,13 +248,13 @@
       "https://insights.trendforce.com/p/weekly-radar-003",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-10-05T17:55:31+09:00",
-    "candidate_count": 3,
+    "last_checked_at_kst": "2026-10-05T18:17:32+09:00",
+    "candidate_count": 2,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-05T17:56:07+09:00",
+    "checked_at_kst": "2026-10-05T18:18:10+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-04T18:15:36+09:00",
@@ -323,7 +324,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-05",
-    "last_checked_at_kst": "2026-10-05T17:56:01+09:00"
+    "last_checked_at_kst": "2026-10-05T18:18:04+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -359,7 +360,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-05",
-    "last_checked_at_kst": "2026-10-05T17:56:03+09:00",
+    "last_checked_at_kst": "2026-10-05T18:18:06+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -403,7 +404,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-05T17:56:05+09:00",
+    "last_checked_at_kst": "2026-10-05T18:18:08+09:00",
     "candidate_count": 0,
     "event_count": 0
   },
