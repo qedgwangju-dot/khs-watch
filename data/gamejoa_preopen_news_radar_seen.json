@@ -419,12 +419,19 @@
     "event:1cc1504245bca81b8921798d": {
       "first_seen_kst": "2026-10-05T09:59:51+09:00",
       "lanes": {
-        "live": "2026-10-05T09:59:51+09:00"
+        "live": "2026-10-05T09:59:51+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T09:59:51+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01715446645609968",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01715446645609968&parentid=01833526645609968&gubun=E",
       "source": "이데일리",
+      "source_body_digest": "596bd2c190c7a0e7a37ea232b3fd081b95ff89bcd4bc484f7f83e8bd3d497668",
       "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11aaf912347a480f5737c78cf218e4bd717db0518825fa499a9eaf1761b1e655",
+      "source_fact_keys": [
+        "source_fact:v1:6635f73b75e781f24c85567f8a0a8177260966f3ee991a5cfac4b15b1b871762",
+        "source_fact:v1:d6f21a6a60b3f87f0ac3da76078e96f4f31bab218142c309685858157306d3ed"
+      ],
       "source_published_kst": "2026-10-05T09:39+09:00",
       "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
     },
@@ -939,26 +946,21 @@
     "event:357501917a7f635b2fa6a147": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
       "lanes": {
-        "live": "2026-10-06T06:27:01+09:00"
+        "live": "2026-10-06T06:27:01+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T06:27:01+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2632514",
-      "source": "이투데이",
-      "source_body_digest": "650a2bae4e9e2a6de589b2d36f332f33fbb844085aa61441b4c7720da822add3",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814677",
+      "source": "뉴시스",
+      "source_body_digest": "fbf645f58cf09c8174f46f858b4ca8bfc8f9aa4a5431728bb363fce607d25fbe",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:67f77e7e520697f625e8169eb44d63a7d3520d64c48b95136b31a951e28ad559",
+      "source_fact_identity": "source_facts:v1:74d783d028aa1fec333ea0b786a19780b244ceccd83c45b6c255f8a82ae09377",
       "source_fact_keys": [
-        "source_fact:v1:1b8468da30d374e7e46803bcde0bf1a7c913a0ad544c1366aa101ca67b66afb8",
-        "source_fact:v1:1bb372243ff209a4bf905cb910766976371bb3d875f95f8f635e43f2bc406c1b",
-        "source_fact:v1:399cffd14034d85abf03add218a98cba96d1cc0053ee99c6ba517ec4e2819bc3",
-        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
-        "source_fact:v1:8601c7b4e59fa2d851656f9a40e9b6a8323282e1550b2ec697f468064fcd6ef0",
-        "source_fact:v1:90903f5de9687b52ab3f5cd8edbcda33d213c8b03c23e5dcb364674a38bac21a",
-        "source_fact:v1:9a55ad7e4ca742a320d272d5320659cccfea16c085f366a343ae87800dd71185",
-        "source_fact:v1:d60a1a7dc8f5de11dd3f7ea6b518b6ba1f2d2fddc4a61d3d45a1c5d7c0dd0e2b"
+        "source_fact:v1:164dcb7142ff97332ccb4d1e9a893e9cfad1c0aefa574ce5b6890a259c53a639",
+        "source_fact:v1:23075857b847724c4e9d70d715a0df916130b581c6dc0e63e3b063e3e5dd3100"
       ],
-      "source_published_kst": "2026-10-06T06:25+09:00",
-      "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "국제유가, 1%대 하락…중동 원유 수출 회복·G7 비축유 방출"
     },
     "event:35c61e03fc529e43f46f2a91": {
       "first_seen_kst": "2026-10-02T12:31:36+09:00",
@@ -2268,25 +2270,28 @@
     "event:79bc37a30fd7aed2a24a2412": {
       "first_seen_kst": "2026-10-05T10:49:34+09:00",
       "lanes": {
-        "live": "2026-10-05T19:54:04+09:00"
+        "live": "2026-10-05T19:54:04+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:54:04+09:00",
-      "link": "https://magazine.hankyung.com/business/article/202609291509b",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.hankyung.com/article/202610053408i",
       "source": "한국경제",
+      "source_body_digest": "b364bc61a9a1cb394063fdcb76d4a2cb54a320a03ded64e37dfdbf7a73b26165",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4ad74c8e21f3a872272dda98531a567c5912e7f518ce42c134cb607d700b8a23",
+      "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
       "source_fact_keys": [
-        "source_fact:v1:137e8f1f55e663ba6fb38e0217d20cd88a1f293007d4a99a7121c326d1164739",
-        "source_fact:v1:161c874ab7ac8a275bb947ab4ae7531022b58e34136b5e043a0811a1569f105f",
-        "source_fact:v1:1b1d0aaa98bb4184cde27d65e5f7cd86c545871bd69d7e649907a2496169466e",
-        "source_fact:v1:34b1e03f302b19a1b6c4a7e0f33f52cd455905b94a95b843ef6476e0092a32f8",
-        "source_fact:v1:4d754b24528a33a34a3844a501a0e45ea8bbc1ece48c56b8d4553581e74e22d0",
-        "source_fact:v1:638bd27d57b2c6715c26170f7d91317f2b077386eb861cba8b5f35f3704d9e9b",
-        "source_fact:v1:9c5325a6d3570383b58d54f9e56803c4b1f55c5cea1f77e8605a452a36090e01",
-        "source_fact:v1:e531d1a01e9249b4c13130453866cb187bf279e184276d55a9b7bf1628e0a8c8"
+        "source_fact:v1:221168eabcd903b4ced8fa08776f64a93b4523e49d31e606102cba898b653970",
+        "source_fact:v1:242fa138e971100ea5aea4fb6e8d8c24acee30e7179d775dc294e8a298c0e504",
+        "source_fact:v1:4e77d91fe496205b3af40de23dca35437d879eb466bf88498afed579d7b371e0",
+        "source_fact:v1:5a33989342c320b1b50002150bfac05043dbc55a3e5a4b4cd8c6b59038867b67",
+        "source_fact:v1:5b61d0323fad869dc093a813f2eff793a313cc979e213c5ec6494ca5e1d1d14e",
+        "source_fact:v1:6d3c3b6d83589a4e6f2226cc31681ddc779bd587bd2c246c49df3a401d59bc16",
+        "source_fact:v1:7eb7d5b6e40452e59b03d7e1cd3a7f97a28dbe5cd07c5cbb8bd647b7b7c15ffd",
+        "source_fact:v1:c3dbefcc0012460ddb2bb547cc73d48745700a2450a28f63b7ebdbc381af395a",
+        "source_fact:v1:ff7673602c5f5549b5c8e8f08875198d8bd76e6dd464789a84e27a1525b7162b"
       ],
-      "source_published_kst": "2026-10-05T12:57+09:00",
-      "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+      "source_published_kst": "2026-10-05T13:09+09:00",
+      "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
     "event:7a274c20230f7d17a8a32041": {
       "first_seen_kst": "2026-10-01T04:48:27+09:00",
@@ -2864,23 +2869,18 @@
       "event_alias_evidence_run_id": 37305224924,
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
-        "live": "2026-10-05T20:53:37+09:00"
+        "live": "2026-10-05T20:53:37+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T20:53:37+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12168505",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168758",
       "source": "매일경제",
-      "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
+      "source_body_digest": "9583ccd524289799ad28c513270f924847e9fdb563a48741d20dd2f69a0ceaa5",
       "source_event_identity": "source_event:v2:odd_lot_rule:9a404eb9f9885e08451999bd50153349602be31c84b3e47f1e96be7459b5e344",
-      "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
-      "source_fact_keys": [
-        "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
-        "source_fact:v1:66f7ba7ef72a9b438884a83ed04f68483e23859e2df7f22306c77a793b0c4cba",
-        "source_fact:v1:699a6ebf7783551abdfadb5f434c61b17e565867e95639ae53af95d1f484e2f8",
-        "source_fact:v1:76f6ca7794976201298288e3f4ce7df85a2518efef7c87286f500f010864899b",
-        "source_fact:v1:a93506507f17f1ed3a1b55357e2deff44cc22a527134db1760df24ac54a51c66"
-      ],
-      "source_published_kst": "2026-10-05T16:51+09:00",
-      "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:15+09:00",
+      "title": "삼닉 레버리지 ‘20좌 미만’ 단주 출구 마련"
     },
     "event:98c673d95db36e31391a3e2f": {
       "first_seen_kst": "2026-09-28T09:32:57+09:00",
@@ -4748,9 +4748,10 @@
     "event:f4769e24482eeeea3a7679f8": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
-        "live": "2026-10-06T05:21:17+09:00"
+        "live": "2026-10-06T05:21:17+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:21:17+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261006003600072",
       "source": "연합뉴스",
       "source_body_digest": "1e39c0690d80155f28eb3f340ae26f2ef6a98ca9afd0768a945ceca5753c9701",
@@ -4963,14 +4964,40 @@
       "source_published_kst": "2026-10-05T03:42+09:00",
       "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
     },
+    "fact:066e1b52dd072d3e4ac6d23c": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814544",
+      "source": "뉴시스",
+      "source_body_digest": "9b8cfc55206deb8dca03dec5466682127209193507f08b8ddf337ac0ba17213f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ac6da7da97ee2f7fbc36c248ee05139f427cd184f7b53cbf93d0882239e7346d",
+      "source_fact_keys": [
+        "source_fact:v1:23a1ce9335748857f4561b246bdf13a2d21b7ed173e35138effaa73302548b3d",
+        "source_fact:v1:3071eb6df58fdede2d890a542592f04f06d2b551b156776ef67ab211334d9bd1",
+        "source_fact:v1:359609b3e0ce0bb0fe7f5bfe3846eef819142c74c327dbecf6a19fef9b2371bf",
+        "source_fact:v1:3a5d7a44059734406495f82cf3614638711f5d0a584f3d13c655af39017122bb",
+        "source_fact:v1:457f485ad82c635cf168b7f59f54f80dc972b4882e919e4b694eb82734aa3a84",
+        "source_fact:v1:ae18709d1246948926fcd799a2d5631fd026cfcf7f464c9ff391e2f4c6e28fbe",
+        "source_fact:v1:eef3614f085893b88a7095a8948e66f7c9094341607fea2203e4f953c700c45a",
+        "source_fact:v1:f142deb4182f1265a28d0102b0d15acb6c5ce0cda0cb0226dc850fea6344375e"
+      ],
+      "source_published_kst": "2026-10-05T17:23+09:00",
+      "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
+    },
     "fact:0800e69c81117652619f8305": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
-        "live": "2026-10-05T19:27:09+09:00"
+        "live": "2026-10-05T19:27:09+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.hankyung.com/article/202610053408i",
       "source": "한국경제",
+      "source_body_digest": "b364bc61a9a1cb394063fdcb76d4a2cb54a320a03ded64e37dfdbf7a73b26165",
       "source_event_identity": "",
       "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
       "source_fact_keys": [
@@ -5420,9 +5447,10 @@
     "fact:17851167c48b094cdbbe4cea": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
-        "live": "2026-10-06T05:21:17+09:00"
+        "live": "2026-10-06T05:21:17+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:21:17+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261006003600072",
       "source": "연합뉴스",
       "source_body_digest": "1e39c0690d80155f28eb3f340ae26f2ef6a98ca9afd0768a945ceca5753c9701",
@@ -6524,6 +6552,24 @@
       "source_published_kst": "2026-10-05T13:25+09:00",
       "title": "'北 책임 추궁'과 '한반도 긴장 완화'…DMZ 지뢰사고 대응 딜레마"
     },
+    "fact:60bf4a03fd87a3e831973156": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01715446645609968&parentid=01833526645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "596bd2c190c7a0e7a37ea232b3fd081b95ff89bcd4bc484f7f83e8bd3d497668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11aaf912347a480f5737c78cf218e4bd717db0518825fa499a9eaf1761b1e655",
+      "source_fact_keys": [
+        "source_fact:v1:6635f73b75e781f24c85567f8a0a8177260966f3ee991a5cfac4b15b1b871762",
+        "source_fact:v1:d6f21a6a60b3f87f0ac3da76078e96f4f31bab218142c309685858157306d3ed"
+      ],
+      "source_published_kst": "2026-10-05T09:39+09:00",
+      "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
+    },
     "fact:6178387a5213e753da44ddb9": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -6827,10 +6873,11 @@
     "fact:7250416737f11e06ad191775": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
-        "live": "2026-10-06T05:21:17+09:00"
+        "live": "2026-10-06T05:21:17+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:21:17+09:00",
-      "link": "https://www.mt.co.kr/world/2026/10/06/2026100604374443800",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100604374443800",
       "source": "머니투데이",
       "source_body_digest": "4e6118cfc483470db9d8405a4cf863d55db8d4a98ab44baa8d7701508d0b0f2d",
       "source_event_identity": "",
@@ -7394,6 +7441,24 @@
       ],
       "source_published_kst": "2026-10-05T21:09+09:00",
       "title": "베니테크 바이오파마, BB-301 FDA 추가자료 요청..임상 일정 유지"
+    },
+    "fact:93c7e9d32246e02ba86ecc28": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814677",
+      "source": "뉴시스",
+      "source_body_digest": "fbf645f58cf09c8174f46f858b4ca8bfc8f9aa4a5431728bb363fce607d25fbe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d783d028aa1fec333ea0b786a19780b244ceccd83c45b6c255f8a82ae09377",
+      "source_fact_keys": [
+        "source_fact:v1:164dcb7142ff97332ccb4d1e9a893e9cfad1c0aefa574ce5b6890a259c53a639",
+        "source_fact:v1:23075857b847724c4e9d70d715a0df916130b581c6dc0e63e3b063e3e5dd3100"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "국제유가, 1%대 하락…중동 원유 수출 회복·G7 비축유 방출"
     },
     "fact:95cdaca3cf9ec3b7ccb39acf": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -9699,12 +9764,25 @@
     "link:0d412ab582707fc415fdee4a": {
       "first_seen_kst": "2026-10-05T17:30:42+09:00",
       "lanes": {
-        "live": "2026-10-05T17:30:42+09:00"
+        "live": "2026-10-05T17:30:42+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T17:30:42+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.newsis.com/view/NISX20261005_0003814544",
       "source": "뉴시스",
+      "source_body_digest": "9b8cfc55206deb8dca03dec5466682127209193507f08b8ddf337ac0ba17213f",
       "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ac6da7da97ee2f7fbc36c248ee05139f427cd184f7b53cbf93d0882239e7346d",
+      "source_fact_keys": [
+        "source_fact:v1:23a1ce9335748857f4561b246bdf13a2d21b7ed173e35138effaa73302548b3d",
+        "source_fact:v1:3071eb6df58fdede2d890a542592f04f06d2b551b156776ef67ab211334d9bd1",
+        "source_fact:v1:359609b3e0ce0bb0fe7f5bfe3846eef819142c74c327dbecf6a19fef9b2371bf",
+        "source_fact:v1:3a5d7a44059734406495f82cf3614638711f5d0a584f3d13c655af39017122bb",
+        "source_fact:v1:457f485ad82c635cf168b7f59f54f80dc972b4882e919e4b694eb82734aa3a84",
+        "source_fact:v1:ae18709d1246948926fcd799a2d5631fd026cfcf7f464c9ff391e2f4c6e28fbe",
+        "source_fact:v1:eef3614f085893b88a7095a8948e66f7c9094341607fea2203e4f953c700c45a",
+        "source_fact:v1:f142deb4182f1265a28d0102b0d15acb6c5ce0cda0cb0226dc850fea6344375e"
+      ],
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
@@ -9915,6 +9993,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261001040200001",
       "source": "연합뉴스",
       "title": "與 한정애 \"알래스카 LNG 투자 확정 아냐…美입장 강조한 것\" | 연합뉴스"
+    },
+    "link:111f65cc0d6f9e8e0a6537e6": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01715446645609968&parentid=01833526645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "596bd2c190c7a0e7a37ea232b3fd081b95ff89bcd4bc484f7f83e8bd3d497668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11aaf912347a480f5737c78cf218e4bd717db0518825fa499a9eaf1761b1e655",
+      "source_fact_keys": [
+        "source_fact:v1:6635f73b75e781f24c85567f8a0a8177260966f3ee991a5cfac4b15b1b871762",
+        "source_fact:v1:d6f21a6a60b3f87f0ac3da76078e96f4f31bab218142c309685858157306d3ed"
+      ],
+      "source_published_kst": "2026-10-05T09:39+09:00",
+      "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
     },
     "link:11901fad5640ae62a5058aff": {
       "first_seen_kst": "2026-10-02T02:18:41+09:00",
@@ -13443,6 +13539,21 @@
       "link": "https://www.mk.co.kr/news/stock/12163077",
       "source": "매일경제",
       "title": "브릭스모어 프로퍼티 그룹, 슬레이트 그로서리 REIT 23억 달러 인수"
+    },
+    "link:45a0ee42b6ac3a91410b4ac6": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168758",
+      "source": "매일경제",
+      "source_body_digest": "9583ccd524289799ad28c513270f924847e9fdb563a48741d20dd2f69a0ceaa5",
+      "source_event_identity": "source_event:v2:odd_lot_rule:9a404eb9f9885e08451999bd50153349602be31c84b3e47f1e96be7459b5e344",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:15+09:00",
+      "title": "삼닉 레버리지 ‘20좌 미만’ 단주 출구 마련"
     },
     "link:45bbec9185d28e28ca4a9538": {
       "first_seen_kst": "2026-10-03T13:09:25+09:00",
@@ -18796,6 +18907,24 @@
       "source": "매일경제",
       "title": "행동주의 따라 투자하면 돈 벌까- 매경ECONOMY"
     },
+    "link:8ec3a4f6041d30f62c6de86d": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814677",
+      "source": "뉴시스",
+      "source_body_digest": "fbf645f58cf09c8174f46f858b4ca8bfc8f9aa4a5431728bb363fce607d25fbe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d783d028aa1fec333ea0b786a19780b244ceccd83c45b6c255f8a82ae09377",
+      "source_fact_keys": [
+        "source_fact:v1:164dcb7142ff97332ccb4d1e9a893e9cfad1c0aefa574ce5b6890a259c53a639",
+        "source_fact:v1:23075857b847724c4e9d70d715a0df916130b581c6dc0e63e3b063e3e5dd3100"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "국제유가, 1%대 하락…중동 원유 수출 회복·G7 비축유 방출"
+    },
     "link:8edc0f6651576440882c6f68": {
       "first_seen_kst": "2026-10-01T05:56:02+09:00",
       "lanes": {
@@ -19231,11 +19360,13 @@
     "link:94a05bbde3c215ba4f48402e": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
-        "live": "2026-10-05T19:27:09+09:00"
+        "live": "2026-10-05T19:27:09+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.hankyung.com/article/202610053408i",
       "source": "한국경제",
+      "source_body_digest": "b364bc61a9a1cb394063fdcb76d4a2cb54a320a03ded64e37dfdbf7a73b26165",
       "source_event_identity": "",
       "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
       "source_fact_keys": [
@@ -19435,9 +19566,10 @@
     "link:970d454ff4a240418fb487a1": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
-        "live": "2026-10-06T05:21:17+09:00"
+        "live": "2026-10-06T05:21:17+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:21:17+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261006003600072",
       "source": "연합뉴스",
       "source_body_digest": "1e39c0690d80155f28eb3f340ae26f2ef6a98ca9afd0768a945ceca5753c9701",
@@ -20065,6 +20197,26 @@
       "link": "https://www.etoday.co.kr/news/view/2631773",
       "source": "이투데이",
       "title": "앤스로픽, 11월 중순 상장 추진⋯오픈AI 제치고 IPO 선점하나 [마켓핫]"
+    },
+    "link:9e9a2b148d4cefc5801c6b1d": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100604374443800",
+      "source": "머니투데이",
+      "source_body_digest": "4e6118cfc483470db9d8405a4cf863d55db8d4a98ab44baa8d7701508d0b0f2d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:905c65eb0068971ec4c63e6aec6e6e78474fc8b71608e7bc3b4d36021b57daa7",
+      "source_fact_keys": [
+        "source_fact:v1:058360c1bb477166670a7297e14488c5fa4c23ff2fc9c976c11699a093ca19d1",
+        "source_fact:v1:27e824a06df6996c75b60f1cec6f82876e8b0867a7ab58d613925b22dc07622c",
+        "source_fact:v1:5d9d11e481848aa03971ee17dbd3acf0fa9e0c1b4127e7bc9f55d837f1cd487c",
+        "source_fact:v1:ec59a06ef58cf09b9da7eeae9987d23fd936efc9d3e89a28863d7c77758cc9c5"
+      ],
+      "source_published_kst": "2026-10-06T04:53+09:00",
+      "title": "트럼프 \"휘발윳값 상승, 호르무즈 때문 아냐\"…우크라전쟁·야당 탓"
     },
     "link:9ea47f08d32703f29786f3f4": {
       "first_seen_kst": "2026-10-02T11:29:29+09:00",
@@ -21663,6 +21815,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T08:58+09:00",
       "title": "액셀러레이터 투자 양극화…상위 13%가 76% 차지, 19%는 투자 '0'"
+    },
+    "link:b5f6c7e9811989d53b020f44": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01715446645609968&parentid=01833526645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "596bd2c190c7a0e7a37ea232b3fd081b95ff89bcd4bc484f7f83e8bd3d497668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11aaf912347a480f5737c78cf218e4bd717db0518825fa499a9eaf1761b1e655",
+      "source_fact_keys": [
+        "source_fact:v1:6635f73b75e781f24c85567f8a0a8177260966f3ee991a5cfac4b15b1b871762",
+        "source_fact:v1:d6f21a6a60b3f87f0ac3da76078e96f4f31bab218142c309685858157306d3ed"
+      ],
+      "source_published_kst": "2026-10-05T09:39+09:00",
+      "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
     },
     "link:b613507b64f9cb343baec781": {
       "first_seen_kst": "2026-09-30T11:15:27+09:00",
@@ -30326,12 +30496,19 @@
     "original:34c4345a8c13d544f752c6b6": {
       "first_seen_kst": "2026-10-05T09:59:51+09:00",
       "lanes": {
-        "live": "2026-10-05T09:59:51+09:00"
+        "live": "2026-10-05T09:59:51+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T09:59:51+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01715446645609968",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01715446645609968&parentid=01833526645609968&gubun=E",
       "source": "이데일리",
+      "source_body_digest": "596bd2c190c7a0e7a37ea232b3fd081b95ff89bcd4bc484f7f83e8bd3d497668",
       "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11aaf912347a480f5737c78cf218e4bd717db0518825fa499a9eaf1761b1e655",
+      "source_fact_keys": [
+        "source_fact:v1:6635f73b75e781f24c85567f8a0a8177260966f3ee991a5cfac4b15b1b871762",
+        "source_fact:v1:d6f21a6a60b3f87f0ac3da76078e96f4f31bab218142c309685858157306d3ed"
+      ],
       "source_published_kst": "2026-10-05T09:39+09:00",
       "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
     },
@@ -34070,9 +34247,10 @@
     "original:685836beb23a38fbedcead7a": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
-        "live": "2026-10-06T05:21:17+09:00"
+        "live": "2026-10-06T05:21:17+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:21:17+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261006003600072",
       "source": "연합뉴스",
       "source_body_digest": "1e39c0690d80155f28eb3f340ae26f2ef6a98ca9afd0768a945ceca5753c9701",
@@ -34299,6 +34477,21 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "우리은행, '우다페' 연계 최고 9% 적금 출시"
+    },
+    "original:6b86484150e7143f5b5f3496": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168758",
+      "source": "매일경제",
+      "source_body_digest": "9583ccd524289799ad28c513270f924847e9fdb563a48741d20dd2f69a0ceaa5",
+      "source_event_identity": "source_event:v2:odd_lot_rule:9a404eb9f9885e08451999bd50153349602be31c84b3e47f1e96be7459b5e344",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:15+09:00",
+      "title": "삼닉 레버리지 ‘20좌 미만’ 단주 출구 마련"
     },
     "original:6b9126ba4f3c86f501c86e83": {
       "first_seen_kst": "2026-10-03T00:11:20+09:00",
@@ -37082,6 +37275,24 @@
       "source_published_kst": "2026-10-04T05:30+09:00",
       "title": "AI로 상호금융까지 광범위 공격…\"해킹 시도 훨씬 많을 수도\" | 연합뉴스"
     },
+    "original:92a99ea67dd3e4a6ca54d6c8": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814677",
+      "source": "뉴시스",
+      "source_body_digest": "fbf645f58cf09c8174f46f858b4ca8bfc8f9aa4a5431728bb363fce607d25fbe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d783d028aa1fec333ea0b786a19780b244ceccd83c45b6c255f8a82ae09377",
+      "source_fact_keys": [
+        "source_fact:v1:164dcb7142ff97332ccb4d1e9a893e9cfad1c0aefa574ce5b6890a259c53a639",
+        "source_fact:v1:23075857b847724c4e9d70d715a0df916130b581c6dc0e63e3b063e3e5dd3100"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "국제유가, 1%대 하락…중동 원유 수출 회복·G7 비축유 방출"
+    },
     "original:92c1344ad905d86c4a50269c": {
       "first_seen_kst": "2026-09-26T20:35:23+09:00",
       "lanes": {
@@ -37800,11 +38011,13 @@
     "original:9e349679abfedba11bfe04f4": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
-        "live": "2026-10-05T19:27:09+09:00"
+        "live": "2026-10-05T19:27:09+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.hankyung.com/article/202610053408i",
       "source": "한국경제",
+      "source_body_digest": "b364bc61a9a1cb394063fdcb76d4a2cb54a320a03ded64e37dfdbf7a73b26165",
       "source_event_identity": "",
       "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
       "source_fact_keys": [
@@ -38569,12 +38782,25 @@
     "original:aa67673717c069989eee9995": {
       "first_seen_kst": "2026-10-05T17:30:42+09:00",
       "lanes": {
-        "live": "2026-10-05T17:30:42+09:00"
+        "live": "2026-10-05T17:30:42+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T17:30:42+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.newsis.com/view/NISX20261005_0003814544",
       "source": "뉴시스",
+      "source_body_digest": "9b8cfc55206deb8dca03dec5466682127209193507f08b8ddf337ac0ba17213f",
       "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ac6da7da97ee2f7fbc36c248ee05139f427cd184f7b53cbf93d0882239e7346d",
+      "source_fact_keys": [
+        "source_fact:v1:23a1ce9335748857f4561b246bdf13a2d21b7ed173e35138effaa73302548b3d",
+        "source_fact:v1:3071eb6df58fdede2d890a542592f04f06d2b551b156776ef67ab211334d9bd1",
+        "source_fact:v1:359609b3e0ce0bb0fe7f5bfe3846eef819142c74c327dbecf6a19fef9b2371bf",
+        "source_fact:v1:3a5d7a44059734406495f82cf3614638711f5d0a584f3d13c655af39017122bb",
+        "source_fact:v1:457f485ad82c635cf168b7f59f54f80dc972b4882e919e4b694eb82734aa3a84",
+        "source_fact:v1:ae18709d1246948926fcd799a2d5631fd026cfcf7f464c9ff391e2f4c6e28fbe",
+        "source_fact:v1:eef3614f085893b88a7095a8948e66f7c9094341607fea2203e4f953c700c45a",
+        "source_fact:v1:f142deb4182f1265a28d0102b0d15acb6c5ce0cda0cb0226dc850fea6344375e"
+      ],
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
@@ -44144,10 +44370,11 @@
     "original:fcc58e0fd1d3c32f9b6f268a": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
-        "live": "2026-10-06T05:21:17+09:00"
+        "live": "2026-10-06T05:21:17+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:21:17+09:00",
-      "link": "https://www.mt.co.kr/world/2026/10/06/2026100604374443800",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100604374443800",
       "source": "머니투데이",
       "source_body_digest": "4e6118cfc483470db9d8405a4cf863d55db8d4a98ab44baa8d7701508d0b0f2d",
       "source_event_identity": "",
@@ -45275,10 +45502,11 @@
     "source_fact:0afaf32b328eb05818a62262": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
-        "live": "2026-10-06T05:21:17+09:00"
+        "live": "2026-10-06T05:21:17+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:21:17+09:00",
-      "link": "https://www.mt.co.kr/world/2026/10/06/2026100604374443800",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100604374443800",
       "source": "머니투데이",
       "source_body_digest": "4e6118cfc483470db9d8405a4cf863d55db8d4a98ab44baa8d7701508d0b0f2d",
       "source_event_identity": "",
@@ -45520,6 +45748,30 @@
       ],
       "source_published_kst": "2026-10-05T17:54+09:00",
       "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
+    },
+    "source_fact:0fcfaa67ac88c88d0fe8ea3d": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814544",
+      "source": "뉴시스",
+      "source_body_digest": "9b8cfc55206deb8dca03dec5466682127209193507f08b8ddf337ac0ba17213f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ac6da7da97ee2f7fbc36c248ee05139f427cd184f7b53cbf93d0882239e7346d",
+      "source_fact_keys": [
+        "source_fact:v1:23a1ce9335748857f4561b246bdf13a2d21b7ed173e35138effaa73302548b3d",
+        "source_fact:v1:3071eb6df58fdede2d890a542592f04f06d2b551b156776ef67ab211334d9bd1",
+        "source_fact:v1:359609b3e0ce0bb0fe7f5bfe3846eef819142c74c327dbecf6a19fef9b2371bf",
+        "source_fact:v1:3a5d7a44059734406495f82cf3614638711f5d0a584f3d13c655af39017122bb",
+        "source_fact:v1:457f485ad82c635cf168b7f59f54f80dc972b4882e919e4b694eb82734aa3a84",
+        "source_fact:v1:ae18709d1246948926fcd799a2d5631fd026cfcf7f464c9ff391e2f4c6e28fbe",
+        "source_fact:v1:eef3614f085893b88a7095a8948e66f7c9094341607fea2203e4f953c700c45a",
+        "source_fact:v1:f142deb4182f1265a28d0102b0d15acb6c5ce0cda0cb0226dc850fea6344375e"
+      ],
+      "source_published_kst": "2026-10-05T17:23+09:00",
+      "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
     "source_fact:10b6d240f3d5c9d9523f8749": {
       "first_seen_kst": "2026-10-05T23:37:00+09:00",
@@ -46824,11 +47076,13 @@
     "source_fact:23ce17f0b68f8e91a3d100ab": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
-        "live": "2026-10-05T19:27:09+09:00"
+        "live": "2026-10-05T19:27:09+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.hankyung.com/article/202610053408i",
       "source": "한국경제",
+      "source_body_digest": "b364bc61a9a1cb394063fdcb76d4a2cb54a320a03ded64e37dfdbf7a73b26165",
       "source_event_identity": "",
       "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
       "source_fact_keys": [
@@ -47218,6 +47472,30 @@
       "source_published_kst": "2026-10-05T21:24+09:00",
       "title": "레이도스 홀딩스, 애널로직 보안검색 합작법인 출범..소수지분 유지"
     },
+    "source_fact:2aef304f8f3c8b43424fed7e": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814544",
+      "source": "뉴시스",
+      "source_body_digest": "9b8cfc55206deb8dca03dec5466682127209193507f08b8ddf337ac0ba17213f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ac6da7da97ee2f7fbc36c248ee05139f427cd184f7b53cbf93d0882239e7346d",
+      "source_fact_keys": [
+        "source_fact:v1:23a1ce9335748857f4561b246bdf13a2d21b7ed173e35138effaa73302548b3d",
+        "source_fact:v1:3071eb6df58fdede2d890a542592f04f06d2b551b156776ef67ab211334d9bd1",
+        "source_fact:v1:359609b3e0ce0bb0fe7f5bfe3846eef819142c74c327dbecf6a19fef9b2371bf",
+        "source_fact:v1:3a5d7a44059734406495f82cf3614638711f5d0a584f3d13c655af39017122bb",
+        "source_fact:v1:457f485ad82c635cf168b7f59f54f80dc972b4882e919e4b694eb82734aa3a84",
+        "source_fact:v1:ae18709d1246948926fcd799a2d5631fd026cfcf7f464c9ff391e2f4c6e28fbe",
+        "source_fact:v1:eef3614f085893b88a7095a8948e66f7c9094341607fea2203e4f953c700c45a",
+        "source_fact:v1:f142deb4182f1265a28d0102b0d15acb6c5ce0cda0cb0226dc850fea6344375e"
+      ],
+      "source_published_kst": "2026-10-05T17:23+09:00",
+      "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
+    },
     "source_fact:2b3bc2153c18e259349c35ac": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -47579,6 +47857,24 @@
       ],
       "source_published_kst": "2026-10-06T00:10+09:00",
       "title": "\"숫자와 스토리 모두 찾아야\"…월가 트레이더·퀀트 우승자의 투자 전략"
+    },
+    "source_fact:3088d53d4e6c8c8ad0ac713c": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01715446645609968&parentid=01833526645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "596bd2c190c7a0e7a37ea232b3fd081b95ff89bcd4bc484f7f83e8bd3d497668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11aaf912347a480f5737c78cf218e4bd717db0518825fa499a9eaf1761b1e655",
+      "source_fact_keys": [
+        "source_fact:v1:6635f73b75e781f24c85567f8a0a8177260966f3ee991a5cfac4b15b1b871762",
+        "source_fact:v1:d6f21a6a60b3f87f0ac3da76078e96f4f31bab218142c309685858157306d3ed"
+      ],
+      "source_published_kst": "2026-10-05T09:39+09:00",
+      "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
     },
     "source_fact:30fc8b60521330da2519bf1c": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -48271,9 +48567,10 @@
     "source_fact:3a2e5f5e1c06b6586910e5af": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
-        "live": "2026-10-06T05:21:17+09:00"
+        "live": "2026-10-06T05:21:17+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:21:17+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261006003600072",
       "source": "연합뉴스",
       "source_body_digest": "1e39c0690d80155f28eb3f340ae26f2ef6a98ca9afd0768a945ceca5753c9701",
@@ -48436,11 +48733,13 @@
     "source_fact:3c9392f8b7d526a65a8f1179": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
-        "live": "2026-10-05T19:27:09+09:00"
+        "live": "2026-10-05T19:27:09+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.hankyung.com/article/202610053408i",
       "source": "한국경제",
+      "source_body_digest": "b364bc61a9a1cb394063fdcb76d4a2cb54a320a03ded64e37dfdbf7a73b26165",
       "source_event_identity": "",
       "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
       "source_fact_keys": [
@@ -49078,6 +49377,30 @@
       ],
       "source_published_kst": "2026-10-05T19:05+09:00",
       "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
+    },
+    "source_fact:45e05a9384b743e4d9be9f43": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814544",
+      "source": "뉴시스",
+      "source_body_digest": "9b8cfc55206deb8dca03dec5466682127209193507f08b8ddf337ac0ba17213f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ac6da7da97ee2f7fbc36c248ee05139f427cd184f7b53cbf93d0882239e7346d",
+      "source_fact_keys": [
+        "source_fact:v1:23a1ce9335748857f4561b246bdf13a2d21b7ed173e35138effaa73302548b3d",
+        "source_fact:v1:3071eb6df58fdede2d890a542592f04f06d2b551b156776ef67ab211334d9bd1",
+        "source_fact:v1:359609b3e0ce0bb0fe7f5bfe3846eef819142c74c327dbecf6a19fef9b2371bf",
+        "source_fact:v1:3a5d7a44059734406495f82cf3614638711f5d0a584f3d13c655af39017122bb",
+        "source_fact:v1:457f485ad82c635cf168b7f59f54f80dc972b4882e919e4b694eb82734aa3a84",
+        "source_fact:v1:ae18709d1246948926fcd799a2d5631fd026cfcf7f464c9ff391e2f4c6e28fbe",
+        "source_fact:v1:eef3614f085893b88a7095a8948e66f7c9094341607fea2203e4f953c700c45a",
+        "source_fact:v1:f142deb4182f1265a28d0102b0d15acb6c5ce0cda0cb0226dc850fea6344375e"
+      ],
+      "source_published_kst": "2026-10-05T17:23+09:00",
+      "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
     "source_fact:45f9172476d8c7bd5669311f": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
@@ -50291,11 +50614,13 @@
     "source_fact:5650a74ecd5a12ffd02340ac": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
-        "live": "2026-10-05T19:27:09+09:00"
+        "live": "2026-10-05T19:27:09+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.hankyung.com/article/202610053408i",
       "source": "한국경제",
+      "source_body_digest": "b364bc61a9a1cb394063fdcb76d4a2cb54a320a03ded64e37dfdbf7a73b26165",
       "source_event_identity": "",
       "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
       "source_fact_keys": [
@@ -50340,11 +50665,13 @@
     "source_fact:57eb903a9fc63deb7eff1beb": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
-        "live": "2026-10-05T19:27:09+09:00"
+        "live": "2026-10-05T19:27:09+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.hankyung.com/article/202610053408i",
       "source": "한국경제",
+      "source_body_digest": "b364bc61a9a1cb394063fdcb76d4a2cb54a320a03ded64e37dfdbf7a73b26165",
       "source_event_identity": "",
       "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
       "source_fact_keys": [
@@ -50360,6 +50687,30 @@
       ],
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+    },
+    "source_fact:57fc26bef01a859a89ec6949": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814544",
+      "source": "뉴시스",
+      "source_body_digest": "9b8cfc55206deb8dca03dec5466682127209193507f08b8ddf337ac0ba17213f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ac6da7da97ee2f7fbc36c248ee05139f427cd184f7b53cbf93d0882239e7346d",
+      "source_fact_keys": [
+        "source_fact:v1:23a1ce9335748857f4561b246bdf13a2d21b7ed173e35138effaa73302548b3d",
+        "source_fact:v1:3071eb6df58fdede2d890a542592f04f06d2b551b156776ef67ab211334d9bd1",
+        "source_fact:v1:359609b3e0ce0bb0fe7f5bfe3846eef819142c74c327dbecf6a19fef9b2371bf",
+        "source_fact:v1:3a5d7a44059734406495f82cf3614638711f5d0a584f3d13c655af39017122bb",
+        "source_fact:v1:457f485ad82c635cf168b7f59f54f80dc972b4882e919e4b694eb82734aa3a84",
+        "source_fact:v1:ae18709d1246948926fcd799a2d5631fd026cfcf7f464c9ff391e2f4c6e28fbe",
+        "source_fact:v1:eef3614f085893b88a7095a8948e66f7c9094341607fea2203e4f953c700c45a",
+        "source_fact:v1:f142deb4182f1265a28d0102b0d15acb6c5ce0cda0cb0226dc850fea6344375e"
+      ],
+      "source_published_kst": "2026-10-05T17:23+09:00",
+      "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
     "source_fact:58096016080bba0c3ab057b7": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -50876,11 +51227,13 @@
     "source_fact:5cf71cde662227b7e587b3a8": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
-        "live": "2026-10-05T19:27:09+09:00"
+        "live": "2026-10-05T19:27:09+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.hankyung.com/article/202610053408i",
       "source": "한국경제",
+      "source_body_digest": "b364bc61a9a1cb394063fdcb76d4a2cb54a320a03ded64e37dfdbf7a73b26165",
       "source_event_identity": "",
       "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
       "source_fact_keys": [
@@ -51285,10 +51638,11 @@
     "source_fact:653f51700bb04df4cdcc3424": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
-        "live": "2026-10-06T05:21:17+09:00"
+        "live": "2026-10-06T05:21:17+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:21:17+09:00",
-      "link": "https://www.mt.co.kr/world/2026/10/06/2026100604374443800",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100604374443800",
       "source": "머니투데이",
       "source_body_digest": "4e6118cfc483470db9d8405a4cf863d55db8d4a98ab44baa8d7701508d0b0f2d",
       "source_event_identity": "",
@@ -53132,10 +53486,11 @@
     "source_fact:7e88849ce7a13ac6b2d02d8c": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
-        "live": "2026-10-06T05:21:17+09:00"
+        "live": "2026-10-06T05:21:17+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:21:17+09:00",
-      "link": "https://www.mt.co.kr/world/2026/10/06/2026100604374443800",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100604374443800",
       "source": "머니투데이",
       "source_body_digest": "4e6118cfc483470db9d8405a4cf863d55db8d4a98ab44baa8d7701508d0b0f2d",
       "source_event_identity": "",
@@ -54430,9 +54785,10 @@
     "source_fact:91e61703ccd0ad7c01bc0cbd": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
-        "live": "2026-10-06T05:21:17+09:00"
+        "live": "2026-10-06T05:21:17+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:21:17+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261006003600072",
       "source": "연합뉴스",
       "source_body_digest": "1e39c0690d80155f28eb3f340ae26f2ef6a98ca9afd0768a945ceca5753c9701",
@@ -54753,11 +55109,13 @@
     "source_fact:97b4f11080169fab72f51c00": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
-        "live": "2026-10-05T19:27:09+09:00"
+        "live": "2026-10-05T19:27:09+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.hankyung.com/article/202610053408i",
       "source": "한국경제",
+      "source_body_digest": "b364bc61a9a1cb394063fdcb76d4a2cb54a320a03ded64e37dfdbf7a73b26165",
       "source_event_identity": "",
       "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
       "source_fact_keys": [
@@ -54915,11 +55273,13 @@
     "source_fact:9964552c76bfe80f857817ef": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
-        "live": "2026-10-05T19:27:09+09:00"
+        "live": "2026-10-05T19:27:09+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.hankyung.com/article/202610053408i",
       "source": "한국경제",
+      "source_body_digest": "b364bc61a9a1cb394063fdcb76d4a2cb54a320a03ded64e37dfdbf7a73b26165",
       "source_event_identity": "",
       "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
       "source_fact_keys": [
@@ -55952,6 +56312,24 @@
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
+    "source_fact:a7dfac9118959dc085b5b384": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814677",
+      "source": "뉴시스",
+      "source_body_digest": "fbf645f58cf09c8174f46f858b4ca8bfc8f9aa4a5431728bb363fce607d25fbe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d783d028aa1fec333ea0b786a19780b244ceccd83c45b6c255f8a82ae09377",
+      "source_fact_keys": [
+        "source_fact:v1:164dcb7142ff97332ccb4d1e9a893e9cfad1c0aefa574ce5b6890a259c53a639",
+        "source_fact:v1:23075857b847724c4e9d70d715a0df916130b581c6dc0e63e3b063e3e5dd3100"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "국제유가, 1%대 하락…중동 원유 수출 회복·G7 비축유 방출"
+    },
     "source_fact:a8443956bf0777a4a89408fb": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -55974,11 +56352,13 @@
     "source_fact:a89e859fdbfade7a0eea29db": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
-        "live": "2026-10-05T19:27:09+09:00"
+        "live": "2026-10-05T19:27:09+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.hankyung.com/article/202610053408i",
       "source": "한국경제",
+      "source_body_digest": "b364bc61a9a1cb394063fdcb76d4a2cb54a320a03ded64e37dfdbf7a73b26165",
       "source_event_identity": "",
       "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
       "source_fact_keys": [
@@ -56068,6 +56448,30 @@
       ],
       "source_published_kst": "2026-10-05T23:08+09:00",
       "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
+    },
+    "source_fact:a9e98cd552d0a161b8f21b96": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814544",
+      "source": "뉴시스",
+      "source_body_digest": "9b8cfc55206deb8dca03dec5466682127209193507f08b8ddf337ac0ba17213f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ac6da7da97ee2f7fbc36c248ee05139f427cd184f7b53cbf93d0882239e7346d",
+      "source_fact_keys": [
+        "source_fact:v1:23a1ce9335748857f4561b246bdf13a2d21b7ed173e35138effaa73302548b3d",
+        "source_fact:v1:3071eb6df58fdede2d890a542592f04f06d2b551b156776ef67ab211334d9bd1",
+        "source_fact:v1:359609b3e0ce0bb0fe7f5bfe3846eef819142c74c327dbecf6a19fef9b2371bf",
+        "source_fact:v1:3a5d7a44059734406495f82cf3614638711f5d0a584f3d13c655af39017122bb",
+        "source_fact:v1:457f485ad82c635cf168b7f59f54f80dc972b4882e919e4b694eb82734aa3a84",
+        "source_fact:v1:ae18709d1246948926fcd799a2d5631fd026cfcf7f464c9ff391e2f4c6e28fbe",
+        "source_fact:v1:eef3614f085893b88a7095a8948e66f7c9094341607fea2203e4f953c700c45a",
+        "source_fact:v1:f142deb4182f1265a28d0102b0d15acb6c5ce0cda0cb0226dc850fea6344375e"
+      ],
+      "source_published_kst": "2026-10-05T17:23+09:00",
+      "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
     "source_fact:aa12be83399ec55c5239cec3": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -57449,6 +57853,30 @@
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
     },
+    "source_fact:c1091d6efceeda8706bc445c": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814544",
+      "source": "뉴시스",
+      "source_body_digest": "9b8cfc55206deb8dca03dec5466682127209193507f08b8ddf337ac0ba17213f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ac6da7da97ee2f7fbc36c248ee05139f427cd184f7b53cbf93d0882239e7346d",
+      "source_fact_keys": [
+        "source_fact:v1:23a1ce9335748857f4561b246bdf13a2d21b7ed173e35138effaa73302548b3d",
+        "source_fact:v1:3071eb6df58fdede2d890a542592f04f06d2b551b156776ef67ab211334d9bd1",
+        "source_fact:v1:359609b3e0ce0bb0fe7f5bfe3846eef819142c74c327dbecf6a19fef9b2371bf",
+        "source_fact:v1:3a5d7a44059734406495f82cf3614638711f5d0a584f3d13c655af39017122bb",
+        "source_fact:v1:457f485ad82c635cf168b7f59f54f80dc972b4882e919e4b694eb82734aa3a84",
+        "source_fact:v1:ae18709d1246948926fcd799a2d5631fd026cfcf7f464c9ff391e2f4c6e28fbe",
+        "source_fact:v1:eef3614f085893b88a7095a8948e66f7c9094341607fea2203e4f953c700c45a",
+        "source_fact:v1:f142deb4182f1265a28d0102b0d15acb6c5ce0cda0cb0226dc850fea6344375e"
+      ],
+      "source_published_kst": "2026-10-05T17:23+09:00",
+      "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
+    },
     "source_fact:c1e7f56181b16e7577869d9c": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -57555,6 +57983,24 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:c369728b498641c89c94d2d6": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01715446645609968&parentid=01833526645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "596bd2c190c7a0e7a37ea232b3fd081b95ff89bcd4bc484f7f83e8bd3d497668",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11aaf912347a480f5737c78cf218e4bd717db0518825fa499a9eaf1761b1e655",
+      "source_fact_keys": [
+        "source_fact:v1:6635f73b75e781f24c85567f8a0a8177260966f3ee991a5cfac4b15b1b871762",
+        "source_fact:v1:d6f21a6a60b3f87f0ac3da76078e96f4f31bab218142c309685858157306d3ed"
+      ],
+      "source_published_kst": "2026-10-05T09:39+09:00",
+      "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
     },
     "source_fact:c3d1721b1f6abde9f62f3371": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
@@ -57984,6 +58430,24 @@
       ],
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
+    },
+    "source_fact:c9953c832fdef60fcf03c808": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814677",
+      "source": "뉴시스",
+      "source_body_digest": "fbf645f58cf09c8174f46f858b4ca8bfc8f9aa4a5431728bb363fce607d25fbe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d783d028aa1fec333ea0b786a19780b244ceccd83c45b6c255f8a82ae09377",
+      "source_fact_keys": [
+        "source_fact:v1:164dcb7142ff97332ccb4d1e9a893e9cfad1c0aefa574ce5b6890a259c53a639",
+        "source_fact:v1:23075857b847724c4e9d70d715a0df916130b581c6dc0e63e3b063e3e5dd3100"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "국제유가, 1%대 하락…중동 원유 수출 회복·G7 비축유 방출"
     },
     "source_fact:ca0968644b9450e7e0217770": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -58710,10 +59174,11 @@
     "source_fact:d3eec9d0b134c405af600be9": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
-        "live": "2026-10-06T05:21:17+09:00"
+        "live": "2026-10-06T05:21:17+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:21:17+09:00",
-      "link": "https://www.mt.co.kr/world/2026/10/06/2026100604374443800",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100604374443800",
       "source": "머니투데이",
       "source_body_digest": "4e6118cfc483470db9d8405a4cf863d55db8d4a98ab44baa8d7701508d0b0f2d",
       "source_event_identity": "",
@@ -58809,6 +59274,30 @@
       ],
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
+    },
+    "source_fact:d5b18690ca8e2a2817364b49": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814544",
+      "source": "뉴시스",
+      "source_body_digest": "9b8cfc55206deb8dca03dec5466682127209193507f08b8ddf337ac0ba17213f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ac6da7da97ee2f7fbc36c248ee05139f427cd184f7b53cbf93d0882239e7346d",
+      "source_fact_keys": [
+        "source_fact:v1:23a1ce9335748857f4561b246bdf13a2d21b7ed173e35138effaa73302548b3d",
+        "source_fact:v1:3071eb6df58fdede2d890a542592f04f06d2b551b156776ef67ab211334d9bd1",
+        "source_fact:v1:359609b3e0ce0bb0fe7f5bfe3846eef819142c74c327dbecf6a19fef9b2371bf",
+        "source_fact:v1:3a5d7a44059734406495f82cf3614638711f5d0a584f3d13c655af39017122bb",
+        "source_fact:v1:457f485ad82c635cf168b7f59f54f80dc972b4882e919e4b694eb82734aa3a84",
+        "source_fact:v1:ae18709d1246948926fcd799a2d5631fd026cfcf7f464c9ff391e2f4c6e28fbe",
+        "source_fact:v1:eef3614f085893b88a7095a8948e66f7c9094341607fea2203e4f953c700c45a",
+        "source_fact:v1:f142deb4182f1265a28d0102b0d15acb6c5ce0cda0cb0226dc850fea6344375e"
+      ],
+      "source_published_kst": "2026-10-05T17:23+09:00",
+      "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
     "source_fact:d62400604a59103c7f580157": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -60282,9 +60771,10 @@
     "source_fact:ebf8a00914d657f214316c71": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
-        "live": "2026-10-06T05:21:17+09:00"
+        "live": "2026-10-06T05:21:17+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:21:17+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261006003600072",
       "source": "연합뉴스",
       "source_body_digest": "1e39c0690d80155f28eb3f340ae26f2ef6a98ca9afd0768a945ceca5753c9701",
@@ -60973,11 +61463,13 @@
     "source_fact:f7b276b67284eab0ec75402a": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
-        "live": "2026-10-05T19:27:09+09:00"
+        "live": "2026-10-05T19:27:09+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.hankyung.com/article/202610053408i",
       "source": "한국경제",
+      "source_body_digest": "b364bc61a9a1cb394063fdcb76d4a2cb54a320a03ded64e37dfdbf7a73b26165",
       "source_event_identity": "",
       "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
       "source_fact_keys": [
@@ -61324,6 +61816,30 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "source_fact:fc2c348cf1d2a5b2a9790212": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814544",
+      "source": "뉴시스",
+      "source_body_digest": "9b8cfc55206deb8dca03dec5466682127209193507f08b8ddf337ac0ba17213f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ac6da7da97ee2f7fbc36c248ee05139f427cd184f7b53cbf93d0882239e7346d",
+      "source_fact_keys": [
+        "source_fact:v1:23a1ce9335748857f4561b246bdf13a2d21b7ed173e35138effaa73302548b3d",
+        "source_fact:v1:3071eb6df58fdede2d890a542592f04f06d2b551b156776ef67ab211334d9bd1",
+        "source_fact:v1:359609b3e0ce0bb0fe7f5bfe3846eef819142c74c327dbecf6a19fef9b2371bf",
+        "source_fact:v1:3a5d7a44059734406495f82cf3614638711f5d0a584f3d13c655af39017122bb",
+        "source_fact:v1:457f485ad82c635cf168b7f59f54f80dc972b4882e919e4b694eb82734aa3a84",
+        "source_fact:v1:ae18709d1246948926fcd799a2d5631fd026cfcf7f464c9ff391e2f4c6e28fbe",
+        "source_fact:v1:eef3614f085893b88a7095a8948e66f7c9094341607fea2203e4f953c700c45a",
+        "source_fact:v1:f142deb4182f1265a28d0102b0d15acb6c5ce0cda0cb0226dc850fea6344375e"
+      ],
+      "source_published_kst": "2026-10-05T17:23+09:00",
+      "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
     "source_fact:fc50a792de8914109e5135d0": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -65116,12 +65632,19 @@
     "title:34c4345a8c13d544f752c6b6": {
       "first_seen_kst": "2026-10-05T09:59:51+09:00",
       "lanes": {
-        "live": "2026-10-05T09:59:51+09:00"
+        "live": "2026-10-05T09:59:51+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T09:59:51+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01715446645609968",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01715446645609968&parentid=01833526645609968&gubun=E",
       "source": "이데일리",
+      "source_body_digest": "596bd2c190c7a0e7a37ea232b3fd081b95ff89bcd4bc484f7f83e8bd3d497668",
       "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:11aaf912347a480f5737c78cf218e4bd717db0518825fa499a9eaf1761b1e655",
+      "source_fact_keys": [
+        "source_fact:v1:6635f73b75e781f24c85567f8a0a8177260966f3ee991a5cfac4b15b1b871762",
+        "source_fact:v1:d6f21a6a60b3f87f0ac3da76078e96f4f31bab218142c309685858157306d3ed"
+      ],
       "source_published_kst": "2026-10-05T09:39+09:00",
       "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
     },
@@ -68891,9 +69414,10 @@
     "title:685836beb23a38fbedcead7a": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
-        "live": "2026-10-06T05:21:17+09:00"
+        "live": "2026-10-06T05:21:17+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:21:17+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261006003600072",
       "source": "연합뉴스",
       "source_body_digest": "1e39c0690d80155f28eb3f340ae26f2ef6a98ca9afd0768a945ceca5753c9701",
@@ -69120,6 +69644,21 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "우리은행, '우다페' 연계 최고 9% 적금 출시"
+    },
+    "title:6b86484150e7143f5b5f3496": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168758",
+      "source": "매일경제",
+      "source_body_digest": "9583ccd524289799ad28c513270f924847e9fdb563a48741d20dd2f69a0ceaa5",
+      "source_event_identity": "source_event:v2:odd_lot_rule:9a404eb9f9885e08451999bd50153349602be31c84b3e47f1e96be7459b5e344",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:15+09:00",
+      "title": "삼닉 레버리지 ‘20좌 미만’ 단주 출구 마련"
     },
     "title:6b9126ba4f3c86f501c86e83": {
       "first_seen_kst": "2026-10-03T00:11:20+09:00",
@@ -71943,6 +72482,24 @@
       "source_published_kst": "2026-10-04T05:30+09:00",
       "title": "AI로 상호금융까지 광범위 공격…\"해킹 시도 훨씬 많을 수도\" | 연합뉴스"
     },
+    "title:92a99ea67dd3e4a6ca54d6c8": {
+      "first_seen_kst": "2026-10-06T06:36:31+09:00",
+      "lanes": {
+        "preopen": "2026-10-06T06:36:31+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814677",
+      "source": "뉴시스",
+      "source_body_digest": "fbf645f58cf09c8174f46f858b4ca8bfc8f9aa4a5431728bb363fce607d25fbe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:74d783d028aa1fec333ea0b786a19780b244ceccd83c45b6c255f8a82ae09377",
+      "source_fact_keys": [
+        "source_fact:v1:164dcb7142ff97332ccb4d1e9a893e9cfad1c0aefa574ce5b6890a259c53a639",
+        "source_fact:v1:23075857b847724c4e9d70d715a0df916130b581c6dc0e63e3b063e3e5dd3100"
+      ],
+      "source_published_kst": "2026-10-06T06:27+09:00",
+      "title": "국제유가, 1%대 하락…중동 원유 수출 회복·G7 비축유 방출"
+    },
     "title:92c1344ad905d86c4a50269c": {
       "first_seen_kst": "2026-09-26T20:35:23+09:00",
       "lanes": {
@@ -72672,11 +73229,13 @@
     "title:9e349679abfedba11bfe04f4": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
-        "live": "2026-10-05T19:27:09+09:00"
+        "live": "2026-10-05T19:27:09+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.hankyung.com/article/202610053408i",
       "source": "한국경제",
+      "source_body_digest": "b364bc61a9a1cb394063fdcb76d4a2cb54a320a03ded64e37dfdbf7a73b26165",
       "source_event_identity": "",
       "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
       "source_fact_keys": [
@@ -73477,12 +74036,25 @@
     "title:aa67673717c069989eee9995": {
       "first_seen_kst": "2026-10-05T17:30:42+09:00",
       "lanes": {
-        "live": "2026-10-05T17:30:42+09:00"
+        "live": "2026-10-05T17:30:42+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-05T17:30:42+09:00",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
       "link": "https://www.newsis.com/view/NISX20261005_0003814544",
       "source": "뉴시스",
+      "source_body_digest": "9b8cfc55206deb8dca03dec5466682127209193507f08b8ddf337ac0ba17213f",
       "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ac6da7da97ee2f7fbc36c248ee05139f427cd184f7b53cbf93d0882239e7346d",
+      "source_fact_keys": [
+        "source_fact:v1:23a1ce9335748857f4561b246bdf13a2d21b7ed173e35138effaa73302548b3d",
+        "source_fact:v1:3071eb6df58fdede2d890a542592f04f06d2b551b156776ef67ab211334d9bd1",
+        "source_fact:v1:359609b3e0ce0bb0fe7f5bfe3846eef819142c74c327dbecf6a19fef9b2371bf",
+        "source_fact:v1:3a5d7a44059734406495f82cf3614638711f5d0a584f3d13c655af39017122bb",
+        "source_fact:v1:457f485ad82c635cf168b7f59f54f80dc972b4882e919e4b694eb82734aa3a84",
+        "source_fact:v1:ae18709d1246948926fcd799a2d5631fd026cfcf7f464c9ff391e2f4c6e28fbe",
+        "source_fact:v1:eef3614f085893b88a7095a8948e66f7c9094341607fea2203e4f953c700c45a",
+        "source_fact:v1:f142deb4182f1265a28d0102b0d15acb6c5ce0cda0cb0226dc850fea6344375e"
+      ],
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
@@ -79115,10 +79687,11 @@
     "title:fcc58e0fd1d3c32f9b6f268a": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
-        "live": "2026-10-06T05:21:17+09:00"
+        "live": "2026-10-06T05:21:17+09:00",
+        "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:21:17+09:00",
-      "link": "https://www.mt.co.kr/world/2026/10/06/2026100604374443800",
+      "last_seen_kst": "2026-10-06T06:36:31+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100604374443800",
       "source": "머니투데이",
       "source_body_digest": "4e6118cfc483470db9d8405a4cf863d55db8d4a98ab44baa8d7701508d0b0f2d",
       "source_event_identity": "",
@@ -79374,5 +79947,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T06:27:01+09:00"
+  "updated_at_kst": "2026-10-06T06:36:31+09:00"
 }
