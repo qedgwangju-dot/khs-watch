@@ -939,23 +939,26 @@
     "event:357501917a7f635b2fa6a147": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
       "lanes": {
-        "live": "2026-10-06T02:31:07+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T02:31:07+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003814662",
-      "source": "뉴시스",
-      "source_body_digest": "924d52863de7149ae68062739fe5d6c12850788e4be47f44ce4228f2f7a6b20b",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632514",
+      "source": "이투데이",
+      "source_body_digest": "650a2bae4e9e2a6de589b2d36f332f33fbb844085aa61441b4c7720da822add3",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:b3d6e68ede873ab8de519121962e6e57ff42378b2d9cfcaa66aa34e69a6bbfb1",
+      "source_fact_identity": "source_facts:v1:67f77e7e520697f625e8169eb44d63a7d3520d64c48b95136b31a951e28ad559",
       "source_fact_keys": [
-        "source_fact:v1:36d49f076251588091eb1e20439d2e1cccea09bb3ec51e2dd4376887ff7becea",
-        "source_fact:v1:634991ee50a53792a7bacdaff010d76727700f7286dc22d77a3f3c1d673aebfb",
-        "source_fact:v1:bc886af3b2e50dd6ffa81254c98d6b9c2ed8aa2bf7bc6b736a6f54a6586199c4",
-        "source_fact:v1:fa4b11e52a4553dda8501880db5d6fe0198da20cf7c3f0eadf12446e06e8bc4d",
-        "source_fact:v1:fe75c5f58a18ba23e0f57931be9ba02bd29e458b1819c16ef82d619a7cad6b65"
+        "source_fact:v1:1b8468da30d374e7e46803bcde0bf1a7c913a0ad544c1366aa101ca67b66afb8",
+        "source_fact:v1:1bb372243ff209a4bf905cb910766976371bb3d875f95f8f635e43f2bc406c1b",
+        "source_fact:v1:399cffd14034d85abf03add218a98cba96d1cc0053ee99c6ba517ec4e2819bc3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:8601c7b4e59fa2d851656f9a40e9b6a8323282e1550b2ec697f468064fcd6ef0",
+        "source_fact:v1:90903f5de9687b52ab3f5cd8edbcda33d213c8b03c23e5dcb364674a38bac21a",
+        "source_fact:v1:9a55ad7e4ca742a320d272d5320659cccfea16c085f366a343ae87800dd71185",
+        "source_fact:v1:d60a1a7dc8f5de11dd3f7ea6b518b6ba1f2d2fddc4a61d3d45a1c5d7c0dd0e2b"
       ],
-      "source_published_kst": "2026-10-06T02:28+09:00",
-      "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
+      "source_published_kst": "2026-10-06T06:25+09:00",
+      "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
     },
     "event:35c61e03fc529e43f46f2a91": {
       "first_seen_kst": "2026-10-02T12:31:36+09:00",
@@ -1105,6 +1108,43 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=04457526645608984",
       "source": "이데일리",
       "title": "英, 한국 러시아산 LNG 제재 면제…연 150만t 도입 차질 우려 해소"
+    },
+    "event:3f5d04ac92a1cd3d6c6effc7": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
     "event:40c0c915099f360d0f16b45a": {
       "first_seen_kst": "2026-10-02T05:58:25+09:00",
@@ -4189,25 +4229,25 @@
     "event:d9f68e9c742b0457f3d6101b": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
-        "live": "2026-10-06T06:01:11+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T06:01:11+09:00",
-      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
-      "source": "뉴시스",
-      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.fnnews.com/news/202610060601267536",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04c6c887da8f747a83fc511283c1760c0fdd497303a9df37d6e548cfe90992dd",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_identity": "source_facts:v1:5eeb868b901a9ff7ed19f5d51a16058056f7b206e9816c970284190399c5197a",
       "source_fact_keys": [
         "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
         "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
-        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
         "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
         "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
         "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
         "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
-        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd",
+        "source_fact:v1:f638f7391c04e247ed2ebc81f47d1915e44ac3fb3bfd4eeb8898bf8836981d5f"
       ],
-      "source_published_kst": "2026-10-06T06:00+09:00",
+      "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "event:d9fdb3c71a63bdf3e971c5af": {
@@ -4477,6 +4517,28 @@
       "link": "https://www.etoday.co.kr/news/view/2631746",
       "source": "이투데이",
       "title": "[속보] 뉴욕증시, 소폭 상승⋯나스닥 0.04%↑"
+    },
+    "event:e644508b7b2e758ffdc6a5e6": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632510",
+      "source": "이투데이",
+      "source_body_digest": "6cead6eaf2670aa02a989a687a8e972a106d22ed418c71f0776b30e1aaf7825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00e9a6aaa51c55cd6f4b6edd94c2f0f05f59b5bb2067fe75edccee90dea9f277",
+      "source_fact_keys": [
+        "source_fact:v1:2a8303aebbd71b0fa6fd5a053ed83cb2dc302a52a010c6c5574e5668832a26f3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:6eecfb1575718b3d79bfafdc90efdf918bd6688e739b55d9030db987a56cc2c6",
+        "source_fact:v1:968442d977f4d0e4c7e1d9949adb975f88fb417b8cc4de97a4fc5827efdab1ce",
+        "source_fact:v1:c7faa41e67dadf2f9337b131e916ce5ff6f808e5f4a081f0d20411dd38ad30f5",
+        "source_fact:v1:e1c6487bc77e5e881dcef71afde8b61a7f47dee658d0deef4d44a928de5d663a"
+      ],
+      "source_published_kst": "2026-10-06T06:04+09:00",
+      "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
     },
     "event:e756aeab6f88e05a76fb6d2a": {
       "first_seen_kst": "2026-09-19T00:05:24+09:00",
@@ -5327,6 +5389,33 @@
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
+    "fact:171a7a5ed81502b0a456b47f": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005042300003",
+      "source": "연합뉴스",
+      "source_body_digest": "b41e45adbc6e29778da0aa36cac83f1b1d6676845de1c0f60fb6946a20e4f032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d583fd605d2f9a8f26dab31e289cc614e01a0ab187d0a42b8f3113409f3a51fd",
+      "source_fact_keys": [
+        "source_fact:v1:013157c4c8a6f3ccd1c3f93225b005e13f8947f3b2d9aba4bd15ac4deba24c1c",
+        "source_fact:v1:14c8f0cfcc173815195134a95d8eee4319e262873ae3b9dd45c3ebc4f62041cc",
+        "source_fact:v1:1913578d25ff11b78ac47be0877fdc310c890803d88e6553693f4f57ac2c2e2f",
+        "source_fact:v1:33e6ec88c10d83ddc4c7fc23ca07ed83d70e3ad25f521829e1a916056a56f5ee",
+        "source_fact:v1:74a49629b9328c28fe40c054103d86d21f2f999fac19582983ca13696e228b9b",
+        "source_fact:v1:80d10e89c96d92444db997420e1abf8c6c476d1ba192f3b2f0528a1c4220fd92",
+        "source_fact:v1:8239a6b40e0f41b144edfc6c6d13a631db4d4a83f5140503c515a53c05ff2629",
+        "source_fact:v1:8a4f524decde9a1c18f3084599c22c3f38477ae563b21ed87cd1bbecf681df60",
+        "source_fact:v1:a547480c56bd530a2410fa3aded3fc5585fd86668e27fde4739b84de0ad9f3a9",
+        "source_fact:v1:bcde01f0f9b4d0b1e875a8ade012fb8a127eb07dc2c3ae8b64e66ece218bd57e",
+        "source_fact:v1:d59961573c7c8a3755b21c3da1a92a73de03f31ee41312b2f0db2d2b311a0ca6"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
     },
     "fact:17851167c48b094cdbbe4cea": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -6626,6 +6715,43 @@
       "source_published_kst": "2026-10-05T20:25+09:00",
       "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
     },
+    "fact:6e49330a1ac30f01fe7d3351": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
     "fact:6e9db955cb72f0b82764fdb9": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
       "lanes": {
@@ -6906,6 +7032,27 @@
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
     },
+    "fact:7e18aa1a94e580560d728a24": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02000806645610296&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "269ff92fd10da8a490138a3f3fcc7163b55ecce228a913fb8dd80128f77044d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2335ee1089b48c166dd1af799d95ef532354ee1e08dc20c48f4fcccd29aa1b6d",
+      "source_fact_keys": [
+        "source_fact:v1:19511620d833a5451deea0f4e7b5f74cdcdb4e71a191006f2dee3e4ca0bc384c",
+        "source_fact:v1:2f1cf827fa9e5af8435935f122b44c0ab07738aee3713e9dd5ff4b64372bf0b0",
+        "source_fact:v1:54f726c8ae5acb051f2220dc91f92b0c6393ffd8fb2df36cd3c909c6e7ea3c73",
+        "source_fact:v1:8cc47a736a0ecd7ac1d94f8a8030ea04caafa0faea5b9b875f6cac69a638fda5",
+        "source_fact:v1:f6483dd5e1988116c0b2625f017f6e7b84fd738567e6467f39e4d01e115b1de6"
+      ],
+      "source_published_kst": "2026-10-05T17:54+09:00",
+      "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
+    },
     "fact:7e6cc31dd306bcb3a869efa3": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -7092,6 +7239,28 @@
       ],
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
+    },
+    "fact:8b91ea96f05936e9bd31909a": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632510",
+      "source": "이투데이",
+      "source_body_digest": "6cead6eaf2670aa02a989a687a8e972a106d22ed418c71f0776b30e1aaf7825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00e9a6aaa51c55cd6f4b6edd94c2f0f05f59b5bb2067fe75edccee90dea9f277",
+      "source_fact_keys": [
+        "source_fact:v1:2a8303aebbd71b0fa6fd5a053ed83cb2dc302a52a010c6c5574e5668832a26f3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:6eecfb1575718b3d79bfafdc90efdf918bd6688e739b55d9030db987a56cc2c6",
+        "source_fact:v1:968442d977f4d0e4c7e1d9949adb975f88fb417b8cc4de97a4fc5827efdab1ce",
+        "source_fact:v1:c7faa41e67dadf2f9337b131e916ce5ff6f808e5f4a081f0d20411dd38ad30f5",
+        "source_fact:v1:e1c6487bc77e5e881dcef71afde8b61a7f47dee658d0deef4d44a928de5d663a"
+      ],
+      "source_published_kst": "2026-10-06T06:04+09:00",
+      "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
     },
     "fact:8c89cdd4fc2531d29a7e2cdd": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -8109,6 +8278,30 @@
       "source_published_kst": "2026-10-05T21:07+09:00",
       "title": "텔라 바이오, 완전 흡수성 메시 '리오라' FDA 허가 획득"
     },
+    "fact:d6c7e05719245b80b339f5cf": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632514",
+      "source": "이투데이",
+      "source_body_digest": "650a2bae4e9e2a6de589b2d36f332f33fbb844085aa61441b4c7720da822add3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67f77e7e520697f625e8169eb44d63a7d3520d64c48b95136b31a951e28ad559",
+      "source_fact_keys": [
+        "source_fact:v1:1b8468da30d374e7e46803bcde0bf1a7c913a0ad544c1366aa101ca67b66afb8",
+        "source_fact:v1:1bb372243ff209a4bf905cb910766976371bb3d875f95f8f635e43f2bc406c1b",
+        "source_fact:v1:399cffd14034d85abf03add218a98cba96d1cc0053ee99c6ba517ec4e2819bc3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:8601c7b4e59fa2d851656f9a40e9b6a8323282e1550b2ec697f468064fcd6ef0",
+        "source_fact:v1:90903f5de9687b52ab3f5cd8edbcda33d213c8b03c23e5dcb364674a38bac21a",
+        "source_fact:v1:9a55ad7e4ca742a320d272d5320659cccfea16c085f366a343ae87800dd71185",
+        "source_fact:v1:d60a1a7dc8f5de11dd3f7ea6b518b6ba1f2d2fddc4a61d3d45a1c5d7c0dd0e2b"
+      ],
+      "source_published_kst": "2026-10-06T06:25+09:00",
+      "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
+    },
     "fact:dbeb5fd6614dbec10b54f316": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
       "lanes": {
@@ -8330,6 +8523,24 @@
       "source_published_kst": "2026-10-05T16:00+09:00",
       "title": "현대차 8세대 아반떼·BMW iX3, '초기 부진설' 실체는 '공급 시차'"
     },
+    "fact:eb2724262af3cb1d922612b6": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002184600002",
+      "source": "연합뉴스",
+      "source_body_digest": "34bd391e79b2a89907fa61ed7c0be28eca821d128393b5881afdef4a57604113",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25b7614ae5b181a99acee2061006d61100f7f3e8f732c312ad60a75515b87d1d",
+      "source_fact_keys": [
+        "source_fact:v1:4578eeefde208d8495f7e0417da129bae39408059cf169e4bf1ac32448ef5a50",
+        "source_fact:v1:f90cd84000f712a0bea5e37457c1075fb98df64d227eee59c2a7df527fc0751b"
+      ],
+      "source_published_kst": "2026-10-06T05:59+09:00",
+      "title": "가상자산 거래소 장애인고용 '미달'…5년여간 부담금 13억 | 연합뉴스"
+    },
     "fact:eb431093ac66c049fd673ccd": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
       "lanes": {
@@ -8419,6 +8630,30 @@
       ],
       "source_published_kst": "2026-10-05T21:09+09:00",
       "title": "플렉스, 액시엄 20억달러 우선주 유치..가치 375억달러"
+    },
+    "fact:f0b2b97b8ab390b891246267": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.fnnews.com/news/202610060601267536",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04c6c887da8f747a83fc511283c1760c0fdd497303a9df37d6e548cfe90992dd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5eeb868b901a9ff7ed19f5d51a16058056f7b206e9816c970284190399c5197a",
+      "source_fact_keys": [
+        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
+        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
+        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
+        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
+        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
+        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd",
+        "source_fact:v1:f638f7391c04e247ed2ebc81f47d1915e44ac3fb3bfd4eeb8898bf8836981d5f"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "fact:f1150e65dddce81a5aac69f5": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
@@ -9417,6 +9652,30 @@
       "source": "머니투데이",
       "title": "진양곤 HLB 의장, 후속 파이프라인 자신감...각막염·CAR-T에도 베팅"
     },
+    "link:0cc4ed47e82ce16b2df06031": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.fnnews.com/news/202610060601267536",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04c6c887da8f747a83fc511283c1760c0fdd497303a9df37d6e548cfe90992dd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5eeb868b901a9ff7ed19f5d51a16058056f7b206e9816c970284190399c5197a",
+      "source_fact_keys": [
+        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
+        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
+        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
+        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
+        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
+        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd",
+        "source_fact:v1:f638f7391c04e247ed2ebc81f47d1915e44ac3fb3bfd4eeb8898bf8836981d5f"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
     "link:0cfb1eb67807f453ad7d4ac8": {
       "first_seen_kst": "2026-10-02T08:38:38+09:00",
       "lanes": {
@@ -10007,6 +10266,27 @@
       "link": "https://www.fnnews.com/news/202610021442012536",
       "source": "파이낸셜뉴스",
       "title": "HL디앤아이한라, 상반기 영업익 34%↑…증권가도 목표주가 상향"
+    },
+    "link:173ee69cadd750c76ef4ee31": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02000806645610296&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "269ff92fd10da8a490138a3f3fcc7163b55ecce228a913fb8dd80128f77044d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2335ee1089b48c166dd1af799d95ef532354ee1e08dc20c48f4fcccd29aa1b6d",
+      "source_fact_keys": [
+        "source_fact:v1:19511620d833a5451deea0f4e7b5f74cdcdb4e71a191006f2dee3e4ca0bc384c",
+        "source_fact:v1:2f1cf827fa9e5af8435935f122b44c0ab07738aee3713e9dd5ff4b64372bf0b0",
+        "source_fact:v1:54f726c8ae5acb051f2220dc91f92b0c6393ffd8fb2df36cd3c909c6e7ea3c73",
+        "source_fact:v1:8cc47a736a0ecd7ac1d94f8a8030ea04caafa0faea5b9b875f6cac69a638fda5",
+        "source_fact:v1:f6483dd5e1988116c0b2625f017f6e7b84fd738567e6467f39e4d01e115b1de6"
+      ],
+      "source_published_kst": "2026-10-05T17:54+09:00",
+      "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
     },
     "link:174e880ee29ba644ee3e87bf": {
       "first_seen_kst": "2026-10-02T15:40:35+09:00",
@@ -10896,6 +11176,27 @@
       "link": "https://www.yna.co.kr/view/AKR20261001175400008",
       "source": "연합뉴스",
       "title": "\"증시 경보, 단계수 줄이고 불건전거래 감시에 집중해야\" | 연합뉴스"
+    },
+    "link:265335438e4baaae901728e0": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02000806645610296&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "269ff92fd10da8a490138a3f3fcc7163b55ecce228a913fb8dd80128f77044d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2335ee1089b48c166dd1af799d95ef532354ee1e08dc20c48f4fcccd29aa1b6d",
+      "source_fact_keys": [
+        "source_fact:v1:19511620d833a5451deea0f4e7b5f74cdcdb4e71a191006f2dee3e4ca0bc384c",
+        "source_fact:v1:2f1cf827fa9e5af8435935f122b44c0ab07738aee3713e9dd5ff4b64372bf0b0",
+        "source_fact:v1:54f726c8ae5acb051f2220dc91f92b0c6393ffd8fb2df36cd3c909c6e7ea3c73",
+        "source_fact:v1:8cc47a736a0ecd7ac1d94f8a8030ea04caafa0faea5b9b875f6cac69a638fda5",
+        "source_fact:v1:f6483dd5e1988116c0b2625f017f6e7b84fd738567e6467f39e4d01e115b1de6"
+      ],
+      "source_published_kst": "2026-10-05T17:54+09:00",
+      "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
     },
     "link:2658f575820bc3bc30b96875": {
       "first_seen_kst": "2026-10-02T11:29:29+09:00",
@@ -14902,6 +15203,28 @@
       "source": "연합뉴스",
       "title": "[게시판] KB운용, 펀드·RISE ETF 통합한 AI 홈페이지 새단장 | 연합뉴스"
     },
+    "link:5da98c858f3c0303a1aa6fb5": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632510",
+      "source": "이투데이",
+      "source_body_digest": "6cead6eaf2670aa02a989a687a8e972a106d22ed418c71f0776b30e1aaf7825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00e9a6aaa51c55cd6f4b6edd94c2f0f05f59b5bb2067fe75edccee90dea9f277",
+      "source_fact_keys": [
+        "source_fact:v1:2a8303aebbd71b0fa6fd5a053ed83cb2dc302a52a010c6c5574e5668832a26f3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:6eecfb1575718b3d79bfafdc90efdf918bd6688e739b55d9030db987a56cc2c6",
+        "source_fact:v1:968442d977f4d0e4c7e1d9949adb975f88fb417b8cc4de97a4fc5827efdab1ce",
+        "source_fact:v1:c7faa41e67dadf2f9337b131e916ce5ff6f808e5f4a081f0d20411dd38ad30f5",
+        "source_fact:v1:e1c6487bc77e5e881dcef71afde8b61a7f47dee658d0deef4d44a928de5d663a"
+      ],
+      "source_published_kst": "2026-10-06T06:04+09:00",
+      "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
+    },
     "link:5db0dd64032760ebb729ec52": {
       "first_seen_kst": "2026-09-19T12:24:36+09:00",
       "lanes": {
@@ -17510,6 +17833,24 @@
       "source": "머니투데이",
       "title": "'없어서 못팔아' 삼성전기, 반도체 기판 증설에 6.8조 투자"
     },
+    "link:80e507abf9604cbfba708e55": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002184600002",
+      "source": "연합뉴스",
+      "source_body_digest": "34bd391e79b2a89907fa61ed7c0be28eca821d128393b5881afdef4a57604113",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25b7614ae5b181a99acee2061006d61100f7f3e8f732c312ad60a75515b87d1d",
+      "source_fact_keys": [
+        "source_fact:v1:4578eeefde208d8495f7e0417da129bae39408059cf169e4bf1ac32448ef5a50",
+        "source_fact:v1:f90cd84000f712a0bea5e37457c1075fb98df64d227eee59c2a7df527fc0751b"
+      ],
+      "source_published_kst": "2026-10-06T05:59+09:00",
+      "title": "가상자산 거래소 장애인고용 '미달'…5년여간 부담금 13억 | 연합뉴스"
+    },
     "link:8162cdc9a56854e9688fd257": {
       "first_seen_kst": "2026-09-19T08:53:16+09:00",
       "lanes": {
@@ -18703,6 +19044,57 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=05844966645608984",
       "source": "이데일리",
       "title": "크라우드 스트라이크, AI 보안 수요 강력...목표가 상향-TD코웬"
+    },
+    "link:926e0b43a7c6c3ff1d05cbf1": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005042300003",
+      "source": "연합뉴스",
+      "source_body_digest": "b41e45adbc6e29778da0aa36cac83f1b1d6676845de1c0f60fb6946a20e4f032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d583fd605d2f9a8f26dab31e289cc614e01a0ab187d0a42b8f3113409f3a51fd",
+      "source_fact_keys": [
+        "source_fact:v1:013157c4c8a6f3ccd1c3f93225b005e13f8947f3b2d9aba4bd15ac4deba24c1c",
+        "source_fact:v1:14c8f0cfcc173815195134a95d8eee4319e262873ae3b9dd45c3ebc4f62041cc",
+        "source_fact:v1:1913578d25ff11b78ac47be0877fdc310c890803d88e6553693f4f57ac2c2e2f",
+        "source_fact:v1:33e6ec88c10d83ddc4c7fc23ca07ed83d70e3ad25f521829e1a916056a56f5ee",
+        "source_fact:v1:74a49629b9328c28fe40c054103d86d21f2f999fac19582983ca13696e228b9b",
+        "source_fact:v1:80d10e89c96d92444db997420e1abf8c6c476d1ba192f3b2f0528a1c4220fd92",
+        "source_fact:v1:8239a6b40e0f41b144edfc6c6d13a631db4d4a83f5140503c515a53c05ff2629",
+        "source_fact:v1:8a4f524decde9a1c18f3084599c22c3f38477ae563b21ed87cd1bbecf681df60",
+        "source_fact:v1:a547480c56bd530a2410fa3aded3fc5585fd86668e27fde4739b84de0ad9f3a9",
+        "source_fact:v1:bcde01f0f9b4d0b1e875a8ade012fb8a127eb07dc2c3ae8b64e66ece218bd57e",
+        "source_fact:v1:d59961573c7c8a3755b21c3da1a92a73de03f31ee41312b2f0db2d2b311a0ca6"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
+    },
+    "link:92a0c53e349cb39bcc1ca99f": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632514",
+      "source": "이투데이",
+      "source_body_digest": "650a2bae4e9e2a6de589b2d36f332f33fbb844085aa61441b4c7720da822add3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67f77e7e520697f625e8169eb44d63a7d3520d64c48b95136b31a951e28ad559",
+      "source_fact_keys": [
+        "source_fact:v1:1b8468da30d374e7e46803bcde0bf1a7c913a0ad544c1366aa101ca67b66afb8",
+        "source_fact:v1:1bb372243ff209a4bf905cb910766976371bb3d875f95f8f635e43f2bc406c1b",
+        "source_fact:v1:399cffd14034d85abf03add218a98cba96d1cc0053ee99c6ba517ec4e2819bc3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:8601c7b4e59fa2d851656f9a40e9b6a8323282e1550b2ec697f468064fcd6ef0",
+        "source_fact:v1:90903f5de9687b52ab3f5cd8edbcda33d213c8b03c23e5dcb364674a38bac21a",
+        "source_fact:v1:9a55ad7e4ca742a320d272d5320659cccfea16c085f366a343ae87800dd71185",
+        "source_fact:v1:d60a1a7dc8f5de11dd3f7ea6b518b6ba1f2d2fddc4a61d3d45a1c5d7c0dd0e2b"
+      ],
+      "source_published_kst": "2026-10-06T06:25+09:00",
+      "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
     },
     "link:92eaf48b48fa07f23cc7590b": {
       "first_seen_kst": "2026-10-01T17:14:46+09:00",
@@ -25819,6 +26211,43 @@
       "source": "연합뉴스",
       "title": "서부발전, 전남개발공사와 전남광주 육상풍력 맞손 | 연합뉴스"
     },
+    "link:f6680bcebacbd08091974a21": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
     "link:f69bb46f4146937bee9dc823": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
       "lanes": {
@@ -28726,24 +29155,65 @@
       "source": "전자신문",
       "title": "에코프로, 최상운·김장우 공동 대표 체제 전환"
     },
+    "original:23206b612eab7e9741074a58": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632514",
+      "source": "이투데이",
+      "source_body_digest": "650a2bae4e9e2a6de589b2d36f332f33fbb844085aa61441b4c7720da822add3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67f77e7e520697f625e8169eb44d63a7d3520d64c48b95136b31a951e28ad559",
+      "source_fact_keys": [
+        "source_fact:v1:1b8468da30d374e7e46803bcde0bf1a7c913a0ad544c1366aa101ca67b66afb8",
+        "source_fact:v1:1bb372243ff209a4bf905cb910766976371bb3d875f95f8f635e43f2bc406c1b",
+        "source_fact:v1:399cffd14034d85abf03add218a98cba96d1cc0053ee99c6ba517ec4e2819bc3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:8601c7b4e59fa2d851656f9a40e9b6a8323282e1550b2ec697f468064fcd6ef0",
+        "source_fact:v1:90903f5de9687b52ab3f5cd8edbcda33d213c8b03c23e5dcb364674a38bac21a",
+        "source_fact:v1:9a55ad7e4ca742a320d272d5320659cccfea16c085f366a343ae87800dd71185",
+        "source_fact:v1:d60a1a7dc8f5de11dd3f7ea6b518b6ba1f2d2fddc4a61d3d45a1c5d7c0dd0e2b"
+      ],
+      "source_published_kst": "2026-10-06T06:25+09:00",
+      "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
+    },
     "original:232780fc47f047c95b11ead3": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
-        "live": "2026-10-06T05:44:59+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:44:59+09:00",
-      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01699046645610296&Kind=257",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
       "source": "이데일리",
-      "source_body_digest": "e166ac0d3af0b1efcb9a45f91f564e5b23633d6b5d0831181ae2310c5b0b4ad1",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:b71074267e44f3187a6e61907dfe32336ded71c987f035206a47b554f73c69bf",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
       "source_fact_keys": [
         "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
         "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
         "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
         "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
       ],
-      "source_published_kst": "2026-10-05T17:08+09:00",
+      "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
     "original:23a979d3ba80300e3e9b4398": {
@@ -31313,6 +31783,28 @@
       "source_event_identity": "",
       "title": "나노 뉴클리어 에너지, NRC 인허가 핵연료 자산 1350만 달러 인수"
     },
+    "original:47091ccaa0c185b54676b79d": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632510",
+      "source": "이투데이",
+      "source_body_digest": "6cead6eaf2670aa02a989a687a8e972a106d22ed418c71f0776b30e1aaf7825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00e9a6aaa51c55cd6f4b6edd94c2f0f05f59b5bb2067fe75edccee90dea9f277",
+      "source_fact_keys": [
+        "source_fact:v1:2a8303aebbd71b0fa6fd5a053ed83cb2dc302a52a010c6c5574e5668832a26f3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:6eecfb1575718b3d79bfafdc90efdf918bd6688e739b55d9030db987a56cc2c6",
+        "source_fact:v1:968442d977f4d0e4c7e1d9949adb975f88fb417b8cc4de97a4fc5827efdab1ce",
+        "source_fact:v1:c7faa41e67dadf2f9337b131e916ce5ff6f808e5f4a081f0d20411dd38ad30f5",
+        "source_fact:v1:e1c6487bc77e5e881dcef71afde8b61a7f47dee658d0deef4d44a928de5d663a"
+      ],
+      "source_published_kst": "2026-10-06T06:04+09:00",
+      "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
+    },
     "original:4745d7c1bd4323d47cd456e3": {
       "first_seen_kst": "2026-10-03T07:04:42+09:00",
       "lanes": {
@@ -31571,25 +32063,25 @@
     "original:4a14f8982a471f7a46105a4c": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
-        "live": "2026-10-06T06:01:11+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T06:01:11+09:00",
-      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
-      "source": "뉴시스",
-      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.fnnews.com/news/202610060601267536",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04c6c887da8f747a83fc511283c1760c0fdd497303a9df37d6e548cfe90992dd",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_identity": "source_facts:v1:5eeb868b901a9ff7ed19f5d51a16058056f7b206e9816c970284190399c5197a",
       "source_fact_keys": [
         "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
         "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
-        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
         "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
         "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
         "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
         "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
-        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd",
+        "source_fact:v1:f638f7391c04e247ed2ebc81f47d1915e44ac3fb3bfd4eeb8898bf8836981d5f"
       ],
-      "source_published_kst": "2026-10-06T06:00+09:00",
+      "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "original:4a7fb88e6bf21b8afb1da61c": {
@@ -36806,6 +37298,27 @@
       "source": "머니투데이",
       "title": "반도체가 半했다… 한국수출 사상 첫 1조달러 시대 눈앞"
     },
+    "original:96b8cfd8b85f747a5bd0873d": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02000806645610296&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "269ff92fd10da8a490138a3f3fcc7163b55ecce228a913fb8dd80128f77044d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2335ee1089b48c166dd1af799d95ef532354ee1e08dc20c48f4fcccd29aa1b6d",
+      "source_fact_keys": [
+        "source_fact:v1:19511620d833a5451deea0f4e7b5f74cdcdb4e71a191006f2dee3e4ca0bc384c",
+        "source_fact:v1:2f1cf827fa9e5af8435935f122b44c0ab07738aee3713e9dd5ff4b64372bf0b0",
+        "source_fact:v1:54f726c8ae5acb051f2220dc91f92b0c6393ffd8fb2df36cd3c909c6e7ea3c73",
+        "source_fact:v1:8cc47a736a0ecd7ac1d94f8a8030ea04caafa0faea5b9b875f6cac69a638fda5",
+        "source_fact:v1:f6483dd5e1988116c0b2625f017f6e7b84fd738567e6467f39e4d01e115b1de6"
+      ],
+      "source_published_kst": "2026-10-05T17:54+09:00",
+      "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
+    },
     "original:96edcfc5d7dbaad049948a2e": {
       "first_seen_kst": "2026-10-02T20:28:38+09:00",
       "lanes": {
@@ -40227,6 +40740,33 @@
       "source": "연합뉴스",
       "title": "[해수분해] 가라앉는 배 탈출 '골든타임' 늘린다…바다 안전 기술 | 연합뉴스"
     },
+    "original:ccbf85de9b8dd253b508e520": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005042300003",
+      "source": "연합뉴스",
+      "source_body_digest": "b41e45adbc6e29778da0aa36cac83f1b1d6676845de1c0f60fb6946a20e4f032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d583fd605d2f9a8f26dab31e289cc614e01a0ab187d0a42b8f3113409f3a51fd",
+      "source_fact_keys": [
+        "source_fact:v1:013157c4c8a6f3ccd1c3f93225b005e13f8947f3b2d9aba4bd15ac4deba24c1c",
+        "source_fact:v1:14c8f0cfcc173815195134a95d8eee4319e262873ae3b9dd45c3ebc4f62041cc",
+        "source_fact:v1:1913578d25ff11b78ac47be0877fdc310c890803d88e6553693f4f57ac2c2e2f",
+        "source_fact:v1:33e6ec88c10d83ddc4c7fc23ca07ed83d70e3ad25f521829e1a916056a56f5ee",
+        "source_fact:v1:74a49629b9328c28fe40c054103d86d21f2f999fac19582983ca13696e228b9b",
+        "source_fact:v1:80d10e89c96d92444db997420e1abf8c6c476d1ba192f3b2f0528a1c4220fd92",
+        "source_fact:v1:8239a6b40e0f41b144edfc6c6d13a631db4d4a83f5140503c515a53c05ff2629",
+        "source_fact:v1:8a4f524decde9a1c18f3084599c22c3f38477ae563b21ed87cd1bbecf681df60",
+        "source_fact:v1:a547480c56bd530a2410fa3aded3fc5585fd86668e27fde4739b84de0ad9f3a9",
+        "source_fact:v1:bcde01f0f9b4d0b1e875a8ade012fb8a127eb07dc2c3ae8b64e66ece218bd57e",
+        "source_fact:v1:d59961573c7c8a3755b21c3da1a92a73de03f31ee41312b2f0db2d2b311a0ca6"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
+    },
     "original:ccd312e0a9ed8370e9e2114d": {
       "first_seen_kst": "2026-10-02T16:53:54+09:00",
       "lanes": {
@@ -42347,6 +42887,24 @@
       "source": "머니투데이",
       "title": "비즈니스캔버스, 해외 B2B 영업 돕는 AI 서비스 '아테나' 출시"
     },
+    "original:e8bad168c3a756e0365fa63e": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002184600002",
+      "source": "연합뉴스",
+      "source_body_digest": "34bd391e79b2a89907fa61ed7c0be28eca821d128393b5881afdef4a57604113",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25b7614ae5b181a99acee2061006d61100f7f3e8f732c312ad60a75515b87d1d",
+      "source_fact_keys": [
+        "source_fact:v1:4578eeefde208d8495f7e0417da129bae39408059cf169e4bf1ac32448ef5a50",
+        "source_fact:v1:f90cd84000f712a0bea5e37457c1075fb98df64d227eee59c2a7df527fc0751b"
+      ],
+      "source_published_kst": "2026-10-06T05:59+09:00",
+      "title": "가상자산 거래소 장애인고용 '미달'…5년여간 부담금 13억 | 연합뉴스"
+    },
     "original:e8bcb2effb5a2fb6e4a28aa1": {
       "first_seen_kst": "2026-10-03T05:03:54+09:00",
       "lanes": {
@@ -43955,6 +44513,33 @@
       "source_published_kst": "2026-10-05T23:08+09:00",
       "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
     },
+    "source_fact:01c89754907a416159a6fb96": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005042300003",
+      "source": "연합뉴스",
+      "source_body_digest": "b41e45adbc6e29778da0aa36cac83f1b1d6676845de1c0f60fb6946a20e4f032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d583fd605d2f9a8f26dab31e289cc614e01a0ab187d0a42b8f3113409f3a51fd",
+      "source_fact_keys": [
+        "source_fact:v1:013157c4c8a6f3ccd1c3f93225b005e13f8947f3b2d9aba4bd15ac4deba24c1c",
+        "source_fact:v1:14c8f0cfcc173815195134a95d8eee4319e262873ae3b9dd45c3ebc4f62041cc",
+        "source_fact:v1:1913578d25ff11b78ac47be0877fdc310c890803d88e6553693f4f57ac2c2e2f",
+        "source_fact:v1:33e6ec88c10d83ddc4c7fc23ca07ed83d70e3ad25f521829e1a916056a56f5ee",
+        "source_fact:v1:74a49629b9328c28fe40c054103d86d21f2f999fac19582983ca13696e228b9b",
+        "source_fact:v1:80d10e89c96d92444db997420e1abf8c6c476d1ba192f3b2f0528a1c4220fd92",
+        "source_fact:v1:8239a6b40e0f41b144edfc6c6d13a631db4d4a83f5140503c515a53c05ff2629",
+        "source_fact:v1:8a4f524decde9a1c18f3084599c22c3f38477ae563b21ed87cd1bbecf681df60",
+        "source_fact:v1:a547480c56bd530a2410fa3aded3fc5585fd86668e27fde4739b84de0ad9f3a9",
+        "source_fact:v1:bcde01f0f9b4d0b1e875a8ade012fb8a127eb07dc2c3ae8b64e66ece218bd57e",
+        "source_fact:v1:d59961573c7c8a3755b21c3da1a92a73de03f31ee41312b2f0db2d2b311a0ca6"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
+    },
     "source_fact:01d48911be74633c8ce98c13": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -44277,6 +44862,43 @@
       ],
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "디파이 디벨롭먼트, 3분기 주당 NAV 2배 이상 전망..SOL 보유 11%↑"
+    },
+    "source_fact:0623c4f0f58fbea081ecf331": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
     "source_fact:065970d8f231f37464d7c099": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -44691,6 +45313,43 @@
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
     },
+    "source_fact:0b581d658a6f90bb014137a1": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
     "source_fact:0b92c8b04b037e6733517262": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -44840,6 +45499,27 @@
       ],
       "source_published_kst": "2026-10-05T19:05+09:00",
       "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
+    },
+    "source_fact:0f6ff7cbfe04feb2bd1df40e": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02000806645610296&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "269ff92fd10da8a490138a3f3fcc7163b55ecce228a913fb8dd80128f77044d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2335ee1089b48c166dd1af799d95ef532354ee1e08dc20c48f4fcccd29aa1b6d",
+      "source_fact_keys": [
+        "source_fact:v1:19511620d833a5451deea0f4e7b5f74cdcdb4e71a191006f2dee3e4ca0bc384c",
+        "source_fact:v1:2f1cf827fa9e5af8435935f122b44c0ab07738aee3713e9dd5ff4b64372bf0b0",
+        "source_fact:v1:54f726c8ae5acb051f2220dc91f92b0c6393ffd8fb2df36cd3c909c6e7ea3c73",
+        "source_fact:v1:8cc47a736a0ecd7ac1d94f8a8030ea04caafa0faea5b9b875f6cac69a638fda5",
+        "source_fact:v1:f6483dd5e1988116c0b2625f017f6e7b84fd738567e6467f39e4d01e115b1de6"
+      ],
+      "source_published_kst": "2026-10-05T17:54+09:00",
+      "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
     },
     "source_fact:10b6d240f3d5c9d9523f8749": {
       "first_seen_kst": "2026-10-05T23:37:00+09:00",
@@ -45286,6 +45966,33 @@
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
     },
+    "source_fact:16258f7fc057567393be6c7d": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005042300003",
+      "source": "연합뉴스",
+      "source_body_digest": "b41e45adbc6e29778da0aa36cac83f1b1d6676845de1c0f60fb6946a20e4f032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d583fd605d2f9a8f26dab31e289cc614e01a0ab187d0a42b8f3113409f3a51fd",
+      "source_fact_keys": [
+        "source_fact:v1:013157c4c8a6f3ccd1c3f93225b005e13f8947f3b2d9aba4bd15ac4deba24c1c",
+        "source_fact:v1:14c8f0cfcc173815195134a95d8eee4319e262873ae3b9dd45c3ebc4f62041cc",
+        "source_fact:v1:1913578d25ff11b78ac47be0877fdc310c890803d88e6553693f4f57ac2c2e2f",
+        "source_fact:v1:33e6ec88c10d83ddc4c7fc23ca07ed83d70e3ad25f521829e1a916056a56f5ee",
+        "source_fact:v1:74a49629b9328c28fe40c054103d86d21f2f999fac19582983ca13696e228b9b",
+        "source_fact:v1:80d10e89c96d92444db997420e1abf8c6c476d1ba192f3b2f0528a1c4220fd92",
+        "source_fact:v1:8239a6b40e0f41b144edfc6c6d13a631db4d4a83f5140503c515a53c05ff2629",
+        "source_fact:v1:8a4f524decde9a1c18f3084599c22c3f38477ae563b21ed87cd1bbecf681df60",
+        "source_fact:v1:a547480c56bd530a2410fa3aded3fc5585fd86668e27fde4739b84de0ad9f3a9",
+        "source_fact:v1:bcde01f0f9b4d0b1e875a8ade012fb8a127eb07dc2c3ae8b64e66ece218bd57e",
+        "source_fact:v1:d59961573c7c8a3755b21c3da1a92a73de03f31ee41312b2f0db2d2b311a0ca6"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
+    },
     "source_fact:17200814257079d16747caa8": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -45637,25 +46344,25 @@
     "source_fact:1ceedd2741a3be86dd865adf": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
-        "live": "2026-10-06T06:01:11+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T06:01:11+09:00",
-      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
-      "source": "뉴시스",
-      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.fnnews.com/news/202610060601267536",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04c6c887da8f747a83fc511283c1760c0fdd497303a9df37d6e548cfe90992dd",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_identity": "source_facts:v1:5eeb868b901a9ff7ed19f5d51a16058056f7b206e9816c970284190399c5197a",
       "source_fact_keys": [
         "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
         "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
-        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
         "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
         "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
         "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
         "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
-        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd",
+        "source_fact:v1:f638f7391c04e247ed2ebc81f47d1915e44ac3fb3bfd4eeb8898bf8836981d5f"
       ],
-      "source_published_kst": "2026-10-06T06:00+09:00",
+      "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "source_fact:1d3a1faae44e0024f388e1f9": {
@@ -45809,6 +46516,33 @@
       ],
       "source_published_kst": "2026-10-05T14:28+09:00",
       "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
+    },
+    "source_fact:1f532be4ca4bda8b21363d0a": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005042300003",
+      "source": "연합뉴스",
+      "source_body_digest": "b41e45adbc6e29778da0aa36cac83f1b1d6676845de1c0f60fb6946a20e4f032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d583fd605d2f9a8f26dab31e289cc614e01a0ab187d0a42b8f3113409f3a51fd",
+      "source_fact_keys": [
+        "source_fact:v1:013157c4c8a6f3ccd1c3f93225b005e13f8947f3b2d9aba4bd15ac4deba24c1c",
+        "source_fact:v1:14c8f0cfcc173815195134a95d8eee4319e262873ae3b9dd45c3ebc4f62041cc",
+        "source_fact:v1:1913578d25ff11b78ac47be0877fdc310c890803d88e6553693f4f57ac2c2e2f",
+        "source_fact:v1:33e6ec88c10d83ddc4c7fc23ca07ed83d70e3ad25f521829e1a916056a56f5ee",
+        "source_fact:v1:74a49629b9328c28fe40c054103d86d21f2f999fac19582983ca13696e228b9b",
+        "source_fact:v1:80d10e89c96d92444db997420e1abf8c6c476d1ba192f3b2f0528a1c4220fd92",
+        "source_fact:v1:8239a6b40e0f41b144edfc6c6d13a631db4d4a83f5140503c515a53c05ff2629",
+        "source_fact:v1:8a4f524decde9a1c18f3084599c22c3f38477ae563b21ed87cd1bbecf681df60",
+        "source_fact:v1:a547480c56bd530a2410fa3aded3fc5585fd86668e27fde4739b84de0ad9f3a9",
+        "source_fact:v1:bcde01f0f9b4d0b1e875a8ade012fb8a127eb07dc2c3ae8b64e66ece218bd57e",
+        "source_fact:v1:d59961573c7c8a3755b21c3da1a92a73de03f31ee41312b2f0db2d2b311a0ca6"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
     },
     "source_fact:1fac88cbbfd5bdf40a35eeef": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -46187,6 +46921,33 @@
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
     },
+    "source_fact:2533bec91479ebaa3e720fb5": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005042300003",
+      "source": "연합뉴스",
+      "source_body_digest": "b41e45adbc6e29778da0aa36cac83f1b1d6676845de1c0f60fb6946a20e4f032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d583fd605d2f9a8f26dab31e289cc614e01a0ab187d0a42b8f3113409f3a51fd",
+      "source_fact_keys": [
+        "source_fact:v1:013157c4c8a6f3ccd1c3f93225b005e13f8947f3b2d9aba4bd15ac4deba24c1c",
+        "source_fact:v1:14c8f0cfcc173815195134a95d8eee4319e262873ae3b9dd45c3ebc4f62041cc",
+        "source_fact:v1:1913578d25ff11b78ac47be0877fdc310c890803d88e6553693f4f57ac2c2e2f",
+        "source_fact:v1:33e6ec88c10d83ddc4c7fc23ca07ed83d70e3ad25f521829e1a916056a56f5ee",
+        "source_fact:v1:74a49629b9328c28fe40c054103d86d21f2f999fac19582983ca13696e228b9b",
+        "source_fact:v1:80d10e89c96d92444db997420e1abf8c6c476d1ba192f3b2f0528a1c4220fd92",
+        "source_fact:v1:8239a6b40e0f41b144edfc6c6d13a631db4d4a83f5140503c515a53c05ff2629",
+        "source_fact:v1:8a4f524decde9a1c18f3084599c22c3f38477ae563b21ed87cd1bbecf681df60",
+        "source_fact:v1:a547480c56bd530a2410fa3aded3fc5585fd86668e27fde4739b84de0ad9f3a9",
+        "source_fact:v1:bcde01f0f9b4d0b1e875a8ade012fb8a127eb07dc2c3ae8b64e66ece218bd57e",
+        "source_fact:v1:d59961573c7c8a3755b21c3da1a92a73de03f31ee41312b2f0db2d2b311a0ca6"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
+    },
     "source_fact:25aaab3d2c93aaddeda021b9": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
       "lanes": {
@@ -46204,6 +46965,33 @@
       ],
       "source_published_kst": "2026-10-05T20:22+09:00",
       "title": "스트라타시스, 방산 전문가 데이비드 친 이사 후보 지명"
+    },
+    "source_fact:2619b8baa7bd80d6845f0afc": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005042300003",
+      "source": "연합뉴스",
+      "source_body_digest": "b41e45adbc6e29778da0aa36cac83f1b1d6676845de1c0f60fb6946a20e4f032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d583fd605d2f9a8f26dab31e289cc614e01a0ab187d0a42b8f3113409f3a51fd",
+      "source_fact_keys": [
+        "source_fact:v1:013157c4c8a6f3ccd1c3f93225b005e13f8947f3b2d9aba4bd15ac4deba24c1c",
+        "source_fact:v1:14c8f0cfcc173815195134a95d8eee4319e262873ae3b9dd45c3ebc4f62041cc",
+        "source_fact:v1:1913578d25ff11b78ac47be0877fdc310c890803d88e6553693f4f57ac2c2e2f",
+        "source_fact:v1:33e6ec88c10d83ddc4c7fc23ca07ed83d70e3ad25f521829e1a916056a56f5ee",
+        "source_fact:v1:74a49629b9328c28fe40c054103d86d21f2f999fac19582983ca13696e228b9b",
+        "source_fact:v1:80d10e89c96d92444db997420e1abf8c6c476d1ba192f3b2f0528a1c4220fd92",
+        "source_fact:v1:8239a6b40e0f41b144edfc6c6d13a631db4d4a83f5140503c515a53c05ff2629",
+        "source_fact:v1:8a4f524decde9a1c18f3084599c22c3f38477ae563b21ed87cd1bbecf681df60",
+        "source_fact:v1:a547480c56bd530a2410fa3aded3fc5585fd86668e27fde4739b84de0ad9f3a9",
+        "source_fact:v1:bcde01f0f9b4d0b1e875a8ade012fb8a127eb07dc2c3ae8b64e66ece218bd57e",
+        "source_fact:v1:d59961573c7c8a3755b21c3da1a92a73de03f31ee41312b2f0db2d2b311a0ca6"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
     },
     "source_fact:26db737403ef3e17a1ef47ef": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -47222,6 +48010,30 @@
       "source_published_kst": "2026-10-05T12:32+09:00",
       "title": "엔씨 '아이온2' 글로벌 정식 출시... 얼리액세스 동접 17만명"
     },
+    "source_fact:36d9bdfad73c55691a70796b": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632514",
+      "source": "이투데이",
+      "source_body_digest": "650a2bae4e9e2a6de589b2d36f332f33fbb844085aa61441b4c7720da822add3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67f77e7e520697f625e8169eb44d63a7d3520d64c48b95136b31a951e28ad559",
+      "source_fact_keys": [
+        "source_fact:v1:1b8468da30d374e7e46803bcde0bf1a7c913a0ad544c1366aa101ca67b66afb8",
+        "source_fact:v1:1bb372243ff209a4bf905cb910766976371bb3d875f95f8f635e43f2bc406c1b",
+        "source_fact:v1:399cffd14034d85abf03add218a98cba96d1cc0053ee99c6ba517ec4e2819bc3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:8601c7b4e59fa2d851656f9a40e9b6a8323282e1550b2ec697f468064fcd6ef0",
+        "source_fact:v1:90903f5de9687b52ab3f5cd8edbcda33d213c8b03c23e5dcb364674a38bac21a",
+        "source_fact:v1:9a55ad7e4ca742a320d272d5320659cccfea16c085f366a343ae87800dd71185",
+        "source_fact:v1:d60a1a7dc8f5de11dd3f7ea6b518b6ba1f2d2fddc4a61d3d45a1c5d7c0dd0e2b"
+      ],
+      "source_published_kst": "2026-10-06T06:25+09:00",
+      "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
+    },
     "source_fact:36f02e3570e104e44c30d804": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -47494,6 +48306,33 @@
       ],
       "source_published_kst": "2026-10-05T19:04+09:00",
       "title": "니우 테크놀러지스, 3분기 판매 54만대..전년비 15% 증가·해외 3배 확대"
+    },
+    "source_fact:3b640984746be4c629009c66": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005042300003",
+      "source": "연합뉴스",
+      "source_body_digest": "b41e45adbc6e29778da0aa36cac83f1b1d6676845de1c0f60fb6946a20e4f032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d583fd605d2f9a8f26dab31e289cc614e01a0ab187d0a42b8f3113409f3a51fd",
+      "source_fact_keys": [
+        "source_fact:v1:013157c4c8a6f3ccd1c3f93225b005e13f8947f3b2d9aba4bd15ac4deba24c1c",
+        "source_fact:v1:14c8f0cfcc173815195134a95d8eee4319e262873ae3b9dd45c3ebc4f62041cc",
+        "source_fact:v1:1913578d25ff11b78ac47be0877fdc310c890803d88e6553693f4f57ac2c2e2f",
+        "source_fact:v1:33e6ec88c10d83ddc4c7fc23ca07ed83d70e3ad25f521829e1a916056a56f5ee",
+        "source_fact:v1:74a49629b9328c28fe40c054103d86d21f2f999fac19582983ca13696e228b9b",
+        "source_fact:v1:80d10e89c96d92444db997420e1abf8c6c476d1ba192f3b2f0528a1c4220fd92",
+        "source_fact:v1:8239a6b40e0f41b144edfc6c6d13a631db4d4a83f5140503c515a53c05ff2629",
+        "source_fact:v1:8a4f524decde9a1c18f3084599c22c3f38477ae563b21ed87cd1bbecf681df60",
+        "source_fact:v1:a547480c56bd530a2410fa3aded3fc5585fd86668e27fde4739b84de0ad9f3a9",
+        "source_fact:v1:bcde01f0f9b4d0b1e875a8ade012fb8a127eb07dc2c3ae8b64e66ece218bd57e",
+        "source_fact:v1:d59961573c7c8a3755b21c3da1a92a73de03f31ee41312b2f0db2d2b311a0ca6"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
     },
     "source_fact:3bbd07b26876825aacb354ed": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -47792,21 +48631,38 @@
     "source_fact:3f209e1d82f49cdb07571365": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
-        "live": "2026-10-06T05:44:59+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:44:59+09:00",
-      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01699046645610296&Kind=257",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
       "source": "이데일리",
-      "source_body_digest": "e166ac0d3af0b1efcb9a45f91f564e5b23633d6b5d0831181ae2310c5b0b4ad1",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:b71074267e44f3187a6e61907dfe32336ded71c987f035206a47b554f73c69bf",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
       "source_fact_keys": [
         "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
         "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
         "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
         "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
       ],
-      "source_published_kst": "2026-10-05T17:08+09:00",
+      "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
     "source_fact:3fab2199758a56385c99554f": {
@@ -47937,6 +48793,33 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "source_fact:419fc6fddba6406471132d17": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005042300003",
+      "source": "연합뉴스",
+      "source_body_digest": "b41e45adbc6e29778da0aa36cac83f1b1d6676845de1c0f60fb6946a20e4f032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d583fd605d2f9a8f26dab31e289cc614e01a0ab187d0a42b8f3113409f3a51fd",
+      "source_fact_keys": [
+        "source_fact:v1:013157c4c8a6f3ccd1c3f93225b005e13f8947f3b2d9aba4bd15ac4deba24c1c",
+        "source_fact:v1:14c8f0cfcc173815195134a95d8eee4319e262873ae3b9dd45c3ebc4f62041cc",
+        "source_fact:v1:1913578d25ff11b78ac47be0877fdc310c890803d88e6553693f4f57ac2c2e2f",
+        "source_fact:v1:33e6ec88c10d83ddc4c7fc23ca07ed83d70e3ad25f521829e1a916056a56f5ee",
+        "source_fact:v1:74a49629b9328c28fe40c054103d86d21f2f999fac19582983ca13696e228b9b",
+        "source_fact:v1:80d10e89c96d92444db997420e1abf8c6c476d1ba192f3b2f0528a1c4220fd92",
+        "source_fact:v1:8239a6b40e0f41b144edfc6c6d13a631db4d4a83f5140503c515a53c05ff2629",
+        "source_fact:v1:8a4f524decde9a1c18f3084599c22c3f38477ae563b21ed87cd1bbecf681df60",
+        "source_fact:v1:a547480c56bd530a2410fa3aded3fc5585fd86668e27fde4739b84de0ad9f3a9",
+        "source_fact:v1:bcde01f0f9b4d0b1e875a8ade012fb8a127eb07dc2c3ae8b64e66ece218bd57e",
+        "source_fact:v1:d59961573c7c8a3755b21c3da1a92a73de03f31ee41312b2f0db2d2b311a0ca6"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
     },
     "source_fact:41f376e4b65cb9bdf40eed92": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -48468,6 +49351,43 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "source_fact:4901a339ed7c68126ea21c12": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
     "source_fact:493412ce5223c5195164e1c8": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -49287,6 +50207,28 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:54d0513b021de2c7e57f7957": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632510",
+      "source": "이투데이",
+      "source_body_digest": "6cead6eaf2670aa02a989a687a8e972a106d22ed418c71f0776b30e1aaf7825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00e9a6aaa51c55cd6f4b6edd94c2f0f05f59b5bb2067fe75edccee90dea9f277",
+      "source_fact_keys": [
+        "source_fact:v1:2a8303aebbd71b0fa6fd5a053ed83cb2dc302a52a010c6c5574e5668832a26f3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:6eecfb1575718b3d79bfafdc90efdf918bd6688e739b55d9030db987a56cc2c6",
+        "source_fact:v1:968442d977f4d0e4c7e1d9949adb975f88fb417b8cc4de97a4fc5827efdab1ce",
+        "source_fact:v1:c7faa41e67dadf2f9337b131e916ce5ff6f808e5f4a081f0d20411dd38ad30f5",
+        "source_fact:v1:e1c6487bc77e5e881dcef71afde8b61a7f47dee658d0deef4d44a928de5d663a"
+      ],
+      "source_published_kst": "2026-10-06T06:04+09:00",
+      "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
     },
     "source_fact:5560ed5e579dd2eea18340d2": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
@@ -50198,25 +51140,25 @@
     "source_fact:61ac83ec4b0b4abbd7554865": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
-        "live": "2026-10-06T06:01:11+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T06:01:11+09:00",
-      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
-      "source": "뉴시스",
-      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.fnnews.com/news/202610060601267536",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04c6c887da8f747a83fc511283c1760c0fdd497303a9df37d6e548cfe90992dd",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_identity": "source_facts:v1:5eeb868b901a9ff7ed19f5d51a16058056f7b206e9816c970284190399c5197a",
       "source_fact_keys": [
         "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
         "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
-        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
         "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
         "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
         "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
         "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
-        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd",
+        "source_fact:v1:f638f7391c04e247ed2ebc81f47d1915e44ac3fb3bfd4eeb8898bf8836981d5f"
       ],
-      "source_published_kst": "2026-10-06T06:00+09:00",
+      "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "source_fact:62823c9f4633912ff7baa49a": {
@@ -50594,6 +51536,30 @@
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
     },
+    "source_fact:69e88c8be7a4ad9ae3d321a6": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632514",
+      "source": "이투데이",
+      "source_body_digest": "650a2bae4e9e2a6de589b2d36f332f33fbb844085aa61441b4c7720da822add3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67f77e7e520697f625e8169eb44d63a7d3520d64c48b95136b31a951e28ad559",
+      "source_fact_keys": [
+        "source_fact:v1:1b8468da30d374e7e46803bcde0bf1a7c913a0ad544c1366aa101ca67b66afb8",
+        "source_fact:v1:1bb372243ff209a4bf905cb910766976371bb3d875f95f8f635e43f2bc406c1b",
+        "source_fact:v1:399cffd14034d85abf03add218a98cba96d1cc0053ee99c6ba517ec4e2819bc3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:8601c7b4e59fa2d851656f9a40e9b6a8323282e1550b2ec697f468064fcd6ef0",
+        "source_fact:v1:90903f5de9687b52ab3f5cd8edbcda33d213c8b03c23e5dcb364674a38bac21a",
+        "source_fact:v1:9a55ad7e4ca742a320d272d5320659cccfea16c085f366a343ae87800dd71185",
+        "source_fact:v1:d60a1a7dc8f5de11dd3f7ea6b518b6ba1f2d2fddc4a61d3d45a1c5d7c0dd0e2b"
+      ],
+      "source_published_kst": "2026-10-06T06:25+09:00",
+      "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
+    },
     "source_fact:6a2a412fad09dd8164365d36": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -50622,6 +51588,43 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:6a31ebb4978c62079a8db620": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
     "source_fact:6a83f2b774dfb061d6ef13aa": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
@@ -51917,6 +52920,43 @@
       "source_published_kst": "2026-10-05T20:01+09:00",
       "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
     },
+    "source_fact:7d055fe658657beecb418986": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
     "source_fact:7d087331923c456abbae8717": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -52005,21 +53045,38 @@
     "source_fact:7d9b67b3d0c5752d6a601347": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
-        "live": "2026-10-06T05:44:59+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:44:59+09:00",
-      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01699046645610296&Kind=257",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
       "source": "이데일리",
-      "source_body_digest": "e166ac0d3af0b1efcb9a45f91f564e5b23633d6b5d0831181ae2310c5b0b4ad1",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:b71074267e44f3187a6e61907dfe32336ded71c987f035206a47b554f73c69bf",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
       "source_fact_keys": [
         "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
         "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
         "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
         "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
       ],
-      "source_published_kst": "2026-10-05T17:08+09:00",
+      "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
     "source_fact:7db3f404040327b0de8d98bd": {
@@ -52148,6 +53205,43 @@
       ],
       "source_published_kst": "2026-10-05T20:20+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료로 차량용 OS 풀스택 경쟁력 부각"
+    },
+    "source_fact:7fe6e07ba150cb289d33e481": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
     "source_fact:806f2cb69cf5aaa9842021d1": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -52451,25 +53545,25 @@
     "source_fact:83edbc771175f54855f25701": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
-        "live": "2026-10-06T06:01:11+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T06:01:11+09:00",
-      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
-      "source": "뉴시스",
-      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.fnnews.com/news/202610060601267536",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04c6c887da8f747a83fc511283c1760c0fdd497303a9df37d6e548cfe90992dd",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_identity": "source_facts:v1:5eeb868b901a9ff7ed19f5d51a16058056f7b206e9816c970284190399c5197a",
       "source_fact_keys": [
         "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
         "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
-        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
         "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
         "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
         "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
         "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
-        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd",
+        "source_fact:v1:f638f7391c04e247ed2ebc81f47d1915e44ac3fb3bfd4eeb8898bf8836981d5f"
       ],
-      "source_published_kst": "2026-10-06T06:00+09:00",
+      "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "source_fact:84cb41af8ea390df4f18d934": {
@@ -52538,6 +53632,30 @@
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
     },
+    "source_fact:856c1ecc80da3e5eca8b6db6": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632514",
+      "source": "이투데이",
+      "source_body_digest": "650a2bae4e9e2a6de589b2d36f332f33fbb844085aa61441b4c7720da822add3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67f77e7e520697f625e8169eb44d63a7d3520d64c48b95136b31a951e28ad559",
+      "source_fact_keys": [
+        "source_fact:v1:1b8468da30d374e7e46803bcde0bf1a7c913a0ad544c1366aa101ca67b66afb8",
+        "source_fact:v1:1bb372243ff209a4bf905cb910766976371bb3d875f95f8f635e43f2bc406c1b",
+        "source_fact:v1:399cffd14034d85abf03add218a98cba96d1cc0053ee99c6ba517ec4e2819bc3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:8601c7b4e59fa2d851656f9a40e9b6a8323282e1550b2ec697f468064fcd6ef0",
+        "source_fact:v1:90903f5de9687b52ab3f5cd8edbcda33d213c8b03c23e5dcb364674a38bac21a",
+        "source_fact:v1:9a55ad7e4ca742a320d272d5320659cccfea16c085f366a343ae87800dd71185",
+        "source_fact:v1:d60a1a7dc8f5de11dd3f7ea6b518b6ba1f2d2fddc4a61d3d45a1c5d7c0dd0e2b"
+      ],
+      "source_published_kst": "2026-10-06T06:25+09:00",
+      "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
+    },
     "source_fact:85bb168eb482a0835126a24f": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -52558,6 +53676,43 @@
       ],
       "source_published_kst": "2026-10-06T00:04+09:00",
       "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
+    },
+    "source_fact:85d6dad647c07e28005f4472": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
     "source_fact:85f8c347b3cf304cd25b4332": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -52736,6 +53891,43 @@
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
     },
+    "source_fact:8860abc1e8b10ed7cc0e12ae": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
     "source_fact:894daca447c162bbb9674b67": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -52856,6 +54048,30 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
+    "source_fact:8a9d35bad3fe56b6840a76ef": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632514",
+      "source": "이투데이",
+      "source_body_digest": "650a2bae4e9e2a6de589b2d36f332f33fbb844085aa61441b4c7720da822add3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67f77e7e520697f625e8169eb44d63a7d3520d64c48b95136b31a951e28ad559",
+      "source_fact_keys": [
+        "source_fact:v1:1b8468da30d374e7e46803bcde0bf1a7c913a0ad544c1366aa101ca67b66afb8",
+        "source_fact:v1:1bb372243ff209a4bf905cb910766976371bb3d875f95f8f635e43f2bc406c1b",
+        "source_fact:v1:399cffd14034d85abf03add218a98cba96d1cc0053ee99c6ba517ec4e2819bc3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:8601c7b4e59fa2d851656f9a40e9b6a8323282e1550b2ec697f468064fcd6ef0",
+        "source_fact:v1:90903f5de9687b52ab3f5cd8edbcda33d213c8b03c23e5dcb364674a38bac21a",
+        "source_fact:v1:9a55ad7e4ca742a320d272d5320659cccfea16c085f366a343ae87800dd71185",
+        "source_fact:v1:d60a1a7dc8f5de11dd3f7ea6b518b6ba1f2d2fddc4a61d3d45a1c5d7c0dd0e2b"
+      ],
+      "source_published_kst": "2026-10-06T06:25+09:00",
+      "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
+    },
     "source_fact:8b96c74abdc781b5acff1e73": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -52920,6 +54136,27 @@
       ],
       "source_published_kst": "2026-10-05T20:01+09:00",
       "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
+    },
+    "source_fact:8d24fe28df17678157ac194d": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02000806645610296&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "269ff92fd10da8a490138a3f3fcc7163b55ecce228a913fb8dd80128f77044d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2335ee1089b48c166dd1af799d95ef532354ee1e08dc20c48f4fcccd29aa1b6d",
+      "source_fact_keys": [
+        "source_fact:v1:19511620d833a5451deea0f4e7b5f74cdcdb4e71a191006f2dee3e4ca0bc384c",
+        "source_fact:v1:2f1cf827fa9e5af8435935f122b44c0ab07738aee3713e9dd5ff4b64372bf0b0",
+        "source_fact:v1:54f726c8ae5acb051f2220dc91f92b0c6393ffd8fb2df36cd3c909c6e7ea3c73",
+        "source_fact:v1:8cc47a736a0ecd7ac1d94f8a8030ea04caafa0faea5b9b875f6cac69a638fda5",
+        "source_fact:v1:f6483dd5e1988116c0b2625f017f6e7b84fd738567e6467f39e4d01e115b1de6"
+      ],
+      "source_published_kst": "2026-10-05T17:54+09:00",
+      "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
     },
     "source_fact:8d7eb9e00ffe523e0e0d2f70": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -53111,6 +54348,43 @@
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
     },
+    "source_fact:9101d3325d1981525db8e5ae": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
     "source_fact:918004b24608f82aea66bb5f": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -53278,6 +54552,43 @@
       "source_published_kst": "2026-10-05T21:46+09:00",
       "title": "재규어 헬스, 특별 주식배당..우선주 1주 보통주 5주 전환"
     },
+    "source_fact:950cefbca11e1f55f57fa08a": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
     "source_fact:9526b6ee9addfd49d8b030b7": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
       "lanes": {
@@ -53316,6 +54627,33 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:963b20d10612c818586a5108": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005042300003",
+      "source": "연합뉴스",
+      "source_body_digest": "b41e45adbc6e29778da0aa36cac83f1b1d6676845de1c0f60fb6946a20e4f032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d583fd605d2f9a8f26dab31e289cc614e01a0ab187d0a42b8f3113409f3a51fd",
+      "source_fact_keys": [
+        "source_fact:v1:013157c4c8a6f3ccd1c3f93225b005e13f8947f3b2d9aba4bd15ac4deba24c1c",
+        "source_fact:v1:14c8f0cfcc173815195134a95d8eee4319e262873ae3b9dd45c3ebc4f62041cc",
+        "source_fact:v1:1913578d25ff11b78ac47be0877fdc310c890803d88e6553693f4f57ac2c2e2f",
+        "source_fact:v1:33e6ec88c10d83ddc4c7fc23ca07ed83d70e3ad25f521829e1a916056a56f5ee",
+        "source_fact:v1:74a49629b9328c28fe40c054103d86d21f2f999fac19582983ca13696e228b9b",
+        "source_fact:v1:80d10e89c96d92444db997420e1abf8c6c476d1ba192f3b2f0528a1c4220fd92",
+        "source_fact:v1:8239a6b40e0f41b144edfc6c6d13a631db4d4a83f5140503c515a53c05ff2629",
+        "source_fact:v1:8a4f524decde9a1c18f3084599c22c3f38477ae563b21ed87cd1bbecf681df60",
+        "source_fact:v1:a547480c56bd530a2410fa3aded3fc5585fd86668e27fde4739b84de0ad9f3a9",
+        "source_fact:v1:bcde01f0f9b4d0b1e875a8ade012fb8a127eb07dc2c3ae8b64e66ece218bd57e",
+        "source_fact:v1:d59961573c7c8a3755b21c3da1a92a73de03f31ee41312b2f0db2d2b311a0ca6"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
     },
     "source_fact:964656e6ab6a7d287a0a4ce1": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -53907,6 +55245,27 @@
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
     },
+    "source_fact:9e89c0e4df0c9615f8ea906d": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02000806645610296&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "269ff92fd10da8a490138a3f3fcc7163b55ecce228a913fb8dd80128f77044d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2335ee1089b48c166dd1af799d95ef532354ee1e08dc20c48f4fcccd29aa1b6d",
+      "source_fact_keys": [
+        "source_fact:v1:19511620d833a5451deea0f4e7b5f74cdcdb4e71a191006f2dee3e4ca0bc384c",
+        "source_fact:v1:2f1cf827fa9e5af8435935f122b44c0ab07738aee3713e9dd5ff4b64372bf0b0",
+        "source_fact:v1:54f726c8ae5acb051f2220dc91f92b0c6393ffd8fb2df36cd3c909c6e7ea3c73",
+        "source_fact:v1:8cc47a736a0ecd7ac1d94f8a8030ea04caafa0faea5b9b875f6cac69a638fda5",
+        "source_fact:v1:f6483dd5e1988116c0b2625f017f6e7b84fd738567e6467f39e4d01e115b1de6"
+      ],
+      "source_published_kst": "2026-10-05T17:54+09:00",
+      "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
+    },
     "source_fact:9f4d0999833546afdeaa012a": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
       "lanes": {
@@ -53974,6 +55333,24 @@
       ],
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
+    },
+    "source_fact:a028c1be5aeb7670d89a7638": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002184600002",
+      "source": "연합뉴스",
+      "source_body_digest": "34bd391e79b2a89907fa61ed7c0be28eca821d128393b5881afdef4a57604113",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25b7614ae5b181a99acee2061006d61100f7f3e8f732c312ad60a75515b87d1d",
+      "source_fact_keys": [
+        "source_fact:v1:4578eeefde208d8495f7e0417da129bae39408059cf169e4bf1ac32448ef5a50",
+        "source_fact:v1:f90cd84000f712a0bea5e37457c1075fb98df64d227eee59c2a7df527fc0751b"
+      ],
+      "source_published_kst": "2026-10-06T05:59+09:00",
+      "title": "가상자산 거래소 장애인고용 '미달'…5년여간 부담금 13억 | 연합뉴스"
     },
     "source_fact:a0887924bfe47bf90d6fb37a": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
@@ -54260,25 +55637,25 @@
     "source_fact:a411f85a49b17a8bf96a64ee": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
-        "live": "2026-10-06T06:01:11+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T06:01:11+09:00",
-      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
-      "source": "뉴시스",
-      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.fnnews.com/news/202610060601267536",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04c6c887da8f747a83fc511283c1760c0fdd497303a9df37d6e548cfe90992dd",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_identity": "source_facts:v1:5eeb868b901a9ff7ed19f5d51a16058056f7b206e9816c970284190399c5197a",
       "source_fact_keys": [
         "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
         "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
-        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
         "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
         "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
         "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
         "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
-        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd",
+        "source_fact:v1:f638f7391c04e247ed2ebc81f47d1915e44ac3fb3bfd4eeb8898bf8836981d5f"
       ],
-      "source_published_kst": "2026-10-06T06:00+09:00",
+      "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "source_fact:a45561b846dab7bbe1c3d240": {
@@ -54537,6 +55914,43 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
+    "source_fact:a7b1b429a87d9416cee2c942": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
     "source_fact:a8443956bf0777a4a89408fb": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
@@ -55382,6 +56796,43 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
     },
+    "source_fact:b4fbed60c1bcb6586c9d1fab": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
     "source_fact:b5e794cfb8a1e2f112735fd5": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -55416,6 +56867,30 @@
       ],
       "source_published_kst": "2026-10-05T13:25+09:00",
       "title": "'北 책임 추궁'과 '한반도 긴장 완화'…DMZ 지뢰사고 대응 딜레마"
+    },
+    "source_fact:b7806fc1b34f7c1580ba0853": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.fnnews.com/news/202610060601267536",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04c6c887da8f747a83fc511283c1760c0fdd497303a9df37d6e548cfe90992dd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5eeb868b901a9ff7ed19f5d51a16058056f7b206e9816c970284190399c5197a",
+      "source_fact_keys": [
+        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
+        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
+        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
+        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
+        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
+        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd",
+        "source_fact:v1:f638f7391c04e247ed2ebc81f47d1915e44ac3fb3bfd4eeb8898bf8836981d5f"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "source_fact:b7d546416865a043fd65f919": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
@@ -55501,6 +56976,33 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "source_fact:b8b97ff00e8da2a841a8d664": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005042300003",
+      "source": "연합뉴스",
+      "source_body_digest": "b41e45adbc6e29778da0aa36cac83f1b1d6676845de1c0f60fb6946a20e4f032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d583fd605d2f9a8f26dab31e289cc614e01a0ab187d0a42b8f3113409f3a51fd",
+      "source_fact_keys": [
+        "source_fact:v1:013157c4c8a6f3ccd1c3f93225b005e13f8947f3b2d9aba4bd15ac4deba24c1c",
+        "source_fact:v1:14c8f0cfcc173815195134a95d8eee4319e262873ae3b9dd45c3ebc4f62041cc",
+        "source_fact:v1:1913578d25ff11b78ac47be0877fdc310c890803d88e6553693f4f57ac2c2e2f",
+        "source_fact:v1:33e6ec88c10d83ddc4c7fc23ca07ed83d70e3ad25f521829e1a916056a56f5ee",
+        "source_fact:v1:74a49629b9328c28fe40c054103d86d21f2f999fac19582983ca13696e228b9b",
+        "source_fact:v1:80d10e89c96d92444db997420e1abf8c6c476d1ba192f3b2f0528a1c4220fd92",
+        "source_fact:v1:8239a6b40e0f41b144edfc6c6d13a631db4d4a83f5140503c515a53c05ff2629",
+        "source_fact:v1:8a4f524decde9a1c18f3084599c22c3f38477ae563b21ed87cd1bbecf681df60",
+        "source_fact:v1:a547480c56bd530a2410fa3aded3fc5585fd86668e27fde4739b84de0ad9f3a9",
+        "source_fact:v1:bcde01f0f9b4d0b1e875a8ade012fb8a127eb07dc2c3ae8b64e66ece218bd57e",
+        "source_fact:v1:d59961573c7c8a3755b21c3da1a92a73de03f31ee41312b2f0db2d2b311a0ca6"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
     },
     "source_fact:b8c8668eb79606b385a916df": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -55739,25 +57241,25 @@
     "source_fact:bdf6c7b2d28ccd304e5a3744": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
-        "live": "2026-10-06T06:01:11+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T06:01:11+09:00",
-      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
-      "source": "뉴시스",
-      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.fnnews.com/news/202610060601267536",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04c6c887da8f747a83fc511283c1760c0fdd497303a9df37d6e548cfe90992dd",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_identity": "source_facts:v1:5eeb868b901a9ff7ed19f5d51a16058056f7b206e9816c970284190399c5197a",
       "source_fact_keys": [
         "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
         "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
-        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
         "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
         "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
         "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
         "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
-        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd",
+        "source_fact:v1:f638f7391c04e247ed2ebc81f47d1915e44ac3fb3bfd4eeb8898bf8836981d5f"
       ],
-      "source_published_kst": "2026-10-06T06:00+09:00",
+      "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "source_fact:be185fb4c25596f405b2e6f3": {
@@ -55971,6 +57473,43 @@
       "source_published_kst": "2026-10-05T08:05+09:00",
       "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
     },
+    "source_fact:c200eec43bc4e31fbc3f38d5": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
     "source_fact:c227b5b5ed8f99ebb85993fc": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -56040,21 +57579,38 @@
     "source_fact:c41352b4651ed7878d329518": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
-        "live": "2026-10-06T05:44:59+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:44:59+09:00",
-      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01699046645610296&Kind=257",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
       "source": "이데일리",
-      "source_body_digest": "e166ac0d3af0b1efcb9a45f91f564e5b23633d6b5d0831181ae2310c5b0b4ad1",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:b71074267e44f3187a6e61907dfe32336ded71c987f035206a47b554f73c69bf",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
       "source_fact_keys": [
         "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
         "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
         "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
         "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
       ],
-      "source_published_kst": "2026-10-05T17:08+09:00",
+      "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
     "source_fact:c427c9dd395e8cbf96547cd1": {
@@ -56298,6 +57854,28 @@
       "source_published_kst": "2026-10-05T08:15+09:00",
       "title": "함안군, 택시 기본요금 5천500원→6천원 인상 추진 | 연합뉴스"
     },
+    "source_fact:c6f27ce99117b0834c96aa46": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632510",
+      "source": "이투데이",
+      "source_body_digest": "6cead6eaf2670aa02a989a687a8e972a106d22ed418c71f0776b30e1aaf7825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00e9a6aaa51c55cd6f4b6edd94c2f0f05f59b5bb2067fe75edccee90dea9f277",
+      "source_fact_keys": [
+        "source_fact:v1:2a8303aebbd71b0fa6fd5a053ed83cb2dc302a52a010c6c5574e5668832a26f3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:6eecfb1575718b3d79bfafdc90efdf918bd6688e739b55d9030db987a56cc2c6",
+        "source_fact:v1:968442d977f4d0e4c7e1d9949adb975f88fb417b8cc4de97a4fc5827efdab1ce",
+        "source_fact:v1:c7faa41e67dadf2f9337b131e916ce5ff6f808e5f4a081f0d20411dd38ad30f5",
+        "source_fact:v1:e1c6487bc77e5e881dcef71afde8b61a7f47dee658d0deef4d44a928de5d663a"
+      ],
+      "source_published_kst": "2026-10-06T06:04+09:00",
+      "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
+    },
     "source_fact:c74991e86adbb179f0b3633d": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -56341,6 +57919,48 @@
       ],
       "source_published_kst": "2026-10-06T05:30+09:00",
       "title": "車 부품 보던 AI, 로봇 관절 '가상검증' 나선다"
+    },
+    "source_fact:c87998a485c55c623bc83d0e": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002184600002",
+      "source": "연합뉴스",
+      "source_body_digest": "34bd391e79b2a89907fa61ed7c0be28eca821d128393b5881afdef4a57604113",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25b7614ae5b181a99acee2061006d61100f7f3e8f732c312ad60a75515b87d1d",
+      "source_fact_keys": [
+        "source_fact:v1:4578eeefde208d8495f7e0417da129bae39408059cf169e4bf1ac32448ef5a50",
+        "source_fact:v1:f90cd84000f712a0bea5e37457c1075fb98df64d227eee59c2a7df527fc0751b"
+      ],
+      "source_published_kst": "2026-10-06T05:59+09:00",
+      "title": "가상자산 거래소 장애인고용 '미달'…5년여간 부담금 13억 | 연합뉴스"
+    },
+    "source_fact:c8d594a1ef09b154893459bc": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632514",
+      "source": "이투데이",
+      "source_body_digest": "650a2bae4e9e2a6de589b2d36f332f33fbb844085aa61441b4c7720da822add3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67f77e7e520697f625e8169eb44d63a7d3520d64c48b95136b31a951e28ad559",
+      "source_fact_keys": [
+        "source_fact:v1:1b8468da30d374e7e46803bcde0bf1a7c913a0ad544c1366aa101ca67b66afb8",
+        "source_fact:v1:1bb372243ff209a4bf905cb910766976371bb3d875f95f8f635e43f2bc406c1b",
+        "source_fact:v1:399cffd14034d85abf03add218a98cba96d1cc0053ee99c6ba517ec4e2819bc3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:8601c7b4e59fa2d851656f9a40e9b6a8323282e1550b2ec697f468064fcd6ef0",
+        "source_fact:v1:90903f5de9687b52ab3f5cd8edbcda33d213c8b03c23e5dcb364674a38bac21a",
+        "source_fact:v1:9a55ad7e4ca742a320d272d5320659cccfea16c085f366a343ae87800dd71185",
+        "source_fact:v1:d60a1a7dc8f5de11dd3f7ea6b518b6ba1f2d2fddc4a61d3d45a1c5d7c0dd0e2b"
+      ],
+      "source_published_kst": "2026-10-06T06:25+09:00",
+      "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
     },
     "source_fact:c8db1388baeb3527b5f1caf6": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -56532,6 +58152,43 @@
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "디파이 디벨롭먼트, 3분기 주당 NAV 2배 이상 전망..SOL 보유 11%↑"
     },
+    "source_fact:cc9a295c645509b21a596233": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
     "source_fact:ccb65fc8c93d692152272843": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -56605,6 +58262,65 @@
       ],
       "source_published_kst": "2026-10-05T19:06+09:00",
       "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
+    },
+    "source_fact:cd77761e5d0af7bcd8ca350b": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632510",
+      "source": "이투데이",
+      "source_body_digest": "6cead6eaf2670aa02a989a687a8e972a106d22ed418c71f0776b30e1aaf7825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00e9a6aaa51c55cd6f4b6edd94c2f0f05f59b5bb2067fe75edccee90dea9f277",
+      "source_fact_keys": [
+        "source_fact:v1:2a8303aebbd71b0fa6fd5a053ed83cb2dc302a52a010c6c5574e5668832a26f3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:6eecfb1575718b3d79bfafdc90efdf918bd6688e739b55d9030db987a56cc2c6",
+        "source_fact:v1:968442d977f4d0e4c7e1d9949adb975f88fb417b8cc4de97a4fc5827efdab1ce",
+        "source_fact:v1:c7faa41e67dadf2f9337b131e916ce5ff6f808e5f4a081f0d20411dd38ad30f5",
+        "source_fact:v1:e1c6487bc77e5e881dcef71afde8b61a7f47dee658d0deef4d44a928de5d663a"
+      ],
+      "source_published_kst": "2026-10-06T06:04+09:00",
+      "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
+    },
+    "source_fact:ce0dc2031a4d4148e9769038": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
     "source_fact:ce20b18524a2ce0bb975d0b8": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -56905,6 +58621,27 @@
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
     },
+    "source_fact:d2eb6102760aa25cedbae9db": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02000806645610296&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "269ff92fd10da8a490138a3f3fcc7163b55ecce228a913fb8dd80128f77044d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2335ee1089b48c166dd1af799d95ef532354ee1e08dc20c48f4fcccd29aa1b6d",
+      "source_fact_keys": [
+        "source_fact:v1:19511620d833a5451deea0f4e7b5f74cdcdb4e71a191006f2dee3e4ca0bc384c",
+        "source_fact:v1:2f1cf827fa9e5af8435935f122b44c0ab07738aee3713e9dd5ff4b64372bf0b0",
+        "source_fact:v1:54f726c8ae5acb051f2220dc91f92b0c6393ffd8fb2df36cd3c909c6e7ea3c73",
+        "source_fact:v1:8cc47a736a0ecd7ac1d94f8a8030ea04caafa0faea5b9b875f6cac69a638fda5",
+        "source_fact:v1:f6483dd5e1988116c0b2625f017f6e7b84fd738567e6467f39e4d01e115b1de6"
+      ],
+      "source_published_kst": "2026-10-05T17:54+09:00",
+      "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
+    },
     "source_fact:d36258145ce84f7a38d02dd4": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -56936,21 +58673,38 @@
     "source_fact:d395f6d5c899951a5dfa156f": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
-        "live": "2026-10-06T05:44:59+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:44:59+09:00",
-      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01699046645610296&Kind=257",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
       "source": "이데일리",
-      "source_body_digest": "e166ac0d3af0b1efcb9a45f91f564e5b23633d6b5d0831181ae2310c5b0b4ad1",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:b71074267e44f3187a6e61907dfe32336ded71c987f035206a47b554f73c69bf",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
       "source_fact_keys": [
         "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
         "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
         "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
         "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
       ],
-      "source_published_kst": "2026-10-05T17:08+09:00",
+      "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
     "source_fact:d3eec9d0b134c405af600be9": {
@@ -57285,6 +59039,27 @@
       ],
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
+    "source_fact:d7b0be463281599e9b803ff5": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02000806645610296&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "269ff92fd10da8a490138a3f3fcc7163b55ecce228a913fb8dd80128f77044d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2335ee1089b48c166dd1af799d95ef532354ee1e08dc20c48f4fcccd29aa1b6d",
+      "source_fact_keys": [
+        "source_fact:v1:19511620d833a5451deea0f4e7b5f74cdcdb4e71a191006f2dee3e4ca0bc384c",
+        "source_fact:v1:2f1cf827fa9e5af8435935f122b44c0ab07738aee3713e9dd5ff4b64372bf0b0",
+        "source_fact:v1:54f726c8ae5acb051f2220dc91f92b0c6393ffd8fb2df36cd3c909c6e7ea3c73",
+        "source_fact:v1:8cc47a736a0ecd7ac1d94f8a8030ea04caafa0faea5b9b875f6cac69a638fda5",
+        "source_fact:v1:f6483dd5e1988116c0b2625f017f6e7b84fd738567e6467f39e4d01e115b1de6"
+      ],
+      "source_published_kst": "2026-10-05T17:54+09:00",
+      "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
     },
     "source_fact:d8647a36cd26de362e3902c8": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
@@ -58037,26 +59812,53 @@
     "source_fact:e46e558b8945ed473c7ebd03": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
-        "live": "2026-10-06T06:01:11+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T06:01:11+09:00",
-      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
-      "source": "뉴시스",
-      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.fnnews.com/news/202610060601267536",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04c6c887da8f747a83fc511283c1760c0fdd497303a9df37d6e548cfe90992dd",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_identity": "source_facts:v1:5eeb868b901a9ff7ed19f5d51a16058056f7b206e9816c970284190399c5197a",
       "source_fact_keys": [
         "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
         "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
-        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
         "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
         "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
         "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
         "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
-        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd",
+        "source_fact:v1:f638f7391c04e247ed2ebc81f47d1915e44ac3fb3bfd4eeb8898bf8836981d5f"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
+    "source_fact:e4bcf3baf72481ff25805fbf": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005042300003",
+      "source": "연합뉴스",
+      "source_body_digest": "b41e45adbc6e29778da0aa36cac83f1b1d6676845de1c0f60fb6946a20e4f032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d583fd605d2f9a8f26dab31e289cc614e01a0ab187d0a42b8f3113409f3a51fd",
+      "source_fact_keys": [
+        "source_fact:v1:013157c4c8a6f3ccd1c3f93225b005e13f8947f3b2d9aba4bd15ac4deba24c1c",
+        "source_fact:v1:14c8f0cfcc173815195134a95d8eee4319e262873ae3b9dd45c3ebc4f62041cc",
+        "source_fact:v1:1913578d25ff11b78ac47be0877fdc310c890803d88e6553693f4f57ac2c2e2f",
+        "source_fact:v1:33e6ec88c10d83ddc4c7fc23ca07ed83d70e3ad25f521829e1a916056a56f5ee",
+        "source_fact:v1:74a49629b9328c28fe40c054103d86d21f2f999fac19582983ca13696e228b9b",
+        "source_fact:v1:80d10e89c96d92444db997420e1abf8c6c476d1ba192f3b2f0528a1c4220fd92",
+        "source_fact:v1:8239a6b40e0f41b144edfc6c6d13a631db4d4a83f5140503c515a53c05ff2629",
+        "source_fact:v1:8a4f524decde9a1c18f3084599c22c3f38477ae563b21ed87cd1bbecf681df60",
+        "source_fact:v1:a547480c56bd530a2410fa3aded3fc5585fd86668e27fde4739b84de0ad9f3a9",
+        "source_fact:v1:bcde01f0f9b4d0b1e875a8ade012fb8a127eb07dc2c3ae8b64e66ece218bd57e",
+        "source_fact:v1:d59961573c7c8a3755b21c3da1a92a73de03f31ee41312b2f0db2d2b311a0ca6"
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
-      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+      "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
     },
     "source_fact:e5094878382867b0149a35d2": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
@@ -58126,6 +59928,28 @@
       ],
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
+    },
+    "source_fact:e6276d2a308677c7c1774fca": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632510",
+      "source": "이투데이",
+      "source_body_digest": "6cead6eaf2670aa02a989a687a8e972a106d22ed418c71f0776b30e1aaf7825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00e9a6aaa51c55cd6f4b6edd94c2f0f05f59b5bb2067fe75edccee90dea9f277",
+      "source_fact_keys": [
+        "source_fact:v1:2a8303aebbd71b0fa6fd5a053ed83cb2dc302a52a010c6c5574e5668832a26f3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:6eecfb1575718b3d79bfafdc90efdf918bd6688e739b55d9030db987a56cc2c6",
+        "source_fact:v1:968442d977f4d0e4c7e1d9949adb975f88fb417b8cc4de97a4fc5827efdab1ce",
+        "source_fact:v1:c7faa41e67dadf2f9337b131e916ce5ff6f808e5f4a081f0d20411dd38ad30f5",
+        "source_fact:v1:e1c6487bc77e5e881dcef71afde8b61a7f47dee658d0deef4d44a928de5d663a"
+      ],
+      "source_published_kst": "2026-10-06T06:04+09:00",
+      "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
     },
     "source_fact:e652b3402702251bf1b38cad": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -58687,6 +60511,65 @@
       "source_published_kst": "2026-10-05T22:55+09:00",
       "title": "美국채금리 5.3%에 다우 ‘주춤’… 뉴욕증시 혼조 출발"
     },
+    "source_fact:eec2d6b516bffa0504845813": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632510",
+      "source": "이투데이",
+      "source_body_digest": "6cead6eaf2670aa02a989a687a8e972a106d22ed418c71f0776b30e1aaf7825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00e9a6aaa51c55cd6f4b6edd94c2f0f05f59b5bb2067fe75edccee90dea9f277",
+      "source_fact_keys": [
+        "source_fact:v1:2a8303aebbd71b0fa6fd5a053ed83cb2dc302a52a010c6c5574e5668832a26f3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:6eecfb1575718b3d79bfafdc90efdf918bd6688e739b55d9030db987a56cc2c6",
+        "source_fact:v1:968442d977f4d0e4c7e1d9949adb975f88fb417b8cc4de97a4fc5827efdab1ce",
+        "source_fact:v1:c7faa41e67dadf2f9337b131e916ce5ff6f808e5f4a081f0d20411dd38ad30f5",
+        "source_fact:v1:e1c6487bc77e5e881dcef71afde8b61a7f47dee658d0deef4d44a928de5d663a"
+      ],
+      "source_published_kst": "2026-10-06T06:04+09:00",
+      "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
+    },
+    "source_fact:eed01ee5b483fbd63cdb3123": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
     "source_fact:ef5888bca156698d2067c5f8": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -58862,25 +60745,25 @@
     "source_fact:f22cdb3a91e716169f93b039": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
-        "live": "2026-10-06T06:01:11+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T06:01:11+09:00",
-      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
-      "source": "뉴시스",
-      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.fnnews.com/news/202610060601267536",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04c6c887da8f747a83fc511283c1760c0fdd497303a9df37d6e548cfe90992dd",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_identity": "source_facts:v1:5eeb868b901a9ff7ed19f5d51a16058056f7b206e9816c970284190399c5197a",
       "source_fact_keys": [
         "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
         "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
-        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
         "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
         "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
         "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
         "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
-        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd",
+        "source_fact:v1:f638f7391c04e247ed2ebc81f47d1915e44ac3fb3bfd4eeb8898bf8836981d5f"
       ],
-      "source_published_kst": "2026-10-06T06:00+09:00",
+      "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "source_fact:f26c3935474e34630937e18a": {
@@ -59204,6 +61087,33 @@
       "source_published_kst": "2026-10-06T00:39+09:00",
       "title": "美 9월 서비스업 확장세 둔화…물가 압력 4년여만에 최고"
     },
+    "source_fact:fa81f487893ae54fa3608f56": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005042300003",
+      "source": "연합뉴스",
+      "source_body_digest": "b41e45adbc6e29778da0aa36cac83f1b1d6676845de1c0f60fb6946a20e4f032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d583fd605d2f9a8f26dab31e289cc614e01a0ab187d0a42b8f3113409f3a51fd",
+      "source_fact_keys": [
+        "source_fact:v1:013157c4c8a6f3ccd1c3f93225b005e13f8947f3b2d9aba4bd15ac4deba24c1c",
+        "source_fact:v1:14c8f0cfcc173815195134a95d8eee4319e262873ae3b9dd45c3ebc4f62041cc",
+        "source_fact:v1:1913578d25ff11b78ac47be0877fdc310c890803d88e6553693f4f57ac2c2e2f",
+        "source_fact:v1:33e6ec88c10d83ddc4c7fc23ca07ed83d70e3ad25f521829e1a916056a56f5ee",
+        "source_fact:v1:74a49629b9328c28fe40c054103d86d21f2f999fac19582983ca13696e228b9b",
+        "source_fact:v1:80d10e89c96d92444db997420e1abf8c6c476d1ba192f3b2f0528a1c4220fd92",
+        "source_fact:v1:8239a6b40e0f41b144edfc6c6d13a631db4d4a83f5140503c515a53c05ff2629",
+        "source_fact:v1:8a4f524decde9a1c18f3084599c22c3f38477ae563b21ed87cd1bbecf681df60",
+        "source_fact:v1:a547480c56bd530a2410fa3aded3fc5585fd86668e27fde4739b84de0ad9f3a9",
+        "source_fact:v1:bcde01f0f9b4d0b1e875a8ade012fb8a127eb07dc2c3ae8b64e66ece218bd57e",
+        "source_fact:v1:d59961573c7c8a3755b21c3da1a92a73de03f31ee41312b2f0db2d2b311a0ca6"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
+    },
     "source_fact:fb09f0adbffef95d8c60103a": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
       "lanes": {
@@ -59346,6 +61256,52 @@
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
     },
+    "source_fact:fbc29d2fb64a7c8808e92d7a": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632514",
+      "source": "이투데이",
+      "source_body_digest": "650a2bae4e9e2a6de589b2d36f332f33fbb844085aa61441b4c7720da822add3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67f77e7e520697f625e8169eb44d63a7d3520d64c48b95136b31a951e28ad559",
+      "source_fact_keys": [
+        "source_fact:v1:1b8468da30d374e7e46803bcde0bf1a7c913a0ad544c1366aa101ca67b66afb8",
+        "source_fact:v1:1bb372243ff209a4bf905cb910766976371bb3d875f95f8f635e43f2bc406c1b",
+        "source_fact:v1:399cffd14034d85abf03add218a98cba96d1cc0053ee99c6ba517ec4e2819bc3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:8601c7b4e59fa2d851656f9a40e9b6a8323282e1550b2ec697f468064fcd6ef0",
+        "source_fact:v1:90903f5de9687b52ab3f5cd8edbcda33d213c8b03c23e5dcb364674a38bac21a",
+        "source_fact:v1:9a55ad7e4ca742a320d272d5320659cccfea16c085f366a343ae87800dd71185",
+        "source_fact:v1:d60a1a7dc8f5de11dd3f7ea6b518b6ba1f2d2fddc4a61d3d45a1c5d7c0dd0e2b"
+      ],
+      "source_published_kst": "2026-10-06T06:25+09:00",
+      "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
+    },
+    "source_fact:fbcba8ca09006b09b396c22c": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632510",
+      "source": "이투데이",
+      "source_body_digest": "6cead6eaf2670aa02a989a687a8e972a106d22ed418c71f0776b30e1aaf7825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00e9a6aaa51c55cd6f4b6edd94c2f0f05f59b5bb2067fe75edccee90dea9f277",
+      "source_fact_keys": [
+        "source_fact:v1:2a8303aebbd71b0fa6fd5a053ed83cb2dc302a52a010c6c5574e5668832a26f3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:6eecfb1575718b3d79bfafdc90efdf918bd6688e739b55d9030db987a56cc2c6",
+        "source_fact:v1:968442d977f4d0e4c7e1d9949adb975f88fb417b8cc4de97a4fc5827efdab1ce",
+        "source_fact:v1:c7faa41e67dadf2f9337b131e916ce5ff6f808e5f4a081f0d20411dd38ad30f5",
+        "source_fact:v1:e1c6487bc77e5e881dcef71afde8b61a7f47dee658d0deef4d44a928de5d663a"
+      ],
+      "source_published_kst": "2026-10-06T06:04+09:00",
+      "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
+    },
     "source_fact:fc200f9b0eab648c383af9a7": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
       "lanes": {
@@ -59420,6 +61376,43 @@
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
+    "source_fact:fd5f1e32a701a781ea219c05": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
+      "source": "이데일리",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
+      "source_fact_keys": [
+        "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
+        "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
+        "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
+        "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
+      ],
+      "source_published_kst": "2026-10-06T05:08+09:00",
+      "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
     "source_fact:fdb75e42b3c5b777c50b58b5": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -59580,6 +61573,30 @@
       ],
       "source_published_kst": "2026-10-05T22:31+09:00",
       "title": "메틀렌: 일본 주요 화학 기업과 신규 갈륨 공급 계약 체결"
+    },
+    "source_fact:ff5d5a838c045b13bd796dd7": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632514",
+      "source": "이투데이",
+      "source_body_digest": "650a2bae4e9e2a6de589b2d36f332f33fbb844085aa61441b4c7720da822add3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67f77e7e520697f625e8169eb44d63a7d3520d64c48b95136b31a951e28ad559",
+      "source_fact_keys": [
+        "source_fact:v1:1b8468da30d374e7e46803bcde0bf1a7c913a0ad544c1366aa101ca67b66afb8",
+        "source_fact:v1:1bb372243ff209a4bf905cb910766976371bb3d875f95f8f635e43f2bc406c1b",
+        "source_fact:v1:399cffd14034d85abf03add218a98cba96d1cc0053ee99c6ba517ec4e2819bc3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:8601c7b4e59fa2d851656f9a40e9b6a8323282e1550b2ec697f468064fcd6ef0",
+        "source_fact:v1:90903f5de9687b52ab3f5cd8edbcda33d213c8b03c23e5dcb364674a38bac21a",
+        "source_fact:v1:9a55ad7e4ca742a320d272d5320659cccfea16c085f366a343ae87800dd71185",
+        "source_fact:v1:d60a1a7dc8f5de11dd3f7ea6b518b6ba1f2d2fddc4a61d3d45a1c5d7c0dd0e2b"
+      ],
+      "source_published_kst": "2026-10-06T06:25+09:00",
+      "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
     },
     "source_fact:ff7274ebd22c91e062510a42": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -61928,24 +63945,65 @@
       "source": "전자신문",
       "title": "에코프로, 최상운·김장우 공동 대표 체제 전환"
     },
+    "title:23206b612eab7e9741074a58": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632514",
+      "source": "이투데이",
+      "source_body_digest": "650a2bae4e9e2a6de589b2d36f332f33fbb844085aa61441b4c7720da822add3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67f77e7e520697f625e8169eb44d63a7d3520d64c48b95136b31a951e28ad559",
+      "source_fact_keys": [
+        "source_fact:v1:1b8468da30d374e7e46803bcde0bf1a7c913a0ad544c1366aa101ca67b66afb8",
+        "source_fact:v1:1bb372243ff209a4bf905cb910766976371bb3d875f95f8f635e43f2bc406c1b",
+        "source_fact:v1:399cffd14034d85abf03add218a98cba96d1cc0053ee99c6ba517ec4e2819bc3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:8601c7b4e59fa2d851656f9a40e9b6a8323282e1550b2ec697f468064fcd6ef0",
+        "source_fact:v1:90903f5de9687b52ab3f5cd8edbcda33d213c8b03c23e5dcb364674a38bac21a",
+        "source_fact:v1:9a55ad7e4ca742a320d272d5320659cccfea16c085f366a343ae87800dd71185",
+        "source_fact:v1:d60a1a7dc8f5de11dd3f7ea6b518b6ba1f2d2fddc4a61d3d45a1c5d7c0dd0e2b"
+      ],
+      "source_published_kst": "2026-10-06T06:25+09:00",
+      "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
+    },
     "title:232780fc47f047c95b11ead3": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
-        "live": "2026-10-06T05:44:59+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T05:44:59+09:00",
-      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=01699046645610296&Kind=257",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01699046645610296",
       "source": "이데일리",
-      "source_body_digest": "e166ac0d3af0b1efcb9a45f91f564e5b23633d6b5d0831181ae2310c5b0b4ad1",
+      "source_body_digest": "1bc4f1467ec78aadbfbb20c16dcc12fd3150780bf2aa2cbafc915ff67dfb2c76",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:b71074267e44f3187a6e61907dfe32336ded71c987f035206a47b554f73c69bf",
+      "source_fact_identity": "source_facts:v1:749dd465befd657ee6426a3f2c2e1e32666167599d51b05098db23531f18afb9",
       "source_fact_keys": [
         "source_fact:v1:0682d3282c3293d91f0915ffdbf9680bbf6abcb9455f95e2633911fa63f10418",
+        "source_fact:v1:08e4299a4ab207582daa2ce74e935b7aa7bb288d4991e5c9486a57e7209bd23f",
+        "source_fact:v1:0cb9631cc8ef7c5e4326c5b9be724183ffeb9afd997f0e38c9604314638baad7",
+        "source_fact:v1:13f43b219c99f8098a9d2650b8a506c1c7c46a71e3854095701de1fa68bd8213",
+        "source_fact:v1:1cf32d65adbb2a48d94e1ab8e5b4b379a91d668dccbee605f0916594ef75425c",
+        "source_fact:v1:21630f2e9b3aebe9bd5e60cdc72b291ce8284d41a134845d5d0200389ae67d28",
         "source_fact:v1:2a659af6ddd9448b720ba04cc236e448f232d23c4d093c0cdb320323856e9234",
+        "source_fact:v1:4706836e72f0f457cd3c61c9535e9349a2cca12245bb7733d7e030b393fbd62d",
+        "source_fact:v1:5aba9bb6db3cddb594e6468b7def31c4e42bad7ea8302eda3aee2f714b5de369",
+        "source_fact:v1:85ae5ec94fbc10ced366588d21329a883688a8c03b5ef39ca3319c33431cbecf",
+        "source_fact:v1:86a2c05f9ba1f73903b775af29ff15c3fa0c807ef6b6ac3fa8c229c1a390b2ba",
         "source_fact:v1:8c54e223bdcd649114a2b1c8565d8b3e114c4fae25059da5b0edce0bd68ef2e3",
+        "source_fact:v1:8f7e5370f6beb16a890547a7b2ea4e557458249cf557b88800b0e2f15e8fb515",
+        "source_fact:v1:959c3ed22106bd6ec67672fd658f792fe34b1428b81a0a343daea2d722b1f069",
+        "source_fact:v1:a6ff780aa2a18e4d7c7bd62e798284083d72d3a478a37e6f93d445f5f0a0c2a0",
+        "source_fact:v1:c0e7ff0d1393a8edea1055898a298d9109b7398f1b6ae6a2cefefe5101c1a8c4",
+        "source_fact:v1:c4f374a6af707203eba361b56be567c99797d36a5c0f243fa5e3f75792a6cca6",
+        "source_fact:v1:e42dc1f80f521dd085d129ef82ac8caf0d3b81c5576a675430963c1d77a440bc",
+        "source_fact:v1:f486a0141f9abfa907e22484a12ac54441d350df2e24f0f04317a6aa33786f43",
+        "source_fact:v1:f5f3c59518f4aeb7163c46e05bd7bbfe358bd3b9af5572d01abc1bcbb7a43291",
         "source_fact:v1:fc7861c00fc194c320ab3f09953a0d87a497c4a5bdec14c3d628bef716ea7749"
       ],
-      "source_published_kst": "2026-10-05T17:08+09:00",
+      "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
     },
     "title:23a979d3ba80300e3e9b4398": {
@@ -64536,6 +66594,28 @@
       "source_event_identity": "",
       "title": "나노 뉴클리어 에너지, NRC 인허가 핵연료 자산 1350만 달러 인수"
     },
+    "title:47091ccaa0c185b54676b79d": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632510",
+      "source": "이투데이",
+      "source_body_digest": "6cead6eaf2670aa02a989a687a8e972a106d22ed418c71f0776b30e1aaf7825a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00e9a6aaa51c55cd6f4b6edd94c2f0f05f59b5bb2067fe75edccee90dea9f277",
+      "source_fact_keys": [
+        "source_fact:v1:2a8303aebbd71b0fa6fd5a053ed83cb2dc302a52a010c6c5574e5668832a26f3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:6eecfb1575718b3d79bfafdc90efdf918bd6688e739b55d9030db987a56cc2c6",
+        "source_fact:v1:968442d977f4d0e4c7e1d9949adb975f88fb417b8cc4de97a4fc5827efdab1ce",
+        "source_fact:v1:c7faa41e67dadf2f9337b131e916ce5ff6f808e5f4a081f0d20411dd38ad30f5",
+        "source_fact:v1:e1c6487bc77e5e881dcef71afde8b61a7f47dee658d0deef4d44a928de5d663a"
+      ],
+      "source_published_kst": "2026-10-06T06:04+09:00",
+      "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
+    },
     "title:4745d7c1bd4323d47cd456e3": {
       "first_seen_kst": "2026-10-03T07:04:42+09:00",
       "lanes": {
@@ -64794,25 +66874,25 @@
     "title:4a14f8982a471f7a46105a4c": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
-        "live": "2026-10-06T06:01:11+09:00"
+        "live": "2026-10-06T06:27:01+09:00"
       },
-      "last_seen_kst": "2026-10-06T06:01:11+09:00",
-      "link": "https://www.newsis.com/view/NISX20261005_0003814313",
-      "source": "뉴시스",
-      "source_body_digest": "b96ecc3c42f0b8e98427f1aae4240143bdad0d053258eb93470bcbbb2c3ef80c",
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.fnnews.com/news/202610060601267536",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "04c6c887da8f747a83fc511283c1760c0fdd497303a9df37d6e548cfe90992dd",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:2fd1587e0b3239c4f3e410c7472f3482feff8058ac8b54f15d36d7a0db979083",
+      "source_fact_identity": "source_facts:v1:5eeb868b901a9ff7ed19f5d51a16058056f7b206e9816c970284190399c5197a",
       "source_fact_keys": [
         "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
         "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
-        "source_fact:v1:373c49cb1f6eb9f317116a2e6452ea69cc78d56fe185f5b437ffe4de44b8b0f5",
         "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
         "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
         "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
         "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
-        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd"
+        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd",
+        "source_fact:v1:f638f7391c04e247ed2ebc81f47d1915e44ac3fb3bfd4eeb8898bf8836981d5f"
       ],
-      "source_published_kst": "2026-10-06T06:00+09:00",
+      "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
     "title:4a7fb88e6bf21b8afb1da61c": {
@@ -70090,6 +72170,27 @@
       "source": "머니투데이",
       "title": "반도체가 半했다… 한국수출 사상 첫 1조달러 시대 눈앞"
     },
+    "title:96b8cfd8b85f747a5bd0873d": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://tv.edaily.co.kr/News/NewsRead?NewsId=02000806645610296&Kind=257",
+      "source": "이데일리",
+      "source_body_digest": "269ff92fd10da8a490138a3f3fcc7163b55ecce228a913fb8dd80128f77044d1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2335ee1089b48c166dd1af799d95ef532354ee1e08dc20c48f4fcccd29aa1b6d",
+      "source_fact_keys": [
+        "source_fact:v1:19511620d833a5451deea0f4e7b5f74cdcdb4e71a191006f2dee3e4ca0bc384c",
+        "source_fact:v1:2f1cf827fa9e5af8435935f122b44c0ab07738aee3713e9dd5ff4b64372bf0b0",
+        "source_fact:v1:54f726c8ae5acb051f2220dc91f92b0c6393ffd8fb2df36cd3c909c6e7ea3c73",
+        "source_fact:v1:8cc47a736a0ecd7ac1d94f8a8030ea04caafa0faea5b9b875f6cac69a638fda5",
+        "source_fact:v1:f6483dd5e1988116c0b2625f017f6e7b84fd738567e6467f39e4d01e115b1de6"
+      ],
+      "source_published_kst": "2026-10-05T17:54+09:00",
+      "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
+    },
     "title:96edcfc5d7dbaad049948a2e": {
       "first_seen_kst": "2026-10-02T20:28:38+09:00",
       "lanes": {
@@ -70998,6 +73099,30 @@
       "link": "https://www.yna.co.kr/view/AKR20261002119700530",
       "source": "연합뉴스",
       "title": "작년 산재사망 상위 10곳중 9곳 건설·배달업…5% 과징금 사정권 | 연합뉴스"
+    },
+    "title:a5514567f6ffedca3d940836": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632514",
+      "source": "이투데이",
+      "source_body_digest": "650a2bae4e9e2a6de589b2d36f332f33fbb844085aa61441b4c7720da822add3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:67f77e7e520697f625e8169eb44d63a7d3520d64c48b95136b31a951e28ad559",
+      "source_fact_keys": [
+        "source_fact:v1:1b8468da30d374e7e46803bcde0bf1a7c913a0ad544c1366aa101ca67b66afb8",
+        "source_fact:v1:1bb372243ff209a4bf905cb910766976371bb3d875f95f8f635e43f2bc406c1b",
+        "source_fact:v1:399cffd14034d85abf03add218a98cba96d1cc0053ee99c6ba517ec4e2819bc3",
+        "source_fact:v1:58c1b68deafb984c763e9b5bd67da5a6d34485f285e17e8a9fc2368ce2e9ae07",
+        "source_fact:v1:8601c7b4e59fa2d851656f9a40e9b6a8323282e1550b2ec697f468064fcd6ef0",
+        "source_fact:v1:90903f5de9687b52ab3f5cd8edbcda33d213c8b03c23e5dcb364674a38bac21a",
+        "source_fact:v1:9a55ad7e4ca742a320d272d5320659cccfea16c085f366a343ae87800dd71185",
+        "source_fact:v1:d60a1a7dc8f5de11dd3f7ea6b518b6ba1f2d2fddc4a61d3d45a1c5d7c0dd0e2b"
+      ],
+      "source_published_kst": "2026-10-06T06:25+09:00",
+      "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
     },
     "title:a551df722f997ffb3d86e95a": {
       "first_seen_kst": "2026-10-02T16:06:36+09:00",
@@ -73555,6 +75680,33 @@
       "source": "연합뉴스",
       "title": "[해수분해] 가라앉는 배 탈출 '골든타임' 늘린다…바다 안전 기술 | 연합뉴스"
     },
+    "title:ccbf85de9b8dd253b508e520": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005042300003",
+      "source": "연합뉴스",
+      "source_body_digest": "b41e45adbc6e29778da0aa36cac83f1b1d6676845de1c0f60fb6946a20e4f032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d583fd605d2f9a8f26dab31e289cc614e01a0ab187d0a42b8f3113409f3a51fd",
+      "source_fact_keys": [
+        "source_fact:v1:013157c4c8a6f3ccd1c3f93225b005e13f8947f3b2d9aba4bd15ac4deba24c1c",
+        "source_fact:v1:14c8f0cfcc173815195134a95d8eee4319e262873ae3b9dd45c3ebc4f62041cc",
+        "source_fact:v1:1913578d25ff11b78ac47be0877fdc310c890803d88e6553693f4f57ac2c2e2f",
+        "source_fact:v1:33e6ec88c10d83ddc4c7fc23ca07ed83d70e3ad25f521829e1a916056a56f5ee",
+        "source_fact:v1:74a49629b9328c28fe40c054103d86d21f2f999fac19582983ca13696e228b9b",
+        "source_fact:v1:80d10e89c96d92444db997420e1abf8c6c476d1ba192f3b2f0528a1c4220fd92",
+        "source_fact:v1:8239a6b40e0f41b144edfc6c6d13a631db4d4a83f5140503c515a53c05ff2629",
+        "source_fact:v1:8a4f524decde9a1c18f3084599c22c3f38477ae563b21ed87cd1bbecf681df60",
+        "source_fact:v1:a547480c56bd530a2410fa3aded3fc5585fd86668e27fde4739b84de0ad9f3a9",
+        "source_fact:v1:bcde01f0f9b4d0b1e875a8ade012fb8a127eb07dc2c3ae8b64e66ece218bd57e",
+        "source_fact:v1:d59961573c7c8a3755b21c3da1a92a73de03f31ee41312b2f0db2d2b311a0ca6"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
+    },
     "title:ccd312e0a9ed8370e9e2114d": {
       "first_seen_kst": "2026-10-02T16:53:54+09:00",
       "lanes": {
@@ -75685,6 +77837,24 @@
       "source": "머니투데이",
       "title": "비즈니스캔버스, 해외 B2B 영업 돕는 AI 서비스 '아테나' 출시"
     },
+    "title:e8bad168c3a756e0365fa63e": {
+      "first_seen_kst": "2026-10-06T06:27:01+09:00",
+      "lanes": {
+        "live": "2026-10-06T06:27:01+09:00"
+      },
+      "last_seen_kst": "2026-10-06T06:27:01+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002184600002",
+      "source": "연합뉴스",
+      "source_body_digest": "34bd391e79b2a89907fa61ed7c0be28eca821d128393b5881afdef4a57604113",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:25b7614ae5b181a99acee2061006d61100f7f3e8f732c312ad60a75515b87d1d",
+      "source_fact_keys": [
+        "source_fact:v1:4578eeefde208d8495f7e0417da129bae39408059cf169e4bf1ac32448ef5a50",
+        "source_fact:v1:f90cd84000f712a0bea5e37457c1075fb98df64d227eee59c2a7df527fc0751b"
+      ],
+      "source_published_kst": "2026-10-06T05:59+09:00",
+      "title": "가상자산 거래소 장애인고용 '미달'…5년여간 부담금 13억 | 연합뉴스"
+    },
     "title:e8bcb2effb5a2fb6e4a28aa1": {
       "first_seen_kst": "2026-10-03T05:03:54+09:00",
       "lanes": {
@@ -77204,5 +79374,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T06:01:11+09:00"
+  "updated_at_kst": "2026-10-06T06:27:01+09:00"
 }
