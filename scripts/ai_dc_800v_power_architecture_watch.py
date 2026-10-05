@@ -18,6 +18,7 @@ ALERT = OUT / "ai_dc_800v_power_architecture_alert.txt"
 STATUS = OUT / "ai_dc_800v_power_architecture_status.md"
 
 FORMAT_VERSION = 3
+# Dedupe validation: unchanged extracted facts must remain Telegram-silent.
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
 
 NVIDIA_BLOG = "https://blogs.nvidia.com/blog/800-vdc-power-architecture-ai-factory/"
