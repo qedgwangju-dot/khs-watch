@@ -527,20 +527,20 @@
     "event:2040de76bfabafead1b43434": {
       "first_seen_kst": "2026-10-05T00:49:19+09:00",
       "lanes": {
-        "live": "2026-10-05T21:53:16+09:00",
+        "live": "2026-10-05T22:39:48+09:00",
         "preopen": "2026-10-05T06:34:55+09:00"
       },
-      "last_seen_kst": "2026-10-05T21:53:16+09:00",
-      "link": "https://www.mk.co.kr/news/world/12168604",
-      "source": "매일경제",
-      "source_body_digest": "8b1f571b28cb931d1268e281e35d968e75502abd380b608a34069d0e014a587b",
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632388",
+      "source": "이투데이",
+      "source_body_digest": "41bc84715405f96f7ae4841a01c250a96efbb27b08919ca844c506808d054b2a",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:c4a441b03bcb6afbad97aba3996ca8ec0ed481a8a04e6a13be86ca1928cbe377",
+      "source_fact_identity": "source_facts:v1:4d2390c8118b4b92f30033dcbb3d23e029d1147dee7dbe2b92d47e7e5adad9b6",
       "source_fact_keys": [
-        "source_fact:v1:4cd3bec70da28b93f9924eb26b028f0dbd103866168cb2ff9e961207ac5a3adc"
+        "source_fact:v1:0bd114d7f7d3c1c3ee1bae506b067455d46f805f0cf820576e8c4f264df34c6d"
       ],
-      "source_published_kst": "2026-10-05T17:30+09:00",
-      "title": "이란, 호르무즈 공격 재개 … 중동 원유 수출 회복세에 '찬물'"
+      "source_published_kst": "2026-10-05T08:34+09:00",
+      "title": "걸프국 원유 수출 회복세에 ‘먹구름’⋯호르무즈 선박 피격 나흘새 4건"
     },
     "event:20559afaa46c8beb4ac5c20d": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -5086,6 +5086,23 @@
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
     },
+    "fact:24ef5488c03da44db7f52533": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814632",
+      "source": "뉴시스",
+      "source_body_digest": "c9adcb7f20a3c10df42b50ddb1cb525a2647c8ae7565e1bff12cbec98f3cb0d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da056ff130f269b9bacb2248399f35c02775e8a5987462fed6405f8886af6f01",
+      "source_fact_keys": [
+        "source_fact:v1:8ee00f6371a93c558512aaf90352da20dc5a46dda99e4698dda7e1124bbc47f6"
+      ],
+      "source_published_kst": "2026-10-05T22:37+09:00",
+      "title": "농식품부 고위공직자 모친 농지 '미경작'…\"전수조사, 현실 못담아\""
+    },
     "fact:2743d0b728c0ebba118d9cd4": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -5145,6 +5162,23 @@
       ],
       "source_published_kst": "2026-10-05T21:32+09:00",
       "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
+    },
+    "fact:30126cba90e27cfc9089c63a": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169830",
+      "source": "매일경제",
+      "source_body_digest": "c61ab1e289944a6b14801361b26d338b5606c57fd15dcda00c75147c3af3b143",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:587177978ca0bf8e7b6e2ce14c6e7ea1099e2df6280eb9b0f527813648cb4951",
+      "source_fact_keys": [
+        "source_fact:v1:c589ac63437059fcf1a464401e7d82f4db436a35365f15b5e50c4415df79d299"
+      ],
+      "source_published_kst": "2026-10-05T22:17+09:00",
+      "title": "컨스트럭션 파트너스, 텍사스 아스팔트업체 인수..플랜트 2곳 확보"
     },
     "fact:324e453978b86897f66191c5": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -6511,6 +6545,23 @@
       "source_published_kst": "2026-10-05T19:05+09:00",
       "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
     },
+    "fact:dfe79dc95362d6af01327bd1": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632388",
+      "source": "이투데이",
+      "source_body_digest": "41bc84715405f96f7ae4841a01c250a96efbb27b08919ca844c506808d054b2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d2390c8118b4b92f30033dcbb3d23e029d1147dee7dbe2b92d47e7e5adad9b6",
+      "source_fact_keys": [
+        "source_fact:v1:0bd114d7f7d3c1c3ee1bae506b067455d46f805f0cf820576e8c4f264df34c6d"
+      ],
+      "source_published_kst": "2026-10-05T08:34+09:00",
+      "title": "걸프국 원유 수출 회복세에 ‘먹구름’⋯호르무즈 선박 피격 나흘새 4건"
+    },
     "fact:e58601b09cd1e4a46b8a599f": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -6549,6 +6600,24 @@
       ],
       "source_published_kst": "2026-10-05T16:00+09:00",
       "title": "현대차 8세대 아반떼·BMW iX3, '초기 부진설' 실체는 '공급 시차'"
+    },
+    "fact:ec037eaaf6d2f5883b292d9b": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169833",
+      "source": "매일경제",
+      "source_body_digest": "4aecb71361812d02f1f41b4e72a391f31fd83665c4b7ef392102210051247a21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad06a7663fb4b30c7405bf512e26ad82e16baa470cce96059ef9045e4ec3fa24",
+      "source_fact_keys": [
+        "source_fact:v1:1cf2f488547900ab1e37c09b46ef63c5062dfdf8aa33dea62ee9fa5b9f692568",
+        "source_fact:v1:b5933351c99ed337be046da0f548914cd3d288a3eda3342ac9aaef45c352aed9"
+      ],
+      "source_published_kst": "2026-10-05T22:21+09:00",
+      "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
     },
     "fact:ed2a4f20e1835c85d00d1b6d": {
       "first_seen_kst": "2026-10-05T20:38:34+09:00",
@@ -6619,6 +6688,26 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"30개 테스트공장 풀가동\" SK엔무브 고급 윤활기유 1위 만든 R&D"
+    },
+    "fact:f6d2fdf22cc59e8544847b7a": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169835",
+      "source": "매일경제",
+      "source_body_digest": "74304dee26a77a217d27c1ace4f0863654a5f39a33d5234dae95297e7a5597c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02e8c1fb790c1e852f087ed9afcd66774504519ed5328ea36e91858ca5b9a8cb",
+      "source_fact_keys": [
+        "source_fact:v1:0608b20164628d9f69f9ae10f6c963e40cba0d9f3a3c7cf96dd45b8b9f1e0b34",
+        "source_fact:v1:195f1b79f2abc2099297c1283c08a094eef434d65784fba750504a206f8b244a",
+        "source_fact:v1:4c98b2f3ab0a350533fcc3e7cb6511352e73d5509fbf7dd61a7d2c3a00faa4b0",
+        "source_fact:v1:c10e98c247463b336239d27049dc66a05f13e7fb16a8a949ebb7498961b37170"
+      ],
+      "source_published_kst": "2026-10-05T22:23+09:00",
+      "title": "시놉시스, 10억달러 자사주 ASR 체결..173만5천주 우선 인도"
     },
     "fact:fb7067bdc4bf98e0e7e2f64a": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -8486,6 +8575,24 @@
       "link": "https://www.yna.co.kr/view/AKR20260925042800002",
       "source": "연합뉴스",
       "title": "당국, 정책금융 등 고정금리 확대 주력…금리인상기 위험 흡수 | 연합뉴스"
+    },
+    "link:23ae48d3d0f22d93bc073f7c": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169833",
+      "source": "매일경제",
+      "source_body_digest": "4aecb71361812d02f1f41b4e72a391f31fd83665c4b7ef392102210051247a21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad06a7663fb4b30c7405bf512e26ad82e16baa470cce96059ef9045e4ec3fa24",
+      "source_fact_keys": [
+        "source_fact:v1:1cf2f488547900ab1e37c09b46ef63c5062dfdf8aa33dea62ee9fa5b9f692568",
+        "source_fact:v1:b5933351c99ed337be046da0f548914cd3d288a3eda3342ac9aaef45c352aed9"
+      ],
+      "source_published_kst": "2026-10-05T22:21+09:00",
+      "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
     },
     "link:23c5d17e162423aa5f915e13": {
       "first_seen_kst": "2026-10-04T11:57:24+09:00",
@@ -13433,6 +13540,26 @@
       "source": "전자신문",
       "title": "“어게인 9000? 내년 코스피 5200 밑돌 수도”…현금 늘리라는 경고 나왔다, 왜?"
     },
+    "link:6da1fb7b112b96557f86a85d": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169835",
+      "source": "매일경제",
+      "source_body_digest": "74304dee26a77a217d27c1ace4f0863654a5f39a33d5234dae95297e7a5597c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02e8c1fb790c1e852f087ed9afcd66774504519ed5328ea36e91858ca5b9a8cb",
+      "source_fact_keys": [
+        "source_fact:v1:0608b20164628d9f69f9ae10f6c963e40cba0d9f3a3c7cf96dd45b8b9f1e0b34",
+        "source_fact:v1:195f1b79f2abc2099297c1283c08a094eef434d65784fba750504a206f8b244a",
+        "source_fact:v1:4c98b2f3ab0a350533fcc3e7cb6511352e73d5509fbf7dd61a7d2c3a00faa4b0",
+        "source_fact:v1:c10e98c247463b336239d27049dc66a05f13e7fb16a8a949ebb7498961b37170"
+      ],
+      "source_published_kst": "2026-10-05T22:23+09:00",
+      "title": "시놉시스, 10억달러 자사주 ASR 체결..173만5천주 우선 인도"
+    },
     "link:6dc1a2e0332b3ed8b9827f1b": {
       "first_seen_kst": "2026-10-02T13:22:36+09:00",
       "lanes": {
@@ -15143,6 +15270,23 @@
       "link": "https://www.yna.co.kr/view/MYH20261002004000038",
       "source": "연합뉴스",
       "title": "[속보] 9월 물가 2.9% 상승…한 달 만에 2%대로 | 연합뉴스"
+    },
+    "link:8c45948cde810537f7fcce64": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814632",
+      "source": "뉴시스",
+      "source_body_digest": "c9adcb7f20a3c10df42b50ddb1cb525a2647c8ae7565e1bff12cbec98f3cb0d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da056ff130f269b9bacb2248399f35c02775e8a5987462fed6405f8886af6f01",
+      "source_fact_keys": [
+        "source_fact:v1:8ee00f6371a93c558512aaf90352da20dc5a46dda99e4698dda7e1124bbc47f6"
+      ],
+      "source_published_kst": "2026-10-05T22:37+09:00",
+      "title": "농식품부 고위공직자 모친 농지 '미경작'…\"전수조사, 현실 못담아\""
     },
     "link:8cb7a73de70e07256ec33345": {
       "first_seen_kst": "2026-09-27T01:53:16+09:00",
@@ -17076,6 +17220,23 @@
       "source": "뉴시스",
       "title": "한 총리, 칠곡 산불 진화훈련 참관 \"체계적 협력…빈틈없이 대비해야\""
     },
+    "link:a930d51e05d27c0905c96e48": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632388",
+      "source": "이투데이",
+      "source_body_digest": "41bc84715405f96f7ae4841a01c250a96efbb27b08919ca844c506808d054b2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d2390c8118b4b92f30033dcbb3d23e029d1147dee7dbe2b92d47e7e5adad9b6",
+      "source_fact_keys": [
+        "source_fact:v1:0bd114d7f7d3c1c3ee1bae506b067455d46f805f0cf820576e8c4f264df34c6d"
+      ],
+      "source_published_kst": "2026-10-05T08:34+09:00",
+      "title": "걸프국 원유 수출 회복세에 ‘먹구름’⋯호르무즈 선박 피격 나흘새 4건"
+    },
     "link:a9a757e59f7182af061424c4": {
       "first_seen_kst": "2026-10-03T12:48:39+09:00",
       "lanes": {
@@ -17267,6 +17428,21 @@
       "link": "https://www.etnews.com/20260918000038",
       "source": "전자신문",
       "title": "“60일 예보부터 초단기 레이더 강수 예보까지” 케이웨더, 날씨 AI 팩토리 첫 상품 출시"
+    },
+    "link:abd1b247d7e0edb2822c1861": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169829",
+      "source": "매일경제",
+      "source_body_digest": "2b34fccc482919e89b86fe7c51e5a934824d7ac5c6b35644898a56dcfc52f1f5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:16+09:00",
+      "title": "에릭슨, 주간 자사주 937만주 매입..8억7200만 크로나"
     },
     "link:ac68cc181c8df4d3813d13cb": {
       "first_seen_kst": "2026-10-02T20:28:38+09:00",
@@ -18048,6 +18224,23 @@
       "link": "https://www.mk.co.kr/news/politics/12159007",
       "source": "매일경제",
       "title": "이소영 청문보고서 여야 합의 채택…“우려 있지만 역량 갖춰”"
+    },
+    "link:bb18cb87d0e4d96b908c45f9": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169830",
+      "source": "매일경제",
+      "source_body_digest": "c61ab1e289944a6b14801361b26d338b5606c57fd15dcda00c75147c3af3b143",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:587177978ca0bf8e7b6e2ce14c6e7ea1099e2df6280eb9b0f527813648cb4951",
+      "source_fact_keys": [
+        "source_fact:v1:c589ac63437059fcf1a464401e7d82f4db436a35365f15b5e50c4415df79d299"
+      ],
+      "source_published_kst": "2026-10-05T22:17+09:00",
+      "title": "컨스트럭션 파트너스, 텍사스 아스팔트업체 인수..플랜트 2곳 확보"
     },
     "link:bb712decd1f1b74d57684379": {
       "first_seen_kst": "2026-10-02T10:55:46+09:00",
@@ -20631,6 +20824,21 @@
       "link": "https://www.mk.co.kr/news/stock/12159893",
       "source": "매일경제",
       "title": "비스타골드, 아르테미스골드에 4.3억 달러 인수 합의…주주 29% 프리미엄 수혜"
+    },
+    "link:e2e0f82b5ab418e0468986c9": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893444",
+      "source": "헤럴드경제",
+      "source_body_digest": "22060d14d986f44333a62b9760aeafe599849b276be952b76a9520634428cca8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:22+09:00",
+      "title": "LG전자, 북미서 5GW AIDC 냉각 설루션 장기 공급 계약 따냈다"
     },
     "link:e33534d773d1e214d2b89e40": {
       "first_seen_kst": "2026-09-27T07:38:21+09:00",
@@ -25035,6 +25243,23 @@
       "source": "매일경제",
       "title": "인시고, 노키아 FWA 사업 인수 완료로 매출 2배 확대 기대감 부각"
     },
+    "original:2eb58bd625fba9f42f2706e7": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814632",
+      "source": "뉴시스",
+      "source_body_digest": "c9adcb7f20a3c10df42b50ddb1cb525a2647c8ae7565e1bff12cbec98f3cb0d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da056ff130f269b9bacb2248399f35c02775e8a5987462fed6405f8886af6f01",
+      "source_fact_keys": [
+        "source_fact:v1:8ee00f6371a93c558512aaf90352da20dc5a46dda99e4698dda7e1124bbc47f6"
+      ],
+      "source_published_kst": "2026-10-05T22:37+09:00",
+      "title": "농식품부 고위공직자 모친 농지 '미경작'…\"전수조사, 현실 못담아\""
+    },
     "original:2faa55f0138ec6fd5d9f9ed1": {
       "first_seen_kst": "2026-10-03T22:08:29+09:00",
       "lanes": {
@@ -25091,16 +25316,19 @@
     "original:3058e5456c9acb36f6ddc167": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
-        "live": "2026-10-05T22:30:10+09:00"
+        "live": "2026-10-05T22:39:48+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:30:10+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12168765",
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169833",
       "source": "매일경제",
-      "source_body_digest": "98286c44bf7b01f3d5107e263c1b61e4af0d1187c640fb180f2445dc3766332d",
+      "source_body_digest": "4aecb71361812d02f1f41b4e72a391f31fd83665c4b7ef392102210051247a21",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-05T22:22+09:00",
+      "source_fact_identity": "source_facts:v1:ad06a7663fb4b30c7405bf512e26ad82e16baa470cce96059ef9045e4ec3fa24",
+      "source_fact_keys": [
+        "source_fact:v1:1cf2f488547900ab1e37c09b46ef63c5062dfdf8aa33dea62ee9fa5b9f692568",
+        "source_fact:v1:b5933351c99ed337be046da0f548914cd3d288a3eda3342ac9aaef45c352aed9"
+      ],
+      "source_published_kst": "2026-10-05T22:21+09:00",
       "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
     },
     "original:30e5d112f50b7476124611fe": {
@@ -25175,6 +25403,26 @@
       "link": "https://www.newsis.com/view/NISX20260918_0003794944",
       "source": "뉴시스",
       "title": "금리 인상 악재 소화한 증시…'물가 2차 파급'과 '미중 회담'에 달려"
+    },
+    "original:31af6f42cc9150cc3e17bbdd": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169835",
+      "source": "매일경제",
+      "source_body_digest": "74304dee26a77a217d27c1ace4f0863654a5f39a33d5234dae95297e7a5597c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02e8c1fb790c1e852f087ed9afcd66774504519ed5328ea36e91858ca5b9a8cb",
+      "source_fact_keys": [
+        "source_fact:v1:0608b20164628d9f69f9ae10f6c963e40cba0d9f3a3c7cf96dd45b8b9f1e0b34",
+        "source_fact:v1:195f1b79f2abc2099297c1283c08a094eef434d65784fba750504a206f8b244a",
+        "source_fact:v1:4c98b2f3ab0a350533fcc3e7cb6511352e73d5509fbf7dd61a7d2c3a00faa4b0",
+        "source_fact:v1:c10e98c247463b336239d27049dc66a05f13e7fb16a8a949ebb7498961b37170"
+      ],
+      "source_published_kst": "2026-10-05T22:23+09:00",
+      "title": "시놉시스, 10억달러 자사주 ASR 체결..173만5천주 우선 인도"
     },
     "original:31efdc12e6e2f7efe3d02528": {
       "first_seen_kst": "2026-10-03T07:39:51+09:00",
@@ -28117,6 +28365,23 @@
       "source": "연합뉴스",
       "title": "'국장'은 쉬어도 '미장'은 열린다…추석 전후 챙겨볼 ETF는 | 연합뉴스"
     },
+    "original:60c0ead3210dba4ae395370f": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169830",
+      "source": "매일경제",
+      "source_body_digest": "c61ab1e289944a6b14801361b26d338b5606c57fd15dcda00c75147c3af3b143",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:587177978ca0bf8e7b6e2ce14c6e7ea1099e2df6280eb9b0f527813648cb4951",
+      "source_fact_keys": [
+        "source_fact:v1:c589ac63437059fcf1a464401e7d82f4db436a35365f15b5e50c4415df79d299"
+      ],
+      "source_published_kst": "2026-10-05T22:17+09:00",
+      "title": "컨스트럭션 파트너스, 텍사스 아스팔트업체 인수..플랜트 2곳 확보"
+    },
     "original:6102a943598d1212a904aebb": {
       "first_seen_kst": "2026-10-02T00:13:20+09:00",
       "lanes": {
@@ -28682,6 +28947,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:25+09:00",
       "title": "이번주 크레딧 2조원 발행…파라다이스 수요예측도 | 연합뉴스"
+    },
+    "original:68ba09e7067b35a632580f26": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632388",
+      "source": "이투데이",
+      "source_body_digest": "41bc84715405f96f7ae4841a01c250a96efbb27b08919ca844c506808d054b2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d2390c8118b4b92f30033dcbb3d23e029d1147dee7dbe2b92d47e7e5adad9b6",
+      "source_fact_keys": [
+        "source_fact:v1:0bd114d7f7d3c1c3ee1bae506b067455d46f805f0cf820576e8c4f264df34c6d"
+      ],
+      "source_published_kst": "2026-10-05T08:34+09:00",
+      "title": "걸프국 원유 수출 회복세에 ‘먹구름’⋯호르무즈 선박 피격 나흘새 4건"
     },
     "original:69042a1f45bb95b1cb91bf96": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -32212,6 +32494,21 @@
       "link": "https://www.yna.co.kr/view/AKR20261002180652072?section=international/all",
       "source": "연합뉴스",
       "title": "美 9월 고용 2만9천명 증가 그쳐…10월 금리인상 베팅 감소(종합) | 연합뉴스"
+    },
+    "original:a399ce310f22e85b69722a37": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169829",
+      "source": "매일경제",
+      "source_body_digest": "2b34fccc482919e89b86fe7c51e5a934824d7ac5c6b35644898a56dcfc52f1f5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:16+09:00",
+      "title": "에릭슨, 주간 자사주 937만주 매입..8억7200만 크로나"
     },
     "original:a3ac73abae7f47d2da18cb85": {
       "first_seen_kst": "2026-10-03T02:51:01+09:00",
@@ -36736,6 +37033,21 @@
       "source": "전자신문",
       "title": "한화, K9·천무 무인화-UGV 6종 구축…“AI 유무인 전환 기술 확보”"
     },
+    "original:ee6c55fdbb8a8c9aac15dd6a": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893444",
+      "source": "헤럴드경제",
+      "source_body_digest": "22060d14d986f44333a62b9760aeafe599849b276be952b76a9520634428cca8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:22+09:00",
+      "title": "LG전자, 북미서 5GW AIDC 냉각 설루션 장기 공급 계약 따냈다"
+    },
     "original:ef41d3c33e7c56bb400399f1": {
       "first_seen_kst": "2026-10-02T21:04:53+09:00",
       "lanes": {
@@ -38603,6 +38915,26 @@
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
     },
+    "source_fact:1d674e5061de9f9f3f209f2a": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169835",
+      "source": "매일경제",
+      "source_body_digest": "74304dee26a77a217d27c1ace4f0863654a5f39a33d5234dae95297e7a5597c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02e8c1fb790c1e852f087ed9afcd66774504519ed5328ea36e91858ca5b9a8cb",
+      "source_fact_keys": [
+        "source_fact:v1:0608b20164628d9f69f9ae10f6c963e40cba0d9f3a3c7cf96dd45b8b9f1e0b34",
+        "source_fact:v1:195f1b79f2abc2099297c1283c08a094eef434d65784fba750504a206f8b244a",
+        "source_fact:v1:4c98b2f3ab0a350533fcc3e7cb6511352e73d5509fbf7dd61a7d2c3a00faa4b0",
+        "source_fact:v1:c10e98c247463b336239d27049dc66a05f13e7fb16a8a949ebb7498961b37170"
+      ],
+      "source_published_kst": "2026-10-05T22:23+09:00",
+      "title": "시놉시스, 10억달러 자사주 ASR 체결..173만5천주 우선 인도"
+    },
     "source_fact:1dd500ba05ecac61942c685b": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
       "lanes": {
@@ -39659,6 +39991,23 @@
       ],
       "source_published_kst": "2026-10-05T19:19+09:00",
       "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
+    },
+    "source_fact:3e313a90b51d7b9d38cae3ca": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814632",
+      "source": "뉴시스",
+      "source_body_digest": "c9adcb7f20a3c10df42b50ddb1cb525a2647c8ae7565e1bff12cbec98f3cb0d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da056ff130f269b9bacb2248399f35c02775e8a5987462fed6405f8886af6f01",
+      "source_fact_keys": [
+        "source_fact:v1:8ee00f6371a93c558512aaf90352da20dc5a46dda99e4698dda7e1124bbc47f6"
+      ],
+      "source_published_kst": "2026-10-05T22:37+09:00",
+      "title": "농식품부 고위공직자 모친 농지 '미경작'…\"전수조사, 현실 못담아\""
     },
     "source_fact:3eb6017675c11d270d44580f": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
@@ -40913,6 +41262,23 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "source_fact:5c9cb901c3b612da9455afd2": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169830",
+      "source": "매일경제",
+      "source_body_digest": "c61ab1e289944a6b14801361b26d338b5606c57fd15dcda00c75147c3af3b143",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:587177978ca0bf8e7b6e2ce14c6e7ea1099e2df6280eb9b0f527813648cb4951",
+      "source_fact_keys": [
+        "source_fact:v1:c589ac63437059fcf1a464401e7d82f4db436a35365f15b5e50c4415df79d299"
+      ],
+      "source_published_kst": "2026-10-05T22:17+09:00",
+      "title": "컨스트럭션 파트너스, 텍사스 아스팔트업체 인수..플랜트 2곳 확보"
     },
     "source_fact:5cf71cde662227b7e587b3a8": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -43377,6 +43743,26 @@
       "source_published_kst": "2026-10-05T21:05+09:00",
       "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
     },
+    "source_fact:9bc55dc197dbc40402e1ffa4": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169835",
+      "source": "매일경제",
+      "source_body_digest": "74304dee26a77a217d27c1ace4f0863654a5f39a33d5234dae95297e7a5597c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02e8c1fb790c1e852f087ed9afcd66774504519ed5328ea36e91858ca5b9a8cb",
+      "source_fact_keys": [
+        "source_fact:v1:0608b20164628d9f69f9ae10f6c963e40cba0d9f3a3c7cf96dd45b8b9f1e0b34",
+        "source_fact:v1:195f1b79f2abc2099297c1283c08a094eef434d65784fba750504a206f8b244a",
+        "source_fact:v1:4c98b2f3ab0a350533fcc3e7cb6511352e73d5509fbf7dd61a7d2c3a00faa4b0",
+        "source_fact:v1:c10e98c247463b336239d27049dc66a05f13e7fb16a8a949ebb7498961b37170"
+      ],
+      "source_published_kst": "2026-10-05T22:23+09:00",
+      "title": "시놉시스, 10억달러 자사주 ASR 체결..173만5천주 우선 인도"
+    },
     "source_fact:9bf2506e4d6f0e15a479ddc4": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -43617,6 +44003,24 @@
       ],
       "source_published_kst": "2026-10-05T21:41+09:00",
       "title": "ESS 테크, NYSE 거래정지·상장폐지 개시..OTC서 GWHT 거래"
+    },
+    "source_fact:a0a8066eaaa215cc153a09aa": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169833",
+      "source": "매일경제",
+      "source_body_digest": "4aecb71361812d02f1f41b4e72a391f31fd83665c4b7ef392102210051247a21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad06a7663fb4b30c7405bf512e26ad82e16baa470cce96059ef9045e4ec3fa24",
+      "source_fact_keys": [
+        "source_fact:v1:1cf2f488547900ab1e37c09b46ef63c5062dfdf8aa33dea62ee9fa5b9f692568",
+        "source_fact:v1:b5933351c99ed337be046da0f548914cd3d288a3eda3342ac9aaef45c352aed9"
+      ],
+      "source_published_kst": "2026-10-05T22:21+09:00",
+      "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
     },
     "source_fact:a1b076fb690b3f4cea4c0016": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -44089,6 +44493,26 @@
       "source_published_kst": "2026-10-05T15:21+09:00",
       "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
     },
+    "source_fact:add4fc3a3ad824be02527115": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169835",
+      "source": "매일경제",
+      "source_body_digest": "74304dee26a77a217d27c1ace4f0863654a5f39a33d5234dae95297e7a5597c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02e8c1fb790c1e852f087ed9afcd66774504519ed5328ea36e91858ca5b9a8cb",
+      "source_fact_keys": [
+        "source_fact:v1:0608b20164628d9f69f9ae10f6c963e40cba0d9f3a3c7cf96dd45b8b9f1e0b34",
+        "source_fact:v1:195f1b79f2abc2099297c1283c08a094eef434d65784fba750504a206f8b244a",
+        "source_fact:v1:4c98b2f3ab0a350533fcc3e7cb6511352e73d5509fbf7dd61a7d2c3a00faa4b0",
+        "source_fact:v1:c10e98c247463b336239d27049dc66a05f13e7fb16a8a949ebb7498961b37170"
+      ],
+      "source_published_kst": "2026-10-05T22:23+09:00",
+      "title": "시놉시스, 10억달러 자사주 ASR 체결..173만5천주 우선 인도"
+    },
     "source_fact:af683856d25d705e1b787d24": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -44253,6 +44677,24 @@
       ],
       "source_published_kst": "2026-10-05T05:01+09:00",
       "title": "국회 정무위 6일 국감 돌입…금융권 해킹에 5대 은행장 줄소환되나"
+    },
+    "source_fact:b2c1b85ad905a0f65b4370f2": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169833",
+      "source": "매일경제",
+      "source_body_digest": "4aecb71361812d02f1f41b4e72a391f31fd83665c4b7ef392102210051247a21",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ad06a7663fb4b30c7405bf512e26ad82e16baa470cce96059ef9045e4ec3fa24",
+      "source_fact_keys": [
+        "source_fact:v1:1cf2f488547900ab1e37c09b46ef63c5062dfdf8aa33dea62ee9fa5b9f692568",
+        "source_fact:v1:b5933351c99ed337be046da0f548914cd3d288a3eda3342ac9aaef45c352aed9"
+      ],
+      "source_published_kst": "2026-10-05T22:21+09:00",
+      "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
     },
     "source_fact:b365ebe79dc1811e9a472b7b": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -45102,6 +45544,26 @@
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
+    "source_fact:d1afd21e5b99771be575ae1a": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169835",
+      "source": "매일경제",
+      "source_body_digest": "74304dee26a77a217d27c1ace4f0863654a5f39a33d5234dae95297e7a5597c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02e8c1fb790c1e852f087ed9afcd66774504519ed5328ea36e91858ca5b9a8cb",
+      "source_fact_keys": [
+        "source_fact:v1:0608b20164628d9f69f9ae10f6c963e40cba0d9f3a3c7cf96dd45b8b9f1e0b34",
+        "source_fact:v1:195f1b79f2abc2099297c1283c08a094eef434d65784fba750504a206f8b244a",
+        "source_fact:v1:4c98b2f3ab0a350533fcc3e7cb6511352e73d5509fbf7dd61a7d2c3a00faa4b0",
+        "source_fact:v1:c10e98c247463b336239d27049dc66a05f13e7fb16a8a949ebb7498961b37170"
+      ],
+      "source_published_kst": "2026-10-05T22:23+09:00",
+      "title": "시놉시스, 10억달러 자사주 ASR 체결..173만5천주 우선 인도"
+    },
     "source_fact:d298fd20dec3dbddefaac06c": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -45633,6 +46095,23 @@
       ],
       "source_published_kst": "2026-10-05T21:09+09:00",
       "title": "베니테크 바이오파마, BB-301 FDA 추가자료 요청..임상 일정 유지"
+    },
+    "source_fact:e38f755382dc56c656140915": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632388",
+      "source": "이투데이",
+      "source_body_digest": "41bc84715405f96f7ae4841a01c250a96efbb27b08919ca844c506808d054b2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d2390c8118b4b92f30033dcbb3d23e029d1147dee7dbe2b92d47e7e5adad9b6",
+      "source_fact_keys": [
+        "source_fact:v1:0bd114d7f7d3c1c3ee1bae506b067455d46f805f0cf820576e8c4f264df34c6d"
+      ],
+      "source_published_kst": "2026-10-05T08:34+09:00",
+      "title": "걸프국 원유 수출 회복세에 ‘먹구름’⋯호르무즈 선박 피격 나흘새 4건"
     },
     "source_fact:e4150f351c4a074787562d52": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -49242,6 +49721,23 @@
       "source": "매일경제",
       "title": "인시고, 노키아 FWA 사업 인수 완료로 매출 2배 확대 기대감 부각"
     },
+    "title:2eb58bd625fba9f42f2706e7": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814632",
+      "source": "뉴시스",
+      "source_body_digest": "c9adcb7f20a3c10df42b50ddb1cb525a2647c8ae7565e1bff12cbec98f3cb0d8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da056ff130f269b9bacb2248399f35c02775e8a5987462fed6405f8886af6f01",
+      "source_fact_keys": [
+        "source_fact:v1:8ee00f6371a93c558512aaf90352da20dc5a46dda99e4698dda7e1124bbc47f6"
+      ],
+      "source_published_kst": "2026-10-05T22:37+09:00",
+      "title": "농식품부 고위공직자 모친 농지 '미경작'…\"전수조사, 현실 못담아\""
+    },
     "title:2faa55f0138ec6fd5d9f9ed1": {
       "first_seen_kst": "2026-10-03T22:08:29+09:00",
       "lanes": {
@@ -49298,16 +49794,19 @@
     "title:3058e5456c9acb36f6ddc167": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
-        "live": "2026-10-05T22:30:10+09:00"
+        "live": "2026-10-05T22:39:48+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:30:10+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12168765",
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169833",
       "source": "매일경제",
-      "source_body_digest": "98286c44bf7b01f3d5107e263c1b61e4af0d1187c640fb180f2445dc3766332d",
+      "source_body_digest": "4aecb71361812d02f1f41b4e72a391f31fd83665c4b7ef392102210051247a21",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-05T22:22+09:00",
+      "source_fact_identity": "source_facts:v1:ad06a7663fb4b30c7405bf512e26ad82e16baa470cce96059ef9045e4ec3fa24",
+      "source_fact_keys": [
+        "source_fact:v1:1cf2f488547900ab1e37c09b46ef63c5062dfdf8aa33dea62ee9fa5b9f692568",
+        "source_fact:v1:b5933351c99ed337be046da0f548914cd3d288a3eda3342ac9aaef45c352aed9"
+      ],
+      "source_published_kst": "2026-10-05T22:21+09:00",
       "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
     },
     "title:30e5d112f50b7476124611fe": {
@@ -49382,6 +49881,26 @@
       "link": "https://www.newsis.com/view/NISX20260918_0003794944",
       "source": "뉴시스",
       "title": "금리 인상 악재 소화한 증시…'물가 2차 파급'과 '미중 회담'에 달려"
+    },
+    "title:31af6f42cc9150cc3e17bbdd": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169835",
+      "source": "매일경제",
+      "source_body_digest": "74304dee26a77a217d27c1ace4f0863654a5f39a33d5234dae95297e7a5597c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:02e8c1fb790c1e852f087ed9afcd66774504519ed5328ea36e91858ca5b9a8cb",
+      "source_fact_keys": [
+        "source_fact:v1:0608b20164628d9f69f9ae10f6c963e40cba0d9f3a3c7cf96dd45b8b9f1e0b34",
+        "source_fact:v1:195f1b79f2abc2099297c1283c08a094eef434d65784fba750504a206f8b244a",
+        "source_fact:v1:4c98b2f3ab0a350533fcc3e7cb6511352e73d5509fbf7dd61a7d2c3a00faa4b0",
+        "source_fact:v1:c10e98c247463b336239d27049dc66a05f13e7fb16a8a949ebb7498961b37170"
+      ],
+      "source_published_kst": "2026-10-05T22:23+09:00",
+      "title": "시놉시스, 10억달러 자사주 ASR 체결..173만5천주 우선 인도"
     },
     "title:31efdc12e6e2f7efe3d02528": {
       "first_seen_kst": "2026-10-03T07:39:51+09:00",
@@ -52345,6 +52864,23 @@
       "source": "연합뉴스",
       "title": "'국장'은 쉬어도 '미장'은 열린다…추석 전후 챙겨볼 ETF는 | 연합뉴스"
     },
+    "title:60c0ead3210dba4ae395370f": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169830",
+      "source": "매일경제",
+      "source_body_digest": "c61ab1e289944a6b14801361b26d338b5606c57fd15dcda00c75147c3af3b143",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:587177978ca0bf8e7b6e2ce14c6e7ea1099e2df6280eb9b0f527813648cb4951",
+      "source_fact_keys": [
+        "source_fact:v1:c589ac63437059fcf1a464401e7d82f4db436a35365f15b5e50c4415df79d299"
+      ],
+      "source_published_kst": "2026-10-05T22:17+09:00",
+      "title": "컨스트럭션 파트너스, 텍사스 아스팔트업체 인수..플랜트 2곳 확보"
+    },
     "title:6102a943598d1212a904aebb": {
       "first_seen_kst": "2026-10-02T00:13:20+09:00",
       "lanes": {
@@ -52920,6 +53456,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:25+09:00",
       "title": "이번주 크레딧 2조원 발행…파라다이스 수요예측도 | 연합뉴스"
+    },
+    "title:68ba09e7067b35a632580f26": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632388",
+      "source": "이투데이",
+      "source_body_digest": "41bc84715405f96f7ae4841a01c250a96efbb27b08919ca844c506808d054b2a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4d2390c8118b4b92f30033dcbb3d23e029d1147dee7dbe2b92d47e7e5adad9b6",
+      "source_fact_keys": [
+        "source_fact:v1:0bd114d7f7d3c1c3ee1bae506b067455d46f805f0cf820576e8c4f264df34c6d"
+      ],
+      "source_published_kst": "2026-10-05T08:34+09:00",
+      "title": "걸프국 원유 수출 회복세에 ‘먹구름’⋯호르무즈 선박 피격 나흘새 4건"
     },
     "title:69042a1f45bb95b1cb91bf96": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -56513,6 +57066,21 @@
       "link": "https://www.yna.co.kr/view/AKR20261002180652072?section=international/all",
       "source": "연합뉴스",
       "title": "美 9월 고용 2만9천명 증가 그쳐…10월 금리인상 베팅 감소(종합) | 연합뉴스"
+    },
+    "title:a399ce310f22e85b69722a37": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169829",
+      "source": "매일경제",
+      "source_body_digest": "2b34fccc482919e89b86fe7c51e5a934824d7ac5c6b35644898a56dcfc52f1f5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:16+09:00",
+      "title": "에릭슨, 주간 자사주 937만주 매입..8억7200만 크로나"
     },
     "title:a3ac73abae7f47d2da18cb85": {
       "first_seen_kst": "2026-10-03T02:51:01+09:00",
@@ -61089,6 +61657,21 @@
       "source": "전자신문",
       "title": "한화, K9·천무 무인화-UGV 6종 구축…“AI 유무인 전환 기술 확보”"
     },
+    "title:ee6c55fdbb8a8c9aac15dd6a": {
+      "first_seen_kst": "2026-10-05T22:39:48+09:00",
+      "lanes": {
+        "live": "2026-10-05T22:39:48+09:00"
+      },
+      "last_seen_kst": "2026-10-05T22:39:48+09:00",
+      "link": "https://biz.heraldcorp.com/article/10893444",
+      "source": "헤럴드경제",
+      "source_body_digest": "22060d14d986f44333a62b9760aeafe599849b276be952b76a9520634428cca8",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:22+09:00",
+      "title": "LG전자, 북미서 5GW AIDC 냉각 설루션 장기 공급 계약 따냈다"
+    },
     "title:ef41d3c33e7c56bb400399f1": {
       "first_seen_kst": "2026-10-02T21:04:53+09:00",
       "lanes": {
@@ -62156,5 +62739,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T22:30:10+09:00"
+  "updated_at_kst": "2026-10-05T22:39:48+09:00"
 }
