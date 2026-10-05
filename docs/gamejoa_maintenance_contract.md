@@ -255,6 +255,14 @@ Every defect or requested change must follow this sequence:
   validation remain eligible under the source guards. Productivity services
   are not industrial production capacity; reused commercialization history is
   not a newly validated cooling technology.
+- Copies of the same broker earnings report compare the sourced broker,
+  complete issuer name, report date, fiscal year/quarter, revenue/profit
+  forecasts, annual forecasts and current target price. Changed amounts,
+  periods, broker, issuer or explicit corrections remain distinct. Abbreviated
+  company titles must not identify a generic word such as growth as the issuer.
+  A source-stated fiscal year is not replaced by its publication year; an
+  unknown year stays unknown. Summaries name the broker and retain forecast
+  status instead of promoting estimates into company-reported results.
 - DRAM market share must retain its source, period and revenue/bit basis.
   CAPEX plans must retain their fiscal period and net/gross basis. A reporter's
   annual extrapolation is not company guidance. A project bill is not a tariff.

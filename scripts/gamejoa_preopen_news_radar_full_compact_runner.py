@@ -2590,6 +2590,12 @@ def reported_issuer_announcement_fact(title: str, body: str) -> str:
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
+    research = market_materiality.broker_earnings_report_terms(title, body)
+    if research:
+        fact = (f"{research['broker']}{korean_topic_particle(research['broker'])} {research['issuer']}의 "
+                f"{research['quarter']}분기 매출을 {research['revenue_display']}원, "
+                f"영업이익을 {research['profit_display']}원으로 예상했다.")
+        return fact if core_sentence_is_complete(fact) else ""
     merger = market_materiality.merger_agreement_terms(title, body)
     if merger:
         source = market_materiality.source_reported_body(body)
@@ -3495,6 +3501,9 @@ def sentence_has_suspect_financial_amount(sentence: str) -> bool:
 
 
 def analyst_research_target(title: str, source: str) -> str:
+    research = market_materiality.broker_earnings_report_terms(title, source)
+    if research:
+        return str(research["issuer"])
     quoted = re.search(r'(?:증권|리서치|research)\s*["\'“‘]\s*([A-Za-z0-9가-힣&·.-]{2,30})(?=[,，\s])', title, re.I)
     if quoted and re.search(rf"{re.escape(quoted.group(1))}(?:의|은|는|에\s*대해)", source):
         return quoted.group(1)

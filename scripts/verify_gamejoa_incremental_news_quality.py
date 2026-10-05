@@ -37,6 +37,8 @@ DECISION_FIXTURE = json.loads((ROOT / "data/gamejoa_decision_focus_fixtures_2026
 DECISION_CASES = {case["id"]: case for case in DECISION_FIXTURE["cases"]}
 NOISE_FIXTURE = json.loads((ROOT / "data/gamejoa_market_noise_fixtures_20261005.json").read_text(encoding="utf-8"))
 NOISE_CASES = {case["id"]: case for case in NOISE_FIXTURE["cases"]}
+BROKER_FIXTURE = json.loads((ROOT / "data/gamejoa_broker_report_fixtures_20261006.json").read_text(encoding="utf-8"))
+BROKER_CASES = {case["id"]: case for case in BROKER_FIXTURE["cases"]}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -78,6 +80,93 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def broker_alert(self, key):
+        case = BROKER_CASES[key]
+        return {**alert(case["title"], case["body"], case["url"]), "published": case["published"]}
+
+    def test_one_broker_report_is_one_event_despite_company_abbreviation_and_publisher(self):
+        first, second = (self.broker_alert(key) for key in BROKER_CASES)
+        self.assertEqual(materiality.source_event_identity(first), materiality.source_event_identity(second))
+        self.assertTrue(materiality.source_event_identity(first).startswith("source_event:v2:broker_earnings:"))
+        now = NOW.replace(day=6, hour=9)
+        with patch.object(radar.base, "kst_now", return_value=now):
+            candidates = [classify(case, now) for case in BROKER_CASES.values()]
+            self.assertTrue(all(candidates))
+            self.assertEqual(len(radar.quality_display_alerts(candidates, 30)), 1)
+
+    def test_broker_duplicate_across_runs_is_quiet_but_new_profit_forecast_survives(self):
+        now = NOW.replace(day=6, hour=9)
+        first, second = (self.broker_alert(key) for key in BROKER_CASES)
+        with tempfile.TemporaryDirectory() as folder, patch.object(telegram, "SEEN_PATH", Path(folder) / "seen.json"), patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            telegram.record_seen_alerts([first], now)
+            fresh, skipped = telegram.filter_previously_seen_alerts([second], now, "live")
+            self.assertFalse(fresh)
+            self.assertEqual(len(skipped), 1)
+            changed = {**second, "source_body": second["source_body"].replace("5890억", "6890억")}
+            fresh, skipped = telegram.filter_previously_seen_alerts([changed], now, "live")
+            self.assertEqual(len(fresh), 1)
+            self.assertFalse(skipped)
+
+    def test_broker_report_new_terms_and_correction_are_not_hidden(self):
+        first = self.broker_alert("broker_report_newsis")
+        identity = materiality.source_event_identity(first)
+        for old, new in (("5890억", "6890억"), ("1조3380억", "1조4380억"), ("3분기", "2분기"),
+                         ("대신", "한화"), ("삼성바이오", "OTHER바이오"), ("200만원", "210만원"),
+                         ("2조4780억", "2조5780억"), ("성장폭 확대", "성장폭 확대 정정")):
+            changed = {**first, "source_title": first["source_title"].replace(old, new), "source_body": first["source_body"].replace(old, new)}
+            with self.subTest(term=old):
+                self.assertNotEqual(materiality.source_event_identity(changed), identity)
+
+    def test_broker_core_names_source_issuer_quarter_and_forecast_not_past_strike(self):
+        now = NOW.replace(day=6, hour=9)
+        for case in BROKER_CASES.values():
+            with self.subTest(case=case["id"]):
+                item = radar.normalize_alert_for_output(classify(case, now))
+                self.assertEqual(item["telegram_core_fact"], "대신증권은 삼성바이오로직스의 3분기 매출을 1조3380억원, 영업이익을 5890억원으로 예상했다.")
+                self.assertFalse(radar.source_core_fact_errors(item))
+                self.assertTrue(radar.core_sentence_is_complete(item["telegram_core_fact"]))
+                self.assertNotIn("지난 5월", item["telegram_core_fact"])
+                self.assertNotIn("공시", item["telegram_core_fact"])
+
+    def test_broker_core_amounts_are_source_bound_not_company_specific_template(self):
+        case = BROKER_CASES["broker_report_newsis"]
+        core = radar.source_headline_event_fact(case["title"].replace("삼성바이오", "OTHER바이오"),
+                                              case["body"].replace("삼성바이오", "OTHER바이오").replace("5890억", "6890억"))
+        self.assertIn("OTHER바이오로직스", core)
+        self.assertIn("6890억원", core)
+        self.assertNotIn("삼성바이오", core)
+
+    def test_company_release_unverified_body_and_missing_date_do_not_claim_broker_identity(self):
+        first = self.broker_alert("broker_report_newsis")
+        self.assertFalse(materiality.source_event_identity({**first, "body_verified": False}))
+        self.assertFalse(materiality.source_event_identity({**first, "published": ""}))
+        self.assertFalse(materiality.broker_earnings_report_terms("삼성바이오로직스, 3분기 실적 공시", first["source_body"]))
+        self.assertFalse(materiality.broker_earnings_report_terms(first["source_title"], first["source_body"].replace("대신증권", "한화증권")))
+
+    def test_broker_copy_forecasts_keep_exact_annual_amounts_and_target(self):
+        for case in BROKER_CASES.values():
+            terms = materiality.broker_earnings_report_terms(case["title"], case["body"], case["published"])
+            self.assertEqual(terms["annual_forecast_won"], ["5531000000000", "2478000000000"])
+            self.assertEqual(terms["current_target_won"], ["2000000"])
+            self.assertEqual(terms["year"], "2026")
+
+    def test_broker_fiscal_year_is_not_replaced_by_publication_year(self):
+        case = BROKER_CASES["broker_report_etoday"]
+        terms = materiality.broker_earnings_report_terms(case["title"], case["body"].replace("2026년", "2027회계연도"), case["published"])
+        self.assertEqual(terms["year"], "2027")
+        unknown = case["body"].replace("2026년", "").replace("올해", "")
+        self.assertEqual(materiality.broker_earnings_report_terms(case["title"], unknown, case["published"])["year"], "")
+        self.assertFalse(materiality.source_event_identity({**self.broker_alert(case["id"]), "source_body": unknown}))
+
+    def test_broker_aliases_are_bound_to_actual_full_source_and_delivery_receipts(self):
+        proofs = json.loads(telegram.VERIFIED_EVENT_ALIAS_PATH.read_text(encoding="utf-8"))["entries"]
+        for case in BROKER_CASES.values():
+            proof = next(row for row in proofs if row["link"] == case["url"])
+            self.assertEqual(proof["source_body_sha256"], case["full_body_sha256"])
+            self.assertEqual(proof["run_id"], case["run_id"])
+            self.assertEqual(proof["message_id"], case["message_id"])
+            self.assertEqual(proof["source_event_identity"], materiality.source_event_identity(self.broker_alert(case["id"])))
+
     def noise_alert(self, key):
         case = NOISE_CASES[key]
         return {**alert(case["title"], case["body"], case["url"]), "published": case["published"]}
@@ -1111,6 +1200,7 @@ if __name__ == "__main__":
               "decision_focus_articles": len(DECISION_CASES), "event_equivalence_run_id": EQUIVALENCE_FIXTURE["run_id"],
               "event_equivalence_articles": len(EQUIVALENCE_CASES), "market_noise_run_id": NOISE_FIXTURE["run_id"],
               "market_noise_articles": len(NOISE_CASES)}
+    output["broker_report_articles"] = len(BROKER_CASES)
     path = ROOT / "out/gamejoa_incremental_news_verification.json"
     path.parent.mkdir(exist_ok=True)
     path.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

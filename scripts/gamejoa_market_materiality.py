@@ -12,7 +12,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 78
+VERSION = 79
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -954,6 +954,47 @@ def merger_agreement_terms(title: str, body: str) -> dict[str, object]:
     return terms
 
 
+def broker_earnings_report_terms(title: str, body: str, published: str = "") -> dict[str, object]:
+    """Bind copies of an attributed earnings report to its numerical terms."""
+    if not re.search(r"證|증권", title) or not re.search(r"[1-4]분기", title):
+        return {}
+    source = source_reported_body(body)
+    actor = re.search(r"([A-Za-z가-힣]{2,20}증권)(?:은|는)(?:\s+\d{1,2}일)?\s+([A-Za-z0-9가-힣&·.-]{2,30})에\s*대해", source)
+    if not actor or actor.group(1) not in title.replace("證", "증권"):
+        return {}
+    money = r"(\d[\d,.\s조억만천백십]*?)\s*원"
+    quarterly = re.compile(r"([1-4])분기\s*매출(?:액)?(?:은|는|이)?[^!?\n]{0,50}?" + money
+                           + r"[^!?\n]{0,40}?영업이익(?:은|는|이)?[^!?\n]{0,50}?" + money)
+    forecast = next((match for sentence in source_sentences(source)
+                     if re.search(r"예상|전망|추정|기록할", sentence)
+                     if (match := quarterly.search(sentence))), None)
+    if not forecast:
+        return {}
+    quarter, revenue, profit = forecast.groups()
+    if f"{quarter}분기" not in title:
+        return {}
+    targets = []
+    for sentence in source_sentences(source):
+        if "목표주가" in sentence:
+            amounts = re.findall(money, sentence)
+            if amounts:
+                targets.append(korean_amount_value(amounts[-1]))
+    annual = re.search(
+        r"(?:올해|20\d{2}년)\s*연간\s*매출액과\s*영업이익은\s*각각\s*"
+        r"(?:전년\s*대비\s*[\d.]+%\s*(?:증가|감소)한\s*)?" + money
+        + r"\s*,\s*(?:[\d.]+%\s*(?:증가|감소)한\s*)?" + money, source,
+    )
+    year = re.search(r"(20\d{2})(?:년\s*|\s*회계연도\s*)(?:연간|[1-4]분기)", source)
+    report_date = published[:10] if re.match(r"20\d{2}-\d{2}-\d{2}", published) else ""
+    return {"broker": actor.group(1), "issuer": actor.group(2), "quarter": int(quarter),
+            "year": year.group(1) if year else report_date[:4] if "올해" in source else "", "report_date": report_date,
+            "revenue_won": korean_amount_value(revenue), "profit_won": korean_amount_value(profit),
+            "annual_forecast_won": [korean_amount_value(value) for value in annual.groups()] if annual else [],
+            "current_target_won": sorted(set(targets)),
+            "explicit_correction": bool(re.search(r"정정|수정\s*보고서|전망치\s*재조정", title + " " + source)),
+            "revenue_display": revenue.strip(), "profit_display": profit.strip()}
+
+
 def source_event_identity(alert: dict) -> str:
     """Identify a sourced action and its terms, not a company-wide theme.
 
@@ -968,6 +1009,11 @@ def source_event_identity(alert: dict) -> str:
         return breadth
     title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
     body = str(alert.get("source_body") or "") if alert.get("body_verified") else ""
+    research = broker_earnings_report_terms(title, body, str(alert.get("published") or ""))
+    if research and research["report_date"] and research["year"]:
+        terms = {key: value for key, value in research.items() if not key.endswith("_display")}
+        digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
+        return f"source_event:v2:broker_earnings:{digest}"
     for event, terms in (("license", licensing_event_terms(title, body)),
                          ("odd_lot_rule", odd_lot_rule_terms(title, body)),
                          ("merger_agreement", merger_agreement_terms(title, body))):
