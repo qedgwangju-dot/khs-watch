@@ -281,5 +281,11 @@ if status_old not in text:
     raise SystemExit("PJM status capacity insertion point not found")
 text = text.replace(status_old, status_new, 1)
 
-text = text.replace(\n    \'            "• 9월 30일 RBP 개시 여부와 일정 변경",\',\n    \'            "• FERC 5개월 정지 후 2027-02-28 효력 예정일·추가 절차 변경",\',\n    1,\n)\n\nPATH.write_text(text, encoding="utf-8")
+text = text.replace(
+    '            "• 9월 30일 RBP 개시 여부와 일정 변경",',
+    '            "• FERC 5개월 정지 후 2027-02-28 효력 예정일·추가 절차 변경",',
+    1,
+)
+
+PATH.write_text(text, encoding="utf-8")
 print("PJM baseline + FERC large-load + capacity-market stress guard inserted")
