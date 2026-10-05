@@ -521,21 +521,22 @@
     "event:2040de76bfabafead1b43434": {
       "first_seen_kst": "2026-10-05T00:49:19+09:00",
       "lanes": {
-        "live": "2026-10-05T23:46:36+09:00",
+        "live": "2026-10-06T00:26:07+09:00",
         "preopen": "2026-10-05T06:34:55+09:00"
       },
-      "last_seen_kst": "2026-10-05T23:46:36+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261005007000009",
+      "last_seen_kst": "2026-10-06T00:26:07+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005030600009",
       "source": "연합뉴스",
-      "source_body_digest": "9a9bb08fbb2b7290a8ce36ff5b74585511efde878bfea35d4db22dcaac80a8cc",
+      "source_body_digest": "840220618969272b86d10a2fd6c64cc233c609c81f378651f50b2775c8e05db6",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:aa91e88deb4913e1fca336ac22b1d785b30fd6cc95162d2cbab9da62eea90220",
+      "source_fact_identity": "source_facts:v1:8a3c5d07a18c213c6791dd061507e0d24efed79a21853976c36a5ba4e78be85b",
       "source_fact_keys": [
-        "source_fact:v1:101beb8ca77fd22358d07232aedbcfe1180d1181fd2e66fdad312ffd77339a4c",
-        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524"
+        "source_fact:v1:6624cad7b24698c569ee8d3b4868c702c904846521b0c9c4c3a9f5e39418ce48",
+        "source_fact:v1:b1d7a515fec2f1ea7bc12b950bb2a5ff3e9fe0b0bb7e8b09d2fee1c51cbd9014",
+        "source_fact:v1:d2140a9342ac80ee3c192396d4f72ca219f62e3fdb4d0f18db0936ac10bfc6bb"
       ],
-      "source_published_kst": "2026-10-05T07:26+09:00",
-      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가 | 연합뉴스"
+      "source_published_kst": "2026-10-05T12:55+09:00",
+      "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
     },
     "event:20559afaa46c8beb4ac5c20d": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -4742,6 +4743,26 @@
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
     },
+    "fact:0207dec4552498e1e34fbe07": {
+      "first_seen_kst": "2026-10-06T00:26:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:26:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:26:07+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261006001008",
+      "source": "서울신문",
+      "source_body_digest": "6c5a768d512bf82b44ded016a8c5b142f7c866cfd9e6cbe21258a9a149c197a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f033eedafbc77f2a5efdac61349d7306897a6016e06fd812927d6c395e006be",
+      "source_fact_keys": [
+        "source_fact:v1:142477101e569035b3be0831da108b187e5277a4990dbdb2498d43728e87c82f",
+        "source_fact:v1:22ea11b2d304aff3c27133ab99868131bb18e67f8d9dd67c4af1a391ff2a97c9",
+        "source_fact:v1:59b05d84967070da897bf976f29a436836a3f13ce042dedf803c09d8fa1d691e",
+        "source_fact:v1:82fc168e4189550d832c4183c47bddeb85ff4108881143615b2114816481f4fe"
+      ],
+      "source_published_kst": "2026-10-05T23:29+09:00",
+      "title": "[단독] 조원태 한진 회장 ‘배임’ 혐의 경찰 수사 본격화"
+    },
     "fact:052f5c30f0ce009c93728733": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
       "lanes": {
@@ -7226,6 +7247,25 @@
       ],
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
+    "fact:e5db3226059475bc40ddc098": {
+      "first_seen_kst": "2026-10-06T00:26:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:26:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:26:07+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005030600009",
+      "source": "연합뉴스",
+      "source_body_digest": "840220618969272b86d10a2fd6c64cc233c609c81f378651f50b2775c8e05db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a3c5d07a18c213c6791dd061507e0d24efed79a21853976c36a5ba4e78be85b",
+      "source_fact_keys": [
+        "source_fact:v1:6624cad7b24698c569ee8d3b4868c702c904846521b0c9c4c3a9f5e39418ce48",
+        "source_fact:v1:b1d7a515fec2f1ea7bc12b950bb2a5ff3e9fe0b0bb7e8b09d2fee1c51cbd9014",
+        "source_fact:v1:d2140a9342ac80ee3c192396d4f72ca219f62e3fdb4d0f18db0936ac10bfc6bb"
+      ],
+      "source_published_kst": "2026-10-05T12:55+09:00",
+      "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
     },
     "fact:e6e8dbcc70bc275d5bd833b1": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
@@ -10966,6 +11006,26 @@
       ],
       "source_published_kst": "2026-10-05T17:22+09:00",
       "title": "\"美中의존 줄이자\"…정부, CPTPP 가입 속도"
+    },
+    "link:39bb170a5155b07ce1ca7f28": {
+      "first_seen_kst": "2026-10-06T00:26:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:26:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:26:07+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261006001008",
+      "source": "서울신문",
+      "source_body_digest": "6c5a768d512bf82b44ded016a8c5b142f7c866cfd9e6cbe21258a9a149c197a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f033eedafbc77f2a5efdac61349d7306897a6016e06fd812927d6c395e006be",
+      "source_fact_keys": [
+        "source_fact:v1:142477101e569035b3be0831da108b187e5277a4990dbdb2498d43728e87c82f",
+        "source_fact:v1:22ea11b2d304aff3c27133ab99868131bb18e67f8d9dd67c4af1a391ff2a97c9",
+        "source_fact:v1:59b05d84967070da897bf976f29a436836a3f13ce042dedf803c09d8fa1d691e",
+        "source_fact:v1:82fc168e4189550d832c4183c47bddeb85ff4108881143615b2114816481f4fe"
+      ],
+      "source_published_kst": "2026-10-05T23:29+09:00",
+      "title": "[단독] 조원태 한진 회장 ‘배임’ 혐의 경찰 수사 본격화"
     },
     "link:39bed155662e113332eb4ddb": {
       "first_seen_kst": "2026-09-18T17:19:16+09:00",
@@ -18057,6 +18117,25 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=06120486645608656",
       "source": "이데일리",
       "title": "[실적리뷰]마이크론, 마진 실망에 '중립'…추가 장기 계약은 긍정적\""
+    },
+    "link:a18f5b1fd4c4a4bd36789ff1": {
+      "first_seen_kst": "2026-10-06T00:26:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:26:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:26:07+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005030600009",
+      "source": "연합뉴스",
+      "source_body_digest": "840220618969272b86d10a2fd6c64cc233c609c81f378651f50b2775c8e05db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a3c5d07a18c213c6791dd061507e0d24efed79a21853976c36a5ba4e78be85b",
+      "source_fact_keys": [
+        "source_fact:v1:6624cad7b24698c569ee8d3b4868c702c904846521b0c9c4c3a9f5e39418ce48",
+        "source_fact:v1:b1d7a515fec2f1ea7bc12b950bb2a5ff3e9fe0b0bb7e8b09d2fee1c51cbd9014",
+        "source_fact:v1:d2140a9342ac80ee3c192396d4f72ca219f62e3fdb4d0f18db0936ac10bfc6bb"
+      ],
+      "source_published_kst": "2026-10-05T12:55+09:00",
+      "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
     },
     "link:a19bf3ea47a2e64feb3842cc": {
       "first_seen_kst": "2026-10-02T15:29:23+09:00",
@@ -29748,6 +29827,25 @@
       "source_published_kst": "2026-10-05T10:18+09:00",
       "title": "고금리 버티는 AI 랠리…\"美10년물 6%땐 랠리 붕괴\""
     },
+    "original:5752f84930d679de8bbbe04a": {
+      "first_seen_kst": "2026-10-06T00:26:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:26:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:26:07+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005030600009",
+      "source": "연합뉴스",
+      "source_body_digest": "840220618969272b86d10a2fd6c64cc233c609c81f378651f50b2775c8e05db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a3c5d07a18c213c6791dd061507e0d24efed79a21853976c36a5ba4e78be85b",
+      "source_fact_keys": [
+        "source_fact:v1:6624cad7b24698c569ee8d3b4868c702c904846521b0c9c4c3a9f5e39418ce48",
+        "source_fact:v1:b1d7a515fec2f1ea7bc12b950bb2a5ff3e9fe0b0bb7e8b09d2fee1c51cbd9014",
+        "source_fact:v1:d2140a9342ac80ee3c192396d4f72ca219f62e3fdb4d0f18db0936ac10bfc6bb"
+      ],
+      "source_published_kst": "2026-10-05T12:55+09:00",
+      "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
+    },
     "original:576d345d46113fa272d65495": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
       "lanes": {
@@ -39516,6 +39614,26 @@
       "source_published_kst": "2026-10-05T15:32+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 10대 바이오 거래 선정"
     },
+    "original:f0b8c4b855be44015fe1bc27": {
+      "first_seen_kst": "2026-10-06T00:26:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:26:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:26:07+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261006001008",
+      "source": "서울신문",
+      "source_body_digest": "6c5a768d512bf82b44ded016a8c5b142f7c866cfd9e6cbe21258a9a149c197a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f033eedafbc77f2a5efdac61349d7306897a6016e06fd812927d6c395e006be",
+      "source_fact_keys": [
+        "source_fact:v1:142477101e569035b3be0831da108b187e5277a4990dbdb2498d43728e87c82f",
+        "source_fact:v1:22ea11b2d304aff3c27133ab99868131bb18e67f8d9dd67c4af1a391ff2a97c9",
+        "source_fact:v1:59b05d84967070da897bf976f29a436836a3f13ce042dedf803c09d8fa1d691e",
+        "source_fact:v1:82fc168e4189550d832c4183c47bddeb85ff4108881143615b2114816481f4fe"
+      ],
+      "source_published_kst": "2026-10-05T23:29+09:00",
+      "title": "[단독] 조원태 한진 회장 ‘배임’ 혐의 경찰 수사 본격화"
+    },
     "original:f107ab0f309b3411bcb4915e": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -42415,6 +42533,25 @@
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
     },
+    "source_fact:323c94b0486e8239339df3e2": {
+      "first_seen_kst": "2026-10-06T00:26:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:26:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:26:07+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005030600009",
+      "source": "연합뉴스",
+      "source_body_digest": "840220618969272b86d10a2fd6c64cc233c609c81f378651f50b2775c8e05db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a3c5d07a18c213c6791dd061507e0d24efed79a21853976c36a5ba4e78be85b",
+      "source_fact_keys": [
+        "source_fact:v1:6624cad7b24698c569ee8d3b4868c702c904846521b0c9c4c3a9f5e39418ce48",
+        "source_fact:v1:b1d7a515fec2f1ea7bc12b950bb2a5ff3e9fe0b0bb7e8b09d2fee1c51cbd9014",
+        "source_fact:v1:d2140a9342ac80ee3c192396d4f72ca219f62e3fdb4d0f18db0936ac10bfc6bb"
+      ],
+      "source_published_kst": "2026-10-05T12:55+09:00",
+      "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
+    },
     "source_fact:329038a20c0b672124de426b": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -42537,6 +42674,26 @@
       ],
       "source_published_kst": "2026-10-05T21:36+09:00",
       "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
+    },
+    "source_fact:34de836bab476a0bbb9a5564": {
+      "first_seen_kst": "2026-10-06T00:26:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:26:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:26:07+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261006001008",
+      "source": "서울신문",
+      "source_body_digest": "6c5a768d512bf82b44ded016a8c5b142f7c866cfd9e6cbe21258a9a149c197a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f033eedafbc77f2a5efdac61349d7306897a6016e06fd812927d6c395e006be",
+      "source_fact_keys": [
+        "source_fact:v1:142477101e569035b3be0831da108b187e5277a4990dbdb2498d43728e87c82f",
+        "source_fact:v1:22ea11b2d304aff3c27133ab99868131bb18e67f8d9dd67c4af1a391ff2a97c9",
+        "source_fact:v1:59b05d84967070da897bf976f29a436836a3f13ce042dedf803c09d8fa1d691e",
+        "source_fact:v1:82fc168e4189550d832c4183c47bddeb85ff4108881143615b2114816481f4fe"
+      ],
+      "source_published_kst": "2026-10-05T23:29+09:00",
+      "title": "[단독] 조원태 한진 회장 ‘배임’ 혐의 경찰 수사 본격화"
     },
     "source_fact:34e23ea7cbc102fe69a61828": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -42843,6 +43000,26 @@
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
+    "source_fact:3c78af6cf542ce0d433d22f0": {
+      "first_seen_kst": "2026-10-06T00:26:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:26:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:26:07+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261006001008",
+      "source": "서울신문",
+      "source_body_digest": "6c5a768d512bf82b44ded016a8c5b142f7c866cfd9e6cbe21258a9a149c197a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f033eedafbc77f2a5efdac61349d7306897a6016e06fd812927d6c395e006be",
+      "source_fact_keys": [
+        "source_fact:v1:142477101e569035b3be0831da108b187e5277a4990dbdb2498d43728e87c82f",
+        "source_fact:v1:22ea11b2d304aff3c27133ab99868131bb18e67f8d9dd67c4af1a391ff2a97c9",
+        "source_fact:v1:59b05d84967070da897bf976f29a436836a3f13ce042dedf803c09d8fa1d691e",
+        "source_fact:v1:82fc168e4189550d832c4183c47bddeb85ff4108881143615b2114816481f4fe"
+      ],
+      "source_published_kst": "2026-10-05T23:29+09:00",
+      "title": "[단독] 조원태 한진 회장 ‘배임’ 혐의 경찰 수사 본격화"
     },
     "source_fact:3c9392f8b7d526a65a8f1179": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -43755,6 +43932,25 @@
       "source_published_kst": "2026-10-05T23:10+09:00",
       "title": "LG전자, 북미서 5GW 대형 AIDC 칠러 장기 공급계약"
     },
+    "source_fact:4dec8f40971941d572160104": {
+      "first_seen_kst": "2026-10-06T00:26:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:26:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:26:07+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005030600009",
+      "source": "연합뉴스",
+      "source_body_digest": "840220618969272b86d10a2fd6c64cc233c609c81f378651f50b2775c8e05db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a3c5d07a18c213c6791dd061507e0d24efed79a21853976c36a5ba4e78be85b",
+      "source_fact_keys": [
+        "source_fact:v1:6624cad7b24698c569ee8d3b4868c702c904846521b0c9c4c3a9f5e39418ce48",
+        "source_fact:v1:b1d7a515fec2f1ea7bc12b950bb2a5ff3e9fe0b0bb7e8b09d2fee1c51cbd9014",
+        "source_fact:v1:d2140a9342ac80ee3c192396d4f72ca219f62e3fdb4d0f18db0936ac10bfc6bb"
+      ],
+      "source_published_kst": "2026-10-05T12:55+09:00",
+      "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
+    },
     "source_fact:4e26ef99c9565c3f747bb60b": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
       "lanes": {
@@ -44108,6 +44304,26 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:5623479559fcc1071ed4b838": {
+      "first_seen_kst": "2026-10-06T00:26:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:26:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:26:07+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261006001008",
+      "source": "서울신문",
+      "source_body_digest": "6c5a768d512bf82b44ded016a8c5b142f7c866cfd9e6cbe21258a9a149c197a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f033eedafbc77f2a5efdac61349d7306897a6016e06fd812927d6c395e006be",
+      "source_fact_keys": [
+        "source_fact:v1:142477101e569035b3be0831da108b187e5277a4990dbdb2498d43728e87c82f",
+        "source_fact:v1:22ea11b2d304aff3c27133ab99868131bb18e67f8d9dd67c4af1a391ff2a97c9",
+        "source_fact:v1:59b05d84967070da897bf976f29a436836a3f13ce042dedf803c09d8fa1d691e",
+        "source_fact:v1:82fc168e4189550d832c4183c47bddeb85ff4108881143615b2114816481f4fe"
+      ],
+      "source_published_kst": "2026-10-05T23:29+09:00",
+      "title": "[단독] 조원태 한진 회장 ‘배임’ 혐의 경찰 수사 본격화"
     },
     "source_fact:5650a74ecd5a12ffd02340ac": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -45826,6 +46042,25 @@
       ],
       "source_published_kst": "2026-10-05T10:59+09:00",
       "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
+    },
+    "source_fact:7501596ff69142caf6af88f9": {
+      "first_seen_kst": "2026-10-06T00:26:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:26:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:26:07+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005030600009",
+      "source": "연합뉴스",
+      "source_body_digest": "840220618969272b86d10a2fd6c64cc233c609c81f378651f50b2775c8e05db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a3c5d07a18c213c6791dd061507e0d24efed79a21853976c36a5ba4e78be85b",
+      "source_fact_keys": [
+        "source_fact:v1:6624cad7b24698c569ee8d3b4868c702c904846521b0c9c4c3a9f5e39418ce48",
+        "source_fact:v1:b1d7a515fec2f1ea7bc12b950bb2a5ff3e9fe0b0bb7e8b09d2fee1c51cbd9014",
+        "source_fact:v1:d2140a9342ac80ee3c192396d4f72ca219f62e3fdb4d0f18db0936ac10bfc6bb"
+      ],
+      "source_published_kst": "2026-10-05T12:55+09:00",
+      "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
     },
     "source_fact:75cfa28522e872ab85e82246": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -51473,6 +51708,26 @@
       ],
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
+    "source_fact:ff09da0ba5a5315656899961": {
+      "first_seen_kst": "2026-10-06T00:26:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:26:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:26:07+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261006001008",
+      "source": "서울신문",
+      "source_body_digest": "6c5a768d512bf82b44ded016a8c5b142f7c866cfd9e6cbe21258a9a149c197a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f033eedafbc77f2a5efdac61349d7306897a6016e06fd812927d6c395e006be",
+      "source_fact_keys": [
+        "source_fact:v1:142477101e569035b3be0831da108b187e5277a4990dbdb2498d43728e87c82f",
+        "source_fact:v1:22ea11b2d304aff3c27133ab99868131bb18e67f8d9dd67c4af1a391ff2a97c9",
+        "source_fact:v1:59b05d84967070da897bf976f29a436836a3f13ce042dedf803c09d8fa1d691e",
+        "source_fact:v1:82fc168e4189550d832c4183c47bddeb85ff4108881143615b2114816481f4fe"
+      ],
+      "source_published_kst": "2026-10-05T23:29+09:00",
+      "title": "[단독] 조원태 한진 회장 ‘배임’ 혐의 경찰 수사 본격화"
     },
     "source_fact:ff38c02364192fce0477a47f": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
@@ -57138,6 +57393,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:18+09:00",
       "title": "고금리 버티는 AI 랠리…\"美10년물 6%땐 랠리 붕괴\""
+    },
+    "title:5752f84930d679de8bbbe04a": {
+      "first_seen_kst": "2026-10-06T00:26:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:26:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:26:07+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005030600009",
+      "source": "연합뉴스",
+      "source_body_digest": "840220618969272b86d10a2fd6c64cc233c609c81f378651f50b2775c8e05db6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8a3c5d07a18c213c6791dd061507e0d24efed79a21853976c36a5ba4e78be85b",
+      "source_fact_keys": [
+        "source_fact:v1:6624cad7b24698c569ee8d3b4868c702c904846521b0c9c4c3a9f5e39418ce48",
+        "source_fact:v1:b1d7a515fec2f1ea7bc12b950bb2a5ff3e9fe0b0bb7e8b09d2fee1c51cbd9014",
+        "source_fact:v1:d2140a9342ac80ee3c192396d4f72ca219f62e3fdb4d0f18db0936ac10bfc6bb"
+      ],
+      "source_published_kst": "2026-10-05T12:55+09:00",
+      "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
     },
     "title:576d345d46113fa272d65495": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
@@ -67032,6 +67306,26 @@
       "source_published_kst": "2026-10-05T15:32+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 10대 바이오 거래 선정"
     },
+    "title:f0b8c4b855be44015fe1bc27": {
+      "first_seen_kst": "2026-10-06T00:26:07+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:26:07+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:26:07+09:00",
+      "link": "https://go.seoul.co.kr/news/newsView.php?id=20261006001008",
+      "source": "서울신문",
+      "source_body_digest": "6c5a768d512bf82b44ded016a8c5b142f7c866cfd9e6cbe21258a9a149c197a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6f033eedafbc77f2a5efdac61349d7306897a6016e06fd812927d6c395e006be",
+      "source_fact_keys": [
+        "source_fact:v1:142477101e569035b3be0831da108b187e5277a4990dbdb2498d43728e87c82f",
+        "source_fact:v1:22ea11b2d304aff3c27133ab99868131bb18e67f8d9dd67c4af1a391ff2a97c9",
+        "source_fact:v1:59b05d84967070da897bf976f29a436836a3f13ce042dedf803c09d8fa1d691e",
+        "source_fact:v1:82fc168e4189550d832c4183c47bddeb85ff4108881143615b2114816481f4fe"
+      ],
+      "source_published_kst": "2026-10-05T23:29+09:00",
+      "title": "[단독] 조원태 한진 회장 ‘배임’ 혐의 경찰 수사 본격화"
+    },
     "title:f107ab0f309b3411bcb4915e": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -68021,5 +68315,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T00:18:21+09:00"
+  "updated_at_kst": "2026-10-06T00:26:07+09:00"
 }
