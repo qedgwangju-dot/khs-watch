@@ -1706,4 +1706,75 @@ third_party_hark = make(
 g, s, c, k = classify(third_party_hark)
 assert g != "figure_ai", ("third-party Hark story must not become Figure AI", g, s, c)
 
+# 38) Project Meridian robotics-advisory lane.
+# Peggy Johnson's Oct-5 selection is now a known advisory baseline: individual
+# consultant, explicitly separate from Agility commercial operations. Future
+# roster changes may alert, but only from official/trusted sources; an actual
+# Agility/Digit military pilot or procurement must upgrade to an execution stage.
+meridian_peggy_baseline = make(
+    "Agility Robotics CEO Peggy Johnson Selected to Join Project Meridian",
+    (
+        "Agility Robotics announced that CEO Peggy Johnson will participate in Project Meridian, "
+        "a Department of War-commissioned MITRE initiative. Johnson participates in an individual "
+        "consultant capacity, separate from Agility's commercial operations, and will contribute "
+        "commercial humanoid robotics experience to future warfare logistics and operational support."
+    ),
+    "Agility Robotics",
+)
+g, s, c, k = classify(meridian_peggy_baseline)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert c.endswith("Project Meridian 휴머노이드 자문 참여 기준선"), c
+assert s < 11, ("Peggy Johnson individual-consultant selection is known baseline", s, c)
+
+meridian_new_robotics_member = make(
+    "Boston Dynamics CEO Jane Example Selected to Join Project Meridian",
+    (
+        "MITRE added Boston Dynamics CEO Jane Example as a new Project Meridian participant "
+        "to advise on humanoid robotics, autonomous logistics and future warfare capability priorities."
+    ),
+    "MITRE",
+)
+g, s, c, k = classify(meridian_new_robotics_member)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert c.endswith("Project Meridian 로봇·AI 자문진 확대"), c
+assert s >= 11, s
+
+meridian_unverified_member = make(
+    "Robotics executive reportedly joins Project Meridian",
+    (
+        "An unnamed blog claims a new robotics executive was selected to join Project Meridian "
+        "for autonomous logistics advice."
+    ),
+    "Unknown Blog",
+)
+g, s, c, k = classify(meridian_unverified_member)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert s < 11, ("unverified Meridian roster rumor must stay silent", s, c)
+
+agility_defense_pilot = make(
+    "Agility Digit begins Department of War logistics pilot",
+    (
+        "Agility Robotics began a military evaluation pilot with the Department of War, "
+        "deploying 20 Digit humanoid robots at a logistics site for operational evaluation."
+    ),
+    "Agility Robotics",
+)
+g, s, c, k = classify(agility_defense_pilot)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert c.endswith("Agility Digit 국방 실증·운용평가"), c
+assert s >= 11, s
+
+agility_defense_contract = make(
+    "Department of War awards Agility Robotics Digit procurement contract",
+    (
+        "The Department of War awarded Agility Robotics a $120 million procurement contract "
+        "for 250 Digit humanoid robots for logistics support."
+    ),
+    "U.S. Department of War",
+)
+g, s, c, k = classify(agility_defense_contract)
+assert g == "us_autonomous_warfare", (g, s, c)
+assert c.endswith("Agility Digit 국방 조달·수주"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
