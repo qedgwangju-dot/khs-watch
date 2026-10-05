@@ -32,10 +32,23 @@ def esc(value):
 def clean_title(title: str, source: str) -> str:
     title = (title or "").strip()
     source = (source or "").strip()
-    for suffix in [source, source.replace("(네이버)", ""), source.replace("(다음)", "")]:
+    candidates = [
+        source,
+        source.replace("(네이버)", ""),
+        source.replace("(다음)", ""),
+        source.replace("Google 뉴스 경유 · ", ""),
+    ]
+    for suffix in candidates:
         suffix = suffix.strip()
         if suffix and title.endswith(" - " + suffix):
-            title = title[: -(len(suffix) + 3)].strip()
+            return title[: -(len(suffix) + 3)].strip()
+
+    # Google News RSS는 같은 원문을 뉴스1 / news1.kr처럼 다른 매체표기로
+    # 붙이는 경우가 있어 마지막 매체 꼬리표는 표시용 제목에서 제거한다.
+    if source.startswith("Google 뉴스 경유") and " - " in title:
+        tail = title.rsplit(" - ", 1)[1].strip()
+        if len(tail) <= 40:
+            return title.rsplit(" - ", 1)[0].strip()
     return title
 
 
