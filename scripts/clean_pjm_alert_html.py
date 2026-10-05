@@ -291,10 +291,98 @@ def main() -> None:
 
     # Keep a blank line before the next major section.
     new_lines = lines[:start] + rebuilt + [""] + lines[end:]
-    output = "\n".join(new_lines).strip() + "\n"
+
+    headings = {
+        "<b>📌 현재 공식 기준</b>",
+        "<b>🏛 연방법안·FERC 비용배분 상태</b>",
+        "<b>⚡ 용량시장 실제 스트레스</b>",
+        "<b>💰 비용 감각</b>",
+        "<b>🔄 숫자 변경</b>",
+        "<b>🆕 핵심 신규 변화</b>",
+        "<b>📊 투자 해석</b>",
+        "<b>💱 환율</b>",
+        "<b>🔗 공식 원문</b>",
+    }
+
+    def sec(heading: str) -> list[str]:
+        try:
+            s = new_lines.index(heading) + 1
+        except ValueError:
+            return []
+        e = len(new_lines)
+        for j in range(s, len(new_lines)):
+            if new_lines[j] in headings:
+                e = j
+                break
+        return [x for x in new_lines[s:e] if x.strip()]
+
+    current = sec("<b>📌 현재 공식 기준</b>")
+    federal = sec("<b>🏛 연방법안·FERC 비용배분 상태</b>")
+    capacity = sec("<b>⚡ 용량시장 실제 스트레스</b>")
+    cost = sec("<b>💰 비용 감각</b>")
+    numeric = sec("<b>🔄 숫자 변경</b>")
+    fresh = sec("<b>🆕 핵심 신규 변화</b>")
+    fx = sec("<b>💱 환율</b>")
+
+    compact = [new_lines[0], "", "<b>🧭 핵심</b>"]
+    if numeric:
+        compact.append(f"• <b>변화</b> │ {html.escape(re.sub(r'<[^>]+>', '', numeric[0]).lstrip('• ').strip())}")
+    elif chosen:
+        compact.append(f"• <b>변화</b> │ {html.escape(translate_title(chosen[0]['title'], chosen[0]['theme']))}")
+    else:
+        compact.append("• <b>변화</b> │ 공식 정책·용량시장 실행 단계 변화")
+    compact.append("• <b>판정</b> │ 부족 MW → 실제 조달 MW → 상업운전 MW 순서로 확인")
+
+    if current:
+        compact += ["", "<b>📌 현재 기준</b>"] + current[:4]
+
+    if federal:
+        hr = next((x for x in federal if "H.R.9340" in re.sub(r"<[^>]+>", "", x)), None)
+        senate = [x for x in federal if any(k in re.sub(r"<[^>]+>", "", x) for k in ("S.5028", "S.5199"))]
+        rm = next((x for x in federal if "RM26-4" in re.sub(r"<[^>]+>", "", x)), None)
+        compact += ["", "<b>🏛️ 법안·FERC</b>"]
+        if hr:
+            compact.append(hr)
+        compact.extend(senate[:2])
+        if rm:
+            compact.append(rm)
+
+    if capacity:
+        compact += ["", "<b>⚡ 용량시장</b>"] + capacity[:4]
+
+    if cost:
+        money = [x for x in cost if "단순상단" in re.sub(r"<[^>]+>", "", x)]
+        if money:
+            compact += ["", "<b>💰 비용 상단</b>"] + money[:2]
+            compact.append("• <i>확정비용이 아니라 RBP 최대가격·기간을 단순 적용한 상단</i>")
+
+    if numeric:
+        compact += ["", "<b>🔄 숫자 변경</b>"] + numeric[:5]
+
+    if fresh:
+        compact += ["", "<b>🆕 신규 확인</b>"] + fresh[:9]
+
+    compact += [
+        "",
+        "<b>📊 투자 의미</b>",
+        "• <b>수혜</b> │ 실제 조달·착공·상업운전으로 내려오는 발전·BESS·송전·변전만 실적 연결",
+        "• <b>실패모드</b> │ 법안·FERC 절차 지연 또는 발전원과 부하 위치 불일치 시 비용·일정 악화",
+    ]
+
+    fx_row = next((x for x in fx if "1달러" in re.sub(r"<[^>]+>", "", x)), None)
+    if fx_row:
+        compact += ["", "<b>💱 환율</b>", fx_row]
+
+    output = "\n".join(compact).strip() + "\n"
     output = output.replace("FERC Decisions", "FERC 결정·공고")
+    visible = html.unescape(re.sub(r"<[^>]+>", "", output))
+    if len(visible) > 3000:
+        raise RuntimeError(f"compact PJM alert too long: {len(visible)} chars")
     ALERT.write_text(output, encoding="utf-8")
-    print(f"pjm_alert_grouped themes={len(chosen)} hidden={hidden} korean_links={len(chosen)}")
+    print(
+        f"pjm_alert_compact chars={len(visible)} themes={len(chosen)} "
+        f"hidden={hidden} korean_links={len(chosen)}"
+    )
 
 
 if __name__ == "__main__":
