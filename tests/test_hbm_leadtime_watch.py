@@ -125,6 +125,18 @@ class LeadTimeParserTests(unittest.TestCase):
         self.assertEqual(signals["HDD"], "HDD 50주 병목 → 공급 완화는 빨라도 2027년 말")
         self.assertNotIn("컨트롤러", signals["NAND(eSSD)"])
 
+    def test_nand_controller_constraint_requires_explicit_same_sentence_causality(self):
+        generic = (
+            "DRAM shortage is constraining some NAND suppliers' ability to support enterprise SSD solutions. "
+            "NAND controller demand remains healthy."
+        )
+        explicit = (
+            "The DRAM shortage is directly constraining enterprise SSD controller shipments at some NAND suppliers."
+        )
+        self.assertFalse(w.extract_nand_controller_direct_constraint(generic))
+        self.assertTrue(w.extract_nand_controller_direct_constraint(explicit))
+
+
     def test_memory_storage_chain_requires_direct_dram_to_essd_causality(self):
         components = w.WEEKLY_004_LOCK["components"]
         signals = w.WEEKLY_004_LOCK["signals"]
@@ -139,6 +151,7 @@ class LeadTimeParserTests(unittest.TestCase):
         self.assertTrue(chain["hdd_relief_is_market_normalization_outlook"])
         self.assertTrue(chain["toshiba_expanded_nearline_line_first_shipment_confirmed"])
         self.assertTrue(chain["toshiba_fy2027_capacity_nearly_double_target"])
+        self.assertTrue(chain["nand_controller_direct_constraint_detection_enabled"])
         self.assertFalse(chain["nand_controller_direct_constraint_confirmed"])
 
     def test_weekly_004_hdd_signal_separates_toshiba_first_shipment_from_market_relief(self):
