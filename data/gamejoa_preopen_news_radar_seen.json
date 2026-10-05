@@ -1426,14 +1426,19 @@
     "event:5bf482bb6ca4c0ebce62ff60": {
       "first_seen_kst": "2026-10-05T08:24:29+09:00",
       "lanes": {
-        "live": "2026-10-05T08:24:29+09:00"
+        "live": "2026-10-05T19:27:09+09:00"
       },
-      "last_seen_kst": "2026-10-05T08:24:29+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01161126645609968",
-      "source": "이데일리",
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168579",
+      "source": "매일경제",
       "source_event_identity": "",
-      "source_published_kst": "2026-10-05T08:01+09:00",
-      "title": "美 의약품 관세 발효…삼성에피스, 테바와 시밀러 동맹 확대 [바이오 주간 결산]"
+      "source_fact_identity": "source_facts:v1:e07889bfbed27633e21bbda8904a1f235d2a2a770da7747258b715d01ad6eeea",
+      "source_fact_keys": [
+        "source_fact:v1:55166455d1f64066fe33f72f61f8a7447810e990a9fca5260d9a03d83ad51ef4",
+        "source_fact:v1:ec876027b462442df5ff194628832174a01762a64a5d3cb8f7635ad41cc998f2"
+      ],
+      "source_published_kst": "2026-10-05T17:22+09:00",
+      "title": "\"美中의존 줄이자\"…정부, CPTPP 가입 속도"
     },
     "event:5c37a6924d91c6f400c105ed": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
@@ -2085,21 +2090,26 @@
     "event:79bc37a30fd7aed2a24a2412": {
       "first_seen_kst": "2026-10-05T10:49:34+09:00",
       "lanes": {
-        "live": "2026-10-05T19:01:25+09:00"
+        "live": "2026-10-05T19:27:09+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:01:25+09:00",
-      "link": "https://www.mt.co.kr/world/2026/10/05/2026100418382167606",
-      "source": "머니투데이",
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.hankyung.com/article/202610053408i",
+      "source": "한국경제",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:bc24dfefb78cdbc5a29906b3c757eff71d48647b359a5204afabcd89c69a0954",
+      "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
       "source_fact_keys": [
-        "source_fact:v1:4155f0c3152bc41bfc2023510c04adace8578b5ca2fc9d94474cb794721592a7",
-        "source_fact:v1:916a1b110dd5a3c21fef629551473ab2dac582d8d507d57b8525127ab16b1ed1",
-        "source_fact:v1:956a5de402b69f90efdc8ff97169934a3bbdfb318e26b1b31c2aace2751f45ea",
-        "source_fact:v1:ea0410d53b3082ccc3cd641f9777cb1b2221f8bd7f7990396b57d9b5cfc6ec72"
+        "source_fact:v1:221168eabcd903b4ced8fa08776f64a93b4523e49d31e606102cba898b653970",
+        "source_fact:v1:242fa138e971100ea5aea4fb6e8d8c24acee30e7179d775dc294e8a298c0e504",
+        "source_fact:v1:4e77d91fe496205b3af40de23dca35437d879eb466bf88498afed579d7b371e0",
+        "source_fact:v1:5a33989342c320b1b50002150bfac05043dbc55a3e5a4b4cd8c6b59038867b67",
+        "source_fact:v1:5b61d0323fad869dc093a813f2eff793a313cc979e213c5ec6494ca5e1d1d14e",
+        "source_fact:v1:6d3c3b6d83589a4e6f2226cc31681ddc779bd587bd2c246c49df3a401d59bc16",
+        "source_fact:v1:7eb7d5b6e40452e59b03d7e1cd3a7f97a28dbe5cd07c5cbb8bd647b7b7c15ffd",
+        "source_fact:v1:c3dbefcc0012460ddb2bb547cc73d48745700a2450a28f63b7ebdbc381af395a",
+        "source_fact:v1:ff7673602c5f5549b5c8e8f08875198d8bd76e6dd464789a84e27a1525b7162b"
       ],
-      "source_published_kst": "2026-10-05T12:00+09:00",
-      "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
+      "source_published_kst": "2026-10-05T13:09+09:00",
+      "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
     "event:7a274c20230f7d17a8a32041": {
       "first_seen_kst": "2026-10-01T04:48:27+09:00",
@@ -4457,6 +4467,30 @@
       "source": "파이낸셜뉴스",
       "title": "우리운용 'WON 전단채플러스액티브 ETF' 순자산 5000억원 돌파"
     },
+    "fact:0800e69c81117652619f8305": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.hankyung.com/article/202610053408i",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
+      "source_fact_keys": [
+        "source_fact:v1:221168eabcd903b4ced8fa08776f64a93b4523e49d31e606102cba898b653970",
+        "source_fact:v1:242fa138e971100ea5aea4fb6e8d8c24acee30e7179d775dc294e8a298c0e504",
+        "source_fact:v1:4e77d91fe496205b3af40de23dca35437d879eb466bf88498afed579d7b371e0",
+        "source_fact:v1:5a33989342c320b1b50002150bfac05043dbc55a3e5a4b4cd8c6b59038867b67",
+        "source_fact:v1:5b61d0323fad869dc093a813f2eff793a313cc979e213c5ec6494ca5e1d1d14e",
+        "source_fact:v1:6d3c3b6d83589a4e6f2226cc31681ddc779bd587bd2c246c49df3a401d59bc16",
+        "source_fact:v1:7eb7d5b6e40452e59b03d7e1cd3a7f97a28dbe5cd07c5cbb8bd647b7b7c15ffd",
+        "source_fact:v1:c3dbefcc0012460ddb2bb547cc73d48745700a2450a28f63b7ebdbc381af395a",
+        "source_fact:v1:ff7673602c5f5549b5c8e8f08875198d8bd76e6dd464789a84e27a1525b7162b"
+      ],
+      "source_published_kst": "2026-10-05T13:09+09:00",
+      "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+    },
     "fact:0ea69da4170487ae2e2a0fdd": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -4477,6 +4511,23 @@
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
     },
+    "fact:15c34bd1a769d14839872339": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168579",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e07889bfbed27633e21bbda8904a1f235d2a2a770da7747258b715d01ad6eeea",
+      "source_fact_keys": [
+        "source_fact:v1:55166455d1f64066fe33f72f61f8a7447810e990a9fca5260d9a03d83ad51ef4",
+        "source_fact:v1:ec876027b462442df5ff194628832174a01762a64a5d3cb8f7635ad41cc998f2"
+      ],
+      "source_published_kst": "2026-10-05T17:22+09:00",
+      "title": "\"美中의존 줄이자\"…정부, CPTPP 가입 속도"
+    },
     "fact:21b572a339e7e5dcf18ba2f4": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -4494,6 +4545,26 @@
       ],
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
+    },
+    "fact:37db517fa4219a41cccd8216": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169746",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4117a22275f2fc6a249a5a1ccdc6a6b07b1c4b279aecac83cdc278847fd497f",
+      "source_fact_keys": [
+        "source_fact:v1:81045bbebddda86abedf3c0efdfd65f6eef003a300aafd8621d43faf1c41d982",
+        "source_fact:v1:888503860b424717f74f5a4ca1af2b095314641aab2dc832e413fe0a35abf664",
+        "source_fact:v1:904a9d97bad3aef99ce587f017f602d98c4601b363cb5c0bb86e84a6600b0870",
+        "source_fact:v1:a4dfc942d0dfe62c8505130992c314d3596f295b68196c275045d38426d56807",
+        "source_fact:v1:f518e61ede13fb1d0117895d8e7b504b0f9eb784f11a7ba719edc207e88394a1"
+      ],
+      "source_published_kst": "2026-10-05T19:06+09:00",
+      "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
     },
     "fact:3e40f5e3d21f980b3e7ffda2": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -7746,6 +7817,23 @@
       "link": "https://www.yna.co.kr/view/MYH20260928005000038",
       "source": "연합뉴스",
       "title": "연휴 뒤 코스피 7,000선 반납…삼전닉스 약세 | 연합뉴스"
+    },
+    "link:39b34d4b060c5653760e42ab": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168579",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e07889bfbed27633e21bbda8904a1f235d2a2a770da7747258b715d01ad6eeea",
+      "source_fact_keys": [
+        "source_fact:v1:55166455d1f64066fe33f72f61f8a7447810e990a9fca5260d9a03d83ad51ef4",
+        "source_fact:v1:ec876027b462442df5ff194628832174a01762a64a5d3cb8f7635ad41cc998f2"
+      ],
+      "source_published_kst": "2026-10-05T17:22+09:00",
+      "title": "\"美中의존 줄이자\"…정부, CPTPP 가입 속도"
     },
     "link:39bed155662e113332eb4ddb": {
       "first_seen_kst": "2026-09-18T17:19:16+09:00",
@@ -12708,6 +12796,30 @@
       "source_published_kst": "2026-10-05T10:29+09:00",
       "title": "英, 결국 中전기차 관세 올린다…EU 압박에 '백기'"
     },
+    "link:94a05bbde3c215ba4f48402e": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.hankyung.com/article/202610053408i",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
+      "source_fact_keys": [
+        "source_fact:v1:221168eabcd903b4ced8fa08776f64a93b4523e49d31e606102cba898b653970",
+        "source_fact:v1:242fa138e971100ea5aea4fb6e8d8c24acee30e7179d775dc294e8a298c0e504",
+        "source_fact:v1:4e77d91fe496205b3af40de23dca35437d879eb466bf88498afed579d7b371e0",
+        "source_fact:v1:5a33989342c320b1b50002150bfac05043dbc55a3e5a4b4cd8c6b59038867b67",
+        "source_fact:v1:5b61d0323fad869dc093a813f2eff793a313cc979e213c5ec6494ca5e1d1d14e",
+        "source_fact:v1:6d3c3b6d83589a4e6f2226cc31681ddc779bd587bd2c246c49df3a401d59bc16",
+        "source_fact:v1:7eb7d5b6e40452e59b03d7e1cd3a7f97a28dbe5cd07c5cbb8bd647b7b7c15ffd",
+        "source_fact:v1:c3dbefcc0012460ddb2bb547cc73d48745700a2450a28f63b7ebdbc381af395a",
+        "source_fact:v1:ff7673602c5f5549b5c8e8f08875198d8bd76e6dd464789a84e27a1525b7162b"
+      ],
+      "source_published_kst": "2026-10-05T13:09+09:00",
+      "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+    },
     "link:94a88b9e151b65bc43d6bdc8": {
       "first_seen_kst": "2026-09-18T14:19:18+09:00",
       "lanes": {
@@ -13192,6 +13304,26 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812599",
       "source": "뉴시스",
       "title": "국산 AI반도체 성능지표, 한전 변전소 AI 영상분석서 첫 검증"
+    },
+    "link:9ae8d995af3ad6aa85d5945c": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169746",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4117a22275f2fc6a249a5a1ccdc6a6b07b1c4b279aecac83cdc278847fd497f",
+      "source_fact_keys": [
+        "source_fact:v1:81045bbebddda86abedf3c0efdfd65f6eef003a300aafd8621d43faf1c41d982",
+        "source_fact:v1:888503860b424717f74f5a4ca1af2b095314641aab2dc832e413fe0a35abf664",
+        "source_fact:v1:904a9d97bad3aef99ce587f017f602d98c4601b363cb5c0bb86e84a6600b0870",
+        "source_fact:v1:a4dfc942d0dfe62c8505130992c314d3596f295b68196c275045d38426d56807",
+        "source_fact:v1:f518e61ede13fb1d0117895d8e7b504b0f9eb784f11a7ba719edc207e88394a1"
+      ],
+      "source_published_kst": "2026-10-05T19:06+09:00",
+      "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
     },
     "link:9aef49af6d56cc8f28fb4699": {
       "first_seen_kst": "2026-09-18T18:04:06+09:00",
@@ -21772,6 +21904,23 @@
       "source": "매일경제",
       "title": "액센츄어, 4분기 실적 가이던스 상회에 사상 최대 주주환원까지 겹쳐 급등세"
     },
+    "original:3a4cabb2963d3ba793759cfc": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168579",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e07889bfbed27633e21bbda8904a1f235d2a2a770da7747258b715d01ad6eeea",
+      "source_fact_keys": [
+        "source_fact:v1:55166455d1f64066fe33f72f61f8a7447810e990a9fca5260d9a03d83ad51ef4",
+        "source_fact:v1:ec876027b462442df5ff194628832174a01762a64a5d3cb8f7635ad41cc998f2"
+      ],
+      "source_published_kst": "2026-10-05T17:22+09:00",
+      "title": "\"美中의존 줄이자\"…정부, CPTPP 가입 속도"
+    },
     "original:3a5b96368c6c9024e2677893": {
       "first_seen_kst": "2026-09-28T16:33:01+09:00",
       "lanes": {
@@ -27096,6 +27245,30 @@
       "source": "이데일리",
       "title": "[바이오맥짚기] '로열티·기술이전·독점권' 모멘텀 장착…헬릭스미스·지놈앤컴퍼니 급등"
     },
+    "original:9e349679abfedba11bfe04f4": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.hankyung.com/article/202610053408i",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
+      "source_fact_keys": [
+        "source_fact:v1:221168eabcd903b4ced8fa08776f64a93b4523e49d31e606102cba898b653970",
+        "source_fact:v1:242fa138e971100ea5aea4fb6e8d8c24acee30e7179d775dc294e8a298c0e504",
+        "source_fact:v1:4e77d91fe496205b3af40de23dca35437d879eb466bf88498afed579d7b371e0",
+        "source_fact:v1:5a33989342c320b1b50002150bfac05043dbc55a3e5a4b4cd8c6b59038867b67",
+        "source_fact:v1:5b61d0323fad869dc093a813f2eff793a313cc979e213c5ec6494ca5e1d1d14e",
+        "source_fact:v1:6d3c3b6d83589a4e6f2226cc31681ddc779bd587bd2c246c49df3a401d59bc16",
+        "source_fact:v1:7eb7d5b6e40452e59b03d7e1cd3a7f97a28dbe5cd07c5cbb8bd647b7b7c15ffd",
+        "source_fact:v1:c3dbefcc0012460ddb2bb547cc73d48745700a2450a28f63b7ebdbc381af395a",
+        "source_fact:v1:ff7673602c5f5549b5c8e8f08875198d8bd76e6dd464789a84e27a1525b7162b"
+      ],
+      "source_published_kst": "2026-10-05T13:09+09:00",
+      "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+    },
     "original:9e599db221a47e917dda48c9": {
       "first_seen_kst": "2026-10-02T03:33:19+09:00",
       "lanes": {
@@ -30485,6 +30658,26 @@
       "source": "연합뉴스",
       "title": "앵커형 중견기업 키운다…10대 초격차 기술 확보에 1조원(종합) | 연합뉴스"
     },
+    "original:db5e4537f7832ac96b5b7279": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169746",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4117a22275f2fc6a249a5a1ccdc6a6b07b1c4b279aecac83cdc278847fd497f",
+      "source_fact_keys": [
+        "source_fact:v1:81045bbebddda86abedf3c0efdfd65f6eef003a300aafd8621d43faf1c41d982",
+        "source_fact:v1:888503860b424717f74f5a4ca1af2b095314641aab2dc832e413fe0a35abf664",
+        "source_fact:v1:904a9d97bad3aef99ce587f017f602d98c4601b363cb5c0bb86e84a6600b0870",
+        "source_fact:v1:a4dfc942d0dfe62c8505130992c314d3596f295b68196c275045d38426d56807",
+        "source_fact:v1:f518e61ede13fb1d0117895d8e7b504b0f9eb784f11a7ba719edc207e88394a1"
+      ],
+      "source_published_kst": "2026-10-05T19:06+09:00",
+      "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
+    },
     "original:db71291067f9e158c86419d8": {
       "first_seen_kst": "2026-10-04T06:09:53+09:00",
       "lanes": {
@@ -32471,6 +32664,26 @@
       "source_published_kst": "2026-10-05T09:06+09:00",
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     },
+    "source_fact:058433f0b3ef20ee2d112bbf": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169746",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4117a22275f2fc6a249a5a1ccdc6a6b07b1c4b279aecac83cdc278847fd497f",
+      "source_fact_keys": [
+        "source_fact:v1:81045bbebddda86abedf3c0efdfd65f6eef003a300aafd8621d43faf1c41d982",
+        "source_fact:v1:888503860b424717f74f5a4ca1af2b095314641aab2dc832e413fe0a35abf664",
+        "source_fact:v1:904a9d97bad3aef99ce587f017f602d98c4601b363cb5c0bb86e84a6600b0870",
+        "source_fact:v1:a4dfc942d0dfe62c8505130992c314d3596f295b68196c275045d38426d56807",
+        "source_fact:v1:f518e61ede13fb1d0117895d8e7b504b0f9eb784f11a7ba719edc207e88394a1"
+      ],
+      "source_published_kst": "2026-10-05T19:06+09:00",
+      "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
+    },
     "source_fact:05a7d464abdbab0149f4b5f3": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -32619,6 +32832,30 @@
       ],
       "source_published_kst": "2026-10-05T18:43+09:00",
       "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
+    },
+    "source_fact:23ce17f0b68f8e91a3d100ab": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.hankyung.com/article/202610053408i",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
+      "source_fact_keys": [
+        "source_fact:v1:221168eabcd903b4ced8fa08776f64a93b4523e49d31e606102cba898b653970",
+        "source_fact:v1:242fa138e971100ea5aea4fb6e8d8c24acee30e7179d775dc294e8a298c0e504",
+        "source_fact:v1:4e77d91fe496205b3af40de23dca35437d879eb466bf88498afed579d7b371e0",
+        "source_fact:v1:5a33989342c320b1b50002150bfac05043dbc55a3e5a4b4cd8c6b59038867b67",
+        "source_fact:v1:5b61d0323fad869dc093a813f2eff793a313cc979e213c5ec6494ca5e1d1d14e",
+        "source_fact:v1:6d3c3b6d83589a4e6f2226cc31681ddc779bd587bd2c246c49df3a401d59bc16",
+        "source_fact:v1:7eb7d5b6e40452e59b03d7e1cd3a7f97a28dbe5cd07c5cbb8bd647b7b7c15ffd",
+        "source_fact:v1:c3dbefcc0012460ddb2bb547cc73d48745700a2450a28f63b7ebdbc381af395a",
+        "source_fact:v1:ff7673602c5f5549b5c8e8f08875198d8bd76e6dd464789a84e27a1525b7162b"
+      ],
+      "source_published_kst": "2026-10-05T13:09+09:00",
+      "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
     "source_fact:273152bf0616d4c45f5797ae": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -32934,6 +33171,50 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:37e4d8c7d12a67fd399780a6": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169746",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4117a22275f2fc6a249a5a1ccdc6a6b07b1c4b279aecac83cdc278847fd497f",
+      "source_fact_keys": [
+        "source_fact:v1:81045bbebddda86abedf3c0efdfd65f6eef003a300aafd8621d43faf1c41d982",
+        "source_fact:v1:888503860b424717f74f5a4ca1af2b095314641aab2dc832e413fe0a35abf664",
+        "source_fact:v1:904a9d97bad3aef99ce587f017f602d98c4601b363cb5c0bb86e84a6600b0870",
+        "source_fact:v1:a4dfc942d0dfe62c8505130992c314d3596f295b68196c275045d38426d56807",
+        "source_fact:v1:f518e61ede13fb1d0117895d8e7b504b0f9eb784f11a7ba719edc207e88394a1"
+      ],
+      "source_published_kst": "2026-10-05T19:06+09:00",
+      "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
+    },
+    "source_fact:3c9392f8b7d526a65a8f1179": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.hankyung.com/article/202610053408i",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
+      "source_fact_keys": [
+        "source_fact:v1:221168eabcd903b4ced8fa08776f64a93b4523e49d31e606102cba898b653970",
+        "source_fact:v1:242fa138e971100ea5aea4fb6e8d8c24acee30e7179d775dc294e8a298c0e504",
+        "source_fact:v1:4e77d91fe496205b3af40de23dca35437d879eb466bf88498afed579d7b371e0",
+        "source_fact:v1:5a33989342c320b1b50002150bfac05043dbc55a3e5a4b4cd8c6b59038867b67",
+        "source_fact:v1:5b61d0323fad869dc093a813f2eff793a313cc979e213c5ec6494ca5e1d1d14e",
+        "source_fact:v1:6d3c3b6d83589a4e6f2226cc31681ddc779bd587bd2c246c49df3a401d59bc16",
+        "source_fact:v1:7eb7d5b6e40452e59b03d7e1cd3a7f97a28dbe5cd07c5cbb8bd647b7b7c15ffd",
+        "source_fact:v1:c3dbefcc0012460ddb2bb547cc73d48745700a2450a28f63b7ebdbc381af395a",
+        "source_fact:v1:ff7673602c5f5549b5c8e8f08875198d8bd76e6dd464789a84e27a1525b7162b"
+      ],
+      "source_published_kst": "2026-10-05T13:09+09:00",
+      "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+    },
     "source_fact:407497ab12a9705701544c3e": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -33210,6 +33491,54 @@
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
     },
+    "source_fact:5650a74ecd5a12ffd02340ac": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.hankyung.com/article/202610053408i",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
+      "source_fact_keys": [
+        "source_fact:v1:221168eabcd903b4ced8fa08776f64a93b4523e49d31e606102cba898b653970",
+        "source_fact:v1:242fa138e971100ea5aea4fb6e8d8c24acee30e7179d775dc294e8a298c0e504",
+        "source_fact:v1:4e77d91fe496205b3af40de23dca35437d879eb466bf88498afed579d7b371e0",
+        "source_fact:v1:5a33989342c320b1b50002150bfac05043dbc55a3e5a4b4cd8c6b59038867b67",
+        "source_fact:v1:5b61d0323fad869dc093a813f2eff793a313cc979e213c5ec6494ca5e1d1d14e",
+        "source_fact:v1:6d3c3b6d83589a4e6f2226cc31681ddc779bd587bd2c246c49df3a401d59bc16",
+        "source_fact:v1:7eb7d5b6e40452e59b03d7e1cd3a7f97a28dbe5cd07c5cbb8bd647b7b7c15ffd",
+        "source_fact:v1:c3dbefcc0012460ddb2bb547cc73d48745700a2450a28f63b7ebdbc381af395a",
+        "source_fact:v1:ff7673602c5f5549b5c8e8f08875198d8bd76e6dd464789a84e27a1525b7162b"
+      ],
+      "source_published_kst": "2026-10-05T13:09+09:00",
+      "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+    },
+    "source_fact:57eb903a9fc63deb7eff1beb": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.hankyung.com/article/202610053408i",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
+      "source_fact_keys": [
+        "source_fact:v1:221168eabcd903b4ced8fa08776f64a93b4523e49d31e606102cba898b653970",
+        "source_fact:v1:242fa138e971100ea5aea4fb6e8d8c24acee30e7179d775dc294e8a298c0e504",
+        "source_fact:v1:4e77d91fe496205b3af40de23dca35437d879eb466bf88498afed579d7b371e0",
+        "source_fact:v1:5a33989342c320b1b50002150bfac05043dbc55a3e5a4b4cd8c6b59038867b67",
+        "source_fact:v1:5b61d0323fad869dc093a813f2eff793a313cc979e213c5ec6494ca5e1d1d14e",
+        "source_fact:v1:6d3c3b6d83589a4e6f2226cc31681ddc779bd587bd2c246c49df3a401d59bc16",
+        "source_fact:v1:7eb7d5b6e40452e59b03d7e1cd3a7f97a28dbe5cd07c5cbb8bd647b7b7c15ffd",
+        "source_fact:v1:c3dbefcc0012460ddb2bb547cc73d48745700a2450a28f63b7ebdbc381af395a",
+        "source_fact:v1:ff7673602c5f5549b5c8e8f08875198d8bd76e6dd464789a84e27a1525b7162b"
+      ],
+      "source_published_kst": "2026-10-05T13:09+09:00",
+      "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+    },
     "source_fact:59ad6f96de77aae6f5d51f79": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -33236,6 +33565,30 @@
       ],
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:5cf71cde662227b7e587b3a8": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.hankyung.com/article/202610053408i",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
+      "source_fact_keys": [
+        "source_fact:v1:221168eabcd903b4ced8fa08776f64a93b4523e49d31e606102cba898b653970",
+        "source_fact:v1:242fa138e971100ea5aea4fb6e8d8c24acee30e7179d775dc294e8a298c0e504",
+        "source_fact:v1:4e77d91fe496205b3af40de23dca35437d879eb466bf88498afed579d7b371e0",
+        "source_fact:v1:5a33989342c320b1b50002150bfac05043dbc55a3e5a4b4cd8c6b59038867b67",
+        "source_fact:v1:5b61d0323fad869dc093a813f2eff793a313cc979e213c5ec6494ca5e1d1d14e",
+        "source_fact:v1:6d3c3b6d83589a4e6f2226cc31681ddc779bd587bd2c246c49df3a401d59bc16",
+        "source_fact:v1:7eb7d5b6e40452e59b03d7e1cd3a7f97a28dbe5cd07c5cbb8bd647b7b7c15ffd",
+        "source_fact:v1:c3dbefcc0012460ddb2bb547cc73d48745700a2450a28f63b7ebdbc381af395a",
+        "source_fact:v1:ff7673602c5f5549b5c8e8f08875198d8bd76e6dd464789a84e27a1525b7162b"
+      ],
+      "source_published_kst": "2026-10-05T13:09+09:00",
+      "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
     "source_fact:60c016f1339616aa91bd6025": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -33289,6 +33642,23 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:66956b78ef72e96c073b7fcc": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168579",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e07889bfbed27633e21bbda8904a1f235d2a2a770da7747258b715d01ad6eeea",
+      "source_fact_keys": [
+        "source_fact:v1:55166455d1f64066fe33f72f61f8a7447810e990a9fca5260d9a03d83ad51ef4",
+        "source_fact:v1:ec876027b462442df5ff194628832174a01762a64a5d3cb8f7635ad41cc998f2"
+      ],
+      "source_published_kst": "2026-10-05T17:22+09:00",
+      "title": "\"美中의존 줄이자\"…정부, CPTPP 가입 속도"
     },
     "source_fact:6917dc00610539ff397cca63": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -33651,6 +34021,23 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:824c68bc40458e108a304013": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168579",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e07889bfbed27633e21bbda8904a1f235d2a2a770da7747258b715d01ad6eeea",
+      "source_fact_keys": [
+        "source_fact:v1:55166455d1f64066fe33f72f61f8a7447810e990a9fca5260d9a03d83ad51ef4",
+        "source_fact:v1:ec876027b462442df5ff194628832174a01762a64a5d3cb8f7635ad41cc998f2"
+      ],
+      "source_published_kst": "2026-10-05T17:22+09:00",
+      "title": "\"美中의존 줄이자\"…정부, CPTPP 가입 속도"
+    },
     "source_fact:84cb41af8ea390df4f18d934": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -33814,6 +34201,30 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "source_fact:97b4f11080169fab72f51c00": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.hankyung.com/article/202610053408i",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
+      "source_fact_keys": [
+        "source_fact:v1:221168eabcd903b4ced8fa08776f64a93b4523e49d31e606102cba898b653970",
+        "source_fact:v1:242fa138e971100ea5aea4fb6e8d8c24acee30e7179d775dc294e8a298c0e504",
+        "source_fact:v1:4e77d91fe496205b3af40de23dca35437d879eb466bf88498afed579d7b371e0",
+        "source_fact:v1:5a33989342c320b1b50002150bfac05043dbc55a3e5a4b4cd8c6b59038867b67",
+        "source_fact:v1:5b61d0323fad869dc093a813f2eff793a313cc979e213c5ec6494ca5e1d1d14e",
+        "source_fact:v1:6d3c3b6d83589a4e6f2226cc31681ddc779bd587bd2c246c49df3a401d59bc16",
+        "source_fact:v1:7eb7d5b6e40452e59b03d7e1cd3a7f97a28dbe5cd07c5cbb8bd647b7b7c15ffd",
+        "source_fact:v1:c3dbefcc0012460ddb2bb547cc73d48745700a2450a28f63b7ebdbc381af395a",
+        "source_fact:v1:ff7673602c5f5549b5c8e8f08875198d8bd76e6dd464789a84e27a1525b7162b"
+      ],
+      "source_published_kst": "2026-10-05T13:09+09:00",
+      "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+    },
     "source_fact:97ffbaca5b5309d56c12a4a3": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -33831,6 +34242,30 @@
       ],
       "source_published_kst": "2026-10-05T12:37+09:00",
       "title": "\"메가·컴포즈 점주들 돈 많이 벌었겠네\"…실상은 달랐다"
+    },
+    "source_fact:9964552c76bfe80f857817ef": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.hankyung.com/article/202610053408i",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
+      "source_fact_keys": [
+        "source_fact:v1:221168eabcd903b4ced8fa08776f64a93b4523e49d31e606102cba898b653970",
+        "source_fact:v1:242fa138e971100ea5aea4fb6e8d8c24acee30e7179d775dc294e8a298c0e504",
+        "source_fact:v1:4e77d91fe496205b3af40de23dca35437d879eb466bf88498afed579d7b371e0",
+        "source_fact:v1:5a33989342c320b1b50002150bfac05043dbc55a3e5a4b4cd8c6b59038867b67",
+        "source_fact:v1:5b61d0323fad869dc093a813f2eff793a313cc979e213c5ec6494ca5e1d1d14e",
+        "source_fact:v1:6d3c3b6d83589a4e6f2226cc31681ddc779bd587bd2c246c49df3a401d59bc16",
+        "source_fact:v1:7eb7d5b6e40452e59b03d7e1cd3a7f97a28dbe5cd07c5cbb8bd647b7b7c15ffd",
+        "source_fact:v1:c3dbefcc0012460ddb2bb547cc73d48745700a2450a28f63b7ebdbc381af395a",
+        "source_fact:v1:ff7673602c5f5549b5c8e8f08875198d8bd76e6dd464789a84e27a1525b7162b"
+      ],
+      "source_published_kst": "2026-10-05T13:09+09:00",
+      "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
     "source_fact:9e6c9614545d6db1412073c4": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -33939,6 +34374,50 @@
       ],
       "source_published_kst": "2026-10-05T18:43+09:00",
       "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
+    },
+    "source_fact:a522e9ea9b7223f45706e8f9": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169746",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4117a22275f2fc6a249a5a1ccdc6a6b07b1c4b279aecac83cdc278847fd497f",
+      "source_fact_keys": [
+        "source_fact:v1:81045bbebddda86abedf3c0efdfd65f6eef003a300aafd8621d43faf1c41d982",
+        "source_fact:v1:888503860b424717f74f5a4ca1af2b095314641aab2dc832e413fe0a35abf664",
+        "source_fact:v1:904a9d97bad3aef99ce587f017f602d98c4601b363cb5c0bb86e84a6600b0870",
+        "source_fact:v1:a4dfc942d0dfe62c8505130992c314d3596f295b68196c275045d38426d56807",
+        "source_fact:v1:f518e61ede13fb1d0117895d8e7b504b0f9eb784f11a7ba719edc207e88394a1"
+      ],
+      "source_published_kst": "2026-10-05T19:06+09:00",
+      "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
+    },
+    "source_fact:a89e859fdbfade7a0eea29db": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.hankyung.com/article/202610053408i",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
+      "source_fact_keys": [
+        "source_fact:v1:221168eabcd903b4ced8fa08776f64a93b4523e49d31e606102cba898b653970",
+        "source_fact:v1:242fa138e971100ea5aea4fb6e8d8c24acee30e7179d775dc294e8a298c0e504",
+        "source_fact:v1:4e77d91fe496205b3af40de23dca35437d879eb466bf88498afed579d7b371e0",
+        "source_fact:v1:5a33989342c320b1b50002150bfac05043dbc55a3e5a4b4cd8c6b59038867b67",
+        "source_fact:v1:5b61d0323fad869dc093a813f2eff793a313cc979e213c5ec6494ca5e1d1d14e",
+        "source_fact:v1:6d3c3b6d83589a4e6f2226cc31681ddc779bd587bd2c246c49df3a401d59bc16",
+        "source_fact:v1:7eb7d5b6e40452e59b03d7e1cd3a7f97a28dbe5cd07c5cbb8bd647b7b7c15ffd",
+        "source_fact:v1:c3dbefcc0012460ddb2bb547cc73d48745700a2450a28f63b7ebdbc381af395a",
+        "source_fact:v1:ff7673602c5f5549b5c8e8f08875198d8bd76e6dd464789a84e27a1525b7162b"
+      ],
+      "source_published_kst": "2026-10-05T13:09+09:00",
+      "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
     "source_fact:aa89c99cedd21c976951e931": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -34089,6 +34568,26 @@
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
     },
+    "source_fact:c5ddc310370e4ee7a6b07c65": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169746",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4117a22275f2fc6a249a5a1ccdc6a6b07b1c4b279aecac83cdc278847fd497f",
+      "source_fact_keys": [
+        "source_fact:v1:81045bbebddda86abedf3c0efdfd65f6eef003a300aafd8621d43faf1c41d982",
+        "source_fact:v1:888503860b424717f74f5a4ca1af2b095314641aab2dc832e413fe0a35abf664",
+        "source_fact:v1:904a9d97bad3aef99ce587f017f602d98c4601b363cb5c0bb86e84a6600b0870",
+        "source_fact:v1:a4dfc942d0dfe62c8505130992c314d3596f295b68196c275045d38426d56807",
+        "source_fact:v1:f518e61ede13fb1d0117895d8e7b504b0f9eb784f11a7ba719edc207e88394a1"
+      ],
+      "source_published_kst": "2026-10-05T19:06+09:00",
+      "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
+    },
     "source_fact:ccc713bf921eaf2b56e33783": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -34105,6 +34604,26 @@
       ],
       "source_published_kst": "2026-10-05T18:18+09:00",
       "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
+    },
+    "source_fact:cd1970ad6dc24d9e7df1d459": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169746",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4117a22275f2fc6a249a5a1ccdc6a6b07b1c4b279aecac83cdc278847fd497f",
+      "source_fact_keys": [
+        "source_fact:v1:81045bbebddda86abedf3c0efdfd65f6eef003a300aafd8621d43faf1c41d982",
+        "source_fact:v1:888503860b424717f74f5a4ca1af2b095314641aab2dc832e413fe0a35abf664",
+        "source_fact:v1:904a9d97bad3aef99ce587f017f602d98c4601b363cb5c0bb86e84a6600b0870",
+        "source_fact:v1:a4dfc942d0dfe62c8505130992c314d3596f295b68196c275045d38426d56807",
+        "source_fact:v1:f518e61ede13fb1d0117895d8e7b504b0f9eb784f11a7ba719edc207e88394a1"
+      ],
+      "source_published_kst": "2026-10-05T19:06+09:00",
+      "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
     },
     "source_fact:d638f09dcb3f97f8336f51de": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -34371,6 +34890,30 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "주담대 금리도 '들썩'…한은 추가 인상에 이자 더 오르나[금리 쇼크③]"
+    },
+    "source_fact:f7b276b67284eab0ec75402a": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.hankyung.com/article/202610053408i",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
+      "source_fact_keys": [
+        "source_fact:v1:221168eabcd903b4ced8fa08776f64a93b4523e49d31e606102cba898b653970",
+        "source_fact:v1:242fa138e971100ea5aea4fb6e8d8c24acee30e7179d775dc294e8a298c0e504",
+        "source_fact:v1:4e77d91fe496205b3af40de23dca35437d879eb466bf88498afed579d7b371e0",
+        "source_fact:v1:5a33989342c320b1b50002150bfac05043dbc55a3e5a4b4cd8c6b59038867b67",
+        "source_fact:v1:5b61d0323fad869dc093a813f2eff793a313cc979e213c5ec6494ca5e1d1d14e",
+        "source_fact:v1:6d3c3b6d83589a4e6f2226cc31681ddc779bd587bd2c246c49df3a401d59bc16",
+        "source_fact:v1:7eb7d5b6e40452e59b03d7e1cd3a7f97a28dbe5cd07c5cbb8bd647b7b7c15ffd",
+        "source_fact:v1:c3dbefcc0012460ddb2bb547cc73d48745700a2450a28f63b7ebdbc381af395a",
+        "source_fact:v1:ff7673602c5f5549b5c8e8f08875198d8bd76e6dd464789a84e27a1525b7162b"
+      ],
+      "source_published_kst": "2026-10-05T13:09+09:00",
+      "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
     "source_fact:f85254f9dcf08a6a2b2e44b9": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -37543,6 +38086,23 @@
       "link": "https://www.mk.co.kr/news/stock/12166503",
       "source": "매일경제",
       "title": "액센츄어, 4분기 실적 가이던스 상회에 사상 최대 주주환원까지 겹쳐 급등세"
+    },
+    "title:3a4cabb2963d3ba793759cfc": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168579",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e07889bfbed27633e21bbda8904a1f235d2a2a770da7747258b715d01ad6eeea",
+      "source_fact_keys": [
+        "source_fact:v1:55166455d1f64066fe33f72f61f8a7447810e990a9fca5260d9a03d83ad51ef4",
+        "source_fact:v1:ec876027b462442df5ff194628832174a01762a64a5d3cb8f7635ad41cc998f2"
+      ],
+      "source_published_kst": "2026-10-05T17:22+09:00",
+      "title": "\"美中의존 줄이자\"…정부, CPTPP 가입 속도"
     },
     "title:3a5b96368c6c9024e2677893": {
       "first_seen_kst": "2026-09-28T16:33:01+09:00",
@@ -42920,6 +43480,30 @@
       "source": "이데일리",
       "title": "[바이오맥짚기] '로열티·기술이전·독점권' 모멘텀 장착…헬릭스미스·지놈앤컴퍼니 급등"
     },
+    "title:9e349679abfedba11bfe04f4": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://www.hankyung.com/article/202610053408i",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
+      "source_fact_keys": [
+        "source_fact:v1:221168eabcd903b4ced8fa08776f64a93b4523e49d31e606102cba898b653970",
+        "source_fact:v1:242fa138e971100ea5aea4fb6e8d8c24acee30e7179d775dc294e8a298c0e504",
+        "source_fact:v1:4e77d91fe496205b3af40de23dca35437d879eb466bf88498afed579d7b371e0",
+        "source_fact:v1:5a33989342c320b1b50002150bfac05043dbc55a3e5a4b4cd8c6b59038867b67",
+        "source_fact:v1:5b61d0323fad869dc093a813f2eff793a313cc979e213c5ec6494ca5e1d1d14e",
+        "source_fact:v1:6d3c3b6d83589a4e6f2226cc31681ddc779bd587bd2c246c49df3a401d59bc16",
+        "source_fact:v1:7eb7d5b6e40452e59b03d7e1cd3a7f97a28dbe5cd07c5cbb8bd647b7b7c15ffd",
+        "source_fact:v1:c3dbefcc0012460ddb2bb547cc73d48745700a2450a28f63b7ebdbc381af395a",
+        "source_fact:v1:ff7673602c5f5549b5c8e8f08875198d8bd76e6dd464789a84e27a1525b7162b"
+      ],
+      "source_published_kst": "2026-10-05T13:09+09:00",
+      "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+    },
     "title:9e599db221a47e917dda48c9": {
       "first_seen_kst": "2026-10-02T03:33:19+09:00",
       "lanes": {
@@ -46363,6 +46947,26 @@
       "source": "연합뉴스",
       "title": "앵커형 중견기업 키운다…10대 초격차 기술 확보에 1조원(종합) | 연합뉴스"
     },
+    "title:db5e4537f7832ac96b5b7279": {
+      "first_seen_kst": "2026-10-05T19:27:09+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:27:09+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:27:09+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169746",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c4117a22275f2fc6a249a5a1ccdc6a6b07b1c4b279aecac83cdc278847fd497f",
+      "source_fact_keys": [
+        "source_fact:v1:81045bbebddda86abedf3c0efdfd65f6eef003a300aafd8621d43faf1c41d982",
+        "source_fact:v1:888503860b424717f74f5a4ca1af2b095314641aab2dc832e413fe0a35abf664",
+        "source_fact:v1:904a9d97bad3aef99ce587f017f602d98c4601b363cb5c0bb86e84a6600b0870",
+        "source_fact:v1:a4dfc942d0dfe62c8505130992c314d3596f295b68196c275045d38426d56807",
+        "source_fact:v1:f518e61ede13fb1d0117895d8e7b504b0f9eb784f11a7ba719edc207e88394a1"
+      ],
+      "source_published_kst": "2026-10-05T19:06+09:00",
+      "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
+    },
     "title:db71291067f9e158c86419d8": {
       "first_seen_kst": "2026-10-04T06:09:53+09:00",
       "lanes": {
@@ -48371,5 +48975,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T19:17:41+09:00"
+  "updated_at_kst": "2026-10-05T19:27:09+09:00"
 }
