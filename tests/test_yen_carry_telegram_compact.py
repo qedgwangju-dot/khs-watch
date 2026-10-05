@@ -130,15 +130,31 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
                 "structural_floor": "JGB 10년 3% 이상 공식 종가",
                 "signals": {},
             },
+            "structural_context": {
+                "mof_split": {
+                    "previous_week": "2026-09-13~09-19",
+                    "latest_week": "2026-09-20~09-26",
+                }
+            },
+        }
+        pending = {
+            "values": {
+                "usdjpy": 157.78799438476562,
+                "usdjpy_15m_pct": 0.0475528012663461,
+                "usdjpy_30m_pct": 0.135172102585158,
+                "usdjpy_60m_pct": 0.21148426524311387,
+            }
         }
         with tempfile.TemporaryDirectory() as td:
             out = pathlib.Path(td)
             body_path = out / "yen_carry_composite_alert.md"
             detail_path = out / "yen_carry_composite_alert_detail.md"
             payload_path = out / "yen_carry_composite_alert.json"
+            pending_path = out / "yen_carry_composite_pending_state.json"
             title_path = out / "yen_carry_composite_alert_title.txt"
             body_path.write_text(body, encoding="utf-8")
             payload_path.write_text(json.dumps(payload), encoding="utf-8")
+            pending_path.write_text(json.dumps(pending), encoding="utf-8")
             title_path.write_text("🟡 엔캐리 복합 수급 알림\n", encoding="utf-8")
 
             with (
@@ -146,6 +162,7 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
                 mock.patch.object(compact, "BODY", body_path),
                 mock.patch.object(compact, "DETAIL", detail_path),
                 mock.patch.object(compact, "PAYLOAD", payload_path),
+                mock.patch.object(compact, "PENDING", pending_path),
                 mock.patch.object(compact, "TITLE", title_path),
             ):
                 self.assertEqual(compact.main(), 0)
@@ -156,7 +173,10 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
             self.assertIn("▶ 현재 방향 │ ↗ 캐리 유지·재구축 쪽으로 기울기", result)
             self.assertIn("▶ 청산 위험 │ 🟡 구조적 취약성·경계", result)
             self.assertIn("▶ 시장 영향 │ 🟡 중립~소폭 우호 / 구조 변동성 주의", result)
+            self.assertIn("USD/JPY 157.788 · 15분 +0.05% · 30분 +0.14% · 60분 +0.21% → 엔화 약세", result)
+            self.assertIn("자료 2026-09-13~09-19·2026-09-20~09-26", result)
             self.assertNotIn("↘ 청산", result)
+            self.assertNotIn("정책·주식 해석", result)
             self.assertNotIn("<b>", result)
             self.assertNotIn("</b>", result)
 
