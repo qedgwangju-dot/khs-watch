@@ -36,6 +36,58 @@ class RubinUltraHBMOptionSetTests(unittest.TestCase):
         merged = w.merge_rubin_ultra_hbm_options(dict(w.RUBIN_ULTRA_HBM_OPTIONS_BASELINE), obs)
         self.assertEqual(w.rubin_ultra_hbm_options_changes(w.RUBIN_ULTRA_HBM_OPTIONS_BASELINE, merged), [])
 
+    def test_damnang_12hi_reversal_is_preference_not_final_candidate_collapse(self):
+        obs = w.extract_rubin_ultra_hbm_options(self.event(
+            "HBM4 will have to go back to 12Hi instead of 8Hi",
+            source="Damnang Research",
+        ))
+        self.assertIsNotNone(obs)
+        self.assertEqual(obs["reported_preferred_option"], "HBM4_12hi")
+        self.assertEqual(obs["previous_reported_preferred_option"], "HBM4_8hi")
+        self.assertEqual(obs["reported_preference_direction"], "8hi_to_12hi_reversal")
+        self.assertEqual(obs["reported_preference_stage"], "single_industry_source")
+        self.assertEqual(obs["reported_preference_support_sources"], ["Damnang"])
+        self.assertNotIn("candidate_options", obs)
+        self.assertNotEqual(obs.get("stage"), "official_final")
+
+    def test_same_damnang_reversal_matches_v2_baseline_and_is_silent(self):
+        old = dict(w.RUBIN_ULTRA_HBM_OPTIONS_BASELINE)
+        obs = w.extract_rubin_ultra_hbm_options(self.event(
+            "HBM4 will have to go back to 12Hi instead of 8Hi",
+            source="Damnang Research",
+        ))
+        new = w.merge_rubin_ultra_hbm_options(old, obs)
+        self.assertEqual(new["candidate_options"], old["candidate_options"])
+        self.assertEqual(new["reported_preferred_option"], "HBM4_12hi")
+        self.assertEqual(w.rubin_ultra_hbm_options_changes(old, new), [])
+
+    def test_independent_trendforce_12hi_signal_upgrades_to_cross_verified(self):
+        old = dict(w.RUBIN_ULTRA_HBM_OPTIONS_BASELINE)
+        event = self.event(
+            "Rubin Ultra HBM4 will revert to 12Hi instead of 8Hi, according to TrendForce checks.",
+            source="TrendForce",
+        )
+        obs = w.extract_rubin_ultra_hbm_options(event)
+        new = w.merge_rubin_ultra_hbm_options(old, obs)
+        self.assertEqual(new["reported_preferred_option"], "HBM4_12hi")
+        self.assertEqual(new["reported_preference_stage"], "cross_verified")
+        self.assertEqual(set(new["reported_preference_support_sources"]), {"Damnang", "TrendForce"})
+        reasons = w.rubin_ultra_hbm_options_changes(old, new)
+        self.assertTrue(any("cross_verified" in x for x in reasons))
+
+    def test_future_flip_back_to_8hi_resets_support_and_alerts(self):
+        old = dict(w.RUBIN_ULTRA_HBM_OPTIONS_BASELINE)
+        obs = w.extract_rubin_ultra_hbm_options(self.event(
+            "Rubin Ultra HBM4 will switch back to 8Hi instead of 12Hi.",
+            source="TrendForce",
+        ))
+        new = w.merge_rubin_ultra_hbm_options(old, obs)
+        self.assertEqual(new["reported_preferred_option"], "HBM4_8hi")
+        self.assertEqual(new["reported_preference_support_sources"], ["TrendForce"])
+        self.assertEqual(new["reported_preference_stage"], "single_industry_source")
+        reasons = w.rubin_ultra_hbm_options_changes(old, new)
+        self.assertTrue(any("HBM4_12hi→HBM4_8hi" in x for x in reasons))
+
     def test_official_final_selection_is_distinct(self):
         obs = w.extract_rubin_ultra_hbm_options(self.event(
             "NVIDIA Rubin Ultra HBM final specification officially selected 8-Hi HBM4E.",

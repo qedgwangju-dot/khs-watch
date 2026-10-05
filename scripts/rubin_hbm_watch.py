@@ -83,15 +83,27 @@ SAMSUNG_HBM4E_THERMAL_BASELINE = {
     "as_of": "2026-10-02",
     "note": "40배는 장비업계의 장기 전망으로 저장하고 삼성 HBM4E 확정 로드맵으로 승격하지 않음. TSMC 공식 CoWoS 로드맵은 2028년 14배, 2029년 14배 초과이며 40배는 SoW-X 별도 구조.",
 }
-RUBIN_ULTRA_HBM_OPTIONS_TRACK_VERSION = 1
+RUBIN_ULTRA_HBM_OPTIONS_TRACK_VERSION = 2
 RUBIN_ULTRA_HBM_OPTIONS_BASELINE = {
     "stage": "reported_evaluation",
     "candidate_options": ["HBM4E_12hi", "HBM4E_8hi", "HBM4_12hi", "HBM4_8hi"],
     "original_reported_option": "HBM4E_12hi",
-    "source": "매일경제",
+    "reported_preferred_option": "HBM4_12hi",
+    "previous_reported_preferred_option": "HBM4_8hi",
+    "reported_preference_direction": "8hi_to_12hi_reversal",
+    "reported_preference_stage": "single_industry_source",
+    "reported_preference_support_sources": ["Damnang"],
+    "reported_preference_source_url": "https://x.com/damnang2/status/2106970721612386304",
+    "reported_preference_as_of": "2026-10-05",
+    "reported_preference_direct_source_kind": "user_provided_x_quote",
+    "reported_preference_direct_fetch_verified": False,
+    "public_context_crosscheck": True,
+    "public_context_source_url": "https://www.trendforce.com/presscenter/news/20260804-13166.html",
+    "official_rubin_context_url": "https://developer.nvidia.com/blog/inside-nvidia-rubin-gpu-architecture-powering-the-era-of-agentic-ai/",
+    "source": "매일경제 + TrendForce + 사용자 제공 Damnang X",
     "source_url": "https://www.mk.co.kr/news/business/12167424",
-    "as_of": "2026-10-02",
-    "note": "Rubin Ultra의 HBM4E/HBM4 8단·12단 선택지 확대는 업계 보도상 평가 단계. NVIDIA 공식 최종 사양·확정 탑재로 승격하지 않음.",
+    "as_of": "2026-10-05",
+    "note": "TrendForce는 Rubin Ultra가 HBM4E 12단·8단, HBM4 12단·8단을 병행 평가하며 최종 사양은 미정이라고 확인. 사용자 제공 Damnang X의 'HBM4 will have to go back to 12Hi instead of 8Hi'는 8단 우세론에서 12단 우세론으로의 단일 업계 신호로 저장하고 NVIDIA 최종 사양으로 승격하지 않음. X 직접 열람 검증은 미완료.",
 }
 SAMSUNG_NEXTGEN_HBM_TRACK_VERSION = 3
 SAMSUNG_NEXTGEN_HBM_BASELINE = {
@@ -287,7 +299,7 @@ QUERIES = [
     ),
     (
         "rubin_hbm_option_set",
-        '("Rubin Ultra" OR 루빈 울트라) (HBM4E OR HBM4) (8-Hi OR 8Hi OR 12-Hi OR 12Hi OR 8단 OR 12단 OR evaluation OR evaluating OR final OR 확정 OR 평가 OR 검토)',
+        '("Rubin Ultra" OR 루빈 울트라 OR Damnang) (HBM4E OR HBM4) (8-Hi OR 8Hi OR 12-Hi OR 12Hi OR 8단 OR 12단) (evaluation OR evaluating OR final OR selected OR back OR revert OR instead OR switch OR 확정 OR 평가 OR 검토 OR 회귀 OR 복귀 OR 전환)',
     ),
     (
         "samsung_hbm4_price",
@@ -365,6 +377,7 @@ TRUSTED_SOURCE_HINTS = (
     "investing.com",
     "thelec", "the elec", "연합뉴스", "yonhap", "매일경제", "mk.co.kr",
     "yahoo finance", "mt newswires", "marketwatch", "investor's business daily", "investors.com",
+    "damnang", "damnang research",
 )
 LOW_VALUE_SOURCE_HINTS = (
     "finance.biggo", "aol", "24/7 wall st", "247wallst", "cryptobriefing",
@@ -434,12 +447,19 @@ def relevant(category: str, text: str) -> bool:
     if category == "rubin_shipments":
         return ("rubin ultra" in low or "nvl576" in low) and any(k in low for k in ("shipment", "ship", "production", "deployment", "order", "ramp", "customer", "출하", "양산", "도입", "주문"))
     if category == "rubin_hbm_option_set":
-        return (
+        has_layers = any(k in low for k in ("8-hi", "8hi", "8단")) and any(k in low for k in ("12-hi", "12hi", "12단"))
+        reversal = (
+            ("hbm4" in low or "hbm4e" in low)
+            and has_layers
+            and any(k in low for k in ("go back", "back to", "revert", "instead of", "switch back", "복귀", "회귀", "대신", "전환"))
+        )
+        regular = (
             ("rubin ultra" in low or "루빈 울트라" in low)
             and ("hbm4e" in low or "hbm4" in low)
             and any(k in low for k in ("8-hi", "8hi", "12-hi", "12hi", "8단", "12단"))
             and any(k in low for k in ("evaluation", "evaluating", "consider", "final", "selected", "평가", "검토", "확정", "선택"))
         )
+        return regular or reversal
     if category == "samsung_hbm4_price":
         return (
             ("samsung" in low or "삼성전자" in low or "삼성" in low)
@@ -1619,11 +1639,58 @@ def samsung_hbm4_price_event(state: dict, reasons: list[str]) -> dict:
     }
 
 
+def _rubin_preference_source_id(event: dict) -> str:
+    source = ((event.get("origin_source") or event.get("source") or "") + " " + (event.get("direct_link") or "")).lower()
+    for token, label in (
+        ("nvidia", "NVIDIA"),
+        ("trendforce", "TrendForce"),
+        ("semianalysis", "SemiAnalysis"),
+        ("damnang", "Damnang"),
+        ("reuters", "Reuters"),
+        ("bloomberg", "Bloomberg"),
+        ("morgan stanley", "Morgan Stanley"),
+    ):
+        if token in source:
+            return label
+    return ""
+
+
 def extract_rubin_ultra_hbm_options(event: dict) -> dict | None:
     text = compact_fact_text(event)
     low = text.lower()
     if not relevant("rubin_hbm_option_set", text):
         return None
+
+    source_low = ((event.get("origin_source") or event.get("source") or "") + " " + text).lower()
+    final_words = any(k in low for k in ("최종 확정", "final specification", "officially selected", "탑재 확정"))
+    evaluation_words = any(k in low for k in ("평가 중", "평가중", "검토", "evaluation", "evaluating", "considering", "선택지를 넓혀"))
+
+    to_12 = bool(
+        re.search(r"(?:go\s+back|back|revert|switch\s+back|복귀|회귀|전환)[^.]{0,80}?(?:12\s*[- ]?(?:hi|단))", low, re.I)
+        or re.search(r"(?:12\s*[- ]?(?:hi|단))[^.]{0,80}?(?:instead\s+of|rather\s+than|대신)[^.]{0,60}?(?:8\s*[- ]?(?:hi|단))", low, re.I)
+    )
+    to_8 = bool(
+        re.search(r"(?:go\s+back|back|revert|switch\s+back|복귀|회귀|전환)[^.]{0,80}?(?:8\s*[- ]?(?:hi|단))", low, re.I)
+        or re.search(r"(?:8\s*[- ]?(?:hi|단))[^.]{0,80}?(?:instead\s+of|rather\s+than|대신)[^.]{0,60}?(?:12\s*[- ]?(?:hi|단))", low, re.I)
+    )
+    directional = to_12 ^ to_8
+
+    obs: dict = {}
+    if directional:
+        product = "HBM4E" if "hbm4e" in low else "HBM4"
+        target_layers = 12 if to_12 else 8
+        prior_layers = 8 if to_12 else 12
+        obs.update({
+            "reported_preferred_option": f"{product}_{target_layers}hi",
+            "previous_reported_preferred_option": f"{product}_{prior_layers}hi",
+            "reported_preference_direction": f"{prior_layers}hi_to_{target_layers}hi_reversal",
+            "reported_preference_stage": "single_industry_source",
+            "reported_preference_source_url": event.get("direct_link") or "",
+            "reported_preference_as_of": (event.get("published_at_kst") or "")[:10],
+        })
+        sid = _rubin_preference_source_id(event)
+        if sid:
+            obs["reported_preference_support_sources"] = [sid]
 
     options: list[str] = []
     for product in ("hbm4e", "hbm4"):
@@ -1636,31 +1703,59 @@ def extract_rubin_ultra_hbm_options(event: dict) -> dict | None:
             if any(re.search(p, low, re.I) for p in pats):
                 options.append(f"{product.upper()}_{layers}hi")
 
-    if not options:
+    # A short directional post ("back to 12Hi instead of 8Hi") changes the
+    # reported preference, not the full candidate set. Keep all existing
+    # candidates until an evaluation/final-spec source explicitly changes them.
+    if options and (evaluation_words or final_words or not directional):
+        obs["candidate_options"] = sorted(set(options))
+
+    if final_words:
+        obs["stage"] = "official_final" if "nvidia" in source_low else "reported_final"
+        if obs.get("candidate_options") and len(obs["candidate_options"]) == 1:
+            obs["reported_preferred_option"] = obs["candidate_options"][0]
+            obs["reported_preference_stage"] = "official_final" if "nvidia" in source_low else "reported_final"
+    elif evaluation_words:
+        obs["stage"] = "reported_evaluation"
+    elif not directional:
+        obs["stage"] = "reported_options"
+
+    if not obs:
         return None
-
-    source_low = ((event.get("origin_source") or event.get("source") or "") + " " + text).lower()
-    if any(k in low for k in ("최종 확정", "final specification", "officially selected", "탑재 확정")):
-        stage = "official_final" if "nvidia" in source_low else "reported_final"
-    elif any(k in low for k in ("평가 중", "평가중", "검토", "evaluation", "evaluating", "considering", "선택지를 넓혀")):
-        stage = "reported_evaluation"
-    else:
-        stage = "reported_options"
-
-    return {
-        "stage": stage,
-        "candidate_options": sorted(set(options)),
+    obs.update({
         "source": event.get("origin_source") or event.get("source") or "",
         "source_url": event.get("direct_link") or "",
         "observed_at": event.get("published_at_kst") or "",
-    }
+    })
+    return obs
 
 
 def merge_rubin_ultra_hbm_options(old: dict, obs: dict) -> dict:
     out = dict(old or {})
+    old_preference = out.get("reported_preferred_option")
+    new_preference = obs.get("reported_preferred_option")
     for key, value in obs.items():
+        if key == "reported_preference_support_sources":
+            continue
         if value not in (None, ""):
             out[key] = value
+
+    if new_preference:
+        new_sources = set(obs.get("reported_preference_support_sources") or [])
+        if old_preference and new_preference != old_preference:
+            out["reported_preference_support_sources"] = sorted(new_sources)
+        else:
+            out["reported_preference_support_sources"] = sorted(
+                set(out.get("reported_preference_support_sources") or []) | new_sources
+            )
+
+        sources = set(out.get("reported_preference_support_sources") or [])
+        if out.get("stage") == "official_final" and "NVIDIA" in sources:
+            out["reported_preference_stage"] = "official_final"
+        elif len(sources) >= 2:
+            out["reported_preference_stage"] = "cross_verified"
+        elif sources:
+            out["reported_preference_stage"] = "single_industry_source"
+
     return out
 
 
@@ -1673,27 +1768,46 @@ def rubin_ultra_hbm_options_changes(old: dict, new: dict) -> list[str]:
     new_opts = sorted(new.get("candidate_options") or [])
     if old_opts != new_opts and new_opts:
         reasons.append("HBM 후보 조합 " + ", ".join(old_opts or ["미확인"]) + "→" + ", ".join(new_opts))
+
+    a, b = old.get("reported_preferred_option"), new.get("reported_preferred_option")
+    if a != b and b:
+        reasons.append(f"업계 우세 신호 {a or '미확인'}→{b}")
+
+    a, b = old.get("reported_preference_stage"), new.get("reported_preference_stage")
+    if a != b and b:
+        reasons.append(f"우세 신호 검증 단계 {a or '미확인'}→{b}")
+
+    a, b = old.get("reported_preference_direction"), new.get("reported_preference_direction")
+    if a != b and b:
+        reasons.append(f"적층 방향 변화 {a or '미확인'}→{b}")
+
+    old_sources = set(old.get("reported_preference_support_sources") or [])
+    new_sources = set(new.get("reported_preference_support_sources") or [])
+    added = sorted(new_sources - old_sources)
+    if added and len(new_sources) >= 2:
+        reasons.append("우세 신호 독립 출처 추가: " + ", ".join(added))
     return reasons
 
 
 def rubin_ultra_hbm_options_event(state: dict, reasons: list[str]) -> dict:
     final = state.get("stage") == "official_final"
+    preference_stage = state.get("reported_preference_stage") or "미확인"
     return {
         "category": "rubin_hbm_option_set",
-        "fact_key": "rubin_hbm_options_" + (state.get("stage") or "state") + "_" + (state.get("observed_at") or state.get("as_of") or ""),
-        "headline_ko": "Rubin Ultra HBM4/HBM4E 후보 조합 변화",
+        "fact_key": "rubin_hbm_options_" + (state.get("stage") or "state") + "_" + (state.get("reported_preferred_option") or "no_preference") + "_" + (state.get("observed_at") or state.get("reported_preference_as_of") or state.get("as_of") or ""),
+        "headline_ko": "Rubin Ultra HBM4/HBM4E 후보·8단↔12단 방향 변화",
         "fact_bullets": reasons,
         "verdict": (
             "NVIDIA 공식 최종 HBM 조합으로 확인됐습니다. GPU당 HBM 용량·스택 수·공급사 물량을 다시 계산해야 합니다."
             if final else
-            "현재는 업계 보도상 평가 후보입니다. 8단·12단, HBM4·HBM4E 선택지 확대를 NVIDIA 최종 사양으로 승격하지 않습니다."
+            f"현재 우세 신호 검증 단계는 {preference_stage}입니다. 8단↔12단 방향 전환 신호와 후보군을 추적하되 NVIDIA 공식 최종 사양으로 승격하지 않습니다."
         ),
-        "verification": "상태값 변화",
-        "quality": "공식자료·신뢰보도 교차",
+        "verification": "후보군·우세 신호·공식 최종사양 분리",
+        "quality": "공식자료·신뢰보도·단일 업계신호 분리",
         "origin_source": state.get("source") or "",
         "source": state.get("source") or "",
-        "published_at_kst": state.get("observed_at") or state.get("as_of") or "",
-        "direct_link": state.get("source_url") or "",
+        "published_at_kst": state.get("observed_at") or state.get("reported_preference_as_of") or state.get("as_of") or "",
+        "direct_link": state.get("reported_preference_source_url") or state.get("source_url") or "",
         "article_text": "",
         "rubin_hbm_options_state": state,
     }
@@ -2774,7 +2888,17 @@ def build_alert(now: datetime, events: list[dict], fx: dict) -> str:
                 rs = e["rubin_hbm_options_state"]
                 lines.append(f"• 단계: {rs.get('stage') or '미확인'}")
                 lines.append("• 후보 조합: " + ", ".join(rs.get("candidate_options") or ["미확인"]))
-                lines.append("• 구분: 업계 평가 후보와 NVIDIA 공식 최종 사양을 분리합니다.")
+                if rs.get("reported_preferred_option"):
+                    lines.append(
+                        f"• 현재 업계 우세 신호: {rs.get('previous_reported_preferred_option') or '미확인'}→"
+                        f"{rs.get('reported_preferred_option')} · {rs.get('reported_preference_stage') or '미확인'}"
+                    )
+                    lines.append(
+                        "• 우세 신호 근거: " + ", ".join(rs.get("reported_preference_support_sources") or ["미확인"])
+                    )
+                    if rs.get("reported_preference_direct_fetch_verified") is False:
+                        lines.append("• X 직접 열람: 미검증 — 사용자 제공 원문은 기준선으로만 저장하고 독립 출처 확인 전 공식 사양으로 승격하지 않습니다.")
+                lines.append("• 구분: 후보군, 단일 업계 우세 신호, 교차검증 우세 신호, NVIDIA 공식 최종 사양을 서로 분리합니다.")
             if category == "samsung_hbm4_price" and e.get("samsung_hbm4_price_state"):
                 ss = e["samsung_hbm4_price_state"]
                 band = ss.get("offered_price_band")
