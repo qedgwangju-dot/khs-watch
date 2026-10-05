@@ -17,7 +17,7 @@ PENDING = OUT / "ai_dc_800v_power_architecture_pending_state.json"
 ALERT = OUT / "ai_dc_800v_power_architecture_alert.txt"
 STATUS = OUT / "ai_dc_800v_power_architecture_status.md"
 
-FORMAT_VERSION = 2
+FORMAT_VERSION = 3
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
 
 NVIDIA_BLOG = "https://blogs.nvidia.com/blog/800-vdc-power-architecture-ai-factory/"
@@ -173,13 +173,11 @@ def snapshot(texts: dict[str, str]) -> dict:
                 "system_scope": contains(texts, "vertiv_guide", "conversion", "distribution", "protection"),
             },
             "Eaton": {
-                "stage": (
-                    "800 VDC 공식 참조 아키텍처·NVIDIA 생태계 참여"
-                    if "Eaton" in n_arch else "공식 Eaton 기준선·NVIDIA 재확인 필요"
-                ),
+                "stage": "800 VDC 공식 참조 아키텍처",
                 "standards_signal": None,
                 "legacy_ac_bridge": None,
-                "source_mode": "Eaton 공식 2025 참조 아키텍처 기준값 + NVIDIA 공식 파트너 목록 실시간 교차확인",
+                "nvidia_current_partner_visible": True if "Eaton" in n_arch else False,
+                "source_mode": "Eaton 공식 2025 참조 아키텍처 기준값 고정 확인 · NVIDIA 공식 파트너 목록은 보조 교차확인",
             },
             "Hitachi Energy": {
                 "stage": "Vera Rubin DSX 통합·시뮬레이션" if "800" in hitachi and "DSX" in hitachi else "확인 불가",
