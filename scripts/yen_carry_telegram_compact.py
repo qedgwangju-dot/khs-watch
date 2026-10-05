@@ -105,7 +105,21 @@ def levels(payload: dict) -> tuple[int, int]:
     return unwind, rebuild
 
 
-def _active_direction_scores(payload: dict) -> tuple[int, int]:
+def _live_fx_bias(pending: dict | None) -> str:
+    values = (pending or {}).get("values") or {}
+    try:
+        m30 = float(values.get("usdjpy_30m_pct"))
+        m60 = float(values.get("usdjpy_60m_pct"))
+    except (TypeError, ValueError):
+        return "unknown"
+    if max(m30, m60) >= 0.10:
+        return "carry"
+    if min(m30, m60) <= -0.10:
+        return "unwind"
+    return "flat"
+
+
+def _active_direction_scores(payload: dict, pending: dict | None = None) -> tuple[int, int]:
     """Score only *current directional* evidence.
 
     Structural vulnerability (JGB10 >=3%, CFTC shorts, MOF repatriation,
@@ -121,8 +135,13 @@ def _active_direction_scores(payload: dict) -> tuple[int, int]:
     unwind_score = 0
     carry_score = 0
 
-    if evidence.get("unwind::USD/JPY 급락·엔화 급등"):
+    fx_bias = _live_fx_bias(pending)
+    yen_shock = bool(evidence.get("unwind::USD/JPY 급락·엔화 급등"))
+    if yen_shock:
         unwind_score += 4
+    elif fx_bias == "unwind":
+        unwind_score += 2
+
     if evidence.get("unwind::미·일 2년 금리차 축소"):
         unwind_score += 3
     if evidence.get("unwind::일본 단기금리 상승"):
@@ -134,19 +153,21 @@ def _active_direction_scores(payload: dict) -> tuple[int, int]:
     yen_weak_direction = bool(evidence.get("rebuild::USD/JPY 완만한 상승 방향"))
     if yen_weak_fast:
         carry_score += 4
-    elif yen_weak_direction:
+    elif fx_bias == "carry":
+        carry_score += 2
+    elif fx_bias == "unknown" and yen_weak_direction:
         carry_score += 2
 
     if evidence.get("rebuild::미·일 2년 금리차 재확대"):
         carry_score += 3
-    elif evidence.get("rebuild::미·일 2년 금리차 여전히 넓음") and (yen_weak_fast or yen_weak_direction):
+    elif evidence.get("rebuild::미·일 2년 금리차 여전히 넓음") and carry_score > 0:
         # A wide spread is a carry cushion, not a direction by itself.
         carry_score += 1
 
     return unwind_score, carry_score
 
 
-def direction_call(payload: dict) -> tuple[str, str, str]:
+def direction_call(payload: dict, pending: dict | None = None) -> tuple[str, str, str]:
     """Return risk-colour title, current direction and risk-asset implication.
 
     Risk colour and direction are deliberately separate:
@@ -157,7 +178,7 @@ def direction_call(payload: dict) -> tuple[str, str, str]:
     refined = payload.get("refined_risk") or {}
     risk_level = int(refined.get("level", verdict.get("unwind_level", 0)) or 0)
     structural_floor = bool(refined.get("structural_floor"))
-    unwind_score, carry_score = _active_direction_scores(payload)
+    unwind_score, carry_score = _active_direction_scores(payload, pending)
     risk_emoji = {0: "🟢", 1: "🟡", 2: "🟠", 3: "🔴"}.get(min(risk_level, 3), "🟡")
 
     if unwind_score >= 4 and carry_score >= 4:
@@ -272,9 +293,11 @@ def live_fx_line(pending: dict) -> str | None:
         m60 = float(values.get("usdjpy_60m_pct"))
     except (TypeError, ValueError):
         return None
-    if m60 > 0 or m30 > 0:
+    if max(abs(m30), abs(m60)) < 0.10:
+        direction = "사실상 보합"
+    elif max(m30, m60) >= 0.10:
         direction = "엔화 약세"
-    elif m60 < 0 or m30 < 0:
+    elif min(m30, m60) <= -0.10:
         direction = "엔화 강세"
     else:
         direction = "보합"
@@ -370,7 +393,7 @@ def main() -> int:
     pending = load_json(PENDING)
     preamble, sections = split_sections(original)
 
-    title, direction, risk_asset = direction_call(payload)
+    title, direction, risk_asset = direction_call(payload, pending)
     TITLE.write_text(title + "\n", encoding="utf-8")
     unwind_text = unwind_risk_line(payload, sections)
 
