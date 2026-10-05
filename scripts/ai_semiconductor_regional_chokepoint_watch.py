@@ -180,12 +180,12 @@ TIER1_SOURCE_MARKERS = (
 
 STRUCTURAL_PATTERNS = {
     "regulation": (
-        r"export control", r"export restriction", r"ban", r"restriction",
+        r"export control", r"export restriction", r"\bban\b", r"restriction",
         r"covered list", r"national security", r"sanction", r"license requirement",
         r"수출.?통제", r"수출.?규제", r"규제", r"금지", r"제재",
     ),
     "disruption": (
-        r"earthquake", r"power outage", r"blackout", r"fire", r"halt(?:ed|s)? production",
+        r"earthquake", r"power outage", r"blackout", r"\bfire\b", r"halt(?:ed|s)? production",
         r"production halt", r"shutdown", r"disruption", r"停产", r"地震",
         r"지진", r"정전", r"화재", r"생산.?중단", r"가동.?중단",
     ),
@@ -214,9 +214,9 @@ ROUTINE_NOISE = (
 )
 
 CRITICAL_FUNCTION_PATTERNS = (
-    r"2nm", r"3nm", r"coWoS", r"advanced packaging", r"3dfabric", r"focos",
-    r"hbm4", r"hbm", r"tc bonder", r"optical transceiver", r"800g", r"1\.6t", r"3\.2t",
-    r"coater.?developer", r"euv", r"semiconductor tester", r"memory tester", r"dicing", r"grinding",
+    r"\b2nm\b", r"\b3nm\b", r"\bcoWoS\b", r"advanced packaging", r"3dfabric", r"focos",
+    r"\bhbm4\b", r"\bhbm\b", r"tc bonder", r"optical transceiver", r"\b800g\b", r"\b1\.6t\b", r"\b3\.2t\b",
+    r"coater.?developer", r"\beuv\b", r"semiconductor tester", r"memory tester", r"dicing", r"grinding",
     r"mask inspection", r"silicon wafer", r"photoresist",
     r"첨단.?패키징", r"선단", r"에이치비엠", r"광트랜시버", r"테스터", r"웨이퍼", r"포토레지스트",
 )
