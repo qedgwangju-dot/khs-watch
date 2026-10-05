@@ -1678,6 +1678,7 @@ def semantic_policy_event_key(item: dict) -> str:
             for key in ("title", "description", "link", "source")
         )
     ).lower()
+    # SIF stages: establishment -> authority/funding -> report; replayed coverage stays deduped.
     sif_terms = ("super intelligence force", "superintelligence force")
     if any(term in text for term in sif_terms):
         if any(term in text for term in ("final report", "120-day report", "120 day report", "recommendations submitted", "recommendations released")):
