@@ -134,6 +134,33 @@ class SolidigmIPOTests(unittest.TestCase):
         reasons = w.manufacturing_material_changes(old, new)
         self.assertTrue(any("생산능력" in x and "최초 공개" in x for x in reasons))
 
+    def test_quality_failure_is_material(self):
+        old = dict(w.MANUFACTURING_BASELINE)
+        new = dict(old, quality_issue_status="reported")
+        reasons = w.manufacturing_material_changes(old, new)
+        self.assertTrue(any("품질 상태" in x and "이슈 발생" in x for x in reasons))
+
+    def test_customer_qualification_pass_is_material(self):
+        old = dict(w.MANUFACTURING_BASELINE)
+        new = dict(old, customer_qualification_stage="passed")
+        reasons = w.manufacturing_material_changes(old, new)
+        self.assertTrue(any("고객 검증 단계" in x and "통과" in x for x in reasons))
+
+    def test_explicit_quality_failure_parser(self):
+        item = {
+            "title": "Solidigm Taiwan data center SSD ODM qualification update",
+            "description": "",
+            "source": "Solidigm",
+            "published_at_kst": "2026-11-02T10:00:00+09:00",
+            "direct_link": "https://www.solidigm.com/example",
+        }
+        data = w.manufacturing_patch_from_text(
+            item,
+            "Solidigm data center SSD ODM manufacturing site reports a quality issue and customer qualification failed.",
+        )
+        self.assertEqual(data["quality_issue_status"], "reported")
+        self.assertEqual(data["customer_qualification_stage"], "failed")
+
     def test_generic_ai_ssd_business_text_is_not_use_of_proceeds(self):
         item = {
             "title": "Solidigm weighs IPO",

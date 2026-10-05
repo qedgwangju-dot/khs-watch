@@ -21,7 +21,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 STATE = ROOT / "data" / "solidigm_ipo_watch_state.json"
 ALERT = ROOT / "out" / "solidigm_ipo_alert.html"
 UA = "Mozilla/5.0 (compatible; khs-watch/2.0; +https://github.com/qedgwangju-dot/khs-watch)"
-WATCH_VERSION = 2
+WATCH_VERSION = 3
 CANONICAL_REUTERS_URL = "https://www.reuters.com/world/sk-hynixs-solidigm-weighs-ipo-that-could-value-the-unit-up-150-billion-sources-2026-09-25/"
 SOLIDIGM_DMS_URL = "https://www.solidigm.com/products/document-management-system.html"
 MANUFACTURING_BASELINE = {
@@ -36,6 +36,8 @@ MANUFACTURING_BASELINE = {
     "reported_manufacturing_model": "ODM",
     "reported_ship_start_month": "2026-12",
     "reported_quality_standard_unchanged": True,
+    "quality_issue_status": "not_reported",
+    "customer_qualification_stage": "not_reported",
     "reported_existing_odm_partners": ["PTI", "Pegatron"],
     "pti_partnership_officially_supported": True,
     "pegatron_partnership_evidence": "reported",
@@ -441,6 +443,19 @@ def manufacturing_patch_from_text(event, text):
     if re.search(r"(?:same|existing)[^.]{0,50}?(?:quality|terms|standard)|기존[^.]{0,40}?(?:품질|조건|표준)[^.]{0,40}?(?:유지|동일)", text, re.I):
         patch["reported_quality_standard_unchanged"] = True
 
+    # Failure-mode triggers: only explicit statements may move these fields.
+    if re.search(r"(?:quality|reliability|qualification)[^.]{0,80}?(?:issue|problem|failure|failed|defect)|품질[^.]{0,60}?(?:이슈|문제|불량|실패)|신뢰성[^.]{0,60}?(?:이슈|문제|실패)|검증[^.]{0,40}?(?:실패|탈락)", text, re.I):
+        patch["quality_issue_status"] = "reported"
+    if re.search(r"(?:quality|reliability)[^.]{0,80}?(?:issue|problem)[^.]{0,80}?(?:resolved|fixed|cleared)|(?:품질|신뢰성)[^.]{0,60}?(?:이슈|문제)[^.]{0,60}?(?:해결|해소|개선)", text, re.I):
+        patch["quality_issue_status"] = "resolved"
+
+    if re.search(r"(?:customer\s*)?(?:qualification|validation)[^.]{0,60}?(?:failed|rejected)|고객[^.]{0,40}?(?:인증|검증)[^.]{0,40}?(?:실패|탈락)", text, re.I):
+        patch["customer_qualification_stage"] = "failed"
+    elif re.search(r"(?:customer\s*)?(?:qualification|validation)[^.]{0,60}?(?:passed|completed|approved)|고객[^.]{0,40}?(?:인증|검증)[^.]{0,40}?(?:통과|완료|승인)", text, re.I):
+        patch["customer_qualification_stage"] = "passed"
+    elif re.search(r"(?:customer\s*)?(?:qualification|validation)[^.]{0,60}?(?:ongoing|underway|in progress)|고객[^.]{0,40}?(?:인증|검증)[^.]{0,40}?(?:진행|평가\s*중)", text, re.I):
+        patch["customer_qualification_stage"] = "ongoing"
+
     partners = []
     if re.search(r"\bPTI\b|Powertech\s+Technology|파워텍테크놀로지", text, re.I):
         partners.append("PTI")
@@ -540,6 +555,16 @@ def manufacturing_material_changes(old, new):
         reasons.append(f"신규 거점 생산능력 월 {float(b):,.0f}대 최초 공개")
     if old.get("official_pcn_verified") is not True and new.get("official_pcn_verified") is True:
         reasons.append("Solidigm 공식 PCN 확인")
+
+    a, b = old.get("quality_issue_status"), new.get("quality_issue_status")
+    if a != b and b and b != "not_reported":
+        labels = {"reported":"품질·신뢰성 이슈 발생", "resolved":"품질·신뢰성 이슈 해소"}
+        reasons.append(f"품질 상태 {a or '미확인'}→{labels.get(b,b)}")
+
+    a, b = old.get("customer_qualification_stage"), new.get("customer_qualification_stage")
+    if a != b and b and b != "not_reported":
+        labels = {"ongoing":"고객 인증·검증 진행", "passed":"고객 인증·검증 통과", "failed":"고객 인증·검증 실패"}
+        reasons.append(f"고객 검증 단계 {a or '미확인'}→{labels.get(b,b)}")
     return reasons
 
 
@@ -559,6 +584,10 @@ def manufacturing_alert_text(old, new, reasons, checked):
         lines.append("• 기존 ODM 파트너 보도: " + html.escape(", ".join(new["reported_existing_odm_partners"])))
     if new.get("capacity_units_per_month") is None and new.get("capacity_eb_per_year") is None:
         lines.append("• 생산능력: 수량·EB 기준 미공개 — 기사 제목만으로 증설률을 계산하지 않습니다.")
+    if new.get("quality_issue_status") not in (None, "not_reported"):
+        lines.append("• 품질·신뢰성 상태: " + html.escape(str(new["quality_issue_status"])))
+    if new.get("customer_qualification_stage") not in (None, "not_reported"):
+        lines.append("• 고객 인증·검증: " + html.escape(str(new["customer_qualification_stage"])))
     if new.get("confirmed_direct_server_customers"):
         lines.append("• 직접 서버 고객 확인: " + html.escape(", ".join(new["confirmed_direct_server_customers"])))
     else:
@@ -731,8 +760,9 @@ def main():
     ipo_reasons = material_changes(current, candidate)
 
     # --- Manufacturing / Taiwan ODM lane (new, same existing route) ---
-    if int(state.get("watch_version") or 0) < 2 or not state.get("manufacturing_state"):
+    if int(state.get("watch_version") or 0) < WATCH_VERSION or not state.get("manufacturing_state"):
         manufacturing_current = dict(MANUFACTURING_BASELINE)
+        manufacturing_current.update(dict(state.get("manufacturing_state") or {}))
     else:
         manufacturing_current = dict(state.get("manufacturing_state") or {})
     manufacturing_candidate = dict(manufacturing_current)

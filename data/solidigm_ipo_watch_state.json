@@ -1,5 +1,5 @@
 {
-  "watch_version": 2,
+  "watch_version": 3,
   "topic": "Solidigm IPO + eSSD manufacturing",
   "baseline_as_of": "2026-09-25",
   "current_state": {
@@ -80,6 +80,8 @@
     "secondary_reported_source_url": "https://en.sedaily.com/finance/2026/10/05/solidigm-to-expand-ssd-production-sites-in-taiwan",
     "pti_official_source_url": "https://www.pti.com.tw/Handlers/ConferenceDownload.ashx?col=briefing&id=1ddf8d0a-0ca9-4271-ad0e-71812b1beadb&lang=en",
     "as_of": "2026-10-05",
-    "note": "Solidigm 공식 DMS는 PCN 0000048112-00과 'all Solidigm Datacenter SSDs' 대상 추가 제조거점을 확인. 대만·ODM·12월 출하·Pegatron은 아주경제/서울경제 보도 단계. PTI는 과거 PTI 공식 IR에서 Solidigm 파트너 관계가 확인됨. 신규 거점의 생산능력 수치는 미공개이며 NAND 웨이퍼 팹 증설로 해석하지 않음."
+    "note": "Solidigm 공식 DMS는 PCN 0000048112-00과 'all Solidigm Datacenter SSDs' 대상 추가 제조거점을 확인. 대만·ODM·12월 출하·Pegatron은 아주경제/서울경제 보도 단계. PTI는 과거 PTI 공식 IR에서 Solidigm 파트너 관계가 확인됨. 신규 거점의 생산능력 수치는 미공개이며 NAND 웨이퍼 팹 증설로 해석하지 않음.",
+    "quality_issue_status": "not_reported",
+    "customer_qualification_stage": "not_reported"
   }
 }
