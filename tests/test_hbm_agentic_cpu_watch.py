@@ -62,15 +62,18 @@ class AgenticCpuAlertTests(unittest.TestCase):
             state,
             1371.0,
             "2026-09-25",
-            [],
+            [{"key": "server_cpu_tam_2030_usd_bn", "label": "2030 서버 CPU 시장", "before": 190.0, "after": 210.6, "delta": 10.8, "mode": "pct"}],
             None,
             [],
             standalone=False,
         )
-        self.assertIn("<b>변화</b>", block)
-        self.assertIn("<b>현재 기준선</b>", block)
-        self.assertIn("<b>의미</b>", block)
-        self.assertIn("<b>다음 확인</b>", block)
+        self.assertIn("<b>CPU·에이전트형 AI</b>", block)
+        self.assertIn("• 변화:", block)
+        self.assertIn("• 기준:", block)
+        self.assertIn("• 의미:", block)
+        self.assertIn("• 다음:", block)
+        self.assertNotIn("<b>변화</b>", block)
+        self.assertNotIn("<b>현재 기준선</b>", block)
         self.assertIn("2,106억달러(", block)
         self.assertIn("902억달러(", block)
         self.assertIn("42.8%", block)
@@ -82,7 +85,7 @@ class AgenticCpuAlertTests(unittest.TestCase):
         self.assertNotIn("<b>관련 기업 지도</b>", block)
         self.assertNotIn("<b>숨은 역풍·실패모드</b>", block)
         self.assertNotIn("<b>알림 기준</b>", block)
-        self.assertLess(len(block), 1800)
+        self.assertLess(len(block), 950)
 
     def test_material_forecast_alert_shows_old_and_new(self):
         latest = dict(w.BASELINE)
