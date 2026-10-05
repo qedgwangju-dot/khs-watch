@@ -302,6 +302,34 @@ def parse_metrics(text: str) -> dict:
             out["bushing_lead_low_weeks_secondary"] = lo
             out["bushing_lead_high_weeks_secondary"] = hi
 
+    equipment_patterns = {
+        "cw_padmount_transformer": [
+            r"pad[- ]mounted transformers?[^.]{0,120}?(\d{2,3})\s*(?:to|[-–])\s*(\d{2,3})\s*weeks",
+        ],
+        "cw_generator": [
+            r"generators?[^.]{0,120}?(\d{2,3})\s*(?:to|[-–])\s*(\d{2,3})\s*weeks",
+        ],
+        "cw_mv_switchgear": [
+            r"(?:medium[- ]voltage|MV) switchgear[^.]{0,120}?(\d{2,3})\s*(?:to|[-–])\s*(\d{2,3})\s*weeks",
+        ],
+        "cw_lv_switchgear": [
+            r"(?:low[- ]voltage|LV) switchgear[^.]{0,120}?(\d{2,3})\s*(?:to|[-–])\s*(\d{2,3})\s*weeks",
+        ],
+        "cw_ups": [
+            r"(?:UPS systems?|uninterruptible power supplies?)[^.]{0,120}?(\d{2,3})\s*(?:to|[-–])\s*(\d{2,3})\s*weeks",
+        ],
+    }
+    for prefix, patterns in equipment_patterns.items():
+        for pat in patterns:
+            m = re.search(pat, text, re.I)
+            if not m:
+                continue
+            lo, hi = num(m.group(1)), num(m.group(2))
+            if lo and hi and 4 <= lo < hi <= 180:
+                out[prefix + "_low_weeks"] = lo
+                out[prefix + "_high_weeks"] = hi
+                break
+
     if "interconnection" in low or "queue" in low:
         m = re.search(r"(?:about|approximately|roughly)?\s*([0-9,]{4,6})\s+(?:projects|active projects)", text, re.I)
         if m:
@@ -407,6 +435,11 @@ def material_metric_changes(old: dict, new: dict) -> list[dict]:
         "large_transformer_high_weeks": ("대형변압기 최장 납기", "abs", 10.0),
         "gsu_lead_weeks": ("발전기 승압용 변압기 납기", "abs", 10.0),
         "bushing_lead_high_weeks_secondary": ("초고압 부싱 납기", "abs", 10.0),
+        "cw_padmount_transformer_high_weeks": ("데이터센터 지상형 변압기 최장 납기", "abs", 8.0),
+        "cw_generator_high_weeks": ("데이터센터 발전기 최장 납기", "abs", 8.0),
+        "cw_mv_switchgear_high_weeks": ("데이터센터 중압배전반 최장 납기", "abs", 6.0),
+        "cw_lv_switchgear_high_weeks": ("데이터센터 저압배전반 최장 납기", "abs", 6.0),
+        "cw_ups_high_weeks": ("데이터센터 UPS 최장 납기", "abs", 6.0),
         "queue_projects": ("계통연결 대기 프로젝트", "pct", 10.0),
         "queue_gw": ("계통연결 대기 용량", "pct", 10.0),
         "transmission_345kv_plus_miles_latest": ("345kV+ 송전선 연간 준공", "pct", 25.0),
@@ -437,6 +470,10 @@ def structural_event(text: str, url: str) -> str:
         return ""
     if any(k in low for k in ("new factory", "new plant", "breaks ground", "expansion", "expand capacity", "capacity expansion")) and "transformer" in low:
         return "변압기 생산능력 증설·신공장 일정 변화"
+    if any(k in low for k in ("production begins", "production starts", "opens new", "new factory", "new plant", "capacity expansion")) and any(k in low for k in ("switchgear", "ups", "generator")):
+        return "데이터센터 전력기기 생산능력·생산개시 변화"
+    if "supply capacity agreement" in low and "data center" in low and any(k in low for k in ("switchgear", "ups", "power")):
+        return "데이터센터 전력기기 장기 공급능력 계약"
     if any(k in low for k in ("energization delayed", "energization delay", "power-on delayed", "utility upgrade", "energized")) and any(k in low for k in ("data center", "datacenter")):
         return "데이터센터 전원 인가 일정 변화"
     if any(k in low for k in ("large load", "data center")) and any(k in low for k in ("interconnection rule", "tariff", "queue reform", "reliability guideline", "ferc order")):
