@@ -48,6 +48,15 @@ check("oct04-refinery-policy-topic", mod.topic_label(refinery_policy) == "우크
 s, tags = mod.score_item(refinery_policy, dt.datetime.now(mod.watch.KST))
 check("oct04-refinery-policy-not-actual-hit-tag", "확전위험" in tags and "공격확대예고" in tags)
 
+
+refinery_policy_kr = row(
+    "젤렌스키, 러시아의 새 공습 교리에 대응해 러 정유시설 공격을 강화하고 계속 타격할 것",
+    source="국내 재게시",
+    description="우크라이나는 러시아 정유시설 타격을 확대할 방침이라고 밝혔다.",
+)
+check("oct04-refinery-policy-korean-variant", mod._future_refinery_policy(refinery_policy_kr))
+check("oct04-refinery-policy-korean-yellow", mod.final_color(refinery_policy_kr) == "yellow")
+
 # 2) Reuters 아람코 화재: Houthi 배경이 본문에 있어도 원인·책임주체 미확정이면 미사일 공격 확정 금지.
 aramco_fire = row(
     "Fire, smoke seen near Aramco facility in Riyadh, witness says",
@@ -63,6 +72,22 @@ check("oct04-aramco-unknown-detected", mod._aramco_fire_unattributed(aramco_fire
 check("oct04-aramco-no-houthi-missile-mark", "후티리야드미사일위협" not in mod.emergency_marks(aramco_fire))
 check("oct04-aramco-yellow", mod.final_color(aramco_fire) == "yellow")
 check("oct04-aramco-topic", mod.topic_label(aramco_fire) == "사우디·아람코 · 화재 원인 미확정")
+
+
+# 2-b) Reuters 기사 업데이트로 후티가 Aramco 공격을 주장한 단계가 확인되면
+# '원인 미확정'에서 '후티 공격 주장 + 사우디/Aramco 독립확인 대기'로 승격한다.
+aramco_claim = row(
+    "Yemen's Houthis say they attacked Aramco facility in Riyadh with missiles, drones",
+    source="Reuters",
+    description=(
+        "Houthis said they attacked the Aramco facility in Riyadh with ballistic missiles and drones. "
+        "Saudi authorities and Aramco had not yet independently confirmed damage."
+    ),
+    link="https://www.reuters.com/business/energy/fire-smoke-seen-near-aramco-facility-riyadh-witness-says-2026-10-03/",
+)
+check("oct04-aramco-houthi-claim-detected", mod._aramco_houthi_claim(aramco_claim))
+check("oct04-aramco-houthi-claim-red", mod.final_color(aramco_claim) == "red")
+check("oct04-aramco-houthi-claim-topic", mod.topic_label(aramco_claim) == "사우디·후티 · Aramco 공격 주장")
 
 # 3) Medvedev 평화 조건은 실제 공격이 아니라 러시아 측 입장 표명.
 medvedev = row(
