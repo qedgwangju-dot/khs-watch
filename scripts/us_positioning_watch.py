@@ -1195,10 +1195,18 @@ if quality_gate_ok and (updates or force):
                 if hist.get("ten_year_complete") and isinstance(hist.get("net_short_percentile_10y"), (int, float)):
                     gross_record = "예" if hist.get("gross_short_weekly_record_10y") else "아니오"
                     net_record = "예" if hist.get("net_short_weekly_record_10y") else "아니오"
+                    gross_week = int(hist.get('gross_short_weekly_change_10y') or 0)
+                    net_build_week = int(hist.get('net_short_weekly_build_10y') or 0)
+                    gross_word = "증가" if gross_week > 0 else "감소" if gross_week < 0 else "변화 없음"
+                    net_word = "확대" if net_build_week > 0 else "축소" if net_build_week < 0 else "변화 없음"
+                    gross_abs = abs(gross_week)
+                    net_abs = abs(net_build_week)
                     body += [
                         f"• 최근 10년 순숏 {hist['net_short_percentile_10y']:.0f}백분위 · 총숏 {hist.get('gross_short_percentile_10y', 0):.0f}백분위 · 숏/OI {hist.get('short_share_oi_percentile_10y', 0):.0f}백분위",
-                        f"• 이번 주 총숏 증가 {int(hist.get('gross_short_weekly_change_10y') or 0):+,}계약 = 10년 {hist.get('gross_short_weekly_build_percentile_10y', 0):.0f}백분위 · 10년 주간 최고 여부 {gross_record}",
-                        f"• 이번 주 순숏 확대 {int(hist.get('net_short_weekly_build_10y') or 0):+,}계약 = 10년 {hist.get('net_short_weekly_build_percentile_10y', 0):.0f}백분위 · 10년 주간 최고 여부 {net_record}",
+                        f"• 이번 주 총숏 {gross_word} {gross_abs:,}계약 · 주간 총숏 변화 10년 {hist.get('gross_short_weekly_build_percentile_10y', 0):.0f}백분위"
+                        + (f" · 10년 최대 증가 기록 여부 {gross_record}" if gross_week > 0 else ""),
+                        f"• 이번 주 순숏 {net_word} {net_abs:,}계약 · 주간 순숏 변화 10년 {hist.get('net_short_weekly_build_percentile_10y', 0):.0f}백분위"
+                        + (f" · 10년 최대 확대 기록 여부 {net_record}" if net_build_week > 0 else ""),
                         f"• 10년 최대 주간 총숏 증가 {int(hist.get('max_gross_short_weekly_build_10y') or 0):+,}계약 ({hist.get('max_gross_short_weekly_build_date_10y') or '날짜 확인 불가'})",
                     ]
                 else:
@@ -1273,23 +1281,42 @@ if quality_gate_ok and (updates or force):
             body.append(f"• 전체 풋/콜 {total_pc:.2f}")
 
         if eq_pc is not None and idx_pc is not None:
-            if eq_pc < 0.80 and 0.90 <= idx_pc <= 1.10:
+            eq_regime = "call" if eq_pc < 0.80 else "neutral" if eq_pc <= 1.00 else "put"
+            idx_regime = "call" if idx_pc < 0.90 else "neutral" if idx_pc <= 1.10 else "put"
+
+            if eq_regime == "call" and idx_regime == "call":
                 option_combo = (
-                    "개별주에서는 콜 거래가 우세하지만 지수는 거의 중립 "
-                    "→ 종목별 상방 성향으로 해석할 수 있으나 시장 전체의 확정적 위험선호 신호는 아님"
+                    "개별주와 지수 모두 콜 거래 우위 "
+                    "→ 옵션 거래량 기준으로 상방 성향이 같은 방향으로 정렬"
                 )
-            elif eq_pc < 0.80 and idx_pc > 1.10:
+            elif eq_regime == "call" and idx_regime == "neutral":
                 option_combo = (
-                    "개별주 콜 거래는 강하지만 지수 풋 거래도 높음 "
-                    "→ 상방 성향과 시장 전체 하락 방어 수요가 함께 나타나는 혼합 신호"
+                    "개별주에서는 콜 거래 우위지만 지수는 거의 중립 "
+                    "→ 종목별 상방 성향은 있으나 시장 전체 위험선호는 중립에 가까움"
                 )
-            elif eq_pc > 1.0 and idx_pc > 1.10:
+            elif eq_regime == "call" and idx_regime == "put":
                 option_combo = (
-                    "개별주와 지수 모두 풋 우위 "
-                    "→ 옵션 수급만 보면 하방 경계가 강한 편"
+                    "개별주 콜 거래 우위와 지수 풋 거래 우위가 동시에 나타남 "
+                    "→ 종목 상방 성향과 시장 전체 하락 방어가 공존하는 혼합 신호"
                 )
+            elif eq_regime == "neutral" and idx_regime == "call":
+                option_combo = (
+                    "개별주는 중립권이고 지수는 콜 거래 우위 "
+                    "→ 시장 전체 상방 성향이 상대적으로 더 강한 조합"
+                )
+            elif eq_regime == "neutral" and idx_regime == "neutral":
+                option_combo = "개별주와 지수 모두 중립권 → 옵션 거래량만으로 방향성 우위가 뚜렷하지 않음"
+            elif eq_regime == "neutral" and idx_regime == "put":
+                option_combo = "개별주는 중립권이고 지수는 풋 거래 우위 → 지수 방어·헤지 성향이 상대적으로 강함"
+            elif eq_regime == "put" and idx_regime == "call":
+                option_combo = (
+                    "개별주는 풋 거래 우위, 지수는 콜 거래 우위 "
+                    "→ 개별주 경계와 지수 상방 성향이 엇갈리는 혼합 신호"
+                )
+            elif eq_regime == "put" and idx_regime == "neutral":
+                option_combo = "개별주는 풋 거래 우위지만 지수는 중립 → 개별주 하방 경계가 상대적으로 더 강함"
             else:
-                option_combo = "개별주와 지수 옵션 방향이 뚜렷하게 한쪽으로 정렬되지 않음"
+                option_combo = "개별주와 지수 모두 풋 거래 우위 → 옵션 거래량 기준으로 하방·방어 성향이 같은 방향으로 정렬"
             body.append(f"• <b>옵션 조합</b>: {option_combo}")
 
         if cftc:
