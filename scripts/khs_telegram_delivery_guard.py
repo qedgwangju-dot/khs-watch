@@ -2,8 +2,8 @@
 """Final delivery guard for KHS Telegram alert files.
 
 This runs after all lane-specific renderers and before GitHub issues/Telegram.
-It rewrites long prose fields to 50 characters or fewer, while still blocking
-source mismatches, low-impact notices, and raw detector-language leaks.
+It preserves complete source-backed prose and normalizes readable fields while
+blocking source mismatches, low-impact notices, and raw detector-language leaks.
 """
 
 from __future__ import annotations
@@ -12,10 +12,6 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-try:
-    from khs_compact_text import compact_prose_lines
-except ImportError:  # pragma: no cover - supports module-style local tests.
-    from scripts.khs_compact_text import compact_prose_lines
 try:
     from khs_policy_telegram_formatter import format_policy_message, validate_final_policy_message
 except ImportError:  # pragma: no cover - supports module-style local tests.
@@ -619,7 +615,8 @@ def guard_lane(lane: Lane) -> None:
             delete_lane(lane, f"missing_explanation_field:{markers[0]}")
             return
 
-    body, compacted_fields = compact_prose_lines(body)
+    # Source facts must survive delivery unchanged; readability is not a 50-character crop.
+    compacted_fields = 0
     title, body = format_policy_message(title, body)
     final_errors = validate_final_policy_message(title, body)
     if final_errors:

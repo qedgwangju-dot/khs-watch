@@ -44,6 +44,15 @@ Every defect or requested change must follow this sequence:
   the assumption that a separate policy workflow delivered it. Normal source,
   freshness, materiality and duplicate guards still apply.
 - Actions 성공만으로 완료 처리하지 않는다.
+- A policy maintenance push must not enable a user-paused workflow or dispatch a
+  live Telegram send. Readability verification uses dry-run previews and leaves
+  sent-event identities and policy-watch activation unchanged.
+- Policy prose retains complete sourced actions, quantities, conditions and
+  stages. Never crop at 50 characters and append a copula. Render concise cores
+  followed by factual bullets, stage/date/timeline, scope caveats and clickable
+  sources in a deterministic order. Label-based layout must not move a statement
+  into a risk/company section because of incidental words. Oversized bundles
+  split at article/field boundaries with all source content retained.
 - Headline, summary, source URL, and source body must describe the same event.
 - Verified Korean article titles and bodies are owned by the source-body layer.
   Legacy topic overlays must not replace them from background references. An

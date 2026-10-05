@@ -65,15 +65,11 @@ def _chunk_text(chunk: list[str]) -> str:
 def _dedupe_chunks(chunks: list[list[str]], heading: str) -> list[list[str]]:
     output: list[list[str]] = []
     seen: set[str] = set()
-    heading_text = _HEADING_PREFIX_STRIP_RE.sub("", heading).strip()
-    heading_key = _clean_key(heading_text)
     for chunk in chunks:
         text = _chunk_text(chunk)
         if not text:
             continue
         core_text = _CORE_LABEL_STRIP_RE.sub("", text).strip()
-        if _CORE_PREFIX_RE.match(text) and _clean_key(core_text) == heading_key:
-            continue
         key = "core:" + _clean_key(core_text) if _CORE_PREFIX_RE.match(text) else _clean_key(text)
         if key in seen:
             continue
@@ -84,46 +80,38 @@ def _dedupe_chunks(chunks: list[list[str]], heading: str) -> list[list[str]]:
 
 def _bucket(chunk: list[str]) -> str:
     text = _chunk_text(chunk)
-    if _SOURCE_RE.search(text):
+    if _SOURCE_RE.match(text):
         return "source"
     if _CORE_PREFIX_RE.match(text) or text.startswith("💡"):
         return "core"
-    if _RISK_RE.search(text):
-        return "risk"
-    if _NUMBER_LABEL_RE.match(text) or _MONEY_OR_UNIT_RE.search(text):
-        return "numbers"
-    if _COMPANY_RE.search(text):
-        return "company"
+    label = re.match(r"^\s*-\s*([^:]+):", text)
+    label = label.group(1).strip() if label else ""
+    if label in {"실제 내용", "내용", "숫자", "규모", "금액", "예산", "물량", "대상"}:
+        return "facts"
+    if label in {"현재 단계", "확인 상태", "발표일", "채택일", "공개일", "타임라인", "일정", "알림 상태"}:
+        return "stage"
+    if label in {"범위 주의", "주의", "다음 확인", "숨은 역풍"}:
+        return "scope"
     return "detail"
 
 
 def _render_item(heading: str, content_lines: list[str]) -> list[str]:
+    old_section_labels = {
+        "🔎 핵심 변화", "💰 숫자", "🇰🇷 기업·매출 연결", "⚠️ 병목·실패모드", "📌 세부", "🔗 원문",
+    }
+    content_lines = [line for line in content_lines if line.strip() not in old_section_labels]
     chunks = _dedupe_chunks(_chunk_lines(content_lines), heading)
-    if len(chunks) <= 3:
-        result = [heading]
-        for chunk in chunks:
-            result.extend(chunk)
-        return result
-
     groups: dict[str, list[list[str]]] = {
-        key: [] for key in ("core", "numbers", "company", "risk", "detail", "source")
+        key: [] for key in ("core", "facts", "stage", "detail", "scope", "source")
     }
     for chunk in chunks:
         groups[_bucket(chunk)].append(chunk)
 
-    labels = {
-        "core": "🔎 핵심 변화",
-        "numbers": "💰 숫자",
-        "company": "🇰🇷 기업·매출 연결",
-        "risk": "⚠️ 병목·실패모드",
-        "detail": "📌 세부",
-        "source": "🔗 원문",
-    }
     result = [heading]
-    for key in ("core", "numbers", "company", "risk", "detail", "source"):
+    for key in ("core", "facts", "stage", "detail", "scope", "source"):
         if not groups[key]:
             continue
-        result.append(labels[key])
+        result.append("")
         for chunk in groups[key]:
             result.extend(chunk)
     return result

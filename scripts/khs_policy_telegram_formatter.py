@@ -434,7 +434,7 @@ def normalize_source_line(line: str) -> str:
     link_match = HTML_SOURCE_LINK_RE.search(value)
     if link_match:
         label = link_match.group("label").strip()
-        url = link_match.group("url")
+        url = html.unescape(link_match.group("url"))
         before = value[: link_match.start()]
         after = value[link_match.end() :]
     else:
@@ -506,7 +506,7 @@ def prepare_telegram_html(title: str, body: str) -> str:
     anchors: list[str] = []
 
     def protect(match: re.Match[str]) -> str:
-        url = _clean_source_url(match.group("url"))
+        url = _clean_source_url(html.unescape(match.group("url")))
         label = match.group("label").strip() or "원문"
         anchor = _html_source_link(url, label)
         if not anchor:
@@ -518,7 +518,46 @@ def prepare_telegram_html(title: str, body: str) -> str:
     escaped = html.escape(HTML_SOURCE_LINK_RE.sub(protect, message), quote=False)
     for index, anchor in enumerate(anchors):
         escaped = escaped.replace(f"@@KHS_SOURCE_LINK_{index}@@", anchor)
-    return _bold_timeline_dates_html(escaped)
+    escaped = _bold_timeline_dates_html(escaped)
+    escaped = re.sub(r"(?m)^(\d+\.\s+\[[^\]\n]+\][^\n]+)$", r"<b>\1</b>", escaped)
+    escaped = re.sub(
+        r"(?m)^(- (?:핵심|실제 내용|현재 단계|발표일|채택일|공개일|타임라인|범위 주의|다음 확인):)",
+        r"<b>\1</b>",
+        escaped,
+    )
+    return escaped
+
+
+def prepare_telegram_messages(title: str, body: str, limit: int = 4096) -> list[str]:
+    """Split on article/field boundaries; preserve every fact and complete source anchor."""
+    articles = re.split(r"(?m)(?=^\d+\.\s+\[[^\]\n]+\])", str(body or "").strip())
+    blocks: list[str] = []
+    for article in articles:
+        if not article.strip():
+            continue
+        if len(prepare_telegram_html(title, article)) <= limit:
+            blocks.append(article.strip())
+        else:
+            for paragraph in re.split(r"\n\s*\n", article.strip()):
+                if len(prepare_telegram_html(title, paragraph)) <= limit:
+                    blocks.append(paragraph)
+                else:
+                    blocks.extend(paragraph.splitlines())
+    output: list[str] = []
+    current = ""
+    for block in blocks:
+        candidate = (current + "\n\n" + block).strip() if current else block
+        if len(prepare_telegram_html(title, candidate)) <= limit:
+            current = candidate
+            continue
+        if current:
+            output.append(prepare_telegram_html(title, current))
+        if len(prepare_telegram_html(title, block)) > limit:
+            raise ValueError("policy_field_exceeds_telegram_limit: preserve source text for review")
+        current = block
+    if current:
+        output.append(prepare_telegram_html(title, current))
+    return output
 
 
 
@@ -569,12 +608,16 @@ def format_policy_message(
         now = now.astimezone(KST)
 
     title, body = normalize_policy_structure(title, body)
+    try:
+        from khs_policy_readability_patch import improve_policy_readability
+    except ImportError:
+        from scripts.khs_policy_readability_patch import improve_policy_readability
+    body = improve_policy_readability(body)
     amounts = extract_foreign_amounts(f"{title}\n{body}")
     codes = sorted({str(item["code"]) for item in amounts})
     rate_snapshot = _normalized_rates(rates, codes, now)
     title, _title_codes = _convert_text(title, rate_snapshot)
     body, _body_codes = _convert_text(body, rate_snapshot)
-    body = _compact_converted_core_lines(body)
     return title.strip(), body.strip() + "\n"
 
 
@@ -614,10 +657,10 @@ def validate_final_policy_message(title: str, body: str) -> list[str]:
         if not stripped.startswith("- 핵심:"):
             continue
         core = stripped.removeprefix("- 핵심:").strip()
-        if len(core) > 50:
-            errors.append(f"policy_core_too_long:{len(core)}")
         if "…" in core or re.search(r"\.{3,}", core):
             errors.append("policy_core_truncated")
+        if re.search(r"(?:\s(?:상|하향)|Elon Musk|Autonomous Systems|\d+(?:MHz|GHz)와)입니다\.$", core):
+            errors.append("policy_core_nominal_fragment")
     for line in body.splitlines():
         stripped = line.strip()
         if not stripped.startswith("- 출처:"):

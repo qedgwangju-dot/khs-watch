@@ -54,7 +54,7 @@ COMPACT_PROSE_PREFIXES = (
 )
 
 
-def assert_compact_prose_limit(body: str, context: str, limit: int = 50) -> None:
+def assert_compact_prose_limit(body: str, context: str, limit: int = 240) -> None:
     errors: list[str] = []
     for line in body.splitlines():
         stripped = line.strip()
@@ -69,7 +69,7 @@ def assert_compact_prose_limit(body: str, context: str, limit: int = 50) -> None
                 if len(part.strip()) > limit:
                     errors.append(f"- 반영/반대: {len(part.strip())}자")
     if errors:
-        raise AssertionError(f"{context} compact prose exceeded 50 chars: {errors}")
+        raise AssertionError(f"{context} readable prose exceeded {limit} chars: {errors}")
 
 
 def assert_fcc_space_nepa_and_satellite_spectrum_are_monitored() -> None:
@@ -218,7 +218,7 @@ def main() -> int:
     assert_delivery_guard_blocks_fcc_submarine_inverter_mismatch()
     assert_delivery_guard_blocks_bok_generic_stablecoin_mismatch()
     assert_delivery_guard_blocks_url_topic_missing()
-    assert_delivery_guard_compacts_and_sends_51_character_prose()
+    assert_delivery_guard_preserves_complete_long_prose()
     assert_auxiliary_policy_lanes_are_compact()
     assert_router_explains_fcc_submarine_cable_policy()
     cleanup()
@@ -634,7 +634,7 @@ def assert_workflow_delivery_dedupe() -> None:
         "out/khs_telegram_dry_run.md",
         "format_policy_message(title, body)",
         "validate_final_policy_message(title, body)",
-        "prepare_telegram_html(title, body)",
+        "prepare_telegram_messages(title, body)",
         '"parse_mode": "HTML"',
         '"spectrum": {',
         '"expected_username": "khs88798879_bot"',
@@ -748,8 +748,8 @@ def assert_final_policy_telegram_format_and_currency_conversion() -> None:
     ):
         if marker not in multi_core:
             raise AssertionError(f"policy 50-char FX core missing {marker}: {multi_core}")
-    if len(multi_core) > 50:
-        raise AssertionError(f"policy FX core exceeds 50 chars: {multi_core}")
+    if not all(marker in multi_core for marker in ("투자액", "추가계획", "발표됐습니다.")):
+        raise AssertionError(f"policy FX conversion lost the amounts' roles or action: {multi_core}")
     multi_errors = khs_policy_telegram_formatter.validate_final_policy_message(
         multi_amount_title,
         multi_amount_body,
@@ -1749,9 +1749,14 @@ def assert_fcc_chinese_optical_transceiver_ban_is_monitored() -> None:
         raise AssertionError("Reuters Chinese optical-transceiver ban headline was not detected")
     if not khs_trusted_policy_news_watch.is_trusted_wire_relay("Devdiscourse", text):
         raise AssertionError("Reuters Devdiscourse relay was not accepted")
-    for marker in ("광트랜시버", "초안 단계", "확정 전"):
-        if marker not in rule.core:
-            raise AssertionError(f"Optical-transceiver core missing: {marker}")
+    if "광트랜시버" not in rule.core:
+        raise AssertionError("Optical-transceiver source-specific core missing")
+    profile = khs_trusted_policy_news_watch.item_story_profile(rule, [{
+        "title": headline, "description": text, "source": "Reuters",
+        "link": "https://www.reuters.com/world/trump-administration-drafting-ban-chinese-data-center-devices-sources-say-2026-08-04/",
+    }])
+    if not profile or "초안" not in str(profile.get("stage")):
+        raise AssertionError("Optical-transceiver draft was promoted to a final policy stage")
 
 
 def assert_korea_trade_remedy_final_rate_change_is_monitored() -> None:
@@ -2035,7 +2040,7 @@ def assert_delivery_guard_blocks_duplicate_policy_alerts() -> None:
         raise AssertionError("delivery guard did not block duplicate policy alerts")
 
 
-def assert_delivery_guard_compacts_and_sends_51_character_prose() -> None:
+def assert_delivery_guard_preserves_complete_long_prose() -> None:
     exact_value = "가" * 50
     exact_body, exact_changes = compact_prose_lines(f"- 핵심: {exact_value}")
     if exact_body != f"- 핵심: {exact_value}" or exact_changes:
@@ -2082,6 +2087,8 @@ def assert_delivery_guard_compacts_and_sends_51_character_prose() -> None:
         assert_compact_prose_limit(compacted, "51-character delivery fixture")
         if "미국이 첨단 반도체 장비 수출통제를" not in compacted:
             raise AssertionError("51-character summary lost its source-specific subject")
+        if "중국 공장 증설과 장비 반입 일정을 다시 점검하게 됐습니다." not in compacted:
+            raise AssertionError("delivery cropped the policy scope or predicate")
         for forbidden in (
             "- 투자 관점:",
             "- 한국장 영향:",

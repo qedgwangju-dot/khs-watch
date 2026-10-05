@@ -664,7 +664,7 @@ STORY_RULES = (
     ),
     StoryRule(
         key="us_fcc_satellite_spectrum_followon_fnprm",
-        title="미 FCC, Ku/Ka·D-band 위성 주파수 추가 확대 절차",
+        title="미 FCC, Ku/Ka 1,450MHz·D-band 위성 주파수 추가 확대 절차",
         google_queries=(
             '"1,450 megahertz" FCC satellite Ku Ka D-band',
             '"138.25 gigahertz" FCC satellite D-band',
@@ -1315,6 +1315,7 @@ def collect_rule_items(rule: StoryRule, now: dt.datetime) -> list[dict]:
             "link": canonical_url,
             "source": source_label,
             "published_kst": published.isoformat(timespec="seconds"),
+            "published_precision": "date",
             "priority": 0,
         })
         print(
@@ -2662,6 +2663,66 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
         return None
     title = str(items[0].get("title", ""))
     semantic_key = semantic_policy_event_key(items[0])
+    fcc_profiles = {
+        "us-fcc-space-nepa-adopted": {
+            "title": "미 FCC, 우주 기반 운영의 NEPA 환경심사 범위 축소",
+            "core": "FCC가 우주 기반 운영의 NEPA 환경심사 범위를 축소했습니다.",
+            "stage": "최종 명령 채택. 위성군 자동 승인이나 모든 환경규제 면제는 아닙니다.",
+            "actual_bullets": [
+                "민간 우주국의 발사·배치·운용 관련 FCC 조치를 NEPA상 주요 연방행위로 보지 않기로 했습니다.",
+                "위성 지상국·우주국의 주파수 인가와 안테나 구조물 등록이 필요 없는 지리적 면허 기반 배치도 해당 판단에 포함됩니다.",
+                "항공 안전상 등록이 필요한 안테나 구조물의 FCC 등록·준수 의무는 유지합니다.",
+            ],
+            "scope_note": "FAA의 발사·재진입 심사 권한과 위성 면허·간섭·궤도 잔해 규정까지 없앤 결정은 아닙니다.",
+            "next": "연방관보 게재와 조항별 발효일, 개별 위성·지상국 면허 후속을 확인합니다.",
+            "timeline": "2026년 9월 30일 명령 채택 → 2026년 10월 1일 원문 공개 → 연방관보 게재·조항별 발효 후속",
+        },
+        "us-fcc-satellite-spectrum-abundance-adopted": {
+            "title": "미 FCC, 위성통신용 1,050MHz 주파수 추가 개방",
+            "core": "FCC가 위성통신용 주파수 1,050MHz를 추가 개방했습니다.",
+            "stage": "최종 명령 채택. 대역별 허가·공유·간섭 조건은 별도로 적용됩니다.",
+            "actual_bullets": [
+                "12.7~13.25GHz의 550MHz에서 고정위성통신(FSS) 상·하향 이용을 확대합니다.",
+                "42~42.5GHz의 500MHz에서는 개별 허가된 게이트웨이·피더링크 지상국으로의 FSS 하향 이용을 허용합니다.",
+                "12.75~13.25GHz 신규 신청 동결은 연방관보 게재 때 해제하며, 12.7~12.75GHz 동결은 유지합니다.",
+            ],
+            "scope_note": "1,050MHz는 한 사업자에 독점 배정된 용량이 아니며, 42GHz 대역의 일반 단말 일괄허가를 뜻하지 않습니다.",
+            "next": "조항별 발효일, 개별 면허·주파수 조정과 지상국 구축 후속을 확인합니다.",
+            "timeline": "2026년 9월 30일 주파수 개방 명령 채택 → 2026년 10월 1일 원문 공개 → 연방관보 게재·대역별 허가 후속",
+        },
+        "us-fcc-satellite-spectrum-followon-proposal": {
+            "title": "미 FCC, Ku/Ka·D-band 위성 주파수 추가 확대 의견수렴",
+            "core": "FCC가 추가 위성 주파수 개방안의 의견수렴을 진행합니다.",
+            "stage": "추가 규칙제정안(FNPRM) 의견수렴. 최종 개방·할당은 미확정입니다.",
+            "actual_bullets": [
+                "이미 채택한 1,050MHz와 별도로 Ku·Ka 대역 1,450MHz의 추가 위성통신 이용을 제안합니다.",
+                "D-band에서도 최대 138.25GHz 폭의 위성통신 이용 가능성과 공유·간섭 조건에 대한 의견을 받습니다.",
+            ],
+            "scope_note": "138.25GHz는 단일 중심 주파수가 아니라 검토 대상의 총 대역폭입니다. 제안 물량을 확정 개방량과 합산하지 않습니다.",
+            "next": "연방관보의 의견 제출 기한과 최종 채택 대역·허가 조건을 확인합니다.",
+            "timeline": "2026년 9월 30일 추가 규칙안 채택 → 2026년 10월 1일 원문 공개 → 의견수렴·최종 채택 여부 확인",
+        },
+    }
+    expected_document = "FCC-26-64A1" if semantic_key == "us-fcc-space-nepa-adopted" else "FCC-26-65A1"
+    known_fcc_document = expected_document in str(items[0].get("link") or "")
+    if rule.key.startswith("us_fcc_") and semantic_key in fcc_profiles and known_fcc_document:
+        profile = fcc_profiles[semantic_key]
+        return {
+            "event_date": "2026년 9월 30일",
+            "event_date_label": "채택일",
+            "show_publication_date": True,
+            "timeline": "2026년 9월 30일 채택 → 2026년 10월 1일 공개 → 연방관보 게재·조항별 발효 또는 의견수렴 후속",
+            "actual": " ".join(profile["actual_bullets"]),
+            "investment": rule.point,
+            "korea": "한국 기업 직접 계약·수주는 별도 확인이 필요합니다.",
+            "priced_in": rule.impact,
+            "counter": rule.counter,
+            "failure": rule.follow_up,
+            "impacts": rule.impacts,
+            "paths": rule.paths,
+            "sectors": rule.sectors,
+            **profile,
+        }
     if rule.key == "us_fcc_chinese_optical_transceiver_ban":
         if semantic_key == "us-fcc-optical-transceiver-3p2t-65pct-research-2026-10-01":
             return {
@@ -2787,17 +2848,22 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
         return {
             "revision": "us-dow-project-meridian-commissioned-ko-v1",
             "event_date": "2026년 9월 30일",
-            "title": "미 국방부 Project Meridian 출범: 머스크·Palmer Luckey·Newt Gingrich 공동주도",
+            "title": "미 국방부 Project Meridian 출범: 머스크·팔머 럭키·뉴트 깅리치 공동주도",
             "core": "미 국방부가 Project Meridian을 출범시켜 미래전 기술 우선순위를 연구합니다.",
             "stage": "공식 연구·자문 착수 단계 — 국방 계약·수주 확정이 아닙니다.",
+            "actual_bullets": [
+                "MITRE가 미래전 연구를 이끌고 일론 머스크·팔머 럭키·뉴트 깅리치가 공동주도자로 참여합니다.",
+                "미 국방부 최고기술책임자가 민간 전문가와 미래 전장에 필요한 능력·무기·기술을 검토합니다.",
+                "MITRE가 공개한 구성원 명단은 현재 기준이며 바뀔 수 있습니다. 참가자의 소속 기업에 대한 계약 확정은 아닙니다.",
+            ],
             "actual": "미 국방부 CTO Emil Michael의 지휘 아래 미래 전장·필요 무기·기술을 연구하고 실행 가능한 개발·시험·전력화 과제를 제안합니다. MITRE 공개 명단은 현재 구성이고 향후 바뀔 수 있습니다.",
-            "timeline": "2026년 9월 30일 국방부 발표·연구 착수 → 2026년 10월 2일 MITRE 구성 공개 → 120일 내 결과 제출 → 2027년 1월 28일 이전 최종 연구결과 목표",
+            "timeline": "2026년 9월 30일 국방부 발표·연구 착수 → 2026년 10월 2일 MITRE 구성 공개 → 최종 보고서 제출 일정은 의뢰서 원문 재확인 필요",
             "why": "미래전 기술 우선순위를 민간 기술리더와 FFRDC가 함께 좁히는 공식 연구축이 생겼다는 점이 중요합니다. 다만 돈이 움직이는 시점은 후속 예산·조달부터입니다.",
             "next": "최종 보고서·기밀 부록, 기술 우선순위, 참가자 변화, 예산·BAA·OTA·RFI·RFP·계약, 시험·전력화 일정",
             "investment": "Musk·Luckey 참여는 SpaceX·Anduril의 자동 수주를 뜻하지 않습니다. 실제 투자 재료는 권고가 특정 프로그램·예산·계약으로 전환되는지입니다.",
             "korea": "현재 한국 상장사의 Project Meridian 직접 계약은 확인되지 않았습니다. 미 조달·FMS·미국 주계약자 공급망 편입이 확인될 때 실적 연결을 판단합니다.",
             "headwind": "이해상충 논란, 의회 예산, 획득절차, 시험·안전·사이버·전자전 검증이 실제 사업화 속도를 늦출 수 있습니다.",
-            "scope_note": "미 육군 공식 설명은 Project Meridian을 새 전략·정책을 만드는 사업이 아니라 미래 도메인·역량을 식별하는 미래전 연구로 규정합니다.",
+            "scope_note": "새 전략·정책을 만드는 사업이 아니라 미래전 역량을 식별하는 연구입니다. 의뢰서 PDF 접근 제한으로 120일 제출기한은 현재 재확인되지 않았습니다.",
             "impacts": "수급, 시간표, 향후 매출·마진·현금흐름",
             "paths": "기술 우선순위, 예산, 조달, 시험·전력화",
             "sectors": "AI/자율·로봇, 우주·통신, 지향성에너지, 바이오·국방기술",
@@ -2812,9 +2878,14 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
                 "event_date": "2026년 10월 2일",
                 "title": "미 육군 FASCOM 창설 지시: 자율무기 조달·전력화 실행 단계",
                 "core": "미 육군이 FASCOM 창설과 자율체계 획득·전력화를 지시했습니다.",
-                "stage": "미 육군 공식 시행 지시 — Project Meridian의 연구축보다 직접적인 조달·전력화 실행축입니다.",
+                "stage": "창설·조직·획득·인력 개편을 지시한 단계입니다. 본문에 개별 공급사·계약금액은 제시되지 않았습니다.",
+                "actual_bullets": [
+                    "10월 1일 서명한 지시서로 항공·기갑·화력·군수·공병·훈련 등 최소 6개 편성영역에 자율능력을 통합하도록 했습니다.",
+                    "자율체계 담당 획득책임자를 지정하고, 2028회계연도까지 자율 화력·전투차량·수상 보급·돌파·정찰감시표적획득 능력의 획득·전력화를 우선합니다.",
+                    "15X 전술 무인기 전문가와 390A 로봇 기술자 등 운용 인력도 확대합니다.",
+                ],
                 "actual": "육군은 항공·기갑·화력·군수·공병·훈련 등 최소 6개 편성영역에 자율능력을 통합하고, Autonomy 담당 Portfolio Acquisition Executive를 두며 FY2028까지 자율 화력·전투차량·수상 보급·돌파·정찰감시표적획득 등의 획득·전력화를 우선하도록 했습니다.",
-                "timeline": "2026년 4월 21일 SOUTHCOM SAWC(별도 지역사령부) → 9월 30일 국방부 4성급 AUTOWARCOM·Project Agincourt 발표 → 10월 2일 미 육군 FASCOM 지시 → FY2028 우선 획득·전력화",
+                "timeline": "2026년 9월 30일 국방부 AUTOWARCOM·Project Agincourt 발표 → 2026년 10월 1일 미 육군 지시서 서명 → 2026년 10월 2일 FASCOM 발표 기사 공개 → 2028회계연도까지 우선 획득·전력화",
                 "why": "자문·연구가 아니라 실제 조직·획득책임자·전력화 대상과 기한이 붙은 후속 단계여서 돈이 조달로 이동할 가능성이 더 높습니다.",
                 "next": "FASCOM 실제 가동, Autonomy 조달책임자 임명, 예산 확정, RFI·BAA·OTA·RFP, 시험평가, 계약·대량구매, 부대 배치",
                 "investment": "드론·무인차량·센서·C2·통신·엣지컴퓨팅·자율소프트웨어는 조달 공고와 계약이 확인될 때 직접 매출로 전환됩니다.",
@@ -2842,11 +2913,16 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
             title_ko = "미 국방부 4성급 AUTOWARCOM 창설 구상"
         return {
             "revision": "us-dow-autonomous-warfare-execution-ko-v1",
-            "event_date": "",
+            "event_date": "2026년 9월 30일" if semantic_key == "us-dow-autonomous-warfare-announced" else "",
             "title": title_ko,
             "core": "미 국방부가 4성급 AUTOWARCOM 창설과 자율전투 신속획득을 추진합니다.",
             "stage": stage,
             "actual": "핵심은 자율·로봇 체계를 빠르게 획득·시험·배치하는 조직과 획득 권한을 묶는 것입니다.",
+            **({"actual_bullets": [
+                "4성급 자율전쟁사령부(AUTOWARCOM) 창설을 발표하고 합동군의 자율·로봇 역량 확대를 추진합니다.",
+                "Project Agincourt가 사령부 창설 경로를 마련하고 기존 무인체계 임무와 새로운 획득 모델의 시범 적용을 담당합니다.",
+                "각 군의 조직·획득체계·군사 직무 개편을 요구한 단계이며, 사령부가 이미 가동됐다는 발표는 아닙니다.",
+            ]} if semantic_key == "us-dow-autonomous-warfare-announced" else {}),
             "timeline": "9월 30일 AUTOWARCOM·Project Agincourt 발표 → 육군·각 군 조직·획득 후속 → 예산·조달·시험 → 실제 부대 전력화",
             "why": "Project Meridian보다 직접적으로 예산·획득·계약·전력화로 이어지는 실행축입니다.",
             "next": "지휘관·조직 확정, 의회 예산, 조달 공고, 계약 당사자·금액, 시험평가, 배치 수량·일정",
@@ -3177,9 +3253,12 @@ def source_bits(items: list[dict], limit: int = 1) -> str:
             if published
             else "확인 불가"
         )
-        bits.append(
-            f"[{item['source']}]({item['link']}) · 원천시각 {published_label}"
-        )
+        if item.get("published_precision") == "date" and published:
+            date_label = f"{published.year}년 {published.month}월 {published.day}일"
+            provenance = f"원문 공개일 {date_label} · 시각 미공개"
+        else:
+            provenance = f"원천시각 {published_label}"
+        bits.append(f"[{item['source']}]({item['link']}) · {provenance}")
     return " / ".join(bits) if bits else "확인 불가"
 
 
@@ -3210,7 +3289,7 @@ def compact_core(rule: StoryRule, items: list[dict]) -> str:
     profile = item_story_profile(rule, items)
     if profile:
         return str(profile["core"])
-    return short_text(rule.core, 125)
+    return rule.core
 
 
 def compact_investment_view(rule: StoryRule, items: list[dict]) -> str:
@@ -3288,25 +3367,8 @@ def compact_sectors(rule: StoryRule, items: list[dict]) -> str:
 
 
 def compact_policy_core(value: object, fallback: object = "", limit: int = 50) -> str:
-    text = re.sub(r"\s+", " ", str(value or fallback or "확인 불가")).strip()
-    if len(text) <= limit:
-        return text
-    for match in re.finditer(r".+?[.!?](?=\s|$)", text):
-        sentence = match.group(0).strip()
-        if 8 <= len(sentence) <= limit:
-            return sentence
-    room = max(8, limit - 4)
-    head = text[: room + 1]
-    boundary = max(
-        head.rfind(" "),
-        head.rfind(","),
-        head.rfind("·"),
-        head.rfind(";"),
-        head.rfind(":"),
-    )
-    if boundary < int(room * 0.6):
-        boundary = room
-    return head[:boundary].rstrip(" ,·;:.") + "입니다."
+    # Preserve the sourced action and its qualifications; never turn a clipped noun into a sentence.
+    return re.sub(r"\s+", " ", str(value or fallback or "확인 불가")).strip()
 
 
 def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: dict) -> list[str]:
@@ -3329,15 +3391,16 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
         ]
         timeline_lines = ["- 타임라인:"]
         timeline_lines.extend(f"  • {part}" for part in timeline_parts)
+        facts = profile.get("actual_bullets") or [profile.get("actual")]
+        detail_lines = [f"- 실제 내용: {facts[0]}", *(f"  • {fact}" for fact in facts[1:])]
         return [
-            f"- 발표일: {event_date}",
-            f"- 현재 단계: {profile.get('stage')}",
             f"- 핵심: {core}",
-            f"- 실제 내용: {profile.get('actual')}",
+            *detail_lines,
+            f"- 현재 단계: {profile.get('stage')}",
+            f"- {profile.get('event_date_label', '발표일')}: {event_date}",
+            *([f"- 공개일: {published_label}"] if profile.get("show_publication_date") else []),
             *timeline_lines,
-            f"- 왜 중요한가: {profile.get('why')}",
             *([f"- 국내 관련 기업: {profile.get('korea_candidates')}"] if profile.get("korea_candidates") else []),
-            *([f"- 숨은 역풍: {profile.get('headwind')}"] if profile.get("headwind") else []),
             *([f"- 범위 주의: {profile.get('scope_note')}"] if profile.get("scope_note") else []),
             *([f"- 알림 상태: {profile.get('backfill_note')}"] if profile.get("backfill_note") else []),
             *([f"- 보조 출처: {profile.get('secondary_source')}"] if profile.get("secondary_source") else []),

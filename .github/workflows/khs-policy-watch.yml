@@ -13,6 +13,10 @@ on:
       - "scripts/khs_policy_alert_router.py"
       - "scripts/khs_telegram_delivery_guard.py"
       - "scripts/khs_trusted_policy_news_watch.py"
+      - "scripts/khs_policy_telegram_formatter.py"
+      - "scripts/khs_policy_readability_patch.py"
+      - "scripts/khs_policy_telegram_delivery.py"
+      - "scripts/verify_khs_policy_readability.py"
       - "scripts/khs_nuclear_policy_watch.py"
       - "scripts/verify_khs_policy_delivery_contract.py"
       - "tests/test_polysilicon_policy_guard.py"
@@ -48,7 +52,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  reactivate:
+  verify:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
@@ -76,6 +80,7 @@ jobs:
           python -m py_compile scripts/gamejoa_preopen_news_radar_full_compact_runner.py
           PYTHONPATH=. python tests/test_polysilicon_policy_guard.py
           python scripts/verify_khs_policy_delivery_contract.py
+          python scripts/verify_khs_policy_readability.py --write-previews
           python -m py_compile scripts/khs_nuclear_policy_watch.py
           PYTHONPATH=. python - <<'PY'
           import scripts.khs_nuclear_policy_watch as m
@@ -92,19 +97,7 @@ jobs:
           print("nuclear_regression_tests=passed")
           PY
 
-      - name: Enable existing KHS policy schedule
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh api -X PUT "/repos/${GITHUB_REPOSITORY}/actions/workflows/khs-policy-watch.yml/enable"
-          echo "khs_policy_schedule_enable=confirmed"
-
-      - name: Trigger one live verification dispatch
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh workflow run khs-policy-watch.yml --ref main -f telegram_test=false -f telegram_dry_run=false
-          echo "khs_policy_live_verification_dispatch=created"
+      # A maintenance push must not restart a user-paused watch or send alerts.
 
   watch:
     if: github.event_name != 'push'
@@ -182,6 +175,7 @@ jobs:
       - name: Verify policy Telegram delivery contract
         run: |
           python scripts/verify_khs_policy_delivery_contract.py
+          python scripts/verify_khs_policy_readability.py --write-previews
           python scripts/verify_khs_source_fetch_contract.py
           python scripts/verify_khs_source_status_contract.py
           python scripts/verify_high_impact_news_self_audit.py
@@ -375,9 +369,10 @@ jobs:
           import urllib.request
           from scripts.khs_policy_telegram_formatter import (
               format_policy_message,
-              prepare_telegram_html,
+              prepare_telegram_messages,
               validate_final_policy_message,
           )
+          from scripts.khs_policy_telegram_delivery import deliver_policy_parts
 
           telegram_test = os.environ.get("TELEGRAM_TEST", "false").lower() == "true"
           telegram_dry_run = os.environ.get("TELEGRAM_DRY_RUN", "false").lower() == "true"
@@ -612,7 +607,9 @@ jobs:
               dry_run_path = pathlib.Path("out/khs_telegram_dry_run.md")
               dry_run_path.write_text(
                   "\n\n---\n\n".join(
-                      f"[route={route}]\n{title}\n\n{body}" for title, body, route in messages
+                      f"[route={route}]\n{text}"
+                      for title, body, route in messages
+                      for text in prepare_telegram_messages(title, body)
                   ) + "\n",
                   encoding="utf-8",
               )
@@ -624,35 +621,44 @@ jobs:
               sent_by_route = {}
               message_ids = []
               for title, body, digest, route in sendable:
-                  text = prepare_telegram_html(title, body)
-                  if len(text) > 4096:
-                      raise RuntimeError(f"Telegram HTML message exceeds 4096 characters: {len(text)}")
+                  parts = prepare_telegram_messages(title, body)
                   # Verify the actual Telegram bot immediately before every send.
                   token, chat_id = verify_route(route)
-                  data = urllib.parse.urlencode({
-                      "chat_id": chat_id,
-                      "text": text,
-                      "parse_mode": "HTML",
-                      "disable_web_page_preview": "true",
-                  }).encode("utf-8")
-                  req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=data, method="POST")
-                  with urllib.request.urlopen(req, timeout=20) as resp:
-                      telegram_response = json.loads(resp.read().decode("utf-8"))
-                  if not telegram_response.get("ok"):
-                      raise RuntimeError(f"Telegram rejected message route={route}: {telegram_response}")
-                  message_id = (telegram_response.get("result") or {}).get("message_id")
-                  if message_id is None:
-                      raise RuntimeError(f"Telegram send succeeded without message_id route={route}")
-                  print(f"telegram_send_confirmed=true route={route} message_id={message_id}")
-                  sent_state[digest] = {
-                      "sent_at_utc": now_utc.isoformat().replace("+00:00", "Z"),
-                      "title": title,
-                      "preview": re.sub(r"\s+", " ", body)[:220],
-                      "route": route,
-                      "message_id": message_id,
-                  }
-                  sent_by_route[route] = sent_by_route.get(route, 0) + 1
-                  message_ids.append({"route": route, "message_id": message_id})
+                  def send_part(text):
+                      data = urllib.parse.urlencode({
+                          "chat_id": chat_id,
+                          "text": text,
+                          "parse_mode": "HTML",
+                          "disable_web_page_preview": "true",
+                      }).encode("utf-8")
+                      req = urllib.request.Request(f"https://api.telegram.org/bot{token}/sendMessage", data=data, method="POST")
+                      with urllib.request.urlopen(req, timeout=20) as resp:
+                          telegram_response = json.loads(resp.read().decode("utf-8"))
+                      if not telegram_response.get("ok"):
+                          raise RuntimeError(f"Telegram rejected message route={route}: {telegram_response}")
+                      message_id = (telegram_response.get("result") or {}).get("message_id")
+                      if message_id is None:
+                          raise RuntimeError(f"Telegram send succeeded without message_id route={route}")
+                      print(f"telegram_send_confirmed=true route={route} message_id={message_id}")
+                      return message_id
+
+                  def checkpoint_part(receipt):
+                      state_path.parent.mkdir(parents=True, exist_ok=True)
+                      state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+                      pathlib.Path("out/khs_telegram_delivery_partial.json").write_text(
+                          json.dumps(receipt, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+                      )
+
+                  receipt = deliver_policy_parts(
+                      parts, digest=digest, route=route, title=title,
+                      sent_state=sent_state, now_utc=now_utc, dedupe_hours=dedupe_hours,
+                      send=send_part, checkpoint=checkpoint_part,
+                      force=title.endswith("Telegram test"),
+                  )
+                  new_ids = receipt["new_message_ids"]
+                  message_ids.extend({"route": route, "message_id": value} for value in new_ids)
+                  sent_state[digest]["preview"] = re.sub(r"\s+", " ", body)[:220]
+                  sent_by_route[route] = sent_by_route.get(route, 0) + len(new_ids)
 
               actual_sent = sum(sent_by_route.values())
               if actual_sent:
@@ -699,6 +705,10 @@ jobs:
             out/khs_policy_watch_pending_seen.json
             out/khs_telegram_dry_run.md
             out/khs_telegram_delivery_confirmed.json
+            out/khs_telegram_delivery_partial.json
+            out/khs_policy_readability_*.md
+            out/khs_policy_readability_*.html
+            out/khs_policy_readability_verification.json
           if-no-files-found: ignore
           retention-days: 7
 
@@ -707,7 +717,7 @@ jobs:
         run: python scripts/khs_policy_seen_finalize.py
 
       - name: Commit confirmed watch and Telegram state
-        if: always() && hashFiles('out/khs_telegram_delivery_confirmed.json') != ''
+        if: always() && (hashFiles('out/khs_telegram_delivery_confirmed.json') != '' || hashFiles('out/khs_telegram_delivery_partial.json') != '')
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -724,6 +734,10 @@ jobs:
             data/khs_source_failure_seen.json
             data/khs_telegram_delivery_seen.json
           )
+          if [ ! -f out/khs_telegram_delivery_confirmed.json ]; then
+            # A partial send acknowledges only sent parts, not unsent news events.
+            state_paths=(data/khs_telegram_delivery_seen.json)
+          fi
 
           pending_dir="$RUNNER_TEMP/khs-confirmed-state"
           rm -rf "$pending_dir"
