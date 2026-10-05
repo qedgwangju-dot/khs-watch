@@ -15,6 +15,7 @@ from currency_krw_guard import validate_text as validate_currency_krw_text
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 ALERT = ROOT / "out" / "khs_us_investment_alert.html"
 DELIVERY = ROOT / "out" / "khs_us_investment_delivery.json"
+STATE = ROOT / "data" / "khs_us_investment_seen.json"
 
 
 def _api_json(url: str, *, data: bytes | None = None, timeout: int = 25) -> dict:
@@ -121,9 +122,22 @@ def resolve_mode() -> int:
         return 0
 
 
+def _event_facts(family: str) -> set[str]:
+    try:
+        state = json.loads(STATE.read_text(encoding="utf-8"))
+    except Exception as exc:
+        raise RuntimeError(f"US investment state unavailable: {exc}") from exc
+    return {
+        str(x)
+        for x in (((state.get("event_states") or {}).get(family) or {}).get("facts") or [])
+    }
+
+
 def _validate_alert_contract(text: str) -> None:
     plain = re.sub(r"<[^>]+>", "", text)
     plain = plain.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&")
+    nuclear_facts = _event_facts("nuclear_build")
+    stake_facts = _event_facts("westinghouse_stake")
 
     legacy_signature = (
         "대미투자 | 내용 변화" in plain
@@ -133,6 +147,91 @@ def _validate_alert_contract(text: str) -> None:
     )
     if legacy_signature:
         raise RuntimeError("Blocked legacy article-led US-investment alert format")
+
+    project_power_context = any(
+        token in plain.lower()
+        for token in ("project power", "ap1000", "apr1400", "한미 원전", "미국 원전")
+    )
+    if project_power_context and (
+        re.search(r"(?:1\s*,\s*300|1300)\s*억\s*달러", plain)
+        or re.search(r"\$?\s*130\s*billion", plain, re.I)
+    ):
+        raise RuntimeError(
+            "Blocked unsupported Project Power 130B total: 120B framework cap and 10B conditional upfront are not additive"
+        )
+
+    if project_power_context and re.search(
+        r"총사업(?:비|규모)[^\n]{0,80}(?:1\s*,\s*200|1200)\s*억\s*달러",
+        plain,
+    ):
+        raise RuntimeError(
+            "Blocked Project Power framework cap mislabeled as total project cost"
+        )
+
+    site_claimed_done = bool(
+        re.search(
+            r"(?:1단계\s*)?AP1000[^\n]{0,80}부지[^\n]{0,40}(?:선정|확정)[^\n]{0,20}(?:완료|확정)",
+            plain,
+            re.I,
+        )
+        or re.search(
+            r"부지\s*(?:선정|확정)\s*:\s*(?:완료|확정)",
+            plain,
+            re.I,
+        )
+    )
+    if (
+        project_power_context
+        and site_claimed_done
+        and "nuclear_federal_site_status:selected" not in nuclear_facts
+    ):
+        raise RuntimeError("Blocked Project Power site completion before specific-site selection is in verified state")
+
+    if (
+        project_power_context
+        and re.search(r"(?:공식\s*)?프레임워크\s*:\s*완료", plain, re.I)
+        and "nuclear_framework_signature_status:signed" not in nuclear_facts
+    ):
+        raise RuntimeError("Blocked Project Power framework completion before verified signature")
+
+    if (
+        project_power_context
+        and re.search(r"(?:최종\s*서명|최종\s*계약|본계약)\s*:\s*(?:완료|체결|확정)", plain, re.I)
+        and "nuclear_definitive_agreement_status:signed" not in nuclear_facts
+    ):
+        raise RuntimeError("Blocked Project Power definitive-agreement completion before verified state")
+
+    if (
+        project_power_context
+        and re.search(r"(?:예외\s*적용|타협협정[^\n]{0,30}예외)[^\n]{0,20}(?:완료|체결|확정)", plain, re.I)
+        and "nuclear_settlement_waiver_status:executed" not in nuclear_facts
+    ):
+        raise RuntimeError("Blocked Project Power settlement-waiver completion before verified state")
+
+    if (
+        project_power_context
+        and re.search(r"(?:EPC|설계.?조달.?시공)[^\n]{0,30}(?:본계약|계약)?[^\n]{0,20}(?:완료|체결|확정)", plain, re.I)
+        and "nuclear_phase1_epc_status:signed" not in nuclear_facts
+    ):
+        raise RuntimeError("Blocked Project Power EPC completion before verified state")
+
+    upfront_executed_claim = (
+        "선지급" in plain
+        and bool(re.search(r"(?:실제\s*)?(?:지급|송금|집행)[^\n]{0,20}(?:완료|확정|했다|됨)", plain))
+    )
+    if (
+        project_power_context
+        and upfront_executed_claim
+        and "nuclear_upfront_payment_status:executed" not in nuclear_facts
+    ):
+        raise RuntimeError("Blocked Project Power upfront-payment execution before verified state")
+
+    if (
+        ("Westinghouse" in plain or "웨스팅하우스" in plain)
+        and re.search(r"지분(?:투자|인수)?[^\n]{0,40}(?:거래)?종결[^\n]{0,15}(?:완료|확정)", plain, re.I)
+        and "equity_closing_status:completed" not in stake_facts
+    ):
+        raise RuntimeError("Blocked Westinghouse equity closing before verified state")
 
     if "미국 대형원전 3트랙 웹감시" in plain:
         raise RuntimeError("Blocked legacy three-track nuclear recap alert format")
@@ -177,45 +276,70 @@ def _validate_alert_contract(text: str) -> None:
 
 
 def self_test_mode() -> int:
-    bad_cases = [
-        "대미투자 에너지 패키지 — 에너지 패키지 540억달러",
-        "알래스카 LNG 보도수치 2000억달러",
-        "알래스카 LNG\n9월 30일 발표 대기 상태\nProject North 검토 착수",
-        "원전 8기 확정",
+    semantic_bad_cases = [
+        (
+            "대미투자 | 내용 변화\n자동 용량 계산\nAP1000 6기 APR1400 2기",
+            "legacy article-led",
+        ),
+        (
+            "Project Power 총사업규모 1,300억달러(약 174조원) · AP1000 6기 + APR1400 2기",
+            "130B total",
+        ),
+        (
+            "Project Power · AP1000 1단계 부지 선정: 완료",
+            "site completion",
+        ),
+        (
+            "Project Power · 공식 프레임워크: 완료",
+            "framework completion",
+        ),
+        (
+            "Project Power · 최종 서명: 완료",
+            "definitive-agreement completion",
+        ),
+        (
+            "Project Power · 2025 타협협정 예외 적용 완료",
+            "settlement-waiver completion",
+        ),
+        (
+            "Project Power · AP1000 2기 EPC 본계약 체결 완료",
+            "EPC completion",
+        ),
+        (
+            "Project Power · 장주기 기자재 선지급 실제 집행 완료",
+            "upfront-payment execution",
+        ),
+        (
+            "Westinghouse 지분투자 거래종결: 완료",
+            "equity closing",
+        ),
+        (
+            "대미투자 송금·45영업일\n"
+            "첫 자금 집행 24억달러(약 3조원)\n"
+            "판정: 협의 진전 신호. 실제 송금일·금액 확정으로는 아직 승격하지 않음.",
+            "stale funding judgment",
+        ),
     ]
-    bad_cases.append(
-        "한미 공동 팩트시트 확인\n"
-        "원전 8기 프레임워크 합의 AP1000 6기 APR1400 2기\n"
-        "알래스카 LNG Project North 검토 착수\n"
-        "540억달러 미국측 발표와 한국측 실제 집행확정 별도 관리"
-    )
 
-    for bad in bad_cases:
+    for bad, label in semantic_bad_cases:
         try:
             _validate_alert_contract(bad)
         except RuntimeError:
             pass
         else:
-            raise RuntimeError(f"semantic contract failed to block: {bad}")
-
-    bad_cases.append(
-        "대미투자 송금·45영업일\n"
-        "첫 자금 집행 24억달러(약 3조원)\n"
-        "판정: 협의 진전 신호. 실제 송금일·금액 확정으로는 아직 승격하지 않음."
-    )
+            raise RuntimeError(f"semantic contract failed to block {label}: {bad}")
 
     good = (
         "한미 공동 팩트시트 확인\n"
-        "Project Star 제1호 공식 추진\n"
-        "원전 8기 프레임워크 합의 AP1000 6기 APR1400 2기\n"
-        "알래스카 LNG Project North 검토 착수\n"
-        "540억달러(약 73조원) 미국측 발표와 한국측 실제 집행확정 별도 관리\n"
+        "Project Power 원전 8기 프레임워크 합의 · AP1000 6기 + APR1400 2기\n"
+        "프레임워크 최종 서명: 대기 · 개별 부지 선정: 대기 · AP1000 2기 EPC 본계약: 대기\n"
+        "장주기 기자재 선지급 검토 상한 100억달러(약 13조원) · 실제 집행과 구분\n"
+        "Westinghouse 지분 5~10% · 거래종결 전\n"
         "첫 송금 24억달러(약 3조원) 송금 완료 · 후속 자금요청 추적"
     )
     _validate_alert_contract(good)
-    print("telegram_alert_contract_self_test=passed")
+    print("telegram_alert_contract_self_test=passed project_power_fail_closed=true")
     return 0
-
 
 def send_mode() -> int:
     if not ALERT.exists() or not ALERT.read_text(encoding="utf-8").strip():
