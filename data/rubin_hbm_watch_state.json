@@ -653,13 +653,15 @@
   },
   "_delivery": {
     "id": "87535f99a3183616f21fb00c6c0c7e1d48a98c50f5b0fb239efec33f615324fd",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-10-06T07:58:31+09:00",
     "chunks": [
       "<b>⚠️ AI 부품 리드타임 감시 — 10/5 원본 표 재대조</b>\n\nTrendForce Weekly Radar 004 원본 표와 저장값을 다시 대조해 파서 누락·이월값을 바로잡았습니다.\n\n<b>10/5 확정 표 — 7개 품목</b>\n• <b>심각:</b> DRAM 20주/8주 (2.5배) · HDD 50주/16주 (3.1배) · ABF 48~56주/12주 (4.3배)\n• <b>제약:</b> CPU 25~30주/16~20주 (1.5배) · NAND(eSSD) 16주/8주 (2.0배) · MLCC 35주/12주 (2.9배)\n• <b>균형:</b> GPU 30~40주/30~40주 (1.0배)\n\n<b>원인·시간표 업데이트</b>\n• <b>HDD:</b> HDD 50주 병목 → TrendForce는 시장 완화가 빨라도 2027년 말이라고 전망. Toshiba 공식은 10/2 증설 nearline HDD 라인 첫 출하와 FY2027 생산능력 약 2배 목표를 확인\n\n• 교차검증: TrendForce 공식 Weekly Radar 004는 DRAM 20주/균형 8주·Very Tight를 명시하고, 9/30 공식 메모리 자료는 4Q26 서버 DRAM·기업용 SSD의 공급 제약을 별도로 확인합니다.\n• <a href=\"https://insights.trendforce.com/p/weekly-radar-004\">TrendForce 원문</a>\n\n<b>🔗 메모리·스토리지 연쇄 병목 감시 추가</b>\n\nTrendForce 10/5 기준으로 개별 부품이 아니라 DRAM→기업용 SSD→HDD의 연쇄 병목을 기존 알림에서 함께 추적합니다.\n• <b>DRAM:</b> 20주 / 균형 8주 · 2.5배 · 심각한 공급 부족\n• <b>기업용 SSD:</b> 16주 / 균형 8주 · DRAM 부족이 일부 NAND 공급사의 eSSD 솔루션 지원 능력을 제약\n• <b>HDD:</b> 50주 / 균형 16주 · 3.1배 · TrendForce 시장 전망상 정상화는 빨라도 2027년 말\n• <b>Toshiba 공식:</b> 10/2 Laguna 증설 nearline HDD 라인 첫 출하 완료 · FY2027 생산능력은 FY2025 대비 약 2배 목표\n\n<b>정확도 경계</b>\n• TrendForce 확인 범위는 ‘DRAM 부족 → 일부 NAND 공급사의 기업용 SSD 솔루션 지원 제약’입니다.\n• <b>NAND 컨트롤러 출하가 DRAM 때문에 직접 제한된다는 주장은 이번 원문에서 확인되지 않아 알림 확정조건에 넣지 않았습니다.</b>\n• Toshiba는 이미 증설 라인에서 첫 출하를 시작했습니다. 따라서 ‘2027년 말’은 개별 Toshiba 라인의 미가동 시점이 아니라 시장 전체 리드타임 정상화 전망으로만 추적합니다.\n\n<b>다음 확인</b>\n• DRAM 리드타임·서버 DRAM 가격 / eSSD 리드타임·가격·출하 / HDD 리드타임·증설 가동시점이 함께 꺾이는지 확인\n• <a href=\"https://insights.trendforce.com/p/weekly-radar-004\">TrendForce 원문</a>\n• <a href=\"https://toshiba.semicon-storage.com/ap-en/company/news/news-topics/2026/10/storage-20261002-1.html\">Toshiba 공식 HDD 증설·첫 출하</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      239
+    ],
     "candidate": {
       "updated_at_kst": "2026-10-06T07:57:42+09:00",
       "seen_ids": [
