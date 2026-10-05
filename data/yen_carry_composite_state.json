@@ -16,16 +16,16 @@
     "unwind::일본 단기금리 상승": false,
     "unwind::최근 공식 공동개입·추가개입 경고": false
   },
-  "fx_age_seconds": 1.2235589027404785,
+  "fx_age_seconds": 1.3310940265655518,
   "fx_signal_eligible": true,
   "initialized": true,
   "policy_path": {
     "cftc_net_short": 14161.0,
     "cftc_net_short_change": 0.0,
     "cftc_net_short_pct_oi": 3.9257595919272568,
-    "checked_at_kst": "2026-10-05T16:52:14+09:00",
+    "checked_at_kst": "2026-10-05T16:54:34+09:00",
     "elevated_vol": true,
-    "fx_vol_ratio": 1.8507945102982652,
+    "fx_vol_ratio": 1.8401560675798632,
     "gradual_absorption": false,
     "hawkish_repricing_proxy": false,
     "initialized": true,
@@ -57,7 +57,7 @@
   },
   "real_rate_overlay": {
     "available": true,
-    "checked_at_kst": "2026-10-05T16:52:17+09:00",
+    "checked_at_kst": "2026-10-05T16:54:36+09:00",
     "initialized": true,
     "inputs": {
       "boj_effective_date": null,
@@ -107,7 +107,7 @@
   "source_dates": {
     "cftc": "2026-09-29",
     "jgb2": "2026/10/2",
-    "mof_week": "2026-09-20~09-26",
+    "mof_week": null,
     "policy_action": "2026-07-31",
     "ust2": "2026-10-02"
   },
@@ -117,25 +117,25 @@
     "initialized": true,
     "stressed_codes": [],
     "stressed_count": 0,
-    "updated_at_kst": "2026-10-05T16:52:07+09:00"
+    "updated_at_kst": "2026-10-05T16:54:29+09:00"
   },
   "unwind_label": "엔캐리 청산 미확인",
   "unwind_level": 0,
-  "updated_at_kst": "2026-10-05T16:51:41+09:00",
+  "updated_at_kst": "2026-10-05T16:53:53+09:00",
   "values": {
     "cftc_net_short": 14161,
     "cftc_net_short_pct_oi": 3.9257595919272568,
-    "fx_12h_5m_sigma_bps": 3.1946722951130915,
-    "fx_vol_ratio": 1.8507945102982652,
+    "fx_12h_5m_sigma_bps": 3.176309187795386,
+    "fx_vol_ratio": 1.8401560675798632,
     "jgb2": 1.919,
-    "mof_latest_2w_outward_trillion_yen": -2.3194,
-    "mof_prior_2w_outward_trillion_yen": 0.8836,
+    "mof_latest_2w_outward_trillion_yen": null,
+    "mof_prior_2w_outward_trillion_yen": null,
     "us_jp_2y_spread": 2.911,
-    "usdjpy": 157.61199951171875,
-    "usdjpy_12h_drawdown_pct": -0.3395548226230559,
-    "usdjpy_15m_pct": -0.062143933787442984,
-    "usdjpy_30m_pct": -0.0608675821927636,
-    "usdjpy_60m_pct": -0.07797958484601572,
+    "usdjpy": 157.63800048828125,
+    "usdjpy_12h_drawdown_pct": -0.3231140128668633,
+    "usdjpy_15m_pct": -0.032338891455313976,
+    "usdjpy_30m_pct": -0.050724603328861355,
+    "usdjpy_60m_pct": -0.010781954994919705,
     "ust2": 4.83
   }
 }
