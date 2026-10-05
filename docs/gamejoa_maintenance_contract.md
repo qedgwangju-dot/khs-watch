@@ -59,6 +59,12 @@ Every defect or requested change must follow this sequence:
   incompatible thematic summary is re-extracted from the article and checked
   again; it is never published by bypassing source alignment. Related-story
   footers are not article evidence.
+- Separately labelled leading AI commentary cards are not the reported event.
+  Select the sourced issuer action, counterparty, amount, observation period and
+  execution stage first. Concise radar cores allow up to 180 characters so an
+  actual event is not displaced by a shorter background sentence. Inline KRW
+  conversions and complete-prose/source-alignment guards still apply. Do not
+  change legacy body receipts just because the summary input is cleaned.
 - Client-rendered News1 articles use only typed text in the linked article's
   `articleView`, bound to its requested URL article ID and aligned title. Empty,
   malformed or mismatched client data cannot fall back to recommendation HTML.

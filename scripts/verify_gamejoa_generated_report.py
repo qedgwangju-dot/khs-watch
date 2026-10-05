@@ -20,7 +20,7 @@ REQUIRED_ITEM_MARKERS = [
     "- 출처:",
 ]
 FIELD_LIMITS = {
-    "- 핵심:": 100,
+    "- 핵심:": 180,
 }
 
 FORBIDDEN_TEXT = [

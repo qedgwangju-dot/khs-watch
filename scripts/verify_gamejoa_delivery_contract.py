@@ -37,7 +37,7 @@ COMPACT_PROSE_PREFIXES = (
     "- 핵심:",
 )
 COMPACT_PROSE_LIMITS = {
-    "- 핵심:": 100,
+    "- 핵심:": 180,
 }
 FORBIDDEN_COMPACT_MARKERS = (
     "- 기준/시각:",
@@ -144,7 +144,7 @@ REQUIRED_RUNNER_SNIPPETS = [
     "build_ai_factory_deployment_alert",
     "build_sk_ms_memory_supply_alert",
     'supply_chain_theme": f"us_semiconductor_selloff:',
-    "GAMEJOA_CORE_MAX_CHARS = 100",
+    "GAMEJOA_CORE_MAX_CHARS = 180",
     "semantic_event_theme",
     "collect_fx_snapshot",
     "build_alert_fx_conversion",

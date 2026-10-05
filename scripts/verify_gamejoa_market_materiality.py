@@ -2592,7 +2592,7 @@ class MaterialityChecks(unittest.TestCase):
         core = radar.verified_alert_core(item, title)
         for fact in ("미국", "30년", "7.28%", "0.25%포인트"):
             self.assertIn(fact, core)
-        self.assertLessEqual(len(core), 100)
+        self.assertLessEqual(len(core), radar.GAMEJOA_CORE_MAX_CHARS)
         self.assertTrue(radar.core_sentence_is_complete(core))
 
     def test_denial_headline_cannot_reuse_the_previous_announcement_as_core(self):
@@ -2604,7 +2604,7 @@ class MaterialityChecks(unittest.TestCase):
         self.assertIn("LNG", core)
         self.assertIn("확정된 것이 아니다", core)
         self.assertNotIn("500억", core)
-        self.assertLessEqual(len(core), 100)
+        self.assertLessEqual(len(core), radar.GAMEJOA_CORE_MAX_CHARS)
         self.assertTrue(radar.core_sentence_is_complete(core))
         bad = "1) " + title + "\n- 핵심: 한국은 알래스카 LNG에 500억 달러를 투자한다고 발표했다.\n"
         self.assertIn("headline_event_or_period_mismatch", radar.compact_alert_block_errors(bad))

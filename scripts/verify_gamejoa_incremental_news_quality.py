@@ -29,6 +29,8 @@ FOREGROUND_FIXTURE = json.loads((ROOT / "data/gamejoa_foreground_selection_fixtu
 FOREGROUND_CASES = {case["id"]: case for case in FOREGROUND_FIXTURE["cases"]}
 RUNTIME_FIXTURE = json.loads((ROOT / "data/gamejoa_runtime_selection_fixtures_20261005.json").read_text(encoding="utf-8"))
 RUNTIME_CASES = {case["id"]: case for case in RUNTIME_FIXTURE["cases"]}
+REPORTED_FIXTURE = json.loads((ROOT / "data/gamejoa_reported_event_fixtures_20261005.json").read_text(encoding="utf-8"))
+REPORTED_CASES = {case["id"]: case for case in REPORTED_FIXTURE["cases"]}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -70,6 +72,123 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def test_six_actual_sent_events_retain_reported_action_not_commentary(self):
+        self.assertEqual(len(REPORTED_CASES), 6)
+        for case in REPORTED_CASES.values():
+            with self.subTest(case=case["id"]):
+                candidate = classify(case, LIVE_NOW.replace(hour=21))
+                self.assertIsNotNone(candidate)
+                item = radar.normalize_alert_for_output(candidate)
+                self.assertFalse(radar.source_core_fact_errors(item))
+                self.assertTrue(radar.core_sentence_is_complete(item["telegram_core_fact"]))
+                self.assertTrue(radar.source_core_fact_errors({**item, "telegram_core_fact": case["old_core"]}))
+
+    def test_labelled_ai_commentary_is_not_reported_article_evidence(self):
+        for case in REPORTED_CASES.values():
+            if case["body"].startswith("💡 AI 분석"):
+                lines = case["body"].splitlines()
+                with self.subTest(case=case["id"]):
+                    self.assertNotIn(lines[1], radar.article_summary_body(case["body"]))
+                    self.assertTrue(materiality.source_reported_body(case["body"]).startswith(lines[2]))
+        ai_only = "AI 분석\n반도체 공급 계약 100억원 체결로 실적 기대가 커졌어요."
+        self.assertFalse(eligible("반도체 공급 계약 체결", ai_only))
+
+    def test_embedded_ai_reference_is_not_removed_as_a_leading_card(self):
+        body = CONTRACT_BODY + "\n기업은 AI 분석 솔루션도 제공하고 있다."
+        self.assertEqual(materiality.source_reported_body(body), body)
+
+    def test_reported_cleanup_does_not_invalidate_previous_body_receipts(self):
+        case = REPORTED_CASES["asset_sale_gross_and_buyback_authorization"]
+        item = alert(case["title"], case["body"], case["url"])
+        previous_digest = hashlib.sha256(materiality.canonical_source_fact(materiality.source_article_body(case["body"])).encode("utf-8")).hexdigest()
+        self.assertEqual(materiality.verified_source_body_digest(item), previous_digest)
+        with tempfile.TemporaryDirectory() as folder, patch.object(telegram, "SEEN_PATH", Path(folder) / "seen.json"):
+            receipt = {"title": case["title"], "link": case["url"], "first_seen_kst": NOW.isoformat(),
+                       "lanes": {"live": NOW.isoformat()}, "source_body_digest": previous_digest,
+                       "source_fact_identity": "source_facts:v1:previous-rule", "source_fact_keys": []}
+            telegram.SEEN_PATH.write_text(json.dumps({"seen": {"link:" + telegram.digest_seen(case["url"]): receipt}}), encoding="utf-8")
+            before = telegram.SEEN_PATH.read_bytes()
+            fresh, skipped = telegram.filter_previously_seen_alerts([item], LIVE_NOW.replace(hour=21), "live")
+            self.assertFalse(fresh)
+            self.assertEqual(len(skipped), 1)
+            self.assertEqual(telegram.SEEN_PATH.read_bytes(), before)
+
+    def test_acquisition_retains_signed_agreement_and_conditional_future_close(self):
+        case = REPORTED_CASES["signed_acquisition_with_future_closing"]
+        fact = radar.source_headline_event_fact(case["title"], case["body"])
+        for term in ("어드밴스드 드레니쥐 시스템즈", "스톰트랩", "5억3000만 달러", "최종 계약", "규제 승인", "2026년 4분기", "예정"):
+            self.assertIn(term, fact)
+        self.assertNotIn("인수 완료", fact)
+        self.assertGreater(len(fact), 100)
+
+    def test_acquisition_amount_and_closing_year_are_source_bound(self):
+        case = REPORTED_CASES["signed_acquisition_with_future_closing"]
+        fact = radar.source_headline_event_fact(case["title"].replace("5억3000만", "6억4000만"), case["body"].replace("5억3000만", "6억4000만").replace("2026년 역년", "2027년 역년"))
+        self.assertIn("6억4000만 달러", fact)
+        self.assertIn("2027년 4분기", fact)
+        self.assertNotIn("5억3000만", fact)
+
+    def test_manufacturing_contract_retains_subsidiary_partner_and_permission(self):
+        case = REPORTED_CASES["manufacturing_contract_not_prior_license"]
+        fact = radar.source_headline_event_fact(case["title"], case["body"])
+        for term in ("사이언스 바이오메디컬", "TIRC", "베누비아", "이보가인", "제조 계약을 체결", "DEA", "규제 승인"):
+            self.assertIn(term, fact)
+        self.assertNotIn("사이언스랩스", fact)
+        self.assertNotIn("승인 완료", fact)
+
+    def test_cfo_change_retains_company_guidance_not_analyst_consensus(self):
+        case = REPORTED_CASES["cfo_departure_company_guidance"]
+        fact = radar.source_headline_event_fact(case["title"], case["body"])
+        for term in ("인스메드", "CFO", "10월 30일", "2026년 연간", "유지", "후임"):
+            self.assertIn(term, fact)
+        self.assertNotIn("198.15%", fact)
+        self.assertNotIn("18억800만", fact)
+
+    def test_buyback_end_retains_horizon_and_upcoming_earnings_date(self):
+        case = REPORTED_CASES["buyback_ending_not_prior_week_flow"]
+        fact = radar.source_headline_event_fact(case["title"], case["body"])
+        for term in ("삼성전자", "이달 중순", "종료 예정", "8일", "3분기 잠정실적"):
+            self.assertIn(term, fact)
+        self.assertNotIn("7조3845", fact)
+        self.assertNotIn("100조원", fact)
+
+    def test_asset_sale_retains_gross_proceeds_and_authorization_not_spending(self):
+        case = REPORTED_CASES["asset_sale_gross_and_buyback_authorization"]
+        fact = radar.source_headline_event_fact(case["title"], case["body"])
+        for term in ("지오 그룹", "3곳", "9억5000만 달러", "매각 완료", "승인 한도", "12억5000만 달러"):
+            self.assertIn(term, fact)
+        self.assertNotIn("7억500만", fact)
+        self.assertNotIn("매입 완료", fact)
+
+    def test_us_fund_performance_retains_population_period_and_returns(self):
+        case = REPORTED_CASES["us_fund_performance_not_domestic_decline"]
+        fact = radar.source_headline_event_fact(case["title"], case["body"])
+        for term in ("미국 상장", "ARKG", "지난 2일", "3개월", "24.8%", "연초 이후", "83.5%"):
+            self.assertIn(term, fact)
+        self.assertNotIn("국내", fact)
+
+    def test_single_fund_historical_return_is_not_promoted_by_macro_background(self):
+        case = REPORTED_CASES["us_fund_performance_not_domestic_decline"]
+        self.assertFalse(eligible(case["title"], case["body"]))
+
+    def test_reported_events_render_complete_with_inline_fx_inside_limit(self):
+        now = LIVE_NOW.replace(hour=21)
+        candidates = [classify(case, now) for case in REPORTED_CASES.values()]
+        snapshot = {"rates": {"USD": {"value": 1420.0, "status": "최근거래", "reference_time_kst": now.isoformat(),
+                    "query_time_kst": now.isoformat(), "source": "Test only", "url": "https://example.com/test-fx"}}}
+        with patch.object(radar.base, "kst_now", return_value=now), patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}), patch.object(radar, "collect_fx_snapshot", return_value=snapshot):
+            selected = radar.compact_quality_final_alerts(candidates, 30)
+            report = radar.compact_report(selected, {}, {}, now)
+            radar.guard_preopen_report(report)
+        self.assertEqual({item["link"] for item in selected}, {case["url"] for case in REPORTED_CASES.values() if case["expected_keep"]})
+        for item in selected:
+            self.assertFalse(radar.source_core_fact_errors(item))
+            self.assertTrue(radar.core_sentence_is_complete(item["telegram_core_fact"]))
+            self.assertLessEqual(len(item["telegram_core_fact"]), radar.GAMEJOA_CORE_MAX_CHARS)
+            self.assertIn(item["link"], report)
+        self.assertIn("(약", report)
+        self.assertFalse(generated_guard.duplicate_event_errors(selected, radar))
+
     def test_real_runtime_report_is_replayed_with_its_three_original_bodies(self):
         self.assertEqual(len(RUNTIME_CASES), 3)
         for case in RUNTIME_CASES.values():
@@ -285,7 +404,7 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertFalse(generated_guard.duplicate_event_errors(selected, radar))
         for item in selected:
             self.assertTrue(radar.core_sentence_is_complete(item["telegram_core_fact"]))
-            self.assertLessEqual(len(item["telegram_core_fact"]), 100)
+            self.assertLessEqual(len(item["telegram_core_fact"]), radar.GAMEJOA_CORE_MAX_CHARS)
             self.assertIn(item["link"], report)
         self.assertNotIn("투자 포인트:", report)
         self.assertNotIn("[상 |", report)
@@ -551,7 +670,8 @@ if __name__ == "__main__":
               "seen_state_modified": False, "cases": replay(), "remote_replay_run_id": LIVE_FIXTURE["run_id"],
               "remote_replay_articles": len(LIVE_CASES), "foreground_replay_run_id": FOREGROUND_FIXTURE["run_id"],
               "foreground_replay_articles": len(FOREGROUND_CASES), "runtime_replay_run_id": RUNTIME_FIXTURE["run_id"],
-              "runtime_replay_articles": len(RUNTIME_CASES)}
+              "runtime_replay_articles": len(RUNTIME_CASES), "reported_event_run_id": REPORTED_FIXTURE["run_id"],
+              "reported_event_articles": len(REPORTED_CASES)}
     path = ROOT / "out/gamejoa_incremental_news_verification.json"
     path.parent.mkdir(exist_ok=True)
     path.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

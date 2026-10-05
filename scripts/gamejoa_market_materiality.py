@@ -11,7 +11,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 75
+VERSION = 76
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -167,6 +167,8 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("military_reinforcement", r"(?:항모|항공모함|병력).{0,40}(?:추가\s*파견|증강)", r"추가\s*파견|병력.{0,20}증강"),
     ("trading_status", r"거래\s*재개|액면병합|주식병합", r"거래.{0,12}재개|재개.{0,12}거래|액면병합|주식병합"),
     ("trading_rule", r"단주|최소\s*(?:매매|거래)\s*(?:수량|단위)|시간외\s*종가매매", r"단주|매매수량단위|시간외\s*종가매매"),
+    ("management_change", r"(?:CFO|CEO|최고재무책임자|최고경영자).{0,30}(?:사임|해임|교체)", r"사임|해임|교체"),
+    ("fund_performance", r"ETF.{0,15}(?:순풍|강세|상승|하락|수익률)", r"ETF|수익률"),
     ("sanctions_request", r"제재.{0,30}(?:요청|요구|해야)|sanctions?.{0,30}(?:request|call)", r"제재[^.!?]{0,35}(?:요청|요구|해달라|해야)|sanctions?.{0,35}(?:request|call)"),
     ("economic_response", r"경제\s*전쟁|제재.{0,25}대응", r"경제\s*전쟁|제재|환율|필수\s*물자"),
     ("national_exports", r"수출국|연간\s*수출", r"누적\s*수출|수출액|월간\s*수출"),
@@ -174,7 +176,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("asset_financing", r"(?:칩|GPU|데이터센터|설비).{0,25}(?:파는|매각|담보|재임차)|sale.leaseback", r"특수목적기구|\bSPV\b|매각|담보|재임차|sale.leaseback"),
     ("factory_tariff", r"공장.{0,20}(?:안|않|미건설).{0,25}관세", r"공장.{0,160}관세"),
     ("customer_implementation", r"1차\s*시공|초도\s*납품", r"1차\s*시공|초도\s*납품"),
-    ("commercial_order", r"수주|공급\s*계약|납품\s*계약|발사\s*계약|\d+\s*년\s*계약(?!가)", r"수주|발주|계약"),
+    ("commercial_order", r"수주|공급\s*계약|제조\s*계약|납품\s*계약|발사\s*계약|\d+\s*년\s*계약(?!가)", r"수주|발주|계약"),
     ("industrial_program", r"(?:SMR|원전|양자|반도체|로봇).{0,16}상용화", r"(?:상용화|사업화).{0,50}(?:출범|지원|시행|추진)|(?:출범|지원|시행|추진).{0,50}(?:상용화|사업화)"),
     ("environmental_approval", r"환경(?:영향)?평가.{0,15}(?:통과|완료|면제)", r"최종\s*환경평가|FONSI|환경영향평가서.{0,35}(?:없이|면제)"),
     ("ownership", r"지분.{0,25}(?:인수|매각|취득)|자산.{0,50}(?:인수|매각|취득)|(?:피?인수).{0,25}(?:지분|계약|완료|협상|논의|검토|임박)|인수로|회사\s*인수|(?:결합|합병).{0,12}완료|합병(?!원)|주식.{0,8}(?:판다|매도|매각)", r"지분|인수|매각|매도|취득|거래계획|결합|합병(?!원)|stake|acquir|merger"),
@@ -325,6 +327,13 @@ def focus_matches(title: str, sentence: str) -> bool:
     if DENIAL_HEADLINE.search(title) and not DENIAL_SOURCE.search(sentence):
         return False
     kind = focus_kind(title)
+    if kind == "management_change":
+        return bool(re.search(r"CFO|CEO|최고재무책임자|최고경영자", sentence, re.I)
+                    and re.search(r"사임|해임|교체", sentence))
+    if kind == "fund_performance":
+        if re.search(r"美|미국", title) and re.search(r"국내|한국", sentence) and not re.search(r"미국|美", sentence):
+            return False
+        return bool(re.search(r"ETF|수익률", sentence) and re.search(r"\d+(?:\.\d+)?%|상승|하락|강세", sentence))
     if kind == "trading_rule":
         return bool(re.search(r"단주|매매수량단위|시간외\s*종가매매", sentence)
                     and re.search(r"허용|검토|확대|처분|변경|시행|발표", sentence))
@@ -728,11 +737,22 @@ def verified_source_body_digest(alert: dict) -> str:
     return hashlib.sha256(body.encode("utf-8")).hexdigest() if body else ""
 
 
+def source_reported_body(body: str) -> str:
+    """Keep the report, not a separately labelled leading AI commentary card."""
+    lines = source_article_body(body).splitlines()
+    nonempty = [index for index, line in enumerate(lines) if line.strip()]
+    if nonempty and re.fullmatch(r"(?:💡\s*)?AI\s*분석", lines[nonempty[0]].strip(), re.I):
+        # This publisher layout has one summary paragraph followed by the report.
+        start = nonempty[2] if len(nonempty) > 2 else len(lines)
+        return "\n".join(lines[start:])
+    return "\n".join(lines)
+
+
 @lru_cache(maxsize=256)
 def _verified_source_fact_keys(title: str, body: str, source_url: str) -> tuple[str, ...]:
     # Cache computation only within this process, keyed by the entire fresh body.
     # Do not persist source bodies or reuse a previous run's retrieval evidence.
-    body = source_article_body(body)
+    body = source_reported_body(body)
     assessment = assess(title, body, source_url=source_url)
     if assessment["disposition"] != "keep" or assessment["priority"] < 2:
         return ()
@@ -824,6 +844,7 @@ def source_event_identity(alert: dict) -> str:
 # Each rule needs a subject and a change in the same source-authored sentence.
 # Quantities, counterparties and stages are evidence, not estimates of price impact.
 RULES = (
+    ("management_change", ("earnings", "timeline"), r"CFO|CEO|최고재무책임자|최고경영자", r"사임|해임|교체"),
     ("network_segmentation_policy", ("earnings", "timeline"),
      r"망분리|규제\s*완화|신청\s*가능\s*대상|선정\s*규모",
      r"선정된다|선정한다|선정할|확대|늘릴|완화.{0,15}(?:추진|시행|확대)"),
@@ -838,7 +859,7 @@ RULES = (
      r"기업공개|\bipo\b|(?:증시|코스피|코스닥|나스닥)\s*상장|상장\s*(?:추진|예정|연기|철회|신청|승인)|(?:나스닥|코스피|코스닥).{0,35}첫\s*거래|ETF",
      r"추진|예정|목표|신청|승인|상장(?:했다|한다고|한다|할|돼)|첫\s*거래를\s*시작(?:한다|한다고|하는)|연기|철회|마케팅|등록|출시|plan|aim|file|approv|delay|withdraw|market"),
     ("commercial_order", ("earnings", "timeline"),
-     r"수주|발주|공급계약|공급\s*계약|납품\s*계약|발사\s*계약|purchase order|supply contract|procurement contract|launch (?:contract|agreement)",
+     r"수주|발주|공급계약|공급\s*계약|제조\s*(?:서비스\s*)?계약|납품\s*계약|발사\s*계약|purchase order|supply contract|manufacturing (?:contract|agreement)|procurement contract|launch (?:contract|agreement)",
      r"체결|확정|수주|발주|갱신|취소|파기|해지|협상|추진|서명|sign|secure|award|agree|cancel|negotiat"),
     ("order_backlog_level", ("earnings", "timeline"),
      r"수주잔고|수주\s*잔고|잔여수주|order backlog|remaining orders", r"확보|기록|집계|발표|증가|감소|secur|report|increas|decreas"),
@@ -1337,7 +1358,7 @@ def source_sentences(text: str) -> list[str]:
 
 def assess(title: str, body: str, *, source_url: str = "") -> dict:
     title = re.sub(r"\s+", " ", str(title or "")).strip()
-    body = str(body or "").strip()
+    body = source_reported_body(str(body or "")).strip()
     result = {"version": VERSION, "disposition": "review", "priority": 1, "axes": [], "evidence": []}
     if not title or not body:
         result["reason"] = "source_evidence_unavailable"

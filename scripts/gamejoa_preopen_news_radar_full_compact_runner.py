@@ -1690,7 +1690,7 @@ KOREAN_WON_AMOUNT_PATTERN = (
     r"(?=\d)(?:\d[\d,.]*조)?(?:\d[\d,.]*억)?"
     r"(?:\d[\d,.]*만)?(?:\d[\d,.]*)?원"
 )
-GAMEJOA_CORE_MAX_CHARS = 100
+GAMEJOA_CORE_MAX_CHARS = 180
 GAMEJOA_INVESTMENT_MAX_CHARS = 100
 GAMEJOA_ARTICLE_FACT_LIMIT = 2
 FX_QUERY_TIMEOUT_SECONDS = max(3, int(os.getenv("RADAR_FX_TIMEOUT_SECONDS", "8")))
@@ -2157,7 +2157,7 @@ def article_title_restatement(sentence: str, title: str) -> bool:
 
 def article_summary_body(text: str) -> str:
     """Keep article paragraphs, excluding UI chrome and related-story sections."""
-    raw = str(text or "")
+    raw = market_materiality.source_reported_body(str(text or ""))
     ui_boundary = re.search(r"URL\s*(?:공유|복사)", raw, flags=re.I)
     if ui_boundary:
         raw = raw[ui_boundary.end():]
@@ -2518,10 +2518,77 @@ def acquisition_negotiation_fact(title: str, body: str) -> str:
     return fact if core_sentence_is_complete(fact) else ""
 
 
+def reported_issuer_announcement_fact(title: str, body: str) -> str:
+    """Bind a declared issuer action before analyst forecasts or commentary."""
+    body = market_materiality.source_reported_body(body)
+    issuer = re.search(r"(?m)^([A-Za-z가-힣][^.!?\n]{1,35}?)\(([A-Z0-9.]{2,10})\)(?:은|는|가|이)\s+", body)
+    if not issuer:
+        return ""
+    actor = issuer.group(1).strip()
+    lead = body[issuer.end():].splitlines()[0]
+    currency = r"\d[\d,.]*(?:\s*[조억만천]\s*\d[\d,.]*)*\s*[조억만천]?\s*(?:달러|유로|원)"
+    acquisition = re.search(rf"^(.+?)(?:을|를)\s*(약\s*)?({currency})에\s*인수하는\s*(?:최종\s*)?계약을\s*체결", lead)
+    if "인수" in title and acquisition:
+        target = re.sub(r"\([A-Za-z][^)]*\)", "", acquisition.group(1)).strip()
+        fact = f"{actor}{korean_topic_particle(actor)} {target}를 {acquisition.group(2) or ''}{acquisition.group(3)}에 인수하는 최종 계약을 체결했다."
+        close = re.search(r"거래는\s*규제\s*당국\s*승인[^\n]{0,100}?(\d{4})년[^\n]{0,30}?([1-4])분기\s*중\s*완료될\s*것으로\s*예상", body)
+        if close:
+            fact += f" 규제 승인 등을 거쳐 {close.group(1)}년 {close.group(2)}분기 종결 예정이다."
+        return fact if core_sentence_is_complete(fact) else ""
+    sale = re.search(rf"연방정부에\s*총\s*({currency})에\s*매각하는\s*거래를\s*마무리", lead)
+    buyback = re.search(rf"자사주\s*매입\s*승인\s*한도를[^\n]{{0,55}}?늘린\s*({currency})로\s*상향", lead)
+    facilities = re.search(r"\(([A-Z]{2,8})\)\s*수용·처리\s*시설\s*(\d+)곳", lead)
+    if "매각" in title and "자사주" in title and sale and buyback and facilities:
+        fact = (f"{actor}{korean_topic_particle(actor)} {facilities.group(1)} 시설 {facilities.group(2)}곳을 연방정부에 "
+                f"{sale.group(1)}에 매각 완료했다. 자사주 매입 승인 한도는 {buyback.group(1)}로 늘렸다.")
+        return fact if core_sentence_is_complete(fact) else ""
+    if market_materiality.focus_kind(title) == "management_change":
+        departure = re.search(r"최고재무책임자\(CFO\)가\s*(\d{1,2}월\s*\d{1,2}일)\s*자로\s*사임", lead)
+        guidance = re.search(r"(\d{4})년\s*연간\s*매출\s*가이던스를\s*유지", lead)
+        if departure and guidance:
+            fact = (f"{actor}{korean_topic_particle(actor)} CFO의 {departure.group(1)} 사임을 발표했고, "
+                    f"{guidance.group(1)}년 연간 매출 가이던스를 유지했다.")
+            if re.search(r"후임\s*CFO\s*물색\s*절차에\s*이미\s*착수", body, re.I):
+                fact += " 후임 CFO 물색에 착수했다."
+            return fact if core_sentence_is_complete(fact) else ""
+    if re.search(r"제조\s*계약", title):
+        partner = re.search(r"([A-Za-z가-힣]+)와\s*제조\s*계약", title)
+        subsidiary = re.search(r"자회사[^\n]{0,55}?\(([A-Z]{2,8})\)가", lead)
+        product = re.search(r"의약품\s*등급\s*([가-힣A-Za-z]+)\s*원료의약품", lead)
+        if partner and subsidiary and product and partner.group(1) in lead and "제조 서비스 계약을 체결" in lead:
+            fact = (f"{actor}의 자회사 {subsidiary.group(1)}는 {partner.group(1)}와 미국 내 의약품 등급 "
+                    f"{product.group(1)} 제조 계약을 체결했다.")
+            if re.search(r"생산의\s*시기와\s*규모는\s*DEA\s*쿼터[^\n]{0,80}규제\s*승인에\s*따라", body):
+                fact += " 생산 시기·규모는 DEA 쿼터와 규제 승인에 달렸다."
+            return fact if core_sentence_is_complete(fact) else ""
+    return ""
+
+
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
-    source = re.sub(r"\s+", " ", body)
+    reported_fact = reported_issuer_announcement_fact(title, body)
+    if reported_fact:
+        return reported_fact
+    source = re.sub(r"\s+", " ", market_materiality.source_reported_body(body))
+    if focus == "fund_performance" and re.search(r"美|미국", title):
+        performance = re.search(r"미국\s*상장\s*ETF[^\n]{0,80}?\(([A-Z]{2,8})\)은\s*지난\s*(\d+)일\s*기준으로\s*최근\s*(\d+)개월간\s*(\d+(?:\.\d+)?)%", source)
+        if performance:
+            code, day, months, rate = performance.groups()
+            fact = f"미국 상장 {code} ETF는 지난 {day}일 기준 최근 {months}개월 수익률 {rate}%를 기록했다."
+            annual = re.search(r"연초\s*이후\s*수익률은\s*(\d+(?:\.\d+)?)%", source)
+            if annual:
+                fact += f" 연초 이후 수익률은 {annual.group(1)}%다."
+            return fact if core_sentence_is_complete(fact) else ""
+    if focus == "shareholder" and re.search(r"자사주.{0,30}(?:빠지|끝|종료|마무리)", title):
+        ending = re.search(r"([A-Za-z0-9가-힣·&]+)\s*(?:주가를\s*떠받쳐온\s*)?자사주\s*매입이\s*(이달\s*(?:초중순|중순|말|초))\s*끝", source)
+        if ending:
+            actor, horizon = ending.groups()
+            fact = f"{actor}의 자사주 매입은 {horizon} 종료 예정이다."
+            announcement = re.search(rf"오는\s*(\d+)일\s*예정된\s*{re.escape(actor)}의\s*([1-4])분기\s*잠정\s*실적", source)
+            if announcement:
+                fact += f" {announcement.group(1)}일 {announcement.group(2)}분기 잠정실적 발표를 앞두고 있다."
+            return fact if core_sentence_is_complete(fact) else ""
     if focus == "product_volume":
         volume = re.search(
             r"([A-Za-z가-힣]+(?:\s+[A-Za-z가-힣]+)?)\([A-Z]+\)(?:은|는)\s*(\d{4})년\s*([1-4])분기"
@@ -10230,6 +10297,9 @@ def verified_alert_core(alert: dict, title: str) -> str:
     if is_business:
         if alert.get("body_verified"):
             body = str(alert.get("source_body") or alert.get("source_abstract") or "")
+            observed_fact = source_headline_event_fact(source_title or title, article_summary_body(body))
+            if observed_fact and valid_source_fact(observed_fact):
+                return observed_fact
             entry_fact = conditional_financial_market_entry_fact(source_title or title, article_summary_body(body))
             if entry_fact and valid_source_fact(entry_fact):
                 return entry_fact
@@ -10312,7 +10382,7 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         return []
     errors = []
     expected_observation = source_headline_event_fact(title, source)
-    if expected_observation and re.sub(r"\s+", "", expected_observation) != re.sub(r"\s+", "", core):
+    if expected_observation and market_materiality.canonical_source_fact(expected_observation) != market_materiality.canonical_source_fact(core):
         errors.append("headline_actor_population_period_or_standard_mismatch")
     negotiation = acquisition_negotiation_fact(title, source)
     if negotiation and not re.search(r"논의\s*중|협상\s*중|검토\s*중", core):
