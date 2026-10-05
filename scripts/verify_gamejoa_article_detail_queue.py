@@ -96,7 +96,7 @@ class DetailQueueChecks(unittest.TestCase):
         conversion = radar.build_alert_fx_conversion({**item, 'telegram_core_fact': core},
                         {'rates': {'USD': {'value': 1350, 'status': 'fixture', 'source': 'unit test'}}}, NOW)
         converted = radar.compact_converted_core(core, conversion)
-        self.assertIn('84억 달러(약 11조원)', converted)
+        self.assertIn('84억 달러(약 11조3,400억원)', converted)
         self.assertIn('정부', converted)
         self.assertIn('어렵다는', converted)
         self.assertTrue(radar.core_sentence_is_complete(converted), converted)
@@ -466,7 +466,7 @@ class DetailQueueChecks(unittest.TestCase):
             {"rates": {"USD": {"value": 1348.28, "status": "fixture", "source": "unit test"}}}, NOW,
         )
         converted = radar.compact_converted_core(core, conversion)
-        self.assertIn("35억 달러(약 5조원)", converted)
+        self.assertIn("35억 달러(약 4조7,190억원)", converted)
         self.assertIn("2027년물", converted)
         self.assertTrue(radar.core_sentence_is_complete(converted), converted)
 

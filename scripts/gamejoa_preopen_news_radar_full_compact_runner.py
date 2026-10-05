@@ -2010,8 +2010,12 @@ def collect_fx_snapshot(alerts: list[dict], now) -> dict:
 
 
 def format_krw_amount(value: float) -> str:
-    if value >= 1_000_000_000_000:
+    if value >= 100_000_000_000_000:
         return f"{int(value / 1_000_000_000_000 + 0.5):,}조원"
+    if value >= 1_000_000_000_000:
+        units = int(value / 100_000_000 + 0.5)
+        trillions, remainder = divmod(units, 10_000)
+        return f"{trillions}조{remainder:,}억원" if remainder else f"{trillions}조원"
     if value >= 100_000_000:
         number = f"{value / 100_000_000:,.1f}".rstrip("0").rstrip(".")
         return f"{number}억원"
@@ -10606,7 +10610,7 @@ def compact_alert_block_errors(block: str) -> list[str]:
         errors.append("article_ui_boilerplate")
     foreign_amounts = extract_foreign_amounts(summary)
     if foreign_amounts and not (
-        re.search(r"\(약\s*[\d,.]+(?:조|억|만)?원\)", summary)
+        re.search(r"\(약\s*[\d,.]+(?:조[\d,.]+억|조|억|만)?원\)", summary)
         or "원화 환산 확인 불가" in summary
     ):
         errors.append("foreign_currency_not_converted")
@@ -10826,7 +10830,7 @@ def guard_preopen_report(text: str) -> str:
             errors.append(f"incomplete_article_summary={summary[-30:]}")
         foreign_amounts = extract_foreign_amounts(summary)
         if foreign_amounts and not (
-            re.search(r"\(약\s*[\d,.]+(?:조|억|만)?원\)", summary)
+            re.search(r"\(약\s*[\d,.]+(?:조[\d,.]+억|조|억|만)?원\)", summary)
             or "원화 환산 확인 불가" in summary
         ):
             errors.append("foreign_currency_not_converted")

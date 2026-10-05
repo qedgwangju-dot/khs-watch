@@ -933,7 +933,7 @@ class MaterialityChecks(unittest.TestCase):
             item, {"rates": {"USD": {"value": 1421, "status": "fixture", "source": "unit test"}}}, NOW,
         )
         block = radar.compact_alert(item, 1, NOW, {}, {})
-        self.assertIn("420억달러(약 60조원)", block)
+        self.assertIn("420억달러(약 59조6,820억원)", block)
         self.assertEqual(radar.compact_alert_block_errors(block), [])
 
     def test_new_source_ai_infrastructure_core_recovers_change_not_old_revenue_level(self):

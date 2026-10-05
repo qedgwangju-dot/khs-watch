@@ -187,7 +187,18 @@ class IncrementalNewsTests(unittest.TestCase):
             self.assertLessEqual(len(item["telegram_core_fact"]), radar.GAMEJOA_CORE_MAX_CHARS)
             self.assertIn(item["link"], report)
         self.assertIn("(약", report)
+        self.assertIn("9억5000만 달러(약 1조3,490억원)", report)
+        self.assertIn("12억5000만 달러(약 1조7,750억원)", report)
         self.assertFalse(generated_guard.duplicate_event_errors(selected, radar))
+
+    def test_small_trillion_conversion_does_not_round_away_material_amount(self):
+        self.assertEqual(radar.format_krw_amount(1_349_000_000_000), "1조3,490억원")
+        self.assertEqual(radar.format_krw_amount(1_775_000_000_000), "1조7,750억원")
+        self.assertEqual(radar.format_krw_amount(99_999_990_000_000), "100조원")
+
+    def test_very_large_conversion_retains_requested_whole_trillion_rounding(self):
+        self.assertEqual(radar.format_krw_amount(1_388_850_000_000_000), "1,389조원")
+        self.assertEqual(radar.format_krw_amount(2_485_600_000_000_000), "2,486조원")
 
     def test_real_runtime_report_is_replayed_with_its_three_original_bodies(self):
         self.assertEqual(len(RUNTIME_CASES), 3)
