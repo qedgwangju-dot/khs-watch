@@ -139,14 +139,20 @@
     "event:09792c32cabb5ad7e6283b23": {
       "first_seen_kst": "2026-10-05T07:34:11+09:00",
       "lanes": {
-        "live": "2026-10-05T07:34:11+09:00"
+        "live": "2026-10-05T18:49:55+09:00"
       },
-      "last_seen_kst": "2026-10-05T07:34:11+09:00",
-      "link": "https://www.newsis.com/view/NISX20261002_0003812975",
-      "source": "뉴시스",
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168421",
+      "source": "매일경제",
       "source_event_identity": "",
-      "source_published_kst": "2026-10-05T06:00+09:00",
-      "title": "서울 집값 \"더 간다\" 무게…'금리 인상'은 변수[집값, 최장 랠리③]"
+      "source_fact_identity": "source_facts:v1:6b6e7c3411848f363597b8cf861e57a7e72d8912b1a30c2c5f18470173d3f223",
+      "source_fact_keys": [
+        "source_fact:v1:1c224b2808cddae9ce7c6be985da59e1fb86dec43a37b9e72b7ada572a2a538d",
+        "source_fact:v1:31fc0798148ba717651e5391484ff6708abb3a8a0266467a1ce6f097e6acec07",
+        "source_fact:v1:554ff660b7fe0603ef55e334179a8e896de321f7efda15cfdc6e153852c2fe27"
+      ],
+      "source_published_kst": "2026-10-05T15:21+09:00",
+      "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
     },
     "event:0ae51bf991f368666ccc228d": {
       "first_seen_kst": "2026-10-03T09:23:27+09:00",
@@ -416,14 +422,19 @@
     "event:1efbd1f63c0f645d03fefda2": {
       "first_seen_kst": "2026-10-05T02:04:15+09:00",
       "lanes": {
-        "live": "2026-10-05T02:04:15+09:00"
+        "live": "2026-10-05T18:49:55+09:00"
       },
-      "last_seen_kst": "2026-10-05T02:04:15+09:00",
-      "link": "https://www.newsis.com/view/NISX20261002_0003812715",
-      "source": "뉴시스",
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169720",
+      "source": "매일경제",
       "source_event_identity": "",
-      "source_published_kst": "2026-10-05T02:00+09:00",
-      "title": "월배당 ETF 뜬다고 무작정 사지 마세요…\"나이에 따라 조합 달라야\""
+      "source_fact_identity": "source_facts:v1:496b61515de287a40d154085dac536eb2fe9fe9325f4c697a6d4587683e237de",
+      "source_fact_keys": [
+        "source_fact:v1:05f47065126bb488428df5b9b229cf92784519608263753e9039a76fb36e3810",
+        "source_fact:v1:48645ba69c4940ba38c6cb9950f4699636d3c6666da46f85a748baeb05fc8353"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
     },
     "event:2031f599de2458ceac1e4b44": {
       "first_seen_kst": "2026-10-03T09:48:18+09:00",
@@ -617,14 +628,19 @@
     "event:2597146f9d930469f1098f61": {
       "first_seen_kst": "2026-10-05T11:14:01+09:00",
       "lanes": {
-        "live": "2026-10-05T11:14:01+09:00"
+        "live": "2026-10-05T18:49:55+09:00"
       },
-      "last_seen_kst": "2026-10-05T11:14:01+09:00",
-      "link": "https://www.newsis.com/view/NISX20261005_0003814301",
-      "source": "뉴시스",
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mk.co.kr/news/world/12168352",
+      "source": "매일경제",
       "source_event_identity": "",
-      "source_published_kst": "2026-10-05T11:05+09:00",
-      "title": "최태원 SK 회장, 9440억 지분 매각…‘주가 충격 최소화’에 방점"
+      "source_fact_identity": "source_facts:v1:ea28cd231bddde81e20a3ad97de929ba9c425fb4e455a51fd742958c2cff9a03",
+      "source_fact_keys": [
+        "source_fact:v1:275ee383488e4423632a3c1e37da12860e73c5655b054ac976194de01720dc2e",
+        "source_fact:v1:2d3442b46d29c1fd3b7fe266047b72360bcab850768fb3a9aa05830ab7d5287b"
+      ],
+      "source_published_kst": "2026-10-05T12:59+09:00",
+      "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
     },
     "event:26218d2748a640a75cd23443": {
       "first_seen_kst": "2026-10-01T22:45:00+09:00",
@@ -1263,14 +1279,22 @@
     "event:5530e2a55d5b2e699d1545d0": {
       "first_seen_kst": "2026-10-05T13:39:56+09:00",
       "lanes": {
-        "live": "2026-10-05T13:39:56+09:00"
+        "live": "2026-10-05T18:49:55+09:00"
       },
-      "last_seen_kst": "2026-10-05T13:39:56+09:00",
-      "link": "https://www.mt.co.kr/world/2026/10/05/2026100509404063992",
-      "source": "머니투데이",
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.fnnews.com/news/202610051835074598",
+      "source": "파이낸셜뉴스",
       "source_event_identity": "",
-      "source_published_kst": "2026-10-05T13:22+09:00",
-      "title": "다음주 어닝시즌 개막, AI주 강세 확산될까…재료 공백 속 국채 금리 주목"
+      "source_fact_identity": "source_facts:v1:79673d328cf5ccb551ca247bd705230c4ffce3f63073bc71ade1660860fba97a",
+      "source_fact_keys": [
+        "source_fact:v1:0b62a6fc801e595303323e6dbf4e1fb653c40858dc11769a6ac8fc49df1fcab2",
+        "source_fact:v1:679abab47b85ee3ff4b16df939c01e941477ad777247fdc2eceb367c55e1f71d",
+        "source_fact:v1:892740c864fa0234b7b85793e91c4af3ad111aee4cf40cbee12ede345a4c97c0",
+        "source_fact:v1:e92cc74f5eb0b9c202b5efe7844ca4e662e8c833f12844f871ac76b514038fdf",
+        "source_fact:v1:f872efcb6eeeb77b0d6fedf6e2e1081dd85411aef02c8a26f2204f71cd0bddf9"
+      ],
+      "source_published_kst": "2026-10-05T18:35+09:00",
+      "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
     },
     "event:5752f44e92ac107d74cdcfbe": {
       "first_seen_kst": "2026-09-18T14:19:18+09:00",
@@ -1618,14 +1642,29 @@
     "event:6b8e356e2215ecdba3130cf0": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
       "lanes": {
-        "live": "2026-10-05T06:25:21+09:00"
+        "live": "2026-10-05T18:49:55+09:00"
       },
-      "last_seen_kst": "2026-10-05T06:25:21+09:00",
-      "link": "https://www.fnnews.com/news/202610050600365298",
-      "source": "파이낸셜뉴스",
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
       "source_event_identity": "",
-      "source_published_kst": "2026-10-05T06:00+09:00",
-      "title": "삼전닉스 자사주 매입 막바지…'수급 공백' 메울 190조 실적 '기대'"
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
     "event:6baa70b961ef2e6913a113eb": {
       "first_seen_kst": "2026-09-27T17:55:12+09:00",
@@ -1964,14 +2003,24 @@
     "event:78c48063ad6f5facdfb0aa71": {
       "first_seen_kst": "2026-10-05T14:14:24+09:00",
       "lanes": {
-        "live": "2026-10-05T14:14:24+09:00"
+        "live": "2026-10-05T18:49:55+09:00"
       },
-      "last_seen_kst": "2026-10-05T14:14:24+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2632448",
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632476",
       "source": "이투데이",
       "source_event_identity": "",
-      "source_published_kst": "2026-10-05T14:10+09:00",
-      "title": "고금리도 삼킨 AI 열풍⋯월가 랠리, 10년물 美국채 금리 6%가 ‘고비’"
+      "source_fact_identity": "source_facts:v1:579ba226c4037ca6a7ae7d0baede0373c74e9c1e8ecb1e30f1a6fd71bf28d857",
+      "source_fact_keys": [
+        "source_fact:v1:2fef3d2fef46b6be913aa83c041689227b3811e3d21052a156e5c29815250860",
+        "source_fact:v1:3150a3d400eeb2469c91cb529c3d4e1a5893718b528c663009e7de190d88b270",
+        "source_fact:v1:4141e76b6521c3f3314e403950d3e1f5814f10fd7007db83ba5983f3e03e502a",
+        "source_fact:v1:59518b984ff0dbbb17f7c407504a360c395ace305a856de4ba477a062fe4b767",
+        "source_fact:v1:72283736e9d59e0f9e760eb633feec1a5b22bfe4a5f5109a6dbd844f0b1f3855",
+        "source_fact:v1:c22ed9051ba220c013d06515d665e3e97a5d87db919b6ba25cf0062696c78740",
+        "source_fact:v1:e6eab55dae1a46a12aff69063108d49e5276813116edcb9d45b02ee7b26037b4"
+      ],
+      "source_published_kst": "2026-10-05T16:40+09:00",
+      "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
     "event:78cea877cce544763b26037b": {
       "first_seen_kst": "2026-10-02T18:51:02+09:00",
@@ -2737,14 +2786,19 @@
     "event:a408adb75e5be4597908dc18": {
       "first_seen_kst": "2026-10-05T10:39:16+09:00",
       "lanes": {
-        "live": "2026-10-05T10:39:16+09:00"
+        "live": "2026-10-05T18:49:55+09:00"
       },
-      "last_seen_kst": "2026-10-05T10:39:16+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=01800726645609968",
-      "source": "이데일리",
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.hankyung.com/article/2026100537351",
+      "source": "한국경제",
       "source_event_identity": "",
-      "source_published_kst": "2026-10-05T10:18+09:00",
-      "title": "고금리 버티는 AI 랠리…\"美10년물 6%땐 랠리 붕괴\""
+      "source_fact_identity": "source_facts:v1:2d3977d8830d9fe9184d267ce7aad2e9e99c88bfbf10b463ef03289a660650e9",
+      "source_fact_keys": [
+        "source_fact:v1:79500a87a79a49556291e2c35f06be0b7c9bc4d94ca787d478d3e6bf339c3f05",
+        "source_fact:v1:fd0ae1e9f1f684353bf9f1a95df29f4e0c4b2bd11eaad6408587379c8e9da692"
+      ],
+      "source_published_kst": "2026-10-05T18:18+09:00",
+      "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
     },
     "event:a46dc68575604c3391596e57": {
       "first_seen_kst": "2026-10-03T19:02:18+09:00",
@@ -4342,6 +4396,144 @@
       "source": "파이낸셜뉴스",
       "title": "우리운용 'WON 전단채플러스액티브 ETF' 순자산 5000억원 돌파"
     },
+    "fact:0ea69da4170487ae2e2a0fdd": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.fnnews.com/news/202610051835074598",
+      "source": "파이낸셜뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79673d328cf5ccb551ca247bd705230c4ffce3f63073bc71ade1660860fba97a",
+      "source_fact_keys": [
+        "source_fact:v1:0b62a6fc801e595303323e6dbf4e1fb653c40858dc11769a6ac8fc49df1fcab2",
+        "source_fact:v1:679abab47b85ee3ff4b16df939c01e941477ad777247fdc2eceb367c55e1f71d",
+        "source_fact:v1:892740c864fa0234b7b85793e91c4af3ad111aee4cf40cbee12ede345a4c97c0",
+        "source_fact:v1:e92cc74f5eb0b9c202b5efe7844ca4e662e8c833f12844f871ac76b514038fdf",
+        "source_fact:v1:f872efcb6eeeb77b0d6fedf6e2e1081dd85411aef02c8a26f2204f71cd0bddf9"
+      ],
+      "source_published_kst": "2026-10-05T18:35+09:00",
+      "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
+    },
+    "fact:3e40f5e3d21f980b3e7ffda2": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632476",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:579ba226c4037ca6a7ae7d0baede0373c74e9c1e8ecb1e30f1a6fd71bf28d857",
+      "source_fact_keys": [
+        "source_fact:v1:2fef3d2fef46b6be913aa83c041689227b3811e3d21052a156e5c29815250860",
+        "source_fact:v1:3150a3d400eeb2469c91cb529c3d4e1a5893718b528c663009e7de190d88b270",
+        "source_fact:v1:4141e76b6521c3f3314e403950d3e1f5814f10fd7007db83ba5983f3e03e502a",
+        "source_fact:v1:59518b984ff0dbbb17f7c407504a360c395ace305a856de4ba477a062fe4b767",
+        "source_fact:v1:72283736e9d59e0f9e760eb633feec1a5b22bfe4a5f5109a6dbd844f0b1f3855",
+        "source_fact:v1:c22ed9051ba220c013d06515d665e3e97a5d87db919b6ba25cf0062696c78740",
+        "source_fact:v1:e6eab55dae1a46a12aff69063108d49e5276813116edcb9d45b02ee7b26037b4"
+      ],
+      "source_published_kst": "2026-10-05T16:40+09:00",
+      "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "fact:619bbf6abb5f936b2ff2574f": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169720",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:496b61515de287a40d154085dac536eb2fe9fe9325f4c697a6d4587683e237de",
+      "source_fact_keys": [
+        "source_fact:v1:05f47065126bb488428df5b9b229cf92784519608263753e9039a76fb36e3810",
+        "source_fact:v1:48645ba69c4940ba38c6cb9950f4699636d3c6666da46f85a748baeb05fc8353"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
+    },
+    "fact:91fc94370e00f53367064fdc": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168421",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b6e7c3411848f363597b8cf861e57a7e72d8912b1a30c2c5f18470173d3f223",
+      "source_fact_keys": [
+        "source_fact:v1:1c224b2808cddae9ce7c6be985da59e1fb86dec43a37b9e72b7ada572a2a538d",
+        "source_fact:v1:31fc0798148ba717651e5391484ff6708abb3a8a0266467a1ce6f097e6acec07",
+        "source_fact:v1:554ff660b7fe0603ef55e334179a8e896de321f7efda15cfdc6e153852c2fe27"
+      ],
+      "source_published_kst": "2026-10-05T15:21+09:00",
+      "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
+    },
+    "fact:95cdaca3cf9ec3b7ccb39acf": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mk.co.kr/news/world/12168352",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ea28cd231bddde81e20a3ad97de929ba9c425fb4e455a51fd742958c2cff9a03",
+      "source_fact_keys": [
+        "source_fact:v1:275ee383488e4423632a3c1e37da12860e73c5655b054ac976194de01720dc2e",
+        "source_fact:v1:2d3442b46d29c1fd3b7fe266047b72360bcab850768fb3a9aa05830ab7d5287b"
+      ],
+      "source_published_kst": "2026-10-05T12:59+09:00",
+      "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
+    },
+    "fact:ce10578d071ab7da0693ead2": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.hankyung.com/article/2026100537351",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d3977d8830d9fe9184d267ce7aad2e9e99c88bfbf10b463ef03289a660650e9",
+      "source_fact_keys": [
+        "source_fact:v1:79500a87a79a49556291e2c35f06be0b7c9bc4d94ca787d478d3e6bf339c3f05",
+        "source_fact:v1:fd0ae1e9f1f684353bf9f1a95df29f4e0c4b2bd11eaad6408587379c8e9da692"
+      ],
+      "source_published_kst": "2026-10-05T18:18+09:00",
+      "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
+    },
+    "fact:ff4d615e58fc5d7ecdadb822": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
     "link:001486db5393e03af8cdd080": {
       "first_seen_kst": "2026-09-22T13:18:41+09:00",
       "lanes": {
@@ -4413,6 +4605,33 @@
       "link": "https://www.mk.co.kr/news/business/12156185",
       "source": "매일경제",
       "title": "큐피에스브레인, 제조업 경영진을 위한 현장 중심 솔루션 북 ‘AX 피지컬 AI 도입 전략’ 출간"
+    },
+    "link:016de48ce7043850787f31bd": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
     "link:0192bce21a4f9ee5d0bfa1da": {
       "first_seen_kst": "2026-10-01T18:06:18+09:00",
@@ -5014,6 +5233,28 @@
       "link": "https://www.yna.co.kr/view/AKR20261002183900009",
       "source": "연합뉴스",
       "title": "뉴욕증시, 비농업 고용지표 소화하며 상승 출발 | 연합뉴스"
+    },
+    "link:0e59f5700c473e3c442d8d0f": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632476",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:579ba226c4037ca6a7ae7d0baede0373c74e9c1e8ecb1e30f1a6fd71bf28d857",
+      "source_fact_keys": [
+        "source_fact:v1:2fef3d2fef46b6be913aa83c041689227b3811e3d21052a156e5c29815250860",
+        "source_fact:v1:3150a3d400eeb2469c91cb529c3d4e1a5893718b528c663009e7de190d88b270",
+        "source_fact:v1:4141e76b6521c3f3314e403950d3e1f5814f10fd7007db83ba5983f3e03e502a",
+        "source_fact:v1:59518b984ff0dbbb17f7c407504a360c395ace305a856de4ba477a062fe4b767",
+        "source_fact:v1:72283736e9d59e0f9e760eb633feec1a5b22bfe4a5f5109a6dbd844f0b1f3855",
+        "source_fact:v1:c22ed9051ba220c013d06515d665e3e97a5d87db919b6ba25cf0062696c78740",
+        "source_fact:v1:e6eab55dae1a46a12aff69063108d49e5276813116edcb9d45b02ee7b26037b4"
+      ],
+      "source_published_kst": "2026-10-05T16:40+09:00",
+      "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
     "link:0e9321139538f29ce0466a46": {
       "first_seen_kst": "2026-10-02T13:38:43+09:00",
@@ -6517,6 +6758,26 @@
       "source": "이투데이",
       "title": "[특징주] 에스제이그룹, 자사주 취득 소식에 장 초반 상한가 직행"
     },
+    "link:2b0099d868b438de3211818f": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.fnnews.com/news/202610051835074598",
+      "source": "파이낸셜뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79673d328cf5ccb551ca247bd705230c4ffce3f63073bc71ade1660860fba97a",
+      "source_fact_keys": [
+        "source_fact:v1:0b62a6fc801e595303323e6dbf4e1fb653c40858dc11769a6ac8fc49df1fcab2",
+        "source_fact:v1:679abab47b85ee3ff4b16df939c01e941477ad777247fdc2eceb367c55e1f71d",
+        "source_fact:v1:892740c864fa0234b7b85793e91c4af3ad111aee4cf40cbee12ede345a4c97c0",
+        "source_fact:v1:e92cc74f5eb0b9c202b5efe7844ca4e662e8c833f12844f871ac76b514038fdf",
+        "source_fact:v1:f872efcb6eeeb77b0d6fedf6e2e1081dd85411aef02c8a26f2204f71cd0bddf9"
+      ],
+      "source_published_kst": "2026-10-05T18:35+09:00",
+      "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
+    },
     "link:2b10c0d59c6e1e640a843b13": {
       "first_seen_kst": "2026-10-02T15:48:44+09:00",
       "lanes": {
@@ -7053,6 +7314,23 @@
       "link": "https://www.mt.co.kr/world/2026/09/28/2026092817323368134",
       "source": "머니투데이",
       "title": "'엔비디아 들어온다' 소식에 中 반도체 하락…日도 약세[Asia마감]"
+    },
+    "link:381266537efb97c8a54f45b7": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mk.co.kr/news/world/12168352",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ea28cd231bddde81e20a3ad97de929ba9c425fb4e455a51fd742958c2cff9a03",
+      "source_fact_keys": [
+        "source_fact:v1:275ee383488e4423632a3c1e37da12860e73c5655b054ac976194de01720dc2e",
+        "source_fact:v1:2d3442b46d29c1fd3b7fe266047b72360bcab850768fb3a9aa05830ab7d5287b"
+      ],
+      "source_published_kst": "2026-10-05T12:59+09:00",
+      "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
     },
     "link:38183faa32bbaa45a652412a": {
       "first_seen_kst": "2026-10-01T21:23:29+09:00",
@@ -10459,6 +10737,24 @@
       "source_published_kst": "2026-10-05T08:41+09:00",
       "title": "세계식량가격 1.5% 상승…곡물 5.1%·설탕 6.1% 뛰었다"
     },
+    "link:75a0782030198d2b9e9e48d6": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168421",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b6e7c3411848f363597b8cf861e57a7e72d8912b1a30c2c5f18470173d3f223",
+      "source_fact_keys": [
+        "source_fact:v1:1c224b2808cddae9ce7c6be985da59e1fb86dec43a37b9e72b7ada572a2a538d",
+        "source_fact:v1:31fc0798148ba717651e5391484ff6708abb3a8a0266467a1ce6f097e6acec07",
+        "source_fact:v1:554ff660b7fe0603ef55e334179a8e896de321f7efda15cfdc6e153852c2fe27"
+      ],
+      "source_published_kst": "2026-10-05T15:21+09:00",
+      "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
+    },
     "link:75ab04886f6c6fb717512e9a": {
       "first_seen_kst": "2026-09-18T16:58:33+09:00",
       "lanes": {
@@ -12417,6 +12713,23 @@
       "link": "https://biz.heraldcorp.com/article/10884809",
       "source": "헤럴드경제",
       "title": "최수종, 추석 당일 ‘모친상’…하희라 ‘시모상’"
+    },
+    "link:9aa1415754f335660fbec6aa": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169720",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:496b61515de287a40d154085dac536eb2fe9fe9325f4c697a6d4587683e237de",
+      "source_fact_keys": [
+        "source_fact:v1:05f47065126bb488428df5b9b229cf92784519608263753e9039a76fb36e3810",
+        "source_fact:v1:48645ba69c4940ba38c6cb9950f4699636d3c6666da46f85a748baeb05fc8353"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
     },
     "link:9abfb841b609518218424989": {
       "first_seen_kst": "2026-09-19T01:58:52+09:00",
@@ -17725,6 +18038,23 @@
       "source_published_kst": "2026-10-05T15:13+09:00",
       "title": "환율에 노사 리스크까지…HD현대重·한화오션 3분기 실적 '이중고'"
     },
+    "link:fbb4cb18d2d236d86957d515": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.hankyung.com/article/2026100537351",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d3977d8830d9fe9184d267ce7aad2e9e99c88bfbf10b463ef03289a660650e9",
+      "source_fact_keys": [
+        "source_fact:v1:79500a87a79a49556291e2c35f06be0b7c9bc4d94ca787d478d3e6bf339c3f05",
+        "source_fact:v1:fd0ae1e9f1f684353bf9f1a95df29f4e0c4b2bd11eaad6408587379c8e9da692"
+      ],
+      "source_published_kst": "2026-10-05T18:18+09:00",
+      "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
+    },
     "link:fbbdc648e17568327182e9ff": {
       "first_seen_kst": "2026-09-30T10:08:34+09:00",
       "lanes": {
@@ -19183,6 +19513,28 @@
       "link": "https://www.fnnews.com/news/202610010907294660",
       "source": "파이낸셜뉴스",
       "title": "올데이올가닉, 생산능력 5배 확대…폐배터리 ESS로 전력비 낮춰"
+    },
+    "original:186fc503160753cfb48ff448": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632476",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:579ba226c4037ca6a7ae7d0baede0373c74e9c1e8ecb1e30f1a6fd71bf28d857",
+      "source_fact_keys": [
+        "source_fact:v1:2fef3d2fef46b6be913aa83c041689227b3811e3d21052a156e5c29815250860",
+        "source_fact:v1:3150a3d400eeb2469c91cb529c3d4e1a5893718b528c663009e7de190d88b270",
+        "source_fact:v1:4141e76b6521c3f3314e403950d3e1f5814f10fd7007db83ba5983f3e03e502a",
+        "source_fact:v1:59518b984ff0dbbb17f7c407504a360c395ace305a856de4ba477a062fe4b767",
+        "source_fact:v1:72283736e9d59e0f9e760eb633feec1a5b22bfe4a5f5109a6dbd844f0b1f3855",
+        "source_fact:v1:c22ed9051ba220c013d06515d665e3e97a5d87db919b6ba25cf0062696c78740",
+        "source_fact:v1:e6eab55dae1a46a12aff69063108d49e5276813116edcb9d45b02ee7b26037b4"
+      ],
+      "source_published_kst": "2026-10-05T16:40+09:00",
+      "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
     "original:193e546eb603cd5b62ca8e59": {
       "first_seen_kst": "2026-10-01T21:28:22+09:00",
@@ -24430,6 +24782,24 @@
       "source": "연합뉴스",
       "title": "유가 변동에 국고채 금리 혼조세…3년물 연 4.040%(종합) | 연합뉴스"
     },
+    "original:7d6db47e9ebbc84ab7851adc": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168421",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b6e7c3411848f363597b8cf861e57a7e72d8912b1a30c2c5f18470173d3f223",
+      "source_fact_keys": [
+        "source_fact:v1:1c224b2808cddae9ce7c6be985da59e1fb86dec43a37b9e72b7ada572a2a538d",
+        "source_fact:v1:31fc0798148ba717651e5391484ff6708abb3a8a0266467a1ce6f097e6acec07",
+        "source_fact:v1:554ff660b7fe0603ef55e334179a8e896de321f7efda15cfdc6e153852c2fe27"
+      ],
+      "source_published_kst": "2026-10-05T15:21+09:00",
+      "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
+    },
     "original:7d7d86156c324cca380a2590": {
       "first_seen_kst": "2026-09-28T10:16:02+09:00",
       "lanes": {
@@ -26128,6 +26498,33 @@
       "source": "뉴시스",
       "title": "식당 테이블 간장 금지?…식약처 \"사실 아닙니다\""
     },
+    "original:9f6500e533c6f37b7780d296": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
     "original:9f7b7291e3b11f28b5cd12e1": {
       "first_seen_kst": "2026-10-04T09:42:00+09:00",
       "lanes": {
@@ -27125,6 +27522,23 @@
       "link": "https://www.yna.co.kr/view/AKR20261002064300054",
       "source": "연합뉴스",
       "title": "전남광주, 투자·펀드 기능 한데 묶는다…투자 기관 설립 추진 | 연합뉴스"
+    },
+    "original:b1baf71c1c5298ba16571866": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169720",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:496b61515de287a40d154085dac536eb2fe9fe9325f4c697a6d4587683e237de",
+      "source_fact_keys": [
+        "source_fact:v1:05f47065126bb488428df5b9b229cf92784519608263753e9039a76fb36e3810",
+        "source_fact:v1:48645ba69c4940ba38c6cb9950f4699636d3c6666da46f85a748baeb05fc8353"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
     },
     "original:b1cf224952e9ed2d82c1ecff": {
       "first_seen_kst": "2026-10-05T05:10:16+09:00",
@@ -29182,6 +29596,23 @@
       "source": "전자신문",
       "title": "증시 떠받친 삼전닉스 자사주 매입 막바지…추석 후 '수급 절벽' 어쩌나"
     },
+    "original:d838924bcfc62a23d8ee0472": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.hankyung.com/article/2026100537351",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d3977d8830d9fe9184d267ce7aad2e9e99c88bfbf10b463ef03289a660650e9",
+      "source_fact_keys": [
+        "source_fact:v1:79500a87a79a49556291e2c35f06be0b7c9bc4d94ca787d478d3e6bf339c3f05",
+        "source_fact:v1:fd0ae1e9f1f684353bf9f1a95df29f4e0c4b2bd11eaad6408587379c8e9da692"
+      ],
+      "source_published_kst": "2026-10-05T18:18+09:00",
+      "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
+    },
     "original:d893d7ada9b0d4530e9a505c": {
       "first_seen_kst": "2026-10-02T19:26:27+09:00",
       "lanes": {
@@ -29513,6 +29944,23 @@
       "link": "https://www.dt.co.kr/article/12087050",
       "source": "디지털타임스",
       "title": "오텍캐리어, 엔비디아 인증 CDU 확보…AI 데이터센터 냉각시장 정조준"
+    },
+    "original:df48bdc01dd389daaaf0687c": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mk.co.kr/news/world/12168352",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ea28cd231bddde81e20a3ad97de929ba9c425fb4e455a51fd742958c2cff9a03",
+      "source_fact_keys": [
+        "source_fact:v1:275ee383488e4423632a3c1e37da12860e73c5655b054ac976194de01720dc2e",
+        "source_fact:v1:2d3442b46d29c1fd3b7fe266047b72360bcab850768fb3a9aa05830ab7d5287b"
+      ],
+      "source_published_kst": "2026-10-05T12:59+09:00",
+      "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
     },
     "original:df81792aff24c9aa41bb70bb": {
       "first_seen_kst": "2026-10-05T16:56:44+09:00",
@@ -30866,6 +31314,26 @@
       "source_published_kst": "2026-10-04T06:03+09:00",
       "title": "[AI해킹] ① OTT·미용·결제 이어 은행까지…내 개인정보 어디까지 샜나"
     },
+    "original:f667624b3283a4c55eebd8ed": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.fnnews.com/news/202610051835074598",
+      "source": "파이낸셜뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79673d328cf5ccb551ca247bd705230c4ffce3f63073bc71ade1660860fba97a",
+      "source_fact_keys": [
+        "source_fact:v1:0b62a6fc801e595303323e6dbf4e1fb653c40858dc11769a6ac8fc49df1fcab2",
+        "source_fact:v1:679abab47b85ee3ff4b16df939c01e941477ad777247fdc2eceb367c55e1f71d",
+        "source_fact:v1:892740c864fa0234b7b85793e91c4af3ad111aee4cf40cbee12ede345a4c97c0",
+        "source_fact:v1:e92cc74f5eb0b9c202b5efe7844ca4e662e8c833f12844f871ac76b514038fdf",
+        "source_fact:v1:f872efcb6eeeb77b0d6fedf6e2e1081dd85411aef02c8a26f2204f71cd0bddf9"
+      ],
+      "source_published_kst": "2026-10-05T18:35+09:00",
+      "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
+    },
     "original:f674b5c4a1ca80a0a5bb5ef6": {
       "first_seen_kst": "2026-09-26T20:59:22+09:00",
       "lanes": {
@@ -31290,6 +31758,740 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T09:06+09:00",
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
+    },
+    "source_fact:1b87c0c8f02ddf03ac85a1c1": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168421",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b6e7c3411848f363597b8cf861e57a7e72d8912b1a30c2c5f18470173d3f223",
+      "source_fact_keys": [
+        "source_fact:v1:1c224b2808cddae9ce7c6be985da59e1fb86dec43a37b9e72b7ada572a2a538d",
+        "source_fact:v1:31fc0798148ba717651e5391484ff6708abb3a8a0266467a1ce6f097e6acec07",
+        "source_fact:v1:554ff660b7fe0603ef55e334179a8e896de321f7efda15cfdc6e153852c2fe27"
+      ],
+      "source_published_kst": "2026-10-05T15:21+09:00",
+      "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
+    },
+    "source_fact:273152bf0616d4c45f5797ae": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632476",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:579ba226c4037ca6a7ae7d0baede0373c74e9c1e8ecb1e30f1a6fd71bf28d857",
+      "source_fact_keys": [
+        "source_fact:v1:2fef3d2fef46b6be913aa83c041689227b3811e3d21052a156e5c29815250860",
+        "source_fact:v1:3150a3d400eeb2469c91cb529c3d4e1a5893718b528c663009e7de190d88b270",
+        "source_fact:v1:4141e76b6521c3f3314e403950d3e1f5814f10fd7007db83ba5983f3e03e502a",
+        "source_fact:v1:59518b984ff0dbbb17f7c407504a360c395ace305a856de4ba477a062fe4b767",
+        "source_fact:v1:72283736e9d59e0f9e760eb633feec1a5b22bfe4a5f5109a6dbd844f0b1f3855",
+        "source_fact:v1:c22ed9051ba220c013d06515d665e3e97a5d87db919b6ba25cf0062696c78740",
+        "source_fact:v1:e6eab55dae1a46a12aff69063108d49e5276813116edcb9d45b02ee7b26037b4"
+      ],
+      "source_published_kst": "2026-10-05T16:40+09:00",
+      "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:32e46a0b7585e0266d68ca7f": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.fnnews.com/news/202610051835074598",
+      "source": "파이낸셜뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79673d328cf5ccb551ca247bd705230c4ffce3f63073bc71ade1660860fba97a",
+      "source_fact_keys": [
+        "source_fact:v1:0b62a6fc801e595303323e6dbf4e1fb653c40858dc11769a6ac8fc49df1fcab2",
+        "source_fact:v1:679abab47b85ee3ff4b16df939c01e941477ad777247fdc2eceb367c55e1f71d",
+        "source_fact:v1:892740c864fa0234b7b85793e91c4af3ad111aee4cf40cbee12ede345a4c97c0",
+        "source_fact:v1:e92cc74f5eb0b9c202b5efe7844ca4e662e8c833f12844f871ac76b514038fdf",
+        "source_fact:v1:f872efcb6eeeb77b0d6fedf6e2e1081dd85411aef02c8a26f2204f71cd0bddf9"
+      ],
+      "source_published_kst": "2026-10-05T18:35+09:00",
+      "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
+    },
+    "source_fact:3349d56f291b43d44c28987d": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.fnnews.com/news/202610051835074598",
+      "source": "파이낸셜뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79673d328cf5ccb551ca247bd705230c4ffce3f63073bc71ade1660860fba97a",
+      "source_fact_keys": [
+        "source_fact:v1:0b62a6fc801e595303323e6dbf4e1fb653c40858dc11769a6ac8fc49df1fcab2",
+        "source_fact:v1:679abab47b85ee3ff4b16df939c01e941477ad777247fdc2eceb367c55e1f71d",
+        "source_fact:v1:892740c864fa0234b7b85793e91c4af3ad111aee4cf40cbee12ede345a4c97c0",
+        "source_fact:v1:e92cc74f5eb0b9c202b5efe7844ca4e662e8c833f12844f871ac76b514038fdf",
+        "source_fact:v1:f872efcb6eeeb77b0d6fedf6e2e1081dd85411aef02c8a26f2204f71cd0bddf9"
+      ],
+      "source_published_kst": "2026-10-05T18:35+09:00",
+      "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
+    },
+    "source_fact:34e23ea7cbc102fe69a61828": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:3590310bf437e78b463cdeba": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:36f02e3570e104e44c30d804": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mk.co.kr/news/world/12168352",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ea28cd231bddde81e20a3ad97de929ba9c425fb4e455a51fd742958c2cff9a03",
+      "source_fact_keys": [
+        "source_fact:v1:275ee383488e4423632a3c1e37da12860e73c5655b054ac976194de01720dc2e",
+        "source_fact:v1:2d3442b46d29c1fd3b7fe266047b72360bcab850768fb3a9aa05830ab7d5287b"
+      ],
+      "source_published_kst": "2026-10-05T12:59+09:00",
+      "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
+    },
+    "source_fact:37109d02692af25048fcda12": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632476",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:579ba226c4037ca6a7ae7d0baede0373c74e9c1e8ecb1e30f1a6fd71bf28d857",
+      "source_fact_keys": [
+        "source_fact:v1:2fef3d2fef46b6be913aa83c041689227b3811e3d21052a156e5c29815250860",
+        "source_fact:v1:3150a3d400eeb2469c91cb529c3d4e1a5893718b528c663009e7de190d88b270",
+        "source_fact:v1:4141e76b6521c3f3314e403950d3e1f5814f10fd7007db83ba5983f3e03e502a",
+        "source_fact:v1:59518b984ff0dbbb17f7c407504a360c395ace305a856de4ba477a062fe4b767",
+        "source_fact:v1:72283736e9d59e0f9e760eb633feec1a5b22bfe4a5f5109a6dbd844f0b1f3855",
+        "source_fact:v1:c22ed9051ba220c013d06515d665e3e97a5d87db919b6ba25cf0062696c78740",
+        "source_fact:v1:e6eab55dae1a46a12aff69063108d49e5276813116edcb9d45b02ee7b26037b4"
+      ],
+      "source_published_kst": "2026-10-05T16:40+09:00",
+      "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:41f376e4b65cb9bdf40eed92": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632476",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:579ba226c4037ca6a7ae7d0baede0373c74e9c1e8ecb1e30f1a6fd71bf28d857",
+      "source_fact_keys": [
+        "source_fact:v1:2fef3d2fef46b6be913aa83c041689227b3811e3d21052a156e5c29815250860",
+        "source_fact:v1:3150a3d400eeb2469c91cb529c3d4e1a5893718b528c663009e7de190d88b270",
+        "source_fact:v1:4141e76b6521c3f3314e403950d3e1f5814f10fd7007db83ba5983f3e03e502a",
+        "source_fact:v1:59518b984ff0dbbb17f7c407504a360c395ace305a856de4ba477a062fe4b767",
+        "source_fact:v1:72283736e9d59e0f9e760eb633feec1a5b22bfe4a5f5109a6dbd844f0b1f3855",
+        "source_fact:v1:c22ed9051ba220c013d06515d665e3e97a5d87db919b6ba25cf0062696c78740",
+        "source_fact:v1:e6eab55dae1a46a12aff69063108d49e5276813116edcb9d45b02ee7b26037b4"
+      ],
+      "source_published_kst": "2026-10-05T16:40+09:00",
+      "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:4a479d78ac502a9dd8444660": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:4b12bc6f645bc46e470d73cb": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:52e88d4db5f6d6129bed018f": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632476",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:579ba226c4037ca6a7ae7d0baede0373c74e9c1e8ecb1e30f1a6fd71bf28d857",
+      "source_fact_keys": [
+        "source_fact:v1:2fef3d2fef46b6be913aa83c041689227b3811e3d21052a156e5c29815250860",
+        "source_fact:v1:3150a3d400eeb2469c91cb529c3d4e1a5893718b528c663009e7de190d88b270",
+        "source_fact:v1:4141e76b6521c3f3314e403950d3e1f5814f10fd7007db83ba5983f3e03e502a",
+        "source_fact:v1:59518b984ff0dbbb17f7c407504a360c395ace305a856de4ba477a062fe4b767",
+        "source_fact:v1:72283736e9d59e0f9e760eb633feec1a5b22bfe4a5f5109a6dbd844f0b1f3855",
+        "source_fact:v1:c22ed9051ba220c013d06515d665e3e97a5d87db919b6ba25cf0062696c78740",
+        "source_fact:v1:e6eab55dae1a46a12aff69063108d49e5276813116edcb9d45b02ee7b26037b4"
+      ],
+      "source_published_kst": "2026-10-05T16:40+09:00",
+      "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:59ad6f96de77aae6f5d51f79": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:6917dc00610539ff397cca63": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:698529b9c97d9d18306499a4": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.fnnews.com/news/202610051835074598",
+      "source": "파이낸셜뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79673d328cf5ccb551ca247bd705230c4ffce3f63073bc71ade1660860fba97a",
+      "source_fact_keys": [
+        "source_fact:v1:0b62a6fc801e595303323e6dbf4e1fb653c40858dc11769a6ac8fc49df1fcab2",
+        "source_fact:v1:679abab47b85ee3ff4b16df939c01e941477ad777247fdc2eceb367c55e1f71d",
+        "source_fact:v1:892740c864fa0234b7b85793e91c4af3ad111aee4cf40cbee12ede345a4c97c0",
+        "source_fact:v1:e92cc74f5eb0b9c202b5efe7844ca4e662e8c833f12844f871ac76b514038fdf",
+        "source_fact:v1:f872efcb6eeeb77b0d6fedf6e2e1081dd85411aef02c8a26f2204f71cd0bddf9"
+      ],
+      "source_published_kst": "2026-10-05T18:35+09:00",
+      "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
+    },
+    "source_fact:6c7f19dd00a0c487e74920a2": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169720",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:496b61515de287a40d154085dac536eb2fe9fe9325f4c697a6d4587683e237de",
+      "source_fact_keys": [
+        "source_fact:v1:05f47065126bb488428df5b9b229cf92784519608263753e9039a76fb36e3810",
+        "source_fact:v1:48645ba69c4940ba38c6cb9950f4699636d3c6666da46f85a748baeb05fc8353"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
+    },
+    "source_fact:72d1032d9d14677ed04a110a": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.hankyung.com/article/2026100537351",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d3977d8830d9fe9184d267ce7aad2e9e99c88bfbf10b463ef03289a660650e9",
+      "source_fact_keys": [
+        "source_fact:v1:79500a87a79a49556291e2c35f06be0b7c9bc4d94ca787d478d3e6bf339c3f05",
+        "source_fact:v1:fd0ae1e9f1f684353bf9f1a95df29f4e0c4b2bd11eaad6408587379c8e9da692"
+      ],
+      "source_published_kst": "2026-10-05T18:18+09:00",
+      "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
+    },
+    "source_fact:7391ff86c9f5c98fb7d974db": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:73b3dc594275cb236bc4ad57": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168421",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b6e7c3411848f363597b8cf861e57a7e72d8912b1a30c2c5f18470173d3f223",
+      "source_fact_keys": [
+        "source_fact:v1:1c224b2808cddae9ce7c6be985da59e1fb86dec43a37b9e72b7ada572a2a538d",
+        "source_fact:v1:31fc0798148ba717651e5391484ff6708abb3a8a0266467a1ce6f097e6acec07",
+        "source_fact:v1:554ff660b7fe0603ef55e334179a8e896de321f7efda15cfdc6e153852c2fe27"
+      ],
+      "source_published_kst": "2026-10-05T15:21+09:00",
+      "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
+    },
+    "source_fact:7a2104211dd05ef183bc991f": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:7a384a6216c4923ecaf1ae5f": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mk.co.kr/news/world/12168352",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ea28cd231bddde81e20a3ad97de929ba9c425fb4e455a51fd742958c2cff9a03",
+      "source_fact_keys": [
+        "source_fact:v1:275ee383488e4423632a3c1e37da12860e73c5655b054ac976194de01720dc2e",
+        "source_fact:v1:2d3442b46d29c1fd3b7fe266047b72360bcab850768fb3a9aa05830ab7d5287b"
+      ],
+      "source_published_kst": "2026-10-05T12:59+09:00",
+      "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
+    },
+    "source_fact:7c664f0cd72944bdc64c88ac": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:84cb41af8ea390df4f18d934": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632476",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:579ba226c4037ca6a7ae7d0baede0373c74e9c1e8ecb1e30f1a6fd71bf28d857",
+      "source_fact_keys": [
+        "source_fact:v1:2fef3d2fef46b6be913aa83c041689227b3811e3d21052a156e5c29815250860",
+        "source_fact:v1:3150a3d400eeb2469c91cb529c3d4e1a5893718b528c663009e7de190d88b270",
+        "source_fact:v1:4141e76b6521c3f3314e403950d3e1f5814f10fd7007db83ba5983f3e03e502a",
+        "source_fact:v1:59518b984ff0dbbb17f7c407504a360c395ace305a856de4ba477a062fe4b767",
+        "source_fact:v1:72283736e9d59e0f9e760eb633feec1a5b22bfe4a5f5109a6dbd844f0b1f3855",
+        "source_fact:v1:c22ed9051ba220c013d06515d665e3e97a5d87db919b6ba25cf0062696c78740",
+        "source_fact:v1:e6eab55dae1a46a12aff69063108d49e5276813116edcb9d45b02ee7b26037b4"
+      ],
+      "source_published_kst": "2026-10-05T16:40+09:00",
+      "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:86236e751e10d98c4d6c1052": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:8e31d60ed9f4f8dc3cb22556": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632476",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:579ba226c4037ca6a7ae7d0baede0373c74e9c1e8ecb1e30f1a6fd71bf28d857",
+      "source_fact_keys": [
+        "source_fact:v1:2fef3d2fef46b6be913aa83c041689227b3811e3d21052a156e5c29815250860",
+        "source_fact:v1:3150a3d400eeb2469c91cb529c3d4e1a5893718b528c663009e7de190d88b270",
+        "source_fact:v1:4141e76b6521c3f3314e403950d3e1f5814f10fd7007db83ba5983f3e03e502a",
+        "source_fact:v1:59518b984ff0dbbb17f7c407504a360c395ace305a856de4ba477a062fe4b767",
+        "source_fact:v1:72283736e9d59e0f9e760eb633feec1a5b22bfe4a5f5109a6dbd844f0b1f3855",
+        "source_fact:v1:c22ed9051ba220c013d06515d665e3e97a5d87db919b6ba25cf0062696c78740",
+        "source_fact:v1:e6eab55dae1a46a12aff69063108d49e5276813116edcb9d45b02ee7b26037b4"
+      ],
+      "source_published_kst": "2026-10-05T16:40+09:00",
+      "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:9626a125516b4e78a64767fe": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632476",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:579ba226c4037ca6a7ae7d0baede0373c74e9c1e8ecb1e30f1a6fd71bf28d857",
+      "source_fact_keys": [
+        "source_fact:v1:2fef3d2fef46b6be913aa83c041689227b3811e3d21052a156e5c29815250860",
+        "source_fact:v1:3150a3d400eeb2469c91cb529c3d4e1a5893718b528c663009e7de190d88b270",
+        "source_fact:v1:4141e76b6521c3f3314e403950d3e1f5814f10fd7007db83ba5983f3e03e502a",
+        "source_fact:v1:59518b984ff0dbbb17f7c407504a360c395ace305a856de4ba477a062fe4b767",
+        "source_fact:v1:72283736e9d59e0f9e760eb633feec1a5b22bfe4a5f5109a6dbd844f0b1f3855",
+        "source_fact:v1:c22ed9051ba220c013d06515d665e3e97a5d87db919b6ba25cf0062696c78740",
+        "source_fact:v1:e6eab55dae1a46a12aff69063108d49e5276813116edcb9d45b02ee7b26037b4"
+      ],
+      "source_published_kst": "2026-10-05T16:40+09:00",
+      "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:9e7dc16ec42d519df7b06394": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.fnnews.com/news/202610051835074598",
+      "source": "파이낸셜뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79673d328cf5ccb551ca247bd705230c4ffce3f63073bc71ade1660860fba97a",
+      "source_fact_keys": [
+        "source_fact:v1:0b62a6fc801e595303323e6dbf4e1fb653c40858dc11769a6ac8fc49df1fcab2",
+        "source_fact:v1:679abab47b85ee3ff4b16df939c01e941477ad777247fdc2eceb367c55e1f71d",
+        "source_fact:v1:892740c864fa0234b7b85793e91c4af3ad111aee4cf40cbee12ede345a4c97c0",
+        "source_fact:v1:e92cc74f5eb0b9c202b5efe7844ca4e662e8c833f12844f871ac76b514038fdf",
+        "source_fact:v1:f872efcb6eeeb77b0d6fedf6e2e1081dd85411aef02c8a26f2204f71cd0bddf9"
+      ],
+      "source_published_kst": "2026-10-05T18:35+09:00",
+      "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
+    },
+    "source_fact:a350f9edb034f4a6f33f200e": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:ad60dee9dd63e894a9412073": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168421",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b6e7c3411848f363597b8cf861e57a7e72d8912b1a30c2c5f18470173d3f223",
+      "source_fact_keys": [
+        "source_fact:v1:1c224b2808cddae9ce7c6be985da59e1fb86dec43a37b9e72b7ada572a2a538d",
+        "source_fact:v1:31fc0798148ba717651e5391484ff6708abb3a8a0266467a1ce6f097e6acec07",
+        "source_fact:v1:554ff660b7fe0603ef55e334179a8e896de321f7efda15cfdc6e153852c2fe27"
+      ],
+      "source_published_kst": "2026-10-05T15:21+09:00",
+      "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
+    },
+    "source_fact:c0f9019d1ebf7e251342b74b": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.fnnews.com/news/202610051835074598",
+      "source": "파이낸셜뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79673d328cf5ccb551ca247bd705230c4ffce3f63073bc71ade1660860fba97a",
+      "source_fact_keys": [
+        "source_fact:v1:0b62a6fc801e595303323e6dbf4e1fb653c40858dc11769a6ac8fc49df1fcab2",
+        "source_fact:v1:679abab47b85ee3ff4b16df939c01e941477ad777247fdc2eceb367c55e1f71d",
+        "source_fact:v1:892740c864fa0234b7b85793e91c4af3ad111aee4cf40cbee12ede345a4c97c0",
+        "source_fact:v1:e92cc74f5eb0b9c202b5efe7844ca4e662e8c833f12844f871ac76b514038fdf",
+        "source_fact:v1:f872efcb6eeeb77b0d6fedf6e2e1081dd85411aef02c8a26f2204f71cd0bddf9"
+      ],
+      "source_published_kst": "2026-10-05T18:35+09:00",
+      "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
+    },
+    "source_fact:ccc713bf921eaf2b56e33783": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.hankyung.com/article/2026100537351",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d3977d8830d9fe9184d267ce7aad2e9e99c88bfbf10b463ef03289a660650e9",
+      "source_fact_keys": [
+        "source_fact:v1:79500a87a79a49556291e2c35f06be0b7c9bc4d94ca787d478d3e6bf339c3f05",
+        "source_fact:v1:fd0ae1e9f1f684353bf9f1a95df29f4e0c4b2bd11eaad6408587379c8e9da692"
+      ],
+      "source_published_kst": "2026-10-05T18:18+09:00",
+      "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
+    },
+    "source_fact:d638f09dcb3f97f8336f51de": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169720",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:496b61515de287a40d154085dac536eb2fe9fe9325f4c697a6d4587683e237de",
+      "source_fact_keys": [
+        "source_fact:v1:05f47065126bb488428df5b9b229cf92784519608263753e9039a76fb36e3810",
+        "source_fact:v1:48645ba69c4940ba38c6cb9950f4699636d3c6666da46f85a748baeb05fc8353"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
+    },
+    "source_fact:d8805feaede5fb85acdee7bc": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
     "title:0020a67428c76c73508654b2": {
       "first_seen_kst": "2026-10-01T21:33:24+09:00",
@@ -32541,6 +33743,28 @@
       "link": "https://www.fnnews.com/news/202610010907294660",
       "source": "파이낸셜뉴스",
       "title": "올데이올가닉, 생산능력 5배 확대…폐배터리 ESS로 전력비 낮춰"
+    },
+    "title:186fc503160753cfb48ff448": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632476",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:579ba226c4037ca6a7ae7d0baede0373c74e9c1e8ecb1e30f1a6fd71bf28d857",
+      "source_fact_keys": [
+        "source_fact:v1:2fef3d2fef46b6be913aa83c041689227b3811e3d21052a156e5c29815250860",
+        "source_fact:v1:3150a3d400eeb2469c91cb529c3d4e1a5893718b528c663009e7de190d88b270",
+        "source_fact:v1:4141e76b6521c3f3314e403950d3e1f5814f10fd7007db83ba5983f3e03e502a",
+        "source_fact:v1:59518b984ff0dbbb17f7c407504a360c395ace305a856de4ba477a062fe4b767",
+        "source_fact:v1:72283736e9d59e0f9e760eb633feec1a5b22bfe4a5f5109a6dbd844f0b1f3855",
+        "source_fact:v1:c22ed9051ba220c013d06515d665e3e97a5d87db919b6ba25cf0062696c78740",
+        "source_fact:v1:e6eab55dae1a46a12aff69063108d49e5276813116edcb9d45b02ee7b26037b4"
+      ],
+      "source_published_kst": "2026-10-05T16:40+09:00",
+      "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
     "title:193e546eb603cd5b62ca8e59": {
       "first_seen_kst": "2026-10-01T21:28:22+09:00",
@@ -37830,6 +39054,24 @@
       "source": "연합뉴스",
       "title": "유가 변동에 국고채 금리 혼조세…3년물 연 4.040%(종합) | 연합뉴스"
     },
+    "title:7d6db47e9ebbc84ab7851adc": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mk.co.kr/news/economy/12168421",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b6e7c3411848f363597b8cf861e57a7e72d8912b1a30c2c5f18470173d3f223",
+      "source_fact_keys": [
+        "source_fact:v1:1c224b2808cddae9ce7c6be985da59e1fb86dec43a37b9e72b7ada572a2a538d",
+        "source_fact:v1:31fc0798148ba717651e5391484ff6708abb3a8a0266467a1ce6f097e6acec07",
+        "source_fact:v1:554ff660b7fe0603ef55e334179a8e896de321f7efda15cfdc6e153852c2fe27"
+      ],
+      "source_published_kst": "2026-10-05T15:21+09:00",
+      "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
+    },
     "title:7d7d86156c324cca380a2590": {
       "first_seen_kst": "2026-09-28T10:16:02+09:00",
       "lanes": {
@@ -39549,6 +40791,33 @@
       "source": "뉴시스",
       "title": "식당 테이블 간장 금지?…식약처 \"사실 아닙니다\""
     },
+    "title:9f6500e533c6f37b7780d296": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_keys": [
+        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
+        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
+        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
+        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
+        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
+        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
+        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
+        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
+        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
+        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
+        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
+        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+      ],
+      "source_published_kst": "2026-10-05T11:20+09:00",
+      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
     "title:9f7b7291e3b11f28b5cd12e1": {
       "first_seen_kst": "2026-10-04T09:42:00+09:00",
       "lanes": {
@@ -40569,6 +41838,23 @@
       "link": "https://www.yna.co.kr/view/AKR20261002064300054",
       "source": "연합뉴스",
       "title": "전남광주, 투자·펀드 기능 한데 묶는다…투자 기관 설립 추진 | 연합뉴스"
+    },
+    "title:b1baf71c1c5298ba16571866": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169720",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:496b61515de287a40d154085dac536eb2fe9fe9325f4c697a6d4587683e237de",
+      "source_fact_keys": [
+        "source_fact:v1:05f47065126bb488428df5b9b229cf92784519608263753e9039a76fb36e3810",
+        "source_fact:v1:48645ba69c4940ba38c6cb9950f4699636d3c6666da46f85a748baeb05fc8353"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
     },
     "title:b1cf224952e9ed2d82c1ecff": {
       "first_seen_kst": "2026-10-05T05:10:16+09:00",
@@ -42647,6 +43933,23 @@
       "source": "전자신문",
       "title": "증시 떠받친 삼전닉스 자사주 매입 막바지…추석 후 '수급 절벽' 어쩌나"
     },
+    "title:d838924bcfc62a23d8ee0472": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.hankyung.com/article/2026100537351",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2d3977d8830d9fe9184d267ce7aad2e9e99c88bfbf10b463ef03289a660650e9",
+      "source_fact_keys": [
+        "source_fact:v1:79500a87a79a49556291e2c35f06be0b7c9bc4d94ca787d478d3e6bf339c3f05",
+        "source_fact:v1:fd0ae1e9f1f684353bf9f1a95df29f4e0c4b2bd11eaad6408587379c8e9da692"
+      ],
+      "source_published_kst": "2026-10-05T18:18+09:00",
+      "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
+    },
     "title:d893d7ada9b0d4530e9a505c": {
       "first_seen_kst": "2026-10-02T19:26:27+09:00",
       "lanes": {
@@ -42988,6 +44291,23 @@
       "link": "https://www.dt.co.kr/article/12087050",
       "source": "디지털타임스",
       "title": "오텍캐리어, 엔비디아 인증 CDU 확보…AI 데이터센터 냉각시장 정조준"
+    },
+    "title:df48bdc01dd389daaaf0687c": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.mk.co.kr/news/world/12168352",
+      "source": "매일경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ea28cd231bddde81e20a3ad97de929ba9c425fb4e455a51fd742958c2cff9a03",
+      "source_fact_keys": [
+        "source_fact:v1:275ee383488e4423632a3c1e37da12860e73c5655b054ac976194de01720dc2e",
+        "source_fact:v1:2d3442b46d29c1fd3b7fe266047b72360bcab850768fb3a9aa05830ab7d5287b"
+      ],
+      "source_published_kst": "2026-10-05T12:59+09:00",
+      "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
     },
     "title:df81792aff24c9aa41bb70bb": {
       "first_seen_kst": "2026-10-05T16:56:44+09:00",
@@ -44351,6 +45671,26 @@
       "source_published_kst": "2026-10-04T06:03+09:00",
       "title": "[AI해킹] ① OTT·미용·결제 이어 은행까지…내 개인정보 어디까지 샜나"
     },
+    "title:f667624b3283a4c55eebd8ed": {
+      "first_seen_kst": "2026-10-05T18:49:55+09:00",
+      "lanes": {
+        "live": "2026-10-05T18:49:55+09:00"
+      },
+      "last_seen_kst": "2026-10-05T18:49:55+09:00",
+      "link": "https://www.fnnews.com/news/202610051835074598",
+      "source": "파이낸셜뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79673d328cf5ccb551ca247bd705230c4ffce3f63073bc71ade1660860fba97a",
+      "source_fact_keys": [
+        "source_fact:v1:0b62a6fc801e595303323e6dbf4e1fb653c40858dc11769a6ac8fc49df1fcab2",
+        "source_fact:v1:679abab47b85ee3ff4b16df939c01e941477ad777247fdc2eceb367c55e1f71d",
+        "source_fact:v1:892740c864fa0234b7b85793e91c4af3ad111aee4cf40cbee12ede345a4c97c0",
+        "source_fact:v1:e92cc74f5eb0b9c202b5efe7844ca4e662e8c833f12844f871ac76b514038fdf",
+        "source_fact:v1:f872efcb6eeeb77b0d6fedf6e2e1081dd85411aef02c8a26f2204f71cd0bddf9"
+      ],
+      "source_published_kst": "2026-10-05T18:35+09:00",
+      "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
+    },
     "title:f674b5c4a1ca80a0a5bb5ef6": {
       "first_seen_kst": "2026-09-26T20:59:22+09:00",
       "lanes": {
@@ -44788,5 +46128,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T18:36:59+09:00"
+  "updated_at_kst": "2026-10-05T18:49:55+09:00"
 }
