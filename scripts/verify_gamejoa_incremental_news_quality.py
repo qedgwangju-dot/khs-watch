@@ -87,6 +87,30 @@ class IncrementalNewsTests(unittest.TestCase):
         for raw in ("금액 미공개", "1억2조", "억", "1만만", ""):
             self.assertFalse(materiality.korean_amount_value(raw))
 
+    def test_foreign_amount_extractor_keeps_adjacent_korean_units(self):
+        for text in ("최대 11억 7천만 달러", "최대 11억7000만 달러"):
+            amounts = radar.extract_foreign_amounts(text)
+            self.assertEqual(len(amounts), 1)
+            self.assertEqual(amounts[0]["amount"], 1170000000)
+            self.assertEqual(amounts[0]["raw"], text.removeprefix("최대 "))
+
+    def test_short_license_copy_also_has_every_inline_currency_conversion(self):
+        now = LIVE_NOW.replace(hour=21)
+        candidate = classify(EQUIVALENCE_CASES["exclusive_license_short_copy"], now)
+        snapshot = {"rates": {"USD": {"value": 1420.0, "status": "최근거래", "reference_time_kst": now.isoformat(),
+                    "query_time_kst": now.isoformat(), "source": "Test only", "url": "https://example.com/test-fx"}}}
+        with patch.object(radar.base, "kst_now", return_value=now), patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}), patch.object(radar, "collect_fx_snapshot", return_value=snapshot):
+            selected = radar.compact_quality_final_alerts([candidate], 30)
+            report = radar.compact_report(selected, {}, {}, now)
+            radar.guard_preopen_report(report)
+        self.assertEqual(len(selected), 1)
+        self.assertIn("11억 7천만 달러(약 1조6,614억원)", report)
+        self.assertIn("1억 달러(약 1,420억원)", report)
+
+    def test_adjacent_units_do_not_change_foreign_decimal_or_english_scale(self):
+        for text, expected in (("1.5억 달러", 150000000), ("$42 billion", 42000000000), ("3천5백만 유로", 35000000)):
+            self.assertEqual(radar.extract_foreign_amounts(text)[0]["amount"], expected)
+
     def test_licensing_short_and_long_wire_have_one_event_identity(self):
         short = self.event_alert("exclusive_license_short_copy")
         long = self.event_alert("exclusive_license_long_copy")

@@ -1727,7 +1727,7 @@ FOREIGN_CURRENCY_SPECS = {
     "PHP": {"labels": ("필리핀 페소", "필리핀페소", "PHP"), "symbol": "PHPKRW=X"},
     "ZAR": {"labels": ("남아공 랜드", "랜드", "ZAR"), "symbol": "ZARKRW=X"},
 }
-FOREIGN_NUMBER_PATTERN = r"\d[\d,.]*(?:\s*[천백십조억만]\s*\d[\d,.]*)*(?:\s*[천백십조억만])?"
+FOREIGN_NUMBER_PATTERN = r"\d[\d,.]*(?:\s*[천백십조억만](?:\s*\d[\d,.]*)?)*"
 ENGLISH_SCALE_MULTIPLIERS = {
     "trillion": 1_000_000_000_000,
     "tn": 1_000_000_000_000,
