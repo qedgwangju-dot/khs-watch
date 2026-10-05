@@ -216,81 +216,70 @@ def main() -> None:
         return
 
     lines = text.splitlines()
+    chosen: list[dict[str, str]] = []
+    hidden = 0
+    new_lines = list(lines)
+
+    # When news rows exist, translate and deduplicate them first. Numeric-only
+    # policy changes still continue to the compact layout below.
     try:
         start = lines.index("<b>🆕 신규 확인</b>")
     except ValueError:
-        return
+        start = -1
 
-    end = next(
-        (i for i in range(start + 1, len(lines)) if lines[i] == "<b>📊 투자 해석</b>"),
-        len(lines),
-    )
-    section = lines[start + 1:end]
+    if start >= 0:
+        end = next(
+            (i for i in range(start + 1, len(lines)) if lines[i] == "<b>📊 투자 해석</b>"),
+            len(lines),
+        )
+        section_rows = lines[start + 1:end]
+        source_rows = [ln for ln in section_rows if "<a href=" in ln and ("[공식]" in ln or "[보도]" in ln)]
+        row_re = re.compile(
+            r'^• <b>\[(?P<badge>공식|보도)\] (?P<source>.*?)</b> · (?P<title>.*?)\s+<a href="(?P<url>[^"]+)">원문</a>$'
+        )
 
-    summary = next((ln for ln in section if ln.startswith("• 새 자료 ")), None)
-    source_rows = [ln for ln in section if "<a href=" in ln and ("[공식]" in ln or "[보도]" in ln)]
-    if not source_rows:
-        return
+        parsed: list[dict[str, str]] = []
+        for row in source_rows:
+            m = row_re.match(row)
+            if not m:
+                continue
+            original_title = html.unescape(m.group("title").strip())
+            parsed.append({
+                "badge": m.group("badge"),
+                "source": clean_source(html.unescape(m.group("source"))),
+                "title": original_title,
+                "url": html.unescape(m.group("url")),
+                "theme": classify(original_title),
+            })
 
-    row_re = re.compile(
-        r'^• <b>\[(?P<badge>공식|보도)\] (?P<source>.*?)</b> · (?P<title>.*?)\s+<a href="(?P<url>[^"]+)">원문</a>$'
-    )
+        if parsed:
+            by_event: dict[str, dict[str, str]] = {}
+            raw_count = len(parsed)
+            for item in parsed:
+                key = event_key(item)
+                if key == "generic:pjm-home":
+                    continue
+                previous = by_event.get(key)
+                if previous is None or row_quality(item) < row_quality(previous):
+                    by_event[key] = item
 
-    parsed: list[dict[str, str]] = []
-    for row in source_rows:
-        m = row_re.match(row)
-        if not m:
-            continue
-        original_title = html.unescape(m.group("title").strip())
-        parsed.append({
-            "badge": m.group("badge"),
-            "source": clean_source(html.unescape(m.group("source"))),
-            "title": original_title,
-            "url": html.unescape(m.group("url")),
-            "theme": classify(original_title),
-        })
-
-    if not parsed:
-        return
-
-    # Collapse multiple representations of the same official event. PJM's
-    # homepage can expose one filing as a docket link, a body fragment and a
-    # Google-News row; those are one event, not three.
-    by_event: dict[str, dict[str, str]] = {}
-    raw_count = len(parsed)
-    for item in parsed:
-        key = event_key(item)
-        if key == "generic:pjm-home":
-            continue
-        previous = by_event.get(key)
-        if previous is None or row_quality(item) < row_quality(previous):
-            by_event[key] = item
-
-    chosen = sorted(by_event.values(), key=row_quality)[:4]
-    official_unique = sum(1 for item in chosen if item["badge"] == "공식")
-    news_unique = len(chosen) - official_unique
-
-    rebuilt = ["<b>🆕 핵심 신규 변화</b>"]
-    rebuilt.append(
-        f"• 신규 사건 <b>{len(chosen)}건</b> · 공식 <b>{official_unique}건</b> · 신뢰보도 <b>{news_unique}건</b>"
-    )
-
-    for item in chosen:
-        theme = item["theme"]
-        badge = item["badge"]
-        source = item["source"]
-        title_ko = translate_title(item["title"], theme)
-        url = html.escape(item["url"], quote=True)
-        rebuilt.append(f"• <b>{html.escape(theme)}</b> · [{badge}] {html.escape(source)}")
-        rebuilt.append(f"  ↳ 🔗 <a href=\"{url}\">{html.escape(title_ko)}</a>")
-
-    duplicate_rows = max(0, raw_count - len(chosen))
-    if duplicate_rows:
-        rebuilt.append(f"• <i>같은 사건의 중복 원문 {duplicate_rows}건은 1건으로 통합했습니다.</i>")
-    hidden = duplicate_rows
-
-    # Keep a blank line before the next major section.
-    new_lines = lines[:start] + rebuilt + [""] + lines[end:]
+            chosen = sorted(by_event.values(), key=row_quality)[:4]
+            official_unique = sum(1 for item in chosen if item["badge"] == "공식")
+            news_unique = len(chosen) - official_unique
+            rebuilt = [
+                "<b>🆕 핵심 신규 변화</b>",
+                f"• 신규 사건 <b>{len(chosen)}건</b> · 공식 <b>{official_unique}건</b> · 신뢰보도 <b>{news_unique}건</b>",
+            ]
+            for item in chosen:
+                theme = item["theme"]
+                badge = item["badge"]
+                source = item["source"]
+                title_ko = translate_title(item["title"], theme)
+                url = html.escape(item["url"], quote=True)
+                rebuilt.append(f"• <b>{html.escape(theme)}</b> · [{badge}] {html.escape(source)}")
+                rebuilt.append(f"  ↳ 🔗 <a href=\"{url}\">{html.escape(title_ko)}</a>")
+            hidden = max(0, raw_count - len(chosen))
+            new_lines = lines[:start] + rebuilt + [""] + lines[end:]
 
     headings = {
         "<b>📌 현재 공식 기준</b>",
@@ -299,6 +288,7 @@ def main() -> None:
         "<b>💰 비용 감각</b>",
         "<b>🔄 숫자 변경</b>",
         "<b>🆕 핵심 신규 변화</b>",
+        "<b>🆕 신규 확인</b>",
         "<b>📊 투자 해석</b>",
         "<b>💱 환율</b>",
         "<b>🔗 공식 원문</b>",
@@ -321,7 +311,7 @@ def main() -> None:
     capacity = sec("<b>⚡ 용량시장 실제 스트레스</b>")
     cost = sec("<b>💰 비용 감각</b>")
     numeric = sec("<b>🔄 숫자 변경</b>")
-    fresh = sec("<b>🆕 핵심 신규 변화</b>")
+    fresh = sec("<b>🆕 핵심 신규 변화</b>") or sec("<b>🆕 신규 확인</b>")
     fx = sec("<b>💱 환율</b>")
 
     compact = [new_lines[0], "", "<b>🧭 핵심</b>"]
@@ -361,6 +351,8 @@ def main() -> None:
 
     if fresh:
         compact += ["", "<b>🆕 신규 확인</b>"] + fresh[:9]
+        if hidden:
+            compact.append(f"• 중복 원문 {hidden}건은 같은 사건으로 통합")
 
     compact += [
         "",
