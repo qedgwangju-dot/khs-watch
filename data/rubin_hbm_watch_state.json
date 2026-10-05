@@ -640,13 +640,15 @@
   },
   "_delivery": {
     "id": "a4f97a72f17e56595e2bf6219085a590f62dbd0f647fe97a97e3780c79cf4f8b",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-10-05T20:26:15+09:00",
     "chunks": [
       "<b>🚨 AI 부품 리드타임 변화</b>\n\n<b>핵심 변화</b>\n• <b>전주 대비:</b> ↘ 병목 완화 — 악화 0개 / 완화 1개\n• <b>최대 병목:</b> ABF 48~56주 / 균형 12주 (4.3배)\n• 이전 확정값 유지: CPU, GPU, DRAM, NAND(eSSD), HDD, ABF, MLCC\n\n<b>현재 숫자</b>\n• <b>심각:</b> HDD 50주/16주 (3.1배) · ABF 48~56주/12주 (4.3배)\n• <b>제약:</b> CPU 25~30주/16~20주 (1.5배) · DRAM 20주/8주 (2.5배) · NAND(eSSD) 16주/8주 (2.0배) · MLCC 32주/12주 (2.7배)\n• <b>균형:</b> GPU 30~40주/30~40주 (1.0배)\n\n<b>구조 시간축</b>\n• UBS 프로젝트 기준: DRAM 6~12개월 <i>(부품 주문→납기와 직접 비교 금지)</i>\n\n<b>미래 재평가</b>\n• <b>ABF:</b> 2027년 일본 Low-CTE 유리섬유 천 증설로 소재 병목 완화 가능, 기판 생산능력은 예약 포화\n\n<b>관련 기업</b>\n• <b>DRAM:</b> 삼성전자·SK하이닉스·Micron — 서버 DRAM/RDIMM\n• <b>ABF:</b> 삼성전기·Ibiden·Unimicron·Nan Ya PCB — 고성능 FC-BGA/ABF 기판\n\n<b>역풍·다음 확인</b>\n• DRAM: RDIMM 가격·재고·출하 (6~12개월) / ABF: 리드타임·SAP 가동률·수율·고객 승인 (12~24개월)\n\n• <a href=\"https://insights.trendforce.com/p/weekly-radar-004\">TrendForce 원문</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      235
+    ],
     "candidate": {
       "updated_at_kst": "2026-10-05T20:25:26+09:00",
       "seen_ids": [
