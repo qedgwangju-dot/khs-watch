@@ -503,25 +503,31 @@
     "event:2040de76bfabafead1b43434": {
       "first_seen_kst": "2026-10-05T00:49:19+09:00",
       "lanes": {
-        "live": "2026-10-05T19:17:41+09:00",
+        "live": "2026-10-05T20:53:37+09:00",
         "preopen": "2026-10-05T06:34:55+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:17:41+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261002135900003",
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
       "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6cc5ed116eb04bf6aff5e30f5e85963cc30f5247e4e30d153a08778c1aab60aa",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
       "source_fact_keys": [
-        "source_fact:v1:07624cd4576ace4d606288c9277258c8892c0e9ea738bbd9959f3920310a782b",
-        "source_fact:v1:23d157cf342df6ea5f4193612a158ef0c7aa72da62fdcc1fb0fa9c809f1c141c",
-        "source_fact:v1:358adddb8724f07e00b92a338754d258dbf598ffb5d32818c2122148c1adcc47",
-        "source_fact:v1:9c853e738a7f03f6aff44bb6b680e456061a5455dfc3e783d45a6f8a5f9660b3",
-        "source_fact:v1:c367395b2873313467a0e961e8eb974b2208fc31182cf81356547384f09aaa49",
-        "source_fact:v1:cd8f6b7e4ac75230262865a2e0f65bb5404e6dc1380eb4eb9d067e7811544f2a",
-        "source_fact:v1:fee62d299e5621e146432d39924f3be8b7f2b3195ef26d1b1f81d6ab54c21c4b"
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
       ],
-      "source_published_kst": "2026-10-05T06:17+09:00",
-      "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
     "event:20559afaa46c8beb4ac5c20d": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -4556,6 +4562,55 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "fact:0977e38e464d6871904bd675": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_keys": [
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "fact:0ca37161e3eb5e20cd99467a": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168505",
+      "source": "매일경제",
+      "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
+      "source_fact_keys": [
+        "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
+        "source_fact:v1:66f7ba7ef72a9b438884a83ed04f68483e23859e2df7f22306c77a793b0c4cba",
+        "source_fact:v1:699a6ebf7783551abdfadb5f434c61b17e565867e95639ae53af95d1f484e2f8",
+        "source_fact:v1:76f6ca7794976201298288e3f4ce7df85a2518efef7c87286f500f010864899b",
+        "source_fact:v1:a93506507f17f1ed3a1b55357e2deff44cc22a527134db1760df24ac54a51c66"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
+    },
     "fact:0ea69da4170487ae2e2a0fdd": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -4615,6 +4670,23 @@
       ],
       "source_published_kst": "2026-10-05T17:22+09:00",
       "title": "\"美中의존 줄이자\"…정부, CPTPP 가입 속도"
+    },
+    "fact:180349ecd5de0bb454e373bc": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169773",
+      "source": "매일경제",
+      "source_body_digest": "910d6ebe6d7145f9855c6742e4981b14fd295cf91f23270fc46e0eb5bc33b852",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0fd5bec0ac3ae4eaa7b609a7f3472547e0449588a14692ea85d8d7d9b58c2a37",
+      "source_fact_keys": [
+        "source_fact:v1:74f40a2f819ba762b644c9660004a2862f5d4097889fb15038887633a61112a2"
+      ],
+      "source_published_kst": "2026-10-05T20:33+09:00",
+      "title": "해로우 헬스, 티르바야 인수 완료..선지급 3000만달러"
     },
     "fact:186fa25186caad431ce772df": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -4907,6 +4979,65 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
+    },
+    "fact:6c1a84a5e9e41ee7b4169f1c": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169772",
+      "source": "매일경제",
+      "source_body_digest": "f69e9cae191b2c02b1df6c265158773afa3e25e2fe866c5ff70e7ba27f08e3c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de3a05909dd30aa977ce415368a52c61c2d392dc37e010c10e41b8c35e9a7989",
+      "source_fact_keys": [
+        "source_fact:v1:01d0897268c3083a6a887bf74b7e0d02faaa5da8438ed61b7bf49bf371c35fa5",
+        "source_fact:v1:6aa2b08861bf63b6ecccf562865f534826560b7f0ab99f7500f8b4fb2ea97004",
+        "source_fact:v1:73264a2d6ccf813a4c0cd5e1bb487e81fba3f2849c2a49676ec634246b1a82d5",
+        "source_fact:v1:dc4f178b8bf13975af279accfb3ed1b273f7a65dc11c6fc9b19bc53cdecbff35"
+      ],
+      "source_published_kst": "2026-10-05T20:25+09:00",
+      "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
+    },
+    "fact:7a1f163e78e938bc25c5826e": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169767",
+      "source": "매일경제",
+      "source_body_digest": "7283c84bd73aadda8b49610e26027b063f8d4be37730139072e7cbe240dcdac5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0fa66e5d4222db22d26208f4a13b1290af2ca6c9a8171a6b2d4971f2e659b65",
+      "source_fact_keys": [
+        "source_fact:v1:13f3a125f73e5bf3b2779f6495e5e1d027cae61a7026b88100b56556e9d92bf8"
+      ],
+      "source_published_kst": "2026-10-05T20:20+09:00",
+      "title": "이카엑스 홀딩스, 플라이미 인수 완료로 차량용 OS 풀스택 경쟁력 부각"
+    },
+    "fact:85a1db6fe38ec6a4eb60a08a": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169758",
+      "source": "매일경제",
+      "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
+      "source_fact_keys": [
+        "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
+        "source_fact:v1:0e44ca3e113a8185d082811e885d03d76b97a46a5795d791154e41f6b0f4c2f8",
+        "source_fact:v1:37c31a951a72168feb1ccff95b58934378ac987162afa03ee4ddeb584e72a5fc",
+        "source_fact:v1:97b9e3bb49646fa23ae8cc11ac6bb2879cb76b0d80742e2aea69475cde08b921",
+        "source_fact:v1:a1dac54f5e9d09e7e6b2383ed79249c521b78f6ad1e3866017e190c91316f284",
+        "source_fact:v1:e33beeeb033bc13e33e13dbb931926eda15aab7486d88097782f3ea00b37188a"
+      ],
+      "source_published_kst": "2026-10-05T20:01+09:00",
+      "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
     },
     "fact:87fdd61b97b4f30efd75ba63": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
@@ -8718,6 +8849,27 @@
       "source": "이투데이",
       "title": "삼성물산, 목동13단지 재입찰도 단독 응찰⋯수의계약 전망"
     },
+    "link:3ea33587853b5251f977489e": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168505",
+      "source": "매일경제",
+      "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
+      "source_fact_keys": [
+        "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
+        "source_fact:v1:66f7ba7ef72a9b438884a83ed04f68483e23859e2df7f22306c77a793b0c4cba",
+        "source_fact:v1:699a6ebf7783551abdfadb5f434c61b17e565867e95639ae53af95d1f484e2f8",
+        "source_fact:v1:76f6ca7794976201298288e3f4ce7df85a2518efef7c87286f500f010864899b",
+        "source_fact:v1:a93506507f17f1ed3a1b55357e2deff44cc22a527134db1760df24ac54a51c66"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
+    },
     "link:3eac8b924a9eb13ee00587e1": {
       "first_seen_kst": "2026-10-01T19:33:29+09:00",
       "lanes": {
@@ -10191,6 +10343,23 @@
       "source": "아시아경제",
       "title": "[Why&Next]노스페이스와 맞짱?…네파 품은 K2, '카니발리제이션' 리스크"
     },
+    "link:574fa33641d6d8bb49144a49": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169767",
+      "source": "매일경제",
+      "source_body_digest": "7283c84bd73aadda8b49610e26027b063f8d4be37730139072e7cbe240dcdac5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0fa66e5d4222db22d26208f4a13b1290af2ca6c9a8171a6b2d4971f2e659b65",
+      "source_fact_keys": [
+        "source_fact:v1:13f3a125f73e5bf3b2779f6495e5e1d027cae61a7026b88100b56556e9d92bf8"
+      ],
+      "source_published_kst": "2026-10-05T20:20+09:00",
+      "title": "이카엑스 홀딩스, 플라이미 인수 완료로 차량용 OS 풀스택 경쟁력 부각"
+    },
     "link:57665b50d2b6f94702467026": {
       "first_seen_kst": "2026-10-03T21:21:44+09:00",
       "lanes": {
@@ -10916,6 +11085,21 @@
       "link": "https://www.yna.co.kr/view/AKR20261002085900008",
       "source": "연합뉴스",
       "title": "국고채 금리 일제히 하락…3년물 장중 연 3.960% | 연합뉴스"
+    },
+    "link:6434f910e1cc2c53b4e8691c": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169768",
+      "source": "매일경제",
+      "source_body_digest": "758e5a72c7d31160be291952342aad48eaf027c35ab852144f32e7b7c667ec6c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T20:20+09:00",
+      "title": "알렉토, 제넨텍에 AL050 기술이전하며 선급금 1억 달러 확보"
     },
     "link:643a1809f6d8aa633ea596b4": {
       "first_seen_kst": "2026-10-02T12:31:36+09:00",
@@ -11707,6 +11891,34 @@
       "link": "https://www.mt.co.kr/stock/2026/09/29/2026092915185551845",
       "source": "머니투데이",
       "title": "디어유, 150억원 자사주 취득 후 전량 소각 \"중장기 기업가치 제고\""
+    },
+    "link:71a3c6db7298f6ec942a3351": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_keys": [
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
     "link:71a5af85180acbbc25bc24f8": {
       "first_seen_kst": "2026-10-01T16:57:16+09:00",
@@ -13347,6 +13559,23 @@
       "source_published_kst": "2026-10-05T09:27+09:00",
       "title": "비자 스테이블코인 연계 카드 결제액, 올 들어 200% 성장"
     },
+    "link:90c7033e51886b60c9eec868": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169773",
+      "source": "매일경제",
+      "source_body_digest": "910d6ebe6d7145f9855c6742e4981b14fd295cf91f23270fc46e0eb5bc33b852",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0fd5bec0ac3ae4eaa7b609a7f3472547e0449588a14692ea85d8d7d9b58c2a37",
+      "source_fact_keys": [
+        "source_fact:v1:74f40a2f819ba762b644c9660004a2862f5d4097889fb15038887633a61112a2"
+      ],
+      "source_published_kst": "2026-10-05T20:33+09:00",
+      "title": "해로우 헬스, 티르바야 인수 완료..선지급 3000만달러"
+    },
     "link:90e5b84aedcd382c3c40eec0": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
       "lanes": {
@@ -14753,6 +14982,26 @@
       "link": "https://www.mt.co.kr/index.php/world/2026/10/02/2026100207543660805",
       "source": "머니투데이",
       "title": "테슬라, 오늘 밤 3분기 전기차 인도량 발표…전년비 7~9% 감소 예상"
+    },
+    "link:a84f359c5ca95151d9133f20": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169772",
+      "source": "매일경제",
+      "source_body_digest": "f69e9cae191b2c02b1df6c265158773afa3e25e2fe866c5ff70e7ba27f08e3c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de3a05909dd30aa977ce415368a52c61c2d392dc37e010c10e41b8c35e9a7989",
+      "source_fact_keys": [
+        "source_fact:v1:01d0897268c3083a6a887bf74b7e0d02faaa5da8438ed61b7bf49bf371c35fa5",
+        "source_fact:v1:6aa2b08861bf63b6ecccf562865f534826560b7f0ab99f7500f8b4fb2ea97004",
+        "source_fact:v1:73264a2d6ccf813a4c0cd5e1bb487e81fba3f2849c2a49676ec634246b1a82d5",
+        "source_fact:v1:dc4f178b8bf13975af279accfb3ed1b273f7a65dc11c6fc9b19bc53cdecbff35"
+      ],
+      "source_published_kst": "2026-10-05T20:25+09:00",
+      "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
     },
     "link:a8722095ac2aa09858f337d7": {
       "first_seen_kst": "2026-09-21T06:34:54+09:00",
@@ -17240,6 +17489,28 @@
       "link": "https://www.yna.co.kr/view/AKR20261001006952071",
       "source": "연합뉴스",
       "title": "트럼프, '알래스카 LNG에 한국 500억불 투자' 일방 발표(종합2보) | 연합뉴스"
+    },
+    "link:d3a8fea8b07704702fddac89": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169758",
+      "source": "매일경제",
+      "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
+      "source_fact_keys": [
+        "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
+        "source_fact:v1:0e44ca3e113a8185d082811e885d03d76b97a46a5795d791154e41f6b0f4c2f8",
+        "source_fact:v1:37c31a951a72168feb1ccff95b58934378ac987162afa03ee4ddeb584e72a5fc",
+        "source_fact:v1:97b9e3bb49646fa23ae8cc11ac6bb2879cb76b0d80742e2aea69475cde08b921",
+        "source_fact:v1:a1dac54f5e9d09e7e6b2383ed79249c521b78f6ad1e3866017e190c91316f284",
+        "source_fact:v1:e33beeeb033bc13e33e13dbb931926eda15aab7486d88097782f3ea00b37188a"
+      ],
+      "source_published_kst": "2026-10-05T20:01+09:00",
+      "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
     },
     "link:d3c3d364e5891bf44d98d947": {
       "first_seen_kst": "2026-09-27T18:18:04+09:00",
@@ -21460,6 +21731,27 @@
       "source": "전자신문",
       "title": "'가전 특별시' 광주, 삼성 투자로 공조·반도체까지 산업지도 넓힌다"
     },
+    "original:20961280439138c46dffa4f1": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168505",
+      "source": "매일경제",
+      "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
+      "source_fact_keys": [
+        "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
+        "source_fact:v1:66f7ba7ef72a9b438884a83ed04f68483e23859e2df7f22306c77a793b0c4cba",
+        "source_fact:v1:699a6ebf7783551abdfadb5f434c61b17e565867e95639ae53af95d1f484e2f8",
+        "source_fact:v1:76f6ca7794976201298288e3f4ce7df85a2518efef7c87286f500f010864899b",
+        "source_fact:v1:a93506507f17f1ed3a1b55357e2deff44cc22a527134db1760df24ac54a51c66"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
+    },
     "original:20be635133fa9131537e03a4": {
       "first_seen_kst": "2026-10-02T15:48:44+09:00",
       "lanes": {
@@ -22480,6 +22772,21 @@
       "link": "https://www.yna.co.kr/view/AKR20261002119100054",
       "source": "연합뉴스",
       "title": "광주도시철도 2호선 양산-신가구간 2034년 우선 개통 | 연합뉴스"
+    },
+    "original:35ee30aada1e5b4b4b2782dd": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169768",
+      "source": "매일경제",
+      "source_body_digest": "758e5a72c7d31160be291952342aad48eaf027c35ab852144f32e7b7c667ec6c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T20:20+09:00",
+      "title": "알렉토, 제넨텍에 AL050 기술이전하며 선급금 1억 달러 확보"
     },
     "original:361f4dda5d01337a549f6789": {
       "first_seen_kst": "2026-09-18T11:26:24+09:00",
@@ -24586,6 +24893,26 @@
       "source": "한국경제",
       "title": "HD현대重, 태안 해상변전소 본계약…해상풍력 밸류체인 확대"
     },
+    "original:5780de9d6f3758e10c78bcc6": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169772",
+      "source": "매일경제",
+      "source_body_digest": "f69e9cae191b2c02b1df6c265158773afa3e25e2fe866c5ff70e7ba27f08e3c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de3a05909dd30aa977ce415368a52c61c2d392dc37e010c10e41b8c35e9a7989",
+      "source_fact_keys": [
+        "source_fact:v1:01d0897268c3083a6a887bf74b7e0d02faaa5da8438ed61b7bf49bf371c35fa5",
+        "source_fact:v1:6aa2b08861bf63b6ecccf562865f534826560b7f0ab99f7500f8b4fb2ea97004",
+        "source_fact:v1:73264a2d6ccf813a4c0cd5e1bb487e81fba3f2849c2a49676ec634246b1a82d5",
+        "source_fact:v1:dc4f178b8bf13975af279accfb3ed1b273f7a65dc11c6fc9b19bc53cdecbff35"
+      ],
+      "source_published_kst": "2026-10-05T20:25+09:00",
+      "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
+    },
     "original:579649166f12483f41f26367": {
       "first_seen_kst": "2026-10-05T09:59:51+09:00",
       "lanes": {
@@ -26597,15 +26924,17 @@
     "original:7df766796137bc5eba6604cd": {
       "first_seen_kst": "2026-10-05T20:38:34+09:00",
       "lanes": {
-        "live": "2026-10-05T20:38:34+09:00"
+        "live": "2026-10-05T20:53:37+09:00"
       },
-      "last_seen_kst": "2026-10-05T20:38:34+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12168695",
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169767",
       "source": "매일경제",
-      "source_body_digest": "dbdad66e88d820a8605c056af158c533075a739f20185310f487ef0e5db294aa",
+      "source_body_digest": "7283c84bd73aadda8b49610e26027b063f8d4be37730139072e7cbe240dcdac5",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
+      "source_fact_identity": "source_facts:v1:b0fa66e5d4222db22d26208f4a13b1290af2ca6c9a8171a6b2d4971f2e659b65",
+      "source_fact_keys": [
+        "source_fact:v1:13f3a125f73e5bf3b2779f6495e5e1d027cae61a7026b88100b56556e9d92bf8"
+      ],
       "source_published_kst": "2026-10-05T20:20+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료로 차량용 OS 풀스택 경쟁력 부각"
     },
@@ -27154,6 +27483,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T07:01+09:00",
       "title": "기아, 영국서도 '질주'…1∼8월 판매 폭스바겐 이어 2위 | 연합뉴스"
+    },
+    "original:88d80d49223eb28453f3824e": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169773",
+      "source": "매일경제",
+      "source_body_digest": "910d6ebe6d7145f9855c6742e4981b14fd295cf91f23270fc46e0eb5bc33b852",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0fd5bec0ac3ae4eaa7b609a7f3472547e0449588a14692ea85d8d7d9b58c2a37",
+      "source_fact_keys": [
+        "source_fact:v1:74f40a2f819ba762b644c9660004a2862f5d4097889fb15038887633a61112a2"
+      ],
+      "source_published_kst": "2026-10-05T20:33+09:00",
+      "title": "해로우 헬스, 티르바야 인수 완료..선지급 3000만달러"
     },
     "original:88eb4aed5f61409b955489e0": {
       "first_seen_kst": "2026-09-30T15:16:38+09:00",
@@ -30234,6 +30580,28 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=05720326645608984",
       "source": "이데일리",
       "title": "[美특징주]팔로알토, 수요 증가 전망·플랫폼 전략 ‘긍정적’ 평가…개장전 1%↑"
+    },
+    "original:c02e4eafe918394b9c42720e": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169758",
+      "source": "매일경제",
+      "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
+      "source_fact_keys": [
+        "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
+        "source_fact:v1:0e44ca3e113a8185d082811e885d03d76b97a46a5795d791154e41f6b0f4c2f8",
+        "source_fact:v1:37c31a951a72168feb1ccff95b58934378ac987162afa03ee4ddeb584e72a5fc",
+        "source_fact:v1:97b9e3bb49646fa23ae8cc11ac6bb2879cb76b0d80742e2aea69475cde08b921",
+        "source_fact:v1:a1dac54f5e9d09e7e6b2383ed79249c521b78f6ad1e3866017e190c91316f284",
+        "source_fact:v1:e33beeeb033bc13e33e13dbb931926eda15aab7486d88097782f3ea00b37188a"
+      ],
+      "source_published_kst": "2026-10-05T20:01+09:00",
+      "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
     },
     "original:c033af98f347c32e1882a704": {
       "first_seen_kst": "2026-10-02T19:08:27+09:00",
@@ -33648,6 +34016,34 @@
       "source_event_identity": "",
       "title": "젠썸, 모딘 결합 완료 후 지분 희석·매도 압력 우려에 약세"
     },
+    "original:fcefafecd18add1e884bff11": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_keys": [
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
     "original:fd06262b5014f30270d049ff": {
       "first_seen_kst": "2026-09-21T20:40:44+09:00",
       "lanes": {
@@ -33906,6 +34302,26 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
     },
+    "source_fact:08986bd9bb22a90964311dc8": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169772",
+      "source": "매일경제",
+      "source_body_digest": "f69e9cae191b2c02b1df6c265158773afa3e25e2fe866c5ff70e7ba27f08e3c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de3a05909dd30aa977ce415368a52c61c2d392dc37e010c10e41b8c35e9a7989",
+      "source_fact_keys": [
+        "source_fact:v1:01d0897268c3083a6a887bf74b7e0d02faaa5da8438ed61b7bf49bf371c35fa5",
+        "source_fact:v1:6aa2b08861bf63b6ecccf562865f534826560b7f0ab99f7500f8b4fb2ea97004",
+        "source_fact:v1:73264a2d6ccf813a4c0cd5e1bb487e81fba3f2849c2a49676ec634246b1a82d5",
+        "source_fact:v1:dc4f178b8bf13975af279accfb3ed1b273f7a65dc11c6fc9b19bc53cdecbff35"
+      ],
+      "source_published_kst": "2026-10-05T20:25+09:00",
+      "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
+    },
     "source_fact:091d9c0ed69788f7cb66ac69": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -33940,6 +34356,34 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:09935133430f20c18e7f7243": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_keys": [
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
     "source_fact:0e4497a88145848d20300177": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -33981,6 +34425,34 @@
       ],
       "source_published_kst": "2026-10-05T19:05+09:00",
       "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
+    },
+    "source_fact:133e9cb9a8a1f205ae4ce682": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_keys": [
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
     "source_fact:1472b743a48aefafa33a97d8": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -34421,6 +34893,34 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "주담대 금리도 '들썩'…한은 추가 인상에 이자 더 오르나[금리 쇼크③]"
     },
+    "source_fact:2b80906e0d6a99356c8f86d5": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_keys": [
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
     "source_fact:2f6d62d1c65ce032fb15207d": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -34482,6 +34982,34 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:30fc8b60521330da2519bf1c": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_keys": [
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
     "source_fact:3229fb7d7e568c6a62073508": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
@@ -34675,6 +35203,34 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:3729a70273a9c17887c84b0b": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_keys": [
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
     "source_fact:37e4d8c7d12a67fd399780a6": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -34796,6 +35352,27 @@
       "source_published_kst": "2026-10-05T05:01+09:00",
       "title": "국회 정무위 6일 국감 돌입…금융권 해킹에 5대 은행장 줄소환되나"
     },
+    "source_fact:3fab2199758a56385c99554f": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168505",
+      "source": "매일경제",
+      "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
+      "source_fact_keys": [
+        "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
+        "source_fact:v1:66f7ba7ef72a9b438884a83ed04f68483e23859e2df7f22306c77a793b0c4cba",
+        "source_fact:v1:699a6ebf7783551abdfadb5f434c61b17e565867e95639ae53af95d1f484e2f8",
+        "source_fact:v1:76f6ca7794976201298288e3f4ce7df85a2518efef7c87286f500f010864899b",
+        "source_fact:v1:a93506507f17f1ed3a1b55357e2deff44cc22a527134db1760df24ac54a51c66"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
+    },
     "source_fact:407497ab12a9705701544c3e": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -34856,6 +35433,27 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:43474c80a971fb128f3d3a7b": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168505",
+      "source": "매일경제",
+      "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
+      "source_fact_keys": [
+        "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
+        "source_fact:v1:66f7ba7ef72a9b438884a83ed04f68483e23859e2df7f22306c77a793b0c4cba",
+        "source_fact:v1:699a6ebf7783551abdfadb5f434c61b17e565867e95639ae53af95d1f484e2f8",
+        "source_fact:v1:76f6ca7794976201298288e3f4ce7df85a2518efef7c87286f500f010864899b",
+        "source_fact:v1:a93506507f17f1ed3a1b55357e2deff44cc22a527134db1760df24ac54a51c66"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
     },
     "source_fact:43a882c1e5c9f6963faaaa41": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -34967,6 +35565,27 @@
       ],
       "source_published_kst": "2026-10-05T19:05+09:00",
       "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
+    },
+    "source_fact:470fa28fbfe1e8691ac29a65": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168505",
+      "source": "매일경제",
+      "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
+      "source_fact_keys": [
+        "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
+        "source_fact:v1:66f7ba7ef72a9b438884a83ed04f68483e23859e2df7f22306c77a793b0c4cba",
+        "source_fact:v1:699a6ebf7783551abdfadb5f434c61b17e565867e95639ae53af95d1f484e2f8",
+        "source_fact:v1:76f6ca7794976201298288e3f4ce7df85a2518efef7c87286f500f010864899b",
+        "source_fact:v1:a93506507f17f1ed3a1b55357e2deff44cc22a527134db1760df24ac54a51c66"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
     },
     "source_fact:47a6af4935a0feadd8f52f2a": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
@@ -35315,6 +35934,28 @@
       "source_published_kst": "2026-10-05T05:47+09:00",
       "title": "단일 레버리지 20주 미만 단주, 시간외 종가매매로 '출구 마련' | 연합뉴스"
     },
+    "source_fact:5b22dc126fdccadaafeeb423": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169758",
+      "source": "매일경제",
+      "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
+      "source_fact_keys": [
+        "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
+        "source_fact:v1:0e44ca3e113a8185d082811e885d03d76b97a46a5795d791154e41f6b0f4c2f8",
+        "source_fact:v1:37c31a951a72168feb1ccff95b58934378ac987162afa03ee4ddeb584e72a5fc",
+        "source_fact:v1:97b9e3bb49646fa23ae8cc11ac6bb2879cb76b0d80742e2aea69475cde08b921",
+        "source_fact:v1:a1dac54f5e9d09e7e6b2383ed79249c521b78f6ad1e3866017e190c91316f284",
+        "source_fact:v1:e33beeeb033bc13e33e13dbb931926eda15aab7486d88097782f3ea00b37188a"
+      ],
+      "source_published_kst": "2026-10-05T20:01+09:00",
+      "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
+    },
     "source_fact:5bb16f54ecee7d768c02b922": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -35399,6 +36040,27 @@
       ],
       "source_published_kst": "2026-10-05T12:37+09:00",
       "title": "\"메가·컴포즈 점주들 돈 많이 벌었겠네\"…실상은 달랐다"
+    },
+    "source_fact:612e67a6244cad885abf8976": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168505",
+      "source": "매일경제",
+      "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
+      "source_fact_keys": [
+        "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
+        "source_fact:v1:66f7ba7ef72a9b438884a83ed04f68483e23859e2df7f22306c77a793b0c4cba",
+        "source_fact:v1:699a6ebf7783551abdfadb5f434c61b17e565867e95639ae53af95d1f484e2f8",
+        "source_fact:v1:76f6ca7794976201298288e3f4ce7df85a2518efef7c87286f500f010864899b",
+        "source_fact:v1:a93506507f17f1ed3a1b55357e2deff44cc22a527134db1760df24ac54a51c66"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
     },
     "source_fact:62d4ee2489ca0c237e504da8": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -35848,6 +36510,34 @@
       "source_published_kst": "2026-10-05T15:21+09:00",
       "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
     },
+    "source_fact:7425cc7451e64feb417b90f3": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_keys": [
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
     "source_fact:74519f8a7b5d8a11ff2949fd": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -35899,6 +36589,34 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
+    },
+    "source_fact:75f69233a2299966ab62a60a": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_keys": [
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
     "source_fact:798c8a3578f28add74160be7": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -35970,6 +36688,28 @@
       "source_published_kst": "2026-10-05T12:59+09:00",
       "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
     },
+    "source_fact:7ad27d7926ff454033fec667": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169758",
+      "source": "매일경제",
+      "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
+      "source_fact_keys": [
+        "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
+        "source_fact:v1:0e44ca3e113a8185d082811e885d03d76b97a46a5795d791154e41f6b0f4c2f8",
+        "source_fact:v1:37c31a951a72168feb1ccff95b58934378ac987162afa03ee4ddeb584e72a5fc",
+        "source_fact:v1:97b9e3bb49646fa23ae8cc11ac6bb2879cb76b0d80742e2aea69475cde08b921",
+        "source_fact:v1:a1dac54f5e9d09e7e6b2383ed79249c521b78f6ad1e3866017e190c91316f284",
+        "source_fact:v1:e33beeeb033bc13e33e13dbb931926eda15aab7486d88097782f3ea00b37188a"
+      ],
+      "source_published_kst": "2026-10-05T20:01+09:00",
+      "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
+    },
     "source_fact:7c664f0cd72944bdc64c88ac": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -35996,6 +36736,28 @@
       ],
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:7c8eb35c99b6b70b3af4d624": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169758",
+      "source": "매일경제",
+      "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
+      "source_fact_keys": [
+        "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
+        "source_fact:v1:0e44ca3e113a8185d082811e885d03d76b97a46a5795d791154e41f6b0f4c2f8",
+        "source_fact:v1:37c31a951a72168feb1ccff95b58934378ac987162afa03ee4ddeb584e72a5fc",
+        "source_fact:v1:97b9e3bb49646fa23ae8cc11ac6bb2879cb76b0d80742e2aea69475cde08b921",
+        "source_fact:v1:a1dac54f5e9d09e7e6b2383ed79249c521b78f6ad1e3866017e190c91316f284",
+        "source_fact:v1:e33beeeb033bc13e33e13dbb931926eda15aab7486d88097782f3ea00b37188a"
+      ],
+      "source_published_kst": "2026-10-05T20:01+09:00",
+      "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
     },
     "source_fact:7d8efd2397631cffcbf93490": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -36038,6 +36800,23 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "source_fact:7fada13fdb5c12748c082d88": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169767",
+      "source": "매일경제",
+      "source_body_digest": "7283c84bd73aadda8b49610e26027b063f8d4be37730139072e7cbe240dcdac5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b0fa66e5d4222db22d26208f4a13b1290af2ca6c9a8171a6b2d4971f2e659b65",
+      "source_fact_keys": [
+        "source_fact:v1:13f3a125f73e5bf3b2779f6495e5e1d027cae61a7026b88100b56556e9d92bf8"
+      ],
+      "source_published_kst": "2026-10-05T20:20+09:00",
+      "title": "이카엑스 홀딩스, 플라이미 인수 완료로 차량용 OS 풀스택 경쟁력 부각"
     },
     "source_fact:806f2cb69cf5aaa9842021d1": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -36149,6 +36928,28 @@
       "source_published_kst": "2026-10-05T17:22+09:00",
       "title": "\"美中의존 줄이자\"…정부, CPTPP 가입 속도"
     },
+    "source_fact:830b3a59e7dc916498ca22ca": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169758",
+      "source": "매일경제",
+      "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
+      "source_fact_keys": [
+        "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
+        "source_fact:v1:0e44ca3e113a8185d082811e885d03d76b97a46a5795d791154e41f6b0f4c2f8",
+        "source_fact:v1:37c31a951a72168feb1ccff95b58934378ac987162afa03ee4ddeb584e72a5fc",
+        "source_fact:v1:97b9e3bb49646fa23ae8cc11ac6bb2879cb76b0d80742e2aea69475cde08b921",
+        "source_fact:v1:a1dac54f5e9d09e7e6b2383ed79249c521b78f6ad1e3866017e190c91316f284",
+        "source_fact:v1:e33beeeb033bc13e33e13dbb931926eda15aab7486d88097782f3ea00b37188a"
+      ],
+      "source_published_kst": "2026-10-05T20:01+09:00",
+      "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
+    },
     "source_fact:84cb41af8ea390df4f18d934": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -36236,6 +37037,26 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
     },
+    "source_fact:868cc9b13672339281a056bb": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169772",
+      "source": "매일경제",
+      "source_body_digest": "f69e9cae191b2c02b1df6c265158773afa3e25e2fe866c5ff70e7ba27f08e3c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de3a05909dd30aa977ce415368a52c61c2d392dc37e010c10e41b8c35e9a7989",
+      "source_fact_keys": [
+        "source_fact:v1:01d0897268c3083a6a887bf74b7e0d02faaa5da8438ed61b7bf49bf371c35fa5",
+        "source_fact:v1:6aa2b08861bf63b6ecccf562865f534826560b7f0ab99f7500f8b4fb2ea97004",
+        "source_fact:v1:73264a2d6ccf813a4c0cd5e1bb487e81fba3f2849c2a49676ec634246b1a82d5",
+        "source_fact:v1:dc4f178b8bf13975af279accfb3ed1b273f7a65dc11c6fc9b19bc53cdecbff35"
+      ],
+      "source_published_kst": "2026-10-05T20:25+09:00",
+      "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
+    },
     "source_fact:874608288818910dc79b8356": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -36291,6 +37112,28 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "독파모, '프런티어 AI·산업 확산' 투트랙 재편…중국 넘는다"
+    },
+    "source_fact:8c9b224b773a1f7369c65e0c": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169758",
+      "source": "매일경제",
+      "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
+      "source_fact_keys": [
+        "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
+        "source_fact:v1:0e44ca3e113a8185d082811e885d03d76b97a46a5795d791154e41f6b0f4c2f8",
+        "source_fact:v1:37c31a951a72168feb1ccff95b58934378ac987162afa03ee4ddeb584e72a5fc",
+        "source_fact:v1:97b9e3bb49646fa23ae8cc11ac6bb2879cb76b0d80742e2aea69475cde08b921",
+        "source_fact:v1:a1dac54f5e9d09e7e6b2383ed79249c521b78f6ad1e3866017e190c91316f284",
+        "source_fact:v1:e33beeeb033bc13e33e13dbb931926eda15aab7486d88097782f3ea00b37188a"
+      ],
+      "source_published_kst": "2026-10-05T20:01+09:00",
+      "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
     },
     "source_fact:8e31d60ed9f4f8dc3cb22556": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -36727,6 +37570,26 @@
       "source_published_kst": "2026-10-05T13:29+09:00",
       "title": "JP모간, 10월 '콕' 집은 종목은…아멕스·써모피셔·리버티"
     },
+    "source_fact:abf942a098423ae6812f6571": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169772",
+      "source": "매일경제",
+      "source_body_digest": "f69e9cae191b2c02b1df6c265158773afa3e25e2fe866c5ff70e7ba27f08e3c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de3a05909dd30aa977ce415368a52c61c2d392dc37e010c10e41b8c35e9a7989",
+      "source_fact_keys": [
+        "source_fact:v1:01d0897268c3083a6a887bf74b7e0d02faaa5da8438ed61b7bf49bf371c35fa5",
+        "source_fact:v1:6aa2b08861bf63b6ecccf562865f534826560b7f0ab99f7500f8b4fb2ea97004",
+        "source_fact:v1:73264a2d6ccf813a4c0cd5e1bb487e81fba3f2849c2a49676ec634246b1a82d5",
+        "source_fact:v1:dc4f178b8bf13975af279accfb3ed1b273f7a65dc11c6fc9b19bc53cdecbff35"
+      ],
+      "source_published_kst": "2026-10-05T20:25+09:00",
+      "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
+    },
     "source_fact:ac05de7606b7a885c6106cfb": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
       "lanes": {
@@ -36802,6 +37665,34 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "어드밴스드 드레니쥐 시스, 스톰트랩 5억3000만 달러 인수..4분기 완료 예정"
+    },
+    "source_fact:b1df16b0485255c9d48ab7fa": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_keys": [
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
     "source_fact:b2347c09adca76104cbadc07": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
@@ -37168,6 +38059,83 @@
       "source_published_kst": "2026-10-05T20:21+09:00",
       "title": "[美특징주]코어위브, 연이은 제품 가격 인상에 월가 호평…개장전 '강보합'"
     },
+    "source_fact:d089df7a5f4516c28717026d": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_keys": [
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:d298fd20dec3dbddefaac06c": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168505",
+      "source": "매일경제",
+      "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
+      "source_fact_keys": [
+        "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
+        "source_fact:v1:66f7ba7ef72a9b438884a83ed04f68483e23859e2df7f22306c77a793b0c4cba",
+        "source_fact:v1:699a6ebf7783551abdfadb5f434c61b17e565867e95639ae53af95d1f484e2f8",
+        "source_fact:v1:76f6ca7794976201298288e3f4ce7df85a2518efef7c87286f500f010864899b",
+        "source_fact:v1:a93506507f17f1ed3a1b55357e2deff44cc22a527134db1760df24ac54a51c66"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
+    },
+    "source_fact:d36258145ce84f7a38d02dd4": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_keys": [
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
     "source_fact:d4ec1565be57bcef2ace6a17": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
       "lanes": {
@@ -37186,6 +38154,26 @@
       ],
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
+    },
+    "source_fact:d62400604a59103c7f580157": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169772",
+      "source": "매일경제",
+      "source_body_digest": "f69e9cae191b2c02b1df6c265158773afa3e25e2fe866c5ff70e7ba27f08e3c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de3a05909dd30aa977ce415368a52c61c2d392dc37e010c10e41b8c35e9a7989",
+      "source_fact_keys": [
+        "source_fact:v1:01d0897268c3083a6a887bf74b7e0d02faaa5da8438ed61b7bf49bf371c35fa5",
+        "source_fact:v1:6aa2b08861bf63b6ecccf562865f534826560b7f0ab99f7500f8b4fb2ea97004",
+        "source_fact:v1:73264a2d6ccf813a4c0cd5e1bb487e81fba3f2849c2a49676ec634246b1a82d5",
+        "source_fact:v1:dc4f178b8bf13975af279accfb3ed1b273f7a65dc11c6fc9b19bc53cdecbff35"
+      ],
+      "source_published_kst": "2026-10-05T20:25+09:00",
+      "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
     },
     "source_fact:d638f09dcb3f97f8336f51de": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -37374,6 +38362,34 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "source_fact:e29e0b562be28f3a3cd85c00": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_keys": [
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
     "source_fact:e6acd4d7e19d0c88c6a32c74": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -37586,6 +38602,51 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "주담대 금리도 '들썩'…한은 추가 인상에 이자 더 오르나[금리 쇼크③]"
+    },
+    "source_fact:f66b0d1f25af4c66a1fcca49": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169773",
+      "source": "매일경제",
+      "source_body_digest": "910d6ebe6d7145f9855c6742e4981b14fd295cf91f23270fc46e0eb5bc33b852",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0fd5bec0ac3ae4eaa7b609a7f3472547e0449588a14692ea85d8d7d9b58c2a37",
+      "source_fact_keys": [
+        "source_fact:v1:74f40a2f819ba762b644c9660004a2862f5d4097889fb15038887633a61112a2"
+      ],
+      "source_published_kst": "2026-10-05T20:33+09:00",
+      "title": "해로우 헬스, 티르바야 인수 완료..선지급 3000만달러"
+    },
+    "source_fact:f712a6bb1df3e10a0462074d": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_keys": [
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
     "source_fact:f7b276b67284eab0ec75402a": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -37836,6 +38897,28 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "source_fact:ff77c07efeda5a93f78b4be1": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169758",
+      "source": "매일경제",
+      "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
+      "source_fact_keys": [
+        "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
+        "source_fact:v1:0e44ca3e113a8185d082811e885d03d76b97a46a5795d791154e41f6b0f4c2f8",
+        "source_fact:v1:37c31a951a72168feb1ccff95b58934378ac987162afa03ee4ddeb584e72a5fc",
+        "source_fact:v1:97b9e3bb49646fa23ae8cc11ac6bb2879cb76b0d80742e2aea69475cde08b921",
+        "source_fact:v1:a1dac54f5e9d09e7e6b2383ed79249c521b78f6ad1e3866017e190c91316f284",
+        "source_fact:v1:e33beeeb033bc13e33e13dbb931926eda15aab7486d88097782f3ea00b37188a"
+      ],
+      "source_published_kst": "2026-10-05T20:01+09:00",
+      "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
     },
     "source_fact:ff786f7a14c617abb40fe3b4": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -39615,6 +40698,27 @@
       "source": "전자신문",
       "title": "'가전 특별시' 광주, 삼성 투자로 공조·반도체까지 산업지도 넓힌다"
     },
+    "title:20961280439138c46dffa4f1": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168505",
+      "source": "매일경제",
+      "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
+      "source_fact_keys": [
+        "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
+        "source_fact:v1:66f7ba7ef72a9b438884a83ed04f68483e23859e2df7f22306c77a793b0c4cba",
+        "source_fact:v1:699a6ebf7783551abdfadb5f434c61b17e565867e95639ae53af95d1f484e2f8",
+        "source_fact:v1:76f6ca7794976201298288e3f4ce7df85a2518efef7c87286f500f010864899b",
+        "source_fact:v1:a93506507f17f1ed3a1b55357e2deff44cc22a527134db1760df24ac54a51c66"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
+    },
     "title:20be635133fa9131537e03a4": {
       "first_seen_kst": "2026-10-02T15:48:44+09:00",
       "lanes": {
@@ -40635,6 +41739,21 @@
       "link": "https://www.yna.co.kr/view/AKR20261002119100054",
       "source": "연합뉴스",
       "title": "광주도시철도 2호선 양산-신가구간 2034년 우선 개통 | 연합뉴스"
+    },
+    "title:35ee30aada1e5b4b4b2782dd": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169768",
+      "source": "매일경제",
+      "source_body_digest": "758e5a72c7d31160be291952342aad48eaf027c35ab852144f32e7b7c667ec6c",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T20:20+09:00",
+      "title": "알렉토, 제넨텍에 AL050 기술이전하며 선급금 1억 달러 확보"
     },
     "title:360f5a8d46654b02634512a3": {
       "first_seen_kst": "2026-10-04T18:44:41+09:00",
@@ -42762,6 +43881,26 @@
       "source": "한국경제",
       "title": "HD현대重, 태안 해상변전소 본계약…해상풍력 밸류체인 확대"
     },
+    "title:5780de9d6f3758e10c78bcc6": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169772",
+      "source": "매일경제",
+      "source_body_digest": "f69e9cae191b2c02b1df6c265158773afa3e25e2fe866c5ff70e7ba27f08e3c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:de3a05909dd30aa977ce415368a52c61c2d392dc37e010c10e41b8c35e9a7989",
+      "source_fact_keys": [
+        "source_fact:v1:01d0897268c3083a6a887bf74b7e0d02faaa5da8438ed61b7bf49bf371c35fa5",
+        "source_fact:v1:6aa2b08861bf63b6ecccf562865f534826560b7f0ab99f7500f8b4fb2ea97004",
+        "source_fact:v1:73264a2d6ccf813a4c0cd5e1bb487e81fba3f2849c2a49676ec634246b1a82d5",
+        "source_fact:v1:dc4f178b8bf13975af279accfb3ed1b273f7a65dc11c6fc9b19bc53cdecbff35"
+      ],
+      "source_published_kst": "2026-10-05T20:25+09:00",
+      "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
+    },
     "title:579649166f12483f41f26367": {
       "first_seen_kst": "2026-10-05T09:59:51+09:00",
       "lanes": {
@@ -44794,15 +45933,17 @@
     "title:7df766796137bc5eba6604cd": {
       "first_seen_kst": "2026-10-05T20:38:34+09:00",
       "lanes": {
-        "live": "2026-10-05T20:38:34+09:00"
+        "live": "2026-10-05T20:53:37+09:00"
       },
-      "last_seen_kst": "2026-10-05T20:38:34+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12168695",
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169767",
       "source": "매일경제",
-      "source_body_digest": "dbdad66e88d820a8605c056af158c533075a739f20185310f487ef0e5db294aa",
+      "source_body_digest": "7283c84bd73aadda8b49610e26027b063f8d4be37730139072e7cbe240dcdac5",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
+      "source_fact_identity": "source_facts:v1:b0fa66e5d4222db22d26208f4a13b1290af2ca6c9a8171a6b2d4971f2e659b65",
+      "source_fact_keys": [
+        "source_fact:v1:13f3a125f73e5bf3b2779f6495e5e1d027cae61a7026b88100b56556e9d92bf8"
+      ],
       "source_published_kst": "2026-10-05T20:20+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료로 차량용 OS 풀스택 경쟁력 부각"
     },
@@ -45361,6 +46502,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T07:01+09:00",
       "title": "기아, 영국서도 '질주'…1∼8월 판매 폭스바겐 이어 2위 | 연합뉴스"
+    },
+    "title:88d80d49223eb28453f3824e": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169773",
+      "source": "매일경제",
+      "source_body_digest": "910d6ebe6d7145f9855c6742e4981b14fd295cf91f23270fc46e0eb5bc33b852",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0fd5bec0ac3ae4eaa7b609a7f3472547e0449588a14692ea85d8d7d9b58c2a37",
+      "source_fact_keys": [
+        "source_fact:v1:74f40a2f819ba762b644c9660004a2862f5d4097889fb15038887633a61112a2"
+      ],
+      "source_published_kst": "2026-10-05T20:33+09:00",
+      "title": "해로우 헬스, 티르바야 인수 완료..선지급 3000만달러"
     },
     "title:88eb4aed5f61409b955489e0": {
       "first_seen_kst": "2026-09-30T15:16:38+09:00",
@@ -48485,6 +49643,28 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=05720326645608984",
       "source": "이데일리",
       "title": "[美특징주]팔로알토, 수요 증가 전망·플랫폼 전략 ‘긍정적’ 평가…개장전 1%↑"
+    },
+    "title:c02e4eafe918394b9c42720e": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169758",
+      "source": "매일경제",
+      "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
+      "source_fact_keys": [
+        "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
+        "source_fact:v1:0e44ca3e113a8185d082811e885d03d76b97a46a5795d791154e41f6b0f4c2f8",
+        "source_fact:v1:37c31a951a72168feb1ccff95b58934378ac987162afa03ee4ddeb584e72a5fc",
+        "source_fact:v1:97b9e3bb49646fa23ae8cc11ac6bb2879cb76b0d80742e2aea69475cde08b921",
+        "source_fact:v1:a1dac54f5e9d09e7e6b2383ed79249c521b78f6ad1e3866017e190c91316f284",
+        "source_fact:v1:e33beeeb033bc13e33e13dbb931926eda15aab7486d88097782f3ea00b37188a"
+      ],
+      "source_published_kst": "2026-10-05T20:01+09:00",
+      "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
     },
     "title:c033af98f347c32e1882a704": {
       "first_seen_kst": "2026-10-02T19:08:27+09:00",
@@ -51941,6 +53121,34 @@
       "source_event_identity": "",
       "title": "젠썸, 모딘 결합 완료 후 지분 희석·매도 압력 우려에 약세"
     },
+    "title:fcefafecd18add1e884bff11": {
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "source": "연합뉴스",
+      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_keys": [
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
+        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
+        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
+        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
+        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
+        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
+        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
+        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
+        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
+        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
+        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
+        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
     "title:fd06262b5014f30270d049ff": {
       "first_seen_kst": "2026-09-21T20:40:44+09:00",
       "lanes": {
@@ -52134,5 +53342,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T20:38:34+09:00"
+  "updated_at_kst": "2026-10-05T20:53:37+09:00"
 }
