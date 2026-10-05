@@ -215,9 +215,11 @@ def _validate_alert_contract(text: str) -> None:
     ):
         raise RuntimeError("Blocked Project Power EPC completion before verified state")
 
-    upfront_executed_claim = (
-        "선지급" in plain
-        and bool(re.search(r"(?:실제\s*)?(?:지급|송금|집행)[^\n]{0,20}(?:완료|확정|했다|됨)", plain))
+    upfront_executed_claim = bool(
+        re.search(
+            r"선지급[^\n]{0,100}(?:실제\s*)?(?:지급|송금|집행)[^\n]{0,20}(?:완료|확정|했다|됨)",
+            plain,
+        )
     )
     if (
         project_power_context
