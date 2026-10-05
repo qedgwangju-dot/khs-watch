@@ -2358,21 +2358,23 @@
     "event:81187de409b188966735ff77": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
-        "live": "2026-10-05T21:32:34+09:00"
+        "live": "2026-10-05T23:28:38+09:00"
       },
-      "last_seen_kst": "2026-10-05T21:32:34+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169803",
-      "source": "매일경제",
-      "source_body_digest": "23e19da2f1acc81142a06b610af265169bdab9b02876b40b1e28b055360d352d",
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01613766645609968&parentid=01646566645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "d67ffa4934d9d3488621eb4d5d545d641732d9f3e7862744de681bf624c04826",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:87980f71b02dedae9b677b5b16147cfd03168b8ac52dc7a876ba4cd464923bf6",
+      "source_fact_identity": "source_facts:v1:61a6c4a041f3039e70ad55bd98e15f4dcad38e89acfc5a318b1adde8fc955505",
       "source_fact_keys": [
-        "source_fact:v1:4e16caa48be6424ad6a90f5a284144e704eec00e8ae3926d7e258771f8943d33",
-        "source_fact:v1:b6948bcbc8ee74e0a51c42f6c77d2d0bd6676f80e8a9ee4c4c225162bfd769d1",
-        "source_fact:v1:b9cc5c9741a0f1aa610ba3ee8e49f61cf9a6b920f2d4891e4c69c9e8ae356bf4"
+        "source_fact:v1:8a2d5d541bb529f4e5bc60e9f5d10774a59ca1bbe1b30296c09ba229697ff4f8",
+        "source_fact:v1:8b3f0338e09369c17b12210788f8c578fbeb653c395fe7f7513ca106a1d5343d",
+        "source_fact:v1:9f15848d5d9bcc1e7c6e82b06146682596fa51a2ad24bfcd0035f220e8d270ed",
+        "source_fact:v1:ce31aca37c5a5f95ccd321cc0f79609e7700e4350cba82c4b45b7e6b723bf83e",
+        "source_fact:v1:d7335087bc9979c2a0ee0fe89993a70b4dbb94817000f10ffca2a9a1fe3689a1"
       ],
-      "source_published_kst": "2026-10-05T21:21+09:00",
-      "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
+      "source_published_kst": "2026-10-05T08:55+09:00",
+      "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
     },
     "event:8148c662861a648098f6a4fb": {
       "first_seen_kst": "2026-09-24T11:54:33+09:00",
@@ -4850,6 +4852,32 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
+    "fact:0a871dcff600a894469f7af2": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04575606645609968",
+      "source": "이데일리",
+      "source_body_digest": "f146b1768898d2dc4296f2329f86c184e221be22b37981d72880e666837828a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc8f927982962aaec26348f495097cb4810e6efe88b32badf7d7973c37ecf84a",
+      "source_fact_keys": [
+        "source_fact:v1:045ad098cf4a4d4957bcb26193d174577c2f35b1ffe35355f61fa5fa8500bc91",
+        "source_fact:v1:2e402172bf589b836b3e57cee07155d57a312e3b7359645bbd260ed2ecd2b69c",
+        "source_fact:v1:514166b04080aa408e4f19ef0de00a6e7d293b20fb2e1a0430b9321f18e5ea72",
+        "source_fact:v1:5b78b8df44b65ab440b9dd7fa68ddb3d41c25662aa2a6d6ecfbc964f6eab9422",
+        "source_fact:v1:7eb847ba008c261730bdeeb6493e5721968e40e8fdcb4e2a1a554a6c6dfbea98",
+        "source_fact:v1:8ce34a0a5d51bb72018b5a478b8e519a0c3a612ce6ede72d18ff6cb6d52c1e8b",
+        "source_fact:v1:a5592d35572e6de4e0df6270088d789771f0322e418e5e83294eebbbf490ad21",
+        "source_fact:v1:e2d4b80950354b64c84d03dd9b25c015390d68d5c65e8492c5a2d96983b73154",
+        "source_fact:v1:f5a1f78993c6f5c0f41d628febcdc020e41bab67a5254da366d4ff5e730c4384",
+        "source_fact:v1:ff93d231e155bc059807bcfb3ac9b4ca28c9c9f945b7a92d82eb7fc1196b7678"
+      ],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
     "fact:0ca37161e3eb5e20cd99467a": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -5003,6 +5031,27 @@
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
+    "fact:14ac6cf5250460bbc7b9ec4e": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01613766645609968&parentid=01646566645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "d67ffa4934d9d3488621eb4d5d545d641732d9f3e7862744de681bf624c04826",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a6c4a041f3039e70ad55bd98e15f4dcad38e89acfc5a318b1adde8fc955505",
+      "source_fact_keys": [
+        "source_fact:v1:8a2d5d541bb529f4e5bc60e9f5d10774a59ca1bbe1b30296c09ba229697ff4f8",
+        "source_fact:v1:8b3f0338e09369c17b12210788f8c578fbeb653c395fe7f7513ca106a1d5343d",
+        "source_fact:v1:9f15848d5d9bcc1e7c6e82b06146682596fa51a2ad24bfcd0035f220e8d270ed",
+        "source_fact:v1:ce31aca37c5a5f95ccd321cc0f79609e7700e4350cba82c4b45b7e6b723bf83e",
+        "source_fact:v1:d7335087bc9979c2a0ee0fe89993a70b4dbb94817000f10ffca2a9a1fe3689a1"
+      ],
+      "source_published_kst": "2026-10-05T08:55+09:00",
+      "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
     },
     "fact:15c34bd1a769d14839872339": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -6368,6 +6417,40 @@
       ],
       "source_published_kst": "2026-10-05T18:32+09:00",
       "title": "[단독] 개정 상법에 한전 '소송 리스크'"
+    },
+    "fact:a58ec64d626496e1ff50f582": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169805",
+      "source": "매일경제",
+      "source_body_digest": "7d6a2438b970cf042a02d7187943e95e23128722c3eb772d3a1864db54860e99",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d734354030ddbba326d927854ad7cfe6230f3fd4bdc2339397498e71fd6790af",
+      "source_fact_keys": [
+        "source_fact:v1:60a1cb04e585590f6e3ec2d313a42cdee409aa72046c343ebc8b8b4da8e2f68a"
+      ],
+      "source_published_kst": "2026-10-05T21:22+09:00",
+      "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
+    },
+    "fact:a6e9c85e93d37248bc7aaa48": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.etnews.com/20261005000055",
+      "source": "전자신문",
+      "source_body_digest": "2d012a68de9ffd9e7ecaf7ccb6742f03831f7e233c858f8dcd663cd03e86f2b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d21fc6f8e627d50b2fc3e00aeee5855b5e74190532c765bdce0c51d392ea235",
+      "source_fact_keys": [
+        "source_fact:v1:382db630d7c1b5e3a002b324b07c42de4b12b21ba3bdd867ba7a00b914392c27"
+      ],
+      "source_published_kst": "2026-10-05T10:20+09:00",
+      "title": "[반도체 라이징 스타]<6>엑시나, 스스로 계산하는 메모리로 AI 인프라 비용 낮춘다"
     },
     "fact:a954ccb993a69dd7768eb9d4": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -9071,6 +9154,23 @@
       "source": "뉴시스",
       "title": "금감원-금융권, 전통시장 방문…생필품 구매 후 취약층 전달"
     },
+    "link:2507c21c3687f56696a661ad": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.etnews.com/20261005000055",
+      "source": "전자신문",
+      "source_body_digest": "2d012a68de9ffd9e7ecaf7ccb6742f03831f7e233c858f8dcd663cd03e86f2b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d21fc6f8e627d50b2fc3e00aeee5855b5e74190532c765bdce0c51d392ea235",
+      "source_fact_keys": [
+        "source_fact:v1:382db630d7c1b5e3a002b324b07c42de4b12b21ba3bdd867ba7a00b914392c27"
+      ],
+      "source_published_kst": "2026-10-05T10:20+09:00",
+      "title": "[반도체 라이징 스타]<6>엑시나, 스스로 계산하는 메모리로 AI 인프라 비용 낮춘다"
+    },
     "link:251feed6cc1c406855f37ed1": {
       "first_seen_kst": "2026-10-02T15:48:44+09:00",
       "lanes": {
@@ -11180,6 +11280,27 @@
       "source": "디지털타임스",
       "title": "암살자(들) 투자한 기업은행·산업은행 “외부 요청 없었다”"
     },
+    "link:461614630145c72a114900f3": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01613766645609968&parentid=01646566645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "d67ffa4934d9d3488621eb4d5d545d641732d9f3e7862744de681bf624c04826",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a6c4a041f3039e70ad55bd98e15f4dcad38e89acfc5a318b1adde8fc955505",
+      "source_fact_keys": [
+        "source_fact:v1:8a2d5d541bb529f4e5bc60e9f5d10774a59ca1bbe1b30296c09ba229697ff4f8",
+        "source_fact:v1:8b3f0338e09369c17b12210788f8c578fbeb653c395fe7f7513ca106a1d5343d",
+        "source_fact:v1:9f15848d5d9bcc1e7c6e82b06146682596fa51a2ad24bfcd0035f220e8d270ed",
+        "source_fact:v1:ce31aca37c5a5f95ccd321cc0f79609e7700e4350cba82c4b45b7e6b723bf83e",
+        "source_fact:v1:d7335087bc9979c2a0ee0fe89993a70b4dbb94817000f10ffca2a9a1fe3689a1"
+      ],
+      "source_published_kst": "2026-10-05T08:55+09:00",
+      "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
+    },
     "link:46842a46fc984420f274b6a8": {
       "first_seen_kst": "2026-09-18T23:32:37+09:00",
       "lanes": {
@@ -12989,6 +13110,27 @@
       "source": "이투데이",
       "title": "한국파마, 10억원 규모 자사주 취득…일부 소각·스톡옵션 활용"
     },
+    "link:5f753f571e62591c153e60a2": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01613766645609968&parentid=01646566645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "d67ffa4934d9d3488621eb4d5d545d641732d9f3e7862744de681bf624c04826",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a6c4a041f3039e70ad55bd98e15f4dcad38e89acfc5a318b1adde8fc955505",
+      "source_fact_keys": [
+        "source_fact:v1:8a2d5d541bb529f4e5bc60e9f5d10774a59ca1bbe1b30296c09ba229697ff4f8",
+        "source_fact:v1:8b3f0338e09369c17b12210788f8c578fbeb653c395fe7f7513ca106a1d5343d",
+        "source_fact:v1:9f15848d5d9bcc1e7c6e82b06146682596fa51a2ad24bfcd0035f220e8d270ed",
+        "source_fact:v1:ce31aca37c5a5f95ccd321cc0f79609e7700e4350cba82c4b45b7e6b723bf83e",
+        "source_fact:v1:d7335087bc9979c2a0ee0fe89993a70b4dbb94817000f10ffca2a9a1fe3689a1"
+      ],
+      "source_published_kst": "2026-10-05T08:55+09:00",
+      "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
+    },
     "link:5f92b9af6f4ece1c9eb770ef": {
       "first_seen_kst": "2026-10-03T21:21:44+09:00",
       "lanes": {
@@ -13703,6 +13845,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T11:19+09:00",
       "title": "LGU+, 구독 플랫폼 '유독'에 해외 AI 서비스 순차 확대"
+    },
+    "link:69da45e6daf26e3e7beb74b2": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169805",
+      "source": "매일경제",
+      "source_body_digest": "7d6a2438b970cf042a02d7187943e95e23128722c3eb772d3a1864db54860e99",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d734354030ddbba326d927854ad7cfe6230f3fd4bdc2339397498e71fd6790af",
+      "source_fact_keys": [
+        "source_fact:v1:60a1cb04e585590f6e3ec2d313a42cdee409aa72046c343ebc8b8b4da8e2f68a"
+      ],
+      "source_published_kst": "2026-10-05T21:22+09:00",
+      "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
     },
     "link:6a12d49e8a9f8b82d1398aba": {
       "first_seen_kst": "2026-10-04T06:34:33+09:00",
@@ -15656,6 +15815,32 @@
       "link": "https://www.etnews.com/20261001000189",
       "source": "전자신문",
       "title": "위닉스, 겨울 가전 신제품 2종 출시"
+    },
+    "link:8a8c18152a86b2a69f576acb": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04575606645609968",
+      "source": "이데일리",
+      "source_body_digest": "f146b1768898d2dc4296f2329f86c184e221be22b37981d72880e666837828a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc8f927982962aaec26348f495097cb4810e6efe88b32badf7d7973c37ecf84a",
+      "source_fact_keys": [
+        "source_fact:v1:045ad098cf4a4d4957bcb26193d174577c2f35b1ffe35355f61fa5fa8500bc91",
+        "source_fact:v1:2e402172bf589b836b3e57cee07155d57a312e3b7359645bbd260ed2ecd2b69c",
+        "source_fact:v1:514166b04080aa408e4f19ef0de00a6e7d293b20fb2e1a0430b9321f18e5ea72",
+        "source_fact:v1:5b78b8df44b65ab440b9dd7fa68ddb3d41c25662aa2a6d6ecfbc964f6eab9422",
+        "source_fact:v1:7eb847ba008c261730bdeeb6493e5721968e40e8fdcb4e2a1a554a6c6dfbea98",
+        "source_fact:v1:8ce34a0a5d51bb72018b5a478b8e519a0c3a612ce6ede72d18ff6cb6d52c1e8b",
+        "source_fact:v1:a5592d35572e6de4e0df6270088d789771f0322e418e5e83294eebbbf490ad21",
+        "source_fact:v1:e2d4b80950354b64c84d03dd9b25c015390d68d5c65e8492c5a2d96983b73154",
+        "source_fact:v1:f5a1f78993c6f5c0f41d628febcdc020e41bab67a5254da366d4ff5e730c4384",
+        "source_fact:v1:ff93d231e155bc059807bcfb3ac9b4ca28c9c9f945b7a92d82eb7fc1196b7678"
+      ],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
     },
     "link:8a9ad78bc80ef50b826590b4": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
@@ -23218,6 +23403,21 @@
       "source": "헤럴드경제",
       "title": "삼성전자, B2B AI 구독 서비스 론칭…“최소한의 운영비용로 최대한의 혜택”"
     },
+    "link:fe9bef7849b2f6acd9c700f3": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812817",
+      "source": "뉴시스",
+      "source_body_digest": "7fb2a6f4ac6cd77f0a14caf9b0587cf7e293b80814be3b4555b5e0393390dc7d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T12:30+09:00",
+      "title": "\"요즘은 쫀득 시대\" 식품·디저트업계에 부는 식감 바람"
+    },
     "link:fec06f55114c8ec14b1080e7": {
       "first_seen_kst": "2026-10-02T19:26:27+09:00",
       "lanes": {
@@ -25679,6 +25879,32 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T08:00+09:00",
       "title": "암표 조여도 티켓 장터 '북적'…솜방망이에 '표' 안나는 플랫폼 규제"
+    },
+    "original:28c0b1eff28ccb14d4755d1c": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04575606645609968",
+      "source": "이데일리",
+      "source_body_digest": "f146b1768898d2dc4296f2329f86c184e221be22b37981d72880e666837828a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc8f927982962aaec26348f495097cb4810e6efe88b32badf7d7973c37ecf84a",
+      "source_fact_keys": [
+        "source_fact:v1:045ad098cf4a4d4957bcb26193d174577c2f35b1ffe35355f61fa5fa8500bc91",
+        "source_fact:v1:2e402172bf589b836b3e57cee07155d57a312e3b7359645bbd260ed2ecd2b69c",
+        "source_fact:v1:514166b04080aa408e4f19ef0de00a6e7d293b20fb2e1a0430b9321f18e5ea72",
+        "source_fact:v1:5b78b8df44b65ab440b9dd7fa68ddb3d41c25662aa2a6d6ecfbc964f6eab9422",
+        "source_fact:v1:7eb847ba008c261730bdeeb6493e5721968e40e8fdcb4e2a1a554a6c6dfbea98",
+        "source_fact:v1:8ce34a0a5d51bb72018b5a478b8e519a0c3a612ce6ede72d18ff6cb6d52c1e8b",
+        "source_fact:v1:a5592d35572e6de4e0df6270088d789771f0322e418e5e83294eebbbf490ad21",
+        "source_fact:v1:e2d4b80950354b64c84d03dd9b25c015390d68d5c65e8492c5a2d96983b73154",
+        "source_fact:v1:f5a1f78993c6f5c0f41d628febcdc020e41bab67a5254da366d4ff5e730c4384",
+        "source_fact:v1:ff93d231e155bc059807bcfb3ac9b4ca28c9c9f945b7a92d82eb7fc1196b7678"
+      ],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
     },
     "original:293bbbadc98312a415286f1d": {
       "first_seen_kst": "2026-09-29T20:35:29+09:00",
@@ -30115,6 +30341,23 @@
       "source": "전자신문",
       "title": "[ET특징주] '캉골' 에스제이그룹, 20억원 규모 자사주 취득… 주가 上"
     },
+    "original:6e66c87cc7dede4232798458": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169805",
+      "source": "매일경제",
+      "source_body_digest": "7d6a2438b970cf042a02d7187943e95e23128722c3eb772d3a1864db54860e99",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d734354030ddbba326d927854ad7cfe6230f3fd4bdc2339397498e71fd6790af",
+      "source_fact_keys": [
+        "source_fact:v1:60a1cb04e585590f6e3ec2d313a42cdee409aa72046c343ebc8b8b4da8e2f68a"
+      ],
+      "source_published_kst": "2026-10-05T21:22+09:00",
+      "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
+    },
     "original:6e7bb498f905d04ab9f0c060": {
       "first_seen_kst": "2026-09-22T19:01:13+09:00",
       "lanes": {
@@ -30438,6 +30681,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T14:00+09:00",
       "title": "[단독]캐피탈-렌터카업계, 갈등 격화...SK렌터카 '규제 완화 반대 연합회'등록"
+    },
+    "original:7293487551853756e5644825": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.etnews.com/20261005000055",
+      "source": "전자신문",
+      "source_body_digest": "2d012a68de9ffd9e7ecaf7ccb6742f03831f7e233c858f8dcd663cd03e86f2b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d21fc6f8e627d50b2fc3e00aeee5855b5e74190532c765bdce0c51d392ea235",
+      "source_fact_keys": [
+        "source_fact:v1:382db630d7c1b5e3a002b324b07c42de4b12b21ba3bdd867ba7a00b914392c27"
+      ],
+      "source_published_kst": "2026-10-05T10:20+09:00",
+      "title": "[반도체 라이징 스타]<6>엑시나, 스스로 계산하는 메모리로 AI 인프라 비용 낮춘다"
     },
     "original:729b282aaa64eed9312c3581": {
       "first_seen_kst": "2026-10-05T11:14:01+09:00",
@@ -32442,6 +32702,21 @@
       "link": "https://www.dailian.co.kr/news/view/1694060/",
       "source": "데일리안",
       "title": "AI가 공장을 움직인다…피지컬 AI, '로봇 두뇌' 경쟁 본격화"
+    },
+    "original:9156e527ac94782b3959c445": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812817",
+      "source": "뉴시스",
+      "source_body_digest": "7fb2a6f4ac6cd77f0a14caf9b0587cf7e293b80814be3b4555b5e0393390dc7d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T12:30+09:00",
+      "title": "\"요즘은 쫀득 시대\" 식품·디저트업계에 부는 식감 바람"
     },
     "original:91661105d0ca81a57c3f866e": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -38189,6 +38464,27 @@
       "source": "연합뉴스",
       "title": "SK하이닉스, TSMC 행사서 AI 메모리 공개…2년 연속 파트너상 | 연합뉴스"
     },
+    "original:f0323e0b37b885fa4359456d": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01613766645609968&parentid=01646566645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "d67ffa4934d9d3488621eb4d5d545d641732d9f3e7862744de681bf624c04826",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a6c4a041f3039e70ad55bd98e15f4dcad38e89acfc5a318b1adde8fc955505",
+      "source_fact_keys": [
+        "source_fact:v1:8a2d5d541bb529f4e5bc60e9f5d10774a59ca1bbe1b30296c09ba229697ff4f8",
+        "source_fact:v1:8b3f0338e09369c17b12210788f8c578fbeb653c395fe7f7513ca106a1d5343d",
+        "source_fact:v1:9f15848d5d9bcc1e7c6e82b06146682596fa51a2ad24bfcd0035f220e8d270ed",
+        "source_fact:v1:ce31aca37c5a5f95ccd321cc0f79609e7700e4350cba82c4b45b7e6b723bf83e",
+        "source_fact:v1:d7335087bc9979c2a0ee0fe89993a70b4dbb94817000f10ffca2a9a1fe3689a1"
+      ],
+      "source_published_kst": "2026-10-05T08:55+09:00",
+      "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
+    },
     "original:f03f9598f666e2cb60db49cd": {
       "first_seen_kst": "2026-09-20T12:10:20+09:00",
       "lanes": {
@@ -39235,6 +39531,58 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:0253a4bd8201d4f86d67a7b0": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04575606645609968",
+      "source": "이데일리",
+      "source_body_digest": "f146b1768898d2dc4296f2329f86c184e221be22b37981d72880e666837828a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc8f927982962aaec26348f495097cb4810e6efe88b32badf7d7973c37ecf84a",
+      "source_fact_keys": [
+        "source_fact:v1:045ad098cf4a4d4957bcb26193d174577c2f35b1ffe35355f61fa5fa8500bc91",
+        "source_fact:v1:2e402172bf589b836b3e57cee07155d57a312e3b7359645bbd260ed2ecd2b69c",
+        "source_fact:v1:514166b04080aa408e4f19ef0de00a6e7d293b20fb2e1a0430b9321f18e5ea72",
+        "source_fact:v1:5b78b8df44b65ab440b9dd7fa68ddb3d41c25662aa2a6d6ecfbc964f6eab9422",
+        "source_fact:v1:7eb847ba008c261730bdeeb6493e5721968e40e8fdcb4e2a1a554a6c6dfbea98",
+        "source_fact:v1:8ce34a0a5d51bb72018b5a478b8e519a0c3a612ce6ede72d18ff6cb6d52c1e8b",
+        "source_fact:v1:a5592d35572e6de4e0df6270088d789771f0322e418e5e83294eebbbf490ad21",
+        "source_fact:v1:e2d4b80950354b64c84d03dd9b25c015390d68d5c65e8492c5a2d96983b73154",
+        "source_fact:v1:f5a1f78993c6f5c0f41d628febcdc020e41bab67a5254da366d4ff5e730c4384",
+        "source_fact:v1:ff93d231e155bc059807bcfb3ac9b4ca28c9c9f945b7a92d82eb7fc1196b7678"
+      ],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:02a80aacd109c15d77477231": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04575606645609968",
+      "source": "이데일리",
+      "source_body_digest": "f146b1768898d2dc4296f2329f86c184e221be22b37981d72880e666837828a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc8f927982962aaec26348f495097cb4810e6efe88b32badf7d7973c37ecf84a",
+      "source_fact_keys": [
+        "source_fact:v1:045ad098cf4a4d4957bcb26193d174577c2f35b1ffe35355f61fa5fa8500bc91",
+        "source_fact:v1:2e402172bf589b836b3e57cee07155d57a312e3b7359645bbd260ed2ecd2b69c",
+        "source_fact:v1:514166b04080aa408e4f19ef0de00a6e7d293b20fb2e1a0430b9321f18e5ea72",
+        "source_fact:v1:5b78b8df44b65ab440b9dd7fa68ddb3d41c25662aa2a6d6ecfbc964f6eab9422",
+        "source_fact:v1:7eb847ba008c261730bdeeb6493e5721968e40e8fdcb4e2a1a554a6c6dfbea98",
+        "source_fact:v1:8ce34a0a5d51bb72018b5a478b8e519a0c3a612ce6ede72d18ff6cb6d52c1e8b",
+        "source_fact:v1:a5592d35572e6de4e0df6270088d789771f0322e418e5e83294eebbbf490ad21",
+        "source_fact:v1:e2d4b80950354b64c84d03dd9b25c015390d68d5c65e8492c5a2d96983b73154",
+        "source_fact:v1:f5a1f78993c6f5c0f41d628febcdc020e41bab67a5254da366d4ff5e730c4384",
+        "source_fact:v1:ff93d231e155bc059807bcfb3ac9b4ca28c9c9f945b7a92d82eb7fc1196b7678"
+      ],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
     "source_fact:04d3d9fd880435c004d4ea30": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -39704,6 +40052,32 @@
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
+    "source_fact:11a1540726a70793866e1910": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04575606645609968",
+      "source": "이데일리",
+      "source_body_digest": "f146b1768898d2dc4296f2329f86c184e221be22b37981d72880e666837828a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc8f927982962aaec26348f495097cb4810e6efe88b32badf7d7973c37ecf84a",
+      "source_fact_keys": [
+        "source_fact:v1:045ad098cf4a4d4957bcb26193d174577c2f35b1ffe35355f61fa5fa8500bc91",
+        "source_fact:v1:2e402172bf589b836b3e57cee07155d57a312e3b7359645bbd260ed2ecd2b69c",
+        "source_fact:v1:514166b04080aa408e4f19ef0de00a6e7d293b20fb2e1a0430b9321f18e5ea72",
+        "source_fact:v1:5b78b8df44b65ab440b9dd7fa68ddb3d41c25662aa2a6d6ecfbc964f6eab9422",
+        "source_fact:v1:7eb847ba008c261730bdeeb6493e5721968e40e8fdcb4e2a1a554a6c6dfbea98",
+        "source_fact:v1:8ce34a0a5d51bb72018b5a478b8e519a0c3a612ce6ede72d18ff6cb6d52c1e8b",
+        "source_fact:v1:a5592d35572e6de4e0df6270088d789771f0322e418e5e83294eebbbf490ad21",
+        "source_fact:v1:e2d4b80950354b64c84d03dd9b25c015390d68d5c65e8492c5a2d96983b73154",
+        "source_fact:v1:f5a1f78993c6f5c0f41d628febcdc020e41bab67a5254da366d4ff5e730c4384",
+        "source_fact:v1:ff93d231e155bc059807bcfb3ac9b4ca28c9c9f945b7a92d82eb7fc1196b7678"
+      ],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
     "source_fact:120708d27433c232410480ec": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -39814,6 +40188,32 @@
       ],
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
+    "source_fact:158f62adb810a98b2ccc9fc9": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04575606645609968",
+      "source": "이데일리",
+      "source_body_digest": "f146b1768898d2dc4296f2329f86c184e221be22b37981d72880e666837828a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc8f927982962aaec26348f495097cb4810e6efe88b32badf7d7973c37ecf84a",
+      "source_fact_keys": [
+        "source_fact:v1:045ad098cf4a4d4957bcb26193d174577c2f35b1ffe35355f61fa5fa8500bc91",
+        "source_fact:v1:2e402172bf589b836b3e57cee07155d57a312e3b7359645bbd260ed2ecd2b69c",
+        "source_fact:v1:514166b04080aa408e4f19ef0de00a6e7d293b20fb2e1a0430b9321f18e5ea72",
+        "source_fact:v1:5b78b8df44b65ab440b9dd7fa68ddb3d41c25662aa2a6d6ecfbc964f6eab9422",
+        "source_fact:v1:7eb847ba008c261730bdeeb6493e5721968e40e8fdcb4e2a1a554a6c6dfbea98",
+        "source_fact:v1:8ce34a0a5d51bb72018b5a478b8e519a0c3a612ce6ede72d18ff6cb6d52c1e8b",
+        "source_fact:v1:a5592d35572e6de4e0df6270088d789771f0322e418e5e83294eebbbf490ad21",
+        "source_fact:v1:e2d4b80950354b64c84d03dd9b25c015390d68d5c65e8492c5a2d96983b73154",
+        "source_fact:v1:f5a1f78993c6f5c0f41d628febcdc020e41bab67a5254da366d4ff5e730c4384",
+        "source_fact:v1:ff93d231e155bc059807bcfb3ac9b4ca28c9c9f945b7a92d82eb7fc1196b7678"
+      ],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
     },
     "source_fact:161ab13882d08365c5d13415": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -40314,6 +40714,32 @@
       ],
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+    },
+    "source_fact:24d72865dd1b7f6802494630": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04575606645609968",
+      "source": "이데일리",
+      "source_body_digest": "f146b1768898d2dc4296f2329f86c184e221be22b37981d72880e666837828a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc8f927982962aaec26348f495097cb4810e6efe88b32badf7d7973c37ecf84a",
+      "source_fact_keys": [
+        "source_fact:v1:045ad098cf4a4d4957bcb26193d174577c2f35b1ffe35355f61fa5fa8500bc91",
+        "source_fact:v1:2e402172bf589b836b3e57cee07155d57a312e3b7359645bbd260ed2ecd2b69c",
+        "source_fact:v1:514166b04080aa408e4f19ef0de00a6e7d293b20fb2e1a0430b9321f18e5ea72",
+        "source_fact:v1:5b78b8df44b65ab440b9dd7fa68ddb3d41c25662aa2a6d6ecfbc964f6eab9422",
+        "source_fact:v1:7eb847ba008c261730bdeeb6493e5721968e40e8fdcb4e2a1a554a6c6dfbea98",
+        "source_fact:v1:8ce34a0a5d51bb72018b5a478b8e519a0c3a612ce6ede72d18ff6cb6d52c1e8b",
+        "source_fact:v1:a5592d35572e6de4e0df6270088d789771f0322e418e5e83294eebbbf490ad21",
+        "source_fact:v1:e2d4b80950354b64c84d03dd9b25c015390d68d5c65e8492c5a2d96983b73154",
+        "source_fact:v1:f5a1f78993c6f5c0f41d628febcdc020e41bab67a5254da366d4ff5e730c4384",
+        "source_fact:v1:ff93d231e155bc059807bcfb3ac9b4ca28c9c9f945b7a92d82eb7fc1196b7678"
+      ],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
     },
     "source_fact:25aaab3d2c93aaddeda021b9": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
@@ -41719,6 +42145,32 @@
       "source_published_kst": "2026-10-05T10:59+09:00",
       "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
     },
+    "source_fact:467cc42b894e7e9e7910aa15": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04575606645609968",
+      "source": "이데일리",
+      "source_body_digest": "f146b1768898d2dc4296f2329f86c184e221be22b37981d72880e666837828a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc8f927982962aaec26348f495097cb4810e6efe88b32badf7d7973c37ecf84a",
+      "source_fact_keys": [
+        "source_fact:v1:045ad098cf4a4d4957bcb26193d174577c2f35b1ffe35355f61fa5fa8500bc91",
+        "source_fact:v1:2e402172bf589b836b3e57cee07155d57a312e3b7359645bbd260ed2ecd2b69c",
+        "source_fact:v1:514166b04080aa408e4f19ef0de00a6e7d293b20fb2e1a0430b9321f18e5ea72",
+        "source_fact:v1:5b78b8df44b65ab440b9dd7fa68ddb3d41c25662aa2a6d6ecfbc964f6eab9422",
+        "source_fact:v1:7eb847ba008c261730bdeeb6493e5721968e40e8fdcb4e2a1a554a6c6dfbea98",
+        "source_fact:v1:8ce34a0a5d51bb72018b5a478b8e519a0c3a612ce6ede72d18ff6cb6d52c1e8b",
+        "source_fact:v1:a5592d35572e6de4e0df6270088d789771f0322e418e5e83294eebbbf490ad21",
+        "source_fact:v1:e2d4b80950354b64c84d03dd9b25c015390d68d5c65e8492c5a2d96983b73154",
+        "source_fact:v1:f5a1f78993c6f5c0f41d628febcdc020e41bab67a5254da366d4ff5e730c4384",
+        "source_fact:v1:ff93d231e155bc059807bcfb3ac9b4ca28c9c9f945b7a92d82eb7fc1196b7678"
+      ],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
     "source_fact:470fa28fbfe1e8691ac29a65": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -42254,6 +42706,32 @@
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
     },
+    "source_fact:547b249a0381df6203b5bfb6": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04575606645609968",
+      "source": "이데일리",
+      "source_body_digest": "f146b1768898d2dc4296f2329f86c184e221be22b37981d72880e666837828a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc8f927982962aaec26348f495097cb4810e6efe88b32badf7d7973c37ecf84a",
+      "source_fact_keys": [
+        "source_fact:v1:045ad098cf4a4d4957bcb26193d174577c2f35b1ffe35355f61fa5fa8500bc91",
+        "source_fact:v1:2e402172bf589b836b3e57cee07155d57a312e3b7359645bbd260ed2ecd2b69c",
+        "source_fact:v1:514166b04080aa408e4f19ef0de00a6e7d293b20fb2e1a0430b9321f18e5ea72",
+        "source_fact:v1:5b78b8df44b65ab440b9dd7fa68ddb3d41c25662aa2a6d6ecfbc964f6eab9422",
+        "source_fact:v1:7eb847ba008c261730bdeeb6493e5721968e40e8fdcb4e2a1a554a6c6dfbea98",
+        "source_fact:v1:8ce34a0a5d51bb72018b5a478b8e519a0c3a612ce6ede72d18ff6cb6d52c1e8b",
+        "source_fact:v1:a5592d35572e6de4e0df6270088d789771f0322e418e5e83294eebbbf490ad21",
+        "source_fact:v1:e2d4b80950354b64c84d03dd9b25c015390d68d5c65e8492c5a2d96983b73154",
+        "source_fact:v1:f5a1f78993c6f5c0f41d628febcdc020e41bab67a5254da366d4ff5e730c4384",
+        "source_fact:v1:ff93d231e155bc059807bcfb3ac9b4ca28c9c9f945b7a92d82eb7fc1196b7678"
+      ],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
     "source_fact:5650a74ecd5a12ffd02340ac": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -42527,6 +43005,27 @@
       ],
       "source_published_kst": "2026-10-05T16:20+09:00",
       "title": "日라피더스, 도시바 등 17개사와 반도체 설계 동맹"
+    },
+    "source_fact:5b0c2218766921b60b33b21c": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01613766645609968&parentid=01646566645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "d67ffa4934d9d3488621eb4d5d545d641732d9f3e7862744de681bf624c04826",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a6c4a041f3039e70ad55bd98e15f4dcad38e89acfc5a318b1adde8fc955505",
+      "source_fact_keys": [
+        "source_fact:v1:8a2d5d541bb529f4e5bc60e9f5d10774a59ca1bbe1b30296c09ba229697ff4f8",
+        "source_fact:v1:8b3f0338e09369c17b12210788f8c578fbeb653c395fe7f7513ca106a1d5343d",
+        "source_fact:v1:9f15848d5d9bcc1e7c6e82b06146682596fa51a2ad24bfcd0035f220e8d270ed",
+        "source_fact:v1:ce31aca37c5a5f95ccd321cc0f79609e7700e4350cba82c4b45b7e6b723bf83e",
+        "source_fact:v1:d7335087bc9979c2a0ee0fe89993a70b4dbb94817000f10ffca2a9a1fe3689a1"
+      ],
+      "source_published_kst": "2026-10-05T08:55+09:00",
+      "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
     },
     "source_fact:5b22dc126fdccadaafeeb423": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -43067,6 +43566,23 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "source_fact:6951b4a7382f9633dc8fb906": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.etnews.com/20261005000055",
+      "source": "전자신문",
+      "source_body_digest": "2d012a68de9ffd9e7ecaf7ccb6742f03831f7e233c858f8dcd663cd03e86f2b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d21fc6f8e627d50b2fc3e00aeee5855b5e74190532c765bdce0c51d392ea235",
+      "source_fact_keys": [
+        "source_fact:v1:382db630d7c1b5e3a002b324b07c42de4b12b21ba3bdd867ba7a00b914392c27"
+      ],
+      "source_published_kst": "2026-10-05T10:20+09:00",
+      "title": "[반도체 라이징 스타]<6>엑시나, 스스로 계산하는 메모리로 AI 인프라 비용 낮춘다"
+    },
     "source_fact:698529b9c97d9d18306499a4": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -43115,6 +43631,23 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:6a83f2b774dfb061d6ef13aa": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169805",
+      "source": "매일경제",
+      "source_body_digest": "7d6a2438b970cf042a02d7187943e95e23128722c3eb772d3a1864db54860e99",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d734354030ddbba326d927854ad7cfe6230f3fd4bdc2339397498e71fd6790af",
+      "source_fact_keys": [
+        "source_fact:v1:60a1cb04e585590f6e3ec2d313a42cdee409aa72046c343ebc8b8b4da8e2f68a"
+      ],
+      "source_published_kst": "2026-10-05T21:22+09:00",
+      "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
     },
     "source_fact:6be07b4c46b9f8eb9b6e2692": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -43553,6 +44086,27 @@
       ],
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
+    "source_fact:7316770c9f6421f87bcb09ed": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01613766645609968&parentid=01646566645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "d67ffa4934d9d3488621eb4d5d545d641732d9f3e7862744de681bf624c04826",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a6c4a041f3039e70ad55bd98e15f4dcad38e89acfc5a318b1adde8fc955505",
+      "source_fact_keys": [
+        "source_fact:v1:8a2d5d541bb529f4e5bc60e9f5d10774a59ca1bbe1b30296c09ba229697ff4f8",
+        "source_fact:v1:8b3f0338e09369c17b12210788f8c578fbeb653c395fe7f7513ca106a1d5343d",
+        "source_fact:v1:9f15848d5d9bcc1e7c6e82b06146682596fa51a2ad24bfcd0035f220e8d270ed",
+        "source_fact:v1:ce31aca37c5a5f95ccd321cc0f79609e7700e4350cba82c4b45b7e6b723bf83e",
+        "source_fact:v1:d7335087bc9979c2a0ee0fe89993a70b4dbb94817000f10ffca2a9a1fe3689a1"
+      ],
+      "source_published_kst": "2026-10-05T08:55+09:00",
+      "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
     },
     "source_fact:734e9cbb3a8f8506f82a9d8d": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -44473,6 +45027,27 @@
       "source_published_kst": "2026-10-05T17:22+09:00",
       "title": "\"美中의존 줄이자\"…정부, CPTPP 가입 속도"
     },
+    "source_fact:82f7ac3cbf1eb9735260a060": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01613766645609968&parentid=01646566645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "d67ffa4934d9d3488621eb4d5d545d641732d9f3e7862744de681bf624c04826",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a6c4a041f3039e70ad55bd98e15f4dcad38e89acfc5a318b1adde8fc955505",
+      "source_fact_keys": [
+        "source_fact:v1:8a2d5d541bb529f4e5bc60e9f5d10774a59ca1bbe1b30296c09ba229697ff4f8",
+        "source_fact:v1:8b3f0338e09369c17b12210788f8c578fbeb653c395fe7f7513ca106a1d5343d",
+        "source_fact:v1:9f15848d5d9bcc1e7c6e82b06146682596fa51a2ad24bfcd0035f220e8d270ed",
+        "source_fact:v1:ce31aca37c5a5f95ccd321cc0f79609e7700e4350cba82c4b45b7e6b723bf83e",
+        "source_fact:v1:d7335087bc9979c2a0ee0fe89993a70b4dbb94817000f10ffca2a9a1fe3689a1"
+      ],
+      "source_published_kst": "2026-10-05T08:55+09:00",
+      "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
+    },
     "source_fact:830b3a59e7dc916498ca22ca": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -44687,6 +45262,27 @@
       ],
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
+    },
+    "source_fact:8a11e0c3b48a63696aac46ce": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01613766645609968&parentid=01646566645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "d67ffa4934d9d3488621eb4d5d545d641732d9f3e7862744de681bf624c04826",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a6c4a041f3039e70ad55bd98e15f4dcad38e89acfc5a318b1adde8fc955505",
+      "source_fact_keys": [
+        "source_fact:v1:8a2d5d541bb529f4e5bc60e9f5d10774a59ca1bbe1b30296c09ba229697ff4f8",
+        "source_fact:v1:8b3f0338e09369c17b12210788f8c578fbeb653c395fe7f7513ca106a1d5343d",
+        "source_fact:v1:9f15848d5d9bcc1e7c6e82b06146682596fa51a2ad24bfcd0035f220e8d270ed",
+        "source_fact:v1:ce31aca37c5a5f95ccd321cc0f79609e7700e4350cba82c4b45b7e6b723bf83e",
+        "source_fact:v1:d7335087bc9979c2a0ee0fe89993a70b4dbb94817000f10ffca2a9a1fe3689a1"
+      ],
+      "source_published_kst": "2026-10-05T08:55+09:00",
+      "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
     },
     "source_fact:8a6d7931a9d3e9a3ff494d96": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -45114,6 +45710,32 @@
       ],
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
+    "source_fact:9658d53579c85899df912113": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04575606645609968",
+      "source": "이데일리",
+      "source_body_digest": "f146b1768898d2dc4296f2329f86c184e221be22b37981d72880e666837828a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc8f927982962aaec26348f495097cb4810e6efe88b32badf7d7973c37ecf84a",
+      "source_fact_keys": [
+        "source_fact:v1:045ad098cf4a4d4957bcb26193d174577c2f35b1ffe35355f61fa5fa8500bc91",
+        "source_fact:v1:2e402172bf589b836b3e57cee07155d57a312e3b7359645bbd260ed2ecd2b69c",
+        "source_fact:v1:514166b04080aa408e4f19ef0de00a6e7d293b20fb2e1a0430b9321f18e5ea72",
+        "source_fact:v1:5b78b8df44b65ab440b9dd7fa68ddb3d41c25662aa2a6d6ecfbc964f6eab9422",
+        "source_fact:v1:7eb847ba008c261730bdeeb6493e5721968e40e8fdcb4e2a1a554a6c6dfbea98",
+        "source_fact:v1:8ce34a0a5d51bb72018b5a478b8e519a0c3a612ce6ede72d18ff6cb6d52c1e8b",
+        "source_fact:v1:a5592d35572e6de4e0df6270088d789771f0322e418e5e83294eebbbf490ad21",
+        "source_fact:v1:e2d4b80950354b64c84d03dd9b25c015390d68d5c65e8492c5a2d96983b73154",
+        "source_fact:v1:f5a1f78993c6f5c0f41d628febcdc020e41bab67a5254da366d4ff5e730c4384",
+        "source_fact:v1:ff93d231e155bc059807bcfb3ac9b4ca28c9c9f945b7a92d82eb7fc1196b7678"
+      ],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
     },
     "source_fact:96bcda0b0de8fddcaa241657": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -46273,6 +46895,27 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "어드밴스드 드레니쥐 시스, 스톰트랩 5억3000만 달러 인수..4분기 완료 예정"
     },
+    "source_fact:b112384d00f28cb3196b10eb": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01613766645609968&parentid=01646566645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "d67ffa4934d9d3488621eb4d5d545d641732d9f3e7862744de681bf624c04826",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a6c4a041f3039e70ad55bd98e15f4dcad38e89acfc5a318b1adde8fc955505",
+      "source_fact_keys": [
+        "source_fact:v1:8a2d5d541bb529f4e5bc60e9f5d10774a59ca1bbe1b30296c09ba229697ff4f8",
+        "source_fact:v1:8b3f0338e09369c17b12210788f8c578fbeb653c395fe7f7513ca106a1d5343d",
+        "source_fact:v1:9f15848d5d9bcc1e7c6e82b06146682596fa51a2ad24bfcd0035f220e8d270ed",
+        "source_fact:v1:ce31aca37c5a5f95ccd321cc0f79609e7700e4350cba82c4b45b7e6b723bf83e",
+        "source_fact:v1:d7335087bc9979c2a0ee0fe89993a70b4dbb94817000f10ffca2a9a1fe3689a1"
+      ],
+      "source_published_kst": "2026-10-05T08:55+09:00",
+      "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
+    },
     "source_fact:b1df16b0485255c9d48ab7fa": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -46598,6 +47241,32 @@
       "source_published_kst": "2026-10-05T17:46+09:00",
       "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
     },
+    "source_fact:bbe9c5e6dfaa8f2f3b93bab9": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04575606645609968",
+      "source": "이데일리",
+      "source_body_digest": "f146b1768898d2dc4296f2329f86c184e221be22b37981d72880e666837828a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc8f927982962aaec26348f495097cb4810e6efe88b32badf7d7973c37ecf84a",
+      "source_fact_keys": [
+        "source_fact:v1:045ad098cf4a4d4957bcb26193d174577c2f35b1ffe35355f61fa5fa8500bc91",
+        "source_fact:v1:2e402172bf589b836b3e57cee07155d57a312e3b7359645bbd260ed2ecd2b69c",
+        "source_fact:v1:514166b04080aa408e4f19ef0de00a6e7d293b20fb2e1a0430b9321f18e5ea72",
+        "source_fact:v1:5b78b8df44b65ab440b9dd7fa68ddb3d41c25662aa2a6d6ecfbc964f6eab9422",
+        "source_fact:v1:7eb847ba008c261730bdeeb6493e5721968e40e8fdcb4e2a1a554a6c6dfbea98",
+        "source_fact:v1:8ce34a0a5d51bb72018b5a478b8e519a0c3a612ce6ede72d18ff6cb6d52c1e8b",
+        "source_fact:v1:a5592d35572e6de4e0df6270088d789771f0322e418e5e83294eebbbf490ad21",
+        "source_fact:v1:e2d4b80950354b64c84d03dd9b25c015390d68d5c65e8492c5a2d96983b73154",
+        "source_fact:v1:f5a1f78993c6f5c0f41d628febcdc020e41bab67a5254da366d4ff5e730c4384",
+        "source_fact:v1:ff93d231e155bc059807bcfb3ac9b4ca28c9c9f945b7a92d82eb7fc1196b7678"
+      ],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
     "source_fact:bc6e13b7b1742874c357b996": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -46810,6 +47479,32 @@
       ],
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "디파이 디벨롭먼트, 3분기 주당 NAV 2배 이상 전망..SOL 보유 11%↑"
+    },
+    "source_fact:c3417a4ede91bf68f5607be7": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04575606645609968",
+      "source": "이데일리",
+      "source_body_digest": "f146b1768898d2dc4296f2329f86c184e221be22b37981d72880e666837828a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc8f927982962aaec26348f495097cb4810e6efe88b32badf7d7973c37ecf84a",
+      "source_fact_keys": [
+        "source_fact:v1:045ad098cf4a4d4957bcb26193d174577c2f35b1ffe35355f61fa5fa8500bc91",
+        "source_fact:v1:2e402172bf589b836b3e57cee07155d57a312e3b7359645bbd260ed2ecd2b69c",
+        "source_fact:v1:514166b04080aa408e4f19ef0de00a6e7d293b20fb2e1a0430b9321f18e5ea72",
+        "source_fact:v1:5b78b8df44b65ab440b9dd7fa68ddb3d41c25662aa2a6d6ecfbc964f6eab9422",
+        "source_fact:v1:7eb847ba008c261730bdeeb6493e5721968e40e8fdcb4e2a1a554a6c6dfbea98",
+        "source_fact:v1:8ce34a0a5d51bb72018b5a478b8e519a0c3a612ce6ede72d18ff6cb6d52c1e8b",
+        "source_fact:v1:a5592d35572e6de4e0df6270088d789771f0322e418e5e83294eebbbf490ad21",
+        "source_fact:v1:e2d4b80950354b64c84d03dd9b25c015390d68d5c65e8492c5a2d96983b73154",
+        "source_fact:v1:f5a1f78993c6f5c0f41d628febcdc020e41bab67a5254da366d4ff5e730c4384",
+        "source_fact:v1:ff93d231e155bc059807bcfb3ac9b4ca28c9c9f945b7a92d82eb7fc1196b7678"
+      ],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
     },
     "source_fact:c4cea5805fe9307cc2fde712": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -51313,6 +52008,32 @@
       "source_published_kst": "2026-10-04T08:00+09:00",
       "title": "암표 조여도 티켓 장터 '북적'…솜방망이에 '표' 안나는 플랫폼 규제"
     },
+    "title:28c0b1eff28ccb14d4755d1c": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04575606645609968",
+      "source": "이데일리",
+      "source_body_digest": "f146b1768898d2dc4296f2329f86c184e221be22b37981d72880e666837828a9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc8f927982962aaec26348f495097cb4810e6efe88b32badf7d7973c37ecf84a",
+      "source_fact_keys": [
+        "source_fact:v1:045ad098cf4a4d4957bcb26193d174577c2f35b1ffe35355f61fa5fa8500bc91",
+        "source_fact:v1:2e402172bf589b836b3e57cee07155d57a312e3b7359645bbd260ed2ecd2b69c",
+        "source_fact:v1:514166b04080aa408e4f19ef0de00a6e7d293b20fb2e1a0430b9321f18e5ea72",
+        "source_fact:v1:5b78b8df44b65ab440b9dd7fa68ddb3d41c25662aa2a6d6ecfbc964f6eab9422",
+        "source_fact:v1:7eb847ba008c261730bdeeb6493e5721968e40e8fdcb4e2a1a554a6c6dfbea98",
+        "source_fact:v1:8ce34a0a5d51bb72018b5a478b8e519a0c3a612ce6ede72d18ff6cb6d52c1e8b",
+        "source_fact:v1:a5592d35572e6de4e0df6270088d789771f0322e418e5e83294eebbbf490ad21",
+        "source_fact:v1:e2d4b80950354b64c84d03dd9b25c015390d68d5c65e8492c5a2d96983b73154",
+        "source_fact:v1:f5a1f78993c6f5c0f41d628febcdc020e41bab67a5254da366d4ff5e730c4384",
+        "source_fact:v1:ff93d231e155bc059807bcfb3ac9b4ca28c9c9f945b7a92d82eb7fc1196b7678"
+      ],
+      "source_published_kst": "2026-10-05T23:11+09:00",
+      "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
     "title:293bbbadc98312a415286f1d": {
       "first_seen_kst": "2026-09-29T20:35:29+09:00",
       "lanes": {
@@ -55779,6 +56500,23 @@
       "source": "전자신문",
       "title": "[ET특징주] '캉골' 에스제이그룹, 20억원 규모 자사주 취득… 주가 上"
     },
+    "title:6e66c87cc7dede4232798458": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169805",
+      "source": "매일경제",
+      "source_body_digest": "7d6a2438b970cf042a02d7187943e95e23128722c3eb772d3a1864db54860e99",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d734354030ddbba326d927854ad7cfe6230f3fd4bdc2339397498e71fd6790af",
+      "source_fact_keys": [
+        "source_fact:v1:60a1cb04e585590f6e3ec2d313a42cdee409aa72046c343ebc8b8b4da8e2f68a"
+      ],
+      "source_published_kst": "2026-10-05T21:22+09:00",
+      "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
+    },
     "title:6e7bb498f905d04ab9f0c060": {
       "first_seen_kst": "2026-09-22T19:01:13+09:00",
       "lanes": {
@@ -56102,6 +56840,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T14:00+09:00",
       "title": "[단독]캐피탈-렌터카업계, 갈등 격화...SK렌터카 '규제 완화 반대 연합회'등록"
+    },
+    "title:7293487551853756e5644825": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.etnews.com/20261005000055",
+      "source": "전자신문",
+      "source_body_digest": "2d012a68de9ffd9e7ecaf7ccb6742f03831f7e233c858f8dcd663cd03e86f2b4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1d21fc6f8e627d50b2fc3e00aeee5855b5e74190532c765bdce0c51d392ea235",
+      "source_fact_keys": [
+        "source_fact:v1:382db630d7c1b5e3a002b324b07c42de4b12b21ba3bdd867ba7a00b914392c27"
+      ],
+      "source_published_kst": "2026-10-05T10:20+09:00",
+      "title": "[반도체 라이징 스타]<6>엑시나, 스스로 계산하는 메모리로 AI 인프라 비용 낮춘다"
     },
     "title:729b282aaa64eed9312c3581": {
       "first_seen_kst": "2026-10-05T11:14:01+09:00",
@@ -58146,6 +58901,21 @@
       "link": "https://www.dailian.co.kr/news/view/1694060/",
       "source": "데일리안",
       "title": "AI가 공장을 움직인다…피지컬 AI, '로봇 두뇌' 경쟁 본격화"
+    },
+    "title:9156e527ac94782b3959c445": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.newsis.com/view/NISX20261002_0003812817",
+      "source": "뉴시스",
+      "source_body_digest": "7fb2a6f4ac6cd77f0a14caf9b0587cf7e293b80814be3b4555b5e0393390dc7d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T12:30+09:00",
+      "title": "\"요즘은 쫀득 시대\" 식품·디저트업계에 부는 식감 바람"
     },
     "title:91661105d0ca81a57c3f866e": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -63968,6 +64738,27 @@
       "source": "연합뉴스",
       "title": "SK하이닉스, TSMC 행사서 AI 메모리 공개…2년 연속 파트너상 | 연합뉴스"
     },
+    "title:f0323e0b37b885fa4359456d": {
+      "first_seen_kst": "2026-10-05T23:28:38+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:28:38+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:28:38+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01613766645609968&parentid=01646566645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "d67ffa4934d9d3488621eb4d5d545d641732d9f3e7862744de681bf624c04826",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61a6c4a041f3039e70ad55bd98e15f4dcad38e89acfc5a318b1adde8fc955505",
+      "source_fact_keys": [
+        "source_fact:v1:8a2d5d541bb529f4e5bc60e9f5d10774a59ca1bbe1b30296c09ba229697ff4f8",
+        "source_fact:v1:8b3f0338e09369c17b12210788f8c578fbeb653c395fe7f7513ca106a1d5343d",
+        "source_fact:v1:9f15848d5d9bcc1e7c6e82b06146682596fa51a2ad24bfcd0035f220e8d270ed",
+        "source_fact:v1:ce31aca37c5a5f95ccd321cc0f79609e7700e4350cba82c4b45b7e6b723bf83e",
+        "source_fact:v1:d7335087bc9979c2a0ee0fe89993a70b4dbb94817000f10ffca2a9a1fe3689a1"
+      ],
+      "source_published_kst": "2026-10-05T08:55+09:00",
+      "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
+    },
     "title:f03f9598f666e2cb60db49cd": {
       "first_seen_kst": "2026-09-20T12:10:20+09:00",
       "lanes": {
@@ -64981,5 +65772,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T23:21:26+09:00"
+  "updated_at_kst": "2026-10-05T23:28:38+09:00"
 }
