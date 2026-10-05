@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import importlib.util
+import json
 import pathlib
 import sys
 import unittest
@@ -24,6 +25,12 @@ class SmartphoneMemoryPassThroughTests(unittest.TestCase):
             "published_at_kst": "2026-10-05T09:00:00+09:00",
             "link": "https://example.com",
         }
+
+    def test_committed_state_is_valid_json(self):
+        state_path = ROOT / "data" / "smartphone_memory_pass_through_state.json"
+        state = json.loads(state_path.read_text(encoding="utf-8"))
+        self.assertIsInstance(state, dict)
+        self.assertIn("initial_alert_sent", state)
 
     def test_baseline_is_krw_rumor_not_official(self):
         self.assertEqual(m.BASELINE["s27_korea_hike_low_krw"], 100000)
