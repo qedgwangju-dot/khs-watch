@@ -56,6 +56,26 @@ Also run the existing policy delivery contract and all 11 radar regression
 commands. Remote validation must use a dry run, check the actual checkout SHA,
 and inspect saved preview artifacts. Dry-run success is not Telegram delivery.
 
+### Recorded Result: October 5, 2026
+
+- Policy delivery contract passed locally; all 11 radar checks passed locally
+  and on Actions. The new readability suite passed 15 tests for the six cases.
+- Production change: `d9f85ed2422ef9efdb641c6a21e1fde34e731ddb`.
+- Actions run [37267304005](https://github.com/qedgwangju-dot/khs-watch/actions/runs/37267304005)
+  completed successfully. Its checkout was `0f05ebc5b3627f041313592484ea03bd4948d184`;
+  the intervening changes did not modify the policy renderer or verifier.
+- All four remote preview artifacts matched the local previews after newline
+  normalization. Remote sidecar: 15 tests, 6 cases, 0 failures, 0 errors,
+  `external_delivery=false`, `seen_state_changed=false`.
+- Browser-rendered preview checks at 800px and 390px showed no horizontal
+  overflow. All three source anchors retained their exact destinations.
+- The local official FCC recheck succeeded for both attachment texts. The remote
+  suite is fixture replay, not an independent live FCC retrieval.
+- Final workflow states: policy watch `disabled_manually`, news radar `active`.
+- Radar collection in the dry run still recorded inaccessible Etnews sources
+  and body-verification failures. This formatting verification does not certify
+  full news-source coverage or repair those separate retrieval failures.
+
 ## Completion Boundaries
 
 No six old articles were replayed to Telegram. No seen-history reset was made.
