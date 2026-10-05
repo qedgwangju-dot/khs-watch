@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-06T07:30:03+09:00",
+  "updated_at_kst": "2026-10-06T07:34:08+09:00",
   "seen_ids": [
     "01899de42b17bb25951592cf",
     "0477059e619a2672dbae4b30",
@@ -146,7 +146,7 @@
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1343.98,
-    "date": "2026-10-05 일일 기준 · ECB/Frankfurter · 조회 2026-10-06 07:30 KST · 보조 API 2026-10-05 · 차이 0.05% · 일중 기준시각 차이 가능",
+    "date": "2026-10-05 일일 기준 · ECB/Frankfurter · 조회 2026-10-06 07:34 KST · 보조 API 2026-10-05 · 차이 0.05% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
@@ -201,11 +201,11 @@
       "MLCC": "저가 소비자용은 둔화하지만 AI용 고급 0805는 부족해 수요 양극화"
     },
     "memory_storage_chain": {
-      "active": false,
+      "active": true,
       "dram_lead_ratio": 2.5,
       "nand_essd_lead_ratio": 2.0,
       "hdd_lead_ratio": 3.125,
-      "dram_to_enterprise_ssd_constraint_confirmed": false,
+      "dram_to_enterprise_ssd_constraint_confirmed": true,
       "hdd_relief_late_2027_or_later": true,
       "nand_controller_direct_constraint_confirmed": false,
       "scope_note": "확인 범위는 DRAM 부족이 일부 NAND 공급사의 기업용 SSD 솔루션 지원 능력을 제약한다는 것. NAND 컨트롤러 출하 자체의 직접 병목은 별도 확인 전까지 확정하지 않음."
@@ -263,29 +263,29 @@
       "https://insights.trendforce.com/p/weekly-radar-004",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-10-06T07:30:17+09:00",
+    "last_checked_at_kst": "2026-10-06T07:34:21+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-06T07:31:09+09:00",
-    "status": "no_message_due"
+    "checked_at_kst": "2026-10-06T07:35:01+09:00",
+    "status": "confirmed"
   },
-  "last_successful_delivery_kst": "2026-10-05T22:07:48+09:00",
+  "last_successful_delivery_kst": "2026-10-06T07:35:01+09:00",
   "telegram_message_ids": [
-    236
+    237
   ],
-  "telegram_message_id": 236,
+  "telegram_message_id": 237,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      236
+      237
     ],
-    "confirmed_at_kst": "2026-10-05T22:07:48+09:00",
-    "payload_hash": "c69a08d479d812d9fac3e3f2479950c926d922ea3090bcd0b00d5a783b18d8b4"
+    "confirmed_at_kst": "2026-10-06T07:35:01+09:00",
+    "payload_hash": "9133c35117fd28ad1b491d903f1a3d9e00d7f38bd422714bb96a5c97b6ea0669"
   },
   "agentic_cpu_demand": {
     "as_of": "2026-08-12",
@@ -337,7 +337,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-06",
-    "last_checked_at_kst": "2026-10-06T07:31:03+09:00"
+    "last_checked_at_kst": "2026-10-06T07:34:51+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -373,7 +373,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-06",
-    "last_checked_at_kst": "2026-10-06T07:31:05+09:00",
+    "last_checked_at_kst": "2026-10-06T07:34:53+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -417,7 +417,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-06T07:31:07+09:00",
+    "last_checked_at_kst": "2026-10-06T07:34:54+09:00",
     "candidate_count": 0,
     "event_count": 0
   },
@@ -650,672 +650,5 @@
     "morgan_stanley_public_recap_url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-delivers-strong-q2-long-150300603.html",
     "as_of": "2026-10-04",
     "note": "91.7%·187.5%·72% 조합은 사용자 제공 Morgan Stanley 요약으로 기준선에 보존하되, 공개 검색에서 원문 또는 exact 수치의 독립 2중 재확인은 아직 확보하지 못했으므로 exact_tolerance_public_source_verified=false. 187.5%는 288→192GB(-33.3%) 가정에서 91.7% 허용치를 용량비 1.5배로 조정하면 약 187.55%로 산술상 일치. VR200 $2.0016M memory line은 공개 2차 자료가 HBM 포함 여부를 다르게 설명하므로 HBM-only 비용으로 승격 금지."
-  },
-  "_delivery": {
-    "id": "feb6067014786dba095db12cc13275e0b3f7863dbb8de58c016763c7e4cfd40a",
-    "status": "partial",
-    "created_at_kst": "2026-10-06T07:34:57+09:00",
-    "chunks": [
-      "<b>🔗 메모리·스토리지 연쇄 병목 감시 추가</b>\n\nTrendForce 10/5 기준으로 개별 부품이 아니라 DRAM→기업용 SSD→HDD의 연쇄 병목을 기존 알림에서 함께 추적합니다.\n• <b>DRAM:</b> 20주 / 균형 8주 · 2.5배 · 심각한 공급 부족\n• <b>기업용 SSD:</b> 16주 / 균형 8주 · DRAM 부족이 일부 NAND 공급사의 eSSD 솔루션 지원 능력을 제약\n• <b>HDD:</b> 50주 / 균형 16주 · 3.1배 · 공급 완화는 빨라도 2027년 말\n\n<b>정확도 경계</b>\n• TrendForce 확인 범위는 ‘DRAM 부족 → 일부 NAND 공급사의 기업용 SSD 솔루션 지원 제약’입니다.\n• <b>NAND 컨트롤러 출하가 DRAM 때문에 직접 제한된다는 주장은 이번 원문에서 확인되지 않아 알림 확정조건에 넣지 않았습니다.</b>\n\n<b>다음 확인</b>\n• DRAM 리드타임·서버 DRAM 가격 / eSSD 리드타임·가격·출하 / HDD 리드타임·증설 가동시점이 함께 꺾이는지 확인\n• <a href=\"https://insights.trendforce.com/p/weekly-radar-004\">TrendForce 원문</a>"
-    ],
-    "next_chunk": 1,
-    "message_ids": [
-      237
-    ],
-    "candidate": {
-      "updated_at_kst": "2026-10-06T07:34:08+09:00",
-      "seen_ids": [
-        "01899de42b17bb25951592cf",
-        "0477059e619a2672dbae4b30",
-        "06a59b34b1c9e4bb0d3987bd",
-        "081d98bf0cc1d36b72de1345",
-        "09ccca98004f94ddc78adf4f",
-        "0a11d6e55d20a20d438eea0b",
-        "0f4c93418ab0cb5f77ee5aff",
-        "11a202510cd997dfa3504821",
-        "11b0887a69d7d15b6128314d",
-        "160b71780027009949391286",
-        "1a7355b983f5d9b5a7d4a97f",
-        "1a740e6eaff99a7fffe1b7b7",
-        "1a8be449fd3cd46cde801b14",
-        "1dd83b5311279ef155add2d2",
-        "1f7c1f701db354f9e408d486",
-        "20a5c84026d1bbe9b4f60398",
-        "21e84f4d7bcbfa46a6b63dee",
-        "27f85e070f62c260de7cb002",
-        "2d27da4b09baa1d0f61ace3d",
-        "2d9314e7dce8075fefab9289",
-        "2dc1704a7586d7a72e6bb296",
-        "2dfd1c86ac0599c056567928",
-        "2febb8d3e788181bbf878d83",
-        "30e12d5e09347c31afe9bbbf",
-        "331b6820836c8a9823107ede",
-        "35d13626592549116ca7a042",
-        "36289e3d827d73abf7b71266",
-        "366eb2b49378313e5a18f1ec",
-        "40660e881b3fe6bde98047a2",
-        "4127757df616e22a61ff42e4",
-        "4247585e3b18e9cad642ceec",
-        "4247b04678644c4743f6ef69",
-        "4254884b8b0b799b2b6b87a7",
-        "44974ccaa7ba66fe19dffd08",
-        "45ba5c60ce8b21a79021bfee",
-        "480c176eee3a5d4929892cf4",
-        "4a4d0cce8254b1bcb31b5074",
-        "4a94d2be7668e2271bd7f262",
-        "4d6b3e75273924248c11b1c1",
-        "5010456efcf2a9cd4b3c6336",
-        "5023a6731fb7ba7cd4a95b5d",
-        "508271da4f03e4e64f5e8e39",
-        "51472fa7253bfc2a1683afa7",
-        "522f97838fde7703c1842a9e",
-        "59dea53db71c13bdf6c120ef",
-        "5a97726e2e93fc7408e02754",
-        "62514606e58e299512d357d4",
-        "65f05201a0c34568be8d9590",
-        "65f1cfef6daf0acc077943e5",
-        "683bf92b23e4d4953f109996",
-        "6b3790289403fb21cb553ae9",
-        "6c31c0bc458f7594ee609fbe",
-        "709b3fc6612d64794f7a06c4",
-        "7310bace62d2a5a4af5e422b",
-        "76f6aabe7d3a7e8cf74e88aa",
-        "7905a269e5f79330a355c833",
-        "7ae441cd60cdb8d1312ea00f",
-        "7c4fab38f3ac9aeca880db5a",
-        "7e3036adf1559a2f0b773ca9",
-        "817f217f23561cc348f4159b",
-        "86e3b5a2a1b5f5a0a64b608e",
-        "879690aaf1650f4535c5fa3b",
-        "89dfc6e2a5f58fd54f926dca",
-        "8c3ed41a5caa69f015e2670c",
-        "942249bed778a37a967938bc",
-        "94e0bb7f59a31374d524f8f3",
-        "959562dc71d2a106144c7eab",
-        "96aeca25517239df73a1fe98",
-        "97cd9aa32a1e0bc1defa7483",
-        "9a0fac710d6f4969c12eccb0",
-        "9ccd14cf2278388157bd44a6",
-        "9f0710c26cd3d933f1e6120f",
-        "a1f202951bc6ed71f25e0b03",
-        "a6929e533932abf2c07f5238",
-        "aa0285bd4d722170d864937a",
-        "ad831c0a9b75057895ffb73a",
-        "adca27d662f4cb51e531edfd",
-        "b2ce67f50c4396a824d19973",
-        "b4862a8df904bf88d04f0bd6",
-        "b7a9ea191f0d39046caeeb6d",
-        "bb3a941f15a9af91d4135098",
-        "bc36972bfd79436e7ad41fd1",
-        "c0f6a791c6182ed3a1771a7b",
-        "c1d173fd17a8a8cd17f5cd5b",
-        "c1ede00bdbacc4e73f3e3732",
-        "c3d140a064e98999aa4ea37b",
-        "c66bcba5501ce4414506b0e6",
-        "caf236d0d63266773b9b11da",
-        "cd8ac1c75b1f05e1e2de11bc",
-        "cdb74aa9fe6a1d10fc0d28c2",
-        "d059f8c3e0d742a821065a47",
-        "d26bff6649e5357d756fc3fc",
-        "d33a5fbc0d352f5813521b17",
-        "d438811610a9bd1cc60718b5",
-        "d5bb9608cc828c7b4cd00446",
-        "d6a7588c8d5d4c51180c5a1a",
-        "d6b9b392729bc1ba60f083f0",
-        "d75fa48d506a4de827529a2c",
-        "da2ec0a0b9a2838ab2f42544",
-        "dacbfdc3ad5ea572af81e028",
-        "dca2bc8b55a45dd7abd304fb",
-        "dcd5980b16bb5b1b6d5fe9f0",
-        "dff177bae16621437b065202",
-        "e05c1927e16110a949b8b797",
-        "e1cf986a1ad553979c710286",
-        "e917aed0ebcc8c2bd2d2a9bb",
-        "e91a33b5d73da251921a7da4",
-        "e9cfa9f618010bad720140bb",
-        "e9d025e15967b9bfaa912ef4",
-        "e9f1478bb2d4988d9cb80d94",
-        "ec0854ae5cc1e577d7a21818",
-        "eed867761a24cbad33b1c104",
-        "f07ec9c4d4039ee24a7a82d9",
-        "f0b052afbbfcb591daa146d8",
-        "f15cdeffa0215c29ff770c9f",
-        "f1e101b56179570d50af9fb3",
-        "f27eab85dd6d16478032af2f",
-        "f3e3dad3086e1067be70a1d9",
-        "f514afa13e44fa6dccfc9257",
-        "f8f31accbbf29b396581a278",
-        "f90b21bc4788937b6c57cbb1",
-        "f9c423730a2aa19b4fba6af0",
-        "fbd920db100fb7204a37af3d",
-        "fd0ab513604f145f508ff4dd",
-        "fe56173d9b7f7777f313ff43",
-        "ff9744abe3535e79694d130b"
-      ],
-      "seen_fact_keys": [
-        "bernstein_hbm_supplier_relative_samsung_up",
-        "bernstein_hbm_supplier_relative_samsung_up_skhynix_down",
-        "bernstein_hbm_supplier_relative_skhynix_down",
-        "bernstein_rubin_ultra_model_1024_to_640_8hi50_12hi50",
-        "hbm3e_wafer_capacity_3x_ddr5",
-        "hbm_2027_contract_quoted_121pct_10pct_20pct",
-        "hbm_2027_contract_quoted_30pct_20pct_60pct",
-        "hbm_capacity_kv_offload_mainstream_8hi_12hi_niche_4hi",
-        "rubin_ultra_spec_192gb_288gb_1tb",
-        "skhynix_indiana_hbm4e_2029"
-      ],
-      "last_unseen_raw_count": 0,
-      "last_verified_event_count": 0,
-      "last_send_event_count": 0,
-      "freshness_hours": 72,
-      "usdkrw": {
-        "rate": 1343.98,
-        "date": "2026-10-05 일일 기준 · ECB/Frankfurter · 조회 2026-10-06 07:34 KST · 보조 API 2026-10-05 · 차이 0.05% · 일중 기준시각 차이 가능",
-        "source": "ECB/Frankfurter",
-        "error": ""
-      },
-      "errors": [],
-      "ai_component_leadtime": {
-        "as_of": "2026-10-05",
-        "source": "https://insights.trendforce.com/p/weekly-radar-004",
-        "components": {
-          "GPU": {
-            "status": "Balanced",
-            "current": "30-40",
-            "balanced": "30-40"
-          },
-          "DRAM": {
-            "status": "Very Tight",
-            "current": "20",
-            "balanced": "8"
-          },
-          "NAND(eSSD)": {
-            "status": "Tight",
-            "current": "16",
-            "balanced": "8"
-          },
-          "HDD": {
-            "status": "Very Tight",
-            "current": "50",
-            "balanced": "16"
-          },
-          "ABF": {
-            "status": "Very Tight",
-            "current": "48-56",
-            "balanced": "12"
-          },
-          "MLCC": {
-            "status": "Tight",
-            "current": "35",
-            "balanced": "12"
-          },
-          "CPU": {
-            "status": "Tight",
-            "current": "25-30",
-            "balanced": "16-20"
-          }
-        },
-        "signals": {
-          "CPU": "AI 추론 부하가 서버 CPU 수요를 지지하며 공급 제약이 지속",
-          "GPU": "Blackwell은 2026년 주력 출하·수요 1H27 연장, Rubin은 시스템 테스트·검증 이슈로 4Q26~1Q27부터 점진 램프",
-          "DRAM": "4Q26 계약가격 협상에서 인상 신호가 이어지고 미국 CSP 수요가 견조",
-          "NAND(eSSD)": "DRAM 부족이 일부 NAND 업체의 기업용 SSD 지원 능력까지 제약",
-          "HDD": "Toshiba 증설은 가동까지 12~24개월이 필요해 납기 완화는 빨라도 2027년 말",
-          "ABF": "수급 격차가 단기간 닫히기 어렵고 3Q26~4Q27 장기계약 가격은 분기당 10~15% 인상 전망",
-          "MLCC": "저가 소비자용은 둔화하지만 AI용 고급 0805는 부족해 수요 양극화"
-        },
-        "memory_storage_chain": {
-          "active": true,
-          "dram_lead_ratio": 2.5,
-          "nand_essd_lead_ratio": 2.0,
-          "hdd_lead_ratio": 3.125,
-          "dram_to_enterprise_ssd_constraint_confirmed": true,
-          "hdd_relief_late_2027_or_later": true,
-          "nand_controller_direct_constraint_confirmed": false,
-          "scope_note": "확인 범위는 DRAM 부족이 일부 NAND 공급사의 기업용 SSD 솔루션 지원 능력을 제약한다는 것. NAND 컨트롤러 출하 자체의 직접 병목은 별도 확인 전까지 확정하지 않음."
-        },
-        "ubs_project_leadtime_baseline": {
-          "as_of": "2026-09",
-          "source_kind": "사용자 제공 UBS 차트",
-          "source_caption": "Company reports, UBS, P Equity Research, as of Sep 2026",
-          "metric": "company-reported project lead time",
-          "unit": "months",
-          "directly_comparable_to_component_delivery_lead_time": false,
-          "segments": {
-            "Foundry": {
-              "min_months": 36,
-              "max_months": 48
-            },
-            "Semicap equipment": {
-              "min_months": 12,
-              "max_months": 24
-            },
-            "Adv. packaging / substrates": {
-              "min_months": 12,
-              "max_months": 18
-            },
-            "Storage systems": {
-              "min_months": 12,
-              "max_months": 24
-            },
-            "GPUs / AI accelerators": {
-              "min_months": 6,
-              "max_months": 12
-            },
-            "Memory (HBM / DRAM)": {
-              "min_months": 6,
-              "max_months": 12
-            },
-            "Optical transceivers / networking": {
-              "min_months": 3,
-              "max_months": 9
-            },
-            "CPUs": {
-              "min_months": 3,
-              "max_months": 6
-            },
-            "Servers": {
-              "min_months": 1,
-              "max_months": 2
-            }
-          }
-        },
-        "seen_urls": [
-          "https://insights.trendforce.com/p/weekly-radar-001",
-          "https://insights.trendforce.com/p/weekly-radar-002",
-          "https://insights.trendforce.com/p/weekly-radar-003",
-          "https://insights.trendforce.com/p/weekly-radar-004",
-          "https://www.trendforce.com/news/"
-        ],
-        "last_checked_at_kst": "2026-10-06T07:34:21+09:00",
-        "candidate_count": 3,
-        "errors": []
-      },
-      "structure_baseline_version": 3,
-      "delivery_check": {
-        "checked_at_kst": "2026-10-06T07:31:09+09:00",
-        "status": "no_message_due"
-      },
-      "last_successful_delivery_kst": "2026-10-05T22:07:48+09:00",
-      "telegram_message_ids": [
-        236
-      ],
-      "telegram_message_id": 236,
-      "bot_username": "khs88798879887988798879_bot",
-      "delivery_receipt": {
-        "status": "confirmed",
-        "bot_username": "khs88798879887988798879_bot",
-        "message_ids": [
-          236
-        ],
-        "confirmed_at_kst": "2026-10-05T22:07:48+09:00",
-        "payload_hash": "c69a08d479d812d9fac3e3f2479950c926d922ea3090bcd0b00d5a783b18d8b4"
-      },
-      "agentic_cpu_demand": {
-        "as_of": "2026-08-12",
-        "issuer": "Bank of America",
-        "source": "https://finvaulta.com/research/bank-of-america/rise-of-the-agents-raising-cpu-tam-again-to-210bn-2026-08-12",
-        "source_kind": "BofA 전망의 2차 리서치 요약",
-        "metrics": {
-          "server_cpu_tam_2030_usd_bn": 210.6,
-          "traditional_iaas_2030_usd_bn": 30.2,
-          "compute_head_2030_usd_bn": 90.2,
-          "agentic_2030_usd_bn": 90.2,
-          "ai_cpu_2030_usd_bn": 180.4,
-          "agentic_share_pct": 42.83,
-          "ai_cpu_share_pct": 85.66,
-          "server_cpu_2025_usd_bn": 35,
-          "server_cpu_2026_usd_bn": 61.4,
-          "server_cpu_cagr_2025_2030_pct": 43.1,
-          "server_cpu_cagr_2026_2030_pct": 36.1,
-          "ai_cpu_cagr_2026_2030_pct": 43.6
-        },
-        "cpu_gpu_ratio": {
-          "agentic": "1:1",
-          "training": "1:4-8",
-          "basic_inference": "1:2",
-          "official_support": "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
-        },
-        "revision_history": [
-          {
-            "date": "2026-05-20",
-            "server_cpu_tam_2030_usd_bn": 125,
-            "source_kind": "BofA 보도 재전달"
-          },
-          {
-            "date": "2026-06-11",
-            "server_cpu_tam_2030_usd_bn": 170,
-            "source_kind": "BofA 리포트 해석 자료"
-          },
-          {
-            "date": "2026-08-12",
-            "server_cpu_tam_2030_usd_bn": 210.6,
-            "source_kind": "BofA 전망의 2차 리서치 요약"
-          }
-        ],
-        "seen_forecast_urls": [
-          "https://finvaulta.com/research/bank-of-america/rise-of-the-agents-raising-cpu-tam-again-to-210bn-2026-08-12"
-        ],
-        "seen_validation_urls": [
-          "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
-          "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
-        ],
-        "last_validation_cutoff": "2026-10-06",
-        "last_checked_at_kst": "2026-10-06T07:34:51+09:00"
-      },
-      "samsung_electromechanics_cpu_realization": {
-        "as_of": "2026-09-23",
-        "company": "삼성전기",
-        "source_kind": "메리츠증권 전망 + 삼성전기 공식 실적/계약 교차검증",
-        "metrics": {
-          "q3_revenue_forecast_krw_100m": 38200,
-          "q3_operating_profit_forecast_krw_100m": 6571,
-          "q3_consensus_operating_profit_krw_100m": 6010,
-          "q3_implied_opm_pct": 17.201570680628272,
-          "component_opm_floor_pct": 20,
-          "abf_opm_floor_pct": 30,
-          "cpu_abf_share_floor_pct": 45,
-          "q2_revenue_actual_krw_100m": 34572,
-          "q2_operating_profit_actual_krw_100m": 4404,
-          "q2_component_revenue_krw_100m": 16494,
-          "q2_package_revenue_krw_100m": 7716,
-          "ai_server_mlcc_contract_2027_krw_100m": 10722
-        },
-        "facts": {
-          "server_cpu_fcbga_mass_production": true,
-          "mlcc_lta_customer_count_min": 10,
-          "north_america_cpu_mlcc_lta_named_customer": false,
-          "sixth_gen_server_cpu_abf_customer_named": false,
-          "meta_venice_validation": true,
-          "meta_venice_large_scale_deployment_confirmed": false
-        },
-        "seen_urls": [
-          "https://biz.chosun.com/stock/stock_general/2026/09/23/GAZ6ULSXUJDFJB2VFLWMC4DFBY/",
-          "https://ir.amd.com/news-events/press-releases/detail/1294/aai-2026-amd-delivers-full-stack-compute-for-the-agentic-ai-era",
-          "https://newsroom.amd.com/news/amd-and-meta-announce-expanded-strategic-partnersh/",
-          "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10461",
-          "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
-        ],
-        "last_checked_cutoff": "2026-10-06",
-        "last_checked_at_kst": "2026-10-06T07:34:53+09:00",
-        "candidate_count": 0
-      },
-      "abf_cpu_monetization": {
-        "as_of": "2026-09-27",
-        "official": {
-          "ibiden_ai_server_demand_exceeds_capacity": true,
-          "ibiden_sap_capacity_fy2027_multiple_min": 2,
-          "ibiden_capex_fy2026_2028_jpy_bn": 500,
-          "ibiden_gama_capex_jpy_bn": 220,
-          "ibiden_gama_mass_production_start_fy": 2027,
-          "ibiden_asic_share_fy2026_floor_pct": 10,
-          "ibiden_major_cpu_customer_demand_strong": true,
-          "ibiden_pricing_stance": "현 판매가격 유지 + 원재료비 고객 전가",
-          "ibiden_customer_sales_fy2024_jpy_bn": {
-            "Intel": 76.709,
-            "AMD": 40.707,
-            "NVIDIA": 75.077
-          }
-        },
-        "research": {
-          "macquarie_intel_abf_share_pct": 30,
-          "macquarie_amd_abf_share_pct": 15,
-          "macquarie_nvidia_cpu_substrate_shipping": true,
-          "macquarie_note": "사용자 제공 Macquarie 발췌; Ibiden 공식 확인 전"
-        },
-        "facts": {
-          "official_nvidia_cpu_substrate_confirmed": false,
-          "official_intel_abf_share_confirmed": false,
-          "official_amd_abf_share_confirmed": false,
-          "official_abf_price_increase_confirmed": false,
-          "samsung_server_cpu_fcbga_confirmed": true
-        },
-        "seen_urls": [
-          "https://www.ibiden.com/company/2026/02/notice-regarding-capital-investment-plan-for-high-performance-ic-package-substrates.html",
-          "https://www.ibiden.com/ir/items/FinancialReview2025.pdf",
-          "https://www.ibiden.com/ir/items/en_QA_FY25Q4.pdf",
-          "https://www.ibiden.com/ir/items/en_QY20251st.pdf",
-          "https://www.ibiden.com/ir/items/en_kessannsetsumeiFY2025.pdf",
-          "https://www.pcbshop.org/en/articles/detail.asp?serno=371",
-          "https://www.xxquant.com/en/institution/institutional-research/312ff73397896d147f13d89219902ad7",
-          "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
-          "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
-        ],
-        "last_checked_at_kst": "2026-10-06T07:34:54+09:00",
-        "candidate_count": 0,
-        "event_count": 0
-      },
-      "citi_hbm_track_version": 1,
-      "citi_hbm_outlook": {
-        "demand_2027_yoy_pct": 62.0,
-        "demand_2027_100m_gb": 752.0,
-        "demand_2028_yoy_pct": 69.0,
-        "demand_2028_100m_gb": 1270.0,
-        "supply_2027_yoy_pct": 64.0,
-        "supply_2027_100m_gb": 593.0,
-        "supply_2028_yoy_pct": 36.0,
-        "supply_2028_100m_gb": 809.0,
-        "deficit_2027_pct": -21.0,
-        "deficit_2028_pct": -36.0,
-        "samsung_2027_wpm": 240000.0,
-        "skhynix_2027_wpm": 270000.0,
-        "micron_2027_wpm": 140000.0,
-        "samsung_2027_capacity_yoy_pct": 50.0,
-        "skhynix_2027_capacity_yoy_pct": 67.0,
-        "micron_2027_capacity_yoy_pct": 52.0,
-        "hbm4_12hi_usd_per_gb_min": 4.0,
-        "hbm4_12hi_usd_per_gb_max": 5.0,
-        "hbm4_12hi_price_yoy_min_pct": 100.0,
-        "hbm4_12hi_price_yoy_max_pct": 150.0,
-        "eight_hi_premium_min_pct": 20.0,
-        "eight_hi_premium_max_pct": 30.0,
-        "source": "Citi 리서치 재인용",
-        "source_url": "https://www.aastocks.com/tc/stocks/news/aafn-con/NOW.1547209/latest-news/AAFN",
-        "secondary_source_url": "https://newsis.com/view/NISX20260930_0003808711",
-        "as_of": "2026-09-30"
-      },
-      "samsung_hbm4_price_track_version": 2,
-      "samsung_hbm4_price": {
-        "stage": "negotiation",
-        "offered_price_band": "mid_to_high_4_usd_per_gb",
-        "offered_price_usd_per_gb_min": null,
-        "offered_price_usd_per_gb_max": null,
-        "reference_hbm3e_usd_per_gb": 1.5,
-        "price_multiple_floor": 3.0,
-        "volume_stage": "largely_agreed",
-        "target_close_month": "2026-10",
-        "reported_supply_status": "virtually_sold_out_reported",
-        "pricing_power_stage": "strengthened_reported",
-        "pricing_power_driver": "high_spec_performance_and_limited_supply",
-        "performance_stable_gbps": 11.7,
-        "performance_max_gbps": 13.0,
-        "industry_standard_gbps": 8.0,
-        "stack_bandwidth_tbps": 3.3,
-        "customer_requirement_tbps": 3.0,
-        "industry_hbm_dram_wafer_share_current_band": "20s_pct_reported",
-        "industry_hbm_dram_wafer_share_2027_pct": 30.0,
-        "source": "매일경제 단독",
-        "source_url": "https://www.mk.co.kr/news/business/12167164",
-        "premium_source_url": "https://www.mk.co.kr/news/business/12167424",
-        "official_performance_source_url": "https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-%EC%84%B8%EA%B3%84-%EC%B5%9C%EC%B4%88-%EC%97%85%EA%B3%84-%EC%B5%9C%EA%B3%A0-%EC%84%B1%EB%8A%A5%EC%9D%98-hbm4-%EC%96%91%EC%82%B0-%EC%B6%9C%ED%95%98",
-        "as_of": "2026-10-02",
-        "note": "4달러대 중후반은 기사 표현 그대로 보존. 정확한 상·하단 가격으로 임의 환산하지 않음."
-      },
-      "samsung_hbm4e_thermal_track_version": 1,
-      "samsung_hbm4e_thermal_package": {
-        "industry_current_interposer_reticle_x": 5.5,
-        "reported_future_interposer_reticle_x": 40.0,
-        "reported_future_interposer_stage": "industry_projection",
-        "tsmc_official_2028_cowos_reticle_x": 14.0,
-        "hbm4e_thermal_resistance_improvement_pct": 14.0,
-        "hcb_thermal_resistance_improvement_pct": 20.0,
-        "hcb_stage": "technology_showcase",
-        "hpb_stage": "hbm4e_validation",
-        "hpb_target_generation": "hbm5",
-        "package_system_cooling_stage": "reported_review",
-        "source": "Chosunbiz",
-        "source_url": "https://biz.chosun.com/it-science/ict/2026/10/02/MHAFNCALYJDI5P3MKV3F3MXINE/",
-        "as_of": "2026-10-02",
-        "note": "40배는 장비업계의 장기 전망으로 저장하고 삼성 HBM4E 확정 로드맵으로 승격하지 않음. TSMC 공식 CoWoS 로드맵은 2028년 14배, 2029년 14배 초과이며 40배는 SoW-X 별도 구조.",
-        "observed_at": "2026-10-02T15:21:00+09:00"
-      },
-      "rubin_ultra_hbm_options_track_version": 2,
-      "rubin_ultra_hbm_options": {
-        "stage": "reported_evaluation",
-        "candidate_options": [
-          "HBM4E_12hi",
-          "HBM4E_8hi",
-          "HBM4_12hi",
-          "HBM4_8hi"
-        ],
-        "original_reported_option": "HBM4E_12hi",
-        "reported_preferred_option": "HBM4_12hi",
-        "previous_reported_preferred_option": "HBM4_8hi",
-        "reported_preference_direction": "8hi_to_12hi_reversal",
-        "reported_preference_stage": "single_industry_source",
-        "reported_preference_support_sources": [
-          "Damnang"
-        ],
-        "reported_preference_source_url": "https://x.com/damnang2/status/2106970721612386304",
-        "reported_preference_as_of": "2026-10-05",
-        "reported_preference_direct_source_kind": "user_provided_x_quote",
-        "reported_preference_direct_fetch_verified": false,
-        "public_context_crosscheck": true,
-        "public_context_source_url": "https://www.trendforce.com/presscenter/news/20260804-13166.html",
-        "official_rubin_context_url": "https://developer.nvidia.com/blog/inside-nvidia-rubin-gpu-architecture-powering-the-era-of-agentic-ai/",
-        "source": "매일경제",
-        "source_url": "https://www.mk.co.kr/news/business/12167424",
-        "as_of": "2026-10-02",
-        "note": "Rubin Ultra의 HBM4E/HBM4 8단·12단 선택지 확대는 업계 보도상 평가 단계. NVIDIA 공식 최종 사양·확정 탑재로 승격하지 않음."
-      },
-      "samsung_nextgen_hbm_track_version": 3,
-      "samsung_nextgen_hbm": {
-        "custom_hbm_stage": "official_sampling_plan",
-        "custom_hbm_sample_start_year": 2027,
-        "custom_hbm_customer_specific": true,
-        "custom_hbm_interface_customization": true,
-        "hbm5_customization_stage": "industry_expected",
-        "zhbm_stage": "concept_development",
-        "zhbm_customer_specific_design": true,
-        "zhbm_performance_vs_hbm5_x": 8.0,
-        "zhbm_energy_efficiency_vs_hbm5_x": 3.0,
-        "zhbm_thermal_resistance_reduction_floor_pct": 50.0,
-        "zhbm_memory_density_floor_vs_hbm5_x": 10.0,
-        "source": "삼성전자 HBM4 공식자료 + FMS 2026 공식자료 + 매일경제",
-        "source_url": "https://semiconductor.samsung.com/kr/news-events/news/samsung-ships-industry-first-commercial-hbm4-with-ultimate-performance-for-ai-computing/",
-        "secondary_source_url": "https://www.mk.co.kr/news/business/12167424",
-        "as_of": "2026-10-03",
-        "note": "삼성 Custom HBM은 2027년부터 고객사별 사양에 맞춰 순차 샘플링을 시작한다는 공식 계획. HBM5 맞춤형 본격화는 업계 전망 단계. zHBM은 공식 콘셉트·개발 단계이며 확정 고객·계약·양산으로 승격하지 않음."
-      },
-      "jpm_hbm_structural_track_version": 1,
-      "jpm_hbm_structural": {
-        "demand_cagr_2026_2028_pct": 63.0,
-        "demand_cagr_period": "2026-2028",
-        "cumulative_bit_demand_2026_2028_billion_gb": 163.0,
-        "asp_2027_yoy_pct": 54.0,
-        "asp_2028_yoy_pct": 25.0,
-        "asp_2028_usd_per_gb": 3.8,
-        "supply_demand_gap_initial_pct": -20.0,
-        "supply_demand_gap_later_pct": -16.0,
-        "new_dram_capacity_to_hbm_pct_2025_2028": 58.0,
-        "hbm_share_dram_capacity_start_pct": 19.0,
-        "hbm_share_dram_capacity_2028_pct": 31.0,
-        "sixteen_hi_earliest_year": 2029,
-        "asic_hbm_demand_share_2027_pct": 48.0,
-        "nvidia_hbm_demand_share_2027_pct": 43.0,
-        "nvidia_hbm_demand_share_2026_pct": 58.0,
-        "source": "J.P. Morgan 리서치 재인용 2곳 교차",
-        "source_url": "https://www.itiger.com/news/1184910027",
-        "secondary_source_url": "https://gmt8press.com/content/detail/434514",
-        "as_of": "2026-09-23",
-        "note": "63%는 2026~2028 HBM 비트수요 CAGR로 저장. 2027 단년 비트성장률로 재해석하거나 2027 ASP +54%와 곱해 2.5배 매출을 J.P. Morgan 확정치로 승격하지 않음."
-      },
-      "micron_sca_visibility_track_version": 1,
-      "micron_sca_visibility": {
-        "sca_count": 26,
-        "rpo_usd_bn": 150.0,
-        "rpo_definition": "remaining_performance_obligations_sca_defined_pricing",
-        "rpo_basis": "committed_volumes_minimum_pricing",
-        "take_or_pay": true,
-        "financial_commitments_usd_bn": 32.0,
-        "financial_commitments_majority_cash_deposits": true,
-        "rpo_and_financial_commitments_are_separate": true,
-        "sca_revenue_coverage_through_2030_min_pct": 35.0,
-        "defined_pricing_framework_share_pct": 75.0,
-        "output_committed_2027_min_pct": 75.0,
-        "output_committed_scope": "total_output_sca_and_non_sca",
-        "hbm_2027_bit_supply_stage": "vast_majority_agreements_completed",
-        "customer_discussion_focus_year": 2028,
-        "sca_max_year": 2031,
-        "source": "Micron FY2026 Q4 prepared remarks/call + Reuters",
-        "source_url": "https://stockanalysis.com/stocks/mu/transcripts/699706-q4-2026/",
-        "secondary_source_url": "https://www.reuters.com/business/micron-forecasts-quarterly-revenue-above-estimates-2026-09-30/",
-        "official_source_url": "https://micron.gcs-web.com/node/50991",
-        "as_of": "2026-09-30",
-        "note": "RPO 1500억달러는 구매주문 총액이 아니라 가격 프레임워크가 확정된 SCA의 미인식 계약가치(최소가격 기준). 320억달러는 별도 고객 금융약정이며 대부분 현금예치금이므로 RPO와 합산 금지. 2027년 75%+는 Micron 전체 output 커밋으로, HBM 전용 수치와 분리."
-      },
-      "nvhbm_architecture_track_version": 1,
-      "nvhbm_architecture": {
-        "nvidia_stage": "official_announced",
-        "feynman_custom_hbm_official": true,
-        "first_collaborator": "Amazon Annapurna Labs",
-        "memory_controller_location": "hbm_base_die",
-        "bandwidth_gain_pct_max": 30.0,
-        "compute_die_area_gain_pct_max": 25.0,
-        "phy_support_area_reduction_pct_max": 67.0,
-        "layout_usable_silicon_gain_pct_max": 80.0,
-        "main_die_silicon_gain_pct_max": 30.0,
-        "hbm_power_reduction_pct_max": 15.0,
-        "xpu_end_to_end_performance_gain_pct_max": 30.0,
-        "one_gw_additional_xpu_headroom_max": 15000,
-        "official_memory_vendors": [],
-        "rubin_hbm_logic_phy_die_share_estimate_pct": 16.0,
-        "feynman_nvhbm_interface_die_share_estimate_pct": 4.0,
-        "samsung_standard_hbm4_phy_width_mm": 8.0,
-        "samsung_standard_hbm4_phy_height_mm": 4.0,
-        "samsung_custom_d2d_width_mm": 8.5,
-        "samsung_custom_d2d_height_mm": 1.5,
-        "samsung_custom_d2d_area_reduction_pct_estimate": 60.15625,
-        "official_source": "NVIDIA NVLink Fusion NVHBM Technical Blog",
-        "official_source_url": "https://developer.nvidia.com/blog/nvidia-nvlink-fusion-brings-nvhbm-to-next-generation-ai-infrastructure/",
-        "feynman_official_source_url": "https://images.nvidia.com/nvimages/gtc/pdf/GTC26_SanJose_Highlights_Final.pdf",
-        "samsung_official_source_url": "https://semiconductor.samsung.com/foundry/application-specific-service/hpc-ai/",
-        "research_source": "SemiAnalysis",
-        "research_source_url": "https://newsletter.semianalysis.com/p/ectc2026",
-        "as_of": "2026-10-03",
-        "note": "NVIDIA 공식 수치와 SemiAnalysis 추정치를 분리 저장. Rubin 16%→Feynman 약 4% 및 Samsung PHY 8×4mm→D2D 8.5×1.5mm(약 60.2% 축소)는 SemiAnalysis 추정·Samsung Hot Chips 자료 인용이며 NVIDIA 공식 다이면적 실측치로 승격하지 않음. NVIDIA의 +25% compute die area와 상세 본문의 +30% main-die silicon은 서로 다른 공식 표현이라 합치지 않음."
-      },
-      "morgan_stanley_nvidia_hbm_margin_track_version": 1,
-      "morgan_stanley_nvidia_hbm_margin": {
-        "gross_margin_floor_pct_reported": 72.0,
-        "base_hbm_unit_price_tolerance_pct_reported": 91.7,
-        "despec_hbm_unit_price_tolerance_pct_reported": 187.5,
-        "exact_tolerance_public_source_verified": false,
-        "full_spec_hbm_gb": 288,
-        "despec_hbm_gb": 192,
-        "derived_despec_tolerance_pct": 187.55,
-        "despec_math_consistent": true,
-        "vr200_nvl72_rack_value_usd": 7803148.0,
-        "vr200_memory_line_usd": 2001600.0,
-        "vr200_memory_line_growth_pct": 435.0,
-        "vr200_memory_line_share_pct": 25.65,
-        "vr200_memory_line_scope": "public_recaps_conflict_on_hbm_inclusion_not_hbm_only_confirmed",
-        "nvidia_q2_fy27_gross_margin_pct": 75.0,
-        "nvidia_q3_fy27_gross_margin_outlook_mid_pct": 74.0,
-        "nvidia_q3_fy27_gross_margin_outlook_plusminus_pct": 0.5,
-        "morgan_stanley_next_year_gross_margin_range_low_pct": 72.0,
-        "morgan_stanley_next_year_gross_margin_range_high_pct": 73.0,
-        "morgan_stanley_next_year_gross_margin_estimate_pct": 72.5,
-        "source_kind": "user_provided_morgan_stanley_summary_for_exact_tolerance",
-        "source_url": "",
-        "public_bom_source_url": "https://www.tomshardware.com/tech-industry/artificial-intelligence/nvidias-memory-costs-soar-485-percent-latest-ai-systems-now-cost-usd7-8-million-to-build-memory-now-comprises-25-percent-of-the-total-cost-rubin-gpus-a-mere-usd50-000-apiece",
-        "public_bom_secondary_url": "https://longbridge.com/news/287728024",
-        "nvidia_official_results_url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-second-quarter-fiscal-2027/",
-        "morgan_stanley_public_recap_url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-delivers-strong-q2-long-150300603.html",
-        "as_of": "2026-10-04",
-        "note": "91.7%·187.5%·72% 조합은 사용자 제공 Morgan Stanley 요약으로 기준선에 보존하되, 공개 검색에서 원문 또는 exact 수치의 독립 2중 재확인은 아직 확보하지 못했으므로 exact_tolerance_public_source_verified=false. 187.5%는 288→192GB(-33.3%) 가정에서 91.7% 허용치를 용량비 1.5배로 조정하면 약 187.55%로 산술상 일치. VR200 $2.0016M memory line은 공개 2차 자료가 HBM 포함 여부를 다르게 설명하므로 HBM-only 비용으로 승격 금지."
-      }
-    },
-    "attempt_at_kst": "2026-10-06T07:34:58+09:00"
   }
 }
