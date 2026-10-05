@@ -1,7 +1,7 @@
 {
   "initialized": true,
   "bootstrap_kst": "2026-09-27T18:11:08+09:00",
-  "last_checked_kst": "2026-10-05T07:22:23+09:00",
+  "last_checked_kst": "2026-10-05T10:05:02+09:00",
   "seen": {
     "2b31306619b190498e7f41c7": {
       "title": "[입찰공고] 2026년 AI반도체 지원사업 성과조사분석 및 우수사례 발굴 용역 - 정보통신산업진흥원(NIPA)",
@@ -416,6 +416,15 @@
       "stage": 3,
       "category": "초기수요 정책",
       "first_seen_kst": "2026-10-05T03:40:26+09:00",
+      "suppressed_stale": true
+    },
+    "0201b565fcbba45b0df2cd6d": {
+      "title": "리벨리온, 과기정통부 혁신제품 지정으로 국산 NPU 공공 조달 공식화 - 와우테일",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBOel9QNjdwMVRHUXk0NUY5cXZjV1B3RGxla0hUN1NtUUEyYVRpOTNRNjNiNzF6T25NUWJBVmh4VkkxYjFiZDJUVzZpd3FJX2M?oc=5",
+      "event_signature": "리벨리온|조달·선정·협약|혁신제품",
+      "stage": 4,
+      "category": "조달·선정·협약",
+      "first_seen_kst": "2026-10-05T10:05:02+09:00",
       "suppressed_stale": true
     }
   }
