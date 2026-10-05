@@ -35,6 +35,28 @@ OFFICIAL_HINTS = ["공식자료", "정부", "국회", "국토교통부", "산업
 PROPOSAL_ONLY_TERMS = ["5분 자유발언", "의원이 제안", "의원, ", "의원은", "정책 제안", "필요성 강조"]
 PROPOSAL_ADOPTION_TERMS = ["채택", "의결", "조례", "예산 반영", "수립 착수", "tf 구성", "시행", "확정"]
 
+# 이미 공식·신뢰자료로 공개된 사건군의 최소 기준선.
+# 같은 계획을 새 기사로 다시 설명한 것만으로는 이 수준을 넘지 못한다.
+KNOWN_FAMILY_ACTION_LEVELS = {
+    "honam_settlement_governance": 2,   # 9/27: 10/7 반도체도시과·정주팀 신설 계획 공개
+    "honam_settlement_healthcare": 1,   # 9/29: 의료 포함 정주여건을 초기부터 함께 추진 지시
+}
+
+ACTION_EXECUTION_PATTERNS = [
+    r"출범했다", r"출범식", r"착수했다", r"공사에 착수", r"첫 삽",
+    r"체결했다", r"협약을 체결", r"계약을 체결", r"낙찰됐다", r"선정됐다",
+    r"지정했다", r"지정됐다", r"해제했다", r"해제됐다", r"발주했다",
+    r"시행했다", r"시행됐다", r"공급을 시작", r"공급 개시", r"운영을 시작",
+    r"가동을 시작", r"양산을 시작", r"양산 개시", r"준공했다", r"완료했다",
+]
+ACTION_COMMITTED_TERMS = [
+    "신설", "구성", "수립 착수", "예산 반영", "승인", "최종 지정", "지정 고시",
+    "협약 체결", "계약 체결", "낙찰", "선정", "확정", "일정 변경", "연기 확정",
+    "축소 확정", "확대 확정", "증설 확정", "해제",
+]
+ACTION_RISK_TERMS = ["반려", "중단", "지연", "부족", "갈등", "위험", "우려", "재입찰", "무산"]
+ACTION_PLAN_TERMS = ["계획", "검토", "추진", "예정", "방침", "시급", "필요", "밑그림", "제안", "로드맵"]
+
 
 def _norm(s):
     return re.sub(r"\s+", " ", str(s or "")).strip()
@@ -137,8 +159,26 @@ def _is_proposal_only(item):
     return proposal and not adopted
 
 
+def _action_level(item):
+    text = _item_text(item).lower()
+    if any(re.search(pattern, text, flags=re.I) for pattern in ACTION_EXECUTION_PATTERNS):
+        return 3
+    if any(term.lower() in text for term in ACTION_COMMITTED_TERMS):
+        return 2
+    # 공식 보고서나 보도에서 확인된 지연·부족·우려도 시간표/실패모드의 실제 상태 신호다.
+    if any(term.lower() in text for term in ACTION_RISK_TERMS):
+        return 2
+    if any(term.lower() in text for term in ACTION_PLAN_TERMS):
+        return 1
+    return 0
+
+
 def _event_family(item):
     text = _item_text(item).lower()
+    if "반도체" in text and ("반도체도시과" in text or "반도체도시정주팀" in text):
+        return "honam_settlement_governance"
+    if "반도체" in text and ("의료" in text or "병원" in text or "응급" in text) and "정주" in text:
+        return "honam_settlement_healthcare"
     # 9/29 메가프로젝트 점검회의와 후속 보도를 하나의 사건군으로 묶는다.
     if "반도체" in text and (
         ("메가프로젝트" in text and ("정주" in text or "군공항" in text))
@@ -249,6 +289,7 @@ def main():
     pending = json.loads(PENDING_PATH.read_text(encoding="utf-8")) if PENDING_PATH.exists() else dict(state)
     seen_event_keys = set(state.get("seen_event_keys", []))
     seen_event_levels = {str(k): int(v) for k, v in (state.get("event_status_levels") or {}).items()}
+    seen_action_levels = {str(k): int(v) for k, v in (state.get("event_action_levels") or {}).items()}
 
     candidates = []
     for item in alert.get("official_changes", []):
@@ -270,17 +311,36 @@ def main():
         family = _event_family(item)
         key = hashlib.sha256(("family|" + family).encode("utf-8")).hexdigest()[:28] if family else _event_key(item)
         item["event_key"] = key
+        item["event_family"] = family
         all_event_keys.append(key)
         groups.setdefault(key, []).append(item)
 
     new_groups = {}
     current_levels = dict(seen_event_levels)
+    current_action_levels = dict(seen_action_levels)
     for key, items in groups.items():
         level = _verification_level(items)
+        action_level = max((_action_level(item) for item in items), default=0)
+        family = next((str(item.get("event_family") or "") for item in items if item.get("event_family")), "")
+        baseline_action = int(KNOWN_FAMILY_ACTION_LEVELS.get(family, 0))
         previous_level = int(seen_event_levels.get(key, 0))
+        previous_action = max(int(seen_action_levels.get(key, 0)), baseline_action)
+
         current_levels[key] = max(level, previous_level)
-        # 새로운 사건이거나, 보도단계에서 복수검증/공식확인으로 신뢰등급이 올라간 경우만 재알림.
-        if key not in seen_event_keys or level > previous_level:
+        current_action_levels[key] = max(action_level, previous_action)
+
+        is_new_key = key not in seen_event_keys
+        action_upgrade = action_level > previous_action
+        verification_upgrade = (
+            previous_action > baseline_action
+            and action_level >= previous_action
+            and level > previous_level
+        )
+        genuinely_new = is_new_key and action_level > baseline_action
+
+        # 새 기사/새 도메인만으로는 알리지 않는다.
+        # 기존 기준선보다 행동·공식상태가 올라가거나, 이미 올라간 사건의 검증등급이 상승할 때만 재알림한다.
+        if action_upgrade or verification_upgrade or genuinely_new:
             new_groups[key] = items
 
     final_news, final_official = [], []
@@ -297,9 +357,10 @@ def main():
 
     pending["seen_event_keys"] = list(dict.fromkeys(all_event_keys + list(seen_event_keys)))[:3000]
     pending["event_status_levels"] = current_levels
+    pending["event_action_levels"] = current_action_levels
     pending["alert_basis"] = "topic_event_official_state_change"
     pending["article_role"] = "evidence_and_crosscheck_only"
-    pending["baseline_guard"] = "suppress_20260922_roadmap_rehash_unless_execution_or_status_changes"
+    pending["baseline_guard"] = "canonical_url_title_dedupe_plus_family_action_level_state_machine"
     PENDING_PATH.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     if not final_news and not final_official:
