@@ -598,6 +598,7 @@ if status_old in t:
     t = t.replace(status_old, status_new, 1)
 
 links_old = '''    msg.append(f"• {a('GE Vernova 가스터빈 공급능력', GEV_Q2_2026)}")
+    msg = compact_generation_message(msg)
     ALERT.write_text'''
 links_new = '''    msg.append(f"• {a('GE Vernova 가스터빈 공급능력', GEV_Q2_2026)}")
     msg.append(f"• {a('PwC 글로벌 데이터센터 반복투자 전망', 'https://www.pwc.com/gx/en/1/services/consulting/technology/data-centre-outlook.html')}")
@@ -606,6 +607,7 @@ links_new = '''    msg.append(f"• {a('GE Vernova 가스터빈 공급능력', G
     msg.append(f"• {a('LS ELECTRIC 데이터센터 전력솔루션', 'https://nahpdev-web.ls-electric.com/markets/data-center')}")
     msg.append(f"• {a('Morgan Stanley 미국 데이터센터 전력부족 전망', 'https://finance.yahoo.com/energy/articles/morgan-stanley-raises-us-data-134656211.html')}")
     msg.append(f"• {a('Goldman Sachs 데이터센터 전력수요 전망', 'https://www.goldmansachs.com/insights/goldman-sachs-exchanges/the-outlook-for-data-center-power-demand-as-ai-token-use-grows')}")
+    msg = compact_generation_message(msg)
     ALERT.write_text'''
 if links_old in t:
     t = t.replace(links_old, links_new, 1)
@@ -1652,7 +1654,7 @@ s = s.replace(semi_links_old, semi_links_new, 1)
 # Add state-level data-center permitting / cost-allocation requirements to the
 # SAME time-to-power watcher. These are state-specific rules, not a nationwide
 # uniform mandate, and are kept separate from FERC/RTO interconnection rules.
-s = s.replace("FORMAT_VERSION = 4", "FORMAT_VERSION = 6", 1)
+s = s.replace("FORMAT_VERSION = 4", "FORMAT_VERSION = 7", 1)
 
 state_policy_const_anchor = 'DIGITIMES_SIC_RESEARCH = "https://apps.digitimes.com/reports/item.php?id=20260929RS400"\n'
 state_policy_const_new = state_policy_const_anchor + '''MA_EO_658 = "https://www.mass.gov/executive-orders/no-658-establishing-requirements-for-responsible-data-center-development-and-operations-in-massachusetts-to-protect-and-support-ratepayers-communities-and-the-environment"
