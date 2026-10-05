@@ -17,7 +17,7 @@ PENDING = OUT / "ai_dc_800v_power_architecture_pending_state.json"
 ALERT = OUT / "ai_dc_800v_power_architecture_alert.txt"
 STATUS = OUT / "ai_dc_800v_power_architecture_status.md"
 
-FORMAT_VERSION = 1
+FORMAT_VERSION = 2
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
 
 NVIDIA_BLOG = "https://blogs.nvidia.com/blog/800-vdc-power-architecture-ai-factory/"
@@ -41,7 +41,6 @@ SOURCES = {
     "schneider_guide": SCHNEIDER_GUIDE,
     "vertiv_guide": VERTIV_GUIDE,
     "vertiv_release": VERTIV_RELEASE,
-    "eaton": EATON_GTC,
     "hitachi": HITACHI_800V,
     "siemens": SIEMENS_SST,
     "ls": LS_DC,
@@ -124,7 +123,7 @@ def snapshot(texts: dict[str, str]) -> dict:
     sch = texts.get("schneider_power_rack", "")
     vert = texts.get("vertiv_guide", "")
     vrel = texts.get("vertiv_release", "")
-    eaton = texts.get("eaton", "")
+    n_arch = texts.get("nvidia_arch", "")
     hitachi = texts.get("hitachi", "")
     siemens = texts.get("siemens", "")
     ls = texts.get("ls", "")
@@ -174,9 +173,13 @@ def snapshot(texts: dict[str, str]) -> dict:
                 "system_scope": contains(texts, "vertiv_guide", "conversion", "distribution", "protection"),
             },
             "Eaton": {
-                "stage": "800 VDC 공식 참조 아키텍처·표준 참여" if "800vdc" in eaton.lower() else "확인 불가",
-                "standards_signal": contains(texts, "eaton", "Open Compute Project", "UL"),
-                "legacy_ac_bridge": True if eaton else None,
+                "stage": (
+                    "800 VDC 공식 참조 아키텍처·NVIDIA 생태계 참여"
+                    if "Eaton" in n_arch else "공식 Eaton 기준선·NVIDIA 재확인 필요"
+                ),
+                "standards_signal": None,
+                "legacy_ac_bridge": None,
+                "source_mode": "Eaton 공식 2025 참조 아키텍처 기준값 + NVIDIA 공식 파트너 목록 실시간 교차확인",
             },
             "Hitachi Energy": {
                 "stage": "Vera Rubin DSX 통합·시뮬레이션" if "800" in hitachi and "DSX" in hitachi else "확인 불가",
@@ -322,7 +325,7 @@ def render(facts: dict, chg: list[str], errors: list[str], fxv: dict) -> str:
         f'• <a href="{OCP_LVDC}">OCP LVDC·SST 표준화</a>',
         f'• <a href="{SCHNEIDER_POWER_RACK}">Schneider NetShelter Power Rack 800VDC</a>',
         f'• <a href="{VERTIV_GUIDE}">Vertiv 800 VDC 의사결정 가이드</a>',
-        f'• <a href="{EATON_GTC}">Eaton 800 VDC</a>',
+        f'• <a href="{EATON_GTC}">Eaton 800 VDC 공식 참조 아키텍처</a>',
         f'• <a href="{HITACHI_800V}">Hitachi 800 VDC</a>',
         f'• <a href="{SIEMENS_SST}">Siemens SST</a>',
         f'• <a href="{LS_DC}">LS ELECTRIC DC Grid</a>',
