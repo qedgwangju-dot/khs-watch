@@ -6,7 +6,6 @@ on:
       - ".github/workflows/ai-semiconductor-regional-chokepoint-watch.yml"
       - "scripts/ai_semiconductor_regional_chokepoint_watch.py"
       - "tests/test_ai_semiconductor_regional_chokepoint_watch.py"
-      - "data/ai_semiconductor_regional_chokepoint_state.json"
       - "scripts/currency_krw_guard.py"
       - "scripts/fx_api.py"
   schedule:
