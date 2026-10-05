@@ -2071,18 +2071,19 @@
     "event:765efe02a913a35ef73f71c7": {
       "first_seen_kst": "2026-10-05T12:29:58+09:00",
       "lanes": {
-        "live": "2026-10-05T19:01:25+09:00"
+        "live": "2026-10-05T21:23:54+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:01:25+09:00",
-      "link": "https://www.etnews.com/20261005000080",
-      "source": "전자신문",
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01895846645609968",
+      "source": "이데일리",
+      "source_body_digest": "7c7a3bc15d7fb25d7d9c455c91bf0e1357720e9a2cc8b0a188ccde84caa0a97b",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:9477f8778674aa8f8b73ae3123cb6b29e6225859e62ef3ea5678de783a5e6cb2",
+      "source_fact_identity": "source_facts:v1:136312b582abdf1c75a413c3d86a6679cea5632d92b29159c454b1450d0226a5",
       "source_fact_keys": [
-        "source_fact:v1:a2777067e8b7c65bfcd14d9093020006f79ea48d86a32878dd6890beeb424600"
+        "source_fact:v1:53badda79522727b66927d283a0be2d49cd7d14a1f0890ed32c1d501c5a4a246"
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
-      "title": "독파모, '프런티어 AI·산업 확산' 투트랙 재편…중국 넘는다"
+      "title": "\"AI 진화속도 예상 밖\"…정부, 독파모 지원 유지·프론티어 전략 재정비"
     },
     "event:7667325ae496488c7cb5d867": {
       "first_seen_kst": "2026-10-01T20:00:14+09:00",
@@ -5034,6 +5035,23 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "fact:5b59cadb30ac5f2d0aa55ad7": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01895846645609968",
+      "source": "이데일리",
+      "source_body_digest": "7c7a3bc15d7fb25d7d9c455c91bf0e1357720e9a2cc8b0a188ccde84caa0a97b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:136312b582abdf1c75a413c3d86a6679cea5632d92b29159c454b1450d0226a5",
+      "source_fact_keys": [
+        "source_fact:v1:53badda79522727b66927d283a0be2d49cd7d14a1f0890ed32c1d501c5a4a246"
+      ],
+      "source_published_kst": "2026-10-05T12:00+09:00",
+      "title": "\"AI 진화속도 예상 밖\"…정부, 독파모 지원 유지·프론티어 전략 재정비"
+    },
     "fact:5f6dfaf6a3d3f53eff8a55e0": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -5104,6 +5122,25 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
+    },
+    "fact:6b779d20bc514550bf88de88": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814616",
+      "source": "뉴시스",
+      "source_body_digest": "f24e85e049d7e6a23c46486a445a48460558d39dff6b70e5f3faec2d52bad965",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5a8c07fdfc1cad49e7d1dabdecf9643dcb4d68054924d74f7158eb0791f808e",
+      "source_fact_keys": [
+        "source_fact:v1:3973ad0452213ab9c8e6a74564f7806fb606a8530189c6c00a1b0a4c43e5b8a8",
+        "source_fact:v1:ad7ef1ee1068c5d9c5b731a513980dbbb36b463ec48a6d0a508649330380c605",
+        "source_fact:v1:b84244e1e2052a2cf1ae31f0b170a026152fa1a2760e737a29ce48c2d640227e"
+      ],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
     },
     "fact:6c1a84a5e9e41ee7b4169f1c": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -5295,6 +5332,24 @@
       ],
       "source_published_kst": "2026-10-05T15:21+09:00",
       "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
+    },
+    "fact:938e2e732b2a7d79264ca825": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169795",
+      "source": "매일경제",
+      "source_body_digest": "08d39bdfff71c393af1e20076712d977a28e55dd25f139e0f587ce89f9e8baad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fd12976b8d9e22a3e745cf66bd1de07b0ca85d8271c4bb45f75cb99d981bdd5",
+      "source_fact_keys": [
+        "source_fact:v1:6401078156ae4fcd63078944ff9996235462aef97677558e8e8d7edda5729a1d",
+        "source_fact:v1:82a3888048e5f0c1ada8a4df2554a7e6692c5dd41d9323dcdf5c67383100d100"
+      ],
+      "source_published_kst": "2026-10-05T21:09+09:00",
+      "title": "베니테크 바이오파마, BB-301 FDA 추가자료 요청..임상 일정 유지"
     },
     "fact:95cdaca3cf9ec3b7ccb39acf": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -5501,6 +5556,45 @@
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "반려견 피부염 연구 활용…'항염증 엑소좀' 생산기술 개발"
     },
+    "fact:c8f3bae7353731e446e66337": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02053286645609968",
+      "source": "이데일리",
+      "source_body_digest": "4285704d85731609cf4bf092818a7d74f43777a097b2f23f1968acb7bf5f1e3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06dcb82643f6f0986264daaca14a10009fe4df9a3975fef1c1b29ee7068a8614",
+      "source_fact_keys": [
+        "source_fact:v1:07da455f7249f10d23db7f2379816769f52343c1a397062c6bb381d22bd6ef64",
+        "source_fact:v1:75b28075c13886d630f881662228ee84181494cd4f4d092290e0334fcd70f5b6"
+      ],
+      "source_published_kst": "2026-10-05T14:28+09:00",
+      "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
+    },
+    "fact:cb67e7f4494ecfe19dbcfccf": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169788",
+      "source": "매일경제",
+      "source_body_digest": "c737125f2e0f254bd8e2e87aa93c4e45b1bf192b288beace9cf5e504dcd5bb4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60c3b414292b44362c2d24dba1d9e40cfbb26fa31afa3fe34f312091dc2d87df",
+      "source_fact_keys": [
+        "source_fact:v1:16a43502a590345031fef6fad66594e6f54aaac5d39e5f4508679ff6e2e20c04",
+        "source_fact:v1:32249c382aeb6470ed27d5b51f61c72bbd9cabf97ca6186b6acdc56bfed7f0eb",
+        "source_fact:v1:a7b9418796f88bbe62f59158637562438a9a1310b31971694732f924b067589f",
+        "source_fact:v1:ac011bcd42a00465df4813a4de34f1408555dd40373e135ca20c156de3a9c82d",
+        "source_fact:v1:ffa71968bc8167bab0bbb7f2af0c43da23b828f71589f1cea0a7e191b3ea4c6d"
+      ],
+      "source_published_kst": "2026-10-05T21:05+09:00",
+      "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
+    },
     "fact:cb9ba00a0b8ae874e4c1138b": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -5570,6 +5664,24 @@
       ],
       "source_published_kst": "2026-10-04T23:56+09:00",
       "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
+    },
+    "fact:d38afa3894708fd1720bcb0e": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169792",
+      "source": "매일경제",
+      "source_body_digest": "ec3b3ec664785a36392a5994f2213bb4699b9e392a9699cc5860897e62790b99",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:498a0360beb5599e66f244a4f1c8abb688482506d7153bfaea527920a53bceb2",
+      "source_fact_keys": [
+        "source_fact:v1:a2da51be5fd2321a3e7febf7c318b8afa0cdce744b984a2a7353e0fed91e410f",
+        "source_fact:v1:f1701d2ca96252b1f83d599d81577f9d139ccce26a0eb4c7c0210f4ea2604bf8"
+      ],
+      "source_published_kst": "2026-10-05T21:07+09:00",
+      "title": "텔라 바이오, 완전 흡수성 메시 '리오라' FDA 허가 획득"
     },
     "fact:dbeb5fd6614dbec10b54f316": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
@@ -5931,6 +6043,23 @@
       "link": "https://www.mt.co.kr/stock/2026/10/02/2026100119092776648",
       "source": "머니투데이",
       "title": "삼전닉스 '자사주 방파제' 곧 사라진다...\"또 롤러코스피?\" 초긴장"
+    },
+    "link:060cdb5049af957fe9949ae9": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01895846645609968",
+      "source": "이데일리",
+      "source_body_digest": "7c7a3bc15d7fb25d7d9c455c91bf0e1357720e9a2cc8b0a188ccde84caa0a97b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:136312b582abdf1c75a413c3d86a6679cea5632d92b29159c454b1450d0226a5",
+      "source_fact_keys": [
+        "source_fact:v1:53badda79522727b66927d283a0be2d49cd7d14a1f0890ed32c1d501c5a4a246"
+      ],
+      "source_published_kst": "2026-10-05T12:00+09:00",
+      "title": "\"AI 진화속도 예상 밖\"…정부, 독파모 지원 유지·프론티어 전략 재정비"
     },
     "link:060e2fa60ec41ec328d45c6a": {
       "first_seen_kst": "2026-09-25T21:10:56+09:00",
@@ -6858,6 +6987,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:01+09:00",
       "title": "내일 행안부 국감…중수청 개문발차·미래기금 교부세 '쟁점'"
+    },
+    "link:16d501ef1f7d2edf8182b867": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169792",
+      "source": "매일경제",
+      "source_body_digest": "ec3b3ec664785a36392a5994f2213bb4699b9e392a9699cc5860897e62790b99",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:498a0360beb5599e66f244a4f1c8abb688482506d7153bfaea527920a53bceb2",
+      "source_fact_keys": [
+        "source_fact:v1:a2da51be5fd2321a3e7febf7c318b8afa0cdce744b984a2a7353e0fed91e410f",
+        "source_fact:v1:f1701d2ca96252b1f83d599d81577f9d139ccce26a0eb4c7c0210f4ea2604bf8"
+      ],
+      "source_published_kst": "2026-10-05T21:07+09:00",
+      "title": "텔라 바이오, 완전 흡수성 메시 '리오라' FDA 허가 획득"
     },
     "link:171c61a397e4baaac392fc6e": {
       "first_seen_kst": "2026-10-02T19:26:27+09:00",
@@ -10850,6 +10997,25 @@
       "source_published_kst": "2026-10-04T08:00+09:00",
       "title": "“물량 넘치는데 배가 없다”…현대글로비스 ‘100척 시대’, 매출 40조 조기달성 청신호 [비즈360]"
     },
+    "link:5a46f7d29274f129126a74c5": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814616",
+      "source": "뉴시스",
+      "source_body_digest": "f24e85e049d7e6a23c46486a445a48460558d39dff6b70e5f3faec2d52bad965",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5a8c07fdfc1cad49e7d1dabdecf9643dcb4d68054924d74f7158eb0791f808e",
+      "source_fact_keys": [
+        "source_fact:v1:3973ad0452213ab9c8e6a74564f7806fb606a8530189c6c00a1b0a4c43e5b8a8",
+        "source_fact:v1:ad7ef1ee1068c5d9c5b731a513980dbbb36b463ec48a6d0a508649330380c605",
+        "source_fact:v1:b84244e1e2052a2cf1ae31f0b170a026152fa1a2760e737a29ce48c2d640227e"
+      ],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
+    },
     "link:5a69c297194d33c7373afbdf": {
       "first_seen_kst": "2026-09-27T02:12:48+09:00",
       "lanes": {
@@ -12093,6 +12259,24 @@
       "source": "뉴시스",
       "title": "日 9월 자금공급량 4586조원·15.2%↓…\"대출 지원자금 상환 축소에 낙폭 둔화 \""
     },
+    "link:6de17aee9cd00a7f161140ec": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02053286645609968",
+      "source": "이데일리",
+      "source_body_digest": "4285704d85731609cf4bf092818a7d74f43777a097b2f23f1968acb7bf5f1e3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06dcb82643f6f0986264daaca14a10009fe4df9a3975fef1c1b29ee7068a8614",
+      "source_fact_keys": [
+        "source_fact:v1:07da455f7249f10d23db7f2379816769f52343c1a397062c6bb381d22bd6ef64",
+        "source_fact:v1:75b28075c13886d630f881662228ee84181494cd4f4d092290e0334fcd70f5b6"
+      ],
+      "source_published_kst": "2026-10-05T14:28+09:00",
+      "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
+    },
     "link:6e070d147ddb1a0cb5b40b6f": {
       "first_seen_kst": "2026-10-02T17:14:32+09:00",
       "lanes": {
@@ -12442,6 +12626,24 @@
       ],
       "source_published_kst": "2026-10-05T15:21+09:00",
       "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
+    },
+    "link:75a8f424ebe6e449b982364a": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169795",
+      "source": "매일경제",
+      "source_body_digest": "08d39bdfff71c393af1e20076712d977a28e55dd25f139e0f587ce89f9e8baad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fd12976b8d9e22a3e745cf66bd1de07b0ca85d8271c4bb45f75cb99d981bdd5",
+      "source_fact_keys": [
+        "source_fact:v1:6401078156ae4fcd63078944ff9996235462aef97677558e8e8d7edda5729a1d",
+        "source_fact:v1:82a3888048e5f0c1ada8a4df2554a7e6692c5dd41d9323dcdf5c67383100d100"
+      ],
+      "source_published_kst": "2026-10-05T21:09+09:00",
+      "title": "베니테크 바이오파마, BB-301 FDA 추가자료 요청..임상 일정 유지"
     },
     "link:75ab04886f6c6fb717512e9a": {
       "first_seen_kst": "2026-09-18T16:58:33+09:00",
@@ -12864,6 +13066,27 @@
       "link": "https://www.yna.co.kr/view/AKR20261002144200008",
       "source": "연합뉴스",
       "title": "국고채, 당국의지·美금리 하락에 강세…3년물 3%대로(종합) | 연합뉴스"
+    },
+    "link:7c47c1e079aa50c9dc0e276d": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169788",
+      "source": "매일경제",
+      "source_body_digest": "c737125f2e0f254bd8e2e87aa93c4e45b1bf192b288beace9cf5e504dcd5bb4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60c3b414292b44362c2d24dba1d9e40cfbb26fa31afa3fe34f312091dc2d87df",
+      "source_fact_keys": [
+        "source_fact:v1:16a43502a590345031fef6fad66594e6f54aaac5d39e5f4508679ff6e2e20c04",
+        "source_fact:v1:32249c382aeb6470ed27d5b51f61c72bbd9cabf97ca6186b6acdc56bfed7f0eb",
+        "source_fact:v1:a7b9418796f88bbe62f59158637562438a9a1310b31971694732f924b067589f",
+        "source_fact:v1:ac011bcd42a00465df4813a4de34f1408555dd40373e135ca20c156de3a9c82d",
+        "source_fact:v1:ffa71968bc8167bab0bbb7f2af0c43da23b828f71589f1cea0a7e191b3ea4c6d"
+      ],
+      "source_published_kst": "2026-10-05T21:05+09:00",
+      "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
     },
     "link:7cc6216daf403fe29314bb68": {
       "first_seen_kst": "2026-09-24T06:34:46+09:00",
@@ -21389,6 +21612,24 @@
       "source": "연합뉴스",
       "title": "한국투자증권, SK 주식 4천억원어치 취득…지분율 0.9% | 연합뉴스"
     },
+    "original:0f6b35e17230191009ad6712": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169795",
+      "source": "매일경제",
+      "source_body_digest": "08d39bdfff71c393af1e20076712d977a28e55dd25f139e0f587ce89f9e8baad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fd12976b8d9e22a3e745cf66bd1de07b0ca85d8271c4bb45f75cb99d981bdd5",
+      "source_fact_keys": [
+        "source_fact:v1:6401078156ae4fcd63078944ff9996235462aef97677558e8e8d7edda5729a1d",
+        "source_fact:v1:82a3888048e5f0c1ada8a4df2554a7e6692c5dd41d9323dcdf5c67383100d100"
+      ],
+      "source_published_kst": "2026-10-05T21:09+09:00",
+      "title": "베니테크 바이오파마, BB-301 FDA 추가자료 요청..임상 일정 유지"
+    },
     "original:0f76c96d0ae996ebbeeac04e": {
       "first_seen_kst": "2026-09-19T20:13:35+09:00",
       "lanes": {
@@ -25473,6 +25714,23 @@
       "source": "파이낸셜뉴스",
       "title": "우리운용 'WON 전단채플러스액티브 ETF' 순자산 5000억원 돌파"
     },
+    "original:57065d25faebd8b558966a4d": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01895846645609968",
+      "source": "이데일리",
+      "source_body_digest": "7c7a3bc15d7fb25d7d9c455c91bf0e1357720e9a2cc8b0a188ccde84caa0a97b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:136312b582abdf1c75a413c3d86a6679cea5632d92b29159c454b1450d0226a5",
+      "source_fact_keys": [
+        "source_fact:v1:53badda79522727b66927d283a0be2d49cd7d14a1f0890ed32c1d501c5a4a246"
+      ],
+      "source_published_kst": "2026-10-05T12:00+09:00",
+      "title": "\"AI 진화속도 예상 밖\"…정부, 독파모 지원 유지·프론티어 전략 재정비"
+    },
     "original:574964b4eaecb009348c6d4f": {
       "first_seen_kst": "2026-10-05T10:39:16+09:00",
       "lanes": {
@@ -25526,6 +25784,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T09:36+09:00",
       "title": "CJ대한통운, 토스 50만 가맹점 물류 거점으로…생활택배 접점 확대"
+    },
+    "original:57b816772e84059084811d71": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814616",
+      "source": "뉴시스",
+      "source_body_digest": "f24e85e049d7e6a23c46486a445a48460558d39dff6b70e5f3faec2d52bad965",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5a8c07fdfc1cad49e7d1dabdecf9643dcb4d68054924d74f7158eb0791f808e",
+      "source_fact_keys": [
+        "source_fact:v1:3973ad0452213ab9c8e6a74564f7806fb606a8530189c6c00a1b0a4c43e5b8a8",
+        "source_fact:v1:ad7ef1ee1068c5d9c5b731a513980dbbb36b463ec48a6d0a508649330380c605",
+        "source_fact:v1:b84244e1e2052a2cf1ae31f0b170a026152fa1a2760e737a29ce48c2d640227e"
+      ],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
     },
     "original:57d572ba93299978b71eb637": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
@@ -25590,6 +25867,24 @@
       "link": "https://www.hankyung.com/article/2026100184331",
       "source": "한국경제",
       "title": "울산신용보증재단 신임 이사장 한양현"
+    },
+    "original:5994b47c4725c3bd9b32a6c7": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169792",
+      "source": "매일경제",
+      "source_body_digest": "ec3b3ec664785a36392a5994f2213bb4699b9e392a9699cc5860897e62790b99",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:498a0360beb5599e66f244a4f1c8abb688482506d7153bfaea527920a53bceb2",
+      "source_fact_keys": [
+        "source_fact:v1:a2da51be5fd2321a3e7febf7c318b8afa0cdce744b984a2a7353e0fed91e410f",
+        "source_fact:v1:f1701d2ca96252b1f83d599d81577f9d139ccce26a0eb4c7c0210f4ea2604bf8"
+      ],
+      "source_published_kst": "2026-10-05T21:07+09:00",
+      "title": "텔라 바이오, 완전 흡수성 메시 '리오라' FDA 허가 획득"
     },
     "original:599eaf413006531fb50f0c58": {
       "first_seen_kst": "2026-10-02T04:33:10+09:00",
@@ -29745,6 +30040,27 @@
       "link": "https://www.etnews.com/20260929000069",
       "source": "전자신문",
       "title": "로보락, 글로벌 로봇청소기 시장 1위…점유율 23.7%"
+    },
+    "original:a4331d348e5a004d3cfd2afb": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169788",
+      "source": "매일경제",
+      "source_body_digest": "c737125f2e0f254bd8e2e87aa93c4e45b1bf192b288beace9cf5e504dcd5bb4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60c3b414292b44362c2d24dba1d9e40cfbb26fa31afa3fe34f312091dc2d87df",
+      "source_fact_keys": [
+        "source_fact:v1:16a43502a590345031fef6fad66594e6f54aaac5d39e5f4508679ff6e2e20c04",
+        "source_fact:v1:32249c382aeb6470ed27d5b51f61c72bbd9cabf97ca6186b6acdc56bfed7f0eb",
+        "source_fact:v1:a7b9418796f88bbe62f59158637562438a9a1310b31971694732f924b067589f",
+        "source_fact:v1:ac011bcd42a00465df4813a4de34f1408555dd40373e135ca20c156de3a9c82d",
+        "source_fact:v1:ffa71968bc8167bab0bbb7f2af0c43da23b828f71589f1cea0a7e191b3ea4c6d"
+      ],
+      "source_published_kst": "2026-10-05T21:05+09:00",
+      "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
     },
     "original:a481c4c674bb5a5fdbf2a0d9": {
       "first_seen_kst": "2026-10-01T21:50:06+09:00",
@@ -34733,6 +35049,24 @@
       "source": "머니투데이",
       "title": "中 정유제품 수출 사실상 중단…아시아 공급난 더 심해지나"
     },
+    "original:fc1d264cec263501ed4a1ec5": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02053286645609968",
+      "source": "이데일리",
+      "source_body_digest": "4285704d85731609cf4bf092818a7d74f43777a097b2f23f1968acb7bf5f1e3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06dcb82643f6f0986264daaca14a10009fe4df9a3975fef1c1b29ee7068a8614",
+      "source_fact_keys": [
+        "source_fact:v1:07da455f7249f10d23db7f2379816769f52343c1a397062c6bb381d22bd6ef64",
+        "source_fact:v1:75b28075c13886d630f881662228ee84181494cd4f4d092290e0334fcd70f5b6"
+      ],
+      "source_published_kst": "2026-10-05T14:28+09:00",
+      "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
+    },
     "original:fc42f96377ffac8d6b1d3b26": {
       "first_seen_kst": "2026-10-02T15:40:35+09:00",
       "lanes": {
@@ -35071,6 +35405,27 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
+    },
+    "source_fact:065970d8f231f37464d7c099": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169788",
+      "source": "매일경제",
+      "source_body_digest": "c737125f2e0f254bd8e2e87aa93c4e45b1bf192b288beace9cf5e504dcd5bb4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60c3b414292b44362c2d24dba1d9e40cfbb26fa31afa3fe34f312091dc2d87df",
+      "source_fact_keys": [
+        "source_fact:v1:16a43502a590345031fef6fad66594e6f54aaac5d39e5f4508679ff6e2e20c04",
+        "source_fact:v1:32249c382aeb6470ed27d5b51f61c72bbd9cabf97ca6186b6acdc56bfed7f0eb",
+        "source_fact:v1:a7b9418796f88bbe62f59158637562438a9a1310b31971694732f924b067589f",
+        "source_fact:v1:ac011bcd42a00465df4813a4de34f1408555dd40373e135ca20c156de3a9c82d",
+        "source_fact:v1:ffa71968bc8167bab0bbb7f2af0c43da23b828f71589f1cea0a7e191b3ea4c6d"
+      ],
+      "source_published_kst": "2026-10-05T21:05+09:00",
+      "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
     },
     "source_fact:08986bd9bb22a90964311dc8": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -35447,6 +35802,24 @@
       ],
       "source_published_kst": "2026-10-05T12:59+09:00",
       "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
+    },
+    "source_fact:1f2ec15451c111ca31950500": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02053286645609968",
+      "source": "이데일리",
+      "source_body_digest": "4285704d85731609cf4bf092818a7d74f43777a097b2f23f1968acb7bf5f1e3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06dcb82643f6f0986264daaca14a10009fe4df9a3975fef1c1b29ee7068a8614",
+      "source_fact_keys": [
+        "source_fact:v1:07da455f7249f10d23db7f2379816769f52343c1a397062c6bb381d22bd6ef64",
+        "source_fact:v1:75b28075c13886d630f881662228ee84181494cd4f4d092290e0334fcd70f5b6"
+      ],
+      "source_published_kst": "2026-10-05T14:28+09:00",
+      "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
     },
     "source_fact:220b5592467dde2984519efb": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -36145,6 +36518,27 @@
       ],
       "source_published_kst": "2026-10-05T19:04+09:00",
       "title": "니우 테크놀러지스, 3분기 판매 54만대..전년비 15% 증가·해외 3배 확대"
+    },
+    "source_fact:3bbd07b26876825aacb354ed": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169788",
+      "source": "매일경제",
+      "source_body_digest": "c737125f2e0f254bd8e2e87aa93c4e45b1bf192b288beace9cf5e504dcd5bb4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60c3b414292b44362c2d24dba1d9e40cfbb26fa31afa3fe34f312091dc2d87df",
+      "source_fact_keys": [
+        "source_fact:v1:16a43502a590345031fef6fad66594e6f54aaac5d39e5f4508679ff6e2e20c04",
+        "source_fact:v1:32249c382aeb6470ed27d5b51f61c72bbd9cabf97ca6186b6acdc56bfed7f0eb",
+        "source_fact:v1:a7b9418796f88bbe62f59158637562438a9a1310b31971694732f924b067589f",
+        "source_fact:v1:ac011bcd42a00465df4813a4de34f1408555dd40373e135ca20c156de3a9c82d",
+        "source_fact:v1:ffa71968bc8167bab0bbb7f2af0c43da23b828f71589f1cea0a7e191b3ea4c6d"
+      ],
+      "source_published_kst": "2026-10-05T21:05+09:00",
+      "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
     },
     "source_fact:3c9392f8b7d526a65a8f1179": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -36905,6 +37299,24 @@
       "source_published_kst": "2026-10-05T05:47+09:00",
       "title": "단일 레버리지 20주 미만 단주, 시간외 종가매매로 '출구 마련' | 연합뉴스"
     },
+    "source_fact:5a99dbb0af8f379fd254a1cd": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169792",
+      "source": "매일경제",
+      "source_body_digest": "ec3b3ec664785a36392a5994f2213bb4699b9e392a9699cc5860897e62790b99",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:498a0360beb5599e66f244a4f1c8abb688482506d7153bfaea527920a53bceb2",
+      "source_fact_keys": [
+        "source_fact:v1:a2da51be5fd2321a3e7febf7c318b8afa0cdce744b984a2a7353e0fed91e410f",
+        "source_fact:v1:f1701d2ca96252b1f83d599d81577f9d139ccce26a0eb4c7c0210f4ea2604bf8"
+      ],
+      "source_published_kst": "2026-10-05T21:07+09:00",
+      "title": "텔라 바이오, 완전 흡수성 메시 '리오라' FDA 허가 획득"
+    },
     "source_fact:5b22dc126fdccadaafeeb423": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -37468,6 +37880,27 @@
       "source_published_kst": "2026-10-05T19:19+09:00",
       "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
     },
+    "source_fact:718f2fa47e09a9c3ecd03736": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169788",
+      "source": "매일경제",
+      "source_body_digest": "c737125f2e0f254bd8e2e87aa93c4e45b1bf192b288beace9cf5e504dcd5bb4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60c3b414292b44362c2d24dba1d9e40cfbb26fa31afa3fe34f312091dc2d87df",
+      "source_fact_keys": [
+        "source_fact:v1:16a43502a590345031fef6fad66594e6f54aaac5d39e5f4508679ff6e2e20c04",
+        "source_fact:v1:32249c382aeb6470ed27d5b51f61c72bbd9cabf97ca6186b6acdc56bfed7f0eb",
+        "source_fact:v1:a7b9418796f88bbe62f59158637562438a9a1310b31971694732f924b067589f",
+        "source_fact:v1:ac011bcd42a00465df4813a4de34f1408555dd40373e135ca20c156de3a9c82d",
+        "source_fact:v1:ffa71968bc8167bab0bbb7f2af0c43da23b828f71589f1cea0a7e191b3ea4c6d"
+      ],
+      "source_published_kst": "2026-10-05T21:05+09:00",
+      "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
+    },
     "source_fact:719ccc46e6f9215f2b0d2b5b": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -37504,6 +37937,24 @@
       ],
       "source_published_kst": "2026-10-05T18:18+09:00",
       "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
+    },
+    "source_fact:72d67584b6f28777ef450b69": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169792",
+      "source": "매일경제",
+      "source_body_digest": "ec3b3ec664785a36392a5994f2213bb4699b9e392a9699cc5860897e62790b99",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:498a0360beb5599e66f244a4f1c8abb688482506d7153bfaea527920a53bceb2",
+      "source_fact_keys": [
+        "source_fact:v1:a2da51be5fd2321a3e7febf7c318b8afa0cdce744b984a2a7353e0fed91e410f",
+        "source_fact:v1:f1701d2ca96252b1f83d599d81577f9d139ccce26a0eb4c7c0210f4ea2604bf8"
+      ],
+      "source_published_kst": "2026-10-05T21:07+09:00",
+      "title": "텔라 바이오, 완전 흡수성 메시 '리오라' FDA 허가 획득"
     },
     "source_fact:73034d51a1a6dbeb128140c3": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -37806,6 +38257,25 @@
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
     },
+    "source_fact:79df1c4bb0d1cb275864c4f1": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814616",
+      "source": "뉴시스",
+      "source_body_digest": "f24e85e049d7e6a23c46486a445a48460558d39dff6b70e5f3faec2d52bad965",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5a8c07fdfc1cad49e7d1dabdecf9643dcb4d68054924d74f7158eb0791f808e",
+      "source_fact_keys": [
+        "source_fact:v1:3973ad0452213ab9c8e6a74564f7806fb606a8530189c6c00a1b0a4c43e5b8a8",
+        "source_fact:v1:ad7ef1ee1068c5d9c5b731a513980dbbb36b463ec48a6d0a508649330380c605",
+        "source_fact:v1:b84244e1e2052a2cf1ae31f0b170a026152fa1a2760e737a29ce48c2d640227e"
+      ],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
+    },
     "source_fact:7a2104211dd05ef183bc991f": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -37872,6 +38342,25 @@
       ],
       "source_published_kst": "2026-10-05T20:01+09:00",
       "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
+    },
+    "source_fact:7b0e19bb3540db2a96dbae25": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814616",
+      "source": "뉴시스",
+      "source_body_digest": "f24e85e049d7e6a23c46486a445a48460558d39dff6b70e5f3faec2d52bad965",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5a8c07fdfc1cad49e7d1dabdecf9643dcb4d68054924d74f7158eb0791f808e",
+      "source_fact_keys": [
+        "source_fact:v1:3973ad0452213ab9c8e6a74564f7806fb606a8530189c6c00a1b0a4c43e5b8a8",
+        "source_fact:v1:ad7ef1ee1068c5d9c5b731a513980dbbb36b463ec48a6d0a508649330380c605",
+        "source_fact:v1:b84244e1e2052a2cf1ae31f0b170a026152fa1a2760e737a29ce48c2d640227e"
+      ],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
     },
     "source_fact:7be082036b951e9eee45a9ea": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -37949,6 +38438,25 @@
       ],
       "source_published_kst": "2026-10-05T20:01+09:00",
       "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
+    },
+    "source_fact:7d85e98bcbbf5d43eb00c9c9": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814616",
+      "source": "뉴시스",
+      "source_body_digest": "f24e85e049d7e6a23c46486a445a48460558d39dff6b70e5f3faec2d52bad965",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5a8c07fdfc1cad49e7d1dabdecf9643dcb4d68054924d74f7158eb0791f808e",
+      "source_fact_keys": [
+        "source_fact:v1:3973ad0452213ab9c8e6a74564f7806fb606a8530189c6c00a1b0a4c43e5b8a8",
+        "source_fact:v1:ad7ef1ee1068c5d9c5b731a513980dbbb36b463ec48a6d0a508649330380c605",
+        "source_fact:v1:b84244e1e2052a2cf1ae31f0b170a026152fa1a2760e737a29ce48c2d640227e"
+      ],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
     },
     "source_fact:7d8efd2397631cffcbf93490": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -38624,6 +39132,27 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "source_fact:9999de0880f3e483dbec79fc": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169788",
+      "source": "매일경제",
+      "source_body_digest": "c737125f2e0f254bd8e2e87aa93c4e45b1bf192b288beace9cf5e504dcd5bb4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60c3b414292b44362c2d24dba1d9e40cfbb26fa31afa3fe34f312091dc2d87df",
+      "source_fact_keys": [
+        "source_fact:v1:16a43502a590345031fef6fad66594e6f54aaac5d39e5f4508679ff6e2e20c04",
+        "source_fact:v1:32249c382aeb6470ed27d5b51f61c72bbd9cabf97ca6186b6acdc56bfed7f0eb",
+        "source_fact:v1:a7b9418796f88bbe62f59158637562438a9a1310b31971694732f924b067589f",
+        "source_fact:v1:ac011bcd42a00465df4813a4de34f1408555dd40373e135ca20c156de3a9c82d",
+        "source_fact:v1:ffa71968bc8167bab0bbb7f2af0c43da23b828f71589f1cea0a7e191b3ea4c6d"
+      ],
+      "source_published_kst": "2026-10-05T21:05+09:00",
+      "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
+    },
     "source_fact:9a248fba2704a96bfdb26342": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -38643,6 +39172,27 @@
       ],
       "source_published_kst": "2026-10-05T20:07+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
+    },
+    "source_fact:9a997e1bb3f11cf464e10e65": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169788",
+      "source": "매일경제",
+      "source_body_digest": "c737125f2e0f254bd8e2e87aa93c4e45b1bf192b288beace9cf5e504dcd5bb4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60c3b414292b44362c2d24dba1d9e40cfbb26fa31afa3fe34f312091dc2d87df",
+      "source_fact_keys": [
+        "source_fact:v1:16a43502a590345031fef6fad66594e6f54aaac5d39e5f4508679ff6e2e20c04",
+        "source_fact:v1:32249c382aeb6470ed27d5b51f61c72bbd9cabf97ca6186b6acdc56bfed7f0eb",
+        "source_fact:v1:a7b9418796f88bbe62f59158637562438a9a1310b31971694732f924b067589f",
+        "source_fact:v1:ac011bcd42a00465df4813a4de34f1408555dd40373e135ca20c156de3a9c82d",
+        "source_fact:v1:ffa71968bc8167bab0bbb7f2af0c43da23b828f71589f1cea0a7e191b3ea4c6d"
+      ],
+      "source_published_kst": "2026-10-05T21:05+09:00",
+      "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
     },
     "source_fact:9e6c9614545d6db1412073c4": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -38902,6 +39452,23 @@
       ],
       "source_published_kst": "2026-10-05T16:41+09:00",
       "title": "에비던트, 크레스트옵틱스 인수 완료"
+    },
+    "source_fact:aa12be83399ec55c5239cec3": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01895846645609968",
+      "source": "이데일리",
+      "source_body_digest": "7c7a3bc15d7fb25d7d9c455c91bf0e1357720e9a2cc8b0a188ccde84caa0a97b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:136312b582abdf1c75a413c3d86a6679cea5632d92b29159c454b1450d0226a5",
+      "source_fact_keys": [
+        "source_fact:v1:53badda79522727b66927d283a0be2d49cd7d14a1f0890ed32c1d501c5a4a246"
+      ],
+      "source_published_kst": "2026-10-05T12:00+09:00",
+      "title": "\"AI 진화속도 예상 밖\"…정부, 독파모 지원 유지·프론티어 전략 재정비"
     },
     "source_fact:aa89c99cedd21c976951e931": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -39417,6 +39984,24 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:cbd11c18f9e71d2ba852af7c": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02053286645609968",
+      "source": "이데일리",
+      "source_body_digest": "4285704d85731609cf4bf092818a7d74f43777a097b2f23f1968acb7bf5f1e3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06dcb82643f6f0986264daaca14a10009fe4df9a3975fef1c1b29ee7068a8614",
+      "source_fact_keys": [
+        "source_fact:v1:07da455f7249f10d23db7f2379816769f52343c1a397062c6bb381d22bd6ef64",
+        "source_fact:v1:75b28075c13886d630f881662228ee84181494cd4f4d092290e0334fcd70f5b6"
+      ],
+      "source_published_kst": "2026-10-05T14:28+09:00",
+      "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
+    },
     "source_fact:ccb65fc8c93d692152272843": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -39850,6 +40435,42 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
+    "source_fact:e35eba7097bea2853ea69f50": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169795",
+      "source": "매일경제",
+      "source_body_digest": "08d39bdfff71c393af1e20076712d977a28e55dd25f139e0f587ce89f9e8baad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fd12976b8d9e22a3e745cf66bd1de07b0ca85d8271c4bb45f75cb99d981bdd5",
+      "source_fact_keys": [
+        "source_fact:v1:6401078156ae4fcd63078944ff9996235462aef97677558e8e8d7edda5729a1d",
+        "source_fact:v1:82a3888048e5f0c1ada8a4df2554a7e6692c5dd41d9323dcdf5c67383100d100"
+      ],
+      "source_published_kst": "2026-10-05T21:09+09:00",
+      "title": "베니테크 바이오파마, BB-301 FDA 추가자료 요청..임상 일정 유지"
+    },
+    "source_fact:e5f41f1e01d1e99870e4fda2": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169795",
+      "source": "매일경제",
+      "source_body_digest": "08d39bdfff71c393af1e20076712d977a28e55dd25f139e0f587ce89f9e8baad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fd12976b8d9e22a3e745cf66bd1de07b0ca85d8271c4bb45f75cb99d981bdd5",
+      "source_fact_keys": [
+        "source_fact:v1:6401078156ae4fcd63078944ff9996235462aef97677558e8e8d7edda5729a1d",
+        "source_fact:v1:82a3888048e5f0c1ada8a4df2554a7e6692c5dd41d9323dcdf5c67383100d100"
+      ],
+      "source_published_kst": "2026-10-05T21:09+09:00",
+      "title": "베니테크 바이오파마, BB-301 FDA 추가자료 요청..임상 일정 유지"
     },
     "source_fact:e652b3402702251bf1b38cad": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -41405,6 +42026,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261002151600008",
       "source": "연합뉴스",
       "title": "한국투자증권, SK 주식 4천억원어치 취득…지분율 0.9% | 연합뉴스"
+    },
+    "title:0f6b35e17230191009ad6712": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169795",
+      "source": "매일경제",
+      "source_body_digest": "08d39bdfff71c393af1e20076712d977a28e55dd25f139e0f587ce89f9e8baad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9fd12976b8d9e22a3e745cf66bd1de07b0ca85d8271c4bb45f75cb99d981bdd5",
+      "source_fact_keys": [
+        "source_fact:v1:6401078156ae4fcd63078944ff9996235462aef97677558e8e8d7edda5729a1d",
+        "source_fact:v1:82a3888048e5f0c1ada8a4df2554a7e6692c5dd41d9323dcdf5c67383100d100"
+      ],
+      "source_published_kst": "2026-10-05T21:09+09:00",
+      "title": "베니테크 바이오파마, BB-301 FDA 추가자료 요청..임상 일정 유지"
     },
     "title:0f76c96d0ae996ebbeeac04e": {
       "first_seen_kst": "2026-09-19T20:13:35+09:00",
@@ -45511,6 +46150,23 @@
       "source": "파이낸셜뉴스",
       "title": "우리운용 'WON 전단채플러스액티브 ETF' 순자산 5000억원 돌파"
     },
+    "title:57065d25faebd8b558966a4d": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01895846645609968",
+      "source": "이데일리",
+      "source_body_digest": "7c7a3bc15d7fb25d7d9c455c91bf0e1357720e9a2cc8b0a188ccde84caa0a97b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:136312b582abdf1c75a413c3d86a6679cea5632d92b29159c454b1450d0226a5",
+      "source_fact_keys": [
+        "source_fact:v1:53badda79522727b66927d283a0be2d49cd7d14a1f0890ed32c1d501c5a4a246"
+      ],
+      "source_published_kst": "2026-10-05T12:00+09:00",
+      "title": "\"AI 진화속도 예상 밖\"…정부, 독파모 지원 유지·프론티어 전략 재정비"
+    },
     "title:574964b4eaecb009348c6d4f": {
       "first_seen_kst": "2026-10-05T10:39:16+09:00",
       "lanes": {
@@ -45564,6 +46220,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T09:36+09:00",
       "title": "CJ대한통운, 토스 50만 가맹점 물류 거점으로…생활택배 접점 확대"
+    },
+    "title:57b816772e84059084811d71": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814616",
+      "source": "뉴시스",
+      "source_body_digest": "f24e85e049d7e6a23c46486a445a48460558d39dff6b70e5f3faec2d52bad965",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5a8c07fdfc1cad49e7d1dabdecf9643dcb4d68054924d74f7158eb0791f808e",
+      "source_fact_keys": [
+        "source_fact:v1:3973ad0452213ab9c8e6a74564f7806fb606a8530189c6c00a1b0a4c43e5b8a8",
+        "source_fact:v1:ad7ef1ee1068c5d9c5b731a513980dbbb36b463ec48a6d0a508649330380c605",
+        "source_fact:v1:b84244e1e2052a2cf1ae31f0b170a026152fa1a2760e737a29ce48c2d640227e"
+      ],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
     },
     "title:57d572ba93299978b71eb637": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
@@ -45628,6 +46303,24 @@
       "link": "https://www.hankyung.com/article/2026100184331",
       "source": "한국경제",
       "title": "울산신용보증재단 신임 이사장 한양현"
+    },
+    "title:5994b47c4725c3bd9b32a6c7": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169792",
+      "source": "매일경제",
+      "source_body_digest": "ec3b3ec664785a36392a5994f2213bb4699b9e392a9699cc5860897e62790b99",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:498a0360beb5599e66f244a4f1c8abb688482506d7153bfaea527920a53bceb2",
+      "source_fact_keys": [
+        "source_fact:v1:a2da51be5fd2321a3e7febf7c318b8afa0cdce744b984a2a7353e0fed91e410f",
+        "source_fact:v1:f1701d2ca96252b1f83d599d81577f9d139ccce26a0eb4c7c0210f4ea2604bf8"
+      ],
+      "source_published_kst": "2026-10-05T21:07+09:00",
+      "title": "텔라 바이오, 완전 흡수성 메시 '리오라' FDA 허가 획득"
     },
     "title:599eaf413006531fb50f0c58": {
       "first_seen_kst": "2026-10-02T04:33:10+09:00",
@@ -47833,6 +48526,25 @@
       "source_published_kst": "2026-10-04T06:30+09:00",
       "title": "메모리 ‘오징어 게임’ 벌어지나…美 싱크탱크의 ‘메모리 공급 과잉’ 경고 [칩칩팹팹]"
     },
+    "title:827d30fd24c2a360ea379a4c": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814616",
+      "source": "뉴시스",
+      "source_body_digest": "f24e85e049d7e6a23c46486a445a48460558d39dff6b70e5f3faec2d52bad965",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5a8c07fdfc1cad49e7d1dabdecf9643dcb4d68054924d74f7158eb0791f808e",
+      "source_fact_keys": [
+        "source_fact:v1:3973ad0452213ab9c8e6a74564f7806fb606a8530189c6c00a1b0a4c43e5b8a8",
+        "source_fact:v1:ad7ef1ee1068c5d9c5b731a513980dbbb36b463ec48a6d0a508649330380c605",
+        "source_fact:v1:b84244e1e2052a2cf1ae31f0b170a026152fa1a2760e737a29ce48c2d640227e"
+      ],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
+    },
     "title:82c22414b957adeab9d3f8fa": {
       "first_seen_kst": "2026-10-02T07:36:51+09:00",
       "lanes": {
@@ -49837,6 +50549,27 @@
       "link": "https://www.etnews.com/20260929000069",
       "source": "전자신문",
       "title": "로보락, 글로벌 로봇청소기 시장 1위…점유율 23.7%"
+    },
+    "title:a4331d348e5a004d3cfd2afb": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169788",
+      "source": "매일경제",
+      "source_body_digest": "c737125f2e0f254bd8e2e87aa93c4e45b1bf192b288beace9cf5e504dcd5bb4c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:60c3b414292b44362c2d24dba1d9e40cfbb26fa31afa3fe34f312091dc2d87df",
+      "source_fact_keys": [
+        "source_fact:v1:16a43502a590345031fef6fad66594e6f54aaac5d39e5f4508679ff6e2e20c04",
+        "source_fact:v1:32249c382aeb6470ed27d5b51f61c72bbd9cabf97ca6186b6acdc56bfed7f0eb",
+        "source_fact:v1:a7b9418796f88bbe62f59158637562438a9a1310b31971694732f924b067589f",
+        "source_fact:v1:ac011bcd42a00465df4813a4de34f1408555dd40373e135ca20c156de3a9c82d",
+        "source_fact:v1:ffa71968bc8167bab0bbb7f2af0c43da23b828f71589f1cea0a7e191b3ea4c6d"
+      ],
+      "source_published_kst": "2026-10-05T21:05+09:00",
+      "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
     },
     "title:a481c4c674bb5a5fdbf2a0d9": {
       "first_seen_kst": "2026-10-01T21:50:06+09:00",
@@ -54877,6 +55610,24 @@
       "source": "머니투데이",
       "title": "中 정유제품 수출 사실상 중단…아시아 공급난 더 심해지나"
     },
+    "title:fc1d264cec263501ed4a1ec5": {
+      "first_seen_kst": "2026-10-05T21:23:54+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:23:54+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:23:54+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02053286645609968",
+      "source": "이데일리",
+      "source_body_digest": "4285704d85731609cf4bf092818a7d74f43777a097b2f23f1968acb7bf5f1e3c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:06dcb82643f6f0986264daaca14a10009fe4df9a3975fef1c1b29ee7068a8614",
+      "source_fact_keys": [
+        "source_fact:v1:07da455f7249f10d23db7f2379816769f52343c1a397062c6bb381d22bd6ef64",
+        "source_fact:v1:75b28075c13886d630f881662228ee84181494cd4f4d092290e0334fcd70f5b6"
+      ],
+      "source_published_kst": "2026-10-05T14:28+09:00",
+      "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
+    },
     "title:fc258f7df3b09fcb24cd7e5c": {
       "first_seen_kst": "2026-10-04T00:26:19+09:00",
       "lanes": {
@@ -55162,5 +55913,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T21:13:33+09:00"
+  "updated_at_kst": "2026-10-05T21:23:54+09:00"
 }
