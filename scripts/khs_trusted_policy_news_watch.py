@@ -1073,6 +1073,9 @@ STORY_RULES = (
             "\"new AI adviser\" Trump Reuters",
             "Trump AI force executive order budget procurement Reuters",
             "Trump AI czar appointment White House Reuters",
+            "\"Super Intelligence Force\" Trump Jay Clayton Andrew Ferguson Emil Michael Scott Kupor",
+            "\"Super Intelligence Force\" charter budget authority report White House",
+            "\"Super Intelligence Force\" AP Reuters CBS Trump",
             "site:reuters.com Trump says tariffs chips AI semiconductor China",
             "site:reuters.com Trump says Iran Israel Hormuz oil",
             "site:reuters.com Trump Iran wants talks negotiations",
@@ -1675,6 +1678,16 @@ def semantic_policy_event_key(item: dict) -> str:
             for key in ("title", "description", "link", "source")
         )
     ).lower()
+    sif_terms = ("super intelligence force", "superintelligence force")
+    if any(term in text for term in sif_terms):
+        if any(term in text for term in ("final report", "120-day report", "120 day report", "recommendations submitted", "recommendations released")):
+            return "us-trump-super-intelligence-force-report"
+        if any(term in text for term in ("appropriation", "appropriations", "funding", "budget request", "staffing level", "staffing levels")):
+            return "us-trump-super-intelligence-force-funding"
+        if any(term in text for term in ("executive order", "presidential memorandum", "charter", "statutory authority", "legal authority", "codified", "established by law")):
+            return "us-trump-super-intelligence-force-authority"
+        return "us-trump-super-intelligence-force-established-2026-10-04"
+
     if (
         "jay clayton" in text
         and "ai czar" in text
@@ -2001,6 +2014,14 @@ def semantic_policy_event_key(item: dict) -> str:
 
 def semantic_policy_title(item: dict) -> str:
     key = semantic_policy_event_key(item)
+    if key == "us-trump-super-intelligence-force-established-2026-10-04":
+        return "트럼프, Super Intelligence Force 창설 발표"
+    if key == "us-trump-super-intelligence-force-authority":
+        return "Super Intelligence Force 법적 권한·공식 근거 변화"
+    if key == "us-trump-super-intelligence-force-funding":
+        return "Super Intelligence Force 예산·인력 집행 변화"
+    if key == "us-trump-super-intelligence-force-report":
+        return "Super Intelligence Force 최종 보고서·권고 공개"
     if key == "us-trump-ai-czar-jay-clayton-appointed-2026-10-03":
         return "트럼프, Jay Clayton 신임 AI 차르 임명"
     if key == "us-dow-project-meridian-commissioned":
@@ -2456,7 +2477,64 @@ def trump_story_profile(title: str) -> dict[str, object] | None:
             "sectors": "관세 민감 수출주, 물류/공급망",
             "failure": "대상국·품목·세율·시행일과 한국 기업 노출이 확인되지 않으면 발언성 재료로 끝납니다.",
         }
-    if any(term in low for term in ("ai adviser", "ai advisor", "ai czar", "ai force")):
+    if semantic_key.startswith("us-trump-super-intelligence-force-"):
+        if semantic_key == "us-trump-super-intelligence-force-established-2026-10-04":
+            return {
+                **common,
+                "revision": "trump-ai-force-czar-sif-ko-v1",
+                "event_date": "2026년 10월 4일",
+                "title": "트럼프, Super Intelligence Force 창설 발표",
+                "core": "트럼프가 연방정부의 초지능 대응을 조율하는 Super Intelligence Force(SIF) 창설과 지도부 구성을 발표했습니다.",
+                "stage": "대통령 공식 발표·조직 구성 단계 — 공개된 행정명령·법정 권한·독립 예산·상근 인력 규모는 아직 별도 확인이 필요합니다.",
+                "actual_bullets": [
+                    "Jay Clayton 국가정보국장이 주도하고 Andrew Ferguson FTC 위원장, Emil Michael 국방부 연구·공학 차관 겸 CTO, Scott Kupor OPM 처장이 함께 이끕니다.",
+                    "소비자·공익단체·종교단체·핵심 인프라 제공업체·초지능 기업과 연방정부 간 협력·소통을 조율한다고 발표했습니다.",
+                    "태스크포스는 대통령과 Susie Wiles 백악관 비서실장에게 보고하는 구조로 발표됐습니다.",
+                ],
+                "actual": "기존 AI Force·AI 차르 구상이 실명 지도부와 부처 간 조정 구조를 갖춘 SIF 발표 단계로 구체화됐습니다.",
+                "timeline": "2026년 9월 19일 AI Force·AI 차르 구상 → 9월 29일 White House Accord on Super Intelligence → 10월 4일 SIF 지도부·조정 역할 발표 → 공식 권한·예산·보고서·조달 후속 확인",
+                "why": "정보·소비자보호·국방기술·연방인사 기능이 한 정책축에 묶이면서 미국 AI 정책의 조정 창구가 구체화됐다는 점이 핵심입니다.",
+                "next": "백악관·연방관보의 공식 창설 문서, 행정명령·대통령각서·헌장, 120일 보고서 원문과 제출기한, 예산·상근 인력, 정부 AI 조달·감사·모델 평가 권한, FTC·ODNI·국방부·OPM 후속 조치",
+                "investment": "현재 특정 기업의 신규 확정 매출은 없습니다. 실제 투자 재료는 SIF가 정부 AI 조달, 모델 평가·감사, 사이버보안, 데이터센터·전력 인프라 기준을 구체화할 때 발생합니다.",
+                "korea": "한국 기업은 HBM·서버·전력 인프라·보안 분야에서 미국 정부 조달이나 미국 AI 기업의 설비투자 증가가 실제 수주·매출로 연결될 때만 직접 수혜로 분류합니다.",
+                "headwind": "법적 권한·예산·집행수단이 약하면 조정기구에 머물 수 있고, FTC·정보기관·국방부 간 권한 중첩과 업계 자율규제 의존이 실행 속도를 낮출 수 있습니다.",
+                "scope_note": "Truth Social 발표와 복수 보도에서 창설·지도부는 확인되지만, 공개된 행정명령·법률·독립 예산을 확인하기 전까지 규제기관이나 신규 독립기관으로 확대 해석하지 않습니다.",
+                "impacts": "시간표, 할인율, 향후 매출·마진·현금흐름",
+                "paths": "AI 정책 지휘체계, 모델 평가·감사, 정부 AI 조달, 사이버·핵심 인프라, 데이터센터 CAPEX",
+                "sectors": "반도체/AI, 클라우드/보안 AI, 데이터센터 전력 인프라, 국방 AI",
+                "priced_in": "정책 기대는 반영될 수 있으나 기업별 계약·예산·조달이 없어 직접 실적 반영은 아직 미확정입니다.",
+                "counter": "SIF가 기존 기관을 조율하는 비상설 협의체에 그치고 별도 집행권·예산·조달권을 갖지 않을 수 있습니다.",
+                "failure": "공식 권한 문서·예산·보고서·부처별 집행조치가 뒤따르지 않으면 정책 지휘체계 뉴스로 남고 직접 매출 연결은 제한됩니다.",
+            }
+        stage_map = {
+            "us-trump-super-intelligence-force-authority": ("SIF 법적 권한·공식 근거 변화", "행정명령·대통령각서·헌장·법률 등 공식 권한 근거가 새로 확인된 단계입니다."),
+            "us-trump-super-intelligence-force-funding": ("SIF 예산·인력 집행 변화", "SIF에 연결된 예산·인력·집행 자원이 구체화된 단계입니다."),
+            "us-trump-super-intelligence-force-report": ("SIF 최종 보고서·권고 공개", "SIF의 공식 보고서·권고가 공개·제출된 단계입니다."),
+        }
+        t, core = stage_map.get(semantic_key, ("SIF 후속 변화", "SIF 관련 후속 정책 단계가 변했습니다."))
+        return {
+            **common,
+            "revision": "trump-ai-force-czar-sif-followup-ko-v1",
+            "title": t,
+            "core": core,
+            "stage": "후속 공식화·집행 단계 — 실제 문서의 권한·예산·조달 범위를 원문 기준으로 확인합니다.",
+            "actual": "SIF 창설 발표 이후 권한·예산·보고서 가운데 하나가 새로운 공식 단계로 이동한 사건입니다.",
+            "timeline": "SIF 창설 발표 → 권한·예산·보고서 → 부처별 규칙·조달·감사·모델 평가 집행",
+            "why": "이 단계부터 단순 조직 발표가 실제 규제·조달·인프라 수요 변화로 전환될 수 있습니다.",
+            "next": "공식 문서번호, 법적 근거, 예산·인원, 적용 기관, 대상 기업·모델, 조달금액, 시행일·보고기한",
+            "investment": "확정된 조달·규제·평가 의무만 기업 실적과 비용에 직접 연결하고, 권고·자율협약은 별도로 분리합니다.",
+            "korea": "한국 기업은 미국 정부 조달·AI 인프라 CAPEX·보안평가 의무의 실제 수주·비용 연결이 확인될 때만 직접 영향으로 봅니다.",
+            "headwind": "권고의 비구속성, 예산 미확정, 기관 간 권한 중첩, 소송·의회 견제가 실행 지연 요인입니다.",
+            "scope_note": "SIF 후속 문서와 9월 29일 자율협약을 서로 같은 법적 효력으로 취급하지 않습니다.",
+            "impacts": "돈 버는 능력, 할인율, 수급, 시간표",
+            "paths": "법적 권한, 예산, 조달, 모델 평가·감사, 핵심 인프라",
+            "sectors": "반도체/AI, 클라우드/보안 AI, 데이터센터 전력 인프라, 국방 AI",
+            "priced_in": "문서 강제력과 집행 규모에 따라 달라집니다.",
+            "counter": "공식화가 약하거나 기존 기관 업무 재정리에 그치면 신규 시장 규모가 제한됩니다.",
+            "failure": "구체적 예산·조달·규제·평가 일정이 없으면 기업 실적 재평가로 이어지기 어렵습니다.",
+        }
+
+    if any(term in low for term in ("ai adviser", "ai advisor", "ai czar", "ai force", "super intelligence force", "superintelligence force")):
         future_language = any(
             term in low
             for term in (
@@ -3574,6 +3652,25 @@ def _self_test_fcc_optical_transceiver_event_model() -> None:
     )[0] == "공식 확인"
 
 
+def _self_test_super_intelligence_force_event_model() -> None:
+    sif = {
+        "title": "Trump announces formation of AI Super Intelligence Force",
+        "description": "Trump announced the Super Intelligence Force led by Jay Clayton, Andrew Ferguson, Emil Michael and Scott Kupor. The task force will coordinate the federal government's engagement with consumers, public interest groups, religious groups, infrastructure providers and AI companies and report to Trump and Susie Wiles.",
+        "link": "https://apnews.com/example-sif",
+        "source": "AP News",
+        "published_kst": "2026-10-04T22:12:00+09:00",
+    }
+    assert semantic_policy_event_key(sif) == "us-trump-super-intelligence-force-established-2026-10-04"
+    rule = next(rule for rule in STORY_RULES if rule.key == "trump_direct_policy_remarks_watch")
+    profile = item_story_profile(rule, [sif])
+    assert profile and str(profile.get("revision") or "").startswith("trump-ai-force-czar-sif-")
+    assert is_ai_force_alert({"rule": rule, "items": [sif]})
+    funding = {**sif, "title": "Super Intelligence Force receives new budget funding", "description": "A budget request provides funding and staffing levels for the Super Intelligence Force."}
+    assert semantic_policy_event_key(funding) == "us-trump-super-intelligence-force-funding"
+    report = {**sif, "title": "Super Intelligence Force final report released", "description": "The 120-day report and recommendations were released."}
+    assert semantic_policy_event_key(report) == "us-trump-super-intelligence-force-report"
+
+
 def _self_test_defense_future_warfare_event_model() -> None:
     meridian = {
         "title": "Project Meridian",
@@ -3806,4 +3903,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     _self_test_fcc_optical_transceiver_event_model()
+    _self_test_super_intelligence_force_event_model()
     raise SystemExit(main())
