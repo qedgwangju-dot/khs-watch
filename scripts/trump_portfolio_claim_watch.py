@@ -16,6 +16,7 @@ import re
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+from email.utils import parsedate_to_datetime
 
 STATE_PATH = pathlib.Path("data/trump_portfolio_claim_watch_state.json")
 EXPECTED_BOT_USERNAME = "khs887988798879_bot"
@@ -64,6 +65,25 @@ def _strip_tags(s):
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", s or "")).strip()
 
 
+WEB_CLAIM_MAX_AGE_HOURS = 72
+
+
+def is_recent_publication(pub_date, now=None):
+    """Reject stale/reindexed articles even if a search feed resurfaces them."""
+    if not pub_date:
+        return False
+    try:
+        published = parsedate_to_datetime(pub_date)
+        if published.tzinfo is None:
+            published = published.replace(tzinfo=dt.timezone.utc)
+        published = published.astimezone(dt.timezone.utc)
+    except Exception:
+        return False
+    now = now or dt.datetime.now(dt.timezone.utc)
+    age = now - published
+    return dt.timedelta(0) <= age <= dt.timedelta(hours=WEB_CLAIM_MAX_AGE_HOURS)
+
+
 def is_portfolio_claim_relevant(title, desc=""):
     """Only Trump's own portfolio/holdings claims; exclude market themes, OGE trades, and event news."""
     title_text = (title or "").strip()
@@ -72,12 +92,17 @@ def is_portfolio_claim_relevant(title, desc=""):
     if "trump" not in hay and "트럼프" not in hay:
         return False
 
-    # OGE/transaction stories belong to the dedicated OGE watcher.
+    # OGE/transaction recaps belong to the dedicated OGE watcher.
+    # This includes articles whose headline says "portfolio" but merely lists buys/sells.
     oge_trade_terms = [
         "financial disclosure", "government ethics", "oge", "278-t",
         "periodic transaction", "stock trades", "securities transactions",
-        "bought shares", "sold shares", "재산공개", "정부윤리청",
-        "거래 신고", "주식 거래", "증권 거래",
+        "bought shares", "sold shares", "what stocks did", "what did trump buy",
+        "buy and sell", "bought and sold", "purchase", "purchased", "sold",
+        "stock trades", "trade history", "transaction history",
+        "재산공개", "정부윤리청", "거래 신고", "주식 거래", "증권 거래",
+        "무슨 주식을 샀나", "무슨 주식을", "매수", "매도", "거래 내역", "거래내역",
+        "주식 또 샀다", "주식 샀다", "상장 11일 후 매수",
     ]
     if any(k in hay for k in oge_trade_terms):
         return False
@@ -111,11 +136,19 @@ def is_portfolio_claim_relevant(title, desc=""):
         r"트럼프.{0,50}(포트폴리오|보유종목|보유 비중|자산배분|자산 배분|최대 보유)",
         r"(포트폴리오|보유종목|보유 비중|자산배분|자산 배분).{0,50}트럼프",
     ]
-    if any(re.search(p, title_low, re.I) for p in english_patterns):
-        return True
-    if any(re.search(p, title_text, re.I) for p in korean_patterns):
-        return True
-    return False
+    composition_terms = [
+        "%", "percent", "percentage", "weight", "weighting", "allocation",
+        "top holding", "top holdings", "largest position", "largest holding",
+        "portfolio mix", "asset mix", "composition",
+        "비중", "보유 비중", "상위 보유", "최대 보유", "자산배분", "자산 배분", "구성",
+    ]
+    explicit_relation = (
+        any(re.search(p, title_low, re.I) for p in english_patterns)
+        or any(re.search(p, title_text, re.I) for p in korean_patterns)
+    )
+    if not explicit_relation:
+        return False
+    return any(k.lower() in hay for k in composition_terms)
 
 
 def discover_claims():
@@ -134,6 +167,8 @@ def discover_claims():
                 pub = _strip_tags(item.findtext("pubDate"))
                 hay = f"{title} {desc}".lower()
                 if not link:
+                    continue
+                if not is_recent_publication(pub):
                     continue
                 if not is_portfolio_claim_relevant(title, desc):
                     continue
