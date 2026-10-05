@@ -4346,6 +4346,27 @@
       "source": "뉴시스",
       "title": "롯데카드, 영업정지 한 달 새 회원 8만명 감소…PLCC로 회복 시동"
     },
+    "event:e418d5497bb7017056156de6": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000019993",
+      "source": "국민일보",
+      "source_body_digest": "60b5f9c9d0753f21c559672b678a73123ba8677229314ea90eb4e82532176c98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7dddb4bc4484d5692b49ce4bca18b3e576e74ec6565b446d1ac0e3fcab6d1e01",
+      "source_fact_keys": [
+        "source_fact:v1:24aca898a6c18777119080443e7ef44385dc46b0606582df72405ea2d5e733ff",
+        "source_fact:v1:3fc3cd6ceeda4a5cca50ea69fd75f91d933122ee2904a130dc71db74802a40d6",
+        "source_fact:v1:51b7b5a52b79a30a1e78cbf8400073cfe9c96a57134844c3097f0a16a0cfc624",
+        "source_fact:v1:698b25ab4e226048a6434eef7b3c14e9e0fe33591222e5431f7cf85a08d9d313",
+        "source_fact:v1:bbf77944babf9a685261ee55a78b8de7f94c45d9870621a0de1a84fd37609282"
+      ],
+      "source_published_kst": "2026-10-06T00:04+09:00",
+      "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
+    },
     "event:e479bd6e91e5c6f154633e26": {
       "first_seen_kst": "2026-10-01T10:36:00+09:00",
       "lanes": {
@@ -5056,6 +5077,27 @@
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
+    "fact:141e69347ed926b17a0db065": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000019993",
+      "source": "국민일보",
+      "source_body_digest": "60b5f9c9d0753f21c559672b678a73123ba8677229314ea90eb4e82532176c98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7dddb4bc4484d5692b49ce4bca18b3e576e74ec6565b446d1ac0e3fcab6d1e01",
+      "source_fact_keys": [
+        "source_fact:v1:24aca898a6c18777119080443e7ef44385dc46b0606582df72405ea2d5e733ff",
+        "source_fact:v1:3fc3cd6ceeda4a5cca50ea69fd75f91d933122ee2904a130dc71db74802a40d6",
+        "source_fact:v1:51b7b5a52b79a30a1e78cbf8400073cfe9c96a57134844c3097f0a16a0cfc624",
+        "source_fact:v1:698b25ab4e226048a6434eef7b3c14e9e0fe33591222e5431f7cf85a08d9d313",
+        "source_fact:v1:bbf77944babf9a685261ee55a78b8de7f94c45d9870621a0de1a84fd37609282"
+      ],
+      "source_published_kst": "2026-10-06T00:04+09:00",
+      "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
     },
     "fact:14922e890d3a425a5f2eb55b": {
       "first_seen_kst": "2026-10-06T00:03:48+09:00",
@@ -6401,6 +6443,30 @@
       ],
       "source_published_kst": "2026-10-05T18:43+09:00",
       "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
+    },
+    "fact:8d0331c99d9019d15b700f97": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04562486645609968",
+      "source": "이데일리",
+      "source_body_digest": "269d530fff21bb1fa71f68cc67a57085a15595bb89c43d74aa44075b02b4d65f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6d29a1de9d7617ce450cdc1507df46f4d1f2148ecc83468785edbbc1c477613",
+      "source_fact_keys": [
+        "source_fact:v1:2a617e3a0f3334414d2d98342966ce76b5200f63d39941ad5e6c5c4ad0ca6a5d",
+        "source_fact:v1:2eea1744b228833080700e3c9c4ea815142bda62d3525919c6d6e2ef28264c70",
+        "source_fact:v1:605463bce880b4ee406c027c50374b3b166f787254fb25913819b371ca183e42",
+        "source_fact:v1:60f465d2f22624fb443b7e3bb96728cfa7516adbb8693b665cbe89f939003c7c",
+        "source_fact:v1:b0c80d7b9214ea3514f9ef730a27cfef9f0c6d113f8068ebbcdec31a52c2f0c7",
+        "source_fact:v1:c4e086fed79be39c615ec1b60032bfa6a367cb76148ac85361217a3d902f4186",
+        "source_fact:v1:d3b120563171147b9c875f65f498155812ac41c4c56a19dc641d7a0c4fc792d8",
+        "source_fact:v1:d4ddeb198422f49dadecb41f40c7f07175ab2c727b9a518bf290a6763adfba12"
+      ],
+      "source_published_kst": "2026-10-05T23:08+09:00",
+      "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
     },
     "fact:8f6be8e4d786f9c623741804": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -9001,6 +9067,30 @@
       "link": "https://www.edaily.co.kr/news/read?newsid=03906486645608984&parentid=04257446645608984&gubun=E",
       "source": "이데일리",
       "title": "개인·외인·기관 팔자 vs 삼전닉스 자사주 실탄…7000피 공방전"
+    },
+    "link:1aa0411d7cef95d7b6c1badc": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04562486645609968",
+      "source": "이데일리",
+      "source_body_digest": "269d530fff21bb1fa71f68cc67a57085a15595bb89c43d74aa44075b02b4d65f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6d29a1de9d7617ce450cdc1507df46f4d1f2148ecc83468785edbbc1c477613",
+      "source_fact_keys": [
+        "source_fact:v1:2a617e3a0f3334414d2d98342966ce76b5200f63d39941ad5e6c5c4ad0ca6a5d",
+        "source_fact:v1:2eea1744b228833080700e3c9c4ea815142bda62d3525919c6d6e2ef28264c70",
+        "source_fact:v1:605463bce880b4ee406c027c50374b3b166f787254fb25913819b371ca183e42",
+        "source_fact:v1:60f465d2f22624fb443b7e3bb96728cfa7516adbb8693b665cbe89f939003c7c",
+        "source_fact:v1:b0c80d7b9214ea3514f9ef730a27cfef9f0c6d113f8068ebbcdec31a52c2f0c7",
+        "source_fact:v1:c4e086fed79be39c615ec1b60032bfa6a367cb76148ac85361217a3d902f4186",
+        "source_fact:v1:d3b120563171147b9c875f65f498155812ac41c4c56a19dc641d7a0c4fc792d8",
+        "source_fact:v1:d4ddeb198422f49dadecb41f40c7f07175ab2c727b9a518bf290a6763adfba12"
+      ],
+      "source_published_kst": "2026-10-05T23:08+09:00",
+      "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
     },
     "link:1aa63c0694544cecbadcbf51": {
       "first_seen_kst": "2026-10-03T03:34:04+09:00",
@@ -15553,6 +15643,27 @@
       "link": "https://www.mk.co.kr/news/stock/12158782",
       "source": "매일경제",
       "title": "터닝 포인트 브랜즈, 데이비드 글레이젝 신임 CEO 선임..10월 1일 취임"
+    },
+    "link:7be46b1ddac1cc0a4cbcf679": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000019993",
+      "source": "국민일보",
+      "source_body_digest": "60b5f9c9d0753f21c559672b678a73123ba8677229314ea90eb4e82532176c98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7dddb4bc4484d5692b49ce4bca18b3e576e74ec6565b446d1ac0e3fcab6d1e01",
+      "source_fact_keys": [
+        "source_fact:v1:24aca898a6c18777119080443e7ef44385dc46b0606582df72405ea2d5e733ff",
+        "source_fact:v1:3fc3cd6ceeda4a5cca50ea69fd75f91d933122ee2904a130dc71db74802a40d6",
+        "source_fact:v1:51b7b5a52b79a30a1e78cbf8400073cfe9c96a57134844c3097f0a16a0cfc624",
+        "source_fact:v1:698b25ab4e226048a6434eef7b3c14e9e0fe33591222e5431f7cf85a08d9d313",
+        "source_fact:v1:bbf77944babf9a685261ee55a78b8de7f94c45d9870621a0de1a84fd37609282"
+      ],
+      "source_published_kst": "2026-10-06T00:04+09:00",
+      "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
     },
     "link:7c13d6bec637373e9c34e5b3": {
       "first_seen_kst": "2026-10-02T17:56:05+09:00",
@@ -26325,6 +26436,27 @@
       "link": "https://www.dt.co.kr/article/12087236",
       "source": "디지털타임스",
       "title": "암살자(들) 투자한 기업은행·산업은행 “외부 요청 없었다”"
+    },
+    "original:21e58bb07af871a4a31f1c07": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000019993",
+      "source": "국민일보",
+      "source_body_digest": "60b5f9c9d0753f21c559672b678a73123ba8677229314ea90eb4e82532176c98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7dddb4bc4484d5692b49ce4bca18b3e576e74ec6565b446d1ac0e3fcab6d1e01",
+      "source_fact_keys": [
+        "source_fact:v1:24aca898a6c18777119080443e7ef44385dc46b0606582df72405ea2d5e733ff",
+        "source_fact:v1:3fc3cd6ceeda4a5cca50ea69fd75f91d933122ee2904a130dc71db74802a40d6",
+        "source_fact:v1:51b7b5a52b79a30a1e78cbf8400073cfe9c96a57134844c3097f0a16a0cfc624",
+        "source_fact:v1:698b25ab4e226048a6434eef7b3c14e9e0fe33591222e5431f7cf85a08d9d313",
+        "source_fact:v1:bbf77944babf9a685261ee55a78b8de7f94c45d9870621a0de1a84fd37609282"
+      ],
+      "source_published_kst": "2026-10-06T00:04+09:00",
+      "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
     },
     "original:22532471b5b750da4d55a26b": {
       "first_seen_kst": "2026-10-04T06:34:33+09:00",
@@ -39227,6 +39359,30 @@
       "source": "조선비즈",
       "title": "한국벤처투자, 아모레퍼시픽홀딩스와 화장품 기업 육성 맞손"
     },
+    "original:e8f45ad22440f71296ad1c26": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04562486645609968",
+      "source": "이데일리",
+      "source_body_digest": "269d530fff21bb1fa71f68cc67a57085a15595bb89c43d74aa44075b02b4d65f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6d29a1de9d7617ce450cdc1507df46f4d1f2148ecc83468785edbbc1c477613",
+      "source_fact_keys": [
+        "source_fact:v1:2a617e3a0f3334414d2d98342966ce76b5200f63d39941ad5e6c5c4ad0ca6a5d",
+        "source_fact:v1:2eea1744b228833080700e3c9c4ea815142bda62d3525919c6d6e2ef28264c70",
+        "source_fact:v1:605463bce880b4ee406c027c50374b3b166f787254fb25913819b371ca183e42",
+        "source_fact:v1:60f465d2f22624fb443b7e3bb96728cfa7516adbb8693b665cbe89f939003c7c",
+        "source_fact:v1:b0c80d7b9214ea3514f9ef730a27cfef9f0c6d113f8068ebbcdec31a52c2f0c7",
+        "source_fact:v1:c4e086fed79be39c615ec1b60032bfa6a367cb76148ac85361217a3d902f4186",
+        "source_fact:v1:d3b120563171147b9c875f65f498155812ac41c4c56a19dc641d7a0c4fc792d8",
+        "source_fact:v1:d4ddeb198422f49dadecb41f40c7f07175ab2c727b9a518bf290a6763adfba12"
+      ],
+      "source_published_kst": "2026-10-05T23:08+09:00",
+      "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
+    },
     "original:e8ff735e56e59fda321510b9": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
       "lanes": {
@@ -40629,6 +40785,30 @@
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
     },
+    "source_fact:0145dc73c18a1eb66bfb84e8": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04562486645609968",
+      "source": "이데일리",
+      "source_body_digest": "269d530fff21bb1fa71f68cc67a57085a15595bb89c43d74aa44075b02b4d65f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6d29a1de9d7617ce450cdc1507df46f4d1f2148ecc83468785edbbc1c477613",
+      "source_fact_keys": [
+        "source_fact:v1:2a617e3a0f3334414d2d98342966ce76b5200f63d39941ad5e6c5c4ad0ca6a5d",
+        "source_fact:v1:2eea1744b228833080700e3c9c4ea815142bda62d3525919c6d6e2ef28264c70",
+        "source_fact:v1:605463bce880b4ee406c027c50374b3b166f787254fb25913819b371ca183e42",
+        "source_fact:v1:60f465d2f22624fb443b7e3bb96728cfa7516adbb8693b665cbe89f939003c7c",
+        "source_fact:v1:b0c80d7b9214ea3514f9ef730a27cfef9f0c6d113f8068ebbcdec31a52c2f0c7",
+        "source_fact:v1:c4e086fed79be39c615ec1b60032bfa6a367cb76148ac85361217a3d902f4186",
+        "source_fact:v1:d3b120563171147b9c875f65f498155812ac41c4c56a19dc641d7a0c4fc792d8",
+        "source_fact:v1:d4ddeb198422f49dadecb41f40c7f07175ab2c727b9a518bf290a6763adfba12"
+      ],
+      "source_published_kst": "2026-10-05T23:08+09:00",
+      "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
+    },
     "source_fact:01d48911be74633c8ce98c13": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -41160,6 +41340,30 @@
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
     },
+    "source_fact:0b92c8b04b037e6733517262": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04562486645609968",
+      "source": "이데일리",
+      "source_body_digest": "269d530fff21bb1fa71f68cc67a57085a15595bb89c43d74aa44075b02b4d65f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6d29a1de9d7617ce450cdc1507df46f4d1f2148ecc83468785edbbc1c477613",
+      "source_fact_keys": [
+        "source_fact:v1:2a617e3a0f3334414d2d98342966ce76b5200f63d39941ad5e6c5c4ad0ca6a5d",
+        "source_fact:v1:2eea1744b228833080700e3c9c4ea815142bda62d3525919c6d6e2ef28264c70",
+        "source_fact:v1:605463bce880b4ee406c027c50374b3b166f787254fb25913819b371ca183e42",
+        "source_fact:v1:60f465d2f22624fb443b7e3bb96728cfa7516adbb8693b665cbe89f939003c7c",
+        "source_fact:v1:b0c80d7b9214ea3514f9ef730a27cfef9f0c6d113f8068ebbcdec31a52c2f0c7",
+        "source_fact:v1:c4e086fed79be39c615ec1b60032bfa6a367cb76148ac85361217a3d902f4186",
+        "source_fact:v1:d3b120563171147b9c875f65f498155812ac41c4c56a19dc641d7a0c4fc792d8",
+        "source_fact:v1:d4ddeb198422f49dadecb41f40c7f07175ab2c727b9a518bf290a6763adfba12"
+      ],
+      "source_published_kst": "2026-10-05T23:08+09:00",
+      "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
+    },
     "source_fact:0c7cc374448d49ad50e98708": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
       "lanes": {
@@ -41322,6 +41526,30 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "KAIST, 데이터 추가·삭제에도 검색 정확도 유지하는 'CONDA' 개발"
+    },
+    "source_fact:12b70517195b31b38ee58bd3": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04562486645609968",
+      "source": "이데일리",
+      "source_body_digest": "269d530fff21bb1fa71f68cc67a57085a15595bb89c43d74aa44075b02b4d65f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6d29a1de9d7617ce450cdc1507df46f4d1f2148ecc83468785edbbc1c477613",
+      "source_fact_keys": [
+        "source_fact:v1:2a617e3a0f3334414d2d98342966ce76b5200f63d39941ad5e6c5c4ad0ca6a5d",
+        "source_fact:v1:2eea1744b228833080700e3c9c4ea815142bda62d3525919c6d6e2ef28264c70",
+        "source_fact:v1:605463bce880b4ee406c027c50374b3b166f787254fb25913819b371ca183e42",
+        "source_fact:v1:60f465d2f22624fb443b7e3bb96728cfa7516adbb8693b665cbe89f939003c7c",
+        "source_fact:v1:b0c80d7b9214ea3514f9ef730a27cfef9f0c6d113f8068ebbcdec31a52c2f0c7",
+        "source_fact:v1:c4e086fed79be39c615ec1b60032bfa6a367cb76148ac85361217a3d902f4186",
+        "source_fact:v1:d3b120563171147b9c875f65f498155812ac41c4c56a19dc641d7a0c4fc792d8",
+        "source_fact:v1:d4ddeb198422f49dadecb41f40c7f07175ab2c727b9a518bf290a6763adfba12"
+      ],
+      "source_published_kst": "2026-10-05T23:08+09:00",
+      "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
     },
     "source_fact:133e9cb9a8a1f205ae4ce682": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -41939,6 +42167,30 @@
       ],
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
+    },
+    "source_fact:237a531b061389d59764c34c": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04562486645609968",
+      "source": "이데일리",
+      "source_body_digest": "269d530fff21bb1fa71f68cc67a57085a15595bb89c43d74aa44075b02b4d65f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6d29a1de9d7617ce450cdc1507df46f4d1f2148ecc83468785edbbc1c477613",
+      "source_fact_keys": [
+        "source_fact:v1:2a617e3a0f3334414d2d98342966ce76b5200f63d39941ad5e6c5c4ad0ca6a5d",
+        "source_fact:v1:2eea1744b228833080700e3c9c4ea815142bda62d3525919c6d6e2ef28264c70",
+        "source_fact:v1:605463bce880b4ee406c027c50374b3b166f787254fb25913819b371ca183e42",
+        "source_fact:v1:60f465d2f22624fb443b7e3bb96728cfa7516adbb8693b665cbe89f939003c7c",
+        "source_fact:v1:b0c80d7b9214ea3514f9ef730a27cfef9f0c6d113f8068ebbcdec31a52c2f0c7",
+        "source_fact:v1:c4e086fed79be39c615ec1b60032bfa6a367cb76148ac85361217a3d902f4186",
+        "source_fact:v1:d3b120563171147b9c875f65f498155812ac41c4c56a19dc641d7a0c4fc792d8",
+        "source_fact:v1:d4ddeb198422f49dadecb41f40c7f07175ab2c727b9a518bf290a6763adfba12"
+      ],
+      "source_published_kst": "2026-10-05T23:08+09:00",
+      "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
     },
     "source_fact:23ce17f0b68f8e91a3d100ab": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -44588,6 +44840,27 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:5a4a4f8a871cb1823b7e7a22": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000019993",
+      "source": "국민일보",
+      "source_body_digest": "60b5f9c9d0753f21c559672b678a73123ba8677229314ea90eb4e82532176c98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7dddb4bc4484d5692b49ce4bca18b3e576e74ec6565b446d1ac0e3fcab6d1e01",
+      "source_fact_keys": [
+        "source_fact:v1:24aca898a6c18777119080443e7ef44385dc46b0606582df72405ea2d5e733ff",
+        "source_fact:v1:3fc3cd6ceeda4a5cca50ea69fd75f91d933122ee2904a130dc71db74802a40d6",
+        "source_fact:v1:51b7b5a52b79a30a1e78cbf8400073cfe9c96a57134844c3097f0a16a0cfc624",
+        "source_fact:v1:698b25ab4e226048a6434eef7b3c14e9e0fe33591222e5431f7cf85a08d9d313",
+        "source_fact:v1:bbf77944babf9a685261ee55a78b8de7f94c45d9870621a0de1a84fd37609282"
+      ],
+      "source_published_kst": "2026-10-06T00:04+09:00",
+      "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
+    },
     "source_fact:5a654d24d0edb865241ce5c7": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
       "lanes": {
@@ -44957,6 +45230,27 @@
       ],
       "source_published_kst": "2026-10-05T21:54+09:00",
       "title": "비트마인 이머전 테크놀로, ETH 602만개 보유..총자산 174억 달러"
+    },
+    "source_fact:603fe47283fa155a1d57da60": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000019993",
+      "source": "국민일보",
+      "source_body_digest": "60b5f9c9d0753f21c559672b678a73123ba8677229314ea90eb4e82532176c98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7dddb4bc4484d5692b49ce4bca18b3e576e74ec6565b446d1ac0e3fcab6d1e01",
+      "source_fact_keys": [
+        "source_fact:v1:24aca898a6c18777119080443e7ef44385dc46b0606582df72405ea2d5e733ff",
+        "source_fact:v1:3fc3cd6ceeda4a5cca50ea69fd75f91d933122ee2904a130dc71db74802a40d6",
+        "source_fact:v1:51b7b5a52b79a30a1e78cbf8400073cfe9c96a57134844c3097f0a16a0cfc624",
+        "source_fact:v1:698b25ab4e226048a6434eef7b3c14e9e0fe33591222e5431f7cf85a08d9d313",
+        "source_fact:v1:bbf77944babf9a685261ee55a78b8de7f94c45d9870621a0de1a84fd37609282"
+      ],
+      "source_published_kst": "2026-10-06T00:04+09:00",
+      "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
     },
     "source_fact:60c016f1339616aa91bd6025": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -46924,6 +47218,27 @@
       "source_published_kst": "2026-10-05T19:55+09:00",
       "title": "[美특징주]인텔, 개장 전 4%↓…머스크의 테라팹-TSMC 협력 논의"
     },
+    "source_fact:85bb168eb482a0835126a24f": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000019993",
+      "source": "국민일보",
+      "source_body_digest": "60b5f9c9d0753f21c559672b678a73123ba8677229314ea90eb4e82532176c98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7dddb4bc4484d5692b49ce4bca18b3e576e74ec6565b446d1ac0e3fcab6d1e01",
+      "source_fact_keys": [
+        "source_fact:v1:24aca898a6c18777119080443e7ef44385dc46b0606582df72405ea2d5e733ff",
+        "source_fact:v1:3fc3cd6ceeda4a5cca50ea69fd75f91d933122ee2904a130dc71db74802a40d6",
+        "source_fact:v1:51b7b5a52b79a30a1e78cbf8400073cfe9c96a57134844c3097f0a16a0cfc624",
+        "source_fact:v1:698b25ab4e226048a6434eef7b3c14e9e0fe33591222e5431f7cf85a08d9d313",
+        "source_fact:v1:bbf77944babf9a685261ee55a78b8de7f94c45d9870621a0de1a84fd37609282"
+      ],
+      "source_published_kst": "2026-10-06T00:04+09:00",
+      "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
+    },
     "source_fact:85f8c347b3cf304cd25b4332": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -47819,6 +48134,30 @@
       "source_published_kst": "2026-10-05T21:05+09:00",
       "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
     },
+    "source_fact:9b2c3ea35701a49d7c7a7ee8": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04562486645609968",
+      "source": "이데일리",
+      "source_body_digest": "269d530fff21bb1fa71f68cc67a57085a15595bb89c43d74aa44075b02b4d65f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6d29a1de9d7617ce450cdc1507df46f4d1f2148ecc83468785edbbc1c477613",
+      "source_fact_keys": [
+        "source_fact:v1:2a617e3a0f3334414d2d98342966ce76b5200f63d39941ad5e6c5c4ad0ca6a5d",
+        "source_fact:v1:2eea1744b228833080700e3c9c4ea815142bda62d3525919c6d6e2ef28264c70",
+        "source_fact:v1:605463bce880b4ee406c027c50374b3b166f787254fb25913819b371ca183e42",
+        "source_fact:v1:60f465d2f22624fb443b7e3bb96728cfa7516adbb8693b665cbe89f939003c7c",
+        "source_fact:v1:b0c80d7b9214ea3514f9ef730a27cfef9f0c6d113f8068ebbcdec31a52c2f0c7",
+        "source_fact:v1:c4e086fed79be39c615ec1b60032bfa6a367cb76148ac85361217a3d902f4186",
+        "source_fact:v1:d3b120563171147b9c875f65f498155812ac41c4c56a19dc641d7a0c4fc792d8",
+        "source_fact:v1:d4ddeb198422f49dadecb41f40c7f07175ab2c727b9a518bf290a6763adfba12"
+      ],
+      "source_published_kst": "2026-10-05T23:08+09:00",
+      "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
+    },
     "source_fact:9bc55dc197dbc40402e1ffa4": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -48514,6 +48853,30 @@
       "source_published_kst": "2026-10-05T16:41+09:00",
       "title": "에비던트, 크레스트옵틱스 인수 완료"
     },
+    "source_fact:a9dbe901d2dc62198c8045d0": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04562486645609968",
+      "source": "이데일리",
+      "source_body_digest": "269d530fff21bb1fa71f68cc67a57085a15595bb89c43d74aa44075b02b4d65f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6d29a1de9d7617ce450cdc1507df46f4d1f2148ecc83468785edbbc1c477613",
+      "source_fact_keys": [
+        "source_fact:v1:2a617e3a0f3334414d2d98342966ce76b5200f63d39941ad5e6c5c4ad0ca6a5d",
+        "source_fact:v1:2eea1744b228833080700e3c9c4ea815142bda62d3525919c6d6e2ef28264c70",
+        "source_fact:v1:605463bce880b4ee406c027c50374b3b166f787254fb25913819b371ca183e42",
+        "source_fact:v1:60f465d2f22624fb443b7e3bb96728cfa7516adbb8693b665cbe89f939003c7c",
+        "source_fact:v1:b0c80d7b9214ea3514f9ef730a27cfef9f0c6d113f8068ebbcdec31a52c2f0c7",
+        "source_fact:v1:c4e086fed79be39c615ec1b60032bfa6a367cb76148ac85361217a3d902f4186",
+        "source_fact:v1:d3b120563171147b9c875f65f498155812ac41c4c56a19dc641d7a0c4fc792d8",
+        "source_fact:v1:d4ddeb198422f49dadecb41f40c7f07175ab2c727b9a518bf290a6763adfba12"
+      ],
+      "source_published_kst": "2026-10-05T23:08+09:00",
+      "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
+    },
     "source_fact:aa12be83399ec55c5239cec3": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -49106,6 +49469,27 @@
       ],
       "source_published_kst": "2026-10-05T18:43+09:00",
       "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
+    },
+    "source_fact:bb472372a84b50d9323ed8ed": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000019993",
+      "source": "국민일보",
+      "source_body_digest": "60b5f9c9d0753f21c559672b678a73123ba8677229314ea90eb4e82532176c98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7dddb4bc4484d5692b49ce4bca18b3e576e74ec6565b446d1ac0e3fcab6d1e01",
+      "source_fact_keys": [
+        "source_fact:v1:24aca898a6c18777119080443e7ef44385dc46b0606582df72405ea2d5e733ff",
+        "source_fact:v1:3fc3cd6ceeda4a5cca50ea69fd75f91d933122ee2904a130dc71db74802a40d6",
+        "source_fact:v1:51b7b5a52b79a30a1e78cbf8400073cfe9c96a57134844c3097f0a16a0cfc624",
+        "source_fact:v1:698b25ab4e226048a6434eef7b3c14e9e0fe33591222e5431f7cf85a08d9d313",
+        "source_fact:v1:bbf77944babf9a685261ee55a78b8de7f94c45d9870621a0de1a84fd37609282"
+      ],
+      "source_published_kst": "2026-10-06T00:04+09:00",
+      "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
     },
     "source_fact:bb73498e9695225ca2a0c437": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -50265,6 +50649,30 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "source_fact:d9776a1e69898a540fad77a3": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04562486645609968",
+      "source": "이데일리",
+      "source_body_digest": "269d530fff21bb1fa71f68cc67a57085a15595bb89c43d74aa44075b02b4d65f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6d29a1de9d7617ce450cdc1507df46f4d1f2148ecc83468785edbbc1c477613",
+      "source_fact_keys": [
+        "source_fact:v1:2a617e3a0f3334414d2d98342966ce76b5200f63d39941ad5e6c5c4ad0ca6a5d",
+        "source_fact:v1:2eea1744b228833080700e3c9c4ea815142bda62d3525919c6d6e2ef28264c70",
+        "source_fact:v1:605463bce880b4ee406c027c50374b3b166f787254fb25913819b371ca183e42",
+        "source_fact:v1:60f465d2f22624fb443b7e3bb96728cfa7516adbb8693b665cbe89f939003c7c",
+        "source_fact:v1:b0c80d7b9214ea3514f9ef730a27cfef9f0c6d113f8068ebbcdec31a52c2f0c7",
+        "source_fact:v1:c4e086fed79be39c615ec1b60032bfa6a367cb76148ac85361217a3d902f4186",
+        "source_fact:v1:d3b120563171147b9c875f65f498155812ac41c4c56a19dc641d7a0c4fc792d8",
+        "source_fact:v1:d4ddeb198422f49dadecb41f40c7f07175ab2c727b9a518bf290a6763adfba12"
+      ],
+      "source_published_kst": "2026-10-05T23:08+09:00",
+      "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
+    },
     "source_fact:da98718751333946deba1761": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -50410,6 +50818,30 @@
       ],
       "source_published_kst": "2026-10-05T22:27+09:00",
       "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
+    },
+    "source_fact:dea08dab22c35407fdae4815": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04562486645609968",
+      "source": "이데일리",
+      "source_body_digest": "269d530fff21bb1fa71f68cc67a57085a15595bb89c43d74aa44075b02b4d65f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6d29a1de9d7617ce450cdc1507df46f4d1f2148ecc83468785edbbc1c477613",
+      "source_fact_keys": [
+        "source_fact:v1:2a617e3a0f3334414d2d98342966ce76b5200f63d39941ad5e6c5c4ad0ca6a5d",
+        "source_fact:v1:2eea1744b228833080700e3c9c4ea815142bda62d3525919c6d6e2ef28264c70",
+        "source_fact:v1:605463bce880b4ee406c027c50374b3b166f787254fb25913819b371ca183e42",
+        "source_fact:v1:60f465d2f22624fb443b7e3bb96728cfa7516adbb8693b665cbe89f939003c7c",
+        "source_fact:v1:b0c80d7b9214ea3514f9ef730a27cfef9f0c6d113f8068ebbcdec31a52c2f0c7",
+        "source_fact:v1:c4e086fed79be39c615ec1b60032bfa6a367cb76148ac85361217a3d902f4186",
+        "source_fact:v1:d3b120563171147b9c875f65f498155812ac41c4c56a19dc641d7a0c4fc792d8",
+        "source_fact:v1:d4ddeb198422f49dadecb41f40c7f07175ab2c727b9a518bf290a6763adfba12"
+      ],
+      "source_published_kst": "2026-10-05T23:08+09:00",
+      "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
     },
     "source_fact:def07dfb5ffd4fc86a2d3cbc": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -51330,6 +51762,27 @@
       ],
       "source_published_kst": "2026-10-05T23:40+09:00",
       "title": "美 서비스 물가 4년 만에 최고치…고용도 다시 확장세"
+    },
+    "source_fact:f576233ea231f7ffcf838c9f": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000019993",
+      "source": "국민일보",
+      "source_body_digest": "60b5f9c9d0753f21c559672b678a73123ba8677229314ea90eb4e82532176c98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7dddb4bc4484d5692b49ce4bca18b3e576e74ec6565b446d1ac0e3fcab6d1e01",
+      "source_fact_keys": [
+        "source_fact:v1:24aca898a6c18777119080443e7ef44385dc46b0606582df72405ea2d5e733ff",
+        "source_fact:v1:3fc3cd6ceeda4a5cca50ea69fd75f91d933122ee2904a130dc71db74802a40d6",
+        "source_fact:v1:51b7b5a52b79a30a1e78cbf8400073cfe9c96a57134844c3097f0a16a0cfc624",
+        "source_fact:v1:698b25ab4e226048a6434eef7b3c14e9e0fe33591222e5431f7cf85a08d9d313",
+        "source_fact:v1:bbf77944babf9a685261ee55a78b8de7f94c45d9870621a0de1a84fd37609282"
+      ],
+      "source_published_kst": "2026-10-06T00:04+09:00",
+      "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
     },
     "source_fact:f66b0d1f25af4c66a1fcca49": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -53871,6 +54324,27 @@
       "link": "https://www.dt.co.kr/article/12087236",
       "source": "디지털타임스",
       "title": "암살자(들) 투자한 기업은행·산업은행 “외부 요청 없었다”"
+    },
+    "title:21e58bb07af871a4a31f1c07": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000019993",
+      "source": "국민일보",
+      "source_body_digest": "60b5f9c9d0753f21c559672b678a73123ba8677229314ea90eb4e82532176c98",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7dddb4bc4484d5692b49ce4bca18b3e576e74ec6565b446d1ac0e3fcab6d1e01",
+      "source_fact_keys": [
+        "source_fact:v1:24aca898a6c18777119080443e7ef44385dc46b0606582df72405ea2d5e733ff",
+        "source_fact:v1:3fc3cd6ceeda4a5cca50ea69fd75f91d933122ee2904a130dc71db74802a40d6",
+        "source_fact:v1:51b7b5a52b79a30a1e78cbf8400073cfe9c96a57134844c3097f0a16a0cfc624",
+        "source_fact:v1:698b25ab4e226048a6434eef7b3c14e9e0fe33591222e5431f7cf85a08d9d313",
+        "source_fact:v1:bbf77944babf9a685261ee55a78b8de7f94c45d9870621a0de1a84fd37609282"
+      ],
+      "source_published_kst": "2026-10-06T00:04+09:00",
+      "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
     },
     "title:22532471b5b750da4d55a26b": {
       "first_seen_kst": "2026-10-04T06:34:33+09:00",
@@ -66909,6 +67383,30 @@
       "source": "조선비즈",
       "title": "한국벤처투자, 아모레퍼시픽홀딩스와 화장품 기업 육성 맞손"
     },
+    "title:e8f45ad22440f71296ad1c26": {
+      "first_seen_kst": "2026-10-06T00:33:34+09:00",
+      "lanes": {
+        "live": "2026-10-06T00:33:34+09:00"
+      },
+      "last_seen_kst": "2026-10-06T00:33:34+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04562486645609968",
+      "source": "이데일리",
+      "source_body_digest": "269d530fff21bb1fa71f68cc67a57085a15595bb89c43d74aa44075b02b4d65f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e6d29a1de9d7617ce450cdc1507df46f4d1f2148ecc83468785edbbc1c477613",
+      "source_fact_keys": [
+        "source_fact:v1:2a617e3a0f3334414d2d98342966ce76b5200f63d39941ad5e6c5c4ad0ca6a5d",
+        "source_fact:v1:2eea1744b228833080700e3c9c4ea815142bda62d3525919c6d6e2ef28264c70",
+        "source_fact:v1:605463bce880b4ee406c027c50374b3b166f787254fb25913819b371ca183e42",
+        "source_fact:v1:60f465d2f22624fb443b7e3bb96728cfa7516adbb8693b665cbe89f939003c7c",
+        "source_fact:v1:b0c80d7b9214ea3514f9ef730a27cfef9f0c6d113f8068ebbcdec31a52c2f0c7",
+        "source_fact:v1:c4e086fed79be39c615ec1b60032bfa6a367cb76148ac85361217a3d902f4186",
+        "source_fact:v1:d3b120563171147b9c875f65f498155812ac41c4c56a19dc641d7a0c4fc792d8",
+        "source_fact:v1:d4ddeb198422f49dadecb41f40c7f07175ab2c727b9a518bf290a6763adfba12"
+      ],
+      "source_published_kst": "2026-10-05T23:08+09:00",
+      "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
+    },
     "title:e8ff735e56e59fda321510b9": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
       "lanes": {
@@ -68315,5 +68813,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T00:26:07+09:00"
+  "updated_at_kst": "2026-10-06T00:33:34+09:00"
 }
