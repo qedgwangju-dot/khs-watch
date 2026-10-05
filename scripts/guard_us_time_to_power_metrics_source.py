@@ -327,7 +327,9 @@ def collect_supplier_official_updates():
                 "url": href,
                 "source": source,
                 "stage": stage_of(title),
-                "scale_mw": extract_scale_mw(title),
+                # Equipment-supplier headlines can mention a component/module MW rating.
+                # Do not present that number as the data-center project's capacity.
+                "scale_mw": 0.0,
             })
     return list({x["id"]: x for x in out}.values())
 
@@ -893,7 +895,7 @@ vinatech_links_new = '''    msg.append(f"• {a('LS ELECTRIC 데이터센터 전
 if vinatech_links_old in t:
     t = t.replace(vinatech_links_old, vinatech_links_new, 1)
 
-t = t.replace("FORMAT_VERSION = 5", "FORMAT_VERSION = 6", 1)
+t = t.replace("FORMAT_VERSION = 5", "FORMAT_VERSION = 7", 1)
 g.write_text(t, encoding="utf-8")
 print("US generation watcher recurring-capex + power-gap + global-grid + Bloom supplier guard inserted")
 
