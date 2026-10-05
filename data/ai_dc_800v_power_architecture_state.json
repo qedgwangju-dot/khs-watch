@@ -1,6 +1,6 @@
 {
   "initialized": true,
-  "format_version": 1,
+  "format_version": 2,
   "facts": {
     "architecture": {
       "nvidia_hybrid_power_rack_h2_2026": true,
@@ -26,9 +26,10 @@
         "system_scope": true
       },
       "Eaton": {
-        "stage": "확인 불가",
+        "stage": "공식 Eaton 기준선·NVIDIA 재확인 필요",
         "standards_signal": null,
-        "legacy_ac_bridge": null
+        "legacy_ac_bridge": null,
+        "source_mode": "Eaton 공식 2025 참조 아키텍처 기준값 + NVIDIA 공식 파트너 목록 실시간 교차확인"
       },
       "Hitachi Energy": {
         "stage": "Vera Rubin DSX 통합·시뮬레이션",
@@ -49,14 +50,14 @@
       }
     },
     "market": {
-      "official_multi_vendor_800v_count": 5,
+      "official_multi_vendor_800v_count": 6,
       "hybrid_bridge_confirmed": true,
       "native_facility_800v_mass_adoption_confirmed": false,
       "technology_only_moat": "낮음/미확정",
       "moat_check_basis": "OCP 공개 표준 + 다수 공식 공급사. 실제 해자는 양산·안전인증·통합 EPC·제어/운영SW·서비스에서 재검증",
       "jpm_user_note_status": "사용자 제공 리서치 요약은 독립 공식 원문 미확보라 알림 트리거 기준으로 사용하지 않음"
     },
-    "digest": "0067669fd5ab9a97bb1099baa5d170e4e59a6ce79b44258c6a8f5dfea59f89cf"
+    "digest": "ee2454f376f2b25b29aae26358a94e34b34967cb206c10dda11f8c72995e185f"
   },
   "source_cache": {
     "nvidia_blog": {
@@ -115,14 +116,15 @@
       "url": "https://www.delta-singapore.com/en-SG/news/40267"
     }
   },
-  "source_errors": [
-    "eaton: ReadTimeout"
-  ],
+  "source_errors": [],
   "fx": {
     "usdkrw": 1348.28,
-    "basis": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-05 21:55 KST · 보조 API 2026-10-05 · 차이 0.27% · 일중 기준시각 차이 가능",
+    "basis": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-05 21:58 KST · 보조 API 2026-10-05 · 차이 0.27% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter"
   },
-  "last_changes": [],
-  "updated_at_utc": "2026-10-05T12:55:52+00:00"
+  "last_changes": [
+    "Eaton 800 VDC 단계 확인 불가→공식 Eaton 기준선·NVIDIA 재확인 필요",
+    "공식 800 VDC 직접 참여 공급사 수 5→6"
+  ],
+  "updated_at_utc": "2026-10-05T12:58:47+00:00"
 }
