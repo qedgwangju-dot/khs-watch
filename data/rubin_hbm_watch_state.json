@@ -640,13 +640,15 @@
   },
   "_delivery": {
     "id": "cf15290a1756cb8bc1a48a2cf7a35d37f73f36b998f067e460aa7fd272e25438",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-10-05T22:07:42+09:00",
     "chunks": [
       "<b>⚠️ AI 부품 리드타임 감시 — 10/5 원본 표 재대조</b>\n\nTrendForce Weekly Radar 004 원본 표와 저장값을 다시 대조해 파서 누락·이월값을 바로잡았습니다.\n• <b>DRAM 상태 정정:</b> 공급 제약 → 심각한 공급 부족 (현재 20주 / 균형 8주)\n• <b>MLCC 최신값:</b> 32주 → 35주 · +3주 / 균형 12주\n\n<b>10/5 확정 표 — 7개 품목</b>\n• <b>심각:</b> DRAM 20주/8주 (2.5배) · HDD 50주/16주 (3.1배) · ABF 48~56주/12주 (4.3배)\n• <b>제약:</b> CPU 25~30주/16~20주 (1.5배) · NAND(eSSD) 16주/8주 (2.0배) · MLCC 35주/12주 (2.9배)\n• <b>균형:</b> GPU 30~40주/30~40주 (1.0배)\n\n<b>원인·시간표 업데이트</b>\n• <b>CPU:</b> AI 추론 부하가 서버 CPU 수요를 지지하며 공급 제약이 지속\n• <b>GPU:</b> Blackwell은 2026년 주력 출하·수요 1H27 연장, Rubin은 시스템 테스트·검증 이슈로 4Q26~1Q27부터 점진 램프\n• <b>DRAM:</b> 4Q26 계약가격 협상에서 인상 신호가 이어지고 미국 CSP 수요가 견조\n• <b>NAND(eSSD):</b> DRAM 부족이 일부 NAND 업체의 기업용 SSD 지원 능력까지 제약\n• <b>HDD:</b> Toshiba 증설은 가동까지 12~24개월이 필요해 납기 완화는 빨라도 2027년 말\n• <b>ABF:</b> 수급 격차가 단기간 닫히기 어렵고 3Q26~4Q27 장기계약 가격은 분기당 10~15% 인상 전망\n• <b>MLCC:</b> 저가 소비자용은 둔화하지만 AI용 고급 0805는 부족해 수요 양극화\n\n• 교차검증: TrendForce 공식 Weekly Radar 004는 DRAM 20주/균형 8주·Very Tight를 명시하고, 9/30 공식 메모리 자료는 4Q26 서버 DRAM·기업용 SSD의 공급 제약을 별도로 확인합니다.\n• <a href=\"https://insights.trendforce.com/p/weekly-radar-004\">TrendForce 원문</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      236
+    ],
     "candidate": {
       "updated_at_kst": "2026-10-05T22:06:54+09:00",
       "seen_ids": [
