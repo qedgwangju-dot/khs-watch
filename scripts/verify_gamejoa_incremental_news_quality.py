@@ -23,6 +23,9 @@ ROOT = Path(__file__).resolve().parent.parent
 NOW = dt.datetime(2026, 10, 5, 18, 0, tzinfo=dt.timezone(dt.timedelta(hours=9)))
 FIXTURE = json.loads((ROOT / "data/gamejoa_incremental_news_fixtures_20261005.json").read_text(encoding="utf-8"))
 CASES = {case["id"]: case for case in FIXTURE["cases"]}
+LIVE_FIXTURE = json.loads((ROOT / "data/gamejoa_live_selection_fixtures_20261005.json").read_text(encoding="utf-8"))
+LIVE_CASES = {case["id"]: case for case in LIVE_FIXTURE["cases"]}
+LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
 PUBLISHERS = {"yna.co.kr": "연합뉴스", "hankyung.com": "한국경제", "etnews.com": "전자신문",
@@ -35,13 +38,13 @@ def alert(title="AMD·삼성전자, AI 반도체 공급 계약 체결", body=CON
             "korean_business_news": True, "published": NOW.isoformat(), "publisher": "전자신문", "link": url}
 
 
-def classify(case):
+def classify(case, now=NOW):
     return production.contract.strict.classify({
         "title": case["title"], "source_title": case["title"], "source_body": case["body"],
         "source_abstract": case["body"], "body_verified": True, "layer": "trusted",
         "published": radar.base.parse_date(case["published"]), "link": case["url"],
         "publisher": next((name for host, name in PUBLISHERS.items() if host in case["url"]), ""),
-    }, NOW)
+    }, now)
 
 
 def eligible(title, body):
@@ -63,6 +66,67 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def test_remote_generated_report_is_replayed_with_source_bodies(self):
+        self.assertEqual(len(LIVE_CASES), 6)
+        for case in LIVE_CASES.values():
+            candidate = classify(case, LIVE_NOW)
+            with patch.object(radar.base, "kst_now", return_value=LIVE_NOW):
+                selected = radar.quality_display_alerts([candidate], 30) if candidate else []
+            with self.subTest(case=case["id"]):
+                self.assertEqual(bool(selected), case["expected_keep"])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+                    self.assertTrue(radar.core_sentence_is_complete(selected[0]["telegram_core_fact"]))
+
+    def test_acquisition_talks_never_become_a_confirmed_purchase(self):
+        case = LIVE_CASES["acquisition_talks"]
+        item = radar.normalize_alert_for_output(classify(case, LIVE_NOW))
+        for term in ("슈나이더 일렉트릭", "PTC", "200억달러", "논의 중", "보도됐다"):
+            self.assertIn(term, item["telegram_core_fact"])
+        self.assertIn("acquisition_negotiation_reported_as_confirmed", radar.source_core_fact_errors({**item, "telegram_core_fact": case["old_core"]}))
+
+    def test_acquisition_summary_is_bound_to_other_source_parties_and_amount(self):
+        title = "브로드컴, 소프트웨어 기업 인수 협상"
+        body = "브로드컴은 XYZ를 약 50억달러에 인수한다. 로이터는 브로드컴이 XYZ를 인수하는 방안을 논의 중이라고 보도했다."
+        fact = radar.acquisition_negotiation_fact(title, body)
+        for term in ("브로드컴", "XYZ", "50억달러", "논의 중"):
+            self.assertIn(term, fact)
+        self.assertNotIn("PTC", fact)
+
+    def test_completed_transaction_is_not_downgraded_to_earlier_talks(self):
+        self.assertFalse(radar.acquisition_negotiation_fact(
+            "브로드컴, XYZ 인수 완료", "로이터는 브로드컴이 XYZ를 인수하는 방안을 논의 중이라고 보도했다. 브로드컴은 XYZ 인수를 완료했다고 발표했다.",
+        ))
+
+    def test_earnings_core_uses_the_headline_metric_and_retains_forecast(self):
+        case = LIVE_CASES["earnings_consensus"]
+        item = radar.normalize_alert_for_output(classify(case, LIVE_NOW))
+        for term in ("에프앤가이드", "3분기", "영업이익 예상", "108조1312억원", "8일", "예정"):
+            self.assertIn(term, item["telegram_core_fact"])
+        self.assertTrue(radar.source_core_fact_errors({**item, "telegram_core_fact": case["old_core"]}))
+
+    def test_etf_core_names_the_launch_and_date_not_a_general_trend(self):
+        case = LIVE_CASES["named_etf_launch"]
+        item = radar.normalize_alert_for_output(classify(case, LIVE_NOW))
+        for term in ("KB자산운용", "20일", "RISE 반도체소부장액티브 ETF", "상장", "예정"):
+            self.assertIn(term, item["telegram_core_fact"])
+        self.assertFalse(eligible(case["title"], case["old_core"]))
+
+    def test_asian_market_core_retains_probability_change_and_index_close(self):
+        case = LIVE_CASES["asian_market_response"]
+        item = radar.normalize_alert_for_output(classify(case, LIVE_NOW))
+        for term in ("CME 페드워치", "64%", "20% 미만", "닛케이225", "2.40%", "상승 마감"):
+            self.assertIn(term, item["telegram_core_fact"])
+        self.assertTrue(radar.source_core_fact_errors({**item, "telegram_core_fact": case["old_core"]}))
+
+    def test_partial_sovereign_issuance_article_cannot_use_fx_background(self):
+        case = LIVE_CASES["partial_sovereign_issuance"]
+        self.assertFalse(eligible(case["title"], radar.article_summary_body(case["body"])))
+        self.assertFalse(materiality.core_focus_aligned(case["title"], case["old_core"]))
+
+    def test_actual_new_bank_rate_action_remains_eligible(self):
+        self.assertTrue(eligible("은행 주담대 금리 더 오르나[금리 쇼크]", "은행은 주담대 금리를 0.2%포인트 인상했다고 발표했다."))
+
     def test_all_ten_originals_are_bound_and_hashed(self):
         self.assertEqual(FIXTURE["original_count"], 10)
         self.assertEqual(len(CASES), 10)
@@ -204,6 +268,12 @@ class IncrementalNewsTests(unittest.TestCase):
         second = alert(body=CONTRACT_BODY + ADDITIONAL_FACT)
         self.assertNotEqual(materiality.verified_source_fact_identity(first), materiality.verified_source_fact_identity(second))
 
+    def test_related_news_cannot_invent_a_new_event_identity(self):
+        first = alert()
+        footer = alert(body=CONTRACT_BODY + "\n관련 뉴스\n" + ADDITIONAL_FACT)
+        self.assertEqual(materiality.verified_source_fact_identity(first), materiality.verified_source_fact_identity(footer))
+        self.assertEqual(materiality.verified_source_fact_keys(first), materiality.verified_source_fact_keys(footer))
+
     def test_shorter_wire_copy_does_not_repeat_previously_sent_facts(self):
         with tempfile.TemporaryDirectory() as folder, patch.object(telegram, "SEEN_PATH", Path(folder) / "seen.json"), patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
             telegram.record_seen_alerts([alert(body=CONTRACT_BODY + ADDITIONAL_FACT)], NOW)
@@ -279,7 +349,8 @@ if __name__ == "__main__":
     output = {"passed": result.wasSuccessful(), "tests": result.testsRun, "materiality_version": materiality.VERSION,
               "original_count": 10, "unique_article_count": 10, "unique_event_count": FIXTURE["unique_event_count"],
               "eligible_unique_events": 2, "excluded_unique_events": 6, "event_groups": FIXTURE["event_groups"], "external_delivery": False,
-              "seen_state_modified": False, "cases": replay()}
+              "seen_state_modified": False, "cases": replay(), "remote_replay_run_id": LIVE_FIXTURE["run_id"],
+              "remote_replay_articles": len(LIVE_CASES)}
     path = ROOT / "out/gamejoa_incremental_news_verification.json"
     path.parent.mkdir(exist_ok=True)
     path.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

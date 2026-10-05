@@ -2491,9 +2491,57 @@ def compensation_cost_forecast_fact(title: str, body: str) -> str:
     return ""
 
 
+def acquisition_negotiation_fact(title: str, body: str) -> str:
+    if market_materiality.focus_kind(title) != "ownership" or not re.search(r"인수|합병", title):
+        return ""
+    if re.search(r"완료|계약\s*체결|인수\s*확정|합병\s*성사", title):
+        return ""
+    issuer = re.match(r"^([^,，]{2,40})[,，]", title)
+    if not issuer:
+        return ""
+    buyer = issuer.group(1).strip()
+    source = article_summary_body(body)
+    talks = re.search(
+        rf"{re.escape(buyer)}(?:이|가|은|는)\s+([A-Za-z0-9가-힣&·-]+)(?:을|를)\s*"
+        r"인수하는\s*방안을\s*논의\s*중", source,
+    )
+    if not talks:
+        return ""
+    target = talks.group(1)
+    terms = re.search(
+        rf"{re.escape(target)}(?:을|를)\s*(약\s*)?(\d[\d,.]*\s*(?:(?:조|억|만|천)\s*)*(?:달러|유로|원))"
+        r"(?:\([^)]{0,60}\))?에\s*인수", source,
+    )
+    amount = f"{terms.group(1) or ''}{terms.group(2)}에 " if terms else ""
+    attribution = "이라고 보도됐다" if re.search(r"소식통|보도했다|통신|파이낸셜타임스", source) else "이다"
+    fact = f"{buyer}{korean_topic_particle(buyer)} {target}를 {amount}인수하는 방안을 논의 중{attribution}."
+    return fact if core_sentence_is_complete(fact) else ""
+
+
 def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     focus = market_materiality.focus_kind(title)
+    negotiation = acquisition_negotiation_fact(title, "\n".join(sentences))
+    if negotiation:
+        return negotiation
+    if focus == "capital_listing" and "ETF" in title.upper():
+        for sentence in sentences:
+            if market_materiality.evidence_is_new_event("capital_listing_stage", sentence) and re.search(
+                r"ETF.{0,35}(?:상장|출시)|(?:상장|출시).{0,35}ETF", sentence, re.I,
+            ):
+                fact = normalized_article_sentence(sentence)
+                if core_sentence_is_complete(fact):
+                    return fact
+    if focus == "bond_yield" and re.search(r"닛케이|항셍|아시아증시", title):
+        source = " ".join(sentences)
+        probability = re.search(
+            r"연준의\s*이달\s*금리\s*인상\s*가능성은\s*현재\s*(\d+(?:\.\d+)?)%\s*미만으로,\s*"
+            r"일주일\s*전의\s*(\d+(?:\.\d+)?)%에서\s*크게\s*낮아졌다", source,
+        )
+        close = re.search(r"일본\s*닛케이225지수는\s*(\d+(?:\.\d+)?)%[^!?]{0,60}상승\s*마감했다", source)
+        if probability and close and re.search(r"CME\s*페드워치", source, re.I):
+            return (f"CME 페드워치상 연준의 이달 금리 인상 가능성은 {probability.group(2)}%에서 "
+                    f"{probability.group(1)}% 미만으로 낮아졌다. 닛케이225는 {close.group(1)}% 상승 마감했다.")
     if focus == "housing_supply_policy":
         for sentence in sentences:
             if market_materiality.focus_matches(title, sentence) and all(
@@ -3241,6 +3289,10 @@ def financial_headline_subject(title: str, source: str) -> str:
     match = re.match(r"^([A-Za-z0-9가-힣&·.-]{2,30})[,，\s]", head)
     if match and re.search(rf"{re.escape(match.group(1))}(?:은|는|이|가|의)\s", source):
         return match.group(1)
+    named = {name for name in re.findall(r"\b([A-Za-z0-9가-힣&·.-]{2,30})(?:은|는|이|가|의)(?=\s|\()", source)
+             if name in head and not re.search(r"분기|매출|실적|이익|전망|집계", name)}
+    if len(named) == 1:
+        return named.pop()
     return ""
 
 
@@ -3277,6 +3329,23 @@ def headline_financial_fact(title: str, body: str) -> str:
     if not subject or market_materiality.focus_kind(title) not in {"", "earnings"}:
         return ""
     sentences = market_materiality.source_sentences(body)
+    if re.search(r"영업(?:익|이익)", title):
+        for sentence in sentences:
+            quarter = re.search(rf"{re.escape(subject)}의\s*([1-4])분기", sentence)
+            profit = re.search(rf"영업이익(?:은|의\s*컨센서스는)\s*({KOREAN_WON_AMOUNT_PATTERN})", sentence)
+            if not quarter or not profit or not re.search(r"에프앤가이드.{0,30}집계|집계.{0,30}에프앤가이드", sentence):
+                continue
+            if not re.search(r"컨센서스", sentence):
+                continue
+            revenue = re.search(rf"매출액\s*컨센서스는\s*({KOREAN_WON_AMOUNT_PATTERN})", sentence)
+            fact = f"에프앤가이드 집계상 {subject} {quarter.group(1)}분기 영업이익 예상은 {profit.group(1)}이다."
+            if revenue:
+                fact += f" 매출 예상은 {revenue.group(1)}이다."
+            announcement = re.search(rf"{re.escape(subject)}(?:은|는)\s*오는\s*(\d{{1,2}})일\s*{quarter.group(1)}분기\s*잠정실적을\s*발표할\s*예정", body)
+            if announcement:
+                fact += f" 잠정실적은 {announcement.group(1)}일 발표 예정이다."
+            if core_sentence_is_complete(fact):
+                return fact
     for index, sentence in enumerate(sentences):
         if subject not in sentence or not re.search(r"(?:매출|판매량|영업이익|순이익).{0,80}(?:집계|기록|증가|감소|달성)", sentence):
             continue
@@ -10158,6 +10227,9 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if not source or not core:
         return []
     errors = []
+    negotiation = acquisition_negotiation_fact(title, source)
+    if negotiation and not re.search(r"논의\s*중|협상\s*중|검토\s*중", core):
+        errors.append("acquisition_negotiation_reported_as_confirmed")
     if re.match(r"^(?:출시|도입)\s*이후\s", core) and re.search(r"공급\s*계약|사업\s*수행기관", core):
         errors.append("commercial_contract_actor_missing")
     expected_commercial = contextual_commercial_fact(title, source)

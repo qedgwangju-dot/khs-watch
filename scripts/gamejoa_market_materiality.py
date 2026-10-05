@@ -11,7 +11,7 @@ from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 72
+VERSION = 73
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -176,7 +176,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("commercial_order", r"수주|공급\s*계약|납품\s*계약|발사\s*계약|\d+\s*년\s*계약(?!가)", r"수주|발주|계약"),
     ("industrial_program", r"(?:SMR|원전|양자|반도체|로봇).{0,16}상용화", r"(?:상용화|사업화).{0,50}(?:출범|지원|시행|추진)|(?:출범|지원|시행|추진).{0,50}(?:상용화|사업화)"),
     ("environmental_approval", r"환경(?:영향)?평가.{0,15}(?:통과|완료|면제)", r"최종\s*환경평가|FONSI|환경영향평가서.{0,35}(?:없이|면제)"),
-    ("ownership", r"지분.{0,25}(?:인수|매각|취득)|자산.{0,50}(?:인수|매각|취득)|(?:피?인수).{0,25}(?:지분|계약|완료)|인수로|회사\s*인수|(?:결합|합병).{0,12}완료|합병(?!원)|주식.{0,8}(?:판다|매도|매각)", r"지분|인수|매각|매도|취득|거래계획|결합|합병(?!원)|stake|acquir|merger"),
+    ("ownership", r"지분.{0,25}(?:인수|매각|취득)|자산.{0,50}(?:인수|매각|취득)|(?:피?인수).{0,25}(?:지분|계약|완료|협상|논의|검토|임박)|인수로|회사\s*인수|(?:결합|합병).{0,12}완료|합병(?!원)|주식.{0,8}(?:판다|매도|매각)", r"지분|인수|매각|매도|취득|거래계획|결합|합병(?!원)|stake|acquir|merger"),
     ("debt_repayment", r"부채.{0,15}상환|대출.{0,15}상환|debt repayment", r"부채|대출|상환|debt|repay"),
     ("equity_compensation", r"주식\s*보상|주식\s*인센티브|성과연동주식|양도제한조건부주식|stock.based compensation|equity compensation", r"주식\s*보상|성과연동주식|양도제한조건부주식|\bPSP\b|\bRSU\b|stock.based compensation|equity compensation"),
     ("labor_negotiation", r"임단협|임금.{0,12}(?:협상|합의)|단체협약", r"임단협|임금|단체협약|잠정합의안|교섭"),
@@ -296,6 +296,8 @@ def focus_kind(title: str) -> str:
             return kind
     if re.search(r"ETF.{0,15}(?:출시|상장)", title or "", re.I):
         return "capital_listing"
+    if re.search(r"국고채\s*발행.{0,15}(?:축소|확대|증가|감소)", title or ""):
+        return "sovereign_issuance"
     if re.search(r"자금\s*조달|외부\s*자본|funding|financing", title or "", re.I):
         return "financing"
     if re.search(r"성과급|보상\s*비용", title or "") and re.search(r"매출|이익|마진|수익성|실적", title or ""):
@@ -316,6 +318,20 @@ def focus_matches(title: str, sentence: str) -> bool:
     if DENIAL_HEADLINE.search(title) and not DENIAL_SOURCE.search(sentence):
         return False
     kind = focus_kind(title)
+    if kind == "sovereign_issuance":
+        return bool(re.search(r"국고채.{0,20}발행|발행.{0,20}국고채", sentence)
+                    and re.search(r"축소|확대|증가|감소|계획|발표|결정", sentence)
+                    and QUANTITY.search(sentence))
+    if kind == "earnings":
+        metric = next((term for term, pattern in (
+            (r"영업(?:이익|익|손실)", r"영업(?:이익|익|손실)"),
+            (r"순(?:이익|익|손실)", r"순(?:이익|익|손실)"),
+            (r"매출(?:액)?", r"매출(?:액)?"),
+        ) if re.search(pattern, title)), "")
+        if metric and not re.search(metric, sentence):
+            return False
+    if kind == "bond_yield" and re.search(r"닛케이|항셍|아시아증시", title):
+        return bool(re.search(r"닛케이|항셍|아시아증시|페드워치|FedWatch", sentence, re.I))
     if kind == "network_segmentation_policy":
         return bool(
             re.search(r"망분리|규제\s*완화|신청\s*가능\s*대상|선정\s*규모", sentence)
@@ -657,14 +673,34 @@ def verified_source_fact_keys(alert: dict) -> list[str]:
         return []
     title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
     body = str(alert.get("source_body") or "")
-    assessment = assess(title, body, source_url=str(alert.get("link") or ""))
+    return list(_verified_source_fact_keys(title, body, str(alert.get("link") or "")))
+
+
+@lru_cache(maxsize=256)
+def _verified_source_fact_keys(title: str, body: str, source_url: str) -> tuple[str, ...]:
+    # Cache computation only within this process, keyed by the entire fresh body.
+    # Do not persist source bodies or reuse a previous run's retrieval evidence.
+    # The displayed core excludes recommendation sections. Event identities
+    # must respect that same article boundary when recommendation cards rotate.
+    paragraphs = []
+    for line in body.splitlines():
+        line = line.strip()
+        if re.fullmatch(r"관련\s*뉴스|주요\s*뉴스|.+기자의\s*주요\s*뉴스", line):
+            break
+        if re.fullmatch(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}", line) or re.match(
+            r"^(?:제보는\s*카카오톡|[◎☞]\s*공감언론|<저작권자)", line,
+        ):
+            break
+        paragraphs.append(line)
+    body = "\n".join(paragraphs)
+    assessment = assess(title, body, source_url=source_url)
     if assessment["disposition"] != "keep" or assessment["priority"] < 2:
-        return []
+        return ()
     evidence = assessment["evidence"]
     if not evidence or len(evidence[0]["source_excerpt"]) < 50:
-        return []
+        return ()
     if re.match(r"^(?:양측|회사|기업|업체|그는|이는|이들은)(?:은|는|이|가)?\s", evidence[0]["source_excerpt"]):
-        return []
+        return ()
     facts = {(item["kind"], item["stage"], canonical_source_fact(item["source_excerpt"]))
              for item in evidence}
     # The display audit keeps one excerpt per kind. The identity must also
@@ -680,10 +716,10 @@ def verified_source_fact_keys(alert: dict) -> list[str]:
             if kind in kinds and subject.search(sentence) and action.search(sentence) and evidence_is_new_event(kind, sentence):
                 stage = "early_signal" if EARLY_SIGNAL.search(sentence) or kind == "customer_discussions" else "reported_change"
                 facts.add((kind, stage, canonical_source_fact(sentence)))
-    return sorted(
+    return tuple(sorted(
         "source_fact:v1:" + hashlib.sha256(json.dumps(fact, ensure_ascii=False).encode("utf-8")).hexdigest()
         for fact in facts
-    )
+    ))
 
 
 def source_event_identity(alert: dict) -> str:
@@ -1023,7 +1059,7 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
     ):
         return False
     if kind == "capital_listing_stage" and "ETF" in sentence.upper() and not re.search(r"기업공개|\bipo\b", sentence, re.I):
-        return bool(re.search(r"(?:ETF.{0,80}(?:출시|상장)|(?:출시|상장).{0,80}ETF)", sentence, re.I))
+        return bool(re.search(r"(?:출시|상장)(?:했다|했다고|한다|한다고|할|될|한\s*것|될\s*예정)|신규\s*상장", sentence, re.I))
     if re.search(r"논의해\s*나가겠다|해소될\s*수\s*있도록|최선을\s*다하겠다", sentence) and not re.search(
         r"고시.{0,12}개정|법안.{0,12}(?:발의|제출)|계약.{0,12}체결|시행일.{0,15}확정", sentence,
     ):
@@ -1043,6 +1079,7 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
         return bool(re.search(
             r"(?:인수|합병)(?:했다|한다고|한다|하기로|한|를\s*(?:검토|추진|협상|결정))|"
             r"(?:인수|합병|결합).{0,30}(?:계약.{0,15}체결|협상\s*중|검토\s*중|합의했|발표했|완료|마무리)|"
+            r"인수(?:하는)?\s*방안.{0,15}(?:논의|검토|협상)|"
             r"인수\s*계약에\s*따라[^.!?]{0,70}주당|"
             r"(?:acquir|merg).{0,35}(?:announc|agree|complete|consider|negotiat)|acquired|acquisition of", sentence, re.I,
         ))
@@ -1169,6 +1206,13 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     if not kinds:
         return {'eligible': False, 'reason': 'no_verified_economic_change'}
     execution = any(NEW_EXECUTION.search(item['source_excerpt']) for item in evidence)
+    if focus_kind(title) == "mortgage_rate" and re.search(r"오르나|더\s*뛰나|\[[^]]*쇼크", title):
+        current_rate_action = re.search(
+            r"(?:은행|금융사).{0,35}(?:대출|주담대|모기지)\s*금리.{0,45}"
+            r"(?:인상했다|인하했다|조정했다|변경했다|인상한다고|인하한다고)", body,
+        )
+        if not current_rate_action:
+            return {'eligible': False, 'reason': 'rate_risk_explainer_without_new_institutional_action'}
     if re.search(r"기자24시|칼럼|사설|오피니언|/journalist/|/opinion/", f"{title} {source_url}", re.I) and not execution:
         return {'eligible': False, 'reason': 'opinion_rehash_without_new_source_action'}
     if re.search(r"교육센터|인력양성|인력\s*양성|교육\s*프로그램", title) and not execution:
