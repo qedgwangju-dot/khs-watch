@@ -16,6 +16,7 @@ def base_stage2():
         "support_plan": True,
         "job_exists": True,
         "stablecoin_bd_scope": True,
+        "executive_default_feature_confirmation": False,
         "stablecoin_partner": "",
         "pilot_or_launch": False,
         "explicit_reversal_confirmed": False,
@@ -30,6 +31,8 @@ def official(**kwargs):
         "job_stablecoin_confirmed": True,
         "job_fetch_ok": True,
         "article_confirmed": True,
+        "kbw_executive_primary_confirmed": False,
+        "kbw_executive_crosscheck_confirmed": False,
         "explicit_reversal_confirmed": False,
         "errors": [],
     }
@@ -105,6 +108,49 @@ def assert_generic_visa_galaxy_card_launch_does_not_promote():
     assert not changed, changes
 
 
+def assert_kbw_executive_confirmation_alerts_once_without_promotion():
+    prev = base_stage2()
+    current = topic_state(
+        official(
+            kbw_executive_primary_confirmed=True,
+            kbw_executive_crosscheck_confirmed=True,
+        ),
+        candidate(
+            "삼성월렛, 스테이블코인 탑재 속도",
+            "백원석 삼성전자 그룹장이 삼성월렛에 스테이블코인을 기본 기능으로 지원하는 방향을 공개 설명",
+        ),
+        prev,
+    )
+    changed, changes = state_changed(prev, current)
+    assert current["executive_default_feature_confirmation"] is True, current
+    assert current["stage"] == 2, current
+    assert current["stablecoin_partner"] == "", current
+    assert current["pilot_or_launch"] is False, current
+    assert changed, changes
+    assert any("단계 2 강화" in x for x in changes), changes
+
+    changed_again, changes_again = state_changed(current, current)
+    assert not changed_again, changes_again
+
+
+def assert_kbw_tether_panel_does_not_create_tether_partner():
+    prev = base_stage2()
+    current = topic_state(
+        official(
+            kbw_executive_primary_confirmed=True,
+            kbw_executive_crosscheck_confirmed=True,
+        ),
+        candidate(
+            "테더와 삼성월렛이 KBW2026 패널 참석",
+            "테더는 스테이블코인 대중화를 설명했고 백원석 그룹장은 삼성월렛의 스테이블코인 기본 기능 지원 방향을 별도로 설명",
+        ),
+        prev,
+    )
+    assert current["executive_default_feature_confirmation"] is True, current
+    assert current["stablecoin_partner"] == "", current
+    assert current["stage"] == 2, current
+
+
 def assert_explicit_partner_promotes_once():
     prev = base_stage2()
     current = topic_state(
@@ -156,6 +202,8 @@ def main():
         assert_no_alert_for_transient_source_failure,
         assert_no_alert_for_duplicate_article,
         assert_generic_visa_galaxy_card_launch_does_not_promote,
+        assert_kbw_executive_confirmation_alerts_once_without_promotion,
+        assert_kbw_tether_panel_does_not_create_tether_partner,
         assert_explicit_partner_promotes_once,
         assert_explicit_pilot_promotes_once,
         assert_explicit_reversal_alerts,
