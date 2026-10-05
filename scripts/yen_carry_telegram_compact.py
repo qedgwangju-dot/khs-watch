@@ -46,7 +46,7 @@ HEADINGS = {
 SOURCE_LINES = (
     ("Japan MOF JGB", "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate/jgbcme.csv"),
     ("Japan MOF 해외증권투자", "https://www.mof.go.jp/policy/international_policy/reference/itn_transactions_in_securities/week.csv"),
-    ("CFTC TFF Futures Only", "https://publicreporting.cftc.gov/resource/gpe5-46if.json"),
+    ("CFTC TFF Futures Only", "https://www.cftc.gov/dea/futures/financial_lf.htm"),
     ("Bank of Japan policy guideline", "https://www.boj.or.jp/en/"),
 )
 
@@ -104,34 +104,105 @@ def levels(payload: dict) -> tuple[int, int]:
     return unwind, rebuild
 
 
-def direction_call(payload: dict) -> tuple[str, str, str]:
-    """Return title direction, current direction and risk-asset implication."""
-    unwind, rebuild = levels(payload)
-    risk_emoji = {0: "🟢", 1: "🟡", 2: "🟠", 3: "🔴"}.get(min(unwind, 3), "🟡")
+def _active_direction_scores(payload: dict) -> tuple[int, int]:
+    """Score only *current directional* evidence.
 
-    if unwind >= 2 and rebuild >= 2:
-        direction = "↔ 청산·재구축 신호 충돌"
+    Structural vulnerability (JGB10 >=3%, CFTC shorts, MOF repatriation,
+    elevated volatility) can raise the risk colour, but it must not by itself
+    point the arrow toward unwind. The arrow is reserved for funding/FX
+    direction: yen moves, Japan front-end repricing and the U.S.-Japan 2Y spread.
+    """
+    verdict = payload.get("verdict") or {}
+    evidence = verdict.get("evidence") or {}
+    refined = payload.get("refined_risk") or {}
+    signals = refined.get("signals") or {}
+
+    unwind_score = 0
+    carry_score = 0
+
+    if evidence.get("unwind::USD/JPY 급락·엔화 급등"):
+        unwind_score += 4
+    if evidence.get("unwind::미·일 2년 금리차 축소"):
+        unwind_score += 3
+    if evidence.get("unwind::일본 단기금리 상승"):
+        unwind_score += 2
+    if signals.get("target_currency_spread_confirmation"):
+        unwind_score += 3
+
+    if evidence.get("rebuild::USD/JPY 상승·엔화 재약세"):
+        carry_score += 4
+    elif evidence.get("rebuild::USD/JPY 완만한 상승 방향"):
+        carry_score += 2
+
+    if evidence.get("rebuild::미·일 2년 금리차 재확대"):
+        carry_score += 3
+    elif evidence.get("rebuild::미·일 2년 금리차 여전히 넓음"):
+        carry_score += 1
+
+    return unwind_score, carry_score
+
+
+def direction_call(payload: dict) -> tuple[str, str, str]:
+    """Return risk-colour title, current direction and risk-asset implication.
+
+    Risk colour and direction are deliberately separate:
+    - risk colour may be lifted by structural vulnerability;
+    - direction uses only current FX/funding-direction evidence.
+    """
+    verdict = payload.get("verdict") or {}
+    refined = payload.get("refined_risk") or {}
+    risk_level = int(refined.get("level", verdict.get("unwind_level", 0)) or 0)
+    structural_floor = bool(refined.get("structural_floor"))
+    unwind_score, carry_score = _active_direction_scores(payload)
+    risk_emoji = {0: "🟢", 1: "🟡", 2: "🟠", 3: "🔴"}.get(min(risk_level, 3), "🟡")
+
+    if unwind_score >= 4 and carry_score >= 4:
+        direction = "↔ 청산·유지 신호 충돌"
         title_dir = "↔ 방향 충돌"
-        impact = "🟠 위험자산 변동성 확대 주의"
-    elif unwind >= 2:
+        direction_kind = "conflict"
+    elif unwind_score >= 4 and unwind_score >= carry_score + 2:
         direction = "↘ 엔화 강세·캐리 청산 압력 우세"
-        title_dir = "↘ 청산 압력 우세"
-        impact = "🔴 위험자산 수급 부담"
-    elif rebuild >= 2:
-        direction = "↗ 엔화 약세·캐리 재구축 우세"
-        title_dir = "↗ 재구축 우세"
-        impact = "🟢 위험자산 수급 단기 우호"
-    elif rebuild > unwind:
-        direction = "↗ 캐리 유지 쪽으로 기울기"
-        title_dir = "↗ 캐리 유지"
-        impact = "🟡 위험자산 수급 소폭 우호"
-    elif unwind > rebuild:
+        title_dir = "↘ 청산 압력"
+        direction_kind = "unwind"
+    elif carry_score >= 4 and carry_score >= unwind_score + 2:
+        direction = "↗ 엔화 약세·캐리 유지·재구축 우세"
+        title_dir = "↗ 유지·재구축"
+        direction_kind = "carry"
+    elif unwind_score > carry_score:
         direction = "↘ 캐리 청산 쪽으로 기울기"
-        title_dir = "↘ 청산 경계"
-        impact = "🟠 위험자산 수급 주의"
+        title_dir = "↘ 청산 기울기"
+        direction_kind = "unwind"
+    elif carry_score > unwind_score:
+        direction = "↗ 캐리 유지·재구축 쪽으로 기울기"
+        title_dir = "↗ 유지 쪽"
+        direction_kind = "carry"
     else:
         direction = "↔ 중립·방향 확인 대기"
         title_dir = "↔ 중립"
+        direction_kind = "neutral"
+
+    if structural_floor and direction_kind == "carry":
+        title_dir = "↗ 유지 우세·구조 경계"
+    elif structural_floor and direction_kind == "neutral":
+        title_dir = "↔ 중립·구조 경계"
+
+    if risk_level >= 3:
+        impact = "🔴 위험자산 수급 부담"
+    elif risk_level >= 2:
+        impact = "🟠 위험자산 변동성·수급 주의"
+    elif risk_level == 1 and direction_kind == "unwind":
+        impact = "🟠 위험자산 수급 주의"
+    elif risk_level == 1 and direction_kind == "carry":
+        impact = "🟡 중립~소폭 우호 / 구조 변동성 주의"
+    elif risk_level == 1:
+        impact = "🟡 중립 / 구조 변동성 주의"
+    elif direction_kind == "carry":
+        impact = "🟢 위험자산 수급 단기 우호"
+    elif direction_kind == "unwind":
+        impact = "🟡 위험자산 수급 주의"
+    elif direction_kind == "conflict":
+        impact = "🟡 위험자산 변동성 주의"
+    else:
         impact = "⚪ 위험자산 영향 중립"
 
     return f"{risk_emoji} 엔캐리 | {title_dir}", direction, impact
@@ -279,7 +350,7 @@ def main() -> int:
     for needle in ("정책 단계:", "주식시장:", "정책 경계선:"):
         item = next((x for x in policy_items if needle in x), None)
         if item:
-            policy_focus.append(item)
+            policy_focus.append(re.sub(r"</?b>", "", item, flags=re.IGNORECASE))
     policy_focus = policy_focus[:3]
     policy_block = (
         ["정책·주식 해석", *[f"• {x}" for x in policy_focus], ""]
