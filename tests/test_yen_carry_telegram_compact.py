@@ -71,7 +71,7 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
             self.assertIn("🟡 엔캐리 | ↗ 유지·재구축", title)
             self.assertIn("▶ 현재 방향 │ ↗ 엔화 약세·캐리 유지·재구축 우세", result)
             self.assertIn("▶ 청산 위험 │ 🟡 구조적 취약성·경계", result)
-            self.assertIn("▶ 시장 영향 │ 🟢 위험자산 수급 단기 우호", result)
+            self.assertIn("▶ 시장 영향 │ 🟡 중립~소폭 우호 / 구조 변동성 주의", result)
             self.assertIn("핵심 근거", result)
             self.assertIn("반전 조건", result)
             self.assertIn("USD/JPY 158.68", result)
