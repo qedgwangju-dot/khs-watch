@@ -4,6 +4,7 @@ import unittest
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 import ai_component_leadtime_watch as w
+import agentic_cpu_watch as cpuw
 
 
 class LeadTimeParserTests(unittest.TestCase):
@@ -196,6 +197,43 @@ class LeadTimeAlertTests(unittest.TestCase):
         self.assertIn("직접 비교 금지", alert)
         direction, worse, better = w.supply_direction(old, new)
         self.assertEqual((direction, worse, better), ("→ 변화 제한", 0, 0))
+
+
+    def test_combined_leadtime_and_cpu_alert_fits_one_telegram_chunk(self):
+        old = dict(self.new)
+        new = dict(self.new)
+        new["CPU"] = {"status": "Tight", "current": "25-30", "balanced": "16-20"}
+        lead = w.build_alert(
+            old,
+            new,
+            ["CPU"],
+            "https://insights.trendforce.com/p/weekly-radar-003",
+            "2026-09-28T19:03:30+09:00",
+            False,
+            signals={"CPU": "에이전틱 AI·CSP 인하우스 설계 확대로 서버 CPU 조달 압력이 부각"},
+            changed_signals=["CPU"],
+            evidence={"CPU": {"status", "current", "balanced"}},
+        )
+        cpu = cpuw.snapshot_block(
+            cpuw.BASELINE,
+            1348.3,
+            "2026-10-02",
+            [{"key": "server_cpu_tam_2030_usd_bn", "label": "2030 서버 CPU 시장", "before": 190.0, "after": 210.6, "delta": 10.8, "mode": "pct"}],
+            None,
+            [{"title": "AMD confirms higher CPU intensity for agentic AI"}],
+            standalone=False,
+        )
+        combined = lead.rstrip() + "\n\n" + cpu.strip()
+        utf16_units = len(combined.encode("utf-16-le")) // 2
+        self.assertLess(utf16_units, 3300)
+        for verbose_heading in (
+            "<b>수익구조</b>",
+            "<b>공정 병목 후보</b>",
+            "<b>숨은 역풍·실패모드</b>",
+            "<b>알림 기준</b>",
+            "<b>추적 기준</b>",
+        ):
+            self.assertNotIn(verbose_heading, combined)
 
 
 if __name__ == "__main__":
