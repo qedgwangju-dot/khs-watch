@@ -98,6 +98,13 @@ PRICE_MARKERS = (
     "price", "pricing", "msrp", "price hike", "increase", "higher price",
     "가격", "출고가", "인상", "涨价", "漲價", "售價", "售价",
 )
+RETAIL_PRICE_MARKERS = (
+    "smartphone retail price", "phone retail price", "device retail price",
+    "smartphone price", "phone price", "device price", "retail price", "msrp",
+    "launch price", "starting price",
+    "스마트폰 가격", "휴대폰 가격", "출고가", "소매가격", "판매가격", "출시가",
+    "手机价格", "手機價格", "零售价", "零售價", "售价", "售價", "起售价", "起售價",
+)
 RUMOR_MARKERS = (
     "rumor", "rumour", "leak", "leaker", "tipster", "could", "may", "might",
     "expected", "reportedly", "rumored", "전망", "예상", "루머", "유출",
@@ -236,13 +243,16 @@ def _pct_near_price(blob: str) -> float | None:
     low = blob.lower()
     vals: list[float] = []
     for m in re.finditer(r"([+\-]?\d{1,3}(?:\.\d+)?)\s*%", blob):
-        window = low[max(0, m.start() - 120): min(len(low), m.end() + 120)]
-        if any(x in window for x in PRICE_MARKERS):
-            val = float(m.group(1))
-            if not m.group(1).startswith(("+", "-")):
-                if any(x in window for x in ("increase", "rose", "higher", "인상", "상승", "涨", "漲")):
-                    val = abs(val)
-            vals.append(val)
+        window = low[max(0, m.start() - 150): min(len(low), m.end() + 150)]
+        # A component-memory percentage is not a handset MSRP percentage.
+        # Require explicit end-device / retail-price wording around the number.
+        if not any(x in window for x in RETAIL_PRICE_MARKERS):
+            continue
+        val = float(m.group(1))
+        if not m.group(1).startswith(("+", "-")):
+            if any(x in window for x in ("increase", "rose", "higher", "인상", "상승", "涨", "漲")):
+                val = abs(val)
+        vals.append(val)
     return vals[0] if vals else None
 
 
