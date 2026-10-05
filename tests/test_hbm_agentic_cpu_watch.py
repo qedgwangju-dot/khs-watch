@@ -56,7 +56,7 @@ class AgenticCpuThresholdTests(unittest.TestCase):
 
 
 class AgenticCpuAlertTests(unittest.TestCase):
-    def test_snapshot_contains_requested_axes(self):
+    def test_snapshot_is_compact_but_keeps_key_axes(self):
         state = w.BASELINE
         block = w.snapshot_block(
             state,
@@ -67,20 +67,22 @@ class AgenticCpuAlertTests(unittest.TestCase):
             [],
             standalone=False,
         )
-        self.assertIn("CPU·에이전트형 AI 수요축", block)
-        self.assertIn("2,106억달러", block)
-        self.assertIn("902억달러", block)
+        self.assertIn("<b>변화</b>", block)
+        self.assertIn("<b>현재 기준선</b>", block)
+        self.assertIn("<b>의미</b>", block)
+        self.assertIn("<b>다음 확인</b>", block)
+        self.assertIn("2,106억달러(", block)
+        self.assertIn("902억달러(", block)
         self.assertIn("42.8%", block)
-        self.assertIn("1,804억달러", block)
-        self.assertIn("85.7%", block)
-        self.assertIn("1,250억달러 → 1,700억달러 → 2,106억달러", block)
-        self.assertIn("약 6.0배 / 연평균 약 43.1%", block)
+        self.assertIn("1:4~8", block)
+        self.assertIn("1:1", block)
         self.assertIn("DDR5 RDIMM", block)
         self.assertIn("기업용 SSD", block)
-        self.assertIn("ABF", block)
-        self.assertIn("삼성전기·Ibiden·Unimicron·Nan Ya PCB", block)
-        self.assertIn("±10%", block)
-        self.assertIn("±5%p", block)
+        self.assertIn("FC-BGA/ABF", block)
+        self.assertNotIn("<b>관련 기업 지도</b>", block)
+        self.assertNotIn("<b>숨은 역풍·실패모드</b>", block)
+        self.assertNotIn("<b>알림 기준</b>", block)
+        self.assertLess(len(block), 1800)
 
     def test_material_forecast_alert_shows_old_and_new(self):
         latest = dict(w.BASELINE)
@@ -90,8 +92,9 @@ class AgenticCpuAlertTests(unittest.TestCase):
             w.BASELINE["metrics"], latest["metrics"]
         )
         block = w.snapshot_block(latest, None, "", changes, None, [], standalone=True)
-        self.assertIn("전망 변화 감지", block)
-        self.assertIn("2,106억달러 → 2,400억달러", block)
+        self.assertIn("2,106억달러", block)
+        self.assertIn("2,400억달러", block)
+        self.assertIn("+14.0%", block)
 
 
 if __name__ == "__main__":
