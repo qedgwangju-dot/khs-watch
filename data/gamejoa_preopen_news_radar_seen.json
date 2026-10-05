@@ -441,23 +441,22 @@
     "event:1ced2ff2ebc3ffb6232ac788": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
       "lanes": {
-        "live": "2026-10-05T22:30:10+09:00"
+        "live": "2026-10-05T23:46:36+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:30:10+09:00",
-      "link": "https://www.mt.co.kr/index.php/industry/2026/10/05/2026100516112469972",
-      "source": "머니투데이",
-      "source_body_digest": "359c8e578a9af84fe906d14b240dd971a012927d4db5eb4320c26cb2bc74f014",
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169811",
+      "source": "매일경제",
+      "source_body_digest": "e08b285692296e5bfa8dcc1b4b66715a9d1aff6a8746ed40d71e5950273e554d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3bbc4fd4e830efa9b4428cb33f71f7697e2bde9726364080f71d5a09e7580440",
+      "source_fact_identity": "source_facts:v1:20aa712f46eada214a8468f09e6be68cf83f905c7e47f49c540bb0933513c212",
       "source_fact_keys": [
-        "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
-        "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
-        "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
-        "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
-        "source_fact:v1:8dce8c1770f4ead01453e48a9136d5ca21ab2ae2bedcba7aa093245618e0272a"
+        "source_fact:v1:11cadfc83e2814675645a68c8099b543ee83e47a27fa7992d8d6d45aacf9a60f",
+        "source_fact:v1:99562779d0cd77eb179773743945b6430b70bceef9a99da02889ff83ed6fc227",
+        "source_fact:v1:dfcc302bbded0b36edb940d1684c18ba8b5e37273ed43bbe931fee4e778d4383",
+        "source_fact:v1:f472f2774729f1ee7df2c926b471501ccc2969660ebe2ede2cf0c79e3cb37efd"
       ],
-      "source_published_kst": "2026-10-05T22:07+09:00",
-      "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
+      "source_published_kst": "2026-10-05T21:36+09:00",
+      "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
     },
     "event:1d3a02c788288176f1db911e": {
       "first_seen_kst": "2026-09-30T10:30:58+09:00",
@@ -522,20 +521,21 @@
     "event:2040de76bfabafead1b43434": {
       "first_seen_kst": "2026-10-05T00:49:19+09:00",
       "lanes": {
-        "live": "2026-10-05T22:39:48+09:00",
+        "live": "2026-10-05T23:46:36+09:00",
         "preopen": "2026-10-05T06:34:55+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:39:48+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2632388",
-      "source": "이투데이",
-      "source_body_digest": "41bc84715405f96f7ae4841a01c250a96efbb27b08919ca844c506808d054b2a",
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007000009",
+      "source": "연합뉴스",
+      "source_body_digest": "9a9bb08fbb2b7290a8ce36ff5b74585511efde878bfea35d4db22dcaac80a8cc",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4d2390c8118b4b92f30033dcbb3d23e029d1147dee7dbe2b92d47e7e5adad9b6",
+      "source_fact_identity": "source_facts:v1:aa91e88deb4913e1fca336ac22b1d785b30fd6cc95162d2cbab9da62eea90220",
       "source_fact_keys": [
-        "source_fact:v1:0bd114d7f7d3c1c3ee1bae506b067455d46f805f0cf820576e8c4f264df34c6d"
+        "source_fact:v1:101beb8ca77fd22358d07232aedbcfe1180d1181fd2e66fdad312ffd77339a4c",
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524"
       ],
-      "source_published_kst": "2026-10-05T08:34+09:00",
-      "title": "걸프국 원유 수출 회복세에 ‘먹구름’⋯호르무즈 선박 피격 나흘새 4건"
+      "source_published_kst": "2026-10-05T07:26+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가 | 연합뉴스"
     },
     "event:20559afaa46c8beb4ac5c20d": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -5550,6 +5550,24 @@
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
     },
+    "fact:5250bc3ef9e16d89e82d4e38": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007000009",
+      "source": "연합뉴스",
+      "source_body_digest": "9a9bb08fbb2b7290a8ce36ff5b74585511efde878bfea35d4db22dcaac80a8cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aa91e88deb4913e1fca336ac22b1d785b30fd6cc95162d2cbab9da62eea90220",
+      "source_fact_keys": [
+        "source_fact:v1:101beb8ca77fd22358d07232aedbcfe1180d1181fd2e66fdad312ffd77339a4c",
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524"
+      ],
+      "source_published_kst": "2026-10-05T07:26+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가 | 연합뉴스"
+    },
     "fact:52f5f6454b9de7d10ba8531d": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
       "lanes": {
@@ -5603,6 +5621,26 @@
       ],
       "source_published_kst": "2026-10-05T22:19+09:00",
       "title": "세노버스 에너지, 아사바스카오일 57억 캐나다달러 인수 합의"
+    },
+    "fact:54f3768e096dcc91a1e273cd": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169811",
+      "source": "매일경제",
+      "source_body_digest": "e08b285692296e5bfa8dcc1b4b66715a9d1aff6a8746ed40d71e5950273e554d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20aa712f46eada214a8468f09e6be68cf83f905c7e47f49c540bb0933513c212",
+      "source_fact_keys": [
+        "source_fact:v1:11cadfc83e2814675645a68c8099b543ee83e47a27fa7992d8d6d45aacf9a60f",
+        "source_fact:v1:99562779d0cd77eb179773743945b6430b70bceef9a99da02889ff83ed6fc227",
+        "source_fact:v1:dfcc302bbded0b36edb940d1684c18ba8b5e37273ed43bbe931fee4e778d4383",
+        "source_fact:v1:f472f2774729f1ee7df2c926b471501ccc2969660ebe2ede2cf0c79e3cb37efd"
+      ],
+      "source_published_kst": "2026-10-05T21:36+09:00",
+      "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
     },
     "fact:55c50bb7ff39d169933f4fd7": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -6044,6 +6082,28 @@
       "source_published_kst": "2026-10-05T20:20+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료로 차량용 OS 풀스택 경쟁력 부각"
     },
+    "fact:7b04fce512e90fa300ee74f3": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169749",
+      "source": "매일경제",
+      "source_body_digest": "a98edf0ef35f81cefb4d689aecb7360c93403b17b5fbaa1c001f4238317ddd72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:265ea0c041e1679a7f0e59400ff8cdb4723caac5a3243744a243ba28e4c66e07",
+      "source_fact_keys": [
+        "source_fact:v1:0be385cd806c0a0c0f5ad4866bf8bf76c1c3f6cff69b0e9858f11f4b867bf5c4",
+        "source_fact:v1:537f49bdbc5f939abfcd17c4060fc78920ed0439fcd55f36278343fcdb840929",
+        "source_fact:v1:9705a96bf08ff0818d87c6b0efe2831c645d78218b9010f5b7a26004aa2a98e1",
+        "source_fact:v1:9c4b788a39633c188ed27833a9b8159b6778c32ff73fe99a79b59dc0248c474e",
+        "source_fact:v1:a0e9c3a42682f2924286efe6847880416aa5329297bfdcc390f5569f6d255654",
+        "source_fact:v1:ff6078f20957026e4bf0871b13515309bae6d743185c0c247a8e0d2cabdce89e"
+      ],
+      "source_published_kst": "2026-10-05T19:24+09:00",
+      "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
+    },
     "fact:7e6cc31dd306bcb3a869efa3": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -6363,6 +6423,24 @@
       ],
       "source_published_kst": "2026-10-05T21:34+09:00",
       "title": "北지뢰에 '대북 사이버 독자제재' 내부 검토…외교부·통일부 이견"
+    },
+    "fact:9ac19269ba4bf07c2430ff71": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169851",
+      "source": "매일경제",
+      "source_body_digest": "8d273ce56c27f7e4bb7772916a657baa829ae47aacd2673e6f77ad7bf7643207",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e06a7a98aeba097a1c245a7b52e7c7323d1dcb004b7dd589e8b89ca67f383b8",
+      "source_fact_keys": [
+        "source_fact:v1:1e0375e42b30e09cfa3ea89bc969a263181d7a7c2f97e62dbef958f697841e5d",
+        "source_fact:v1:99320d56d7e04e490121d646975d1207d26b54d46557150d2746e872ea67cbbf"
+      ],
+      "source_published_kst": "2026-10-05T23:10+09:00",
+      "title": "유나이티드마이크로일렉, 18억 달러 해외CB 발행 확정에 지분 희석·매물 부담 부각"
     },
     "fact:9d60928f4b4ccbe8977b7741": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -6933,6 +7011,25 @@
       "source_published_kst": "2026-10-05T19:05+09:00",
       "title": "오메가 헬스케어 인베스터, 플로리다 32곳 운영사 교체..1년차 임대료 2600만 달러 증액"
     },
+    "fact:de881272177a3dca4c67b8a1": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005230637",
+      "source": "지디넷코리아",
+      "source_body_digest": "21addf1880f32daa4da159ac6ce732b183a1c5b8434e2d9f98a9960407a87d47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:988450f84792405415925b5e348062ad877ebdcf52d82d6dbcf7d7b470d9c41b",
+      "source_fact_keys": [
+        "source_fact:v1:20dd4d0e63d75f56a79b745657288e42389719f5badc67a80ad093db8958069c",
+        "source_fact:v1:32832f2beb33afcf0ef020efee8e45a672826f14dbfc7c750cedb1dd143d6e64",
+        "source_fact:v1:51ac9d282bb37274a30c00e2db76b2eea7a153d4f00b137f7c35519a8795670c"
+      ],
+      "source_published_kst": "2026-10-05T23:10+09:00",
+      "title": "LG전자, 북미서 5GW 대형 AIDC 칠러 장기 공급계약"
+    },
     "fact:dfe79dc95362d6af01327bd1": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -7194,6 +7291,24 @@
       ],
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "fact:ffe00e1c72c0ec5f288b952c": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169802",
+      "source": "매일경제",
+      "source_body_digest": "5928505805db8e5afed6f61f87b45a353a782e1595144f93e6525b6bf8ade94e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed4740d25c1c7bb67bfd98cee31ee6765654e6b170672573a1a500c7b72b9eaa",
+      "source_fact_keys": [
+        "source_fact:v1:44334d3d26ebe5d61c4d8a9e84845328089860d4666d37178c056200956d039a",
+        "source_fact:v1:c25603a48e3b10bf0c83b87c73ddf978a12e5bd53eef91e8128b8f13250db80d"
+      ],
+      "source_published_kst": "2026-10-05T21:21+09:00",
+      "title": "레드 로빈 고메 버거, 1억1500만 달러 대출 재융자 완료..2031년 만기"
     },
     "link:001486db5393e03af8cdd080": {
       "first_seen_kst": "2026-09-22T13:18:41+09:00",
@@ -11077,6 +11192,24 @@
       "source_published_kst": "2026-10-05T11:40+09:00",
       "title": "삼전 8000억 팔더니…국민연금, SK하닉 1.6조 사들였다"
     },
+    "link:40abc03bef4cc844a41704f0": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007000009",
+      "source": "연합뉴스",
+      "source_body_digest": "9a9bb08fbb2b7290a8ce36ff5b74585511efde878bfea35d4db22dcaac80a8cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aa91e88deb4913e1fca336ac22b1d785b30fd6cc95162d2cbab9da62eea90220",
+      "source_fact_keys": [
+        "source_fact:v1:101beb8ca77fd22358d07232aedbcfe1180d1181fd2e66fdad312ffd77339a4c",
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524"
+      ],
+      "source_published_kst": "2026-10-05T07:26+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가 | 연합뉴스"
+    },
     "link:40becebc4ce662425df767c0": {
       "first_seen_kst": "2026-10-03T19:11:40+09:00",
       "lanes": {
@@ -11738,6 +11871,21 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=02538726645584712",
       "source": "이데일리",
       "title": "엔비디아 황 CEO 수상식에 삼성·SK 총수 동석…차세대 HBM 협력 논의 주목"
+    },
+    "link:4af72739a43847d419f9e097": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04516566645609968",
+      "source": "이데일리",
+      "source_body_digest": "2a7361b199437a7834cf2a4a543565889eccc5aa106f2a856404c6703e734919",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:57+09:00",
+      "title": "[美특징주]RXO, CH 로빈슨에 58억달러 피인수...주가 23%↑"
     },
     "link:4afaf28007e5814b6f3983fe": {
       "first_seen_kst": "2026-10-01T21:17:39+09:00",
@@ -14157,6 +14305,24 @@
       "source": "이투데이",
       "title": "산은·기업은행 “‘암살자(들)’ 투자에 외부 개입 없었어\""
     },
+    "link:6ca92eb1307b41124259acaa": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169802",
+      "source": "매일경제",
+      "source_body_digest": "5928505805db8e5afed6f61f87b45a353a782e1595144f93e6525b6bf8ade94e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed4740d25c1c7bb67bfd98cee31ee6765654e6b170672573a1a500c7b72b9eaa",
+      "source_fact_keys": [
+        "source_fact:v1:44334d3d26ebe5d61c4d8a9e84845328089860d4666d37178c056200956d039a",
+        "source_fact:v1:c25603a48e3b10bf0c83b87c73ddf978a12e5bd53eef91e8128b8f13250db80d"
+      ],
+      "source_published_kst": "2026-10-05T21:21+09:00",
+      "title": "레드 로빈 고메 버거, 1억1500만 달러 대출 재융자 완료..2031년 만기"
+    },
     "link:6cb1329680b4f10f363e16c5": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -14960,6 +15126,25 @@
       "source_published_kst": "2026-10-05T21:50+09:00",
       "title": "크리티컬메탈스, 유러피언리튬 조건부 주식 지급의무 소멸 합의에 투자자 주목"
     },
+    "link:78bfabf0d8a9e58cb41ff857": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005230637",
+      "source": "지디넷코리아",
+      "source_body_digest": "21addf1880f32daa4da159ac6ce732b183a1c5b8434e2d9f98a9960407a87d47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:988450f84792405415925b5e348062ad877ebdcf52d82d6dbcf7d7b470d9c41b",
+      "source_fact_keys": [
+        "source_fact:v1:20dd4d0e63d75f56a79b745657288e42389719f5badc67a80ad093db8958069c",
+        "source_fact:v1:32832f2beb33afcf0ef020efee8e45a672826f14dbfc7c750cedb1dd143d6e64",
+        "source_fact:v1:51ac9d282bb37274a30c00e2db76b2eea7a153d4f00b137f7c35519a8795670c"
+      ],
+      "source_published_kst": "2026-10-05T23:10+09:00",
+      "title": "LG전자, 북미서 5GW 대형 AIDC 칠러 장기 공급계약"
+    },
     "link:78c25995cbd96734cca3d19f": {
       "first_seen_kst": "2026-09-21T21:50:35+09:00",
       "lanes": {
@@ -15180,6 +15365,24 @@
       "source": "전자신문",
       "title": "TSMC 파운드리 3~6% 인상 전망…삼성·인텔·후공정도 영향권"
     },
+    "link:7dcbf2334f3750932bb14070": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169851",
+      "source": "매일경제",
+      "source_body_digest": "8d273ce56c27f7e4bb7772916a657baa829ae47aacd2673e6f77ad7bf7643207",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e06a7a98aeba097a1c245a7b52e7c7323d1dcb004b7dd589e8b89ca67f383b8",
+      "source_fact_keys": [
+        "source_fact:v1:1e0375e42b30e09cfa3ea89bc969a263181d7a7c2f97e62dbef958f697841e5d",
+        "source_fact:v1:99320d56d7e04e490121d646975d1207d26b54d46557150d2746e872ea67cbbf"
+      ],
+      "source_published_kst": "2026-10-05T23:10+09:00",
+      "title": "유나이티드마이크로일렉, 18억 달러 해외CB 발행 확정에 지분 희석·매물 부담 부각"
+    },
     "link:7e3f59a1e55b8acd39813410": {
       "first_seen_kst": "2026-09-27T12:25:25+09:00",
       "lanes": {
@@ -15370,6 +15573,28 @@
       "link": "https://www.asiae.co.kr/article/2026091815095508229",
       "source": "아시아경제",
       "title": "메시지 전달에 주력한 李…'집값 반드시 안정' 'ETF 미비 인정' '사회 정책 강화'"
+    },
+    "link:81b5859258084ddae3a8c405": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169749",
+      "source": "매일경제",
+      "source_body_digest": "a98edf0ef35f81cefb4d689aecb7360c93403b17b5fbaa1c001f4238317ddd72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:265ea0c041e1679a7f0e59400ff8cdb4723caac5a3243744a243ba28e4c66e07",
+      "source_fact_keys": [
+        "source_fact:v1:0be385cd806c0a0c0f5ad4866bf8bf76c1c3f6cff69b0e9858f11f4b867bf5c4",
+        "source_fact:v1:537f49bdbc5f939abfcd17c4060fc78920ed0439fcd55f36278343fcdb840929",
+        "source_fact:v1:9705a96bf08ff0818d87c6b0efe2831c645d78218b9010f5b7a26004aa2a98e1",
+        "source_fact:v1:9c4b788a39633c188ed27833a9b8159b6778c32ff73fe99a79b59dc0248c474e",
+        "source_fact:v1:a0e9c3a42682f2924286efe6847880416aa5329297bfdcc390f5569f6d255654",
+        "source_fact:v1:ff6078f20957026e4bf0871b13515309bae6d743185c0c247a8e0d2cabdce89e"
+      ],
+      "source_published_kst": "2026-10-05T19:24+09:00",
+      "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
     },
     "link:81ec601be4c70ac6e4258d6e": {
       "first_seen_kst": "2026-10-01T16:31:12+09:00",
@@ -18862,6 +19087,26 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T21:04+09:00",
       "title": "러시아, 키이우 교량 나흘째 공격… 젤렌스키 \"푸틴, 민간시설 공격↑\""
+    },
+    "link:b647ef1a8faf7aeeb827e331": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169811",
+      "source": "매일경제",
+      "source_body_digest": "e08b285692296e5bfa8dcc1b4b66715a9d1aff6a8746ed40d71e5950273e554d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20aa712f46eada214a8468f09e6be68cf83f905c7e47f49c540bb0933513c212",
+      "source_fact_keys": [
+        "source_fact:v1:11cadfc83e2814675645a68c8099b543ee83e47a27fa7992d8d6d45aacf9a60f",
+        "source_fact:v1:99562779d0cd77eb179773743945b6430b70bceef9a99da02889ff83ed6fc227",
+        "source_fact:v1:dfcc302bbded0b36edb940d1684c18ba8b5e37273ed43bbe931fee4e778d4383",
+        "source_fact:v1:f472f2774729f1ee7df2c926b471501ccc2969660ebe2ede2cf0c79e3cb37efd"
+      ],
+      "source_published_kst": "2026-10-05T21:36+09:00",
+      "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
     },
     "link:b6559a95cd7fc0425ba6416b": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
@@ -25087,6 +25332,21 @@
       "source": "이투데이",
       "title": "알래스카 LNG 기대 선반영했나…철강주 美 투자 언급에도 하락"
     },
+    "original:195d56dca2581d7102118622": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04516566645609968",
+      "source": "이데일리",
+      "source_body_digest": "2a7361b199437a7834cf2a4a543565889eccc5aa106f2a856404c6703e734919",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:57+09:00",
+      "title": "[美특징주]RXO, CH 로빈슨에 58억달러 피인수...주가 23%↑"
+    },
     "original:19b38794a24a2d9830533be9": {
       "first_seen_kst": "2026-09-18T09:03:50+09:00",
       "lanes": {
@@ -25276,6 +25536,24 @@
       "link": "https://www.yna.co.kr/view/AKR20260920036700009",
       "source": "연합뉴스",
       "title": "CXMT, 5세대 D램 공정 양산 돌입…삼성·하이닉스 추격 가속 | 연합뉴스"
+    },
+    "original:1d508cbfc346041a2a1f80fd": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007000009",
+      "source": "연합뉴스",
+      "source_body_digest": "9a9bb08fbb2b7290a8ce36ff5b74585511efde878bfea35d4db22dcaac80a8cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aa91e88deb4913e1fca336ac22b1d785b30fd6cc95162d2cbab9da62eea90220",
+      "source_fact_keys": [
+        "source_fact:v1:101beb8ca77fd22358d07232aedbcfe1180d1181fd2e66fdad312ffd77339a4c",
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524"
+      ],
+      "source_published_kst": "2026-10-05T07:26+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가 | 연합뉴스"
     },
     "original:1d96a54f3824ddb0ff23a284": {
       "first_seen_kst": "2026-10-01T12:53:41+09:00",
@@ -27127,6 +27405,28 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003813159",
       "source": "뉴시스",
       "title": "유로존 9월 인플레 3.8%로 ↑…8월의 3.2%에서"
+    },
+    "original:3b00b105b0a96e12270e4a65": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169749",
+      "source": "매일경제",
+      "source_body_digest": "a98edf0ef35f81cefb4d689aecb7360c93403b17b5fbaa1c001f4238317ddd72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:265ea0c041e1679a7f0e59400ff8cdb4723caac5a3243744a243ba28e4c66e07",
+      "source_fact_keys": [
+        "source_fact:v1:0be385cd806c0a0c0f5ad4866bf8bf76c1c3f6cff69b0e9858f11f4b867bf5c4",
+        "source_fact:v1:537f49bdbc5f939abfcd17c4060fc78920ed0439fcd55f36278343fcdb840929",
+        "source_fact:v1:9705a96bf08ff0818d87c6b0efe2831c645d78218b9010f5b7a26004aa2a98e1",
+        "source_fact:v1:9c4b788a39633c188ed27833a9b8159b6778c32ff73fe99a79b59dc0248c474e",
+        "source_fact:v1:a0e9c3a42682f2924286efe6847880416aa5329297bfdcc390f5569f6d255654",
+        "source_fact:v1:ff6078f20957026e4bf0871b13515309bae6d743185c0c247a8e0d2cabdce89e"
+      ],
+      "source_published_kst": "2026-10-05T19:24+09:00",
+      "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
     },
     "original:3b0410adc1e2ed50f0f66c88": {
       "first_seen_kst": "2026-10-04T06:09:53+09:00",
@@ -29483,6 +29783,26 @@
       "source": "이데일리",
       "title": "오폐수처리장 20cm 태아 시신...산모 찾아도 처벌 어렵다"
     },
+    "original:5f369a784766e7196b9b4d84": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169811",
+      "source": "매일경제",
+      "source_body_digest": "e08b285692296e5bfa8dcc1b4b66715a9d1aff6a8746ed40d71e5950273e554d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20aa712f46eada214a8468f09e6be68cf83f905c7e47f49c540bb0933513c212",
+      "source_fact_keys": [
+        "source_fact:v1:11cadfc83e2814675645a68c8099b543ee83e47a27fa7992d8d6d45aacf9a60f",
+        "source_fact:v1:99562779d0cd77eb179773743945b6430b70bceef9a99da02889ff83ed6fc227",
+        "source_fact:v1:dfcc302bbded0b36edb940d1684c18ba8b5e37273ed43bbe931fee4e778d4383",
+        "source_fact:v1:f472f2774729f1ee7df2c926b471501ccc2969660ebe2ede2cf0c79e3cb37efd"
+      ],
+      "source_published_kst": "2026-10-05T21:36+09:00",
+      "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
+    },
     "original:5f448da6f03c2efc9ffff9f7": {
       "first_seen_kst": "2026-10-01T23:48:10+09:00",
       "lanes": {
@@ -29741,6 +30061,24 @@
       "link": "https://www.etoday.co.kr/news/view/2631746",
       "source": "이투데이",
       "title": "[속보] 뉴욕증시, 소폭 상승⋯나스닥 0.04%↑"
+    },
+    "original:62f9c84b5ecf402f8f369e1d": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169851",
+      "source": "매일경제",
+      "source_body_digest": "8d273ce56c27f7e4bb7772916a657baa829ae47aacd2673e6f77ad7bf7643207",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e06a7a98aeba097a1c245a7b52e7c7323d1dcb004b7dd589e8b89ca67f383b8",
+      "source_fact_keys": [
+        "source_fact:v1:1e0375e42b30e09cfa3ea89bc969a263181d7a7c2f97e62dbef958f697841e5d",
+        "source_fact:v1:99320d56d7e04e490121d646975d1207d26b54d46557150d2746e872ea67cbbf"
+      ],
+      "source_published_kst": "2026-10-05T23:10+09:00",
+      "title": "유나이티드마이크로일렉, 18억 달러 해외CB 발행 확정에 지분 희석·매물 부담 부각"
     },
     "original:63703aaa9da30b2baf0c12fe": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
@@ -37339,6 +37677,25 @@
       "source": "뉴시스",
       "title": "더네이쳐홀딩스, 박영준 대표 등 임원 주식 매입…책임경영 강화"
     },
+    "original:dadf6690760e3b90f1d705f0": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005230637",
+      "source": "지디넷코리아",
+      "source_body_digest": "21addf1880f32daa4da159ac6ce732b183a1c5b8434e2d9f98a9960407a87d47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:988450f84792405415925b5e348062ad877ebdcf52d82d6dbcf7d7b470d9c41b",
+      "source_fact_keys": [
+        "source_fact:v1:20dd4d0e63d75f56a79b745657288e42389719f5badc67a80ad093db8958069c",
+        "source_fact:v1:32832f2beb33afcf0ef020efee8e45a672826f14dbfc7c750cedb1dd143d6e64",
+        "source_fact:v1:51ac9d282bb37274a30c00e2db76b2eea7a153d4f00b137f7c35519a8795670c"
+      ],
+      "source_published_kst": "2026-10-05T23:10+09:00",
+      "title": "LG전자, 북미서 5GW 대형 AIDC 칠러 장기 공급계약"
+    },
     "original:db1b3b28657b978f8fbc5f30": {
       "first_seen_kst": "2026-10-01T19:22:15+09:00",
       "lanes": {
@@ -39209,6 +39566,24 @@
       "source": "매일경제",
       "title": "ETF, 결국은 ‘국밥’으로…‘도파민’ 삼전닉스 지고 지수 추종으로 몰려"
     },
+    "original:f941a424018eca44b79b4dc1": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169802",
+      "source": "매일경제",
+      "source_body_digest": "5928505805db8e5afed6f61f87b45a353a782e1595144f93e6525b6bf8ade94e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed4740d25c1c7bb67bfd98cee31ee6765654e6b170672573a1a500c7b72b9eaa",
+      "source_fact_keys": [
+        "source_fact:v1:44334d3d26ebe5d61c4d8a9e84845328089860d4666d37178c056200956d039a",
+        "source_fact:v1:c25603a48e3b10bf0c83b87c73ddf978a12e5bd53eef91e8128b8f13250db80d"
+      ],
+      "source_published_kst": "2026-10-05T21:21+09:00",
+      "title": "레드 로빈 고메 버거, 1억1500만 달러 대출 재융자 완료..2031년 만기"
+    },
     "original:f94e89cae3171ba8ca7b3fa5": {
       "first_seen_kst": "2026-10-05T14:51:16+09:00",
       "lanes": {
@@ -39883,6 +40258,26 @@
       "source_published_kst": "2026-10-05T21:05+09:00",
       "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
     },
+    "source_fact:06b7620e042aec29bad2e654": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169811",
+      "source": "매일경제",
+      "source_body_digest": "e08b285692296e5bfa8dcc1b4b66715a9d1aff6a8746ed40d71e5950273e554d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20aa712f46eada214a8468f09e6be68cf83f905c7e47f49c540bb0933513c212",
+      "source_fact_keys": [
+        "source_fact:v1:11cadfc83e2814675645a68c8099b543ee83e47a27fa7992d8d6d45aacf9a60f",
+        "source_fact:v1:99562779d0cd77eb179773743945b6430b70bceef9a99da02889ff83ed6fc227",
+        "source_fact:v1:dfcc302bbded0b36edb940d1684c18ba8b5e37273ed43bbe931fee4e778d4383",
+        "source_fact:v1:f472f2774729f1ee7df2c926b471501ccc2969660ebe2ede2cf0c79e3cb37efd"
+      ],
+      "source_published_kst": "2026-10-05T21:36+09:00",
+      "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
+    },
     "source_fact:079456fa24f3f3e66b10a3d6": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -39973,6 +40368,28 @@
       ],
       "source_published_kst": "2026-10-05T20:25+09:00",
       "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
+    },
+    "source_fact:08e18ed9331d202b56f98132": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169749",
+      "source": "매일경제",
+      "source_body_digest": "a98edf0ef35f81cefb4d689aecb7360c93403b17b5fbaa1c001f4238317ddd72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:265ea0c041e1679a7f0e59400ff8cdb4723caac5a3243744a243ba28e4c66e07",
+      "source_fact_keys": [
+        "source_fact:v1:0be385cd806c0a0c0f5ad4866bf8bf76c1c3f6cff69b0e9858f11f4b867bf5c4",
+        "source_fact:v1:537f49bdbc5f939abfcd17c4060fc78920ed0439fcd55f36278343fcdb840929",
+        "source_fact:v1:9705a96bf08ff0818d87c6b0efe2831c645d78218b9010f5b7a26004aa2a98e1",
+        "source_fact:v1:9c4b788a39633c188ed27833a9b8159b6778c32ff73fe99a79b59dc0248c474e",
+        "source_fact:v1:a0e9c3a42682f2924286efe6847880416aa5329297bfdcc390f5569f6d255654",
+        "source_fact:v1:ff6078f20957026e4bf0871b13515309bae6d743185c0c247a8e0d2cabdce89e"
+      ],
+      "source_published_kst": "2026-10-05T19:24+09:00",
+      "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
     },
     "source_fact:091d9c0ed69788f7cb66ac69": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -40101,6 +40518,24 @@
       ],
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
+    },
+    "source_fact:0c7cc374448d49ad50e98708": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169802",
+      "source": "매일경제",
+      "source_body_digest": "5928505805db8e5afed6f61f87b45a353a782e1595144f93e6525b6bf8ade94e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed4740d25c1c7bb67bfd98cee31ee6765654e6b170672573a1a500c7b72b9eaa",
+      "source_fact_keys": [
+        "source_fact:v1:44334d3d26ebe5d61c4d8a9e84845328089860d4666d37178c056200956d039a",
+        "source_fact:v1:c25603a48e3b10bf0c83b87c73ddf978a12e5bd53eef91e8128b8f13250db80d"
+      ],
+      "source_published_kst": "2026-10-05T21:21+09:00",
+      "title": "레드 로빈 고메 버거, 1억1500만 달러 대출 재융자 완료..2031년 만기"
     },
     "source_fact:0cb75d8d70c81115d90ea2bf": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -40665,6 +41100,24 @@
       ],
       "source_published_kst": "2026-10-05T21:08+09:00",
       "title": "포럼 마켓츠, AI 합작사 설립..2027년 매출 최대 1억7500만달러"
+    },
+    "source_fact:1d4a1807126dab1e17f8c994": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169802",
+      "source": "매일경제",
+      "source_body_digest": "5928505805db8e5afed6f61f87b45a353a782e1595144f93e6525b6bf8ade94e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed4740d25c1c7bb67bfd98cee31ee6765654e6b170672573a1a500c7b72b9eaa",
+      "source_fact_keys": [
+        "source_fact:v1:44334d3d26ebe5d61c4d8a9e84845328089860d4666d37178c056200956d039a",
+        "source_fact:v1:c25603a48e3b10bf0c83b87c73ddf978a12e5bd53eef91e8128b8f13250db80d"
+      ],
+      "source_published_kst": "2026-10-05T21:21+09:00",
+      "title": "레드 로빈 고메 버거, 1억1500만 달러 대출 재융자 완료..2031년 만기"
     },
     "source_fact:1d674e5061de9f9f3f209f2a": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -41313,30 +41766,20 @@
     "source_fact:30fc8b60521330da2519bf1c": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
-        "live": "2026-10-05T20:53:37+09:00"
+        "live": "2026-10-05T23:46:36+09:00"
       },
-      "last_seen_kst": "2026-10-05T20:53:37+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007000009",
       "source": "연합뉴스",
-      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "source_body_digest": "9a9bb08fbb2b7290a8ce36ff5b74585511efde878bfea35d4db22dcaac80a8cc",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_identity": "source_facts:v1:aa91e88deb4913e1fca336ac22b1d785b30fd6cc95162d2cbab9da62eea90220",
       "source_fact_keys": [
-        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
-        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
-        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
-        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
-        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
-        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
-        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
-        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
-        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
-        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
-        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
-        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+        "source_fact:v1:101beb8ca77fd22358d07232aedbcfe1180d1181fd2e66fdad312ffd77339a4c",
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524"
       ],
-      "source_published_kst": "2026-10-05T20:40+09:00",
-      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+      "source_published_kst": "2026-10-05T07:26+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가 | 연합뉴스"
     },
     "source_fact:312287490b1a04f3ba9e5d14": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -41411,6 +41854,28 @@
       "source_published_kst": "2026-10-05T21:41+09:00",
       "title": "ESS 테크, NYSE 거래정지·상장폐지 개시..OTC서 GWHT 거래"
     },
+    "source_fact:32ac4c75489f5c28354a137e": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169749",
+      "source": "매일경제",
+      "source_body_digest": "a98edf0ef35f81cefb4d689aecb7360c93403b17b5fbaa1c001f4238317ddd72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:265ea0c041e1679a7f0e59400ff8cdb4723caac5a3243744a243ba28e4c66e07",
+      "source_fact_keys": [
+        "source_fact:v1:0be385cd806c0a0c0f5ad4866bf8bf76c1c3f6cff69b0e9858f11f4b867bf5c4",
+        "source_fact:v1:537f49bdbc5f939abfcd17c4060fc78920ed0439fcd55f36278343fcdb840929",
+        "source_fact:v1:9705a96bf08ff0818d87c6b0efe2831c645d78218b9010f5b7a26004aa2a98e1",
+        "source_fact:v1:9c4b788a39633c188ed27833a9b8159b6778c32ff73fe99a79b59dc0248c474e",
+        "source_fact:v1:a0e9c3a42682f2924286efe6847880416aa5329297bfdcc390f5569f6d255654",
+        "source_fact:v1:ff6078f20957026e4bf0871b13515309bae6d743185c0c247a8e0d2cabdce89e"
+      ],
+      "source_published_kst": "2026-10-05T19:24+09:00",
+      "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
+    },
     "source_fact:32e46a0b7585e0266d68ca7f": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -41469,6 +41934,26 @@
       ],
       "source_published_kst": "2026-10-05T22:50+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 해외CB 가격 확정..표면금리 0%"
+    },
+    "source_fact:3474714be5455d4d5826416a": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169811",
+      "source": "매일경제",
+      "source_body_digest": "e08b285692296e5bfa8dcc1b4b66715a9d1aff6a8746ed40d71e5950273e554d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20aa712f46eada214a8468f09e6be68cf83f905c7e47f49c540bb0933513c212",
+      "source_fact_keys": [
+        "source_fact:v1:11cadfc83e2814675645a68c8099b543ee83e47a27fa7992d8d6d45aacf9a60f",
+        "source_fact:v1:99562779d0cd77eb179773743945b6430b70bceef9a99da02889ff83ed6fc227",
+        "source_fact:v1:dfcc302bbded0b36edb940d1684c18ba8b5e37273ed43bbe931fee4e778d4383",
+        "source_fact:v1:f472f2774729f1ee7df2c926b471501ccc2969660ebe2ede2cf0c79e3cb37efd"
+      ],
+      "source_published_kst": "2026-10-05T21:36+09:00",
+      "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
     },
     "source_fact:34e23ea7cbc102fe69a61828": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -42105,6 +42590,24 @@
       "source_published_kst": "2026-10-05T08:05+09:00",
       "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
     },
+    "source_fact:430d94efd14d3c06ceddf101": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169851",
+      "source": "매일경제",
+      "source_body_digest": "8d273ce56c27f7e4bb7772916a657baa829ae47aacd2673e6f77ad7bf7643207",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e06a7a98aeba097a1c245a7b52e7c7323d1dcb004b7dd589e8b89ca67f383b8",
+      "source_fact_keys": [
+        "source_fact:v1:1e0375e42b30e09cfa3ea89bc969a263181d7a7c2f97e62dbef958f697841e5d",
+        "source_fact:v1:99320d56d7e04e490121d646975d1207d26b54d46557150d2746e872ea67cbbf"
+      ],
+      "source_published_kst": "2026-10-05T23:10+09:00",
+      "title": "유나이티드마이크로일렉, 18억 달러 해외CB 발행 확정에 지분 희석·매물 부담 부각"
+    },
     "source_fact:43474c80a971fb128f3d3a7b": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -42626,6 +43129,25 @@
       "source_published_kst": "2026-10-05T22:19+09:00",
       "title": "세노버스 에너지, 아사바스카오일 57억 캐나다달러 인수 합의"
     },
+    "source_fact:4dab6466b40db44962822b8f": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005230637",
+      "source": "지디넷코리아",
+      "source_body_digest": "21addf1880f32daa4da159ac6ce732b183a1c5b8434e2d9f98a9960407a87d47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:988450f84792405415925b5e348062ad877ebdcf52d82d6dbcf7d7b470d9c41b",
+      "source_fact_keys": [
+        "source_fact:v1:20dd4d0e63d75f56a79b745657288e42389719f5badc67a80ad093db8958069c",
+        "source_fact:v1:32832f2beb33afcf0ef020efee8e45a672826f14dbfc7c750cedb1dd143d6e64",
+        "source_fact:v1:51ac9d282bb37274a30c00e2db76b2eea7a153d4f00b137f7c35519a8795670c"
+      ],
+      "source_published_kst": "2026-10-05T23:10+09:00",
+      "title": "LG전자, 북미서 5GW 대형 AIDC 칠러 장기 공급계약"
+    },
     "source_fact:4ea88256bb5436c1ea10aa4f": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -42839,6 +43361,28 @@
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
+    "source_fact:52541cf9705cfa044b3a5a38": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169749",
+      "source": "매일경제",
+      "source_body_digest": "a98edf0ef35f81cefb4d689aecb7360c93403b17b5fbaa1c001f4238317ddd72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:265ea0c041e1679a7f0e59400ff8cdb4723caac5a3243744a243ba28e4c66e07",
+      "source_fact_keys": [
+        "source_fact:v1:0be385cd806c0a0c0f5ad4866bf8bf76c1c3f6cff69b0e9858f11f4b867bf5c4",
+        "source_fact:v1:537f49bdbc5f939abfcd17c4060fc78920ed0439fcd55f36278343fcdb840929",
+        "source_fact:v1:9705a96bf08ff0818d87c6b0efe2831c645d78218b9010f5b7a26004aa2a98e1",
+        "source_fact:v1:9c4b788a39633c188ed27833a9b8159b6778c32ff73fe99a79b59dc0248c474e",
+        "source_fact:v1:a0e9c3a42682f2924286efe6847880416aa5329297bfdcc390f5569f6d255654",
+        "source_fact:v1:ff6078f20957026e4bf0871b13515309bae6d743185c0c247a8e0d2cabdce89e"
+      ],
+      "source_published_kst": "2026-10-05T19:24+09:00",
+      "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
+    },
     "source_fact:52e88d4db5f6d6129bed018f": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -42857,6 +43401,25 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:53904ecdc2a06c849f686787": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005230637",
+      "source": "지디넷코리아",
+      "source_body_digest": "21addf1880f32daa4da159ac6ce732b183a1c5b8434e2d9f98a9960407a87d47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:988450f84792405415925b5e348062ad877ebdcf52d82d6dbcf7d7b470d9c41b",
+      "source_fact_keys": [
+        "source_fact:v1:20dd4d0e63d75f56a79b745657288e42389719f5badc67a80ad093db8958069c",
+        "source_fact:v1:32832f2beb33afcf0ef020efee8e45a672826f14dbfc7c750cedb1dd143d6e64",
+        "source_fact:v1:51ac9d282bb37274a30c00e2db76b2eea7a153d4f00b137f7c35519a8795670c"
+      ],
+      "source_published_kst": "2026-10-05T23:10+09:00",
+      "title": "LG전자, 북미서 5GW 대형 AIDC 칠러 장기 공급계약"
     },
     "source_fact:54793abf60847c2cd4df8a88": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -43538,6 +44101,28 @@
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
+    "source_fact:62ba1ae6cac4bde9703d4eff": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169749",
+      "source": "매일경제",
+      "source_body_digest": "a98edf0ef35f81cefb4d689aecb7360c93403b17b5fbaa1c001f4238317ddd72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:265ea0c041e1679a7f0e59400ff8cdb4723caac5a3243744a243ba28e4c66e07",
+      "source_fact_keys": [
+        "source_fact:v1:0be385cd806c0a0c0f5ad4866bf8bf76c1c3f6cff69b0e9858f11f4b867bf5c4",
+        "source_fact:v1:537f49bdbc5f939abfcd17c4060fc78920ed0439fcd55f36278343fcdb840929",
+        "source_fact:v1:9705a96bf08ff0818d87c6b0efe2831c645d78218b9010f5b7a26004aa2a98e1",
+        "source_fact:v1:9c4b788a39633c188ed27833a9b8159b6778c32ff73fe99a79b59dc0248c474e",
+        "source_fact:v1:a0e9c3a42682f2924286efe6847880416aa5329297bfdcc390f5569f6d255654",
+        "source_fact:v1:ff6078f20957026e4bf0871b13515309bae6d743185c0c247a8e0d2cabdce89e"
+      ],
+      "source_published_kst": "2026-10-05T19:24+09:00",
+      "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
+    },
     "source_fact:62d4ee2489ca0c237e504da8": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -43709,6 +44294,26 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "어드밴스드 드레니쥐 시스, 스톰트랩 5억3000만 달러 인수..4분기 완료 예정"
     },
+    "source_fact:68d7a7d33b4a8195605764c8": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169811",
+      "source": "매일경제",
+      "source_body_digest": "e08b285692296e5bfa8dcc1b4b66715a9d1aff6a8746ed40d71e5950273e554d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20aa712f46eada214a8468f09e6be68cf83f905c7e47f49c540bb0933513c212",
+      "source_fact_keys": [
+        "source_fact:v1:11cadfc83e2814675645a68c8099b543ee83e47a27fa7992d8d6d45aacf9a60f",
+        "source_fact:v1:99562779d0cd77eb179773743945b6430b70bceef9a99da02889ff83ed6fc227",
+        "source_fact:v1:dfcc302bbded0b36edb940d1684c18ba8b5e37273ed43bbe931fee4e778d4383",
+        "source_fact:v1:f472f2774729f1ee7df2c926b471501ccc2969660ebe2ede2cf0c79e3cb37efd"
+      ],
+      "source_published_kst": "2026-10-05T21:36+09:00",
+      "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
+    },
     "source_fact:6917dc00610539ff397cca63": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -43876,6 +44481,24 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
+    },
+    "source_fact:6d101c321f49e1d0cd259cc2": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169851",
+      "source": "매일경제",
+      "source_body_digest": "8d273ce56c27f7e4bb7772916a657baa829ae47aacd2673e6f77ad7bf7643207",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e06a7a98aeba097a1c245a7b52e7c7323d1dcb004b7dd589e8b89ca67f383b8",
+      "source_fact_keys": [
+        "source_fact:v1:1e0375e42b30e09cfa3ea89bc969a263181d7a7c2f97e62dbef958f697841e5d",
+        "source_fact:v1:99320d56d7e04e490121d646975d1207d26b54d46557150d2746e872ea67cbbf"
+      ],
+      "source_published_kst": "2026-10-05T23:10+09:00",
+      "title": "유나이티드마이크로일렉, 18억 달러 해외CB 발행 확정에 지분 희석·매물 부담 부각"
     },
     "source_fact:6d5250d8ace8ef0dced9f04a": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -44606,6 +45229,25 @@
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
     },
+    "source_fact:77888c20227002159cd951cc": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005230637",
+      "source": "지디넷코리아",
+      "source_body_digest": "21addf1880f32daa4da159ac6ce732b183a1c5b8434e2d9f98a9960407a87d47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:988450f84792405415925b5e348062ad877ebdcf52d82d6dbcf7d7b470d9c41b",
+      "source_fact_keys": [
+        "source_fact:v1:20dd4d0e63d75f56a79b745657288e42389719f5badc67a80ad093db8958069c",
+        "source_fact:v1:32832f2beb33afcf0ef020efee8e45a672826f14dbfc7c750cedb1dd143d6e64",
+        "source_fact:v1:51ac9d282bb37274a30c00e2db76b2eea7a153d4f00b137f7c35519a8795670c"
+      ],
+      "source_published_kst": "2026-10-05T23:10+09:00",
+      "title": "LG전자, 북미서 5GW 대형 AIDC 칠러 장기 공급계약"
+    },
     "source_fact:78bef282f8b77ba45a50c8f3": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -44649,6 +45291,28 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
+    },
+    "source_fact:79d82eea9daf79cb75dd1c17": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169749",
+      "source": "매일경제",
+      "source_body_digest": "a98edf0ef35f81cefb4d689aecb7360c93403b17b5fbaa1c001f4238317ddd72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:265ea0c041e1679a7f0e59400ff8cdb4723caac5a3243744a243ba28e4c66e07",
+      "source_fact_keys": [
+        "source_fact:v1:0be385cd806c0a0c0f5ad4866bf8bf76c1c3f6cff69b0e9858f11f4b867bf5c4",
+        "source_fact:v1:537f49bdbc5f939abfcd17c4060fc78920ed0439fcd55f36278343fcdb840929",
+        "source_fact:v1:9705a96bf08ff0818d87c6b0efe2831c645d78218b9010f5b7a26004aa2a98e1",
+        "source_fact:v1:9c4b788a39633c188ed27833a9b8159b6778c32ff73fe99a79b59dc0248c474e",
+        "source_fact:v1:a0e9c3a42682f2924286efe6847880416aa5329297bfdcc390f5569f6d255654",
+        "source_fact:v1:ff6078f20957026e4bf0871b13515309bae6d743185c0c247a8e0d2cabdce89e"
+      ],
+      "source_published_kst": "2026-10-05T19:24+09:00",
+      "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
     },
     "source_fact:79df1c4bb0d1cb275864c4f1": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -48026,6 +48690,24 @@
       "source_published_kst": "2026-10-05T19:06+09:00",
       "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
     },
+    "source_fact:ce20b18524a2ce0bb975d0b8": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007000009",
+      "source": "연합뉴스",
+      "source_body_digest": "9a9bb08fbb2b7290a8ce36ff5b74585511efde878bfea35d4db22dcaac80a8cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aa91e88deb4913e1fca336ac22b1d785b30fd6cc95162d2cbab9da62eea90220",
+      "source_fact_keys": [
+        "source_fact:v1:101beb8ca77fd22358d07232aedbcfe1180d1181fd2e66fdad312ffd77339a4c",
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524"
+      ],
+      "source_published_kst": "2026-10-05T07:26+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가 | 연합뉴스"
+    },
     "source_fact:ceb11bf2d1500bfc2c6caf7c": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
       "lanes": {
@@ -48364,6 +49046,28 @@
       "source_published_kst": "2026-10-05T15:17+09:00",
       "title": "자사주 '버팀목' 빠지는 삼성전자… 100조원대 영업익으로 극복할까?"
     },
+    "source_fact:d76d9d63d8331cc2b9870f9c": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169749",
+      "source": "매일경제",
+      "source_body_digest": "a98edf0ef35f81cefb4d689aecb7360c93403b17b5fbaa1c001f4238317ddd72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:265ea0c041e1679a7f0e59400ff8cdb4723caac5a3243744a243ba28e4c66e07",
+      "source_fact_keys": [
+        "source_fact:v1:0be385cd806c0a0c0f5ad4866bf8bf76c1c3f6cff69b0e9858f11f4b867bf5c4",
+        "source_fact:v1:537f49bdbc5f939abfcd17c4060fc78920ed0439fcd55f36278343fcdb840929",
+        "source_fact:v1:9705a96bf08ff0818d87c6b0efe2831c645d78218b9010f5b7a26004aa2a98e1",
+        "source_fact:v1:9c4b788a39633c188ed27833a9b8159b6778c32ff73fe99a79b59dc0248c474e",
+        "source_fact:v1:a0e9c3a42682f2924286efe6847880416aa5329297bfdcc390f5569f6d255654",
+        "source_fact:v1:ff6078f20957026e4bf0871b13515309bae6d743185c0c247a8e0d2cabdce89e"
+      ],
+      "source_published_kst": "2026-10-05T19:24+09:00",
+      "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
+    },
     "source_fact:d7adfe2501346a6a333789df": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -48577,6 +49281,26 @@
       ],
       "source_published_kst": "2026-10-05T22:27+09:00",
       "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
+    },
+    "source_fact:def07dfb5ffd4fc86a2d3cbc": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169811",
+      "source": "매일경제",
+      "source_body_digest": "e08b285692296e5bfa8dcc1b4b66715a9d1aff6a8746ed40d71e5950273e554d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20aa712f46eada214a8468f09e6be68cf83f905c7e47f49c540bb0933513c212",
+      "source_fact_keys": [
+        "source_fact:v1:11cadfc83e2814675645a68c8099b543ee83e47a27fa7992d8d6d45aacf9a60f",
+        "source_fact:v1:99562779d0cd77eb179773743945b6430b70bceef9a99da02889ff83ed6fc227",
+        "source_fact:v1:dfcc302bbded0b36edb940d1684c18ba8b5e37273ed43bbe931fee4e778d4383",
+        "source_fact:v1:f472f2774729f1ee7df2c926b471501ccc2969660ebe2ede2cf0c79e3cb37efd"
+      ],
+      "source_published_kst": "2026-10-05T21:36+09:00",
+      "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
     },
     "source_fact:dff8beb44be29d83358d0f8b": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -51318,6 +52042,21 @@
       "source": "이투데이",
       "title": "알래스카 LNG 기대 선반영했나…철강주 美 투자 언급에도 하락"
     },
+    "title:195d56dca2581d7102118622": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04516566645609968",
+      "source": "이데일리",
+      "source_body_digest": "2a7361b199437a7834cf2a4a543565889eccc5aa106f2a856404c6703e734919",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T22:57+09:00",
+      "title": "[美특징주]RXO, CH 로빈슨에 58억달러 피인수...주가 23%↑"
+    },
     "title:19b38794a24a2d9830533be9": {
       "first_seen_kst": "2026-09-18T09:03:50+09:00",
       "lanes": {
@@ -51507,6 +52246,24 @@
       "link": "https://www.yna.co.kr/view/AKR20260920036700009",
       "source": "연합뉴스",
       "title": "CXMT, 5세대 D램 공정 양산 돌입…삼성·하이닉스 추격 가속 | 연합뉴스"
+    },
+    "title:1d508cbfc346041a2a1f80fd": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005007000009",
+      "source": "연합뉴스",
+      "source_body_digest": "9a9bb08fbb2b7290a8ce36ff5b74585511efde878bfea35d4db22dcaac80a8cc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:aa91e88deb4913e1fca336ac22b1d785b30fd6cc95162d2cbab9da62eea90220",
+      "source_fact_keys": [
+        "source_fact:v1:101beb8ca77fd22358d07232aedbcfe1180d1181fd2e66fdad312ffd77339a4c",
+        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524"
+      ],
+      "source_published_kst": "2026-10-05T07:26+09:00",
+      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가 | 연합뉴스"
     },
     "title:1d96a54f3824ddb0ff23a284": {
       "first_seen_kst": "2026-10-01T12:53:41+09:00",
@@ -53369,6 +54126,28 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003813159",
       "source": "뉴시스",
       "title": "유로존 9월 인플레 3.8%로 ↑…8월의 3.2%에서"
+    },
+    "title:3b00b105b0a96e12270e4a65": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169749",
+      "source": "매일경제",
+      "source_body_digest": "a98edf0ef35f81cefb4d689aecb7360c93403b17b5fbaa1c001f4238317ddd72",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:265ea0c041e1679a7f0e59400ff8cdb4723caac5a3243744a243ba28e4c66e07",
+      "source_fact_keys": [
+        "source_fact:v1:0be385cd806c0a0c0f5ad4866bf8bf76c1c3f6cff69b0e9858f11f4b867bf5c4",
+        "source_fact:v1:537f49bdbc5f939abfcd17c4060fc78920ed0439fcd55f36278343fcdb840929",
+        "source_fact:v1:9705a96bf08ff0818d87c6b0efe2831c645d78218b9010f5b7a26004aa2a98e1",
+        "source_fact:v1:9c4b788a39633c188ed27833a9b8159b6778c32ff73fe99a79b59dc0248c474e",
+        "source_fact:v1:a0e9c3a42682f2924286efe6847880416aa5329297bfdcc390f5569f6d255654",
+        "source_fact:v1:ff6078f20957026e4bf0871b13515309bae6d743185c0c247a8e0d2cabdce89e"
+      ],
+      "source_published_kst": "2026-10-05T19:24+09:00",
+      "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
     },
     "title:3b0410adc1e2ed50f0f66c88": {
       "first_seen_kst": "2026-10-04T06:09:53+09:00",
@@ -55735,6 +56514,26 @@
       "source": "이데일리",
       "title": "오폐수처리장 20cm 태아 시신...산모 찾아도 처벌 어렵다"
     },
+    "title:5f369a784766e7196b9b4d84": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169811",
+      "source": "매일경제",
+      "source_body_digest": "e08b285692296e5bfa8dcc1b4b66715a9d1aff6a8746ed40d71e5950273e554d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:20aa712f46eada214a8468f09e6be68cf83f905c7e47f49c540bb0933513c212",
+      "source_fact_keys": [
+        "source_fact:v1:11cadfc83e2814675645a68c8099b543ee83e47a27fa7992d8d6d45aacf9a60f",
+        "source_fact:v1:99562779d0cd77eb179773743945b6430b70bceef9a99da02889ff83ed6fc227",
+        "source_fact:v1:dfcc302bbded0b36edb940d1684c18ba8b5e37273ed43bbe931fee4e778d4383",
+        "source_fact:v1:f472f2774729f1ee7df2c926b471501ccc2969660ebe2ede2cf0c79e3cb37efd"
+      ],
+      "source_published_kst": "2026-10-05T21:36+09:00",
+      "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
+    },
     "title:5f448da6f03c2efc9ffff9f7": {
       "first_seen_kst": "2026-10-01T23:48:10+09:00",
       "lanes": {
@@ -55993,6 +56792,24 @@
       "link": "https://www.etoday.co.kr/news/view/2631746",
       "source": "이투데이",
       "title": "[속보] 뉴욕증시, 소폭 상승⋯나스닥 0.04%↑"
+    },
+    "title:62f9c84b5ecf402f8f369e1d": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169851",
+      "source": "매일경제",
+      "source_body_digest": "8d273ce56c27f7e4bb7772916a657baa829ae47aacd2673e6f77ad7bf7643207",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e06a7a98aeba097a1c245a7b52e7c7323d1dcb004b7dd589e8b89ca67f383b8",
+      "source_fact_keys": [
+        "source_fact:v1:1e0375e42b30e09cfa3ea89bc969a263181d7a7c2f97e62dbef958f697841e5d",
+        "source_fact:v1:99320d56d7e04e490121d646975d1207d26b54d46557150d2746e872ea67cbbf"
+      ],
+      "source_published_kst": "2026-10-05T23:10+09:00",
+      "title": "유나이티드마이크로일렉, 18억 달러 해외CB 발행 확정에 지분 희석·매물 부담 부각"
     },
     "title:63703aaa9da30b2baf0c12fe": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
@@ -63706,6 +64523,25 @@
       "source": "뉴시스",
       "title": "더네이쳐홀딩스, 박영준 대표 등 임원 주식 매입…책임경영 강화"
     },
+    "title:dadf6690760e3b90f1d705f0": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005230637",
+      "source": "지디넷코리아",
+      "source_body_digest": "21addf1880f32daa4da159ac6ce732b183a1c5b8434e2d9f98a9960407a87d47",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:988450f84792405415925b5e348062ad877ebdcf52d82d6dbcf7d7b470d9c41b",
+      "source_fact_keys": [
+        "source_fact:v1:20dd4d0e63d75f56a79b745657288e42389719f5badc67a80ad093db8958069c",
+        "source_fact:v1:32832f2beb33afcf0ef020efee8e45a672826f14dbfc7c750cedb1dd143d6e64",
+        "source_fact:v1:51ac9d282bb37274a30c00e2db76b2eea7a153d4f00b137f7c35519a8795670c"
+      ],
+      "source_published_kst": "2026-10-05T23:10+09:00",
+      "title": "LG전자, 북미서 5GW 대형 AIDC 칠러 장기 공급계약"
+    },
     "title:db1b3b28657b978f8fbc5f30": {
       "first_seen_kst": "2026-10-01T19:22:15+09:00",
       "lanes": {
@@ -65586,6 +66422,24 @@
       "source": "매일경제",
       "title": "ETF, 결국은 ‘국밥’으로…‘도파민’ 삼전닉스 지고 지수 추종으로 몰려"
     },
+    "title:f941a424018eca44b79b4dc1": {
+      "first_seen_kst": "2026-10-05T23:46:36+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:46:36+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:46:36+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169802",
+      "source": "매일경제",
+      "source_body_digest": "5928505805db8e5afed6f61f87b45a353a782e1595144f93e6525b6bf8ade94e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ed4740d25c1c7bb67bfd98cee31ee6765654e6b170672573a1a500c7b72b9eaa",
+      "source_fact_keys": [
+        "source_fact:v1:44334d3d26ebe5d61c4d8a9e84845328089860d4666d37178c056200956d039a",
+        "source_fact:v1:c25603a48e3b10bf0c83b87c73ddf978a12e5bd53eef91e8128b8f13250db80d"
+      ],
+      "source_published_kst": "2026-10-05T21:21+09:00",
+      "title": "레드 로빈 고메 버거, 1억1500만 달러 대출 재융자 완료..2031년 만기"
+    },
     "title:f94e89cae3171ba8ca7b3fa5": {
       "first_seen_kst": "2026-10-05T14:51:16+09:00",
       "lanes": {
@@ -66010,5 +66864,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T23:37:00+09:00"
+  "updated_at_kst": "2026-10-05T23:46:36+09:00"
 }
