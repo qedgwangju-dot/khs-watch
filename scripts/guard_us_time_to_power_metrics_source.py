@@ -1569,5 +1569,278 @@ if semi_links_old not in s:
     raise SystemExit("800V SiC official links insertion point not found")
 s = s.replace(semi_links_old, semi_links_new, 1)
 
+
+# Add state-level data-center permitting / cost-allocation requirements to the
+# SAME time-to-power watcher. These are state-specific rules, not a nationwide
+# uniform mandate, and are kept separate from FERC/RTO interconnection rules.
+s = s.replace("FORMAT_VERSION = 4", "FORMAT_VERSION = 5", 1)
+
+state_policy_const_anchor = 'DIGITIMES_SIC_RESEARCH = "https://apps.digitimes.com/reports/item.php?id=20260929RS400"\n'
+state_policy_const_new = state_policy_const_anchor + '''MA_EO_658 = "https://www.mass.gov/executive-orders/no-658-establishing-requirements-for-responsible-data-center-development-and-operations-in-massachusetts-to-protect-and-support-ratepayers-communities-and-the-environment"
+PA_GRID_REQUIREMENTS = "https://dced.pa.gov/business-assistance/data-center-resources/grid-requirements/"
+VA_LARGE_LOAD_FACTS = "https://www.scc.virginia.gov/about-the-scc/scc-facts/"
+'''
+if state_policy_const_anchor not in s:
+    raise SystemExit("state policy constants insertion point not found")
+s = s.replace(state_policy_const_anchor, state_policy_const_new, 1)
+
+state_policy_func_anchor = '''def detect_metric_changes(old: dict, metrics: dict, projects: dict) -> list[str]:
+'''
+state_policy_func_block = r'''
+STATE_POLICY_DEFAULTS = {
+    # Verified 2026 official public baselines. Live parsers below refresh them.
+    "ma_threshold_mw": 25.0,
+    "ma_grid_upgrade_cost_shift_prohibited": True,
+    "ma_incremental_clean_energy_required": True,
+    "ma_acp_deadline": "2026-12-31",
+    "ma_community_benefits_required": True,
+    "pa_full_incremental_power_cost_required": True,
+    "pa_local_approval_required": True,
+    "pa_clean_firm_share_2035_pct": 32.0,
+    "va_min_td_charge_pct": 85.0,
+    "va_collateral_pct": 60.0,
+    "va_new_contract_effective_year": 2027.0,
+}
+
+
+def _state_policy_page_text(url: str) -> str:
+    return normalize(BeautifulSoup(fetch(url, 25).text, "html.parser").get_text(" "))
+
+
+def parse_state_policy_metrics(previous: dict | None = None) -> tuple[dict, list[str]]:
+    previous = previous or {}
+    metrics = dict(STATE_POLICY_DEFAULTS)
+    errors = []
+    for key, value in previous.items():
+        if key in metrics and value is not None:
+            metrics[key] = value
+
+    try:
+        text = _state_policy_page_text(MA_EO_658)
+        low = text.lower()
+        if "twenty-five megawatts" in low or re.search(r"\b25\s*(?:mw|megawatts?)\b", text, re.I):
+            metrics["ma_threshold_mw"] = 25.0
+        metrics["ma_grid_upgrade_cost_shift_prohibited"] = bool(
+            re.search(r"other ratepayers do not pay distribution grid upgrades", text, re.I)
+        )
+        metrics["ma_incremental_clean_energy_required"] = bool(
+            re.search(r"sufficient incremental new clean electricity generation", text, re.I)
+        )
+        metrics["ma_community_benefits_required"] = bool(
+            re.search(r"community benefits agreement", text, re.I)
+        )
+        if re.search(r"December\s+31,\s+2026", text, re.I):
+            metrics["ma_acp_deadline"] = "2026-12-31"
+    except Exception as exc:
+        errors.append(f"Massachusetts EO 658: {type(exc).__name__}")
+
+    try:
+        text = _state_policy_page_text(PA_GRID_REQUIREMENTS)
+        metrics["pa_full_incremental_power_cost_required"] = bool(
+            re.search(
+                r"pay all costs associated with interconnection, transmission, distribution, network upgrades",
+                text,
+                re.I,
+            )
+            or re.search(r"full cost of new electricity generation, transmission, distribution", text, re.I)
+        )
+        metrics["pa_local_approval_required"] = bool(
+            re.search(r"local approval", text, re.I)
+        )
+        m = re.search(r"up to\s+([0-9.]+)\s*percent\s+in\s+2035", text, re.I)
+        if m:
+            metrics["pa_clean_firm_share_2035_pct"] = float(m.group(1))
+    except Exception as exc:
+        errors.append(f"Pennsylvania GRID: {type(exc).__name__}")
+
+    try:
+        text = _state_policy_page_text(VA_LARGE_LOAD_FACTS)
+        m = re.search(r"pay at least\s+([0-9.]+)%\s+of the transmission and distribution costs", text, re.I)
+        if m:
+            metrics["va_min_td_charge_pct"] = float(m.group(1))
+        m = re.search(r"cover up to\s+([0-9.]+)%\s+of the customer.?s minimum charges", text, re.I)
+        if m:
+            metrics["va_collateral_pct"] = float(m.group(1))
+        m = re.search(r"on or after January\s+1,\s+(20[0-9]{2})", text, re.I)
+        if m:
+            metrics["va_new_contract_effective_year"] = float(m.group(1))
+    except Exception as exc:
+        errors.append(f"Virginia SCC: {type(exc).__name__}")
+
+    return metrics, errors
+
+
+def detect_state_policy_changes(old: dict, now: dict) -> list[str]:
+    oldm = old.get("state_policy_metrics") or {}
+    if not oldm:
+        return ["주정부 인허가·비용부담 기준선 신규 연결"]
+    changes = []
+    numeric_checks = (
+        ("ma_threshold_mw", "Massachusetts 적용 문턱", "MW"),
+        ("pa_clean_firm_share_2035_pct", "Pennsylvania 2035 청정·상시전원 비중", "%"),
+        ("va_min_td_charge_pct", "Virginia 송배전 최소요금 비중", "%"),
+        ("va_collateral_pct", "Virginia 담보 상단", "%"),
+        ("va_new_contract_effective_year", "Virginia 신규계약 적용연도", "년"),
+    )
+    for key, label, unit in numeric_checks:
+        ov, nv = oldm.get(key), now.get(key)
+        if ov is None or nv is None:
+            continue
+        try:
+            if float(ov) != float(nv):
+                changes.append(f"{label}: {float(ov):g}{unit} → {float(nv):g}{unit}")
+        except Exception:
+            pass
+    for key, label in (
+        ("ma_grid_upgrade_cost_shift_prohibited", "Massachusetts 전력망 증설비용 전가 차단"),
+        ("ma_incremental_clean_energy_required", "Massachusetts 추가 청정전력 조달"),
+        ("ma_community_benefits_required", "Massachusetts 지역사회 편익협약"),
+        ("pa_full_incremental_power_cost_required", "Pennsylvania 신규 전력인프라 전액 부담"),
+        ("pa_local_approval_required", "Pennsylvania 지역승인"),
+    ):
+        if key in oldm and bool(oldm.get(key)) != bool(now.get(key)):
+            changes.append(f"{label}: {bool(oldm.get(key))} → {bool(now.get(key))}")
+    if oldm.get("ma_acp_deadline") and oldm.get("ma_acp_deadline") != now.get("ma_acp_deadline"):
+        changes.append(
+            f"Massachusetts 대체준수부담금 기한: {oldm.get('ma_acp_deadline')} → {now.get('ma_acp_deadline')}"
+        )
+    return changes
+
+
+'''
+if state_policy_func_anchor not in s:
+    raise SystemExit("state policy function insertion point not found")
+s = s.replace(state_policy_func_anchor, state_policy_func_block + state_policy_func_anchor, 1)
+
+state_policy_runtime_old = '''power_semiconductor_metrics, power_semiconductor_errors = parse_power_semiconductor_metrics(
+    old.get("power_semiconductor_metrics") or {}
+)
+errors.extend(power_semiconductor_errors)
+
+items: list[dict] = []'''
+state_policy_runtime_new = '''power_semiconductor_metrics, power_semiconductor_errors = parse_power_semiconductor_metrics(
+    old.get("power_semiconductor_metrics") or {}
+)
+errors.extend(power_semiconductor_errors)
+state_policy_metrics, state_policy_errors = parse_state_policy_metrics(
+    old.get("state_policy_metrics") or {}
+)
+errors.extend(state_policy_errors)
+
+items: list[dict] = []'''
+if state_policy_runtime_old not in s:
+    raise SystemExit("state policy runtime insertion point not found")
+s = s.replace(state_policy_runtime_old, state_policy_runtime_new, 1)
+
+state_policy_change_old = '''power_semiconductor_changes = detect_power_semiconductor_changes(old, power_semiconductor_metrics)
+baseline_run = not old.get("initialized")
+format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
+should_alert = (
+    baseline_run or format_upgrade or bool(new_items) or bool(metric_changes)
+    or bool(flexible_load_changes) or bool(power_semiconductor_changes)
+)'''
+state_policy_change_new = '''power_semiconductor_changes = detect_power_semiconductor_changes(old, power_semiconductor_metrics)
+state_policy_changes = detect_state_policy_changes(old, state_policy_metrics)
+baseline_run = not old.get("initialized")
+format_upgrade = int(old.get("format_version", 0) or 0) < FORMAT_VERSION
+should_alert = (
+    baseline_run or format_upgrade or bool(new_items) or bool(metric_changes)
+    or bool(flexible_load_changes) or bool(power_semiconductor_changes)
+    or bool(state_policy_changes)
+)'''
+if state_policy_change_old not in s:
+    raise SystemExit("state policy alert gate insertion point not found")
+s = s.replace(state_policy_change_old, state_policy_change_new, 1)
+
+state_policy_pending_old = '''    "power_semiconductor_metrics": power_semiconductor_metrics,
+    "power_semiconductor_source_errors": power_semiconductor_errors,
+    "seen_ids": seen,'''
+state_policy_pending_new = '''    "power_semiconductor_metrics": power_semiconductor_metrics,
+    "power_semiconductor_source_errors": power_semiconductor_errors,
+    "state_policy_metrics": state_policy_metrics,
+    "state_policy_source_errors": state_policy_errors,
+    "seen_ids": seen,'''
+if state_policy_pending_old not in s:
+    raise SystemExit("state policy pending state insertion point not found")
+s = s.replace(state_policy_pending_old, state_policy_pending_new, 1)
+
+state_policy_msg_anchor = '''    fm = flexible_load_metrics
+'''
+state_policy_msg_block = '''    sp = state_policy_metrics
+    if baseline_run or format_upgrade or state_policy_changes:
+        msg += ["", "<b>🏛️ 주정부 인허가·비용부담 실행판</b>"]
+        msg.append(
+            f"• <b>Massachusetts</b> · 피크수요 <b>{sp['ma_threshold_mw']:g}MW 초과</b> "
+            f"· 지역사회 편익협약 {'의무' if sp.get('ma_community_benefits_required') else '재확인'} "
+            f"· 다른 요금납부자에게 송배전 증설비용 전가 {'차단' if sp.get('ma_grid_upgrade_cost_shift_prohibited') else '재확인'}"
+        )
+        msg.append(
+            f"  ↳ 연간 사용전력을 충당할 추가 청정전력 조달 {'요구' if sp.get('ma_incremental_clean_energy_required') else '재확인'} "
+            f"· 부족 시 대체준수부담금 제도 기한 <b>{sp.get('ma_acp_deadline')}</b>"
+        )
+        msg.append(
+            f"• <b>Pennsylvania</b> · 지역승인 {'요구' if sp.get('pa_local_approval_required') else '재확인'} "
+            f"· 신규 발전·송전·배전·계통접속·망증설 비용 {'전액 사업자 부담' if sp.get('pa_full_incremental_power_cost_required') else '재확인'} "
+            f"· 청정·상시전원 비중 2035년 최대 <b>{sp['pa_clean_firm_share_2035_pct']:g}%</b>"
+        )
+        msg.append(
+            f"• <b>Virginia</b> · 송전·배전 월 최소요금 <b>{sp['va_min_td_charge_pct']:g}%</b> "
+            f"· 신용조건 미충족 시 계약기간 최소요금의 최대 <b>{sp['va_collateral_pct']:g}%</b> 담보 "
+            f"· 신규계약 <b>{int(sp['va_new_contract_effective_year'])}년</b> 적용"
+        )
+        msg.append("• <b>판정:</b> 미국 전체의 단일 규정이 아니라 주별 인허가·요금·비용배분 조건이 강화되는 흐름으로 봅니다.")
+        msg.append("• <b>투자 연결:</b> 계통증설 비용과 허가기간을 직접 부담할수록 빠른 현장전원·연료전지·가스·BESS의 상대가치가 올라갈 수 있습니다.")
+        if state_policy_errors:
+            msg.append("• 일부 공식 페이지 조회 실패 시 직전 검증값을 유지하고, 오류 자체는 변화로 알리지 않습니다.")
+
+    if state_policy_changes:
+        msg += ["", "<b>🔄 주정부 인허가·비용부담 기준 변경</b>"]
+        for ch in state_policy_changes[:8]:
+            msg.append(f"• <b>{h(ch)}</b>")
+
+    fm = flexible_load_metrics
+'''
+if state_policy_msg_anchor not in s:
+    raise SystemExit("state policy message insertion point not found")
+s = s.replace(state_policy_msg_anchor, state_policy_msg_block, 1)
+
+state_policy_scope_old = '''        msg.append("• 유연부하·수요반응은 계약 MW·감축률·응답시간·지속시간·계통접속 단축을 추적")
+'''
+state_policy_scope_new = '''        msg.append("• 유연부하·수요반응은 계약 MW·감축률·응답시간·지속시간·계통접속 단축을 추적")
+        msg.append("• 주정부 인허가·요금은 Massachusetts·Pennsylvania·Virginia의 비용배분·지역승인·청정전력 의무 변화를 추적")
+'''
+if state_policy_scope_old not in s:
+    raise SystemExit("state policy baseline scope insertion point not found")
+s = s.replace(state_policy_scope_old, state_policy_scope_new, 1)
+
+state_policy_status_marker = '''    f"- 신규 의미자료: **{len(new_items)}건**'''
+state_policy_status_prefix = '''    f"- Massachusetts 데이터센터 규제 문턱: **{state_policy_metrics.get('ma_threshold_mw')} MW 초과**\\n"
+    f"- Pennsylvania 신규 전력인프라 전액 부담: **{state_policy_metrics.get('pa_full_incremental_power_cost_required')}**\\n"
+    f"- Virginia 송배전 최소요금: **{state_policy_metrics.get('va_min_td_charge_pct')}%**\\n"
+    f"- 주정부 정책 원천 오류: **{'; '.join(state_policy_errors) if state_policy_errors else '없음'}**\\n"
+'''
+if state_policy_status_marker not in s:
+    raise SystemExit("state policy status insertion point not found")
+s = s.replace(state_policy_status_marker, state_policy_status_prefix + state_policy_status_marker, 1)
+
+state_policy_print_old = '''f"flex_changes={len(flexible_load_changes)} power_semi_changes={len(power_semiconductor_changes)} "
+    f"alert={should_alert}"'''
+state_policy_print_new = '''f"flex_changes={len(flexible_load_changes)} power_semi_changes={len(power_semiconductor_changes)} "
+    f"state_policy_changes={len(state_policy_changes)} alert={should_alert}"'''
+if state_policy_print_old not in s:
+    raise SystemExit("state policy print insertion point not found")
+s = s.replace(state_policy_print_old, state_policy_print_new, 1)
+
+state_policy_links_old = '''        msg.append(f"• {a('DIGITIMES SiC 기판 회복 연구', DIGITIMES_SIC_RESEARCH)}")'''
+state_policy_links_new = '''        msg.append(f"• {a('DIGITIMES SiC 기판 회복 연구', DIGITIMES_SIC_RESEARCH)}")
+    if baseline_run or format_upgrade or state_policy_changes:
+        msg.append(f"• {a('Massachusetts Executive Order 658', MA_EO_658)}")
+        msg.append(f"• {a('Pennsylvania GRID Requirements', PA_GRID_REQUIREMENTS)}")
+        msg.append(f"• {a('Virginia 대형부하 요금 기준', VA_LARGE_LOAD_FACTS)}")'''
+if state_policy_links_old not in s:
+    raise SystemExit("state policy links insertion point not found")
+s = s.replace(state_policy_links_old, state_policy_links_new, 1)
+
+
 p.write_text(s, encoding="utf-8")
-print("US time-to-power flexible-load + 800V SiC/GaN guard inserted")
+print("US time-to-power flexible-load + 800V SiC/GaN + state-policy guard inserted")
