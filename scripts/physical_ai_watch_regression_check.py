@@ -1662,4 +1662,47 @@ assert watcher.qty._qty_summary(visible_quantity) == "15,000km", (
     watcher.qty._qty_summary(visible_quantity),
 )
 
+# 37) Brett Adcock's personal X account is not Figure-exclusive anymore.
+# Hark/Handoff product posts and generic ambiguous AI teasers must not be
+# attributed to Figure AI. Only explicit Figure/Helix/robot/humanoid context
+# can enter the Figure lane.
+hark_launch = watcher.fig._make_figure_item(
+    "2106889503919292529",
+    "Hark launches this week. The first 100,000 sign-ups get the paid plan free. Join the waitlist.",
+    watcher.base.NOW,
+)
+assert hark_launch is None, "Hark launch post must not become a Figure AI alert"
+
+hark_benchmark = watcher.fig._make_figure_item(
+    "2106889503919292530",
+    "Handoff is our personal AI browser agent. It launches this week with a 97.7% benchmark score.",
+    watcher.base.NOW,
+)
+assert hark_benchmark is None, "Handoff benchmark must stay outside Figure AI"
+
+ambiguous_founder_teaser = watcher.fig._make_figure_item(
+    "2106889503919292531",
+    "Major AI update tomorrow. See you in the AM.",
+    watcher.base.NOW,
+)
+assert ambiguous_founder_teaser is None, "Ambiguous founder AI teaser must stay silent"
+
+explicit_figure_teaser = watcher.fig._make_figure_item(
+    "2106889503919292532",
+    "Figure 03 AI update tomorrow. New humanoid autonomy results in the AM.",
+    watcher.base.NOW,
+)
+assert explicit_figure_teaser is not None, "Explicit Figure humanoid teaser must still alert"
+g, s, c, k = classify(explicit_figure_teaser)
+assert g == "figure_ai", (g, s, c)
+assert s >= 11, s
+
+third_party_hark = make(
+    "Figure founder Brett Adcock launches personal AI product Hark this week",
+    "Hark will launch this week and the first 100,000 users get the paid plan free. Handoff is a browser agent.",
+    "Reuters",
+)
+g, s, c, k = classify(third_party_hark)
+assert g != "figure_ai", ("third-party Hark story must not become Figure AI", g, s, c)
+
 print("Physical-AI watcher regression guards: PASS")
