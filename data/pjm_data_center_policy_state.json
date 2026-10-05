@@ -5,7 +5,7 @@
     "target_mw": 6831,
     "max_price_usd_mw_day": 555.0,
     "max_years": 15,
-    "planned_start": "2026-09-30",
+    "planned_start": "2027-02-28",
     "capacity_delivery_year": "2028/2029",
     "capacity_cleared_mw": 138318.0,
     "capacity_frr_mw": 10864.0,
@@ -27,7 +27,9 @@
     "s5199_threshold_mw": 150.0,
     "s5199_force": "FERC 대형부하 접속규칙·직접 비용부담을 법률로 요구",
     "rm26_4_stage": "ANOPR·대형부하 우선 규칙제정 절차",
-    "rm26_4_threshold_mw": 20.0
+    "rm26_4_threshold_mw": 20.0,
+    "rbp_original_start": "2026-09-30",
+    "rbp_ferc_status": "FERC 수리·5개월 정지 · 2027-02-28 효력 예정 · 추가 절차 결과에 따름"
   },
   "seen_ids": [
     "89279e4b096aa3398c6c",
@@ -596,8 +598,8 @@
   ],
   "last_fx_krw_per_usd": 1344.607498,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-10-05T01:02:33+00:00",
-  "updated_at_utc": "2026-10-05T01:02:46+00:00",
+  "fx_checked_utc": "2026-10-05T06:51:28+00:00",
+  "updated_at_utc": "2026-10-05T06:51:39+00:00",
   "source_errors": [],
   "grid_emergency_initialized": true,
   "grid_emergency_seen_ids": [

@@ -29,25 +29,25 @@
     "agentic_cpu_per_gpu": 1.0
   },
   "baseline_source": "BofA Global Research 2차 공개보도 기준",
-  "updated_at_kst": "2026-10-05T15:50:01+09:00",
+  "updated_at_kst": "2026-10-05T15:52:29+09:00",
   "seen_ids": [
-    "96968f7017f301cafbcf6d43",
-    "08d5cbf40c85943b346ecc01",
-    "015b539eeb5201dffb9a7f67",
+    "80df8c273fce8b283a4e71ca",
     "66d627057937a9e600c63eac",
+    "015b539eeb5201dffb9a7f67",
+    "08d5cbf40c85943b346ecc01",
     "d1e19fb5027f5503d647133f",
-    "80df8c273fce8b283a4e71ca"
+    "96968f7017f301cafbcf6d43"
   ],
   "fx": {
     "usdkrw": 1348.28,
-    "basis": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-05 15:50 KST · 보조 API 2026-10-05 · 차이 0.27% · 일중 기준시각 차이 가능",
+    "basis": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-05 15:52 KST · 보조 API 2026-10-05 · 차이 0.27% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "quality": "교차검증 일일 기준환율"
   },
   "last_collection": {
-    "trusted_rows": 5,
+    "trusted_rows": 4,
     "new_rows": 0,
-    "candidate_metric_rows": 4,
+    "candidate_metric_rows": 3,
     "material_changes": 0
   }
 }
