@@ -653,13 +653,15 @@
   },
   "_delivery": {
     "id": "feb6067014786dba095db12cc13275e0b3f7863dbb8de58c016763c7e4cfd40a",
-    "status": "in_flight",
+    "status": "partial",
     "created_at_kst": "2026-10-06T07:34:57+09:00",
     "chunks": [
       "<b>🔗 메모리·스토리지 연쇄 병목 감시 추가</b>\n\nTrendForce 10/5 기준으로 개별 부품이 아니라 DRAM→기업용 SSD→HDD의 연쇄 병목을 기존 알림에서 함께 추적합니다.\n• <b>DRAM:</b> 20주 / 균형 8주 · 2.5배 · 심각한 공급 부족\n• <b>기업용 SSD:</b> 16주 / 균형 8주 · DRAM 부족이 일부 NAND 공급사의 eSSD 솔루션 지원 능력을 제약\n• <b>HDD:</b> 50주 / 균형 16주 · 3.1배 · 공급 완화는 빨라도 2027년 말\n\n<b>정확도 경계</b>\n• TrendForce 확인 범위는 ‘DRAM 부족 → 일부 NAND 공급사의 기업용 SSD 솔루션 지원 제약’입니다.\n• <b>NAND 컨트롤러 출하가 DRAM 때문에 직접 제한된다는 주장은 이번 원문에서 확인되지 않아 알림 확정조건에 넣지 않았습니다.</b>\n\n<b>다음 확인</b>\n• DRAM 리드타임·서버 DRAM 가격 / eSSD 리드타임·가격·출하 / HDD 리드타임·증설 가동시점이 함께 꺾이는지 확인\n• <a href=\"https://insights.trendforce.com/p/weekly-radar-004\">TrendForce 원문</a>"
     ],
-    "next_chunk": 0,
-    "message_ids": [],
+    "next_chunk": 1,
+    "message_ids": [
+      237
+    ],
     "candidate": {
       "updated_at_kst": "2026-10-06T07:34:08+09:00",
       "seen_ids": [
