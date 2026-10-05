@@ -10,6 +10,7 @@ POLICY_PATCHES = (
     (
         'FERC_DECISIONS = "https://www.ferc.gov/news-events/news/decisions-notices"\n',
         'FERC_DECISIONS = "https://www.ferc.gov/news-events/news/decisions-notices"\n'
+        'PJM_RBP_FERC_RESULT = "https://insidelines.pjm.com/ferc-accepts-pjm-reliability-backstop-proposal/"\n'
         'PJM_CAPACITY_RESULT = "https://insidelines.pjm.com/pjm-capacity-auction-procures-138318-mw-of-generation-resources-as-work-continues-to-address-growing-electricity-demand/"\n'
         'HOUSE_RATEPAYER = "https://energycommerce.house.gov/posts/ratepayer-protection-act-passes-house-with-strong-bipartisan-support"\n'
         'GOVINFO_HR9340 = "https://www.govinfo.gov/app/details/BILLS-119hr9340eh"\n'
@@ -137,6 +138,30 @@ def parse_legislation_status(previous=None):
     return out
 '''
 
+RBP_STATUS_FUNC = r'''
+RBP_STATUS_DEFAULTS = {
+    "planned_start": "2027-02-28",
+    "rbp_original_start": "2026-09-30",
+    "rbp_ferc_status": "FERC 수리·5개월 정지 · 2027-02-28 효력 예정 · 추가 절차 결과에 따름",
+}
+
+
+def parse_rbp_ferc_status(previous=None):
+    out = dict(RBP_STATUS_DEFAULTS)
+    try:
+        text = normalize(BeautifulSoup(fetch(PJM_RBP_FERC_RESULT, 30).text, "html.parser").get_text(" "))
+        low = text.lower()
+        if "suspends it for five months" in low and "2027" in low and "28" in low:
+            out["planned_start"] = "2027-02-28"
+            out["rbp_ferc_status"] = "FERC 수리·5개월 정지 · 2027-02-28 효력 예정 · 추가 절차 결과에 따름"
+        if "will not proceed" in low and "sept. 30" in low:
+            out["rbp_original_start"] = "2026-09-30"
+    except Exception:
+        pass
+    return out
+'''
+
+
 CAPACITY_FUNC_ANCHOR = '\ndef collect_pjm_page(url: str, label: str):\n'
 CAPACITY_FUNC = r'''
 CAPACITY_DEFAULTS = {
@@ -205,6 +230,7 @@ for _k in _required_baseline_keys:
         baseline[_k] = _saved_baseline[_k]
 baseline.update(parse_capacity_stress(_saved_baseline))
 baseline.update(parse_legislation_status(_saved_baseline))
+baseline.update(parse_rbp_ferc_status(_saved_baseline))
 items = []'''
 
 text = PATH.read_text(encoding="utf-8")
@@ -215,7 +241,7 @@ for old, new in POLICY_PATCHES:
 
 if CAPACITY_FUNC_ANCHOR not in text:
     raise SystemExit("PJM capacity function insertion point not found")
-text = text.replace(CAPACITY_FUNC_ANCHOR, "\n" + LEGISLATION_FUNC + "\n" + CAPACITY_FUNC + CAPACITY_FUNC_ANCHOR, 1)
+text = text.replace(CAPACITY_FUNC_ANCHOR, "\n" + LEGISLATION_FUNC + "\n" + RBP_STATUS_FUNC + "\n" + CAPACITY_FUNC + CAPACITY_FUNC_ANCHOR, 1)
 
 if BASELINE_OLD not in text:
     raise SystemExit("PJM baseline guard insertion point not found")
@@ -226,13 +252,13 @@ text = text.replace(BASELINE_OLD, BASELINE_NEW, 1)
 text = text.replace("FORMAT_VERSION = 5", "FORMAT_VERSION = 7", 1)
 
 changes_old = '''    ("planned_start", "RBP 개시 목표일"),\n):'''
-changes_new = '''    ("planned_start", "RBP 개시 목표일"),\n    ("capacity_delivery_year", "용량시장 대상연도"),\n    ("capacity_price_usd_mw_day", "용량시장 낙찰가격"),\n    ("capacity_shortfall_mw", "용량시장 신뢰도 부족분"),\n    ("capacity_new_generation_uprates_mw", "신규발전·증설 낙찰량"),\n    ("capacity_reserve_margin_pct", "용량시장 예비율"),\n    ("capacity_peak_load_increase_mw", "용량시장 피크부하 전망 증가"),\n    ("hr9340_stage", "H.R.9340 법안 단계"),\n    ("s5028_stage", "S.5028 법안 단계"),\n    ("s5199_stage", "S.5199 법안 단계"),\n    ("rm26_4_stage", "FERC RM26-4 규칙 단계"),\n):'''
+changes_new = '''    ("planned_start", "RBP 효력 예정일"),\n    ("rbp_ferc_status", "RBP FERC 상태"),\n    ("capacity_delivery_year", "용량시장 대상연도"),\n    ("capacity_price_usd_mw_day", "용량시장 낙찰가격"),\n    ("capacity_shortfall_mw", "용량시장 신뢰도 부족분"),\n    ("capacity_new_generation_uprates_mw", "신규발전·증설 낙찰량"),\n    ("capacity_reserve_margin_pct", "용량시장 예비율"),\n    ("capacity_peak_load_increase_mw", "용량시장 피크부하 전망 증가"),\n    ("hr9340_stage", "H.R.9340 법안 단계"),\n    ("s5028_stage", "S.5028 법안 단계"),\n    ("s5199_stage", "S.5199 법안 단계"),\n    ("rm26_4_stage", "FERC RM26-4 규칙 단계"),\n):'''
 if changes_old not in text:
     raise SystemExit("PJM changes-loop insertion point not found")
 text = text.replace(changes_old, changes_new, 1)
 
 msg_anchor = '''    if baseline.get("planned_start"):\n        msg.append(f"• 개시 목표  <b>{h(baseline['planned_start'])}</b> · FERC 승인 전제")\n\n    if annual_usd or total_usd:\n'''
-msg_new = '''    if baseline.get("planned_start"):\n        msg.append(f"• 개시 목표  <b>{h(baseline['planned_start'])}</b> · FERC 승인 전제")\n\n    msg += ["", "<b>🏛 연방법안·FERC 비용배분 상태</b>"]\n    msg.append(\n        f"• <b>H.R.9340</b> │ <b>{h(baseline.get('hr9340_stage'))}</b> │ {baseline.get('hr9340_threshold_mw'):g}MW+ │ 하원 {baseline.get('hr9340_vote_yes'):,.0f}대{baseline.get('hr9340_vote_no'):,.0f}"\n    )\n    msg.append(f"  ↳ {h(baseline.get('hr9340_force'))}")\n    msg.append(\n        f"• <b>S.5028</b> │ <b>{h(baseline.get('s5028_stage'))}</b> │ {baseline.get('s5028_threshold_mw'):g}MW+"\n    )\n    msg.append(f"  ↳ {h(baseline.get('s5028_force'))}")\n    msg.append(\n        f"• <b>S.5199 GRID Savings Act</b> │ <b>{h(baseline.get('s5199_stage'))}</b> │ {baseline.get('s5199_threshold_mw'):g}MW+"\n    )\n    msg.append(f"  ↳ {h(baseline.get('s5199_force'))}")\n    msg.append(\n        f"• <b>FERC RM26-4</b> │ <b>{h(baseline.get('rm26_4_stage'))}</b> │ 대형부하 일반 기준 {baseline.get('rm26_4_threshold_mw'):g}MW+"\n    )\n    msg.append("• <b>판정:</b> 하원 통과·상원 계류·FERC 규칙제정·최종 법률을 서로 다른 단계로 표시하고, 단순 발의나 정치 발언을 확정 의무로 보지 않습니다.")\n\n    msg += ["", "<b>⚡ 용량시장 실제 스트레스</b>"]\n    msg.append(\n        f"• <b>{h(baseline.get('capacity_delivery_year'))} BRA</b> │ 낙찰 <b>${baseline.get('capacity_price_usd_mw_day'):,.2f}/MW-day</b> │ 신뢰도 부족 <b>{baseline.get('capacity_shortfall_mw'):,.0f}MW</b>"\n    )\n    msg.append(\n        f"• <b>확보용량</b> │ 경매 {baseline.get('capacity_cleared_mw'):,.0f}MW + FRR {baseline.get('capacity_frr_mw'):,.0f}MW = 총 {baseline.get('capacity_total_mw'):,.0f}MW"\n    )\n    msg.append(\n        f"• <b>신규발전·증설</b> │ <b>{baseline.get('capacity_new_generation_uprates_mw'):,.0f}MW</b> │ 피크부하 전망은 전년 경매 대비 약 +{baseline.get('capacity_peak_load_increase_mw'):,.0f}MW"\n    )\n    msg.append(\n        f"• <b>예비율</b> │ {baseline.get('capacity_reserve_margin_pct'):g}% │ 가격이 상한에 걸려도 신규 공급이 수요 증가를 못 따라가는지 판정"\n    )\n\n    if annual_usd or total_usd:\n'''
+msg_new = '''    if baseline.get("planned_start"):\n        msg.append(\n            f"• 현재 일정  <b>{h(baseline['planned_start'])}</b> · {h(baseline.get('rbp_ferc_status') or 'FERC 추가 절차 확인 중')}"\n        )\n\n    msg += ["", "<b>🏛 연방법안·FERC 비용배분 상태</b>"]\n    msg.append(\n        f"• <b>H.R.9340</b> │ <b>{h(baseline.get('hr9340_stage'))}</b> │ {baseline.get('hr9340_threshold_mw'):g}MW+ │ 하원 {baseline.get('hr9340_vote_yes'):,.0f}대{baseline.get('hr9340_vote_no'):,.0f}"\n    )\n    msg.append(f"  ↳ {h(baseline.get('hr9340_force'))}")\n    msg.append(\n        f"• <b>S.5028</b> │ <b>{h(baseline.get('s5028_stage'))}</b> │ {baseline.get('s5028_threshold_mw'):g}MW+"\n    )\n    msg.append(f"  ↳ {h(baseline.get('s5028_force'))}")\n    msg.append(\n        f"• <b>S.5199 GRID Savings Act</b> │ <b>{h(baseline.get('s5199_stage'))}</b> │ {baseline.get('s5199_threshold_mw'):g}MW+"\n    )\n    msg.append(f"  ↳ {h(baseline.get('s5199_force'))}")\n    msg.append(\n        f"• <b>FERC RM26-4</b> │ <b>{h(baseline.get('rm26_4_stage'))}</b> │ 대형부하 일반 기준 {baseline.get('rm26_4_threshold_mw'):g}MW+"\n    )\n    msg.append("• <b>판정:</b> 하원 통과·상원 계류·FERC 규칙제정·최종 법률을 서로 다른 단계로 표시하고, 단순 발의나 정치 발언을 확정 의무로 보지 않습니다.")\n\n    msg += ["", "<b>⚡ 용량시장 실제 스트레스</b>"]\n    msg.append(\n        f"• <b>{h(baseline.get('capacity_delivery_year'))} BRA</b> │ 낙찰 <b>${baseline.get('capacity_price_usd_mw_day'):,.2f}/MW-day</b> │ 신뢰도 부족 <b>{baseline.get('capacity_shortfall_mw'):,.0f}MW</b>"\n    )\n    msg.append(\n        f"• <b>확보용량</b> │ 경매 {baseline.get('capacity_cleared_mw'):,.0f}MW + FRR {baseline.get('capacity_frr_mw'):,.0f}MW = 총 {baseline.get('capacity_total_mw'):,.0f}MW"\n    )\n    msg.append(\n        f"• <b>신규발전·증설</b> │ <b>{baseline.get('capacity_new_generation_uprates_mw'):,.0f}MW</b> │ 피크부하 전망은 전년 경매 대비 약 +{baseline.get('capacity_peak_load_increase_mw'):,.0f}MW"\n    )\n    msg.append(\n        f"• <b>예비율</b> │ {baseline.get('capacity_reserve_margin_pct'):g}% │ 가격이 상한에 걸려도 신규 공급이 수요 증가를 못 따라가는지 판정"\n    )\n\n    if annual_usd or total_usd:\n'''
 if msg_anchor not in text:
     raise SystemExit("PJM message capacity insertion point not found")
 text = text.replace(msg_anchor, msg_new, 1)
@@ -244,16 +270,16 @@ if scope_old not in text:
 text = text.replace(scope_old, scope_new, 1)
 
 official_old = '''        f"• {a('PJM RBP 원문', PJM_RBP)}",\n        f"• {a('PJM 기준 설명', PJM_BASELINE)}",\n        f"• {a('FERC Decisions', FERC_DECISIONS)}",\n'''
-official_new = '''        f"• {a('PJM RBP 원문', PJM_RBP)}",\n        f"• {a('PJM 용량시장 결과', PJM_CAPACITY_RESULT)}",\n        f"• {a('PJM 기준 설명', PJM_BASELINE)}",\n        f"• {a('H.R.9340 하원 공식', HOUSE_RATEPAYER)}",\n        f"• {a('S.5028 GovInfo', GOVINFO_S5028)}",\n        f"• {a('S.5199 GovInfo', GOVINFO_S5199)}",\n        f"• {a('FERC RM26-4', FERC_RM26_4)}",\n        f"• {a('FERC Decisions', FERC_DECISIONS)}",\n'''
+official_new = '''        f"• {a('PJM RBP 원문', PJM_RBP)}",\n        f"• {a('PJM RBP FERC 결정 후속', PJM_RBP_FERC_RESULT)}",\n        f"• {a('PJM 용량시장 결과', PJM_CAPACITY_RESULT)}",\n        f"• {a('PJM 기준 설명', PJM_BASELINE)}",\n        f"• {a('H.R.9340 하원 공식', HOUSE_RATEPAYER)}",\n        f"• {a('S.5028 GovInfo', GOVINFO_S5028)}",\n        f"• {a('S.5199 GovInfo', GOVINFO_S5199)}",\n        f"• {a('FERC RM26-4', FERC_RM26_4)}",\n        f"• {a('FERC Decisions', FERC_DECISIONS)}",\n'''
 if official_old not in text:
     raise SystemExit("PJM official-links insertion point not found")
 text = text.replace(official_old, official_new, 1)
 
 status_old = '''    f"- 개시 목표: **{baseline.get('planned_start')}**\\n"\n    f"- 현재 신규 자료: **{len(new_items)}건**\\n"\n'''
-status_new = '''    f"- 개시 목표: **{baseline.get('planned_start')}**\\n"\n    f"- 용량시장 대상연도: **{baseline.get('capacity_delivery_year')}**\\n"\n    f"- 용량시장 낙찰가격: **${baseline.get('capacity_price_usd_mw_day')}/MW-day**\\n"\n    f"- 용량시장 신뢰도 부족분: **{baseline.get('capacity_shortfall_mw')} MW**\\n"\n    f"- 신규발전·증설 낙찰량: **{baseline.get('capacity_new_generation_uprates_mw')} MW**\\n"\n    f"- 예비율: **{baseline.get('capacity_reserve_margin_pct')}%**\\n"\n    f"- H.R.9340: **{baseline.get('hr9340_stage')} / {baseline.get('hr9340_threshold_mw')}MW+**\\n"\n    f"- S.5028: **{baseline.get('s5028_stage')} / {baseline.get('s5028_threshold_mw')}MW+**\\n"\n    f"- S.5199: **{baseline.get('s5199_stage')} / {baseline.get('s5199_threshold_mw')}MW+**\\n"\n    f"- FERC RM26-4: **{baseline.get('rm26_4_stage')} / {baseline.get('rm26_4_threshold_mw')}MW+**\\n"\n    f"- 현재 신규 자료: **{len(new_items)}건**\\n"\n'''
+status_new = '''    f"- RBP 효력 예정일: **{baseline.get('planned_start')}**\\n"\n    f"- RBP FERC 상태: **{baseline.get('rbp_ferc_status')}**\\n"\n    f"- 용량시장 대상연도: **{baseline.get('capacity_delivery_year')}**\\n"\n    f"- 용량시장 낙찰가격: **${baseline.get('capacity_price_usd_mw_day')}/MW-day**\\n"\n    f"- 용량시장 신뢰도 부족분: **{baseline.get('capacity_shortfall_mw')} MW**\\n"\n    f"- 신규발전·증설 낙찰량: **{baseline.get('capacity_new_generation_uprates_mw')} MW**\\n"\n    f"- 예비율: **{baseline.get('capacity_reserve_margin_pct')}%**\\n"\n    f"- H.R.9340: **{baseline.get('hr9340_stage')} / {baseline.get('hr9340_threshold_mw')}MW+**\\n"\n    f"- S.5028: **{baseline.get('s5028_stage')} / {baseline.get('s5028_threshold_mw')}MW+**\\n"\n    f"- S.5199: **{baseline.get('s5199_stage')} / {baseline.get('s5199_threshold_mw')}MW+**\\n"\n    f"- FERC RM26-4: **{baseline.get('rm26_4_stage')} / {baseline.get('rm26_4_threshold_mw')}MW+**\\n"\n    f"- 현재 신규 자료: **{len(new_items)}건**\\n"\n'''
 if status_old not in text:
     raise SystemExit("PJM status capacity insertion point not found")
 text = text.replace(status_old, status_new, 1)
 
-PATH.write_text(text, encoding="utf-8")
+text = text.replace(\n    \'            "• 9월 30일 RBP 개시 여부와 일정 변경",\',\n    \'            "• FERC 5개월 정지 후 2027-02-28 효력 예정일·추가 절차 변경",\',\n    1,\n)\n\nPATH.write_text(text, encoding="utf-8")
 print("PJM baseline + FERC large-load + capacity-market stress guard inserted")
