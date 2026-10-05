@@ -431,12 +431,32 @@ def extract_signals(text: str, source_url: str = "") -> dict[str, str]:
         signals["DRAM"] = "미국 CSP의 2027년 서버 증설 대비 RDIMM 수요 증가"
 
     if (
+        "dram" in low
+        and any(k in low for k in ("enterprise ssds", "enterprise ssd", "essd"))
+        and any(k in low for k in (
+            "limiting some nand suppliers",
+            "nand suppliers' ability",
+            "nand suppliers’ ability",
+            "support enterprise ssd",
+            "dram shortage",
+            "dram tightness",
+            "dram 공급 부족",
+        ))
+    ):
+        signals["NAND(eSSD)"] = "DRAM 공급 부족 → 일부 NAND 공급사의 기업용 SSD 솔루션 지원 능력 제약"
+    elif (
         any(k in low for k in ("enterprise ssds", "enterprise ssd", "essd"))
         and any(k in low for k in ("reallocat", "capacity toward", "생산능력 재배분", "캐파 재배분"))
     ):
         signals["NAND(eSSD)"] = "수요 증가 → 공급사가 기업용 SSD로 생산능력 재배분, 전체 공급은 여전히 부족"
 
-    if "hdd" in low and "agentic ai" in low:
+    if (
+        "hdd" in low
+        and ("50 weeks" in low or "50w" in low or "50주" in text)
+        and ("late 2027" in low or "2027년 말" in text)
+    ):
+        signals["HDD"] = "HDD 50주 병목 → 공급 완화는 빨라도 2027년 말"
+    elif "hdd" in low and "agentic ai" in low:
         if "late 2027" in low or "2027년 말" in text:
             signals["HDD"] = "에이전틱 AI 수요 급증 → 2027년 말까지 리드타임 개선 제한"
         else:
@@ -521,6 +541,80 @@ def bottleneck_ranking(components: dict) -> list[tuple[float, str, dict]]:
             ranked.append((ratio, name, entry))
     ranked.sort(reverse=True)
     return ranked
+
+
+def memory_storage_chain_state(components: dict, signals: dict) -> dict:
+    """Track the DRAM -> enterprise-SSD -> HDD storage bottleneck as a causal chain.
+
+    TrendForce Weekly Radar 004 says DRAM tightness limits some NAND suppliers'
+    ability to support enterprise SSD solutions. It does not, by itself, establish
+    a separate NAND-controller shipment shortage, so that claim is kept false
+    unless a future direct source explicitly confirms it.
+    """
+    dram = components.get("DRAM") or {}
+    nand = components.get("NAND(eSSD)") or {}
+    hdd = components.get("HDD") or {}
+    dram_ratio = ratio_value(str(dram.get("current") or ""), str(dram.get("balanced") or ""))
+    nand_ratio = ratio_value(str(nand.get("current") or ""), str(nand.get("balanced") or ""))
+    hdd_ratio = ratio_value(str(hdd.get("current") or ""), str(hdd.get("balanced") or ""))
+
+    nand_signal = str((signals or {}).get("NAND(eSSD)") or "")
+    hdd_signal = str((signals or {}).get("HDD") or "")
+    dram_to_essd = (
+        "DRAM 공급 부족" in nand_signal
+        and "기업용 SSD" in nand_signal
+    )
+    hdd_late_2027 = (
+        "2027년 말" in hdd_signal
+        and ("50주" in hdd_signal or str(hdd.get("current") or "") == "50")
+    )
+    active = bool(
+        str(dram.get("status") or "") == "Very Tight"
+        and (dram_ratio or 0) >= 2.0
+        and str(nand.get("status") or "") in {"Tight", "Very Tight"}
+        and (nand_ratio or 0) >= 1.5
+        and str(hdd.get("status") or "") == "Very Tight"
+        and (hdd_ratio or 0) >= 2.5
+        and dram_to_essd
+        and hdd_late_2027
+    )
+    return {
+        "active": active,
+        "dram_lead_ratio": round(dram_ratio, 3) if dram_ratio is not None else None,
+        "nand_essd_lead_ratio": round(nand_ratio, 3) if nand_ratio is not None else None,
+        "hdd_lead_ratio": round(hdd_ratio, 3) if hdd_ratio is not None else None,
+        "dram_to_enterprise_ssd_constraint_confirmed": dram_to_essd,
+        "hdd_relief_late_2027_or_later": hdd_late_2027,
+        "nand_controller_direct_constraint_confirmed": False,
+        "scope_note": (
+            "확인 범위는 DRAM 부족이 일부 NAND 공급사의 기업용 SSD 솔루션 지원 능력을 제약한다는 것. "
+            "NAND 컨트롤러 출하 자체의 직접 병목은 별도 확인 전까지 확정하지 않음."
+        ),
+    }
+
+
+def build_memory_storage_chain_alert(chain: dict, components: dict, source_url: str) -> str:
+    dram = components.get("DRAM") or {}
+    nand = components.get("NAND(eSSD)") or {}
+    hdd = components.get("HDD") or {}
+    lines = [
+        "<b>🔗 메모리·스토리지 연쇄 병목 감시 추가</b>",
+        "",
+        "TrendForce 10/5 기준으로 개별 부품이 아니라 DRAM→기업용 SSD→HDD의 연쇄 병목을 기존 알림에서 함께 추적합니다.",
+        f"• <b>DRAM:</b> {html.escape(fmt_week(dram.get('current')))} / 균형 {html.escape(fmt_week(dram.get('balanced')))} · {chain.get('dram_lead_ratio', 0):.1f}배 · {html.escape(fmt_status(dram))}",
+        f"• <b>기업용 SSD:</b> {html.escape(fmt_week(nand.get('current')))} / 균형 {html.escape(fmt_week(nand.get('balanced')))} · DRAM 부족이 일부 NAND 공급사의 eSSD 솔루션 지원 능력을 제약",
+        f"• <b>HDD:</b> {html.escape(fmt_week(hdd.get('current')))} / 균형 {html.escape(fmt_week(hdd.get('balanced')))} · {chain.get('hdd_lead_ratio', 0):.1f}배 · 공급 완화는 빨라도 2027년 말",
+        "",
+        "<b>정확도 경계</b>",
+        "• TrendForce 확인 범위는 ‘DRAM 부족 → 일부 NAND 공급사의 기업용 SSD 솔루션 지원 제약’입니다.",
+        "• <b>NAND 컨트롤러 출하가 DRAM 때문에 직접 제한된다는 주장은 이번 원문에서 확인되지 않아 알림 확정조건에 넣지 않았습니다.</b>",
+        "",
+        "<b>다음 확인</b>",
+        "• DRAM 리드타임·서버 DRAM 가격 / eSSD 리드타임·가격·출하 / HDD 리드타임·증설 가동시점이 함께 꺾이는지 확인",
+    ]
+    if source_url:
+        lines.append(f'• <a href="{html.escape(source_url, quote=True)}">TrendForce 원문</a>')
+    return "\n".join(lines).strip() + "\n"
 
 
 def supply_direction(old: dict, new: dict) -> tuple[str, int, int]:
@@ -1121,11 +1215,22 @@ def main() -> None:
             latest_source = url or latest_source
             latest_as_of = published_date
 
+    previous_chain = previous.get("memory_storage_chain") or {}
+    latest_chain = memory_storage_chain_state(latest_components, latest_signals)
+    if (
+        latest_chain.get("active")
+        and not previous_chain.get("active")
+        and str(latest_source or "").rstrip("/").endswith("weekly-radar-004")
+    ):
+        chain_alert = build_memory_storage_chain_alert(latest_chain, latest_components, str(latest_source or ""))
+        notify_text = (notify_text.rstrip() + "\n\n" + chain_alert.strip()).strip() + "\n" if notify_text else chain_alert
+
     pending["ai_component_leadtime"] = {
         "as_of": latest_as_of,
         "source": latest_source,
         "components": latest_components,
         "signals": latest_signals,
+        "memory_storage_chain": latest_chain,
         "ubs_project_leadtime_baseline": copy.deepcopy(UBS_PROJECT_LEADTIME_BASELINE),
         "seen_urls": sorted(new_seen)[-120:],
         "last_checked_at_kst": now.isoformat(timespec="seconds"),
