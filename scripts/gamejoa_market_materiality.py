@@ -7,11 +7,12 @@ import re
 import datetime as dt
 import hashlib
 import json
+from decimal import Decimal, InvalidOperation
 from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 76
+VERSION = 77
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -167,6 +168,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("military_reinforcement", r"(?:항모|항공모함|병력).{0,40}(?:추가\s*파견|증강)", r"추가\s*파견|병력.{0,20}증강"),
     ("trading_status", r"거래\s*재개|액면병합|주식병합", r"거래.{0,12}재개|재개.{0,12}거래|액면병합|주식병합"),
     ("trading_rule", r"단주|최소\s*(?:매매|거래)\s*(?:수량|단위)|시간외\s*종가매매", r"단주|매매수량단위|시간외\s*종가매매"),
+    ("maritime_attack", r"^(?!.*(?:임박|가능성|경고|위협|우려)).*?(?:호르무즈|홍해).{0,35}(?:공격|피격)", r"공격|피격|발사체|화재"),
     ("management_change", r"(?:CFO|CEO|최고재무책임자|최고경영자).{0,30}(?:사임|해임|교체)", r"사임|해임|교체"),
     ("fund_performance", r"ETF.{0,15}(?:순풍|강세|상승|하락|수익률)", r"ETF|수익률"),
     ("sanctions_request", r"제재.{0,30}(?:요청|요구|해야)|sanctions?.{0,30}(?:request|call)", r"제재[^.!?]{0,35}(?:요청|요구|해달라|해야)|sanctions?.{0,35}(?:request|call)"),
@@ -296,7 +298,7 @@ def focus_kind(title: str) -> str:
     # A scoped tax treatment is the event; oil is only its subject.
     if HEADLINE_FOCUS[0][1].search(title or ""):
         return "tax_relief"
-    for kind in ("network_segmentation_policy", "housing_supply_policy"):
+    for kind in ("network_segmentation_policy", "housing_supply_policy", "maritime_attack"):
         if kind == "network_segmentation_policy" and re.search(r"유출|침해\s*사고|피해", title or ""):
             continue
         if next(head for name, head, _source in HEADLINE_FOCUS if name == kind).search(title or ""):
@@ -327,6 +329,11 @@ def focus_matches(title: str, sentence: str) -> bool:
     if DENIAL_HEADLINE.search(title) and not DENIAL_SOURCE.search(sentence):
         return False
     kind = focus_kind(title)
+    if kind == "maritime_attack":
+        return bool(re.search(r"선박|유조선|해협", sentence)
+                    and re.search(r"공격|피격|회항|발사체|화재", sentence)
+                    and re.search(r"보고했|밝혔|전했|재개됐|회항했", sentence)
+                    and not re.search(r"될\s*경우|가능성|전망|우려가\s*반영", sentence))
     if kind == "management_change":
         return bool(re.search(r"CFO|CEO|최고재무책임자|최고경영자", sentence, re.I)
                     and re.search(r"사임|해임|교체", sentence))
@@ -782,6 +789,117 @@ def _verified_source_fact_keys(title: str, body: str, source_url: str) -> tuple[
     ))
 
 
+SOURCE_MONEY = r"(\d[\d,.\s조억만천백십]*?)\s*(달러|유로|위안|원)"
+
+
+def korean_amount_value(raw: str) -> str:
+    """Parse numeric Korean unit groups; never infer a missing number/unit."""
+    raw = re.sub(r"[\s,]", "", raw)
+    if not raw:
+        return ""
+
+    def small(group: str) -> Decimal | None:
+        if not group:
+            return Decimal(0)
+        total = Decimal(0)
+        previous = 10000
+        while group:
+            token = re.match(r"(\d+(?:\.\d+)?)([천백십]?)", group)
+            if not token:
+                return None
+            unit = {"천": 1000, "백": 100, "십": 10, "": 1}[token.group(2)]
+            if unit >= previous:
+                return None
+            total += Decimal(token.group(1)) * unit
+            previous = unit
+            group = group[token.end():]
+        return total
+
+    try:
+        total = Decimal(0)
+        for label, multiplier in (("조", 10**12), ("억", 10**8), ("만", 10**4)):
+            if label in raw:
+                coefficient, raw = raw.split(label, 1)
+                value = small(coefficient)
+                if value is None or value <= 0:
+                    return ""
+                total += value * multiplier
+        value = small(raw)
+        if value is None:
+            return ""
+        formatted = format(total + value, "f")
+        return formatted.rstrip("0").rstrip(".") if "." in formatted else formatted
+    except InvalidOperation:
+        return ""
+
+
+def licensing_event_terms(title: str, body: str) -> dict[str, object]:
+    """Match a named asset's exclusive license, not all news about its issuer."""
+    if not re.search(r"기술이전|라이선스", title):
+        return {}
+    source = source_reported_body(body)
+    issuer = re.match(r"^([^,，]{2,35})[,，]\s*([A-Za-z가-힣·&-]{2,30})에\s", title)
+    asset = re.search(r"\b[A-Z]{1,5}\d{2,6}\b", title)
+    if not issuer or not asset or issuer.group(2) not in source or asset.group(0) not in source:
+        return {}
+    lead = " ".join(source_sentences(source)[:3])
+    if not re.search(r"독점\s*라이선스", lead) or not re.search(r"체결|부여", lead):
+        return {}
+    if re.search(r"검토|협상|논의|해지|취소|철회", title + " " + lead):
+        return {}
+    upfront = re.search(rf"선급금\s*{SOURCE_MONEY}", lead)
+    milestone = re.search(rf"(최대\s*)?{SOURCE_MONEY}\s*(?:규모의|의)?\s*(?:단계별\s*)?마일스톤", lead)
+    if not upfront or not milestone:
+        return {}
+    upfront_value, milestone_value = korean_amount_value(upfront.group(1)), korean_amount_value(milestone.group(2))
+    if not upfront_value or not milestone_value:
+        return {}
+    royalty_rates = sorted({value for sentence in source_sentences(source) if "로열티" in sentence
+                            for value in re.findall(r"\d+(?:\.\d+)?%", sentence)})
+    # Numeric runway/royalty revisions are new evidence, even for the same asset.
+    runway = sorted(set(re.findall(r"현금\s*가용\s*기간[^.!?]{0,60}?(\d{4})년", source)))
+    excluded = sorted(set(re.findall(r"([A-Za-z가-힣]{2,20})(?:을|를)\s*제외한", lead)))
+    license_sentence = next((sentence for sentence in source_sentences(source)
+                             if asset.group(0) in sentence and re.search(r"독점\s*라이선스", sentence)), "")
+    scope = ("us" if re.search(r"미국\s*내\s*독점", license_sentence) else
+             "global" if re.search(r"(?:글로벌|전\s*세계)\s*독점", license_sentence) else "unspecified")
+    return {"issuer": issuer.group(1).strip(), "counterparty": issuer.group(2), "asset": asset.group(0),
+            "stage": "exclusive_license_signed", "scope": scope,
+            "excluded": excluded, "upfront": [upfront.group(2), upfront_value],
+            "milestone": [milestone.group(3), milestone_value, bool(milestone.group(1))],
+            "royalty_rates": royalty_rates, "runway_years": runway}
+
+
+def odd_lot_rule_terms(title: str, body: str) -> dict[str, object]:
+    """Normalize shares/units only for the sourced single-stock ETF lot rule."""
+    source = source_reported_body(body)
+    compact = re.sub(r"\s+", "", source)
+    if not all(re.search(pattern, compact) for pattern in (
+        r"금융위(?:원회)?", r"단일종목레버리지", r"단주", r"시간외종가매매",
+    )):
+        return {}
+    lot = re.search(r"매매수량단위.{0,35}?(\d+)(?:주|좌)(?:씩)?(?:으로|로).{0,15}확대", compact)
+    if not lot:
+        return {}
+    disposal = [sentence for sentence in source_sentences(source)
+                if re.search(r"시간\s*외\s*종가\s*매매", sentence) and "단주" in sentence
+                and re.search(r"허용|처분|처리|검토", sentence)]
+    if not disposal:
+        return {}
+    proposal = " ".join(disposal)
+    if re.search(r"검토|논의|거론|구상", proposal):
+        stage = "review"
+    elif re.search(r"시행했다|허용했다|시행한다고|허용한다고|확정|시행한다", proposal):
+        stage = "implemented_or_confirmed"
+    else:
+        return {}
+    # Do not use the date of another action (the lot-size announcement) here.
+    timing = sorted(set(re.findall(r"\d{4}년\s*\d{1,2}월(?:\s*\d{1,2}일)?|\d{1,2}월\s*\d{1,2}일|\d+개월|\d+일간", proposal)))
+    return {"authority": "korea_fsc", "instrument": "single_stock_leveraged_products",
+            "min_lot": int(lot.group(1)), "disposal": "after_hours_closing_price", "stage": stage,
+            "disposal_timing": [re.sub(r"\s+", "", value) for value in timing]}
+
+
 def source_event_identity(alert: dict) -> str:
     """Identify a sourced action and its terms, not a company-wide theme.
 
@@ -796,6 +914,11 @@ def source_event_identity(alert: dict) -> str:
         return breadth
     title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
     body = str(alert.get("source_body") or "") if alert.get("body_verified") else ""
+    for event, terms in (("license", licensing_event_terms(title, body)),
+                         ("odd_lot_rule", odd_lot_rule_terms(title, body))):
+        if terms:
+            digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()
+            return f"source_event:v2:{event}:{digest}"
     kind = focus_kind(title)
     factory = factory_tariff_observation(title, body) if body else None
     if factory:

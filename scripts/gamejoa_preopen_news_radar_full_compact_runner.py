@@ -2575,6 +2575,21 @@ def source_headline_event_fact(title: str, body: str) -> str:
     if reported_fact:
         return reported_fact
     source = re.sub(r"\s+", " ", market_materiality.source_reported_body(body))
+    if focus == "maritime_attack":
+        observation = re.search(
+            r"UKMTO\)(?:는|은)\s*(지난달\s*\d{1,2}일)\s*이후\s*(이달\s*\d{1,2}일)까지"
+            r"[^.!?]{0,60}?선박을\s*대상으로\s*한\s*(\d+)건의\s*공격을\s*보고했다", source,
+        )
+        sea = next((name for name in ("호르무즈", "홍해") if name in title), "")
+        if observation and sea:
+            start, end, count = observation.groups()
+            fact = f"UKMTO는 {start} 이후 {end}까지 {sea} 주변 선박 공격 {count}건을 보고했다."
+            additional = re.search(r"UKMTO는\s*(\d{1,2})일에도\s*또\s*다른\s*선박이\s*공격받았다고\s*밝혔[^.!?]*", source)
+            if additional:
+                fact += f" {additional.group(1)}일에도 추가 피격을 알렸다."
+                if re.search(r"발생\s*시점.{0,20}공개하지\s*않", additional.group(0)):
+                    fact += " 추가 피격의 발생 시점은 미공개다."
+            return fact if core_sentence_is_complete(fact) else ""
     if focus == "fund_performance" and re.search(r"美|미국", title):
         performance = re.search(r"미국\s*상장\s*ETF[^\n]{0,80}?\(([A-Z]{2,8})\)은\s*지난\s*(\d+)일\s*기준으로\s*최근\s*(\d+)개월간\s*(\d+(?:\.\d+)?)%", source)
         if performance:

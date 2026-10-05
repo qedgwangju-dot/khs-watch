@@ -219,6 +219,18 @@ Every defect or requested change must follow this sequence:
   Old fact receipts without a body digest conservatively protect the same
   canonical source URL; they cannot prove that an in-place revision is new.
   A new follow-up source URL is not blocked by that legacy fallback alone.
+- Named exclusive-license copies compare issuer, counterparty, candidate asset,
+  geographic scope, signed stage, upfront payment and conditional milestones.
+  Korean money-unit spellings must parse exactly, not by fuzzy title matching.
+  A new amount, asset, scope, royalty rate or cash-runway year remains new.
+  Single-stock leveraged-product odd-lot rules normalize shares/units only for
+  that regulatory action and retain minimum lot, disposal mode, review/confirmed
+  stage and any explicit disposal date. Do not use another policy action's date.
+  Historical event aliases require a matching existing successful receipt plus
+  audited full-body hash, publication time, run ID and Telegram message ID.
+- A maritime-attack headline must lead with reported attacks or actual shipping
+  disruption and its attribution/observation window, not hypothetical oil-price
+  effects. A notice date is not an undisclosed incident-occurrence date.
 - DRAM market share must retain its source, period and revenue/bit basis.
   CAPEX plans must retain their fiscal period and net/gross basis. A reporter's
   annual extrapolation is not company guidance. A project bill is not a tariff.

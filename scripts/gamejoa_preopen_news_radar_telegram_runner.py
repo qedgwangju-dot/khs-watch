@@ -300,7 +300,8 @@ def migrate_seen_verified_event_aliases(state: dict) -> None:
         identity = str(proof.get("source_event_identity") or "")
         published = parse_seen_time(proof.get("source_published_kst"))
         if not (
-            identity.startswith("source_event:v1:us:equity_close:") and published
+            (identity.startswith("source_event:v1:us:equity_close:")
+             or re.fullmatch(r"source_event:v2:(?:license|odd_lot_rule):[0-9a-f]{64}", identity)) and published
             and re.fullmatch(r"[0-9a-f]{64}", str(proof.get("source_body_sha256") or ""))
             and proof.get("run_id") and proof.get("message_id")
         ):

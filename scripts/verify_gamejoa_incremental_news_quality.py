@@ -31,6 +31,8 @@ RUNTIME_FIXTURE = json.loads((ROOT / "data/gamejoa_runtime_selection_fixtures_20
 RUNTIME_CASES = {case["id"]: case for case in RUNTIME_FIXTURE["cases"]}
 REPORTED_FIXTURE = json.loads((ROOT / "data/gamejoa_reported_event_fixtures_20261005.json").read_text(encoding="utf-8"))
 REPORTED_CASES = {case["id"]: case for case in REPORTED_FIXTURE["cases"]}
+EQUIVALENCE_FIXTURE = json.loads((ROOT / "data/gamejoa_event_equivalence_fixtures_20261005.json").read_text(encoding="utf-8"))
+EQUIVALENCE_CASES = {case["id"]: case for case in EQUIVALENCE_FIXTURE["cases"]}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -72,6 +74,146 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def event_alert(self, key):
+        case = EQUIVALENCE_CASES[key]
+        return {**alert(case["title"], case["body"], case["url"]), "published": case["published"]}
+
+    def test_korean_money_units_have_exact_equivalence(self):
+        for raw, expected in (("11억 7천만", "1170000000"), ("11억7000만", "1170000000"),
+                              ("1조7000억", "1700000000000"), ("3천5백만", "35000000"),
+                              ("1.5억", "150000000"), ("3,500", "3500")):
+            with self.subTest(raw=raw):
+                self.assertEqual(materiality.korean_amount_value(raw), expected)
+        for raw in ("금액 미공개", "1억2조", "억", "1만만", ""):
+            self.assertFalse(materiality.korean_amount_value(raw))
+
+    def test_licensing_short_and_long_wire_have_one_event_identity(self):
+        short = self.event_alert("exclusive_license_short_copy")
+        long = self.event_alert("exclusive_license_long_copy")
+        self.assertNotEqual(materiality.verified_source_fact_identity(short), materiality.verified_source_fact_identity(long))
+        self.assertEqual(materiality.source_event_identity(short), materiality.source_event_identity(long))
+        terms = materiality.licensing_event_terms(short["source_title"], short["source_body"])
+        self.assertEqual(terms["upfront"], ["달러", "100000000"])
+        self.assertEqual(terms["milestone"], ["달러", "1170000000", True])
+
+    def test_changed_license_amount_asset_partner_scope_runway_remain_new(self):
+        first = self.event_alert("exclusive_license_long_copy")
+        identity = materiality.source_event_identity(first)
+        for old, new in (("1억 달러", "2억 달러"), ("11억7000만", "12억7000만"),
+                         ("AL050", "AL051"), ("제넨텍", "다른제약사"),
+                         ("글로벌", "미국내"), ("2029년", "2030년")):
+            revised = {**first, "source_title": first["source_title"].replace(old, new),
+                       "source_body": first["source_body"].replace(old, new)}
+            with self.subTest(term=old):
+                self.assertNotEqual(materiality.source_event_identity(revised), identity)
+
+    def test_new_numeric_royalty_terms_survive_duplicate_filter(self):
+        first = self.event_alert("exclusive_license_short_copy")
+        revised = {**first, "source_body": first["source_body"] + " 로열티율은 12%로 확정됐다."}
+        self.assertNotEqual(materiality.source_event_identity(first), materiality.source_event_identity(revised))
+
+    def test_unverified_or_negotiating_license_does_not_claim_signed_identity(self):
+        first = self.event_alert("exclusive_license_long_copy")
+        self.assertFalse(materiality.source_event_identity({**first, "body_verified": False}))
+        self.assertFalse(materiality.source_event_identity({**first, "source_title": first["source_title"] + " 협상 중"}))
+
+    def test_same_license_is_once_in_batch_and_report_guard(self):
+        candidates = [classify(EQUIVALENCE_CASES[key], LIVE_NOW.replace(hour=21))
+                      for key in ("exclusive_license_short_copy", "exclusive_license_long_copy")]
+        self.assertTrue(all(candidates))
+        with patch.object(radar.base, "kst_now", return_value=LIVE_NOW.replace(hour=21)):
+            selected = radar.quality_display_alerts(candidates, 30)
+        self.assertEqual(len(selected), 1)
+        self.assertEqual(len(generated_guard.duplicate_event_errors(candidates, radar)), 1)
+
+    def test_same_license_is_once_across_runs_but_new_terms_are_sent(self):
+        now = LIVE_NOW.replace(hour=21)
+        short, long = self.event_alert("exclusive_license_short_copy"), self.event_alert("exclusive_license_long_copy")
+        with tempfile.TemporaryDirectory() as folder, patch.object(telegram, "SEEN_PATH", Path(folder) / "seen.json"), patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            telegram.record_seen_alerts([long], now)
+            fresh, skipped = telegram.filter_previously_seen_alerts([short], now, "live")
+            self.assertFalse(fresh)
+            self.assertEqual(len(skipped), 1)
+            changed = {**short, "source_body": short["source_body"].replace("1억 달러", "2억 달러")}
+            fresh, skipped = telegram.filter_previously_seen_alerts([changed], now, "live")
+            self.assertEqual(len(fresh), 1)
+            self.assertFalse(skipped)
+
+    def test_odd_lot_shares_and_units_are_one_review_event(self):
+        case = RUNTIME_CASES["odd_lot_trading_rule"]
+        shares = alert(case["title"], case["body"], case["url"])
+        units = self.event_alert("odd_lot_units_copy")
+        self.assertTrue(materiality.source_event_identity(shares))
+        self.assertEqual(materiality.source_event_identity(shares), materiality.source_event_identity(units))
+
+    def test_new_lot_size_or_actual_permission_is_new_event(self):
+        first = self.event_alert("odd_lot_units_copy")
+        identity = materiality.source_event_identity(first)
+        changed = {**first, "source_body": first["source_body"].replace("20좌", "30좌")}
+        self.assertNotEqual(materiality.source_event_identity(changed), identity)
+        approved = {**first, "source_body": "금융위원회는 단일종목 레버리지 상품의 매매수량단위를 20좌로 확대했다. 단주 처분을 위한 시간외 종가매매를 허용한다고 확정 발표했다."}
+        self.assertNotEqual(materiality.source_event_identity(approved), identity)
+        self.assertTrue(materiality.source_event_identity(approved))
+
+    def test_trading_rule_specific_disposal_date_remains_new(self):
+        first = self.event_alert("odd_lot_units_copy")
+        revised = {**first, "source_body": first["source_body"].replace("시간 외 종가 매매를 통해", "2026년 12월 1일부터 시간 외 종가 매매를 통해")}
+        self.assertNotEqual(materiality.source_event_identity(first), materiality.source_event_identity(revised))
+
+    def test_ordinary_twenty_share_trade_is_not_the_regulatory_event(self):
+        body = "삼성전자 임원은 보통주 20주를 매수했다고 공시했다."
+        self.assertFalse(materiality.odd_lot_rule_terms("삼성전자 임원 20주 매수", body))
+
+    def test_audited_aliases_need_an_existing_sent_receipt(self):
+        proofs = json.loads(telegram.VERIFIED_EVENT_ALIAS_PATH.read_text(encoding="utf-8"))
+        proof = next(row for row in proofs["entries"] if row["link"] == EQUIVALENCE_CASES["exclusive_license_long_copy"]["url"])
+        state = {"seen": {}}
+        telegram.migrate_seen_verified_event_aliases(state)
+        self.assertFalse(state["seen"])
+        state["seen"]["link:test"] = {"title": proof["source_title"], "link": proof["link"], "first_seen_kst": "2026-10-05T20:57:26+09:00"}
+        telegram.migrate_seen_verified_event_aliases(state)
+        receipt = state["seen"]["event:" + telegram.digest_seen(proof["source_event_identity"])]
+        self.assertEqual(receipt["event_alias_evidence_message_id"], 2231)
+
+    def test_aliases_reject_unproved_identity_families(self):
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / "proof.json"
+            path.write_text(json.dumps({"entries": [{"source_event_identity": "source_event:v2:company:unknown"}]}), encoding="utf-8")
+            with patch.object(telegram, "VERIFIED_EVENT_ALIAS_PATH", path):
+                with self.assertRaises(ValueError):
+                    telegram.migrate_seen_verified_event_aliases({"seen": {}})
+
+    def test_audited_event_aliases_match_the_replayed_source_terms(self):
+        proofs = json.loads(telegram.VERIFIED_EVENT_ALIAS_PATH.read_text(encoding="utf-8"))
+        for key in ("exclusive_license_short_copy", "exclusive_license_long_copy", "odd_lot_units_copy"):
+            case = EQUIVALENCE_CASES[key]
+            proof = next(row for row in proofs["entries"] if row["link"] == case["url"])
+            with self.subTest(case=key):
+                self.assertEqual(proof["source_body_sha256"], case["full_body_sha256"])
+                self.assertEqual(proof["source_event_identity"], materiality.source_event_identity(self.event_alert(key)))
+                self.assertEqual(proof["run_id"], EQUIVALENCE_FIXTURE["run_id"])
+                self.assertEqual(proof["message_id"], EQUIVALENCE_FIXTURE["message_id"])
+
+    def test_maritime_core_retains_actual_reports_and_unknown_incident_time(self):
+        case = EQUIVALENCE_CASES["maritime_attack_not_oil_counterfactual"]
+        item = radar.normalize_alert_for_output(classify(case, LIVE_NOW.replace(hour=21)))
+        fact = item["telegram_core_fact"]
+        for term in ("UKMTO", "지난달 28일", "이달 3일", "7건", "보고", "4일", "발생 시점은 미공개"):
+            self.assertIn(term, fact)
+        self.assertFalse(radar.source_core_fact_errors(item))
+        self.assertTrue(radar.source_core_fact_errors({**item, "telegram_core_fact": case["old_core"]}))
+
+    def test_maritime_report_count_is_source_bound_not_a_canned_core(self):
+        case = EQUIVALENCE_CASES["maritime_attack_not_oil_counterfactual"]
+        fact = radar.source_headline_event_fact(case["title"], case["body"].replace("7건", "9건").replace("지난달 28일", "지난달 27일"))
+        self.assertIn("9건", fact)
+        self.assertIn("지난달 27일", fact)
+        self.assertNotIn("7건", fact)
+
+    def test_maritime_hypothetical_oil_impact_is_not_the_reported_attack(self):
+        case = EQUIVALENCE_CASES["maritime_attack_not_oil_counterfactual"]
+        self.assertFalse(materiality.focus_matches(case["title"], case["old_core"]))
+
     def test_six_actual_sent_events_retain_reported_action_not_commentary(self):
         self.assertEqual(len(REPORTED_CASES), 6)
         for case in REPORTED_CASES.values():

@@ -9,6 +9,33 @@
       "source_event_identity": "source_event:v1:us:equity_close:2026-10-02:nasdaq=27190.86:change=1.19",
       "run_id": 37132573108,
       "message_id": 2111
+    },
+    {
+      "source_title": "알렉토, 제넨텍에 AL050 기술이전하며 선급금 1억 달러 확보",
+      "link": "https://stock.mk.co.kr/news/view/1169768",
+      "source_published_kst": "2026-10-05T20:20+09:00",
+      "source_body_sha256": "16799e39ff8424755a7729c8b79ede9823736a15f0a3cc923cf0d48088d3c53b",
+      "source_event_identity": "source_event:v2:license:f6a8a12ea5795e49e91755f4cecf5a20a4aa2243b3654245264f6fb2ceb2de7f",
+      "run_id": 37305224924,
+      "message_id": 2231
+    },
+    {
+      "source_title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러",
+      "link": "https://stock.mk.co.kr/news/view/1169758",
+      "source_published_kst": "2026-10-05T20:01+09:00",
+      "source_body_sha256": "a02bb9e337f9e820969555999e867481c9a57261019f0f78a39e297aeb8d5c1d",
+      "source_event_identity": "source_event:v2:license:f6a8a12ea5795e49e91755f4cecf5a20a4aa2243b3654245264f6fb2ceb2de7f",
+      "run_id": 37305224924,
+      "message_id": 2231
+    },
+    {
+      "source_title": "삼닉 레버리지 '20좌 미만' 출구 마련",
+      "link": "https://www.mk.co.kr/news/stock/12168505",
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "source_body_sha256": "ea94beb8d3dfe545b47675eeb48ed296bb7527e400879474e9e1a6d8b743eb84",
+      "source_event_identity": "source_event:v2:odd_lot_rule:9a404eb9f9885e08451999bd50153349602be31c84b3e47f1e96be7459b5e344",
+      "run_id": 37305224924,
+      "message_id": 2231
     }
   ]
 }
