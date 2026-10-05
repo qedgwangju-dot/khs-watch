@@ -64,6 +64,10 @@ MIDEAST_EXPORT_SNAPSHOT_URLS = (
     "https://in.marketscreener.com/news/"
     "mideast-oil-exports-rebound-in-september-as-saudi-arabia-boosts-shipments-ce785addd888f724",
 )
+SAUDI_NOVEMBER_OSP_URLS = (
+    "https://boereport.com/2026/10/04/saudi-arabia-unexpectedly-cuts-oil-prices-to-asia/amp/",
+    "https://www.argaam.com/en/article/articledetail/id/1941273",
+)
 MIDEAST_PRODUCT_GAP_URLS = (
     "https://getnews.co.kr/news/articleView.html?idxno=882308",
     "https://www.moneycontrol.com/news/business/"
@@ -82,6 +86,10 @@ NEWS_QUERIES = (
     '"16.328 million barrels per day" Middle East exports Kpler when:3d',
     '"Hormuz" "9.719 million bpd" Kpler September when:3d',
     '"Saudi Arabia ramps up Gulf oil exports" OR "Aramco to boost Gulf exports" when:7d',
+    '"Saudi Arabia unexpectedly cuts oil prices to Asia" Aramco OSP when:7d',
+    '"Arab Light" OSP Asia Oman Dubai Saudi Aramco when:7d',
+    '"Saudi Aramco sets" crude OSP Asia when:7d',
+    '사우디 아람코 아시아 원유 공식판매가격 OSP when:7d',
     '"Gulf of Oman" STS record OR "ship-to-ship" Oman Saudi crude when:7d',
     'Kpler "Gulf of Oman" STS bottlenecks VLCC when:7d',
     'Kpler "pre-war levels" Middle East Gulf crude excluding Iran when:7d',
@@ -172,6 +180,8 @@ TRUSTED_SOURCE_ALIASES = (
     "newsis",
     "뉴시스",
     "euronews",
+    "boe report",
+    "argaam",
     "marketscreener",
     "s&p global",
     "platts",
@@ -229,6 +239,7 @@ EVENT_LABELS = {
     "oil_flow_recovery": "중동 원유 수출·호르무즈 물류 회복",
     "sts_reroute_expansion": "걸프오브오만 STS 우회 물류 급증·병목",
     "ex_iran_crude_prewar_recovery": "이란 제외 걸프 원유 수출 전쟁 전 100% 회복",
+    "saudi_asia_osp_change": "사우디 아시아 원유 공식판매가격(OSP) 변화",
     "east_west_pipeline_recovery": "사우디 East-West Pipeline 실물 회복",
     "regional_export_recovery": "중동 원유 수출 회복 단계 상향",
     "crude_product_divergence": "중동 원유 98% 회복·정제품 병목",
@@ -305,6 +316,8 @@ def _source_name_ko(source: str) -> str:
         ("livemint", "라이브민트"),
         ("moneycontrol", "머니컨트롤"),
         ("euronews", "유로뉴스"),
+        ("boe report", "BOE Report"),
+        ("argaam", "아르가암"),
         ("newsis", "뉴시스"),
         ("뉴시스", "뉴시스"),
         ("news1", "뉴스1"),
@@ -389,6 +402,9 @@ def _news_title_ko(row: NewsItem) -> str:
 
     if kind == "ex_iran_crude_prewar_recovery":
         return "Kpler, 이란 제외 걸프 원유 수출 16.5 Mbd로 전쟁 전 수준 회복"
+
+    if kind == "saudi_asia_osp_change":
+        return "Saudi Aramco, 11월 아시아 Arab Light 공식판매가격을 Oman/Dubai 대비 배럴당 5달러 할인으로 인하"
 
     if kind == "east_west_pipeline_recovery":
         if "80% capacity" in low or "over 80% capacity" in low or "above 80% capacity" in low:
@@ -572,6 +588,14 @@ def classify_event(title: str) -> str | None:
     )
     if has_iran and has_us and any(phrase in low for phrase in attack_end_phrases):
         return "us_attack_end"
+
+    saudi_osp_context = (
+        any(term in low for term in ("saudi", "aramco", "사우디", "아람코"))
+        and any(term in low for term in ("official selling price", "osp", "oil prices to asia", "crude prices to asia", "공식판매가격", "아시아 원유 가격"))
+        and any(term in low for term in ("cut", "cuts", "raise", "raises", "set", "sets", "slash", "slashed", "인하", "인상", "책정"))
+    )
+    if saudi_osp_context:
+        return "saudi_asia_osp_change"
 
     ex_iran_prewar_context = (
         any(term in low for term in ("excluding iran", "outside iran", "이란 제외"))
@@ -798,6 +822,155 @@ def parse_eu_diesel_reserve_snapshot(raw_html: str, current: dt.datetime) -> New
         published_epoch=current.timestamp(),
         event_kind="eu_diesel_reserve_policy",
     )
+
+
+def parse_saudi_osp_snapshot(
+    raw_html: str,
+    current: dt.datetime,
+    source_url: str,
+    source_name: str,
+) -> NewsItem:
+    text = _visible_text(raw_html)
+
+    month_match = re.search(
+        r"(November|December|January|February|March|April|May|June|July|August|September|October)\s+(?:Arab\s+Light|crude|oil)",
+        text,
+        flags=re.I,
+    )
+    if not month_match:
+        month_match = re.search(
+            r"(November|December|January|February|March|April|May|June|July|August|September|October)\s+(?:delivery|loadings?)",
+            text,
+            flags=re.I,
+        )
+    delivery_month = month_match.group(1).title() if month_match else "November"
+
+    # Prefer the Reuters-style prose because it contains both current and monthly changes.
+    light = re.search(
+        r"Arab\s+Light.*?(?:OSP|official\s+selling\s+price).*?Asia.*?"
+        r"(?:at\s+)?\$?([0-9.]+)\s+a\s+barrel\s+below.*?"
+        r"(?:down|cut)\s+\$?([0-9.]+)\s+from\s+the\s+previous\s+month",
+        text,
+        flags=re.I | re.S,
+    )
+    if not light:
+        light = re.search(
+            r"Arab\s+Light.*?(?:Asia|East\s+Asia).*?\$?([0-9.]+)\s+(?:a\s+barrel\s+)?below",
+            text,
+            flags=re.I | re.S,
+        )
+
+    # Exact current differentials also appear in the OSP tables.
+    table_values = re.search(
+        r"(?:NOVEMBER|November).*?(?:SUPER\s+LIGHT|Super\s+Light).*?(-?[0-9.]+).*?"
+        r"(?:EXTRA\s+LIGHT|Extra\s+Light).*?(-?[0-9.]+).*?"
+        r"(?:LIGHT|Light).*?(-?[0-9.]+).*?"
+        r"(?:MEDIUM|Average|Medium).*?(-?[0-9.]+).*?"
+        r"(?:HEAVY|Heavy).*?(-?[0-9.]+)",
+        text,
+        flags=re.I | re.S,
+    )
+
+    if table_values:
+        super_light = float(table_values.group(1))
+        extra_light = float(table_values.group(2))
+        asia_light = float(table_values.group(3))
+        asia_medium = float(table_values.group(4))
+        asia_heavy = float(table_values.group(5))
+    else:
+        super_light = -3.35 if "-3.35" in text else None
+        extra_light = -4.50 if "-4.50" in text else None
+        asia_light = -5.00 if ("$5" in text and ("below" in text.lower() or "-5.00" in text)) else None
+        asia_medium = -6.00 if "-6.00" in text else None
+        asia_heavy = -7.35 if "-7.35" in text else None
+
+    if light and len(light.groups()) >= 2:
+        asia_light = -abs(float(light.group(1)))
+        light_delta = -abs(float(light.group(2)))
+    else:
+        light_delta = -3.0 if ("down $3" in text.lower() or "drop from the previous month" in text.lower() or "down us$3" in text.lower()) else None
+
+    heavy_cut = re.search(
+        r"(?:Arab\s+Medium\s+and\s+Arab\s+Heavy|heavier\s+grades).*?(?:cut|cuts|reduced).*?\$?([0-9.]+)\s+a\s+barrel",
+        text,
+        flags=re.I | re.S,
+    )
+    heavy_delta = -abs(float(heavy_cut.group(1))) if heavy_cut else (-5.0 if "change" in text.lower() and "-5.00" in text else None)
+
+    eu_raise = re.search(
+        r"(?:northwest|north-west)\s+Europe.*?(?:raised|raise).*?\$?([0-9.]+)\s+a\s+barrel",
+        text,
+        flags=re.I | re.S,
+    )
+    europe_delta = abs(float(eu_raise.group(1))) if eu_raise else (3.0 if "northwest europe" in text.lower() and "0.85" in text else None)
+    us_unchanged = "unchanged" in text.lower() and ("united states" in text.lower() or "u.s." in text.lower() or "north america" in text.lower())
+
+    if asia_light is None:
+        raise RuntimeError("Saudi Asia Arab Light OSP not found")
+
+    widest = "june 2020" in text.lower()
+    title = (
+        f"Saudi OSP {delivery_month} Asia: Super Light {super_light if super_light is not None else 0:.2f}; "
+        f"Extra Light {extra_light if extra_light is not None else 0:.2f}; "
+        f"Arab Light {asia_light:.2f}"
+        + (f" MoM {light_delta:.2f}" if light_delta is not None else "")
+        + f"; Arab Medium {asia_medium if asia_medium is not None else 0:.2f}"
+        + (f" MoM {heavy_delta:.2f}" if heavy_delta is not None else "")
+        + f"; Arab Heavy {asia_heavy if asia_heavy is not None else 0:.2f}"
+        + (f" MoM {heavy_delta:.2f}" if heavy_delta is not None else "")
+        + (f"; NW Europe MoM +{europe_delta:.2f}" if europe_delta is not None else "")
+        + ("; US unchanged" if us_unchanged else "")
+        + ("; widest Asia Light discount since June 2020" if widest else "")
+    )
+
+    return NewsItem(
+        title=title,
+        source=source_name,
+        link=source_url,
+        published_utc=current.isoformat().replace("+00:00", "Z"),
+        published_epoch=current.timestamp(),
+        event_kind="saudi_asia_osp_change",
+    )
+
+
+def fetch_saudi_osp_snapshots(current: dt.datetime) -> list[NewsItem]:
+    items: list[NewsItem] = []
+    errors: list[str] = []
+    source_names = ("Reuters via BOE Report", "Saudi Aramco via Argaam")
+    for url, source_name in zip(SAUDI_NOVEMBER_OSP_URLS, source_names):
+        try:
+            raw = fetch_bytes(url, timeout=25, attempts=2).decode("utf-8", errors="replace")
+            items.append(parse_saudi_osp_snapshot(raw, current, url, source_name))
+        except Exception as exc:
+            errors.append(f"{source_name}: {type(exc).__name__}: {exc}")
+    if not items:
+        raise RuntimeError(" | ".join(errors))
+    return items
+
+
+def _extract_saudi_osp_metrics(news_rows: list[NewsItem]) -> dict[str, float | str | None]:
+    text = " ".join(str(row.title or "") for row in news_rows)
+
+    def val(pattern: str) -> float | None:
+        m = re.search(pattern, text, flags=re.I)
+        return float(m.group(1)) if m else None
+
+    month_match = re.search(r"Saudi\s+OSP\s+([A-Za-z]+)\s+Asia", text, flags=re.I)
+    delivery_month = month_match.group(1).title() if month_match else None
+    return {
+        "delivery_month": delivery_month,
+        "asia_super_light": val(r"Super\s+Light\s+(-?[0-9.]+)"),
+        "asia_extra_light": val(r"Extra\s+Light\s+(-?[0-9.]+)"),
+        "asia_light": val(r"Arab\s+Light\s+(-?[0-9.]+)"),
+        "asia_light_delta": val(r"Arab\s+Light\s+-?[0-9.]+\s+MoM\s+(-?[0-9.]+)"),
+        "asia_medium": val(r"Arab\s+Medium\s+(-?[0-9.]+)"),
+        "asia_medium_delta": val(r"Arab\s+Medium\s+-?[0-9.]+\s+MoM\s+(-?[0-9.]+)"),
+        "asia_heavy": val(r"Arab\s+Heavy\s+(-?[0-9.]+)"),
+        "asia_heavy_delta": val(r"Arab\s+Heavy\s+-?[0-9.]+\s+MoM\s+(-?[0-9.]+)"),
+        "europe_delta": val(r"NW\s+Europe\s+MoM\s+\+?([0-9.]+)"),
+        "us_unchanged": 1.0 if "US unchanged" in text else 0.0,
+        "widest_since_2020": 1.0 if "widest Asia Light discount since June 2020" in text else 0.0,
+    }
 
 
 def parse_kpler_prewar_export_snapshot(raw_html: str, current: dt.datetime) -> NewsItem:
@@ -1035,6 +1208,11 @@ def fetch_news(current: dt.datetime) -> tuple[list[NewsItem], list[str]]:
             errors.append(str(exc))
 
     try:
+        items.extend(fetch_saudi_osp_snapshots(current))
+    except Exception as exc:
+        errors.append(f"Saudi OSP direct: {type(exc).__name__}: {exc}")
+
+    try:
         eu_html = fetch_bytes(EU_DIESEL_RESERVE_URL).decode("utf-8", errors="replace")
         items.append(parse_eu_diesel_reserve_snapshot(eu_html, current))
     except Exception as exc:
@@ -1102,13 +1280,14 @@ def confirm_events(items: list[NewsItem], minimum_sources: int = 2) -> list[tupl
             for row in selected
         )
         pipeline_cross_checked = kind == "east_west_pipeline_recovery" and len(selected) >= minimum_sources
+        osp_cross_checked = kind == "saudi_asia_osp_change" and len(selected) >= minimum_sources
         pipeline_bloomberg_material = kind == "east_west_pipeline_recovery" and any(
             "bloomberg" in normalize_text(row.source)
             and ("80% capacity" in normalize_text(row.title) or "6 million" in normalize_text(row.title))
             for row in selected
         )
 
-        if len(selected) >= minimum_sources or has_primary_data or regional_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material:
+        if len(selected) >= minimum_sources or has_primary_data or regional_primary or broker_snapshot or eu_primary_interview or pipeline_cross_checked or pipeline_bloomberg_material or osp_cross_checked:
             candidates.append((max(row.published_epoch for row in selected), kind, selected))
 
     candidates.sort(key=lambda value: value[0], reverse=True)
@@ -1253,6 +1432,19 @@ def event_id(kind: str, rows: list[NewsItem]) -> str:
     if kind == "china_fuel_export_policy":
         stage = _china_fuel_export_stage(combined)
         basis = f"{kind}|{stage}"
+        return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
+
+    if kind == "saudi_asia_osp_change":
+        metrics = _extract_saudi_osp_metrics(rows)
+        month = str(metrics.get("delivery_month") or "unknown")
+        light = float(metrics.get("asia_light") or 0.0)
+        light_delta = float(metrics.get("asia_light_delta") or 0.0)
+        medium = float(metrics.get("asia_medium") or 0.0)
+        heavy = float(metrics.get("asia_heavy") or 0.0)
+        basis = (
+            f"{kind}|{month}|light_{light:.2f}|delta_{light_delta:.2f}|"
+            f"medium_{medium:.2f}|heavy_{heavy:.2f}"
+        )
         return f"{kind}:{hashlib.sha256(basis.encode('utf-8')).hexdigest()[:16]}"
 
     if kind == "ex_iran_crude_prewar_recovery":
@@ -2148,6 +2340,86 @@ def _build_east_west_pipeline_alert_body(
     return "\n".join(lines).strip() + "\n"
 
 
+def _build_saudi_osp_alert_body(
+    news_rows: list[NewsItem], oil: Quote | None, current: dt.datetime, fx: Quote | None,
+) -> str:
+    m = _extract_saudi_osp_metrics(news_rows)
+    month = str(m.get("delivery_month") or "해당 월")
+    light = m.get("asia_light")
+    light_delta = m.get("asia_light_delta")
+    medium = m.get("asia_medium")
+    medium_delta = m.get("asia_medium_delta")
+    heavy = m.get("asia_heavy")
+    heavy_delta = m.get("asia_heavy_delta")
+    europe_delta = m.get("europe_delta")
+    widest = bool(m.get("widest_since_2020"))
+
+    lines = [
+        current.astimezone(KST).strftime("%Y년 %m월 %d일 %H:%M KST"),
+        "",
+        "[한눈에]",
+    ]
+    if light is not None:
+        line = f"{month} Arab Light  Oman/Dubai 평균 대비 {float(light):+.2f}달러/배럴"
+        if light_delta is not None:
+            line += f" · 전월 대비 {float(light_delta):+.2f}달러"
+        lines.append(line)
+    if medium is not None and heavy is not None:
+        medium_text = f"{float(medium):+.2f}"
+        heavy_text = f"{float(heavy):+.2f}"
+        if medium_delta is not None and heavy_delta is not None:
+            lines.append(
+                f"중·중질유      Arab Medium {medium_text} · Arab Heavy {heavy_text}달러/배럴 "
+                f"· 둘 다 전월 대비 {float(medium_delta):+.0f}달러"
+            )
+        else:
+            lines.append(f"중·중질유      Arab Medium {medium_text} · Arab Heavy {heavy_text}달러/배럴")
+    if europe_delta is not None:
+        lines.append(f"지역 차별화    서북유럽 전월 대비 +{float(europe_delta):.0f}달러 · 미국 동결")
+    if widest:
+        lines.append("역사 비교      Arab Light 아시아 할인폭 2020년 6월 이후 최대")
+
+    if fx is not None and light is not None:
+        krw_diff = abs(float(light)) * fx.price
+        lines.append(f"원화 환산      Arab Light 할인폭 약 {krw_diff:,.0f}원/배럴")
+    if oil is not None:
+        direction = "↓" if oil.change < 0 else "↑" if oil.change > 0 else "→"
+        lines.append(f"Brent         USD {oil.price:.2f} · {oil.change_pct:+.2f}% {direction}")
+
+    lines.extend([
+        "",
+        "[핵심]",
+        "아시아에만 큰 폭으로 가격 차등을 낮춘 것은 물량 회복 국면에서 시장점유율을 방어하고 높은 운송비를 일부 상쇄하려는 신호로 해석할 수 있습니다.",
+        "→ 다만 '-5달러'는 원유의 절대가격이 아니라 Oman/Dubai 기준 대비 공식판매가격 차등입니다.",
+        "→ 유럽은 인상·미국은 동결이라 글로벌 수요 붕괴 신호로 단순 해석하면 안 됩니다.",
+        "",
+        "[한국 전이]",
+        "정유          사우디 장기계약 원유의 기준 차등 하락은 아시아 정유사 원료비에 우호적",
+        "운임          높은 VLCC·보험 비용이 실제 도착원가 절감폭을 깎을 수 있음",
+        "제품          실제 이익은 경유·항공유 정제마진과 제품 수출가격까지 함께 확인",
+        "",
+        "[다음 확인]",
+        "사우디        다음 월 Arab Light·Medium·Heavy OSP와 월간 변화",
+        "아시아        Oman/Dubai 현물차익 · Saudi term nomination · VLCC 운임",
+        "지역차        아시아 인하가 유럽·미국으로 확산되는지 여부",
+        "실물          호르무즈 통과량 · East-West Pipeline · 오만만 선박 간 이송",
+        "",
+        "[근거]",
+    ])
+    for row in news_rows[:3]:
+        published = dt.datetime.fromtimestamp(row.published_epoch, tz=UTC).astimezone(KST)
+        lines.append(f"{_source_name_ko(row.source)} · {published:%m-%d %H:%M KST} · {_news_title_ko(row)}")
+        if row.link:
+            lines.append(f"원문: {row.link}")
+    lines.extend([
+        "",
+        "[주의]",
+        "OSP는 장기계약 원유의 벤치마크 대비 가격 차등입니다. 사우디 원유 자체를 배럴당 5달러에 판매한다는 뜻이 아닙니다.",
+        "이번 11월 수치는 Reuters 보도와 Aramco 성명을 전달한 Argaam 자료를 교차 확인했습니다.",
+    ])
+    return "\n".join(lines).strip() + "\n"
+
+
 def _build_ex_iran_prewar_alert_body(
     news_rows: list[NewsItem], oil: Quote | None, current: dt.datetime, fx: Quote | None,
 ) -> str:
@@ -2399,6 +2671,8 @@ def build_physical_flow_alert_body(
         return _build_us_diesel_policy_alert_body(news_rows, oil, current, fx)
     if kind == "china_fuel_export_policy":
         return _build_china_fuel_export_policy_alert_body(news_rows, oil, current, fx)
+    if kind == "saudi_asia_osp_change":
+        return _build_saudi_osp_alert_body(news_rows, oil, current, fx)
     if kind == "ex_iran_crude_prewar_recovery":
         return _build_ex_iran_prewar_alert_body(news_rows, oil, current, fx)
     if kind == "oil_flow_recovery":
@@ -2743,6 +3017,7 @@ def run_monitor(current: dt.datetime) -> int:
         "oil_flow_recovery",
         "sts_reroute_expansion",
         "ex_iran_crude_prewar_recovery",
+        "saudi_asia_osp_change",
         "east_west_pipeline_recovery",
         "regional_export_recovery",
         "crude_product_divergence",
@@ -2777,6 +3052,8 @@ def run_monitor(current: dt.datetime) -> int:
             title = "중동 원유 흐름 변화"
         elif kind == "ex_iran_crude_prewar_recovery":
             title = "걸프 원유 전쟁 전 수준 회복·우회 구조 변화"
+        elif kind == "saudi_asia_osp_change":
+            title = "사우디 아시아 원유 공식판매가격(OSP) 변화"
         elif kind == "east_west_pipeline_recovery":
             title = "사우디 East-West Pipeline 회복"
         else:

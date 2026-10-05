@@ -148,6 +148,89 @@ class IranHormuzMarketTurnTests(unittest.TestCase):
         rows = MODULE.parse_rss(rss, current, 24)
         self.assertEqual(rows, [])
 
+    def test_saudi_osp_reuters_parser(self):
+        now = dt.datetime(2026, 10, 5, 11, 0, tzinfo=dt.timezone.utc)
+        html = """
+        <html><body>
+        Saudi Arabia unexpectedly cut November crude oil prices for Asia.
+        The November Arab Light crude oil official selling price to Asia was set at $5 a barrel
+        below the average of Oman and Dubai prices, down $3 from the previous month.
+        State oil company Saudi Aramco made deeper cuts of $5 a barrel for the November OSPs
+        of heavier grades - Arab Medium and Arab Heavy - sold to Asia.
+        NOVEMBER OCTOBER CHANGE
+        SUPER LIGHT -3.35 -0.35 -3.00
+        EXTRA LIGHT -4.50 -1.50 -3.00
+        LIGHT -5.00 -2.00 -3.00
+        MEDIUM -6.00 -1.00 -5.00
+        HEAVY -7.35 -2.35 -5.00
+        Saudi Aramco raised the November OSPs for northwest Europe by $3 a barrel.
+        Aramco kept prices unchanged for buyers in the United States.
+        The discount is the widest since June 2020.
+        </body></html>
+        """
+        item = MODULE.parse_saudi_osp_snapshot(html, now, "https://example.com", "Reuters via BOE Report")
+        self.assertEqual(item.event_kind, "saudi_asia_osp_change")
+        self.assertIn("Arab Light -5.00 MoM -3.00", item.title)
+        self.assertIn("Arab Medium -6.00 MoM -5.00", item.title)
+        self.assertIn("Arab Heavy -7.35 MoM -5.00", item.title)
+        self.assertIn("NW Europe MoM +3.00", item.title)
+        self.assertIn("US unchanged", item.title)
+
+    def test_saudi_osp_cross_check_requires_two_sources(self):
+        now = dt.datetime(2026, 10, 5, 11, 0, tzinfo=dt.timezone.utc)
+        one = [MODULE.NewsItem(
+            "Saudi OSP November Asia: Super Light -3.35; Extra Light -4.50; Arab Light -5.00 MoM -3.00; Arab Medium -6.00 MoM -5.00; Arab Heavy -7.35 MoM -5.00; NW Europe MoM +3.00; US unchanged; widest Asia Light discount since June 2020",
+            "Reuters via BOE Report", "a", now.isoformat(), now.timestamp(), "saudi_asia_osp_change"
+        )]
+        self.assertIsNone(MODULE.confirm_event(one))
+        one.append(MODULE.NewsItem(
+            "Saudi OSP November Asia: Super Light -3.35; Extra Light -4.50; Arab Light -5.00; Arab Medium -6.00; Arab Heavy -7.35",
+            "Saudi Aramco via Argaam", "b", now.isoformat(), now.timestamp(), "saudi_asia_osp_change"
+        ))
+        result = MODULE.confirm_event(one)
+        self.assertIsNotNone(result)
+        assert result is not None
+        self.assertEqual(result[0], "saudi_asia_osp_change")
+
+    def test_saudi_osp_alert_is_compact_and_precise(self):
+        now = dt.datetime(2026, 10, 5, 11, 0, tzinfo=dt.timezone.utc)
+        rows = [
+            MODULE.NewsItem(
+                "Saudi OSP November Asia: Super Light -3.35; Extra Light -4.50; Arab Light -5.00 MoM -3.00; Arab Medium -6.00 MoM -5.00; Arab Heavy -7.35 MoM -5.00; NW Europe MoM +3.00; US unchanged; widest Asia Light discount since June 2020",
+                "Reuters via BOE Report", "https://example.com/reuters", now.isoformat(), now.timestamp(), "saudi_asia_osp_change"
+            ),
+            MODULE.NewsItem(
+                "Saudi OSP November Asia: Super Light -3.35; Extra Light -4.50; Arab Light -5.00; Arab Medium -6.00; Arab Heavy -7.35",
+                "Saudi Aramco via Argaam", "https://example.com/argaam", now.isoformat(), now.timestamp(), "saudi_asia_osp_change"
+            ),
+        ]
+        fx = MODULE.Quote("KRW=X", "원·달러", "원/달러", 1350.0, 1360.0, -10.0, -0.735, "", now.timestamp())
+        body = MODULE.build_physical_flow_alert_body("saudi_asia_osp_change", rows, None, now, fx)
+        self.assertIn("Oman/Dubai 평균 대비 -5.00달러/배럴", body)
+        self.assertIn("전월 대비 -3.00달러", body)
+        self.assertIn("Arab Medium -6.00", body)
+        self.assertIn("Arab Heavy -7.35", body)
+        self.assertIn("서북유럽 전월 대비 +3달러 · 미국 동결", body)
+        self.assertIn("약 6,750원/배럴", body)
+        self.assertIn("절대가격이 아니라 Oman/Dubai 기준 대비 공식판매가격 차등", body)
+        self.assertIn("배럴당 5달러에 판매한다는 뜻이 아닙니다", body)
+        self.assertLessEqual(len(body.splitlines()), 34)
+
+    def test_saudi_osp_next_month_creates_new_event(self):
+        now = dt.datetime(2026, 10, 5, 11, 0, tzinfo=dt.timezone.utc)
+        nov = [MODULE.NewsItem(
+            "Saudi OSP November Asia: Arab Light -5.00 MoM -3.00; Arab Medium -6.00; Arab Heavy -7.35",
+            "Reuters", "a", now.isoformat(), now.timestamp(), "saudi_asia_osp_change"
+        )]
+        dec = [MODULE.NewsItem(
+            "Saudi OSP December Asia: Arab Light -4.00 MoM +1.00; Arab Medium -5.00; Arab Heavy -6.35",
+            "Reuters", "b", now.isoformat(), now.timestamp(), "saudi_asia_osp_change"
+        )]
+        self.assertNotEqual(
+            MODULE.event_id("saudi_asia_osp_change", nov),
+            MODULE.event_id("saudi_asia_osp_change", dec),
+        )
+
     def test_kpler_prewar_export_parser(self):
         now = dt.datetime(2026, 10, 3, 12, 0, tzinfo=dt.timezone.utc)
         html = """
