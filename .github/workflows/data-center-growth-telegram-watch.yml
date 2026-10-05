@@ -307,6 +307,14 @@ jobs:
                               {"text": "🔋 MISO ERAS", "url": "https://www.misoenergy.org/meet-miso/media-center/2026---news-releases/miso-accelerates-new-generation-and-storage-projects-with-fifth-eras-cycle/"},
                               {"text": "🏗️ ERCOT Batch Zero", "url": "https://www.ercot.com/services/rq/large-load-integration"},
                           ],
+                          [
+                              {"text": "🏛️ Massachusetts", "url": "https://www.mass.gov/executive-orders/no-658-establishing-requirements-for-responsible-data-center-development-and-operations-in-massachusetts-to-protect-and-support-ratepayers-communities-and-the-environment"},
+                              {"text": "🏛️ Pennsylvania", "url": "https://dced.pa.gov/business-assistance/data-center-resources/grid-requirements/"},
+                          ],
+                          [
+                              {"text": "🏛️ Virginia", "url": "https://www.scc.virginia.gov/about-the-scc/scc-facts/"},
+                              {"text": "🔌 NVIDIA 800V", "url": "https://developer.nvidia.com/blog/nvidia-800-v-hvdc-architecture-will-power-the-next-generation-of-ai-factories"},
+                          ],
                       ]
                   }
               elif p.name == "us_data_center_generation_buildout_alert.txt":
@@ -375,11 +383,15 @@ jobs:
                       "inline_keyboard": [
                           [
                               {"text": "🏗 DataOne Frankfort", "url": "https://dataonefrankfort.com/"},
-                              {"text": "🏢 Nebius Vineland", "url": "https://nebius.com/vinelandnj"},
+                              {"text": "⚡ Nebius·Bloom", "url": "https://nebius.com/newsroom/nebius-and-bloom-energy-partner-to-power-ai-infrastructure-build-out"},
                           ],
                           [
-                              {"text": "⚡ Nebius·Bloom", "url": "https://nebius.com/newsroom/nebius-and-bloom-energy-partner-to-power-ai-infrastructure-build-out"},
-                              {"text": "🤝 파트너 인프라 모델", "url": "https://nebius.com/newsroom/nebius-introduces-business-model-to-scale-ai-cloud-globally-through-infrastructure-partnerships"},
+                              {"text": "🟢 Bloom·Equinix", "url": "https://www.bloomenergy.com/news/bloom-energy-expands-data-center-power-agreement-with-equinix-surpassing-100mw/"},
+                              {"text": "☁️ Bloom·Oracle", "url": "https://www.bloomenergy.com/news/bloom-energy-and-oracle-expand-strategic-partnership-to-deploy-up-to-2-8-gw-to-accelerate-ai-infrastructure-build-out/"},
+                          ],
+                          [
+                              {"text": "💰 Bloom·Brookfield", "url": "https://www.bloomenergy.com/news/brookfield-and-bloom-energy-expand-ai-infrastructure-partnership/"},
+                              {"text": "⚙️ Power Connect", "url": "https://www.bloomenergy.com/news/bloom-energy-introduces-power-connect/"},
                           ],
                       ]
                   }
