@@ -275,6 +275,157 @@ jobs:
           python scripts/ai_safety_policy_watch.py
           cat out/ai_safety_policy_watch_status.md >> "$GITHUB_STEP_SUMMARY"
 
+      - name: Detect Super Intelligence Force policy stages
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import datetime as dt
+          import email.utils
+          import hashlib
+          import html
+          import json
+          import pathlib
+          import re
+          import urllib.parse
+          import urllib.request
+          import xml.etree.ElementTree as ET
+          from zoneinfo import ZoneInfo
+
+          KST=ZoneInfo("Asia/Seoul")
+          pending=pathlib.Path("out/ai_safety_policy_watch_pending_state.json")
+          if not pending.exists():
+              raise RuntimeError("AI policy pending state missing before SIF enrichment")
+          state=json.loads(pending.read_text(encoding="utf-8"))
+          seen=state.setdefault("seen",{})
+          now=dt.datetime.now(KST)
+          query='"Super Intelligence Force"'
+          rss="https://news.google.com/rss/search?"+urllib.parse.urlencode({
+              "q":query+" when:7d","hl":"en-US","gl":"US","ceid":"US:en"
+          })
+          req=urllib.request.Request(rss,headers={"User-Agent":"Mozilla/5.0 khs-ai-policy-sif-watch/1.0"})
+          with urllib.request.urlopen(req,timeout=25) as r:
+              root=ET.fromstring(r.read())
+
+          trusted={"Reuters","AP News","Associated Press","The Wall Street Journal","Wall Street Journal"}
+          rows=[]
+          for node in root.findall("./channel/item"):
+              title=html.unescape(re.sub(r"<[^>]+>"," ",node.findtext("title") or ""))
+              desc=html.unescape(re.sub(r"<[^>]+>"," ",node.findtext("description") or ""))
+              source_node=node.find("source")
+              source=(source_node.text or "").strip() if source_node is not None else ""
+              link=(node.findtext("link") or "").strip()
+              if source not in trusted:
+                  continue
+              text=re.sub(r"\s+"," ",f"{title} {desc}").strip().lower()
+              if "super intelligence force" not in text and "superintelligence force" not in text:
+                  continue
+              rows.append({"title":title.strip(),"description":desc.strip(),"source":source,"link":link,"text":text})
+
+          def stage(row):
+              text=row["text"]
+              title=row["title"].lower()
+              if any(x in text for x in (
+                  "final report released","final report published","final report submitted",
+                  "report released","report published","report submitted",
+                  "recommendations released","recommendations published","recommendations submitted",
+              )):
+                  return "report","us-sif-report"
+              if any(x in text for x in (
+                  "appropriation","appropriations","budget","funding","procurement",
+                  "contract award","contract awarded","request for proposals",
+                  "mandatory incident reporting","incident reporting requirement",
+                  "final rule","proposed rule","regulation","charter released","charter published",
+              )):
+                  return "execution","us-sif-execution-"+hashlib.sha1(title.encode()).hexdigest()[:10]
+              if any(x in title for x in (
+                  "new member","new members","joins","added to","leadership change",
+                  "replaces","names vice chair","appoints vice chair",
+              )):
+                  return "membership","us-sif-membership-"+hashlib.sha1(title.encode()).hexdigest()[:10]
+              if any(x in text for x in (
+                  "formation","formed","forms","created","creates","established","establishes",
+                  "launched","launches","announced","announces","new federal ai task force","new federal task force",
+              )):
+                  return "formation","us-sif-formation-2026-10-04"
+              return "other","us-sif-other-"+hashlib.sha1(title.encode()).hexdigest()[:10]
+
+          candidates=[]
+          for row in rows:
+              st,key=stage(row)
+              digest=hashlib.sha256(("sif-semantic-v1:"+key).encode()).hexdigest()[:24]
+              if digest in seen:
+                  continue
+              candidates.append((st,key,digest,row))
+
+          if candidates:
+              rank={"formation":4,"execution":3,"report":2,"membership":1,"other":0}
+              st,key,digest,row=sorted(candidates,key=lambda x:rank.get(x[0],0),reverse=True)[0]
+              if st=="formation":
+                  heading="미국 Super Intelligence Force(SIF) 창설"
+                  detail=[
+                      "• <b>현재 단계</b>: 연방정부 초지능 정책 조율기구 창설 발표",
+                      "• <b>확정 범위</b>: Trump Truth Social 게시문은 연방 노력 조율, 이해관계자 소통, Jay Clayton·Andrew Ferguson·Emil Michael·Scott Kupor 지도부, 대통령·Susie Wiles 보고선을 명시",
+                      "• <b>보도 범위</b>: Reuters는 SIF가 AI 위험·기회와 연방정부 역할을 검토해 120일 안에 보고하도록 했다고 보도. 120일 기한은 Truth Social 게시문 자체 문구와 분리",
+                      "• <b>미확정</b>: SIF 별도 예산·신규 법적 권한·정부 조달금액·의무 사고보고 규정",
+                      "• <b>다음 확인</b>: SIF 헌장·120일 보고서·예산·인원·FTC/국방부/OPM 후속 규칙·조달, EO 14434의 60일 SI 정의 제안",
+                  ]
+              elif st=="report":
+                  heading="SIF 120일 검토 후속 보고서·권고 공개"
+                  detail=[
+                      "• <b>현재 단계</b>: 보고서·권고 공개",
+                      "• <b>의미</b>: 조정기구 출범에서 실제 정책 권고 산출물 단계로 이동",
+                      "• <b>다음 확인</b>: 행정명령·규칙·예산·조달에 반영되는지 확인",
+                  ]
+              elif st=="execution":
+                  heading="SIF 권한·예산·규제·조달 실행 변화"
+                  detail=[
+                      "• <b>현재 단계</b>: 후속 집행 구체화",
+                      "• <b>의미</b>: 단순 조정기구에서 실제 정책·조달 수단으로 전환되는지 확인",
+                      "• <b>다음 확인</b>: 법적 근거·예산액·조달 대상·시행일·계약 상대방",
+                  ]
+              else:
+                  heading="SIF 구성·운영 변화"
+                  detail=[
+                      "• <b>현재 단계</b>: 구성·운영 후속 변화",
+                      "• <b>다음 확인</b>: 실제 권한·예산·조달 변화 동반 여부",
+                  ]
+
+              truth="https://truthsocial.com/@realDonaldTrump/117382616783706638"
+              reuters="https://www.reuters.com/world/us/jay-clayton-lead-trumps-ai-task-force-deliver-report-120-days-wsj-reports-2026-10-03/"
+              body=[
+                  "🚨 <b>[미국 AI 정책지휘체계 중요 변화]</b>",
+                  f"조회 {now:%Y-%m-%d %H:%M KST}",
+                  "",
+                  f"<b>{heading}</b>",
+                  *detail,
+                  "• <b>투자 연결</b>: 현재 특정 기업 신규 정부계약 확정이 아님. 예산·조달·규칙이 GPU·클라우드·사이버보안·데이터센터 전력·국방 AI 발주로 전환될 때 실적 연결",
+                  f'• <a href="{truth}">Trump Truth Social 원문</a>',
+                  f'• <a href="{reuters}">Reuters 교차검증</a>',
+              ]
+              alert=pathlib.Path("out/ai_safety_policy_watch_alert.html")
+              title_file=pathlib.Path("out/ai_safety_policy_watch_alert_title.txt")
+              existing=alert.read_text(encoding="utf-8").strip() if alert.exists() else ""
+              sif_text="\n".join(body)
+              alert.write_text((sif_text+("\n\n"+existing if existing else "")).rstrip()+"\n",encoding="utf-8")
+              if not title_file.exists():
+                  title_file.write_text("🚨 미국 AI 정책지휘체계 중요 변화: "+heading+"\n",encoding="utf-8")
+              seen[digest]={
+                  "title":heading,
+                  "source":row["source"],
+                  "url":row["link"],
+                  "entity":"미국 Super Intelligence Force",
+                  "category":"미국 Super Intelligence Force 정책지휘체계",
+                  "published_at":now.isoformat(),
+                  "first_seen_at":now.isoformat(),
+                  "semantic_key":key,
+              }
+              pending.write_text(json.dumps(state,ensure_ascii=False,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+              print(f"ai_policy_sif_new_stage={st} semantic_key={key} source={row['source']}")
+          else:
+              print(f"ai_policy_sif_new_stage=none trusted_rows={len(rows)}")
+          PY
+
       - name: Build one-shot Telegram test
         if: (github.event_name == 'workflow_dispatch' && github.event.inputs.send_test == 'true') || (github.event_name == 'push' && env.POLICY_SEND_CONNECTION_TEST_ON_PUSH == 'true')
         run: |
