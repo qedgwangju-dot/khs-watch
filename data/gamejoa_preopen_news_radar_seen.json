@@ -2336,15 +2336,20 @@
     "event:82e5f83928e45bef188ba718": {
       "first_seen_kst": "2026-10-04T01:08:35+09:00",
       "lanes": {
-        "live": "2026-10-04T01:08:35+09:00",
+        "live": "2026-10-05T21:13:33+09:00",
         "preopen": "2026-10-05T06:34:55+09:00"
       },
-      "last_seen_kst": "2026-10-05T06:34:55+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261004031151009",
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261004043300099",
       "source": "연합뉴스",
+      "source_body_digest": "0a083d75e351123511102ad33f6b0a96484ff77cda5e91122fbf5660db310a4f",
       "source_event_identity": "",
-      "source_published_kst": "2026-10-04T18:58+09:00",
-      "title": "이란 \"7대조건 충족 안되면 호르무즈 재개방 안해\"…입장 재확인(종합) | 연합뉴스"
+      "source_fact_identity": "source_facts:v1:ff6c39364bf6c8e2f93c43efbe5af345a472d6db2f61e26e5c7c083adf4451b2",
+      "source_fact_keys": [
+        "source_fact:v1:537e6502131628e020f2d60be44beb8c1df6b9ed40954b980a59c9b1b019a953"
+      ],
+      "source_published_kst": "2026-10-04T22:38+09:00",
+      "title": "\"사우디, 2034 월드컵 경기장 '네옴 스타디움' 건설 계획 보류\" | 연합뉴스"
     },
     "event:82f5b333cb2e87318752d0b5": {
       "first_seen_kst": "2026-09-24T06:13:58+09:00",
@@ -4294,14 +4299,30 @@
     "event:ee2445b0912c043ab1270e54": {
       "first_seen_kst": "2026-10-05T15:39:46+09:00",
       "lanes": {
-        "live": "2026-10-05T15:39:46+09:00"
+        "live": "2026-10-05T21:13:33+09:00"
       },
-      "last_seen_kst": "2026-10-05T15:39:46+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2632467",
-      "source": "이투데이",
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
       "source_event_identity": "",
-      "source_published_kst": "2026-10-05T15:36+09:00",
-      "title": "용인·평택 물길 훑고 이천 수질까지…반도체 방류수 '기준 공백' 드러났다"
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
     "event:ef3817c20d8f9a0550aa5ea7": {
       "first_seen_kst": "2026-09-17T16:30:30+09:00",
@@ -4608,6 +4629,34 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "fact:099f8e45086de8cd1c5f84d1": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
     "fact:0ca37161e3eb5e20cd99467a": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -5110,6 +5159,25 @@
       "source_published_kst": "2026-10-05T20:20+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료로 차량용 OS 풀스택 경쟁력 부각"
     },
+    "fact:7e6cc31dd306bcb3a869efa3": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.mk.co.kr/news/it/12168319",
+      "source": "매일경제",
+      "source_body_digest": "579a0bd3ef5ce0634a013ba8139cf762aca05d79f50492b20570bb634fca911a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13232a87577de6ca871db032e1119b0bdb2c9020a61fb5336df6342e945445de",
+      "source_fact_keys": [
+        "source_fact:v1:1d80923830481bb924eff3b69d29a79ad46428399ee6b2f13e79e92647658c54",
+        "source_fact:v1:54d0bbf7034583b4cb5c705ed868f819b62932b48ae3818c7d3f053fdf01c42b",
+        "source_fact:v1:926ad6768331235b736cd3c07bafa78f8029887e6f7aad86a1d1034479182ce6"
+      ],
+      "source_published_kst": "2026-10-05T10:59+09:00",
+      "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
+    },
     "fact:85a1db6fe38ec6a4eb60a08a": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -5265,6 +5333,25 @@
       "source_published_kst": "2026-10-05T19:19+09:00",
       "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
     },
+    "fact:975d78e94fdd6f2c8b96692b": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632469",
+      "source": "이투데이",
+      "source_body_digest": "e2b31cd3036afa7c041da2a6cd10440b8b2371378ff64b8386f8573d72bb93a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb6847f51fa1f935b2e16a72018c89b1c8d33737e3d1b10222e5c68cc2f97501",
+      "source_fact_keys": [
+        "source_fact:v1:27b435eccaec95e036ef79fe3ed1410505bb744abe2c1f28ed69a6905072d385",
+        "source_fact:v1:6b6e9178203290dfb45a25a89ef6614da69b8ad092d4102c7069219de234e03c",
+        "source_fact:v1:f58836291c1edc4a3a7fd0a40776bcecac437fef4a28baaa43766d86e1fdb103"
+      ],
+      "source_published_kst": "2026-10-05T16:01+09:00",
+      "title": "이란 안보수장 “역사상 가장 어려운 시기”⋯경제 악화 이례적 시인"
+    },
     "fact:9d60928f4b4ccbe8977b7741": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -5397,6 +5484,23 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "독파모, '프런티어 AI·산업 확산' 투트랙 재편…중국 넘는다"
     },
+    "fact:b57857aa815d46a8e25cd63c": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814199",
+      "source": "뉴시스",
+      "source_body_digest": "f40c068465b502fa184f5b86136e59be6ae9df4e0369fd9506b567804e6c5770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b28507fb45225956d180b7159e5863761a35d43a354f74a309fb7da5f773ab95",
+      "source_fact_keys": [
+        "source_fact:v1:9962e199bbd29be77f1f367b8a3a2048071e1e670f9cce10bbd062f0cae08f81"
+      ],
+      "source_published_kst": "2026-10-05T11:00+09:00",
+      "title": "반려견 피부염 연구 활용…'항염증 엑소좀' 생산기술 개발"
+    },
     "fact:cb9ba00a0b8ae874e4c1138b": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -5448,6 +5552,24 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "어드밴스드 드레니쥐 시스, 스톰트랩 5억3000만 달러 인수..4분기 완료 예정"
+    },
+    "fact:d0387a94115635508d5d4ad0": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261004_0003814098",
+      "source": "뉴시스",
+      "source_body_digest": "38983b5764796bfa65b8705f8876e117241c7d3f9168ca303937b5554abab4b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc55cb9cb708a6111edd831d9dc2903b404b06a172e0b11768fd4a9486327d1c",
+      "source_fact_keys": [
+        "source_fact:v1:10cccbcedfbdd51938563ab4847cea4acee85889836b9012e46374502bfc3094",
+        "source_fact:v1:9db1687d2e657d59e0291addc1d3254f76bfa35728332d73acd060693ef9f9ed"
+      ],
+      "source_published_kst": "2026-10-04T23:56+09:00",
+      "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
     },
     "fact:dbeb5fd6614dbec10b54f316": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
@@ -5542,6 +5664,23 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"30개 테스트공장 풀가동\" SK엔무브 고급 윤활기유 1위 만든 R&D"
+    },
+    "fact:fb7067bdc4bf98e0e7e2f64a": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261004043300099",
+      "source": "연합뉴스",
+      "source_body_digest": "0a083d75e351123511102ad33f6b0a96484ff77cda5e91122fbf5660db310a4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ff6c39364bf6c8e2f93c43efbe5af345a472d6db2f61e26e5c7c083adf4451b2",
+      "source_fact_keys": [
+        "source_fact:v1:537e6502131628e020f2d60be44beb8c1df6b9ed40954b980a59c9b1b019a953"
+      ],
+      "source_published_kst": "2026-10-04T22:38+09:00",
+      "title": "\"사우디, 2034 월드컵 경기장 '네옴 스타디움' 건설 계획 보류\" | 연합뉴스"
     },
     "fact:ff4d615e58fc5d7ecdadb822": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -9547,6 +9686,21 @@
       "source": "이데일리",
       "title": "국채 발행 5조 줄이자 장 초반 국고채 금리↓…3년물 3.96%"
     },
+    "link:4963f5800b478f329a7831ad": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261003044800003",
+      "source": "연합뉴스",
+      "source_body_digest": "6db0bdf966a07156e78c8abfd56ab8ea045a8c1951936edc2e5f8d006f4835ef",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T06:15+09:00",
+      "title": "반세기만의 원전 역수출…웨스팅하우스 반대 뚫어낸 막전막후 | 연합뉴스"
+    },
     "link:4972c93d29f833c319b0166b": {
       "first_seen_kst": "2026-10-01T16:14:13+09:00",
       "lanes": {
@@ -11857,6 +12011,25 @@
       "link": "https://www.etoday.co.kr/news/view/2632277",
       "source": "이투데이",
       "title": "산은·기업은행 “‘암살자(들)’ 투자에 외부 개입 없었어\""
+    },
+    "link:6cb1329680b4f10f363e16c5": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632469",
+      "source": "이투데이",
+      "source_body_digest": "e2b31cd3036afa7c041da2a6cd10440b8b2371378ff64b8386f8573d72bb93a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb6847f51fa1f935b2e16a72018c89b1c8d33737e3d1b10222e5c68cc2f97501",
+      "source_fact_keys": [
+        "source_fact:v1:27b435eccaec95e036ef79fe3ed1410505bb744abe2c1f28ed69a6905072d385",
+        "source_fact:v1:6b6e9178203290dfb45a25a89ef6614da69b8ad092d4102c7069219de234e03c",
+        "source_fact:v1:f58836291c1edc4a3a7fd0a40776bcecac437fef4a28baaa43766d86e1fdb103"
+      ],
+      "source_published_kst": "2026-10-05T16:01+09:00",
+      "title": "이란 안보수장 “역사상 가장 어려운 시기”⋯경제 악화 이례적 시인"
     },
     "link:6cdc9cb4b965f7a3a0360a70": {
       "first_seen_kst": "2026-09-28T21:10:36+09:00",
@@ -15198,6 +15371,24 @@
       "source": "머니투데이",
       "title": "테슬라, 오늘 밤 3분기 전기차 인도량 발표…전년비 7~9% 감소 예상"
     },
+    "link:a831190dcc77a59f45bb8739": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261004_0003814098",
+      "source": "뉴시스",
+      "source_body_digest": "38983b5764796bfa65b8705f8876e117241c7d3f9168ca303937b5554abab4b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc55cb9cb708a6111edd831d9dc2903b404b06a172e0b11768fd4a9486327d1c",
+      "source_fact_keys": [
+        "source_fact:v1:10cccbcedfbdd51938563ab4847cea4acee85889836b9012e46374502bfc3094",
+        "source_fact:v1:9db1687d2e657d59e0291addc1d3254f76bfa35728332d73acd060693ef9f9ed"
+      ],
+      "source_published_kst": "2026-10-04T23:56+09:00",
+      "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
+    },
     "link:a84f359c5ca95151d9133f20": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -17093,6 +17284,23 @@
       "source_published_kst": "2026-10-05T10:58+09:00",
       "title": "고든앤맥페일, 도수 높인 '벤로막 12년'으로 韓 공략 속도…“셰리 캐스크·훈연 가장 좋은 균형”"
     },
+    "link:c88264b9036ecc3984b9158f": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814199",
+      "source": "뉴시스",
+      "source_body_digest": "f40c068465b502fa184f5b86136e59be6ae9df4e0369fd9506b567804e6c5770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b28507fb45225956d180b7159e5863761a35d43a354f74a309fb7da5f773ab95",
+      "source_fact_keys": [
+        "source_fact:v1:9962e199bbd29be77f1f367b8a3a2048071e1e670f9cce10bbd062f0cae08f81"
+      ],
+      "source_published_kst": "2026-10-05T11:00+09:00",
+      "title": "반려견 피부염 연구 활용…'항염증 엑소좀' 생산기술 개발"
+    },
     "link:c8b9dcd2850a2d6a5c6a6d91": {
       "first_seen_kst": "2026-09-20T01:03:05+09:00",
       "lanes": {
@@ -18534,6 +18742,23 @@
       "source": "매일경제",
       "title": "액센츄어, 4분기 실적 가이던스 상회에 사상 최대 주주환원까지 겹쳐 급등세"
     },
+    "link:e2429c2fc0de0bcac527fcce": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261004043300099",
+      "source": "연합뉴스",
+      "source_body_digest": "0a083d75e351123511102ad33f6b0a96484ff77cda5e91122fbf5660db310a4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ff6c39364bf6c8e2f93c43efbe5af345a472d6db2f61e26e5c7c083adf4451b2",
+      "source_fact_keys": [
+        "source_fact:v1:537e6502131628e020f2d60be44beb8c1df6b9ed40954b980a59c9b1b019a953"
+      ],
+      "source_published_kst": "2026-10-04T22:38+09:00",
+      "title": "\"사우디, 2034 월드컵 경기장 '네옴 스타디움' 건설 계획 보류\" | 연합뉴스"
+    },
     "link:e29e029af006f0b48bf6816b": {
       "first_seen_kst": "2026-10-01T16:57:16+09:00",
       "lanes": {
@@ -19478,6 +19703,34 @@
       "source": "매일경제",
       "title": "“삼성전기, 이익 상향 구간 진입”…3분기 영업익 전망치 154%↑"
     },
+    "link:f1dec869dce447627845919f": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
     "link:f21c19f651d2b6551240b0ae": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
       "lanes": {
@@ -19891,6 +20144,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:18+09:00",
       "title": "고금리 버티는 AI 랠리…\"美10년물 6%땐 랠리 붕괴\""
+    },
+    "link:f99a9e5c4972a126e5df7e35": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.mk.co.kr/news/it/12168319",
+      "source": "매일경제",
+      "source_body_digest": "579a0bd3ef5ce0634a013ba8139cf762aca05d79f50492b20570bb634fca911a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13232a87577de6ca871db032e1119b0bdb2c9020a61fb5336df6342e945445de",
+      "source_fact_keys": [
+        "source_fact:v1:1d80923830481bb924eff3b69d29a79ad46428399ee6b2f13e79e92647658c54",
+        "source_fact:v1:54d0bbf7034583b4cb5c705ed868f819b62932b48ae3818c7d3f053fdf01c42b",
+        "source_fact:v1:926ad6768331235b736cd3c07bafa78f8029887e6f7aad86a1d1034479182ce6"
+      ],
+      "source_published_kst": "2026-10-05T10:59+09:00",
+      "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
     },
     "link:f9de8071ffa897e961c02942": {
       "first_seen_kst": "2026-10-02T13:04:47+09:00",
@@ -22960,6 +23232,23 @@
       "source_event_identity": "",
       "title": "현대차그룹, 美 3분기 판매 포드에 1195대 차…첫 추월 문턱서 멈췄다"
     },
+    "original:3398cf131c6b72042b5fee5d": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814199",
+      "source": "뉴시스",
+      "source_body_digest": "f40c068465b502fa184f5b86136e59be6ae9df4e0369fd9506b567804e6c5770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b28507fb45225956d180b7159e5863761a35d43a354f74a309fb7da5f773ab95",
+      "source_fact_keys": [
+        "source_fact:v1:9962e199bbd29be77f1f367b8a3a2048071e1e670f9cce10bbd062f0cae08f81"
+      ],
+      "source_published_kst": "2026-10-05T11:00+09:00",
+      "title": "반려견 피부염 연구 활용…'항염증 엑소좀' 생산기술 개발"
+    },
     "original:339ca542adebe095cd78d310": {
       "first_seen_kst": "2026-10-03T10:28:46+09:00",
       "lanes": {
@@ -23035,6 +23324,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T15:22+09:00",
       "title": "웰컴저축은행도 해킹으로 정보유출…법인고객 정보 2200건 추정"
+    },
+    "original:352aeaaa0886bc64470e7eda": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261004043300099",
+      "source": "연합뉴스",
+      "source_body_digest": "0a083d75e351123511102ad33f6b0a96484ff77cda5e91122fbf5660db310a4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ff6c39364bf6c8e2f93c43efbe5af345a472d6db2f61e26e5c7c083adf4451b2",
+      "source_fact_keys": [
+        "source_fact:v1:537e6502131628e020f2d60be44beb8c1df6b9ed40954b980a59c9b1b019a953"
+      ],
+      "source_published_kst": "2026-10-04T22:38+09:00",
+      "title": "\"사우디, 2034 월드컵 경기장 '네옴 스타디움' 건설 계획 보류\" | 연합뉴스"
     },
     "original:352d6c62d85bde568e8cf5ad": {
       "first_seen_kst": "2026-10-02T15:40:35+09:00",
@@ -25676,6 +25982,24 @@
       "source": "이데일리",
       "title": "ETF 성장세 주춤하자 다시 ‘쩐의 전쟁’…보수 0%대 승부수"
     },
+    "original:61f8dce7bd2b2bd4f11da580": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261004_0003814098",
+      "source": "뉴시스",
+      "source_body_digest": "38983b5764796bfa65b8705f8876e117241c7d3f9168ca303937b5554abab4b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc55cb9cb708a6111edd831d9dc2903b404b06a172e0b11768fd4a9486327d1c",
+      "source_fact_keys": [
+        "source_fact:v1:10cccbcedfbdd51938563ab4847cea4acee85889836b9012e46374502bfc3094",
+        "source_fact:v1:9db1687d2e657d59e0291addc1d3254f76bfa35728332d73acd060693ef9f9ed"
+      ],
+      "source_published_kst": "2026-10-04T23:56+09:00",
+      "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
+    },
     "original:62278f783f8b20551015bd4d": {
       "first_seen_kst": "2026-10-01T19:41:53+09:00",
       "lanes": {
@@ -26142,6 +26466,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:25+09:00",
       "title": "이번주 크레딧 2조원 발행…파라다이스 수요예측도 | 연합뉴스"
+    },
+    "original:69042a1f45bb95b1cb91bf96": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632469",
+      "source": "이투데이",
+      "source_body_digest": "e2b31cd3036afa7c041da2a6cd10440b8b2371378ff64b8386f8573d72bb93a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb6847f51fa1f935b2e16a72018c89b1c8d33737e3d1b10222e5c68cc2f97501",
+      "source_fact_keys": [
+        "source_fact:v1:27b435eccaec95e036ef79fe3ed1410505bb744abe2c1f28ed69a6905072d385",
+        "source_fact:v1:6b6e9178203290dfb45a25a89ef6614da69b8ad092d4102c7069219de234e03c",
+        "source_fact:v1:f58836291c1edc4a3a7fd0a40776bcecac437fef4a28baaa43766d86e1fdb103"
+      ],
+      "source_published_kst": "2026-10-05T16:01+09:00",
+      "title": "이란 안보수장 “역사상 가장 어려운 시기”⋯경제 악화 이례적 시인"
     },
     "original:690fd984daab95d564ac8ad9": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
@@ -27650,6 +27993,34 @@
       "link": "https://www.yna.co.kr/view/AKR20260921099900009",
       "source": "연합뉴스",
       "title": "소프트뱅크, 오픈AI 투자 위해 정크본드 15조원대 발행 추진 | 연합뉴스"
+    },
+    "original:86f2ae016d862286623ecdae": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
     "original:87043e1faeb9b8621555e13e": {
       "first_seen_kst": "2026-10-02T21:48:20+09:00",
@@ -30815,6 +31186,21 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:21+09:00",
       "title": "[AI픽] LGU+ '유독', 글로벌 AI 서비스 품는다 | 연합뉴스"
+    },
+    "original:bc86abc7cec676f5ae298277": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261003044800003",
+      "source": "연합뉴스",
+      "source_body_digest": "6db0bdf966a07156e78c8abfd56ab8ea045a8c1951936edc2e5f8d006f4835ef",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T06:15+09:00",
+      "title": "반세기만의 원전 역수출…웨스팅하우스 반대 뚫어낸 막전막후 | 연합뉴스"
     },
     "original:bcf627f64a743b4a36e685a4": {
       "first_seen_kst": "2026-10-02T00:28:46+09:00",
@@ -34295,6 +34681,25 @@
       "source": "머니투데이",
       "title": "미국, 프랑스·독일에 \"경유 비축분 방출 안하면 수출 금지\" 으름장"
     },
+    "original:fb51ae45d87a61e6eccf8ad7": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.mk.co.kr/news/it/12168319",
+      "source": "매일경제",
+      "source_body_digest": "579a0bd3ef5ce0634a013ba8139cf762aca05d79f50492b20570bb634fca911a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13232a87577de6ca871db032e1119b0bdb2c9020a61fb5336df6342e945445de",
+      "source_fact_keys": [
+        "source_fact:v1:1d80923830481bb924eff3b69d29a79ad46428399ee6b2f13e79e92647658c54",
+        "source_fact:v1:54d0bbf7034583b4cb5c705ed868f819b62932b48ae3818c7d3f053fdf01c42b",
+        "source_fact:v1:926ad6768331235b736cd3c07bafa78f8029887e6f7aad86a1d1034479182ce6"
+      ],
+      "source_published_kst": "2026-10-05T10:59+09:00",
+      "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
+    },
     "original:fbc01c0d91c82cdf3db93263": {
       "first_seen_kst": "2026-10-05T13:15:14+09:00",
       "lanes": {
@@ -34819,6 +35224,25 @@
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
+    "source_fact:13dda5694f1aca376ee80a47": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632469",
+      "source": "이투데이",
+      "source_body_digest": "e2b31cd3036afa7c041da2a6cd10440b8b2371378ff64b8386f8573d72bb93a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb6847f51fa1f935b2e16a72018c89b1c8d33737e3d1b10222e5c68cc2f97501",
+      "source_fact_keys": [
+        "source_fact:v1:27b435eccaec95e036ef79fe3ed1410505bb744abe2c1f28ed69a6905072d385",
+        "source_fact:v1:6b6e9178203290dfb45a25a89ef6614da69b8ad092d4102c7069219de234e03c",
+        "source_fact:v1:f58836291c1edc4a3a7fd0a40776bcecac437fef4a28baaa43766d86e1fdb103"
+      ],
+      "source_published_kst": "2026-10-05T16:01+09:00",
+      "title": "이란 안보수장 “역사상 가장 어려운 시기”⋯경제 악화 이례적 시인"
+    },
     "source_fact:1472b743a48aefafa33a97d8": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -35313,6 +35737,25 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:2f8b4542885528cc6caba87c": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.mk.co.kr/news/it/12168319",
+      "source": "매일경제",
+      "source_body_digest": "579a0bd3ef5ce0634a013ba8139cf762aca05d79f50492b20570bb634fca911a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13232a87577de6ca871db032e1119b0bdb2c9020a61fb5336df6342e945445de",
+      "source_fact_keys": [
+        "source_fact:v1:1d80923830481bb924eff3b69d29a79ad46428399ee6b2f13e79e92647658c54",
+        "source_fact:v1:54d0bbf7034583b4cb5c705ed868f819b62932b48ae3818c7d3f053fdf01c42b",
+        "source_fact:v1:926ad6768331235b736cd3c07bafa78f8029887e6f7aad86a1d1034479182ce6"
+      ],
+      "source_published_kst": "2026-10-05T10:59+09:00",
+      "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
+    },
     "source_fact:2f9670fa314084215e098d4b": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -35394,6 +35837,34 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:312287490b1a04f3ba9e5d14": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
     "source_fact:3229fb7d7e568c6a62073508": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
@@ -35996,6 +36467,25 @@
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
     },
+    "source_fact:46288d140a67c3b6249f1127": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.mk.co.kr/news/it/12168319",
+      "source": "매일경제",
+      "source_body_digest": "579a0bd3ef5ce0634a013ba8139cf762aca05d79f50492b20570bb634fca911a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13232a87577de6ca871db032e1119b0bdb2c9020a61fb5336df6342e945445de",
+      "source_fact_keys": [
+        "source_fact:v1:1d80923830481bb924eff3b69d29a79ad46428399ee6b2f13e79e92647658c54",
+        "source_fact:v1:54d0bbf7034583b4cb5c705ed868f819b62932b48ae3818c7d3f053fdf01c42b",
+        "source_fact:v1:926ad6768331235b736cd3c07bafa78f8029887e6f7aad86a1d1034479182ce6"
+      ],
+      "source_published_kst": "2026-10-05T10:59+09:00",
+      "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
+    },
     "source_fact:470fa28fbfe1e8691ac29a65": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -36316,6 +36806,34 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "source_fact:589011f09eb1fcb1dbc42db2": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
     "source_fact:59ad6f96de77aae6f5d51f79": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -36429,6 +36947,34 @@
       "source_published_kst": "2026-10-05T19:19+09:00",
       "title": "프랑스 채무에 유로화 17개월만에 최저치 급락…살까 말까"
     },
+    "source_fact:5c2b51c753c4961db32adbec": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
     "source_fact:5c73766015099eb73d0780e4": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
       "lanes": {
@@ -36475,6 +37021,34 @@
       ],
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+    },
+    "source_fact:5ed0dea385a36ac2ffe5be1a": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
     "source_fact:60c016f1339616aa91bd6025": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -36591,6 +37165,34 @@
       ],
       "source_published_kst": "2026-10-05T17:22+09:00",
       "title": "\"美中의존 줄이자\"…정부, CPTPP 가입 속도"
+    },
+    "source_fact:679d0c44eb85de31738de029": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
     "source_fact:68526fe088313532b0db9049": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -37060,6 +37662,25 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:74bbabdcc444726d8cbf65bf": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.mk.co.kr/news/it/12168319",
+      "source": "매일경제",
+      "source_body_digest": "579a0bd3ef5ce0634a013ba8139cf762aca05d79f50492b20570bb634fca911a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13232a87577de6ca871db032e1119b0bdb2c9020a61fb5336df6342e945445de",
+      "source_fact_keys": [
+        "source_fact:v1:1d80923830481bb924eff3b69d29a79ad46428399ee6b2f13e79e92647658c54",
+        "source_fact:v1:54d0bbf7034583b4cb5c705ed868f819b62932b48ae3818c7d3f053fdf01c42b",
+        "source_fact:v1:926ad6768331235b736cd3c07bafa78f8029887e6f7aad86a1d1034479182ce6"
+      ],
+      "source_published_kst": "2026-10-05T10:59+09:00",
+      "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
+    },
     "source_fact:75cfa28522e872ab85e82246": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -37112,6 +37733,53 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:7764e001a7d6db66f4de3710": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
+    "source_fact:78bef282f8b77ba45a50c8f3": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632469",
+      "source": "이투데이",
+      "source_body_digest": "e2b31cd3036afa7c041da2a6cd10440b8b2371378ff64b8386f8573d72bb93a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb6847f51fa1f935b2e16a72018c89b1c8d33737e3d1b10222e5c68cc2f97501",
+      "source_fact_keys": [
+        "source_fact:v1:27b435eccaec95e036ef79fe3ed1410505bb744abe2c1f28ed69a6905072d385",
+        "source_fact:v1:6b6e9178203290dfb45a25a89ef6614da69b8ad092d4102c7069219de234e03c",
+        "source_fact:v1:f58836291c1edc4a3a7fd0a40776bcecac437fef4a28baaa43766d86e1fdb103"
+      ],
+      "source_published_kst": "2026-10-05T16:01+09:00",
+      "title": "이란 안보수장 “역사상 가장 어려운 시기”⋯경제 악화 이례적 시인"
     },
     "source_fact:798c8a3578f28add74160be7": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -37204,6 +37872,34 @@
       ],
       "source_published_kst": "2026-10-05T20:01+09:00",
       "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
+    },
+    "source_fact:7be082036b951e9eee45a9ea": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
     "source_fact:7c664f0cd72944bdc64c88ac": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -37484,6 +38180,34 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "source_fact:85f8c347b3cf304cd25b4332": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
     "source_fact:86236e751e10d98c4d6c1052": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -37608,6 +38332,34 @@
       ],
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
+    },
+    "source_fact:8a6d7931a9d3e9a3ff494d96": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
     "source_fact:8bc4efa03764b074d5a3b107": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -37976,6 +38728,34 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
     },
+    "source_fact:a283ab4ecef536ad76fe0e25": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
     "source_fact:a339a2873216ed0555a22bb6": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -38063,6 +38843,24 @@
       ],
       "source_published_kst": "2026-10-05T19:06+09:00",
       "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
+    },
+    "source_fact:a5291bc494208fbe28270a61": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261004_0003814098",
+      "source": "뉴시스",
+      "source_body_digest": "38983b5764796bfa65b8705f8876e117241c7d3f9168ca303937b5554abab4b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc55cb9cb708a6111edd831d9dc2903b404b06a172e0b11768fd4a9486327d1c",
+      "source_fact_keys": [
+        "source_fact:v1:10cccbcedfbdd51938563ab4847cea4acee85889836b9012e46374502bfc3094",
+        "source_fact:v1:9db1687d2e657d59e0291addc1d3254f76bfa35728332d73acd060693ef9f9ed"
+      ],
+      "source_published_kst": "2026-10-04T23:56+09:00",
+      "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
     },
     "source_fact:a89e859fdbfade7a0eea29db": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -38557,6 +39355,23 @@
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
     },
+    "source_fact:ca0968644b9450e7e0217770": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814199",
+      "source": "뉴시스",
+      "source_body_digest": "f40c068465b502fa184f5b86136e59be6ae9df4e0369fd9506b567804e6c5770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b28507fb45225956d180b7159e5863761a35d43a354f74a309fb7da5f773ab95",
+      "source_fact_keys": [
+        "source_fact:v1:9962e199bbd29be77f1f367b8a3a2048071e1e670f9cce10bbd062f0cae08f81"
+      ],
+      "source_published_kst": "2026-10-05T11:00+09:00",
+      "title": "반려견 피부염 연구 활용…'항염증 엑소좀' 생산기술 개발"
+    },
     "source_fact:ca9073e641c42995a90692fc": {
       "first_seen_kst": "2026-10-05T20:38:34+09:00",
       "lanes": {
@@ -38601,6 +39416,25 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "source_fact:ccb65fc8c93d692152272843": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632469",
+      "source": "이투데이",
+      "source_body_digest": "e2b31cd3036afa7c041da2a6cd10440b8b2371378ff64b8386f8573d72bb93a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb6847f51fa1f935b2e16a72018c89b1c8d33737e3d1b10222e5c68cc2f97501",
+      "source_fact_keys": [
+        "source_fact:v1:27b435eccaec95e036ef79fe3ed1410505bb744abe2c1f28ed69a6905072d385",
+        "source_fact:v1:6b6e9178203290dfb45a25a89ef6614da69b8ad092d4102c7069219de234e03c",
+        "source_fact:v1:f58836291c1edc4a3a7fd0a40776bcecac437fef4a28baaa43766d86e1fdb103"
+      ],
+      "source_published_kst": "2026-10-05T16:01+09:00",
+      "title": "이란 안보수장 “역사상 가장 어려운 시기”⋯경제 악화 이례적 시인"
     },
     "source_fact:ccc713bf921eaf2b56e33783": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -38989,6 +39823,51 @@
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
+    "source_fact:e2ce82a5ae98534d1e4a9ca1": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
+    "source_fact:e652b3402702251bf1b38cad": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261004043300099",
+      "source": "연합뉴스",
+      "source_body_digest": "0a083d75e351123511102ad33f6b0a96484ff77cda5e91122fbf5660db310a4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ff6c39364bf6c8e2f93c43efbe5af345a472d6db2f61e26e5c7c083adf4451b2",
+      "source_fact_keys": [
+        "source_fact:v1:537e6502131628e020f2d60be44beb8c1df6b9ed40954b980a59c9b1b019a953"
+      ],
+      "source_published_kst": "2026-10-04T22:38+09:00",
+      "title": "\"사우디, 2034 월드컵 경기장 '네옴 스타디움' 건설 계획 보류\" | 연합뉴스"
+    },
     "source_fact:e6acd4d7e19d0c88c6a32c74": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -39180,6 +40059,34 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:f073e72340c0a08647d49b0a": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
     "source_fact:f17fa47e5eac952ea3a03e11": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -39501,6 +40408,24 @@
       ],
       "source_published_kst": "2026-10-05T20:34+09:00",
       "title": "해로우 헬스, 티르바야 인수 완료..선지급 3000만달러"
+    },
+    "source_fact:fe37505b340724f92848ff43": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261004_0003814098",
+      "source": "뉴시스",
+      "source_body_digest": "38983b5764796bfa65b8705f8876e117241c7d3f9168ca303937b5554abab4b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc55cb9cb708a6111edd831d9dc2903b404b06a172e0b11768fd4a9486327d1c",
+      "source_fact_keys": [
+        "source_fact:v1:10cccbcedfbdd51938563ab4847cea4acee85889836b9012e46374502bfc3094",
+        "source_fact:v1:9db1687d2e657d59e0291addc1d3254f76bfa35728332d73acd060693ef9f9ed"
+      ],
+      "source_published_kst": "2026-10-04T23:56+09:00",
+      "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
     },
     "source_fact:fea91035a4f1aec633e739bf": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -42324,6 +43249,23 @@
       "source_event_identity": "",
       "title": "현대차그룹, 美 3분기 판매 포드에 1195대 차…첫 추월 문턱서 멈췄다"
     },
+    "title:3398cf131c6b72042b5fee5d": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814199",
+      "source": "뉴시스",
+      "source_body_digest": "f40c068465b502fa184f5b86136e59be6ae9df4e0369fd9506b567804e6c5770",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b28507fb45225956d180b7159e5863761a35d43a354f74a309fb7da5f773ab95",
+      "source_fact_keys": [
+        "source_fact:v1:9962e199bbd29be77f1f367b8a3a2048071e1e670f9cce10bbd062f0cae08f81"
+      ],
+      "source_published_kst": "2026-10-05T11:00+09:00",
+      "title": "반려견 피부염 연구 활용…'항염증 엑소좀' 생산기술 개발"
+    },
     "title:339ca542adebe095cd78d310": {
       "first_seen_kst": "2026-10-03T10:28:46+09:00",
       "lanes": {
@@ -42399,6 +43341,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T15:22+09:00",
       "title": "웰컴저축은행도 해킹으로 정보유출…법인고객 정보 2200건 추정"
+    },
+    "title:352aeaaa0886bc64470e7eda": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261004043300099",
+      "source": "연합뉴스",
+      "source_body_digest": "0a083d75e351123511102ad33f6b0a96484ff77cda5e91122fbf5660db310a4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ff6c39364bf6c8e2f93c43efbe5af345a472d6db2f61e26e5c7c083adf4451b2",
+      "source_fact_keys": [
+        "source_fact:v1:537e6502131628e020f2d60be44beb8c1df6b9ed40954b980a59c9b1b019a953"
+      ],
+      "source_published_kst": "2026-10-04T22:38+09:00",
+      "title": "\"사우디, 2034 월드컵 경기장 '네옴 스타디움' 건설 계획 보류\" | 연합뉴스"
     },
     "title:352d6c62d85bde568e8cf5ad": {
       "first_seen_kst": "2026-10-02T15:40:35+09:00",
@@ -45061,6 +46020,24 @@
       "source": "이데일리",
       "title": "ETF 성장세 주춤하자 다시 ‘쩐의 전쟁’…보수 0%대 승부수"
     },
+    "title:61f8dce7bd2b2bd4f11da580": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.newsis.com/view/NISX20261004_0003814098",
+      "source": "뉴시스",
+      "source_body_digest": "38983b5764796bfa65b8705f8876e117241c7d3f9168ca303937b5554abab4b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:dc55cb9cb708a6111edd831d9dc2903b404b06a172e0b11768fd4a9486327d1c",
+      "source_fact_keys": [
+        "source_fact:v1:10cccbcedfbdd51938563ab4847cea4acee85889836b9012e46374502bfc3094",
+        "source_fact:v1:9db1687d2e657d59e0291addc1d3254f76bfa35728332d73acd060693ef9f9ed"
+      ],
+      "source_published_kst": "2026-10-04T23:56+09:00",
+      "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
+    },
     "title:62278f783f8b20551015bd4d": {
       "first_seen_kst": "2026-10-01T19:41:53+09:00",
       "lanes": {
@@ -45537,6 +46514,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:25+09:00",
       "title": "이번주 크레딧 2조원 발행…파라다이스 수요예측도 | 연합뉴스"
+    },
+    "title:69042a1f45bb95b1cb91bf96": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632469",
+      "source": "이투데이",
+      "source_body_digest": "e2b31cd3036afa7c041da2a6cd10440b8b2371378ff64b8386f8573d72bb93a2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fb6847f51fa1f935b2e16a72018c89b1c8d33737e3d1b10222e5c68cc2f97501",
+      "source_fact_keys": [
+        "source_fact:v1:27b435eccaec95e036ef79fe3ed1410505bb744abe2c1f28ed69a6905072d385",
+        "source_fact:v1:6b6e9178203290dfb45a25a89ef6614da69b8ad092d4102c7069219de234e03c",
+        "source_fact:v1:f58836291c1edc4a3a7fd0a40776bcecac437fef4a28baaa43766d86e1fdb103"
+      ],
+      "source_published_kst": "2026-10-05T16:01+09:00",
+      "title": "이란 안보수장 “역사상 가장 어려운 시기”⋯경제 악화 이례적 시인"
     },
     "title:690fd984daab95d564ac8ad9": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
@@ -47066,6 +48062,34 @@
       "link": "https://www.yna.co.kr/view/AKR20260921099900009",
       "source": "연합뉴스",
       "title": "소프트뱅크, 오픈AI 투자 위해 정크본드 15조원대 발행 추진 | 연합뉴스"
+    },
+    "title:86f2ae016d862286623ecdae": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261001175700054",
+      "source": "연합뉴스",
+      "source_body_digest": "0f941e2f167b3e5b1a679dc61f398a03dd1f7b63efe7fa176d13905aab6197fd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d84eaa49c0b40eaaa1a9c0e81dec7d9fd958a9cf32a99583002e71cccc5e1fb4",
+      "source_fact_keys": [
+        "source_fact:v1:05c18d9e8c19286c0be0c74497d5f4eb62d87043f18d9c3c6af02051c8273f1f",
+        "source_fact:v1:40b236009dd46ad170ea487d9d1084383fae707b2a31d93abd5d8f1a381fed0a",
+        "source_fact:v1:57a7449bda1615716d3062baeea5cdc2f44dd2fde6dc5765b9d8eca84a5ea185",
+        "source_fact:v1:604fd58c821d238eb99e33a3bd6464d2a705a5469bd3c530b98c664801c459a0",
+        "source_fact:v1:6babc75f400d27370d6bb99a2ea508cdddc08b2fe6b8d1ccdb0ebb9720bb6c39",
+        "source_fact:v1:86476c51a77b6aa2fd91a0eef1d2d54def949d236791264c81479886b2c0c80e",
+        "source_fact:v1:8c43f903f84663e3a9e6f8199cca97c7eaeff6f1e5726402c036299a8d208b97",
+        "source_fact:v1:99c4ef3a5ba67a4403c55e0426c3f293d364c835b50aff33f2d9b4aa8e6f6bc0",
+        "source_fact:v1:bc3e7c7008dc68f2460f29fe1e268d3e0637d1aa98acfde536c79e8319610156",
+        "source_fact:v1:d05dc724f44179fee42ddf3de98a279a43247d47a40cd37dd5d5dbe711797bdd",
+        "source_fact:v1:f4a286920350f075ebc205240d2e1023ce68d447ad5bb13a58e59c38cf33ce1f",
+        "source_fact:v1:fd1a444ccea8ab4c593f380cc32c756217918efddebed6d9efb76f0980c79e13"
+      ],
+      "source_published_kst": "2026-10-05T08:00+09:00",
+      "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
     "title:87043e1faeb9b8621555e13e": {
       "first_seen_kst": "2026-10-02T21:48:20+09:00",
@@ -50275,6 +51299,21 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:21+09:00",
       "title": "[AI픽] LGU+ '유독', 글로벌 AI 서비스 품는다 | 연합뉴스"
+    },
+    "title:bc86abc7cec676f5ae298277": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261003044800003",
+      "source": "연합뉴스",
+      "source_body_digest": "6db0bdf966a07156e78c8abfd56ab8ea045a8c1951936edc2e5f8d006f4835ef",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T06:15+09:00",
+      "title": "반세기만의 원전 역수출…웨스팅하우스 반대 뚫어낸 막전막후 | 연합뉴스"
     },
     "title:bcf627f64a743b4a36e685a4": {
       "first_seen_kst": "2026-10-02T00:28:46+09:00",
@@ -53786,6 +54825,25 @@
       "source": "머니투데이",
       "title": "미국, 프랑스·독일에 \"경유 비축분 방출 안하면 수출 금지\" 으름장"
     },
+    "title:fb51ae45d87a61e6eccf8ad7": {
+      "first_seen_kst": "2026-10-05T21:13:33+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:13:33+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:13:33+09:00",
+      "link": "https://www.mk.co.kr/news/it/12168319",
+      "source": "매일경제",
+      "source_body_digest": "579a0bd3ef5ce0634a013ba8139cf762aca05d79f50492b20570bb634fca911a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13232a87577de6ca871db032e1119b0bdb2c9020a61fb5336df6342e945445de",
+      "source_fact_keys": [
+        "source_fact:v1:1d80923830481bb924eff3b69d29a79ad46428399ee6b2f13e79e92647658c54",
+        "source_fact:v1:54d0bbf7034583b4cb5c705ed868f819b62932b48ae3818c7d3f053fdf01c42b",
+        "source_fact:v1:926ad6768331235b736cd3c07bafa78f8029887e6f7aad86a1d1034479182ce6"
+      ],
+      "source_published_kst": "2026-10-05T10:59+09:00",
+      "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
+    },
     "title:fbc01c0d91c82cdf3db93263": {
       "first_seen_kst": "2026-10-05T13:15:14+09:00",
       "lanes": {
@@ -54104,5 +55162,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T21:03:18+09:00"
+  "updated_at_kst": "2026-10-05T21:13:33+09:00"
 }
