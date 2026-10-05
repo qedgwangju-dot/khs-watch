@@ -56,8 +56,8 @@
       "lg_air_multi_year_program": true,
       "lg_air_air_cooled_centrifugal_chiller": true,
       "lg_air_official_contract_value_disclosed": false,
-      "lg_first_half_aidc_cooling_orders_usd_m": null,
-      "lg_2027_chiller_revenue_target_usd_m": null,
+      "lg_first_half_aidc_cooling_orders_usd_m": 428.0,
+      "lg_2027_chiller_revenue_target_usd_m": 680.0,
       "lg_chiller_capacity_investment_krw_billion": 150.0,
       "lg_us_chiller_factory_h1_2027": true,
       "vertiv_nvidia_vera_rubin_dsx_official": true,
@@ -65,7 +65,7 @@
       "vertiv_dsx_ready_cdu_mw": 2.3,
       "sgc_vertiv_mou_dual_source": true,
       "sgc_vertiv_non_binding_mou": true,
-      "sgc_vertiv_initial_mw": null,
+      "sgc_vertiv_initial_mw": 60.0,
       "sgc_vertiv_max_mw": 300.0,
       "sgc_vertiv_powernexus_planned": true,
       "sgc_vertiv_binding_supply_contract_confirmed": false,
@@ -90,7 +90,7 @@
       "moat_check_basis": "OCP 공개 표준 + 다수 공식 공급사. 실제 해자는 양산·안전인증·통합 EPC·제어/운영SW·서비스에서 재검증",
       "jpm_user_note_status": "사용자 제공 JPM 리서치 요약은 공개 원문을 독립 확보하지 못해 공식 알림 트리거로 사용하지 않음. 대신 Schneider·Vertiv·NVIDIA 공식 일정으로 교차검증"
     },
-    "digest": "bd367d98de639976de291f7f556263ef89532cfcf6496e294984176330d68f59"
+    "digest": "401fbceb5e3c54ac8b8606ca7c7a4b52606462ade6d85743ceef1cd44c34b550"
   },
   "source_cache": {
     "nvidia_blog": {
@@ -202,13 +202,9 @@
   "source_errors": [],
   "fx": {
     "usdkrw": 1343.98,
-    "basis": "2026-10-05 일일 기준 · ECB/Frankfurter · 조회 2026-10-06 08:49 KST · 보조 API 2026-10-05 · 차이 0.05% · 일중 기준시각 차이 가능",
+    "basis": "2026-10-05 일일 기준 · ECB/Frankfurter · 조회 2026-10-06 08:53 KST · 보조 API 2026-10-05 · 차이 0.05% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter"
   },
-  "last_changes": [
-    "LG전자-AIR 북미 AIDC 칠러 장기공급계약 기준선 편입 · 5.0GW+",
-    "SGC에너지-Vertiv 군산 AIDC MOU 기준선 편입 · 60MW→최대 300MW · 확정 공급계약 아님",
-    "Vertiv-NVIDIA Vera Rubin DSX 공동개발·통합 인프라 기준선 편입"
-  ],
-  "updated_at_utc": "2026-10-05T23:49:07+00:00"
+  "last_changes": [],
+  "updated_at_utc": "2026-10-05T23:53:45+00:00"
 }
