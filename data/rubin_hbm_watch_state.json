@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-05T07:23:33+09:00",
+  "updated_at_kst": "2026-10-05T11:09:44+09:00",
   "seen_ids": [
     "01899de42b17bb25951592cf",
     "0477059e619a2672dbae4b30",
@@ -12,6 +12,7 @@
     "11b0887a69d7d15b6128314d",
     "1a7355b983f5d9b5a7d4a97f",
     "1a740e6eaff99a7fffe1b7b7",
+    "1a8be449fd3cd46cde801b14",
     "1dd83b5311279ef155add2d2",
     "1f7c1f701db354f9e408d486",
     "20a5c84026d1bbe9b4f60398",
@@ -91,7 +92,9 @@
     "d6a7588c8d5d4c51180c5a1a",
     "d6b9b392729bc1ba60f083f0",
     "d75fa48d506a4de827529a2c",
+    "da2ec0a0b9a2838ab2f42544",
     "dca2bc8b55a45dd7abd304fb",
+    "dcd5980b16bb5b1b6d5fe9f0",
     "dff177bae16621437b065202",
     "e05c1927e16110a949b8b797",
     "e1cf986a1ad553979c710286",
@@ -127,17 +130,19 @@
     "rubin_ultra_spec_192gb_288gb_1tb",
     "skhynix_indiana_hbm4e_2029"
   ],
-  "last_unseen_raw_count": 1,
+  "last_unseen_raw_count": 3,
   "last_verified_event_count": 0,
   "last_send_event_count": 0,
   "freshness_hours": 72,
   "usdkrw": {
     "rate": 1348.28,
-    "date": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-05 07:23 KST · 보조 API 2026-10-04 · 차이 0.02% · 일중 기준시각 차이 가능",
+    "date": "2026-10-02 일일 기준 · ECB/Frankfurter · 조회 2026-10-05 11:09 KST · 보조 API 2026-10-05 · 차이 0.27% · 일중 기준시각 차이 가능",
     "source": "ECB/Frankfurter",
     "error": ""
   },
-  "errors": [],
+  "errors": [
+    "원문 URL 확인 실패: digitimes | Samsung reportedly seeks more than triple HBM prices for 2027 as HBM4 ramps - digitimes"
+  ],
   "ai_component_leadtime": {
     "as_of": "2026-09-28",
     "source": "https://insights.trendforce.com/p/weekly-radar-003",
@@ -239,13 +244,13 @@
       "https://insights.trendforce.com/p/weekly-radar-003",
       "https://www.trendforce.com/news/"
     ],
-    "last_checked_at_kst": "2026-10-05T07:23:45+09:00",
+    "last_checked_at_kst": "2026-10-05T11:09:58+09:00",
     "candidate_count": 3,
     "errors": []
   },
   "structure_baseline_version": 3,
   "delivery_check": {
-    "checked_at_kst": "2026-10-05T07:24:29+09:00",
+    "checked_at_kst": "2026-10-05T11:10:37+09:00",
     "status": "no_message_due"
   },
   "last_successful_delivery_kst": "2026-10-04T18:15:36+09:00",
@@ -315,7 +320,7 @@
       "https://www.amd.com/en/blogs/2026/agentic-ai-changes-the-cpu-gpu-equation.html"
     ],
     "last_validation_cutoff": "2026-10-05",
-    "last_checked_at_kst": "2026-10-05T07:24:23+09:00"
+    "last_checked_at_kst": "2026-10-05T11:10:30+09:00"
   },
   "samsung_electromechanics_cpu_realization": {
     "as_of": "2026-09-23",
@@ -351,7 +356,7 @@
       "https://www.samsungsem.com/kr/newsroom/news/view.do?id=10501"
     ],
     "last_checked_cutoff": "2026-10-05",
-    "last_checked_at_kst": "2026-10-05T07:24:25+09:00",
+    "last_checked_at_kst": "2026-10-05T11:10:33+09:00",
     "candidate_count": 0
   },
   "abf_cpu_monetization": {
@@ -395,7 +400,7 @@
       "https://www.xxquant.com/en/institution/institutional-research/b7354d4184725eb0c616cb00da83d87e",
       "https://www.xxquant.com/en/institution/institutional-research/e9049647f76459043c0fe4af2e72ff82"
     ],
-    "last_checked_at_kst": "2026-10-05T07:24:27+09:00",
+    "last_checked_at_kst": "2026-10-05T11:10:35+09:00",
     "candidate_count": 0,
     "event_count": 0
   },
