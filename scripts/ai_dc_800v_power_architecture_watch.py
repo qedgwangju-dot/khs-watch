@@ -17,7 +17,7 @@ PENDING = OUT / "ai_dc_800v_power_architecture_pending_state.json"
 ALERT = OUT / "ai_dc_800v_power_architecture_alert.txt"
 STATUS = OUT / "ai_dc_800v_power_architecture_status.md"
 
-FORMAT_VERSION = 3
+FORMAT_VERSION = 4
 # Dedupe validation: unchanged extracted facts must remain Telegram-silent.
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
 
@@ -26,6 +26,8 @@ NVIDIA_ARCH = "https://www.nvidia.com/en-us/data-center/technologies/800-vdc-arc
 OCP_LVDC = "https://www.opencompute.org/index.php/blog/powering-the-next-era-of-ai-how-google-microsoft-and-nvidia-are-standardizing-and-accelerating-the-industry-transition-to-lvdc"
 SCHNEIDER_POWER_RACK = "https://www.se.com/ww/en/work/products/product-reveal/net-shelter-power-rack-800-vdc/"
 SCHNEIDER_GUIDE = "https://www.se.com/ww/en/insights/ai-and-technology/artificial-intelligence/vdc-powering-the-future-of-ai-data-centers/"
+SCHNEIDER_CALL = "https://www.se.com/ww/en/assets/564/document/528236/transcript-Q4-results-2025.pdf?p_File_Name=2025+Full+Year+Financial+Results+Transcript&p_enDocType=EDMS"
+VERTIV_PATH = "https://www.vertiv.com/tr-emea/insights/articles/blog-posts/from-rack-to-data-hall-the-practical-path-to-800-vdc/"
 VERTIV_GUIDE = "https://www.vertiv.com/en-ca/insights/articles/educational-articles/the-800-vdc-decision-a-practical-guide-for-ai-power-architecture/"
 VERTIV_RELEASE = "https://www.vertiv.com/en-emea/about/news-and-events/news-releases/from-vision-to-readiness-vertiv-collaborates-with-nvidia-to-advance-800-vdc-platform-designs-to-power-the-next-generation-of-ai-factories/"
 EATON_GTC = "https://www.eaton.com/kr/ko-kr/company/news-insights/news-releases/2025/eaton-next-generation-ai-factories.html"
@@ -40,6 +42,8 @@ SOURCES = {
     "ocp": OCP_LVDC,
     "schneider_power_rack": SCHNEIDER_POWER_RACK,
     "schneider_guide": SCHNEIDER_GUIDE,
+    "schneider_call": SCHNEIDER_CALL,
+    "vertiv_path": VERTIV_PATH,
     "vertiv_guide": VERTIV_GUIDE,
     "vertiv_release": VERTIV_RELEASE,
     "hitachi": HITACHI_800V,
@@ -122,6 +126,8 @@ def snapshot(texts: dict[str, str]) -> dict:
     n_blog = texts.get("nvidia_blog", "")
     ocp = texts.get("ocp", "")
     sch = texts.get("schneider_power_rack", "")
+    sch_call = texts.get("schneider_call", "")
+    vert_path = texts.get("vertiv_path", "")
     vert = texts.get("vertiv_guide", "")
     vrel = texts.get("vertiv_release", "")
     n_arch = texts.get("nvidia_arch", "")
@@ -208,6 +214,38 @@ def snapshot(texts: dict[str, str]) -> dict:
         if row.get("stage") not in ("확인 불가", "DC grid 개념·전시"):
             live_vendor_800v += 1
 
+    sch_impacted_low = None
+    sch_impacted_high = None
+    m = re.search(r"(15)%[^.]{0,80}(25)%[^.]{0,180}(?:2030|demand)", sch_call, re.I)
+    if m:
+        sch_impacted_low, sch_impacted_high = int(m.group(1)), int(m.group(2))
+    elif "15%, 25%" in sch_call and "2030" in sch_call:
+        sch_impacted_low, sch_impacted_high = 15, 25
+
+    sch_full_ready_2028 = bool(
+        sch_call
+        and ("ready by '28" in sch_call or "ready by 28" in sch_call)
+    )
+    sch_step_2028_2030 = bool(
+        sch_call
+        and "step by step" in sch_call.lower()
+        and ("'28 and 2030" in sch_call or "28 and 2030" in sch_call)
+    )
+    vert_sidecar_h2_2026 = bool(
+        vert_path and "commercialization begins in the second half of 2026" in vert_path.lower()
+    )
+    vert_ramp_2027 = bool(
+        vert_path and "deployment ramp through 2027" in vert_path.lower()
+    )
+    vert_centralized_2028_2029 = bool(
+        vert_path and "2028 to 2029 timeframe and beyond" in vert_path.lower()
+    )
+    vert_sst_lower_readiness = bool(
+        vert_path
+        and "higher technology readiness level" in vert_path.lower()
+        and "solid-state transformer" in vert_path.lower()
+    )
+
     facts["market"] = {
         "official_multi_vendor_800v_count": live_vendor_800v,
         "hybrid_bridge_confirmed": bool(
@@ -215,9 +253,22 @@ def snapshot(texts: dict[str, str]) -> dict:
             and facts["vendors"]["Schneider Electric"].get("sidecar")
         ),
         "native_facility_800v_mass_adoption_confirmed": False,
+        "schneider_2030_demand_impacted_pct_low": sch_impacted_low,
+        "schneider_2030_demand_impacted_pct_high": sch_impacted_high,
+        "schneider_full_architecture_ready_2028": sch_full_ready_2028,
+        "schneider_transition_step_2028_2030": sch_step_2028_2030,
+        "vertiv_sidecar_commercialization_h2_2026": vert_sidecar_h2_2026,
+        "vertiv_deployment_ramp_2027": vert_ramp_2027,
+        "vertiv_centralized_2028_2029_plus": vert_centralized_2028_2029,
+        "vertiv_sst_lower_readiness_than_mv_dc_ups": vert_sst_lower_readiness,
+        "legacy_ac_near_term_displacement_risk": "낮음/점진적" if (
+            facts["architecture"].get("nvidia_existing_ac_retrofit")
+            and facts["vendors"]["Schneider Electric"].get("sidecar")
+            and vert_sidecar_h2_2026
+        ) else "판정 보류",
         "technology_only_moat": "낮음/미확정" if live_vendor_800v >= 5 and sst_version else "판정 보류",
         "moat_check_basis": "OCP 공개 표준 + 다수 공식 공급사. 실제 해자는 양산·안전인증·통합 EPC·제어/운영SW·서비스에서 재검증",
-        "jpm_user_note_status": "사용자 제공 리서치 요약은 독립 공식 원문 미확보라 알림 트리거 기준으로 사용하지 않음",
+        "jpm_user_note_status": "사용자 제공 JPM 리서치 요약은 공개 원문을 독립 확보하지 못해 공식 알림 트리거로 사용하지 않음. 대신 Schneider·Vertiv·NVIDIA 공식 일정으로 교차검증",
     }
 
     facts["digest"] = hashlib.sha256(
@@ -267,6 +318,15 @@ def changes(old: dict, new: dict) -> list[str]:
         ("hybrid_bridge_confirmed", "하이브리드 AC/DC 브리지"),
         ("native_facility_800v_mass_adoption_confirmed", "시설 전체 Native 800 VDC 대량도입"),
         ("technology_only_moat", "사이드카·SST 기술 단독 해자"),
+        ("legacy_ac_near_term_displacement_risk", "기존 AC 전력기기 단기 대체위험"),
+        ("schneider_2030_demand_impacted_pct_low", "Schneider 2030 영향비중 하단"),
+        ("schneider_2030_demand_impacted_pct_high", "Schneider 2030 영향비중 상단"),
+        ("schneider_full_architecture_ready_2028", "Schneider full architecture 2028 준비"),
+        ("schneider_transition_step_2028_2030", "Schneider 2028~2030 단계 전환"),
+        ("vertiv_sidecar_commercialization_h2_2026", "Vertiv sidecar H2 2026 상용화"),
+        ("vertiv_deployment_ramp_2027", "Vertiv 2027 배치 확대"),
+        ("vertiv_centralized_2028_2029_plus", "Vertiv 중앙집중형 2028~2029+"),
+        ("vertiv_sst_lower_readiness_than_mv_dc_ups", "Vertiv SST 상대 성숙도"),
     ):
         before, after = pm.get(key), nm.get(key)
         if before is not None and after is not None and before != after:
@@ -293,9 +353,13 @@ def render(facts: dict, chg: list[str], errors: list[str], fxv: dict) -> str:
         f"• 하이브리드 AC/DC 브리지 │ <b>{'확인' if m['hybrid_bridge_confirmed'] else '판정 보류'}</b>",
         "  └ 기존 건물의 AC 전력망·중전압/저전압 배전 인프라를 당장 전면 폐기하지 않고 랙 인근에서 800 VDC로 변환하는 경로가 공식 로드맵에 존재",
         f"• 시설 전체 Native 800 VDC 대량도입 │ <b>{'아직 확정 아님' if not m['native_facility_800v_mass_adoption_confirmed'] else '확정'}</b>",
+        f"• 기존 AC 전력기기 단기 대체위험 │ <b>{html.escape(str(m.get('legacy_ac_near_term_displacement_risk')))}</b>",
+        f"• Schneider 공식 실적발표 교차검증 │ 2030년 수요 영향 추정 <b>{m.get('schneider_2030_demand_impacted_pct_low') or '확인 불가'}~{m.get('schneider_2030_demand_impacted_pct_high') or '확인 불가'}%</b> · full architecture 2028 준비={m.get('schneider_full_architecture_ready_2028')}",
+        f"• Vertiv 공식 경로 │ sidecar H2 2026 상용화={m.get('vertiv_sidecar_commercialization_h2_2026')} · 2027 ramp={m.get('vertiv_deployment_ramp_2027')} · 중앙집중형 2028~2029+={m.get('vertiv_centralized_2028_2029_plus')}",
+        f"• SST 상대 성숙도 │ Vertiv 기준 MV DC UPS가 SST보다 성숙한 선행경로={m.get('vertiv_sst_lower_readiness_than_mv_dc_ups')}",
         f"• 사이드카·SST 기술 단독 해자 │ <b>{html.escape(m['technology_only_moat'])}</b>",
         f"  └ {html.escape(m['moat_check_basis'])}",
-        "• JPM의 '도입 지연·2030년대까지 하이브리드 주류' 문구는 공개 원문을 독립 확보하지 못해 공식 기준선으로 사용하지 않음",
+        "• JPM의 '도입 지연·2030년대까지 하이브리드 주류' 문구는 공개 원문을 독립 확보하지 못해 공식 기준선으로 사용하지 않음. 대신 Schneider·Vertiv·NVIDIA 공식 일정으로 검증",
         "",
         "<b>🏭 관련 기업 지도</b>",
     ]
@@ -323,6 +387,8 @@ def render(facts: dict, chg: list[str], errors: list[str], fxv: dict) -> str:
         f'• <a href="{NVIDIA_BLOG}">NVIDIA 800 VDC 로드맵</a>',
         f'• <a href="{OCP_LVDC}">OCP LVDC·SST 표준화</a>',
         f'• <a href="{SCHNEIDER_POWER_RACK}">Schneider NetShelter Power Rack 800VDC</a>',
+        f'• <a href="{SCHNEIDER_CALL}">Schneider 2025 연간 실적발표 transcript</a>',
+        f'• <a href="{VERTIV_PATH}">Vertiv rack→data hall 단계별 경로</a>',
         f'• <a href="{VERTIV_GUIDE}">Vertiv 800 VDC 의사결정 가이드</a>',
         f'• <a href="{EATON_GTC}">Eaton 800 VDC 공식 참조 아키텍처</a>',
         f'• <a href="{HITACHI_800V}">Hitachi 800 VDC</a>',
@@ -385,6 +451,9 @@ def main() -> int:
         "# AI 데이터센터 800 VDC 전환 감시\n\n"
         f"- 하이브리드 AC/DC 브리지: **{'확인' if facts['market']['hybrid_bridge_confirmed'] else '판정 보류'}**\n"
         f"- 시설 전체 Native 800 VDC 대량도입: **{'확정' if facts['market']['native_facility_800v_mass_adoption_confirmed'] else '미확정'}**\n"
+        f"- 기존 AC 전력기기 단기 대체위험: **{facts['market'].get('legacy_ac_near_term_displacement_risk')}**\n"
+        f"- Schneider 2030 영향 추정: **{facts['market'].get('schneider_2030_demand_impacted_pct_low')}~{facts['market'].get('schneider_2030_demand_impacted_pct_high')}%**\n"
+        f"- Vertiv 중앙집중형 2028~2029+: **{facts['market'].get('vertiv_centralized_2028_2029_plus')}**\n"
         f"- OCP SST 사양: **v{facts['architecture'].get('ocp_sst_spec_version') or '확인 불가'}**\n"
         f"- 공식 800 VDC 직접 참여 공급사: **{facts['market']['official_multi_vendor_800v_count']}개**\n"
         f"- 의미 변화: **{len(chg)}건**\n"
