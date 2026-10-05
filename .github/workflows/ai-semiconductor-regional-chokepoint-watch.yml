@@ -1,0 +1,289 @@
+name: AI Semiconductor Regional Chokepoint Watch
+
+on:
+  push:
+    paths:
+      - ".github/workflows/ai-semiconductor-regional-chokepoint-watch.yml"
+      - "scripts/ai_semiconductor_regional_chokepoint_watch.py"
+      - "tests/test_ai_semiconductor_regional_chokepoint_watch.py"
+      - "data/ai_semiconductor_regional_chokepoint_state.json"
+      - "scripts/currency_krw_guard.py"
+      - "scripts/fx_api.py"
+  schedule:
+    - cron: "13,43 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ai-semiconductor-regional-chokepoint-watch
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs88798879887988798879_bot"
+
+    steps:
+      - name: Checkout latest production main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install source dependency
+        run: python -m pip install --disable-pip-version-check --no-cache-dir googlenewsdecoder==0.1.7
+
+      - name: Validate Telegram route without sending
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          if not token or not chat_id:
+              raise RuntimeError("regional chokepoint Telegram token/chat id is missing")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+          print(f"telegram_route_valid=true bot=@{username} chat_id_present=true")
+          PY
+
+      - name: Validate watcher
+        run: |
+          python -m py_compile scripts/ai_semiconductor_regional_chokepoint_watch.py
+          python -m py_compile scripts/currency_krw_guard.py scripts/fx_api.py
+          python -m unittest discover -s tests -p 'test_ai_semiconductor_regional_chokepoint_watch.py' -v
+
+      - name: Scan regional semiconductor chokepoints
+        run: python scripts/ai_semiconductor_regional_chokepoint_watch.py
+
+      - name: Publish watcher summary
+        if: always()
+        run: |
+          if [ -f out/ai_semiconductor_regional_chokepoint_status.md ]; then
+            cat out/ai_semiconductor_regional_chokepoint_status.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "지역 반도체 병목 상태 파일이 생성되지 않았습니다." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f out/ai_semiconductor_regional_chokepoint_alert.html ]; then
+            printf '\n---\n\nTelegram 알림 미리보기:\n\n' >> "$GITHUB_STEP_SUMMARY"
+            cat out/ai_semiconductor_regional_chokepoint_alert.html >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Enforce KRW after foreign-currency amounts
+        if: hashFiles('out/ai_semiconductor_regional_chokepoint_alert.html') != ''
+        run: python scripts/currency_krw_guard.py out/ai_semiconductor_regional_chokepoint_alert.html
+
+      - name: Suppress already-confirmed semantic duplicate
+        if: hashFiles('out/ai_semiconductor_regional_chokepoint_alert.html') != ''
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib, re, subprocess
+          alert_path = pathlib.Path("out/ai_semiconductor_regional_chokepoint_alert.html")
+          text = alert_path.read_text(encoding="utf-8").strip()
+
+          def sig(value):
+              value = re.sub(
+                  r"조회\s+\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}\s+KST",
+                  "조회 <TIME> KST",
+                  value,
+              )
+              value = re.sub(r"[ \t]+", " ", value)
+              value = re.sub(r"\n{3,}", "\n\n", value).strip()
+              return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+          signature = sig(text)
+          pathlib.Path("out/ai_semiconductor_regional_chokepoint_signature.txt").write_text(
+              signature + "\n", encoding="utf-8"
+          )
+          subprocess.run(["git", "fetch", "--quiet", "origin", "main"], check=True)
+          try:
+              raw = subprocess.check_output(
+                  ["git", "show", "origin/main:data/ai_semiconductor_regional_chokepoint_state.json"],
+                  text=True,
+              )
+              state = json.loads(raw)
+          except Exception:
+              state = {}
+          receipt = state.get("delivery_receipt") or {}
+          if receipt.get("alert_signature") == signature:
+              alert_path.unlink(missing_ok=True)
+              print(
+                  "regional_semantic_duplicate_suppressed=true "
+                  f"existing_message_ids={receipt.get('message_ids') or []}"
+              )
+          else:
+              print(f"regional_semantic_duplicate_suppressed=false signature={signature}")
+          PY
+
+      - name: Send regional chokepoint change to Telegram
+        if: hashFiles('out/ai_semiconductor_regional_chokepoint_alert.html') != ''
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import datetime as dt
+          import hashlib
+          import json
+          import os
+          import pathlib
+          import re
+          import urllib.parse
+          import urllib.request
+          from zoneinfo import ZoneInfo
+
+          token = (os.getenv("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = (os.getenv("TELEGRAM_CHAT_ID") or "").strip()
+          expected = (os.getenv("EXPECTED_TELEGRAM_BOT_USERNAME") or "").strip().lstrip("@")
+          with urllib.request.urlopen(f"https://api.telegram.org/bot{token}/getMe", timeout=25) as r:
+              identity = json.loads(r.read().decode("utf-8"))
+          username = str((identity.get("result") or {}).get("username") or "")
+          if not identity.get("ok") or username.lower() != expected.lower():
+              raise RuntimeError(f"Wrong Telegram bot: expected @{expected}, got @{username or 'unknown'}")
+
+          text = pathlib.Path("out/ai_semiconductor_regional_chokepoint_alert.html").read_text(
+              encoding="utf-8"
+          ).strip()
+          if not text:
+              raise RuntimeError("regional chokepoint alert is empty")
+
+          chunks, current = [], ""
+          for line in text.splitlines():
+              candidate = line if not current else current + "\n" + line
+              if len(candidate) <= 3800:
+                  current = candidate
+              else:
+                  if current:
+                      chunks.append(current)
+                  current = line
+          if current:
+              chunks.append(current)
+
+          ids = []
+          for chunk in chunks:
+              payload = urllib.parse.urlencode({
+                  "chat_id": chat_id,
+                  "text": chunk,
+                  "parse_mode": "HTML",
+                  "disable_web_page_preview": "true",
+              }).encode("utf-8")
+              req = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              with urllib.request.urlopen(req, timeout=25) as r:
+                  result = json.loads(r.read().decode("utf-8"))
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram rejected regional chokepoint alert: {result}")
+              message_id = (result.get("result") or {}).get("message_id")
+              if type(message_id) is not int or message_id <= 0:
+                  raise RuntimeError("Telegram acknowledgement lacks a valid message_id")
+              ids.append(message_id)
+
+          normalized = re.sub(
+              r"조회\s+\d{4}-\d{2}-\d{2}\s+\d{2}:\d{2}\s+KST",
+              "조회 <TIME> KST",
+              text,
+          )
+          normalized = re.sub(r"[ \t]+", " ", normalized)
+          normalized = re.sub(r"\n{3,}", "\n\n", normalized).strip()
+          receipt = {
+              "status": "confirmed",
+              "bot_username": username,
+              "message_ids": ids,
+              "confirmed_at_kst": dt.datetime.now(ZoneInfo("Asia/Seoul")).isoformat(timespec="seconds"),
+              "alert_signature": hashlib.sha256(normalized.encode("utf-8")).hexdigest(),
+          }
+          pathlib.Path("out/ai_semiconductor_regional_chokepoint_telegram_confirmed.json").write_text(
+              json.dumps(receipt, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(f"regional_delivery_confirmed=true bot=@{username} message_ids={ids}")
+          PY
+
+      - name: Persist confirmed regional state
+        if: success() && hashFiles('out/ai_semiconductor_regional_chokepoint_alert.html') != '' && hashFiles('out/ai_semiconductor_regional_chokepoint_telegram_confirmed.json') != '' && hashFiles('out/ai_semiconductor_regional_chokepoint_pending_state.json') != ''
+        run: cp out/ai_semiconductor_regional_chokepoint_pending_state.json data/ai_semiconductor_regional_chokepoint_state.json
+
+      - name: Persist confirmed regional delivery receipt
+        if: success() && hashFiles('out/ai_semiconductor_regional_chokepoint_telegram_confirmed.json') != '' && hashFiles('data/ai_semiconductor_regional_chokepoint_state.json') != ''
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          state_path = pathlib.Path("data/ai_semiconductor_regional_chokepoint_state.json")
+          receipt_path = pathlib.Path("out/ai_semiconductor_regional_chokepoint_telegram_confirmed.json")
+          state = json.loads(state_path.read_text(encoding="utf-8"))
+          receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+          ids = receipt.get("message_ids") or []
+          state["last_successful_delivery_kst"] = receipt["confirmed_at_kst"]
+          state["telegram_message_ids"] = ids
+          state["telegram_message_id"] = ids[-1] if ids else None
+          state["bot_username"] = receipt["bot_username"]
+          state["delivery_receipt"] = receipt
+          state_path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+
+      - name: Persist regional no-alert state
+        if: success() && hashFiles('out/ai_semiconductor_regional_chokepoint_alert.html') == '' && hashFiles('out/ai_semiconductor_regional_chokepoint_pending_state.json') != ''
+        run: cp out/ai_semiconductor_regional_chokepoint_pending_state.json data/ai_semiconductor_regional_chokepoint_state.json
+
+      - name: Commit regional watcher state
+        if: success()
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          cp data/ai_semiconductor_regional_chokepoint_state.json /tmp/ai_semiconductor_regional_chokepoint_state.json
+          pushed=false
+          for attempt in 1 2 3 4; do
+            git rebase --abort 2>/dev/null || true
+            git fetch origin main
+            git reset --hard origin/main
+            cp /tmp/ai_semiconductor_regional_chokepoint_state.json data/ai_semiconductor_regional_chokepoint_state.json
+            git add data/ai_semiconductor_regional_chokepoint_state.json
+            if git diff --cached --quiet; then
+              echo "Regional chokepoint state already checkpointed"
+              pushed=true
+              break
+            fi
+            git commit -m "Update AI semiconductor regional chokepoint state"
+            if git push; then
+              pushed=true
+              break
+            fi
+            sleep $((attempt * 3))
+          done
+          if [ "$pushed" != "true" ]; then
+            echo "Regional chokepoint state checkpoint failed"
+            exit 1
+          fi
+
+      - name: Upload verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-semiconductor-regional-chokepoint-${{ github.run_id }}
+          path: |
+            out/ai_semiconductor_regional_chokepoint_status.md
+            out/ai_semiconductor_regional_chokepoint_alert.html
+            out/ai_semiconductor_regional_chokepoint_pending_state.json
+            out/ai_semiconductor_regional_chokepoint_telegram_confirmed.json
+            out/ai_semiconductor_regional_chokepoint_signature.txt
+          if-no-files-found: ignore
+          retention-days: 14
