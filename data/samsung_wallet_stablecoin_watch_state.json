@@ -2,6 +2,12 @@
   "correction_pending": false,
   "evidence": [
     {
+      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQRVRfa1YyNW1uQXFOY0UwX2FKSnpnR09nZk5nVXFmOXJKOEJiTEVjeHBLemN3VlRpZG9jaV9nUXJSQUpNRWZPbFBuQkZFYmhmTXplU3U1S3ZqR05oUVZPZkVOM3dzRHo5M0l6VURuUkQ0RktnSHpWd0h1TUppbHZYRmlMX0d2dEdiREE?oc=5",
+      "published_utc": "2026-10-05T01:43:14+00:00",
+      "source": "Google News RSS",
+      "title": "Samsung To Add Stablecoin Support to Galaxy Wallet Across 61 Countries - CoinMarketCap"
+    },
+    {
       "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTFB0c3FpOGhzeElZYndlQ3VIVWhkVHBVYXZCdXZ1cko3ZWIwV1ktWXV1U0JmTHVBQkhWNFh2dVZjQW9xN2ZReEg1aFhUY0RYc1FJNmR2MjN4Y2t6YVJqZmVNMDFxZURwTkJQRC1xbEl3?oc=5",
       "published_utc": "2026-10-01T15:00:00+00:00",
       "source": "Google News RSS",
@@ -26,12 +32,13 @@
     "explicit_reversal_confirmed": false,
     "job_fetch_ok": true,
     "job_stablecoin_confirmed": true,
-    "samsung_support_confirmed": true,
+    "kbw_executive_crosscheck_confirmed": true,
     "kbw_executive_primary_confirmed": true,
-    "kbw_executive_crosscheck_confirmed": true
+    "samsung_support_confirmed": true
   },
   "topic_state": {
     "achieved_stage": 2,
+    "executive_default_feature_confirmation": true,
     "explicit_reversal_confirmed": false,
     "job_exists": true,
     "official_job_scope_now": true,
@@ -42,8 +49,7 @@
     "stage_name": "사업개발·파트너십 실행",
     "status": "진행 중",
     "support_plan": true,
-    "topic": "Samsung Wallet stablecoin adoption",
-    "executive_default_feature_confirmation": true
+    "topic": "Samsung Wallet stablecoin adoption"
   },
-  "updated_at_kst": "2026-10-05T17:14:18+09:00"
+  "updated_at_kst": "2026-10-05T17:16:51+09:00"
 }
