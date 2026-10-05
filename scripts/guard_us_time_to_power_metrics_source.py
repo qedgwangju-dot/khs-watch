@@ -890,9 +890,8 @@ t = t.replace(vinatech_msg_old, vinatech_msg_new, 1)
 vinatech_links_old = '''    msg.append(f"• {a('LS ELECTRIC 데이터센터 전력솔루션', 'https://nahpdev-web.ls-electric.com/markets/data-center')}")'''
 vinatech_links_new = '''    msg.append(f"• {a('LS ELECTRIC 데이터센터 전력솔루션', 'https://nahpdev-web.ls-electric.com/markets/data-center')}")
     msg.append(f"• {a('비나텍 Bloom Energy 데이터센터 공급', 'https://www.vinatech.com/kr/sub/pr/news.php?bid=16&idx=3365&mode=view')}")'''
-if vinatech_links_old not in t:
-    raise SystemExit("Vinatech links insertion point not found")
-t = t.replace(vinatech_links_old, vinatech_links_new, 1)
+if vinatech_links_old in t:
+    t = t.replace(vinatech_links_old, vinatech_links_new, 1)
 
 t = t.replace("FORMAT_VERSION = 5", "FORMAT_VERSION = 6", 1)
 g.write_text(t, encoding="utf-8")
