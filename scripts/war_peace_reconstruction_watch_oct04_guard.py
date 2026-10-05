@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import hashlib
+import json
 import re
 import urllib.parse
 
@@ -530,6 +531,34 @@ def verify_alert(test_mode=False):
 runner.verify_alert = verify_alert
 
 
+def _rendered_item_count(text):
+    return len(re.findall(r"(?m)^[🔴🟢🟡]?\\s*\\[(?:속보|신규|후속)\\]\\s+<b>\\d+\\.", text or ""))
+
+
+def _sync_pending_to_rendered_alert():
+    """Telegram 본문에 실제 포함된 항목만 seen 처리되도록 pending을 맞춘다.
+
+    최종 렌더링은 Telegram 길이 제한 때문에 뒤쪽 항목이 잘릴 수 있다.
+    잘린 항목까지 seen으로 확정하면 다음 실행에서 영구 누락되므로,
+    전송 직전 pending ID를 실제 렌더링된 항목 수에 맞춰 줄인다.
+    """
+    if not watch.ALERT.exists() or not watch.PENDING.exists():
+        return
+    alert_text = watch.ALERT.read_text(encoding="utf-8")
+    rendered = _rendered_item_count(alert_text)
+    pending = json.loads(watch.PENDING.read_text(encoding="utf-8"))
+    ids = list(pending.get("ids", []))
+    if not ids:
+        return
+    if rendered <= 0:
+        raise RuntimeError("WAR_OCT04_DELIVERY_GATE: alert exists but no rendered items")
+    if rendered < len(ids):
+        pending["ids"] = ids[:rendered]
+        pending["deferred_ids"] = ids[rendered:]
+        pending["rendered_count"] = rendered
+        watch.PENDING.write_text(json.dumps(pending, ensure_ascii=False), encoding="utf-8")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--finalize", action="store_true")
@@ -542,6 +571,7 @@ def main():
         base._write_inline_test()
     else:
         watch.run(test=False)
+    _sync_pending_to_rendered_alert()
     runner.verify_alert(test_mode=False)
 
 
