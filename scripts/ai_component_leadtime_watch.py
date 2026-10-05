@@ -503,7 +503,7 @@ def extract_nand_controller_direct_constraint(text: str) -> bool:
     """Only confirm a DRAM-caused controller bottleneck when one sentence states it directly."""
     if not text:
         return False
-    sentences = re.split(r"(?<=[.!?])\\s+|[\\n\\r]+", clean_text(text))
+    sentences = re.split(r"(?<=[.!?])\s+|[\n\r]+", clean_text(text))
     for sentence in sentences:
         low = sentence.lower()
         controller_hit = any(k in low for k in (
