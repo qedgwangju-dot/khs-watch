@@ -32,7 +32,14 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
 - 현재 USD/JPY: 158.68
 """
         payload = {
-            "verdict": {"unwind_level": 1, "rebuild_level": 2},
+            "verdict": {
+                "unwind_level": 1,
+                "rebuild_level": 2,
+                "evidence": {
+                    "rebuild::USD/JPY 상승·엔화 재약세": True,
+                    "rebuild::미·일 2년 금리차 여전히 넓음": True,
+                },
+            },
             "refined_risk": {"level": 1, "rebuild_level": 2},
             "cftc": {
                 "leveraged_long": 110302,
@@ -61,8 +68,8 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
 
             result = body_path.read_text(encoding="utf-8")
             title = title_path.read_text(encoding="utf-8")
-            self.assertIn("🟡 엔캐리 | ↗ 재구축 우세", title)
-            self.assertIn("▶ 현재 방향 │ ↗ 엔화 약세·캐리 재구축 우세", result)
+            self.assertIn("🟡 엔캐리 | ↗ 유지·재구축", title)
+            self.assertIn("▶ 현재 방향 │ ↗ 엔화 약세·캐리 유지·재구축 우세", result)
             self.assertIn("▶ 청산 위험 │ 🟡 구조적 취약성·경계", result)
             self.assertIn("▶ 시장 영향 │ 🟢 위험자산 수급 단기 우호", result)
             self.assertIn("핵심 근거", result)
@@ -77,6 +84,95 @@ class YenCarryTelegramCompactTests(unittest.TestCase):
             self.assertNotIn("CFTC 레버리지 엔화 순숏: 0계약", result)
             self.assertLess(len(result), len(body) + 500)
             self.assertEqual(detail_path.read_text(encoding="utf-8").strip(), body.strip())
+
+    def test_structural_yellow_floor_never_forces_unwind_arrow(self):
+        body = """조회 시각: 2026-10-05 11:17:23 KST
+
+판정
+- 캐리 청산 위험: 🟡 구조적 취약성·경계
+- 엔화 재약세·캐리 재구축: 🟢 엔화 재약세·캐리 재구축 미확인
+
+이번 변화
+- JGB 10년 3% 이상 2영업일 지속 확인
+
+구조적 경계·자금환류
+- 일본 10년 JGB(재무성 공식 종가) 3.097% (2026/10/2) → 3% 이상 / 연속 2영업일
+- 해외중장기채: 최근 2주 -2.59조엔 / 직전 2주 +1.21조엔 / 연초 이후 -4.12조엔 → 해외채권 순매도·환류 압력
+
+긴축 경로·레버리지
+- 일본 2년 JGB 재가격: -2.0bp / 미·일 2년 금리차 변화: +7.0bp
+- FX 실현변동성: 이전 구간 대비 1.51배 → 상승
+
+미·일 정책공조·시장 영향
+- 정책 단계: Bessent 발언은 <b>구두개입·정책정보 우위 경고</b>입니다.
+- 주식시장: <b>질서 있는 엔 강세</b>와 강제청산을 구분합니다.
+"""
+        payload = {
+            "verdict": {
+                "unwind_level": 0,
+                "rebuild_level": 0,
+                "evidence": {
+                    "unwind::USD/JPY 급락·엔화 급등": False,
+                    "unwind::미·일 2년 금리차 축소": False,
+                    "unwind::일본 단기금리 상승": False,
+                    "unwind::FX 실현변동성 상승": True,
+                    "unwind::레버리지 펀드 엔화 순숏": True,
+                    "rebuild::USD/JPY 상승·엔화 재약세": False,
+                    "rebuild::USD/JPY 완만한 상승 방향": True,
+                    "rebuild::미·일 2년 금리차 재확대": False,
+                    "rebuild::미·일 2년 금리차 여전히 넓음": True,
+                },
+            },
+            "refined_risk": {
+                "level": 1,
+                "label": "구조적 취약성·경계",
+                "rebuild_level": 0,
+                "structural_floor": "JGB 10년 3% 이상 공식 종가",
+                "signals": {},
+            },
+        }
+        with tempfile.TemporaryDirectory() as td:
+            out = pathlib.Path(td)
+            body_path = out / "yen_carry_composite_alert.md"
+            detail_path = out / "yen_carry_composite_alert_detail.md"
+            payload_path = out / "yen_carry_composite_alert.json"
+            title_path = out / "yen_carry_composite_alert_title.txt"
+            body_path.write_text(body, encoding="utf-8")
+            payload_path.write_text(json.dumps(payload), encoding="utf-8")
+            title_path.write_text("🟡 엔캐리 복합 수급 알림\n", encoding="utf-8")
+
+            with (
+                mock.patch.object(compact, "OUT", out),
+                mock.patch.object(compact, "BODY", body_path),
+                mock.patch.object(compact, "DETAIL", detail_path),
+                mock.patch.object(compact, "PAYLOAD", payload_path),
+                mock.patch.object(compact, "TITLE", title_path),
+            ):
+                self.assertEqual(compact.main(), 0)
+
+            result = body_path.read_text(encoding="utf-8")
+            title = title_path.read_text(encoding="utf-8")
+            self.assertIn("🟡 엔캐리 | ↗ 유지 우세·구조 경계", title)
+            self.assertIn("▶ 현재 방향 │ ↗ 캐리 유지·재구축 쪽으로 기울기", result)
+            self.assertIn("▶ 청산 위험 │ 🟡 구조적 취약성·경계", result)
+            self.assertIn("▶ 시장 영향 │ 🟡 중립~소폭 우호 / 구조 변동성 주의", result)
+            self.assertNotIn("↘ 청산", result)
+            self.assertNotIn("<b>", result)
+            self.assertNotIn("</b>", result)
+
+    def test_structural_floor_without_direction_is_neutral(self):
+        payload = {
+            "verdict": {"unwind_level": 0, "rebuild_level": 0, "evidence": {}},
+            "refined_risk": {
+                "level": 1,
+                "structural_floor": "JGB 10년 3% 이상 공식 종가",
+                "signals": {},
+            },
+        }
+        title, direction, impact = compact.direction_call(payload)
+        self.assertIn("↔ 중립·구조 경계", title)
+        self.assertEqual(direction, "↔ 중립·방향 확인 대기")
+        self.assertEqual(impact, "🟡 중립 / 구조 변동성 주의")
 
 
 if __name__ == "__main__":
