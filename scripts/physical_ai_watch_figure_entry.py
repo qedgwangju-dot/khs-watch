@@ -99,6 +99,31 @@ FIGURE_ACTUAL_REVEAL = re.compile(
     re.I | re.S,
 )
 
+# Brett Adcock now posts about more than one company/product. Founder identity is
+# not enough to attribute a post to Figure AI. Require robot/Figure-specific
+# context, and explicitly keep Hark/Handoff consumer-agent posts out of this lane
+# unless the same post directly links them to Figure robots.
+FIGURE_ROBOT_CONTEXT = re.compile(
+    r'Figure\s*AI|Figure\s*Robotics|Figure\s*0?3|Figure\s*0?2|Figure\s*0?1|'
+    r'@Figure_robot|\bHelix(?:[-\s]?0?2|\s*2\.5)?\b|Figure\s+robot|'
+    r'humanoid|robot(?:ics)?|BMW|피겨\s*AI|피겨\s*0?3|휴머노이드|로봇',
+    re.I,
+)
+FIGURE_OTHER_VENTURE = re.compile(
+    r'\bHark\b|\bHandoff\b|personal\s+AI|browser[-\s]*using\s+AI|'
+    r'브라우저\s*에이전트|개인용\s*AI',
+    re.I,
+)
+
+
+def _has_figure_robot_context(text: str) -> bool:
+    return bool(FIGURE_ROBOT_CONTEXT.search(text))
+
+
+def _is_other_venture_only(text: str) -> bool:
+    return bool(FIGURE_OTHER_VENTURE.search(text) and not _has_figure_robot_context(text))
+
+
 
 for q in [
     FIGURE_X_SENTINEL,
@@ -114,16 +139,26 @@ base.TRUSTED.update({'Reuters', 'TechCrunch', 'The Robot Report'})
 
 
 def _is_figure_text(text: str) -> bool:
-    return bool(FIGURE_ID.search(text) and FIGURE_AI.search(text) and FIGURE_SIGNAL.search(text))
+    if _is_other_venture_only(text):
+        return False
+    return bool(
+        FIGURE_ID.search(text)
+        and _has_figure_robot_context(text)
+        and FIGURE_AI.search(text)
+        and FIGURE_SIGNAL.search(text)
+    )
 
 
 def _make_figure_item(status_id: str, text: str, published: dt.datetime | None) -> dict | None:
     text = legacy._clean_social_text(text)
     if not status_id or not text:
         return None
-    # On Brett Adcock's own feed, explicit Figure naming is not required if the
-    # post clearly refers to AI/robotics and contains a material milestone signal.
-    if not (FIGURE_AI.search(text) and FIGURE_SIGNAL.search(text)):
+    # Brett Adcock's account is no longer Figure-only. Do not infer Figure AI
+    # from the author identity. Ambiguous AI/product-launch posts stay silent
+    # until the text itself contains Figure/Helix/robot/humanoid context.
+    if _is_other_venture_only(text):
+        return None
+    if not (_has_figure_robot_context(text) and FIGURE_AI.search(text) and FIGURE_SIGNAL.search(text)):
         return None
     if published is None:
         published = legacy._tweet_time_from_id(status_id)
