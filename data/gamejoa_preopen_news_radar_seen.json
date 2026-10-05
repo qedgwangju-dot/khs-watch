@@ -521,20 +521,21 @@
     "event:2040de76bfabafead1b43434": {
       "first_seen_kst": "2026-10-05T00:49:19+09:00",
       "lanes": {
-        "live": "2026-10-06T01:51:09+09:00",
+        "live": "2026-10-06T02:00:06+09:00",
         "preopen": "2026-10-05T06:34:55+09:00"
       },
-      "last_seen_kst": "2026-10-06T01:51:09+09:00",
-      "link": "https://www.newsis.com/view/NISX20261005_0003814399",
-      "source": "뉴시스",
-      "source_body_digest": "67fcdd4499da2da83cb9e47f73bb4b7ac99614b1af2f62c09dc5cad2c19efd1b",
+      "last_seen_kst": "2026-10-06T02:00:06+09:00",
+      "link": "https://www.hankyung.com/article/2026100538817",
+      "source": "한국경제",
+      "source_body_digest": "d57465431731e77f779dee202d70031472403d0b86ba8d20b0f3b019757e44be",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:98b152838fa52f429ae24fa342bd737468c2fa249c846cf371e944158f12292b",
+      "source_fact_identity": "source_facts:v1:a301c4ccb34b94223559430102db4dacde191a47c5c50fe7e0c72856fff683df",
       "source_fact_keys": [
-        "source_fact:v1:913b24622ed2d87c13c640f51952f36aa4ffa46679e5137b63ebf5d565720b67"
+        "source_fact:v1:19d12e726cff9851fc6eadfe7f27879930e0e5d94752096eb9855f37b99eadfd",
+        "source_fact:v1:ca7097db8860b340126e5e46d63cab98414b25a13170b4cccb2e3516e7c0ead9"
       ],
-      "source_published_kst": "2026-10-05T14:48+09:00",
-      "title": "예멘 정부군 \"후티 군사시설 1122곳 공격…1747명 사망\""
+      "source_published_kst": "2026-10-05T20:16+09:00",
+      "title": "\"역사상 가장 어려운 시기\"…이란 안보수장, 경제난 공식 시인"
     },
     "event:20559afaa46c8beb4ac5c20d": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -5269,6 +5270,24 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
+    },
+    "fact:188aaf816f7782dd5656a170": {
+      "first_seen_kst": "2026-10-06T02:00:06+09:00",
+      "lanes": {
+        "live": "2026-10-06T02:00:06+09:00"
+      },
+      "last_seen_kst": "2026-10-06T02:00:06+09:00",
+      "link": "https://www.hankyung.com/article/2026100538817",
+      "source": "한국경제",
+      "source_body_digest": "d57465431731e77f779dee202d70031472403d0b86ba8d20b0f3b019757e44be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a301c4ccb34b94223559430102db4dacde191a47c5c50fe7e0c72856fff683df",
+      "source_fact_keys": [
+        "source_fact:v1:19d12e726cff9851fc6eadfe7f27879930e0e5d94752096eb9855f37b99eadfd",
+        "source_fact:v1:ca7097db8860b340126e5e46d63cab98414b25a13170b4cccb2e3516e7c0ead9"
+      ],
+      "source_published_kst": "2026-10-05T20:16+09:00",
+      "title": "\"역사상 가장 어려운 시기\"…이란 안보수장, 경제난 공식 시인"
     },
     "fact:192fc422f659c17fbde0306c": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -18249,6 +18268,24 @@
       "link": "https://zdnet.co.kr/view/?no=20260930084417",
       "source": "지디넷코리아",
       "title": "LG CNS, 베라 루빈 품은 모듈형 AI 팩토리 출사표…'원 LG' 역량 결집"
+    },
+    "link:994eb7b37244de56a8d351e2": {
+      "first_seen_kst": "2026-10-06T02:00:06+09:00",
+      "lanes": {
+        "live": "2026-10-06T02:00:06+09:00"
+      },
+      "last_seen_kst": "2026-10-06T02:00:06+09:00",
+      "link": "https://www.hankyung.com/article/2026100538817",
+      "source": "한국경제",
+      "source_body_digest": "d57465431731e77f779dee202d70031472403d0b86ba8d20b0f3b019757e44be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a301c4ccb34b94223559430102db4dacde191a47c5c50fe7e0c72856fff683df",
+      "source_fact_keys": [
+        "source_fact:v1:19d12e726cff9851fc6eadfe7f27879930e0e5d94752096eb9855f37b99eadfd",
+        "source_fact:v1:ca7097db8860b340126e5e46d63cab98414b25a13170b4cccb2e3516e7c0ead9"
+      ],
+      "source_published_kst": "2026-10-05T20:16+09:00",
+      "title": "\"역사상 가장 어려운 시기\"…이란 안보수장, 경제난 공식 시인"
     },
     "link:997d55237ce725dfa143cd5c": {
       "first_seen_kst": "2026-10-01T23:40:24+09:00",
@@ -39495,6 +39532,24 @@
       "source_published_kst": "2026-10-05T07:05+09:00",
       "title": "올해 '극한 폭염' 덮친 충남서 양식어류 573만마리 폐사 | 연합뉴스"
     },
+    "original:d8d4517355a0b36c7940d5cb": {
+      "first_seen_kst": "2026-10-06T02:00:06+09:00",
+      "lanes": {
+        "live": "2026-10-06T02:00:06+09:00"
+      },
+      "last_seen_kst": "2026-10-06T02:00:06+09:00",
+      "link": "https://www.hankyung.com/article/2026100538817",
+      "source": "한국경제",
+      "source_body_digest": "d57465431731e77f779dee202d70031472403d0b86ba8d20b0f3b019757e44be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a301c4ccb34b94223559430102db4dacde191a47c5c50fe7e0c72856fff683df",
+      "source_fact_keys": [
+        "source_fact:v1:19d12e726cff9851fc6eadfe7f27879930e0e5d94752096eb9855f37b99eadfd",
+        "source_fact:v1:ca7097db8860b340126e5e46d63cab98414b25a13170b4cccb2e3516e7c0ead9"
+      ],
+      "source_published_kst": "2026-10-05T20:16+09:00",
+      "title": "\"역사상 가장 어려운 시기\"…이란 안보수장, 경제난 공식 시인"
+    },
     "original:d8e0473fdc363ecae80594b0": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
       "lanes": {
@@ -42162,6 +42217,24 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:0323220767bca9e935d6e129": {
+      "first_seen_kst": "2026-10-06T02:00:06+09:00",
+      "lanes": {
+        "live": "2026-10-06T02:00:06+09:00"
+      },
+      "last_seen_kst": "2026-10-06T02:00:06+09:00",
+      "link": "https://www.hankyung.com/article/2026100538817",
+      "source": "한국경제",
+      "source_body_digest": "d57465431731e77f779dee202d70031472403d0b86ba8d20b0f3b019757e44be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a301c4ccb34b94223559430102db4dacde191a47c5c50fe7e0c72856fff683df",
+      "source_fact_keys": [
+        "source_fact:v1:19d12e726cff9851fc6eadfe7f27879930e0e5d94752096eb9855f37b99eadfd",
+        "source_fact:v1:ca7097db8860b340126e5e46d63cab98414b25a13170b4cccb2e3516e7c0ead9"
+      ],
+      "source_published_kst": "2026-10-05T20:16+09:00",
+      "title": "\"역사상 가장 어려운 시기\"…이란 안보수장, 경제난 공식 시인"
     },
     "source_fact:04d3d9fd880435c004d4ea30": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
@@ -48579,6 +48652,24 @@
       ],
       "source_published_kst": "2026-10-05T12:59+09:00",
       "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
+    },
+    "source_fact:7a5af0605f72810c7dd99d08": {
+      "first_seen_kst": "2026-10-06T02:00:06+09:00",
+      "lanes": {
+        "live": "2026-10-06T02:00:06+09:00"
+      },
+      "last_seen_kst": "2026-10-06T02:00:06+09:00",
+      "link": "https://www.hankyung.com/article/2026100538817",
+      "source": "한국경제",
+      "source_body_digest": "d57465431731e77f779dee202d70031472403d0b86ba8d20b0f3b019757e44be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a301c4ccb34b94223559430102db4dacde191a47c5c50fe7e0c72856fff683df",
+      "source_fact_keys": [
+        "source_fact:v1:19d12e726cff9851fc6eadfe7f27879930e0e5d94752096eb9855f37b99eadfd",
+        "source_fact:v1:ca7097db8860b340126e5e46d63cab98414b25a13170b4cccb2e3516e7c0ead9"
+      ],
+      "source_published_kst": "2026-10-05T20:16+09:00",
+      "title": "\"역사상 가장 어려운 시기\"…이란 안보수장, 경제난 공식 시인"
     },
     "source_fact:7ad06cf65230ddc24f251b56": {
       "first_seen_kst": "2026-10-06T00:03:48+09:00",
@@ -69360,6 +69451,24 @@
       "source_published_kst": "2026-10-05T07:05+09:00",
       "title": "올해 '극한 폭염' 덮친 충남서 양식어류 573만마리 폐사 | 연합뉴스"
     },
+    "title:d8d4517355a0b36c7940d5cb": {
+      "first_seen_kst": "2026-10-06T02:00:06+09:00",
+      "lanes": {
+        "live": "2026-10-06T02:00:06+09:00"
+      },
+      "last_seen_kst": "2026-10-06T02:00:06+09:00",
+      "link": "https://www.hankyung.com/article/2026100538817",
+      "source": "한국경제",
+      "source_body_digest": "d57465431731e77f779dee202d70031472403d0b86ba8d20b0f3b019757e44be",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a301c4ccb34b94223559430102db4dacde191a47c5c50fe7e0c72856fff683df",
+      "source_fact_keys": [
+        "source_fact:v1:19d12e726cff9851fc6eadfe7f27879930e0e5d94752096eb9855f37b99eadfd",
+        "source_fact:v1:ca7097db8860b340126e5e46d63cab98414b25a13170b4cccb2e3516e7c0ead9"
+      ],
+      "source_published_kst": "2026-10-05T20:16+09:00",
+      "title": "\"역사상 가장 어려운 시기\"…이란 안보수장, 경제난 공식 시인"
+    },
     "title:d8e0473fdc363ecae80594b0": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
       "lanes": {
@@ -71879,5 +71988,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T01:51:09+09:00"
+  "updated_at_kst": "2026-10-06T02:00:06+09:00"
 }
