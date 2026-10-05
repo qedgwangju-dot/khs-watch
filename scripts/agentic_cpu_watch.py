@@ -368,11 +368,45 @@ def bn_label(value: float, rate: float | None) -> str:
 
 def snapshot_block(state: dict, fx: float | None, fx_date: str, changed: list[dict], ratio_change: tuple[str, str] | None, validation: list[dict], standalone: bool) -> str:
     m = state.get("metrics") or {}
-    lines = []
-    if standalone:
-        lines += ["<b>🚨 CPU·에이전트형 AI 구조 변화</b>", ""]
 
-    lines += ["<b>변화</b>"]
+    if not standalone:
+        lines = ["<b>CPU·에이전트형 AI</b>"]
+        change_bits = []
+        for ch in changed[:3]:
+            if ch["mode"] == "pp":
+                change_bits.append(
+                    f"{ch['label']} {ch['before']:.1f}%→{ch['after']:.1f}% ({ch['delta']:+.1f}%p)"
+                )
+            else:
+                change_bits.append(
+                    f"{ch['label']} {bn_label(ch['before'], fx)}→{bn_label(ch['after'], fx)} ({ch['delta']:+.1f}%)"
+                )
+        if ratio_change:
+            change_bits.append(f"CPU:GPU {ratio_change[0]}→{ratio_change[1]}")
+        if validation:
+            change_bits.append("공식 수요검증 " + str(validation[0].get("title") or "확인"))
+        if change_bits:
+            lines.append("• 변화: " + " / ".join(html.escape(x) for x in change_bits))
+
+        total = float(m.get("server_cpu_tam_2030_usd_bn") or 0)
+        agent = float(m.get("agentic_2030_usd_bn") or 0)
+        agent_share = float(m.get("agentic_share_pct") or 0)
+        base = []
+        if total:
+            base.append(f"2030 서버 CPU {bn_label(total, fx)}")
+        if agent:
+            base.append(f"에이전트형 {bn_label(agent, fx)}({agent_share:.1f}%)")
+        if base:
+            lines.append("• 기준: " + " / ".join(html.escape(x) for x in base))
+        lines.append("• 의미: CPU 주문·출하가 늘면 DDR5 RDIMM·eSSD·FC-BGA/ABF가 동반 수혜")
+        lines.append("• 다음: AMD·Intel 주문·출하 / OEM 서버 주문 / CPU:GPU 실제 배치비율")
+        if state.get("source"):
+            lines.append(f'• <a href="{html.escape(str(state["source"]), quote=True)}">BofA 전망</a> · <a href="{html.escape(AMD_RATIO_URL, quote=True)}">AMD 공식</a>')
+        else:
+            lines.append(f'• <a href="{html.escape(AMD_RATIO_URL, quote=True)}">AMD 공식 근거</a>')
+        return "\n".join(lines).strip() + "\n"
+
+    lines = ["<b>🚨 CPU·에이전트형 AI 구조 변화</b>", "", "<b>변화</b>"]
     if changed:
         for ch in changed[:4]:
             if ch["mode"] == "pp":
