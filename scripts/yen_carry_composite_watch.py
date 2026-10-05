@@ -43,6 +43,7 @@ ALERT_BODY_PATH = OUT / "yen_carry_composite_alert.md"
 ALERT_JSON_PATH = OUT / "yen_carry_composite_alert.json"
 CONFIRM_PATH = OUT / "yen_carry_composite_telegram_confirmed.json"
 STATUS_PATH = OUT / "yen_carry_composite_watch.md"
+STRUCTURAL_STATE_PATH = DATA / "yen_carry_structural_state.json"
 
 MOF_WEEK_CSV = "https://www.mof.go.jp/policy/international_policy/reference/itn_transactions_in_securities/week.csv"
 CFTC_TFF_API = "https://publicreporting.cftc.gov/resource/gpe5-46if.json"
@@ -443,6 +444,46 @@ def source_changed(previous: dict, pending: dict, key: str) -> bool:
     return bool(old and new and old != new)
 
 
+def preserve_missing_source_state(
+    pending: dict,
+    previous: dict,
+    *,
+    cftc: CftcPosition | None,
+    mof: MofOutwardFlow | None,
+    policy: dict | None,
+) -> dict:
+    """Keep last-known source baselines when one optional source fails temporarily.
+
+    Missing data is still excluded from the *current* verdict. This only prevents
+    a transient retrieval failure from erasing the comparison baseline used to
+    detect the next official release.
+    """
+    sources = pending.setdefault("source_dates", {})
+    values = pending.setdefault("values", {})
+    old_sources = previous.get("source_dates") or {}
+    old_values = previous.get("values") or {}
+
+    if cftc is None:
+        sources["cftc"] = old_sources.get("cftc")
+        for key in ("cftc_net_short", "cftc_net_short_pct_oi"):
+            if old_values.get(key) is not None:
+                values[key] = old_values.get(key)
+
+    if mof is None:
+        sources["mof_week"] = old_sources.get("mof_week")
+        if not sources.get("mof_week"):
+            structural = load_json(STRUCTURAL_STATE_PATH, {})
+            sources["mof_week"] = (structural.get("source_dates") or {}).get("mof_week")
+        for key in ("mof_latest_2w_outward_trillion_yen", "mof_prior_2w_outward_trillion_yen"):
+            if old_values.get(key) is not None:
+                values[key] = old_values.get(key)
+
+    if policy is None:
+        sources["policy_action"] = old_sources.get("policy_action")
+
+    return pending
+
+
 def should_alert(previous: dict, pending: dict, verdict: CompositeVerdict) -> tuple[bool, list[str]]:
     if not previous.get("initialized"):
         return False, ["최초 기준값 저장"]
@@ -643,6 +684,13 @@ def process(now: dt.datetime | None = None) -> int:
         spread=spread,
         move=move,
         fx_vol=fx_vol,
+        cftc=cftc,
+        mof=mof,
+        policy=policy,
+    )
+    pending = preserve_missing_source_state(
+        pending,
+        previous,
         cftc=cftc,
         mof=mof,
         policy=policy,
