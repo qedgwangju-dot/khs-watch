@@ -2518,9 +2518,72 @@ def acquisition_negotiation_fact(title: str, body: str) -> str:
     return fact if core_sentence_is_complete(fact) else ""
 
 
+def source_headline_event_fact(title: str, body: str) -> str:
+    """Bind a compact observation to its source actor, population and period."""
+    focus = market_materiality.focus_kind(title)
+    source = re.sub(r"\s+", " ", body)
+    if focus == "technical_standard":
+        standard = re.search(
+            r"([A-Za-z가-힣]{2,25})(?:이|가)\s*발표한\s*['‘\"]?"
+            r"(JESD\d+[A-Z0-9.-]*|IEEE\s*\d+[A-Z0-9.-]*|ISO\s*\d+[A-Z0-9.-]*)['’\"]?\s*표준은\s*"
+            r"([^.!?]{2,35}?)\s*기술에\s*대한\s*전반적인\s*신뢰성\s*기준", source, re.I,
+        )
+        if standard:
+            actor, code, topic = standard.groups()
+            first = "업계 첫 " if re.search(r"업계\s*첫\s*신뢰성\s*표준", source) else ""
+            fact = f"{actor}{korean_topic_particle(actor)} {first}{topic} 신뢰성 표준 {code}를 발표했다."
+            if re.search(r"구성요소\s*검증,\s*제조\s*공정", source):
+                fact += " 구성요소 검증과 제조 공정의 요구사항을 포함한다."
+            return fact if core_sentence_is_complete(fact) else ""
+    if focus == "energy_import_mix":
+        period = re.search(r"올해\s*들어\s*(\d{1,2})월까지\s*누적\s*기준", source)
+        country = re.search(r"([가-힣]{2,12})산\s*원유", title)
+        if period and country:
+            measure = re.search(
+                rf"국가별\s*원유\s*도입\s*비중은\s*{re.escape(country.group(1))}가\s*(\d+(?:\.\d+)?)%"
+                r"[^!?]{0,45}?전월\s*(\d+(?:\.\d+)?)%에\s*비해\s*비중이\s*"
+                r"(\d+(?:\.\d+)?)%포인트[^!?]{0,15}?낮아졌다", source,
+            )
+            if measure:
+                fact = (f"올해 1~{period.group(1)}월 국내 원유 도입 비중은 {country.group(1)}산 {measure.group(1)}%로 "
+                        f"전월 누적 {measure.group(2)}%보다 {measure.group(3)}%p 낮아졌다.")
+                return fact if core_sentence_is_complete(fact) else ""
+    if focus == "investor_flow":
+        actor = next((term for term in ("외국인", "기관", "개인", "연기금") if term in title), "")
+        normalized_title = title.replace("삼전닉스", "삼성전자·SK하이닉스")
+        issuers = [issuer for issuer in re.findall(r"[A-Za-z가-힣][A-Za-z0-9가-힣&]+", normalized_title) if issuer in source and re.search(
+            rf"{re.escape(issuer)}(?:를|을|\()[^.!?]{{0,45}}{KOREAN_WON_AMOUNT_PATTERN}", source,
+        )]
+        period = re.search(r"지난주\s*\((\d{1,2}월\s*\d{1,2}일\s*[~∼-]\s*\d{1,2}월\s*\d{1,2}일)\)", source)
+        selling = bool(re.search(r"순매도|팔아|매도|던졌", title))
+        actor_source = " ".join(paragraph.strip() for paragraph in body.splitlines() if re.match(
+            rf"^(?:(?:반면|또한|한편)\s+)?{re.escape(actor)}(?:은|는|이|가|의|도|\s)", paragraph.strip(),
+        ))
+        observations = []
+        for issuer in dict.fromkeys(issuers):
+            amount = re.search(
+                rf"{re.escape(issuer)}(?:를|을|로)?\s*(?:한\s*주간\s*)?(?:무려\s*)?"
+                rf"({KOREAN_WON_AMOUNT_PATTERN})(?:어치|을|를)?[^.!?]{{0,12}}"
+                + (r"(?:쏟아|팔아|순매도)" if selling else r"(?:사들|순매수)"), actor_source,
+            )
+            if not amount:
+                amount = re.search(rf"{re.escape(issuer)}\(({'-' if selling else ''}{KOREAN_WON_AMOUNT_PATTERN})\)", actor_source)
+            if amount:
+                observations.append(f"{issuer} {amount.group(1).lstrip('-')}")
+        if actor and period and observations and len(observations) == len(set(issuers)):
+            span = re.sub(r"\s+", "", period.group(1))
+            direction = "순매도" if selling else "순매수"
+            fact = f"{span} {actor}은 {'·'.join(observations)}을 {direction}했다."
+            return fact if core_sentence_is_complete(fact) else ""
+    return ""
+
+
 def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
     focus = market_materiality.focus_kind(title)
+    observed = source_headline_event_fact(title, "\n".join(sentences))
+    if observed:
+        return observed
     negotiation = acquisition_negotiation_fact(title, "\n".join(sentences))
     if negotiation:
         return negotiation
@@ -10227,6 +10290,9 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if not source or not core:
         return []
     errors = []
+    expected_observation = source_headline_event_fact(title, source)
+    if expected_observation and re.sub(r"\s+", "", expected_observation) != re.sub(r"\s+", "", core):
+        errors.append("headline_actor_population_period_or_standard_mismatch")
     negotiation = acquisition_negotiation_fact(title, source)
     if negotiation and not re.search(r"논의\s*중|협상\s*중|검토\s*중", core):
         errors.append("acquisition_negotiation_reported_as_confirmed")

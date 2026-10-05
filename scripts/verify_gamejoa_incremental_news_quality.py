@@ -25,6 +25,8 @@ FIXTURE = json.loads((ROOT / "data/gamejoa_incremental_news_fixtures_20261005.js
 CASES = {case["id"]: case for case in FIXTURE["cases"]}
 LIVE_FIXTURE = json.loads((ROOT / "data/gamejoa_live_selection_fixtures_20261005.json").read_text(encoding="utf-8"))
 LIVE_CASES = {case["id"]: case for case in LIVE_FIXTURE["cases"]}
+FOREGROUND_FIXTURE = json.loads((ROOT / "data/gamejoa_foreground_selection_fixtures_20261005.json").read_text(encoding="utf-8"))
+FOREGROUND_CASES = {case["id"]: case for case in FOREGROUND_FIXTURE["cases"]}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -66,6 +68,85 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def test_final_remote_foreground_report_is_replayed_with_source_bodies(self):
+        self.assertEqual(len(FOREGROUND_CASES), 4)
+        for case in FOREGROUND_CASES.values():
+            candidate = classify(case, LIVE_NOW)
+            with patch.object(radar.base, "kst_now", return_value=LIVE_NOW):
+                selected = radar.quality_display_alerts([candidate], 30) if candidate else []
+            with self.subTest(case=case["id"]):
+                self.assertEqual(bool(selected), case["expected_keep"])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+                    self.assertTrue(radar.core_sentence_is_complete(selected[0]["telegram_core_fact"]))
+
+    def test_standard_core_names_the_issuer_code_and_scope(self):
+        case = FOREGROUND_CASES["photonics_standard"]
+        item = radar.normalize_alert_for_output(classify(case, LIVE_NOW))
+        for term in ("제덱", "JESD264", "실리콘 포토닉스", "발표했다", "구성요소 검증", "제조 공정"):
+            self.assertIn(term, item["telegram_core_fact"])
+        self.assertTrue(radar.source_core_fact_errors({**item, "telegram_core_fact": case["old_core"]}))
+
+    def test_foreground_compact_render_retains_three_source_events_only(self):
+        candidates = [value for case in FOREGROUND_CASES.values() if (value := classify(case, LIVE_NOW))]
+        with patch.object(radar.base, "kst_now", return_value=LIVE_NOW), patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}), patch.object(radar, "collect_fx_snapshot", return_value={"rates": {}}):
+            selected = radar.compact_quality_final_alerts(candidates, 30)
+            report = radar.compact_report(selected, {}, {}, LIVE_NOW)
+            radar.guard_preopen_report(report)
+        self.assertEqual(len(selected), 3)
+        self.assertFalse(generated_guard.duplicate_event_errors(selected, radar))
+        for item in selected:
+            self.assertFalse(radar.source_core_fact_errors(item))
+            self.assertIn(item["link"], report)
+            self.assertTrue(radar.core_sentence_is_complete(item["telegram_core_fact"]))
+
+    def test_capacity_is_not_employment_macro_data(self):
+        audit = materiality.assess("고용량 데이터를 처리하는 AI 데이터센터", "고용량 데이터를 처리하는 AI 데이터센터 산업의 수요가 증가하고 있다.")
+        self.assertNotIn("rates_fx_or_macro", {e["kind"] for e in audit["evidence"]})
+        self.assertNotEqual(materiality.focus_kind("고용량 데이터 처리 기술"), "macro_release")
+
+    def test_real_employment_data_is_preserved(self):
+        audit = materiality.assess("미국 고용 증가 둔화", "미국 고용은 10만명 증가하며 예상치를 밑돌았다.")
+        self.assertIn("rates_fx_or_macro", {e["kind"] for e in audit["evidence"]})
+
+    def test_import_share_retains_cumulative_period_and_decimal_change(self):
+        case = FOREGROUND_CASES["energy_import_mix"]
+        item = radar.normalize_alert_for_output(classify(case, LIVE_NOW))
+        for term in ("올해 1~8월", "국내 원유 도입 비중", "사우디산 29.90%", "전월 누적 30.91%", "1.01%p"):
+            self.assertIn(term, item["telegram_core_fact"])
+        self.assertTrue(radar.source_core_fact_errors({**item, "telegram_core_fact": case["old_core"]}))
+
+    def test_foreign_flow_keeps_issuers_period_and_separate_amounts(self):
+        case = FOREGROUND_CASES["foreign_issuer_weekly_flow"]
+        item = radar.normalize_alert_for_output(classify(case, LIVE_NOW))
+        for term in ("9월28일~10월2일", "외국인", "SK하이닉스 4조3691억원", "삼성전자 3조2174억원", "순매도"):
+            self.assertIn(term, item["telegram_core_fact"])
+        self.assertNotIn("기관", item["telegram_core_fact"])
+        self.assertNotIn("9조", item["telegram_core_fact"])
+        self.assertTrue(radar.source_core_fact_errors({**item, "telegram_core_fact": case["old_core"]}))
+
+    def test_institutional_flow_never_uses_foreign_investor_amount(self):
+        case = FOREGROUND_CASES["foreign_issuer_weekly_flow"]
+        fact = radar.source_headline_event_fact("기관, 삼성전자·SK하이닉스 순매도", case["body"])
+        self.assertIn("삼성전자 8445억원", fact)
+        self.assertIn("SK하이닉스 4681억원", fact)
+        self.assertNotIn("4조3691억원", fact)
+
+    def test_actor_trade_reversal_is_not_rewritten_in_the_opposite_direction(self):
+        body = "지난주(9월28일~10월2일) 수급을 집계했다.\n외국인은 삼성전자(-3조2174억원)를 순매도했다."
+        self.assertFalse(radar.source_headline_event_fact("외국인, 삼성전자 순매수", body))
+
+    def test_routine_foreign_stock_rank_is_not_a_market_catalyst(self):
+        case = FOREGROUND_CASES["retail_foreign_rank"]
+        audit = materiality.assess(case["title"], case["body"])
+        self.assertFalse(audit["equity_publication"]["eligible"])
+        self.assertEqual(audit["equity_publication"]["reason"], "routine_retail_foreign_stock_ranking_not_market_catalyst")
+
+    def test_foreign_rank_article_with_a_new_source_contract_is_preserved(self):
+        title = "테슬라 순매수 1위[서학픽]…신규 공급 계약 체결"
+        audit = materiality.assess(title, "테슬라는 데이터센터용 반도체 공급 계약을 체결했다고 발표했다.")
+        self.assertTrue(audit["equity_publication"]["eligible"])
+
     def test_remote_generated_report_is_replayed_with_source_bodies(self):
         self.assertEqual(len(LIVE_CASES), 6)
         for case in LIVE_CASES.values():
@@ -350,7 +431,8 @@ if __name__ == "__main__":
               "original_count": 10, "unique_article_count": 10, "unique_event_count": FIXTURE["unique_event_count"],
               "eligible_unique_events": 2, "excluded_unique_events": 6, "event_groups": FIXTURE["event_groups"], "external_delivery": False,
               "seen_state_modified": False, "cases": replay(), "remote_replay_run_id": LIVE_FIXTURE["run_id"],
-              "remote_replay_articles": len(LIVE_CASES)}
+              "remote_replay_articles": len(LIVE_CASES), "foreground_replay_run_id": FOREGROUND_FIXTURE["run_id"],
+              "foreground_replay_articles": len(FOREGROUND_CASES)}
     path = ROOT / "out/gamejoa_incremental_news_verification.json"
     path.parent.mkdir(exist_ok=True)
     path.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

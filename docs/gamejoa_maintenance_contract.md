@@ -192,6 +192,15 @@ Every defect or requested change must follow this sequence:
   unique linked articles, unique events, per-article disposition/reason and core
   checks. The October 5 ten-article replay runs in production CI before sending;
   it is a test corpus, never a live alert injection or a seen-state reset.
+- A flow core preserves the investor population, named securities, observation
+  period and separate amounts. It cannot substitute whole-market foreign-plus-
+  institutional turnover for a foreign investor's net sales of two issuers.
+  Routine retail foreign-stock popularity rankings need a new direct business
+  or policy change to qualify; an old company fact is not that change.
+- A technical standard core retains its issuing organization, standard code,
+  publication stage and scope. Capacity words such as `고용량` are not employment
+  data. An import-share observation retains its cumulative period and decimal
+  comparison, not merely a headline's threshold crossing.
 - DRAM market share must retain its source, period and revenue/bit basis.
   CAPEX plans must retain their fiscal period and net/gross basis. A reporter's
   annual extrapolation is not company guidance. A project bill is not a tariff.
