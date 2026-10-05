@@ -361,6 +361,81 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertEqual(obs["sca_end_year"], 2031)
         self.assertAlmostEqual(obs["fq1_27_implied_op_usd_bn"], 50.98, places=1)
 
+    def test_goldman_structural_memory_baseline_locks_chart_and_official_token_source(self):
+        b = w.GOLDMAN_STRUCTURAL_MEMORY_BASELINE
+        self.assertEqual(b["token_consumption_2030_x"], 24.0)
+        self.assertEqual(b["token_consumption_2030_monthly_quadrillion"], 120.0)
+        self.assertTrue(b["token_forecast_official_confirmed"])
+        self.assertEqual(
+            [b["dram_undersupply_2026_pct"], b["dram_undersupply_2027_pct"], b["dram_undersupply_2028_pct"]],
+            [5.0, 5.9, 3.9],
+        )
+        self.assertEqual(
+            [b["nand_undersupply_2026_pct"], b["nand_undersupply_2027_pct"], b["nand_undersupply_2028_pct"]],
+            [4.4, 4.6, 3.0],
+        )
+        self.assertTrue(b["undersupply_2029_2030_likely"])
+        self.assertFalse(b["undersupply_2029_2030_official_public_confirmed"])
+
+    def test_goldman_official_token_forecast_extracts_24x_and_120_quadrillion(self):
+        item = {
+            "title": "AI Agents Forecast to Boost Tech Cash Flow as Usage Soars | Goldman Sachs",
+            "description": (
+                "Goldman Sachs Research expects token consumption to multiply 24 times by 2030, "
+                "reaching 120 quadrillion tokens per month."
+            ),
+            "source": "Goldman Sachs",
+            "link": "https://www.goldmansachs.com/insights/articles/ai-agents-forecast-to-boost-tech-cash-flow-as-usage-soars",
+            "published_kst": "2026-05-20T21:00:00+09:00",
+        }
+        obs = w._extract_goldman_structural_memory(item)
+        self.assertIsNotNone(obs)
+        self.assertEqual(obs["token_consumption_2030_x"], 24.0)
+        self.assertEqual(obs["token_consumption_2030_monthly_quadrillion"], 120.0)
+        self.assertTrue(obs["token_forecast_official_confirmed"])
+        self.assertEqual(obs["source_rank"], 3)
+
+    def test_goldman_secondary_memory_balance_extracts_2026_to_2028_without_overpromoting_2029_30(self):
+        item = {
+            "title": "Goldman memory and storage supply-demand outlook",
+            "description": (
+                "DRAM supply-demand deficit 5.0% / 5.9% / 3.9% for 2026E / 2027E / 2028E. "
+                "NAND supply-demand deficit 4.4% / 4.6% / 3.0% for 2026E / 2027E / 2028E. "
+                "The market may remain undersupplied in 2029-2030 as well."
+            ),
+            "source": "Hilo Research",
+            "link": "https://www.xxquant.com/en/institution/institutional-research/e4559cb64799383337f1531cfa347ef3",
+            "published_kst": "2026-09-01T09:00:00+09:00",
+        }
+        obs = w._extract_goldman_structural_memory(item)
+        self.assertIsNotNone(obs)
+        self.assertEqual(obs["dram_undersupply_2027_pct"], 5.9)
+        self.assertEqual(obs["nand_undersupply_2028_pct"], 3.0)
+        self.assertTrue(obs["undersupply_2029_2030_likely"])
+        self.assertFalse(obs.get("undersupply_2029_2030_official_public_confirmed", False))
+        merged = w._merge_typed_state(w.GOLDMAN_STRUCTURAL_MEMORY_BASELINE, obs)
+        self.assertEqual(w._goldman_structural_memory_changes(w.GOLDMAN_STRUCTURAL_MEMORY_BASELINE, merged), [])
+
+    def test_goldman_memory_duration_alerts_on_material_deficit_revision_and_official_confirmation(self):
+        old = dict(w.GOLDMAN_STRUCTURAL_MEMORY_BASELINE)
+        revised = dict(old, dram_undersupply_2027_pct=6.6)
+        changes = w._goldman_structural_memory_changes(old, revised)
+        self.assertTrue(any("5.9%→6.6%" in x for x in changes))
+        confirmed = dict(old, undersupply_2029_2030_official_public_confirmed=True)
+        changes2 = w._goldman_structural_memory_changes(old, confirmed)
+        self.assertTrue(any("공개 공식자료 확인으로 승격" in x for x in changes2))
+
+    def test_goldman_untrusted_repost_does_not_promote_structural_state(self):
+        item = {
+            "title": "Goldman Sachs DRAM NAND undersupply to 2030",
+            "description": "DRAM and NAND may remain undersupplied in 2029-2030. Token demand 24x by 2030.",
+            "source": "Random Blog",
+            "link": "https://example.com/goldman-memory",
+            "published_kst": "2026-10-05T09:00:00+09:00",
+        }
+        self.assertTrue(w._is_goldman_structural_memory_item(item))
+        self.assertIsNone(w._extract_goldman_structural_memory(item))
+
     def test_dgx_spark_official_64gb_state_extracts_capacity_price_and_cluster_limits(self):
         item = {
             "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
