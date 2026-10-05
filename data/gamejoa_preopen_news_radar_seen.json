@@ -4926,6 +4926,21 @@
       "source": "머니투데이",
       "title": "'엔비디아 들어온다' 소식에 中 반도체 하락…日도 약세[Asia마감]"
     },
+    "event:fcf5a196d7ce105a08c85f47": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://www.fnnews.com/news/202610060501405517",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ba69f43dc31ad2bb76565ce87c672682e385ee2638a85ca281d44dfa91d821a6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T05:01+09:00",
+      "title": "\"최태원 회장 지분 매각부터 솔리다임까지\"…SK, '주주가치' 앞세운다"
+    },
     "event:fe31ff5358e65eebb00c0ffc": {
       "first_seen_kst": "2026-10-03T00:24:31+09:00",
       "lanes": {
@@ -5197,6 +5212,26 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "fact:0b86784b7697f8df13b56b51": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169893",
+      "source": "매일경제",
+      "source_body_digest": "3a78613a2accb22ac043eef996567ccf19282c192ecbb25927695932e34c3a5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c1328b129579424ca1ec54d1d145efac9e8f16fa75093154883b6e55aa06cecb",
+      "source_fact_keys": [
+        "source_fact:v1:08762b03473b0a82f8c23b4bb5d803b9c3fddab3ca4fe827cb4f0c5eacc0a05f",
+        "source_fact:v1:72f486dd2b3ede05add60e708a55bdc954926b5914f7ab8c6d5b87ca0b4c270a",
+        "source_fact:v1:77b6cf18195eeba12f7dbdc0fb40b39802bc217a5365753569d3f0b66f6c8e7e",
+        "source_fact:v1:b973c4999a07f883e13ec18bfa3774a749dda4c5d84d909bb944973dbd3479c2"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "수도권은 집 부족…지방은 수요 부족해 공공주택 착공 연기"
     },
     "fact:0bf54ac25797205dad6820c8": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
@@ -7075,6 +7110,23 @@
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
     },
+    "fact:6ecc0d031bff7e8d359e3b76": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814687",
+      "source": "뉴시스",
+      "source_body_digest": "c117367c53b5a2688de3ee1a4a2bfa5e01b11b4e68c6c8d270b05984b08f1acd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:696bd6d909e1746ff6e7e5a5a2f24a6667b30efb954b0c9bbd3cd0b545395d77",
+      "source_fact_keys": [
+        "source_fact:v1:eca9215b22d527e72bf87604bc26b06047a3cbcf3fc2a0157b480a4b5577790f"
+      ],
+      "source_published_kst": "2026-10-06T07:18+09:00",
+      "title": "이집트대통령, \"어떤 일이 있어도 나일강 물 권리 지켜낼 것\" 연설"
+    },
     "fact:7043eb798518f9cbc944b12c": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
@@ -8697,6 +8749,25 @@
       ],
       "source_published_kst": "2026-10-06T06:25+09:00",
       "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
+    },
+    "fact:d7b0df917265718882e81fa5": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2631770",
+      "source": "이투데이",
+      "source_body_digest": "4056646df73b7d947c5a06f87b225b1a3b859d350437e679559e5d334fa931df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fbdf0f8be5d69bef8aa056f1e9df2586da1e72abd47bf4049a127b95bcaa5f8e",
+      "source_fact_keys": [
+        "source_fact:v1:25949801f1d375a23a860413f92cd01bb6ca1db83d80dd6a04b274f484c4c3cb",
+        "source_fact:v1:784055f0f83f996289ec9b6b9623190da3f17c9c889e1abc5c8a96146c2e7852",
+        "source_fact:v1:a3c3375cdf797d460af6b1f1dec833c0f4a9462d84ee0b9046ecb728b2e0e388"
+      ],
+      "source_published_kst": "2026-10-06T07:10+09:00",
+      "title": "5만 가구 ‘한강2’ 연계 5호선 2034년 개통할까 [교통지옥 김포 ③]"
     },
     "fact:dbeb5fd6614dbec10b54f316": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
@@ -12545,6 +12616,25 @@
       "link": "https://www.yna.co.kr/view/AKR20261003010300071",
       "source": "연합뉴스",
       "title": "트럼프, 선거용 '알래스카 투자' 관철하려 韓에 관세카드 꺼낼까 | 연합뉴스"
+    },
+    "link:300e8dabc53b47a23281c9d0": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2631770",
+      "source": "이투데이",
+      "source_body_digest": "4056646df73b7d947c5a06f87b225b1a3b859d350437e679559e5d334fa931df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fbdf0f8be5d69bef8aa056f1e9df2586da1e72abd47bf4049a127b95bcaa5f8e",
+      "source_fact_keys": [
+        "source_fact:v1:25949801f1d375a23a860413f92cd01bb6ca1db83d80dd6a04b274f484c4c3cb",
+        "source_fact:v1:784055f0f83f996289ec9b6b9623190da3f17c9c889e1abc5c8a96146c2e7852",
+        "source_fact:v1:a3c3375cdf797d460af6b1f1dec833c0f4a9462d84ee0b9046ecb728b2e0e388"
+      ],
+      "source_published_kst": "2026-10-06T07:10+09:00",
+      "title": "5만 가구 ‘한강2’ 연계 5호선 2034년 개통할까 [교통지옥 김포 ③]"
     },
     "link:3078a3d0410009efc6bba4d2": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
@@ -21930,6 +22020,21 @@
       "source": "매일경제",
       "title": "3000억 펀드 만들고 저리 대출까지…정책금융, 피지컬 AI에 돈 푼다"
     },
+    "link:ae55df841c535509930b89bd": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://www.fnnews.com/news/202610060501405517",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ba69f43dc31ad2bb76565ce87c672682e385ee2638a85ca281d44dfa91d821a6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T05:01+09:00",
+      "title": "\"최태원 회장 지분 매각부터 솔리다임까지\"…SK, '주주가치' 앞세운다"
+    },
     "link:af85b831aad1ee980840a316": {
       "first_seen_kst": "2026-10-05T14:04:17+09:00",
       "lanes": {
@@ -21997,6 +22102,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:05+09:00",
       "title": "정부, 4.7조 '프론티어 AI' 12월 공모…내년 2월 출자 대상 뽑는다"
+    },
+    "link:b16ee6cbd258a1a21b123a9b": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814687",
+      "source": "뉴시스",
+      "source_body_digest": "c117367c53b5a2688de3ee1a4a2bfa5e01b11b4e68c6c8d270b05984b08f1acd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:696bd6d909e1746ff6e7e5a5a2f24a6667b30efb954b0c9bbd3cd0b545395d77",
+      "source_fact_keys": [
+        "source_fact:v1:eca9215b22d527e72bf87604bc26b06047a3cbcf3fc2a0157b480a4b5577790f"
+      ],
+      "source_published_kst": "2026-10-06T07:18+09:00",
+      "title": "이집트대통령, \"어떤 일이 있어도 나일강 물 권리 지켜낼 것\" 연설"
     },
     "link:b1a4aeab18e1b10a042ae09e": {
       "first_seen_kst": "2026-10-02T19:26:27+09:00",
@@ -25853,6 +25975,26 @@
       "source": "이투데이",
       "title": "더존비즈온, 서울시 ‘행정지원 AI 에이전트 구축’ 사업에 ‘ONE AI PE’ 2년 연속 공급"
     },
+    "link:e602a26a1ed0a6334414221c": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169893",
+      "source": "매일경제",
+      "source_body_digest": "3a78613a2accb22ac043eef996567ccf19282c192ecbb25927695932e34c3a5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c1328b129579424ca1ec54d1d145efac9e8f16fa75093154883b6e55aa06cecb",
+      "source_fact_keys": [
+        "source_fact:v1:08762b03473b0a82f8c23b4bb5d803b9c3fddab3ca4fe827cb4f0c5eacc0a05f",
+        "source_fact:v1:72f486dd2b3ede05add60e708a55bdc954926b5914f7ab8c6d5b87ca0b4c270a",
+        "source_fact:v1:77b6cf18195eeba12f7dbdc0fb40b39802bc217a5365753569d3f0b66f6c8e7e",
+        "source_fact:v1:b973c4999a07f883e13ec18bfa3774a749dda4c5d84d909bb944973dbd3479c2"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "수도권은 집 부족…지방은 수요 부족해 공공주택 착공 연기"
+    },
     "link:e6400e86fab7d7ba024ca367": {
       "first_seen_kst": "2026-09-18T10:10:35+09:00",
       "lanes": {
@@ -27817,6 +27959,25 @@
       "source": "연합뉴스",
       "title": "메시, 또 구단주 됐다…스페인 2부 엘덴세도 인수 | 연합뉴스"
     },
+    "original:0135ffb31f7cb99ce1227a2d": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2631770",
+      "source": "이투데이",
+      "source_body_digest": "4056646df73b7d947c5a06f87b225b1a3b859d350437e679559e5d334fa931df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fbdf0f8be5d69bef8aa056f1e9df2586da1e72abd47bf4049a127b95bcaa5f8e",
+      "source_fact_keys": [
+        "source_fact:v1:25949801f1d375a23a860413f92cd01bb6ca1db83d80dd6a04b274f484c4c3cb",
+        "source_fact:v1:784055f0f83f996289ec9b6b9623190da3f17c9c889e1abc5c8a96146c2e7852",
+        "source_fact:v1:a3c3375cdf797d460af6b1f1dec833c0f4a9462d84ee0b9046ecb728b2e0e388"
+      ],
+      "source_published_kst": "2026-10-06T07:10+09:00",
+      "title": "5만 가구 ‘한강2’ 연계 5호선 2034년 개통할까 [교통지옥 김포 ③]"
+    },
     "original:014beb25a5da4559bde15d55": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
       "lanes": {
@@ -28037,6 +28198,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T07:11+09:00",
       "title": "CU '리센느 빵' 구매 10명 중 7명 남성…30대 남성이 최대 고객"
+    },
+    "original:0447adc091befb788c8473ae": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814687",
+      "source": "뉴시스",
+      "source_body_digest": "c117367c53b5a2688de3ee1a4a2bfa5e01b11b4e68c6c8d270b05984b08f1acd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:696bd6d909e1746ff6e7e5a5a2f24a6667b30efb954b0c9bbd3cd0b545395d77",
+      "source_fact_keys": [
+        "source_fact:v1:eca9215b22d527e72bf87604bc26b06047a3cbcf3fc2a0157b480a4b5577790f"
+      ],
+      "source_published_kst": "2026-10-06T07:18+09:00",
+      "title": "이집트대통령, \"어떤 일이 있어도 나일강 물 권리 지켜낼 것\" 연설"
     },
     "original:045bc75f721cdd348aa6f590": {
       "first_seen_kst": "2026-10-01T21:23:29+09:00",
@@ -35968,6 +36146,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261002102500063",
       "source": "연합뉴스",
       "title": "서부발전, 전남개발공사와 전남광주 육상풍력 맞손 | 연합뉴스"
+    },
+    "original:74c1384079fed68da8cd92a9": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169893",
+      "source": "매일경제",
+      "source_body_digest": "3a78613a2accb22ac043eef996567ccf19282c192ecbb25927695932e34c3a5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c1328b129579424ca1ec54d1d145efac9e8f16fa75093154883b6e55aa06cecb",
+      "source_fact_keys": [
+        "source_fact:v1:08762b03473b0a82f8c23b4bb5d803b9c3fddab3ca4fe827cb4f0c5eacc0a05f",
+        "source_fact:v1:72f486dd2b3ede05add60e708a55bdc954926b5914f7ab8c6d5b87ca0b4c270a",
+        "source_fact:v1:77b6cf18195eeba12f7dbdc0fb40b39802bc217a5365753569d3f0b66f6c8e7e",
+        "source_fact:v1:b973c4999a07f883e13ec18bfa3774a749dda4c5d84d909bb944973dbd3479c2"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "수도권은 집 부족…지방은 수요 부족해 공공주택 착공 연기"
     },
     "original:74c50033009d6b0a3d501761": {
       "first_seen_kst": "2026-09-28T10:39:56+09:00",
@@ -44140,6 +44338,21 @@
       "source": "연합뉴스",
       "title": "美 SEC, '토큰 주식' 거래 문턱 낮춘다…24시간 거래 확대되나 | 연합뉴스"
     },
+    "original:ea1b53a32153eeac69a4e4cf": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://www.fnnews.com/news/202610060501405517",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ba69f43dc31ad2bb76565ce87c672682e385ee2638a85ca281d44dfa91d821a6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T05:01+09:00",
+      "title": "\"최태원 회장 지분 매각부터 솔리다임까지\"…SK, '주주가치' 앞세운다"
+    },
     "original:ea40782a0e830a1e95cf9ab0": {
       "first_seen_kst": "2026-10-04T06:09:53+09:00",
       "lanes": {
@@ -45620,6 +45833,25 @@
       ],
       "source_published_kst": "2026-10-05T09:13+09:00",
       "title": "\"국채 5%에도 주식이 낫다…반도체 대형주 쥐고 오래 기다려라\""
+    },
+    "source_fact:00e115621bd833c5107dd329": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2631770",
+      "source": "이투데이",
+      "source_body_digest": "4056646df73b7d947c5a06f87b225b1a3b859d350437e679559e5d334fa931df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fbdf0f8be5d69bef8aa056f1e9df2586da1e72abd47bf4049a127b95bcaa5f8e",
+      "source_fact_keys": [
+        "source_fact:v1:25949801f1d375a23a860413f92cd01bb6ca1db83d80dd6a04b274f484c4c3cb",
+        "source_fact:v1:784055f0f83f996289ec9b6b9623190da3f17c9c889e1abc5c8a96146c2e7852",
+        "source_fact:v1:a3c3375cdf797d460af6b1f1dec833c0f4a9462d84ee0b9046ecb728b2e0e388"
+      ],
+      "source_published_kst": "2026-10-06T07:10+09:00",
+      "title": "5만 가구 ‘한강2’ 연계 5호선 2034년 개통할까 [교통지옥 김포 ③]"
     },
     "source_fact:012ed2f7f7adec33dc278a02": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -47252,6 +47484,26 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
     },
+    "source_fact:166dfe51d340e5b33026def6": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169893",
+      "source": "매일경제",
+      "source_body_digest": "3a78613a2accb22ac043eef996567ccf19282c192ecbb25927695932e34c3a5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c1328b129579424ca1ec54d1d145efac9e8f16fa75093154883b6e55aa06cecb",
+      "source_fact_keys": [
+        "source_fact:v1:08762b03473b0a82f8c23b4bb5d803b9c3fddab3ca4fe827cb4f0c5eacc0a05f",
+        "source_fact:v1:72f486dd2b3ede05add60e708a55bdc954926b5914f7ab8c6d5b87ca0b4c270a",
+        "source_fact:v1:77b6cf18195eeba12f7dbdc0fb40b39802bc217a5365753569d3f0b66f6c8e7e",
+        "source_fact:v1:b973c4999a07f883e13ec18bfa3774a749dda4c5d84d909bb944973dbd3479c2"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "수도권은 집 부족…지방은 수요 부족해 공공주택 착공 연기"
+    },
     "source_fact:17200814257079d16747caa8": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -48705,6 +48957,26 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:2c469e4b7db40b1b2ccc0faf": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169893",
+      "source": "매일경제",
+      "source_body_digest": "3a78613a2accb22ac043eef996567ccf19282c192ecbb25927695932e34c3a5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c1328b129579424ca1ec54d1d145efac9e8f16fa75093154883b6e55aa06cecb",
+      "source_fact_keys": [
+        "source_fact:v1:08762b03473b0a82f8c23b4bb5d803b9c3fddab3ca4fe827cb4f0c5eacc0a05f",
+        "source_fact:v1:72f486dd2b3ede05add60e708a55bdc954926b5914f7ab8c6d5b87ca0b4c270a",
+        "source_fact:v1:77b6cf18195eeba12f7dbdc0fb40b39802bc217a5365753569d3f0b66f6c8e7e",
+        "source_fact:v1:b973c4999a07f883e13ec18bfa3774a749dda4c5d84d909bb944973dbd3479c2"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "수도권은 집 부족…지방은 수요 부족해 공공주택 착공 연기"
     },
     "source_fact:2c8cb62a296cddfaf27d8ecc": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -50856,6 +51128,25 @@
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
     },
+    "source_fact:47a577cc80cfdfa78931cea6": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2631770",
+      "source": "이투데이",
+      "source_body_digest": "4056646df73b7d947c5a06f87b225b1a3b859d350437e679559e5d334fa931df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fbdf0f8be5d69bef8aa056f1e9df2586da1e72abd47bf4049a127b95bcaa5f8e",
+      "source_fact_keys": [
+        "source_fact:v1:25949801f1d375a23a860413f92cd01bb6ca1db83d80dd6a04b274f484c4c3cb",
+        "source_fact:v1:784055f0f83f996289ec9b6b9623190da3f17c9c889e1abc5c8a96146c2e7852",
+        "source_fact:v1:a3c3375cdf797d460af6b1f1dec833c0f4a9462d84ee0b9046ecb728b2e0e388"
+      ],
+      "source_published_kst": "2026-10-06T07:10+09:00",
+      "title": "5만 가구 ‘한강2’ 연계 5호선 2034년 개통할까 [교통지옥 김포 ③]"
+    },
     "source_fact:47a6af4935a0feadd8f52f2a": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
       "lanes": {
@@ -51207,6 +51498,23 @@
       ],
       "source_published_kst": "2026-10-06T05:43+09:00",
       "title": "美 부통령 \"알래스카 LNG 사업 투자, 한국과 세부사항 조율해야\""
+    },
+    "source_fact:4d9c685c62375ee43221d954": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814687",
+      "source": "뉴시스",
+      "source_body_digest": "c117367c53b5a2688de3ee1a4a2bfa5e01b11b4e68c6c8d270b05984b08f1acd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:696bd6d909e1746ff6e7e5a5a2f24a6667b30efb954b0c9bbd3cd0b545395d77",
+      "source_fact_keys": [
+        "source_fact:v1:eca9215b22d527e72bf87604bc26b06047a3cbcf3fc2a0157b480a4b5577790f"
+      ],
+      "source_published_kst": "2026-10-06T07:18+09:00",
+      "title": "이집트대통령, \"어떤 일이 있어도 나일강 물 권리 지켜낼 것\" 연설"
     },
     "source_fact:4dab6466b40db44962822b8f": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -52170,6 +52478,26 @@
       ],
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "韓 비료, 브라질 진출 교두보…콩·옥수수 시장 겨냥"
+    },
+    "source_fact:595e5a9d4cbe4a084c78af86": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169893",
+      "source": "매일경제",
+      "source_body_digest": "3a78613a2accb22ac043eef996567ccf19282c192ecbb25927695932e34c3a5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c1328b129579424ca1ec54d1d145efac9e8f16fa75093154883b6e55aa06cecb",
+      "source_fact_keys": [
+        "source_fact:v1:08762b03473b0a82f8c23b4bb5d803b9c3fddab3ca4fe827cb4f0c5eacc0a05f",
+        "source_fact:v1:72f486dd2b3ede05add60e708a55bdc954926b5914f7ab8c6d5b87ca0b4c270a",
+        "source_fact:v1:77b6cf18195eeba12f7dbdc0fb40b39802bc217a5365753569d3f0b66f6c8e7e",
+        "source_fact:v1:b973c4999a07f883e13ec18bfa3774a749dda4c5d84d909bb944973dbd3479c2"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "수도권은 집 부족…지방은 수요 부족해 공공주택 착공 연기"
     },
     "source_fact:59ad6f96de77aae6f5d51f79": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -55243,6 +55571,26 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "주담대 금리도 '들썩'…한은 추가 인상에 이자 더 오르나[금리 쇼크③]"
+    },
+    "source_fact:81095ecf1add7fb5e6a8644b": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169893",
+      "source": "매일경제",
+      "source_body_digest": "3a78613a2accb22ac043eef996567ccf19282c192ecbb25927695932e34c3a5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c1328b129579424ca1ec54d1d145efac9e8f16fa75093154883b6e55aa06cecb",
+      "source_fact_keys": [
+        "source_fact:v1:08762b03473b0a82f8c23b4bb5d803b9c3fddab3ca4fe827cb4f0c5eacc0a05f",
+        "source_fact:v1:72f486dd2b3ede05add60e708a55bdc954926b5914f7ab8c6d5b87ca0b4c270a",
+        "source_fact:v1:77b6cf18195eeba12f7dbdc0fb40b39802bc217a5365753569d3f0b66f6c8e7e",
+        "source_fact:v1:b973c4999a07f883e13ec18bfa3774a749dda4c5d84d909bb944973dbd3479c2"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "수도권은 집 부족…지방은 수요 부족해 공공주택 착공 연기"
     },
     "source_fact:817e7b8281469189bce72c9a": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -62946,6 +63294,25 @@
       "source_published_kst": "2026-10-06T06:40+09:00",
       "title": "“중동 원유수출 증가·G7 비축유 방출 약속“ 국제유가 1.8%↓"
     },
+    "source_fact:eb0978ae83ebde68e3a38ca7": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2631770",
+      "source": "이투데이",
+      "source_body_digest": "4056646df73b7d947c5a06f87b225b1a3b859d350437e679559e5d334fa931df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fbdf0f8be5d69bef8aa056f1e9df2586da1e72abd47bf4049a127b95bcaa5f8e",
+      "source_fact_keys": [
+        "source_fact:v1:25949801f1d375a23a860413f92cd01bb6ca1db83d80dd6a04b274f484c4c3cb",
+        "source_fact:v1:784055f0f83f996289ec9b6b9623190da3f17c9c889e1abc5c8a96146c2e7852",
+        "source_fact:v1:a3c3375cdf797d460af6b1f1dec833c0f4a9462d84ee0b9046ecb728b2e0e388"
+      ],
+      "source_published_kst": "2026-10-06T07:10+09:00",
+      "title": "5만 가구 ‘한강2’ 연계 5호선 2034년 개통할까 [교통지옥 김포 ③]"
+    },
     "source_fact:eb1b9f66bbe905e3cb178657": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -64631,6 +64998,25 @@
       "source": "연합뉴스",
       "title": "메시, 또 구단주 됐다…스페인 2부 엘덴세도 인수 | 연합뉴스"
     },
+    "title:0135ffb31f7cb99ce1227a2d": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2631770",
+      "source": "이투데이",
+      "source_body_digest": "4056646df73b7d947c5a06f87b225b1a3b859d350437e679559e5d334fa931df",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fbdf0f8be5d69bef8aa056f1e9df2586da1e72abd47bf4049a127b95bcaa5f8e",
+      "source_fact_keys": [
+        "source_fact:v1:25949801f1d375a23a860413f92cd01bb6ca1db83d80dd6a04b274f484c4c3cb",
+        "source_fact:v1:784055f0f83f996289ec9b6b9623190da3f17c9c889e1abc5c8a96146c2e7852",
+        "source_fact:v1:a3c3375cdf797d460af6b1f1dec833c0f4a9462d84ee0b9046ecb728b2e0e388"
+      ],
+      "source_published_kst": "2026-10-06T07:10+09:00",
+      "title": "5만 가구 ‘한강2’ 연계 5호선 2034년 개통할까 [교통지옥 김포 ③]"
+    },
     "title:014beb25a5da4559bde15d55": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
       "lanes": {
@@ -64851,6 +65237,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T07:11+09:00",
       "title": "CU '리센느 빵' 구매 10명 중 7명 남성…30대 남성이 최대 고객"
+    },
+    "title:0447adc091befb788c8473ae": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814687",
+      "source": "뉴시스",
+      "source_body_digest": "c117367c53b5a2688de3ee1a4a2bfa5e01b11b4e68c6c8d270b05984b08f1acd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:696bd6d909e1746ff6e7e5a5a2f24a6667b30efb954b0c9bbd3cd0b545395d77",
+      "source_fact_keys": [
+        "source_fact:v1:eca9215b22d527e72bf87604bc26b06047a3cbcf3fc2a0157b480a4b5577790f"
+      ],
+      "source_published_kst": "2026-10-06T07:18+09:00",
+      "title": "이집트대통령, \"어떤 일이 있어도 나일강 물 권리 지켜낼 것\" 연설"
     },
     "title:045bc75f721cdd348aa6f590": {
       "first_seen_kst": "2026-10-01T21:23:29+09:00",
@@ -72824,6 +73227,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261002102500063",
       "source": "연합뉴스",
       "title": "서부발전, 전남개발공사와 전남광주 육상풍력 맞손 | 연합뉴스"
+    },
+    "title:74c1384079fed68da8cd92a9": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169893",
+      "source": "매일경제",
+      "source_body_digest": "3a78613a2accb22ac043eef996567ccf19282c192ecbb25927695932e34c3a5b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c1328b129579424ca1ec54d1d145efac9e8f16fa75093154883b6e55aa06cecb",
+      "source_fact_keys": [
+        "source_fact:v1:08762b03473b0a82f8c23b4bb5d803b9c3fddab3ca4fe827cb4f0c5eacc0a05f",
+        "source_fact:v1:72f486dd2b3ede05add60e708a55bdc954926b5914f7ab8c6d5b87ca0b4c270a",
+        "source_fact:v1:77b6cf18195eeba12f7dbdc0fb40b39802bc217a5365753569d3f0b66f6c8e7e",
+        "source_fact:v1:b973c4999a07f883e13ec18bfa3774a749dda4c5d84d909bb944973dbd3479c2"
+      ],
+      "source_published_kst": "2026-10-06T06:01+09:00",
+      "title": "수도권은 집 부족…지방은 수요 부족해 공공주택 착공 연기"
     },
     "title:74c50033009d6b0a3d501761": {
       "first_seen_kst": "2026-09-28T10:39:56+09:00",
@@ -81114,6 +81537,21 @@
       "source": "연합뉴스",
       "title": "美 SEC, '토큰 주식' 거래 문턱 낮춘다…24시간 거래 확대되나 | 연합뉴스"
     },
+    "title:ea1b53a32153eeac69a4e4cf": {
+      "first_seen_kst": "2026-10-06T07:30:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T07:30:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T07:30:15+09:00",
+      "link": "https://www.fnnews.com/news/202610060501405517",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "ba69f43dc31ad2bb76565ce87c672682e385ee2638a85ca281d44dfa91d821a6",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T05:01+09:00",
+      "title": "\"최태원 회장 지분 매각부터 솔리다임까지\"…SK, '주주가치' 앞세운다"
+    },
     "title:ea40782a0e830a1e95cf9ab0": {
       "first_seen_kst": "2026-10-04T06:09:53+09:00",
       "lanes": {
@@ -82548,5 +82986,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T07:08:46+09:00"
+  "updated_at_kst": "2026-10-06T07:30:15+09:00"
 }
