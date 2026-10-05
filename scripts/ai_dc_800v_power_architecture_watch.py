@@ -27,7 +27,7 @@ SCHNEIDER_POWER_RACK = "https://www.se.com/ww/en/work/products/product-reveal/ne
 SCHNEIDER_GUIDE = "https://www.se.com/ww/en/insights/ai-and-technology/artificial-intelligence/vdc-powering-the-future-of-ai-data-centers/"
 VERTIV_GUIDE = "https://www.vertiv.com/en-ca/insights/articles/educational-articles/the-800-vdc-decision-a-practical-guide-for-ai-power-architecture/"
 VERTIV_RELEASE = "https://www.vertiv.com/en-emea/about/news-and-events/news-releases/from-vision-to-readiness-vertiv-collaborates-with-nvidia-to-advance-800-vdc-platform-designs-to-power-the-next-generation-of-ai-factories/"
-EATON_GTC = "https://www.eaton.com/us/en-us/forms/markets/data-centers/nvidia-gtc-2026.html"
+EATON_GTC = "https://www.eaton.com/kr/ko-kr/company/news-insights/news-releases/2025/eaton-next-generation-ai-factories.html"
 HITACHI_800V = "https://hitachidigital.com/news/hitachi-accelerate-gigawatt-scale-ai-factories/"
 SIEMENS_SST = "https://press.siemens.com/global/en/pressrelease/siemens-and-reinhausen-develop-direct-current-power-solutions-ai-data-centers"
 LS_DC = "https://nahpdev.ls-electric.com/company/articles/2759/industry-usa-ls-electric-america-to-highlight-dc-grid-solutions-for-ai-data-centers-at-data-center-world-2026"
@@ -184,7 +184,10 @@ def snapshot(texts: dict[str, str]) -> dict:
             },
             "Siemens": {
                 "stage": "SST 개발·산업화" if "solid-state transformer" in siemens.lower() and "800 vdc" in siemens.lower() else "확인 불가",
-                "sst_36kv_to_800v": "36 kv" in siemens.lower() and "800 vdc" in siemens.lower() if siemens else None,
+                "sst_36kv_to_800v": (
+                    ("36 kv" in siemens.lower() or "36kv" in siemens.lower())
+                    and "800 vdc" in siemens.lower()
+                ) if siemens else None,
                 "software_protection_scope": all(x in siemens.lower() for x in ("protection", "control")) if siemens else None,
             },
             "LS ELECTRIC": {
