@@ -55,14 +55,43 @@ def _week_key():
 
 
 def _future_refinery_policy(row):
-    t = _title(row)
+    # 원제목뿐 아니라 검색 스니펫/본문에 미래형 공격 방침이 있으면 잡는다.
+    # 다만 이미 발생한 피격·화재와 구분하기 위해 '향후/계획/예고' 동사가 반드시 필요하다.
+    t = _text(row)
     future = any(x in t for x in (
         "will hit", "will strike", "will attack", "plans to strike", "plans to attack",
         "double down on attacking", "vows to strike", "vows to attack",
-        "공격하겠다", "타격하겠다", "공격 확대", "타격 확대", "공격 늘리", "보복 공격 예고",
+        "will keep hitting", "will continue hitting", "will intensify strikes",
+        "공격하겠다", "타격하겠다", "공격할 것", "타격할 것",
+        "공격 확대", "타격 확대", "공격 늘리", "공격을 늘리", "보복 공격 예고",
+        "공격을 강화", "타격을 강화", "계속 공격", "계속 타격",
     ))
     target = any(x in t for x in ("refinery", "refineries", "oil refinery", "정유소", "정유시설", "정유 공장"))
-    return future and target
+    actual_now = any(x in _title(row) for x in (
+        "refinery hit", "refinery struck", "refinery attacked", "refinery fire",
+        "정유시설 피격", "정유소 피격", "정유시설 화재", "정유소 화재",
+    ))
+    return future and target and not actual_now
+
+
+def _aramco_houthi_claim(row):
+    title = _title(row)
+    text = _text(row)
+    aramco_riyadh = (
+        any(x in text for x in ("aramco", "아람코"))
+        and any(x in text for x in ("riyadh", "리야드"))
+    )
+    houthi = any(x in text for x in ("houthi", "houthis", "ansar allah", "후티", "안사르 알라", "안사르알라"))
+    attack = any(x in text for x in (
+        "say they attacked", "says it attacked", "said it attacked", "claimed responsibility",
+        "claimed it attacked", "targeted aramco", "attacked aramco",
+        "공격했다고 밝혔다", "공격했다고 주장", "공격 주장", "공격했다며",
+    ))
+    weapon = any(x in text for x in (
+        "ballistic missile", "ballistic missiles", "missile", "missiles", "drone", "drones",
+        "탄도미사일", "미사일", "드론",
+    ))
+    return aramco_riyadh and houthi and attack and weapon
 
 
 def _aramco_fire_unattributed(row):
@@ -82,7 +111,7 @@ def _aramco_fire_unattributed(row):
         "no immediate confirmation", "cause was not immediately known",
         "원인 미확정", "배후 미확정", "공격 주체 미확정", "공식 확인 전",
     ))
-    return core and not explicit and uncertain
+    return core and not explicit and uncertain and not _aramco_houthi_claim(row)
 
 
 def _peace_conditions_commentary(row):
@@ -170,6 +199,8 @@ prev._emergency_marks = emergency_marks
 
 def marks(row):
     out = list(_orig_marks(row))
+    if _aramco_houthi_claim(row):
+        out.append("후티리야드아람코공격주장")
     if _future_refinery_policy(row):
         out.append("러정유시설보복공격확대예고")
     if _aramco_fire_unattributed(row):
@@ -188,6 +219,8 @@ prev._marks = marks
 
 
 def korean_title(ms):
+    if "후티리야드아람코공격주장" in ms:
+        return "후티, 리야드 Aramco 시설 미사일·드론 공격 주장 — 사우디·Aramco 독립 확인 대기"
     if "리야드아람코화재원인미확정" in ms:
         return "리야드 아람코 시설 인근 화재·연기 — 공격 여부·원인·배후 미확정"
     if "러정유시설보복공격확대예고" in ms:
@@ -206,8 +239,10 @@ prev._korean_title = korean_title
 
 def signals(ms):
     out = []
+    if "후티리야드아람코공격주장" in ms:
+        out.append("🔴 후티가 리야드 Aramco 시설을 탄도미사일·드론으로 공격했다고 주장 — 현장 화재·연기와 별개로 사우디·Aramco의 피해·요격·원인 공식 확인은 후속 검증")
     if "리야드아람코화재원인미확정" in ms:
-        out.append("🟡 Reuters는 리야드 아람코 시설 인근 화재·연기를 확인했지만 사우디 당국·Aramco의 즉각 확인과 공격 주체의 책임 주장은 없었음")
+        out.append("🟡 Reuters는 리야드 Aramco 시설 인근 화재·연기를 확인했지만 당시 공격 여부·원인·배후는 공식 확인 전")
     if "러정유시설보복공격확대예고" in ms:
         out.append("🟡 젤렌스키의 러시아 정유시설 공격 확대 방침·보복 예고 — 실제 신규 정유시설 피격·화재·가동중단과 분리")
     if "러시아종전조건입장표명" in ms:
@@ -216,7 +251,17 @@ def signals(ms):
         out.append("🟡 푸틴·미 특사 간 루코일 해외자산 매각 논의 — 종전회담과 같은 자리에서 논의됐지만 휴전 진전 자체는 아님")
     if "호르무즈유조선피격클러스터" in ms:
         out.append("🔴 UKMTO 기준 호르무즈·오만 인근 유조선의 미확인 발사체 피격이 반복 — 동일 사건 재인용과 실제 추가 피격을 분리")
-    return out + _orig_signals(ms)
+
+    # 이 게이트에서 의미를 확정한 사건은 상위 모듈의 범용 신호를 덧붙이지 않는다.
+    # 그래야 '공격 확대 예고'가 '실제 피격', '상업거래'가 '휴전 진전'으로 다시 오염되지 않는다.
+    custom = {
+        "후티리야드아람코공격주장", "리야드아람코화재원인미확정",
+        "러정유시설보복공격확대예고", "러시아종전조건입장표명",
+        "루코일종전협상연계상업거래", "호르무즈유조선피격클러스터",
+    }
+    if set(ms) & custom:
+        return out
+    return _orig_signals(ms)
 
 
 prev._signals = signals
@@ -236,6 +281,10 @@ def score_item(row, now):
         score = max(score, 98)
     if "러정유시설보복공격확대예고" in ms:
         tags += ["우크라이나·러시아", "확전위험", "공격확대예고"]
+    if "후티리야드아람코공격주장" in ms:
+        tags = [t for t in tags if t not in ("휴전·평화", "재건", "종전·협상")]
+        tags += ["사우디·후티", "확전", "Aramco", "공격주장", "공식확인대기"]
+        score = max(score, 100)
     if "리야드아람코화재원인미확정" in ms:
         tags += ["사우디·아람코", "에너지시설위험", "원인미확정"]
     if "러시아종전조건입장표명" in ms:
@@ -297,6 +346,8 @@ watch.item_id = item_id
 
 def topic_label(row):
     ms = set(marks(row))
+    if "후티리야드아람코공격주장" in ms:
+        return "사우디·후티 · Aramco 공격 주장"
     if "리야드아람코화재원인미확정" in ms:
         return "사우디·아람코 · 화재 원인 미확정"
     if "러정유시설보복공격확대예고" in ms:
@@ -319,6 +370,8 @@ except Exception:
 
 def final_color(row):
     ms = set(marks(row))
+    if "후티리야드아람코공격주장" in ms:
+        return "red"
     if ms & {
         "러정유시설보복공격확대예고", "리야드아람코화재원인미확정",
         "러시아종전조건입장표명", "루코일종전협상연계상업거래",
@@ -402,7 +455,9 @@ def semantic_fix(text):
         level, idx = m.group(1), m.group(2)
         marker = None
         topic = None
-        if any(x in block for x in ("유조선 피격 지속", "유조선 잇달아 피격", "유조선 2척 피격")):
+        if any(x in block for x in ("리야드 aramco 시설 미사일·드론 공격 주장", "리야드 aramco 시설을 탄도미사일·드론으로 공격했다고 주장")):
+            marker, topic = "🔴", "사우디·후티 · Aramco 공격 주장"
+        elif any(x in block for x in ("유조선 피격 지속", "유조선 잇달아 피격", "유조선 2척 피격")):
             marker, topic = "🔴", "이란·호르무즈 · 유조선 피격"
         elif any(x in block for x in ("정유시설 공격 확대 예고", "실제 신규 피격 확인과 구분")):
             marker, topic = "🟡", "우크라이나·러시아 · 정유시설 보복 공격 예고"
