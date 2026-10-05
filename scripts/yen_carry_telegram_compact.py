@@ -24,6 +24,7 @@ OUT = pathlib.Path("out")
 BODY = OUT / "yen_carry_composite_alert.md"
 DETAIL = OUT / "yen_carry_composite_alert_detail.md"
 PAYLOAD = OUT / "yen_carry_composite_alert.json"
+PENDING = OUT / "yen_carry_composite_pending_state.json"
 TITLE = OUT / "yen_carry_composite_alert_title.txt"
 
 HEADINGS = {
@@ -236,7 +237,7 @@ def compact_jgb10(item: str | None) -> str | None:
     return item
 
 
-def compact_flow(item: str | None) -> str | None:
+def compact_flow(item: str | None, payload: dict | None = None) -> str | None:
     if not item:
         return None
     m = re.search(r"최근 2주\s*([+\-]?[0-9.]+)조엔\s*/\s*직전 2주\s*([+\-]?[0-9.]+)조엔", item)
@@ -249,8 +250,32 @@ def compact_flow(item: str | None) -> str | None:
             meaning = "순매도·본국회귀 압력"
         else:
             meaning = "중립"
-        return f"해외중장기채 2주 {latest:+.2f}조엔 (직전 {prior:+.2f}) → {meaning}"
+
+        structural = (payload or {}).get("structural_context") or {}
+        mof = structural.get("mof_split") or {}
+        prev_week = str(mof.get("previous_week") or "")
+        latest_week = str(mof.get("latest_week") or "")
+        period = f" / 자료 {prev_week}·{latest_week}" if prev_week and latest_week else ""
+        return f"해외중장기채 2주 {latest:+.2f}조엔 (직전 {prior:+.2f}){period} → {meaning}"
     return item
+
+
+def live_fx_line(pending: dict) -> str | None:
+    values = pending.get("values") or {}
+    try:
+        px = float(values.get("usdjpy"))
+        m15 = float(values.get("usdjpy_15m_pct"))
+        m30 = float(values.get("usdjpy_30m_pct"))
+        m60 = float(values.get("usdjpy_60m_pct"))
+    except (TypeError, ValueError):
+        return None
+    if m60 > 0 or m30 > 0:
+        direction = "엔화 약세"
+    elif m60 < 0 or m30 < 0:
+        direction = "엔화 강세"
+    else:
+        direction = "보합"
+    return f"USD/JPY {px:.3f} · 15분 {m15:+.2f}% · 30분 {m30:+.2f}% · 60분 {m60:+.2f}% → {direction}"
 
 
 def compact_rate(item: str | None) -> str | None:
@@ -339,6 +364,7 @@ def main() -> int:
 
     DETAIL.write_text(original.rstrip() + "\n", encoding="utf-8")
     payload = load_json(PAYLOAD)
+    pending = load_json(PENDING)
     preamble, sections = split_sections(original)
 
     title, direction, risk_asset = direction_call(payload)
@@ -346,11 +372,18 @@ def main() -> int:
     unwind_text = unwind_risk_line(payload, sections)
 
     policy_items = bullets(sections.get("미·일 정책공조·시장 영향", []))
+    verdict_evidence = (payload.get("verdict") or {}).get("evidence") or {}
+    policy_reasons = [str(x) for x in (payload.get("reasons") or [])]
+    policy_active = bool(
+        verdict_evidence.get("unwind::최근 공식 공동개입·추가개입 경고")
+        or any(("정책" in x or "개입" in x or "Bessent" in x) for x in policy_reasons)
+    )
     policy_focus = []
-    for needle in ("정책 단계:", "주식시장:", "정책 경계선:"):
-        item = next((x for x in policy_items if needle in x), None)
-        if item:
-            policy_focus.append(re.sub(r"</?b>", "", item, flags=re.IGNORECASE))
+    if policy_active:
+        for needle in ("정책 단계:", "주식시장:", "정책 경계선:"):
+            item = next((x for x in policy_items if needle in x), None)
+            if item:
+                policy_focus.append(re.sub(r"</?b>", "", item, flags=re.IGNORECASE))
     policy_focus = policy_focus[:3]
     policy_block = (
         ["정책·주식 해석", *[f"• {x}" for x in policy_focus], ""]
@@ -360,9 +393,13 @@ def main() -> int:
     change_items = bullets(sections.get("이번 변화", []))[:2]
 
     key_reasons: list[str] = []
-    usd = usd_line(sections)
-    if usd:
-        key_reasons.append(usd)
+    live_fx = live_fx_line(pending)
+    if live_fx:
+        key_reasons.append(live_fx)
+    else:
+        usd = usd_line(sections)
+        if usd:
+            key_reasons.append(usd)
 
     rate = compact_rate(first_matching(
         sections.get("긴축 경로·레버리지", []),
@@ -375,7 +412,7 @@ def main() -> int:
     flow = compact_flow(first_matching(
         sections.get("구조적 경계·자금환류", []),
         "해외중장기채",
-    ))
+    ), payload)
     if flow:
         key_reasons.append(flow)
 
