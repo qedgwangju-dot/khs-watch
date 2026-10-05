@@ -1604,20 +1604,23 @@
     "event:60e7541ea03f10fd44e77cd2": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
-        "live": "2026-10-05T22:21:29+09:00"
+        "live": "2026-10-05T23:56:11+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261005036700003",
       "source": "연합뉴스",
-      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_body_digest": "7ad7603019e4160205214386c1a401955276e370e6db567afd7fafb83ebf7738",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_identity": "source_facts:v1:666973fa58afae7d0ea9a60e1b93ba50359345abc9b9c013147315e2c6ed9149",
       "source_fact_keys": [
         "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
         "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
         "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
         "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:ca9ae305b3f20f9469bf66f07b237419f879db408ba906ab7a2600be307933cc",
         "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:e312a2a4e30c45ccf8a912e6d8bb7d2b9740314c7e46f99b7f3f2dd3d5a21e16",
+        "source_fact:v1:e45ace95bd61297ec131cb880a1cb11ef8436a2e40271021e762ec98df75dbf2",
         "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
@@ -5070,6 +5073,31 @@
       "source_published_kst": "2026-10-05T17:22+09:00",
       "title": "\"美中의존 줄이자\"…정부, CPTPP 가입 속도"
     },
+    "fact:166307aa8f235687f0b80891": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005036700003",
+      "source": "연합뉴스",
+      "source_body_digest": "7ad7603019e4160205214386c1a401955276e370e6db567afd7fafb83ebf7738",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:666973fa58afae7d0ea9a60e1b93ba50359345abc9b9c013147315e2c6ed9149",
+      "source_fact_keys": [
+        "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
+        "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
+        "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
+        "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:ca9ae305b3f20f9469bf66f07b237419f879db408ba906ab7a2600be307933cc",
+        "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:e312a2a4e30c45ccf8a912e6d8bb7d2b9740314c7e46f99b7f3f2dd3d5a21e16",
+        "source_fact:v1:e45ace95bd61297ec131cb880a1cb11ef8436a2e40271021e762ec98df75dbf2",
+        "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
+      ],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
     "fact:180349ecd5de0bb454e373bc": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -5341,6 +5369,23 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
+    "fact:35c3bf68ddd1992813edce68": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814174",
+      "source": "뉴시스",
+      "source_body_digest": "e54d36c8f846702e226684fce041060ae83ec566d14a3c45fcc9db9841336f04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ffa81b677eaa93d4da3530afc794ebdd1454b8e2f6f543edfc3f4376a14ee33",
+      "source_fact_keys": [
+        "source_fact:v1:b9e84855f526e1e367948473e4cb339a7b16eb50066b55bd0c6b93dba11894da"
+      ],
+      "source_published_kst": "2026-10-05T11:00+09:00",
+      "title": "韓 비료, 브라질 진출 교두보…콩·옥수수 시장 겨냥"
     },
     "fact:3719606fa7a2a173f8a8a8df": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
@@ -6276,6 +6321,23 @@
       "source_published_kst": "2026-10-05T18:03+09:00",
       "title": "'빚의 제국 빛을 잃다' 보도 인상적 … 고금리 위험요인 더 짚어달라"
     },
+    "fact:9147b9159366c054842ba243": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814586",
+      "source": "뉴시스",
+      "source_body_digest": "c76819ef7476a57d5b287be5edbd12b2d99f6529d6be3e09657e675e6883d96d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5843ca509a024d96d497edd9a4936c201692e4e6834ade4a25d170453632207",
+      "source_fact_keys": [
+        "source_fact:v1:9d41c217b205f9359eb5906d9b0e419e56300a623691be2b1e21c2cf9fa0cb11"
+      ],
+      "source_published_kst": "2026-10-05T22:29+09:00",
+      "title": "토스뱅크서도 해킹 시도…일부 보험사도 공격 흔적 포착"
+    },
     "fact:91fc94370e00f53367064fdc": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -7068,6 +7130,25 @@
       ],
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
+    "fact:e6e8dbcc70bc275d5bd833b1": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261005_0000007762",
+      "source": "뉴시스",
+      "source_body_digest": "1e160a8a020959b1b20cba475104f0e638faa12dbad9703895d168754a09b52a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03e64d4bcb73401c8d701cf592c15780b8ad60fb60141adf666c031279d060a0",
+      "source_fact_keys": [
+        "source_fact:v1:0a9540a45fe9ba14d47a3e4b95f2b47c822c7c15afb8bff4243db8367223d42d",
+        "source_fact:v1:838b186c3ed4a468679b6e0292c7473bef692bc0c662813c24a196bd10743a7e",
+        "source_fact:v1:934222370b62b09e7bec21d830c402d63bdba0c0a0e6bd56e1cb36b9a451c9b4"
+      ],
+      "source_published_kst": "2026-10-05T22:31+09:00",
+      "title": "메틀렌: 일본 주요 화학 기업과 신규 갈륨 공급 계약 체결"
     },
     "fact:e74cfd13ce7522a617419190": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -15645,20 +15726,23 @@
     "link:82ef9ee8bef53c50fd1df303": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
-        "live": "2026-10-05T22:21:29+09:00"
+        "live": "2026-10-05T23:56:11+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261005036700003",
       "source": "연합뉴스",
-      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_body_digest": "7ad7603019e4160205214386c1a401955276e370e6db567afd7fafb83ebf7738",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_identity": "source_facts:v1:666973fa58afae7d0ea9a60e1b93ba50359345abc9b9c013147315e2c6ed9149",
       "source_fact_keys": [
         "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
         "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
         "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
         "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:ca9ae305b3f20f9469bf66f07b237419f879db408ba906ab7a2600be307933cc",
         "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:e312a2a4e30c45ccf8a912e6d8bb7d2b9740314c7e46f99b7f3f2dd3d5a21e16",
+        "source_fact:v1:e45ace95bd61297ec131cb880a1cb11ef8436a2e40271021e762ec98df75dbf2",
         "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
@@ -15747,6 +15831,23 @@
       "link": "https://www.edaily.co.kr/news/read?newsid=04877366645608984&parentid=05231606645608984&gubun=E",
       "source": "이데일리",
       "title": "\"최태원, 노소영에 9440억 현금으로 줘야\"…결국 SK주식 판다"
+    },
+    "link:84b226213c26cb6f031e5c72": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814174",
+      "source": "뉴시스",
+      "source_body_digest": "e54d36c8f846702e226684fce041060ae83ec566d14a3c45fcc9db9841336f04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ffa81b677eaa93d4da3530afc794ebdd1454b8e2f6f543edfc3f4376a14ee33",
+      "source_fact_keys": [
+        "source_fact:v1:b9e84855f526e1e367948473e4cb339a7b16eb50066b55bd0c6b93dba11894da"
+      ],
+      "source_published_kst": "2026-10-05T11:00+09:00",
+      "title": "韓 비료, 브라질 진출 교두보…콩·옥수수 시장 겨냥"
     },
     "link:84d0627d5bc8b0acc97f94fc": {
       "first_seen_kst": "2026-10-02T02:03:30+09:00",
@@ -20763,6 +20864,25 @@
       "source_published_kst": "2026-10-03T05:28+09:00",
       "title": "\"알래스카 등 트럼프 프로젝트, 선거 판도 뒤집기엔 역부족\""
     },
+    "link:cf6efa15e666aa325632d1b5": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261005_0000007762",
+      "source": "뉴시스",
+      "source_body_digest": "1e160a8a020959b1b20cba475104f0e638faa12dbad9703895d168754a09b52a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03e64d4bcb73401c8d701cf592c15780b8ad60fb60141adf666c031279d060a0",
+      "source_fact_keys": [
+        "source_fact:v1:0a9540a45fe9ba14d47a3e4b95f2b47c822c7c15afb8bff4243db8367223d42d",
+        "source_fact:v1:838b186c3ed4a468679b6e0292c7473bef692bc0c662813c24a196bd10743a7e",
+        "source_fact:v1:934222370b62b09e7bec21d830c402d63bdba0c0a0e6bd56e1cb36b9a451c9b4"
+      ],
+      "source_published_kst": "2026-10-05T22:31+09:00",
+      "title": "메틀렌: 일본 주요 화학 기업과 신규 갈륨 공급 계약 체결"
+    },
     "link:cf80fcf2682f86f0dad50016": {
       "first_seen_kst": "2026-10-03T22:18:07+09:00",
       "lanes": {
@@ -21146,6 +21266,23 @@
       "link": "https://www.mt.co.kr/world/2026/10/02/2026100208340213181",
       "source": "머니투데이",
       "title": "\"더 시간이 필요할 수도\"...연준 부의장, 추가 금리인상 '신중론'"
+    },
+    "link:d559071a3f4053b016cab12f": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814586",
+      "source": "뉴시스",
+      "source_body_digest": "c76819ef7476a57d5b287be5edbd12b2d99f6529d6be3e09657e675e6883d96d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5843ca509a024d96d497edd9a4936c201692e4e6834ade4a25d170453632207",
+      "source_fact_keys": [
+        "source_fact:v1:9d41c217b205f9359eb5906d9b0e419e56300a623691be2b1e21c2cf9fa0cb11"
+      ],
+      "source_published_kst": "2026-10-05T22:29+09:00",
+      "title": "토스뱅크서도 해킹 시도…일부 보험사도 공격 흔적 포착"
     },
     "link:d588fc8bbe53b6021326d7e1": {
       "first_seen_kst": "2026-09-29T10:17:19+09:00",
@@ -29036,6 +29173,23 @@
       "source": "뉴시스",
       "title": "\"부산대 작년 지역 생산유발 1.5조원, 일자리 창출 1.2만명\""
     },
+    "original:529a129993120fd6a0afad44": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814586",
+      "source": "뉴시스",
+      "source_body_digest": "c76819ef7476a57d5b287be5edbd12b2d99f6529d6be3e09657e675e6883d96d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5843ca509a024d96d497edd9a4936c201692e4e6834ade4a25d170453632207",
+      "source_fact_keys": [
+        "source_fact:v1:9d41c217b205f9359eb5906d9b0e419e56300a623691be2b1e21c2cf9fa0cb11"
+      ],
+      "source_published_kst": "2026-10-05T22:29+09:00",
+      "title": "토스뱅크서도 해킹 시도…일부 보험사도 공격 흔적 포착"
+    },
     "original:529ce33fa27c2dc1a81334ce": {
       "first_seen_kst": "2026-10-05T14:14:24+09:00",
       "lanes": {
@@ -29762,6 +29916,23 @@
       "link": "https://www.mt.co.kr/politics/2026/10/01/2026100110563970102",
       "source": "머니투데이",
       "title": "물가 상승, 수요보다 유가·환율 영향…김영환 \"추가 금리인상 신중해야\""
+    },
+    "original:5eaee009319f8d7b80392709": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814174",
+      "source": "뉴시스",
+      "source_body_digest": "e54d36c8f846702e226684fce041060ae83ec566d14a3c45fcc9db9841336f04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ffa81b677eaa93d4da3530afc794ebdd1454b8e2f6f543edfc3f4376a14ee33",
+      "source_fact_keys": [
+        "source_fact:v1:b9e84855f526e1e367948473e4cb339a7b16eb50066b55bd0c6b93dba11894da"
+      ],
+      "source_published_kst": "2026-10-05T11:00+09:00",
+      "title": "韓 비료, 브라질 진출 교두보…콩·옥수수 시장 겨냥"
     },
     "original:5eeecd89b102db80ed15b1d3": {
       "first_seen_kst": "2026-09-21T21:35:34+09:00",
@@ -30816,6 +30987,25 @@
       "source": "머니투데이",
       "title": "삼전닉스 '자사주 방파제' 곧 사라진다...\"또 롤러코스피?\" 초긴장"
     },
+    "original:6e87ee9892e96e2e18905d68": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261005_0000007762",
+      "source": "뉴시스",
+      "source_body_digest": "1e160a8a020959b1b20cba475104f0e638faa12dbad9703895d168754a09b52a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03e64d4bcb73401c8d701cf592c15780b8ad60fb60141adf666c031279d060a0",
+      "source_fact_keys": [
+        "source_fact:v1:0a9540a45fe9ba14d47a3e4b95f2b47c822c7c15afb8bff4243db8367223d42d",
+        "source_fact:v1:838b186c3ed4a468679b6e0292c7473bef692bc0c662813c24a196bd10743a7e",
+        "source_fact:v1:934222370b62b09e7bec21d830c402d63bdba0c0a0e6bd56e1cb36b9a451c9b4"
+      ],
+      "source_published_kst": "2026-10-05T22:31+09:00",
+      "title": "메틀렌: 일본 주요 화학 기업과 신규 갈륨 공급 계약 체결"
+    },
     "original:6ed9967a31aed3dc1b63d586": {
       "first_seen_kst": "2026-10-01T21:43:03+09:00",
       "lanes": {
@@ -31449,20 +31639,23 @@
     "original:774c616bbe9e8e2a611eb99f": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
-        "live": "2026-10-05T22:21:29+09:00"
+        "live": "2026-10-05T23:56:11+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261005036700003",
       "source": "연합뉴스",
-      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_body_digest": "7ad7603019e4160205214386c1a401955276e370e6db567afd7fafb83ebf7738",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_identity": "source_facts:v1:666973fa58afae7d0ea9a60e1b93ba50359345abc9b9c013147315e2c6ed9149",
       "source_fact_keys": [
         "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
         "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
         "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
         "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:ca9ae305b3f20f9469bf66f07b237419f879db408ba906ab7a2600be307933cc",
         "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:e312a2a4e30c45ccf8a912e6d8bb7d2b9740314c7e46f99b7f3f2dd3d5a21e16",
+        "source_fact:v1:e45ace95bd61297ec131cb880a1cb11ef8436a2e40271021e762ec98df75dbf2",
         "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
@@ -40096,20 +40289,23 @@
     "source_fact:04d3d9fd880435c004d4ea30": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
-        "live": "2026-10-05T22:21:29+09:00"
+        "live": "2026-10-05T23:56:11+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261005036700003",
       "source": "연합뉴스",
-      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_body_digest": "7ad7603019e4160205214386c1a401955276e370e6db567afd7fafb83ebf7738",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_identity": "source_facts:v1:666973fa58afae7d0ea9a60e1b93ba50359345abc9b9c013147315e2c6ed9149",
       "source_fact_keys": [
         "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
         "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
         "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
         "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:ca9ae305b3f20f9469bf66f07b237419f879db408ba906ab7a2600be307933cc",
         "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:e312a2a4e30c45ccf8a912e6d8bb7d2b9740314c7e46f99b7f3f2dd3d5a21e16",
+        "source_fact:v1:e45ace95bd61297ec131cb880a1cb11ef8436a2e40271021e762ec98df75dbf2",
         "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
@@ -40479,20 +40675,23 @@
     "source_fact:0adb9d134732fdd0f6e74349": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
-        "live": "2026-10-05T22:21:29+09:00"
+        "live": "2026-10-05T23:56:11+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261005036700003",
       "source": "연합뉴스",
-      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_body_digest": "7ad7603019e4160205214386c1a401955276e370e6db567afd7fafb83ebf7738",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_identity": "source_facts:v1:666973fa58afae7d0ea9a60e1b93ba50359345abc9b9c013147315e2c6ed9149",
       "source_fact_keys": [
         "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
         "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
         "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
         "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:ca9ae305b3f20f9469bf66f07b237419f879db408ba906ab7a2600be307933cc",
         "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:e312a2a4e30c45ccf8a912e6d8bb7d2b9740314c7e46f99b7f3f2dd3d5a21e16",
+        "source_fact:v1:e45ace95bd61297ec131cb880a1cb11ef8436a2e40271021e762ec98df75dbf2",
         "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
@@ -40877,20 +41076,23 @@
     "source_fact:1767eca38ceb232ffdc8f0fd": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
-        "live": "2026-10-05T22:21:29+09:00"
+        "live": "2026-10-05T23:56:11+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261005036700003",
       "source": "연합뉴스",
-      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_body_digest": "7ad7603019e4160205214386c1a401955276e370e6db567afd7fafb83ebf7738",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_identity": "source_facts:v1:666973fa58afae7d0ea9a60e1b93ba50359345abc9b9c013147315e2c6ed9149",
       "source_fact_keys": [
         "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
         "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
         "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
         "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:ca9ae305b3f20f9469bf66f07b237419f879db408ba906ab7a2600be307933cc",
         "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:e312a2a4e30c45ccf8a912e6d8bb7d2b9740314c7e46f99b7f3f2dd3d5a21e16",
+        "source_fact:v1:e45ace95bd61297ec131cb880a1cb11ef8436a2e40271021e762ec98df75dbf2",
         "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
@@ -41464,6 +41666,25 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "source_fact:276ad4afe6ae2be2ae1e579f": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261005_0000007762",
+      "source": "뉴시스",
+      "source_body_digest": "1e160a8a020959b1b20cba475104f0e638faa12dbad9703895d168754a09b52a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03e64d4bcb73401c8d701cf592c15780b8ad60fb60141adf666c031279d060a0",
+      "source_fact_keys": [
+        "source_fact:v1:0a9540a45fe9ba14d47a3e4b95f2b47c822c7c15afb8bff4243db8367223d42d",
+        "source_fact:v1:838b186c3ed4a468679b6e0292c7473bef692bc0c662813c24a196bd10743a7e",
+        "source_fact:v1:934222370b62b09e7bec21d830c402d63bdba0c0a0e6bd56e1cb36b9a451c9b4"
+      ],
+      "source_published_kst": "2026-10-05T22:31+09:00",
+      "title": "메틀렌: 일본 주요 화학 기업과 신규 갈륨 공급 계약 체결"
+    },
     "source_fact:28072aa53eb1ec3447799c9e": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -41985,20 +42206,23 @@
     "source_fact:353b688c066a13e4d4d2eada": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
-        "live": "2026-10-05T22:21:29+09:00"
+        "live": "2026-10-05T23:56:11+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261005036700003",
       "source": "연합뉴스",
-      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_body_digest": "7ad7603019e4160205214386c1a401955276e370e6db567afd7fafb83ebf7738",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_identity": "source_facts:v1:666973fa58afae7d0ea9a60e1b93ba50359345abc9b9c013147315e2c6ed9149",
       "source_fact_keys": [
         "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
         "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
         "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
         "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:ca9ae305b3f20f9469bf66f07b237419f879db408ba906ab7a2600be307933cc",
         "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:e312a2a4e30c45ccf8a912e6d8bb7d2b9740314c7e46f99b7f3f2dd3d5a21e16",
+        "source_fact:v1:e45ace95bd61297ec131cb880a1cb11ef8436a2e40271021e762ec98df75dbf2",
         "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
@@ -42236,20 +42460,23 @@
     "source_fact:3c6f9439fb3c8dd4d57e78dd": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
-        "live": "2026-10-05T22:21:29+09:00"
+        "live": "2026-10-05T23:56:11+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261005036700003",
       "source": "연합뉴스",
-      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_body_digest": "7ad7603019e4160205214386c1a401955276e370e6db567afd7fafb83ebf7738",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_identity": "source_facts:v1:666973fa58afae7d0ea9a60e1b93ba50359345abc9b9c013147315e2c6ed9149",
       "source_fact_keys": [
         "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
         "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
         "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
         "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:ca9ae305b3f20f9469bf66f07b237419f879db408ba906ab7a2600be307933cc",
         "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:e312a2a4e30c45ccf8a912e6d8bb7d2b9740314c7e46f99b7f3f2dd3d5a21e16",
+        "source_fact:v1:e45ace95bd61297ec131cb880a1cb11ef8436a2e40271021e762ec98df75dbf2",
         "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
@@ -43632,6 +43859,23 @@
       "source_published_kst": "2026-10-05T19:27+09:00",
       "title": "\"농식품부 고위공직자 모친 소유 농지 3필지 휴경\"(종합) | 연합뉴스"
     },
+    "source_fact:59403f6613c79cef98cdc2f1": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814174",
+      "source": "뉴시스",
+      "source_body_digest": "e54d36c8f846702e226684fce041060ae83ec566d14a3c45fcc9db9841336f04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ffa81b677eaa93d4da3530afc794ebdd1454b8e2f6f543edfc3f4376a14ee33",
+      "source_fact_keys": [
+        "source_fact:v1:b9e84855f526e1e367948473e4cb339a7b16eb50066b55bd0c6b93dba11894da"
+      ],
+      "source_published_kst": "2026-10-05T11:00+09:00",
+      "title": "韓 비료, 브라질 진출 교두보…콩·옥수수 시장 겨냥"
+    },
     "source_fact:59ad6f96de77aae6f5d51f79": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -43658,6 +43902,31 @@
       ],
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+    },
+    "source_fact:59ef06fd324a8e8278b8133b": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005036700003",
+      "source": "연합뉴스",
+      "source_body_digest": "7ad7603019e4160205214386c1a401955276e370e6db567afd7fafb83ebf7738",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:666973fa58afae7d0ea9a60e1b93ba50359345abc9b9c013147315e2c6ed9149",
+      "source_fact_keys": [
+        "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
+        "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
+        "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
+        "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:ca9ae305b3f20f9469bf66f07b237419f879db408ba906ab7a2600be307933cc",
+        "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:e312a2a4e30c45ccf8a912e6d8bb7d2b9740314c7e46f99b7f3f2dd3d5a21e16",
+        "source_fact:v1:e45ace95bd61297ec131cb880a1cb11ef8436a2e40271021e762ec98df75dbf2",
+        "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
+      ],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
     "source_fact:5a06817e6e23b2b39d156c76": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -45446,6 +45715,25 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
+    "source_fact:7c0f73c9945afd7accf9e7ec": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261005_0000007762",
+      "source": "뉴시스",
+      "source_body_digest": "1e160a8a020959b1b20cba475104f0e638faa12dbad9703895d168754a09b52a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03e64d4bcb73401c8d701cf592c15780b8ad60fb60141adf666c031279d060a0",
+      "source_fact_keys": [
+        "source_fact:v1:0a9540a45fe9ba14d47a3e4b95f2b47c822c7c15afb8bff4243db8367223d42d",
+        "source_fact:v1:838b186c3ed4a468679b6e0292c7473bef692bc0c662813c24a196bd10743a7e",
+        "source_fact:v1:934222370b62b09e7bec21d830c402d63bdba0c0a0e6bd56e1cb36b9a451c9b4"
+      ],
+      "source_published_kst": "2026-10-05T22:31+09:00",
+      "title": "메틀렌: 일본 주요 화학 기업과 신규 갈륨 공급 계약 체결"
     },
     "source_fact:7c664f0cd72944bdc64c88ac": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -47663,6 +47951,23 @@
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "KT 이어 LG유플러스도 뱅고와 손잡았다…‘유독’에 해외 AI 서비스 확대"
     },
+    "source_fact:af77431cbd741c61d27eaca3": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814586",
+      "source": "뉴시스",
+      "source_body_digest": "c76819ef7476a57d5b287be5edbd12b2d99f6529d6be3e09657e675e6883d96d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5843ca509a024d96d497edd9a4936c201692e4e6834ade4a25d170453632207",
+      "source_fact_keys": [
+        "source_fact:v1:9d41c217b205f9359eb5906d9b0e419e56300a623691be2b1e21c2cf9fa0cb11"
+      ],
+      "source_published_kst": "2026-10-05T22:29+09:00",
+      "title": "토스뱅크서도 해킹 시도…일부 보험사도 공격 흔적 포착"
+    },
     "source_fact:b00d4410eaafa189ec7f3616": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -49584,20 +49889,23 @@
     "source_fact:e5094878382867b0149a35d2": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
-        "live": "2026-10-05T22:21:29+09:00"
+        "live": "2026-10-05T23:56:11+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261005036700003",
       "source": "연합뉴스",
-      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_body_digest": "7ad7603019e4160205214386c1a401955276e370e6db567afd7fafb83ebf7738",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_identity": "source_facts:v1:666973fa58afae7d0ea9a60e1b93ba50359345abc9b9c013147315e2c6ed9149",
       "source_fact_keys": [
         "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
         "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
         "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
         "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:ca9ae305b3f20f9469bf66f07b237419f879db408ba906ab7a2600be307933cc",
         "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:e312a2a4e30c45ccf8a912e6d8bb7d2b9740314c7e46f99b7f3f2dd3d5a21e16",
+        "source_fact:v1:e45ace95bd61297ec131cb880a1cb11ef8436a2e40271021e762ec98df75dbf2",
         "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
@@ -49658,6 +49966,31 @@
       ],
       "source_published_kst": "2026-10-05T20:03+09:00",
       "title": "인스메드, CFO 10월 30일 사임…연간 매출 가이던스 유지"
+    },
+    "source_fact:e6ce2cb68ba5552e37117c55": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005036700003",
+      "source": "연합뉴스",
+      "source_body_digest": "7ad7603019e4160205214386c1a401955276e370e6db567afd7fafb83ebf7738",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:666973fa58afae7d0ea9a60e1b93ba50359345abc9b9c013147315e2c6ed9149",
+      "source_fact_keys": [
+        "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
+        "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
+        "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
+        "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:ca9ae305b3f20f9469bf66f07b237419f879db408ba906ab7a2600be307933cc",
+        "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:e312a2a4e30c45ccf8a912e6d8bb7d2b9740314c7e46f99b7f3f2dd3d5a21e16",
+        "source_fact:v1:e45ace95bd61297ec131cb880a1cb11ef8436a2e40271021e762ec98df75dbf2",
+        "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
+      ],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
     "source_fact:e6ea4558d3d9658307282413": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -50386,6 +50719,31 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:fc9e38d4bb97740656ce1726": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261005036700003",
+      "source": "연합뉴스",
+      "source_body_digest": "7ad7603019e4160205214386c1a401955276e370e6db567afd7fafb83ebf7738",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:666973fa58afae7d0ea9a60e1b93ba50359345abc9b9c013147315e2c6ed9149",
+      "source_fact_keys": [
+        "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
+        "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
+        "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
+        "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:ca9ae305b3f20f9469bf66f07b237419f879db408ba906ab7a2600be307933cc",
+        "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:e312a2a4e30c45ccf8a912e6d8bb7d2b9740314c7e46f99b7f3f2dd3d5a21e16",
+        "source_fact:v1:e45ace95bd61297ec131cb880a1cb11ef8436a2e40271021e762ec98df75dbf2",
+        "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
+      ],
+      "source_published_kst": "2026-10-05T22:06+09:00",
+      "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
+    },
     "source_fact:fdb75e42b3c5b777c50b58b5": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -50486,6 +50844,25 @@
       ],
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
+    "source_fact:ff38c02364192fce0477a47f": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261005_0000007762",
+      "source": "뉴시스",
+      "source_body_digest": "1e160a8a020959b1b20cba475104f0e638faa12dbad9703895d168754a09b52a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03e64d4bcb73401c8d701cf592c15780b8ad60fb60141adf666c031279d060a0",
+      "source_fact_keys": [
+        "source_fact:v1:0a9540a45fe9ba14d47a3e4b95f2b47c822c7c15afb8bff4243db8367223d42d",
+        "source_fact:v1:838b186c3ed4a468679b6e0292c7473bef692bc0c662813c24a196bd10743a7e",
+        "source_fact:v1:934222370b62b09e7bec21d830c402d63bdba0c0a0e6bd56e1cb36b9a451c9b4"
+      ],
+      "source_published_kst": "2026-10-05T22:31+09:00",
+      "title": "메틀렌: 일본 주요 화학 기업과 신규 갈륨 공급 계약 체결"
     },
     "source_fact:ff7274ebd22c91e062510a42": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -55767,6 +56144,23 @@
       "source": "뉴시스",
       "title": "\"부산대 작년 지역 생산유발 1.5조원, 일자리 창출 1.2만명\""
     },
+    "title:529a129993120fd6a0afad44": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814586",
+      "source": "뉴시스",
+      "source_body_digest": "c76819ef7476a57d5b287be5edbd12b2d99f6529d6be3e09657e675e6883d96d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c5843ca509a024d96d497edd9a4936c201692e4e6834ade4a25d170453632207",
+      "source_fact_keys": [
+        "source_fact:v1:9d41c217b205f9359eb5906d9b0e419e56300a623691be2b1e21c2cf9fa0cb11"
+      ],
+      "source_published_kst": "2026-10-05T22:29+09:00",
+      "title": "토스뱅크서도 해킹 시도…일부 보험사도 공격 흔적 포착"
+    },
     "title:529ce33fa27c2dc1a81334ce": {
       "first_seen_kst": "2026-10-05T14:14:24+09:00",
       "lanes": {
@@ -56493,6 +56887,23 @@
       "link": "https://www.mt.co.kr/politics/2026/10/01/2026100110563970102",
       "source": "머니투데이",
       "title": "물가 상승, 수요보다 유가·환율 영향…김영환 \"추가 금리인상 신중해야\""
+    },
+    "title:5eaee009319f8d7b80392709": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/NISX20261005_0003814174",
+      "source": "뉴시스",
+      "source_body_digest": "e54d36c8f846702e226684fce041060ae83ec566d14a3c45fcc9db9841336f04",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9ffa81b677eaa93d4da3530afc794ebdd1454b8e2f6f543edfc3f4376a14ee33",
+      "source_fact_keys": [
+        "source_fact:v1:b9e84855f526e1e367948473e4cb339a7b16eb50066b55bd0c6b93dba11894da"
+      ],
+      "source_published_kst": "2026-10-05T11:00+09:00",
+      "title": "韓 비료, 브라질 진출 교두보…콩·옥수수 시장 겨냥"
     },
     "title:5eeecd89b102db80ed15b1d3": {
       "first_seen_kst": "2026-09-21T21:35:34+09:00",
@@ -57557,6 +57968,25 @@
       "source": "머니투데이",
       "title": "삼전닉스 '자사주 방파제' 곧 사라진다...\"또 롤러코스피?\" 초긴장"
     },
+    "title:6e87ee9892e96e2e18905d68": {
+      "first_seen_kst": "2026-10-05T23:56:11+09:00",
+      "lanes": {
+        "live": "2026-10-05T23:56:11+09:00"
+      },
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
+      "link": "https://www.newsis.com/view/ALSX20261005_0000007762",
+      "source": "뉴시스",
+      "source_body_digest": "1e160a8a020959b1b20cba475104f0e638faa12dbad9703895d168754a09b52a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:03e64d4bcb73401c8d701cf592c15780b8ad60fb60141adf666c031279d060a0",
+      "source_fact_keys": [
+        "source_fact:v1:0a9540a45fe9ba14d47a3e4b95f2b47c822c7c15afb8bff4243db8367223d42d",
+        "source_fact:v1:838b186c3ed4a468679b6e0292c7473bef692bc0c662813c24a196bd10743a7e",
+        "source_fact:v1:934222370b62b09e7bec21d830c402d63bdba0c0a0e6bd56e1cb36b9a451c9b4"
+      ],
+      "source_published_kst": "2026-10-05T22:31+09:00",
+      "title": "메틀렌: 일본 주요 화학 기업과 신규 갈륨 공급 계약 체결"
+    },
     "title:6ed9967a31aed3dc1b63d586": {
       "first_seen_kst": "2026-10-01T21:43:03+09:00",
       "lanes": {
@@ -58201,20 +58631,23 @@
     "title:774c616bbe9e8e2a611eb99f": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
-        "live": "2026-10-05T22:21:29+09:00"
+        "live": "2026-10-05T23:56:11+09:00"
       },
-      "last_seen_kst": "2026-10-05T22:21:29+09:00",
+      "last_seen_kst": "2026-10-05T23:56:11+09:00",
       "link": "https://www.yna.co.kr/view/AKR20261005036700003",
       "source": "연합뉴스",
-      "source_body_digest": "ccfa3df3e962a58f3a8d60707b1db7e196b2a95881cae760ee3a215990173f72",
+      "source_body_digest": "7ad7603019e4160205214386c1a401955276e370e6db567afd7fafb83ebf7738",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f511ad42ea2abc57fde892ab339fa1a13047d7e80161b99b5c47ac9f099bce3e",
+      "source_fact_identity": "source_facts:v1:666973fa58afae7d0ea9a60e1b93ba50359345abc9b9c013147315e2c6ed9149",
       "source_fact_keys": [
         "source_fact:v1:4138c3536508da8cfe5db2bc237137af089e27ef083dce02dc309e38e4072e41",
         "source_fact:v1:6ed719faa2371ce4f87937cc7a8d76008b8f4519b1cdeb229719fbfb75846b2f",
         "source_fact:v1:c3c928b773d1ac16389eccf5e8a907f1bd6240e8ae62e7ce191dad0fbc81b910",
         "source_fact:v1:c70072a887545baea78090bb797251df0d0eea3387fcc6a0a3be91c159c1e276",
+        "source_fact:v1:ca9ae305b3f20f9469bf66f07b237419f879db408ba906ab7a2600be307933cc",
         "source_fact:v1:d69d29d1912cb7a3485dbcbc266c619b83b935155be9eb9a9f83de14d71b8e58",
+        "source_fact:v1:e312a2a4e30c45ccf8a912e6d8bb7d2b9740314c7e46f99b7f3f2dd3d5a21e16",
+        "source_fact:v1:e45ace95bd61297ec131cb880a1cb11ef8436a2e40271021e762ec98df75dbf2",
         "source_fact:v1:ea7daf01943d200104ea76c7b1c254987adf2ff950f230f480cac462600a695d"
       ],
       "source_published_kst": "2026-10-05T22:06+09:00",
@@ -66864,5 +67297,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T23:46:36+09:00"
+  "updated_at_kst": "2026-10-05T23:56:11+09:00"
 }
