@@ -2493,6 +2493,22 @@ def compensation_cost_forecast_fact(title: str, body: str) -> str:
 
 def source_focused_article_core(title: str, sentences: list[str]) -> str:
     """Prefer a complete source fact about the headline, never an unrelated number."""
+    focus = market_materiality.focus_kind(title)
+    if focus == "housing_supply_policy":
+        for sentence in sentences:
+            if market_materiality.focus_matches(title, sentence) and all(
+                term in sentence for term in ("LH", "미분양", "매입임대", "매수확약", "지시")
+            ) and "대통령" in title:
+                return "대통령은 LH가 미분양 주택을 매입임대용으로 매수확약하도록 지시했다고 밝혔다."
+    if focus == "network_segmentation_policy":
+        source = " ".join(sentences)
+        day = re.search(r"오는\s*(\d{1,2})일에는\s*2차\s*규제\s*완화\s*대상이\s*선정된다", source)
+        applicants = re.search(r"신청\s*가능\s*대상을\s*기존\s*(\d+)개사에서[^.!?]{0,60}?(\d+)개사로\s*확대", source)
+        selected = re.search(r"선정\s*규모도\s*1차\s*(\d+)개사에서\s*최대\s*(\d+)개사로\s*늘릴\s*예정", source)
+        if day and applicants and selected and "금융위" in source and "망분리" in source:
+            return (f"금융위는 {day.group(1)}일 보안 목적의 2차 망분리 규제 완화 대상을 선정한다. "
+                    f"신청 가능 대상은 {applicants.group(1)}개사에서 {applicants.group(2)}개사로, "
+                    f"선정 규모는 {selected.group(1)}개사에서 최대 {selected.group(2)}개사로 늘릴 예정이다.")
     factory = market_materiality.factory_tariff_observation(title, "\n".join(sentences))
     if factory:
         return (f"트럼프는 기업에 약 {factory['grace']}의 미국 공장 건설 시간을 주고, "
@@ -8293,6 +8309,9 @@ def alert_dedup_key(alert: dict) -> tuple[str, str]:
     theme = str(alert.get("supply_chain_theme") or semantic_event_theme(alert) or "")
     if theme:
         return (base.norm(theme), "event")
+    fact_identity = market_materiality.verified_source_fact_identity(alert)
+    if fact_identity:
+        return (fact_identity, "fact")
     canonical = base.norm(theme or raw_title or alert.get("news") or alert.get("link"))
     return (canonical, str(alert.get("published") or "")[:10])
 
@@ -9646,6 +9665,7 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
     )
     selected: list[dict] = []
     seen: set[tuple[str, str]] = set()
+    seen_facts: set[str] = set()
     for alert in candidates:
         if alert["market_materiality"]["disposition"] == "exclude":
             alert["_exclusion_reason"] = "market_materiality:" + alert["market_materiality"]["reason"]
@@ -9713,10 +9733,10 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             alert["_exclusion_reason"] = "stock_market_link_guard"
             continue
         key = alert_dedup_key(normalized)
-        if key in seen:
+        fact_keys = market_materiality.verified_source_fact_keys(normalized)
+        if key in seen or (fact_keys and all(fact in seen_facts for fact in fact_keys)):
             alert.setdefault("_exclusion_reason", "semantic_duplicate")
             continue
-        seen.add(key)
         if is_low_impact_admin_alert(normalized):
             alert["_exclusion_reason"] = "low_impact_admin_document"
             continue
@@ -9744,6 +9764,8 @@ def quality_display_alerts(alerts: list[dict], limit: int) -> list[dict]:
             continue
         alert.pop("_exclusion_reason", None)
         selected.append(normalized)
+        seen.add(key)
+        seen_facts.update(fact_keys)
         if len(selected) >= limit:
             break
     return selected

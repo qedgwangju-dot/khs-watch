@@ -89,6 +89,7 @@ jobs:
           python scripts/verify_gamejoa_cross_market_coverage_contract.py
           python scripts/verify_gamejoa_stock_market_scope.py
           python scripts/verify_gamejoa_market_materiality.py
+          python scripts/verify_gamejoa_incremental_news_quality.py
           python scripts/verify_gamejoa_article_detail_queue.py
           python scripts/verify_khs_source_fetch_contract.py
           python scripts/verify_gamejoa_semisupply_contract.py
@@ -224,6 +225,7 @@ jobs:
             out/khs_policy_readability_*.md
             out/khs_policy_readability_*.html
             out/khs_policy_readability_verification.json
+            out/gamejoa_incremental_news_verification.json
           if-no-files-found: ignore
 
 

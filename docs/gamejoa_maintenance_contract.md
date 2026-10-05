@@ -172,6 +172,26 @@ Every defect or requested change must follow this sequence:
   duration and stage. An unchanged statement is not new because its publisher,
   URL tracking parameters or query date changed. Changed terms and execution
   stages must not be suppressed by older coarse title/link keys.
+- Unmodelled events additionally store verified source-action aliases. Suppress
+  a shorter cross-publisher copy only when all its material facts were sent;
+  matching one shared fact must not hide a new amount, party, period, budget or
+  execution stage. Keep legacy exact URL/title receipts and preopen/live lane
+  semantics, and record aliases only after acknowledged delivery. Do not use
+  collector timestamps, industry keywords or broad fuzzy title similarity as
+  proof of a new or duplicate event.
+- A possible future CEO visit/meeting cannot qualify through either discussion
+  or incidental supply/technology rules. Preserve actual named ongoing supply
+  negotiations and confirmed contracts. Columns, consumer accessory launches,
+  training plans and strategy case studies need a foreground new sourced
+  execution or quantified economic change, not old CAPEX or background demand.
+- A regulatory expansion core retains its scheduled selection date, eligibility
+  and maximum scope; background breach counts cannot replace the policy change.
+  A president's supply instruction is not completed housing purchases. Keep
+  other concrete housing rules and actual cyber incidents independently eligible.
+- Every supplied article is included in the regression audit: raw article count,
+  unique linked articles, unique events, per-article disposition/reason and core
+  checks. The October 5 ten-article replay runs in production CI before sending;
+  it is a test corpus, never a live alert injection or a seen-state reset.
 - DRAM market share must retain its source, period and revenue/bit basis.
   CAPEX plans must retain their fiscal period and net/gross basis. A reporter's
   annual extrapolation is not company guidance. A project bill is not a tariff.

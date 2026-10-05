@@ -229,6 +229,9 @@ def alert_seen_keys(alert: dict) -> list[str]:
     add("event", macro_release_theme(canonical))
     add("event", verified_trade_theme(canonical))
     add("event", market_materiality.source_event_identity(canonical))
+    add("fact", market_materiality.verified_source_fact_identity(canonical))
+    for fact_key in market_materiality.verified_source_fact_keys(canonical):
+        add("source_fact", fact_key)
     add("title", str(canonical.get("news") or alert.get("news") or ""))
     add("original", str(canonical.get("original_news") or alert.get("original_news") or ""))
     for value in (canonical.get("news"), canonical.get("source_title"), canonical.get("original_news")):
@@ -254,6 +257,11 @@ def migrate_seen_title_aliases(state: dict) -> None:
         source_identity = str(entry.get("source_event_identity") or "") or market_materiality.source_event_identity({"source_title": title})
         if source_identity:
             seen.setdefault(f"event:{digest_seen(source_identity)}", dict(entry))
+        fact_identity = str(entry.get("source_fact_identity") or "")
+        if fact_identity:
+            seen.setdefault(f"fact:{digest_seen(fact_identity)}", dict(entry))
+        for fact_key in entry.get("source_fact_keys") or []:
+            seen.setdefault(f"source_fact:{digest_seen(fact_key)}", dict(entry))
         market_theme = korean_market_move_theme({
             "source_title": title,
             "published": entry.get("first_seen_kst"),
@@ -351,15 +359,25 @@ def filter_previously_seen_alerts(
     for alert in alerts:
         keys = alert_seen_keys(alert)
         identity = market_materiality.source_event_identity(alert)
+        fact_identity = market_materiality.verified_source_fact_identity(canonical_alert_for_seen(alert))
+        fact_keys = [f"source_fact:{digest_seen(key)}" for key in
+                     market_materiality.verified_source_fact_keys(canonical_alert_for_seen(alert))]
         # A sourced change of amount/stage may keep the same title or URL.
         # Its structured identity must outrank older coarse title/link keys.
-        match_keys = [f"event:{digest_seen(identity)}"] if identity else keys
+        match_keys = ([f"event:{digest_seen(identity)}"] if identity else
+                      [f"fact:{digest_seen(fact_identity)}"] if fact_identity else keys)
         matching_entries = [seen[key] for key in match_keys if key in seen]
-        if identity and not matching_entries:
+        if not identity and fact_keys and not matching_entries:
+            # A shorter syndication may omit a previously sent secondary fact.
+            # An added fact must remain fresh; matching just one is insufficient.
+            if all(key in seen and (lane == "live" or seen_entry_has_lane(seen[key], lane)) for key in fact_keys):
+                matching_entries = [seen[key] for key in fact_keys]
+        if (identity or fact_identity) and not matching_entries:
             # Legacy receipts without sufficient event terms still protect
             # their exact URL/title. They cannot prove a material revision.
             matching_entries = [seen[key] for key in keys if key in seen
                                 and key.startswith(("link:", "title:", "original:"))
+                                and not seen[key].get("source_fact_identity")
                                 and not (seen[key].get("source_event_identity")
                                          or market_materiality.source_event_identity({"source_title": seen[key].get("title", "")}))]
         already_seen = bool(matching_entries) if lane == "live" else any(
@@ -423,6 +441,8 @@ def record_seen_alerts(alerts: list[dict], now) -> None:
                 "source": alert.get("publisher") or alert.get("source") or "",
                 "link": alert.get("link") or "",
                 "source_event_identity": market_materiality.source_event_identity(alert),
+                "source_fact_identity": market_materiality.verified_source_fact_identity(canonical_alert_for_seen(alert)),
+                "source_fact_keys": market_materiality.verified_source_fact_keys(canonical_alert_for_seen(alert)),
                 "source_published_kst": str(alert.get("published") or ""),
             }
     save_seen_state(state, now)

@@ -5,11 +5,13 @@ from __future__ import annotations
 
 import re
 import datetime as dt
+import hashlib
+import json
 from functools import lru_cache
 from urllib.parse import urlsplit
 
 
-VERSION = 71
+VERSION = 72
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -115,6 +117,26 @@ HARD_HEADLINE = re.compile(
     r"관세|금리|환율|예탁금|순매수|순매도|수출통제|임상|허가|공급부족|코스피|코스닥|증시|"
     r"earnings|guidance|contract|factory|production|tariff|interest rate|buyback", re.I,
 )
+SPECULATIVE_CONTACT = re.compile(
+    r"(?:논의|회동|만남|협의)(?:할|가질|을\s*가질)[^.!?]{0,45}(?:전망|예상|가능성|관측)|"
+    r"(?:만날|만나게\s*될)[^.!?]{0,50}(?:전망|예상|가능성)|"
+    r"(?:논의|회동|협력)[^.!?]{0,30}할지[^.!?]{0,20}주목|"
+    r"(?:may|could|expected to).{0,35}(?:meet|discuss)", re.I,
+)
+EXPLANATORY_ONLY = re.compile(
+    r"(?:의도|취지|배경)[^.!?]{0,50}해석된다|때문이다|"
+    r"경험[^.!?]{0,60}이식하려는|원인[^.!?]{0,40}분석했다|"
+    r"(?:방식|여부)에\s*따라[^.!?]{0,70}(?:의미|결과)[^.!?]{0,25}달라진다|"
+    r"구체적인\s*안이\s*나오기도\s*전에",
+)
+NEW_EXECUTION = re.compile(
+    r"(?:계약|협약)[^.!?]{0,25}(?:체결|서명|취소|확정)|수주했다|"
+    r"(?:예산|투자액|설비투자|보조금)[^.!?]{0,55}(?:확정|배정|증액|삭감|공시)|"
+    r"(?:법안|규정|고시)[^.!?]{0,30}(?:발의|제정|개정|시행|입법예고)|"
+    r"(?:매출|영업이익|가이던스)[^.!?]{0,65}(?:발표했다|공시했다|상향|하향)|"
+    r"(?:오늘|이날|최근|\d{1,2}일)[^.!?]{0,80}(?:착공했다|가동을\s*시작|투입했다고|채택했다고)|"
+    r"announced.{0,50}(?:contract|guidance|investment)|signed|awarded|approved", re.I,
+)
 
 
 def nonmarket_entertainment_reason(title: str, body: str = "", source_url: str = "") -> str:
@@ -136,6 +158,8 @@ def nonmarket_entertainment_reason(title: str, body: str = "", source_url: str =
 # the classifier. Reuse it for evidence ranking and compact-summary checks.
 HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) for name, head, source in (
     ("tax_relief", r"비과세|과세.{0,12}제외|특례\s*(?:관세|방안)|FTA.{0,12}특례", r"비과세|과세.{0,25}제외|특례|특혜관세"),
+    ("network_segmentation_policy", r"망분리.{0,20}(?:완화|예외|규제)|(?:완화|예외).{0,20}망분리", r"망분리|규제\s*완화|신청\s*가능\s*대상|선정\s*규모"),
+    ("housing_supply_policy", r"대통령.{0,30}부동산.{0,70}(?:대량\s*공급|매수확약)|LH.{0,30}(?:미분양|매수확약)|주택.{0,30}(?:매수확약|매입임대)", r"LH|매수확약|주택|미분양|매입임대"),
     ("cyber_incident", r"해킹|(?:개인|고객)?\s*정보\s*유출|사이버\s*(?:공격|침해)|랜섬웨어|data breach|cyber.?attack|ransomware", r"해킹|정보|유출|침해|긴급\s*점검회의|data breach|cyber.?attack"),
     ("sanctions_exemption", r"제재.*(?:면제|예외)", r"(?:예외|면제|일반\s*허가|general licen[cs]e)"),
     ("monetary_guidance", r"(?:연준|ECB|한국은행).{0,15}(?:의장|총재)", r"(?:금리|통화|정책).{0,90}(?:밝혔|말했|강조|신중|시사|필요)"),
@@ -265,6 +289,11 @@ def focus_kind(title: str) -> str:
     # A scoped tax treatment is the event; oil is only its subject.
     if HEADLINE_FOCUS[0][1].search(title or ""):
         return "tax_relief"
+    for kind in ("network_segmentation_policy", "housing_supply_policy"):
+        if kind == "network_segmentation_policy" and re.search(r"유출|침해\s*사고|피해", title or ""):
+            continue
+        if next(head for name, head, _source in HEADLINE_FOCUS if name == kind).search(title or ""):
+            return kind
     if re.search(r"ETF.{0,15}(?:출시|상장)", title or "", re.I):
         return "capital_listing"
     if re.search(r"자금\s*조달|외부\s*자본|funding|financing", title or "", re.I):
@@ -287,6 +316,15 @@ def focus_matches(title: str, sentence: str) -> bool:
     if DENIAL_HEADLINE.search(title) and not DENIAL_SOURCE.search(sentence):
         return False
     kind = focus_kind(title)
+    if kind == "network_segmentation_policy":
+        return bool(
+            re.search(r"망분리|규제\s*완화|신청\s*가능\s*대상|선정\s*규모", sentence)
+            and re.search(r"선정된다|선정한다|선정할|확대|늘릴|예외.{0,20}허용|완화.{0,15}(?:추진|시행|확대)", sentence)
+        )
+    if kind == "housing_supply_policy":
+        return bool(re.search(r"LH|미분양|매입임대|매수확약", sentence)
+                    and re.search(r"매수확약|매수\s*확약|매입.{0,20}(?:지시|결정|확정)", sentence)
+                    and re.search(r"지시|결정|확정|시행|발표|밝혔다", sentence))
     if kind == "national_exports":
         return bool(national_export_observation(sentence))
     if kind == "cyber_incident":
@@ -587,6 +625,67 @@ def factory_tariff_observation(title: str, body: str) -> dict | None:
     return None
 
 
+def canonical_source_fact(text: str) -> str:
+    """Normalize typography and redundant wording, never actors or event terms."""
+    text = re.sub(r"\((?:약\s*\d[\d,.]*\s*(?:조|억|만)?\s*원|원화\s*환산\s*확인\s*불가)\)", "", text)
+    text = re.sub(r"인공지능\s*\(AI\)|인공지능", "ai", text, flags=re.I)
+    text = re.sub(r"최고경영자\s*\(CEO\)|최고경영자", "ceo", text, flags=re.I)
+    text = re.sub(r"(?<![가-힣])이번\s+", "", text)
+    return re.sub(r"[^a-z0-9가-힣.%+\-]", "", text.casefold()).rstrip(".")
+
+
+def verified_source_fact_identity(alert: dict) -> str:
+    """Exact source-fact equivalence for otherwise unmodelled market events.
+
+    New secondary evidence, amounts, periods, parties or execution stages keep
+    their own identity. A company/topic match or fuzzy similarity is insufficient.
+    """
+    keys = verified_source_fact_keys(alert)
+    if not keys:
+        return ""
+    digest = hashlib.sha256(json.dumps(keys).encode("utf-8")).hexdigest()
+    return f"source_facts:v1:{digest}"
+
+
+def verified_source_fact_keys(alert: dict) -> list[str]:
+    """Keep source-action aliases so shorter wire copies cannot republish a fact.
+
+    All facts in a candidate must already be seen before it is suppressed.
+    New quantities, counterparties or stages therefore survive as new evidence.
+    """
+    if not alert.get("body_verified"):
+        return []
+    title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
+    body = str(alert.get("source_body") or "")
+    assessment = assess(title, body, source_url=str(alert.get("link") or ""))
+    if assessment["disposition"] != "keep" or assessment["priority"] < 2:
+        return []
+    evidence = assessment["evidence"]
+    if not evidence or len(evidence[0]["source_excerpt"]) < 50:
+        return []
+    if re.match(r"^(?:양측|회사|기업|업체|그는|이는|이들은)(?:은|는|이|가)?\s", evidence[0]["source_excerpt"]):
+        return []
+    facts = {(item["kind"], item["stage"], canonical_source_fact(item["source_excerpt"]))
+             for item in evidence}
+    # The display audit keeps one excerpt per kind. The identity must also
+    # retain later numeric terms of that same kind (e.g. 15 vs 20 participants).
+    kinds = {item["kind"] for item in evidence}
+    for sentence in source_sentences(body):
+        if (BACKGROUND.search(sentence) or PAST_ACTION.search(sentence) or PHOTO_DESCRIPTION.search(sentence)
+                or COMPANY_PROFILE.search(sentence) or ACCOUNTING_NOTE.search(sentence)
+                or canonical_source_fact(sentence) == canonical_source_fact(title)
+                or not focus_matches(title, sentence) or not period_matches(title, sentence)):
+            continue
+        for kind, _axes, subject, action in COMPILED_RULES:
+            if kind in kinds and subject.search(sentence) and action.search(sentence) and evidence_is_new_event(kind, sentence):
+                stage = "early_signal" if EARLY_SIGNAL.search(sentence) or kind == "customer_discussions" else "reported_change"
+                facts.add((kind, stage, canonical_source_fact(sentence)))
+    return sorted(
+        "source_fact:v1:" + hashlib.sha256(json.dumps(fact, ensure_ascii=False).encode("utf-8")).hexdigest()
+        for fact in facts
+    )
+
+
 def source_event_identity(alert: dict) -> str:
     """Identify a sourced action and its terms, not a company-wide theme.
 
@@ -649,6 +748,11 @@ def source_event_identity(alert: dict) -> str:
 # Each rule needs a subject and a change in the same source-authored sentence.
 # Quantities, counterparties and stages are evidence, not estimates of price impact.
 RULES = (
+    ("network_segmentation_policy", ("earnings", "timeline"),
+     r"망분리|규제\s*완화|신청\s*가능\s*대상|선정\s*규모",
+     r"선정된다|선정한다|선정할|확대|늘릴|완화.{0,15}(?:추진|시행|확대)"),
+    ("housing_supply_policy", ("earnings", "timeline"),
+     r"LH|미분양|매수확약|매입임대", r"지시|결정|확정|시행|발표|밝혔다"),
     ("debt_repayment_change", ("earnings", "timeline"),
      r"부채|대출|debt|loan", r"(?:전액\s*)?상환(?:해|했|완료)|repaid|repayment completed"),
     ("trading_status_change", ("flows", "timeline"),
@@ -706,7 +810,7 @@ RULES = (
      r"받기로\s*합의|대출\s*(?:계약|약정).{0,15}(?:체결|서명)|대출.{0,20}(?:집행했다|승인했다)|agreed to (?:lend|borrow)|loan agreement.{0,20}(?:signed|executed)"),
     ("capital_or_shareholder_action", ("earnings", "timeline"),
      r"투자(?=\s*(?:\d|를|한다|한다고|하는|하고|해|했다|할|하겠|금|액|규모|계획|협약|계약|자금|라운드)|.{0,12}유치)|전략투자|설비투자|capex|자본지출|(?<!대)출자|자금\s*조달|자본\s*조달|회사채|전환사채|전환\s*(?:선순위)?\s*채권|주주환원|배당|자사주|자기주식|지분|funding|financing|buyback|dividend|bond issuance|stake",
-     r"체결|유치|출자|발행|증액|삭감|확대|축소|매입|매수|취득|소각|매각|인수|검토|협상|추진|계획|증가|감소|늘리|결정|발표|승인|투입|금융\s*종결|납입|집행|투자\s*라운드.{0,10}참여|raise|issu|buy|repurchas|sell|acquir|announc|consider|negotiat|approv|financing closed|funding disbursed"),
+     r"체결|유치|출자|발행|증액|삭감|확대|축소|매입|매수|취득|소각|매각|인수|검토|협상|추진|계획|증가|감소|늘리|결정|확정|공시|발표|승인|투입|금융\s*종결|납입|집행|투자\s*라운드.{0,10}참여|raise|issu|buy|repurchas|sell|acquir|announc|consider|negotiat|approv|financing closed|funding disbursed"),
     ("authorized_capital_proposal", ("flows", "timeline"),
      r"수권\s*(?:자본|주식)|authorized (?:capital|shares)", r"안건|상정|제안|표결|proposal|vote"),
     ("financing_infrastructure", ("earnings", "timeline"),
@@ -827,6 +931,21 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
     """Do not promote service descriptions or event support into transactions."""
     if COMPANY_PROFILE.search(sentence) or ACCOUNTING_NOTE.search(sentence):
         return False
+    if kind in {"customer_discussions", "commercial_order", "physical_supply_or_capacity",
+                "technology_or_clinical_stage", "industrial_partnership_execution",
+                "capital_or_shareholder_action"} and SPECULATIVE_CONTACT.search(sentence):
+        return False
+    if kind in {"physical_supply_or_capacity", "technology_or_clinical_stage", "selling_price_or_cost",
+                "rates_fx_or_macro", "capital_or_shareholder_action", "market_price_or_flow"}:
+        if EXPLANATORY_ONLY.search(sentence) and not NEW_EXECUTION.search(sentence) and not re.search(
+            r"\d[\d,.]*\s*(?:%|bp|조원|억원|달러|톤|대).{0,35}(?:기록|집계|발표|공시|상향|하향)", sentence,
+        ):
+            return False
+        if re.search(r"20\d{2}년에[^.!?]{0,80}(?:이미|도입된\s*바|출시된)", sentence):
+            return False
+    if kind in {"network_segmentation_policy", "housing_supply_policy"}:
+        focus_title = "망분리 규제 완화" if kind == "network_segmentation_policy" else "LH 미분양 매수확약"
+        return focus_matches(focus_title, sentence)
     if kind == "national_export_release":
         return bool(national_export_observation(sentence))
     if kind in {"cyber_operational_incident", "cyber_regulatory_response"}:
@@ -992,7 +1111,7 @@ def evidence_is_new_event(kind: str, sentence: str) -> bool:
 def news_value_rank(evidence: list[dict]) -> int:
     """Economic mechanism outranks textual focus and announcement certainty."""
     kinds = {item["kind"] for item in evidence}
-    if kinds & {"commercial_order", "order_backlog_level", "customer_supply_start", "procurement_execution_stage", "selling_price_or_cost",
+    if kinds & {"network_segmentation_policy", "housing_supply_policy", "commercial_order", "order_backlog_level", "customer_supply_start", "procurement_execution_stage", "selling_price_or_cost",
                 "earnings_or_guidance", "industry_market_share", "export_results", "national_export_release", "licensing_cashflow", "corporate_transaction", "corporate_ownership_execution", "export_control_scope",
                 "policy_scope_or_stage", "environmental_approval", "industrial_architecture_adoption", "physical_supply_or_capacity",
                 "launch_turnaround_bottleneck", "sector_demand_outlook"}:
@@ -1009,6 +1128,8 @@ def transmission_scope(title: str, evidence: list[dict]) -> tuple[int, str]:
     """Prioritize sourced market/industry changes, not merely dense issuer facts."""
     kinds = {item['kind'] for item in evidence}
     excerpts = ' '.join(item['source_excerpt'] for item in evidence)
+    if kinds & {"network_segmentation_policy", "housing_supply_policy"}:
+        return 3, 'scoped_national_regulatory_or_supply_action'
     if 'national_export_release' in kinds:
         return 3, 'national_export_release'
     if 'economic_restriction_response' in kinds:
@@ -1042,11 +1163,22 @@ def transmission_scope(title: str, evidence: list[dict]) -> tuple[int, str]:
     return 1, 'issuer_specific_event'
 
 
-def equity_publication_assessment(title: str, evidence: list[dict]) -> dict:
+def equity_publication_assessment(title: str, evidence: list[dict], *, body: str = "", source_url: str = "") -> dict:
     """Separate a true economic fact from a foreground stock-market catalyst."""
     kinds = {item['kind'] for item in evidence}
     if not kinds:
         return {'eligible': False, 'reason': 'no_verified_economic_change'}
+    execution = any(NEW_EXECUTION.search(item['source_excerpt']) for item in evidence)
+    if re.search(r"기자24시|칼럼|사설|오피니언|/journalist/|/opinion/", f"{title} {source_url}", re.I) and not execution:
+        return {'eligible': False, 'reason': 'opinion_rehash_without_new_source_action'}
+    if re.search(r"교육센터|인력양성|인력\s*양성|교육\s*프로그램", title) and not execution:
+        return {'eligible': False, 'reason': 'training_plan_without_committed_market_execution'}
+    if re.search(r"아이폰|스마트폰|아이패드|가정용|생활용", title) and re.search(
+        r"틈새시장|외장\s*메모리|신제품|제품\s*소개|제품\s*출시", title,
+    ) and not execution:
+        return {'eligible': False, 'reason': 'consumer_product_without_new_earnings_or_supply_terms'}
+    if re.search(r"전략[^.!?]{0,20}이식|공장은[^.!?]{0,20}실험장|기술을?\s*택한|택한[^.!?]{0,10}기술", title) and not execution:
+        return {'eligible': False, 'reason': 'business_case_overview_without_incremental_event'}
     if (
         re.search(r"대통령|정부|총리|장관|당국|금융위|금감원", title)
         and re.search(r"철저|대책\s*마련|대응\s*강화|점검.{0,8}지시", title)
@@ -1306,6 +1438,11 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
             continue
         for kind, axes, subject, action in COMPILED_RULES:
             if not subject.search(sentence) or not action.search(sentence):
+                continue
+            policy_focus = focus_kind(title)
+            if policy_focus in {"network_segmentation_policy", "housing_supply_policy"} and kind != policy_focus:
+                continue
+            if kind in {"network_segmentation_policy", "housing_supply_policy"} and kind != policy_focus:
                 continue
             if kind in {"cyber_operational_incident", "cyber_regulatory_response"} and focus_kind(title) != "cyber_incident":
                 continue
@@ -1611,7 +1748,7 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
         result["reason"] = "existing_market_gate_required"
     if result['evidence']:
         result['transmission_scope_rank'], result['transmission_scope_reason'] = transmission_scope(title, result['evidence'])
-        result['equity_publication'] = equity_publication_assessment(title, result['evidence'])
+        result['equity_publication'] = equity_publication_assessment(title, result['evidence'], body=body, source_url=source_url)
         if not result['equity_publication']['eligible']:
             result['priority'] = min(result['priority'], 1)
             result['scope_note'] = result['equity_publication']['reason']
