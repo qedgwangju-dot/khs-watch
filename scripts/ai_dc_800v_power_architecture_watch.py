@@ -17,7 +17,7 @@ PENDING = OUT / "ai_dc_800v_power_architecture_pending_state.json"
 ALERT = OUT / "ai_dc_800v_power_architecture_alert.txt"
 STATUS = OUT / "ai_dc_800v_power_architecture_status.md"
 
-FORMAT_VERSION = 5
+FORMAT_VERSION = 6
 # Dedupe validation: unchanged extracted facts must remain Telegram-silent.
 # Timing-benchmark validation reruns must also remain silent when official facts are unchanged.
 HEADERS = {"User-Agent": "khs-watch/1.0 (+https://github.com/qedgwangju-dot/khs-watch)"}
@@ -36,6 +36,14 @@ HITACHI_800V = "https://hitachidigital.com/news/hitachi-accelerate-gigawatt-scal
 SIEMENS_SST = "https://press.siemens.com/global/en/pressrelease/siemens-and-reinhausen-develop-direct-current-power-solutions-ai-data-centers"
 LS_DC = "https://nahpdev.ls-electric.com/company/articles/2759/industry-usa-ls-electric-america-to-highlight-dc-grid-solutions-for-ai-data-centers-at-data-center-world-2026"
 DELTA_DCW = "https://www.delta-singapore.com/en-SG/news/40267"
+LG_AIR = "https://www.lg.com/global/newsroom/news/eco-solution/lg-electronics-secures-supply-agreement-to-advance-ai-data-center-cooling-business-in-north-america/"
+AIR_LG = "https://www.aircontrolconcepts.com/news/air-and-lg-supply-agreement-aims-to-advance-ai-data-center-cooling-business-in-north-america"
+LG_CHILLER_CAPACITY = "https://lg.co.kr/media/release/30623"
+VERTIV_DSX = "https://www.vertiv.com/en-asia/about/news-and-events/news-releases/2026/vertiv-brings-converged-physical-infrastructure-to-nvidia-vera-rubin-dsx-ai-factories/"
+VERTIV_DSX_CDU = "https://www.vertiv.com/en-emea/about/news-and-events/news-releases/2026/vertiv-coolant-distribution-unit-qualified-as-nvidia-dsx-ready-for-ai-factory-infrastructure/"
+NVIDIA_DSX = "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Releases-Vera-Rubin-DSX-AI-Factory-Reference-Design-and-Omniverse-DSX-Digital-Twin-Blueprint-With-Broad-Industry-Support/default.aspx"
+SGC_VERTIV_DCD = "https://www.datacenterdynamics.com/en/news/sgc-energy-partners-with-vertiv-to-deploy-powernexus-at-planned-ai-data-center-in-gunsan-south-korea/"
+SGC_VERTIV_SED = "https://en.sedaily.ai/finance/2026/09/08/sgc-energy-partners-with-vertiv-on-gunsan-ai-data-center"
 
 SOURCES = {
     "nvidia_blog": NVIDIA_BLOG,
@@ -51,6 +59,14 @@ SOURCES = {
     "siemens": SIEMENS_SST,
     "ls": LS_DC,
     "delta": DELTA_DCW,
+    "lg_air": LG_AIR,
+    "air_lg": AIR_LG,
+    "lg_chiller_capacity": LG_CHILLER_CAPACITY,
+    "vertiv_dsx": VERTIV_DSX,
+    "vertiv_dsx_cdu": VERTIV_DSX_CDU,
+    "nvidia_dsx": NVIDIA_DSX,
+    "sgc_vertiv_dcd": SGC_VERTIV_DCD,
+    "sgc_vertiv_sed": SGC_VERTIV_SED,
 }
 
 
@@ -136,6 +152,14 @@ def snapshot(texts: dict[str, str]) -> dict:
     siemens = texts.get("siemens", "")
     ls = texts.get("ls", "")
     delta = texts.get("delta", "")
+    lg_air = texts.get("lg_air", "")
+    air_lg = texts.get("air_lg", "")
+    lg_capacity = texts.get("lg_chiller_capacity", "")
+    vertiv_dsx = texts.get("vertiv_dsx", "")
+    vertiv_dsx_cdu = texts.get("vertiv_dsx_cdu", "")
+    nvidia_dsx = texts.get("nvidia_dsx", "")
+    sgc_dcd = texts.get("sgc_vertiv_dcd", "")
+    sgc_sed = texts.get("sgc_vertiv_sed", "")
 
     partner_count_min = regex_value(
         texts,
@@ -210,6 +234,94 @@ def snapshot(texts: dict[str, str]) -> dict:
         },
     }
 
+    lg_air_capacity_gw_min = regex_value(
+        texts,
+        "lg_air",
+        r"(?:more than|exceeding)\s+([0-9]+(?:\.[0-9]+)?)\s*GW",
+        float,
+    )
+    if lg_air_capacity_gw_min is None and re.search(r"(?:more than|exceeding)\s*5\s*GW", lg_air, re.I):
+        lg_air_capacity_gw_min = 5.0
+
+    lg_first_half_orders_usd_m = regex_value(
+        texts,
+        "lg_air",
+        r"first-half orders[^.]{0,120}?\$([0-9]+(?:\.[0-9]+)?)\s*million",
+        float,
+    )
+    lg_2027_chiller_target_usd_m = regex_value(
+        texts,
+        "lg_air",
+        r"2027 chiller business revenue target[^.]{0,120}?\$([0-9]+(?:\.[0-9]+)?)\s*million",
+        float,
+    )
+    lg_capacity_investment_krw_billion = None
+    if lg_capacity and ("1,500억" in lg_capacity or "1,500억 원" in lg_capacity):
+        lg_capacity_investment_krw_billion = 150.0
+
+    vertiv_block_mw = regex_value(
+        texts,
+        "vertiv_dsx",
+        r"([0-9]+(?:\.[0-9]+)?)\s*MW\s+infrastructure blocks",
+        float,
+    )
+    vertiv_cdu_mw = regex_value(
+        texts,
+        "vertiv_dsx_cdu",
+        r"([0-9]+(?:\.[0-9]+)?)\s*MW\s+Vertiv",
+        float,
+    )
+
+    sgc_pair_text = sgc_dcd + " " + sgc_sed
+    sgc_initial_mw = 60.0 if re.search(r"(?:initial|초기)[^.]{0,100}?60\s*(?:MW|megawatt)", sgc_pair_text, re.I) else None
+    sgc_max_mw = 300.0 if re.search(r"(?:up to|최대)[^.]{0,100}?300\s*(?:MW|megawatt)", sgc_pair_text, re.I) else None
+
+    facts["execution"] = {
+        "lg_air_bilateral_official_long_term_contract": bool(
+            lg_air
+            and air_lg
+            and "long-term" in lg_air.lower()
+            and "long-term" in air_lg.lower()
+            and ("5gw" in lg_air.lower() or "5 gw" in lg_air.lower())
+            and ("5gw" in air_lg.lower() or "5 gw" in air_lg.lower())
+        ),
+        "lg_air_capacity_gw_min": lg_air_capacity_gw_min,
+        "lg_air_multi_year_program": "multi-year" in lg_air.lower() if lg_air else None,
+        "lg_air_air_cooled_centrifugal_chiller": "air-cooled centrifugal chiller" in lg_air.lower() if lg_air else None,
+        "lg_air_official_contract_value_disclosed": False,
+        "lg_first_half_aidc_cooling_orders_usd_m": lg_first_half_orders_usd_m,
+        "lg_2027_chiller_revenue_target_usd_m": lg_2027_chiller_target_usd_m,
+        "lg_chiller_capacity_investment_krw_billion": lg_capacity_investment_krw_billion,
+        "lg_us_chiller_factory_h1_2027": bool(
+            lg_capacity
+            and ("내년 상반기" in lg_capacity or "2027" in lg_capacity)
+            and ("버지니아" in lg_capacity or "virginia" in lg_capacity.lower())
+        ),
+        "vertiv_nvidia_vera_rubin_dsx_official": bool(
+            vertiv_dsx
+            and nvidia_dsx
+            and "vera rubin dsx" in vertiv_dsx.lower()
+            and "vertiv" in nvidia_dsx.lower()
+        ),
+        "vertiv_onecore_standard_block_mw": vertiv_block_mw,
+        "vertiv_dsx_ready_cdu_mw": vertiv_cdu_mw,
+        "sgc_vertiv_mou_dual_source": bool(
+            sgc_dcd
+            and sgc_sed
+            and "vertiv" in sgc_dcd.lower()
+            and "vertiv" in sgc_sed.lower()
+            and ("mou" in sgc_sed.lower() or "memorandum of understanding" in sgc_dcd.lower())
+        ),
+        "sgc_vertiv_non_binding_mou": "non-binding" in sgc_dcd.lower() if sgc_dcd else None,
+        "sgc_vertiv_initial_mw": sgc_initial_mw,
+        "sgc_vertiv_max_mw": sgc_max_mw,
+        "sgc_vertiv_powernexus_planned": "powernexus" in sgc_pair_text.lower(),
+        "sgc_vertiv_binding_supply_contract_confirmed": False,
+        "sgc_phase1_energization_q1_2028": bool(
+            sgc_dcd and ("q1 2028" in sgc_dcd.lower() or "first quarter of 2028" in sgc_dcd.lower())
+        ),
+        "scope_note": "LG-AIR는 공식 장기공급계약. SGC-Vertiv는 비구속 MOU·기술검토/적용 계획이며 확정 공급계약으로 승격 금지. 7조달러는 산업 투자전망이지 Vertiv 계약금액이 아님.",
+    }
     live_vendor_800v = 0
     for name, row in facts["vendors"].items():
         if row.get("stage") not in ("확인 불가", "DC grid 개념·전시"):
@@ -318,6 +430,35 @@ def changes(old: dict, new: dict) -> list[str]:
             if before is not None and after is not None and before != after:
                 out.append(f"LS ELECTRIC 800 VDC 직접 제품 확인 {before}→{after}")
 
+    pe, ne = prev.get("execution") or {}, new.get("execution") or {}
+    if not pe and ne:
+        if ne.get("lg_air_bilateral_official_long_term_contract"):
+            out.append(f"LG전자-AIR 북미 AIDC 칠러 장기공급계약 기준선 편입 · {ne.get('lg_air_capacity_gw_min') or 5}GW+")
+        if ne.get("sgc_vertiv_mou_dual_source"):
+            out.append(
+                f"SGC에너지-Vertiv 군산 AIDC MOU 기준선 편입 · "
+                f"{ne.get('sgc_vertiv_initial_mw') or 60:.0f}MW→최대 {ne.get('sgc_vertiv_max_mw') or 300:.0f}MW · 확정 공급계약 아님"
+            )
+        if ne.get("vertiv_nvidia_vera_rubin_dsx_official"):
+            out.append("Vertiv-NVIDIA Vera Rubin DSX 공동개발·통합 인프라 기준선 편입")
+    else:
+        for key, label in (
+            ("lg_air_capacity_gw_min", "LG-AIR 장기공급 대상 AIDC 용량"),
+            ("lg_air_official_contract_value_disclosed", "LG-AIR 공식 계약금액 공개 여부"),
+            ("lg_first_half_aidc_cooling_orders_usd_m", "LG 상반기 AIDC 냉각 수주"),
+            ("lg_2027_chiller_revenue_target_usd_m", "LG 2027 칠러 매출 목표"),
+            ("lg_chiller_capacity_investment_krw_billion", "LG 칠러 생산능력 투자"),
+            ("vertiv_onecore_standard_block_mw", "Vertiv OneCore 표준 블록"),
+            ("vertiv_dsx_ready_cdu_mw", "Vertiv DSX Ready CDU"),
+            ("sgc_vertiv_initial_mw", "SGC-Vertiv 초기 설계 용량"),
+            ("sgc_vertiv_max_mw", "SGC-Vertiv 최대 계획 용량"),
+            ("sgc_vertiv_binding_supply_contract_confirmed", "SGC-Vertiv 확정 공급계약"),
+            ("sgc_phase1_energization_q1_2028", "SGC 군산 1단계 2028년 1분기 전원 인가 목표"),
+        ):
+            before, after = pe.get(key), ne.get(key)
+            if before is not None and after is not None and before != after:
+                out.append(f"{label} {before}→{after}")
+
     pm, nm = prev.get("market") or {}, new.get("market") or {}
     for key, label in (
         ("official_multi_vendor_800v_count", "공식 800 VDC 직접 참여 공급사 수"),
@@ -344,9 +485,10 @@ def render(facts: dict, chg: list[str], errors: list[str], fxv: dict) -> str:
     a = facts["architecture"]
     v = facts["vendors"]
     m = facts["market"]
+    e = facts["execution"]
 
     lines = [
-        "<b>⚡ AI 데이터센터 800 VDC 전환·하이브리드 AC/DC 감시</b>",
+        "<b>⚡ AI 데이터센터 800 VDC·전력/냉각 인프라 실행 감시</b>",
         "",
         "<b>📌 현재 공식 확인</b>",
         f"• NVIDIA 하이브리드 파워랙 H2 2026 │ <b>{'확인' if a['nvidia_hybrid_power_rack_h2_2026'] else '재확인 필요'}</b>",
@@ -368,6 +510,15 @@ def render(facts: dict, chg: list[str], errors: list[str], fxv: dict) -> str:
         f"  └ {html.escape(m['moat_check_basis'])}",
         "• JPM의 '도입 지연·2030년대까지 하이브리드 주류' 문구는 공개 원문을 독립 확보하지 못해 공식 기준선으로 사용하지 않음. 대신 Schneider·Vertiv·NVIDIA 공식 일정으로 검증",
         "",
+        "<b>🧊 전력·냉각 인프라 실행</b>",
+        f"• LG전자-AIR │ 북미 AIDC <b>{e.get('lg_air_capacity_gw_min') or 5:g}GW+</b> 칠러 장기공급계약 · 양사 공식 확인={e.get('lg_air_bilateral_official_long_term_contract')}",
+        "  └ 공식 계약금액은 미공개. 3~5년·GW당 4,000~5,000억원·총 2.0~2.5조원은 언론/시장 추정치로 확정매출 취급 금지",
+        f"• LG 실행능력 │ 상반기 AIDC 냉각 수주 USD {e.get('lg_first_half_aidc_cooling_orders_usd_m') or 428:g}M · 2027 칠러 매출목표 USD {e.get('lg_2027_chiller_revenue_target_usd_m') or 680:g}M · 생산능력 투자 {e.get('lg_chiller_capacity_investment_krw_billion') or 150:g}0억원",
+        f"• Vertiv-NVIDIA │ Vera Rubin DSX 공식 공동개발={e.get('vertiv_nvidia_vera_rubin_dsx_official')} · OneCore 표준 블록 {e.get('vertiv_onecore_standard_block_mw') or 12.5:g}MW · DSX Ready CDU {e.get('vertiv_dsx_ready_cdu_mw') or 2.3:g}MW",
+        f"• SGC에너지-Vertiv │ 군산 초기 {e.get('sgc_vertiv_initial_mw') or 60:g}MW → 최대 {e.get('sgc_vertiv_max_mw') or 300:g}MW · PowerNexus 적용 계획={e.get('sgc_vertiv_powernexus_planned')}",
+        f"  └ 현재 단계는 <b>{'비구속 MOU' if e.get('sgc_vertiv_non_binding_mou') else 'MOU/기술검토'}</b> · 확정 공급계약={e.get('sgc_vertiv_binding_supply_contract_confirmed')} · 1단계 전원 인가 Q1 2028 목표={e.get('sgc_phase1_energization_q1_2028')}",
+        "• 기사 제목의 7조달러는 글로벌 데이터센터 투자 전망치이며 Vertiv 수주액·SGC 사업비가 아님",
+        "",
         "<b>🏭 관련 기업 지도</b>",
     ]
     for name in ("Schneider Electric", "Eaton", "Vertiv", "Hitachi Energy", "Siemens", "LS ELECTRIC", "Delta"):
@@ -382,6 +533,8 @@ def render(facts: dict, chg: list[str], errors: list[str], fxv: dict) -> str:
         "• Schneider·Eaton·Vertiv·Hitachi·Siemens·LS ELECTRIC·Delta가 계획/시제품→상용 출하·첫 고객으로 전환",
         "• 기존 AC 배전·UPS·변압기·스위치기어를 보존하는 하이브리드 기간이 연장/단축되는 공식 증거",
         "• 시설 전체 800 VDC 또는 SST가 실제 대규모 상업 데이터센터에 채택되는 첫 확정 사례",
+        "• LG-AIR 5GW+ 프로그램의 실제 발주·납품 일정·공식 계약금액·고객 실명·CDU 추가 공급",
+        "• SGC-Vertiv가 비구속 MOU→구속력 있는 공급계약/발주→착공→Q1 2028 전원 인가로 승격",
         "• 제품 단품이 아니라 EPC·보호·계측·에너지저장·냉각·운영SW·서비스를 묶은 턴키 수주",
         "",
         "<b>⚠️ 공정 병목 후보</b>",
@@ -402,6 +555,10 @@ def render(facts: dict, chg: list[str], errors: list[str], fxv: dict) -> str:
         f'• <a href="{SIEMENS_SST}">Siemens SST</a>',
         f'• <a href="{LS_DC}">LS ELECTRIC DC Grid</a>',
         f'• <a href="{DELTA_DCW}">Delta 800 VDC In-Row</a>',
+        f'• <a href="{LG_AIR}">LG전자-AIR 5GW+ 칠러 장기공급계약</a>',
+        f'• <a href="{AIR_LG}">AIR 공식 LG 장기공급계약</a>',
+        f'• <a href="{VERTIV_DSX}">Vertiv Vera Rubin DSX</a>',
+        f'• <a href="{SGC_VERTIV_DCD}">SGC에너지-Vertiv 군산 AIDC MOU 교차검증</a>',
     ]
 
     if chg:
@@ -455,7 +612,7 @@ def main() -> int:
         ALERT.write_text(render(facts, chg, errors, fxv), encoding="utf-8")
 
     STATUS.write_text(
-        "# AI 데이터센터 800 VDC 전환 감시\n\n"
+        "# AI 데이터센터 800 VDC·전력/냉각 인프라 실행 감시\n\n"
         f"- 하이브리드 AC/DC 브리지: **{'확인' if facts['market']['hybrid_bridge_confirmed'] else '판정 보류'}**\n"
         f"- 시설 전체 Native 800 VDC 대량도입: **{'확정' if facts['market']['native_facility_800v_mass_adoption_confirmed'] else '미확정'}**\n"
         f"- 기존 AC 전력기기 단기 대체위험: **{facts['market'].get('legacy_ac_near_term_displacement_risk')}**\n"
@@ -463,6 +620,8 @@ def main() -> int:
         f"- Vertiv 중앙집중형 2028~2029+: **{facts['market'].get('vertiv_centralized_2028_2029_plus')}**\n"
         f"- OCP SST 사양: **v{facts['architecture'].get('ocp_sst_spec_version') or '확인 불가'}**\n"
         f"- 공식 800 VDC 직접 참여 공급사: **{facts['market']['official_multi_vendor_800v_count']}개**\n"
+        f"- LG전자-AIR 북미 칠러 장기계약: **{facts['execution'].get('lg_air_capacity_gw_min') or 5}GW+ / 공식 계약금액 미공개**\n"
+        f"- SGC에너지-Vertiv: **{facts['execution'].get('sgc_vertiv_initial_mw') or 60:.0f}MW→최대 {facts['execution'].get('sgc_vertiv_max_mw') or 300:.0f}MW / 비구속 MOU**\n"
         f"- 의미 변화: **{len(chg)}건**\n"
         f"- 알림: **{'예' if should_alert else '아니오'}**\n"
         f"- 원천 오류: **{'; '.join(errors) if errors else '없음'}**\n",
