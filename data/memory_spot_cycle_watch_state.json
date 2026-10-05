@@ -526,7 +526,7 @@
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
     "period": "2027",
-    "blended_asp_yoy_pct": 121.0,
+    "blended_asp_yoy_pct": 121,
     "eight_hi_premium_min_pct": 10,
     "eight_hi_premium_max_pct": 20,
     "mainstream_layers": 8,
@@ -667,12 +667,12 @@
   "dgx_spark_memory_price_track_version": 2,
   "dgx_spark_memory_price": {
     "sku_64_memory_gb": 64,
-    "sku_64_price_usd": 4999.0,
+    "sku_64_price_usd": 4999,
     "sku_64_price_official_confirmed": true,
     "sku_64_available_date": "2026-10-23",
     "sku_64_model_limit_b": 100,
     "sku_128_memory_gb": 128,
-    "sku_128_fe_price_usd": 6950.0,
+    "sku_128_fe_price_usd": 6950,
     "sku_128_fe_price_official_confirmed": false,
     "sku_128_fe_price_source_kind": "신뢰보도 확인 · NVIDIA 공개 현재가 페이지 직접 확인 전",
     "sku_128_fe_price_source_url": "https://news.futunn.com/en/post/1000536008/nvidia-has-launched-a-64gb-version-of-the-dgx-spark",
@@ -699,5 +699,29 @@
     "prior_price_source_url": "https://forums.developer.nvidia.com/t/2-23-2026-price-change-announcement/361713",
     "as_of": "2026-10-02",
     "source_rank": 3
+  },
+  "goldman_structural_memory_track_version": 1,
+  "goldman_structural_memory": {
+    "token_consumption_2030_x": 24,
+    "token_consumption_2030_monthly_quadrillion": 120,
+    "token_forecast_official_confirmed": true,
+    "dram_undersupply_2026_pct": 5,
+    "dram_undersupply_2027_pct": 5.9,
+    "dram_undersupply_2028_pct": 3.9,
+    "nand_undersupply_2026_pct": 4.4,
+    "nand_undersupply_2027_pct": 4.6,
+    "nand_undersupply_2028_pct": 3,
+    "undersupply_2029_2030_likely": true,
+    "undersupply_2029_2030_official_public_confirmed": false,
+    "token_source": "Goldman Sachs Research",
+    "token_source_kind": "Goldman Sachs 공식 공개자료",
+    "token_source_url": "https://www.goldmansachs.com/insights/articles/ai-agents-forecast-to-boost-tech-cash-flow-as-usage-soars",
+    "deficit_source": "Goldman Sachs Research chart reproduced in user-provided Exhibit 19 screenshot",
+    "deficit_source_kind": "사용자 제공 Goldman Sachs Exhibit 19 캡처 + 복수 2차 리포트 해설의 2026E~2028E 숫자 교차확인",
+    "deficit_source_url": "https://www.xxquant.com/en/institution/institutional-research/e4559cb64799383337f1531cfa347ef3",
+    "secondary_source_url": "https://www.macrostream.ai/articles/6a1d0385e33ff44036068221",
+    "as_of": "2026-10-05",
+    "source": "Goldman Sachs Research + secondary reproductions",
+    "source_rank": 2
   }
 }
