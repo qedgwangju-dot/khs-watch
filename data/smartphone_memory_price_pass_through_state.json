@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "initial_alert_sent": false,
+  "seen": [],
+  "seen_fact_keys": [],
+  "metrics": {
+    "s27_korea_hike_low_krw": 100000,
+    "s27_korea_hike_high_krw": 130000,
+    "s27_status": "팁스터 기반 전망·삼성전자 공식 미확정",
+    "s26_price_pass_through_confirmed": true,
+    "s26_confirmation": "Reuters/연합뉴스가 메모리 비용 상승에 따른 가격 인상 보도",
+    "samsung_mx_component_cost_pressure_official": true,
+    "dram_2027_tight": true,
+    "nand_2h27_easing": true,
+    "s27_lpddr6_ufs51_some_models_status": "루머"
+  },
+  "last_scan_items": 0,
+  "last_signal_count": 0,
+  "last_alert": null
+}\n
