@@ -8,6 +8,7 @@ import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
+from urllib.parse import quote_plus
 
 import requests
 from bs4 import BeautifulSoup
@@ -34,6 +35,12 @@ HEADERS = {
     "Accept-Language": "ko-KR,ko;q=0.9,en;q=0.5",
 }
 MAX_AGE_DAYS = base.MAX_AGE_DAYS
+SGC_GUNSAN_RSS = (
+    "https://news.google.com/rss/search?q="
+    + quote_plus('("SGC에너지" OR "SGC AI 인프라") ("AIDC" OR "AI 데이터센터") (군산 OR "60MW" OR "300MW" OR 착공 OR 운영 OR 본계약 OR KT클라우드)')
+    + "&hl=ko&gl=KR&ceid=KR:ko"
+)
+EXTRA_RSS_SOURCES = (("국내 AIDC 사업 실행", False, SGC_GUNSAN_RSS),)
 
 
 def digest(value: str) -> str:
@@ -56,12 +63,26 @@ def semantic_key(row: dict[str, Any]) -> str:
         return "aidc|power-special"
     if "특구" in title:
         return "aidc|special-zone"
+    if ("sgc에너지" in title or "sgc ai 인프라" in title) and ("군산" in title or "300mw" in title or "60mw" in title):
+        if "운영" in title or "시운전" in title:
+            return "aidc|sgc-gunsan|operation"
+        if "착공" in title:
+            return "aidc|sgc-gunsan|groundbreaking"
+        if "본계약" in title or "계약 완료" in title:
+            return "aidc|sgc-gunsan|contract"
+        if "kt클라우드" in title or "kt cloud" in title:
+            return "aidc|sgc-gunsan|operator-partner"
+        return "aidc|sgc-gunsan|plan"
     cleaned = re.sub(r"\s+-\s+[^-]{1,60}$", "", title)
     cleaned = re.sub(r"[^0-9a-z가-힣]+", " ", cleaned)
     return f"aidc|fact|{digest(' '.join(cleaned.split()))[:16]}"
 
 
 def event_level(row: dict[str, Any]) -> int:
+    key = semantic_key(row)
+    if key.startswith("aidc|sgc-gunsan|"):
+        stage = key.rsplit("|", 1)[-1]
+        return {"plan": 31, "operator-partner": 41, "contract": 51, "groundbreaking": 61, "operation": 71}.get(stage, 31)
     return base.event_level(row)
 
 
@@ -244,6 +265,24 @@ def fact_lines(row: dict[str, Any]) -> tuple[list[str], list[str], list[str]]:
             ["• 이제 정책 기대보다 실제 전원 인가·특구 지정·착공·발주가 실적 연결의 핵심"],
         )
 
+    if key.startswith("aidc|sgc-gunsan|"):
+        new = ["• SGC에너지 군산 AIDC는 <b>1단계 60MW</b> 착공을 시작점으로 수요에 따라 <b>최대 300MW</b>까지 단계 확장하는 직접 사업"]
+        if has(body, "2028년 1분기", "2028년 1q"):
+            new.append("• 1단계 운영 목표는 <b>2028년 1분기</b>로 확인")
+        if has(body, "kt클라우드", "kt cloud"):
+            new.append("• KT클라우드는 설계·구축·운영(DBO) 파트너로 참여하며, 단순 테마가 아니라 실제 구축·운영 역할이 확인됨")
+        if has(body, "현대엔지니어링"):
+            new.append("• 현대엔지니어링은 공동 시공사로 건축·토목·설비·통신 및 일부 전력·냉각 설비를 담당")
+        changed = [
+            "• 국내 AIDC 기대를 신청용량이 아니라 <b>본계약 → 착공 → 전원 인가 → 시운전 → 운영</b> 단계로 분리해 추적",
+            "• 300MW는 확정 동시 가동용량이 아니라 <b>수요에 따른 단계적 확장 상단</b>으로 분리",
+        ]
+        invest = [
+            "• 직접 매출 연결은 60MW 1단계의 EPC·전력·냉각·모듈형 설비 발주와 운영 개시가 먼저이며, 300MW 전량을 선반영하지 않음",
+            "• SGC에너지의 에너지 공급·개발 참여와 KT클라우드 DBO, 시공사 역할을 구분해 실제 수익 귀속을 추적",
+        ]
+        return new, changed, invest
+
     title = html.escape(base.norm(str(row.get("title", ""))))
     return (
         [f"• 새로 확인된 변화: {title}"],
@@ -262,8 +301,10 @@ def render(row: dict[str, Any]) -> str:
     title = html.escape(base.norm(str(row.get("title", ""))))
     category = html.escape(str(row.get("category", "AIDC 특별법")))
     new, changed, invest = fact_lines(row)
+    project_event = str(row.get("event_key", "")).startswith("aidc|sgc-gunsan|")
+    header = "<b>한국 AIDC 사업 실행 새 변화</b>" if project_event else "<b>한국 AIDC 정책·전력 특례 새 변화</b>"
     return "\n".join([
-        "<b>한국 AIDC 정책·전력 특례 새 변화</b>",
+        header,
         "",
         "<b>한눈에 보기</b>",
         f"• <b>현재 단계</b>  {category}",
@@ -317,7 +358,7 @@ def main() -> int:
 
     rows: list[dict[str, Any]] = []
     errors: list[str] = []
-    for source, official, url in base.RSS_SOURCES:
+    for source, official, url in base.RSS_SOURCES + EXTRA_RSS_SOURCES:
         try:
             response = session.get(url, timeout=30)
             response.raise_for_status()
@@ -344,6 +385,10 @@ def main() -> int:
         published_utc = published.astimezone(timezone.utc) if published else None
 
         should_notify = current > previous
+        # SGC 군산 실행 감시는 이번 업그레이드 시 현재 알려진 60MW/300MW 기준선을 조용히 저장하고,
+        # 이후 본계약·착공·전원 인가·운영 단계가 올라갈 때만 알린다.
+        if int(state.get("dedupe_version") or 0) < 3 and key.startswith("aidc|sgc-gunsan|"):
+            should_notify = False
         # v2 전환 시 이미 과거에 처리한 기사들을 새 semantic key 때문에 재전송하지 않는다.
         if previous == 0 and last_state_time and published_utc and published_utc <= last_state_time:
             should_notify = False
@@ -357,7 +402,7 @@ def main() -> int:
         "seen_events": seen,
         "updated_at": now.isoformat(),
         "source_errors": errors,
-        "dedupe_version": 2,
+        "dedupe_version": 3,
     }
     PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
