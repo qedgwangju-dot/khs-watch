@@ -2073,26 +2073,25 @@
     "event:79bc37a30fd7aed2a24a2412": {
       "first_seen_kst": "2026-10-05T10:49:34+09:00",
       "lanes": {
-        "live": "2026-10-05T19:27:09+09:00"
+        "live": "2026-10-05T19:54:04+09:00"
       },
-      "last_seen_kst": "2026-10-05T19:27:09+09:00",
-      "link": "https://www.hankyung.com/article/202610053408i",
+      "last_seen_kst": "2026-10-05T19:54:04+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609291509b",
       "source": "한국경제",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:83ec71bbd2e5cc11b39efd66345fdd0a8f87e05a72c01e488912df4f4926789e",
+      "source_fact_identity": "source_facts:v1:4ad74c8e21f3a872272dda98531a567c5912e7f518ce42c134cb607d700b8a23",
       "source_fact_keys": [
-        "source_fact:v1:221168eabcd903b4ced8fa08776f64a93b4523e49d31e606102cba898b653970",
-        "source_fact:v1:242fa138e971100ea5aea4fb6e8d8c24acee30e7179d775dc294e8a298c0e504",
-        "source_fact:v1:4e77d91fe496205b3af40de23dca35437d879eb466bf88498afed579d7b371e0",
-        "source_fact:v1:5a33989342c320b1b50002150bfac05043dbc55a3e5a4b4cd8c6b59038867b67",
-        "source_fact:v1:5b61d0323fad869dc093a813f2eff793a313cc979e213c5ec6494ca5e1d1d14e",
-        "source_fact:v1:6d3c3b6d83589a4e6f2226cc31681ddc779bd587bd2c246c49df3a401d59bc16",
-        "source_fact:v1:7eb7d5b6e40452e59b03d7e1cd3a7f97a28dbe5cd07c5cbb8bd647b7b7c15ffd",
-        "source_fact:v1:c3dbefcc0012460ddb2bb547cc73d48745700a2450a28f63b7ebdbc381af395a",
-        "source_fact:v1:ff7673602c5f5549b5c8e8f08875198d8bd76e6dd464789a84e27a1525b7162b"
+        "source_fact:v1:137e8f1f55e663ba6fb38e0217d20cd88a1f293007d4a99a7121c326d1164739",
+        "source_fact:v1:161c874ab7ac8a275bb947ab4ae7531022b58e34136b5e043a0811a1569f105f",
+        "source_fact:v1:1b1d0aaa98bb4184cde27d65e5f7cd86c545871bd69d7e649907a2496169466e",
+        "source_fact:v1:34b1e03f302b19a1b6c4a7e0f33f52cd455905b94a95b843ef6476e0092a32f8",
+        "source_fact:v1:4d754b24528a33a34a3844a501a0e45ea8bbc1ece48c56b8d4553581e74e22d0",
+        "source_fact:v1:638bd27d57b2c6715c26170f7d91317f2b077386eb861cba8b5f35f3704d9e9b",
+        "source_fact:v1:9c5325a6d3570383b58d54f9e56803c4b1f55c5cea1f77e8605a452a36090e01",
+        "source_fact:v1:e531d1a01e9249b4c13130453866cb187bf279e184276d55a9b7bf1628e0a8c8"
       ],
-      "source_published_kst": "2026-10-05T13:09+09:00",
-      "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
+      "source_published_kst": "2026-10-05T12:57+09:00",
+      "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
     },
     "event:7a274c20230f7d17a8a32041": {
       "first_seen_kst": "2026-10-01T04:48:27+09:00",
@@ -4493,6 +4492,29 @@
       ],
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
+    },
+    "fact:1001ee208cd423519b5ce424": {
+      "first_seen_kst": "2026-10-05T19:54:04+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:54:04+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:54:04+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609291509b",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ad74c8e21f3a872272dda98531a567c5912e7f518ce42c134cb607d700b8a23",
+      "source_fact_keys": [
+        "source_fact:v1:137e8f1f55e663ba6fb38e0217d20cd88a1f293007d4a99a7121c326d1164739",
+        "source_fact:v1:161c874ab7ac8a275bb947ab4ae7531022b58e34136b5e043a0811a1569f105f",
+        "source_fact:v1:1b1d0aaa98bb4184cde27d65e5f7cd86c545871bd69d7e649907a2496169466e",
+        "source_fact:v1:34b1e03f302b19a1b6c4a7e0f33f52cd455905b94a95b843ef6476e0092a32f8",
+        "source_fact:v1:4d754b24528a33a34a3844a501a0e45ea8bbc1ece48c56b8d4553581e74e22d0",
+        "source_fact:v1:638bd27d57b2c6715c26170f7d91317f2b077386eb861cba8b5f35f3704d9e9b",
+        "source_fact:v1:9c5325a6d3570383b58d54f9e56803c4b1f55c5cea1f77e8605a452a36090e01",
+        "source_fact:v1:e531d1a01e9249b4c13130453866cb187bf279e184276d55a9b7bf1628e0a8c8"
+      ],
+      "source_published_kst": "2026-10-05T12:57+09:00",
+      "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
     },
     "fact:15c34bd1a769d14839872339": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -7421,6 +7443,29 @@
       "link": "https://www.yna.co.kr/view/AKR20261003010300071",
       "source": "연합뉴스",
       "title": "트럼프, 선거용 '알래스카 투자' 관철하려 韓에 관세카드 꺼낼까 | 연합뉴스"
+    },
+    "link:3078a3d0410009efc6bba4d2": {
+      "first_seen_kst": "2026-10-05T19:54:04+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:54:04+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:54:04+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609291509b",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ad74c8e21f3a872272dda98531a567c5912e7f518ce42c134cb607d700b8a23",
+      "source_fact_keys": [
+        "source_fact:v1:137e8f1f55e663ba6fb38e0217d20cd88a1f293007d4a99a7121c326d1164739",
+        "source_fact:v1:161c874ab7ac8a275bb947ab4ae7531022b58e34136b5e043a0811a1569f105f",
+        "source_fact:v1:1b1d0aaa98bb4184cde27d65e5f7cd86c545871bd69d7e649907a2496169466e",
+        "source_fact:v1:34b1e03f302b19a1b6c4a7e0f33f52cd455905b94a95b843ef6476e0092a32f8",
+        "source_fact:v1:4d754b24528a33a34a3844a501a0e45ea8bbc1ece48c56b8d4553581e74e22d0",
+        "source_fact:v1:638bd27d57b2c6715c26170f7d91317f2b077386eb861cba8b5f35f3704d9e9b",
+        "source_fact:v1:9c5325a6d3570383b58d54f9e56803c4b1f55c5cea1f77e8605a452a36090e01",
+        "source_fact:v1:e531d1a01e9249b4c13130453866cb187bf279e184276d55a9b7bf1628e0a8c8"
+      ],
+      "source_published_kst": "2026-10-05T12:57+09:00",
+      "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
     },
     "link:307f38675f6fb013561b7454": {
       "first_seen_kst": "2026-09-25T15:40:29+09:00",
@@ -26082,6 +26127,29 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"30개 테스트공장 풀가동\" SK엔무브 고급 윤활기유 1위 만든 R&D | 연합뉴스"
     },
+    "original:85d5a639e55e0df29662e2ca": {
+      "first_seen_kst": "2026-10-05T19:54:04+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:54:04+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:54:04+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609291509b",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ad74c8e21f3a872272dda98531a567c5912e7f518ce42c134cb607d700b8a23",
+      "source_fact_keys": [
+        "source_fact:v1:137e8f1f55e663ba6fb38e0217d20cd88a1f293007d4a99a7121c326d1164739",
+        "source_fact:v1:161c874ab7ac8a275bb947ab4ae7531022b58e34136b5e043a0811a1569f105f",
+        "source_fact:v1:1b1d0aaa98bb4184cde27d65e5f7cd86c545871bd69d7e649907a2496169466e",
+        "source_fact:v1:34b1e03f302b19a1b6c4a7e0f33f52cd455905b94a95b843ef6476e0092a32f8",
+        "source_fact:v1:4d754b24528a33a34a3844a501a0e45ea8bbc1ece48c56b8d4553581e74e22d0",
+        "source_fact:v1:638bd27d57b2c6715c26170f7d91317f2b077386eb861cba8b5f35f3704d9e9b",
+        "source_fact:v1:9c5325a6d3570383b58d54f9e56803c4b1f55c5cea1f77e8605a452a36090e01",
+        "source_fact:v1:e531d1a01e9249b4c13130453866cb187bf279e184276d55a9b7bf1628e0a8c8"
+      ],
+      "source_published_kst": "2026-10-05T12:57+09:00",
+      "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
     "original:86302a19608e3a92f59be73a": {
       "first_seen_kst": "2026-09-22T10:35:36+09:00",
       "lanes": {
@@ -33136,6 +33204,29 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:3229fb7d7e568c6a62073508": {
+      "first_seen_kst": "2026-10-05T19:54:04+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:54:04+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:54:04+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609291509b",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ad74c8e21f3a872272dda98531a567c5912e7f518ce42c134cb607d700b8a23",
+      "source_fact_keys": [
+        "source_fact:v1:137e8f1f55e663ba6fb38e0217d20cd88a1f293007d4a99a7121c326d1164739",
+        "source_fact:v1:161c874ab7ac8a275bb947ab4ae7531022b58e34136b5e043a0811a1569f105f",
+        "source_fact:v1:1b1d0aaa98bb4184cde27d65e5f7cd86c545871bd69d7e649907a2496169466e",
+        "source_fact:v1:34b1e03f302b19a1b6c4a7e0f33f52cd455905b94a95b843ef6476e0092a32f8",
+        "source_fact:v1:4d754b24528a33a34a3844a501a0e45ea8bbc1ece48c56b8d4553581e74e22d0",
+        "source_fact:v1:638bd27d57b2c6715c26170f7d91317f2b077386eb861cba8b5f35f3704d9e9b",
+        "source_fact:v1:9c5325a6d3570383b58d54f9e56803c4b1f55c5cea1f77e8605a452a36090e01",
+        "source_fact:v1:e531d1a01e9249b4c13130453866cb187bf279e184276d55a9b7bf1628e0a8c8"
+      ],
+      "source_published_kst": "2026-10-05T12:57+09:00",
+      "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
     "source_fact:32e46a0b7585e0266d68ca7f": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -33403,6 +33494,29 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"30개 테스트공장 풀가동\" SK엔무브 고급 윤활기유 1위 만든 R&D"
+    },
+    "source_fact:41569bb87f87b919f8efffd3": {
+      "first_seen_kst": "2026-10-05T19:54:04+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:54:04+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:54:04+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609291509b",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ad74c8e21f3a872272dda98531a567c5912e7f518ce42c134cb607d700b8a23",
+      "source_fact_keys": [
+        "source_fact:v1:137e8f1f55e663ba6fb38e0217d20cd88a1f293007d4a99a7121c326d1164739",
+        "source_fact:v1:161c874ab7ac8a275bb947ab4ae7531022b58e34136b5e043a0811a1569f105f",
+        "source_fact:v1:1b1d0aaa98bb4184cde27d65e5f7cd86c545871bd69d7e649907a2496169466e",
+        "source_fact:v1:34b1e03f302b19a1b6c4a7e0f33f52cd455905b94a95b843ef6476e0092a32f8",
+        "source_fact:v1:4d754b24528a33a34a3844a501a0e45ea8bbc1ece48c56b8d4553581e74e22d0",
+        "source_fact:v1:638bd27d57b2c6715c26170f7d91317f2b077386eb861cba8b5f35f3704d9e9b",
+        "source_fact:v1:9c5325a6d3570383b58d54f9e56803c4b1f55c5cea1f77e8605a452a36090e01",
+        "source_fact:v1:e531d1a01e9249b4c13130453866cb187bf279e184276d55a9b7bf1628e0a8c8"
+      ],
+      "source_published_kst": "2026-10-05T12:57+09:00",
+      "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
     },
     "source_fact:41f376e4b65cb9bdf40eed92": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -33776,6 +33890,29 @@
       "source_published_kst": "2026-10-05T05:47+09:00",
       "title": "단일 레버리지 20주 미만 단주, 시간외 종가매매로 '출구 마련' | 연합뉴스"
     },
+    "source_fact:5c73766015099eb73d0780e4": {
+      "first_seen_kst": "2026-10-05T19:54:04+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:54:04+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:54:04+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609291509b",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ad74c8e21f3a872272dda98531a567c5912e7f518ce42c134cb607d700b8a23",
+      "source_fact_keys": [
+        "source_fact:v1:137e8f1f55e663ba6fb38e0217d20cd88a1f293007d4a99a7121c326d1164739",
+        "source_fact:v1:161c874ab7ac8a275bb947ab4ae7531022b58e34136b5e043a0811a1569f105f",
+        "source_fact:v1:1b1d0aaa98bb4184cde27d65e5f7cd86c545871bd69d7e649907a2496169466e",
+        "source_fact:v1:34b1e03f302b19a1b6c4a7e0f33f52cd455905b94a95b843ef6476e0092a32f8",
+        "source_fact:v1:4d754b24528a33a34a3844a501a0e45ea8bbc1ece48c56b8d4553581e74e22d0",
+        "source_fact:v1:638bd27d57b2c6715c26170f7d91317f2b077386eb861cba8b5f35f3704d9e9b",
+        "source_fact:v1:9c5325a6d3570383b58d54f9e56803c4b1f55c5cea1f77e8605a452a36090e01",
+        "source_fact:v1:e531d1a01e9249b4c13130453866cb187bf279e184276d55a9b7bf1628e0a8c8"
+      ],
+      "source_published_kst": "2026-10-05T12:57+09:00",
+      "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
     "source_fact:5cf71cde662227b7e587b3a8": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -33933,6 +34070,29 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
+    },
+    "source_fact:6e1cd91e47f858641473a7a6": {
+      "first_seen_kst": "2026-10-05T19:54:04+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:54:04+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:54:04+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609291509b",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ad74c8e21f3a872272dda98531a567c5912e7f518ce42c134cb607d700b8a23",
+      "source_fact_keys": [
+        "source_fact:v1:137e8f1f55e663ba6fb38e0217d20cd88a1f293007d4a99a7121c326d1164739",
+        "source_fact:v1:161c874ab7ac8a275bb947ab4ae7531022b58e34136b5e043a0811a1569f105f",
+        "source_fact:v1:1b1d0aaa98bb4184cde27d65e5f7cd86c545871bd69d7e649907a2496169466e",
+        "source_fact:v1:34b1e03f302b19a1b6c4a7e0f33f52cd455905b94a95b843ef6476e0092a32f8",
+        "source_fact:v1:4d754b24528a33a34a3844a501a0e45ea8bbc1ece48c56b8d4553581e74e22d0",
+        "source_fact:v1:638bd27d57b2c6715c26170f7d91317f2b077386eb861cba8b5f35f3704d9e9b",
+        "source_fact:v1:9c5325a6d3570383b58d54f9e56803c4b1f55c5cea1f77e8605a452a36090e01",
+        "source_fact:v1:e531d1a01e9249b4c13130453866cb187bf279e184276d55a9b7bf1628e0a8c8"
+      ],
+      "source_published_kst": "2026-10-05T12:57+09:00",
+      "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
     },
     "source_fact:70229d29a21469a7bf613c35": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -34177,6 +34337,29 @@
       ],
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
+    },
+    "source_fact:7db3f404040327b0de8d98bd": {
+      "first_seen_kst": "2026-10-05T19:54:04+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:54:04+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:54:04+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609291509b",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ad74c8e21f3a872272dda98531a567c5912e7f518ce42c134cb607d700b8a23",
+      "source_fact_keys": [
+        "source_fact:v1:137e8f1f55e663ba6fb38e0217d20cd88a1f293007d4a99a7121c326d1164739",
+        "source_fact:v1:161c874ab7ac8a275bb947ab4ae7531022b58e34136b5e043a0811a1569f105f",
+        "source_fact:v1:1b1d0aaa98bb4184cde27d65e5f7cd86c545871bd69d7e649907a2496169466e",
+        "source_fact:v1:34b1e03f302b19a1b6c4a7e0f33f52cd455905b94a95b843ef6476e0092a32f8",
+        "source_fact:v1:4d754b24528a33a34a3844a501a0e45ea8bbc1ece48c56b8d4553581e74e22d0",
+        "source_fact:v1:638bd27d57b2c6715c26170f7d91317f2b077386eb861cba8b5f35f3704d9e9b",
+        "source_fact:v1:9c5325a6d3570383b58d54f9e56803c4b1f55c5cea1f77e8605a452a36090e01",
+        "source_fact:v1:e531d1a01e9249b4c13130453866cb187bf279e184276d55a9b7bf1628e0a8c8"
+      ],
+      "source_published_kst": "2026-10-05T12:57+09:00",
+      "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
     },
     "source_fact:80f1100af4bc8693f2d2a9e2": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -34578,6 +34761,29 @@
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
     },
+    "source_fact:9f4d0999833546afdeaa012a": {
+      "first_seen_kst": "2026-10-05T19:54:04+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:54:04+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:54:04+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609291509b",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ad74c8e21f3a872272dda98531a567c5912e7f518ce42c134cb607d700b8a23",
+      "source_fact_keys": [
+        "source_fact:v1:137e8f1f55e663ba6fb38e0217d20cd88a1f293007d4a99a7121c326d1164739",
+        "source_fact:v1:161c874ab7ac8a275bb947ab4ae7531022b58e34136b5e043a0811a1569f105f",
+        "source_fact:v1:1b1d0aaa98bb4184cde27d65e5f7cd86c545871bd69d7e649907a2496169466e",
+        "source_fact:v1:34b1e03f302b19a1b6c4a7e0f33f52cd455905b94a95b843ef6476e0092a32f8",
+        "source_fact:v1:4d754b24528a33a34a3844a501a0e45ea8bbc1ece48c56b8d4553581e74e22d0",
+        "source_fact:v1:638bd27d57b2c6715c26170f7d91317f2b077386eb861cba8b5f35f3704d9e9b",
+        "source_fact:v1:9c5325a6d3570383b58d54f9e56803c4b1f55c5cea1f77e8605a452a36090e01",
+        "source_fact:v1:e531d1a01e9249b4c13130453866cb187bf279e184276d55a9b7bf1628e0a8c8"
+      ],
+      "source_published_kst": "2026-10-05T12:57+09:00",
+      "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
     "source_fact:a1b076fb690b3f4cea4c0016": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -34739,6 +34945,29 @@
       ],
       "source_published_kst": "2026-10-05T15:21+09:00",
       "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
+    },
+    "source_fact:b0158639048bf21113ac6063": {
+      "first_seen_kst": "2026-10-05T19:54:04+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:54:04+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:54:04+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609291509b",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ad74c8e21f3a872272dda98531a567c5912e7f518ce42c134cb607d700b8a23",
+      "source_fact_keys": [
+        "source_fact:v1:137e8f1f55e663ba6fb38e0217d20cd88a1f293007d4a99a7121c326d1164739",
+        "source_fact:v1:161c874ab7ac8a275bb947ab4ae7531022b58e34136b5e043a0811a1569f105f",
+        "source_fact:v1:1b1d0aaa98bb4184cde27d65e5f7cd86c545871bd69d7e649907a2496169466e",
+        "source_fact:v1:34b1e03f302b19a1b6c4a7e0f33f52cd455905b94a95b843ef6476e0092a32f8",
+        "source_fact:v1:4d754b24528a33a34a3844a501a0e45ea8bbc1ece48c56b8d4553581e74e22d0",
+        "source_fact:v1:638bd27d57b2c6715c26170f7d91317f2b077386eb861cba8b5f35f3704d9e9b",
+        "source_fact:v1:9c5325a6d3570383b58d54f9e56803c4b1f55c5cea1f77e8605a452a36090e01",
+        "source_fact:v1:e531d1a01e9249b4c13130453866cb187bf279e184276d55a9b7bf1628e0a8c8"
+      ],
+      "source_published_kst": "2026-10-05T12:57+09:00",
+      "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
     },
     "source_fact:b2347c09adca76104cbadc07": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
@@ -35326,6 +35555,29 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:fc200f9b0eab648c383af9a7": {
+      "first_seen_kst": "2026-10-05T19:54:04+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:54:04+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:54:04+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609291509b",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ad74c8e21f3a872272dda98531a567c5912e7f518ce42c134cb607d700b8a23",
+      "source_fact_keys": [
+        "source_fact:v1:137e8f1f55e663ba6fb38e0217d20cd88a1f293007d4a99a7121c326d1164739",
+        "source_fact:v1:161c874ab7ac8a275bb947ab4ae7531022b58e34136b5e043a0811a1569f105f",
+        "source_fact:v1:1b1d0aaa98bb4184cde27d65e5f7cd86c545871bd69d7e649907a2496169466e",
+        "source_fact:v1:34b1e03f302b19a1b6c4a7e0f33f52cd455905b94a95b843ef6476e0092a32f8",
+        "source_fact:v1:4d754b24528a33a34a3844a501a0e45ea8bbc1ece48c56b8d4553581e74e22d0",
+        "source_fact:v1:638bd27d57b2c6715c26170f7d91317f2b077386eb861cba8b5f35f3704d9e9b",
+        "source_fact:v1:9c5325a6d3570383b58d54f9e56803c4b1f55c5cea1f77e8605a452a36090e01",
+        "source_fact:v1:e531d1a01e9249b4c13130453866cb187bf279e184276d55a9b7bf1628e0a8c8"
+      ],
+      "source_published_kst": "2026-10-05T12:57+09:00",
+      "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
     },
     "source_fact:fdb75e42b3c5b777c50b58b5": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -42536,6 +42788,29 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"30개 테스트공장 풀가동\" SK엔무브 고급 윤활기유 1위 만든 R&D | 연합뉴스"
     },
+    "title:85d5a639e55e0df29662e2ca": {
+      "first_seen_kst": "2026-10-05T19:54:04+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:54:04+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:54:04+09:00",
+      "link": "https://magazine.hankyung.com/business/article/202609291509b",
+      "source": "한국경제",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ad74c8e21f3a872272dda98531a567c5912e7f518ce42c134cb607d700b8a23",
+      "source_fact_keys": [
+        "source_fact:v1:137e8f1f55e663ba6fb38e0217d20cd88a1f293007d4a99a7121c326d1164739",
+        "source_fact:v1:161c874ab7ac8a275bb947ab4ae7531022b58e34136b5e043a0811a1569f105f",
+        "source_fact:v1:1b1d0aaa98bb4184cde27d65e5f7cd86c545871bd69d7e649907a2496169466e",
+        "source_fact:v1:34b1e03f302b19a1b6c4a7e0f33f52cd455905b94a95b843ef6476e0092a32f8",
+        "source_fact:v1:4d754b24528a33a34a3844a501a0e45ea8bbc1ece48c56b8d4553581e74e22d0",
+        "source_fact:v1:638bd27d57b2c6715c26170f7d91317f2b077386eb861cba8b5f35f3704d9e9b",
+        "source_fact:v1:9c5325a6d3570383b58d54f9e56803c4b1f55c5cea1f77e8605a452a36090e01",
+        "source_fact:v1:e531d1a01e9249b4c13130453866cb187bf279e184276d55a9b7bf1628e0a8c8"
+      ],
+      "source_published_kst": "2026-10-05T12:57+09:00",
+      "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
     "title:86302a19608e3a92f59be73a": {
       "first_seen_kst": "2026-09-22T10:35:36+09:00",
       "lanes": {
@@ -49338,5 +49613,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T19:37:20+09:00"
+  "updated_at_kst": "2026-10-05T19:54:04+09:00"
 }
