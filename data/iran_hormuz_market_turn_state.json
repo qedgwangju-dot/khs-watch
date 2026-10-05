@@ -1,7 +1,7 @@
 {
-  "last_alert_at_kst": "2026-10-04T00:16:07+09:00",
-  "last_event_kind": "ex_iran_crude_prewar_recovery",
-  "last_event_id": "ex_iran_crude_prewar_recovery:5c8b49622ecd4994",
+  "last_alert_at_kst": "2026-10-05T20:23:46+09:00",
+  "last_event_kind": "saudi_asia_osp_change",
+  "last_event_id": "saudi_asia_osp_change:90442802d70f95fb",
   "alerted_events": {
     "regional_export_recovery:66183575fab99015": "2026-09-29T19:49:06+09:00",
     "sts_reroute_expansion:a5a5b34c0694d3fd": "2026-09-29T20:06:00+09:00",
@@ -15,10 +15,31 @@
     "g7_reserve_release_agreement:eee493cfb65aaaeb": "2026-10-02T23:39:58+09:00",
     "g7_reserve_release_agreement:753c47cc03dbac9a": "2026-10-03T03:41:15+09:00",
     "us_diesel_export_policy:8d4a79bbf8bd7a1a": "2026-10-03T17:33:26+09:00",
-    "ex_iran_crude_prewar_recovery:5c8b49622ecd4994": "2026-10-04T00:16:07+09:00"
+    "ex_iran_crude_prewar_recovery:5c8b49622ecd4994": "2026-10-04T00:16:07+09:00",
+    "saudi_asia_osp_change:90442802d70f95fb": "2026-10-05T20:23:46+09:00"
   },
   "last_market": {
-    "oil": null,
-    "usdkrw": null
+    "oil": {
+      "symbol": "BZ=F",
+      "label": "Brent",
+      "unit": "달러/배럴",
+      "price": 102.67,
+      "previous_close": 102.25,
+      "change": 0.4200000000000017,
+      "change_pct": 0.4107579462102706,
+      "timestamp_utc": "2026-10-05T11:13:52Z",
+      "timestamp_epoch": 1791198832.0
+    },
+    "usdkrw": {
+      "symbol": "KRW=X",
+      "label": "원·달러",
+      "unit": "원/달러",
+      "price": 1342.78,
+      "previous_close": 1342.51,
+      "change": 0.2699999999999818,
+      "change_pct": 0.02011158203663152,
+      "timestamp_utc": "2026-10-05T11:24:09Z",
+      "timestamp_epoch": 1791199449.0
+    }
   }
 }
