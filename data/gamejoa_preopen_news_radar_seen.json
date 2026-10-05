@@ -503,31 +503,20 @@
     "event:2040de76bfabafead1b43434": {
       "first_seen_kst": "2026-10-05T00:49:19+09:00",
       "lanes": {
-        "live": "2026-10-05T20:53:37+09:00",
+        "live": "2026-10-05T21:32:34+09:00",
         "preopen": "2026-10-05T06:34:55+09:00"
       },
-      "last_seen_kst": "2026-10-05T20:53:37+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261005007051009",
-      "source": "연합뉴스",
-      "source_body_digest": "ddacfa3c34cc3afcea6d0ccd6e7385eb72298fa07673c508fa0dfa5932eb85a3",
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632450",
+      "source": "이투데이",
+      "source_body_digest": "33037981030913bc216fa50543ac62174c7eb79b53ec25c181ed5ce0d5cff56e",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:72496017d00ef1925e8b91972be2a7220df8d38f97d139cd3f1cf4ea041bda2f",
+      "source_fact_identity": "source_facts:v1:5a929d1eda3a155587f0287b8164e1cf2574e7f7221b937f77bb26e8d86955d8",
       "source_fact_keys": [
-        "source_fact:v1:2bdedeef3d91038fc548f9523908c6dd08653627e27e7289619f4d62e4a4d524",
-        "source_fact:v1:39a6f5c08b9aaf52ecae53f0cf259ed147bbcfa7cd1aee500f773cdc921e6d91",
-        "source_fact:v1:782ac3f9a1d3f5b8a81c7612d4c162a75ebcfccf2f2535861703593f43abb7f9",
-        "source_fact:v1:7e2f3845d909875e3ebb680e3c7aba58490b4a484ea28aafd921d8467452454b",
-        "source_fact:v1:81cd804d4b72b64a79f2400b0ca6b9227227a9fe6fb258d96d20a567f359c1a6",
-        "source_fact:v1:8de40ecc9541940f77c380839f4beee88f5a4a88543502994950fa8d60e5250e",
-        "source_fact:v1:ace73dbbe930e9f0cae6e86cddb777db05aaa2eb16a9537bcc38559ce997560e",
-        "source_fact:v1:b02f8e3ed895ebcc96c3967442a8d15843b6dd7ca9fa94c52077e55d11e19715",
-        "source_fact:v1:c090231a1bbea52b1618ee679711158f0917633d07b04c1ced72d715bc2220b4",
-        "source_fact:v1:cb1adf38d7f612227eacd0955b46e65b12dffd3105c120cb0c47e7fb78304525",
-        "source_fact:v1:ce1daa354d25725c84e75d0de3fb42e6978dd15059f687947b02d90732edfb1c",
-        "source_fact:v1:edf8d349dedfa19c56076b9d596603ab57cd7ca4328eb9f8db996cce685a1570"
+        "source_fact:v1:339febd177dd9c2048f679c7f2d11b92770e553d12574ac8b75233baa7056ba5"
       ],
-      "source_published_kst": "2026-10-05T20:40+09:00",
-      "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+      "source_published_kst": "2026-10-05T14:01+09:00",
+      "title": "OPEC+, 11월 원유 생산 목표 동결⋯중동 전쟁에 증산 효과 제한"
     },
     "event:20559afaa46c8beb4ac5c20d": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -773,6 +762,23 @@
       "link": "https://biz.heraldcorp.com/article/10887207",
       "source": "헤럴드경제",
       "title": "“블록처럼 연결한다” LG전자, AI 데이터센터용 모듈형 냉각 설루션 첫 공개"
+    },
+    "event:2acd9c7bf6f3a4d051366f18": {
+      "event_alias_evidence_message_id": 2231,
+      "event_alias_evidence_run_id": 37305224924,
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169768",
+      "source": "매일경제",
+      "source_body_digest": "758e5a72c7d31160be291952342aad48eaf027c35ab852144f32e7b7c667ec6c",
+      "source_event_identity": "source_event:v2:license:f6a8a12ea5795e49e91755f4cecf5a20a4aa2243b3654245264f6fb2ceb2de7f",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T20:20+09:00",
+      "title": "알렉토, 제넨텍에 AL050 기술이전하며 선급금 1억 달러 확보"
     },
     "event:2ca9ca449254c7be3a62505d": {
       "first_seen_kst": "2026-10-02T05:08:25+09:00",
@@ -2284,6 +2290,25 @@
       "source": "뉴시스",
       "title": "삼성전자 반도체 특별성과급 세부안 공개 임박…'지급 기준'에 이목 쏠려"
     },
+    "event:81187de409b188966735ff77": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169803",
+      "source": "매일경제",
+      "source_body_digest": "23e19da2f1acc81142a06b610af265169bdab9b02876b40b1e28b055360d352d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87980f71b02dedae9b677b5b16147cfd03168b8ac52dc7a876ba4cd464923bf6",
+      "source_fact_keys": [
+        "source_fact:v1:4e16caa48be6424ad6a90f5a284144e704eec00e8ae3926d7e258771f8943d33",
+        "source_fact:v1:b6948bcbc8ee74e0a51c42f6c77d2d0bd6676f80e8a9ee4c4c225162bfd769d1",
+        "source_fact:v1:b9cc5c9741a0f1aa610ba3ee8e49f61cf9a6b920f2d4891e4c69c9e8ae356bf4"
+      ],
+      "source_published_kst": "2026-10-05T21:21+09:00",
+      "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
+    },
     "event:8148c662861a648098f6a4fb": {
       "first_seen_kst": "2026-09-24T11:54:33+09:00",
       "lanes": {
@@ -2687,6 +2712,29 @@
       "source": "이데일리",
       "title": "‘수억원 기대’ 삼전 DS 특별성과급 기준 발표, 10월 초 연기"
     },
+    "event:98a1fca79df8ce759db2de06": {
+      "event_alias_evidence_message_id": 2231,
+      "event_alias_evidence_run_id": 37305224924,
+      "first_seen_kst": "2026-10-05T20:53:37+09:00",
+      "lanes": {
+        "live": "2026-10-05T20:53:37+09:00"
+      },
+      "last_seen_kst": "2026-10-05T20:53:37+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168505",
+      "source": "매일경제",
+      "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
+      "source_event_identity": "source_event:v2:odd_lot_rule:9a404eb9f9885e08451999bd50153349602be31c84b3e47f1e96be7459b5e344",
+      "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
+      "source_fact_keys": [
+        "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
+        "source_fact:v1:66f7ba7ef72a9b438884a83ed04f68483e23859e2df7f22306c77a793b0c4cba",
+        "source_fact:v1:699a6ebf7783551abdfadb5f434c61b17e565867e95639ae53af95d1f484e2f8",
+        "source_fact:v1:76f6ca7794976201298288e3f4ce7df85a2518efef7c87286f500f010864899b",
+        "source_fact:v1:a93506507f17f1ed3a1b55357e2deff44cc22a527134db1760df24ac54a51c66"
+      ],
+      "source_published_kst": "2026-10-05T16:51+09:00",
+      "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
+    },
     "event:98c673d95db36e31391a3e2f": {
       "first_seen_kst": "2026-09-28T09:32:57+09:00",
       "lanes": {
@@ -2750,14 +2798,27 @@
     "event:9ba3dc7d663fff2f6c7ca746": {
       "first_seen_kst": "2026-10-05T17:30:42+09:00",
       "lanes": {
-        "live": "2026-10-05T17:30:42+09:00"
+        "live": "2026-10-05T21:32:34+09:00"
       },
-      "last_seen_kst": "2026-10-05T17:30:42+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261005043951017",
-      "source": "연합뉴스",
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01823686645609968&parentid=02017206645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "8b6182914d04336bb2f4e4c8f185e153b46a3b02183d48dbd6e6523f486ce0e5",
       "source_event_identity": "",
-      "source_published_kst": "2026-10-05T17:20+09:00",
-      "title": "리사 수 AMD 회장 7개월 만에 방한…'AI 동맹' 넓히나(종합) | 연합뉴스"
+      "source_fact_identity": "source_facts:v1:9b1900da02cf966e2c90fd32265a4614de915cfef1668691bb0aba7569e009d8",
+      "source_fact_keys": [
+        "source_fact:v1:2bc2079d2649b15b0cd559a5a531af259ebb5efe407fed7f225e0d529f6734bb",
+        "source_fact:v1:43e811973e874d064cf3edcc952889fb918df1730170a26d6bf0064a0ba56207",
+        "source_fact:v1:450a9c9f02bcff8cc01f01061719912378cfd8c4dd51d8582f54259cdf9dd417",
+        "source_fact:v1:5b257652925d0d2cfb0c76f3cf204b999470171e0800f5b3cd8370089962ac29",
+        "source_fact:v1:62157b119afc191812d69ddf02bdf7a3f2ec26d7e926e753f63fd8649ef34416",
+        "source_fact:v1:7488fb62304382766a51dda64c18b5f772606d2463f38c98d70c47941452ebb6",
+        "source_fact:v1:79562e9bd3d057ad5685053ba27996c18c3048824f68e09724c52a3d6c3f7458",
+        "source_fact:v1:dba2633a0ec7b86ee8317dac99eadf083605bb2370edbe25edeff8a1682f6d9d",
+        "source_fact:v1:e4c8437203668fddd95bce0e2e35e324f54bbf0a7ee9461e132201192950f3a6"
+      ],
+      "source_published_kst": "2026-10-05T10:42+09:00",
+      "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
     },
     "event:9bf328f8450ba10e632edd85": {
       "first_seen_kst": "2026-10-03T21:06:13+09:00",
@@ -4562,6 +4623,25 @@
       "source": "파이낸셜뉴스",
       "title": "우리운용 'WON 전단채플러스액티브 ETF' 순자산 5000억원 돌파"
     },
+    "fact:00ae702eb8581e5345e7bed0": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169803",
+      "source": "매일경제",
+      "source_body_digest": "23e19da2f1acc81142a06b610af265169bdab9b02876b40b1e28b055360d352d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87980f71b02dedae9b677b5b16147cfd03168b8ac52dc7a876ba4cd464923bf6",
+      "source_fact_keys": [
+        "source_fact:v1:4e16caa48be6424ad6a90f5a284144e704eec00e8ae3926d7e258771f8943d33",
+        "source_fact:v1:b6948bcbc8ee74e0a51c42f6c77d2d0bd6676f80e8a9ee4c4c225162bfd769d1",
+        "source_fact:v1:b9cc5c9741a0f1aa610ba3ee8e49f61cf9a6b920f2d4891e4c69c9e8ae356bf4"
+      ],
+      "source_published_kst": "2026-10-05T21:21+09:00",
+      "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
+    },
     "fact:052f5c30f0ce009c93728733": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
       "lanes": {
@@ -4668,7 +4748,7 @@
       "link": "https://www.mk.co.kr/news/stock/12168505",
       "source": "매일경제",
       "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:odd_lot_rule:9a404eb9f9885e08451999bd50153349602be31c84b3e47f1e96be7459b5e344",
       "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
       "source_fact_keys": [
         "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
@@ -5035,6 +5115,31 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "fact:591420e332684d22e2771c16": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01823686645609968&parentid=02017206645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "8b6182914d04336bb2f4e4c8f185e153b46a3b02183d48dbd6e6523f486ce0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b1900da02cf966e2c90fd32265a4614de915cfef1668691bb0aba7569e009d8",
+      "source_fact_keys": [
+        "source_fact:v1:2bc2079d2649b15b0cd559a5a531af259ebb5efe407fed7f225e0d529f6734bb",
+        "source_fact:v1:43e811973e874d064cf3edcc952889fb918df1730170a26d6bf0064a0ba56207",
+        "source_fact:v1:450a9c9f02bcff8cc01f01061719912378cfd8c4dd51d8582f54259cdf9dd417",
+        "source_fact:v1:5b257652925d0d2cfb0c76f3cf204b999470171e0800f5b3cd8370089962ac29",
+        "source_fact:v1:62157b119afc191812d69ddf02bdf7a3f2ec26d7e926e753f63fd8649ef34416",
+        "source_fact:v1:7488fb62304382766a51dda64c18b5f772606d2463f38c98d70c47941452ebb6",
+        "source_fact:v1:79562e9bd3d057ad5685053ba27996c18c3048824f68e09724c52a3d6c3f7458",
+        "source_fact:v1:dba2633a0ec7b86ee8317dac99eadf083605bb2370edbe25edeff8a1682f6d9d",
+        "source_fact:v1:e4c8437203668fddd95bce0e2e35e324f54bbf0a7ee9461e132201192950f3a6"
+      ],
+      "source_published_kst": "2026-10-05T10:42+09:00",
+      "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
+    },
     "fact:5b59cadb30ac5f2d0aa55ad7": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -5162,6 +5267,40 @@
       "source_published_kst": "2026-10-05T20:25+09:00",
       "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
     },
+    "fact:741211d482cbb8cff92e5b42": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169777",
+      "source": "매일경제",
+      "source_body_digest": "9ca695e4c51874ea58c4d694731de45e3abe9ad2ebcf3b4d0382a5d81fe16032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54b800b8d0f3ba8e577b90bcda55319e5c792db1f5f13ffb668fe7e69b136ac3",
+      "source_fact_keys": [
+        "source_fact:v1:1077604efe10ea3eda65c30b17657dca0c353aa85ecfcfacbeb0997c11e4d3d5"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "C.H.로빈슨, RXO 58억달러 인수 합의 후 재무 부담·주식 희석 우려 부각"
+    },
+    "fact:77bc4700a45c5d14b5933afa": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632450",
+      "source": "이투데이",
+      "source_body_digest": "33037981030913bc216fa50543ac62174c7eb79b53ec25c181ed5ce0d5cff56e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a929d1eda3a155587f0287b8164e1cf2574e7f7221b937f77bb26e8d86955d8",
+      "source_fact_keys": [
+        "source_fact:v1:339febd177dd9c2048f679c7f2d11b92770e553d12574ac8b75233baa7056ba5"
+      ],
+      "source_published_kst": "2026-10-05T14:01+09:00",
+      "title": "OPEC+, 11월 원유 생산 목표 동결⋯중동 전쟁에 증산 효과 제한"
+    },
     "fact:78bf064fb81fab4aad30638f": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -5224,7 +5363,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169758",
       "source": "매일경제",
       "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:license:f6a8a12ea5795e49e91755f4cecf5a20a4aa2243b3654245264f6fb2ceb2de7f",
       "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
       "source_fact_keys": [
         "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
@@ -5407,6 +5546,26 @@
       "source_published_kst": "2026-10-05T16:01+09:00",
       "title": "이란 안보수장 “역사상 가장 어려운 시기”⋯경제 악화 이례적 시인"
     },
+    "fact:98ff36873b676081b823c905": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169801",
+      "source": "매일경제",
+      "source_body_digest": "43e02aab887b0808035ef8d8962f3ee797825daf776b0b7dc5d3646fcb98fabd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18ac70760f629d8aaff1d5de7ae7bff59518bbd0ab473e3e08c571915e6de0c9",
+      "source_fact_keys": [
+        "source_fact:v1:600f24ff082c6a59b7a15291c9ffff135efd4d8dbf7f4c62cbbc757012fe30a8",
+        "source_fact:v1:a166f271ed998b178095f97efa33425cf9ee455ffe71426885d6386968c4abd3",
+        "source_fact:v1:a1e0be13f0280d3fb2e385845fe89014d40f52fdad269b51d626ce62c90bac00",
+        "source_fact:v1:bc163c1218d2190e9cba66d7b3ca4b4eeeae92bb62fe66f1e7ad0f50714173c4"
+      ],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "디파이 디벨롭먼트, 3분기 주당 NAV 2배 이상 전망..SOL 보유 11%↑"
+    },
     "fact:9d60928f4b4ccbe8977b7741": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -5555,6 +5714,32 @@
       ],
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "반려견 피부염 연구 활용…'항염증 엑소좀' 생산기술 개발"
+    },
+    "fact:bfec0857302adc0ca29bc9d6": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169781",
+      "source": "매일경제",
+      "source_body_digest": "9b3ef41304cd218f2f98d2843172dfffead58266c7308199d6134aeda435bddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4dad99dc508b37e6f16805fa144c1f6f9e30b821f88adcfd4a0e5b51d86d13",
+      "source_fact_keys": [
+        "source_fact:v1:1afbcc341e29f56f8459928dc02665c7dfeda97a8cd68bfb524053835bb8ef08",
+        "source_fact:v1:27366b547ee290202b26198ba6ce81bffc62bdbd4b4e835744ba06902e1f9228",
+        "source_fact:v1:2a5b67ae89bd56ab53c8bb052177fa47ecbd6452bf96b412111a78eba825a9ae",
+        "source_fact:v1:3046c8810b6a3ddc7d59e1088c7f8ba0c88ab376cd372bedf174db0ee1a90f01",
+        "source_fact:v1:3278040d2171cd88668e8749e00f271bc7dbcb81b087b8333854e07d74d7a667",
+        "source_fact:v1:64c4dd665f473b9d647241d2c16f3f799b04458f3624e9e4a6e99c2ac06e7560",
+        "source_fact:v1:72894f7301c9a861ee27ee22125b184d0adc0d62c15763ce2bee4dce3fb06ded",
+        "source_fact:v1:ba5fa294c70de4886d4d1585d44922f3bbef53f65bfba4168d1b21912c3cd63a",
+        "source_fact:v1:cce9d6d64daaad4243ad51d421f4dc7a4ad5095923c56620ad6b703bfc433ab3",
+        "source_fact:v1:ffdbc8b9f5e4fd6826627bbde2daf7aa1a41029512c26c1199eb81781c5e8a13"
+      ],
+      "source_published_kst": "2026-10-05T20:58+09:00",
+      "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
     "fact:c8f3bae7353731e446e66337": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -8442,6 +8627,31 @@
       "source": "전자신문",
       "title": "시높시스, AI 에이전트 기반 '자율 엔지니어링' 본격화…설계·검증 전 과정 혁신"
     },
+    "link:2fe704e5a504f805fd1787d4": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01823686645609968&parentid=02017206645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "8b6182914d04336bb2f4e4c8f185e153b46a3b02183d48dbd6e6523f486ce0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b1900da02cf966e2c90fd32265a4614de915cfef1668691bb0aba7569e009d8",
+      "source_fact_keys": [
+        "source_fact:v1:2bc2079d2649b15b0cd559a5a531af259ebb5efe407fed7f225e0d529f6734bb",
+        "source_fact:v1:43e811973e874d064cf3edcc952889fb918df1730170a26d6bf0064a0ba56207",
+        "source_fact:v1:450a9c9f02bcff8cc01f01061719912378cfd8c4dd51d8582f54259cdf9dd417",
+        "source_fact:v1:5b257652925d0d2cfb0c76f3cf204b999470171e0800f5b3cd8370089962ac29",
+        "source_fact:v1:62157b119afc191812d69ddf02bdf7a3f2ec26d7e926e753f63fd8649ef34416",
+        "source_fact:v1:7488fb62304382766a51dda64c18b5f772606d2463f38c98d70c47941452ebb6",
+        "source_fact:v1:79562e9bd3d057ad5685053ba27996c18c3048824f68e09724c52a3d6c3f7458",
+        "source_fact:v1:dba2633a0ec7b86ee8317dac99eadf083605bb2370edbe25edeff8a1682f6d9d",
+        "source_fact:v1:e4c8437203668fddd95bce0e2e35e324f54bbf0a7ee9461e132201192950f3a6"
+      ],
+      "source_published_kst": "2026-10-05T10:42+09:00",
+      "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
+    },
     "link:300cd18e0a67cb3379eaec62": {
       "first_seen_kst": "2026-10-03T07:58:14+09:00",
       "lanes": {
@@ -8755,6 +8965,23 @@
       "source_event_identity": "",
       "title": "뱅코 BBVA 아르헨티나, 2분기 순이익 1300억 페소..전년비 65% 증가"
     },
+    "link:36dff9a50e5ac69f2670e458": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169777",
+      "source": "매일경제",
+      "source_body_digest": "9ca695e4c51874ea58c4d694731de45e3abe9ad2ebcf3b4d0382a5d81fe16032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54b800b8d0f3ba8e577b90bcda55319e5c792db1f5f13ffb668fe7e69b136ac3",
+      "source_fact_keys": [
+        "source_fact:v1:1077604efe10ea3eda65c30b17657dca0c353aa85ecfcfacbeb0997c11e4d3d5"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "C.H.로빈슨, RXO 58억달러 인수 합의 후 재무 부담·주식 희석 우려 부각"
+    },
     "link:371e7b9d51f1e9bff37d4c1c": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
       "lanes": {
@@ -8878,6 +9105,25 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=02643686645608656",
       "source": "이데일리",
       "title": "트럼프 “이란과 합의하거나 공격…어떤 식으로든 곧 끝날 것”"
+    },
+    "link:3926c72cd63631826a995f43": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169803",
+      "source": "매일경제",
+      "source_body_digest": "23e19da2f1acc81142a06b610af265169bdab9b02876b40b1e28b055360d352d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87980f71b02dedae9b677b5b16147cfd03168b8ac52dc7a876ba4cd464923bf6",
+      "source_fact_keys": [
+        "source_fact:v1:4e16caa48be6424ad6a90f5a284144e704eec00e8ae3926d7e258771f8943d33",
+        "source_fact:v1:b6948bcbc8ee74e0a51c42f6c77d2d0bd6676f80e8a9ee4c4c225162bfd769d1",
+        "source_fact:v1:b9cc5c9741a0f1aa610ba3ee8e49f61cf9a6b920f2d4891e4c69c9e8ae356bf4"
+      ],
+      "source_published_kst": "2026-10-05T21:21+09:00",
+      "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
     },
     "link:393a2a3275dd9970c44c7c0e": {
       "first_seen_kst": "2026-10-04T09:52:54+09:00",
@@ -9274,7 +9520,7 @@
       "link": "https://www.mk.co.kr/news/stock/12168505",
       "source": "매일경제",
       "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:odd_lot_rule:9a404eb9f9885e08451999bd50153349602be31c84b3e47f1e96be7459b5e344",
       "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
       "source_fact_keys": [
         "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
@@ -11407,6 +11653,21 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "link:621a84e26d5f6c9b336236d7": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2631987",
+      "source": "이투데이",
+      "source_body_digest": "eeab76bc292f131d3548f10e9a823803d19097ecbcb3e92855be37c3e3504933",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T07:00+09:00",
+      "title": "서울연구원 \"소셜벤처, 5년간 매출 475억원⋯법적 근거·인증제도 마련해야\""
+    },
     "link:622e6e94f5a46a277c5016dd": {
       "first_seen_kst": "2026-09-29T16:25:24+09:00",
       "lanes": {
@@ -11562,7 +11823,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169768",
       "source": "매일경제",
       "source_body_digest": "758e5a72c7d31160be291952342aad48eaf027c35ab852144f32e7b7c667ec6c",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:license:f6a8a12ea5795e49e91755f4cecf5a20a4aa2243b3654245264f6fb2ceb2de7f",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T20:20+09:00",
@@ -13712,6 +13973,23 @@
       "source": "연합뉴스",
       "title": "[월드앤이슈] 트럼프, 연일 이란 위협…내란법 발동 가능성도 | 연합뉴스"
     },
+    "link:896d044c6bf8e47572c7dfdd": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632450",
+      "source": "이투데이",
+      "source_body_digest": "33037981030913bc216fa50543ac62174c7eb79b53ec25c181ed5ce0d5cff56e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a929d1eda3a155587f0287b8164e1cf2574e7f7221b937f77bb26e8d86955d8",
+      "source_fact_keys": [
+        "source_fact:v1:339febd177dd9c2048f679c7f2d11b92770e553d12574ac8b75233baa7056ba5"
+      ],
+      "source_published_kst": "2026-10-05T14:01+09:00",
+      "title": "OPEC+, 11월 원유 생산 목표 동결⋯중동 전쟁에 증산 효과 제한"
+    },
     "link:89830d28616f0bb4d4880569": {
       "first_seen_kst": "2026-10-01T22:33:20+09:00",
       "lanes": {
@@ -14868,6 +15146,32 @@
       "link": "https://www.mt.co.kr/world/2026/10/02/2026100213482612716",
       "source": "머니투데이",
       "title": "\"내란법? 사용할 수 있지\"…중간선거 D-30 트럼프 언급 '파장'"
+    },
+    "link:9b5fdbc0d022a31aa69e0343": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169781",
+      "source": "매일경제",
+      "source_body_digest": "9b3ef41304cd218f2f98d2843172dfffead58266c7308199d6134aeda435bddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4dad99dc508b37e6f16805fa144c1f6f9e30b821f88adcfd4a0e5b51d86d13",
+      "source_fact_keys": [
+        "source_fact:v1:1afbcc341e29f56f8459928dc02665c7dfeda97a8cd68bfb524053835bb8ef08",
+        "source_fact:v1:27366b547ee290202b26198ba6ce81bffc62bdbd4b4e835744ba06902e1f9228",
+        "source_fact:v1:2a5b67ae89bd56ab53c8bb052177fa47ecbd6452bf96b412111a78eba825a9ae",
+        "source_fact:v1:3046c8810b6a3ddc7d59e1088c7f8ba0c88ab376cd372bedf174db0ee1a90f01",
+        "source_fact:v1:3278040d2171cd88668e8749e00f271bc7dbcb81b087b8333854e07d74d7a667",
+        "source_fact:v1:64c4dd665f473b9d647241d2c16f3f799b04458f3624e9e4a6e99c2ac06e7560",
+        "source_fact:v1:72894f7301c9a861ee27ee22125b184d0adc0d62c15763ce2bee4dce3fb06ded",
+        "source_fact:v1:ba5fa294c70de4886d4d1585d44922f3bbef53f65bfba4168d1b21912c3cd63a",
+        "source_fact:v1:cce9d6d64daaad4243ad51d421f4dc7a4ad5095923c56620ad6b703bfc433ab3",
+        "source_fact:v1:ffdbc8b9f5e4fd6826627bbde2daf7aa1a41029512c26c1199eb81781c5e8a13"
+      ],
+      "source_published_kst": "2026-10-05T20:58+09:00",
+      "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
     "link:9b9eddc606e5f6023310cf69": {
       "first_seen_kst": "2026-09-18T12:25:16+09:00",
@@ -16968,6 +17272,26 @@
       "source_published_kst": "2026-10-05T17:46+09:00",
       "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
     },
+    "link:c0bd19cab506747aed564a11": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169801",
+      "source": "매일경제",
+      "source_body_digest": "43e02aab887b0808035ef8d8962f3ee797825daf776b0b7dc5d3646fcb98fabd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18ac70760f629d8aaff1d5de7ae7bff59518bbd0ab473e3e08c571915e6de0c9",
+      "source_fact_keys": [
+        "source_fact:v1:600f24ff082c6a59b7a15291c9ffff135efd4d8dbf7f4c62cbbc757012fe30a8",
+        "source_fact:v1:a166f271ed998b178095f97efa33425cf9ee455ffe71426885d6386968c4abd3",
+        "source_fact:v1:a1e0be13f0280d3fb2e385845fe89014d40f52fdad269b51d626ce62c90bac00",
+        "source_fact:v1:bc163c1218d2190e9cba66d7b3ca4b4eeeae92bb62fe66f1e7ad0f50714173c4"
+      ],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "디파이 디벨롭먼트, 3분기 주당 NAV 2배 이상 전망..SOL 보유 11%↑"
+    },
     "link:c0fda36b693368cfd2a2c7df": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -17366,6 +17690,31 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=04428006645608984",
       "source": "이데일리",
       "title": "대만, 수년 지연 끝에 美'F-16V' 2대 인수"
+    },
+    "link:c6bbe1458ebd72b736a76063": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01823686645609968&parentid=02017206645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "8b6182914d04336bb2f4e4c8f185e153b46a3b02183d48dbd6e6523f486ce0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b1900da02cf966e2c90fd32265a4614de915cfef1668691bb0aba7569e009d8",
+      "source_fact_keys": [
+        "source_fact:v1:2bc2079d2649b15b0cd559a5a531af259ebb5efe407fed7f225e0d529f6734bb",
+        "source_fact:v1:43e811973e874d064cf3edcc952889fb918df1730170a26d6bf0064a0ba56207",
+        "source_fact:v1:450a9c9f02bcff8cc01f01061719912378cfd8c4dd51d8582f54259cdf9dd417",
+        "source_fact:v1:5b257652925d0d2cfb0c76f3cf204b999470171e0800f5b3cd8370089962ac29",
+        "source_fact:v1:62157b119afc191812d69ddf02bdf7a3f2ec26d7e926e753f63fd8649ef34416",
+        "source_fact:v1:7488fb62304382766a51dda64c18b5f772606d2463f38c98d70c47941452ebb6",
+        "source_fact:v1:79562e9bd3d057ad5685053ba27996c18c3048824f68e09724c52a3d6c3f7458",
+        "source_fact:v1:dba2633a0ec7b86ee8317dac99eadf083605bb2370edbe25edeff8a1682f6d9d",
+        "source_fact:v1:e4c8437203668fddd95bce0e2e35e324f54bbf0a7ee9461e132201192950f3a6"
+      ],
+      "source_published_kst": "2026-10-05T10:42+09:00",
+      "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
     },
     "link:c6d66a8fa9a78231498f5646": {
       "first_seen_kst": "2026-10-01T21:06:52+09:00",
@@ -18163,7 +18512,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169758",
       "source": "매일경제",
       "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:license:f6a8a12ea5795e49e91755f4cecf5a20a4aa2243b3654245264f6fb2ceb2de7f",
       "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
       "source_fact_keys": [
         "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
@@ -20932,6 +21281,31 @@
       "source": "한국경제",
       "title": "두산, 다음 도약 위한 준비 끝"
     },
+    "original:025d5f5b47ea2e9c157bab50": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01823686645609968&parentid=02017206645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "8b6182914d04336bb2f4e4c8f185e153b46a3b02183d48dbd6e6523f486ce0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b1900da02cf966e2c90fd32265a4614de915cfef1668691bb0aba7569e009d8",
+      "source_fact_keys": [
+        "source_fact:v1:2bc2079d2649b15b0cd559a5a531af259ebb5efe407fed7f225e0d529f6734bb",
+        "source_fact:v1:43e811973e874d064cf3edcc952889fb918df1730170a26d6bf0064a0ba56207",
+        "source_fact:v1:450a9c9f02bcff8cc01f01061719912378cfd8c4dd51d8582f54259cdf9dd417",
+        "source_fact:v1:5b257652925d0d2cfb0c76f3cf204b999470171e0800f5b3cd8370089962ac29",
+        "source_fact:v1:62157b119afc191812d69ddf02bdf7a3f2ec26d7e926e753f63fd8649ef34416",
+        "source_fact:v1:7488fb62304382766a51dda64c18b5f772606d2463f38c98d70c47941452ebb6",
+        "source_fact:v1:79562e9bd3d057ad5685053ba27996c18c3048824f68e09724c52a3d6c3f7458",
+        "source_fact:v1:dba2633a0ec7b86ee8317dac99eadf083605bb2370edbe25edeff8a1682f6d9d",
+        "source_fact:v1:e4c8437203668fddd95bce0e2e35e324f54bbf0a7ee9461e132201192950f3a6"
+      ],
+      "source_published_kst": "2026-10-05T10:42+09:00",
+      "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
+    },
     "original:02974d852455fad1adf42903": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -22509,7 +22883,7 @@
       "link": "https://www.mk.co.kr/news/stock/12168505",
       "source": "매일경제",
       "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:odd_lot_rule:9a404eb9f9885e08451999bd50153349602be31c84b3e47f1e96be7459b5e344",
       "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
       "source_fact_keys": [
         "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
@@ -23602,7 +23976,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169768",
       "source": "매일경제",
       "source_body_digest": "758e5a72c7d31160be291952342aad48eaf027c35ab852144f32e7b7c667ec6c",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:license:f6a8a12ea5795e49e91755f4cecf5a20a4aa2243b3654245264f6fb2ceb2de7f",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T20:20+09:00",
@@ -24103,6 +24477,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "에너지효율 정책융자 금리 2.5→2%…기업 이자부담 50억 줄인다"
+    },
+    "original:3c8c634bc04617d00bf400ec": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632450",
+      "source": "이투데이",
+      "source_body_digest": "33037981030913bc216fa50543ac62174c7eb79b53ec25c181ed5ce0d5cff56e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a929d1eda3a155587f0287b8164e1cf2574e7f7221b937f77bb26e8d86955d8",
+      "source_fact_keys": [
+        "source_fact:v1:339febd177dd9c2048f679c7f2d11b92770e553d12574ac8b75233baa7056ba5"
+      ],
+      "source_published_kst": "2026-10-05T14:01+09:00",
+      "title": "OPEC+, 11월 원유 생산 목표 동결⋯중동 전쟁에 증산 효과 제한"
     },
     "original:3cb4f2946856d5210350bee3": {
       "first_seen_kst": "2026-10-01T23:53:17+09:00",
@@ -24832,6 +25223,32 @@
       "source_published_kst": "2026-10-05T16:01+09:00",
       "title": "\"독감백신 스카이셀플루\"…SK바사, 광고공개"
     },
+    "original:468108a401a8b35d8bff0dae": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169781",
+      "source": "매일경제",
+      "source_body_digest": "9b3ef41304cd218f2f98d2843172dfffead58266c7308199d6134aeda435bddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4dad99dc508b37e6f16805fa144c1f6f9e30b821f88adcfd4a0e5b51d86d13",
+      "source_fact_keys": [
+        "source_fact:v1:1afbcc341e29f56f8459928dc02665c7dfeda97a8cd68bfb524053835bb8ef08",
+        "source_fact:v1:27366b547ee290202b26198ba6ce81bffc62bdbd4b4e835744ba06902e1f9228",
+        "source_fact:v1:2a5b67ae89bd56ab53c8bb052177fa47ecbd6452bf96b412111a78eba825a9ae",
+        "source_fact:v1:3046c8810b6a3ddc7d59e1088c7f8ba0c88ab376cd372bedf174db0ee1a90f01",
+        "source_fact:v1:3278040d2171cd88668e8749e00f271bc7dbcb81b087b8333854e07d74d7a667",
+        "source_fact:v1:64c4dd665f473b9d647241d2c16f3f799b04458f3624e9e4a6e99c2ac06e7560",
+        "source_fact:v1:72894f7301c9a861ee27ee22125b184d0adc0d62c15763ce2bee4dce3fb06ded",
+        "source_fact:v1:ba5fa294c70de4886d4d1585d44922f3bbef53f65bfba4168d1b21912c3cd63a",
+        "source_fact:v1:cce9d6d64daaad4243ad51d421f4dc7a4ad5095923c56620ad6b703bfc433ab3",
+        "source_fact:v1:ffdbc8b9f5e4fd6826627bbde2daf7aa1a41029512c26c1199eb81781c5e8a13"
+      ],
+      "source_published_kst": "2026-10-05T20:58+09:00",
+      "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
     "original:4681870d2a14241fcc53bab5": {
       "first_seen_kst": "2026-09-25T02:31:20+09:00",
       "lanes": {
@@ -25356,6 +25773,25 @@
       "link": "https://www.etnews.com/20260922000307",
       "source": "전자신문",
       "title": "[ET특징주]삼성전기, MLCC 수요 급증에 상승세"
+    },
+    "original:4ecb04757afcc61a8b90bd4b": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169803",
+      "source": "매일경제",
+      "source_body_digest": "23e19da2f1acc81142a06b610af265169bdab9b02876b40b1e28b055360d352d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87980f71b02dedae9b677b5b16147cfd03168b8ac52dc7a876ba4cd464923bf6",
+      "source_fact_keys": [
+        "source_fact:v1:4e16caa48be6424ad6a90f5a284144e704eec00e8ae3926d7e258771f8943d33",
+        "source_fact:v1:b6948bcbc8ee74e0a51c42f6c77d2d0bd6676f80e8a9ee4c4c225162bfd769d1",
+        "source_fact:v1:b9cc5c9741a0f1aa610ba3ee8e49f61cf9a6b920f2d4891e4c69c9e8ae356bf4"
+      ],
+      "source_published_kst": "2026-10-05T21:21+09:00",
+      "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
     },
     "original:4ed729438fdad0d41143202c": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -26837,6 +27273,23 @@
       "source": "머니투데이",
       "title": "방탄소년단, 단일 투어 매출 6800억…팝그룹 최고·최초"
     },
+    "original:6a5c3e10d70cba0a9c780cff": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169777",
+      "source": "매일경제",
+      "source_body_digest": "9ca695e4c51874ea58c4d694731de45e3abe9ad2ebcf3b4d0382a5d81fe16032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54b800b8d0f3ba8e577b90bcda55319e5c792db1f5f13ffb668fe7e69b136ac3",
+      "source_fact_keys": [
+        "source_fact:v1:1077604efe10ea3eda65c30b17657dca0c353aa85ecfcfacbeb0997c11e4d3d5"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "C.H.로빈슨, RXO 58억달러 인수 합의 후 재무 부담·주식 희석 우려 부각"
+    },
     "original:6a7403f41fd68b4831dd7c94": {
       "first_seen_kst": "2026-10-02T09:01:13+09:00",
       "lanes": {
@@ -27123,6 +27576,21 @@
       "link": "https://www.yna.co.kr/view/AKR20261002042100008",
       "source": "연합뉴스",
       "title": "삼성전자, 자사주 계획물량 모두 매입…9천억 여유, 300만주 더살듯 | 연합뉴스"
+    },
+    "original:708bb4f9279e21f455d39cce": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2631987",
+      "source": "이투데이",
+      "source_body_digest": "eeab76bc292f131d3548f10e9a823803d19097ecbcb3e92855be37c3e3504933",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T07:00+09:00",
+      "title": "서울연구원 \"소셜벤처, 5년간 매출 475억원⋯법적 근거·인증제도 마련해야\""
     },
     "original:70c4221906de4aa35a14a3d5": {
       "first_seen_kst": "2026-10-01T17:28:33+09:00",
@@ -31657,7 +32125,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169758",
       "source": "매일경제",
       "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:license:f6a8a12ea5795e49e91755f4cecf5a20a4aa2243b3654245264f6fb2ceb2de7f",
       "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
       "source_fact_keys": [
         "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
@@ -34045,6 +34513,26 @@
       "source": "이데일리",
       "title": "삼성전기, AI 기판 공급난 속 역대 최대 증설…2028년 9월 양산 목표"
     },
+    "original:e80d1a7439a6642464145f09": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169801",
+      "source": "매일경제",
+      "source_body_digest": "43e02aab887b0808035ef8d8962f3ee797825daf776b0b7dc5d3646fcb98fabd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18ac70760f629d8aaff1d5de7ae7bff59518bbd0ab473e3e08c571915e6de0c9",
+      "source_fact_keys": [
+        "source_fact:v1:600f24ff082c6a59b7a15291c9ffff135efd4d8dbf7f4c62cbbc757012fe30a8",
+        "source_fact:v1:a166f271ed998b178095f97efa33425cf9ee455ffe71426885d6386968c4abd3",
+        "source_fact:v1:a1e0be13f0280d3fb2e385845fe89014d40f52fdad269b51d626ce62c90bac00",
+        "source_fact:v1:bc163c1218d2190e9cba66d7b3ca4b4eeeae92bb62fe66f1e7ad0f50714173c4"
+      ],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "디파이 디벨롭먼트, 3분기 주당 NAV 2배 이상 전망..SOL 보유 11%↑"
+    },
     "original:e84f2ccc2531a3e4abf53252": {
       "first_seen_kst": "2026-10-05T09:13:59+09:00",
       "lanes": {
@@ -35406,6 +35894,26 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
     },
+    "source_fact:061f22d1f79544d3c4fffbea": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169801",
+      "source": "매일경제",
+      "source_body_digest": "43e02aab887b0808035ef8d8962f3ee797825daf776b0b7dc5d3646fcb98fabd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18ac70760f629d8aaff1d5de7ae7bff59518bbd0ab473e3e08c571915e6de0c9",
+      "source_fact_keys": [
+        "source_fact:v1:600f24ff082c6a59b7a15291c9ffff135efd4d8dbf7f4c62cbbc757012fe30a8",
+        "source_fact:v1:a166f271ed998b178095f97efa33425cf9ee455ffe71426885d6386968c4abd3",
+        "source_fact:v1:a1e0be13f0280d3fb2e385845fe89014d40f52fdad269b51d626ce62c90bac00",
+        "source_fact:v1:bc163c1218d2190e9cba66d7b3ca4b4eeeae92bb62fe66f1e7ad0f50714173c4"
+      ],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "디파이 디벨롭먼트, 3분기 주당 NAV 2배 이상 전망..SOL 보유 11%↑"
+    },
     "source_fact:065970d8f231f37464d7c099": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -35426,6 +35934,31 @@
       ],
       "source_published_kst": "2026-10-05T21:05+09:00",
       "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
+    },
+    "source_fact:080f15552b64650d9c8ebb27": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01823686645609968&parentid=02017206645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "8b6182914d04336bb2f4e4c8f185e153b46a3b02183d48dbd6e6523f486ce0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b1900da02cf966e2c90fd32265a4614de915cfef1668691bb0aba7569e009d8",
+      "source_fact_keys": [
+        "source_fact:v1:2bc2079d2649b15b0cd559a5a531af259ebb5efe407fed7f225e0d529f6734bb",
+        "source_fact:v1:43e811973e874d064cf3edcc952889fb918df1730170a26d6bf0064a0ba56207",
+        "source_fact:v1:450a9c9f02bcff8cc01f01061719912378cfd8c4dd51d8582f54259cdf9dd417",
+        "source_fact:v1:5b257652925d0d2cfb0c76f3cf204b999470171e0800f5b3cd8370089962ac29",
+        "source_fact:v1:62157b119afc191812d69ddf02bdf7a3f2ec26d7e926e753f63fd8649ef34416",
+        "source_fact:v1:7488fb62304382766a51dda64c18b5f772606d2463f38c98d70c47941452ebb6",
+        "source_fact:v1:79562e9bd3d057ad5685053ba27996c18c3048824f68e09724c52a3d6c3f7458",
+        "source_fact:v1:dba2633a0ec7b86ee8317dac99eadf083605bb2370edbe25edeff8a1682f6d9d",
+        "source_fact:v1:e4c8437203668fddd95bce0e2e35e324f54bbf0a7ee9461e132201192950f3a6"
+      ],
+      "source_published_kst": "2026-10-05T10:42+09:00",
+      "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
     },
     "source_fact:08986bd9bb22a90964311dc8": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -35618,6 +36151,32 @@
       ],
       "source_published_kst": "2026-10-05T17:46+09:00",
       "title": "원화 강세의 그늘…상장사 영업익 전망 '뒷걸음질'"
+    },
+    "source_fact:147a986d6d7cf21f5eca8e24": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169781",
+      "source": "매일경제",
+      "source_body_digest": "9b3ef41304cd218f2f98d2843172dfffead58266c7308199d6134aeda435bddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4dad99dc508b37e6f16805fa144c1f6f9e30b821f88adcfd4a0e5b51d86d13",
+      "source_fact_keys": [
+        "source_fact:v1:1afbcc341e29f56f8459928dc02665c7dfeda97a8cd68bfb524053835bb8ef08",
+        "source_fact:v1:27366b547ee290202b26198ba6ce81bffc62bdbd4b4e835744ba06902e1f9228",
+        "source_fact:v1:2a5b67ae89bd56ab53c8bb052177fa47ecbd6452bf96b412111a78eba825a9ae",
+        "source_fact:v1:3046c8810b6a3ddc7d59e1088c7f8ba0c88ab376cd372bedf174db0ee1a90f01",
+        "source_fact:v1:3278040d2171cd88668e8749e00f271bc7dbcb81b087b8333854e07d74d7a667",
+        "source_fact:v1:64c4dd665f473b9d647241d2c16f3f799b04458f3624e9e4a6e99c2ac06e7560",
+        "source_fact:v1:72894f7301c9a861ee27ee22125b184d0adc0d62c15763ce2bee4dce3fb06ded",
+        "source_fact:v1:ba5fa294c70de4886d4d1585d44922f3bbef53f65bfba4168d1b21912c3cd63a",
+        "source_fact:v1:cce9d6d64daaad4243ad51d421f4dc7a4ad5095923c56620ad6b703bfc433ab3",
+        "source_fact:v1:ffdbc8b9f5e4fd6826627bbde2daf7aa1a41029512c26c1199eb81781c5e8a13"
+      ],
+      "source_published_kst": "2026-10-05T20:58+09:00",
+      "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
     "source_fact:161ab13882d08365c5d13415": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -35841,6 +36400,25 @@
       "source_published_kst": "2026-10-05T18:43+09:00",
       "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
     },
+    "source_fact:2289ec8ff19d94ffb2b72b7d": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169803",
+      "source": "매일경제",
+      "source_body_digest": "23e19da2f1acc81142a06b610af265169bdab9b02876b40b1e28b055360d352d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87980f71b02dedae9b677b5b16147cfd03168b8ac52dc7a876ba4cd464923bf6",
+      "source_fact_keys": [
+        "source_fact:v1:4e16caa48be6424ad6a90f5a284144e704eec00e8ae3926d7e258771f8943d33",
+        "source_fact:v1:b6948bcbc8ee74e0a51c42f6c77d2d0bd6676f80e8a9ee4c4c225162bfd769d1",
+        "source_fact:v1:b9cc5c9741a0f1aa610ba3ee8e49f61cf9a6b920f2d4891e4c69c9e8ae356bf4"
+      ],
+      "source_published_kst": "2026-10-05T21:21+09:00",
+      "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
+    },
     "source_fact:23ce17f0b68f8e91a3d100ab": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -35943,6 +36521,23 @@
       ],
       "source_published_kst": "2026-10-05T20:07+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
+    },
+    "source_fact:27279b62bf8924632a0a47bc": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632450",
+      "source": "이투데이",
+      "source_body_digest": "33037981030913bc216fa50543ac62174c7eb79b53ec25c181ed5ce0d5cff56e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a929d1eda3a155587f0287b8164e1cf2574e7f7221b937f77bb26e8d86955d8",
+      "source_fact_keys": [
+        "source_fact:v1:339febd177dd9c2048f679c7f2d11b92770e553d12574ac8b75233baa7056ba5"
+      ],
+      "source_published_kst": "2026-10-05T14:01+09:00",
+      "title": "OPEC+, 11월 원유 생산 목표 동결⋯중동 전쟁에 증산 효과 제한"
     },
     "source_fact:273152bf0616d4c45f5797ae": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -36082,6 +36677,31 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:2f1ccf96d52dd3e529406194": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01823686645609968&parentid=02017206645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "8b6182914d04336bb2f4e4c8f185e153b46a3b02183d48dbd6e6523f486ce0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b1900da02cf966e2c90fd32265a4614de915cfef1668691bb0aba7569e009d8",
+      "source_fact_keys": [
+        "source_fact:v1:2bc2079d2649b15b0cd559a5a531af259ebb5efe407fed7f225e0d529f6734bb",
+        "source_fact:v1:43e811973e874d064cf3edcc952889fb918df1730170a26d6bf0064a0ba56207",
+        "source_fact:v1:450a9c9f02bcff8cc01f01061719912378cfd8c4dd51d8582f54259cdf9dd417",
+        "source_fact:v1:5b257652925d0d2cfb0c76f3cf204b999470171e0800f5b3cd8370089962ac29",
+        "source_fact:v1:62157b119afc191812d69ddf02bdf7a3f2ec26d7e926e753f63fd8649ef34416",
+        "source_fact:v1:7488fb62304382766a51dda64c18b5f772606d2463f38c98d70c47941452ebb6",
+        "source_fact:v1:79562e9bd3d057ad5685053ba27996c18c3048824f68e09724c52a3d6c3f7458",
+        "source_fact:v1:dba2633a0ec7b86ee8317dac99eadf083605bb2370edbe25edeff8a1682f6d9d",
+        "source_fact:v1:e4c8437203668fddd95bce0e2e35e324f54bbf0a7ee9461e132201192950f3a6"
+      ],
+      "source_published_kst": "2026-10-05T10:42+09:00",
+      "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
     },
     "source_fact:2f6d62d1c65ce032fb15207d": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -36610,7 +37230,7 @@
       "link": "https://www.mk.co.kr/news/stock/12168505",
       "source": "매일경제",
       "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:odd_lot_rule:9a404eb9f9885e08451999bd50153349602be31c84b3e47f1e96be7459b5e344",
       "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
       "source_fact_keys": [
         "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
@@ -36621,6 +37241,31 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
+    },
+    "source_fact:3fb5eaca90abdb80403f6726": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01823686645609968&parentid=02017206645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "8b6182914d04336bb2f4e4c8f185e153b46a3b02183d48dbd6e6523f486ce0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b1900da02cf966e2c90fd32265a4614de915cfef1668691bb0aba7569e009d8",
+      "source_fact_keys": [
+        "source_fact:v1:2bc2079d2649b15b0cd559a5a531af259ebb5efe407fed7f225e0d529f6734bb",
+        "source_fact:v1:43e811973e874d064cf3edcc952889fb918df1730170a26d6bf0064a0ba56207",
+        "source_fact:v1:450a9c9f02bcff8cc01f01061719912378cfd8c4dd51d8582f54259cdf9dd417",
+        "source_fact:v1:5b257652925d0d2cfb0c76f3cf204b999470171e0800f5b3cd8370089962ac29",
+        "source_fact:v1:62157b119afc191812d69ddf02bdf7a3f2ec26d7e926e753f63fd8649ef34416",
+        "source_fact:v1:7488fb62304382766a51dda64c18b5f772606d2463f38c98d70c47941452ebb6",
+        "source_fact:v1:79562e9bd3d057ad5685053ba27996c18c3048824f68e09724c52a3d6c3f7458",
+        "source_fact:v1:dba2633a0ec7b86ee8317dac99eadf083605bb2370edbe25edeff8a1682f6d9d",
+        "source_fact:v1:e4c8437203668fddd95bce0e2e35e324f54bbf0a7ee9461e132201192950f3a6"
+      ],
+      "source_published_kst": "2026-10-05T10:42+09:00",
+      "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
     },
     "source_fact:407497ab12a9705701544c3e": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -36715,7 +37360,7 @@
       "link": "https://www.mk.co.kr/news/stock/12168505",
       "source": "매일경제",
       "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:odd_lot_rule:9a404eb9f9885e08451999bd50153349602be31c84b3e47f1e96be7459b5e344",
       "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
       "source_fact_keys": [
         "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
@@ -36889,7 +37534,7 @@
       "link": "https://www.mk.co.kr/news/stock/12168505",
       "source": "매일경제",
       "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:odd_lot_rule:9a404eb9f9885e08451999bd50153349602be31c84b3e47f1e96be7459b5e344",
       "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
       "source_fact_keys": [
         "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
@@ -37115,6 +37760,32 @@
       "source_published_kst": "2026-10-05T18:43+09:00",
       "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
     },
+    "source_fact:51f5f569d11e4e7d6c8c25f4": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169781",
+      "source": "매일경제",
+      "source_body_digest": "9b3ef41304cd218f2f98d2843172dfffead58266c7308199d6134aeda435bddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4dad99dc508b37e6f16805fa144c1f6f9e30b821f88adcfd4a0e5b51d86d13",
+      "source_fact_keys": [
+        "source_fact:v1:1afbcc341e29f56f8459928dc02665c7dfeda97a8cd68bfb524053835bb8ef08",
+        "source_fact:v1:27366b547ee290202b26198ba6ce81bffc62bdbd4b4e835744ba06902e1f9228",
+        "source_fact:v1:2a5b67ae89bd56ab53c8bb052177fa47ecbd6452bf96b412111a78eba825a9ae",
+        "source_fact:v1:3046c8810b6a3ddc7d59e1088c7f8ba0c88ab376cd372bedf174db0ee1a90f01",
+        "source_fact:v1:3278040d2171cd88668e8749e00f271bc7dbcb81b087b8333854e07d74d7a667",
+        "source_fact:v1:64c4dd665f473b9d647241d2c16f3f799b04458f3624e9e4a6e99c2ac06e7560",
+        "source_fact:v1:72894f7301c9a861ee27ee22125b184d0adc0d62c15763ce2bee4dce3fb06ded",
+        "source_fact:v1:ba5fa294c70de4886d4d1585d44922f3bbef53f65bfba4168d1b21912c3cd63a",
+        "source_fact:v1:cce9d6d64daaad4243ad51d421f4dc7a4ad5095923c56620ad6b703bfc433ab3",
+        "source_fact:v1:ffdbc8b9f5e4fd6826627bbde2daf7aa1a41029512c26c1199eb81781c5e8a13"
+      ],
+      "source_published_kst": "2026-10-05T20:58+09:00",
+      "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
     "source_fact:52e88d4db5f6d6129bed018f": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -37176,6 +37847,31 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "source_fact:56cd475aad5207bd5c2e3cef": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01823686645609968&parentid=02017206645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "8b6182914d04336bb2f4e4c8f185e153b46a3b02183d48dbd6e6523f486ce0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b1900da02cf966e2c90fd32265a4614de915cfef1668691bb0aba7569e009d8",
+      "source_fact_keys": [
+        "source_fact:v1:2bc2079d2649b15b0cd559a5a531af259ebb5efe407fed7f225e0d529f6734bb",
+        "source_fact:v1:43e811973e874d064cf3edcc952889fb918df1730170a26d6bf0064a0ba56207",
+        "source_fact:v1:450a9c9f02bcff8cc01f01061719912378cfd8c4dd51d8582f54259cdf9dd417",
+        "source_fact:v1:5b257652925d0d2cfb0c76f3cf204b999470171e0800f5b3cd8370089962ac29",
+        "source_fact:v1:62157b119afc191812d69ddf02bdf7a3f2ec26d7e926e753f63fd8649ef34416",
+        "source_fact:v1:7488fb62304382766a51dda64c18b5f772606d2463f38c98d70c47941452ebb6",
+        "source_fact:v1:79562e9bd3d057ad5685053ba27996c18c3048824f68e09724c52a3d6c3f7458",
+        "source_fact:v1:dba2633a0ec7b86ee8317dac99eadf083605bb2370edbe25edeff8a1682f6d9d",
+        "source_fact:v1:e4c8437203668fddd95bce0e2e35e324f54bbf0a7ee9461e132201192950f3a6"
+      ],
+      "source_published_kst": "2026-10-05T10:42+09:00",
+      "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
+    },
     "source_fact:57eb903a9fc63deb7eff1beb": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -37227,6 +37923,32 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
+    "source_fact:58a88d815647f2d45f6b16f1": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169781",
+      "source": "매일경제",
+      "source_body_digest": "9b3ef41304cd218f2f98d2843172dfffead58266c7308199d6134aeda435bddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4dad99dc508b37e6f16805fa144c1f6f9e30b821f88adcfd4a0e5b51d86d13",
+      "source_fact_keys": [
+        "source_fact:v1:1afbcc341e29f56f8459928dc02665c7dfeda97a8cd68bfb524053835bb8ef08",
+        "source_fact:v1:27366b547ee290202b26198ba6ce81bffc62bdbd4b4e835744ba06902e1f9228",
+        "source_fact:v1:2a5b67ae89bd56ab53c8bb052177fa47ecbd6452bf96b412111a78eba825a9ae",
+        "source_fact:v1:3046c8810b6a3ddc7d59e1088c7f8ba0c88ab376cd372bedf174db0ee1a90f01",
+        "source_fact:v1:3278040d2171cd88668e8749e00f271bc7dbcb81b087b8333854e07d74d7a667",
+        "source_fact:v1:64c4dd665f473b9d647241d2c16f3f799b04458f3624e9e4a6e99c2ac06e7560",
+        "source_fact:v1:72894f7301c9a861ee27ee22125b184d0adc0d62c15763ce2bee4dce3fb06ded",
+        "source_fact:v1:ba5fa294c70de4886d4d1585d44922f3bbef53f65bfba4168d1b21912c3cd63a",
+        "source_fact:v1:cce9d6d64daaad4243ad51d421f4dc7a4ad5095923c56620ad6b703bfc433ab3",
+        "source_fact:v1:ffdbc8b9f5e4fd6826627bbde2daf7aa1a41029512c26c1199eb81781c5e8a13"
+      ],
+      "source_published_kst": "2026-10-05T20:58+09:00",
+      "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
     "source_fact:59ad6f96de77aae6f5d51f79": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -37326,7 +38048,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169758",
       "source": "매일경제",
       "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:license:f6a8a12ea5795e49e91755f4cecf5a20a4aa2243b3654245264f6fb2ceb2de7f",
       "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
       "source_fact_keys": [
         "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
@@ -37338,6 +38060,32 @@
       ],
       "source_published_kst": "2026-10-05T20:01+09:00",
       "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
+    },
+    "source_fact:5b69661b14cd3bd923b8ef75": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169781",
+      "source": "매일경제",
+      "source_body_digest": "9b3ef41304cd218f2f98d2843172dfffead58266c7308199d6134aeda435bddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4dad99dc508b37e6f16805fa144c1f6f9e30b821f88adcfd4a0e5b51d86d13",
+      "source_fact_keys": [
+        "source_fact:v1:1afbcc341e29f56f8459928dc02665c7dfeda97a8cd68bfb524053835bb8ef08",
+        "source_fact:v1:27366b547ee290202b26198ba6ce81bffc62bdbd4b4e835744ba06902e1f9228",
+        "source_fact:v1:2a5b67ae89bd56ab53c8bb052177fa47ecbd6452bf96b412111a78eba825a9ae",
+        "source_fact:v1:3046c8810b6a3ddc7d59e1088c7f8ba0c88ab376cd372bedf174db0ee1a90f01",
+        "source_fact:v1:3278040d2171cd88668e8749e00f271bc7dbcb81b087b8333854e07d74d7a667",
+        "source_fact:v1:64c4dd665f473b9d647241d2c16f3f799b04458f3624e9e4a6e99c2ac06e7560",
+        "source_fact:v1:72894f7301c9a861ee27ee22125b184d0adc0d62c15763ce2bee4dce3fb06ded",
+        "source_fact:v1:ba5fa294c70de4886d4d1585d44922f3bbef53f65bfba4168d1b21912c3cd63a",
+        "source_fact:v1:cce9d6d64daaad4243ad51d421f4dc7a4ad5095923c56620ad6b703bfc433ab3",
+        "source_fact:v1:ffdbc8b9f5e4fd6826627bbde2daf7aa1a41029512c26c1199eb81781c5e8a13"
+      ],
+      "source_published_kst": "2026-10-05T20:58+09:00",
+      "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
     "source_fact:5bb16f54ecee7d768c02b922": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -37489,7 +38237,7 @@
       "link": "https://www.mk.co.kr/news/stock/12168505",
       "source": "매일경제",
       "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:odd_lot_rule:9a404eb9f9885e08451999bd50153349602be31c84b3e47f1e96be7459b5e344",
       "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
       "source_fact_keys": [
         "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
@@ -37500,6 +38248,32 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
+    },
+    "source_fact:62823c9f4633912ff7baa49a": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169781",
+      "source": "매일경제",
+      "source_body_digest": "9b3ef41304cd218f2f98d2843172dfffead58266c7308199d6134aeda435bddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4dad99dc508b37e6f16805fa144c1f6f9e30b821f88adcfd4a0e5b51d86d13",
+      "source_fact_keys": [
+        "source_fact:v1:1afbcc341e29f56f8459928dc02665c7dfeda97a8cd68bfb524053835bb8ef08",
+        "source_fact:v1:27366b547ee290202b26198ba6ce81bffc62bdbd4b4e835744ba06902e1f9228",
+        "source_fact:v1:2a5b67ae89bd56ab53c8bb052177fa47ecbd6452bf96b412111a78eba825a9ae",
+        "source_fact:v1:3046c8810b6a3ddc7d59e1088c7f8ba0c88ab376cd372bedf174db0ee1a90f01",
+        "source_fact:v1:3278040d2171cd88668e8749e00f271bc7dbcb81b087b8333854e07d74d7a667",
+        "source_fact:v1:64c4dd665f473b9d647241d2c16f3f799b04458f3624e9e4a6e99c2ac06e7560",
+        "source_fact:v1:72894f7301c9a861ee27ee22125b184d0adc0d62c15763ce2bee4dce3fb06ded",
+        "source_fact:v1:ba5fa294c70de4886d4d1585d44922f3bbef53f65bfba4168d1b21912c3cd63a",
+        "source_fact:v1:cce9d6d64daaad4243ad51d421f4dc7a4ad5095923c56620ad6b703bfc433ab3",
+        "source_fact:v1:ffdbc8b9f5e4fd6826627bbde2daf7aa1a41029512c26c1199eb81781c5e8a13"
+      ],
+      "source_published_kst": "2026-10-05T20:58+09:00",
+      "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
     "source_fact:62d4ee2489ca0c237e504da8": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -37525,6 +38299,25 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
+    },
+    "source_fact:633d876314d1ac1278a57b82": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169803",
+      "source": "매일경제",
+      "source_body_digest": "23e19da2f1acc81142a06b610af265169bdab9b02876b40b1e28b055360d352d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87980f71b02dedae9b677b5b16147cfd03168b8ac52dc7a876ba4cd464923bf6",
+      "source_fact_keys": [
+        "source_fact:v1:4e16caa48be6424ad6a90f5a284144e704eec00e8ae3926d7e258771f8943d33",
+        "source_fact:v1:b6948bcbc8ee74e0a51c42f6c77d2d0bd6676f80e8a9ee4c4c225162bfd769d1",
+        "source_fact:v1:b9cc5c9741a0f1aa610ba3ee8e49f61cf9a6b920f2d4891e4c69c9e8ae356bf4"
+      ],
+      "source_published_kst": "2026-10-05T21:21+09:00",
+      "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
     },
     "source_fact:66855d2a919a8f6819e80ef4": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -38330,7 +39123,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169758",
       "source": "매일경제",
       "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:license:f6a8a12ea5795e49e91755f4cecf5a20a4aa2243b3654245264f6fb2ceb2de7f",
       "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
       "source_fact_keys": [
         "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
@@ -38426,7 +39219,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169758",
       "source": "매일경제",
       "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:license:f6a8a12ea5795e49e91755f4cecf5a20a4aa2243b3654245264f6fb2ceb2de7f",
       "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
       "source_fact_keys": [
         "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
@@ -38608,6 +39401,31 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:82127428859e548a9d10daa0": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01823686645609968&parentid=02017206645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "8b6182914d04336bb2f4e4c8f185e153b46a3b02183d48dbd6e6523f486ce0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b1900da02cf966e2c90fd32265a4614de915cfef1668691bb0aba7569e009d8",
+      "source_fact_keys": [
+        "source_fact:v1:2bc2079d2649b15b0cd559a5a531af259ebb5efe407fed7f225e0d529f6734bb",
+        "source_fact:v1:43e811973e874d064cf3edcc952889fb918df1730170a26d6bf0064a0ba56207",
+        "source_fact:v1:450a9c9f02bcff8cc01f01061719912378cfd8c4dd51d8582f54259cdf9dd417",
+        "source_fact:v1:5b257652925d0d2cfb0c76f3cf204b999470171e0800f5b3cd8370089962ac29",
+        "source_fact:v1:62157b119afc191812d69ddf02bdf7a3f2ec26d7e926e753f63fd8649ef34416",
+        "source_fact:v1:7488fb62304382766a51dda64c18b5f772606d2463f38c98d70c47941452ebb6",
+        "source_fact:v1:79562e9bd3d057ad5685053ba27996c18c3048824f68e09724c52a3d6c3f7458",
+        "source_fact:v1:dba2633a0ec7b86ee8317dac99eadf083605bb2370edbe25edeff8a1682f6d9d",
+        "source_fact:v1:e4c8437203668fddd95bce0e2e35e324f54bbf0a7ee9461e132201192950f3a6"
+      ],
+      "source_published_kst": "2026-10-05T10:42+09:00",
+      "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
+    },
     "source_fact:823d5d825b0cfe23eb1bacd0": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
       "lanes": {
@@ -38653,7 +39471,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169758",
       "source": "매일경제",
       "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:license:f6a8a12ea5795e49e91755f4cecf5a20a4aa2243b3654245264f6fb2ceb2de7f",
       "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
       "source_fact_keys": [
         "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
@@ -38894,7 +39712,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169758",
       "source": "매일경제",
       "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:license:f6a8a12ea5795e49e91755f4cecf5a20a4aa2243b3654245264f6fb2ceb2de7f",
       "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
       "source_fact_keys": [
         "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
@@ -39022,6 +39840,32 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:964656e6ab6a7d287a0a4ce1": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169781",
+      "source": "매일경제",
+      "source_body_digest": "9b3ef41304cd218f2f98d2843172dfffead58266c7308199d6134aeda435bddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4dad99dc508b37e6f16805fa144c1f6f9e30b821f88adcfd4a0e5b51d86d13",
+      "source_fact_keys": [
+        "source_fact:v1:1afbcc341e29f56f8459928dc02665c7dfeda97a8cd68bfb524053835bb8ef08",
+        "source_fact:v1:27366b547ee290202b26198ba6ce81bffc62bdbd4b4e835744ba06902e1f9228",
+        "source_fact:v1:2a5b67ae89bd56ab53c8bb052177fa47ecbd6452bf96b412111a78eba825a9ae",
+        "source_fact:v1:3046c8810b6a3ddc7d59e1088c7f8ba0c88ab376cd372bedf174db0ee1a90f01",
+        "source_fact:v1:3278040d2171cd88668e8749e00f271bc7dbcb81b087b8333854e07d74d7a667",
+        "source_fact:v1:64c4dd665f473b9d647241d2c16f3f799b04458f3624e9e4a6e99c2ac06e7560",
+        "source_fact:v1:72894f7301c9a861ee27ee22125b184d0adc0d62c15763ce2bee4dce3fb06ded",
+        "source_fact:v1:ba5fa294c70de4886d4d1585d44922f3bbef53f65bfba4168d1b21912c3cd63a",
+        "source_fact:v1:cce9d6d64daaad4243ad51d421f4dc7a4ad5095923c56620ad6b703bfc433ab3",
+        "source_fact:v1:ffdbc8b9f5e4fd6826627bbde2daf7aa1a41029512c26c1199eb81781c5e8a13"
+      ],
+      "source_published_kst": "2026-10-05T20:58+09:00",
+      "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
     "source_fact:9755a19ade0538d552272e39": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -39193,6 +40037,23 @@
       ],
       "source_published_kst": "2026-10-05T21:05+09:00",
       "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
+    },
+    "source_fact:9bf2506e4d6f0e15a479ddc4": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169777",
+      "source": "매일경제",
+      "source_body_digest": "9ca695e4c51874ea58c4d694731de45e3abe9ad2ebcf3b4d0382a5d81fe16032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54b800b8d0f3ba8e577b90bcda55319e5c792db1f5f13ffb668fe7e69b136ac3",
+      "source_fact_keys": [
+        "source_fact:v1:1077604efe10ea3eda65c30b17657dca0c353aa85ecfcfacbeb0997c11e4d3d5"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "C.H.로빈슨, RXO 58억달러 인수 합의 후 재무 부담·주식 희석 우려 부각"
     },
     "source_fact:9e6c9614545d6db1412073c4": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -39412,6 +40273,52 @@
       "source_published_kst": "2026-10-04T23:56+09:00",
       "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
     },
+    "source_fact:a6246fdc73b46fdb0fd25c54": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169781",
+      "source": "매일경제",
+      "source_body_digest": "9b3ef41304cd218f2f98d2843172dfffead58266c7308199d6134aeda435bddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4dad99dc508b37e6f16805fa144c1f6f9e30b821f88adcfd4a0e5b51d86d13",
+      "source_fact_keys": [
+        "source_fact:v1:1afbcc341e29f56f8459928dc02665c7dfeda97a8cd68bfb524053835bb8ef08",
+        "source_fact:v1:27366b547ee290202b26198ba6ce81bffc62bdbd4b4e835744ba06902e1f9228",
+        "source_fact:v1:2a5b67ae89bd56ab53c8bb052177fa47ecbd6452bf96b412111a78eba825a9ae",
+        "source_fact:v1:3046c8810b6a3ddc7d59e1088c7f8ba0c88ab376cd372bedf174db0ee1a90f01",
+        "source_fact:v1:3278040d2171cd88668e8749e00f271bc7dbcb81b087b8333854e07d74d7a667",
+        "source_fact:v1:64c4dd665f473b9d647241d2c16f3f799b04458f3624e9e4a6e99c2ac06e7560",
+        "source_fact:v1:72894f7301c9a861ee27ee22125b184d0adc0d62c15763ce2bee4dce3fb06ded",
+        "source_fact:v1:ba5fa294c70de4886d4d1585d44922f3bbef53f65bfba4168d1b21912c3cd63a",
+        "source_fact:v1:cce9d6d64daaad4243ad51d421f4dc7a4ad5095923c56620ad6b703bfc433ab3",
+        "source_fact:v1:ffdbc8b9f5e4fd6826627bbde2daf7aa1a41029512c26c1199eb81781c5e8a13"
+      ],
+      "source_published_kst": "2026-10-05T20:58+09:00",
+      "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
+    "source_fact:a693a364a17b4fbc490bda1a": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169801",
+      "source": "매일경제",
+      "source_body_digest": "43e02aab887b0808035ef8d8962f3ee797825daf776b0b7dc5d3646fcb98fabd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18ac70760f629d8aaff1d5de7ae7bff59518bbd0ab473e3e08c571915e6de0c9",
+      "source_fact_keys": [
+        "source_fact:v1:600f24ff082c6a59b7a15291c9ffff135efd4d8dbf7f4c62cbbc757012fe30a8",
+        "source_fact:v1:a166f271ed998b178095f97efa33425cf9ee455ffe71426885d6386968c4abd3",
+        "source_fact:v1:a1e0be13f0280d3fb2e385845fe89014d40f52fdad269b51d626ce62c90bac00",
+        "source_fact:v1:bc163c1218d2190e9cba66d7b3ca4b4eeeae92bb62fe66f1e7ad0f50714173c4"
+      ],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "디파이 디벨롭먼트, 3분기 주당 NAV 2배 이상 전망..SOL 보유 11%↑"
+    },
     "source_fact:a89e859fdbfade7a0eea29db": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -39542,6 +40449,31 @@
       "source_published_kst": "2026-10-05T15:21+09:00",
       "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
     },
+    "source_fact:b00d4410eaafa189ec7f3616": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01823686645609968&parentid=02017206645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "8b6182914d04336bb2f4e4c8f185e153b46a3b02183d48dbd6e6523f486ce0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b1900da02cf966e2c90fd32265a4614de915cfef1668691bb0aba7569e009d8",
+      "source_fact_keys": [
+        "source_fact:v1:2bc2079d2649b15b0cd559a5a531af259ebb5efe407fed7f225e0d529f6734bb",
+        "source_fact:v1:43e811973e874d064cf3edcc952889fb918df1730170a26d6bf0064a0ba56207",
+        "source_fact:v1:450a9c9f02bcff8cc01f01061719912378cfd8c4dd51d8582f54259cdf9dd417",
+        "source_fact:v1:5b257652925d0d2cfb0c76f3cf204b999470171e0800f5b3cd8370089962ac29",
+        "source_fact:v1:62157b119afc191812d69ddf02bdf7a3f2ec26d7e926e753f63fd8649ef34416",
+        "source_fact:v1:7488fb62304382766a51dda64c18b5f772606d2463f38c98d70c47941452ebb6",
+        "source_fact:v1:79562e9bd3d057ad5685053ba27996c18c3048824f68e09724c52a3d6c3f7458",
+        "source_fact:v1:dba2633a0ec7b86ee8317dac99eadf083605bb2370edbe25edeff8a1682f6d9d",
+        "source_fact:v1:e4c8437203668fddd95bce0e2e35e324f54bbf0a7ee9461e132201192950f3a6"
+      ],
+      "source_published_kst": "2026-10-05T10:42+09:00",
+      "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
+    },
     "source_fact:b0158639048bf21113ac6063": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
       "lanes": {
@@ -39647,6 +40579,32 @@
       ],
       "source_published_kst": "2026-10-05T05:01+09:00",
       "title": "국회 정무위 6일 국감 돌입…금융권 해킹에 5대 은행장 줄소환되나"
+    },
+    "source_fact:b41de59c1e944c52f7846326": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169781",
+      "source": "매일경제",
+      "source_body_digest": "9b3ef41304cd218f2f98d2843172dfffead58266c7308199d6134aeda435bddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4dad99dc508b37e6f16805fa144c1f6f9e30b821f88adcfd4a0e5b51d86d13",
+      "source_fact_keys": [
+        "source_fact:v1:1afbcc341e29f56f8459928dc02665c7dfeda97a8cd68bfb524053835bb8ef08",
+        "source_fact:v1:27366b547ee290202b26198ba6ce81bffc62bdbd4b4e835744ba06902e1f9228",
+        "source_fact:v1:2a5b67ae89bd56ab53c8bb052177fa47ecbd6452bf96b412111a78eba825a9ae",
+        "source_fact:v1:3046c8810b6a3ddc7d59e1088c7f8ba0c88ab376cd372bedf174db0ee1a90f01",
+        "source_fact:v1:3278040d2171cd88668e8749e00f271bc7dbcb81b087b8333854e07d74d7a667",
+        "source_fact:v1:64c4dd665f473b9d647241d2c16f3f799b04458f3624e9e4a6e99c2ac06e7560",
+        "source_fact:v1:72894f7301c9a861ee27ee22125b184d0adc0d62c15763ce2bee4dce3fb06ded",
+        "source_fact:v1:ba5fa294c70de4886d4d1585d44922f3bbef53f65bfba4168d1b21912c3cd63a",
+        "source_fact:v1:cce9d6d64daaad4243ad51d421f4dc7a4ad5095923c56620ad6b703bfc433ab3",
+        "source_fact:v1:ffdbc8b9f5e4fd6826627bbde2daf7aa1a41029512c26c1199eb81781c5e8a13"
+      ],
+      "source_published_kst": "2026-10-05T20:58+09:00",
+      "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
     "source_fact:b4380363346743eb65c653ad": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -39836,6 +40794,51 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:be219ba43f0f39018238e71b": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169781",
+      "source": "매일경제",
+      "source_body_digest": "9b3ef41304cd218f2f98d2843172dfffead58266c7308199d6134aeda435bddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4dad99dc508b37e6f16805fa144c1f6f9e30b821f88adcfd4a0e5b51d86d13",
+      "source_fact_keys": [
+        "source_fact:v1:1afbcc341e29f56f8459928dc02665c7dfeda97a8cd68bfb524053835bb8ef08",
+        "source_fact:v1:27366b547ee290202b26198ba6ce81bffc62bdbd4b4e835744ba06902e1f9228",
+        "source_fact:v1:2a5b67ae89bd56ab53c8bb052177fa47ecbd6452bf96b412111a78eba825a9ae",
+        "source_fact:v1:3046c8810b6a3ddc7d59e1088c7f8ba0c88ab376cd372bedf174db0ee1a90f01",
+        "source_fact:v1:3278040d2171cd88668e8749e00f271bc7dbcb81b087b8333854e07d74d7a667",
+        "source_fact:v1:64c4dd665f473b9d647241d2c16f3f799b04458f3624e9e4a6e99c2ac06e7560",
+        "source_fact:v1:72894f7301c9a861ee27ee22125b184d0adc0d62c15763ce2bee4dce3fb06ded",
+        "source_fact:v1:ba5fa294c70de4886d4d1585d44922f3bbef53f65bfba4168d1b21912c3cd63a",
+        "source_fact:v1:cce9d6d64daaad4243ad51d421f4dc7a4ad5095923c56620ad6b703bfc433ab3",
+        "source_fact:v1:ffdbc8b9f5e4fd6826627bbde2daf7aa1a41029512c26c1199eb81781c5e8a13"
+      ],
+      "source_published_kst": "2026-10-05T20:58+09:00",
+      "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
+    "source_fact:bf8837dcfe760b1333f636be": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169803",
+      "source": "매일경제",
+      "source_body_digest": "23e19da2f1acc81142a06b610af265169bdab9b02876b40b1e28b055360d352d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87980f71b02dedae9b677b5b16147cfd03168b8ac52dc7a876ba4cd464923bf6",
+      "source_fact_keys": [
+        "source_fact:v1:4e16caa48be6424ad6a90f5a284144e704eec00e8ae3926d7e258771f8943d33",
+        "source_fact:v1:b6948bcbc8ee74e0a51c42f6c77d2d0bd6676f80e8a9ee4c4c225162bfd769d1",
+        "source_fact:v1:b9cc5c9741a0f1aa610ba3ee8e49f61cf9a6b920f2d4891e4c69c9e8ae356bf4"
+      ],
+      "source_published_kst": "2026-10-05T21:21+09:00",
+      "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
+    },
     "source_fact:c0f9019d1ebf7e251342b74b": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -39855,6 +40858,26 @@
       ],
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
+    },
+    "source_fact:c227b5b5ed8f99ebb85993fc": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169801",
+      "source": "매일경제",
+      "source_body_digest": "43e02aab887b0808035ef8d8962f3ee797825daf776b0b7dc5d3646fcb98fabd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18ac70760f629d8aaff1d5de7ae7bff59518bbd0ab473e3e08c571915e6de0c9",
+      "source_fact_keys": [
+        "source_fact:v1:600f24ff082c6a59b7a15291c9ffff135efd4d8dbf7f4c62cbbc757012fe30a8",
+        "source_fact:v1:a166f271ed998b178095f97efa33425cf9ee455ffe71426885d6386968c4abd3",
+        "source_fact:v1:a1e0be13f0280d3fb2e385845fe89014d40f52fdad269b51d626ce62c90bac00",
+        "source_fact:v1:bc163c1218d2190e9cba66d7b3ca4b4eeeae92bb62fe66f1e7ad0f50714173c4"
+      ],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "디파이 디벨롭먼트, 3분기 주당 NAV 2배 이상 전망..SOL 보유 11%↑"
     },
     "source_fact:c4cea5805fe9307cc2fde712": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
@@ -40002,6 +41025,26 @@
       "source_published_kst": "2026-10-05T14:28+09:00",
       "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
     },
+    "source_fact:cc3bdfe9afebb0501a4d0169": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169801",
+      "source": "매일경제",
+      "source_body_digest": "43e02aab887b0808035ef8d8962f3ee797825daf776b0b7dc5d3646fcb98fabd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18ac70760f629d8aaff1d5de7ae7bff59518bbd0ab473e3e08c571915e6de0c9",
+      "source_fact_keys": [
+        "source_fact:v1:600f24ff082c6a59b7a15291c9ffff135efd4d8dbf7f4c62cbbc757012fe30a8",
+        "source_fact:v1:a166f271ed998b178095f97efa33425cf9ee455ffe71426885d6386968c4abd3",
+        "source_fact:v1:a1e0be13f0280d3fb2e385845fe89014d40f52fdad269b51d626ce62c90bac00",
+        "source_fact:v1:bc163c1218d2190e9cba66d7b3ca4b4eeeae92bb62fe66f1e7ad0f50714173c4"
+      ],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "디파이 디벨롭먼트, 3분기 주당 NAV 2배 이상 전망..SOL 보유 11%↑"
+    },
     "source_fact:ccb65fc8c93d692152272843": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -40058,6 +41101,32 @@
       "source_published_kst": "2026-10-05T19:06+09:00",
       "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
     },
+    "source_fact:cf9074b1490ff26fdaa2544e": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169781",
+      "source": "매일경제",
+      "source_body_digest": "9b3ef41304cd218f2f98d2843172dfffead58266c7308199d6134aeda435bddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4dad99dc508b37e6f16805fa144c1f6f9e30b821f88adcfd4a0e5b51d86d13",
+      "source_fact_keys": [
+        "source_fact:v1:1afbcc341e29f56f8459928dc02665c7dfeda97a8cd68bfb524053835bb8ef08",
+        "source_fact:v1:27366b547ee290202b26198ba6ce81bffc62bdbd4b4e835744ba06902e1f9228",
+        "source_fact:v1:2a5b67ae89bd56ab53c8bb052177fa47ecbd6452bf96b412111a78eba825a9ae",
+        "source_fact:v1:3046c8810b6a3ddc7d59e1088c7f8ba0c88ab376cd372bedf174db0ee1a90f01",
+        "source_fact:v1:3278040d2171cd88668e8749e00f271bc7dbcb81b087b8333854e07d74d7a667",
+        "source_fact:v1:64c4dd665f473b9d647241d2c16f3f799b04458f3624e9e4a6e99c2ac06e7560",
+        "source_fact:v1:72894f7301c9a861ee27ee22125b184d0adc0d62c15763ce2bee4dce3fb06ded",
+        "source_fact:v1:ba5fa294c70de4886d4d1585d44922f3bbef53f65bfba4168d1b21912c3cd63a",
+        "source_fact:v1:cce9d6d64daaad4243ad51d421f4dc7a4ad5095923c56620ad6b703bfc433ab3",
+        "source_fact:v1:ffdbc8b9f5e4fd6826627bbde2daf7aa1a41029512c26c1199eb81781c5e8a13"
+      ],
+      "source_published_kst": "2026-10-05T20:58+09:00",
+      "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
     "source_fact:d07541f99330a78473dc6e57": {
       "first_seen_kst": "2026-10-05T20:38:34+09:00",
       "lanes": {
@@ -40113,7 +41182,7 @@
       "link": "https://www.mk.co.kr/news/stock/12168505",
       "source": "매일경제",
       "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:odd_lot_rule:9a404eb9f9885e08451999bd50153349602be31c84b3e47f1e96be7459b5e344",
       "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
       "source_fact_keys": [
         "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
@@ -40380,6 +41449,31 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:e0cc0dc1bfb8f8c0e6973bec": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01823686645609968&parentid=02017206645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "8b6182914d04336bb2f4e4c8f185e153b46a3b02183d48dbd6e6523f486ce0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b1900da02cf966e2c90fd32265a4614de915cfef1668691bb0aba7569e009d8",
+      "source_fact_keys": [
+        "source_fact:v1:2bc2079d2649b15b0cd559a5a531af259ebb5efe407fed7f225e0d529f6734bb",
+        "source_fact:v1:43e811973e874d064cf3edcc952889fb918df1730170a26d6bf0064a0ba56207",
+        "source_fact:v1:450a9c9f02bcff8cc01f01061719912378cfd8c4dd51d8582f54259cdf9dd417",
+        "source_fact:v1:5b257652925d0d2cfb0c76f3cf204b999470171e0800f5b3cd8370089962ac29",
+        "source_fact:v1:62157b119afc191812d69ddf02bdf7a3f2ec26d7e926e753f63fd8649ef34416",
+        "source_fact:v1:7488fb62304382766a51dda64c18b5f772606d2463f38c98d70c47941452ebb6",
+        "source_fact:v1:79562e9bd3d057ad5685053ba27996c18c3048824f68e09724c52a3d6c3f7458",
+        "source_fact:v1:dba2633a0ec7b86ee8317dac99eadf083605bb2370edbe25edeff8a1682f6d9d",
+        "source_fact:v1:e4c8437203668fddd95bce0e2e35e324f54bbf0a7ee9461e132201192950f3a6"
+      ],
+      "source_published_kst": "2026-10-05T10:42+09:00",
+      "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
+    },
     "source_fact:e29e0b562be28f3a3cd85c00": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -40509,6 +41603,31 @@
       ],
       "source_published_kst": "2026-10-05T20:03+09:00",
       "title": "인스메드, CFO 10월 30일 사임…연간 매출 가이던스 유지"
+    },
+    "source_fact:e6ea4558d3d9658307282413": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01823686645609968&parentid=02017206645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "8b6182914d04336bb2f4e4c8f185e153b46a3b02183d48dbd6e6523f486ce0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b1900da02cf966e2c90fd32265a4614de915cfef1668691bb0aba7569e009d8",
+      "source_fact_keys": [
+        "source_fact:v1:2bc2079d2649b15b0cd559a5a531af259ebb5efe407fed7f225e0d529f6734bb",
+        "source_fact:v1:43e811973e874d064cf3edcc952889fb918df1730170a26d6bf0064a0ba56207",
+        "source_fact:v1:450a9c9f02bcff8cc01f01061719912378cfd8c4dd51d8582f54259cdf9dd417",
+        "source_fact:v1:5b257652925d0d2cfb0c76f3cf204b999470171e0800f5b3cd8370089962ac29",
+        "source_fact:v1:62157b119afc191812d69ddf02bdf7a3f2ec26d7e926e753f63fd8649ef34416",
+        "source_fact:v1:7488fb62304382766a51dda64c18b5f772606d2463f38c98d70c47941452ebb6",
+        "source_fact:v1:79562e9bd3d057ad5685053ba27996c18c3048824f68e09724c52a3d6c3f7458",
+        "source_fact:v1:dba2633a0ec7b86ee8317dac99eadf083605bb2370edbe25edeff8a1682f6d9d",
+        "source_fact:v1:e4c8437203668fddd95bce0e2e35e324f54bbf0a7ee9461e132201192950f3a6"
+      ],
+      "source_published_kst": "2026-10-05T10:42+09:00",
+      "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
     },
     "source_fact:e76e7f6e442854a72897feeb": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -40922,6 +42041,31 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:fb4e94a977cde0c786c47889": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01823686645609968&parentid=02017206645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "8b6182914d04336bb2f4e4c8f185e153b46a3b02183d48dbd6e6523f486ce0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b1900da02cf966e2c90fd32265a4614de915cfef1668691bb0aba7569e009d8",
+      "source_fact_keys": [
+        "source_fact:v1:2bc2079d2649b15b0cd559a5a531af259ebb5efe407fed7f225e0d529f6734bb",
+        "source_fact:v1:43e811973e874d064cf3edcc952889fb918df1730170a26d6bf0064a0ba56207",
+        "source_fact:v1:450a9c9f02bcff8cc01f01061719912378cfd8c4dd51d8582f54259cdf9dd417",
+        "source_fact:v1:5b257652925d0d2cfb0c76f3cf204b999470171e0800f5b3cd8370089962ac29",
+        "source_fact:v1:62157b119afc191812d69ddf02bdf7a3f2ec26d7e926e753f63fd8649ef34416",
+        "source_fact:v1:7488fb62304382766a51dda64c18b5f772606d2463f38c98d70c47941452ebb6",
+        "source_fact:v1:79562e9bd3d057ad5685053ba27996c18c3048824f68e09724c52a3d6c3f7458",
+        "source_fact:v1:dba2633a0ec7b86ee8317dac99eadf083605bb2370edbe25edeff8a1682f6d9d",
+        "source_fact:v1:e4c8437203668fddd95bce0e2e35e324f54bbf0a7ee9461e132201192950f3a6"
+      ],
+      "source_published_kst": "2026-10-05T10:42+09:00",
+      "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
+    },
     "source_fact:fb9fd42ffae85c0bb4f28c8f": {
       "first_seen_kst": "2026-10-05T20:31:34+09:00",
       "lanes": {
@@ -41106,7 +42250,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169758",
       "source": "매일경제",
       "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:license:f6a8a12ea5795e49e91755f4cecf5a20a4aa2243b3654245264f6fb2ceb2de7f",
       "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
       "source_fact_keys": [
         "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
@@ -41346,6 +42490,31 @@
       "link": "https://magazine.hankyung.com/business/article/202610016912b",
       "source": "한국경제",
       "title": "두산, 다음 도약 위한 준비 끝"
+    },
+    "title:025d5f5b47ea2e9c157bab50": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=01823686645609968&parentid=02017206645609968&gubun=E",
+      "source": "이데일리",
+      "source_body_digest": "8b6182914d04336bb2f4e4c8f185e153b46a3b02183d48dbd6e6523f486ce0e5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9b1900da02cf966e2c90fd32265a4614de915cfef1668691bb0aba7569e009d8",
+      "source_fact_keys": [
+        "source_fact:v1:2bc2079d2649b15b0cd559a5a531af259ebb5efe407fed7f225e0d529f6734bb",
+        "source_fact:v1:43e811973e874d064cf3edcc952889fb918df1730170a26d6bf0064a0ba56207",
+        "source_fact:v1:450a9c9f02bcff8cc01f01061719912378cfd8c4dd51d8582f54259cdf9dd417",
+        "source_fact:v1:5b257652925d0d2cfb0c76f3cf204b999470171e0800f5b3cd8370089962ac29",
+        "source_fact:v1:62157b119afc191812d69ddf02bdf7a3f2ec26d7e926e753f63fd8649ef34416",
+        "source_fact:v1:7488fb62304382766a51dda64c18b5f772606d2463f38c98d70c47941452ebb6",
+        "source_fact:v1:79562e9bd3d057ad5685053ba27996c18c3048824f68e09724c52a3d6c3f7458",
+        "source_fact:v1:dba2633a0ec7b86ee8317dac99eadf083605bb2370edbe25edeff8a1682f6d9d",
+        "source_fact:v1:e4c8437203668fddd95bce0e2e35e324f54bbf0a7ee9461e132201192950f3a6"
+      ],
+      "source_published_kst": "2026-10-05T10:42+09:00",
+      "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
     },
     "title:02974d852455fad1adf42903": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -42924,7 +44093,7 @@
       "link": "https://www.mk.co.kr/news/stock/12168505",
       "source": "매일경제",
       "source_body_digest": "a5c378f4cda64adeae98faa2dcec6289902774ad912e5f9861ef235fd990b871",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:odd_lot_rule:9a404eb9f9885e08451999bd50153349602be31c84b3e47f1e96be7459b5e344",
       "source_fact_identity": "source_facts:v1:d94c2147f2197f75682b7c5dfb49c65d4e0ae7e1c3d94061e252d07ab70c7a40",
       "source_fact_keys": [
         "source_fact:v1:222d1329cbe61928ea746a92c3c5ebcf2ab6bba544f0c0d9c172bb3e409752f4",
@@ -44017,7 +45186,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169768",
       "source": "매일경제",
       "source_body_digest": "758e5a72c7d31160be291952342aad48eaf027c35ab852144f32e7b7c667ec6c",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:license:f6a8a12ea5795e49e91755f4cecf5a20a4aa2243b3654245264f6fb2ceb2de7f",
       "source_fact_identity": "",
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T20:20+09:00",
@@ -44529,6 +45698,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "에너지효율 정책융자 금리 2.5→2%…기업 이자부담 50억 줄인다"
+    },
+    "title:3c8c634bc04617d00bf400ec": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632450",
+      "source": "이투데이",
+      "source_body_digest": "33037981030913bc216fa50543ac62174c7eb79b53ec25c181ed5ce0d5cff56e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5a929d1eda3a155587f0287b8164e1cf2574e7f7221b937f77bb26e8d86955d8",
+      "source_fact_keys": [
+        "source_fact:v1:339febd177dd9c2048f679c7f2d11b92770e553d12574ac8b75233baa7056ba5"
+      ],
+      "source_published_kst": "2026-10-05T14:01+09:00",
+      "title": "OPEC+, 11월 원유 생산 목표 동결⋯중동 전쟁에 증산 효과 제한"
     },
     "title:3cb4f2946856d5210350bee3": {
       "first_seen_kst": "2026-10-01T23:53:17+09:00",
@@ -45268,6 +46454,32 @@
       "source_published_kst": "2026-10-05T16:01+09:00",
       "title": "\"독감백신 스카이셀플루\"…SK바사, 광고공개"
     },
+    "title:468108a401a8b35d8bff0dae": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169781",
+      "source": "매일경제",
+      "source_body_digest": "9b3ef41304cd218f2f98d2843172dfffead58266c7308199d6134aeda435bddc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c4dad99dc508b37e6f16805fa144c1f6f9e30b821f88adcfd4a0e5b51d86d13",
+      "source_fact_keys": [
+        "source_fact:v1:1afbcc341e29f56f8459928dc02665c7dfeda97a8cd68bfb524053835bb8ef08",
+        "source_fact:v1:27366b547ee290202b26198ba6ce81bffc62bdbd4b4e835744ba06902e1f9228",
+        "source_fact:v1:2a5b67ae89bd56ab53c8bb052177fa47ecbd6452bf96b412111a78eba825a9ae",
+        "source_fact:v1:3046c8810b6a3ddc7d59e1088c7f8ba0c88ab376cd372bedf174db0ee1a90f01",
+        "source_fact:v1:3278040d2171cd88668e8749e00f271bc7dbcb81b087b8333854e07d74d7a667",
+        "source_fact:v1:64c4dd665f473b9d647241d2c16f3f799b04458f3624e9e4a6e99c2ac06e7560",
+        "source_fact:v1:72894f7301c9a861ee27ee22125b184d0adc0d62c15763ce2bee4dce3fb06ded",
+        "source_fact:v1:ba5fa294c70de4886d4d1585d44922f3bbef53f65bfba4168d1b21912c3cd63a",
+        "source_fact:v1:cce9d6d64daaad4243ad51d421f4dc7a4ad5095923c56620ad6b703bfc433ab3",
+        "source_fact:v1:ffdbc8b9f5e4fd6826627bbde2daf7aa1a41029512c26c1199eb81781c5e8a13"
+      ],
+      "source_published_kst": "2026-10-05T20:58+09:00",
+      "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
     "title:4681870d2a14241fcc53bab5": {
       "first_seen_kst": "2026-09-25T02:31:20+09:00",
       "lanes": {
@@ -45792,6 +47004,25 @@
       "link": "https://www.etnews.com/20260922000307",
       "source": "전자신문",
       "title": "[ET특징주]삼성전기, MLCC 수요 급증에 상승세"
+    },
+    "title:4ecb04757afcc61a8b90bd4b": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169803",
+      "source": "매일경제",
+      "source_body_digest": "23e19da2f1acc81142a06b610af265169bdab9b02876b40b1e28b055360d352d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:87980f71b02dedae9b677b5b16147cfd03168b8ac52dc7a876ba4cd464923bf6",
+      "source_fact_keys": [
+        "source_fact:v1:4e16caa48be6424ad6a90f5a284144e704eec00e8ae3926d7e258771f8943d33",
+        "source_fact:v1:b6948bcbc8ee74e0a51c42f6c77d2d0bd6676f80e8a9ee4c4c225162bfd769d1",
+        "source_fact:v1:b9cc5c9741a0f1aa610ba3ee8e49f61cf9a6b920f2d4891e4c69c9e8ae356bf4"
+      ],
+      "source_published_kst": "2026-10-05T21:21+09:00",
+      "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
     },
     "title:4ed729438fdad0d41143202c": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -47283,6 +48514,23 @@
       "source": "머니투데이",
       "title": "방탄소년단, 단일 투어 매출 6800억…팝그룹 최고·최초"
     },
+    "title:6a5c3e10d70cba0a9c780cff": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169777",
+      "source": "매일경제",
+      "source_body_digest": "9ca695e4c51874ea58c4d694731de45e3abe9ad2ebcf3b4d0382a5d81fe16032",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:54b800b8d0f3ba8e577b90bcda55319e5c792db1f5f13ffb668fe7e69b136ac3",
+      "source_fact_keys": [
+        "source_fact:v1:1077604efe10ea3eda65c30b17657dca0c353aa85ecfcfacbeb0997c11e4d3d5"
+      ],
+      "source_published_kst": "2026-10-05T20:40+09:00",
+      "title": "C.H.로빈슨, RXO 58억달러 인수 합의 후 재무 부담·주식 희석 우려 부각"
+    },
     "title:6a7403f41fd68b4831dd7c94": {
       "first_seen_kst": "2026-10-02T09:01:13+09:00",
       "lanes": {
@@ -47569,6 +48817,21 @@
       "link": "https://www.yna.co.kr/view/AKR20261002042100008",
       "source": "연합뉴스",
       "title": "삼성전자, 자사주 계획물량 모두 매입…9천억 여유, 300만주 더살듯 | 연합뉴스"
+    },
+    "title:708bb4f9279e21f455d39cce": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2631987",
+      "source": "이투데이",
+      "source_body_digest": "eeab76bc292f131d3548f10e9a823803d19097ecbcb3e92855be37c3e3504933",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-05T07:00+09:00",
+      "title": "서울연구원 \"소셜벤처, 5년간 매출 475억원⋯법적 근거·인증제도 마련해야\""
     },
     "title:70c4221906de4aa35a14a3d5": {
       "first_seen_kst": "2026-10-01T17:28:33+09:00",
@@ -52187,7 +53450,7 @@
       "link": "https://stock.mk.co.kr/news/view/1169758",
       "source": "매일경제",
       "source_body_digest": "04dcbc29ac3c4b26c67199e36e1a86cb7ae60f740ea23c6a7683ff62e2b909b4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:license:f6a8a12ea5795e49e91755f4cecf5a20a4aa2243b3654245264f6fb2ceb2de7f",
       "source_fact_identity": "source_facts:v1:298a5b965b45136df89d302f91318da29494068ac4008ee21f145f0a5e0196f7",
       "source_fact_keys": [
         "source_fact:v1:0a97d44ca3a841547f0484447c5b68d884d2d40b0a0650f93ed175725812c37e",
@@ -54596,6 +55859,26 @@
       "source": "이데일리",
       "title": "삼성전기, AI 기판 공급난 속 역대 최대 증설…2028년 9월 양산 목표"
     },
+    "title:e80d1a7439a6642464145f09": {
+      "first_seen_kst": "2026-10-05T21:32:34+09:00",
+      "lanes": {
+        "live": "2026-10-05T21:32:34+09:00"
+      },
+      "last_seen_kst": "2026-10-05T21:32:34+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1169801",
+      "source": "매일경제",
+      "source_body_digest": "43e02aab887b0808035ef8d8962f3ee797825daf776b0b7dc5d3646fcb98fabd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:18ac70760f629d8aaff1d5de7ae7bff59518bbd0ab473e3e08c571915e6de0c9",
+      "source_fact_keys": [
+        "source_fact:v1:600f24ff082c6a59b7a15291c9ffff135efd4d8dbf7f4c62cbbc757012fe30a8",
+        "source_fact:v1:a166f271ed998b178095f97efa33425cf9ee455ffe71426885d6386968c4abd3",
+        "source_fact:v1:a1e0be13f0280d3fb2e385845fe89014d40f52fdad269b51d626ce62c90bac00",
+        "source_fact:v1:bc163c1218d2190e9cba66d7b3ca4b4eeeae92bb62fe66f1e7ad0f50714173c4"
+      ],
+      "source_published_kst": "2026-10-05T21:20+09:00",
+      "title": "디파이 디벨롭먼트, 3분기 주당 NAV 2배 이상 전망..SOL 보유 11%↑"
+    },
     "title:e84f2ccc2531a3e4abf53252": {
       "first_seen_kst": "2026-10-05T09:13:59+09:00",
       "lanes": {
@@ -55913,5 +57196,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T21:23:54+09:00"
+  "updated_at_kst": "2026-10-05T21:32:34+09:00"
 }
