@@ -82,6 +82,7 @@ class AgenticCpuAlertTests(unittest.TestCase):
         self.assertNotIn("<b>관련 기업 지도</b>", block)
         self.assertNotIn("<b>숨은 역풍·실패모드</b>", block)
         self.assertNotIn("<b>알림 기준</b>", block)
+        self.assertLess(len(block), 1800)
 
     def test_material_forecast_alert_shows_old_and_new(self):
         latest = dict(w.BASELINE)
