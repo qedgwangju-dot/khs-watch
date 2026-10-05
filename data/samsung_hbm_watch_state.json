@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-10-05T11:10:55+09:00",
+  "updated_at_kst": "2026-10-05T16:37:55+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -1394,10 +1394,10 @@
       "ddr5_chip_quote|dramexchange|16|4800/5600": {
         "key": "ddr5_chip_quote|dramexchange|16|4800/5600",
         "axis": "ddr5_chip_quote",
-        "value": 58.0,
+        "value": 58.067,
         "unit": "USD/chip",
         "period": "2026-10",
-        "as_of": "2026-10-02",
+        "as_of": "2026-10-05",
         "evidence": "research",
         "source_url": "https://www.dramexchange.com/",
         "source_title": "DDR5 16Gb (2Gx8) 4800/5600 공개 현물가격",
@@ -1978,7 +1978,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-05T11:10:55+09:00",
+      "last_checked_at_kst": "2026-10-05T16:37:55+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -2050,7 +2050,7 @@
     "payload_hash": "9349c5f56a103cdf0c4057067982fe1d19e3f6c79c48a163d0f37f2b5e61d00f"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-05T11:11:42+09:00",
+    "checked_at_kst": "2026-10-05T16:38:42+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
