@@ -1665,15 +1665,20 @@ def extract_rubin_ultra_hbm_options(event: dict) -> dict | None:
     final_words = any(k in low for k in ("최종 확정", "final specification", "officially selected", "탑재 확정"))
     evaluation_words = any(k in low for k in ("평가 중", "평가중", "검토", "evaluation", "evaluating", "considering", "선택지를 넓혀"))
 
+    # Directional wording must identify the target, not merely contain both
+    # layer counts in one sentence. "go back to 12Hi instead of 8Hi" must not
+    # accidentally match 8Hi as another "go back" target.
     to_12 = bool(
-        re.search(r"(?:go\s+back|back|revert|switch\s+back|복귀|회귀|전환)[^.]{0,80}?(?:12\s*[- ]?(?:hi|단))", low, re.I)
-        or re.search(r"(?:12\s*[- ]?(?:hi|단))[^.]{0,80}?(?:instead\s+of|rather\s+than|대신)[^.]{0,60}?(?:8\s*[- ]?(?:hi|단))", low, re.I)
+        re.search(r"(?:12\s*[- ]?(?:hi|단))[^.]{0,80}?(?:instead\s+of|rather\s+than|대신)[^.]{0,60}?(?:8\s*[- ]?(?:hi|단))", low, re.I)
+        or re.search(r"(?:go\s+back|switch\s+back|revert)\s+(?:to\s+)?12\s*[- ]?(?:hi|단)", low, re.I)
+        or re.search(r"(?:12\s*[- ]?(?:hi|단))(?:으로)?[^.]{0,20}?(?:복귀|회귀|전환)", low, re.I)
     )
     to_8 = bool(
-        re.search(r"(?:go\s+back|back|revert|switch\s+back|복귀|회귀|전환)[^.]{0,80}?(?:8\s*[- ]?(?:hi|단))", low, re.I)
-        or re.search(r"(?:8\s*[- ]?(?:hi|단))[^.]{0,80}?(?:instead\s+of|rather\s+than|대신)[^.]{0,60}?(?:12\s*[- ]?(?:hi|단))", low, re.I)
+        re.search(r"(?:8\s*[- ]?(?:hi|단))[^.]{0,80}?(?:instead\s+of|rather\s+than|대신)[^.]{0,60}?(?:12\s*[- ]?(?:hi|단))", low, re.I)
+        or re.search(r"(?:go\s+back|switch\s+back|revert)\s+(?:to\s+)?8\s*[- ]?(?:hi|단)", low, re.I)
+        or re.search(r"(?:8\s*[- ]?(?:hi|단))(?:으로)?[^.]{0,20}?(?:복귀|회귀|전환)", low, re.I)
     )
-    directional = to_12 ^ to_8
+    directional = to_12 != to_8
 
     obs: dict = {}
     if directional:
