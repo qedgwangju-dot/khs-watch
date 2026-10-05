@@ -1,5 +1,5 @@
 {
-  "watch_version": 1,
+  "watch_version": 2,
   "baseline_seeded_at_kst": "2026-09-28T11:53:00+09:00",
   "baseline_note": "2026-09-28 경제일보 공급망 보도의 N2 2026년말 12만장/월·고객 추가예약 10~20%와 기존 공식/상위근거 N2 램프 사실을 현재 기준선으로 잠금. 같은 기사 재배포는 역송출하지 않음.",
   "current_state": {
@@ -95,11 +95,11 @@
     "https://investor.tsmc.com/static/annualReports/2025/english/index.html",
     "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-01/51d09df96cd89ac19d65af39032b038dc2896a24/TSMC%204Q25%20Transcript.pdf"
   ],
-  "last_checked_at_kst": "2026-10-05T20:33:48+09:00",
+  "last_checked_at_kst": "2026-10-05T21:31:44+09:00",
   "last_evidence_url": "https://money.udn.com/money/story/5612/9780512",
   "last_evidence_published_at_kst": "2026-10-02T18:00:00+09:00",
   "delivery_check": {
-    "checked_at_kst": "2026-10-05T20:33:51+09:00",
+    "checked_at_kst": "2026-10-05T21:31:49+09:00",
     "status": "no_message_due"
   },
   "last_alert_reasons": [
@@ -120,5 +120,34 @@
     ],
     "confirmed_at_kst": "2026-10-02T17:39:09+09:00",
     "payload_hash": "2ff23125cd6efea70842b3018cdfddced23a21c64bd1fd5fdd96a464d35122c3"
+  },
+  "terafab_track_version": 1,
+  "terafab_state": {
+    "stage": "confirmed_discussions",
+    "musk_confirmed_discussions": true,
+    "tsmc_official_confirmation": false,
+    "definitive_agreement": false,
+    "mou_signed": false,
+    "talks_ended": false,
+    "texas_investment_stage": "reported_evaluation",
+    "terafab_anchor_customer_stage": "reported_option",
+    "tsmc_factory_role": "reported_possible_owner_operator",
+    "ownership_model": "unfinalized",
+    "tsmc_texas_capex_usd": null,
+    "tsmc_texas_capacity_wpm": null,
+    "tsmc_terafab_process_node": null,
+    "texas_site": null,
+    "production_start_period": null,
+    "intel_role": "existing_14A_partner",
+    "intel_displacement_status": "not_confirmed",
+    "terafab_compute_target_tw_per_year": 1.0,
+    "source": "Culpium·Elon Musk 직접 확인 + Reuters Texas 맥락 + SpaceX 공시",
+    "source_url": "https://www.culpium.com/p/elon-musk-confirms-tsmc-terafab-talks",
+    "secondary_source_url": "https://www.reuters.com/world/asia-pacific/tsmc-evaluates-potential-texas-investment-sources-say-2026-09-30/",
+    "official_project_source_url": "https://content.spacex.com/cms-assets/FINAL_Documents%20and%20Updates/SpaceX%20-%20EU%20Prospectus%20%28Approved%20by%20Bafin%29%20-%20June%205%2C%202026.pdf",
+    "tsmc_us_official_context_url": "https://www.tsmc.com/static/abouttsmcaz/index.htm",
+    "as_of": "2026-10-05",
+    "evidence_state": "founder_confirmation",
+    "note": "Elon Musk가 TSMC와 Terafab 논의를 직접 확인했지만 계약·공장 역할·공정·투자액·생산시점은 미확정. Culpium의 TSMC 소유·운영 및 Terafab 앵커고객 구조는 소식통 기반 검토안이며 TSMC 공식 발표가 아님. Intel 14A 기존 역할을 TSMC가 대체한다는 확정 근거도 없음."
   }
 }
