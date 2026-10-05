@@ -337,6 +337,26 @@
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "KPCA, 첨단 패키징 실무인력 양성 위한 교육센터 설립한다"
     },
+    "event:19a6cdfa21f5876c04b5673a": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005183555",
+      "source": "지디넷코리아",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc8ce82a507b2da82c0336e19315bc4595a7d67e3cc8bc7d40eb74354f209e0c",
+      "source_fact_keys": [
+        "source_fact:v1:b59508142b0dd731b59cde42871ced9809f26107ce347e564553f32ce2b40835",
+        "source_fact:v1:c72806f4e35826428fe612e1883f8181bc68a947897163dcda962af00a65b18e",
+        "source_fact:v1:dba4a83d108c6822ff5ef1216577ef040dfdf6b7a295bc4f647af529f844555e",
+        "source_fact:v1:e54e3a35a73ef63a56b43175d2547318596e74715025e3bc704f9b89776713ec",
+        "source_fact:v1:fb92989cacca58b1090ea4fec0812682b39ff65e4b082bc278a100b1a622d7bd"
+      ],
+      "source_published_kst": "2026-10-05T18:43+09:00",
+      "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
+    },
     "event:1ab3aa82ad99546e5f18674b": {
       "first_seen_kst": "2026-10-01T21:33:24+09:00",
       "lanes": {
@@ -428,19 +448,37 @@
     "event:1efbd1f63c0f645d03fefda2": {
       "first_seen_kst": "2026-10-05T02:04:15+09:00",
       "lanes": {
-        "live": "2026-10-05T18:49:55+09:00"
+        "live": "2026-10-05T19:17:41+09:00"
       },
-      "last_seen_kst": "2026-10-05T18:49:55+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169720",
-      "source": "매일경제",
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:496b61515de287a40d154085dac536eb2fe9fe9325f4c697a6d4587683e237de",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
       "source_fact_keys": [
-        "source_fact:v1:05f47065126bb488428df5b9b229cf92784519608263753e9039a76fb36e3810",
-        "source_fact:v1:48645ba69c4940ba38c6cb9950f4699636d3c6666da46f85a748baeb05fc8353"
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
       ],
-      "source_published_kst": "2026-10-05T16:51+09:00",
-      "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
     "event:2031f599de2458ceac1e4b44": {
       "first_seen_kst": "2026-10-03T09:48:18+09:00",
@@ -455,15 +493,25 @@
     "event:2040de76bfabafead1b43434": {
       "first_seen_kst": "2026-10-05T00:49:19+09:00",
       "lanes": {
-        "live": "2026-10-05T00:49:19+09:00",
+        "live": "2026-10-05T19:17:41+09:00",
         "preopen": "2026-10-05T06:34:55+09:00"
       },
-      "last_seen_kst": "2026-10-05T06:34:55+09:00",
-      "link": "https://www.mt.co.kr/index.php/world/2026/10/05/2026100500221842455",
-      "source": "머니투데이",
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002135900003",
+      "source": "연합뉴스",
       "source_event_identity": "",
-      "source_published_kst": "2026-10-05T00:29+09:00",
-      "title": "이란 \"7대 조건 안 들어주면 호르무즈 못 연다\"…거듭 확인"
+      "source_fact_identity": "source_facts:v1:6cc5ed116eb04bf6aff5e30f5e85963cc30f5247e4e30d153a08778c1aab60aa",
+      "source_fact_keys": [
+        "source_fact:v1:07624cd4576ace4d606288c9277258c8892c0e9ea738bbd9959f3920310a782b",
+        "source_fact:v1:23d157cf342df6ea5f4193612a158ef0c7aa72da62fdcc1fb0fa9c809f1c141c",
+        "source_fact:v1:358adddb8724f07e00b92a338754d258dbf598ffb5d32818c2122148c1adcc47",
+        "source_fact:v1:9c853e738a7f03f6aff44bb6b680e456061a5455dfc3e783d45a6f8a5f9660b3",
+        "source_fact:v1:c367395b2873313467a0e961e8eb974b2208fc31182cf81356547384f09aaa49",
+        "source_fact:v1:cd8f6b7e4ac75230262865a2e0f65bb5404e6dc1380eb4eb9d067e7811544f2a",
+        "source_fact:v1:fee62d299e5621e146432d39924f3be8b7f2b3195ef26d1b1f81d6ab54c21c4b"
+      ],
+      "source_published_kst": "2026-10-05T06:17+09:00",
+      "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
     },
     "event:20559afaa46c8beb4ac5c20d": {
       "first_seen_kst": "2026-09-24T16:13:57+09:00",
@@ -1649,29 +1697,20 @@
     "event:6b8e356e2215ecdba3130cf0": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
       "lanes": {
-        "live": "2026-10-05T18:49:55+09:00"
+        "live": "2026-10-05T19:17:41+09:00"
       },
-      "last_seen_kst": "2026-10-05T18:49:55+09:00",
-      "link": "https://www.mt.co.kr/index.php/stock/2026/10/05/2026100217315021825",
-      "source": "머니투데이",
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632237",
+      "source": "이투데이",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:322cd3bce0d597a302169fb5f83be9267039280a192e74c9eef45fbc8af3e0b8",
+      "source_fact_identity": "source_facts:v1:deb6bb8fcd5d8b0111b238640d25ff29d0845653815a2fb0ae442ea9f8877493",
       "source_fact_keys": [
-        "source_fact:v1:0d8e208e8e8d7a22b454a8613c49d7f7656797c269f0071fb98b0e04bac623e5",
-        "source_fact:v1:2f180bff6a6a38421fabcbb1bd608947b9c7aca747ab2eed24312ebce5a6f79c",
-        "source_fact:v1:45e87a6af3ce7acc3d683270d184962c0e34fb151556e5eff33223c8a8981293",
-        "source_fact:v1:85078a76df08c6c4f99988bcc13e3f87589d184f5d1429a080972d80490185f2",
-        "source_fact:v1:a0fed53146394c325c9181b3e6aef6a94b4e50832225cdcd4e8b9c97715e6d6d",
-        "source_fact:v1:b2a73293c215f9aa0271df7701a59c321581d9202aa65ba75683aac823a2670c",
-        "source_fact:v1:bf2d0585e9d6f66297cc6c54b2d33df33b90877896dd6f0595010e35fc09fea9",
-        "source_fact:v1:c0cc3fd9539eead65033a88c811123db62c4efebf3f792c93e92e264a8ad138c",
-        "source_fact:v1:c32a8db14b44e0ad42d41df2a3d8666c37b88373b80207e32f9c841ce82581c0",
-        "source_fact:v1:c38532183214300bbb14dcfa5d002341b993ddcec95400f53876b8e254bf9424",
-        "source_fact:v1:d50a2f9367fef3e1a09702a42cb54311f74c1672944e1ed9dd52077d6ee92f78",
-        "source_fact:v1:fde9bf4447a69cb65669eaa0f2d56c9f22a61c4843c3c07c46fb6bb1586d5884"
+        "source_fact:v1:1bab9687a7553c48efc2059ecf75762a06854e73ef82462e71996f3f7b7dd551",
+        "source_fact:v1:2946ebe90dbd07742de466ebd588c2423a16f4d204507c67449d89fcbab3f262",
+        "source_fact:v1:40cec5d6b63d5b7bb3cc7390d5a68e3fec41f0c3c0d860eb3b6f98ede33dc0f3"
       ],
-      "source_published_kst": "2026-10-05T11:20+09:00",
-      "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
+      "source_published_kst": "2026-10-05T17:00+09:00",
+      "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
     },
     "event:6baa70b961ef2e6913a113eb": {
       "first_seen_kst": "2026-09-27T17:55:12+09:00",
@@ -4438,6 +4477,24 @@
       "source_published_kst": "2026-10-05T18:35+09:00",
       "title": "서학개미 '속도조절'… 반도체 팔고 초단기 국채 샀다"
     },
+    "fact:21b572a339e7e5dcf18ba2f4": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632237",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deb6bb8fcd5d8b0111b238640d25ff29d0845653815a2fb0ae442ea9f8877493",
+      "source_fact_keys": [
+        "source_fact:v1:1bab9687a7553c48efc2059ecf75762a06854e73ef82462e71996f3f7b7dd551",
+        "source_fact:v1:2946ebe90dbd07742de466ebd588c2423a16f4d204507c67449d89fcbab3f262",
+        "source_fact:v1:40cec5d6b63d5b7bb3cc7390d5a68e3fec41f0c3c0d860eb3b6f98ede33dc0f3"
+      ],
+      "source_published_kst": "2026-10-05T17:00+09:00",
+      "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
+    },
     "fact:3e40f5e3d21f980b3e7ffda2": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -4459,6 +4516,41 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "fact:56f9ba7b5617febe3d3a5db6": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
     "fact:5f6dfaf6a3d3f53eff8a55e0": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -4512,6 +4604,26 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
+    },
+    "fact:8c89cdd4fc2531d29a7e2cdd": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005183555",
+      "source": "지디넷코리아",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc8ce82a507b2da82c0336e19315bc4595a7d67e3cc8bc7d40eb74354f209e0c",
+      "source_fact_keys": [
+        "source_fact:v1:b59508142b0dd731b59cde42871ced9809f26107ce347e564553f32ce2b40835",
+        "source_fact:v1:c72806f4e35826428fe612e1883f8181bc68a947897163dcda962af00a65b18e",
+        "source_fact:v1:dba4a83d108c6822ff5ef1216577ef040dfdf6b7a295bc4f647af529f844555e",
+        "source_fact:v1:e54e3a35a73ef63a56b43175d2547318596e74715025e3bc704f9b89776713ec",
+        "source_fact:v1:fb92989cacca58b1090ea4fec0812682b39ff65e4b082bc278a100b1a622d7bd"
+      ],
+      "source_published_kst": "2026-10-05T18:43+09:00",
+      "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
     },
     "fact:91fc94370e00f53367064fdc": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -4634,6 +4746,28 @@
       ],
       "source_published_kst": "2026-10-05T18:18+09:00",
       "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
+    },
+    "fact:e58601b09cd1e4a46b8a599f": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002135900003",
+      "source": "연합뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cc5ed116eb04bf6aff5e30f5e85963cc30f5247e4e30d153a08778c1aab60aa",
+      "source_fact_keys": [
+        "source_fact:v1:07624cd4576ace4d606288c9277258c8892c0e9ea738bbd9959f3920310a782b",
+        "source_fact:v1:23d157cf342df6ea5f4193612a158ef0c7aa72da62fdcc1fb0fa9c809f1c141c",
+        "source_fact:v1:358adddb8724f07e00b92a338754d258dbf598ffb5d32818c2122148c1adcc47",
+        "source_fact:v1:9c853e738a7f03f6aff44bb6b680e456061a5455dfc3e783d45a6f8a5f9660b3",
+        "source_fact:v1:c367395b2873313467a0e961e8eb974b2208fc31182cf81356547384f09aaa49",
+        "source_fact:v1:cd8f6b7e4ac75230262865a2e0f65bb5404e6dc1380eb4eb9d067e7811544f2a",
+        "source_fact:v1:fee62d299e5621e146432d39924f3be8b7f2b3195ef26d1b1f81d6ab54c21c4b"
+      ],
+      "source_published_kst": "2026-10-05T06:17+09:00",
+      "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
     },
     "fact:f5941e8f9802f45e66242eaa": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -8661,6 +8795,28 @@
       "source_published_kst": "2026-10-04T07:00+09:00",
       "title": "美 기관 코인 투자 문턱 낮아진다…SEC, '셀프 커스터디' 허용 추진"
     },
+    "link:4ca79cfae2e6d27ab6a6d365": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002135900003",
+      "source": "연합뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cc5ed116eb04bf6aff5e30f5e85963cc30f5247e4e30d153a08778c1aab60aa",
+      "source_fact_keys": [
+        "source_fact:v1:07624cd4576ace4d606288c9277258c8892c0e9ea738bbd9959f3920310a782b",
+        "source_fact:v1:23d157cf342df6ea5f4193612a158ef0c7aa72da62fdcc1fb0fa9c809f1c141c",
+        "source_fact:v1:358adddb8724f07e00b92a338754d258dbf598ffb5d32818c2122148c1adcc47",
+        "source_fact:v1:9c853e738a7f03f6aff44bb6b680e456061a5455dfc3e783d45a6f8a5f9660b3",
+        "source_fact:v1:c367395b2873313467a0e961e8eb974b2208fc31182cf81356547384f09aaa49",
+        "source_fact:v1:cd8f6b7e4ac75230262865a2e0f65bb5404e6dc1380eb4eb9d067e7811544f2a",
+        "source_fact:v1:fee62d299e5621e146432d39924f3be8b7f2b3195ef26d1b1f81d6ab54c21c4b"
+      ],
+      "source_published_kst": "2026-10-05T06:17+09:00",
+      "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
     "link:4cd06ea31c701e23f15b9bfc": {
       "first_seen_kst": "2026-10-01T20:25:35+09:00",
       "lanes": {
@@ -9307,6 +9463,24 @@
       "link": "https://www.etoday.co.kr/news/view/2631494",
       "source": "이투데이",
       "title": "SG, 인도네시아 합작법인 출자…에코스틸아스콘 현지 생산 추진"
+    },
+    "link:568ca68141844e3e6c26413f": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632237",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deb6bb8fcd5d8b0111b238640d25ff29d0845653815a2fb0ae442ea9f8877493",
+      "source_fact_keys": [
+        "source_fact:v1:1bab9687a7553c48efc2059ecf75762a06854e73ef82462e71996f3f7b7dd551",
+        "source_fact:v1:2946ebe90dbd07742de466ebd588c2423a16f4d204507c67449d89fcbab3f262",
+        "source_fact:v1:40cec5d6b63d5b7bb3cc7390d5a68e3fec41f0c3c0d860eb3b6f98ede33dc0f3"
+      ],
+      "source_published_kst": "2026-10-05T17:00+09:00",
+      "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
     },
     "link:56b14a611825906988f523c8": {
       "first_seen_kst": "2026-09-30T16:34:51+09:00",
@@ -11784,6 +11958,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261002120900053",
       "source": "연합뉴스",
       "title": "[구미소식] AI 데이터센터 건설, 지역업체 참여 길 찾는다 | 연합뉴스"
+    },
+    "link:873cc476a1e2e834eb789b9c": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005183555",
+      "source": "지디넷코리아",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc8ce82a507b2da82c0336e19315bc4595a7d67e3cc8bc7d40eb74354f209e0c",
+      "source_fact_keys": [
+        "source_fact:v1:b59508142b0dd731b59cde42871ced9809f26107ce347e564553f32ce2b40835",
+        "source_fact:v1:c72806f4e35826428fe612e1883f8181bc68a947897163dcda962af00a65b18e",
+        "source_fact:v1:dba4a83d108c6822ff5ef1216577ef040dfdf6b7a295bc4f647af529f844555e",
+        "source_fact:v1:e54e3a35a73ef63a56b43175d2547318596e74715025e3bc704f9b89776713ec",
+        "source_fact:v1:fb92989cacca58b1090ea4fec0812682b39ff65e4b082bc278a100b1a622d7bd"
+      ],
+      "source_published_kst": "2026-10-05T18:43+09:00",
+      "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
     },
     "link:8766169983701b1254c0f449": {
       "first_seen_kst": "2026-09-20T06:33:23+09:00",
@@ -18495,6 +18689,41 @@
       "source": "이데일리",
       "title": "[美특징주]팔로알토, 수요 증가 전망·플랫폼 전략 ‘긍정적’ 평가…개장전 1%↑"
     },
+    "link:ff2f3f078fb73c602f7dfe42": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
     "link:ff5af83c2922881d220018bb": {
       "first_seen_kst": "2026-10-04T15:45:24+09:00",
       "lanes": {
@@ -21445,6 +21674,28 @@
       "source": "이투데이",
       "title": "정부, G20 준비회의서 “에너지 공급 선박 안전통항 보장해야”"
     },
+    "original:39ac2cf260bea7d959754354": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002135900003",
+      "source": "연합뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cc5ed116eb04bf6aff5e30f5e85963cc30f5247e4e30d153a08778c1aab60aa",
+      "source_fact_keys": [
+        "source_fact:v1:07624cd4576ace4d606288c9277258c8892c0e9ea738bbd9959f3920310a782b",
+        "source_fact:v1:23d157cf342df6ea5f4193612a158ef0c7aa72da62fdcc1fb0fa9c809f1c141c",
+        "source_fact:v1:358adddb8724f07e00b92a338754d258dbf598ffb5d32818c2122148c1adcc47",
+        "source_fact:v1:9c853e738a7f03f6aff44bb6b680e456061a5455dfc3e783d45a6f8a5f9660b3",
+        "source_fact:v1:c367395b2873313467a0e961e8eb974b2208fc31182cf81356547384f09aaa49",
+        "source_fact:v1:cd8f6b7e4ac75230262865a2e0f65bb5404e6dc1380eb4eb9d067e7811544f2a",
+        "source_fact:v1:fee62d299e5621e146432d39924f3be8b7f2b3195ef26d1b1f81d6ab54c21c4b"
+      ],
+      "source_published_kst": "2026-10-05T06:17+09:00",
+      "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
     "original:39c0179e4a8bb08049954e44": {
       "first_seen_kst": "2026-10-02T08:11:59+09:00",
       "lanes": {
@@ -24000,6 +24251,24 @@
       "source": "아이뉴스24",
       "title": "[특징주] 삼성전기, MLCC 수요 급증 타고 8%대 강세"
     },
+    "original:67650e0e1411bd4d89893b0a": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632237",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deb6bb8fcd5d8b0111b238640d25ff29d0845653815a2fb0ae442ea9f8877493",
+      "source_fact_keys": [
+        "source_fact:v1:1bab9687a7553c48efc2059ecf75762a06854e73ef82462e71996f3f7b7dd551",
+        "source_fact:v1:2946ebe90dbd07742de466ebd588c2423a16f4d204507c67449d89fcbab3f262",
+        "source_fact:v1:40cec5d6b63d5b7bb3cc7390d5a68e3fec41f0c3c0d860eb3b6f98ede33dc0f3"
+      ],
+      "source_published_kst": "2026-10-05T17:00+09:00",
+      "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
+    },
     "original:679ab438fcc2d9cba05d355e": {
       "first_seen_kst": "2026-09-25T11:29:39+09:00",
       "lanes": {
@@ -24570,6 +24839,41 @@
       "link": "https://www.mk.co.kr/news/stock/12156198",
       "source": "매일경제",
       "title": "특징주, 아바텍-MLCC 테마 상승세에 5.32% ↑"
+    },
+    "original:71f5bbad95218be47a47a073": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
     "original:724652188b05fad0770619fd": {
       "first_seen_kst": "2026-09-17T23:20:33+09:00",
@@ -25988,6 +26292,26 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811203",
       "source": "뉴시스",
       "title": "경영계 '산재 반복시 영업익 5% 과징금' 法에 \"비현실적, 중복 제재\""
+    },
+    "original:8d4de4bf4321f5b1b0dac495": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005183555",
+      "source": "지디넷코리아",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc8ce82a507b2da82c0336e19315bc4595a7d67e3cc8bc7d40eb74354f209e0c",
+      "source_fact_keys": [
+        "source_fact:v1:b59508142b0dd731b59cde42871ced9809f26107ce347e564553f32ce2b40835",
+        "source_fact:v1:c72806f4e35826428fe612e1883f8181bc68a947897163dcda962af00a65b18e",
+        "source_fact:v1:dba4a83d108c6822ff5ef1216577ef040dfdf6b7a295bc4f647af529f844555e",
+        "source_fact:v1:e54e3a35a73ef63a56b43175d2547318596e74715025e3bc704f9b89776713ec",
+        "source_fact:v1:fb92989cacca58b1090ea4fec0812682b39ff65e4b082bc278a100b1a622d7bd"
+      ],
+      "source_published_kst": "2026-10-05T18:43+09:00",
+      "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
     },
     "original:8d73828d31ba3ba8a816dbaa": {
       "first_seen_kst": "2026-10-02T18:02:38+09:00",
@@ -32166,6 +32490,98 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
     },
+    "source_fact:091d9c0ed69788f7cb66ac69": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:161ab13882d08365c5d13415": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002135900003",
+      "source": "연합뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cc5ed116eb04bf6aff5e30f5e85963cc30f5247e4e30d153a08778c1aab60aa",
+      "source_fact_keys": [
+        "source_fact:v1:07624cd4576ace4d606288c9277258c8892c0e9ea738bbd9959f3920310a782b",
+        "source_fact:v1:23d157cf342df6ea5f4193612a158ef0c7aa72da62fdcc1fb0fa9c809f1c141c",
+        "source_fact:v1:358adddb8724f07e00b92a338754d258dbf598ffb5d32818c2122148c1adcc47",
+        "source_fact:v1:9c853e738a7f03f6aff44bb6b680e456061a5455dfc3e783d45a6f8a5f9660b3",
+        "source_fact:v1:c367395b2873313467a0e961e8eb974b2208fc31182cf81356547384f09aaa49",
+        "source_fact:v1:cd8f6b7e4ac75230262865a2e0f65bb5404e6dc1380eb4eb9d067e7811544f2a",
+        "source_fact:v1:fee62d299e5621e146432d39924f3be8b7f2b3195ef26d1b1f81d6ab54c21c4b"
+      ],
+      "source_published_kst": "2026-10-05T06:17+09:00",
+      "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
+    "source_fact:1b42ab62934e4322db484a0e": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
     "source_fact:1b87c0c8f02ddf03ac85a1c1": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -32183,6 +32599,26 @@
       ],
       "source_published_kst": "2026-10-05T15:21+09:00",
       "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
+    },
+    "source_fact:220b5592467dde2984519efb": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005183555",
+      "source": "지디넷코리아",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc8ce82a507b2da82c0336e19315bc4595a7d67e3cc8bc7d40eb74354f209e0c",
+      "source_fact_keys": [
+        "source_fact:v1:b59508142b0dd731b59cde42871ced9809f26107ce347e564553f32ce2b40835",
+        "source_fact:v1:c72806f4e35826428fe612e1883f8181bc68a947897163dcda962af00a65b18e",
+        "source_fact:v1:dba4a83d108c6822ff5ef1216577ef040dfdf6b7a295bc4f647af529f844555e",
+        "source_fact:v1:e54e3a35a73ef63a56b43175d2547318596e74715025e3bc704f9b89776713ec",
+        "source_fact:v1:fb92989cacca58b1090ea4fec0812682b39ff65e4b082bc278a100b1a622d7bd"
+      ],
+      "source_published_kst": "2026-10-05T18:43+09:00",
+      "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
     },
     "source_fact:273152bf0616d4c45f5797ae": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -32224,6 +32660,41 @@
       "source_published_kst": "2026-10-05T12:37+09:00",
       "title": "\"메가·컴포즈 점주들 돈 많이 벌었겠네\"…실상은 달랐다"
     },
+    "source_fact:2b41a4a213b67c96ddb27a6b": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
     "source_fact:2b44f4649e09b1728ddaf4d4": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -32259,6 +32730,41 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "주담대 금리도 '들썩'…한은 추가 인상에 이자 더 오르나[금리 쇼크③]"
+    },
+    "source_fact:2f9670fa314084215e098d4b": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
     "source_fact:32e46a0b7585e0266d68ca7f": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -32393,6 +32899,41 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "source_fact:371638200bb61eb9c734156f": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
     "source_fact:407497ab12a9705701544c3e": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -32430,6 +32971,41 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:43f037fcf6b17fd60d1adb70": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
     "source_fact:447a34b5fc5ebda26db87371": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
@@ -32477,6 +33053,41 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "source_fact:4ae6ea37c7952c735664b148": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
     "source_fact:4b12bc6f645bc46e470d73cb": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -32504,6 +33115,61 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "source_fact:513af5663197375d9fcaaf2e": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:51b6e5b5c84ab52f287d5686": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005183555",
+      "source": "지디넷코리아",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc8ce82a507b2da82c0336e19315bc4595a7d67e3cc8bc7d40eb74354f209e0c",
+      "source_fact_keys": [
+        "source_fact:v1:b59508142b0dd731b59cde42871ced9809f26107ce347e564553f32ce2b40835",
+        "source_fact:v1:c72806f4e35826428fe612e1883f8181bc68a947897163dcda962af00a65b18e",
+        "source_fact:v1:dba4a83d108c6822ff5ef1216577ef040dfdf6b7a295bc4f647af529f844555e",
+        "source_fact:v1:e54e3a35a73ef63a56b43175d2547318596e74715025e3bc704f9b89776713ec",
+        "source_fact:v1:fb92989cacca58b1090ea4fec0812682b39ff65e4b082bc278a100b1a622d7bd"
+      ],
+      "source_published_kst": "2026-10-05T18:43+09:00",
+      "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
+    },
     "source_fact:52e88d4db5f6d6129bed018f": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -32525,6 +33191,24 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:54793abf60847c2cd4df8a88": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632237",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deb6bb8fcd5d8b0111b238640d25ff29d0845653815a2fb0ae442ea9f8877493",
+      "source_fact_keys": [
+        "source_fact:v1:1bab9687a7553c48efc2059ecf75762a06854e73ef82462e71996f3f7b7dd551",
+        "source_fact:v1:2946ebe90dbd07742de466ebd588c2423a16f4d204507c67449d89fcbab3f262",
+        "source_fact:v1:40cec5d6b63d5b7bb3cc7390d5a68e3fec41f0c3c0d860eb3b6f98ede33dc0f3"
+      ],
+      "source_published_kst": "2026-10-05T17:00+09:00",
+      "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
     },
     "source_fact:59ad6f96de77aae6f5d51f79": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -32570,6 +33254,41 @@
       ],
       "source_published_kst": "2026-10-05T12:37+09:00",
       "title": "\"메가·컴포즈 점주들 돈 많이 벌었겠네\"…실상은 달랐다"
+    },
+    "source_fact:66855d2a919a8f6819e80ef4": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
     "source_fact:6917dc00610539ff397cca63": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -32635,6 +33354,41 @@
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
     },
+    "source_fact:70229d29a21469a7bf613c35": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
     "source_fact:72d1032d9d14677ed04a110a": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -32651,6 +33405,63 @@
       ],
       "source_published_kst": "2026-10-05T18:18+09:00",
       "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
+    },
+    "source_fact:73034d51a1a6dbeb128140c3": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002135900003",
+      "source": "연합뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cc5ed116eb04bf6aff5e30f5e85963cc30f5247e4e30d153a08778c1aab60aa",
+      "source_fact_keys": [
+        "source_fact:v1:07624cd4576ace4d606288c9277258c8892c0e9ea738bbd9959f3920310a782b",
+        "source_fact:v1:23d157cf342df6ea5f4193612a158ef0c7aa72da62fdcc1fb0fa9c809f1c141c",
+        "source_fact:v1:358adddb8724f07e00b92a338754d258dbf598ffb5d32818c2122148c1adcc47",
+        "source_fact:v1:9c853e738a7f03f6aff44bb6b680e456061a5455dfc3e783d45a6f8a5f9660b3",
+        "source_fact:v1:c367395b2873313467a0e961e8eb974b2208fc31182cf81356547384f09aaa49",
+        "source_fact:v1:cd8f6b7e4ac75230262865a2e0f65bb5404e6dc1380eb4eb9d067e7811544f2a",
+        "source_fact:v1:fee62d299e5621e146432d39924f3be8b7f2b3195ef26d1b1f81d6ab54c21c4b"
+      ],
+      "source_published_kst": "2026-10-05T06:17+09:00",
+      "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
+    "source_fact:734e9cbb3a8f8506f82a9d8d": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
     "source_fact:7391ff86c9f5c98fb7d974db": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -32768,6 +33579,24 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "source_fact:7d8efd2397631cffcbf93490": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632237",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deb6bb8fcd5d8b0111b238640d25ff29d0845653815a2fb0ae442ea9f8877493",
+      "source_fact_keys": [
+        "source_fact:v1:1bab9687a7553c48efc2059ecf75762a06854e73ef82462e71996f3f7b7dd551",
+        "source_fact:v1:2946ebe90dbd07742de466ebd588c2423a16f4d204507c67449d89fcbab3f262",
+        "source_fact:v1:40cec5d6b63d5b7bb3cc7390d5a68e3fec41f0c3c0d860eb3b6f98ede33dc0f3"
+      ],
+      "source_published_kst": "2026-10-05T17:00+09:00",
+      "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
+    },
     "source_fact:80f1100af4bc8693f2d2a9e2": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -32786,6 +33615,41 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "주담대 금리도 '들썩'…한은 추가 인상에 이자 더 오르나[금리 쇼크③]"
+    },
+    "source_fact:81f2568c854462b48c31cc43": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
     "source_fact:84cb41af8ea390df4f18d934": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -32893,6 +33757,41 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "source_fact:8e871bcf805b104b4ce2fd13": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
     "source_fact:9626a125516b4e78a64767fe": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -32932,6 +33831,28 @@
       ],
       "source_published_kst": "2026-10-05T12:37+09:00",
       "title": "\"메가·컴포즈 점주들 돈 많이 벌었겠네\"…실상은 달랐다"
+    },
+    "source_fact:9e6c9614545d6db1412073c4": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002135900003",
+      "source": "연합뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cc5ed116eb04bf6aff5e30f5e85963cc30f5247e4e30d153a08778c1aab60aa",
+      "source_fact_keys": [
+        "source_fact:v1:07624cd4576ace4d606288c9277258c8892c0e9ea738bbd9959f3920310a782b",
+        "source_fact:v1:23d157cf342df6ea5f4193612a158ef0c7aa72da62fdcc1fb0fa9c809f1c141c",
+        "source_fact:v1:358adddb8724f07e00b92a338754d258dbf598ffb5d32818c2122148c1adcc47",
+        "source_fact:v1:9c853e738a7f03f6aff44bb6b680e456061a5455dfc3e783d45a6f8a5f9660b3",
+        "source_fact:v1:c367395b2873313467a0e961e8eb974b2208fc31182cf81356547384f09aaa49",
+        "source_fact:v1:cd8f6b7e4ac75230262865a2e0f65bb5404e6dc1380eb4eb9d067e7811544f2a",
+        "source_fact:v1:fee62d299e5621e146432d39924f3be8b7f2b3195ef26d1b1f81d6ab54c21c4b"
+      ],
+      "source_published_kst": "2026-10-05T06:17+09:00",
+      "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
     },
     "source_fact:9e7dc16ec42d519df7b06394": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -32999,6 +33920,26 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "source_fact:a45561b846dab7bbe1c3d240": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005183555",
+      "source": "지디넷코리아",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc8ce82a507b2da82c0336e19315bc4595a7d67e3cc8bc7d40eb74354f209e0c",
+      "source_fact_keys": [
+        "source_fact:v1:b59508142b0dd731b59cde42871ced9809f26107ce347e564553f32ce2b40835",
+        "source_fact:v1:c72806f4e35826428fe612e1883f8181bc68a947897163dcda962af00a65b18e",
+        "source_fact:v1:dba4a83d108c6822ff5ef1216577ef040dfdf6b7a295bc4f647af529f844555e",
+        "source_fact:v1:e54e3a35a73ef63a56b43175d2547318596e74715025e3bc704f9b89776713ec",
+        "source_fact:v1:fb92989cacca58b1090ea4fec0812682b39ff65e4b082bc278a100b1a622d7bd"
+      ],
+      "source_published_kst": "2026-10-05T18:43+09:00",
+      "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
+    },
     "source_fact:aa89c99cedd21c976951e931": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -33050,6 +33991,83 @@
       ],
       "source_published_kst": "2026-10-05T13:25+09:00",
       "title": "'北 책임 추궁'과 '한반도 긴장 완화'…DMZ 지뢰사고 대응 딜레마"
+    },
+    "source_fact:b8c8668eb79606b385a916df": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005183555",
+      "source": "지디넷코리아",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc8ce82a507b2da82c0336e19315bc4595a7d67e3cc8bc7d40eb74354f209e0c",
+      "source_fact_keys": [
+        "source_fact:v1:b59508142b0dd731b59cde42871ced9809f26107ce347e564553f32ce2b40835",
+        "source_fact:v1:c72806f4e35826428fe612e1883f8181bc68a947897163dcda962af00a65b18e",
+        "source_fact:v1:dba4a83d108c6822ff5ef1216577ef040dfdf6b7a295bc4f647af529f844555e",
+        "source_fact:v1:e54e3a35a73ef63a56b43175d2547318596e74715025e3bc704f9b89776713ec",
+        "source_fact:v1:fb92989cacca58b1090ea4fec0812682b39ff65e4b082bc278a100b1a622d7bd"
+      ],
+      "source_published_kst": "2026-10-05T18:43+09:00",
+      "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
+    },
+    "source_fact:bb73498e9695225ca2a0c437": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002135900003",
+      "source": "연합뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cc5ed116eb04bf6aff5e30f5e85963cc30f5247e4e30d153a08778c1aab60aa",
+      "source_fact_keys": [
+        "source_fact:v1:07624cd4576ace4d606288c9277258c8892c0e9ea738bbd9959f3920310a782b",
+        "source_fact:v1:23d157cf342df6ea5f4193612a158ef0c7aa72da62fdcc1fb0fa9c809f1c141c",
+        "source_fact:v1:358adddb8724f07e00b92a338754d258dbf598ffb5d32818c2122148c1adcc47",
+        "source_fact:v1:9c853e738a7f03f6aff44bb6b680e456061a5455dfc3e783d45a6f8a5f9660b3",
+        "source_fact:v1:c367395b2873313467a0e961e8eb974b2208fc31182cf81356547384f09aaa49",
+        "source_fact:v1:cd8f6b7e4ac75230262865a2e0f65bb5404e6dc1380eb4eb9d067e7811544f2a",
+        "source_fact:v1:fee62d299e5621e146432d39924f3be8b7f2b3195ef26d1b1f81d6ab54c21c4b"
+      ],
+      "source_published_kst": "2026-10-05T06:17+09:00",
+      "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
+    "source_fact:bdc87b2d555f987a68140c7c": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
     "source_fact:c0f9019d1ebf7e251342b74b": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -33105,6 +34123,63 @@
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
     },
+    "source_fact:d6c8a07443667405ed8752e3": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:d7adfe2501346a6a333789df": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002135900003",
+      "source": "연합뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cc5ed116eb04bf6aff5e30f5e85963cc30f5247e4e30d153a08778c1aab60aa",
+      "source_fact_keys": [
+        "source_fact:v1:07624cd4576ace4d606288c9277258c8892c0e9ea738bbd9959f3920310a782b",
+        "source_fact:v1:23d157cf342df6ea5f4193612a158ef0c7aa72da62fdcc1fb0fa9c809f1c141c",
+        "source_fact:v1:358adddb8724f07e00b92a338754d258dbf598ffb5d32818c2122148c1adcc47",
+        "source_fact:v1:9c853e738a7f03f6aff44bb6b680e456061a5455dfc3e783d45a6f8a5f9660b3",
+        "source_fact:v1:c367395b2873313467a0e961e8eb974b2208fc31182cf81356547384f09aaa49",
+        "source_fact:v1:cd8f6b7e4ac75230262865a2e0f65bb5404e6dc1380eb4eb9d067e7811544f2a",
+        "source_fact:v1:fee62d299e5621e146432d39924f3be8b7f2b3195ef26d1b1f81d6ab54c21c4b"
+      ],
+      "source_published_kst": "2026-10-05T06:17+09:00",
+      "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
     "source_fact:d8805feaede5fb85acdee7bc": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -33151,6 +34226,133 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"관세 300%\"...벼랑 끝 트럼프, 한국 쥐어짜서 현금 지원 공약 '펑펑'"
     },
+    "source_fact:e76e7f6e442854a72897feeb": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:ec13bfadb0b1bed82dbdc84c": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002135900003",
+      "source": "연합뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cc5ed116eb04bf6aff5e30f5e85963cc30f5247e4e30d153a08778c1aab60aa",
+      "source_fact_keys": [
+        "source_fact:v1:07624cd4576ace4d606288c9277258c8892c0e9ea738bbd9959f3920310a782b",
+        "source_fact:v1:23d157cf342df6ea5f4193612a158ef0c7aa72da62fdcc1fb0fa9c809f1c141c",
+        "source_fact:v1:358adddb8724f07e00b92a338754d258dbf598ffb5d32818c2122148c1adcc47",
+        "source_fact:v1:9c853e738a7f03f6aff44bb6b680e456061a5455dfc3e783d45a6f8a5f9660b3",
+        "source_fact:v1:c367395b2873313467a0e961e8eb974b2208fc31182cf81356547384f09aaa49",
+        "source_fact:v1:cd8f6b7e4ac75230262865a2e0f65bb5404e6dc1380eb4eb9d067e7811544f2a",
+        "source_fact:v1:fee62d299e5621e146432d39924f3be8b7f2b3195ef26d1b1f81d6ab54c21c4b"
+      ],
+      "source_published_kst": "2026-10-05T06:17+09:00",
+      "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
+    "source_fact:ec788c5c0d8fb24106364e81": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:ecd68d0bc978e1ccd8d21e7f": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
     "source_fact:f3fd5984ab46e59252991e7d": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -33170,6 +34372,41 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "주담대 금리도 '들썩'…한은 추가 인상에 이자 더 오르나[금리 쇼크③]"
     },
+    "source_fact:f85254f9dcf08a6a2b2e44b9": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
     "source_fact:f86b3895f27d32e150e3e5e2": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -33186,6 +34423,101 @@
       ],
       "source_published_kst": "2026-10-05T13:29+09:00",
       "title": "JP모간, 10월 '콕' 집은 종목은…아멕스·써모피셔·리버티"
+    },
+    "source_fact:fb20196bd291f3f6abb94c70": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:fdb75e42b3c5b777c50b58b5": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005183555",
+      "source": "지디넷코리아",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc8ce82a507b2da82c0336e19315bc4595a7d67e3cc8bc7d40eb74354f209e0c",
+      "source_fact_keys": [
+        "source_fact:v1:b59508142b0dd731b59cde42871ced9809f26107ce347e564553f32ce2b40835",
+        "source_fact:v1:c72806f4e35826428fe612e1883f8181bc68a947897163dcda962af00a65b18e",
+        "source_fact:v1:dba4a83d108c6822ff5ef1216577ef040dfdf6b7a295bc4f647af529f844555e",
+        "source_fact:v1:e54e3a35a73ef63a56b43175d2547318596e74715025e3bc704f9b89776713ec",
+        "source_fact:v1:fb92989cacca58b1090ea4fec0812682b39ff65e4b082bc278a100b1a622d7bd"
+      ],
+      "source_published_kst": "2026-10-05T18:43+09:00",
+      "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
+    },
+    "source_fact:fea91035a4f1aec633e739bf": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002135900003",
+      "source": "연합뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cc5ed116eb04bf6aff5e30f5e85963cc30f5247e4e30d153a08778c1aab60aa",
+      "source_fact_keys": [
+        "source_fact:v1:07624cd4576ace4d606288c9277258c8892c0e9ea738bbd9959f3920310a782b",
+        "source_fact:v1:23d157cf342df6ea5f4193612a158ef0c7aa72da62fdcc1fb0fa9c809f1c141c",
+        "source_fact:v1:358adddb8724f07e00b92a338754d258dbf598ffb5d32818c2122148c1adcc47",
+        "source_fact:v1:9c853e738a7f03f6aff44bb6b680e456061a5455dfc3e783d45a6f8a5f9660b3",
+        "source_fact:v1:c367395b2873313467a0e961e8eb974b2208fc31182cf81356547384f09aaa49",
+        "source_fact:v1:cd8f6b7e4ac75230262865a2e0f65bb5404e6dc1380eb4eb9d067e7811544f2a",
+        "source_fact:v1:fee62d299e5621e146432d39924f3be8b7f2b3195ef26d1b1f81d6ab54c21c4b"
+      ],
+      "source_published_kst": "2026-10-05T06:17+09:00",
+      "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
+    "source_fact:ff786f7a14c617abb40fe3b4": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632237",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deb6bb8fcd5d8b0111b238640d25ff29d0845653815a2fb0ae442ea9f8877493",
+      "source_fact_keys": [
+        "source_fact:v1:1bab9687a7553c48efc2059ecf75762a06854e73ef82462e71996f3f7b7dd551",
+        "source_fact:v1:2946ebe90dbd07742de466ebd588c2423a16f4d204507c67449d89fcbab3f262",
+        "source_fact:v1:40cec5d6b63d5b7bb3cc7390d5a68e3fec41f0c3c0d860eb3b6f98ede33dc0f3"
+      ],
+      "source_published_kst": "2026-10-05T17:00+09:00",
+      "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
     },
     "title:0020a67428c76c73508654b2": {
       "first_seen_kst": "2026-10-01T21:33:24+09:00",
@@ -36114,6 +37446,28 @@
       "source": "이투데이",
       "title": "정부, G20 준비회의서 “에너지 공급 선박 안전통항 보장해야”"
     },
+    "title:39ac2cf260bea7d959754354": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261002135900003",
+      "source": "연합뉴스",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6cc5ed116eb04bf6aff5e30f5e85963cc30f5247e4e30d153a08778c1aab60aa",
+      "source_fact_keys": [
+        "source_fact:v1:07624cd4576ace4d606288c9277258c8892c0e9ea738bbd9959f3920310a782b",
+        "source_fact:v1:23d157cf342df6ea5f4193612a158ef0c7aa72da62fdcc1fb0fa9c809f1c141c",
+        "source_fact:v1:358adddb8724f07e00b92a338754d258dbf598ffb5d32818c2122148c1adcc47",
+        "source_fact:v1:9c853e738a7f03f6aff44bb6b680e456061a5455dfc3e783d45a6f8a5f9660b3",
+        "source_fact:v1:c367395b2873313467a0e961e8eb974b2208fc31182cf81356547384f09aaa49",
+        "source_fact:v1:cd8f6b7e4ac75230262865a2e0f65bb5404e6dc1380eb4eb9d067e7811544f2a",
+        "source_fact:v1:fee62d299e5621e146432d39924f3be8b7f2b3195ef26d1b1f81d6ab54c21c4b"
+      ],
+      "source_published_kst": "2026-10-05T06:17+09:00",
+      "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
+    },
     "title:39c0179e4a8bb08049954e44": {
       "first_seen_kst": "2026-10-02T08:11:59+09:00",
       "lanes": {
@@ -38679,6 +40033,24 @@
       "source": "아이뉴스24",
       "title": "[특징주] 삼성전기, MLCC 수요 급증 타고 8%대 강세"
     },
+    "title:67650e0e1411bd4d89893b0a": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632237",
+      "source": "이투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:deb6bb8fcd5d8b0111b238640d25ff29d0845653815a2fb0ae442ea9f8877493",
+      "source_fact_keys": [
+        "source_fact:v1:1bab9687a7553c48efc2059ecf75762a06854e73ef82462e71996f3f7b7dd551",
+        "source_fact:v1:2946ebe90dbd07742de466ebd588c2423a16f4d204507c67449d89fcbab3f262",
+        "source_fact:v1:40cec5d6b63d5b7bb3cc7390d5a68e3fec41f0c3c0d860eb3b6f98ede33dc0f3"
+      ],
+      "source_published_kst": "2026-10-05T17:00+09:00",
+      "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
+    },
     "title:679ab438fcc2d9cba05d355e": {
       "first_seen_kst": "2026-09-25T11:29:39+09:00",
       "lanes": {
@@ -39259,6 +40631,41 @@
       "link": "https://www.mk.co.kr/news/stock/12156198",
       "source": "매일경제",
       "title": "특징주, 아바텍-MLCC 테마 상승세에 5.32% ↑"
+    },
+    "title:71f5bbad95218be47a47a073": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/05/2026100516422161930",
+      "source": "머니투데이",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f10a0d199b6eb52fc9eba69a95d8e7636f50ec2661445e4345e40e16b1ae641b",
+      "source_fact_keys": [
+        "source_fact:v1:03a1bad6c0330c47d15a6bb2e0b2af0c58fad2315d54d05bdee996ebb260d8af",
+        "source_fact:v1:1132dc71fb8a09a02a0c7728ec78a1c9d8d7be2747b7a1d3831305d4097fd951",
+        "source_fact:v1:54ff6fe1b50049f1c54ecf4b8be161f3ddd2d921dd24d0a26571d564781dc54a",
+        "source_fact:v1:5d8f2a7c0707dd2d2f92ed80dc7655ab3d5801f154be0b4ffc0033a9f8f64aff",
+        "source_fact:v1:67a0b712b11ca785e9f84703b73e78c1ab68cb3c37e0e366c33d86f6c40dd18b",
+        "source_fact:v1:7903a50a22f7a8c1c51926ccf66c863bd6340b92d645e2d4d5a6129f8f07b7fb",
+        "source_fact:v1:7b4aa51f25e117d1c73482823c3b01ff68c59017b5d85ae48d4fc7291c92cd6a",
+        "source_fact:v1:7e445094f81b56f49869625bf348a46129de10908c4848d7d0a99d4c274296ee",
+        "source_fact:v1:825975999cfcf8a8a51f342ea27ee7a630c5b6c7103e965cc1ceb0e2b90eaad0",
+        "source_fact:v1:8874cce7f6ad2c84b0efbc7c95ed82788872baf6974b42daf376ec2f3597c231",
+        "source_fact:v1:8e744461b4e67ff1f3107702598a0051bf94323de12a7cbc8c2d5d6c5ddde97f",
+        "source_fact:v1:a3662abcefea451bfd689845fcbd0e9d7a0c7e4d5a42a790e9bf9153241af0cb",
+        "source_fact:v1:ad2bd7c6306fd2ad00ac32d7b94002ae04693b90426b38ad3b05f2c5e5558168",
+        "source_fact:v1:b3e4280d800dbf1173d0ce47ee264abfaa4042717ae96e8da1ad2ef7fd982aff",
+        "source_fact:v1:be41fde2b426acb57d2fe5f200299f7f2323da8b2879e8c8a6f1081de0be6845",
+        "source_fact:v1:c20e14622a90d2b4c1d92520c26dab465236e7fb4fc8108636088729adfedaab",
+        "source_fact:v1:c7b42a143c78b726f4e420fbf6e35207b1f2dd01426fe7e4576d3b033ee33cda",
+        "source_fact:v1:d49c48984d630951e439a96778c1a8398684fe56515f837d4b362d7240bcd44a",
+        "source_fact:v1:ea47ecf05eb8cffa9be8ef047e1f5dd4fb86bd318c97e310f3b9b3d941028775",
+        "source_fact:v1:eaf6f2d46bba379340ec41893b39315bf9340d9c3d00b46e14c800735adb829a"
+      ],
+      "source_published_kst": "2026-10-05T18:37+09:00",
+      "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
     "title:724652188b05fad0770619fd": {
       "first_seen_kst": "2026-09-17T23:20:33+09:00",
@@ -40698,6 +42105,26 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811203",
       "source": "뉴시스",
       "title": "경영계 '산재 반복시 영업익 5% 과징금' 法에 \"비현실적, 중복 제재\""
+    },
+    "title:8d4de4bf4321f5b1b0dac495": {
+      "first_seen_kst": "2026-10-05T19:17:41+09:00",
+      "lanes": {
+        "live": "2026-10-05T19:17:41+09:00"
+      },
+      "last_seen_kst": "2026-10-05T19:17:41+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261005183555",
+      "source": "지디넷코리아",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bc8ce82a507b2da82c0336e19315bc4595a7d67e3cc8bc7d40eb74354f209e0c",
+      "source_fact_keys": [
+        "source_fact:v1:b59508142b0dd731b59cde42871ced9809f26107ce347e564553f32ce2b40835",
+        "source_fact:v1:c72806f4e35826428fe612e1883f8181bc68a947897163dcda962af00a65b18e",
+        "source_fact:v1:dba4a83d108c6822ff5ef1216577ef040dfdf6b7a295bc4f647af529f844555e",
+        "source_fact:v1:e54e3a35a73ef63a56b43175d2547318596e74715025e3bc704f9b89776713ec",
+        "source_fact:v1:fb92989cacca58b1090ea4fec0812682b39ff65e4b082bc278a100b1a622d7bd"
+      ],
+      "source_published_kst": "2026-10-05T18:43+09:00",
+      "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
     },
     "title:8d73828d31ba3ba8a816dbaa": {
       "first_seen_kst": "2026-10-02T18:02:38+09:00",
@@ -46944,5 +48371,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-05T19:01:25+09:00"
+  "updated_at_kst": "2026-10-05T19:17:41+09:00"
 }
