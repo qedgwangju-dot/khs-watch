@@ -190,7 +190,7 @@ STRUCTURAL_PATTERNS = {
         r"지진", r"정전", r"화재", r"생산.?중단", r"가동.?중단",
     ),
     "capacity": (
-        r"capacity expansion", r"expand(?:ing|s|ed)? capacity", r"new fab", r"new plant",
+        r"capacity expansion", r"expand(?:ing|s|ed)? capacity", r"expand(?:ing|s|ed)?[^.]{0,100}?capacity", r"new fab", r"new plant",
         r"mass production", r"volume production", r"production line", r"ramp(?:ing)?",
         r"wafer starts", r"capacity reservation", r"capacity increase",
         r"생산능력", r"증설", r"신규.?팹", r"신공장", r"양산", r"램프",
