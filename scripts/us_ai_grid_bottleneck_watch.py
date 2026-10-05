@@ -53,6 +53,16 @@ BASELINE = {
         "ms_gross_gap_gw": 57.0,
         "ms_mitigation_gw": 24.0,
         "ms_residual_gap_gw": 33.0,
+        "cw_padmount_transformer_low_weeks": 68.0,
+        "cw_padmount_transformer_high_weeks": 113.0,
+        "cw_generator_low_weeks": 60.0,
+        "cw_generator_high_weeks": 100.0,
+        "cw_mv_switchgear_low_weeks": 38.0,
+        "cw_mv_switchgear_high_weeks": 63.0,
+        "cw_lv_switchgear_low_weeks": 36.0,
+        "cw_lv_switchgear_high_weeks": 60.0,
+        "cw_ups_low_weeks": 36.0,
+        "cw_ups_high_weeks": 42.0,
     },
     "sources": {
         "dc_demand": {
@@ -75,6 +85,14 @@ BASELINE = {
             "url": "",
             "kind": "사용자 제공 2차 기준선·공식 원천 확인 전",
         },
+        "cw_equipment_2026": {
+            "url": "https://www.cushmanwakefield.com/en/united-states/insights/data-center-development-cost-guide",
+            "kind": "Cushman & Wakefield 2026 Data Center Development Cost Guide / 사용자 제공 현대차증권 도표 교차기준",
+        },
+        "jll_equipment_2026": {
+            "url": "https://www.jll.com/content/dam/jllcom/en/global/documents/reports/research-reports/26-research-global-data-center-outlook-new.pdf",
+            "kind": "JLL 2026 Global Data Center Outlook 교차검증",
+        },
     },
     "seen_urls": [],
     "last_checked_at_kst": "",
@@ -88,6 +106,14 @@ SEARCHES = [
     ("google", '"power transformer" lead time data center 2026 Reuters'),
     ("google", '"generator step-up" transformer lead time 2026'),
     ("google", '"transformer bushing" lead time weeks 2026 high voltage'),
+    ("google", 'site:cushmanwakefield.com 2026 data center transformer generator switchgear UPS lead time'),
+    ("google", 'site:jll.com 2026 data center equipment lead time transformer generator switchgear UPS PDU chiller'),
+    ("google", '"medium voltage switchgear" "lead time" data center 2026'),
+    ("google", '"low voltage switchgear" "lead time" data center 2026'),
+    ("google", '"UPS" "lead time" data center 2026'),
+    ("google", '"data center" generator lead time 2026 Caterpillar Cummins Rolls-Royce'),
+    ("google", 'site:eaton.com 2026 data center switchgear factory production'),
+    ("google", 'site:se.com 2026 data center switchgear supply capacity agreement'),
     ("google", '"345 kV" transmission miles 2026 United States'),
     ("google", 'site:ferc.gov data center large load interconnection transmission 2026'),
     ("google", 'site:nerc.com large load data center reliability guideline 2026'),
@@ -108,19 +134,21 @@ OFFICIAL_DOMAINS = (
     "lbl.gov", "escholarship.org", "emp.lbl.gov", "nerc.com", "energy.gov", "ferc.gov",
     "pjm.com", "misoenergy.org", "ercot.com", "hitachienergy.com", "gevernova.com",
     "siemens-energy.com", "ls-electric.com", "hyosungheavyindustries.com",
-    "hd-hyundaielectric.com",
+    "hd-hyundaielectric.com", "eaton.com", "se.com", "abb.com", "vertiv.com",
+    "cat.com", "cummins.com", "rolls-royce.com", "cushmanwakefield.com", "jll.com",
 )
 
 TRUSTED_DOMAINS = (
     "reuters.com", "utilitydive.com", "datacenterdynamics.com", "cleanenergygrid.org",
     "woodmac.com", "spglobal.com", "bloomberg.com", "ft.com",
-    "finance.yahoo.com", "investing.com",
+    "finance.yahoo.com", "investing.com", "credaily.com", "datacenterscouts.com",
 )
 
 MATERIAL_TERMS = (
     "transformer", "bushing", "transmission", "interconnection", "grid", "substation",
     "energization", "energized", "large load", "data center", "datacenter",
-    "변압기", "부싱", "송전", "계통", "변전소", "전원",
+    "switchgear", "generator", "ups", "pdu", "power distribution", "electrical equipment",
+    "변압기", "부싱", "송전", "계통", "변전소", "전원", "배전반", "발전기", "무정전전원",
 )
 
 
@@ -274,6 +302,34 @@ def parse_metrics(text: str) -> dict:
             out["bushing_lead_low_weeks_secondary"] = lo
             out["bushing_lead_high_weeks_secondary"] = hi
 
+    equipment_patterns = {
+        "cw_padmount_transformer": [
+            r"pad[- ]mounted transformers?[^.]{0,120}?(\d{2,3})\s*(?:to|[-–])\s*(\d{2,3})\s*weeks",
+        ],
+        "cw_generator": [
+            r"generators?[^.]{0,120}?(\d{2,3})\s*(?:to|[-–])\s*(\d{2,3})\s*weeks",
+        ],
+        "cw_mv_switchgear": [
+            r"(?:medium[- ]voltage|MV) switchgear[^.]{0,120}?(\d{2,3})\s*(?:to|[-–])\s*(\d{2,3})\s*weeks",
+        ],
+        "cw_lv_switchgear": [
+            r"(?:low[- ]voltage|LV) switchgear[^.]{0,120}?(\d{2,3})\s*(?:to|[-–])\s*(\d{2,3})\s*weeks",
+        ],
+        "cw_ups": [
+            r"(?:UPS systems?|uninterruptible power supplies?)[^.]{0,120}?(\d{2,3})\s*(?:to|[-–])\s*(\d{2,3})\s*weeks",
+        ],
+    }
+    for prefix, patterns in equipment_patterns.items():
+        for pat in patterns:
+            m = re.search(pat, text, re.I)
+            if not m:
+                continue
+            lo, hi = num(m.group(1)), num(m.group(2))
+            if lo and hi and 4 <= lo < hi <= 180:
+                out[prefix + "_low_weeks"] = lo
+                out[prefix + "_high_weeks"] = hi
+                break
+
     if "interconnection" in low or "queue" in low:
         m = re.search(r"(?:about|approximately|roughly)?\s*([0-9,]{4,6})\s+(?:projects|active projects)", text, re.I)
         if m:
@@ -379,6 +435,11 @@ def material_metric_changes(old: dict, new: dict) -> list[dict]:
         "large_transformer_high_weeks": ("대형변압기 최장 납기", "abs", 10.0),
         "gsu_lead_weeks": ("발전기 승압용 변압기 납기", "abs", 10.0),
         "bushing_lead_high_weeks_secondary": ("초고압 부싱 납기", "abs", 10.0),
+        "cw_padmount_transformer_high_weeks": ("데이터센터 지상형 변압기 최장 납기", "abs", 8.0),
+        "cw_generator_high_weeks": ("데이터센터 발전기 최장 납기", "abs", 8.0),
+        "cw_mv_switchgear_high_weeks": ("데이터센터 중압배전반 최장 납기", "abs", 6.0),
+        "cw_lv_switchgear_high_weeks": ("데이터센터 저압배전반 최장 납기", "abs", 6.0),
+        "cw_ups_high_weeks": ("데이터센터 UPS 최장 납기", "abs", 6.0),
         "queue_projects": ("계통연결 대기 프로젝트", "pct", 10.0),
         "queue_gw": ("계통연결 대기 용량", "pct", 10.0),
         "transmission_345kv_plus_miles_latest": ("345kV+ 송전선 연간 준공", "pct", 25.0),
@@ -409,6 +470,10 @@ def structural_event(text: str, url: str) -> str:
         return ""
     if any(k in low for k in ("new factory", "new plant", "breaks ground", "expansion", "expand capacity", "capacity expansion")) and "transformer" in low:
         return "변압기 생산능력 증설·신공장 일정 변화"
+    if any(k in low for k in ("production begins", "production starts", "opens new", "new factory", "new plant", "capacity expansion")) and any(k in low for k in ("switchgear", "ups", "generator")):
+        return "데이터센터 전력기기 생산능력·생산개시 변화"
+    if "supply capacity agreement" in low and "data center" in low and any(k in low for k in ("switchgear", "ups", "power")):
+        return "데이터센터 전력기기 장기 공급능력 계약"
     if any(k in low for k in ("energization delayed", "energization delay", "power-on delayed", "utility upgrade", "energized")) and any(k in low for k in ("data center", "datacenter")):
         return "데이터센터 전원 인가 일정 변화"
     if any(k in low for k in ("large load", "data center")) and any(k in low for k in ("interconnection rule", "tariff", "queue reform", "reliability guideline", "ferc order")):
@@ -439,11 +504,11 @@ def format_metric(key: str, value: float) -> str:
 def build_alert(changes: list[dict], events: list[dict], state: dict) -> str:
     m = state.get("metrics") or {}
     lines = [
-        "<b>⚡ 미국 AI 전력망 병목 감시 — 변화 감지</b>",
+        "<b>⚡ AI 데이터센터 전력기기·전원 병목 변화</b>",
         "",
-        "<b>핵심 변화</b>",
+        "<b>변화</b>",
     ]
-    for ch in changes:
+    for ch in changes[:6]:
         suffix = "%p" if ch["mode"] == "pp" else ("주" if ch["mode"] == "abs" and "납기" in ch["label"] else "%")
         lines.append(
             f"• <b>{html.escape(ch['label'])}</b>: "
@@ -451,71 +516,47 @@ def build_alert(changes: list[dict], events: list[dict], state: dict) -> str:
             f"{html.escape(format_metric(ch['key'], ch['after']))} "
             f"({ch['delta']:+.1f}{suffix})"
         )
-    for ev in events:
-        lines.append(f"• <b>구조 변화:</b> {html.escape(ev['event'])} — {html.escape(ev['title'])}")
+    for ev in events[:4]:
+        lines.append(f"• <b>구조 변화:</b> {html.escape(ev['event'])}")
         if ev.get("url"):
             lines.append(f'  <a href="{html.escape(ev["url"], quote=True)}">원문</a>')
+    if not changes and not events:
+        lines.append("• 의미 있는 신규 변화 없음")
 
     lines += [
         "",
-        "<b>1단계 현재 숫자 추적</b>",
-        f"• 미국 데이터센터 전력사용 2030 기준: {format_metric('dc_electricity_2030_twh', float(m.get('dc_electricity_2030_twh') or 0))} "
-        f"/ 범위 {format_metric('dc_electricity_2030_low_twh', float(m.get('dc_electricity_2030_low_twh') or 0))}~{format_metric('dc_electricity_2030_high_twh', float(m.get('dc_electricity_2030_high_twh') or 0))} "
-        f"/ 미국 전체의 {float(m.get('dc_share_2030_pct') or 0):.1f}%",
-        f"• 변압기 평균 납기: {format_metric('transformer_avg_lead_weeks', float(m.get('transformer_avg_lead_weeks') or 0))}; "
-        f"대형변압기 {format_metric('large_transformer_low_weeks', float(m.get('large_transformer_low_weeks') or 0))}~"
-        f"{format_metric('large_transformer_high_weeks', float(m.get('large_transformer_high_weeks') or 0))}",
-        f"• 계통연결 대기: {format_metric('queue_projects', float(m.get('queue_projects') or 0))} / "
-        f"{format_metric('queue_gw', float(m.get('queue_gw') or 0))}",
-        f"• 345kV+ 송전선 최신 기준: "
-        f"{format_metric('transmission_345kv_plus_miles_2024', float(m.get('transmission_345kv_plus_miles_latest') or m.get('transmission_345kv_plus_miles_2024') or 0))}",
-        f"• 모건스탠리 IT 전력 경로: 2025 {float(m.get('ms_it_power_2025_gw') or 0):.2f}GW → "
-        f"2026 {float(m.get('ms_it_power_2026_gw') or 0):.2f}GW → 2027 {float(m.get('ms_it_power_2027_gw') or 0):.2f}GW → "
-        f"2028 {float(m.get('ms_it_power_2028_gw') or 0):.2f}GW → 2029 {float(m.get('ms_it_power_2029_gw') or 0):.2f}GW",
-        f"• 모건스탠리 전력 수급 스트레스: 2026~2028 신규 필요 {float(m.get('ms_new_power_need_2026_2028_gw') or 0):.0f}GW "
-        f"→ 건설 중 {float(m.get('ms_under_construction_gw') or 0):.0f}GW + 전력망 가용 {float(m.get('ms_grid_available_gw') or 0):.0f}GW "
-        f"→ 1차 부족 {float(m.get('ms_gross_gap_gw') or 0):.0f}GW → 대체전원 반영 후 약 {float(m.get('ms_residual_gap_gw') or 0):.0f}GW",
+        "<b>현재 병목</b>",
+        f"• 지상형 변압기 {float(m.get('cw_padmount_transformer_low_weeks') or 0):.0f}~{float(m.get('cw_padmount_transformer_high_weeks') or 0):.0f}주"
+        f" / 발전기 {float(m.get('cw_generator_low_weeks') or 0):.0f}~{float(m.get('cw_generator_high_weeks') or 0):.0f}주",
+        f"• 중압배전반 {float(m.get('cw_mv_switchgear_low_weeks') or 0):.0f}~{float(m.get('cw_mv_switchgear_high_weeks') or 0):.0f}주"
+        f" / 저압배전반 {float(m.get('cw_lv_switchgear_low_weeks') or 0):.0f}~{float(m.get('cw_lv_switchgear_high_weeks') or 0):.0f}주"
+        f" / UPS {float(m.get('cw_ups_low_weeks') or 0):.0f}~{float(m.get('cw_ups_high_weeks') or 0):.0f}주",
+        f"• 대형변압기 별도 기준 {float(m.get('large_transformer_low_weeks') or 0):.0f}~{float(m.get('large_transformer_high_weeks') or 0):.0f}주"
+        f" / 계통대기 {float(m.get('queue_projects') or 0):,.0f}개·{float(m.get('queue_gw') or 0):,.0f}GW",
         "",
-        "<b>2단계 미래 재평가 요인 발굴</b>",
-        "• 전력수요 ↑ + 변압기 납기 ↑ + 계통대기 ↑가 동시에 나오면 AI 데이터센터 전원 인가 지연 위험이 커집니다.",
-        "• 반대로 변압기 납기 ↓ + 345kV+ 송전선 준공 ↑ + 계통대기 ↓ + 실제 전원 인가 ↑가 함께 나와야 병목 완화로 판정합니다.",
-        "• 신공장 증설은 발표가 아니라 고객 인증·숙련공 채용·초기 양산·실제 출하 시점까지 추적합니다.",
+        "<b>의미</b>",
+        "• 건물·GPU가 준비돼도 변압기→배전반→발전기→UPS→계통접속 중 가장 늦은 장비가 실제 전원 인가 시점을 결정합니다.",
         "",
-        "<b>관련 기업 지도</b>",
-        "• 직접 전력기기: Hitachi Energy·GE Vernova·Siemens Energy·Prolec GE",
-        "• 국내 직접 수혜: 효성중공업·HD현대일렉트릭·LS ELECTRIC — 북미 변압기·배전·개폐기",
-        "• 유틸리티/계통: PJM·MISO·ERCOT 및 지역 전력회사 — 접속·변전소·송전선·전원 인가",
-        "• 최종 수요: Microsoft·Meta·Amazon·Google·Oracle·OpenAI/CoreWeave 등 대형 데이터센터",
+        "<b>관련 기업</b>",
+        "• 변압기: Hitachi Energy·GE Vernova·Siemens Energy / 효성중공업·HD현대일렉트릭·LS ELECTRIC",
+        "• 배전반·UPS: Schneider Electric·Eaton·ABB·Vertiv·LS ELECTRIC",
+        "• 발전기: Caterpillar·Cummins·Rolls-Royce mtu",
         "",
-        "<b>공정 병목 후보</b>",
-        "• 대형변압기 | 주문형 설계·제조 | 먼저 볼 지표: 납기·수주잔고·가동률 | 위험 구간 12~36개월",
-        "• 부싱·절연부품 | 본체 증설 뒤 부품 병목 | 먼저 볼 지표: 부싱 납기·공급사 증설 | 위험 구간 12~24개월",
-        "• 송전선·변전소 | 장비가 있어도 전원 경로 부족 | 먼저 볼 지표: 345kV+ 준공·변전소 준공 | 위험 구간 12~36개월",
-        "• 계통연결 | 발전·저장 프로젝트가 있어도 접속연구 지연 | 먼저 볼 지표: 대기 GW·프로젝트 수·처리기간 | 위험 구간 12~36개월",
-        "",
-        "<b>숨은 역풍·실패모드</b>",
-        "• 가장 현실적인 실패 경로: 건물·GPU는 준비됐지만 변압기·변전소·송전선 또는 계통접속이 늦어 전원 인가가 지연되는 경우.",
-        "• 조기경보: 변압기 납기 재상승, 계통 대기용량 증가, 345kV+ 준공 감소, 데이터센터 전원 인가일 연기.",
-        "• 완화 확인: 납기 단축이 가격·수주잔고 붕괴가 아니라 증설 가동과 실제 출하 증가로 설명되고, 계통대기와 전원 인가가 동시에 개선될 때.",
-        "",
-        "<b>알림 기준</b>",
-        "• 2030 데이터센터 전력수요 ±10% 이상, 전력 비중 ±1.5%p 이상.",
-        "• 변압기·GSU·부싱 납기 ±10주 이상.",
-        "• 계통연결 대기 프로젝트·GW ±10% 이상.",
-        "• 345kV+ 송전선 연간 준공량 ±25% 이상.",
-        "• 대형 변압기 신공장 생산개시·지연, 계통접속 규칙 변경, 데이터센터 전원 인가 6개월 이상 지연/앞당김은 즉시 알림.",
-        "",
-        "<b>결론</b>",
-        "• 이 감시는 반도체 공급망과 분리해 '돈과 GPU가 있어도 전력이 늦어 실제 서버가 켜지지 않는가'를 추적합니다.",
-        "",
-        "<b>핵심 한 줄 요약</b>",
-        f"• 현재 기준은 2030 데이터센터 {float(m.get('dc_electricity_2030_twh') or 0):.0f}TWh, "
-        f"계통대기 {float(m.get('queue_projects') or 0):,.0f}개·{float(m.get('queue_gw') or 0):,.0f}GW, "
-        f"변압기 평균 {float(m.get('transformer_avg_lead_weeks') or 0):.0f}주(대형 {float(m.get('large_transformer_low_weeks') or 0):.0f}~{float(m.get('large_transformer_high_weeks') or 0):.0f}주)이며, "
-        "핵심은 송전·변전·계통접속·전원 인가가 실제로 빨라지는지입니다.",
+        "<b>다음 확인</b>",
+        "• 납기 범위 변화 / 생산개시·증설 / 대형 공급계약 / 데이터센터 전원 인가일",
     ]
-    return "\n".join(lines).strip() + "\n"
 
+    urls = []
+    for ev in events:
+        url = str(ev.get("url") or "")
+        if url and url not in urls:
+            urls.append(url)
+    if urls:
+        lines += ["", "<b>원문</b>"]
+        for url in urls[:3]:
+            lines.append(f'• <a href="{html.escape(url, quote=True)}">근거 원문</a>')
+
+    return "\n".join(lines).strip() + "\n"
 
 def discover(now: datetime, seen_urls: set[str]) -> tuple[list[dict], list[dict]]:
     metric_obs: list[dict] = []
