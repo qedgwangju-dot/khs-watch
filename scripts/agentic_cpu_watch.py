@@ -370,81 +370,54 @@ def snapshot_block(state: dict, fx: float | None, fx_date: str, changed: list[di
     m = state.get("metrics") or {}
     lines = []
     if standalone:
-        lines += ["<b>🚨 AI 부품 리드타임 감시 — CPU·에이전트형 AI 구조 변화</b>", ""]
+        lines += ["<b>🚨 CPU·에이전트형 AI 구조 변화</b>", ""]
 
-    lines += ["<b>CPU·에이전트형 AI 수요축</b>"]
+    lines += ["<b>변화</b>"]
     if changed:
-        lines.append("• <b>전망 변화 감지:</b>")
-        for ch in changed:
+        for ch in changed[:4]:
             if ch["mode"] == "pp":
-                lines.append(f"  - {html.escape(ch['label'])}: {ch['before']:.1f}% → {ch['after']:.1f}% ({ch['delta']:+.1f}%p)")
+                lines.append(
+                    f"• {html.escape(ch['label'])}: {ch['before']:.1f}% → {ch['after']:.1f}% "
+                    f"({ch['delta']:+.1f}%p)"
+                )
             else:
                 lines.append(
-                    f"  - {html.escape(ch['label'])}: {html.escape(bn_label(ch['before'], fx))} "
+                    f"• {html.escape(ch['label'])}: {html.escape(bn_label(ch['before'], fx))} "
                     f"→ {html.escape(bn_label(ch['after'], fx))} ({ch['delta']:+.1f}%)"
                 )
     if ratio_change:
-        lines.append(f"• CPU:GPU 구조 전망: {html.escape(ratio_change[0])} → {html.escape(ratio_change[1])}")
+        lines.append(f"• CPU:GPU 구조: {html.escape(ratio_change[0])} → {html.escape(ratio_change[1])}")
+    if validation:
+        for item in validation[:2]:
+            lines.append(f"• 공식 검증: {html.escape(item.get('title') or '수요 신호')}")
 
     total = float(m.get("server_cpu_tam_2030_usd_bn") or 0)
     agent = float(m.get("agentic_2030_usd_bn") or 0)
-    ai_cpu = float(m.get("ai_cpu_2030_usd_bn") or 0)
     agent_share = float(m.get("agentic_share_pct") or 0)
-    ai_share = float(m.get("ai_cpu_share_pct") or 0)
+
+    lines += ["", "<b>현재 기준선</b>"]
+    baseline_bits = []
     if total:
-        base_2025 = float(m.get("server_cpu_2025_usd_bn") or 0)
-        cagr_2025 = float(m.get("server_cpu_cagr_2025_2030_pct") or 0)
-        lines.append(f"• BofA 2030 서버 CPU 시장: {bn_label(total, fx)}")
-        if base_2025:
-            multiple = total / base_2025
-            lines.append(
-                f"• 2025→2030: {bn_label(base_2025, fx)} → {bn_label(total, fx)}, "
-                f"약 {multiple:.1f}배 / 연평균 약 {cagr_2025:.1f}%"
-            )
+        baseline_bits.append(f"2030 서버 CPU {bn_label(total, fx)}")
     if agent:
-        lines.append(f"• 에이전트형 AI CPU: {bn_label(agent, fx)} / 전체의 {agent_share:.1f}%")
-    if ai_cpu:
-        lines.append(f"• AI CPU 전체(연산·헤드+에이전트): {bn_label(ai_cpu, fx)} / 전체의 {ai_share:.1f}%")
-    lines.append("• BofA 전망 경로: 1,250억달러 → 1,700억달러 → 2,106억달러(2030년 서버 CPU 시장)")
-    lines.append("• CPU:GPU 구조 기준: 학습기 약 1:4~1:8 → 에이전트형 약 1:1 방향. AMD 공식 자료도 1:4~8 → 1+:1 구조 이동을 설명합니다.")
+        baseline_bits.append(f"에이전트형 {bn_label(agent, fx)}({agent_share:.1f}%)")
+    if baseline_bits:
+        lines.append("• " + " / ".join(html.escape(x) for x in baseline_bits))
+    lines.append("• CPU:GPU: 챗봇형 1:4~8 → 에이전트형 약 1:1 방향")
 
-    lines += ["", "<b>부품 병목 연결</b>"]
-    lines.append("• 에이전트형 AI 노드 증가 → 서버 CPU → 고용량 DDR5 RDIMM → 기업용 SSD·KV 캐시 저장 → ABF 기판 → 네트워크·MLCC로 수요가 연결됩니다.")
-    lines.append("• GPU 대수만 보지 않고 CPU 노드 수 × CPU당 메모리 용량 × 기업용 SSD 용량 × 네트워크 대역폭을 같이 봅니다.")
+    lines += ["", "<b>의미</b>"]
+    lines.append(
+        "• 에이전트형 AI 확산이 실제 서버 CPU 주문·출하로 이어지면 "
+        "DDR5 RDIMM·기업용 SSD·FC-BGA/ABF·네트워크 수요가 함께 커집니다."
+    )
 
-    lines += ["", "<b>실제 수요 검증</b>"]
-    if validation:
-        for item in validation[:4]:
-            lines.append(f"• {html.escape(item.get('title') or '공식 수요 신호')} — {html.escape(item.get('published_at_kst') or '')}")
-            if item.get("url"):
-                lines.append(f'  <a href="{html.escape(item["url"], quote=True)}">공식 원문</a>')
-    else:
-        lines.append("• 새 공식 주문·출하·검증·증설 신호 없음. 전망치만으로 실제 매출을 확정하지 않습니다.")
+    lines += ["", "<b>다음 확인</b>"]
+    lines.append("• AMD·Intel CPU 주문·출하 / OEM 서버 주문 / DDR5·eSSD / CPU:GPU 실제 배치비율")
 
-    lines += ["", "<b>관련 기업 지도</b>"]
-    lines.append("• 직접 CPU: AMD·Intel·Arm 생태계 — 서버 CPU 출하·평균판매단가·시장점유율")
-    lines.append("• 서버 메모리: 삼성전자·SK하이닉스·Micron — DDR5·고용량 RDIMM")
-    lines.append("• 기업용 SSD: 삼성전자·SK하이닉스/Solidigm·Micron — eSSD/NAND")
-    lines.append("• ABF/FC-BGA: 삼성전기·Ibiden·Unimicron·Nan Ya PCB — CPU/GPU/ASIC 대형 기판")
-    lines.append("• 시스템·네트워크: Dell·HPE·Supermicro / Broadcom·NVIDIA — 서버·고속 연결")
-
-    lines += ["", "<b>숨은 역풍·실패모드</b>"]
-    lines.append("• 가장 현실적인 실패 경로: 에이전트 사용량은 늘지만 가상화·소프트웨어 효율화가 CPU 노드 증설보다 빨라 실제 CPU 출하가 전망을 못 따라가는 경우.")
-    lines.append("• 조기경보: AMD·Intel 서버 CPU 출하/주문, OEM 서버 주문, DDR5 RDIMM 가격·재고, eSSD 출하, CPU:GPU 실제 배치비율.")
-    lines.append("• 위험 구간: 6~12개월은 전망→주문 검증, 12~24개월은 서버 증설·메모리·ABF 공급능력 검증.")
-
-    lines += ["", "<b>알림 기준</b>"]
-    lines.append("• 2030 서버 CPU 시장·에이전트형 AI CPU·AI CPU 전체 전망이 직전 기준 대비 ±10% 이상 바뀌면 알림.")
-    lines.append("• 에이전트형 비중·AI CPU 비중이 ±5%p 이상 바뀌면 알림.")
-    lines.append("• CPU:GPU 구조가 1:2·1:1 등으로 바뀌거나 공식 주문·출하·고객 검증이 새로 확인되면 알림.")
-    lines.append("• 동일 BofA 차트·재인용 기사만 반복되면 알리지 않습니다.")
-    if fx is not None:
-        lines.append(f"• 원화 환산: 1달러={fx:,.1f}원, 기준일 {html.escape(fx_date or '최신 확인값')}")
     if state.get("source"):
         lines.append(f'• <a href="{html.escape(str(state["source"]), quote=True)}">BofA 전망 확인 경로</a>')
-    lines.append(f'• <a href="{html.escape(AMD_RATIO_URL, quote=True)}">AMD CPU:GPU 공식 근거</a>')
+    lines.append(f'• <a href="{html.escape(AMD_RATIO_URL, quote=True)}">AMD 공식 근거</a>')
     return "\n".join(lines).strip() + "\n"
-
 
 def discover_forecasts(now: datetime, cutoff: str) -> list[dict]:
     out = []
@@ -592,10 +565,7 @@ def main() -> None:
         block = snapshot_block(latest, fx, fx_date, forecast_changes, ratio_change, validation, standalone=not bool(existing_alert))
         merged = (existing_alert + "\n\n" + block.strip()).strip() if existing_alert else block.strip()
         ALERT_PATH.write_text(merged + "\n", encoding="utf-8")
-    elif existing_alert:
-        # 다른 AI 부품 변화가 발생한 주에는 CPU 수요축 기준선도 같은 알림에 붙여 맥락을 연결한다.
-        block = snapshot_block(latest, fx, fx_date, [], None, [], standalone=False)
-        ALERT_PATH.write_text(existing_alert + "\n\n" + block.strip() + "\n", encoding="utf-8")
+    # 다른 부품 알림이 이미 있어도 CPU 쪽에 새 사건이 없으면 BofA 기준선을 반복 첨부하지 않는다.
 
     pending["agentic_cpu_demand"] = latest
     write_json(PENDING_PATH, pending)
