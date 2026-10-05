@@ -10,8 +10,8 @@ Purpose
 - Do not use the conflicting UDN US$1,400 / US$1,299 framing as a baseline.
 
 Alert route
-- Appends to the existing Memory Spot Contract HBM Telegram alert file.
-- No new bot or workflow.
+- Uses a dedicated lightweight workflow but the same existing Telegram bot/chat.
+- Keeps OEM retail-price/spec pass-through separate from raw memory-price alerts.
 """
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ OUT_DIR.mkdir(exist_ok=True)
 PENDING_PATH = OUT_DIR / "smartphone_memory_pass_through_pending_state.json"
 STATUS_PATH = OUT_DIR / "smartphone_memory_pass_through_status.md"
 FRAGMENT_PATH = OUT_DIR / "smartphone_memory_pass_through_alert.html"
-MAIN_ALERT_PATH = OUT_DIR / "memory_spot_cycle_watch_telegram.txt"
+MAIN_ALERT_PATH = OUT_DIR / "smartphone_memory_pass_through_telegram.txt"
 KST = ZoneInfo("Asia/Seoul")
 
 UDN_SOURCE = "https://money.udn.com/money/story/5612/9793022"
