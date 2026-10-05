@@ -814,8 +814,87 @@ if grid_links_anchor not in t:
 t = t.replace(grid_links_anchor, grid_links_new, 1)
 
 t = t.replace("FORMAT_VERSION = 4", "FORMAT_VERSION = 5", 1)
+
+# Add the confirmed Korean Bloom Energy supply-chain order to the SAME
+# generation-buildout watcher. This is a direct contract baseline, not a theme-only link.
+vinatech_baseline_old = '''    "ls_bloom_dc_order_krw_eok": 3190.0,
+'''
+vinatech_baseline_new = '''    "ls_bloom_dc_order_krw_eok": 3190.0,
+    "vinatech_bloom_dc_contract_krw_eok": 412.153938,
+    "vinatech_bloom_contract_sales_pct": 50.12,
+    "vinatech_bloom_contract_end": "2027-04-10",
+'''
+if vinatech_baseline_old not in t:
+    raise SystemExit("Vinatech baseline insertion point not found")
+t = t.replace(vinatech_baseline_old, vinatech_baseline_new, 1)
+
+vinatech_trusted_old = '''    "hyosung.com", "hd-hyundaielectric.com", "hyundai-elec.co.kr", "ls-electric.com",
+)'''
+vinatech_trusted_new = '''    "hyosung.com", "hd-hyundaielectric.com", "hyundai-elec.co.kr", "ls-electric.com",
+    "vinatech.com",
+)'''
+if vinatech_trusted_old not in t:
+    raise SystemExit("Vinatech trusted-domain insertion point not found")
+t = t.replace(vinatech_trusted_old, vinatech_trusted_new, 1)
+
+vinatech_query_old = '''    'LS ELECTRIC data center transformer switchgear order North America',
+)'''
+vinatech_query_new = '''    'LS ELECTRIC data center transformer switchgear order North America',
+    'VINATech Bloom Energy data center supercapacitor contract order',
+    '비나텍 Bloom Energy 데이터센터 슈퍼커패시터 수주 공급계약',
+)'''
+if vinatech_query_old not in t:
+    raise SystemExit("Vinatech query insertion point not found")
+t = t.replace(vinatech_query_old, vinatech_query_new, 1)
+
+vinatech_source_old = '''        ("hyosung", "효성중공업"), ("hyundai", "HD현대일렉트릭"), ("ls-electric", "LS ELECTRIC"),
+    ):'''
+vinatech_source_new = '''        ("hyosung", "효성중공업"), ("hyundai", "HD현대일렉트릭"), ("ls-electric", "LS ELECTRIC"),
+        ("vinatech", "비나텍"),
+    ):'''
+if vinatech_source_old not in t:
+    raise SystemExit("Vinatech source-label insertion point not found")
+t = t.replace(vinatech_source_old, vinatech_source_new, 1)
+
+vinatech_pages_old = '''    ("https://nahpdev-web.ls-electric.com/markets/data-center", "LS ELECTRIC"),
+)'''
+vinatech_pages_new = '''    ("https://nahpdev-web.ls-electric.com/markets/data-center", "LS ELECTRIC"),
+    ("https://www.vinatech.com/kr/sub/pr/news.php?bid=16&mode=list", "비나텍"),
+)'''
+if vinatech_pages_old not in t:
+    raise SystemExit("Vinatech supplier-page insertion point not found")
+t = t.replace(vinatech_pages_old, vinatech_pages_new, 1)
+
+vinatech_meaning_old = '''    if any(k in low for k in ("hyosung", "효성중공업", "hd hyundai", "hd현대일렉트릭", "ls electric")) and any(k in low for k in ("data center", "data centre", "데이터센터")) and any(k in low for k in ("order", "contract", "supply", "수주", "계약", "공급")):
+        return True'''
+vinatech_meaning_new = '''    if any(k in low for k in ("hyosung", "효성중공업", "hd hyundai", "hd현대일렉트릭", "ls electric", "vinatech", "비나텍", "bloom energy")) and any(k in low for k in ("data center", "data centre", "데이터센터")) and any(k in low for k in ("order", "contract", "supply", "수주", "계약", "공급", "supercapacitor", "슈퍼커패시터")):
+        return True'''
+if vinatech_meaning_old not in t:
+    raise SystemExit("Vinatech meaningful insertion point not found")
+t = t.replace(vinatech_meaning_old, vinatech_meaning_new, 1)
+
+vinatech_msg_old = '''    msg.append(f"• <b>LS ELECTRIC</b> │ 뉴멕시코 {b['ls_bloom_dc_order_krw_eok']:,.0f}억원 · 북미 {b['ls_apr_dc_order_krw_eok']:,.0f}억원 · 미국 빅테크 {b['ls_may_dc_order_krw_eok']:,.0f}억원의 확인된 프로젝트를 각각 추적")
+    msg.append("• <b>판정:</b> PwC 전망은 시장 기준선, 기업 수주는 확정 매출 연결 후보로 분리합니다. 기본계약 상단을 실제 발주액과 동일시하지 않습니다.")'''
+vinatech_msg_new = '''    msg.append(f"• <b>LS ELECTRIC</b> │ 뉴멕시코 {b['ls_bloom_dc_order_krw_eok']:,.0f}억원 · 북미 {b['ls_apr_dc_order_krw_eok']:,.0f}억원 · 미국 빅테크 {b['ls_may_dc_order_krw_eok']:,.0f}억원의 확인된 프로젝트를 각각 추적")
+    msg.append(
+        f"• <b>비나텍</b> │ Bloom Energy 미국 데이터센터용 슈퍼커패시터 시스템 <b>{b['vinatech_bloom_dc_contract_krw_eok']:,.2f}억원</b> "
+        f"· 2025년 매출 대비 <b>{b['vinatech_bloom_contract_sales_pct']:g}%</b> · 계약종료 <b>{b['vinatech_bloom_contract_end']}</b>"
+    )
+    msg.append("• <b>판정:</b> PwC 전망은 시장 기준선, 기업 수주는 확정 매출 연결 후보로 분리합니다. 기본계약 상단을 실제 발주액과 동일시하지 않습니다.")'''
+if vinatech_msg_old not in t:
+    raise SystemExit("Vinatech message insertion point not found")
+t = t.replace(vinatech_msg_old, vinatech_msg_new, 1)
+
+vinatech_links_old = '''    msg.append(f"• {a('LS ELECTRIC 데이터센터 전력솔루션', 'https://nahpdev-web.ls-electric.com/markets/data-center')}")'''
+vinatech_links_new = '''    msg.append(f"• {a('LS ELECTRIC 데이터센터 전력솔루션', 'https://nahpdev-web.ls-electric.com/markets/data-center')}")
+    msg.append(f"• {a('비나텍 Bloom Energy 데이터센터 공급', 'https://www.vinatech.com/kr/sub/pr/news.php?bid=16&idx=3365&mode=view')}")'''
+if vinatech_links_old not in t:
+    raise SystemExit("Vinatech links insertion point not found")
+t = t.replace(vinatech_links_old, vinatech_links_new, 1)
+
+t = t.replace("FORMAT_VERSION = 5", "FORMAT_VERSION = 6", 1)
 g.write_text(t, encoding="utf-8")
-print("US generation watcher recurring-capex + power-gap + global-grid guard inserted")
+print("US generation watcher recurring-capex + power-gap + global-grid + Bloom supplier guard inserted")
 
 # Extend the existing time-to-power watcher with flexible-load / demand-response
 # signals.  This remains part of the same watcher and state file: no new alert
