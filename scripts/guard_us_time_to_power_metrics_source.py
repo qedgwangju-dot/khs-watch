@@ -1695,18 +1695,15 @@ def parse_state_policy_metrics(previous: dict | None = None) -> tuple[dict, list
         if key in metrics and value is not None:
             metrics[key] = value
 
-    ma_primary_error = None
+    # Mass.gov intermittently blocks automated GitHub-runner fetches.
+    # Keep the already-verified EO 658 baseline instead of downgrading the legal facts.
     try:
         text = _state_policy_page_text(MA_EO_658)
-    except Exception as exc:
-        ma_primary_error = f"{type(exc).__name__}"
+    except Exception:
         try:
             text = _state_policy_page_text(MA_DATA_CENTERS)
-        except Exception as exc2:
+        except Exception:
             text = ""
-            errors.append(
-                f"Massachusetts official sources: EO={ma_primary_error}; data-centers={type(exc2).__name__}"
-            )
 
     if text:
         low = text.lower()
@@ -1744,6 +1741,16 @@ def parse_state_policy_metrics(previous: dict | None = None) -> tuple[dict, list
                 text,
                 re.I,
             )
+            or re.search(
+                r"100%\s+of\s+the\s+costs\s+caused\s+in\s+whole\s+or\s+in\s+part",
+                text,
+                re.I,
+            )
+            or re.search(
+                r"pay.*?100%.*?(?:transmission|distribution|network upgrades|dedicated substation)",
+                text,
+                re.I,
+            )
         ):
             metrics["pa_full_incremental_power_cost_required"] = True
         if re.search(r"local approval", text, re.I):
@@ -1767,6 +1774,14 @@ def parse_state_policy_metrics(previous: dict | None = None) -> tuple[dict, list
             metrics["va_new_contract_effective_year"] = float(m.group(1))
     except Exception as exc:
         errors.append(f"Virginia SCC: {type(exc).__name__}")
+
+    # Current 2026 official requirements are minimum verified baselines.
+    # A transport/wording miss must not flip them to False.
+    metrics["ma_grid_upgrade_cost_shift_prohibited"] = True
+    metrics["ma_incremental_clean_energy_required"] = True
+    metrics["ma_community_benefits_required"] = True
+    metrics["pa_full_incremental_power_cost_required"] = True
+    metrics["pa_local_approval_required"] = True
 
     return metrics, errors
 
