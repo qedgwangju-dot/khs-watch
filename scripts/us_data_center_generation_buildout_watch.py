@@ -88,6 +88,117 @@ def a(label: str, url: str) -> str:
     return f'<a href="{h(url)}">{h(label)}</a>'
 
 
+def _plain(line: str) -> str:
+    return html.unescape(re.sub(r"<[^>]+>", "", line or "")).strip()
+
+
+def compact_generation_message(msg: list[str]) -> list[str]:
+    headings = {
+        "<b>🔥 발전설비 실행판</b>",
+        "<b>🏭 가스터빈 공급 병목</b>",
+        "<b>⚡ 미국 전력수요·전력기기 병목</b>",
+        "<b>🌐 전력망 투자·접속 병목</b>",
+        "<b>💻 반복 장비투자·한국 전력기기 실수주</b>",
+        "<b>⚡ Morgan Stanley·Goldman Sachs 전력 병목 기준선</b>",
+        "<b>🔄 공급능력 숫자 변경</b>",
+        "<b>🔄 전력수요·병목 기준 변경</b>",
+        "<b>🔄 PwC 자본투자 전망 변경</b>",
+        "<b>🆕 핵심 실행 변화</b>",
+        "<b>👀 별도 감시 범위</b>",
+        "<b>📊 판단 기준</b>",
+        "<b>💱 환율</b>",
+        "<b>🔗 기준 원문</b>",
+    }
+
+    def sec(heading: str) -> list[str]:
+        try:
+            s = msg.index(heading) + 1
+        except ValueError:
+            return []
+        e = len(msg)
+        for i in range(s, len(msg)):
+            if msg[i] in headings:
+                e = i
+                break
+        return [x for x in msg[s:e] if str(x).strip()]
+
+    base = sec("<b>🔥 발전설비 실행판</b>")
+    turbine = sec("<b>🏭 가스터빈 공급 병목</b>")
+    grid = sec("<b>🌐 전력망 투자·접속 병목</b>")
+    orders = sec("<b>💻 반복 장비투자·한국 전력기기 실수주</b>")
+    new = sec("<b>🆕 핵심 실행 변화</b>")
+    fx = sec("<b>💱 환율</b>")
+    change_rows = []
+    for heading in (
+        "<b>🔄 공급능력 숫자 변경</b>",
+        "<b>🔄 전력수요·병목 기준 변경</b>",
+        "<b>🔄 PwC 자본투자 전망 변경</b>",
+    ):
+        change_rows.extend(sec(heading))
+
+    out = [msg[0], "", "<b>🧭 핵심</b>"]
+    if new:
+        first = next((x for x in new if "<a href=" in x), new[0])
+        out.append(f"• <b>변화</b> │ {_plain(first)}")
+    elif change_rows:
+        out.append(f"• <b>변화</b> │ {_plain(change_rows[0]).lstrip('• ')}")
+    else:
+        out.append("• <b>변화</b> │ 발전설비·공급망 실행 기준 업데이트")
+    out.append("• <b>판정</b> │ 필요 GW → 장비발주·터빈슬롯 → 착공 → 연료·송전 연결 → 상업운전")
+
+    current = []
+    for prefix in ("• 2030 필요 신규발전", "• 가스발전", "• 총 필요투자"):
+        row = next((x for x in base if _plain(x).startswith(prefix)), None)
+        if row:
+            current.append(row)
+    if current:
+        out += ["", "<b>🔥 현재 숫자</b>"] + current
+
+    bottleneck = []
+    for prefix in ("• GE Vernova 계약·슬롯", "• 데이터센터 주문"):
+        row = next((x for x in turbine if _plain(x).startswith(prefix)), None)
+        if row:
+            bottleneck.append(row)
+    for prefix in ("• 현재 연간 전력망 투자", "• 시간표 불일치"):
+        row = next((x for x in grid if _plain(x).startswith(prefix)), None)
+        if row:
+            bottleneck.append(row)
+    if bottleneck:
+        out += ["", "<b>🏭 병목</b>"] + bottleneck[:4]
+
+    confirmed = [
+        x for x in orders
+        if any(name in _plain(x) for name in ("효성중공업", "HD현대일렉트릭", "LS ELECTRIC", "비나텍"))
+    ]
+    if confirmed:
+        out += ["", "<b>💰 국내 확정 수주·매출 연결</b>"] + confirmed[:4]
+
+    if change_rows:
+        out += ["", "<b>🔄 숫자 변경</b>"] + change_rows[:6]
+
+    if new:
+        # Keep every chosen event row emitted by the watcher, but drop generic
+        # bookkeeping lines such as "remaining N stored".
+        visible_new = [x for x in new if "나머지" not in _plain(x)]
+        out += ["", "<b>🆕 실행 변화</b>"] + visible_new[:10]
+
+    out += [
+        "",
+        "<b>📊 투자 의미</b>",
+        "• <b>수혜</b> │ 발표 MW가 아니라 실제 장비발주·착공·상업운전으로 내려오는 기업만 실적 연결",
+        "• <b>실패모드</b> │ 터빈·변압기·송전·연료 연결이 늦으면 데이터센터 전원 인가와 매출 인식이 함께 지연",
+    ]
+
+    fx_row = next((x for x in fx if "1달러" in _plain(x)), None)
+    if fx_row:
+        out += ["", "<b>💱 환율</b>", fx_row]
+
+    visible = _plain("\n".join(out))
+    if len(visible) > 3200:
+        raise RuntimeError(f"compact generation alert too long: {len(visible)} chars")
+    return out
+
+
 def load_json(path: Path) -> dict:
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -382,7 +493,7 @@ if should_alert:
     msg.append(f"• {a('IEA 미국 데이터센터 전력수요', IEA_AI)}")
     msg.append(f"• {a('EIA 고수요 가스발전 시나리오', EIA_HIGH_DEMAND)}")
     msg.append(f"• {a('GE Vernova 가스터빈 공급능력', GEV_Q2_2026)}")
-    ALERT.write_text("\n".join(msg).strip() + "\n", encoding="utf-8")
+    msg = compact_generation_message(msg)\n    ALERT.write_text("\n".join(msg).strip() + "\n", encoding="utf-8")
 
 STATUS.write_text(
     "# 미국 데이터센터 발전설비 실행 감시\n\n"
