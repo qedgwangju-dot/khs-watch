@@ -111,6 +111,49 @@ class LeadTimeParserTests(unittest.TestCase):
         self.assertEqual(rows["CPU"]["balanced"], "16-20")
 
 
+    def test_cross_storage_parser_keeps_trendforce_scope_and_does_not_invent_controller_shortage(self):
+        text = (
+            "DRAM remains Very Tight at 20 weeks versus an 8-week balanced level, "
+            "while shortages are limiting some NAND suppliers’ ability to support enterprise SSD solutions. "
+            "HDD remains at 50 weeks, with relief unlikely before late 2027."
+        )
+        signals = w.extract_signals(text, "https://insights.trendforce.com/p/weekly-radar-005")
+        self.assertEqual(
+            signals["NAND(eSSD)"],
+            "DRAM 공급 부족 → 일부 NAND 공급사의 기업용 SSD 솔루션 지원 능력 제약",
+        )
+        self.assertEqual(signals["HDD"], "HDD 50주 병목 → 공급 완화는 빨라도 2027년 말")
+        self.assertNotIn("컨트롤러", signals["NAND(eSSD)"])
+
+    def test_memory_storage_chain_requires_direct_dram_to_essd_causality(self):
+        components = w.WEEKLY_004_LOCK["components"]
+        signals = w.WEEKLY_004_LOCK["signals"]
+        chain = w.memory_storage_chain_state(components, signals)
+        self.assertTrue(chain["active"])
+        self.assertEqual(chain["dram_lead_ratio"], 2.5)
+        self.assertEqual(chain["nand_essd_lead_ratio"], 2.0)
+        self.assertEqual(chain["hdd_lead_ratio"], 3.125)
+        self.assertTrue(chain["dram_to_enterprise_ssd_constraint_confirmed"])
+        self.assertTrue(chain["hdd_relief_late_2027_or_later"])
+        self.assertFalse(chain["nand_controller_direct_constraint_confirmed"])
+
+    def test_memory_storage_chain_alert_has_accuracy_boundary(self):
+        components = w.WEEKLY_004_LOCK["components"]
+        chain = w.memory_storage_chain_state(components, w.WEEKLY_004_LOCK["signals"])
+        alert = w.build_memory_storage_chain_alert(
+            chain,
+            components,
+            "https://insights.trendforce.com/p/weekly-radar-004",
+        )
+        self.assertIn("DRAM→기업용 SSD→HDD", alert)
+        self.assertIn("DRAM", alert)
+        self.assertIn("기업용 SSD", alert)
+        self.assertIn("HDD", alert)
+        self.assertIn("NAND 컨트롤러 출하가 DRAM 때문에 직접 제한된다는 주장은", alert)
+        self.assertIn("20주", alert)
+        self.assertIn("50주", alert)
+
+
     def test_official_source_always_outranks_secondary_recap(self):
         official = w.source_score(
             "https://insights.trendforce.com/p/weekly-radar-003",
