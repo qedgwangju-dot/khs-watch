@@ -1073,12 +1073,6 @@ STORY_RULES = (
             "\"new AI adviser\" Trump Reuters",
             "Trump AI force executive order budget procurement Reuters",
             "Trump AI czar appointment White House Reuters",
-            "\"Super Intelligence Force\" Trump Reuters",
-            "\"Super Intelligence Force\" Trump \"AP News\"",
-            "\"Super Intelligence Force\" Jay Clayton 120 days report",
-            "\"Super Intelligence Force\" charter budget procurement incident reporting",
-            "\"Super Intelligence Force\" report recommendations federal government",
-            "site:whitehouse.gov \"Super Intelligence Force\"",
             "site:reuters.com Trump says tariffs chips AI semiconductor China",
             "site:reuters.com Trump says Iran Israel Hormuz oil",
             "site:reuters.com Trump Iran wants talks negotiations",
@@ -1114,7 +1108,7 @@ STORY_RULES = (
             (
                 "tariff", "tariffs", "export control", "sanctions", "fed", "rate", "dollar", "oil",
                 "china", "taiwan", "korea", "south korea", "defense", "burden sharing", "usfk",
-                "semiconductor", "chip", "ai", "artificial intelligence", "super intelligence", "superintelligence", "super intelligence force", "sif", "data center", "power grid", "nuclear", "reactor",
+                "semiconductor", "chip", "ai", "data center", "power grid", "nuclear", "reactor",
                 "iran", "israel", "middle east", "hormuz", "strait of hormuz", "red sea", "houthi",
                 "missile", "strike", "ceasefire", "war", "war powers", "brent", "wti", "tanker",
                 "shipping", "lng", "natural gas", "russia", "ukraine", "nato", "north korea",
@@ -1681,60 +1675,6 @@ def semantic_policy_event_key(item: dict) -> str:
             for key in ("title", "description", "link", "source")
         )
     ).lower()
-    if "super intelligence force" in text or "superintelligence force" in text:
-        if any(
-            term in text
-            for term in (
-                "final report released", "final report published", "final report submitted",
-                "report released", "report published", "report submitted",
-                "recommendations released", "recommendations published", "recommendations submitted",
-                "findings released", "findings published", "findings submitted",
-            )
-        ):
-            return "us-trump-super-intelligence-force-report"
-        if any(
-            term in text
-            for term in (
-                "appropriation", "appropriations", "funding", "budget",
-                "procurement", "contract award", "contract awarded", "rfp", "request for proposals",
-                "ota award", "baa award",
-            )
-        ):
-            return "us-trump-super-intelligence-force-budget-procurement-" + hashlib.sha1(title_text.encode("utf-8")).hexdigest()[:10]
-        if any(
-            term in text
-            for term in (
-                "mandatory incident reporting", "incident reporting requirement", "reporting requirement",
-                "final rule", "proposed rule", "regulation", "regulatory requirement",
-            )
-        ):
-            return "us-trump-super-intelligence-force-regulatory-" + hashlib.sha1(title_text.encode("utf-8")).hexdigest()[:10]
-        if any(
-            term in text
-            for term in (
-                "charter released", "charter published", "executive order", "presidential memorandum",
-                "legal authority", "statutory authority",
-            )
-        ):
-            return "us-trump-super-intelligence-force-authority-" + hashlib.sha1(title_text.encode("utf-8")).hexdigest()[:10]
-        if any(
-            term in title_text
-            for term in (
-                "new member", "new members", "joins", "added to", "leadership change",
-                "names vice chair", "appoints vice chair", "replaces",
-            )
-        ):
-            return "us-trump-super-intelligence-force-membership-" + hashlib.sha1(title_text.encode("utf-8")).hexdigest()[:10]
-        if any(
-            term in text
-            for term in (
-                "formation", "formed", "forms", "created", "creates", "established", "establishes",
-                "launched", "launches", "announced", "announces", "new federal ai task force",
-                "new federal task force",
-            )
-        ):
-            return "us-trump-super-intelligence-force-formation-2026-10-04"
-
     if (
         "jay clayton" in text
         and "ai czar" in text
@@ -2136,11 +2076,7 @@ def story_event_fingerprint(rule: StoryRule, items: list[dict]) -> str:
     else:
         title = re.sub(r"\s+", " ", clean_story_title(str(items[0].get("title") or "")).lower()).strip()
         identity = f"{rule.key}|{title}"
-    profile = (
-        trump_story_profile(clean_text(f"{items[0].get('title') or ''} {items[0].get('description') or ''}"))
-        if items
-        else None
-    )
+    profile = trump_story_profile(str(items[0].get("title") or "")) if items else None
     revision = str((profile or {}).get("revision") or "story-event-v1")
     raw = f"{FORMAT_VERSION}:{revision}:{identity}"
     return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:24]
@@ -2192,11 +2128,7 @@ def unseen_items_for_rule(rule: StoryRule, items: list[dict], seen: dict) -> lis
         return []
     current_fp = fingerprint(rule, items)
     event_fp = story_event_fingerprint(rule, items)
-    profile = (
-        trump_story_profile(clean_text(f"{items[0].get('title') or ''} {items[0].get('description') or ''}"))
-        if rule.key == "trump_direct_policy_remarks_watch"
-        else None
-    )
+    profile = trump_story_profile(str(items[0].get("title") or "")) if rule.key == "trump_direct_policy_remarks_watch" else None
     is_corrective_render = bool((profile or {}).get("revision"))
     if event_fp in seen:
         return []
@@ -2524,76 +2456,6 @@ def trump_story_profile(title: str) -> dict[str, object] | None:
             "sectors": "관세 민감 수출주, 물류/공급망",
             "failure": "대상국·품목·세율·시행일과 한국 기업 노출이 확인되지 않으면 발언성 재료로 끝납니다.",
         }
-    if "super intelligence force" in low or "superintelligence force" in low:
-        report_release = any(
-            term in low
-            for term in (
-                "final report released", "final report published", "final report submitted",
-                "report released", "report published", "report submitted",
-                "recommendations released", "recommendations published", "recommendations submitted",
-                "findings released", "findings published", "findings submitted",
-            )
-        )
-        execution_change = any(
-            term in low
-            for term in (
-                "appropriation", "appropriations", "funding", "budget", "procurement",
-                "contract award", "contract awarded", "rfp", "request for proposals",
-                "ota award", "baa award", "mandatory incident reporting",
-                "incident reporting requirement", "final rule", "proposed rule",
-                "charter released", "charter published", "executive order", "presidential memorandum",
-            )
-        )
-        if report_release:
-            sif_title = "미국 Super Intelligence Force, 120일 검토 후속 보고서·권고 공개"
-            sif_core = "Super Intelligence Force(SIF)의 AI 위험·기회 및 연방정부 역할 검토 결과가 보고서·권고 단계로 넘어간 변화입니다."
-            sif_stage = "보고서·권고 공개 단계 — 실제 행정명령·규칙·예산·조달 반영 여부를 추가 확인해야 합니다."
-            sif_actual = "SIF의 첫 핵심 산출물이 공개·제출된 단계입니다."
-            sif_timeline = "2026년 10월 4일 SIF 창설 발표 → 120일 검토 → 보고서·권고 공개 → 부처별 규칙·예산·조달 반영 확인"
-            sif_revision = "trump-super-intelligence-force-report-ko-v1"
-        elif execution_change:
-            sif_title = "미국 Super Intelligence Force, 조직 구상에서 실제 권한·예산·조달 단계 변화"
-            sif_core = "SIF와 연결된 후속 문서에서 권한·예산·조달·사고보고 또는 규제 실행 변화가 감지됐습니다."
-            sif_stage = "집행 구체화 단계 — 문서의 법적 근거·예산액·조달 대상·시행일을 원문 기준으로 확인해야 합니다."
-            sif_actual = "단순 정책조율 조직을 넘어 실제 행정·규제·조달 수단으로 전환되는지 확인하는 단계입니다."
-            sif_timeline = "2026년 10월 4일 SIF 창설 → 후속 권한·예산·규정·조달 문서 → 실제 계약·시행·감독 확인"
-            sif_revision = "trump-super-intelligence-force-execution-ko-v1"
-        else:
-            sif_title = "트럼프, Super Intelligence Force(SIF) 창설: 미국 AI 정책 지휘체계 공식화"
-            sif_core = "트럼프가 Super Intelligence Force(SIF) 창설을 발표해 연방정부의 초지능 정책 조율기구를 공식화했습니다."
-            sif_stage = "창설 발표 단계 — 조정기구는 확인됐지만 별도 예산·신규 법적 권한·조달금액·의무 규제는 아직 확정되지 않았습니다."
-            sif_actual = "SIF는 연방정부의 초지능 정책 노력을 조율하고 소비자·공익단체·종교단체·핵심 인프라 제공업체·초지능 기업과의 정부 소통을 조정합니다."
-            sif_timeline = "2026년 9월 29일 White House Accord·EO 14434 → 2026년 10월 4일 SIF 창설 발표 → 120일 검토 보고서 → 후속 권한·예산·조달·규제 여부 확인"
-            sif_revision = "trump-super-intelligence-force-formation-ko-v1"
-
-        return {
-            **common,
-            "revision": sif_revision,
-            "event_date": "2026년 10월 4일" if not report_release and not execution_change else "",
-            "title": sif_title,
-            "core": sif_core,
-            "stage": sif_stage,
-            "actual": sif_actual,
-            "actual_bullets": [
-                sif_actual,
-                "창설 발표상 지도부는 Jay Clayton 국가정보국장, Andrew Ferguson FTC 위원장, Emil Michael 국방부 연구·공학 담당 차관 겸 CTO, Scott Kupor OPM 처장이며 대통령과 Susie Wiles 백악관 비서실장에게 보고합니다.",
-                "Reuters·WSJ 보도 기준 SIF에는 AI의 위험·기회와 연방정부 역할을 검토해 120일 안에 보고하는 첫 임무가 제시됐습니다. 이 120일 기한은 트럼프의 Truth Social 게시문 자체가 아니라 보도된 태스크포스 헌장 내용입니다.",
-            ],
-            "timeline": sif_timeline,
-            "why": "사람 한 명의 AI 차르 임명보다 더 중요하게, DNI·FTC·국방부·OPM을 한 정책조율 축으로 묶어 국가안보·소비자보호·정부인력·방산기술 정책을 연결하는 구조가 생겼습니다.",
-            "next": "SIF 헌장·공식 백악관 문서 공개, 120일 보고서, EO 14434의 60일 SI 정의 제안, 예산·인원, 의무 사고보고, FTC 규칙, 국방부·민간기관 AI 조달·계약, 핵심 인프라 요구사항",
-            "investment": "현재 특정 AI 기업의 신규 정부계약이나 확정 매출은 아닙니다. 실제 재평가는 예산·조달·규칙이 붙어 GPU·클라우드·사이버보안·데이터센터 전력·국방 AI 발주로 전환될 때 발생합니다.",
-            "korea": "한국 기업은 현재 SIF 직접 계약이 확인되지 않았습니다. 삼성전자·SK하이닉스 HBM, AI 서버·전력·냉각·보안 노출은 미국 정부·하이퍼스케일러의 실제 조달·설비투자가 확인될 때만 실적 연결로 올립니다.",
-            "impacts": "시간표, 수급, 밸류에이션/할인율, 향후 매출·현금흐름",
-            "paths": "연방 AI 정책 지휘체계, 국가안보, 소비자보호, 정부 AI 조달, AI 인프라 CAPEX",
-            "sectors": "반도체/AI, 클라우드/보안 AI, 국방 AI·자율체계, 데이터센터 전력·냉각",
-            "scope_note": "Trump Truth Social 게시문은 SIF 창설·임무·4인 지도부·보고선을 확인하지만, 별도 예산·신규 법적 권한·조달금액·강제 규제는 명시하지 않습니다. 120일 보고 기한은 Reuters·WSJ가 보도한 헌장 내용으로 분리합니다.",
-            "secondary_source": "Trump Truth Social 원문: https://truthsocial.com/@realDonaldTrump/117382616783706638",
-            "priced_in": "중간. AI 차르 인선은 이미 알려졌지만 SIF라는 다기관 조정체계와 120일 검토는 후속 정책·조달 시간표를 새로 만듭니다.",
-            "counter": "조정 태스크포스 창설만으로 새로운 규제권한·예산·정부 조달이 자동 발생하지 않습니다.",
-            "failure": "120일 보고서가 권고에 그치고 예산·조달·규칙·의무 사고보고·부처별 집행 문서가 뒤따르지 않으면 투자 영향은 정책조율 수준에 제한됩니다.",
-        }
-
     if any(term in low for term in ("ai adviser", "ai advisor", "ai czar", "ai force")):
         future_language = any(
             term in low
@@ -3315,8 +3177,7 @@ def item_story_profile(rule: StoryRule, items: list[dict]) -> dict[str, object] 
             ),
         }
     if rule.key == "trump_direct_policy_remarks_watch":
-        combined = clean_text(f"{title} {items[0].get('description') or ''}") if items else title
-        return trump_story_profile(combined)
+        return trump_story_profile(title)
     if rule.key == "global_extreme_heat_mortality_watch":
         return heat_mortality_story_profile(title)
     if rule.key == "iran_hormuz_military_escalation":
@@ -3353,10 +3214,7 @@ def is_ai_force_alert(alert: dict) -> bool:
         rule.key == "us_china_ai_safety_talks"
         or (
             profile
-            and (
-                str(profile.get("revision") or "").startswith("trump-ai-force-czar-")
-                or str(profile.get("revision") or "").startswith("trump-super-intelligence-force-")
-            )
+            and str(profile.get("revision") or "").startswith("trump-ai-force-czar-")
         )
     )
 
@@ -3553,14 +3411,6 @@ def compact_explanation_lines(rule: StoryRule, items: list[dict], explain_item: 
 
 def alert_confirmation_status(rule: StoryRule, items: list[dict]) -> tuple[str, str]:
     """Return a conservative status, upgrading only first-party verified events."""
-    if (
-        rule.key == "trump_direct_policy_remarks_watch"
-        and any(
-            semantic_policy_event_key(item) == "us-trump-super-intelligence-force-formation-2026-10-04"
-            for item in items
-        )
-    ):
-        return "공식 확인", "Trump Truth Social 창설 원문을 Reuters·AP 보도와 교차 확인"
     if (
         rule.key in {
             "us_dow_project_meridian_future_warfare",
@@ -3764,32 +3614,6 @@ def _self_test_defense_future_warfare_event_model() -> None:
         "title": "Trump expected to name Jay Clayton as AI czar",
     }
     assert semantic_policy_event_key(expected_clayton) != "us-trump-ai-czar-jay-clayton-appointed-2026-10-03"
-
-    sif = {
-        "title": "Trump announces formation of AI Super Intelligence Force",
-        "description": (
-            "Trump announced the formation of the Super Intelligence Force. "
-            "The task force will coordinate federal efforts and is led by Jay Clayton, "
-            "Andrew Ferguson, Emil Michael and Scott Kupor. It will report within 120 days."
-        ),
-        "link": "https://truthsocial.com/@realDonaldTrump/117382616783706638",
-        "source": "Donald J. Trump (Truth Social)",
-        "published_kst": "2026-10-04T21:23:00+09:00",
-    }
-    assert semantic_policy_event_key(sif) == "us-trump-super-intelligence-force-formation-2026-10-04"
-    sif_profile = trump_story_profile(f"{sif['title']} {sif['description']}")
-    assert sif_profile and sif_profile.get("revision") == "trump-super-intelligence-force-formation-ko-v1"
-    assert "별도 예산" in str(sif_profile.get("scope_note") or "")
-    assert "120일" in str(sif_profile.get("actual_bullets") or "")
-    assert is_ai_force_alert({"rule": rules["trump_direct_policy_remarks_watch"], "items": [sif]})
-
-    sif_report = {
-        **sif,
-        "title": "Super Intelligence Force final report released with recommendations",
-        "description": "Super Intelligence Force final report released and recommendations submitted to the President.",
-        "published_kst": "2027-02-01T12:00:00+09:00",
-    }
-    assert semantic_policy_event_key(sif_report) == "us-trump-super-intelligence-force-report"
 
     southcom = {
         "title": "SOUTHCOM Establishes Autonomous Warfare Command",
