@@ -144,6 +144,8 @@ def compact_generation_message(msg: list[str]) -> list[str]:
         out.append(f"• <b>변화</b> │ {_plain(change_rows[0]).lstrip('• ')}")
     else:
         out.append("• <b>변화</b> │ 발전설비·공급망 실행 기준 업데이트")
+    if "가독성·정확도 업그레이드" in _plain(msg[0]):
+        out.append("• <b>정정</b> │ 비나텍 기사에 붙었던 ‘1MW’는 프로젝트 용량이 아니라 기사 내 단위 오인 추출이라 제거 · 확정 수주액 <b>412.15억원</b>만 유지")
     out.append("• <b>판정</b> │ 필요 GW → 장비발주·터빈슬롯 → 착공 → 연료·송전 연결 → 상업운전")
 
     current = []
@@ -437,7 +439,7 @@ pending = {
 PENDING.write_text(json.dumps(pending, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 if should_alert:
-    title = "✅ 미국 데이터센터 발전설비 감시 분리 완료" if baseline_run else "🔥 미국 데이터센터 발전설비 실행 변화"
+    title = ("✅ 미국 데이터센터 발전설비 감시 분리 완료" if baseline_run else ("✅ 미국 데이터센터 발전설비 알림 가독성·정확도 업그레이드" if format_upgrade and not new_items and not gev_changes else "🔥 미국 데이터센터 발전설비 실행 변화"))
     b = BASELINE
     msg = [f"<b>{h(title)}</b>", "", "<b>🔥 발전설비 실행판</b>"]
     msg.append(f"• <b>2030 필요 신규발전</b> │ <b>{b['need_generation_gw']:g}GW</b>")
