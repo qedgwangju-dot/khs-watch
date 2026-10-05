@@ -8,11 +8,13 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.honam_event_filter import (
+    _action_level,
     _event_family,
     _is_known_baseline_only,
     _is_proposal_only,
     _merge_group,
 )
+from scripts.honam_semiconductor_watch import canonical_headline_key, canonical_url_key
 
 
 class HonamEventFilterRegressionTest(unittest.TestCase):
@@ -103,6 +105,41 @@ class HonamEventFilterRegressionTest(unittest.TestCase):
         self.assertEqual(merged["verification_level"], 3)
         self.assertEqual(merged["verification_status"], "공식자료 확인")
         self.assertEqual(merged["evidence_count"], 2)
+
+    def test_news1_source_label_variants_share_headline_key(self):
+        pub = "Mon, 05 Oct 2026 23:01:00 GMT"
+        a = canonical_headline_key(
+            "'반도체 도시' 준비 전남광주…10만명 '의료 정주여건' 밑그림 시급 - 뉴스1",
+            pub,
+        )
+        b = canonical_headline_key(
+            "'반도체 도시' 준비 전남광주…10만명 '의료 정주여건' 밑그림 시급 - news1.kr",
+            pub,
+        )
+        self.assertEqual(a, b)
+
+    def test_google_news_same_article_query_variants_share_url_key(self):
+        base = "https://news.google.com/rss/articles/CBMiTESTARTICLE"
+        self.assertEqual(
+            canonical_url_key(base + "?oc=5"),
+            canonical_url_key(base + "?oc=5&utm_source=test"),
+        )
+
+    def test_medical_settlement_article_maps_to_known_family(self):
+        item = {
+            "title": "'반도체 도시' 준비 전남광주…10만명 '의료 정주여건' 밑그림 시급 - 뉴스1",
+            "description": "7일 반도체도시과 출범…연말 100일 전략 마련 검토",
+        }
+        self.assertEqual(_event_family(item), "honam_settlement_governance")
+        self.assertEqual(_action_level(item), 1)
+
+    def test_actual_department_launch_is_action_upgrade(self):
+        item = {
+            "title": "호남 반도체 정주 전담 반도체도시과 공식 출범",
+            "description": "전남광주통합특별시는 7일 반도체도시과가 출범했다고 밝혔다.",
+        }
+        self.assertEqual(_event_family(item), "honam_settlement_governance")
+        self.assertEqual(_action_level(item), 3)
 
 
 if __name__ == "__main__":
