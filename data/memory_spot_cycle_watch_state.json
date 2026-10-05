@@ -543,8 +543,8 @@
       "first_seen_kst": "2026-10-05T17:15:23+09:00"
     }
   },
-  "updated_at_kst": "2026-10-06T01:00:02+09:00",
-  "last_scan_count": 35,
+  "updated_at_kst": "2026-10-06T07:37:30+09:00",
+  "last_scan_count": 34,
   "last_new_count": 0,
   "hbm_market_pricing_track_version": 2,
   "hbm_market_alert_format_version": 2,
@@ -590,20 +590,20 @@
   },
   "legacy_dram_track_version": 1,
   "legacy_dram": {},
-  "last_successful_delivery_kst": "2026-10-05T17:15:30+09:00",
+  "last_successful_delivery_kst": "2026-10-06T07:37:38+09:00",
   "telegram_message_ids": [
-    234
+    238
   ],
-  "telegram_message_id": 234,
+  "telegram_message_id": 238,
   "bot_username": "khs88798879887988798879_bot",
   "delivery_receipt": {
     "status": "confirmed",
     "bot_username": "khs88798879887988798879_bot",
     "message_ids": [
-      234
+      238
     ],
-    "confirmed_at_kst": "2026-10-05T17:15:30+09:00",
-    "alert_signature": "03e44dca194adc82b0332d0bb236df1143c9f19d964d0a43900d2b4bb8c22e6e"
+    "confirmed_at_kst": "2026-10-06T07:37:38+09:00",
+    "alert_signature": "dba3c9aae55705574c02b602c0b1e9422cf587cf834ec7112e6f16baf2485bbd"
   },
   "trendforce_4q26_revision_track_version": 1,
   "trendforce_4q26_revision": {
