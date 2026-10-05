@@ -898,11 +898,17 @@ def parse_saudi_osp_snapshot(
     heavy_delta = -abs(float(heavy_cut.group(1))) if heavy_cut else (-5.0 if "change" in text.lower() and "-5.00" in text else None)
 
     eu_raise = re.search(
-        r"(?:northwest|north-west)\s+Europe.*?(?:raised|raise).*?\$?([0-9.]+)\s+a\s+barrel",
+        r"(?:raised|raise).*?(?:northwest|north-west)\s+Europe.*?\$?([0-9.]+)\s+a\s+barrel"
+        r"|(?:northwest|north-west)\s+Europe.*?(?:raised|raise).*?\$?([0-9.]+)\s+a\s+barrel",
         text,
         flags=re.I | re.S,
     )
-    europe_delta = abs(float(eu_raise.group(1))) if eu_raise else (3.0 if "northwest europe" in text.lower() and "0.85" in text else None)
+    europe_delta = None
+    if eu_raise:
+        raw_europe_delta = eu_raise.group(1) or eu_raise.group(2)
+        europe_delta = abs(float(raw_europe_delta)) if raw_europe_delta is not None else None
+    elif "northwest europe" in text.lower() and "0.85" in text:
+        europe_delta = 3.0
     us_unchanged = "unchanged" in text.lower() and ("united states" in text.lower() or "u.s." in text.lower() or "north america" in text.lower())
 
     if asia_light is None:
