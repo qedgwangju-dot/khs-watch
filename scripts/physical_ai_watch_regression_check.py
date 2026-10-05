@@ -18,6 +18,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import physical_ai_watch_airan_guard as watcher
+import physical_ai_watch_figure_entry as figure_lane
 
 base = watcher.base
 
@@ -1666,28 +1667,28 @@ assert watcher.qty._qty_summary(visible_quantity) == "15,000km", (
 # Hark/Handoff product posts and generic ambiguous AI teasers must not be
 # attributed to Figure AI. Only explicit Figure/Helix/robot/humanoid context
 # can enter the Figure lane.
-hark_launch = watcher.fig._make_figure_item(
+hark_launch = figure_lane._make_figure_item(
     "2106889503919292529",
     "Hark launches this week. The first 100,000 sign-ups get the paid plan free. Join the waitlist.",
     watcher.base.NOW,
 )
 assert hark_launch is None, "Hark launch post must not become a Figure AI alert"
 
-hark_benchmark = watcher.fig._make_figure_item(
+hark_benchmark = figure_lane._make_figure_item(
     "2106889503919292530",
     "Handoff is our personal AI browser agent. It launches this week with a 97.7% benchmark score.",
     watcher.base.NOW,
 )
 assert hark_benchmark is None, "Handoff benchmark must stay outside Figure AI"
 
-ambiguous_founder_teaser = watcher.fig._make_figure_item(
+ambiguous_founder_teaser = figure_lane._make_figure_item(
     "2106889503919292531",
     "Major AI update tomorrow. See you in the AM.",
     watcher.base.NOW,
 )
 assert ambiguous_founder_teaser is None, "Ambiguous founder AI teaser must stay silent"
 
-explicit_figure_teaser = watcher.fig._make_figure_item(
+explicit_figure_teaser = figure_lane._make_figure_item(
     "2106889503919292532",
     "Figure 03 AI update tomorrow. New humanoid autonomy results in the AM.",
     watcher.base.NOW,
