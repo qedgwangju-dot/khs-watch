@@ -54,6 +54,63 @@ class LeadTimeParserTests(unittest.TestCase):
         self.assertEqual(fixed["components"]["ABF"]["status"], "Very Tight")
         self.assertEqual(fixed["components"]["MLCC"]["status"], "Tight")
 
+    def test_weekly_004_exact_table_lock_matches_user_provided_trendforce_screenshot(self):
+        lock = w.WEEKLY_004_LOCK
+        self.assertEqual(lock["as_of"], "2026-10-05")
+        self.assertEqual(len(lock["components"]), 7)
+        expected = {
+            "CPU": ("Tight", "25-30", "16-20"),
+            "GPU": ("Balanced", "30-40", "30-40"),
+            "DRAM": ("Very Tight", "20", "8"),
+            "NAND(eSSD)": ("Tight", "16", "8"),
+            "HDD": ("Very Tight", "50", "16"),
+            "ABF": ("Very Tight", "48-56", "12"),
+            "MLCC": ("Tight", "35", "12"),
+        }
+        for name, triple in expected.items():
+            self.assertEqual(w.canonical_component(lock["components"][name]), triple)
+
+    def test_weekly_004_repair_corrects_dram_status_and_mlcc_stale_value(self):
+        stale = {
+            "as_of": "2026-10-05",
+            "source": "https://insights.trendforce.com/p/weekly-radar-004",
+            "components": {
+                **w.WEEKLY_004_LOCK["components"],
+                "DRAM": {"status": "Tight", "current": "20", "balanced": "8"},
+                "MLCC": {"status": "Tight", "current": "32", "balanced": "12"},
+            },
+            "signals": {"MLCC": "old"},
+        }
+        fixed, component_changes, signal_changes = w.repair_weekly_004_state(stale)
+        self.assertEqual(set(component_changes), {"DRAM", "MLCC"})
+        self.assertEqual(fixed["components"]["DRAM"]["status"], "Very Tight")
+        self.assertEqual(fixed["components"]["MLCC"]["current"], "35")
+        self.assertIn("GPU", signal_changes)
+        self.assertIn("MLCC", signal_changes)
+        alert = w.build_weekly_004_correction_alert(
+            stale["components"], fixed["components"], component_changes, signal_changes
+        )
+        self.assertIn("DRAM 상태 정정", alert)
+        self.assertIn("MLCC 최신값", alert)
+        self.assertIn("32주 → 35주", alert)
+        self.assertIn("7개 품목", alert)
+
+    def test_weekly_004_rows_parse_when_table_text_is_available(self):
+        text = (
+            "CPU Tight 25-30W 16-20W "
+            "GPU Balanced 30-40W 30-40W "
+            "DRAM Very Tight 20W 8W "
+            "NAND Tight 16W 8W "
+            "HDD Very Tight 50W 16W "
+            "ABF Very Tight 48-56W 12W "
+            "MLCC Tight 35W 12W"
+        )
+        rows = w.extract_components(text)
+        self.assertEqual(rows["DRAM"]["status"], "Very Tight")
+        self.assertEqual(rows["MLCC"]["current"], "35")
+        self.assertEqual(rows["CPU"]["balanced"], "16-20")
+
+
     def test_official_source_always_outranks_secondary_recap(self):
         official = w.source_score(
             "https://insights.trendforce.com/p/weekly-radar-003",
