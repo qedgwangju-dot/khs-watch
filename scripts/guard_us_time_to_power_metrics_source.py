@@ -1656,6 +1656,7 @@ s = s.replace("FORMAT_VERSION = 4", "FORMAT_VERSION = 6", 1)
 
 state_policy_const_anchor = 'DIGITIMES_SIC_RESEARCH = "https://apps.digitimes.com/reports/item.php?id=20260929RS400"\n'
 state_policy_const_new = state_policy_const_anchor + '''MA_EO_658 = "https://www.mass.gov/executive-orders/no-658-establishing-requirements-for-responsible-data-center-development-and-operations-in-massachusetts-to-protect-and-support-ratepayers-communities-and-the-environment"
+MA_DATA_CENTERS = "https://www.mass.gov/data-centers"
 PA_GRID_REQUIREMENTS = "https://dced.pa.gov/business-assistance/data-center-resources/grid-requirements/"
 VA_LARGE_LOAD_FACTS = "https://www.scc.virginia.gov/about-the-scc/scc-facts/"
 '''
@@ -1694,21 +1695,40 @@ def parse_state_policy_metrics(previous: dict | None = None) -> tuple[dict, list
         if key in metrics and value is not None:
             metrics[key] = value
 
+    ma_primary_error = None
     try:
         text = _state_policy_page_text(MA_EO_658)
+    except Exception as exc:
+        ma_primary_error = f"{type(exc).__name__}"
+        try:
+            text = _state_policy_page_text(MA_DATA_CENTERS)
+        except Exception as exc2:
+            text = ""
+            errors.append(
+                f"Massachusetts official sources: EO={ma_primary_error}; data-centers={type(exc2).__name__}"
+            )
+
+    if text:
         low = text.lower()
         if "twenty-five megawatts" in low or re.search(r"\b25\s*(?:mw|megawatts?)\b", text, re.I):
             metrics["ma_threshold_mw"] = 25.0
-        if re.search(r"other ratepayers do not pay distribution grid upgrades", text, re.I):
+        if (
+            re.search(r"other ratepayers do not pay distribution grid upgrades", text, re.I)
+            or re.search(r"pay for their own clean energy or pay fees to ratepayers", text, re.I)
+        ):
             metrics["ma_grid_upgrade_cost_shift_prohibited"] = True
-        if re.search(r"sufficient incremental new clean electricity generation", text, re.I):
+        if (
+            re.search(r"sufficient incremental new clean electricity generation", text, re.I)
+            or re.search(r"pay for their own clean energy", text, re.I)
+        ):
             metrics["ma_incremental_clean_energy_required"] = True
-        if re.search(r"community benefits agreement", text, re.I):
+        if (
+            re.search(r"community benefits agreement", text, re.I)
+            or re.search(r"community engagement standards", text, re.I)
+        ):
             metrics["ma_community_benefits_required"] = True
         if re.search(r"December\s+31,\s+2026", text, re.I):
             metrics["ma_acp_deadline"] = "2026-12-31"
-    except Exception as exc:
-        errors.append(f"Massachusetts EO 658: {type(exc).__name__}")
 
     try:
         text = _state_policy_page_text(PA_GRID_REQUIREMENTS)
@@ -1917,6 +1937,7 @@ state_policy_links_old = '''        msg.append(f"• {a('DIGITIMES SiC 기판 �
 state_policy_links_new = '''        msg.append(f"• {a('DIGITIMES SiC 기판 회복 연구', DIGITIMES_SIC_RESEARCH)}")
     if baseline_run or format_upgrade or state_policy_changes:
         msg.append(f"• {a('Massachusetts Executive Order 658', MA_EO_658)}")
+        msg.append(f"• {a('Massachusetts 데이터센터 공식 허브', MA_DATA_CENTERS)}")
         msg.append(f"• {a('Pennsylvania GRID Requirements', PA_GRID_REQUIREMENTS)}")
         msg.append(f"• {a('Virginia 대형부하 요금 기준', VA_LARGE_LOAD_FACTS)}")'''
 if state_policy_links_old not in s:
