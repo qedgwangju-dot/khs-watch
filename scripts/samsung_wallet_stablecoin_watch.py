@@ -36,6 +36,7 @@ DIGITAL_ASSET_URL = "https://www.digitalasset.works/news/articleView.html?idxno=
 KBW_FN_URL = "https://www.fnnews.com/news/202610011830546063"
 KBW_NEWSWHO_URL = "https://www.newswhoplus.com/news/articleView.html?idxno=70890"
 PATENT_US_URL = "https://patents.justia.com/patent/20260212355"
+PATENT_US_CROSSCHECK_URL = "https://www.oepm.es/en/informacion-tecnologica/vigilancia-tecnologica/alertas-tecnologicas/inteligencia-artificial-y-blockchain/blockchain/?id=53150&page=5"
 PATENT_KR_URL = "https://patents.google.com/patent/KR20250040467A/en"
 PATENT_NEWS_URL = "https://www.digitalasset.works/news/articleView.html?idxno=43408"
 PATENT_PUBLICATION = "US20260212355A1"
@@ -145,6 +146,7 @@ def official_context() -> dict:
         "kbw_executive_primary_confirmed": False,
         "kbw_executive_crosscheck_confirmed": False,
         "wallet_patent_us_confirmed": False,
+        "wallet_patent_us_crosscheck_confirmed": False,
         "wallet_patent_family_confirmed": False,
         "wallet_patent_news_confirmed": False,
         "explicit_reversal_confirmed": False,
@@ -261,6 +263,18 @@ def official_context() -> dict:
         result["errors"].append(f"wallet_patent_us: {exc}")
 
     try:
+        text = clean_text(fetch(PATENT_US_CROSSCHECK_URL)).lower()
+        result["wallet_patent_us_crosscheck_confirmed"] = bool(
+            "20260212355" in text
+            and "samsung electronics" in text
+            and "smart contract" in text
+            and "wallet function" in text
+            and ("23/07/2026" in text or "23.07.2026" in text or "23-07-2026" in text)
+        )
+    except Exception as exc:
+        result["errors"].append(f"wallet_patent_us_crosscheck: {exc}")
+
+    try:
         text = clean_text(fetch(PATENT_KR_URL)).lower()
         result["wallet_patent_family_confirmed"] = bool(
             "kr20250040467a" in text
@@ -328,8 +342,11 @@ def topic_state(official: dict, candidates: list[dict], previous: dict | None = 
     )
 
     patent_now = bool(
-        official.get("wallet_patent_us_confirmed")
-        and official.get("wallet_patent_family_confirmed")
+        official.get("wallet_patent_family_confirmed")
+        and (
+            official.get("wallet_patent_us_confirmed")
+            or official.get("wallet_patent_us_crosscheck_confirmed")
+        )
     )
     smart_contract_wallet_patent_confirmed = (
         patent_now or bool(previous.get("smart_contract_wallet_patent_confirmed"))
@@ -612,7 +629,7 @@ def main() -> int:
             ]
         if current.get("smart_contract_wallet_patent_confirmed"):
             lines += [
-                f'• 미국 공개특허 {PATENT_PUBLICATION} · Justia: <a href="{PATENT_US_URL}">원문</a>',
+                f'• 미국 공개특허 {PATENT_PUBLICATION} · OEPM 교차검증: <a href="{PATENT_US_CROSSCHECK_URL}">원문</a>',
                 f'• 한국 패밀리 KR20250040467A · Google Patents: <a href="{PATENT_KR_URL}">원문</a>',
             ]
             if official.get("wallet_patent_news_confirmed"):
@@ -638,6 +655,7 @@ def main() -> int:
         f"- KBW executive default-feature confirmation: {current.get('executive_default_feature_confirmation', False)}",
         f"- smart-contract wallet patent confirmed: {current.get('smart_contract_wallet_patent_confirmed', False)}",
         f"- patent publication: {current.get('wallet_patent_publication') or 'unconfirmed'}",
+        f"- US patent crosscheck: {official.get('wallet_patent_us_confirmed', False) or official.get('wallet_patent_us_crosscheck_confirmed', False)}",
         f"- patent direct stablecoin/Samsung Wallet link: {current.get('wallet_patent_direct_stablecoin_link', False)}",
         f"- partner: {current['stablecoin_partner'] or 'unconfirmed'}",
         f"- pilot/live: {current['pilot_or_launch']}",
