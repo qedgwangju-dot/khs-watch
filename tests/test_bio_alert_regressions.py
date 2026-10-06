@@ -78,6 +78,17 @@ class BioAlertRegressionTests(unittest.TestCase):
         self.assertEqual(halo.base.SEARCH_WORKERS, 8)
         self.assertEqual(halo.v3.SEARCH_HTTP_TIMEOUT, 7)
 
+    def test_bio_schedule_avoids_top_of_hour_load(self):
+        source = (ROOT / ".github" / "workflows" / "bio-qlex-intismeran-watch.yml").read_text(encoding="utf-8")
+        self.assertIn('cron: "7,22,37,52 * * * *"', source)
+        self.assertNotIn('cron: "*/15 * * * *"', source)
+
+    def test_bio_runner_exposes_failed_status_to_actions(self):
+        source = (ROOT / "scripts" / "bio_single_runner.py").read_text(encoding="utf-8")
+        self.assertIn('return 0 if hb.get("status") == "ok" else 1', source)
+        self.assertIn('"failed_component"', source)
+        self.assertIn("- 실패 구간:", source)
+
     def test_halozyme_runner_has_timeout_safety_margin(self):
         source = (ROOT / "scripts" / "bio_single_runner_v3.py").read_text(encoding="utf-8")
         self.assertIn("max(timeout, 300)", source)

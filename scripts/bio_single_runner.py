@@ -138,6 +138,7 @@ def main() -> int:
         "intismeran_retry_pending": False,
         "last_health_notice_date": prev.get("last_health_notice_date", ""),
         "errors": [],
+        "failed_component": "",
     }
 
     token = ""
@@ -182,12 +183,14 @@ def main() -> int:
         if enh_rc != 0:
             hb["errors"].append(f"Enhertu collector rc={enh_rc}: {enh_log}")
 
+        hb["failed_component"] = "Halozyme 특허분쟁 감시"
         halo_rc, halo_log = run([sys.executable, "scripts/halozyme_legal_watch_v4.py"])
         hb["halozyme_collector_rc"] = halo_rc
         hb["halozyme_run_outcome"] = "success" if halo_rc == 0 else "failure"
         if halo_rc != 0:
             hb["errors"].append(f"Halozyme collector rc={halo_rc}: {halo_log}")
         hb["halozyme_state_persisted"] = halo_rc == 0 and (DATA / "halozyme_ptab_watch_state.json").exists()
+        hb["failed_component"] = ""
 
         qlex_alert = OUT / "qlex_sc_conversion_alert.md"
         wac_alert = OUT / "qlex_wac_ir_alert.md"
@@ -312,6 +315,8 @@ def main() -> int:
         hb["status"] = "failed"
         failure_dt = dt.datetime.now(KST)
         detail = f"{type(exc).__name__}: {exc}"
+        if not hb.get("failed_component") and "halozyme_legal_watch_v4.py" in detail:
+            hb["failed_component"] = "Halozyme 특허분쟁 감시"
         hb["failed_at_kst"] = failure_dt.isoformat(timespec="seconds")
         hb["errors"].append(detail)
         if token and chat_id:
@@ -321,6 +326,7 @@ def main() -> int:
                     chat_id,
                     "[바이오 감시] 실행 오류\n\n"
                     f"- 실제 오류 시각: {failure_dt.strftime('%Y-%m-%d %H:%M KST')}\n"
+                    f"- 실패 구간: {hb.get('failed_component') or '바이오 통합 감시'}\n"
                     f"- 확인 원인: {detail[:500]}\n"
                     "- 다음 실행에서 자동 재확인합니다.",
                 )
@@ -330,7 +336,7 @@ def main() -> int:
         HEARTBEAT.write_text(json.dumps(hb, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(json.dumps(hb, ensure_ascii=False))
 
-    return 0
+    return 0 if hb.get("status") == "ok" else 1
 
 
 if __name__ == "__main__":
