@@ -1228,21 +1228,30 @@ def parse_glass_substrate_records(item, body):
 
         if entity == 'jntc' and re.search(r'김천|Gimcheon', text, re.I) and re.search(r'TGV|유리\s*기판|glass\s*substrate', text, re.I):
             capex = 347_000_000_000 if re.search(r'3\s*,?470\s*억\s*원|3470\s*억\s*원', text, re.I) else None
-            line_count = 10 if re.search(r'(?:10\s*개[^.]{0,30}(?:생산라인|라인)|(?:생산라인|라인)[^0-9]{0,30}10\s*개)', text, re.I) else None
+            initial_pair = bool(re.search(r'2\s*[~～-]\s*3\s*개\s*(?:생산)?라인', text, re.I))
             start_year = 2027 if re.search(r'2027', text) else None
             end_year = 2030 if re.search(r'2030', text) else None
             employees = 430 if re.search(r'430\s*(?:명|여명|people|employees?)', text, re.I) else None
             area_pyeong = 30000 if re.search(r'3\s*만\s*평|30,?000\s*(?:평|pyeong)', text, re.I) else None
-            if any(x is not None for x in (capex, line_count, start_year, end_year, employees, area_pyeong)):
+            groundbreaking = '2027H2' if re.search(r'2027\s*년?\s*하반기[^.]{0,40}?착공|착공[^.]{0,40}?2027\s*년?\s*하반기', text, re.I) else None
+            commercialization = '2028_mid' if re.search(r'2028\s*년?\s*(?:중반|중)[^.]{0,80}?(?:상용화|물량)', text, re.I) else None
+            mass_lines = 10 if re.search(r'10\s*개\s*이상[^.]{0,50}?(?:라인|확대)|(?:라인|확대)[^.]{0,50}?10\s*개\s*이상', text, re.I) else None
+            values = (capex, start_year, end_year, employees, area_pyeong, groundbreaking, commercialization, mass_lines)
+            if initial_pair or any(x is not None for x in values):
                 rows.append(make_record(
                     'glass_capex', ['jntc','gimcheon'],
-                    {'investment_krw':capex, 'line_count':line_count,
+                    {'investment_krw':capex,
+                     'line_count_min_initial':2 if initial_pair else None,
+                     'line_count_max_initial':3 if initial_pair else None,
+                     'line_count_mass_ramp_min':mass_lines,
                      'start_year':start_year, 'end_year':end_year,
+                     'groundbreaking_period':groundbreaking,
+                     'initial_customer_commercialization_period':commercialization,
                      'employees':employees, 'site_area_pyeong':area_pyeong,
                      'capacity_panels_per_month':None, 'stage':'reported_investment'},
                     'KRW,count,year', '2027-2030', item,
                     '제이앤티씨 김천 TGV 유리기판 설비투자',
-                    as_of=asof, scope='capex_and_lines_not_physical_output_capacity'))
+                    as_of=asof, scope='capex_line_ramp_not_physical_output_capacity'))
 
     return rows
 
