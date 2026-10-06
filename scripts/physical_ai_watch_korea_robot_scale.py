@@ -74,6 +74,29 @@ Baseline locked from Morgan Stanley's 2025 Humanoid 100 / humanoid-economy work:
 Repeated summaries, reposted videos and thematic beneficiary lists are silent.
 New alerts require an official Morgan Stanley revision to the unit/market/economic
 assumptions, or a new Humanoid 100 version that adds/removes/reclassifies a company.
+
+Lane F — Panasonic humanoid commercialization
+Baseline locked:
+- Group CAIO Akira Sakakibara disclosed to Nikkei on 2026-09-30 that Panasonic
+  Holdings had begun humanoid R&D and was aiming to manufacture by 2029, first for
+  factory production lines and warehouses. No prototype/specification was disclosed.
+- Panasonic Holdings officially established its AI & Robotics Research Laboratory,
+  led by Group CAIO Sakakibara, and Panasonic's official technology pages frame
+  Physical AI as a strategic R&D direction.
+- Panasonic Industry already markets humanoid-enabling component solutions such as
+  mechatronics-integrated servo motors, EDLC/capacitors, pressure sensors and
+  materials; Panasonic Energy already identifies humanoid robots as a future battery
+  application. These are component/platform capabilities, not proof they are already
+  integrated into Panasonic's own humanoid.
+- The user-provided claim of an Oct-6 "official commercialization declaration" with
+  a confirmed high-torque actuator + dedicated battery integrated platform is NOT a
+  verified current milestone and must not be upgraded without primary evidence.
+
+New alerts require a real execution-stage change: named/working prototype, quantified
+performance, actual Panasonic factory/warehouse pilot, confirmed actuator or battery
+integration with specifications, production-line/capex execution, external customer
+or binding order, mass production/shipment, price/revenue disclosure, or schedule
+advance/delay/cancellation.
 """
 from __future__ import annotations
 
@@ -111,6 +134,10 @@ for q in [
     '(삼성전자 OR "Samsung Electronics") ("Detachable AutoSSD" OR "LPDDR5X-PIM" OR LPDDR6) (휴머노이드 OR humanoid OR robotics OR robot OR 로봇 OR "physical AI") (고객 OR sample OR qualification OR 채택 OR 탑재 OR 계약 OR 양산 OR 출하)',
     '("Morgan Stanley" OR 모건스탠리) ("Humanoid 100" OR humanoid OR 휴머노이드) (2050 OR "1 billion" OR 10억 OR "$5 trillion" OR 5조달러 OR "$40 trillion" OR 40조달러 OR NPV OR "$200,000" OR 20만달러)',
     '("Morgan Stanley" OR 모건스탠리) ("Humanoid 100") (update OR revised OR revision OR add OR added OR remove OR removed OR reclassify OR 편입 OR 제외 OR 변경 OR 개정)',
+    '(Panasonic OR 파나소닉 OR パナソニック) (humanoid OR 휴머노이드 OR ヒューマノイド OR 人型ロボット) (2029 OR prototype OR 시제품 OR 試作 OR factory OR warehouse OR 공장 OR 창고 OR production OR 양산 OR shipment OR customer OR order OR contract)',
+    '(Panasonic OR 파나소닉 OR パナソニック) ("AI & Robotics Research Laboratory" OR "AI・ロボティクス研究開発本部" OR "AI Robotics Research") (humanoid OR physical AI OR robotics OR 휴머노이드 OR 피지컬AI)',
+    '(Panasonic Industry OR 파나소닉 인더스트리 OR パナソニック インダストリー) (humanoid OR 휴머노이드 OR ヒューマノイド) (servo motor OR 서보 모터 OR サーボモータ OR actuator OR 액추에이터 OR EDLC OR pressure sensor OR 감압 센서) (prototype OR integrate OR integration OR sample OR customer OR mass production OR 양산 OR 채택 OR 탑재)',
+    '(Panasonic Energy OR 파나소닉 에너지 OR パナソニック エナジー) (humanoid OR 휴머노이드 OR ヒューマノイド) (battery OR 배터리 OR 電池) (sample OR prototype OR integration OR pack OR cell OR capacity OR Wh OR contract OR supply OR mass production OR 양산)',
 ]:
     if q not in base.QUERIES:
         base.QUERIES.append(q)
@@ -123,11 +150,14 @@ base.OFFICIAL_OR_PRIMARY.update({
     'Google', 'Google DeepMind', 'Boston Dynamics',
     'SK하이닉스', 'SK hynix', 'SK hynix Newsroom', 'Micron', 'Micron Technology',
     'Morgan Stanley', 'Morgan Stanley Research',
+    'Panasonic', 'Panasonic Holdings', 'Panasonic Newsroom', 'Panasonic Industry',
+    'Panasonic Energy', 'パナソニック', 'パナソニック ホールディングス',
 })
 base.TRUSTED.update({
     '연합뉴스', '뉴시스', '전자신문', '한국경제', '매일경제', '머니투데이',
     '조선일보', '서울경제', '이데일리', '뉴스1', 'News1', '뉴스핌', 'NewsPim',
     '파이낸셜뉴스', '매경이코노미', 'Reuters', 'Bloomberg',
+    'Nikkei', 'Nikkei Asia', '日本経済新聞', '로봇신문', 'The Robot Report',
 })
 
 PRICE_ONLY = re.compile(r'주가|급등|상한가|특징주|수혜주|목표주가|stock\s*price|shares?\s*(?:jump|rise|surge)', re.I)
@@ -451,6 +481,151 @@ MS_FORECAST_NUMBER = re.compile(
 )
 
 
+PANASONIC_ID = re.compile(
+    r'Panasonic(?:\s+Holdings|\s+Industry|\s+Energy)?|파나소닉(?:홀딩스|\s*인더스트리|\s*에너지)?|'
+    r'パナソニック(?:ホールディングス|\s*インダストリー|\s*エナジー)?',
+    re.I,
+)
+PANASONIC_HUMANOID = re.compile(
+    r'humanoid|human[-\s]*form\s+robot|physical\s*AI|robotics?|휴머노이드|피지컬\s*AI|로봇|'
+    r'ヒューマノイド|人型ロボット|フィジカルAI|ロボティクス',
+    re.I,
+)
+PANASONIC_2029_BASELINE = re.compile(
+    r'(?:Panasonic|파나소닉|パナソニック).{0,420}'
+    r'(?:2029|2029年).{0,220}(?:humanoid|휴머노이드|ヒューマノイド|人型ロボット)|'
+    r'(?:humanoid|휴머노이드|ヒューマノイド|人型ロボット).{0,320}(?:2029|2029年)',
+    re.I | re.S,
+)
+PANASONIC_AI_ROBOTICS_LAB = re.compile(
+    r'AI\s*&\s*Robotics\s+Research\s+Laboratory|AI\s+and\s+Robotics\s+Research\s+Laboratory|'
+    r'AI・ロボティクス研究開発本部|AI\s*ロボティクス研究開発本部',
+    re.I,
+)
+PANASONIC_COMPONENT_BASELINE = re.compile(
+    r'(?:Panasonic\s+Industry|파나소닉\s*인더스트리|パナソニック\s*インダストリー).{0,500}'
+    r'(?:humanoid|휴머노이드|ヒューマノイド).{0,500}'
+    r'(?:servo\s+motor|서보\s*모터|サーボモータ|EDLC|pressure\s+sensor|감압\s*센서|'
+    r'感圧センサ|capacitor|캐패시터|コンデンサ)',
+    re.I | re.S,
+)
+PANASONIC_BATTERY_BASELINE = re.compile(
+    r'(?:Panasonic\s+Energy|파나소닉\s*에너지|パナソニック\s*エナジー).{0,500}'
+    r'(?:humanoid|휴머노이드|ヒューマノイド).{0,400}(?:battery|배터리|電池)|'
+    r'(?:battery|배터리|電池).{0,400}(?:humanoid|휴머노이드|ヒューマノイド)',
+    re.I | re.S,
+)
+PANASONIC_PROTOTYPE = re.compile(
+    r'working\s+prototype|physical\s+prototype|prototype.{0,40}(?:unveil|show|demonstrat|complete)|'
+    r'시제품.{0,40}(?:공개|시연|완성)|실물\s*시제품|試作機.{0,40}(?:公開|披露|完成|実演)',
+    re.I,
+)
+PANASONIC_NAMED_PRODUCT = re.compile(
+    r'(?:humanoid|휴머노이드|ヒューマノイド|人型ロボット).{0,80}'
+    r'(?:named|called|model|platform|제품명|모델명|플랫폼|名称|モデル名)',
+    re.I,
+)
+PANASONIC_INTERNAL_PILOT = re.compile(
+    r'(?:Panasonic|파나소닉|パナソニック).{0,200}'
+    r'(?:factory|plant|warehouse|공장|생산라인|창고|工場|倉庫).{0,160}'
+    r'(?:pilot|deploy|deployment|field\s+test|operation|실증|배치|투입|운영\s*개시|'
+    r'実証|導入|配備|稼働)',
+    re.I | re.S,
+)
+PANASONIC_BATTERY_INTEGRATION = re.compile(
+    r'(?:own\s+humanoid|Panasonic.{0,100}humanoid|자체\s*휴머노이드|パナソニック.{0,100}ヒューマノイド).{0,240}'
+    r'(?:battery|battery\s*pack|cell|배터리|배터리\s*팩|셀|電池|バッテリー).{0,180}'
+    r'(?:integrat|搭載|채택|탑재|採用|組み込|spec|Wh|V|Ah|kWh|energy\s+density|에너지밀도)',
+    re.I | re.S,
+)
+PANASONIC_ACTUATOR_INTEGRATION = re.compile(
+    r'(?:own\s+humanoid|Panasonic.{0,100}humanoid|자체\s*휴머노이드|パナソニック.{0,100}ヒューマノイド).{0,240}'
+    r'(?:actuator|servo\s+motor|액추에이터|서보\s*모터|アクチュエータ|サーボモータ).{0,180}'
+    r'(?:integrat|搭載|채택|탑재|採用|組み込|torque|Nm|kW/kg|토크|トルク)',
+    re.I | re.S,
+)
+PANASONIC_PERFORMANCE = re.compile(
+    r'(?:payload|runtime|operating\s+time|speed|success\s+rate|human\s+intervention|'
+    r'battery\s+capacity|energy\s+density|torque\s+density|'
+    r'가반하중|연속\s*가동|가동시간|속도|성공률|사람\s*개입|배터리\s*용량|'
+    r'에너지밀도|토크\s*밀도|可搬重量|連続稼働|稼働時間|成功率|トルク密度).{0,80}'
+    r'\d[\d,.]*\s*(?:kg|h|hours?|km/h|m/s|%|Wh|kWh|Wh/kg|Nm|Nm/kg|kW/kg|分|時間)',
+    re.I,
+)
+PANASONIC_PRODUCTION_CAPEX = re.compile(
+    r'(?:humanoid|휴머노이드|ヒューマノイド|人型ロボット).{0,180}'
+    r'(?:production\s+line|factory|plant|capacity|capex|equipment\s+order|'
+    r'생산라인|공장|생산능력|설비투자|장비\s*발주|量産ライン|工場|生産能力|設備投資).{0,120}'
+    r'(?:approved|decided|ordered|construction|install|확정|결정|발주|착공|설치|'
+    r'決定|発注|着工|導入|設置)',
+    re.I | re.S,
+)
+PANASONIC_EXTERNAL_CUSTOMER = re.compile(
+    r'(?:customer|client|OEM|고객|수요처|顧客|OEM).{0,100}'
+    r'(?:Panasonic|파나소닉|パナソニック).{0,160}(?:humanoid|휴머노이드|ヒューマノイド)|'
+    r'(?:Panasonic|파나소닉|パナソニック).{0,160}(?:humanoid|휴머노이드|ヒューマノイド).{0,120}'
+    r'(?:customer|client|OEM|고객|顧客)',
+    re.I | re.S,
+)
+PANASONIC_BINDING_ORDER = re.compile(
+    r'binding\s+contract|supply\s+contract|purchase\s+order|volume\s+order|'
+    r'공급\s*계약|본계약|수주|발주|구매\s*주문|供給契約|受注|発注',
+    re.I,
+)
+PANASONIC_MASS_PRODUCTION = re.compile(
+    r'mass\s*production|series\s*production|commercial\s+production|shipments?\s*(?:started|began)|'
+    r'양산\s*(?:개시|시작|돌입)|상업\s*생산|출하\s*(?:개시|시작)|'
+    r'量産\s*(?:開始|着手)|商用生産|出荷\s*開始',
+    re.I,
+)
+PANASONIC_SCHEDULE_CHANGE = re.compile(
+    r'(?:2029|commercialization|production|mass\s*production|상용화|양산|생산|量産|生産).{0,120}'
+    r'(?:accelerat|bring\s+forward|delay|postpone|push\s+back|cancel|'
+    r'앞당|연기|지연|취소|前倒し|延期|遅延|中止)',
+    re.I,
+)
+PANASONIC_EXECUTED = re.compile(
+    r'announced|confirmed|completed|started|began|deployed|installed|ordered|signed|awarded|'
+    r'발표|확인|완료|개시|시작|배치|투입|설치|발주|체결|수주|'
+    r'発表|確認|完了|開始|導入|配備|設置|発注|締結|受注',
+    re.I,
+)
+
+
+def _is_panasonic_humanoid(text: str) -> bool:
+    return bool(PANASONIC_ID.search(text) and PANASONIC_HUMANOID.search(text))
+
+
+def _panasonic_stage(text: str, source: str = '') -> str:
+    if not _is_panasonic_humanoid(text):
+        return ''
+    if PANASONIC_SCHEDULE_CHANGE.search(text):
+        return 'schedule_change'
+    if PANASONIC_EXTERNAL_CUSTOMER.search(text) and PANASONIC_BINDING_ORDER.search(text):
+        return 'external_customer_order'
+    if PANASONIC_MASS_PRODUCTION.search(text) and PANASONIC_EXECUTED.search(text):
+        return 'mass_production'
+    if PANASONIC_PRODUCTION_CAPEX.search(text):
+        return 'production_capex'
+    if PANASONIC_INTERNAL_PILOT.search(text):
+        return 'internal_factory_pilot'
+    if PANASONIC_BATTERY_INTEGRATION.search(text):
+        return 'battery_integration'
+    if PANASONIC_ACTUATOR_INTEGRATION.search(text):
+        return 'actuator_integration'
+    if PANASONIC_PERFORMANCE.search(text):
+        return 'quantified_performance'
+    if PANASONIC_PROTOTYPE.search(text) or PANASONIC_NAMED_PRODUCT.search(text):
+        return 'prototype_reveal'
+    if PANASONIC_2029_BASELINE.search(text):
+        return 'entry_2029_baseline'
+    if PANASONIC_AI_ROBOTICS_LAB.search(text):
+        return 'rd_org_baseline'
+    if PANASONIC_COMPONENT_BASELINE.search(text) or PANASONIC_BATTERY_BASELINE.search(text):
+        return 'component_baseline'
+    return 'monitor'
+
+
 def _is_korea_policy(text: str) -> bool:
     execution = (
         KOREA_POLICY.search(text) or PROC_NOTICE.search(text) or PROC_AWARD.search(text)
@@ -679,6 +854,8 @@ def _samsung_stage(text: str) -> str:
 def topic_group(text: str) -> str | None:
     if _is_korea_policy(text):
         return 'korea_robot_scale_policy'
+    if _is_panasonic_humanoid(text) and _panasonic_stage(text) != 'monitor':
+        return 'panasonic_humanoid'
     if _is_ms_humanoid_research(text) and _ms_humanoid_stage(text) != 'monitor':
         return 'ms_humanoid_research'
     if _is_physical_ai_memory(text) and _physical_ai_memory_stage(text) != 'monitor':
@@ -737,6 +914,34 @@ def score(item: dict) -> int:
             'home_launch': 15,
             'supplier_award': 13,
             'reverse': 14,
+        }.get(stage, 0)
+        return s
+
+    if group == 'panasonic_humanoid':
+        src = item.get('source') or ''
+        stage = _panasonic_stage(text, src)
+        if stage in {'entry_2029_baseline', 'rd_org_baseline', 'component_baseline', 'monitor'}:
+            return 0
+        if PRICE_ONLY.search(title):
+            return -20
+        # Accuracy first: execution-stage alerts require Panasonic itself or a
+        # high-quality source with explicit executed-stage language.
+        if src not in base.OFFICIAL_OR_PRIMARY and src not in base.TRUSTED:
+            return 0
+        s = 22
+        if base.NUMERIC.search(text): s += 3
+        if src in base.OFFICIAL_OR_PRIMARY: s += 8
+        elif src in base.TRUSTED: s += 4
+        s += {
+            'prototype_reveal': 12,
+            'quantified_performance': 14,
+            'internal_factory_pilot': 16,
+            'actuator_integration': 13,
+            'battery_integration': 13,
+            'production_capex': 15,
+            'external_customer_order': 18,
+            'mass_production': 20,
+            'schedule_change': 15,
         }.get(stage, 0)
         return s
 
@@ -838,6 +1043,22 @@ def category(text: str, group: str) -> str:
             'reverse': '삼성전자 로봇 · 일정·안전·신뢰성 후퇴',
         }.get(_samsung_stage(text), '삼성전자 로봇 · 사업 단계 변화')
 
+    if group == 'panasonic_humanoid':
+        return {
+            'entry_2029_baseline': '파나소닉 휴머노이드 · 2029 제조목표 진입 기준선',
+            'rd_org_baseline': '파나소닉 휴머노이드 · AI·로보틱스 연구조직 기준선',
+            'component_baseline': '파나소닉 휴머노이드 · 기존 부품·배터리 역량 기준선',
+            'prototype_reveal': '파나소닉 휴머노이드 · 실물 시제품·모델 공개',
+            'quantified_performance': '파나소닉 휴머노이드 · 성능 정량 검증',
+            'internal_factory_pilot': '파나소닉 휴머노이드 · 자사 공장·창고 현장실증',
+            'actuator_integration': '파나소닉 휴머노이드 · 자체 액추에이터 통합',
+            'battery_integration': '파나소닉 휴머노이드 · 자체 배터리 통합',
+            'production_capex': '파나소닉 휴머노이드 · 생산라인·설비투자 실행',
+            'external_customer_order': '파나소닉 휴머노이드 · 외부 고객 본계약·수주',
+            'mass_production': '파나소닉 휴머노이드 · 실제 양산·출하',
+            'schedule_change': '파나소닉 휴머노이드 · 2029 일정 변경',
+        }.get(_panasonic_stage(text), '파나소닉 휴머노이드 · 후속 실행')
+
     if group == 'ms_humanoid_research':
         return {
             'known_baseline': '모건스탠리 휴머노이드 · 2025 장기전망·Humanoid 100 기준선',
@@ -904,6 +1125,23 @@ def meaning(cat: str) -> str:
             '일정·안전·신뢰성 후퇴': '로봇 양산·현장배치가 신뢰성·안전·사고·개발지연 때문에 뒤로 밀리는 역방향 신호입니다. 실패 원인과 새 일정, 보증·보험 영향을 확인합니다.',
         }.get(raw, 'RX사업추진실의 제조→가정 전략, 수백만대 잠재력, 99.99% 필요 수준, World Action Models·Human Motion Retargeting은 현재 기준선이며 반복 보도는 침묵합니다.')
 
+
+    if cat.startswith('파나소닉 휴머노이드'):
+        raw = cat.split(' · ', 1)[-1]
+        return {
+            '2029 제조목표 진입 기준선': '사카키바라 아키라 그룹 CAIO가 2029년까지 휴머노이드 제조를 목표로 연구개발에 착수했다고 밝힌 단계입니다. 우선 공장 생산라인·창고가 목표지만 아직 실물 시제품·성능·가격·생산능력은 공개되지 않았습니다.',
+            'AI·로보틱스 연구조직 기준선': '파나소닉홀딩스가 AI·로보틱스 연구개발본부를 두고 피지컬AI를 그룹 전략 기술로 추진하는 조직 기반입니다. 조직 신설 자체를 양산 매출로 해석하지 않습니다.',
+            '기존 부품·배터리 역량 기준선': 'Panasonic Industry의 기전 일체형 서보 모터·EDLC·감압센서 등과 Panasonic Energy의 배터리 역량은 자체 휴머노이드의 잠재 내재화 자산입니다. 실제 자체 로봇 탑재 확인 전에는 내부 시너지 후보입니다.',
+            '실물 시제품·모델 공개': '2029 목표가 실제 하드웨어로 구체화되는 첫 실행 신호입니다. 자유도·무게·가반하중·배터리·액추에이터·센서·연산플랫폼과 목표 단가를 확인합니다.',
+            '성능 정량 검증': '데모를 넘어 작업 성공률·사람 개입률·연속 가동시간·가반하중·속도·전력·토크밀도가 수치로 검증되는 단계입니다.',
+            '자사 공장·창고 현장실증': '파나소닉이 보유한 제조·물류 현장을 내부 첫 고객으로 활용하는 단계입니다. 배치 대수·작업·사이클타임·가동률·안전요원·고장률을 확인합니다.',
+            '자체 액추에이터 통합': 'Panasonic Industry의 모터·제어·센서 역량이 자체 휴머노이드 BOM으로 실제 연결되는 신호입니다. 관절 수·개당 토크·원가·수율을 추적합니다.',
+            '자체 배터리 통합': 'Panasonic Energy의 셀·BMS가 자체 휴머노이드에 실제 채택되는 신호입니다. 셀 형식, 팩 Wh, Wh/kg, 연속가동시간, 열관리와 안전성을 확인합니다.',
+            '생산라인·설비투자 실행': '연구개발에서 양산 준비로 이동하는 자본집행 신호입니다. 공장 위치·투자액·장비발주·연산 생산능력과 SOP를 확인합니다.',
+            '외부 고객 본계약·수주': '내부 검증을 넘어 제3자 제조·물류 고객이 계약한 직접 매출 신호입니다. 고객명·대수·가격·납기와 유지보수 범위를 분리합니다.',
+            '실제 양산·출하': '2029 목표가 반복 가능한 생산·출하로 전환되는 단계입니다. 월 생산량·수율·가동률·출하대수·재주문을 확인합니다.',
+            '2029 일정 변경': '기존 2029 제조 목표가 앞당겨지거나 미뤄지는 시간표 재평가 신호입니다. AI 모델·손/관절·배터리·안전·원가·수율 중 원인을 분리합니다.',
+        }.get(raw, '파나소닉의 2029 휴머노이드 목표가 실제 제품·현장배치·양산·매출로 이어지는지를 추적합니다.')
 
     if cat.startswith('모건스탠리 휴머노이드'):
         raw = cat.split(' · ', 1)[-1]
@@ -980,6 +1218,22 @@ def risk(cat: str) -> str:
         return '수백만대는 잠재시장 표현이지 판매가이던스가 아닙니다. 공장별 실제 배치대수와 양산제품·가격·외부판매를 별도로 확인합니다.'
 
 
+    if cat.startswith('파나소닉 휴머노이드'):
+        raw = cat.split(' · ', 1)[-1]
+        if raw == '2029 제조목표 진입 기준선':
+            return '현재 가장 현실적인 실패 경로는 2029 목표가 연구개발 일정에 머물고 시제품·현장실증·양산설비로 이어지지 않는 경우입니다. 먼저 볼 지표는 실물 시제품과 자사 공장·창고 파일럿입니다.'
+        if raw == '자사 공장·창고 현장실증':
+            return '내부 파일럿과 상시 무인운영은 다릅니다. 사람 개입률, 낙상·충돌, 배터리 교체주기, 정비시간, 가동률이 먼저 병목이 될 수 있습니다.'
+        if raw == '자체 액추에이터 통합':
+            return '고토크 문구만으로 경쟁력을 판단하지 않습니다. 토크밀도·백래시·발열·감속기 수명·관절 수율과 낙상 충격 내구성을 확인합니다.'
+        if raw == '자체 배터리 통합':
+            return '배터리 안전성만으로 긴 가동시간이 보장되지 않습니다. 셀당 Wh, 팩 중량, 피크출력, 열관리, 급속충전·교체방식, 열폭주와 보험 영향을 확인합니다.'
+        if raw == '외부 고객 본계약·수주':
+            return '계약 총대수와 실제 연도별 출하는 다를 수 있습니다. 검수·안전인증·성능보증·옵션물량·취소조항과 장기 유지보수 계약을 분리합니다.'
+        if raw == '실제 양산·출하':
+            return '초기 양산은 수율·부품조달·안전검증·AS비용으로 총자산이익률이 악화될 수 있습니다. 명목 생산능력과 실제 판매대수를 분리합니다.'
+        return '파나소닉의 강점인 모터·센서·전원·배터리 부품을 자체 휴머노이드 통합 성공으로 자동 간주하지 않습니다. 통합 열관리·배선·제어·신뢰성·원가와 외부 고객 채택이 별도 문턱입니다.'
+
     if cat.startswith('모건스탠리 휴머노이드'):
         raw = cat.split(' · ', 1)[-1]
         if raw == '2025 장기전망·Humanoid 100 기준선':
@@ -1025,6 +1279,17 @@ def verification(item: dict, group: str, text: str) -> str:
         if src in base.OFFICIAL_OR_PRIMARY:
             return '삼성전자·삼성 AI Forum 공식자료'
         return '신뢰 매체 보도 · 삼성전자 공식자료와 실제 공장·제품 단계 교차확인'
+    if group == 'panasonic_humanoid':
+        stage = _panasonic_stage(text, src)
+        if stage == 'entry_2029_baseline':
+            return 'Nikkei의 사카키바라 아키라 CAIO 직접 인터뷰 + Panasonic 공식 AI·로보틱스 조직/기술자료 교차확인 · 10월6일 별도 공식 상용화 발표로 보지 않음'
+        if stage in {'rd_org_baseline', 'component_baseline'}:
+            return 'Panasonic Holdings/Industry/Energy 공식자료 기준선 · 자체 휴머노이드 통합·양산 여부와 분리'
+        if src in base.OFFICIAL_OR_PRIMARY:
+            return 'Panasonic 공식자료 · 시제품/실증/부품통합/설비/고객/양산 단계 분리'
+        if src in {'Nikkei', 'Nikkei Asia', '日本経済新聞', 'Reuters', 'Bloomberg'}:
+            return '신뢰 1차인터뷰·보도 · Panasonic 공식자료로 실행단계 교차확인'
+        return '2차 보도 단계 · Panasonic 1차 자료 확인 전 단독 알림 금지'
     if group == 'ms_humanoid_research':
         stage = _ms_humanoid_stage(text, src)
         if stage == 'known_baseline':
@@ -1090,6 +1355,31 @@ def key(item: dict) -> str:
             f"samsung-robot-scale|{stage}|{','.join(anchors)}|{_sig_numbers(text)}".encode()
         ).hexdigest()
 
+
+    if group == 'panasonic_humanoid':
+        stage = _panasonic_stage(text, item.get('source') or '')
+        if stage == 'entry_2029_baseline':
+            return hashlib.sha256(b'panasonic-humanoid|2026-09-30|2029-manufacturing-target').hexdigest()
+        if stage == 'rd_org_baseline':
+            return hashlib.sha256(b'panasonic-humanoid|ai-robotics-rd-lab|baseline').hexdigest()
+        if stage == 'component_baseline':
+            return hashlib.sha256(b'panasonic-humanoid|industry-energy-component-baseline').hexdigest()
+        nums = '|'.join(sorted(set(re.findall(
+            r'\d[\d,.]*\s*(?:robots?|units?|kg|Wh|kWh|Wh/kg|Nm|Nm/kg|kW/kg|%|hours?|h|円|yen|달러|원|대|개)',
+            text,
+            re.I,
+        )))[:10])
+        sig = []
+        for name, pat in [
+            ('prototype', r'prototype|시제품|試作'),
+            ('factory', r'factory|plant|공장|工場'),
+            ('warehouse', r'warehouse|창고|倉庫'),
+            ('battery', r'battery|배터리|電池|バッテリー'),
+            ('actuator', r'actuator|servo\s+motor|액추에이터|서보\s*모터|アクチュエータ|サーボモータ'),
+            ('customer', r'customer|고객|顧客'),
+        ]:
+            if re.search(pat, text, re.I): sig.append(name)
+        return hashlib.sha256(f"panasonic-humanoid|{stage}|{','.join(sig)}|{nums}".encode()).hexdigest()
 
     if group == 'ms_humanoid_research':
         stage = _ms_humanoid_stage(text, item.get('source') or '')
@@ -1176,6 +1466,8 @@ def tag_for(group: str) -> str:
         return '한국로봇정책'
     if group == 'samsung_robot_scale':
         return '삼성전자로봇'
+    if group == 'panasonic_humanoid':
+        return '파나소닉휴머노이드'
     if group == 'ms_humanoid_research':
         return 'MS휴머노이드'
     if group == 'physical_ai_memory':
@@ -1208,6 +1500,18 @@ def clean_title(title: str, source: str) -> str:
             'supplier_award': '삼성전자 로봇 핵심부품 공급사·발주 확인',
             'reverse': '삼성전자 로봇, 일정·안전·신뢰성 역방향 변화',
         }.get(_samsung_stage(text), _orig_clean_title(title, source))
+    if _is_panasonic_humanoid(text) and _panasonic_stage(text, source) != 'monitor':
+        return {
+            'prototype_reveal': '파나소닉 휴머노이드, 실물 시제품·모델 공개',
+            'quantified_performance': '파나소닉 휴머노이드, 성능 정량 검증',
+            'internal_factory_pilot': '파나소닉 휴머노이드, 자사 공장·창고 실증 진입',
+            'actuator_integration': '파나소닉 휴머노이드, 자체 액추에이터 통합 확인',
+            'battery_integration': '파나소닉 휴머노이드, 자체 배터리 통합 확인',
+            'production_capex': '파나소닉 휴머노이드, 생산라인·설비투자 실행',
+            'external_customer_order': '파나소닉 휴머노이드, 외부 고객 본계약·수주',
+            'mass_production': '파나소닉 휴머노이드, 실제 양산·출하 시작',
+            'schedule_change': '파나소닉 휴머노이드, 2029 제조 일정 변경',
+        }.get(_panasonic_stage(text, source), _orig_clean_title(title, source))
     if _is_ms_humanoid_research(text) and _ms_humanoid_stage(text, source) != 'monitor':
         return {
             'forecast_revision': '모건스탠리, 휴머노이드 2050 보급·시장·경제성 전망 수정',
@@ -1243,7 +1547,7 @@ def clean_title(title: str, source: str) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
-    for group in ('korea_robot_scale_policy', 'samsung_robot_scale', 'physical_ai_memory', 'robot_compute_semiconductor', 'ms_humanoid_research'):
+    for group in ('korea_robot_scale_policy', 'samsung_robot_scale', 'panasonic_humanoid', 'physical_ai_memory', 'robot_compute_semiconductor', 'ms_humanoid_research'):
         hit = next((x for x in candidates if x.get('group') == group), None)
         if not hit or any(x.get('key') == hit.get('key') for x in chosen):
             continue
