@@ -1807,6 +1807,8 @@ def render(change, rate=None):
              'glass_tsmc_roadmap': 'TSMC CoPoS·Glass Core 양산 로드맵',
              'glass_panel_yield': '유리기판 패널·양산 수율',
              'glass_hvm_stage': '유리기판 고객검증→발주→HVM 전환 단계',
+             'glass_process_cycle_time': '제이앤티씨 TGV 핵심공정 시간 단축',
+             'glass_capex': '제이앤티씨 김천 TGV 설비투자',
              'foundry_loss_outlook': '삼성 파운드리+System LSI 손실 축소 전망',
              'foundry_external_2nm': '삼성 외부 2나노 AI·HPC 수주·양산 전환',
              'foundry_taylor_schedule': '삼성 Taylor Fab1 양산 일정·외부 고객 협상',
@@ -1858,6 +1860,29 @@ def render(change, rate=None):
             return " / ".join(parts)
         if record['axis'] == 'glass_panel_yield':
             return f"패널·양산 수율 {v.get('yield_pct'):.1f}%"
+        if record['axis'] == 'glass_process_cycle_time':
+            before = f"{float(v['before_minutes']):g}분" if v.get('before_minutes') is not None else "개선 전 미확인"
+            if v.get('after_minutes_exact') is not None:
+                after = f"{float(v['after_minutes_exact']):g}분"
+            elif v.get('after_time_class') == 'minute_scale':
+                after = "분 단위(정확한 분 수 미공개)"
+            else:
+                after = "개선 후 미확인"
+            return f"{v.get('process_name') or '공정 미확인'} / {before}→{after}"
+        if record['axis'] == 'glass_capex':
+            parts = []
+            if v.get('investment_krw') is not None:
+                parts.append(f"투자 {float(v['investment_krw'])/1e8:,.0f}억원")
+            if v.get('line_count') is not None:
+                parts.append(f"{int(v['line_count'])}개 라인")
+            if v.get('start_year') or v.get('end_year'):
+                parts.append(f"{v.get('start_year') or '?'}~{v.get('end_year') or '?'}년")
+            if v.get('site_area_pyeong') is not None:
+                parts.append(f"부지 {int(v['site_area_pyeong']):,}평")
+            if v.get('employees') is not None:
+                parts.append(f"고용 {int(v['employees']):,}명")
+            parts.append(f"생산능력 월 {float(v['capacity_panels_per_month']):,.0f}장" if v.get('capacity_panels_per_month') is not None else "실제 물량 생산능력 미공개")
+            return " / ".join(parts)
         if record['axis'] == 'glass_hvm_stage':
             labels = {'sample':'샘플','customer_evaluation':'고객 검증','po_pending':'정식 발주 대기','po_signed':'정식 수주','pilot':'파일럿','mass_production':'양산'}
             text = labels.get(v.get('stage'),v.get('stage',''))
