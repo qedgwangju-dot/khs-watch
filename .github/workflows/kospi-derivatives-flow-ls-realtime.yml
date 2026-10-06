@@ -217,12 +217,12 @@ jobs:
           python -m py_compile scripts/kospi_shock_episode_watch.py scripts/kospi_shock_enrichment.py scripts/kospi_unified_industry_collector.py
 
           collector_supervisor() {
-            while [ "$(TZ=Asia/Seoul date +%H%M)" -lt 1520 ]; do
+            while [ "$(TZ=Asia/Seoul date +%H%M)" -lt 1532 ]; do
               set +e
-              python scripts/kospi_unified_industry_collector.py --until 15:20 --out out/kospi_industry_flow.jsonl
+              python scripts/kospi_unified_industry_collector.py --until 15:32 --out out/kospi_industry_flow.jsonl
               RC=$?
               set -e
-              [ "$(TZ=Asia/Seoul date +%H%M)" -ge 1520 ] && break
+              [ "$(TZ=Asia/Seoul date +%H%M)" -ge 1532 ] && break
               echo "ubm_collector_restart rc=$RC"
               sleep 10
             done
@@ -231,9 +231,9 @@ jobs:
           COLLECTOR_PID=$!
 
           WATCH_FAILS=0
-          while [ "$(TZ=Asia/Seoul date +%H%M)" -lt 1520 ]; do
+          while [ "$(TZ=Asia/Seoul date +%H%M)" -lt 1532 ]; do
             set +e
-            python scripts/kospi_shock_episode_watch.py --until 15:20 --handoff-in out/kospi_shock_handoff.json --handoff-out out/kospi_shock_handoff.json
+            python scripts/kospi_shock_episode_watch.py --until 15:32 --handoff-in out/kospi_shock_handoff.json --handoff-out out/kospi_shock_handoff.json
             WATCH_RC=$?
             set -e
             [ "$WATCH_RC" -eq 0 ] && break
