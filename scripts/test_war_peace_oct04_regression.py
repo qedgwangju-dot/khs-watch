@@ -298,6 +298,17 @@ tass_drone = row(
 )
 s, tags = mod.score_item(tass_drone, dt.datetime.now(mod.watch.KST))
 check("oct06-tass-drone-calculation-attributed", mod._tass_largest_drone_attack(tass_drone) and s >= 100 and "TASS 집계" in tass_drone["title_ko"])
+check(
+    "oct06-tass-russian-claim-final-translation",
+    "러시아 국방부" in mod.translate_ko(tass_claim["title_original"])
+    and "주장" in mod.translate_ko(tass_claim["title_original"])
+    and "독립 확인 전" in mod.translate_ko(tass_claim["title_original"]),
+)
+check(
+    "oct06-tass-drone-final-translation",
+    "TASS 집계" in mod.translate_ko(tass_drone["title_original"])
+    and "독립 확인 필요" in mod.translate_ko(tass_drone["title_original"]),
+)
 
 trump_rhetoric = row(
     "Trump says let them take out Los Angeles, let them take out San Diego",
