@@ -1091,50 +1091,68 @@ def _ppa_extract_money_roles(text: str):
 def _ppa_extract_power_roles(text: str):
     """Return (PPA MW, uprate MW, plant capacity MW) without mixing the roles."""
     low = text.lower().replace(",", "")
+
+    # Exact role phrases outrank broad context windows.  This prevents a sentence
+    # containing 1,790 MW plant capacity + 690 MW PPA + 190 MW uprate from
+    # collapsing all three into the largest number.
+    direct_ppa = []
+    direct_uprate = []
+    direct_plant = []
+
+    for pattern in (
+        r"(?:agreement|contract|ppa).{0,100}?(?:includes|for|covers)\s*(?:approximately\s*)?([0-9]+(?:\.[0-9]+)?)\s*mw",
+        r"([0-9]+(?:\.[0-9]+)?)\s*mw\s+of\s+power",
+    ):
+        direct_ppa += [float(x) for x in re.findall(pattern, low, re.I)]
+
+    for pattern in (
+        r"([0-9]+(?:\.[0-9]+)?)\s*mw\s+(?:power\s+)?uprate\b",
+        r"(?:uprate|capacity expansion|additional capacity|new capacity).{0,40}?([0-9]+(?:\.[0-9]+)?)\s*mw\b",
+        r"(?:증설|추가 용량).{0,30}?([0-9]+(?:\.[0-9]+)?)\s*mw\b",
+    ):
+        direct_uprate += [float(x) for x in re.findall(pattern, low, re.I)]
+
+    for pattern in (
+        r"(?:entire|full|total)\s+([0-9]+(?:\.[0-9]+)?)\s*mw\s+(?:nuclear\s+)?plant\b",
+        r"([0-9]+(?:\.[0-9]+)?)\s*mw\s+(?:nuclear\s+)?plant\b",
+        r"(?:plant|facility|station|site)\s+capacity.{0,25}?([0-9]+(?:\.[0-9]+)?)\s*mw\b",
+    ):
+        direct_plant += [float(x) for x in re.findall(pattern, low, re.I)]
+
+    # Use context windows only as a fallback for roles not explicitly stated.
     mentions = []
     for m in re.finditer(r"\b([0-9]+(?:\.[0-9]+)?)\s*mw\b", low):
         mentions.append((float(m.group(1)), m.start(), m.end()))
     for m in re.finditer(r"\b([0-9]+(?:\.[0-9]+)?)\s*gw\b", low):
         mentions.append((float(m.group(1)) * 1000.0, m.start(), m.end()))
 
-    ppa_values = []
-    uprate_values = []
-    plant_values = []
+    ppa_values = list(direct_ppa)
+    uprate_values = list(direct_uprate)
+    plant_values = list(direct_plant)
+    exact_values = set(direct_ppa + direct_uprate + direct_plant)
+
     for value, start, end in mentions:
-        window = low[max(0, start - 110): min(len(low), end + 120)]
-        plant_context = any(term in window for term in (
+        if value in exact_values:
+            continue
+        window = low[max(0, start - 65): min(len(low), end + 65)]
+        if not plant_values and any(term in window for term in (
             "megawatt plant", "mw plant", "entire plant", "plant capacity",
             "facility capacity", "station capacity", "site capacity",
             "발전소 전체", "원전 전체", "발전소 용량", "원전 용량",
-        ))
-        uprate_context = any(term in window for term in (
+        )):
+            plant_values.append(value)
+        elif not uprate_values and any(term in window for term in (
             "uprate", "expanded generating capacity", "additional capacity",
             "new capacity", "capacity expansion", "증설", "추가 용량",
-        ))
-        ppa_context = any(term in window for term in (
+        )):
+            uprate_values.append(value)
+        elif not ppa_values and any(term in window for term in (
             "agreement includes", "agreement for", "contract includes",
             "power purchase", "purchase agreement", "ppa", "power supply",
             "megawatts of power", "mw of power", "전력구매", "구매용량",
             "공급용량", "계약용량",
-        ))
-
-        # 역할 충돌 시 발전소 전체용량 > 증설용량 > 계약구매용량 순으로 분리한다.
-        if plant_context:
-            plant_values.append(value)
-        elif uprate_context:
-            uprate_values.append(value)
-        elif ppa_context:
+        )):
             ppa_values.append(value)
-
-    # 명시적인 대표 문장을 우선한다.
-    direct_ppa = []
-    for pattern in (
-        r"(?:agreement|contract|ppa).{0,80}?(?:includes|for|covers)\s*(?:approximately\s*)?([0-9]+(?:\.[0-9]+)?)\s*mw",
-        r"([0-9]+(?:\.[0-9]+)?)\s*mw\s+of\s+power",
-    ):
-        direct_ppa += [float(x) for x in re.findall(pattern, low, re.I)]
-    if direct_ppa:
-        ppa_values += direct_ppa
 
     return (
         max(ppa_values) if ppa_values else None,
@@ -1276,14 +1294,25 @@ def _ppa_extract_state(blob: str, source: str, source_url: str, link: str, publi
         if value not in (None, ""):
             provenance[field] = "official" if official else "media"
 
+    buyer_key, seller_key = key.split("_", 1)
+
     # Canonicalize the already-known Amazon/Calvert Cliffs contract so the
     # official page cannot reappear later as a duplicate amazon_constellation event.
     if key == "amazon_constellation" and plant and "calvert cliffs" in plant.lower():
         key = "amazon_constellation_calvert_cliffs"
 
+    buyer_names = {
+        "google": "Google", "amazon": "Amazon", "microsoft": "Microsoft",
+        "meta": "Meta", "walmart": "Walmart",
+    }
+    seller_names = {
+        "constellation": "Constellation", "nextera": "NextEra",
+        "southern": "Southern/Georgia Power", "talen": "Talen",
+    }
+
     return key, {
-        "buyer": key.split("_", 1)[0].replace("google", "Google").replace("amazon", "Amazon").replace("microsoft", "Microsoft").replace("meta", "Meta").replace("walmart", "Walmart"),
-        "seller": key.split("_", 1)[1].replace("constellation", "Constellation").replace("nextera", "NextEra").replace("southern", "Southern/Georgia Power").replace("talen", "Talen"),
+        "buyer": buyer_names.get(buyer_key, buyer_key),
+        "seller": seller_names.get(seller_key, seller_key),
         "stage": stage,
         "official": official,
         "amount_floor_usd_b": amount,
