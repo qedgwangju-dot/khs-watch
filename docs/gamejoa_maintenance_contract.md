@@ -402,3 +402,18 @@ Every defect or requested change must follow this sequence:
   lock. GitHub's delayed schedule is not an acceptable primary timer.
 - Implementation and re-verification results must be reported together with
   exact pass or fail evidence.
+- A quoted award name, reporter name, or an English model translation is not
+  a new customer/model. Model-specific supply announcements are compared by
+  supplier, customer, Korean model name, product, disclosed date and stage.
+  A separately dated completion or revised order must remain a new event.
+- Anonymous orders need matching supplier, customer label/region/industry,
+  equipment, end markets, actual contract amount status, expansion target,
+  announcement date and stage before being equated. A label such as A alone
+  is insufficient, and an expansion target is not the signed order amount.
+- New bill summaries must retain the introducing actor, actual bill and
+  introduced/submitted/passed stage. Earlier speeches cannot stand in for
+  the new clauses. Regulatory implementation dates must remain in the core.
+- National-hearing aspirations without a new instrument or committed terms,
+  and precommercial validation MOUs without market execution, are not primary
+  radar items. New budget revisions, customer contracts, measured independent
+  validation and actual commercial deployment must still be evaluated.

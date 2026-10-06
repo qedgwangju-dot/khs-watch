@@ -2590,6 +2590,33 @@ def reported_issuer_announcement_fact(title: str, body: str) -> str:
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
+    legislation = market_materiality.legislative_action_observation(title, body)
+    if legislation:
+        day = f" {legislation['day']}일" if legislation['day'] else ''
+        fact = f"{legislation['actor']} 의원이 '{legislation['law']}'을{day} {legislation['action']}."
+        if legislation['purpose'] and core_sentence_is_complete(fact + ' ' + legislation['purpose']):
+            fact += ' ' + legislation['purpose']
+        return fact if core_sentence_is_complete(fact) else ''
+    if re.search(r"규제\s*개선", title):
+        rows = market_materiality.source_sentences(market_materiality.source_reported_body(body))
+        implementation = next((row for row in rows if re.search(r"정부(?:는|가)", row)
+                               and re.search(r"연내|20\d{2}년|\d분기", row)
+                               and re.search(r"공고\s*개정|시행|입법예고", row)), '')
+        followup = next((re.sub(r"^(?:아울러|또)\s*", '', row) for row in rows
+                         if re.search(r"가이드라인", row) and re.search(r"내년\s*\d분기|20\d{2}년", row)), '')
+        if implementation and core_sentence_is_complete(implementation):
+            fact = implementation
+            if followup and core_sentence_is_complete(fact + ' ' + followup):
+                fact += ' ' + followup
+            return fact
+    if re.search(r"기술이전", title):
+        rows = market_materiality.source_sentences(market_materiality.source_reported_body(body))
+        statement = next((row for row in rows if re.search(r"기술이전\s*계약", row)
+                          and re.search(r"체결했다고\s*\d{1,2}일\s*밝혔다", row)), '')
+        terms = next((row for row in rows if re.match(r"총\s*규모", row)
+                      and re.search(r"공개되지\s*않", row)), '')
+        if statement and terms and core_sentence_is_complete(clean_article_summary_text(statement + ' ' + terms)):
+            return clean_article_summary_text(statement + ' ' + terms)
     mou = market_materiality.industrial_development_mou_observation(title, body)
     if mou:
         fact = clean_article_summary_text(mou['source_excerpt'])
@@ -2628,6 +2655,11 @@ def source_headline_event_fact(title: str, body: str) -> str:
         fact = (f"{expansion['statement']} 이번 계약을 시작으로 관련 수주를 약 "
                 f"{expansion['expansion_target']}까지 확대하는 것이 목표다.")
         return fact if core_sentence_is_complete(fact) else ""
+    anonymous_order = market_materiality.scoped_anonymous_order_observation(title, body)
+    if anonymous_order:
+        fact = (f"{anonymous_order['source_excerpt']} 이번 계약을 시작으로 관련 수주를 약 "
+                f"{anonymous_order['expansion_target']}까지 확대하는 것이 목표다.")
+        return fact if core_sentence_is_complete(fact) else ''
     adoption = market_materiality.industrial_customer_adoption_observation(title, body)
     if adoption:
         stage = ("채택돼 초도 물량 납품을 완료했다고" if adoption['stage'] == 'initial_delivery_completed'

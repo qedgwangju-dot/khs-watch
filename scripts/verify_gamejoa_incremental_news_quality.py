@@ -57,6 +57,8 @@ FINAL_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_final_scope_fixtures_2026
 FINAL_SCOPE_CASES = {case["id"]: case for case in FINAL_SCOPE_FIXTURE["cases"]}
 PROGRAM_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_program_scope_fixtures_20261006.json").read_text(encoding="utf-8"))
 PROGRAM_SCOPE_CASES = {case["id"]: case for case in PROGRAM_SCOPE_FIXTURE["cases"]}
+POLICY_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_policy_scope_fixtures_20261006.json").read_text(encoding="utf-8"))
+POLICY_SCOPE_CASES = {case["id"]: case for case in POLICY_SCOPE_FIXTURE["cases"]}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -98,6 +100,87 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def policy_scope_alert(self, key):
+        case = POLICY_SCOPE_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_version86_entire_receipt_replays_current_events_not_prior_speeches(self):
+        now = NOW.replace(day=6, hour=13)
+        for case in POLICY_SCOPE_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                item = classify(case, now)
+                selected = radar.quality_display_alerts([item], 30) if item else []
+                self.assertEqual(bool(selected), case['expected_keep'])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+                    self.assertTrue(radar.core_sentence_is_complete(selected[0]['telegram_core_fact']))
+
+    def test_named_delivery_ignores_english_model_alias_and_caption_award(self):
+        item = self.policy_scope_alert('model_delivery_with_english_alias')
+        original = self.delivery_scope_alert('cockpit_delivery_newsis')
+        self.assertEqual(materiality.commercial_delivery_terms(item['source_title'], item['source_body'], item['published'])['customer'], '르노그룹')
+        self.assertEqual(materiality.source_event_identity(item), materiality.source_event_identity(original))
+        for body in (item['source_body'].replace('뉴 트래픽 이테크 일렉트릭', '다른 차종'),
+                     item['source_body'].replace('르노그룹', '다른고객'),
+                     item['source_body'].replace('공급한다.', '추가 공급한다.')):
+            self.assertNotEqual(materiality.source_event_identity(item), materiality.source_event_identity({**item, 'source_body': body}))
+
+    def test_scoped_anonymous_order_dedupes_only_exact_date_equipment_markets_and_target(self):
+        item = self.policy_scope_alert('anonymous_battery_order_reprint')
+        old = self.postdeploy_scope_alert('battery_order_with_expansion_target')
+        identity = materiality.source_event_identity(item)
+        self.assertTrue(identity.startswith('source_event:v2:scoped_anonymous_order:'))
+        self.assertEqual(identity, materiality.source_event_identity(old))
+        for body in (item['source_body'].replace('250억원', '350억원'),
+                     item['source_body'].replace('A사', 'B사'),
+                     item['source_body'].replace('스태킹', '검사'),
+                     item['source_body'].replace('유럽', '미국'),
+                     item['source_body'].replace('6일 밝혔다', '7일 밝혔다'),
+                     item['source_body'] + ' 이번 계약 금액은 100억원이다.'):
+            self.assertNotEqual(identity, materiality.source_event_identity({**item, 'source_body': body}))
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('엠플러스', 'A사', '노칭', '스태킹', '250억원', '목표다'):
+            self.assertIn(term, core)
+        self.assertNotIn('250억원을 수주', core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_legislation_core_preserves_draft_stage_and_current_actor(self):
+        item = self.policy_scope_alert('legislative_action_not_prior_speech')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('오세희', '신안보 혁신기업 육성에 관한 특별법', '대표발의했다', '중소기업·중견기업'):
+            self.assertIn(term, core)
+        self.assertNotIn('지난 6월', core)
+        self.assertNotIn('통과했다', core)
+        self.assertNotIn('이 대통령은 당시', core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+        changed = {**item, 'source_title': item['source_title'].replace('오세희', '김미래'),
+                   'source_body': item['source_body'].replace('오세희', '김미래').replace('신안보 혁신기업 육성', '첨단산업 경쟁력 강화')}
+        changed_core = radar.verified_alert_core(changed, changed['source_title'])
+        self.assertIn('김미래', changed_core)
+        self.assertIn('첨단산업 경쟁력 강화', changed_core)
+
+    def test_regulatory_core_keeps_implementation_timing_not_generic_announcement(self):
+        item = self.policy_scope_alert('display_regulation_implementation')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('수입 승인 대상에서 제외', '연내', '수출입공고 개정', '보안 가이드라인', '내년 1분기', '계획'):
+            self.assertIn(term, core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+
+    def test_hearing_goals_and_precommercial_pilots_do_not_block_committed_execution(self):
+        for key in ('national_hearing_energy_aspiration', 'precommercial_cxl_validation_mou'):
+            case = POLICY_SCOPE_CASES[key]
+            self.assertFalse(eligible(case['title'], case['body']))
+        self.assertTrue(eligible('기후장관, 재생에너지 예산 1000억원 증액 확정',
+                                 '기후장관은 6일 국정감사에서 재생에너지 지원 예산을 1000억원 증액했다고 발표했다.'))
+        telecom = NOISE_CASES['telecom_operating_requirement_is_policy_change']
+        self.assertTrue(eligible(telecom['title'], '정부는 국정감사에서 정책 방안을 설명했다. ' + telecom['body']))
+        pilot = POLICY_SCOPE_CASES['precommercial_cxl_validation_mou']
+        self.assertTrue(eligible('반도체기업, CXL 공급 계약 체결',
+                                 '반도체기업은 신규 고객과 100억원의 CXL 공급 계약을 체결했다고 6일 밝혔다. ' + pilot['body']))
+
     def program_scope_alert(self, key):
         case = PROGRAM_SCOPE_CASES[key]
         return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
