@@ -2409,24 +2409,27 @@
     "event:6926adee1d70facd68aecdd5": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
       "lanes": {
-        "live": "2026-10-07T02:49:10+09:00"
+        "live": "2026-10-07T03:30:59+09:00"
       },
-      "last_seen_kst": "2026-10-07T02:49:10+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003816346",
-      "source": "뉴시스",
-      "source_body_digest": "f8a1bb7fa7282b4ee402f0ae59394d4804550836a10b1e8ac4839b7c2a835da0",
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.fnnews.com/news/202610060600523372",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "f1fb8abbe5afb93b58fed315951e6431142efb347d45ee19aeb54378a68225ac",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:078a1eee3351da082897c3bcf12cf61e42acb38306fa894f697009f8f6f2f9f8",
+      "source_fact_identity": "source_facts:v1:5f8e42fcb3c41ad4789c96ea06433d6561d03f31c13165c8c3bd477c2f7aaf8b",
       "source_fact_keys": [
-        "source_fact:v1:42ce5eb8df9dc5bddadfa1c220b8c3f32b6ff539a3f996ba9f14dfe385fa9fcf",
-        "source_fact:v1:4b003aaa5ec27c828823b50f994b6f54995f9e076a548032f7023c15225cd66f",
-        "source_fact:v1:4fcffb87adcfe4eb3de3056202f2c2362bd69f7ebeecf81faf331168925acea9",
-        "source_fact:v1:51c01faf24974d8e4651b5e48adc4d117e7f368376ae7debaf707780021778ee",
-        "source_fact:v1:7b9e83c34c4f2a070741248d53a630cb8e94354b2946fc27154a343eb442fa28",
-        "source_fact:v1:f712b6ce03cacbfcebead69881aa837f9405edf1c5df9bd596f05c8c707c3350"
+        "source_fact:v1:2a52f1c839d2189abdeaadacc2f8198adbbe34a3872972caa8b3596f56e074da",
+        "source_fact:v1:2a87966e0d55eb1f751fef72d6943adcffb37b5d32c64a8cbcfa93c98f7ccc2d",
+        "source_fact:v1:5ec7db80d704e232c73e61ce411a47fa75b4545f45fc1eefbaec266bcfaf7b29",
+        "source_fact:v1:a165c512effd826916d6f43e0e268e84f71de422a2d04f363e085ca0de23eac6",
+        "source_fact:v1:a7864503f72ac82bdd581f2a5de21d4f0b0d1c6e2696bda329e42d298da303b3",
+        "source_fact:v1:bec9f06760fe41d4c8b9848aac87bf3ff442047b75c999abf28fa48f8cc41cf9",
+        "source_fact:v1:ca0f516d739cadedd19970ef12cd954970e5d499818092cbeb43ffdcdbcbbd79",
+        "source_fact:v1:d092993c6e2d2c714bee82c3e18025a199870d304386c2066783586cfd6073c9",
+        "source_fact:v1:e61e15f98ab10bd590c8c4347bdd275c88e57cd5b0e25921e0372fa18ec18d08"
       ],
-      "source_published_kst": "2026-10-06T20:29+09:00",
-      "title": "[올댓차이나] 홍콩 증시, 뉴욕 증시 강세에 이틀째 상승 마감… H주 0.96%↑"
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
     },
     "event:6994ec3ec51f16c535c2ebd5": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -5691,6 +5694,31 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T06:30+09:00",
       "title": "메모리 ‘오징어 게임’ 벌어지나…美 싱크탱크의 ‘메모리 공급 과잉’ 경고 [칩칩팹팹]"
+    },
+    "event:dd87cc13e30f19c890aebcd1": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/07/2026100618381313969",
+      "source": "머니투데이",
+      "source_body_digest": "9e192ab79f7a30551688dc5498580bb6424db148be0294be70a79f31906b3893",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:436ddddb90dc0724b8302656b3e4e58c75b0b7bec36768b38e0d1337b9df1341",
+      "source_fact_keys": [
+        "source_fact:v1:5dd20e99cfcbe1aa0310b9e645fc53aebc28f7f5924ce6539fec9bdf05f742d8",
+        "source_fact:v1:7ec58b219f12eea3591294c17369a0a91c10c959864a5a500ffe45f070a0500f",
+        "source_fact:v1:8c348e112bfbf85e9e5d82acc12714a8ee5286ce3f316c2b5ffc4c1462d4dd0d",
+        "source_fact:v1:9b6305e9c4140325d5648e939cc47785f47501f4468037208fe4d0b235052cac",
+        "source_fact:v1:b0ebec59ab9d3c54c077f9a3e64cc599dba3b3f629e56a02ac81e91bdb6c374c",
+        "source_fact:v1:bfb152146efe2eb623f35055de3bee73cf9bf0b88ee0649f35a8713c721d452e",
+        "source_fact:v1:c420eb612d082c4b333a340861d6d7bb8dfa13e67d5a6028b007a379db5f2f0b",
+        "source_fact:v1:f26efc1480c27fab786dc046119b13301a8e170c7bd076c64832124b6d8322e0",
+        "source_fact:v1:fc1d65a3e9171f8ead34bb3abebfbe03a5fa98d5fa017d22eb40d05919d12d71"
+      ],
+      "source_published_kst": "2026-10-07T03:11+09:00",
+      "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
     },
     "event:de5909e789cfafa27b6823bd": {
       "first_seen_kst": "2026-09-19T07:23:13+09:00",
@@ -9048,6 +9076,25 @@
       ],
       "source_published_kst": "2026-10-06T17:00+09:00",
       "title": "금감원, '2.5만명 정보유출' 신한은행 현장검사 전환…점검 착수 엿새 만(종합)"
+    },
+    "fact:281325f1cdf314e996cc2f72": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100609503720749",
+      "source": "머니투데이",
+      "source_body_digest": "1f954de8b4564f6ca92f78733b5203433fb52ffdc1be398586c686fa3f50edcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cdeeb370ae69e67ace6f542883e2a33dc4488c54ec4bc5a3e484ef3add78df9f",
+      "source_fact_keys": [
+        "source_fact:v1:259fae376ea3f41e0e08ac15f4d9757cf8c92c0726ef23551228b753e8bb7296",
+        "source_fact:v1:83aeea5568dca24847d1730369d946e5f7813b2e4dd5118de61ff1fb4cad1a8a",
+        "source_fact:v1:98078ed85d9a33fe5571bfaaa218ce0d6e47ba4390c54ecc770ab90ad3f390a2"
+      ],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "산업장관 \"지방투자 1600조…3대 메가프로젝트 차질없이 추진\""
     },
     "fact:2902ab2e0fb83048bed891ee": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
@@ -14706,6 +14753,31 @@
       "source_published_kst": "2026-10-06T15:52+09:00",
       "title": "국내 주식형 ETF 리밸런싱 8일 집중…\"삼전 비중축소 전망\""
     },
+    "fact:946bfd6d49be3e1bf7f69df2": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.fnnews.com/news/202610060600523372",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "f1fb8abbe5afb93b58fed315951e6431142efb347d45ee19aeb54378a68225ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f8e42fcb3c41ad4789c96ea06433d6561d03f31c13165c8c3bd477c2f7aaf8b",
+      "source_fact_keys": [
+        "source_fact:v1:2a52f1c839d2189abdeaadacc2f8198adbbe34a3872972caa8b3596f56e074da",
+        "source_fact:v1:2a87966e0d55eb1f751fef72d6943adcffb37b5d32c64a8cbcfa93c98f7ccc2d",
+        "source_fact:v1:5ec7db80d704e232c73e61ce411a47fa75b4545f45fc1eefbaec266bcfaf7b29",
+        "source_fact:v1:a165c512effd826916d6f43e0e268e84f71de422a2d04f363e085ca0de23eac6",
+        "source_fact:v1:a7864503f72ac82bdd581f2a5de21d4f0b0d1c6e2696bda329e42d298da303b3",
+        "source_fact:v1:bec9f06760fe41d4c8b9848aac87bf3ff442047b75c999abf28fa48f8cc41cf9",
+        "source_fact:v1:ca0f516d739cadedd19970ef12cd954970e5d499818092cbeb43ffdcdbcbbd79",
+        "source_fact:v1:d092993c6e2d2c714bee82c3e18025a199870d304386c2066783586cfd6073c9",
+        "source_fact:v1:e61e15f98ab10bd590c8c4347bdd275c88e57cd5b0e25921e0372fa18ec18d08"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
+    },
     "fact:9492e05a5b86e68f6efd4506": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
       "lanes": {
@@ -18382,6 +18454,25 @@
       "source_published_kst": "2026-10-06T19:04+09:00",
       "title": "이형일 “美 원전 선급금, 국내 절차·상업성 충족돼야 송금”"
     },
+    "fact:ddedc6750d1ff4d4e9f48b08": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05494006645610296",
+      "source": "이데일리",
+      "source_body_digest": "a5a8b3921e9aebbfa10b75a7a510b146a88fca14564aa0e6f227842d7e97adec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10453947755708781e3d48943c12451af6fc922a05c13b598cf2ed8c5d3fba58",
+      "source_fact_keys": [
+        "source_fact:v1:42619cee986df9eb26c9a72ee64bfe829830867f50b345c6f83c5b03ed17fca1",
+        "source_fact:v1:7cf484aa3767ccaf01da3faa48029500bc6b9ce7272cac9090d0c008e61ae8c1",
+        "source_fact:v1:b9e67e948bd56c5ec8ee66e0603560814dc72bbb72e463001f3f5c95b1cba604"
+      ],
+      "source_published_kst": "2026-10-06T19:27+09:00",
+      "title": "[美특징주]TSMC, 미국 내 반도체 생산 확대 검토…개장전 '약보합'"
+    },
     "fact:de881272177a3dca4c67b8a1": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
       "lanes": {
@@ -19617,6 +19708,31 @@
       ],
       "source_published_kst": "2026-10-06T13:10+09:00",
       "title": "서남권 반도체 팹은 제2 반도체 생산거점…풍부한 에너지 활용해야"
+    },
+    "fact:f7d0bbe4c6e57e07043a113e": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/07/2026100618381313969",
+      "source": "머니투데이",
+      "source_body_digest": "9e192ab79f7a30551688dc5498580bb6424db148be0294be70a79f31906b3893",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:436ddddb90dc0724b8302656b3e4e58c75b0b7bec36768b38e0d1337b9df1341",
+      "source_fact_keys": [
+        "source_fact:v1:5dd20e99cfcbe1aa0310b9e645fc53aebc28f7f5924ce6539fec9bdf05f742d8",
+        "source_fact:v1:7ec58b219f12eea3591294c17369a0a91c10c959864a5a500ffe45f070a0500f",
+        "source_fact:v1:8c348e112bfbf85e9e5d82acc12714a8ee5286ce3f316c2b5ffc4c1462d4dd0d",
+        "source_fact:v1:9b6305e9c4140325d5648e939cc47785f47501f4468037208fe4d0b235052cac",
+        "source_fact:v1:b0ebec59ab9d3c54c077f9a3e64cc599dba3b3f629e56a02ac81e91bdb6c374c",
+        "source_fact:v1:bfb152146efe2eb623f35055de3bee73cf9bf0b88ee0649f35a8713c721d452e",
+        "source_fact:v1:c420eb612d082c4b333a340861d6d7bb8dfa13e67d5a6028b007a379db5f2f0b",
+        "source_fact:v1:f26efc1480c27fab786dc046119b13301a8e170c7bd076c64832124b6d8322e0",
+        "source_fact:v1:fc1d65a3e9171f8ead34bb3abebfbe03a5fa98d5fa017d22eb40d05919d12d71"
+      ],
+      "source_published_kst": "2026-10-07T03:11+09:00",
+      "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
     },
     "fact:f7e5651297221e31f82b7d6a": {
       "first_seen_kst": "2026-10-07T02:49:10+09:00",
@@ -25499,6 +25615,31 @@
       "source_published_kst": "2026-10-06T07:10+09:00",
       "title": "5만 가구 ‘한강2’ 연계 5호선 2034년 개통할까 [교통지옥 김포 ③]"
     },
+    "link:304b81bc8a6f71ea1896a83d": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/07/2026100618381313969",
+      "source": "머니투데이",
+      "source_body_digest": "9e192ab79f7a30551688dc5498580bb6424db148be0294be70a79f31906b3893",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:436ddddb90dc0724b8302656b3e4e58c75b0b7bec36768b38e0d1337b9df1341",
+      "source_fact_keys": [
+        "source_fact:v1:5dd20e99cfcbe1aa0310b9e645fc53aebc28f7f5924ce6539fec9bdf05f742d8",
+        "source_fact:v1:7ec58b219f12eea3591294c17369a0a91c10c959864a5a500ffe45f070a0500f",
+        "source_fact:v1:8c348e112bfbf85e9e5d82acc12714a8ee5286ce3f316c2b5ffc4c1462d4dd0d",
+        "source_fact:v1:9b6305e9c4140325d5648e939cc47785f47501f4468037208fe4d0b235052cac",
+        "source_fact:v1:b0ebec59ab9d3c54c077f9a3e64cc599dba3b3f629e56a02ac81e91bdb6c374c",
+        "source_fact:v1:bfb152146efe2eb623f35055de3bee73cf9bf0b88ee0649f35a8713c721d452e",
+        "source_fact:v1:c420eb612d082c4b333a340861d6d7bb8dfa13e67d5a6028b007a379db5f2f0b",
+        "source_fact:v1:f26efc1480c27fab786dc046119b13301a8e170c7bd076c64832124b6d8322e0",
+        "source_fact:v1:fc1d65a3e9171f8ead34bb3abebfbe03a5fa98d5fa017d22eb40d05919d12d71"
+      ],
+      "source_published_kst": "2026-10-07T03:11+09:00",
+      "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
+    },
     "link:3078a3d0410009efc6bba4d2": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
       "lanes": {
@@ -30326,6 +30467,25 @@
       "link": "https://www.reuters.com/business/silicon-valley-ai-data-center-boom-meets-local-resistance-2026-09-17/",
       "source": "Reuters",
       "title": "미국 지역 데이터센터 인허가·주민 반발 이슈 확산"
+    },
+    "link:5ad7cabe42daa9051b673c5f": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100609503720749",
+      "source": "머니투데이",
+      "source_body_digest": "1f954de8b4564f6ca92f78733b5203433fb52ffdc1be398586c686fa3f50edcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cdeeb370ae69e67ace6f542883e2a33dc4488c54ec4bc5a3e484ef3add78df9f",
+      "source_fact_keys": [
+        "source_fact:v1:259fae376ea3f41e0e08ac15f4d9757cf8c92c0726ef23551228b753e8bb7296",
+        "source_fact:v1:83aeea5568dca24847d1730369d946e5f7813b2e4dd5118de61ff1fb4cad1a8a",
+        "source_fact:v1:98078ed85d9a33fe5571bfaaa218ce0d6e47ba4390c54ecc770ab90ad3f390a2"
+      ],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "산업장관 \"지방투자 1600조…3대 메가프로젝트 차질없이 추진\""
     },
     "link:5ae21f793706f5520084e342": {
       "first_seen_kst": "2026-10-02T11:29:29+09:00",
@@ -36009,6 +36169,25 @@
       "link": "https://www.yna.co.kr/view/MYH20261002004000038",
       "source": "연합뉴스",
       "title": "[속보] 9월 물가 2.9% 상승…한 달 만에 2%대로 | 연합뉴스"
+    },
+    "link:8c1a0b1c045b6e5c61f8ce81": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05494006645610296",
+      "source": "이데일리",
+      "source_body_digest": "a5a8b3921e9aebbfa10b75a7a510b146a88fca14564aa0e6f227842d7e97adec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10453947755708781e3d48943c12451af6fc922a05c13b598cf2ed8c5d3fba58",
+      "source_fact_keys": [
+        "source_fact:v1:42619cee986df9eb26c9a72ee64bfe829830867f50b345c6f83c5b03ed17fca1",
+        "source_fact:v1:7cf484aa3767ccaf01da3faa48029500bc6b9ce7272cac9090d0c008e61ae8c1",
+        "source_fact:v1:b9e67e948bd56c5ec8ee66e0603560814dc72bbb72e463001f3f5c95b1cba604"
+      ],
+      "source_published_kst": "2026-10-06T19:27+09:00",
+      "title": "[美특징주]TSMC, 미국 내 반도체 생산 확대 검토…개장전 '약보합'"
     },
     "link:8c406b9aa0d479d980b03524": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
@@ -42611,6 +42790,31 @@
       "link": "https://www.fnnews.com/news/202610020701299645",
       "source": "파이낸셜뉴스",
       "title": "마이크론이 연 반도체 실적시즌…'삼성전자 HBM4·범용D램'에 쏠린 눈"
+    },
+    "link:c7927e35bcd6810fbf9470f1": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.fnnews.com/news/202610060600523372",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "f1fb8abbe5afb93b58fed315951e6431142efb347d45ee19aeb54378a68225ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f8e42fcb3c41ad4789c96ea06433d6561d03f31c13165c8c3bd477c2f7aaf8b",
+      "source_fact_keys": [
+        "source_fact:v1:2a52f1c839d2189abdeaadacc2f8198adbbe34a3872972caa8b3596f56e074da",
+        "source_fact:v1:2a87966e0d55eb1f751fef72d6943adcffb37b5d32c64a8cbcfa93c98f7ccc2d",
+        "source_fact:v1:5ec7db80d704e232c73e61ce411a47fa75b4545f45fc1eefbaec266bcfaf7b29",
+        "source_fact:v1:a165c512effd826916d6f43e0e268e84f71de422a2d04f363e085ca0de23eac6",
+        "source_fact:v1:a7864503f72ac82bdd581f2a5de21d4f0b0d1c6e2696bda329e42d298da303b3",
+        "source_fact:v1:bec9f06760fe41d4c8b9848aac87bf3ff442047b75c999abf28fa48f8cc41cf9",
+        "source_fact:v1:ca0f516d739cadedd19970ef12cd954970e5d499818092cbeb43ffdcdbcbbd79",
+        "source_fact:v1:d092993c6e2d2c714bee82c3e18025a199870d304386c2066783586cfd6073c9",
+        "source_fact:v1:e61e15f98ab10bd590c8c4347bdd275c88e57cd5b0e25921e0372fa18ec18d08"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
     },
     "link:c7950773e9d0ac98935b0835": {
       "first_seen_kst": "2026-10-02T00:49:00+09:00",
@@ -54263,6 +54467,31 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:05+09:00",
       "title": "정부, 4.7조 '프론티어 AI' 12월 공모…내년 2월 출자 대상 뽑는다"
+    },
+    "original:2fed602771338e47257b601f": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.fnnews.com/news/202610060600523372",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "f1fb8abbe5afb93b58fed315951e6431142efb347d45ee19aeb54378a68225ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f8e42fcb3c41ad4789c96ea06433d6561d03f31c13165c8c3bd477c2f7aaf8b",
+      "source_fact_keys": [
+        "source_fact:v1:2a52f1c839d2189abdeaadacc2f8198adbbe34a3872972caa8b3596f56e074da",
+        "source_fact:v1:2a87966e0d55eb1f751fef72d6943adcffb37b5d32c64a8cbcfa93c98f7ccc2d",
+        "source_fact:v1:5ec7db80d704e232c73e61ce411a47fa75b4545f45fc1eefbaec266bcfaf7b29",
+        "source_fact:v1:a165c512effd826916d6f43e0e268e84f71de422a2d04f363e085ca0de23eac6",
+        "source_fact:v1:a7864503f72ac82bdd581f2a5de21d4f0b0d1c6e2696bda329e42d298da303b3",
+        "source_fact:v1:bec9f06760fe41d4c8b9848aac87bf3ff442047b75c999abf28fa48f8cc41cf9",
+        "source_fact:v1:ca0f516d739cadedd19970ef12cd954970e5d499818092cbeb43ffdcdbcbbd79",
+        "source_fact:v1:d092993c6e2d2c714bee82c3e18025a199870d304386c2066783586cfd6073c9",
+        "source_fact:v1:e61e15f98ab10bd590c8c4347bdd275c88e57cd5b0e25921e0372fa18ec18d08"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
     },
     "original:301211214e8c40532cbc3678": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
@@ -66758,6 +66987,25 @@
       "source": "뉴시스",
       "title": "식당 테이블 간장 금지?…식약처 \"사실 아닙니다\""
     },
+    "original:9f33aa6f7ceb562f7f1cf31c": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05494006645610296",
+      "source": "이데일리",
+      "source_body_digest": "a5a8b3921e9aebbfa10b75a7a510b146a88fca14564aa0e6f227842d7e97adec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10453947755708781e3d48943c12451af6fc922a05c13b598cf2ed8c5d3fba58",
+      "source_fact_keys": [
+        "source_fact:v1:42619cee986df9eb26c9a72ee64bfe829830867f50b345c6f83c5b03ed17fca1",
+        "source_fact:v1:7cf484aa3767ccaf01da3faa48029500bc6b9ce7272cac9090d0c008e61ae8c1",
+        "source_fact:v1:b9e67e948bd56c5ec8ee66e0603560814dc72bbb72e463001f3f5c95b1cba604"
+      ],
+      "source_published_kst": "2026-10-06T19:27+09:00",
+      "title": "[美특징주]TSMC, 미국 내 반도체 생산 확대 검토…개장전 '약보합'"
+    },
     "original:9f6500e533c6f37b7780d296": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -73256,6 +73504,25 @@
       "source_published_kst": "2026-10-06T11:27+09:00",
       "title": "스페이스X, AI 사업 기대감에 날아 올랐다"
     },
+    "original:da7201d177c7b3f454bc88c0": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100609503720749",
+      "source": "머니투데이",
+      "source_body_digest": "1f954de8b4564f6ca92f78733b5203433fb52ffdc1be398586c686fa3f50edcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cdeeb370ae69e67ace6f542883e2a33dc4488c54ec4bc5a3e484ef3add78df9f",
+      "source_fact_keys": [
+        "source_fact:v1:259fae376ea3f41e0e08ac15f4d9757cf8c92c0726ef23551228b753e8bb7296",
+        "source_fact:v1:83aeea5568dca24847d1730369d946e5f7813b2e4dd5118de61ff1fb4cad1a8a",
+        "source_fact:v1:98078ed85d9a33fe5571bfaaa218ce0d6e47ba4390c54ecc770ab90ad3f390a2"
+      ],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "산업장관 \"지방투자 1600조…3대 메가프로젝트 차질없이 추진\""
+    },
     "original:da836e7b73156e5e6b12e952": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
@@ -73783,6 +74050,31 @@
       "link": "https://www.yna.co.kr/view/AKR20260918181100003",
       "source": "연합뉴스",
       "title": "상반기 글로벌 ESS용 배터리 출하 71% 급증…각형이 전체의 94% | 연합뉴스"
+    },
+    "original:e088b7d91764b8045748daa2": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/07/2026100618381313969",
+      "source": "머니투데이",
+      "source_body_digest": "9e192ab79f7a30551688dc5498580bb6424db148be0294be70a79f31906b3893",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:436ddddb90dc0724b8302656b3e4e58c75b0b7bec36768b38e0d1337b9df1341",
+      "source_fact_keys": [
+        "source_fact:v1:5dd20e99cfcbe1aa0310b9e645fc53aebc28f7f5924ce6539fec9bdf05f742d8",
+        "source_fact:v1:7ec58b219f12eea3591294c17369a0a91c10c959864a5a500ffe45f070a0500f",
+        "source_fact:v1:8c348e112bfbf85e9e5d82acc12714a8ee5286ce3f316c2b5ffc4c1462d4dd0d",
+        "source_fact:v1:9b6305e9c4140325d5648e939cc47785f47501f4468037208fe4d0b235052cac",
+        "source_fact:v1:b0ebec59ab9d3c54c077f9a3e64cc599dba3b3f629e56a02ac81e91bdb6c374c",
+        "source_fact:v1:bfb152146efe2eb623f35055de3bee73cf9bf0b88ee0649f35a8713c721d452e",
+        "source_fact:v1:c420eb612d082c4b333a340861d6d7bb8dfa13e67d5a6028b007a379db5f2f0b",
+        "source_fact:v1:f26efc1480c27fab786dc046119b13301a8e170c7bd076c64832124b6d8322e0",
+        "source_fact:v1:fc1d65a3e9171f8ead34bb3abebfbe03a5fa98d5fa017d22eb40d05919d12d71"
+      ],
+      "source_published_kst": "2026-10-07T03:11+09:00",
+      "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
     },
     "original:e15353b43ffe66fb5fc185bf": {
       "first_seen_kst": "2026-10-02T06:33:23+09:00",
@@ -78004,6 +78296,31 @@
       "source_published_kst": "2026-10-05T10:35+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 바이오 ‘10대 거래’ 선정"
     },
+    "source_fact:052e5a508b5d4eab1ab9e237": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.fnnews.com/news/202610060600523372",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "f1fb8abbe5afb93b58fed315951e6431142efb347d45ee19aeb54378a68225ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f8e42fcb3c41ad4789c96ea06433d6561d03f31c13165c8c3bd477c2f7aaf8b",
+      "source_fact_keys": [
+        "source_fact:v1:2a52f1c839d2189abdeaadacc2f8198adbbe34a3872972caa8b3596f56e074da",
+        "source_fact:v1:2a87966e0d55eb1f751fef72d6943adcffb37b5d32c64a8cbcfa93c98f7ccc2d",
+        "source_fact:v1:5ec7db80d704e232c73e61ce411a47fa75b4545f45fc1eefbaec266bcfaf7b29",
+        "source_fact:v1:a165c512effd826916d6f43e0e268e84f71de422a2d04f363e085ca0de23eac6",
+        "source_fact:v1:a7864503f72ac82bdd581f2a5de21d4f0b0d1c6e2696bda329e42d298da303b3",
+        "source_fact:v1:bec9f06760fe41d4c8b9848aac87bf3ff442047b75c999abf28fa48f8cc41cf9",
+        "source_fact:v1:ca0f516d739cadedd19970ef12cd954970e5d499818092cbeb43ffdcdbcbbd79",
+        "source_fact:v1:d092993c6e2d2c714bee82c3e18025a199870d304386c2066783586cfd6073c9",
+        "source_fact:v1:e61e15f98ab10bd590c8c4347bdd275c88e57cd5b0e25921e0372fa18ec18d08"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
+    },
     "source_fact:0536045a2d65d40cebc4c3a8": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -81570,6 +81887,31 @@
       "source_published_kst": "2026-10-06T10:57+09:00",
       "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
     },
+    "source_fact:142d4e99170c4b9b74a91dbf": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.fnnews.com/news/202610060600523372",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "f1fb8abbe5afb93b58fed315951e6431142efb347d45ee19aeb54378a68225ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f8e42fcb3c41ad4789c96ea06433d6561d03f31c13165c8c3bd477c2f7aaf8b",
+      "source_fact_keys": [
+        "source_fact:v1:2a52f1c839d2189abdeaadacc2f8198adbbe34a3872972caa8b3596f56e074da",
+        "source_fact:v1:2a87966e0d55eb1f751fef72d6943adcffb37b5d32c64a8cbcfa93c98f7ccc2d",
+        "source_fact:v1:5ec7db80d704e232c73e61ce411a47fa75b4545f45fc1eefbaec266bcfaf7b29",
+        "source_fact:v1:a165c512effd826916d6f43e0e268e84f71de422a2d04f363e085ca0de23eac6",
+        "source_fact:v1:a7864503f72ac82bdd581f2a5de21d4f0b0d1c6e2696bda329e42d298da303b3",
+        "source_fact:v1:bec9f06760fe41d4c8b9848aac87bf3ff442047b75c999abf28fa48f8cc41cf9",
+        "source_fact:v1:ca0f516d739cadedd19970ef12cd954970e5d499818092cbeb43ffdcdbcbbd79",
+        "source_fact:v1:d092993c6e2d2c714bee82c3e18025a199870d304386c2066783586cfd6073c9",
+        "source_fact:v1:e61e15f98ab10bd590c8c4347bdd275c88e57cd5b0e25921e0372fa18ec18d08"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
+    },
     "source_fact:1457e1df4db9abe9a771ddaa": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
       "lanes": {
@@ -83344,6 +83686,31 @@
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
     },
+    "source_fact:1e3919d4188d6f246c88b676": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.fnnews.com/news/202610060600523372",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "f1fb8abbe5afb93b58fed315951e6431142efb347d45ee19aeb54378a68225ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f8e42fcb3c41ad4789c96ea06433d6561d03f31c13165c8c3bd477c2f7aaf8b",
+      "source_fact_keys": [
+        "source_fact:v1:2a52f1c839d2189abdeaadacc2f8198adbbe34a3872972caa8b3596f56e074da",
+        "source_fact:v1:2a87966e0d55eb1f751fef72d6943adcffb37b5d32c64a8cbcfa93c98f7ccc2d",
+        "source_fact:v1:5ec7db80d704e232c73e61ce411a47fa75b4545f45fc1eefbaec266bcfaf7b29",
+        "source_fact:v1:a165c512effd826916d6f43e0e268e84f71de422a2d04f363e085ca0de23eac6",
+        "source_fact:v1:a7864503f72ac82bdd581f2a5de21d4f0b0d1c6e2696bda329e42d298da303b3",
+        "source_fact:v1:bec9f06760fe41d4c8b9848aac87bf3ff442047b75c999abf28fa48f8cc41cf9",
+        "source_fact:v1:ca0f516d739cadedd19970ef12cd954970e5d499818092cbeb43ffdcdbcbbd79",
+        "source_fact:v1:d092993c6e2d2c714bee82c3e18025a199870d304386c2066783586cfd6073c9",
+        "source_fact:v1:e61e15f98ab10bd590c8c4347bdd275c88e57cd5b0e25921e0372fa18ec18d08"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
+    },
     "source_fact:1e3950515f78e0113b1e7e68": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
       "lanes": {
@@ -84423,6 +84790,25 @@
       "source_published_kst": "2026-10-06T12:07+09:00",
       "title": "'악수하고 춤까지' 中 휴머노이드 국감장 떴다...\"韓 투자 턱없이 부족\""
     },
+    "source_fact:22b9ddfe483345998eba05be": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100609503720749",
+      "source": "머니투데이",
+      "source_body_digest": "1f954de8b4564f6ca92f78733b5203433fb52ffdc1be398586c686fa3f50edcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cdeeb370ae69e67ace6f542883e2a33dc4488c54ec4bc5a3e484ef3add78df9f",
+      "source_fact_keys": [
+        "source_fact:v1:259fae376ea3f41e0e08ac15f4d9757cf8c92c0726ef23551228b753e8bb7296",
+        "source_fact:v1:83aeea5568dca24847d1730369d946e5f7813b2e4dd5118de61ff1fb4cad1a8a",
+        "source_fact:v1:98078ed85d9a33fe5571bfaaa218ce0d6e47ba4390c54ecc770ab90ad3f390a2"
+      ],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "산업장관 \"지방투자 1600조…3대 메가프로젝트 차질없이 추진\""
+    },
     "source_fact:22e834b152665a370f8b743b": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
       "lanes": {
@@ -84668,6 +85054,31 @@
       "source_published_kst": "2026-10-06T17:25+09:00",
       "title": "노조, 공정거래법 적용 제외?…교섭 부담 던다지만 他노조 일감 보호는 ‘과제’"
     },
+    "source_fact:23ecc331bd0a762ad6db6a81": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.fnnews.com/news/202610060600523372",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "f1fb8abbe5afb93b58fed315951e6431142efb347d45ee19aeb54378a68225ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f8e42fcb3c41ad4789c96ea06433d6561d03f31c13165c8c3bd477c2f7aaf8b",
+      "source_fact_keys": [
+        "source_fact:v1:2a52f1c839d2189abdeaadacc2f8198adbbe34a3872972caa8b3596f56e074da",
+        "source_fact:v1:2a87966e0d55eb1f751fef72d6943adcffb37b5d32c64a8cbcfa93c98f7ccc2d",
+        "source_fact:v1:5ec7db80d704e232c73e61ce411a47fa75b4545f45fc1eefbaec266bcfaf7b29",
+        "source_fact:v1:a165c512effd826916d6f43e0e268e84f71de422a2d04f363e085ca0de23eac6",
+        "source_fact:v1:a7864503f72ac82bdd581f2a5de21d4f0b0d1c6e2696bda329e42d298da303b3",
+        "source_fact:v1:bec9f06760fe41d4c8b9848aac87bf3ff442047b75c999abf28fa48f8cc41cf9",
+        "source_fact:v1:ca0f516d739cadedd19970ef12cd954970e5d499818092cbeb43ffdcdbcbbd79",
+        "source_fact:v1:d092993c6e2d2c714bee82c3e18025a199870d304386c2066783586cfd6073c9",
+        "source_fact:v1:e61e15f98ab10bd590c8c4347bdd275c88e57cd5b0e25921e0372fa18ec18d08"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
+    },
     "source_fact:23f794df153f536af0cff638": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
       "lanes": {
@@ -84735,6 +85146,31 @@
       ],
       "source_published_kst": "2026-10-06T21:38+09:00",
       "title": "이형일 \"대미투자 MOU '45영업일 후', 우리에 유리해 수정 요구 안 해\"(종합)"
+    },
+    "source_fact:247229ab2f0341bde4f1980b": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/07/2026100618381313969",
+      "source": "머니투데이",
+      "source_body_digest": "9e192ab79f7a30551688dc5498580bb6424db148be0294be70a79f31906b3893",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:436ddddb90dc0724b8302656b3e4e58c75b0b7bec36768b38e0d1337b9df1341",
+      "source_fact_keys": [
+        "source_fact:v1:5dd20e99cfcbe1aa0310b9e645fc53aebc28f7f5924ce6539fec9bdf05f742d8",
+        "source_fact:v1:7ec58b219f12eea3591294c17369a0a91c10c959864a5a500ffe45f070a0500f",
+        "source_fact:v1:8c348e112bfbf85e9e5d82acc12714a8ee5286ce3f316c2b5ffc4c1462d4dd0d",
+        "source_fact:v1:9b6305e9c4140325d5648e939cc47785f47501f4468037208fe4d0b235052cac",
+        "source_fact:v1:b0ebec59ab9d3c54c077f9a3e64cc599dba3b3f629e56a02ac81e91bdb6c374c",
+        "source_fact:v1:bfb152146efe2eb623f35055de3bee73cf9bf0b88ee0649f35a8713c721d452e",
+        "source_fact:v1:c420eb612d082c4b333a340861d6d7bb8dfa13e67d5a6028b007a379db5f2f0b",
+        "source_fact:v1:f26efc1480c27fab786dc046119b13301a8e170c7bd076c64832124b6d8322e0",
+        "source_fact:v1:fc1d65a3e9171f8ead34bb3abebfbe03a5fa98d5fa017d22eb40d05919d12d71"
+      ],
+      "source_published_kst": "2026-10-07T03:11+09:00",
+      "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
     },
     "source_fact:2495cb81d74e9f85db76142e": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -89534,6 +89970,31 @@
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
+    "source_fact:396a9b9748dff25f0b6bd2c3": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/07/2026100618381313969",
+      "source": "머니투데이",
+      "source_body_digest": "9e192ab79f7a30551688dc5498580bb6424db148be0294be70a79f31906b3893",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:436ddddb90dc0724b8302656b3e4e58c75b0b7bec36768b38e0d1337b9df1341",
+      "source_fact_keys": [
+        "source_fact:v1:5dd20e99cfcbe1aa0310b9e645fc53aebc28f7f5924ce6539fec9bdf05f742d8",
+        "source_fact:v1:7ec58b219f12eea3591294c17369a0a91c10c959864a5a500ffe45f070a0500f",
+        "source_fact:v1:8c348e112bfbf85e9e5d82acc12714a8ee5286ce3f316c2b5ffc4c1462d4dd0d",
+        "source_fact:v1:9b6305e9c4140325d5648e939cc47785f47501f4468037208fe4d0b235052cac",
+        "source_fact:v1:b0ebec59ab9d3c54c077f9a3e64cc599dba3b3f629e56a02ac81e91bdb6c374c",
+        "source_fact:v1:bfb152146efe2eb623f35055de3bee73cf9bf0b88ee0649f35a8713c721d452e",
+        "source_fact:v1:c420eb612d082c4b333a340861d6d7bb8dfa13e67d5a6028b007a379db5f2f0b",
+        "source_fact:v1:f26efc1480c27fab786dc046119b13301a8e170c7bd076c64832124b6d8322e0",
+        "source_fact:v1:fc1d65a3e9171f8ead34bb3abebfbe03a5fa98d5fa017d22eb40d05919d12d71"
+      ],
+      "source_published_kst": "2026-10-07T03:11+09:00",
+      "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
+    },
     "source_fact:3982c40dd17a3d6bde3827e2": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
       "lanes": {
@@ -91042,6 +91503,31 @@
       ],
       "source_published_kst": "2026-10-06T13:51+09:00",
       "title": "코스피, 반도체 약세에 6900선으로…코스닥은 2%대 뛰며 900선 돌파"
+    },
+    "source_fact:411eee509df85d03b0991f20": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/07/2026100618381313969",
+      "source": "머니투데이",
+      "source_body_digest": "9e192ab79f7a30551688dc5498580bb6424db148be0294be70a79f31906b3893",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:436ddddb90dc0724b8302656b3e4e58c75b0b7bec36768b38e0d1337b9df1341",
+      "source_fact_keys": [
+        "source_fact:v1:5dd20e99cfcbe1aa0310b9e645fc53aebc28f7f5924ce6539fec9bdf05f742d8",
+        "source_fact:v1:7ec58b219f12eea3591294c17369a0a91c10c959864a5a500ffe45f070a0500f",
+        "source_fact:v1:8c348e112bfbf85e9e5d82acc12714a8ee5286ce3f316c2b5ffc4c1462d4dd0d",
+        "source_fact:v1:9b6305e9c4140325d5648e939cc47785f47501f4468037208fe4d0b235052cac",
+        "source_fact:v1:b0ebec59ab9d3c54c077f9a3e64cc599dba3b3f629e56a02ac81e91bdb6c374c",
+        "source_fact:v1:bfb152146efe2eb623f35055de3bee73cf9bf0b88ee0649f35a8713c721d452e",
+        "source_fact:v1:c420eb612d082c4b333a340861d6d7bb8dfa13e67d5a6028b007a379db5f2f0b",
+        "source_fact:v1:f26efc1480c27fab786dc046119b13301a8e170c7bd076c64832124b6d8322e0",
+        "source_fact:v1:fc1d65a3e9171f8ead34bb3abebfbe03a5fa98d5fa017d22eb40d05919d12d71"
+      ],
+      "source_published_kst": "2026-10-07T03:11+09:00",
+      "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
     },
     "source_fact:412596af907386682d21b848": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
@@ -92631,6 +93117,31 @@
       ],
       "source_published_kst": "2026-10-06T08:17+09:00",
       "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
+    },
+    "source_fact:47c875ed8425046329c584f7": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.fnnews.com/news/202610060600523372",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "f1fb8abbe5afb93b58fed315951e6431142efb347d45ee19aeb54378a68225ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f8e42fcb3c41ad4789c96ea06433d6561d03f31c13165c8c3bd477c2f7aaf8b",
+      "source_fact_keys": [
+        "source_fact:v1:2a52f1c839d2189abdeaadacc2f8198adbbe34a3872972caa8b3596f56e074da",
+        "source_fact:v1:2a87966e0d55eb1f751fef72d6943adcffb37b5d32c64a8cbcfa93c98f7ccc2d",
+        "source_fact:v1:5ec7db80d704e232c73e61ce411a47fa75b4545f45fc1eefbaec266bcfaf7b29",
+        "source_fact:v1:a165c512effd826916d6f43e0e268e84f71de422a2d04f363e085ca0de23eac6",
+        "source_fact:v1:a7864503f72ac82bdd581f2a5de21d4f0b0d1c6e2696bda329e42d298da303b3",
+        "source_fact:v1:bec9f06760fe41d4c8b9848aac87bf3ff442047b75c999abf28fa48f8cc41cf9",
+        "source_fact:v1:ca0f516d739cadedd19970ef12cd954970e5d499818092cbeb43ffdcdbcbbd79",
+        "source_fact:v1:d092993c6e2d2c714bee82c3e18025a199870d304386c2066783586cfd6073c9",
+        "source_fact:v1:e61e15f98ab10bd590c8c4347bdd275c88e57cd5b0e25921e0372fa18ec18d08"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
     },
     "source_fact:47d11739382d4b5bef8af830": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
@@ -95159,6 +95670,31 @@
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
     },
+    "source_fact:52783339bfaeb32c3673371b": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.fnnews.com/news/202610060600523372",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "f1fb8abbe5afb93b58fed315951e6431142efb347d45ee19aeb54378a68225ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f8e42fcb3c41ad4789c96ea06433d6561d03f31c13165c8c3bd477c2f7aaf8b",
+      "source_fact_keys": [
+        "source_fact:v1:2a52f1c839d2189abdeaadacc2f8198adbbe34a3872972caa8b3596f56e074da",
+        "source_fact:v1:2a87966e0d55eb1f751fef72d6943adcffb37b5d32c64a8cbcfa93c98f7ccc2d",
+        "source_fact:v1:5ec7db80d704e232c73e61ce411a47fa75b4545f45fc1eefbaec266bcfaf7b29",
+        "source_fact:v1:a165c512effd826916d6f43e0e268e84f71de422a2d04f363e085ca0de23eac6",
+        "source_fact:v1:a7864503f72ac82bdd581f2a5de21d4f0b0d1c6e2696bda329e42d298da303b3",
+        "source_fact:v1:bec9f06760fe41d4c8b9848aac87bf3ff442047b75c999abf28fa48f8cc41cf9",
+        "source_fact:v1:ca0f516d739cadedd19970ef12cd954970e5d499818092cbeb43ffdcdbcbbd79",
+        "source_fact:v1:d092993c6e2d2c714bee82c3e18025a199870d304386c2066783586cfd6073c9",
+        "source_fact:v1:e61e15f98ab10bd590c8c4347bdd275c88e57cd5b0e25921e0372fa18ec18d08"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
+    },
     "source_fact:52a3649179bfddb84f50af62": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
       "lanes": {
@@ -96036,6 +96572,50 @@
       ],
       "source_published_kst": "2026-10-06T09:29+09:00",
       "title": "대신운용, ‘주주환원고배당펀드’ 출시⋯배당ㆍ자사주 매입 기업 투자"
+    },
+    "source_fact:566ee592fc27b36b7f927650": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.fnnews.com/news/202610060600523372",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "f1fb8abbe5afb93b58fed315951e6431142efb347d45ee19aeb54378a68225ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f8e42fcb3c41ad4789c96ea06433d6561d03f31c13165c8c3bd477c2f7aaf8b",
+      "source_fact_keys": [
+        "source_fact:v1:2a52f1c839d2189abdeaadacc2f8198adbbe34a3872972caa8b3596f56e074da",
+        "source_fact:v1:2a87966e0d55eb1f751fef72d6943adcffb37b5d32c64a8cbcfa93c98f7ccc2d",
+        "source_fact:v1:5ec7db80d704e232c73e61ce411a47fa75b4545f45fc1eefbaec266bcfaf7b29",
+        "source_fact:v1:a165c512effd826916d6f43e0e268e84f71de422a2d04f363e085ca0de23eac6",
+        "source_fact:v1:a7864503f72ac82bdd581f2a5de21d4f0b0d1c6e2696bda329e42d298da303b3",
+        "source_fact:v1:bec9f06760fe41d4c8b9848aac87bf3ff442047b75c999abf28fa48f8cc41cf9",
+        "source_fact:v1:ca0f516d739cadedd19970ef12cd954970e5d499818092cbeb43ffdcdbcbbd79",
+        "source_fact:v1:d092993c6e2d2c714bee82c3e18025a199870d304386c2066783586cfd6073c9",
+        "source_fact:v1:e61e15f98ab10bd590c8c4347bdd275c88e57cd5b0e25921e0372fa18ec18d08"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
+    },
+    "source_fact:567ba2fcf934c95f1c2c87ff": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05494006645610296",
+      "source": "이데일리",
+      "source_body_digest": "a5a8b3921e9aebbfa10b75a7a510b146a88fca14564aa0e6f227842d7e97adec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10453947755708781e3d48943c12451af6fc922a05c13b598cf2ed8c5d3fba58",
+      "source_fact_keys": [
+        "source_fact:v1:42619cee986df9eb26c9a72ee64bfe829830867f50b345c6f83c5b03ed17fca1",
+        "source_fact:v1:7cf484aa3767ccaf01da3faa48029500bc6b9ce7272cac9090d0c008e61ae8c1",
+        "source_fact:v1:b9e67e948bd56c5ec8ee66e0603560814dc72bbb72e463001f3f5c95b1cba604"
+      ],
+      "source_published_kst": "2026-10-06T19:27+09:00",
+      "title": "[美특징주]TSMC, 미국 내 반도체 생산 확대 검토…개장전 '약보합'"
     },
     "source_fact:5688598ab6f9fb78af40cfde": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
@@ -101040,6 +101620,31 @@
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
     },
+    "source_fact:6ca28c6fcae01953f1271434": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/07/2026100618381313969",
+      "source": "머니투데이",
+      "source_body_digest": "9e192ab79f7a30551688dc5498580bb6424db148be0294be70a79f31906b3893",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:436ddddb90dc0724b8302656b3e4e58c75b0b7bec36768b38e0d1337b9df1341",
+      "source_fact_keys": [
+        "source_fact:v1:5dd20e99cfcbe1aa0310b9e645fc53aebc28f7f5924ce6539fec9bdf05f742d8",
+        "source_fact:v1:7ec58b219f12eea3591294c17369a0a91c10c959864a5a500ffe45f070a0500f",
+        "source_fact:v1:8c348e112bfbf85e9e5d82acc12714a8ee5286ce3f316c2b5ffc4c1462d4dd0d",
+        "source_fact:v1:9b6305e9c4140325d5648e939cc47785f47501f4468037208fe4d0b235052cac",
+        "source_fact:v1:b0ebec59ab9d3c54c077f9a3e64cc599dba3b3f629e56a02ac81e91bdb6c374c",
+        "source_fact:v1:bfb152146efe2eb623f35055de3bee73cf9bf0b88ee0649f35a8713c721d452e",
+        "source_fact:v1:c420eb612d082c4b333a340861d6d7bb8dfa13e67d5a6028b007a379db5f2f0b",
+        "source_fact:v1:f26efc1480c27fab786dc046119b13301a8e170c7bd076c64832124b6d8322e0",
+        "source_fact:v1:fc1d65a3e9171f8ead34bb3abebfbe03a5fa98d5fa017d22eb40d05919d12d71"
+      ],
+      "source_published_kst": "2026-10-07T03:11+09:00",
+      "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
+    },
     "source_fact:6cb28128734a396188053c14": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
       "lanes": {
@@ -103479,6 +104084,31 @@
       "source_published_kst": "2026-10-06T16:55+09:00",
       "title": "알테오젠, 국민성장펀드‧스카이레이크서 2000억원 투자 유치"
     },
+    "source_fact:76d55976b984f88478e06042": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/07/2026100618381313969",
+      "source": "머니투데이",
+      "source_body_digest": "9e192ab79f7a30551688dc5498580bb6424db148be0294be70a79f31906b3893",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:436ddddb90dc0724b8302656b3e4e58c75b0b7bec36768b38e0d1337b9df1341",
+      "source_fact_keys": [
+        "source_fact:v1:5dd20e99cfcbe1aa0310b9e645fc53aebc28f7f5924ce6539fec9bdf05f742d8",
+        "source_fact:v1:7ec58b219f12eea3591294c17369a0a91c10c959864a5a500ffe45f070a0500f",
+        "source_fact:v1:8c348e112bfbf85e9e5d82acc12714a8ee5286ce3f316c2b5ffc4c1462d4dd0d",
+        "source_fact:v1:9b6305e9c4140325d5648e939cc47785f47501f4468037208fe4d0b235052cac",
+        "source_fact:v1:b0ebec59ab9d3c54c077f9a3e64cc599dba3b3f629e56a02ac81e91bdb6c374c",
+        "source_fact:v1:bfb152146efe2eb623f35055de3bee73cf9bf0b88ee0649f35a8713c721d452e",
+        "source_fact:v1:c420eb612d082c4b333a340861d6d7bb8dfa13e67d5a6028b007a379db5f2f0b",
+        "source_fact:v1:f26efc1480c27fab786dc046119b13301a8e170c7bd076c64832124b6d8322e0",
+        "source_fact:v1:fc1d65a3e9171f8ead34bb3abebfbe03a5fa98d5fa017d22eb40d05919d12d71"
+      ],
+      "source_published_kst": "2026-10-07T03:11+09:00",
+      "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
+    },
     "source_fact:76e427c0f3afa8ca652b0ec6": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -104334,6 +104964,31 @@
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
+    "source_fact:7a92316c520d8a2bb81c2032": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/07/2026100618381313969",
+      "source": "머니투데이",
+      "source_body_digest": "9e192ab79f7a30551688dc5498580bb6424db148be0294be70a79f31906b3893",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:436ddddb90dc0724b8302656b3e4e58c75b0b7bec36768b38e0d1337b9df1341",
+      "source_fact_keys": [
+        "source_fact:v1:5dd20e99cfcbe1aa0310b9e645fc53aebc28f7f5924ce6539fec9bdf05f742d8",
+        "source_fact:v1:7ec58b219f12eea3591294c17369a0a91c10c959864a5a500ffe45f070a0500f",
+        "source_fact:v1:8c348e112bfbf85e9e5d82acc12714a8ee5286ce3f316c2b5ffc4c1462d4dd0d",
+        "source_fact:v1:9b6305e9c4140325d5648e939cc47785f47501f4468037208fe4d0b235052cac",
+        "source_fact:v1:b0ebec59ab9d3c54c077f9a3e64cc599dba3b3f629e56a02ac81e91bdb6c374c",
+        "source_fact:v1:bfb152146efe2eb623f35055de3bee73cf9bf0b88ee0649f35a8713c721d452e",
+        "source_fact:v1:c420eb612d082c4b333a340861d6d7bb8dfa13e67d5a6028b007a379db5f2f0b",
+        "source_fact:v1:f26efc1480c27fab786dc046119b13301a8e170c7bd076c64832124b6d8322e0",
+        "source_fact:v1:fc1d65a3e9171f8ead34bb3abebfbe03a5fa98d5fa017d22eb40d05919d12d71"
+      ],
+      "source_published_kst": "2026-10-07T03:11+09:00",
+      "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
+    },
     "source_fact:7aaf9192ed80085b90fb9543": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
       "lanes": {
@@ -104817,6 +105472,25 @@
       ],
       "source_published_kst": "2026-10-06T17:24+09:00",
       "title": "英매체 \"한국산 연료, 서방 제재 선박 통해 러시아 대거 반출\""
+    },
+    "source_fact:7ca8548fc6d67f1b21e34947": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100609503720749",
+      "source": "머니투데이",
+      "source_body_digest": "1f954de8b4564f6ca92f78733b5203433fb52ffdc1be398586c686fa3f50edcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cdeeb370ae69e67ace6f542883e2a33dc4488c54ec4bc5a3e484ef3add78df9f",
+      "source_fact_keys": [
+        "source_fact:v1:259fae376ea3f41e0e08ac15f4d9757cf8c92c0726ef23551228b753e8bb7296",
+        "source_fact:v1:83aeea5568dca24847d1730369d946e5f7813b2e4dd5118de61ff1fb4cad1a8a",
+        "source_fact:v1:98078ed85d9a33fe5571bfaaa218ce0d6e47ba4390c54ecc770ab90ad3f390a2"
+      ],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "산업장관 \"지방투자 1600조…3대 메가프로젝트 차질없이 추진\""
     },
     "source_fact:7cae2c73af8a3a441cdb972e": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -106801,6 +107475,31 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:84dd30966114e401b00d5601": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/07/2026100618381313969",
+      "source": "머니투데이",
+      "source_body_digest": "9e192ab79f7a30551688dc5498580bb6424db148be0294be70a79f31906b3893",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:436ddddb90dc0724b8302656b3e4e58c75b0b7bec36768b38e0d1337b9df1341",
+      "source_fact_keys": [
+        "source_fact:v1:5dd20e99cfcbe1aa0310b9e645fc53aebc28f7f5924ce6539fec9bdf05f742d8",
+        "source_fact:v1:7ec58b219f12eea3591294c17369a0a91c10c959864a5a500ffe45f070a0500f",
+        "source_fact:v1:8c348e112bfbf85e9e5d82acc12714a8ee5286ce3f316c2b5ffc4c1462d4dd0d",
+        "source_fact:v1:9b6305e9c4140325d5648e939cc47785f47501f4468037208fe4d0b235052cac",
+        "source_fact:v1:b0ebec59ab9d3c54c077f9a3e64cc599dba3b3f629e56a02ac81e91bdb6c374c",
+        "source_fact:v1:bfb152146efe2eb623f35055de3bee73cf9bf0b88ee0649f35a8713c721d452e",
+        "source_fact:v1:c420eb612d082c4b333a340861d6d7bb8dfa13e67d5a6028b007a379db5f2f0b",
+        "source_fact:v1:f26efc1480c27fab786dc046119b13301a8e170c7bd076c64832124b6d8322e0",
+        "source_fact:v1:fc1d65a3e9171f8ead34bb3abebfbe03a5fa98d5fa017d22eb40d05919d12d71"
+      ],
+      "source_published_kst": "2026-10-07T03:11+09:00",
+      "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
     },
     "source_fact:84e6fba9ee5b574d462a7091": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
@@ -111128,6 +111827,25 @@
       ],
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
+    "source_fact:97a9da9cd7c0e7cec1a7c876": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05494006645610296",
+      "source": "이데일리",
+      "source_body_digest": "a5a8b3921e9aebbfa10b75a7a510b146a88fca14564aa0e6f227842d7e97adec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10453947755708781e3d48943c12451af6fc922a05c13b598cf2ed8c5d3fba58",
+      "source_fact_keys": [
+        "source_fact:v1:42619cee986df9eb26c9a72ee64bfe829830867f50b345c6f83c5b03ed17fca1",
+        "source_fact:v1:7cf484aa3767ccaf01da3faa48029500bc6b9ce7272cac9090d0c008e61ae8c1",
+        "source_fact:v1:b9e67e948bd56c5ec8ee66e0603560814dc72bbb72e463001f3f5c95b1cba604"
+      ],
+      "source_published_kst": "2026-10-06T19:27+09:00",
+      "title": "[美특징주]TSMC, 미국 내 반도체 생산 확대 검토…개장전 '약보합'"
     },
     "source_fact:97ad22b60c1e2413ede95ae2": {
       "first_seen_kst": "2026-10-07T02:49:10+09:00",
@@ -121604,6 +122322,31 @@
       "source_published_kst": "2026-10-05T19:06+09:00",
       "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
     },
+    "source_fact:c5deae53c398e316bc277604": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.fnnews.com/news/202610060600523372",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "f1fb8abbe5afb93b58fed315951e6431142efb347d45ee19aeb54378a68225ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f8e42fcb3c41ad4789c96ea06433d6561d03f31c13165c8c3bd477c2f7aaf8b",
+      "source_fact_keys": [
+        "source_fact:v1:2a52f1c839d2189abdeaadacc2f8198adbbe34a3872972caa8b3596f56e074da",
+        "source_fact:v1:2a87966e0d55eb1f751fef72d6943adcffb37b5d32c64a8cbcfa93c98f7ccc2d",
+        "source_fact:v1:5ec7db80d704e232c73e61ce411a47fa75b4545f45fc1eefbaec266bcfaf7b29",
+        "source_fact:v1:a165c512effd826916d6f43e0e268e84f71de422a2d04f363e085ca0de23eac6",
+        "source_fact:v1:a7864503f72ac82bdd581f2a5de21d4f0b0d1c6e2696bda329e42d298da303b3",
+        "source_fact:v1:bec9f06760fe41d4c8b9848aac87bf3ff442047b75c999abf28fa48f8cc41cf9",
+        "source_fact:v1:ca0f516d739cadedd19970ef12cd954970e5d499818092cbeb43ffdcdbcbbd79",
+        "source_fact:v1:d092993c6e2d2c714bee82c3e18025a199870d304386c2066783586cfd6073c9",
+        "source_fact:v1:e61e15f98ab10bd590c8c4347bdd275c88e57cd5b0e25921e0372fa18ec18d08"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
+    },
     "source_fact:c614e79177d43f1cd4bee928": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -122018,6 +122761,25 @@
       ],
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
+    "source_fact:c7e2013f6ca457d282f473e3": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100609503720749",
+      "source": "머니투데이",
+      "source_body_digest": "1f954de8b4564f6ca92f78733b5203433fb52ffdc1be398586c686fa3f50edcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cdeeb370ae69e67ace6f542883e2a33dc4488c54ec4bc5a3e484ef3add78df9f",
+      "source_fact_keys": [
+        "source_fact:v1:259fae376ea3f41e0e08ac15f4d9757cf8c92c0726ef23551228b753e8bb7296",
+        "source_fact:v1:83aeea5568dca24847d1730369d946e5f7813b2e4dd5118de61ff1fb4cad1a8a",
+        "source_fact:v1:98078ed85d9a33fe5571bfaaa218ce0d6e47ba4390c54ecc770ab90ad3f390a2"
+      ],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "산업장관 \"지방투자 1600조…3대 메가프로젝트 차질없이 추진\""
     },
     "source_fact:c800083cfb9a5e05002b3855": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
@@ -127010,6 +127772,25 @@
       "source_published_kst": "2026-10-06T17:18+09:00",
       "title": "국고채 금리, 대외금리 연동하며 혼조세…3년물 3.933%(종합) | 연합뉴스"
     },
+    "source_fact:dd0560ac93dbeed7db6da90a": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05494006645610296",
+      "source": "이데일리",
+      "source_body_digest": "a5a8b3921e9aebbfa10b75a7a510b146a88fca14564aa0e6f227842d7e97adec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10453947755708781e3d48943c12451af6fc922a05c13b598cf2ed8c5d3fba58",
+      "source_fact_keys": [
+        "source_fact:v1:42619cee986df9eb26c9a72ee64bfe829830867f50b345c6f83c5b03ed17fca1",
+        "source_fact:v1:7cf484aa3767ccaf01da3faa48029500bc6b9ce7272cac9090d0c008e61ae8c1",
+        "source_fact:v1:b9e67e948bd56c5ec8ee66e0603560814dc72bbb72e463001f3f5c95b1cba604"
+      ],
+      "source_published_kst": "2026-10-06T19:27+09:00",
+      "title": "[美특징주]TSMC, 미국 내 반도체 생산 확대 검토…개장전 '약보합'"
+    },
     "source_fact:dd55e7c34fc1cbac7d9e04db": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
       "lanes": {
@@ -127122,6 +127903,31 @@
       ],
       "source_published_kst": "2026-10-05T09:45+09:00",
       "title": "LG유플러스, 해외 AI 서비스 ‘유독’에 들여온다…11월 첫 상품 출시"
+    },
+    "source_fact:ddb2362ef845ceb7118c955e": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/07/2026100618381313969",
+      "source": "머니투데이",
+      "source_body_digest": "9e192ab79f7a30551688dc5498580bb6424db148be0294be70a79f31906b3893",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:436ddddb90dc0724b8302656b3e4e58c75b0b7bec36768b38e0d1337b9df1341",
+      "source_fact_keys": [
+        "source_fact:v1:5dd20e99cfcbe1aa0310b9e645fc53aebc28f7f5924ce6539fec9bdf05f742d8",
+        "source_fact:v1:7ec58b219f12eea3591294c17369a0a91c10c959864a5a500ffe45f070a0500f",
+        "source_fact:v1:8c348e112bfbf85e9e5d82acc12714a8ee5286ce3f316c2b5ffc4c1462d4dd0d",
+        "source_fact:v1:9b6305e9c4140325d5648e939cc47785f47501f4468037208fe4d0b235052cac",
+        "source_fact:v1:b0ebec59ab9d3c54c077f9a3e64cc599dba3b3f629e56a02ac81e91bdb6c374c",
+        "source_fact:v1:bfb152146efe2eb623f35055de3bee73cf9bf0b88ee0649f35a8713c721d452e",
+        "source_fact:v1:c420eb612d082c4b333a340861d6d7bb8dfa13e67d5a6028b007a379db5f2f0b",
+        "source_fact:v1:f26efc1480c27fab786dc046119b13301a8e170c7bd076c64832124b6d8322e0",
+        "source_fact:v1:fc1d65a3e9171f8ead34bb3abebfbe03a5fa98d5fa017d22eb40d05919d12d71"
+      ],
+      "source_published_kst": "2026-10-07T03:11+09:00",
+      "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
     },
     "source_fact:ddc72e0151e28f5ca8470329": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
@@ -128606,6 +129412,31 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:e2a31ee451737a70404376e1": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/07/2026100618381313969",
+      "source": "머니투데이",
+      "source_body_digest": "9e192ab79f7a30551688dc5498580bb6424db148be0294be70a79f31906b3893",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:436ddddb90dc0724b8302656b3e4e58c75b0b7bec36768b38e0d1337b9df1341",
+      "source_fact_keys": [
+        "source_fact:v1:5dd20e99cfcbe1aa0310b9e645fc53aebc28f7f5924ce6539fec9bdf05f742d8",
+        "source_fact:v1:7ec58b219f12eea3591294c17369a0a91c10c959864a5a500ffe45f070a0500f",
+        "source_fact:v1:8c348e112bfbf85e9e5d82acc12714a8ee5286ce3f316c2b5ffc4c1462d4dd0d",
+        "source_fact:v1:9b6305e9c4140325d5648e939cc47785f47501f4468037208fe4d0b235052cac",
+        "source_fact:v1:b0ebec59ab9d3c54c077f9a3e64cc599dba3b3f629e56a02ac81e91bdb6c374c",
+        "source_fact:v1:bfb152146efe2eb623f35055de3bee73cf9bf0b88ee0649f35a8713c721d452e",
+        "source_fact:v1:c420eb612d082c4b333a340861d6d7bb8dfa13e67d5a6028b007a379db5f2f0b",
+        "source_fact:v1:f26efc1480c27fab786dc046119b13301a8e170c7bd076c64832124b6d8322e0",
+        "source_fact:v1:fc1d65a3e9171f8ead34bb3abebfbe03a5fa98d5fa017d22eb40d05919d12d71"
+      ],
+      "source_published_kst": "2026-10-07T03:11+09:00",
+      "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
     },
     "source_fact:e2c43dfc710e918dd5a32d70": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
@@ -132002,6 +132833,31 @@
       ],
       "source_published_kst": "2026-10-05T22:29+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 전환사채 발행 확정..쿠폰 0%"
+    },
+    "source_fact:f0cb259ba80423fd27107587": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.fnnews.com/news/202610060600523372",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "f1fb8abbe5afb93b58fed315951e6431142efb347d45ee19aeb54378a68225ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f8e42fcb3c41ad4789c96ea06433d6561d03f31c13165c8c3bd477c2f7aaf8b",
+      "source_fact_keys": [
+        "source_fact:v1:2a52f1c839d2189abdeaadacc2f8198adbbe34a3872972caa8b3596f56e074da",
+        "source_fact:v1:2a87966e0d55eb1f751fef72d6943adcffb37b5d32c64a8cbcfa93c98f7ccc2d",
+        "source_fact:v1:5ec7db80d704e232c73e61ce411a47fa75b4545f45fc1eefbaec266bcfaf7b29",
+        "source_fact:v1:a165c512effd826916d6f43e0e268e84f71de422a2d04f363e085ca0de23eac6",
+        "source_fact:v1:a7864503f72ac82bdd581f2a5de21d4f0b0d1c6e2696bda329e42d298da303b3",
+        "source_fact:v1:bec9f06760fe41d4c8b9848aac87bf3ff442047b75c999abf28fa48f8cc41cf9",
+        "source_fact:v1:ca0f516d739cadedd19970ef12cd954970e5d499818092cbeb43ffdcdbcbbd79",
+        "source_fact:v1:d092993c6e2d2c714bee82c3e18025a199870d304386c2066783586cfd6073c9",
+        "source_fact:v1:e61e15f98ab10bd590c8c4347bdd275c88e57cd5b0e25921e0372fa18ec18d08"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
     },
     "source_fact:f0cd696e189d180603ccdde8": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
@@ -140612,6 +141468,31 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:05+09:00",
       "title": "정부, 4.7조 '프론티어 AI' 12월 공모…내년 2월 출자 대상 뽑는다"
+    },
+    "title:2fed602771338e47257b601f": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.fnnews.com/news/202610060600523372",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "f1fb8abbe5afb93b58fed315951e6431142efb347d45ee19aeb54378a68225ac",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5f8e42fcb3c41ad4789c96ea06433d6561d03f31c13165c8c3bd477c2f7aaf8b",
+      "source_fact_keys": [
+        "source_fact:v1:2a52f1c839d2189abdeaadacc2f8198adbbe34a3872972caa8b3596f56e074da",
+        "source_fact:v1:2a87966e0d55eb1f751fef72d6943adcffb37b5d32c64a8cbcfa93c98f7ccc2d",
+        "source_fact:v1:5ec7db80d704e232c73e61ce411a47fa75b4545f45fc1eefbaec266bcfaf7b29",
+        "source_fact:v1:a165c512effd826916d6f43e0e268e84f71de422a2d04f363e085ca0de23eac6",
+        "source_fact:v1:a7864503f72ac82bdd581f2a5de21d4f0b0d1c6e2696bda329e42d298da303b3",
+        "source_fact:v1:bec9f06760fe41d4c8b9848aac87bf3ff442047b75c999abf28fa48f8cc41cf9",
+        "source_fact:v1:ca0f516d739cadedd19970ef12cd954970e5d499818092cbeb43ffdcdbcbbd79",
+        "source_fact:v1:d092993c6e2d2c714bee82c3e18025a199870d304386c2066783586cfd6073c9",
+        "source_fact:v1:e61e15f98ab10bd590c8c4347bdd275c88e57cd5b0e25921e0372fa18ec18d08"
+      ],
+      "source_published_kst": "2026-10-06T06:00+09:00",
+      "title": "[ETF업&다운]3분기 엇갈린 반도체…삼전닉스 빠지고 소부장 버텼다"
     },
     "title:301211214e8c40532cbc3678": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
@@ -153319,6 +154200,25 @@
       "source": "뉴시스",
       "title": "식당 테이블 간장 금지?…식약처 \"사실 아닙니다\""
     },
+    "title:9f33aa6f7ceb562f7f1cf31c": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05494006645610296",
+      "source": "이데일리",
+      "source_body_digest": "a5a8b3921e9aebbfa10b75a7a510b146a88fca14564aa0e6f227842d7e97adec",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:10453947755708781e3d48943c12451af6fc922a05c13b598cf2ed8c5d3fba58",
+      "source_fact_keys": [
+        "source_fact:v1:42619cee986df9eb26c9a72ee64bfe829830867f50b345c6f83c5b03ed17fca1",
+        "source_fact:v1:7cf484aa3767ccaf01da3faa48029500bc6b9ce7272cac9090d0c008e61ae8c1",
+        "source_fact:v1:b9e67e948bd56c5ec8ee66e0603560814dc72bbb72e463001f3f5c95b1cba604"
+      ],
+      "source_published_kst": "2026-10-06T19:27+09:00",
+      "title": "[美특징주]TSMC, 미국 내 반도체 생산 확대 검토…개장전 '약보합'"
+    },
     "title:9f6500e533c6f37b7780d296": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -159946,6 +160846,25 @@
       "source_published_kst": "2026-10-06T11:27+09:00",
       "title": "스페이스X, AI 사업 기대감에 날아 올랐다"
     },
+    "title:da7201d177c7b3f454bc88c0": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/index.php/economy/2026/10/06/2026100609503720749",
+      "source": "머니투데이",
+      "source_body_digest": "1f954de8b4564f6ca92f78733b5203433fb52ffdc1be398586c686fa3f50edcc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cdeeb370ae69e67ace6f542883e2a33dc4488c54ec4bc5a3e484ef3add78df9f",
+      "source_fact_keys": [
+        "source_fact:v1:259fae376ea3f41e0e08ac15f4d9757cf8c92c0726ef23551228b753e8bb7296",
+        "source_fact:v1:83aeea5568dca24847d1730369d946e5f7813b2e4dd5118de61ff1fb4cad1a8a",
+        "source_fact:v1:98078ed85d9a33fe5571bfaaa218ce0d6e47ba4390c54ecc770ab90ad3f390a2"
+      ],
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "title": "산업장관 \"지방투자 1600조…3대 메가프로젝트 차질없이 추진\""
+    },
     "title:da836e7b73156e5e6b12e952": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
@@ -160499,6 +161418,31 @@
       "link": "https://www.yna.co.kr/view/AKR20260918181100003",
       "source": "연합뉴스",
       "title": "상반기 글로벌 ESS용 배터리 출하 71% 급증…각형이 전체의 94% | 연합뉴스"
+    },
+    "title:e088b7d91764b8045748daa2": {
+      "first_seen_kst": "2026-10-07T03:30:59+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:30:59+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:30:59+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/07/2026100618381313969",
+      "source": "머니투데이",
+      "source_body_digest": "9e192ab79f7a30551688dc5498580bb6424db148be0294be70a79f31906b3893",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:436ddddb90dc0724b8302656b3e4e58c75b0b7bec36768b38e0d1337b9df1341",
+      "source_fact_keys": [
+        "source_fact:v1:5dd20e99cfcbe1aa0310b9e645fc53aebc28f7f5924ce6539fec9bdf05f742d8",
+        "source_fact:v1:7ec58b219f12eea3591294c17369a0a91c10c959864a5a500ffe45f070a0500f",
+        "source_fact:v1:8c348e112bfbf85e9e5d82acc12714a8ee5286ce3f316c2b5ffc4c1462d4dd0d",
+        "source_fact:v1:9b6305e9c4140325d5648e939cc47785f47501f4468037208fe4d0b235052cac",
+        "source_fact:v1:b0ebec59ab9d3c54c077f9a3e64cc599dba3b3f629e56a02ac81e91bdb6c374c",
+        "source_fact:v1:bfb152146efe2eb623f35055de3bee73cf9bf0b88ee0649f35a8713c721d452e",
+        "source_fact:v1:c420eb612d082c4b333a340861d6d7bb8dfa13e67d5a6028b007a379db5f2f0b",
+        "source_fact:v1:f26efc1480c27fab786dc046119b13301a8e170c7bd076c64832124b6d8322e0",
+        "source_fact:v1:fc1d65a3e9171f8ead34bb3abebfbe03a5fa98d5fa017d22eb40d05919d12d71"
+      ],
+      "source_published_kst": "2026-10-07T03:11+09:00",
+      "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
     },
     "title:e15353b43ffe66fb5fc185bf": {
       "first_seen_kst": "2026-10-02T06:33:23+09:00",
@@ -163876,5 +164820,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T03:17:01+09:00"
+  "updated_at_kst": "2026-10-07T03:30:59+09:00"
 }
