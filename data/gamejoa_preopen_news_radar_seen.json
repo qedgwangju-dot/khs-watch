@@ -1282,20 +1282,21 @@
     "event:357501917a7f635b2fa6a147": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
       "lanes": {
-        "live": "2026-10-06T23:46:46+09:00",
+        "live": "2026-10-07T03:43:49+09:00",
         "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T23:46:46+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2632544",
-      "source": "이투데이",
-      "source_body_digest": "74dfb82271bc3e8eb814607c38117f1b38f14e6c395c28567035fec56f2c3024",
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814678",
+      "source": "뉴시스",
+      "source_body_digest": "dd512b3eeb6e3a6fa8bccdd6c965c25dc37a3b6543d223c006053168040e3803",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:60c6683de60f21f4558dc4de3fa7202b510c0d7d95eb2abacd1cf31725d3e689",
+      "source_fact_identity": "source_facts:v1:59a42f3611b7e27e6f7f250e468728ad30b1936043c43f1f1d92a0d778eb9a3e",
       "source_fact_keys": [
-        "source_fact:v1:e32b7c80729a6ccea3e63b9ecead06b93abadfa4f7276ce4486342fec173738b"
+        "source_fact:v1:3c5157edc56957be8d1cf37e972235a98002736e311d47a36d3e14891557386c",
+        "source_fact:v1:4667e70927d6bdd58626ebf156edebb9d128547fd8506b108edb1358111ecabb"
       ],
-      "source_published_kst": "2026-10-06T08:03+09:00",
-      "title": "뉴욕증시, 국채금리 상승에도 강세⋯나스닥, 사상 최고치 [글로벌마켓 모닝 브리핑]"
+      "source_published_kst": "2026-10-06T06:30+09:00",
+      "title": "[속보] 예멘 후티군, 사우디 전역 미사일 ·드론 공습했다 발표"
     },
     "event:35c61e03fc529e43f46f2a91": {
       "first_seen_kst": "2026-10-02T12:31:36+09:00",
@@ -13501,6 +13502,24 @@
       "source_published_kst": "2026-10-06T19:12+09:00",
       "title": "'삼전닉스 레버리지' 투자한 개미, 석달 만에 2조3000억 날렸다"
     },
+    "fact:7ce24022b616b0c444c20c05": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100611272769983",
+      "source": "머니투데이",
+      "source_body_digest": "efa820cd821cf16fbcb427913af8345c69a6ca8f2f822dd1025b96fafba72d34",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4eaa4b612ee34fec510575ab0739a00a849361e3f607e5110fd95578a35c0c9d",
+      "source_fact_keys": [
+        "source_fact:v1:043c4b7dddef380a08c1a65529b1414962fb54fb9fb95db472754253e508a5da",
+        "source_fact:v1:df05dcb39ec97e7a3c95761c97f5387ca067412e479b2102e6e4776db2d9cfbb"
+      ],
+      "source_published_kst": "2026-10-06T11:39+09:00",
+      "title": "'엔비디아發 훈풍' AI·반도체 강세…닛케이, 0.19%↑[Asia오전]"
+    },
     "fact:7df161b45e1dbb384de1cca0": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
       "lanes": {
@@ -18686,6 +18705,24 @@
       "source_published_kst": "2026-10-07T00:00+09:00",
       "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
     },
+    "fact:e38ade45e9ca6878f174a305": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814678",
+      "source": "뉴시스",
+      "source_body_digest": "dd512b3eeb6e3a6fa8bccdd6c965c25dc37a3b6543d223c006053168040e3803",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59a42f3611b7e27e6f7f250e468728ad30b1936043c43f1f1d92a0d778eb9a3e",
+      "source_fact_keys": [
+        "source_fact:v1:3c5157edc56957be8d1cf37e972235a98002736e311d47a36d3e14891557386c",
+        "source_fact:v1:4667e70927d6bdd58626ebf156edebb9d128547fd8506b108edb1358111ecabb"
+      ],
+      "source_published_kst": "2026-10-06T06:30+09:00",
+      "title": "[속보] 예멘 후티군, 사우디 전역 미사일 ·드론 공습했다 발표"
+    },
     "fact:e3de902488de631fa2c96170": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -20765,6 +20802,24 @@
       "link": "https://www.mk.co.kr/news/stock/12161194",
       "source": "매일경제",
       "title": "오틀리 그룹, 17억 크로나 회사채 나스닥 스톡홀름 상장 추진"
+    },
+    "link:06145dfa298fe8bcf9794944": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814678",
+      "source": "뉴시스",
+      "source_body_digest": "dd512b3eeb6e3a6fa8bccdd6c965c25dc37a3b6543d223c006053168040e3803",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59a42f3611b7e27e6f7f250e468728ad30b1936043c43f1f1d92a0d778eb9a3e",
+      "source_fact_keys": [
+        "source_fact:v1:3c5157edc56957be8d1cf37e972235a98002736e311d47a36d3e14891557386c",
+        "source_fact:v1:4667e70927d6bdd58626ebf156edebb9d128547fd8506b108edb1358111ecabb"
+      ],
+      "source_published_kst": "2026-10-06T06:30+09:00",
+      "title": "[속보] 예멘 후티군, 사우디 전역 미사일 ·드론 공습했다 발표"
     },
     "link:06592aea7424db91d02ed0fd": {
       "first_seen_kst": "2026-10-04T15:04:58+09:00",
@@ -31515,6 +31570,21 @@
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
     },
+    "link:6350b390a9e8ce7098561f75": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006085025",
+      "source": "지디넷코리아",
+      "source_body_digest": "e59420870f6c22d7dbd7b2a713baef116d063d2da67f0c2410ed9ec3d5cbef20",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T09:39+09:00",
+      "title": "두산로보틱스, 1000억원 국책과제 2건 수주"
+    },
     "link:635c7b3b0fc25c3388e9e134": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -39957,6 +40027,21 @@
       "source": "이투데이",
       "title": "메리츠증권 \"넷마블, 신작보다 기존작 수명 연장 집중…재정비 성과 주목\""
     },
+    "link:ad4cc9cbe94a7f5d420a3382": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://www.etnews.com/20261006000361",
+      "source": "전자신문",
+      "source_body_digest": "087ecc53fffd5c4a92c70f85850857abb2be129f704a1e9985d8fc031494a614",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:28+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 수주"
+    },
     "link:ad6fe598f5ce23a8c044005d": {
       "first_seen_kst": "2026-10-05T17:45:06+09:00",
       "lanes": {
@@ -43312,6 +43397,24 @@
       ],
       "source_published_kst": "2026-10-06T15:11+09:00",
       "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\""
+    },
+    "link:cca496399a58fd8f666a9dae": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100611272769983",
+      "source": "머니투데이",
+      "source_body_digest": "efa820cd821cf16fbcb427913af8345c69a6ca8f2f822dd1025b96fafba72d34",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4eaa4b612ee34fec510575ab0739a00a849361e3f607e5110fd95578a35c0c9d",
+      "source_fact_keys": [
+        "source_fact:v1:043c4b7dddef380a08c1a65529b1414962fb54fb9fb95db472754253e508a5da",
+        "source_fact:v1:df05dcb39ec97e7a3c95761c97f5387ca067412e479b2102e6e4776db2d9cfbb"
+      ],
+      "source_published_kst": "2026-10-06T11:39+09:00",
+      "title": "'엔비디아發 훈풍' AI·반도체 강세…닛케이, 0.19%↑[Asia오전]"
     },
     "link:ccc0b66cf6bfbf0d05e216f6": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
@@ -50255,6 +50358,21 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003811653",
       "source": "뉴시스",
       "title": "우크라, 자체 개발 탄도미사일 첫 실전 투입…러시아 목표물 타격"
+    },
+    "original:098ad83d23bba8a3860bc563": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006085025",
+      "source": "지디넷코리아",
+      "source_body_digest": "e59420870f6c22d7dbd7b2a713baef116d063d2da67f0c2410ed9ec3d5cbef20",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T09:39+09:00",
+      "title": "두산로보틱스, 1000억원 국책과제 2건 수주"
     },
     "original:0999ca232cca738dfcb0d20e": {
       "first_seen_kst": "2026-09-28T00:53:05+09:00",
@@ -66883,6 +67001,21 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "original:9e39b530e41da1586478972b": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://www.etnews.com/20261006000361",
+      "source": "전자신문",
+      "source_body_digest": "087ecc53fffd5c4a92c70f85850857abb2be129f704a1e9985d8fc031494a614",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:28+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 수주"
+    },
     "original:9e599db221a47e917dda48c9": {
       "first_seen_kst": "2026-10-02T03:33:19+09:00",
       "lanes": {
@@ -75074,6 +75207,24 @@
       "source": "한국경제",
       "title": "재산분할 7000억만 안 다투는데…최태원은 왜 9440억을 현금화했나"
     },
+    "original:e8cae9b2287ff25ffcf35943": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100611272769983",
+      "source": "머니투데이",
+      "source_body_digest": "efa820cd821cf16fbcb427913af8345c69a6ca8f2f822dd1025b96fafba72d34",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4eaa4b612ee34fec510575ab0739a00a849361e3f607e5110fd95578a35c0c9d",
+      "source_fact_keys": [
+        "source_fact:v1:043c4b7dddef380a08c1a65529b1414962fb54fb9fb95db472754253e508a5da",
+        "source_fact:v1:df05dcb39ec97e7a3c95761c97f5387ca067412e479b2102e6e4776db2d9cfbb"
+      ],
+      "source_published_kst": "2026-10-06T11:39+09:00",
+      "title": "'엔비디아發 훈풍' AI·반도체 강세…닛케이, 0.19%↑[Asia오전]"
+    },
     "original:e8cbffc6f4307942f41107e1": {
       "first_seen_kst": "2026-10-03T01:23:19+09:00",
       "lanes": {
@@ -75463,6 +75614,24 @@
       ],
       "source_published_kst": "2026-10-06T18:50+09:00",
       "title": "여야, 외통위 국정감사서 北지뢰 대응·포로 송환 등 설전(종합)"
+    },
+    "original:ebe6ee400407fb1ab8131a45": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814678",
+      "source": "뉴시스",
+      "source_body_digest": "dd512b3eeb6e3a6fa8bccdd6c965c25dc37a3b6543d223c006053168040e3803",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59a42f3611b7e27e6f7f250e468728ad30b1936043c43f1f1d92a0d778eb9a3e",
+      "source_fact_keys": [
+        "source_fact:v1:3c5157edc56957be8d1cf37e972235a98002736e311d47a36d3e14891557386c",
+        "source_fact:v1:4667e70927d6bdd58626ebf156edebb9d128547fd8506b108edb1358111ecabb"
+      ],
+      "source_published_kst": "2026-10-06T06:30+09:00",
+      "title": "[속보] 예멘 후티군, 사우디 전역 미사일 ·드론 공습했다 발표"
     },
     "original:ebf4db9615c5a2d438158e75": {
       "first_seen_kst": "2026-10-03T12:26:15+09:00",
@@ -90631,6 +90800,24 @@
       ],
       "source_published_kst": "2026-10-06T16:45+09:00",
       "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
+    },
+    "source_fact:3c4084f7d33d72ff2728a7ab": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100611272769983",
+      "source": "머니투데이",
+      "source_body_digest": "efa820cd821cf16fbcb427913af8345c69a6ca8f2f822dd1025b96fafba72d34",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4eaa4b612ee34fec510575ab0739a00a849361e3f607e5110fd95578a35c0c9d",
+      "source_fact_keys": [
+        "source_fact:v1:043c4b7dddef380a08c1a65529b1414962fb54fb9fb95db472754253e508a5da",
+        "source_fact:v1:df05dcb39ec97e7a3c95761c97f5387ca067412e479b2102e6e4776db2d9cfbb"
+      ],
+      "source_published_kst": "2026-10-06T11:39+09:00",
+      "title": "'엔비디아發 훈풍' AI·반도체 강세…닛케이, 0.19%↑[Asia오전]"
     },
     "source_fact:3c6f6ecae0f241398fa35a9b": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
@@ -117814,6 +118001,24 @@
       "source_published_kst": "2026-10-06T08:55+09:00",
       "title": "현대글로비스, SMR 추진 자동차운반선 한미 항로 운항 검토 | 연합뉴스"
     },
+    "source_fact:b278138209d100e798c66f3e": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100611272769983",
+      "source": "머니투데이",
+      "source_body_digest": "efa820cd821cf16fbcb427913af8345c69a6ca8f2f822dd1025b96fafba72d34",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4eaa4b612ee34fec510575ab0739a00a849361e3f607e5110fd95578a35c0c9d",
+      "source_fact_keys": [
+        "source_fact:v1:043c4b7dddef380a08c1a65529b1414962fb54fb9fb95db472754253e508a5da",
+        "source_fact:v1:df05dcb39ec97e7a3c95761c97f5387ca067412e479b2102e6e4776db2d9cfbb"
+      ],
+      "source_published_kst": "2026-10-06T11:39+09:00",
+      "title": "'엔비디아發 훈풍' AI·반도체 강세…닛케이, 0.19%↑[Asia오전]"
+    },
     "source_fact:b295142e86a61de5b952ce0e": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -129671,6 +129876,24 @@
       "source_published_kst": "2026-10-05T21:09+09:00",
       "title": "베니테크 바이오파마, BB-301 FDA 추가자료 요청..임상 일정 유지"
     },
+    "source_fact:e376d60266ba49d0ce817e89": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814678",
+      "source": "뉴시스",
+      "source_body_digest": "dd512b3eeb6e3a6fa8bccdd6c965c25dc37a3b6543d223c006053168040e3803",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59a42f3611b7e27e6f7f250e468728ad30b1936043c43f1f1d92a0d778eb9a3e",
+      "source_fact_keys": [
+        "source_fact:v1:3c5157edc56957be8d1cf37e972235a98002736e311d47a36d3e14891557386c",
+        "source_fact:v1:4667e70927d6bdd58626ebf156edebb9d128547fd8506b108edb1358111ecabb"
+      ],
+      "source_published_kst": "2026-10-06T06:30+09:00",
+      "title": "[속보] 예멘 후티군, 사우디 전역 미사일 ·드론 공습했다 발표"
+    },
     "source_fact:e379535d7cbb49d459c40efb": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
       "lanes": {
@@ -133523,6 +133746,24 @@
       "source_published_kst": "2026-10-06T18:02+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 양극재 6조 공급"
     },
+    "source_fact:f3eb3983e2ef43f7fe74bd31": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814678",
+      "source": "뉴시스",
+      "source_body_digest": "dd512b3eeb6e3a6fa8bccdd6c965c25dc37a3b6543d223c006053168040e3803",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59a42f3611b7e27e6f7f250e468728ad30b1936043c43f1f1d92a0d778eb9a3e",
+      "source_fact_keys": [
+        "source_fact:v1:3c5157edc56957be8d1cf37e972235a98002736e311d47a36d3e14891557386c",
+        "source_fact:v1:4667e70927d6bdd58626ebf156edebb9d128547fd8506b108edb1358111ecabb"
+      ],
+      "source_published_kst": "2026-10-06T06:30+09:00",
+      "title": "[속보] 예멘 후티군, 사우디 전역 미사일 ·드론 공습했다 발표"
+    },
     "source_fact:f3fd5984ab46e59252991e7d": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -137238,6 +137479,21 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003811653",
       "source": "뉴시스",
       "title": "우크라, 자체 개발 탄도미사일 첫 실전 투입…러시아 목표물 타격"
+    },
+    "title:098ad83d23bba8a3860bc563": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://zdnet.co.kr/view/?no=20261006085025",
+      "source": "지디넷코리아",
+      "source_body_digest": "e59420870f6c22d7dbd7b2a713baef116d063d2da67f0c2410ed9ec3d5cbef20",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T09:39+09:00",
+      "title": "두산로보틱스, 1000억원 국책과제 2건 수주"
     },
     "title:0999ca232cca738dfcb0d20e": {
       "first_seen_kst": "2026-09-28T00:53:05+09:00",
@@ -154096,6 +154352,21 @@
       "source_published_kst": "2026-10-05T13:09+09:00",
       "title": "\"곧 합의 안 하면 두 배\"…트럼프 압박에 한국 '15% 관세' 비상"
     },
+    "title:9e39b530e41da1586478972b": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://www.etnews.com/20261006000361",
+      "source": "전자신문",
+      "source_body_digest": "087ecc53fffd5c4a92c70f85850857abb2be129f704a1e9985d8fc031494a614",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:28+09:00",
+      "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 수주"
+    },
     "title:9e599db221a47e917dda48c9": {
       "first_seen_kst": "2026-10-02T03:33:19+09:00",
       "lanes": {
@@ -162483,6 +162754,24 @@
       "source": "한국경제",
       "title": "재산분할 7000억만 안 다투는데…최태원은 왜 9440억을 현금화했나"
     },
+    "title:e8cae9b2287ff25ffcf35943": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://www.mt.co.kr/index.php/world/2026/10/06/2026100611272769983",
+      "source": "머니투데이",
+      "source_body_digest": "efa820cd821cf16fbcb427913af8345c69a6ca8f2f822dd1025b96fafba72d34",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4eaa4b612ee34fec510575ab0739a00a849361e3f607e5110fd95578a35c0c9d",
+      "source_fact_keys": [
+        "source_fact:v1:043c4b7dddef380a08c1a65529b1414962fb54fb9fb95db472754253e508a5da",
+        "source_fact:v1:df05dcb39ec97e7a3c95761c97f5387ca067412e479b2102e6e4776db2d9cfbb"
+      ],
+      "source_published_kst": "2026-10-06T11:39+09:00",
+      "title": "'엔비디아發 훈풍' AI·반도체 강세…닛케이, 0.19%↑[Asia오전]"
+    },
     "title:e8cbffc6f4307942f41107e1": {
       "first_seen_kst": "2026-10-03T01:23:19+09:00",
       "lanes": {
@@ -162882,6 +163171,24 @@
       ],
       "source_published_kst": "2026-10-06T18:50+09:00",
       "title": "여야, 외통위 국정감사서 北지뢰 대응·포로 송환 등 설전(종합)"
+    },
+    "title:ebe6ee400407fb1ab8131a45": {
+      "first_seen_kst": "2026-10-07T03:43:49+09:00",
+      "lanes": {
+        "live": "2026-10-07T03:43:49+09:00"
+      },
+      "last_seen_kst": "2026-10-07T03:43:49+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814678",
+      "source": "뉴시스",
+      "source_body_digest": "dd512b3eeb6e3a6fa8bccdd6c965c25dc37a3b6543d223c006053168040e3803",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:59a42f3611b7e27e6f7f250e468728ad30b1936043c43f1f1d92a0d778eb9a3e",
+      "source_fact_keys": [
+        "source_fact:v1:3c5157edc56957be8d1cf37e972235a98002736e311d47a36d3e14891557386c",
+        "source_fact:v1:4667e70927d6bdd58626ebf156edebb9d128547fd8506b108edb1358111ecabb"
+      ],
+      "source_published_kst": "2026-10-06T06:30+09:00",
+      "title": "[속보] 예멘 후티군, 사우디 전역 미사일 ·드론 공습했다 발표"
     },
     "title:ebf4db9615c5a2d438158e75": {
       "first_seen_kst": "2026-10-03T12:26:15+09:00",
@@ -164820,5 +165127,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T03:30:59+09:00"
+  "updated_at_kst": "2026-10-07T03:43:49+09:00"
 }
