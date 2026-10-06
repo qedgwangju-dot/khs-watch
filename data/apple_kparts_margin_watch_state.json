@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-06T15:37:15+09:00",
+  "updated_at_kst": "2026-10-06T22:37:03+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-09-27T17:05:00+09:00",
   "baseline": {
@@ -14,6 +14,7 @@
     "semco_consensus_comment": "시장 컨센서스·기존 추정치 약 9% 상회 보도"
   },
   "seen": [
+    "01fe862e27922e391f0f7702",
     "0543c28e72bb50dc41083821",
     "07693f01fa4565ca9b8ce8f6",
     "093663e56878a7cac3e4c310",
@@ -32,6 +33,7 @@
     "381d4fdd01614df2e6a99b9c",
     "38cbe56574581afd44ae433c",
     "38f601d172f37c6bc19d85c7",
+    "3b25b918d7752ff75744fcc8",
     "3d4a30411c274b22896d32a7",
     "41187bce6efa74554f66a7a1",
     "4162ef063a91d37847ee9e21",
@@ -62,6 +64,7 @@
     "746457879a54a968e81ef560",
     "76df16bae073627e6de08bce",
     "7752b307b0421e0db6d8c1dc",
+    "7aa99fac531b68530ccf03e2",
     "818bd84a305e4a6dd9955187",
     "81ac3521994eb19904bd4c19",
     "830fc342d119e7907a9e6373",
@@ -110,6 +113,7 @@
     "d669a09ccb20d5ea9bb42ccd",
     "d7ab90989cbf67b88cf033c4",
     "ddb2691df0b50ae0e45a4c23",
+    "dec5d2731ee6c20eecf43ac3",
     "dfe36f5ae82f1833ec82786b",
     "e0f884d948fa1ac70bf4d2d6",
     "e1d52f711060723047b5c431",
@@ -139,7 +143,7 @@
     "bucket": "orange",
     "average_source": "Fed H.10/FRED"
   },
-  "last_scan_items": 31,
+  "last_scan_items": 34,
   "last_signal_count": 0,
   "last_alert": {
     "at_kst": "2026-09-28T07:38:15+09:00",
