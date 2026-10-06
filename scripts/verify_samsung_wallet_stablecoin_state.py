@@ -39,6 +39,7 @@ def official(**kwargs):
         "kbw_executive_primary_confirmed": False,
         "kbw_executive_crosscheck_confirmed": False,
         "wallet_patent_us_confirmed": False,
+        "wallet_patent_us_crosscheck_confirmed": False,
         "wallet_patent_family_confirmed": False,
         "wallet_patent_news_confirmed": False,
         "explicit_reversal_confirmed": False,
@@ -163,7 +164,8 @@ def assert_wallet_patent_alerts_once_without_stage_promotion():
     prev = base_stage2()
     current = topic_state(
         official(
-            wallet_patent_us_confirmed=True,
+            wallet_patent_us_confirmed=False,
+            wallet_patent_us_crosscheck_confirmed=True,
             wallet_patent_family_confirmed=True,
             wallet_patent_news_confirmed=True,
         ),
@@ -191,7 +193,8 @@ def assert_single_patent_source_does_not_confirm_milestone():
     prev = base_stage2()
     current = topic_state(
         official(
-            wallet_patent_us_confirmed=True,
+            wallet_patent_us_confirmed=False,
+            wallet_patent_us_crosscheck_confirmed=True,
             wallet_patent_family_confirmed=False,
             wallet_patent_news_confirmed=True,
         ),
@@ -208,7 +211,8 @@ def assert_patent_never_implies_stablecoin_partner_or_launch():
     prev = base_stage2()
     current = topic_state(
         official(
-            wallet_patent_us_confirmed=True,
+            wallet_patent_us_confirmed=False,
+            wallet_patent_us_crosscheck_confirmed=True,
             wallet_patent_family_confirmed=True,
         ),
         candidate(
