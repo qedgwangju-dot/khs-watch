@@ -911,7 +911,7 @@ def merge_duplicate_alert(current: dict, incoming: dict) -> dict:
     if not current.get("link") and incoming.get("link"):
         current["link"] = incoming.get("link")
     current["matched"] = merge_matched(current.get("matched") or {}, incoming.get("matched") or {})
-    for key in ("impacts", "paths", "sectors", "korea_value_chain"):
+    for key in ("impacts", "paths", "sectors", "korea_value_chain", "policy_timeline"):
         current[key] = merge_unique_list(current.get(key), incoming.get(key))
     if importance_rank(incoming.get("importance")) > importance_rank(current.get("importance")):
         current["importance"] = incoming.get("importance")
