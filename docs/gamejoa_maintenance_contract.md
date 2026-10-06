@@ -297,6 +297,35 @@ Every defect or requested change must follow this sequence:
   percentage and previous-session basis. Computer-equipment investment is not
   relabelled as all AI CAPEX. Shipping summaries keep maximum per-voyage costs
   separate from daily charter rates, with source attribution and period.
+- The issuer may precede or follow the quote time. An omitted subject requires
+  an explicit stock code and trading day in the adjacent lead. Do not replace
+  the current quote with a session high or the previous day's contract.
+- Modest intraday ticks share an event only within the same issuer, sourced
+  trading date, direction and five-percentage-point magnitude band. A new day,
+  reversal, larger band, primary contract or target revision remains distinct.
+- Individual consumer SKU sales or a single-store ranking, historical franchise
+  surveys/project inventories, retrospective deal rankings, routine retail
+  fund launches and automated stock streaks are not new equity catalysts.
+  Company financial results, current national observations, new capital flows
+  and formal execution announcements remain eligible.
+- Housing demand summaries retain the provider, release day, original
+  announcement window, national first-priority population and same-period
+  comparison. A local 100-to-1 outcome is not the national competition ratio.
+- Deployment agreements/plans are not completed deployments. Keep announced
+  support and undisclosed force/mission scope separate. Contracted electrical
+  capacity is not operating capacity; preserve approval, build schedule and
+  conditional supply year instead of dropping them to fit the summary limit.
+- A model-specific industrial delivery shares an event only when the source
+  supplier, customer, named model, product and announcement date agree. New
+  model/customer/product/date or revised delivery terms must survive dedupe.
+- Marketing agreements retain their end year and maximum forecast volume.
+  Earlier sample shipments or sales do not replace the current agreement;
+  marketing volumes are not automatically guaranteed purchase orders.
+- Airline capacity changes retain the effective day, routes and before/after
+  frequencies. A generic sentence about expanding supply is insufficient.
+- Unquantified single-campus software deployments, used-equipment distribution
+  frameworks and prior-week ETF return tables are not publication priorities.
+  Quantified signed orders and genuine new fund flows remain eligible.
 - Public compute allocation summaries name the data provider and original
   application round, requested/allocated units and denominator. Different
   application rounds are not combined and an advocate's request for increased

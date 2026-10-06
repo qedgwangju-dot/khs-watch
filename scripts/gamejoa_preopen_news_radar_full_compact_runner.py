@@ -2590,6 +2590,59 @@ def reported_issuer_announcement_fact(title: str, body: str) -> str:
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
+    marketing = market_materiality.marketing_contract_observation(title, body)
+    if marketing:
+        scope = (f"공급 물량은 최대 {marketing['maximum_volume']}으로 전망된다."
+                 if marketing['volume_stage'] == 'expected' else f"계약 물량은 최대 {marketing['maximum_volume']}이다.")
+        fact = (f"{marketing['issuer']}{korean_topic_particle(marketing['issuer'])} {marketing['customer']}와 "
+                f"{marketing['until_year']}년까지 {marketing['product']} 장기 마케팅 계약을 체결했다고 {marketing['day']}일 밝혔다. "
+                f"{scope}")
+        return fact if core_sentence_is_complete(fact) else ""
+    if focus == "aviation_network":
+        sentences = market_materiality.source_sentences(market_materiality.source_reported_body(body))
+        lead = next((row for row in sentences if re.search(r"운수권|노선", row) and re.search(r"\d{1,2}일\s*밝혔다", row)), "")
+        issuer = re.search(r"([A-Za-z0-9가-힣&·.-]{2,30})(?:은|는)\s+", lead)
+        change = next((row for row in sentences if market_materiality.focus_matches(title, row)
+                       and re.search(r"일부터", row) and re.search(r"주\s*\d+회에서", row)), "")
+        followup = next((row for row in sentences if re.search(r"주\s*\d+회에서\s*\d+회로\s*늘린다", row)), "")
+        if issuer and change and issuer.group(1) in title:
+            statement = f"{issuer.group(1)}{korean_topic_particle(issuer.group(1))} {clean_article_summary_text(change)}"
+            if followup and followup != change and core_sentence_is_complete(statement + " " + followup):
+                statement += " " + followup
+            return statement if core_sentence_is_complete(statement) else ""
+    housing = market_materiality.housing_demand_observation(title, body)
+    if housing:
+        fact = (f"{housing['provider']}{korean_topic_particle(housing['provider'])} {housing['day']}일 "
+                f"{housing['year']} {housing['period']} 입주자모집공고 기준 전국 1순위 평균 청약경쟁률이 "
+                f"{housing['current']}대 1이라고 발표했다. 지난해 같은 기간은 {housing['previous']}대 1이었다.")
+        return fact if core_sentence_is_complete(fact) else ""
+    if focus == "military_reinforcement":
+        sentences = market_materiality.source_sentences(market_materiality.source_reported_body(body))
+        statement = next((clean_article_summary_text(sentence) for sentence in sentences
+                          if market_materiality.focus_matches(title, sentence)
+                          and not re.match(r"^(?:3국|그는|이는|이들은)(?:은|는|이|가)?\s", sentence)
+                          and not market_materiality.BACKGROUND.search(sentence)), "")
+        limitation = next((clean_article_summary_text(sentence) for sentence in sentences
+                           if re.search(r"군사력\s*규모|병력\s*규모|임무", sentence)
+                           and re.search(r"설명하지\s*않|공개하지\s*않|미공개", sentence)), "")
+        if limitation and core_sentence_is_complete(statement + " " + limitation):
+            statement += " " + limitation
+        return statement if core_sentence_is_complete(statement) else ""
+    power_contract = re.search(r"계약\s*전력\s*용량을\s*(\d[\d,.]*)(?:메가와트)?\s*\(MW\)에서\s*"
+                               r"(\d[\d,.]*)(?:기가와트)?\s*\(GW\)로\s*확대", body, re.I)
+    if power_contract and re.search(r"전기\s*공급\s*계약을\s*개정", body):
+        source = re.sub(r"\s+", " ", body)
+        parties = re.search(r"([A-Za-z가-힣&·.-]{2,30})\([^)]*\)(?:은|는)\s*"
+                            r"([A-Za-z가-힣 ]{2,30})\([^)]*\)(?:와|과)\s*전기\s*공급\s*계약", source)
+        site = re.search(r"위치한\s*([^()!?]{2,40}데이터\s*캠퍼스)\([^)]*\)의\s*계약\s*전력", source)
+        condition = re.search(r"개정안에는\s*([A-Za-z가-힣 ]{2,35}위원회)의\s*승인\s*및\s*[^.!?]{2,35}공사\s*일정\s*수립을\s*전제로,\s*"
+                              r"두\s*번째\s*(\d[\d,.]*)\s*메가와트\(MW\)\s*단계의\s*공급\s*시기를\s*(20\d{2})년", source)
+        if parties and site and condition and parties.group(1) in title:
+            issuer, utility = parties.groups()
+            fact = (f"{issuer}{korean_topic_particle(issuer)} {utility}와 전기공급계약을 개정해 "
+                    f"{site.group(1)}의 계약 전력 용량을 {power_contract.group(1)}MW에서 {power_contract.group(2)}GW로 확대했다. "
+                    f"추가 {condition.group(2)}MW의 {condition.group(3)}년 공급은 {condition.group(1)} 승인과 전력사 공사 일정 수립이 전제다.")
+            return fact if core_sentence_is_complete(fact) else ""
     freight = market_materiality.freight_cost_observation(title, body)
     if freight:
         fact = (f"{freight['source']}의 {freight['day']}일 현지 보도에 따르면 호르무즈 VLCC 셔틀 운항의 "
@@ -2615,7 +2668,7 @@ def source_headline_event_fact(title: str, body: str) -> str:
         observations = []
         for quote in quotes["quotes"]:
             observations.append(f"{quote['issuer']}{korean_topic_particle(quote['issuer'])} {quote['rate']}% {quote['direction']} {quote['price']}")
-        fact = (f"한국거래소 기준 {quotes['day']}일 {quotes['half']} {quotes['hour']}시{quotes['minute']}분 "
+        fact = (f"{quotes['market']} 기준 {quotes['day']}일 {quotes['half']} {quotes['hour']}시{quotes['minute']}분 "
                 f"{', '.join(observations)}에 거래됐다. 등락률은 전 거래일 대비다.")
         return fact if core_sentence_is_complete(fact) else ""
     if focus == "capital_spending":
@@ -8388,6 +8441,8 @@ def title_core_alignment_tokens(value: str) -> set[str]:
 
 
 def korean_title_core_aligned(title: str, core: str) -> bool:
+    if market_materiality.focus_kind(title) == "intraday_equity" and market_materiality.intraday_equity_observations(title, core):
+        return True
     if (market_materiality.focus_kind(title) == "national_exports"
             and market_materiality.focus_matches(title, core)
             and re.search(r"누적\s*수출액", core)
@@ -10647,7 +10702,15 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         if source_audit["disposition"] != "keep" or not source_audit["evidence"]:
             errors.append("article_without_headline_market_change_evidence")
         core_audit = market_materiality.assess(title, core)
-        if core_audit["disposition"] != "keep" or not core_audit["evidence"]:
+        # The economic transmission may be in the full report rather than its
+        # short deployment sentence. Require that exact source-bound summary.
+        source_bound_deployment = bool(
+            market_materiality.focus_kind(title) == "military_reinforcement"
+            and source_audit["disposition"] == "keep" and source_audit["priority"] >= 2
+            and expected_observation
+            and market_materiality.canonical_source_fact(expected_observation) == market_materiality.canonical_source_fact(core)
+        )
+        if (core_audit["disposition"] != "keep" or not core_audit["evidence"]) and not source_bound_deployment:
             errors.append("core_without_market_change_evidence")
     if core.count("“") != core.count("”"):
         errors.append("orphaned_source_quote")

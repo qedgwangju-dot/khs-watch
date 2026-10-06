@@ -137,6 +137,56 @@
       "source_event_identity": "source_event:v2:conditional_index_outlook:de4f8409a7a2f8eb4507c683d9f40080e36f2ceaa8a3db3a19d7ac3d04b86c5a",
       "run_id": 37395127123,
       "message_id": 2287
+    },
+    {
+      "source_title": "[특징주] LG전자 5%대 강세⋯북미 AI 데이터센터 냉각 솔루션 공급 호재",
+      "link": "https://www.etoday.co.kr/news/view/2632667",
+      "source_published_kst": "2026-10-06T09:44+09:00",
+      "source_body_sha256": "b060374e5f57654aabe82ba39346fc2bac6b7bdce951289ef015995dbb09b104",
+      "source_event_identity": "source_event:v2:intraday_equity:6d6219f453f768479c864e374811c5e63451a90dc0d139320aff282bb85b0f7f",
+      "run_id": 37396976374,
+      "message_id": 2289,
+      "equivalence_note": "Audited full source and actual delivery: same issuer, session, direction and five-percentage-point price-move band; minor quote ticks are not new corporate contracts."
+    },
+    {
+      "source_title": "[특징주] LG전자, 북미향 AI데이터센터 냉각솔루션 계약에 장초반 급등",
+      "link": "https://www.fnnews.com/news/202610060921574748",
+      "source_published_kst": "2026-10-06T09:21+09:00",
+      "source_body_sha256": "4f0f6229a80f0d6e5a3b18fadf0aafb3e5ed24fd023783695f93f43b8e6fc004",
+      "source_event_identity": "source_event:v2:intraday_equity:6d6219f453f768479c864e374811c5e63451a90dc0d139320aff282bb85b0f7f",
+      "run_id": 37396976374,
+      "message_id": 2289,
+      "equivalence_note": "Audited full source and actual delivery: same issuer, session, direction and five-percentage-point price-move band; minor quote ticks are not new corporate contracts."
+    },
+    {
+      "source_title": "한미반도체, 삼성전기서 245억 장비 수주…곽동신 “삼성그룹 환영”",
+      "link": "https://biz.heraldcorp.com/article/10893661",
+      "source_published_kst": "2026-10-06T09:00+09:00",
+      "source_body_sha256": "7e275529630a797d62ced9e407ffcf44f93e7df2951559251e5d437aef2dd927",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
+      "run_id": 37399025497,
+      "message_id": 2290,
+      "equivalence_note": "Full-body/receipt audit: same Hanmi-Samsung Electro-Mechanics MSVP order disclosed 2026-10-06 at exactly 244억8000만원. The longer copy adds the October 2 to December 17, 2027 period, not a new order. Only this exact body is reconciled; revisions retain new identities."
+    },
+    {
+      "source_title": "LG전자, '유럽 첫 상용 SDV' 르노그룹 신차에 통합 콕핏 솔루션 공급",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814860",
+      "source_published_kst": "2026-10-06T10:00+09:00",
+      "source_body_sha256": "c7d62983f20e2bddf4b7c928038e9b8d5f3c3e2c2402781cfc4d77a7a97a867b",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
+      "run_id": 37399956879,
+      "message_id": 2291,
+      "equivalence_note": "Audited full bodies and actual message 2291: same supplier, Renault customer, New Trafic E-Tech Electric model, cockpit solution and 2026-10-06 supply announcement. New customer, model, product, date or revised terms retain separate identities."
+    },
+    {
+      "source_title": "LG전자, 유럽 첫 상용 SDV에 통합 콕핏 솔루션 공급",
+      "link": "https://www.etoday.co.kr/news/view/2632589",
+      "source_published_kst": "2026-10-06T10:00+09:00",
+      "source_body_sha256": "54bad5c698f6710ebc74d57957a46f5c71902137e079c5222eb4bf22a66eeb71",
+      "source_event_identity": "source_event:v2:commercial_delivery:953ee206c135c175fa78175d742512ff88363937ecfa2301ba75bbc046250521",
+      "run_id": 37399956879,
+      "message_id": 2291,
+      "equivalence_note": "Audited full bodies and actual message 2291: same supplier, Renault customer, New Trafic E-Tech Electric model, cockpit solution and 2026-10-06 supply announcement. New customer, model, product, date or revised terms retain separate identities."
     }
   ]
 }
