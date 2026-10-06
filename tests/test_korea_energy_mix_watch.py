@@ -412,8 +412,8 @@ def test_committee_disclosure_dispute_is_one_suppressed_event():
     assert all(semantic_event_level(row) == 0 for row in rows)
 
 
-def test_honam_semiconductor_power_water_reports_are_one_event():
-    a = {
+def test_honam_four_fab_supply_and_nine_fab_grid_review_are_distinct_events():
+    expansion = {
         "title": '김성환 "호남 반도체 팹 9기면 14GW 필요…전력망 계획 원점 점검"(종합) - 뉴시스',
         "publisher": "뉴시스",
         "official": False,
@@ -424,7 +424,7 @@ def test_honam_semiconductor_power_water_reports_are_one_event():
         "id": "honam-a",
         "url": "https://example.com/a",
     }
-    b = {
+    baseline = {
         "title": '기후장관 "호남 반도체산단에 전기 6.3GW·용수 65만t 공급가능" - 연합뉴스',
         "publisher": "연합뉴스",
         "official": False,
@@ -435,24 +435,23 @@ def test_honam_semiconductor_power_water_reports_are_one_event():
         "id": "honam-b",
         "url": "https://example.com/b",
     }
-    assert semantic_event_key(a) == "12th-plan|honam-semiconductor|power-water-grid-review"
-    assert semantic_event_key(b) == "12th-plan|honam-semiconductor|power-water-grid-review"
-    assert semantic_event_level(a) == 1
-    assert semantic_event_level(b) == 1
+    assert semantic_event_key(expansion) == "12th-plan|honam-semiconductor|nine-fab-14gw-grid-review"
+    assert semantic_event_key(baseline) == "12th-plan|honam-semiconductor|four-fab-6.3gw-water65-supply"
+    assert semantic_event_key(expansion) != semantic_event_key(baseline)
+    assert semantic_event_level(expansion) == 1
+    assert semantic_event_level(baseline) == 1
 
     original_key = energy_runner.watch.event_key
     original_level = energy_runner.watch.event_level
     try:
         energy_runner.watch.event_key = semantic_event_key
         energy_runner.watch.event_level = semantic_event_level
-        collapsed = collapse_events([a, b])
+        collapsed = collapse_events([expansion, baseline])
     finally:
         energy_runner.watch.event_key = original_key
         energy_runner.watch.event_level = original_level
 
-    assert len(collapsed) == 1
-    assert collapsed[0]["evidence_count"] == 2
-    assert set(collapsed[0]["evidence_publishers"]) == {"뉴시스", "연합뉴스"}
+    assert len(collapsed) == 2
 
 
 def test_power_plan_delay_is_distinct_material_schedule_event():
@@ -529,3 +528,15 @@ def test_datacenter_body_interpretation_surfaces_realization_gap():
     assert "PUE" in result
 
 # live-regression-20261006-v2
+
+
+def test_committee_disclosure_never_notifies_even_when_unseen():
+    row = {
+        "title": '"전기본 위원 공개하라"·"尹정부도 안해"…국힘·김성환 충돌 - 연합뉴스',
+        "publisher": "연합뉴스",
+        "official": False,
+        "published": "Tue, 06 Oct 2026 02:51:00 GMT",
+        "plan_stage": "발표·공개",
+    }
+    assert semantic_event_key(row) == "12th-plan|committee-governance|member-disclosure"
+    assert semantic_event_level(row) == 0
