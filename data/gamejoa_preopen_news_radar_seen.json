@@ -5349,25 +5349,28 @@
     "event:d9f68e9c742b0457f3d6101b": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
-        "live": "2026-10-06T18:34:25+09:00"
+        "live": "2026-10-06T21:28:22+09:00"
       },
-      "last_seen_kst": "2026-10-06T18:34:25+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261006042351008?input=1215m",
-      "source": "연합뉴스",
-      "source_body_digest": "6f169671a98bd0624b80120ff096fdff2eb254f01c2aa3d2955383aa753ba6bc",
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663381",
+      "source": "한국경제",
+      "source_body_digest": "e793d16f21c3f8241903732ce893b0ea4e71f695ea9148b3977a94a6ad77682d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:dc2e36723874979bba5f357256062a06eecc0b2a8e157358b3f4869444545794",
+      "source_fact_identity": "source_facts:v1:98d8af26ead77eabcdc8776f0ec65caa3388e8afd92d11f38447dd9e84fb6ce5",
       "source_fact_keys": [
-        "source_fact:v1:03153c6514d319ad52c503319588def3336c28bbe8fd957948826c19536c57cd",
-        "source_fact:v1:617215e5821009dd28362c1fbbae0344dbaee3d02f0080fca39af69d1873a836",
-        "source_fact:v1:6f911f23b86d16b0e2e8f3ce4de91c49721b722c689a85e033b976d7f4c356fc",
-        "source_fact:v1:85c5615d9d84f04a8ccac0e6bf78bc8119c535839a35ab064293b24ed58abb34",
-        "source_fact:v1:b551f9199c0bc8d34040ddbd8a4bf3ccc9321393abf4058ad64e289e31936bf2",
-        "source_fact:v1:bee5fc975b1cf903f54b46011aadc6cdbb2b33851589c5202a6ba1cb198b2267",
-        "source_fact:v1:ec9f050a787ce2cca24d503b578621297fd47185790ab57c2ee5ea5b7a8109ca"
+        "source_fact:v1:05b4f9936a785ddbcf83c1923d4ede2fb01887f5bce78bbc9e18a82287a43971",
+        "source_fact:v1:06b9f6dbce57fd759e9c5cf68323baf5f366c40b5a57fdf6413c946d97c834bb",
+        "source_fact:v1:1e7d02b5bf670f298f3fa813c1869fb48c3f83ca7a4cf4630f30e308629d368b",
+        "source_fact:v1:49b8298bd759c678cf3e4856de8e406cf40fa8200ec59a776f43e060a7a1e35d",
+        "source_fact:v1:6900d0cf98f251486e43d7579a0711b2321edd4c00c24c78f30b4c77984cf0a5",
+        "source_fact:v1:926ef1e58dd37b9dcb021d8d4aaf2dc2d2faac472b0355c3c6690d0ade068ec3",
+        "source_fact:v1:97fd7c41866c406d8c95de68394670ec7c0a5efeb1b84c306e816d0391571898",
+        "source_fact:v1:de2386791485b02e11697784256bd9dabaa87a3346fe63d5d7fbcb7b948b80ec",
+        "source_fact:v1:e487df5595c1a4cf91092638ccbcf919b33b2463451ac16a8823007bb01af739",
+        "source_fact:v1:fc3858db27edea8f66343f1a97914f5637287828f12de84966e4051f8e64063a"
       ],
-      "source_published_kst": "2026-10-06T15:59+09:00",
-      "title": "자사주 매입 막바지·솔리다임 상장설 악재? 삼전닉스 1~3%대↓(종합) | 연합뉴스"
+      "source_published_kst": "2026-10-06T17:52+09:00",
+      "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
     },
     "event:d9fdb3c71a63bdf3e971c5af": {
       "first_seen_kst": "2026-10-01T06:08:16+09:00",
@@ -6291,6 +6294,23 @@
       "source_published_kst": "2026-10-05T23:29+09:00",
       "title": "[단독] 조원태 한진 회장 ‘배임’ 혐의 경찰 수사 본격화"
     },
+    "fact:02d9f9ccbd3ffa1b28e40042": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.dt.co.kr/article/12087771",
+      "source": "디지털타임스",
+      "source_body_digest": "bb6e077018f5f1ed162179e9e9cd5745928fba7fcff4c250d5b3f01c4850fffb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bd1acc96a929a01bbd234d7bc6b367fa4ffabcf38f8ee39cad19937170674d0",
+      "source_fact_keys": [
+        "source_fact:v1:224a185ba376f1ac07b52d6c28430656c09801c4decaa176b486ce8902033dde"
+      ],
+      "source_published_kst": "2026-10-06T18:39+09:00",
+      "title": "“5·18 ‘광주’ 한정, 유공자 명단공개” 이진숙표 법안에 오월단체 “즉각 철회하라”"
+    },
     "fact:03bf881ac8fd12d58c300423": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -6686,6 +6706,24 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
+    "fact:0a758ed4788b9546eb82ce4d": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000020307",
+      "source": "국민일보",
+      "source_body_digest": "1ec13b6a047a8e1173771f1d2f38af27c235e43751afc42f9363b7e1ada03dfb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00880fd2f78b27bde936ed4b0099445b0b4a9ccead8734049d1a74dc560d8113",
+      "source_fact_keys": [
+        "source_fact:v1:3a10eb2a7a8037b66b115ace8e4f35a2b9a5be608933df5d9a1ef8bf4f8b5ba6",
+        "source_fact:v1:9b4973c38a3e869ae0f76e7a3cb71509fdb7344d676e902c28fd9db31d4eeb78"
+      ],
+      "source_published_kst": "2026-10-06T18:37+09:00",
+      "title": "지하수 부족하다면서 농업용수 사용대금 부과에 손 놓은 제주"
     },
     "fact:0a871dcff600a894469f7af2": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
@@ -7709,6 +7747,26 @@
       ],
       "source_published_kst": "2026-10-05T16:41+09:00",
       "title": "에비던트, 크레스트옵틱스 인수 완료"
+    },
+    "fact:1cb52749360fe2df13bef2ed": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/202610066402P",
+      "source": "한국경제",
+      "source_body_digest": "61e08806ae7ebd3a65e02da02c92555e46d329661017665cd9ce666330a981b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c6377a2257782517b01e7863dfcdd1db72b9a00e6089470863498523089d11e",
+      "source_fact_keys": [
+        "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
+        "source_fact:v1:96bc042fe46546ef8cfe17736036b21c81a523a515aa0b317d0adb907e20824a",
+        "source_fact:v1:d8db21824395f81de88bada2929d8edd4b08b8397b95f1a70b51218e231f3bd6",
+        "source_fact:v1:e01e77d275652da57088ac81ebf47b81356cac0bc48e25bc0463b777df2f5a6a"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 합병 결정…개발부터 상업화까지 역량 통합"
     },
     "fact:1d71b56854ba84b8d9c7c5dc": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -10918,6 +10976,24 @@
       "source_published_kst": "2026-10-06T10:12+09:00",
       "title": "충주시, 주덕읍 일원 친환경 쌀 생산·유통 기반 확충 | 연합뉴스"
     },
+    "fact:6c5bca13e29b5e4580986059": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169574",
+      "source": "매일경제",
+      "source_body_digest": "6827c8bc76e00df6ff018a5e86d11995589778817da098e7f4694bb6c134c6fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:747329ec1f02e365844f0233fbab206f4df039a9ce0a054d76ed81423c42a7e2",
+      "source_fact_keys": [
+        "source_fact:v1:bc8afe67c5288ee78a41b7ba11a3c740421e8080160acc2b66ff68a26082ac97",
+        "source_fact:v1:bf09e5ecf0f5d034a14ac773800ca5a3a49091a3c88ce19aa5b2c26b99ace701"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "LG전자, 르노에 콕핏 솔루션 … 유럽 최초 상용 SDV에 탑재"
+    },
     "fact:6c830138f5635f462e517233": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -11786,6 +11862,26 @@
       ],
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "[단독]새일여성 97% 취업 전환…1년 뒤 고용유지율은 60% 그쳐"
+    },
+    "fact:82b977654335c951853d68cb": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.news1.kr/local/gyeonggi/6311933",
+      "source": "뉴스1",
+      "source_body_digest": "2a4aa74d81498bc90e2dc335fe2fed3b1947fa4a8f1dacd32e3b5ed82f7900f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:345fedf4c50daf68660d2f8943b89dccb7a576543cd7e0890a7f9a2a95d1c653",
+      "source_fact_keys": [
+        "source_fact:v1:1c09ceaf1fe6e264718dee9ba1a6e4f87335dbed410245150cd3a90ba36597c5",
+        "source_fact:v1:615008e025ebca0da9d274b52fb1bf4c39b285b733006ec9a4fa6cb1758d4100",
+        "source_fact:v1:8c8a9bbf3b5ea91531389cdb63a7c3ac8b4e9d4c9eaab105c6f535e94d4ec992",
+        "source_fact:v1:f9e9336d3d858729af8f0b3b35f2e1cf3cffe67fe93af5e5080a9fb77b16a271"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조 투자 유치\"…기업·일자리 확대"
     },
     "fact:82c8af93d6dca554e9e96fd6": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -13464,6 +13560,32 @@
       "source_published_kst": "2026-10-05T18:17+09:00",
       "title": "뉴욕·상하이 증시, FOMC 의사록 공개…'S공포' 커지나"
     },
+    "fact:a6c2c51d1980379adab53e42": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663381",
+      "source": "한국경제",
+      "source_body_digest": "e793d16f21c3f8241903732ce893b0ea4e71f695ea9148b3977a94a6ad77682d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98d8af26ead77eabcdc8776f0ec65caa3388e8afd92d11f38447dd9e84fb6ce5",
+      "source_fact_keys": [
+        "source_fact:v1:05b4f9936a785ddbcf83c1923d4ede2fb01887f5bce78bbc9e18a82287a43971",
+        "source_fact:v1:06b9f6dbce57fd759e9c5cf68323baf5f366c40b5a57fdf6413c946d97c834bb",
+        "source_fact:v1:1e7d02b5bf670f298f3fa813c1869fb48c3f83ca7a4cf4630f30e308629d368b",
+        "source_fact:v1:49b8298bd759c678cf3e4856de8e406cf40fa8200ec59a776f43e060a7a1e35d",
+        "source_fact:v1:6900d0cf98f251486e43d7579a0711b2321edd4c00c24c78f30b4c77984cf0a5",
+        "source_fact:v1:926ef1e58dd37b9dcb021d8d4aaf2dc2d2faac472b0355c3c6690d0ade068ec3",
+        "source_fact:v1:97fd7c41866c406d8c95de68394670ec7c0a5efeb1b84c306e816d0391571898",
+        "source_fact:v1:de2386791485b02e11697784256bd9dabaa87a3346fe63d5d7fbcb7b948b80ec",
+        "source_fact:v1:e487df5595c1a4cf91092638ccbcf919b33b2463451ac16a8823007bb01af739",
+        "source_fact:v1:fc3858db27edea8f66343f1a97914f5637287828f12de84966e4051f8e64063a"
+      ],
+      "source_published_kst": "2026-10-06T17:52+09:00",
+      "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
+    },
     "fact:a6e9c85e93d37248bc7aaa48": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
@@ -14967,6 +15089,28 @@
       ],
       "source_published_kst": "2026-10-06T06:29+09:00",
       "title": "사우디 투트랙 수출·G7 비축유 방출 약속에 국제유가 1.8% 하락"
+    },
+    "fact:cdfbb8a2618f0fbfa3a3f611": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663981",
+      "source": "한국경제",
+      "source_body_digest": "ca3a1acadd2b3366479bf94d07fa850603c511fc9b82775911888a930a17b910",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b4e193921cfdfaa618389ab681806e2aae8ea77b1c1bfab7dcb39a69d6548c3",
+      "source_fact_keys": [
+        "source_fact:v1:216e8681bebeb112784d04e198d42b449e609c720082a5d0812fac5f5d4b170c",
+        "source_fact:v1:446c253bd483721e1b3ac28578476f335728ecf466b29c5944c2bdb279828320",
+        "source_fact:v1:8148a42cc25af1fef8611cf3363d9c16517f08950c2c0d7390f95c969d75ff36",
+        "source_fact:v1:877d4b94dca9a3038e16459bd0b573ea96cc3697f11e00fa3f94040156944421",
+        "source_fact:v1:8a713021e750c0b6899201cd8f89431c42ce97a656aa3d22ab82770fd28463db",
+        "source_fact:v1:c17dce7a05fabdce8d757fd851e65a46f1615b699cef56858ff876f0ad289460"
+      ],
+      "source_published_kst": "2026-10-06T17:47+09:00",
+      "title": "美 워너 인수 투자자로…신세계, 1.4兆 꽂는다"
     },
     "fact:ce10578d071ab7da0693ead2": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -18111,6 +18255,23 @@
       "link": "https://www.yna.co.kr/view/AKR20261001199151082",
       "source": "연합뉴스",
       "title": "EU 이어 영국도 한국의 러시아산 LNG 수입 제재 면제(종합) | 연합뉴스"
+    },
+    "link:0c9a71a1424a38d5091ae2e3": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.dt.co.kr/article/12087771",
+      "source": "디지털타임스",
+      "source_body_digest": "bb6e077018f5f1ed162179e9e9cd5745928fba7fcff4c250d5b3f01c4850fffb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bd1acc96a929a01bbd234d7bc6b367fa4ffabcf38f8ee39cad19937170674d0",
+      "source_fact_keys": [
+        "source_fact:v1:224a185ba376f1ac07b52d6c28430656c09801c4decaa176b486ce8902033dde"
+      ],
+      "source_published_kst": "2026-10-06T18:39+09:00",
+      "title": "“5·18 ‘광주’ 한정, 유공자 명단공개” 이진숙표 법안에 오월단체 “즉각 철회하라”"
     },
     "link:0c9bd22ecd0795711b922e20": {
       "first_seen_kst": "2026-10-03T16:23:07+09:00",
@@ -22725,6 +22886,32 @@
       "source": "이데일리",
       "title": "국힘 정무위원 \"與반대로 레버리지 ETF 증인 0명…이유 밝혀라\""
     },
+    "link:3ae23428bce5e19ce59e2f7c": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663381",
+      "source": "한국경제",
+      "source_body_digest": "e793d16f21c3f8241903732ce893b0ea4e71f695ea9148b3977a94a6ad77682d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98d8af26ead77eabcdc8776f0ec65caa3388e8afd92d11f38447dd9e84fb6ce5",
+      "source_fact_keys": [
+        "source_fact:v1:05b4f9936a785ddbcf83c1923d4ede2fb01887f5bce78bbc9e18a82287a43971",
+        "source_fact:v1:06b9f6dbce57fd759e9c5cf68323baf5f366c40b5a57fdf6413c946d97c834bb",
+        "source_fact:v1:1e7d02b5bf670f298f3fa813c1869fb48c3f83ca7a4cf4630f30e308629d368b",
+        "source_fact:v1:49b8298bd759c678cf3e4856de8e406cf40fa8200ec59a776f43e060a7a1e35d",
+        "source_fact:v1:6900d0cf98f251486e43d7579a0711b2321edd4c00c24c78f30b4c77984cf0a5",
+        "source_fact:v1:926ef1e58dd37b9dcb021d8d4aaf2dc2d2faac472b0355c3c6690d0ade068ec3",
+        "source_fact:v1:97fd7c41866c406d8c95de68394670ec7c0a5efeb1b84c306e816d0391571898",
+        "source_fact:v1:de2386791485b02e11697784256bd9dabaa87a3346fe63d5d7fbcb7b948b80ec",
+        "source_fact:v1:e487df5595c1a4cf91092638ccbcf919b33b2463451ac16a8823007bb01af739",
+        "source_fact:v1:fc3858db27edea8f66343f1a97914f5637287828f12de84966e4051f8e64063a"
+      ],
+      "source_published_kst": "2026-10-06T17:52+09:00",
+      "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
+    },
     "link:3aee4342723432ac06e5b43f": {
       "first_seen_kst": "2026-10-01T22:39:53+09:00",
       "lanes": {
@@ -25990,6 +26177,28 @@
       "link": "https://www.mk.co.kr/news/economy/12156066",
       "source": "매일경제",
       "title": "“외국인 코스피 사고, 코스닥 팔았다”…국내주식 올해 첫 ‘순매수’"
+    },
+    "link:59a23b5b2c39b5e4886760e5": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663981",
+      "source": "한국경제",
+      "source_body_digest": "ca3a1acadd2b3366479bf94d07fa850603c511fc9b82775911888a930a17b910",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b4e193921cfdfaa618389ab681806e2aae8ea77b1c1bfab7dcb39a69d6548c3",
+      "source_fact_keys": [
+        "source_fact:v1:216e8681bebeb112784d04e198d42b449e609c720082a5d0812fac5f5d4b170c",
+        "source_fact:v1:446c253bd483721e1b3ac28578476f335728ecf466b29c5944c2bdb279828320",
+        "source_fact:v1:8148a42cc25af1fef8611cf3363d9c16517f08950c2c0d7390f95c969d75ff36",
+        "source_fact:v1:877d4b94dca9a3038e16459bd0b573ea96cc3697f11e00fa3f94040156944421",
+        "source_fact:v1:8a713021e750c0b6899201cd8f89431c42ce97a656aa3d22ab82770fd28463db",
+        "source_fact:v1:c17dce7a05fabdce8d757fd851e65a46f1615b699cef56858ff876f0ad289460"
+      ],
+      "source_published_kst": "2026-10-06T17:47+09:00",
+      "title": "美 워너 인수 투자자로…신세계, 1.4兆 꽂는다"
     },
     "link:59adb5765c6bc100911de93b": {
       "first_seen_kst": "2026-10-05T16:51:07+09:00",
@@ -29850,6 +30059,24 @@
       "source": "지디넷코리아",
       "title": "日, AI 광반도체 생산거점 키운다...타워세미컨 5.6조 투자"
     },
+    "link:7e49754d8d7efa478d8231a4": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169574",
+      "source": "매일경제",
+      "source_body_digest": "6827c8bc76e00df6ff018a5e86d11995589778817da098e7f4694bb6c134c6fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:747329ec1f02e365844f0233fbab206f4df039a9ce0a054d76ed81423c42a7e2",
+      "source_fact_keys": [
+        "source_fact:v1:bc8afe67c5288ee78a41b7ba11a3c740421e8080160acc2b66ff68a26082ac97",
+        "source_fact:v1:bf09e5ecf0f5d034a14ac773800ca5a3a49091a3c88ce19aa5b2c26b99ace701"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "LG전자, 르노에 콕핏 솔루션 … 유럽 최초 상용 SDV에 탑재"
+    },
     "link:7e554e07b570bcb13a430672": {
       "first_seen_kst": "2026-09-23T21:49:23+09:00",
       "lanes": {
@@ -30482,6 +30709,24 @@
       "source_published_kst": "2026-10-05T21:46+09:00",
       "title": "재규어 헬스, 특별 주식배당..우선주 1주 보통주 5주 전환"
     },
+    "link:8557b34412a2f95028f87e11": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000020307",
+      "source": "국민일보",
+      "source_body_digest": "1ec13b6a047a8e1173771f1d2f38af27c235e43751afc42f9363b7e1ada03dfb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00880fd2f78b27bde936ed4b0099445b0b4a9ccead8734049d1a74dc560d8113",
+      "source_fact_keys": [
+        "source_fact:v1:3a10eb2a7a8037b66b115ace8e4f35a2b9a5be608933df5d9a1ef8bf4f8b5ba6",
+        "source_fact:v1:9b4973c38a3e869ae0f76e7a3cb71509fdb7344d676e902c28fd9db31d4eeb78"
+      ],
+      "source_published_kst": "2026-10-06T18:37+09:00",
+      "title": "지하수 부족하다면서 농업용수 사용대금 부과에 손 놓은 제주"
+    },
     "link:855c434cc14f7d17265f5d7b": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
       "lanes": {
@@ -30713,6 +30958,26 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T06:33+09:00",
       "title": "[발사D-3] 누리호, 7일 우주로…15개 위성 어떻게 올리나 | 연합뉴스"
+    },
+    "link:88c487647f8187da0c68362a": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/202610066402P",
+      "source": "한국경제",
+      "source_body_digest": "61e08806ae7ebd3a65e02da02c92555e46d329661017665cd9ce666330a981b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c6377a2257782517b01e7863dfcdd1db72b9a00e6089470863498523089d11e",
+      "source_fact_keys": [
+        "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
+        "source_fact:v1:96bc042fe46546ef8cfe17736036b21c81a523a515aa0b317d0adb907e20824a",
+        "source_fact:v1:d8db21824395f81de88bada2929d8edd4b08b8397b95f1a70b51218e231f3bd6",
+        "source_fact:v1:e01e77d275652da57088ac81ebf47b81356cac0bc48e25bc0463b777df2f5a6a"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 합병 결정…개발부터 상업화까지 역량 통합"
     },
     "link:88d573ebb83abf269347e758": {
       "first_seen_kst": "2026-10-01T19:16:32+09:00",
@@ -36593,6 +36858,26 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T08:01+09:00",
       "title": "워시는 침묵…美연준 인사들 발언에 시장 움직인 이유 | 연합뉴스"
+    },
+    "link:c2b4db9f2da730ef856ce077": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.news1.kr/local/gyeonggi/6311933",
+      "source": "뉴스1",
+      "source_body_digest": "2a4aa74d81498bc90e2dc335fe2fed3b1947fa4a8f1dacd32e3b5ed82f7900f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:345fedf4c50daf68660d2f8943b89dccb7a576543cd7e0890a7f9a2a95d1c653",
+      "source_fact_keys": [
+        "source_fact:v1:1c09ceaf1fe6e264718dee9ba1a6e4f87335dbed410245150cd3a90ba36597c5",
+        "source_fact:v1:615008e025ebca0da9d274b52fb1bf4c39b285b733006ec9a4fa6cb1758d4100",
+        "source_fact:v1:8c8a9bbf3b5ea91531389cdb63a7c3ac8b4e9d4c9eaab105c6f535e94d4ec992",
+        "source_fact:v1:f9e9336d3d858729af8f0b3b35f2e1cf3cffe67fe93af5e5080a9fb77b16a271"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조 투자 유치\"…기업·일자리 확대"
     },
     "link:c2bfd8617e3652f3d0b72c13": {
       "first_seen_kst": "2026-10-05T18:16:31+09:00",
@@ -45505,6 +45790,28 @@
       "source": "아시아경제",
       "title": "SBVA, 글로벌 AI 기업 데이터브릭스에 투자…50억달러 규모 라운드"
     },
+    "original:1bab876952a029bf9cd1148b": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663981",
+      "source": "한국경제",
+      "source_body_digest": "ca3a1acadd2b3366479bf94d07fa850603c511fc9b82775911888a930a17b910",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b4e193921cfdfaa618389ab681806e2aae8ea77b1c1bfab7dcb39a69d6548c3",
+      "source_fact_keys": [
+        "source_fact:v1:216e8681bebeb112784d04e198d42b449e609c720082a5d0812fac5f5d4b170c",
+        "source_fact:v1:446c253bd483721e1b3ac28578476f335728ecf466b29c5944c2bdb279828320",
+        "source_fact:v1:8148a42cc25af1fef8611cf3363d9c16517f08950c2c0d7390f95c969d75ff36",
+        "source_fact:v1:877d4b94dca9a3038e16459bd0b573ea96cc3697f11e00fa3f94040156944421",
+        "source_fact:v1:8a713021e750c0b6899201cd8f89431c42ce97a656aa3d22ab82770fd28463db",
+        "source_fact:v1:c17dce7a05fabdce8d757fd851e65a46f1615b699cef56858ff876f0ad289460"
+      ],
+      "source_published_kst": "2026-10-06T17:47+09:00",
+      "title": "美 워너 인수 투자자로…신세계, 1.4兆 꽂는다"
+    },
     "original:1bdc959de63cff920e8c3802": {
       "first_seen_kst": "2026-10-04T11:57:24+09:00",
       "lanes": {
@@ -45866,6 +46173,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261002036500002",
       "source": "연합뉴스",
       "title": "한은 \"10월 물가상승률 3% 내외 높은 수준 예상\" | 연합뉴스"
+    },
+    "original:1f8764683e6ed9a9bffacae9": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/202610066402P",
+      "source": "한국경제",
+      "source_body_digest": "61e08806ae7ebd3a65e02da02c92555e46d329661017665cd9ce666330a981b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c6377a2257782517b01e7863dfcdd1db72b9a00e6089470863498523089d11e",
+      "source_fact_keys": [
+        "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
+        "source_fact:v1:96bc042fe46546ef8cfe17736036b21c81a523a515aa0b317d0adb907e20824a",
+        "source_fact:v1:d8db21824395f81de88bada2929d8edd4b08b8397b95f1a70b51218e231f3bd6",
+        "source_fact:v1:e01e77d275652da57088ac81ebf47b81356cac0bc48e25bc0463b777df2f5a6a"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 합병 결정…개발부터 상업화까지 역량 통합"
     },
     "original:1f885186b1db135709e4b7cf": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
@@ -51073,6 +51400,32 @@
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
     },
+    "original:510a97518cd89de6253be0e3": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663381",
+      "source": "한국경제",
+      "source_body_digest": "e793d16f21c3f8241903732ce893b0ea4e71f695ea9148b3977a94a6ad77682d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98d8af26ead77eabcdc8776f0ec65caa3388e8afd92d11f38447dd9e84fb6ce5",
+      "source_fact_keys": [
+        "source_fact:v1:05b4f9936a785ddbcf83c1923d4ede2fb01887f5bce78bbc9e18a82287a43971",
+        "source_fact:v1:06b9f6dbce57fd759e9c5cf68323baf5f366c40b5a57fdf6413c946d97c834bb",
+        "source_fact:v1:1e7d02b5bf670f298f3fa813c1869fb48c3f83ca7a4cf4630f30e308629d368b",
+        "source_fact:v1:49b8298bd759c678cf3e4856de8e406cf40fa8200ec59a776f43e060a7a1e35d",
+        "source_fact:v1:6900d0cf98f251486e43d7579a0711b2321edd4c00c24c78f30b4c77984cf0a5",
+        "source_fact:v1:926ef1e58dd37b9dcb021d8d4aaf2dc2d2faac472b0355c3c6690d0ade068ec3",
+        "source_fact:v1:97fd7c41866c406d8c95de68394670ec7c0a5efeb1b84c306e816d0391571898",
+        "source_fact:v1:de2386791485b02e11697784256bd9dabaa87a3346fe63d5d7fbcb7b948b80ec",
+        "source_fact:v1:e487df5595c1a4cf91092638ccbcf919b33b2463451ac16a8823007bb01af739",
+        "source_fact:v1:fc3858db27edea8f66343f1a97914f5637287828f12de84966e4051f8e64063a"
+      ],
+      "source_published_kst": "2026-10-06T17:52+09:00",
+      "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
+    },
     "original:511e0f15b7a3c71146eeb66a": {
       "first_seen_kst": "2026-09-22T16:30:20+09:00",
       "lanes": {
@@ -52322,6 +52675,24 @@
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "韓 비료, 브라질 진출 교두보…콩·옥수수 시장 겨냥"
     },
+    "original:5ee0d81b5621e55a43690b8d": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000020307",
+      "source": "국민일보",
+      "source_body_digest": "1ec13b6a047a8e1173771f1d2f38af27c235e43751afc42f9363b7e1ada03dfb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00880fd2f78b27bde936ed4b0099445b0b4a9ccead8734049d1a74dc560d8113",
+      "source_fact_keys": [
+        "source_fact:v1:3a10eb2a7a8037b66b115ace8e4f35a2b9a5be608933df5d9a1ef8bf4f8b5ba6",
+        "source_fact:v1:9b4973c38a3e869ae0f76e7a3cb71509fdb7344d676e902c28fd9db31d4eeb78"
+      ],
+      "source_published_kst": "2026-10-06T18:37+09:00",
+      "title": "지하수 부족하다면서 농업용수 사용대금 부과에 손 놓은 제주"
+    },
     "original:5eeecd89b102db80ed15b1d3": {
       "first_seen_kst": "2026-09-21T21:35:34+09:00",
       "lanes": {
@@ -52861,6 +53232,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261002021600009",
       "source": "연합뉴스",
       "title": "\"중국 정유사들, 10월부터 석유제품 수출 중단\" | 연합뉴스"
+    },
+    "original:654655eae74b98fef559b86d": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.news1.kr/local/gyeonggi/6311933",
+      "source": "뉴스1",
+      "source_body_digest": "2a4aa74d81498bc90e2dc335fe2fed3b1947fa4a8f1dacd32e3b5ed82f7900f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:345fedf4c50daf68660d2f8943b89dccb7a576543cd7e0890a7f9a2a95d1c653",
+      "source_fact_keys": [
+        "source_fact:v1:1c09ceaf1fe6e264718dee9ba1a6e4f87335dbed410245150cd3a90ba36597c5",
+        "source_fact:v1:615008e025ebca0da9d274b52fb1bf4c39b285b733006ec9a4fa6cb1758d4100",
+        "source_fact:v1:8c8a9bbf3b5ea91531389cdb63a7c3ac8b4e9d4c9eaab105c6f535e94d4ec992",
+        "source_fact:v1:f9e9336d3d858729af8f0b3b35f2e1cf3cffe67fe93af5e5080a9fb77b16a271"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조 투자 유치\"…기업·일자리 확대"
     },
     "original:6584fb61ce11d99c457ed84e": {
       "first_seen_kst": "2026-10-03T20:45:30+09:00",
@@ -56296,6 +56687,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261002150900062",
       "source": "연합뉴스",
       "title": "강원도, 지역 생산 전력 활용법 찾는다…현안 6건 돌파구 모색 | 연합뉴스"
+    },
+    "original:886e88c75c5bb14ede806057": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169574",
+      "source": "매일경제",
+      "source_body_digest": "6827c8bc76e00df6ff018a5e86d11995589778817da098e7f4694bb6c134c6fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:747329ec1f02e365844f0233fbab206f4df039a9ce0a054d76ed81423c42a7e2",
+      "source_fact_keys": [
+        "source_fact:v1:bc8afe67c5288ee78a41b7ba11a3c740421e8080160acc2b66ff68a26082ac97",
+        "source_fact:v1:bf09e5ecf0f5d034a14ac773800ca5a3a49091a3c88ce19aa5b2c26b99ace701"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "LG전자, 르노에 콕핏 솔루션 … 유럽 최초 상용 SDV에 탑재"
     },
     "original:88cef6ab2a1f76c98b4b7439": {
       "first_seen_kst": "2026-10-05T07:24:39+09:00",
@@ -66580,6 +66989,23 @@
       "source_published_kst": "2026-10-05T17:24+09:00",
       "title": "삼성·현대차 로봇투자 나섰지만 … 韓로봇 생태계는 '구멍가게' 수준"
     },
+    "original:f198b3f3264018e513ae60c7": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.dt.co.kr/article/12087771",
+      "source": "디지털타임스",
+      "source_body_digest": "bb6e077018f5f1ed162179e9e9cd5745928fba7fcff4c250d5b3f01c4850fffb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bd1acc96a929a01bbd234d7bc6b367fa4ffabcf38f8ee39cad19937170674d0",
+      "source_fact_keys": [
+        "source_fact:v1:224a185ba376f1ac07b52d6c28430656c09801c4decaa176b486ce8902033dde"
+      ],
+      "source_published_kst": "2026-10-06T18:39+09:00",
+      "title": "“5·18 ‘광주’ 한정, 유공자 명단공개” 이진숙표 법안에 오월단체 “즉각 철회하라”"
+    },
     "original:f1b53d89c47a25c93ae0db9b": {
       "first_seen_kst": "2026-10-02T15:48:44+09:00",
       "lanes": {
@@ -68198,6 +68624,26 @@
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
     },
+    "source_fact:01d0d70c71a7828a1d61ce91": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.news1.kr/local/gyeonggi/6311933",
+      "source": "뉴스1",
+      "source_body_digest": "2a4aa74d81498bc90e2dc335fe2fed3b1947fa4a8f1dacd32e3b5ed82f7900f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:345fedf4c50daf68660d2f8943b89dccb7a576543cd7e0890a7f9a2a95d1c653",
+      "source_fact_keys": [
+        "source_fact:v1:1c09ceaf1fe6e264718dee9ba1a6e4f87335dbed410245150cd3a90ba36597c5",
+        "source_fact:v1:615008e025ebca0da9d274b52fb1bf4c39b285b733006ec9a4fa6cb1758d4100",
+        "source_fact:v1:8c8a9bbf3b5ea91531389cdb63a7c3ac8b4e9d4c9eaab105c6f535e94d4ec992",
+        "source_fact:v1:f9e9336d3d858729af8f0b3b35f2e1cf3cffe67fe93af5e5080a9fb77b16a271"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조 투자 유치\"…기업·일자리 확대"
+    },
     "source_fact:01d48911be74633c8ce98c13": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -69223,6 +69669,24 @@
       ],
       "source_published_kst": "2026-10-06T09:54+09:00",
       "title": "올해 청약 경쟁률 작년 절반으로 '뚝'…서울·3기신도시는 100대1"
+    },
+    "source_fact:0715ff904e694f00249047ba": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000020307",
+      "source": "국민일보",
+      "source_body_digest": "1ec13b6a047a8e1173771f1d2f38af27c235e43751afc42f9363b7e1ada03dfb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00880fd2f78b27bde936ed4b0099445b0b4a9ccead8734049d1a74dc560d8113",
+      "source_fact_keys": [
+        "source_fact:v1:3a10eb2a7a8037b66b115ace8e4f35a2b9a5be608933df5d9a1ef8bf4f8b5ba6",
+        "source_fact:v1:9b4973c38a3e869ae0f76e7a3cb71509fdb7344d676e902c28fd9db31d4eeb78"
+      ],
+      "source_published_kst": "2026-10-06T18:37+09:00",
+      "title": "지하수 부족하다면서 농업용수 사용대금 부과에 손 놓은 제주"
     },
     "source_fact:0720b1abfdb402cb5e3efeda": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
@@ -70714,6 +71178,28 @@
       "source_published_kst": "2026-10-06T07:30+09:00",
       "title": "원화 강세의 그늘…실적시즌 앞두고 이익전망 '뒷걸음질'"
     },
+    "source_fact:0f0f7b94940355b75b81e1b7": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663981",
+      "source": "한국경제",
+      "source_body_digest": "ca3a1acadd2b3366479bf94d07fa850603c511fc9b82775911888a930a17b910",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b4e193921cfdfaa618389ab681806e2aae8ea77b1c1bfab7dcb39a69d6548c3",
+      "source_fact_keys": [
+        "source_fact:v1:216e8681bebeb112784d04e198d42b449e609c720082a5d0812fac5f5d4b170c",
+        "source_fact:v1:446c253bd483721e1b3ac28578476f335728ecf466b29c5944c2bdb279828320",
+        "source_fact:v1:8148a42cc25af1fef8611cf3363d9c16517f08950c2c0d7390f95c969d75ff36",
+        "source_fact:v1:877d4b94dca9a3038e16459bd0b573ea96cc3697f11e00fa3f94040156944421",
+        "source_fact:v1:8a713021e750c0b6899201cd8f89431c42ce97a656aa3d22ab82770fd28463db",
+        "source_fact:v1:c17dce7a05fabdce8d757fd851e65a46f1615b699cef56858ff876f0ad289460"
+      ],
+      "source_published_kst": "2026-10-06T17:47+09:00",
+      "title": "美 워너 인수 투자자로…신세계, 1.4兆 꽂는다"
+    },
     "source_fact:0f35be87ea50e1e41b5a0ac6": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -71530,6 +72016,32 @@
       ],
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
+    },
+    "source_fact:1343ce10ed4b1aa391a48f31": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663381",
+      "source": "한국경제",
+      "source_body_digest": "e793d16f21c3f8241903732ce893b0ea4e71f695ea9148b3977a94a6ad77682d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98d8af26ead77eabcdc8776f0ec65caa3388e8afd92d11f38447dd9e84fb6ce5",
+      "source_fact_keys": [
+        "source_fact:v1:05b4f9936a785ddbcf83c1923d4ede2fb01887f5bce78bbc9e18a82287a43971",
+        "source_fact:v1:06b9f6dbce57fd759e9c5cf68323baf5f366c40b5a57fdf6413c946d97c834bb",
+        "source_fact:v1:1e7d02b5bf670f298f3fa813c1869fb48c3f83ca7a4cf4630f30e308629d368b",
+        "source_fact:v1:49b8298bd759c678cf3e4856de8e406cf40fa8200ec59a776f43e060a7a1e35d",
+        "source_fact:v1:6900d0cf98f251486e43d7579a0711b2321edd4c00c24c78f30b4c77984cf0a5",
+        "source_fact:v1:926ef1e58dd37b9dcb021d8d4aaf2dc2d2faac472b0355c3c6690d0ade068ec3",
+        "source_fact:v1:97fd7c41866c406d8c95de68394670ec7c0a5efeb1b84c306e816d0391571898",
+        "source_fact:v1:de2386791485b02e11697784256bd9dabaa87a3346fe63d5d7fbcb7b948b80ec",
+        "source_fact:v1:e487df5595c1a4cf91092638ccbcf919b33b2463451ac16a8823007bb01af739",
+        "source_fact:v1:fc3858db27edea8f66343f1a97914f5637287828f12de84966e4051f8e64063a"
+      ],
+      "source_published_kst": "2026-10-06T17:52+09:00",
+      "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
     },
     "source_fact:13841c025cbc0731ce7eee45": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
@@ -73241,6 +73753,23 @@
       ],
       "source_published_kst": "2026-10-06T09:24+09:00",
       "title": "특징주, 아이티센씨티에스-네트워크통합 테마 상승세에 2.22% ↑"
+    },
+    "source_fact:1eb2e2065de992c06b02dc0b": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.dt.co.kr/article/12087771",
+      "source": "디지털타임스",
+      "source_body_digest": "bb6e077018f5f1ed162179e9e9cd5745928fba7fcff4c250d5b3f01c4850fffb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bd1acc96a929a01bbd234d7bc6b367fa4ffabcf38f8ee39cad19937170674d0",
+      "source_fact_keys": [
+        "source_fact:v1:224a185ba376f1ac07b52d6c28430656c09801c4decaa176b486ce8902033dde"
+      ],
+      "source_published_kst": "2026-10-06T18:39+09:00",
+      "title": "“5·18 ‘광주’ 한정, 유공자 명단공개” 이진숙표 법안에 오월단체 “즉각 철회하라”"
     },
     "source_fact:1ec726fa3184d0cd89a0e6aa": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -76468,6 +76997,26 @@
       ],
       "source_published_kst": "2026-10-06T16:00+09:00",
       "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
+    },
+    "source_fact:30499a3d13f013dd28e25f78": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.news1.kr/local/gyeonggi/6311933",
+      "source": "뉴스1",
+      "source_body_digest": "2a4aa74d81498bc90e2dc335fe2fed3b1947fa4a8f1dacd32e3b5ed82f7900f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:345fedf4c50daf68660d2f8943b89dccb7a576543cd7e0890a7f9a2a95d1c653",
+      "source_fact_keys": [
+        "source_fact:v1:1c09ceaf1fe6e264718dee9ba1a6e4f87335dbed410245150cd3a90ba36597c5",
+        "source_fact:v1:615008e025ebca0da9d274b52fb1bf4c39b285b733006ec9a4fa6cb1758d4100",
+        "source_fact:v1:8c8a9bbf3b5ea91531389cdb63a7c3ac8b4e9d4c9eaab105c6f535e94d4ec992",
+        "source_fact:v1:f9e9336d3d858729af8f0b3b35f2e1cf3cffe67fe93af5e5080a9fb77b16a271"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조 투자 유치\"…기업·일자리 확대"
     },
     "source_fact:305db8dccf4d868636c6ebab": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -80009,6 +80558,28 @@
       "source_published_kst": "2026-10-05T23:10+09:00",
       "title": "유나이티드마이크로일렉, 18억 달러 해외CB 발행 확정에 지분 희석·매물 부담 부각"
     },
+    "source_fact:433de656bab94446d4f01960": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663981",
+      "source": "한국경제",
+      "source_body_digest": "ca3a1acadd2b3366479bf94d07fa850603c511fc9b82775911888a930a17b910",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b4e193921cfdfaa618389ab681806e2aae8ea77b1c1bfab7dcb39a69d6548c3",
+      "source_fact_keys": [
+        "source_fact:v1:216e8681bebeb112784d04e198d42b449e609c720082a5d0812fac5f5d4b170c",
+        "source_fact:v1:446c253bd483721e1b3ac28578476f335728ecf466b29c5944c2bdb279828320",
+        "source_fact:v1:8148a42cc25af1fef8611cf3363d9c16517f08950c2c0d7390f95c969d75ff36",
+        "source_fact:v1:877d4b94dca9a3038e16459bd0b573ea96cc3697f11e00fa3f94040156944421",
+        "source_fact:v1:8a713021e750c0b6899201cd8f89431c42ce97a656aa3d22ab82770fd28463db",
+        "source_fact:v1:c17dce7a05fabdce8d757fd851e65a46f1615b699cef56858ff876f0ad289460"
+      ],
+      "source_published_kst": "2026-10-06T17:47+09:00",
+      "title": "美 워너 인수 투자자로…신세계, 1.4兆 꽂는다"
+    },
     "source_fact:43474c80a971fb128f3d3a7b": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -81661,6 +82232,32 @@
       "source_published_kst": "2026-10-06T11:41+09:00",
       "title": "삼성전기, 글로벌 기업과 MLCC 공급계약… 1년간 2856억원 규모"
     },
+    "source_fact:4ae0ef8e8c789d316010ccc5": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663381",
+      "source": "한국경제",
+      "source_body_digest": "e793d16f21c3f8241903732ce893b0ea4e71f695ea9148b3977a94a6ad77682d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98d8af26ead77eabcdc8776f0ec65caa3388e8afd92d11f38447dd9e84fb6ce5",
+      "source_fact_keys": [
+        "source_fact:v1:05b4f9936a785ddbcf83c1923d4ede2fb01887f5bce78bbc9e18a82287a43971",
+        "source_fact:v1:06b9f6dbce57fd759e9c5cf68323baf5f366c40b5a57fdf6413c946d97c834bb",
+        "source_fact:v1:1e7d02b5bf670f298f3fa813c1869fb48c3f83ca7a4cf4630f30e308629d368b",
+        "source_fact:v1:49b8298bd759c678cf3e4856de8e406cf40fa8200ec59a776f43e060a7a1e35d",
+        "source_fact:v1:6900d0cf98f251486e43d7579a0711b2321edd4c00c24c78f30b4c77984cf0a5",
+        "source_fact:v1:926ef1e58dd37b9dcb021d8d4aaf2dc2d2faac472b0355c3c6690d0ade068ec3",
+        "source_fact:v1:97fd7c41866c406d8c95de68394670ec7c0a5efeb1b84c306e816d0391571898",
+        "source_fact:v1:de2386791485b02e11697784256bd9dabaa87a3346fe63d5d7fbcb7b948b80ec",
+        "source_fact:v1:e487df5595c1a4cf91092638ccbcf919b33b2463451ac16a8823007bb01af739",
+        "source_fact:v1:fc3858db27edea8f66343f1a97914f5637287828f12de84966e4051f8e64063a"
+      ],
+      "source_published_kst": "2026-10-06T17:52+09:00",
+      "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
+    },
     "source_fact:4ae6ea37c7952c735664b148": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -83215,22 +83812,22 @@
     "source_fact:535e5a47e43f954060e6057e": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-06T21:28:22+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2633025",
-      "source": "이투데이",
-      "source_body_digest": "f77287441ee409f9cd7c02a5d1609eb0f283202f000ddbaba38259560a468ba3",
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/202610066402P",
+      "source": "한국경제",
+      "source_body_digest": "61e08806ae7ebd3a65e02da02c92555e46d329661017665cd9ce666330a981b7",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f802ebe155ee67f15a1ae2e23e91ab28a9a76e3ec3c29e3d025c7eef0eda47ae",
+      "source_fact_identity": "source_facts:v1:7c6377a2257782517b01e7863dfcdd1db72b9a00e6089470863498523089d11e",
       "source_fact_keys": [
         "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
-        "source_fact:v1:906094a709df58ebcbf53762bc7ca3fbef3d48af79ba2ae1ee5fc91e58bc1795",
         "source_fact:v1:96bc042fe46546ef8cfe17736036b21c81a523a515aa0b317d0adb907e20824a",
-        "source_fact:v1:f241a17536fea21dc31c088b6c0a60b50c3be8f0aee4a90ea0ae22803d57306e"
+        "source_fact:v1:d8db21824395f81de88bada2929d8edd4b08b8397b95f1a70b51218e231f3bd6",
+        "source_fact:v1:e01e77d275652da57088ac81ebf47b81356cac0bc48e25bc0463b777df2f5a6a"
       ],
-      "source_published_kst": "2026-10-06T18:13+09:00",
-      "title": "[BioS]알테오젠, 알테오젠바이오로직스 합병 결정"
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 합병 결정…개발부터 상업화까지 역량 통합"
     },
     "source_fact:53904ecdc2a06c849f686787": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -84016,6 +84613,28 @@
       ],
       "source_published_kst": "2026-10-06T09:57+09:00",
       "title": "네이버 소비자 분쟁 피해구제율 83.6%…“분류체계 세분화 필요\""
+    },
+    "source_fact:5737e7706a56d111d7555b0d": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663981",
+      "source": "한국경제",
+      "source_body_digest": "ca3a1acadd2b3366479bf94d07fa850603c511fc9b82775911888a930a17b910",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b4e193921cfdfaa618389ab681806e2aae8ea77b1c1bfab7dcb39a69d6548c3",
+      "source_fact_keys": [
+        "source_fact:v1:216e8681bebeb112784d04e198d42b449e609c720082a5d0812fac5f5d4b170c",
+        "source_fact:v1:446c253bd483721e1b3ac28578476f335728ecf466b29c5944c2bdb279828320",
+        "source_fact:v1:8148a42cc25af1fef8611cf3363d9c16517f08950c2c0d7390f95c969d75ff36",
+        "source_fact:v1:877d4b94dca9a3038e16459bd0b573ea96cc3697f11e00fa3f94040156944421",
+        "source_fact:v1:8a713021e750c0b6899201cd8f89431c42ce97a656aa3d22ab82770fd28463db",
+        "source_fact:v1:c17dce7a05fabdce8d757fd851e65a46f1615b699cef56858ff876f0ad289460"
+      ],
+      "source_published_kst": "2026-10-06T17:47+09:00",
+      "title": "美 워너 인수 투자자로…신세계, 1.4兆 꽂는다"
     },
     "source_fact:57db0ed91511fe8059e0baf4": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -85240,6 +85859,32 @@
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
     },
+    "source_fact:5c8f58fd2cc7ca5793800352": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663381",
+      "source": "한국경제",
+      "source_body_digest": "e793d16f21c3f8241903732ce893b0ea4e71f695ea9148b3977a94a6ad77682d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98d8af26ead77eabcdc8776f0ec65caa3388e8afd92d11f38447dd9e84fb6ce5",
+      "source_fact_keys": [
+        "source_fact:v1:05b4f9936a785ddbcf83c1923d4ede2fb01887f5bce78bbc9e18a82287a43971",
+        "source_fact:v1:06b9f6dbce57fd759e9c5cf68323baf5f366c40b5a57fdf6413c946d97c834bb",
+        "source_fact:v1:1e7d02b5bf670f298f3fa813c1869fb48c3f83ca7a4cf4630f30e308629d368b",
+        "source_fact:v1:49b8298bd759c678cf3e4856de8e406cf40fa8200ec59a776f43e060a7a1e35d",
+        "source_fact:v1:6900d0cf98f251486e43d7579a0711b2321edd4c00c24c78f30b4c77984cf0a5",
+        "source_fact:v1:926ef1e58dd37b9dcb021d8d4aaf2dc2d2faac472b0355c3c6690d0ade068ec3",
+        "source_fact:v1:97fd7c41866c406d8c95de68394670ec7c0a5efeb1b84c306e816d0391571898",
+        "source_fact:v1:de2386791485b02e11697784256bd9dabaa87a3346fe63d5d7fbcb7b948b80ec",
+        "source_fact:v1:e487df5595c1a4cf91092638ccbcf919b33b2463451ac16a8823007bb01af739",
+        "source_fact:v1:fc3858db27edea8f66343f1a97914f5637287828f12de84966e4051f8e64063a"
+      ],
+      "source_published_kst": "2026-10-06T17:52+09:00",
+      "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
+    },
     "source_fact:5c97b4675bee7cf99d4d7eed": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
       "lanes": {
@@ -85547,6 +86192,26 @@
       ],
       "source_published_kst": "2026-10-06T09:21+09:00",
       "title": "CPTPP, 농산물 관세만의 문제 아니다…농가 지원·검역도 '시험대'"
+    },
+    "source_fact:5dbdf6bceefb8e95aedf1a17": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.news1.kr/local/gyeonggi/6311933",
+      "source": "뉴스1",
+      "source_body_digest": "2a4aa74d81498bc90e2dc335fe2fed3b1947fa4a8f1dacd32e3b5ed82f7900f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:345fedf4c50daf68660d2f8943b89dccb7a576543cd7e0890a7f9a2a95d1c653",
+      "source_fact_keys": [
+        "source_fact:v1:1c09ceaf1fe6e264718dee9ba1a6e4f87335dbed410245150cd3a90ba36597c5",
+        "source_fact:v1:615008e025ebca0da9d274b52fb1bf4c39b285b733006ec9a4fa6cb1758d4100",
+        "source_fact:v1:8c8a9bbf3b5ea91531389cdb63a7c3ac8b4e9d4c9eaab105c6f535e94d4ec992",
+        "source_fact:v1:f9e9336d3d858729af8f0b3b35f2e1cf3cffe67fe93af5e5080a9fb77b16a271"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조 투자 유치\"…기업·일자리 확대"
     },
     "source_fact:5dd806d7a2801ff9f76461d3": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
@@ -90667,6 +91332,28 @@
       "source_published_kst": "2026-10-05T16:01+09:00",
       "title": "이란 안보수장 “역사상 가장 어려운 시기”⋯경제 악화 이례적 시인"
     },
+    "source_fact:78fe1f25dbf6588ba22d29cc": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663981",
+      "source": "한국경제",
+      "source_body_digest": "ca3a1acadd2b3366479bf94d07fa850603c511fc9b82775911888a930a17b910",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b4e193921cfdfaa618389ab681806e2aae8ea77b1c1bfab7dcb39a69d6548c3",
+      "source_fact_keys": [
+        "source_fact:v1:216e8681bebeb112784d04e198d42b449e609c720082a5d0812fac5f5d4b170c",
+        "source_fact:v1:446c253bd483721e1b3ac28578476f335728ecf466b29c5944c2bdb279828320",
+        "source_fact:v1:8148a42cc25af1fef8611cf3363d9c16517f08950c2c0d7390f95c969d75ff36",
+        "source_fact:v1:877d4b94dca9a3038e16459bd0b573ea96cc3697f11e00fa3f94040156944421",
+        "source_fact:v1:8a713021e750c0b6899201cd8f89431c42ce97a656aa3d22ab82770fd28463db",
+        "source_fact:v1:c17dce7a05fabdce8d757fd851e65a46f1615b699cef56858ff876f0ad289460"
+      ],
+      "source_published_kst": "2026-10-06T17:47+09:00",
+      "title": "美 워너 인수 투자자로…신세계, 1.4兆 꽂는다"
+    },
     "source_fact:79190f2cf2aea22cb6283162": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
       "lanes": {
@@ -92963,6 +93650,32 @@
       "source_published_kst": "2026-10-05T20:01+09:00",
       "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
     },
+    "source_fact:83124697cdc2f46764e35706": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663381",
+      "source": "한국경제",
+      "source_body_digest": "e793d16f21c3f8241903732ce893b0ea4e71f695ea9148b3977a94a6ad77682d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98d8af26ead77eabcdc8776f0ec65caa3388e8afd92d11f38447dd9e84fb6ce5",
+      "source_fact_keys": [
+        "source_fact:v1:05b4f9936a785ddbcf83c1923d4ede2fb01887f5bce78bbc9e18a82287a43971",
+        "source_fact:v1:06b9f6dbce57fd759e9c5cf68323baf5f366c40b5a57fdf6413c946d97c834bb",
+        "source_fact:v1:1e7d02b5bf670f298f3fa813c1869fb48c3f83ca7a4cf4630f30e308629d368b",
+        "source_fact:v1:49b8298bd759c678cf3e4856de8e406cf40fa8200ec59a776f43e060a7a1e35d",
+        "source_fact:v1:6900d0cf98f251486e43d7579a0711b2321edd4c00c24c78f30b4c77984cf0a5",
+        "source_fact:v1:926ef1e58dd37b9dcb021d8d4aaf2dc2d2faac472b0355c3c6690d0ade068ec3",
+        "source_fact:v1:97fd7c41866c406d8c95de68394670ec7c0a5efeb1b84c306e816d0391571898",
+        "source_fact:v1:de2386791485b02e11697784256bd9dabaa87a3346fe63d5d7fbcb7b948b80ec",
+        "source_fact:v1:e487df5595c1a4cf91092638ccbcf919b33b2463451ac16a8823007bb01af739",
+        "source_fact:v1:fc3858db27edea8f66343f1a97914f5637287828f12de84966e4051f8e64063a"
+      ],
+      "source_published_kst": "2026-10-06T17:52+09:00",
+      "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
+    },
     "source_fact:83a7f2d38ed45e8d35582d3e": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -94318,6 +95031,32 @@
       "source_published_kst": "2026-10-06T14:41+09:00",
       "title": "삼성전자 노조위원장 '장인 회사 계약 의혹'…경찰, 고발인 조사"
     },
+    "source_fact:8ad46cc2c6411920f2f43b9f": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663381",
+      "source": "한국경제",
+      "source_body_digest": "e793d16f21c3f8241903732ce893b0ea4e71f695ea9148b3977a94a6ad77682d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98d8af26ead77eabcdc8776f0ec65caa3388e8afd92d11f38447dd9e84fb6ce5",
+      "source_fact_keys": [
+        "source_fact:v1:05b4f9936a785ddbcf83c1923d4ede2fb01887f5bce78bbc9e18a82287a43971",
+        "source_fact:v1:06b9f6dbce57fd759e9c5cf68323baf5f366c40b5a57fdf6413c946d97c834bb",
+        "source_fact:v1:1e7d02b5bf670f298f3fa813c1869fb48c3f83ca7a4cf4630f30e308629d368b",
+        "source_fact:v1:49b8298bd759c678cf3e4856de8e406cf40fa8200ec59a776f43e060a7a1e35d",
+        "source_fact:v1:6900d0cf98f251486e43d7579a0711b2321edd4c00c24c78f30b4c77984cf0a5",
+        "source_fact:v1:926ef1e58dd37b9dcb021d8d4aaf2dc2d2faac472b0355c3c6690d0ade068ec3",
+        "source_fact:v1:97fd7c41866c406d8c95de68394670ec7c0a5efeb1b84c306e816d0391571898",
+        "source_fact:v1:de2386791485b02e11697784256bd9dabaa87a3346fe63d5d7fbcb7b948b80ec",
+        "source_fact:v1:e487df5595c1a4cf91092638ccbcf919b33b2463451ac16a8823007bb01af739",
+        "source_fact:v1:fc3858db27edea8f66343f1a97914f5637287828f12de84966e4051f8e64063a"
+      ],
+      "source_published_kst": "2026-10-06T17:52+09:00",
+      "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
+    },
     "source_fact:8ae15bcbf1ce348f7dd12287": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -94714,22 +95453,22 @@
     "source_fact:8d3b844456f9f8a9081bf3e6": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-06T21:28:22+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2633025",
-      "source": "이투데이",
-      "source_body_digest": "f77287441ee409f9cd7c02a5d1609eb0f283202f000ddbaba38259560a468ba3",
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/202610066402P",
+      "source": "한국경제",
+      "source_body_digest": "61e08806ae7ebd3a65e02da02c92555e46d329661017665cd9ce666330a981b7",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:f802ebe155ee67f15a1ae2e23e91ab28a9a76e3ec3c29e3d025c7eef0eda47ae",
+      "source_fact_identity": "source_facts:v1:7c6377a2257782517b01e7863dfcdd1db72b9a00e6089470863498523089d11e",
       "source_fact_keys": [
         "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
-        "source_fact:v1:906094a709df58ebcbf53762bc7ca3fbef3d48af79ba2ae1ee5fc91e58bc1795",
         "source_fact:v1:96bc042fe46546ef8cfe17736036b21c81a523a515aa0b317d0adb907e20824a",
-        "source_fact:v1:f241a17536fea21dc31c088b6c0a60b50c3be8f0aee4a90ea0ae22803d57306e"
+        "source_fact:v1:d8db21824395f81de88bada2929d8edd4b08b8397b95f1a70b51218e231f3bd6",
+        "source_fact:v1:e01e77d275652da57088ac81ebf47b81356cac0bc48e25bc0463b777df2f5a6a"
       ],
-      "source_published_kst": "2026-10-06T18:13+09:00",
-      "title": "[BioS]알테오젠, 알테오젠바이오로직스 합병 결정"
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 합병 결정…개발부터 상업화까지 역량 통합"
     },
     "source_fact:8d48ca6fe4de5bd2eb8cc92c": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
@@ -99095,6 +99834,24 @@
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
     },
+    "source_fact:a3159d90d7aec3bf6d1b7e33": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169574",
+      "source": "매일경제",
+      "source_body_digest": "6827c8bc76e00df6ff018a5e86d11995589778817da098e7f4694bb6c134c6fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:747329ec1f02e365844f0233fbab206f4df039a9ce0a054d76ed81423c42a7e2",
+      "source_fact_keys": [
+        "source_fact:v1:bc8afe67c5288ee78a41b7ba11a3c740421e8080160acc2b66ff68a26082ac97",
+        "source_fact:v1:bf09e5ecf0f5d034a14ac773800ca5a3a49091a3c88ce19aa5b2c26b99ace701"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "LG전자, 르노에 콕핏 솔루션 … 유럽 최초 상용 SDV에 탑재"
+    },
     "source_fact:a31954373ebe106396bf16db": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -99358,6 +100115,32 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+    },
+    "source_fact:a41b23d10e4f7f2b59c09989": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663381",
+      "source": "한국경제",
+      "source_body_digest": "e793d16f21c3f8241903732ce893b0ea4e71f695ea9148b3977a94a6ad77682d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98d8af26ead77eabcdc8776f0ec65caa3388e8afd92d11f38447dd9e84fb6ce5",
+      "source_fact_keys": [
+        "source_fact:v1:05b4f9936a785ddbcf83c1923d4ede2fb01887f5bce78bbc9e18a82287a43971",
+        "source_fact:v1:06b9f6dbce57fd759e9c5cf68323baf5f366c40b5a57fdf6413c946d97c834bb",
+        "source_fact:v1:1e7d02b5bf670f298f3fa813c1869fb48c3f83ca7a4cf4630f30e308629d368b",
+        "source_fact:v1:49b8298bd759c678cf3e4856de8e406cf40fa8200ec59a776f43e060a7a1e35d",
+        "source_fact:v1:6900d0cf98f251486e43d7579a0711b2321edd4c00c24c78f30b4c77984cf0a5",
+        "source_fact:v1:926ef1e58dd37b9dcb021d8d4aaf2dc2d2faac472b0355c3c6690d0ade068ec3",
+        "source_fact:v1:97fd7c41866c406d8c95de68394670ec7c0a5efeb1b84c306e816d0391571898",
+        "source_fact:v1:de2386791485b02e11697784256bd9dabaa87a3346fe63d5d7fbcb7b948b80ec",
+        "source_fact:v1:e487df5595c1a4cf91092638ccbcf919b33b2463451ac16a8823007bb01af739",
+        "source_fact:v1:fc3858db27edea8f66343f1a97914f5637287828f12de84966e4051f8e64063a"
+      ],
+      "source_published_kst": "2026-10-06T17:52+09:00",
+      "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
     },
     "source_fact:a445e40ed2eefe4d9e45cfd8": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -103180,6 +103963,46 @@
       "source_published_kst": "2026-10-06T11:30+09:00",
       "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
+    "source_fact:b89d43f2d75dedf33ae966f1": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/202610066402P",
+      "source": "한국경제",
+      "source_body_digest": "61e08806ae7ebd3a65e02da02c92555e46d329661017665cd9ce666330a981b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c6377a2257782517b01e7863dfcdd1db72b9a00e6089470863498523089d11e",
+      "source_fact_keys": [
+        "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
+        "source_fact:v1:96bc042fe46546ef8cfe17736036b21c81a523a515aa0b317d0adb907e20824a",
+        "source_fact:v1:d8db21824395f81de88bada2929d8edd4b08b8397b95f1a70b51218e231f3bd6",
+        "source_fact:v1:e01e77d275652da57088ac81ebf47b81356cac0bc48e25bc0463b777df2f5a6a"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 합병 결정…개발부터 상업화까지 역량 통합"
+    },
+    "source_fact:b89dd5392e712eb77f7aec9a": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.news1.kr/local/gyeonggi/6311933",
+      "source": "뉴스1",
+      "source_body_digest": "2a4aa74d81498bc90e2dc335fe2fed3b1947fa4a8f1dacd32e3b5ed82f7900f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:345fedf4c50daf68660d2f8943b89dccb7a576543cd7e0890a7f9a2a95d1c653",
+      "source_fact_keys": [
+        "source_fact:v1:1c09ceaf1fe6e264718dee9ba1a6e4f87335dbed410245150cd3a90ba36597c5",
+        "source_fact:v1:615008e025ebca0da9d274b52fb1bf4c39b285b733006ec9a4fa6cb1758d4100",
+        "source_fact:v1:8c8a9bbf3b5ea91531389cdb63a7c3ac8b4e9d4c9eaab105c6f535e94d4ec992",
+        "source_fact:v1:f9e9336d3d858729af8f0b3b35f2e1cf3cffe67fe93af5e5080a9fb77b16a271"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조 투자 유치\"…기업·일자리 확대"
+    },
     "source_fact:b8b97ff00e8da2a841a8d664": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -104455,6 +105278,24 @@
       ],
       "source_published_kst": "2026-10-06T18:38+09:00",
       "title": "부산 스타트업 '데이터스피라' 伊 명품 돌체앤가바나 뚫었다"
+    },
+    "source_fact:bfdfaa21895db7582ab570ed": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000020307",
+      "source": "국민일보",
+      "source_body_digest": "1ec13b6a047a8e1173771f1d2f38af27c235e43751afc42f9363b7e1ada03dfb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00880fd2f78b27bde936ed4b0099445b0b4a9ccead8734049d1a74dc560d8113",
+      "source_fact_keys": [
+        "source_fact:v1:3a10eb2a7a8037b66b115ace8e4f35a2b9a5be608933df5d9a1ef8bf4f8b5ba6",
+        "source_fact:v1:9b4973c38a3e869ae0f76e7a3cb71509fdb7344d676e902c28fd9db31d4eeb78"
+      ],
+      "source_published_kst": "2026-10-06T18:37+09:00",
+      "title": "지하수 부족하다면서 농업용수 사용대금 부과에 손 놓은 제주"
     },
     "source_fact:bffca875101bbb30435a743b": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
@@ -107707,6 +108548,26 @@
       "source_published_kst": "2026-10-06T14:33+09:00",
       "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
     },
+    "source_fact:d0d5b004758895172349426b": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/202610066402P",
+      "source": "한국경제",
+      "source_body_digest": "61e08806ae7ebd3a65e02da02c92555e46d329661017665cd9ce666330a981b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c6377a2257782517b01e7863dfcdd1db72b9a00e6089470863498523089d11e",
+      "source_fact_keys": [
+        "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
+        "source_fact:v1:96bc042fe46546ef8cfe17736036b21c81a523a515aa0b317d0adb907e20824a",
+        "source_fact:v1:d8db21824395f81de88bada2929d8edd4b08b8397b95f1a70b51218e231f3bd6",
+        "source_fact:v1:e01e77d275652da57088ac81ebf47b81356cac0bc48e25bc0463b777df2f5a6a"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 합병 결정…개발부터 상업화까지 역량 통합"
+    },
     "source_fact:d0e7c74a6b22dd99b1568cca": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -108002,6 +108863,28 @@
       "source_published_kst": "2026-10-06T09:00+09:00",
       "title": "한미반도체, 삼성전기서 245억 장비 수주…곽동신 “삼성그룹 환영”"
     },
+    "source_fact:d20aadfdfa1a361e81b7f85c": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663981",
+      "source": "한국경제",
+      "source_body_digest": "ca3a1acadd2b3366479bf94d07fa850603c511fc9b82775911888a930a17b910",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b4e193921cfdfaa618389ab681806e2aae8ea77b1c1bfab7dcb39a69d6548c3",
+      "source_fact_keys": [
+        "source_fact:v1:216e8681bebeb112784d04e198d42b449e609c720082a5d0812fac5f5d4b170c",
+        "source_fact:v1:446c253bd483721e1b3ac28578476f335728ecf466b29c5944c2bdb279828320",
+        "source_fact:v1:8148a42cc25af1fef8611cf3363d9c16517f08950c2c0d7390f95c969d75ff36",
+        "source_fact:v1:877d4b94dca9a3038e16459bd0b573ea96cc3697f11e00fa3f94040156944421",
+        "source_fact:v1:8a713021e750c0b6899201cd8f89431c42ce97a656aa3d22ab82770fd28463db",
+        "source_fact:v1:c17dce7a05fabdce8d757fd851e65a46f1615b699cef56858ff876f0ad289460"
+      ],
+      "source_published_kst": "2026-10-06T17:47+09:00",
+      "title": "美 워너 인수 투자자로…신세계, 1.4兆 꽂는다"
+    },
     "source_fact:d21e6a7d72a935783c3c5faf": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -108093,6 +108976,28 @@
       ],
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
+    "source_fact:d2b7d4bcf2e3405f03989d78": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663981",
+      "source": "한국경제",
+      "source_body_digest": "ca3a1acadd2b3366479bf94d07fa850603c511fc9b82775911888a930a17b910",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b4e193921cfdfaa618389ab681806e2aae8ea77b1c1bfab7dcb39a69d6548c3",
+      "source_fact_keys": [
+        "source_fact:v1:216e8681bebeb112784d04e198d42b449e609c720082a5d0812fac5f5d4b170c",
+        "source_fact:v1:446c253bd483721e1b3ac28578476f335728ecf466b29c5944c2bdb279828320",
+        "source_fact:v1:8148a42cc25af1fef8611cf3363d9c16517f08950c2c0d7390f95c969d75ff36",
+        "source_fact:v1:877d4b94dca9a3038e16459bd0b573ea96cc3697f11e00fa3f94040156944421",
+        "source_fact:v1:8a713021e750c0b6899201cd8f89431c42ce97a656aa3d22ab82770fd28463db",
+        "source_fact:v1:c17dce7a05fabdce8d757fd851e65a46f1615b699cef56858ff876f0ad289460"
+      ],
+      "source_published_kst": "2026-10-06T17:47+09:00",
+      "title": "美 워너 인수 투자자로…신세계, 1.4兆 꽂는다"
     },
     "source_fact:d2bae35564b76d2ec79739bb": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
@@ -108510,6 +109415,32 @@
       ],
       "source_published_kst": "2026-10-05T17:19+09:00",
       "title": "4대 과기원 수시 지원자 최다 … AI·반도체 열풍에 3만명 몰려"
+    },
+    "source_fact:d47fc7f659b20ebfc76c9fd9": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663381",
+      "source": "한국경제",
+      "source_body_digest": "e793d16f21c3f8241903732ce893b0ea4e71f695ea9148b3977a94a6ad77682d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98d8af26ead77eabcdc8776f0ec65caa3388e8afd92d11f38447dd9e84fb6ce5",
+      "source_fact_keys": [
+        "source_fact:v1:05b4f9936a785ddbcf83c1923d4ede2fb01887f5bce78bbc9e18a82287a43971",
+        "source_fact:v1:06b9f6dbce57fd759e9c5cf68323baf5f366c40b5a57fdf6413c946d97c834bb",
+        "source_fact:v1:1e7d02b5bf670f298f3fa813c1869fb48c3f83ca7a4cf4630f30e308629d368b",
+        "source_fact:v1:49b8298bd759c678cf3e4856de8e406cf40fa8200ec59a776f43e060a7a1e35d",
+        "source_fact:v1:6900d0cf98f251486e43d7579a0711b2321edd4c00c24c78f30b4c77984cf0a5",
+        "source_fact:v1:926ef1e58dd37b9dcb021d8d4aaf2dc2d2faac472b0355c3c6690d0ade068ec3",
+        "source_fact:v1:97fd7c41866c406d8c95de68394670ec7c0a5efeb1b84c306e816d0391571898",
+        "source_fact:v1:de2386791485b02e11697784256bd9dabaa87a3346fe63d5d7fbcb7b948b80ec",
+        "source_fact:v1:e487df5595c1a4cf91092638ccbcf919b33b2463451ac16a8823007bb01af739",
+        "source_fact:v1:fc3858db27edea8f66343f1a97914f5637287828f12de84966e4051f8e64063a"
+      ],
+      "source_published_kst": "2026-10-06T17:52+09:00",
+      "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
     },
     "source_fact:d4b3afba04c2c38206bb0c26": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
@@ -109000,6 +109931,32 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:d6cadaa4f64c79fa36aafdb7": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663381",
+      "source": "한국경제",
+      "source_body_digest": "e793d16f21c3f8241903732ce893b0ea4e71f695ea9148b3977a94a6ad77682d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98d8af26ead77eabcdc8776f0ec65caa3388e8afd92d11f38447dd9e84fb6ce5",
+      "source_fact_keys": [
+        "source_fact:v1:05b4f9936a785ddbcf83c1923d4ede2fb01887f5bce78bbc9e18a82287a43971",
+        "source_fact:v1:06b9f6dbce57fd759e9c5cf68323baf5f366c40b5a57fdf6413c946d97c834bb",
+        "source_fact:v1:1e7d02b5bf670f298f3fa813c1869fb48c3f83ca7a4cf4630f30e308629d368b",
+        "source_fact:v1:49b8298bd759c678cf3e4856de8e406cf40fa8200ec59a776f43e060a7a1e35d",
+        "source_fact:v1:6900d0cf98f251486e43d7579a0711b2321edd4c00c24c78f30b4c77984cf0a5",
+        "source_fact:v1:926ef1e58dd37b9dcb021d8d4aaf2dc2d2faac472b0355c3c6690d0ade068ec3",
+        "source_fact:v1:97fd7c41866c406d8c95de68394670ec7c0a5efeb1b84c306e816d0391571898",
+        "source_fact:v1:de2386791485b02e11697784256bd9dabaa87a3346fe63d5d7fbcb7b948b80ec",
+        "source_fact:v1:e487df5595c1a4cf91092638ccbcf919b33b2463451ac16a8823007bb01af739",
+        "source_fact:v1:fc3858db27edea8f66343f1a97914f5637287828f12de84966e4051f8e64063a"
+      ],
+      "source_published_kst": "2026-10-06T17:52+09:00",
+      "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
     },
     "source_fact:d6d5f5cfdb4540c82f15f87b": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -110012,6 +110969,32 @@
       ],
       "source_published_kst": "2026-10-06T11:49+09:00",
       "title": "野, '호남 반도체' 공세...김정관 산업장관 \"기업이 먼저 서남권 투자 제안\""
+    },
+    "source_fact:dbef361215c31ebd3873f091": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663381",
+      "source": "한국경제",
+      "source_body_digest": "e793d16f21c3f8241903732ce893b0ea4e71f695ea9148b3977a94a6ad77682d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98d8af26ead77eabcdc8776f0ec65caa3388e8afd92d11f38447dd9e84fb6ce5",
+      "source_fact_keys": [
+        "source_fact:v1:05b4f9936a785ddbcf83c1923d4ede2fb01887f5bce78bbc9e18a82287a43971",
+        "source_fact:v1:06b9f6dbce57fd759e9c5cf68323baf5f366c40b5a57fdf6413c946d97c834bb",
+        "source_fact:v1:1e7d02b5bf670f298f3fa813c1869fb48c3f83ca7a4cf4630f30e308629d368b",
+        "source_fact:v1:49b8298bd759c678cf3e4856de8e406cf40fa8200ec59a776f43e060a7a1e35d",
+        "source_fact:v1:6900d0cf98f251486e43d7579a0711b2321edd4c00c24c78f30b4c77984cf0a5",
+        "source_fact:v1:926ef1e58dd37b9dcb021d8d4aaf2dc2d2faac472b0355c3c6690d0ade068ec3",
+        "source_fact:v1:97fd7c41866c406d8c95de68394670ec7c0a5efeb1b84c306e816d0391571898",
+        "source_fact:v1:de2386791485b02e11697784256bd9dabaa87a3346fe63d5d7fbcb7b948b80ec",
+        "source_fact:v1:e487df5595c1a4cf91092638ccbcf919b33b2463451ac16a8823007bb01af739",
+        "source_fact:v1:fc3858db27edea8f66343f1a97914f5637287828f12de84966e4051f8e64063a"
+      ],
+      "source_published_kst": "2026-10-06T17:52+09:00",
+      "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
     },
     "source_fact:dc35b23ccaa6f63ed856767b": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
@@ -113283,6 +114266,24 @@
       "source_published_kst": "2026-10-06T11:00+09:00",
       "title": "'한국형 인큐텔' 도입 탄력…與 오세희, '新안보 혁신기업 특별법' 발의"
     },
+    "source_fact:eba6332b6db0eed1dfe35827": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169574",
+      "source": "매일경제",
+      "source_body_digest": "6827c8bc76e00df6ff018a5e86d11995589778817da098e7f4694bb6c134c6fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:747329ec1f02e365844f0233fbab206f4df039a9ce0a054d76ed81423c42a7e2",
+      "source_fact_keys": [
+        "source_fact:v1:bc8afe67c5288ee78a41b7ba11a3c740421e8080160acc2b66ff68a26082ac97",
+        "source_fact:v1:bf09e5ecf0f5d034a14ac773800ca5a3a49091a3c88ce19aa5b2c26b99ace701"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "LG전자, 르노에 콕핏 솔루션 … 유럽 최초 상용 SDV에 탑재"
+    },
     "source_fact:ebb41b0d480444957bc72a71": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -114946,6 +115947,32 @@
       ],
       "source_published_kst": "2026-10-06T17:22+09:00",
       "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
+    },
+    "source_fact:f3b0668af8c47698cc0e9733": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663381",
+      "source": "한국경제",
+      "source_body_digest": "e793d16f21c3f8241903732ce893b0ea4e71f695ea9148b3977a94a6ad77682d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98d8af26ead77eabcdc8776f0ec65caa3388e8afd92d11f38447dd9e84fb6ce5",
+      "source_fact_keys": [
+        "source_fact:v1:05b4f9936a785ddbcf83c1923d4ede2fb01887f5bce78bbc9e18a82287a43971",
+        "source_fact:v1:06b9f6dbce57fd759e9c5cf68323baf5f366c40b5a57fdf6413c946d97c834bb",
+        "source_fact:v1:1e7d02b5bf670f298f3fa813c1869fb48c3f83ca7a4cf4630f30e308629d368b",
+        "source_fact:v1:49b8298bd759c678cf3e4856de8e406cf40fa8200ec59a776f43e060a7a1e35d",
+        "source_fact:v1:6900d0cf98f251486e43d7579a0711b2321edd4c00c24c78f30b4c77984cf0a5",
+        "source_fact:v1:926ef1e58dd37b9dcb021d8d4aaf2dc2d2faac472b0355c3c6690d0ade068ec3",
+        "source_fact:v1:97fd7c41866c406d8c95de68394670ec7c0a5efeb1b84c306e816d0391571898",
+        "source_fact:v1:de2386791485b02e11697784256bd9dabaa87a3346fe63d5d7fbcb7b948b80ec",
+        "source_fact:v1:e487df5595c1a4cf91092638ccbcf919b33b2463451ac16a8823007bb01af739",
+        "source_fact:v1:fc3858db27edea8f66343f1a97914f5637287828f12de84966e4051f8e64063a"
+      ],
+      "source_published_kst": "2026-10-06T17:52+09:00",
+      "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
     },
     "source_fact:f3c7774714f7d9d839e5b83f": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -120028,6 +121055,28 @@
       "source": "아시아경제",
       "title": "SBVA, 글로벌 AI 기업 데이터브릭스에 투자…50억달러 규모 라운드"
     },
+    "title:1bab876952a029bf9cd1148b": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663981",
+      "source": "한국경제",
+      "source_body_digest": "ca3a1acadd2b3366479bf94d07fa850603c511fc9b82775911888a930a17b910",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6b4e193921cfdfaa618389ab681806e2aae8ea77b1c1bfab7dcb39a69d6548c3",
+      "source_fact_keys": [
+        "source_fact:v1:216e8681bebeb112784d04e198d42b449e609c720082a5d0812fac5f5d4b170c",
+        "source_fact:v1:446c253bd483721e1b3ac28578476f335728ecf466b29c5944c2bdb279828320",
+        "source_fact:v1:8148a42cc25af1fef8611cf3363d9c16517f08950c2c0d7390f95c969d75ff36",
+        "source_fact:v1:877d4b94dca9a3038e16459bd0b573ea96cc3697f11e00fa3f94040156944421",
+        "source_fact:v1:8a713021e750c0b6899201cd8f89431c42ce97a656aa3d22ab82770fd28463db",
+        "source_fact:v1:c17dce7a05fabdce8d757fd851e65a46f1615b699cef56858ff876f0ad289460"
+      ],
+      "source_published_kst": "2026-10-06T17:47+09:00",
+      "title": "美 워너 인수 투자자로…신세계, 1.4兆 꽂는다"
+    },
     "title:1bdc959de63cff920e8c3802": {
       "first_seen_kst": "2026-10-04T11:57:24+09:00",
       "lanes": {
@@ -120389,6 +121438,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261002036500002",
       "source": "연합뉴스",
       "title": "한은 \"10월 물가상승률 3% 내외 높은 수준 예상\" | 연합뉴스"
+    },
+    "title:1f8764683e6ed9a9bffacae9": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/202610066402P",
+      "source": "한국경제",
+      "source_body_digest": "61e08806ae7ebd3a65e02da02c92555e46d329661017665cd9ce666330a981b7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7c6377a2257782517b01e7863dfcdd1db72b9a00e6089470863498523089d11e",
+      "source_fact_keys": [
+        "source_fact:v1:2918f139fbb96accac349de23f838234b61315846ef8252d5c91274144caf7f2",
+        "source_fact:v1:96bc042fe46546ef8cfe17736036b21c81a523a515aa0b317d0adb907e20824a",
+        "source_fact:v1:d8db21824395f81de88bada2929d8edd4b08b8397b95f1a70b51218e231f3bd6",
+        "source_fact:v1:e01e77d275652da57088ac81ebf47b81356cac0bc48e25bc0463b777df2f5a6a"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "알테오젠, 알테오젠바이오로직스 합병 결정…개발부터 상업화까지 역량 통합"
     },
     "title:1f885186b1db135709e4b7cf": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
@@ -125632,6 +126701,32 @@
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
     },
+    "title:510a97518cd89de6253be0e3": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.hankyung.com/article/2026100663381",
+      "source": "한국경제",
+      "source_body_digest": "e793d16f21c3f8241903732ce893b0ea4e71f695ea9148b3977a94a6ad77682d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:98d8af26ead77eabcdc8776f0ec65caa3388e8afd92d11f38447dd9e84fb6ce5",
+      "source_fact_keys": [
+        "source_fact:v1:05b4f9936a785ddbcf83c1923d4ede2fb01887f5bce78bbc9e18a82287a43971",
+        "source_fact:v1:06b9f6dbce57fd759e9c5cf68323baf5f366c40b5a57fdf6413c946d97c834bb",
+        "source_fact:v1:1e7d02b5bf670f298f3fa813c1869fb48c3f83ca7a4cf4630f30e308629d368b",
+        "source_fact:v1:49b8298bd759c678cf3e4856de8e406cf40fa8200ec59a776f43e060a7a1e35d",
+        "source_fact:v1:6900d0cf98f251486e43d7579a0711b2321edd4c00c24c78f30b4c77984cf0a5",
+        "source_fact:v1:926ef1e58dd37b9dcb021d8d4aaf2dc2d2faac472b0355c3c6690d0ade068ec3",
+        "source_fact:v1:97fd7c41866c406d8c95de68394670ec7c0a5efeb1b84c306e816d0391571898",
+        "source_fact:v1:de2386791485b02e11697784256bd9dabaa87a3346fe63d5d7fbcb7b948b80ec",
+        "source_fact:v1:e487df5595c1a4cf91092638ccbcf919b33b2463451ac16a8823007bb01af739",
+        "source_fact:v1:fc3858db27edea8f66343f1a97914f5637287828f12de84966e4051f8e64063a"
+      ],
+      "source_published_kst": "2026-10-06T17:52+09:00",
+      "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
+    },
     "title:511e0f15b7a3c71146eeb66a": {
       "first_seen_kst": "2026-09-22T16:30:20+09:00",
       "lanes": {
@@ -126902,6 +127997,24 @@
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "韓 비료, 브라질 진출 교두보…콩·옥수수 시장 겨냥"
     },
+    "title:5ee0d81b5621e55a43690b8d": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000020307",
+      "source": "국민일보",
+      "source_body_digest": "1ec13b6a047a8e1173771f1d2f38af27c235e43751afc42f9363b7e1ada03dfb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:00880fd2f78b27bde936ed4b0099445b0b4a9ccead8734049d1a74dc560d8113",
+      "source_fact_keys": [
+        "source_fact:v1:3a10eb2a7a8037b66b115ace8e4f35a2b9a5be608933df5d9a1ef8bf4f8b5ba6",
+        "source_fact:v1:9b4973c38a3e869ae0f76e7a3cb71509fdb7344d676e902c28fd9db31d4eeb78"
+      ],
+      "source_published_kst": "2026-10-06T18:37+09:00",
+      "title": "지하수 부족하다면서 농업용수 사용대금 부과에 손 놓은 제주"
+    },
     "title:5eeecd89b102db80ed15b1d3": {
       "first_seen_kst": "2026-09-21T21:35:34+09:00",
       "lanes": {
@@ -127441,6 +128554,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261002021600009",
       "source": "연합뉴스",
       "title": "\"중국 정유사들, 10월부터 석유제품 수출 중단\" | 연합뉴스"
+    },
+    "title:654655eae74b98fef559b86d": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.news1.kr/local/gyeonggi/6311933",
+      "source": "뉴스1",
+      "source_body_digest": "2a4aa74d81498bc90e2dc335fe2fed3b1947fa4a8f1dacd32e3b5ed82f7900f6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:345fedf4c50daf68660d2f8943b89dccb7a576543cd7e0890a7f9a2a95d1c653",
+      "source_fact_keys": [
+        "source_fact:v1:1c09ceaf1fe6e264718dee9ba1a6e4f87335dbed410245150cd3a90ba36597c5",
+        "source_fact:v1:615008e025ebca0da9d274b52fb1bf4c39b285b733006ec9a4fa6cb1758d4100",
+        "source_fact:v1:8c8a9bbf3b5ea91531389cdb63a7c3ac8b4e9d4c9eaab105c6f535e94d4ec992",
+        "source_fact:v1:f9e9336d3d858729af8f0b3b35f2e1cf3cffe67fe93af5e5080a9fb77b16a271"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조 투자 유치\"…기업·일자리 확대"
     },
     "title:6584fb61ce11d99c457ed84e": {
       "first_seen_kst": "2026-10-03T20:45:30+09:00",
@@ -130969,6 +132102,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261002150900062",
       "source": "연합뉴스",
       "title": "강원도, 지역 생산 전력 활용법 찾는다…현안 6건 돌파구 모색 | 연합뉴스"
+    },
+    "title:886e88c75c5bb14ede806057": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169574",
+      "source": "매일경제",
+      "source_body_digest": "6827c8bc76e00df6ff018a5e86d11995589778817da098e7f4694bb6c134c6fc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:747329ec1f02e365844f0233fbab206f4df039a9ce0a054d76ed81423c42a7e2",
+      "source_fact_keys": [
+        "source_fact:v1:bc8afe67c5288ee78a41b7ba11a3c740421e8080160acc2b66ff68a26082ac97",
+        "source_fact:v1:bf09e5ecf0f5d034a14ac773800ca5a3a49091a3c88ce19aa5b2c26b99ace701"
+      ],
+      "source_published_kst": "2026-10-06T17:45+09:00",
+      "title": "LG전자, 르노에 콕핏 솔루션 … 유럽 최초 상용 SDV에 탑재"
     },
     "title:88cef6ab2a1f76c98b4b7439": {
       "first_seen_kst": "2026-10-05T07:24:39+09:00",
@@ -141393,6 +142544,23 @@
       "source_published_kst": "2026-10-05T17:24+09:00",
       "title": "삼성·현대차 로봇투자 나섰지만 … 韓로봇 생태계는 '구멍가게' 수준"
     },
+    "title:f198b3f3264018e513ae60c7": {
+      "first_seen_kst": "2026-10-06T21:28:22+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:28:22+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:28:22+09:00",
+      "link": "https://www.dt.co.kr/article/12087771",
+      "source": "디지털타임스",
+      "source_body_digest": "bb6e077018f5f1ed162179e9e9cd5745928fba7fcff4c250d5b3f01c4850fffb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9bd1acc96a929a01bbd234d7bc6b367fa4ffabcf38f8ee39cad19937170674d0",
+      "source_fact_keys": [
+        "source_fact:v1:224a185ba376f1ac07b52d6c28430656c09801c4decaa176b486ce8902033dde"
+      ],
+      "source_published_kst": "2026-10-06T18:39+09:00",
+      "title": "“5·18 ‘광주’ 한정, 유공자 명단공개” 이진숙표 법안에 오월단체 “즉각 철회하라”"
+    },
     "title:f1b53d89c47a25c93ae0db9b": {
       "first_seen_kst": "2026-10-02T15:48:44+09:00",
       "lanes": {
@@ -142711,5 +143879,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T21:17:11+09:00"
+  "updated_at_kst": "2026-10-06T21:28:22+09:00"
 }
