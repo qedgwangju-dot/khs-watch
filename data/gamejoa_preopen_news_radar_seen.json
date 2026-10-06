@@ -1696,22 +1696,22 @@
     "event:513feb3bff03a74f9c842b5f": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
-        "live": "2026-10-06T14:41:27+09:00"
+        "live": "2026-10-06T15:14:29+09:00"
       },
-      "last_seen_kst": "2026-10-06T14:41:27+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261006088900003",
-      "source": "연합뉴스",
-      "source_body_digest": "9d2876b8fe5f34101964cf449e7fe7f9c7c0809680e05ef70c5928bdca337112",
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645610296",
+      "source": "이데일리",
+      "source_body_digest": "b7c81d9d8b8b7d37e8915c9ae0f8791f076bcadac9bab1360b0f9a374dd54462",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:0ef0d0d215ab4a1f53ad95645e42fee774ba76cb84d3cfc0f21e0e420b6ca6a2",
+      "source_fact_identity": "source_facts:v1:cd6db58925c01e75c86b27e7c7325260475fc47892602b8a697bad1aed30b30b",
       "source_fact_keys": [
-        "source_fact:v1:0777f90caa1cd5bbf9b6551dd49621c2c3db178efb6665903b09e57825e5d6db",
-        "source_fact:v1:43e16b6ae79f89bc8ca0b0e47998986c22147def15dac0465b3bb149d10f4dfb",
-        "source_fact:v1:63be5539b41c5913d1ef6f5e4254cdd623095568857b2b23bd742d0e8bb67c1d",
-        "source_fact:v1:6a96cb1f4638fa9254dba361486bbe28334ee341be0c0544527de49e9a29efcc"
+        "source_fact:v1:1227e0dd787018f276d7e0c3098d42a0152a7c614e3033ae3482a9d5ac864f38",
+        "source_fact:v1:432042fef44b2c51bd88fc64118c87519a15feb8e8416ba751e607a451e321ae",
+        "source_fact:v1:74384091542655eea45519d0dbd84d5bc8199717da39077ca0aef4e4df4ef48f",
+        "source_fact:v1:8f836113d5f749c08e6fd12907e33a98961061aeeaa2eadafefa572346bca8a4"
       ],
-      "source_published_kst": "2026-10-06T11:46+09:00",
-      "title": "삼성전기, 글로벌 기업과 2천900억 AI 서버용 MLCC 공급계약 | 연합뉴스"
+      "source_published_kst": "2026-10-06T11:25+09:00",
+      "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
     },
     "event:515a30f540946889aaa693c1": {
       "first_seen_kst": "2026-10-01T21:43:03+09:00",
@@ -2875,6 +2875,33 @@
       "link": "https://www.newsis.com/view/NISX20260921_0003799265",
       "source": "뉴시스",
       "title": "'배우 은퇴' 장동주, 기업 대표 반전 근황"
+    },
+    "event:81a14294d83f2398d9c007c0": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064567g",
+      "source": "한국경제",
+      "source_body_digest": "fbc171950252cd185b97e9366c5701382b47d0b15651302de365783a9c7a891a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:701cd6fcf11ecb585695273ee80c19d8738fc022dc6a7947c613813893cf5efb",
+      "source_fact_keys": [
+        "source_fact:v1:18df292b06a301a431a76aa628aac173905a68ca21712527fd6f8244ba561432",
+        "source_fact:v1:37deee745701588ed25099053bb8da59c8f9a3f642bbef28496e74feae78a4bb",
+        "source_fact:v1:3da9382e0d7cf7aa0a2e7fdb4c4f739bee51e42bc238ac3d55b1afdb14ec1d67",
+        "source_fact:v1:5b0e0245457403b6b5156ed21ffb4dfb4bae88b09c8dd930307a0973d5558720",
+        "source_fact:v1:8f09cc5658bdb2514f9d068352d158d3b56aefdd68899d9f7c9d511984b29cb7",
+        "source_fact:v1:a672e93ad45b6dba52f6783cd156324cdd38bb98c6c2ec8137e2255ea91e2787",
+        "source_fact:v1:c65f5dd99cd1f517c553f8f537351849228c3198c67b268233f78e403fb8ee6e",
+        "source_fact:v1:c8422c41559ff6de47f7751d4341522f18c7992c98388a7f8195daae8d293e56",
+        "source_fact:v1:cbb7bfd0993c006268d1107ac97bc8a0512cb12714d9747ee1f6f7ecc9ce33a8",
+        "source_fact:v1:f29d1f6e7ef88e03bffe1fb69d22eec5e4fc565208bafbe36c0a7c3106df5b39",
+        "source_fact:v1:f5a330fd65524d4cb65b71965b264010c4635bd41e5aa356a48ef4d325eb49a1"
+      ],
+      "source_published_kst": "2026-10-06T11:22+09:00",
+      "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
     },
     "event:81e787e157a12b97188e2bd7": {
       "first_seen_kst": "2026-09-24T14:05:07+09:00",
@@ -6776,6 +6803,26 @@
       "source_published_kst": "2026-10-05T08:08+09:00",
       "title": "한반도 감시부터 우주의약품 실험까지…K-우주영토 넓힌다[누리호 5차 下]"
     },
+    "fact:1afe80fa23edd9b17dbf0b81": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645610296",
+      "source": "이데일리",
+      "source_body_digest": "b7c81d9d8b8b7d37e8915c9ae0f8791f076bcadac9bab1360b0f9a374dd54462",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd6db58925c01e75c86b27e7c7325260475fc47892602b8a697bad1aed30b30b",
+      "source_fact_keys": [
+        "source_fact:v1:1227e0dd787018f276d7e0c3098d42a0152a7c614e3033ae3482a9d5ac864f38",
+        "source_fact:v1:432042fef44b2c51bd88fc64118c87519a15feb8e8416ba751e607a451e321ae",
+        "source_fact:v1:74384091542655eea45519d0dbd84d5bc8199717da39077ca0aef4e4df4ef48f",
+        "source_fact:v1:8f836113d5f749c08e6fd12907e33a98961061aeeaa2eadafefa572346bca8a4"
+      ],
+      "source_published_kst": "2026-10-06T11:25+09:00",
+      "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
+    },
     "fact:1b1b7db2ad5c3891394ad35f": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -6864,6 +6911,25 @@
       ],
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, '유럽 첫 상용 SDV' 르노그룹 신차에 통합 콕핏 솔루션 공급"
+    },
+    "fact:20c7ed147e45f11d919bd506": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.etnews.com/20261006000191",
+      "source": "전자신문",
+      "source_body_digest": "033dd2358d5ad6fde91d89f02fd505beac3191acce8c0dafb726fe04e4b22d42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:863421c046a2f56b44d949616135ab7fa7b9bca19080aa7547e98aa867d13ac2",
+      "source_fact_keys": [
+        "source_fact:v1:07320d20a169751794fefa4546bc087724fc9812512b6895366aa29985bc5524",
+        "source_fact:v1:8744656ed821123b3b6c12dd12b6b21a2a0e40395e3c5b628100a37a3f4ed2d9",
+        "source_fact:v1:f5f109649ab980cb44e65de0362f6ccacf1b85df13c8a8f4a89bc8981a561d04"
+      ],
+      "source_published_kst": "2026-10-06T12:58+09:00",
+      "title": "동화약품 자회사 메디쎄이 '일체형 경추 임플란트', 美 FDA 인증"
     },
     "fact:21b572a339e7e5dcf18ba2f4": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -9041,6 +9107,23 @@
       "source_published_kst": "2026-10-05T10:35+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 바이오 ‘10대 거래’ 선정"
     },
+    "fact:6e39749d76ee03bb508f67cc": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815496",
+      "source": "뉴시스",
+      "source_body_digest": "6982d5cd51995182c0bf8c049c09e5d3b30ba44ce71e00ac7e18185c5b8d4ba5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9b52f32eafd9e1f121d93595b5a1ff0808d71ba09f86bb84e19f52723f771b8",
+      "source_fact_keys": [
+        "source_fact:v1:f3a04ea983046687ca89929b101c5616128232c00393cd7781e3cbc1a44ec8ec"
+      ],
+      "source_published_kst": "2026-10-06T13:02+09:00",
+      "title": "안성 바우덕이축제 60만명 찾았다…농특산물 장터 22억 매출"
+    },
     "fact:6e49330a1ac30f01fe7d3351": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -10720,6 +10803,51 @@
       "source_published_kst": "2026-10-06T06:28+09:00",
       "title": "트럼프, 면세 경유 사용처 제한 완화…기름값 낮추려 안간힘"
     },
+    "fact:a9716b92f96566c5f960e548": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064567g",
+      "source": "한국경제",
+      "source_body_digest": "fbc171950252cd185b97e9366c5701382b47d0b15651302de365783a9c7a891a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:701cd6fcf11ecb585695273ee80c19d8738fc022dc6a7947c613813893cf5efb",
+      "source_fact_keys": [
+        "source_fact:v1:18df292b06a301a431a76aa628aac173905a68ca21712527fd6f8244ba561432",
+        "source_fact:v1:37deee745701588ed25099053bb8da59c8f9a3f642bbef28496e74feae78a4bb",
+        "source_fact:v1:3da9382e0d7cf7aa0a2e7fdb4c4f739bee51e42bc238ac3d55b1afdb14ec1d67",
+        "source_fact:v1:5b0e0245457403b6b5156ed21ffb4dfb4bae88b09c8dd930307a0973d5558720",
+        "source_fact:v1:8f09cc5658bdb2514f9d068352d158d3b56aefdd68899d9f7c9d511984b29cb7",
+        "source_fact:v1:a672e93ad45b6dba52f6783cd156324cdd38bb98c6c2ec8137e2255ea91e2787",
+        "source_fact:v1:c65f5dd99cd1f517c553f8f537351849228c3198c67b268233f78e403fb8ee6e",
+        "source_fact:v1:c8422c41559ff6de47f7751d4341522f18c7992c98388a7f8195daae8d293e56",
+        "source_fact:v1:cbb7bfd0993c006268d1107ac97bc8a0512cb12714d9747ee1f6f7ecc9ce33a8",
+        "source_fact:v1:f29d1f6e7ef88e03bffe1fb69d22eec5e4fc565208bafbe36c0a7c3106df5b39",
+        "source_fact:v1:f5a330fd65524d4cb65b71965b264010c4635bd41e5aa356a48ef4d325eb49a1"
+      ],
+      "source_published_kst": "2026-10-06T11:22+09:00",
+      "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
+    "fact:aa9a4d932cc7bce4490014cd": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632608",
+      "source": "이투데이",
+      "source_body_digest": "0dc6e9ab55f165426ed2741cab3dcd563a8c446b272a79e78021bdfdae8f09e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:264b9018bf2960f9c80df2d896f4852bebc1af7595f3cf58967116b22a593c59",
+      "source_fact_keys": [
+        "source_fact:v1:cff2ed31f98026e838c825e500472534a6f78194ddcaab269507acf669963287",
+        "source_fact:v1:dc825e155899d054d15b791e26c899bd990c832e77efa4b1cfa0ff2a90fbecaa"
+      ],
+      "source_published_kst": "2026-10-06T12:58+09:00",
+      "title": "전세사기 피해 보증금 3분의 1 최소 보장⋯11월 13일 시행"
+    },
     "fact:aaf7c43f9e99895c3688dc37": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -10987,6 +11115,25 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "독파모, '프런티어 AI·산업 확산' 투트랙 재편…중국 넘는다"
+    },
+    "fact:b18f9deea2ba661af396e150": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064854P",
+      "source": "한국경제",
+      "source_body_digest": "20319355b321c27466fed347adc15ea62acfa99b60acf7fc0bfbe29e56efb0f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fcd51d6b6e40d60ca670482df20927f96160604c4476be2e1c6d1020a3e68b49",
+      "source_fact_keys": [
+        "source_fact:v1:7d683215bffb476276c6e85c25f1560b16c24ff4c1f8e186240751826cf1acca",
+        "source_fact:v1:8430d9ecf0596a2ae0b92ddcc23346a57dbf6e1ed5809f282bf5369e78b51a2d",
+        "source_fact:v1:f1405cb3aa0cb79b96978e1b0d51a706af000098d6e317cde1e96b825ec1d5a1"
+      ],
+      "source_published_kst": "2026-10-06T10:04+09:00",
+      "title": "옵티팜, cGMP 시설 인수로 이종이식 사업화 속도"
     },
     "fact:b1d630496039e06bbac0548c": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
@@ -14144,6 +14291,33 @@
       "source": "이데일리",
       "title": "[美특징주]레나, 버크셔 지분 11% 확대에 월가 '매도' 투자의견에도 주가 강세"
     },
+    "link:0ff5af381eefbde06c664dd5": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064567g",
+      "source": "한국경제",
+      "source_body_digest": "fbc171950252cd185b97e9366c5701382b47d0b15651302de365783a9c7a891a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:701cd6fcf11ecb585695273ee80c19d8738fc022dc6a7947c613813893cf5efb",
+      "source_fact_keys": [
+        "source_fact:v1:18df292b06a301a431a76aa628aac173905a68ca21712527fd6f8244ba561432",
+        "source_fact:v1:37deee745701588ed25099053bb8da59c8f9a3f642bbef28496e74feae78a4bb",
+        "source_fact:v1:3da9382e0d7cf7aa0a2e7fdb4c4f739bee51e42bc238ac3d55b1afdb14ec1d67",
+        "source_fact:v1:5b0e0245457403b6b5156ed21ffb4dfb4bae88b09c8dd930307a0973d5558720",
+        "source_fact:v1:8f09cc5658bdb2514f9d068352d158d3b56aefdd68899d9f7c9d511984b29cb7",
+        "source_fact:v1:a672e93ad45b6dba52f6783cd156324cdd38bb98c6c2ec8137e2255ea91e2787",
+        "source_fact:v1:c65f5dd99cd1f517c553f8f537351849228c3198c67b268233f78e403fb8ee6e",
+        "source_fact:v1:c8422c41559ff6de47f7751d4341522f18c7992c98388a7f8195daae8d293e56",
+        "source_fact:v1:cbb7bfd0993c006268d1107ac97bc8a0512cb12714d9747ee1f6f7ecc9ce33a8",
+        "source_fact:v1:f29d1f6e7ef88e03bffe1fb69d22eec5e4fc565208bafbe36c0a7c3106df5b39",
+        "source_fact:v1:f5a330fd65524d4cb65b71965b264010c4635bd41e5aa356a48ef4d325eb49a1"
+      ],
+      "source_published_kst": "2026-10-06T11:22+09:00",
+      "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
     "link:10072740cd9819eeaad4751c": {
       "first_seen_kst": "2026-10-03T06:54:59+09:00",
       "lanes": {
@@ -15730,6 +15904,21 @@
       ],
       "source_published_kst": "2026-10-05T22:27+09:00",
       "title": "듀오스 테크놀러지스 그룹, GPU 자회사 매각..4290만 달러 수취·부채 해소"
+    },
+    "link:255e6a05ac0b8cf1fe453998": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815439",
+      "source": "뉴시스",
+      "source_body_digest": "320cacb3325330023f025b8c96c62bb91a45a15eaa3842a5d1a963612cf895f2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T12:42+09:00",
+      "title": "영국, 동예루살렘 영사관 폐쇄시 이스라엘 외교관 맞추방 경고"
     },
     "link:25b524a2a73ef83fb37198b1": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
@@ -18382,6 +18571,23 @@
       "source": "이데일리",
       "title": "日 31년 만의 최고금리에도 엔화 약세…원·달러 1380원대 중반으로"
     },
+    "link:437e72fe48a2b795045ed9d2": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815496",
+      "source": "뉴시스",
+      "source_body_digest": "6982d5cd51995182c0bf8c049c09e5d3b30ba44ce71e00ac7e18185c5b8d4ba5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9b52f32eafd9e1f121d93595b5a1ff0808d71ba09f86bb84e19f52723f771b8",
+      "source_fact_keys": [
+        "source_fact:v1:f3a04ea983046687ca89929b101c5616128232c00393cd7781e3cbc1a44ec8ec"
+      ],
+      "source_published_kst": "2026-10-06T13:02+09:00",
+      "title": "안성 바우덕이축제 60만명 찾았다…농특산물 장터 22억 매출"
+    },
     "link:439051e2fa9696749e8057d7": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -18477,6 +18683,25 @@
       "link": "https://www.yna.co.kr/view/AKR20260918045700008",
       "source": "연합뉴스",
       "title": "키움운용, 'KIWOOM 200TR' ETF 총보수율 인하 | 연합뉴스"
+    },
+    "link:44da3c013033efb1d652c7d0": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064854P",
+      "source": "한국경제",
+      "source_body_digest": "20319355b321c27466fed347adc15ea62acfa99b60acf7fc0bfbe29e56efb0f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fcd51d6b6e40d60ca670482df20927f96160604c4476be2e1c6d1020a3e68b49",
+      "source_fact_keys": [
+        "source_fact:v1:7d683215bffb476276c6e85c25f1560b16c24ff4c1f8e186240751826cf1acca",
+        "source_fact:v1:8430d9ecf0596a2ae0b92ddcc23346a57dbf6e1ed5809f282bf5369e78b51a2d",
+        "source_fact:v1:f1405cb3aa0cb79b96978e1b0d51a706af000098d6e317cde1e96b825ec1d5a1"
+      ],
+      "source_published_kst": "2026-10-06T10:04+09:00",
+      "title": "옵티팜, cGMP 시설 인수로 이종이식 사업화 속도"
     },
     "link:450360846be695a862fadf3e": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -22133,6 +22358,24 @@
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "레드 로빈 고메 버거, 1억1500만 달러 대출 재융자 완료..2031년 만기"
     },
+    "link:6cace147123e23247546d489": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632608",
+      "source": "이투데이",
+      "source_body_digest": "0dc6e9ab55f165426ed2741cab3dcd563a8c446b272a79e78021bdfdae8f09e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:264b9018bf2960f9c80df2d896f4852bebc1af7595f3cf58967116b22a593c59",
+      "source_fact_keys": [
+        "source_fact:v1:cff2ed31f98026e838c825e500472534a6f78194ddcaab269507acf669963287",
+        "source_fact:v1:dc825e155899d054d15b791e26c899bd990c832e77efa4b1cfa0ff2a90fbecaa"
+      ],
+      "source_published_kst": "2026-10-06T12:58+09:00",
+      "title": "전세사기 피해 보증금 3분의 1 최소 보장⋯11월 13일 시행"
+    },
     "link:6cb1329680b4f10f363e16c5": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -23349,6 +23592,25 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T08:40+09:00",
       "title": "프랜차이즈 본사 매출 늘었는데…외식·편의점 가맹점은 뒷걸음"
+    },
+    "link:7b12983ed7104aeb52eab6f0": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.etnews.com/20261006000191",
+      "source": "전자신문",
+      "source_body_digest": "033dd2358d5ad6fde91d89f02fd505beac3191acce8c0dafb726fe04e4b22d42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:863421c046a2f56b44d949616135ab7fa7b9bca19080aa7547e98aa867d13ac2",
+      "source_fact_keys": [
+        "source_fact:v1:07320d20a169751794fefa4546bc087724fc9812512b6895366aa29985bc5524",
+        "source_fact:v1:8744656ed821123b3b6c12dd12b6b21a2a0e40395e3c5b628100a37a3f4ed2d9",
+        "source_fact:v1:f5f109649ab980cb44e65de0362f6ccacf1b85df13c8a8f4a89bc8981a561d04"
+      ],
+      "source_published_kst": "2026-10-06T12:58+09:00",
+      "title": "동화약품 자회사 메디쎄이 '일체형 경추 임플란트', 美 FDA 인증"
     },
     "link:7b4ca4121167afeb634991d9": {
       "first_seen_kst": "2026-10-02T13:15:57+09:00",
@@ -27842,6 +28104,26 @@
       "link": "https://www.newsis.com/view/NISX20260918_0003795439",
       "source": "뉴시스",
       "title": "강호동 농협회장, 美 현장 경영…농식품 수출·판로 확대 논의"
+    },
+    "link:b0bd3d18312c2b627dba2c38": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645610296",
+      "source": "이데일리",
+      "source_body_digest": "b7c81d9d8b8b7d37e8915c9ae0f8791f076bcadac9bab1360b0f9a374dd54462",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd6db58925c01e75c86b27e7c7325260475fc47892602b8a697bad1aed30b30b",
+      "source_fact_keys": [
+        "source_fact:v1:1227e0dd787018f276d7e0c3098d42a0152a7c614e3033ae3482a9d5ac864f38",
+        "source_fact:v1:432042fef44b2c51bd88fc64118c87519a15feb8e8416ba751e607a451e321ae",
+        "source_fact:v1:74384091542655eea45519d0dbd84d5bc8199717da39077ca0aef4e4df4ef48f",
+        "source_fact:v1:8f836113d5f749c08e6fd12907e33a98961061aeeaa2eadafefa572346bca8a4"
+      ],
+      "source_published_kst": "2026-10-06T11:25+09:00",
+      "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
     },
     "link:b119cb77244698dda0e45dc3": {
       "first_seen_kst": "2026-10-05T15:12:23+09:00",
@@ -42021,6 +42303,25 @@
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
     },
+    "original:57cc21a51f5019d7e3f5ad6a": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.etnews.com/20261006000191",
+      "source": "전자신문",
+      "source_body_digest": "033dd2358d5ad6fde91d89f02fd505beac3191acce8c0dafb726fe04e4b22d42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:863421c046a2f56b44d949616135ab7fa7b9bca19080aa7547e98aa867d13ac2",
+      "source_fact_keys": [
+        "source_fact:v1:07320d20a169751794fefa4546bc087724fc9812512b6895366aa29985bc5524",
+        "source_fact:v1:8744656ed821123b3b6c12dd12b6b21a2a0e40395e3c5b628100a37a3f4ed2d9",
+        "source_fact:v1:f5f109649ab980cb44e65de0362f6ccacf1b85df13c8a8f4a89bc8981a561d04"
+      ],
+      "source_published_kst": "2026-10-06T12:58+09:00",
+      "title": "동화약품 자회사 메디쎄이 '일체형 경추 임플란트', 美 FDA 인증"
+    },
     "original:57d572ba93299978b71eb637": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
       "lanes": {
@@ -43656,6 +43957,25 @@
       "source": "매일경제",
       "title": "한투 5천억 회사채 발행 잰걸음 … KDB생명 인수 실탄 마련 나서"
     },
+    "original:6c9051fae360d95a155b5b5a": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064854P",
+      "source": "한국경제",
+      "source_body_digest": "20319355b321c27466fed347adc15ea62acfa99b60acf7fc0bfbe29e56efb0f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fcd51d6b6e40d60ca670482df20927f96160604c4476be2e1c6d1020a3e68b49",
+      "source_fact_keys": [
+        "source_fact:v1:7d683215bffb476276c6e85c25f1560b16c24ff4c1f8e186240751826cf1acca",
+        "source_fact:v1:8430d9ecf0596a2ae0b92ddcc23346a57dbf6e1ed5809f282bf5369e78b51a2d",
+        "source_fact:v1:f1405cb3aa0cb79b96978e1b0d51a706af000098d6e317cde1e96b825ec1d5a1"
+      ],
+      "source_published_kst": "2026-10-06T10:04+09:00",
+      "title": "옵티팜, cGMP 시설 인수로 이종이식 사업화 속도"
+    },
     "original:6d6c51e6fffe2b5a4326de96": {
       "first_seen_kst": "2026-09-27T12:02:47+09:00",
       "lanes": {
@@ -44743,6 +45063,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260918124800003",
       "source": "연합뉴스",
       "title": "삼성전자 DX노조, 이재용 회장 자택 앞 집회…\"직접 대화하자\" | 연합뉴스"
+    },
+    "original:786ef310e739a6e202406b4c": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815496",
+      "source": "뉴시스",
+      "source_body_digest": "6982d5cd51995182c0bf8c049c09e5d3b30ba44ce71e00ac7e18185c5b8d4ba5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9b52f32eafd9e1f121d93595b5a1ff0808d71ba09f86bb84e19f52723f771b8",
+      "source_fact_keys": [
+        "source_fact:v1:f3a04ea983046687ca89929b101c5616128232c00393cd7781e3cbc1a44ec8ec"
+      ],
+      "source_published_kst": "2026-10-06T13:02+09:00",
+      "title": "안성 바우덕이축제 60만명 찾았다…농특산물 장터 22억 매출"
     },
     "original:78bfef830e9198927cda851a": {
       "first_seen_kst": "2026-09-23T08:21:01+09:00",
@@ -47705,6 +48042,21 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외환보유액, 넉 달 만에 감소…대미투자 자산위탁 영향"
     },
+    "original:9cdefa00c841516b921dab63": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815439",
+      "source": "뉴시스",
+      "source_body_digest": "320cacb3325330023f025b8c96c62bb91a45a15eaa3842a5d1a963612cf895f2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T12:42+09:00",
+      "title": "영국, 동예루살렘 영사관 폐쇄시 이스라엘 외교관 맞추방 경고"
+    },
     "original:9cdfa1d659e42a8893fff729": {
       "first_seen_kst": "2026-10-04T08:04:25+09:00",
       "lanes": {
@@ -49606,6 +49958,24 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "[단독]새일여성 97% 취업 전환…1년 뒤 고용유지율은 60% 그쳐"
     },
+    "original:b5927865ad081a072fc3b191": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632608",
+      "source": "이투데이",
+      "source_body_digest": "0dc6e9ab55f165426ed2741cab3dcd563a8c446b272a79e78021bdfdae8f09e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:264b9018bf2960f9c80df2d896f4852bebc1af7595f3cf58967116b22a593c59",
+      "source_fact_keys": [
+        "source_fact:v1:cff2ed31f98026e838c825e500472534a6f78194ddcaab269507acf669963287",
+        "source_fact:v1:dc825e155899d054d15b791e26c899bd990c832e77efa4b1cfa0ff2a90fbecaa"
+      ],
+      "source_published_kst": "2026-10-06T12:58+09:00",
+      "title": "전세사기 피해 보증금 3분의 1 최소 보장⋯11월 13일 시행"
+    },
     "original:b5c13c5ffa7513ce8ada1941": {
       "first_seen_kst": "2026-09-18T14:40:33+09:00",
       "lanes": {
@@ -51210,6 +51580,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261002053700008",
       "source": "연합뉴스",
       "title": "발행축소, 금리상승 막을 방패? 하락 동력?…국고채 수급 전망은 | 연합뉴스"
+    },
+    "original:cb4cb6774eeb36ec68cdc7aa": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645610296",
+      "source": "이데일리",
+      "source_body_digest": "b7c81d9d8b8b7d37e8915c9ae0f8791f076bcadac9bab1360b0f9a374dd54462",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd6db58925c01e75c86b27e7c7325260475fc47892602b8a697bad1aed30b30b",
+      "source_fact_keys": [
+        "source_fact:v1:1227e0dd787018f276d7e0c3098d42a0152a7c614e3033ae3482a9d5ac864f38",
+        "source_fact:v1:432042fef44b2c51bd88fc64118c87519a15feb8e8416ba751e607a451e321ae",
+        "source_fact:v1:74384091542655eea45519d0dbd84d5bc8199717da39077ca0aef4e4df4ef48f",
+        "source_fact:v1:8f836113d5f749c08e6fd12907e33a98961061aeeaa2eadafefa572346bca8a4"
+      ],
+      "source_published_kst": "2026-10-06T11:25+09:00",
+      "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
     },
     "original:cb5c59d458f870246ef43e8e": {
       "first_seen_kst": "2026-10-01T21:06:52+09:00",
@@ -53011,6 +53401,33 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:00+09:00",
       "title": "\"상장폐지 요건 강화 이후 주식병합·감자 등 급증\""
+    },
+    "original:df0648bbf3f757b5cd9b0921": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064567g",
+      "source": "한국경제",
+      "source_body_digest": "fbc171950252cd185b97e9366c5701382b47d0b15651302de365783a9c7a891a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:701cd6fcf11ecb585695273ee80c19d8738fc022dc6a7947c613813893cf5efb",
+      "source_fact_keys": [
+        "source_fact:v1:18df292b06a301a431a76aa628aac173905a68ca21712527fd6f8244ba561432",
+        "source_fact:v1:37deee745701588ed25099053bb8da59c8f9a3f642bbef28496e74feae78a4bb",
+        "source_fact:v1:3da9382e0d7cf7aa0a2e7fdb4c4f739bee51e42bc238ac3d55b1afdb14ec1d67",
+        "source_fact:v1:5b0e0245457403b6b5156ed21ffb4dfb4bae88b09c8dd930307a0973d5558720",
+        "source_fact:v1:8f09cc5658bdb2514f9d068352d158d3b56aefdd68899d9f7c9d511984b29cb7",
+        "source_fact:v1:a672e93ad45b6dba52f6783cd156324cdd38bb98c6c2ec8137e2255ea91e2787",
+        "source_fact:v1:c65f5dd99cd1f517c553f8f537351849228c3198c67b268233f78e403fb8ee6e",
+        "source_fact:v1:c8422c41559ff6de47f7751d4341522f18c7992c98388a7f8195daae8d293e56",
+        "source_fact:v1:cbb7bfd0993c006268d1107ac97bc8a0512cb12714d9747ee1f6f7ecc9ce33a8",
+        "source_fact:v1:f29d1f6e7ef88e03bffe1fb69d22eec5e4fc565208bafbe36c0a7c3106df5b39",
+        "source_fact:v1:f5a330fd65524d4cb65b71965b264010c4635bd41e5aa356a48ef4d325eb49a1"
+      ],
+      "source_published_kst": "2026-10-06T11:22+09:00",
+      "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
     },
     "original:df068ab547595bc67e923efb": {
       "first_seen_kst": "2026-10-01T19:41:53+09:00",
@@ -56295,6 +56712,33 @@
       "source_published_kst": "2026-10-05T19:06+09:00",
       "title": "HDFC 은행, 분기 평균 예수금 32조 루피·17% 증가"
     },
+    "source_fact:058b5fb620be3781b194c465": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064567g",
+      "source": "한국경제",
+      "source_body_digest": "fbc171950252cd185b97e9366c5701382b47d0b15651302de365783a9c7a891a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:701cd6fcf11ecb585695273ee80c19d8738fc022dc6a7947c613813893cf5efb",
+      "source_fact_keys": [
+        "source_fact:v1:18df292b06a301a431a76aa628aac173905a68ca21712527fd6f8244ba561432",
+        "source_fact:v1:37deee745701588ed25099053bb8da59c8f9a3f642bbef28496e74feae78a4bb",
+        "source_fact:v1:3da9382e0d7cf7aa0a2e7fdb4c4f739bee51e42bc238ac3d55b1afdb14ec1d67",
+        "source_fact:v1:5b0e0245457403b6b5156ed21ffb4dfb4bae88b09c8dd930307a0973d5558720",
+        "source_fact:v1:8f09cc5658bdb2514f9d068352d158d3b56aefdd68899d9f7c9d511984b29cb7",
+        "source_fact:v1:a672e93ad45b6dba52f6783cd156324cdd38bb98c6c2ec8137e2255ea91e2787",
+        "source_fact:v1:c65f5dd99cd1f517c553f8f537351849228c3198c67b268233f78e403fb8ee6e",
+        "source_fact:v1:c8422c41559ff6de47f7751d4341522f18c7992c98388a7f8195daae8d293e56",
+        "source_fact:v1:cbb7bfd0993c006268d1107ac97bc8a0512cb12714d9747ee1f6f7ecc9ce33a8",
+        "source_fact:v1:f29d1f6e7ef88e03bffe1fb69d22eec5e4fc565208bafbe36c0a7c3106df5b39",
+        "source_fact:v1:f5a330fd65524d4cb65b71965b264010c4635bd41e5aa356a48ef4d325eb49a1"
+      ],
+      "source_published_kst": "2026-10-06T11:22+09:00",
+      "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
     "source_fact:05a68e2dd8669b921e2fd570": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
       "lanes": {
@@ -58884,6 +59328,26 @@
       "source_published_kst": "2026-10-06T11:12+09:00",
       "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
     },
+    "source_fact:1ad42b1a58f371f81cbe8e59": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645610296",
+      "source": "이데일리",
+      "source_body_digest": "b7c81d9d8b8b7d37e8915c9ae0f8791f076bcadac9bab1360b0f9a374dd54462",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd6db58925c01e75c86b27e7c7325260475fc47892602b8a697bad1aed30b30b",
+      "source_fact_keys": [
+        "source_fact:v1:1227e0dd787018f276d7e0c3098d42a0152a7c614e3033ae3482a9d5ac864f38",
+        "source_fact:v1:432042fef44b2c51bd88fc64118c87519a15feb8e8416ba751e607a451e321ae",
+        "source_fact:v1:74384091542655eea45519d0dbd84d5bc8199717da39077ca0aef4e4df4ef48f",
+        "source_fact:v1:8f836113d5f749c08e6fd12907e33a98961061aeeaa2eadafefa572346bca8a4"
+      ],
+      "source_published_kst": "2026-10-06T11:25+09:00",
+      "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
+    },
     "source_fact:1ad6bf994e516da250a16b84": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -60977,6 +61441,25 @@
       "source_published_kst": "2026-10-06T11:08+09:00",
       "title": "\"농지 특조법 특례 2∼3년 설정·농지법 개정 동시 추진 필요\" | 연합뉴스"
     },
+    "source_fact:2a02750a14612efc04d04d3b": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.etnews.com/20261006000191",
+      "source": "전자신문",
+      "source_body_digest": "033dd2358d5ad6fde91d89f02fd505beac3191acce8c0dafb726fe04e4b22d42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:863421c046a2f56b44d949616135ab7fa7b9bca19080aa7547e98aa867d13ac2",
+      "source_fact_keys": [
+        "source_fact:v1:07320d20a169751794fefa4546bc087724fc9812512b6895366aa29985bc5524",
+        "source_fact:v1:8744656ed821123b3b6c12dd12b6b21a2a0e40395e3c5b628100a37a3f4ed2d9",
+        "source_fact:v1:f5f109649ab980cb44e65de0362f6ccacf1b85df13c8a8f4a89bc8981a561d04"
+      ],
+      "source_published_kst": "2026-10-06T12:58+09:00",
+      "title": "동화약품 자회사 메디쎄이 '일체형 경추 임플란트', 美 FDA 인증"
+    },
     "source_fact:2a1174fdae932a7a767d3272": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
@@ -61904,6 +62387,25 @@
       ],
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
+    },
+    "source_fact:31bb3f9084fb19c5e33bb0df": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064854P",
+      "source": "한국경제",
+      "source_body_digest": "20319355b321c27466fed347adc15ea62acfa99b60acf7fc0bfbe29e56efb0f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fcd51d6b6e40d60ca670482df20927f96160604c4476be2e1c6d1020a3e68b49",
+      "source_fact_keys": [
+        "source_fact:v1:7d683215bffb476276c6e85c25f1560b16c24ff4c1f8e186240751826cf1acca",
+        "source_fact:v1:8430d9ecf0596a2ae0b92ddcc23346a57dbf6e1ed5809f282bf5369e78b51a2d",
+        "source_fact:v1:f1405cb3aa0cb79b96978e1b0d51a706af000098d6e317cde1e96b825ec1d5a1"
+      ],
+      "source_published_kst": "2026-10-06T10:04+09:00",
+      "title": "옵티팜, cGMP 시설 인수로 이종이식 사업화 속도"
     },
     "source_fact:31df19090c85207c673d451c": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
@@ -65140,6 +65642,25 @@
       "source_published_kst": "2026-10-05T21:46+09:00",
       "title": "재규어 헬스, 특별 주식배당..우선주 1주 보통주 5주 전환"
     },
+    "source_fact:4a0f793738da597ec14bbb40": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064854P",
+      "source": "한국경제",
+      "source_body_digest": "20319355b321c27466fed347adc15ea62acfa99b60acf7fc0bfbe29e56efb0f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fcd51d6b6e40d60ca670482df20927f96160604c4476be2e1c6d1020a3e68b49",
+      "source_fact_keys": [
+        "source_fact:v1:7d683215bffb476276c6e85c25f1560b16c24ff4c1f8e186240751826cf1acca",
+        "source_fact:v1:8430d9ecf0596a2ae0b92ddcc23346a57dbf6e1ed5809f282bf5369e78b51a2d",
+        "source_fact:v1:f1405cb3aa0cb79b96978e1b0d51a706af000098d6e317cde1e96b825ec1d5a1"
+      ],
+      "source_published_kst": "2026-10-06T10:04+09:00",
+      "title": "옵티팜, cGMP 시설 인수로 이종이식 사업화 속도"
+    },
     "source_fact:4a479d78ac502a9dd8444660": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -66197,6 +66718,33 @@
       "source_published_kst": "2026-10-05T23:10+09:00",
       "title": "LG전자, 북미서 5GW 대형 AIDC 칠러 장기 공급계약"
     },
+    "source_fact:53a0d38b72c7af8420d89004": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064567g",
+      "source": "한국경제",
+      "source_body_digest": "fbc171950252cd185b97e9366c5701382b47d0b15651302de365783a9c7a891a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:701cd6fcf11ecb585695273ee80c19d8738fc022dc6a7947c613813893cf5efb",
+      "source_fact_keys": [
+        "source_fact:v1:18df292b06a301a431a76aa628aac173905a68ca21712527fd6f8244ba561432",
+        "source_fact:v1:37deee745701588ed25099053bb8da59c8f9a3f642bbef28496e74feae78a4bb",
+        "source_fact:v1:3da9382e0d7cf7aa0a2e7fdb4c4f739bee51e42bc238ac3d55b1afdb14ec1d67",
+        "source_fact:v1:5b0e0245457403b6b5156ed21ffb4dfb4bae88b09c8dd930307a0973d5558720",
+        "source_fact:v1:8f09cc5658bdb2514f9d068352d158d3b56aefdd68899d9f7c9d511984b29cb7",
+        "source_fact:v1:a672e93ad45b6dba52f6783cd156324cdd38bb98c6c2ec8137e2255ea91e2787",
+        "source_fact:v1:c65f5dd99cd1f517c553f8f537351849228c3198c67b268233f78e403fb8ee6e",
+        "source_fact:v1:c8422c41559ff6de47f7751d4341522f18c7992c98388a7f8195daae8d293e56",
+        "source_fact:v1:cbb7bfd0993c006268d1107ac97bc8a0512cb12714d9747ee1f6f7ecc9ce33a8",
+        "source_fact:v1:f29d1f6e7ef88e03bffe1fb69d22eec5e4fc565208bafbe36c0a7c3106df5b39",
+        "source_fact:v1:f5a330fd65524d4cb65b71965b264010c4635bd41e5aa356a48ef4d325eb49a1"
+      ],
+      "source_published_kst": "2026-10-06T11:22+09:00",
+      "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
     "source_fact:53b2c0c9cd1cf715218e7cde": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -66579,6 +67127,25 @@
       ],
       "source_published_kst": "2026-10-05T10:42+09:00",
       "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
+    },
+    "source_fact:56db715d6b1b6ec3d67f9508": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.etnews.com/20261006000191",
+      "source": "전자신문",
+      "source_body_digest": "033dd2358d5ad6fde91d89f02fd505beac3191acce8c0dafb726fe04e4b22d42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:863421c046a2f56b44d949616135ab7fa7b9bca19080aa7547e98aa867d13ac2",
+      "source_fact_keys": [
+        "source_fact:v1:07320d20a169751794fefa4546bc087724fc9812512b6895366aa29985bc5524",
+        "source_fact:v1:8744656ed821123b3b6c12dd12b6b21a2a0e40395e3c5b628100a37a3f4ed2d9",
+        "source_fact:v1:f5f109649ab980cb44e65de0362f6ccacf1b85df13c8a8f4a89bc8981a561d04"
+      ],
+      "source_published_kst": "2026-10-06T12:58+09:00",
+      "title": "동화약품 자회사 메디쎄이 '일체형 경추 임플란트', 美 FDA 인증"
     },
     "source_fact:56e93e81a4e31032519d3b2c": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -67723,6 +68290,26 @@
       "source_published_kst": "2026-10-06T08:34+09:00",
       "title": "한투증권, 산일전기 목표가↑…\"美·유럽, 중국산 규제 수혜\" | 연합뉴스"
     },
+    "source_fact:5e986c3c2c58881c8d422747": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645610296",
+      "source": "이데일리",
+      "source_body_digest": "b7c81d9d8b8b7d37e8915c9ae0f8791f076bcadac9bab1360b0f9a374dd54462",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd6db58925c01e75c86b27e7c7325260475fc47892602b8a697bad1aed30b30b",
+      "source_fact_keys": [
+        "source_fact:v1:1227e0dd787018f276d7e0c3098d42a0152a7c614e3033ae3482a9d5ac864f38",
+        "source_fact:v1:432042fef44b2c51bd88fc64118c87519a15feb8e8416ba751e607a451e321ae",
+        "source_fact:v1:74384091542655eea45519d0dbd84d5bc8199717da39077ca0aef4e4df4ef48f",
+        "source_fact:v1:8f836113d5f749c08e6fd12907e33a98961061aeeaa2eadafefa572346bca8a4"
+      ],
+      "source_published_kst": "2026-10-06T11:25+09:00",
+      "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
+    },
     "source_fact:5ed0dea385a36ac2ffe5be1a": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -68533,6 +69120,33 @@
       ],
       "source_published_kst": "2026-10-05T17:22+09:00",
       "title": "\"美中의존 줄이자\"…정부, CPTPP 가입 속도"
+    },
+    "source_fact:66c481346c513707c70b15e0": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064567g",
+      "source": "한국경제",
+      "source_body_digest": "fbc171950252cd185b97e9366c5701382b47d0b15651302de365783a9c7a891a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:701cd6fcf11ecb585695273ee80c19d8738fc022dc6a7947c613813893cf5efb",
+      "source_fact_keys": [
+        "source_fact:v1:18df292b06a301a431a76aa628aac173905a68ca21712527fd6f8244ba561432",
+        "source_fact:v1:37deee745701588ed25099053bb8da59c8f9a3f642bbef28496e74feae78a4bb",
+        "source_fact:v1:3da9382e0d7cf7aa0a2e7fdb4c4f739bee51e42bc238ac3d55b1afdb14ec1d67",
+        "source_fact:v1:5b0e0245457403b6b5156ed21ffb4dfb4bae88b09c8dd930307a0973d5558720",
+        "source_fact:v1:8f09cc5658bdb2514f9d068352d158d3b56aefdd68899d9f7c9d511984b29cb7",
+        "source_fact:v1:a672e93ad45b6dba52f6783cd156324cdd38bb98c6c2ec8137e2255ea91e2787",
+        "source_fact:v1:c65f5dd99cd1f517c553f8f537351849228c3198c67b268233f78e403fb8ee6e",
+        "source_fact:v1:c8422c41559ff6de47f7751d4341522f18c7992c98388a7f8195daae8d293e56",
+        "source_fact:v1:cbb7bfd0993c006268d1107ac97bc8a0512cb12714d9747ee1f6f7ecc9ce33a8",
+        "source_fact:v1:f29d1f6e7ef88e03bffe1fb69d22eec5e4fc565208bafbe36c0a7c3106df5b39",
+        "source_fact:v1:f5a330fd65524d4cb65b71965b264010c4635bd41e5aa356a48ef4d325eb49a1"
+      ],
+      "source_published_kst": "2026-10-06T11:22+09:00",
+      "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
     },
     "source_fact:671555e8e7d6070b710418bc": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -70449,6 +71063,33 @@
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
     },
+    "source_fact:749d4dd29281fba91302d54e": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064567g",
+      "source": "한국경제",
+      "source_body_digest": "fbc171950252cd185b97e9366c5701382b47d0b15651302de365783a9c7a891a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:701cd6fcf11ecb585695273ee80c19d8738fc022dc6a7947c613813893cf5efb",
+      "source_fact_keys": [
+        "source_fact:v1:18df292b06a301a431a76aa628aac173905a68ca21712527fd6f8244ba561432",
+        "source_fact:v1:37deee745701588ed25099053bb8da59c8f9a3f642bbef28496e74feae78a4bb",
+        "source_fact:v1:3da9382e0d7cf7aa0a2e7fdb4c4f739bee51e42bc238ac3d55b1afdb14ec1d67",
+        "source_fact:v1:5b0e0245457403b6b5156ed21ffb4dfb4bae88b09c8dd930307a0973d5558720",
+        "source_fact:v1:8f09cc5658bdb2514f9d068352d158d3b56aefdd68899d9f7c9d511984b29cb7",
+        "source_fact:v1:a672e93ad45b6dba52f6783cd156324cdd38bb98c6c2ec8137e2255ea91e2787",
+        "source_fact:v1:c65f5dd99cd1f517c553f8f537351849228c3198c67b268233f78e403fb8ee6e",
+        "source_fact:v1:c8422c41559ff6de47f7751d4341522f18c7992c98388a7f8195daae8d293e56",
+        "source_fact:v1:cbb7bfd0993c006268d1107ac97bc8a0512cb12714d9747ee1f6f7ecc9ce33a8",
+        "source_fact:v1:f29d1f6e7ef88e03bffe1fb69d22eec5e4fc565208bafbe36c0a7c3106df5b39",
+        "source_fact:v1:f5a330fd65524d4cb65b71965b264010c4635bd41e5aa356a48ef4d325eb49a1"
+      ],
+      "source_published_kst": "2026-10-06T11:22+09:00",
+      "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
     "source_fact:74b4dec0d0577e7c226b327c": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -71750,6 +72391,24 @@
       ],
       "source_published_kst": "2026-10-05T22:50+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 해외CB 가격 확정..표면금리 0%"
+    },
+    "source_fact:7eafbfc88496d07f7d1d8e66": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632608",
+      "source": "이투데이",
+      "source_body_digest": "0dc6e9ab55f165426ed2741cab3dcd563a8c446b272a79e78021bdfdae8f09e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:264b9018bf2960f9c80df2d896f4852bebc1af7595f3cf58967116b22a593c59",
+      "source_fact_keys": [
+        "source_fact:v1:cff2ed31f98026e838c825e500472534a6f78194ddcaab269507acf669963287",
+        "source_fact:v1:dc825e155899d054d15b791e26c899bd990c832e77efa4b1cfa0ff2a90fbecaa"
+      ],
+      "source_published_kst": "2026-10-06T12:58+09:00",
+      "title": "전세사기 피해 보증금 3분의 1 최소 보장⋯11월 13일 시행"
     },
     "source_fact:7eb2f082394b448f1fedc186": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -73779,6 +74438,33 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "S&K폴리텍, 선진엔지니어링 합병 마무리"
     },
+    "source_fact:8fda5296eb48fb5c3724b31e": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064567g",
+      "source": "한국경제",
+      "source_body_digest": "fbc171950252cd185b97e9366c5701382b47d0b15651302de365783a9c7a891a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:701cd6fcf11ecb585695273ee80c19d8738fc022dc6a7947c613813893cf5efb",
+      "source_fact_keys": [
+        "source_fact:v1:18df292b06a301a431a76aa628aac173905a68ca21712527fd6f8244ba561432",
+        "source_fact:v1:37deee745701588ed25099053bb8da59c8f9a3f642bbef28496e74feae78a4bb",
+        "source_fact:v1:3da9382e0d7cf7aa0a2e7fdb4c4f739bee51e42bc238ac3d55b1afdb14ec1d67",
+        "source_fact:v1:5b0e0245457403b6b5156ed21ffb4dfb4bae88b09c8dd930307a0973d5558720",
+        "source_fact:v1:8f09cc5658bdb2514f9d068352d158d3b56aefdd68899d9f7c9d511984b29cb7",
+        "source_fact:v1:a672e93ad45b6dba52f6783cd156324cdd38bb98c6c2ec8137e2255ea91e2787",
+        "source_fact:v1:c65f5dd99cd1f517c553f8f537351849228c3198c67b268233f78e403fb8ee6e",
+        "source_fact:v1:c8422c41559ff6de47f7751d4341522f18c7992c98388a7f8195daae8d293e56",
+        "source_fact:v1:cbb7bfd0993c006268d1107ac97bc8a0512cb12714d9747ee1f6f7ecc9ce33a8",
+        "source_fact:v1:f29d1f6e7ef88e03bffe1fb69d22eec5e4fc565208bafbe36c0a7c3106df5b39",
+        "source_fact:v1:f5a330fd65524d4cb65b71965b264010c4635bd41e5aa356a48ef4d325eb49a1"
+      ],
+      "source_published_kst": "2026-10-06T11:22+09:00",
+      "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
     "source_fact:90476267c3b197c9f7599663": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -74038,6 +74724,24 @@
       ],
       "source_published_kst": "2026-10-06T11:01+09:00",
       "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
+    },
+    "source_fact:91bef34669e270e5efd73ce1": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632608",
+      "source": "이투데이",
+      "source_body_digest": "0dc6e9ab55f165426ed2741cab3dcd563a8c446b272a79e78021bdfdae8f09e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:264b9018bf2960f9c80df2d896f4852bebc1af7595f3cf58967116b22a593c59",
+      "source_fact_keys": [
+        "source_fact:v1:cff2ed31f98026e838c825e500472534a6f78194ddcaab269507acf669963287",
+        "source_fact:v1:dc825e155899d054d15b791e26c899bd990c832e77efa4b1cfa0ff2a90fbecaa"
+      ],
+      "source_published_kst": "2026-10-06T12:58+09:00",
+      "title": "전세사기 피해 보증금 3분의 1 최소 보장⋯11월 13일 시행"
     },
     "source_fact:91c289d717f6adf8b4fa563d": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -75527,6 +76231,26 @@
       ],
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
+    "source_fact:9d7b0d355f8b32ca9eb97770": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645610296",
+      "source": "이데일리",
+      "source_body_digest": "b7c81d9d8b8b7d37e8915c9ae0f8791f076bcadac9bab1360b0f9a374dd54462",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd6db58925c01e75c86b27e7c7325260475fc47892602b8a697bad1aed30b30b",
+      "source_fact_keys": [
+        "source_fact:v1:1227e0dd787018f276d7e0c3098d42a0152a7c614e3033ae3482a9d5ac864f38",
+        "source_fact:v1:432042fef44b2c51bd88fc64118c87519a15feb8e8416ba751e607a451e321ae",
+        "source_fact:v1:74384091542655eea45519d0dbd84d5bc8199717da39077ca0aef4e4df4ef48f",
+        "source_fact:v1:8f836113d5f749c08e6fd12907e33a98961061aeeaa2eadafefa572346bca8a4"
+      ],
+      "source_published_kst": "2026-10-06T11:25+09:00",
+      "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
     },
     "source_fact:9e040961808e685e175616c0": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -77498,6 +78222,33 @@
       "source_published_kst": "2026-10-05T15:21+09:00",
       "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
     },
+    "source_fact:ad8673d3ecd0624f0452e81e": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064567g",
+      "source": "한국경제",
+      "source_body_digest": "fbc171950252cd185b97e9366c5701382b47d0b15651302de365783a9c7a891a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:701cd6fcf11ecb585695273ee80c19d8738fc022dc6a7947c613813893cf5efb",
+      "source_fact_keys": [
+        "source_fact:v1:18df292b06a301a431a76aa628aac173905a68ca21712527fd6f8244ba561432",
+        "source_fact:v1:37deee745701588ed25099053bb8da59c8f9a3f642bbef28496e74feae78a4bb",
+        "source_fact:v1:3da9382e0d7cf7aa0a2e7fdb4c4f739bee51e42bc238ac3d55b1afdb14ec1d67",
+        "source_fact:v1:5b0e0245457403b6b5156ed21ffb4dfb4bae88b09c8dd930307a0973d5558720",
+        "source_fact:v1:8f09cc5658bdb2514f9d068352d158d3b56aefdd68899d9f7c9d511984b29cb7",
+        "source_fact:v1:a672e93ad45b6dba52f6783cd156324cdd38bb98c6c2ec8137e2255ea91e2787",
+        "source_fact:v1:c65f5dd99cd1f517c553f8f537351849228c3198c67b268233f78e403fb8ee6e",
+        "source_fact:v1:c8422c41559ff6de47f7751d4341522f18c7992c98388a7f8195daae8d293e56",
+        "source_fact:v1:cbb7bfd0993c006268d1107ac97bc8a0512cb12714d9747ee1f6f7ecc9ce33a8",
+        "source_fact:v1:f29d1f6e7ef88e03bffe1fb69d22eec5e4fc565208bafbe36c0a7c3106df5b39",
+        "source_fact:v1:f5a330fd65524d4cb65b71965b264010c4635bd41e5aa356a48ef4d325eb49a1"
+      ],
+      "source_published_kst": "2026-10-06T11:22+09:00",
+      "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
     "source_fact:add4fc3a3ad824be02527115": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -78460,6 +79211,33 @@
       ],
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
+    "source_fact:b427d2614b1aae1f1073b7f1": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064567g",
+      "source": "한국경제",
+      "source_body_digest": "fbc171950252cd185b97e9366c5701382b47d0b15651302de365783a9c7a891a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:701cd6fcf11ecb585695273ee80c19d8738fc022dc6a7947c613813893cf5efb",
+      "source_fact_keys": [
+        "source_fact:v1:18df292b06a301a431a76aa628aac173905a68ca21712527fd6f8244ba561432",
+        "source_fact:v1:37deee745701588ed25099053bb8da59c8f9a3f642bbef28496e74feae78a4bb",
+        "source_fact:v1:3da9382e0d7cf7aa0a2e7fdb4c4f739bee51e42bc238ac3d55b1afdb14ec1d67",
+        "source_fact:v1:5b0e0245457403b6b5156ed21ffb4dfb4bae88b09c8dd930307a0973d5558720",
+        "source_fact:v1:8f09cc5658bdb2514f9d068352d158d3b56aefdd68899d9f7c9d511984b29cb7",
+        "source_fact:v1:a672e93ad45b6dba52f6783cd156324cdd38bb98c6c2ec8137e2255ea91e2787",
+        "source_fact:v1:c65f5dd99cd1f517c553f8f537351849228c3198c67b268233f78e403fb8ee6e",
+        "source_fact:v1:c8422c41559ff6de47f7751d4341522f18c7992c98388a7f8195daae8d293e56",
+        "source_fact:v1:cbb7bfd0993c006268d1107ac97bc8a0512cb12714d9747ee1f6f7ecc9ce33a8",
+        "source_fact:v1:f29d1f6e7ef88e03bffe1fb69d22eec5e4fc565208bafbe36c0a7c3106df5b39",
+        "source_fact:v1:f5a330fd65524d4cb65b71965b264010c4635bd41e5aa356a48ef4d325eb49a1"
+      ],
+      "source_published_kst": "2026-10-06T11:22+09:00",
+      "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
     },
     "source_fact:b4380363346743eb65c653ad": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -79611,6 +80389,33 @@
       "source_published_kst": "2026-10-06T00:12+09:00",
       "title": "\"AI 말고는 쳐다볼 게 없다\"…글로벌 투자 지도 바꾸는 '빅머니'"
     },
+    "source_fact:be202d8980b38fcb2605a65c": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064567g",
+      "source": "한국경제",
+      "source_body_digest": "fbc171950252cd185b97e9366c5701382b47d0b15651302de365783a9c7a891a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:701cd6fcf11ecb585695273ee80c19d8738fc022dc6a7947c613813893cf5efb",
+      "source_fact_keys": [
+        "source_fact:v1:18df292b06a301a431a76aa628aac173905a68ca21712527fd6f8244ba561432",
+        "source_fact:v1:37deee745701588ed25099053bb8da59c8f9a3f642bbef28496e74feae78a4bb",
+        "source_fact:v1:3da9382e0d7cf7aa0a2e7fdb4c4f739bee51e42bc238ac3d55b1afdb14ec1d67",
+        "source_fact:v1:5b0e0245457403b6b5156ed21ffb4dfb4bae88b09c8dd930307a0973d5558720",
+        "source_fact:v1:8f09cc5658bdb2514f9d068352d158d3b56aefdd68899d9f7c9d511984b29cb7",
+        "source_fact:v1:a672e93ad45b6dba52f6783cd156324cdd38bb98c6c2ec8137e2255ea91e2787",
+        "source_fact:v1:c65f5dd99cd1f517c553f8f537351849228c3198c67b268233f78e403fb8ee6e",
+        "source_fact:v1:c8422c41559ff6de47f7751d4341522f18c7992c98388a7f8195daae8d293e56",
+        "source_fact:v1:cbb7bfd0993c006268d1107ac97bc8a0512cb12714d9747ee1f6f7ecc9ce33a8",
+        "source_fact:v1:f29d1f6e7ef88e03bffe1fb69d22eec5e4fc565208bafbe36c0a7c3106df5b39",
+        "source_fact:v1:f5a330fd65524d4cb65b71965b264010c4635bd41e5aa356a48ef4d325eb49a1"
+      ],
+      "source_published_kst": "2026-10-06T11:22+09:00",
+      "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
     "source_fact:be208359e4f1e0df6158fd46": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -79857,6 +80662,25 @@
       ],
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "폭염·AI에 日 전력난 비상… 노후 화력발전 수명연장 검토 | 연합뉴스"
+    },
+    "source_fact:c08201de2a1e763edbeb1894": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.etnews.com/20261006000191",
+      "source": "전자신문",
+      "source_body_digest": "033dd2358d5ad6fde91d89f02fd505beac3191acce8c0dafb726fe04e4b22d42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:863421c046a2f56b44d949616135ab7fa7b9bca19080aa7547e98aa867d13ac2",
+      "source_fact_keys": [
+        "source_fact:v1:07320d20a169751794fefa4546bc087724fc9812512b6895366aa29985bc5524",
+        "source_fact:v1:8744656ed821123b3b6c12dd12b6b21a2a0e40395e3c5b628100a37a3f4ed2d9",
+        "source_fact:v1:f5f109649ab980cb44e65de0362f6ccacf1b85df13c8a8f4a89bc8981a561d04"
+      ],
+      "source_published_kst": "2026-10-06T12:58+09:00",
+      "title": "동화약품 자회사 메디쎄이 '일체형 경추 임플란트', 美 FDA 인증"
     },
     "source_fact:c0f2c9c8f77a70e651c53df9": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -80169,6 +80993,25 @@
       ],
       "source_published_kst": "2026-10-06T10:22+09:00",
       "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
+    },
+    "source_fact:c335526bee32ac0b9196072d": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064854P",
+      "source": "한국경제",
+      "source_body_digest": "20319355b321c27466fed347adc15ea62acfa99b60acf7fc0bfbe29e56efb0f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fcd51d6b6e40d60ca670482df20927f96160604c4476be2e1c6d1020a3e68b49",
+      "source_fact_keys": [
+        "source_fact:v1:7d683215bffb476276c6e85c25f1560b16c24ff4c1f8e186240751826cf1acca",
+        "source_fact:v1:8430d9ecf0596a2ae0b92ddcc23346a57dbf6e1ed5809f282bf5369e78b51a2d",
+        "source_fact:v1:f1405cb3aa0cb79b96978e1b0d51a706af000098d6e317cde1e96b825ec1d5a1"
+      ],
+      "source_published_kst": "2026-10-06T10:04+09:00",
+      "title": "옵티팜, cGMP 시설 인수로 이종이식 사업화 속도"
     },
     "source_fact:c33c1bee78a25397440ae0fa": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -80830,6 +81673,33 @@
       "source_published_kst": "2026-10-06T05:30+09:00",
       "title": "車 부품 보던 AI, 로봇 관절 '가상검증' 나선다"
     },
+    "source_fact:c800083cfb9a5e05002b3855": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064567g",
+      "source": "한국경제",
+      "source_body_digest": "fbc171950252cd185b97e9366c5701382b47d0b15651302de365783a9c7a891a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:701cd6fcf11ecb585695273ee80c19d8738fc022dc6a7947c613813893cf5efb",
+      "source_fact_keys": [
+        "source_fact:v1:18df292b06a301a431a76aa628aac173905a68ca21712527fd6f8244ba561432",
+        "source_fact:v1:37deee745701588ed25099053bb8da59c8f9a3f642bbef28496e74feae78a4bb",
+        "source_fact:v1:3da9382e0d7cf7aa0a2e7fdb4c4f739bee51e42bc238ac3d55b1afdb14ec1d67",
+        "source_fact:v1:5b0e0245457403b6b5156ed21ffb4dfb4bae88b09c8dd930307a0973d5558720",
+        "source_fact:v1:8f09cc5658bdb2514f9d068352d158d3b56aefdd68899d9f7c9d511984b29cb7",
+        "source_fact:v1:a672e93ad45b6dba52f6783cd156324cdd38bb98c6c2ec8137e2255ea91e2787",
+        "source_fact:v1:c65f5dd99cd1f517c553f8f537351849228c3198c67b268233f78e403fb8ee6e",
+        "source_fact:v1:c8422c41559ff6de47f7751d4341522f18c7992c98388a7f8195daae8d293e56",
+        "source_fact:v1:cbb7bfd0993c006268d1107ac97bc8a0512cb12714d9747ee1f6f7ecc9ce33a8",
+        "source_fact:v1:f29d1f6e7ef88e03bffe1fb69d22eec5e4fc565208bafbe36c0a7c3106df5b39",
+        "source_fact:v1:f5a330fd65524d4cb65b71965b264010c4635bd41e5aa356a48ef4d325eb49a1"
+      ],
+      "source_published_kst": "2026-10-06T11:22+09:00",
+      "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
     "source_fact:c87998a485c55c623bc83d0e": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -81420,6 +82290,23 @@
       "source_published_kst": "2026-10-06T11:07+09:00",
       "title": "쌍용건설, 8천65억원 규모 남부내륙철도 제9공구 수주 | 연합뉴스"
     },
+    "source_fact:cddd2ac1bfd92a3363c6e718": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815496",
+      "source": "뉴시스",
+      "source_body_digest": "6982d5cd51995182c0bf8c049c09e5d3b30ba44ce71e00ac7e18185c5b8d4ba5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9b52f32eafd9e1f121d93595b5a1ff0808d71ba09f86bb84e19f52723f771b8",
+      "source_fact_keys": [
+        "source_fact:v1:f3a04ea983046687ca89929b101c5616128232c00393cd7781e3cbc1a44ec8ec"
+      ],
+      "source_published_kst": "2026-10-06T13:02+09:00",
+      "title": "안성 바우덕이축제 60만명 찾았다…농특산물 장터 22억 매출"
+    },
     "source_fact:ce0dc2031a4d4148e9769038": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -81519,6 +82406,33 @@
       ],
       "source_published_kst": "2026-10-05T16:00+09:00",
       "title": "[기획]한국재료연구원, AI·데이터로 '예측하고 설계하는' 소재 연구시대 연다"
+    },
+    "source_fact:cedf05592f0653cbc8b03dd7": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064567g",
+      "source": "한국경제",
+      "source_body_digest": "fbc171950252cd185b97e9366c5701382b47d0b15651302de365783a9c7a891a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:701cd6fcf11ecb585695273ee80c19d8738fc022dc6a7947c613813893cf5efb",
+      "source_fact_keys": [
+        "source_fact:v1:18df292b06a301a431a76aa628aac173905a68ca21712527fd6f8244ba561432",
+        "source_fact:v1:37deee745701588ed25099053bb8da59c8f9a3f642bbef28496e74feae78a4bb",
+        "source_fact:v1:3da9382e0d7cf7aa0a2e7fdb4c4f739bee51e42bc238ac3d55b1afdb14ec1d67",
+        "source_fact:v1:5b0e0245457403b6b5156ed21ffb4dfb4bae88b09c8dd930307a0973d5558720",
+        "source_fact:v1:8f09cc5658bdb2514f9d068352d158d3b56aefdd68899d9f7c9d511984b29cb7",
+        "source_fact:v1:a672e93ad45b6dba52f6783cd156324cdd38bb98c6c2ec8137e2255ea91e2787",
+        "source_fact:v1:c65f5dd99cd1f517c553f8f537351849228c3198c67b268233f78e403fb8ee6e",
+        "source_fact:v1:c8422c41559ff6de47f7751d4341522f18c7992c98388a7f8195daae8d293e56",
+        "source_fact:v1:cbb7bfd0993c006268d1107ac97bc8a0512cb12714d9747ee1f6f7ecc9ce33a8",
+        "source_fact:v1:f29d1f6e7ef88e03bffe1fb69d22eec5e4fc565208bafbe36c0a7c3106df5b39",
+        "source_fact:v1:f5a330fd65524d4cb65b71965b264010c4635bd41e5aa356a48ef4d325eb49a1"
+      ],
+      "source_published_kst": "2026-10-06T11:22+09:00",
+      "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
     },
     "source_fact:cf015d9c81186f669ba3f9bb": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -82925,6 +83839,33 @@
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
+    "source_fact:d8afbbda30404e9db093b88b": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064567g",
+      "source": "한국경제",
+      "source_body_digest": "fbc171950252cd185b97e9366c5701382b47d0b15651302de365783a9c7a891a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:701cd6fcf11ecb585695273ee80c19d8738fc022dc6a7947c613813893cf5efb",
+      "source_fact_keys": [
+        "source_fact:v1:18df292b06a301a431a76aa628aac173905a68ca21712527fd6f8244ba561432",
+        "source_fact:v1:37deee745701588ed25099053bb8da59c8f9a3f642bbef28496e74feae78a4bb",
+        "source_fact:v1:3da9382e0d7cf7aa0a2e7fdb4c4f739bee51e42bc238ac3d55b1afdb14ec1d67",
+        "source_fact:v1:5b0e0245457403b6b5156ed21ffb4dfb4bae88b09c8dd930307a0973d5558720",
+        "source_fact:v1:8f09cc5658bdb2514f9d068352d158d3b56aefdd68899d9f7c9d511984b29cb7",
+        "source_fact:v1:a672e93ad45b6dba52f6783cd156324cdd38bb98c6c2ec8137e2255ea91e2787",
+        "source_fact:v1:c65f5dd99cd1f517c553f8f537351849228c3198c67b268233f78e403fb8ee6e",
+        "source_fact:v1:c8422c41559ff6de47f7751d4341522f18c7992c98388a7f8195daae8d293e56",
+        "source_fact:v1:cbb7bfd0993c006268d1107ac97bc8a0512cb12714d9747ee1f6f7ecc9ce33a8",
+        "source_fact:v1:f29d1f6e7ef88e03bffe1fb69d22eec5e4fc565208bafbe36c0a7c3106df5b39",
+        "source_fact:v1:f5a330fd65524d4cb65b71965b264010c4635bd41e5aa356a48ef4d325eb49a1"
+      ],
+      "source_published_kst": "2026-10-06T11:22+09:00",
+      "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
     "source_fact:d8c02088c7b6826ceb24a120": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
       "lanes": {
@@ -84090,6 +85031,26 @@
       ],
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
+    "source_fact:e21708cfe794fccc75b17c9a": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645610296",
+      "source": "이데일리",
+      "source_body_digest": "b7c81d9d8b8b7d37e8915c9ae0f8791f076bcadac9bab1360b0f9a374dd54462",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd6db58925c01e75c86b27e7c7325260475fc47892602b8a697bad1aed30b30b",
+      "source_fact_keys": [
+        "source_fact:v1:1227e0dd787018f276d7e0c3098d42a0152a7c614e3033ae3482a9d5ac864f38",
+        "source_fact:v1:432042fef44b2c51bd88fc64118c87519a15feb8e8416ba751e607a451e321ae",
+        "source_fact:v1:74384091542655eea45519d0dbd84d5bc8199717da39077ca0aef4e4df4ef48f",
+        "source_fact:v1:8f836113d5f749c08e6fd12907e33a98961061aeeaa2eadafefa572346bca8a4"
+      ],
+      "source_published_kst": "2026-10-06T11:25+09:00",
+      "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
     },
     "source_fact:e23ef94020ec9ccd227e1376": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -95359,6 +96320,25 @@
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
     },
+    "title:57cc21a51f5019d7e3f5ad6a": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.etnews.com/20261006000191",
+      "source": "전자신문",
+      "source_body_digest": "033dd2358d5ad6fde91d89f02fd505beac3191acce8c0dafb726fe04e4b22d42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:863421c046a2f56b44d949616135ab7fa7b9bca19080aa7547e98aa867d13ac2",
+      "source_fact_keys": [
+        "source_fact:v1:07320d20a169751794fefa4546bc087724fc9812512b6895366aa29985bc5524",
+        "source_fact:v1:8744656ed821123b3b6c12dd12b6b21a2a0e40395e3c5b628100a37a3f4ed2d9",
+        "source_fact:v1:f5f109649ab980cb44e65de0362f6ccacf1b85df13c8a8f4a89bc8981a561d04"
+      ],
+      "source_published_kst": "2026-10-06T12:58+09:00",
+      "title": "동화약품 자회사 메디쎄이 '일체형 경추 임플란트', 美 FDA 인증"
+    },
     "title:57d572ba93299978b71eb637": {
       "first_seen_kst": "2026-10-03T07:28:32+09:00",
       "lanes": {
@@ -97004,6 +97984,25 @@
       "source": "매일경제",
       "title": "한투 5천억 회사채 발행 잰걸음 … KDB생명 인수 실탄 마련 나서"
     },
+    "title:6c9051fae360d95a155b5b5a": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064854P",
+      "source": "한국경제",
+      "source_body_digest": "20319355b321c27466fed347adc15ea62acfa99b60acf7fc0bfbe29e56efb0f3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fcd51d6b6e40d60ca670482df20927f96160604c4476be2e1c6d1020a3e68b49",
+      "source_fact_keys": [
+        "source_fact:v1:7d683215bffb476276c6e85c25f1560b16c24ff4c1f8e186240751826cf1acca",
+        "source_fact:v1:8430d9ecf0596a2ae0b92ddcc23346a57dbf6e1ed5809f282bf5369e78b51a2d",
+        "source_fact:v1:f1405cb3aa0cb79b96978e1b0d51a706af000098d6e317cde1e96b825ec1d5a1"
+      ],
+      "source_published_kst": "2026-10-06T10:04+09:00",
+      "title": "옵티팜, cGMP 시설 인수로 이종이식 사업화 속도"
+    },
     "title:6d6c51e6fffe2b5a4326de96": {
       "first_seen_kst": "2026-09-27T12:02:47+09:00",
       "lanes": {
@@ -98102,6 +99101,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260918124800003",
       "source": "연합뉴스",
       "title": "삼성전자 DX노조, 이재용 회장 자택 앞 집회…\"직접 대화하자\" | 연합뉴스"
+    },
+    "title:786ef310e739a6e202406b4c": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815496",
+      "source": "뉴시스",
+      "source_body_digest": "6982d5cd51995182c0bf8c049c09e5d3b30ba44ce71e00ac7e18185c5b8d4ba5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9b52f32eafd9e1f121d93595b5a1ff0808d71ba09f86bb84e19f52723f771b8",
+      "source_fact_keys": [
+        "source_fact:v1:f3a04ea983046687ca89929b101c5616128232c00393cd7781e3cbc1a44ec8ec"
+      ],
+      "source_published_kst": "2026-10-06T13:02+09:00",
+      "title": "안성 바우덕이축제 60만명 찾았다…농특산물 장터 22억 매출"
     },
     "title:78bfef830e9198927cda851a": {
       "first_seen_kst": "2026-09-23T08:21:01+09:00",
@@ -101104,6 +102120,21 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외환보유액, 넉 달 만에 감소…대미투자 자산위탁 영향"
     },
+    "title:9cdefa00c841516b921dab63": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815439",
+      "source": "뉴시스",
+      "source_body_digest": "320cacb3325330023f025b8c96c62bb91a45a15eaa3842a5d1a963612cf895f2",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T12:42+09:00",
+      "title": "영국, 동예루살렘 영사관 폐쇄시 이스라엘 외교관 맞추방 경고"
+    },
     "title:9cdfa1d659e42a8893fff729": {
       "first_seen_kst": "2026-10-04T08:04:25+09:00",
       "lanes": {
@@ -103052,6 +104083,24 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "[단독]새일여성 97% 취업 전환…1년 뒤 고용유지율은 60% 그쳐"
     },
+    "title:b5927865ad081a072fc3b191": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632608",
+      "source": "이투데이",
+      "source_body_digest": "0dc6e9ab55f165426ed2741cab3dcd563a8c446b272a79e78021bdfdae8f09e8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:264b9018bf2960f9c80df2d896f4852bebc1af7595f3cf58967116b22a593c59",
+      "source_fact_keys": [
+        "source_fact:v1:cff2ed31f98026e838c825e500472534a6f78194ddcaab269507acf669963287",
+        "source_fact:v1:dc825e155899d054d15b791e26c899bd990c832e77efa4b1cfa0ff2a90fbecaa"
+      ],
+      "source_published_kst": "2026-10-06T12:58+09:00",
+      "title": "전세사기 피해 보증금 3분의 1 최소 보장⋯11월 13일 시행"
+    },
     "title:b5c13c5ffa7513ce8ada1941": {
       "first_seen_kst": "2026-09-18T14:40:33+09:00",
       "lanes": {
@@ -104678,6 +105727,26 @@
       "link": "https://www.yna.co.kr/view/AKR20261002053700008",
       "source": "연합뉴스",
       "title": "발행축소, 금리상승 막을 방패? 하락 동력?…국고채 수급 전망은 | 연합뉴스"
+    },
+    "title:cb4cb6774eeb36ec68cdc7aa": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03325926645610296",
+      "source": "이데일리",
+      "source_body_digest": "b7c81d9d8b8b7d37e8915c9ae0f8791f076bcadac9bab1360b0f9a374dd54462",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd6db58925c01e75c86b27e7c7325260475fc47892602b8a697bad1aed30b30b",
+      "source_fact_keys": [
+        "source_fact:v1:1227e0dd787018f276d7e0c3098d42a0152a7c614e3033ae3482a9d5ac864f38",
+        "source_fact:v1:432042fef44b2c51bd88fc64118c87519a15feb8e8416ba751e607a451e321ae",
+        "source_fact:v1:74384091542655eea45519d0dbd84d5bc8199717da39077ca0aef4e4df4ef48f",
+        "source_fact:v1:8f836113d5f749c08e6fd12907e33a98961061aeeaa2eadafefa572346bca8a4"
+      ],
+      "source_published_kst": "2026-10-06T11:25+09:00",
+      "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
     },
     "title:cb5c59d458f870246ef43e8e": {
       "first_seen_kst": "2026-10-01T21:06:52+09:00",
@@ -106488,6 +107557,33 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:00+09:00",
       "title": "\"상장폐지 요건 강화 이후 주식병합·감자 등 급증\""
+    },
+    "title:df0648bbf3f757b5cd9b0921": {
+      "first_seen_kst": "2026-10-06T15:14:29+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:14:29+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:14:29+09:00",
+      "link": "https://www.hankyung.com/article/202610064567g",
+      "source": "한국경제",
+      "source_body_digest": "fbc171950252cd185b97e9366c5701382b47d0b15651302de365783a9c7a891a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:701cd6fcf11ecb585695273ee80c19d8738fc022dc6a7947c613813893cf5efb",
+      "source_fact_keys": [
+        "source_fact:v1:18df292b06a301a431a76aa628aac173905a68ca21712527fd6f8244ba561432",
+        "source_fact:v1:37deee745701588ed25099053bb8da59c8f9a3f642bbef28496e74feae78a4bb",
+        "source_fact:v1:3da9382e0d7cf7aa0a2e7fdb4c4f739bee51e42bc238ac3d55b1afdb14ec1d67",
+        "source_fact:v1:5b0e0245457403b6b5156ed21ffb4dfb4bae88b09c8dd930307a0973d5558720",
+        "source_fact:v1:8f09cc5658bdb2514f9d068352d158d3b56aefdd68899d9f7c9d511984b29cb7",
+        "source_fact:v1:a672e93ad45b6dba52f6783cd156324cdd38bb98c6c2ec8137e2255ea91e2787",
+        "source_fact:v1:c65f5dd99cd1f517c553f8f537351849228c3198c67b268233f78e403fb8ee6e",
+        "source_fact:v1:c8422c41559ff6de47f7751d4341522f18c7992c98388a7f8195daae8d293e56",
+        "source_fact:v1:cbb7bfd0993c006268d1107ac97bc8a0512cb12714d9747ee1f6f7ecc9ce33a8",
+        "source_fact:v1:f29d1f6e7ef88e03bffe1fb69d22eec5e4fc565208bafbe36c0a7c3106df5b39",
+        "source_fact:v1:f5a330fd65524d4cb65b71965b264010c4635bd41e5aa356a48ef4d325eb49a1"
+      ],
+      "source_published_kst": "2026-10-06T11:22+09:00",
+      "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
     },
     "title:df068ab547595bc67e923efb": {
       "first_seen_kst": "2026-10-01T19:41:53+09:00",
@@ -109180,5 +110276,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T15:03:09+09:00"
+  "updated_at_kst": "2026-10-06T15:14:29+09:00"
 }
