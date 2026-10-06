@@ -81,6 +81,8 @@ jobs:
           assert 'WATCH_FAILS" -ge 5' not in s, "KOSPI shift still exits after five transient failures"
           assert "kospi_watcher_retrying" in s, "KOSPI retry-through-shift loop missing"
           assert "timeout-minutes: 359" in s, "afternoon close coverage timeout missing"
+          assert "--until 15:32" in s, "KOSPI closing-auction coverage missing"
+          assert "date +%H%M)\" -lt 1532" in s, "shift supervisor does not run through closing auction"
           collector=Path("scripts/kospi_unified_industry_collector.py").read_text(encoding="utf-8")
           assert "UBM feed stale >120s during market hours" in collector, "UBM stale-feed restart guard missing"
           enrichment=Path("scripts/kospi_shock_enrichment.py").read_text(encoding="utf-8")
