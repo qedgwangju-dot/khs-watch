@@ -4769,28 +4769,21 @@
     "event:c0dbfc97ef978eba5cde2a2c": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
-        "live": "2026-10-06T15:03:09+09:00"
+        "live": "2026-10-07T00:38:27+09:00"
       },
-      "last_seen_kst": "2026-10-06T15:03:09+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
-      "source": "이데일리",
-      "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
-      "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.hankyung.com/article/202610053159i",
+      "source": "한국경제",
+      "source_body_digest": "afafcfe646f1cde95c4cb9d1f75aeced2a1f59724388d08d822f298fd2fc51a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd74350310aa14e1866b6a81b12856e8f67c78afb8a385257966409a7103e6e4",
       "source_fact_keys": [
-        "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
-        "source_fact:v1:383db3349bae02188926d095ee0387b44c24b898908ce3ead25a0a79476bdf46",
-        "source_fact:v1:43badb2a14de67473830c113636851108bffbbc958685154d9c0b3532d1f6577",
-        "source_fact:v1:8b53d07e7d26d8f053e56e83f6410fefc9c89ab255e490e926da4fe664f1c4df",
-        "source_fact:v1:91e7ab32f23ff83fc4c39135356841d888e1a0eb1ee04399c7ea3ae797e61e86",
-        "source_fact:v1:9254cc531ea467924a89f8c6f84275e274330477510ec3542559e9863df242c9",
-        "source_fact:v1:94a7fc2cf4b2ddeacbb4e1ab8ce94313ac471e663a242c46dc1f4aec3f8be89f",
-        "source_fact:v1:b583d969d6ec37a1b173bf714713f0eab78479ca1cdc33c63258f5ddea9ebe38",
-        "source_fact:v1:e0eef8432ce228ebb4a06fe6c707538d91ec88583398ca3843c55136203db86f",
-        "source_fact:v1:f72691603d19837418e670433c214d912b8ea7c9d8a5c97d752780e5699bbd08"
+        "source_fact:v1:b466805a5c7500d02bc656355651b1f5917b311cfb91b07f9c22d2bafa6df028",
+        "source_fact:v1:b5338cd44c2ac197f5f8b953d5b5add5fce053496e0dc44c04ac7b78681de78a",
+        "source_fact:v1:c625e2954d7b377503e8cb2b1cd8526aa222c98bb614c74afb408df4ef139807"
       ],
-      "source_published_kst": "2026-10-06T12:08+09:00",
-      "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
+      "source_published_kst": "2026-10-06T07:32+09:00",
+      "title": "\"공급이 못 따라간다\"…수퍼사이클 탄 AI반도체 기판 3인방 비교분석"
     },
     "event:c0e20fbd626af79e0397b342": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
@@ -6383,6 +6376,23 @@
       "source_published_kst": "2026-10-06T17:33+09:00",
       "title": "구미시·MSDI, 방위산업 맞손…\"미사일 방산 거점으로\""
     },
+    "fact:01a0bf77467e8524acb478e3": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006116900057",
+      "source": "연합뉴스",
+      "source_body_digest": "bf59407683c9f8bb8b9dc8b52805b9b119bd2e3ea8977cdf71822f95a88436d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7f7195c6e373a2307f82bad1d4b595be92ec7fb8fa0fdda2c27a2c72e8dbaf4b",
+      "source_fact_keys": [
+        "source_fact:v1:99aaead78b452643cbc139566546ffb158f1f55aaf72355c9f33e0f73de7d29e"
+      ],
+      "source_published_kst": "2026-10-06T14:26+09:00",
+      "title": "HD현대, 세계 최초 '래싱프리 컨테이너선' 프랑스 선사에 인도 | 연합뉴스"
+    },
     "fact:02003ea881d16f0d401c1545": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -6992,6 +7002,25 @@
       ],
       "source_published_kst": "2026-10-06T21:38+09:00",
       "title": "이형일 \"대미투자 MOU '45영업일 후', 우리에 유리해 수정 요구 안 해\"(종합)"
+    },
+    "fact:0b670f3a60b5040252cedab8": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.hankyung.com/article/202610053159i",
+      "source": "한국경제",
+      "source_body_digest": "afafcfe646f1cde95c4cb9d1f75aeced2a1f59724388d08d822f298fd2fc51a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd74350310aa14e1866b6a81b12856e8f67c78afb8a385257966409a7103e6e4",
+      "source_fact_keys": [
+        "source_fact:v1:b466805a5c7500d02bc656355651b1f5917b311cfb91b07f9c22d2bafa6df028",
+        "source_fact:v1:b5338cd44c2ac197f5f8b953d5b5add5fce053496e0dc44c04ac7b78681de78a",
+        "source_fact:v1:c625e2954d7b377503e8cb2b1cd8526aa222c98bb614c74afb408df4ef139807"
+      ],
+      "source_published_kst": "2026-10-06T07:32+09:00",
+      "title": "\"공급이 못 따라간다\"…수퍼사이클 탄 AI반도체 기판 3인방 비교분석"
     },
     "fact:0b86784b7697f8df13b56b51": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
@@ -8050,6 +8079,26 @@
       ],
       "source_published_kst": "2026-10-06T11:25+09:00",
       "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
+    },
+    "fact:1aff98fbd08e704abc5be3df": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03040566645610296",
+      "source": "이데일리",
+      "source_body_digest": "983d4ed35b865766d4ff5c815d072f63026047571200e2c65481007c60ec8a7d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85440de3ebd0cca741c8f8ab65b611be4c529bef1782bee22bd753297e068502",
+      "source_fact_keys": [
+        "source_fact:v1:63898f31844cdff7d4d712fc587cda48936c3a264c50decda5c108ddac9aa25b",
+        "source_fact:v1:987bacc5c1f9fe881abd03f4982418e17545868a3c6506a21fdbe18c3cb619f3",
+        "source_fact:v1:d237d0bb5e6b316651c04bde844e669f5e6473c1846209fe5438457cf4f29b0f",
+        "source_fact:v1:f58fd1b4418aece7eab2bc1db9e94419e02ff1ece438f2aab85778fc4cebe11d"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "이형일 “대미 관세·CPTPP 불확실성 최소화…공정과세 실현”"
     },
     "fact:1b1b7db2ad5c3891394ad35f": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -9711,6 +9760,24 @@
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "한독 파트너사 레졸루트, 선천성 고인슐린증 치료제 FDA 허가 전 미팅 권고"
     },
+    "fact:3d7be5561c254932f2b6602a": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006153151030",
+      "source": "연합뉴스",
+      "source_body_digest": "90218375f06dee0314a8a6bcaa854e5a729906c98f1921545426ae7e4521f9da",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9d8e473613b06543d6321e080a8828540fd23d62ba3afbb6e5b3a6941d5bd84b",
+      "source_fact_keys": [
+        "source_fact:v1:5c2b6a173331ac45957b6aa06b23fd0abb1c390696cb9b309284e5f2aec37df8",
+        "source_fact:v1:9daceb975ee72da3e764e69bab5bb8961d3ce8ec8f799b8dfb56bb1f801dfe76"
+      ],
+      "source_published_kst": "2026-10-06T16:53+09:00",
+      "title": "신세계그룹, 워너브라더스 인수에 10억달러…\"유통·엔터 결합\"(종합) | 연합뉴스"
+    },
     "fact:3d98ee04f07c582fb3b7f9c4": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
       "lanes": {
@@ -11348,6 +11415,24 @@
       ],
       "source_published_kst": "2026-10-05T17:44+09:00",
       "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
+    },
+    "fact:63728d700b1a622b1a4dcb4a": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.etnews.com/20261006000277",
+      "source": "전자신문",
+      "source_body_digest": "c2eed93e86e568ff32188869221682569f187a761c931e5e0ce77a63b03ad59c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acedef668e9db4a8d10b2dc1785ddf7beb6e9b6a2c09786c159f1495c43c0df4",
+      "source_fact_keys": [
+        "source_fact:v1:30a7bb7da18a4b501c08a3bbe5d413683f8d6da5d723303beb94af0f9c06daad",
+        "source_fact:v1:5864073ba3265e926a2bee0c6d56ea3e45f466f5d7a9ad4ae0e510d9e051c9af"
+      ],
+      "source_published_kst": "2026-10-06T14:27+09:00",
+      "title": "[통신규제, 틀을 바꾸자]〈상〉AI 시대 통신정책, 요금 아닌 혁신 경쟁 키워야"
     },
     "fact:642de6b6bce0e6937ce97c3f": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -17366,6 +17451,27 @@
       "source_published_kst": "2026-10-06T11:14+09:00",
       "title": "JW중외제약, 유럽당뇨병학회서 '엠파가드' 임상 3상 발표…3제 요법 유효성 입증"
     },
+    "fact:e37134a2d6046d9553cd185b": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.news1.kr/world/europe/6312157",
+      "source": "뉴스1",
+      "source_body_digest": "8e93f3e69724dd21366c05acf4c826d4f14d7ed234a224d48f6daebaa5b948b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b7b5acd0cd18041785ce4dff927130cf4916ac033e2e188cabc7a08888d516d2",
+      "source_fact_keys": [
+        "source_fact:v1:31c906444193be6a8045683e874c9c48ddd400e28534d351521285b5341b9290",
+        "source_fact:v1:522f1dc44d8760bb5faad34df296ca0548a834a6a7f72ffdbac81c15a126b75c",
+        "source_fact:v1:86795d882d3b00d6735284f8adc64864cadc31d5cdbdc8cca2fc251b19540530",
+        "source_fact:v1:d5412425086bb3b89e2f2da9fff7657b8f92b527d5f650b5eb14a4d23d560ff9",
+        "source_fact:v1:e4368d297f0fa8fa3a6bab7efd7cb45b64d3f80b1e139f956043ee7cdb75eb23"
+      ],
+      "source_published_kst": "2026-10-07T00:00+09:00",
+      "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
+    },
     "fact:e3de902488de631fa2c96170": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -21794,6 +21900,25 @@
       ],
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "레졸루트, FDA 3상 실패에도 BLA 사전회의 권고"
+    },
+    "link:1ce3a285801c6f61dd150cdf": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.hankyung.com/article/202610053159i",
+      "source": "한국경제",
+      "source_body_digest": "afafcfe646f1cde95c4cb9d1f75aeced2a1f59724388d08d822f298fd2fc51a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd74350310aa14e1866b6a81b12856e8f67c78afb8a385257966409a7103e6e4",
+      "source_fact_keys": [
+        "source_fact:v1:b466805a5c7500d02bc656355651b1f5917b311cfb91b07f9c22d2bafa6df028",
+        "source_fact:v1:b5338cd44c2ac197f5f8b953d5b5add5fce053496e0dc44c04ac7b78681de78a",
+        "source_fact:v1:c625e2954d7b377503e8cb2b1cd8526aa222c98bb614c74afb408df4ef139807"
+      ],
+      "source_published_kst": "2026-10-06T07:32+09:00",
+      "title": "\"공급이 못 따라간다\"…수퍼사이클 탄 AI반도체 기판 3인방 비교분석"
     },
     "link:1cf4e9f00342a51b7cc41be3": {
       "first_seen_kst": "2026-10-01T21:28:22+09:00",
@@ -26503,6 +26628,24 @@
       "source_published_kst": "2026-10-05T08:01+09:00",
       "title": "美 의약품 관세 발효…삼성에피스, 테바와 시밀러 동맹 확대 [바이오 주간 결산]"
     },
+    "link:46972252cc829d2c60a8258c": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.etnews.com/20261006000277",
+      "source": "전자신문",
+      "source_body_digest": "c2eed93e86e568ff32188869221682569f187a761c931e5e0ce77a63b03ad59c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acedef668e9db4a8d10b2dc1785ddf7beb6e9b6a2c09786c159f1495c43c0df4",
+      "source_fact_keys": [
+        "source_fact:v1:30a7bb7da18a4b501c08a3bbe5d413683f8d6da5d723303beb94af0f9c06daad",
+        "source_fact:v1:5864073ba3265e926a2bee0c6d56ea3e45f466f5d7a9ad4ae0e510d9e051c9af"
+      ],
+      "source_published_kst": "2026-10-06T14:27+09:00",
+      "title": "[통신규제, 틀을 바꾸자]〈상〉AI 시대 통신정책, 요금 아닌 혁신 경쟁 키워야"
+    },
     "link:46a98c7c2aa2e95c191c7a56": {
       "first_seen_kst": "2026-09-26T06:34:22+09:00",
       "lanes": {
@@ -29074,6 +29217,21 @@
       "source": "연합뉴스",
       "title": "상반기 글로벌 ESS용 배터리 출하 71% 급증…각형이 전체의 94% | 연합뉴스"
     },
+    "link:5e9e054f9e51020e44d0c315": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06871606645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "e5ee462b11a76a2d365abfe48527b93515442071fe64e6dfe2244b02c6a8aad3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T22:41+09:00",
+      "title": "AI 투자붐에 美 8월 수입 사상 최대…무역적자 141조원"
+    },
     "link:5ead3dc65afdbce04cad9488": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
@@ -29564,6 +29722,27 @@
       "link": "https://www.newsis.com/view/NISX20261001_0003811522",
       "source": "뉴시스",
       "title": "오아시스, 90년대 미공개 녹음본 28억 경매에 법적 대응…출품 취소"
+    },
+    "link:628c6caa6a0ce46b6a924ee3": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.news1.kr/world/europe/6312157",
+      "source": "뉴스1",
+      "source_body_digest": "8e93f3e69724dd21366c05acf4c826d4f14d7ed234a224d48f6daebaa5b948b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b7b5acd0cd18041785ce4dff927130cf4916ac033e2e188cabc7a08888d516d2",
+      "source_fact_keys": [
+        "source_fact:v1:31c906444193be6a8045683e874c9c48ddd400e28534d351521285b5341b9290",
+        "source_fact:v1:522f1dc44d8760bb5faad34df296ca0548a834a6a7f72ffdbac81c15a126b75c",
+        "source_fact:v1:86795d882d3b00d6735284f8adc64864cadc31d5cdbdc8cca2fc251b19540530",
+        "source_fact:v1:d5412425086bb3b89e2f2da9fff7657b8f92b527d5f650b5eb14a4d23d560ff9",
+        "source_fact:v1:e4368d297f0fa8fa3a6bab7efd7cb45b64d3f80b1e139f956043ee7cdb75eb23"
+      ],
+      "source_published_kst": "2026-10-07T00:00+09:00",
+      "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
     },
     "link:630d6bb588e179406f1ad0b1": {
       "first_seen_kst": "2026-09-26T08:04:36+09:00",
@@ -35319,6 +35498,23 @@
       "source": "이데일리",
       "title": "\"中정유업체들, 석유제품 수출 중단…재고 확보 목적\""
     },
+    "link:982b55dea20a3a8a4a05fc45": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006116900057",
+      "source": "연합뉴스",
+      "source_body_digest": "bf59407683c9f8bb8b9dc8b52805b9b119bd2e3ea8977cdf71822f95a88436d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7f7195c6e373a2307f82bad1d4b595be92ec7fb8fa0fdda2c27a2c72e8dbaf4b",
+      "source_fact_keys": [
+        "source_fact:v1:99aaead78b452643cbc139566546ffb158f1f55aaf72355c9f33e0f73de7d29e"
+      ],
+      "source_published_kst": "2026-10-06T14:26+09:00",
+      "title": "HD현대, 세계 최초 '래싱프리 컨테이너선' 프랑스 선사에 인도 | 연합뉴스"
+    },
     "link:9855fd15b81f8690517d8f72": {
       "first_seen_kst": "2026-10-02T15:29:23+09:00",
       "lanes": {
@@ -38429,6 +38625,21 @@
       "source": "뉴시스",
       "title": "삼성전기, 환율 하락에도 실적 기대감↑…AI 서버 부품이 견인"
     },
+    "link:b59929bc3fb720e37180bb19": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06871606645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "e5ee462b11a76a2d365abfe48527b93515442071fe64e6dfe2244b02c6a8aad3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T22:41+09:00",
+      "title": "AI 투자붐에 美 8월 수입 사상 최대…무역적자 141조원"
+    },
     "link:b5bc85c70b983a46972a523c": {
       "first_seen_kst": "2026-10-01T21:06:52+09:00",
       "lanes": {
@@ -41121,6 +41332,24 @@
       "source_published_kst": "2026-10-05T10:21+09:00",
       "title": "[AI픽] LGU+ '유독', 글로벌 AI 서비스 품는다 | 연합뉴스"
     },
+    "link:cf927e450fce67c54ebe2714": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006153151030",
+      "source": "연합뉴스",
+      "source_body_digest": "90218375f06dee0314a8a6bcaa854e5a729906c98f1921545426ae7e4521f9da",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9d8e473613b06543d6321e080a8828540fd23d62ba3afbb6e5b3a6941d5bd84b",
+      "source_fact_keys": [
+        "source_fact:v1:5c2b6a173331ac45957b6aa06b23fd0abb1c390696cb9b309284e5f2aec37df8",
+        "source_fact:v1:9daceb975ee72da3e764e69bab5bb8961d3ce8ec8f799b8dfb56bb1f801dfe76"
+      ],
+      "source_published_kst": "2026-10-06T16:53+09:00",
+      "title": "신세계그룹, 워너브라더스 인수에 10억달러…\"유통·엔터 결합\"(종합) | 연합뉴스"
+    },
     "link:cfa20b902a87874a02962946": {
       "first_seen_kst": "2026-09-25T14:18:58+09:00",
       "lanes": {
@@ -42958,6 +43187,26 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:53+09:00",
       "title": "K-항공우주, 글로벌 공급망 올라탄다… KOTRA 상담회 성황"
+    },
+    "link:e098afc2c28d6c5037f98f9c": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03040566645610296",
+      "source": "이데일리",
+      "source_body_digest": "983d4ed35b865766d4ff5c815d072f63026047571200e2c65481007c60ec8a7d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85440de3ebd0cca741c8f8ab65b611be4c529bef1782bee22bd753297e068502",
+      "source_fact_keys": [
+        "source_fact:v1:63898f31844cdff7d4d712fc587cda48936c3a264c50decda5c108ddac9aa25b",
+        "source_fact:v1:987bacc5c1f9fe881abd03f4982418e17545868a3c6506a21fdbe18c3cb619f3",
+        "source_fact:v1:d237d0bb5e6b316651c04bde844e669f5e6473c1846209fe5438457cf4f29b0f",
+        "source_fact:v1:f58fd1b4418aece7eab2bc1db9e94419e02ff1ece438f2aab85778fc4cebe11d"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "이형일 “대미 관세·CPTPP 불확실성 최소화…공정과세 실현”"
     },
     "link:e0da453df11ed7e9d9905781": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
@@ -47497,6 +47746,23 @@
       "source": "헤럴드경제",
       "title": "일본은행 “물가 더 오르면 금리인상 속도 높여야”…10월 추가 인상론"
     },
+    "original:0a3642f0b2e5ec9228fcce0b": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006116900057",
+      "source": "연합뉴스",
+      "source_body_digest": "bf59407683c9f8bb8b9dc8b52805b9b119bd2e3ea8977cdf71822f95a88436d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7f7195c6e373a2307f82bad1d4b595be92ec7fb8fa0fdda2c27a2c72e8dbaf4b",
+      "source_fact_keys": [
+        "source_fact:v1:99aaead78b452643cbc139566546ffb158f1f55aaf72355c9f33e0f73de7d29e"
+      ],
+      "source_published_kst": "2026-10-06T14:26+09:00",
+      "title": "HD현대, 세계 최초 '래싱프리 컨테이너선' 프랑스 선사에 인도 | 연합뉴스"
+    },
     "original:0a541b9a10e32caad7b3bd82": {
       "first_seen_kst": "2026-10-04T00:00:47+09:00",
       "lanes": {
@@ -50985,6 +51251,25 @@
       "source": "뉴시스",
       "title": "성남·의정부 이어 고양까지…IPARK현대산업개발, 수도권 정비사업 확장"
     },
+    "original:2ba10b938355fd978dfb53fc": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.hankyung.com/article/202610053159i",
+      "source": "한국경제",
+      "source_body_digest": "afafcfe646f1cde95c4cb9d1f75aeced2a1f59724388d08d822f298fd2fc51a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd74350310aa14e1866b6a81b12856e8f67c78afb8a385257966409a7103e6e4",
+      "source_fact_keys": [
+        "source_fact:v1:b466805a5c7500d02bc656355651b1f5917b311cfb91b07f9c22d2bafa6df028",
+        "source_fact:v1:b5338cd44c2ac197f5f8b953d5b5add5fce053496e0dc44c04ac7b78681de78a",
+        "source_fact:v1:c625e2954d7b377503e8cb2b1cd8526aa222c98bb614c74afb408df4ef139807"
+      ],
+      "source_published_kst": "2026-10-06T07:32+09:00",
+      "title": "\"공급이 못 따라간다\"…수퍼사이클 탄 AI반도체 기판 3인방 비교분석"
+    },
     "original:2ba1cde485a82d904eb4453b": {
       "first_seen_kst": "2026-09-28T09:55:33+09:00",
       "lanes": {
@@ -53200,6 +53485,27 @@
       "source_published_kst": "2026-10-06T08:40+09:00",
       "title": "그록 주주들, 엔비디아 '우회 인수'에 소송…\"껍데기 회사 남겨\""
     },
+    "original:405ac66caffd6e84dec10f35": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.news1.kr/world/europe/6312157",
+      "source": "뉴스1",
+      "source_body_digest": "8e93f3e69724dd21366c05acf4c826d4f14d7ed234a224d48f6daebaa5b948b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b7b5acd0cd18041785ce4dff927130cf4916ac033e2e188cabc7a08888d516d2",
+      "source_fact_keys": [
+        "source_fact:v1:31c906444193be6a8045683e874c9c48ddd400e28534d351521285b5341b9290",
+        "source_fact:v1:522f1dc44d8760bb5faad34df296ca0548a834a6a7f72ffdbac81c15a126b75c",
+        "source_fact:v1:86795d882d3b00d6735284f8adc64864cadc31d5cdbdc8cca2fc251b19540530",
+        "source_fact:v1:d5412425086bb3b89e2f2da9fff7657b8f92b527d5f650b5eb14a4d23d560ff9",
+        "source_fact:v1:e4368d297f0fa8fa3a6bab7efd7cb45b64d3f80b1e139f956043ee7cdb75eb23"
+      ],
+      "source_published_kst": "2026-10-07T00:00+09:00",
+      "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
+    },
     "original:4067c18f803c064df1c555ae": {
       "first_seen_kst": "2026-10-02T12:43:56+09:00",
       "lanes": {
@@ -53209,6 +53515,24 @@
       "link": "https://www.etnews.com/20261002000114",
       "source": "전자신문",
       "title": "전북대 창업지원단, 지역 창업기업 투자 유치 발판 마련…10억 투자의향·확약서 확보"
+    },
+    "original:40927faff01584a21d307350": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.etnews.com/20261006000277",
+      "source": "전자신문",
+      "source_body_digest": "c2eed93e86e568ff32188869221682569f187a761c931e5e0ce77a63b03ad59c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acedef668e9db4a8d10b2dc1785ddf7beb6e9b6a2c09786c159f1495c43c0df4",
+      "source_fact_keys": [
+        "source_fact:v1:30a7bb7da18a4b501c08a3bbe5d413683f8d6da5d723303beb94af0f9c06daad",
+        "source_fact:v1:5864073ba3265e926a2bee0c6d56ea3e45f466f5d7a9ad4ae0e510d9e051c9af"
+      ],
+      "source_published_kst": "2026-10-06T14:27+09:00",
+      "title": "[통신규제, 틀을 바꾸자]〈상〉AI 시대 통신정책, 요금 아닌 혁신 경쟁 키워야"
     },
     "original:40c8b3f458de7369e00358b4": {
       "first_seen_kst": "2026-10-02T08:38:38+09:00",
@@ -56528,6 +56852,24 @@
       ],
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "韓 비료, 브라질 진출 교두보…콩·옥수수 시장 겨냥"
+    },
+    "original:5eca11fdc95e78e787c6ffd9": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006153151030",
+      "source": "연합뉴스",
+      "source_body_digest": "90218375f06dee0314a8a6bcaa854e5a729906c98f1921545426ae7e4521f9da",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9d8e473613b06543d6321e080a8828540fd23d62ba3afbb6e5b3a6941d5bd84b",
+      "source_fact_keys": [
+        "source_fact:v1:5c2b6a173331ac45957b6aa06b23fd0abb1c390696cb9b309284e5f2aec37df8",
+        "source_fact:v1:9daceb975ee72da3e764e69bab5bb8961d3ce8ec8f799b8dfb56bb1f801dfe76"
+      ],
+      "source_published_kst": "2026-10-06T16:53+09:00",
+      "title": "신세계그룹, 워너브라더스 인수에 10억달러…\"유통·엔터 결합\"(종합) | 연합뉴스"
     },
     "original:5ee0d81b5621e55a43690b8d": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -65640,6 +65982,21 @@
       "source_published_kst": "2026-10-06T17:06+09:00",
       "title": "포항제철소, 지능형 설비관리로 스마트 정비 혁신 가속화… 'PIMS Tech Day' 성황리 개최"
     },
+    "original:b7b294559e282a60abff332a": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06871606645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "e5ee462b11a76a2d365abfe48527b93515442071fe64e6dfe2244b02c6a8aad3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T22:41+09:00",
+      "title": "AI 투자붐에 美 8월 수입 사상 최대…무역적자 141조원"
+    },
     "original:b7c4b41cf0295321696dee07": {
       "first_seen_kst": "2026-09-27T06:08:01+09:00",
       "lanes": {
@@ -70303,6 +70660,26 @@
       "source_published_kst": "2026-10-06T14:27+09:00",
       "title": "\"구글, 콘스텔레이션과 10억달러 전력구매계약 임박\" | 연합뉴스"
     },
+    "original:e3b5cad0be72714b64ff3d1b": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03040566645610296",
+      "source": "이데일리",
+      "source_body_digest": "983d4ed35b865766d4ff5c815d072f63026047571200e2c65481007c60ec8a7d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85440de3ebd0cca741c8f8ab65b611be4c529bef1782bee22bd753297e068502",
+      "source_fact_keys": [
+        "source_fact:v1:63898f31844cdff7d4d712fc587cda48936c3a264c50decda5c108ddac9aa25b",
+        "source_fact:v1:987bacc5c1f9fe881abd03f4982418e17545868a3c6506a21fdbe18c3cb619f3",
+        "source_fact:v1:d237d0bb5e6b316651c04bde844e669f5e6473c1846209fe5438457cf4f29b0f",
+        "source_fact:v1:f58fd1b4418aece7eab2bc1db9e94419e02ff1ece438f2aab85778fc4cebe11d"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "이형일 “대미 관세·CPTPP 불확실성 최소화…공정과세 실현”"
+    },
     "original:e3c4f85af514c2ba625b2bbf": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -74901,6 +75278,24 @@
       "source_published_kst": "2026-10-05T20:06+09:00",
       "title": "터보젠, 20kW 시스템 양산 장기계약..5년 자동갱신"
     },
+    "source_fact:08153fffe91f4a5e6ed3ff33": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.etnews.com/20261006000277",
+      "source": "전자신문",
+      "source_body_digest": "c2eed93e86e568ff32188869221682569f187a761c931e5e0ce77a63b03ad59c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acedef668e9db4a8d10b2dc1785ddf7beb6e9b6a2c09786c159f1495c43c0df4",
+      "source_fact_keys": [
+        "source_fact:v1:30a7bb7da18a4b501c08a3bbe5d413683f8d6da5d723303beb94af0f9c06daad",
+        "source_fact:v1:5864073ba3265e926a2bee0c6d56ea3e45f466f5d7a9ad4ae0e510d9e051c9af"
+      ],
+      "source_published_kst": "2026-10-06T14:27+09:00",
+      "title": "[통신규제, 틀을 바꾸자]〈상〉AI 시대 통신정책, 요금 아닌 혁신 경쟁 키워야"
+    },
     "source_fact:08986bd9bb22a90964311dc8": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -76587,6 +76982,23 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:107c8b12d1abad827a35bc89": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006116900057",
+      "source": "연합뉴스",
+      "source_body_digest": "bf59407683c9f8bb8b9dc8b52805b9b119bd2e3ea8977cdf71822f95a88436d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7f7195c6e373a2307f82bad1d4b595be92ec7fb8fa0fdda2c27a2c72e8dbaf4b",
+      "source_fact_keys": [
+        "source_fact:v1:99aaead78b452643cbc139566546ffb158f1f55aaf72355c9f33e0f73de7d29e"
+      ],
+      "source_published_kst": "2026-10-06T14:26+09:00",
+      "title": "HD현대, 세계 최초 '래싱프리 컨테이너선' 프랑스 선사에 인도 | 연합뉴스"
     },
     "source_fact:108f40b1b4685d12fd03e0de": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -80049,6 +80461,27 @@
       "source_published_kst": "2026-10-06T12:07+09:00",
       "title": "'악수하고 춤까지' 中 휴머노이드 국감장 떴다...\"韓 투자 턱없이 부족\""
     },
+    "source_fact:22e834b152665a370f8b743b": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.news1.kr/world/europe/6312157",
+      "source": "뉴스1",
+      "source_body_digest": "8e93f3e69724dd21366c05acf4c826d4f14d7ed234a224d48f6daebaa5b948b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b7b5acd0cd18041785ce4dff927130cf4916ac033e2e188cabc7a08888d516d2",
+      "source_fact_keys": [
+        "source_fact:v1:31c906444193be6a8045683e874c9c48ddd400e28534d351521285b5341b9290",
+        "source_fact:v1:522f1dc44d8760bb5faad34df296ca0548a834a6a7f72ffdbac81c15a126b75c",
+        "source_fact:v1:86795d882d3b00d6735284f8adc64864cadc31d5cdbdc8cca2fc251b19540530",
+        "source_fact:v1:d5412425086bb3b89e2f2da9fff7657b8f92b527d5f650b5eb14a4d23d560ff9",
+        "source_fact:v1:e4368d297f0fa8fa3a6bab7efd7cb45b64d3f80b1e139f956043ee7cdb75eb23"
+      ],
+      "source_published_kst": "2026-10-07T00:00+09:00",
+      "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
+    },
     "source_fact:22f929de71f540f89eb96bb0": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -81025,6 +81458,24 @@
       "source_published_kst": "2026-10-06T13:05+09:00",
       "title": "\"양자 산업 키우려면 민관협력 필수…韓 강점 제조업에 집중해야\""
     },
+    "source_fact:27f1b09c4a6680a87cbc76c5": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006153151030",
+      "source": "연합뉴스",
+      "source_body_digest": "90218375f06dee0314a8a6bcaa854e5a729906c98f1921545426ae7e4521f9da",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9d8e473613b06543d6321e080a8828540fd23d62ba3afbb6e5b3a6941d5bd84b",
+      "source_fact_keys": [
+        "source_fact:v1:5c2b6a173331ac45957b6aa06b23fd0abb1c390696cb9b309284e5f2aec37df8",
+        "source_fact:v1:9daceb975ee72da3e764e69bab5bb8961d3ce8ec8f799b8dfb56bb1f801dfe76"
+      ],
+      "source_published_kst": "2026-10-06T16:53+09:00",
+      "title": "신세계그룹, 워너브라더스 인수에 10억달러…\"유통·엔터 결합\"(종합) | 연합뉴스"
+    },
     "source_fact:27f1cee1145f9f7055108cd4": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
       "lanes": {
@@ -81912,6 +82363,27 @@
       ],
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "폭염·AI에 日 전력난 비상… 노후 화력발전 수명연장 검토 | 연합뉴스"
+    },
+    "source_fact:2bae8f384a8d3b96e7dc5698": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.news1.kr/world/europe/6312157",
+      "source": "뉴스1",
+      "source_body_digest": "8e93f3e69724dd21366c05acf4c826d4f14d7ed234a224d48f6daebaa5b948b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b7b5acd0cd18041785ce4dff927130cf4916ac033e2e188cabc7a08888d516d2",
+      "source_fact_keys": [
+        "source_fact:v1:31c906444193be6a8045683e874c9c48ddd400e28534d351521285b5341b9290",
+        "source_fact:v1:522f1dc44d8760bb5faad34df296ca0548a834a6a7f72ffdbac81c15a126b75c",
+        "source_fact:v1:86795d882d3b00d6735284f8adc64864cadc31d5cdbdc8cca2fc251b19540530",
+        "source_fact:v1:d5412425086bb3b89e2f2da9fff7657b8f92b527d5f650b5eb14a4d23d560ff9",
+        "source_fact:v1:e4368d297f0fa8fa3a6bab7efd7cb45b64d3f80b1e139f956043ee7cdb75eb23"
+      ],
+      "source_published_kst": "2026-10-07T00:00+09:00",
+      "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
     },
     "source_fact:2bdba5a300ae1d0c493614fe": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
@@ -93261,6 +93733,25 @@
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
     },
+    "source_fact:61397f1ea8cb4c4ecf7b6c34": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.hankyung.com/article/202610053159i",
+      "source": "한국경제",
+      "source_body_digest": "afafcfe646f1cde95c4cb9d1f75aeced2a1f59724388d08d822f298fd2fc51a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd74350310aa14e1866b6a81b12856e8f67c78afb8a385257966409a7103e6e4",
+      "source_fact_keys": [
+        "source_fact:v1:b466805a5c7500d02bc656355651b1f5917b311cfb91b07f9c22d2bafa6df028",
+        "source_fact:v1:b5338cd44c2ac197f5f8b953d5b5add5fce053496e0dc44c04ac7b78681de78a",
+        "source_fact:v1:c625e2954d7b377503e8cb2b1cd8526aa222c98bb614c74afb408df4ef139807"
+      ],
+      "source_published_kst": "2026-10-06T07:32+09:00",
+      "title": "\"공급이 못 따라간다\"…수퍼사이클 탄 AI반도체 기판 3인방 비교분석"
+    },
     "source_fact:615df80cbfffeb05b3edceaf": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -98258,6 +98749,27 @@
       "source_published_kst": "2026-10-06T17:47+09:00",
       "title": "美 워너 인수 투자자로…신세계, 1.4兆 꽂는다"
     },
+    "source_fact:79066af5a9757d48d82da2ac": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.news1.kr/world/europe/6312157",
+      "source": "뉴스1",
+      "source_body_digest": "8e93f3e69724dd21366c05acf4c826d4f14d7ed234a224d48f6daebaa5b948b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b7b5acd0cd18041785ce4dff927130cf4916ac033e2e188cabc7a08888d516d2",
+      "source_fact_keys": [
+        "source_fact:v1:31c906444193be6a8045683e874c9c48ddd400e28534d351521285b5341b9290",
+        "source_fact:v1:522f1dc44d8760bb5faad34df296ca0548a834a6a7f72ffdbac81c15a126b75c",
+        "source_fact:v1:86795d882d3b00d6735284f8adc64864cadc31d5cdbdc8cca2fc251b19540530",
+        "source_fact:v1:d5412425086bb3b89e2f2da9fff7657b8f92b527d5f650b5eb14a4d23d560ff9",
+        "source_fact:v1:e4368d297f0fa8fa3a6bab7efd7cb45b64d3f80b1e139f956043ee7cdb75eb23"
+      ],
+      "source_published_kst": "2026-10-07T00:00+09:00",
+      "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
+    },
     "source_fact:79190f2cf2aea22cb6283162": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
       "lanes": {
@@ -99213,6 +99725,24 @@
       ],
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "[TODAY엔비디아]개장전 '상승'…월가, 신고가 경신에도 여전히 \"밸류 매력\""
+    },
+    "source_fact:7d0f75ef4eda0e37b3a7e7a6": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.etnews.com/20261006000277",
+      "source": "전자신문",
+      "source_body_digest": "c2eed93e86e568ff32188869221682569f187a761c931e5e0ce77a63b03ad59c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acedef668e9db4a8d10b2dc1785ddf7beb6e9b6a2c09786c159f1495c43c0df4",
+      "source_fact_keys": [
+        "source_fact:v1:30a7bb7da18a4b501c08a3bbe5d413683f8d6da5d723303beb94af0f9c06daad",
+        "source_fact:v1:5864073ba3265e926a2bee0c6d56ea3e45f466f5d7a9ad4ae0e510d9e051c9af"
+      ],
+      "source_published_kst": "2026-10-06T14:27+09:00",
+      "title": "[통신규제, 틀을 바꾸자]〈상〉AI 시대 통신정책, 요금 아닌 혁신 경쟁 키워야"
     },
     "source_fact:7d156211859c7efccdba3a20": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -102091,6 +102621,24 @@
       "source_published_kst": "2026-10-06T09:44+09:00",
       "title": "[특징주] LG전자 5%대 강세⋯북미 AI 데이터센터 냉각 솔루션 공급 호재"
     },
+    "source_fact:8a2393d5be5e73e079c37cc8": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006153151030",
+      "source": "연합뉴스",
+      "source_body_digest": "90218375f06dee0314a8a6bcaa854e5a729906c98f1921545426ae7e4521f9da",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9d8e473613b06543d6321e080a8828540fd23d62ba3afbb6e5b3a6941d5bd84b",
+      "source_fact_keys": [
+        "source_fact:v1:5c2b6a173331ac45957b6aa06b23fd0abb1c390696cb9b309284e5f2aec37df8",
+        "source_fact:v1:9daceb975ee72da3e764e69bab5bb8961d3ce8ec8f799b8dfb56bb1f801dfe76"
+      ],
+      "source_published_kst": "2026-10-06T16:53+09:00",
+      "title": "신세계그룹, 워너브라더스 인수에 10억달러…\"유통·엔터 결합\"(종합) | 연합뉴스"
+    },
     "source_fact:8a6d7931a9d3e9a3ff494d96": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -104642,6 +105190,27 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:96778196eeb29ce764567bb8": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.news1.kr/world/europe/6312157",
+      "source": "뉴스1",
+      "source_body_digest": "8e93f3e69724dd21366c05acf4c826d4f14d7ed234a224d48f6daebaa5b948b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b7b5acd0cd18041785ce4dff927130cf4916ac033e2e188cabc7a08888d516d2",
+      "source_fact_keys": [
+        "source_fact:v1:31c906444193be6a8045683e874c9c48ddd400e28534d351521285b5341b9290",
+        "source_fact:v1:522f1dc44d8760bb5faad34df296ca0548a834a6a7f72ffdbac81c15a126b75c",
+        "source_fact:v1:86795d882d3b00d6735284f8adc64864cadc31d5cdbdc8cca2fc251b19540530",
+        "source_fact:v1:d5412425086bb3b89e2f2da9fff7657b8f92b527d5f650b5eb14a4d23d560ff9",
+        "source_fact:v1:e4368d297f0fa8fa3a6bab7efd7cb45b64d3f80b1e139f956043ee7cdb75eb23"
+      ],
+      "source_published_kst": "2026-10-07T00:00+09:00",
+      "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
     },
     "source_fact:96835c9ccb9f16b4073579b7": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -110685,6 +111254,26 @@
       ],
       "source_published_kst": "2026-10-06T17:46+09:00",
       "title": "메모리 반도체 호황 속 삼성전자 완제품은 '고전'…DX부문 3분기 실적 어떻게"
+    },
+    "source_fact:b3023b5b72ef782e81dee8bf": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03040566645610296",
+      "source": "이데일리",
+      "source_body_digest": "983d4ed35b865766d4ff5c815d072f63026047571200e2c65481007c60ec8a7d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85440de3ebd0cca741c8f8ab65b611be4c529bef1782bee22bd753297e068502",
+      "source_fact_keys": [
+        "source_fact:v1:63898f31844cdff7d4d712fc587cda48936c3a264c50decda5c108ddac9aa25b",
+        "source_fact:v1:987bacc5c1f9fe881abd03f4982418e17545868a3c6506a21fdbe18c3cb619f3",
+        "source_fact:v1:d237d0bb5e6b316651c04bde844e669f5e6473c1846209fe5438457cf4f29b0f",
+        "source_fact:v1:f58fd1b4418aece7eab2bc1db9e94419e02ff1ece438f2aab85778fc4cebe11d"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "이형일 “대미 관세·CPTPP 불확실성 최소화…공정과세 실현”"
     },
     "source_fact:b3025383225d9af54a28984c": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -118773,6 +119362,25 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
     },
+    "source_fact:d7b911a3959d81758245eefb": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.hankyung.com/article/202610053159i",
+      "source": "한국경제",
+      "source_body_digest": "afafcfe646f1cde95c4cb9d1f75aeced2a1f59724388d08d822f298fd2fc51a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd74350310aa14e1866b6a81b12856e8f67c78afb8a385257966409a7103e6e4",
+      "source_fact_keys": [
+        "source_fact:v1:b466805a5c7500d02bc656355651b1f5917b311cfb91b07f9c22d2bafa6df028",
+        "source_fact:v1:b5338cd44c2ac197f5f8b953d5b5add5fce053496e0dc44c04ac7b78681de78a",
+        "source_fact:v1:c625e2954d7b377503e8cb2b1cd8526aa222c98bb614c74afb408df4ef139807"
+      ],
+      "source_published_kst": "2026-10-06T07:32+09:00",
+      "title": "\"공급이 못 따라간다\"…수퍼사이클 탄 AI반도체 기판 3인방 비교분석"
+    },
     "source_fact:d7cf8e9867a45575af01d7d9": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -120796,6 +121404,26 @@
       "source_published_kst": "2026-10-06T18:10+09:00",
       "title": "\"알래스카 LNG 전략적 가치 생겼지만… 상업성이 전제\" [李정부 2년차 국감]"
     },
+    "source_fact:e08abb3d760028813af3ac0e": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03040566645610296",
+      "source": "이데일리",
+      "source_body_digest": "983d4ed35b865766d4ff5c815d072f63026047571200e2c65481007c60ec8a7d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85440de3ebd0cca741c8f8ab65b611be4c529bef1782bee22bd753297e068502",
+      "source_fact_keys": [
+        "source_fact:v1:63898f31844cdff7d4d712fc587cda48936c3a264c50decda5c108ddac9aa25b",
+        "source_fact:v1:987bacc5c1f9fe881abd03f4982418e17545868a3c6506a21fdbe18c3cb619f3",
+        "source_fact:v1:d237d0bb5e6b316651c04bde844e669f5e6473c1846209fe5438457cf4f29b0f",
+        "source_fact:v1:f58fd1b4418aece7eab2bc1db9e94419e02ff1ece438f2aab85778fc4cebe11d"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "이형일 “대미 관세·CPTPP 불확실성 최소화…공정과세 실현”"
+    },
     "source_fact:e0a44a6b37af5fe952fe8b52": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -122677,6 +123305,27 @@
       "source_published_kst": "2026-10-05T18:03+09:00",
       "title": "'빚의 제국 빛을 잃다' 보도 인상적 … 고금리 위험요인 더 짚어달라"
     },
+    "source_fact:e8cfee576b6ac0e2eb5d926a": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.news1.kr/world/europe/6312157",
+      "source": "뉴스1",
+      "source_body_digest": "8e93f3e69724dd21366c05acf4c826d4f14d7ed234a224d48f6daebaa5b948b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b7b5acd0cd18041785ce4dff927130cf4916ac033e2e188cabc7a08888d516d2",
+      "source_fact_keys": [
+        "source_fact:v1:31c906444193be6a8045683e874c9c48ddd400e28534d351521285b5341b9290",
+        "source_fact:v1:522f1dc44d8760bb5faad34df296ca0548a834a6a7f72ffdbac81c15a126b75c",
+        "source_fact:v1:86795d882d3b00d6735284f8adc64864cadc31d5cdbdc8cca2fc251b19540530",
+        "source_fact:v1:d5412425086bb3b89e2f2da9fff7657b8f92b527d5f650b5eb14a4d23d560ff9",
+        "source_fact:v1:e4368d297f0fa8fa3a6bab7efd7cb45b64d3f80b1e139f956043ee7cdb75eb23"
+      ],
+      "source_published_kst": "2026-10-07T00:00+09:00",
+      "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
+    },
     "source_fact:e8d7e18b8d1e39ac3b690f74": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -122962,6 +123611,45 @@
       ],
       "source_published_kst": "2026-10-06T17:22+09:00",
       "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
+    },
+    "source_fact:ea2c0a10b43120567e39c5e9": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.hankyung.com/article/202610053159i",
+      "source": "한국경제",
+      "source_body_digest": "afafcfe646f1cde95c4cb9d1f75aeced2a1f59724388d08d822f298fd2fc51a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd74350310aa14e1866b6a81b12856e8f67c78afb8a385257966409a7103e6e4",
+      "source_fact_keys": [
+        "source_fact:v1:b466805a5c7500d02bc656355651b1f5917b311cfb91b07f9c22d2bafa6df028",
+        "source_fact:v1:b5338cd44c2ac197f5f8b953d5b5add5fce053496e0dc44c04ac7b78681de78a",
+        "source_fact:v1:c625e2954d7b377503e8cb2b1cd8526aa222c98bb614c74afb408df4ef139807"
+      ],
+      "source_published_kst": "2026-10-06T07:32+09:00",
+      "title": "\"공급이 못 따라간다\"…수퍼사이클 탄 AI반도체 기판 3인방 비교분석"
+    },
+    "source_fact:ea3615091865f82c5eb4bd1f": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03040566645610296",
+      "source": "이데일리",
+      "source_body_digest": "983d4ed35b865766d4ff5c815d072f63026047571200e2c65481007c60ec8a7d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85440de3ebd0cca741c8f8ab65b611be4c529bef1782bee22bd753297e068502",
+      "source_fact_keys": [
+        "source_fact:v1:63898f31844cdff7d4d712fc587cda48936c3a264c50decda5c108ddac9aa25b",
+        "source_fact:v1:987bacc5c1f9fe881abd03f4982418e17545868a3c6506a21fdbe18c3cb619f3",
+        "source_fact:v1:d237d0bb5e6b316651c04bde844e669f5e6473c1846209fe5438457cf4f29b0f",
+        "source_fact:v1:f58fd1b4418aece7eab2bc1db9e94419e02ff1ece438f2aab85778fc4cebe11d"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "이형일 “대미 관세·CPTPP 불확실성 최소화…공정과세 실현”"
     },
     "source_fact:ea557869797a9c5911f2032b": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -124808,6 +125496,26 @@
       ],
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
+    "source_fact:f2e4c25bbead682f88b70935": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03040566645610296",
+      "source": "이데일리",
+      "source_body_digest": "983d4ed35b865766d4ff5c815d072f63026047571200e2c65481007c60ec8a7d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85440de3ebd0cca741c8f8ab65b611be4c529bef1782bee22bd753297e068502",
+      "source_fact_keys": [
+        "source_fact:v1:63898f31844cdff7d4d712fc587cda48936c3a264c50decda5c108ddac9aa25b",
+        "source_fact:v1:987bacc5c1f9fe881abd03f4982418e17545868a3c6506a21fdbe18c3cb619f3",
+        "source_fact:v1:d237d0bb5e6b316651c04bde844e669f5e6473c1846209fe5438457cf4f29b0f",
+        "source_fact:v1:f58fd1b4418aece7eab2bc1db9e94419e02ff1ece438f2aab85778fc4cebe11d"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "이형일 “대미 관세·CPTPP 불확실성 최소화…공정과세 실현”"
     },
     "source_fact:f337e5600fa816e7169d42d6": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -128668,6 +129376,23 @@
       "source": "헤럴드경제",
       "title": "일본은행 “물가 더 오르면 금리인상 속도 높여야”…10월 추가 인상론"
     },
+    "title:0a3642f0b2e5ec9228fcce0b": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006116900057",
+      "source": "연합뉴스",
+      "source_body_digest": "bf59407683c9f8bb8b9dc8b52805b9b119bd2e3ea8977cdf71822f95a88436d9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7f7195c6e373a2307f82bad1d4b595be92ec7fb8fa0fdda2c27a2c72e8dbaf4b",
+      "source_fact_keys": [
+        "source_fact:v1:99aaead78b452643cbc139566546ffb158f1f55aaf72355c9f33e0f73de7d29e"
+      ],
+      "source_published_kst": "2026-10-06T14:26+09:00",
+      "title": "HD현대, 세계 최초 '래싱프리 컨테이너선' 프랑스 선사에 인도 | 연합뉴스"
+    },
     "title:0a3dc3a61c905d1ed6245f10": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
       "lanes": {
@@ -132174,6 +132899,25 @@
       "source": "뉴시스",
       "title": "성남·의정부 이어 고양까지…IPARK현대산업개발, 수도권 정비사업 확장"
     },
+    "title:2ba10b938355fd978dfb53fc": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.hankyung.com/article/202610053159i",
+      "source": "한국경제",
+      "source_body_digest": "afafcfe646f1cde95c4cb9d1f75aeced2a1f59724388d08d822f298fd2fc51a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:cd74350310aa14e1866b6a81b12856e8f67c78afb8a385257966409a7103e6e4",
+      "source_fact_keys": [
+        "source_fact:v1:b466805a5c7500d02bc656355651b1f5917b311cfb91b07f9c22d2bafa6df028",
+        "source_fact:v1:b5338cd44c2ac197f5f8b953d5b5add5fce053496e0dc44c04ac7b78681de78a",
+        "source_fact:v1:c625e2954d7b377503e8cb2b1cd8526aa222c98bb614c74afb408df4ef139807"
+      ],
+      "source_published_kst": "2026-10-06T07:32+09:00",
+      "title": "\"공급이 못 따라간다\"…수퍼사이클 탄 AI반도체 기판 3인방 비교분석"
+    },
     "title:2ba1cde485a82d904eb4453b": {
       "first_seen_kst": "2026-09-28T09:55:33+09:00",
       "lanes": {
@@ -134410,6 +135154,27 @@
       "source_published_kst": "2026-10-06T08:40+09:00",
       "title": "그록 주주들, 엔비디아 '우회 인수'에 소송…\"껍데기 회사 남겨\""
     },
+    "title:405ac66caffd6e84dec10f35": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.news1.kr/world/europe/6312157",
+      "source": "뉴스1",
+      "source_body_digest": "8e93f3e69724dd21366c05acf4c826d4f14d7ed234a224d48f6daebaa5b948b3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b7b5acd0cd18041785ce4dff927130cf4916ac033e2e188cabc7a08888d516d2",
+      "source_fact_keys": [
+        "source_fact:v1:31c906444193be6a8045683e874c9c48ddd400e28534d351521285b5341b9290",
+        "source_fact:v1:522f1dc44d8760bb5faad34df296ca0548a834a6a7f72ffdbac81c15a126b75c",
+        "source_fact:v1:86795d882d3b00d6735284f8adc64864cadc31d5cdbdc8cca2fc251b19540530",
+        "source_fact:v1:d5412425086bb3b89e2f2da9fff7657b8f92b527d5f650b5eb14a4d23d560ff9",
+        "source_fact:v1:e4368d297f0fa8fa3a6bab7efd7cb45b64d3f80b1e139f956043ee7cdb75eb23"
+      ],
+      "source_published_kst": "2026-10-07T00:00+09:00",
+      "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
+    },
     "title:4067c18f803c064df1c555ae": {
       "first_seen_kst": "2026-10-02T12:43:56+09:00",
       "lanes": {
@@ -134419,6 +135184,24 @@
       "link": "https://www.etnews.com/20261002000114",
       "source": "전자신문",
       "title": "전북대 창업지원단, 지역 창업기업 투자 유치 발판 마련…10억 투자의향·확약서 확보"
+    },
+    "title:40927faff01584a21d307350": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.etnews.com/20261006000277",
+      "source": "전자신문",
+      "source_body_digest": "c2eed93e86e568ff32188869221682569f187a761c931e5e0ce77a63b03ad59c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:acedef668e9db4a8d10b2dc1785ddf7beb6e9b6a2c09786c159f1495c43c0df4",
+      "source_fact_keys": [
+        "source_fact:v1:30a7bb7da18a4b501c08a3bbe5d413683f8d6da5d723303beb94af0f9c06daad",
+        "source_fact:v1:5864073ba3265e926a2bee0c6d56ea3e45f466f5d7a9ad4ae0e510d9e051c9af"
+      ],
+      "source_published_kst": "2026-10-06T14:27+09:00",
+      "title": "[통신규제, 틀을 바꾸자]〈상〉AI 시대 통신정책, 요금 아닌 혁신 경쟁 키워야"
     },
     "title:40c8b3f458de7369e00358b4": {
       "first_seen_kst": "2026-10-02T08:38:38+09:00",
@@ -137774,6 +138557,24 @@
       ],
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "韓 비료, 브라질 진출 교두보…콩·옥수수 시장 겨냥"
+    },
+    "title:5eca11fdc95e78e787c6ffd9": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006153151030",
+      "source": "연합뉴스",
+      "source_body_digest": "90218375f06dee0314a8a6bcaa854e5a729906c98f1921545426ae7e4521f9da",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9d8e473613b06543d6321e080a8828540fd23d62ba3afbb6e5b3a6941d5bd84b",
+      "source_fact_keys": [
+        "source_fact:v1:5c2b6a173331ac45957b6aa06b23fd0abb1c390696cb9b309284e5f2aec37df8",
+        "source_fact:v1:9daceb975ee72da3e764e69bab5bb8961d3ce8ec8f799b8dfb56bb1f801dfe76"
+      ],
+      "source_published_kst": "2026-10-06T16:53+09:00",
+      "title": "신세계그룹, 워너브라더스 인수에 10억달러…\"유통·엔터 결합\"(종합) | 연합뉴스"
     },
     "title:5ee0d81b5621e55a43690b8d": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -147122,6 +147923,21 @@
       "source_published_kst": "2026-10-06T17:06+09:00",
       "title": "포항제철소, 지능형 설비관리로 스마트 정비 혁신 가속화… 'PIMS Tech Day' 성황리 개최"
     },
+    "title:b7b294559e282a60abff332a": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=06871606645610296&mediaCodeNo=257",
+      "source": "이데일리",
+      "source_body_digest": "e5ee462b11a76a2d365abfe48527b93515442071fe64e6dfe2244b02c6a8aad3",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T22:41+09:00",
+      "title": "AI 투자붐에 美 8월 수입 사상 최대…무역적자 141조원"
+    },
     "title:b7c4b41cf0295321696dee07": {
       "first_seen_kst": "2026-09-27T06:08:01+09:00",
       "lanes": {
@@ -151842,6 +152658,26 @@
       "source_published_kst": "2026-10-06T14:27+09:00",
       "title": "\"구글, 콘스텔레이션과 10억달러 전력구매계약 임박\" | 연합뉴스"
     },
+    "title:e3b5cad0be72714b64ff3d1b": {
+      "first_seen_kst": "2026-10-07T00:38:27+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:38:27+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:38:27+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=03040566645610296",
+      "source": "이데일리",
+      "source_body_digest": "983d4ed35b865766d4ff5c815d072f63026047571200e2c65481007c60ec8a7d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:85440de3ebd0cca741c8f8ab65b611be4c529bef1782bee22bd753297e068502",
+      "source_fact_keys": [
+        "source_fact:v1:63898f31844cdff7d4d712fc587cda48936c3a264c50decda5c108ddac9aa25b",
+        "source_fact:v1:987bacc5c1f9fe881abd03f4982418e17545868a3c6506a21fdbe18c3cb619f3",
+        "source_fact:v1:d237d0bb5e6b316651c04bde844e669f5e6473c1846209fe5438457cf4f29b0f",
+        "source_fact:v1:f58fd1b4418aece7eab2bc1db9e94419e02ff1ece438f2aab85778fc4cebe11d"
+      ],
+      "source_published_kst": "2026-10-06T10:16+09:00",
+      "title": "이형일 “대미 관세·CPTPP 불확실성 최소화…공정과세 실현”"
+    },
     "title:e3c4f85af514c2ba625b2bbf": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -154832,5 +155668,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T00:23:09+09:00"
+  "updated_at_kst": "2026-10-07T00:38:27+09:00"
 }
