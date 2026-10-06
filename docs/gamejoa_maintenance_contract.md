@@ -433,3 +433,16 @@ Every defect or requested change must follow this sequence:
   policy reviews retain who pays, eligible supply horizon and current deadline.
 - Clinical pre-submission recommendations retain material failed endpoints
   and are not regulatory approval or successful phase-three efficacy results.
+- Photo captions can share a DOM row with the first news sentence. Strip only
+  the credited caption boundary and preserve the following article text.
+- Named bills compare actor, law, submission date and actual stage across
+  publishers. Capacity supply contracts compare issuer, named customer, product,
+  region, exact quantity, disclosure date and signed versus discussion scope.
+  Whole-body audited historical receipts may equate specific reprints, but an
+  unproved title, changed body or changed terms must not inherit that alias.
+- Quantified volume cores retain period, population, reported growth and a
+  material regional decline. Vessel delivery retains partial adoption and
+  attributes capacity claims. CMBS special management is not delinquency.
+- Scholarly policy advice without new legislative, budgetary or implementation
+  action is not a primary radar item. Actual current bill execution is checked
+  independently rather than excluded by a discussion-oriented title.

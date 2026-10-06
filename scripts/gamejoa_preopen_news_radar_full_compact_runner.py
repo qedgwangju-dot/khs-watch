@@ -1746,6 +1746,7 @@ def clean_article_summary_text(text: str) -> str:
         .replace("\u200b", "")
         .replace("弗", "달러")
     )
+    cleaned = market_materiality.strip_source_photo_caption(cleaned)
     cleaned = re.sub(
         r"^[^.!?\r\n]{0,140}\[[^\]\r\n]{0,40}자료사진\]\s*", "", cleaned,
     )
@@ -2590,6 +2591,33 @@ def reported_issuer_announcement_fact(title: str, body: str) -> str:
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
+    supply = market_materiality.capacity_supply_contract_observation(title, body)
+    if supply:
+        fact = (f"{supply['issuer']}{korean_topic_particle(supply['issuer'])} {supply['region']} "
+                f"{supply['customer']}와 {supply['capacity_gw']}GW {supply['product']} 장기 공급계약을 체결했다.")
+        if supply['pending_cdu']:
+            fact += ' CDU 공급 확대는 논의 중이다.'
+        return fact if core_sentence_is_complete(fact) else ''
+    volume = market_materiality.vehicle_volume_observation(title, body)
+    if volume:
+        fact = (f"{volume['issuer']}의 {volume['period']} 전기차({volume['population']}) 인도량은 "
+                f"{volume['volume']}대로 전년 동기 대비 {volume['change']}% {volume['direction']}했다. "
+                f"세계 시장은 {volume['market_change']}% {volume['market_direction']}했지만, "
+                f"그룹의 북미 인도량은 {volume['north_america_change']}% {volume['north_america_direction']}했다.")
+        return fact if core_sentence_is_complete(fact) else ''
+    marine = market_materiality.marine_delivery_observation(title, body)
+    if marine:
+        fact = (f"{marine['issuer']}{korean_topic_particle(marine['issuer'])} {marine['technology']} "
+                f"{marine['type']} 타입을 부분 적용한 {marine['country']} 선사의 {marine['capacity_teu']}TEU 컨테이너선을 인도했다. "
+                f"회사는 이 기술로 갑판 적재중량을 {marine['cargo_increase']}% 이상 늘릴 수 있다고 설명했다.")
+        return fact if core_sentence_is_complete(fact) else ''
+    property_stress = market_materiality.commercial_property_stress_observation(title, body)
+    if property_stress:
+        fact = (f"고금리 속 미국 상업용 부동산 시장의 FTSE 상장리츠지수는 {property_stress['from']}부터 {property_stress['until']}까지 "
+                f"{property_stress['index_decline']}% 넘게 하락했다. 트렙에 따르면 {property_stress['loan_period']} "
+                f"CMBS 대출의 {property_stress['special_management_share']}%가 특수관리 대상이며, "
+                f"{property_stress['high_since']} 이후 최고 수준이다.")
+        return fact if core_sentence_is_complete(fact) else ''
     product = market_materiality.industrial_product_milestone_observation(title, body)
     if product:
         fact = (f"{product['issuer']}{korean_topic_particle(product['issuer'])} AI 데이터센터용 {product['technology']} '{product['new_model']}' 제품을 추가한다고 밝혔다. "
@@ -2621,7 +2649,9 @@ def source_headline_event_fact(title: str, body: str) -> str:
     if legislation:
         day = f" {legislation['day']}일" if legislation['day'] else ''
         fact = f"{legislation['actor']} 의원이 '{legislation['law']}'을{day} {legislation['action']}."
-        if legislation['purpose'] and core_sentence_is_complete(fact + ' ' + legislation['purpose']):
+        if legislation['investment_vehicle'] and all(re.search(term, body) for term in (r'AI|인공지능', '드론', '로봇', '중소', '중견')):
+            fact += ' 투자전문회사 설립과 AI·드론·로봇 분야 중소기업·중견기업 지원을 담았다.'
+        elif legislation['purpose'] and core_sentence_is_complete(fact + ' ' + legislation['purpose']):
             fact += ' ' + legislation['purpose']
         return fact if core_sentence_is_complete(fact) else ''
     if re.search(r"규제\s*개선", title):

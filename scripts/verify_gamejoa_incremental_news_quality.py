@@ -61,6 +61,8 @@ POLICY_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_policy_scope_fixtures_20
 POLICY_SCOPE_CASES = {case["id"]: case for case in POLICY_SCOPE_FIXTURE["cases"]}
 EXECUTION_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_execution_scope_fixtures_20261006.json").read_text(encoding="utf-8"))
 EXECUTION_SCOPE_CASES = {case["id"]: case for case in EXECUTION_SCOPE_FIXTURE["cases"]}
+FOREGROUND_TERMS_FIXTURE = json.loads((ROOT / 'data/gamejoa_foreground_terms_fixtures_20261006.json').read_text(encoding='utf-8'))
+FOREGROUND_TERMS_CASES = {case['id']: case for case in FOREGROUND_TERMS_FIXTURE['cases']}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -102,6 +104,161 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def foreground_terms_alert(self, key):
+        case = FOREGROUND_TERMS_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_version88_all_source_bodies_retain_concrete_foreground_terms(self):
+        now = NOW.replace(day=6, hour=15)
+        for case in FOREGROUND_TERMS_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                candidate = classify(case, now)
+                selected = radar.quality_display_alerts([candidate], 30) if candidate else []
+                self.assertEqual(bool(selected), case['expected_keep'])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+                    self.assertTrue(radar.core_sentence_is_complete(selected[0]['telegram_core_fact']))
+
+    def test_caption_boundary_retains_following_article_sentence(self):
+        item = self.foreground_terms_alert('regulatory_package_split_clauses_and_caption')
+        cleaned = materiality.source_reported_body(item['source_body'])
+        self.assertIn('정부가 자동차 내부 디스플레이', cleaned)
+        self.assertNotIn('24.6형 OLED', cleaned)
+        self.assertNotIn('(사진=', cleaned)
+        self.assertEqual(materiality.strip_source_photo_caption('▲전기차 판매 20% 증가'), '▲전기차 판매 20% 증가')
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_split_regulation_clauses_use_same_package_not_caption_or_meeting_date(self):
+        item = self.foreground_terms_alert('regulatory_package_split_clauses_and_caption')
+        old = self.execution_scope_alert('regulatory_package_reprint')
+        identity = materiality.source_event_identity(item)
+        self.assertEqual(identity, materiality.source_event_identity(old))
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('수출입공고 개정', '연내', '2027년 1분기', '계획'):
+            self.assertIn(term, core)
+        self.assertNotIn('GV90', core)
+        for old_value, new_value in (('2027년 1분기', '2027년 2분기'), ('연내 개정', '2028년 개정'),
+                                     ('개정할 계획', '개정했다'), ('6일 규제', '7일 규제'),
+                                     ('재생에너지 특구', '전국 모든 지역')):
+            self.assertNotEqual(identity, materiality.source_event_identity({
+                **item, 'source_body': item['source_body'].replace(old_value, new_value)}))
+
+    def test_one_named_bill_across_publishers_preserves_new_stage_or_actor(self):
+        item = self.foreground_terms_alert('bill_reprint_with_investment_vehicle')
+        old = self.policy_scope_alert('legislative_action_not_prior_speech')
+        identity = materiality.source_event_identity(item)
+        self.assertTrue(identity.startswith('source_event:v2:legislative_action:'))
+        self.assertEqual(identity, materiality.source_event_identity(old))
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('오세희', '발의했다', '투자전문회사 설립', '중소기업·중견기업'):
+            self.assertIn(term, core)
+        for old_value, new_value in (('오세희', '김미래'), ('신안보 혁신기업', '미래 에너지기업'),
+                                     ('대표 발의했다', '통과했다')):
+            self.assertNotEqual(identity, materiality.source_event_identity({
+                **item, 'source_body': item['source_body'].replace(old_value, new_value)}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+        no_ai_body = item['source_body'].replace('인공지능(AI)·', '')
+        no_ai_core = radar.source_headline_event_fact(item['source_title'], no_ai_body)
+        self.assertNotIn('AI·', no_ai_core)
+
+    def test_capacity_contract_summary_keeps_customer_quantity_and_pending_expansion(self):
+        item = self.foreground_terms_alert('cooling_contract_with_named_customer')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('LG전자', '에어 컨트롤 콘셉트', '5GW', '칠러', '장기 공급계약', 'CDU 공급 확대는 논의 중'):
+            self.assertIn(term, core)
+        self.assertNotIn('6000억원', core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+        identity = materiality.source_event_identity(item)
+        for old_value, new_value in (('5GW', '6GW'), ('에어 컨트롤 콘셉트', '다른 고객'), ('논의 중', '체결했다')):
+            self.assertNotEqual(identity, materiality.source_event_identity({
+                **item, 'source_body': item['source_body'].replace(old_value, new_value)}))
+
+    def test_named_bill_cross_run_reprint_is_quiet_but_new_actor_is_fresh(self):
+        old = self.policy_scope_alert('legislative_action_not_prior_speech')
+        item = self.foreground_terms_alert('bill_reprint_with_investment_vehicle')
+        now = NOW.replace(day=6, hour=15)
+        with tempfile.TemporaryDirectory() as folder, patch.object(telegram, 'SEEN_PATH', Path(folder) / 'seen.json'):
+            telegram.record_seen_alerts([old], now)
+            fresh, skipped = telegram.filter_previously_seen_alerts([item], now, 'live')
+            self.assertFalse(fresh)
+            self.assertEqual(len(skipped), 1)
+            changed = {**item, 'source_body': item['source_body'].replace('오세희', '김미래'),
+                       'link': 'https://www.newsis.com/view/new-law-actor'}
+            fresh, _ = telegram.filter_previously_seen_alerts([changed], now, 'live')
+            self.assertEqual(len(fresh), 1)
+
+    def test_regulatory_package_cross_run_reprint_is_quiet_but_new_deadline_is_fresh(self):
+        old = self.execution_scope_alert('regulatory_package_reprint')
+        item = self.foreground_terms_alert('regulatory_package_split_clauses_and_caption')
+        now = NOW.replace(day=6, hour=15)
+        with tempfile.TemporaryDirectory() as folder, patch.object(telegram, 'SEEN_PATH', Path(folder) / 'seen.json'):
+            telegram.record_seen_alerts([old], now)
+            fresh, skipped = telegram.filter_previously_seen_alerts([item], now, 'live')
+            self.assertFalse(fresh)
+            self.assertEqual(len(skipped), 1)
+            changed = {**item, 'source_body': item['source_body'].replace('2027년 1분기', '2027년 2분기'),
+                       'link': 'https://www.etoday.co.kr/news/view/new-package-deadline'}
+            fresh, _ = telegram.filter_previously_seen_alerts([changed], now, 'live')
+            self.assertEqual(len(fresh), 1)
+
+    def test_capacity_contract_receipt_migration_preserves_material_followups(self):
+        item = self.foreground_terms_alert('cooling_contract_with_named_customer')
+        proof = next(row for row in materiality.verified_event_aliases()
+                     if row['message_id'] == 2285 and row['source_event_identity'].startswith('source_event:v2:capacity_supply_contract:'))
+        now = NOW.replace(day=6, hour=15)
+        with tempfile.TemporaryDirectory() as folder, patch.object(telegram, 'SEEN_PATH', Path(folder) / 'seen.json'):
+            state = {'seen': {'old-receipt': {'title': proof['source_title'], 'link': proof['link'],
+                                            'first_seen_kst': '2026-10-06T07:07:00+09:00'}}}
+            telegram.SEEN_PATH.write_text(json.dumps(state), encoding='utf-8')
+            fresh, skipped = telegram.filter_previously_seen_alerts([item], now, 'live')
+            self.assertFalse(fresh)
+            self.assertEqual(len(skipped), 1)
+            for old_value, new_value in (('5GW', '6GW'), ('에어 컨트롤 콘셉트', '다른 고객'),
+                                         ('논의 중', '체결했다'), ('6일 밝혔다', '7일 밝혔다')):
+                with self.subTest(change=new_value):
+                    changed = {**item, 'source_body': item['source_body'].replace(old_value, new_value),
+                               'link': 'https://biz.heraldcorp.com/article/new-capacity-contract'}
+                    fresh, _ = telegram.filter_previously_seen_alerts([changed], now, 'live')
+                    self.assertEqual(len(fresh), 1)
+
+    def test_vehicle_volume_retains_period_population_growth_and_regional_decline(self):
+        item = self.foreground_terms_alert('vehicle_volume_period_and_regional_counterfact')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('현대차그룹', '1~8월', 'BEV·PHEV', '49만9500대', '20.4%', '5.9%', '북미', '23.4% 감소'):
+            self.assertIn(term, core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+        for old_value, new_value in (('20.4%', '16.1%'), ('BEV·PHEV', 'BEV'), ('23.4% 감소', '23.4% 증가')):
+            self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace(old_value, new_value)}))
+
+    def test_marine_delivery_keeps_partial_application_and_attributed_capacity_claim(self):
+        item = self.foreground_terms_alert('marine_delivery_partial_technology_and_claim')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('HD현대', '하이브리드 타입을 부분 적용', '프랑스 선사', '1만3000TEU', '인도했다', '10% 이상', '회사는', '설명했다'):
+            self.assertIn(term, core)
+        self.assertNotIn('부사장은', core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+        self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace('부분 적용', '전면 적용')}))
+
+    def test_policy_advice_does_not_hide_actual_bill_or_current_tariff_execution(self):
+        case = FOREGROUND_TERMS_CASES['scholarly_policy_advice_not_new_execution']
+        self.assertFalse(eligible(case['title'], case['body']))
+        self.assertTrue(eligible('농지법 개정 필요…의원, 특별법 발의',
+                                 '오세희 의원은 6일 농지 공급 규제를 완화하는 특별법안을 발의했다. ' + case['body']))
+
+    def test_property_stress_core_keeps_loan_scope_and_does_not_call_it_delinquency(self):
+        item = self.foreground_terms_alert('commercial_property_refinancing_stress')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('미국', 'FTSE', '8월 말', '이달 2일', '8% 넘게', '트렙', '8월 CMBS', '11.42%', '특수관리', '2013년 2월'):
+            self.assertIn(term, core)
+        self.assertNotIn('연체율', core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+        self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace('특수관리 대상', '연체 상태')}))
+        self.assertFalse(materiality.commercial_property_stress_observation(
+            item['source_title'], item['source_body'].replace('미국', '일본')))
+
     def execution_scope_alert(self, key):
         case = EXECUTION_SCOPE_CASES[key]
         return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
@@ -999,7 +1156,7 @@ class IncrementalNewsTests(unittest.TestCase):
         case = FOLLOWON_CASES["cooling_contract_not_half_year_order_total"]
         item = self.followon_alert(case["id"])
         core = radar.verified_alert_core(item, case["title"])
-        for term in ("LG전자", "에어 컨트롤 콘셉트", "5GW", "장기공급계약", "CDU", "논의 중"):
+        for term in ("LG전자", "에어 컨트롤 콘셉트", "5GW", "장기 공급계약", "CDU", "논의 중"):
             self.assertIn(term, core)
         self.assertNotIn("6000억원", core)
         self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])

@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 88
+VERSION = 89
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -212,7 +212,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("retail_fuel", r"주유소.{0,30}(?:기름값|휘발유|경유)|(?:휘발유|경유).{0,15}(?:L당|리터당)", r"(?:휘발유|경유).{0,55}(?:L|리터)(?:\(L\))?\s*당\s*\d[\d,.]*원"),
     ("commodity_price_release", r"세계\s*식량\s*가격|식량가격지수|FAO.{0,20}(?:식량|지수)", r"(?:세계\s*)?식량\s*가격\s*지수.{0,45}\d"),
     ("product_sales_mix", r"판매.{0,35}(?:비중|중.{0,15}(?:친환경|전기차|하이브리드))|제품\s*믹스|판매\s*믹스", r"판매(?:량|대수|비중)?.{0,100}(?:차지|비중|%)"),
-    ("product_volume", r"[1-4]분기\s*판매\s*\d|판매량.{0,25}(?:증가|감소)", r"판매량|출고"),
+    ("product_volume", r"[1-4]분기\s*판매\s*\d|판매량.{0,25}(?:증가|감소)|(?:전기차|자동차).{0,20}판매.{0,12}\d", r"판매량|출고|인도량"),
     ("energy_import_mix", r"원유\s*도입\s*비중", r"원유\s*도입\s*비중|(?:중동|미주|사우디|미국)산"),
     ("energy_supply", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|\bbrent\b|\boil\b|hormuz|tanker", rf"브렌트|{OIL_PRICE}|원유|천연가스|호르무즈|홍해|유조선|운임|항행|통항|brent|\boil\b|hormuz|tanker|shipping"),
     ("bond_yield", r"금리|국채.{0,8}(?:투매|수익률)|bond yields|treasury yields", r"금리|국채.{0,8}수익률|bond yields|treasury yields|interest rates"),
@@ -438,7 +438,7 @@ def focus_matches(title: str, sentence: str) -> bool:
         return bool(re.search(r"단주|매매수량단위|시간외\s*종가매매", sentence)
                     and re.search(r"허용|검토|확대|처분|변경|시행|발표", sentence))
     if kind == "product_volume":
-        return bool(re.search(r"판매량|출고", sentence) and (
+        return bool(re.search(r"판매량|출고|인도량", sentence) and (
             re.search(r"\d[\d,.]*(?:만\d[\d,.]*)?대", sentence)
             or re.search(r"\d[\d,.]*%\s*(?:증가|감소|늘|줄)", sentence)
         ))
@@ -965,9 +965,18 @@ def verified_source_body_digest(alert: dict) -> str:
     return hashlib.sha256(body.encode("utf-8")).hexdigest() if body else ""
 
 
+def strip_source_photo_caption(line: str) -> str:
+    """A caption and the first article sentence can share one DOM text row."""
+    value = str(line or '').strip()
+    credit = re.search(r"\((?:사진(?:제공)?|제공)\s*[:=][^)]{1,100}\)", value)
+    if credit and (value.startswith('▲') or PHOTO_DESCRIPTION.search(value[:credit.end()])):
+        return value[credit.end():].strip()
+    return value
+
+
 def source_reported_body(body: str) -> str:
     """Keep the report, not a separately labelled leading AI commentary card."""
-    lines = source_article_body(body).splitlines()
+    lines = [strip_source_photo_caption(line) for line in source_article_body(body).splitlines()]
     nonempty = [index for index, line in enumerate(lines) if line.strip()]
     if nonempty and re.fullmatch(r"(?:💡\s*)?AI\s*분석", lines[nonempty[0]].strip(), re.I):
         # This publisher layout has one summary paragraph followed by the report.
@@ -1413,17 +1422,19 @@ def regulatory_package_observation(title: str, body: str) -> dict[str, str]:
     source = source_reported_body(body)
     rows = source_sentences(source)
     package = re.search(r"['‘]([^'’]{2,60}현장\s*규제\s*개선\s*방안)['’]", source)
-    import_row = next((row for row in rows if re.search(r"수입\s*승인\s*대상에서\s*제외", row)
-                       and '수출입공고' in row and re.search(r"개정.{0,12}추진", row)), '')
+    import_index = next((index for index, row in enumerate(rows)
+                         if re.search(r"수입\s*승인\s*대상에서\s*제외", row)
+                         and '수출입공고' in row and re.search(r"개정.{0,12}(?:추진|계획)", row)), None)
+    import_row = ' '.join(rows[import_index:import_index + 2]) if import_index is not None else ''
     guide_row = next((row for row in rows if re.search(r"보안\s*가이드라인", row)
                       and re.search(r"내년\s*\d분기|20\d{2}년\s*\d분기", row)
                       and re.search(r"계획|목표", row)), '')
-    item = re.search(r"자동차\s*(?:내부\s*)?디스플레이용\s*강화\s*유리", import_row)
+    item = re.search(r"자동차.{0,25}디스플레이.{0,20}강화\s*유리", ' '.join(rows[:12]))
     deadline = re.search(r"연내|20\d{2}년", import_row)
     guide_time = re.search(r"(내년|20\d{2}년)\s*(\d)분기", guide_row)
-    announcement = next((row for row in rows if re.search(r"총리실|규제합리화추진단|규제합리화위원회", row)
-                         and re.search(r"\d{1,2}일\s*밝혔다", row)), '')
-    day = re.search(r"(?<!\d)(\d{1,2})일\s*밝혔다", announcement)
+    announcement = next((row for row in rows if re.search(r"총리실|국무조정실|규제합리화추진단|규제합리화위원회", row)
+                         and re.search(r"\d{1,2}일[^.!?]{0,180}밝혔다", row)), '')
+    day = re.search(r"(?<!\d)(\d{1,2})일[^.!?]{0,180}?밝혔다", announcement)
     if not (package and item and deadline and guide_time and day):
         return {}
     ppa = bool(re.search(r"다수.{0,8}대.{0,8}다수", source) and re.search(r"재생에너지\s*특구", source))
@@ -1631,15 +1642,102 @@ def legislative_action_observation(title: str, body: str) -> dict[str, str]:
                       and re.search(r"의원(?:은|는|이|가)", row)), '')
     actor = re.search(r"([가-힣]{2,4})\s+(?:[가-힣]{2,15}\s+)?의원(?:은|는|이|가)", statement)
     law = re.search(r"['‘]([^'’]{2,70}(?:법|법안|법률))['’]", statement)
-    action = re.search(r"대표발의했다|발의했다|제출했다|통과했다|공포했다", statement)
+    action = re.search(r"대표\s*발의했다|발의했다|제출했다|통과했다|공포했다", statement)
     day = next((match for row in rows if focus_matches(title, row)
                 and (match := re.search(r"(?<!\d)(\d{1,2})일\s*(?:발의|제출|통과|공포)", row))), None)
     purpose = next((row for row in rows if re.search(r"(?:지원|지정)하는\s*내용(?:이|이다)", row)
                     and not PAST_ACTION.search(row)), '')
     if not (actor and law and action):
         return {}
-    return {'actor': actor[1], 'law': law[1], 'action': action[0], 'day': day[1] if day else '',
+    vehicle = next((row for row in rows if re.search(r"투자\s*전문\s*회사", row)
+                    and re.search(r"신설|설립|세워|수행\s*주체", row)), '')
+    return {'actor': actor[1], 'law': law[1], 'action': action[0].replace(' ', ''), 'day': day[1] if day else '',
+            'investment_vehicle': vehicle,
             'purpose': purpose, 'source_excerpt': statement}
+
+
+def capacity_supply_contract_observation(title: str, body: str) -> dict[str, str]:
+    if not re.search(r"냉각.{0,30}(?:계약|수주)|(?:계약|수주).{0,40}냉각", title):
+        return {}
+    source = source_reported_body(body)
+    rows = source_sentences(source)
+    capacity_row = next((row for row in rows if re.search(r"\d+(?:\.\d+)?\s*(?:GW|기가와트)", row)
+                         and re.search(r"수주|공급\s*계약|계약을\s*따냈", row)), '')
+    issuer = next((match for match in re.finditer(r"([A-Za-z가-힣&·.-]{2,30})(?:은|는|이|가|의)\s*", capacity_row)
+                   if match[1] in title), None)
+    partner_row = next((row for row in rows if re.search(r"장기\s*공급\s*계약|칠러\s*LTA", row)
+                        and re.search(r"체결했|맺은", row)), '')
+    customer = re.search(r"['‘]([^'’]{2,60})['’]\s*(?:\([^)]{1,15}\))?(?:와|과)", partner_row)
+    capacity = re.search(r"(\d+(?:\.\d+)?)\s*(?:GW|기가와트)", capacity_row)
+    if not (issuer and customer and capacity and '칠러' in source and re.search(r"북미", capacity_row + partner_row)):
+        return {}
+    pending_cdu = any('CDU' in row and re.search(r"공급.{0,25}확대|공급\s*품목.{0,15}확대", row)
+                      and re.search(r"논의", row) for row in rows)
+    day = re.search(r"(?<!\d)(\d{1,2})일\s*밝혔다", partner_row)
+    return {'issuer': issuer[1], 'customer': customer[1], 'capacity_gw': capacity[1],
+            'region': '북미', 'product': 'AI 데이터센터용 칠러', 'stage': 'long_term_supply_signed',
+            'day': day[1] if day else '',
+            'pending_cdu': 'discussion' if pending_cdu else '', 'source_excerpt': partner_row}
+
+
+def vehicle_volume_observation(title: str, body: str) -> dict[str, str]:
+    if focus_kind(title) != 'product_volume':
+        return {}
+    rows = source_sentences(source_reported_body(body))
+    row = next((row for row in rows if re.search(r"글로벌\s*전기차.*인도량은", row)
+                and re.search(r"전년\s*동기", row)), '')
+    match = re.search(r"(?:올해\s*)?(?P<period>\d{1,2}[~∼-]\d{1,2}월)\s*(?P<issuer>[A-Za-z가-힣&·.-]{2,30})의\s*"
+                      r"글로벌\s*전기차\((?P<population>[A-Z·ㆍ+]+)\)\s*인도량은\s*"
+                      r"(?P<volume>[\d만천백십,]+)대로\s*전년\s*동기[^.!?]{0,60}?"
+                      r"(?P<change>\d+(?:\.\d+)?)%\s*(?P<direction>증가|감소)", row)
+    regional = next((row for row in rows if re.search(r"북미\s*인도량은", row)), '')
+    counter = re.search(r"북미\s*인도량은\s*(\d+(?:\.\d+)?)%\s*(증가|감소)", regional)
+    market = next((row for row in rows if re.search(r"올해.{0,15}글로벌\s*전기차\s*인도량은", row)), '')
+    growth = re.search(r"전년\s*동기\s*대비\s*(\d+(?:\.\d+)?)%\s*(증가|감소)", market)
+    if not (match and match['issuer'] in title and growth and counter):
+        return {}
+    return {**match.groupdict(), 'market_change': growth[1], 'market_direction': growth[2],
+            'north_america_change': counter[1], 'north_america_direction': counter[2], 'source_excerpt': row}
+
+
+def marine_delivery_observation(title: str, body: str) -> dict[str, str]:
+    if not re.search(r"컨테이너선.{0,15}인도", title):
+        return {}
+    rows = source_sentences(source_reported_body(body))
+    row = next((row for row in rows if re.search(r"인도했다고\s*\d{1,2}일\s*밝혔다", row)), '')
+    issuer = re.match(r"([A-Za-z가-힣&·.-]{2,30})(?:은|는)\s", row)
+    technology = re.search(r"([가-힣A-Za-z]+)\s*기술\s*가운데\s*([^.!?]{2,40}?)\s*타입을\s*부분\s*적용한", row)
+    customer = re.search(r"([가-힣]+)\s*선사의\s*([\d만천백십,]+)TEU급\s*컨테이너선", row, re.I)
+    claim = next((row for row in rows if re.search(r"회사\s*측에\s*따르면", row)
+                  and re.search(r"화물\s*중량", row)), '')
+    increase = re.search(r"화물\s*중량이\s*(\d+(?:\.\d+)?)%\s*이상\s*늘", claim)
+    day = re.search(r"(\d{1,2})일\s*밝혔다", row)
+    if not (issuer and issuer[1] in title and technology and customer and increase and day):
+        return {}
+    return {'issuer': issuer[1], 'technology': technology[1], 'type': technology[2], 'country': customer[1],
+            'capacity_teu': customer[2], 'cargo_increase': increase[1], 'day': day[1],
+            'stage': 'partial_technology_vessel_delivered', 'source_excerpt': row}
+
+
+def commercial_property_stress_observation(title: str, body: str) -> dict[str, str]:
+    if not re.search(r"상업용\s*부동산", title):
+        return {}
+    source = source_reported_body(body)
+    if not ('미국' in source and '고금리' in title + source):
+        return {}
+    rows = source_sentences(source)
+    row = next((row for row in rows if 'FTSE' in row and re.search(r"하락했다", row)), '')
+    change = re.search(r"(\d+(?:\.\d+)?)%\s*넘게\s*하락했다", row)
+    period = re.search(r"(\d{1,2}월\s*말)부터\s*(이달\s*\d{1,2}일)까지", row)
+    loan = next((row for row in rows if 'CMBS' in row and re.search(r"특수관리", row)), '')
+    management = re.search(r"(\d{1,2}월)\s*기준.*대출의\s*(\d+(?:\.\d+)?)%", loan)
+    high = next((row for row in rows if re.search(r"20\d{2}년\s*\d{1,2}월\s*이후\s*가장\s*높", row)), '')
+    since = re.search(r"(20\d{2}년\s*\d{1,2}월)\s*이후", high)
+    if not (change and period and management and since and '트렙' in loan):
+        return {}
+    return {'from': period[1], 'until': period[2], 'index_decline': change[1],
+            'loan_period': management[1], 'special_management_share': management[2], 'high_since': since[1],
+            'source_excerpt': row}
 
 
 def commercial_order_terms(title: str, body: str, published: str = "") -> dict[str, object]:
@@ -1718,6 +1816,23 @@ def source_event_identity(alert: dict) -> str:
     body = str(alert.get("source_body") or "") if alert.get("body_verified") else ""
     published = str(alert.get("published") or "")
     if re.match(r"20\d{2}-\d{2}-\d{2}", published):
+        law = legislative_action_observation(title, body)
+        if law:
+            terms = {'actor': law['actor'], 'law': canonical_source_fact(re.sub(r'법안$', '법', law['law'])),
+                     'stage': 'introduced' if '발의' in law['action'] else law['action'],
+                     'disclosure_date': published[:8] + (law['day'] or published[8:10]).zfill(2),
+                     'explicit_revision': bool(re.search(r"수정\s*법안|대안\s*발의|재발의|법안.{0,15}철회", title))}
+            if terms['explicit_revision']:
+                terms['revision_excerpt'] = canonical_source_fact(law['source_excerpt'])
+            digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+            return f'source_event:v2:legislative_action:{digest}'
+        supply = capacity_supply_contract_observation(title, body)
+        if supply:
+            terms = {key: canonical_source_fact(value) for key, value in supply.items() if key not in {'source_excerpt', 'day'}}
+            terms['disclosure_date'] = published[:8] + (supply['day'] or published[8:10]).zfill(2)
+            terms['explicit_revision'] = bool(re.search(r"추가\s*계약|계약.{0,15}(?:변경|갱신|정정)", title))
+            digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+            return f'source_event:v2:capacity_supply_contract:{digest}'
         construction = construction_order_observation(title, body)
         regulation = regulatory_package_observation(title, body)
         product = industrial_product_milestone_observation(title, body)
@@ -1870,7 +1985,7 @@ RULES = (
     ("order_backlog_level", ("earnings", "timeline"),
      r"수주잔고|수주\s*잔고|잔여수주|order backlog|remaining orders", r"확보|기록|집계|발표|증가|감소|secur|report|increas|decreas"),
     ("customer_supply_start", ("earnings", "timeline"),
-     r"고객|공급|납품|시공|customer|supply|deliver", r"첫\s*(?:공급|납품)|공급(?:했다|한다|하기로)|납품(?:했다|한다)|(?:공급|납품)과\s*설치.{0,10}완료|(?:1차\s*시공|초도\s*납품).{0,15}완료|first delivery|began supplying"),
+     r"고객|공급|납품|시공|선박|컨테이너선|customer|supply|deliver", r"첫\s*(?:공급|납품)|공급(?:했다|한다|하기로)|납품(?:했다|한다)|인도했|(?:공급|납품)과\s*설치.{0,10}완료|(?:1차\s*시공|초도\s*납품).{0,15}완료|first delivery|began supplying"),
     ("procurement_execution_stage", ("earnings", "timeline"),
      r"입찰|시공사|우선협상|procurement|bid|preferred bidder",
      r"제출|선정|선택|낙찰|철회|탈락|확보|submit|select|award|withdraw"),
@@ -1887,7 +2002,7 @@ RULES = (
      r"비축\s*(?:유|원유|경유)|석유\s*비축|oil reserves|oil stockpile",
      r"방출|매입|재비축|채우|채운|채울|release|refill|purchase"),
     ("earnings_or_guidance", ("earnings",),
-     r"매출|영업이익|순이익|영업손실|순손실|마진|실적|가이던스|주당\s*(?:NAV|순자산가치)|(?<!제)출하|판매(?:량|실적|는|가)|시장점유율|revenue|earnings|profit|guidance|shipments",
+     r"매출|영업이익|순이익|영업손실|순손실|마진|실적|가이던스|주당\s*(?:NAV|순자산가치)|(?<!제)출하|인도량|판매(?:량|실적|는|가)|시장점유율|revenue|earnings|profit|guidance|shipments",
      r"증가|감소|상승|하락|상회|하회|상향|하향|달성|기록|집계|발표|공시|전망|예상|컨센서스|추정치|적자\s*전환|적자로\s*전환|rise|fall|grow|cut|rais|report|forecast|consensus|beat|miss"),
     ("national_export_release", ("earnings", "discount_rate"),
      r"누적\s*수출|월간\s*수출|수출액", r"달(?:했|하|해)|늘었|증가|감소|기록|집계|넘어섰|달성|달러\s*(?:입니다|이다|였다|이었다)"),
@@ -2496,6 +2611,14 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     political_poll = bool(re.search(r"지지율|국정\s*수행|정당\s*지지|political approval|approval rating", title, re.I)
                           and re.search(r"여론조사|응답자|유권자|poll|respondents|voters", body[:1600], re.I))
     primary_rows = ' '.join(source_sentences(body)[:6])
+    policy_advice = bool(re.search(r"(?:개정|제정|특례|규제).{0,40}(?:필요|제언|해야)", title)
+                         and re.search(r"제언|토론회|연구위원|발제자|권고", primary_rows))
+    official_action = bool(re.search(r"(?:법안|특별법).{0,30}(?:발의했다|공포했다|통과했다)|"
+                                    r"정부.{0,60}(?:시행한다|개정안을\s*확정했다|행정예고)|"
+                                    r"행정명령.{0,25}서명|예산.{0,25}확정했다", primary_rows))
+    if policy_advice and not official_action:
+        result.update(disposition='exclude', priority=0, reason='scholarly_policy_advice_without_current_execution')
+        return result
     if political_poll and not re.search(
         r"행정명령.{0,20}서명|법안.{0,20}(?:발의|통과)|관세.{0,20}(?:시행|발효|부과하기로\s*결정)|"
         r"(?:국채|기준금리|환율).{0,40}(?:발표했다|인상했다|인하했다)|executive order.{0,20}signed", primary_rows, re.I,
@@ -2763,6 +2886,11 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     routine = bool(ROUTINE_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     soft = bool(SOFT_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     matches = []
+    marine = marine_delivery_observation(title, body)
+    if marine:
+        matches.append((3, 85, 0, ['earnings', 'timeline'], {
+            'kind': 'customer_supply_start', 'stage': marine['stage'], 'source_excerpt': marine['source_excerpt'],
+        }))
     product_milestone = industrial_product_milestone_observation(title, body)
     if product_milestone:
         matches.append((2, 80, 0, ['earnings', 'timeline'], {
@@ -2988,7 +3116,7 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
             ):
                 continue
             if kind == "earnings_or_guidance" and not re.search(
-                r"매출|영업(?:이익|익|손실)|순(?:이익|익|손실)|마진|가이던스|주당\s*(?:NAV|순자산가치)|(?<![제연])출하|판매(?:량|실적|는|가)|시장점유율|주당순이익|"
+                r"매출|영업(?:이익|익|손실)|순(?:이익|익|손실)|마진|가이던스|주당\s*(?:NAV|순자산가치)|(?<![제연])출하|인도량|판매(?:량|실적|는|가)|시장점유율|주당순이익|"
                 r"실적.{0,20}(?:어닝|상회|하회|흑자|적자)|\beps\b|revenue|earnings|profit|guidance|shipments", sentence, re.I,
             ):
                 continue
