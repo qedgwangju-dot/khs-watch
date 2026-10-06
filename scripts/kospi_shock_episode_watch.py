@@ -1060,12 +1060,12 @@ class Watch:
             # production 장중 생존검사: REST 가격과 수급 모두 최근 데이터여야 한다.
             if test_seconds is None and dt.time(9, 2) <= now.time() < until and time.time() - started >= 60:
                 now_ts = time.time()
-                if self.last_idx_tick_ts is None or now_ts - self.last_idx_tick_ts > 15:
-                    raise RuntimeError(f"KOSPI REST price stale >15s; last_error={last_poll_error}")
-                if self.last_fut_tick_ts is None or now_ts - self.last_fut_tick_ts > 20:
-                    raise RuntimeError(f"KOSPI200 futures REST price stale >20s; last_error={last_poll_error}")
-                if self.last_flow_success_ts is None or now_ts - self.last_flow_success_ts > 120:
-                    raise RuntimeError("LS spot/futures/program flow snapshot stale >120s")
+                if self.last_idx_tick_ts is None or now_ts - self.last_idx_tick_ts > 90:
+                    raise RuntimeError(f"KOSPI REST price stale >90s; last_error={last_poll_error}")
+                if self.last_fut_tick_ts is None or now_ts - self.last_fut_tick_ts > 90:
+                    raise RuntimeError(f"KOSPI200 futures REST price stale >90s; last_error={last_poll_error}")
+                if self.last_flow_success_ts is None or now_ts - self.last_flow_success_ts > 180:
+                    raise RuntimeError("LS spot/futures/program flow snapshot stale >180s")
 
             await asyncio.sleep(0.6)
 
