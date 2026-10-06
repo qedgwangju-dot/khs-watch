@@ -321,8 +321,6 @@ def _nvidia_robotics_exec_stage(text: str, source: str = '') -> str:
     if not (NVIDIA_ROBOTICS_EXEC.search(text) and NVIDIA_ROBOTICS_CONTEXT.search(text)):
         return ''
     if NVIDIA_FACTORY_ID.search(text) and NVIDIA_FACTORY_TASK.search(text):
-        if not _nvidia_factory_source_ok(source):
-            return 'factory_kpi_unverified'
         if NVIDIA_FACTORY_TARGET_HIT.search(text):
             return 'factory_target_achieved'
         if NVIDIA_FACTORY_CURRENT_KPI.search(text):
@@ -580,7 +578,9 @@ def score(item: dict) -> int:
 
     if group == 'nvidia_robotics_exec':
         stage = _nvidia_robotics_exec_stage(text, source)
-        if stage in {'official_rhetoric_baseline','roadshow_within_year_unverified','within_year_unverified','timeline_unverified','factory_kpi_unverified','background'}:
+        if stage in {'official_rhetoric_baseline','roadshow_within_year_unverified','within_year_unverified','timeline_unverified','background'}:
+            return 0
+        if stage in {'factory_kpi_initial','factory_kpi_measured','factory_kpi_change','factory_target_achieved'} and not _nvidia_factory_source_ok(source):
             return 0
         s = 20
         s += {
