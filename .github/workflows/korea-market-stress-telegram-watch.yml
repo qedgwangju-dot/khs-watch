@@ -1,5 +1,5 @@
 name: Korea Market Stress and Global Wave Telegram Watch
-# KOSPI production recovery trigger: REST polling + split-shift handoff architecture
+# KOSPI production recovery trigger: REST polling + split-shift handoff architecture; active-run rollout is deferred
 
 on:
   push:
