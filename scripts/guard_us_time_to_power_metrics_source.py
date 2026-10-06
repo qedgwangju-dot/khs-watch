@@ -41,8 +41,19 @@ if const_old not in t:
     raise SystemExit("generation constants insertion point not found")
 t = t.replace(const_old, const_new, 1)
 
-query_old = "    'Moody data center 45 GW 110 billion power plants 2030',\n)"
-query_new = """    'Moody data center 45 GW 110 billion power plants 2030',\n    'IEA data center electricity demand United States 2030 TWh power bottleneck',\n    'data center transformer cable power electronics shortage lead time',\n    'data center transformer backlog gas turbine orders power electronics IEA',\n)"""
+query_old = """    'Moody data center 45 GW 110 billion power plants 2030',
+    'Morgan Stanley data center onsite power distributed generation fuel cell BESS forecast United States',
+    'Morgan Stanley data center ESS 279 GWh 169 GWh forecast',
+    'Goldman Sachs US data center capacity 2027 GW forecast community opposition',
+)"""
+query_new = """    'Moody data center 45 GW 110 billion power plants 2030',
+    'Morgan Stanley data center onsite power distributed generation fuel cell BESS forecast United States',
+    'Morgan Stanley data center ESS 279 GWh 169 GWh forecast',
+    'Goldman Sachs US data center capacity 2027 GW forecast community opposition',
+    'IEA data center electricity demand United States 2030 TWh power bottleneck',
+    'data center transformer cable power electronics shortage lead time',
+    'data center transformer backlog gas turbine orders power electronics IEA',
+)"""
 if query_old not in t:
     raise SystemExit("generation query insertion point not found")
 t = t.replace(query_old, query_new, 1)
