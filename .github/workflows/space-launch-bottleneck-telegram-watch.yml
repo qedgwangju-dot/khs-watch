@@ -6,6 +6,7 @@ on:
     paths:
       - ".github/workflows/space-launch-bottleneck-telegram-watch.yml"
       - "scripts/space_launch_bottleneck_watch.py"
+      - "scripts/space_launch_telegram_send.py"
   schedule:
     - cron: "6,21,36,51 * * * *"
   workflow_dispatch:
@@ -28,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 12
     env:
-      EXPECTED_TELEGRAM_BOT_USERNAME: "khs88798879887988798879_bot"
+      EXPECTED_TELEGRAM_BOT_USERNAME: "khs887988798879887988798879_bot"
 
     steps:
       - name: Checkout
@@ -41,8 +42,10 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate watcher
-        run: python -m py_compile scripts/space_launch_bottleneck_watch.py
+      - name: Validate scripts
+        run: |
+          python -m py_compile scripts/space_launch_bottleneck_watch.py
+          python -m py_compile scripts/space_launch_telegram_send.py
 
       - name: Run space launch bottleneck watch
         env:
@@ -60,12 +63,12 @@ jobs:
             cat out/space_launch_bottleneck_watch_telegram.txt >> "$GITHUB_STEP_SUMMARY"
           fi
 
-      - name: Send verified change to Telegram
+      - name: Send verified change to dedicated Telegram bot
         if: hashFiles('out/space_launch_bottleneck_watch_telegram.txt') != ''
         env:
-          BIO_TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
-          BIO_TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
-        run: python scripts/qlex_telegram_send.py out/space_launch_bottleneck_watch_telegram.txt
+          SPACE_LAUNCH_TELEGRAM_BOT_TOKEN: ${{ secrets.SPACE_LAUNCH_TELEGRAM_BOT_TOKEN }}
+          SPACE_LAUNCH_TELEGRAM_CHAT_ID: ${{ secrets.SPACE_LAUNCH_TELEGRAM_CHAT_ID }}
+        run: python scripts/space_launch_telegram_send.py out/space_launch_bottleneck_watch_telegram.txt
 
       - name: Persist deduplication state
         if: success() && hashFiles('out/space_launch_bottleneck_watch_pending_state.json') != ''
