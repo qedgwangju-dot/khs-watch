@@ -73,6 +73,21 @@ jobs:
 
           sent_ok=0
           if [ -f out/optogenetics_translation_alert.md ]; then
+            if [ -z "${BIO_TELEGRAM_CHAT_ID:-}" ]; then
+              BIO_TELEGRAM_CHAT_ID=$(python - <<'PY'
+          import os
+          import sys
+          sys.path.insert(0, "scripts")
+          import bio_single_runner
+          token = (os.getenv("BIO_TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id = bio_single_runner.decrypt_chat_id(token)
+          if not chat_id:
+              raise SystemExit("BIO Telegram encrypted route could not be resolved")
+          print(chat_id)
+          PY
+              )
+              export BIO_TELEGRAM_CHAT_ID
+            fi
             result=$(python scripts/qlex_telegram_send_v2.py out/optogenetics_translation_alert.md)
             echo "$result"
             RESULT="$result" python - <<'PY'
