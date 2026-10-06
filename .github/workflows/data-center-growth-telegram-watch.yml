@@ -425,6 +425,14 @@ jobs:
                               {"text": "⚡ IEA 전력수요", "url": "https://www.iea.org/reports/energy-and-ai/energy-demand-from-ai"},
                               {"text": "⛽ EIA 가스발전", "url": "https://www.eia.gov/todayinenergy/detail.php?id=67344"},
                           ],
+                          [
+                              {"text": "📡 Morgan Stanley 현장전원", "url": "https://www.morganstanley.com/insights/podcasts/thoughts-on-the-market/ai-meets-real-economy-michelle-weaver-ravi-shanker-dave-arcaro"},
+                              {"text": "🏗 Goldman 2027 90GW", "url": "https://www.reuters.com/business/goldman-sees-us-data-center-growth-intact-despite-opposition-2026-10-05/"},
+                          ],
+                          [
+                              {"text": "🔋 Morgan Stanley ESS", "url": "https://www.hamiltonlane.com/en-us/insight/weekly-research-briefing/finger-licking-good"},
+                              {"text": "📊 Goldman 기존 2027 기준", "url": "https://www.goldmansachs.com/insights/articles/us-data-center-power-demand-projected-to-double-by-2027"},
+                          ],
                       ]
                   }
               elif p.name == "us_data_center_cancellation_risk_alert.txt":
