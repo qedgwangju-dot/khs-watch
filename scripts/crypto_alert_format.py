@@ -400,7 +400,7 @@ def compact_judgement(state: dict) -> tuple[str, str]:
         five_text = "5거래일 비교는 확인 불가"
 
     if flow < 0 and r10 > 0 and r30 > 0:
-        reason = f"{day_text}과 {rate_text}은 부담. 다만 {five_text}."
+        reason = f"{day_text}과 {rate_text}은 부담이고, 5거래일 순유입 강도도 둔화."
     elif flow > 0 and r10 < 0 and r30 < 0:
         reason = f"{day_text}과 {rate_text}이 우호적. {five_text}."
     else:
