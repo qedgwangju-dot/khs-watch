@@ -79,6 +79,8 @@ FOREIGN_SALES_FIXTURE = json.loads((ROOT / 'data/gamejoa_foreign_sales_scope_fix
 FOREIGN_SALES_CASES = {case['id']: case for case in FOREIGN_SALES_FIXTURE['cases']}
 FOREGROUND_RECAP_FIXTURE = json.loads((ROOT / 'data/gamejoa_foreground_recap_fixtures_20261006.json').read_text(encoding='utf-8'))
 FOREGROUND_RECAP_CASES = {case['id']: case for case in FOREGROUND_RECAP_FIXTURE['cases']}
+ACTUAL_MARKET_FIXTURE = json.loads((ROOT / 'data/gamejoa_actual_market_scope_fixtures_20261006.json').read_text(encoding='utf-8'))
+ACTUAL_MARKET_CASES = {case['id']: case for case in ACTUAL_MARKET_FIXTURE['cases']}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -120,6 +122,78 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def actual_market_alert(self, key):
+        case = ACTUAL_MARKET_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_all_seven_latest_received_bodies_keep_three_actual_business_changes(self):
+        now = NOW.replace(day=6, hour=20)
+        selected = []
+        for case in ACTUAL_MARKET_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                candidate = classify(case, now)
+                result = radar.quality_display_alerts([candidate], 30) if candidate else []
+                self.assertEqual(bool(result), case['expected_keep'])
+                if result:
+                    self.assertFalse(radar.source_core_fact_errors(result[0]))
+                    selected.extend(result)
+        self.assertEqual(len(selected), 3)
+
+    def test_menu_distribution_is_not_company_sales_or_capital_investment(self):
+        item = self.actual_market_alert('menu_distribution')
+        self.assertFalse(eligible(item['source_title'], item['source_body']))
+        self.assertFalse(eligible(item['source_title'].replace('버거킹', '다른외식기업'),
+                                 item['source_body'].replace('버거킹', '다른외식기업')))
+        self.assertTrue(eligible('외식기업, 분기 영업이익 500억원…메뉴 매장 확대',
+                                 '외식기업은 6일 3분기 연결 영업이익 500억원을 공시했다.'))
+
+    def test_consumer_dispute_statistics_need_a_current_financial_or_regulatory_action(self):
+        item = self.actual_market_alert('dispute_statistics')
+        self.assertFalse(eligible(item['source_title'], item['source_body']))
+        self.assertTrue(eligible('네이버, 분기 영업이익 500억원…소비자 분쟁 통계 공개',
+                                 '네이버는 6일 3분기 연결 영업이익 500억원을 공시했다. 분쟁 데이터를 전수 분석했다.'))
+
+    def test_automated_quote_only_praise_is_not_a_new_quantified_broker_revision(self):
+        item = self.actual_market_alert('automated_quote')
+        self.assertFalse(eligible(item['source_title'], item['source_body']))
+        self.assertTrue(eligible('장비기업, 신규 공급계약 공시에 강세',
+                                 '장비기업은 6일 미국 고객사와 500억원 장비 공급 계약을 체결했다고 공시했다. '
+                                 '이 기사는 기사 자동생성 알고리즘으로 작성했다.'))
+
+    def test_local_demolition_reprint_does_not_turn_historical_selection_into_current_order(self):
+        item = self.actual_market_alert('local_demolition_reprint')
+        self.assertFalse(eligible(item['source_title'], item['source_body']))
+        self.assertTrue(eligible('GS건설, 은평구 철거 공사 500억원 신규 수주',
+                                 'GS건설은 6일 은평구 철거공사 500억원 공급 계약을 체결했다고 공시했다.'))
+
+    def test_airline_rights_core_is_about_title_routes_not_unrelated_frequency_changes(self):
+        item = self.actual_market_alert('airline_rights')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('제주항공', '9월', '인천~베이징', '주 7회', '인천~창사', '주 4회', '운수권'):
+            self.assertIn(term, core)
+        self.assertNotIn('웨이하이', core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+
+    def test_airline_rights_values_and_award_month_are_source_bound(self):
+        item = self.actual_market_alert('airline_rights')
+        body = item['source_body'].replace('9월에는', '8월에는').replace('베이징 주 7회', '베이징 주 5회')
+        changed = {**item, 'source_body': body, 'source_abstract': body}
+        core = radar.verified_alert_core(changed, changed['source_title'])
+        self.assertIn('8월', core)
+        self.assertIn('주 5회', core)
+        self.assertNotIn('9월', core)
+
+    def test_customer_system_deployment_core_keeps_actual_use_and_implementation_not_praise(self):
+        item = self.actual_market_alert('customer_system_deployment')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('싸이버로지텍', 'BNCT', '현장 운영', '디지털 트윈', '실시간 모니터링'):
+            self.assertIn(term, core)
+        self.assertNotIn('최우선 가치', core)
+        self.assertNotIn('수주', core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+
     def foreground_recap_alert(self, key):
         case = FOREGROUND_RECAP_CASES[key]
         return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],

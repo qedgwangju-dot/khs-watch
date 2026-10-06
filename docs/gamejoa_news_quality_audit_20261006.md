@@ -45,8 +45,9 @@ history or Telegram message.
   Retain the research provider, premium population, forecast year and competitors.
 - Skip ETF-specific body scans for non-ETF articles without changing eligibility.
 - Allow 20 minutes for the observed collection path and preserve acknowledged
-  receipt history in cleanup even after cancellation. Failed or dry sends cannot
-  mark an article as delivered.
+  receipt history in cleanup after a cancellable step failure. A hard job timeout
+  still cannot guarantee that cleanup executes. Failed or dry sends cannot mark
+  an article as delivered.
 
 Local regression, production execution, article quality, Telegram acceptance and
 persisted sent history are separate evidence levels. The new production result
@@ -65,3 +66,20 @@ memorial and dessert trend publicity are excluded. The AP core binds the
 Counterpoint premium Android AP forecast and forecast year, not the prior
 quarter's global Exynos share. Four events remain, with no new actual confirmed
 contract or actual earnings claim inferred from a forecast, MOU or source report.
+
+## Final Predeployment Source Review
+
+All seven whole bodies from run 37445966783, acknowledged message 2322, were
+read. This is another version 94 delivery, not evidence that version 95 is live.
+The capital raise, disclosed aviation rights and actual named-customer system
+deployment remain eligible. Menu availability, retrospective consumer-dispute
+statistics, a robot-generated quote with no new quantified catalyst, and a local
+demolition notice backed only by the 2022 contractor appointment are excluded.
+Company-wide earnings, new supply contracts and actual revised broker values
+remain positive controls rather than being blocked by category names alone.
+
+The rights summary preserves September as the award month and the Beijing and
+Changsha weekly frequencies instead of substituting a different route's future
+schedule. The deployed-system summary retains the customer's actual operating
+stage and digital-twin implementation, not a promotional safety quote. All seven
+source hashes and the old received cores are saved as regression fixtures only.

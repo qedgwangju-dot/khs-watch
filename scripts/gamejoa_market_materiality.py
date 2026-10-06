@@ -403,7 +403,7 @@ def focus_matches(title: str, sentence: str) -> bool:
         return bool(re.search(r"마케팅\s*계약|오프테이크\s*계약", sentence)
                     and re.search(r"체결|서명", sentence))
     if kind == "aviation_network":
-        return bool(re.search(r"운수권.{0,30}확보|취항.{0,20}(?:가능|확대)|증편", sentence)
+        return bool(re.search(r"운수권.{0,30}(?:확보|배분받았)|취항.{0,20}(?:가능|확대)|증편", sentence)
                     and not re.search(r"준비하고|관계자는|기대|방침", sentence))
     if kind == "military_reinforcement":
         return bool(re.search(r"병력|군사력|항모|항공모함", sentence)
@@ -2779,7 +2779,7 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
                              and re.search(r'[.!?。]$', row)
                              and canonical_source_fact(row) != canonical_source_fact(title)][:2])
     local_demolition = (re.search(r'철거', title) and LOCAL_AUTHORITY.search(reported_lead)
-                        and re.search(r'20\d{2}년[^.!?]{0,50}시공사로\s*선정했다', body))
+                        and re.search(r'20\d{2}년[^.!?]{0,50}시공사로\s*선정(?:했다|하고|됐)', body))
     new_order = any(item['kind'] == 'commercial_order' and QUANTITY.search(item['source_excerpt'])
                     and not PAST_ACTION.search(item['source_excerpt']) for item in evidence)
     if local_demolition and not new_order:
@@ -3004,6 +3004,35 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     political_poll = bool(re.search(r"지지율|국정\s*수행|정당\s*지지|political approval|approval rating", title, re.I)
                           and re.search(r"여론조사|응답자|유권자|poll|respondents|voters", body[:1600], re.I))
     primary_rows = ' '.join(source_sentences(body)[:6])
+    company_result = bool(re.search(
+        r'(?:연결|분기|반기|연간|전체|회사).{0,20}매출|영업이익|순이익|가이던스|설비투자',
+        title + ' ' + primary_rows,
+    ))
+    menu_distribution = (re.search(r'메뉴', title)
+                         and re.search(r'(?:메뉴|판매|운영).{0,10}매장.{0,30}(?:추가|확대|늘)', title + ' ' + primary_rows))
+    if menu_distribution and not company_result:
+        result.update(disposition='exclude', priority=0, reason='menu_availability_not_company_wide_results_or_investment')
+        return result
+    dispute_statistics = (re.search(r'소비자\s*분쟁|피해구제율', title)
+                          and re.search(r'전수\s*분석|데이터.{0,20}분석|연구진|보고서', primary_rows))
+    current_remedy = any(not PAST_ACTION.search(row) and re.search(
+        r'(?:과징금|배상|환불|환급|보상|규제|정보\s*유출).{0,50}'
+        r'(?:명령했다|결정했다|부과했다|시행한다|발생했다|공시했다)', row,
+    ) for row in source_sentences(body)[:8])
+    if dispute_statistics and not current_remedy and not company_result:
+        result.update(disposition='exclude', priority=0, reason='retrospective_consumer_dispute_statistics_not_current_market_action')
+        return result
+    automated_quote = (re.search(r'자동생성\s*알고리즘|AI\s*로봇\s*기자', body, re.I)
+                       and re.search(r'강세|약세|급등|급락|상승|하락|신고가', title))
+    quoted_catalyst = automated_quote and any(not PAST_ACTION.search(row) and (
+        (NEW_EXECUTION.search(row) and re.search(r'계약|수주|투자|인수|소각|출자', row))
+        or (re.search(r'목표(?:주가|가)|영업이익|순이익|가이던스', row)
+            and QUANTITY.search(row)
+            and re.search(r'상향|하향|높였|낮췄|공시했다|발표했다', row))
+    ) for row in source_sentences(body)[:8])
+    if automated_quote and not quoted_catalyst:
+        result.update(disposition='exclude', priority=0, reason='automated_quote_without_new_quantified_catalyst')
+        return result
     executive_visit = bool(re.search(r'CEO|회장|최고경영자', title, re.I)
                            and re.search(r'방한|재방한|방미|회동|간담회|만남', title))
     visit_execution = any(not PAST_ACTION.search(row) and not SPECULATIVE_CONTACT.search(row)

@@ -2595,6 +2595,14 @@ def source_headline_event_fact(title: str, body: str) -> str:
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
+    if re.search(r'AI.{0,25}(?:시스템|관제)', title, re.I) and re.search(r'가동|운영', title):
+        deployment = next((normalized_article_sentence(row) for row in rows
+                           if re.search(r'구축한.{0,45}시스템.{0,30}현장\s*운영에\s*들어갔다', row)
+                           and re.search(r'\d{1,2}일\s*밝혔다', row)), '')
+        implementation = next((normalized_article_sentence(row) for row in rows
+                               if re.match(r'시스템은\s*', row) and re.search(r'디지털\s*트윈|실시간\s*모니터링', row)), '')
+        if deployment and implementation and core_sentence_is_complete(deployment + ' ' + implementation):
+            return deployment + ' ' + implementation
     consensus = market_materiality.annual_earnings_consensus_observation(title, source)
     if consensus:
         fact = (f"{consensus['provider']}가 최근 {consensus['window']}개월간 집계한 {consensus['issuer']}의 "
@@ -2975,6 +2983,13 @@ def source_headline_event_fact(title: str, body: str) -> str:
         sentences = market_materiality.source_sentences(market_materiality.source_reported_body(body))
         lead = next((row for row in sentences if re.search(r"운수권|노선", row) and re.search(r"\d{1,2}일\s*밝혔다", row)), "")
         issuer = re.search(r"([A-Za-z0-9가-힣&·.-]{2,30})(?:은|는)\s+", lead)
+        rights = next((re.search(r'(?P<month>\d{1,2})월에는\s*(?P<routes>[^.!?]{10,100}?)\s*운수권을\s*추가로\s*배분받았다', row)
+                       for row in sentences if re.search(r'월에는.{0,130}운수권을\s*추가로\s*배분받았다', row)), None)
+        if ('운수권' in title and issuer and issuer.group(1) in title and rights
+                and re.search(r'주\s*\d+회', rights['routes'])):
+            statement = (f"{issuer.group(1)}{korean_topic_particle(issuer.group(1))} {rights['month']}월 "
+                         f"{rights['routes'].strip()} 운수권을 추가 배분받았다고 밝혔다.")
+            return statement if core_sentence_is_complete(statement) else ''
         change = next((row for row in sentences if market_materiality.focus_matches(title, row)
                        and re.search(r"일부터", row) and re.search(r"주\s*\d+회에서", row)), "")
         followup = next((row for row in sentences if re.search(r"주\s*\d+회에서\s*\d+회로\s*늘린다", row)), "")
