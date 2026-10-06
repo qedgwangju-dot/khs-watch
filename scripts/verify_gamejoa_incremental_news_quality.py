@@ -81,6 +81,8 @@ FOREGROUND_RECAP_FIXTURE = json.loads((ROOT / 'data/gamejoa_foreground_recap_fix
 FOREGROUND_RECAP_CASES = {case['id']: case for case in FOREGROUND_RECAP_FIXTURE['cases']}
 ACTUAL_MARKET_FIXTURE = json.loads((ROOT / 'data/gamejoa_actual_market_scope_fixtures_20261006.json').read_text(encoding='utf-8'))
 ACTUAL_MARKET_CASES = {case['id']: case for case in ACTUAL_MARKET_FIXTURE['cases']}
+SOURCE_BINDING_FIXTURE = json.loads((ROOT / 'data/gamejoa_source_binding_fixtures_20261006.json').read_text(encoding='utf-8'))
+SOURCE_BINDING_CASES = {case['id']: case for case in SOURCE_BINDING_FIXTURE['cases']}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -122,6 +124,127 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def source_binding_alert(self, key):
+        case = SOURCE_BINDING_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_acknowledged_packet_all_seven_sources_are_replayed(self):
+        now = NOW.replace(day=6, hour=21)
+        items = []
+        for case in SOURCE_BINDING_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                item = classify(case, now)
+                selected = radar.quality_display_alerts([item], 30) if item else []
+                self.assertEqual(bool(selected), case['expected_keep'])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+                    self.assertTrue(radar.core_sentence_is_complete(selected[0]['telegram_core_fact']))
+                    items.extend(selected)
+        with patch.object(radar.base, 'kst_now', return_value=now):
+            self.assertEqual(len(radar.quality_display_alerts(items, 30)), 4)
+
+    def test_stockpile_keeps_current_maximum_tender_and_exchange_not_old_release(self):
+        item = self.source_binding_alert('stockpile_exchange')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('최대 4000만배럴', '입찰', '진행 중', '빌려간 뒤', '교환'):
+            self.assertIn(term, core)
+        self.assertNotIn('1억7200만', core)
+        for wrong in (item['telegram_core_fact'], core.replace('4000만', '5000만'),
+                      core.replace('추진한다', '완료했다'), core.replace('교환 방식', '매각 방식')):
+            self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': wrong}))
+        self.assertFalse(any(materiality.HISTORICAL_ACTION.search(e['source_excerpt'])
+                             for e in materiality.assess(item['source_title'], item['source_body'])['evidence']))
+
+    def test_contract_amount_stage_and_pair_are_used_for_core_and_identity(self):
+        first = self.source_binding_alert('battery_contract_newsis')
+        second = self.source_binding_alert('battery_contract_yonhap')
+        key = materiality.source_event_identity(first)
+        self.assertTrue(key.startswith('source_event:v2:commercial_order:'))
+        self.assertEqual(key, materiality.source_event_identity(second))
+        for item in (first, second):
+            core = radar.verified_alert_core(item, item['source_title'])
+            for term in ('포스코퓨처엠', '삼성SDI', '6조원', 'LFP 양극재', '체결했다'):
+                self.assertIn(term, core)
+            self.assertNotIn('2023년', core)
+            self.assertNotIn('2032년', core)
+            self.assertTrue(radar.source_core_fact_errors(item))
+        for old, new in (('6조원', '7조원'), ('삼성SDI', '다른배터리사'), ('LFP', 'NCA'),
+                         ('6일', '7일'), ('계약을 체결했다고', '계약을 추진한다고')):
+            self.assertNotEqual(key, materiality.source_event_identity({**first, 'source_body': first['source_body'].replace(old, new)}))
+
+    def test_mou_reprint_and_earlier_successful_source_are_one_planned_site_event(self):
+        item = self.source_binding_alert('defense_site_mou_reprint')
+        old = self.foreground_recap_alert('quantified_defense_mou')
+        key = materiality.source_event_identity(item)
+        self.assertTrue(key.startswith('source_event:v2:site_development_mou:'))
+        self.assertEqual(key, materiality.source_event_identity(old))
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('MSDI', '구미시', '업무협약(MOU)', '2029년', '7000억원', '계획이다'):
+            self.assertIn(term, core)
+        self.assertNotIn('집행했다', core)
+        self.assertNotIn('수주했다', core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+        for old_text, new_text in (('7000억원', '8000억원'), ('2029년', '2030년'), ('6일', '7일')):
+            self.assertNotEqual(key, materiality.source_event_identity({**item, 'source_body': item['source_body'].replace(old_text, new_text)}))
+
+    def test_commercial_property_repricing_keeps_attribution_and_observation_month(self):
+        item = self.source_binding_alert('commercial_property_repricing')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('WSJ', '5일(현지시간)', '가격 재협상', '트렙', '8월', '11.42%', '특별관리'):
+            self.assertIn(term, core)
+        self.assertNotIn('상승다', core)
+        self.assertFalse(radar.core_sentence_is_complete('자산가치가 상승다.'))
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_source_guard_failure_cannot_fall_through_to_old_unverified_core(self):
+        item = self.source_binding_alert('battery_contract_newsis')
+        with patch.object(radar, 'source_core_fact_errors', return_value=['source_binding_failed']):
+            self.assertEqual(radar.verified_alert_core(item, item['source_title']), '')
+
+    def test_updated_committed_execution_cannot_be_hidden_by_old_contract_or_mou(self):
+        for key, added in (
+            ('battery_contract_newsis', '포스코퓨처엠은 해당 공급 계약의 설비투자 예산 500억원을 확정했다고 공시했다.'),
+            ('defense_site_mou_reprint', 'MSDI는 공장 투자금 7000억원을 집행했다고 밝혔다.'),
+        ):
+            item = self.source_binding_alert(key)
+            original = materiality.source_event_identity(item)
+            revised = {**item, 'source_body': item['source_body'].replace('\n◎공감언론', '\n' + added + '\n◎공감언론')}
+            self.assertNotEqual(original, materiality.source_event_identity(revised))
+
+    def test_acknowledged_contract_and_site_aliases_upgrade_existing_receipts_only(self):
+        for key in ('battery_contract_newsis', 'defense_site_mou_reprint'):
+            item = self.source_binding_alert(key)
+            identity = materiality.source_event_identity(item)
+            event_key = 'event:' + telegram.digest_seen(identity)
+            state = {'seen': {}}
+            telegram.migrate_seen_verified_event_aliases(state)
+            self.assertNotIn(event_key, state['seen'])
+            old_key = 'link:' + telegram.digest_seen(telegram.canonical_article_url(item['link']))
+            entry = {'title': item['source_title'], 'link': item['link'],
+                     'first_seen_kst': NOW.replace(day=6, hour=20).isoformat(), 'lanes': {'live': NOW.replace(day=6, hour=20).isoformat()}}
+            state = {'seen': {old_key: entry}}
+            telegram.migrate_seen_verified_event_aliases(state)
+            self.assertIn(event_key, state['seen'])
+            self.assertEqual(state['seen'][event_key]['event_alias_evidence_message_id'], 2325)
+            other = self.source_binding_alert('battery_contract_yonhap') if key == 'battery_contract_newsis' else self.foreground_recap_alert('quantified_defense_mou')
+            with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {'RADAR_RUN_MODE': 'live'}):
+                path = Path(tmp) / 'seen.json'
+                path.write_text(json.dumps(state), encoding='utf-8')
+                with patch.object(telegram, 'SEEN_PATH', path):
+                    fresh, skipped = telegram.filter_previously_seen_alerts([other], NOW.replace(day=6, hour=21), 'live')
+                self.assertFalse(fresh)
+                self.assertEqual(len(skipped), 1)
+
+    def test_theme_etf_catalog_gates_keep_actual_current_flows_and_earnings(self):
+        self.assertFalse(eligible(SOURCE_BINDING_CASES['etf_theme_recap']['title'], SOURCE_BINDING_CASES['etf_theme_recap']['body']))
+        self.assertFalse(eligible(SOURCE_BINDING_CASES['consumer_device_catalog']['title'], SOURCE_BINDING_CASES['consumer_device_catalog']['body']))
+        title = SOURCE_BINDING_CASES['etf_theme_recap']['title']
+        body = SOURCE_BINDING_CASES['etf_theme_recap']['body'] + '\nxETFs는 NECK ETF의 이번 주 순유입이 3000억원으로 전주 대비 40% 증가했다고 6일 밝혔다.'
+        self.assertTrue(eligible(title, body))
+        self.assertTrue(eligible('삼성전자, 3분기 영업이익 10조원 발표', '삼성전자는 6일 3분기 매출 70조원, 영업이익 10조원을 기록했다고 발표했다.'))
+
     def actual_market_alert(self, key):
         case = ACTUAL_MARKET_CASES[key]
         return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
@@ -3483,6 +3606,44 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertEqual(materiality.focus_kind('제주항공, 노선 확대에 3분기 영업이익 300억원'), 'earnings')
         self.assertEqual(materiality.focus_kind('항공기업, 노선 확대 위한 공급 계약 체결'), 'commercial_order')
         self.assertNotEqual(materiality.focus_kind('항공기업, 국제 노선 운항 중단'), 'aviation_network')
+
+    def test_current_quantified_etf_turnover_declines_remain_eligible(self):
+        self.assertTrue(eligible('삼성전자·SK하이닉스 레버리지 ETF 거래대금 91% 급감',
+                                 '삼성전자와 SK하이닉스 레버리지 ETF 거래대금이 한 달 만에 91% 급감했다고 거래소가 6일 발표했다.'))
+        self.assertTrue(eligible('단일종목 레버리지 ETF 거래대금 19조원에서 5000억원',
+                                 '단일종목 레버리지 ETF 규제 후 거래대금이 19조원에서 5000억원으로 줄었습니다.'))
+
+    def test_hardware_purchase_requires_quantified_commitment_not_wishlist(self):
+        self.assertTrue(eligible('아마존, 엔비디아 GPU 200만개 추가 확보 결정',
+                                 'AWS는 AI 수요 대응을 위해 엔비디아 GPU 200만개를 추가 확보하기로 했습니다.'))
+        self.assertFalse(eligible('아마존, GPU 확보 필요성 제기',
+                                  'AWS는 AI 수요 대응을 위해 GPU 200만개를 확보해야 한다는 의견이 나왔습니다.'))
+        self.assertFalse(eligible('기업, GPU 구매 검토',
+                                  '기업은 GPU를 추가 구매하기로 했습니다.'))
+
+    def test_foundry_share_and_memory_customer_adoption_are_not_device_catalogs(self):
+        self.assertTrue(eligible('TSMC 파운드리 점유율 73%·삼성전자 7%',
+                                 '2분기 파운드리 점유율은 TSMC 73%, 삼성전자 7%로 격차가 확대됐습니다.'))
+        self.assertTrue(eligible('CXMT LPDDR6 양산·샤오미 스마트폰 첫 탑재',
+                                 'CXMT가 LPDDR6을 양산해 샤오미 스마트폰에 처음 탑재했습니다.'))
+
+    def test_thin_discovery_templates_cannot_bypass_verified_source_guard(self):
+        import verify_gamejoa_cross_market_coverage_contract as coverage
+        groups = (coverage.ATTACHMENT_20260827_ALERT_CASES,
+                  coverage.ATTACHMENT_20260827_EVENING_ALERT_CASES,
+                  coverage.ATTACHMENT_20260827_30_ALERT_CASES)
+        tested = set()
+        for cases in groups:
+            for title, body, kind, _required, *_publisher in cases:
+                if kind not in coverage.SOURCE_EVIDENCE_REQUIRED_CASES:
+                    continue
+                row = coverage.source_row(title, body, publisher=_publisher[0] if _publisher else 'contract fixture')
+                item = radar.build_attachment_verified_event_alert(row, NOW, f'{title} {body}'.lower())
+                self.assertIsNotNone(item, kind)
+                self.assertEqual(radar.verified_alert_core(item, title), '', kind)
+                self.assertTrue(radar.source_core_fact_errors(item), kind)
+                tested.add(kind)
+        self.assertEqual(tested, coverage.SOURCE_EVIDENCE_REQUIRED_CASES)
 
     def test_same_run_copies_are_selected_once(self):
         first = classify({"title": "AMD·삼성전자, AI 반도체 공급 계약 체결", "body": CONTRACT_BODY, "published": NOW.isoformat(), "url": "https://www.etnews.com/20261005009901"})

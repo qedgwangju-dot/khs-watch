@@ -1038,6 +1038,34 @@ def source_row(
     }
 
 
+SOURCE_EVIDENCE_REQUIRED_CASES = {
+    "openai_broadcom_jalapeno_inference_chip",
+    "skhynix_emib_hbm_2p5d_packaging",
+    "nvidia_earnings_actual",
+    "nvidia_nvhbm_amazon_collaboration",
+    "iran_opec_china_oil_market_shift",
+    "us_datacenter_tariff_cost_pressure",
+    "nxt_premarket_microstructure_rule",
+    "openai_samsung_computational_memory",
+    "korea_robotaxi_commercialization",
+    "samsung_skhynix_hbm_packaging_roadmap",
+    "korea_ai_megaproject_personnel_policy",
+    "us_china_trade_truce_calendar",
+}
+
+
+def source_bound_render_errors(alert: dict, kind: str, rendered: str) -> list[str]:
+    # Discovery profiles are not publication evidence. These old one-sentence
+    # fixtures lack a new business action, scoped instrument or measured result.
+    if kind in SOURCE_EVIDENCE_REQUIRED_CASES:
+        if radar.verified_alert_core(alert, str(alert.get("source_title") or "")):
+            return ["insufficient_source_fixture_bypassed_publication_guard"]
+        if not radar.source_core_fact_errors(alert):
+            return ["insufficient_source_fixture_not_flagged"]
+        return []
+    return radar.compact_alert_block_errors(rendered)
+
+
 def main() -> int:
     failures = []
     configured = {item[0] for item in radar.KOREAN_BUSINESS_SEARCH_SOURCES}
@@ -1251,7 +1279,7 @@ def main() -> int:
             attachment27_now,
         )
         rendered = radar.compact_alert(alert, 1, attachment27_now, {}, {})
-        rendered_errors = radar.compact_alert_block_errors(rendered)
+        rendered_errors = source_bound_render_errors(alert, expected_kind, rendered)
         if rendered_errors:
             failures.append(
                 f"attachment27_rendered_block={expected_kind}:{rendered_errors}:{rendered!r}"
@@ -1316,7 +1344,7 @@ def main() -> int:
                 f"attachment27_evening_alert_incomplete_core={expected_kind}:{core!r}"
             )
         rendered = radar.compact_alert(alert, 1, attachment27_now, {}, {})
-        rendered_errors = radar.compact_alert_block_errors(rendered)
+        rendered_errors = source_bound_render_errors(alert, expected_kind, rendered)
         if rendered_errors:
             failures.append(
                 "attachment27_evening_rendered_block="
@@ -1438,7 +1466,7 @@ def main() -> int:
                 f"attachment27_30_alert_incomplete_core={expected_kind}:{core!r}"
             )
         rendered = radar.compact_alert(alert, 1, attachment27_30_now, {}, {})
-        rendered_errors = radar.compact_alert_block_errors(rendered)
+        rendered_errors = source_bound_render_errors(alert, expected_kind, rendered)
         if rendered_errors:
             failures.append(
                 "attachment27_30_rendered_block="

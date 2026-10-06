@@ -2595,6 +2595,28 @@ def source_headline_event_fact(title: str, body: str) -> str:
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
+    # Render and validate the same source observation used for event identity.
+    agreement = market_materiality.dated_supply_agreement_observation(title, source)
+    if agreement:
+        action = {'signed': '체결했다', 'agreement': '합의했다', 'planned': '추진한다고 밝혔다'}[agreement['stage']]
+        duration = '장기 ' if agreement['long_term'] else ''
+        fact = (f"{agreement['issuer']}{korean_topic_particle(agreement['issuer'])} {agreement['day']}일 "
+                f"{agreement['customer']}와 {agreement['amount_display']} 규모의 {agreement['product']} "
+                f"{duration}공급 계약을 {action}.")
+        return fact if core_sentence_is_complete(fact) else ''
+    site = market_materiality.quantified_site_mou_observation(title, source)
+    if site:
+        issuer, partner = site['parties']
+        fact = (f"{issuer}{korean_topic_particle(issuer)} {site['day']}일 {partner}와 업무협약(MOU)을 체결했다. "
+                f"협약에 따라 {site['until_year']}년까지 {site['amount_display']} 규모의 "
+                f"{site['facility']}을 {site['city']}에 조성할 계획이다.")
+        return fact if core_sentence_is_complete(fact) else ''
+    exchange = market_materiality.stockpile_exchange_observation(title, source)
+    if exchange:
+        fact = (f"{exchange['actor']}는 비축유 최대 {exchange['volume']} 추가 공급을 추진한다. "
+                f"{exchange['authority']}가 민간 기업 대상 입찰 절차를 진행 중이다. "
+                '기업이 원유를 빌려간 뒤 더 많은 물량을 돌려주는 교환 방식이다.')
+        return fact if core_sentence_is_complete(fact) else ''
     if re.search(r'AI.{0,25}(?:시스템|관제)', title, re.I) and re.search(r'가동|운영', title):
         deployment = next((normalized_article_sentence(row) for row in rows
                            if re.search(r'구축한.{0,45}시스템.{0,30}현장\s*운영에\s*들어갔다', row)
@@ -2858,6 +2880,12 @@ def source_headline_event_fact(title: str, body: str) -> str:
         return fact if core_sentence_is_complete(fact) else ''
     property_stress = market_materiality.commercial_property_stress_observation(title, body)
     if property_stress:
+        if property_stress.get('report_day'):
+            fact = (f"WSJ는 {property_stress['report_day']}일(현지시간) 금리 상승으로 미국 상업용 부동산의 가격 재협상이 "
+                    f"확산한다고 전했다. 트렙에 따르면 {property_stress['loan_period']} CMBS 대출의 "
+                    f"{property_stress['special_management_share']}%가 특별관리 대상이며, "
+                    f"{property_stress['high_since']} 이후 최고 수준이다.")
+            return fact if core_sentence_is_complete(fact) else ''
         fact = (f"고금리 속 미국 상업용 부동산 시장의 FTSE 상장리츠지수는 {property_stress['from']}부터 {property_stress['until']}까지 "
                 f"{property_stress['index_decline']}% 넘게 하락했다. 트렙에 따르면 {property_stress['loan_period']} "
                 f"CMBS 대출의 {property_stress['special_management_share']}%가 특수관리 대상이며, "
@@ -10829,6 +10857,8 @@ def core_sentence_is_complete(value: object, limit: int = GAMEJOA_CORE_MAX_CHARS
         return False
     if core_has_ui_garbage(text) or "…" in text or re.search(r"\.{3,}", text):
         return False
+    if re.search(r'(?:상승|하락|증가|감소|확대|축소|체결|발표)다[.!?]', text):
+        return False
     # A sentence beginning with a discourse connector is usually a clipped
     # paragraph fragment from a publisher page, not a self-contained summary.
     if re.match(r"^(?:그리고|한편|다만|그러나|이에|여기에|이\s*부문|이와\s*관련해)\s+", text):
@@ -11040,8 +11070,9 @@ def verified_alert_core(alert: dict, title: str) -> str:
                 core = complete_prose_text(fact, limit=GAMEJOA_CORE_MAX_CHARS)
                 if valid_source_fact(core) and market_materiality.core_focus_aligned(source_title, core):
                     return core
-        # A complete but low-materiality fact remains inspectable. The final
-        # selection guard still excludes it; do not replace it with background.
+        # Never bypass the original-body guard with the unverified fallback
+        # below after every source-bound candidate has failed.
+        return ""
     for candidate in candidates:
         core = complete_prose_text(candidate, limit=GAMEJOA_CORE_MAX_CHARS)
         if core_sentence_is_complete(core) and not subjectless_financial_core(core) and (
@@ -11058,6 +11089,8 @@ def source_core_fact_errors(alert: dict) -> list[str]:
     if not source or not core:
         return []
     errors = []
+    if any(market_materiality.HISTORICAL_ACTION.search(row) for row in market_materiality.source_sentences(core)):
+        errors.append('historical_action_replaces_current_headline_event')
     expected_observation = source_headline_event_fact(title, source)
     observation_core = re.sub(r"\((?:약[^)]*|원화\s*환산\s*확인\s*불가)\)", "", core)
     if expected_observation and market_materiality.canonical_source_fact(expected_observation) != market_materiality.canonical_source_fact(observation_core):

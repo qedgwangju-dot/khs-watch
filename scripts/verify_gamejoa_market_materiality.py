@@ -2042,7 +2042,8 @@ class MaterialityChecks(unittest.TestCase):
         title = "원·달러 NDF 최종 호가"
         body = "원·달러 NDF 1개월물은 1357.3/1357.7원에 최종 호가되며 거래를 마쳤다."
         item = alert(title, body)
-        self.assertIn("NDF", radar.verified_alert_core(item, title))
+        self.assertIn("NDF", radar.detailed_article_core(title, body))
+        self.assertEqual(radar.verified_alert_core(item, title), "")
         with patch.object(radar.base, "kst_now", return_value=NOW):
             self.assertEqual(radar.quality_display_alerts([item], 1), [])
 
@@ -2581,9 +2582,10 @@ class MaterialityChecks(unittest.TestCase):
         self.assertIn("0.2원", core)
         self.assertNotIn("2년물", core)
         body = "미국채 금리가 하락한 반면 달러화는 연중 최고치를 경신했다. 1일(현지시간) 차액결제선물환(NDF)시장에서 원·달러 1개월물은 1357.3/1357.7원에 최종 호가되며 거래를 마쳤다."
-        core = radar.verified_alert_core(alert(title, body), title)
+        core = radar.detailed_article_core(title, body)
         self.assertIn("NDF", core)
         self.assertIn("1357.3/1357.7원", core)
+        self.assertEqual(radar.verified_alert_core(alert(title, body), title), "")
 
     def test_mortgage_source_rate_change_precedes_broad_home_cost_commentary(self):
         title = "美 주담대 금리 7.28%…주택 구매 여력 약화"
@@ -2784,13 +2786,16 @@ class MaterialityChecks(unittest.TestCase):
     def test_other_fund_or_old_loss_buffer_cannot_replace_current_fund_results(self):
         title = "뉴딜펀드 만기청산 절반 손실…재정 부담 139억"
         body = "2일 국회 정무위원회 소속 의원실이 관계 기관으로부터 상세히 제출받은 조사 자료에 따르면 만기청산된 뉴딜 국민참여형펀드 자펀드 17개의 평균 내부수익률은 0.68%로 집계됐다.\n2021년 출시된 뉴딜펀드는 손실이 발생해도 21.5%까지 재정이 우선 부담한다.\n다른 성장펀드의 자펀드는 재정이 손실의 18.8%를 우선 부담한다."
-        core = radar.verified_alert_core(alert(title, body), title)
+        # A historical fund sample's average return is inspectable, but it does
+        # not establish the headline's current loss count or fiscal burden.
+        core = radar.detailed_article_core(title, body)
         self.assertIn("뉴딜", core)
         self.assertIn("17개", core)
         self.assertIn("0.68%", core)
         self.assertNotIn("21.5%", core)
         self.assertNotIn("18.8%", core)
-        self.assertLessEqual(len(core), 100)
+        self.assertLessEqual(len(core), radar.GAMEJOA_CORE_MAX_CHARS)
+        self.assertEqual(radar.verified_alert_core(alert(title, body), title), "")
 
     def test_material_and_early_news_survive_without_signed_contract_or_ticker_list(self):
         for title, body in KEEP:

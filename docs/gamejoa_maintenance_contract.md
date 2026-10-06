@@ -537,3 +537,21 @@ Every defect or requested change must follow this sequence:
   while changed rates, periods, frequencies or additional execution remain new.
 - A secondary price or route observation must not replace primary earnings,
   contract, financing or analyst-revision coverage, including its event identity.
+- Verified-body summaries cannot fall through to the unverified fallback after
+  every source-bound candidate fails. Current primary action, actor, amount and
+  execution stage outrank historical announcements and background recovery.
+- Dated supply agreements bind adjacent counterparty-owned product/amount fields
+  to the same structured identity used by the summary guard. Do not infer the
+  current term from an older agreement, including an inverted historical range.
+- Quantified site MOUs keep parties, planned amount, facility, deadline and MOU
+  stage. A repeated mayor quote is not a new order or financed CAPEX. Exact
+  source/receipt proofs upgrade existing history only; altered terms remain new.
+- Consumer device catalogues and thematic ETF overviews need an actual current
+  issuer financial, industry, flow or allocation change. Existing portfolio
+  weights and historical listing dates do not establish a new fund inflow.
+- Discovery coverage fixtures do not force publication of thin summaries.
+  A technical aspiration, vague collaboration or personnel announcement still
+  needs source evidence of a scoped new action or measured market change.
+  Quantified turnover declines, committed hardware purchases, foundry shares
+  and actual memory customer adoption retain independent positive controls.
+  Supply advocacy ending in "늘려야" is not an implementation decision.

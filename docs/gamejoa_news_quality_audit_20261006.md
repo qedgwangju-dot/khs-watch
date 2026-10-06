@@ -83,3 +83,60 @@ Changsha weekly frequencies instead of substituting a different route's future
 schedule. The deployed-system summary retains the customer's actual operating
 stage and digital-twin implementation, not a promotional safety quote. All seven
 source hashes and the old received cores are saved as regression fixtures only.
+
+## Version 95 Production Failure And Source Binding
+
+Run 37450922530 checked out 51eeb1608b01018761408e061feb42edd50dfa73 and
+Telegram acknowledged message 2325. Workflow success, the receipt and history
+persistence passed, but direct review of all seven full bodies FAILED content QA.
+The packet selected a historical SPR announcement, a generic ETF theme sentence,
+a historical CRE recovery sentence with a source typo, two copies of one battery
+contract, a previously delivered site MOU quote and consumer-device commentary.
+This run is explicitly not a successful content-quality verification.
+
+Version 96 removes the verified-body summary's unverified fallback and uses
+source observations for primary action, actor, amount and stage. Dated supply
+agreements bind adjacent counterparty-owned amount/product fields to their event
+identity. Quantified site MOUs bind parties, planned amount, facility and deadline,
+without treating them as financed CAPEX or customer orders. An older contract's
+period is not inherited into the current contract, including the source's inverted
+historical range. A subheading cannot supply the CMBS observation month.
+
+All seven acknowledged bodies are retained, hashed and replayed in
+`data/gamejoa_source_binding_fixtures_20261006.json`, not fed back as live news.
+The corrected packet has four unique eligible events: the maximum 40-million-
+barrel exchange tender, attributed CRE repricing and August CMBS stress, the
+KRW 6-trillion LFP supply contract, and the planned defense-site MOU. One same-
+packet contract copy is removed; the thematic ETF overview and consumer-device
+catalogue are excluded. The site MOU also matches the earlier acknowledged
+message 2320, not a second new investment decision.
+
+Exact source/receipt alias proofs can upgrade existing successful history only.
+Missing history, altered bodies, changed amounts, counterparties, dates, stages,
+deadlines and additional committed execution do not inherit those proofs. Local
+regression, whole-source replay, live execution, actual delivery and persisted
+history remain separate verification levels. Version 96 production evidence is
+pending until the deployed packet is downloaded and its entire bodies are read.
+
+The cross-market coverage gate previously required publication of twelve thin
+discovery fixtures without a scoped new business action, instrument or measured
+result. Those fixtures now explicitly prove withholding rather than passing via
+the unverified fallback. The routing index is still checked in full; routing is
+not publication proof. Positive controls retain current H-1B fee proposals,
+quantified ETF turnover declines and credit flows, committed GPU purchases,
+observed foundry shares and actual LPDDR customer adoption. Generic supply
+advocacy does not become an implemented capacity expansion.
+
+## Version 96 Local Verification
+
+The final source tree passed 389 incremental quality checks and all eleven
+operational contracts, including 240 materiality checks. All six changed Python
+modules compiled, and the CRLF-aware Git whitespace check passed without
+normalizing unrelated file contents. The full receipt replay passed all 24 audit
+groups and 180 retained whole-source rows under materiality version 96.
+
+The new seven-source replay retained five articles representing four events,
+removed one duplicate and excluded two non-catalysts. Applying the actual
+acknowledged history left zero fresh events. No Telegram API call or production
+history mutation was made by those local audits. This is local verification,
+not yet production execution or new delivery proof.
