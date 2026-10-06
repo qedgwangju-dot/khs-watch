@@ -2598,6 +2598,10 @@ def source_headline_event_fact(title: str, body: str) -> str:
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
     # Render and validate the same source observation used for event identity.
+    fixing = market_materiality.won_dollar_fixing_observation(title, source)
+    if fixing:
+        return (f"{fixing['day']}일 {fixing['time']} 기준 원/달러 환율은 {fixing['level']}원으로, "
+                f"전일 같은 시각보다 {fixing['change']}원 {fixing['direction']}.")
     participation = market_materiality.declared_capital_participation_observation(title, source)
     if participation:
         action = (f"투자금 {participation['payment_amount_display']}를 납입했다고 밝혔다" if participation['stage'] == 'paid'
@@ -2636,8 +2640,9 @@ def source_headline_event_fact(title: str, body: str) -> str:
     index_close = market_materiality.new_york_index_close_observation(title, source)
     if index_close:
         direction = '상승' if index_close['direction'] == '오른' else '하락'
+        record = '해 사상 최고치를 기록했다' if index_close.get('record_high') else '했다'
         return (f"{index_close['day']}일(현지시간) 나스닥종합지수는 {index_close['percent']}% "
-                f"{direction}한 {index_close['level']}로 마감해 사상 최고치를 기록했다.")
+                f"{direction}한 {index_close['level']}로 마감{record}.")
     agreement = market_materiality.dated_supply_agreement_observation(title, source)
     if agreement:
         action = {'signed': '체결했다', 'agreement': '합의했다', 'planned': '추진한다고 밝혔다'}[agreement['stage']]

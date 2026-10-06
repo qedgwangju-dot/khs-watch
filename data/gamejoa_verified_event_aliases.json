@@ -563,6 +563,27 @@
       "source_event_identity": "source_event:v2:capital_participation:138d36bd714452fdba568411df0134fb30decaa2ca68f9e909b8bca2ce5de996",
       "run_id": 37463535658,
       "message_id": 2334
+    },
+    {
+      "source_title": "삼성전기, AI 서버용 MLCC 2900억 수주 ... 올해만 6번째 장기공급계약",
+      "link": "https://www.mk.co.kr/news/business/12169300",
+      "source_published_kst": "2026-10-06T15:14+09:00",
+      "source_body_sha256": "0d6b850a9834dc0e190c46096642b861f99a855d814ed75fd36f58c083df63cd",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
+      "run_id": 37472158800,
+      "message_id": 2339,
+      "anonymous_contract_terms": {
+        "issuer": "삼성전기",
+        "product": "MLCC",
+        "amount_krw": "290000000000",
+        "disclosure_date": "2026-10-06",
+        "contract_start": "2027-01-01",
+        "contract_end": "2027-12-31",
+        "annual_ordinal": 6,
+        "stage": "signed_disclosure",
+        "additional_execution": []
+      },
+      "equivalence_note": "Full bodies confirm the same sixth annual MLCC contract disclosed Oct 6, KRW 290 billion, Jan 1-Dec 31 2027. An anonymous customer label alone is never enough; changed terms, ordinal, filing day or additional execution do not match."
     }
   ]
 }

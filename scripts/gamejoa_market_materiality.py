@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 98
+VERSION = 99
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -1422,16 +1422,38 @@ def measured_market_outlook_observation(title: str, body: str) -> dict:
 
 
 def new_york_index_close_observation(title: str, body: str) -> dict:
-    if not ('나스닥' in title and re.search(r'뉴욕마감|마감|최고치', title)):
+    if not ('나스닥' in title and re.search(r'뉴욕마감|마감|최고치|최고가', title)):
         return {}
     source = source_reported_body(body)
-    day = re.search(r'뉴욕증시[^.!?]{0,40}?(\d{1,2})일\(현지시간\)', source)
+    day = re.search(r'(?:뉴욕증시|엔비디아와\s*나스닥)[^.!?]{0,40}?(\d{1,2})일\(현지시간\)', source)
     close = re.search(r'나스닥종합지수가\s*전장보다\s*(?P<points>\d[\d,.]*)포인트'
                       r'\((?P<percent>\d+(?:\.\d+)?)%\)\s*(?P<direction>오른|내린)\s*'
                       r'(?P<level>\d[\d,.만]*)로\s*사상\s*최고치를\s*기록했다', source)
+    if not close:
+        close = re.search(r'나스닥(?:종합지수)?(?:은|는)\s*전\s*거래일\s*대비\s*'
+                          r'(?P<points>\d[\d,.]*)포인트\((?P<percent>\d+(?:\.\d+)?)%\)\s*'
+                          r'(?P<direction>오른|내린)\s*(?P<level>\d[\d,.만]*)에\s*거래를\s*마쳤다', source)
     if not (day and close):
         return {}
-    return {**close.groupdict(), 'day': day[1], 'stage': 'observed_close'}
+    record = bool(re.search(r'사상\s*최고(?:치|가)', close[0]) or re.search(
+        r'(?:나스닥(?:종합지수)?(?:은|는|가)|엔비디아와\s*나스닥이)[^!?]{0,100}'
+        r'사상\s*최고(?:치|가)', source))
+    return {**close.groupdict(), 'day': day[1], 'stage': 'observed_close', 'record_high': record}
+
+
+def won_dollar_fixing_observation(title: str, body: str) -> dict:
+    if not re.search(r'원\s*[/·]\s*달러|달러\s*[/·]\s*원', title):
+        return {}
+    source = source_reported_body(body)
+    fixing = re.search(r'미국\s*달러화\s*대비\s*원화\s*환율의\s*'
+                       r'(?P<time>오후\s*\d시\s*\d{1,2}분)\s*기준가는\s*'
+                       r'(?P<level>\d[\d,.]*)원으로\s*집계됐다', source)
+    change = re.search(r'전일\s*오후\s*\d시\s*\d{1,2}분\s*기준가보다\s*'
+                       r'(?P<change>\d+(?:\.\d+)?)원\s*(?P<direction>내렸다|올랐다)', source)
+    day = re.search(r'원\s*/\s*달러\s*환율은\s*(?P<day>\d{1,2})일', source)
+    if not (fixing and change and day):
+        return {}
+    return {**fixing.groupdict(), **change.groupdict(), **day.groupdict(), 'stage': 'afternoon_fixing'}
 
 
 def premium_ap_share_forecast_observation(title: str, body: str) -> dict:
@@ -2271,6 +2293,41 @@ def commercial_order_terms(title: str, body: str, published: str = "") -> dict[s
     return terms
 
 
+def anonymous_annual_mlcc_terms(title: str, body: str, published: str) -> dict:
+    """Anonymous contracts require a dated filing, annual ordinal and full term."""
+    if (focus_kind(title) != 'commercial_order' or 'MLCC' not in title
+            or not re.match(r'20\d{2}-\d{2}-\d{2}', published)):
+        return {}
+    source = source_reported_body(body)
+    if re.search(r'계약\s*상대방은\s*(?!비공개|글로벌)[A-Za-z가-힣]{2,}', source):
+        return {}
+    disclosure = re.search(r'(?P<day>\d{1,2})일\s*(?P<issuer>[가-힣A-Za-z]+)(?:은|는)\s*'
+                           r'글로벌\s*대(?:형)?기업과\s*(?P<amount>\d[\d,.]*)억\s*원\s*규모\s*'
+                           r'MLCC\s*(?:공급\s*)?계약을\s*체결했다고\s*공시했다', source)
+    period = re.search(r'계약\s*기간은\s*(?P<year>20\d{2})년\s*(?P<month>\d{1,2})월\s*'
+                       r'(?P<day>\d{1,2})일부터\s*(?P<end_year>20\d{2})년\s*'
+                       r'(?P<end_month>\d{1,2})월\s*(?P<end_day>\d{1,2})일까지', source)
+    ordinal = re.search(r'올해\s*(?P<ordinal>\d+)번째\s*장기\s*공급\s*계약', source)
+    if not (disclosure and period and ordinal and disclosure['issuer'] in title):
+        return {}
+    try:
+        start = dt.date(int(period['year']), int(period['month']), int(period['day']))
+        end = dt.date(int(period['end_year']), int(period['end_month']), int(period['end_day']))
+        announced = dt.date(int(published[:4]), int(published[5:7]), int(disclosure['day']))
+        if end < start or announced.isoformat() != published[:10]:
+            return {}
+    except ValueError:
+        return {}
+    return {'issuer': disclosure['issuer'], 'product': 'MLCC',
+            'amount_krw': korean_amount_value(disclosure['amount'] + '억'),
+            'disclosure_date': announced.isoformat(), 'contract_start': start.isoformat(),
+            'contract_end': end.isoformat(), 'annual_ordinal': int(ordinal['ordinal']),
+            'stage': 'signed_disclosure',
+            'additional_execution': [canonical_source_fact(row) for row in source_sentences(source)
+                if not PAST_ACTION.search(row) and re.search(
+                    r'(?:설비투자|투자\s*예산|CAPEX|가이던스).{0,80}(?:확정했|공시했|상향했|하향했)|계약.{0,20}(?:정정|변경)했', row, re.I)]}
+
+
 def mlcc_contract_observation(title: str, body: str) -> dict[str, str]:
     if focus_kind(title) != 'commercial_order' or 'MLCC' not in title:
         return {}
@@ -2378,6 +2435,17 @@ def source_event_identity(alert: dict) -> str:
     Unrecognised or incomplete facts retain the existing link/title keys.
     Stored title-only receipts may supply an identity only when self-contained.
     """
+    title = str(alert.get('source_title') or alert.get('original_news') or alert.get('news') or '')
+    body = str(alert.get('source_body') or '') if alert.get('body_verified') else ''
+    annual_contract = anonymous_annual_mlcc_terms(title, body, str(alert.get('published') or ''))
+    if annual_contract:
+        for proof in verified_event_aliases():
+            if (proof.get('anonymous_contract_terms') == annual_contract and 'receipt_source' not in proof
+                    and proof.get('run_id') and proof.get('message_id')
+                    and re.fullmatch(r'source_event:v2:commercial_order:[0-9a-f]{64}', proof.get('source_event_identity', ''))):
+                return proof['source_event_identity']
+        digest = hashlib.sha256(json.dumps(annual_contract, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+        return f'source_event:v2:commercial_order:{digest}'
     audited = audited_source_event_identity(alert)
     if audited:
         return audited
