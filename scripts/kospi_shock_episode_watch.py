@@ -147,27 +147,34 @@ def get_token() -> str:
 
 def ls_post(token: str, path: str, tr: str, body: dict[str, Any]) -> dict[str, Any]:
     last_error = ""
-    for attempt in range(4):
-        r = requests.post(
-            BASE + path,
-            headers={"content-type": "application/json; charset=utf-8",
-                     "authorization": "Bearer " + token, "tr_cd": tr,
-                     "tr_cont": "N", "tr_cont_key": ""},
-            data=json.dumps(body), timeout=20)
+    for attempt in range(5):
+        try:
+            r = requests.post(
+                BASE + path,
+                headers={"content-type": "application/json; charset=utf-8",
+                         "authorization": "Bearer " + token, "tr_cd": tr,
+                         "tr_cont": "N", "tr_cont_key": ""},
+                data=json.dumps(body), timeout=20)
+        except requests.RequestException as exc:
+            last_error = f"{tr} transport error: {type(exc).__name__}: {exc}"
+            if attempt < 4:
+                time.sleep(min(8.0, 0.8 * (2 ** attempt)))
+                continue
+            raise RuntimeError(last_error) from exc
         text = r.text or ""
         retryable_http = r.status_code in {429, 500, 502, 503, 504}
         if not r.ok:
             last_error = f"{tr} HTTP {r.status_code}: {text[:250]}"
-            if attempt < 3 and (retryable_http and ("IGW00201" in text or r.status_code == 429)):
-                time.sleep(1.5 * (2 ** attempt))
+            if attempt < 4 and retryable_http:
+                time.sleep(min(8.0, 0.8 * (2 ** attempt)))
                 continue
             raise RuntimeError(last_error)
         d = r.json()
         code = str(d.get("rsp_cd") or "")
         if code and code not in {"00000", "0000"}:
             last_error = f"{tr} rejected {code}: {d.get('rsp_msg')}"
-            if attempt < 3 and code == "IGW00201":
-                time.sleep(1.5 * (2 ** attempt))
+            if attempt < 4 and code in {"IGW00201"}:
+                time.sleep(min(8.0, 1.0 * (2 ** attempt)))
                 continue
             raise RuntimeError(last_error)
         return d
@@ -1093,6 +1100,12 @@ async def amain(
         write_status(w, started, "정상 종료")
         return 0
     except Exception as exc:
+        # 장애 복구 작업이 사건 시작점·최근 수급을 이어받을 수 있도록
+        # 오류 종료에서도 반드시 handoff를 남긴다.
+        try:
+            w.save_handoff(handoff_out)
+        except Exception as handoff_exc:
+            w.raw["handoff_save_error"] = f"{type(handoff_exc).__name__}: {handoff_exc}"
         write_status(w, started, f"오류: {type(exc).__name__}: {exc}")
         raise
 
