@@ -6180,17 +6180,19 @@
     "event:fcf5a196d7ce105a08c85f47": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
       "lanes": {
-        "live": "2026-10-06T07:30:15+09:00"
+        "live": "2026-10-06T22:37:02+09:00"
       },
-      "last_seen_kst": "2026-10-06T07:30:15+09:00",
-      "link": "https://www.fnnews.com/news/202610060501405517",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "ba69f43dc31ad2bb76565ce87c672682e385ee2638a85ca281d44dfa91d821a6",
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815537",
+      "source": "뉴시스",
+      "source_body_digest": "1c06567a642260627efa458d5f99f7d38b8623aa8ae186a5ee268f9abdb24f3a",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-06T05:01+09:00",
-      "title": "\"최태원 회장 지분 매각부터 솔리다임까지\"…SK, '주주가치' 앞세운다"
+      "source_fact_identity": "source_facts:v1:32e926c00407329eabdf63112d563d19030b32d437de23c327d566c33423d8c6",
+      "source_fact_keys": [
+        "source_fact:v1:f40d6585c31f86aa41cb10591bc71a500e7dc45c40a0bb84f44f87f0ad74c49c"
+      ],
+      "source_published_kst": "2026-10-06T22:35+09:00",
+      "title": "김정관 \"알래스카 LNG 투자, 아직 확정 아냐…중동전쟁 후 전략적 가치 생겨\"(종합2보)"
     },
     "event:fe31ff5358e65eebb00c0ffc": {
       "first_seen_kst": "2026-10-03T00:24:31+09:00",
@@ -6600,6 +6602,25 @@
       ],
       "source_published_kst": "2026-10-06T15:45+09:00",
       "title": "NH투자증권, 기업금융·투자수익 두 토끼…IMA로 잡는다"
+    },
+    "fact:07b7dca91e7cca25b8466fd1": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815993",
+      "source": "뉴시스",
+      "source_body_digest": "7c80b0e125c173d11e376c97e0dae2a69a163b05edba2005f2b8f1ec04646ff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c6080ea7526871ab26ce5b394d3e479de501ee2bd43d73c4751126ce81a7a6ff",
+      "source_fact_keys": [
+        "source_fact:v1:58236eb0827754b73b24c34cc3ab6b844740b3300e4a590a69ac38d1357b39a8",
+        "source_fact:v1:6590372fb2b68996c4154e6d51d24988bfc9566bec68c1f4fd529c3e3a27a69b",
+        "source_fact:v1:7a03b24e6de21e04e979a45161e1b528f3561316054cca311babaa8838ac9815"
+      ],
+      "source_published_kst": "2026-10-06T16:33+09:00",
+      "title": "'컨테이너 운임 지수' 소폭 하락…유럽·지중해·중동 약세"
     },
     "fact:0800e69c81117652619f8305": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -8996,6 +9017,26 @@
       "source_published_kst": "2026-10-06T09:18+09:00",
       "title": "정부 GPU 4224장 풀었더니 1만3712장 신청…70%가 못 받아"
     },
+    "fact:344b31b98acc7c184094ed33": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816076",
+      "source": "뉴시스",
+      "source_body_digest": "d99146aff889c614c132ebdf9c3370a6045593ba7c83f4b3ff31a793d0077017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:297c3f8dcab11390f8ab6e9f279f42fc3d13dc3390a9e93fdbfc885545a5d941",
+      "source_fact_keys": [
+        "source_fact:v1:12ac17a07d0a99765ef5436a877d4f68386e6cad549b51d93b526fcac977a28c",
+        "source_fact:v1:311e10732d41590af57af24e446d66141da5cfbca09b3e1f4f3d0516d31e10db",
+        "source_fact:v1:34c9c53c3687aef11ef1db27375bb1ee6cd308d1f3ddb18754328e94b91dbe1f",
+        "source_fact:v1:9fb687c6e55ea99da4826ad0d118a034d801f77a9d8da6a0390d1824298d087c"
+      ],
+      "source_published_kst": "2026-10-06T16:55+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조 투자유치 달성할 것\""
+    },
     "fact:34938c9db2b3cd0735085554": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -10181,6 +10222,25 @@
       ],
       "source_published_kst": "2026-10-05T09:45+09:00",
       "title": "LG유플러스, 해외 AI 서비스 ‘유독’에 들여온다…11월 첫 상품 출시"
+    },
+    "fact:542abfae29beb31b7edab009": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816134",
+      "source": "뉴시스",
+      "source_body_digest": "81f5a339d8bbec4cc223a868440165e59603cabeb577812d920758c17479b633",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83859ab3dbdd3f421cd8319f18c26f6b96f28b5c0d27e5345a519ae7613f082b",
+      "source_fact_keys": [
+        "source_fact:v1:83c6ae51c06f256eb374bcbfcb59802ec4109affdc3e2400f0291a08817423d3",
+        "source_fact:v1:baa4690a8b41c49369a697d40b446539dc2f74671eab1feb5602b0b4a66e35cd",
+        "source_fact:v1:e6ead3f0474ea8a381fa05a737a9483c108f52c5864e544ec39cb88d840aeb20"
+      ],
+      "source_published_kst": "2026-10-06T17:21+09:00",
+      "title": "서방 제재로 런던길 막힌 러시아산 금…홍콩 수입, 7개월 만에 연간 기록 넘었다"
     },
     "fact:546065340ceceaa6c8f66eb6": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -11703,6 +11763,23 @@
       "source_published_kst": "2026-10-06T17:56+09:00",
       "title": "월가, 앤트로픽 81.5조원 대출 신디케이션 착수…반도체 금융 최대 규모"
     },
+    "fact:7521d22d9b1de129fb7f6877": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815537",
+      "source": "뉴시스",
+      "source_body_digest": "1c06567a642260627efa458d5f99f7d38b8623aa8ae186a5ee268f9abdb24f3a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32e926c00407329eabdf63112d563d19030b32d437de23c327d566c33423d8c6",
+      "source_fact_keys": [
+        "source_fact:v1:f40d6585c31f86aa41cb10591bc71a500e7dc45c40a0bb84f44f87f0ad74c49c"
+      ],
+      "source_published_kst": "2026-10-06T22:35+09:00",
+      "title": "김정관 \"알래스카 LNG 투자, 아직 확정 아냐…중동전쟁 후 전략적 가치 생겨\"(종합2보)"
+    },
     "fact:768d952ecd76eea2028822ff": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -12652,6 +12729,24 @@
       ],
       "source_published_kst": "2026-10-06T09:00+09:00",
       "title": "자연과환경, 자회사 한림에코텍 흡수합병…OSCㆍ모듈러 사업 경쟁력 강화"
+    },
+    "fact:8dd203a0838ef3752eca2d33": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.hankyung.com/article/202610065707i",
+      "source": "한국경제",
+      "source_body_digest": "f24e5260ee93b0b38ad79ab6500ddfb792a972599f793ecf6883babe26b16ea1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5815cc4a3834bb98ce98a18ba29c9ce73ef2c3b86edab5503bd1c33c426256f",
+      "source_fact_keys": [
+        "source_fact:v1:5e0830212bf0bade53341d18ab46ab2e5febf2abcca8620e834d05687c58d985",
+        "source_fact:v1:a9644a381e5014ee29d14d088afa5fc7d25f29141ed79d8684ffe2820bbacdb1"
+      ],
+      "source_published_kst": "2026-10-06T15:04+09:00",
+      "title": "파업에도 한 달 새 약 30% 껑충…반전 쓴 '이 종목'"
     },
     "fact:8e6ad71ed73978d0f60f7244": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -14554,6 +14649,25 @@
       "source_published_kst": "2026-10-06T09:53+09:00",
       "title": "예멘 후티군 사우디 전역 미사일 무인기공격.. 사우디 군은 홍해 승리 주장"
     },
+    "fact:b6adee427a3d0936da41227f": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.news1.kr/world/northeast-asia/6311860",
+      "source": "뉴스1",
+      "source_body_digest": "7c700164f7933de7a1a6d846502a8ce42161bee341ecd0d2a108775906b1eb49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79c7673fd1051daffcd7cd450f0ae87f1d1e9c53ad07d4cf5be87debc38b1823",
+      "source_fact_keys": [
+        "source_fact:v1:05bf5e9a2184832c7e3b21f9fdb64871bd92c0e5680ba17237f946dccbe3d8df",
+        "source_fact:v1:1ddfdf579defdf92de700b7d826da3cd46028d20ec22fedcb1bd6cc2715a4925",
+        "source_fact:v1:4a30ac57625fbae3d20ab5b9c46a680a80032817b795a16fc06220b500bb80ed"
+      ],
+      "source_published_kst": "2026-10-06T17:24+09:00",
+      "title": "英매체 \"한국산 연료, 서방 제재 선박 통해 러시아 대거 반출\""
+    },
     "fact:b76c4b9377d1e155202af472": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -15685,6 +15799,23 @@
       ],
       "source_published_kst": "2026-10-06T17:15+09:00",
       "title": "태블릿·이어폰·위치추적기까지…‘갤럭시 생태계’ 힘주는 삼성전자"
+    },
+    "fact:d26b64a4545050154cc9b44a": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632696",
+      "source": "이투데이",
+      "source_body_digest": "a62188d637c5ae97490b53b2435bcd2319f20dd6f56d4ed7900ceb3d89da7cd8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:210401eac1b9c802e3b18b44cc76684ab1cebbcceccb65d59528e8d7d0c4070f",
+      "source_fact_keys": [
+        "source_fact:v1:2c8080141912c0dad38ab6dcc3b820832642b1c4a773c07dc86d74d85d000797"
+      ],
+      "source_published_kst": "2026-10-06T16:05+09:00",
+      "title": "[단독] 개인정보·데이터 유출 민원 4년새 3.5배↑…“피해구제 배상은 2% 불과”"
     },
     "fact:d38afa3894708fd1720bcb0e": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -17874,6 +18005,24 @@
       "link": "https://www.fnnews.com/news/202609270600595261",
       "source": "파이낸셜뉴스",
       "title": "기업 20만곳 늘 때 직원 7천명 늘었다…\"'1인 기업 78%' 투트랙 전략 필요\""
+    },
+    "link:027533ccde36592a35814307": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.hankyung.com/article/202610065707i",
+      "source": "한국경제",
+      "source_body_digest": "f24e5260ee93b0b38ad79ab6500ddfb792a972599f793ecf6883babe26b16ea1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5815cc4a3834bb98ce98a18ba29c9ce73ef2c3b86edab5503bd1c33c426256f",
+      "source_fact_keys": [
+        "source_fact:v1:5e0830212bf0bade53341d18ab46ab2e5febf2abcca8620e834d05687c58d985",
+        "source_fact:v1:a9644a381e5014ee29d14d088afa5fc7d25f29141ed79d8684ffe2820bbacdb1"
+      ],
+      "source_published_kst": "2026-10-06T15:04+09:00",
+      "title": "파업에도 한 달 새 약 30% 껑충…반전 쓴 '이 종목'"
     },
     "link:02b19282c5b111edc77c651b": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -22736,6 +22885,25 @@
       ],
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
+    },
+    "link:31a7a1b92479e0cb94facb20": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816134",
+      "source": "뉴시스",
+      "source_body_digest": "81f5a339d8bbec4cc223a868440165e59603cabeb577812d920758c17479b633",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83859ab3dbdd3f421cd8319f18c26f6b96f28b5c0d27e5345a519ae7613f082b",
+      "source_fact_keys": [
+        "source_fact:v1:83c6ae51c06f256eb374bcbfcb59802ec4109affdc3e2400f0291a08817423d3",
+        "source_fact:v1:baa4690a8b41c49369a697d40b446539dc2f74671eab1feb5602b0b4a66e35cd",
+        "source_fact:v1:e6ead3f0474ea8a381fa05a737a9483c108f52c5864e544ec39cb88d840aeb20"
+      ],
+      "source_published_kst": "2026-10-06T17:21+09:00",
+      "title": "서방 제재로 런던길 막힌 러시아산 금…홍콩 수입, 7개월 만에 연간 기록 넘었다"
     },
     "link:31b3772105379053b7d6b8b7": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
@@ -30778,6 +30946,23 @@
       "source_published_kst": "2026-10-05T22:00+09:00",
       "title": "LG전자, 美 '에어 컨트롤 콘셉트'과 5GW AIDC 냉각솔루션 장기 공급계약"
     },
+    "link:7cac0b8c84f0cbbe4c019d12": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815537",
+      "source": "뉴시스",
+      "source_body_digest": "1c06567a642260627efa458d5f99f7d38b8623aa8ae186a5ee268f9abdb24f3a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32e926c00407329eabdf63112d563d19030b32d437de23c327d566c33423d8c6",
+      "source_fact_keys": [
+        "source_fact:v1:f40d6585c31f86aa41cb10591bc71a500e7dc45c40a0bb84f44f87f0ad74c49c"
+      ],
+      "source_published_kst": "2026-10-06T22:35+09:00",
+      "title": "김정관 \"알래스카 LNG 투자, 아직 확정 아냐…중동전쟁 후 전략적 가치 생겨\"(종합2보)"
+    },
     "link:7cb442a86adabd9f96e5b3f5": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
@@ -30994,6 +31179,25 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T21:07+09:00",
       "title": "스테이블코인 디벨롭먼트, SKY 23억개 보유..공급량 10% 차지"
+    },
+    "link:7f2dc70bc12c7880d8f1a05f": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.news1.kr/world/northeast-asia/6311860",
+      "source": "뉴스1",
+      "source_body_digest": "7c700164f7933de7a1a6d846502a8ce42161bee341ecd0d2a108775906b1eb49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79c7673fd1051daffcd7cd450f0ae87f1d1e9c53ad07d4cf5be87debc38b1823",
+      "source_fact_keys": [
+        "source_fact:v1:05bf5e9a2184832c7e3b21f9fdb64871bd92c0e5680ba17237f946dccbe3d8df",
+        "source_fact:v1:1ddfdf579defdf92de700b7d826da3cd46028d20ec22fedcb1bd6cc2715a4925",
+        "source_fact:v1:4a30ac57625fbae3d20ab5b9c46a680a80032817b795a16fc06220b500bb80ed"
+      ],
+      "source_published_kst": "2026-10-06T17:24+09:00",
+      "title": "英매체 \"한국산 연료, 서방 제재 선박 통해 러시아 대거 반출\""
     },
     "link:7f3f2fe004de05d6993876c4": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
@@ -32306,6 +32510,25 @@
       "link": "https://www.etnews.com/20260916000238",
       "source": "전자신문",
       "title": "이재용 삼성전자 회장, 日 참의원 대표단 회동…반도체·AI 협력 논의"
+    },
+    "link:8da12b8fef20c4af03fc091b": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815993",
+      "source": "뉴시스",
+      "source_body_digest": "7c80b0e125c173d11e376c97e0dae2a69a163b05edba2005f2b8f1ec04646ff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c6080ea7526871ab26ce5b394d3e479de501ee2bd43d73c4751126ce81a7a6ff",
+      "source_fact_keys": [
+        "source_fact:v1:58236eb0827754b73b24c34cc3ab6b844740b3300e4a590a69ac38d1357b39a8",
+        "source_fact:v1:6590372fb2b68996c4154e6d51d24988bfc9566bec68c1f4fd529c3e3a27a69b",
+        "source_fact:v1:7a03b24e6de21e04e979a45161e1b528f3561316054cca311babaa8838ac9815"
+      ],
+      "source_published_kst": "2026-10-06T16:33+09:00",
+      "title": "'컨테이너 운임 지수' 소폭 하락…유럽·지중해·중동 약세"
     },
     "link:8da15a73d43ce886974b7697": {
       "first_seen_kst": "2026-10-04T01:43:50+09:00",
@@ -37363,6 +37586,23 @@
       "source_published_kst": "2026-10-06T09:38+09:00",
       "title": "LG이노텍, `환율 우려를 걷어내면 보이는 바닥 시그널` 증권사 발표에 강세"
     },
+    "link:bed24c13d6de0e503cc6aa6c": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632696",
+      "source": "이투데이",
+      "source_body_digest": "a62188d637c5ae97490b53b2435bcd2319f20dd6f56d4ed7900ceb3d89da7cd8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:210401eac1b9c802e3b18b44cc76684ab1cebbcceccb65d59528e8d7d0c4070f",
+      "source_fact_keys": [
+        "source_fact:v1:2c8080141912c0dad38ab6dcc3b820832642b1c4a773c07dc86d74d85d000797"
+      ],
+      "source_published_kst": "2026-10-06T16:05+09:00",
+      "title": "[단독] 개인정보·데이터 유출 민원 4년새 3.5배↑…“피해구제 배상은 2% 불과”"
+    },
     "link:bee1da4c44a6479f7d17f793": {
       "first_seen_kst": "2026-10-02T15:48:44+09:00",
       "lanes": {
@@ -40148,6 +40388,26 @@
       "link": "https://www.yna.co.kr/view/AKR20260923101000051",
       "source": "연합뉴스",
       "title": "부산시의회, 29일부터 기관장 인사청문회…'송곳 검증' 예고 | 연합뉴스"
+    },
+    "link:d904d414d29002f9a6e2b77c": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816076",
+      "source": "뉴시스",
+      "source_body_digest": "d99146aff889c614c132ebdf9c3370a6045593ba7c83f4b3ff31a793d0077017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:297c3f8dcab11390f8ab6e9f279f42fc3d13dc3390a9e93fdbfc885545a5d941",
+      "source_fact_keys": [
+        "source_fact:v1:12ac17a07d0a99765ef5436a877d4f68386e6cad549b51d93b526fcac977a28c",
+        "source_fact:v1:311e10732d41590af57af24e446d66141da5cfbca09b3e1f4f3d0516d31e10db",
+        "source_fact:v1:34c9c53c3687aef11ef1db27375bb1ee6cd308d1f3ddb18754328e94b91dbe1f",
+        "source_fact:v1:9fb687c6e55ea99da4826ad0d118a034d801f77a9d8da6a0390d1824298d087c"
+      ],
+      "source_published_kst": "2026-10-06T16:55+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조 투자유치 달성할 것\""
     },
     "link:d92c3a96fe896b2be00c99ea": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
@@ -57828,6 +58088,26 @@
       "source": "머니투데이",
       "title": "금리인상 충격 하루만에 털었다…\"기업 실적이 상쇄\"[뉴욕마감]"
     },
+    "original:87db3a778c739e3a6676aa8d": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816076",
+      "source": "뉴시스",
+      "source_body_digest": "d99146aff889c614c132ebdf9c3370a6045593ba7c83f4b3ff31a793d0077017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:297c3f8dcab11390f8ab6e9f279f42fc3d13dc3390a9e93fdbfc885545a5d941",
+      "source_fact_keys": [
+        "source_fact:v1:12ac17a07d0a99765ef5436a877d4f68386e6cad549b51d93b526fcac977a28c",
+        "source_fact:v1:311e10732d41590af57af24e446d66141da5cfbca09b3e1f4f3d0516d31e10db",
+        "source_fact:v1:34c9c53c3687aef11ef1db27375bb1ee6cd308d1f3ddb18754328e94b91dbe1f",
+        "source_fact:v1:9fb687c6e55ea99da4826ad0d118a034d801f77a9d8da6a0390d1824298d087c"
+      ],
+      "source_published_kst": "2026-10-06T16:55+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조 투자유치 달성할 것\""
+    },
     "original:87eefcba9cfeb424ce218685": {
       "first_seen_kst": "2026-10-04T23:12:35+09:00",
       "lanes": {
@@ -61451,6 +61731,24 @@
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "충북 지방의회 의정비 인상 '갑론을박'…현실화 vs 과욕 | 연합뉴스"
     },
+    "original:aba0bc62de252da092b55bce": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.hankyung.com/article/202610065707i",
+      "source": "한국경제",
+      "source_body_digest": "f24e5260ee93b0b38ad79ab6500ddfb792a972599f793ecf6883babe26b16ea1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5815cc4a3834bb98ce98a18ba29c9ce73ef2c3b86edab5503bd1c33c426256f",
+      "source_fact_keys": [
+        "source_fact:v1:5e0830212bf0bade53341d18ab46ab2e5febf2abcca8620e834d05687c58d985",
+        "source_fact:v1:a9644a381e5014ee29d14d088afa5fc7d25f29141ed79d8684ffe2820bbacdb1"
+      ],
+      "source_published_kst": "2026-10-06T15:04+09:00",
+      "title": "파업에도 한 달 새 약 30% 껑충…반전 쓴 '이 종목'"
+    },
     "original:aba1ae2d71dc30bb05574947": {
       "first_seen_kst": "2026-10-02T21:37:28+09:00",
       "lanes": {
@@ -61536,6 +61834,25 @@
       "link": "https://biz.heraldcorp.com/article/10892565",
       "source": "헤럴드경제",
       "title": "“삼전닉스, CAPEX 규모 믿어도 된다”…AI 투자 내년 1.2조달러 [헤럴드머니페스타2026]"
+    },
+    "original:ac478d9a67ca0c37c2a52237": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.news1.kr/world/northeast-asia/6311860",
+      "source": "뉴스1",
+      "source_body_digest": "7c700164f7933de7a1a6d846502a8ce42161bee341ecd0d2a108775906b1eb49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79c7673fd1051daffcd7cd450f0ae87f1d1e9c53ad07d4cf5be87debc38b1823",
+      "source_fact_keys": [
+        "source_fact:v1:05bf5e9a2184832c7e3b21f9fdb64871bd92c0e5680ba17237f946dccbe3d8df",
+        "source_fact:v1:1ddfdf579defdf92de700b7d826da3cd46028d20ec22fedcb1bd6cc2715a4925",
+        "source_fact:v1:4a30ac57625fbae3d20ab5b9c46a680a80032817b795a16fc06220b500bb80ed"
+      ],
+      "source_published_kst": "2026-10-06T17:24+09:00",
+      "title": "英매체 \"한국산 연료, 서방 제재 선박 통해 러시아 대거 반출\""
     },
     "original:ac5fce919a3f98488d1cb1cc": {
       "first_seen_kst": "2026-09-20T01:03:05+09:00",
@@ -62838,6 +63155,23 @@
       "source": "디지털타임스",
       "title": "트럼프 “공화당 승리하면 모두의 주머니에 5000달러, 민주 이기면 대공황”’"
     },
+    "original:badb9ccc31accbda5ae8a09f": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815537",
+      "source": "뉴시스",
+      "source_body_digest": "1c06567a642260627efa458d5f99f7d38b8623aa8ae186a5ee268f9abdb24f3a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32e926c00407329eabdf63112d563d19030b32d437de23c327d566c33423d8c6",
+      "source_fact_keys": [
+        "source_fact:v1:f40d6585c31f86aa41cb10591bc71a500e7dc45c40a0bb84f44f87f0ad74c49c"
+      ],
+      "source_published_kst": "2026-10-06T22:35+09:00",
+      "title": "김정관 \"알래스카 LNG 투자, 아직 확정 아냐…중동전쟁 후 전략적 가치 생겨\"(종합2보)"
+    },
     "original:baec59ad8310b233213e37ae": {
       "first_seen_kst": "2026-10-05T11:24:20+09:00",
       "lanes": {
@@ -63593,6 +63927,25 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003813135",
       "source": "뉴시스",
       "title": "최태원 9440억 지분 매각…SK하닉 애프터마켓 주가 영향은 '미미'"
+    },
+    "original:c232563b626eafe1afa6988b": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815993",
+      "source": "뉴시스",
+      "source_body_digest": "7c80b0e125c173d11e376c97e0dae2a69a163b05edba2005f2b8f1ec04646ff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c6080ea7526871ab26ce5b394d3e479de501ee2bd43d73c4751126ce81a7a6ff",
+      "source_fact_keys": [
+        "source_fact:v1:58236eb0827754b73b24c34cc3ab6b844740b3300e4a590a69ac38d1357b39a8",
+        "source_fact:v1:6590372fb2b68996c4154e6d51d24988bfc9566bec68c1f4fd529c3e3a27a69b",
+        "source_fact:v1:7a03b24e6de21e04e979a45161e1b528f3561316054cca311babaa8838ac9815"
+      ],
+      "source_published_kst": "2026-10-06T16:33+09:00",
+      "title": "'컨테이너 운임 지수' 소폭 하락…유럽·지중해·중동 약세"
     },
     "original:c23a7819b167d2f721a73582": {
       "first_seen_kst": "2026-10-03T10:03:05+09:00",
@@ -65349,6 +65702,25 @@
       "source_published_kst": "2026-10-06T04:20+09:00",
       "title": "[美특징주]에스티로더, 성장 회복 기대에 월가 투자의견 ‘매수’ 상향…주가 2%↑"
     },
+    "original:d4f45cd8666fbfe17c275ef4": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816134",
+      "source": "뉴시스",
+      "source_body_digest": "81f5a339d8bbec4cc223a868440165e59603cabeb577812d920758c17479b633",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83859ab3dbdd3f421cd8319f18c26f6b96f28b5c0d27e5345a519ae7613f082b",
+      "source_fact_keys": [
+        "source_fact:v1:83c6ae51c06f256eb374bcbfcb59802ec4109affdc3e2400f0291a08817423d3",
+        "source_fact:v1:baa4690a8b41c49369a697d40b446539dc2f74671eab1feb5602b0b4a66e35cd",
+        "source_fact:v1:e6ead3f0474ea8a381fa05a737a9483c108f52c5864e544ec39cb88d840aeb20"
+      ],
+      "source_published_kst": "2026-10-06T17:21+09:00",
+      "title": "서방 제재로 런던길 막힌 러시아산 금…홍콩 수입, 7개월 만에 연간 기록 넘었다"
+    },
     "original:d51194d97a082e395c475632": {
       "first_seen_kst": "2026-10-02T21:04:53+09:00",
       "lanes": {
@@ -66619,6 +66991,23 @@
       ],
       "source_published_kst": "2026-10-05T12:59+09:00",
       "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
+    },
+    "original:df7cb6b95b264bd9da1d3b3b": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632696",
+      "source": "이투데이",
+      "source_body_digest": "a62188d637c5ae97490b53b2435bcd2319f20dd6f56d4ed7900ceb3d89da7cd8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:210401eac1b9c802e3b18b44cc76684ab1cebbcceccb65d59528e8d7d0c4070f",
+      "source_fact_keys": [
+        "source_fact:v1:2c8080141912c0dad38ab6dcc3b820832642b1c4a773c07dc86d74d85d000797"
+      ],
+      "source_published_kst": "2026-10-06T16:05+09:00",
+      "title": "[단독] 개인정보·데이터 유출 민원 4년새 3.5배↑…“피해구제 배상은 2% 불과”"
     },
     "original:df81792aff24c9aa41bb70bb": {
       "first_seen_kst": "2026-10-05T16:56:44+09:00",
@@ -74009,6 +74398,26 @@
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
     },
+    "source_fact:1599c918cd955233806f229d": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816076",
+      "source": "뉴시스",
+      "source_body_digest": "d99146aff889c614c132ebdf9c3370a6045593ba7c83f4b3ff31a793d0077017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:297c3f8dcab11390f8ab6e9f279f42fc3d13dc3390a9e93fdbfc885545a5d941",
+      "source_fact_keys": [
+        "source_fact:v1:12ac17a07d0a99765ef5436a877d4f68386e6cad549b51d93b526fcac977a28c",
+        "source_fact:v1:311e10732d41590af57af24e446d66141da5cfbca09b3e1f4f3d0516d31e10db",
+        "source_fact:v1:34c9c53c3687aef11ef1db27375bb1ee6cd308d1f3ddb18754328e94b91dbe1f",
+        "source_fact:v1:9fb687c6e55ea99da4826ad0d118a034d801f77a9d8da6a0390d1824298d087c"
+      ],
+      "source_published_kst": "2026-10-06T16:55+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조 투자유치 달성할 것\""
+    },
     "source_fact:15b5249d27227df1b44c777b": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -74576,6 +74985,23 @@
       ],
       "source_published_kst": "2026-10-06T10:57+09:00",
       "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
+    },
+    "source_fact:1945668b4f68458255a0b7f6": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815537",
+      "source": "뉴시스",
+      "source_body_digest": "1c06567a642260627efa458d5f99f7d38b8623aa8ae186a5ee268f9abdb24f3a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32e926c00407329eabdf63112d563d19030b32d437de23c327d566c33423d8c6",
+      "source_fact_keys": [
+        "source_fact:v1:f40d6585c31f86aa41cb10591bc71a500e7dc45c40a0bb84f44f87f0ad74c49c"
+      ],
+      "source_published_kst": "2026-10-06T22:35+09:00",
+      "title": "김정관 \"알래스카 LNG 투자, 아직 확정 아냐…중동전쟁 후 전략적 가치 생겨\"(종합2보)"
     },
     "source_fact:199d76f86ca364b84b102fe9": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
@@ -76650,6 +77076,24 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:24e9416d5a701a70e4e9b61a": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.hankyung.com/article/202610065707i",
+      "source": "한국경제",
+      "source_body_digest": "f24e5260ee93b0b38ad79ab6500ddfb792a972599f793ecf6883babe26b16ea1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5815cc4a3834bb98ce98a18ba29c9ce73ef2c3b86edab5503bd1c33c426256f",
+      "source_fact_keys": [
+        "source_fact:v1:5e0830212bf0bade53341d18ab46ab2e5febf2abcca8620e834d05687c58d985",
+        "source_fact:v1:a9644a381e5014ee29d14d088afa5fc7d25f29141ed79d8684ffe2820bbacdb1"
+      ],
+      "source_published_kst": "2026-10-06T15:04+09:00",
+      "title": "파업에도 한 달 새 약 30% 껑충…반전 쓴 '이 종목'"
     },
     "source_fact:2533bec91479ebaa3e720fb5": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -78789,6 +79233,25 @@
       ],
       "source_published_kst": "2026-10-05T18:03+09:00",
       "title": "'빚의 제국 빛을 잃다' 보도 인상적 … 고금리 위험요인 더 짚어달라"
+    },
+    "source_fact:3004d39bfd73f399c00e2f40": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815993",
+      "source": "뉴시스",
+      "source_body_digest": "7c80b0e125c173d11e376c97e0dae2a69a163b05edba2005f2b8f1ec04646ff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c6080ea7526871ab26ce5b394d3e479de501ee2bd43d73c4751126ce81a7a6ff",
+      "source_fact_keys": [
+        "source_fact:v1:58236eb0827754b73b24c34cc3ab6b844740b3300e4a590a69ac38d1357b39a8",
+        "source_fact:v1:6590372fb2b68996c4154e6d51d24988bfc9566bec68c1f4fd529c3e3a27a69b",
+        "source_fact:v1:7a03b24e6de21e04e979a45161e1b528f3561316054cca311babaa8838ac9815"
+      ],
+      "source_published_kst": "2026-10-06T16:33+09:00",
+      "title": "'컨테이너 운임 지수' 소폭 하락…유럽·지중해·중동 약세"
     },
     "source_fact:301803866d982edc8b6f3290": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -85570,6 +86033,26 @@
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
     },
+    "source_fact:520913b25053bc8f9439c8ae": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816076",
+      "source": "뉴시스",
+      "source_body_digest": "d99146aff889c614c132ebdf9c3370a6045593ba7c83f4b3ff31a793d0077017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:297c3f8dcab11390f8ab6e9f279f42fc3d13dc3390a9e93fdbfc885545a5d941",
+      "source_fact_keys": [
+        "source_fact:v1:12ac17a07d0a99765ef5436a877d4f68386e6cad549b51d93b526fcac977a28c",
+        "source_fact:v1:311e10732d41590af57af24e446d66141da5cfbca09b3e1f4f3d0516d31e10db",
+        "source_fact:v1:34c9c53c3687aef11ef1db27375bb1ee6cd308d1f3ddb18754328e94b91dbe1f",
+        "source_fact:v1:9fb687c6e55ea99da4826ad0d118a034d801f77a9d8da6a0390d1824298d087c"
+      ],
+      "source_published_kst": "2026-10-06T16:55+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조 투자유치 달성할 것\""
+    },
     "source_fact:5220df5220238da142d2eba5": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -87940,6 +88423,25 @@
       ],
       "source_published_kst": "2026-10-06T14:07+09:00",
       "title": "앤 해서웨이 ‘베러티’, 톰 크루즈 제치고 북미 박스오피스 1위"
+    },
+    "source_fact:5cb920d9587dd7ef53931e0d": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816134",
+      "source": "뉴시스",
+      "source_body_digest": "81f5a339d8bbec4cc223a868440165e59603cabeb577812d920758c17479b633",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83859ab3dbdd3f421cd8319f18c26f6b96f28b5c0d27e5345a519ae7613f082b",
+      "source_fact_keys": [
+        "source_fact:v1:83c6ae51c06f256eb374bcbfcb59802ec4109affdc3e2400f0291a08817423d3",
+        "source_fact:v1:baa4690a8b41c49369a697d40b446539dc2f74671eab1feb5602b0b4a66e35cd",
+        "source_fact:v1:e6ead3f0474ea8a381fa05a737a9483c108f52c5864e544ec39cb88d840aeb20"
+      ],
+      "source_published_kst": "2026-10-06T17:21+09:00",
+      "title": "서방 제재로 런던길 막힌 러시아산 금…홍콩 수입, 7개월 만에 연간 기록 넘었다"
     },
     "source_fact:5cd034506bf019e7b42281b0": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -92838,6 +93340,25 @@
       "source_published_kst": "2026-10-06T07:35+09:00",
       "title": "다올투자證 \"아모레퍼시픽, 마케팅비 선집행에 3분기 주춤…미주·국내 성장 지속\""
     },
+    "source_fact:74f5b9fdb16452d9070f7ab0": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816134",
+      "source": "뉴시스",
+      "source_body_digest": "81f5a339d8bbec4cc223a868440165e59603cabeb577812d920758c17479b633",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83859ab3dbdd3f421cd8319f18c26f6b96f28b5c0d27e5345a519ae7613f082b",
+      "source_fact_keys": [
+        "source_fact:v1:83c6ae51c06f256eb374bcbfcb59802ec4109affdc3e2400f0291a08817423d3",
+        "source_fact:v1:baa4690a8b41c49369a697d40b446539dc2f74671eab1feb5602b0b4a66e35cd",
+        "source_fact:v1:e6ead3f0474ea8a381fa05a737a9483c108f52c5864e544ec39cb88d840aeb20"
+      ],
+      "source_published_kst": "2026-10-06T17:21+09:00",
+      "title": "서방 제재로 런던길 막힌 러시아산 금…홍콩 수입, 7개월 만에 연간 기록 넘었다"
+    },
     "source_fact:7501596ff69142caf6af88f9": {
       "first_seen_kst": "2026-10-06T00:26:07+09:00",
       "lanes": {
@@ -93385,6 +93906,25 @@
       ],
       "source_published_kst": "2026-10-05T23:10+09:00",
       "title": "LG전자, 북미서 5GW 대형 AIDC 칠러 장기 공급계약"
+    },
+    "source_fact:778d0982b61983dd0f702486": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815993",
+      "source": "뉴시스",
+      "source_body_digest": "7c80b0e125c173d11e376c97e0dae2a69a163b05edba2005f2b8f1ec04646ff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c6080ea7526871ab26ce5b394d3e479de501ee2bd43d73c4751126ce81a7a6ff",
+      "source_fact_keys": [
+        "source_fact:v1:58236eb0827754b73b24c34cc3ab6b844740b3300e4a590a69ac38d1357b39a8",
+        "source_fact:v1:6590372fb2b68996c4154e6d51d24988bfc9566bec68c1f4fd529c3e3a27a69b",
+        "source_fact:v1:7a03b24e6de21e04e979a45161e1b528f3561316054cca311babaa8838ac9815"
+      ],
+      "source_published_kst": "2026-10-06T16:33+09:00",
+      "title": "'컨테이너 운임 지수' 소폭 하락…유럽·지중해·중동 약세"
     },
     "source_fact:77c44eaec5431c288577d624": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
@@ -94246,6 +94786,25 @@
       ],
       "source_published_kst": "2026-10-05T20:01+09:00",
       "title": "알렉토, 제넨텍에 AL050 기술이전..선급금 1억 달러"
+    },
+    "source_fact:7ca78ce3b6c1877bc8f349b0": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.news1.kr/world/northeast-asia/6311860",
+      "source": "뉴스1",
+      "source_body_digest": "7c700164f7933de7a1a6d846502a8ce42161bee341ecd0d2a108775906b1eb49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79c7673fd1051daffcd7cd450f0ae87f1d1e9c53ad07d4cf5be87debc38b1823",
+      "source_fact_keys": [
+        "source_fact:v1:05bf5e9a2184832c7e3b21f9fdb64871bd92c0e5680ba17237f946dccbe3d8df",
+        "source_fact:v1:1ddfdf579defdf92de700b7d826da3cd46028d20ec22fedcb1bd6cc2715a4925",
+        "source_fact:v1:4a30ac57625fbae3d20ab5b9c46a680a80032817b795a16fc06220b500bb80ed"
+      ],
+      "source_published_kst": "2026-10-06T17:24+09:00",
+      "title": "英매체 \"한국산 연료, 서방 제재 선박 통해 러시아 대거 반출\""
     },
     "source_fact:7cae2c73af8a3a441cdb972e": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -96024,6 +96583,25 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "source_fact:84e9e75cca4a174460eb04df": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.news1.kr/world/northeast-asia/6311860",
+      "source": "뉴스1",
+      "source_body_digest": "7c700164f7933de7a1a6d846502a8ce42161bee341ecd0d2a108775906b1eb49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79c7673fd1051daffcd7cd450f0ae87f1d1e9c53ad07d4cf5be87debc38b1823",
+      "source_fact_keys": [
+        "source_fact:v1:05bf5e9a2184832c7e3b21f9fdb64871bd92c0e5680ba17237f946dccbe3d8df",
+        "source_fact:v1:1ddfdf579defdf92de700b7d826da3cd46028d20ec22fedcb1bd6cc2715a4925",
+        "source_fact:v1:4a30ac57625fbae3d20ab5b9c46a680a80032817b795a16fc06220b500bb80ed"
+      ],
+      "source_published_kst": "2026-10-06T17:24+09:00",
+      "title": "英매체 \"한국산 연료, 서방 제재 선박 통해 러시아 대거 반출\""
     },
     "source_fact:850e5afe020fc91209c7cede": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -97968,6 +98546,26 @@
       ],
       "source_published_kst": "2026-10-06T11:46+09:00",
       "title": "삼성전기, 글로벌 기업과 2천900억 AI 서버용 MLCC 공급계약 | 연합뉴스"
+    },
+    "source_fact:8ed777aab9d7f30be2dc53f7": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816076",
+      "source": "뉴시스",
+      "source_body_digest": "d99146aff889c614c132ebdf9c3370a6045593ba7c83f4b3ff31a793d0077017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:297c3f8dcab11390f8ab6e9f279f42fc3d13dc3390a9e93fdbfc885545a5d941",
+      "source_fact_keys": [
+        "source_fact:v1:12ac17a07d0a99765ef5436a877d4f68386e6cad549b51d93b526fcac977a28c",
+        "source_fact:v1:311e10732d41590af57af24e446d66141da5cfbca09b3e1f4f3d0516d31e10db",
+        "source_fact:v1:34c9c53c3687aef11ef1db27375bb1ee6cd308d1f3ddb18754328e94b91dbe1f",
+        "source_fact:v1:9fb687c6e55ea99da4826ad0d118a034d801f77a9d8da6a0390d1824298d087c"
+      ],
+      "source_published_kst": "2026-10-06T16:55+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조 투자유치 달성할 것\""
     },
     "source_fact:8ee39840edc9c5a04b0f188b": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -103918,6 +104516,23 @@
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
     },
+    "source_fact:ac21759affd42c01792c978d": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632696",
+      "source": "이투데이",
+      "source_body_digest": "a62188d637c5ae97490b53b2435bcd2319f20dd6f56d4ed7900ceb3d89da7cd8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:210401eac1b9c802e3b18b44cc76684ab1cebbcceccb65d59528e8d7d0c4070f",
+      "source_fact_keys": [
+        "source_fact:v1:2c8080141912c0dad38ab6dcc3b820832642b1c4a773c07dc86d74d85d000797"
+      ],
+      "source_published_kst": "2026-10-06T16:05+09:00",
+      "title": "[단독] 개인정보·데이터 유출 민원 4년새 3.5배↑…“피해구제 배상은 2% 불과”"
+    },
     "source_fact:ac43c8e579c1f42786d71a00": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -107228,6 +107843,25 @@
       "source_published_kst": "2026-10-06T11:04+09:00",
       "title": "\"트럼프가 돈 준다고? 안 믿어\"…지지율 역대 최저, 히스패닉도 이탈"
     },
+    "source_fact:bc385e3e2bd9dbc545b1aae7": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816134",
+      "source": "뉴시스",
+      "source_body_digest": "81f5a339d8bbec4cc223a868440165e59603cabeb577812d920758c17479b633",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83859ab3dbdd3f421cd8319f18c26f6b96f28b5c0d27e5345a519ae7613f082b",
+      "source_fact_keys": [
+        "source_fact:v1:83c6ae51c06f256eb374bcbfcb59802ec4109affdc3e2400f0291a08817423d3",
+        "source_fact:v1:baa4690a8b41c49369a697d40b446539dc2f74671eab1feb5602b0b4a66e35cd",
+        "source_fact:v1:e6ead3f0474ea8a381fa05a737a9483c108f52c5864e544ec39cb88d840aeb20"
+      ],
+      "source_published_kst": "2026-10-06T17:21+09:00",
+      "title": "서방 제재로 런던길 막힌 러시아산 금…홍콩 수입, 7개월 만에 연간 기록 넘었다"
+    },
     "source_fact:bc6e13b7b1742874c357b996": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -108503,6 +109137,25 @@
       ],
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
+    },
+    "source_fact:c30d5dbcd2d2bd73d5a63bc4": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815993",
+      "source": "뉴시스",
+      "source_body_digest": "7c80b0e125c173d11e376c97e0dae2a69a163b05edba2005f2b8f1ec04646ff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c6080ea7526871ab26ce5b394d3e479de501ee2bd43d73c4751126ce81a7a6ff",
+      "source_fact_keys": [
+        "source_fact:v1:58236eb0827754b73b24c34cc3ab6b844740b3300e4a590a69ac38d1357b39a8",
+        "source_fact:v1:6590372fb2b68996c4154e6d51d24988bfc9566bec68c1f4fd529c3e3a27a69b",
+        "source_fact:v1:7a03b24e6de21e04e979a45161e1b528f3561316054cca311babaa8838ac9815"
+      ],
+      "source_published_kst": "2026-10-06T16:33+09:00",
+      "title": "'컨테이너 운임 지수' 소폭 하락…유럽·지중해·중동 약세"
     },
     "source_fact:c3323a77aee62ffea906ffef": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
@@ -113655,6 +114308,25 @@
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결…"
     },
+    "source_fact:daeef0cf1892f5093cc8f343": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.news1.kr/world/northeast-asia/6311860",
+      "source": "뉴스1",
+      "source_body_digest": "7c700164f7933de7a1a6d846502a8ce42161bee341ecd0d2a108775906b1eb49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79c7673fd1051daffcd7cd450f0ae87f1d1e9c53ad07d4cf5be87debc38b1823",
+      "source_fact_keys": [
+        "source_fact:v1:05bf5e9a2184832c7e3b21f9fdb64871bd92c0e5680ba17237f946dccbe3d8df",
+        "source_fact:v1:1ddfdf579defdf92de700b7d826da3cd46028d20ec22fedcb1bd6cc2715a4925",
+        "source_fact:v1:4a30ac57625fbae3d20ab5b9c46a680a80032817b795a16fc06220b500bb80ed"
+      ],
+      "source_published_kst": "2026-10-06T17:24+09:00",
+      "title": "英매체 \"한국산 연료, 서방 제재 선박 통해 러시아 대거 반출\""
+    },
     "source_fact:db5b33c4b7461d30d4d4a32b": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
       "lanes": {
@@ -117599,6 +118271,26 @@
       "source_published_kst": "2026-10-05T22:55+09:00",
       "title": "美국채금리 5.3%에 다우 ‘주춤’… 뉴욕증시 혼조 출발"
     },
+    "source_fact:ed8cbfacad94e285400762bb": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816076",
+      "source": "뉴시스",
+      "source_body_digest": "d99146aff889c614c132ebdf9c3370a6045593ba7c83f4b3ff31a793d0077017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:297c3f8dcab11390f8ab6e9f279f42fc3d13dc3390a9e93fdbfc885545a5d941",
+      "source_fact_keys": [
+        "source_fact:v1:12ac17a07d0a99765ef5436a877d4f68386e6cad549b51d93b526fcac977a28c",
+        "source_fact:v1:311e10732d41590af57af24e446d66141da5cfbca09b3e1f4f3d0516d31e10db",
+        "source_fact:v1:34c9c53c3687aef11ef1db27375bb1ee6cd308d1f3ddb18754328e94b91dbe1f",
+        "source_fact:v1:9fb687c6e55ea99da4826ad0d118a034d801f77a9d8da6a0390d1824298d087c"
+      ],
+      "source_published_kst": "2026-10-06T16:55+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조 투자유치 달성할 것\""
+    },
     "source_fact:ed9953e3306b7535143bff39": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -119295,6 +119987,24 @@
       ],
       "source_published_kst": "2026-10-06T16:57+09:00",
       "title": "[BioS]알테오젠, 국민성장펀드 등 2000억 유치..\"新동력 확보\""
+    },
+    "source_fact:f69834434ac37fa7978b9a24": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.hankyung.com/article/202610065707i",
+      "source": "한국경제",
+      "source_body_digest": "f24e5260ee93b0b38ad79ab6500ddfb792a972599f793ecf6883babe26b16ea1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5815cc4a3834bb98ce98a18ba29c9ce73ef2c3b86edab5503bd1c33c426256f",
+      "source_fact_keys": [
+        "source_fact:v1:5e0830212bf0bade53341d18ab46ab2e5febf2abcca8620e834d05687c58d985",
+        "source_fact:v1:a9644a381e5014ee29d14d088afa5fc7d25f29141ed79d8684ffe2820bbacdb1"
+      ],
+      "source_published_kst": "2026-10-06T15:04+09:00",
+      "title": "파업에도 한 달 새 약 30% 껑충…반전 쓴 '이 종목'"
     },
     "source_fact:f70e8a3e359896e8114f0f03": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -135128,6 +135838,26 @@
       "source": "머니투데이",
       "title": "금리인상 충격 하루만에 털었다…\"기업 실적이 상쇄\"[뉴욕마감]"
     },
+    "title:87db3a778c739e3a6676aa8d": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816076",
+      "source": "뉴시스",
+      "source_body_digest": "d99146aff889c614c132ebdf9c3370a6045593ba7c83f4b3ff31a793d0077017",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:297c3f8dcab11390f8ab6e9f279f42fc3d13dc3390a9e93fdbfc885545a5d941",
+      "source_fact_keys": [
+        "source_fact:v1:12ac17a07d0a99765ef5436a877d4f68386e6cad549b51d93b526fcac977a28c",
+        "source_fact:v1:311e10732d41590af57af24e446d66141da5cfbca09b3e1f4f3d0516d31e10db",
+        "source_fact:v1:34c9c53c3687aef11ef1db27375bb1ee6cd308d1f3ddb18754328e94b91dbe1f",
+        "source_fact:v1:9fb687c6e55ea99da4826ad0d118a034d801f77a9d8da6a0390d1824298d087c"
+      ],
+      "source_published_kst": "2026-10-06T16:55+09:00",
+      "title": "이현재 하남시장 \"2030년까지 10조 투자유치 달성할 것\""
+    },
     "title:87eefcba9cfeb424ce218685": {
       "first_seen_kst": "2026-10-04T23:12:35+09:00",
       "lanes": {
@@ -138815,6 +139545,24 @@
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "충북 지방의회 의정비 인상 '갑론을박'…현실화 vs 과욕 | 연합뉴스"
     },
+    "title:aba0bc62de252da092b55bce": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.hankyung.com/article/202610065707i",
+      "source": "한국경제",
+      "source_body_digest": "f24e5260ee93b0b38ad79ab6500ddfb792a972599f793ecf6883babe26b16ea1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a5815cc4a3834bb98ce98a18ba29c9ce73ef2c3b86edab5503bd1c33c426256f",
+      "source_fact_keys": [
+        "source_fact:v1:5e0830212bf0bade53341d18ab46ab2e5febf2abcca8620e834d05687c58d985",
+        "source_fact:v1:a9644a381e5014ee29d14d088afa5fc7d25f29141ed79d8684ffe2820bbacdb1"
+      ],
+      "source_published_kst": "2026-10-06T15:04+09:00",
+      "title": "파업에도 한 달 새 약 30% 껑충…반전 쓴 '이 종목'"
+    },
     "title:aba1ae2d71dc30bb05574947": {
       "first_seen_kst": "2026-10-02T21:37:28+09:00",
       "lanes": {
@@ -138900,6 +139648,25 @@
       "link": "https://biz.heraldcorp.com/article/10892565",
       "source": "헤럴드경제",
       "title": "“삼전닉스, CAPEX 규모 믿어도 된다”…AI 투자 내년 1.2조달러 [헤럴드머니페스타2026]"
+    },
+    "title:ac478d9a67ca0c37c2a52237": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.news1.kr/world/northeast-asia/6311860",
+      "source": "뉴스1",
+      "source_body_digest": "7c700164f7933de7a1a6d846502a8ce42161bee341ecd0d2a108775906b1eb49",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:79c7673fd1051daffcd7cd450f0ae87f1d1e9c53ad07d4cf5be87debc38b1823",
+      "source_fact_keys": [
+        "source_fact:v1:05bf5e9a2184832c7e3b21f9fdb64871bd92c0e5680ba17237f946dccbe3d8df",
+        "source_fact:v1:1ddfdf579defdf92de700b7d826da3cd46028d20ec22fedcb1bd6cc2715a4925",
+        "source_fact:v1:4a30ac57625fbae3d20ab5b9c46a680a80032817b795a16fc06220b500bb80ed"
+      ],
+      "source_published_kst": "2026-10-06T17:24+09:00",
+      "title": "英매체 \"한국산 연료, 서방 제재 선박 통해 러시아 대거 반출\""
     },
     "title:ac5fce919a3f98488d1cb1cc": {
       "first_seen_kst": "2026-09-20T01:03:05+09:00",
@@ -139380,6 +140147,23 @@
       ],
       "source_published_kst": "2026-10-05T20:21+09:00",
       "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
+    },
+    "title:b17bb554c599ae93285e6e58": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815537",
+      "source": "뉴시스",
+      "source_body_digest": "1c06567a642260627efa458d5f99f7d38b8623aa8ae186a5ee268f9abdb24f3a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32e926c00407329eabdf63112d563d19030b32d437de23c327d566c33423d8c6",
+      "source_fact_keys": [
+        "source_fact:v1:f40d6585c31f86aa41cb10591bc71a500e7dc45c40a0bb84f44f87f0ad74c49c"
+      ],
+      "source_published_kst": "2026-10-06T22:35+09:00",
+      "title": "김정관 \"알래스카 LNG 투자, 아직 확정 아냐…중동전쟁 후 전략적 가치 생겨\"(종합2보)"
     },
     "title:b18679b05eda2f9ea8da388e": {
       "first_seen_kst": "2026-10-03T09:05:24+09:00",
@@ -140223,6 +141007,23 @@
       "source": "디지털타임스",
       "title": "트럼프 “공화당 승리하면 모두의 주머니에 5000달러, 민주 이기면 대공황”’"
     },
+    "title:badb9ccc31accbda5ae8a09f": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815537",
+      "source": "뉴시스",
+      "source_body_digest": "1c06567a642260627efa458d5f99f7d38b8623aa8ae186a5ee268f9abdb24f3a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:32e926c00407329eabdf63112d563d19030b32d437de23c327d566c33423d8c6",
+      "source_fact_keys": [
+        "source_fact:v1:f40d6585c31f86aa41cb10591bc71a500e7dc45c40a0bb84f44f87f0ad74c49c"
+      ],
+      "source_published_kst": "2026-10-06T22:35+09:00",
+      "title": "김정관 \"알래스카 LNG 투자, 아직 확정 아냐…중동전쟁 후 전략적 가치 생겨\"(종합2보)"
+    },
     "title:baec59ad8310b233213e37ae": {
       "first_seen_kst": "2026-10-05T11:24:20+09:00",
       "lanes": {
@@ -140978,6 +141779,25 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003813135",
       "source": "뉴시스",
       "title": "최태원 9440억 지분 매각…SK하닉 애프터마켓 주가 영향은 '미미'"
+    },
+    "title:c232563b626eafe1afa6988b": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815993",
+      "source": "뉴시스",
+      "source_body_digest": "7c80b0e125c173d11e376c97e0dae2a69a163b05edba2005f2b8f1ec04646ff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c6080ea7526871ab26ce5b394d3e479de501ee2bd43d73c4751126ce81a7a6ff",
+      "source_fact_keys": [
+        "source_fact:v1:58236eb0827754b73b24c34cc3ab6b844740b3300e4a590a69ac38d1357b39a8",
+        "source_fact:v1:6590372fb2b68996c4154e6d51d24988bfc9566bec68c1f4fd529c3e3a27a69b",
+        "source_fact:v1:7a03b24e6de21e04e979a45161e1b528f3561316054cca311babaa8838ac9815"
+      ],
+      "source_published_kst": "2026-10-06T16:33+09:00",
+      "title": "'컨테이너 운임 지수' 소폭 하락…유럽·지중해·중동 약세"
     },
     "title:c23a7819b167d2f721a73582": {
       "first_seen_kst": "2026-10-03T10:03:05+09:00",
@@ -142745,6 +143565,25 @@
       "source_published_kst": "2026-10-06T04:20+09:00",
       "title": "[美특징주]에스티로더, 성장 회복 기대에 월가 투자의견 ‘매수’ 상향…주가 2%↑"
     },
+    "title:d4f45cd8666fbfe17c275ef4": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816134",
+      "source": "뉴시스",
+      "source_body_digest": "81f5a339d8bbec4cc223a868440165e59603cabeb577812d920758c17479b633",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:83859ab3dbdd3f421cd8319f18c26f6b96f28b5c0d27e5345a519ae7613f082b",
+      "source_fact_keys": [
+        "source_fact:v1:83c6ae51c06f256eb374bcbfcb59802ec4109affdc3e2400f0291a08817423d3",
+        "source_fact:v1:baa4690a8b41c49369a697d40b446539dc2f74671eab1feb5602b0b4a66e35cd",
+        "source_fact:v1:e6ead3f0474ea8a381fa05a737a9483c108f52c5864e544ec39cb88d840aeb20"
+      ],
+      "source_published_kst": "2026-10-06T17:21+09:00",
+      "title": "서방 제재로 런던길 막힌 러시아산 금…홍콩 수입, 7개월 만에 연간 기록 넘었다"
+    },
     "title:d51194d97a082e395c475632": {
       "first_seen_kst": "2026-10-02T21:04:53+09:00",
       "lanes": {
@@ -144025,6 +144864,23 @@
       ],
       "source_published_kst": "2026-10-05T12:59+09:00",
       "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
+    },
+    "title:df7cb6b95b264bd9da1d3b3b": {
+      "first_seen_kst": "2026-10-06T22:37:02+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:37:02+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:37:02+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632696",
+      "source": "이투데이",
+      "source_body_digest": "a62188d637c5ae97490b53b2435bcd2319f20dd6f56d4ed7900ceb3d89da7cd8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:210401eac1b9c802e3b18b44cc76684ab1cebbcceccb65d59528e8d7d0c4070f",
+      "source_fact_keys": [
+        "source_fact:v1:2c8080141912c0dad38ab6dcc3b820832642b1c4a773c07dc86d74d85d000797"
+      ],
+      "source_published_kst": "2026-10-06T16:05+09:00",
+      "title": "[단독] 개인정보·데이터 유출 민원 4년새 3.5배↑…“피해구제 배상은 2% 불과”"
     },
     "title:df81792aff24c9aa41bb70bb": {
       "first_seen_kst": "2026-10-05T16:56:44+09:00",
@@ -147295,5 +148151,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T22:21:21+09:00"
+  "updated_at_kst": "2026-10-06T22:37:02+09:00"
 }
