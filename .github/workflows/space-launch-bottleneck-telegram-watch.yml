@@ -71,14 +71,14 @@ jobs:
         run: python scripts/space_launch_telegram_send.py out/space_launch_bottleneck_watch_telegram.txt
 
       - name: Persist deduplication state
-        if: success() && hashFiles('out/space_launch_bottleneck_watch_pending_state.json') != ''
+        if: success() && hashFiles('out/space_launch_bottleneck_dedicated_pending_state.json') != ''
         run: |
           mkdir -p data
-          cp out/space_launch_bottleneck_watch_pending_state.json data/space_launch_bottleneck_watch_state.json
+          cp out/space_launch_bottleneck_dedicated_pending_state.json data/space_launch_bottleneck_dedicated_state.json
 
           git config user.name "space-launch-bottleneck-watch[bot]"
           git config user.email "space-launch-bottleneck-watch[bot]@users.noreply.github.com"
-          git add data/space_launch_bottleneck_watch_state.json
+          git add data/space_launch_bottleneck_dedicated_state.json
 
           if git diff --cached --quiet; then
             echo "Space launch watch state unchanged"
