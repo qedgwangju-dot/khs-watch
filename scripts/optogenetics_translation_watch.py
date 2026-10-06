@@ -10,6 +10,7 @@ import re
 import sys
 import urllib.parse
 import urllib.request
+import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from urllib.parse import urljoin
 from zoneinfo import ZoneInfo
@@ -26,7 +27,8 @@ UA = "Mozilla/5.0 (compatible; khs-watch-optogenetics/1.0)"
 KI_NOBEL = "https://news.ki.se/the-2026-nobel-prize-in-physiology-or-medicine-to-peter-hegemann-georg-nagel-and-karl-deisseroth"
 NANOSCOPE_NEWS = "https://nanostherapeutics.com/nanoscope-press-release/"
 RAY_NEWS = "https://raytherapeutics.com/category/press-release/"
-GENSIGHT_NEWS = "https://www.gensight-biologics.com/press-releases/"
+RAY_FEED = "https://raytherapeutics.com/feed/"
+GENSIGHT_NEWS = "https://www.gensight-biologics.com/subject/gs030/"
 
 TRIALS = {
     "NCT06460844": {"company": "Ray Therapeutics", "program": "RTx-015"},
@@ -149,6 +151,39 @@ def classify_press(title: str) -> tuple[str, str]:
     return "광유전학 임상", "광유전학 임상·규제 단계 변화"
 
 
+def meaningful_rss_links(company: str, feed_url: str, program_terms: tuple[str, ...]) -> list[dict]:
+    xml = fetch_text(feed_url)
+    root = ET.fromstring(xml)
+    out: list[dict] = []
+    seen: set[str] = set()
+    for item in root.findall(".//item"):
+        title = clean(item.findtext("title") or "")
+        link = clean(item.findtext("link") or "")
+        low = title.lower()
+        if not title or not link:
+            continue
+        if not any(term in low for term in program_terms):
+            continue
+        if not any(term in low for term in ACTION_TERMS):
+            continue
+        k = key_for(company, link.rstrip("/"), title.lower())
+        if k in seen:
+            continue
+        seen.add(k)
+        stage, meaning = classify_press(title)
+        out.append({
+            "key": k,
+            "company": company,
+            "program": "RTx-015/RTx-021" if company == "Ray Therapeutics" else "광유전학",
+            "stage": stage,
+            "meaning": meaning,
+            "title": title,
+            "url": link,
+            "source": "회사 공식 RSS",
+        })
+    return out
+
+
 def meaningful_press_links(company: str, base_url: str, program_terms: tuple[str, ...]) -> list[dict]:
     page = fetch_text(base_url)
     parser = LinkParser()
@@ -207,7 +242,7 @@ def trial_snapshot(nct: str) -> tuple[dict, dict]:
         "start_date": (status.get("startDateStruct") or {}).get("date") or "",
         "primary_completion": (status.get("primaryCompletionDateStruct") or {}).get("date") or "",
         "study_completion": (status.get("completionDateStruct") or {}).get("date") or "",
-        "last_update": status.get("studyFirstPostDate") or status.get("lastUpdatePostDateStruct", {}).get("date") or "",
+        "last_update": (status.get("lastUpdatePostDateStruct") or {}).get("date") or "",
         "conditions": conds,
         "locations": len(contacts.get("locations") or []),
     }
@@ -361,7 +396,14 @@ def main() -> int:
 
     for company, url, terms in COMPANY_SOURCES:
         try:
-            events.extend(meaningful_press_links(company, url, terms))
+            if company == "Ray Therapeutics":
+                try:
+                    rows = meaningful_press_links(company, url, terms)
+                except Exception:
+                    rows = meaningful_rss_links(company, RAY_FEED, terms)
+                events.extend(rows)
+            else:
+                events.extend(meaningful_press_links(company, url, terms))
             successful += 1
         except Exception as exc:
             errors.append(f"{company}: {type(exc).__name__}")
