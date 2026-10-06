@@ -266,6 +266,43 @@ class MemorySpotCycleWatchTests(unittest.TestCase):
         self.assertEqual(obs["enterprise_ssd_min_pct"], 23.0)
         self.assertEqual(obs["enterprise_ssd_max_pct"], 28.0)
 
+    def test_trendforce_essd_structural_demand_extracts_80pct_and_committed_supply(self):
+        item = {
+            "title": "AI Server Demand Sustains Memory Contract Price Increases in 4Q26, Says TrendForce",
+            "description": (
+                "Enterprise SSD bit demand is projected to grow by more than 80% YoY in 2026. "
+                "Most incremental supply has already been committed, leaving little available on the open market. "
+                "Suppliers are expanding QLC capacity and PCIe 6.0 adoption is ramping. "
+                "Consumer demand remains weak."
+            ),
+            "source": "TrendForce",
+            "link": "https://www.trendforce.com/presscenter/news/20260930-13258.html",
+            "published_kst": "2026-09-30T09:00:00+09:00",
+        }
+        obs = w._extract_nand_divergence(item)
+        self.assertIsNotNone(obs)
+        self.assertEqual(obs["essd_bit_demand_yoy_min_pct"], 80.0)
+        self.assertTrue(obs["incremental_supply_mostly_committed"])
+        self.assertTrue(obs["qlc_capacity_expansion"])
+        self.assertTrue(obs["pcie6_adoption_ramping"])
+
+    def test_nand_divergence_v2_baseline_tracks_capacity_and_easing_timeline(self):
+        b = w.NAND_DIVERGENCE_BASELINE
+        self.assertEqual(w.NAND_DIVERGENCE_TRACK_VERSION, 2)
+        self.assertEqual(b["essd_bit_demand_yoy_min_pct"], 80.0)
+        self.assertTrue(b["incremental_supply_mostly_committed"])
+        self.assertEqual((b["new_nand_capacity_start_year"], b["new_nand_capacity_end_year"]), (2027, 2028))
+        self.assertEqual((b["trendforce_nand_easing_half"], b["trendforce_nand_easing_year"]), ("2H", 2027))
+        self.assertEqual(b["secondary_industry_new_fab_earliest_year"], 2028)
+        self.assertFalse(b["secondary_industry_new_fab_timeline_official"])
+
+    def test_essd_bit_demand_only_alerts_on_material_revision(self):
+        old = dict(w.NAND_DIVERGENCE_BASELINE)
+        small = dict(old, essd_bit_demand_yoy_min_pct=85.0)
+        big = dict(old, essd_bit_demand_yoy_min_pct=95.0)
+        self.assertFalse(any("비트 수요" in x for x in w._nand_divergence_changes(old, small)))
+        self.assertTrue(any("+80%→+95%" in x for x in w._nand_divergence_changes(old, big)))
+
     def test_trendforce_4q26_revision_compares_july_to_september(self):
         old = dict(w.TREND_4Q26_PRIOR_BASELINE)
         new = dict(w.TREND_4Q26_CURRENT_BASELINE)
