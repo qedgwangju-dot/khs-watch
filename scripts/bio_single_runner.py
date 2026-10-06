@@ -20,14 +20,18 @@ ROUTE_FILE = DATA / "bio_telegram_chat_id.enc"
 
 
 def run(cmd: list[str], timeout: int = 240) -> tuple[int, str]:
-    proc = subprocess.run(
-        cmd,
-        cwd=ROOT,
-        text=True,
-        capture_output=True,
-        timeout=timeout,
-        env=os.environ.copy(),
-    )
+    try:
+        proc = subprocess.run(
+            cmd,
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            timeout=timeout,
+            env=os.environ.copy(),
+        )
+    except subprocess.TimeoutExpired:
+        rendered = " ".join(str(part) for part in cmd)
+        return 124, f"TimeoutExpired after {timeout}s: {rendered}"
     text = ((proc.stdout or "") + "\n" + (proc.stderr or "")).strip()
     return proc.returncode, text[-6000:]
 
@@ -298,7 +302,48 @@ def main() -> int:
         hb["status"] = "ok" if operational else "degraded"
 
         today = now_dt.date().isoformat()
-        if operational and hb.get("last_health_notice_date") != today and now_dt.hour >= 9:
+        previous_status = str(prev.get("status") or "")
+        previous_errors = [str(x) for x in (prev.get("errors") or [])]
+        current_errors = [str(x) for x in (hb.get("errors") or [])]
+        current_signature = " | ".join(current_errors)[:1000]
+        previous_signature = str(prev.get("error_signature") or " | ".join(previous_errors))[:1000]
+        hb["error_signature"] = current_signature
+
+        if not operational:
+            hb["failed_component"] = hb.get("failed_component") or (
+                "Halozyme 특허분쟁 감시"
+                if any("Halozyme" in err or "halozyme" in err for err in current_errors)
+                else "바이오 통합 감시"
+            )
+            should_notify_failure = (
+                previous_status == "ok"
+                or previous_status == ""
+                or current_signature != previous_signature
+            )
+            if token and chat_id and should_notify_failure:
+                failure_dt = dt.datetime.now(KST)
+                detail = current_errors[0] if current_errors else "세부 오류 확인 필요"
+                hb["failure_notice_message_id"] = send_text(
+                    token,
+                    chat_id,
+                    "[바이오 감시] 실행 오류\n\n"
+                    f"- 실제 오류 시각: {failure_dt.strftime('%Y-%m-%d %H:%M KST')}\n"
+                    f"- 실패 구간: {hb.get('failed_component')}\n"
+                    f"- 확인 원인: {detail[:500]}\n"
+                    "- 동일 원인이 반복되면 중복 오류 알림은 보내지 않고 계속 재확인합니다.",
+                )
+        elif previous_status in {"failed", "degraded"}:
+            detail = previous_errors[0] if previous_errors else "직전 실행 오류"
+            hb["recovery_notice_message_id"] = send_text(
+                token,
+                chat_id,
+                "[바이오 감시] 오류 복구 확인\n\n"
+                f"- 복구 확인: {now_dt.strftime('%Y-%m-%d %H:%M KST')}\n"
+                f"- 직전 원인: {detail[:500]}\n"
+                "- 현재: QLEX 전환율·월간 WAC·Intismeran·Jemperli·Enhertu·Halozyme 특허분쟁 감시 정상\n"
+                f"- Telegram 경로: {route_source}",
+            )
+        elif hb.get("last_health_notice_date") != today and now_dt.hour >= 9:
             message_id = send_text(
                 token,
                 chat_id,
