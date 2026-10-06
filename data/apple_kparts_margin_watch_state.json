@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-06T03:39:06+09:00",
+  "updated_at_kst": "2026-10-06T09:19:42+09:00",
   "initial_alert_sent": true,
   "baseline_at_kst": "2026-09-27T17:05:00+09:00",
   "baseline": {
@@ -26,6 +26,7 @@
     "2e731ae854174e1ea186cb62",
     "2eb23740b835fd61733e81ad",
     "2f2a5a440309821bccdf5673",
+    "2f329f3acacf68ef99c0078e",
     "31b8cca67b3041c426eb2135",
     "31fd881fa49b72b08b5c89e4",
     "381d4fdd01614df2e6a99b9c",
@@ -34,6 +35,7 @@
     "3d4a30411c274b22896d32a7",
     "41187bce6efa74554f66a7a1",
     "4162ef063a91d37847ee9e21",
+    "41c6ff7b18ee6f97ad19adba",
     "424e8e71d058c86731b2dffb",
     "4346b70866060e5e6a7c9c98",
     "4417cefdcf107930b6ef7f40",
@@ -106,6 +108,7 @@
     "d1b58ea777a8acc655ee721a",
     "d40cd953930c5e0af1cc1035",
     "d669a09ccb20d5ea9bb42ccd",
+    "d7ab90989cbf67b88cf033c4",
     "ddb2691df0b50ae0e45a4c23",
     "dfe36f5ae82f1833ec82786b",
     "e0f884d948fa1ac70bf4d2d6",
@@ -131,8 +134,8 @@
     "latest_date": "2026-10-05",
     "latest_source": "ECB/Frankfurter",
     "q2_avg": 1500.48,
-    "q3_avg": 1420.2,
-    "qoq_pct": -5.35,
+    "q3_avg": 1417.24,
+    "qoq_pct": -5.55,
     "bucket": "orange",
     "average_source": "Fed H.10/FRED"
   },
