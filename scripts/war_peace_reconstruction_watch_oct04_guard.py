@@ -38,6 +38,13 @@ def translate_ko(title):
     raw = str(title or "")
     low = raw.lower()
     if (
+        any(x in low for x in ("houthi", "후티"))
+        and any(x in low for x in ("saudi", "사우디"))
+        and any(x in low for x in ("rabigh", "라빅"))
+        and any(x in low for x in ("refinery", "정유시설", "aramco", "아람코"))
+    ):
+        return "후티의 사우디 공항·라빅 Aramco 정유시설 공격 보도 — 공항 피해는 사우디 확인, 라빅 정유시설은 후티 주장 단계"
+    if (
         ("tass calculations" in low or "tass calculation" in low)
         and "drone" in low and "2026" in low
     ):
@@ -684,6 +691,8 @@ def verify_alert(test_mode=False):
         issues.append("TASS 러시아 국방부 타격 주장에 독립확인 상태 누락")
     if "tass.com/politics/2197959" in low and ("TASS 집계" not in text or "독립 확인" not in text):
         issues.append("TASS 드론 규모 집계를 확정 사실처럼 표시")
+    if ("라빅" in text and "정유시설" in text and "후티" in text) and "주장 단계" not in text:
+        issues.append("라빅 정유시설 공격을 후티 주장 단계와 사우디 확인 피해로 분리하지 않음")
     if issues:
         raise RuntimeError("WAR_OCT04_QUALITY_GATE: " + " | ".join(issues))
 
