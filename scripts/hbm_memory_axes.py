@@ -1146,7 +1146,7 @@ def parse_glass_substrate_records(item, body):
             scope = 'stage_transition_customer_evaluation_to_hvm'
             if entity == 'jntc':
                 m_pilot = re.search(r'(?:파일럿\s*라인|pilot\s*line)[^0-9]{0,25}(\d+)\s*(?:개|line)', text, re.I)
-                m_cap = re.search(r'(?:월|monthly)[^0-9]{0,25}(1\s*만|10,?000)\s*[~～-]\s*(1\s*만\s*2\s*천|12,?000)\s*(?:개|units?)', text, re.I)
+                m_cap = re.search(r'(?:월|monthly)[^0-9]{0,25}(1\s*만|10,?000)\s*[~～-]\s*(1\s*만\s*(?:2\s*천|2000)|12,?000)\s*(?:개|units?)', text, re.I)
                 m_nda = re.search(r'(?:NDA|비밀유지계약)[^0-9]{0,30}(\d+)\s*곳', text, re.I)
                 m_end = re.search(r'(?:최종\s*수요기업|end\s*customers?)[^0-9]{0,30}(\d+)\s*곳', text, re.I)
                 m_paid = re.search(r'(?:유상\s*샘플|paid\s*samples?)[^0-9]{0,35}(?:전환한\s*고객사도\s*)?(\d+)\s*곳', text, re.I)
