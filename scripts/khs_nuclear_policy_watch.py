@@ -71,6 +71,50 @@ SMR_FIXED_EVENT_BASELINES = {
     }
 }
 
+# 미국 TVA Clinch River BWRX-300은 국내 SMR 정책축과 분리한 독립 사건축으로 추적한다.
+# 2026-09-28 CPAR-2 건설허가는 이미 알림된 기준선이며 재발송하지 않는다.
+BWRX_US_STATE_MODEL_VERSION = 1
+BWRX_NRC_RELEASE = "https://www.nrc.gov/about-nrc/news-releases/2026/26-079"
+BWRX_NRC_PROJECT = "https://www.nrc.gov/facilities-safety/new-reactors/advanced-reactors/who-were-working-with/advanced-reactor-application-projects/tva-clinch-river-cpa"
+BWRX_TVA_MEDIA = "https://www.tva.com/news-media"
+BWRX_TVA_PROJECT = "https://www.tva.com/energy/our-power-system/nuclear/clinch-river-small-modular-reactor"
+BWRX_FIXED_BASELINE = {
+    "stage": "construction_permit_issued",
+    "rank": 2,
+    "status": "NRC 건설허가 발급",
+    "published_utc": "2026-09-29T00:00:00+00:00",
+    "title": "NRC·TVA Clinch River Unit 1 BWRX-300 건설허가 발급",
+    "source": "NRC·TVA 공식",
+    "link": BWRX_NRC_RELEASE,
+    "official": True,
+}
+BWRX_STAGE_RANK = {
+    "construction_permit_issued": 2,
+    "operating_license_application": 3,
+    "capital_approval": 4,
+    "major_equipment_order": 5,
+    "construction_start": 6,
+    "operating_license_issued": 7,
+    "fuel_load": 8,
+    "commissioning": 9,
+    "commercial_operation": 10,
+}
+BWRX_STAGE_LABELS = {
+    "construction_permit_issued": "NRC 건설허가 발급",
+    "operating_license_application": "NRC 운영허가 신청·접수",
+    "capital_approval": "TVA 최종 자본승인·투자결정",
+    "major_equipment_order": "주기기·장주기 기자재 본발주",
+    "construction_start": "실제 착공",
+    "operating_license_issued": "NRC 운영허가 발급",
+    "fuel_load": "연료장전 승인·착수",
+    "commissioning": "시운전·계통연계",
+    "commercial_operation": "상업운전 개시",
+}
+BWRX_RSS_QUERIES = [
+    ("BWRX-300 미국 실행", '"BWRX-300" "Clinch River" TVA NRC construction operating license order board when:30d'),
+    ("TVA Clinch River 실행", '"Clinch River" TVA "construction start" OR "operating license" OR "purchase order" OR "board approval" when:30d'),
+]
+
 SOURCES = [
     {"name": "Westinghouse strategic partnership", "url": "https://westinghousenuclear.com/strategic-partnership/press-releases/brookfield/"},
     {"name": "DOE Nuclear Energy", "url": "https://www.energy.gov/ne/articles/9-key-takeaways-president-trumps-executive-orders-nuclear-energy"},
@@ -983,6 +1027,172 @@ def _self_test_smr_event_state_model() -> None:
         raise RuntimeError("SMR official event-state gate regression")
 
 
+def _bwrx_stage(text: str) -> str | None:
+    low = clean_text(text).lower()
+    if not (("bwrx-300" in low or "bwrx 300" in low) and ("clinch river" in low or "tva" in low)):
+        return None
+
+    checks = [
+        ("commercial_operation", (
+            "commercial operation", "commercially operating", "begins commercial operation",
+            "상업운전 개시", "상업 운전 개시",
+        )),
+        ("commissioning", ("commissioning", "시운전", "grid synchronization", "계통연계")),
+        ("fuel_load", ("fuel loading", "fuel load", "연료장전", "연료 장전")),
+        ("operating_license_issued", (
+            "operating license issued", "operating license granted", "operating license approved",
+            "운영허가 발급", "운영허가 승인", "운전허가 발급",
+        )),
+        ("construction_start", (
+            "construction starts", "construction started", "begins construction",
+            "groundbreaking", "breaks ground", "착공", "건설 착수",
+        )),
+        ("major_equipment_order", (
+            "purchase order", "major equipment order", "long-lead equipment order",
+            "reactor pressure vessel order", "주기기 발주", "장주기 기자재 발주",
+            "구매주문", "본발주",
+        )),
+        ("capital_approval", (
+            "final investment decision", "board approves construction", "board approved construction",
+            "board authorizes construction", "capital approval", "final capital approval",
+            "최종투자결정", "이사회 건설 승인", "자본승인",
+        )),
+        ("operating_license_application", (
+            "operating license application submitted", "operating license application filed",
+            "operating license application received", "operating license application accepted",
+            "운영허가 신청", "운영허가 접수", "운전허가 신청",
+        )),
+        ("construction_permit_issued", (
+            "construction permit issued", "construction permit granted",
+            "approves construction permit", "approved construction permit",
+            "건설허가 발급", "건설허가 승인", "건설 허가",
+        )),
+    ]
+    for stage, terms in checks:
+        if any(term in low for term in terms):
+            return stage
+    return None
+
+
+def _is_bwrx_official_source(source: str, link: str = "") -> bool:
+    blob = f"{source} {link}".lower()
+    return any(term in blob for term in (
+        "nuclear regulatory commission", "nrc.gov", "tennessee valley authority",
+        "tva.com", "ge vernova", "ge hitachi", "gevernova.com",
+    ))
+
+
+def collect_bwrx_us_items(now: dt.datetime) -> list[dict]:
+    rows: list[dict] = [dict(BWRX_FIXED_BASELINE)]
+
+    # 공식 페이지 직접 확인. 오래된 페이지 문구가 남아도 기존 허가 기준선보다 낮은 단계는 승격되지 않는다.
+    for source, url in (
+        ("NRC", BWRX_NRC_RELEASE),
+        ("NRC", BWRX_NRC_PROJECT),
+        ("TVA", BWRX_TVA_MEDIA),
+        ("TVA", BWRX_TVA_PROJECT),
+    ):
+        try:
+            raw = fetch_text(url)
+            body = clean_text(raw)
+        except Exception as exc:
+            print(f"bwrx_official_error={source} {type(exc).__name__}")
+            continue
+        stage = _bwrx_stage(body)
+        if not stage:
+            continue
+        rows.append({
+            "kind": "bwrx300_us",
+            "stage": stage,
+            "rank": BWRX_STAGE_RANK[stage],
+            "status": BWRX_STAGE_LABELS[stage],
+            "published_utc": now.astimezone(UTC).isoformat(timespec="seconds"),
+            "published_kst": now.isoformat(timespec="seconds"),
+            "title": f"TVA Clinch River BWRX-300 · {BWRX_STAGE_LABELS[stage]}",
+            "source": source,
+            "link": url,
+            "official": True,
+        })
+
+    # 공식기관 RSS 노출을 보조 탐색면으로 사용하되 비공식 기사만으로 상태를 올리지 않는다.
+    for source_name, query in BWRX_RSS_QUERIES:
+        try:
+            root = ET.fromstring(fetch_text(_google_news_url(query)))
+        except Exception as exc:
+            print(f"bwrx_rss_error={source_name} {type(exc).__name__}")
+            continue
+        for node in root.findall(".//item"):
+            title = _clean_rss_title(node.findtext("title") or "")
+            link = clean_text(node.findtext("link") or "")
+            source_node = node.find("source")
+            outlet = clean_text(source_node.text if source_node is not None and source_node.text else "")
+            if not title or not _is_bwrx_official_source(outlet, link):
+                continue
+            stage = _bwrx_stage(title)
+            if not stage:
+                continue
+            pub_text = clean_text(node.findtext("pubDate") or "")
+            try:
+                published = parsedate_to_datetime(pub_text)
+                if published.tzinfo is None:
+                    published = published.replace(tzinfo=UTC)
+                published = published.astimezone(UTC)
+            except Exception:
+                published = now.astimezone(UTC)
+            rows.append({
+                "kind": "bwrx300_us",
+                "stage": stage,
+                "rank": BWRX_STAGE_RANK[stage],
+                "status": BWRX_STAGE_LABELS[stage],
+                "published_utc": published.isoformat(timespec="seconds"),
+                "published_kst": published.astimezone(KST).isoformat(timespec="seconds"),
+                "title": title,
+                "source": outlet or source_name,
+                "link": link,
+                "official": True,
+            })
+
+    rows.sort(key=lambda x: (int(x.get("rank") or 0), str(x.get("published_utc") or "")), reverse=True)
+    return rows
+
+
+def _self_test_bwrx_us_event_model() -> None:
+    permit = _bwrx_stage("TVA Clinch River BWRX-300 construction permit issued by NRC")
+    if permit != "construction_permit_issued":
+        raise RuntimeError(f"BWRX construction-permit regression: {permit}")
+
+    application = _bwrx_stage("TVA Clinch River BWRX-300 operating license application submitted to NRC")
+    if application != "operating_license_application":
+        raise RuntimeError(f"BWRX operating-license application regression: {application}")
+
+    start = _bwrx_stage("TVA Clinch River BWRX-300 construction started after board approval")
+    if start != "construction_start":
+        raise RuntimeError(f"BWRX construction-start regression: {start}")
+
+    operation = _bwrx_stage("TVA Clinch River BWRX-300 begins commercial operation")
+    if operation != "commercial_operation":
+        raise RuntimeError(f"BWRX commercial-operation regression: {operation}")
+
+    # 허가 '신청 검토' 문구는 허가 발급으로 오인하지 않는다.
+    if _bwrx_stage("NRC reviews TVA Clinch River BWRX-300 construction permit application") is not None:
+        raise RuntimeError("BWRX permit-application false-positive regression")
+
+
+def _render_bwrx_us(item: dict, idx: int, now: dt.datetime) -> list[str]:
+    stage = str(item.get("stage") or "")
+    label = BWRX_STAGE_LABELS.get(stage, item.get("status") or "상태 변화")
+    return [
+        f"## {idx}. [확정] TVA Clinch River BWRX-300",
+        f"- 핵심 변화: {label}",
+        "- 현재 기준: 300MW급 BWRX-300 · NRC 건설허가(CPAR-2)는 이미 발급됐지만 건설허가 ≠ 실제 착공 ≠ 운영허가입니다.",
+        "- 매출 연결: GE Vernova Hitachi의 노형·주기기와 TVA의 실제 자본집행·본발주가 확인돼야 공급망 매출이 구체화됩니다. 한국 기업의 Clinch River 직접수주는 별도 확인 전에는 확정하지 않습니다.",
+        "- 병목·실패모드: TVA 최종 자본승인, 장주기 기자재 발주, 실제 착공, NRC 운영허가, 시운전·연료장전 순으로 남아 있으며 한 단계 지연되면 상업운전 시간표도 밀립니다.",
+        f"- 출처: [{item.get('source') or '공식자료'}]({item.get('link') or BWRX_NRC_PROJECT}) · {item.get('published_kst') or item.get('published_utc') or '확인 불가'}",
+        "- 다음 확인: TVA 자본승인/FID → 주기기·장주기 본발주 → 착공 → 운영허가 신청·발급 → 연료장전·시운전 → 상업운전",
+        "",
+    ]
+
+
 def load_seen() -> dict:
     if not SEEN_PATH.exists():
         return {"seen": {}, "updated_at_kst": ""}
@@ -1096,6 +1306,8 @@ def render(alerts: list[dict], now: dt.datetime) -> str:
             block = _render_westinghouse_stake(item, idx, now)
         elif kind == "smr_policy":
             block = _render_smr_policy(item, idx, now)
+        elif kind == "bwrx300_us":
+            block = _render_bwrx_us(item, idx, now)
         else:
             block = _render_direct(item, idx, now)
         if len(alerts) == 1 and block and block[0].startswith("## 1. "):
@@ -1114,6 +1326,7 @@ def clear_outputs() -> None:
 def main() -> int:
     _self_test_material_filter()
     _self_test_smr_event_state_model()
+    _self_test_bwrx_us_event_model()
     now = now_kst()
     seen = load_seen()
     initial_seen_snapshot = json.dumps(seen, ensure_ascii=False, sort_keys=True)
@@ -1295,6 +1508,31 @@ def main() -> int:
                 "link": latest_smr["link"],
                 "published_utc": latest_smr["published_utc"],
                 "official": bool(latest_smr.get("official")),
+                "first_seen_kst": now.isoformat(timespec="seconds"),
+            }
+
+    # 미국 BWRX-300은 2026-09 건설허가를 이미 알림한 기준선으로 고정하고,
+    # 그 이후 실제 실행단계가 공식적으로 상승할 때만 새 알림을 만든다.
+    seen["bwrx300_us_state_model_version"] = BWRX_US_STATE_MODEL_VERSION
+    previous_bwrx = seen.get("bwrx300_us_state") or {}
+    if not previous_bwrx:
+        seen["bwrx300_us_state"] = {
+            **BWRX_FIXED_BASELINE,
+            "first_seen_kst": now.isoformat(timespec="seconds"),
+        }
+        previous_bwrx = seen["bwrx300_us_state"]
+        print("bwrx300_us_baseline_restored=construction_permit_issued")
+
+    bwrx_items = collect_bwrx_us_items(now)
+    latest_bwrx = bwrx_items[0] if bwrx_items else None
+    if latest_bwrx:
+        prev_rank = int(previous_bwrx.get("rank") or BWRX_STAGE_RANK.get(str(previous_bwrx.get("stage") or ""), 0))
+        new_rank = int(latest_bwrx.get("rank") or 0)
+        if new_rank > prev_rank and bool(latest_bwrx.get("official")):
+            latest_bwrx["trigger"] = "official_bwrx300_execution_stage_change"
+            alerts.append(latest_bwrx)
+            seen["bwrx300_us_state"] = {
+                **latest_bwrx,
                 "first_seen_kst": now.isoformat(timespec="seconds"),
             }
 
