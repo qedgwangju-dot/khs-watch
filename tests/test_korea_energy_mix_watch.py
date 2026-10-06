@@ -527,3 +527,5 @@ def test_datacenter_body_interpretation_surfaces_realization_gap():
     assert "96건" in result and "4곳" in result
     assert "56건" in result
     assert "PUE" in result
+
+# live-regression-20261006-v2
