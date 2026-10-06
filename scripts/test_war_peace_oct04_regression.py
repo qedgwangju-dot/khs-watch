@@ -310,6 +310,14 @@ check(
     and "독립 확인 필요" in mod.translate_ko(tass_drone["title_original"]),
 )
 
+saudi_rabigh = "후티, 사우디 공항·정유시설 공습…韓기업 인근 라빅도 피격"
+saudi_rabigh_ko = mod.translate_ko(saudi_rabigh)
+check(
+    "oct06-saudi-rabigh-confirmed-vs-claim-separated",
+    "공항 피해는 사우디 확인" in saudi_rabigh_ko
+    and "라빅 정유시설은 후티 주장 단계" in saudi_rabigh_ko,
+)
+
 trump_rhetoric = row(
     "Trump says let them take out Los Angeles, let them take out San Diego",
     source="TASS",
