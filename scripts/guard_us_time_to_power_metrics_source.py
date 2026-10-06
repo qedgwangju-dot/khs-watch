@@ -901,8 +901,8 @@ if vinatech_links_old in t:
 # current Google-Constellation item is installed as a verified media baseline
 # (near deal, not signed); future alerts require a stage/term change.
 nuclear_ppa_extension = r'''
-# HYPERSCALER_NUCLEAR_PPA_EXTENSION_V1
-PPA_STATE_VERSION = 1
+# HYPERSCALER_NUCLEAR_PPA_EXTENSION_V2
+PPA_STATE_VERSION = 2
 PPA_MAX_AGE_DAYS = 14
 PPA_CONSTELLATION_NEWSROOM = "https://www.constellationenergy.com/news/"
 PPA_REUTERS_GOOGLE_CONSTELLATION = "https://www.reuters.com/legal/litigation/google-constellation-near-deal-nuclear-power-bloomberg-news-reports-2026-10-06/"
@@ -915,6 +915,10 @@ PPA_BASELINES = {
         "stage": "reported_near_deal",
         "official": False,
         "amount_floor_usd_b": 1.0,
+        "provenance": {
+            "stage": "media",
+            "amount_floor_usd_b": "media",
+        },
         "ppa_mw": None,
         "uprate_mw": None,
         "years": None,
@@ -935,6 +939,14 @@ PPA_BASELINES = {
         "uprate_mw": 190.0,
         "years": 20,
         "plant": "Calvert Cliffs Clean Energy Center",
+        "provenance": {
+            "stage": "official",
+            "site_investment_floor_usd_b": "official",
+            "ppa_mw": "official",
+            "uprate_mw": "official",
+            "years": "official",
+            "plant": "official",
+        },
         "source": "Constellation 공식",
         "url": PPA_AMAZON_CONSTELLATION,
         "published": "2026-09-30",
@@ -1121,6 +1133,17 @@ def _ppa_extract_state(blob: str, source: str, source_url: str, link: str, publi
             plant = name
             break
 
+    provenance = {"stage": "official" if official else "media"}
+    for field, value in (
+        ("amount_floor_usd_b", amount),
+        ("ppa_mw", ppa_mw),
+        ("uprate_mw", uprate_mw),
+        ("years", years),
+        ("plant", plant),
+    ):
+        if value not in (None, ""):
+            provenance[field] = "official" if official else "media"
+
     return key, {
         "buyer": key.split("_", 1)[0].replace("google", "Google").replace("amazon", "Amazon").replace("microsoft", "Microsoft").replace("meta", "Meta").replace("walmart", "Walmart"),
         "seller": key.split("_", 1)[1].replace("constellation", "Constellation").replace("nextera", "NextEra").replace("southern", "Southern/Georgia Power").replace("talen", "Talen"),
@@ -1131,6 +1154,7 @@ def _ppa_extract_state(blob: str, source: str, source_url: str, link: str, publi
         "uprate_mw": uprate_mw,
         "years": years,
         "plant": plant,
+        "provenance": provenance,
         "source": source or domain,
         "url": link,
         "published": published,
@@ -1237,13 +1261,23 @@ def _ppa_merge(prev: dict | None, new: dict):
     if not allow_stage:
         return out
 
+    provenance = dict(out.get("provenance") or {})
+    new_provenance = dict(new.get("provenance") or {})
     if new_rank > prev_rank or (new.get("official") and not prev.get("official")):
         out["stage"] = new_stage
         out["official"] = bool(new.get("official"))
+        provenance["stage"] = new_provenance.get(
+            "stage", "official" if new.get("official") else "media"
+        )
     for key in ("buyer", "seller", "amount_floor_usd_b", "ppa_mw", "uprate_mw", "years", "plant", "source", "url", "published", "note", "site_investment_floor_usd_b"):
         value = new.get(key)
         if value not in (None, ""):
             out[key] = value
+            if key in ("amount_floor_usd_b", "ppa_mw", "uprate_mw", "years", "plant", "site_investment_floor_usd_b"):
+                provenance[key] = new_provenance.get(
+                    key, "official" if new.get("official") else "media"
+                )
+    out["provenance"] = provenance
     return out
 
 
@@ -1312,7 +1346,7 @@ with STATUS.open("a", encoding="utf-8") as _ppa_status_file:
     _ppa_status_file.write(
         "\n## 빅테크 원전 PPA\n\n"
         f"- Google–Constellation: **{PPA_STAGE_LABELS.get(str(_google_state.get('stage') or ''), _google_state.get('stage') or '미확인')}**\n"
-        f"- Google–Constellation 금액: **{'최소 ' + str(_google_state.get('amount_floor_usd_b')) + '십억달러' if _google_state.get('amount_floor_usd_b') is not None else '미공개'}**\n"
+        f"- Google–Constellation 금액: **{(('공식 ' if (_google_state.get('provenance') or {}).get('amount_floor_usd_b') == 'official' else '보도 ') + '최소 ' + str(_google_state.get('amount_floor_usd_b')) + '십억달러') if _google_state.get('amount_floor_usd_b') is not None else '미공개'}**\n"
         f"- Google–Constellation MW·대상 원전: **{str(_google_state.get('ppa_mw')) + 'MW' if _google_state.get('ppa_mw') is not None else '미공개'} / {_google_state.get('plant') or '미공개'}**\n"
         f"- 의미 있는 상태변화: **{len(_ppa_changes)}건**\n"
     )
@@ -1324,22 +1358,52 @@ if _ppa_changes:
         seller = _now.get("seller") or _key.split("_", 1)[-1]
         stage_label = PPA_STAGE_LABELS.get(str(_now.get("stage") or ""), str(_now.get("stage") or "미확인"))
         lines.append(f"{idx}. <b>{h(buyer)} ↔ {h(seller)}</b> │ {h(stage_label)}")
+        provenance = dict(_now.get("provenance") or {})
         amount = _now.get("amount_floor_usd_b")
         if amount is not None:
+            amount_scope = "공식" if provenance.get("amount_floor_usd_b") == "official" else "보도"
             lines.append(
-                f"• <b>금액</b> │ 최소 {float(amount):g}십억달러"
+                f"• <b>금액</b> │ {amount_scope} 최소 {float(amount):g}십억달러"
                 f"({h(krw_from_usd_b(float(amount), fx))})"
             )
         else:
             lines.append("• <b>금액</b> │ 공식·신뢰자료상 미공개")
-        lines.append(
-            "• <b>전력·원전</b> │ "
-            + (f"{float(_now['ppa_mw']):g}MW" if _now.get("ppa_mw") is not None else "구매용량 미공개")
-            + " · "
-            + (_now.get("plant") or "대상 원전 미공개")
-            + (f" · 증설 {float(_now['uprate_mw']):g}MW" if _now.get("uprate_mw") is not None else "")
-            + (f" · {int(_now['years'])}년" if _now.get("years") is not None else "")
-        )
+
+        def _ppa_field(value, field, text_value):
+            if value in (None, ""):
+                return text_value
+            scope = "공식" if provenance.get(field) == "official" else "보도"
+            return f"{text_value}({scope})"
+
+        power_parts = [
+            _ppa_field(
+                _now.get("ppa_mw"),
+                "ppa_mw",
+                f"{float(_now['ppa_mw']):g}MW" if _now.get("ppa_mw") is not None else "구매용량 미공개",
+            ),
+            _ppa_field(
+                _now.get("plant"),
+                "plant",
+                _now.get("plant") or "대상 원전 미공개",
+            ),
+        ]
+        if _now.get("uprate_mw") is not None:
+            power_parts.append(
+                _ppa_field(
+                    _now.get("uprate_mw"),
+                    "uprate_mw",
+                    f"증설 {float(_now['uprate_mw']):g}MW",
+                )
+            )
+        if _now.get("years") is not None:
+            power_parts.append(
+                _ppa_field(
+                    _now.get("years"),
+                    "years",
+                    f"{int(_now['years'])}년",
+                )
+            )
+        lines.append("• <b>전력·원전</b> │ " + " · ".join(power_parts))
         lines.append(f"• <b>변화 이유</b> │ {h(' · '.join(_reasons))}")
         lines.append(
             "• <b>판정</b> │ 기존 원전 전력구매·증설·재가동과 신규 원자로 건설은 분리합니다. "
@@ -1377,7 +1441,7 @@ print(
 if "HYPERSCALER_NUCLEAR_PPA_EXTENSION_V1" not in t:
     t += "\n" + nuclear_ppa_extension + "\n"
 for marker in (
-    "HYPERSCALER_NUCLEAR_PPA_EXTENSION_V1",
+    "HYPERSCALER_NUCLEAR_PPA_EXTENSION_V2",
     '"google_constellation"',
     '"amazon_constellation_calvert_cliffs"',
     "reported_near_deal",
