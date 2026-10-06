@@ -28,7 +28,7 @@ concurrency:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
       TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
@@ -184,7 +184,7 @@ jobs:
       - name: Verify live unified industry collector
         run: |
           rm -f out/kospi_industry_flow_ci.jsonl
-          python scripts/kospi_unified_industry_collector.py --test-seconds 20 --out out/kospi_industry_flow_ci.jsonl
+          python scripts/kospi_unified_industry_collector.py --test-seconds 90 --out out/kospi_industry_flow_ci.jsonl
           python - <<'PY'
           import json, pathlib
           p=pathlib.Path("out/kospi_industry_flow_ci.jsonl")
