@@ -773,6 +773,122 @@ def enrich_treasury_items(items: list[dict]) -> list[dict]:
     return enriched
 
 
+def enrich_doe_items(items: list[dict]) -> list[dict]:
+    """Read DOE article bodies so project funding, miles and counterparties are not lost."""
+    enriched: list[dict] = []
+    for raw in items:
+        item = dict(raw)
+        link = str(item.get("link") or "")
+        if "energy.gov/" not in link.lower():
+            enriched.append(item)
+            continue
+        title = str(item.get("title") or "")
+        low = f"{title} {item.get('summary') or ''}".lower()
+        if not any(term in low for term in (
+            "defense production act", "dpa", "transmission", "transformer",
+            "grid", "power", "energy security",
+        )):
+            enriched.append(item)
+            continue
+        detail_html, detail_error = fetch_text(link, timeout=16)
+        if detail_error or not detail_html:
+            item["detail_error"] = detail_error or "empty DOE detail response"
+            enriched.append(item)
+            continue
+        detail = extract_article_detail(detail_html, title)
+        if not detail.get("body_verified"):
+            item["detail_error"] = "DOE title/body verification failed"
+            enriched.append(item)
+            continue
+        item.update(
+            {
+                "source_title": detail.get("title") or title,
+                "source_abstract": detail.get("abstract") or "",
+                "source_body": detail.get("body") or "",
+                "summary": clean_text(
+                    f"{detail.get('abstract') or ''} {str(detail.get('body') or '')[:24000]}"
+                ),
+                "published_kst": item.get("published_kst") or detail.get("published_kst"),
+                "body_verified": True,
+            }
+        )
+        enriched.append(item)
+    return enriched
+
+
+def apply_doe_grid_dpa_profile(item: dict, haystack: str) -> None:
+    event_key = doe_grid_dpa_event_key(item, haystack)
+    if not event_key:
+        return
+
+    if event_key == "us-grid-dpa-beluga-healy-funding-2026-10-05":
+        body = clean_text(str(item.get("source_body") or item.get("summary") or ""))
+        verified_detail = bool(item.get("body_verified")) and all(
+            token in body.lower()
+            for token in ("150 million", "268 million", "418 million", "223")
+        )
+        item.update(
+            {
+                "importance": "상",
+                "status": "확정",
+                "title_ko": "미 에너지부, Alaska Beluga-Healy 송전망에 DPA 최대 1.5억달러 지원 추진",
+                "policy_plain_summary": (
+                    "2026년 10월 5일 신규 변화는 4월의 포괄적 DPA 제303조 지정 재탕이 아니라 "
+                    "Alaska Energy Authority의 Beluga-Healy Transmission Project에 DPA 자금을 실제 배치하려는 프로젝트 단계입니다. "
+                    + (
+                        "공식 원문은 DPA 최대 1.5억달러와 비연방 2.68억달러를 합쳐 예비 총사업비 4.18억달러, "
+                        "Beluga-Healy 약 223마일 신규 송전선을 명시합니다."
+                        if verified_detail
+                        else "세부 금액·거리 숫자는 DOE 원문 본문 직접 검증이 완료될 때만 확정 숫자로 표시합니다."
+                    )
+                ),
+                "impacts": ["돈 버는 능력", "수급", "시간표"],
+                "paths": ["전력망 투자", "프로젝트 파이낸싱", "조달", "정책 타임라인"],
+                "sectors": ["전력망/전력기기", "송전선/변전설비", "미국 전력 인프라"],
+                "investment_view": (
+                    "정책 기대 단계에서 특정 송전 프로젝트의 자금 배치 의향 단계로 한 단계 올라왔습니다. "
+                    "다만 DOE 표현은 intent to deploy이고 총 4.18억달러도 preliminary planning estimate이므로 "
+                    "장비 공급계약·구매약정·벤더 선정이 이미 확정됐다고 해석하면 안 됩니다."
+                ),
+                "korea_market_impact": (
+                    "효성중공업·HD현대일렉트릭·LS ELECTRIC은 미국 전력기기 현지 생산·판매 노출 때문에 전략적 후보가 될 수 있지만, "
+                    "이 Beluga-Healy 프로젝트의 직접 공급사로 공식 확인된 것은 아닙니다. "
+                    "실제 직접 수혜 승격은 발주 품목·계약 상대방·금액·납기 확인 뒤에만 합니다."
+                ),
+                "counter": (
+                    "최종 자금 배정·조달·인허가·착공이 지연되거나 미국산 조달 요건이 특정 공급사로 좁혀지면 "
+                    "한국 기업의 실적 연결은 늦어질 수 있습니다."
+                ),
+                "failure_signal": (
+                    "DOE/Alaska Energy Authority의 최종 자금협약·RFP·계약수주가 나오지 않거나 "
+                    "223마일 송전선의 인허가·착공 일정이 밀리면 수주 가시성 상향을 취소합니다."
+                ),
+            }
+        )
+    elif event_key == "us-grid-dpa-section303-base-2026-04-20":
+        item.update(
+            {
+                "importance": "상",
+                "status": "확정",
+                "title_ko": "미국, DPA 제303조로 전력망 핵심 장비·공급망을 국가방위 산업자원으로 지정",
+                "policy_plain_summary": (
+                    "2026년 4월 20일 대통령 결정은 변압기·송전선/도체·변전소·고압차단기·전력제어전자·보호계전·"
+                    "커패시터뱅크·전기강판과 관련 원재료·제조장비를 DPA 제303조 지원 대상으로 규정한 기반 정책입니다. "
+                    "후속 개별 프로젝트 자금지원과는 별도 사건으로 관리합니다."
+                ),
+                "impacts": ["시간표", "돈 버는 능력", "수급"],
+                "paths": ["정책 타임라인", "국내 생산능력", "구매·구매약정·금융지원"],
+                "sectors": ["전력망/전력기기", "송전/변전", "전기강판/전력기기 소재"],
+                "investment_view": (
+                    "이 문서는 향후 구매·구매약정·금융수단을 허용하는 법적 기반입니다. "
+                    "문서 자체를 10월 5일 신규 프로젝트 집행이나 특정 기업 수주로 다시 알리지 않습니다."
+                ),
+                "counter": "실제 기업 실적은 개별 자금지원·RFP·계약·증설·가동률이 뒤따라야 확인됩니다.",
+                "failure_signal": "후속 구매·금융지원·조달이 장기간 나오지 않으면 정책의 실적 전환 속도가 낮아집니다.",
+            }
+        )
+
+
 def apply_treasury_borrowing_profile(item: dict, haystack: str) -> None:
     if not (
         str(item.get("source") or "") == "U.S. Treasury press releases"
@@ -1027,6 +1143,43 @@ SPACE_PV_STAGE_CHANGE_TERMS = (
     "selection notifications issued", "selection notifications sent", "selection notifications released",
     "awards announced",
 )
+
+
+def doe_grid_dpa_event_key(item: dict, haystack: str) -> str:
+    """Stable semantic identity for the DPA grid baseline and project execution stages."""
+    text = clean_text(
+        " ".join(
+            [
+                haystack,
+                str(item.get("source") or ""),
+                str(item.get("title") or ""),
+                str(item.get("source_title") or ""),
+                str(item.get("source_abstract") or ""),
+                str(item.get("source_body") or ""),
+                str(item.get("link") or ""),
+            ]
+        )
+    ).lower()
+
+    alaska_project = (
+        any(term in text for term in ("beluga-healy", "beluga healy", "alaska railbelt"))
+        and any(term in text for term in ("defense production act", "dpa"))
+        and any(term in text for term in ("transmission", "high-voltage", "high voltage", "grid"))
+    )
+    if alaska_project:
+        return "us-grid-dpa-beluga-healy-funding-2026-10-05"
+
+    section303_grid = (
+        any(term in text for term in ("section 303", "section 303", "50 u.s.c. 4533"))
+        and any(term in text for term in (
+            "grid infrastructure", "transformers", "transmission lines", "conductors",
+            "substations", "high-voltage circuit breakers", "power control electronics",
+            "protective relay systems", "capacitor banks", "electrical core steel",
+        ))
+    )
+    if section303_grid:
+        return "us-grid-dpa-section303-base-2026-04-20"
+    return ""
 
 
 def is_space_pv_pia_base_rehash_item(item: dict, haystack: str) -> bool:
@@ -1323,7 +1476,10 @@ def classify_item(item: dict) -> dict | None:
         paths.extend(["계약 가시성", "밸류체인", "프로젝트 파이낸싱"])
     if "company_filing" in matched:
         paths.append("계약 가시성")
-    semantic_event_key = polysilicon_11052_event_key(item, haystack)
+    semantic_event_key = (
+        doe_grid_dpa_event_key(item, haystack)
+        or polysilicon_11052_event_key(item, haystack)
+    )
     if semantic_event_key:
         fingerprint_input = f"policy-event-v1|{semantic_event_key}"
     elif is_whitehouse_source:
@@ -1334,6 +1490,7 @@ def classify_item(item: dict) -> dict | None:
     fingerprint = hashlib.sha256(fingerprint_input.encode("utf-8")).hexdigest()[:16]
     result = {**item, "fingerprint": fingerprint, "matched": matched, "importance": importance, "status": "예비" if item["source"].startswith(("CourtListener", "KRX KIND")) else "확정", "impacts": list(dict.fromkeys(impacts)) or ["의사결정 영향 제한적"], "paths": list(dict.fromkeys(paths)) or ["정책 타임라인"], "sectors": sectors}
     apply_korea_trade_remedy_profile(result, haystack)
+    apply_doe_grid_dpa_profile(result, haystack)
     apply_treasury_borrowing_profile(result, haystack)
     return result
 
@@ -1385,6 +1542,8 @@ def collect_candidates(now: dt.datetime) -> tuple[list[dict], list[str]]:
             items = parse_link_html(text or "", source)
         else:
             items = parse_rss(text or "", source)
+            if source.name == "DOE news":
+                items = enrich_doe_items(items)
         if source.kind == "whitehouse_html":
             items, detail_stats = enrich_whitehouse_items(items, now, whitehouse_detail_budget)
             for key, value in detail_stats.items():
@@ -1582,5 +1741,30 @@ def main() -> int:
     return 0
 
 
+def _self_test_doe_grid_dpa_event_model() -> None:
+    project = {
+        "source": "DOE news",
+        "title": "Energy Department Announces Alaska Railbelt Transmission Project to Receive Defense Production Act Funding",
+        "link": "https://www.energy.gov/articles/energy-department-announces-alaska-railbelt-transmission-project-receive-defense",
+        "summary": (
+            "The Alaska Energy Authority Beluga-Healy Transmission Project combines up to $150 million "
+            "in DPA funding with $268 million in non-federal funding, planned total investment $418 million, "
+            "approximately 223 miles of new transmission line."
+        ),
+    }
+    haystack = " ".join(str(project.get(k) or "") for k in ("title", "summary")).lower()
+    assert doe_grid_dpa_event_key(project, haystack) == "us-grid-dpa-beluga-healy-funding-2026-10-05"
+
+    base = {
+        "source": "White House presidential memoranda",
+        "title": "Presidential Determination Pursuant to Section 303 of the Defense Production Act",
+        "link": "https://www.whitehouse.gov/presidential-actions/2026/04/presidential-determination-pursuant-to-section-303-of-the-defense-production-act-of-1950-as-amended-on-grid-infrastructure-equipment-and-supply-chain-capacity/",
+        "summary": "Section 303 grid infrastructure transformers transmission lines conductors substations high-voltage circuit breakers capacitor banks electrical core steel.",
+    }
+    base_haystack = " ".join(str(base.get(k) or "") for k in ("title", "summary")).lower()
+    assert doe_grid_dpa_event_key(base, base_haystack) == "us-grid-dpa-section303-base-2026-04-20"
+
+
 if __name__ == "__main__":
+    _self_test_doe_grid_dpa_event_model()
     raise SystemExit(main())
