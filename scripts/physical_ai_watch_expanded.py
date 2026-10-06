@@ -43,17 +43,20 @@ base.QUERIES.extend([
     '("FieldAI" OR "Field AI") (Hyundai OR 현대차 OR 기아 OR "Boston Dynamics" OR Caterpillar OR Certis OR NVIDIA) (investment OR partnership OR contract OR Atlas OR RMAC OR HMGMA OR deployment OR licensing OR 투자 OR 협력 OR 계약 OR 배치 OR 사용권)',
     '("Jensen Huang" OR "Jensen" OR 젠슨황 OR "젠슨 황") (robotics OR robot OR humanoid OR "physical AI" OR 로보틱스 OR 로봇 OR 휴머노이드 OR 피지컬AI) ("ChatGPT moment" OR "within a year" OR "within 12 months" OR "within two years" OR timeline OR inflection OR "general-purpose brain" OR "general purpose brain" OR "범용 두뇌" OR "1년 이내")',
     '(NVIDIA OR 엔비디아) (robotics OR humanoid OR "physical AI" OR 로보틱스 OR 휴머노이드 OR 피지컬AI) ("general-purpose brain" OR "general purpose brain" OR "ChatGPT moment" OR fleet OR deployment OR production OR shipments OR customers OR "12 months" OR "within a year")',
+    '(NVIDIA OR 엔비디아) (Foxconn OR "Hon Hai" OR 폭스콘 OR 홍하이) (GB300 OR NVL72 OR "tester tray" OR 테스터트레이) (robot OR robotics OR automation OR 로봇 OR 자동화) ("95%" OR "99.5%" OR "success rate" OR "cycle time" OR busbar OR connector OR 성공률 OR 수율 OR 사이클타임 OR 버스바 OR 커넥터)',
+    '(NVIDIA OR 엔비디아) (Foxconn OR "Hon Hai" OR 폭스콘 OR 홍하이) (Houston OR 휴스턴) (GR00T OR Isaac OR robot OR robotics OR 로봇) (assembly OR manufacturing OR 조립 OR 생산) ("success rate" OR "cycle time" OR 성공률 OR 수율 OR 사이클타임)',
+    '("The Machines that Make the Machines" OR "GB300 tester tray") (NVIDIA OR 엔비디아) (Foxconn OR "Hon Hai" OR 폭스콘)',
 ])
 
 base.TRUSTED.update({
     '이데일리', 'EDAILY', '뉴스핌', 'Investors Business Daily', 'Reuters',
     'The Robot Report', '澎湃新闻', 'The Paper', '第一财经', 'IT之家',
     'Business Insider', '조선비즈', 'ChosunBiz', '연합뉴스', '전자신문',
-    'Orange County Business Journal',
+    'Orange County Business Journal', 'Focus Taiwan', 'Central News Agency', 'CNA', 'Tech Times',
 })
 base.OFFICIAL_OR_PRIMARY.update({
     'XPENG', 'XPeng', '小鹏汽车', 'LG전자', 'LG Electronics',
-    'Google DeepMind', 'DeepMind', 'Physical Intelligence', 'NVIDIA', 'NVIDIA Developer',
+    'Google DeepMind', 'DeepMind', 'Physical Intelligence', 'NVIDIA', 'NVIDIA Developer', 'NVIDIA Technical Blog',
     'POSCO DX', '포스코DX', 'NC AI', '엔씨AI', 'Agility Robotics',
     'FieldAI', 'Field AI',
 })
@@ -247,16 +250,87 @@ NVIDIA_EXEC_METRIC = re.compile(
 NVIDIA_EXEC_CONFIRM = re.compile(r'official|announced|confirmed|said|stated|발표|확인|직접\s*언급|말했다', re.I)
 
 
+NVIDIA_FACTORY_ID = re.compile(
+    r'(?:NVIDIA|엔비디아).{0,220}(?:Foxconn|Hon\s*Hai|폭스콘|홍하이).{0,260}'
+    r'(?:GB300|NVL72|tester\s*tray|테스터\s*트레이)|'
+    r'(?:Foxconn|Hon\s*Hai|폭스콘|홍하이).{0,220}(?:NVIDIA|엔비디아).{0,260}'
+    r'(?:GB300|NVL72|tester\s*tray|테스터\s*트레이)',
+    re.I | re.S,
+)
+NVIDIA_FACTORY_TASK = re.compile(
+    r'busbar|버스바|connector(?:s)?|커넥터|tester\s*tray|테스터\s*트레이|assembly|조립',
+    re.I,
+)
+NVIDIA_FACTORY_CURRENT_KPI = re.compile(
+    r'(?:95\s*%|90\s*(?:-|~|–|to)\s*95\s*%).{0,220}'
+    r'(?:160\s*(?:seconds?|sec|s|초)|124\s*(?:seconds?|sec|s|초)|99\.5\s*%)|'
+    r'(?:160\s*(?:seconds?|sec|s|초)|124\s*(?:seconds?|sec|s|초)|99\.5\s*%).{0,220}'
+    r'(?:95\s*%|90\s*(?:-|~|–|to)\s*95\s*%)',
+    re.I | re.S,
+)
+NVIDIA_FACTORY_SUCCESS = re.compile(
+    r'(?:success\s*rate|task\s*success|성공률|작업\s*성공률|수율).{0,60}'
+    r'(\d{2,3}(?:\.\d+)?)\s*%|'
+    r'(\d{2,3}(?:\.\d+)?)\s*%.{0,60}(?:success\s*rate|성공률|수율)',
+    re.I,
+)
+NVIDIA_FACTORY_CYCLE = re.compile(
+    r'(?:cycle\s*time|사이클\s*타임|작업\s*시간|소요\s*시간).{0,80}'
+    r'(\d{2,4})\s*(?:seconds?|sec|s|초)|'
+    r'(\d{2,4})\s*(?:seconds?|sec|s|초).{0,80}(?:cycle\s*time|사이클\s*타임|작업\s*시간|소요\s*시간)',
+    re.I,
+)
+NVIDIA_FACTORY_TARGET = re.compile(
+    r'(?:target|goal|목표).{0,80}(?:99\.5\s*%|124\s*(?:seconds?|sec|s|초)|72\s*(?:seconds?|sec|s|초))|'
+    r'(?:99\.5\s*%|124\s*(?:seconds?|sec|s|초)|72\s*(?:seconds?|sec|s|초)).{0,80}(?:target|goal|목표)',
+    re.I,
+)
+NVIDIA_FACTORY_TARGET_HIT = re.compile(
+    r'(?:achiev|reach|hit|meet|attain|달성|도달|충족).{0,100}99\.5\s*%|'
+    r'99\.5\s*%.{0,100}(?:achiev|reach|hit|meet|attain|달성|도달|충족)|'
+    r'(?:cycle\s*time|사이클\s*타임).{0,100}(?:124\s*(?:seconds?|sec|s|초).{0,40}(?:or\s*less|under|이하|미만)|'
+    r'72\s*(?:seconds?|sec|s|초).{0,40}(?:or\s*less|under|이하|미만))',
+    re.I | re.S,
+)
+NVIDIA_FACTORY_KPI_CHANGE = re.compile(
+    r'(?:improv|increase|rise|better|reduc|shorten|faster|worsen|declin|drop|개선|상승|향상|단축|감소|악화|하락).{0,120}'
+    r'(?:success\s*rate|성공률|cycle\s*time|사이클\s*타임|\d{2,3}(?:\.\d+)?\s*%|\d{2,4}\s*(?:seconds?|sec|s|초))',
+    re.I,
+)
+NVIDIA_FACTORY_SOURCE_OK = re.compile(
+    r'NVIDIA|NVIDIA\s*Developer|NVIDIA\s*Technical\s*Blog|Focus\s*Taiwan|Central\s*News\s*Agency|\bCNA\b|Tech\s*Times',
+    re.I,
+)
+
+
 def _nvidia_exec_source_ok(source: str) -> bool:
     low = (source or '').lower()
-    if any(x in low for x in ('nvidia', 'reuters', 'bloomberg', 'cnbc', 'financial times', 'ft.com', 'the information')):
+    if any(x in low for x in (
+        'nvidia', 'reuters', 'bloomberg', 'cnbc', 'financial times', 'ft.com',
+        'the information', 'focus taiwan', 'central news agency', 'tech times'
+    )):
         return True
     return False
+
+
+def _nvidia_factory_source_ok(source: str) -> bool:
+    return bool(NVIDIA_FACTORY_SOURCE_OK.search(source or ''))
 
 
 def _nvidia_robotics_exec_stage(text: str, source: str = '') -> str:
     if not (NVIDIA_ROBOTICS_EXEC.search(text) and NVIDIA_ROBOTICS_CONTEXT.search(text)):
         return ''
+    if NVIDIA_FACTORY_ID.search(text) and NVIDIA_FACTORY_TASK.search(text):
+        if not _nvidia_factory_source_ok(source):
+            return 'factory_kpi_unverified'
+        if NVIDIA_FACTORY_TARGET_HIT.search(text):
+            return 'factory_target_achieved'
+        if NVIDIA_FACTORY_CURRENT_KPI.search(text):
+            return 'factory_kpi_initial'
+        if (NVIDIA_FACTORY_SUCCESS.search(text) or NVIDIA_FACTORY_CYCLE.search(text)) and NVIDIA_FACTORY_KPI_CHANGE.search(text):
+            return 'factory_kpi_change'
+        if NVIDIA_FACTORY_SUCCESS.search(text) or NVIDIA_FACTORY_CYCLE.search(text):
+            return 'factory_kpi_measured'
     if NVIDIA_CES2026_BASELINE.search(text) or NVIDIA_PRIOR_BASELINE.search(text):
         return 'official_rhetoric_baseline'
     if NVIDIA_ROADSHOW_NOTE.search(text) and NVIDIA_WITHIN_YEAR.search(text) and not _nvidia_exec_source_ok(source):
@@ -506,7 +580,7 @@ def score(item: dict) -> int:
 
     if group == 'nvidia_robotics_exec':
         stage = _nvidia_robotics_exec_stage(text, source)
-        if stage in {'official_rhetoric_baseline','roadshow_within_year_unverified','within_year_unverified','timeline_unverified','background'}:
+        if stage in {'official_rhetoric_baseline','roadshow_within_year_unverified','within_year_unverified','timeline_unverified','factory_kpi_unverified','background'}:
             return 0
         s = 20
         s += {
@@ -514,6 +588,10 @@ def score(item: dict) -> int:
             'timeline_change': 14,
             'general_brain_execution': 17,
             'quantified_deployment': 17,
+            'factory_kpi_initial': 22,
+            'factory_kpi_measured': 18,
+            'factory_kpi_change': 20,
+            'factory_target_achieved': 24,
         }.get(stage, 0)
         if base.NUMERIC.search(text): s += 3
         if source in base.OFFICIAL_OR_PRIMARY or _nvidia_exec_source_ok(source): s += 7
@@ -651,6 +729,10 @@ def _raw_cat(text: str, group: str) -> str:
             'timeline_unverified': '로보틱스 변곡점 시간표 변경',
             'general_brain_execution': '범용 로봇 두뇌 실행지표',
             'quantified_deployment': '로봇 배치·생산·고객 정량 확대',
+            'factory_kpi_initial': '폭스콘 GB300 실제 조립 KPI 첫 정량화',
+            'factory_kpi_measured': '폭스콘 GB300 로봇 조립 KPI 정량 공개',
+            'factory_kpi_change': '폭스콘 GB300 로봇 조립 KPI 개선·악화',
+            'factory_target_achieved': '폭스콘 GB300 로봇 조립 99.5%·사이클타임 목표 달성',
         }.get(_nvidia_robotics_exec_stage(text), 'NVIDIA 로보틱스 전망')
     if group == 'fieldai':
         return {
@@ -752,6 +834,10 @@ def meaning(cat: str) -> str:
         '로보틱스 시간표 미확인': '구체적인 시간표가 비공개 전언이나 출처 불명 상태라면 참고만 하고 알림하지 않습니다.',
         '범용 로봇 두뇌 실행지표': '범용 로봇 두뇌가 수사에서 실제 모델·고객·작업수·현장배치 숫자로 내려오는 신호입니다. 지원 로봇 종류, 작업 성공률, 사람 개입률, 추론지연과 온디바이스 연산구성을 확인합니다.',
         '로봇 배치·생산·고객 정량 확대': 'NVIDIA 생태계 로봇이 실제 배치·생산·고객 숫자로 확대되는 단계입니다. 데모 숫자와 유료 생산배치, 파트너 발표와 실출하를 구분합니다.',
+        '폭스콘 GB300 실제 조립 KPI 첫 정량화': '데모가 아니라 Foxconn 휴스턴의 GB300 NVL72 테스터 트레이 실제 제조공정에서 로봇 성능이 수치로 내려온 단계입니다. 버스바 조립 작업 성공률 95% 초과, 멀티커넥터 삽입 90~95%, 버스바 사이클타임 약 160초를 기준선으로 고정하고 99.5% 성공률·124초 목표와의 격차를 추적합니다. 이 수치는 GB300 전체 생산수율이 아니라 개별 조립작업 성공률입니다.',
+        '폭스콘 GB300 로봇 조립 KPI 정량 공개': 'NVIDIA·Foxconn 제조현장의 로봇 자동화가 작업 성공률·사이클타임으로 정량화되는 단계입니다. 제품 전체 수율과 로봇 작업 성공률을 분리하고 재작업·처리량·사람 개입률을 함께 확인합니다.',
+        '폭스콘 GB300 로봇 조립 KPI 개선·악화': '초기 95%+·160초 기준선에서 성공률이나 사이클타임이 실제로 변하는 후속 신호입니다. 99.5%와 124초에 얼마나 가까워지는지, 커넥터 72초 목표까지 포함해 생산성 개선 속도를 봅니다.',
+        '폭스콘 GB300 로봇 조립 99.5%·사이클타임 목표 달성': '작업 성공률과 처리량이 전자 제조 목표 수준에 도달해 유연 자동화의 상업적 확장성이 한 단계 올라가는 신호입니다. 다른 GB300 공정·타 공장·차세대 랙으로 복제되는지와 실제 인력·원가 절감 폭을 확인합니다.',
 
         '기업가치 100억달러·7억달러 조달 추진 기준선': '2026년 10월 2일 Business Insider 보도의 100억달러 기업가치·7억달러 신규 자금조달 추진은 아직 종결된 투자유치가 아닌 현재 기준선으로 고정합니다. 같은 숫자의 재보도는 알리지 않습니다.',
         '7억달러 투자유치 공식 종결': 'FieldAI가 직접 투자유치 종결을 발표하면 실제 납입금액·기업가치·신주 조건·리드 투자자·기존주주 희석을 확인합니다. 현대차그룹의 보유지분이 공개되지 않았으므로 단순 5배 투자수익률로 계산하지 않습니다.',
@@ -812,6 +898,10 @@ def risk(cat: str) -> str:
         '로보틱스 시간표 미확인': '비공개 코멘트 재전파만으로 모델·하드웨어 공급망 수혜를 확정하지 않습니다.',
         '범용 로봇 두뇌 실행지표': '벤치마크 개선이 실환경 반복작업으로 그대로 이어지지 않을 수 있습니다. 작업 분포, 실패복구, 연속가동시간, 안전성과 로봇별 미세조정량을 확인합니다.',
         '로봇 배치·생산·고객 정량 확대': '파트너가 늘어도 NVIDIA 매출은 Jetson·DGX·Omniverse·소프트웨어 사용량에 따라 다릅니다. 로봇 대수와 NVIDIA 콘텐츠 비중을 곱해 실제 매출경로를 확인합니다.',
+        '폭스콘 GB300 실제 조립 KPI 첫 정량화': '가장 큰 오판은 95%를 GB300 전체 제조수율로 읽는 것입니다. 이는 특정 조립작업 성공률입니다. 95%에서 99.5%로 가려면 실패율을 약 5%에서 0.5%로 낮춰 약 10분의 1로 줄여야 하며, 버스바 160초는 124초 목표보다 약 29% 느립니다. 현재 수치는 NVIDIA 내부 보고 기반이며 제3자 독립 감사가 확인되지 않았습니다.',
+        '폭스콘 GB300 로봇 조립 KPI 정량 공개': '성공률만 높고 사이클타임이 느리면 같은 생산량을 맞추기 위해 병렬화·추가 설비·사람 재작업이 필요할 수 있습니다. 나사 체결·고정밀 커넥터 삽입의 위치오차·힘제어·충돌 손상이 먼저 드러날 병목입니다.',
+        '폭스콘 GB300 로봇 조립 KPI 개선·악화': '단일 작업 개선이 전체 랙 조립 생산성 향상을 보장하지 않습니다. 다른 공정으로 병목이 이동하거나 제품 설계 변경 때 재학습·재검증 시간이 늘 수 있습니다.',
+        '폭스콘 GB300 로봇 조립 99.5%·사이클타임 목표 달성': '목표 달성도 한 라인·한 제품에서의 결과일 수 있습니다. 다른 공장·Vera Rubin 세대·다른 커넥터 형상에서 같은 성공률과 처리량이 재현되는지를 확인해야 합니다.',
 
         '기업가치 100억달러·7억달러 조달 추진 기준선': '현재 라운드는 보도상 진행 중이며 최종 투자계약·납입이 확정된 단계가 아닙니다. 100억달러 기업가치를 FieldAI의 확정 거래가치나 현대차의 실현 투자수익으로 계산하지 않습니다.',
         '7억달러 투자유치 공식 종결': '기업가치 급등이 실제 매출·현금흐름 증가보다 앞설 수 있습니다. 새 자금의 신주 비중·청산우선권·전환권·희석과 현금소진 속도를 확인합니다.',
@@ -872,6 +962,12 @@ def verification(item: dict, group: str, text: str) -> str:
             return 'NVIDIA 공식자료 또는 Reuters·Bloomberg·CNBC·FT·The Information의 직접 인용으로 12개월 이내 시간표 확인'
         if stage == 'timeline_change':
             return 'NVIDIA/Jensen 직접 인용이 포함된 신뢰 자료 · 기존 near-term 기준선 대비 시간표 변경'
+        if stage in {'factory_kpi_initial','factory_kpi_measured','factory_kpi_change','factory_target_achieved'}:
+            if source in base.OFFICIAL_OR_PRIMARY or re.search(r'NVIDIA', source, re.I):
+                return 'NVIDIA 기술자료 기반 · Foxconn GB300 테스터트레이 작업 성공률·사이클타임 확인 · 전체 제조수율과 구분'
+            if re.search(r'Focus\s*Taiwan|Central\s*News\s*Agency|\bCNA\b', source, re.I):
+                return 'Focus Taiwan/CNA가 NVIDIA 10월 2일 기술보고서를 인용 · 작업 성공률·사이클타임 교차확인 · 제3자 감사 아님'
+            return 'Tech Times 등 2차 보도 · Focus Taiwan/CNA와 NVIDIA 기술자료 인용 내용 교차확인 · 작업 성공률을 전체 제조수율로 해석 금지'
         if stage in {'general_brain_execution','quantified_deployment'}:
             if source in base.OFFICIAL_OR_PRIMARY:
                 return 'NVIDIA 공식자료 · 범용 로봇 두뇌/배치/생산 정량지표 직접 확인'
@@ -947,8 +1043,8 @@ def same_event(a: dict, b: dict) -> bool:
             return False
         if sa in {'official_rhetoric_baseline','roadshow_within_year_unverified','within_year_unverified'}:
             return True
-        nums_a = set(re.findall(r'\d[\d,.]*\s*(?:months?|years?|robots?|units?|customers?|sites?|대|개|곳|개월|년)', ta, re.I))
-        nums_b = set(re.findall(r'\d[\d,.]*\s*(?:months?|years?|robots?|units?|customers?|sites?|대|개|곳|개월|년)', tb, re.I))
+        nums_a = set(re.findall(r'\d[\d,.]*\s*(?:months?|years?|robots?|units?|customers?|sites?|%|seconds?|sec|s|대|개|곳|개월|년|초)', ta, re.I))
+        nums_b = set(re.findall(r'\d[\d,.]*\s*(?:months?|years?|robots?|units?|customers?|sites?|%|seconds?|sec|s|대|개|곳|개월|년|초)', tb, re.I))
         if nums_a and nums_b:
             return bool(nums_a & nums_b)
         return True
@@ -1014,7 +1110,9 @@ def key(item: dict) -> str:
             return hashlib.sha256(b'nvidia-robotics|chatgpt-moment|official-rhetoric-baseline|ces2026-here').hexdigest()
         if stage == 'roadshow_within_year_unverified':
             return hashlib.sha256(b'nvidia-robotics|roadshow|within-a-year|unverified-user-baseline').hexdigest()
-        nums = '|'.join(sorted(set(re.findall(r'\d[\d,.]*\s*(?:months?|years?|robots?|units?|customers?|sites?|대|개|곳|개월|년)', text, re.I)))[:6]) or 'no-number'
+        if stage == 'factory_kpi_initial':
+            return hashlib.sha256(b'nvidia-foxconn|gb300-nvl72|tester-tray|robot-assembly-kpi|2026-10|95plus|90-95|160s|124s|72s|99.5target').hexdigest()
+        nums = '|'.join(sorted(set(re.findall(r'\d[\d,.]*\s*(?:months?|years?|robots?|units?|customers?|sites?|%|seconds?|sec|s|대|개|곳|개월|년|초)', text, re.I)))[:10]) or 'no-number'
         horizon = '12m' if NVIDIA_WITHIN_YEAR.search(text) else ('longer' if NVIDIA_LONGER_HORIZON.search(text) else 'no-horizon')
         return hashlib.sha256(f'nvidia-robotics|{stage}|{horizon}|{nums}'.encode()).hexdigest()
     if group == 'fieldai':
