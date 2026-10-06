@@ -134,13 +134,13 @@ PRICE_ONLY = re.compile(r'주가|급등|상한가|특징주|수혜주|목표주�
 
 KOREA_ROBOT = re.compile(r'AI\s*로봇|인공지능\s*로봇|피지컬\s*AI|physical\s*AI|휴머노이드|humanoid|로봇', re.I)
 KOREA_POLICY = re.compile(
-    r'20\s*만\s*대|200,?000|1,?700\s*대|1\s*만\s*5,?000\s*대|15,?000\s*(?:대|units?)|'
+    r'20\s*만\s*대|200,?000\s*(?:대|units?|AI\s*robots?|robots?)|1,?700\s*대|1\s*만\s*5,?000\s*대|15,?000\s*(?:대|units?)|'
     r'18\s*만\s*5,?000\s*대|185,?000\s*(?:대|units?)|국가첨단전략산업\s*특화단지|'
     r'대구.{0,20}경북|구미|포항|새만금|구매\s*보조|렌탈\s*지원',
     re.I,
 )
 POLICY_BASELINE = re.compile(
-    r'2030.{0,50}(?:20\s*만\s*대|200,?000)|(?:20\s*만\s*대|200,?000).{0,50}2030|'
+    r'2030.{0,50}(?:20\s*만\s*대|200,?000\s*(?:대|units?|AI\s*robots?|robots?))|(?:20\s*만\s*대|200,?000\s*(?:대|units?|AI\s*robots?|robots?)).{0,50}2030|'
     r'내년.{0,50}1,?700\s*대|2027.{0,50}1,?700\s*대|'
     r'(?:대구|경북|구미|포항).{0,80}(?:특화단지|휴머노이드\s*생산거점)|'
     r'5\s*조\s*3,?839\s*억|5\.3839\s*조|12\s*조\s*9,?877\s*억',
@@ -152,7 +152,7 @@ ACTUAL_DEPLOY = re.compile(r'보급\s*(?:완료|개시|시작)|배치\s*(?:완�
 PRIVATE_PROGRAM = re.compile(r'(?:구매\s*보조|렌탈\s*지원).{0,80}(?:공고|접수|신청|지원금|지원율|한도|대당|억원|만원)|(?:공고|접수|신청).{0,80}(?:구매\s*보조|렌탈\s*지원)', re.I)
 PLANT_EXEC = re.compile(r'착공|장비\s*반입|생산라인\s*(?:구축|가동)|공장\s*(?:착공|가동)|생산능력\s*(?:확정|증설)|설비\s*투자\s*(?:결정|확정|공시)', re.I)
 DATA_MODEL = re.compile(r'현장\s*데이터.{0,80}(?:공개|학습|파운데이션\s*모델|foundation\s*model)|피지컬\s*AI.{0,80}(?:모델\s*공개|벤치마크|성공률)|foundation\s*model.{0,80}(?:released|benchmark|success)', re.I)
-POLICY_REVERSE = re.compile(r'(?:20\s*만\s*대|200,?000|1,?700\s*대|보급|조달|특화단지|양산기반).{0,80}(?:연기|지연|축소|감액|삭감|취소|철회|하향)|(?:예산|목표|보급).{0,80}(?:cut|delay|postpone|reduce|cancel)', re.I)
+POLICY_REVERSE = re.compile(r'(?:20\s*만\s*대|200,?000\s*(?:대|units?|AI\s*robots?|robots?)|1,?700\s*대|보급|조달|특화단지|양산기반).{0,80}(?:연기|지연|축소|감액|삭감|취소|철회|하향)|(?:예산|목표|보급).{0,80}(?:cut|delay|postpone|reduce|cancel)', re.I)
 
 SAMSUNG = re.compile(r'삼성전자|Samsung\s*Electronics', re.I)
 SAMSUNG_ROBOT = re.compile(r'RX사업추진실|로보틱스|robotics|휴머노이드|humanoid|로봇', re.I)
