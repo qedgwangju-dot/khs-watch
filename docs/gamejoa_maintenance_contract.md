@@ -478,3 +478,17 @@ Every defect or requested change must follow this sequence:
   Multiple reporter names are removed without removing the source actor.
 - Regional hearing advocacy about an existing investment plan is not a new CAPEX
   commitment. Current sourced budget confirmation or implementation is separate.
+- Duty-free tax treatment is not a duty-free store's consumer app. Routine
+  booking/payment features and brand-distribution profiles need actual market
+  execution, not publicity verbs or old growth narratives. Current quantified
+  capital commitments and transactions remain independently eligible.
+- Hearing industry-support appeals are not new funding or technical validation.
+  Keep current committed budget or implemented instruments separate from advocacy.
+- Official external-assessment reports retain institution, report name, release
+  date, modeled norm versus actual balance and forecast stage. Photo captions do
+  not provide the current event. Same-report reprints share one event identity;
+  explicit revisions and a different release date remain separate events.
+- Cumulative customer-sales milestones compare issuer, population, year, amount
+  and announcement date. Verified aliases only upgrade existing successful
+  receipts; missing bodies, changed terms and absent receipts are never inferred.
+  Short cancellation disclosures retain the sourced scheduled execution date.

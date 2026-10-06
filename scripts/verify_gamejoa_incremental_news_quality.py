@@ -69,6 +69,8 @@ HEARING_SPECULATION_FIXTURE = json.loads((ROOT / 'data/gamejoa_hearing_speculati
 HEARING_SPECULATION_CASES = {case['id']: case for case in HEARING_SPECULATION_FIXTURE['cases']}
 HEADLINE_TERMS_FIXTURE = json.loads((ROOT / 'data/gamejoa_headline_terms_fixtures_20261006.json').read_text(encoding='utf-8'))
 HEADLINE_TERMS_CASES = {case['id']: case for case in HEADLINE_TERMS_FIXTURE['cases']}
+CONSUMER_SCOPE_FIXTURE = json.loads((ROOT / 'data/gamejoa_consumer_scope_fixtures_20261006.json').read_text(encoding='utf-8'))
+CONSUMER_SCOPE_CASES = {case['id']: case for case in CONSUMER_SCOPE_FIXTURE['cases']}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -110,6 +112,111 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def consumer_scope_alert(self, key):
+        case = CONSUMER_SCOPE_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_version91_whole_receipt_replays_consumer_and_report_scope(self):
+        now = NOW.replace(day=6, hour=17)
+        for case in CONSUMER_SCOPE_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                candidate = classify(case, now)
+                selected = radar.quality_display_alerts([candidate], 30) if candidate else []
+                self.assertEqual(bool(selected), case['expected_keep'])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+
+    def test_consumer_duty_free_app_is_not_a_tax_policy_event(self):
+        item = self.consumer_scope_alert('airport_consumer_app')
+        self.assertFalse(eligible(item['news'], item['source_body']))
+        self.assertTrue(eligible('트럼프 면세 경유 도로 차량 사용 허용',
+                                 HEADLINE_TERMS_CASES['diesel_tax_exemption_executive_order']['body']))
+
+    def test_brand_profile_requires_actual_quantified_market_execution(self):
+        item = self.consumer_scope_alert('food_brand_profile')
+        self.assertFalse(eligible(item['news'], item['source_body']))
+        self.assertTrue(eligible(item['news'], '제키스는 6일 신규 공장 설비투자 예산 500억원을 확정했다고 공시했다.\n' + item['source_body']))
+
+    def test_hearing_robot_appeal_is_not_new_funding_or_technology_validation(self):
+        item = self.consumer_scope_alert('hearing_robot_investment_appeal')
+        self.assertFalse(eligible(item['news'], item['source_body']))
+        self.assertTrue(eligible(item['news'], '정부는 6일 휴머노이드 설비투자 예산 1000억원을 확정했다.\n' + item['source_body']))
+
+    def test_photo_credit_does_not_become_the_report_economic_change(self):
+        body = CONSUMER_SCOPE_CASES['bok_eba_report_reprint']['body']
+        reported = materiality.source_reported_body(body)
+        self.assertNotIn('386억1000만', reported)
+        self.assertIn('적정 경상수지는 기존 4.7%에서 3.3%', reported)
+        self.assertEqual(materiality.strip_source_photo_caption('▲사업 수주 500억원을 공시했다.'), '▲사업 수주 500억원을 공시했다.')
+
+    def test_macro_model_core_preserves_assessment_not_a_past_balance(self):
+        item = self.consumer_scope_alert('bok_eba_report_reprint')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('한국은행이 발표한', 'IMF EBA 모형 개편', 'GDP 대비 적정 경상수지', '4.7%', '3.3%', '0.8%', '3.1%'):
+            self.assertIn(term, core)
+        self.assertNotIn('386억', core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_same_bok_report_across_publishers_dedupes_but_revision_survives(self):
+        first = self.consumer_scope_alert('bok_eba_report')
+        other = self.consumer_scope_alert('bok_eba_report_reprint')
+        identity = materiality.source_event_identity(first)
+        self.assertTrue(identity.startswith('source_event:v2:macro_model_report:'))
+        self.assertEqual(identity, materiality.source_event_identity(other))
+        corrected = {**other, 'source_body': other['source_body'] + '\n한국은행은 이날 보고서를 정정했다.'}
+        self.assertNotEqual(identity, materiality.source_event_identity(corrected))
+        self.assertFalse(materiality.source_event_identity({**first, 'body_verified': False}))
+
+    def test_cumulative_foreign_sales_reprint_dedupes_but_amount_and_period_survive(self):
+        first = self.consumer_scope_alert('retailer_foreign_sales_first_receipt')
+        other = self.consumer_scope_alert('retailer_foreign_sales_reprint')
+        identity = materiality.source_event_identity(first)
+        self.assertTrue(identity.startswith('source_event:v2:cumulative_foreign_sales:'))
+        self.assertEqual(identity, materiality.source_event_identity(other))
+        for changed in ({**other, 'source_body': other['source_body'].replace('1조원', '2조원')},
+                        {**other, 'published': other['published'].replace('2026-', '2027-')}):
+            self.assertNotEqual(identity, materiality.source_event_identity(changed))
+        self.assertFalse(materiality.source_event_identity({**first, 'body_verified': False}))
+
+    def test_cumulative_foreign_sales_core_keeps_the_year_and_population(self):
+        item = self.consumer_scope_alert('retailer_foreign_sales_reprint')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('롯데백화점', '6일', '올해 누적 외국인 고객 매출', '1조원'):
+            self.assertIn(term, core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_short_cancellation_disclosure_core_keeps_execution_date(self):
+        item = self.consumer_scope_alert('share_cancellation_schedule')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('삼천리자전거', '44억원', '소각을 결정', '15일'):
+            self.assertIn(term, core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_successful_sales_and_report_receipts_block_cross_publisher_reprints(self):
+        now = NOW.replace(day=6, hour=17)
+        for first_key, other_key in (('retailer_foreign_sales_first_receipt', 'retailer_foreign_sales_reprint'),
+                                     ('bok_eba_report', 'bok_eba_report_reprint')):
+            first = self.consumer_scope_alert(first_key)
+            other = self.consumer_scope_alert(other_key)
+            state = {'seen': {'historical': {'title': first['source_title'], 'link': first['link'],
+                                             'first_seen_kst': '2026-10-06T16:00:00+09:00'}}}
+            with self.subTest(first=first_key), tempfile.TemporaryDirectory() as folder, patch.object(telegram, 'SEEN_PATH', Path(folder) / 'seen.json'):
+                original = json.dumps(state).encode('utf-8')
+                telegram.SEEN_PATH.write_bytes(original)
+                fresh, skipped = telegram.filter_previously_seen_alerts([other], now, 'live')
+                self.assertFalse(fresh)
+                self.assertEqual(len(skipped), 1)
+                self.assertEqual(telegram.SEEN_PATH.read_bytes(), original)
+
+    def test_sales_and_report_aliases_never_seed_missing_or_changed_evidence(self):
+        state = {'seen': {}}
+        telegram.migrate_seen_verified_event_aliases(state)
+        self.assertFalse(state['seen'])
+        first = self.consumer_scope_alert('retailer_foreign_sales_first_receipt')
+        self.assertFalse(materiality.audited_source_event_identity({**first, 'source_body': first['source_body'] + '\n정정 공시.'}))
+
     def headline_terms_alert(self, key):
         case = HEADLINE_TERMS_CASES[key]
         return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],

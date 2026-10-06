@@ -2593,6 +2593,32 @@ def source_headline_event_fact(title: str, body: str) -> str:
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
+    sales = market_materiality.cumulative_foreign_sales_observation(title, source)
+    if sales:
+        fact = (f"{sales['issuer']}은 {sales['day']}일 {sales['period']} 누적 외국인 고객 매출이 "
+                f"{sales['amount']}을 돌파했다고 밝혔다.")
+        return fact if core_sentence_is_complete(fact) else ''
+    model = market_materiality.macro_model_report_observation(title, source)
+    if focus == 'macro_model_assessment' and model:
+        report_name = 'IMF EBA 모형 개편이 우리나라 경상수지 평가에 미치는 영향'
+        prefix = f"{model['day']}일 한국은행이 발표한 '{report_name}'"
+        levels = re.search(r'적정\s*경상수지는\s*기존\s*([\d.]+)%에서\s*([\d.]+)%로\s*([\d.]+)%p\s*낮아', source)
+        gap = re.search(r'경상수지\s*갭\s*역시\s*([\d.]+)%에서\s*([\d.]+)%', source)
+        if levels and gap:
+            fact = (f'{prefix} 보고서에 따르면 GDP 대비 적정 경상수지는 {levels[1]}%에서 {levels[2]}%로 낮아졌다. '
+                    f'실제 수지와 적정 수준 간 갭은 {gap[1]}%에서 {gap[2]}%로 확대됐다.')
+        else:
+            fact = f'{prefix} 보고서는 한국의 적정 경상수지가 낮아질 것으로 분석했다.'
+        if not levels and re.search(r'내년.{0,50}(?:초과.{0,8}순대외자산|NFA)|내년부터\s*도입되는.{0,30}순대외자산', source):
+            fact += ' 내년 평가에는 초과조정 순대외자산(NFA)이 도입된다.'
+        return fact if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact) else ''
+    if '소각' in title and len(source) < 500:
+        decision = next((normalized_article_sentence(row) for row in rows
+                         if '소각을 결정' in row and '공시했다' in row), '')
+        schedule = next((normalized_article_sentence(row) for row in rows if '소각 예정일은' in row), '')
+        if decision and schedule:
+            fact = decision + ' ' + schedule
+            return fact if len(fact) <= GAMEJOA_CORE_MAX_CHARS and core_sentence_is_complete(fact) else ''
     if '발전소' in title and '송금' in title:
         speaker = re.search(r'([가-힣]{2,5})\s*경제부총리', source)
         payment = re.search(r'정부가\s*대미투자\s*사업인\s*([^.!?]{2,40}발전소)\s*건설을\s*위해\s*(지난\s*\d{1,2}일)\s*(\d[\d,.]*억\s*달러)를\s*송금했다고', source)

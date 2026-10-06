@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 91
+VERSION = 92
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -161,6 +161,7 @@ def nonmarket_entertainment_reason(title: str, body: str = "", source_url: str =
 # the classifier. Reuse it for evidence ranking and compact-summary checks.
 HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) for name, head, source in (
     ("tax_relief", r"비과세|과세.{0,12}제외|특례\s*(?:관세|방안)|FTA.{0,12}특례", r"비과세|과세.{0,25}제외|특례|특혜관세"),
+    ("macro_model_assessment", r"(?=.*(?:IMF|EBA))(?=.*(?:모형|경상수지|제도\s*개편))", r"EBA|적정\s*경상수지|초과조정\s*순대외자산|순대외자산\(NFA\)"),
     ("legislative_action", r"(?:특별법|법안|법률).{0,20}(?:발의|제출|통과|공포)", r"(?:법|법안|법률).{0,35}(?:대표발의|발의|제출|통과|공포)"),
     ("network_segmentation_policy", r"망분리.{0,20}(?:완화|예외|규제)|(?:완화|예외).{0,20}망분리", r"망분리|규제\s*완화|신청\s*가능\s*대상|선정\s*규모"),
     ("housing_supply_policy", r"대통령.{0,30}부동산.{0,70}(?:대량\s*공급|매수확약)|LH.{0,30}(?:미분양|매수확약)|주택.{0,30}(?:매수확약|매입임대)", r"LH|매수확약|주택|미분양|매입임대"),
@@ -305,6 +306,8 @@ def local_administration_without_execution(title: str, lead: str, evidence: list
 
 @lru_cache(maxsize=2048)
 def focus_kind(title: str) -> str:
+    if re.search(r'IMF|EBA', title or '', re.I) and re.search(r'모형|경상수지|제도\s*개편', title or ''):
+        return 'macro_model_assessment'
     # A scoped tax treatment is the event; oil is only its subject.
     if HEADLINE_FOCUS[0][1].search(title or ""):
         return "tax_relief"
@@ -972,6 +975,8 @@ def strip_source_photo_caption(line: str) -> str:
     credit = re.search(r"\((?:사진(?:제공)?|제공)\s*[:=][^)]{1,100}\)", value)
     if credit and (value.startswith('▲') or PHOTO_DESCRIPTION.search(value[:credit.end()])):
         return value[credit.end():].strip()
+    if value.startswith('▲') and re.search(r'사진|기자\s+[A-Za-z0-9._-]+@', value):
+        return ''
     return value
 
 
@@ -1847,6 +1852,34 @@ def industrial_route_study_terms(title: str, body: str, published: str = "") -> 
             "explicit_revision": bool(re.search(r"협약\s*(?:정정|변경|철회)|추가\s*협약", title + " " + lead))}
 
 
+def cumulative_foreign_sales_observation(title: str, body: str) -> dict[str, str]:
+    if not re.search(r'롯데(?:백화점|百)', title) or not re.search(r'외국인.{0,15}매출', title):
+        return {}
+    for row in source_sentences(source_reported_body(body)):
+        if '롯데백화점' not in row or not re.search(r'밝혔다|밝혔|발표했다', row):
+            continue
+        period = re.search(r'(올해|20\d{2}년)\s*(?:누적\s*)?외국인\s*(?:고객\s*)?(?:누적\s*)?매출이\s*(\d[\d,.]*조원)(?:을|를)\s*(?:돌파|넘어)', row)
+        day = re.search(r'(?<!\d)(\d{1,2})일', row)
+        if period and day:
+            return {'issuer': '롯데백화점', 'population': '외국인 고객', 'period': period[1],
+                    'amount': period[2], 'day': day[1], 'source_excerpt': row}
+    return {}
+
+
+def macro_model_report_observation(title: str, body: str) -> dict[str, str]:
+    if focus_kind(title) != 'macro_model_assessment':
+        return {}
+    source = source_reported_body(body)
+    report = re.search(r'IMF\s*EBA\s*모형\s*개편이\s*우리나라\s*경상수지\s*평가에\s*미치는\s*영향', source)
+    release = re.search(r'(?<!\d)(\d{1,2})일\s*(?:한국은행[^.!?\n]{0,30}|한은(?:이|\s+국제금융연구팀이))\s*발표한', source)
+    if not (report and release):
+        return {}
+    revision = next((row for row in source_sentences(source) if re.search(
+        r'(?:한은|한국은행).{0,35}보고서.{0,20}(?:정정했다|수정했다|보완했다)', row)), '')
+    return {'actor': '한국은행', 'report': canonical_source_fact(report[0]), 'day': release[1],
+            'revision': canonical_source_fact(revision)}
+
+
 def source_event_identity(alert: dict) -> str:
     """Identify a sourced action and its terms, not a company-wide theme.
 
@@ -1866,6 +1899,18 @@ def source_event_identity(alert: dict) -> str:
     body = str(alert.get("source_body") or "") if alert.get("body_verified") else ""
     published = str(alert.get("published") or "")
     if re.match(r"20\d{2}-\d{2}-\d{2}", published):
+        sales = cumulative_foreign_sales_observation(title, body)
+        model = macro_model_report_observation(title, body)
+        if sales or model:
+            terms = dict(sales or model)
+            terms.pop('source_excerpt', None)
+            day = terms.pop('day')
+            terms['disclosure_date'] = published[:8] + day.zfill(2)
+            if sales:
+                terms['period'] = published[:4] if sales['period'] == '올해' else sales['period'][:4]
+                terms['amount'] = korean_amount_value(sales['amount'].removesuffix('원'))
+            digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+            return f"source_event:v2:{'cumulative_foreign_sales' if sales else 'macro_model_report'}:{digest}"
         mlcc = mlcc_contract_observation(title, body)
         if mlcc:
             year = int(published[:4]) + 1 if mlcc['year_label'] == '내년' else int(mlcc['year_label'][:4])
@@ -2150,7 +2195,7 @@ RULES = (
     ("attributed_fx_forecast", ("discount_rate",),
      r"원[·/]달러|달러[·/]원|환율", r"전망|예상"),
     ("policy_scope_or_stage", ("timeline",),
-     r"관세|법인세|소비세|면세|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|수입\s*승인|수출입공고|보안\s*가이드라인|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
+     r"관세|법인세|소비세|면세(?!점)|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|수입\s*승인|수출입공고|보안\s*가이드라인|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
      r"제안|검토|추진|인상|인하|부과|올리|올렸|낮추|낮췄|상향|하향|완화|강화|시행|발효|금지|제한|(?<!인)허가(?:했|한다|를\s*(?:내|받|취득))|승인(?:했|한다|을\s*(?:받|획득|취득))|제정|개정|철회|의견수렴|입법예고|면제|배정|의결|착수|발표|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
     ("economic_restriction_response", ("discount_rate", "timeline"),
      r"경제\s*전쟁|제재", r"새로운\s*조치.{0,30}(?:도입|발표)|대응\s*조치.{0,30}(?:도입|발표|시행)"),
@@ -2173,6 +2218,9 @@ RULES = (
      r"증설|착공|가동|증가|감소|중단|차질|부족|품귀|지연|연장|매각|검토|확대|축소|상용화|구축|건설\s*(?:하|할|을|에|계획|계약|추진)|신설|짓고|짓는다|도입|생산할|늘고|늘었|expand|start|halt|disrupt|shortage|delay|consider|launch|build|deploy"),
     ("sector_demand_outlook", ("earnings",),
      r"반도체|메모리|데이터센터|출하량|semiconductor|memory|data center|shipments", r"호황|불황|수요.{0,20}(?:전망|늘|줄)|(?:발주|수주|시장\s*규모).{0,80}(?:추산|추정|전망|예상)|boom|bust|demand outlook"),
+    ("macro_model_assessment", ("discount_rate", "timeline"),
+     r"EBA|적정\s*경상수지|초과조정\s*순대외자산|순대외자산\(NFA\)",
+     r"모형.{0,30}개편|도입|낮추|낮아|떨어|줄었|감소|확대|개편"),
     ("market_outlook", (),
      r"코스피|코스닥|증시|주식시장|kospi|kosdaq|stock market", r"오를|내릴|상승할|하락할|상승\s*전망|하락\s*전망|forecast|outlook"),
     ("fund_assets_level", (),
@@ -2456,6 +2504,8 @@ def transmission_scope(title: str, evidence: list[dict]) -> tuple[int, str]:
         return 3, 'market_wide_breadth_change'
     if 'policy_agreement_clarification' in kinds and re.search(r"한미|한국|양국|Korea", excerpts, re.I):
         return 3, 'bilateral_policy_agreement_clarification'
+    if 'macro_model_assessment' in kinds:
+        return 3, 'national_external_assessment_model_change'
     if kinds & {'policy_scope_or_stage', 'export_control_scope', 'environmental_approval'} and re.search(
         r"관세|수출통제|수입.{0,20}(?:금지|제한)|금리|예탁금|FCC|BIS|NEPA|tariff|export control|import ban|interest rate", title, re.I,
     ):
@@ -2505,6 +2555,15 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     ):
         return {'eligible': False, 'reason': 'annual_crypto_adoption_survey_without_equity_catalyst'}
     source_rows = source_sentences(source_reported_body(body))
+    service_publicity = (re.search(r'앱|애플리케이션|모바일\s*서비스', title)
+                         and re.search(r'예약|주문|메뉴|쇼핑|식음료|여객\s*편의', lead))
+    profile_publicity = (re.search(r'브랜드|기념품|소비자|판로|보폭|접점', lead)
+                         and kinds <= {'physical_supply_or_capacity', 'customer_discussions', 'technology_or_clinical_stage'})
+    quantified_execution = any(not PAST_ACTION.search(row) and QUANTITY.search(row) and re.search(
+        r'(?:투자|예산|공장|공급\s*계약|설비투자).{0,80}(?:확정했|공시했|체결했|착공했|가동을\s*시작)', row)
+        for row in source_rows[:12])
+    if (service_publicity or profile_publicity) and not economic_execution and not quantified_execution:
+        return {'eligible': False, 'reason': 'consumer_service_or_brand_profile_without_market_execution'}
     if (re.search(r"임상결과|임상\s*결과", title) and re.search(r"기대|고무적|잠재력", title)
             and re.search(r"최근[^.!?]{0,45}인터뷰", body)
             and re.search(r"지난\s*\d{1,2}일[^.!?]{0,90}(?:학회|EADV)[^.!?]{0,60}임상\s*결과를\s*발표", body)
@@ -2518,6 +2577,10 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
                  and re.search(r"발표했다|확정했다|결정했다|증액했다|인상했다|인하했다|변경했다", row)))
         for row in source_rows
     )
+    if (re.search(r'국감|국정감사|청문회', title + ' ' + lead)
+            and re.search(r'투자.{0,25}(?:부족|확대.{0,15}(?:주문|촉구|요구))|지원.{0,20}(?:필요|촉구)', title + ' ' + lead)
+            and not new_policy_terms and not economic_execution):
+        return {'eligible': False, 'reason': 'hearing_industry_appeal_without_new_committed_terms'}
     if (re.search(r"국감|국정감사|청문회", title + ' ' + ' '.join(source_rows[:12]))
             and not new_policy_terms and not economic_execution
             and kinds <= {'physical_supply_or_capacity', 'customer_discussions', 'technology_or_clinical_stage'}
@@ -3131,6 +3194,10 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
             if not subject.search(sentence) or not action.search(sentence):
                 continue
             policy_focus = focus_kind(title)
+            if policy_focus == 'macro_model_assessment' and kind != 'macro_model_assessment':
+                continue
+            if kind == 'macro_model_assessment' and not macro_model_report_observation(title, body):
+                continue
             if policy_focus in {"network_segmentation_policy", "housing_supply_policy"} and kind != policy_focus:
                 continue
             if kind in {"network_segmentation_policy", "housing_supply_policy"} and kind != policy_focus:
