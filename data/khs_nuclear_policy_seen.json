@@ -1,4 +1,47 @@
 {
+  "bwrx300_us_milestones": {
+    "commissioning": {
+      "first_seen_kst": "2026-10-07T02:16:35+09:00",
+      "kind": "bwrx300_us",
+      "link": "https://www.nrc.gov/facilities-safety/new-reactors/advanced-reactors/who-were-working-with/advanced-reactor-application-projects/tva-clinch-river-cpa",
+      "official": true,
+      "published_kst": "2026-10-07T02:16:35+09:00",
+      "published_utc": "2026-10-06T17:16:35+00:00",
+      "rank": 9,
+      "source": "NRC",
+      "stage": "commissioning",
+      "status": "시운전·계통연계",
+      "title": "TVA Clinch River BWRX-300 · 시운전·계통연계",
+      "trigger": "official_bwrx300_execution_milestone"
+    },
+    "construction_permit_issued": {
+      "first_seen_kst": "2026-09-30T08:13:00+09:00",
+      "kind": "bwrx300_us",
+      "link": "https://www.nrc.gov/about-nrc/news-releases/2026/26-079",
+      "official": true,
+      "published_utc": "2026-09-29T00:00:00+00:00",
+      "rank": 2,
+      "source": "NRC·TVA 공식",
+      "stage": "construction_permit_issued",
+      "status": "NRC 건설허가 발급",
+      "title": "NRC·TVA Clinch River Unit 1 BWRX-300 건설허가 발급"
+    }
+  },
+  "bwrx300_us_state": {
+    "first_seen_kst": "2026-10-07T02:16:35+09:00",
+    "kind": "bwrx300_us",
+    "link": "https://www.nrc.gov/facilities-safety/new-reactors/advanced-reactors/who-were-working-with/advanced-reactor-application-projects/tva-clinch-river-cpa",
+    "official": true,
+    "published_kst": "2026-10-07T02:16:35+09:00",
+    "published_utc": "2026-10-06T17:16:35+00:00",
+    "rank": 9,
+    "source": "NRC",
+    "stage": "commissioning",
+    "status": "시운전·계통연계",
+    "title": "TVA Clinch River BWRX-300 · 시운전·계통연계",
+    "trigger": "official_bwrx300_execution_milestone"
+  },
+  "bwrx300_us_state_model_version": 2,
   "seen": {
     "083ab82f426da9f7": {
       "first_seen_kst": "2026-06-24T07:10:16+09:00",
@@ -34,7 +77,7 @@
     }
   },
   "smr_state_model_version": 3,
-  "updated_at_kst": "2026-10-04T09:38:05+09:00",
+  "updated_at_kst": "2026-10-07T02:16:35+09:00",
   "westinghouse_issue_state": {
     "correction_note": "2026-10-03 IT조선 이사회 진입 추진 보도는 신규 확정 상태가 아니므로 기준선에서 제외",
     "first_seen_kst": "2026-10-04T09:38:05+09:00",
@@ -45,32 +88,5 @@
     "status": "공식 프레임워크·최종계약 미체결",
     "title": "Westinghouse 공식 한국 지분 5~10% 잠재 투자·비구속 프레임워크"
   },
-  "westinghouse_state_model_version": 3,
-  "bwrx300_us_state_model_version": 2,
-  "bwrx300_us_state": {
-    "kind": "bwrx300_us",
-    "stage": "construction_permit_issued",
-    "rank": 2,
-    "status": "NRC 건설허가 발급",
-    "published_utc": "2026-09-29T00:00:00+00:00",
-    "title": "NRC·TVA Clinch River Unit 1 BWRX-300 건설허가 발급",
-    "source": "NRC·TVA 공식",
-    "link": "https://www.nrc.gov/about-nrc/news-releases/2026/26-079",
-    "official": true,
-    "first_seen_kst": "2026-09-30T08:13:00+09:00"
-  },
-  "bwrx300_us_milestones": {
-    "construction_permit_issued": {
-      "kind": "bwrx300_us",
-      "stage": "construction_permit_issued",
-      "rank": 2,
-      "status": "NRC 건설허가 발급",
-      "published_utc": "2026-09-29T00:00:00+00:00",
-      "title": "NRC·TVA Clinch River Unit 1 BWRX-300 건설허가 발급",
-      "source": "NRC·TVA 공식",
-      "link": "https://www.nrc.gov/about-nrc/news-releases/2026/26-079",
-      "official": true,
-      "first_seen_kst": "2026-09-30T08:13:00+09:00"
-    }
-  }
+  "westinghouse_state_model_version": 3
 }
