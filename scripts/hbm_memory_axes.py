@@ -1129,7 +1129,7 @@ def parse_glass_substrate_records(item, body):
         elif re.search(r'(?:pending\s*(?:purchase\s*)?order|final\s+purchase[- ]?order\s+process|본계약\s*대기|발주\s*대기|수주\s*대기)', text, re.I):
             stage = 'po_pending'
         elif re.search(
-            r'(?:customer\s*(?:validation|evaluation)|고객\s*(?:검증|평가)|신뢰성\s*평가|'
+            r'(?:customer\s*(?:validation|evaluation)|reliability\s*(?:evaluation|test)|고객\s*(?:검증|평가)|신뢰성\s*평가|'
             r'샘플[^.]{0,80}?(?:평가가?\s*(?:이어|진행|계속|중)|평가\s*중)|'
             r'sample[^.]{0,80}?(?:evaluation|validation)[^.]{0,40}?(?:ongoing|underway|continues?))',
             text, re.I
@@ -1144,6 +1144,36 @@ def parse_glass_substrate_records(item, body):
         if stage or target_year:
             value = {'stage':stage or 'customer_evaluation','mass_production_target_year':target_year}
             scope = 'stage_transition_customer_evaluation_to_hvm'
+            if entity == 'jntc':
+                m_pilot = re.search(r'(?:파일럿\s*라인|pilot\s*line)[^0-9]{0,25}(\d+)\s*(?:개|line)', text, re.I)
+                m_cap = re.search(r'(?:월|monthly)[^0-9]{0,25}(1\s*만|10,?000)\s*[~～-]\s*(1\s*만\s*2\s*천|12,?000)\s*(?:개|units?)', text, re.I)
+                m_nda = re.search(r'(?:NDA|비밀유지계약)[^0-9]{0,30}(\d+)\s*곳', text, re.I)
+                m_end = re.search(r'(?:최종\s*수요기업|end\s*customers?)[^0-9]{0,30}(\d+)\s*곳', text, re.I)
+                m_paid = re.search(r'(?:유상\s*샘플|paid\s*samples?)[^0-9]{0,35}(?:전환한\s*고객사도\s*)?(\d+)\s*곳', text, re.I)
+                value.update({
+                    'pilot_line_count': int(m_pilot.group(1)) if m_pilot else None,
+                    'pilot_capacity_units_per_month_min': 10000 if m_cap else None,
+                    'pilot_capacity_units_per_month_max': 12000 if m_cap else None,
+                    'nda_customer_count': int(m_nda.group(1)) if m_nda else None,
+                    'end_customer_count': int(m_end.group(1)) if m_end else None,
+                    'paid_sample_customer_count': int(m_paid.group(1)) if m_paid else None,
+                    'target_product_thickness_mm': 2 if re.search(r'2027[^.]{0,80}?2\s*mm|2\s*mm[^.]{0,80}?2027', text, re.I) else None,
+                    'next_product_thickness_mm': 3 if re.search(r'3\s*mm[^.]{0,80}?(?:개발|develop)', text, re.I) else None,
+                    'gimcheon_groundbreaking_period': '2027H2' if re.search(r'2027\s*년?\s*하반기[^.]{0,40}?착공|착공[^.]{0,40}?2027\s*년?\s*하반기', text, re.I) else None,
+                    'initial_line_count_min': 2 if re.search(r'2\s*[~～-]\s*3\s*개\s*(?:생산)?라인', text, re.I) else None,
+                    'initial_line_count_max': 3 if re.search(r'2\s*[~～-]\s*3\s*개\s*(?:생산)?라인', text, re.I) else None,
+                    'initial_customer_commercialization_period': '2028_mid' if re.search(r'2028\s*년?\s*(?:중반|중)', text, re.I) else None,
+                    'mass_ramp_line_count_min': 10 if re.search(r'10\s*개\s*이상[^.]{0,40}?(?:라인|확대)|(?:라인|확대)[^.]{0,40}?10\s*개\s*이상', text, re.I) else None,
+                })
+                scope = 'jntc_customer_evaluation_paid_samples_pilot_and_gimcheon_ramp'
+            if entity == 'absolics':
+                value.update({
+                    'embedding_preliminary_evaluation_passed': bool(re.search(r'preliminary\s+evaluations?[^.]{0,40}?(?:completed|passed)|예비\s*평가[^.]{0,40}?(?:완료|통과)', text, re.I)),
+                    'embedding_reliability_evaluation_ongoing': bool(re.search(r'reliability\s*(?:evaluation|test)|신뢰성\s*평가', text, re.I)),
+                    'non_embedding_supplier_selection_ongoing': bool(re.search(r'non[- ]?embedding[^.]{0,120}?(?:supplier\s*selection|공급사\s*선정)', text, re.I)),
+                    'non_embedding_poc_target_year': 2026 if re.search(r'non[- ]?embedding[^.]{0,160}?(?:PoC|proof\s+of\s+concept)[^.]{0,60}?(?:within\s+the\s+year|연내)', text, re.I) else None,
+                })
+                scope = 'absolics_customer_validation_not_mass_production'
             if entity == 'chemtronics' and re.search(r'(?:삼성전자|Samsung(?: Electronics)?)', text, re.I):
                 value.update({
                     'customer': 'Samsung Electronics',
