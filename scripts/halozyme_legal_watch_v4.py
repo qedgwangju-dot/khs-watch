@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
 import html
 import json
 import os
@@ -14,6 +16,9 @@ _original_rss = base.rss
 
 ALTEOGEN_IR_LIST_URL = "https://alteogen.com/kr/sub/ir/information.php?bid=2"
 ALTEOGEN_IR_CURRENT_URL = "https://alteogen.com/kr/sub/ir/information.php?bid=2&idx=374&mode=view&page=1"
+OFFICIAL_IR_HTTP_TIMEOUT = 7
+OFFICIAL_IR_WORKERS = 4
+OFFICIAL_IR_MAX_ARTICLES = 12
 CURRENT_PORTFOLIO_SCORECARD = {
     "url": ALTEOGEN_IR_CURRENT_URL,
     "title": "알테오젠 파트너 MSD, 할로자임 MDASE 여섯 번째·일곱 번째 특허 무효화 판정",
@@ -110,12 +115,12 @@ def _strip_tags(value: str) -> str:
 
 
 def _alteogen_official_portfolio_items() -> list[dict]:
-    out: list[dict] = []
     try:
-        page = base.fetch(ALTEOGEN_IR_INDEX, timeout=7)
+        page = base.fetch(ALTEOGEN_IR_INDEX, timeout=OFFICIAL_IR_HTTP_TIMEOUT)
     except Exception:
-        return out
+        return []
 
+    candidates: list[tuple[str, str]] = []
     seen: set[str] = set()
     for match in re.finditer(r'(?is)<a\b[^>]*href=["\']([^"\']*information\.php\?[^"\']*idx=\d+[^"\']*)["\'][^>]*>(.*?)</a>', page):
         href = match.group(1).replace("&amp;", "&")
@@ -127,20 +132,41 @@ def _alteogen_official_portfolio_items() -> list[dict]:
         low_title = title.lower()
         if not any(k in low_title for k in ("할로자임", "halozyme", "mdase", "특허")):
             continue
+        candidates.append((title, url))
+        if len(candidates) >= OFFICIAL_IR_MAX_ARTICLES:
+            break
+
+    if not candidates:
+        return []
+
+    def load(candidate: tuple[str, str]) -> dict | None:
+        title, url = candidate
         try:
-            article = _strip_tags(base.fetch(url, timeout=7))
+            article = _strip_tags(base.fetch(url, timeout=OFFICIAL_IR_HTTP_TIMEOUT))
         except Exception:
             article = title
         low = article.lower()
         if not ("pgr" in low and ("할로자임" in low or "halozyme" in low or "mdase" in low)):
-            continue
-        out.append({
+            return None
+        return {
             "engine": "알테오젠 공식 IR",
             "title": title or "알테오젠 Halozyme 특허분쟁 누적 현황",
             "url": url,
             "description": article[:12000],
             "published": "",
-        })
+        }
+
+    out: list[dict] = []
+    workers = max(1, min(OFFICIAL_IR_WORKERS, len(candidates)))
+    with ThreadPoolExecutor(max_workers=workers, thread_name_prefix="alteogen-ir") as pool:
+        futures = [pool.submit(load, candidate) for candidate in candidates]
+        for future in as_completed(futures):
+            try:
+                item = future.result()
+            except Exception:
+                item = None
+            if item:
+                out.append(item)
     return out
 
 

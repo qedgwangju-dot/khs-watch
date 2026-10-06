@@ -65,6 +65,11 @@ class BioAlertRegressionTests(unittest.TestCase):
             "약 1조3,787억원",
         )
 
+    def test_halozyme_official_ir_fetch_is_bounded(self):
+        self.assertEqual(halo.OFFICIAL_IR_HTTP_TIMEOUT, 7)
+        self.assertEqual(halo.OFFICIAL_IR_WORKERS, 4)
+        self.assertLessEqual(halo.OFFICIAL_IR_MAX_ARTICLES, 12)
+
     def test_halozyme_search_matrix_is_bounded_and_covers_every_known_case(self):
         searches = halo.base.SEARCHES
         self.assertLessEqual(len(searches), 40)
