@@ -67,6 +67,7 @@ class BioAlertRegressionTests(unittest.TestCase):
 
     def test_halozyme_official_ir_fetch_is_bounded(self):
         self.assertEqual(halo.OFFICIAL_IR_HTTP_TIMEOUT, 7)
+        self.assertEqual(halo.OFFICIAL_IR_HTTP_ATTEMPTS, 2)
         self.assertEqual(halo.OFFICIAL_IR_WORKERS, 4)
         self.assertLessEqual(halo.OFFICIAL_IR_MAX_ARTICLES, 12)
 
@@ -77,11 +78,19 @@ class BioAlertRegressionTests(unittest.TestCase):
             self.assertTrue(any(case in query for query in searches), case)
         self.assertEqual(halo.base.SEARCH_WORKERS, 8)
         self.assertEqual(halo.v3.SEARCH_HTTP_TIMEOUT, 7)
+        self.assertEqual(halo.v3.SEARCH_HTTP_ATTEMPTS, 2)
 
     def test_bio_schedule_avoids_top_of_hour_load(self):
         source = (ROOT / ".github" / "workflows" / "bio-qlex-intismeran-watch.yml").read_text(encoding="utf-8")
         self.assertIn('cron: "7,22,37,52 * * * *"', source)
         self.assertNotIn('cron: "*/15 * * * *"', source)
+
+    def test_bio_runner_handles_timeout_without_aborting_all_state_work(self):
+        source = (ROOT / "scripts" / "bio_single_runner.py").read_text(encoding="utf-8")
+        self.assertIn("except subprocess.TimeoutExpired", source)
+        self.assertIn("return 124", source)
+        self.assertIn("[바이오 감시] 오류 복구 확인", source)
+        self.assertIn("동일 원인이 반복되면 중복 오류 알림은 보내지 않고", source)
 
     def test_bio_runner_exposes_failed_status_to_actions(self):
         source = (ROOT / "scripts" / "bio_single_runner.py").read_text(encoding="utf-8")
