@@ -39,7 +39,6 @@ TRIALS = {
 
 COMPANY_SOURCES = [
     ("Nanoscope Therapeutics", NANOSCOPE_NEWS, ("mogenry", "mco-010", "sonpiretigene", "optogen")),
-    ("Ray Therapeutics", RAY_NEWS, ("rtx-015", "rtx-021", "optogen")),
     ("GenSight Biologics", GENSIGHT_NEWS, ("gs030", "optogen")),
 ]
 
@@ -308,10 +307,15 @@ def validate_nobel() -> bool:
     return all(x in text for x in required)
 
 
+def validate_ray_pipeline() -> bool:
+    text = clean(re.sub(r"<[^>]+>", " ", fetch_text("https://raytherapeutics.com/pipeline/"))).lower()
+    return "rtx-015" in text and "optogen" in text and "phase 1" in text
+
+
 def render_alert(items: list[dict], trial_updates: list[dict], new_cns_trials: list[dict], now: dt.datetime) -> str:
     lines = [
         "[바이오 감시] 광유전학 임상·허가 구조 변화",
-        f"조회 시각: {now.strftime('%Y-%m-%d %H:%M KST')}",
+        f"조회 시각: {now.strftime('%Y-%m-%d %H:%M')} 한국시간",
         "",
         "판정 원칙: 노벨상·논문·행사 자체는 재알림하지 않고, 인간 임상·허가·환자투여·유효성·제조·상용화 단계가 실제로 바뀔 때만 알립니다.",
     ]
@@ -396,17 +400,19 @@ def main() -> int:
 
     for company, url, terms in COMPANY_SOURCES:
         try:
-            if company == "Ray Therapeutics":
-                try:
-                    rows = meaningful_press_links(company, url, terms)
-                except Exception:
-                    rows = meaningful_rss_links(company, RAY_FEED, terms)
-                events.extend(rows)
-            else:
-                events.extend(meaningful_press_links(company, url, terms))
+            events.extend(meaningful_press_links(company, url, terms))
             successful += 1
         except Exception as exc:
             errors.append(f"{company}: {type(exc).__name__}")
+
+    ray_pipeline_ok = False
+    try:
+        ray_pipeline_ok = validate_ray_pipeline()
+        successful += 1
+        if not ray_pipeline_ok:
+            errors.append("Ray Therapeutics 공식 파이프라인 검증 실패")
+    except Exception as exc:
+        errors.append(f"Ray Therapeutics pipeline: {type(exc).__name__}")
 
     snapshots: dict[str, dict] = {}
     trial_updates: list[dict] = []
@@ -447,15 +453,16 @@ def main() -> int:
     new_cns = [x for x in cns_trials if x["nct"] not in old_cns] if initialized else []
 
     source_version = int(old.get("source_version") or 0)
-    if initialized and source_version < 2:
-        # Ray's official RSS fallback was added after the initial baseline.
-        # Do not resend already-known 2026 RMAT/PRIME/financing items as new events.
-        new_items = [x for x in new_items if x.get("company") != "Ray Therapeutics"]
+    if initialized and source_version < 3:
+        # Source coverage expanded after the first baseline. Do not replay
+        # historical GS030/Nanoscope/Ray items as if they were new events.
+        new_items = []
 
     pending = {
         "initialized": True,
         "version": 1,
-        "source_version": 2,
+        "source_version": 3,
+        "ray_pipeline_verified": ray_pipeline_ok,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "nobel_2026_verified": nobel_ok,
         "seen_event_keys": current_keys,
