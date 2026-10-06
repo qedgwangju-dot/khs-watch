@@ -2,6 +2,7 @@
 """Audit two saved live deliveries before registering cross-publisher aliases."""
 
 import argparse
+import copy
 import datetime as dt
 import hashlib
 import json
@@ -95,7 +96,20 @@ def main() -> None:
             key = "event:" + radar.telegram.digest_seen(identity)
             assert key in state["seen"], identity
         now = dt.datetime.fromisoformat(reports[1]["query_time_kst"])
-        with patch.object(radar.telegram, "SEEN_PATH", args.seen_state), patch.object(radar.base, "kst_now", return_value=now):
+        # Reconstruct the ledger immediately before the second ACK-backed send;
+        # the live ledger keeps growing and cannot be replayed as a frozen input.
+        replay_state = {
+            **state,
+            "seen": {
+                key: copy.deepcopy(entry)
+                for key, entry in state["seen"].items()
+                if not isinstance(entry, dict)
+                or not radar.telegram.parse_seen_time(entry.get("first_seen_kst"))
+                or radar.telegram.parse_seen_time(entry["first_seen_kst"]) < now
+            },
+        }
+        assert len(replay_state["seen"]) < len(state["seen"])
+        with patch.object(radar.telegram, "load_seen_state", return_value=replay_state), patch.object(radar.base, "kst_now", return_value=now):
             fresh, skipped = radar.telegram.filter_previously_seen_alerts(latest, now, "live")
             selected = radar.quality_display_alerts(fresh, 20)
         assert {item["link"] for item in skipped} == {proofs[0]["link"], proofs[1]["link"],
