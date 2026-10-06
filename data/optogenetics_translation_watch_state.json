@@ -1,0 +1,95 @@
+{
+  "initialized": true,
+  "version": 1,
+  "last_checked_kst": "2026-10-06T19:40:10+09:00",
+  "nobel_2026_verified": true,
+  "seen_event_keys": [
+    "d3e43c74900cbe45ced82930",
+    "b1cc89521f331c60687c52a6",
+    "04e42a53cc7c2d6238d6b466",
+    "5cd11afbac5793bf83427fb4"
+  ],
+  "trial_snapshots": {
+    "NCT06460844": {
+      "brief_title": "Study to Evaluate Safety of RTx-015 Injection in Retinitis Pigmentosa or Choroideremia Patients (ENVISION)",
+      "overall_status": "ACTIVE_NOT_RECRUITING",
+      "phases": [
+        "PHASE1"
+      ],
+      "enrollment": 10,
+      "start_date": "2024-08-27",
+      "primary_completion": "2030-10",
+      "study_completion": "2030-10",
+      "last_update": "2026-02-20",
+      "conditions": [
+        "Retinitis Pigmentosa",
+        "Choroideremia"
+      ],
+      "locations": 4
+    },
+    "NCT06162585": {
+      "brief_title": "Non-Interventional Long Term Follow-up Study of Participants Previously Enrolled in the RESTORE Study",
+      "overall_status": "ACTIVE_NOT_RECRUITING",
+      "phases": [],
+      "enrollment": 18,
+      "start_date": "2023-12-08",
+      "primary_completion": "2027-07",
+      "study_completion": "2027-09",
+      "last_update": "2025-03-24",
+      "conditions": [
+        "Retinitis Pigmentosa",
+        "Retinitis",
+        "Retinal Diseases",
+        "Eye Diseases",
+        "Eye Diseases, Hereditary",
+        "Retinal Dystrophies",
+        "Retinal Degeneration"
+      ],
+      "locations": 6
+    },
+    "NCT04945772": {
+      "brief_title": "Efficacy and Safety of MCO-010 Optogenetic Therapy in Adults With Retinitis Pigmentosa [RESTORE]",
+      "overall_status": "COMPLETED",
+      "phases": [
+        "PHASE2"
+      ],
+      "enrollment": 27,
+      "start_date": "2021-07-13",
+      "primary_completion": "2023-02-27",
+      "study_completion": "2024-01-18",
+      "last_update": "2024-03-22",
+      "conditions": [
+        "Retinitis Pigmentosa",
+        "Retinitis",
+        "Retinal Diseases",
+        "Eye Diseases",
+        "Eye Diseases, Hereditary",
+        "Retinal Dystrophies",
+        "Retinal Degeneration"
+      ],
+      "locations": 6
+    },
+    "NCT03326336": {
+      "brief_title": "Dose-escalation Study to Evaluate the Safety and Tolerability of GS030 in Subjects With Retinitis Pigmentosa",
+      "overall_status": "ACTIVE_NOT_RECRUITING",
+      "phases": [
+        "PHASE1",
+        "PHASE2"
+      ],
+      "enrollment": 10,
+      "start_date": "2018-09-26",
+      "primary_completion": "2027-10-26",
+      "study_completion": "2027-10-26",
+      "last_update": "2026-03-02",
+      "conditions": [
+        "Non-syndromic Retinitis Pigmentosa"
+      ],
+      "locations": 3
+    }
+  },
+  "cns_trial_ids": [],
+  "relevant_press_events": 4,
+  "source_errors": [
+    "Ray Therapeutics: HTTPError"
+  ]
+}

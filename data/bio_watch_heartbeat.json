@@ -1,6 +1,6 @@
 {
-  "status": "failed",
-  "checked_at_kst": "2026-10-06T19:10:28+09:00",
+  "status": "ok",
+  "checked_at_kst": "2026-10-06T19:38:31+09:00",
   "route_source": "encrypted-route",
   "telegram_route_ok": true,
   "qlex_collector_rc": 0,
@@ -8,7 +8,7 @@
   "intismeran_collector_rc": 0,
   "jemperli_collector_rc": 0,
   "enhertu_collector_rc": 0,
-  "halozyme_collector_rc": null,
+  "halozyme_collector_rc": 0,
   "qlex_alert_present": false,
   "qlex_wac_alert_present": false,
   "intismeran_alert_present": false,
@@ -19,17 +19,14 @@
   "intismeran_send_outcome": "skipped",
   "jemperli_send_outcome": "skipped",
   "enhertu_send_outcome": "skipped",
-  "halozyme_run_outcome": "skipped",
-  "qlex_state_persisted": false,
-  "qlex_wac_state_persisted": false,
-  "intismeran_state_persisted": false,
-  "jemperli_state_persisted": false,
-  "enhertu_state_persisted": false,
-  "halozyme_state_persisted": false,
+  "halozyme_run_outcome": "success",
+  "qlex_state_persisted": true,
+  "qlex_wac_state_persisted": true,
+  "intismeran_state_persisted": true,
+  "jemperli_state_persisted": true,
+  "enhertu_state_persisted": true,
+  "halozyme_state_persisted": true,
   "intismeran_retry_pending": false,
   "last_health_notice_date": "2026-10-06",
-  "errors": [
-    "TimeoutExpired: Command '['/opt/hostedtoolcache/Python/3.12.14/x64/bin/python', 'scripts/halozyme_legal_watch_v4.py']' timed out after 240 seconds"
-  ],
-  "failure_notice_message_id": 124
+  "errors": []
 }
