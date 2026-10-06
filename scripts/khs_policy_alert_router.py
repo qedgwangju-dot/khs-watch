@@ -17,6 +17,10 @@ try:
     from khs_compact_text import concise_text
 except ImportError:  # pragma: no cover - supports module-style local tests.
     from scripts.khs_compact_text import concise_text
+try:
+    from khs_policy_telegram_formatter import presidential_action_timeline_lines
+except ImportError:  # pragma: no cover - supports module-style local tests.
+    from scripts.khs_policy_telegram_formatter import presidential_action_timeline_lines
 
 KST = ZoneInfo("Asia/Seoul")
 OUT_DIR = Path("out")
