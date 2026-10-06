@@ -3,7 +3,7 @@
   "track_version": 1,
   "current": {
     "fabless_hike_status": "검토·보도 단계",
-    "fabless_hike_min_pct": 5,
+    "fabless_hike_min_pct": 5.0,
     "fabless_hike_upper_kind": "두 자릿수",
     "fabless_hike_timing": "2026년 말~2027년 초",
     "fabless_scope": [
@@ -30,19 +30,23 @@
     "order_pull_in_reported": true,
     "broad_demand_recovery_confirmed": false,
     "inventory_risk_flag": true,
-    "source": "TrendForce research + TrendForce News + Economic Daily News",
+    "source": "TrendForce",
     "source_kind": "공식 TrendForce 연구수치와 TrendForce News/경제일보 보도를 분리 보존; fabless 5%~두 자릿수 인상은 아직 개별 회사 공식 확정 아님",
     "trend_news_url": "https://www.trendforce.com/news/2026/10/05/news-ic-designers-reportedly-eye-5-to-double-digit-price-hikes-in-late-2026-early-2027-as-foundry-costs-rise/",
     "economic_daily_url": "https://money.udn.com/money/amp/story/5612/9794455",
     "trend_foundry_url": "https://www.trendforce.com/presscenter/news/20260630-13127.html",
     "trend_foundry_oct5_url": "https://www.trendforce.com/research/download/RP261005QL3",
     "trend_tsmc_preview_url": "https://www.trendforce.com/news/2026/10/05/news-tsmc-earnings-preview-terafab-talks-price-hikes-and-a14-intel-race-lead-five-key-themes/",
-    "as_of": "2026-10-05"
+    "as_of": "2026-10-05",
+    "source_url": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxPajJaUi1GNlkzMXlpRm5LSHhacVVoS2U4XzRYeW9XWXRvMHhlQW0zS3ZlZ2lfT0pzVEV5LThIblpydzYwOFNHcW1JTzNFbEZXNE11NnBSVVNSUXBVb0hnV1NMYVJqUm92cmptN25laTNSTmNJd19SQXh6STlRUDdleWdEOURCaThqM0pzYjY2VEptZXBwc3hUeGRBNlpLdGIyM0RBMnFmRW02QnBpOEs0Q3NHSDB0OVprZjUxRmZWdFBRa24xRlJ0MWJXZWU2N0ZnQmZjR3VyR2wyT3hET1pEelhNQTdfa28?oc=5",
+    "source_rank": 3
   },
-  "updated_at_kst": "2026-10-06T19:46:00+09:00",
-  "last_scan_count": 0,
+  "updated_at_kst": "2026-10-06T19:58:54+09:00",
+  "last_scan_count": 1,
   "last_typed_change_count": 0,
   "last_new_event_count": 0,
-  "seen_fingerprints": [],
+  "seen_fingerprints": [
+    "3bc9abb89edc22ce016b6951"
+  ],
   "delivered_event_keys": []
 }
