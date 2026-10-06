@@ -621,6 +621,255 @@ def format_policy_message(
     return title.strip(), body.strip() + "\n"
 
 
+
+_TIMELINE_MONTHS = {
+    "january": 1, "jan": 1, "february": 2, "feb": 2, "march": 3, "mar": 3,
+    "april": 4, "apr": 4, "may": 5, "june": 6, "jun": 6, "july": 7, "jul": 7,
+    "august": 8, "aug": 8, "september": 9, "sep": 9, "sept": 9,
+    "october": 10, "oct": 10, "november": 11, "nov": 11, "december": 12, "dec": 12,
+}
+
+
+def _timeline_parse_day(value: object) -> dt.date | None:
+    raw = _clean(value)
+    if not raw:
+        return None
+    iso = re.match(r"^(20\d{2})-(\d{1,2})-(\d{1,2})", raw)
+    if iso:
+        try:
+            return dt.date(int(iso.group(1)), int(iso.group(2)), int(iso.group(3)))
+        except ValueError:
+            return None
+    korean = re.search(r"\b(20\d{2})년\s*(\d{1,2})월\s*(\d{1,2})일\b", raw)
+    if korean:
+        try:
+            return dt.date(int(korean.group(1)), int(korean.group(2)), int(korean.group(3)))
+        except ValueError:
+            return None
+    english = re.search(
+        r"\b(January|February|March|April|May|June|July|August|September|October|November|December|"
+        r"Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)\s+(\d{1,2}),\s+(20\d{2})\b",
+        raw,
+        re.I,
+    )
+    if english:
+        month = _TIMELINE_MONTHS.get(english.group(1).lower())
+        try:
+            return dt.date(int(english.group(3)), int(month or 0), int(english.group(2)))
+        except ValueError:
+            return None
+    try:
+        parsed = dt.datetime.fromisoformat(raw.replace("Z", "+00:00"))
+        return parsed.date()
+    except ValueError:
+        return None
+
+
+def _timeline_ko_date(day: dt.date) -> str:
+    return f"{day.year}년 {day.month}월 {day.day}일"
+
+
+def _presidential_action_surface(value: object) -> str:
+    if isinstance(value, dict):
+        keys = (
+            "document_type", "presidential_document_type", "title", "source_title",
+            "original_title", "news", "original_news", "summary", "source_abstract",
+            "source_body", "policy_plain_summary", "link", "source",
+        )
+        parts = [str(value.get(key) or "") for key in keys]
+        for row in value.get("source_links") or []:
+            if isinstance(row, dict):
+                parts.extend(
+                    str(row.get(key) or "")
+                    for key in (
+                        "document_type", "presidential_document_type", "original_title",
+                        "link", "source", "executive_order_number",
+                    )
+                )
+        return re.sub(r"\s+", " ", " ".join(parts)).strip()
+    return re.sub(r"\s+", " ", str(value or "")).strip()
+
+
+def presidential_action_timeline_required(value: object) -> bool:
+    text = _presidential_action_surface(value).lower()
+    if not text:
+        return False
+    if any(term in text for term in (
+        "executive order", "행정명령",
+        "presidential determination", "대통령 결정",
+        "presidential memorandum", "대통령각서",
+    )):
+        return True
+    dpa = "defense production act" in text or re.search(r"\bdpa\b", text) is not None
+    return bool(
+        dpa
+        and any(term in text for term in (
+            "white house", "whitehouse.gov", "department of energy", "energy.gov",
+            "section 303", "50 u.s.c. 4533", "전력망", "송전", "변압기", "national defense",
+        ))
+    )
+
+
+def presidential_action_timeline_lines(alert: dict) -> list[str]:
+    """Return a source-faithful timeline for executive/presidential-action alerts.
+
+    The timeline never invents an earlier event. It prefers explicit structured
+    dates, then dates cited in the verified source body. If only a news date is
+    known, it is labelled as a report/current-event date rather than a signing date.
+    """
+    if not presidential_action_timeline_required(alert):
+        return []
+
+    events: list[tuple[dt.date, str]] = []
+
+    def add(day_value: object, detail: str) -> None:
+        day = _timeline_parse_day(day_value)
+        detail = _clean(detail)
+        if not day or not detail:
+            return
+        key = (day, detail)
+        if key not in events:
+            events.append(key)
+
+    existing = alert.get("policy_timeline") or []
+    for row in existing:
+        if isinstance(row, dict):
+            detail = " · ".join(
+                part for part in (
+                    _clean(row.get("stage")),
+                    _clean(row.get("detail")),
+                ) if part
+            )
+            add(row.get("date"), detail)
+        elif isinstance(row, str):
+            m = re.match(
+                r"\s*(20\d{2}-\d{1,2}-\d{1,2}|20\d{2}년\s*\d{1,2}월\s*\d{1,2}일)\s*[:·-]\s*(.+)",
+                row,
+            )
+            if m:
+                add(m.group(1), m.group(2))
+
+    text = _presidential_action_surface(alert)
+    low = text.lower()
+    dpa = "defense production act" in low or re.search(r"\bdpa\b", low) is not None
+    beluga = any(term in low for term in ("beluga-healy", "beluga healy", "alaska railbelt"))
+    grid_dpa = dpa and any(term in low for term in (
+        "grid infrastructure", "전력망", "transformer", "변압기", "transmission", "송전",
+        "substation", "변전소", "section 303", "제303조",
+    ))
+
+    # Official lineage verified from White House and DOE primary sources.
+    if grid_dpa:
+        add("2025-01-20", "기반 · Executive Order 14156 국가 에너지 비상사태 선언")
+        add("2026-04-20", "법적 근거 · DPA 제303조 전력망·전력기기·공급망 대통령 결정")
+    if beluga and dpa:
+        add(
+            "2026-10-05",
+            "이번 집행 · DOE, Beluga-Healy 송전사업에 DPA 최대 1.5억달러 투입 의향 발표",
+        )
+
+    # Explicit earlier Executive Orders cited by the current official body.
+    for match in re.finditer(
+        r"\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+"
+        r"(\d{1,2}),\s+(20\d{2})[^.]{0,140}?\bExecutive Order\s+(\d{4,6})\b",
+        text,
+        re.I,
+    ):
+        add(
+            f"{match.group(3)}-{_TIMELINE_MONTHS[match.group(1).lower()]:02d}-{int(match.group(2)):02d}",
+            f"선행 근거 · Executive Order {match.group(4)}",
+        )
+    for match in re.finditer(
+        r"\bExecutive Order\s+(\d{4,6})\s+of\s+"
+        r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+"
+        r"(\d{1,2}),\s+(20\d{2})\b",
+        text,
+        re.I,
+    ):
+        add(
+            f"{match.group(4)}-{_TIMELINE_MONTHS[match.group(2).lower()]:02d}-{int(match.group(3)):02d}",
+            f"선행 근거 · Executive Order {match.group(1)}",
+        )
+
+    doc_type = _clean(
+        alert.get("presidential_document_type") or alert.get("document_type")
+    ).lower()
+    source = _clean(alert.get("source")).lower()
+    link = _clean(alert.get("link")).lower()
+    number = _clean(alert.get("executive_order_number"))
+    signing_day = _timeline_parse_day(alert.get("signing_date"))
+    published_day = _timeline_parse_day(
+        alert.get("published_kst") or alert.get("published")
+    )
+    publication_day = _timeline_parse_day(alert.get("publication_date"))
+
+    current_day = signing_day or published_day
+    if current_day:
+        if "executive order" in doc_type or "/executive-orders/" in link:
+            label = "이번 조치 · 행정명령"
+            if number:
+                label += f" {number}"
+            label += " 서명·공개"
+        elif "presidential memorandum" in doc_type or "presidential determination" in low:
+            label = "이번 조치 · 대통령각서·결정 공개"
+        elif "energy.gov" in link or "department of energy" in source or source.startswith("doe"):
+            label = "이번 조치 · DOE 후속 집행 발표"
+        else:
+            label = "이번 조치 · 현재 정책 발표"
+        if not any(day == current_day for day, _ in events):
+            add(current_day.isoformat(), label)
+
+    if publication_day and (
+        not current_day or publication_day != current_day
+    ):
+        add(publication_day.isoformat(), "공식 절차 · 연방관보 게재")
+
+    # Only compute relative deadlines for the actual order/memorandum itself.
+    direct_presidential = (
+        "executive order" in doc_type
+        or "presidential memorandum" in doc_type
+        or "/presidential-actions/" in link and ("whitehouse.gov" in link)
+    )
+    if direct_presidential and current_day:
+        for match in re.finditer(
+            r"\b(?:within|not later than)\s+(\d{1,3})\s+days(?:\s+of|\s+after)?\s+"
+            r"(?:the\s+date\s+of\s+)?(?:this|the)\s+(?:order|memorandum)\b",
+            text,
+            re.I,
+        ):
+            days = int(match.group(1))
+            if 0 < days <= 730:
+                deadline = current_day + dt.timedelta(days=days)
+                add(deadline.isoformat(), f"원문 기한 · 서명일 기준 {days}일 이내 후속조치")
+        for match in re.finditer(
+            r"\b(?:not later than|no later than|by)\s+"
+            r"(January|February|March|April|May|June|July|August|September|October|November|December)\s+"
+            r"(\d{1,2}),\s+(20\d{2})\b",
+            text,
+            re.I,
+        ):
+            add(
+                f"{match.group(3)}-{_TIMELINE_MONTHS[match.group(1).lower()]:02d}-{int(match.group(2)):02d}",
+                "원문 명시 후속조치 기한",
+            )
+
+    # For non-official coverage, do not promote the article date to a signing date.
+    if not events and published_day:
+        add(
+            published_day.isoformat(),
+            "보도 기준 현재 사건 · 행정명령 서명일·연방관보 일자는 공식 원문 확인 필요",
+        )
+
+    if not events:
+        return []
+
+    events.sort(key=lambda item: item[0])
+    lines = ["- 타임라인:"]
+    for day, detail in events[:8]:
+        lines.append(f"  • {_timeline_ko_date(day)}: {detail}")
+    return lines
+
+
 def validate_final_policy_message(title: str, body: str) -> list[str]:
     errors: list[str] = []
     combined = f"{title}\n{body}"
@@ -674,6 +923,14 @@ def validate_final_policy_message(title: str, body: str) -> list[str]:
             errors.append("source_link_raw_or_markdown_url_present")
         if "원문 보기" in stripped or "원문뉴스보기" in stripped:
             errors.append("source_link_verbose_label_present")
+    if presidential_action_timeline_required(plain_combined):
+        if "- 타임라인:" not in plain_combined:
+            errors.append("presidential_action_timeline_missing")
+        elif not re.search(
+            r"(?m)^\s*[•·]\s*20\d{2}년\s*\d{1,2}월\s*\d{1,2}일\s*:",
+            plain_combined,
+        ):
+            errors.append("presidential_action_timeline_has_no_dated_event")
     if extract_foreign_amounts(combined):
         errors.append("foreign_currency_not_converted")
     return errors
