@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-06T09:59:24+09:00",
+  "updated_at_kst": "2026-10-06T10:00:38+09:00",
   "circle": {
     "date": "2026-09-24",
     "circulation_usd_b": 75.2,
@@ -73,6 +73,7 @@
     "crosscheck": "Yahoo Finance 교차검증 접근 불가"
   },
   "crcl_last_alerted_close_date": "2026-10-05",
+  "correction_pending": false,
   "errors": [
     "crcl: CRCL close date mismatch: ChartExchange=2026-10-05 Yahoo=2026-10-02",
     "tbx: source date regressed 2026-10-02 < 2026-10-05; previous snapshot kept"
