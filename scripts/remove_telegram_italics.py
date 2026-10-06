@@ -118,13 +118,18 @@ def main() -> None:
     # first_install=True.
     gen_ppa_pending = gen_pending.get("hyperscaler_nuclear_ppa") or {}
     gen_ppa_confirmed = gen_confirmed.get("hyperscaler_nuclear_ppa") or {}
+    gen_ppa_pending_version = int(gen_ppa_pending.get("version") or 0)
+    gen_ppa_confirmed_version = int(gen_ppa_confirmed.get("version") or 0)
     if (
-        not gen_ppa_confirmed
-        and int(gen_ppa_pending.get("version") or 0) >= 2
+        gen_ppa_pending_version >= 2
+        and gen_ppa_pending_version > gen_ppa_confirmed_version
         and int(gen_ppa_pending.get("alert_change_count") or 0) == 0
     ):
         migration_suppressed.add(gen_alert.name)
-        print("hyperscaler_nuclear_ppa_baseline_persist_once=true")
+        print(
+            "hyperscaler_nuclear_ppa_schema_persist=true "
+            f"from={gen_ppa_confirmed_version} to={gen_ppa_pending_version}"
+        )
 
     # The workflow's save step copies pending state unconditionally. When there
     # is no Telegram alert, replace that pending state with the last confirmed
