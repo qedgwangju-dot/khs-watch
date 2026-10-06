@@ -3418,6 +3418,21 @@
       "source": "매일경제",
       "title": "TSMC 패키징공장 5곳 추가 건설"
     },
+    "event:88f963c9ef72bbb16d0015e4": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815022",
+      "source": "뉴시스",
+      "source_body_digest": "002ec06298282843bb4cb5b63e7a98640cc007da896698935eea84a76703f8b4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T00:14+09:00",
+      "title": "\"지금부터 겁먹을 이유 없다\"…미 국채금리 5% 시대, 증시 전망과 취약점"
+    },
     "event:89a487c8295ea75a26c50b66": {
       "first_seen_kst": "2026-10-02T11:29:29+09:00",
       "lanes": {
@@ -6448,6 +6463,23 @@
       ],
       "source_published_kst": "2026-10-06T13:27+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업서 각형 장비 수주"
+    },
+    "fact:04ce010e5f9a822c2184d1fa": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169789",
+      "source": "매일경제",
+      "source_body_digest": "6ea644e8959d9a63582965fa59dbb6fea0c1a1fbbe05553ee08dbf6ebe16148b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:563d4ae2d8f484abbf152adee08c60b582474cd0c353b1602ef9a37c2e6d7b2d",
+      "source_fact_keys": [
+        "source_fact:v1:c4d92d13daa477731dc73e7072353c21f64b6f0bcbb717bec2293038f9f32a8a"
+      ],
+      "source_published_kst": "2026-10-06T21:01+09:00",
+      "title": "“위성 15기 싣고 우주로”…누리호, 7일 다섯번째 비행"
     },
     "fact:052f5c30f0ce009c93728733": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
@@ -11082,6 +11114,23 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"AI 진화속도 예상 밖\"…정부, 독파모 지원 유지·프론티어 전략 재정비"
     },
+    "fact:5d0c511ec5276b9dbd561cc4": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.hankyung.com/article/2026100664471",
+      "source": "한국경제",
+      "source_body_digest": "9d2fb973cc270462792a24b634dbb8f88db4978cce5151ddb037108dc1f8fff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e746b783d5169975166b789e4a5572e888536b737f6ebc2bbbd1da920fbe7d42",
+      "source_fact_keys": [
+        "source_fact:v1:c85bf552b30af7184be5dd485bfe08c18d2cf4cd47b2f432139c5379bc13e6fa"
+      ],
+      "source_published_kst": "2026-10-06T17:53+09:00",
+      "title": "[단독] 2년前 문제 된 공사방식 또 꺼낸 대우건설…업계 \"안전성 우려\""
+    },
     "fact:5d21fb9b070cfebb94a724b6": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -12119,6 +12168,24 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
     },
+    "fact:71173624163c52b7973a65a0": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/06/RZQXAJWVC5BOJEBMH43LCSBNNU/",
+      "source": "조선비즈",
+      "source_body_digest": "695ab5fa5593acb9dc950347ab37fb6172e2f0354208a70dea1095bc2e0ddf4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:613d825d8f188222e7885251e91ae32da0a93322dc015c412b6f148103c91144",
+      "source_fact_keys": [
+        "source_fact:v1:5f1c4f795933312a8b09a6680f44a3382b1c9b610b3f9892e44d65515f1d28ca",
+        "source_fact:v1:8834314a452cb167e220ccd9cebc1000d8a43c12b1573ebd668aee0805cd8095"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "HK이노엔 도입 비만약, 청소년에서도 효과…“20주 체중 최대 12.1%↓”"
+    },
     "fact:7250416737f11e06ad191775": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -12232,6 +12299,24 @@
       ],
       "source_published_kst": "2026-10-05T20:21+09:00",
       "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
+    },
+    "fact:73d235d451a48b9d4120917c": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006166600704",
+      "source": "연합뉴스",
+      "source_body_digest": "bafecfef77b9cc21eb00ef26f99332caa62e574874cd4de94c72bb9fc3104a03",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da80ee1caed327f69d26ef22a819871fbe87aa1ea56823ee58b2c2e78e63833d",
+      "source_fact_keys": [
+        "source_fact:v1:11b398b286d589aca198f85e7d9aa19005f880897359052670fdc7f8246ae78f",
+        "source_fact:v1:fb8c7dfaf5f6c526eab48b7b38fc53dafb968d08e3a81f7b9c636225e2eb380e"
+      ],
+      "source_published_kst": "2026-10-06T17:11+09:00",
+      "title": "[영상] '성공률 80% 도전' 누리호 5차 발사…역대 최다 위성 15기 탑재 | 연합뉴스"
     },
     "fact:741211d482cbb8cff92e5b42": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -14931,6 +15016,24 @@
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "삼성전기, 일주일만 MLCC 2900억 공급계약…올 수주 3.9조원"
     },
+    "fact:ac6f238599c9bd304b9500e3": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.etnews.com/20261006000401",
+      "source": "전자신문",
+      "source_body_digest": "fd3c5655b67c37e7d651e7fce1f05e38375b7b38ca58048244385b3ee0e7fe8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:986c97ecb1992b0030286d7cd547c7a8f1ec445c7c9f6c71442a9c29f71e5404",
+      "source_fact_keys": [
+        "source_fact:v1:b79d7c8036333c9ce787ea55c39de2f449e88c2180602f418c84eb6c0125a49e",
+        "source_fact:v1:e9660ea4a450b0701e4b975dce51c6f74c807da46f21f4d51e35b282a88cab82"
+      ],
+      "source_published_kst": "2026-10-06T17:10+09:00",
+      "title": "퓨처드라이브, KES 2026서 '텔레드라이브' 전시…AI 보조 원격주행으로 차량·무인장비 운영 지원"
+    },
     "fact:ad1c2752bc375237412312d1": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -17009,6 +17112,23 @@
       ],
       "source_published_kst": "2026-10-06T13:31+09:00",
       "title": "한미반도체, 삼성전기에 244억원 규모 'MSVP' 반도체 장비 공급"
+    },
+    "fact:dd1a9669e90479849a9fd8b1": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632968",
+      "source": "이투데이",
+      "source_body_digest": "ea2fd4b266239b248cb164b5a0c375bb8675b59e0c73fdfca55ae10db418ac73",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ba431b01d60990c1ee5f5cf47b161f4dbb845cdb425a2c34d36b7f203c4c78d",
+      "source_fact_keys": [
+        "source_fact:v1:307375f647120d51117da8c5fb484b97e418cf22d0b81aca3377f5bd4144a5dc"
+      ],
+      "source_published_kst": "2026-10-06T16:58+09:00",
+      "title": "발사대 우뚝 선 누리호, 7일 낮 발사준비 완료...5차 발사 도전"
     },
     "fact:dd643114d83cb3446ba19093": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
@@ -19386,6 +19506,21 @@
       "link": "https://www.newsis.com/view/NISX20260921_0003797869",
       "source": "뉴시스",
       "title": "엔화, 중동 정세 악화에 1달러=157엔대 전반 하락 출발"
+    },
+    "link:083a4f6497e5ab3062ec58be": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815022",
+      "source": "뉴시스",
+      "source_body_digest": "002ec06298282843bb4cb5b63e7a98640cc007da896698935eea84a76703f8b4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T00:14+09:00",
+      "title": "\"지금부터 겁먹을 이유 없다\"…미 국채금리 5% 시대, 증시 전망과 취약점"
     },
     "link:085263251db6db65b02a5b29": {
       "first_seen_kst": "2026-10-04T00:00:47+09:00",
@@ -23507,6 +23642,23 @@
       "link": "https://www.mt.co.kr/index.php/economy/2026/09/22/2026092216312189980",
       "source": "머니투데이",
       "title": "원/달러 환율 1350원대 급락…추석 앞둔 수출기업 달러매도"
+    },
+    "link:2d5ea07895a9ca1dfb2ff315": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169789",
+      "source": "매일경제",
+      "source_body_digest": "6ea644e8959d9a63582965fa59dbb6fea0c1a1fbbe05553ee08dbf6ebe16148b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:563d4ae2d8f484abbf152adee08c60b582474cd0c353b1602ef9a37c2e6d7b2d",
+      "source_fact_keys": [
+        "source_fact:v1:c4d92d13daa477731dc73e7072353c21f64b6f0bcbb717bec2293038f9f32a8a"
+      ],
+      "source_published_kst": "2026-10-06T21:01+09:00",
+      "title": "“위성 15기 싣고 우주로”…누리호, 7일 다섯번째 비행"
     },
     "link:2da2ce712796c2cc763ddb2e": {
       "first_seen_kst": "2026-09-21T16:03:34+09:00",
@@ -29556,6 +29708,24 @@
       "source": "뉴시스",
       "title": "반도체 훈풍 탄 K수출…코트라 \"올해 수출 1조 달러 달성 가능\""
     },
+    "link:639f08e9ecc11f63f1a01242": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/06/RZQXAJWVC5BOJEBMH43LCSBNNU/",
+      "source": "조선비즈",
+      "source_body_digest": "695ab5fa5593acb9dc950347ab37fb6172e2f0354208a70dea1095bc2e0ddf4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:613d825d8f188222e7885251e91ae32da0a93322dc015c412b6f148103c91144",
+      "source_fact_keys": [
+        "source_fact:v1:5f1c4f795933312a8b09a6680f44a3382b1c9b610b3f9892e44d65515f1d28ca",
+        "source_fact:v1:8834314a452cb167e220ccd9cebc1000d8a43c12b1573ebd668aee0805cd8095"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "HK이노엔 도입 비만약, 청소년에서도 효과…“20주 체중 최대 12.1%↓”"
+    },
     "link:63afb323503a3b4f44963d61": {
       "first_seen_kst": "2026-10-02T22:19:09+09:00",
       "lanes": {
@@ -30147,6 +30317,23 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "정부, ‘프론티어‘·‘독파모’ 두 축으로...흡수·폐지설 반박"
+    },
+    "link:6746ad02c03d047f0761ce10": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632968",
+      "source": "이투데이",
+      "source_body_digest": "ea2fd4b266239b248cb164b5a0c375bb8675b59e0c73fdfca55ae10db418ac73",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ba431b01d60990c1ee5f5cf47b161f4dbb845cdb425a2c34d36b7f203c4c78d",
+      "source_fact_keys": [
+        "source_fact:v1:307375f647120d51117da8c5fb484b97e418cf22d0b81aca3377f5bd4144a5dc"
+      ],
+      "source_published_kst": "2026-10-06T16:58+09:00",
+      "title": "발사대 우뚝 선 누리호, 7일 낮 발사준비 완료...5차 발사 도전"
     },
     "link:6748302fbfc466a4d9c88f22": {
       "first_seen_kst": "2026-10-02T10:55:46+09:00",
@@ -34154,6 +34341,24 @@
       "source": "매일경제",
       "title": "행동주의 따라 투자하면 돈 벌까- 매경ECONOMY"
     },
+    "link:8ea79f82535a177cf9ca9ddc": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.etnews.com/20261006000401",
+      "source": "전자신문",
+      "source_body_digest": "fd3c5655b67c37e7d651e7fce1f05e38375b7b38ca58048244385b3ee0e7fe8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:986c97ecb1992b0030286d7cd547c7a8f1ec445c7c9f6c71442a9c29f71e5404",
+      "source_fact_keys": [
+        "source_fact:v1:b79d7c8036333c9ce787ea55c39de2f449e88c2180602f418c84eb6c0125a49e",
+        "source_fact:v1:e9660ea4a450b0701e4b975dce51c6f74c807da46f21f4d51e35b282a88cab82"
+      ],
+      "source_published_kst": "2026-10-06T17:10+09:00",
+      "title": "퓨처드라이브, KES 2026서 '텔레드라이브' 전시…AI 보조 원격주행으로 차량·무인장비 운영 지원"
+    },
     "link:8ec3a4f6041d30f62c6de86d": {
       "first_seen_kst": "2026-10-06T06:36:31+09:00",
       "lanes": {
@@ -34815,6 +35020,23 @@
       "link": "https://www.yna.co.kr/view/MYH20260925005400038",
       "source": "연합뉴스",
       "title": "트럼프·시진핑, 국빈만찬 시작…\"새 무역합의 도달\" | 연합뉴스"
+    },
+    "link:94b3efe0b9c9cfa8b555fdb8": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.hankyung.com/article/2026100664471",
+      "source": "한국경제",
+      "source_body_digest": "9d2fb973cc270462792a24b634dbb8f88db4978cce5151ddb037108dc1f8fff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e746b783d5169975166b789e4a5572e888536b737f6ebc2bbbd1da920fbe7d42",
+      "source_fact_keys": [
+        "source_fact:v1:c85bf552b30af7184be5dd485bfe08c18d2cf4cd47b2f432139c5379bc13e6fa"
+      ],
+      "source_published_kst": "2026-10-06T17:53+09:00",
+      "title": "[단독] 2년前 문제 된 공사방식 또 꺼낸 대우건설…업계 \"안전성 우려\""
     },
     "link:94d7d2a51353187c94e57ab5": {
       "first_seen_kst": "2026-10-03T21:21:44+09:00",
@@ -43539,6 +43761,24 @@
       "source_published_kst": "2026-10-05T07:05+09:00",
       "title": "올해 '극한 폭염' 덮친 충남서 양식어류 573만마리 폐사 | 연합뉴스"
     },
+    "link:e742ce934e19f0b28c730eb3": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006166600704",
+      "source": "연합뉴스",
+      "source_body_digest": "bafecfef77b9cc21eb00ef26f99332caa62e574874cd4de94c72bb9fc3104a03",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da80ee1caed327f69d26ef22a819871fbe87aa1ea56823ee58b2c2e78e63833d",
+      "source_fact_keys": [
+        "source_fact:v1:11b398b286d589aca198f85e7d9aa19005f880897359052670fdc7f8246ae78f",
+        "source_fact:v1:fb8c7dfaf5f6c526eab48b7b38fc53dafb968d08e3a81f7b9c636225e2eb380e"
+      ],
+      "source_published_kst": "2026-10-06T17:11+09:00",
+      "title": "[영상] '성공률 80% 도전' 누리호 5차 발사…역대 최다 위성 15기 탑재 | 연합뉴스"
+    },
     "link:e747a2c9ffe4c85f14c264b9": {
       "first_seen_kst": "2026-10-01T16:57:16+09:00",
       "lanes": {
@@ -47996,6 +48236,23 @@
       "link": "https://www.mt.co.kr/industry/2026/10/02/2026100209055654700",
       "source": "머니투데이",
       "title": "일진전기, 영국서 1871억원 추가 수주…전선 사업 '역대 최대 규모'"
+    },
+    "original:12f69c131990cb8d27ff9388": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169789",
+      "source": "매일경제",
+      "source_body_digest": "6ea644e8959d9a63582965fa59dbb6fea0c1a1fbbe05553ee08dbf6ebe16148b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:563d4ae2d8f484abbf152adee08c60b582474cd0c353b1602ef9a37c2e6d7b2d",
+      "source_fact_keys": [
+        "source_fact:v1:c4d92d13daa477731dc73e7072353c21f64b6f0bcbb717bec2293038f9f32a8a"
+      ],
+      "source_published_kst": "2026-10-06T21:01+09:00",
+      "title": "“위성 15기 싣고 우주로”…누리호, 7일 다섯번째 비행"
     },
     "original:1322889770d10de124e78436": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
@@ -53612,6 +53869,24 @@
       "source": "머니투데이",
       "title": "한은 \"10월 물가 상승률 3% 내외 높은 수준 이어갈 것\""
     },
+    "original:450263976aae7e756eccd846": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.etnews.com/20261006000401",
+      "source": "전자신문",
+      "source_body_digest": "fd3c5655b67c37e7d651e7fce1f05e38375b7b38ca58048244385b3ee0e7fe8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:986c97ecb1992b0030286d7cd547c7a8f1ec445c7c9f6c71442a9c29f71e5404",
+      "source_fact_keys": [
+        "source_fact:v1:b79d7c8036333c9ce787ea55c39de2f449e88c2180602f418c84eb6c0125a49e",
+        "source_fact:v1:e9660ea4a450b0701e4b975dce51c6f74c807da46f21f4d51e35b282a88cab82"
+      ],
+      "source_published_kst": "2026-10-06T17:10+09:00",
+      "title": "퓨처드라이브, KES 2026서 '텔레드라이브' 전시…AI 보조 원격주행으로 차량·무인장비 운영 지원"
+    },
     "original:4541d07c64df38956d2d2803": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
       "lanes": {
@@ -54584,6 +54859,23 @@
       "source_published_kst": "2026-10-05T07:00+09:00",
       "title": "\"aT 인수 농산물 비축기지 6곳, 6년간 순손실 121억원\" | 연합뉴스"
     },
+    "original:4dec263f4125c1ed00853982": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.hankyung.com/article/2026100664471",
+      "source": "한국경제",
+      "source_body_digest": "9d2fb973cc270462792a24b634dbb8f88db4978cce5151ddb037108dc1f8fff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e746b783d5169975166b789e4a5572e888536b737f6ebc2bbbd1da920fbe7d42",
+      "source_fact_keys": [
+        "source_fact:v1:c85bf552b30af7184be5dd485bfe08c18d2cf4cd47b2f432139c5379bc13e6fa"
+      ],
+      "source_published_kst": "2026-10-06T17:53+09:00",
+      "title": "[단독] 2년前 문제 된 공사방식 또 꺼낸 대우건설…업계 \"안전성 우려\""
+    },
     "original:4df6902899300e595c66d843": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -54935,6 +55227,23 @@
       "source": "지디넷코리아",
       "title": "AI 넘어 퀀텀시대로…양자기술 현재와 미래를 '한 눈에'"
     },
+    "original:520dfa747278e4f2daa48bc5": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632968",
+      "source": "이투데이",
+      "source_body_digest": "ea2fd4b266239b248cb164b5a0c375bb8675b59e0c73fdfca55ae10db418ac73",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ba431b01d60990c1ee5f5cf47b161f4dbb845cdb425a2c34d36b7f203c4c78d",
+      "source_fact_keys": [
+        "source_fact:v1:307375f647120d51117da8c5fb484b97e418cf22d0b81aca3377f5bd4144a5dc"
+      ],
+      "source_published_kst": "2026-10-06T16:58+09:00",
+      "title": "발사대 우뚝 선 누리호, 7일 낮 발사준비 완료...5차 발사 도전"
+    },
     "original:52437bfef870d8e4be3fd02c": {
       "first_seen_kst": "2026-10-02T21:24:19+09:00",
       "lanes": {
@@ -55090,6 +55399,24 @@
       "link": "https://www.mt.co.kr/industry/2026/10/01/2026100114410310982",
       "source": "머니투데이",
       "title": "씨비에이파트너스-마컴아시아, 'GoIPO 나스닥 세미나 2026' 성료"
+    },
+    "original:53bc2a5a28bd3cdd72616696": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006166600704",
+      "source": "연합뉴스",
+      "source_body_digest": "bafecfef77b9cc21eb00ef26f99332caa62e574874cd4de94c72bb9fc3104a03",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da80ee1caed327f69d26ef22a819871fbe87aa1ea56823ee58b2c2e78e63833d",
+      "source_fact_keys": [
+        "source_fact:v1:11b398b286d589aca198f85e7d9aa19005f880897359052670fdc7f8246ae78f",
+        "source_fact:v1:fb8c7dfaf5f6c526eab48b7b38fc53dafb968d08e3a81f7b9c636225e2eb380e"
+      ],
+      "source_published_kst": "2026-10-06T17:11+09:00",
+      "title": "[영상] '성공률 80% 도전' 누리호 5차 발사…역대 최다 위성 15기 탑재 | 연합뉴스"
     },
     "original:540ba18ad3225bc438cda979": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -65666,6 +65993,24 @@
       "source_published_kst": "2026-10-06T22:35+09:00",
       "title": "김정관 \"알래스카 LNG 투자, 아직 확정 아냐…중동전쟁 후 전략적 가치 생겨\"(종합2보)"
     },
+    "original:badc76e89a0d605f9448c284": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/06/RZQXAJWVC5BOJEBMH43LCSBNNU/",
+      "source": "조선비즈",
+      "source_body_digest": "695ab5fa5593acb9dc950347ab37fb6172e2f0354208a70dea1095bc2e0ddf4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:613d825d8f188222e7885251e91ae32da0a93322dc015c412b6f148103c91144",
+      "source_fact_keys": [
+        "source_fact:v1:5f1c4f795933312a8b09a6680f44a3382b1c9b610b3f9892e44d65515f1d28ca",
+        "source_fact:v1:8834314a452cb167e220ccd9cebc1000d8a43c12b1573ebd668aee0805cd8095"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "HK이노엔 도입 비만약, 청소년에서도 효과…“20주 체중 최대 12.1%↓”"
+    },
     "original:baec59ad8310b233213e37ae": {
       "first_seen_kst": "2026-10-05T11:24:20+09:00",
       "lanes": {
@@ -71388,6 +71733,21 @@
       "source": "헤럴드경제",
       "title": "경영자문 성패가 회계법인 ‘빅4’ 실적 갈랐다"
     },
+    "original:f058d50d398d9a06064d6059": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815022",
+      "source": "뉴시스",
+      "source_body_digest": "002ec06298282843bb4cb5b63e7a98640cc007da896698935eea84a76703f8b4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T00:14+09:00",
+      "title": "\"지금부터 겁먹을 이유 없다\"…미 국채금리 5% 시대, 증시 전망과 취약점"
+    },
     "original:f0918d18ced22761d1b1402b": {
       "first_seen_kst": "2026-10-05T15:34:30+09:00",
       "lanes": {
@@ -76452,6 +76812,23 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:11d14ba35d8afc253fabfafa": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632968",
+      "source": "이투데이",
+      "source_body_digest": "ea2fd4b266239b248cb164b5a0c375bb8675b59e0c73fdfca55ae10db418ac73",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ba431b01d60990c1ee5f5cf47b161f4dbb845cdb425a2c34d36b7f203c4c78d",
+      "source_fact_keys": [
+        "source_fact:v1:307375f647120d51117da8c5fb484b97e418cf22d0b81aca3377f5bd4144a5dc"
+      ],
+      "source_published_kst": "2026-10-06T16:58+09:00",
+      "title": "발사대 우뚝 선 누리호, 7일 낮 발사준비 완료...5차 발사 도전"
     },
     "source_fact:11dec6d126206d51c607fbaf": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -84862,6 +85239,23 @@
       "source_published_kst": "2026-10-06T09:24+09:00",
       "title": "특징주, 아이티센씨티에스-네트워크통합 테마 상승세에 2.22% ↑"
     },
+    "source_fact:3b9f0c5cd0016cc032e3dcd6": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.hankyung.com/article/2026100664471",
+      "source": "한국경제",
+      "source_body_digest": "9d2fb973cc270462792a24b634dbb8f88db4978cce5151ddb037108dc1f8fff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e746b783d5169975166b789e4a5572e888536b737f6ebc2bbbd1da920fbe7d42",
+      "source_fact_keys": [
+        "source_fact:v1:c85bf552b30af7184be5dd485bfe08c18d2cf4cd47b2f432139c5379bc13e6fa"
+      ],
+      "source_published_kst": "2026-10-06T17:53+09:00",
+      "title": "[단독] 2년前 문제 된 공사방식 또 꺼낸 대우건설…업계 \"안전성 우려\""
+    },
     "source_fact:3bbd07b26876825aacb354ed": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -88191,6 +88585,24 @@
       ],
       "source_published_kst": "2026-10-06T15:10+09:00",
       "title": "파운드리發 반도체값 도미노 인상 예고…TSMC, 내년 파운드리 단가 10% 올린다"
+    },
+    "source_fact:4b33e90f59fc3ec4523b5b93": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/06/RZQXAJWVC5BOJEBMH43LCSBNNU/",
+      "source": "조선비즈",
+      "source_body_digest": "695ab5fa5593acb9dc950347ab37fb6172e2f0354208a70dea1095bc2e0ddf4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:613d825d8f188222e7885251e91ae32da0a93322dc015c412b6f148103c91144",
+      "source_fact_keys": [
+        "source_fact:v1:5f1c4f795933312a8b09a6680f44a3382b1c9b610b3f9892e44d65515f1d28ca",
+        "source_fact:v1:8834314a452cb167e220ccd9cebc1000d8a43c12b1573ebd668aee0805cd8095"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "HK이노엔 도입 비만약, 청소년에서도 효과…“20주 체중 최대 12.1%↓”"
     },
     "source_fact:4bb23f724bcaa0286f0a4a3f": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -98917,6 +99329,24 @@
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "이 대통령 \"부동산투기공화국 탈출 약속 반드시 지킬 것\"…하루에만 SNS 11건(종합2보)"
     },
+    "source_fact:7d894fa20cc6b546becd0801": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.etnews.com/20261006000401",
+      "source": "전자신문",
+      "source_body_digest": "fd3c5655b67c37e7d651e7fce1f05e38375b7b38ca58048244385b3ee0e7fe8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:986c97ecb1992b0030286d7cd547c7a8f1ec445c7c9f6c71442a9c29f71e5404",
+      "source_fact_keys": [
+        "source_fact:v1:b79d7c8036333c9ce787ea55c39de2f449e88c2180602f418c84eb6c0125a49e",
+        "source_fact:v1:e9660ea4a450b0701e4b975dce51c6f74c807da46f21f4d51e35b282a88cab82"
+      ],
+      "source_published_kst": "2026-10-06T17:10+09:00",
+      "title": "퓨처드라이브, KES 2026서 '텔레드라이브' 전시…AI 보조 원격주행으로 차량·무인장비 운영 지원"
+    },
     "source_fact:7d8efd2397631cffcbf93490": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -108180,6 +108610,24 @@
       "source_published_kst": "2026-10-06T08:17+09:00",
       "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
     },
+    "source_fact:a985f9f2f4ee83440151afb5": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006166600704",
+      "source": "연합뉴스",
+      "source_body_digest": "bafecfef77b9cc21eb00ef26f99332caa62e574874cd4de94c72bb9fc3104a03",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da80ee1caed327f69d26ef22a819871fbe87aa1ea56823ee58b2c2e78e63833d",
+      "source_fact_keys": [
+        "source_fact:v1:11b398b286d589aca198f85e7d9aa19005f880897359052670fdc7f8246ae78f",
+        "source_fact:v1:fb8c7dfaf5f6c526eab48b7b38fc53dafb968d08e3a81f7b9c636225e2eb380e"
+      ],
+      "source_published_kst": "2026-10-06T17:11+09:00",
+      "title": "[영상] '성공률 80% 도전' 누리호 5차 발사…역대 최다 위성 15기 탑재 | 연합뉴스"
+    },
     "source_fact:a98752911da1d01d59f843d5": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -111617,6 +112065,23 @@
       "source_published_kst": "2026-10-06T14:52+09:00",
       "title": "IPARK현대산업개발, 2천812억원 규모 부산 연산13구역 수주 | 연합뉴스"
     },
+    "source_fact:b90000a29f3401f8b6554ca7": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169789",
+      "source": "매일경제",
+      "source_body_digest": "6ea644e8959d9a63582965fa59dbb6fea0c1a1fbbe05553ee08dbf6ebe16148b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:563d4ae2d8f484abbf152adee08c60b582474cd0c353b1602ef9a37c2e6d7b2d",
+      "source_fact_keys": [
+        "source_fact:v1:c4d92d13daa477731dc73e7072353c21f64b6f0bcbb717bec2293038f9f32a8a"
+      ],
+      "source_published_kst": "2026-10-06T21:01+09:00",
+      "title": "“위성 15기 싣고 우주로”…누리호, 7일 다섯번째 비행"
+    },
     "source_fact:b917265e5bdd01b4c5e0b4e0": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
       "lanes": {
@@ -113445,6 +113910,24 @@
       ],
       "source_published_kst": "2026-10-05T21:20+09:00",
       "title": "디파이 디벨롭먼트, 3분기 주당 NAV 2배 이상 전망..SOL 보유 11%↑"
+    },
+    "source_fact:c22934cbd5ce4d93cf94814c": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/06/RZQXAJWVC5BOJEBMH43LCSBNNU/",
+      "source": "조선비즈",
+      "source_body_digest": "695ab5fa5593acb9dc950347ab37fb6172e2f0354208a70dea1095bc2e0ddf4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:613d825d8f188222e7885251e91ae32da0a93322dc015c412b6f148103c91144",
+      "source_fact_keys": [
+        "source_fact:v1:5f1c4f795933312a8b09a6680f44a3382b1c9b610b3f9892e44d65515f1d28ca",
+        "source_fact:v1:8834314a452cb167e220ccd9cebc1000d8a43c12b1573ebd668aee0805cd8095"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "HK이노엔 도입 비만약, 청소년에서도 효과…“20주 체중 최대 12.1%↓”"
     },
     "source_fact:c231985322196f7a62e3158a": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -121951,6 +122434,24 @@
       "source_published_kst": "2026-10-06T10:19+09:00",
       "title": "김정관 장관 “1600조 지방투자 본격화…2030년 AI팩토리 500개 구축”"
     },
+    "source_fact:e7a3b7253960afb8a61e0be4": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006166600704",
+      "source": "연합뉴스",
+      "source_body_digest": "bafecfef77b9cc21eb00ef26f99332caa62e574874cd4de94c72bb9fc3104a03",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da80ee1caed327f69d26ef22a819871fbe87aa1ea56823ee58b2c2e78e63833d",
+      "source_fact_keys": [
+        "source_fact:v1:11b398b286d589aca198f85e7d9aa19005f880897359052670fdc7f8246ae78f",
+        "source_fact:v1:fb8c7dfaf5f6c526eab48b7b38fc53dafb968d08e3a81f7b9c636225e2eb380e"
+      ],
+      "source_published_kst": "2026-10-06T17:11+09:00",
+      "title": "[영상] '성공률 80% 도전' 누리호 5차 발사…역대 최다 위성 15기 탑재 | 연합뉴스"
+    },
     "source_fact:e81d2d855516296e26e7741f": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
       "lanes": {
@@ -123079,6 +123580,24 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:ed0d2c8836489d036c4d87bd": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.etnews.com/20261006000401",
+      "source": "전자신문",
+      "source_body_digest": "fd3c5655b67c37e7d651e7fce1f05e38375b7b38ca58048244385b3ee0e7fe8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:986c97ecb1992b0030286d7cd547c7a8f1ec445c7c9f6c71442a9c29f71e5404",
+      "source_fact_keys": [
+        "source_fact:v1:b79d7c8036333c9ce787ea55c39de2f449e88c2180602f418c84eb6c0125a49e",
+        "source_fact:v1:e9660ea4a450b0701e4b975dce51c6f74c807da46f21f4d51e35b282a88cab82"
+      ],
+      "source_published_kst": "2026-10-06T17:10+09:00",
+      "title": "퓨처드라이브, KES 2026서 '텔레드라이브' 전시…AI 보조 원격주행으로 차량·무인장비 운영 지원"
     },
     "source_fact:ed36cf25731ef0c641e56624": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
@@ -128907,6 +129426,23 @@
       "source": "머니투데이",
       "title": "일진전기, 영국서 1871억원 추가 수주…전선 사업 '역대 최대 규모'"
     },
+    "title:12f69c131990cb8d27ff9388": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169789",
+      "source": "매일경제",
+      "source_body_digest": "6ea644e8959d9a63582965fa59dbb6fea0c1a1fbbe05553ee08dbf6ebe16148b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:563d4ae2d8f484abbf152adee08c60b582474cd0c353b1602ef9a37c2e6d7b2d",
+      "source_fact_keys": [
+        "source_fact:v1:c4d92d13daa477731dc73e7072353c21f64b6f0bcbb717bec2293038f9f32a8a"
+      ],
+      "source_published_kst": "2026-10-06T21:01+09:00",
+      "title": "“위성 15기 싣고 우주로”…누리호, 7일 다섯번째 비행"
+    },
     "title:1322889770d10de124e78436": {
       "first_seen_kst": "2026-10-05T20:04:01+09:00",
       "lanes": {
@@ -134558,6 +135094,24 @@
       "source": "머니투데이",
       "title": "한은 \"10월 물가 상승률 3% 내외 높은 수준 이어갈 것\""
     },
+    "title:450263976aae7e756eccd846": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.etnews.com/20261006000401",
+      "source": "전자신문",
+      "source_body_digest": "fd3c5655b67c37e7d651e7fce1f05e38375b7b38ca58048244385b3ee0e7fe8f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:986c97ecb1992b0030286d7cd547c7a8f1ec445c7c9f6c71442a9c29f71e5404",
+      "source_fact_keys": [
+        "source_fact:v1:b79d7c8036333c9ce787ea55c39de2f449e88c2180602f418c84eb6c0125a49e",
+        "source_fact:v1:e9660ea4a450b0701e4b975dce51c6f74c807da46f21f4d51e35b282a88cab82"
+      ],
+      "source_published_kst": "2026-10-06T17:10+09:00",
+      "title": "퓨처드라이브, KES 2026서 '텔레드라이브' 전시…AI 보조 원격주행으로 차량·무인장비 운영 지원"
+    },
     "title:4541d07c64df38956d2d2803": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
       "lanes": {
@@ -135530,6 +136084,23 @@
       "source_published_kst": "2026-10-05T07:00+09:00",
       "title": "\"aT 인수 농산물 비축기지 6곳, 6년간 순손실 121억원\" | 연합뉴스"
     },
+    "title:4dec263f4125c1ed00853982": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.hankyung.com/article/2026100664471",
+      "source": "한국경제",
+      "source_body_digest": "9d2fb973cc270462792a24b634dbb8f88db4978cce5151ddb037108dc1f8fff7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e746b783d5169975166b789e4a5572e888536b737f6ebc2bbbd1da920fbe7d42",
+      "source_fact_keys": [
+        "source_fact:v1:c85bf552b30af7184be5dd485bfe08c18d2cf4cd47b2f432139c5379bc13e6fa"
+      ],
+      "source_published_kst": "2026-10-06T17:53+09:00",
+      "title": "[단독] 2년前 문제 된 공사방식 또 꺼낸 대우건설…업계 \"안전성 우려\""
+    },
     "title:4df6902899300e595c66d843": {
       "first_seen_kst": "2026-10-05T19:01:25+09:00",
       "lanes": {
@@ -135881,6 +136452,23 @@
       "source": "지디넷코리아",
       "title": "AI 넘어 퀀텀시대로…양자기술 현재와 미래를 '한 눈에'"
     },
+    "title:520dfa747278e4f2daa48bc5": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632968",
+      "source": "이투데이",
+      "source_body_digest": "ea2fd4b266239b248cb164b5a0c375bb8675b59e0c73fdfca55ae10db418ac73",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5ba431b01d60990c1ee5f5cf47b161f4dbb845cdb425a2c34d36b7f203c4c78d",
+      "source_fact_keys": [
+        "source_fact:v1:307375f647120d51117da8c5fb484b97e418cf22d0b81aca3377f5bd4144a5dc"
+      ],
+      "source_published_kst": "2026-10-06T16:58+09:00",
+      "title": "발사대 우뚝 선 누리호, 7일 낮 발사준비 완료...5차 발사 도전"
+    },
     "title:52437bfef870d8e4be3fd02c": {
       "first_seen_kst": "2026-10-02T21:24:19+09:00",
       "lanes": {
@@ -136036,6 +136624,24 @@
       "link": "https://www.mt.co.kr/industry/2026/10/01/2026100114410310982",
       "source": "머니투데이",
       "title": "씨비에이파트너스-마컴아시아, 'GoIPO 나스닥 세미나 2026' 성료"
+    },
+    "title:53bc2a5a28bd3cdd72616696": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006166600704",
+      "source": "연합뉴스",
+      "source_body_digest": "bafecfef77b9cc21eb00ef26f99332caa62e574874cd4de94c72bb9fc3104a03",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:da80ee1caed327f69d26ef22a819871fbe87aa1ea56823ee58b2c2e78e63833d",
+      "source_fact_keys": [
+        "source_fact:v1:11b398b286d589aca198f85e7d9aa19005f880897359052670fdc7f8246ae78f",
+        "source_fact:v1:fb8c7dfaf5f6c526eab48b7b38fc53dafb968d08e3a81f7b9c636225e2eb380e"
+      ],
+      "source_published_kst": "2026-10-06T17:11+09:00",
+      "title": "[영상] '성공률 80% 도전' 누리호 5차 발사…역대 최다 위성 15기 탑재 | 연합뉴스"
     },
     "title:540ba18ad3225bc438cda979": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -146879,6 +147485,24 @@
       "source_published_kst": "2026-10-06T22:35+09:00",
       "title": "김정관 \"알래스카 LNG 투자, 아직 확정 아냐…중동전쟁 후 전략적 가치 생겨\"(종합2보)"
     },
+    "title:badc76e89a0d605f9448c284": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://biz.chosun.com/science-chosun/bio/2026/10/06/RZQXAJWVC5BOJEBMH43LCSBNNU/",
+      "source": "조선비즈",
+      "source_body_digest": "695ab5fa5593acb9dc950347ab37fb6172e2f0354208a70dea1095bc2e0ddf4f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:613d825d8f188222e7885251e91ae32da0a93322dc015c412b6f148103c91144",
+      "source_fact_keys": [
+        "source_fact:v1:5f1c4f795933312a8b09a6680f44a3382b1c9b610b3f9892e44d65515f1d28ca",
+        "source_fact:v1:8834314a452cb167e220ccd9cebc1000d8a43c12b1573ebd668aee0805cd8095"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "HK이노엔 도입 비만약, 청소년에서도 효과…“20주 체중 최대 12.1%↓”"
+    },
     "title:baec59ad8310b233213e37ae": {
       "first_seen_kst": "2026-10-05T11:24:20+09:00",
       "lanes": {
@@ -152673,6 +153297,21 @@
       "source": "헤럴드경제",
       "title": "경영자문 성패가 회계법인 ‘빅4’ 실적 갈랐다"
     },
+    "title:f058d50d398d9a06064d6059": {
+      "first_seen_kst": "2026-10-07T00:23:09+09:00",
+      "lanes": {
+        "live": "2026-10-07T00:23:09+09:00"
+      },
+      "last_seen_kst": "2026-10-07T00:23:09+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815022",
+      "source": "뉴시스",
+      "source_body_digest": "002ec06298282843bb4cb5b63e7a98640cc007da896698935eea84a76703f8b4",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T00:14+09:00",
+      "title": "\"지금부터 겁먹을 이유 없다\"…미 국채금리 5% 시대, 증시 전망과 취약점"
+    },
     "title:f0918d18ced22761d1b1402b": {
       "first_seen_kst": "2026-10-05T15:34:30+09:00",
       "lanes": {
@@ -154193,5 +154832,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T00:09:35+09:00"
+  "updated_at_kst": "2026-10-07T00:23:09+09:00"
 }
