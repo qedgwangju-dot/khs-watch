@@ -879,11 +879,24 @@ def semantic_alert_key(alert: dict) -> str:
     official_title = normalize_semantic_text(
         probe.get("source_title") or probe.get("original_title") or probe.get("title")
     )
-    if official_title and any(
-        kind in document_type
-        for kind in ("executive order", "presidential memorandum", "presidential document")
-    ):
-        return "presidential-action|" + document_type + "|" + official_title
+    if official_title:
+        if "executive order" in document_type:
+            return "presidential-action|executive-order|" + official_title
+        if (
+            any(
+                kind in document_type
+                for kind in (
+                    "presidential memorandum",
+                    "presidential determination",
+                    "presidential document",
+                )
+            )
+            and any(
+                marker in official_title
+                for marker in ("presidential determination", "presidential memorandum")
+            )
+        ):
+            return "presidential-action|memorandum-determination|" + official_title
     whitehouse_story_key = str(probe.get("whitehouse_story_key") or "").strip()
     if whitehouse_story_key:
         return "whitehouse|" + normalize_semantic_text(whitehouse_story_key)
