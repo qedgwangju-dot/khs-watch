@@ -11243,6 +11243,8 @@ def compact_alert(alert: dict, idx: int, now, fred: dict, te: dict) -> str:
         source_text = f"{source_text} · 환율: {fx_source}"
 
     timeline_lines = policy_formatter.presidential_action_timeline_lines(alert)
+    if policy_formatter.presidential_action_timeline_required(alert) and not timeline_lines:
+        raise RuntimeError("presidential_action_timeline_missing")
     lines += [
         f"- 핵심: {safe(core)}",
         *[safe(line) for line in timeline_lines],
