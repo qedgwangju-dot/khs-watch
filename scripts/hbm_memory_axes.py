@@ -39,7 +39,9 @@ EXTRA_QUERIES = [
     '(Samsung OR 삼성) Taylor foundry (mass production OR production OR 2027 OR customer OR contract OR negotiation)',
     '("510x515" OR "510×515" OR "515x510" OR "515×510") (glass substrate OR glass core OR TGV OR 유리기판 OR 유리 기판) (TSMC OR CoPoS OR Corning OR AGC OR NEG OR SCHOTT)',
     '(TSMC OR CoPoS) (glass core OR glass substrate OR 유리기판) (310x310 OR 510x515 OR 2030 OR pilot OR mass production OR 양산)',
-    '(Philoptics OR 필옵틱스 OR JNTC OR Absolics OR GlaSSEM OR 삼성전기 OR Chemtronics OR 켐트로닉스) (TGV OR glass substrate OR glass interposer OR 유리기판 OR 유리 인터포저) (yield OR 수율 OR sample OR 샘플 OR customer evaluation OR 고객 평가 OR 고객 검증 OR purchase order OR PO OR 양산 OR pilot OR 삼성전자 OR Samsung)',
+    '(Philoptics OR 필옵틱스 OR JNTC OR 제이앤티씨 OR Absolics OR 앱솔릭스 OR SKC OR GlaSSEM OR 삼성전기 OR "LG Innotek" OR LG이노텍 OR Chemtronics OR 켐트로닉스) (TGV OR glass substrate OR glass interposer OR 유리기판 OR 유리 인터포저) (yield OR 수율 OR sample OR 샘플 OR customer evaluation OR 고객 평가 OR 고객 검증 OR purchase order OR PO OR 양산 OR pilot OR 삼성전자 OR Samsung OR 설비투자 OR 공정시간 OR "12시간" OR "분 단위")',
+    '(JNTC OR 제이앤티씨) (TGV OR 유리기판) ("12시간" OR "분 단위" OR 공정시간) (단축 OR 개발)',
+    '(JNTC OR 제이앤티씨) (TGV OR 유리기판) (김천 OR Gimcheon) (3470억 OR 10개 OR 설비투자)',
     '(SemiAnalysis OR TrendForce OR Micron OR Citi OR JPMorgan OR "J.P. Morgan" OR BofA) 2027 (HBM3E OR HBM4 OR HBM4E) (price OR pricing OR ASP OR "$/Gb" OR "per Gb" OR 가격)',
     '"HBM3E" "HBM4" "HBM4E" 2027 (price OR ASP OR "$/Gb")',
 ]
@@ -1028,9 +1030,10 @@ def _glass_entity(text):
     pairs = (
         ('philoptics', (r'Philoptics', r'필옵틱스')),
         ('jntc', (r'\bJNTC\b', r'제이앤티씨')),
-        ('absolics', (r'Absolics', r'앱솔릭스')),
+        ('absolics', (r'Absolics', r'앱솔릭스', r'\bSKC\b')),
         ('glassem', (r'GlaSSEM', r'글라스셈')),
         ('samsung_electromechanics', (r'Samsung\s+Electro[- ]?Mechanics', r'삼성전기')),
+        ('lg_innotek', (r'LG\s*Innotek', r'LG이노텍')),
         ('chemtronics', (r'Chemtronics', r'켐트로닉스')),
     )
     found = [name for name, pats in pairs if any(re.search(p, text, re.I) for p in pats)]
@@ -2074,7 +2077,9 @@ def main():
         'digitimes', 'semianalysis', 'newsletter.semianalysis', 'corning', 'agc', 'nippon electric glass', 'schott',
         'philoptics', '필옵틱스', 'jntc', '제이앤티씨', 'absolics', '앱솔릭스',
         'samsung electro-mechanics', '삼성전기', 'edaily', '이데일리',
-        'dealsite', '딜사이트', 'chemtronics', '켐트로닉스', 'kind.krx.co.kr'
+        'dealsite', '딜사이트', 'chemtronics', '켐트로닉스', 'kind.krx.co.kr',
+        'thelec', 'the elec', 'thelec.kr', '국민일보', 'kmib', 'kmib.co.kr',
+        'lg innotek', 'lginnotek', 'samsung electro-mechanics', 'samsungsem', 'skc'
     )
     legacy.relevant = lambda text: original_relevant(text) or is_axis_text(text)
     observed, coverage = [], []
