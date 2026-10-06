@@ -639,6 +639,8 @@ def parse_whitehouse_html(text: str, source: Source) -> list[dict]:
             "summary": summary,
             "published_kst": published.isoformat(),
             "document_type": doc_type,
+            "presidential_document_type": doc_type,
+            "signing_date": published.date().isoformat(),
             "body_verified": False,
         }
     return list(deduped.values())[:20]
