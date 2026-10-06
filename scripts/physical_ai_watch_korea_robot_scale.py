@@ -43,6 +43,22 @@ New alerts require a company-level state change: official robot-chip program or
 roadmap, named silicon launch, tapeout/sample, robot-OEM design win, foundry
 contract, mass production/shipment, quantified performance-per-watt breakthrough,
 or cancellation/delay.
+
+Lane D — physical-AI / humanoid onboard memory and storage
+Baseline locked:
+- The 2026-10-06 secondary-media thesis that "HBM next is robot memory" is a
+  demand narrative, not a Samsung/SK customer order.
+- SK hynix already publicly showed Auto/Robotics LPDDR5/5X at MWC 2026.
+- Samsung already publicly positions LPDDR6 for edge AI, has demonstrated
+  LPDDR5X-PIM for edge-AI acceleration, and identifies Detachable AutoSSD as a
+  future autonomous/humanoid storage target.
+- Generic HBM growth for robot training stays in the existing AI-memory lane; this
+  lane is for onboard robot memory/storage commercialization.
+
+New alerts require a robotics-specific execution change: named robot OEM/sample,
+qualification/design win, binding volume contract, dedicated robot-memory product,
+per-robot memory/storage content disclosure, mass production/shipment, price/ASP,
+reliability qualification, or reversal.
 """
 from __future__ import annotations
 
@@ -75,6 +91,9 @@ for q in [
     '(삼성전자 OR "Samsung Electronics" OR "Samsung System LSI" OR "System LSI") (로봇 OR robotics OR humanoid OR "physical AI" OR 피지컬AI) (칩 OR 반도체 OR processor OR SoC OR NPU OR accelerator OR silicon) (개발 OR roadmap OR program OR tapeout OR sample OR 양산 OR 채택 OR 고객 OR 수주)',
     '(NVIDIA OR AMD OR "Advanced Micro Devices" OR Arm OR "Arm Holdings" OR Google OR "Google DeepMind") (robotics OR robot OR humanoid OR "physical AI" OR 로봇 OR 휴머노이드 OR 피지컬AI) (chip OR processor OR SoC OR NPU OR GPU OR accelerator OR silicon OR Jetson OR Ryzen OR Versal OR Kria OR Zena) (launch OR roadmap OR program OR tapeout OR sample OR design win OR adopt OR integrate OR production OR shipment OR benchmark)',
     '("Marc Raibert" OR 마크 레이버트) (Samsung OR 삼성 OR Google OR 구글 OR AMD OR Arm) (robot OR robotics OR 로봇) (chip OR semiconductor OR processor OR 반도체 OR 칩)',
+    '(삼성전자 OR "Samsung Electronics" OR SK하이닉스 OR "SK hynix" OR Micron) (피지컬AI OR "physical AI" OR 로봇 OR robotics OR robot OR 휴머노이드 OR humanoid) (LPDDR5X OR LPDDR6 OR PIM OR UFS OR AutoSSD OR SSD OR DRAM OR NAND OR memory OR storage OR 메모리 OR D램 OR 낸드 OR 저장장치) (고객 OR 샘플 OR 검증 OR 채택 OR 탑재 OR 공급 OR 계약 OR 양산 OR 출하 OR 용량 OR GB OR TB)',
+    '(SK하이닉스 OR "SK hynix") ("Auto/Robotics LPDDR5/5x" OR "Auto Robotics LPDDR5" OR robotics memory OR 로봇 메모리) (고객 OR sample OR qualification OR design win OR supply OR shipment OR production)',
+    '(삼성전자 OR "Samsung Electronics") ("Detachable AutoSSD" OR "LPDDR5X-PIM" OR LPDDR6) (휴머노이드 OR humanoid OR robotics OR robot OR 로봇 OR "physical AI") (고객 OR sample OR qualification OR 채택 OR 탑재 OR 계약 OR 양산 OR 출하)',
 ]:
     if q not in base.QUERIES:
         base.QUERIES.append(q)
@@ -85,10 +104,12 @@ base.OFFICIAL_OR_PRIMARY.update({
     'Samsung AI Forum', '삼성 AI Forum', 'Samsung Semiconductor', 'Samsung System LSI',
     'NVIDIA', 'AMD', 'Advanced Micro Devices', 'Arm', 'Arm Holdings',
     'Google', 'Google DeepMind', 'Boston Dynamics',
+    'SK하이닉스', 'SK hynix', 'SK hynix Newsroom', 'Micron', 'Micron Technology',
 })
 base.TRUSTED.update({
     '연합뉴스', '뉴시스', '전자신문', '한국경제', '매일경제', '머니투데이',
-    '조선일보', '서울경제', '이데일리', '뉴스1', 'News1', 'Reuters', 'Bloomberg',
+    '조선일보', '서울경제', '이데일리', '뉴스1', 'News1', '뉴스핌', 'NewsPim',
+    '파이낸셜뉴스', '매경이코노미', 'Reuters', 'Bloomberg',
 })
 
 PRICE_ONLY = re.compile(r'주가|급등|상한가|특징주|수혜주|목표주가|stock\s*price|shares?\s*(?:jump|rise|surge)', re.I)
@@ -255,6 +276,111 @@ ROBOT_COMPUTE_REVERSE = re.compile(
 )
 
 
+PHYS_MEM_ACTOR = re.compile(
+    r'삼성전자|Samsung\s*Electronics|SK하이닉스|SK\s*hynix|Micron(?:\s*Technology)?|마이크론',
+    re.I,
+)
+PHYS_MEM_CONTEXT = re.compile(
+    r'physical\s*AI|피지컬\s*AI|피지컬AI|robotics?|humanoid|로봇|휴머노이드',
+    re.I,
+)
+PHYS_MEM_PRODUCT = re.compile(
+    r'LPDDR5X(?:-PIM)?|LPDDR6|PIM|UFS\s*5\.0|UFS|Detachable\s*AutoSSD|AutoSSD|SSD|'
+    r'DRAM|NAND|memory|storage|메모리|D램|낸드|저장장치|스토리지',
+    re.I,
+)
+PHYS_MEM_MEDIA_BASELINE = re.compile(
+    r'(?:HBM.{0,80}(?:다음|next).{0,120}(?:로봇|physical\s*AI|피지컬\s*AI).{0,120}(?:메모리|memory)|'
+    r'(?:로봇\s*메모리|피지컬\s*AI\s*메모리).{0,160}(?:삼성|SK하이닉스|Samsung|SK\s*hynix))',
+    re.I | re.S,
+)
+PHYS_MEM_SK_BASELINE = re.compile(
+    r'(?:SK하이닉스|SK\s*hynix).{0,260}(?:Auto\s*/?\s*Robotics\s*LPDDR5/?5X|Auto/Robotics\s*LPDDR5/5x|'
+    r'Automotive\s*LPDDR6).{0,220}(?:robot|robotics|로봇|피지컬\s*AI|physical\s*AI|Auto)',
+    re.I | re.S,
+)
+PHYS_MEM_SAMSUNG_PIM_BASELINE = re.compile(
+    r'(?:삼성전자|Samsung\s*Electronics).{0,260}LPDDR5X-PIM.{0,260}'
+    r'(?:8\s*x|8배|3\s*x|3배|2\.2\s*x|2\.2배|Edge\s*AI|엣지\s*AI)',
+    re.I | re.S,
+)
+PHYS_MEM_SAMSUNG_STORAGE_BASELINE = re.compile(
+    r'(?:삼성전자|Samsung\s*Electronics).{0,260}Detachable\s*AutoSSD.{0,320}'
+    r'(?:humanoid|휴머노이드|physical\s*AI|피지컬\s*AI|5\s*years?|5년|future|미래)',
+    re.I | re.S,
+)
+PHYS_MEM_LPDDR6_BASELINE = re.compile(
+    r'(?:삼성전자|Samsung\s*Electronics|SK하이닉스|SK\s*hynix).{0,260}LPDDR6.{0,260}'
+    r'(?:edge\s*AI|온디바이스\s*AI|on[-\s]*device\s*AI|14\.4\s*Gbps|125\s*GB/s|'
+    r'33\s*%|20\s*%|21\s*%)',
+    re.I | re.S,
+)
+PHYS_MEM_ROBOT_OEM = re.compile(
+    r'Boston\s+Dynamics|Atlas|Figure\s*AI|Figure\s*0?3|Agility\s*Robotics|Digit|'
+    r'Unitree|Apptronik|XPENG|IRON|현대차|Hyundai|ROBOTIS|로보티즈|Tesla|Optimus|옵티머스',
+    re.I,
+)
+PHYS_MEM_SAMPLE = re.compile(
+    r'customer\s*sample|engineering\s*sample|sample\s*(?:shipment|delivery|validation)|'
+    r'고객\s*샘플|샘플\s*(?:공급|출하|검증|전달)',
+    re.I,
+)
+PHYS_MEM_QUAL = re.compile(
+    r'customer\s*(?:qualification|approval|validation)|qualified|approved|'
+    r'고객\s*(?:검증|승인|인증)|검증\s*(?:통과|완료)|승인\s*완료',
+    re.I,
+)
+PHYS_MEM_DESIGN_WIN = re.compile(
+    r'design\s*win|design[-\s]*in|adopt(?:ed|ion)?|selected|integrat(?:ed|ion)|'
+    r'디자인윈|채택|탑재|선정|적용\s*확정',
+    re.I,
+)
+PHYS_MEM_CONTRACT = re.compile(
+    r'binding\s*(?:supply\s*)?contract|supply\s*contract|purchase\s*order|volume\s*order|'
+    r'공급\s*계약|본계약|수주|발주|구매\s*주문',
+    re.I,
+)
+PHYS_MEM_PRODUCTION = re.compile(
+    r'mass\s*production|volume\s*production|commercial\s*shipment|shipments?\s*(?:started|began)|'
+    r'양산\s*(?:개시|시작|돌입)|대량\s*생산|상업\s*출하|출하\s*(?:개시|시작)',
+    re.I,
+)
+PHYS_MEM_ROBOT_PRODUCT = re.compile(
+    r'(?:robot(?:ics)?|humanoid|physical\s*AI|로봇|휴머노이드|피지컬\s*AI).{0,160}'
+    r'(?:dedicated|optimized|purpose[-\s]*built|전용|최적화).{0,80}'
+    r'(?:LPDDR|DRAM|NAND|SSD|UFS|memory|storage|메모리|D램|낸드|저장장치)|'
+    r'(?:LPDDR|DRAM|NAND|SSD|UFS|memory|storage|메모리|D램|낸드|저장장치).{0,160}'
+    r'(?:robot(?:ics)?|humanoid|physical\s*AI|로봇|휴머노이드|피지컬\s*AI)',
+    re.I,
+)
+PHYS_MEM_CONTENT = re.compile(
+    r'(?:robot|humanoid|로봇|휴머노이드).{0,100}\d[\d,.]*\s*(?:GB|TB)|'
+    r'\d[\d,.]*\s*(?:GB|TB).{0,100}(?:per\s+(?:robot|humanoid)|/\s*(?:robot|humanoid)|로봇\s*1대|휴머노이드)',
+    re.I,
+)
+PHYS_MEM_PRICE = re.compile(
+    r'ASP|average\s+selling\s+price|unit\s*price|price\s+per\s*(?:GB|TB)|'
+    r'평균판매단가|단가|GB당|TB당',
+    re.I,
+)
+PHYS_MEM_RELIABILITY = re.compile(
+    r'ASIL[-\s]*D|AEC[-\s]*Q100|ISO\s*26262|reliability\s*(?:qualification|certification)|'
+    r'신뢰성\s*(?:인증|검증)|기능안전\s*인증',
+    re.I,
+)
+PHYS_MEM_EXECUTED = re.compile(
+    r'completed|passed|approved|started|began|shipped|delivered|supplied|awarded|signed|'
+    r'완료|통과|승인|개시|시작|공급|출하|납품|수주|체결|선정',
+    re.I,
+)
+PHYS_MEM_REVERSE = re.compile(
+    r'(?:robot(?:ics)?|humanoid|physical\s*AI|로봇|휴머노이드|피지컬\s*AI).{0,160}'
+    r'(?:LPDDR|DRAM|NAND|SSD|UFS|memory|storage|메모리|D램|낸드|저장장치).{0,160}'
+    r'(?:delay|postpone|cancel|halt|suspend|cut\s+back|지연|연기|취소|중단|축소)',
+    re.I | re.S,
+)
+
+
 def _is_korea_policy(text: str) -> bool:
     execution = (
         KOREA_POLICY.search(text) or PROC_NOTICE.search(text) or PROC_AWARD.search(text)
@@ -280,6 +406,69 @@ def _is_korea_policy(text: str) -> bool:
 
 def _is_samsung_robot(text: str) -> bool:
     return bool(SAMSUNG.search(text) and SAMSUNG_ROBOT.search(text))
+
+
+def _is_physical_ai_memory(text: str) -> bool:
+    if (
+        PHYS_MEM_MEDIA_BASELINE.search(text)
+        or PHYS_MEM_SK_BASELINE.search(text)
+        or PHYS_MEM_SAMSUNG_PIM_BASELINE.search(text)
+        or PHYS_MEM_SAMSUNG_STORAGE_BASELINE.search(text)
+        or PHYS_MEM_LPDDR6_BASELINE.search(text)
+    ):
+        return True
+    return bool(
+        PHYS_MEM_ACTOR.search(text)
+        and PHYS_MEM_CONTEXT.search(text)
+        and PHYS_MEM_PRODUCT.search(text)
+    )
+
+
+def _physical_ai_memory_stage(text: str, source: str = '') -> str:
+    if PHYS_MEM_REVERSE.search(text):
+        return 'reverse'
+    if PHYS_MEM_MEDIA_BASELINE.search(text) and not (
+        PHYS_MEM_ROBOT_OEM.search(text)
+        and (
+            PHYS_MEM_SAMPLE.search(text) or PHYS_MEM_QUAL.search(text)
+            or PHYS_MEM_DESIGN_WIN.search(text) or PHYS_MEM_CONTRACT.search(text)
+            or PHYS_MEM_PRODUCTION.search(text)
+        )
+    ):
+        return 'media_thesis_baseline'
+    if (
+        PHYS_MEM_SK_BASELINE.search(text)
+        or PHYS_MEM_SAMSUNG_PIM_BASELINE.search(text)
+        or PHYS_MEM_SAMSUNG_STORAGE_BASELINE.search(text)
+        or PHYS_MEM_LPDDR6_BASELINE.search(text)
+    ) and not (
+        PHYS_MEM_ROBOT_OEM.search(text)
+        and (
+            PHYS_MEM_SAMPLE.search(text) or PHYS_MEM_QUAL.search(text)
+            or PHYS_MEM_DESIGN_WIN.search(text) or PHYS_MEM_CONTRACT.search(text)
+            or PHYS_MEM_PRODUCTION.search(text)
+        )
+    ):
+        return 'known_vendor_baseline'
+    if PHYS_MEM_ROBOT_OEM.search(text) and PHYS_MEM_CONTRACT.search(text) and PHYS_MEM_EXECUTED.search(text):
+        return 'robot_volume_contract'
+    if PHYS_MEM_ROBOT_OEM.search(text) and PHYS_MEM_PRODUCTION.search(text):
+        return 'mass_production_or_shipment'
+    if PHYS_MEM_ROBOT_OEM.search(text) and PHYS_MEM_DESIGN_WIN.search(text) and PHYS_MEM_EXECUTED.search(text):
+        return 'robot_oem_design_win'
+    if PHYS_MEM_ROBOT_OEM.search(text) and PHYS_MEM_QUAL.search(text) and PHYS_MEM_EXECUTED.search(text):
+        return 'robot_customer_qualification'
+    if PHYS_MEM_ROBOT_OEM.search(text) and PHYS_MEM_SAMPLE.search(text) and PHYS_MEM_EXECUTED.search(text):
+        return 'robot_customer_sample'
+    if PHYS_MEM_ROBOT_PRODUCT.search(text) and re.search(r'launch|unveil|release|출시|공개|발표', text, re.I):
+        return 'dedicated_robot_memory_product'
+    if PHYS_MEM_CONTENT.search(text) and PHYS_MEM_ROBOT_OEM.search(text):
+        return 'per_robot_content'
+    if PHYS_MEM_PRICE.search(text) and PHYS_MEM_ROBOT_OEM.search(text) and re.search(r'\d', text):
+        return 'robot_memory_price'
+    if PHYS_MEM_RELIABILITY.search(text) and PHYS_MEM_CONTEXT.search(text) and PHYS_MEM_EXECUTED.search(text):
+        return 'robot_memory_reliability'
+    return 'monitor'
 
 
 def _is_robot_compute(text: str) -> bool:
@@ -375,6 +564,8 @@ def _samsung_stage(text: str) -> str:
 def topic_group(text: str) -> str | None:
     if _is_korea_policy(text):
         return 'korea_robot_scale_policy'
+    if _is_physical_ai_memory(text) and _physical_ai_memory_stage(text) != 'monitor':
+        return 'physical_ai_memory'
     if _is_robot_compute(text) and _robot_compute_stage(text) != 'monitor':
         return 'robot_compute_semiconductor'
     if _is_samsung_robot(text):
@@ -429,6 +620,33 @@ def score(item: dict) -> int:
             'home_launch': 15,
             'supplier_award': 13,
             'reverse': 14,
+        }.get(stage, 0)
+        return s
+
+    if group == 'physical_ai_memory':
+        src = item.get('source') or ''
+        stage = _physical_ai_memory_stage(text, src)
+        if stage in {'media_thesis_baseline', 'known_vendor_baseline', 'monitor'}:
+            return 0
+        if PRICE_ONLY.search(title):
+            return -20
+        if src not in base.OFFICIAL_OR_PRIMARY and src not in base.TRUSTED:
+            return 0
+        s = 20
+        if base.NUMERIC.search(text): s += 3
+        if src in base.OFFICIAL_OR_PRIMARY: s += 8
+        elif src in base.TRUSTED: s += 4
+        s += {
+            'robot_customer_sample': 11,
+            'robot_customer_qualification': 13,
+            'robot_oem_design_win': 16,
+            'robot_volume_contract': 18,
+            'dedicated_robot_memory_product': 12,
+            'per_robot_content': 10,
+            'mass_production_or_shipment': 18,
+            'robot_memory_price': 11,
+            'robot_memory_reliability': 10,
+            'reverse': 15,
         }.get(stage, 0)
         return s
 
@@ -487,6 +705,22 @@ def category(text: str, group: str) -> str:
             'reverse': '삼성전자 로봇 · 일정·안전·신뢰성 후퇴',
         }.get(_samsung_stage(text), '삼성전자 로봇 · 사업 단계 변화')
 
+    if group == 'physical_ai_memory':
+        return {
+            'media_thesis_baseline': '피지컬AI 메모리 · HBM 이후 로봇수요 기사 기준선',
+            'known_vendor_baseline': '피지컬AI 메모리 · 기존 제품·로드맵 기준선',
+            'robot_customer_sample': '피지컬AI 메모리 · 로봇 고객 샘플 공급',
+            'robot_customer_qualification': '피지컬AI 메모리 · 로봇 고객 검증·승인',
+            'robot_oem_design_win': '피지컬AI 메모리 · 로봇 OEM 채택·디자인윈',
+            'robot_volume_contract': '피지컬AI 메모리 · 로봇 OEM 본계약·물량수주',
+            'dedicated_robot_memory_product': '피지컬AI 메모리 · 로봇 전용 메모리·스토리지 공개',
+            'per_robot_content': '피지컬AI 메모리 · 로봇 1대당 탑재량 공개',
+            'mass_production_or_shipment': '피지컬AI 메모리 · 양산·상업 출하',
+            'robot_memory_price': '피지컬AI 메모리 · 단가·평균판매단가 확인',
+            'robot_memory_reliability': '피지컬AI 메모리 · 로봇 신뢰성·안전 검증',
+            'reverse': '피지컬AI 메모리 · 고객·양산 일정 후퇴',
+        }.get(_physical_ai_memory_stage(text), '피지컬AI 메모리 · 후속 변화')
+
     if group == 'robot_compute_semiconductor':
         return {
             'expert_outlook_baseline': '로봇 반도체 · 레이버트 전망 기준선',
@@ -530,6 +764,23 @@ def meaning(cat: str) -> str:
             '일정·안전·신뢰성 후퇴': '로봇 양산·현장배치가 신뢰성·안전·사고·개발지연 때문에 뒤로 밀리는 역방향 신호입니다. 실패 원인과 새 일정, 보증·보험 영향을 확인합니다.',
         }.get(raw, 'RX사업추진실의 제조→가정 전략, 수백만대 잠재력, 99.99% 필요 수준, World Action Models·Human Motion Retargeting은 현재 기준선이며 반복 보도는 침묵합니다.')
 
+
+    if cat.startswith('피지컬AI 메모리'):
+        raw = cat.split(' · ', 1)[-1]
+        return {
+            'HBM 이후 로봇수요 기사 기준선': 'HBM 중심 AI 메모리 수요가 휴머노이드의 온보드 저전력 D램·낸드·스토리지까지 확장될 수 있다는 산업 내러티브입니다. 기사 제목만으로 삼성·SK하이닉스의 신규 로봇 고객·수주를 확정하지 않습니다.',
+            '기존 제품·로드맵 기준선': 'SK하이닉스 Auto/Robotics LPDDR5/5X, 삼성 LPDDR6·LPDDR5X-PIM·Detachable AutoSSD처럼 이미 공개된 제품·목표를 기준선으로 고정합니다. 반복 소개는 침묵합니다.',
+            '로봇 고객 샘플 공급': '범용·전장용 제품이 실제 휴머노이드 고객 평가로 이동하는 첫 상업화 선행 신호입니다. 고객 실명, 제품규격, 용량, 샘플 수량과 평가기간을 확인합니다.',
+            '로봇 고객 검증·승인': '샘플이 로봇 플랫폼의 전력·발열·진동·신뢰성 조건을 통과하는 단계입니다. 승인 뒤 디자인윈·본계약·SOP까지의 시간을 추적합니다.',
+            '로봇 OEM 채택·디자인윈': '메모리 제품이 특정 로봇 모델의 BOM에 들어가는 단계입니다. 로봇 대수×대당 GB/TB×단가로 실제 매출 민감도를 계산할 수 있는 첫 핵심 문턱입니다.',
+            '로봇 OEM 본계약·물량수주': '기술 채택이 계약 물량으로 전환된 직접 매출 신호입니다. 총 계약량을 연도별 출하량으로 나누고 가격조정·최소구매 조건을 확인합니다.',
+            '로봇 전용 메모리·스토리지 공개': '모바일·전장 범용제품을 넘어 로봇의 저전력·실시간·진동·열 조건에 맞춘 전용 제품이 나오는 재평가 신호입니다.',
+            '로봇 1대당 탑재량 공개': '휴머노이드 한 대의 메모리·스토리지 콘텐츠가 정량화되는 신호입니다. 대수×GB/TB×평균판매단가로 시장 규모를 다시 계산합니다.',
+            '양산·상업 출하': '고객승인과 디자인윈이 실제 반복 출하 매출로 연결되는 단계입니다. 출하량·가동률·수율·재주문을 확인합니다.',
+            '단가·평균판매단가 확인': '로봇용 고신뢰성·저전력 메모리가 범용 모바일 제품 대비 가격 프리미엄을 가지는지 확인하는 수익성 신호입니다.',
+            '로봇 신뢰성·안전 검증': '진동·충격·열·장시간 가동 조건에서 메모리·스토리지 신뢰성을 통과하는 단계입니다. 로봇용 기능안전 요구와 보증비용을 함께 봅니다.',
+            '고객·양산 일정 후퇴': '로봇 OEM 출시 지연이나 메모리 인증 실패가 선행 개발비·재고·설비 회수기간을 악화시키는 역방향 신호입니다.',
+        }.get(raw, '피지컬AI의 온보드 메모리·스토리지 수요가 실제 고객·물량·가격·양산으로 전환되는지를 추적합니다.')
 
     if cat.startswith('로봇 반도체'):
         raw = cat.split(' · ', 1)[-1]
@@ -581,6 +832,18 @@ def risk(cat: str) -> str:
         return '수백만대는 잠재시장 표현이지 판매가이던스가 아닙니다. 공장별 실제 배치대수와 양산제품·가격·외부판매를 별도로 확인합니다.'
 
 
+    if cat.startswith('피지컬AI 메모리'):
+        raw = cat.split(' · ', 1)[-1]
+        if raw == 'HBM 이후 로봇수요 기사 기준선':
+            return '가장 큰 오판은 HBM 데이터센터 수요와 로봇 한 대에 직접 탑재되는 LPDDR·낸드 수요를 섞는 것입니다. 고객·제품·대당 용량이 없으면 직접 로봇 매출로 계산하지 않습니다.'
+        if raw == '로봇 OEM 채택·디자인윈':
+            return '디자인윈도 로봇 양산 일정이 밀리면 매출이 늦어집니다. 전력·발열·진동·충격·장기 신뢰성, 메모리 용량 변경과 이중조달을 확인합니다.'
+        if raw == '로봇 OEM 본계약·물량수주':
+            return '계약 총량이 즉시 매출이 되는 것은 아닙니다. 로봇 생산램프, 최소구매, 가격조정, 검수·보증 조건 때문에 실제 출하량이 달라질 수 있습니다.'
+        if raw == '로봇 1대당 탑재량 공개':
+            return '수백 GB 전망은 로봇 종류·온디바이스 모델 크기·클라우드 의존도에 따라 크게 달라집니다. 실제 양산 BOM 공개 전에는 총시장 추정치로만 취급합니다.'
+        return '휴머노이드 메모리는 저전력뿐 아니라 발열, 진동·충격, 장시간 쓰기 내구성, 공급 안정성, 수율·가격이 병목입니다. 자동차 인증을 로봇 인증과 동일시하지 않습니다.'
+
     if cat.startswith('로봇 반도체'):
         raw = cat.split(' · ', 1)[-1]
         if raw == '레이버트 전망 기준선':
@@ -606,6 +869,17 @@ def verification(item: dict, group: str, text: str) -> str:
         if src in base.OFFICIAL_OR_PRIMARY:
             return '삼성전자·삼성 AI Forum 공식자료'
         return '신뢰 매체 보도 · 삼성전자 공식자료와 실제 공장·제품 단계 교차확인'
+    if group == 'physical_ai_memory':
+        stage = _physical_ai_memory_stage(text, src)
+        if stage == 'media_thesis_baseline':
+            return '2차 기사 산업전망 · SK하이닉스/삼성전자 공식 제품자료와 교차확인 · 신규 로봇 고객·수주 아님'
+        if stage == 'known_vendor_baseline':
+            return '삼성전자·SK하이닉스 공식 제품/전시자료 기준선 · 반복 보도 침묵'
+        if src in base.OFFICIAL_OR_PRIMARY:
+            return '메모리 업체·로봇 OEM 공식자료 · 샘플/승인/채택/계약/양산 단계 분리'
+        if src in base.TRUSTED:
+            return '신뢰 매체 보도 · 메모리 업체와 로봇 OEM 1차 자료 교차확인'
+        return '미확인 보도 · 단독 알림 금지'
     if group == 'robot_compute_semiconductor':
         stage = _robot_compute_stage(text, src)
         if stage == 'expert_outlook_baseline':
@@ -654,6 +928,43 @@ def key(item: dict) -> str:
         ).hexdigest()
 
 
+    if group == 'physical_ai_memory':
+        stage = _physical_ai_memory_stage(text, item.get('source') or '')
+        if stage == 'media_thesis_baseline':
+            return hashlib.sha256(b'physical-ai-memory|2026-10|hbm-next-robot-memory-thesis').hexdigest()
+        if stage == 'known_vendor_baseline':
+            vendor = 'samsung' if re.search(r'삼성전자|Samsung\s*Electronics', text, re.I) else (
+                'skhynix' if re.search(r'SK하이닉스|SK\s*hynix', text, re.I) else 'other'
+            )
+            product = 'lpddr5x-pim' if re.search(r'LPDDR5X-PIM', text, re.I) else (
+                'autossd' if re.search(r'Detachable\s*AutoSSD|AutoSSD', text, re.I) else (
+                    'lpddr6' if re.search(r'LPDDR6', text, re.I) else (
+                        'auto-robotics-lpddr' if re.search(r'Auto.?Robotics\s*LPDDR', text, re.I) else 'generic'
+                    )
+                )
+            )
+            return hashlib.sha256(f'physical-ai-memory|baseline|{vendor}|{product}'.encode()).hexdigest()
+        vendors = []
+        for name, pat in [
+            ('samsung', r'삼성전자|Samsung\s*Electronics'),
+            ('skhynix', r'SK하이닉스|SK\s*hynix'),
+            ('micron', r'Micron|마이크론'),
+        ]:
+            if re.search(pat, text, re.I): vendors.append(name)
+        oems = sorted(set(re.findall(
+            r'Boston\s+Dynamics|Atlas|Figure\s*AI|Agility\s+Robotics|Digit|Unitree|Apptronik|'
+            r'XPENG|IRON|ROBOTIS|로보티즈|Tesla|Optimus|현대차|Hyundai',
+            text, re.I,
+        )))
+        nums = '|'.join(sorted(set(re.findall(
+            r'\d[\d,.]*\s*(?:GB|TB|Gbps|GB/s|million|billion|대|개|%|달러|원)',
+            text,
+            re.I,
+        )))[:8])
+        return hashlib.sha256(
+            f"physical-ai-memory|{stage}|{','.join(vendors)}|{','.join(oems)}|{nums}".encode()
+        ).hexdigest()
+
     if group == 'robot_compute_semiconductor':
         stage = _robot_compute_stage(text, item.get('source') or '')
         if stage == 'expert_outlook_baseline':
@@ -691,6 +1002,8 @@ def tag_for(group: str) -> str:
         return '한국로봇정책'
     if group == 'samsung_robot_scale':
         return '삼성전자로봇'
+    if group == 'physical_ai_memory':
+        return '피지컬AI메모리'
     if group == 'robot_compute_semiconductor':
         return '로봇반도체'
     return _orig_tag_for(group)
@@ -719,6 +1032,19 @@ def clean_title(title: str, source: str) -> str:
             'supplier_award': '삼성전자 로봇 핵심부품 공급사·발주 확인',
             'reverse': '삼성전자 로봇, 일정·안전·신뢰성 역방향 변화',
         }.get(_samsung_stage(text), _orig_clean_title(title, source))
+    if _is_physical_ai_memory(text) and _physical_ai_memory_stage(text, source) != 'monitor':
+        return {
+            'robot_customer_sample': '피지컬AI 메모리, 로봇 고객 샘플 공급 확인',
+            'robot_customer_qualification': '피지컬AI 메모리, 로봇 고객 검증·승인 통과',
+            'robot_oem_design_win': '피지컬AI 메모리, 로봇 OEM 채택·디자인윈 확인',
+            'robot_volume_contract': '피지컬AI 메모리, 로봇 OEM 본계약·물량수주 확인',
+            'dedicated_robot_memory_product': '피지컬AI 메모리, 로봇 전용 제품 공개',
+            'per_robot_content': '피지컬AI 메모리, 로봇 1대당 탑재량 공개',
+            'mass_production_or_shipment': '피지컬AI 메모리, 실제 양산·상업 출하 시작',
+            'robot_memory_price': '피지컬AI 메모리, 단가·평균판매단가 확인',
+            'robot_memory_reliability': '피지컬AI 메모리, 로봇 신뢰성·안전 검증',
+            'reverse': '피지컬AI 메모리, 고객·양산 일정 후퇴',
+        }.get(_physical_ai_memory_stage(text, source), _orig_clean_title(title, source))
     if _is_robot_compute(text):
         return {
             'official_program': '로봇 반도체, 공식 개발·로드맵 신규 확인',
@@ -736,7 +1062,7 @@ def clean_title(title: str, source: str) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
-    for group in ('korea_robot_scale_policy', 'samsung_robot_scale', 'robot_compute_semiconductor'):
+    for group in ('korea_robot_scale_policy', 'samsung_robot_scale', 'physical_ai_memory', 'robot_compute_semiconductor'):
         hit = next((x for x in candidates if x.get('group') == group), None)
         if not hit or any(x.get('key') == hit.get('key') for x in chosen):
             continue
