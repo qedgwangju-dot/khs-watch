@@ -885,6 +885,67 @@ class Watch:
         with DELIVERY_LOG.open("a", encoding="utf-8") as fp:
             fp.write(json.dumps(record, ensure_ascii=False) + "\n")
 
+    def save_handoff(self, path: str | Path | None) -> None:
+        if not path:
+            return
+        p = Path(path)
+        cutoff = time.time() - 60 * 60
+        payload = {
+            "date": dt.datetime.now(KST).strftime("%Y-%m-%d"),
+            "saved_at_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
+            "flows": [x for x in self.flows if float(x.get("ts", 0)) >= cutoff],
+            "episode": self.episode,
+            "msg_ids": self.msg_ids[-20:],
+            "enrichment_msg_ids": self.enrichment_msg_ids[-20:],
+        }
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        self.raw["handoff_saved"] = {
+            "path": str(p), "flow_count": len(payload["flows"]),
+            "episode_active": bool(self.episode),
+        }
+
+    def load_handoff(self, path: str | Path | None) -> None:
+        if not path:
+            return
+        p = Path(path)
+        if not p.exists():
+            self.raw["handoff_loaded"] = {"path": str(p), "status": "missing"}
+            return
+        try:
+            data = json.loads(p.read_text(encoding="utf-8"))
+            today = dt.datetime.now(KST).strftime("%Y-%m-%d")
+            if str(data.get("date") or "") != today:
+                self.raw["handoff_loaded"] = {"path": str(p), "status": "stale_date"}
+                return
+            loaded = 0
+            cutoff = time.time() - FLOW_LOOKBACK_SEC
+            for snap in data.get("flows") or []:
+                if not isinstance(snap, dict):
+                    continue
+                if float(snap.get("ts", 0)) < cutoff:
+                    continue
+                self.flows.append(snap)
+                loaded += 1
+            ep = data.get("episode")
+            if isinstance(ep, dict) and ep.get("start_ts") and ep.get("start_price"):
+                self.episode = ep
+            self.msg_ids.extend(int(x) for x in (data.get("msg_ids") or []) if str(x).isdigit())
+            self.enrichment_msg_ids.extend(int(x) for x in (data.get("enrichment_msg_ids") or []) if str(x).isdigit())
+            if self.flows:
+                latest = max(float(x.get("ts", 0)) for x in self.flows)
+                if time.time() - latest <= 180:
+                    self.last_flow_success_ts = latest
+            self.raw["handoff_loaded"] = {
+                "path": str(p), "status": "ok", "flow_count": loaded,
+                "episode_active": bool(self.episode),
+            }
+        except Exception as exc:
+            self.raw["handoff_loaded"] = {
+                "path": str(p), "status": "error",
+                "error": f"{type(exc).__name__}: {exc}",
+            }
+
     def seed_backfill(self) -> None:
         try:
             rows = backfill_index_bars(self.token)
@@ -996,7 +1057,13 @@ def synthetic_test() -> int:
     return 0 if hit else 1
 
 
-async def amain(test: bool, seconds: int, until: dt.time) -> int:
+async def amain(
+    test: bool,
+    seconds: int,
+    until: dt.time,
+    handoff_in: str | None = None,
+    handoff_out: str | None = None,
+) -> int:
     key=(os.getenv("LS_OPENAPI_APP_KEY") or "").strip()
     secret=(os.getenv("LS_OPENAPI_APP_SECRET") or "").strip()
     if not key or not secret:
@@ -1009,9 +1076,11 @@ async def amain(test: bool, seconds: int, until: dt.time) -> int:
     puts = await asyncio.to_thread(get_weekly_puts, token, current200)
 
     w = Watch(token, puts, front, test)
+    w.load_handoff(handoff_in)
     started = dt.datetime.now(KST)
     try:
         await w.run(until, seconds if test else None)
+        w.save_handoff(handoff_out)
         write_status(w, started, "정상 종료")
         return 0
     except Exception as exc:
@@ -1025,8 +1094,11 @@ def parse_hhmm(s: str) -> dt.time:
 def main() -> int:
     ap = argparse.ArgumentParser(); ap.add_argument("--test", action="store_true"); ap.add_argument("--test-seconds", type=int, default=12)
     ap.add_argument("--synthetic-test", action="store_true"); ap.add_argument("--until", default="15:25")
+    ap.add_argument("--handoff-in"); ap.add_argument("--handoff-out")
     args = ap.parse_args()
     if args.synthetic_test: return synthetic_test()
-    return asyncio.run(amain(args.test, args.test_seconds, parse_hhmm(args.until)))
+    return asyncio.run(
+        amain(args.test, args.test_seconds, parse_hhmm(args.until), args.handoff_in, args.handoff_out)
+    )
 
 if __name__ == "__main__": raise SystemExit(main())
