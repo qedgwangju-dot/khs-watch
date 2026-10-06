@@ -185,6 +185,15 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         self.assertEqual(v["end_customer_count"], 7)
         self.assertEqual(v["paid_sample_customer_count"], 7)
 
+    def test_jntc_cycle_process_not_inferred_from_other_sentences(self):
+        item = {"title":"JNTC glass process update","description":"","source":"디일렉",
+                "published_at_kst":"2026-10-06T10:00:00+09:00",
+                "direct_link":"https://thelec.kr/news/articleView.html?idxno=63298"}
+        body = "핵심 공정은 기존 12시간에서 분 단위로 단축됐다. 별도로 레이저 가공, 식각, 금속화 공정을 모두 내재화했다."
+        rows = w.parse_glass_substrate_records(item, body)
+        rec = next(x for x in rows if x["axis"] == "glass_process_cycle_time")
+        self.assertEqual(rec["value"]["process_name"], "unverified_core_process")
+
     def test_yield_crossing_90_alerts(self):
         old = {"axis":"glass_panel_yield","value":{"yield_pct":88.0}}
         new = {"axis":"glass_panel_yield","value":{"yield_pct":92.0}}
