@@ -1213,7 +1213,7 @@ def _ppa_stage(text: str, official: bool):
         return "cancelled_official" if official else "cancelled_reported"
 
     pending_terms = (
-        "near deal", "nearing a deal", "nearing agreement", "close to a deal",
+        "near deal", "near a deal", "nearing a deal", "nearing agreement", "close to a deal",
         "close to an agreement", "in talks", "talks with", "could be announced",
         "could announce", "expected to announce", "may announce", "considering",
         "may sign", "expected to sign", "plans to sign", "would sign", "set to sign",
