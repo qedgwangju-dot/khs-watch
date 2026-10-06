@@ -2590,6 +2590,57 @@ def reported_issuer_announcement_fact(title: str, body: str) -> str:
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
+    freight = market_materiality.freight_cost_observation(title, body)
+    if freight:
+        fact = (f"{freight['source']}의 {freight['day']}일 현지 보도에 따르면 호르무즈 VLCC 셔틀 운항의 "
+                f"왕복 {freight['voyages']}회 비용은 최대 {freight['max_cost']}다.")
+        if freight.get('current_daily'):
+            fact += (f" {freight['period']} {freight['route']}까지 초대형 유조선 용선료는 전쟁 전 하루 약 "
+                     f"{freight['previous_daily']}에서 하루 {freight['current_daily']}로 급등했다.")
+        return fact if core_sentence_is_complete(fact) else ""
+    allocation = market_materiality.public_compute_allocation(title, body)
+    if allocation:
+        fact = (f"{allocation['provider']} 자료에 따르면 {allocation['period']}까지 공모에서 "
+                f"GPU {allocation['requested']}장을 신청했고 {allocation['allocated']}장이 배정됐다. "
+                f"배정량은 신청량의 {allocation['allocation_rate']}%다.")
+        return fact if core_sentence_is_complete(fact) else ""
+    outlook = market_materiality.conditional_index_outlook(title, body)
+    if outlook:
+        fact = (f"{outlook['broker']}{korean_topic_particle(outlook['broker'])} {outlook['day']}일 보고서에서 "
+                f"유가·금리의 추가 급등이 없고 {outlook['index']}가 {outlook['threshold']}선을 돌파·안착하면 "
+                f"{outlook['target_range']}선까지 상승할 수 있다고 전망했다.")
+        return fact if core_sentence_is_complete(fact) else ""
+    quotes = market_materiality.intraday_equity_observations(title, body)
+    if quotes:
+        observations = []
+        for quote in quotes["quotes"]:
+            observations.append(f"{quote['issuer']}{korean_topic_particle(quote['issuer'])} {quote['rate']}% {quote['direction']} {quote['price']}")
+        fact = (f"한국거래소 기준 {quotes['day']}일 {quotes['half']} {quotes['hour']}시{quotes['minute']}분 "
+                f"{', '.join(observations)}에 거래됐다. 등락률은 전 거래일 대비다.")
+        return fact if core_sentence_is_complete(fact) else ""
+    if focus == "capital_spending":
+        observation = next((market_materiality.business_investment_observation(sentence)
+                            for sentence in market_materiality.source_sentences(body)
+                            if market_materiality.business_investment_observation(sentence)), {})
+        if observation:
+            change = "늘었다" if observation["direction"] == "증가" else "줄었다"
+            fact = (f"{observation['country']} 기업들의 {observation['population']} 투자는 "
+                    f"{observation['year']} {observation['quarter']}분기 {observation['amount']}를 넘었고, "
+                    f"전년 동기 대비 {observation['change']}% {change}.")
+            return fact if core_sentence_is_complete(fact) else ""
+    if focus == "equity_index":
+        source = " ".join(market_materiality.source_sentences(body))
+        index = next((term for term in ("나스닥", "S&P500", "다우", "코스피", "코스닥")
+                      if term in title.replace(" ", "")), "")
+        change = re.search(rf"{re.escape(index)}\s*(?:종합)?지수(?:는|가|이)?\s*(\d+(?:\.\d+)?)%\s*(올랐다|내렸다)", source)
+        record = re.search(rf"{re.escape(index)}(?:은|는|이|가)\s*사상\s*최고치를\s*기록했다", source)
+        if change and record:
+            direction = "상승" if change.group(2) == "올랐다" else "하락"
+            fact = f"{index}지수는 {change.group(1)}% {direction}해 사상 최고치를 기록했다."
+            yields = re.search(r"미\s*10년물\s*국채\s*금리는\s*장중\s*(\d+(?:\.\d+)?)%", source)
+            if yields:
+                fact += f" 미 10년물 국채금리는 장중 {yields.group(1)}%까지 올랐다."
+            return fact if core_sentence_is_complete(fact) else ""
     if focus == "commercial_order":
         contract = re.search(r"([A-Za-z0-9가-힣&·.-]{2,30})(?:이|가)\s+[^.!?\n]{0,50}?['‘]([^'’\n]{2,40})['’](?:\([^)]*\))?(?:와|과)\s*맺은\s*장기공급계약", body)
         capacity = re.search(r"(\d[\d,.]*\s*(?:GW|MW))\s*규모\s*(?:AI\s*)?데이터센터\s*칠러\s*공급", body, re.I)
@@ -10518,7 +10569,8 @@ def source_core_fact_errors(alert: dict) -> list[str]:
         return []
     errors = []
     expected_observation = source_headline_event_fact(title, source)
-    if expected_observation and market_materiality.canonical_source_fact(expected_observation) != market_materiality.canonical_source_fact(core):
+    observation_core = re.sub(r"\((?:약[^)]*|원화\s*환산\s*확인\s*불가)\)", "", core)
+    if expected_observation and market_materiality.canonical_source_fact(expected_observation) != market_materiality.canonical_source_fact(observation_core):
         errors.append("headline_actor_population_period_or_standard_mismatch")
     negotiation = acquisition_negotiation_fact(title, source)
     if negotiation and not re.search(r"논의\s*중|협상\s*중|검토\s*중", core):

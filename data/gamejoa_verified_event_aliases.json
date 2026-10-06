@@ -118,6 +118,25 @@
       "source_event_identity": "source_event:v2:industrial_route_study:a4437439c715a1718c8ed9b3969e539abfe1139671b6b42e4ad1484289348faf",
       "run_id": 37393055456,
       "message_id": 2285
+    },
+    {
+      "source_title": "한미반도체, 삼성 첫 거래·MSVP 수주 확대 '두 마리 토끼'",
+      "link": "https://www.fnnews.com/news/202610060841477323",
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "source_body_sha256": "adf507442c0808e74241be862a04f84c4e15ccb3e1d550dbf6fde443652b7ccf",
+      "source_event_identity": "source_event:v2:commercial_order:2d8630de3c2b54265df34056194adb126f04962fb65772b0ed07d38f5ef13c45",
+      "run_id": 37394990814,
+      "message_id": 2286,
+      "equivalence_note": "Full-body audit: same Hanmi-Samsung Electro-Mechanics MSVP order already sent at 244억8000만원. The 245억원 industry report is reconciled only for this exact body and receipt. Changed bodies or separate volume announcements are not rounded into the order."
+    },
+    {
+      "source_title": "“코스피, 7100만 찍으면 7700까지 간다”…장밋빛 전망 근거는? [오늘 나온 보고서]",
+      "link": "https://www.mk.co.kr/news/stock/12168863",
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "source_body_sha256": "6f75fbd27eae8dced61258cf2aaf69bf1184e7c2254875c4de0ad35dc1aab0b0",
+      "source_event_identity": "source_event:v2:conditional_index_outlook:de4f8409a7a2f8eb4507c683d9f40080e36f2ceaa8a3db3a19d7ac3d04b86c5a",
+      "run_id": 37395127123,
+      "message_id": 2287
     }
   ]
 }

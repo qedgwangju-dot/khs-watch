@@ -286,6 +286,21 @@ Every defect or requested change must follow this sequence:
   date, exact original amount, period and explicit revisions. Never merge
   different amounts using a general rounding tolerance. Rounded historical
   copies require an individually audited full-source/successful-receipt alias.
+- A six-digit stock code after an issuer or customer does not create a new
+  equipment order. Conditional index reports compare broker, report date,
+  threshold, target range and stated conditions; they are forecasts, not closes.
+- A tiny cryptocurrency spot recap, municipal robot demonstration, vendor
+  self-test without measured external validation, retail menu publicity and
+  existing-policy explanation are not new equity catalysts. Actual measured
+  industry changes, new customer contracts and formal policy actions survive.
+- Quantified intraday stock summaries retain each issuer, quote time, price,
+  percentage and previous-session basis. Computer-equipment investment is not
+  relabelled as all AI CAPEX. Shipping summaries keep maximum per-voyage costs
+  separate from daily charter rates, with source attribution and period.
+- Public compute allocation summaries name the data provider and original
+  application round, requested/allocated units and denominator. Different
+  application rounds are not combined and an advocate's request for increased
+  spending is not a committed new budget.
 - Shareholding summaries retain owner, issuer, previous/current share counts
   and stake percentages. A prior purchase is not the new disclosed change.
 - DRAM market share must retain its source, period and revenue/bit basis.
