@@ -464,6 +464,27 @@
       "source": "연합뉴스",
       "title": "마이크론, 2분기 D램 시장서 2위 SK하이닉스 '턱밑' 추격 | 연합뉴스"
     },
+    "event:195b01384bb21fcfedf07534": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006091400009",
+      "source": "연합뉴스",
+      "source_body_digest": "9300ee08985dab76d8a8dd5df7a9bd273b4bb82ba52dc9835875a01ff23f12ef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d15a6af9b57a2dc04812696d512e6e370bb107c74fc2d213ae150a3aa83e685",
+      "source_fact_keys": [
+        "source_fact:v1:10976a0eb1a261f9fedf8227ac9e4423b4eaf0a7c501ca0057ec1e4a2bce0ffd",
+        "source_fact:v1:2230b8e23b20e6c16feb6fec721cbd8a9e252b0a7cd027129073b1b3a885f98f",
+        "source_fact:v1:41ebaafde94b1a6f1eb40acf116cc90150e892e130af673b95f4b8a57da78431",
+        "source_fact:v1:547f64394e182d4d7a32650e2746c2c0e56ee3034f154d415f23b6a161e5b594",
+        "source_fact:v1:ba3b0ba57d729900f41e4fa7af7472b85bd96dd7f78f211bc08cf8dc1596e5b9"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "中 장악 태양광 시장에 美 '탠덤 패널' 승부수 | 연합뉴스"
+    },
     "event:19a3adda45fb4cf8a4f7dd13": {
       "first_seen_kst": "2026-10-05T17:16:33+09:00",
       "lanes": {
@@ -4955,26 +4976,20 @@
     "event:d9f68e9c742b0457f3d6101b": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
-        "live": "2026-10-06T06:27:01+09:00"
+        "live": "2026-10-06T16:30:27+09:00"
       },
-      "last_seen_kst": "2026-10-06T06:27:01+09:00",
-      "link": "https://www.fnnews.com/news/202610060601267536",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "04c6c887da8f747a83fc511283c1760c0fdd497303a9df37d6e548cfe90992dd",
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.hankyung.com/article/202610065572L",
+      "source": "한국경제",
+      "source_body_digest": "e23aaf99bf6c57460c16b65bf000d50371051661ed34cdea0585427374a92042",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:5eeb868b901a9ff7ed19f5d51a16058056f7b206e9816c970284190399c5197a",
+      "source_fact_identity": "source_facts:v1:50a2a1e1952dc59346f5b91726a3d5cb6251a10e4d903539333846e50131d5e2",
       "source_fact_keys": [
-        "source_fact:v1:0c200644c0d9c0bf21a8bd75450890798a8dfae7fce294df8925700449fd99c0",
-        "source_fact:v1:0e3dc6772ee3486f0d606fc2dcb9f858f8115c219de1453d10a369614a2620d7",
-        "source_fact:v1:605aa2d9499e17b6443332dc2adc5e9ccb4aae5de4929d602a86f7760bb4fd2f",
-        "source_fact:v1:7bc4e06e5a2311788b457787396a408ae2fcd9cb376826fb91b36db39acba899",
-        "source_fact:v1:a1a20125f08723fdcb8a279657349d85846e50fc93da22dd2bac585e3a2f72c8",
-        "source_fact:v1:cc7a18f582d71d3f576072a8446e1d126ce0a8f750bb3e245cb8568869219d7e",
-        "source_fact:v1:d064a7e1bfc1b47a9590fe78bdae9a39b81a75f5346b270cb70d081745e085fd",
-        "source_fact:v1:f638f7391c04e247ed2ebc81f47d1915e44ac3fb3bfd4eeb8898bf8836981d5f"
+        "source_fact:v1:382c403bb9e433a3a67413d234be0097eedb98fc45d6508671f8f8d4485d8a97",
+        "source_fact:v1:df5312d455d9850b0eac4430401ca918889d4d54924d241b7abc2a385263e639"
       ],
-      "source_published_kst": "2026-10-06T06:01+09:00",
-      "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
+      "source_published_kst": "2026-10-06T14:10+09:00",
+      "title": "유비온 수주공시 - DScovery 시스템 유지 보수 및 운영 18.5억원 (매출액대비 5.49 %)"
     },
     "event:d9fdb3c71a63bdf3e971c5af": {
       "first_seen_kst": "2026-10-01T06:08:16+09:00",
@@ -7243,6 +7258,24 @@
       "source_published_kst": "2026-10-06T08:45+09:00",
       "title": "한미반도체, 삼성전기에 패키징 장비 공급…245억원 규모"
     },
+    "fact:2c42447564e18a6c8e768f8b": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.hankyung.com/article/202610065572L",
+      "source": "한국경제",
+      "source_body_digest": "e23aaf99bf6c57460c16b65bf000d50371051661ed34cdea0585427374a92042",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50a2a1e1952dc59346f5b91726a3d5cb6251a10e4d903539333846e50131d5e2",
+      "source_fact_keys": [
+        "source_fact:v1:382c403bb9e433a3a67413d234be0097eedb98fc45d6508671f8f8d4485d8a97",
+        "source_fact:v1:df5312d455d9850b0eac4430401ca918889d4d54924d241b7abc2a385263e639"
+      ],
+      "source_published_kst": "2026-10-06T14:10+09:00",
+      "title": "유비온 수주공시 - DScovery 시스템 유지 보수 및 운영 18.5억원 (매출액대비 5.49 %)"
+    },
     "fact:2c4b962f6c64cc7b99f6e122": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -7859,6 +7892,23 @@
       ],
       "source_published_kst": "2026-10-06T09:32+09:00",
       "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
+    },
+    "fact:3a85908937cfa4effc3883bd": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815523",
+      "source": "뉴시스",
+      "source_body_digest": "1be1d5b5b4e73d2c6ef17b390d6949fb5c6fd4447997b26985e1beaa484af06a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f52d48d8e30cbd0fb26aefe994679e88930a425867a6cba1e426fcb07b49de33",
+      "source_fact_keys": [
+        "source_fact:v1:5b1ed724d0a7d2b939b6a4593637d1708713843f0fc29144a553dd275f21d94d"
+      ],
+      "source_published_kst": "2026-10-06T13:27+09:00",
+      "title": "IPARK현대산업개발, 2812억 규모 재개발 정비사업 시공사 선정"
     },
     "fact:3aaa85a21aa1134a42ca5dbb": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
@@ -10782,6 +10832,25 @@
       "source_published_kst": "2026-10-06T00:51+09:00",
       "title": "美고용 식었는데 서비스 물가 더 뛰었다…연준 딜레마"
     },
+    "fact:9b7ba9c987c119219d9d8a65": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632850",
+      "source": "이투데이",
+      "source_body_digest": "48e9ad38d1674c49d56d045c1e3ca71d778c766ccc981ab2ca2b8b1134b45059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6130c84dd26266858769bbef778ddfea007ef0886908f822f58938f921c45bf",
+      "source_fact_keys": [
+        "source_fact:v1:6079679a9b7c124f82643791db08a7eb59c099b8ed79dc6c84e4e1b2be23277c",
+        "source_fact:v1:8403e52c5ad94f15a87b873f4178716fd38429791f331818a85e453936a3056b",
+        "source_fact:v1:aa52ac367514efa1009dbaec079887da6d2c15dfda8a04c88b53b0885fed8eeb"
+      ],
+      "source_published_kst": "2026-10-06T14:21+09:00",
+      "title": "IPARK현대산업개발, 부산 연산13구역 재개발 수주…2812억 규모"
+    },
     "fact:9b9c98a2133ce9d86aecf190": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -10920,6 +10989,28 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "fact:9f657dcf791cb30ba2565ddc": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etnews.com/20261006000206",
+      "source": "전자신문",
+      "source_body_digest": "583428bf8c44efd13615029a5a5565dea5220220be0104896f1a504f487ceacc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e375ea1a54500908409607153ff18155da9236913f181cd5488bd3def1be832",
+      "source_fact_keys": [
+        "source_fact:v1:4bb0e0937b74ee38d20dae66ee4e530000b1c75ab1bf641b4530e8ac89216c0e",
+        "source_fact:v1:6a4c45aedaaec97c10a9745a7e60f2359c1cf411a5f454e63731eeb92eb02174",
+        "source_fact:v1:9905659b01567550e10262301a90272d0c4a03bdc51a0d00a2a37013b0272697",
+        "source_fact:v1:ada30bbf8cd810b9cd0c9937d91030dcca4377b9350f0d527fe8ea92a8d77df7",
+        "source_fact:v1:b02724874e4dfd58054dfdc4586f6ef516e588143bded409264af9090d5f1aa6",
+        "source_fact:v1:b81e48414b336c88a8333c8731f56ed5e37cfef58ead01bd00481b5fdf4eb846"
+      ],
+      "source_published_kst": "2026-10-06T13:21+09:00",
+      "title": "유럽 로봇 유니콘도 미국행…로브코, 현지 생산·시장 공략"
+    },
     "fact:a028930c37abd9dc47294bfe": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -11036,6 +11127,23 @@
       ],
       "source_published_kst": "2026-10-05T21:22+09:00",
       "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
+    },
+    "fact:a5e06e55dbec75206a36e5d0": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632848",
+      "source": "이투데이",
+      "source_body_digest": "b8eed9654a14e39af2f4a17eca391a3034d8610bc5d303dca8df5486ea7f9bd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ecea44ef8af2486ec9f437e96de72cf4eeaf821c5ac6bd54ff07337568b32617",
+      "source_fact_keys": [
+        "source_fact:v1:2b389711c5c7643b38f3b2959bf7f14254977371a1451a0fbb94088dcd2b972b"
+      ],
+      "source_published_kst": "2026-10-06T14:19+09:00",
+      "title": "비주택 용도변경 공급 ‘순항’…LH, 매입 신청 2125가구로 목표 초과"
     },
     "fact:a6a981dbfb6bb33cb08f4db4": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
@@ -13259,6 +13367,27 @@
       "source_published_kst": "2026-10-06T11:42+09:00",
       "title": "대전급식비 전국 꼴찌수준…허태정 시장 \"15%까지 인상\""
     },
+    "fact:f2c27a2fd7cf9704b87a684d": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006091400009",
+      "source": "연합뉴스",
+      "source_body_digest": "9300ee08985dab76d8a8dd5df7a9bd273b4bb82ba52dc9835875a01ff23f12ef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d15a6af9b57a2dc04812696d512e6e370bb107c74fc2d213ae150a3aa83e685",
+      "source_fact_keys": [
+        "source_fact:v1:10976a0eb1a261f9fedf8227ac9e4423b4eaf0a7c501ca0057ec1e4a2bce0ffd",
+        "source_fact:v1:2230b8e23b20e6c16feb6fec721cbd8a9e252b0a7cd027129073b1b3a885f98f",
+        "source_fact:v1:41ebaafde94b1a6f1eb40acf116cc90150e892e130af673b95f4b8a57da78431",
+        "source_fact:v1:547f64394e182d4d7a32650e2746c2c0e56ee3034f154d415f23b6a161e5b594",
+        "source_fact:v1:ba3b0ba57d729900f41e4fa7af7472b85bd96dd7f78f211bc08cf8dc1596e5b9"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "中 장악 태양광 시장에 美 '탠덤 패널' 승부수 | 연합뉴스"
+    },
     "fact:f306f6a320e173f2c1e3a78f": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
       "lanes": {
@@ -13481,6 +13610,27 @@
       ],
       "source_published_kst": "2026-10-04T22:38+09:00",
       "title": "\"사우디, 2034 월드컵 경기장 '네옴 스타디움' 건설 계획 보류\" | 연합뉴스"
+    },
+    "fact:fc69c541fb6b1dac158e80ce": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894289",
+      "source": "헤럴드경제",
+      "source_body_digest": "870313e41932023ee87fa3f6f68a3fdff15a23f3ece240b586569cd468e777b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0509cf70bf29e15e434161dbb0ee912e22d6508ee1fc558f973f71887251656e",
+      "source_fact_keys": [
+        "source_fact:v1:0a4203753defd524b09bad48c7f3595c006aaeb42eaa6ec5bafb76b2a2419bdc",
+        "source_fact:v1:2b09f7b8d2bfa437d33e5780d456551bc726cba0329a677d76475590e95fa6d7",
+        "source_fact:v1:48a5b9ffceed62a7e7c2b20513aecf63e548637dbc6f799de9265a6cddfc5be1",
+        "source_fact:v1:6ad1a716f73399fd4a6a3cf25d6ed27ad867c6add4cc47e7c175f978c0f65e35",
+        "source_fact:v1:8134e64beded16c142aa8d98bf3bff085d168197581cb452aae0cd9c22046660"
+      ],
+      "source_published_kst": "2026-10-06T14:14+09:00",
+      "title": "경상수지 흑자 너무 많아도 문제? IMF 내년 한국에 ‘과잉 평가’ 전망 [머니뭐니]"
     },
     "fact:fc81ef9db168e106aae67768": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
@@ -14589,6 +14739,27 @@
       ],
       "source_published_kst": "2026-10-06T08:55+09:00",
       "title": "현대글로비스, SMR 추진 자동차운반선 한미 항로 운항 검토 | 연합뉴스"
+    },
+    "link:0cc1b3c6a031e310683d0d21": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894289",
+      "source": "헤럴드경제",
+      "source_body_digest": "870313e41932023ee87fa3f6f68a3fdff15a23f3ece240b586569cd468e777b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0509cf70bf29e15e434161dbb0ee912e22d6508ee1fc558f973f71887251656e",
+      "source_fact_keys": [
+        "source_fact:v1:0a4203753defd524b09bad48c7f3595c006aaeb42eaa6ec5bafb76b2a2419bdc",
+        "source_fact:v1:2b09f7b8d2bfa437d33e5780d456551bc726cba0329a677d76475590e95fa6d7",
+        "source_fact:v1:48a5b9ffceed62a7e7c2b20513aecf63e548637dbc6f799de9265a6cddfc5be1",
+        "source_fact:v1:6ad1a716f73399fd4a6a3cf25d6ed27ad867c6add4cc47e7c175f978c0f65e35",
+        "source_fact:v1:8134e64beded16c142aa8d98bf3bff085d168197581cb452aae0cd9c22046660"
+      ],
+      "source_published_kst": "2026-10-06T14:14+09:00",
+      "title": "경상수지 흑자 너무 많아도 문제? IMF 내년 한국에 ‘과잉 평가’ 전망 [머니뭐니]"
     },
     "link:0cc2ef07370ed1fa6e99def5": {
       "first_seen_kst": "2026-10-02T12:31:36+09:00",
@@ -23706,6 +23877,23 @@
       "source": "뉴시스",
       "title": "\"10월 美 증시, 금리가 변수\"…연준 긴축·국채금리 급등에 촉각"
     },
+    "link:73c273f879ef7e167a266910": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632848",
+      "source": "이투데이",
+      "source_body_digest": "b8eed9654a14e39af2f4a17eca391a3034d8610bc5d303dca8df5486ea7f9bd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ecea44ef8af2486ec9f437e96de72cf4eeaf821c5ac6bd54ff07337568b32617",
+      "source_fact_keys": [
+        "source_fact:v1:2b389711c5c7643b38f3b2959bf7f14254977371a1451a0fbb94088dcd2b972b"
+      ],
+      "source_published_kst": "2026-10-06T14:19+09:00",
+      "title": "비주택 용도변경 공급 ‘순항’…LH, 매입 신청 2125가구로 목표 초과"
+    },
     "link:73f53959d7970d4cb8a07108": {
       "first_seen_kst": "2026-10-03T21:43:46+09:00",
       "lanes": {
@@ -24958,6 +25146,23 @@
       "source": "매일경제",
       "title": "“AI 데이터센터 냉각도 레고처럼 뚝딱”…LG전자, 냉각설비 ‘모듈형’ 승부수"
     },
+    "link:80d95326f2a18be3138107b5": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815523",
+      "source": "뉴시스",
+      "source_body_digest": "1be1d5b5b4e73d2c6ef17b390d6949fb5c6fd4447997b26985e1beaa484af06a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f52d48d8e30cbd0fb26aefe994679e88930a425867a6cba1e426fcb07b49de33",
+      "source_fact_keys": [
+        "source_fact:v1:5b1ed724d0a7d2b939b6a4593637d1708713843f0fc29144a553dd275f21d94d"
+      ],
+      "source_published_kst": "2026-10-06T13:27+09:00",
+      "title": "IPARK현대산업개발, 2812억 규모 재개발 정비사업 시공사 선정"
+    },
     "link:80dcba73b090276e2dc282d6": {
       "first_seen_kst": "2026-10-05T11:45:11+09:00",
       "lanes": {
@@ -25075,6 +25280,24 @@
       "source": "매일경제",
       "source_event_identity": "",
       "title": "나노 뉴클리어 에너지, NRC 인허가 핵연료 자산 1350만 달러 인수"
+    },
+    "link:82b060dea29276deedf931a5": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.hankyung.com/article/202610065572L",
+      "source": "한국경제",
+      "source_body_digest": "e23aaf99bf6c57460c16b65bf000d50371051661ed34cdea0585427374a92042",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50a2a1e1952dc59346f5b91726a3d5cb6251a10e4d903539333846e50131d5e2",
+      "source_fact_keys": [
+        "source_fact:v1:382c403bb9e433a3a67413d234be0097eedb98fc45d6508671f8f8d4485d8a97",
+        "source_fact:v1:df5312d455d9850b0eac4430401ca918889d4d54924d241b7abc2a385263e639"
+      ],
+      "source_published_kst": "2026-10-06T14:10+09:00",
+      "title": "유비온 수주공시 - DScovery 시스템 유지 보수 및 운영 18.5억원 (매출액대비 5.49 %)"
     },
     "link:82ef9ee8bef53c50fd1df303": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
@@ -26573,6 +26796,25 @@
       "link": "https://www.mt.co.kr/world/2026/09/24/2026092413520770400",
       "source": "머니투데이",
       "title": "\"중국산 메모리 쏟아진다\"...'빅쇼트' 마이클 버리, AI·반도체 공매도 확대"
+    },
+    "link:93aaf8fd5d73eb64b501ca34": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632850",
+      "source": "이투데이",
+      "source_body_digest": "48e9ad38d1674c49d56d045c1e3ca71d778c766ccc981ab2ca2b8b1134b45059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6130c84dd26266858769bbef778ddfea007ef0886908f822f58938f921c45bf",
+      "source_fact_keys": [
+        "source_fact:v1:6079679a9b7c124f82643791db08a7eb59c099b8ed79dc6c84e4e1b2be23277c",
+        "source_fact:v1:8403e52c5ad94f15a87b873f4178716fd38429791f331818a85e453936a3056b",
+        "source_fact:v1:aa52ac367514efa1009dbaec079887da6d2c15dfda8a04c88b53b0885fed8eeb"
+      ],
+      "source_published_kst": "2026-10-06T14:21+09:00",
+      "title": "IPARK현대산업개발, 부산 연산13구역 재개발 수주…2812억 규모"
     },
     "link:93da36b3fd4d5d3572eee852": {
       "first_seen_kst": "2026-10-05T10:49:34+09:00",
@@ -30436,6 +30678,27 @@
       "source_published_kst": "2026-10-04T06:03+09:00",
       "title": "[AI해킹] ① OTT·미용·결제 이어 은행까지…내 개인정보 어디까지 샜나 | 연합뉴스"
     },
+    "link:be6242661bb26224c6ae516e": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006091400009",
+      "source": "연합뉴스",
+      "source_body_digest": "9300ee08985dab76d8a8dd5df7a9bd273b4bb82ba52dc9835875a01ff23f12ef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d15a6af9b57a2dc04812696d512e6e370bb107c74fc2d213ae150a3aa83e685",
+      "source_fact_keys": [
+        "source_fact:v1:10976a0eb1a261f9fedf8227ac9e4423b4eaf0a7c501ca0057ec1e4a2bce0ffd",
+        "source_fact:v1:2230b8e23b20e6c16feb6fec721cbd8a9e252b0a7cd027129073b1b3a885f98f",
+        "source_fact:v1:41ebaafde94b1a6f1eb40acf116cc90150e892e130af673b95f4b8a57da78431",
+        "source_fact:v1:547f64394e182d4d7a32650e2746c2c0e56ee3034f154d415f23b6a161e5b594",
+        "source_fact:v1:ba3b0ba57d729900f41e4fa7af7472b85bd96dd7f78f211bc08cf8dc1596e5b9"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "中 장악 태양광 시장에 美 '탠덤 패널' 승부수 | 연합뉴스"
+    },
     "link:be6c6e19f465b693cf3662bd": {
       "first_seen_kst": "2026-10-04T06:34:33+09:00",
       "lanes": {
@@ -31054,6 +31317,28 @@
       ],
       "source_published_kst": "2026-10-05T21:00+09:00",
       "title": "알보테크, FDA 심랜디 미국 생산설비 추가 승인에 공급능력 2배 확대 기대"
+    },
+    "link:c5370e213984d8ea4c6e7fe2": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etnews.com/20261006000206",
+      "source": "전자신문",
+      "source_body_digest": "583428bf8c44efd13615029a5a5565dea5220220be0104896f1a504f487ceacc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e375ea1a54500908409607153ff18155da9236913f181cd5488bd3def1be832",
+      "source_fact_keys": [
+        "source_fact:v1:4bb0e0937b74ee38d20dae66ee4e530000b1c75ab1bf641b4530e8ac89216c0e",
+        "source_fact:v1:6a4c45aedaaec97c10a9745a7e60f2359c1cf411a5f454e63731eeb92eb02174",
+        "source_fact:v1:9905659b01567550e10262301a90272d0c4a03bdc51a0d00a2a37013b0272697",
+        "source_fact:v1:ada30bbf8cd810b9cd0c9937d91030dcca4377b9350f0d527fe8ea92a8d77df7",
+        "source_fact:v1:b02724874e4dfd58054dfdc4586f6ef516e588143bded409264af9090d5f1aa6",
+        "source_fact:v1:b81e48414b336c88a8333c8731f56ed5e37cfef58ead01bd00481b5fdf4eb846"
+      ],
+      "source_published_kst": "2026-10-06T13:21+09:00",
+      "title": "유럽 로봇 유니콘도 미국행…로브코, 현지 생산·시장 공략"
     },
     "link:c5672edd84c549f009cea73e": {
       "first_seen_kst": "2026-09-20T06:33:23+09:00",
@@ -37391,6 +37676,25 @@
       "source_published_kst": "2026-10-05T22:34+09:00",
       "title": "[美특징주]할리데이비슨, 씨티 '매수' 상향에 상승"
     },
+    "original:0e043441ba723b819b0e0149": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632850",
+      "source": "이투데이",
+      "source_body_digest": "48e9ad38d1674c49d56d045c1e3ca71d778c766ccc981ab2ca2b8b1134b45059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6130c84dd26266858769bbef778ddfea007ef0886908f822f58938f921c45bf",
+      "source_fact_keys": [
+        "source_fact:v1:6079679a9b7c124f82643791db08a7eb59c099b8ed79dc6c84e4e1b2be23277c",
+        "source_fact:v1:8403e52c5ad94f15a87b873f4178716fd38429791f331818a85e453936a3056b",
+        "source_fact:v1:aa52ac367514efa1009dbaec079887da6d2c15dfda8a04c88b53b0885fed8eeb"
+      ],
+      "source_published_kst": "2026-10-06T14:21+09:00",
+      "title": "IPARK현대산업개발, 부산 연산13구역 재개발 수주…2812억 규모"
+    },
     "original:0e4a355604f6d5b2bb88a08c": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
       "lanes": {
@@ -37878,6 +38182,27 @@
       "link": "https://www.yna.co.kr/view/AKR20260928015700009",
       "source": "연합뉴스",
       "title": "美재무 \"연준, 열린 마음 가져야…그린스펀은 경기 달리게 뒀다\" | 연합뉴스"
+    },
+    "original:1544fa5c6cf00107f9f86ce9": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894289",
+      "source": "헤럴드경제",
+      "source_body_digest": "870313e41932023ee87fa3f6f68a3fdff15a23f3ece240b586569cd468e777b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0509cf70bf29e15e434161dbb0ee912e22d6508ee1fc558f973f71887251656e",
+      "source_fact_keys": [
+        "source_fact:v1:0a4203753defd524b09bad48c7f3595c006aaeb42eaa6ec5bafb76b2a2419bdc",
+        "source_fact:v1:2b09f7b8d2bfa437d33e5780d456551bc726cba0329a677d76475590e95fa6d7",
+        "source_fact:v1:48a5b9ffceed62a7e7c2b20513aecf63e548637dbc6f799de9265a6cddfc5be1",
+        "source_fact:v1:6ad1a716f73399fd4a6a3cf25d6ed27ad867c6add4cc47e7c175f978c0f65e35",
+        "source_fact:v1:8134e64beded16c142aa8d98bf3bff085d168197581cb452aae0cd9c22046660"
+      ],
+      "source_published_kst": "2026-10-06T14:14+09:00",
+      "title": "경상수지 흑자 너무 많아도 문제? IMF 내년 한국에 ‘과잉 평가’ 전망 [머니뭐니]"
     },
     "original:15659fe9baad33eb0ee7e94f": {
       "first_seen_kst": "2026-09-21T16:34:04+09:00",
@@ -47537,6 +47862,27 @@
       "source": "뉴시스",
       "title": "나무AX 子 에스케이팩, 피지컬 AI 자율제조 R&D 과제 선정"
     },
+    "original:86c03d4ca17b9a68254d4741": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006091400009",
+      "source": "연합뉴스",
+      "source_body_digest": "9300ee08985dab76d8a8dd5df7a9bd273b4bb82ba52dc9835875a01ff23f12ef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d15a6af9b57a2dc04812696d512e6e370bb107c74fc2d213ae150a3aa83e685",
+      "source_fact_keys": [
+        "source_fact:v1:10976a0eb1a261f9fedf8227ac9e4423b4eaf0a7c501ca0057ec1e4a2bce0ffd",
+        "source_fact:v1:2230b8e23b20e6c16feb6fec721cbd8a9e252b0a7cd027129073b1b3a885f98f",
+        "source_fact:v1:41ebaafde94b1a6f1eb40acf116cc90150e892e130af673b95f4b8a57da78431",
+        "source_fact:v1:547f64394e182d4d7a32650e2746c2c0e56ee3034f154d415f23b6a161e5b594",
+        "source_fact:v1:ba3b0ba57d729900f41e4fa7af7472b85bd96dd7f78f211bc08cf8dc1596e5b9"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "中 장악 태양광 시장에 美 '탠덤 패널' 승부수 | 연합뉴스"
+    },
     "original:86f0f09098236c2d4eea346e": {
       "first_seen_kst": "2026-09-21T14:40:43+09:00",
       "lanes": {
@@ -49560,6 +49906,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261002023100003",
       "source": "연합뉴스",
       "title": "일진전기, 영국 해상풍력 전력망 확충사업 1천871억원 추가 수주 | 연합뉴스"
+    },
+    "original:9c4bcbf8d1dbe7c15f00145b": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.hankyung.com/article/202610065572L",
+      "source": "한국경제",
+      "source_body_digest": "e23aaf99bf6c57460c16b65bf000d50371051661ed34cdea0585427374a92042",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50a2a1e1952dc59346f5b91726a3d5cb6251a10e4d903539333846e50131d5e2",
+      "source_fact_keys": [
+        "source_fact:v1:382c403bb9e433a3a67413d234be0097eedb98fc45d6508671f8f8d4485d8a97",
+        "source_fact:v1:df5312d455d9850b0eac4430401ca918889d4d54924d241b7abc2a385263e639"
+      ],
+      "source_published_kst": "2026-10-06T14:10+09:00",
+      "title": "유비온 수주공시 - DScovery 시스템 유지 보수 및 운영 18.5억원 (매출액대비 5.49 %)"
     },
     "original:9c4ff6ffb65dc7fddd8b9679": {
       "first_seen_kst": "2026-10-01T21:28:22+09:00",
@@ -52099,6 +52463,23 @@
       "source": "파이낸셜뉴스",
       "title": "PLUS 200커버드콜액티브, 9월 주당 152원 분배…분배금 전액 비과세"
     },
+    "original:bb8f0ec0cd3b182a3b2e9e9c": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815523",
+      "source": "뉴시스",
+      "source_body_digest": "1be1d5b5b4e73d2c6ef17b390d6949fb5c6fd4447997b26985e1beaa484af06a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f52d48d8e30cbd0fb26aefe994679e88930a425867a6cba1e426fcb07b49de33",
+      "source_fact_keys": [
+        "source_fact:v1:5b1ed724d0a7d2b939b6a4593637d1708713843f0fc29144a553dd275f21d94d"
+      ],
+      "source_published_kst": "2026-10-06T13:27+09:00",
+      "title": "IPARK현대산업개발, 2812억 규모 재개발 정비사업 시공사 선정"
+    },
     "original:bb91e4ee81e08705335b8dad": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
       "lanes": {
@@ -53991,6 +54372,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260928144700003",
       "source": "연합뉴스",
       "title": "고려아연 최윤범 \"5년간 제품 20여종에서 30여종으로 확대\" | 연합뉴스"
+    },
+    "original:d4170961c2253cd5661aa643": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632848",
+      "source": "이투데이",
+      "source_body_digest": "b8eed9654a14e39af2f4a17eca391a3034d8610bc5d303dca8df5486ea7f9bd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ecea44ef8af2486ec9f437e96de72cf4eeaf821c5ac6bd54ff07337568b32617",
+      "source_fact_keys": [
+        "source_fact:v1:2b389711c5c7643b38f3b2959bf7f14254977371a1451a0fbb94088dcd2b972b"
+      ],
+      "source_published_kst": "2026-10-06T14:19+09:00",
+      "title": "비주택 용도변경 공급 ‘순항’…LH, 매입 신청 2125가구로 목표 초과"
     },
     "original:d43b4d9276d7b8bda0fb0226": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
@@ -56808,6 +57206,28 @@
       ],
       "source_published_kst": "2026-10-05T21:24+09:00",
       "title": "레이도스 홀딩스, 애널로직 보안검색 합작법인 출범..소수지분 유지"
+    },
+    "original:f26672f2f2ba749b5dab6602": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etnews.com/20261006000206",
+      "source": "전자신문",
+      "source_body_digest": "583428bf8c44efd13615029a5a5565dea5220220be0104896f1a504f487ceacc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e375ea1a54500908409607153ff18155da9236913f181cd5488bd3def1be832",
+      "source_fact_keys": [
+        "source_fact:v1:4bb0e0937b74ee38d20dae66ee4e530000b1c75ab1bf641b4530e8ac89216c0e",
+        "source_fact:v1:6a4c45aedaaec97c10a9745a7e60f2359c1cf411a5f454e63731eeb92eb02174",
+        "source_fact:v1:9905659b01567550e10262301a90272d0c4a03bdc51a0d00a2a37013b0272697",
+        "source_fact:v1:ada30bbf8cd810b9cd0c9937d91030dcca4377b9350f0d527fe8ea92a8d77df7",
+        "source_fact:v1:b02724874e4dfd58054dfdc4586f6ef516e588143bded409264af9090d5f1aa6",
+        "source_fact:v1:b81e48414b336c88a8333c8731f56ed5e37cfef58ead01bd00481b5fdf4eb846"
+      ],
+      "source_published_kst": "2026-10-06T13:21+09:00",
+      "title": "유럽 로봇 유니콘도 미국행…로브코, 현지 생산·시장 공략"
     },
     "original:f27ce3161392011602bba470": {
       "first_seen_kst": "2026-09-18T13:11:00+09:00",
@@ -59959,6 +60379,24 @@
       ],
       "source_published_kst": "2026-10-06T09:29+09:00",
       "title": "노벨티노빌리티, 美 바이오텍에 ADC 후보물질 NN3201 기술이전…총 7443억원"
+    },
+    "source_fact:0dc7ea3e0e5453cc9cdfd81a": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.hankyung.com/article/202610065572L",
+      "source": "한국경제",
+      "source_body_digest": "e23aaf99bf6c57460c16b65bf000d50371051661ed34cdea0585427374a92042",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50a2a1e1952dc59346f5b91726a3d5cb6251a10e4d903539333846e50131d5e2",
+      "source_fact_keys": [
+        "source_fact:v1:382c403bb9e433a3a67413d234be0097eedb98fc45d6508671f8f8d4485d8a97",
+        "source_fact:v1:df5312d455d9850b0eac4430401ca918889d4d54924d241b7abc2a385263e639"
+      ],
+      "source_published_kst": "2026-10-06T14:10+09:00",
+      "title": "유비온 수주공시 - DScovery 시스템 유지 보수 및 운영 18.5억원 (매출액대비 5.49 %)"
     },
     "source_fact:0e4497a88145848d20300177": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -63116,6 +63554,28 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외식 프랜차이즈 매출, 본사 4.6% 늘 때 가맹점은 2.6% 줄어 | 연합뉴스"
     },
+    "source_fact:261ab2967293f240efc4a117": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etnews.com/20261006000206",
+      "source": "전자신문",
+      "source_body_digest": "583428bf8c44efd13615029a5a5565dea5220220be0104896f1a504f487ceacc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e375ea1a54500908409607153ff18155da9236913f181cd5488bd3def1be832",
+      "source_fact_keys": [
+        "source_fact:v1:4bb0e0937b74ee38d20dae66ee4e530000b1c75ab1bf641b4530e8ac89216c0e",
+        "source_fact:v1:6a4c45aedaaec97c10a9745a7e60f2359c1cf411a5f454e63731eeb92eb02174",
+        "source_fact:v1:9905659b01567550e10262301a90272d0c4a03bdc51a0d00a2a37013b0272697",
+        "source_fact:v1:ada30bbf8cd810b9cd0c9937d91030dcca4377b9350f0d527fe8ea92a8d77df7",
+        "source_fact:v1:b02724874e4dfd58054dfdc4586f6ef516e588143bded409264af9090d5f1aa6",
+        "source_fact:v1:b81e48414b336c88a8333c8731f56ed5e37cfef58ead01bd00481b5fdf4eb846"
+      ],
+      "source_published_kst": "2026-10-06T13:21+09:00",
+      "title": "유럽 로봇 유니콘도 미국행…로브코, 현지 생산·시장 공략"
+    },
     "source_fact:2625187a26a7b4ec87fbf79a": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
@@ -63785,6 +64245,25 @@
       ],
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
+    },
+    "source_fact:2af0398597af9740f541cfe5": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632850",
+      "source": "이투데이",
+      "source_body_digest": "48e9ad38d1674c49d56d045c1e3ca71d778c766ccc981ab2ca2b8b1134b45059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6130c84dd26266858769bbef778ddfea007ef0886908f822f58938f921c45bf",
+      "source_fact_keys": [
+        "source_fact:v1:6079679a9b7c124f82643791db08a7eb59c099b8ed79dc6c84e4e1b2be23277c",
+        "source_fact:v1:8403e52c5ad94f15a87b873f4178716fd38429791f331818a85e453936a3056b",
+        "source_fact:v1:aa52ac367514efa1009dbaec079887da6d2c15dfda8a04c88b53b0885fed8eeb"
+      ],
+      "source_published_kst": "2026-10-06T14:21+09:00",
+      "title": "IPARK현대산업개발, 부산 연산13구역 재개발 수주…2812억 규모"
     },
     "source_fact:2b3bc2153c18e259349c35ac": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -65173,6 +65652,25 @@
       ],
       "source_published_kst": "2026-10-06T11:42+09:00",
       "title": "대전급식비 전국 꼴찌수준…허태정 시장 \"15%까지 인상\""
+    },
+    "source_fact:34936bfd947d64ce86a210f3": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632850",
+      "source": "이투데이",
+      "source_body_digest": "48e9ad38d1674c49d56d045c1e3ca71d778c766ccc981ab2ca2b8b1134b45059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6130c84dd26266858769bbef778ddfea007ef0886908f822f58938f921c45bf",
+      "source_fact_keys": [
+        "source_fact:v1:6079679a9b7c124f82643791db08a7eb59c099b8ed79dc6c84e4e1b2be23277c",
+        "source_fact:v1:8403e52c5ad94f15a87b873f4178716fd38429791f331818a85e453936a3056b",
+        "source_fact:v1:aa52ac367514efa1009dbaec079887da6d2c15dfda8a04c88b53b0885fed8eeb"
+      ],
+      "source_published_kst": "2026-10-06T14:21+09:00",
+      "title": "IPARK현대산업개발, 부산 연산13구역 재개발 수주…2812억 규모"
     },
     "source_fact:34b216d97894a1adc719b2ce": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
@@ -67090,6 +67588,27 @@
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
     },
+    "source_fact:437127003410e221fe5ea746": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894289",
+      "source": "헤럴드경제",
+      "source_body_digest": "870313e41932023ee87fa3f6f68a3fdff15a23f3ece240b586569cd468e777b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0509cf70bf29e15e434161dbb0ee912e22d6508ee1fc558f973f71887251656e",
+      "source_fact_keys": [
+        "source_fact:v1:0a4203753defd524b09bad48c7f3595c006aaeb42eaa6ec5bafb76b2a2419bdc",
+        "source_fact:v1:2b09f7b8d2bfa437d33e5780d456551bc726cba0329a677d76475590e95fa6d7",
+        "source_fact:v1:48a5b9ffceed62a7e7c2b20513aecf63e548637dbc6f799de9265a6cddfc5be1",
+        "source_fact:v1:6ad1a716f73399fd4a6a3cf25d6ed27ad867c6add4cc47e7c175f978c0f65e35",
+        "source_fact:v1:8134e64beded16c142aa8d98bf3bff085d168197581cb452aae0cd9c22046660"
+      ],
+      "source_published_kst": "2026-10-06T14:14+09:00",
+      "title": "경상수지 흑자 너무 많아도 문제? IMF 내년 한국에 ‘과잉 평가’ 전망 [머니뭐니]"
+    },
     "source_fact:43a882c1e5c9f6963faaaa41": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -67831,6 +68350,28 @@
       ],
       "source_published_kst": "2026-10-06T08:17+09:00",
       "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
+    },
+    "source_fact:47d11739382d4b5bef8af830": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etnews.com/20261006000206",
+      "source": "전자신문",
+      "source_body_digest": "583428bf8c44efd13615029a5a5565dea5220220be0104896f1a504f487ceacc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e375ea1a54500908409607153ff18155da9236913f181cd5488bd3def1be832",
+      "source_fact_keys": [
+        "source_fact:v1:4bb0e0937b74ee38d20dae66ee4e530000b1c75ab1bf641b4530e8ac89216c0e",
+        "source_fact:v1:6a4c45aedaaec97c10a9745a7e60f2359c1cf411a5f454e63731eeb92eb02174",
+        "source_fact:v1:9905659b01567550e10262301a90272d0c4a03bdc51a0d00a2a37013b0272697",
+        "source_fact:v1:ada30bbf8cd810b9cd0c9937d91030dcca4377b9350f0d527fe8ea92a8d77df7",
+        "source_fact:v1:b02724874e4dfd58054dfdc4586f6ef516e588143bded409264af9090d5f1aa6",
+        "source_fact:v1:b81e48414b336c88a8333c8731f56ed5e37cfef58ead01bd00481b5fdf4eb846"
+      ],
+      "source_published_kst": "2026-10-06T13:21+09:00",
+      "title": "유럽 로봇 유니콘도 미국행…로브코, 현지 생산·시장 공략"
     },
     "source_fact:47e5761da17211ec9a73c497": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -69596,6 +70137,27 @@
       "source_published_kst": "2026-10-06T09:29+09:00",
       "title": "대신운용, ‘주주환원고배당펀드’ 출시⋯배당ㆍ자사주 매입 기업 투자"
     },
+    "source_fact:5688598ab6f9fb78af40cfde": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894289",
+      "source": "헤럴드경제",
+      "source_body_digest": "870313e41932023ee87fa3f6f68a3fdff15a23f3ece240b586569cd468e777b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0509cf70bf29e15e434161dbb0ee912e22d6508ee1fc558f973f71887251656e",
+      "source_fact_keys": [
+        "source_fact:v1:0a4203753defd524b09bad48c7f3595c006aaeb42eaa6ec5bafb76b2a2419bdc",
+        "source_fact:v1:2b09f7b8d2bfa437d33e5780d456551bc726cba0329a677d76475590e95fa6d7",
+        "source_fact:v1:48a5b9ffceed62a7e7c2b20513aecf63e548637dbc6f799de9265a6cddfc5be1",
+        "source_fact:v1:6ad1a716f73399fd4a6a3cf25d6ed27ad867c6add4cc47e7c175f978c0f65e35",
+        "source_fact:v1:8134e64beded16c142aa8d98bf3bff085d168197581cb452aae0cd9c22046660"
+      ],
+      "source_published_kst": "2026-10-06T14:14+09:00",
+      "title": "경상수지 흑자 너무 많아도 문제? IMF 내년 한국에 ‘과잉 평가’ 전망 [머니뭐니]"
+    },
     "source_fact:568efc24569d188cbfc1c054": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -69726,6 +70288,27 @@
       ],
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
+    },
+    "source_fact:5805f6ba3c8d0f31782fb52c": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006091400009",
+      "source": "연합뉴스",
+      "source_body_digest": "9300ee08985dab76d8a8dd5df7a9bd273b4bb82ba52dc9835875a01ff23f12ef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d15a6af9b57a2dc04812696d512e6e370bb107c74fc2d213ae150a3aa83e685",
+      "source_fact_keys": [
+        "source_fact:v1:10976a0eb1a261f9fedf8227ac9e4423b4eaf0a7c501ca0057ec1e4a2bce0ffd",
+        "source_fact:v1:2230b8e23b20e6c16feb6fec721cbd8a9e252b0a7cd027129073b1b3a885f98f",
+        "source_fact:v1:41ebaafde94b1a6f1eb40acf116cc90150e892e130af673b95f4b8a57da78431",
+        "source_fact:v1:547f64394e182d4d7a32650e2746c2c0e56ee3034f154d415f23b6a161e5b594",
+        "source_fact:v1:ba3b0ba57d729900f41e4fa7af7472b85bd96dd7f78f211bc08cf8dc1596e5b9"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "中 장악 태양광 시장에 美 '탠덤 패널' 승부수 | 연합뉴스"
     },
     "source_fact:58096016080bba0c3ab057b7": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -69979,6 +70562,24 @@
       ],
       "source_published_kst": "2026-10-05T11:00+09:00",
       "title": "韓 비료, 브라질 진출 교두보…콩·옥수수 시장 겨냥"
+    },
+    "source_fact:5942a7922896c843aff31813": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.hankyung.com/article/202610065572L",
+      "source": "한국경제",
+      "source_body_digest": "e23aaf99bf6c57460c16b65bf000d50371051661ed34cdea0585427374a92042",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50a2a1e1952dc59346f5b91726a3d5cb6251a10e4d903539333846e50131d5e2",
+      "source_fact_keys": [
+        "source_fact:v1:382c403bb9e433a3a67413d234be0097eedb98fc45d6508671f8f8d4485d8a97",
+        "source_fact:v1:df5312d455d9850b0eac4430401ca918889d4d54924d241b7abc2a385263e639"
+      ],
+      "source_published_kst": "2026-10-06T14:10+09:00",
+      "title": "유비온 수주공시 - DScovery 시스템 유지 보수 및 운영 18.5억원 (매출액대비 5.49 %)"
     },
     "source_fact:595e5a9d4cbe4a084c78af86": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
@@ -71946,6 +72547,28 @@
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, 유럽 첫 상용 SDV에 통합 콕핏 솔루션 공급"
     },
+    "source_fact:68426250d3520b91baacd152": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etnews.com/20261006000206",
+      "source": "전자신문",
+      "source_body_digest": "583428bf8c44efd13615029a5a5565dea5220220be0104896f1a504f487ceacc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e375ea1a54500908409607153ff18155da9236913f181cd5488bd3def1be832",
+      "source_fact_keys": [
+        "source_fact:v1:4bb0e0937b74ee38d20dae66ee4e530000b1c75ab1bf641b4530e8ac89216c0e",
+        "source_fact:v1:6a4c45aedaaec97c10a9745a7e60f2359c1cf411a5f454e63731eeb92eb02174",
+        "source_fact:v1:9905659b01567550e10262301a90272d0c4a03bdc51a0d00a2a37013b0272697",
+        "source_fact:v1:ada30bbf8cd810b9cd0c9937d91030dcca4377b9350f0d527fe8ea92a8d77df7",
+        "source_fact:v1:b02724874e4dfd58054dfdc4586f6ef516e588143bded409264af9090d5f1aa6",
+        "source_fact:v1:b81e48414b336c88a8333c8731f56ed5e37cfef58ead01bd00481b5fdf4eb846"
+      ],
+      "source_published_kst": "2026-10-06T13:21+09:00",
+      "title": "유럽 로봇 유니콘도 미국행…로브코, 현지 생산·시장 공략"
+    },
     "source_fact:68526fe088313532b0db9049": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -72400,6 +73023,27 @@
       ],
       "source_published_kst": "2026-10-06T10:22+09:00",
       "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
+    },
+    "source_fact:6b118e96ad26152595d54cfd": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006091400009",
+      "source": "연합뉴스",
+      "source_body_digest": "9300ee08985dab76d8a8dd5df7a9bd273b4bb82ba52dc9835875a01ff23f12ef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d15a6af9b57a2dc04812696d512e6e370bb107c74fc2d213ae150a3aa83e685",
+      "source_fact_keys": [
+        "source_fact:v1:10976a0eb1a261f9fedf8227ac9e4423b4eaf0a7c501ca0057ec1e4a2bce0ffd",
+        "source_fact:v1:2230b8e23b20e6c16feb6fec721cbd8a9e252b0a7cd027129073b1b3a885f98f",
+        "source_fact:v1:41ebaafde94b1a6f1eb40acf116cc90150e892e130af673b95f4b8a57da78431",
+        "source_fact:v1:547f64394e182d4d7a32650e2746c2c0e56ee3034f154d415f23b6a161e5b594",
+        "source_fact:v1:ba3b0ba57d729900f41e4fa7af7472b85bd96dd7f78f211bc08cf8dc1596e5b9"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "中 장악 태양광 시장에 美 '탠덤 패널' 승부수 | 연합뉴스"
     },
     "source_fact:6bb2678f9a8a054b86213f1d": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -75280,6 +75924,27 @@
       "source_published_kst": "2026-10-05T20:21+09:00",
       "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
     },
+    "source_fact:7f70218f152d7565d36e7268": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894289",
+      "source": "헤럴드경제",
+      "source_body_digest": "870313e41932023ee87fa3f6f68a3fdff15a23f3ece240b586569cd468e777b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0509cf70bf29e15e434161dbb0ee912e22d6508ee1fc558f973f71887251656e",
+      "source_fact_keys": [
+        "source_fact:v1:0a4203753defd524b09bad48c7f3595c006aaeb42eaa6ec5bafb76b2a2419bdc",
+        "source_fact:v1:2b09f7b8d2bfa437d33e5780d456551bc726cba0329a677d76475590e95fa6d7",
+        "source_fact:v1:48a5b9ffceed62a7e7c2b20513aecf63e548637dbc6f799de9265a6cddfc5be1",
+        "source_fact:v1:6ad1a716f73399fd4a6a3cf25d6ed27ad867c6add4cc47e7c175f978c0f65e35",
+        "source_fact:v1:8134e64beded16c142aa8d98bf3bff085d168197581cb452aae0cd9c22046660"
+      ],
+      "source_published_kst": "2026-10-06T14:14+09:00",
+      "title": "경상수지 흑자 너무 많아도 문제? IMF 내년 한국에 ‘과잉 평가’ 전망 [머니뭐니]"
+    },
     "source_fact:7fa5054134c8e13dee9cd22f": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
       "lanes": {
@@ -75480,6 +76145,25 @@
       ],
       "source_published_kst": "2026-10-05T08:05+09:00",
       "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
+    },
+    "source_fact:80debfceb2048320ed39f6e0": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632850",
+      "source": "이투데이",
+      "source_body_digest": "48e9ad38d1674c49d56d045c1e3ca71d778c766ccc981ab2ca2b8b1134b45059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6130c84dd26266858769bbef778ddfea007ef0886908f822f58938f921c45bf",
+      "source_fact_keys": [
+        "source_fact:v1:6079679a9b7c124f82643791db08a7eb59c099b8ed79dc6c84e4e1b2be23277c",
+        "source_fact:v1:8403e52c5ad94f15a87b873f4178716fd38429791f331818a85e453936a3056b",
+        "source_fact:v1:aa52ac367514efa1009dbaec079887da6d2c15dfda8a04c88b53b0885fed8eeb"
+      ],
+      "source_published_kst": "2026-10-06T14:21+09:00",
+      "title": "IPARK현대산업개발, 부산 연산13구역 재개발 수주…2812억 규모"
     },
     "source_fact:80e2c3f29b0a2b24375f6091": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -76667,6 +77351,28 @@
       "source_published_kst": "2026-10-06T11:49+09:00",
       "title": "野, '호남 반도체' 공세...김정관 산업장관 \"기업이 먼저 서남권 투자 제안\""
     },
+    "source_fact:893e202d79673946794c3c63": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etnews.com/20261006000206",
+      "source": "전자신문",
+      "source_body_digest": "583428bf8c44efd13615029a5a5565dea5220220be0104896f1a504f487ceacc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e375ea1a54500908409607153ff18155da9236913f181cd5488bd3def1be832",
+      "source_fact_keys": [
+        "source_fact:v1:4bb0e0937b74ee38d20dae66ee4e530000b1c75ab1bf641b4530e8ac89216c0e",
+        "source_fact:v1:6a4c45aedaaec97c10a9745a7e60f2359c1cf411a5f454e63731eeb92eb02174",
+        "source_fact:v1:9905659b01567550e10262301a90272d0c4a03bdc51a0d00a2a37013b0272697",
+        "source_fact:v1:ada30bbf8cd810b9cd0c9937d91030dcca4377b9350f0d527fe8ea92a8d77df7",
+        "source_fact:v1:b02724874e4dfd58054dfdc4586f6ef516e588143bded409264af9090d5f1aa6",
+        "source_fact:v1:b81e48414b336c88a8333c8731f56ed5e37cfef58ead01bd00481b5fdf4eb846"
+      ],
+      "source_published_kst": "2026-10-06T13:21+09:00",
+      "title": "유럽 로봇 유니콘도 미국행…로브코, 현지 생산·시장 공략"
+    },
     "source_fact:894daca447c162bbb9674b67": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -77416,6 +78122,27 @@
       ],
       "source_published_kst": "2026-10-06T11:22+09:00",
       "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
+    "source_fact:8febd6448023b19951372279": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006091400009",
+      "source": "연합뉴스",
+      "source_body_digest": "9300ee08985dab76d8a8dd5df7a9bd273b4bb82ba52dc9835875a01ff23f12ef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d15a6af9b57a2dc04812696d512e6e370bb107c74fc2d213ae150a3aa83e685",
+      "source_fact_keys": [
+        "source_fact:v1:10976a0eb1a261f9fedf8227ac9e4423b4eaf0a7c501ca0057ec1e4a2bce0ffd",
+        "source_fact:v1:2230b8e23b20e6c16feb6fec721cbd8a9e252b0a7cd027129073b1b3a885f98f",
+        "source_fact:v1:41ebaafde94b1a6f1eb40acf116cc90150e892e130af673b95f4b8a57da78431",
+        "source_fact:v1:547f64394e182d4d7a32650e2746c2c0e56ee3034f154d415f23b6a161e5b594",
+        "source_fact:v1:ba3b0ba57d729900f41e4fa7af7472b85bd96dd7f78f211bc08cf8dc1596e5b9"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "中 장악 태양광 시장에 美 '탠덤 패널' 승부수 | 연합뉴스"
     },
     "source_fact:90476267c3b197c9f7599663": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
@@ -79443,6 +80170,27 @@
       "source_published_kst": "2026-10-06T13:44+09:00",
       "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
     },
+    "source_fact:9f426eb1aaed91ef53d64d55": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006091400009",
+      "source": "연합뉴스",
+      "source_body_digest": "9300ee08985dab76d8a8dd5df7a9bd273b4bb82ba52dc9835875a01ff23f12ef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d15a6af9b57a2dc04812696d512e6e370bb107c74fc2d213ae150a3aa83e685",
+      "source_fact_keys": [
+        "source_fact:v1:10976a0eb1a261f9fedf8227ac9e4423b4eaf0a7c501ca0057ec1e4a2bce0ffd",
+        "source_fact:v1:2230b8e23b20e6c16feb6fec721cbd8a9e252b0a7cd027129073b1b3a885f98f",
+        "source_fact:v1:41ebaafde94b1a6f1eb40acf116cc90150e892e130af673b95f4b8a57da78431",
+        "source_fact:v1:547f64394e182d4d7a32650e2746c2c0e56ee3034f154d415f23b6a161e5b594",
+        "source_fact:v1:ba3b0ba57d729900f41e4fa7af7472b85bd96dd7f78f211bc08cf8dc1596e5b9"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "中 장악 태양광 시장에 美 '탠덤 패널' 승부수 | 연합뉴스"
+    },
     "source_fact:9f4d0999833546afdeaa012a": {
       "first_seen_kst": "2026-10-05T19:54:04+09:00",
       "lanes": {
@@ -79506,6 +80254,23 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "제이엘케이 \"2대 주주 KB운용 지분 5.09→6.56% 확대\""
+    },
+    "source_fact:9fe5d53995daa31c0d25d2b5": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632848",
+      "source": "이투데이",
+      "source_body_digest": "b8eed9654a14e39af2f4a17eca391a3034d8610bc5d303dca8df5486ea7f9bd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ecea44ef8af2486ec9f437e96de72cf4eeaf821c5ac6bd54ff07337568b32617",
+      "source_fact_keys": [
+        "source_fact:v1:2b389711c5c7643b38f3b2959bf7f14254977371a1451a0fbb94088dcd2b972b"
+      ],
+      "source_published_kst": "2026-10-06T14:19+09:00",
+      "title": "비주택 용도변경 공급 ‘순항’…LH, 매입 신청 2125가구로 목표 초과"
     },
     "source_fact:9ff87ba16c88e98f3029ac72": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -79886,6 +80651,27 @@
       ],
       "source_published_kst": "2026-10-05T20:03+09:00",
       "title": "인스메드, CFO 10월 30일 사임…연간 매출 가이던스 유지"
+    },
+    "source_fact:a34a96a059a58dc4276d5e03": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894289",
+      "source": "헤럴드경제",
+      "source_body_digest": "870313e41932023ee87fa3f6f68a3fdff15a23f3ece240b586569cd468e777b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0509cf70bf29e15e434161dbb0ee912e22d6508ee1fc558f973f71887251656e",
+      "source_fact_keys": [
+        "source_fact:v1:0a4203753defd524b09bad48c7f3595c006aaeb42eaa6ec5bafb76b2a2419bdc",
+        "source_fact:v1:2b09f7b8d2bfa437d33e5780d456551bc726cba0329a677d76475590e95fa6d7",
+        "source_fact:v1:48a5b9ffceed62a7e7c2b20513aecf63e548637dbc6f799de9265a6cddfc5be1",
+        "source_fact:v1:6ad1a716f73399fd4a6a3cf25d6ed27ad867c6add4cc47e7c175f978c0f65e35",
+        "source_fact:v1:8134e64beded16c142aa8d98bf3bff085d168197581cb452aae0cd9c22046660"
+      ],
+      "source_published_kst": "2026-10-06T14:14+09:00",
+      "title": "경상수지 흑자 너무 많아도 문제? IMF 내년 한국에 ‘과잉 평가’ 전망 [머니뭐니]"
     },
     "source_fact:a35018a5612e1f442e277495": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -85536,6 +86322,23 @@
       "source_published_kst": "2026-10-06T06:04+09:00",
       "title": "[속보] 국제유가, 하락⋯WTI 1.84% ↓"
     },
+    "source_fact:cda076b1f378a7409689b55e": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815523",
+      "source": "뉴시스",
+      "source_body_digest": "1be1d5b5b4e73d2c6ef17b390d6949fb5c6fd4447997b26985e1beaa484af06a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f52d48d8e30cbd0fb26aefe994679e88930a425867a6cba1e426fcb07b49de33",
+      "source_fact_keys": [
+        "source_fact:v1:5b1ed724d0a7d2b939b6a4593637d1708713843f0fc29144a553dd275f21d94d"
+      ],
+      "source_published_kst": "2026-10-06T13:27+09:00",
+      "title": "IPARK현대산업개발, 2812억 규모 재개발 정비사업 시공사 선정"
+    },
     "source_fact:cdc6e5dcfa0d86141ee00b0e": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
       "lanes": {
@@ -87783,6 +88586,27 @@
       "source_published_kst": "2026-10-05T09:45+09:00",
       "title": "LG유플러스, 해외 AI 서비스 ‘유독’에 들여온다…11월 첫 상품 출시"
     },
+    "source_fact:ddc72e0151e28f5ca8470329": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006091400009",
+      "source": "연합뉴스",
+      "source_body_digest": "9300ee08985dab76d8a8dd5df7a9bd273b4bb82ba52dc9835875a01ff23f12ef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d15a6af9b57a2dc04812696d512e6e370bb107c74fc2d213ae150a3aa83e685",
+      "source_fact_keys": [
+        "source_fact:v1:10976a0eb1a261f9fedf8227ac9e4423b4eaf0a7c501ca0057ec1e4a2bce0ffd",
+        "source_fact:v1:2230b8e23b20e6c16feb6fec721cbd8a9e252b0a7cd027129073b1b3a885f98f",
+        "source_fact:v1:41ebaafde94b1a6f1eb40acf116cc90150e892e130af673b95f4b8a57da78431",
+        "source_fact:v1:547f64394e182d4d7a32650e2746c2c0e56ee3034f154d415f23b6a161e5b594",
+        "source_fact:v1:ba3b0ba57d729900f41e4fa7af7472b85bd96dd7f78f211bc08cf8dc1596e5b9"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "中 장악 태양광 시장에 美 '탠덤 패널' 승부수 | 연합뉴스"
+    },
     "source_fact:dddbf8f84ea97bbfcafce4fb": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
       "lanes": {
@@ -89239,6 +90063,28 @@
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
+    "source_fact:e6e117fa11b078d4a6f84b1a": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etnews.com/20261006000206",
+      "source": "전자신문",
+      "source_body_digest": "583428bf8c44efd13615029a5a5565dea5220220be0104896f1a504f487ceacc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e375ea1a54500908409607153ff18155da9236913f181cd5488bd3def1be832",
+      "source_fact_keys": [
+        "source_fact:v1:4bb0e0937b74ee38d20dae66ee4e530000b1c75ab1bf641b4530e8ac89216c0e",
+        "source_fact:v1:6a4c45aedaaec97c10a9745a7e60f2359c1cf411a5f454e63731eeb92eb02174",
+        "source_fact:v1:9905659b01567550e10262301a90272d0c4a03bdc51a0d00a2a37013b0272697",
+        "source_fact:v1:ada30bbf8cd810b9cd0c9937d91030dcca4377b9350f0d527fe8ea92a8d77df7",
+        "source_fact:v1:b02724874e4dfd58054dfdc4586f6ef516e588143bded409264af9090d5f1aa6",
+        "source_fact:v1:b81e48414b336c88a8333c8731f56ed5e37cfef58ead01bd00481b5fdf4eb846"
+      ],
+      "source_published_kst": "2026-10-06T13:21+09:00",
+      "title": "유럽 로봇 유니콘도 미국행…로브코, 현지 생산·시장 공략"
+    },
     "source_fact:e6ea4558d3d9658307282413": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -90041,6 +90887,27 @@
       "source_published_kst": "2026-10-06T12:08+09:00",
       "title": "삼성전기, 2856억 MLCC 추가 수주…올해 공급계약 약 4조원 추산(종합)"
     },
+    "source_fact:eccbf189913f7df45dd7a591": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894289",
+      "source": "헤럴드경제",
+      "source_body_digest": "870313e41932023ee87fa3f6f68a3fdff15a23f3ece240b586569cd468e777b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0509cf70bf29e15e434161dbb0ee912e22d6508ee1fc558f973f71887251656e",
+      "source_fact_keys": [
+        "source_fact:v1:0a4203753defd524b09bad48c7f3595c006aaeb42eaa6ec5bafb76b2a2419bdc",
+        "source_fact:v1:2b09f7b8d2bfa437d33e5780d456551bc726cba0329a677d76475590e95fa6d7",
+        "source_fact:v1:48a5b9ffceed62a7e7c2b20513aecf63e548637dbc6f799de9265a6cddfc5be1",
+        "source_fact:v1:6ad1a716f73399fd4a6a3cf25d6ed27ad867c6add4cc47e7c175f978c0f65e35",
+        "source_fact:v1:8134e64beded16c142aa8d98bf3bff085d168197581cb452aae0cd9c22046660"
+      ],
+      "source_published_kst": "2026-10-06T14:14+09:00",
+      "title": "경상수지 흑자 너무 많아도 문제? IMF 내년 한국에 ‘과잉 평가’ 전망 [머니뭐니]"
+    },
     "source_fact:ecd68d0bc978e1ccd8d21e7f": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -90382,6 +91249,28 @@
       ],
       "source_published_kst": "2026-10-05T08:05+09:00",
       "title": "씨이앤에스, ‘AI 서버 폭발적 발열’ 미스트 정밀 분사로 잡는다"
+    },
+    "source_fact:ef6e59a9b1cea673be9ee03e": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etnews.com/20261006000206",
+      "source": "전자신문",
+      "source_body_digest": "583428bf8c44efd13615029a5a5565dea5220220be0104896f1a504f487ceacc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e375ea1a54500908409607153ff18155da9236913f181cd5488bd3def1be832",
+      "source_fact_keys": [
+        "source_fact:v1:4bb0e0937b74ee38d20dae66ee4e530000b1c75ab1bf641b4530e8ac89216c0e",
+        "source_fact:v1:6a4c45aedaaec97c10a9745a7e60f2359c1cf411a5f454e63731eeb92eb02174",
+        "source_fact:v1:9905659b01567550e10262301a90272d0c4a03bdc51a0d00a2a37013b0272697",
+        "source_fact:v1:ada30bbf8cd810b9cd0c9937d91030dcca4377b9350f0d527fe8ea92a8d77df7",
+        "source_fact:v1:b02724874e4dfd58054dfdc4586f6ef516e588143bded409264af9090d5f1aa6",
+        "source_fact:v1:b81e48414b336c88a8333c8731f56ed5e37cfef58ead01bd00481b5fdf4eb846"
+      ],
+      "source_published_kst": "2026-10-06T13:21+09:00",
+      "title": "유럽 로봇 유니콘도 미국행…로브코, 현지 생산·시장 공략"
     },
     "source_fact:eff152405515d736c7aef055": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
@@ -93828,6 +94717,25 @@
       "source_published_kst": "2026-10-05T22:34+09:00",
       "title": "[美특징주]할리데이비슨, 씨티 '매수' 상향에 상승"
     },
+    "title:0e043441ba723b819b0e0149": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632850",
+      "source": "이투데이",
+      "source_body_digest": "48e9ad38d1674c49d56d045c1e3ca71d778c766ccc981ab2ca2b8b1134b45059",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a6130c84dd26266858769bbef778ddfea007ef0886908f822f58938f921c45bf",
+      "source_fact_keys": [
+        "source_fact:v1:6079679a9b7c124f82643791db08a7eb59c099b8ed79dc6c84e4e1b2be23277c",
+        "source_fact:v1:8403e52c5ad94f15a87b873f4178716fd38429791f331818a85e453936a3056b",
+        "source_fact:v1:aa52ac367514efa1009dbaec079887da6d2c15dfda8a04c88b53b0885fed8eeb"
+      ],
+      "source_published_kst": "2026-10-06T14:21+09:00",
+      "title": "IPARK현대산업개발, 부산 연산13구역 재개발 수주…2812억 규모"
+    },
     "title:0e4a355604f6d5b2bb88a08c": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
       "lanes": {
@@ -94315,6 +95223,27 @@
       "link": "https://www.yna.co.kr/view/AKR20260928015700009",
       "source": "연합뉴스",
       "title": "美재무 \"연준, 열린 마음 가져야…그린스펀은 경기 달리게 뒀다\" | 연합뉴스"
+    },
+    "title:1544fa5c6cf00107f9f86ce9": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894289",
+      "source": "헤럴드경제",
+      "source_body_digest": "870313e41932023ee87fa3f6f68a3fdff15a23f3ece240b586569cd468e777b1",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0509cf70bf29e15e434161dbb0ee912e22d6508ee1fc558f973f71887251656e",
+      "source_fact_keys": [
+        "source_fact:v1:0a4203753defd524b09bad48c7f3595c006aaeb42eaa6ec5bafb76b2a2419bdc",
+        "source_fact:v1:2b09f7b8d2bfa437d33e5780d456551bc726cba0329a677d76475590e95fa6d7",
+        "source_fact:v1:48a5b9ffceed62a7e7c2b20513aecf63e548637dbc6f799de9265a6cddfc5be1",
+        "source_fact:v1:6ad1a716f73399fd4a6a3cf25d6ed27ad867c6add4cc47e7c175f978c0f65e35",
+        "source_fact:v1:8134e64beded16c142aa8d98bf3bff085d168197581cb452aae0cd9c22046660"
+      ],
+      "source_published_kst": "2026-10-06T14:14+09:00",
+      "title": "경상수지 흑자 너무 많아도 문제? IMF 내년 한국에 ‘과잉 평가’ 전망 [머니뭐니]"
     },
     "title:15659fe9baad33eb0ee7e94f": {
       "first_seen_kst": "2026-09-21T16:34:04+09:00",
@@ -104066,6 +104995,27 @@
       "source": "뉴시스",
       "title": "나무AX 子 에스케이팩, 피지컬 AI 자율제조 R&D 과제 선정"
     },
+    "title:86c03d4ca17b9a68254d4741": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006091400009",
+      "source": "연합뉴스",
+      "source_body_digest": "9300ee08985dab76d8a8dd5df7a9bd273b4bb82ba52dc9835875a01ff23f12ef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d15a6af9b57a2dc04812696d512e6e370bb107c74fc2d213ae150a3aa83e685",
+      "source_fact_keys": [
+        "source_fact:v1:10976a0eb1a261f9fedf8227ac9e4423b4eaf0a7c501ca0057ec1e4a2bce0ffd",
+        "source_fact:v1:2230b8e23b20e6c16feb6fec721cbd8a9e252b0a7cd027129073b1b3a885f98f",
+        "source_fact:v1:41ebaafde94b1a6f1eb40acf116cc90150e892e130af673b95f4b8a57da78431",
+        "source_fact:v1:547f64394e182d4d7a32650e2746c2c0e56ee3034f154d415f23b6a161e5b594",
+        "source_fact:v1:ba3b0ba57d729900f41e4fa7af7472b85bd96dd7f78f211bc08cf8dc1596e5b9"
+      ],
+      "source_published_kst": "2026-10-06T14:13+09:00",
+      "title": "中 장악 태양광 시장에 美 '탠덤 패널' 승부수 | 연합뉴스"
+    },
     "title:86f0f09098236c2d4eea346e": {
       "first_seen_kst": "2026-09-21T14:40:43+09:00",
       "lanes": {
@@ -106100,6 +107050,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261002023100003",
       "source": "연합뉴스",
       "title": "일진전기, 영국 해상풍력 전력망 확충사업 1천871억원 추가 수주 | 연합뉴스"
+    },
+    "title:9c4bcbf8d1dbe7c15f00145b": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.hankyung.com/article/202610065572L",
+      "source": "한국경제",
+      "source_body_digest": "e23aaf99bf6c57460c16b65bf000d50371051661ed34cdea0585427374a92042",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:50a2a1e1952dc59346f5b91726a3d5cb6251a10e4d903539333846e50131d5e2",
+      "source_fact_keys": [
+        "source_fact:v1:382c403bb9e433a3a67413d234be0097eedb98fc45d6508671f8f8d4485d8a97",
+        "source_fact:v1:df5312d455d9850b0eac4430401ca918889d4d54924d241b7abc2a385263e639"
+      ],
+      "source_published_kst": "2026-10-06T14:10+09:00",
+      "title": "유비온 수주공시 - DScovery 시스템 유지 보수 및 운영 18.5억원 (매출액대비 5.49 %)"
     },
     "title:9c4ff6ffb65dc7fddd8b9679": {
       "first_seen_kst": "2026-10-01T21:28:22+09:00",
@@ -108696,6 +109664,23 @@
       "source": "파이낸셜뉴스",
       "title": "PLUS 200커버드콜액티브, 9월 주당 152원 분배…분배금 전액 비과세"
     },
+    "title:bb8f0ec0cd3b182a3b2e9e9c": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815523",
+      "source": "뉴시스",
+      "source_body_digest": "1be1d5b5b4e73d2c6ef17b390d6949fb5c6fd4447997b26985e1beaa484af06a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f52d48d8e30cbd0fb26aefe994679e88930a425867a6cba1e426fcb07b49de33",
+      "source_fact_keys": [
+        "source_fact:v1:5b1ed724d0a7d2b939b6a4593637d1708713843f0fc29144a553dd275f21d94d"
+      ],
+      "source_published_kst": "2026-10-06T13:27+09:00",
+      "title": "IPARK현대산업개발, 2812억 규모 재개발 정비사업 시공사 선정"
+    },
     "title:bb91e4ee81e08705335b8dad": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
       "lanes": {
@@ -110599,6 +111584,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260928144700003",
       "source": "연합뉴스",
       "title": "고려아연 최윤범 \"5년간 제품 20여종에서 30여종으로 확대\" | 연합뉴스"
+    },
+    "title:d4170961c2253cd5661aa643": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632848",
+      "source": "이투데이",
+      "source_body_digest": "b8eed9654a14e39af2f4a17eca391a3034d8610bc5d303dca8df5486ea7f9bd6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ecea44ef8af2486ec9f437e96de72cf4eeaf821c5ac6bd54ff07337568b32617",
+      "source_fact_keys": [
+        "source_fact:v1:2b389711c5c7643b38f3b2959bf7f14254977371a1451a0fbb94088dcd2b972b"
+      ],
+      "source_published_kst": "2026-10-06T14:19+09:00",
+      "title": "비주택 용도변경 공급 ‘순항’…LH, 매입 신청 2125가구로 목표 초과"
     },
     "title:d43b4d9276d7b8bda0fb0226": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
@@ -113463,6 +114465,28 @@
       "source_published_kst": "2026-10-05T21:24+09:00",
       "title": "레이도스 홀딩스, 애널로직 보안검색 합작법인 출범..소수지분 유지"
     },
+    "title:f26672f2f2ba749b5dab6602": {
+      "first_seen_kst": "2026-10-06T16:30:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:30:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:30:27+09:00",
+      "link": "https://www.etnews.com/20261006000206",
+      "source": "전자신문",
+      "source_body_digest": "583428bf8c44efd13615029a5a5565dea5220220be0104896f1a504f487ceacc",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e375ea1a54500908409607153ff18155da9236913f181cd5488bd3def1be832",
+      "source_fact_keys": [
+        "source_fact:v1:4bb0e0937b74ee38d20dae66ee4e530000b1c75ab1bf641b4530e8ac89216c0e",
+        "source_fact:v1:6a4c45aedaaec97c10a9745a7e60f2359c1cf411a5f454e63731eeb92eb02174",
+        "source_fact:v1:9905659b01567550e10262301a90272d0c4a03bdc51a0d00a2a37013b0272697",
+        "source_fact:v1:ada30bbf8cd810b9cd0c9937d91030dcca4377b9350f0d527fe8ea92a8d77df7",
+        "source_fact:v1:b02724874e4dfd58054dfdc4586f6ef516e588143bded409264af9090d5f1aa6",
+        "source_fact:v1:b81e48414b336c88a8333c8731f56ed5e37cfef58ead01bd00481b5fdf4eb846"
+      ],
+      "source_published_kst": "2026-10-06T13:21+09:00",
+      "title": "유럽 로봇 유니콘도 미국행…로브코, 현지 생산·시장 공략"
+    },
     "title:f27ce3161392011602bba470": {
       "first_seen_kst": "2026-09-18T13:11:00+09:00",
       "lanes": {
@@ -114566,5 +115590,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T16:20:22+09:00"
+  "updated_at_kst": "2026-10-06T16:30:27+09:00"
 }
