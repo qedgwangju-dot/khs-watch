@@ -226,13 +226,37 @@ jobs:
 
           active = get("in_progress") + get("queued")
           healthy = []
+          startup = []
           for run in active:
               created = dt.datetime.fromisoformat(run["created_at"].replace("Z", "+00:00")).astimezone(ZoneInfo("Asia/Seoul"))
-              if created.date() == now.date():
-                  healthy.append((run.get("id"), created.strftime("%H:%M:%S"), run.get("status")))
+              if created.date() != now.date():
+                  continue
+              run_id = int(run.get("id"))
+              age_minutes = (now - created).total_seconds() / 60.0
+              jobs_req = urllib.request.Request(
+                  f"https://api.github.com/repos/{repo}/actions/runs/{run_id}/jobs?per_page=100",
+                  headers=headers,
+              )
+              try:
+                  with urllib.request.urlopen(jobs_req, timeout=20) as r:
+                      jobs = json.loads(r.read().decode("utf-8")).get("jobs", [])
+              except Exception:
+                  jobs = []
+              production_jobs = [
+                  j for j in jobs
+                  if str(j.get("name") or "") in {"watch", "morning", "afternoon"}
+                  and j.get("status") in {"queued", "in_progress"}
+              ]
+              if production_jobs:
+                  healthy.append((
+                      run_id, created.strftime("%H:%M:%S"), run.get("status"),
+                      [(j.get("name"), j.get("status")) for j in production_jobs],
+                  ))
+              elif age_minutes <= 3:
+                  startup.append((run_id, created.strftime("%H:%M:%S"), run.get("status")))
 
-          if healthy:
-              print(f"kospi_realtime_watchdog=alive runs={healthy}")
+          if healthy or startup:
+              print(f"kospi_realtime_watchdog=alive production={healthy} startup_grace={startup}")
               with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as f:
                   f.write("KOSPI_REALTIME_WATCH_ACTIVE=1\n")
               raise SystemExit(0)
