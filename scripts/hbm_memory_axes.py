@@ -1442,6 +1442,45 @@ def comparison(old, new):
             if (float(av) < threshold <= float(bv)) or (float(av) >= threshold > float(bv)):
                 reasons.append(f"수율 {threshold}% 기준 {'상향 돌파' if float(bv)>=threshold else '하향 이탈'}")
         return reasons
+    if new['axis'] == 'glass_process_cycle_time':
+        reasons = []
+        if a.get('process_name') != b.get('process_name') and b.get('process_name'):
+            reasons.append(f"핵심공정 식별 {a.get('process_name') or '미확인'}→{b.get('process_name')}")
+        av, bv = a.get('after_minutes_exact'), b.get('after_minutes_exact')
+        if av is None and bv is not None:
+            reasons.append(f"개선 후 정확한 공정시간 {float(bv):g}분 최초 공개")
+        elif av is not None and bv is not None and abs(float(bv)-float(av)) >= max(1.0, abs(float(av))*0.1):
+            reasons.append(f"개선 후 공정시간 {float(av):g}→{float(bv):g}분")
+        if a.get('after_time_class') != b.get('after_time_class') and b.get('after_time_class'):
+            reasons.append(f"공정시간 표현 {a.get('after_time_class') or '미확인'}→{b.get('after_time_class')}")
+        if a.get('body_direct_verified') is not True and b.get('body_direct_verified') is True:
+            reasons.append("기사 본문에서 공정명·시간 직접 검증 완료")
+        return reasons
+    if new['axis'] == 'glass_capex':
+        reasons = []
+        av, bv = a.get('investment_krw'), b.get('investment_krw')
+        if av is None and bv is not None:
+            reasons.append(f"김천 TGV 설비투자 {float(bv)/1e8:,.0f}억원 최초 확인")
+        elif av and bv:
+            pct = (float(bv)/float(av)-1)*100
+            if abs(pct) >= 10:
+                reasons.append(f"김천 TGV 설비투자 {float(av)/1e8:,.0f}→{float(bv)/1e8:,.0f}억원 ({pct:+.1f}%)")
+        for field, label in (('line_count','생산라인 수'),('start_year','투자 시작'),('end_year','투자 종료'),('employees','고용'),('site_area_pyeong','부지')):
+            av, bv = a.get(field), b.get(field)
+            if av is not None and bv is not None and av != bv:
+                reasons.append(f"{label} {av}→{bv}")
+            elif av is None and bv is not None:
+                reasons.append(f"{label} {bv} 신규 확인")
+        av, bv = a.get('capacity_panels_per_month'), b.get('capacity_panels_per_month')
+        if av is None and bv is not None:
+            reasons.append(f"김천 실제 생산능력 월 {float(bv):,.0f}장 최초 공개")
+        elif av and bv:
+            pct=(float(bv)/float(av)-1)*100
+            if abs(pct)>=10:
+                reasons.append(f"김천 실제 생산능력 월 {float(av):,.0f}→{float(bv):,.0f}장 ({pct:+.1f}%)")
+        if a.get('stage') != b.get('stage') and b.get('stage'):
+            reasons.append(f"설비투자 단계 {a.get('stage') or '미확인'}→{b.get('stage')}")
+        return reasons
     if new['axis'] == 'glass_hvm_stage':
         reasons = []
         old_stage, new_stage = a.get('stage','sample'), b.get('stage','sample')
