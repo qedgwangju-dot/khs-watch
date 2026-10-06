@@ -138,6 +138,19 @@ jobs:
           assert rendered5.count("이전5 2026-09-16~2026-09-22") == 1
           print("five_day_reading_order_valid=true")
           print(rendered5)
+
+          live_state = json.loads(pathlib.Path("data/crypto_liquidity_watch_state.json").read_text(encoding="utf-8"))
+          if (
+              float((live_state.get("btc_etf") or {}).get("total_usd_m", 0.0) or 0.0) < 0
+              and float((live_state.get("btc_etf") or {}).get("last5_usd_m", 0.0) or 0.0)
+                  < float((live_state.get("btc_etf") or {}).get("prev5_usd_m", 0.0) or 0.0)
+              and float((live_state.get("rates") or {}).get("daily_10y_bp", 0.0) or 0.0) > 0
+              and float((live_state.get("rates") or {}).get("daily_30y_bp", 0.0) or 0.0) > 0
+          ):
+              verdict, reason = fmt.compact_judgement(live_state)
+              assert "다만" not in reason, reason
+              assert "순유입 강도도 둔화" in reason, reason
+              print("adverse_crypto_wording_valid=true")
           PY
 
       - name: Validate exact Telegram bot route without sending
