@@ -86,6 +86,7 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
     registrations: list[tuple[str, str]] = []
     industry_names: dict[str, str] = {}
     last_signature: dict[tuple[str, str], tuple[str, float]] = {}
+    last_payload_ts: float | None = None
 
     try:
         if not await api.login(appkey, appsecret):
@@ -99,9 +100,10 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
         fp = out_path.open("a", encoding="utf-8", buffering=1)
 
         def on_realtime(api_obj, trcode, key, data):
-            nonlocal written
+            nonlocal written, last_payload_ts
             if str(trcode) != "UBM" or not isinstance(data, dict):
                 return
+            last_payload_ts = time.time()
             investor_code = str(data.get("tjjcode") or "").strip()
             investor = INVESTORS.get(investor_code)
             if not investor:
@@ -156,10 +158,19 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
         started = time.time()
         while True:
             now = dt.datetime.now(KST)
-            if test_seconds is not None and time.time() - started >= test_seconds:
+            elapsed = time.time() - started
+            if test_seconds is not None and elapsed >= test_seconds:
                 break
             if test_seconds is None and now.time() >= until:
                 break
+            live_window = now.weekday() < 5 and dt.time(9, 0) <= now.time() < until
+            if live_window and elapsed >= 90:
+                stale_for = None if last_payload_ts is None else time.time() - last_payload_ts
+                if last_payload_ts is None or (stale_for is not None and stale_for > 120):
+                    raise RuntimeError(
+                        "UBM feed stale >120s during market hours; "
+                        f"last_payload_age={stale_for}"
+                    )
             await asyncio.sleep(1)
 
         fp.flush()
