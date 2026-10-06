@@ -28,6 +28,7 @@ KI_NOBEL = "https://news.ki.se/the-2026-nobel-prize-in-physiology-or-medicine-to
 NANOSCOPE_NEWS = "https://nanostherapeutics.com/nanoscope-press-release/"
 RAY_NEWS = "https://raytherapeutics.com/category/press-release/"
 RAY_FEED = "https://raytherapeutics.com/feed/"
+RAY_GOOGLE_QUERY = '"Ray Therapeutics" (RTx-015 OR RTx-021 OR optogenetic) (FDA OR EMA OR RMAT OR PRIME OR trial OR phase OR dosing OR data OR results OR financing OR partnership)'
 GENSIGHT_NEWS = "https://www.gensight-biologics.com/subject/gs030/"
 
 TRIALS = {
@@ -183,6 +184,47 @@ def meaningful_rss_links(company: str, feed_url: str, program_terms: tuple[str, 
     return out
 
 
+def meaningful_google_official_links(company: str, query: str, official_domain: str, program_terms: tuple[str, ...]) -> list[dict]:
+    url = "https://news.google.com/rss/search?" + urllib.parse.urlencode({
+        "q": query,
+        "hl": "en-US",
+        "gl": "US",
+        "ceid": "US:en",
+    })
+    root = ET.fromstring(fetch_text(url))
+    out: list[dict] = []
+    seen: set[str] = set()
+    for item in root.findall("./channel/item")[:30]:
+        title = clean(item.findtext("title") or "")
+        link = clean(item.findtext("link") or "")
+        src = item.find("source")
+        source_name = clean(src.text if src is not None and src.text else "")
+        source_url = clean(src.attrib.get("url", "") if src is not None else "")
+        low = title.lower()
+        if official_domain not in source_url.lower() and company.lower() not in source_name.lower():
+            continue
+        if not any(term in low for term in program_terms):
+            continue
+        if not any(term in low for term in ACTION_TERMS):
+            continue
+        k = key_for(company, title.lower(), "official-index")
+        if k in seen:
+            continue
+        seen.add(k)
+        stage, meaning = classify_press(title)
+        out.append({
+            "key": k,
+            "company": company,
+            "program": "RTx-015/RTx-021",
+            "stage": stage,
+            "meaning": meaning,
+            "title": title,
+            "url": link,
+            "source": "Ray Therapeutics 공식 도메인 색인",
+        })
+    return out
+
+
 def meaningful_press_links(company: str, base_url: str, program_terms: tuple[str, ...]) -> list[dict]:
     page = fetch_text(base_url)
     parser = LinkParser()
@@ -307,11 +349,6 @@ def validate_nobel() -> bool:
     return all(x in text for x in required)
 
 
-def validate_ray_pipeline() -> bool:
-    text = clean(re.sub(r"<[^>]+>", " ", fetch_text("https://raytherapeutics.com/pipeline/"))).lower()
-    return "rtx-015" in text and "optogen" in text and "phase 1" in text
-
-
 def render_alert(items: list[dict], trial_updates: list[dict], new_cns_trials: list[dict], now: dt.datetime) -> str:
     lines = [
         "[바이오 감시] 광유전학 임상·허가 구조 변화",
@@ -405,14 +442,19 @@ def main() -> int:
         except Exception as exc:
             errors.append(f"{company}: {type(exc).__name__}")
 
-    ray_pipeline_ok = False
+    ray_official_index_ok = False
     try:
-        ray_pipeline_ok = validate_ray_pipeline()
+        ray_rows = meaningful_google_official_links(
+            "Ray Therapeutics",
+            RAY_GOOGLE_QUERY,
+            "raytherapeutics.com",
+            ("rtx-015", "rtx-021", "optogen"),
+        )
+        events.extend(ray_rows)
+        ray_official_index_ok = True
         successful += 1
-        if not ray_pipeline_ok:
-            errors.append("Ray Therapeutics 공식 파이프라인 검증 실패")
     except Exception as exc:
-        errors.append(f"Ray Therapeutics pipeline: {type(exc).__name__}")
+        errors.append(f"Ray Therapeutics 공식도메인 색인: {type(exc).__name__}")
 
     snapshots: dict[str, dict] = {}
     trial_updates: list[dict] = []
@@ -453,7 +495,7 @@ def main() -> int:
     new_cns = [x for x in cns_trials if x["nct"] not in old_cns] if initialized else []
 
     source_version = int(old.get("source_version") or 0)
-    if initialized and source_version < 3:
+    if initialized and source_version < 4:
         # Source coverage expanded after the first baseline. Do not replay
         # historical GS030/Nanoscope/Ray items as if they were new events.
         new_items = []
@@ -461,8 +503,8 @@ def main() -> int:
     pending = {
         "initialized": True,
         "version": 1,
-        "source_version": 3,
-        "ray_pipeline_verified": ray_pipeline_ok,
+        "source_version": 4,
+        "ray_official_index_verified": ray_official_index_ok,
         "last_checked_kst": dt.datetime.now(KST).isoformat(timespec="seconds"),
         "nobel_2026_verified": nobel_ok,
         "seen_event_keys": current_keys,
