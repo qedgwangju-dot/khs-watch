@@ -51,6 +51,8 @@ INTRADAY_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_intraday_scope_fixture
 INTRADAY_SCOPE_CASES = {case["id"]: case for case in INTRADAY_SCOPE_FIXTURE["cases"]}
 DELIVERY_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_delivery_scope_fixtures_20261006.json").read_text(encoding="utf-8"))
 DELIVERY_SCOPE_CASES = {case["id"]: case for case in DELIVERY_SCOPE_FIXTURE["cases"]}
+POSTDEPLOY_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_postdeploy_market_scope_fixtures_20261006.json").read_text(encoding="utf-8"))
+POSTDEPLOY_SCOPE_CASES = {case["id"]: case for case in POSTDEPLOY_SCOPE_FIXTURE["cases"]}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -92,6 +94,130 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def postdeploy_scope_alert(self, key):
+        case = POSTDEPLOY_SCOPE_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_version83_delivery_all_seven_full_bodies_and_three_unique_events(self):
+        self.assertEqual(len(POSTDEPLOY_SCOPE_CASES), 7)
+        now = NOW.replace(day=6, hour=12)
+        selected_all = []
+        for case in POSTDEPLOY_SCOPE_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                candidate = classify(case, now)
+                selected = radar.quality_display_alerts([candidate], 30) if candidate else []
+                self.assertEqual(bool(selected), case['expected_keep'])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+                    self.assertTrue(radar.core_sentence_is_complete(selected[0]['telegram_core_fact']))
+                selected_all.extend(selected)
+        with patch.object(radar.base, 'kst_now', return_value=now):
+            self.assertEqual(len(radar.quality_display_alerts(selected_all, 30)), 3)
+
+    def test_research_award_keeps_whole_project_budget_not_company_sales(self):
+        item = self.postdeploy_scope_alert('national_research_award_two_budgets')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for value in ('차세대 협동로봇', '지능형 용접', '2건', '6일', '전체 과제', '연구개발비는 약 989억원', '정부 지원금은 약 681억원'):
+            self.assertIn(value, core)
+        self.assertNotIn('매출', core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+        for old, new in (('989억원', '1660억원'), ('정부 지원금', '두산로보틱스 매출'), ('수주했다고', '상용화를 완료했다고')):
+            self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace(old, new)}))
+
+    def test_research_award_core_uses_mutated_source_actor_tasks_and_budgets(self):
+        item = self.postdeploy_scope_alert('national_research_award_two_budgets')
+        title, body = item['source_title'], item['source_body']
+        for old, new in (('두산로보틱스', 'OTHER로봇'), ('차세대 협동로봇', '차세대 물류로봇'),
+                         ('989억원', '1200억원'), ('681억원', '800억원'), ('6일 밝혔다', '7일 밝혔다')):
+            title, body = title.replace(old, new), body.replace(old, new)
+        core = radar.source_headline_event_fact(title, body)
+        for value in ('OTHER로봇', '차세대 물류로봇', '1200억원', '800억원', '7일'):
+            self.assertIn(value, core)
+        self.assertNotIn('989억원', core)
+
+    def test_signed_battery_order_amount_is_separate_from_expansion_target(self):
+        item = self.postdeploy_scope_alert('battery_order_with_expansion_target')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for value in ('엠플러스', '유럽 글로벌 배터리 기업 A사', '노칭 장비와 스태킹 장비', '수주했다고 6일', '250억원', '목표다'):
+            self.assertIn(value, core)
+        self.assertNotIn('154억원', core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+        for old, new in (('목표다', '확정됐다'), ('250억원', '400억원'), ('A사', '실명고객사')):
+            self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace(old, new)}))
+
+    def test_order_expansion_target_is_derived_not_hardcoded(self):
+        item = self.postdeploy_scope_alert('battery_order_with_expansion_target')
+        body = item['source_body'].replace('엠플러스', 'OTHER장비').replace('250억원', '310억원').replace('A사', 'B사')
+        title = item['source_title'].replace('엠플러스', 'OTHER장비')
+        core = radar.source_headline_event_fact(title, body)
+        for value in ('OTHER장비', 'B사', '310억원', '목표다'):
+            self.assertIn(value, core)
+
+    def test_equipment_adoption_keeps_each_sources_stage_and_current_site(self):
+        for key in ('mlcc_adoption_etoday', 'mlcc_adoption_newsis'):
+            item = self.postdeploy_scope_alert(key)
+            core = radar.verified_alert_core(item, item['source_title'])
+            with self.subTest(case=key):
+                for value in ('씨피시스템', 'MLCC', '자동광학검사(AOI)', '로보킷', '6일', '베트남 생산거점'):
+                    self.assertIn(value, core)
+                self.assertEqual('초도 물량 납품을 완료' in core, key == 'mlcc_adoption_etoday')
+                self.assertNotIn('3배', core)
+                self.assertNotIn('중국·대만', core)
+                self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+                self.assertTrue(radar.source_core_fact_errors(item))
+                self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace('베트남', '인도')}))
+
+    def test_equipment_adoption_observation_uses_changed_product_actor_and_site(self):
+        item = self.postdeploy_scope_alert('mlcc_adoption_newsis')
+        title, body = item['source_title'], item['source_body']
+        for old, new in (('씨피시스템', 'OTHER시스템'), ('로보킷', '뉴로보킷'), ('베트남', '인도')):
+            title, body = title.replace(old, new), body.replace(old, new)
+        core = radar.source_headline_event_fact(title, body)
+        for value in ('OTHER시스템', '뉴로보킷', '인도 생산거점'):
+            self.assertIn(value, core)
+
+    def test_audited_anonymous_customer_adoption_is_one_event_not_a_sector_block(self):
+        first = self.postdeploy_scope_alert('mlcc_adoption_etoday')
+        second = self.postdeploy_scope_alert('mlcc_adoption_newsis')
+        identity = materiality.source_event_identity(first)
+        self.assertTrue(identity.startswith('source_event:v2:industrial_adoption:'))
+        self.assertEqual(identity, materiality.source_event_identity(second))
+        for old, new in (('베트남', '인도'), ('로보킷', '다른제품'), ('6일 밝혔다', '7일 밝혔다'), ('제조사', '다른고객사')):
+            changed = {**first, 'source_body': first['source_body'].replace(old, new)}
+            self.assertFalse(materiality.audited_source_event_identity(changed))
+            self.assertNotEqual(identity, materiality.source_event_identity(changed))
+        self.assertFalse(materiality.audited_source_event_identity({**first, 'body_verified': False}))
+
+    def test_anonymous_adoption_alias_only_upgrades_existing_sent_receipt(self):
+        case = POSTDEPLOY_SCOPE_CASES['mlcc_adoption_newsis']
+        identity = materiality.source_event_identity(self.postdeploy_scope_alert(case['id']))
+        absent = {'seen': {}}
+        telegram.migrate_seen_verified_event_aliases(absent)
+        self.assertFalse(absent['seen'])
+        state = {'seen': {'old': {'title': case['title'], 'link': case['url'], 'first_seen_kst': '2026-10-06T11:24:00+09:00'}}}
+        telegram.migrate_seen_verified_event_aliases(state)
+        self.assertEqual(state['seen']['event:' + telegram.digest_seen(identity)]['event_alias_evidence_message_id'], 2292)
+
+    def test_nonincremental_scope_gates_preserve_crypto_etf_and_actual_policy_changes(self):
+        self.assertTrue(eligible('비트코인 ETF에 기관자금 3000억원 순유입',
+                                 '비트코인 ETF 기관자금 순유입은 3000억원으로 전주 대비 40% 증가했다고 발표했다.'))
+        self.assertTrue(eligible('금융당국, 가상자산 규제 시행',
+                                 '금융당국은 가상자산 발행사 규제를 강화해 준비자산 규정을 11월부터 시행한다고 발표했다.'))
+        case = POSTDEPLOY_SCOPE_CASES['policy_reiteration_national_hearing']
+        body = case['body'] + '\n정부는 수출기업 지원금 3000억원을 신규 배정하기로 결정했다.'
+        self.assertTrue(materiality.equity_publication_assessment(case['title'], [
+            {'kind': 'policy_scope_or_stage', 'source_excerpt': '정부는 지원금을 신규 배정하기로 결정했다.'}], body=body)['eligible'])
+
+    def test_local_farming_gate_preserves_equipment_contract_and_climate_damage(self):
+        self.assertTrue(eligible('충주시 영농사업, 장비기업과 100억원 공급 계약 체결',
+                                 '충주시는 장비기업과 농업 장비 100억원 규모의 공급 계약을 체결했다고 밝혔다.'))
+        self.assertTrue(eligible('충주시 폭염에 쌀 생산 차질…농작물 피해',
+                                 '충주시는 폭염으로 농작물 피해 300억원과 쌀 생산 중단이 발생했다고 밝혔다.'))
+
     def intraday_scope_alert(self, key):
         case = INTRADAY_SCOPE_CASES[key]
         return {**alert(case["title"], case["body"], case["url"]), "published": case["published"]}

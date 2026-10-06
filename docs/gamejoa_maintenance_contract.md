@@ -326,6 +326,20 @@ Every defect or requested change must follow this sequence:
 - Unquantified single-campus software deployments, used-equipment distribution
   frameworks and prior-week ETF return tables are not publication priorities.
   Quantified signed orders and genuine new fund flows remain eligible.
+- Annual crypto adoption/transaction-size surveys without an equity catalyst,
+  national-hearing repetitions of prior policy plans, and local farming grants
+  without business procurement or a supply shock are not publication priorities.
+  New ETF flows, regulatory instruments, company orders and climate-related
+  operational losses remain eligible.
+- A national research-project award must not be relabelled as company revenue.
+  Keep the whole-project R&D budget, government share and actual selection
+  stage separate. A signed supply order must not absorb a future expansion
+  target as its current contract amount.
+- Equipment-adoption summaries retain the current product, production site
+  and the stage stated by their own source. Do not replace these with supplier
+  profiles, old customer references or planned factory output. Anonymous
+  customers are not merged by sector alone; exact full-body receipt evidence
+  may reconcile audited copies of one announcement, not later changed terms.
 - Public compute allocation summaries name the data provider and original
   application round, requested/allocated units and denominator. Different
   application rounds are not combined and an advocate's request for increased

@@ -187,6 +187,26 @@
       "run_id": 37399956879,
       "message_id": 2291,
       "equivalence_note": "Audited full bodies and actual message 2291: same supplier, Renault customer, New Trafic E-Tech Electric model, cockpit solution and 2026-10-06 supply announcement. New customer, model, product, date or revised terms retain separate identities."
+    },
+    {
+      "source_title": "씨피시스템, 글로벌 MLCC 제조사 장비에 ‘로보킷’ 공급…공정 진입 본격화",
+      "link": "https://www.etoday.co.kr/news/view/2632702",
+      "source_published_kst": "2026-10-06T10:13+09:00",
+      "source_body_sha256": "0d3036038b87e0c0e28d2e187a091a377161acb84957582a7bb71cb1688f6982",
+      "source_event_identity": "source_event:v2:industrial_adoption:d944d5855861af06cd4b4a3c12357750cc46d8b648236b868b657ade78c59c7b",
+      "run_id": 37403253364,
+      "message_id": 2292,
+      "equivalence_note": "Full-body and sent-receipt audit: same 2026-10-06 ROBOKIT adoption announcement for the anonymous MLCC customer's Vietnam AOI equipment. Initial-delivery wording differs within that announcement, not a separately dated milestone. Only these exact bodies are reconciled; no generic anonymous-customer merging."
+    },
+    {
+      "source_title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\"",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815111",
+      "source_published_kst": "2026-10-06T10:09+09:00",
+      "source_body_sha256": "a1698b061c01f251ba691ad12420defd098467756e5bddf9f046ff996882936d",
+      "source_event_identity": "source_event:v2:industrial_adoption:d944d5855861af06cd4b4a3c12357750cc46d8b648236b868b657ade78c59c7b",
+      "run_id": 37403253364,
+      "message_id": 2292,
+      "equivalence_note": "Full-body and sent-receipt audit: same 2026-10-06 ROBOKIT adoption announcement for the anonymous MLCC customer's Vietnam AOI equipment. Initial-delivery wording differs within that announcement, not a separately dated milestone. Only these exact bodies are reconciled; no generic anonymous-customer merging."
     }
   ]
 }

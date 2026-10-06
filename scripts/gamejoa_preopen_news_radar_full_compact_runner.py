@@ -2590,6 +2590,25 @@ def reported_issuer_announcement_fact(title: str, body: str) -> str:
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
+    research = market_materiality.research_program_award_observation(title, body)
+    if research:
+        fact = (f"{research['issuer']}{korean_topic_particle(research['issuer'])} {research['tasks']} 국책과제 "
+                f"{research['count']}건을 수주했다고 {research['day']}일 밝혔다. "
+                f"전체 과제의 총 연구개발비는 약 {research['total_budget']}이며 정부 지원금은 약 {research['government_support']}이다.")
+        return fact if core_sentence_is_complete(fact) else ""
+    expansion = market_materiality.order_expansion_target_observation(title, body)
+    if expansion:
+        fact = (f"{expansion['statement']} 이번 계약을 시작으로 관련 수주를 약 "
+                f"{expansion['expansion_target']}까지 확대하는 것이 목표다.")
+        return fact if core_sentence_is_complete(fact) else ""
+    adoption = market_materiality.industrial_customer_adoption_observation(title, body)
+    if adoption:
+        stage = ("채택돼 초도 물량 납품을 완료했다고" if adoption['stage'] == 'initial_delivery_completed'
+                 else "채택됐다고")
+        fact = (f"{adoption['issuer']}{korean_topic_particle(adoption['issuer'])} 글로벌 MLCC 제조사의 "
+                f"자동광학검사(AOI) 장비에 {adoption['product']}이 {stage} {adoption['day']}일 밝혔다. "
+                f"해당 장비는 {adoption['site']} 생산거점에 공급된다.")
+        return fact if core_sentence_is_complete(fact) else ""
     marketing = market_materiality.marketing_contract_observation(title, body)
     if marketing:
         scope = (f"공급 물량은 최대 {marketing['maximum_volume']}으로 전망된다."
