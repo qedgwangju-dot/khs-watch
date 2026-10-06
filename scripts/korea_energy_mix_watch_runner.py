@@ -41,8 +41,10 @@ def semantic_event_key(row: dict[str, Any]) -> str:
     """기사 날짜·언론사가 아니라 정책 주제와 실제 상태를 기준으로 묶는다."""
     title = watch.norm(str(row.get("title", ""))).lower()
 
-    if any(term in title for term in ("최종 확정", "최종안", "정부안", "의결")):
+    if any(term in title for term in ("최종 확정", "최종안", "의결")):
         return "12th-plan|final"
+    if "정부안" in title and any(term in title for term in ("발표", "공개", "확정")):
+        return "12th-plan|government-draft"
 
     # 위원 명단 공개 공방은 같은 거버넌스 사건이며, 전원 숫자·정책단계가 바뀐 사건과 분리한다.
     if (
@@ -127,6 +129,14 @@ def semantic_event_key(row: dict[str, Any]) -> str:
             return f"12th-plan|renewable-capacity|{watch.digest('|'.join(material_nums))[:12]}"
         return "12th-plan|renewable-general"
 
+    if "데이터센터" in title and "전력수요" in title:
+        if any(term in title for term in ("과잉", "과대", "불확실", "재점검")):
+            return "12th-plan|demand|datacenter-overestimate"
+        if any(term in title for term in ("상향", "하향", "수정", "재산정", "확정")):
+            nums = re.findall(r"\d+(?:\.\d+)?\s*(?:gw|twh)", title)
+            suffix = watch.digest("|".join(nums))[:12] if nums else watch.digest(title)[:12]
+            return f"12th-plan|demand|datacenter-revision|{suffix}"
+
     if "전력수요" in title:
         nums = re.findall(r"\d+(?:\.\d+)?\s*(?:gw|twh)", title)
         suffix = watch.digest("|".join(nums))[:12] if nums else "general"
@@ -169,6 +179,20 @@ def semantic_event_level(row: dict[str, Any]) -> int:
     # 정부안 일정이 2~3개월 늦어지는 것은 정책 시간표 변화.
     if key == "12th-plan|schedule|government-draft-delay":
         return 2 if bool(row.get("official")) else 1
+
+    if key == "12th-plan|demand|datacenter-overestimate":
+        return 2 if bool(row.get("official")) else 1
+
+    if key.startswith("12th-plan|fact|"):
+        # 전기본이라는 단어만 들어간 정치 공방·평론은 투자 상태 변화가 아니다.
+        material_terms = (
+            "확정", "의결", "정부안 발표", "공청회", "공론화", "지연", "연기", "순연",
+            "상향", "하향", "변경", "재검토", "원점 점검", "착수", "선정", "지정",
+            "폐지", "신설", "증설", "공급 개시", "시행",
+        )
+        material_number = bool(re.search(r"\d+(?:\.\d+)?\s*(?:gw|mw|twh|%|기|개월|년)", title))
+        if not material_number and not any(term in title for term in material_terms):
+            return 0
 
     # 전력망 혁신대책은 '발표'와 '실제 시행'을 다른 상태 단계로 관리한다.
     # 같은 정책 제목이 다시 나와도 재알림하지 않되, 실제 해제·회수·적용이 시작되면 단계 상승으로 알린다.
