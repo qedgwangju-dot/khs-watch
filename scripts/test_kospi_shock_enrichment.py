@@ -91,3 +91,18 @@ with tempfile.TemporaryDirectory() as td:
     assert direct["rows"][0]["delta"] == -400, direct
     assert all(x["code"] != "005" for x in direct["rows"]), direct
 print("direct_industry_ubm_regression=true")
+
+
+# UBM 원시 tjjtime이 같은 값으로 멈춰 있어도 사건구간 정렬은 실제 수신시각(ts)으로 해야 한다.
+records_frozen = [
+    {"ts": base_ts-12, "source_time":"09423000", "upcode":"013", "industry":"전 기 전 자", "investor":"기관", "msval":1000},
+    {"ts": base_ts+120, "source_time":"09423000", "upcode":"013", "industry":"전 기 전 자", "investor":"기관", "msval":850},
+    {"ts": low_ts-5, "source_time":"09423000", "upcode":"013", "industry":"전 기 전 자", "investor":"기관", "msval":600},
+]
+with tempfile.TemporaryDirectory() as td:
+    p=Path(td)/"ubm_frozen_source_time.jsonl"
+    p.write_text("\n".join(json.dumps(x, ensure_ascii=False) for x in records_frozen)+"\n", encoding="utf-8")
+    direct=direct_industry_interval(base_ts, low_ts, "기관", p, 30.0)
+    assert direct["available"], direct
+    assert direct["rows"][0]["delta"] == -400, direct
+print("ubm_received_time_alignment_regression=true")
