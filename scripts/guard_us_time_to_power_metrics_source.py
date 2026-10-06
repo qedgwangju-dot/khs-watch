@@ -1385,6 +1385,77 @@ def _ppa_material_diff(prev: dict | None, now: dict):
     return bool(reasons), reasons
 
 
+def _ppa_self_test():
+    contract, site = _ppa_extract_money_roles(
+        "The near deal is valued at $1 billion or more."
+    )
+    if contract != 1.0 or site is not None:
+        raise RuntimeError(
+            f"PPA contract-value role regression: contract={contract} site={site}"
+        )
+
+    contract, site = _ppa_extract_money_roles(
+        "The agreement will enable more than $3 billion in Maryland infrastructure investment."
+    )
+    if contract is not None or site != 3.0:
+        raise RuntimeError(
+            f"PPA site-investment role regression: contract={contract} site={site}"
+        )
+
+    google = _ppa_extract_state(
+        "Google and Constellation are near a deal valued at $1 billion for nuclear power.",
+        "Reuters",
+        "https://www.reuters.com",
+        "https://www.reuters.com/test-google-constellation",
+        "2026-10-06",
+    )
+    if not google:
+        raise RuntimeError("Google-Constellation media parser regression: no state")
+    google_key, google_state = google
+    if (
+        google_key != "google_constellation"
+        or google_state.get("stage") != "reported_near_deal"
+        or google_state.get("official")
+        or float(google_state.get("amount_floor_usd_b") or 0) != 1.0
+        or (google_state.get("provenance") or {}).get("amount_floor_usd_b") != "media"
+    ):
+        raise RuntimeError(
+            f"Google-Constellation media semantics regression: {google_key} {google_state}"
+        )
+
+    amazon = _ppa_extract_state(
+        "Constellation and Amazon announce a 20-year power purchase agreement at "
+        "Calvert Cliffs Clean Energy Center. The agreement includes 690 MW, "
+        "including a 190 MW uprate, and will enable more than $3 billion in "
+        "Maryland infrastructure investment for nuclear power.",
+        "Constellation",
+        "https://www.constellationenergy.com",
+        "https://www.constellationenergy.com/news/test-amazon-calvert-cliffs.html",
+        "2026-09-30",
+    )
+    if not amazon:
+        raise RuntimeError("Amazon-Constellation official parser regression: no state")
+    amazon_key, amazon_state = amazon
+    if (
+        amazon_key != "amazon_constellation_calvert_cliffs"
+        or amazon_state.get("stage") != "signed_official"
+        or not amazon_state.get("official")
+        or amazon_state.get("amount_floor_usd_b") is not None
+        or float(amazon_state.get("site_investment_floor_usd_b") or 0) != 3.0
+        or float(amazon_state.get("ppa_mw") or 0) != 690.0
+        or float(amazon_state.get("uprate_mw") or 0) != 190.0
+        or int(amazon_state.get("years") or 0) != 20
+    ):
+        raise RuntimeError(
+            f"Amazon-Constellation official semantics regression: {amazon_key} {amazon_state}"
+        )
+
+    print("hyperscaler_nuclear_ppa_parser_self_test=passed")
+
+
+_ppa_self_test()
+
+
 _ppa_old_bundle = old.get("hyperscaler_nuclear_ppa") or {}
 _ppa_first_install = not bool(_ppa_old_bundle)
 _ppa_states = json.loads(json.dumps(
