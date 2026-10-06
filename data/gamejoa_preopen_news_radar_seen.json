@@ -4865,28 +4865,22 @@
     "event:c0e20fbd626af79e0397b342": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
       "lanes": {
-        "live": "2026-10-07T02:24:39+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-07T02:24:39+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003816104",
-      "source": "뉴시스",
-      "source_body_digest": "d503e11536151ab7cd81bd0bab7c26a0d48a14276e8f6a963d3945a3d448c5f1",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.hankyung.com/article/202610066486i",
+      "source": "한국경제",
+      "source_body_digest": "1214691f163ca7bae4c6e910820e528d1c71012be5e6bd10baf9352adee3d911",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:029966fac94ecda9b45aee4235582a30a328721d70dda8a6dd8d9d9dd3fbde6c",
+      "source_fact_identity": "source_facts:v1:9e633b93702d62cbb9c4cfadf4cdeeca90da27c5d64a6627b7abbf3a7e634f46",
       "source_fact_keys": [
-        "source_fact:v1:05268578c8cea971168e7e6e38db7c7e5d9e15dc4985fc6ba4ea31829def4c45",
-        "source_fact:v1:440f61bcc2739382694f6dc703ba70afa360526d11b8fbdb3fab9801ab443e56",
-        "source_fact:v1:51241aab56db0784129fef6d7dcb1cb36c66f593c79c88ed70ed8b3e5539ec3a",
-        "source_fact:v1:5583e0491530e0f0c699e3636a6e12c28686e0054674415b5041c77d652b7fc8",
-        "source_fact:v1:604e37df764829119c1aa1aa75d41a436719eb41a52a6e27fbbdd6b6c1b4a05c",
-        "source_fact:v1:6bb6a56def2352977fb1e0df5bf06b23584888ed4c9f4d23574e5839f74f9a4f",
-        "source_fact:v1:703bc80d2c983ba362c3c329c73f427bc20560c5889610b3172080c9357cf538",
-        "source_fact:v1:720ea895d901e2c05a360b330c010799342bf831f0ad2b24bd10d1830764f0f3",
-        "source_fact:v1:96c3cc4863d704dc4812e5db8b583b5773db94ac146a1a89fc49126ed28c38f1",
-        "source_fact:v1:e8ec1ce74708e0e27e7733cc5dbf0b9f588dc18b11f2bd65eaf1d4a61aed43d9"
+        "source_fact:v1:7e734e1eeebf8ef5c41d78eff7d550fb566a03477cce89404038e2f5300138af",
+        "source_fact:v1:8cf6214562eabafc01549d46675214d909fc7ec99aa28eb33ca33ab54def0a8d",
+        "source_fact:v1:8ff9b86b879add3a65c1dfc3cee75e51dcf7c073139ed4f053095873a280ffb3",
+        "source_fact:v1:e354796c3626df265a5aa2a71112da0f978dd02bd6f7485c20306322de08f445"
       ],
-      "source_published_kst": "2026-10-06T17:12+09:00",
-      "title": "유로화 17개월 최저…프랑스 재정불안에 스페인 조기총선까지(종합)"
+      "source_published_kst": "2026-10-06T19:11+09:00",
+      "title": "\"일본·중국 美국채 큰 손 사라진다\"…레이 달리오 경고 배경은"
     },
     "event:c108c7b2a500c7ee7f4191a3": {
       "first_seen_kst": "2026-09-25T11:29:39+09:00",
@@ -5432,6 +5426,32 @@
       ],
       "source_published_kst": "2026-10-06T20:59+09:00",
       "title": "AI가 부의 지형 바꿨다…세계 500대 부자 미국 IT에 집중"
+    },
+    "event:d3d0aaceb95ef8feef9bfb40": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01430086645610624",
+      "source": "이데일리",
+      "source_body_digest": "7450f1e1ae5ef83dce90243b2a5b14619f46586b3588d160698d1a3f735f83db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb1398a56462aa1b954565314a28d3eb327b3fa8fe546ea6274a078b9eb0cd62",
+      "source_fact_keys": [
+        "source_fact:v1:158f5827d5d20c96ae224b48d9b04e5774e01ed990cbe19559c62817268417c5",
+        "source_fact:v1:1759fab70c3737b351a06d1c7fd05da940c254d6e4dfb6aa22c5900e48d3c8d8",
+        "source_fact:v1:393243267aac052abfa90df87acabe3877ab356e8661671ed6cff5a4ada70f3f",
+        "source_fact:v1:46bbcb9864fadc4fd446ea98a8e1d481d6c4c76a3937779761aff2d6e5dd3181",
+        "source_fact:v1:50a6f62c47c79e1b1aad308d9aa33afc5a2acd746844c1180e43246f82e0eab6",
+        "source_fact:v1:50f9950e1d06325a8905515d71bd2f882cab357e12a3b61663a0842ca2e3c614",
+        "source_fact:v1:73d8122aafc09ae5e6730d309260b7fea4987aedd84594baa6e491ec76c4f792",
+        "source_fact:v1:a4bf821eaae797d6141a7b7a6b2bb82b2355aba1aba300d3a83db2b32dfa7fcc",
+        "source_fact:v1:a596264919c53a497a9f766dad14c7ac4af25e8def7fd892ca8b3a69e73b7138",
+        "source_fact:v1:e148bdded8fd84d5e62854954dcd1d8ae5fc8768020801f37738feb6827f9a5e"
+      ],
+      "source_published_kst": "2026-10-07T03:50+09:00",
+      "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
     },
     "event:d43896e2f11c4711cdda0b39": {
       "first_seen_kst": "2026-10-02T13:38:43+09:00",
@@ -9482,6 +9502,32 @@
       "source_published_kst": "2026-10-06T13:56+09:00",
       "title": "삼천리자전거, 44억 규모 자사주 소각 결정"
     },
+    "fact:30035e7a7c0c4c702c35120e": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01430086645610624",
+      "source": "이데일리",
+      "source_body_digest": "7450f1e1ae5ef83dce90243b2a5b14619f46586b3588d160698d1a3f735f83db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb1398a56462aa1b954565314a28d3eb327b3fa8fe546ea6274a078b9eb0cd62",
+      "source_fact_keys": [
+        "source_fact:v1:158f5827d5d20c96ae224b48d9b04e5774e01ed990cbe19559c62817268417c5",
+        "source_fact:v1:1759fab70c3737b351a06d1c7fd05da940c254d6e4dfb6aa22c5900e48d3c8d8",
+        "source_fact:v1:393243267aac052abfa90df87acabe3877ab356e8661671ed6cff5a4ada70f3f",
+        "source_fact:v1:46bbcb9864fadc4fd446ea98a8e1d481d6c4c76a3937779761aff2d6e5dd3181",
+        "source_fact:v1:50a6f62c47c79e1b1aad308d9aa33afc5a2acd746844c1180e43246f82e0eab6",
+        "source_fact:v1:50f9950e1d06325a8905515d71bd2f882cab357e12a3b61663a0842ca2e3c614",
+        "source_fact:v1:73d8122aafc09ae5e6730d309260b7fea4987aedd84594baa6e491ec76c4f792",
+        "source_fact:v1:a4bf821eaae797d6141a7b7a6b2bb82b2355aba1aba300d3a83db2b32dfa7fcc",
+        "source_fact:v1:a596264919c53a497a9f766dad14c7ac4af25e8def7fd892ca8b3a69e73b7138",
+        "source_fact:v1:e148bdded8fd84d5e62854954dcd1d8ae5fc8768020801f37738feb6827f9a5e"
+      ],
+      "source_published_kst": "2026-10-07T03:50+09:00",
+      "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
+    },
     "fact:30126cba90e27cfc9089c63a": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -11425,6 +11471,26 @@
       ],
       "source_published_kst": "2026-10-06T03:30+09:00",
       "title": "[美특징주]할리-데이비슨, 신제품·비용절감 기대에 월가 ‘매수’ 상향…주가 8%↑"
+    },
+    "fact:5566daafad2cd6c15e200cf8": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.hankyung.com/article/202610066486i",
+      "source": "한국경제",
+      "source_body_digest": "1214691f163ca7bae4c6e910820e528d1c71012be5e6bd10baf9352adee3d911",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9e633b93702d62cbb9c4cfadf4cdeeca90da27c5d64a6627b7abbf3a7e634f46",
+      "source_fact_keys": [
+        "source_fact:v1:7e734e1eeebf8ef5c41d78eff7d550fb566a03477cce89404038e2f5300138af",
+        "source_fact:v1:8cf6214562eabafc01549d46675214d909fc7ec99aa28eb33ca33ab54def0a8d",
+        "source_fact:v1:8ff9b86b879add3a65c1dfc3cee75e51dcf7c073139ed4f053095873a280ffb3",
+        "source_fact:v1:e354796c3626df265a5aa2a71112da0f978dd02bd6f7485c20306322de08f445"
+      ],
+      "source_published_kst": "2026-10-06T19:11+09:00",
+      "title": "\"일본·중국 美국채 큰 손 사라진다\"…레이 달리오 경고 배경은"
     },
     "fact:556f95296da6549b88eb3a52": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -14442,6 +14508,37 @@
       ],
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "KT 이어 LG유플러스도 뱅고와 손잡았다…‘유독’에 해외 AI 서비스 확대"
+    },
+    "fact:8fc4b7d0ef209df73760321e": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
+      "source": "매일경제",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
+      "source_fact_keys": [
+        "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
+        "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
+        "source_fact:v1:5259b58667103cb65c07e43e5edd1b41f5f1f67ddc3c5a3a4802201674a49dfe",
+        "source_fact:v1:547a2b56bb8383023ef5dbf004d9625bc21e7b3ef6cac34325996a1125368bc2",
+        "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
+        "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
+        "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
+        "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
+        "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
+        "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
+        "source_fact:v1:d390ef4df72e425bac9c52e7e2f323fac2c80ea421eea38504ada78c732d5634",
+        "source_fact:v1:dfb8e2ee16774182cc1c06b130fcbc7fa2f8c874b6713b39d6cbda17084cdbce",
+        "source_fact:v1:e36e8b1eda8cd1ade467cacb56f665b6dded2e58f7dc88d1f88441b8c37a842a",
+        "source_fact:v1:e59fcc54617ee2ccd16dabea500507c62ec24e6f2eda6dffcf32d4f0b7bb529e"
+      ],
+      "source_published_kst": "2026-10-06T17:38+09:00",
+      "title": "[미국 주식 돋보기] 데이터센터 전력 구원투수 '비코' 고공행진"
     },
     "fact:9074070d6c1bd41507b90289": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
@@ -27948,6 +28045,26 @@
       "source": "아시아경제",
       "title": "리사 수 AMD 회장 내달 방한…배경훈·하정우·국산 NPU 대표 회동"
     },
+    "link:423f3112a9023817c99ca772": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.hankyung.com/article/202610066486i",
+      "source": "한국경제",
+      "source_body_digest": "1214691f163ca7bae4c6e910820e528d1c71012be5e6bd10baf9352adee3d911",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9e633b93702d62cbb9c4cfadf4cdeeca90da27c5d64a6627b7abbf3a7e634f46",
+      "source_fact_keys": [
+        "source_fact:v1:7e734e1eeebf8ef5c41d78eff7d550fb566a03477cce89404038e2f5300138af",
+        "source_fact:v1:8cf6214562eabafc01549d46675214d909fc7ec99aa28eb33ca33ab54def0a8d",
+        "source_fact:v1:8ff9b86b879add3a65c1dfc3cee75e51dcf7c073139ed4f053095873a280ffb3",
+        "source_fact:v1:e354796c3626df265a5aa2a71112da0f978dd02bd6f7485c20306322de08f445"
+      ],
+      "source_published_kst": "2026-10-06T19:11+09:00",
+      "title": "\"일본·중국 美국채 큰 손 사라진다\"…레이 달리오 경고 배경은"
+    },
     "link:425a7379fc4e03b52300ff9d": {
       "first_seen_kst": "2026-10-04T14:47:21+09:00",
       "lanes": {
@@ -39528,6 +39645,32 @@
       "source_published_kst": "2026-10-06T00:39+09:00",
       "title": "美 9월 서비스업 확장세 둔화…물가 압력 4년여만에 최고"
     },
+    "link:a8ed6496283ea894c58c6348": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01430086645610624",
+      "source": "이데일리",
+      "source_body_digest": "7450f1e1ae5ef83dce90243b2a5b14619f46586b3588d160698d1a3f735f83db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb1398a56462aa1b954565314a28d3eb327b3fa8fe546ea6274a078b9eb0cd62",
+      "source_fact_keys": [
+        "source_fact:v1:158f5827d5d20c96ae224b48d9b04e5774e01ed990cbe19559c62817268417c5",
+        "source_fact:v1:1759fab70c3737b351a06d1c7fd05da940c254d6e4dfb6aa22c5900e48d3c8d8",
+        "source_fact:v1:393243267aac052abfa90df87acabe3877ab356e8661671ed6cff5a4ada70f3f",
+        "source_fact:v1:46bbcb9864fadc4fd446ea98a8e1d481d6c4c76a3937779761aff2d6e5dd3181",
+        "source_fact:v1:50a6f62c47c79e1b1aad308d9aa33afc5a2acd746844c1180e43246f82e0eab6",
+        "source_fact:v1:50f9950e1d06325a8905515d71bd2f882cab357e12a3b61663a0842ca2e3c614",
+        "source_fact:v1:73d8122aafc09ae5e6730d309260b7fea4987aedd84594baa6e491ec76c4f792",
+        "source_fact:v1:a4bf821eaae797d6141a7b7a6b2bb82b2355aba1aba300d3a83db2b32dfa7fcc",
+        "source_fact:v1:a596264919c53a497a9f766dad14c7ac4af25e8def7fd892ca8b3a69e73b7138",
+        "source_fact:v1:e148bdded8fd84d5e62854954dcd1d8ae5fc8768020801f37738feb6827f9a5e"
+      ],
+      "source_published_kst": "2026-10-07T03:50+09:00",
+      "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
+    },
     "link:a8f4c60463b5907c8a9a63dc": {
       "first_seen_kst": "2026-09-29T20:13:32+09:00",
       "lanes": {
@@ -46181,6 +46324,37 @@
       "source": "연합뉴스",
       "title": "[머니플로우] 금리 고공행진에 CD·채권 관련 ETF 인기 '쑥' | 연합뉴스"
     },
+    "link:e427eb8fc45974679089951a": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
+      "source": "매일경제",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
+      "source_fact_keys": [
+        "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
+        "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
+        "source_fact:v1:5259b58667103cb65c07e43e5edd1b41f5f1f67ddc3c5a3a4802201674a49dfe",
+        "source_fact:v1:547a2b56bb8383023ef5dbf004d9625bc21e7b3ef6cac34325996a1125368bc2",
+        "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
+        "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
+        "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
+        "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
+        "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
+        "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
+        "source_fact:v1:d390ef4df72e425bac9c52e7e2f323fac2c80ea421eea38504ada78c732d5634",
+        "source_fact:v1:dfb8e2ee16774182cc1c06b130fcbc7fa2f8c874b6713b39d6cbda17084cdbce",
+        "source_fact:v1:e36e8b1eda8cd1ade467cacb56f665b6dded2e58f7dc88d1f88441b8c37a842a",
+        "source_fact:v1:e59fcc54617ee2ccd16dabea500507c62ec24e6f2eda6dffcf32d4f0b7bb529e"
+      ],
+      "source_published_kst": "2026-10-06T17:38+09:00",
+      "title": "[미국 주식 돋보기] 데이터센터 전력 구원투수 '비코' 고공행진"
+    },
     "link:e45f9f9816bc64b1d2223e42": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -52033,14 +52207,14 @@
     "original:183fd16b4339dd0558378ac3": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170435",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
       "source": "매일경제",
-      "source_body_digest": "75b9f99e063b8afded927d339e4fd89945b477f1e327fcc180338987e9aa6771",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4506343406aa33740f77a1e8ad74fd5bcd57ebfb4cf04b76c27d8245a3001780",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
       "source_fact_keys": [
         "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
         "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
@@ -52049,6 +52223,7 @@
         "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
         "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
         "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
         "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
         "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
         "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
@@ -70578,6 +70753,26 @@
       "source": "매일경제",
       "title": "보안株 강세에 美 소프트웨어 ETF 잘나가네"
     },
+    "original:bec60cb4767deb8051b885f6": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.hankyung.com/article/202610066486i",
+      "source": "한국경제",
+      "source_body_digest": "1214691f163ca7bae4c6e910820e528d1c71012be5e6bd10baf9352adee3d911",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9e633b93702d62cbb9c4cfadf4cdeeca90da27c5d64a6627b7abbf3a7e634f46",
+      "source_fact_keys": [
+        "source_fact:v1:7e734e1eeebf8ef5c41d78eff7d550fb566a03477cce89404038e2f5300138af",
+        "source_fact:v1:8cf6214562eabafc01549d46675214d909fc7ec99aa28eb33ca33ab54def0a8d",
+        "source_fact:v1:8ff9b86b879add3a65c1dfc3cee75e51dcf7c073139ed4f053095873a280ffb3",
+        "source_fact:v1:e354796c3626df265a5aa2a71112da0f978dd02bd6f7485c20306322de08f445"
+      ],
+      "source_published_kst": "2026-10-06T19:11+09:00",
+      "title": "\"일본·중국 美국채 큰 손 사라진다\"…레이 달리오 경고 배경은"
+    },
     "original:bf072632ca52b7e615929eb1": {
       "first_seen_kst": "2026-10-03T10:53:56+09:00",
       "lanes": {
@@ -72091,6 +72286,32 @@
       ],
       "source_published_kst": "2026-10-06T08:34+09:00",
       "title": "한투증권, 산일전기 목표가↑…\"美·유럽, 중국산 규제 수혜\" | 연합뉴스"
+    },
+    "original:ce7656b615c0e22c5dc8cbbd": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01430086645610624",
+      "source": "이데일리",
+      "source_body_digest": "7450f1e1ae5ef83dce90243b2a5b14619f46586b3588d160698d1a3f735f83db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb1398a56462aa1b954565314a28d3eb327b3fa8fe546ea6274a078b9eb0cd62",
+      "source_fact_keys": [
+        "source_fact:v1:158f5827d5d20c96ae224b48d9b04e5774e01ed990cbe19559c62817268417c5",
+        "source_fact:v1:1759fab70c3737b351a06d1c7fd05da940c254d6e4dfb6aa22c5900e48d3c8d8",
+        "source_fact:v1:393243267aac052abfa90df87acabe3877ab356e8661671ed6cff5a4ada70f3f",
+        "source_fact:v1:46bbcb9864fadc4fd446ea98a8e1d481d6c4c76a3937779761aff2d6e5dd3181",
+        "source_fact:v1:50a6f62c47c79e1b1aad308d9aa33afc5a2acd746844c1180e43246f82e0eab6",
+        "source_fact:v1:50f9950e1d06325a8905515d71bd2f882cab357e12a3b61663a0842ca2e3c614",
+        "source_fact:v1:73d8122aafc09ae5e6730d309260b7fea4987aedd84594baa6e491ec76c4f792",
+        "source_fact:v1:a4bf821eaae797d6141a7b7a6b2bb82b2355aba1aba300d3a83db2b32dfa7fcc",
+        "source_fact:v1:a596264919c53a497a9f766dad14c7ac4af25e8def7fd892ca8b3a69e73b7138",
+        "source_fact:v1:e148bdded8fd84d5e62854954dcd1d8ae5fc8768020801f37738feb6827f9a5e"
+      ],
+      "source_published_kst": "2026-10-07T03:50+09:00",
+      "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
     },
     "original:ce7902c1f4c6958ae871df83": {
       "first_seen_kst": "2026-09-19T01:58:52+09:00",
@@ -78264,6 +78485,26 @@
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
     },
+    "source_fact:028a1a8bb0d1e8078a250f5c": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.hankyung.com/article/202610066486i",
+      "source": "한국경제",
+      "source_body_digest": "1214691f163ca7bae4c6e910820e528d1c71012be5e6bd10baf9352adee3d911",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9e633b93702d62cbb9c4cfadf4cdeeca90da27c5d64a6627b7abbf3a7e634f46",
+      "source_fact_keys": [
+        "source_fact:v1:7e734e1eeebf8ef5c41d78eff7d550fb566a03477cce89404038e2f5300138af",
+        "source_fact:v1:8cf6214562eabafc01549d46675214d909fc7ec99aa28eb33ca33ab54def0a8d",
+        "source_fact:v1:8ff9b86b879add3a65c1dfc3cee75e51dcf7c073139ed4f053095873a280ffb3",
+        "source_fact:v1:e354796c3626df265a5aa2a71112da0f978dd02bd6f7485c20306322de08f445"
+      ],
+      "source_published_kst": "2026-10-06T19:11+09:00",
+      "title": "\"일본·중국 美국채 큰 손 사라진다\"…레이 달리오 경고 배경은"
+    },
     "source_fact:0297ef3f5c135ba793bdf47d": {
       "first_seen_kst": "2026-10-07T01:18:00+09:00",
       "lanes": {
@@ -82968,6 +83209,32 @@
       "source_published_kst": "2026-10-06T14:55+09:00",
       "title": "대전시 아이들 밥상 챙긴다…학교급식 식품비 15% 인상"
     },
+    "source_fact:1849d47ef017a1732303c7c2": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01430086645610624",
+      "source": "이데일리",
+      "source_body_digest": "7450f1e1ae5ef83dce90243b2a5b14619f46586b3588d160698d1a3f735f83db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb1398a56462aa1b954565314a28d3eb327b3fa8fe546ea6274a078b9eb0cd62",
+      "source_fact_keys": [
+        "source_fact:v1:158f5827d5d20c96ae224b48d9b04e5774e01ed990cbe19559c62817268417c5",
+        "source_fact:v1:1759fab70c3737b351a06d1c7fd05da940c254d6e4dfb6aa22c5900e48d3c8d8",
+        "source_fact:v1:393243267aac052abfa90df87acabe3877ab356e8661671ed6cff5a4ada70f3f",
+        "source_fact:v1:46bbcb9864fadc4fd446ea98a8e1d481d6c4c76a3937779761aff2d6e5dd3181",
+        "source_fact:v1:50a6f62c47c79e1b1aad308d9aa33afc5a2acd746844c1180e43246f82e0eab6",
+        "source_fact:v1:50f9950e1d06325a8905515d71bd2f882cab357e12a3b61663a0842ca2e3c614",
+        "source_fact:v1:73d8122aafc09ae5e6730d309260b7fea4987aedd84594baa6e491ec76c4f792",
+        "source_fact:v1:a4bf821eaae797d6141a7b7a6b2bb82b2355aba1aba300d3a83db2b32dfa7fcc",
+        "source_fact:v1:a596264919c53a497a9f766dad14c7ac4af25e8def7fd892ca8b3a69e73b7138",
+        "source_fact:v1:e148bdded8fd84d5e62854954dcd1d8ae5fc8768020801f37738feb6827f9a5e"
+      ],
+      "source_published_kst": "2026-10-07T03:50+09:00",
+      "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
+    },
     "source_fact:184aaa58fee3a71e534184e9": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -86448,14 +86715,14 @@
     "source_fact:28885e90adf517345617d8fc": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170435",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
       "source": "매일경제",
-      "source_body_digest": "75b9f99e063b8afded927d339e4fd89945b477f1e327fcc180338987e9aa6771",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4506343406aa33740f77a1e8ad74fd5bcd57ebfb4cf04b76c27d8245a3001780",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
       "source_fact_keys": [
         "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
         "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
@@ -86464,6 +86731,7 @@
         "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
         "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
         "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
         "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
         "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
         "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
@@ -89467,14 +89735,14 @@
     "source_fact:35c952d53d1e61e6da05acd0": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170435",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
       "source": "매일경제",
-      "source_body_digest": "75b9f99e063b8afded927d339e4fd89945b477f1e327fcc180338987e9aa6771",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4506343406aa33740f77a1e8ad74fd5bcd57ebfb4cf04b76c27d8245a3001780",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
       "source_fact_keys": [
         "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
         "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
@@ -89483,6 +89751,7 @@
         "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
         "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
         "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
         "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
         "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
         "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
@@ -91522,6 +91791,32 @@
       ],
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
+    "source_fact:3f867e77ca4c94cf8a4e4694": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01430086645610624",
+      "source": "이데일리",
+      "source_body_digest": "7450f1e1ae5ef83dce90243b2a5b14619f46586b3588d160698d1a3f735f83db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb1398a56462aa1b954565314a28d3eb327b3fa8fe546ea6274a078b9eb0cd62",
+      "source_fact_keys": [
+        "source_fact:v1:158f5827d5d20c96ae224b48d9b04e5774e01ed990cbe19559c62817268417c5",
+        "source_fact:v1:1759fab70c3737b351a06d1c7fd05da940c254d6e4dfb6aa22c5900e48d3c8d8",
+        "source_fact:v1:393243267aac052abfa90df87acabe3877ab356e8661671ed6cff5a4ada70f3f",
+        "source_fact:v1:46bbcb9864fadc4fd446ea98a8e1d481d6c4c76a3937779761aff2d6e5dd3181",
+        "source_fact:v1:50a6f62c47c79e1b1aad308d9aa33afc5a2acd746844c1180e43246f82e0eab6",
+        "source_fact:v1:50f9950e1d06325a8905515d71bd2f882cab357e12a3b61663a0842ca2e3c614",
+        "source_fact:v1:73d8122aafc09ae5e6730d309260b7fea4987aedd84594baa6e491ec76c4f792",
+        "source_fact:v1:a4bf821eaae797d6141a7b7a6b2bb82b2355aba1aba300d3a83db2b32dfa7fcc",
+        "source_fact:v1:a596264919c53a497a9f766dad14c7ac4af25e8def7fd892ca8b3a69e73b7138",
+        "source_fact:v1:e148bdded8fd84d5e62854954dcd1d8ae5fc8768020801f37738feb6827f9a5e"
+      ],
+      "source_published_kst": "2026-10-07T03:50+09:00",
+      "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
     },
     "source_fact:3fab2199758a56385c99554f": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -96443,14 +96738,14 @@
     "source_fact:54695b04cd7b15de7d9a1dca": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170435",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
       "source": "매일경제",
-      "source_body_digest": "75b9f99e063b8afded927d339e4fd89945b477f1e327fcc180338987e9aa6771",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4506343406aa33740f77a1e8ad74fd5bcd57ebfb4cf04b76c27d8245a3001780",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
       "source_fact_keys": [
         "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
         "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
@@ -96459,6 +96754,7 @@
         "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
         "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
         "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
         "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
         "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
         "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
@@ -97646,6 +97942,32 @@
       "source_published_kst": "2026-10-06T15:14+09:00",
       "title": "삼성전기, AI 서버용 MLCC 2900억 수주 ... 올해만 6번째 장기공급계약"
     },
+    "source_fact:58c231024dd9e5a29ef98714": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01430086645610624",
+      "source": "이데일리",
+      "source_body_digest": "7450f1e1ae5ef83dce90243b2a5b14619f46586b3588d160698d1a3f735f83db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb1398a56462aa1b954565314a28d3eb327b3fa8fe546ea6274a078b9eb0cd62",
+      "source_fact_keys": [
+        "source_fact:v1:158f5827d5d20c96ae224b48d9b04e5774e01ed990cbe19559c62817268417c5",
+        "source_fact:v1:1759fab70c3737b351a06d1c7fd05da940c254d6e4dfb6aa22c5900e48d3c8d8",
+        "source_fact:v1:393243267aac052abfa90df87acabe3877ab356e8661671ed6cff5a4ada70f3f",
+        "source_fact:v1:46bbcb9864fadc4fd446ea98a8e1d481d6c4c76a3937779761aff2d6e5dd3181",
+        "source_fact:v1:50a6f62c47c79e1b1aad308d9aa33afc5a2acd746844c1180e43246f82e0eab6",
+        "source_fact:v1:50f9950e1d06325a8905515d71bd2f882cab357e12a3b61663a0842ca2e3c614",
+        "source_fact:v1:73d8122aafc09ae5e6730d309260b7fea4987aedd84594baa6e491ec76c4f792",
+        "source_fact:v1:a4bf821eaae797d6141a7b7a6b2bb82b2355aba1aba300d3a83db2b32dfa7fcc",
+        "source_fact:v1:a596264919c53a497a9f766dad14c7ac4af25e8def7fd892ca8b3a69e73b7138",
+        "source_fact:v1:e148bdded8fd84d5e62854954dcd1d8ae5fc8768020801f37738feb6827f9a5e"
+      ],
+      "source_published_kst": "2026-10-07T03:50+09:00",
+      "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
+    },
     "source_fact:58c278552fc2295ea5c24150": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
       "lanes": {
@@ -97682,6 +98004,26 @@
       ],
       "source_published_kst": "2026-10-05T19:27+09:00",
       "title": "\"농식품부 고위공직자 모친 소유 농지 3필지 휴경\"(종합) | 연합뉴스"
+    },
+    "source_fact:58d4ac7c79481d50cd3a131d": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.hankyung.com/article/202610066486i",
+      "source": "한국경제",
+      "source_body_digest": "1214691f163ca7bae4c6e910820e528d1c71012be5e6bd10baf9352adee3d911",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9e633b93702d62cbb9c4cfadf4cdeeca90da27c5d64a6627b7abbf3a7e634f46",
+      "source_fact_keys": [
+        "source_fact:v1:7e734e1eeebf8ef5c41d78eff7d550fb566a03477cce89404038e2f5300138af",
+        "source_fact:v1:8cf6214562eabafc01549d46675214d909fc7ec99aa28eb33ca33ab54def0a8d",
+        "source_fact:v1:8ff9b86b879add3a65c1dfc3cee75e51dcf7c073139ed4f053095873a280ffb3",
+        "source_fact:v1:e354796c3626df265a5aa2a71112da0f978dd02bd6f7485c20306322de08f445"
+      ],
+      "source_published_kst": "2026-10-06T19:11+09:00",
+      "title": "\"일본·중국 美국채 큰 손 사라진다\"…레이 달리오 경고 배경은"
     },
     "source_fact:59229bcde6256f2bd5486370": {
       "first_seen_kst": "2026-10-06T00:57:01+09:00",
@@ -99359,6 +99701,32 @@
       ],
       "source_published_kst": "2026-10-06T06:15+09:00",
       "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
+    },
+    "source_fact:5fc75367846f7054225fd05a": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01430086645610624",
+      "source": "이데일리",
+      "source_body_digest": "7450f1e1ae5ef83dce90243b2a5b14619f46586b3588d160698d1a3f735f83db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb1398a56462aa1b954565314a28d3eb327b3fa8fe546ea6274a078b9eb0cd62",
+      "source_fact_keys": [
+        "source_fact:v1:158f5827d5d20c96ae224b48d9b04e5774e01ed990cbe19559c62817268417c5",
+        "source_fact:v1:1759fab70c3737b351a06d1c7fd05da940c254d6e4dfb6aa22c5900e48d3c8d8",
+        "source_fact:v1:393243267aac052abfa90df87acabe3877ab356e8661671ed6cff5a4ada70f3f",
+        "source_fact:v1:46bbcb9864fadc4fd446ea98a8e1d481d6c4c76a3937779761aff2d6e5dd3181",
+        "source_fact:v1:50a6f62c47c79e1b1aad308d9aa33afc5a2acd746844c1180e43246f82e0eab6",
+        "source_fact:v1:50f9950e1d06325a8905515d71bd2f882cab357e12a3b61663a0842ca2e3c614",
+        "source_fact:v1:73d8122aafc09ae5e6730d309260b7fea4987aedd84594baa6e491ec76c4f792",
+        "source_fact:v1:a4bf821eaae797d6141a7b7a6b2bb82b2355aba1aba300d3a83db2b32dfa7fcc",
+        "source_fact:v1:a596264919c53a497a9f766dad14c7ac4af25e8def7fd892ca8b3a69e73b7138",
+        "source_fact:v1:e148bdded8fd84d5e62854954dcd1d8ae5fc8768020801f37738feb6827f9a5e"
+      ],
+      "source_published_kst": "2026-10-07T03:50+09:00",
+      "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
     },
     "source_fact:5fda86c7624ee5c4c5cbe9fb": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -104364,6 +104732,32 @@
       ],
       "source_published_kst": "2026-10-06T14:46+09:00",
       "title": "두산에너빌, 스페이스XAI에 가스터빈 1호 출하…첫 해외 수출 | 연합뉴스"
+    },
+    "source_fact:7699ede37850b77c843640f4": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01430086645610624",
+      "source": "이데일리",
+      "source_body_digest": "7450f1e1ae5ef83dce90243b2a5b14619f46586b3588d160698d1a3f735f83db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb1398a56462aa1b954565314a28d3eb327b3fa8fe546ea6274a078b9eb0cd62",
+      "source_fact_keys": [
+        "source_fact:v1:158f5827d5d20c96ae224b48d9b04e5774e01ed990cbe19559c62817268417c5",
+        "source_fact:v1:1759fab70c3737b351a06d1c7fd05da940c254d6e4dfb6aa22c5900e48d3c8d8",
+        "source_fact:v1:393243267aac052abfa90df87acabe3877ab356e8661671ed6cff5a4ada70f3f",
+        "source_fact:v1:46bbcb9864fadc4fd446ea98a8e1d481d6c4c76a3937779761aff2d6e5dd3181",
+        "source_fact:v1:50a6f62c47c79e1b1aad308d9aa33afc5a2acd746844c1180e43246f82e0eab6",
+        "source_fact:v1:50f9950e1d06325a8905515d71bd2f882cab357e12a3b61663a0842ca2e3c614",
+        "source_fact:v1:73d8122aafc09ae5e6730d309260b7fea4987aedd84594baa6e491ec76c4f792",
+        "source_fact:v1:a4bf821eaae797d6141a7b7a6b2bb82b2355aba1aba300d3a83db2b32dfa7fcc",
+        "source_fact:v1:a596264919c53a497a9f766dad14c7ac4af25e8def7fd892ca8b3a69e73b7138",
+        "source_fact:v1:e148bdded8fd84d5e62854954dcd1d8ae5fc8768020801f37738feb6827f9a5e"
+      ],
+      "source_published_kst": "2026-10-07T03:50+09:00",
+      "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
     },
     "source_fact:769c4b487ff90f4598a23026": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -109872,6 +110266,26 @@
       "source_published_kst": "2026-10-06T19:00+09:00",
       "title": "9월 유로존 종합 PMI 53.1·1.1P↑…\"3년5개월 만에 최고\""
     },
+    "source_fact:8d79b964dbc318c20520ff95": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.hankyung.com/article/202610066486i",
+      "source": "한국경제",
+      "source_body_digest": "1214691f163ca7bae4c6e910820e528d1c71012be5e6bd10baf9352adee3d911",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9e633b93702d62cbb9c4cfadf4cdeeca90da27c5d64a6627b7abbf3a7e634f46",
+      "source_fact_keys": [
+        "source_fact:v1:7e734e1eeebf8ef5c41d78eff7d550fb566a03477cce89404038e2f5300138af",
+        "source_fact:v1:8cf6214562eabafc01549d46675214d909fc7ec99aa28eb33ca33ab54def0a8d",
+        "source_fact:v1:8ff9b86b879add3a65c1dfc3cee75e51dcf7c073139ed4f053095873a280ffb3",
+        "source_fact:v1:e354796c3626df265a5aa2a71112da0f978dd02bd6f7485c20306322de08f445"
+      ],
+      "source_published_kst": "2026-10-06T19:11+09:00",
+      "title": "\"일본·중국 美국채 큰 손 사라진다\"…레이 달리오 경고 배경은"
+    },
     "source_fact:8d7eb9e00ffe523e0e0d2f70": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
@@ -110337,14 +110751,14 @@
     "source_fact:8f3c43fc76d22e0268beb346": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170435",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
       "source": "매일경제",
-      "source_body_digest": "75b9f99e063b8afded927d339e4fd89945b477f1e327fcc180338987e9aa6771",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4506343406aa33740f77a1e8ad74fd5bcd57ebfb4cf04b76c27d8245a3001780",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
       "source_fact_keys": [
         "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
         "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
@@ -110353,6 +110767,7 @@
         "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
         "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
         "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
         "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
         "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
         "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
@@ -113767,6 +114182,32 @@
       "source_published_kst": "2026-10-05T06:17+09:00",
       "title": "올해 사우디산 원유 도입 비중 30% 하회…2021년 이후 처음 | 연합뉴스"
     },
+    "source_fact:9e7bc2d1b24d44f60ab71320": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01430086645610624",
+      "source": "이데일리",
+      "source_body_digest": "7450f1e1ae5ef83dce90243b2a5b14619f46586b3588d160698d1a3f735f83db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb1398a56462aa1b954565314a28d3eb327b3fa8fe546ea6274a078b9eb0cd62",
+      "source_fact_keys": [
+        "source_fact:v1:158f5827d5d20c96ae224b48d9b04e5774e01ed990cbe19559c62817268417c5",
+        "source_fact:v1:1759fab70c3737b351a06d1c7fd05da940c254d6e4dfb6aa22c5900e48d3c8d8",
+        "source_fact:v1:393243267aac052abfa90df87acabe3877ab356e8661671ed6cff5a4ada70f3f",
+        "source_fact:v1:46bbcb9864fadc4fd446ea98a8e1d481d6c4c76a3937779761aff2d6e5dd3181",
+        "source_fact:v1:50a6f62c47c79e1b1aad308d9aa33afc5a2acd746844c1180e43246f82e0eab6",
+        "source_fact:v1:50f9950e1d06325a8905515d71bd2f882cab357e12a3b61663a0842ca2e3c614",
+        "source_fact:v1:73d8122aafc09ae5e6730d309260b7fea4987aedd84594baa6e491ec76c4f792",
+        "source_fact:v1:a4bf821eaae797d6141a7b7a6b2bb82b2355aba1aba300d3a83db2b32dfa7fcc",
+        "source_fact:v1:a596264919c53a497a9f766dad14c7ac4af25e8def7fd892ca8b3a69e73b7138",
+        "source_fact:v1:e148bdded8fd84d5e62854954dcd1d8ae5fc8768020801f37738feb6827f9a5e"
+      ],
+      "source_published_kst": "2026-10-07T03:50+09:00",
+      "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
+    },
     "source_fact:9e7d072c530f6f79b9cf91cf": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -114160,14 +114601,14 @@
     "source_fact:a038d238b27c68a7ae809141": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170435",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
       "source": "매일경제",
-      "source_body_digest": "75b9f99e063b8afded927d339e4fd89945b477f1e327fcc180338987e9aa6771",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4506343406aa33740f77a1e8ad74fd5bcd57ebfb4cf04b76c27d8245a3001780",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
       "source_fact_keys": [
         "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
         "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
@@ -114176,6 +114617,7 @@
         "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
         "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
         "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
         "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
         "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
         "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
@@ -116067,14 +116509,14 @@
     "source_fact:a98752911da1d01d59f843d5": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170435",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
       "source": "매일경제",
-      "source_body_digest": "75b9f99e063b8afded927d339e4fd89945b477f1e327fcc180338987e9aa6771",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4506343406aa33740f77a1e8ad74fd5bcd57ebfb4cf04b76c27d8245a3001780",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
       "source_fact_keys": [
         "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
         "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
@@ -116083,6 +116525,7 @@
         "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
         "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
         "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
         "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
         "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
         "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
@@ -117226,14 +117669,14 @@
     "source_fact:aed20e70da41b539eb5e7703": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170435",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
       "source": "매일경제",
-      "source_body_digest": "75b9f99e063b8afded927d339e4fd89945b477f1e327fcc180338987e9aa6771",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4506343406aa33740f77a1e8ad74fd5bcd57ebfb4cf04b76c27d8245a3001780",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
       "source_fact_keys": [
         "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
         "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
@@ -117242,6 +117685,7 @@
         "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
         "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
         "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
         "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
         "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
         "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
@@ -119837,6 +120281,26 @@
       "source_published_kst": "2026-10-06T21:01+09:00",
       "title": "“위성 15기 싣고 우주로”…누리호, 7일 다섯번째 비행"
     },
+    "source_fact:b909d1dd6709a7d86cccdb55": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.hankyung.com/article/202610066486i",
+      "source": "한국경제",
+      "source_body_digest": "1214691f163ca7bae4c6e910820e528d1c71012be5e6bd10baf9352adee3d911",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9e633b93702d62cbb9c4cfadf4cdeeca90da27c5d64a6627b7abbf3a7e634f46",
+      "source_fact_keys": [
+        "source_fact:v1:7e734e1eeebf8ef5c41d78eff7d550fb566a03477cce89404038e2f5300138af",
+        "source_fact:v1:8cf6214562eabafc01549d46675214d909fc7ec99aa28eb33ca33ab54def0a8d",
+        "source_fact:v1:8ff9b86b879add3a65c1dfc3cee75e51dcf7c073139ed4f053095873a280ffb3",
+        "source_fact:v1:e354796c3626df265a5aa2a71112da0f978dd02bd6f7485c20306322de08f445"
+      ],
+      "source_published_kst": "2026-10-06T19:11+09:00",
+      "title": "\"일본·중국 美국채 큰 손 사라진다\"…레이 달리오 경고 배경은"
+    },
     "source_fact:b91150acc304ca791e4072a4": {
       "first_seen_kst": "2026-10-07T02:49:10+09:00",
       "lanes": {
@@ -122325,14 +122789,14 @@
     "source_fact:c48b253d63790763852f7029": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170435",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
       "source": "매일경제",
-      "source_body_digest": "75b9f99e063b8afded927d339e4fd89945b477f1e327fcc180338987e9aa6771",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4506343406aa33740f77a1e8ad74fd5bcd57ebfb4cf04b76c27d8245a3001780",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
       "source_fact_keys": [
         "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
         "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
@@ -122341,6 +122805,7 @@
         "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
         "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
         "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
         "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
         "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
         "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
@@ -123492,14 +123957,14 @@
     "source_fact:c919cc03287dda8ecaf723c4": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170435",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
       "source": "매일경제",
-      "source_body_digest": "75b9f99e063b8afded927d339e4fd89945b477f1e327fcc180338987e9aa6771",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4506343406aa33740f77a1e8ad74fd5bcd57ebfb4cf04b76c27d8245a3001780",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
       "source_fact_keys": [
         "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
         "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
@@ -123508,6 +123973,7 @@
         "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
         "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
         "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
         "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
         "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
         "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
@@ -125084,14 +125550,14 @@
     "source_fact:d131327b817867492bbd1a23": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170435",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
       "source": "매일경제",
-      "source_body_digest": "75b9f99e063b8afded927d339e4fd89945b477f1e327fcc180338987e9aa6771",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4506343406aa33740f77a1e8ad74fd5bcd57ebfb4cf04b76c27d8245a3001780",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
       "source_fact_keys": [
         "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
         "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
@@ -125100,6 +125566,7 @@
         "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
         "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
         "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
         "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
         "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
         "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
@@ -125606,6 +126073,32 @@
       ],
       "source_published_kst": "2026-10-06T16:27+09:00",
       "title": "[올댓차이나] 中 AI 스타트업 문샷, 내년 1분기 홍콩 상장…\"기업가치 500억＄\""
+    },
+    "source_fact:d308982d6df24ac059f16413": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01430086645610624",
+      "source": "이데일리",
+      "source_body_digest": "7450f1e1ae5ef83dce90243b2a5b14619f46586b3588d160698d1a3f735f83db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb1398a56462aa1b954565314a28d3eb327b3fa8fe546ea6274a078b9eb0cd62",
+      "source_fact_keys": [
+        "source_fact:v1:158f5827d5d20c96ae224b48d9b04e5774e01ed990cbe19559c62817268417c5",
+        "source_fact:v1:1759fab70c3737b351a06d1c7fd05da940c254d6e4dfb6aa22c5900e48d3c8d8",
+        "source_fact:v1:393243267aac052abfa90df87acabe3877ab356e8661671ed6cff5a4ada70f3f",
+        "source_fact:v1:46bbcb9864fadc4fd446ea98a8e1d481d6c4c76a3937779761aff2d6e5dd3181",
+        "source_fact:v1:50a6f62c47c79e1b1aad308d9aa33afc5a2acd746844c1180e43246f82e0eab6",
+        "source_fact:v1:50f9950e1d06325a8905515d71bd2f882cab357e12a3b61663a0842ca2e3c614",
+        "source_fact:v1:73d8122aafc09ae5e6730d309260b7fea4987aedd84594baa6e491ec76c4f792",
+        "source_fact:v1:a4bf821eaae797d6141a7b7a6b2bb82b2355aba1aba300d3a83db2b32dfa7fcc",
+        "source_fact:v1:a596264919c53a497a9f766dad14c7ac4af25e8def7fd892ca8b3a69e73b7138",
+        "source_fact:v1:e148bdded8fd84d5e62854954dcd1d8ae5fc8768020801f37738feb6827f9a5e"
+      ],
+      "source_published_kst": "2026-10-07T03:50+09:00",
+      "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
     },
     "source_fact:d32c4c11635dd94fbea7074c": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
@@ -126758,14 +127251,14 @@
     "source_fact:d711d8c5fa9f3098deef47f2": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170435",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
       "source": "매일경제",
-      "source_body_digest": "75b9f99e063b8afded927d339e4fd89945b477f1e327fcc180338987e9aa6771",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4506343406aa33740f77a1e8ad74fd5bcd57ebfb4cf04b76c27d8245a3001780",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
       "source_fact_keys": [
         "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
         "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
@@ -126774,6 +127267,7 @@
         "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
         "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
         "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
         "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
         "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
         "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
@@ -127024,14 +127518,14 @@
     "source_fact:d7cf8e9867a45575af01d7d9": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170435",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
       "source": "매일경제",
-      "source_body_digest": "75b9f99e063b8afded927d339e4fd89945b477f1e327fcc180338987e9aa6771",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4506343406aa33740f77a1e8ad74fd5bcd57ebfb4cf04b76c27d8245a3001780",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
       "source_fact_keys": [
         "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
         "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
@@ -127040,6 +127534,7 @@
         "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
         "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
         "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
         "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
         "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
         "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
@@ -130626,6 +131121,32 @@
       "source_published_kst": "2026-10-06T08:19+09:00",
       "title": "“IPO 미룬 오픈AI, 300억달러 투자 유치 논의 중”"
     },
+    "source_fact:e6133d98e15ba8624444e8fb": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01430086645610624",
+      "source": "이데일리",
+      "source_body_digest": "7450f1e1ae5ef83dce90243b2a5b14619f46586b3588d160698d1a3f735f83db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb1398a56462aa1b954565314a28d3eb327b3fa8fe546ea6274a078b9eb0cd62",
+      "source_fact_keys": [
+        "source_fact:v1:158f5827d5d20c96ae224b48d9b04e5774e01ed990cbe19559c62817268417c5",
+        "source_fact:v1:1759fab70c3737b351a06d1c7fd05da940c254d6e4dfb6aa22c5900e48d3c8d8",
+        "source_fact:v1:393243267aac052abfa90df87acabe3877ab356e8661671ed6cff5a4ada70f3f",
+        "source_fact:v1:46bbcb9864fadc4fd446ea98a8e1d481d6c4c76a3937779761aff2d6e5dd3181",
+        "source_fact:v1:50a6f62c47c79e1b1aad308d9aa33afc5a2acd746844c1180e43246f82e0eab6",
+        "source_fact:v1:50f9950e1d06325a8905515d71bd2f882cab357e12a3b61663a0842ca2e3c614",
+        "source_fact:v1:73d8122aafc09ae5e6730d309260b7fea4987aedd84594baa6e491ec76c4f792",
+        "source_fact:v1:a4bf821eaae797d6141a7b7a6b2bb82b2355aba1aba300d3a83db2b32dfa7fcc",
+        "source_fact:v1:a596264919c53a497a9f766dad14c7ac4af25e8def7fd892ca8b3a69e73b7138",
+        "source_fact:v1:e148bdded8fd84d5e62854954dcd1d8ae5fc8768020801f37738feb6827f9a5e"
+      ],
+      "source_published_kst": "2026-10-07T03:50+09:00",
+      "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
+    },
     "source_fact:e61e724333aea3b17ef5aa14": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
       "lanes": {
@@ -131485,6 +132006,32 @@
       ],
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
+    "source_fact:e92d050d57c7290f090ed0af": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01430086645610624",
+      "source": "이데일리",
+      "source_body_digest": "7450f1e1ae5ef83dce90243b2a5b14619f46586b3588d160698d1a3f735f83db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb1398a56462aa1b954565314a28d3eb327b3fa8fe546ea6274a078b9eb0cd62",
+      "source_fact_keys": [
+        "source_fact:v1:158f5827d5d20c96ae224b48d9b04e5774e01ed990cbe19559c62817268417c5",
+        "source_fact:v1:1759fab70c3737b351a06d1c7fd05da940c254d6e4dfb6aa22c5900e48d3c8d8",
+        "source_fact:v1:393243267aac052abfa90df87acabe3877ab356e8661671ed6cff5a4ada70f3f",
+        "source_fact:v1:46bbcb9864fadc4fd446ea98a8e1d481d6c4c76a3937779761aff2d6e5dd3181",
+        "source_fact:v1:50a6f62c47c79e1b1aad308d9aa33afc5a2acd746844c1180e43246f82e0eab6",
+        "source_fact:v1:50f9950e1d06325a8905515d71bd2f882cab357e12a3b61663a0842ca2e3c614",
+        "source_fact:v1:73d8122aafc09ae5e6730d309260b7fea4987aedd84594baa6e491ec76c4f792",
+        "source_fact:v1:a4bf821eaae797d6141a7b7a6b2bb82b2355aba1aba300d3a83db2b32dfa7fcc",
+        "source_fact:v1:a596264919c53a497a9f766dad14c7ac4af25e8def7fd892ca8b3a69e73b7138",
+        "source_fact:v1:e148bdded8fd84d5e62854954dcd1d8ae5fc8768020801f37738feb6827f9a5e"
+      ],
+      "source_published_kst": "2026-10-07T03:50+09:00",
+      "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
     },
     "source_fact:e9314c807b7cb843a1cb9a83": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
@@ -132756,14 +133303,14 @@
     "source_fact:ee76d12fda7dd04dae7ecaea": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170435",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
       "source": "매일경제",
-      "source_body_digest": "75b9f99e063b8afded927d339e4fd89945b477f1e327fcc180338987e9aa6771",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4506343406aa33740f77a1e8ad74fd5bcd57ebfb4cf04b76c27d8245a3001780",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
       "source_fact_keys": [
         "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
         "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
@@ -132772,6 +133319,7 @@
         "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
         "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
         "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
         "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
         "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
         "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
@@ -133488,14 +134036,14 @@
     "source_fact:f20716d4fd8a31e051adebfc": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170435",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
       "source": "매일경제",
-      "source_body_digest": "75b9f99e063b8afded927d339e4fd89945b477f1e327fcc180338987e9aa6771",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4506343406aa33740f77a1e8ad74fd5bcd57ebfb4cf04b76c27d8245a3001780",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
       "source_fact_keys": [
         "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
         "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
@@ -133504,6 +134052,7 @@
         "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
         "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
         "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
         "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
         "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
         "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
@@ -134830,6 +135379,37 @@
       "source_published_kst": "2026-10-06T17:14+09:00",
       "title": "알테오젠, 국민성장펀드 등 2천억원 규모 투자 유치(종합) | 연합뉴스"
     },
+    "source_fact:f8b1acf1c057bba51ebd749d": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
+      "source": "매일경제",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
+      "source_fact_keys": [
+        "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
+        "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
+        "source_fact:v1:5259b58667103cb65c07e43e5edd1b41f5f1f67ddc3c5a3a4802201674a49dfe",
+        "source_fact:v1:547a2b56bb8383023ef5dbf004d9625bc21e7b3ef6cac34325996a1125368bc2",
+        "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
+        "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
+        "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
+        "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
+        "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
+        "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
+        "source_fact:v1:d390ef4df72e425bac9c52e7e2f323fac2c80ea421eea38504ada78c732d5634",
+        "source_fact:v1:dfb8e2ee16774182cc1c06b130fcbc7fa2f8c874b6713b39d6cbda17084cdbce",
+        "source_fact:v1:e36e8b1eda8cd1ade467cacb56f665b6dded2e58f7dc88d1f88441b8c37a842a",
+        "source_fact:v1:e59fcc54617ee2ccd16dabea500507c62ec24e6f2eda6dffcf32d4f0b7bb529e"
+      ],
+      "source_published_kst": "2026-10-06T17:38+09:00",
+      "title": "[미국 주식 돋보기] 데이터센터 전력 구원투수 '비코' 고공행진"
+    },
     "source_fact:f8fd2cd7450703b63022f6df": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -135605,6 +136185,32 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "source_fact:fc5454f22a729a842b18e3c3": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01430086645610624",
+      "source": "이데일리",
+      "source_body_digest": "7450f1e1ae5ef83dce90243b2a5b14619f46586b3588d160698d1a3f735f83db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb1398a56462aa1b954565314a28d3eb327b3fa8fe546ea6274a078b9eb0cd62",
+      "source_fact_keys": [
+        "source_fact:v1:158f5827d5d20c96ae224b48d9b04e5774e01ed990cbe19559c62817268417c5",
+        "source_fact:v1:1759fab70c3737b351a06d1c7fd05da940c254d6e4dfb6aa22c5900e48d3c8d8",
+        "source_fact:v1:393243267aac052abfa90df87acabe3877ab356e8661671ed6cff5a4ada70f3f",
+        "source_fact:v1:46bbcb9864fadc4fd446ea98a8e1d481d6c4c76a3937779761aff2d6e5dd3181",
+        "source_fact:v1:50a6f62c47c79e1b1aad308d9aa33afc5a2acd746844c1180e43246f82e0eab6",
+        "source_fact:v1:50f9950e1d06325a8905515d71bd2f882cab357e12a3b61663a0842ca2e3c614",
+        "source_fact:v1:73d8122aafc09ae5e6730d309260b7fea4987aedd84594baa6e491ec76c4f792",
+        "source_fact:v1:a4bf821eaae797d6141a7b7a6b2bb82b2355aba1aba300d3a83db2b32dfa7fcc",
+        "source_fact:v1:a596264919c53a497a9f766dad14c7ac4af25e8def7fd892ca8b3a69e73b7138",
+        "source_fact:v1:e148bdded8fd84d5e62854954dcd1d8ae5fc8768020801f37738feb6827f9a5e"
+      ],
+      "source_published_kst": "2026-10-07T03:50+09:00",
+      "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
     },
     "source_fact:fc6fed4470ea6f1559203dd4": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
@@ -139332,14 +139938,14 @@
     "title:183fd16b4339dd0558378ac3": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
-        "live": "2026-10-06T20:24:46+09:00"
+        "live": "2026-10-07T04:29:18+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:24:46+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1170435",
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169520",
       "source": "매일경제",
-      "source_body_digest": "75b9f99e063b8afded927d339e4fd89945b477f1e327fcc180338987e9aa6771",
+      "source_body_digest": "73026d3914d9e15e01bd025765aa8cacf7caaf17b449d120abaec752d1f12994",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4506343406aa33740f77a1e8ad74fd5bcd57ebfb4cf04b76c27d8245a3001780",
+      "source_fact_identity": "source_facts:v1:800770463f510f84db5afd175a1fb7ac67cc829bb332ff0abf0ce33b935ebac7",
       "source_fact_keys": [
         "source_fact:v1:1a64efbd9fffe08307fc71911872fd56db7e25c41230f9c2d82fbd08698b7979",
         "source_fact:v1:2ee4a63287cbe90be92ff04f1da8e0b10cc6088724d06143b05c7c9a62200b0d",
@@ -139348,6 +139954,7 @@
         "source_fact:v1:6783357b5ad702e0af6a4c3545fe65e80626ef8200d2abc4a407016ed50446a6",
         "source_fact:v1:71c7dab94ec586cf12d14612cd04ffed2750da5468785c41a5774a4235c171c3",
         "source_fact:v1:832e3bacac7f10001ba8c1ec76922924ae85e5619084c7f103b1505d61565382",
+        "source_fact:v1:9ba978d9197c8b3ac00064e182ff4d524f6b660b300438fd529c1bae7c475c4c",
         "source_fact:v1:a7791be0df5c15e75f55f2ec5564b825085d9b33a57e3773a7f99864a58697d4",
         "source_fact:v1:b1487d7eb772a7e489a3a74add691eb5bd37eb326540d0c41da7facad0406ff6",
         "source_fact:v1:b532b0337abce0f127775c08a5ecfa23d3251fb62669e9d4d15d5de6e1e1ec94",
@@ -158197,6 +158804,26 @@
       "source": "매일경제",
       "title": "보안株 강세에 美 소프트웨어 ETF 잘나가네"
     },
+    "title:bec60cb4767deb8051b885f6": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.hankyung.com/article/202610066486i",
+      "source": "한국경제",
+      "source_body_digest": "1214691f163ca7bae4c6e910820e528d1c71012be5e6bd10baf9352adee3d911",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9e633b93702d62cbb9c4cfadf4cdeeca90da27c5d64a6627b7abbf3a7e634f46",
+      "source_fact_keys": [
+        "source_fact:v1:7e734e1eeebf8ef5c41d78eff7d550fb566a03477cce89404038e2f5300138af",
+        "source_fact:v1:8cf6214562eabafc01549d46675214d909fc7ec99aa28eb33ca33ab54def0a8d",
+        "source_fact:v1:8ff9b86b879add3a65c1dfc3cee75e51dcf7c073139ed4f053095873a280ffb3",
+        "source_fact:v1:e354796c3626df265a5aa2a71112da0f978dd02bd6f7485c20306322de08f445"
+      ],
+      "source_published_kst": "2026-10-06T19:11+09:00",
+      "title": "\"일본·중국 美국채 큰 손 사라진다\"…레이 달리오 경고 배경은"
+    },
     "title:bf072632ca52b7e615929eb1": {
       "first_seen_kst": "2026-10-03T10:53:56+09:00",
       "lanes": {
@@ -159721,6 +160348,32 @@
       ],
       "source_published_kst": "2026-10-06T08:34+09:00",
       "title": "한투증권, 산일전기 목표가↑…\"美·유럽, 중국산 규제 수혜\" | 연합뉴스"
+    },
+    "title:ce7656b615c0e22c5dc8cbbd": {
+      "first_seen_kst": "2026-10-07T04:29:18+09:00",
+      "lanes": {
+        "live": "2026-10-07T04:29:18+09:00"
+      },
+      "last_seen_kst": "2026-10-07T04:29:18+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01430086645610624",
+      "source": "이데일리",
+      "source_body_digest": "7450f1e1ae5ef83dce90243b2a5b14619f46586b3588d160698d1a3f735f83db",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:bb1398a56462aa1b954565314a28d3eb327b3fa8fe546ea6274a078b9eb0cd62",
+      "source_fact_keys": [
+        "source_fact:v1:158f5827d5d20c96ae224b48d9b04e5774e01ed990cbe19559c62817268417c5",
+        "source_fact:v1:1759fab70c3737b351a06d1c7fd05da940c254d6e4dfb6aa22c5900e48d3c8d8",
+        "source_fact:v1:393243267aac052abfa90df87acabe3877ab356e8661671ed6cff5a4ada70f3f",
+        "source_fact:v1:46bbcb9864fadc4fd446ea98a8e1d481d6c4c76a3937779761aff2d6e5dd3181",
+        "source_fact:v1:50a6f62c47c79e1b1aad308d9aa33afc5a2acd746844c1180e43246f82e0eab6",
+        "source_fact:v1:50f9950e1d06325a8905515d71bd2f882cab357e12a3b61663a0842ca2e3c614",
+        "source_fact:v1:73d8122aafc09ae5e6730d309260b7fea4987aedd84594baa6e491ec76c4f792",
+        "source_fact:v1:a4bf821eaae797d6141a7b7a6b2bb82b2355aba1aba300d3a83db2b32dfa7fcc",
+        "source_fact:v1:a596264919c53a497a9f766dad14c7ac4af25e8def7fd892ca8b3a69e73b7138",
+        "source_fact:v1:e148bdded8fd84d5e62854954dcd1d8ae5fc8768020801f37738feb6827f9a5e"
+      ],
+      "source_published_kst": "2026-10-07T03:50+09:00",
+      "title": "美국채 금리 급등하자…핌코 \"투자매력 매우 높아졌다\""
     },
     "title:ce7902c1f4c6958ae871df83": {
       "first_seen_kst": "2026-09-19T01:58:52+09:00",
@@ -165401,5 +166054,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T04:04:43+09:00"
+  "updated_at_kst": "2026-10-07T04:29:18+09:00"
 }
