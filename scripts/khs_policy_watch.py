@@ -882,6 +882,11 @@ def apply_doe_grid_dpa_profile(item: dict, haystack: str) -> None:
                     "DOE/Alaska Energy Authority의 최종 자금협약·RFP·계약수주가 나오지 않거나 "
                     "223마일 송전선의 인허가·착공 일정이 밀리면 수주 가시성 상향을 취소합니다."
                 ),
+                "policy_timeline": [
+                    {"date": "2025-01-20", "stage": "기반", "detail": "Executive Order 14156 국가 에너지 비상사태 선언"},
+                    {"date": "2026-04-20", "stage": "법적 근거", "detail": "DPA 제303조 전력망·전력기기·공급망 대통령 결정"},
+                    {"date": "2026-10-05", "stage": "이번 집행", "detail": "DOE, Beluga-Healy 송전사업 DPA 자금 투입 의향 발표"},
+                ],
             }
         )
     elif event_key == "us-grid-dpa-section303-base-2026-04-20":
