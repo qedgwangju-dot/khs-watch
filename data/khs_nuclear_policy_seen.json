@@ -45,5 +45,32 @@
     "status": "공식 프레임워크·최종계약 미체결",
     "title": "Westinghouse 공식 한국 지분 5~10% 잠재 투자·비구속 프레임워크"
   },
-  "westinghouse_state_model_version": 3
+  "westinghouse_state_model_version": 3,
+  "bwrx300_us_state_model_version": 2,
+  "bwrx300_us_state": {
+    "kind": "bwrx300_us",
+    "stage": "construction_permit_issued",
+    "rank": 2,
+    "status": "NRC 건설허가 발급",
+    "published_utc": "2026-09-29T00:00:00+00:00",
+    "title": "NRC·TVA Clinch River Unit 1 BWRX-300 건설허가 발급",
+    "source": "NRC·TVA 공식",
+    "link": "https://www.nrc.gov/about-nrc/news-releases/2026/26-079",
+    "official": true,
+    "first_seen_kst": "2026-09-30T08:13:00+09:00"
+  },
+  "bwrx300_us_milestones": {
+    "construction_permit_issued": {
+      "kind": "bwrx300_us",
+      "stage": "construction_permit_issued",
+      "rank": 2,
+      "status": "NRC 건설허가 발급",
+      "published_utc": "2026-09-29T00:00:00+00:00",
+      "title": "NRC·TVA Clinch River Unit 1 BWRX-300 건설허가 발급",
+      "source": "NRC·TVA 공식",
+      "link": "https://www.nrc.gov/about-nrc/news-releases/2026/26-079",
+      "official": true,
+      "first_seen_kst": "2026-09-30T08:13:00+09:00"
+    }
+  }
 }
