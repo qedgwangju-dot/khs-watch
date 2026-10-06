@@ -228,10 +228,34 @@ jobs:
               industries={str(x.get("upcode") or "") for x in rows}
               assert investors & {"개인","외국인","기관"}, investors
               assert industries, industries
+
+              # 실시간 UBM 원자료가 실제 정밀분해 함수까지 연결되는지 같은 파일로 검증한다.
+              import sys
+              sys.path.insert(0, "scripts")
+              from kospi_shock_enrichment import direct_industry_interval
+              by_actor={}
+              for actor in sorted(investors & {"개인","외국인","기관"}):
+                  actor_rows=[x for x in rows if str(x.get("investor") or "")==actor]
+                  if len(actor_rows)<2:
+                      continue
+                  ts_vals=sorted(float(x["ts"]) for x in actor_rows if x.get("ts") is not None)
+                  if len(ts_vals)<2:
+                      continue
+                  start_ts=ts_vals[max(0, len(ts_vals)//4)]
+                  end_ts=ts_vals[-1]
+                  block=direct_industry_interval(
+                      start_ts, end_ts, actor,
+                      pathlib.Path("out/kospi_industry_flow_ci.jsonl"),
+                      max_gap_sec=180.0,
+                  )
+                  by_actor[actor]=block
+              assert any((x or {}).get("available") for x in by_actor.values()), by_actor
               print("unified_industry_collector_valid=true",
                     "records=",len(rows),
                     "investors=",sorted(investors),
                     "industries=",len(industries),
+                    "direct_parser_actors=",
+                    {k: len((v or {}).get("rows") or []) for k,v in by_actor.items()},
                     "market_hours=true")
           else:
               print("unified_industry_collector_registration_valid=true",
