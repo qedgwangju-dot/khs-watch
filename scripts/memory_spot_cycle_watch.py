@@ -2558,6 +2558,53 @@ def _extract_nand_divergence(item: dict) -> dict | None:
         obs["overall_nand_q4_max_pct"] = float(nand[1])
     if "kv cache" in low and ("qlc" in low or "enterprise ssd" in low):
         obs["kv_cache_qlc"] = True
+
+    m_bit = re.search(
+        r"(?:enterprise\s+ssd|essd|기업용\s*ssd)[^.]{0,240}?(?:bit\s+demand|비트\s*수요)[^0-9%]{0,120}?(\d{1,3}(?:\.\d+)?)\s*%",
+        text,
+        re.I,
+    )
+    if not m_bit:
+        m_bit = re.search(
+            r"(\d{1,3}(?:\.\d+)?)\s*%[^.]{0,120}?(?:YoY|year[- ]over[- ]year|전년\s*대비)[^.]{0,180}?(?:enterprise\s+ssd|essd|기업용\s*ssd)",
+            text,
+            re.I,
+        )
+    if m_bit:
+        val = float(m_bit.group(1))
+        if 20 <= val <= 300:
+            obs["essd_bit_demand_yoy_min_pct"] = val
+
+    if any(k in low or k in text for k in (
+        "most incremental supply has already been committed",
+        "incremental supply has already been committed",
+        "incremental supply is already committed",
+        "추가 공급량은 이미 계약",
+        "추가 공급량이 이미 계약",
+        "남은 물량이 매우 적",
+    )):
+        obs["incremental_supply_mostly_committed"] = True
+
+    if "qlc" in low and any(k in low for k in ("expanding", "expand", "capacity", "availability", "penetration")):
+        obs["qlc_capacity_expansion"] = True
+    if "pcie 6.0" in low and any(k in low for k in ("adoption", "ramp", "ramping")):
+        obs["pcie6_adoption_ramping"] = True
+
+    if re.search(r"new\s+nand\s+flash\s+capacities?[^.]{0,80}2027[^.]{0,40}2028", low, re.I):
+        obs["new_nand_capacity_start_year"] = 2027
+        obs["new_nand_capacity_end_year"] = 2028
+    if re.search(r"(?:2h27|second\s+half\s+of\s+2027|2027년\s*하반기)", text, re.I) and any(
+        k in low or k in text for k in ("ease", "easing", "balance", "완화", "균형")
+    ):
+        obs["trendforce_nand_easing_year"] = 2027
+        obs["trendforce_nand_easing_half"] = "2H"
+
+    if re.search(r"(?:최소|적어도)[^.]{0,40}?2028년", text) and any(
+        k in text for k in ("공장", "가동", "완공", "증설")
+    ):
+        obs["secondary_industry_new_fab_earliest_year"] = 2028
+        obs["secondary_industry_new_fab_timeline_official"] = False
+
     if not obs:
         return None
     obs.update({
