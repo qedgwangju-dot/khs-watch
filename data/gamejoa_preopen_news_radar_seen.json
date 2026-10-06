@@ -1745,26 +1745,20 @@
     "event:4af0ec859cb52ac4537c1713": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
-        "live": "2026-10-06T21:05:27+09:00"
+        "live": "2026-10-06T21:40:57+09:00"
       },
-      "last_seen_kst": "2026-10-06T21:05:27+09:00",
-      "link": "https://www.edaily.co.kr/News/Read?newsId=04674006645610296",
-      "source": "이데일리",
-      "source_body_digest": "dedb11618feffaf7648477f9488c6c39b942d70df3bcafcfd5c9772da1998727",
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169612",
+      "source": "매일경제",
+      "source_body_digest": "8773ff343f9bc94194f72e4fae11b5eebed12d1f7723d83f41312a1452503172",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6cb87fde4e0d61213911e27fe53b9ffe89cef2f406d4cf327a7aa22d6be69746",
+      "source_fact_identity": "source_facts:v1:a9250ccb1b2c588aacbd63aa9853327052077afae7ce432c97a80d932d727e0d",
       "source_fact_keys": [
-        "source_fact:v1:2b4bad5b4fd3d36678b58c37b360d2196872b780a3d2ef63a0092c7e750e805d",
-        "source_fact:v1:37f94eb3831089dfacaca9270deadff95351c5b0692124acc75d6f8f483881de",
-        "source_fact:v1:5a2fb9090265705a17da40f10de60729d9c7cd51ee150442c47ef2c2140bb1d7",
-        "source_fact:v1:68a2e3a7385cb8e1b614d646a37ea4816e4f0f88b4e9f2fff017e98e2bb988ba",
-        "source_fact:v1:838c9fc14bd97d2691964ccb46eb1b0cc3726752c60bbe966c700b2dfd49f29a",
-        "source_fact:v1:a03b187d03eb1b4c688cc66179be8134f69aee266cdd1c829a4fc5177afca07b",
-        "source_fact:v1:b501c90ee97526ecda082c554c914cd993bacde5a2525eeb1d7c85b568e6945f",
-        "source_fact:v1:d039c1c3dc42fa676b8c93a7b53b0eb035f7952d55d815b58d305bd68dc8338f"
+        "source_fact:v1:12e7f89e64251a8a4635c54efa8b41ba382877355480260f39890c790dc7ccec",
+        "source_fact:v1:d6d4479441b85ed082b32e270291018ca05f977e715b6e4e5abb141da4c8cde6"
       ],
-      "source_published_kst": "2026-10-06T16:45+09:00",
-      "title": "알테오젠, 2000억 투자 유치…연구부터 판매까지 한 회사로"
+      "source_published_kst": "2026-10-06T17:50+09:00",
+      "title": "신세계 '유통·콘텐츠' 시너지"
     },
     "event:4b6c66ca03796acb2d14c1b0": {
       "first_seen_kst": "2026-10-01T11:18:10+09:00",
@@ -7239,6 +7233,28 @@
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
+    "fact:1268dd848c62224da8bf8c44": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.hankyung.com/article/202610066207P",
+      "source": "한국경제",
+      "source_body_digest": "4d35c6b63aaf97bc91f8375a380002366a6c47a8dd419d4e228ca41f6255d497",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:910436ee2e96b31897b80b516b614864c00c5880bf2ed1d9e1aac3edaed6cba9",
+      "source_fact_keys": [
+        "source_fact:v1:2ed2f073f4ac040bee3b6742e30e53065950295c4768371cc5a4e3cc2d879d31",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:7e437d15d94c319a110c44e17ee0c35bd8be926de626a3571f1bcd29f3d791ce",
+        "source_fact:v1:8f3c33677f5c7ce6fe069504012e3fd84816b257b7ec02f66223de023912170e",
+        "source_fact:v1:d6efdc23cf69aef38d8c7c25700fa5f8bf45ecc2628fc371a508df62133f52e6",
+        "source_fact:v1:e1077b9ab29eafdf09a7d94709e99a7910354ec3bb80e1afb622fffa3786591c"
+      ],
+      "source_published_kst": "2026-10-06T17:03+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결…"
+    },
     "fact:12dc10c803a84901c3caa566": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -7794,7 +7810,7 @@
       "link": "https://stock.mk.co.kr/news/view/1170367",
       "source": "매일경제",
       "source_body_digest": "811abdd9f27e9f97a13cff846b7201f27e0ebf9a9142d075eae3a011424c8c4f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:project_safety_assessment:758f575f8e01542a7b2f5318b20515758991470e8d878d8a526e8d2376ea78a6",
       "source_fact_identity": "source_facts:v1:3f439b38b56141cab66194370494d6c4af2c96530fa2282734314ca62e603fb8",
       "source_fact_keys": [
         "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
@@ -9147,6 +9163,23 @@
       ],
       "source_published_kst": "2026-10-06T09:32+09:00",
       "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
+    },
+    "fact:3a4f4dedb7e0edf8606572f4": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170379",
+      "source": "매일경제",
+      "source_body_digest": "52798cb353bf3689dab6fe14e00e3f1c1f00b2a2f8bbb2ca0b9d238328a1af8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d12bc29e122b291a25434685575629322c9dd31f2c364a607fb379de27f7cf0d",
+      "source_fact_keys": [
+        "source_fact:v1:68815aaad5940d02db7919dcb70301962b154f9a577fdcc1251c884c57e91c6e"
+      ],
+      "source_published_kst": "2026-10-06T16:28+09:00",
+      "title": "신세계그룹, 워너브라더스 인수에 10억달러…"
     },
     "fact:3a85908937cfa4effc3883bd": {
       "first_seen_kst": "2026-10-06T16:30:27+09:00",
@@ -10835,7 +10868,7 @@
       "link": "https://stock.mk.co.kr/news/view/1170392",
       "source": "매일경제",
       "source_body_digest": "cdd19cf499f2657ff809e9e8aa156cf5b19336f7966324dd42b56aa5eb096e1f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:listing_suspension_ruling:77b3e47fde472723cc52897ac3a1de2bbba91ee3912d93451670f1edd41730ed",
       "source_fact_identity": "source_facts:v1:cb242d0d7d7788df0d9d5e38445136825ec30a481068d0297b9a61974810ae3b",
       "source_fact_keys": [
         "source_fact:v1:68accc0a4f6d51c542eba7c2a032e2ed74911798c45580483f70e6b7b192b127",
@@ -11361,6 +11394,24 @@
       "source_published_kst": "2026-10-06T04:53+09:00",
       "title": "트럼프 \"휘발윳값 상승, 호르무즈 때문 아냐\"…우크라전쟁·야당 탓"
     },
+    "fact:728c4b2970dceed756bfaff4": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169612",
+      "source": "매일경제",
+      "source_body_digest": "8773ff343f9bc94194f72e4fae11b5eebed12d1f7723d83f41312a1452503172",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9250ccb1b2c588aacbd63aa9853327052077afae7ce432c97a80d932d727e0d",
+      "source_fact_keys": [
+        "source_fact:v1:12e7f89e64251a8a4635c54efa8b41ba382877355480260f39890c790dc7ccec",
+        "source_fact:v1:d6d4479441b85ed082b32e270291018ca05f977e715b6e4e5abb141da4c8cde6"
+      ],
+      "source_published_kst": "2026-10-06T17:50+09:00",
+      "title": "신세계 '유통·콘텐츠' 시너지"
+    },
     "fact:72c5c5732a0ea534de7aff00": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
       "lanes": {
@@ -11742,6 +11793,26 @@
       ],
       "source_published_kst": "2026-10-05T10:59+09:00",
       "title": "“국내서 접하기 힘든 해외 AI 한곳 에”…LG유플러스가 ‘유독’으로 들여온다"
+    },
+    "fact:7f76478f710ac219382be3e1": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05684246645610296",
+      "source": "이데일리",
+      "source_body_digest": "ec0ad0cdab2f59ba4a83150524b9cd0d48968ff25cd6e1090ffc2295ca20ecd0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4b69e488776719e47a9e27da41a6318572cff47f196b7f6d56d535e2625c3461",
+      "source_fact_keys": [
+        "source_fact:v1:03d5864e327b8b4a5897bf60a05952d672ae86edcc7acd10395cd95a619be099",
+        "source_fact:v1:109723b7b7da943df75f71774ac1ca5588dfb6e0d5da44da81bb3b4e1213064d",
+        "source_fact:v1:ad19dbce9cafee37465947a88a45e93bf8b484e3078dff1ded72a53fb5b4fdb7",
+        "source_fact:v1:d0b76104ef459cbc7c1ab1c3778a28310ac83fd7a79ca4a4bb237881835a6b26"
+      ],
+      "source_published_kst": "2026-10-06T20:03+09:00",
+      "title": "[TODAY테슬라]테슬라, 3분기 실적보단 로보택시·FSD 중요…‘중립’-골드만"
     },
     "fact:80937f7592159171edde838b": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
@@ -14829,6 +14900,23 @@
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
     },
+    "fact:c88f3cbaf3a5add7d24b9f41": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.fnnews.com/news/202610060935308427",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "0cac28c9582902506cf216b6917aedb35d8c5e9d056ae3fe7ad037b3ff54feb9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3d167d7895dab6b324c4cf3d598955550f7d2bf23a0e1ebde1f6dbb826e20ba",
+      "source_fact_keys": [
+        "source_fact:v1:a9ee3be4665ea412fe43408c3953aa47b1b0b0aac12444a7fd4ac410ada9ce6b"
+      ],
+      "source_published_kst": "2026-10-06T09:35+09:00",
+      "title": "iM증권, 국내 주식 소수점 거래 서비스 개시"
+    },
     "fact:c8f3bae7353731e446e66337": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -15753,6 +15841,29 @@
       "source_published_kst": "2026-10-06T17:35+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결"
     },
+    "fact:ddae0adaa70d08f63543f28d": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894572",
+      "source": "헤럴드경제",
+      "source_body_digest": "9fd94390a5317d7134219764a483e840fb4ab334069d4877fa16c9bcab6a524a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28aff1ffdee138a153e5c2049fb037d36c438ede3959ca322f14bc3ddaa24dfc",
+      "source_fact_keys": [
+        "source_fact:v1:08ac46f4c64d71b53ceb6aad85b1d346459fbc5f4f15ae1a7d51962a3fd0a6f5",
+        "source_fact:v1:1fbb63ebcb464d8de90b76a92053ec4bc3edda4232c428e14e8a4c4bac8a89cd",
+        "source_fact:v1:6423d6724df3f814a8f4e8a75a8d8aaf4d9030ba531b83885aa8368184475268",
+        "source_fact:v1:6e23216d8219cc9c07546558b857849bccb56233f87265b1ff4e7bb2f4770baf",
+        "source_fact:v1:8070beb1775fef70b11e1a1def445f1b28f1558025372532a0d9a3e3578a95f6",
+        "source_fact:v1:c90a74e3bd06f5e2d1c28951d14e8e64b9bdc2508d8f4f99d7181bcd4bcbe438",
+        "source_fact:v1:ed15b4072977fb7f276a0df7d2e89c764c6b7dc6eae97eb80d63b838613338c6"
+      ],
+      "source_published_kst": "2026-10-06T20:43+09:00",
+      "title": "“원유수출 0인데도 안 무너진다”…이란이 美 지치길 기다리는 이유"
+    },
     "fact:ddb9a03fa3edacc19dd2505a": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
       "lanes": {
@@ -15762,7 +15873,7 @@
       "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000020343",
       "source": "국민일보",
       "source_body_digest": "56fba7f7f8026facfc0e648d17ae762067a174b3ceeabf00e08c213ecb29d70c",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:conditional_remittance:bf825e633beec5b6c5c46b2e8ac7af31137e8e30feaad12941158548ca6d5d31",
       "source_fact_identity": "source_facts:v1:38f586c6971e6cf59f2f636bb6c48b32eb9d4177c71db9d92b02de50d731b054",
       "source_fact_keys": [
         "source_fact:v1:237a3e87a63714651fd20f16c49a936ef5da361a8a5e646a8f1e7a1739d7d368"
@@ -16280,6 +16391,23 @@
       ],
       "source_published_kst": "2026-10-05T22:40+09:00",
       "title": "C.H.로빈슨, RXO 58억 달러 인수 발표 후 차입 부담에 투자심리 위축"
+    },
+    "fact:eb6e66a026e2676f1df93f94": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01630166645610296",
+      "source": "이데일리",
+      "source_body_digest": "b4cf80a896e32fee10a656ed351614cfa00e51df665b0d4437eb2db7dda6ac8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:582cec10cf59b089d82b0f0b78287c59d413160ad1214a1e4bc0a69135ba8687",
+      "source_fact_keys": [
+        "source_fact:v1:077718b5a993f419b018f10da7d0cb8a9586be1d6019f5380a3156e72b72d342"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "제작에만 6년…원전 핵심부품 조달, 美 원전 8기 속도전 변수로"
     },
     "fact:ec037eaaf6d2f5883b292d9b": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -19341,6 +19469,26 @@
       "source": "이투데이",
       "title": "[이더커넥트2026] ①투자부터 대출∙보험까지∙∙∙샤프링크 샬롬 CEO, 그린 ‘이더리움 위 AI 금융’"
     },
+    "link:16b6813cc939be678c98b975": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05684246645610296",
+      "source": "이데일리",
+      "source_body_digest": "ec0ad0cdab2f59ba4a83150524b9cd0d48968ff25cd6e1090ffc2295ca20ecd0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4b69e488776719e47a9e27da41a6318572cff47f196b7f6d56d535e2625c3461",
+      "source_fact_keys": [
+        "source_fact:v1:03d5864e327b8b4a5897bf60a05952d672ae86edcc7acd10395cd95a619be099",
+        "source_fact:v1:109723b7b7da943df75f71774ac1ca5588dfb6e0d5da44da81bb3b4e1213064d",
+        "source_fact:v1:ad19dbce9cafee37465947a88a45e93bf8b484e3078dff1ded72a53fb5b4fdb7",
+        "source_fact:v1:d0b76104ef459cbc7c1ab1c3778a28310ac83fd7a79ca4a4bb237881835a6b26"
+      ],
+      "source_published_kst": "2026-10-06T20:03+09:00",
+      "title": "[TODAY테슬라]테슬라, 3분기 실적보단 로보택시·FSD 중요…‘중립’-골드만"
+    },
     "link:16c64db2385e2b5bcf6deba0": {
       "first_seen_kst": "2026-10-02T23:01:09+09:00",
       "lanes": {
@@ -19937,6 +20085,29 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T14:10+09:00",
       "title": "고금리도 삼킨 AI 열풍⋯월가 랠리, 10년물 美국채 금리 6%가 ‘고비’"
+    },
+    "link:1d182986880d097f8b826570": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894572",
+      "source": "헤럴드경제",
+      "source_body_digest": "9fd94390a5317d7134219764a483e840fb4ab334069d4877fa16c9bcab6a524a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28aff1ffdee138a153e5c2049fb037d36c438ede3959ca322f14bc3ddaa24dfc",
+      "source_fact_keys": [
+        "source_fact:v1:08ac46f4c64d71b53ceb6aad85b1d346459fbc5f4f15ae1a7d51962a3fd0a6f5",
+        "source_fact:v1:1fbb63ebcb464d8de90b76a92053ec4bc3edda4232c428e14e8a4c4bac8a89cd",
+        "source_fact:v1:6423d6724df3f814a8f4e8a75a8d8aaf4d9030ba531b83885aa8368184475268",
+        "source_fact:v1:6e23216d8219cc9c07546558b857849bccb56233f87265b1ff4e7bb2f4770baf",
+        "source_fact:v1:8070beb1775fef70b11e1a1def445f1b28f1558025372532a0d9a3e3578a95f6",
+        "source_fact:v1:c90a74e3bd06f5e2d1c28951d14e8e64b9bdc2508d8f4f99d7181bcd4bcbe438",
+        "source_fact:v1:ed15b4072977fb7f276a0df7d2e89c764c6b7dc6eae97eb80d63b838613338c6"
+      ],
+      "source_published_kst": "2026-10-06T20:43+09:00",
+      "title": "“원유수출 0인데도 안 무너진다”…이란이 美 지치길 기다리는 이유"
     },
     "link:1d6e0db1b91a9c7e9649a84d": {
       "first_seen_kst": "2026-09-24T06:34:46+09:00",
@@ -23707,6 +23878,28 @@
       "source_event_identity": "",
       "title": "러 드론, 키이우 남부교 이틀새 4번 타격…차량'지하철 통행 끊겼다"
     },
+    "link:40cc368f28a73a4c9f0a05ab": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.hankyung.com/article/202610066207P",
+      "source": "한국경제",
+      "source_body_digest": "4d35c6b63aaf97bc91f8375a380002366a6c47a8dd419d4e228ca41f6255d497",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:910436ee2e96b31897b80b516b614864c00c5880bf2ed1d9e1aac3edaed6cba9",
+      "source_fact_keys": [
+        "source_fact:v1:2ed2f073f4ac040bee3b6742e30e53065950295c4768371cc5a4e3cc2d879d31",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:7e437d15d94c319a110c44e17ee0c35bd8be926de626a3571f1bcd29f3d791ce",
+        "source_fact:v1:8f3c33677f5c7ce6fe069504012e3fd84816b257b7ec02f66223de023912170e",
+        "source_fact:v1:d6efdc23cf69aef38d8c7c25700fa5f8bf45ecc2628fc371a508df62133f52e6",
+        "source_fact:v1:e1077b9ab29eafdf09a7d94709e99a7910354ec3bb80e1afb622fffa3786591c"
+      ],
+      "source_published_kst": "2026-10-06T17:03+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결…"
+    },
     "link:40e3736136879d8e9f321e7d": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
       "lanes": {
@@ -26494,7 +26687,7 @@
       "link": "https://stock.mk.co.kr/news/view/1170392",
       "source": "매일경제",
       "source_body_digest": "cdd19cf499f2657ff809e9e8aa156cf5b19336f7966324dd42b56aa5eb096e1f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:listing_suspension_ruling:77b3e47fde472723cc52897ac3a1de2bbba91ee3912d93451670f1edd41730ed",
       "source_fact_identity": "source_facts:v1:cb242d0d7d7788df0d9d5e38445136825ec30a481068d0297b9a61974810ae3b",
       "source_fact_keys": [
         "source_fact:v1:68accc0a4f6d51c542eba7c2a032e2ed74911798c45580483f70e6b7b192b127",
@@ -27965,7 +28158,7 @@
       "link": "https://stock.mk.co.kr/news/view/1170367",
       "source": "매일경제",
       "source_body_digest": "811abdd9f27e9f97a13cff846b7201f27e0ebf9a9142d075eae3a011424c8c4f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:project_safety_assessment:758f575f8e01542a7b2f5318b20515758991470e8d878d8a526e8d2376ea78a6",
       "source_fact_identity": "source_facts:v1:3f439b38b56141cab66194370494d6c4af2c96530fa2282734314ca62e603fb8",
       "source_fact_keys": [
         "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
@@ -29853,6 +30046,23 @@
       ],
       "source_published_kst": "2026-10-06T08:50+09:00",
       "title": "외식 프랜차이즈, 가맹점 매출 줄 때 본사 매출은 늘었다"
+    },
+    "link:7bc2e03304b815c5334e2559": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.fnnews.com/news/202610060935308427",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "0cac28c9582902506cf216b6917aedb35d8c5e9d056ae3fe7ad037b3ff54feb9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3d167d7895dab6b324c4cf3d598955550f7d2bf23a0e1ebde1f6dbb826e20ba",
+      "source_fact_keys": [
+        "source_fact:v1:a9ee3be4665ea412fe43408c3953aa47b1b0b0aac12444a7fd4ac410ada9ce6b"
+      ],
+      "source_published_kst": "2026-10-06T09:35+09:00",
+      "title": "iM증권, 국내 주식 소수점 거래 서비스 개시"
     },
     "link:7bce3177e82946cb66c592f2": {
       "first_seen_kst": "2026-10-01T22:45:00+09:00",
@@ -33268,6 +33478,24 @@
       "source_published_kst": "2026-10-06T16:30+09:00",
       "title": "\"미디어텍 디멘시티, 프리미엄 스마트폰 AP시장서 삼성전자 역전 전망\""
     },
+    "link:9f738d192ebdd0ca1e4c9d80": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169612",
+      "source": "매일경제",
+      "source_body_digest": "8773ff343f9bc94194f72e4fae11b5eebed12d1f7723d83f41312a1452503172",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9250ccb1b2c588aacbd63aa9853327052077afae7ce432c97a80d932d727e0d",
+      "source_fact_keys": [
+        "source_fact:v1:12e7f89e64251a8a4635c54efa8b41ba382877355480260f39890c790dc7ccec",
+        "source_fact:v1:d6d4479441b85ed082b32e270291018ca05f977e715b6e4e5abb141da4c8cde6"
+      ],
+      "source_published_kst": "2026-10-06T17:50+09:00",
+      "title": "신세계 '유통·콘텐츠' 시너지"
+    },
     "link:9f7d1fa87fd47080201c8387": {
       "first_seen_kst": "2026-09-29T09:48:13+09:00",
       "lanes": {
@@ -34350,6 +34578,23 @@
       "source": "이데일리",
       "title": "\"AI 거품론 정면돌파\" 엔비디아, 204조 자사주 베팅한 이유"
     },
+    "link:aa5b2571ad41792111947e8d": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01630166645610296",
+      "source": "이데일리",
+      "source_body_digest": "b4cf80a896e32fee10a656ed351614cfa00e51df665b0d4437eb2db7dda6ac8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:582cec10cf59b089d82b0f0b78287c59d413160ad1214a1e4bc0a69135ba8687",
+      "source_fact_keys": [
+        "source_fact:v1:077718b5a993f419b018f10da7d0cb8a9586be1d6019f5380a3156e72b72d342"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "제작에만 6년…원전 핵심부품 조달, 美 원전 8기 속도전 변수로"
+    },
     "link:aa5f8def8ba1abf5d8f9ed73": {
       "first_seen_kst": "2026-10-02T12:38:28+09:00",
       "lanes": {
@@ -35213,7 +35458,7 @@
       "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000020343",
       "source": "국민일보",
       "source_body_digest": "56fba7f7f8026facfc0e648d17ae762067a174b3ceeabf00e08c213ecb29d70c",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:conditional_remittance:bf825e633beec5b6c5c46b2e8ac7af31137e8e30feaad12941158548ca6d5d31",
       "source_fact_identity": "source_facts:v1:38f586c6971e6cf59f2f636bb6c48b32eb9d4177c71db9d92b02de50d731b054",
       "source_fact_keys": [
         "source_fact:v1:237a3e87a63714651fd20f16c49a936ef5da361a8a5e646a8f1e7a1739d7d368"
@@ -41793,6 +42038,23 @@
       "source": "이데일리",
       "title": "개인·외인·기관 다 파는데…코스피 7000선 공방"
     },
+    "link:f24379ce94ca066f96d60a03": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170379",
+      "source": "매일경제",
+      "source_body_digest": "52798cb353bf3689dab6fe14e00e3f1c1f00b2a2f8bbb2ca0b9d238328a1af8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d12bc29e122b291a25434685575629322c9dd31f2c364a607fb379de27f7cf0d",
+      "source_fact_keys": [
+        "source_fact:v1:68815aaad5940d02db7919dcb70301962b154f9a577fdcc1251c884c57e91c6e"
+      ],
+      "source_published_kst": "2026-10-06T16:28+09:00",
+      "title": "신세계그룹, 워너브라더스 인수에 10억달러…"
+    },
     "link:f24702ace47227a6ccce470f": {
       "first_seen_kst": "2026-10-05T01:05:10+09:00",
       "lanes": {
@@ -47110,6 +47372,23 @@
       "source": "연합뉴스",
       "title": "원자력 안전규제도 AI로…원안위, 향후 5년 청사진 공개 | 연합뉴스"
     },
+    "original:28393a51c896a9557bd08709": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.fnnews.com/news/202610060935308427",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "0cac28c9582902506cf216b6917aedb35d8c5e9d056ae3fe7ad037b3ff54feb9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3d167d7895dab6b324c4cf3d598955550f7d2bf23a0e1ebde1f6dbb826e20ba",
+      "source_fact_keys": [
+        "source_fact:v1:a9ee3be4665ea412fe43408c3953aa47b1b0b0aac12444a7fd4ac410ada9ce6b"
+      ],
+      "source_published_kst": "2026-10-06T09:35+09:00",
+      "title": "iM증권, 국내 주식 소수점 거래 서비스 개시"
+    },
     "original:2873f2703bb1cee392f31568": {
       "first_seen_kst": "2026-10-04T17:14:34+09:00",
       "lanes": {
@@ -48177,6 +48456,23 @@
       "link": "https://view.asiae.co.kr/article/2026100110263966041",
       "source": "아시아경제",
       "title": "삼성운용 \"커버드콜 ETF 활용해서 월 분배금 두 번 받으세요\""
+    },
+    "original:32a7cf06cde46fb4c4f89932": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170379",
+      "source": "매일경제",
+      "source_body_digest": "52798cb353bf3689dab6fe14e00e3f1c1f00b2a2f8bbb2ca0b9d238328a1af8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d12bc29e122b291a25434685575629322c9dd31f2c364a607fb379de27f7cf0d",
+      "source_fact_keys": [
+        "source_fact:v1:68815aaad5940d02db7919dcb70301962b154f9a577fdcc1251c884c57e91c6e"
+      ],
+      "source_published_kst": "2026-10-06T16:28+09:00",
+      "title": "신세계그룹, 워너브라더스 인수에 10억달러…"
     },
     "original:32bd5c39390a2b94ed86939d": {
       "first_seen_kst": "2026-10-03T21:06:13+09:00",
@@ -51493,7 +51789,7 @@
       "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000020343",
       "source": "국민일보",
       "source_body_digest": "56fba7f7f8026facfc0e648d17ae762067a174b3ceeabf00e08c213ecb29d70c",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:conditional_remittance:bf825e633beec5b6c5c46b2e8ac7af31137e8e30feaad12941158548ca6d5d31",
       "source_fact_identity": "source_facts:v1:38f586c6971e6cf59f2f636bb6c48b32eb9d4177c71db9d92b02de50d731b054",
       "source_fact_keys": [
         "source_fact:v1:237a3e87a63714651fd20f16c49a936ef5da361a8a5e646a8f1e7a1739d7d368"
@@ -54863,6 +55159,29 @@
       "source": "헤럴드경제",
       "title": "HBM 소재 등에 업은 에코프로HN"
     },
+    "original:739b6f7b1b0c9bc8ba1bd30b": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894572",
+      "source": "헤럴드경제",
+      "source_body_digest": "9fd94390a5317d7134219764a483e840fb4ab334069d4877fa16c9bcab6a524a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28aff1ffdee138a153e5c2049fb037d36c438ede3959ca322f14bc3ddaa24dfc",
+      "source_fact_keys": [
+        "source_fact:v1:08ac46f4c64d71b53ceb6aad85b1d346459fbc5f4f15ae1a7d51962a3fd0a6f5",
+        "source_fact:v1:1fbb63ebcb464d8de90b76a92053ec4bc3edda4232c428e14e8a4c4bac8a89cd",
+        "source_fact:v1:6423d6724df3f814a8f4e8a75a8d8aaf4d9030ba531b83885aa8368184475268",
+        "source_fact:v1:6e23216d8219cc9c07546558b857849bccb56233f87265b1ff4e7bb2f4770baf",
+        "source_fact:v1:8070beb1775fef70b11e1a1def445f1b28f1558025372532a0d9a3e3578a95f6",
+        "source_fact:v1:c90a74e3bd06f5e2d1c28951d14e8e64b9bdc2508d8f4f99d7181bcd4bcbe438",
+        "source_fact:v1:ed15b4072977fb7f276a0df7d2e89c764c6b7dc6eae97eb80d63b838613338c6"
+      ],
+      "source_published_kst": "2026-10-06T20:43+09:00",
+      "title": "“원유수출 0인데도 안 무너진다”…이란이 美 지치길 기다리는 이유"
+    },
     "original:73cdf985d423d9c4b369fd4c": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -56038,7 +56357,7 @@
       "link": "https://stock.mk.co.kr/news/view/1170367",
       "source": "매일경제",
       "source_body_digest": "811abdd9f27e9f97a13cff846b7201f27e0ebf9a9142d075eae3a011424c8c4f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:project_safety_assessment:758f575f8e01542a7b2f5318b20515758991470e8d878d8a526e8d2376ea78a6",
       "source_fact_identity": "source_facts:v1:3f439b38b56141cab66194370494d6c4af2c96530fa2282734314ca62e603fb8",
       "source_fact_keys": [
         "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
@@ -57315,6 +57634,28 @@
       "link": "https://www.yna.co.kr/view/MYH20261002009500038",
       "source": "연합뉴스",
       "title": "美경윳값 폭등에…트럼프, 유럽에 폭탄돌리기 | 연합뉴스"
+    },
+    "original:8d91e4992432361c497e62ff": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.hankyung.com/article/202610066207P",
+      "source": "한국경제",
+      "source_body_digest": "4d35c6b63aaf97bc91f8375a380002366a6c47a8dd419d4e228ca41f6255d497",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:910436ee2e96b31897b80b516b614864c00c5880bf2ed1d9e1aac3edaed6cba9",
+      "source_fact_keys": [
+        "source_fact:v1:2ed2f073f4ac040bee3b6742e30e53065950295c4768371cc5a4e3cc2d879d31",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:7e437d15d94c319a110c44e17ee0c35bd8be926de626a3571f1bcd29f3d791ce",
+        "source_fact:v1:8f3c33677f5c7ce6fe069504012e3fd84816b257b7ec02f66223de023912170e",
+        "source_fact:v1:d6efdc23cf69aef38d8c7c25700fa5f8bf45ecc2628fc371a508df62133f52e6",
+        "source_fact:v1:e1077b9ab29eafdf09a7d94709e99a7910354ec3bb80e1afb622fffa3786591c"
+      ],
+      "source_published_kst": "2026-10-06T17:03+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결…"
     },
     "original:8da9cb3d50e9b2df6d03bbf2": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
@@ -59166,6 +59507,23 @@
       "link": "https://www.mk.co.kr/news/world/12162935",
       "source": "매일경제",
       "title": "TSMC 패키징공장 5곳 추가 건설"
+    },
+    "original:a0e708090640857359283d19": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01630166645610296",
+      "source": "이데일리",
+      "source_body_digest": "b4cf80a896e32fee10a656ed351614cfa00e51df665b0d4437eb2db7dda6ac8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:582cec10cf59b089d82b0f0b78287c59d413160ad1214a1e4bc0a69135ba8687",
+      "source_fact_keys": [
+        "source_fact:v1:077718b5a993f419b018f10da7d0cb8a9586be1d6019f5380a3156e72b72d342"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "제작에만 6년…원전 핵심부품 조달, 美 원전 8기 속도전 변수로"
     },
     "original:a12de25c1affa9984f279a8e": {
       "first_seen_kst": "2026-09-30T06:33:46+09:00",
@@ -61937,7 +62295,7 @@
       "link": "https://stock.mk.co.kr/news/view/1170392",
       "source": "매일경제",
       "source_body_digest": "cdd19cf499f2657ff809e9e8aa156cf5b19336f7966324dd42b56aa5eb096e1f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:listing_suspension_ruling:77b3e47fde472723cc52897ac3a1de2bbba91ee3912d93451670f1edd41730ed",
       "source_fact_identity": "source_facts:v1:cb242d0d7d7788df0d9d5e38445136825ec30a481068d0297b9a61974810ae3b",
       "source_fact_keys": [
         "source_fact:v1:68accc0a4f6d51c542eba7c2a032e2ed74911798c45580483f70e6b7b192b127",
@@ -64532,6 +64890,26 @@
       "source_published_kst": "2026-10-06T15:25+09:00",
       "title": "임귀현 완주군의원, 친환경 액비 자원화 확대 점검 나서"
     },
+    "original:d7ebae56651d79c0e56060ec": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05684246645610296",
+      "source": "이데일리",
+      "source_body_digest": "ec0ad0cdab2f59ba4a83150524b9cd0d48968ff25cd6e1090ffc2295ca20ecd0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4b69e488776719e47a9e27da41a6318572cff47f196b7f6d56d535e2625c3461",
+      "source_fact_keys": [
+        "source_fact:v1:03d5864e327b8b4a5897bf60a05952d672ae86edcc7acd10395cd95a619be099",
+        "source_fact:v1:109723b7b7da943df75f71774ac1ca5588dfb6e0d5da44da81bb3b4e1213064d",
+        "source_fact:v1:ad19dbce9cafee37465947a88a45e93bf8b484e3078dff1ded72a53fb5b4fdb7",
+        "source_fact:v1:d0b76104ef459cbc7c1ab1c3778a28310ac83fd7a79ca4a4bb237881835a6b26"
+      ],
+      "source_published_kst": "2026-10-06T20:03+09:00",
+      "title": "[TODAY테슬라]테슬라, 3분기 실적보단 로보택시·FSD 중요…‘중립’-골드만"
+    },
     "original:d838924bcfc62a23d8ee0472": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -65753,6 +66131,24 @@
       "link": "https://core.asiae.co.kr/article/2026100112163454437",
       "source": "아시아경제",
       "title": "코스피, 모든 주체 매도세에도 소폭 상승세 전환"
+    },
+    "original:e533f79fa470424796651651": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169612",
+      "source": "매일경제",
+      "source_body_digest": "8773ff343f9bc94194f72e4fae11b5eebed12d1f7723d83f41312a1452503172",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9250ccb1b2c588aacbd63aa9853327052077afae7ce432c97a80d932d727e0d",
+      "source_fact_keys": [
+        "source_fact:v1:12e7f89e64251a8a4635c54efa8b41ba382877355480260f39890c790dc7ccec",
+        "source_fact:v1:d6d4479441b85ed082b32e270291018ca05f977e715b6e4e5abb141da4c8cde6"
+      ],
+      "source_published_kst": "2026-10-06T17:50+09:00",
+      "title": "신세계 '유통·콘텐츠' 시너지"
     },
     "original:e54cdb4aa83a94ada1aba8bd": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
@@ -70898,6 +71294,28 @@
       "source_published_kst": "2026-10-06T11:36+09:00",
       "title": "지역 일자리 창출·육아휴직 확산…경사노위 6대 과제 윤곽"
     },
+    "source_fact:0d8672c52f4e40c007fcf700": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.hankyung.com/article/202610066207P",
+      "source": "한국경제",
+      "source_body_digest": "4d35c6b63aaf97bc91f8375a380002366a6c47a8dd419d4e228ca41f6255d497",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:910436ee2e96b31897b80b516b614864c00c5880bf2ed1d9e1aac3edaed6cba9",
+      "source_fact_keys": [
+        "source_fact:v1:2ed2f073f4ac040bee3b6742e30e53065950295c4768371cc5a4e3cc2d879d31",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:7e437d15d94c319a110c44e17ee0c35bd8be926de626a3571f1bcd29f3d791ce",
+        "source_fact:v1:8f3c33677f5c7ce6fe069504012e3fd84816b257b7ec02f66223de023912170e",
+        "source_fact:v1:d6efdc23cf69aef38d8c7c25700fa5f8bf45ecc2628fc371a508df62133f52e6",
+        "source_fact:v1:e1077b9ab29eafdf09a7d94709e99a7910354ec3bb80e1afb622fffa3786591c"
+      ],
+      "source_published_kst": "2026-10-06T17:03+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결…"
+    },
     "source_fact:0d8a316f894258afd20e478a": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
@@ -74712,6 +75130,26 @@
       "source_published_kst": "2026-10-05T23:08+09:00",
       "title": "JP모간 \"美 증시 최악의 상황 지났을 수도\"…단기 전망 낙관"
     },
+    "source_fact:2395ff48737187a5ad8772c1": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05684246645610296",
+      "source": "이데일리",
+      "source_body_digest": "ec0ad0cdab2f59ba4a83150524b9cd0d48968ff25cd6e1090ffc2295ca20ecd0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4b69e488776719e47a9e27da41a6318572cff47f196b7f6d56d535e2625c3461",
+      "source_fact_keys": [
+        "source_fact:v1:03d5864e327b8b4a5897bf60a05952d672ae86edcc7acd10395cd95a619be099",
+        "source_fact:v1:109723b7b7da943df75f71774ac1ca5588dfb6e0d5da44da81bb3b4e1213064d",
+        "source_fact:v1:ad19dbce9cafee37465947a88a45e93bf8b484e3078dff1ded72a53fb5b4fdb7",
+        "source_fact:v1:d0b76104ef459cbc7c1ab1c3778a28310ac83fd7a79ca4a4bb237881835a6b26"
+      ],
+      "source_published_kst": "2026-10-06T20:03+09:00",
+      "title": "[TODAY테슬라]테슬라, 3분기 실적보단 로보택시·FSD 중요…‘중립’-골드만"
+    },
     "source_fact:23bb40dc3b78904813ccdde2": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -75218,6 +75656,24 @@
       ],
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
+    "source_fact:26bb954e1df4205b78cf9ec6": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169612",
+      "source": "매일경제",
+      "source_body_digest": "8773ff343f9bc94194f72e4fae11b5eebed12d1f7723d83f41312a1452503172",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9250ccb1b2c588aacbd63aa9853327052077afae7ce432c97a80d932d727e0d",
+      "source_fact_keys": [
+        "source_fact:v1:12e7f89e64251a8a4635c54efa8b41ba382877355480260f39890c790dc7ccec",
+        "source_fact:v1:d6d4479441b85ed082b32e270291018ca05f977e715b6e4e5abb141da4c8cde6"
+      ],
+      "source_published_kst": "2026-10-06T17:50+09:00",
+      "title": "신세계 '유통·콘텐츠' 시너지"
     },
     "source_fact:26c1b392e88a19457cc6246e": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -76321,6 +76777,28 @@
       "source_published_kst": "2026-10-06T18:00+09:00",
       "title": "박스피 갇힌 코스피, 11월 연말 랠리 올까?"
     },
+    "source_fact:2c1caf623efc3c0c0d7191c0": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.hankyung.com/article/202610066207P",
+      "source": "한국경제",
+      "source_body_digest": "4d35c6b63aaf97bc91f8375a380002366a6c47a8dd419d4e228ca41f6255d497",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:910436ee2e96b31897b80b516b614864c00c5880bf2ed1d9e1aac3edaed6cba9",
+      "source_fact_keys": [
+        "source_fact:v1:2ed2f073f4ac040bee3b6742e30e53065950295c4768371cc5a4e3cc2d879d31",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:7e437d15d94c319a110c44e17ee0c35bd8be926de626a3571f1bcd29f3d791ce",
+        "source_fact:v1:8f3c33677f5c7ce6fe069504012e3fd84816b257b7ec02f66223de023912170e",
+        "source_fact:v1:d6efdc23cf69aef38d8c7c25700fa5f8bf45ecc2628fc371a508df62133f52e6",
+        "source_fact:v1:e1077b9ab29eafdf09a7d94709e99a7910354ec3bb80e1afb622fffa3786591c"
+      ],
+      "source_published_kst": "2026-10-06T17:03+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결…"
+    },
     "source_fact:2c1e4dfd919f0004facfbae7": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -77081,6 +77559,26 @@
       "source_published_kst": "2026-10-05T09:39+09:00",
       "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
     },
+    "source_fact:30a675576c431bb7327f5fcb": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05684246645610296",
+      "source": "이데일리",
+      "source_body_digest": "ec0ad0cdab2f59ba4a83150524b9cd0d48968ff25cd6e1090ffc2295ca20ecd0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4b69e488776719e47a9e27da41a6318572cff47f196b7f6d56d535e2625c3461",
+      "source_fact_keys": [
+        "source_fact:v1:03d5864e327b8b4a5897bf60a05952d672ae86edcc7acd10395cd95a619be099",
+        "source_fact:v1:109723b7b7da943df75f71774ac1ca5588dfb6e0d5da44da81bb3b4e1213064d",
+        "source_fact:v1:ad19dbce9cafee37465947a88a45e93bf8b484e3078dff1ded72a53fb5b4fdb7",
+        "source_fact:v1:d0b76104ef459cbc7c1ab1c3778a28310ac83fd7a79ca4a4bb237881835a6b26"
+      ],
+      "source_published_kst": "2026-10-06T20:03+09:00",
+      "title": "[TODAY테슬라]테슬라, 3분기 실적보단 로보택시·FSD 중요…‘중립’-골드만"
+    },
     "source_fact:30f09a1f16bce401c79068c5": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
@@ -77148,6 +77646,23 @@
       ],
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
+    "source_fact:3117f751105f190db0191895": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01630166645610296",
+      "source": "이데일리",
+      "source_body_digest": "b4cf80a896e32fee10a656ed351614cfa00e51df665b0d4437eb2db7dda6ac8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:582cec10cf59b089d82b0f0b78287c59d413160ad1214a1e4bc0a69135ba8687",
+      "source_fact_keys": [
+        "source_fact:v1:077718b5a993f419b018f10da7d0cb8a9586be1d6019f5380a3156e72b72d342"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "제작에만 6년…원전 핵심부품 조달, 美 원전 8기 속도전 변수로"
     },
     "source_fact:3121941c5a603ab71e848707": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -81906,6 +82421,28 @@
       "source_published_kst": "2026-10-06T17:45+09:00",
       "title": "삼성전기, MLCC 또 장기계약"
     },
+    "source_fact:4974a71740595a002b0d204c": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.hankyung.com/article/202610066207P",
+      "source": "한국경제",
+      "source_body_digest": "4d35c6b63aaf97bc91f8375a380002366a6c47a8dd419d4e228ca41f6255d497",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:910436ee2e96b31897b80b516b614864c00c5880bf2ed1d9e1aac3edaed6cba9",
+      "source_fact_keys": [
+        "source_fact:v1:2ed2f073f4ac040bee3b6742e30e53065950295c4768371cc5a4e3cc2d879d31",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:7e437d15d94c319a110c44e17ee0c35bd8be926de626a3571f1bcd29f3d791ce",
+        "source_fact:v1:8f3c33677f5c7ce6fe069504012e3fd84816b257b7ec02f66223de023912170e",
+        "source_fact:v1:d6efdc23cf69aef38d8c7c25700fa5f8bf45ecc2628fc371a508df62133f52e6",
+        "source_fact:v1:e1077b9ab29eafdf09a7d94709e99a7910354ec3bb80e1afb622fffa3786591c"
+      ],
+      "source_published_kst": "2026-10-06T17:03+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결…"
+    },
     "source_fact:499c763e8cbd5a77610624ed": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -82292,6 +82829,29 @@
       ],
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
+    },
+    "source_fact:4af1db15a09384f3fcc3b3b1": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894572",
+      "source": "헤럴드경제",
+      "source_body_digest": "9fd94390a5317d7134219764a483e840fb4ab334069d4877fa16c9bcab6a524a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28aff1ffdee138a153e5c2049fb037d36c438ede3959ca322f14bc3ddaa24dfc",
+      "source_fact_keys": [
+        "source_fact:v1:08ac46f4c64d71b53ceb6aad85b1d346459fbc5f4f15ae1a7d51962a3fd0a6f5",
+        "source_fact:v1:1fbb63ebcb464d8de90b76a92053ec4bc3edda4232c428e14e8a4c4bac8a89cd",
+        "source_fact:v1:6423d6724df3f814a8f4e8a75a8d8aaf4d9030ba531b83885aa8368184475268",
+        "source_fact:v1:6e23216d8219cc9c07546558b857849bccb56233f87265b1ff4e7bb2f4770baf",
+        "source_fact:v1:8070beb1775fef70b11e1a1def445f1b28f1558025372532a0d9a3e3578a95f6",
+        "source_fact:v1:c90a74e3bd06f5e2d1c28951d14e8e64b9bdc2508d8f4f99d7181bcd4bcbe438",
+        "source_fact:v1:ed15b4072977fb7f276a0df7d2e89c764c6b7dc6eae97eb80d63b838613338c6"
+      ],
+      "source_published_kst": "2026-10-06T20:43+09:00",
+      "title": "“원유수출 0인데도 안 무너진다”…이란이 美 지치길 기다리는 이유"
     },
     "source_fact:4b12bc6f645bc46e470d73cb": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -83659,7 +84219,7 @@
       "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000020343",
       "source": "국민일보",
       "source_body_digest": "56fba7f7f8026facfc0e648d17ae762067a174b3ceeabf00e08c213ecb29d70c",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:conditional_remittance:bf825e633beec5b6c5c46b2e8ac7af31137e8e30feaad12941158548ca6d5d31",
       "source_fact_identity": "source_facts:v1:38f586c6971e6cf59f2f636bb6c48b32eb9d4177c71db9d92b02de50d731b054",
       "source_fact_keys": [
         "source_fact:v1:237a3e87a63714651fd20f16c49a936ef5da361a8a5e646a8f1e7a1739d7d368"
@@ -83973,6 +84533,26 @@
       ],
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "레졸루트, FDA 3상 실패에도 BLA 사전회의 권고"
+    },
+    "source_fact:544af33c492064dd2d5584e7": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05684246645610296",
+      "source": "이데일리",
+      "source_body_digest": "ec0ad0cdab2f59ba4a83150524b9cd0d48968ff25cd6e1090ffc2295ca20ecd0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4b69e488776719e47a9e27da41a6318572cff47f196b7f6d56d535e2625c3461",
+      "source_fact_keys": [
+        "source_fact:v1:03d5864e327b8b4a5897bf60a05952d672ae86edcc7acd10395cd95a619be099",
+        "source_fact:v1:109723b7b7da943df75f71774ac1ca5588dfb6e0d5da44da81bb3b4e1213064d",
+        "source_fact:v1:ad19dbce9cafee37465947a88a45e93bf8b484e3078dff1ded72a53fb5b4fdb7",
+        "source_fact:v1:d0b76104ef459cbc7c1ab1c3778a28310ac83fd7a79ca4a4bb237881835a6b26"
+      ],
+      "source_published_kst": "2026-10-06T20:03+09:00",
+      "title": "[TODAY테슬라]테슬라, 3분기 실적보단 로보택시·FSD 중요…‘중립’-골드만"
     },
     "source_fact:5463ff28392ba2179fff05c1": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -85458,7 +86038,7 @@
       "link": "https://stock.mk.co.kr/news/view/1170392",
       "source": "매일경제",
       "source_body_digest": "cdd19cf499f2657ff809e9e8aa156cf5b19336f7966324dd42b56aa5eb096e1f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:listing_suspension_ruling:77b3e47fde472723cc52897ac3a1de2bbba91ee3912d93451670f1edd41730ed",
       "source_fact_identity": "source_facts:v1:cb242d0d7d7788df0d9d5e38445136825ec30a481068d0297b9a61974810ae3b",
       "source_fact_keys": [
         "source_fact:v1:68accc0a4f6d51c542eba7c2a032e2ed74911798c45580483f70e6b7b192b127",
@@ -85568,7 +86148,7 @@
       "link": "https://stock.mk.co.kr/news/view/1170392",
       "source": "매일경제",
       "source_body_digest": "cdd19cf499f2657ff809e9e8aa156cf5b19336f7966324dd42b56aa5eb096e1f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:listing_suspension_ruling:77b3e47fde472723cc52897ac3a1de2bbba91ee3912d93451670f1edd41730ed",
       "source_fact_identity": "source_facts:v1:cb242d0d7d7788df0d9d5e38445136825ec30a481068d0297b9a61974810ae3b",
       "source_fact_keys": [
         "source_fact:v1:68accc0a4f6d51c542eba7c2a032e2ed74911798c45580483f70e6b7b192b127",
@@ -87099,6 +87679,29 @@
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
     },
+    "source_fact:63450755b824a1e0082f0ad1": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894572",
+      "source": "헤럴드경제",
+      "source_body_digest": "9fd94390a5317d7134219764a483e840fb4ab334069d4877fa16c9bcab6a524a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28aff1ffdee138a153e5c2049fb037d36c438ede3959ca322f14bc3ddaa24dfc",
+      "source_fact_keys": [
+        "source_fact:v1:08ac46f4c64d71b53ceb6aad85b1d346459fbc5f4f15ae1a7d51962a3fd0a6f5",
+        "source_fact:v1:1fbb63ebcb464d8de90b76a92053ec4bc3edda4232c428e14e8a4c4bac8a89cd",
+        "source_fact:v1:6423d6724df3f814a8f4e8a75a8d8aaf4d9030ba531b83885aa8368184475268",
+        "source_fact:v1:6e23216d8219cc9c07546558b857849bccb56233f87265b1ff4e7bb2f4770baf",
+        "source_fact:v1:8070beb1775fef70b11e1a1def445f1b28f1558025372532a0d9a3e3578a95f6",
+        "source_fact:v1:c90a74e3bd06f5e2d1c28951d14e8e64b9bdc2508d8f4f99d7181bcd4bcbe438",
+        "source_fact:v1:ed15b4072977fb7f276a0df7d2e89c764c6b7dc6eae97eb80d63b838613338c6"
+      ],
+      "source_published_kst": "2026-10-06T20:43+09:00",
+      "title": "“원유수출 0인데도 안 무너진다”…이란이 美 지치길 기다리는 이유"
+    },
     "source_fact:6352784842c975b4e1668cdb": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
@@ -87198,6 +87801,29 @@
       ],
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
+    },
+    "source_fact:640320813a61307b60b558a8": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894572",
+      "source": "헤럴드경제",
+      "source_body_digest": "9fd94390a5317d7134219764a483e840fb4ab334069d4877fa16c9bcab6a524a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28aff1ffdee138a153e5c2049fb037d36c438ede3959ca322f14bc3ddaa24dfc",
+      "source_fact_keys": [
+        "source_fact:v1:08ac46f4c64d71b53ceb6aad85b1d346459fbc5f4f15ae1a7d51962a3fd0a6f5",
+        "source_fact:v1:1fbb63ebcb464d8de90b76a92053ec4bc3edda4232c428e14e8a4c4bac8a89cd",
+        "source_fact:v1:6423d6724df3f814a8f4e8a75a8d8aaf4d9030ba531b83885aa8368184475268",
+        "source_fact:v1:6e23216d8219cc9c07546558b857849bccb56233f87265b1ff4e7bb2f4770baf",
+        "source_fact:v1:8070beb1775fef70b11e1a1def445f1b28f1558025372532a0d9a3e3578a95f6",
+        "source_fact:v1:c90a74e3bd06f5e2d1c28951d14e8e64b9bdc2508d8f4f99d7181bcd4bcbe438",
+        "source_fact:v1:ed15b4072977fb7f276a0df7d2e89c764c6b7dc6eae97eb80d63b838613338c6"
+      ],
+      "source_published_kst": "2026-10-06T20:43+09:00",
+      "title": "“원유수출 0인데도 안 무너진다”…이란이 美 지치길 기다리는 이유"
     },
     "source_fact:6405f16dd35434c20cfee586": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
@@ -91137,7 +91763,7 @@
       "link": "https://stock.mk.co.kr/news/view/1170392",
       "source": "매일경제",
       "source_body_digest": "cdd19cf499f2657ff809e9e8aa156cf5b19336f7966324dd42b56aa5eb096e1f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:listing_suspension_ruling:77b3e47fde472723cc52897ac3a1de2bbba91ee3912d93451670f1edd41730ed",
       "source_fact_identity": "source_facts:v1:cb242d0d7d7788df0d9d5e38445136825ec30a481068d0297b9a61974810ae3b",
       "source_fact_keys": [
         "source_fact:v1:68accc0a4f6d51c542eba7c2a032e2ed74911798c45580483f70e6b7b192b127",
@@ -91258,6 +91884,23 @@
       ],
       "source_published_kst": "2026-10-05T23:10+09:00",
       "title": "LG전자, 북미서 5GW 대형 AIDC 칠러 장기 공급계약"
+    },
+    "source_fact:77c44eaec5431c288577d624": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170379",
+      "source": "매일경제",
+      "source_body_digest": "52798cb353bf3689dab6fe14e00e3f1c1f00b2a2f8bbb2ca0b9d238328a1af8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d12bc29e122b291a25434685575629322c9dd31f2c364a607fb379de27f7cf0d",
+      "source_fact_keys": [
+        "source_fact:v1:68815aaad5940d02db7919dcb70301962b154f9a577fdcc1251c884c57e91c6e"
+      ],
+      "source_published_kst": "2026-10-06T16:28+09:00",
+      "title": "신세계그룹, 워너브라더스 인수에 10억달러…"
     },
     "source_fact:77de6e79e5f089d4bab004b5": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
@@ -92734,7 +93377,7 @@
       "link": "https://stock.mk.co.kr/news/view/1170367",
       "source": "매일경제",
       "source_body_digest": "811abdd9f27e9f97a13cff846b7201f27e0ebf9a9142d075eae3a011424c8c4f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:project_safety_assessment:758f575f8e01542a7b2f5318b20515758991470e8d878d8a526e8d2376ea78a6",
       "source_fact_identity": "source_facts:v1:3f439b38b56141cab66194370494d6c4af2c96530fa2282734314ca62e603fb8",
       "source_fact_keys": [
         "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
@@ -98158,6 +98801,28 @@
       "source_published_kst": "2026-10-05T20:07+09:00",
       "title": "이카엑스 홀딩스, 플라이미 인수 완료..18억 위안 전액 현금"
     },
+    "source_fact:9a649ceab4511ea0f77ddb7a": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.hankyung.com/article/202610066207P",
+      "source": "한국경제",
+      "source_body_digest": "4d35c6b63aaf97bc91f8375a380002366a6c47a8dd419d4e228ca41f6255d497",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:910436ee2e96b31897b80b516b614864c00c5880bf2ed1d9e1aac3edaed6cba9",
+      "source_fact_keys": [
+        "source_fact:v1:2ed2f073f4ac040bee3b6742e30e53065950295c4768371cc5a4e3cc2d879d31",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:7e437d15d94c319a110c44e17ee0c35bd8be926de626a3571f1bcd29f3d791ce",
+        "source_fact:v1:8f3c33677f5c7ce6fe069504012e3fd84816b257b7ec02f66223de023912170e",
+        "source_fact:v1:d6efdc23cf69aef38d8c7c25700fa5f8bf45ecc2628fc371a508df62133f52e6",
+        "source_fact:v1:e1077b9ab29eafdf09a7d94709e99a7910354ec3bb80e1afb622fffa3786591c"
+      ],
+      "source_published_kst": "2026-10-06T17:03+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결…"
+    },
     "source_fact:9a6c44022c191d0c4fc5fc2f": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
@@ -103287,6 +103952,29 @@
       "source_published_kst": "2026-10-06T10:19+09:00",
       "title": "김정관 장관 “1600조 지방투자 본격화…2030년 AI팩토리 500개 구축”"
     },
+    "source_fact:b49e8096de068474d9c5a12e": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894572",
+      "source": "헤럴드경제",
+      "source_body_digest": "9fd94390a5317d7134219764a483e840fb4ab334069d4877fa16c9bcab6a524a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28aff1ffdee138a153e5c2049fb037d36c438ede3959ca322f14bc3ddaa24dfc",
+      "source_fact_keys": [
+        "source_fact:v1:08ac46f4c64d71b53ceb6aad85b1d346459fbc5f4f15ae1a7d51962a3fd0a6f5",
+        "source_fact:v1:1fbb63ebcb464d8de90b76a92053ec4bc3edda4232c428e14e8a4c4bac8a89cd",
+        "source_fact:v1:6423d6724df3f814a8f4e8a75a8d8aaf4d9030ba531b83885aa8368184475268",
+        "source_fact:v1:6e23216d8219cc9c07546558b857849bccb56233f87265b1ff4e7bb2f4770baf",
+        "source_fact:v1:8070beb1775fef70b11e1a1def445f1b28f1558025372532a0d9a3e3578a95f6",
+        "source_fact:v1:c90a74e3bd06f5e2d1c28951d14e8e64b9bdc2508d8f4f99d7181bcd4bcbe438",
+        "source_fact:v1:ed15b4072977fb7f276a0df7d2e89c764c6b7dc6eae97eb80d63b838613338c6"
+      ],
+      "source_published_kst": "2026-10-06T20:43+09:00",
+      "title": "“원유수출 0인데도 안 무너진다”…이란이 美 지치길 기다리는 이유"
+    },
     "source_fact:b4acd40ac6a7ee3b4cf58c2f": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -103909,6 +104597,26 @@
       ],
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
+    },
+    "source_fact:b83cbe55d215d31f12d20ae1": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05684246645610296",
+      "source": "이데일리",
+      "source_body_digest": "ec0ad0cdab2f59ba4a83150524b9cd0d48968ff25cd6e1090ffc2295ca20ecd0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4b69e488776719e47a9e27da41a6318572cff47f196b7f6d56d535e2625c3461",
+      "source_fact_keys": [
+        "source_fact:v1:03d5864e327b8b4a5897bf60a05952d672ae86edcc7acd10395cd95a619be099",
+        "source_fact:v1:109723b7b7da943df75f71774ac1ca5588dfb6e0d5da44da81bb3b4e1213064d",
+        "source_fact:v1:ad19dbce9cafee37465947a88a45e93bf8b484e3078dff1ded72a53fb5b4fdb7",
+        "source_fact:v1:d0b76104ef459cbc7c1ab1c3778a28310ac83fd7a79ca4a4bb237881835a6b26"
+      ],
+      "source_published_kst": "2026-10-06T20:03+09:00",
+      "title": "[TODAY테슬라]테슬라, 3분기 실적보단 로보택시·FSD 중요…‘중립’-골드만"
     },
     "source_fact:b84373600bc5ba9525413ef7": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -106313,6 +107021,29 @@
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "금호석유화학, LFP 전지용 CNT 개발 본격화…내년 상업화 추진"
     },
+    "source_fact:c52cc7eab8489e8790af16e9": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894572",
+      "source": "헤럴드경제",
+      "source_body_digest": "9fd94390a5317d7134219764a483e840fb4ab334069d4877fa16c9bcab6a524a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28aff1ffdee138a153e5c2049fb037d36c438ede3959ca322f14bc3ddaa24dfc",
+      "source_fact_keys": [
+        "source_fact:v1:08ac46f4c64d71b53ceb6aad85b1d346459fbc5f4f15ae1a7d51962a3fd0a6f5",
+        "source_fact:v1:1fbb63ebcb464d8de90b76a92053ec4bc3edda4232c428e14e8a4c4bac8a89cd",
+        "source_fact:v1:6423d6724df3f814a8f4e8a75a8d8aaf4d9030ba531b83885aa8368184475268",
+        "source_fact:v1:6e23216d8219cc9c07546558b857849bccb56233f87265b1ff4e7bb2f4770baf",
+        "source_fact:v1:8070beb1775fef70b11e1a1def445f1b28f1558025372532a0d9a3e3578a95f6",
+        "source_fact:v1:c90a74e3bd06f5e2d1c28951d14e8e64b9bdc2508d8f4f99d7181bcd4bcbe438",
+        "source_fact:v1:ed15b4072977fb7f276a0df7d2e89c764c6b7dc6eae97eb80d63b838613338c6"
+      ],
+      "source_published_kst": "2026-10-06T20:43+09:00",
+      "title": "“원유수출 0인데도 안 무너진다”…이란이 美 지치길 기다리는 이유"
+    },
     "source_fact:c530c19194713d57d04ac42a": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -106599,7 +107330,7 @@
       "link": "https://stock.mk.co.kr/news/view/1170367",
       "source": "매일경제",
       "source_body_digest": "811abdd9f27e9f97a13cff846b7201f27e0ebf9a9142d075eae3a011424c8c4f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:project_safety_assessment:758f575f8e01542a7b2f5318b20515758991470e8d878d8a526e8d2376ea78a6",
       "source_fact_identity": "source_facts:v1:3f439b38b56141cab66194370494d6c4af2c96530fa2282734314ca62e603fb8",
       "source_fact_keys": [
         "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
@@ -107177,7 +107908,7 @@
       "link": "https://stock.mk.co.kr/news/view/1170392",
       "source": "매일경제",
       "source_body_digest": "cdd19cf499f2657ff809e9e8aa156cf5b19336f7966324dd42b56aa5eb096e1f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:listing_suspension_ruling:77b3e47fde472723cc52897ac3a1de2bbba91ee3912d93451670f1edd41730ed",
       "source_fact_identity": "source_facts:v1:cb242d0d7d7788df0d9d5e38445136825ec30a481068d0297b9a61974810ae3b",
       "source_fact_keys": [
         "source_fact:v1:68accc0a4f6d51c542eba7c2a032e2ed74911798c45580483f70e6b7b192b127",
@@ -107404,6 +108135,29 @@
       ],
       "source_published_kst": "2026-10-05T20:21+09:00",
       "title": "[美특징주]코어위브, 연이은 제품 가격 인상에 월가 호평…개장전 '강보합'"
+    },
+    "source_fact:ca9317bb55233f53b38c7e5b": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894572",
+      "source": "헤럴드경제",
+      "source_body_digest": "9fd94390a5317d7134219764a483e840fb4ab334069d4877fa16c9bcab6a524a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28aff1ffdee138a153e5c2049fb037d36c438ede3959ca322f14bc3ddaa24dfc",
+      "source_fact_keys": [
+        "source_fact:v1:08ac46f4c64d71b53ceb6aad85b1d346459fbc5f4f15ae1a7d51962a3fd0a6f5",
+        "source_fact:v1:1fbb63ebcb464d8de90b76a92053ec4bc3edda4232c428e14e8a4c4bac8a89cd",
+        "source_fact:v1:6423d6724df3f814a8f4e8a75a8d8aaf4d9030ba531b83885aa8368184475268",
+        "source_fact:v1:6e23216d8219cc9c07546558b857849bccb56233f87265b1ff4e7bb2f4770baf",
+        "source_fact:v1:8070beb1775fef70b11e1a1def445f1b28f1558025372532a0d9a3e3578a95f6",
+        "source_fact:v1:c90a74e3bd06f5e2d1c28951d14e8e64b9bdc2508d8f4f99d7181bcd4bcbe438",
+        "source_fact:v1:ed15b4072977fb7f276a0df7d2e89c764c6b7dc6eae97eb80d63b838613338c6"
+      ],
+      "source_published_kst": "2026-10-06T20:43+09:00",
+      "title": "“원유수출 0인데도 안 무너진다”…이란이 美 지치길 기다리는 이유"
     },
     "source_fact:ca9530b25f9dfab683476a62": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -107682,6 +108436,23 @@
       ],
       "source_published_kst": "2026-10-06T05:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
+    "source_fact:cca32b607a48d5d7063013bc": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.fnnews.com/news/202610060935308427",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "0cac28c9582902506cf216b6917aedb35d8c5e9d056ae3fe7ad037b3ff54feb9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3d167d7895dab6b324c4cf3d598955550f7d2bf23a0e1ebde1f6dbb826e20ba",
+      "source_fact_keys": [
+        "source_fact:v1:a9ee3be4665ea412fe43408c3953aa47b1b0b0aac12444a7fd4ac410ada9ce6b"
+      ],
+      "source_published_kst": "2026-10-06T09:35+09:00",
+      "title": "iM증권, 국내 주식 소수점 거래 서비스 개시"
     },
     "source_fact:cca4ee5325a1049459e75b93": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -109580,23 +110351,24 @@
     "source_fact:d591f3f165eb013b14605728": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
       "lanes": {
-        "live": "2026-10-06T20:37:39+09:00"
+        "live": "2026-10-06T21:40:57+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:37:39+09:00",
-      "link": "https://www.etnews.com/20261006000408",
-      "source": "전자신문",
-      "source_body_digest": "b269be0c256ef4fa066174dd79e5322aaede3cd9346780158b9bef1a94a7a707",
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.hankyung.com/article/202610066207P",
+      "source": "한국경제",
+      "source_body_digest": "4d35c6b63aaf97bc91f8375a380002366a6c47a8dd419d4e228ca41f6255d497",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:3f4a5d3bcf57778a19d9da7a29a9f2f23566a50e66e161f557a49b90af0d94a0",
+      "source_fact_identity": "source_facts:v1:910436ee2e96b31897b80b516b614864c00c5880bf2ed1d9e1aac3edaed6cba9",
       "source_fact_keys": [
-        "source_fact:v1:20700632ae0aea44629fd20bdb40335416676fed69d6045c4fe46ea38b02ef31",
-        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:2ed2f073f4ac040bee3b6742e30e53065950295c4768371cc5a4e3cc2d879d31",
         "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
-        "source_fact:v1:64692214514754d8399096ff13a3dc2ee8277520dd8569241a045c174bfff627",
-        "source_fact:v1:b3bda5955d83f7400633e9ab4b0eaac39136f822f2d0c15af6a76ee896817b62"
+        "source_fact:v1:7e437d15d94c319a110c44e17ee0c35bd8be926de626a3571f1bcd29f3d791ce",
+        "source_fact:v1:8f3c33677f5c7ce6fe069504012e3fd84816b257b7ec02f66223de023912170e",
+        "source_fact:v1:d6efdc23cf69aef38d8c7c25700fa5f8bf45ecc2628fc371a508df62133f52e6",
+        "source_fact:v1:e1077b9ab29eafdf09a7d94709e99a7910354ec3bb80e1afb622fffa3786591c"
       ],
-      "source_published_kst": "2026-10-06T17:35+09:00",
-      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결"
+      "source_published_kst": "2026-10-06T17:03+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결…"
     },
     "source_fact:d5a317931980d45cbe279cba": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -110670,6 +111442,29 @@
       "source_published_kst": "2026-10-06T15:22+09:00",
       "title": "“中 AI 굴기 또 온다”…문샷, 기업가치 68조원 찍고 홍콩 상장 추진"
     },
+    "source_fact:da0c797ae450e9b3df816b20": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894572",
+      "source": "헤럴드경제",
+      "source_body_digest": "9fd94390a5317d7134219764a483e840fb4ab334069d4877fa16c9bcab6a524a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28aff1ffdee138a153e5c2049fb037d36c438ede3959ca322f14bc3ddaa24dfc",
+      "source_fact_keys": [
+        "source_fact:v1:08ac46f4c64d71b53ceb6aad85b1d346459fbc5f4f15ae1a7d51962a3fd0a6f5",
+        "source_fact:v1:1fbb63ebcb464d8de90b76a92053ec4bc3edda4232c428e14e8a4c4bac8a89cd",
+        "source_fact:v1:6423d6724df3f814a8f4e8a75a8d8aaf4d9030ba531b83885aa8368184475268",
+        "source_fact:v1:6e23216d8219cc9c07546558b857849bccb56233f87265b1ff4e7bb2f4770baf",
+        "source_fact:v1:8070beb1775fef70b11e1a1def445f1b28f1558025372532a0d9a3e3578a95f6",
+        "source_fact:v1:c90a74e3bd06f5e2d1c28951d14e8e64b9bdc2508d8f4f99d7181bcd4bcbe438",
+        "source_fact:v1:ed15b4072977fb7f276a0df7d2e89c764c6b7dc6eae97eb80d63b838613338c6"
+      ],
+      "source_published_kst": "2026-10-06T20:43+09:00",
+      "title": "“원유수출 0인데도 안 무너진다”…이란이 美 지치길 기다리는 이유"
+    },
     "source_fact:da19e04bf693db248eea09c5": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -110865,6 +111660,28 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:dae305cc99615cc2bcaa809e": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.hankyung.com/article/202610066207P",
+      "source": "한국경제",
+      "source_body_digest": "4d35c6b63aaf97bc91f8375a380002366a6c47a8dd419d4e228ca41f6255d497",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:910436ee2e96b31897b80b516b614864c00c5880bf2ed1d9e1aac3edaed6cba9",
+      "source_fact_keys": [
+        "source_fact:v1:2ed2f073f4ac040bee3b6742e30e53065950295c4768371cc5a4e3cc2d879d31",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:7e437d15d94c319a110c44e17ee0c35bd8be926de626a3571f1bcd29f3d791ce",
+        "source_fact:v1:8f3c33677f5c7ce6fe069504012e3fd84816b257b7ec02f66223de023912170e",
+        "source_fact:v1:d6efdc23cf69aef38d8c7c25700fa5f8bf45ecc2628fc371a508df62133f52e6",
+        "source_fact:v1:e1077b9ab29eafdf09a7d94709e99a7910354ec3bb80e1afb622fffa3786591c"
+      ],
+      "source_published_kst": "2026-10-06T17:03+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결…"
     },
     "source_fact:db5b33c4b7461d30d4d4a32b": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
@@ -115826,6 +116643,24 @@
       "source_published_kst": "2026-10-06T13:06+09:00",
       "title": "美 소비자신뢰지수 12년 최저인데 가계지출 6.1%↑…실질소비도 늘었다"
     },
+    "source_fact:f34b3cf940a8fddc43b71dec": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169612",
+      "source": "매일경제",
+      "source_body_digest": "8773ff343f9bc94194f72e4fae11b5eebed12d1f7723d83f41312a1452503172",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9250ccb1b2c588aacbd63aa9853327052077afae7ce432c97a80d932d727e0d",
+      "source_fact_keys": [
+        "source_fact:v1:12e7f89e64251a8a4635c54efa8b41ba382877355480260f39890c790dc7ccec",
+        "source_fact:v1:d6d4479441b85ed082b32e270291018ca05f977e715b6e4e5abb141da4c8cde6"
+      ],
+      "source_published_kst": "2026-10-06T17:50+09:00",
+      "title": "신세계 '유통·콘텐츠' 시너지"
+    },
     "source_fact:f35f8c58c7a0b6c018f0b0f8": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
       "lanes": {
@@ -115914,7 +116749,7 @@
       "link": "https://stock.mk.co.kr/news/view/1170367",
       "source": "매일경제",
       "source_body_digest": "811abdd9f27e9f97a13cff846b7201f27e0ebf9a9142d075eae3a011424c8c4f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:project_safety_assessment:758f575f8e01542a7b2f5318b20515758991470e8d878d8a526e8d2376ea78a6",
       "source_fact_identity": "source_facts:v1:3f439b38b56141cab66194370494d6c4af2c96530fa2282734314ca62e603fb8",
       "source_fact_keys": [
         "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
@@ -116573,7 +117408,7 @@
       "link": "https://stock.mk.co.kr/news/view/1170367",
       "source": "매일경제",
       "source_body_digest": "811abdd9f27e9f97a13cff846b7201f27e0ebf9a9142d075eae3a011424c8c4f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:project_safety_assessment:758f575f8e01542a7b2f5318b20515758991470e8d878d8a526e8d2376ea78a6",
       "source_fact_identity": "source_facts:v1:3f439b38b56141cab66194370494d6c4af2c96530fa2282734314ca62e603fb8",
       "source_fact_keys": [
         "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
@@ -122375,6 +123210,23 @@
       "source": "연합뉴스",
       "title": "원자력 안전규제도 AI로…원안위, 향후 5년 청사진 공개 | 연합뉴스"
     },
+    "title:28393a51c896a9557bd08709": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.fnnews.com/news/202610060935308427",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "0cac28c9582902506cf216b6917aedb35d8c5e9d056ae3fe7ad037b3ff54feb9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e3d167d7895dab6b324c4cf3d598955550f7d2bf23a0e1ebde1f6dbb826e20ba",
+      "source_fact_keys": [
+        "source_fact:v1:a9ee3be4665ea412fe43408c3953aa47b1b0b0aac12444a7fd4ac410ada9ce6b"
+      ],
+      "source_published_kst": "2026-10-06T09:35+09:00",
+      "title": "iM증권, 국내 주식 소수점 거래 서비스 개시"
+    },
     "title:2873f2703bb1cee392f31568": {
       "first_seen_kst": "2026-10-04T17:14:34+09:00",
       "lanes": {
@@ -123442,6 +124294,23 @@
       "link": "https://view.asiae.co.kr/article/2026100110263966041",
       "source": "아시아경제",
       "title": "삼성운용 \"커버드콜 ETF 활용해서 월 분배금 두 번 받으세요\""
+    },
+    "title:32a7cf06cde46fb4c4f89932": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170379",
+      "source": "매일경제",
+      "source_body_digest": "52798cb353bf3689dab6fe14e00e3f1c1f00b2a2f8bbb2ca0b9d238328a1af8c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d12bc29e122b291a25434685575629322c9dd31f2c364a607fb379de27f7cf0d",
+      "source_fact_keys": [
+        "source_fact:v1:68815aaad5940d02db7919dcb70301962b154f9a577fdcc1251c884c57e91c6e"
+      ],
+      "source_published_kst": "2026-10-06T16:28+09:00",
+      "title": "신세계그룹, 워너브라더스 인수에 10억달러…"
     },
     "title:32bd5c39390a2b94ed86939d": {
       "first_seen_kst": "2026-10-03T21:06:13+09:00",
@@ -126794,7 +127663,7 @@
       "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000020343",
       "source": "국민일보",
       "source_body_digest": "56fba7f7f8026facfc0e648d17ae762067a174b3ceeabf00e08c213ecb29d70c",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:conditional_remittance:bf825e633beec5b6c5c46b2e8ac7af31137e8e30feaad12941158548ca6d5d31",
       "source_fact_identity": "source_facts:v1:38f586c6971e6cf59f2f636bb6c48b32eb9d4177c71db9d92b02de50d731b054",
       "source_fact_keys": [
         "source_fact:v1:237a3e87a63714651fd20f16c49a936ef5da361a8a5e646a8f1e7a1739d7d368"
@@ -130195,6 +131064,29 @@
       "source": "헤럴드경제",
       "title": "HBM 소재 등에 업은 에코프로HN"
     },
+    "title:739b6f7b1b0c9bc8ba1bd30b": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://biz.heraldcorp.com/article/10894572",
+      "source": "헤럴드경제",
+      "source_body_digest": "9fd94390a5317d7134219764a483e840fb4ab334069d4877fa16c9bcab6a524a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:28aff1ffdee138a153e5c2049fb037d36c438ede3959ca322f14bc3ddaa24dfc",
+      "source_fact_keys": [
+        "source_fact:v1:08ac46f4c64d71b53ceb6aad85b1d346459fbc5f4f15ae1a7d51962a3fd0a6f5",
+        "source_fact:v1:1fbb63ebcb464d8de90b76a92053ec4bc3edda4232c428e14e8a4c4bac8a89cd",
+        "source_fact:v1:6423d6724df3f814a8f4e8a75a8d8aaf4d9030ba531b83885aa8368184475268",
+        "source_fact:v1:6e23216d8219cc9c07546558b857849bccb56233f87265b1ff4e7bb2f4770baf",
+        "source_fact:v1:8070beb1775fef70b11e1a1def445f1b28f1558025372532a0d9a3e3578a95f6",
+        "source_fact:v1:c90a74e3bd06f5e2d1c28951d14e8e64b9bdc2508d8f4f99d7181bcd4bcbe438",
+        "source_fact:v1:ed15b4072977fb7f276a0df7d2e89c764c6b7dc6eae97eb80d63b838613338c6"
+      ],
+      "source_published_kst": "2026-10-06T20:43+09:00",
+      "title": "“원유수출 0인데도 안 무너진다”…이란이 美 지치길 기다리는 이유"
+    },
     "title:73bc66ec2e5ca21f42f65266": {
       "first_seen_kst": "2026-09-17T22:43:57+09:00",
       "lanes": {
@@ -131424,7 +132316,7 @@
       "link": "https://stock.mk.co.kr/news/view/1170367",
       "source": "매일경제",
       "source_body_digest": "811abdd9f27e9f97a13cff846b7201f27e0ebf9a9142d075eae3a011424c8c4f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:project_safety_assessment:758f575f8e01542a7b2f5318b20515758991470e8d878d8a526e8d2376ea78a6",
       "source_fact_identity": "source_facts:v1:3f439b38b56141cab66194370494d6c4af2c96530fa2282734314ca62e603fb8",
       "source_fact_keys": [
         "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
@@ -132730,6 +133622,28 @@
       "link": "https://www.yna.co.kr/view/MYH20261002009500038",
       "source": "연합뉴스",
       "title": "美경윳값 폭등에…트럼프, 유럽에 폭탄돌리기 | 연합뉴스"
+    },
+    "title:8d91e4992432361c497e62ff": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.hankyung.com/article/202610066207P",
+      "source": "한국경제",
+      "source_body_digest": "4d35c6b63aaf97bc91f8375a380002366a6c47a8dd419d4e228ca41f6255d497",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:910436ee2e96b31897b80b516b614864c00c5880bf2ed1d9e1aac3edaed6cba9",
+      "source_fact_keys": [
+        "source_fact:v1:2ed2f073f4ac040bee3b6742e30e53065950295c4768371cc5a4e3cc2d879d31",
+        "source_fact:v1:4470fc5b5c2bb89b4deee5d60b0b01da2528369ebc3404e809eb584b9588c238",
+        "source_fact:v1:7e437d15d94c319a110c44e17ee0c35bd8be926de626a3571f1bcd29f3d791ce",
+        "source_fact:v1:8f3c33677f5c7ce6fe069504012e3fd84816b257b7ec02f66223de023912170e",
+        "source_fact:v1:d6efdc23cf69aef38d8c7c25700fa5f8bf45ecc2628fc371a508df62133f52e6",
+        "source_fact:v1:e1077b9ab29eafdf09a7d94709e99a7910354ec3bb80e1afb622fffa3786591c"
+      ],
+      "source_published_kst": "2026-10-06T17:03+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 LFP 6조원 규모 공급계약 체결…"
     },
     "title:8da9cb3d50e9b2df6d03bbf2": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
@@ -134592,6 +135506,23 @@
       "link": "https://www.mk.co.kr/news/world/12162935",
       "source": "매일경제",
       "title": "TSMC 패키징공장 5곳 추가 건설"
+    },
+    "title:a0e708090640857359283d19": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01630166645610296",
+      "source": "이데일리",
+      "source_body_digest": "b4cf80a896e32fee10a656ed351614cfa00e51df665b0d4437eb2db7dda6ac8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:582cec10cf59b089d82b0f0b78287c59d413160ad1214a1e4bc0a69135ba8687",
+      "source_fact_keys": [
+        "source_fact:v1:077718b5a993f419b018f10da7d0cb8a9586be1d6019f5380a3156e72b72d342"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "제작에만 6년…원전 핵심부품 조달, 美 원전 8기 속도전 변수로"
     },
     "title:a12de25c1affa9984f279a8e": {
       "first_seen_kst": "2026-09-30T06:33:46+09:00",
@@ -137420,7 +138351,7 @@
       "link": "https://stock.mk.co.kr/news/view/1170392",
       "source": "매일경제",
       "source_body_digest": "cdd19cf499f2657ff809e9e8aa156cf5b19336f7966324dd42b56aa5eb096e1f",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:listing_suspension_ruling:77b3e47fde472723cc52897ac3a1de2bbba91ee3912d93451670f1edd41730ed",
       "source_fact_identity": "source_facts:v1:cb242d0d7d7788df0d9d5e38445136825ec30a481068d0297b9a61974810ae3b",
       "source_fact_keys": [
         "source_fact:v1:68accc0a4f6d51c542eba7c2a032e2ed74911798c45580483f70e6b7b192b127",
@@ -140026,6 +140957,26 @@
       "source_published_kst": "2026-10-06T15:25+09:00",
       "title": "임귀현 완주군의원, 친환경 액비 자원화 확대 점검 나서"
     },
+    "title:d7ebae56651d79c0e56060ec": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=05684246645610296",
+      "source": "이데일리",
+      "source_body_digest": "ec0ad0cdab2f59ba4a83150524b9cd0d48968ff25cd6e1090ffc2295ca20ecd0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4b69e488776719e47a9e27da41a6318572cff47f196b7f6d56d535e2625c3461",
+      "source_fact_keys": [
+        "source_fact:v1:03d5864e327b8b4a5897bf60a05952d672ae86edcc7acd10395cd95a619be099",
+        "source_fact:v1:109723b7b7da943df75f71774ac1ca5588dfb6e0d5da44da81bb3b4e1213064d",
+        "source_fact:v1:ad19dbce9cafee37465947a88a45e93bf8b484e3078dff1ded72a53fb5b4fdb7",
+        "source_fact:v1:d0b76104ef459cbc7c1ab1c3778a28310ac83fd7a79ca4a4bb237881835a6b26"
+      ],
+      "source_published_kst": "2026-10-06T20:03+09:00",
+      "title": "[TODAY테슬라]테슬라, 3분기 실적보단 로보택시·FSD 중요…‘중립’-골드만"
+    },
     "title:d838924bcfc62a23d8ee0472": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -141283,6 +142234,24 @@
       "link": "https://core.asiae.co.kr/article/2026100112163454437",
       "source": "아시아경제",
       "title": "코스피, 모든 주체 매도세에도 소폭 상승세 전환"
+    },
+    "title:e533f79fa470424796651651": {
+      "first_seen_kst": "2026-10-06T21:40:57+09:00",
+      "lanes": {
+        "live": "2026-10-06T21:40:57+09:00"
+      },
+      "last_seen_kst": "2026-10-06T21:40:57+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169612",
+      "source": "매일경제",
+      "source_body_digest": "8773ff343f9bc94194f72e4fae11b5eebed12d1f7723d83f41312a1452503172",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a9250ccb1b2c588aacbd63aa9853327052077afae7ce432c97a80d932d727e0d",
+      "source_fact_keys": [
+        "source_fact:v1:12e7f89e64251a8a4635c54efa8b41ba382877355480260f39890c790dc7ccec",
+        "source_fact:v1:d6d4479441b85ed082b32e270291018ca05f977e715b6e4e5abb141da4c8cde6"
+      ],
+      "source_published_kst": "2026-10-06T17:50+09:00",
+      "title": "신세계 '유통·콘텐츠' 시너지"
     },
     "title:e54cdb4aa83a94ada1aba8bd": {
       "first_seen_kst": "2026-10-02T14:00:40+09:00",
@@ -143879,5 +144848,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T21:28:22+09:00"
+  "updated_at_kst": "2026-10-06T21:40:57+09:00"
 }
