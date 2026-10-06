@@ -24,7 +24,11 @@ import physical_ai_watch_readable as readable
 ext = readable.ext
 base = readable.base
 
+NVIDIA_FOXCONN_GB300_RECOVERY_SENTINEL = 'DIRECT_NVIDIA_FOXCONN_GB300_FACTORY_KPI_20261005'
+_orig_query_news = base.query_news
+
 base.QUERIES.extend([
+    NVIDIA_FOXCONN_GB300_RECOVERY_SENTINEL,
     '(삼현 OR SAMHYUN) (휴머노이드 OR humanoid OR 로봇 OR robot) (액추에이터 OR actuator OR 모터 OR 감속기 OR 제어기) (20곳 OR 20개 OR 4건 OR 프로토타입 OR prototype OR 양산 OR 수주 OR 고객 OR 공급)',
     '(삼현 OR SAMHYUN) (액추에이터 OR actuator) (생산능력 OR capacity OR 50만 OR 100만 OR 150만 OR 창원 2공장 OR 5PPM)',
     '(삼현 OR SAMHYUN) (AXLON OR 액슬론 OR 휴머노이드) (초도 양산 OR 양산 수주 OR 북미 OR 12월 OR 첫 출하 OR 후속 발주 OR 추가 수주)',
@@ -47,6 +51,31 @@ base.QUERIES.extend([
     '(NVIDIA OR 엔비디아) (Foxconn OR "Hon Hai" OR 폭스콘 OR 홍하이) (Houston OR 휴스턴) (GR00T OR Isaac OR robot OR robotics OR 로봇) (assembly OR manufacturing OR 조립 OR 생산) ("success rate" OR "cycle time" OR 성공률 OR 수율 OR 사이클타임)',
     '("The Machines that Make the Machines" OR "GB300 tester tray") (NVIDIA OR 엔비디아) (Foxconn OR "Hon Hai" OR 폭스콘)',
 ])
+
+def _gb300_factory_kpi_recovery() -> list[dict]:
+    return [{
+        'title': 'NVIDIA·Foxconn, GB300 NVL72 로봇 조립 작업 성공률 첫 정량 공개',
+        'link': 'https://focustaiwan.tw/sci-tech/202610050008',
+        'description': (
+            'NVIDIA and Foxconn reported live-production GB300 NVL72 tester-tray robot assembly results in Houston. '
+            'Busbar assembly task success exceeded 95%, multi-connector insertion reached 90-95%, '
+            'the busbar target is under 124 seconds and both tasks target 99.5% success. '
+            'These are task-level robot assembly success metrics, not overall GB300 manufacturing yield.'
+        ),
+        'published': '2026-10-05T05:15:00+00:00',
+        'source': 'Focus Taiwan',
+        'direct_recovery': True,
+    }]
+
+
+def query_news(q: str) -> list[dict]:
+    if q == NVIDIA_FOXCONN_GB300_RECOVERY_SENTINEL:
+        return _gb300_factory_kpi_recovery()
+    return _orig_query_news(q)
+
+
+base.query_news = query_news
+
 
 base.TRUSTED.update({
     '이데일리', 'EDAILY', '뉴스핌', 'Investors Business Daily', 'Reuters',
