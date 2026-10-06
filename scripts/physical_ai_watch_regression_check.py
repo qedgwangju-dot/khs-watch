@@ -1808,4 +1808,96 @@ assert g == "figure_ai", (g, s, c)
 assert c.endswith("공식 사전예고·공개 시간표"), c
 assert s >= 11, s
 
+# 40) Robot/physical-AI compute semiconductor lane.
+# Marc Raibert's SLW 2026 comment is an industry outlook, not confirmation that
+# Samsung/Google have a robot-chip program. Existing NVIDIA/AMD/Arm platforms are
+# baselines; only company execution stages alert.
+raibert_robot_chip_outlook = make(
+    "보스턴다이나믹스 창립자 삼성도 로봇 칩 가능",
+    (
+        "마크 레이버트는 SLW 2026에서 현재 엔비디아가 지배적이지만 "
+        "Google, Samsung Electronics, AMD, Arm 등도 로봇에 특화된 칩 프로그램이 있을 수 있고 "
+        "아직 로봇용 칩을 만들지 않는 기업들도 시작할 수 있다고 전망했다."
+    ),
+    "뉴스1",
+)
+g, s, c, k = classify(raibert_robot_chip_outlook)
+assert g == "robot_compute_semiconductor", (g, s, c)
+assert c.endswith("레이버트 전망 기준선"), c
+assert s < 11, ("expert outlook must not become Samsung/Google chip confirmation", s, c)
+
+amd_robot_compute_baseline = make(
+    "AMD Ryzen AI Embedded for autonomous robotics and physical AI",
+    (
+        "AMD Ryzen AI Embedded X100 processors combine CPU GPU and NPU and are optimized "
+        "for real-time AI, robotics, automation and physical AI."
+    ),
+    "AMD",
+)
+g, s, c, k = classify(amd_robot_compute_baseline)
+assert g == "robot_compute_semiconductor", (g, s, c)
+assert c.endswith("기존 상용 플랫폼 기준선"), c
+assert s < 11, ("existing AMD robotics compute portfolio is baseline", s, c)
+
+arm_robot_compute_baseline = make(
+    "Arm Total Design expands to Physical AI robotics",
+    (
+        "Arm Total Design for Physical AI and the Robotics Capability Framework provide "
+        "a compute foundation for robotics and autonomous systems."
+    ),
+    "Arm",
+)
+g, s, c, k = classify(arm_robot_compute_baseline)
+assert g == "robot_compute_semiconductor", (g, s, c)
+assert c.endswith("기존 상용 플랫폼 기준선"), c
+assert s < 11, ("existing Arm physical-AI platform is baseline", s, c)
+
+samsung_robot_chip_program = make(
+    "Samsung System LSI announces dedicated humanoid robotics processor program",
+    (
+        "Samsung Electronics System LSI officially announced development of a purpose-built "
+        "robotics SoC for humanoid physical AI, with customer samples planned for 2027."
+    ),
+    "Samsung Electronics",
+)
+g, s, c, k = classify(samsung_robot_chip_program)
+assert g == "robot_compute_semiconductor", (g, s, c)
+assert c.endswith("공식 개발·로드맵 착수"), c
+assert s >= 11, s
+
+samsung_robot_chip_sample = make(
+    "Samsung robot SoC tapeout completed",
+    (
+        "Samsung Electronics completed tapeout of its dedicated humanoid robotics SoC "
+        "and started customer sample validation."
+    ),
+    "Samsung Electronics",
+)
+g, s, c, k = classify(samsung_robot_chip_sample)
+assert g == "robot_compute_semiconductor", (g, s, c)
+assert c.endswith("테이프아웃·고객 샘플"), c
+assert s >= 11, s
+
+samsung_robot_foundry_contract = make(
+    "Samsung Foundry wins physical AI robot-chip production contract",
+    (
+        "Samsung Electronics Foundry was selected for a production contract to manufacture "
+        "a humanoid robotics AI processor for a named robot customer."
+    ),
+    "Samsung Electronics",
+)
+g, s, c, k = classify(samsung_robot_foundry_contract)
+assert g == "robot_compute_semiconductor", (g, s, c)
+assert c.endswith("삼성 파운드리 생산수주"), c
+assert s >= 11, s
+
+robot_chip_rumor = make(
+    "Samsung may develop a robot NPU",
+    "An unnamed blog says Samsung could possibly develop a humanoid robot NPU in the future.",
+    "Unknown Blog",
+)
+g, s, c, k = classify(robot_chip_rumor)
+assert g == "robot_compute_semiconductor", (g, s, c)
+assert s < 11, ("unverified robot-chip rumor must stay silent", s, c)
+
 print("Physical-AI watcher regression guards: PASS")
