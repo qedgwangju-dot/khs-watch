@@ -38,6 +38,11 @@ def translate_ko(title):
     raw = str(title or "")
     low = raw.lower()
     if (
+        ("drones strike two ships" in low and "bulgaria" in low and "black sea" in low)
+        or ("drone sinks ship off bulgaria" in low)
+    ):
+        return "불가리아 흑해 경제수역에서 드론 공격으로 상선 2척 피격, 이 중 1척 침몰 — 공격 주체는 공식 확인 전"
+    if (
         "israel" in low
         and any(x in low for x in ("oct. 7", "oct 7", "october 7", "10월 7일"))
         and any(x in low for x in ("attack risk abroad", "attacks abroad", "terror threat", "terror risk", "해외 공격 위험", "해외 테러"))
@@ -265,6 +270,32 @@ def _iran_south_unattributed_explosions(row):
     return south and explosion and (attack_explicitly_unconfirmed or not explicit_attack)
 
 
+def _saudi_east_west_pipeline_recovery(row):
+    t = _text(row).lower()
+    east_west = any(x in t for x in (
+        "east-west pipeline", "east west pipeline", "petroline",
+        "동서 송유관", "동-서 송유관", "동서 파이프라인",
+    ))
+    volume = any(x in t for x in ("5.8 million", "5.8m", "580만", "5,800,000"))
+    recovery = any(x in t for x in (
+        "resumed", "restarted", "restart", "recovered", "recovery", "flow remains uninterrupted",
+        "재가동", "수송 회복", "운송 회복", "흐름 회복", "가동 재개",
+    ))
+    return east_west and volume and recovery
+
+
+def _south_korea_russia_fuel_background(row):
+    src = " ".join([str(row.get("link", "")), str(row.get("resolved_url", ""))]).lower()
+    t = _text(row).lower()
+    if "south-korea-exports-eased-russia-fuel-crisis-caused-by-drone-strikes-ukraine-2026-10-06" in src:
+        return True
+    return (
+        any(x in t for x in ("south korea exports", "south korean exports", "한국 수출"))
+        and any(x in t for x in ("russia fuel crisis", "russian fuel crisis", "러시아 연료 위기"))
+        and any(x in t for x in ("july and august", "7월", "8월", "176,000", "176000"))
+    )
+
+
 def _israel_oct7_abroad_warning(row):
     t = _text(row).lower()
     israel = any(x in t for x in ("israel", "israeli", "이스라엘"))
@@ -301,6 +332,9 @@ def _tass_turkmenistan_visit_noise(row):
 
 def _saudi_houthi_airport_refinery_cluster(row):
     t = _text(row).lower()
+    corrected = str(row.get("title_ko", "")).lower()
+    if "공항 피해는 사우디 확인" in corrected and "라빅" in corrected and "후티 주장 단계" in corrected:
+        return True
     saudi = any(x in t for x in ("saudi", "사우디"))
     houthi = any(x in t for x in ("houthi", "houthis", "후티"))
     attack = any(x in t for x in (
@@ -438,8 +472,12 @@ def marks(row):
         out.append("호르무즈온피스유조선피격")
     if _iran_south_unattributed_explosions(row):
         out.append("이란남부폭발원인미확정")
+    if _saudi_east_west_pipeline_recovery(row):
+        out.append("사우디동서송유관회복")
     if _israel_oct7_abroad_warning(row):
         out.append("이스라엘10월7일해외공격위험경고")
+    if _saudi_east_west_pipeline_recovery(row):
+        return hashlib.sha256("event|saudi|east-west-pipeline-recovery|2026-10-06".encode()).hexdigest()[:20]
     if _saudi_houthi_airport_refinery_cluster(row):
         out.append("사우디후티공항정유시설공격클러스터")
     if _mokha_counteroffensive_context(row):
@@ -466,12 +504,24 @@ def korean_title(ms):
         return "메드베데프, 우크라이나 종전 조건 재확인 — 실제 합의 진전이 아닌 러시아 측 입장 표명"
     if "루코일종전협상연계상업거래" in ms:
         return "종전 협상 과정에서 루코일 해외자산 매각 논의 — 휴전 진전과 별개의 상업거래"
+    if "사우디동서송유관회복" in ms:
+        return "사우디 동서 송유관 재가동 — 하루 580만배럴 수송 회복, 호르무즈 우회 공급능력 개선"
+    if "사우디동서송유관회복" in ms:
+        out.append("🟢 사우디 동서 송유관 원유 수송이 하루 580만배럴 수준으로 회복 — 과거 드론 공격의 현재 신규 확전이 아니라 실물 공급 복구 신호")
+    if "사우디동서송유관회복" in ms:
+        return "사우디 · 동서 송유관 공급회복"
     if "호르무즈온피스유조선피격" in ms:
         return "호르무즈 해협서 MT On Peace 발사체 피격 — 선원 12명 부상(인도인 11명), 오만으로 치료 이송·공격 주체 미확정"
     if "이란남부폭발원인미확정" in ms:
         return "이란 남부 시리크·게슘·미나브 일대 폭발음 — 원인·공격 주체 미확정, 발사체·공습 공식 확인 대기"
     if "호르무즈유조선피격클러스터" in ms:
         return "호르무즈 유조선 피격 지속 — 미확인 발사체·선박 피해를 실제 해상안보 사건으로 추적"
+    if "사우디동서송유관회복" in ms:
+        row["title_ko"] = korean_title(ms)
+        row["signals_ko"] = []
+        tags = [t for t in tags if t not in ("확전", "휴전·평화", "재건", "종전·협상")]
+        tags += ["사우디", "실물공급회복", "원유수송회복", "580만배럴"]
+        score = max(score, 100)
     if "이스라엘10월7일해외공격위험경고" in ms:
         return "이스라엘 국가안보회의, 10월 7일 3주년 전후 해외의 이스라엘인·유대인 대상 공격 위험 증가 경고 — 실제 공격 발생 아님"
     if "목하탈환공세" in ms:
@@ -520,7 +570,7 @@ def signals(ms):
         "러정유시설보복공격확대예고", "러시아종전조건입장표명",
         "루코일종전협상연계상업거래", "호르무즈유조선피격클러스터",
         "이스라엘10월7일해외공격위험경고", "호르무즈온피스유조선피격",
-        "이란남부폭발원인미확정",
+        "이란남부폭발원인미확정", "사우디동서송유관회복",
         "목하탈환공세", "러시아국방부타격주장", "TASS러시아최대드론공격집계",
     }
     if set(ms) & custom:
@@ -538,7 +588,12 @@ def score_item(row, now):
     fresh_limit = int(getattr(prev, "FRESH_NEWS_MAX_MINUTES", 3 * 60))
     if age is not None and age > fresh_limit:
         return 0, []
-    if _trump_la_sd_hypothetical(row) or _stale_mokha_capture_only(row) or _tass_turkmenistan_visit_noise(row):
+    if (
+        _trump_la_sd_hypothetical(row)
+        or _stale_mokha_capture_only(row)
+        or _tass_turkmenistan_visit_noise(row)
+        or _south_korea_russia_fuel_background(row)
+    ):
         return 0, []
     score, tags = _orig_score_item(row, now)
     ms = set(marks(row))
@@ -706,6 +761,8 @@ except Exception:
 
 def final_color(row):
     ms = set(marks(row))
+    if "사우디동서송유관회복" in ms:
+        return "green"
     if "후티리야드아람코공격주장" in ms:
         return "red"
     if ms & {
@@ -745,8 +802,17 @@ def verdict(items):
     yellow = "yellow" in colors
     all_marks = {m for x in items for m in marks(x)}
     peace = bool(all_marks & _PEACE_MARKS)
+    supply_recovery = "사우디동서송유관회복" in all_marks
     if any(_kyiv_bridge_attack(x) or _kyiv_evacuation_strike_warning(x) for x in items):
         red = True
+    if red and supply_recovery:
+        return (
+            "<b>투자 판정</b>\n"
+            "- <b>핵심:</b> 실제 공격·해상안보 위험은 지속되지만 사우디 동서 송유관 수송은 하루 580만배럴 수준으로 회복\n"
+            "- <b>현재 단계:</b> 군사 위험과 실물 공급 회복이 동시에 존재 — 과거 공격과 현재 재가동을 같은 확전 신호로 합치지 않음\n"
+            "- <b>시장:</b> 해운·보험 위험프리미엄은 남지만 원유 공급 차질 압력은 일부 완화\n"
+            "- <b>다음:</b> 송유관 지속 가동 → 얀부 선적 → 추가 공격 여부 → 실제 수출 물량"
+        )
     if red and peace:
         return (
             "<b>투자 판정</b>\n"
@@ -796,7 +862,9 @@ def semantic_fix(text):
         level, idx = m.group(1), m.group(2)
         marker = None
         topic = None
-        if any(x in block for x in ("리야드 aramco 시설 미사일·드론 공격 주장", "리야드 aramco 시설을 탄도미사일·드론으로 공격했다고 주장")):
+        if any(x in block for x in ("동서 송유관 재가동", "하루 580만배럴 수송 회복", "실물 공급 복구 신호")):
+            marker, topic = "🟢", "사우디 · 동서 송유관 공급회복"
+        elif any(x in block for x in ("리야드 aramco 시설 미사일·드론 공격 주장", "리야드 aramco 시설을 탄도미사일·드론으로 공격했다고 주장")):
             marker, topic = "🔴", "사우디·후티 · Aramco 공격 주장"
         elif any(x in block for x in ("mt on peace", "선원 12명 부상(인도인 11명)")):
             marker, topic = "🔴", "이란·호르무즈 · MT On Peace 피격"
@@ -894,6 +962,12 @@ def verify_alert(test_mode=False):
         issues.append("이란 남부 원인 미확정 폭발음을 실제 공격·확전으로 표시")
     if ("mt on peace" in low or "온 피스" in text) and "12명" in text and "부상" in text and "공격 주체" not in text:
         issues.append("MT On Peace 피격의 피해·공격주체 확인 수준을 구분하지 않음")
+    if "south-korea-exports-eased-russia-fuel-crisis-caused-by-drone-strikes-ukraine-2026-10-06" in low:
+        issues.append("과거 러시아 연료위기·한국 수출 배경기사를 신규 확전으로 표시")
+    if "드론이 불가리아에서 침몰" in text:
+        issues.append("Reuters 불가리아 흑해 선박 드론 공격 제목을 문법 오역")
+    if re.search(r"(?ms)^🔴\s+\[(?:속보|신규|후속)\]\s+<b>\d+\.[^<]*</b>\n[^\n]*(?:동서 송유관|580만배럴)[^\n]*(?:회복|재가동)", text):
+        issues.append("사우디 동서 송유관 공급회복을 신규 확전으로 표시")
     if issues:
         raise RuntimeError("WAR_OCT04_QUALITY_GATE: " + " | ".join(issues))
 
