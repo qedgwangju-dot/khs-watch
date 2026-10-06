@@ -84,6 +84,8 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
 
     session = session_state(dt.datetime.now(KST))
     if test_seconds is None and not session["is_session"]:
+        flag = out_path.parent / "krx_market_closed.flag"
+        flag.write_text(session["date"] + "\n", encoding="utf-8")
         print("ubm_collector_market_closed=true reason=XKRX_non_session", flush=True)
         return 0
 
