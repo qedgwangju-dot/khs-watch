@@ -60,8 +60,9 @@ def _gb300_factory_kpi_recovery() -> list[dict]:
         'link': 'https://focustaiwan.tw/sci-tech/202610050008',
         'description': (
             'NVIDIA and Foxconn reported live-production GB300 NVL72 tester-tray robot assembly results in Houston. '
-            'Busbar assembly task success exceeded 95%, multi-connector insertion reached 90-95%, '
-            'the busbar target is under 124 seconds and both tasks target 99.5% success. '
+            'Busbar assembly task success exceeded 95%, multi-connector insertion reached 90-95%. '
+            'Focus Taiwan/CNA report the busbar target below 124 seconds and both tasks target 99.5% success; '
+            'Tech Times separately reports current busbar cycle time at about 160 seconds. '
             'These are task-level robot assembly success metrics, not overall GB300 manufacturing yield.'
         ),
         'published': '2026-10-05T05:15:00+00:00',
@@ -323,8 +324,10 @@ NVIDIA_FACTORY_TARGET = re.compile(
 NVIDIA_FACTORY_TARGET_HIT = re.compile(
     r'(?:achiev|reach|hit|meet|attain|달성|도달|충족).{0,100}99\.5\s*%|'
     r'99\.5\s*%.{0,100}(?:achiev|reach|hit|meet|attain|달성|도달|충족)|'
-    r'(?:cycle\s*time|사이클\s*타임).{0,100}(?:124\s*(?:seconds?|sec|s|초).{0,40}(?:or\s*less|under|이하|미만)|'
-    r'72\s*(?:seconds?|sec|s|초).{0,40}(?:or\s*less|under|이하|미만))',
+    r'(?:achiev|reach|hit|meet|attain|reduc(?:e|ed)?\s+to|cut\s+to|달성|도달|충족|단축).{0,120}'
+    r'(?:cycle\s*time|사이클\s*타임).{0,100}(?:124|72)\s*(?:seconds?|sec|s|초)|'
+    r'(?:cycle\s*time|사이클\s*타임).{0,100}(?:124|72)\s*(?:seconds?|sec|s|초).{0,120}'
+    r'(?:achiev|reach|hit|meet|attain|달성|도달|충족)',
     re.I | re.S,
 )
 NVIDIA_FACTORY_KPI_CHANGE = re.compile(
