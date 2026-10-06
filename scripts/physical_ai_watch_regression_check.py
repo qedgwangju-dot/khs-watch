@@ -2252,4 +2252,45 @@ assert c4.endswith("폭스콘 GB300 로봇 조립 99.5%·사이클타임 목표 
 assert s4 >= 11, s4
 assert k4 != k, "future target achievement must be a new event, not deduped to the initial KPI"
 
+# 43) NVIDIA Korea / Madison Huang physical-AI schedule lane.
+ai_day = make(
+    "NVIDIA AI Day Seoul 2026 physical AI",
+    "NVIDIA AI Day Seoul runs November 9-10 in Seoul with physical AI and robotics sessions.",
+    "NVIDIA",
+)
+g, s, c, k = classify(ai_day)
+assert g == "nvidia_robotics_exec", (g, s, c)
+assert c.endswith("AI Day Seoul 피지컬AI 행사 기준선"), c
+assert s < 11, s
+
+madison_report = make(
+    "Madison Huang November Korea visit confirmed",
+    "Industry sources say Madison Huang will attend NVIDIA AI Day Seoul on November 9-10 for physical AI and robotics.",
+    "MoneyToday",
+)
+g, s, c, k = classify(madison_report)
+assert g == "nvidia_robotics_exec", (g, s, c)
+assert c.endswith("매디슨 황 AI Day Seoul 참석 시간표"), c
+assert s < 11, s
+
+madison_official = make(
+    "NVIDIA confirms Madison Huang at AI Day Seoul",
+    "NVIDIA confirmed Madison Huang will attend AI Day Seoul in Seoul on November 9-10 for physical AI and robotics.",
+    "NVIDIA",
+)
+g, s, c, k = classify(madison_official)
+assert g == "nvidia_robotics_exec", (g, s, c)
+assert c.endswith("매디슨 황 AI Day Seoul 참석 시간표"), c
+assert s >= 11, s
+
+madison_mou = make(
+    "NVIDIA and LG Electronics sign physical AI MOU",
+    "Madison Huang and LG Electronics signed an MOU for NVIDIA Isaac and GR00T physical AI robotics in Seoul.",
+    "NVIDIA",
+)
+g, s, c, k = classify(madison_mou)
+assert g == "nvidia_robotics_exec", (g, s, c)
+assert c.endswith("NVIDIA·한국기업 피지컬AI 협력계약·업무협약"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
