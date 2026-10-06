@@ -74,9 +74,15 @@ def _is_lg_factory_loop(text: str) -> bool:
 
 
 def topic_group(text: str) -> str | None:
+    upstream = _orig_topic_group(text)
+    # A named NVIDIA/Madison Korea execution event (meeting/MOU/pilot/deployment)
+    # is more specific than the generic LG physical-AI factory loop. Preserve the
+    # NVIDIA event lane so LG being the counterparty cannot steal the event.
+    if upstream == 'nvidia_robotics_exec':
+        return upstream
     if _is_lg_factory_loop(text):
         return 'lg_factory_loop'
-    return _orig_topic_group(text)
+    return upstream
 
 
 def score(item: dict) -> int:
