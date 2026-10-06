@@ -100,8 +100,59 @@
     "394b88027aa4cb3c5917",
     "644835b9ff0f6ea97163"
   ],
-  "last_fx_krw_per_usd": 1344.607498,
+  "last_fx_krw_per_usd": 1342.774629,
   "fx_source": "ER-API",
-  "fx_checked_utc": "2026-10-05T06:58:18+00:00",
-  "updated_at_utc": "2026-10-05T06:58:37+00:00"
+  "fx_checked_utc": "2026-10-06T03:16:26+00:00",
+  "updated_at_utc": "2026-10-06T03:16:46+00:00",
+  "hyperscaler_nuclear_ppa": {
+    "version": 2,
+    "states": {
+      "google_constellation": {
+        "buyer": "Google",
+        "seller": "Constellation",
+        "stage": "reported_near_deal",
+        "official": false,
+        "amount_floor_usd_b": 1.0,
+        "provenance": {
+          "stage": "media",
+          "amount_floor_usd_b": "media"
+        },
+        "ppa_mw": null,
+        "uprate_mw": null,
+        "years": null,
+        "plant": null,
+        "source": "Bloomberg 보도·Reuters 재확인",
+        "url": "https://www.reuters.com/legal/litigation/google-constellation-near-deal-nuclear-power-bloomberg-news-reports-2026-10-06/",
+        "published": "2026-10-06",
+        "note": "다년 계약 협상 임박 보도 · 아직 양사 공식 체결 발표 없음"
+      },
+      "amazon_constellation_calvert_cliffs": {
+        "buyer": "Amazon",
+        "seller": "Constellation",
+        "stage": "signed_official",
+        "official": true,
+        "amount_floor_usd_b": null,
+        "site_investment_floor_usd_b": 3.0,
+        "ppa_mw": 690.0,
+        "uprate_mw": 190.0,
+        "years": 20,
+        "plant": "Calvert Cliffs Clean Energy Center",
+        "provenance": {
+          "stage": "official",
+          "site_investment_floor_usd_b": "official",
+          "ppa_mw": "official",
+          "uprate_mw": "official",
+          "years": "official",
+          "plant": "official"
+        },
+        "source": "Constellation 공식",
+        "url": "https://www.constellationenergy.com/news/2026/09/constellation-and-amazon-announce-20-year-power-purchase-agreement-at-calvert-cliffs.html",
+        "published": "2026-09-30",
+        "note": "기존 원전 690MW 전력계약 · 이 중 190MW 증설 · 2030~2032 추가용량"
+      }
+    },
+    "source_errors": [],
+    "last_checked_utc": "2026-10-06T03:16:47+00:00",
+    "alert_change_count": 0
+  }
 }
