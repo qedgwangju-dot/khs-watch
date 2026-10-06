@@ -626,7 +626,8 @@ def render_with_linked_source(rows: list[dict[str, Any]]) -> str:
 
         explanation = interpret_article_body(row, article_body, fetch_error)
         marker = "\n<b>투자 판단 포인트</b>"
-        title_marker = f"<b>{idx}. {html.escape(str(row.get('title', '')))}</b>"
+        shown_title = watch.display_title(str(row.get("title", "")), str(row.get("publisher", "")))
+        title_marker = f"<b>{idx}. {html.escape(shown_title)}</b>"
         row_start = body.find(title_marker)
         marker_pos = body.find(marker, max(row_start, 0))
         if marker_pos >= 0:
