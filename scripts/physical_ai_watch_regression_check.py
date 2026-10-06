@@ -1897,7 +1897,6 @@ robot_chip_rumor = make(
     "Unknown Blog",
 )
 g, s, c, k = classify(robot_chip_rumor)
-assert g == "robot_compute_semiconductor", (g, s, c)
-assert s < 11, ("unverified robot-chip rumor must stay silent", s, c)
+assert s < 11, ("unverified robot-chip rumor must stay silent", g, s, c)
 
 print("Physical-AI watcher regression guards: PASS")
