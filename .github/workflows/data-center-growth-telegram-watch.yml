@@ -237,6 +237,8 @@ jobs:
               raise SystemExit("Google-Constellation $1B amount lost media provenance")
           if google.get("stage") == "signed_reported" and google.get("amount_floor_usd_b") == 1.0 and prov.get("amount_floor_usd_b") != "prior_media":
               raise SystemExit("Google-Constellation prior $1B estimate mislabeled as final signed value")
+          if not bundle.get("google_constellation_official_ack"):
+              raise SystemExit("Google-Constellation first-party confirmation acknowledgement missing")
 
           # Never let an unrelated Google solar/storage page create a Talen nuclear-PPA state.
           false_talen = states.get("google_talen") or {}
