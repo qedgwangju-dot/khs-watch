@@ -27,9 +27,14 @@ _HEADERS = {
 
 
 def headline_match(title: str) -> bool:
-    """전기본 자체 언급은 모두 추적하고, 전원믹스 핵심어도 보조로 잡는다."""
+    """전기본 자체 언급 + 투자판단을 바꾸는 전원·전력망 수치만 보조로 잡는다."""
     lower = watch.norm(title).lower()
-    return _ORIGINAL_TOPIC_MATCH(title) or any(term in lower for term in watch.ENERGY_TERMS)
+    honam_infra = (
+        "호남" in lower
+        and "반도체" in lower
+        and any(term in lower for term in ("전력", "전기", "전력망", "용수", "gw", "팹"))
+    )
+    return _ORIGINAL_TOPIC_MATCH(title) or any(term in lower for term in watch.ENERGY_TERMS) or honam_infra
 
 
 def semantic_event_key(row: dict[str, Any]) -> str:
@@ -38,6 +43,30 @@ def semantic_event_key(row: dict[str, Any]) -> str:
 
     if any(term in title for term in ("최종 확정", "최종안", "정부안", "의결")):
         return "12th-plan|final"
+
+    # 위원 명단 공개 공방은 같은 거버넌스 사건이며, 전원 숫자·정책단계가 바뀐 사건과 분리한다.
+    if (
+        "전기본" in title
+        and any(term in title for term in ("위원", "전문위원", "총괄위원"))
+        and any(term in title for term in ("명단", "공개", "비공개", "구성", "공방", "충돌", "숨기"))
+    ):
+        return "12th-plan|committee-governance|member-disclosure"
+
+    # 호남 반도체 전력·용수 수요 재산정과 전력망 재검토는 하나의 국감 사건으로 묶는다.
+    if (
+        "호남" in title
+        and "반도체" in title
+        and any(term in title for term in ("14gw", "6.3gw", "65만", "팹 9기", "팹9기", "전력망 계획", "전력·용수", "전기 6.3gw"))
+    ):
+        return "12th-plan|honam-semiconductor|power-water-grid-review"
+
+    # 원전 공론화로 전기본 정부안 시점이 실제로 늦어진 것은 공론화 '개시'와 별도 시간표 사건이다.
+    if (
+        "전기본" in title
+        and any(term in title for term in ("지연", "늦", "연기", "미뤄", "순연"))
+        and any(term in title for term in ("공론화", "3개월", "2~3개월", "10월"))
+    ):
+        return "12th-plan|schedule|government-draft-delay"
 
     # 전력망 실행정책은 기존 재생에너지 100GW 목표와 별도 사건으로 관리한다.
     if "전력망 혁신대책" in title:
@@ -123,6 +152,24 @@ def semantic_event_level(row: dict[str, Any]) -> int:
     if key == "12th-plan|nuclear-opinion":
         return 0
 
+    if key == "12th-plan|committee-governance|member-disclosure":
+        # 단순 공개 요구·비공개 공방은 전원믹스/전력망/전기본 시간표를 바꾸지 않는다.
+        material_change = any(term in title for term in (
+            "명단 공개 결정", "명단을 공개하기로", "회의록 공개 결정",
+            "위원 교체", "위원 사퇴", "위원회 재구성", "위원회 중단",
+            "수립 중단", "수립 일정 연기", "전기본 일정 연기",
+        ))
+        if not material_change:
+            return 0
+
+    # 호남 반도체 9기·14GW/6.3GW·65만t 및 전력망 원점점검은 실제 수요·망계획 변경 신호.
+    if key == "12th-plan|honam-semiconductor|power-water-grid-review":
+        return 2 if bool(row.get("official")) else 1
+
+    # 정부안 일정이 2~3개월 늦어지는 것은 정책 시간표 변화.
+    if key == "12th-plan|schedule|government-draft-delay":
+        return 2 if bool(row.get("official")) else 1
+
     # 전력망 혁신대책은 '발표'와 '실제 시행'을 다른 상태 단계로 관리한다.
     # 같은 정책 제목이 다시 나와도 재알림하지 않되, 실제 해제·회수·적용이 시작되면 단계 상승으로 알린다.
     if key.startswith("12th-plan|grid-innovation|"):
@@ -168,25 +215,20 @@ def resolve_article_url(url: str) -> str:
     if not url or "news.google.com" not in url:
         return url
 
-    # googlenewsdecoder 0.2.x API (2026-09 current stable)
+    # 0.1.7의 동기 API를 고정 사용한다. 반환키(status)와 신버전(success)을 모두 허용한다.
     try:
         from googlenewsdecoder import gnewsdecoder
 
-        result = gnewsdecoder(url, interval=0.2, timeout=15.0)
-        if isinstance(result, dict) and result.get("success") and result.get("decoded_url"):
-            return str(result["decoded_url"]).strip()
+        result = gnewsdecoder(url, interval=0.2)
+        if isinstance(result, dict):
+            ok = bool(result.get("status") or result.get("success"))
+            decoded = str(result.get("decoded_url") or "").strip()
+            if ok and decoded and "news.google.com" not in decoded:
+                return decoded
+            if result.get("message"):
+                print(f"google_news_decode_message={result.get('message')}")
     except Exception as exc:  # noqa: BLE001
-        print(f"google_news_decode_v2_failed={type(exc).__name__}")
-
-    # Backward-compatible fallback for older package versions.
-    try:
-        from googlenewsdecoder import new_decoderv1
-
-        result = new_decoderv1(url, interval=0.2)
-        if isinstance(result, dict) and result.get("status") and result.get("decoded_url"):
-            return str(result["decoded_url"]).strip()
-    except Exception as exc:  # noqa: BLE001
-        print(f"google_news_decode_legacy_failed={type(exc).__name__}")
+        print(f"google_news_decode_failed={type(exc).__name__}:{exc}")
 
     try:
         response = requests.get(url, headers=_HEADERS, timeout=15, allow_redirects=True)
@@ -363,6 +405,37 @@ def _interpret_renewable(body: str) -> list[str]:
     return lines
 
 
+def _interpret_honam_semiconductor_infra(body: str) -> list[str]:
+    lower = body.lower()
+    if not ("호남" in lower and "반도체" in lower and any(x in lower for x in ("14gw", "6.3gw", "65만", "팹 9기", "9개"))):
+        return []
+
+    lines = [
+        "<b>원문이 말하는 핵심</b>",
+    ]
+    if "14gw" in lower and ("9기" in lower or "9개" in lower):
+        lines.append("• <b>팹 9기 확대 가정 시 약 14GW</b>가 필요하다는 장관 전망 — 9기는 확정 물량이 아니라 확대 가정")
+    if "6.3gw" in lower:
+        lines.append("• 현재 계획된 팹 4기의 전력수요는 <b>약 6.3GW</b>로 제시")
+    if "65만" in lower and ("용수" in lower or "t" in lower or "톤" in lower):
+        lines.append("• 산업용수는 <b>하루 65만t</b> 규모가 공급 가능하다는 정부 입장")
+    if "원점" in lower and "전력망" in lower:
+        lines.append("• 제12차 전기본 확정 과정에서 <b>전력망 계획을 원점 재점검</b>하겠다고 밝힘")
+    if "hvdc" in lower and ("4개" in lower or "4개 사업" in lower):
+        lines.append("• 호남 수요가 커져도 기존 <b>해저 HVDC 4개 사업은 여전히 필요</b>하다는 입장")
+    if "32" in lower and ("㎞" in lower or "km" in lower) and "345" in lower:
+        lines.append("• 기존 <b>345kV 선로에서 약 32km를 분기</b>하는 공급 방안이 거론됨")
+    if "기본 검토" in lower and ("설계" in lower or "입지" in lower):
+        lines.append("• 다만 설계 착수·입지 확정은 <b>기본 검토 단계</b>라 실제 착공 확정으로 보면 안 됨")
+    lines.extend([
+        "",
+        "<b>쉽게 풀면</b>",
+        "• 핵심 변화는 ‘팹 확대 시 전력수요가 얼마나 커지는지’와 ‘그 수요를 반영해 송전망 우선순위를 다시 짜겠다’는 것",
+        "• 따라서 확정 팹 수·송전선로 설계 착수·변전소·전원 인가 시점이 다음 검증 포인트",
+    ])
+    return lines
+
+
 def _investment_readthrough(row: dict[str, Any], body: str) -> list[str]:
     lower = body.lower()
     category = str(row.get("category", ""))
@@ -487,13 +560,26 @@ def _interpret_nuclear_coal_lng(body: str) -> list[str]:
 
 def interpret_article_body(row: dict[str, Any], body: str, error: str) -> str:
     if not body:
-        return "\n".join([
+        title = watch.norm(str(row.get("title", ""))).lower()
+        key = semantic_event_key(row)
+        lines = [
             "<b>원문 본문 해석</b>",
-            f"원문 본문 직접 확인 실패 — 임의 해석 생략 ({html.escape(error or '접근 제한')})",
-        ])
+            f"원문 본문 직접 확인 실패 ({html.escape(error or '접근 제한')})",
+        ]
+        if key == "12th-plan|honam-semiconductor|power-water-grid-review":
+            lines.extend([
+                "• 제목에서 직접 확인되는 범위: <b>팹 9기 가정 시 14GW 필요</b>·<b>전력망 계획 원점 점검</b>",
+                "• 9기 자체는 확대 가정이므로 확정 팹 수로 표현하지 않음",
+            ])
+        elif key == "12th-plan|schedule|government-draft-delay":
+            lines.append("• 제목에서 직접 확인되는 범위만 표시: <b>12차 전기본 정부안 일정 지연</b>")
+        else:
+            lines.append("임의 해석 생략")
+        return "\n".join(lines)
 
     specialized = (
-        _interpret_grid_innovation(body)
+        _interpret_honam_semiconductor_infra(body)
+        or _interpret_grid_innovation(body)
         or _interpret_nuclear_deliberation(body)
         or _interpret_nuclear_coal_lng(body)
         or _interpret_renewable(body)
