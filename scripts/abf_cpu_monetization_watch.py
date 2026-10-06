@@ -462,23 +462,23 @@ def parse_research_update(text: str, url: str) -> dict:
     # BofA source-specific ABF model. Keep report vintages separate.
     if any(k in low for k in ("bofa", "bank of america")):
         triplet = r"(\d{1,2}(?:\.\d+)?)\s*%\s*/\s*(\d{1,2}(?:\.\d+)?)\s*%\s*/\s*(\d{1,2}(?:\.\d+)?)\s*%"
-        gap_sentence = re.search(
-            r"[^.]{0,160}?(?:abf)[^.]{0,220}?(?:shortfall|shortage|supply[- ]?demand gap|부족)[^.]{0,260}?[.]?",
-            text, re.I,
+        sentences = [x.strip() for x in re.split(r"(?<=[.!?])\s+", text) if x.strip()]
+
+        gap_sentence = next(
+            (
+                x for x in sentences
+                if "abf" in x.lower()
+                and any(k in x.lower() for k in ("shortfall", "shortage", "supply-demand gap", "supply demand gap", "부족"))
+            ),
+            "",
         )
-        if not gap_sentence:
-            gap_sentence = re.search(
-                r"[^.]{0,120}?(?:shortfall|shortage|supply[- ]?demand gap|부족)[^.]{0,260}?(?:abf)[^.]{0,180}?[.]?",
-                text, re.I,
-            )
         if gap_sentence:
-            chunk = gap_sentence.group(0)
-            triples = re.findall(triplet, chunk, re.I)
+            triples = re.findall(triplet, gap_sentence, re.I)
             if len(triples) >= 2:
                 first = tuple(float(x) for x in triples[0])
                 second = tuple(float(x) for x in triples[1])
-                low_chunk = chunk.lower()
-                if ("from" in low_chunk and " to " in low_chunk) or ("기존" in chunk and "에서" in chunk):
+                low_chunk = gap_sentence.lower()
+                if ("from" in low_chunk and " to " in low_chunk) or ("기존" in gap_sentence and "에서" in gap_sentence):
                     prior_vals, current_vals = first, second
                 else:
                     current_vals, prior_vals = first, second
@@ -490,23 +490,22 @@ def parse_research_update(text: str, url: str) -> dict:
                 for year, current_v in zip((2026, 2027, 2028), vals):
                     out[f"bofa_abf_shortfall_{year}_pct"] = current_v
 
-        cpu_sentence = re.search(
-            r"[^.]{0,160}?(?:server cpu|서버 cpu)[^.]{0,240}?(?:abf)[^.]{0,260}?(?:demand|수요)[^.]{0,260}?[.]?",
-            text, re.I,
+        cpu_sentence = next(
+            (
+                x for x in sentences
+                if any(k in x.lower() for k in ("server cpu", "서버 cpu"))
+                and "abf" in x.lower()
+                and any(k in x.lower() for k in ("demand", "수요"))
+            ),
+            "",
         )
-        if not cpu_sentence:
-            cpu_sentence = re.search(
-                r"[^.]{0,160}?(?:abf)[^.]{0,240}?(?:demand|수요)[^.]{0,220}?(?:server cpu|서버 cpu)[^.]{0,220}?[.]?",
-                text, re.I,
-            )
         if cpu_sentence:
-            chunk = cpu_sentence.group(0)
-            triples = re.findall(triplet, chunk, re.I)
+            triples = re.findall(triplet, cpu_sentence, re.I)
             if len(triples) >= 2:
                 first = tuple(float(x) for x in triples[0])
                 second = tuple(float(x) for x in triples[1])
-                low_chunk = chunk.lower()
-                if ("from" in low_chunk and " to " in low_chunk) or ("기존" in chunk and "에서" in chunk):
+                low_chunk = cpu_sentence.lower()
+                if ("from" in low_chunk and " to " in low_chunk) or ("기존" in cpu_sentence and "에서" in cpu_sentence):
                     prior_vals, current_vals = first, second
                 else:
                     current_vals, prior_vals = first, second
