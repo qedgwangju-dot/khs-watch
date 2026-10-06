@@ -417,3 +417,19 @@ Every defect or requested change must follow this sequence:
   and precommercial validation MOUs without market execution, are not primary
   radar items. New budget revisions, customer contracts, measured independent
   validation and actual commercial deployment must still be evaluated.
+- Construction reprints require the same issuer, client, named work package,
+  exact project budget, company share, duration and disclosure date. Korean
+  numeric spelling is normalized, but nearby rounded values are never merged.
+  New lots, terms, counterparties or execution stages remain distinct.
+- Regulation packages compare the named measure, affected import item,
+  instrument, planned/issued stage, implementation dates and restricted PPA or
+  trade-secret scope. A shared word such as regulation is not an event identity.
+- Political approval polls must not qualify through old inflation, energy or
+  campaign-payout context. Current policy execution and real economic data
+  remain eligible through their own source-authored, foreground evidence.
+- Industrial model announcements must retain the new model, quantified claims
+  and separate completed versus pending certification. Vendor performance
+  claims are attributed, not upgraded to independent validation. Cost-sharing
+  policy reviews retain who pays, eligible supply horizon and current deadline.
+- Clinical pre-submission recommendations retain material failed endpoints
+  and are not regulatory approval or successful phase-three efficacy results.

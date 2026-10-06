@@ -59,6 +59,8 @@ PROGRAM_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_program_scope_fixtures_
 PROGRAM_SCOPE_CASES = {case["id"]: case for case in PROGRAM_SCOPE_FIXTURE["cases"]}
 POLICY_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_policy_scope_fixtures_20261006.json").read_text(encoding="utf-8"))
 POLICY_SCOPE_CASES = {case["id"]: case for case in POLICY_SCOPE_FIXTURE["cases"]}
+EXECUTION_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_execution_scope_fixtures_20261006.json").read_text(encoding="utf-8"))
+EXECUTION_SCOPE_CASES = {case["id"]: case for case in EXECUTION_SCOPE_FIXTURE["cases"]}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -100,6 +102,120 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def execution_scope_alert(self, key):
+        case = EXECUTION_SCOPE_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_version87_entire_receipt_checks_quantified_current_execution(self):
+        now = NOW.replace(day=6, hour=14)
+        for case in EXECUTION_SCOPE_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                item = classify(case, now)
+                selected = radar.quality_display_alerts([item], 30) if item else []
+                self.assertEqual(bool(selected), case['expected_keep'])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+                    self.assertTrue(radar.core_sentence_is_complete(selected[0]['telegram_core_fact']))
+
+    def test_construction_reprints_share_one_precisely_scoped_event(self):
+        item = self.execution_scope_alert('construction_reprint_same_lot_share_duration')
+        old = self.program_scope_alert('construction_total_not_company_share')
+        identity = materiality.source_event_identity(item)
+        self.assertTrue(identity.startswith('source_event:v2:construction_order:'))
+        self.assertEqual(identity, materiality.source_event_identity(old))
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('제9공구', '8천65억원', '45%', '3천629억원', '60개월'):
+            self.assertIn(term, core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+        for old_value, new_value in (('9공구', '10공구'), ('8천65억원', '8천66억원'),
+                                     ('45.0%', '46.0%'), ('60개월', '61개월'),
+                                     ('국가철도공단', '다른발주기관'), ('6일 밝혔다', '7일 밝혔다')):
+            changed = {**item, 'source_title': item['source_title'].replace(old_value, new_value),
+                       'source_body': item['source_body'].replace(old_value, new_value)}
+            self.assertNotEqual(identity, materiality.source_event_identity(changed))
+
+    def test_named_regulatory_package_dedupes_only_same_scope_stage_and_dates(self):
+        item = self.execution_scope_alert('regulatory_package_reprint')
+        old = self.policy_scope_alert('display_regulation_implementation')
+        identity = materiality.source_event_identity(item)
+        self.assertTrue(identity.startswith('source_event:v2:regulatory_package:'))
+        self.assertEqual(identity, materiality.source_event_identity(old))
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('수입 승인 대상에서 제외', '연내', '수출입공고 개정', '내년 1분기', '계획'):
+            self.assertIn(term, core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+        for old_value, new_value in (('연내', '2028년'), ('내년 1분기', '내년 2분기'),
+                                     ('개정을 추진한다', '개정을 시행했다'), ('6일 밝혔다', '7일 밝혔다'),
+                                     ('현장규제 개선방안', '현장규제 추가개선방안')):
+            self.assertNotEqual(identity, materiality.source_event_identity({
+                **item, 'source_body': item['source_body'].replace(old_value, new_value)}))
+
+    def test_cooling_summary_binds_new_model_claim_and_each_certification_stage(self):
+        item = self.execution_scope_alert('industrial_cooling_model_and_certification')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('65LC', '최대 85%', '설명이다', "1.3MW '65LL'", '엔비디아 인증', '2.6MW 제품 인증은 추진 중'):
+            self.assertIn(term, core)
+        self.assertNotIn('48MW', core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+        self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace('인증은 추진 중', '인증을 받았')}))
+        self.assertNotEqual(materiality.source_event_identity(item), materiality.source_event_identity({
+            **item, 'source_body': item['source_body'].replace('85%', '90%')}))
+
+    def test_thermal_policy_core_keeps_instrument_cost_payers_and_deadline(self):
+        item = self.execution_scope_alert('thermal_lifespan_cost_sharing_review')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('일본 경제산업성', '휴·폐지', '1~3년', '전력 소매 공급자', '비용을 분담', '검토한다', '올해 안'):
+            self.assertIn(term, core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_clinical_recommendation_does_not_erase_failed_endpoints(self):
+        item = self.execution_scope_alert('pre_submission_recommendation_with_failed_endpoints')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('한독', '레졸루트', '에르소데투그(RZ358)', '허가신청 전 미팅', '권고받았다', '3상', '1차·주요 2차', '충족하지 못했다'):
+            self.assertIn(term, core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+        for old_value, new_value in (('권고받았다', '승인받았다'), ('충족하지 못했다', '충족했다')):
+            self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace(old_value, new_value)}))
+
+    def test_poll_gate_preserves_current_policy_execution_and_real_macro_releases(self):
+        case = EXECUTION_SCOPE_CASES['political_poll_with_economic_background']
+        self.assertFalse(eligible(case['title'], case['body']))
+        self.assertTrue(eligible('트럼프, 지지율 하락 속 반도체 관세 행정명령 서명',
+                                 '트럼프 대통령은 6일 반도체 관세를 15%로 부과하는 행정명령에 서명했다고 발표했다. ' + case['body']))
+        self.assertTrue(eligible('美 소비자심리지수 하락…미시간대 10월 예비치 발표',
+                                 '미시간대는 10월 소비자심리지수가 58.0으로 전월 60.0에서 하락했다고 6일 발표했다.'))
+
+    def test_construction_and_regulation_reprints_are_suppressed_across_publishers_and_runs(self):
+        now = NOW.replace(day=6, hour=14)
+        pairs = ((self.program_scope_alert('construction_total_not_company_share'),
+                  self.execution_scope_alert('construction_reprint_same_lot_share_duration')),
+                 (self.policy_scope_alert('display_regulation_implementation'),
+                  self.execution_scope_alert('regulatory_package_reprint')))
+        for old, current in pairs:
+            with self.subTest(title=current['source_title']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(len(radar.quality_display_alerts([old, current], 30)), 1)
+                with tempfile.TemporaryDirectory() as folder, patch.object(telegram, 'SEEN_PATH', Path(folder) / 'seen.json'):
+                    telegram.record_seen_alerts([old], now)
+                    before = telegram.SEEN_PATH.read_bytes()
+                    fresh, skipped = telegram.filter_previously_seen_alerts([current], now, 'live')
+                    self.assertFalse(fresh)
+                    self.assertEqual(len(skipped), 1)
+                    self.assertEqual(before, telegram.SEEN_PATH.read_bytes())
+
+    def test_changed_regulatory_zone_or_issued_stage_cannot_use_old_package_alias(self):
+        item = self.execution_scope_alert('regulatory_package_reprint')
+        identity = materiality.source_event_identity(item)
+        for body in (item['source_body'].replace('재생에너지 특구 내', '전국 모든 지역 내'),
+                     item['source_body'].replace('내년 1분기', '2028년 1분기'),
+                     item['source_body'].replace('총칭명', '실제 물질명'),
+                     item['source_body'].replace('공표할 계획이다', '공표했다')):
+            self.assertNotEqual(identity, materiality.source_event_identity({**item, 'source_body': body}))
+
     def policy_scope_alert(self, key):
         case = POLICY_SCOPE_CASES[key]
         return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],

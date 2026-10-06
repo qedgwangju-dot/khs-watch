@@ -287,6 +287,56 @@
       "run_id": 37409273145,
       "message_id": 2295,
       "equivalence_note": "Whole-body and successful-receipt audit. Supplier, scoped customer/model or anonymous equipment/region/end-markets/expansion target and announcement date agree. Changed counterparties, model, equipment, actual contract amount, target, date and execution stage remain distinct."
+    },
+    {
+      "source_title": "“고성~거제 24.6km 연결”…쌍용건설, 8000억 규모 남부내륙철도 9공구 수주",
+      "link": "https://www.mk.co.kr/news/realestate/12169015",
+      "source_published_kst": "2026-10-06T10:23+09:00",
+      "source_body_sha256": "4c1b226a0d1a69e1dec5ab4e221f3844fac88534885058b398227196b7ed4277",
+      "source_event_identity": "source_event:v2:construction_order:bb5fcd8ec1268587191bde48a56afabe7bc021f8f7254cc5c34b06bb1f00672f",
+      "run_id": 37407308832,
+      "message_id": 2294,
+      "equivalence_note": "Full-source and actual-receipt audit. Construction: issuer/client/lot/exact project total/company share/duration/date. Regulation: named package/import item/instrument/stage/deadlines/PPA and trade-secret scope. Product: supplier/model/specification/certification stages/date. A changed scope or execution stage remains distinct."
+    },
+    {
+      "source_title": "디스플레이 산업 규제 개선…수입 간소화·AI가이드 마련 | 연합뉴스",
+      "link": "https://www.yna.co.kr/view/AKR20261006064200001",
+      "source_published_kst": "2026-10-06T11:00+09:00",
+      "source_body_sha256": "c772305653212439f6dbee9e85e062f58083b78f57260392389a35132afb3e02",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
+      "run_id": 37409273145,
+      "message_id": 2295,
+      "equivalence_note": "Full-source and actual-receipt audit. Construction: issuer/client/lot/exact project total/company share/duration/date. Regulation: named package/import item/instrument/stage/deadlines/PPA and trade-secret scope. Product: supplier/model/specification/certification stages/date. A changed scope or execution stage remains distinct."
+    },
+    {
+      "source_title": "쌍용건설, 8천65억원 규모 남부내륙철도 제9공구 수주 | 연합뉴스",
+      "link": "https://www.yna.co.kr/view/AKR20261006078100003",
+      "source_published_kst": "2026-10-06T11:07+09:00",
+      "source_body_sha256": "f7cdf32e018de207d7e84c999a562d822283765e29635a3f4a83872c25f24f63",
+      "source_event_identity": "source_event:v2:construction_order:bb5fcd8ec1268587191bde48a56afabe7bc021f8f7254cc5c34b06bb1f00672f",
+      "run_id": 37411705470,
+      "message_id": 2296,
+      "equivalence_note": "Full-source and actual-receipt audit. Construction: issuer/client/lot/exact project total/company share/duration/date. Regulation: named package/import item/instrument/stage/deadlines/PPA and trade-secret scope. Product: supplier/model/specification/certification stages/date. A changed scope or execution stage remains distinct."
+    },
+    {
+      "source_title": "규제합리화추진단 \"디스플레이 규제 개선…수입 간소화·AI 보안가이드 마련\"",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815158",
+      "source_published_kst": "2026-10-06T11:00+09:00",
+      "source_body_sha256": "acfdcdc817cde30ea76e7dca0c5de1cbb04041952fb19818b86f0a5d0eae190d",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
+      "run_id": 37411705470,
+      "message_id": 2296,
+      "equivalence_note": "Full-source and actual-receipt audit. Construction: issuer/client/lot/exact project total/company share/duration/date. Regulation: named package/import item/instrument/stage/deadlines/PPA and trade-secret scope. Product: supplier/model/specification/certification stages/date. A changed scope or execution stage remains distinct."
+    },
+    {
+      "source_title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화",
+      "link": "https://www.etnews.com/20261006000142",
+      "source_published_kst": "2026-10-06T10:57+09:00",
+      "source_body_sha256": "2405fd6af498d8b95ab9ee9bb548114d1fa1af5eed8c98e80a35d7f9415a33fc",
+      "source_event_identity": "source_event:v2:industrial_product_milestone:e694d4adb6448490a6947ab91ce0174a00111a0104f88f85519e76ec53bcec2f",
+      "run_id": 37411705470,
+      "message_id": 2296,
+      "equivalence_note": "Full-source and actual-receipt audit. Construction: issuer/client/lot/exact project total/company share/duration/date. Regulation: named package/import item/instrument/stage/deadlines/PPA and trade-secret scope. Product: supplier/model/specification/certification stages/date. A changed scope or execution stage remains distinct."
     }
   ]
 }

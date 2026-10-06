@@ -2590,6 +2590,33 @@ def reported_issuer_announcement_fact(title: str, body: str) -> str:
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
+    product = market_materiality.industrial_product_milestone_observation(title, body)
+    if product:
+        fact = (f"{product['issuer']}{korean_topic_particle(product['issuer'])} AI 데이터센터용 {product['technology']} '{product['new_model']}' 제품을 추가한다고 밝혔다. "
+                f"연간 에너지 사용량을 최대 {product['saving_maximum']}% 절감할 수 있다는 설명이다. "
+                f"{product['certified_supplier']}의 데이터센터 냉각장비 {product['certified_capacity']}MW '{product['certified_model']}'은 "
+                f"{product['certifier']} 인증을 받았고, {product['pending_capacity']}MW 제품 인증은 추진 중이다.")
+        return fact if core_sentence_is_complete(fact) else ''
+    thermal = market_materiality.thermal_lifespan_policy_observation(title, body)
+    if thermal:
+        years = thermal['years'].replace('∼', '~')
+        fact = (f"{thermal['authority']}{korean_topic_particle(thermal['authority'])} 휴·폐지 예정 화력발전소가 "
+                f"{years}년 뒤에도 전기를 공급하도록 {thermal['payers']}가 유지·보수 비용을 분담하는 제도를 검토한다. "
+                f"{clean_article_summary_text(thermal['deadline'])}")
+        return fact if core_sentence_is_complete(fact) else ''
+    submission = market_materiality.clinical_submission_observation(title, body)
+    if submission:
+        fact = (f"{submission['issuer']} 파트너사 {submission['partner']}{korean_topic_particle(submission['partner'])} "
+                f"미국시간 {submission['day']}일 FDA로부터 {submission['drug']}({submission['code']})의 "
+                f"허가신청 전 미팅을 권고받았다. {submission['phase']}상은 1차·주요 2차 평가변수를 충족하지 못했다.")
+        return fact if core_sentence_is_complete(fact) else ''
+    regulation = market_materiality.regulatory_package_observation(title, body)
+    if regulation:
+        fact = (f"정부는 {regulation['item']}를 수입 승인 대상에서 제외하도록 "
+                f"{regulation['import_deadline']} 수출입공고 개정을 추진한다. "
+                f"생성형 AI 활용을 위한 보안 가이드라인은 {regulation['guide_year']} "
+                f"{regulation['guide_quarter']}분기 마련할 계획이다.")
+        return fact if core_sentence_is_complete(fact) else ''
     legislation = market_materiality.legislative_action_observation(title, body)
     if legislation:
         day = f" {legislation['day']}일" if legislation['day'] else ''
@@ -2627,8 +2654,9 @@ def source_headline_event_fact(title: str, body: str) -> str:
         return fact if core_sentence_is_complete(fact) else ''
     construction = market_materiality.construction_order_observation(title, body)
     if construction:
+        issuer_amount = f"({construction['issuer_amount']})" if construction.get('issuer_amount') else ''
         fact = (f"{construction['issuer']}이 {construction['customer']}의 {construction['project']}를 수주했다. "
-                f"총 공사비는 {construction['total_budget']}, 회사 지분은 {construction['issuer_share']}%이며 "
+                f"총 공사비는 {construction['total_budget']}, 회사 지분은 {construction['issuer_share']}%{issuer_amount}이며 "
                 f"공사기간은 착공 후 {construction['months']}개월이다.")
         return fact if core_sentence_is_complete(fact) else ''
     participation = market_materiality.national_research_participation_observation(title, body)

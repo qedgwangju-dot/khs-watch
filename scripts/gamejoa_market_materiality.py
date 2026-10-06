@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 87
+VERSION = 88
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -201,7 +201,7 @@ HEADLINE_FOCUS = tuple((name, re.compile(head, re.I), re.compile(source, re.I)) 
     ("project_response", r"(?:정부|산업부).{0,45}(?:팩트시트|합의.{0,15}없는|사업.{0,15}미정)", r"팩트시트|공동\s*합의|추진\s*여부"),
     ("stockpile_release", r"비축유|비축\s*원유|G7.{0,30}(?:원유|경유).{0,20}방출|oil reserves|stockpile", r"비축\s*(?:유|원유|경유)|석유\s*비축|oil reserves|stockpile"),
     ("mortgage_rate", r"주담대|모기지|주택담보대출", r"주담대|모기지|주택담보대출|mortgage"),
-    ("macro_release", r"\bcpi\b|\bpce\b|\bppi\b|\bgdp\b|고용(?!량)|비농업\s*일자리|실업률|물가|건설지출", r"cpi|pce|ppi|gdp|고용(?!량)|비농업\s*일자리|실업|물가|건설지출|인플레이션|inflation|payroll"),
+    ("macro_release", r"\bcpi\b|\bpce\b|\bppi\b|\bgdp\b|고용(?!량)|비농업\s*일자리|실업률|물가|건설지출|소비자\s*(?:심리|신뢰)지수|consumer (?:sentiment|confidence)", r"cpi|pce|ppi|gdp|고용(?!량)|비농업\s*일자리|실업|물가|건설지출|인플레이션|소비자\s*(?:심리|신뢰)지수|consumer (?:sentiment|confidence)|inflation|payroll"),
     ("market_macro_response", r"(?=.*(?:뉴욕마감|뉴욕증시|월가))(?=.*(?:고용|취업|실업|CPI|FOMC|연준))", r"고용|비농업|실업|CPI|FOMC|연준|나스닥|S&P\s*500|다우"),
     ("equity_index", r"(?:나스닥|S&P\s*500|다우|코스피|코스닥).{0,20}(?:사상\s*최고|역대\s*최고|신고가)", r"나스닥|S&P\s*500|다우|코스피|코스닥"),
     ("equity_index_outlook", r"(?:코스피|코스닥|나스닥|S&P\s*500)[^A-Za-z0-9가-힣]{0,6}\d[\d,]*(?:[~∼-]\d[\d,]*)?.{0,25}(?:전망|간다|목표)", r"코스피|코스닥|나스닥|S&P\s*500"),
@@ -1379,20 +1379,124 @@ def construction_order_observation(title: str, body: str) -> dict[str, str]:
     if not re.search(r"수주", title):
         return {}
     source = source_reported_body(body)
+    rows = source_sentences(source)
+    statement = next((row for row in rows if not PAST_ACTION.search(row)
+                      and re.search(r"에서\s*발주한", row) and re.search(r"수주", row)), '')
     match = re.search(
-        r"(?P<issuer>[A-Za-z0-9가-힣&·.-]{2,30})(?:이|가)\s*"
+        r"(?P<issuer>[A-Za-z0-9가-힣&·.-]{2,30})(?:은|는|이|가)\s*"
         r"(?P<customer>[A-Za-z0-9가-힣&·.-]{2,30})에서\s*발주한\s*"
-        r"(?P<project>[^.!?]{2,70}?(?:건설공사|건설\s*공사))\s*수주에\s*성공했다", source,
+        r"[^.!?]{2,90}?공사(?:를)?\s*수주(?:에\s*성공했다|했다고\s*\d{1,2}일\s*밝혔다|했다)", statement,
     )
     if not match or match['issuer'] not in title:
         return {}
     issuer = re.escape(match['issuer'])
-    budget = re.search(rf"총\s*공사비는\s*(?P<amount>{SOURCE_MONEY})\s*중\s*{issuer}\s*지분은\s*(?P<share>\d+(?:\.\d+)?)%", source)
-    period = re.search(r"공사기간은\s*착공일로부터\s*(?P<months>\d+)개월", source)
-    if not (budget and period):
+    project = next((value for row in rows if not PAST_ACTION.search(row)
+                    and (value := re.search(r"(?P<name>[A-Za-z가-힣]{2,30}(?:철도|고속도로|도로))\s*제?\s*(?P<lot>\d+(?:-\d+)?)공구", row))), None)
+    budget = re.search(rf"총\s*공사비는\s*(?P<amount>{SOURCE_MONEY})", source)
+    share = re.search(rf"{issuer}\s*지분은\s*(?P<share>\d+(?:\.\d+)?)%", source)
+    period = re.search(r"공사\s*기간은\s*착공일로부터\s*(?P<months>\d+)개월", source)
+    if not (project and budget and share and period and project['name'] in statement):
         return {}
-    return {**match.groupdict(), 'total_budget': budget['amount'], 'issuer_share': budget['share'],
-            'months': period['months'], 'source_excerpt': match.group(0)}
+    issuer_amount = re.match(rf"\(\s*(?P<amount>{SOURCE_MONEY})\s*\)", source[share.end():])
+    day = next((value for row in rows if match['issuer'] in row and not PAST_ACTION.search(row)
+                and (value := re.search(r"(?<!\d)(\d{1,2})일", row))), None)
+    return {**match.groupdict(), 'project': f"{project['name']} 제{project['lot']}공구",
+            'total_budget': budget['amount'], 'issuer_share': format(Decimal(share['share']).normalize(), 'f'),
+            'issuer_amount': issuer_amount['amount'] if issuer_amount else '',
+            'day': day[1] if day else '', 'months': period['months'], 'source_excerpt': statement}
+
+
+def regulatory_package_observation(title: str, body: str) -> dict[str, str]:
+    """Match the named package and concrete clauses, not all regulation news."""
+    if not re.search(r"규제\s*개선", title):
+        return {}
+    source = source_reported_body(body)
+    rows = source_sentences(source)
+    package = re.search(r"['‘]([^'’]{2,60}현장\s*규제\s*개선\s*방안)['’]", source)
+    import_row = next((row for row in rows if re.search(r"수입\s*승인\s*대상에서\s*제외", row)
+                       and '수출입공고' in row and re.search(r"개정.{0,12}추진", row)), '')
+    guide_row = next((row for row in rows if re.search(r"보안\s*가이드라인", row)
+                      and re.search(r"내년\s*\d분기|20\d{2}년\s*\d분기", row)
+                      and re.search(r"계획|목표", row)), '')
+    item = re.search(r"자동차\s*(?:내부\s*)?디스플레이용\s*강화\s*유리", import_row)
+    deadline = re.search(r"연내|20\d{2}년", import_row)
+    guide_time = re.search(r"(내년|20\d{2}년)\s*(\d)분기", guide_row)
+    announcement = next((row for row in rows if re.search(r"총리실|규제합리화추진단|규제합리화위원회", row)
+                         and re.search(r"\d{1,2}일\s*밝혔다", row)), '')
+    day = re.search(r"(?<!\d)(\d{1,2})일\s*밝혔다", announcement)
+    if not (package and item and deadline and guide_time and day):
+        return {}
+    ppa = bool(re.search(r"다수.{0,8}대.{0,8}다수", source) and re.search(r"재생에너지\s*특구", source))
+    chemicals = bool(re.search(r"물질명", source) and re.search(r"총칭명", source))
+    return {'package': package[1], 'authority': '규제합리화', 'day': day[1],
+            'item': '자동차 디스플레이용 강화유리', 'import_deadline': deadline[0],
+            'import_stage': 'notice_amendment_planned', 'guide_year': guide_time[1],
+            'guide_quarter': guide_time[2], 'guide_stage': 'guideline_planned',
+            'ppa_scope': 'multi_party_renewable_zone' if ppa else '',
+            'chemical_scope': 'trade_secret_generic_name' if chemicals else '',
+            'source_excerpt': announcement, 'import_excerpt': import_row, 'guide_excerpt': guide_row}
+
+
+def industrial_product_milestone_observation(title: str, body: str) -> dict[str, str]:
+    """A named industrial model and quantified capability must precede publicity."""
+    if not re.search(r"CDU|냉각수분배장치", title, re.I):
+        return {}
+    rows = source_sentences(source_reported_body(body))
+    statement = next((row for row in rows if re.search(r"제품\s*선택\s*폭을\s*확대", row)
+                      and re.search(r"\d{1,2}일\s*밝혔다", row)), '')
+    issuer = re.match(r"([A-Za-z0-9가-힣&·.-]{2,30})(?:은|는)\s", statement)
+    qualified = re.search(r"([A-Za-z가-힣&·.-]{2,20})(?:가|이)\s*([A-Za-z가-힣&·.-]{2,20})로부터\s*"
+                          r"(\d+(?:\.\d+)?)MW급\s*['‘]([^'’]{2,20})['’]\s*품질\s*인증을\s*받았", statement)
+    pending = re.search(r"(\d+(?:\.\d+)?)MW급\s*제품\s*인증을\s*추진\s*중", statement)
+    new_model = re.search(r"프리쿨링\s*기능을\s*갖춘\s*['‘]([^'’]{2,20})['’]", statement)
+    saving = next((match for row in rows if new_model and new_model[1] in row
+                   and (match := re.search(r"연간\s*에너지\s*사용량을\s*최대\s*(\d+(?:\.\d+)?)%까지\s*절감할\s*수", row))), None)
+    day = re.search(r"(?<!\d)(\d{1,2})일\s*밝혔다", statement)
+    if not (issuer and issuer[1] in title and qualified and pending and new_model and saving and day):
+        return {}
+    return {'issuer': issuer[1], 'day': day[1], 'new_model': new_model[1], 'technology': '프리쿨링 CDU',
+            'certified_supplier': qualified[1], 'certifier': qualified[2], 'certified_capacity': qualified[3],
+            'certified_model': qualified[4], 'pending_capacity': pending[1], 'saving_maximum': saving[1],
+            'stage': 'lineup_expansion_announced', 'source_excerpt': statement}
+
+
+def thermal_lifespan_policy_observation(title: str, body: str) -> dict[str, str]:
+    if not re.search(r"화력발전.{0,12}수명\s*연장", title):
+        return {}
+    rows = source_sentences(source_reported_body(body))
+    review = next((row for row in rows if re.search(r"경제산업성", row)
+                   and re.search(r"수명\s*연장", row) and re.search(r"검토", row)), '')
+    authority = re.search(r"([가-힣]+\s*경제산업성)(?:은|는)", review)
+    cost_share = next((row for row in rows if re.search(r"휴[·ㆍ]폐지", row)
+                        and re.search(r"비용을\s*분담", row)), '')
+    years = re.search(r"(\d+[~∼-]\d+)년\s*뒤", cost_share)
+    payers = re.search(r"([가-힣]+\s*소매\s*공급자)(?:가|는)\s*유지[·ㆍ]보수\s*비용을\s*분담", cost_share)
+    deadline = next((row for row in rows if re.search(r"제도의\s*세부\s*내용", row)
+                     and re.search(r"올해\s*안|20\d{2}년", row)), '')
+    if not (authority and years and payers and deadline):
+        return {}
+    return {'authority': authority[1], 'years': years[1], 'payers': payers[1],
+            'deadline': deadline, 'source_excerpt': review, 'stage': 'policy_cost_sharing_review'}
+
+
+def clinical_submission_observation(title: str, body: str) -> dict[str, str]:
+    """A pre-submission recommendation must not erase failed trial endpoints."""
+    if not re.search(r"FDA.{0,20}(?:미팅|권고)", title):
+        return {}
+    rows = source_sentences(source_reported_body(body))
+    statement = next((row for row in rows if re.search(r"권고받았다고\s*\d{1,2}일\s*밝혔다", row)), '')
+    parties = re.search(r"(?P<issuer>[A-Za-z가-힣&·.-]{2,25})(?:은|는)\s*(?:오픈이노베이션\s*)?파트너사\s*"
+                        r"(?P<partner>[A-Za-z가-힣&·.-]{2,25})가\s*개발\s*중인\s*(?P<drug>[A-Za-z가-힣&·.-]{2,30})\((?P<code>[A-Z0-9-]{2,20})\)", statement)
+    failed = next((row for row in rows if re.search(r"1차\s*및\s*주요\s*2차\s*평가변수", row)
+                   and re.search(r"충족하지\s*못", row)), '')
+    phase = re.search(r"글로벌\s*([1-3])상\s*임상시험", ' '.join(rows[:5]))
+    day = re.search(r"(?:이달\s*)?(\d{1,2})일\(미국\s*시간\)", statement)
+    if not (parties and phase and failed and day and parties['issuer'] in title
+            and 'pre-BLA' in statement and 'FDA' in statement):
+        return {}
+    return {**parties.groupdict(), 'phase': phase[1], 'day': day[1],
+            'stage': 'pre_bla_meeting_recommended', 'failed_endpoints': 'primary_and_key_secondary',
+            'source_excerpt': statement}
 
 
 def national_research_participation_observation(title: str, body: str) -> dict[str, str]:
@@ -1613,6 +1717,30 @@ def source_event_identity(alert: dict) -> str:
     title = str(alert.get("source_title") or alert.get("original_news") or alert.get("news") or "")
     body = str(alert.get("source_body") or "") if alert.get("body_verified") else ""
     published = str(alert.get("published") or "")
+    if re.match(r"20\d{2}-\d{2}-\d{2}", published):
+        construction = construction_order_observation(title, body)
+        regulation = regulatory_package_observation(title, body)
+        product = industrial_product_milestone_observation(title, body)
+        for event, observed in (('construction_order', construction), ('regulatory_package', regulation),
+                                ('industrial_product_milestone', product)):
+            if not observed:
+                continue
+            terms = {key: canonical_source_fact(value) for key, value in observed.items()
+                     if key not in {'source_excerpt', 'import_excerpt', 'guide_excerpt', 'issuer_amount', 'day'}}
+            terms['disclosure_date'] = published[:8] + (observed.get('day') or published[8:10]).zfill(2)
+            if construction and event == 'construction_order':
+                amount = re.fullmatch(SOURCE_MONEY, observed['total_budget'])
+                terms['total_budget'] = [amount[2], korean_amount_value(amount[1])]
+                terms['stage'] = 'awarded'
+            if regulation and event == 'regulatory_package':
+                year = int(published[:4])
+                terms['import_deadline'] = str(year) if observed['import_deadline'] == '연내' else observed['import_deadline'][:4]
+                terms['guide_year'] = str(year + 1) if observed['guide_year'] == '내년' else observed['guide_year'][:4]
+            terms['explicit_revision'] = bool(re.search(r"추가\s*(?:수주|계약|조치)|(?:공사비|지분|기간|규제|계약).{0,10}(?:변경|정정|철회)", title))
+            if terms['explicit_revision']:
+                terms['revision_excerpt'] = canonical_source_fact(observed['source_excerpt'])
+            digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+            return f'source_event:v2:{event}:{digest}'
     if re.match(r"20\d{2}-\d{2}-\d{2}", published):
         for event, terms in (
             ('industrial_development_mou', industrial_development_mou_observation(title, body)),
@@ -1837,12 +1965,12 @@ RULES = (
      r"SMR|소형모듈원자로|원전|선박|풍력|태양광|발전소|반도체|데이터센터|휴머노이드|자율주행|무인기|항공우주|wind power|solar|power plant|semiconductor|data center|humanoid|autonomous driving|drone|aerospace",
      r"(?:업무협약|공동개발\s*협약|MOU).{0,20}(?:체결|맺|서명)|(?:체결|맺|서명).{0,20}(?:업무협약|공동개발\s*협약|MOU)|signed.{0,30}(?:mou|joint development)"),
     ("rates_fx_or_macro", ("discount_rate",),
-     r"금리|국고채|모기지|주담대|주택담보대출|물가|인플레이션|고용(?!량)|비농업\s*일자리|실업률|건설지출|환율|달러화|유동성|차입|구매관리자|\bpmi\b|cpi|pce|payroll|mortgage|interest rate|treasury (?:yield|bond|note|bill|securit|borrow)|(?:u\.?s\.?\s+|united states )treasury|inflation|exchange rate|borrowing",
+     r"금리|국고채|모기지|주담대|주택담보대출|물가|인플레이션|고용(?!량)|비농업\s*일자리|실업률|건설지출|소비자\s*(?:심리|신뢰)지수|consumer (?:sentiment|confidence)|환율|달러화|유동성|차입|구매관리자|\bpmi\b|cpi|pce|payroll|mortgage|interest rate|treasury (?:yield|bond|note|bill|securit|borrow)|(?:u\.?s\.?\s+|united states )treasury|inflation|exchange rate|borrowing",
      r"인상|(?<!할)인하|동결|상승|하락|오른|내린|올랐|내렸|둔화|급등|급락|상회|하회|밑돌|웃돌|발표|기록|증가|감소|결정|약세|강세|최고|치솟|cut|hike|hold|rise|fall|miss|beat|announc|estimat|record"),
     ("attributed_fx_forecast", ("discount_rate",),
      r"원[·/]달러|달러[·/]원|환율", r"전망|예상"),
     ("policy_scope_or_stage", ("timeline",),
-     r"관세|법인세|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
+     r"관세|법인세|세율|세금|수출통제|수출.{0,12}(?:금지|제한)|수입금지|수입 금지|수입 제한|수입제한|수입\s*승인|수출입공고|보안\s*가이드라인|과잉생산.{0,20}(?:대응|조치)|제재|보조금|지원금|예탁금|긴급조치권|규제|인허가|허가\s*절차|고시|조례|환경심사|환경영향평가|주파수|tariff|tax rate|corporate tax|export control|import ban|sanction|subsid|licens|environmental review|spectrum|\bban(?:s|ned)?\b",
      r"제안|검토|추진|인상|인하|부과|올리|올렸|낮추|낮췄|상향|하향|완화|강화|시행|발효|금지|제한|(?<!인)허가(?:했|한다|를\s*(?:내|받|취득))|승인(?:했|한다|을\s*(?:받|획득|취득))|제정|개정|철회|의견수렴|입법예고|면제|배정|의결|착수|발표|propos|draft|\bban(?:s|ned)?\b|prohibit|restrict|approv|enact|implement|consider|exempt|allocat|adopt"),
     ("economic_restriction_response", ("discount_rate", "timeline"),
      r"경제\s*전쟁|제재", r"새로운\s*조치.{0,30}(?:도입|발표)|대응\s*조치.{0,30}(?:도입|발표|시행)"),
@@ -2365,6 +2493,15 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     if not title or not body:
         result["reason"] = "source_evidence_unavailable"
         return result
+    political_poll = bool(re.search(r"지지율|국정\s*수행|정당\s*지지|political approval|approval rating", title, re.I)
+                          and re.search(r"여론조사|응답자|유권자|poll|respondents|voters", body[:1600], re.I))
+    primary_rows = ' '.join(source_sentences(body)[:6])
+    if political_poll and not re.search(
+        r"행정명령.{0,20}서명|법안.{0,20}(?:발의|통과)|관세.{0,20}(?:시행|발효|부과하기로\s*결정)|"
+        r"(?:국채|기준금리|환율).{0,40}(?:발표했다|인상했다|인하했다)|executive order.{0,20}signed", primary_rows, re.I,
+    ):
+        result.update(disposition='exclude', priority=0, reason='political_poll_not_new_economic_execution')
+        return result
     if (re.fullmatch(r"[A-Za-z0-9가-힣&.·]{2,20}", title.strip())
             and not HARD_HEADLINE.search(title) and not focus_kind(title)):
         result.update(disposition="exclude", priority=0, reason="source_headline_without_event")
@@ -2626,6 +2763,18 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     routine = bool(ROUTINE_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     soft = bool(SOFT_HEADLINE.search(title) and not HARD_HEADLINE.search(title))
     matches = []
+    product_milestone = industrial_product_milestone_observation(title, body)
+    if product_milestone:
+        matches.append((2, 80, 0, ['earnings', 'timeline'], {
+            'kind': 'technology_or_clinical_stage', 'stage': product_milestone['stage'],
+            'source_excerpt': product_milestone['source_excerpt'],
+        }))
+    thermal_policy = thermal_lifespan_policy_observation(title, body)
+    if thermal_policy:
+        matches.append((2, 80, 0, ['earnings', 'timeline'], {
+            'kind': 'policy_scope_or_stage', 'stage': thermal_policy['stage'],
+            'source_excerpt': thermal_policy['source_excerpt'],
+        }))
     if re.search(r"정부|장관|부처|당국|국회", title) and re.search(r"예산|지원금", title):
         for row in sentences:
             if (not PAST_ACTION.search(row) and re.search(SOURCE_MONEY, row)
