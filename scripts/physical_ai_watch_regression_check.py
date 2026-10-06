@@ -2211,6 +2211,24 @@ assert g == "nvidia_robotics_exec", (g, s, c)
 assert c.endswith("폭스콘 GB300 실제 조립 KPI 첫 정량화"), c
 assert s >= 11, s
 
+foxconn_gb300_target_wording = make(
+    "NVIDIA Foxconn GB300 live production robot assembly",
+    (
+        "NVIDIA and Foxconn reported live-production GB300 NVL72 tester-tray robot assembly results in Houston. "
+        "Busbar assembly task success exceeded 95%, multi-connector insertion reached 90-95%. "
+        "The busbar target is under 124 seconds and both tasks target 99.5% success; "
+        "current busbar cycle time is about 160 seconds."
+    ),
+    "Focus Taiwan",
+)
+gt, st, ct, kt = classify(foxconn_gb300_target_wording)
+assert gt == "nvidia_robotics_exec", (gt, st, ct)
+assert ct.endswith("폭스콘 GB300 실제 조립 KPI 첫 정량화"), (
+    "target wording must not be misread as target achieved",
+    ct,
+)
+assert st >= 11, st
+
 foxconn_gb300_kpi_rewrite = make(
     "Nvidia, Hon Hai use robots to improve GB300 assembly success rates",
     (
