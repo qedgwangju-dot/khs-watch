@@ -550,7 +550,7 @@
   "hbm_market_alert_format_version": 2,
   "hbm_market_pricing": {
     "period": "2027",
-    "blended_asp_yoy_pct": 121.0,
+    "blended_asp_yoy_pct": 121,
     "eight_hi_premium_min_pct": 10,
     "eight_hi_premium_max_pct": 20,
     "mainstream_layers": 8,
@@ -746,6 +746,33 @@
     "secondary_source_url": "https://www.macrostream.ai/articles/6a1d0385e33ff44036068221",
     "as_of": "2026-10-05",
     "source": "Goldman Sachs Research + secondary reproductions",
+    "source_rank": 2
+  },
+  "ymtc_nand_duration_track_version": 1,
+  "ymtc_nand_duration_alert_pending": true,
+  "ymtc_nand_duration": {
+    "shortage_scope": "global memory (YMTC 익명 직원 발언; NAND 전용 공식 전망으로 해석 금지)",
+    "shortage_through_year": 2029,
+    "shortage_duration_years_from_2026": 3,
+    "shortage_official_guidance": false,
+    "anonymous_employee_source": true,
+    "price_increase_reported": true,
+    "capacity_shift_high_margin_reported": true,
+    "q2_2026_nand_shipment_share_pct": 14,
+    "q2_2026_nand_shipment_rank": 3,
+    "q2_2026_essd_bit_share_pct": 48,
+    "q2_2025_essd_bit_share_pct": 26,
+    "consumer_nand_supply_short": true,
+    "trendforce_nand_easing_year": 2027,
+    "trendforce_nand_easing_half": "2H",
+    "micron_memory_tight_through_year": 2028,
+    "source": "The Wire China / YMTC 익명 직원",
+    "source_kind": "The Wire China 원문 제목·공개영역 + 복수 2차 재인용; 회사 공식 가이던스 아님",
+    "source_url": "https://www.thewirechina.com/2026/10/04/the-survivor/",
+    "secondary_source_url": "https://www.tweaktown.com/news/113914/chinas-ymtc-raises-chip-prices-as-it-braces-for-three-more-years-of-memory-shortages/index.html",
+    "counterpoint_url": "https://counterpointresearch.com/default.htm/insights/server-led-essds-hit-48-percent-of-nand-shipments",
+    "trendforce_url": "https://www.trendforce.com/presscenter/news/20260721-13148.html",
+    "as_of": "2026-10-06",
     "source_rank": 2
   }
 }
