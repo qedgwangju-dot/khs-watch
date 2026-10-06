@@ -19,6 +19,7 @@ from zoneinfo import ZoneInfo
 import requests
 
 from kospi_shock_enrichment import build_enrichment
+from krx_session_calendar import session_state
 
 KST = ZoneInfo("Asia/Seoul")
 BASE = "https://openapi.ls-sec.co.kr:8080"
@@ -1058,12 +1059,44 @@ class Watch:
         self.seed_backfill()
         started = time.time()
         last_poll_error: str | None = None
+
+        initial_now = dt.datetime.now(KST)
+        session = session_state(initial_now)
+        self.raw["krx_session"] = {
+            "is_session": session["is_session"],
+            "date": session["date"],
+            "open": session["open"].isoformat() if session["open"] else None,
+            "continuous_end": session["continuous_end"].isoformat() if session["continuous_end"] else None,
+            "close": session["close"].isoformat() if session["close"] else None,
+        }
+        if test_seconds is None and not session["is_session"]:
+            self.raw["market_closed_reason"] = "XKRX non-session day"
+            return
+
+        open_dt = session["open"]
+        close_dt = session["close"]
+        poll_start_dt = (
+            open_dt - dt.timedelta(seconds=90)
+            if open_dt is not None else initial_now
+        )
+        effective_end_dt = (
+            min(
+                dt.datetime.combine(initial_now.date(), until, tzinfo=KST),
+                close_dt + dt.timedelta(minutes=2),
+            )
+            if test_seconds is None and close_dt is not None
+            else None
+        )
+
         while True:
             now = dt.datetime.now(KST)
             if test_seconds is not None and time.time() - started >= test_seconds:
                 break
-            if test_seconds is None and now.time() >= until:
+            if test_seconds is None and effective_end_dt is not None and now >= effective_end_dt:
                 break
+            if test_seconds is None and now < poll_start_dt:
+                await asyncio.sleep(min(5.0, max(0.5, (poll_start_dt - now).total_seconds())))
+                continue
 
             try:
                 await asyncio.to_thread(self.poll_market_once)
@@ -1074,12 +1107,11 @@ class Watch:
 
             await self.evaluate()
 
-            # production 장중 생존검사: 현물 정규시장 종료 직후에는
-            # 마지막 종가 데이터가 더 이상 움직이지 않으므로 15:31부터 stale 검사를 멈춘다.
+            # XKRX 실제 세션 기준으로만 stale 검사를 적용한다.
             if (
                 test_seconds is None
-                and dt.time(9, 2) <= now.time() < dt.time(15, 31)
-                and now.time() < until
+                and open_dt is not None and close_dt is not None
+                and open_dt + dt.timedelta(minutes=2) <= now < close_dt + dt.timedelta(minutes=1)
                 and time.time() - started >= 60
             ):
                 now_ts = time.time()
