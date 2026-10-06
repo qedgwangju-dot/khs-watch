@@ -40,19 +40,19 @@
     "event:0299202f202670e087ceb126": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
-        "live": "2026-10-07T01:59:08+09:00"
+        "live": "2026-10-07T05:59:02+09:00"
       },
-      "last_seen_kst": "2026-10-07T01:59:08+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003814672",
-      "source": "뉴시스",
-      "source_body_digest": "e9024447296ace82f6a0f8ea281016eabd23cc9f8fc9ed8b24525f4c489e4b6e",
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.hankyung.com/article/2026100647051",
+      "source": "한국경제",
+      "source_body_digest": "058ab52d414b23548ceb85349bed85e6cb2c57ffd64bafbccf4dd6793f71074a",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:8aedfe103dbcfa657c1cdb732896c1620e02559637109914b216e11a1fe4ff47",
+      "source_fact_identity": "source_facts:v1:f4c7ba9ec13c4bcffde173a5fabe7401813e5684304219428c837679abeeb12f",
       "source_fact_keys": [
-        "source_fact:v1:eedb0ac78ea081c4c936e7d0747515f9c245a4cb15e8f6eb0d7dbe511acf7011"
+        "source_fact:v1:58ea7ec9702c71fbd8db61a68e395a6140c7707c1cdc777a8798fc146de3d3ed"
       ],
-      "source_published_kst": "2026-10-06T06:22+09:00",
-      "title": "뉴욕증시, 국채금리 상승에도 기술주 강세에↑…나스닥, 사상최고치"
+      "source_published_kst": "2026-10-06T15:58+09:00",
+      "title": "삼성증권, 발행어음 특판 흥행…다양한 금리로 성장 지원"
     },
     "event:02d60295bf23df1b9743049a": {
       "first_seen_kst": "2026-10-06T17:59:23+09:00",
@@ -2470,17 +2470,22 @@
     "event:695102b941e71506d24b4e08": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
       "lanes": {
-        "live": "2026-10-07T04:49:54+09:00"
+        "live": "2026-10-07T05:59:02+09:00"
       },
-      "last_seen_kst": "2026-10-07T04:49:54+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261007003800099",
-      "source": "연합뉴스",
-      "source_body_digest": "6319ff508ac2a5d077ecfa877cb0fe711e5ae36b29d60c3bad665c2dce6ac88f",
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6312171",
+      "source": "뉴스1",
+      "source_body_digest": "b9f07f2bccf6e94bd0b965def0ea950869d2524378ecdbe127261ab9452d4f12",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
-      "source_published_kst": "2026-10-07T04:15+09:00",
-      "title": "사우디 공항·정유시설에 후티 공습…韓기업 가까운 지역도 피격(종합) | 연합뉴스"
+      "source_fact_identity": "source_facts:v1:04922142cb1c0c30a06bdc853e54784340a0f20bd4dad457cd8f6163322c2a58",
+      "source_fact_keys": [
+        "source_fact:v1:8223d71b825c46250fdf767fcd8203689cfc81c7a4f649200833699e66a2aa6a",
+        "source_fact:v1:a2051e6b10e40f9965379bbae8c7f400f4c1c4eb4975d607aa630a56590406b0",
+        "source_fact:v1:ce5ddcf12838ed14939b7a75c6e92e095179e091c5e753d4ee1363c99e0edac1",
+        "source_fact:v1:f6bb05a8e4ee5721e0f1660e9ecec7352efccc484dec43a07233d3c6bd4c56f8"
+      ],
+      "source_published_kst": "2026-10-07T05:22+09:00",
+      "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
     },
     "event:6994ec3ec51f16c535c2ebd5": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -11688,6 +11693,23 @@
       "source_published_kst": "2026-10-05T21:36+09:00",
       "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
     },
+    "fact:5512977e8e3f77b787266a6f": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.hankyung.com/article/2026100647051",
+      "source": "한국경제",
+      "source_body_digest": "058ab52d414b23548ceb85349bed85e6cb2c57ffd64bafbccf4dd6793f71074a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4c7ba9ec13c4bcffde173a5fabe7401813e5684304219428c837679abeeb12f",
+      "source_fact_keys": [
+        "source_fact:v1:58ea7ec9702c71fbd8db61a68e395a6140c7707c1cdc777a8798fc146de3d3ed"
+      ],
+      "source_published_kst": "2026-10-06T15:58+09:00",
+      "title": "삼성증권, 발행어음 특판 흥행…다양한 금리로 성장 지원"
+    },
     "fact:552272a418cb7e59cbd1e019": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -12542,6 +12564,26 @@
       ],
       "source_published_kst": "2026-10-06T11:47+09:00",
       "title": "재경부 국감, '대미투자' 여야 질타…野 \"사업성 미달시 국정조사 사안\""
+    },
+    "fact:659a948df9833f99780867d8": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6312171",
+      "source": "뉴스1",
+      "source_body_digest": "b9f07f2bccf6e94bd0b965def0ea950869d2524378ecdbe127261ab9452d4f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04922142cb1c0c30a06bdc853e54784340a0f20bd4dad457cd8f6163322c2a58",
+      "source_fact_keys": [
+        "source_fact:v1:8223d71b825c46250fdf767fcd8203689cfc81c7a4f649200833699e66a2aa6a",
+        "source_fact:v1:a2051e6b10e40f9965379bbae8c7f400f4c1c4eb4975d607aa630a56590406b0",
+        "source_fact:v1:ce5ddcf12838ed14939b7a75c6e92e095179e091c5e753d4ee1363c99e0edac1",
+        "source_fact:v1:f6bb05a8e4ee5721e0f1660e9ecec7352efccc484dec43a07233d3c6bd4c56f8"
+      ],
+      "source_published_kst": "2026-10-07T05:22+09:00",
+      "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
     },
     "fact:659c8c2e483cf1a23c874532": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
@@ -18433,6 +18475,28 @@
       ],
       "source_published_kst": "2026-10-06T16:05+09:00",
       "title": "[단독] 개인정보·데이터 유출 민원 4년새 3.5배↑…“피해구제 배상은 2% 불과”"
+    },
+    "fact:d2bdfed14d2a2d05cf6491b9": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02000806645610624",
+      "source": "이데일리",
+      "source_body_digest": "4b01c9de03a428588b730dbe8021880ee058597b188065d98c40fc2c65e1fe1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3da1cd3d59ced8ad490a216d732bdf7506598b906db101333ddd686f72622ea9",
+      "source_fact_keys": [
+        "source_fact:v1:101fdf2aa969d74255e1d36e32e197825ff8c9c2a838b7f8b500ead88c47989d",
+        "source_fact:v1:36df96009b987f786f537ae3e49065908150a2fca6cb9c2132c6e9a4a5d30a22",
+        "source_fact:v1:4423b81ad6eb5b7e1ba89386b589e22177788cc418c67795c929ba3ee802ee39",
+        "source_fact:v1:480bebbf78d73948e9a6c38c703731bb75666bafcb8338ed34d2b8bf70dc3889",
+        "source_fact:v1:4c07a647545cec3cc53d10a3436442ce373ada2738f0f0ff3d497ffb5b95dcc4",
+        "source_fact:v1:80072e5be426cbe7a390f227e5dd290878d908e37cd1f4eb95f6a6cf5a6562ae"
+      ],
+      "source_published_kst": "2026-10-07T05:39+09:00",
+      "title": "[美특징주]레나, 버크셔해서웨이 240만주 매입에 주가 4%↑"
     },
     "fact:d38afa3894708fd1720bcb0e": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -25154,6 +25218,23 @@
       "link": "https://biz.heraldcorp.com/article/10892037",
       "source": "헤럴드경제",
       "title": "반도체·항공까지 보폭 넓힌 VIG…크레딧 ‘두번째 엔진’도 가동 [하우스리뷰]"
+    },
+    "link:279b49aca3089e3a1df5f64f": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.hankyung.com/article/2026100647051",
+      "source": "한국경제",
+      "source_body_digest": "058ab52d414b23548ceb85349bed85e6cb2c57ffd64bafbccf4dd6793f71074a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4c7ba9ec13c4bcffde173a5fabe7401813e5684304219428c837679abeeb12f",
+      "source_fact_keys": [
+        "source_fact:v1:58ea7ec9702c71fbd8db61a68e395a6140c7707c1cdc777a8798fc146de3d3ed"
+      ],
+      "source_published_kst": "2026-10-06T15:58+09:00",
+      "title": "삼성증권, 발행어음 특판 흥행…다양한 금리로 성장 지원"
     },
     "link:27c4684263485b1262694ce0": {
       "first_seen_kst": "2026-09-25T20:44:40+09:00",
@@ -45518,6 +45599,28 @@
       "source": "연합뉴스",
       "title": "로이터 \"알래스카 LNG 사업비, 멕시코만 연안의 두배\" | 연합뉴스"
     },
+    "link:d677671cf1acb9a8d87f7b6a": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02000806645610624",
+      "source": "이데일리",
+      "source_body_digest": "4b01c9de03a428588b730dbe8021880ee058597b188065d98c40fc2c65e1fe1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3da1cd3d59ced8ad490a216d732bdf7506598b906db101333ddd686f72622ea9",
+      "source_fact_keys": [
+        "source_fact:v1:101fdf2aa969d74255e1d36e32e197825ff8c9c2a838b7f8b500ead88c47989d",
+        "source_fact:v1:36df96009b987f786f537ae3e49065908150a2fca6cb9c2132c6e9a4a5d30a22",
+        "source_fact:v1:4423b81ad6eb5b7e1ba89386b589e22177788cc418c67795c929ba3ee802ee39",
+        "source_fact:v1:480bebbf78d73948e9a6c38c703731bb75666bafcb8338ed34d2b8bf70dc3889",
+        "source_fact:v1:4c07a647545cec3cc53d10a3436442ce373ada2738f0f0ff3d497ffb5b95dcc4",
+        "source_fact:v1:80072e5be426cbe7a390f227e5dd290878d908e37cd1f4eb95f6a6cf5a6562ae"
+      ],
+      "source_published_kst": "2026-10-07T05:39+09:00",
+      "title": "[美특징주]레나, 버크셔해서웨이 240만주 매입에 주가 4%↑"
+    },
     "link:d6a359e10a1bec741ccc683b": {
       "first_seen_kst": "2026-10-05T11:14:01+09:00",
       "lanes": {
@@ -46437,6 +46540,26 @@
       "link": "https://view.asiae.co.kr/article/2026100110263966041",
       "source": "아시아경제",
       "title": "삼성운용 \"커버드콜 ETF 활용해서 월 분배금 두 번 받으세요\""
+    },
+    "link:df54e7d3f0d82f4365b04ace": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6312171",
+      "source": "뉴스1",
+      "source_body_digest": "b9f07f2bccf6e94bd0b965def0ea950869d2524378ecdbe127261ab9452d4f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04922142cb1c0c30a06bdc853e54784340a0f20bd4dad457cd8f6163322c2a58",
+      "source_fact_keys": [
+        "source_fact:v1:8223d71b825c46250fdf767fcd8203689cfc81c7a4f649200833699e66a2aa6a",
+        "source_fact:v1:a2051e6b10e40f9965379bbae8c7f400f4c1c4eb4975d607aa630a56590406b0",
+        "source_fact:v1:ce5ddcf12838ed14939b7a75c6e92e095179e091c5e753d4ee1363c99e0edac1",
+        "source_fact:v1:f6bb05a8e4ee5721e0f1660e9ecec7352efccc484dec43a07233d3c6bd4c56f8"
+      ],
+      "source_published_kst": "2026-10-07T05:22+09:00",
+      "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
     },
     "link:dfaa8101c9738b2e5f43489a": {
       "first_seen_kst": "2026-10-05T16:39:19+09:00",
@@ -52749,6 +52872,28 @@
       "source_published_kst": "2026-10-05T10:20+09:00",
       "title": "\"명절에 지방 가면 여기부터?\"…10대 매출 200% 폭증한 곳"
     },
+    "original:1742e0230d50803521183239": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02000806645610624",
+      "source": "이데일리",
+      "source_body_digest": "4b01c9de03a428588b730dbe8021880ee058597b188065d98c40fc2c65e1fe1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3da1cd3d59ced8ad490a216d732bdf7506598b906db101333ddd686f72622ea9",
+      "source_fact_keys": [
+        "source_fact:v1:101fdf2aa969d74255e1d36e32e197825ff8c9c2a838b7f8b500ead88c47989d",
+        "source_fact:v1:36df96009b987f786f537ae3e49065908150a2fca6cb9c2132c6e9a4a5d30a22",
+        "source_fact:v1:4423b81ad6eb5b7e1ba89386b589e22177788cc418c67795c929ba3ee802ee39",
+        "source_fact:v1:480bebbf78d73948e9a6c38c703731bb75666bafcb8338ed34d2b8bf70dc3889",
+        "source_fact:v1:4c07a647545cec3cc53d10a3436442ce373ada2738f0f0ff3d497ffb5b95dcc4",
+        "source_fact:v1:80072e5be426cbe7a390f227e5dd290878d908e37cd1f4eb95f6a6cf5a6562ae"
+      ],
+      "source_published_kst": "2026-10-07T05:39+09:00",
+      "title": "[美특징주]레나, 버크셔해서웨이 240만주 매입에 주가 4%↑"
+    },
     "original:174ef7f98842acc085231a6b": {
       "first_seen_kst": "2026-09-25T04:05:10+09:00",
       "lanes": {
@@ -57547,6 +57692,23 @@
       "source_published_kst": "2026-10-06T11:47+09:00",
       "title": "재경부 국감, '대미투자' 여야 질타…野 \"사업성 미달시 국정조사 사안\""
     },
+    "original:410f327304e0d5abf1773c16": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.hankyung.com/article/2026100647051",
+      "source": "한국경제",
+      "source_body_digest": "058ab52d414b23548ceb85349bed85e6cb2c57ffd64bafbccf4dd6793f71074a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4c7ba9ec13c4bcffde173a5fabe7401813e5684304219428c837679abeeb12f",
+      "source_fact_keys": [
+        "source_fact:v1:58ea7ec9702c71fbd8db61a68e395a6140c7707c1cdc777a8798fc146de3d3ed"
+      ],
+      "source_published_kst": "2026-10-06T15:58+09:00",
+      "title": "삼성증권, 발행어음 특판 흥행…다양한 금리로 성장 지원"
+    },
     "original:411086a05e91cef691b41511": {
       "first_seen_kst": "2026-10-05T13:39:56+09:00",
       "lanes": {
@@ -62009,6 +62171,26 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:25+09:00",
       "title": "이번주 크레딧 2조원 발행…파라다이스 수요예측도 | 연합뉴스"
+    },
+    "original:68a5ef811cc0517dd9ee21ba": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6312171",
+      "source": "뉴스1",
+      "source_body_digest": "b9f07f2bccf6e94bd0b965def0ea950869d2524378ecdbe127261ab9452d4f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04922142cb1c0c30a06bdc853e54784340a0f20bd4dad457cd8f6163322c2a58",
+      "source_fact_keys": [
+        "source_fact:v1:8223d71b825c46250fdf767fcd8203689cfc81c7a4f649200833699e66a2aa6a",
+        "source_fact:v1:a2051e6b10e40f9965379bbae8c7f400f4c1c4eb4975d607aa630a56590406b0",
+        "source_fact:v1:ce5ddcf12838ed14939b7a75c6e92e095179e091c5e753d4ee1363c99e0edac1",
+        "source_fact:v1:f6bb05a8e4ee5721e0f1660e9ecec7352efccc484dec43a07233d3c6bd4c56f8"
+      ],
+      "source_published_kst": "2026-10-07T05:22+09:00",
+      "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
     },
     "original:68ba09e7067b35a632580f26": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -83283,6 +83465,26 @@
       "source_published_kst": "2026-10-06T17:52+09:00",
       "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
     },
+    "source_fact:13837ad8d1fc6f885a4ba244": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6312171",
+      "source": "뉴스1",
+      "source_body_digest": "b9f07f2bccf6e94bd0b965def0ea950869d2524378ecdbe127261ab9452d4f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04922142cb1c0c30a06bdc853e54784340a0f20bd4dad457cd8f6163322c2a58",
+      "source_fact_keys": [
+        "source_fact:v1:8223d71b825c46250fdf767fcd8203689cfc81c7a4f649200833699e66a2aa6a",
+        "source_fact:v1:a2051e6b10e40f9965379bbae8c7f400f4c1c4eb4975d607aa630a56590406b0",
+        "source_fact:v1:ce5ddcf12838ed14939b7a75c6e92e095179e091c5e753d4ee1363c99e0edac1",
+        "source_fact:v1:f6bb05a8e4ee5721e0f1660e9ecec7352efccc484dec43a07233d3c6bd4c56f8"
+      ],
+      "source_published_kst": "2026-10-07T05:22+09:00",
+      "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
+    },
     "source_fact:13841c025cbc0731ce7eee45": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -87599,6 +87801,28 @@
       ],
       "source_published_kst": "2026-10-06T09:32+09:00",
       "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
+    },
+    "source_fact:275e86746a877f8183e6f0b0": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02000806645610624",
+      "source": "이데일리",
+      "source_body_digest": "4b01c9de03a428588b730dbe8021880ee058597b188065d98c40fc2c65e1fe1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3da1cd3d59ced8ad490a216d732bdf7506598b906db101333ddd686f72622ea9",
+      "source_fact_keys": [
+        "source_fact:v1:101fdf2aa969d74255e1d36e32e197825ff8c9c2a838b7f8b500ead88c47989d",
+        "source_fact:v1:36df96009b987f786f537ae3e49065908150a2fca6cb9c2132c6e9a4a5d30a22",
+        "source_fact:v1:4423b81ad6eb5b7e1ba89386b589e22177788cc418c67795c929ba3ee802ee39",
+        "source_fact:v1:480bebbf78d73948e9a6c38c703731bb75666bafcb8338ed34d2b8bf70dc3889",
+        "source_fact:v1:4c07a647545cec3cc53d10a3436442ce373ada2738f0f0ff3d497ffb5b95dcc4",
+        "source_fact:v1:80072e5be426cbe7a390f227e5dd290878d908e37cd1f4eb95f6a6cf5a6562ae"
+      ],
+      "source_published_kst": "2026-10-07T05:39+09:00",
+      "title": "[美특징주]레나, 버크셔해서웨이 240만주 매입에 주가 4%↑"
     },
     "source_fact:276ad4afe6ae2be2ae1e579f": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
@@ -95991,6 +96215,28 @@
       "source_published_kst": "2026-10-06T17:12+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 계약…LFP 물량 두 배 넘게 확대"
     },
+    "source_fact:4a93485bd8692b6a5feed21b": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02000806645610624",
+      "source": "이데일리",
+      "source_body_digest": "4b01c9de03a428588b730dbe8021880ee058597b188065d98c40fc2c65e1fe1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3da1cd3d59ced8ad490a216d732bdf7506598b906db101333ddd686f72622ea9",
+      "source_fact_keys": [
+        "source_fact:v1:101fdf2aa969d74255e1d36e32e197825ff8c9c2a838b7f8b500ead88c47989d",
+        "source_fact:v1:36df96009b987f786f537ae3e49065908150a2fca6cb9c2132c6e9a4a5d30a22",
+        "source_fact:v1:4423b81ad6eb5b7e1ba89386b589e22177788cc418c67795c929ba3ee802ee39",
+        "source_fact:v1:480bebbf78d73948e9a6c38c703731bb75666bafcb8338ed34d2b8bf70dc3889",
+        "source_fact:v1:4c07a647545cec3cc53d10a3436442ce373ada2738f0f0ff3d497ffb5b95dcc4",
+        "source_fact:v1:80072e5be426cbe7a390f227e5dd290878d908e37cd1f4eb95f6a6cf5a6562ae"
+      ],
+      "source_published_kst": "2026-10-07T05:39+09:00",
+      "title": "[美특징주]레나, 버크셔해서웨이 240만주 매입에 주가 4%↑"
+    },
     "source_fact:4aa7902c1006bc1fe5892baa": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -96172,6 +96418,26 @@
       ],
       "source_published_kst": "2026-10-06T15:34+09:00",
       "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
+    },
+    "source_fact:4b2b1dc9c46a0827d793da38": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6312171",
+      "source": "뉴스1",
+      "source_body_digest": "b9f07f2bccf6e94bd0b965def0ea950869d2524378ecdbe127261ab9452d4f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04922142cb1c0c30a06bdc853e54784340a0f20bd4dad457cd8f6163322c2a58",
+      "source_fact_keys": [
+        "source_fact:v1:8223d71b825c46250fdf767fcd8203689cfc81c7a4f649200833699e66a2aa6a",
+        "source_fact:v1:a2051e6b10e40f9965379bbae8c7f400f4c1c4eb4975d607aa630a56590406b0",
+        "source_fact:v1:ce5ddcf12838ed14939b7a75c6e92e095179e091c5e753d4ee1363c99e0edac1",
+        "source_fact:v1:f6bb05a8e4ee5721e0f1660e9ecec7352efccc484dec43a07233d3c6bd4c56f8"
+      ],
+      "source_published_kst": "2026-10-07T05:22+09:00",
+      "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
     },
     "source_fact:4b31396fc52fab592a39d6bb": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
@@ -106950,6 +107216,26 @@
       "source_published_kst": "2026-10-07T00:00+09:00",
       "title": "우크라 '韓, 러 석유공급' 보도에 비판…\"제재 정책과 어긋나\""
     },
+    "source_fact:790bd9b712983f4367ff59f1": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6312171",
+      "source": "뉴스1",
+      "source_body_digest": "b9f07f2bccf6e94bd0b965def0ea950869d2524378ecdbe127261ab9452d4f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04922142cb1c0c30a06bdc853e54784340a0f20bd4dad457cd8f6163322c2a58",
+      "source_fact_keys": [
+        "source_fact:v1:8223d71b825c46250fdf767fcd8203689cfc81c7a4f649200833699e66a2aa6a",
+        "source_fact:v1:a2051e6b10e40f9965379bbae8c7f400f4c1c4eb4975d607aa630a56590406b0",
+        "source_fact:v1:ce5ddcf12838ed14939b7a75c6e92e095179e091c5e753d4ee1363c99e0edac1",
+        "source_fact:v1:f6bb05a8e4ee5721e0f1660e9ecec7352efccc484dec43a07233d3c6bd4c56f8"
+      ],
+      "source_published_kst": "2026-10-07T05:22+09:00",
+      "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
+    },
     "source_fact:79190f2cf2aea22cb6283162": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
       "lanes": {
@@ -112658,6 +112944,23 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:9029ecf33055d5f3b2b43e55": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.hankyung.com/article/2026100647051",
+      "source": "한국경제",
+      "source_body_digest": "058ab52d414b23548ceb85349bed85e6cb2c57ffd64bafbccf4dd6793f71074a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4c7ba9ec13c4bcffde173a5fabe7401813e5684304219428c837679abeeb12f",
+      "source_fact_keys": [
+        "source_fact:v1:58ea7ec9702c71fbd8db61a68e395a6140c7707c1cdc777a8798fc146de3d3ed"
+      ],
+      "source_published_kst": "2026-10-06T15:58+09:00",
+      "title": "삼성증권, 발행어음 특판 흥행…다양한 금리로 성장 지원"
+    },
     "source_fact:9031972c00832c7a0af0b87c": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
       "lanes": {
@@ -115839,6 +116142,28 @@
       "source_published_kst": "2026-10-06T17:40+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급 계약…\"배터리 동맹 강화\""
     },
+    "source_fact:9dd724f89fec7450cdbbaeec": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02000806645610624",
+      "source": "이데일리",
+      "source_body_digest": "4b01c9de03a428588b730dbe8021880ee058597b188065d98c40fc2c65e1fe1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3da1cd3d59ced8ad490a216d732bdf7506598b906db101333ddd686f72622ea9",
+      "source_fact_keys": [
+        "source_fact:v1:101fdf2aa969d74255e1d36e32e197825ff8c9c2a838b7f8b500ead88c47989d",
+        "source_fact:v1:36df96009b987f786f537ae3e49065908150a2fca6cb9c2132c6e9a4a5d30a22",
+        "source_fact:v1:4423b81ad6eb5b7e1ba89386b589e22177788cc418c67795c929ba3ee802ee39",
+        "source_fact:v1:480bebbf78d73948e9a6c38c703731bb75666bafcb8338ed34d2b8bf70dc3889",
+        "source_fact:v1:4c07a647545cec3cc53d10a3436442ce373ada2738f0f0ff3d497ffb5b95dcc4",
+        "source_fact:v1:80072e5be426cbe7a390f227e5dd290878d908e37cd1f4eb95f6a6cf5a6562ae"
+      ],
+      "source_published_kst": "2026-10-07T05:39+09:00",
+      "title": "[美특징주]레나, 버크셔해서웨이 240만주 매입에 주가 4%↑"
+    },
     "source_fact:9e040961808e685e175616c0": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -118620,6 +118945,28 @@
       "source_published_kst": "2026-10-06T23:31+09:00",
       "title": "우크라, '한국의 러 석유공급' 기사 인용해 韓 비판(종합) | 연합뉴스"
     },
+    "source_fact:aacf6e06221d300938665d48": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02000806645610624",
+      "source": "이데일리",
+      "source_body_digest": "4b01c9de03a428588b730dbe8021880ee058597b188065d98c40fc2c65e1fe1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3da1cd3d59ced8ad490a216d732bdf7506598b906db101333ddd686f72622ea9",
+      "source_fact_keys": [
+        "source_fact:v1:101fdf2aa969d74255e1d36e32e197825ff8c9c2a838b7f8b500ead88c47989d",
+        "source_fact:v1:36df96009b987f786f537ae3e49065908150a2fca6cb9c2132c6e9a4a5d30a22",
+        "source_fact:v1:4423b81ad6eb5b7e1ba89386b589e22177788cc418c67795c929ba3ee802ee39",
+        "source_fact:v1:480bebbf78d73948e9a6c38c703731bb75666bafcb8338ed34d2b8bf70dc3889",
+        "source_fact:v1:4c07a647545cec3cc53d10a3436442ce373ada2738f0f0ff3d497ffb5b95dcc4",
+        "source_fact:v1:80072e5be426cbe7a390f227e5dd290878d908e37cd1f4eb95f6a6cf5a6562ae"
+      ],
+      "source_published_kst": "2026-10-07T05:39+09:00",
+      "title": "[美특징주]레나, 버크셔해서웨이 240만주 매입에 주가 4%↑"
+    },
     "source_fact:aaf413cdc2ae8d13e9ecd6ab": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -119843,6 +120190,26 @@
       ],
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "LIG가 찜한 부품사…“디와이씨, 방산 가치 주가에 안 담겼다”"
+    },
+    "source_fact:b039d237d339dce67aa4e3d2": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6312171",
+      "source": "뉴스1",
+      "source_body_digest": "b9f07f2bccf6e94bd0b965def0ea950869d2524378ecdbe127261ab9452d4f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04922142cb1c0c30a06bdc853e54784340a0f20bd4dad457cd8f6163322c2a58",
+      "source_fact_keys": [
+        "source_fact:v1:8223d71b825c46250fdf767fcd8203689cfc81c7a4f649200833699e66a2aa6a",
+        "source_fact:v1:a2051e6b10e40f9965379bbae8c7f400f4c1c4eb4975d607aa630a56590406b0",
+        "source_fact:v1:ce5ddcf12838ed14939b7a75c6e92e095179e091c5e753d4ee1363c99e0edac1",
+        "source_fact:v1:f6bb05a8e4ee5721e0f1660e9ecec7352efccc484dec43a07233d3c6bd4c56f8"
+      ],
+      "source_published_kst": "2026-10-07T05:22+09:00",
+      "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
     },
     "source_fact:b060c3a608aca11c63850b68": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
@@ -136140,6 +136507,28 @@
       "source_published_kst": "2026-10-06T17:38+09:00",
       "title": "[미국 주식 돋보기] 데이터센터 전력 구원투수 '비코' 고공행진"
     },
+    "source_fact:f216b0991327e8d7adcc7148": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02000806645610624",
+      "source": "이데일리",
+      "source_body_digest": "4b01c9de03a428588b730dbe8021880ee058597b188065d98c40fc2c65e1fe1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3da1cd3d59ced8ad490a216d732bdf7506598b906db101333ddd686f72622ea9",
+      "source_fact_keys": [
+        "source_fact:v1:101fdf2aa969d74255e1d36e32e197825ff8c9c2a838b7f8b500ead88c47989d",
+        "source_fact:v1:36df96009b987f786f537ae3e49065908150a2fca6cb9c2132c6e9a4a5d30a22",
+        "source_fact:v1:4423b81ad6eb5b7e1ba89386b589e22177788cc418c67795c929ba3ee802ee39",
+        "source_fact:v1:480bebbf78d73948e9a6c38c703731bb75666bafcb8338ed34d2b8bf70dc3889",
+        "source_fact:v1:4c07a647545cec3cc53d10a3436442ce373ada2738f0f0ff3d497ffb5b95dcc4",
+        "source_fact:v1:80072e5be426cbe7a390f227e5dd290878d908e37cd1f4eb95f6a6cf5a6562ae"
+      ],
+      "source_published_kst": "2026-10-07T05:39+09:00",
+      "title": "[美특징주]레나, 버크셔해서웨이 240만주 매입에 주가 4%↑"
+    },
     "source_fact:f226e51dc360f2533573c6bc": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
@@ -137672,6 +138061,28 @@
       ],
       "source_published_kst": "2026-10-06T11:36+09:00",
       "title": "신보·부산은행, K-콘텐츠 기업에 100억원 협약보증 공급"
+    },
+    "source_fact:f9c0ceea9f7b81265555fd82": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02000806645610624",
+      "source": "이데일리",
+      "source_body_digest": "4b01c9de03a428588b730dbe8021880ee058597b188065d98c40fc2c65e1fe1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3da1cd3d59ced8ad490a216d732bdf7506598b906db101333ddd686f72622ea9",
+      "source_fact_keys": [
+        "source_fact:v1:101fdf2aa969d74255e1d36e32e197825ff8c9c2a838b7f8b500ead88c47989d",
+        "source_fact:v1:36df96009b987f786f537ae3e49065908150a2fca6cb9c2132c6e9a4a5d30a22",
+        "source_fact:v1:4423b81ad6eb5b7e1ba89386b589e22177788cc418c67795c929ba3ee802ee39",
+        "source_fact:v1:480bebbf78d73948e9a6c38c703731bb75666bafcb8338ed34d2b8bf70dc3889",
+        "source_fact:v1:4c07a647545cec3cc53d10a3436442ce373ada2738f0f0ff3d497ffb5b95dcc4",
+        "source_fact:v1:80072e5be426cbe7a390f227e5dd290878d908e37cd1f4eb95f6a6cf5a6562ae"
+      ],
+      "source_published_kst": "2026-10-07T05:39+09:00",
+      "title": "[美특징주]레나, 버크셔해서웨이 240만주 매입에 주가 4%↑"
     },
     "source_fact:f9ddb537bf5432a420d9c256": {
       "first_seen_kst": "2026-10-06T17:14:48+09:00",
@@ -141925,6 +142336,28 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:20+09:00",
       "title": "\"명절에 지방 가면 여기부터?\"…10대 매출 200% 폭증한 곳"
+    },
+    "title:1742e0230d50803521183239": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02000806645610624",
+      "source": "이데일리",
+      "source_body_digest": "4b01c9de03a428588b730dbe8021880ee058597b188065d98c40fc2c65e1fe1b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3da1cd3d59ced8ad490a216d732bdf7506598b906db101333ddd686f72622ea9",
+      "source_fact_keys": [
+        "source_fact:v1:101fdf2aa969d74255e1d36e32e197825ff8c9c2a838b7f8b500ead88c47989d",
+        "source_fact:v1:36df96009b987f786f537ae3e49065908150a2fca6cb9c2132c6e9a4a5d30a22",
+        "source_fact:v1:4423b81ad6eb5b7e1ba89386b589e22177788cc418c67795c929ba3ee802ee39",
+        "source_fact:v1:480bebbf78d73948e9a6c38c703731bb75666bafcb8338ed34d2b8bf70dc3889",
+        "source_fact:v1:4c07a647545cec3cc53d10a3436442ce373ada2738f0f0ff3d497ffb5b95dcc4",
+        "source_fact:v1:80072e5be426cbe7a390f227e5dd290878d908e37cd1f4eb95f6a6cf5a6562ae"
+      ],
+      "source_published_kst": "2026-10-07T05:39+09:00",
+      "title": "[美특징주]레나, 버크셔해서웨이 240만주 매입에 주가 4%↑"
     },
     "title:174ef7f98842acc085231a6b": {
       "first_seen_kst": "2026-09-25T04:05:10+09:00",
@@ -146760,6 +147193,23 @@
       "source_published_kst": "2026-10-06T11:47+09:00",
       "title": "재경부 국감, '대미투자' 여야 질타…野 \"사업성 미달시 국정조사 사안\""
     },
+    "title:410f327304e0d5abf1773c16": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.hankyung.com/article/2026100647051",
+      "source": "한국경제",
+      "source_body_digest": "058ab52d414b23548ceb85349bed85e6cb2c57ffd64bafbccf4dd6793f71074a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f4c7ba9ec13c4bcffde173a5fabe7401813e5684304219428c837679abeeb12f",
+      "source_fact_keys": [
+        "source_fact:v1:58ea7ec9702c71fbd8db61a68e395a6140c7707c1cdc777a8798fc146de3d3ed"
+      ],
+      "source_published_kst": "2026-10-06T15:58+09:00",
+      "title": "삼성증권, 발행어음 특판 흥행…다양한 금리로 성장 지원"
+    },
     "title:411086a05e91cef691b41511": {
       "first_seen_kst": "2026-10-05T13:39:56+09:00",
       "lanes": {
@@ -151253,6 +151703,26 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T06:25+09:00",
       "title": "이번주 크레딧 2조원 발행…파라다이스 수요예측도 | 연합뉴스"
+    },
+    "title:68a5ef811cc0517dd9ee21ba": {
+      "first_seen_kst": "2026-10-07T05:59:02+09:00",
+      "lanes": {
+        "live": "2026-10-07T05:59:02+09:00"
+      },
+      "last_seen_kst": "2026-10-07T05:59:02+09:00",
+      "link": "https://www.news1.kr/world/international-economy/6312171",
+      "source": "뉴스1",
+      "source_body_digest": "b9f07f2bccf6e94bd0b965def0ea950869d2524378ecdbe127261ab9452d4f12",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:04922142cb1c0c30a06bdc853e54784340a0f20bd4dad457cd8f6163322c2a58",
+      "source_fact_keys": [
+        "source_fact:v1:8223d71b825c46250fdf767fcd8203689cfc81c7a4f649200833699e66a2aa6a",
+        "source_fact:v1:a2051e6b10e40f9965379bbae8c7f400f4c1c4eb4975d607aa630a56590406b0",
+        "source_fact:v1:ce5ddcf12838ed14939b7a75c6e92e095179e091c5e753d4ee1363c99e0edac1",
+        "source_fact:v1:f6bb05a8e4ee5721e0f1660e9ecec7352efccc484dec43a07233d3c6bd4c56f8"
+      ],
+      "source_published_kst": "2026-10-07T05:22+09:00",
+      "title": "국제유가 보합…중동 수출 증가·G7 비축유 방출에 공급 우려 완화"
     },
     "title:68ba09e7067b35a632580f26": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -168530,5 +169000,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T05:33:37+09:00"
+  "updated_at_kst": "2026-10-07T05:59:02+09:00"
 }
