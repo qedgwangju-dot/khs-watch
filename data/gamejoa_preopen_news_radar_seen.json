@@ -1249,22 +1249,22 @@
     "event:357501917a7f635b2fa6a147": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
       "lanes": {
-        "live": "2026-10-06T17:35:32+09:00",
+        "live": "2026-10-06T18:16:47+09:00",
         "preopen": "2026-10-06T06:36:31+09:00"
       },
-      "last_seen_kst": "2026-10-06T17:35:32+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003814764",
-      "source": "뉴시스",
-      "source_body_digest": "5d606c567289d3e337c00bb0ff1319e571480ef7ed4d31fc9f87f438a6a9b44f",
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006142500003",
+      "source": "연합뉴스",
+      "source_body_digest": "6a679b7784cd8f9030ce04922dd28a4ea42a3273513a007fd3e385722efc291c",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:70cf6393673fec9f0fe4970d2e05d1fbb4539df908ed4383582af5a49f14ed54",
+      "source_fact_identity": "source_facts:v1:d9f2a7057d3d69f74fc72d13e2e010e8c7904cda598147f725796ef800b69d72",
       "source_fact_keys": [
-        "source_fact:v1:5789507f8956a3c398b812c082e3694eb6ea8458357215929c71371b31c16244",
-        "source_fact:v1:69e45acd6d850dba9b7d9953b155d3b9638d9af4d90cd8daf5d00be7f6868af3",
-        "source_fact:v1:f86b04bd94651e9de0852b6b1c6af548739328a8d77aa71a79c7292ebdf3e13a"
+        "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
+        "source_fact:v1:759bfb9f7b300de392dcdb9f8eaa6d110a3ad7cd48aa03454caf4da0bacc1173",
+        "source_fact:v1:f63195f4e7e910f99ace1bfa26f4de088e378a5033e5c68bdf10bc9584944e8a"
       ],
-      "source_published_kst": "2026-10-06T09:53+09:00",
-      "title": "예멘 후티군 사우디 전역 미사일 무인기공격.. 사우디 군은 홍해 승리 주장"
+      "source_published_kst": "2026-10-06T16:02+09:00",
+      "title": "후티 사우디 공격에…현대차 \"공장 건설현장·직원 피해 없어\" | 연합뉴스"
     },
     "event:35c61e03fc529e43f46f2a91": {
       "first_seen_kst": "2026-10-02T12:31:36+09:00",
@@ -2562,6 +2562,21 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T06:00+09:00",
       "title": "1년 내내 오른 공사비 정점 찍나…아직 불안한 변수는"
+    },
+    "event:71fff21fa8768b4245fb0c72": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815157",
+      "source": "뉴시스",
+      "source_body_digest": "d8c591a6a9ec65ee48c7449dd669a7324d5d1ac40be1d9c07786bc85bc97dadd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:46+09:00",
+      "title": "메모리 반도체 호황 속 삼성전자 완제품은 '고전'…DX부문 3분기 실적 어떻게"
     },
     "event:72032c3384db00d8cebbcccc": {
       "first_seen_kst": "2026-09-18T06:33:53+09:00",
@@ -8943,6 +8958,27 @@
       "source_published_kst": "2026-10-05T11:25+09:00",
       "title": "사우디, 11월 아시아 공급용 원유가 대폭 인하 | 연합뉴스"
     },
+    "fact:521fba6d7f0514e77eaf622a": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632858",
+      "source": "이투데이",
+      "source_body_digest": "8b43c7d189f7d34121af6dc8fbe786097497b233e6cb073b5636820354078c55",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483b1504baacdad7d0060d01ef0c50612b080260cc2b90566ed44d2170428818",
+      "source_fact_keys": [
+        "source_fact:v1:027abeba2af6509f813581b07570c5965e40e2b67f3aa707e86f69f654a84d47",
+        "source_fact:v1:5f46ed92fcfc4ccfb02af639a33d4238f6a1df68de285d49b87a72701b13ec5c",
+        "source_fact:v1:63536a2f966b76e348c644aa375bfe355cce12ea4eec74e75092bc932bdfe794",
+        "source_fact:v1:ba5a97b13640bd0606c9e4e154ff7c7356232fd3cdf51477122cecc611c7b0a8",
+        "source_fact:v1:ce76f5e505c72603cba1a2eb0f5b1369baae3393f465bbebae8c1f13a42aca9d"
+      ],
+      "source_published_kst": "2026-10-06T16:08+09:00",
+      "title": "LG엔솔, 11개 분기 만에 매출 8조 복귀하나…북미 ESS가 견인"
+    },
     "fact:5250bc3ef9e16d89e82d4e38": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
       "lanes": {
@@ -10106,6 +10142,31 @@
       ],
       "source_published_kst": "2026-10-06T11:21+09:00",
       "title": "넥스틴, SK하이닉스와 254억 규모 공급계약"
+    },
+    "fact:71035fe693c468754672891f": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815599",
+      "source": "뉴시스",
+      "source_body_digest": "b8a057c8ce8aed11a580997e744e7c13908853522ef385f19837e6a63380047b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca28d438ea4649f3007dcfef40b9bffe1e565ae8ea6cf324c55438730d2c635",
+      "source_fact_keys": [
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1d72f166ad9827c11491c100685f1633c4c0925ba9e75b239795b6e2265644c9",
+        "source_fact:v1:9d6c9c163d4db4cf4ccacf3da7de634a42689fa9353abc85d013bf4bebeff2c3",
+        "source_fact:v1:a74dc71773614ca7f76829a27aebbb1adb5b3318ab529a72bd54d8f76e9f85ac",
+        "source_fact:v1:baab8ed504e20d00740766dda13d46dcb5bc01b7980df0ffc596a5235bf69b8a",
+        "source_fact:v1:c1a8992dea846528fd6793f56a2948ae11efcbd42e4de2ed7ede55309a0731e0",
+        "source_fact:v1:c8add69e476474bb3326d62aad61f2609f72b941bd63c6ac4a0acfd475b82f01",
+        "source_fact:v1:d416aab72e6bc7e81342d7de989848783c726fc0062368b066812b49e927a265",
+        "source_fact:v1:d4db6638141f5939363f633f465ade5635fbed42ea869394270aa76cab455377"
+      ],
+      "source_published_kst": "2026-10-06T16:00+09:00",
+      "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
     },
     "fact:71082dad599362d30584d5d0": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -11926,6 +11987,31 @@
       "source_published_kst": "2026-10-06T14:19+09:00",
       "title": "비주택 용도변경 공급 ‘순항’…LH, 매입 신청 2125가구로 목표 초과"
     },
+    "fact:a642d4ead0a394b2932875da": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815950",
+      "source": "뉴시스",
+      "source_body_digest": "00418c464d61c2eb1c89ff83772b39e0564f8a2c647024c902aa692fa1ab30ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82503a11c5e4f3c686c129cd088b965abaa23959c37f99168a679e8d30af6c69",
+      "source_fact_keys": [
+        "source_fact:v1:17e22071d88b0c7db215b7c3092371bbfbe1ad3fe5299ac8f7cf8f52fd27cd62",
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1db0776702d1a49c4c57db18b9b51aa91edfe2a55f2e6ee097f2c15b2e8622d9",
+        "source_fact:v1:20ff16b80862f23e192b38a65f5e283a4e2190e8875a0b5ecc10b1e41cf25a48",
+        "source_fact:v1:47695e7f5e2edf64bb319b28da86cbecdf37ce11a2cc7e0407778d317febc9e5",
+        "source_fact:v1:47aff2de693b3498906b0ba50d0bb57e90f88fff9cefc64e246d2e299b37b797",
+        "source_fact:v1:c2e6d5c6d4f3d35af35a4ba2edc967f03ffef37c2f14a026acb6c9285fba526e",
+        "source_fact:v1:e3df648da01130c532966f369479d8d75f7763d3d0016e02bc20daf6c0e69f1c",
+        "source_fact:v1:ed9f9c972b0361f5de96157c321fba8ee967d7b9baef5590190797cb23878dee"
+      ],
+      "source_published_kst": "2026-10-06T16:09+09:00",
+      "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
+    },
     "fact:a6a981dbfb6bb33cb08f4db4": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -13053,6 +13139,23 @@
       "source_published_kst": "2026-10-06T14:11+09:00",
       "title": "장기임대 늘리겠다는데⋯기업형 임대는 여전히 ‘사업성 벽’"
     },
+    "fact:c9a9a71bdd4f31e7694efd7c": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815931",
+      "source": "뉴시스",
+      "source_body_digest": "3501370aef388f7b3c8c8d607bd42e815d9c6cbde4ecf12237cec56df4a75f0e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c7df3a4cc38a025657ceb4ed851061873fdf91803bb1590cbbb7a3294466884",
+      "source_fact_keys": [
+        "source_fact:v1:7942e88d155163179162122893ede22467dfff8f1a1797b82b7a09d9d2a5dab2"
+      ],
+      "source_published_kst": "2026-10-06T16:07+09:00",
+      "title": "불광5구역 21년 만에 철거 시작…2406가구 들어선다"
+    },
     "fact:cb67e7f4494ecfe19dbcfccf": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -13821,6 +13924,25 @@
       ],
       "source_published_kst": "2026-10-06T14:42+09:00",
       "title": "中, 첫 해저 CO₂ 주입 플랫폼 건설…연 100만t 해저 저장"
+    },
+    "fact:e0fe57cd5e71adc9d4715d7e": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006142500003",
+      "source": "연합뉴스",
+      "source_body_digest": "6a679b7784cd8f9030ce04922dd28a4ea42a3273513a007fd3e385722efc291c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9f2a7057d3d69f74fc72d13e2e010e8c7904cda598147f725796ef800b69d72",
+      "source_fact_keys": [
+        "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
+        "source_fact:v1:759bfb9f7b300de392dcdb9f8eaa6d110a3ad7cd48aa03454caf4da0bacc1173",
+        "source_fact:v1:f63195f4e7e910f99ace1bfa26f4de088e378a5033e5c68bdf10bc9584944e8a"
+      ],
+      "source_published_kst": "2026-10-06T16:02+09:00",
+      "title": "후티 사우디 공격에…현대차 \"공장 건설현장·직원 피해 없어\" | 연합뉴스"
     },
     "fact:e31ce72cb1f09b6a6f995d5c": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
@@ -20266,6 +20388,21 @@
       "source": "연합뉴스",
       "title": "LS일렉트릭-SB글로벌, 전남 동부권 AIDC 전력인프라 공동개발 | 연합뉴스"
     },
+    "link:3bea90d22af800a9216f2ecb": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815157",
+      "source": "뉴시스",
+      "source_body_digest": "d8c591a6a9ec65ee48c7449dd669a7324d5d1ac40be1d9c07786bc85bc97dadd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:46+09:00",
+      "title": "메모리 반도체 호황 속 삼성전자 완제품은 '고전'…DX부문 3분기 실적 어떻게"
+    },
     "link:3becc4d00c7019c007160e2d": {
       "first_seen_kst": "2026-10-06T15:31:24+09:00",
       "lanes": {
@@ -24477,6 +24614,25 @@
       "source": "이투데이",
       "title": "GC녹십자, 국내외 학회 참가해 독자 mRNA-LNP 플랫폼 연구 성과 공개"
     },
+    "link:660ee4ef7591ae0cb0a3f826": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006142500003",
+      "source": "연합뉴스",
+      "source_body_digest": "6a679b7784cd8f9030ce04922dd28a4ea42a3273513a007fd3e385722efc291c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9f2a7057d3d69f74fc72d13e2e010e8c7904cda598147f725796ef800b69d72",
+      "source_fact_keys": [
+        "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
+        "source_fact:v1:759bfb9f7b300de392dcdb9f8eaa6d110a3ad7cd48aa03454caf4da0bacc1173",
+        "source_fact:v1:f63195f4e7e910f99ace1bfa26f4de088e378a5033e5c68bdf10bc9584944e8a"
+      ],
+      "source_published_kst": "2026-10-06T16:02+09:00",
+      "title": "후티 사우디 공격에…현대차 \"공장 건설현장·직원 피해 없어\" | 연합뉴스"
+    },
     "link:662aff53f21e1f9c22355e3b": {
       "first_seen_kst": "2026-10-01T23:00:18+09:00",
       "lanes": {
@@ -27948,6 +28104,31 @@
       "source": "이데일리",
       "title": "SK하이닉스, 협력사 R&D 실패도 보상…개발비 최대 50% 선지원"
     },
+    "link:8d07d8ae4a43054bcd3fe4a8": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815950",
+      "source": "뉴시스",
+      "source_body_digest": "00418c464d61c2eb1c89ff83772b39e0564f8a2c647024c902aa692fa1ab30ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82503a11c5e4f3c686c129cd088b965abaa23959c37f99168a679e8d30af6c69",
+      "source_fact_keys": [
+        "source_fact:v1:17e22071d88b0c7db215b7c3092371bbfbe1ad3fe5299ac8f7cf8f52fd27cd62",
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1db0776702d1a49c4c57db18b9b51aa91edfe2a55f2e6ee097f2c15b2e8622d9",
+        "source_fact:v1:20ff16b80862f23e192b38a65f5e283a4e2190e8875a0b5ecc10b1e41cf25a48",
+        "source_fact:v1:47695e7f5e2edf64bb319b28da86cbecdf37ce11a2cc7e0407778d317febc9e5",
+        "source_fact:v1:47aff2de693b3498906b0ba50d0bb57e90f88fff9cefc64e246d2e299b37b797",
+        "source_fact:v1:c2e6d5c6d4f3d35af35a4ba2edc967f03ffef37c2f14a026acb6c9285fba526e",
+        "source_fact:v1:e3df648da01130c532966f369479d8d75f7763d3d0016e02bc20daf6c0e69f1c",
+        "source_fact:v1:ed9f9c972b0361f5de96157c321fba8ee967d7b9baef5590190797cb23878dee"
+      ],
+      "source_published_kst": "2026-10-06T16:09+09:00",
+      "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
+    },
     "link:8d41d86c04bd168595fe741c": {
       "first_seen_kst": "2026-10-02T09:01:13+09:00",
       "lanes": {
@@ -28558,6 +28739,27 @@
       "link": "https://www.mk.co.kr/news/stock/12155669",
       "source": "매일경제",
       "title": "2800조 굴리는 日연기금 \"국민연금 노하우 배우고파\""
+    },
+    "link:9358f06720719dfc907d65bc": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632858",
+      "source": "이투데이",
+      "source_body_digest": "8b43c7d189f7d34121af6dc8fbe786097497b233e6cb073b5636820354078c55",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483b1504baacdad7d0060d01ef0c50612b080260cc2b90566ed44d2170428818",
+      "source_fact_keys": [
+        "source_fact:v1:027abeba2af6509f813581b07570c5965e40e2b67f3aa707e86f69f654a84d47",
+        "source_fact:v1:5f46ed92fcfc4ccfb02af639a33d4238f6a1df68de285d49b87a72701b13ec5c",
+        "source_fact:v1:63536a2f966b76e348c644aa375bfe355cce12ea4eec74e75092bc932bdfe794",
+        "source_fact:v1:ba5a97b13640bd0606c9e4e154ff7c7356232fd3cdf51477122cecc611c7b0a8",
+        "source_fact:v1:ce76f5e505c72603cba1a2eb0f5b1369baae3393f465bbebae8c1f13a42aca9d"
+      ],
+      "source_published_kst": "2026-10-06T16:08+09:00",
+      "title": "LG엔솔, 11개 분기 만에 매출 8조 복귀하나…북미 ESS가 견인"
     },
     "link:935b0d8326db0739f29743a2": {
       "first_seen_kst": "2026-10-04T15:45:24+09:00",
@@ -32979,6 +33181,21 @@
       "source": "이투데이",
       "title": "구미시, LB세미콘 '전력반도체 증설투자' 유치"
     },
+    "link:c1ca75ce6c25ec270c1a70f5": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632874",
+      "source": "이투데이",
+      "source_body_digest": "ce14ee23ecabfb88f132aabe504de1b262cb9fc35a430b6f6580d4292bb2ac8d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T16:01+09:00",
+      "title": "롯데백화점, 외국인 매출 첫 1조 달성…신세계·현대도 눈앞 [종합]"
+    },
     "link:c1ed384d513864da47c39c55": {
       "first_seen_kst": "2026-09-30T22:18:36+09:00",
       "lanes": {
@@ -35125,6 +35342,31 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "제이엘케이 \"2대 주주 KB운용 지분 5.09→6.56% 확대\""
+    },
+    "link:d869535486a577c944359b50": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815599",
+      "source": "뉴시스",
+      "source_body_digest": "b8a057c8ce8aed11a580997e744e7c13908853522ef385f19837e6a63380047b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca28d438ea4649f3007dcfef40b9bffe1e565ae8ea6cf324c55438730d2c635",
+      "source_fact_keys": [
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1d72f166ad9827c11491c100685f1633c4c0925ba9e75b239795b6e2265644c9",
+        "source_fact:v1:9d6c9c163d4db4cf4ccacf3da7de634a42689fa9353abc85d013bf4bebeff2c3",
+        "source_fact:v1:a74dc71773614ca7f76829a27aebbb1adb5b3318ab529a72bd54d8f76e9f85ac",
+        "source_fact:v1:baab8ed504e20d00740766dda13d46dcb5bc01b7980df0ffc596a5235bf69b8a",
+        "source_fact:v1:c1a8992dea846528fd6793f56a2948ae11efcbd42e4de2ed7ede55309a0731e0",
+        "source_fact:v1:c8add69e476474bb3326d62aad61f2609f72b941bd63c6ac4a0acfd475b82f01",
+        "source_fact:v1:d416aab72e6bc7e81342d7de989848783c726fc0062368b066812b49e927a265",
+        "source_fact:v1:d4db6638141f5939363f633f465ade5635fbed42ea869394270aa76cab455377"
+      ],
+      "source_published_kst": "2026-10-06T16:00+09:00",
+      "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
     },
     "link:d8bcf9c804b0e1a2ad03dac9": {
       "first_seen_kst": "2026-10-02T09:58:25+09:00",
@@ -37748,6 +37990,23 @@
       "source_published_kst": "2026-10-06T11:31+09:00",
       "title": "[2026 국감]산업부, 대미투자 국익 최우선 추진…호남 반도체 등 1600조 속도전"
     },
+    "link:f4744b26c08046bcab20cb0e": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815931",
+      "source": "뉴시스",
+      "source_body_digest": "3501370aef388f7b3c8c8d607bd42e815d9c6cbde4ecf12237cec56df4a75f0e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c7df3a4cc38a025657ceb4ed851061873fdf91803bb1590cbbb7a3294466884",
+      "source_fact_keys": [
+        "source_fact:v1:7942e88d155163179162122893ede22467dfff8f1a1797b82b7a09d9d2a5dab2"
+      ],
+      "source_published_kst": "2026-10-06T16:07+09:00",
+      "title": "불광5구역 21년 만에 철거 시작…2406가구 들어선다"
+    },
     "link:f47f262bf4e9c93f8fb2257d": {
       "first_seen_kst": "2026-09-22T16:30:20+09:00",
       "lanes": {
@@ -40024,6 +40283,21 @@
       "source_published_kst": "2026-10-06T12:12+09:00",
       "title": "경찰, 삼성전자 노조위원장 '장인 업체 일감 몰아주기' 의혹 수사 착수"
     },
+    "original:0ea2cc80f4641de16de3998a": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632874",
+      "source": "이투데이",
+      "source_body_digest": "ce14ee23ecabfb88f132aabe504de1b262cb9fc35a430b6f6580d4292bb2ac8d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T16:01+09:00",
+      "title": "롯데백화점, 외국인 매출 첫 1조 달성…신세계·현대도 눈앞 [종합]"
+    },
     "original:0ea40c6b34003aa700f98314": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
       "lanes": {
@@ -40150,6 +40424,27 @@
       "link": "https://www.yna.co.kr/view/MYH20261002004000038",
       "source": "연합뉴스",
       "title": "[속보] 9월 물가 2.9% 상승…한 달 만에 2%대로 | 연합뉴스"
+    },
+    "original:0fdc7281fcc8251337c029f1": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632858",
+      "source": "이투데이",
+      "source_body_digest": "8b43c7d189f7d34121af6dc8fbe786097497b233e6cb073b5636820354078c55",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483b1504baacdad7d0060d01ef0c50612b080260cc2b90566ed44d2170428818",
+      "source_fact_keys": [
+        "source_fact:v1:027abeba2af6509f813581b07570c5965e40e2b67f3aa707e86f69f654a84d47",
+        "source_fact:v1:5f46ed92fcfc4ccfb02af639a33d4238f6a1df68de285d49b87a72701b13ec5c",
+        "source_fact:v1:63536a2f966b76e348c644aa375bfe355cce12ea4eec74e75092bc932bdfe794",
+        "source_fact:v1:ba5a97b13640bd0606c9e4e154ff7c7356232fd3cdf51477122cecc611c7b0a8",
+        "source_fact:v1:ce76f5e505c72603cba1a2eb0f5b1369baae3393f465bbebae8c1f13a42aca9d"
+      ],
+      "source_published_kst": "2026-10-06T16:08+09:00",
+      "title": "LG엔솔, 11개 분기 만에 매출 8조 복귀하나…북미 ESS가 견인"
     },
     "original:0fe968924c9a415d8b356c31": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
@@ -47202,6 +47497,25 @@
       "source": "이투데이",
       "title": "[속보] 국제유가, 급등⋯브렌트유 4.37%↑"
     },
+    "original:5dd2341574a4a8769fa0e02e": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006142500003",
+      "source": "연합뉴스",
+      "source_body_digest": "6a679b7784cd8f9030ce04922dd28a4ea42a3273513a007fd3e385722efc291c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9f2a7057d3d69f74fc72d13e2e010e8c7904cda598147f725796ef800b69d72",
+      "source_fact_keys": [
+        "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
+        "source_fact:v1:759bfb9f7b300de392dcdb9f8eaa6d110a3ad7cd48aa03454caf4da0bacc1173",
+        "source_fact:v1:f63195f4e7e910f99ace1bfa26f4de088e378a5033e5c68bdf10bc9584944e8a"
+      ],
+      "source_published_kst": "2026-10-06T16:02+09:00",
+      "title": "후티 사우디 공격에…현대차 \"공장 건설현장·직원 피해 없어\" | 연합뉴스"
+    },
     "original:5dd2ec72383d3ab46a873efd": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
       "lanes": {
@@ -49640,6 +49954,23 @@
       "source": "이데일리",
       "title": "ETF 27종 토큰화…\"진짜 경쟁은 유통시장\""
     },
+    "original:76d5ce1914735dc823dd16bc": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815931",
+      "source": "뉴시스",
+      "source_body_digest": "3501370aef388f7b3c8c8d607bd42e815d9c6cbde4ecf12237cec56df4a75f0e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c7df3a4cc38a025657ceb4ed851061873fdf91803bb1590cbbb7a3294466884",
+      "source_fact_keys": [
+        "source_fact:v1:7942e88d155163179162122893ede22467dfff8f1a1797b82b7a09d9d2a5dab2"
+      ],
+      "source_published_kst": "2026-10-06T16:07+09:00",
+      "title": "불광5구역 21년 만에 철거 시작…2406가구 들어선다"
+    },
     "original:772725fffcd2a9b5bdf57699": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
       "lanes": {
@@ -50065,6 +50396,21 @@
       "link": "https://www.yna.co.kr/view/AKR20261001170100008",
       "source": "연합뉴스",
       "title": "\"10주만 사줘\"…다올증권, AI-증권계좌 연결 서비스 출시 | 연합뉴스"
+    },
+    "original:7c51c193a9794c535758bacb": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815157",
+      "source": "뉴시스",
+      "source_body_digest": "d8c591a6a9ec65ee48c7449dd669a7324d5d1ac40be1d9c07786bc85bc97dadd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:46+09:00",
+      "title": "메모리 반도체 호황 속 삼성전자 완제품은 '고전'…DX부문 3분기 실적 어떻게"
     },
     "original:7c670079c735e674746e698c": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -53457,6 +53803,31 @@
       "source_published_kst": "2026-10-04T01:05+09:00",
       "title": "예멘 수도서 강한 폭음…사우디 아람코 시설에서도 화염"
     },
+    "original:a259b473cdb82d9b4f82cdc0": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815599",
+      "source": "뉴시스",
+      "source_body_digest": "b8a057c8ce8aed11a580997e744e7c13908853522ef385f19837e6a63380047b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca28d438ea4649f3007dcfef40b9bffe1e565ae8ea6cf324c55438730d2c635",
+      "source_fact_keys": [
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1d72f166ad9827c11491c100685f1633c4c0925ba9e75b239795b6e2265644c9",
+        "source_fact:v1:9d6c9c163d4db4cf4ccacf3da7de634a42689fa9353abc85d013bf4bebeff2c3",
+        "source_fact:v1:a74dc71773614ca7f76829a27aebbb1adb5b3318ab529a72bd54d8f76e9f85ac",
+        "source_fact:v1:baab8ed504e20d00740766dda13d46dcb5bc01b7980df0ffc596a5235bf69b8a",
+        "source_fact:v1:c1a8992dea846528fd6793f56a2948ae11efcbd42e4de2ed7ede55309a0731e0",
+        "source_fact:v1:c8add69e476474bb3326d62aad61f2609f72b941bd63c6ac4a0acfd475b82f01",
+        "source_fact:v1:d416aab72e6bc7e81342d7de989848783c726fc0062368b066812b49e927a265",
+        "source_fact:v1:d4db6638141f5939363f633f465ade5635fbed42ea869394270aa76cab455377"
+      ],
+      "source_published_kst": "2026-10-06T16:00+09:00",
+      "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
+    },
     "original:a2677557d8dbe6b12640b516": {
       "first_seen_kst": "2026-10-03T01:16:26+09:00",
       "lanes": {
@@ -54774,6 +55145,31 @@
       "link": "https://www.etnews.com/20260922000221",
       "source": "전자신문",
       "title": "한미반도체, AI 반도체 2.5D 패키징 장비 'FC 본더 75' 첫 출하"
+    },
+    "original:b1fceb569276aff516ab75ac": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815950",
+      "source": "뉴시스",
+      "source_body_digest": "00418c464d61c2eb1c89ff83772b39e0564f8a2c647024c902aa692fa1ab30ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82503a11c5e4f3c686c129cd088b965abaa23959c37f99168a679e8d30af6c69",
+      "source_fact_keys": [
+        "source_fact:v1:17e22071d88b0c7db215b7c3092371bbfbe1ad3fe5299ac8f7cf8f52fd27cd62",
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1db0776702d1a49c4c57db18b9b51aa91edfe2a55f2e6ee097f2c15b2e8622d9",
+        "source_fact:v1:20ff16b80862f23e192b38a65f5e283a4e2190e8875a0b5ecc10b1e41cf25a48",
+        "source_fact:v1:47695e7f5e2edf64bb319b28da86cbecdf37ce11a2cc7e0407778d317febc9e5",
+        "source_fact:v1:47aff2de693b3498906b0ba50d0bb57e90f88fff9cefc64e246d2e299b37b797",
+        "source_fact:v1:c2e6d5c6d4f3d35af35a4ba2edc967f03ffef37c2f14a026acb6c9285fba526e",
+        "source_fact:v1:e3df648da01130c532966f369479d8d75f7763d3d0016e02bc20daf6c0e69f1c",
+        "source_fact:v1:ed9f9c972b0361f5de96157c321fba8ee967d7b9baef5590190797cb23878dee"
+      ],
+      "source_published_kst": "2026-10-06T16:09+09:00",
+      "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
     },
     "original:b24a90c5aaf945cb2e82e738": {
       "first_seen_kst": "2026-10-05T07:34:11+09:00",
@@ -61727,6 +62123,31 @@
       "source_published_kst": "2026-10-05T09:06+09:00",
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     },
+    "source_fact:004d6a705c391c5ad6bc0058": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815599",
+      "source": "뉴시스",
+      "source_body_digest": "b8a057c8ce8aed11a580997e744e7c13908853522ef385f19837e6a63380047b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca28d438ea4649f3007dcfef40b9bffe1e565ae8ea6cf324c55438730d2c635",
+      "source_fact_keys": [
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1d72f166ad9827c11491c100685f1633c4c0925ba9e75b239795b6e2265644c9",
+        "source_fact:v1:9d6c9c163d4db4cf4ccacf3da7de634a42689fa9353abc85d013bf4bebeff2c3",
+        "source_fact:v1:a74dc71773614ca7f76829a27aebbb1adb5b3318ab529a72bd54d8f76e9f85ac",
+        "source_fact:v1:baab8ed504e20d00740766dda13d46dcb5bc01b7980df0ffc596a5235bf69b8a",
+        "source_fact:v1:c1a8992dea846528fd6793f56a2948ae11efcbd42e4de2ed7ede55309a0731e0",
+        "source_fact:v1:c8add69e476474bb3326d62aad61f2609f72b941bd63c6ac4a0acfd475b82f01",
+        "source_fact:v1:d416aab72e6bc7e81342d7de989848783c726fc0062368b066812b49e927a265",
+        "source_fact:v1:d4db6638141f5939363f633f465ade5635fbed42ea869394270aa76cab455377"
+      ],
+      "source_published_kst": "2026-10-06T16:00+09:00",
+      "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
+    },
     "source_fact:0086d3c485895968a04e8311": {
       "first_seen_kst": "2026-10-06T01:05:54+09:00",
       "lanes": {
@@ -64084,6 +64505,31 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:0dcccc79742c2a481879a3eb": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815950",
+      "source": "뉴시스",
+      "source_body_digest": "00418c464d61c2eb1c89ff83772b39e0564f8a2c647024c902aa692fa1ab30ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82503a11c5e4f3c686c129cd088b965abaa23959c37f99168a679e8d30af6c69",
+      "source_fact_keys": [
+        "source_fact:v1:17e22071d88b0c7db215b7c3092371bbfbe1ad3fe5299ac8f7cf8f52fd27cd62",
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1db0776702d1a49c4c57db18b9b51aa91edfe2a55f2e6ee097f2c15b2e8622d9",
+        "source_fact:v1:20ff16b80862f23e192b38a65f5e283a4e2190e8875a0b5ecc10b1e41cf25a48",
+        "source_fact:v1:47695e7f5e2edf64bb319b28da86cbecdf37ce11a2cc7e0407778d317febc9e5",
+        "source_fact:v1:47aff2de693b3498906b0ba50d0bb57e90f88fff9cefc64e246d2e299b37b797",
+        "source_fact:v1:c2e6d5c6d4f3d35af35a4ba2edc967f03ffef37c2f14a026acb6c9285fba526e",
+        "source_fact:v1:e3df648da01130c532966f369479d8d75f7763d3d0016e02bc20daf6c0e69f1c",
+        "source_fact:v1:ed9f9c972b0361f5de96157c321fba8ee967d7b9baef5590190797cb23878dee"
+      ],
+      "source_published_kst": "2026-10-06T16:09+09:00",
+      "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
+    },
     "source_fact:0e4497a88145848d20300177": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -65378,6 +65824,31 @@
       ],
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "수도권은 집 부족…지방은 수요 부족해 공공주택 착공 연기 | 연합뉴스"
+    },
+    "source_fact:1672ed718089c268facd45f9": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815599",
+      "source": "뉴시스",
+      "source_body_digest": "b8a057c8ce8aed11a580997e744e7c13908853522ef385f19837e6a63380047b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca28d438ea4649f3007dcfef40b9bffe1e565ae8ea6cf324c55438730d2c635",
+      "source_fact_keys": [
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1d72f166ad9827c11491c100685f1633c4c0925ba9e75b239795b6e2265644c9",
+        "source_fact:v1:9d6c9c163d4db4cf4ccacf3da7de634a42689fa9353abc85d013bf4bebeff2c3",
+        "source_fact:v1:a74dc71773614ca7f76829a27aebbb1adb5b3318ab529a72bd54d8f76e9f85ac",
+        "source_fact:v1:baab8ed504e20d00740766dda13d46dcb5bc01b7980df0ffc596a5235bf69b8a",
+        "source_fact:v1:c1a8992dea846528fd6793f56a2948ae11efcbd42e4de2ed7ede55309a0731e0",
+        "source_fact:v1:c8add69e476474bb3326d62aad61f2609f72b941bd63c6ac4a0acfd475b82f01",
+        "source_fact:v1:d416aab72e6bc7e81342d7de989848783c726fc0062368b066812b49e927a265",
+        "source_fact:v1:d4db6638141f5939363f633f465ade5635fbed42ea869394270aa76cab455377"
+      ],
+      "source_published_kst": "2026-10-06T16:00+09:00",
+      "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
     },
     "source_fact:17200814257079d16747caa8": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
@@ -66965,6 +67436,31 @@
       ],
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
+    "source_fact:21880dc661ae7e59c5a2fb6b": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815950",
+      "source": "뉴시스",
+      "source_body_digest": "00418c464d61c2eb1c89ff83772b39e0564f8a2c647024c902aa692fa1ab30ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82503a11c5e4f3c686c129cd088b965abaa23959c37f99168a679e8d30af6c69",
+      "source_fact_keys": [
+        "source_fact:v1:17e22071d88b0c7db215b7c3092371bbfbe1ad3fe5299ac8f7cf8f52fd27cd62",
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1db0776702d1a49c4c57db18b9b51aa91edfe2a55f2e6ee097f2c15b2e8622d9",
+        "source_fact:v1:20ff16b80862f23e192b38a65f5e283a4e2190e8875a0b5ecc10b1e41cf25a48",
+        "source_fact:v1:47695e7f5e2edf64bb319b28da86cbecdf37ce11a2cc7e0407778d317febc9e5",
+        "source_fact:v1:47aff2de693b3498906b0ba50d0bb57e90f88fff9cefc64e246d2e299b37b797",
+        "source_fact:v1:c2e6d5c6d4f3d35af35a4ba2edc967f03ffef37c2f14a026acb6c9285fba526e",
+        "source_fact:v1:e3df648da01130c532966f369479d8d75f7763d3d0016e02bc20daf6c0e69f1c",
+        "source_fact:v1:ed9f9c972b0361f5de96157c321fba8ee967d7b9baef5590190797cb23878dee"
+      ],
+      "source_published_kst": "2026-10-06T16:09+09:00",
+      "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
     },
     "source_fact:21fe3124d3191eb2d6b09b84": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -68773,6 +69269,31 @@
       "source_published_kst": "2026-10-06T11:14+09:00",
       "title": "JW중외제약, 유럽당뇨병학회서 '엠파가드' 임상 3상 발표…3제 요법 유효성 입증"
     },
+    "source_fact:2d9b9fc8deb24a2bc5918f95": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815599",
+      "source": "뉴시스",
+      "source_body_digest": "b8a057c8ce8aed11a580997e744e7c13908853522ef385f19837e6a63380047b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca28d438ea4649f3007dcfef40b9bffe1e565ae8ea6cf324c55438730d2c635",
+      "source_fact_keys": [
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1d72f166ad9827c11491c100685f1633c4c0925ba9e75b239795b6e2265644c9",
+        "source_fact:v1:9d6c9c163d4db4cf4ccacf3da7de634a42689fa9353abc85d013bf4bebeff2c3",
+        "source_fact:v1:a74dc71773614ca7f76829a27aebbb1adb5b3318ab529a72bd54d8f76e9f85ac",
+        "source_fact:v1:baab8ed504e20d00740766dda13d46dcb5bc01b7980df0ffc596a5235bf69b8a",
+        "source_fact:v1:c1a8992dea846528fd6793f56a2948ae11efcbd42e4de2ed7ede55309a0731e0",
+        "source_fact:v1:c8add69e476474bb3326d62aad61f2609f72b941bd63c6ac4a0acfd475b82f01",
+        "source_fact:v1:d416aab72e6bc7e81342d7de989848783c726fc0062368b066812b49e927a265",
+        "source_fact:v1:d4db6638141f5939363f633f465ade5635fbed42ea869394270aa76cab455377"
+      ],
+      "source_published_kst": "2026-10-06T16:00+09:00",
+      "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
+    },
     "source_fact:2dd15e213fa7d14a7314aa9a": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -69111,6 +69632,31 @@
       ],
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "재정부담에 재협상까지…고금리에 상업용 부동산 비상"
+    },
+    "source_fact:30497c74d79cff4a66989eef": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815599",
+      "source": "뉴시스",
+      "source_body_digest": "b8a057c8ce8aed11a580997e744e7c13908853522ef385f19837e6a63380047b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca28d438ea4649f3007dcfef40b9bffe1e565ae8ea6cf324c55438730d2c635",
+      "source_fact_keys": [
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1d72f166ad9827c11491c100685f1633c4c0925ba9e75b239795b6e2265644c9",
+        "source_fact:v1:9d6c9c163d4db4cf4ccacf3da7de634a42689fa9353abc85d013bf4bebeff2c3",
+        "source_fact:v1:a74dc71773614ca7f76829a27aebbb1adb5b3318ab529a72bd54d8f76e9f85ac",
+        "source_fact:v1:baab8ed504e20d00740766dda13d46dcb5bc01b7980df0ffc596a5235bf69b8a",
+        "source_fact:v1:c1a8992dea846528fd6793f56a2948ae11efcbd42e4de2ed7ede55309a0731e0",
+        "source_fact:v1:c8add69e476474bb3326d62aad61f2609f72b941bd63c6ac4a0acfd475b82f01",
+        "source_fact:v1:d416aab72e6bc7e81342d7de989848783c726fc0062368b066812b49e927a265",
+        "source_fact:v1:d4db6638141f5939363f633f465ade5635fbed42ea869394270aa76cab455377"
+      ],
+      "source_published_kst": "2026-10-06T16:00+09:00",
+      "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
     },
     "source_fact:305db8dccf4d868636c6ebab": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -73874,6 +74420,31 @@
       "source_published_kst": "2026-10-06T10:12+09:00",
       "title": "충주시, 주덕읍 일원 친환경 쌀 생산·유통 기반 확충 | 연합뉴스"
     },
+    "source_fact:4d92bb3b85de37ab1742b761": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815950",
+      "source": "뉴시스",
+      "source_body_digest": "00418c464d61c2eb1c89ff83772b39e0564f8a2c647024c902aa692fa1ab30ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82503a11c5e4f3c686c129cd088b965abaa23959c37f99168a679e8d30af6c69",
+      "source_fact_keys": [
+        "source_fact:v1:17e22071d88b0c7db215b7c3092371bbfbe1ad3fe5299ac8f7cf8f52fd27cd62",
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1db0776702d1a49c4c57db18b9b51aa91edfe2a55f2e6ee097f2c15b2e8622d9",
+        "source_fact:v1:20ff16b80862f23e192b38a65f5e283a4e2190e8875a0b5ecc10b1e41cf25a48",
+        "source_fact:v1:47695e7f5e2edf64bb319b28da86cbecdf37ce11a2cc7e0407778d317febc9e5",
+        "source_fact:v1:47aff2de693b3498906b0ba50d0bb57e90f88fff9cefc64e246d2e299b37b797",
+        "source_fact:v1:c2e6d5c6d4f3d35af35a4ba2edc967f03ffef37c2f14a026acb6c9285fba526e",
+        "source_fact:v1:e3df648da01130c532966f369479d8d75f7763d3d0016e02bc20daf6c0e69f1c",
+        "source_fact:v1:ed9f9c972b0361f5de96157c321fba8ee967d7b9baef5590190797cb23878dee"
+      ],
+      "source_published_kst": "2026-10-06T16:09+09:00",
+      "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
+    },
     "source_fact:4d9c685c62375ee43221d954": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
       "lanes": {
@@ -74524,6 +75095,31 @@
       "source_published_kst": "2026-10-06T09:44+09:00",
       "title": "[특징주] LG전자 5%대 강세⋯북미 AI 데이터센터 냉각 솔루션 공급 호재"
     },
+    "source_fact:50feac5cf60a3ce3104c7dff": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815599",
+      "source": "뉴시스",
+      "source_body_digest": "b8a057c8ce8aed11a580997e744e7c13908853522ef385f19837e6a63380047b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca28d438ea4649f3007dcfef40b9bffe1e565ae8ea6cf324c55438730d2c635",
+      "source_fact_keys": [
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1d72f166ad9827c11491c100685f1633c4c0925ba9e75b239795b6e2265644c9",
+        "source_fact:v1:9d6c9c163d4db4cf4ccacf3da7de634a42689fa9353abc85d013bf4bebeff2c3",
+        "source_fact:v1:a74dc71773614ca7f76829a27aebbb1adb5b3318ab529a72bd54d8f76e9f85ac",
+        "source_fact:v1:baab8ed504e20d00740766dda13d46dcb5bc01b7980df0ffc596a5235bf69b8a",
+        "source_fact:v1:c1a8992dea846528fd6793f56a2948ae11efcbd42e4de2ed7ede55309a0731e0",
+        "source_fact:v1:c8add69e476474bb3326d62aad61f2609f72b941bd63c6ac4a0acfd475b82f01",
+        "source_fact:v1:d416aab72e6bc7e81342d7de989848783c726fc0062368b066812b49e927a265",
+        "source_fact:v1:d4db6638141f5939363f633f465ade5635fbed42ea869394270aa76cab455377"
+      ],
+      "source_published_kst": "2026-10-06T16:00+09:00",
+      "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
+    },
     "source_fact:5108246f1fda14dc280231e8": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
       "lanes": {
@@ -75060,6 +75656,27 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:5487241372e82ccdb0206413": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632858",
+      "source": "이투데이",
+      "source_body_digest": "8b43c7d189f7d34121af6dc8fbe786097497b233e6cb073b5636820354078c55",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483b1504baacdad7d0060d01ef0c50612b080260cc2b90566ed44d2170428818",
+      "source_fact_keys": [
+        "source_fact:v1:027abeba2af6509f813581b07570c5965e40e2b67f3aa707e86f69f654a84d47",
+        "source_fact:v1:5f46ed92fcfc4ccfb02af639a33d4238f6a1df68de285d49b87a72701b13ec5c",
+        "source_fact:v1:63536a2f966b76e348c644aa375bfe355cce12ea4eec74e75092bc932bdfe794",
+        "source_fact:v1:ba5a97b13640bd0606c9e4e154ff7c7356232fd3cdf51477122cecc611c7b0a8",
+        "source_fact:v1:ce76f5e505c72603cba1a2eb0f5b1369baae3393f465bbebae8c1f13a42aca9d"
+      ],
+      "source_published_kst": "2026-10-06T16:08+09:00",
+      "title": "LG엔솔, 11개 분기 만에 매출 8조 복귀하나…북미 ESS가 견인"
     },
     "source_fact:54ce2df11dcd2bbb901a5408": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -77852,6 +78469,27 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:64b3a4644ef87c9ce937be65": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632858",
+      "source": "이투데이",
+      "source_body_digest": "8b43c7d189f7d34121af6dc8fbe786097497b233e6cb073b5636820354078c55",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483b1504baacdad7d0060d01ef0c50612b080260cc2b90566ed44d2170428818",
+      "source_fact_keys": [
+        "source_fact:v1:027abeba2af6509f813581b07570c5965e40e2b67f3aa707e86f69f654a84d47",
+        "source_fact:v1:5f46ed92fcfc4ccfb02af639a33d4238f6a1df68de285d49b87a72701b13ec5c",
+        "source_fact:v1:63536a2f966b76e348c644aa375bfe355cce12ea4eec74e75092bc932bdfe794",
+        "source_fact:v1:ba5a97b13640bd0606c9e4e154ff7c7356232fd3cdf51477122cecc611c7b0a8",
+        "source_fact:v1:ce76f5e505c72603cba1a2eb0f5b1369baae3393f465bbebae8c1f13a42aca9d"
+      ],
+      "source_published_kst": "2026-10-06T16:08+09:00",
+      "title": "LG엔솔, 11개 분기 만에 매출 8조 복귀하나…북미 ESS가 견인"
+    },
     "source_fact:64ded78170812ba84a80aedd": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
       "lanes": {
@@ -79390,6 +80028,31 @@
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, '유럽 첫 상용 SDV' 르노그룹 신차에 통합 콕핏 솔루션 공급"
     },
+    "source_fact:6ef2f3b6f5deeab99d84e4f8": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815950",
+      "source": "뉴시스",
+      "source_body_digest": "00418c464d61c2eb1c89ff83772b39e0564f8a2c647024c902aa692fa1ab30ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82503a11c5e4f3c686c129cd088b965abaa23959c37f99168a679e8d30af6c69",
+      "source_fact_keys": [
+        "source_fact:v1:17e22071d88b0c7db215b7c3092371bbfbe1ad3fe5299ac8f7cf8f52fd27cd62",
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1db0776702d1a49c4c57db18b9b51aa91edfe2a55f2e6ee097f2c15b2e8622d9",
+        "source_fact:v1:20ff16b80862f23e192b38a65f5e283a4e2190e8875a0b5ecc10b1e41cf25a48",
+        "source_fact:v1:47695e7f5e2edf64bb319b28da86cbecdf37ce11a2cc7e0407778d317febc9e5",
+        "source_fact:v1:47aff2de693b3498906b0ba50d0bb57e90f88fff9cefc64e246d2e299b37b797",
+        "source_fact:v1:c2e6d5c6d4f3d35af35a4ba2edc967f03ffef37c2f14a026acb6c9285fba526e",
+        "source_fact:v1:e3df648da01130c532966f369479d8d75f7763d3d0016e02bc20daf6c0e69f1c",
+        "source_fact:v1:ed9f9c972b0361f5de96157c321fba8ee967d7b9baef5590190797cb23878dee"
+      ],
+      "source_published_kst": "2026-10-06T16:09+09:00",
+      "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
+    },
     "source_fact:6ef9ce0186ccea4818db1ab9": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -80051,6 +80714,31 @@
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
+    "source_fact:72a7062bd98c025611188f54": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815599",
+      "source": "뉴시스",
+      "source_body_digest": "b8a057c8ce8aed11a580997e744e7c13908853522ef385f19837e6a63380047b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca28d438ea4649f3007dcfef40b9bffe1e565ae8ea6cf324c55438730d2c635",
+      "source_fact_keys": [
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1d72f166ad9827c11491c100685f1633c4c0925ba9e75b239795b6e2265644c9",
+        "source_fact:v1:9d6c9c163d4db4cf4ccacf3da7de634a42689fa9353abc85d013bf4bebeff2c3",
+        "source_fact:v1:a74dc71773614ca7f76829a27aebbb1adb5b3318ab529a72bd54d8f76e9f85ac",
+        "source_fact:v1:baab8ed504e20d00740766dda13d46dcb5bc01b7980df0ffc596a5235bf69b8a",
+        "source_fact:v1:c1a8992dea846528fd6793f56a2948ae11efcbd42e4de2ed7ede55309a0731e0",
+        "source_fact:v1:c8add69e476474bb3326d62aad61f2609f72b941bd63c6ac4a0acfd475b82f01",
+        "source_fact:v1:d416aab72e6bc7e81342d7de989848783c726fc0062368b066812b49e927a265",
+        "source_fact:v1:d4db6638141f5939363f633f465ade5635fbed42ea869394270aa76cab455377"
+      ],
+      "source_published_kst": "2026-10-06T16:00+09:00",
+      "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
+    },
     "source_fact:72ae3d3e3c38a00ef3bb3856": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -80317,6 +81005,31 @@
       ],
       "source_published_kst": "2026-10-05T15:21+09:00",
       "title": "“영끌했는데 매달 이자 어쩌죠”...치솟는 주담대 금리- 매경ECONOMY"
+    },
+    "source_fact:73fcd0c6b47fc70fcb8e0bf5": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815950",
+      "source": "뉴시스",
+      "source_body_digest": "00418c464d61c2eb1c89ff83772b39e0564f8a2c647024c902aa692fa1ab30ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82503a11c5e4f3c686c129cd088b965abaa23959c37f99168a679e8d30af6c69",
+      "source_fact_keys": [
+        "source_fact:v1:17e22071d88b0c7db215b7c3092371bbfbe1ad3fe5299ac8f7cf8f52fd27cd62",
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1db0776702d1a49c4c57db18b9b51aa91edfe2a55f2e6ee097f2c15b2e8622d9",
+        "source_fact:v1:20ff16b80862f23e192b38a65f5e283a4e2190e8875a0b5ecc10b1e41cf25a48",
+        "source_fact:v1:47695e7f5e2edf64bb319b28da86cbecdf37ce11a2cc7e0407778d317febc9e5",
+        "source_fact:v1:47aff2de693b3498906b0ba50d0bb57e90f88fff9cefc64e246d2e299b37b797",
+        "source_fact:v1:c2e6d5c6d4f3d35af35a4ba2edc967f03ffef37c2f14a026acb6c9285fba526e",
+        "source_fact:v1:e3df648da01130c532966f369479d8d75f7763d3d0016e02bc20daf6c0e69f1c",
+        "source_fact:v1:ed9f9c972b0361f5de96157c321fba8ee967d7b9baef5590190797cb23878dee"
+      ],
+      "source_published_kst": "2026-10-06T16:09+09:00",
+      "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
     },
     "source_fact:740aa515de0012578999fb8b": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -81039,6 +81752,31 @@
       ],
       "source_published_kst": "2026-10-05T23:10+09:00",
       "title": "LG전자, 북미서 5GW 대형 AIDC 칠러 장기 공급계약"
+    },
+    "source_fact:77de6e79e5f089d4bab004b5": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815599",
+      "source": "뉴시스",
+      "source_body_digest": "b8a057c8ce8aed11a580997e744e7c13908853522ef385f19837e6a63380047b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca28d438ea4649f3007dcfef40b9bffe1e565ae8ea6cf324c55438730d2c635",
+      "source_fact_keys": [
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1d72f166ad9827c11491c100685f1633c4c0925ba9e75b239795b6e2265644c9",
+        "source_fact:v1:9d6c9c163d4db4cf4ccacf3da7de634a42689fa9353abc85d013bf4bebeff2c3",
+        "source_fact:v1:a74dc71773614ca7f76829a27aebbb1adb5b3318ab529a72bd54d8f76e9f85ac",
+        "source_fact:v1:baab8ed504e20d00740766dda13d46dcb5bc01b7980df0ffc596a5235bf69b8a",
+        "source_fact:v1:c1a8992dea846528fd6793f56a2948ae11efcbd42e4de2ed7ede55309a0731e0",
+        "source_fact:v1:c8add69e476474bb3326d62aad61f2609f72b941bd63c6ac4a0acfd475b82f01",
+        "source_fact:v1:d416aab72e6bc7e81342d7de989848783c726fc0062368b066812b49e927a265",
+        "source_fact:v1:d4db6638141f5939363f633f465ade5635fbed42ea869394270aa76cab455377"
+      ],
+      "source_published_kst": "2026-10-06T16:00+09:00",
+      "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
     },
     "source_fact:782de8993e298572c4e17907": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
@@ -84225,6 +84963,31 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "독파모, '프런티어 AI·산업 확산' 투트랙 재편…중국 넘는다"
     },
+    "source_fact:8c005684ba4cc2860966030a": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815599",
+      "source": "뉴시스",
+      "source_body_digest": "b8a057c8ce8aed11a580997e744e7c13908853522ef385f19837e6a63380047b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca28d438ea4649f3007dcfef40b9bffe1e565ae8ea6cf324c55438730d2c635",
+      "source_fact_keys": [
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1d72f166ad9827c11491c100685f1633c4c0925ba9e75b239795b6e2265644c9",
+        "source_fact:v1:9d6c9c163d4db4cf4ccacf3da7de634a42689fa9353abc85d013bf4bebeff2c3",
+        "source_fact:v1:a74dc71773614ca7f76829a27aebbb1adb5b3318ab529a72bd54d8f76e9f85ac",
+        "source_fact:v1:baab8ed504e20d00740766dda13d46dcb5bc01b7980df0ffc596a5235bf69b8a",
+        "source_fact:v1:c1a8992dea846528fd6793f56a2948ae11efcbd42e4de2ed7ede55309a0731e0",
+        "source_fact:v1:c8add69e476474bb3326d62aad61f2609f72b941bd63c6ac4a0acfd475b82f01",
+        "source_fact:v1:d416aab72e6bc7e81342d7de989848783c726fc0062368b066812b49e927a265",
+        "source_fact:v1:d4db6638141f5939363f633f465ade5635fbed42ea869394270aa76cab455377"
+      ],
+      "source_published_kst": "2026-10-06T16:00+09:00",
+      "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
+    },
     "source_fact:8c1dc89811f8d79f2219aa23": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
@@ -85371,6 +86134,27 @@
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
+    "source_fact:91d7b5a6c70779494b0396e5": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632858",
+      "source": "이투데이",
+      "source_body_digest": "8b43c7d189f7d34121af6dc8fbe786097497b233e6cb073b5636820354078c55",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483b1504baacdad7d0060d01ef0c50612b080260cc2b90566ed44d2170428818",
+      "source_fact_keys": [
+        "source_fact:v1:027abeba2af6509f813581b07570c5965e40e2b67f3aa707e86f69f654a84d47",
+        "source_fact:v1:5f46ed92fcfc4ccfb02af639a33d4238f6a1df68de285d49b87a72701b13ec5c",
+        "source_fact:v1:63536a2f966b76e348c644aa375bfe355cce12ea4eec74e75092bc932bdfe794",
+        "source_fact:v1:ba5a97b13640bd0606c9e4e154ff7c7356232fd3cdf51477122cecc611c7b0a8",
+        "source_fact:v1:ce76f5e505c72603cba1a2eb0f5b1369baae3393f465bbebae8c1f13a42aca9d"
+      ],
+      "source_published_kst": "2026-10-06T16:08+09:00",
+      "title": "LG엔솔, 11개 분기 만에 매출 8조 복귀하나…북미 ESS가 견인"
+    },
     "source_fact:91dd0c2be48b58874a576a1f": {
       "first_seen_kst": "2026-10-05T23:05:12+09:00",
       "lanes": {
@@ -85428,6 +86212,31 @@
       ],
       "source_published_kst": "2026-10-05T03:42+09:00",
       "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
+    },
+    "source_fact:9295138b90b6d7a28536c87f": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815950",
+      "source": "뉴시스",
+      "source_body_digest": "00418c464d61c2eb1c89ff83772b39e0564f8a2c647024c902aa692fa1ab30ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82503a11c5e4f3c686c129cd088b965abaa23959c37f99168a679e8d30af6c69",
+      "source_fact_keys": [
+        "source_fact:v1:17e22071d88b0c7db215b7c3092371bbfbe1ad3fe5299ac8f7cf8f52fd27cd62",
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1db0776702d1a49c4c57db18b9b51aa91edfe2a55f2e6ee097f2c15b2e8622d9",
+        "source_fact:v1:20ff16b80862f23e192b38a65f5e283a4e2190e8875a0b5ecc10b1e41cf25a48",
+        "source_fact:v1:47695e7f5e2edf64bb319b28da86cbecdf37ce11a2cc7e0407778d317febc9e5",
+        "source_fact:v1:47aff2de693b3498906b0ba50d0bb57e90f88fff9cefc64e246d2e299b37b797",
+        "source_fact:v1:c2e6d5c6d4f3d35af35a4ba2edc967f03ffef37c2f14a026acb6c9285fba526e",
+        "source_fact:v1:e3df648da01130c532966f369479d8d75f7763d3d0016e02bc20daf6c0e69f1c",
+        "source_fact:v1:ed9f9c972b0361f5de96157c321fba8ee967d7b9baef5590190797cb23878dee"
+      ],
+      "source_published_kst": "2026-10-06T16:09+09:00",
+      "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
     },
     "source_fact:92b83a54f46d59ce8695f927": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -86722,6 +87531,31 @@
       "source_published_kst": "2026-10-06T15:34+09:00",
       "title": "\"세계 3위 車시장서 월 최대 판매\" 현대차, 푸네공장 앞세워 '인도 공략' 속도"
     },
+    "source_fact:9abe9032f0e621e52c4d6bf5": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815950",
+      "source": "뉴시스",
+      "source_body_digest": "00418c464d61c2eb1c89ff83772b39e0564f8a2c647024c902aa692fa1ab30ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82503a11c5e4f3c686c129cd088b965abaa23959c37f99168a679e8d30af6c69",
+      "source_fact_keys": [
+        "source_fact:v1:17e22071d88b0c7db215b7c3092371bbfbe1ad3fe5299ac8f7cf8f52fd27cd62",
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1db0776702d1a49c4c57db18b9b51aa91edfe2a55f2e6ee097f2c15b2e8622d9",
+        "source_fact:v1:20ff16b80862f23e192b38a65f5e283a4e2190e8875a0b5ecc10b1e41cf25a48",
+        "source_fact:v1:47695e7f5e2edf64bb319b28da86cbecdf37ce11a2cc7e0407778d317febc9e5",
+        "source_fact:v1:47aff2de693b3498906b0ba50d0bb57e90f88fff9cefc64e246d2e299b37b797",
+        "source_fact:v1:c2e6d5c6d4f3d35af35a4ba2edc967f03ffef37c2f14a026acb6c9285fba526e",
+        "source_fact:v1:e3df648da01130c532966f369479d8d75f7763d3d0016e02bc20daf6c0e69f1c",
+        "source_fact:v1:ed9f9c972b0361f5de96157c321fba8ee967d7b9baef5590190797cb23878dee"
+      ],
+      "source_published_kst": "2026-10-06T16:09+09:00",
+      "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
+    },
     "source_fact:9b2bd2303ad0ddaa5390cca3": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
       "lanes": {
@@ -86903,6 +87737,31 @@
       ],
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
+    },
+    "source_fact:9c21e4d57e8bb471b45802ab": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815599",
+      "source": "뉴시스",
+      "source_body_digest": "b8a057c8ce8aed11a580997e744e7c13908853522ef385f19837e6a63380047b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca28d438ea4649f3007dcfef40b9bffe1e565ae8ea6cf324c55438730d2c635",
+      "source_fact_keys": [
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1d72f166ad9827c11491c100685f1633c4c0925ba9e75b239795b6e2265644c9",
+        "source_fact:v1:9d6c9c163d4db4cf4ccacf3da7de634a42689fa9353abc85d013bf4bebeff2c3",
+        "source_fact:v1:a74dc71773614ca7f76829a27aebbb1adb5b3318ab529a72bd54d8f76e9f85ac",
+        "source_fact:v1:baab8ed504e20d00740766dda13d46dcb5bc01b7980df0ffc596a5235bf69b8a",
+        "source_fact:v1:c1a8992dea846528fd6793f56a2948ae11efcbd42e4de2ed7ede55309a0731e0",
+        "source_fact:v1:c8add69e476474bb3326d62aad61f2609f72b941bd63c6ac4a0acfd475b82f01",
+        "source_fact:v1:d416aab72e6bc7e81342d7de989848783c726fc0062368b066812b49e927a265",
+        "source_fact:v1:d4db6638141f5939363f633f465ade5635fbed42ea869394270aa76cab455377"
+      ],
+      "source_published_kst": "2026-10-06T16:00+09:00",
+      "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
     },
     "source_fact:9c2c2bee21fc9b881800e687": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -87187,6 +88046,31 @@
       ],
       "source_published_kst": "2026-10-06T09:00+09:00",
       "title": "한미반도체, 삼성전기서 245억 장비 수주…곽동신 “삼성그룹 환영”"
+    },
+    "source_fact:9e2b3a17077a9ca1d6eaa686": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815950",
+      "source": "뉴시스",
+      "source_body_digest": "00418c464d61c2eb1c89ff83772b39e0564f8a2c647024c902aa692fa1ab30ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82503a11c5e4f3c686c129cd088b965abaa23959c37f99168a679e8d30af6c69",
+      "source_fact_keys": [
+        "source_fact:v1:17e22071d88b0c7db215b7c3092371bbfbe1ad3fe5299ac8f7cf8f52fd27cd62",
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1db0776702d1a49c4c57db18b9b51aa91edfe2a55f2e6ee097f2c15b2e8622d9",
+        "source_fact:v1:20ff16b80862f23e192b38a65f5e283a4e2190e8875a0b5ecc10b1e41cf25a48",
+        "source_fact:v1:47695e7f5e2edf64bb319b28da86cbecdf37ce11a2cc7e0407778d317febc9e5",
+        "source_fact:v1:47aff2de693b3498906b0ba50d0bb57e90f88fff9cefc64e246d2e299b37b797",
+        "source_fact:v1:c2e6d5c6d4f3d35af35a4ba2edc967f03ffef37c2f14a026acb6c9285fba526e",
+        "source_fact:v1:e3df648da01130c532966f369479d8d75f7763d3d0016e02bc20daf6c0e69f1c",
+        "source_fact:v1:ed9f9c972b0361f5de96157c321fba8ee967d7b9baef5590190797cb23878dee"
+      ],
+      "source_published_kst": "2026-10-06T16:09+09:00",
+      "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
     },
     "source_fact:9e438ceeef9f6a0da0854aed": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -91904,6 +92788,27 @@
       "source_published_kst": "2026-10-06T07:45+09:00",
       "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
     },
+    "source_fact:bb45a1038b77fb3d75fea58c": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632858",
+      "source": "이투데이",
+      "source_body_digest": "8b43c7d189f7d34121af6dc8fbe786097497b233e6cb073b5636820354078c55",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483b1504baacdad7d0060d01ef0c50612b080260cc2b90566ed44d2170428818",
+      "source_fact_keys": [
+        "source_fact:v1:027abeba2af6509f813581b07570c5965e40e2b67f3aa707e86f69f654a84d47",
+        "source_fact:v1:5f46ed92fcfc4ccfb02af639a33d4238f6a1df68de285d49b87a72701b13ec5c",
+        "source_fact:v1:63536a2f966b76e348c644aa375bfe355cce12ea4eec74e75092bc932bdfe794",
+        "source_fact:v1:ba5a97b13640bd0606c9e4e154ff7c7356232fd3cdf51477122cecc611c7b0a8",
+        "source_fact:v1:ce76f5e505c72603cba1a2eb0f5b1369baae3393f465bbebae8c1f13a42aca9d"
+      ],
+      "source_published_kst": "2026-10-06T16:08+09:00",
+      "title": "LG엔솔, 11개 분기 만에 매출 8조 복귀하나…북미 ESS가 견인"
+    },
     "source_fact:bb472372a84b50d9323ed8ed": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -93062,6 +93967,27 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:c3323a77aee62ffea906ffef": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632858",
+      "source": "이투데이",
+      "source_body_digest": "8b43c7d189f7d34121af6dc8fbe786097497b233e6cb073b5636820354078c55",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483b1504baacdad7d0060d01ef0c50612b080260cc2b90566ed44d2170428818",
+      "source_fact_keys": [
+        "source_fact:v1:027abeba2af6509f813581b07570c5965e40e2b67f3aa707e86f69f654a84d47",
+        "source_fact:v1:5f46ed92fcfc4ccfb02af639a33d4238f6a1df68de285d49b87a72701b13ec5c",
+        "source_fact:v1:63536a2f966b76e348c644aa375bfe355cce12ea4eec74e75092bc932bdfe794",
+        "source_fact:v1:ba5a97b13640bd0606c9e4e154ff7c7356232fd3cdf51477122cecc611c7b0a8",
+        "source_fact:v1:ce76f5e505c72603cba1a2eb0f5b1369baae3393f465bbebae8c1f13a42aca9d"
+      ],
+      "source_published_kst": "2026-10-06T16:08+09:00",
+      "title": "LG엔솔, 11개 분기 만에 매출 8조 복귀하나…북미 ESS가 견인"
+    },
     "source_fact:c335526bee32ac0b9196072d": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
       "lanes": {
@@ -93587,6 +94513,25 @@
       ],
       "source_published_kst": "2026-10-06T04:55+09:00",
       "title": "[美특징주]세레브라스, 올트먼 “긴밀한 파트너” 발언에 주가10%↑…엔비디아 우려 완화"
+    },
+    "source_fact:c66d9bfac4902e04adf9eec2": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006142500003",
+      "source": "연합뉴스",
+      "source_body_digest": "6a679b7784cd8f9030ce04922dd28a4ea42a3273513a007fd3e385722efc291c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9f2a7057d3d69f74fc72d13e2e010e8c7904cda598147f725796ef800b69d72",
+      "source_fact_keys": [
+        "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
+        "source_fact:v1:759bfb9f7b300de392dcdb9f8eaa6d110a3ad7cd48aa03454caf4da0bacc1173",
+        "source_fact:v1:f63195f4e7e910f99ace1bfa26f4de088e378a5033e5c68bdf10bc9584944e8a"
+      ],
+      "source_published_kst": "2026-10-06T16:02+09:00",
+      "title": "후티 사우디 공격에…현대차 \"공장 건설현장·직원 피해 없어\" | 연합뉴스"
     },
     "source_fact:c697cedce66945bccb505c91": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -100821,6 +101766,25 @@
       "source_published_kst": "2026-10-05T15:17+09:00",
       "title": "자사주 '버팀목' 빠지는 삼성전자… 100조원대 영업익으로 극복할까?"
     },
+    "source_fact:f398f0aa5a099d3307a54b26": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006142500003",
+      "source": "연합뉴스",
+      "source_body_digest": "6a679b7784cd8f9030ce04922dd28a4ea42a3273513a007fd3e385722efc291c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9f2a7057d3d69f74fc72d13e2e010e8c7904cda598147f725796ef800b69d72",
+      "source_fact_keys": [
+        "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
+        "source_fact:v1:759bfb9f7b300de392dcdb9f8eaa6d110a3ad7cd48aa03454caf4da0bacc1173",
+        "source_fact:v1:f63195f4e7e910f99ace1bfa26f4de088e378a5033e5c68bdf10bc9584944e8a"
+      ],
+      "source_published_kst": "2026-10-06T16:02+09:00",
+      "title": "후티 사우디 공격에…현대차 \"공장 건설현장·직원 피해 없어\" | 연합뉴스"
+    },
     "source_fact:f3afe8d1e04ffdb1e1b92f9a": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
       "lanes": {
@@ -101294,6 +102258,25 @@
       ],
       "source_published_kst": "2026-10-06T07:29+09:00",
       "title": "부산 청년기업, 국내 최초 디지털제품여권 상용화"
+    },
+    "source_fact:f767f2d81003896baeaebb25": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006142500003",
+      "source": "연합뉴스",
+      "source_body_digest": "6a679b7784cd8f9030ce04922dd28a4ea42a3273513a007fd3e385722efc291c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9f2a7057d3d69f74fc72d13e2e010e8c7904cda598147f725796ef800b69d72",
+      "source_fact_keys": [
+        "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
+        "source_fact:v1:759bfb9f7b300de392dcdb9f8eaa6d110a3ad7cd48aa03454caf4da0bacc1173",
+        "source_fact:v1:f63195f4e7e910f99ace1bfa26f4de088e378a5033e5c68bdf10bc9584944e8a"
+      ],
+      "source_published_kst": "2026-10-06T16:02+09:00",
+      "title": "후티 사우디 공격에…현대차 \"공장 건설현장·직원 피해 없어\" | 연합뉴스"
     },
     "source_fact:f7b276b67284eab0ec75402a": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -101945,6 +102928,23 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "source_fact:fc6fed4470ea6f1559203dd4": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815931",
+      "source": "뉴시스",
+      "source_body_digest": "3501370aef388f7b3c8c8d607bd42e815d9c6cbde4ecf12237cec56df4a75f0e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c7df3a4cc38a025657ceb4ed851061873fdf91803bb1590cbbb7a3294466884",
+      "source_fact_keys": [
+        "source_fact:v1:7942e88d155163179162122893ede22467dfff8f1a1797b82b7a09d9d2a5dab2"
+      ],
+      "source_published_kst": "2026-10-06T16:07+09:00",
+      "title": "불광5구역 21년 만에 철거 시작…2406가구 들어선다"
     },
     "source_fact:fc830c4833c7ba576a3b8645": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
@@ -104112,6 +105112,21 @@
       "source_published_kst": "2026-10-06T12:12+09:00",
       "title": "경찰, 삼성전자 노조위원장 '장인 업체 일감 몰아주기' 의혹 수사 착수"
     },
+    "title:0ea2cc80f4641de16de3998a": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632874",
+      "source": "이투데이",
+      "source_body_digest": "ce14ee23ecabfb88f132aabe504de1b262cb9fc35a430b6f6580d4292bb2ac8d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T16:01+09:00",
+      "title": "롯데백화점, 외국인 매출 첫 1조 달성…신세계·현대도 눈앞 [종합]"
+    },
     "title:0ea40c6b34003aa700f98314": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
       "lanes": {
@@ -104238,6 +105253,27 @@
       "link": "https://www.yna.co.kr/view/MYH20261002004000038",
       "source": "연합뉴스",
       "title": "[속보] 9월 물가 2.9% 상승…한 달 만에 2%대로 | 연합뉴스"
+    },
+    "title:0fdc7281fcc8251337c029f1": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632858",
+      "source": "이투데이",
+      "source_body_digest": "8b43c7d189f7d34121af6dc8fbe786097497b233e6cb073b5636820354078c55",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:483b1504baacdad7d0060d01ef0c50612b080260cc2b90566ed44d2170428818",
+      "source_fact_keys": [
+        "source_fact:v1:027abeba2af6509f813581b07570c5965e40e2b67f3aa707e86f69f654a84d47",
+        "source_fact:v1:5f46ed92fcfc4ccfb02af639a33d4238f6a1df68de285d49b87a72701b13ec5c",
+        "source_fact:v1:63536a2f966b76e348c644aa375bfe355cce12ea4eec74e75092bc932bdfe794",
+        "source_fact:v1:ba5a97b13640bd0606c9e4e154ff7c7356232fd3cdf51477122cecc611c7b0a8",
+        "source_fact:v1:ce76f5e505c72603cba1a2eb0f5b1369baae3393f465bbebae8c1f13a42aca9d"
+      ],
+      "source_published_kst": "2026-10-06T16:08+09:00",
+      "title": "LG엔솔, 11개 분기 만에 매출 8조 복귀하나…북미 ESS가 견인"
     },
     "title:0fe968924c9a415d8b356c31": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
@@ -111332,6 +112368,25 @@
       "source": "이투데이",
       "title": "[속보] 국제유가, 급등⋯브렌트유 4.37%↑"
     },
+    "title:5dd2341574a4a8769fa0e02e": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006142500003",
+      "source": "연합뉴스",
+      "source_body_digest": "6a679b7784cd8f9030ce04922dd28a4ea42a3273513a007fd3e385722efc291c",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d9f2a7057d3d69f74fc72d13e2e010e8c7904cda598147f725796ef800b69d72",
+      "source_fact_keys": [
+        "source_fact:v1:472c8c9208215b533177b84d0383b3733258dc104e810f8b3b8b2c11166e2a73",
+        "source_fact:v1:759bfb9f7b300de392dcdb9f8eaa6d110a3ad7cd48aa03454caf4da0bacc1173",
+        "source_fact:v1:f63195f4e7e910f99ace1bfa26f4de088e378a5033e5c68bdf10bc9584944e8a"
+      ],
+      "source_published_kst": "2026-10-06T16:02+09:00",
+      "title": "후티 사우디 공격에…현대차 \"공장 건설현장·직원 피해 없어\" | 연합뉴스"
+    },
     "title:5dd2ec72383d3ab46a873efd": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
       "lanes": {
@@ -113707,6 +114762,31 @@
       "source_event_identity": "",
       "title": "싸이큐리온, 사상 최대 5500만달러 10년 계약..공공안전 확장 가속"
     },
+    "title:7540221a649ae5c157b0871a": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815950",
+      "source": "뉴시스",
+      "source_body_digest": "00418c464d61c2eb1c89ff83772b39e0564f8a2c647024c902aa692fa1ab30ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82503a11c5e4f3c686c129cd088b965abaa23959c37f99168a679e8d30af6c69",
+      "source_fact_keys": [
+        "source_fact:v1:17e22071d88b0c7db215b7c3092371bbfbe1ad3fe5299ac8f7cf8f52fd27cd62",
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1db0776702d1a49c4c57db18b9b51aa91edfe2a55f2e6ee097f2c15b2e8622d9",
+        "source_fact:v1:20ff16b80862f23e192b38a65f5e283a4e2190e8875a0b5ecc10b1e41cf25a48",
+        "source_fact:v1:47695e7f5e2edf64bb319b28da86cbecdf37ce11a2cc7e0407778d317febc9e5",
+        "source_fact:v1:47aff2de693b3498906b0ba50d0bb57e90f88fff9cefc64e246d2e299b37b797",
+        "source_fact:v1:c2e6d5c6d4f3d35af35a4ba2edc967f03ffef37c2f14a026acb6c9285fba526e",
+        "source_fact:v1:e3df648da01130c532966f369479d8d75f7763d3d0016e02bc20daf6c0e69f1c",
+        "source_fact:v1:ed9f9c972b0361f5de96157c321fba8ee967d7b9baef5590190797cb23878dee"
+      ],
+      "source_published_kst": "2026-10-06T16:09+09:00",
+      "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
+    },
     "title:759c7d0ded476f74254c9ad2": {
       "first_seen_kst": "2026-10-01T08:48:03+09:00",
       "lanes": {
@@ -113790,6 +114870,23 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03480086645608984",
       "source": "이데일리",
       "title": "ETF 27종 토큰화…\"진짜 경쟁은 유통시장\""
+    },
+    "title:76d5ce1914735dc823dd16bc": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815931",
+      "source": "뉴시스",
+      "source_body_digest": "3501370aef388f7b3c8c8d607bd42e815d9c6cbde4ecf12237cec56df4a75f0e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9c7df3a4cc38a025657ceb4ed851061873fdf91803bb1590cbbb7a3294466884",
+      "source_fact_keys": [
+        "source_fact:v1:7942e88d155163179162122893ede22467dfff8f1a1797b82b7a09d9d2a5dab2"
+      ],
+      "source_published_kst": "2026-10-06T16:07+09:00",
+      "title": "불광5구역 21년 만에 철거 시작…2406가구 들어선다"
     },
     "title:772725fffcd2a9b5bdf57699": {
       "first_seen_kst": "2026-10-02T12:58:52+09:00",
@@ -114216,6 +115313,21 @@
       "link": "https://www.yna.co.kr/view/AKR20261001170100008",
       "source": "연합뉴스",
       "title": "\"10주만 사줘\"…다올증권, AI-증권계좌 연결 서비스 출시 | 연합뉴스"
+    },
+    "title:7c51c193a9794c535758bacb": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815157",
+      "source": "뉴시스",
+      "source_body_digest": "d8c591a6a9ec65ee48c7449dd669a7324d5d1ac40be1d9c07786bc85bc97dadd",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:46+09:00",
+      "title": "메모리 반도체 호황 속 삼성전자 완제품은 '고전'…DX부문 3분기 실적 어떻게"
     },
     "title:7c670079c735e674746e698c": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -117648,6 +118760,31 @@
       "source_published_kst": "2026-10-04T01:05+09:00",
       "title": "예멘 수도서 강한 폭음…사우디 아람코 시설에서도 화염"
     },
+    "title:a259b473cdb82d9b4f82cdc0": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815599",
+      "source": "뉴시스",
+      "source_body_digest": "b8a057c8ce8aed11a580997e744e7c13908853522ef385f19837e6a63380047b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4ca28d438ea4649f3007dcfef40b9bffe1e565ae8ea6cf324c55438730d2c635",
+      "source_fact_keys": [
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1d72f166ad9827c11491c100685f1633c4c0925ba9e75b239795b6e2265644c9",
+        "source_fact:v1:9d6c9c163d4db4cf4ccacf3da7de634a42689fa9353abc85d013bf4bebeff2c3",
+        "source_fact:v1:a74dc71773614ca7f76829a27aebbb1adb5b3318ab529a72bd54d8f76e9f85ac",
+        "source_fact:v1:baab8ed504e20d00740766dda13d46dcb5bc01b7980df0ffc596a5235bf69b8a",
+        "source_fact:v1:c1a8992dea846528fd6793f56a2948ae11efcbd42e4de2ed7ede55309a0731e0",
+        "source_fact:v1:c8add69e476474bb3326d62aad61f2609f72b941bd63c6ac4a0acfd475b82f01",
+        "source_fact:v1:d416aab72e6bc7e81342d7de989848783c726fc0062368b066812b49e927a265",
+        "source_fact:v1:d4db6638141f5939363f633f465ade5635fbed42ea869394270aa76cab455377"
+      ],
+      "source_published_kst": "2026-10-06T16:00+09:00",
+      "title": "롯데백화점, 업계 사상 첫 외국인 매출 1조 돌파…\"상징적 성과\""
+    },
     "title:a2677557d8dbe6b12640b516": {
       "first_seen_kst": "2026-10-03T01:16:26+09:00",
       "lanes": {
@@ -119012,6 +120149,31 @@
       "link": "https://www.etnews.com/20260922000221",
       "source": "전자신문",
       "title": "한미반도체, AI 반도체 2.5D 패키징 장비 'FC 본더 75' 첫 출하"
+    },
+    "title:b1fceb569276aff516ab75ac": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815950",
+      "source": "뉴시스",
+      "source_body_digest": "00418c464d61c2eb1c89ff83772b39e0564f8a2c647024c902aa692fa1ab30ee",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:82503a11c5e4f3c686c129cd088b965abaa23959c37f99168a679e8d30af6c69",
+      "source_fact_keys": [
+        "source_fact:v1:17e22071d88b0c7db215b7c3092371bbfbe1ad3fe5299ac8f7cf8f52fd27cd62",
+        "source_fact:v1:1bfa6d0470f96f1e5027ea43cc64a98f21e1041e70a79d84f9e2e4fd37c58f9e",
+        "source_fact:v1:1db0776702d1a49c4c57db18b9b51aa91edfe2a55f2e6ee097f2c15b2e8622d9",
+        "source_fact:v1:20ff16b80862f23e192b38a65f5e283a4e2190e8875a0b5ecc10b1e41cf25a48",
+        "source_fact:v1:47695e7f5e2edf64bb319b28da86cbecdf37ce11a2cc7e0407778d317febc9e5",
+        "source_fact:v1:47aff2de693b3498906b0ba50d0bb57e90f88fff9cefc64e246d2e299b37b797",
+        "source_fact:v1:c2e6d5c6d4f3d35af35a4ba2edc967f03ffef37c2f14a026acb6c9285fba526e",
+        "source_fact:v1:e3df648da01130c532966f369479d8d75f7763d3d0016e02bc20daf6c0e69f1c",
+        "source_fact:v1:ed9f9c972b0361f5de96157c321fba8ee967d7b9baef5590190797cb23878dee"
+      ],
+      "source_published_kst": "2026-10-06T16:09+09:00",
+      "title": "롯데백화점 외국인 매출 1조 돌파…신세계·현대도 '목전'(종합)"
     },
     "title:b24a90c5aaf945cb2e82e738": {
       "first_seen_kst": "2026-10-05T07:34:11+09:00",
@@ -124022,6 +125184,21 @@
       "source_published_kst": "2026-10-05T08:57+09:00",
       "title": "\"50만 동네 토스 매장서 택배 보낸다\"…CJ대한통운, 오프라인 접점 확대"
     },
+    "title:e8554488bc0bf3b9fa14cb58": {
+      "first_seen_kst": "2026-10-06T18:16:47+09:00",
+      "lanes": {
+        "live": "2026-10-06T18:16:47+09:00"
+      },
+      "last_seen_kst": "2026-10-06T18:16:47+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632874",
+      "source": "이투데이",
+      "source_body_digest": "ce14ee23ecabfb88f132aabe504de1b262cb9fc35a430b6f6580d4292bb2ac8d",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T16:01+09:00",
+      "title": "롯데백화점, 외국인 매출 첫 1조 달성…신세계·현대도 눈앞 [종합]"
+    },
     "title:e865c7c4ea151427a759dcd7": {
       "first_seen_kst": "2026-10-05T14:59:09+09:00",
       "lanes": {
@@ -126044,5 +127221,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T17:59:23+09:00"
+  "updated_at_kst": "2026-10-06T18:16:47+09:00"
 }
