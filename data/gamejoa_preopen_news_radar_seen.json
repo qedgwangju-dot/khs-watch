@@ -40,27 +40,20 @@
     "event:0299202f202670e087ceb126": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
-        "live": "2026-10-06T07:00:19+09:00"
+        "live": "2026-10-06T14:18:00+09:00"
       },
-      "last_seen_kst": "2026-10-06T07:00:19+09:00",
-      "link": "https://biz.chosun.com/international/international_general/2026/10/06/UK3OIVXAARFDJNT56L5QQLNCKU/",
-      "source": "조선비즈",
-      "source_body_digest": "885af90ddf1de6a9142e284265e6b687273fcc5e9da7cd14c11d7c9d3c07fd19",
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.hankyung.com/article/202610065198L",
+      "source": "한국경제",
+      "source_body_digest": "d3fcbdbb76184e995a04d9b02ec37bfd8203b3fcc117b51c0c6ea38847e32720",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:74391062c160e5b2383cda71d966331c94dab07f26edb8515743ec4f85034b45",
+      "source_fact_identity": "source_facts:v1:8d15c3272ca655b40135a370c446a699bcff761e5d9d9d5d8b124f7d3f78e7c8",
       "source_fact_keys": [
-        "source_fact:v1:27d6f6aca2eb1fd3e228a65b8994a33d6c6ce4a13295940e70331375c7cf92ab",
-        "source_fact:v1:2c7bd9ba7540814e7cda6e398644ae3bf8a2c2dd611fbbaf2f946a82c26c531d",
-        "source_fact:v1:2da1ce189455b09869a0310f5ada4eadd48f97a1834dce72514aa2b31b0eefa9",
-        "source_fact:v1:31c100d18ef6c4c096dc27f769c162c45532f6fce4c68753e4bbe64509f3b081",
-        "source_fact:v1:3be2b53f414795b81801bd6397edd6afa434e395403d76a7bc7ef917b50f9b62",
-        "source_fact:v1:498c2a97d8dcca9ce5b09b230fa1ef3c996b07f8918cead50cf3fe1828112ada",
-        "source_fact:v1:5ca426bd25914d5f892d592f15dc273c5eaac02d6fb579198fed5afccd4f8a8e",
-        "source_fact:v1:8d4674d506d1ca6b3389ddc775fba5d1b666ad7758da7052690eac4b2ca12df8",
-        "source_fact:v1:edc24ff29e32637963f3c3d2c9c4a83bc6c0e5a8c7f9ed93bff103c3c9762c3f"
+        "source_fact:v1:e12c41e50185fbe795d72d7305ef7550509bd1307c49d8388ba8827625181880",
+        "source_fact:v1:e5449cf8e9522273799fac2071628ccbad51cf47ba96666e5558d0454e67366f"
       ],
-      "source_published_kst": "2026-10-06T06:27+09:00",
-      "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
+      "source_published_kst": "2026-10-06T11:19+09:00",
+      "title": "넥스틴 수주공시 - Wafer Inspection System 공급계약 254.4억원 (매출액대비 38.02 %)"
     },
     "event:033917d192b9a4d16c4f65fd": {
       "first_seen_kst": "2026-09-19T08:53:16+09:00",
@@ -1405,6 +1398,29 @@
       "source": "머니투데이",
       "title": "KB운용, 삼성·SK그룹 주요 계열사에 투자하는 ETF 출시"
     },
+    "event:419c1e84b6beb40474bb52c7": {
+      "event_alias_evidence_message_id": 2285,
+      "event_alias_evidence_run_id": 37393055456,
+      "first_seen_kst": "2026-10-06T09:21:20+09:00",
+      "lanes": {
+        "live": "2026-10-06T09:21:20+09:00"
+      },
+      "last_seen_kst": "2026-10-06T09:21:20+09:00",
+      "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
+      "source": "머니투데이",
+      "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
+      "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
+      "source_fact_keys": [
+        "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
+        "source_fact:v1:2de1b71363868c1272d98be6c40d55b85bbf10715bcc01478bf9eb8d929c406f",
+        "source_fact:v1:631db7c2519643dd197f3c1123d3d8877248d57f8d161325def03bcbfb00d7f8",
+        "source_fact:v1:6a6dbdbaa085b5ca71560ca308cc26b7435e6adf80062f898dd18cc92d55b495",
+        "source_fact:v1:900059894588c9f7cd5c51b95598c0e55fe25de94159a586cfe435331554a4e0"
+      ],
+      "source_published_kst": "2026-10-05T22:07+09:00",
+      "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
+    },
     "event:4226d4cc2e3c15e0e9c52b2e": {
       "first_seen_kst": "2026-09-20T09:29:00+09:00",
       "lanes": {
@@ -1677,19 +1693,21 @@
     "event:513feb3bff03a74f9c842b5f": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
-        "live": "2026-10-06T14:02:15+09:00"
+        "live": "2026-10-06T14:18:00+09:00"
       },
-      "last_seen_kst": "2026-10-06T14:02:15+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003815355",
-      "source": "뉴시스",
-      "source_body_digest": "614ddb35fc95ce3f2b84341738f169a67618ca60894b961c2e731894bb5e58af",
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.fnnews.com/news/202610061128361611",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "563aa72ef5347e7acded864cc48e3fde7db09339809ff896a40eda377a2d8baa",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4bc2025f0ffb61c82c1a60de577a44378337435d0ff55a10edd309a347db198a",
+      "source_fact_identity": "source_facts:v1:13ec1a20fcf17b7da0cabab48dc5b7d079262e69c90afad4018129815ba3add0",
       "source_fact_keys": [
-        "source_fact:v1:26941fd7e08e98a78ca0b629df8bab4486934e86875c596658785c3599911124"
+        "source_fact:v1:1a3961e0dc3de31a07488171735729b040f8866d263982492c19a347a4f9741e",
+        "source_fact:v1:3e6c70436c447f1e2de70e057c4d246c8cc7be9a446a42b3b311ed3f7644f864",
+        "source_fact:v1:44724b03232246e05c92ded9dd5965a6697d13c1d505ef411c51e95327c3677e"
       ],
-      "source_published_kst": "2026-10-06T11:21+09:00",
-      "title": "삼성전기, 2856억 규모 MLCC 공급계약"
+      "source_published_kst": "2026-10-06T11:28+09:00",
+      "title": "삼성전기, 글로벌 기업에 2900억 MLCC 공급…AI부품 수주 '4조 클럽' 돌파"
     },
     "event:515a30f540946889aaa693c1": {
       "first_seen_kst": "2026-10-01T21:43:03+09:00",
@@ -2704,6 +2722,25 @@
       "link": "https://www.fnnews.com/news/202609230919540789",
       "source": "파이낸셜뉴스",
       "title": "수익률·개인 매수·연금 활용까지…한투운용, 추석 ETF 4종 제안"
+    },
+    "event:7c4bc5339a65ece7e0592ca5": {
+      "event_alias_evidence_message_id": 2295,
+      "event_alias_evidence_run_id": 37409273145,
+      "first_seen_kst": "2026-10-06T12:35:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T12:35:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T12:35:44+09:00",
+      "link": "https://www.hankyung.com/article/202610065016i",
+      "source": "한국경제",
+      "source_body_digest": "3977dd101bc1caee96f349b253489808cb1f95f9e67bd7193357bc320d0104dd",
+      "source_event_identity": "source_event:v2:legislative_action:fc612f37895c2456be82a20f913ab1b7ca548e2c8fe7b2365de06c3582a1b479",
+      "source_fact_identity": "source_facts:v1:f1dd1eda031c05dc6c0cdff66335dd23f80e3e5b2df5bf8a551dbca812003988",
+      "source_fact_keys": [
+        "source_fact:v1:af31e5dfdc77027ae98632f457484cc9919ffd7b59833cc73618afffb59cc95f"
+      ],
+      "source_published_kst": "2026-10-06T11:00+09:00",
+      "title": "'한국형 인큐텔' 도입 탄력…與 오세희, '新안보 혁신기업 특별법' 발의"
     },
     "event:7c6939491963b47e90e9bad7": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -6766,6 +6803,24 @@
       "source_published_kst": "2026-10-06T11:21+09:00",
       "title": "삼성전기, 2856억 규모 MLCC 공급계약"
     },
+    "fact:21d2f3c8e13dd1cadf8b8d5d": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.hankyung.com/article/202610065198L",
+      "source": "한국경제",
+      "source_body_digest": "d3fcbdbb76184e995a04d9b02ec37bfd8203b3fcc117b51c0c6ea38847e32720",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d15c3272ca655b40135a370c446a699bcff761e5d9d9d5d8b124f7d3f78e7c8",
+      "source_fact_keys": [
+        "source_fact:v1:e12c41e50185fbe795d72d7305ef7550509bd1307c49d8388ba8827625181880",
+        "source_fact:v1:e5449cf8e9522273799fac2071628ccbad51cf47ba96666e5558d0454e67366f"
+      ],
+      "source_published_kst": "2026-10-06T11:19+09:00",
+      "title": "넥스틴 수주공시 - Wafer Inspection System 공급계약 254.4억원 (매출액대비 38.02 %)"
+    },
     "fact:228fb4b90fbea63e6b1466de": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -7153,7 +7208,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632674",
       "source": "이투데이",
       "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
       "source_fact_keys": [
         "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
@@ -7229,7 +7284,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815297",
       "source": "뉴시스",
       "source_body_digest": "7e78054ba5210a572235296341845a0ebbc73746007b1fdb7a042eb30f89b59e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:legislative_action:fc612f37895c2456be82a20f913ab1b7ca548e2c8fe7b2365de06c3582a1b479",
       "source_fact_identity": "source_facts:v1:c3369941273743cfe655837c416143643981afdda176e9bfd464a5066f8d790b",
       "source_fact_keys": [
         "source_fact:v1:92dd023bfedc5ca9237416ab25867fb8c468c5f67a914dbb077e6a167453ed8f"
@@ -8163,7 +8218,7 @@
       "link": "https://www.hankyung.com/article/202610065016i",
       "source": "한국경제",
       "source_body_digest": "3977dd101bc1caee96f349b253489808cb1f95f9e67bd7193357bc320d0104dd",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:legislative_action:fc612f37895c2456be82a20f913ab1b7ca548e2c8fe7b2365de06c3582a1b479",
       "source_fact_identity": "source_facts:v1:f1dd1eda031c05dc6c0cdff66335dd23f80e3e5b2df5bf8a551dbca812003988",
       "source_fact_keys": [
         "source_fact:v1:af31e5dfdc77027ae98632f457484cc9919ffd7b59833cc73618afffb59cc95f"
@@ -9935,6 +9990,38 @@
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "“내년에 터진다”…서울 전월세 대란 속 수도권 집값 동반 상승 우려"
     },
+    "fact:98bb5ef40999016b7170e636": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
     "fact:98ff36873b676081b823c905": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -10364,7 +10451,7 @@
       "link": "https://biz.heraldcorp.com/article/10894020",
       "source": "헤럴드경제",
       "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
       "source_fact_keys": [
         "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
@@ -10600,6 +10687,24 @@
       "source_published_kst": "2026-10-05T22:45+09:00",
       "title": "[美특징주]PTC, 슈나이더일렉트릭에 피인수 소식에 급등"
     },
+    "fact:b1f74b7333a19ffe111a9667": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632762",
+      "source": "이투데이",
+      "source_body_digest": "487b74c42e8817fd51895f9ac2527d1c7e6df7cf622fdd5bc5931b4b64ac713d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77d06687e4da31441abcac970e0cb715968c01e52fd4a3cef2b05c1d1ddbdafe",
+      "source_fact_keys": [
+        "source_fact:v1:9da0362beb8f90f4f05fe9cdc49f64cb2ce20cb68d49e4e1701f6cd9ce9282db",
+        "source_fact:v1:cf4fe038ad2b73e21672dbcbf402e1c6754045b9d50f69b59ae994352f234ca3"
+      ],
+      "source_published_kst": "2026-10-06T11:33+09:00",
+      "title": "李대통령 치킨값 점검 예고했는데…중량도 최대 30% 차이"
+    },
     "fact:b4aa8390251b305c12e8b6f9": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -10753,6 +10858,25 @@
       ],
       "source_published_kst": "2026-10-05T20:58+09:00",
       "title": "알보테크, FDA 심랜디 美 생산설비 추가 승인..공급능력 2배"
+    },
+    "fact:bff14cad0ee6caee875d66c2": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.fnnews.com/news/202610061128361611",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "563aa72ef5347e7acded864cc48e3fde7db09339809ff896a40eda377a2d8baa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13ec1a20fcf17b7da0cabab48dc5b7d079262e69c90afad4018129815ba3add0",
+      "source_fact_keys": [
+        "source_fact:v1:1a3961e0dc3de31a07488171735729b040f8866d263982492c19a347a4f9741e",
+        "source_fact:v1:3e6c70436c447f1e2de70e057c4d246c8cc7be9a446a42b3b311ed3f7644f864",
+        "source_fact:v1:44724b03232246e05c92ded9dd5965a6697d13c1d505ef411c51e95327c3677e"
+      ],
+      "source_published_kst": "2026-10-06T11:28+09:00",
+      "title": "삼성전기, 글로벌 기업에 2900억 MLCC 공급…AI부품 수주 '4조 클럽' 돌파"
     },
     "fact:c031662536385f0a9af9c80f": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -11449,7 +11573,7 @@
       "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
       "source": "머니투데이",
       "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
       "source_fact_keys": [
         "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
@@ -11602,6 +11726,25 @@
       ],
       "source_published_kst": "2026-10-06T11:20+09:00",
       "title": "에이스테크, 4개 차종 적용 차량용 안테나 수주"
+    },
+    "fact:e31ce72cb1f09b6a6f995d5c": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etnews.com/20261006000155",
+      "source": "전자신문",
+      "source_body_digest": "ccd1ebbe4288ba2948e95e8c40afac08d26b11d8c2cc7150a99b5ae7e131725b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f64183188fe5aa87e58f58bcbe285cb49ebda5366a2cbc17f6f1e1c8e47084bb",
+      "source_fact_keys": [
+        "source_fact:v1:7e8322fa6237de4bd712c3b101a2280811b87549a78e4dd8117325e02b5fab48",
+        "source_fact:v1:b85c8e6b462efe41d1076596f2d425fcd1b7300ef89e35804860a7bc191a9b90",
+        "source_fact:v1:d19330fa10dc2f03f8b742ed7139e2cb25a1874a9b4d331e0cb51738650a4ea2"
+      ],
+      "source_published_kst": "2026-10-06T11:14+09:00",
+      "title": "JW중외제약, 유럽당뇨병학회서 '엠파가드' 임상 3상 발표…3제 요법 유효성 입증"
     },
     "fact:e400513bab26c86eb16ee8c4": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -12103,6 +12246,23 @@
       ],
       "source_published_kst": "2026-10-05T17:08+09:00",
       "title": "[속보]美10년물 24년來 최고에도…나스닥 1%↑ '사상 최고'"
+    },
+    "fact:f8df8800607b337a96c2c905": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632767",
+      "source": "이투데이",
+      "source_body_digest": "4c51cbfb4329b51a4d8624d6d1469ff2d31bc23dfe44f51bcb39c63f0b188554",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:309157c4bf61502b2697b4f24b1195e53bc144534236187f85a71a3e855cbb13",
+      "source_fact_keys": [
+        "source_fact:v1:41a94bf18dc0967265c187086620700f91c8fe98c3602dc19d8e563e3ffa972a"
+      ],
+      "source_published_kst": "2026-10-06T11:45+09:00",
+      "title": "파리 첫 진출 현대백화점 ‘더현대 글로벌’ “2030 매장 10개 목표”"
     },
     "fact:f94573ca049b07980a1ab1f8": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
@@ -14927,6 +15087,24 @@
       "source_published_kst": "2026-10-05T07:00+09:00",
       "title": "'아동 허위 등록' 보조금 1억 빼돌린 어린이집…法 \"폐쇄 적법\""
     },
+    "link:23e2482af1f0da7dec30a3c4": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632762",
+      "source": "이투데이",
+      "source_body_digest": "487b74c42e8817fd51895f9ac2527d1c7e6df7cf622fdd5bc5931b4b64ac713d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77d06687e4da31441abcac970e0cb715968c01e52fd4a3cef2b05c1d1ddbdafe",
+      "source_fact_keys": [
+        "source_fact:v1:9da0362beb8f90f4f05fe9cdc49f64cb2ce20cb68d49e4e1701f6cd9ce9282db",
+        "source_fact:v1:cf4fe038ad2b73e21672dbcbf402e1c6754045b9d50f69b59ae994352f234ca3"
+      ],
+      "source_published_kst": "2026-10-06T11:33+09:00",
+      "title": "李대통령 치킨값 점검 예고했는데…중량도 최대 30% 차이"
+    },
     "link:2409084188a8bf51a273441d": {
       "first_seen_kst": "2026-09-21T17:03:55+09:00",
       "lanes": {
@@ -17676,6 +17854,21 @@
       "source_published_kst": "2026-10-05T12:32+09:00",
       "title": "엔씨 '아이온2' 글로벌 정식 출시... 얼리액세스 동접 17만명"
     },
+    "link:4315cd67abd747b10018a71c": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169063",
+      "source": "매일경제",
+      "source_body_digest": "4356e6c69bd1ad99be55c62f33ce69cc6cf027d6e64c1478c3a3113e0b9ce807",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:58+09:00",
+      "title": "AI 데이터센터 몰리자 전력·용수 부담…정책 재검토 나선 동남아"
+    },
     "link:43594381f033d3f16d7e4837": {
       "first_seen_kst": "2026-09-18T14:19:18+09:00",
       "lanes": {
@@ -20170,7 +20363,7 @@
       "link": "https://www.hankyung.com/article/202610065016i",
       "source": "한국경제",
       "source_body_digest": "3977dd101bc1caee96f349b253489808cb1f95f9e67bd7193357bc320d0104dd",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:legislative_action:fc612f37895c2456be82a20f913ab1b7ca548e2c8fe7b2365de06c3582a1b479",
       "source_fact_identity": "source_facts:v1:f1dd1eda031c05dc6c0cdff66335dd23f80e3e5b2df5bf8a551dbca812003988",
       "source_fact_keys": [
         "source_fact:v1:af31e5dfdc77027ae98632f457484cc9919ffd7b59833cc73618afffb59cc95f"
@@ -21796,7 +21989,7 @@
       "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
       "source": "머니투데이",
       "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
       "source_fact_keys": [
         "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
@@ -23240,7 +23433,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815297",
       "source": "뉴시스",
       "source_body_digest": "7e78054ba5210a572235296341845a0ebbc73746007b1fdb7a042eb30f89b59e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:legislative_action:fc612f37895c2456be82a20f913ab1b7ca548e2c8fe7b2365de06c3582a1b479",
       "source_fact_identity": "source_facts:v1:c3369941273743cfe655837c416143643981afdda176e9bfd464a5066f8d790b",
       "source_fact_keys": [
         "source_fact:v1:92dd023bfedc5ca9237416ab25867fb8c468c5f67a914dbb077e6a167453ed8f"
@@ -23895,6 +24088,25 @@
       "link": "https://www.etnews.com/20261002000114",
       "source": "전자신문",
       "title": "전북대 창업지원단, 지역 창업기업 투자 유치 발판 마련…10억 투자의향·확약서 확보"
+    },
+    "link:8df69015db6f42c85d2b4a12": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.fnnews.com/news/202610061128361611",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "563aa72ef5347e7acded864cc48e3fde7db09339809ff896a40eda377a2d8baa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13ec1a20fcf17b7da0cabab48dc5b7d079262e69c90afad4018129815ba3add0",
+      "source_fact_keys": [
+        "source_fact:v1:1a3961e0dc3de31a07488171735729b040f8866d263982492c19a347a4f9741e",
+        "source_fact:v1:3e6c70436c447f1e2de70e057c4d246c8cc7be9a446a42b3b311ed3f7644f864",
+        "source_fact:v1:44724b03232246e05c92ded9dd5965a6697d13c1d505ef411c51e95327c3677e"
+      ],
+      "source_published_kst": "2026-10-06T11:28+09:00",
+      "title": "삼성전기, 글로벌 기업에 2900억 MLCC 공급…AI부품 수주 '4조 클럽' 돌파"
     },
     "link:8e1da80eb0d87e63e2d303e6": {
       "first_seen_kst": "2026-10-02T05:03:05+09:00",
@@ -26739,7 +26951,7 @@
       "link": "https://biz.heraldcorp.com/article/10894020",
       "source": "헤럴드경제",
       "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
       "source_fact_keys": [
         "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
@@ -26955,6 +27167,38 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003812550",
       "source": "뉴시스",
       "title": "한화투자증권, 업비트와 '인스타툰' 론칭 이벤트"
+    },
+    "link:b1b1b8d60cb9c18d8abdf15d": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
     "link:b1b202f02d2f4bca4dd95602": {
       "first_seen_kst": "2026-09-19T15:20:13+09:00",
@@ -27959,7 +28203,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632674",
       "source": "이투데이",
       "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
       "source_fact_keys": [
         "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
@@ -29723,6 +29967,23 @@
       "source": "한국경제",
       "title": "휴온스, 글로벌 학회서 신약 연구 초록 연이어 채택"
     },
+    "link:d265e904a2b7251dba40ed72": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632767",
+      "source": "이투데이",
+      "source_body_digest": "4c51cbfb4329b51a4d8624d6d1469ff2d31bc23dfe44f51bcb39c63f0b188554",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:309157c4bf61502b2697b4f24b1195e53bc144534236187f85a71a3e855cbb13",
+      "source_fact_keys": [
+        "source_fact:v1:41a94bf18dc0967265c187086620700f91c8fe98c3602dc19d8e563e3ffa972a"
+      ],
+      "source_published_kst": "2026-10-06T11:45+09:00",
+      "title": "파리 첫 진출 현대백화점 ‘더현대 글로벌’ “2030 매장 10개 목표”"
+    },
     "link:d31190aded4e90ad15184f57": {
       "first_seen_kst": "2026-10-02T16:06:36+09:00",
       "lanes": {
@@ -30288,6 +30549,25 @@
       "link": "https://www.yna.co.kr/view/AKR20260923101000051",
       "source": "연합뉴스",
       "title": "부산시의회, 29일부터 기관장 인사청문회…'송곳 검증' 예고 | 연합뉴스"
+    },
+    "link:d9a60f86ab010817a81333e2": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etnews.com/20261006000155",
+      "source": "전자신문",
+      "source_body_digest": "ccd1ebbe4288ba2948e95e8c40afac08d26b11d8c2cc7150a99b5ae7e131725b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f64183188fe5aa87e58f58bcbe285cb49ebda5366a2cbc17f6f1e1c8e47084bb",
+      "source_fact_keys": [
+        "source_fact:v1:7e8322fa6237de4bd712c3b101a2280811b87549a78e4dd8117325e02b5fab48",
+        "source_fact:v1:b85c8e6b462efe41d1076596f2d425fcd1b7300ef89e35804860a7bc191a9b90",
+        "source_fact:v1:d19330fa10dc2f03f8b742ed7139e2cb25a1874a9b4d331e0cb51738650a4ea2"
+      ],
+      "source_published_kst": "2026-10-06T11:14+09:00",
+      "title": "JW중외제약, 유럽당뇨병학회서 '엠파가드' 임상 3상 발표…3제 요법 유효성 입증"
     },
     "link:d9ac9106a06cf35b6c074716": {
       "first_seen_kst": "2026-10-03T11:43:26+09:00",
@@ -31735,6 +32015,24 @@
       "link": "https://www.etoday.co.kr/news/view/2631475",
       "source": "이투데이",
       "title": "3분기 스타트업 투자, 4년 만에 누적 10조원 돌파...AI 반도체•우주항공 투자 급증"
+    },
+    "link:eaabeca2fe6b001e1315e146": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.hankyung.com/article/202610065198L",
+      "source": "한국경제",
+      "source_body_digest": "d3fcbdbb76184e995a04d9b02ec37bfd8203b3fcc117b51c0c6ea38847e32720",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d15c3272ca655b40135a370c446a699bcff761e5d9d9d5d8b124f7d3f78e7c8",
+      "source_fact_keys": [
+        "source_fact:v1:e12c41e50185fbe795d72d7305ef7550509bd1307c49d8388ba8827625181880",
+        "source_fact:v1:e5449cf8e9522273799fac2071628ccbad51cf47ba96666e5558d0454e67366f"
+      ],
+      "source_published_kst": "2026-10-06T11:19+09:00",
+      "title": "넥스틴 수주공시 - Wafer Inspection System 공급계약 254.4억원 (매출액대비 38.02 %)"
     },
     "link:eab67d4e5957cf0f9ce710be": {
       "first_seen_kst": "2026-09-21T15:04:09+09:00",
@@ -36219,7 +36517,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815297",
       "source": "뉴시스",
       "source_body_digest": "7e78054ba5210a572235296341845a0ebbc73746007b1fdb7a042eb30f89b59e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:legislative_action:fc612f37895c2456be82a20f913ab1b7ca548e2c8fe7b2365de06c3582a1b479",
       "source_fact_identity": "source_facts:v1:c3369941273743cfe655837c416143643981afdda176e9bfd464a5066f8d790b",
       "source_fact_keys": [
         "source_fact:v1:92dd023bfedc5ca9237416ab25867fb8c468c5f67a914dbb077e6a167453ed8f"
@@ -36859,7 +37157,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632674",
       "source": "이투데이",
       "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
       "source_fact_keys": [
         "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
@@ -37167,6 +37465,38 @@
       "source": "매일경제",
       "title": "인시고, 노키아 FWA 사업 인수 완료로 매출 2배 확대 기대감 부각"
     },
+    "original:2ea7c7af7bdd2ee4ab8bbba9": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
     "original:2eb58bd625fba9f42f2706e7": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -37183,6 +37513,25 @@
       ],
       "source_published_kst": "2026-10-05T22:37+09:00",
       "title": "농식품부 고위공직자 모친 농지 '미경작'…\"전수조사, 현실 못담아\""
+    },
+    "original:2f9cd80f9c7bdfad921dedaa": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etnews.com/20261006000155",
+      "source": "전자신문",
+      "source_body_digest": "ccd1ebbe4288ba2948e95e8c40afac08d26b11d8c2cc7150a99b5ae7e131725b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f64183188fe5aa87e58f58bcbe285cb49ebda5366a2cbc17f6f1e1c8e47084bb",
+      "source_fact_keys": [
+        "source_fact:v1:7e8322fa6237de4bd712c3b101a2280811b87549a78e4dd8117325e02b5fab48",
+        "source_fact:v1:b85c8e6b462efe41d1076596f2d425fcd1b7300ef89e35804860a7bc191a9b90",
+        "source_fact:v1:d19330fa10dc2f03f8b742ed7139e2cb25a1874a9b4d331e0cb51738650a4ea2"
+      ],
+      "source_published_kst": "2026-10-06T11:14+09:00",
+      "title": "JW중외제약, 유럽당뇨병학회서 '엠파가드' 임상 3상 발표…3제 요법 유효성 입증"
     },
     "original:2faa55f0138ec6fd5d9f9ed1": {
       "first_seen_kst": "2026-10-03T22:08:29+09:00",
@@ -37316,7 +37665,7 @@
       "link": "https://www.hankyung.com/article/202610065016i",
       "source": "한국경제",
       "source_body_digest": "3977dd101bc1caee96f349b253489808cb1f95f9e67bd7193357bc320d0104dd",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:legislative_action:fc612f37895c2456be82a20f913ab1b7ca548e2c8fe7b2365de06c3582a1b479",
       "source_fact_identity": "source_facts:v1:f1dd1eda031c05dc6c0cdff66335dd23f80e3e5b2df5bf8a551dbca812003988",
       "source_fact_keys": [
         "source_fact:v1:af31e5dfdc77027ae98632f457484cc9919ffd7b59833cc73618afffb59cc95f"
@@ -37624,6 +37973,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261002119100054",
       "source": "연합뉴스",
       "title": "광주도시철도 2호선 양산-신가구간 2034년 우선 개통 | 연합뉴스"
+    },
+    "original:353d284717d427548309b146": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632762",
+      "source": "이투데이",
+      "source_body_digest": "487b74c42e8817fd51895f9ac2527d1c7e6df7cf622fdd5bc5931b4b64ac713d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77d06687e4da31441abcac970e0cb715968c01e52fd4a3cef2b05c1d1ddbdafe",
+      "source_fact_keys": [
+        "source_fact:v1:9da0362beb8f90f4f05fe9cdc49f64cb2ce20cb68d49e4e1701f6cd9ce9282db",
+        "source_fact:v1:cf4fe038ad2b73e21672dbcbf402e1c6754045b9d50f69b59ae994352f234ca3"
+      ],
+      "source_published_kst": "2026-10-06T11:33+09:00",
+      "title": "李대통령 치킨값 점검 예고했는데…중량도 최대 30% 차이"
     },
     "original:359c8e04fea630c6c4d6546b": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -39210,6 +39577,23 @@
       "source_published_kst": "2026-10-04T09:00+09:00",
       "title": "개통 또 연기…'저심도 공법'에 발목 잡힌 광주도철 2호선"
     },
+    "original:461d31a0e025f18ae79a07f4": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632767",
+      "source": "이투데이",
+      "source_body_digest": "4c51cbfb4329b51a4d8624d6d1469ff2d31bc23dfe44f51bcb39c63f0b188554",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:309157c4bf61502b2697b4f24b1195e53bc144534236187f85a71a3e855cbb13",
+      "source_fact_keys": [
+        "source_fact:v1:41a94bf18dc0967265c187086620700f91c8fe98c3602dc19d8e563e3ffa972a"
+      ],
+      "source_published_kst": "2026-10-06T11:45+09:00",
+      "title": "파리 첫 진출 현대백화점 ‘더현대 글로벌’ “2030 매장 10개 목표”"
+    },
     "original:461dc201ef5efe3423afe3db": {
       "first_seen_kst": "2026-10-05T09:34:29+09:00",
       "lanes": {
@@ -39411,6 +39795,25 @@
       "link": "https://www.mk.co.kr/news/world/12165409",
       "source": "매일경제",
       "title": "美 8월 PCE 물가 전년 대비 3.4% 상승"
+    },
+    "original:47c9f994f36d32480d6f9558": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.fnnews.com/news/202610061128361611",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "563aa72ef5347e7acded864cc48e3fde7db09339809ff896a40eda377a2d8baa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13ec1a20fcf17b7da0cabab48dc5b7d079262e69c90afad4018129815ba3add0",
+      "source_fact_keys": [
+        "source_fact:v1:1a3961e0dc3de31a07488171735729b040f8866d263982492c19a347a4f9741e",
+        "source_fact:v1:3e6c70436c447f1e2de70e057c4d246c8cc7be9a446a42b3b311ed3f7644f864",
+        "source_fact:v1:44724b03232246e05c92ded9dd5965a6697d13c1d505ef411c51e95327c3677e"
+      ],
+      "source_published_kst": "2026-10-06T11:28+09:00",
+      "title": "삼성전기, 글로벌 기업에 2900억 MLCC 공급…AI부품 수주 '4조 클럽' 돌파"
     },
     "original:47ce9795975b17581e5f1a07": {
       "first_seen_kst": "2026-09-28T13:07:46+09:00",
@@ -42600,7 +43003,7 @@
       "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
       "source": "머니투데이",
       "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
       "source_fact_keys": [
         "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
@@ -46022,6 +46425,21 @@
       "source": "서울신문",
       "title": "경기도, 전국 최초 온실가스 관측 ‘경기기후위성 2호기’ 발사 성공"
     },
+    "original:9aaeb4a6eff51f9be831b227": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169063",
+      "source": "매일경제",
+      "source_body_digest": "4356e6c69bd1ad99be55c62f33ce69cc6cf027d6e64c1478c3a3113e0b9ce807",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:58+09:00",
+      "title": "AI 데이터센터 몰리자 전력·용수 부담…정책 재검토 나선 동남아"
+    },
     "original:9ac818f1fc8074a2e70b34d3": {
       "first_seen_kst": "2026-10-03T06:54:59+09:00",
       "lanes": {
@@ -46936,7 +47354,7 @@
       "link": "https://biz.heraldcorp.com/article/10894020",
       "source": "헤럴드경제",
       "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
       "source_fact_keys": [
         "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
@@ -47264,6 +47682,24 @@
       "link": "https://www.mt.co.kr/stock/2026/10/02/2026100209512464220",
       "source": "머니투데이",
       "title": "신한운용, 오는 7일 'SOL 글로벌DRAM반도체플러스' ETF 출시"
+    },
+    "original:aaea2580abe51e91d1712533": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.hankyung.com/article/202610065198L",
+      "source": "한국경제",
+      "source_body_digest": "d3fcbdbb76184e995a04d9b02ec37bfd8203b3fcc117b51c0c6ea38847e32720",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d15c3272ca655b40135a370c446a699bcff761e5d9d9d5d8b124f7d3f78e7c8",
+      "source_fact_keys": [
+        "source_fact:v1:e12c41e50185fbe795d72d7305ef7550509bd1307c49d8388ba8827625181880",
+        "source_fact:v1:e5449cf8e9522273799fac2071628ccbad51cf47ba96666e5558d0454e67366f"
+      ],
+      "source_published_kst": "2026-10-06T11:19+09:00",
+      "title": "넥스틴 수주공시 - Wafer Inspection System 공급계약 254.4억원 (매출액대비 38.02 %)"
     },
     "original:aaf756b545816faaa775eda5": {
       "first_seen_kst": "2026-10-05T18:22:57+09:00",
@@ -55109,7 +55545,7 @@
       "link": "https://biz.heraldcorp.com/article/10894020",
       "source": "헤럴드경제",
       "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
       "source_fact_keys": [
         "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
@@ -55996,7 +56432,7 @@
       "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
       "source": "머니투데이",
       "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
       "source_fact_keys": [
         "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
@@ -56989,7 +57425,7 @@
       "link": "https://biz.heraldcorp.com/article/10894020",
       "source": "헤럴드경제",
       "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
       "source_fact_keys": [
         "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
@@ -57132,6 +57568,25 @@
       ],
       "source_published_kst": "2026-10-06T08:25+09:00",
       "title": "NH투자證, “LS일렉트릭, 3분기 영업익 106%↑⋯북미 수혜”"
+    },
+    "source_fact:1bb9398f609b6b17f99a9a2d": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etnews.com/20261006000155",
+      "source": "전자신문",
+      "source_body_digest": "ccd1ebbe4288ba2948e95e8c40afac08d26b11d8c2cc7150a99b5ae7e131725b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f64183188fe5aa87e58f58bcbe285cb49ebda5366a2cbc17f6f1e1c8e47084bb",
+      "source_fact_keys": [
+        "source_fact:v1:7e8322fa6237de4bd712c3b101a2280811b87549a78e4dd8117325e02b5fab48",
+        "source_fact:v1:b85c8e6b462efe41d1076596f2d425fcd1b7300ef89e35804860a7bc191a9b90",
+        "source_fact:v1:d19330fa10dc2f03f8b742ed7139e2cb25a1874a9b4d331e0cb51738650a4ea2"
+      ],
+      "source_published_kst": "2026-10-06T11:14+09:00",
+      "title": "JW중외제약, 유럽당뇨병학회서 '엠파가드' 임상 3상 발표…3제 요법 유효성 입증"
     },
     "source_fact:1bc10cef2687ff34160bdc7b": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -58323,6 +58778,23 @@
       "source_published_kst": "2026-10-06T09:21+09:00",
       "title": "CPTPP, 농산물 관세만의 문제 아니다…농가 지원·검역도 '시험대'"
     },
+    "source_fact:258855bd2a35a897760f888d": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632767",
+      "source": "이투데이",
+      "source_body_digest": "4c51cbfb4329b51a4d8624d6d1469ff2d31bc23dfe44f51bcb39c63f0b188554",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:309157c4bf61502b2697b4f24b1195e53bc144534236187f85a71a3e855cbb13",
+      "source_fact_keys": [
+        "source_fact:v1:41a94bf18dc0967265c187086620700f91c8fe98c3602dc19d8e563e3ffa972a"
+      ],
+      "source_published_kst": "2026-10-06T11:45+09:00",
+      "title": "파리 첫 진출 현대백화점 ‘더현대 글로벌’ “2030 매장 10개 목표”"
+    },
     "source_fact:258b581c3922d3d325697c9b": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -59306,6 +59778,25 @@
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
+    "source_fact:2d8ba9168fe8a30b7eea1bcf": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etnews.com/20261006000155",
+      "source": "전자신문",
+      "source_body_digest": "ccd1ebbe4288ba2948e95e8c40afac08d26b11d8c2cc7150a99b5ae7e131725b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f64183188fe5aa87e58f58bcbe285cb49ebda5366a2cbc17f6f1e1c8e47084bb",
+      "source_fact_keys": [
+        "source_fact:v1:7e8322fa6237de4bd712c3b101a2280811b87549a78e4dd8117325e02b5fab48",
+        "source_fact:v1:b85c8e6b462efe41d1076596f2d425fcd1b7300ef89e35804860a7bc191a9b90",
+        "source_fact:v1:d19330fa10dc2f03f8b742ed7139e2cb25a1874a9b4d331e0cb51738650a4ea2"
+      ],
+      "source_published_kst": "2026-10-06T11:14+09:00",
+      "title": "JW중외제약, 유럽당뇨병학회서 '엠파가드' 임상 3상 발표…3제 요법 유효성 입증"
+    },
     "source_fact:2dd15e213fa7d14a7314aa9a": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
       "lanes": {
@@ -59392,6 +59883,24 @@
       ],
       "source_published_kst": "2026-10-06T08:25+09:00",
       "title": "\"LG전자, AI 데이터센터 냉각·로보틱스 사업 기대…목표가↑\"-메리츠"
+    },
+    "source_fact:2e3e7fc9df0c28af32278685": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632762",
+      "source": "이투데이",
+      "source_body_digest": "487b74c42e8817fd51895f9ac2527d1c7e6df7cf622fdd5bc5931b4b64ac713d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77d06687e4da31441abcac970e0cb715968c01e52fd4a3cef2b05c1d1ddbdafe",
+      "source_fact_keys": [
+        "source_fact:v1:9da0362beb8f90f4f05fe9cdc49f64cb2ce20cb68d49e4e1701f6cd9ce9282db",
+        "source_fact:v1:cf4fe038ad2b73e21672dbcbf402e1c6754045b9d50f69b59ae994352f234ca3"
+      ],
+      "source_published_kst": "2026-10-06T11:33+09:00",
+      "title": "李대통령 치킨값 점검 예고했는데…중량도 최대 30% 차이"
     },
     "source_fact:2ee0004c013b12bb61a71d2d": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -59720,6 +60229,25 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
+    },
+    "source_fact:312ac73866f4768f1952650d": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.fnnews.com/news/202610061128361611",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "563aa72ef5347e7acded864cc48e3fde7db09339809ff896a40eda377a2d8baa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13ec1a20fcf17b7da0cabab48dc5b7d079262e69c90afad4018129815ba3add0",
+      "source_fact_keys": [
+        "source_fact:v1:1a3961e0dc3de31a07488171735729b040f8866d263982492c19a347a4f9741e",
+        "source_fact:v1:3e6c70436c447f1e2de70e057c4d246c8cc7be9a446a42b3b311ed3f7644f864",
+        "source_fact:v1:44724b03232246e05c92ded9dd5965a6697d13c1d505ef411c51e95327c3677e"
+      ],
+      "source_published_kst": "2026-10-06T11:28+09:00",
+      "title": "삼성전기, 글로벌 기업에 2900억 MLCC 공급…AI부품 수주 '4조 클럽' 돌파"
     },
     "source_fact:312ed06648a1104976f14a41": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
@@ -60662,6 +61190,38 @@
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "반려동물 조회 간편하게···쿠콘 현대해상 펫보험에 API 공급"
     },
+    "source_fact:39ce94835ccf03ebbead7b42": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
     "source_fact:39e42176ac05f08f9aa5f18d": {
       "first_seen_kst": "2026-10-06T11:20:44+09:00",
       "lanes": {
@@ -60758,7 +61318,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632674",
       "source": "이투데이",
       "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
       "source_fact_keys": [
         "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
@@ -61095,6 +61655,38 @@
       ],
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "한독 파트너사 레졸루트, 선천성 고인슐린증 치료제 FDA 허가 전 미팅 권고"
+    },
+    "source_fact:3e2a86c4571da6509e5a1cdb": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
     "source_fact:3e313a90b51d7b9d38cae3ca": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -64202,7 +64794,7 @@
       "link": "https://biz.heraldcorp.com/article/10894020",
       "source": "헤럴드경제",
       "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
       "source_fact_keys": [
         "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
@@ -64215,6 +64807,38 @@
       ],
       "source_published_kst": "2026-10-06T11:12+09:00",
       "title": "LG전자, 5GW 북미 냉각 설루션 장기 계약"
+    },
+    "source_fact:58357b927ef74cf09129751b": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
     "source_fact:58554a1d7f372e197ccd23c9": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -66921,6 +67545,24 @@
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
     },
+    "source_fact:6f4a572629f829919850b55b": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.hankyung.com/article/202610065198L",
+      "source": "한국경제",
+      "source_body_digest": "d3fcbdbb76184e995a04d9b02ec37bfd8203b3fcc117b51c0c6ea38847e32720",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d15c3272ca655b40135a370c446a699bcff761e5d9d9d5d8b124f7d3f78e7c8",
+      "source_fact_keys": [
+        "source_fact:v1:e12c41e50185fbe795d72d7305ef7550509bd1307c49d8388ba8827625181880",
+        "source_fact:v1:e5449cf8e9522273799fac2071628ccbad51cf47ba96666e5558d0454e67366f"
+      ],
+      "source_published_kst": "2026-10-06T11:19+09:00",
+      "title": "넥스틴 수주공시 - Wafer Inspection System 공급계약 254.4억원 (매출액대비 38.02 %)"
+    },
     "source_fact:6f52f7a1ee72aa8f93be82c2": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -67164,6 +67806,38 @@
       "source_published_kst": "2026-10-06T10:16+09:00",
       "title": "엠플러스, 유럽 배터리 기업에 각형 장비 공급…방산·항공우주로 고객군 확대"
     },
+    "source_fact:71265a02f17cac878fd3b60e": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
     "source_fact:712cf87bc90368a34032890b": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -67394,7 +68068,7 @@
       "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
       "source": "머니투데이",
       "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
       "source_fact_keys": [
         "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
@@ -67491,7 +68165,7 @@
       "link": "https://biz.heraldcorp.com/article/10894020",
       "source": "헤럴드경제",
       "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
       "source_fact_keys": [
         "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
@@ -67809,7 +68483,7 @@
       "link": "https://biz.heraldcorp.com/article/10894020",
       "source": "헤럴드경제",
       "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
       "source_fact_keys": [
         "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
@@ -68241,6 +68915,38 @@
       "source_published_kst": "2026-10-06T07:45+09:00",
       "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
     },
+    "source_fact:7955f597af60ebdf928d2330": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
     "source_fact:798c8a3578f28add74160be7": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -68460,6 +69166,38 @@
       "source_published_kst": "2026-10-05T20:16+09:00",
       "title": "\"역사상 가장 어려운 시기\"…이란 안보수장, 경제난 공식 시인"
     },
+    "source_fact:7a6f7db1e9b9f2350c002953": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
     "source_fact:7ad06cf65230ddc24f251b56": {
       "first_seen_kst": "2026-10-06T00:03:48+09:00",
       "lanes": {
@@ -68594,6 +69332,38 @@
       ],
       "source_published_kst": "2026-10-05T22:31+09:00",
       "title": "메틀렌: 일본 주요 화학 기업과 신규 갈륨 공급 계약 체결"
+    },
+    "source_fact:7c238eb1d5f59f20e7c3dd61": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
     "source_fact:7c664f0cd72944bdc64c88ac": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -69432,6 +70202,24 @@
       "source_published_kst": "2026-10-05T16:20+09:00",
       "title": "日라피더스, 도시바 등 17개사와 반도체 설계 동맹"
     },
+    "source_fact:824b01d6a1eeb30ea8c2e589": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.hankyung.com/article/202610065198L",
+      "source": "한국경제",
+      "source_body_digest": "d3fcbdbb76184e995a04d9b02ec37bfd8203b3fcc117b51c0c6ea38847e32720",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d15c3272ca655b40135a370c446a699bcff761e5d9d9d5d8b124f7d3f78e7c8",
+      "source_fact_keys": [
+        "source_fact:v1:e12c41e50185fbe795d72d7305ef7550509bd1307c49d8388ba8827625181880",
+        "source_fact:v1:e5449cf8e9522273799fac2071628ccbad51cf47ba96666e5558d0454e67366f"
+      ],
+      "source_published_kst": "2026-10-06T11:19+09:00",
+      "title": "넥스틴 수주공시 - Wafer Inspection System 공급계약 254.4억원 (매출액대비 38.02 %)"
+    },
     "source_fact:824c68bc40458e108a304013": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -70234,6 +71022,25 @@
       "source_published_kst": "2026-10-06T08:50+09:00",
       "title": "외식 프랜차이즈, 가맹점 매출 줄 때 본사 매출은 늘었다"
     },
+    "source_fact:88bb23937a4eb03debbeb3ba": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.fnnews.com/news/202610061128361611",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "563aa72ef5347e7acded864cc48e3fde7db09339809ff896a40eda377a2d8baa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13ec1a20fcf17b7da0cabab48dc5b7d079262e69c90afad4018129815ba3add0",
+      "source_fact_keys": [
+        "source_fact:v1:1a3961e0dc3de31a07488171735729b040f8866d263982492c19a347a4f9741e",
+        "source_fact:v1:3e6c70436c447f1e2de70e057c4d246c8cc7be9a446a42b3b311ed3f7644f864",
+        "source_fact:v1:44724b03232246e05c92ded9dd5965a6697d13c1d505ef411c51e95327c3677e"
+      ],
+      "source_published_kst": "2026-10-06T11:28+09:00",
+      "title": "삼성전기, 글로벌 기업에 2900억 MLCC 공급…AI부품 수주 '4조 클럽' 돌파"
+    },
     "source_fact:894daca447c162bbb9674b67": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -70741,6 +71548,38 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "대신證 \"삼성바이오, 3분기 실적 컨센서스 부합…4분기 성장폭 확대\""
     },
+    "source_fact:8eaf1f68fe9ecff727f55ccb": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
     "source_fact:8ebb1ee63ded86aa938cec82": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -71086,7 +71925,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632674",
       "source": "이투데이",
       "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
       "source_fact_keys": [
         "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
@@ -71837,6 +72676,38 @@
       "source_published_kst": "2026-10-06T11:08+09:00",
       "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
     },
+    "source_fact:97891c5539ee08a451a3ebfc": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
     "source_fact:97b4f11080169fab72f51c00": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -72371,7 +73242,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632674",
       "source": "이투데이",
       "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
       "source_fact_keys": [
         "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
@@ -72382,6 +73253,38 @@
       ],
       "source_published_kst": "2026-10-06T11:01+09:00",
       "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
+    },
+    "source_fact:9cb45f6383bb35560608e28e": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
     "source_fact:9cb532c6639fadaa952521e0": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
@@ -72717,7 +73620,7 @@
       "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
       "source": "머니투데이",
       "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
       "source_fact_keys": [
         "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
@@ -72830,6 +73733,25 @@
       ],
       "source_published_kst": "2026-10-05T22:21+09:00",
       "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
+    },
+    "source_fact:a0ae1c473ebe83fec996f6d6": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etnews.com/20261006000155",
+      "source": "전자신문",
+      "source_body_digest": "ccd1ebbe4288ba2948e95e8c40afac08d26b11d8c2cc7150a99b5ae7e131725b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f64183188fe5aa87e58f58bcbe285cb49ebda5366a2cbc17f6f1e1c8e47084bb",
+      "source_fact_keys": [
+        "source_fact:v1:7e8322fa6237de4bd712c3b101a2280811b87549a78e4dd8117325e02b5fab48",
+        "source_fact:v1:b85c8e6b462efe41d1076596f2d425fcd1b7300ef89e35804860a7bc191a9b90",
+        "source_fact:v1:d19330fa10dc2f03f8b742ed7139e2cb25a1874a9b4d331e0cb51738650a4ea2"
+      ],
+      "source_published_kst": "2026-10-06T11:14+09:00",
+      "title": "JW중외제약, 유럽당뇨병학회서 '엠파가드' 임상 3상 발표…3제 요법 유효성 입증"
     },
     "source_fact:a0dc08a5e4ed7ea9305253f0": {
       "first_seen_kst": "2026-10-05T22:49:24+09:00",
@@ -73323,6 +74245,25 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
+    "source_fact:a55bcf4098b4044c2f73092c": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.fnnews.com/news/202610061128361611",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "563aa72ef5347e7acded864cc48e3fde7db09339809ff896a40eda377a2d8baa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13ec1a20fcf17b7da0cabab48dc5b7d079262e69c90afad4018129815ba3add0",
+      "source_fact_keys": [
+        "source_fact:v1:1a3961e0dc3de31a07488171735729b040f8866d263982492c19a347a4f9741e",
+        "source_fact:v1:3e6c70436c447f1e2de70e057c4d246c8cc7be9a446a42b3b311ed3f7644f864",
+        "source_fact:v1:44724b03232246e05c92ded9dd5965a6697d13c1d505ef411c51e95327c3677e"
+      ],
+      "source_published_kst": "2026-10-06T11:28+09:00",
+      "title": "삼성전기, 글로벌 기업에 2900억 MLCC 공급…AI부품 수주 '4조 클럽' 돌파"
     },
     "source_fact:a5d1ebda6478c353379a8de8": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
@@ -73908,7 +74849,7 @@
       "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
       "source": "머니투데이",
       "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
       "source_fact_keys": [
         "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
@@ -73929,7 +74870,7 @@
       "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
       "source": "머니투데이",
       "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
       "source_fact_keys": [
         "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
@@ -74002,6 +74943,38 @@
       ],
       "source_published_kst": "2026-10-05T18:17+09:00",
       "title": "뉴욕·상하이 증시, FOMC 의사록 공개…'S공포' 커지나"
+    },
+    "source_fact:abc077d489fe53adf955c942": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
     "source_fact:abc9c357178a675a8d5f850b": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -74983,6 +75956,38 @@
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
     },
+    "source_fact:b33f19839b742d386fd7abf4": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
     "source_fact:b3651549a855f2e1187cd77d": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -75601,6 +76606,38 @@
       "source_published_kst": "2026-10-06T09:44+09:00",
       "title": "[특징주] LG전자 5%대 강세⋯북미 AI 데이터센터 냉각 솔루션 공급 호재"
     },
+    "source_fact:b8898128418adb0ed512d717": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
     "source_fact:b8b97ff00e8da2a841a8d664": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -76037,6 +77074,38 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
+    "source_fact:bd6e33620eeb60b8fed44074": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
     "source_fact:bd8c29ab3ec88a665367ff71": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -76742,7 +77811,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815297",
       "source": "뉴시스",
       "source_body_digest": "7e78054ba5210a572235296341845a0ebbc73746007b1fdb7a042eb30f89b59e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:legislative_action:fc612f37895c2456be82a20f913ab1b7ca548e2c8fe7b2365de06c3582a1b479",
       "source_fact_identity": "source_facts:v1:c3369941273743cfe655837c416143643981afdda176e9bfd464a5066f8d790b",
       "source_fact_keys": [
         "source_fact:v1:92dd023bfedc5ca9237416ab25867fb8c468c5f67a914dbb077e6a167453ed8f"
@@ -76916,6 +77985,38 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:c557e5419a7a5fd330415276": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
     "source_fact:c56d10f48d0b66cacb4aa988": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
@@ -78349,7 +79450,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632674",
       "source": "이투데이",
       "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
       "source_fact_keys": [
         "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
@@ -78931,6 +80032,24 @@
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
     },
+    "source_fact:d775c9904b14f46c747166ec": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632762",
+      "source": "이투데이",
+      "source_body_digest": "487b74c42e8817fd51895f9ac2527d1c7e6df7cf622fdd5bc5931b4b64ac713d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77d06687e4da31441abcac970e0cb715968c01e52fd4a3cef2b05c1d1ddbdafe",
+      "source_fact_keys": [
+        "source_fact:v1:9da0362beb8f90f4f05fe9cdc49f64cb2ce20cb68d49e4e1701f6cd9ce9282db",
+        "source_fact:v1:cf4fe038ad2b73e21672dbcbf402e1c6754045b9d50f69b59ae994352f234ca3"
+      ],
+      "source_published_kst": "2026-10-06T11:33+09:00",
+      "title": "李대통령 치킨값 점검 예고했는데…중량도 최대 30% 차이"
+    },
     "source_fact:d776112042d976057de68d72": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
       "lanes": {
@@ -79506,7 +80625,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632674",
       "source": "이투데이",
       "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
       "source_fact_keys": [
         "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
@@ -81337,7 +82456,7 @@
       "link": "https://www.hankyung.com/article/202610065016i",
       "source": "한국경제",
       "source_body_digest": "3977dd101bc1caee96f349b253489808cb1f95f9e67bd7193357bc320d0104dd",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:legislative_action:fc612f37895c2456be82a20f913ab1b7ca548e2c8fe7b2365de06c3582a1b479",
       "source_fact_identity": "source_facts:v1:f1dd1eda031c05dc6c0cdff66335dd23f80e3e5b2df5bf8a551dbca812003988",
       "source_fact_keys": [
         "source_fact:v1:af31e5dfdc77027ae98632f457484cc9919ffd7b59833cc73618afffb59cc95f"
@@ -81421,7 +82540,7 @@
       "link": "https://biz.heraldcorp.com/article/10894020",
       "source": "헤럴드경제",
       "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
       "source_fact_keys": [
         "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
@@ -83605,6 +84724,38 @@
       ],
       "source_published_kst": "2026-10-05T23:29+09:00",
       "title": "[단독] 조원태 한진 회장 ‘배임’ 혐의 경찰 수사 본격화"
+    },
+    "source_fact:ff0b2e1dbda171b33824b661": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
     },
     "source_fact:ff2c2bce81d94b2d2aaefe5e": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -86606,7 +87757,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815297",
       "source": "뉴시스",
       "source_body_digest": "7e78054ba5210a572235296341845a0ebbc73746007b1fdb7a042eb30f89b59e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:legislative_action:fc612f37895c2456be82a20f913ab1b7ca548e2c8fe7b2365de06c3582a1b479",
       "source_fact_identity": "source_facts:v1:c3369941273743cfe655837c416143643981afdda176e9bfd464a5066f8d790b",
       "source_fact_keys": [
         "source_fact:v1:92dd023bfedc5ca9237416ab25867fb8c468c5f67a914dbb077e6a167453ed8f"
@@ -87246,7 +88397,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632674",
       "source": "이투데이",
       "source_body_digest": "7616bba332cae85aa67f4071ab98251f3e02487d53563af5bfecd93be6d35424",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:regulatory_package:c6b3b6d4eeea8d16c894d94f5e4eafb59a58861fecaed2b3591b2883e439afdc",
       "source_fact_identity": "source_facts:v1:e10a38f7064a9ae34409d75e7b98d72ca326fa795a5afb33dd422695de658d3c",
       "source_fact_keys": [
         "source_fact:v1:4074b5db6e9e35076f8c4a817f97dd7f63568a0ecd02124cf5b59ac818e627e6",
@@ -87554,6 +88705,38 @@
       "source": "매일경제",
       "title": "인시고, 노키아 FWA 사업 인수 완료로 매출 2배 확대 기대감 부각"
     },
+    "title:2ea7c7af7bdd2ee4ab8bbba9": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632567",
+      "source": "이투데이",
+      "source_body_digest": "5e29723906a4b11568003202be14f38d397215dbf5df3bc63600fdf46ae7f0c5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2febb61571e43ee7493b82ef7210e74479ac4930f059988616e62c88058e6c79",
+      "source_fact_keys": [
+        "source_fact:v1:30e8993d12d735ef02357e22ba5cb504d6d47c7ae714c198daf176a5254a6e93",
+        "source_fact:v1:322787e9b8562da8b6859e377baf2a7f642b2a10dc391377dd86c3d262e3dc4e",
+        "source_fact:v1:35aa51122ad9b9ec2bf2cbda6959b3fffda98a98c3dd1b5747c6e3901cde7f1f",
+        "source_fact:v1:3b1bf564142ed3d220ac094c3b39299a4ce77af2bf52447ccaf6ab569d37fbd0",
+        "source_fact:v1:515859c13cb9b81911b021a6778d13a6216b1cd209cb693487a45e7da6073df8",
+        "source_fact:v1:67eaaa3bd0d1a66f8696a31038f23a4f1e019922bb049c6acfa773b2de419dea",
+        "source_fact:v1:6d9e504cd7f39b66bf77a9abc1ea20c07e3d1c430f1af3a8a2fcb6b83f2f3ca5",
+        "source_fact:v1:9491a4c3b719d9c97f372a122ea0d19c67846f3a22d386293fadf0f53eb6a089",
+        "source_fact:v1:9dcecf9d4df7ed22181c4ea61efc3f8992d2ad316898f403712b7ba978815040",
+        "source_fact:v1:b5e0b7d62012404132eb4ba1e53991fe8a9a59500e99f602c416a9bd0c1d9a0f",
+        "source_fact:v1:ba852bef4e3aafe15cf3cfff612abd4a56ef3df8569897404a78a82cd65b91ea",
+        "source_fact:v1:bee1c46f1d2e76fbf25ade70aee40a46056ed07a0a9a4df4e9f3317e6c5c7fe9",
+        "source_fact:v1:d429cbfbbc7f080917d52d15c53014cf42a61dd41f02e6cb4a9d024edb52f779",
+        "source_fact:v1:e6497b13e510c7e2a5d43ffacd111d14c325d67f51f22511de23ef39247b570c",
+        "source_fact:v1:f297065aacf35ebef5b7551162640a1e3b66197124c761de5c5880d4fbcfe781",
+        "source_fact:v1:fb88af60514b100c8d44b03bd32348b5b72528b1f2627751cb092b7cbb8c1592"
+      ],
+      "source_published_kst": "2026-10-06T11:30+09:00",
+      "title": "정책자금 64% 대줘도 외면…글로벌 스케일업 대형리그 '흥행 부진'"
+    },
     "title:2eb58bd625fba9f42f2706e7": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -87570,6 +88753,25 @@
       ],
       "source_published_kst": "2026-10-05T22:37+09:00",
       "title": "농식품부 고위공직자 모친 농지 '미경작'…\"전수조사, 현실 못담아\""
+    },
+    "title:2f9cd80f9c7bdfad921dedaa": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etnews.com/20261006000155",
+      "source": "전자신문",
+      "source_body_digest": "ccd1ebbe4288ba2948e95e8c40afac08d26b11d8c2cc7150a99b5ae7e131725b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f64183188fe5aa87e58f58bcbe285cb49ebda5366a2cbc17f6f1e1c8e47084bb",
+      "source_fact_keys": [
+        "source_fact:v1:7e8322fa6237de4bd712c3b101a2280811b87549a78e4dd8117325e02b5fab48",
+        "source_fact:v1:b85c8e6b462efe41d1076596f2d425fcd1b7300ef89e35804860a7bc191a9b90",
+        "source_fact:v1:d19330fa10dc2f03f8b742ed7139e2cb25a1874a9b4d331e0cb51738650a4ea2"
+      ],
+      "source_published_kst": "2026-10-06T11:14+09:00",
+      "title": "JW중외제약, 유럽당뇨병학회서 '엠파가드' 임상 3상 발표…3제 요법 유효성 입증"
     },
     "title:2faa55f0138ec6fd5d9f9ed1": {
       "first_seen_kst": "2026-10-03T22:08:29+09:00",
@@ -87703,7 +88905,7 @@
       "link": "https://www.hankyung.com/article/202610065016i",
       "source": "한국경제",
       "source_body_digest": "3977dd101bc1caee96f349b253489808cb1f95f9e67bd7193357bc320d0104dd",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:legislative_action:fc612f37895c2456be82a20f913ab1b7ca548e2c8fe7b2365de06c3582a1b479",
       "source_fact_identity": "source_facts:v1:f1dd1eda031c05dc6c0cdff66335dd23f80e3e5b2df5bf8a551dbca812003988",
       "source_fact_keys": [
         "source_fact:v1:af31e5dfdc77027ae98632f457484cc9919ffd7b59833cc73618afffb59cc95f"
@@ -88011,6 +89213,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261002119100054",
       "source": "연합뉴스",
       "title": "광주도시철도 2호선 양산-신가구간 2034년 우선 개통 | 연합뉴스"
+    },
+    "title:353d284717d427548309b146": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632762",
+      "source": "이투데이",
+      "source_body_digest": "487b74c42e8817fd51895f9ac2527d1c7e6df7cf622fdd5bc5931b4b64ac713d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:77d06687e4da31441abcac970e0cb715968c01e52fd4a3cef2b05c1d1ddbdafe",
+      "source_fact_keys": [
+        "source_fact:v1:9da0362beb8f90f4f05fe9cdc49f64cb2ce20cb68d49e4e1701f6cd9ce9282db",
+        "source_fact:v1:cf4fe038ad2b73e21672dbcbf402e1c6754045b9d50f69b59ae994352f234ca3"
+      ],
+      "source_published_kst": "2026-10-06T11:33+09:00",
+      "title": "李대통령 치킨값 점검 예고했는데…중량도 최대 30% 차이"
     },
     "title:359c8e04fea630c6c4d6546b": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
@@ -89618,6 +90838,23 @@
       "source_published_kst": "2026-10-04T09:00+09:00",
       "title": "개통 또 연기…'저심도 공법'에 발목 잡힌 광주도철 2호선"
     },
+    "title:461d31a0e025f18ae79a07f4": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632767",
+      "source": "이투데이",
+      "source_body_digest": "4c51cbfb4329b51a4d8624d6d1469ff2d31bc23dfe44f51bcb39c63f0b188554",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:309157c4bf61502b2697b4f24b1195e53bc144534236187f85a71a3e855cbb13",
+      "source_fact_keys": [
+        "source_fact:v1:41a94bf18dc0967265c187086620700f91c8fe98c3602dc19d8e563e3ffa972a"
+      ],
+      "source_published_kst": "2026-10-06T11:45+09:00",
+      "title": "파리 첫 진출 현대백화점 ‘더현대 글로벌’ “2030 매장 10개 목표”"
+    },
     "title:461dc201ef5efe3423afe3db": {
       "first_seen_kst": "2026-10-05T09:34:29+09:00",
       "lanes": {
@@ -89819,6 +91056,25 @@
       "link": "https://www.mk.co.kr/news/world/12165409",
       "source": "매일경제",
       "title": "美 8월 PCE 물가 전년 대비 3.4% 상승"
+    },
+    "title:47c9f994f36d32480d6f9558": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.fnnews.com/news/202610061128361611",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "563aa72ef5347e7acded864cc48e3fde7db09339809ff896a40eda377a2d8baa",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:13ec1a20fcf17b7da0cabab48dc5b7d079262e69c90afad4018129815ba3add0",
+      "source_fact_keys": [
+        "source_fact:v1:1a3961e0dc3de31a07488171735729b040f8866d263982492c19a347a4f9741e",
+        "source_fact:v1:3e6c70436c447f1e2de70e057c4d246c8cc7be9a446a42b3b311ed3f7644f864",
+        "source_fact:v1:44724b03232246e05c92ded9dd5965a6697d13c1d505ef411c51e95327c3677e"
+      ],
+      "source_published_kst": "2026-10-06T11:28+09:00",
+      "title": "삼성전기, 글로벌 기업에 2900억 MLCC 공급…AI부품 수주 '4조 클럽' 돌파"
     },
     "title:47ce9795975b17581e5f1a07": {
       "first_seen_kst": "2026-09-28T13:07:46+09:00",
@@ -93018,7 +94274,7 @@
       "link": "https://www.mt.co.kr/industry/2026/10/05/2026100516112469972",
       "source": "머니투데이",
       "source_body_digest": "db8f5eadb11e2d3b3e2646b7ff82bc782fd36253a4448dbb618f7db537b30139",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:22504cafd5d56cf20d0879309490e265a409f44469b4b3e763ba371f6e363566",
       "source_fact_keys": [
         "source_fact:v1:042f3279d9e95da5f32f54228edd31c2aeaefd19d4d0daedbcc630c6f714002d",
@@ -96491,6 +97747,21 @@
       "source": "서울신문",
       "title": "경기도, 전국 최초 온실가스 관측 ‘경기기후위성 2호기’ 발사 성공"
     },
+    "title:9aaeb4a6eff51f9be831b227": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.mk.co.kr/news/world/12169063",
+      "source": "매일경제",
+      "source_body_digest": "4356e6c69bd1ad99be55c62f33ce69cc6cf027d6e64c1478c3a3113e0b9ce807",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T10:58+09:00",
+      "title": "AI 데이터센터 몰리자 전력·용수 부담…정책 재검토 나선 동남아"
+    },
     "title:9ac818f1fc8074a2e70b34d3": {
       "first_seen_kst": "2026-10-03T06:54:59+09:00",
       "lanes": {
@@ -97441,7 +98712,7 @@
       "link": "https://biz.heraldcorp.com/article/10894020",
       "source": "헤럴드경제",
       "source_body_digest": "eb9dd11ea466d43daa5a8720d502985ae761a5d935b72bb7f9812098e16a5915",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:capacity_supply_contract:1c52ad613a6c681513cc70e22e89fe9c1ca066cc22274d8485193829dd910b6f",
       "source_fact_identity": "source_facts:v1:6aebd2201689c854fce6f075d214389ff9d46c9bbc9245830b3a425e0e5472d3",
       "source_fact_keys": [
         "source_fact:v1:11714957b3812faae2c0ce6da6bab2b2398433dcfab8fd684e48d553dd427dd9",
@@ -97769,6 +99040,24 @@
       "link": "https://www.mt.co.kr/stock/2026/10/02/2026100209512464220",
       "source": "머니투데이",
       "title": "신한운용, 오는 7일 'SOL 글로벌DRAM반도체플러스' ETF 출시"
+    },
+    "title:aaea2580abe51e91d1712533": {
+      "first_seen_kst": "2026-10-06T14:18:00+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:18:00+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:18:00+09:00",
+      "link": "https://www.hankyung.com/article/202610065198L",
+      "source": "한국경제",
+      "source_body_digest": "d3fcbdbb76184e995a04d9b02ec37bfd8203b3fcc117b51c0c6ea38847e32720",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8d15c3272ca655b40135a370c446a699bcff761e5d9d9d5d8b124f7d3f78e7c8",
+      "source_fact_keys": [
+        "source_fact:v1:e12c41e50185fbe795d72d7305ef7550509bd1307c49d8388ba8827625181880",
+        "source_fact:v1:e5449cf8e9522273799fac2071628ccbad51cf47ba96666e5558d0454e67366f"
+      ],
+      "source_published_kst": "2026-10-06T11:19+09:00",
+      "title": "넥스틴 수주공시 - Wafer Inspection System 공급계약 254.4억원 (매출액대비 38.02 %)"
     },
     "title:aaf756b545816faaa775eda5": {
       "first_seen_kst": "2026-10-05T18:22:57+09:00",
@@ -104522,5 +105811,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T14:02:15+09:00"
+  "updated_at_kst": "2026-10-06T14:18:00+09:00"
 }
