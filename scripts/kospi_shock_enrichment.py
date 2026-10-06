@@ -701,7 +701,21 @@ def build_enrichment(
         att.get("available") and spot_leader and spot_leader == futures_leader
         and "보류" not in verdict
     )
-    direct_industry = direct_industry_interval(start_ts, low_ts, spot_leader or None)
+    spot_block = att.get("spot") or {}
+    negative_spot_actors = []
+    for actor in ("외국인", "기관", "개인"):
+        value = fnum(spot_block.get(actor))
+        if value is not None and value < 0:
+            negative_spot_actors.append((actor, value))
+    negative_spot_actors.sort(key=lambda x: x[1])
+    direct_industry_by_actor = {
+        actor: direct_industry_interval(start_ts, low_ts, actor)
+        for actor, _ in negative_spot_actors
+    }
+    direct_industry = (
+        direct_industry_by_actor.get(spot_leader)
+        if spot_leader else {"available": False, "reason": "현물 최다매도 주체 없음", "rows": []}
+    )
 
     master_rows = stock_master(token)
     master = {str(x.get("shcode") or "").strip(): x for x in master_rows}
@@ -859,6 +873,7 @@ def build_enrichment(
         },
         "stocks": top_stocks,
         "direct_industry": direct_industry,
+        "direct_industry_by_actor": direct_industry_by_actor,
         "industries": industries,
         "themes": theme_rows,
         "etfs": etfs[:6],
@@ -897,27 +912,33 @@ def build_enrichment(
         lines.append(f"• 시장 매도 주도 후보: <b>{html.escape(legacy_leader)}</b>")
 
     lines += ["", "<b>현물 주체가 직접 판 업종</b>"]
-    direct_rows = [
-        x for x in (direct_industry.get("rows") or [])
-        if (fnum(x.get("delta")) or 0.0) < 0
-    ]
-    if direct_industry.get("available") and direct_rows:
+    rendered_direct = False
+    for actor, spot_delta in negative_spot_actors:
+        block = direct_industry_by_actor.get(actor) or {}
+        direct_rows = [
+            x for x in (block.get("rows") or [])
+            if (fnum(x.get("delta")) or 0.0) < 0
+        ]
+        if not block.get("available") or not direct_rows:
+            continue
+        rendered_direct = True
         lines.append(
-            f"• 기준: 현물 최다매도 <b>{html.escape(str(direct_industry.get('investor') or '확인 불가'))}</b> · "
-            "통합 UBM 사건구간 순매수 원값 변화"
+            f"• <b>{html.escape(actor)}</b> 현물 사건구간 {spot_delta:+,.0f}억원 · "
+            "통합 UBM 업종 순매수 원값 변화"
         )
-        for i, row in enumerate(direct_rows[:4], 1):
+        for i, row in enumerate(direct_rows[:3], 1):
             lines.append(
-                f"• {i}. <b>{html.escape(str(row.get('name') or row.get('code')))}</b> · "
-                f"{html.escape(str(row.get('investor') or ''))} {_fmt_program(row.get('delta'))} "
-                f"<i>(LS UBM 원값)</i> · 기준점 시차 "
+                f"  {i}. <b>{html.escape(str(row.get('name') or row.get('code')))}</b> "
+                f"{_fmt_program(row.get('delta'))} <i>(LS UBM 원값)</i> · 기준점 시차 "
                 f"{float(row.get('start_gap_sec') or 0):.1f}초/{float(row.get('end_gap_sec') or 0):.1f}초"
             )
-    else:
-        lines.append(
-            "• 직접 업종 수급 판정 보류 — "
-            + html.escape(str(direct_industry.get("reason") or "통합 UBM 기준점 부족"))
-        )
+    if not rendered_direct:
+        reasons = [
+            str((direct_industry_by_actor.get(actor) or {}).get("reason") or "")
+            for actor, _ in negative_spot_actors
+        ]
+        reason = next((x for x in reasons if x), "통합 UBM 기준점 부족")
+        lines.append("• 직접 업종 수급 판정 보류 — " + html.escape(reason))
 
     lines += ["", "<b>프로그램·가격으로 본 하락 업종</b>"]
     if industries:
@@ -977,7 +998,7 @@ def build_enrichment(
     lines += [
         "",
         "<b>정확성</b>",
-        "• '현물 주체가 직접 판 업종'만 통합 UBM 투자자 수급으로 직접 판정합니다. 기준점이 30초를 넘으면 판정을 보류합니다.",
+        "• '현물 주체가 직접 판 업종'은 사건구간에 현물 순매도인 외국인·기관·개인을 각각 통합 UBM으로 직접 판정합니다. 기준점이 30초를 넘으면 해당 주체·업종 판정을 보류합니다.",
         "• 프로그램·가격 업종·테마·종목 순위는 장중 프로그램 매도 상위 후보군을 사건구간으로 재검산한 결과이며 전체 상장종목의 완전 전수순위로 표현하지 않습니다.",
         "• LS 프로그램 원값은 단위를 임의로 억원 환산하지 않습니다.",
         "• 특정 업종·테마의 외국인 직접 순매도액으로 바꿔 쓰지 않습니다.",
