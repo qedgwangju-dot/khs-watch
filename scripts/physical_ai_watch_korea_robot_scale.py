@@ -29,6 +29,20 @@ New alerts require measured execution: named-factory deployment, achieved
 reliability/uptime, quantitative human-video scaling, actual task-engineering cost
 reduction, mass-production/product launch, customer/supplier awards, or delay/safety
 reversals.
+
+Lane C — robot/physical-AI compute semiconductor competition
+Baseline locked:
+- Marc Raibert's 2026-10-06 SLW comment that Samsung/Google/AMD/Arm could expand
+  into robot-specialized compute is an expert outlook, not confirmation of a
+  Samsung/Google chip program.
+- NVIDIA Jetson Thor/T3000/T2000 robotics compute, AMD Ryzen AI Embedded/Kria/
+  Versal robotics offerings, and Arm Total Design for Physical AI/Robotics
+  Capability Framework are already-public baselines.
+
+New alerts require a company-level state change: official robot-chip program or
+roadmap, named silicon launch, tapeout/sample, robot-OEM design win, foundry
+contract, mass production/shipment, quantified performance-per-watt breakthrough,
+or cancellation/delay.
 """
 from __future__ import annotations
 
@@ -58,6 +72,9 @@ for q in [
     '(삼성전자 OR "Samsung Electronics") (로봇 OR robotics OR humanoid) ("World Action Model" OR "World Action Models" OR "Human Motion Retargeting" OR 인간 행동 영상 OR 사전학습 OR zero-shot OR 스케일링)',
     '(삼성전자 OR "Samsung Electronics") (로봇 OR robotics OR humanoid) (99.99 OR 성공률 OR 실패율 OR 가동률 OR 사람 개입 OR cycle time OR 작업개발비 OR NRE OR 학습비 OR 훈련시간)',
     '(삼성전자 OR "Samsung Electronics") (로봇 OR humanoid) (공급계약 OR 발주 OR 수주 OR 협력사 OR 공급사 OR 액추에이터 OR 감속기 OR 센서 OR 로봇손 OR 배터리)',
+    '(삼성전자 OR "Samsung Electronics" OR "Samsung System LSI" OR "System LSI") (로봇 OR robotics OR humanoid OR "physical AI" OR 피지컬AI) (칩 OR 반도체 OR processor OR SoC OR NPU OR accelerator OR silicon) (개발 OR roadmap OR program OR tapeout OR sample OR 양산 OR 채택 OR 고객 OR 수주)',
+    '(NVIDIA OR AMD OR "Advanced Micro Devices" OR Arm OR "Arm Holdings" OR Google OR "Google DeepMind") (robotics OR robot OR humanoid OR "physical AI" OR 로봇 OR 휴머노이드 OR 피지컬AI) (chip OR processor OR SoC OR NPU OR GPU OR accelerator OR silicon OR Jetson OR Ryzen OR Versal OR Kria OR Zena) (launch OR roadmap OR program OR tapeout OR sample OR design win OR adopt OR integrate OR production OR shipment OR benchmark)',
+    '("Marc Raibert" OR 마크 레이버트) (Samsung OR 삼성 OR Google OR 구글 OR AMD OR Arm) (robot OR robotics OR 로봇) (chip OR semiconductor OR processor OR 반도체 OR 칩)',
 ]:
     if q not in base.QUERIES:
         base.QUERIES.append(q)
@@ -65,11 +82,13 @@ for q in [
 base.OFFICIAL_OR_PRIMARY.update({
     '산업통상부', '국무조정실', '대한민국 정책브리핑', '정부24', '조달청', '나라장터',
     '삼성전자', 'Samsung Electronics', 'Samsung Newsroom', '삼성전자 뉴스룸',
-    'Samsung AI Forum', '삼성 AI Forum',
+    'Samsung AI Forum', '삼성 AI Forum', 'Samsung Semiconductor', 'Samsung System LSI',
+    'NVIDIA', 'AMD', 'Advanced Micro Devices', 'Arm', 'Arm Holdings',
+    'Google', 'Google DeepMind', 'Boston Dynamics',
 })
 base.TRUSTED.update({
     '연합뉴스', '뉴시스', '전자신문', '한국경제', '매일경제', '머니투데이',
-    '조선일보', '서울경제', '이데일리', 'Reuters',
+    '조선일보', '서울경제', '이데일리', '뉴스1', 'News1', 'Reuters', 'Bloomberg',
 })
 
 PRICE_ONLY = re.compile(r'주가|급등|상한가|특징주|수혜주|목표주가|stock\s*price|shares?\s*(?:jump|rise|surge)', re.I)
@@ -131,6 +150,106 @@ SUPPLIER_AWARD = re.compile(r'(?:로봇|휴머노이드).{0,100}(?:공급사\s*�
 SAMSUNG_REVERSE = re.compile(r'(?:로봇|휴머노이드|RX사업).{0,100}(?:연기|지연|중단|취소|사고|안전\s*문제|리콜|delay|postpone|suspend|cancel|accident|recall)', re.I)
 
 
+ROBOT_COMPUTE_ACTOR = re.compile(
+    r'NVIDIA|엔비디아|삼성전자|Samsung\s*Electronics|Samsung\s*System\s*LSI|System\s*LSI|'
+    r'Google(?:\s*DeepMind)?|구글|AMD|Advanced\s*Micro\s*Devices|\bArm\b|Arm\s*Holdings',
+    re.I,
+)
+ROBOT_COMPUTE_CTX = re.compile(
+    r'robotics?|humanoid|physical\s*AI|로보틱스|로봇|휴머노이드|피지컬\s*AI|피지컬AI',
+    re.I,
+)
+ROBOT_COMPUTE_CHIP = re.compile(
+    r'chip|processor|SoC|NPU|GPU|accelerator|silicon|semiconductor|Jetson|'
+    r'Ryzen\s*AI\s*Embedded|Versal|Kria|Zena|Cortex|반도체|칩|프로세서|가속기|실리콘',
+    re.I,
+)
+ROBOT_COMPUTE_EXPERT = re.compile(r'Marc\s+Raibert|마크\s*레이버트', re.I)
+ROBOT_COMPUTE_SPECULATIVE = re.compile(
+    r'could|may|might|possible|potential|could\s+have|may\s+have|'
+    r'전망|내다봤|가능|있을\s*수|할\s*수|시작할\s*것|뛰어들\s*수|프로그램이\s*있을',
+    re.I,
+)
+ROBOT_COMPUTE_RAIBERT_BASELINE = re.compile(
+    r'(?:Marc\s+Raibert|마크\s*레이버트).{0,500}'
+    r'(?:Samsung|삼성).{0,300}(?:Google|구글|AMD|Arm)|'
+    r'(?:Samsung|삼성).{0,500}(?:Marc\s+Raibert|마크\s*레이버트)',
+    re.I | re.S,
+)
+ROBOT_COMPUTE_NVIDIA_BASELINE = re.compile(
+    r'(?:NVIDIA|엔비디아).{0,220}(?:Jetson\s*(?:AGX\s*)?Thor|T3000|T2000).{0,220}'
+    r'(?:robot|humanoid|physical\s*AI|로봇|휴머노이드)|'
+    r'(?:Boston\s+Dynamics|Figure|Agility\s+Robotics).{0,220}Jetson\s*(?:AGX\s*)?Thor',
+    re.I | re.S,
+)
+ROBOT_COMPUTE_AMD_BASELINE = re.compile(
+    r'(?:AMD|Advanced\s*Micro\s*Devices).{0,240}'
+    r'(?:Ryzen\s*AI\s*Embedded|Kria\s*AI|Versal\s*AI\s*Edge|Embedded\+).{0,220}'
+    r'(?:robot|physical\s*AI|로봇|피지컬\s*AI)',
+    re.I | re.S,
+)
+ROBOT_COMPUTE_ARM_BASELINE = re.compile(
+    r'(?:\bArm\b|Arm\s*Holdings).{0,260}'
+    r'(?:Total\s*Design\s+for\s+Physical\s+AI|Robotics\s+Capability\s+Framework|'
+    r'Zena\s*(?:CSS)?|physical\s*AI).{0,220}(?:robot|robotics|로봇|휴머노이드|humanoid)',
+    re.I | re.S,
+)
+ROBOT_COMPUTE_PROGRAM = re.compile(
+    r'(?:robot(?:ics)?|humanoid|physical\s*AI|로봇|휴머노이드|피지컬\s*AI).{0,140}'
+    r'(?:dedicated|purpose[-\s]*built|specialized|custom).{0,80}'
+    r'(?:chip|processor|SoC|NPU|accelerator|silicon|칩|프로세서|반도체|가속기)|'
+    r'(?:chip|processor|SoC|NPU|accelerator|silicon|칩|프로세서|반도체|가속기).{0,140}'
+    r'(?:robot(?:ics)?|humanoid|physical\s*AI|로봇|휴머노이드|피지컬\s*AI)',
+    re.I,
+)
+ROBOT_COMPUTE_ANNOUNCED = re.compile(
+    r'announc|unveil|introduc|launch|roadmap|official|developing|development\s+program|'
+    r'confirmed|공식|발표|공개|개발\s*(?:착수|중|계획)|로드맵|프로그램\s*(?:가동|착수)',
+    re.I,
+)
+ROBOT_COMPUTE_TAPEOUT = re.compile(
+    r'tape[-\s]*out|first\s+silicon|engineering\s+sample|customer\s+sample|'
+    r'prototype\s+silicon|시제품\s*칩|초도\s*실리콘|테이프아웃|샘플\s*(?:공급|출하|검증)',
+    re.I,
+)
+ROBOT_COMPUTE_LAUNCH = re.compile(
+    r'launch|launched|introduc|unveil|released|general\s+availability|출시|공개|'
+    r'정식\s*발표|양산형\s*제품',
+    re.I,
+)
+ROBOT_COMPUTE_OEM = re.compile(
+    r'Boston\s+Dynamics|Figure\s*AI|Figure\s*0?3|Agility\s+Robotics|Unitree|'
+    r'Apptronik|XPENG|샤오펑|삼성전자\s*로봇|현대차|Hyundai|ROBOTIS|로보티즈',
+    re.I,
+)
+ROBOT_COMPUTE_DESIGN_WIN = re.compile(
+    r'adopt|integrat|select|design\s*win|design[-\s]*in|customer\s+award|'
+    r'채택|탑재|선정|디자인윈|고객\s*승인|공급사\s*선정',
+    re.I,
+)
+ROBOT_COMPUTE_FOUNDRY = re.compile(
+    r'foundry|fab|wafer|contract\s+manufactur|파운드리|위탁\s*생산|웨이퍼|'
+    r'생산\s*수주|파운드리\s*계약',
+    re.I,
+)
+ROBOT_COMPUTE_PRODUCTION = re.compile(
+    r'mass\s*production|volume\s*production|shipments?\s*(?:started|began)|'
+    r'commercial\s*shipment|양산\s*(?:개시|시작|돌입)|대량\s*생산|출하\s*(?:개시|시작)',
+    re.I,
+)
+ROBOT_COMPUTE_BENCHMARK = re.compile(
+    r'\d[\d,.]*\s*(?:TOPS|TFLOPS|W|watts?)|performance\s*per\s*watt|'
+    r'energy\s*efficien|latency|성능\s*당\s*와트|전성비|지연시간',
+    re.I,
+)
+ROBOT_COMPUTE_REVERSE = re.compile(
+    r'(?:robot(?:ics)?|humanoid|physical\s*AI|로봇|휴머노이드|피지컬\s*AI).{0,160}'
+    r'(?:chip|processor|SoC|NPU|accelerator|silicon|칩|프로세서|반도체|가속기).{0,160}'
+    r'(?:delay|postpone|cancel|halt|suspend|cut\s+back|지연|연기|취소|중단|축소)',
+    re.I | re.S,
+)
+
+
 def _is_korea_policy(text: str) -> bool:
     execution = (
         KOREA_POLICY.search(text) or PROC_NOTICE.search(text) or PROC_AWARD.search(text)
@@ -156,6 +275,49 @@ def _is_korea_policy(text: str) -> bool:
 
 def _is_samsung_robot(text: str) -> bool:
     return bool(SAMSUNG.search(text) and SAMSUNG_ROBOT.search(text))
+
+
+def _is_robot_compute(text: str) -> bool:
+    if ROBOT_COMPUTE_RAIBERT_BASELINE.search(text):
+        return True
+    return bool(
+        ROBOT_COMPUTE_ACTOR.search(text)
+        and ROBOT_COMPUTE_CTX.search(text)
+        and ROBOT_COMPUTE_CHIP.search(text)
+    )
+
+
+def _robot_compute_stage(text: str, source: str = '') -> str:
+    if ROBOT_COMPUTE_REVERSE.search(text):
+        return 'reverse'
+    if ROBOT_COMPUTE_RAIBERT_BASELINE.search(text) and ROBOT_COMPUTE_SPECULATIVE.search(text):
+        return 'expert_outlook_baseline'
+    if ROBOT_COMPUTE_NVIDIA_BASELINE.search(text):
+        return 'known_vendor_baseline'
+    if ROBOT_COMPUTE_AMD_BASELINE.search(text):
+        return 'known_vendor_baseline'
+    if ROBOT_COMPUTE_ARM_BASELINE.search(text):
+        return 'known_vendor_baseline'
+    if (
+        re.search(r'Samsung\s*(?:Electronics|System\s*LSI)|삼성전자|System\s*LSI', text, re.I)
+        and ROBOT_COMPUTE_FOUNDRY.search(text)
+        and re.search(r'contract|award|selected|수주|계약|선정', text, re.I)
+        and ROBOT_COMPUTE_CTX.search(text)
+    ):
+        return 'foundry_contract'
+    if ROBOT_COMPUTE_OEM.search(text) and ROBOT_COMPUTE_DESIGN_WIN.search(text):
+        return 'robot_oem_design_win'
+    if ROBOT_COMPUTE_PRODUCTION.search(text):
+        return 'mass_production_or_shipment'
+    if ROBOT_COMPUTE_TAPEOUT.search(text):
+        return 'tapeout_or_sample'
+    if ROBOT_COMPUTE_PROGRAM.search(text) and ROBOT_COMPUTE_LAUNCH.search(text):
+        return 'silicon_launch'
+    if ROBOT_COMPUTE_PROGRAM.search(text) and ROBOT_COMPUTE_ANNOUNCED.search(text):
+        return 'official_program'
+    if ROBOT_COMPUTE_BENCHMARK.search(text) and ROBOT_COMPUTE_PROGRAM.search(text):
+        return 'quantified_performance'
+    return 'monitor'
 
 
 def _policy_stage(text: str) -> str:
@@ -203,6 +365,8 @@ def _samsung_stage(text: str) -> str:
 def topic_group(text: str) -> str | None:
     if _is_korea_policy(text):
         return 'korea_robot_scale_policy'
+    if _is_robot_compute(text):
+        return 'robot_compute_semiconductor'
     if _is_samsung_robot(text):
         return 'samsung_robot_scale'
     return _orig_topic_group(text)
@@ -258,6 +422,32 @@ def score(item: dict) -> int:
         }.get(stage, 0)
         return s
 
+    if group == 'robot_compute_semiconductor':
+        src = item.get('source') or ''
+        stage = _robot_compute_stage(text, src)
+        if stage in {'expert_outlook_baseline', 'known_vendor_baseline', 'monitor'}:
+            return 0
+        if PRICE_ONLY.search(title):
+            return -20
+        # Accuracy first: rumors/blogs cannot create robot-chip state changes.
+        if src not in base.OFFICIAL_OR_PRIMARY and src not in base.TRUSTED:
+            return 0
+        s = 20
+        if base.NUMERIC.search(text): s += 3
+        if src in base.OFFICIAL_OR_PRIMARY: s += 8
+        elif src in base.TRUSTED: s += 4
+        s += {
+            'official_program': 10,
+            'silicon_launch': 15,
+            'tapeout_or_sample': 13,
+            'robot_oem_design_win': 17,
+            'foundry_contract': 17,
+            'mass_production_or_shipment': 18,
+            'quantified_performance': 11,
+            'reverse': 15,
+        }.get(stage, 0)
+        return s
+
     return _orig_score(item)
 
 
@@ -287,6 +477,20 @@ def category(text: str, group: str) -> str:
             'reverse': '삼성전자 로봇 · 일정·안전·신뢰성 후퇴',
         }.get(_samsung_stage(text), '삼성전자 로봇 · 사업 단계 변화')
 
+    if group == 'robot_compute_semiconductor':
+        return {
+            'expert_outlook_baseline': '로봇 반도체 · 레이버트 전망 기준선',
+            'known_vendor_baseline': '로봇 반도체 · 기존 상용 플랫폼 기준선',
+            'official_program': '로봇 반도체 · 공식 개발·로드맵 착수',
+            'silicon_launch': '로봇 반도체 · 신규 전용칩·프로세서 공개',
+            'tapeout_or_sample': '로봇 반도체 · 테이프아웃·고객 샘플',
+            'robot_oem_design_win': '로봇 반도체 · 로봇 OEM 채택·디자인윈',
+            'foundry_contract': '로봇 반도체 · 삼성 파운드리 생산수주',
+            'mass_production_or_shipment': '로봇 반도체 · 양산·상업 출하',
+            'quantified_performance': '로봇 반도체 · 전성비·지연 정량 개선',
+            'reverse': '로봇 반도체 · 개발·양산 일정 후퇴',
+        }.get(_robot_compute_stage(text), '로봇 반도체 · 후속 변화')
+
     return _orig_category(text, group)
 
 
@@ -315,6 +519,22 @@ def meaning(cat: str) -> str:
             '핵심부품 공급사·발주': '삼성 로봇의 부품 수혜가 실제 공급사 선정·발주로 확인되는 단계입니다. 액추에이터·감속기·센서·로봇손·배터리의 업체, 물량, 단가와 양산일을 추적합니다.',
             '일정·안전·신뢰성 후퇴': '로봇 양산·현장배치가 신뢰성·안전·사고·개발지연 때문에 뒤로 밀리는 역방향 신호입니다. 실패 원인과 새 일정, 보증·보험 영향을 확인합니다.',
         }.get(raw, 'RX사업추진실의 제조→가정 전략, 수백만대 잠재력, 99.99% 필요 수준, World Action Models·Human Motion Retargeting은 현재 기준선이며 반복 보도는 침묵합니다.')
+
+
+    if cat.startswith('로봇 반도체'):
+        raw = cat.split(' · ', 1)[-1]
+        return {
+            '레이버트 전망 기준선': '2026년 10월 6일 마크 레이버트가 삼성·Google·AMD·Arm 등도 로봇 특화 반도체에 참여할 수 있다고 전망한 발언입니다. 삼성·Google의 로봇 전용칩 공식 프로그램으로 승격하지 않습니다.',
+            '기존 상용 플랫폼 기준선': 'NVIDIA Jetson Thor 계열, AMD Ryzen AI Embedded·Kria·Versal 로봇용 컴퓨트, Arm의 Physical AI 플랫폼은 이미 공개된 기준선입니다. 반복 소개는 침묵합니다.',
+            '공식 개발·로드맵 착수': '전망이 아니라 회사가 로봇·피지컬AI 전용 실리콘 개발 또는 로드맵을 직접 확인한 단계입니다. 제품명·공정·연산성능·전력·샘플 일정과 양산 시점을 추적합니다.',
+            '신규 전용칩·프로세서 공개': '로봇 두뇌 경쟁이 실제 제품으로 구체화되는 단계입니다. TOPS/TFLOPS, 메모리 대역폭, 소비전력, 센서·모터 제어 통합과 소프트웨어 생태계를 비교합니다.',
+            '테이프아웃·고객 샘플': '로드맵이 실제 실리콘과 고객 평가 단계로 넘어가는 신호입니다. 테이프아웃 공정, 샘플 고객, 평가기간, 수율과 양산 전환 일정을 확인합니다.',
+            '로봇 OEM 채택·디자인윈': '칩 성능이 실제 로봇 제조사 선택으로 전환되는 핵심 매출 신호입니다. 로봇 모델·대수·칩 탑재수량·평균판매단가·SOP와 반복 발주를 연결합니다.',
+            '삼성 파운드리 생산수주': '삼성이 자체 로봇칩을 만드는 것과 별개로 외부 로봇·피지컬AI 칩의 파운드리 매출을 확보하는 경로입니다. 고객·공정노드·웨이퍼 물량·양산 시점을 분리합니다.',
+            '양산·상업 출하': '샘플·디자인윈이 반복 가능한 출하 매출로 전환되는 단계입니다. 실제 출하량·가동률·수율·고객 재주문을 확인합니다.',
+            '전성비·지연 정량 개선': '휴머노이드에서 제한적인 전력·발열 예산 안에 더 큰 모델과 센서 처리를 넣을 수 있는지 보는 핵심 기술 재평가 신호입니다. 동일 조건의 성능/와트·지연시간을 비교합니다.',
+            '개발·양산 일정 후퇴': '로봇 전용 실리콘은 소프트웨어 포팅·전력·발열·안전·고객 검증 때문에 일정이 밀릴 수 있습니다. 새 샘플·양산 일정을 확인합니다.',
+        }.get(raw, '전문가 전망과 회사의 실제 제품·고객·양산 단계를 엄격히 분리합니다.')
 
     return _orig_meaning(cat)
 
@@ -350,6 +570,19 @@ def risk(cat: str) -> str:
             return '가장 현실적인 실패 경로는 사람 개입률·고장률이 높아 99.99% 산업 신뢰성에 못 미치는 경우입니다. 배치 확대와 가정 진출이 함께 지연될 수 있습니다.'
         return '수백만대는 잠재시장 표현이지 판매가이던스가 아닙니다. 공장별 실제 배치대수와 양산제품·가격·외부판매를 별도로 확인합니다.'
 
+
+    if cat.startswith('로봇 반도체'):
+        raw = cat.split(' · ', 1)[-1]
+        if raw == '레이버트 전망 기준선':
+            return '전문가의 산업전망은 기업의 실제 개발계획이 아닙니다. 삼성·Google은 공식 로봇 전용 실리콘 발표가 나오기 전까지 기대감 단계로 고정합니다.'
+        if raw == '로봇 OEM 채택·디자인윈':
+            return '디자인윈도 고객 로봇의 양산 지연·이중조달·소프트웨어 변경으로 실제 출하가 늦어질 수 있습니다. 고객 SOP와 반복 주문을 확인합니다.'
+        if raw == '삼성 파운드리 생산수주':
+            return '파운드리 수주와 삼성 자체 로봇칩 사업은 다른 수익경로입니다. 고객 칩의 양산수율·웨이퍼 투입량·단가와 자체 System LSI 제품을 분리합니다.'
+        if raw == '전성비·지연 정량 개선':
+            return '벤치마크 조건이 다르면 우위를 과대평가할 수 있습니다. 같은 모델·정밀도·전력한도·열설계 조건에서 검증하고 로봇의 실제 연속가동 성능을 봅니다.'
+        return '칩 성능만으로 로봇 플랫폼 채택이 결정되지 않습니다. CUDA/ROCm/Arm 생태계, 실시간 제어, 센서 I/O, 기능안전, 발열과 공급 안정성이 함께 병목이 됩니다.'
+
     return _orig_risk(cat)
 
 
@@ -363,6 +596,15 @@ def verification(item: dict, group: str, text: str) -> str:
         if src in base.OFFICIAL_OR_PRIMARY:
             return '삼성전자·삼성 AI Forum 공식자료'
         return '신뢰 매체 보도 · 삼성전자 공식자료와 실제 공장·제품 단계 교차확인'
+    if group == 'robot_compute_semiconductor':
+        stage = _robot_compute_stage(text, src)
+        if stage == 'expert_outlook_baseline':
+            return '뉴스1의 마크 레이버트 현장 직접발언 + SLW·서울시 공식 행사 확인 · 기업별 로봇칩 프로그램은 미확정'
+        if src in base.OFFICIAL_OR_PRIMARY:
+            return '반도체·로봇 기업 공식자료 · 개발/샘플/채택/양산 단계 분리'
+        if src in base.TRUSTED:
+            return '신뢰 매체 보도 · 해당 반도체사·로봇 OEM 공식자료로 단계 교차확인'
+        return '미확인 보도 · 단독 알림 금지'
     return _orig_verification(item, group, text)
 
 
@@ -401,6 +643,36 @@ def key(item: dict) -> str:
             f"samsung-robot-scale|{stage}|{','.join(anchors)}|{_sig_numbers(text)}".encode()
         ).hexdigest()
 
+
+    if group == 'robot_compute_semiconductor':
+        stage = _robot_compute_stage(text, item.get('source') or '')
+        if stage == 'expert_outlook_baseline':
+            return hashlib.sha256(b'robot-compute|raibert|slw2026|samsung-google-amd-arm-outlook').hexdigest()
+        if stage == 'known_vendor_baseline':
+            vendor = 'nvidia' if re.search(r'NVIDIA|엔비디아', text, re.I) else (
+                'amd' if re.search(r'AMD|Advanced\\s*Micro', text, re.I) else 'arm'
+            )
+            return hashlib.sha256(f'robot-compute|known-baseline|{vendor}'.encode()).hexdigest()
+        vendors = []
+        for name, pat in [
+            ('samsung', r'삼성전자|Samsung\\s*Electronics|Samsung\\s*System\\s*LSI|System\\s*LSI'),
+            ('nvidia', r'NVIDIA|엔비디아'), ('amd', r'AMD|Advanced\\s*Micro\\s*Devices'),
+            ('arm', r'\\bArm\\b|Arm\\s*Holdings'), ('google', r'Google|구글'),
+        ]:
+            if re.search(pat, text, re.I): vendors.append(name)
+        oems = sorted(set(re.findall(
+            r'Boston\\s+Dynamics|Figure\\s*AI|Agility\\s+Robotics|Unitree|Apptronik|XPENG|ROBOTIS|로보티즈|현대차|Hyundai',
+            text, re.I,
+        )))
+        nums = '|'.join(sorted(set(re.findall(
+            r'\\d[\\d,.]*\\s*(?:TOPS|TFLOPS|W|watts?|nm|대|개|만대|million|billion)',
+            text,
+            re.I,
+        )))[:6])
+        return hashlib.sha256(
+            f"robot-compute|{stage}|{','.join(vendors)}|{','.join(oems)}|{nums}".encode()
+        ).hexdigest()
+
     return _orig_key(item)
 
 
@@ -409,6 +681,8 @@ def tag_for(group: str) -> str:
         return '한국로봇정책'
     if group == 'samsung_robot_scale':
         return '삼성전자로봇'
+    if group == 'robot_compute_semiconductor':
+        return '로봇반도체'
     return _orig_tag_for(group)
 
 
@@ -435,13 +709,24 @@ def clean_title(title: str, source: str) -> str:
             'supplier_award': '삼성전자 로봇 핵심부품 공급사·발주 확인',
             'reverse': '삼성전자 로봇, 일정·안전·신뢰성 역방향 변화',
         }.get(_samsung_stage(text), _orig_clean_title(title, source))
+    if _is_robot_compute(text):
+        return {
+            'official_program': '로봇 반도체, 공식 개발·로드맵 신규 확인',
+            'silicon_launch': '로봇 반도체, 신규 전용칩·프로세서 공개',
+            'tapeout_or_sample': '로봇 반도체, 테이프아웃·고객 샘플 단계 진입',
+            'robot_oem_design_win': '로봇 반도체, 로봇 OEM 채택·디자인윈 확인',
+            'foundry_contract': '삼성 파운드리, 로봇·피지컬AI 칩 생산수주 확인',
+            'mass_production_or_shipment': '로봇 반도체, 실제 양산·상업 출하 시작',
+            'quantified_performance': '로봇 반도체, 전성비·지연 정량 개선 확인',
+            'reverse': '로봇 반도체, 개발·양산 일정 후퇴',
+        }.get(_robot_compute_stage(text, source), _orig_clean_title(title, source))
     return _orig_clean_title(title, source)
 
 
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
-    for group in ('korea_robot_scale_policy', 'samsung_robot_scale'):
+    for group in ('korea_robot_scale_policy', 'samsung_robot_scale', 'robot_compute_semiconductor'):
         hit = next((x for x in candidates if x.get('group') == group), None)
         if not hit or any(x.get('key') == hit.get('key') for x in chosen):
             continue
