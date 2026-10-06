@@ -1,62 +1,62 @@
 {
   "seen": {
-    "Nasdaq SOX|sox": "49ef6776b70c6aabe3734dc55fb603711dbfc62705218a75d7be5adf52601561",
-    "Cboe|options": "a25cbfc0903879a45d36afcb333fad2039978f272fb0e53c042e3614d7aad9e0",
+    "Nasdaq SOX|sox": "0b8c90ea30fb360e5df72e8cc09e50e1766d0a76ac8934f809d3aa2d73f4aef7",
+    "Cboe|options": "aca15a594dabf3169916ab743e96e5a7f4cd4de371d4078849a2860a95ffaec9",
     "CFTC|cot": "c6cd12bb2f7ff0dae21beafc02d13fa2a2370b448ca51c53f9192bd15fa89dc3"
   },
   "values": {
     "Nasdaq SOX|sox": {
       "source": "Nasdaq SOX",
       "kind": "sox",
-      "period": "10/02/2026",
+      "period": "10/05/2026",
       "metrics": {
-        "value": 13136.67,
-        "previous_close": 12829.0,
+        "value": 13172.74,
+        "previous_close": 13136.669921875,
         "previous_close_source": "Yahoo daily close cross-check",
-        "net_change": 307.6700000000001,
+        "net_change": 36.07007812499978,
         "net_change_source": "Nasdaq official close minus Yahoo prior daily close",
-        "pct": 2.398238366201566,
-        "d1_pct": 2.398238366201566,
+        "pct": 0.27457550764016236,
+        "d1_pct": 0.27457550764016236,
         "official_overview_url": "https://beta.indexes.nasdaq.com/Index/Overview/SOX",
         "crosscheck_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5ESOX?range=10d&interval=1d",
         "crosscheck_same_date": true,
-        "crosscheck_close_diff": 7.812500007275958e-05,
+        "crosscheck_close_diff": 0.0036718749997817213,
         "final_close_confirmed": true,
-        "d3_pct": 4.018555148133429,
-        "d5_pct": 3.692026445110863
+        "d3_pct": 4.3085959185434675,
+        "d5_pct": 5.6757517741131025
       },
       "url": "https://beta.indexes.nasdaq.com/Index/Overview/SOX",
-      "fingerprint": "49ef6776b70c6aabe3734dc55fb603711dbfc62705218a75d7be5adf52601561"
+      "fingerprint": "0b8c90ea30fb360e5df72e8cc09e50e1766d0a76ac8934f809d3aa2d73f4aef7"
     },
     "Cboe|options": {
       "source": "Cboe",
       "kind": "options",
-      "period": "Friday, October 2, 2026",
+      "period": "Monday, October 5, 2026",
       "metrics": {
-        "total_pc_ratio": 0.78,
-        "total_calls": 8733513,
-        "total_puts": 6780536,
+        "total_pc_ratio": 0.83,
+        "total_calls": 7720926,
+        "total_puts": 6429431,
         "total_time_ct": "일별 마감",
-        "equity_pc_ratio": 0.58,
-        "equity_calls": 2847792,
-        "equity_puts": 1655977,
+        "equity_pc_ratio": 0.59,
+        "equity_calls": 2584689,
+        "equity_puts": 1520104,
         "equity_time_ct": "일별 마감",
-        "index_pc_ratio": 0.86,
-        "index_calls": 3890213,
-        "index_puts": 3359275,
+        "index_pc_ratio": 0.91,
+        "index_calls": 3440625,
+        "index_puts": 3136869,
         "index_time_ct": "일별 마감",
         "snapshot_type": "cboe_daily_eod",
         "final_snapshot": true,
         "daily_ratio_crosscheck": {
-          "date": "2026-10-02",
-          "total": 0.78,
-          "index": 0.86,
-          "equity": 0.58,
-          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-02"
+          "date": "2026-10-05",
+          "total": 0.83,
+          "index": 0.91,
+          "equity": 0.59,
+          "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-05"
         }
       },
-      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-02",
-      "fingerprint": "a25cbfc0903879a45d36afcb333fad2039978f272fb0e53c042e3614d7aad9e0"
+      "url": "https://www.cboe.com/markets/us/options/market-statistics/daily?dt=2026-10-05",
+      "fingerprint": "aca15a594dabf3169916ab743e96e5a7f4cd4de371d4078849a2860a95ffaec9"
     },
     "CFTC|cot": {
       "source": "CFTC",
@@ -156,5 +156,5 @@
       }
     }
   },
-  "updated_at_kst": "2026-10-05T16:01:43.854750+09:00"
+  "updated_at_kst": "2026-10-06T11:58:10.707244+09:00"
 }
