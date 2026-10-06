@@ -51,6 +51,10 @@ OFFICIAL = {'news.samsung.com': 'samsung', 'semiconductor.samsung.com': 'samsung
             'news.skhynix.com': 'skhynix', 'investors.micron.com': 'micron', 'micron.com': 'micron',
             'nvidianews.nvidia.com': 'nvidia', 'developer.nvidia.com': 'nvidia',
             'chemtronics.co.kr': 'chemtronics', 'www.chemtronics.co.kr': 'chemtronics',
+            'thejntc.com': 'jntc', 'www.thejntc.com': 'jntc',
+            'skc.kr': 'absolics', 'www.skc.kr': 'absolics',
+            'samsungsem.com': 'samsung_electromechanics', 'www.samsungsem.com': 'samsung_electromechanics',
+            'lginnotek.com': 'lg_innotek', 'www.lginnotek.com': 'lg_innotek',
             'kind.krx.co.kr': 'krx'}
 RANK = {'user_capture': 0, 'reported': 1, 'research': 2, 'official': 3}
 POSTPROCESS_ENTITIES = {
