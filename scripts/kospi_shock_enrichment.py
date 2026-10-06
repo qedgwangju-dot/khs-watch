@@ -76,22 +76,54 @@ def get_token() -> str:
     secret = (os.getenv("LS_OPENAPI_APP_SECRET") or "").strip()
     if not key or not secret:
         raise RuntimeError("LS secrets missing")
-    r = requests.post(
-        BASE + "/oauth2/token",
-        headers={"content-type": "application/x-www-form-urlencoded"},
-        params={
-            "grant_type": "client_credentials",
-            "appkey": key,
-            "appsecretkey": secret,
-            "scope": "oob",
-        },
-        timeout=30,
-    )
-    r.raise_for_status()
-    token = str(r.json().get("access_token") or "").strip()
-    if not token:
-        raise RuntimeError("LS access token issue failed")
-    return token
+    last_error = ""
+    for attempt in range(6):
+        try:
+            r = requests.post(
+                BASE + "/oauth2/token",
+                headers={"content-type": "application/x-www-form-urlencoded"},
+                params={
+                    "grant_type": "client_credentials",
+                    "appkey": key,
+                    "appsecretkey": secret,
+                    "scope": "oob",
+                },
+                timeout=30,
+                allow_redirects=False,
+            )
+        except requests.RequestException as exc:
+            last_error = f"LS token transport error: {type(exc).__name__}: {exc}"
+            if attempt < 5:
+                time.sleep(min(12.0, 1.0 * (2 ** attempt)))
+                continue
+            raise RuntimeError(last_error) from exc
+
+        if 300 <= r.status_code < 400 or r.status_code in {429, 500, 502, 503, 504}:
+            last_error = f"LS token transient HTTP {r.status_code}: {(r.text or '')[:200]}"
+            if attempt < 5:
+                time.sleep(min(12.0, 1.0 * (2 ** attempt)))
+                continue
+            raise RuntimeError(last_error)
+        if not r.ok:
+            raise RuntimeError(f"LS token HTTP {r.status_code}: {(r.text or '')[:200]}")
+
+        try:
+            data = r.json()
+        except Exception as exc:
+            last_error = f"LS token invalid JSON: {(r.text or '')[:200]}"
+            if attempt < 5:
+                time.sleep(min(12.0, 1.0 * (2 ** attempt)))
+                continue
+            raise RuntimeError(last_error) from exc
+        token = str(data.get("access_token") or "").strip()
+        if token:
+            return token
+        last_error = f"LS access token issue failed: {data.get('rsp_cd')} {data.get('rsp_msg')}"
+        if attempt < 5:
+            time.sleep(min(12.0, 1.0 * (2 ** attempt)))
+            continue
+        raise RuntimeError(last_error)
+    raise RuntimeError(last_error or "LS access token issue failed")
 
 
 def ls_post(token: str, path: str, tr: str, body: dict[str, Any]) -> dict[str, Any]:
