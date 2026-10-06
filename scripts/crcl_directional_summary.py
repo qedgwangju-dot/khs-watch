@@ -404,7 +404,7 @@ def build_compact_alert(pending: dict, original_text: str) -> str:
     c_date = str(circle.get("date") or "")
     cp_date = str((circle.get("_previous_distinct") or {}).get("date") or "")
     if c_now is not None:
-        usdc_text = f"USDC {float(c_now):.1f}십억달러"
+        usdc_text = f"{float(c_now):.1f}십억달러"
         if fx_rate:
             usdc_text += f" · {_fmt_krw_from_usd_m(float(c_now) * 1000.0, fx_rate)}"
         usdc_text += f" · {c_date or '기준일 확인 불가'}"
@@ -446,9 +446,24 @@ def build_compact_alert(pending: dict, original_text: str) -> str:
 
     if crcl and crcl.get("close") is not None:
         phase = quote_phase(pending, "crcl")
+        check = str(crcl.get("crosscheck_status") or "")
+        check_note = ""
+        if check == "confirmed":
+            check_note = " · ChartExchange·Yahoo 일치"
+        elif check == "yahoo_lagging":
+            check_note = (
+                f" · ChartExchange 마감 · Yahoo 일봉 {crcl.get('crosscheck_date') or 'N/A'}로 지연"
+            )
+        elif check == "discrepant":
+            check_note = (
+                f" · 시세원 불일치(Yahoo ${float(crcl.get('crosscheck_close', 0.0)):.2f})"
+            )
+        elif check:
+            check_note = f" · 교차검증 {html.escape(check)}"
         lines.append(
             f"• <b>CRCL</b> · ${float(crcl.get('close')):.2f}"
             f" · {float(crcl.get('daily_pct', 0.0)):+.2f}% {html.escape(phase)}"
+            f" · {html.escape(str(crcl.get('date') or ''))}{check_note}"
         )
 
     lines += [
