@@ -177,6 +177,55 @@ jobs:
       - name: Check US data center generation buildout execution
         run: python scripts/us_data_center_generation_buildout_watch.py
 
+      - name: Validate hyperscaler nuclear PPA semantic state
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("out/us_data_center_generation_buildout_pending_state.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          bundle = data.get("hyperscaler_nuclear_ppa") or {}
+          if int(bundle.get("version") or 0) < 2:
+              raise SystemExit("hyperscaler nuclear PPA state version missing")
+
+          states = bundle.get("states") or {}
+          google = states.get("google_constellation") or {}
+          amazon = states.get("amazon_constellation_calvert_cliffs") or {}
+
+          allowed = {
+              "reported_near_deal", "official_discussion",
+              "signed_reported", "signed_official",
+              "cancelled_reported", "cancelled_official",
+          }
+          if google.get("stage") not in allowed:
+              raise SystemExit(f"Google-Constellation invalid stage: {google}")
+          if google.get("stage") == "signed_official" and not google.get("official"):
+              raise SystemExit("Google-Constellation cannot be official-signed without official source")
+          if google.get("stage") == "reported_near_deal" and google.get("official"):
+              raise SystemExit("Google-Constellation media near-deal incorrectly marked official")
+
+          prov = google.get("provenance") or {}
+          if google.get("amount_floor_usd_b") == 1.0 and prov.get("amount_floor_usd_b") != "media":
+              raise SystemExit("Google-Constellation $1B reported amount lost media provenance")
+
+          if (
+              amazon.get("stage") != "signed_official"
+              or not amazon.get("official")
+              or float(amazon.get("ppa_mw") or 0) != 690.0
+              or float(amazon.get("uprate_mw") or 0) != 190.0
+              or int(amazon.get("years") or 0) != 20
+              or "Calvert Cliffs" not in str(amazon.get("plant") or "")
+          ):
+              raise SystemExit(f"Amazon-Constellation official comparison baseline invalid: {amazon}")
+
+          print(
+              "hyperscaler_nuclear_ppa_semantics=passed "
+              f"google_stage={google.get('stage')} google_official={google.get('official')} "
+              f"amazon_stage={amazon.get('stage')}"
+          )
+          PY
+
       - name: Check US data center cancellation and stranded-cost risk
         run: python scripts/us_data_center_cancellation_risk_watch.py
 
