@@ -87,6 +87,18 @@ TOSHIBA_HDD_OFFICIAL = {
     ),
 }
 
+NAND_2027_DIVERGENCE_OFFICIAL = {
+    "as_of": "2026-07-30",
+    "source": "https://www.trendforce.com/presscenter/news/20260730-13158.html",
+    "general_nand_supply_easing_2h27_expected": True,
+    "enterprise_storage_primary_growth_engine": True,
+    "scope_note": (
+        "TrendForce는 전체 NAND Flash 수급이 신규 생산능력과 공정 전환으로 2H27부터 완화될 수 있다고 본다. "
+        "동시에 기업용 SSD는 AI 서버 수요의 핵심 성장축으로 남는다. 따라서 현재 기업용 SSD 제약을 "
+        "전체 NAND가 2027년 말까지 동일하게 부족하다는 주장으로 확대하지 않는다."
+    ),
+}
+
 UBS_PROJECT_LEADTIME_BASELINE = {
     "as_of": "2026-09",
     "source_kind": "사용자 제공 UBS 차트",
@@ -621,7 +633,7 @@ def memory_storage_chain_state(
         and hdd_late_2027
     )
     return {
-        "version": 2,
+        "version": 3,
         "active": active,
         "dram_lead_ratio": round(dram_ratio, 3) if dram_ratio is not None else None,
         "nand_essd_lead_ratio": round(nand_ratio, 3) if nand_ratio is not None else None,
@@ -632,11 +644,16 @@ def memory_storage_chain_state(
         "toshiba_expanded_nearline_line_first_shipment_confirmed": bool(TOSHIBA_HDD_OFFICIAL["expanded_nearline_line_first_shipment"]),
         "toshiba_fy2027_capacity_nearly_double_target": TOSHIBA_HDD_OFFICIAL["fy2027_capacity_target_vs_fy2025"] == "nearly_double",
         "toshiba_official_source": TOSHIBA_HDD_OFFICIAL["source"],
+        "nand_general_supply_easing_2h27_expected": bool(NAND_2027_DIVERGENCE_OFFICIAL["general_nand_supply_easing_2h27_expected"]),
+        "enterprise_storage_primary_growth_engine": bool(NAND_2027_DIVERGENCE_OFFICIAL["enterprise_storage_primary_growth_engine"]),
+        "nand_2027_divergence_source": NAND_2027_DIVERGENCE_OFFICIAL["source"],
+        "nand_essd_divergence_guard_enabled": True,
         "nand_controller_direct_constraint_detection_enabled": True,
         "nand_controller_direct_constraint_confirmed": bool(nand_controller_direct_constraint_confirmed),
         "scope_note": (
             "확인 범위는 DRAM 부족이 일부 NAND 공급사의 기업용 SSD 솔루션 지원 능력을 제약한다는 것. "
             "NAND 컨트롤러 출하 자체의 직접 병목은 별도 확인 전까지 확정하지 않음. "
+            "전체 NAND Flash는 2H27부터 수급 완화 가능성이 있어 기업용 SSD 병목과 분리함. "
             "HDD late-2027은 시장 전체 정상화 전망이며 Toshiba 증설 라인 가동 개시 여부와 별도 관리."
         ),
     }
@@ -662,6 +679,7 @@ def build_memory_storage_chain_alert(chain: dict, components: dict, source_url: 
             if chain.get("nand_controller_direct_constraint_confirmed")
             else "• <b>NAND 컨트롤러 출하가 DRAM 때문에 직접 제한된다는 주장은 이번 원문에서 확인되지 않아 알림 확정조건에 넣지 않았습니다.</b>"
         ),
+        "• <b>NAND 전체 수급:</b> TrendForce는 신규 생산능력·공정 전환으로 2H27부터 완화 가능성을 봅니다. 기업용 SSD 병목을 전체 NAND의 2027년 말까지 동일한 부족으로 확대하지 않습니다.",
         "• Toshiba는 이미 증설 라인에서 첫 출하를 시작했습니다. 따라서 ‘2027년 말’은 개별 Toshiba 라인의 미가동 시점이 아니라 시장 전체 리드타임 정상화 전망으로만 추적합니다.",
         "",
         "<b>다음 확인</b>",
@@ -670,6 +688,7 @@ def build_memory_storage_chain_alert(chain: dict, components: dict, source_url: 
     if source_url:
         lines.append(f'• <a href="{html.escape(source_url, quote=True)}">TrendForce 원문</a>')
     lines.append(f'• <a href="{html.escape(TOSHIBA_HDD_OFFICIAL["source"], quote=True)}">Toshiba 공식 HDD 증설·첫 출하</a>')
+    lines.append(f'• <a href="{html.escape(NAND_2027_DIVERGENCE_OFFICIAL["source"], quote=True)}">TrendForce 2027 NAND 수급 전망</a>')
     return "\n".join(lines).strip() + "\n"
 
 
