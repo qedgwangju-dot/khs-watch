@@ -155,7 +155,10 @@
     "2026-09-18|12th-plan|f9ee274270072b41": 1,
     "2026-09-19|12th-plan|renewable-2040-capacity": 1,
     "2026-09-22|12th-plan|nuclear": 3,
-    "2026-09-25|12th-plan|nuclear": 1
+    "2026-09-25|12th-plan|nuclear": 1,
+    "12th-plan|honam-semiconductor|power-water-grid-review": 1,
+    "12th-plan|committee-governance|member-disclosure": 0
   },
-  "updated_at": "2026-10-06T13:33:46.034137+00:00"
+  "updated_at": "2026-10-06T13:33:46.034137+00:00",
+  "migration_note": "2026-10-06: suppress committee-disclosure noise; map already-alerted Honam 14GW/grid-review event to stable semantic key"
 }
