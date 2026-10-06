@@ -1035,6 +1035,25 @@
       "source": "뉴시스",
       "title": "[속보]뉴욕증시, 혼조 출발…연준 금리 인상 속 나스닥 0.3%↑"
     },
+    "event:2ff61933d1a34dd957ceac8d": {
+      "event_alias_evidence_message_id": 2298,
+      "event_alias_evidence_run_id": 37416023045,
+      "first_seen_kst": "2026-10-06T14:02:15+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:02:15+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:02:15+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815355",
+      "source": "뉴시스",
+      "source_body_digest": "614ddb35fc95ce3f2b84341738f169a67618ca60894b961c2e731894bb5e58af",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
+      "source_fact_identity": "source_facts:v1:4bc2025f0ffb61c82c1a60de577a44378337435d0ff55a10edd309a347db198a",
+      "source_fact_keys": [
+        "source_fact:v1:26941fd7e08e98a78ca0b629df8bab4486934e86875c596658785c3599911124"
+      ],
+      "source_published_kst": "2026-10-06T11:21+09:00",
+      "title": "삼성전기, 2856억 규모 MLCC 공급계약"
+    },
     "event:3050dc7fc8be7ae455939a5e": {
       "first_seen_kst": "2026-09-21T10:10:34+09:00",
       "lanes": {
@@ -4305,7 +4324,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
       "source": "이데일리",
       "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
       "source_fact_keys": [
         "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
@@ -5774,7 +5793,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
       "source": "이데일리",
       "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
       "source_fact_keys": [
         "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
@@ -7016,7 +7035,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815355",
       "source": "뉴시스",
       "source_body_digest": "614ddb35fc95ce3f2b84341738f169a67618ca60894b961c2e731894bb5e58af",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:4bc2025f0ffb61c82c1a60de577a44378337435d0ff55a10edd309a347db198a",
       "source_fact_keys": [
         "source_fact:v1:26941fd7e08e98a78ca0b629df8bab4486934e86875c596658785c3599911124"
@@ -7383,6 +7402,23 @@
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
     },
+    "fact:2ff70382921ab2434447db09": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815611",
+      "source": "뉴시스",
+      "source_body_digest": "2a3dc22f2a409c209d7effff4a68d0e1f2d6416654c59b2022ad1b217b27bf60",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a8f961cc68715c030bc7f9bc021f1bea6312a4001f14762ddad4fcdcc988abe",
+      "source_fact_keys": [
+        "source_fact:v1:6c7085504033dd66a8f6bd7c094f62ebe16b108b34f8df009f8e884406d506c5"
+      ],
+      "source_published_kst": "2026-10-06T13:56+09:00",
+      "title": "삼천리자전거, 44억 규모 자사주 소각 결정"
+    },
     "fact:30126cba90e27cfc9089c63a": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -7512,6 +7548,24 @@
       ],
       "source_published_kst": "2026-10-06T06:34+09:00",
       "title": "밴스 “알래스카 LNG, 韓과 세부 협의 남아”⋯트럼프 ‘투자 확정’과 온도차"
+    },
+    "fact:32ba08af2e66b530ce650f8f": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.etnews.com/20261006000061",
+      "source": "전자신문",
+      "source_body_digest": "e06adb323c945f6d60a3e7a0fca5b8081aa582710e3c40f1441eae420ef42b8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6d0689b60c4f394aab59de7e8229cc116649b2dfe1ed046c28b938247bf19636",
+      "source_fact_keys": [
+        "source_fact:v1:9aace2b3ad3f4efecd920cdc562893907ef3609e71e3c087a674cf2d6ed4123c",
+        "source_fact:v1:df24f2f23ba234a5618931d4de5e6a6d2d486a8ffb432ddf5f29594b3d5ad953"
+      ],
+      "source_published_kst": "2026-10-06T14:00+09:00",
+      "title": "제주 초콜릿에서 글로벌 디저트로…제키스, '정책면세점' 타고 세계로"
     },
     "fact:32cbc92fd28274666d66b925": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -10042,6 +10096,23 @@
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
     },
+    "fact:8b7974ceab7471b93db8d23d": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169220",
+      "source": "매일경제",
+      "source_body_digest": "c01d734b482f62d58b1bd4f0a5419c168f4083695030d0ac2c2418746abe03a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:16685c822c765d74e73e8ca42367c7ccdd4a61f9b9c140f44e5d7e4b9f73750a",
+      "source_fact_keys": [
+        "source_fact:v1:9f458fadb42d9a3a420a83e42a9ace8900aeedd1457bf6c1bc1eb7e96d6448ed"
+      ],
+      "source_published_kst": "2026-10-06T14:09+09:00",
+      "title": "더 똑똑해진 ‘인천공항 면세점’ 앱…음식 사전 예약·주문·결제도 ‘뚝딱’"
+    },
     "fact:8b91ea96f05936e9bd31909a": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -10343,6 +10414,24 @@
       ],
       "source_published_kst": "2026-10-06T09:54+09:00",
       "title": "올해 청약 경쟁률 작년 절반으로 '뚝'…서울·3기신도시는 100대1"
+    },
+    "fact:957e41bf8d47b90886f5ef85": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815335",
+      "source": "뉴시스",
+      "source_body_digest": "9850f4485c603b6ded6d61b9193003e2dff6caca6a065f82dfc3e458806ccaad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e37b00ee8f8ad3f23fa8edb80e73b25e513f7138d67598664d27d8e4a755ae10",
+      "source_fact_keys": [
+        "source_fact:v1:8c72d850f9de282d2d5ec9fae20179837ceda885e733a30f8feed9508d219d27",
+        "source_fact:v1:ca237c6fc2085ca30440f6b366191fdcc6e0977c22e22ccfa1ccb0d1b22d1180"
+      ],
+      "source_published_kst": "2026-10-06T14:22+09:00",
+      "title": "한은 \"IMF 제도 개편, 한국 경상수지 평가에 불리\""
     },
     "fact:95cdaca3cf9ec3b7ccb39acf": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -11463,7 +11552,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632760",
       "source": "이투데이",
       "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
       "source_fact_keys": [
         "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
@@ -12350,6 +12439,25 @@
       ],
       "source_published_kst": "2026-10-06T07:10+09:00",
       "title": "5만 가구 ‘한강2’ 연계 5호선 2034년 개통할까 [교통지옥 김포 ③]"
+    },
+    "fact:d8ab5e2126d0dfa38b61ca0d": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/06/2026100611531429902",
+      "source": "머니투데이",
+      "source_body_digest": "2525df1277b1002b870e19bf9bd140c6c43f7400cf5b79ab4c729923ecec49de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:395771806366dfa2f2f6c241605fe6fe8db5bf2bae353feabaf6997da6af6ad5",
+      "source_fact_keys": [
+        "source_fact:v1:6fe0540d765d94b000881755c3980eb27b26d922baabe2441a414a5788e858ad",
+        "source_fact:v1:956ca80f321b6e1089016a26bb76ffc2b56341d8078e0ab5bd9296d9852cada6",
+        "source_fact:v1:bf5351d489e904cbed1837c7f58e25372acae537b91fe9dbee7f916908562981"
+      ],
+      "source_published_kst": "2026-10-06T12:07+09:00",
+      "title": "'악수하고 춤까지' 中 휴머노이드 국감장 떴다...\"韓 투자 턱없이 부족\""
     },
     "fact:d94cfdb22fa30aa2b74f79cb": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -13936,6 +14044,25 @@
       "link": "https://www.newsis.com/view/NISX20261002_0003811933",
       "source": "뉴시스",
       "title": "한은 \"10월 소비자물가 3% 내외의 높은 수준 이어갈 것\""
+    },
+    "link:07172adec13ede9b09efb6b4": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/06/2026100611531429902",
+      "source": "머니투데이",
+      "source_body_digest": "2525df1277b1002b870e19bf9bd140c6c43f7400cf5b79ab4c729923ecec49de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:395771806366dfa2f2f6c241605fe6fe8db5bf2bae353feabaf6997da6af6ad5",
+      "source_fact_keys": [
+        "source_fact:v1:6fe0540d765d94b000881755c3980eb27b26d922baabe2441a414a5788e858ad",
+        "source_fact:v1:956ca80f321b6e1089016a26bb76ffc2b56341d8078e0ab5bd9296d9852cada6",
+        "source_fact:v1:bf5351d489e904cbed1837c7f58e25372acae537b91fe9dbee7f916908562981"
+      ],
+      "source_published_kst": "2026-10-06T12:07+09:00",
+      "title": "'악수하고 춤까지' 中 휴머노이드 국감장 떴다...\"韓 투자 턱없이 부족\""
     },
     "link:072e27e33c3fdc9c4169f242": {
       "first_seen_kst": "2026-10-02T08:38:38+09:00",
@@ -19679,6 +19806,21 @@
       "source": "지디넷코리아",
       "title": "허태수 GS 회장 \"스타트업 기술로 AI 데이터센터 병목 해소\""
     },
+    "link:49d8531667054581d93aff68": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632749?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "f6e893b4f42f8d94b446c1e5cf620c24c7c6c18b79e080555eceef292e8ef9f5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T12:00+09:00",
+      "title": "'고령화 현실' 못 담는 IMF 새 모형⋯韓 적정 경상수지 주요국 중 '최대 급락'"
+    },
     "link:49ee294812538922806370fa": {
       "first_seen_kst": "2026-10-02T01:28:56+09:00",
       "lanes": {
@@ -20751,7 +20893,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815355",
       "source": "뉴시스",
       "source_body_digest": "614ddb35fc95ce3f2b84341738f169a67618ca60894b961c2e731894bb5e58af",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:4bc2025f0ffb61c82c1a60de577a44378337435d0ff55a10edd309a347db198a",
       "source_fact_keys": [
         "source_fact:v1:26941fd7e08e98a78ca0b629df8bab4486934e86875c596658785c3599911124"
@@ -20781,6 +20923,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260928063500009",
       "source": "연합뉴스",
       "title": "日 비상장주, 연내 美·유럽서도 거래된다 | 연합뉴스"
+    },
+    "link:56486a606c110329bc7c7e97": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169220",
+      "source": "매일경제",
+      "source_body_digest": "c01d734b482f62d58b1bd4f0a5419c168f4083695030d0ac2c2418746abe03a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:16685c822c765d74e73e8ca42367c7ccdd4a61f9b9c140f44e5d7e4b9f73750a",
+      "source_fact_keys": [
+        "source_fact:v1:9f458fadb42d9a3a420a83e42a9ace8900aeedd1457bf6c1bc1eb7e96d6448ed"
+      ],
+      "source_published_kst": "2026-10-06T14:09+09:00",
+      "title": "더 똑똑해진 ‘인천공항 면세점’ 앱…음식 사전 예약·주문·결제도 ‘뚝딱’"
     },
     "link:564dd7ee91562b08402893e5": {
       "first_seen_kst": "2026-10-02T07:58:50+09:00",
@@ -24009,7 +24168,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
       "source": "이데일리",
       "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
       "source_fact_keys": [
         "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
@@ -25504,6 +25663,24 @@
       "link": "https://biz.chosun.com/stock/stock_general/2026/10/02/GYZTGYJXME2DSYJSMQYWIMTEMM/",
       "source": "조선비즈",
       "title": "온라인 불법 대부광고 신고하면 최대 50만원…‘파파라치’ 도입"
+    },
+    "link:8bdbd5132b2430cb580c8347": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815335",
+      "source": "뉴시스",
+      "source_body_digest": "9850f4485c603b6ded6d61b9193003e2dff6caca6a065f82dfc3e458806ccaad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e37b00ee8f8ad3f23fa8edb80e73b25e513f7138d67598664d27d8e4a755ae10",
+      "source_fact_keys": [
+        "source_fact:v1:8c72d850f9de282d2d5ec9fae20179837ceda885e733a30f8feed9508d219d27",
+        "source_fact:v1:ca237c6fc2085ca30440f6b366191fdcc6e0977c22e22ccfa1ccb0d1b22d1180"
+      ],
+      "source_published_kst": "2026-10-06T14:22+09:00",
+      "title": "한은 \"IMF 제도 개편, 한국 경상수지 평가에 불리\""
     },
     "link:8be25627c55de0576d24f856": {
       "first_seen_kst": "2026-10-02T17:14:32+09:00",
@@ -28063,6 +28240,23 @@
       ],
       "source_published_kst": "2026-10-05T20:25+09:00",
       "title": "피티씨, 슈나이더에 피인수..주당 205달러·프리미엄 42%"
+    },
+    "link:a8594983a49b7e9b42192754": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815611",
+      "source": "뉴시스",
+      "source_body_digest": "2a3dc22f2a409c209d7effff4a68d0e1f2d6416654c59b2022ad1b217b27bf60",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a8f961cc68715c030bc7f9bc021f1bea6312a4001f14762ddad4fcdcc988abe",
+      "source_fact_keys": [
+        "source_fact:v1:6c7085504033dd66a8f6bd7c094f62ebe16b108b34f8df009f8e884406d506c5"
+      ],
+      "source_published_kst": "2026-10-06T13:56+09:00",
+      "title": "삼천리자전거, 44억 규모 자사주 소각 결정"
     },
     "link:a8722095ac2aa09858f337d7": {
       "first_seen_kst": "2026-09-21T06:34:54+09:00",
@@ -32964,6 +33158,24 @@
       "source": "매일경제",
       "title": "내년 2월 토큰증권 시행… 개인 투자한도는 年 1억"
     },
+    "link:e1333ae1cb33b9bd5c3dedec": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.etnews.com/20261006000061",
+      "source": "전자신문",
+      "source_body_digest": "e06adb323c945f6d60a3e7a0fca5b8081aa582710e3c40f1441eae420ef42b8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6d0689b60c4f394aab59de7e8229cc116649b2dfe1ed046c28b938247bf19636",
+      "source_fact_keys": [
+        "source_fact:v1:9aace2b3ad3f4efecd920cdc562893907ef3609e71e3c087a674cf2d6ed4123c",
+        "source_fact:v1:df24f2f23ba234a5618931d4de5e6a6d2d486a8ffb432ddf5f29594b3d5ad953"
+      ],
+      "source_published_kst": "2026-10-06T14:00+09:00",
+      "title": "제주 초콜릿에서 글로벌 디저트로…제키스, '정책면세점' 타고 세계로"
+    },
     "link:e13c3017fab200223c00edfe": {
       "first_seen_kst": "2026-10-01T22:54:28+09:00",
       "lanes": {
@@ -34330,6 +34542,21 @@
       "source": "뉴시스",
       "title": "이란 전쟁이 뒤흔든 금융시장…3분기 승자는 '빅테크·비트코인'"
     },
+    "link:efe7e3703e2f0de969475599": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006099400030",
+      "source": "연합뉴스",
+      "source_body_digest": "9229eead129202e3bf2dfe776f589b2d1eba7a261c71985fa21edd0bd48a4718",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T13:19+09:00",
+      "title": "롯데百, 외국인 매출 1조원 돌파…명동만 5천200억원 | 연합뉴스"
+    },
     "link:f0192e5a3214c886a73b8c6b": {
       "first_seen_kst": "2026-10-02T08:38:38+09:00",
       "lanes": {
@@ -34437,7 +34664,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632760",
       "source": "이투데이",
       "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
       "source_fact_keys": [
         "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
@@ -35885,6 +36112,21 @@
       "link": "https://www.yna.co.kr/view/AKR20261002168300003",
       "source": "연합뉴스",
       "title": "국내 기름값 20주째 하락…휘발유·경유 1천800원대 유지 | 연합뉴스"
+    },
+    "original:0164ce73764ff2c9b4633d64": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006099400030",
+      "source": "연합뉴스",
+      "source_body_digest": "9229eead129202e3bf2dfe776f589b2d1eba7a261c71985fa21edd0bd48a4718",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T13:19+09:00",
+      "title": "롯데百, 외국인 매출 1조원 돌파…명동만 5천200억원 | 연합뉴스"
     },
     "original:016b3f3ff80befe46ef73125": {
       "first_seen_kst": "2026-09-20T06:33:23+09:00",
@@ -38359,7 +38601,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
       "source": "이데일리",
       "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
       "source_fact_keys": [
         "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
@@ -45968,6 +46210,24 @@
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
+    "original:77871bafd5aa8c79a333cebe": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.etnews.com/20261006000061",
+      "source": "전자신문",
+      "source_body_digest": "e06adb323c945f6d60a3e7a0fca5b8081aa582710e3c40f1441eae420ef42b8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6d0689b60c4f394aab59de7e8229cc116649b2dfe1ed046c28b938247bf19636",
+      "source_fact_keys": [
+        "source_fact:v1:9aace2b3ad3f4efecd920cdc562893907ef3609e71e3c087a674cf2d6ed4123c",
+        "source_fact:v1:df24f2f23ba234a5618931d4de5e6a6d2d486a8ffb432ddf5f29594b3d5ad953"
+      ],
+      "source_published_kst": "2026-10-06T14:00+09:00",
+      "title": "제주 초콜릿에서 글로벌 디저트로…제키스, '정책면세점' 타고 세계로"
+    },
     "original:77d194d1aa05fef7201945d5": {
       "first_seen_kst": "2026-10-05T16:44:43+09:00",
       "lanes": {
@@ -46778,7 +47038,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632760",
       "source": "이투데이",
       "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
       "source_fact_keys": [
         "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
@@ -48049,7 +48309,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815355",
       "source": "뉴시스",
       "source_body_digest": "614ddb35fc95ce3f2b84341738f169a67618ca60894b961c2e731894bb5e58af",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:4bc2025f0ffb61c82c1a60de577a44378337435d0ff55a10edd309a347db198a",
       "source_fact_keys": [
         "source_fact:v1:26941fd7e08e98a78ca0b629df8bab4486934e86875c596658785c3599911124"
@@ -48203,6 +48463,25 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T12:30+09:00",
       "title": "\"요즘은 쫀득 시대\" 식품·디저트업계에 부는 식감 바람"
+    },
+    "original:916325272409459447520300": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/06/2026100611531429902",
+      "source": "머니투데이",
+      "source_body_digest": "2525df1277b1002b870e19bf9bd140c6c43f7400cf5b79ab4c729923ecec49de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:395771806366dfa2f2f6c241605fe6fe8db5bf2bae353feabaf6997da6af6ad5",
+      "source_fact_keys": [
+        "source_fact:v1:6fe0540d765d94b000881755c3980eb27b26d922baabe2441a414a5788e858ad",
+        "source_fact:v1:956ca80f321b6e1089016a26bb76ffc2b56341d8078e0ab5bd9296d9852cada6",
+        "source_fact:v1:bf5351d489e904cbed1837c7f58e25372acae537b91fe9dbee7f916908562981"
+      ],
+      "source_published_kst": "2026-10-06T12:07+09:00",
+      "title": "'악수하고 춤까지' 中 휴머노이드 국감장 떴다...\"韓 투자 턱없이 부족\""
     },
     "original:91661105d0ca81a57c3f866e": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -51095,6 +51374,23 @@
       "source_published_kst": "2026-10-05T10:38+09:00",
       "title": "홈플러스부터 롯데카드까지…김병주 MBK 회장, 올해 국감 출석할까"
     },
+    "original:b72033740d27dec83d67473b": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169220",
+      "source": "매일경제",
+      "source_body_digest": "c01d734b482f62d58b1bd4f0a5419c168f4083695030d0ac2c2418746abe03a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:16685c822c765d74e73e8ca42367c7ccdd4a61f9b9c140f44e5d7e4b9f73750a",
+      "source_fact_keys": [
+        "source_fact:v1:9f458fadb42d9a3a420a83e42a9ace8900aeedd1457bf6c1bc1eb7e96d6448ed"
+      ],
+      "source_published_kst": "2026-10-06T14:09+09:00",
+      "title": "더 똑똑해진 ‘인천공항 면세점’ 앱…음식 사전 예약·주문·결제도 ‘뚝딱’"
+    },
     "original:b7712a3d00b7084e3890adb4": {
       "first_seen_kst": "2026-09-19T08:53:16+09:00",
       "lanes": {
@@ -53968,6 +54264,24 @@
       "source_published_kst": "2026-10-05T18:18+09:00",
       "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
     },
+    "original:d8412fef485f2cbab6238cf8": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815335",
+      "source": "뉴시스",
+      "source_body_digest": "9850f4485c603b6ded6d61b9193003e2dff6caca6a065f82dfc3e458806ccaad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e37b00ee8f8ad3f23fa8edb80e73b25e513f7138d67598664d27d8e4a755ae10",
+      "source_fact_keys": [
+        "source_fact:v1:8c72d850f9de282d2d5ec9fae20179837ceda885e733a30f8feed9508d219d27",
+        "source_fact:v1:ca237c6fc2085ca30440f6b366191fdcc6e0977c22e22ccfa1ccb0d1b22d1180"
+      ],
+      "source_published_kst": "2026-10-06T14:22+09:00",
+      "title": "한은 \"IMF 제도 개편, 한국 경상수지 평가에 불리\""
+    },
     "original:d87c995e03be8309a081f39e": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -55493,6 +55807,21 @@
       "source": "머니투데이",
       "title": "트럼프의 '돈줄 압박'에… 5500억달러 대미투자 속도내는 일본"
     },
+    "original:e938862ffd6de722ceac0987": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632749?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "f6e893b4f42f8d94b446c1e5cf620c24c7c6c18b79e080555eceef292e8ef9f5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T12:00+09:00",
+      "title": "'고령화 현실' 못 담는 IMF 새 모형⋯韓 적정 경상수지 주요국 중 '최대 급락'"
+    },
     "original:e952b6ae96aa4595c313081e": {
       "first_seen_kst": "2026-10-05T15:20:12+09:00",
       "lanes": {
@@ -56580,6 +56909,23 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=04854406645608656",
       "source": "이데일리",
       "title": "LH, 호남 반도체 국가산단 설계 착수…내년 중순 승인 목표"
+    },
+    "original:f7e7dd115448e6fc71f554a9": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815611",
+      "source": "뉴시스",
+      "source_body_digest": "2a3dc22f2a409c209d7effff4a68d0e1f2d6416654c59b2022ad1b217b27bf60",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a8f961cc68715c030bc7f9bc021f1bea6312a4001f14762ddad4fcdcc988abe",
+      "source_fact_keys": [
+        "source_fact:v1:6c7085504033dd66a8f6bd7c094f62ebe16b108b34f8df009f8e884406d506c5"
+      ],
+      "source_published_kst": "2026-10-06T13:56+09:00",
+      "title": "삼천리자전거, 44억 규모 자사주 소각 결정"
     },
     "original:f7ed3380ceeac44eebb76d53": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -59015,6 +59361,25 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
     },
+    "source_fact:0bfc90ec6baa940d57289fa8": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/06/2026100611531429902",
+      "source": "머니투데이",
+      "source_body_digest": "2525df1277b1002b870e19bf9bd140c6c43f7400cf5b79ab4c729923ecec49de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:395771806366dfa2f2f6c241605fe6fe8db5bf2bae353feabaf6997da6af6ad5",
+      "source_fact_keys": [
+        "source_fact:v1:6fe0540d765d94b000881755c3980eb27b26d922baabe2441a414a5788e858ad",
+        "source_fact:v1:956ca80f321b6e1089016a26bb76ffc2b56341d8078e0ab5bd9296d9852cada6",
+        "source_fact:v1:bf5351d489e904cbed1837c7f58e25372acae537b91fe9dbee7f916908562981"
+      ],
+      "source_published_kst": "2026-10-06T12:07+09:00",
+      "title": "'악수하고 춤까지' 中 휴머노이드 국감장 떴다...\"韓 투자 턱없이 부족\""
+    },
     "source_fact:0bff0d38625f7c53b3811a58": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -59568,7 +59933,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
       "source": "이데일리",
       "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
       "source_fact_keys": [
         "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
@@ -60166,7 +60531,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632760",
       "source": "이투데이",
       "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
       "source_fact_keys": [
         "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
@@ -61811,7 +62176,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
       "source": "이데일리",
       "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
       "source_fact_keys": [
         "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
@@ -61959,6 +62324,25 @@
       ],
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
+    },
+    "source_fact:22942380ee790e9ba6cef4e5": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/06/2026100611531429902",
+      "source": "머니투데이",
+      "source_body_digest": "2525df1277b1002b870e19bf9bd140c6c43f7400cf5b79ab4c729923ecec49de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:395771806366dfa2f2f6c241605fe6fe8db5bf2bae353feabaf6997da6af6ad5",
+      "source_fact_keys": [
+        "source_fact:v1:6fe0540d765d94b000881755c3980eb27b26d922baabe2441a414a5788e858ad",
+        "source_fact:v1:956ca80f321b6e1089016a26bb76ffc2b56341d8078e0ab5bd9296d9852cada6",
+        "source_fact:v1:bf5351d489e904cbed1837c7f58e25372acae537b91fe9dbee7f916908562981"
+      ],
+      "source_published_kst": "2026-10-06T12:07+09:00",
+      "title": "'악수하고 춤까지' 中 휴머노이드 국감장 떴다...\"韓 투자 턱없이 부족\""
     },
     "source_fact:2323ca6312d46eb09d8e8fb5": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -64146,7 +64530,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632760",
       "source": "이투데이",
       "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
       "source_fact_keys": [
         "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
@@ -64323,7 +64707,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
       "source": "이데일리",
       "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
       "source_fact_keys": [
         "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
@@ -64559,7 +64943,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
       "source": "이데일리",
       "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
       "source_fact_keys": [
         "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
@@ -65121,7 +65505,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
       "source": "이데일리",
       "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
       "source_fact_keys": [
         "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
@@ -67153,7 +67537,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632760",
       "source": "이투데이",
       "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
       "source_fact_keys": [
         "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
@@ -68635,6 +69019,25 @@
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
+    "source_fact:551fe68b8d8c883dc6efb98d": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/06/2026100611531429902",
+      "source": "머니투데이",
+      "source_body_digest": "2525df1277b1002b870e19bf9bd140c6c43f7400cf5b79ab4c729923ecec49de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:395771806366dfa2f2f6c241605fe6fe8db5bf2bae353feabaf6997da6af6ad5",
+      "source_fact_keys": [
+        "source_fact:v1:6fe0540d765d94b000881755c3980eb27b26d922baabe2441a414a5788e858ad",
+        "source_fact:v1:956ca80f321b6e1089016a26bb76ffc2b56341d8078e0ab5bd9296d9852cada6",
+        "source_fact:v1:bf5351d489e904cbed1837c7f58e25372acae537b91fe9dbee7f916908562981"
+      ],
+      "source_published_kst": "2026-10-06T12:07+09:00",
+      "title": "'악수하고 춤까지' 中 휴머노이드 국감장 떴다...\"韓 투자 턱없이 부족\""
+    },
     "source_fact:552fb9e0503b6384b1106dc9": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -69731,6 +70134,24 @@
       ],
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
+    "source_fact:5ce597d7695075b0e00f2d39": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815335",
+      "source": "뉴시스",
+      "source_body_digest": "9850f4485c603b6ded6d61b9193003e2dff6caca6a065f82dfc3e458806ccaad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e37b00ee8f8ad3f23fa8edb80e73b25e513f7138d67598664d27d8e4a755ae10",
+      "source_fact_keys": [
+        "source_fact:v1:8c72d850f9de282d2d5ec9fae20179837ceda885e733a30f8feed9508d219d27",
+        "source_fact:v1:ca237c6fc2085ca30440f6b366191fdcc6e0977c22e22ccfa1ccb0d1b22d1180"
+      ],
+      "source_published_kst": "2026-10-06T14:22+09:00",
+      "title": "한은 \"IMF 제도 개편, 한국 경상수지 평가에 불리\""
     },
     "source_fact:5cf3e589799316a87d5ab316": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -71251,7 +71672,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632760",
       "source": "이투데이",
       "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
       "source_fact_keys": [
         "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
@@ -71473,7 +71894,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
       "source": "이데일리",
       "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
       "source_fact_keys": [
         "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
@@ -76075,7 +76496,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
       "source": "이데일리",
       "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
       "source_fact_keys": [
         "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
@@ -77601,7 +78022,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632760",
       "source": "이투데이",
       "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
       "source_fact_keys": [
         "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
@@ -80618,7 +81039,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
       "source": "이데일리",
       "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
       "source_fact_keys": [
         "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
@@ -81699,7 +82120,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632760",
       "source": "이투데이",
       "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
       "source_fact_keys": [
         "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
@@ -82252,6 +82673,24 @@
       ],
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "“코스피, 7100만 찍으면 7700까지 간다”…장밋빛 전망 근거는? [오늘 나온 보고서]"
+    },
+    "source_fact:ba0c3c019c968c798d7119a4": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.etnews.com/20261006000061",
+      "source": "전자신문",
+      "source_body_digest": "e06adb323c945f6d60a3e7a0fca5b8081aa582710e3c40f1441eae420ef42b8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6d0689b60c4f394aab59de7e8229cc116649b2dfe1ed046c28b938247bf19636",
+      "source_fact_keys": [
+        "source_fact:v1:9aace2b3ad3f4efecd920cdc562893907ef3609e71e3c087a674cf2d6ed4123c",
+        "source_fact:v1:df24f2f23ba234a5618931d4de5e6a6d2d486a8ffb432ddf5f29594b3d5ad953"
+      ],
+      "source_published_kst": "2026-10-06T14:00+09:00",
+      "title": "제주 초콜릿에서 글로벌 디저트로…제키스, '정책면세점' 타고 세계로"
     },
     "source_fact:ba3a9dcc8714d98ca777bfd1": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
@@ -83126,7 +83565,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
       "source": "이데일리",
       "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
       "source_fact_keys": [
         "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
@@ -86183,6 +86622,24 @@
       "source_published_kst": "2026-10-06T11:08+09:00",
       "title": "현대차그룹, 1~8월 글로벌 전기차 판매 20%↑…\"亞·유럽서 지속 성장\""
     },
+    "source_fact:d83042d86d44cdb5544984b9": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815335",
+      "source": "뉴시스",
+      "source_body_digest": "9850f4485c603b6ded6d61b9193003e2dff6caca6a065f82dfc3e458806ccaad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e37b00ee8f8ad3f23fa8edb80e73b25e513f7138d67598664d27d8e4a755ae10",
+      "source_fact_keys": [
+        "source_fact:v1:8c72d850f9de282d2d5ec9fae20179837ceda885e733a30f8feed9508d219d27",
+        "source_fact:v1:ca237c6fc2085ca30440f6b366191fdcc6e0977c22e22ccfa1ccb0d1b22d1180"
+      ],
+      "source_published_kst": "2026-10-06T14:22+09:00",
+      "title": "한은 \"IMF 제도 개편, 한국 경상수지 평가에 불리\""
+    },
     "source_fact:d8647a36cd26de362e3902c8": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -86422,7 +86879,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815355",
       "source": "뉴시스",
       "source_body_digest": "614ddb35fc95ce3f2b84341738f169a67618ca60894b961c2e731894bb5e58af",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:4bc2025f0ffb61c82c1a60de577a44378337435d0ff55a10edd309a347db198a",
       "source_fact_keys": [
         "source_fact:v1:26941fd7e08e98a78ca0b629df8bab4486934e86875c596658785c3599911124"
@@ -87272,6 +87729,24 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "source_fact:e069acd1ccc3b5a3f5e6f627": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.etnews.com/20261006000061",
+      "source": "전자신문",
+      "source_body_digest": "e06adb323c945f6d60a3e7a0fca5b8081aa582710e3c40f1441eae420ef42b8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6d0689b60c4f394aab59de7e8229cc116649b2dfe1ed046c28b938247bf19636",
+      "source_fact_keys": [
+        "source_fact:v1:9aace2b3ad3f4efecd920cdc562893907ef3609e71e3c087a674cf2d6ed4123c",
+        "source_fact:v1:df24f2f23ba234a5618931d4de5e6a6d2d486a8ffb432ddf5f29594b3d5ad953"
+      ],
+      "source_published_kst": "2026-10-06T14:00+09:00",
+      "title": "제주 초콜릿에서 글로벌 디저트로…제키스, '정책면세점' 타고 세계로"
     },
     "source_fact:e0a44a6b37af5fe952fe8b52": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
@@ -88349,6 +88824,23 @@
       "source_published_kst": "2026-10-06T10:19+09:00",
       "title": "김정관 장관 “1600조 지방투자 본격화…2030년 AI팩토리 500개 구축”"
     },
+    "source_fact:e840aa96d1ef6ef8767bcc84": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815611",
+      "source": "뉴시스",
+      "source_body_digest": "2a3dc22f2a409c209d7effff4a68d0e1f2d6416654c59b2022ad1b217b27bf60",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a8f961cc68715c030bc7f9bc021f1bea6312a4001f14762ddad4fcdcc988abe",
+      "source_fact_keys": [
+        "source_fact:v1:6c7085504033dd66a8f6bd7c094f62ebe16b108b34f8df009f8e884406d506c5"
+      ],
+      "source_published_kst": "2026-10-06T13:56+09:00",
+      "title": "삼천리자전거, 44억 규모 자사주 소각 결정"
+    },
     "source_fact:e888a7f8ee5e69b0236bf32b": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
@@ -89018,7 +89510,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
       "source": "이데일리",
       "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
       "source_fact_keys": [
         "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
@@ -89932,6 +90424,23 @@
       ],
       "source_published_kst": "2026-10-05T17:44+09:00",
       "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
+    },
+    "source_fact:f4b685d9cd151c3fb9e63833": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169220",
+      "source": "매일경제",
+      "source_body_digest": "c01d734b482f62d58b1bd4f0a5419c168f4083695030d0ac2c2418746abe03a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:16685c822c765d74e73e8ca42367c7ccdd4a61f9b9c140f44e5d7e4b9f73750a",
+      "source_fact_keys": [
+        "source_fact:v1:9f458fadb42d9a3a420a83e42a9ace8900aeedd1457bf6c1bc1eb7e96d6448ed"
+      ],
+      "source_published_kst": "2026-10-06T14:09+09:00",
+      "title": "더 똑똑해진 ‘인천공항 면세점’ 앱…음식 사전 예약·주문·결제도 ‘뚝딱’"
     },
     "source_fact:f4b7129a23a0aa50372c181b": {
       "first_seen_kst": "2026-10-06T00:03:48+09:00",
@@ -91719,6 +92228,21 @@
       "link": "https://www.yna.co.kr/view/AKR20261002168300003",
       "source": "연합뉴스",
       "title": "국내 기름값 20주째 하락…휘발유·경유 1천800원대 유지 | 연합뉴스"
+    },
+    "title:0164ce73764ff2c9b4633d64": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006099400030",
+      "source": "연합뉴스",
+      "source_body_digest": "9229eead129202e3bf2dfe776f589b2d1eba7a261c71985fa21edd0bd48a4718",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T13:19+09:00",
+      "title": "롯데百, 외국인 매출 1조원 돌파…명동만 5천200억원 | 연합뉴스"
     },
     "title:016b3f3ff80befe46ef73125": {
       "first_seen_kst": "2026-09-20T06:33:23+09:00",
@@ -94193,7 +94717,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
       "source": "이데일리",
       "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
       "source_fact_keys": [
         "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
@@ -101865,6 +102389,24 @@
       "source_published_kst": "2026-10-05T22:06+09:00",
       "title": "LG전자, 북미 AI데이터센터 인프라기업과 냉각솔루션 대형계약 | 연합뉴스"
     },
+    "title:77871bafd5aa8c79a333cebe": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.etnews.com/20261006000061",
+      "source": "전자신문",
+      "source_body_digest": "e06adb323c945f6d60a3e7a0fca5b8081aa582710e3c40f1441eae420ef42b8e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6d0689b60c4f394aab59de7e8229cc116649b2dfe1ed046c28b938247bf19636",
+      "source_fact_keys": [
+        "source_fact:v1:9aace2b3ad3f4efecd920cdc562893907ef3609e71e3c087a674cf2d6ed4123c",
+        "source_fact:v1:df24f2f23ba234a5618931d4de5e6a6d2d486a8ffb432ddf5f29594b3d5ad953"
+      ],
+      "source_published_kst": "2026-10-06T14:00+09:00",
+      "title": "제주 초콜릿에서 글로벌 디저트로…제키스, '정책면세점' 타고 세계로"
+    },
     "title:77d194d1aa05fef7201945d5": {
       "first_seen_kst": "2026-10-05T16:44:43+09:00",
       "lanes": {
@@ -102704,7 +103246,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632760",
       "source": "이투데이",
       "source_body_digest": "0f72408564ca332dee0c8289eb5ec2f83635ba704594d2afd8b7a71de8f07ba4",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:e01a7740052556a055722a7d1ac2033ff047e7983291300f6201e03f608384c5",
       "source_fact_keys": [
         "source_fact:v1:171bbdb6a1c1b07a970175825f138b0c175373d2c2dc9f7a32ba8758f80a24a5",
@@ -103975,7 +104517,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003815355",
       "source": "뉴시스",
       "source_body_digest": "614ddb35fc95ce3f2b84341738f169a67618ca60894b961c2e731894bb5e58af",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:4bc2025f0ffb61c82c1a60de577a44378337435d0ff55a10edd309a347db198a",
       "source_fact_keys": [
         "source_fact:v1:26941fd7e08e98a78ca0b629df8bab4486934e86875c596658785c3599911124"
@@ -104129,6 +104671,25 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-05T12:30+09:00",
       "title": "\"요즘은 쫀득 시대\" 식품·디저트업계에 부는 식감 바람"
+    },
+    "title:916325272409459447520300": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/06/2026100611531429902",
+      "source": "머니투데이",
+      "source_body_digest": "2525df1277b1002b870e19bf9bd140c6c43f7400cf5b79ab4c729923ecec49de",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:395771806366dfa2f2f6c241605fe6fe8db5bf2bae353feabaf6997da6af6ad5",
+      "source_fact_keys": [
+        "source_fact:v1:6fe0540d765d94b000881755c3980eb27b26d922baabe2441a414a5788e858ad",
+        "source_fact:v1:956ca80f321b6e1089016a26bb76ffc2b56341d8078e0ab5bd9296d9852cada6",
+        "source_fact:v1:bf5351d489e904cbed1837c7f58e25372acae537b91fe9dbee7f916908562981"
+      ],
+      "source_published_kst": "2026-10-06T12:07+09:00",
+      "title": "'악수하고 춤까지' 中 휴머노이드 국감장 떴다...\"韓 투자 턱없이 부족\""
     },
     "title:91661105d0ca81a57c3f866e": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -107079,6 +107640,23 @@
       "source_published_kst": "2026-10-05T10:38+09:00",
       "title": "홈플러스부터 롯데카드까지…김병주 MBK 회장, 올해 국감 출석할까"
     },
+    "title:b72033740d27dec83d67473b": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169220",
+      "source": "매일경제",
+      "source_body_digest": "c01d734b482f62d58b1bd4f0a5419c168f4083695030d0ac2c2418746abe03a8",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:16685c822c765d74e73e8ca42367c7ccdd4a61f9b9c140f44e5d7e4b9f73750a",
+      "source_fact_keys": [
+        "source_fact:v1:9f458fadb42d9a3a420a83e42a9ace8900aeedd1457bf6c1bc1eb7e96d6448ed"
+      ],
+      "source_published_kst": "2026-10-06T14:09+09:00",
+      "title": "더 똑똑해진 ‘인천공항 면세점’ 앱…음식 사전 예약·주문·결제도 ‘뚝딱’"
+    },
     "title:b7712a3d00b7084e3890adb4": {
       "first_seen_kst": "2026-09-19T08:53:16+09:00",
       "lanes": {
@@ -109973,6 +110551,24 @@
       "source_published_kst": "2026-10-05T18:18+09:00",
       "title": "환율·채권, 국고채 발행 축소…금리 3%대 머물듯"
     },
+    "title:d8412fef485f2cbab6238cf8": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815335",
+      "source": "뉴시스",
+      "source_body_digest": "9850f4485c603b6ded6d61b9193003e2dff6caca6a065f82dfc3e458806ccaad",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e37b00ee8f8ad3f23fa8edb80e73b25e513f7138d67598664d27d8e4a755ae10",
+      "source_fact_keys": [
+        "source_fact:v1:8c72d850f9de282d2d5ec9fae20179837ceda885e733a30f8feed9508d219d27",
+        "source_fact:v1:ca237c6fc2085ca30440f6b366191fdcc6e0977c22e22ccfa1ccb0d1b22d1180"
+      ],
+      "source_published_kst": "2026-10-06T14:22+09:00",
+      "title": "한은 \"IMF 제도 개편, 한국 경상수지 평가에 불리\""
+    },
     "title:d87c995e03be8309a081f39e": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -110594,7 +111190,7 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03430886645610296",
       "source": "이데일리",
       "source_body_digest": "17473dd02fa507d29aaeae2f57b40748e54913767ae5c71c6e699cf641d6a93e",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:commercial_order:59030539ac8f67d85af931603a5f5d8ae4236604de93f005eabf8665698bb4d2",
       "source_fact_identity": "source_facts:v1:442a1bcda7b571320aed46ec3bddcbd2d9a451376c574eae8080910d9a335cb5",
       "source_fact_keys": [
         "source_fact:v1:0db2bb391b738b70821446bd14b9957eb9fadba7825fa0164b34dad169fcde75",
@@ -111533,6 +112129,21 @@
       "link": "https://www.mt.co.kr/world/2026/10/01/2026100110550465938",
       "source": "머니투데이",
       "title": "트럼프의 '돈줄 압박'에… 5500억달러 대미투자 속도내는 일본"
+    },
+    "title:e938862ffd6de722ceac0987": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632749?trc=right_categori_news_estudio",
+      "source": "이투데이",
+      "source_body_digest": "f6e893b4f42f8d94b446c1e5cf620c24c7c6c18b79e080555eceef292e8ef9f5",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T12:00+09:00",
+      "title": "'고령화 현실' 못 담는 IMF 새 모형⋯韓 적정 경상수지 주요국 중 '최대 급락'"
     },
     "title:e952b6ae96aa4595c313081e": {
       "first_seen_kst": "2026-10-05T15:20:12+09:00",
@@ -112632,6 +113243,23 @@
       "source": "이데일리",
       "title": "LH, 호남 반도체 국가산단 설계 착수…내년 중순 승인 목표"
     },
+    "title:f7e7dd115448e6fc71f554a9": {
+      "first_seen_kst": "2026-10-06T16:09:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T16:09:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T16:09:23+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815611",
+      "source": "뉴시스",
+      "source_body_digest": "2a3dc22f2a409c209d7effff4a68d0e1f2d6416654c59b2022ad1b217b27bf60",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7a8f961cc68715c030bc7f9bc021f1bea6312a4001f14762ddad4fcdcc988abe",
+      "source_fact_keys": [
+        "source_fact:v1:6c7085504033dd66a8f6bd7c094f62ebe16b108b34f8df009f8e884406d506c5"
+      ],
+      "source_published_kst": "2026-10-06T13:56+09:00",
+      "title": "삼천리자전거, 44억 규모 자사주 소각 결정"
+    },
     "title:f7ed3380ceeac44eebb76d53": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
       "lanes": {
@@ -113305,5 +113933,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T15:55:43+09:00"
+  "updated_at_kst": "2026-10-06T16:09:23+09:00"
 }
