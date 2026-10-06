@@ -310,14 +310,8 @@ if trusted_old not in t:
 t = t.replace(trusted_old, trusted_new, 1)
 
 query_old = '''    'data center transformer backlog gas turbine orders power electronics IEA',
-    'Morgan Stanley data center onsite power distributed generation fuel cell BESS forecast United States',
-    'Morgan Stanley data center ESS 279 GWh 169 GWh forecast',
-    'Goldman Sachs US data center capacity 2027 GW forecast community opposition',
 )'''
 query_new = '''    'data center transformer backlog gas turbine orders power electronics IEA',
-    'Morgan Stanley data center onsite power distributed generation fuel cell BESS forecast United States',
-    'Morgan Stanley data center ESS 279 GWh 169 GWh forecast',
-    'Goldman Sachs US data center capacity 2027 GW forecast community opposition',
     'PwC data centre capex ICT equipment 4 6 years 2050',
     'Hyosung Heavy Industries AI data center transformer order United States',
     'HD Hyundai Electric data center transformer switchgear order North America',
