@@ -22,7 +22,7 @@
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557766",
     "https://ptacts.uspto.gov/ptacts/public-informations/petitions/1557959"
   ],
-  "last_check_kst": "2026-10-07T07:20:33+09:00",
+  "last_check_kst": "2026-10-07T07:29:25+09:00",
   "tracked_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -43,7 +43,28 @@
     "IPR2026-00313": "11,041,149",
     "IPR2026-00314": "11,066,656"
   },
-  "errors_last_run": [],
+  "errors_last_run": [
+    "Google 뉴스:RuntimeError:할로자임 MDASE 특허 PTAB",
+    "Google 뉴스:RuntimeError:\"알테오젠 파트너 MSD\" 할로자임 PH20 특허 특허성 없음",
+    "Google 뉴스:RuntimeError:\"PGR2025-00003\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00004\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00030\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00006\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00009\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00017\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00024\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00033\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00039\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00042\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00087\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00046\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00052\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00050\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"PGR2025-00053\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"IPR2026-00312\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"IPR2026-00313\" Halozyme Merck",
+    "Google 뉴스:RuntimeError:\"IPR2026-00314\" Halozyme Merck"
+  ],
   "tracked_known_cases": {
     "PGR2025-00003": "11,952,600",
     "PGR2025-00004": "12,018,298",
@@ -183,5 +204,5 @@
   "search_query_count": 33,
   "search_task_count": 66,
   "search_workers": 8,
-  "search_elapsed_seconds": 2.874
+  "search_elapsed_seconds": 64.778
 }
