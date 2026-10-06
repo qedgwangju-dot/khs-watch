@@ -873,6 +873,17 @@ def alert_source_family(alert: dict) -> str:
 def semantic_alert_key(alert: dict) -> str:
     probe = enrich_missing_context(dict(alert))
     apply_router_overrides(probe)
+    document_type = normalize_semantic_text(
+        probe.get("presidential_document_type") or probe.get("document_type")
+    )
+    official_title = normalize_semantic_text(
+        probe.get("source_title") or probe.get("original_title") or probe.get("title")
+    )
+    if official_title and any(
+        kind in document_type
+        for kind in ("executive order", "presidential memorandum", "presidential document")
+    ):
+        return "presidential-action|" + document_type + "|" + official_title
     whitehouse_story_key = str(probe.get("whitehouse_story_key") or "").strip()
     if whitehouse_story_key:
         return "whitehouse|" + normalize_semantic_text(whitehouse_story_key)
