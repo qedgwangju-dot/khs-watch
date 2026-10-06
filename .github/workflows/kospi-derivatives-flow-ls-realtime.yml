@@ -6,12 +6,6 @@ on:
       timezone: "Asia/Seoul"
     - cron: "3,13 9 * * 1-5"
       timezone: "Asia/Seoul"
-  workflow_run:
-    workflows:
-      - "Korea Market Stress and Global Wave Telegram Watch"
-      - "GAMEJOA preopen news radar"
-      - "AI Security Web Watch"
-    types: [completed]
   workflow_dispatch:
     inputs:
       mode:
