@@ -50,6 +50,8 @@ base.QUERIES.extend([
     '(NVIDIA OR 엔비디아) (Foxconn OR "Hon Hai" OR 폭스콘 OR 홍하이) (GB300 OR NVL72 OR "tester tray" OR 테스터트레이) (robot OR robotics OR automation OR 로봇 OR 자동화) ("95%" OR "99.5%" OR "success rate" OR "cycle time" OR busbar OR connector OR 성공률 OR 수율 OR 사이클타임 OR 버스바 OR 커넥터)',
     '(NVIDIA OR 엔비디아) (Foxconn OR "Hon Hai" OR 폭스콘 OR 홍하이) (Houston OR 휴스턴) (GR00T OR Isaac OR robot OR robotics OR 로봇) (assembly OR manufacturing OR 조립 OR 생산) ("success rate" OR "cycle time" OR 성공률 OR 수율 OR 사이클타임)',
     '("The Machines that Make the Machines" OR "GB300 tester tray") (NVIDIA OR 엔비디아) (Foxconn OR "Hon Hai" OR 폭스콘)',
+    '("Madison Huang" OR 매디슨 황) (Korea OR "South Korea" OR Seoul OR 한국 OR 서울 OR 방한) ("physical AI" OR 피지컬AI OR robotics OR 로보틱스 OR Omniverse OR Isaac OR GR00T) (visit OR attend OR meeting OR collaboration OR partnership OR MOU OR pilot OR deployment OR integration OR 방한 OR 참석 OR 미팅 OR 협력 OR 업무협약 OR 실증 OR 배치 OR 통합)',
+    '("NVIDIA AI Day Seoul" OR "AI Day Seoul 2026" OR "엔비디아 AI 데이 서울") (physical AI OR 피지컬AI OR robotics OR 로보틱스) (Samsung OR 삼성전자 OR SK hynix OR SK하이닉스 OR LG Electronics OR LG전자 OR Hyundai OR 현대차 OR Doosan Robotics OR 두산로보틱스)',
 ])
 
 def _gb300_factory_kpi_recovery() -> list[dict]:
@@ -82,12 +84,13 @@ base.TRUSTED.update({
     'The Robot Report', '澎湃新闻', 'The Paper', '第一财经', 'IT之家',
     'Business Insider', '조선비즈', 'ChosunBiz', '연합뉴스', '전자신문',
     'Orange County Business Journal', 'Focus Taiwan', 'Central News Agency', 'CNA', 'Tech Times',
+    '머니투데이', 'MoneyToday', 'News1', '뉴스1',
 })
 base.OFFICIAL_OR_PRIMARY.update({
     'XPENG', 'XPeng', '小鹏汽车', 'LG전자', 'LG Electronics',
     'Google DeepMind', 'DeepMind', 'Physical Intelligence', 'NVIDIA', 'NVIDIA Developer', 'NVIDIA Technical Blog',
     'POSCO DX', '포스코DX', 'NC AI', '엔씨AI', 'Agility Robotics',
-    'FieldAI', 'Field AI',
+    'FieldAI', 'Field AI', 'NVIDIA Korea',
 })
 base.MAX_ALERTS = 8
 
@@ -262,7 +265,10 @@ FIELD_AI_NEGATIVE = re.compile(
     re.I,
 )
 
-NVIDIA_ROBOTICS_EXEC = re.compile(r'NVIDIA|엔비디아|Jensen\s*Huang|젠슨\s*황|젠슨황', re.I)
+NVIDIA_ROBOTICS_EXEC = re.compile(
+    r'NVIDIA|엔비디아|Jensen\s*Huang|젠슨\s*황|젠슨황|Madison\s*Huang|매디슨\s*황',
+    re.I,
+)
 NVIDIA_ROBOTICS_CONTEXT = re.compile(r'robotics|robot|humanoid|physical\s*AI|로보틱스|로봇|휴머노이드|피지컬\s*AI|피지컬AI', re.I)
 NVIDIA_CHATGPT_MOMENT = re.compile(r'ChatGPT\s*moment|ChatGPT\s*모먼트|챗GPT\s*모먼트', re.I)
 NVIDIA_CES2026_BASELINE = re.compile(r'ChatGPT\s*moment.{0,40}(?:for\s+robotics|robotics).{0,30}(?:is\s+here|has\s+arrived)|(?:robotics).{0,40}ChatGPT\s*moment.{0,30}(?:is\s+here|has\s+arrived)', re.I)
@@ -332,6 +338,52 @@ NVIDIA_FACTORY_SOURCE_OK = re.compile(
 )
 
 
+NVIDIA_KOREA_EVENT = re.compile(
+    r'NVIDIA\s*AI\s*Day\s*Seoul(?:\s*2026)?|AI\s*Day\s*Seoul\s*2026|'
+    r'엔비디아\s*AI\s*데이\s*서울(?:\s*2026)?|AI\s*데이\s*서울',
+    re.I,
+)
+NVIDIA_MADISON = re.compile(r'Madison\s*Huang|매디슨\s*황', re.I)
+NVIDIA_KOREA_GEO = re.compile(r'South\s*Korea|Korea|Seoul|한국|서울|방한', re.I)
+NVIDIA_KOREA_ATTENDANCE = re.compile(
+    r'attend|participat|visit|scheduled\s+to\s+be\s+in|confirmed\s+attendance|'
+    r'방한|참석|방문|일정\s*확정|참석\s*확정',
+    re.I,
+)
+NVIDIA_KOREA_COMPANY = re.compile(
+    r'Samsung\s*Electronics|삼성전자|SK\s*hynix|SK하이닉스|LG\s*Electronics|LG전자|'
+    r'Hyundai\s*Motor|Hyundai|현대자동차|현대차|Doosan\s*Robotics|두산로보틱스|'
+    r'SK\s*Telecom|SK텔레콤|NAVER\s*Cloud|네이버클라우드|Coupang|쿠팡',
+    re.I,
+)
+NVIDIA_KOREA_MEETING = re.compile(
+    r'meet(?:ing)?|met\s+with|discuss|talks?|working\s+session|'
+    r'미팅|회동|논의|협의|만나|면담',
+    re.I,
+)
+NVIDIA_KOREA_PARTNERSHIP = re.compile(
+    r'MOU|memorandum\s+of\s+understanding|strategic\s+partnership|partnership\s+agreement|'
+    r'co[-\s]*development|joint\s+development|agreement|contract|'
+    r'업무협약|전략적\s*협력|공동\s*개발|협약\s*체결|계약\s*체결',
+    re.I,
+)
+NVIDIA_KOREA_DEPLOYMENT = re.compile(
+    r'pilot|field\s+test|deployment|deploy|production\s+deployment|integration|integrated|'
+    r'customer\s+deployment|실증|현장\s*시험|배치|생산\s*배치|통합|탑재',
+    re.I,
+)
+NVIDIA_KOREA_REVERSE = re.compile(
+    r'cancel(?:led|ed)?|postpon(?:ed|ement)|delay(?:ed)?|will\s+not\s+attend|'
+    r'취소|연기|지연|불참|방한\s*취소',
+    re.I,
+)
+NVIDIA_KOREA_PRIOR_CONTACT = re.compile(
+    r'(?:April|June|August|4월|6월|8월).{0,100}'
+    r'(?:Samsung|삼성전자|SK\s*hynix|SK하이닉스|LG\s*Electronics|LG전자|Hyundai|현대차|Doosan\s*Robotics|두산로보틱스)',
+    re.I | re.S,
+)
+
+
 def _nvidia_exec_source_ok(source: str) -> bool:
     low = (source or '').lower()
     if any(x in low for x in (
@@ -349,6 +401,21 @@ def _nvidia_factory_source_ok(source: str) -> bool:
 def _nvidia_robotics_exec_stage(text: str, source: str = '') -> str:
     if not (NVIDIA_ROBOTICS_EXEC.search(text) and NVIDIA_ROBOTICS_CONTEXT.search(text)):
         return ''
+    if NVIDIA_MADISON.search(text) and NVIDIA_KOREA_GEO.search(text):
+        if NVIDIA_KOREA_REVERSE.search(text):
+            return 'korea_schedule_change'
+        if NVIDIA_KOREA_PARTNERSHIP.search(text) and NVIDIA_KOREA_COMPANY.search(text):
+            return 'korea_partnership'
+        if NVIDIA_KOREA_DEPLOYMENT.search(text) and NVIDIA_KOREA_COMPANY.search(text):
+            return 'korea_deployment'
+        if NVIDIA_KOREA_MEETING.search(text) and NVIDIA_KOREA_COMPANY.search(text) and not NVIDIA_KOREA_PRIOR_CONTACT.search(text):
+            return 'korea_named_meeting'
+        if NVIDIA_KOREA_EVENT.search(text) and NVIDIA_KOREA_ATTENDANCE.search(text):
+            return 'korea_madison_attendance'
+        if NVIDIA_KOREA_PRIOR_CONTACT.search(text):
+            return 'korea_prior_contact_baseline'
+    if NVIDIA_KOREA_EVENT.search(text):
+        return 'korea_event_baseline'
     if NVIDIA_FACTORY_ID.search(text) and NVIDIA_FACTORY_TASK.search(text):
         if NVIDIA_FACTORY_TARGET_HIT.search(text):
             return 'factory_target_achieved'
@@ -607,7 +674,15 @@ def score(item: dict) -> int:
 
     if group == 'nvidia_robotics_exec':
         stage = _nvidia_robotics_exec_stage(text, source)
-        if stage in {'official_rhetoric_baseline','roadshow_within_year_unverified','within_year_unverified','timeline_unverified','background'}:
+        if stage in {
+            'official_rhetoric_baseline','roadshow_within_year_unverified','within_year_unverified',
+            'timeline_unverified','background','korea_event_baseline','korea_prior_contact_baseline'
+        }:
+            return 0
+        if stage == 'korea_madison_attendance' and source not in base.OFFICIAL_OR_PRIMARY and not re.search(r'NVIDIA', source, re.I):
+            # MoneyToday/industry-source confirmation is a useful date catalyst,
+            # but keep it as a silent user-surfaced baseline until NVIDIA or
+            # Madison directly confirms attendance.
             return 0
         if stage in {'factory_kpi_initial','factory_kpi_measured','factory_kpi_change','factory_target_achieved'} and not _nvidia_factory_source_ok(source):
             return 0
@@ -621,6 +696,11 @@ def score(item: dict) -> int:
             'factory_kpi_measured': 18,
             'factory_kpi_change': 20,
             'factory_target_achieved': 24,
+            'korea_madison_attendance': 12,
+            'korea_named_meeting': 14,
+            'korea_partnership': 20,
+            'korea_deployment': 22,
+            'korea_schedule_change': 16,
         }.get(stage, 0)
         if base.NUMERIC.search(text): s += 3
         if source in base.OFFICIAL_OR_PRIMARY or _nvidia_exec_source_ok(source): s += 7
@@ -762,6 +842,13 @@ def _raw_cat(text: str, group: str) -> str:
             'factory_kpi_measured': '폭스콘 GB300 로봇 조립 KPI 정량 공개',
             'factory_kpi_change': '폭스콘 GB300 로봇 조립 KPI 개선·악화',
             'factory_target_achieved': '폭스콘 GB300 로봇 조립 99.5%·사이클타임 목표 달성',
+            'korea_event_baseline': 'AI Day Seoul 피지컬AI 행사 기준선',
+            'korea_prior_contact_baseline': '매디슨 황 기존 한국 기업 접점 기준선',
+            'korea_madison_attendance': '매디슨 황 AI Day Seoul 참석 시간표',
+            'korea_named_meeting': '매디슨 황 한국기업 피지컬AI 미팅',
+            'korea_partnership': 'NVIDIA·한국기업 피지컬AI 협력계약·업무협약',
+            'korea_deployment': 'NVIDIA·한국기업 피지컬AI 실증·통합·배치',
+            'korea_schedule_change': '매디슨 황 방한·AI Day 일정 변경',
         }.get(_nvidia_robotics_exec_stage(text), 'NVIDIA 로보틱스 전망')
     if group == 'fieldai':
         return {
@@ -867,6 +954,13 @@ def meaning(cat: str) -> str:
         '폭스콘 GB300 로봇 조립 KPI 정량 공개': 'NVIDIA·Foxconn 제조현장의 로봇 자동화가 작업 성공률·사이클타임으로 정량화되는 단계입니다. 제품 전체 수율과 로봇 작업 성공률을 분리하고 재작업·처리량·사람 개입률을 함께 확인합니다.',
         '폭스콘 GB300 로봇 조립 KPI 개선·악화': '초기 95%+·160초 기준선에서 성공률이나 사이클타임이 실제로 변하는 후속 신호입니다. 99.5%와 124초에 얼마나 가까워지는지, 커넥터 72초 목표까지 포함해 생산성 개선 속도를 봅니다.',
         '폭스콘 GB300 로봇 조립 99.5%·사이클타임 목표 달성': '작업 성공률과 처리량이 전자 제조 목표 수준에 도달해 유연 자동화의 상업적 확장성이 한 단계 올라가는 신호입니다. 다른 GB300 공정·타 공장·차세대 랙으로 복제되는지와 실제 인력·원가 절감 폭을 확인합니다.',
+        'AI Day Seoul 피지컬AI 행사 기준선': 'NVIDIA 공식 일정상 2026년 11월 9~10일 서울 코엑스에서 AI Day Seoul이 열리고 피지컬AI·로보틱스가 핵심 트랙입니다. 행사 자체 반복 홍보는 새 신호가 아닙니다.',
+        '매디슨 황 기존 한국 기업 접점 기준선': '2026년 4·6·8월의 기존 방한·미팅은 기준선으로 고정합니다. 과거 접점 재서술만으로 신규 협력으로 승격하지 않습니다.',
+        '매디슨 황 AI Day Seoul 참석 시간표': 'NVIDIA 로보틱스·Omniverse 제품마케팅 책임자의 한국 일정이 공식 확인되는 시간표 신호입니다. 다음 단계는 기업별 실명 미팅, 기술범위, 공동개발·실증·계약 여부입니다.',
+        '매디슨 황 한국기업 피지컬AI 미팅': '일정 예고가 실제 삼성전자·SK하이닉스·LG전자·현대차·두산로보틱스 등과의 구체적 피지컬AI 협의로 내려온 단계입니다. 단순 면담과 공동개발·수주를 분리합니다.',
+        'NVIDIA·한국기업 피지컬AI 협력계약·업무협약': '관계 강화가 실제 협약·공동개발·계약으로 전환되는 단계입니다. Isaac·GR00T·Omniverse·Jetson 적용 범위, 고객·공장, 계약금액과 반복매출 구조를 확인합니다.',
+        'NVIDIA·한국기업 피지컬AI 실증·통합·배치': '협력 논의가 실제 로봇·공장·데이터팩토리의 기술 통합·현장 실증·생산배치로 전환되는 직접 실행 신호입니다. 로봇 대수·사이트·성공률·사람 개입률·가동시간을 추적합니다.',
+        '매디슨 황 방한·AI Day 일정 변경': '11월 9~10일 시간표가 취소·연기·불참으로 바뀌는 역방향 신호입니다. 일정 변경과 협력 자체의 취소를 구분합니다.',
 
         '기업가치 100억달러·7억달러 조달 추진 기준선': '2026년 10월 2일 Business Insider 보도의 100억달러 기업가치·7억달러 신규 자금조달 추진은 아직 종결된 투자유치가 아닌 현재 기준선으로 고정합니다. 같은 숫자의 재보도는 알리지 않습니다.',
         '7억달러 투자유치 공식 종결': 'FieldAI가 직접 투자유치 종결을 발표하면 실제 납입금액·기업가치·신주 조건·리드 투자자·기존주주 희석을 확인합니다. 현대차그룹의 보유지분이 공개되지 않았으므로 단순 5배 투자수익률로 계산하지 않습니다.',
@@ -931,6 +1025,13 @@ def risk(cat: str) -> str:
         '폭스콘 GB300 로봇 조립 KPI 정량 공개': '성공률만 높고 사이클타임이 느리면 같은 생산량을 맞추기 위해 병렬화·추가 설비·사람 재작업이 필요할 수 있습니다. 나사 체결·고정밀 커넥터 삽입의 위치오차·힘제어·충돌 손상이 먼저 드러날 병목입니다.',
         '폭스콘 GB300 로봇 조립 KPI 개선·악화': '단일 작업 개선이 전체 랙 조립 생산성 향상을 보장하지 않습니다. 다른 공정으로 병목이 이동하거나 제품 설계 변경 때 재학습·재검증 시간이 늘 수 있습니다.',
         '폭스콘 GB300 로봇 조립 99.5%·사이클타임 목표 달성': '목표 달성도 한 라인·한 제품에서의 결과일 수 있습니다. 다른 공장·Vera Rubin 세대·다른 커넥터 형상에서 같은 성공률과 처리량이 재현되는지를 확인해야 합니다.',
+        'AI Day Seoul 피지컬AI 행사 기준선': '행사 개최와 특정 기업 협력계약은 다릅니다. 세션·파트너 로고만으로 디자인윈·수주를 추정하지 않습니다.',
+        '매디슨 황 기존 한국 기업 접점 기준선': '과거 방문·면담은 현재 계약을 뜻하지 않습니다. 새로운 상대방·기술범위·계약 문구가 없으면 반복 보도로 처리합니다.',
+        '매디슨 황 AI Day Seoul 참석 시간표': '현재 공식 NVIDIA 행사 페이지에는 매디슨 황이 발표자로 기재돼 있지 않습니다. 언론의 참석 확정 보도와 NVIDIA의 직접 확인을 구분하고, 참석만으로 MOU·수주를 추정하지 않습니다.',
+        '매디슨 황 한국기업 피지컬AI 미팅': '미팅은 상업계약이 아닙니다. 가장 현실적인 실패 경로는 협의만 반복되고 파일럿·고객승인·예산·배치로 이어지지 않는 경우입니다.',
+        'NVIDIA·한국기업 피지컬AI 협력계약·업무협약': '업무협약은 법적 최소구매·매출보장이 약할 수 있습니다. 계약기간·금액·제품·고객·SOP·해지조건을 별도로 확인합니다.',
+        'NVIDIA·한국기업 피지컬AI 실증·통합·배치': '실증 성공과 반복 양산배치는 다릅니다. 작업 성공률·사람 개입률·지연시간·안전·비용이 기준을 못 맞추면 확산이 멈출 수 있습니다.',
+        '매디슨 황 방한·AI Day 일정 변경': '일정 변경이 곧 협력관계 악화를 뜻하지는 않습니다. 행사 취소, 개인 일정 변경, 기업별 미팅 취소를 분리합니다.',
 
         '기업가치 100억달러·7억달러 조달 추진 기준선': '현재 라운드는 보도상 진행 중이며 최종 투자계약·납입이 확정된 단계가 아닙니다. 100억달러 기업가치를 FieldAI의 확정 거래가치나 현대차의 실현 투자수익으로 계산하지 않습니다.',
         '7억달러 투자유치 공식 종결': '기업가치 급등이 실제 매출·현금흐름 증가보다 앞설 수 있습니다. 새 자금의 신주 비중·청산우선권·전환권·희석과 현금소진 속도를 확인합니다.',
@@ -1001,6 +1102,18 @@ def verification(item: dict, group: str, text: str) -> str:
             if source in base.OFFICIAL_OR_PRIMARY:
                 return 'NVIDIA 공식자료 · 범용 로봇 두뇌/배치/생산 정량지표 직접 확인'
             return '신뢰 매체 보도 · NVIDIA 및 로봇 파트너 공식자료 교차확인'
+        if stage == 'korea_event_baseline':
+            return 'NVIDIA 공식 AI Day Seoul 2026 일정 · 11월 9~10일 코엑스, 피지컬AI·로보틱스 세션 확인'
+        if stage == 'korea_prior_contact_baseline':
+            return '기존 방한·기업 접점 재보도 · 신규 계약·실증 변화 아님'
+        if stage == 'korea_madison_attendance':
+            if source in base.OFFICIAL_OR_PRIMARY or re.search(r'NVIDIA', source, re.I):
+                return 'NVIDIA 또는 매디슨 황 1차자료에서 AI Day Seoul 참석 직접 확인'
+            return '머니투데이 업계소식통 보도 · NVIDIA 공식 행사페이지에는 매디슨 황 발표자 표기 없음'
+        if stage in {'korea_named_meeting','korea_partnership','korea_deployment','korea_schedule_change'}:
+            if source in base.OFFICIAL_OR_PRIMARY:
+                return 'NVIDIA·한국 기업 공식자료 · 미팅/협약/실증/배치 단계 직접 확인'
+            return '신뢰 매체 보도 · NVIDIA 및 상대 기업 공식자료 교차확인'
         return 'NVIDIA 로보틱스 관련 보도 · 1차자료 추가확인'
     if group == 'fieldai':
         stage = _fieldai_stage(text, source)
@@ -1070,7 +1183,10 @@ def same_event(a: dict, b: dict) -> bool:
         sa, sb = _nvidia_robotics_exec_stage(ta, a.get('source') or ''), _nvidia_robotics_exec_stage(tb, b.get('source') or '')
         if sa != sb:
             return False
-        if sa in {'official_rhetoric_baseline','roadshow_within_year_unverified','within_year_unverified'}:
+        if sa in {
+            'official_rhetoric_baseline','roadshow_within_year_unverified','within_year_unverified',
+            'korea_event_baseline','korea_prior_contact_baseline','korea_madison_attendance'
+        }:
             return True
         nums_a = set(re.findall(r'\d[\d,.]*\s*(?:months?|years?|robots?|units?|customers?|sites?|%|seconds?|sec|s|대|개|곳|개월|년|초)', ta, re.I))
         nums_b = set(re.findall(r'\d[\d,.]*\s*(?:months?|years?|robots?|units?|customers?|sites?|%|seconds?|sec|s|대|개|곳|개월|년|초)', tb, re.I))
@@ -1141,6 +1257,23 @@ def key(item: dict) -> str:
             return hashlib.sha256(b'nvidia-robotics|roadshow|within-a-year|unverified-user-baseline').hexdigest()
         if stage == 'factory_kpi_initial':
             return hashlib.sha256(b'nvidia-foxconn|gb300-nvl72|tester-tray|robot-assembly-kpi|2026-10|95plus|90-95|160s|124s|72s|99.5target').hexdigest()
+        if stage == 'korea_event_baseline':
+            return hashlib.sha256(b'nvidia-korea|ai-day-seoul-2026|2026-11-09-10|physical-ai').hexdigest()
+        if stage == 'korea_prior_contact_baseline':
+            return hashlib.sha256(b'nvidia-korea|madison-huang|2026-prior-contacts|april-june-august').hexdigest()
+        if stage == 'korea_madison_attendance':
+            return hashlib.sha256(b'nvidia-korea|madison-huang|ai-day-seoul-2026|attendance').hexdigest()
+        if stage in {'korea_named_meeting','korea_partnership','korea_deployment'}:
+            partners = '-'.join(sorted(set(re.findall(
+                r'Samsung\s*Electronics|삼성전자|SK\s*hynix|SK하이닉스|LG\s*Electronics|LG전자|'
+                r'Hyundai\s*Motor|Hyundai|현대자동차|현대차|Doosan\s*Robotics|두산로보틱스|'
+                r'SK\s*Telecom|SK텔레콤|NAVER\s*Cloud|네이버클라우드',
+                text,
+                re.I,
+            )))) or 'unnamed'
+            return hashlib.sha256(f'nvidia-korea|madison-huang|{stage}|{partners}'.encode()).hexdigest()
+        if stage == 'korea_schedule_change':
+            return hashlib.sha256(b'nvidia-korea|madison-huang|ai-day-seoul-2026|schedule-change').hexdigest()
         nums = '|'.join(sorted(set(re.findall(r'\d[\d,.]*\s*(?:months?|years?|robots?|units?|customers?|sites?|%|seconds?|sec|s|대|개|곳|개월|년|초)', text, re.I)))[:10]) or 'no-number'
         horizon = '12m' if NVIDIA_WITHIN_YEAR.search(text) else ('longer' if NVIDIA_LONGER_HORIZON.search(text) else 'no-horizon')
         return hashlib.sha256(f'nvidia-robotics|{stage}|{horizon}|{nums}'.encode()).hexdigest()
