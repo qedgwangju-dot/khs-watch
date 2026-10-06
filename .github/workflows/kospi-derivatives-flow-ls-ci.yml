@@ -108,7 +108,7 @@ jobs:
       - name: Verify LS REST prices and flow snapshot
         run: |
           rm -f out/kospi_shock_episode_status.md out/kospi_shock_episode_raw.json
-          python scripts/kospi_shock_episode_watch.py --test --test-seconds 15
+          python scripts/kospi_shock_episode_watch.py --test --test-seconds 45
           python - <<'PY'
           import json
           d=json.load(open("out/kospi_shock_episode_raw.json", encoding="utf-8"))
