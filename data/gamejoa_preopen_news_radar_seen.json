@@ -270,17 +270,21 @@
     "event:0ca9bac99031d4d297b9d164": {
       "first_seen_kst": "2026-10-07T07:01:10+09:00",
       "lanes": {
-        "live": "2026-10-07T07:01:10+09:00"
+        "live": "2026-10-07T07:39:19+09:00"
       },
-      "last_seen_kst": "2026-10-07T07:01:10+09:00",
-      "link": "https://www.yna.co.kr/view/AKR20261006102700017",
-      "source": "연합뉴스",
-      "source_body_digest": "15bd91e6ff69862dea0a5ba1bf9c40804c387d3a89d03409477821f631490553",
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170543",
+      "source": "매일경제",
+      "source_body_digest": "ff6f36b9f2dfa2bd9fe6670925b26f901cd2d1957fb0574b6100c30fbd0d16d3",
       "source_event_identity": "",
-      "source_fact_identity": "",
-      "source_fact_keys": [],
+      "source_fact_identity": "source_facts:v1:5732b4e8b1c0b2d35e885fc568bab058211675e8a457913562ffa3b65524c758",
+      "source_fact_keys": [
+        "source_fact:v1:33e94dacbedd95bf1356bc4197bdada2ec58235d5351b021cd00993304b47de3",
+        "source_fact:v1:97032a7f651001900b7b40b60cbf55a4ec7e8429364c22feeb007349d5ffec43",
+        "source_fact:v1:bd3be410c17d904fa961dc98101dc07e0a775a15d2262ae587f2ee49c6a4354e"
+      ],
       "source_published_kst": "2026-10-07T06:33+09:00",
-      "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다 | 연합뉴스"
+      "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다"
     },
     "event:0cc7d96444018c7a23265a59": {
       "first_seen_kst": "2026-09-18T21:26:25+09:00",
@@ -1057,6 +1061,25 @@
       "link": "https://mobile.newsis.com/view/NISX20260919_0003796413",
       "source": "뉴시스",
       "title": "뉴욕증시 혼조 마감…다우 0.2% 하락·나스닥 0.4% 상승"
+    },
+    "event:28614918d54063228a552498": {
+      "event_alias_evidence_message_id": 2339,
+      "event_alias_evidence_run_id": 37472158800,
+      "first_seen_kst": "2026-10-06T22:51:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:51:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:51:44+09:00",
+      "link": "https://www.hankyung.com/article/202610065899i",
+      "source": "한국경제",
+      "source_body_digest": "18f99f2e121551958116c69c478e941fe5ac04763f4e9fd0f09918f1f6c966d5",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-05:nasdaq=27477.31:change=1.05",
+      "source_fact_identity": "source_facts:v1:4a27d9bdccb3531514d1ea635e95f115981d8fba359fe6da9df50ed16d7110ac",
+      "source_fact_keys": [
+        "source_fact:v1:1cb5107a597abf57f016ff4f18490a3cf3ef2844f3f28a79520729203b241ca4"
+      ],
+      "source_published_kst": "2026-10-06T15:57+09:00",
+      "title": "고금리 공포에도…나스닥·엔비디아 '사상 최고가'"
     },
     "event:28e538d8e978a0ccfdf6d9b3": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -2553,23 +2576,19 @@
     "event:695102b941e71506d24b4e08": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
       "lanes": {
-        "live": "2026-10-07T07:01:10+09:00"
+        "live": "2026-10-07T07:39:19+09:00"
       },
-      "last_seen_kst": "2026-10-07T07:01:10+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2633076",
-      "source": "이투데이",
-      "source_body_digest": "4b826ef64630df03b946ac8fc4628fc43a527fca1616441ea3b5ed6f1229fde4",
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816466",
+      "source": "뉴시스",
+      "source_body_digest": "992308438fa610603ee9a1a843b617a6b0ea0973f50e4846342d0b812734d9af",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:72750cd76c3bed6f225ce309611edfd45862b0b78ef77443c474fc68894cf1e8",
+      "source_fact_identity": "source_facts:v1:292736dca5b8d6f68c0d11fa1b7da0f726b246b932d113b806e5066e03d732ce",
       "source_fact_keys": [
-        "source_fact:v1:0b2838a1ef8f2c839143ce068e1a1ad82ca7eb072aeff4b6b6d3ead4bd267a4f",
-        "source_fact:v1:24542c437fa70aa1f36f10b704da7b55de07dc89d0beac15593f18a003f13794",
-        "source_fact:v1:c83f9b748926a83e11bb20cb35cef930745b03027ff0a3806e5003924dd286d4",
-        "source_fact:v1:d3bce2ab7b7c4fca7803ea6688b1df7dc219ce841017fa39970aa65d183000f3",
-        "source_fact:v1:e8040ae2efacae761dd24bec0ca8647fc627154b3983e64e85310ebb47a77d0c"
+        "source_fact:v1:23d6aa2ba902fad95d992048a6963f11a9c27eb07ef4173f4308e91267add27b"
       ],
-      "source_published_kst": "2026-10-07T07:00+09:00",
-      "title": "후티 공습, 사우디 진출 韓 기업 인근까지⋯현장·직원 피해는 아직"
+      "source_published_kst": "2026-10-07T06:44+09:00",
+      "title": "호르무즈서 파나마 유조선 피격…인도 \"12명 부상\""
     },
     "event:6994ec3ec51f16c535c2ebd5": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -5963,22 +5982,28 @@
     "event:dd87cc13e30f19c890aebcd1": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
-        "live": "2026-10-07T06:12:17+09:00"
+        "live": "2026-10-07T07:39:19+09:00"
       },
-      "last_seen_kst": "2026-10-07T06:12:17+09:00",
-      "link": "https://www.newsis.com/view/NISX20261006_0003816116",
-      "source": "뉴시스",
-      "source_body_digest": "82cb5bfcb631afdfe6121d5d7b48df8969ea359624ed89e8d5e59830c486ad92",
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633084",
+      "source": "이투데이",
+      "source_body_digest": "a27514aeb1f57f21474134e8c3bd8c6d1b14a997ed51695369bb5d87f7b41cbf",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:e28c7adfbe279b7978f533790b16bb41afa120276f8e6104d1e6168f3084fc6e",
+      "source_fact_identity": "source_facts:v1:f3bca3fb94f11db744b7dbf9c490d0841a2020bf1bb3b57d03bbe21c252ad813",
       "source_fact_keys": [
-        "source_fact:v1:3c998abf5db41e550c5bfe07e96180f8816aa22201ceb533d834a26fab9748a1",
-        "source_fact:v1:6fab7cf21a2e901ab72c9ac4eb103299239daf4131145b6f23b6bb153c2525c0",
-        "source_fact:v1:7532226f47c91d67f04ef375ed0f83072471f8bfaeae5d0413330090ff7f538a",
-        "source_fact:v1:d8eaf6588bf06b924acbbb5cb3a301f3177c3f80f2ea0766ac6cb7113d436171"
+        "source_fact:v1:05204566be500c3aa32592f6ef0fab67c3a497e0c7966563916e8cd38fe581f7",
+        "source_fact:v1:0f5b14bfdf27c0de054c33259b4dfefb19426485f14f60c839075907b8b3041d",
+        "source_fact:v1:143d43d068273f004ae258bc90630a82d7017b8854c016f7c59b010d5a7e4c4a",
+        "source_fact:v1:46c6a2e3cd8eab13ab5b6899d991a3b255c1fd791cbf2b1e60abb62da9dd631a",
+        "source_fact:v1:49f1bf7aafd290e37b2ee6d9f2889184c41e93400421089aaeab1fa835a649c6",
+        "source_fact:v1:5ace00ba506bfca45e8ba07ecf148ae6f24adda0a89101f0b53df9646a90f1e2",
+        "source_fact:v1:5cf6a68d6050840a84790285f73f53aaf9c0e08f76cbe8cfe02a49050aaaafce",
+        "source_fact:v1:616d38a8c77f1cdbc5db9c3b15b6baadc59e0cf793e706bdc9f0d930208794c4",
+        "source_fact:v1:d29275e95423a57f138bfa9108b74b222e374e0bad90139a22988c0c8898874a",
+        "source_fact:v1:f49f838422dcbbdf7e40c2d9d5782055b2ccfa08c17cd297df801688a6db8988"
       ],
-      "source_published_kst": "2026-10-07T06:06+09:00",
-      "title": "분기 영업익 200조 목전…삼전·닉스 기대치 높이는 증권가"
+      "source_published_kst": "2026-10-07T07:35+09:00",
+      "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
     },
     "event:de5909e789cfafa27b6823bd": {
       "first_seen_kst": "2026-09-19T07:23:13+09:00",
@@ -6588,6 +6613,25 @@
       "link": "https://biz.heraldcorp.com/article/10890394",
       "source": "헤럴드경제",
       "title": "마이크론 뚫은 에코프로HN, 수주 2500억 쌓았다…내년 2분기 HBM 소재 양산 [비즈360]"
+    },
+    "event:f6b2c37dfd717b5dfad1f883": {
+      "event_alias_evidence_message_id": 2339,
+      "event_alias_evidence_run_id": 37472158800,
+      "first_seen_kst": "2026-10-06T22:51:44+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:51:44+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:51:44+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814993",
+      "source": "뉴시스",
+      "source_body_digest": "d55db823e74ce553bd6ed76836661f6dd7a63339b4b7d0f75df2cffde0e32599",
+      "source_event_identity": "source_event:v2:research_award:169d221bdc7ca69eb2b32d7d7bc344d9b31981c746506681871b8148b96507df",
+      "source_fact_identity": "source_facts:v1:47514cc65285bfbf94388d39ebad66f27f695b43b4f95c18a0e7794e727f26ac",
+      "source_fact_keys": [
+        "source_fact:v1:4fbf3f1a59077cf4390b48f967efbee4f740297134f281d4ac8de7acb3aef266"
+      ],
+      "source_published_kst": "2026-10-06T10:05+09:00",
+      "title": "두산로보틱스, '한국형 피지컬 AI' 시동…989억 국책과제 수주"
     },
     "event:fa17cab1a8b30ae4f8f21b8d": {
       "first_seen_kst": "2026-09-27T04:31:07+09:00",
@@ -7648,7 +7692,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632544",
       "source": "이투데이",
       "source_body_digest": "74dfb82271bc3e8eb814607c38117f1b38f14e6c395c28567035fec56f2c3024",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-05:nasdaq=27477.31:change=1.05",
       "source_fact_identity": "source_facts:v1:60c6683de60f21f4558dc4de3fa7202b510c0d7d95eb2abacd1cf31725d3e689",
       "source_fact_keys": [
         "source_fact:v1:e32b7c80729a6ccea3e63b9ecead06b93abadfa4f7276ce4486342fec173738b"
@@ -8770,6 +8814,23 @@
       ],
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "'KIWOOM 미국AI테크하이베타 ETF', 마이크론·스페이스X 편입"
+    },
+    "fact:1af5b05f7c2090ee8b208d16": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816466",
+      "source": "뉴시스",
+      "source_body_digest": "992308438fa610603ee9a1a843b617a6b0ea0973f50e4846342d0b812734d9af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:292736dca5b8d6f68c0d11fa1b7da0f726b246b932d113b806e5066e03d732ce",
+      "source_fact_keys": [
+        "source_fact:v1:23d6aa2ba902fad95d992048a6963f11a9c27eb07ef4173f4308e91267add27b"
+      ],
+      "source_published_kst": "2026-10-07T06:44+09:00",
+      "title": "호르무즈서 파나마 유조선 피격…인도 \"12명 부상\""
     },
     "fact:1afe80fa23edd9b17dbf0b81": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
@@ -12209,7 +12270,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632636",
       "source": "이투데이",
       "source_body_digest": "91687dda569ad0a1454a9b4d0cd63018a911b602159ea09283c8ae02f3efc439",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:169d221bdc7ca69eb2b32d7d7bc344d9b31981c746506681871b8148b96507df",
       "source_fact_identity": "source_facts:v1:9ae59c216365de5442433ebf92a12c17b69236a8f989298bb47389aa757daf69",
       "source_fact_keys": [
         "source_fact:v1:a09096e5bf65d8a75808ff8ed5c1ccb9f7e7e15cb4b2a7668b62cb900238908b"
@@ -14316,6 +14377,25 @@
       "source_published_kst": "2026-10-06T02:29+09:00",
       "title": "마크롱·메르츠 \"EU, 무역 위협에 더 강하고, 빠르게 반격해야\""
     },
+    "fact:7ac280ec49939dcfa2bd511d": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170543",
+      "source": "매일경제",
+      "source_body_digest": "ff6f36b9f2dfa2bd9fe6670925b26f901cd2d1957fb0574b6100c30fbd0d16d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5732b4e8b1c0b2d35e885fc568bab058211675e8a457913562ffa3b65524c758",
+      "source_fact_keys": [
+        "source_fact:v1:33e94dacbedd95bf1356bc4197bdada2ec58235d5351b021cd00993304b47de3",
+        "source_fact:v1:97032a7f651001900b7b40b60cbf55a4ec7e8429364c22feeb007349d5ffec43",
+        "source_fact:v1:bd3be410c17d904fa961dc98101dc07e0a775a15d2262ae587f2ee49c6a4354e"
+      ],
+      "source_published_kst": "2026-10-07T06:33+09:00",
+      "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다"
+    },
     "fact:7b04fce512e90fa300ee74f3": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
       "lanes": {
@@ -14766,6 +14846,31 @@
       ],
       "source_published_kst": "2026-10-06T11:07+09:00",
       "title": "쌍용건설, 8천65억원 규모 남부내륙철도 제9공구 수주 | 연합뉴스"
+    },
+    "fact:847e29993d28af85af37861f": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070708397820",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "30b62a5e46ebc55c719fd899ace041b450ce009dd42a51440e58e309b0357223",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7fca5cf6330ca6d250e9fb9112efaddaddebd0a5373199297852f0db4156b8e8",
+      "source_fact_keys": [
+        "source_fact:v1:067e5bc253163cd3aaf5ca6a51f149ac9467132e0cd2a3d1e5bf8423ce6b5ead",
+        "source_fact:v1:0ae01ace1b6cf02af043e63c7826a852f57276f3cda41c8092d8a14abfd4ef0d",
+        "source_fact:v1:0c66e2b89cd0e9d6a7c691c60d3cf8c5d9f2b7277f7bf51bf396c2ac91339af0",
+        "source_fact:v1:1e13930d1382ecf11d4cefc7590505f141a3152284668720b7cbe456f3e28796",
+        "source_fact:v1:31ab40cd833d7ca6047728c3d2f2140deca169024a3628451591f72b154aec23",
+        "source_fact:v1:4b4e22f0abdc5e75b5401ba6d883af7a5d77d1214e7cddeab5611fe13bfdd5a8",
+        "source_fact:v1:700d2f5cd583a02ff7876df04add41b05b96f6ca48a23e1b894f78761ee07b3e",
+        "source_fact:v1:ba5cb2661a6585051f1be428bd957b4b6258a2f6154f1f44ea55b0ca1e1e4ed6",
+        "source_fact:v1:c38b96ba1849a79a7f952db5d5616560e34c2491f8968046413bc505ee94d76a"
+      ],
+      "source_published_kst": "2026-10-07T07:15+09:00",
+      "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
     },
     "fact:847f22f17edb0d481cfee777": {
       "first_seen_kst": "2026-10-07T06:12:17+09:00",
@@ -16110,6 +16215,32 @@
       ],
       "source_published_kst": "2026-10-05T19:55+09:00",
       "title": "[美특징주]인텔, 개장 전 4%↓…머스크의 테라팹-TSMC 협력 논의"
+    },
+    "fact:97f5cfc24c122494cce36e45": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633084",
+      "source": "이투데이",
+      "source_body_digest": "a27514aeb1f57f21474134e8c3bd8c6d1b14a997ed51695369bb5d87f7b41cbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3bca3fb94f11db744b7dbf9c490d0841a2020bf1bb3b57d03bbe21c252ad813",
+      "source_fact_keys": [
+        "source_fact:v1:05204566be500c3aa32592f6ef0fab67c3a497e0c7966563916e8cd38fe581f7",
+        "source_fact:v1:0f5b14bfdf27c0de054c33259b4dfefb19426485f14f60c839075907b8b3041d",
+        "source_fact:v1:143d43d068273f004ae258bc90630a82d7017b8854c016f7c59b010d5a7e4c4a",
+        "source_fact:v1:46c6a2e3cd8eab13ab5b6899d991a3b255c1fd791cbf2b1e60abb62da9dd631a",
+        "source_fact:v1:49f1bf7aafd290e37b2ee6d9f2889184c41e93400421089aaeab1fa835a649c6",
+        "source_fact:v1:5ace00ba506bfca45e8ba07ecf148ae6f24adda0a89101f0b53df9646a90f1e2",
+        "source_fact:v1:5cf6a68d6050840a84790285f73f53aaf9c0e08f76cbe8cfe02a49050aaaafce",
+        "source_fact:v1:616d38a8c77f1cdbc5db9c3b15b6baadc59e0cf793e706bdc9f0d930208794c4",
+        "source_fact:v1:d29275e95423a57f138bfa9108b74b222e374e0bad90139a22988c0c8898874a",
+        "source_fact:v1:f49f838422dcbbdf7e40c2d9d5782055b2ccfa08c17cd297df801688a6db8988"
+      ],
+      "source_published_kst": "2026-10-07T07:35+09:00",
+      "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
     },
     "fact:97fff1a080bfa58c5e9a2ccc": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -17643,13 +17774,34 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814993",
       "source": "뉴시스",
       "source_body_digest": "d55db823e74ce553bd6ed76836661f6dd7a63339b4b7d0f75df2cffde0e32599",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:169d221bdc7ca69eb2b32d7d7bc344d9b31981c746506681871b8148b96507df",
       "source_fact_identity": "source_facts:v1:47514cc65285bfbf94388d39ebad66f27f695b43b4f95c18a0e7794e727f26ac",
       "source_fact_keys": [
         "source_fact:v1:4fbf3f1a59077cf4390b48f967efbee4f740297134f281d4ac8de7acb3aef266"
       ],
       "source_published_kst": "2026-10-06T10:05+09:00",
       "title": "두산로보틱스, '한국형 피지컬 AI' 시동…989억 국책과제 수주"
+    },
+    "fact:b3acfc44e918f736adcc41f3": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169631",
+      "source": "매일경제",
+      "source_body_digest": "04c5a8997dae378eaf1f72c5f11d544ff34a5e441d0999f4b489d13cfd137426",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bad441fac49f381eec70a47e357606253fbf2fe5d29be1f7c47d1e4fa61a729",
+      "source_fact_keys": [
+        "source_fact:v1:0fe31163cd93a0417a7b05247e6aafdf5f60109fe5a9e6858d8fd789b9e3a4c7",
+        "source_fact:v1:7187c5eb3d416612cd0b11d8e2664b61429a7133f56538938d8530464e34f690",
+        "source_fact:v1:74faa601e69c0282186a072e03a1adafdbda650cbbb9f0c5eb0f506e0f3061b5",
+        "source_fact:v1:7863a6df5cd051f312d42e0825091666dfdb38265c0ff7a882c92ee60b8576d1",
+        "source_fact:v1:fdd9082f3a4646433ef250ca136c0de75f879e871c39b7f89607a7627604d1c6"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "경영권 인수 넘어 성장자본으로…PEF 순기능 살려야 [김앤장 금융·핀테크·가상자산 인사이트]"
     },
     "fact:b3e092a33ac9d21b4399a9bd": {
       "first_seen_kst": "2026-10-06T18:58:43+09:00",
@@ -19164,6 +19316,28 @@
       "source_published_kst": "2026-10-07T05:39+09:00",
       "title": "[美특징주]레나, 버크셔해서웨이 240만주 매입에 주가 4%↑"
     },
+    "fact:d341ac954cbaec6164a1b7e8": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.dt.co.kr/article/12087797",
+      "source": "디지털타임스",
+      "source_body_digest": "a1dada6bedd946aac36a42bcb5b9f156caa10c7bfc57a5315588eb103d7265fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddfcde7302d1a1e0e3833def04e978b2248a2dadc3d88088959c26026d33c262",
+      "source_fact_keys": [
+        "source_fact:v1:5908ae6cf66fa715c12d09ea3fb1d3e31bb718ad8a07c7841ba1839592a90d4c",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:c9df59a070feec7f284c7539598660a9b20c7c9cb5f309243229dd0dfa73bc7d",
+        "source_fact:v1:f165412f270dacccdb46780d8a9a87d5d719a4bb099828fce03e2ef48baeff5c",
+        "source_fact:v1:f1bb5d27cac91a3bec1e24cb80ac885cb49323249b9b6593112fa4688d4f9a58",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:20+09:00",
+      "title": "리사 수 “반도체 수요가 공급보다 많아”…AMD 주가 사상 최고"
+    },
     "fact:d38afa3894708fd1720bcb0e": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -19781,7 +19955,7 @@
       "link": "https://www.hankyung.com/article/202610065899i",
       "source": "한국경제",
       "source_body_digest": "18f99f2e121551958116c69c478e941fe5ac04763f4e9fd0f09918f1f6c966d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-05:nasdaq=27477.31:change=1.05",
       "source_fact_identity": "source_facts:v1:4a27d9bdccb3531514d1ea635e95f115981d8fba359fe6da9df50ed16d7110ac",
       "source_fact_keys": [
         "source_fact:v1:1cb5107a597abf57f016ff4f18490a3cf3ef2844f3f28a79520729203b241ca4"
@@ -20315,6 +20489,27 @@
       ],
       "source_published_kst": "2026-10-05T16:00+09:00",
       "title": "현대차 8세대 아반떼·BMW iX3, '초기 부진설' 실체는 '공급 시차'"
+    },
+    "fact:e96d150d8a7988234e7f72ec": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070710035263",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "eb33a6fe129c2ef78f6bfbeffa0b60b2cab875c4ffa6c7fc7d87941c7b6140cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4fb984d037bed9daa286f8539148fba7ff15052395ec417c0309a26e99fb5b79",
+      "source_fact_keys": [
+        "source_fact:v1:13a04dc532064cd52226f22494a0ff52aa6b8e2416c7d4299b070feaf96f5024",
+        "source_fact:v1:505f6e6a0e327ebe4c4621362eafc22a12349bda28ee1e7117db6f9ab9829724",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:b78343cac8bba8f5f45d0096483dc571c15e64acb6828ad3e539fd1c74316b72",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:10+09:00",
+      "title": "리사 수 \"수요가 공급보다 많아\"…AMD 주가 사상 최고"
     },
     "fact:e9a660154603a625a73cedc3": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
@@ -22559,6 +22754,31 @@
       "source_published_kst": "2026-10-06T15:32+09:00",
       "title": "빙판·모래판 스타들, 의성 알리는 홍보대사 됐다"
     },
+    "link:09443e61b59c4a304bdb5dc5": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070708397820",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "30b62a5e46ebc55c719fd899ace041b450ce009dd42a51440e58e309b0357223",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7fca5cf6330ca6d250e9fb9112efaddaddebd0a5373199297852f0db4156b8e8",
+      "source_fact_keys": [
+        "source_fact:v1:067e5bc253163cd3aaf5ca6a51f149ac9467132e0cd2a3d1e5bf8423ce6b5ead",
+        "source_fact:v1:0ae01ace1b6cf02af043e63c7826a852f57276f3cda41c8092d8a14abfd4ef0d",
+        "source_fact:v1:0c66e2b89cd0e9d6a7c691c60d3cf8c5d9f2b7277f7bf51bf396c2ac91339af0",
+        "source_fact:v1:1e13930d1382ecf11d4cefc7590505f141a3152284668720b7cbe456f3e28796",
+        "source_fact:v1:31ab40cd833d7ca6047728c3d2f2140deca169024a3628451591f72b154aec23",
+        "source_fact:v1:4b4e22f0abdc5e75b5401ba6d883af7a5d77d1214e7cddeab5611fe13bfdd5a8",
+        "source_fact:v1:700d2f5cd583a02ff7876df04add41b05b96f6ca48a23e1b894f78761ee07b3e",
+        "source_fact:v1:ba5cb2661a6585051f1be428bd957b4b6258a2f6154f1f44ea55b0ca1e1e4ed6",
+        "source_fact:v1:c38b96ba1849a79a7f952db5d5616560e34c2491f8968046413bc505ee94d76a"
+      ],
+      "source_published_kst": "2026-10-07T07:15+09:00",
+      "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
+    },
     "link:0945f709a6a5ebeb9c6b8f98": {
       "first_seen_kst": "2026-10-03T12:26:15+09:00",
       "lanes": {
@@ -24198,6 +24418,32 @@
       "source": "파이낸셜뉴스",
       "title": "HL디앤아이한라, 상반기 영업익 34%↑…증권가도 목표주가 상향"
     },
+    "link:172eb18eb657592f6cf3ff88": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633084",
+      "source": "이투데이",
+      "source_body_digest": "a27514aeb1f57f21474134e8c3bd8c6d1b14a997ed51695369bb5d87f7b41cbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3bca3fb94f11db744b7dbf9c490d0841a2020bf1bb3b57d03bbe21c252ad813",
+      "source_fact_keys": [
+        "source_fact:v1:05204566be500c3aa32592f6ef0fab67c3a497e0c7966563916e8cd38fe581f7",
+        "source_fact:v1:0f5b14bfdf27c0de054c33259b4dfefb19426485f14f60c839075907b8b3041d",
+        "source_fact:v1:143d43d068273f004ae258bc90630a82d7017b8854c016f7c59b010d5a7e4c4a",
+        "source_fact:v1:46c6a2e3cd8eab13ab5b6899d991a3b255c1fd791cbf2b1e60abb62da9dd631a",
+        "source_fact:v1:49f1bf7aafd290e37b2ee6d9f2889184c41e93400421089aaeab1fa835a649c6",
+        "source_fact:v1:5ace00ba506bfca45e8ba07ecf148ae6f24adda0a89101f0b53df9646a90f1e2",
+        "source_fact:v1:5cf6a68d6050840a84790285f73f53aaf9c0e08f76cbe8cfe02a49050aaaafce",
+        "source_fact:v1:616d38a8c77f1cdbc5db9c3b15b6baadc59e0cf793e706bdc9f0d930208794c4",
+        "source_fact:v1:d29275e95423a57f138bfa9108b74b222e374e0bad90139a22988c0c8898874a",
+        "source_fact:v1:f49f838422dcbbdf7e40c2d9d5782055b2ccfa08c17cd297df801688a6db8988"
+      ],
+      "source_published_kst": "2026-10-07T07:35+09:00",
+      "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
+    },
     "link:17310f16e7263e7686ec0dc8": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
       "lanes": {
@@ -25776,7 +26022,7 @@
       "link": "https://www.hankyung.com/article/202610065899i",
       "source": "한국경제",
       "source_body_digest": "18f99f2e121551958116c69c478e941fe5ac04763f4e9fd0f09918f1f6c966d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-05:nasdaq=27477.31:change=1.05",
       "source_fact_identity": "source_facts:v1:4a27d9bdccb3531514d1ea635e95f115981d8fba359fe6da9df50ed16d7110ac",
       "source_fact_keys": [
         "source_fact:v1:1cb5107a597abf57f016ff4f18490a3cf3ef2844f3f28a79520729203b241ca4"
@@ -28805,7 +29051,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814993",
       "source": "뉴시스",
       "source_body_digest": "d55db823e74ce553bd6ed76836661f6dd7a63339b4b7d0f75df2cffde0e32599",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:169d221bdc7ca69eb2b32d7d7bc344d9b31981c746506681871b8148b96507df",
       "source_fact_identity": "source_facts:v1:47514cc65285bfbf94388d39ebad66f27f695b43b4f95c18a0e7794e727f26ac",
       "source_fact_keys": [
         "source_fact:v1:4fbf3f1a59077cf4390b48f967efbee4f740297134f281d4ac8de7acb3aef266"
@@ -32790,6 +33036,23 @@
       "source_published_kst": "2026-10-05T22:29+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 전환사채 발행 확정..쿠폰 0%"
     },
+    "link:5eef9b9d9711a821ad1b100d": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816466",
+      "source": "뉴시스",
+      "source_body_digest": "992308438fa610603ee9a1a843b617a6b0ea0973f50e4846342d0b812734d9af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:292736dca5b8d6f68c0d11fa1b7da0f726b246b932d113b806e5066e03d732ce",
+      "source_fact_keys": [
+        "source_fact:v1:23d6aa2ba902fad95d992048a6963f11a9c27eb07ef4173f4308e91267add27b"
+      ],
+      "source_published_kst": "2026-10-07T06:44+09:00",
+      "title": "호르무즈서 파나마 유조선 피격…인도 \"12명 부상\""
+    },
     "link:5ef5c1ad64a32755d5d0d21e": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
       "lanes": {
@@ -33164,7 +33427,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632636",
       "source": "이투데이",
       "source_body_digest": "91687dda569ad0a1454a9b4d0cd63018a911b602159ea09283c8ae02f3efc439",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:169d221bdc7ca69eb2b32d7d7bc344d9b31981c746506681871b8148b96507df",
       "source_fact_identity": "source_facts:v1:9ae59c216365de5442433ebf92a12c17b69236a8f989298bb47389aa757daf69",
       "source_fact_keys": [
         "source_fact:v1:a09096e5bf65d8a75808ff8ed5c1ccb9f7e7e15cb4b2a7668b62cb900238908b"
@@ -34843,7 +35106,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632544",
       "source": "이투데이",
       "source_body_digest": "74dfb82271bc3e8eb814607c38117f1b38f14e6c395c28567035fec56f2c3024",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-05:nasdaq=27477.31:change=1.05",
       "source_fact_identity": "source_facts:v1:60c6683de60f21f4558dc4de3fa7202b510c0d7d95eb2abacd1cf31725d3e689",
       "source_fact_keys": [
         "source_fact:v1:e32b7c80729a6ccea3e63b9ecead06b93abadfa4f7276ce4486342fec173738b"
@@ -34929,6 +35192,27 @@
       "link": "https://www.fnnews.com/news/202609230501157341",
       "source": "파이낸셜뉴스",
       "title": "[속보][뉴욕증시] 나스닥지수, 이틀 연속 사상 최고…다우지수, 0.4% 하락"
+    },
+    "link:6e9dac46d69637786bc0be35": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169631",
+      "source": "매일경제",
+      "source_body_digest": "04c5a8997dae378eaf1f72c5f11d544ff34a5e441d0999f4b489d13cfd137426",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bad441fac49f381eec70a47e357606253fbf2fe5d29be1f7c47d1e4fa61a729",
+      "source_fact_keys": [
+        "source_fact:v1:0fe31163cd93a0417a7b05247e6aafdf5f60109fe5a9e6858d8fd789b9e3a4c7",
+        "source_fact:v1:7187c5eb3d416612cd0b11d8e2664b61429a7133f56538938d8530464e34f690",
+        "source_fact:v1:74faa601e69c0282186a072e03a1adafdbda650cbbb9f0c5eb0f506e0f3061b5",
+        "source_fact:v1:7863a6df5cd051f312d42e0825091666dfdb38265c0ff7a882c92ee60b8576d1",
+        "source_fact:v1:fdd9082f3a4646433ef250ca136c0de75f879e871c39b7f89607a7627604d1c6"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "경영권 인수 넘어 성장자본으로…PEF 순기능 살려야 [김앤장 금융·핀테크·가상자산 인사이트]"
     },
     "link:6ec2bf061396ac23c45e8763": {
       "first_seen_kst": "2026-09-23T01:03:14+09:00",
@@ -36605,6 +36889,28 @@
       ],
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "[누리호 발사] 누리호 오늘 낮 우주로…위성 15기 싣고 비행 | 연합뉴스"
+    },
+    "link:7c999b87a45ca0984dc5776d": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.dt.co.kr/article/12087797",
+      "source": "디지털타임스",
+      "source_body_digest": "a1dada6bedd946aac36a42bcb5b9f156caa10c7bfc57a5315588eb103d7265fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddfcde7302d1a1e0e3833def04e978b2248a2dadc3d88088959c26026d33c262",
+      "source_fact_keys": [
+        "source_fact:v1:5908ae6cf66fa715c12d09ea3fb1d3e31bb718ad8a07c7841ba1839592a90d4c",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:c9df59a070feec7f284c7539598660a9b20c7c9cb5f309243229dd0dfa73bc7d",
+        "source_fact:v1:f165412f270dacccdb46780d8a9a87d5d719a4bb099828fce03e2ef48baeff5c",
+        "source_fact:v1:f1bb5d27cac91a3bec1e24cb80ac885cb49323249b9b6593112fa4688d4f9a58",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:20+09:00",
+      "title": "리사 수 “반도체 수요가 공급보다 많아”…AMD 주가 사상 최고"
     },
     "link:7cac0b8c84f0cbbe4c019d12": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
@@ -40169,6 +40475,25 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "어드밴스드 드레니쥐 시스, 스톰트랩 5억3000만 달러 인수..4분기 완료 예정"
+    },
+    "link:9e16de9135c205079b3e5c5e": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170543",
+      "source": "매일경제",
+      "source_body_digest": "ff6f36b9f2dfa2bd9fe6670925b26f901cd2d1957fb0574b6100c30fbd0d16d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5732b4e8b1c0b2d35e885fc568bab058211675e8a457913562ffa3b65524c758",
+      "source_fact_keys": [
+        "source_fact:v1:33e94dacbedd95bf1356bc4197bdada2ec58235d5351b021cd00993304b47de3",
+        "source_fact:v1:97032a7f651001900b7b40b60cbf55a4ec7e8429364c22feeb007349d5ffec43",
+        "source_fact:v1:bd3be410c17d904fa961dc98101dc07e0a775a15d2262ae587f2ee49c6a4354e"
+      ],
+      "source_published_kst": "2026-10-07T06:33+09:00",
+      "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다"
     },
     "link:9e1b759565cbde7e6fbcc185": {
       "first_seen_kst": "2026-10-05T11:24:20+09:00",
@@ -48890,6 +49215,27 @@
       "source_published_kst": "2026-10-05T22:51+09:00",
       "title": "[美특징주]PTC, 슈나이더 일렉트릭 피인수 소식에 주가 '급등'"
     },
+    "link:e6a275595e32c7f29642f353": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070710035263",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "eb33a6fe129c2ef78f6bfbeffa0b60b2cab875c4ffa6c7fc7d87941c7b6140cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4fb984d037bed9daa286f8539148fba7ff15052395ec417c0309a26e99fb5b79",
+      "source_fact_keys": [
+        "source_fact:v1:13a04dc532064cd52226f22494a0ff52aa6b8e2416c7d4299b070feaf96f5024",
+        "source_fact:v1:505f6e6a0e327ebe4c4621362eafc22a12349bda28ee1e7117db6f9ab9829724",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:b78343cac8bba8f5f45d0096483dc571c15e64acb6828ad3e539fd1c74316b72",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:10+09:00",
+      "title": "리사 수 \"수요가 공급보다 많아\"…AMD 주가 사상 최고"
+    },
     "link:e6a89de982f0c869b3af5e5f": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
@@ -53794,7 +54140,7 @@
       "link": "https://www.hankyung.com/article/202610065899i",
       "source": "한국경제",
       "source_body_digest": "18f99f2e121551958116c69c478e941fe5ac04763f4e9fd0f09918f1f6c966d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-05:nasdaq=27477.31:change=1.05",
       "source_fact_identity": "source_facts:v1:4a27d9bdccb3531514d1ea635e95f115981d8fba359fe6da9df50ed16d7110ac",
       "source_fact_keys": [
         "source_fact:v1:1cb5107a597abf57f016ff4f18490a3cf3ef2844f3f28a79520729203b241ca4"
@@ -55911,6 +56257,31 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=06068006645608656",
       "source": "이데일리",
       "title": "[美특징주]샌디스크, 마이크론 실적 통해 업황 개선 전망…개장전 1%↑"
+    },
+    "original:244c7a7efa46e496388430e1": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070708397820",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "30b62a5e46ebc55c719fd899ace041b450ce009dd42a51440e58e309b0357223",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7fca5cf6330ca6d250e9fb9112efaddaddebd0a5373199297852f0db4156b8e8",
+      "source_fact_keys": [
+        "source_fact:v1:067e5bc253163cd3aaf5ca6a51f149ac9467132e0cd2a3d1e5bf8423ce6b5ead",
+        "source_fact:v1:0ae01ace1b6cf02af043e63c7826a852f57276f3cda41c8092d8a14abfd4ef0d",
+        "source_fact:v1:0c66e2b89cd0e9d6a7c691c60d3cf8c5d9f2b7277f7bf51bf396c2ac91339af0",
+        "source_fact:v1:1e13930d1382ecf11d4cefc7590505f141a3152284668720b7cbe456f3e28796",
+        "source_fact:v1:31ab40cd833d7ca6047728c3d2f2140deca169024a3628451591f72b154aec23",
+        "source_fact:v1:4b4e22f0abdc5e75b5401ba6d883af7a5d77d1214e7cddeab5611fe13bfdd5a8",
+        "source_fact:v1:700d2f5cd583a02ff7876df04add41b05b96f6ca48a23e1b894f78761ee07b3e",
+        "source_fact:v1:ba5cb2661a6585051f1be428bd957b4b6258a2f6154f1f44ea55b0ca1e1e4ed6",
+        "source_fact:v1:c38b96ba1849a79a7f952db5d5616560e34c2491f8968046413bc505ee94d76a"
+      ],
+      "source_published_kst": "2026-10-07T07:15+09:00",
+      "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
     },
     "original:247212b74ceaa4847b1193f8": {
       "first_seen_kst": "2026-10-04T09:52:54+09:00",
@@ -58428,7 +58799,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632636",
       "source": "이투데이",
       "source_body_digest": "91687dda569ad0a1454a9b4d0cd63018a911b602159ea09283c8ae02f3efc439",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:169d221bdc7ca69eb2b32d7d7bc344d9b31981c746506681871b8148b96507df",
       "source_fact_identity": "source_facts:v1:9ae59c216365de5442433ebf92a12c17b69236a8f989298bb47389aa757daf69",
       "source_fact_keys": [
         "source_fact:v1:a09096e5bf65d8a75808ff8ed5c1ccb9f7e7e15cb4b2a7668b62cb900238908b"
@@ -62626,6 +62997,25 @@
       "source_published_kst": "2026-10-06T11:33+09:00",
       "title": "김기재 당진시장 \"전 시민 1인당 30만원 경제회복지원금 재추진\" | 연합뉴스"
     },
+    "original:5b4f25dd63568ac037ae075a": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170543",
+      "source": "매일경제",
+      "source_body_digest": "ff6f36b9f2dfa2bd9fe6670925b26f901cd2d1957fb0574b6100c30fbd0d16d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5732b4e8b1c0b2d35e885fc568bab058211675e8a457913562ffa3b65524c758",
+      "source_fact_keys": [
+        "source_fact:v1:33e94dacbedd95bf1356bc4197bdada2ec58235d5351b021cd00993304b47de3",
+        "source_fact:v1:97032a7f651001900b7b40b60cbf55a4ec7e8429364c22feeb007349d5ffec43",
+        "source_fact:v1:bd3be410c17d904fa961dc98101dc07e0a775a15d2262ae587f2ee49c6a4354e"
+      ],
+      "source_published_kst": "2026-10-07T06:33+09:00",
+      "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다"
+    },
     "original:5bbc87d40beb00fd926d5816": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
       "lanes": {
@@ -62635,7 +63025,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814993",
       "source": "뉴시스",
       "source_body_digest": "d55db823e74ce553bd6ed76836661f6dd7a63339b4b7d0f75df2cffde0e32599",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:169d221bdc7ca69eb2b32d7d7bc344d9b31981c746506681871b8148b96507df",
       "source_fact_identity": "source_facts:v1:47514cc65285bfbf94388d39ebad66f27f695b43b4f95c18a0e7794e727f26ac",
       "source_fact_keys": [
         "source_fact:v1:4fbf3f1a59077cf4390b48f967efbee4f740297134f281d4ac8de7acb3aef266"
@@ -64238,6 +64628,32 @@
       "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000014151",
       "source": "국민일보",
       "title": "경쟁자 나타난 한화의 오스탈 인수전… ‘통매각’으로 판 커지나"
+    },
+    "original:6ad17bef443ba47038a4dc84": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633084",
+      "source": "이투데이",
+      "source_body_digest": "a27514aeb1f57f21474134e8c3bd8c6d1b14a997ed51695369bb5d87f7b41cbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3bca3fb94f11db744b7dbf9c490d0841a2020bf1bb3b57d03bbe21c252ad813",
+      "source_fact_keys": [
+        "source_fact:v1:05204566be500c3aa32592f6ef0fab67c3a497e0c7966563916e8cd38fe581f7",
+        "source_fact:v1:0f5b14bfdf27c0de054c33259b4dfefb19426485f14f60c839075907b8b3041d",
+        "source_fact:v1:143d43d068273f004ae258bc90630a82d7017b8854c016f7c59b010d5a7e4c4a",
+        "source_fact:v1:46c6a2e3cd8eab13ab5b6899d991a3b255c1fd791cbf2b1e60abb62da9dd631a",
+        "source_fact:v1:49f1bf7aafd290e37b2ee6d9f2889184c41e93400421089aaeab1fa835a649c6",
+        "source_fact:v1:5ace00ba506bfca45e8ba07ecf148ae6f24adda0a89101f0b53df9646a90f1e2",
+        "source_fact:v1:5cf6a68d6050840a84790285f73f53aaf9c0e08f76cbe8cfe02a49050aaaafce",
+        "source_fact:v1:616d38a8c77f1cdbc5db9c3b15b6baadc59e0cf793e706bdc9f0d930208794c4",
+        "source_fact:v1:d29275e95423a57f138bfa9108b74b222e374e0bad90139a22988c0c8898874a",
+        "source_fact:v1:f49f838422dcbbdf7e40c2d9d5782055b2ccfa08c17cd297df801688a6db8988"
+      ],
+      "source_published_kst": "2026-10-07T07:35+09:00",
+      "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
     },
     "original:6ad9fb6c26ded73ef0c00631": {
       "first_seen_kst": "2026-09-26T20:59:22+09:00",
@@ -69851,6 +70267,23 @@
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "\"K-콘텐츠 금융지원\"…부산은행·신보, 100억원 보증지원"
     },
+    "original:9a6749dd7e4d22882817d49e": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816466",
+      "source": "뉴시스",
+      "source_body_digest": "992308438fa610603ee9a1a843b617a6b0ea0973f50e4846342d0b812734d9af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:292736dca5b8d6f68c0d11fa1b7da0f726b246b932d113b806e5066e03d732ce",
+      "source_fact_keys": [
+        "source_fact:v1:23d6aa2ba902fad95d992048a6963f11a9c27eb07ef4173f4308e91267add27b"
+      ],
+      "source_published_kst": "2026-10-07T06:44+09:00",
+      "title": "호르무즈서 파나마 유조선 피격…인도 \"12명 부상\""
+    },
     "original:9aaeb4a6eff51f9be831b227": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -71981,6 +72414,27 @@
       ],
       "source_published_kst": "2026-10-06T21:30+09:00",
       "title": "이번엔 권익위도 해킹 피해…청렴권익배움터 10만명 개인정보 유출"
+    },
+    "original:ae9e4c71ce465c5f70b32bd4": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169631",
+      "source": "매일경제",
+      "source_body_digest": "04c5a8997dae378eaf1f72c5f11d544ff34a5e441d0999f4b489d13cfd137426",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bad441fac49f381eec70a47e357606253fbf2fe5d29be1f7c47d1e4fa61a729",
+      "source_fact_keys": [
+        "source_fact:v1:0fe31163cd93a0417a7b05247e6aafdf5f60109fe5a9e6858d8fd789b9e3a4c7",
+        "source_fact:v1:7187c5eb3d416612cd0b11d8e2664b61429a7133f56538938d8530464e34f690",
+        "source_fact:v1:74faa601e69c0282186a072e03a1adafdbda650cbbb9f0c5eb0f506e0f3061b5",
+        "source_fact:v1:7863a6df5cd051f312d42e0825091666dfdb38265c0ff7a882c92ee60b8576d1",
+        "source_fact:v1:fdd9082f3a4646433ef250ca136c0de75f879e871c39b7f89607a7627604d1c6"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "경영권 인수 넘어 성장자본으로…PEF 순기능 살려야 [김앤장 금융·핀테크·가상자산 인사이트]"
     },
     "original:aedeabc0d3f2d592db188970": {
       "first_seen_kst": "2026-10-05T12:09:30+09:00",
@@ -79253,6 +79707,28 @@
       "source_published_kst": "2026-10-06T06:30+09:00",
       "title": "[속보] 예멘 후티군, 사우디 전역 미사일 ·드론 공습했다 발표"
     },
+    "original:ebef344b8cb8a5499df229f6": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.dt.co.kr/article/12087797",
+      "source": "디지털타임스",
+      "source_body_digest": "a1dada6bedd946aac36a42bcb5b9f156caa10c7bfc57a5315588eb103d7265fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddfcde7302d1a1e0e3833def04e978b2248a2dadc3d88088959c26026d33c262",
+      "source_fact_keys": [
+        "source_fact:v1:5908ae6cf66fa715c12d09ea3fb1d3e31bb718ad8a07c7841ba1839592a90d4c",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:c9df59a070feec7f284c7539598660a9b20c7c9cb5f309243229dd0dfa73bc7d",
+        "source_fact:v1:f165412f270dacccdb46780d8a9a87d5d719a4bb099828fce03e2ef48baeff5c",
+        "source_fact:v1:f1bb5d27cac91a3bec1e24cb80ac885cb49323249b9b6593112fa4688d4f9a58",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:20+09:00",
+      "title": "리사 수 “반도체 수요가 공급보다 많아”…AMD 주가 사상 최고"
+    },
     "original:ebf4db9615c5a2d438158e75": {
       "first_seen_kst": "2026-10-03T12:26:15+09:00",
       "lanes": {
@@ -80963,6 +81439,27 @@
       "source": "머니투데이",
       "title": "대미 투자 클수록 美 무역적자 심화?…트럼프 관세 정책의 딜레마"
     },
+    "original:fd0b316873688ba4588d4cfa": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070710035263",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "eb33a6fe129c2ef78f6bfbeffa0b60b2cab875c4ffa6c7fc7d87941c7b6140cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4fb984d037bed9daa286f8539148fba7ff15052395ec417c0309a26e99fb5b79",
+      "source_fact_keys": [
+        "source_fact:v1:13a04dc532064cd52226f22494a0ff52aa6b8e2416c7d4299b070feaf96f5024",
+        "source_fact:v1:505f6e6a0e327ebe4c4621362eafc22a12349bda28ee1e7117db6f9ab9829724",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:b78343cac8bba8f5f45d0096483dc571c15e64acb6828ad3e539fd1c74316b72",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:10+09:00",
+      "title": "리사 수 \"수요가 공급보다 많아\"…AMD 주가 사상 최고"
+    },
     "original:fd1f8ed9587334c157e958c5": {
       "first_seen_kst": "2026-09-26T01:14:19+09:00",
       "lanes": {
@@ -81024,7 +81521,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632544",
       "source": "이투데이",
       "source_body_digest": "74dfb82271bc3e8eb814607c38117f1b38f14e6c395c28567035fec56f2c3024",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-05:nasdaq=27477.31:change=1.05",
       "source_fact_identity": "source_facts:v1:60c6683de60f21f4558dc4de3fa7202b510c0d7d95eb2abacd1cf31725d3e689",
       "source_fact_keys": [
         "source_fact:v1:e32b7c80729a6ccea3e63b9ecead06b93abadfa4f7276ce4486342fec173738b"
@@ -82141,6 +82638,27 @@
       ],
       "source_published_kst": "2026-10-06T07:42+09:00",
       "title": "[오늘의 증시]美금리 상승에도 나스닥 최고치…코스피 상승 출발 전망"
+    },
+    "source_fact:03a6b9311b78d3020ef6b4c6": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070710035263",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "eb33a6fe129c2ef78f6bfbeffa0b60b2cab875c4ffa6c7fc7d87941c7b6140cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4fb984d037bed9daa286f8539148fba7ff15052395ec417c0309a26e99fb5b79",
+      "source_fact_keys": [
+        "source_fact:v1:13a04dc532064cd52226f22494a0ff52aa6b8e2416c7d4299b070feaf96f5024",
+        "source_fact:v1:505f6e6a0e327ebe4c4621362eafc22a12349bda28ee1e7117db6f9ab9829724",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:b78343cac8bba8f5f45d0096483dc571c15e64acb6828ad3e539fd1c74316b72",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:10+09:00",
+      "title": "리사 수 \"수요가 공급보다 많아\"…AMD 주가 사상 최고"
     },
     "source_fact:04109025d27a0f9dbb25877f": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -83284,6 +83802,25 @@
       ],
       "source_published_kst": "2026-10-06T14:27+09:00",
       "title": "[통신규제, 틀을 바꾸자]〈상〉AI 시대 통신정책, 요금 아닌 혁신 경쟁 키워야"
+    },
+    "source_fact:0820d11e794a0d415a5a61a5": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170543",
+      "source": "매일경제",
+      "source_body_digest": "ff6f36b9f2dfa2bd9fe6670925b26f901cd2d1957fb0574b6100c30fbd0d16d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5732b4e8b1c0b2d35e885fc568bab058211675e8a457913562ffa3b65524c758",
+      "source_fact_keys": [
+        "source_fact:v1:33e94dacbedd95bf1356bc4197bdada2ec58235d5351b021cd00993304b47de3",
+        "source_fact:v1:97032a7f651001900b7b40b60cbf55a4ec7e8429364c22feeb007349d5ffec43",
+        "source_fact:v1:bd3be410c17d904fa961dc98101dc07e0a775a15d2262ae587f2ee49c6a4354e"
+      ],
+      "source_published_kst": "2026-10-07T06:33+09:00",
+      "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다"
     },
     "source_fact:085f153d78395d2020da7619": {
       "first_seen_kst": "2026-10-07T01:33:00+09:00",
@@ -87118,6 +87655,27 @@
       ],
       "source_published_kst": "2026-10-06T19:47+09:00",
       "title": "[마켓인]운용사에 직접 돈 댄다…글로벌 GP솔루션 펀드 20조 돌파"
+    },
+    "source_fact:1925844de4add6a0b55eb398": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169631",
+      "source": "매일경제",
+      "source_body_digest": "04c5a8997dae378eaf1f72c5f11d544ff34a5e441d0999f4b489d13cfd137426",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bad441fac49f381eec70a47e357606253fbf2fe5d29be1f7c47d1e4fa61a729",
+      "source_fact_keys": [
+        "source_fact:v1:0fe31163cd93a0417a7b05247e6aafdf5f60109fe5a9e6858d8fd789b9e3a4c7",
+        "source_fact:v1:7187c5eb3d416612cd0b11d8e2664b61429a7133f56538938d8530464e34f690",
+        "source_fact:v1:74faa601e69c0282186a072e03a1adafdbda650cbbb9f0c5eb0f506e0f3061b5",
+        "source_fact:v1:7863a6df5cd051f312d42e0825091666dfdb38265c0ff7a882c92ee60b8576d1",
+        "source_fact:v1:fdd9082f3a4646433ef250ca136c0de75f879e871c39b7f89607a7627604d1c6"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "경영권 인수 넘어 성장자본으로…PEF 순기능 살려야 [김앤장 금융·핀테크·가상자산 인사이트]"
     },
     "source_fact:192ba0323e5c3baac5ac82f9": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
@@ -91309,6 +91867,31 @@
       "source_published_kst": "2026-10-05T18:05+09:00",
       "title": "양산에 '선박 하이브리드 시스템' 실증센터"
     },
+    "source_fact:295aaef28d6a9a556a8c4bf1": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070708397820",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "30b62a5e46ebc55c719fd899ace041b450ce009dd42a51440e58e309b0357223",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7fca5cf6330ca6d250e9fb9112efaddaddebd0a5373199297852f0db4156b8e8",
+      "source_fact_keys": [
+        "source_fact:v1:067e5bc253163cd3aaf5ca6a51f149ac9467132e0cd2a3d1e5bf8423ce6b5ead",
+        "source_fact:v1:0ae01ace1b6cf02af043e63c7826a852f57276f3cda41c8092d8a14abfd4ef0d",
+        "source_fact:v1:0c66e2b89cd0e9d6a7c691c60d3cf8c5d9f2b7277f7bf51bf396c2ac91339af0",
+        "source_fact:v1:1e13930d1382ecf11d4cefc7590505f141a3152284668720b7cbe456f3e28796",
+        "source_fact:v1:31ab40cd833d7ca6047728c3d2f2140deca169024a3628451591f72b154aec23",
+        "source_fact:v1:4b4e22f0abdc5e75b5401ba6d883af7a5d77d1214e7cddeab5611fe13bfdd5a8",
+        "source_fact:v1:700d2f5cd583a02ff7876df04add41b05b96f6ca48a23e1b894f78761ee07b3e",
+        "source_fact:v1:ba5cb2661a6585051f1be428bd957b4b6258a2f6154f1f44ea55b0ca1e1e4ed6",
+        "source_fact:v1:c38b96ba1849a79a7f952db5d5616560e34c2491f8968046413bc505ee94d76a"
+      ],
+      "source_published_kst": "2026-10-07T07:15+09:00",
+      "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
+    },
     "source_fact:297c69f9c58fd5570269ac87": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -91443,6 +92026,32 @@
       ],
       "source_published_kst": "2026-10-06T11:47+09:00",
       "title": "재경부 국감, '대미투자' 여야 질타…野 \"사업성 미달시 국정조사 사안\""
+    },
+    "source_fact:2a1ab605cc25201de620bd74": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633084",
+      "source": "이투데이",
+      "source_body_digest": "a27514aeb1f57f21474134e8c3bd8c6d1b14a997ed51695369bb5d87f7b41cbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3bca3fb94f11db744b7dbf9c490d0841a2020bf1bb3b57d03bbe21c252ad813",
+      "source_fact_keys": [
+        "source_fact:v1:05204566be500c3aa32592f6ef0fab67c3a497e0c7966563916e8cd38fe581f7",
+        "source_fact:v1:0f5b14bfdf27c0de054c33259b4dfefb19426485f14f60c839075907b8b3041d",
+        "source_fact:v1:143d43d068273f004ae258bc90630a82d7017b8854c016f7c59b010d5a7e4c4a",
+        "source_fact:v1:46c6a2e3cd8eab13ab5b6899d991a3b255c1fd791cbf2b1e60abb62da9dd631a",
+        "source_fact:v1:49f1bf7aafd290e37b2ee6d9f2889184c41e93400421089aaeab1fa835a649c6",
+        "source_fact:v1:5ace00ba506bfca45e8ba07ecf148ae6f24adda0a89101f0b53df9646a90f1e2",
+        "source_fact:v1:5cf6a68d6050840a84790285f73f53aaf9c0e08f76cbe8cfe02a49050aaaafce",
+        "source_fact:v1:616d38a8c77f1cdbc5db9c3b15b6baadc59e0cf793e706bdc9f0d930208794c4",
+        "source_fact:v1:d29275e95423a57f138bfa9108b74b222e374e0bad90139a22988c0c8898874a",
+        "source_fact:v1:f49f838422dcbbdf7e40c2d9d5782055b2ccfa08c17cd297df801688a6db8988"
+      ],
+      "source_published_kst": "2026-10-07T07:35+09:00",
+      "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
     },
     "source_fact:2a20f22aae3f38db11ee99c3": {
       "first_seen_kst": "2026-10-06T16:20:22+09:00",
@@ -91867,6 +92476,28 @@
       ],
       "source_published_kst": "2026-10-06T19:47+09:00",
       "title": "[마켓인]운용사에 직접 돈 댄다…글로벌 GP솔루션 펀드 20조 돌파"
+    },
+    "source_fact:2bde35153223189feca7139a": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.dt.co.kr/article/12087797",
+      "source": "디지털타임스",
+      "source_body_digest": "a1dada6bedd946aac36a42bcb5b9f156caa10c7bfc57a5315588eb103d7265fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddfcde7302d1a1e0e3833def04e978b2248a2dadc3d88088959c26026d33c262",
+      "source_fact_keys": [
+        "source_fact:v1:5908ae6cf66fa715c12d09ea3fb1d3e31bb718ad8a07c7841ba1839592a90d4c",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:c9df59a070feec7f284c7539598660a9b20c7c9cb5f309243229dd0dfa73bc7d",
+        "source_fact:v1:f165412f270dacccdb46780d8a9a87d5d719a4bb099828fce03e2ef48baeff5c",
+        "source_fact:v1:f1bb5d27cac91a3bec1e24cb80ac885cb49323249b9b6593112fa4688d4f9a58",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:20+09:00",
+      "title": "리사 수 “반도체 수요가 공급보다 많아”…AMD 주가 사상 최고"
     },
     "source_fact:2c05639283aeaa293a1cc713": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -93042,6 +93673,31 @@
       "source_published_kst": "2026-10-05T10:35+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 바이오 ‘10대 거래’ 선정"
     },
+    "source_fact:305e777cd61c30b7278b7a51": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070708397820",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "30b62a5e46ebc55c719fd899ace041b450ce009dd42a51440e58e309b0357223",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7fca5cf6330ca6d250e9fb9112efaddaddebd0a5373199297852f0db4156b8e8",
+      "source_fact_keys": [
+        "source_fact:v1:067e5bc253163cd3aaf5ca6a51f149ac9467132e0cd2a3d1e5bf8423ce6b5ead",
+        "source_fact:v1:0ae01ace1b6cf02af043e63c7826a852f57276f3cda41c8092d8a14abfd4ef0d",
+        "source_fact:v1:0c66e2b89cd0e9d6a7c691c60d3cf8c5d9f2b7277f7bf51bf396c2ac91339af0",
+        "source_fact:v1:1e13930d1382ecf11d4cefc7590505f141a3152284668720b7cbe456f3e28796",
+        "source_fact:v1:31ab40cd833d7ca6047728c3d2f2140deca169024a3628451591f72b154aec23",
+        "source_fact:v1:4b4e22f0abdc5e75b5401ba6d883af7a5d77d1214e7cddeab5611fe13bfdd5a8",
+        "source_fact:v1:700d2f5cd583a02ff7876df04add41b05b96f6ca48a23e1b894f78761ee07b3e",
+        "source_fact:v1:ba5cb2661a6585051f1be428bd957b4b6258a2f6154f1f44ea55b0ca1e1e4ed6",
+        "source_fact:v1:c38b96ba1849a79a7f952db5d5616560e34c2491f8968046413bc505ee94d76a"
+      ],
+      "source_published_kst": "2026-10-07T07:15+09:00",
+      "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
+    },
     "source_fact:307cb9848bbe8e5e954e3268": {
       "first_seen_kst": "2026-10-06T00:11:03+09:00",
       "lanes": {
@@ -93646,6 +94302,31 @@
       ],
       "source_published_kst": "2026-10-06T23:38+09:00",
       "title": "8월 독일 산업생산 10.6% 급감…\"대형수주 기저효과\""
+    },
+    "source_fact:327bc931bd06820412e16455": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070708397820",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "30b62a5e46ebc55c719fd899ace041b450ce009dd42a51440e58e309b0357223",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7fca5cf6330ca6d250e9fb9112efaddaddebd0a5373199297852f0db4156b8e8",
+      "source_fact_keys": [
+        "source_fact:v1:067e5bc253163cd3aaf5ca6a51f149ac9467132e0cd2a3d1e5bf8423ce6b5ead",
+        "source_fact:v1:0ae01ace1b6cf02af043e63c7826a852f57276f3cda41c8092d8a14abfd4ef0d",
+        "source_fact:v1:0c66e2b89cd0e9d6a7c691c60d3cf8c5d9f2b7277f7bf51bf396c2ac91339af0",
+        "source_fact:v1:1e13930d1382ecf11d4cefc7590505f141a3152284668720b7cbe456f3e28796",
+        "source_fact:v1:31ab40cd833d7ca6047728c3d2f2140deca169024a3628451591f72b154aec23",
+        "source_fact:v1:4b4e22f0abdc5e75b5401ba6d883af7a5d77d1214e7cddeab5611fe13bfdd5a8",
+        "source_fact:v1:700d2f5cd583a02ff7876df04add41b05b96f6ca48a23e1b894f78761ee07b3e",
+        "source_fact:v1:ba5cb2661a6585051f1be428bd957b4b6258a2f6154f1f44ea55b0ca1e1e4ed6",
+        "source_fact:v1:c38b96ba1849a79a7f952db5d5616560e34c2491f8968046413bc505ee94d76a"
+      ],
+      "source_published_kst": "2026-10-07T07:15+09:00",
+      "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
     },
     "source_fact:32868db8768fa0d9b49d1e0b": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -95715,6 +96396,28 @@
       "source_published_kst": "2026-10-06T10:17+09:00",
       "title": "[바이오스냅] JW중외제약, 당뇨병약 '엠파가드' 임상 3상 결과 발표 | 연합뉴스"
     },
+    "source_fact:3aa3d5acf9ff5a7aece19d10": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.dt.co.kr/article/12087797",
+      "source": "디지털타임스",
+      "source_body_digest": "a1dada6bedd946aac36a42bcb5b9f156caa10c7bfc57a5315588eb103d7265fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddfcde7302d1a1e0e3833def04e978b2248a2dadc3d88088959c26026d33c262",
+      "source_fact_keys": [
+        "source_fact:v1:5908ae6cf66fa715c12d09ea3fb1d3e31bb718ad8a07c7841ba1839592a90d4c",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:c9df59a070feec7f284c7539598660a9b20c7c9cb5f309243229dd0dfa73bc7d",
+        "source_fact:v1:f165412f270dacccdb46780d8a9a87d5d719a4bb099828fce03e2ef48baeff5c",
+        "source_fact:v1:f1bb5d27cac91a3bec1e24cb80ac885cb49323249b9b6593112fa4688d4f9a58",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:20+09:00",
+      "title": "리사 수 “반도체 수요가 공급보다 많아”…AMD 주가 사상 최고"
+    },
     "source_fact:3abc33cafe02030dd88e7402": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
       "lanes": {
@@ -96747,6 +97450,28 @@
       ],
       "source_published_kst": "2026-10-06T17:24+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 LFP 양극재 6조원어치 공급"
+    },
+    "source_fact:3ff31227a26ea3b9964ffbb3": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.dt.co.kr/article/12087797",
+      "source": "디지털타임스",
+      "source_body_digest": "a1dada6bedd946aac36a42bcb5b9f156caa10c7bfc57a5315588eb103d7265fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddfcde7302d1a1e0e3833def04e978b2248a2dadc3d88088959c26026d33c262",
+      "source_fact_keys": [
+        "source_fact:v1:5908ae6cf66fa715c12d09ea3fb1d3e31bb718ad8a07c7841ba1839592a90d4c",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:c9df59a070feec7f284c7539598660a9b20c7c9cb5f309243229dd0dfa73bc7d",
+        "source_fact:v1:f165412f270dacccdb46780d8a9a87d5d719a4bb099828fce03e2ef48baeff5c",
+        "source_fact:v1:f1bb5d27cac91a3bec1e24cb80ac885cb49323249b9b6593112fa4688d4f9a58",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:20+09:00",
+      "title": "리사 수 “반도체 수요가 공급보다 많아”…AMD 주가 사상 최고"
     },
     "source_fact:3ff37681ce471dab01ce325e": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
@@ -100015,6 +100740,32 @@
       "source_published_kst": "2026-10-06T15:03+09:00",
       "title": "“연봉 최대 2배” 중국행 삼전닉스 기술인재의 결말"
     },
+    "source_fact:4d7e32e4cc0cb47cee7b469b": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633084",
+      "source": "이투데이",
+      "source_body_digest": "a27514aeb1f57f21474134e8c3bd8c6d1b14a997ed51695369bb5d87f7b41cbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3bca3fb94f11db744b7dbf9c490d0841a2020bf1bb3b57d03bbe21c252ad813",
+      "source_fact_keys": [
+        "source_fact:v1:05204566be500c3aa32592f6ef0fab67c3a497e0c7966563916e8cd38fe581f7",
+        "source_fact:v1:0f5b14bfdf27c0de054c33259b4dfefb19426485f14f60c839075907b8b3041d",
+        "source_fact:v1:143d43d068273f004ae258bc90630a82d7017b8854c016f7c59b010d5a7e4c4a",
+        "source_fact:v1:46c6a2e3cd8eab13ab5b6899d991a3b255c1fd791cbf2b1e60abb62da9dd631a",
+        "source_fact:v1:49f1bf7aafd290e37b2ee6d9f2889184c41e93400421089aaeab1fa835a649c6",
+        "source_fact:v1:5ace00ba506bfca45e8ba07ecf148ae6f24adda0a89101f0b53df9646a90f1e2",
+        "source_fact:v1:5cf6a68d6050840a84790285f73f53aaf9c0e08f76cbe8cfe02a49050aaaafce",
+        "source_fact:v1:616d38a8c77f1cdbc5db9c3b15b6baadc59e0cf793e706bdc9f0d930208794c4",
+        "source_fact:v1:d29275e95423a57f138bfa9108b74b222e374e0bad90139a22988c0c8898874a",
+        "source_fact:v1:f49f838422dcbbdf7e40c2d9d5782055b2ccfa08c17cd297df801688a6db8988"
+      ],
+      "source_published_kst": "2026-10-07T07:35+09:00",
+      "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
+    },
     "source_fact:4d92bb3b85de37ab1742b761": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -102221,6 +102972,27 @@
       ],
       "source_published_kst": "2026-10-05T21:02+09:00",
       "title": "라디오팜 테라노스틱스, RAD101 2상 종료미팅 완료..3상 준비 착수"
+    },
+    "source_fact:556acaf1984cedc9b96a064b": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169631",
+      "source": "매일경제",
+      "source_body_digest": "04c5a8997dae378eaf1f72c5f11d544ff34a5e441d0999f4b489d13cfd137426",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bad441fac49f381eec70a47e357606253fbf2fe5d29be1f7c47d1e4fa61a729",
+      "source_fact_keys": [
+        "source_fact:v1:0fe31163cd93a0417a7b05247e6aafdf5f60109fe5a9e6858d8fd789b9e3a4c7",
+        "source_fact:v1:7187c5eb3d416612cd0b11d8e2664b61429a7133f56538938d8530464e34f690",
+        "source_fact:v1:74faa601e69c0282186a072e03a1adafdbda650cbbb9f0c5eb0f506e0f3061b5",
+        "source_fact:v1:7863a6df5cd051f312d42e0825091666dfdb38265c0ff7a882c92ee60b8576d1",
+        "source_fact:v1:fdd9082f3a4646433ef250ca136c0de75f879e871c39b7f89607a7627604d1c6"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "경영권 인수 넘어 성장자본으로…PEF 순기능 살려야 [김앤장 금융·핀테크·가상자산 인사이트]"
     },
     "source_fact:55aa7b110aa78ac2e4439998": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -104965,6 +105737,32 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
+    "source_fact:5f87535008cc468c2348d197": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633084",
+      "source": "이투데이",
+      "source_body_digest": "a27514aeb1f57f21474134e8c3bd8c6d1b14a997ed51695369bb5d87f7b41cbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3bca3fb94f11db744b7dbf9c490d0841a2020bf1bb3b57d03bbe21c252ad813",
+      "source_fact_keys": [
+        "source_fact:v1:05204566be500c3aa32592f6ef0fab67c3a497e0c7966563916e8cd38fe581f7",
+        "source_fact:v1:0f5b14bfdf27c0de054c33259b4dfefb19426485f14f60c839075907b8b3041d",
+        "source_fact:v1:143d43d068273f004ae258bc90630a82d7017b8854c016f7c59b010d5a7e4c4a",
+        "source_fact:v1:46c6a2e3cd8eab13ab5b6899d991a3b255c1fd791cbf2b1e60abb62da9dd631a",
+        "source_fact:v1:49f1bf7aafd290e37b2ee6d9f2889184c41e93400421089aaeab1fa835a649c6",
+        "source_fact:v1:5ace00ba506bfca45e8ba07ecf148ae6f24adda0a89101f0b53df9646a90f1e2",
+        "source_fact:v1:5cf6a68d6050840a84790285f73f53aaf9c0e08f76cbe8cfe02a49050aaaafce",
+        "source_fact:v1:616d38a8c77f1cdbc5db9c3b15b6baadc59e0cf793e706bdc9f0d930208794c4",
+        "source_fact:v1:d29275e95423a57f138bfa9108b74b222e374e0bad90139a22988c0c8898874a",
+        "source_fact:v1:f49f838422dcbbdf7e40c2d9d5782055b2ccfa08c17cd297df801688a6db8988"
+      ],
+      "source_published_kst": "2026-10-07T07:35+09:00",
+      "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
+    },
     "source_fact:5f87ec0e9f85979dc9c24897": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -105410,7 +106208,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814993",
       "source": "뉴시스",
       "source_body_digest": "d55db823e74ce553bd6ed76836661f6dd7a63339b4b7d0f75df2cffde0e32599",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:169d221bdc7ca69eb2b32d7d7bc344d9b31981c746506681871b8148b96507df",
       "source_fact_identity": "source_facts:v1:47514cc65285bfbf94388d39ebad66f27f695b43b4f95c18a0e7794e727f26ac",
       "source_fact_keys": [
         "source_fact:v1:4fbf3f1a59077cf4390b48f967efbee4f740297134f281d4ac8de7acb3aef266"
@@ -107213,6 +108011,32 @@
       ],
       "source_published_kst": "2026-10-07T06:10+09:00",
       "title": "북한 미사일 부품, 정품 아닌 위조품 대거 사용"
+    },
+    "source_fact:6902a7bedfaa47bc5fe00b59": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633084",
+      "source": "이투데이",
+      "source_body_digest": "a27514aeb1f57f21474134e8c3bd8c6d1b14a997ed51695369bb5d87f7b41cbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3bca3fb94f11db744b7dbf9c490d0841a2020bf1bb3b57d03bbe21c252ad813",
+      "source_fact_keys": [
+        "source_fact:v1:05204566be500c3aa32592f6ef0fab67c3a497e0c7966563916e8cd38fe581f7",
+        "source_fact:v1:0f5b14bfdf27c0de054c33259b4dfefb19426485f14f60c839075907b8b3041d",
+        "source_fact:v1:143d43d068273f004ae258bc90630a82d7017b8854c016f7c59b010d5a7e4c4a",
+        "source_fact:v1:46c6a2e3cd8eab13ab5b6899d991a3b255c1fd791cbf2b1e60abb62da9dd631a",
+        "source_fact:v1:49f1bf7aafd290e37b2ee6d9f2889184c41e93400421089aaeab1fa835a649c6",
+        "source_fact:v1:5ace00ba506bfca45e8ba07ecf148ae6f24adda0a89101f0b53df9646a90f1e2",
+        "source_fact:v1:5cf6a68d6050840a84790285f73f53aaf9c0e08f76cbe8cfe02a49050aaaafce",
+        "source_fact:v1:616d38a8c77f1cdbc5db9c3b15b6baadc59e0cf793e706bdc9f0d930208794c4",
+        "source_fact:v1:d29275e95423a57f138bfa9108b74b222e374e0bad90139a22988c0c8898874a",
+        "source_fact:v1:f49f838422dcbbdf7e40c2d9d5782055b2ccfa08c17cd297df801688a6db8988"
+      ],
+      "source_published_kst": "2026-10-07T07:35+09:00",
+      "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
     },
     "source_fact:690a2c7052949bbe9ac432c7": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
@@ -109368,7 +110192,7 @@
       "link": "https://www.hankyung.com/article/202610065899i",
       "source": "한국경제",
       "source_body_digest": "18f99f2e121551958116c69c478e941fe5ac04763f4e9fd0f09918f1f6c966d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-05:nasdaq=27477.31:change=1.05",
       "source_fact_identity": "source_facts:v1:4a27d9bdccb3531514d1ea635e95f115981d8fba359fe6da9df50ed16d7110ac",
       "source_fact_keys": [
         "source_fact:v1:1cb5107a597abf57f016ff4f18490a3cf3ef2844f3f28a79520729203b241ca4"
@@ -110221,6 +111045,27 @@
       "source_published_kst": "2026-10-06T18:10+09:00",
       "title": "\"알래스카 LNG 전략적 가치 생겼지만… 상업성이 전제\" [李정부 2년차 국감]"
     },
+    "source_fact:759e8475608d0d248cd6da2e": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070710035263",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "eb33a6fe129c2ef78f6bfbeffa0b60b2cab875c4ffa6c7fc7d87941c7b6140cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4fb984d037bed9daa286f8539148fba7ff15052395ec417c0309a26e99fb5b79",
+      "source_fact_keys": [
+        "source_fact:v1:13a04dc532064cd52226f22494a0ff52aa6b8e2416c7d4299b070feaf96f5024",
+        "source_fact:v1:505f6e6a0e327ebe4c4621362eafc22a12349bda28ee1e7117db6f9ab9829724",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:b78343cac8bba8f5f45d0096483dc571c15e64acb6828ad3e539fd1c74316b72",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:10+09:00",
+      "title": "리사 수 \"수요가 공급보다 많아\"…AMD 주가 사상 최고"
+    },
     "source_fact:75a6d6d0575496ff037a0151": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
       "lanes": {
@@ -110397,6 +111242,52 @@
       ],
       "source_published_kst": "2026-10-06T13:40+09:00",
       "title": "두산에너빌리티, 국산 가스터빈 美 첫 수출…스페이스XAI에 공급"
+    },
+    "source_fact:762bc9fac3de85dded821cab": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070708397820",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "30b62a5e46ebc55c719fd899ace041b450ce009dd42a51440e58e309b0357223",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7fca5cf6330ca6d250e9fb9112efaddaddebd0a5373199297852f0db4156b8e8",
+      "source_fact_keys": [
+        "source_fact:v1:067e5bc253163cd3aaf5ca6a51f149ac9467132e0cd2a3d1e5bf8423ce6b5ead",
+        "source_fact:v1:0ae01ace1b6cf02af043e63c7826a852f57276f3cda41c8092d8a14abfd4ef0d",
+        "source_fact:v1:0c66e2b89cd0e9d6a7c691c60d3cf8c5d9f2b7277f7bf51bf396c2ac91339af0",
+        "source_fact:v1:1e13930d1382ecf11d4cefc7590505f141a3152284668720b7cbe456f3e28796",
+        "source_fact:v1:31ab40cd833d7ca6047728c3d2f2140deca169024a3628451591f72b154aec23",
+        "source_fact:v1:4b4e22f0abdc5e75b5401ba6d883af7a5d77d1214e7cddeab5611fe13bfdd5a8",
+        "source_fact:v1:700d2f5cd583a02ff7876df04add41b05b96f6ca48a23e1b894f78761ee07b3e",
+        "source_fact:v1:ba5cb2661a6585051f1be428bd957b4b6258a2f6154f1f44ea55b0ca1e1e4ed6",
+        "source_fact:v1:c38b96ba1849a79a7f952db5d5616560e34c2491f8968046413bc505ee94d76a"
+      ],
+      "source_published_kst": "2026-10-07T07:15+09:00",
+      "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
+    },
+    "source_fact:7632d46196cc7ee7ad9e82aa": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169631",
+      "source": "매일경제",
+      "source_body_digest": "04c5a8997dae378eaf1f72c5f11d544ff34a5e441d0999f4b489d13cfd137426",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bad441fac49f381eec70a47e357606253fbf2fe5d29be1f7c47d1e4fa61a729",
+      "source_fact_keys": [
+        "source_fact:v1:0fe31163cd93a0417a7b05247e6aafdf5f60109fe5a9e6858d8fd789b9e3a4c7",
+        "source_fact:v1:7187c5eb3d416612cd0b11d8e2664b61429a7133f56538938d8530464e34f690",
+        "source_fact:v1:74faa601e69c0282186a072e03a1adafdbda650cbbb9f0c5eb0f506e0f3061b5",
+        "source_fact:v1:7863a6df5cd051f312d42e0825091666dfdb38265c0ff7a882c92ee60b8576d1",
+        "source_fact:v1:fdd9082f3a4646433ef250ca136c0de75f879e871c39b7f89607a7627604d1c6"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "경영권 인수 넘어 성장자본으로…PEF 순기능 살려야 [김앤장 금융·핀테크·가상자산 인사이트]"
     },
     "source_fact:766d8a6987327ef0458e039b": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
@@ -111084,6 +111975,32 @@
       ],
       "source_published_kst": "2026-10-06T11:35+09:00",
       "title": "日 ‘신중’ 알래스카 LNG 프로젝트…밴스 부통령 “韓과 조율…결국 이뤄질 일” [대미투자]"
+    },
+    "source_fact:792b6fd2e22811da95b7096f": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633084",
+      "source": "이투데이",
+      "source_body_digest": "a27514aeb1f57f21474134e8c3bd8c6d1b14a997ed51695369bb5d87f7b41cbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3bca3fb94f11db744b7dbf9c490d0841a2020bf1bb3b57d03bbe21c252ad813",
+      "source_fact_keys": [
+        "source_fact:v1:05204566be500c3aa32592f6ef0fab67c3a497e0c7966563916e8cd38fe581f7",
+        "source_fact:v1:0f5b14bfdf27c0de054c33259b4dfefb19426485f14f60c839075907b8b3041d",
+        "source_fact:v1:143d43d068273f004ae258bc90630a82d7017b8854c016f7c59b010d5a7e4c4a",
+        "source_fact:v1:46c6a2e3cd8eab13ab5b6899d991a3b255c1fd791cbf2b1e60abb62da9dd631a",
+        "source_fact:v1:49f1bf7aafd290e37b2ee6d9f2889184c41e93400421089aaeab1fa835a649c6",
+        "source_fact:v1:5ace00ba506bfca45e8ba07ecf148ae6f24adda0a89101f0b53df9646a90f1e2",
+        "source_fact:v1:5cf6a68d6050840a84790285f73f53aaf9c0e08f76cbe8cfe02a49050aaaafce",
+        "source_fact:v1:616d38a8c77f1cdbc5db9c3b15b6baadc59e0cf793e706bdc9f0d930208794c4",
+        "source_fact:v1:d29275e95423a57f138bfa9108b74b222e374e0bad90139a22988c0c8898874a",
+        "source_fact:v1:f49f838422dcbbdf7e40c2d9d5782055b2ccfa08c17cd297df801688a6db8988"
+      ],
+      "source_published_kst": "2026-10-07T07:35+09:00",
+      "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
     },
     "source_fact:793ad7f86fc3428b2ee22186": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -113544,6 +114461,27 @@
       "source_published_kst": "2026-10-05T10:42+09:00",
       "title": "삼성전자, 코스피 ‘구원투수’ 될까…7000선 안착 시험대[주간증시전망]"
     },
+    "source_fact:822859814361298152411870": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169631",
+      "source": "매일경제",
+      "source_body_digest": "04c5a8997dae378eaf1f72c5f11d544ff34a5e441d0999f4b489d13cfd137426",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bad441fac49f381eec70a47e357606253fbf2fe5d29be1f7c47d1e4fa61a729",
+      "source_fact_keys": [
+        "source_fact:v1:0fe31163cd93a0417a7b05247e6aafdf5f60109fe5a9e6858d8fd789b9e3a4c7",
+        "source_fact:v1:7187c5eb3d416612cd0b11d8e2664b61429a7133f56538938d8530464e34f690",
+        "source_fact:v1:74faa601e69c0282186a072e03a1adafdbda650cbbb9f0c5eb0f506e0f3061b5",
+        "source_fact:v1:7863a6df5cd051f312d42e0825091666dfdb38265c0ff7a882c92ee60b8576d1",
+        "source_fact:v1:fdd9082f3a4646433ef250ca136c0de75f879e871c39b7f89607a7627604d1c6"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "경영권 인수 넘어 성장자본으로…PEF 순기능 살려야 [김앤장 금융·핀테크·가상자산 인사이트]"
+    },
     "source_fact:823d5d825b0cfe23eb1bacd0": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
       "lanes": {
@@ -114515,6 +115453,31 @@
       "source_published_kst": "2026-10-06T11:40+09:00",
       "title": "심텍 `CPU, LPDDR 수요 확대의 중심` 증권사 발표에 강세…7.78%"
     },
+    "source_fact:85f1b9a81394607de3ee1f5b": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070708397820",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "30b62a5e46ebc55c719fd899ace041b450ce009dd42a51440e58e309b0357223",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7fca5cf6330ca6d250e9fb9112efaddaddebd0a5373199297852f0db4156b8e8",
+      "source_fact_keys": [
+        "source_fact:v1:067e5bc253163cd3aaf5ca6a51f149ac9467132e0cd2a3d1e5bf8423ce6b5ead",
+        "source_fact:v1:0ae01ace1b6cf02af043e63c7826a852f57276f3cda41c8092d8a14abfd4ef0d",
+        "source_fact:v1:0c66e2b89cd0e9d6a7c691c60d3cf8c5d9f2b7277f7bf51bf396c2ac91339af0",
+        "source_fact:v1:1e13930d1382ecf11d4cefc7590505f141a3152284668720b7cbe456f3e28796",
+        "source_fact:v1:31ab40cd833d7ca6047728c3d2f2140deca169024a3628451591f72b154aec23",
+        "source_fact:v1:4b4e22f0abdc5e75b5401ba6d883af7a5d77d1214e7cddeab5611fe13bfdd5a8",
+        "source_fact:v1:700d2f5cd583a02ff7876df04add41b05b96f6ca48a23e1b894f78761ee07b3e",
+        "source_fact:v1:ba5cb2661a6585051f1be428bd957b4b6258a2f6154f1f44ea55b0ca1e1e4ed6",
+        "source_fact:v1:c38b96ba1849a79a7f952db5d5616560e34c2491f8968046413bc505ee94d76a"
+      ],
+      "source_published_kst": "2026-10-07T07:15+09:00",
+      "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
+    },
     "source_fact:85f8c347b3cf304cd25b4332": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -114829,7 +115792,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632544",
       "source": "이투데이",
       "source_body_digest": "74dfb82271bc3e8eb814607c38117f1b38f14e6c395c28567035fec56f2c3024",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-05:nasdaq=27477.31:change=1.05",
       "source_fact_identity": "source_facts:v1:60c6683de60f21f4558dc4de3fa7202b510c0d7d95eb2abacd1cf31725d3e689",
       "source_fact_keys": [
         "source_fact:v1:e32b7c80729a6ccea3e63b9ecead06b93abadfa4f7276ce4486342fec173738b"
@@ -116292,6 +117255,28 @@
       ],
       "source_published_kst": "2026-10-06T15:17+09:00",
       "title": "그래도 버틴다…\"이란, 원유수출 막혀도 美 지치기 기다려\" | 연합뉴스"
+    },
+    "source_fact:8e25dc6f067e6934b2caec3c": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.dt.co.kr/article/12087797",
+      "source": "디지털타임스",
+      "source_body_digest": "a1dada6bedd946aac36a42bcb5b9f156caa10c7bfc57a5315588eb103d7265fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddfcde7302d1a1e0e3833def04e978b2248a2dadc3d88088959c26026d33c262",
+      "source_fact_keys": [
+        "source_fact:v1:5908ae6cf66fa715c12d09ea3fb1d3e31bb718ad8a07c7841ba1839592a90d4c",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:c9df59a070feec7f284c7539598660a9b20c7c9cb5f309243229dd0dfa73bc7d",
+        "source_fact:v1:f165412f270dacccdb46780d8a9a87d5d719a4bb099828fce03e2ef48baeff5c",
+        "source_fact:v1:f1bb5d27cac91a3bec1e24cb80ac885cb49323249b9b6593112fa4688d4f9a58",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:20+09:00",
+      "title": "리사 수 “반도체 수요가 공급보다 많아”…AMD 주가 사상 최고"
     },
     "source_fact:8e31d60ed9f4f8dc3cb22556": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -118364,6 +119349,27 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:9674e06aa8cdde3ae95cd9de": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169631",
+      "source": "매일경제",
+      "source_body_digest": "04c5a8997dae378eaf1f72c5f11d544ff34a5e441d0999f4b489d13cfd137426",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bad441fac49f381eec70a47e357606253fbf2fe5d29be1f7c47d1e4fa61a729",
+      "source_fact_keys": [
+        "source_fact:v1:0fe31163cd93a0417a7b05247e6aafdf5f60109fe5a9e6858d8fd789b9e3a4c7",
+        "source_fact:v1:7187c5eb3d416612cd0b11d8e2664b61429a7133f56538938d8530464e34f690",
+        "source_fact:v1:74faa601e69c0282186a072e03a1adafdbda650cbbb9f0c5eb0f506e0f3061b5",
+        "source_fact:v1:7863a6df5cd051f312d42e0825091666dfdb38265c0ff7a882c92ee60b8576d1",
+        "source_fact:v1:fdd9082f3a4646433ef250ca136c0de75f879e871c39b7f89607a7627604d1c6"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "경영권 인수 넘어 성장자본으로…PEF 순기능 살려야 [김앤장 금융·핀테크·가상자산 인사이트]"
     },
     "source_fact:96778196eeb29ce764567bb8": {
       "first_seen_kst": "2026-10-07T00:38:27+09:00",
@@ -124031,6 +125037,27 @@
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "\"AI 병목 구간은 메모리\"… 삼전닉스 담는 새 글로벌ETF"
     },
+    "source_fact:adaed53200945b33620d104c": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070710035263",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "eb33a6fe129c2ef78f6bfbeffa0b60b2cab875c4ffa6c7fc7d87941c7b6140cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4fb984d037bed9daa286f8539148fba7ff15052395ec417c0309a26e99fb5b79",
+      "source_fact_keys": [
+        "source_fact:v1:13a04dc532064cd52226f22494a0ff52aa6b8e2416c7d4299b070feaf96f5024",
+        "source_fact:v1:505f6e6a0e327ebe4c4621362eafc22a12349bda28ee1e7117db6f9ab9829724",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:b78343cac8bba8f5f45d0096483dc571c15e64acb6828ad3e539fd1c74316b72",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:10+09:00",
+      "title": "리사 수 \"수요가 공급보다 많아\"…AMD 주가 사상 최고"
+    },
     "source_fact:add4fc3a3ad824be02527115": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -124717,6 +125744,23 @@
       ],
       "source_published_kst": "2026-10-06T10:23+09:00",
       "title": "1∼8월 글로벌 전기차 5.9% 증가…현대차그룹은 두 자릿수 성장"
+    },
+    "source_fact:b0e7ed3150b949168416bd42": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816466",
+      "source": "뉴시스",
+      "source_body_digest": "992308438fa610603ee9a1a843b617a6b0ea0973f50e4846342d0b812734d9af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:292736dca5b8d6f68c0d11fa1b7da0f726b246b932d113b806e5066e03d732ce",
+      "source_fact_keys": [
+        "source_fact:v1:23d6aa2ba902fad95d992048a6963f11a9c27eb07ef4173f4308e91267add27b"
+      ],
+      "source_published_kst": "2026-10-07T06:44+09:00",
+      "title": "호르무즈서 파나마 유조선 피격…인도 \"12명 부상\""
     },
     "source_fact:b0edf5f3c835dbc4c3079d32": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -126077,7 +127121,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632636",
       "source": "이투데이",
       "source_body_digest": "91687dda569ad0a1454a9b4d0cd63018a911b602159ea09283c8ae02f3efc439",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:169d221bdc7ca69eb2b32d7d7bc344d9b31981c746506681871b8148b96507df",
       "source_fact_identity": "source_facts:v1:9ae59c216365de5442433ebf92a12c17b69236a8f989298bb47389aa757daf69",
       "source_fact_keys": [
         "source_fact:v1:a09096e5bf65d8a75808ff8ed5c1ccb9f7e7e15cb4b2a7668b62cb900238908b"
@@ -126180,6 +127224,32 @@
       ],
       "source_published_kst": "2026-10-06T09:00+09:00",
       "title": "넥스팟솔루션, ‘3無 프로젝트’ 통해 정품인증 스티커 MOQ 완전 폐지"
+    },
+    "source_fact:b6511de651d742b58dfbc37b": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633084",
+      "source": "이투데이",
+      "source_body_digest": "a27514aeb1f57f21474134e8c3bd8c6d1b14a997ed51695369bb5d87f7b41cbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3bca3fb94f11db744b7dbf9c490d0841a2020bf1bb3b57d03bbe21c252ad813",
+      "source_fact_keys": [
+        "source_fact:v1:05204566be500c3aa32592f6ef0fab67c3a497e0c7966563916e8cd38fe581f7",
+        "source_fact:v1:0f5b14bfdf27c0de054c33259b4dfefb19426485f14f60c839075907b8b3041d",
+        "source_fact:v1:143d43d068273f004ae258bc90630a82d7017b8854c016f7c59b010d5a7e4c4a",
+        "source_fact:v1:46c6a2e3cd8eab13ab5b6899d991a3b255c1fd791cbf2b1e60abb62da9dd631a",
+        "source_fact:v1:49f1bf7aafd290e37b2ee6d9f2889184c41e93400421089aaeab1fa835a649c6",
+        "source_fact:v1:5ace00ba506bfca45e8ba07ecf148ae6f24adda0a89101f0b53df9646a90f1e2",
+        "source_fact:v1:5cf6a68d6050840a84790285f73f53aaf9c0e08f76cbe8cfe02a49050aaaafce",
+        "source_fact:v1:616d38a8c77f1cdbc5db9c3b15b6baadc59e0cf793e706bdc9f0d930208794c4",
+        "source_fact:v1:d29275e95423a57f138bfa9108b74b222e374e0bad90139a22988c0c8898874a",
+        "source_fact:v1:f49f838422dcbbdf7e40c2d9d5782055b2ccfa08c17cd297df801688a6db8988"
+      ],
+      "source_published_kst": "2026-10-07T07:35+09:00",
+      "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
     },
     "source_fact:b65ece6f0d73b0f7bba7561d": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
@@ -128841,6 +129911,27 @@
       ],
       "source_published_kst": "2026-10-06T17:12+09:00",
       "title": "오일머니 줄선 오픈AI … 42조원 투자유치 추진"
+    },
+    "source_fact:c1cda55d5d59da2258390edf": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070710035263",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "eb33a6fe129c2ef78f6bfbeffa0b60b2cab875c4ffa6c7fc7d87941c7b6140cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4fb984d037bed9daa286f8539148fba7ff15052395ec417c0309a26e99fb5b79",
+      "source_fact_keys": [
+        "source_fact:v1:13a04dc532064cd52226f22494a0ff52aa6b8e2416c7d4299b070feaf96f5024",
+        "source_fact:v1:505f6e6a0e327ebe4c4621362eafc22a12349bda28ee1e7117db6f9ab9829724",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:b78343cac8bba8f5f45d0096483dc571c15e64acb6828ad3e539fd1c74316b72",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:10+09:00",
+      "title": "리사 수 \"수요가 공급보다 많아\"…AMD 주가 사상 최고"
     },
     "source_fact:c1e7f56181b16e7577869d9c": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -132602,6 +133693,31 @@
       "source_published_kst": "2026-10-06T14:14+09:00",
       "title": "\"이종이식 사업화 속도\"…옵티팜, cGMP 시설인수"
     },
+    "source_fact:d0fa46cdce371c1e73746f0e": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070708397820",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "30b62a5e46ebc55c719fd899ace041b450ce009dd42a51440e58e309b0357223",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7fca5cf6330ca6d250e9fb9112efaddaddebd0a5373199297852f0db4156b8e8",
+      "source_fact_keys": [
+        "source_fact:v1:067e5bc253163cd3aaf5ca6a51f149ac9467132e0cd2a3d1e5bf8423ce6b5ead",
+        "source_fact:v1:0ae01ace1b6cf02af043e63c7826a852f57276f3cda41c8092d8a14abfd4ef0d",
+        "source_fact:v1:0c66e2b89cd0e9d6a7c691c60d3cf8c5d9f2b7277f7bf51bf396c2ac91339af0",
+        "source_fact:v1:1e13930d1382ecf11d4cefc7590505f141a3152284668720b7cbe456f3e28796",
+        "source_fact:v1:31ab40cd833d7ca6047728c3d2f2140deca169024a3628451591f72b154aec23",
+        "source_fact:v1:4b4e22f0abdc5e75b5401ba6d883af7a5d77d1214e7cddeab5611fe13bfdd5a8",
+        "source_fact:v1:700d2f5cd583a02ff7876df04add41b05b96f6ca48a23e1b894f78761ee07b3e",
+        "source_fact:v1:ba5cb2661a6585051f1be428bd957b4b6258a2f6154f1f44ea55b0ca1e1e4ed6",
+        "source_fact:v1:c38b96ba1849a79a7f952db5d5616560e34c2491f8968046413bc505ee94d76a"
+      ],
+      "source_published_kst": "2026-10-07T07:15+09:00",
+      "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
+    },
     "source_fact:d131327b817867492bbd1a23": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -133574,6 +134690,31 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:d413dfea6ff8d959b79adfec": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070708397820",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "30b62a5e46ebc55c719fd899ace041b450ce009dd42a51440e58e309b0357223",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7fca5cf6330ca6d250e9fb9112efaddaddebd0a5373199297852f0db4156b8e8",
+      "source_fact_keys": [
+        "source_fact:v1:067e5bc253163cd3aaf5ca6a51f149ac9467132e0cd2a3d1e5bf8423ce6b5ead",
+        "source_fact:v1:0ae01ace1b6cf02af043e63c7826a852f57276f3cda41c8092d8a14abfd4ef0d",
+        "source_fact:v1:0c66e2b89cd0e9d6a7c691c60d3cf8c5d9f2b7277f7bf51bf396c2ac91339af0",
+        "source_fact:v1:1e13930d1382ecf11d4cefc7590505f141a3152284668720b7cbe456f3e28796",
+        "source_fact:v1:31ab40cd833d7ca6047728c3d2f2140deca169024a3628451591f72b154aec23",
+        "source_fact:v1:4b4e22f0abdc5e75b5401ba6d883af7a5d77d1214e7cddeab5611fe13bfdd5a8",
+        "source_fact:v1:700d2f5cd583a02ff7876df04add41b05b96f6ca48a23e1b894f78761ee07b3e",
+        "source_fact:v1:ba5cb2661a6585051f1be428bd957b4b6258a2f6154f1f44ea55b0ca1e1e4ed6",
+        "source_fact:v1:c38b96ba1849a79a7f952db5d5616560e34c2491f8968046413bc505ee94d76a"
+      ],
+      "source_published_kst": "2026-10-07T07:15+09:00",
+      "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
+    },
     "source_fact:d41f02e2b3741c184780743c": {
       "first_seen_kst": "2026-10-06T01:26:06+09:00",
       "lanes": {
@@ -133946,6 +135087,32 @@
       ],
       "source_published_kst": "2026-10-07T06:59+09:00",
       "title": "트럼프 “관세 낮추려는 한국에 대가 지급해야 한다 말해”"
+    },
+    "source_fact:d5d655aa318624bfc50cd0d6": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633084",
+      "source": "이투데이",
+      "source_body_digest": "a27514aeb1f57f21474134e8c3bd8c6d1b14a997ed51695369bb5d87f7b41cbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3bca3fb94f11db744b7dbf9c490d0841a2020bf1bb3b57d03bbe21c252ad813",
+      "source_fact_keys": [
+        "source_fact:v1:05204566be500c3aa32592f6ef0fab67c3a497e0c7966563916e8cd38fe581f7",
+        "source_fact:v1:0f5b14bfdf27c0de054c33259b4dfefb19426485f14f60c839075907b8b3041d",
+        "source_fact:v1:143d43d068273f004ae258bc90630a82d7017b8854c016f7c59b010d5a7e4c4a",
+        "source_fact:v1:46c6a2e3cd8eab13ab5b6899d991a3b255c1fd791cbf2b1e60abb62da9dd631a",
+        "source_fact:v1:49f1bf7aafd290e37b2ee6d9f2889184c41e93400421089aaeab1fa835a649c6",
+        "source_fact:v1:5ace00ba506bfca45e8ba07ecf148ae6f24adda0a89101f0b53df9646a90f1e2",
+        "source_fact:v1:5cf6a68d6050840a84790285f73f53aaf9c0e08f76cbe8cfe02a49050aaaafce",
+        "source_fact:v1:616d38a8c77f1cdbc5db9c3b15b6baadc59e0cf793e706bdc9f0d930208794c4",
+        "source_fact:v1:d29275e95423a57f138bfa9108b74b222e374e0bad90139a22988c0c8898874a",
+        "source_fact:v1:f49f838422dcbbdf7e40c2d9d5782055b2ccfa08c17cd297df801688a6db8988"
+      ],
+      "source_published_kst": "2026-10-07T07:35+09:00",
+      "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
     },
     "source_fact:d5fc4cb1818be7eb0fcefc01": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -134848,6 +136015,25 @@
       ],
       "source_published_kst": "2026-10-06T21:16+09:00",
       "title": "[개장전특징주]AMD, TSMC, 마벨, 씨게이트"
+    },
+    "source_fact:d849ca7c21d7436280afa41f": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170543",
+      "source": "매일경제",
+      "source_body_digest": "ff6f36b9f2dfa2bd9fe6670925b26f901cd2d1957fb0574b6100c30fbd0d16d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5732b4e8b1c0b2d35e885fc568bab058211675e8a457913562ffa3b65524c758",
+      "source_fact_keys": [
+        "source_fact:v1:33e94dacbedd95bf1356bc4197bdada2ec58235d5351b021cd00993304b47de3",
+        "source_fact:v1:97032a7f651001900b7b40b60cbf55a4ec7e8429364c22feeb007349d5ffec43",
+        "source_fact:v1:bd3be410c17d904fa961dc98101dc07e0a775a15d2262ae587f2ee49c6a4354e"
+      ],
+      "source_published_kst": "2026-10-07T06:33+09:00",
+      "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다"
     },
     "source_fact:d8647a36cd26de362e3902c8": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
@@ -135777,6 +136963,32 @@
       "source_published_kst": "2026-10-06T18:13+09:00",
       "title": "[BioS]알테오젠, 알테오젠바이오로직스 합병 결정"
     },
+    "source_fact:dc53c187bea310d0013eeaf4": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633084",
+      "source": "이투데이",
+      "source_body_digest": "a27514aeb1f57f21474134e8c3bd8c6d1b14a997ed51695369bb5d87f7b41cbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3bca3fb94f11db744b7dbf9c490d0841a2020bf1bb3b57d03bbe21c252ad813",
+      "source_fact_keys": [
+        "source_fact:v1:05204566be500c3aa32592f6ef0fab67c3a497e0c7966563916e8cd38fe581f7",
+        "source_fact:v1:0f5b14bfdf27c0de054c33259b4dfefb19426485f14f60c839075907b8b3041d",
+        "source_fact:v1:143d43d068273f004ae258bc90630a82d7017b8854c016f7c59b010d5a7e4c4a",
+        "source_fact:v1:46c6a2e3cd8eab13ab5b6899d991a3b255c1fd791cbf2b1e60abb62da9dd631a",
+        "source_fact:v1:49f1bf7aafd290e37b2ee6d9f2889184c41e93400421089aaeab1fa835a649c6",
+        "source_fact:v1:5ace00ba506bfca45e8ba07ecf148ae6f24adda0a89101f0b53df9646a90f1e2",
+        "source_fact:v1:5cf6a68d6050840a84790285f73f53aaf9c0e08f76cbe8cfe02a49050aaaafce",
+        "source_fact:v1:616d38a8c77f1cdbc5db9c3b15b6baadc59e0cf793e706bdc9f0d930208794c4",
+        "source_fact:v1:d29275e95423a57f138bfa9108b74b222e374e0bad90139a22988c0c8898874a",
+        "source_fact:v1:f49f838422dcbbdf7e40c2d9d5782055b2ccfa08c17cd297df801688a6db8988"
+      ],
+      "source_published_kst": "2026-10-07T07:35+09:00",
+      "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
+    },
     "source_fact:dc6857ad1b734c76597f4bcb": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -135860,6 +137072,25 @@
       ],
       "source_published_kst": "2026-10-07T00:55+09:00",
       "title": "국제 유가·美 국채 수익률 동반 하락…뉴욕 증시 사상 최고"
+    },
+    "source_fact:dcb90d03a1abdbc6ab13022f": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170543",
+      "source": "매일경제",
+      "source_body_digest": "ff6f36b9f2dfa2bd9fe6670925b26f901cd2d1957fb0574b6100c30fbd0d16d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5732b4e8b1c0b2d35e885fc568bab058211675e8a457913562ffa3b65524c758",
+      "source_fact_keys": [
+        "source_fact:v1:33e94dacbedd95bf1356bc4197bdada2ec58235d5351b021cd00993304b47de3",
+        "source_fact:v1:97032a7f651001900b7b40b60cbf55a4ec7e8429364c22feeb007349d5ffec43",
+        "source_fact:v1:bd3be410c17d904fa961dc98101dc07e0a775a15d2262ae587f2ee49c6a4354e"
+      ],
+      "source_published_kst": "2026-10-07T06:33+09:00",
+      "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다"
     },
     "source_fact:dccc10614b8efcbd20e9db45": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -136263,6 +137494,32 @@
       ],
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "폭염·AI에 日 전력난 비상… 노후 화력발전 수명연장 검토 | 연합뉴스"
+    },
+    "source_fact:de444cb8b9056e201e255c20": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633084",
+      "source": "이투데이",
+      "source_body_digest": "a27514aeb1f57f21474134e8c3bd8c6d1b14a997ed51695369bb5d87f7b41cbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3bca3fb94f11db744b7dbf9c490d0841a2020bf1bb3b57d03bbe21c252ad813",
+      "source_fact_keys": [
+        "source_fact:v1:05204566be500c3aa32592f6ef0fab67c3a497e0c7966563916e8cd38fe581f7",
+        "source_fact:v1:0f5b14bfdf27c0de054c33259b4dfefb19426485f14f60c839075907b8b3041d",
+        "source_fact:v1:143d43d068273f004ae258bc90630a82d7017b8854c016f7c59b010d5a7e4c4a",
+        "source_fact:v1:46c6a2e3cd8eab13ab5b6899d991a3b255c1fd791cbf2b1e60abb62da9dd631a",
+        "source_fact:v1:49f1bf7aafd290e37b2ee6d9f2889184c41e93400421089aaeab1fa835a649c6",
+        "source_fact:v1:5ace00ba506bfca45e8ba07ecf148ae6f24adda0a89101f0b53df9646a90f1e2",
+        "source_fact:v1:5cf6a68d6050840a84790285f73f53aaf9c0e08f76cbe8cfe02a49050aaaafce",
+        "source_fact:v1:616d38a8c77f1cdbc5db9c3b15b6baadc59e0cf793e706bdc9f0d930208794c4",
+        "source_fact:v1:d29275e95423a57f138bfa9108b74b222e374e0bad90139a22988c0c8898874a",
+        "source_fact:v1:f49f838422dcbbdf7e40c2d9d5782055b2ccfa08c17cd297df801688a6db8988"
+      ],
+      "source_published_kst": "2026-10-07T07:35+09:00",
+      "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
     },
     "source_fact:de7038fe0a251c3527ebb96e": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
@@ -137465,6 +138722,31 @@
       ],
       "source_published_kst": "2026-10-06T16:55+09:00",
       "title": "알테오젠, 국민성장펀드‧스카이레이크서 2000억원 투자 유치"
+    },
+    "source_fact:e235d165821cc7bc60bb00d8": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070708397820",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "30b62a5e46ebc55c719fd899ace041b450ce009dd42a51440e58e309b0357223",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7fca5cf6330ca6d250e9fb9112efaddaddebd0a5373199297852f0db4156b8e8",
+      "source_fact_keys": [
+        "source_fact:v1:067e5bc253163cd3aaf5ca6a51f149ac9467132e0cd2a3d1e5bf8423ce6b5ead",
+        "source_fact:v1:0ae01ace1b6cf02af043e63c7826a852f57276f3cda41c8092d8a14abfd4ef0d",
+        "source_fact:v1:0c66e2b89cd0e9d6a7c691c60d3cf8c5d9f2b7277f7bf51bf396c2ac91339af0",
+        "source_fact:v1:1e13930d1382ecf11d4cefc7590505f141a3152284668720b7cbe456f3e28796",
+        "source_fact:v1:31ab40cd833d7ca6047728c3d2f2140deca169024a3628451591f72b154aec23",
+        "source_fact:v1:4b4e22f0abdc5e75b5401ba6d883af7a5d77d1214e7cddeab5611fe13bfdd5a8",
+        "source_fact:v1:700d2f5cd583a02ff7876df04add41b05b96f6ca48a23e1b894f78761ee07b3e",
+        "source_fact:v1:ba5cb2661a6585051f1be428bd957b4b6258a2f6154f1f44ea55b0ca1e1e4ed6",
+        "source_fact:v1:c38b96ba1849a79a7f952db5d5616560e34c2491f8968046413bc505ee94d76a"
+      ],
+      "source_published_kst": "2026-10-07T07:15+09:00",
+      "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
     },
     "source_fact:e23b410241b4a827a25728dc": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
@@ -139611,6 +140893,27 @@
       ],
       "source_published_kst": "2026-10-06T17:35+09:00",
       "title": "포스코퓨처엠, 삼성SDI에 '6조원' 규모 LFP 공급…\"물량 두 배 이상 확대\""
+    },
+    "source_fact:ea67530fa324c2a674c725ed": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070710035263",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "eb33a6fe129c2ef78f6bfbeffa0b60b2cab875c4ffa6c7fc7d87941c7b6140cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4fb984d037bed9daa286f8539148fba7ff15052395ec417c0309a26e99fb5b79",
+      "source_fact_keys": [
+        "source_fact:v1:13a04dc532064cd52226f22494a0ff52aa6b8e2416c7d4299b070feaf96f5024",
+        "source_fact:v1:505f6e6a0e327ebe4c4621362eafc22a12349bda28ee1e7117db6f9ab9829724",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:b78343cac8bba8f5f45d0096483dc571c15e64acb6828ad3e539fd1c74316b72",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:10+09:00",
+      "title": "리사 수 \"수요가 공급보다 많아\"…AMD 주가 사상 최고"
     },
     "source_fact:ea67bcf46a9864f7e55b98d9": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -142026,6 +143329,32 @@
       "source_published_kst": "2026-10-06T03:54+09:00",
       "title": "[美특징주]웰스파고, 모건스탠리 ‘매수’ 상향에 주가 2%↑"
     },
+    "source_fact:f45596abd8b187ee2e1ad929": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633084",
+      "source": "이투데이",
+      "source_body_digest": "a27514aeb1f57f21474134e8c3bd8c6d1b14a997ed51695369bb5d87f7b41cbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3bca3fb94f11db744b7dbf9c490d0841a2020bf1bb3b57d03bbe21c252ad813",
+      "source_fact_keys": [
+        "source_fact:v1:05204566be500c3aa32592f6ef0fab67c3a497e0c7966563916e8cd38fe581f7",
+        "source_fact:v1:0f5b14bfdf27c0de054c33259b4dfefb19426485f14f60c839075907b8b3041d",
+        "source_fact:v1:143d43d068273f004ae258bc90630a82d7017b8854c016f7c59b010d5a7e4c4a",
+        "source_fact:v1:46c6a2e3cd8eab13ab5b6899d991a3b255c1fd791cbf2b1e60abb62da9dd631a",
+        "source_fact:v1:49f1bf7aafd290e37b2ee6d9f2889184c41e93400421089aaeab1fa835a649c6",
+        "source_fact:v1:5ace00ba506bfca45e8ba07ecf148ae6f24adda0a89101f0b53df9646a90f1e2",
+        "source_fact:v1:5cf6a68d6050840a84790285f73f53aaf9c0e08f76cbe8cfe02a49050aaaafce",
+        "source_fact:v1:616d38a8c77f1cdbc5db9c3b15b6baadc59e0cf793e706bdc9f0d930208794c4",
+        "source_fact:v1:d29275e95423a57f138bfa9108b74b222e374e0bad90139a22988c0c8898874a",
+        "source_fact:v1:f49f838422dcbbdf7e40c2d9d5782055b2ccfa08c17cd297df801688a6db8988"
+      ],
+      "source_published_kst": "2026-10-07T07:35+09:00",
+      "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
+    },
     "source_fact:f46415de803901b04e0f889c": {
       "first_seen_kst": "2026-10-06T23:56:49+09:00",
       "lanes": {
@@ -142684,6 +144013,31 @@
       ],
       "source_published_kst": "2026-10-06T07:29+09:00",
       "title": "부산 청년기업, 국내 최초 디지털제품여권 상용화"
+    },
+    "source_fact:f7610ee14141aad8a0b06762": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070708397820",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "30b62a5e46ebc55c719fd899ace041b450ce009dd42a51440e58e309b0357223",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7fca5cf6330ca6d250e9fb9112efaddaddebd0a5373199297852f0db4156b8e8",
+      "source_fact_keys": [
+        "source_fact:v1:067e5bc253163cd3aaf5ca6a51f149ac9467132e0cd2a3d1e5bf8423ce6b5ead",
+        "source_fact:v1:0ae01ace1b6cf02af043e63c7826a852f57276f3cda41c8092d8a14abfd4ef0d",
+        "source_fact:v1:0c66e2b89cd0e9d6a7c691c60d3cf8c5d9f2b7277f7bf51bf396c2ac91339af0",
+        "source_fact:v1:1e13930d1382ecf11d4cefc7590505f141a3152284668720b7cbe456f3e28796",
+        "source_fact:v1:31ab40cd833d7ca6047728c3d2f2140deca169024a3628451591f72b154aec23",
+        "source_fact:v1:4b4e22f0abdc5e75b5401ba6d883af7a5d77d1214e7cddeab5611fe13bfdd5a8",
+        "source_fact:v1:700d2f5cd583a02ff7876df04add41b05b96f6ca48a23e1b894f78761ee07b3e",
+        "source_fact:v1:ba5cb2661a6585051f1be428bd957b4b6258a2f6154f1f44ea55b0ca1e1e4ed6",
+        "source_fact:v1:c38b96ba1849a79a7f952db5d5616560e34c2491f8968046413bc505ee94d76a"
+      ],
+      "source_published_kst": "2026-10-07T07:15+09:00",
+      "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
     },
     "source_fact:f767f2d81003896baeaebb25": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
@@ -146864,7 +148218,7 @@
       "link": "https://www.hankyung.com/article/202610065899i",
       "source": "한국경제",
       "source_body_digest": "18f99f2e121551958116c69c478e941fe5ac04763f4e9fd0f09918f1f6c966d5",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-05:nasdaq=27477.31:change=1.05",
       "source_fact_identity": "source_facts:v1:4a27d9bdccb3531514d1ea635e95f115981d8fba359fe6da9df50ed16d7110ac",
       "source_fact_keys": [
         "source_fact:v1:1cb5107a597abf57f016ff4f18490a3cf3ef2844f3f28a79520729203b241ca4"
@@ -148981,6 +150335,31 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=06068006645608656",
       "source": "이데일리",
       "title": "[美특징주]샌디스크, 마이크론 실적 통해 업황 개선 전망…개장전 1%↑"
+    },
+    "title:244c7a7efa46e496388430e1": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070708397820",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "30b62a5e46ebc55c719fd899ace041b450ce009dd42a51440e58e309b0357223",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7fca5cf6330ca6d250e9fb9112efaddaddebd0a5373199297852f0db4156b8e8",
+      "source_fact_keys": [
+        "source_fact:v1:067e5bc253163cd3aaf5ca6a51f149ac9467132e0cd2a3d1e5bf8423ce6b5ead",
+        "source_fact:v1:0ae01ace1b6cf02af043e63c7826a852f57276f3cda41c8092d8a14abfd4ef0d",
+        "source_fact:v1:0c66e2b89cd0e9d6a7c691c60d3cf8c5d9f2b7277f7bf51bf396c2ac91339af0",
+        "source_fact:v1:1e13930d1382ecf11d4cefc7590505f141a3152284668720b7cbe456f3e28796",
+        "source_fact:v1:31ab40cd833d7ca6047728c3d2f2140deca169024a3628451591f72b154aec23",
+        "source_fact:v1:4b4e22f0abdc5e75b5401ba6d883af7a5d77d1214e7cddeab5611fe13bfdd5a8",
+        "source_fact:v1:700d2f5cd583a02ff7876df04add41b05b96f6ca48a23e1b894f78761ee07b3e",
+        "source_fact:v1:ba5cb2661a6585051f1be428bd957b4b6258a2f6154f1f44ea55b0ca1e1e4ed6",
+        "source_fact:v1:c38b96ba1849a79a7f952db5d5616560e34c2491f8968046413bc505ee94d76a"
+      ],
+      "source_published_kst": "2026-10-07T07:15+09:00",
+      "title": "'알렉사 주역' 보스턴다이나믹스 지휘한다 …현대차 피지컬 AI 속도"
     },
     "title:247212b74ceaa4847b1193f8": {
       "first_seen_kst": "2026-10-04T09:52:54+09:00",
@@ -151509,7 +152888,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632636",
       "source": "이투데이",
       "source_body_digest": "91687dda569ad0a1454a9b4d0cd63018a911b602159ea09283c8ae02f3efc439",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:169d221bdc7ca69eb2b32d7d7bc344d9b31981c746506681871b8148b96507df",
       "source_fact_identity": "source_facts:v1:9ae59c216365de5442433ebf92a12c17b69236a8f989298bb47389aa757daf69",
       "source_fact_keys": [
         "source_fact:v1:a09096e5bf65d8a75808ff8ed5c1ccb9f7e7e15cb4b2a7668b62cb900238908b"
@@ -155753,6 +157132,25 @@
       "source_published_kst": "2026-10-06T11:33+09:00",
       "title": "김기재 당진시장 \"전 시민 1인당 30만원 경제회복지원금 재추진\" | 연합뉴스"
     },
+    "title:5b4f25dd63568ac037ae075a": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170543",
+      "source": "매일경제",
+      "source_body_digest": "ff6f36b9f2dfa2bd9fe6670925b26f901cd2d1957fb0574b6100c30fbd0d16d3",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:5732b4e8b1c0b2d35e885fc568bab058211675e8a457913562ffa3b65524c758",
+      "source_fact_keys": [
+        "source_fact:v1:33e94dacbedd95bf1356bc4197bdada2ec58235d5351b021cd00993304b47de3",
+        "source_fact:v1:97032a7f651001900b7b40b60cbf55a4ec7e8429364c22feeb007349d5ffec43",
+        "source_fact:v1:bd3be410c17d904fa961dc98101dc07e0a775a15d2262ae587f2ee49c6a4354e"
+      ],
+      "source_published_kst": "2026-10-07T06:33+09:00",
+      "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다"
+    },
     "title:5bbc87d40beb00fd926d5816": {
       "first_seen_kst": "2026-10-06T22:51:44+09:00",
       "lanes": {
@@ -155762,7 +157160,7 @@
       "link": "https://www.newsis.com/view/NISX20261006_0003814993",
       "source": "뉴시스",
       "source_body_digest": "d55db823e74ce553bd6ed76836661f6dd7a63339b4b7d0f75df2cffde0e32599",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v2:research_award:169d221bdc7ca69eb2b32d7d7bc344d9b31981c746506681871b8148b96507df",
       "source_fact_identity": "source_facts:v1:47514cc65285bfbf94388d39ebad66f27f695b43b4f95c18a0e7794e727f26ac",
       "source_fact_keys": [
         "source_fact:v1:4fbf3f1a59077cf4390b48f967efbee4f740297134f281d4ac8de7acb3aef266"
@@ -157375,6 +158773,32 @@
       "link": "https://www.kmib.co.kr/article/view.asp?arcid=9000014151",
       "source": "국민일보",
       "title": "경쟁자 나타난 한화의 오스탈 인수전… ‘통매각’으로 판 커지나"
+    },
+    "title:6ad17bef443ba47038a4dc84": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633084",
+      "source": "이투데이",
+      "source_body_digest": "a27514aeb1f57f21474134e8c3bd8c6d1b14a997ed51695369bb5d87f7b41cbf",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f3bca3fb94f11db744b7dbf9c490d0841a2020bf1bb3b57d03bbe21c252ad813",
+      "source_fact_keys": [
+        "source_fact:v1:05204566be500c3aa32592f6ef0fab67c3a497e0c7966563916e8cd38fe581f7",
+        "source_fact:v1:0f5b14bfdf27c0de054c33259b4dfefb19426485f14f60c839075907b8b3041d",
+        "source_fact:v1:143d43d068273f004ae258bc90630a82d7017b8854c016f7c59b010d5a7e4c4a",
+        "source_fact:v1:46c6a2e3cd8eab13ab5b6899d991a3b255c1fd791cbf2b1e60abb62da9dd631a",
+        "source_fact:v1:49f1bf7aafd290e37b2ee6d9f2889184c41e93400421089aaeab1fa835a649c6",
+        "source_fact:v1:5ace00ba506bfca45e8ba07ecf148ae6f24adda0a89101f0b53df9646a90f1e2",
+        "source_fact:v1:5cf6a68d6050840a84790285f73f53aaf9c0e08f76cbe8cfe02a49050aaaafce",
+        "source_fact:v1:616d38a8c77f1cdbc5db9c3b15b6baadc59e0cf793e706bdc9f0d930208794c4",
+        "source_fact:v1:d29275e95423a57f138bfa9108b74b222e374e0bad90139a22988c0c8898874a",
+        "source_fact:v1:f49f838422dcbbdf7e40c2d9d5782055b2ccfa08c17cd297df801688a6db8988"
+      ],
+      "source_published_kst": "2026-10-07T07:35+09:00",
+      "title": "KB證 “삼성전자, HBM4 업계 최고가 기대…주주환원도 4배 확대 가능”"
     },
     "title:6ad9fb6c26ded73ef0c00631": {
       "first_seen_kst": "2026-09-26T20:59:22+09:00",
@@ -163133,6 +164557,23 @@
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "\"K-콘텐츠 금융지원\"…부산은행·신보, 100억원 보증지원"
     },
+    "title:9a6749dd7e4d22882817d49e": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.newsis.com/view/NISX20261007_0003816466",
+      "source": "뉴시스",
+      "source_body_digest": "992308438fa610603ee9a1a843b617a6b0ea0973f50e4846342d0b812734d9af",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:292736dca5b8d6f68c0d11fa1b7da0f726b246b932d113b806e5066e03d732ce",
+      "source_fact_keys": [
+        "source_fact:v1:23d6aa2ba902fad95d992048a6963f11a9c27eb07ef4173f4308e91267add27b"
+      ],
+      "source_published_kst": "2026-10-07T06:44+09:00",
+      "title": "호르무즈서 파나마 유조선 피격…인도 \"12명 부상\""
+    },
     "title:9aaeb4a6eff51f9be831b227": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -165349,6 +166790,27 @@
       ],
       "source_published_kst": "2026-10-06T21:30+09:00",
       "title": "이번엔 권익위도 해킹 피해…청렴권익배움터 10만명 개인정보 유출"
+    },
+    "title:ae9e4c71ce465c5f70b32bd4": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.mk.co.kr/news/society/12169631",
+      "source": "매일경제",
+      "source_body_digest": "04c5a8997dae378eaf1f72c5f11d544ff34a5e441d0999f4b489d13cfd137426",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8bad441fac49f381eec70a47e357606253fbf2fe5d29be1f7c47d1e4fa61a729",
+      "source_fact_keys": [
+        "source_fact:v1:0fe31163cd93a0417a7b05247e6aafdf5f60109fe5a9e6858d8fd789b9e3a4c7",
+        "source_fact:v1:7187c5eb3d416612cd0b11d8e2664b61429a7133f56538938d8530464e34f690",
+        "source_fact:v1:74faa601e69c0282186a072e03a1adafdbda650cbbb9f0c5eb0f506e0f3061b5",
+        "source_fact:v1:7863a6df5cd051f312d42e0825091666dfdb38265c0ff7a882c92ee60b8576d1",
+        "source_fact:v1:fdd9082f3a4646433ef250ca136c0de75f879e871c39b7f89607a7627604d1c6"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "경영권 인수 넘어 성장자본으로…PEF 순기능 살려야 [김앤장 금융·핀테크·가상자산 인사이트]"
     },
     "title:aedeabc0d3f2d592db188970": {
       "first_seen_kst": "2026-10-05T12:09:30+09:00",
@@ -172800,6 +174262,28 @@
       "source_published_kst": "2026-10-06T06:30+09:00",
       "title": "[속보] 예멘 후티군, 사우디 전역 미사일 ·드론 공습했다 발표"
     },
+    "title:ebef344b8cb8a5499df229f6": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.dt.co.kr/article/12087797",
+      "source": "디지털타임스",
+      "source_body_digest": "a1dada6bedd946aac36a42bcb5b9f156caa10c7bfc57a5315588eb103d7265fe",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ddfcde7302d1a1e0e3833def04e978b2248a2dadc3d88088959c26026d33c262",
+      "source_fact_keys": [
+        "source_fact:v1:5908ae6cf66fa715c12d09ea3fb1d3e31bb718ad8a07c7841ba1839592a90d4c",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:c9df59a070feec7f284c7539598660a9b20c7c9cb5f309243229dd0dfa73bc7d",
+        "source_fact:v1:f165412f270dacccdb46780d8a9a87d5d719a4bb099828fce03e2ef48baeff5c",
+        "source_fact:v1:f1bb5d27cac91a3bec1e24cb80ac885cb49323249b9b6593112fa4688d4f9a58",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:20+09:00",
+      "title": "리사 수 “반도체 수요가 공급보다 많아”…AMD 주가 사상 최고"
+    },
     "title:ebf4db9615c5a2d438158e75": {
       "first_seen_kst": "2026-10-03T12:26:15+09:00",
       "lanes": {
@@ -174521,6 +176005,27 @@
       "source": "머니투데이",
       "title": "대미 투자 클수록 美 무역적자 심화?…트럼프 관세 정책의 딜레마"
     },
+    "title:fd0b316873688ba4588d4cfa": {
+      "first_seen_kst": "2026-10-07T07:39:19+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:39:19+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:39:19+09:00",
+      "link": "https://www.fnnews.com/news/202610070710035263",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "eb33a6fe129c2ef78f6bfbeffa0b60b2cab875c4ffa6c7fc7d87941c7b6140cb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4fb984d037bed9daa286f8539148fba7ff15052395ec417c0309a26e99fb5b79",
+      "source_fact_keys": [
+        "source_fact:v1:13a04dc532064cd52226f22494a0ff52aa6b8e2416c7d4299b070feaf96f5024",
+        "source_fact:v1:505f6e6a0e327ebe4c4621362eafc22a12349bda28ee1e7117db6f9ab9829724",
+        "source_fact:v1:78459ad314ffc40474011e1d25d1326dc3db72346453263b53fbc82e8668d67f",
+        "source_fact:v1:b78343cac8bba8f5f45d0096483dc571c15e64acb6828ad3e539fd1c74316b72",
+        "source_fact:v1:ffb0c78f2b372f97cf79a00258ce3add37aff509836bc7f475882b1a1937f5e9"
+      ],
+      "source_published_kst": "2026-10-07T07:10+09:00",
+      "title": "리사 수 \"수요가 공급보다 많아\"…AMD 주가 사상 최고"
+    },
     "title:fd1f8ed9587334c157e958c5": {
       "first_seen_kst": "2026-09-26T01:14:19+09:00",
       "lanes": {
@@ -174582,7 +176087,7 @@
       "link": "https://www.etoday.co.kr/news/view/2632544",
       "source": "이투데이",
       "source_body_digest": "74dfb82271bc3e8eb814607c38117f1b38f14e6c395c28567035fec56f2c3024",
-      "source_event_identity": "",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-05:nasdaq=27477.31:change=1.05",
       "source_fact_identity": "source_facts:v1:60c6683de60f21f4558dc4de3fa7202b510c0d7d95eb2abacd1cf31725d3e689",
       "source_fact_keys": [
         "source_fact:v1:e32b7c80729a6ccea3e63b9ecead06b93abadfa4f7276ce4486342fec173738b"
@@ -174793,5 +176298,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T07:24:41+09:00"
+  "updated_at_kst": "2026-10-07T07:39:19+09:00"
 }
