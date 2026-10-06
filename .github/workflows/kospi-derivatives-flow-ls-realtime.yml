@@ -176,7 +176,7 @@ jobs:
     needs: [gate, morning]
     if: always() && needs.gate.outputs.run_production == '1'
     runs-on: ubuntu-latest
-    timeout-minutes: 280
+    timeout-minutes: 359
     env:
       EXPECTED_TELEGRAM_BOT_USERNAME: "khs887900887900008879_bot"
       TELEGRAM_BOT_TOKEN: ${{ secrets.KOSPI_DERIV_TELEGRAM_BOT_TOKEN }}
