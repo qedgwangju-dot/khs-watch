@@ -267,6 +267,21 @@
       "source": "이투데이",
       "title": "이더커넥트 2026, 폐회사 하는 이종재 이투데이 대표 [포토]"
     },
+    "event:0ca9bac99031d4d297b9d164": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006102700017",
+      "source": "연합뉴스",
+      "source_body_digest": "15bd91e6ff69862dea0a5ba1bf9c40804c387d3a89d03409477821f631490553",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T06:33+09:00",
+      "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다 | 연합뉴스"
+    },
     "event:0cc7d96444018c7a23265a59": {
       "first_seen_kst": "2026-09-18T21:26:25+09:00",
       "lanes": {
@@ -2506,20 +2521,23 @@
     "event:695102b941e71506d24b4e08": {
       "first_seen_kst": "2026-10-07T04:49:54+09:00",
       "lanes": {
-        "live": "2026-10-07T06:28:41+09:00"
+        "live": "2026-10-07T07:01:10+09:00"
       },
-      "last_seen_kst": "2026-10-07T06:28:41+09:00",
-      "link": "https://www.newsis.com/view/NISX20261007_0003816467",
-      "source": "뉴시스",
-      "source_body_digest": "db311c498205b8faf79511edb39e08ada853f8c78f365a9d915a308046f38770",
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633076",
+      "source": "이투데이",
+      "source_body_digest": "4b826ef64630df03b946ac8fc4628fc43a527fca1616441ea3b5ed6f1229fde4",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:791c0192b4b69dfff077c866080c07788067a84147b75a61022ea843671f239d",
+      "source_fact_identity": "source_facts:v1:72750cd76c3bed6f225ce309611edfd45862b0b78ef77443c474fc68894cf1e8",
       "source_fact_keys": [
-        "source_fact:v1:72a60e2cf9c99f27c182e2c30a79c0b3043cfbe8e7787e7719b561831aec2cb5",
-        "source_fact:v1:7d48d7cc7e73b6b26160c464b2579427d8459bb5d8be8d5526ed6d5730c44230"
+        "source_fact:v1:0b2838a1ef8f2c839143ce068e1a1ad82ca7eb072aeff4b6b6d3ead4bd267a4f",
+        "source_fact:v1:24542c437fa70aa1f36f10b704da7b55de07dc89d0beac15593f18a003f13794",
+        "source_fact:v1:c83f9b748926a83e11bb20cb35cef930745b03027ff0a3806e5003924dd286d4",
+        "source_fact:v1:d3bce2ab7b7c4fca7803ea6688b1df7dc219ce841017fa39970aa65d183000f3",
+        "source_fact:v1:e8040ae2efacae761dd24bec0ca8647fc627154b3983e64e85310ebb47a77d0c"
       ],
-      "source_published_kst": "2026-10-07T06:10+09:00",
-      "title": "북한 미사일 부품, 정품 아닌 위조품 대거 사용"
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "후티 공습, 사우디 진출 韓 기업 인근까지⋯현장·직원 피해는 아직"
     },
     "event:6994ec3ec51f16c535c2ebd5": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -3279,6 +3297,28 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T11:00+09:00",
       "title": "디스플레이 산업 규제 개선…수입 간소화·AI가이드 마련 | 연합뉴스"
+    },
+    "event:7e7fd3fd724ed4d3b205938a": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169877",
+      "source": "매일경제",
+      "source_body_digest": "8419a78d5f31b5126c4b42961e7cdf8e2b7db7baab7db18669337559d34a1cdd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7100767b9ca60880b5aae910eac4f3b76328d17421e77d475e4de4a50ab5799",
+      "source_fact_keys": [
+        "source_fact:v1:0fa400e9d0eb11d4b225fc42b92aa76de12c4c2f014d8dbf3000fa49d0d127b7",
+        "source_fact:v1:2063c57dd30ca9deef4c37d8cbe3f8c84ce86b292c73541b5779a13c1e6c7324",
+        "source_fact:v1:b1ae999ee84c2458667b443ed1aaa633fd2d810ed5b9ef4af784a5f546320656",
+        "source_fact:v1:b41e36ae75ab585cca74a763b49e9e08af893b8c02d352b42852a4fffc7d260e",
+        "source_fact:v1:bafbfbdc849e52cf22c3a0bf086ccc61540449f64312688bab0418118eeeb3d8",
+        "source_fact:v1:ced3e10a84e5bb57911764dc525133b92313e31649157917037422ca5794a74d"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
     },
     "event:7f65c34d2d4b336751794ff5": {
       "event_alias_evidence_message_id": 2330,
@@ -8920,6 +8960,28 @@
       "source_published_kst": "2026-10-05T17:19+09:00",
       "title": "4대 과기원 수시 지원자 최다 … AI·반도체 열풍에 3만명 몰려"
     },
+    "fact:1ea43ed29780a9a792d9ca3a": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816196",
+      "source": "뉴시스",
+      "source_body_digest": "3c7c4b52bc08ec9281a3d54f8368273647956d4838dca9292f5506a9510bb528",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b02147d0df5148af39afef836219231fa964aaeb92ee9918906302959448407b",
+      "source_fact_keys": [
+        "source_fact:v1:41890aeed3715d90de0205910168b549befb82cc52fb6085edf3cee5d0bd4f9f",
+        "source_fact:v1:66e9144592699652145a46ab04f30b52d19b0b38b3c3e6d213ee38275a6c97ac",
+        "source_fact:v1:a329c695b5d43c3dcc616178c620b835e69136c2a6687b996147ef7c7dca87c2",
+        "source_fact:v1:b6a364e60b1c747a2922237a361ea73e615124d81f47c512edf37745982b627c",
+        "source_fact:v1:b6d41ec2c5d7e1d9828752715ff9ab0637726d665404bbb51c16722ca2a63528",
+        "source_fact:v1:d5370894f3cdc8b7a2549323ae090057fd434b6c447c69fdd47133503717a5dc"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "내년 세수 37%가 법인세…의존도 높아 세수 전망도 '출렁'"
+    },
     "fact:1ee3285d2d0f27c7aec91f1c": {
       "first_seen_kst": "2026-10-06T15:55:43+09:00",
       "lanes": {
@@ -11343,6 +11405,28 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "S&K폴리텍, 선진엔지니어링 합병 마무리"
+    },
+    "fact:49837bf474229ca68b3f2cdb": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169877",
+      "source": "매일경제",
+      "source_body_digest": "8419a78d5f31b5126c4b42961e7cdf8e2b7db7baab7db18669337559d34a1cdd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7100767b9ca60880b5aae910eac4f3b76328d17421e77d475e4de4a50ab5799",
+      "source_fact_keys": [
+        "source_fact:v1:0fa400e9d0eb11d4b225fc42b92aa76de12c4c2f014d8dbf3000fa49d0d127b7",
+        "source_fact:v1:2063c57dd30ca9deef4c37d8cbe3f8c84ce86b292c73541b5779a13c1e6c7324",
+        "source_fact:v1:b1ae999ee84c2458667b443ed1aaa633fd2d810ed5b9ef4af784a5f546320656",
+        "source_fact:v1:b41e36ae75ab585cca74a763b49e9e08af893b8c02d352b42852a4fffc7d260e",
+        "source_fact:v1:bafbfbdc849e52cf22c3a0bf086ccc61540449f64312688bab0418118eeeb3d8",
+        "source_fact:v1:ced3e10a84e5bb57911764dc525133b92313e31649157917037422ca5794a74d"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
     },
     "fact:49df6cf4b5aa9c49bd2f2492": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
@@ -13856,6 +13940,26 @@
       ],
       "source_published_kst": "2026-10-06T22:35+09:00",
       "title": "김정관 \"알래스카 LNG 투자, 아직 확정 아냐…중동전쟁 후 전략적 가치 생겨\"(종합2보)"
+    },
+    "fact:75bddc4334f7b1a9e604b1ff": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633077",
+      "source": "이투데이",
+      "source_body_digest": "2d91b453aa746e93baadadc9f21563a8408915f30b437c860f1b79d9f0b3623e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5cd9feb758c837ac492a0fd83fa6f07670b75845465db830f0605580e132fb7",
+      "source_fact_keys": [
+        "source_fact:v1:00ab9ebdb2bfceaff0bfdd24db59e9d8369678ba7ba4469aa8b6be57ee4b29eb",
+        "source_fact:v1:9a0a3993dfb83f200c0f52517c28faa71fe9d9c152513518f3166f198a5b27ee",
+        "source_fact:v1:9c0aeca5954aae4ac7f067fb9ef2f3e58f4b7f3736d3da075ad498c7655dab37",
+        "source_fact:v1:f163edf12bba45ee9259733f9a48c05da057b9273a33518a7252fdfcf22dd115"
+      ],
+      "source_published_kst": "2026-10-07T06:59+09:00",
+      "title": "트럼프 “관세 낮추려는 한국에 대가 지급해야 한다 말해”"
     },
     "fact:7658321a8857c785675dd0e9": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
@@ -17628,6 +17732,27 @@
       "source_published_kst": "2026-10-06T09:57+09:00",
       "title": "네이버 소비자 분쟁 피해구제율 83.6%…“분류체계 세분화 필요\""
     },
+    "fact:bb441c416efa67dfbeedaae2": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633076",
+      "source": "이투데이",
+      "source_body_digest": "4b826ef64630df03b946ac8fc4628fc43a527fca1616441ea3b5ed6f1229fde4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72750cd76c3bed6f225ce309611edfd45862b0b78ef77443c474fc68894cf1e8",
+      "source_fact_keys": [
+        "source_fact:v1:0b2838a1ef8f2c839143ce068e1a1ad82ca7eb072aeff4b6b6d3ead4bd267a4f",
+        "source_fact:v1:24542c437fa70aa1f36f10b704da7b55de07dc89d0beac15593f18a003f13794",
+        "source_fact:v1:c83f9b748926a83e11bb20cb35cef930745b03027ff0a3806e5003924dd286d4",
+        "source_fact:v1:d3bce2ab7b7c4fca7803ea6688b1df7dc219ce841017fa39970aa65d183000f3",
+        "source_fact:v1:e8040ae2efacae761dd24bec0ca8647fc627154b3983e64e85310ebb47a77d0c"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "후티 공습, 사우디 진출 韓 기업 인근까지⋯현장·직원 피해는 아직"
+    },
     "fact:bc85136925d58cef831fe67e": {
       "first_seen_kst": "2026-10-06T23:29:45+09:00",
       "lanes": {
@@ -18533,6 +18658,30 @@
       ],
       "source_published_kst": "2026-10-06T06:29+09:00",
       "title": "사우디 투트랙 수출·G7 비축유 방출 약속에 국제유가 1.8% 하락"
+    },
+    "fact:cdd5eb68dd999242756d9d6a": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645610624",
+      "source": "이데일리",
+      "source_body_digest": "7e8c297d1cfd641c52cc4355e76a1e6306c5c1c0a08194f761ff23438681263d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1efec00a1446342b587ed6364f7704976e409890915f13bb3d4b3ee7aed85cb0",
+      "source_fact_keys": [
+        "source_fact:v1:321aa5bad737ecf0ece30af1247ab9de94a97c68f94c40cadbd3f1fe075ac1dc",
+        "source_fact:v1:471c267e38d9efab7e0a277be275cd26915183184f5631835fa174922ed2eb66",
+        "source_fact:v1:6ccf6c5e60b37279b3815046835c9da2db7b68e6b500b434def1b3d056002c7b",
+        "source_fact:v1:865e6effa1d5fd281a1446e80a13a9b4115263b2e09bb5390992915ae40bcb51",
+        "source_fact:v1:8c3a3f4afed32f1e6f4816eb999afbe0f4163e9c3f6eb0ac04baed7940c7bcbd",
+        "source_fact:v1:91357e1b7e75e2b749145b94590fea29826d48ccf7348a8ec14240c81d5f1ee3",
+        "source_fact:v1:c11f9099117d3880a53bab3df565d88027eae92fb06734a47984f20090b5af62",
+        "source_fact:v1:d5f310c541e43b67487057f0d73e9ac11d56d6587b9d1f600ea5c815cd34191a"
+      ],
+      "source_published_kst": "2026-10-07T06:26+09:00",
+      "title": "美 3년물 국채 입찰금리 4.932%…2006년 이후 최고"
     },
     "fact:cdfbb8a2618f0fbfa3a3f611": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -26827,6 +26976,28 @@
       "source": "연합뉴스",
       "title": "[AI픽] 챗GPT 다음은 클로드…국내 AI앱 2위 굳혀 | 연합뉴스"
     },
+    "link:307f4f05a1dd2098f3729f87": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169877",
+      "source": "매일경제",
+      "source_body_digest": "8419a78d5f31b5126c4b42961e7cdf8e2b7db7baab7db18669337559d34a1cdd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7100767b9ca60880b5aae910eac4f3b76328d17421e77d475e4de4a50ab5799",
+      "source_fact_keys": [
+        "source_fact:v1:0fa400e9d0eb11d4b225fc42b92aa76de12c4c2f014d8dbf3000fa49d0d127b7",
+        "source_fact:v1:2063c57dd30ca9deef4c37d8cbe3f8c84ce86b292c73541b5779a13c1e6c7324",
+        "source_fact:v1:b1ae999ee84c2458667b443ed1aaa633fd2d810ed5b9ef4af784a5f546320656",
+        "source_fact:v1:b41e36ae75ab585cca74a763b49e9e08af893b8c02d352b42852a4fffc7d260e",
+        "source_fact:v1:bafbfbdc849e52cf22c3a0bf086ccc61540449f64312688bab0418118eeeb3d8",
+        "source_fact:v1:ced3e10a84e5bb57911764dc525133b92313e31649157917037422ca5794a74d"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
+    },
     "link:30978fd2c19dd8955f281c22": {
       "first_seen_kst": "2026-10-05T15:12:23+09:00",
       "lanes": {
@@ -32430,6 +32601,27 @@
       "source_published_kst": "2026-10-06T09:57+09:00",
       "title": "네이버 소비자 분쟁 피해구제율 83.6%…“분류체계 세분화 필요\""
     },
+    "link:60298ce57a5003f8e6f9d526": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633076",
+      "source": "이투데이",
+      "source_body_digest": "4b826ef64630df03b946ac8fc4628fc43a527fca1616441ea3b5ed6f1229fde4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72750cd76c3bed6f225ce309611edfd45862b0b78ef77443c474fc68894cf1e8",
+      "source_fact_keys": [
+        "source_fact:v1:0b2838a1ef8f2c839143ce068e1a1ad82ca7eb072aeff4b6b6d3ead4bd267a4f",
+        "source_fact:v1:24542c437fa70aa1f36f10b704da7b55de07dc89d0beac15593f18a003f13794",
+        "source_fact:v1:c83f9b748926a83e11bb20cb35cef930745b03027ff0a3806e5003924dd286d4",
+        "source_fact:v1:d3bce2ab7b7c4fca7803ea6688b1df7dc219ce841017fa39970aa65d183000f3",
+        "source_fact:v1:e8040ae2efacae761dd24bec0ca8647fc627154b3983e64e85310ebb47a77d0c"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "후티 공습, 사우디 진출 韓 기업 인근까지⋯현장·직원 피해는 아직"
+    },
     "link:6045f3db13c27d2a8bd39b54": {
       "first_seen_kst": "2026-10-03T08:59:09+09:00",
       "lanes": {
@@ -33553,6 +33745,28 @@
       "link": "https://www.etnews.com/20260929000109",
       "source": "전자신문",
       "title": "LG전자, '블록형 냉각설비' 모듈러 솔루션 공개…AI 데이터센터 구축기간 줄인다"
+    },
+    "link:67f78d95fa7c3581db6aa21b": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816196",
+      "source": "뉴시스",
+      "source_body_digest": "3c7c4b52bc08ec9281a3d54f8368273647956d4838dca9292f5506a9510bb528",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b02147d0df5148af39afef836219231fa964aaeb92ee9918906302959448407b",
+      "source_fact_keys": [
+        "source_fact:v1:41890aeed3715d90de0205910168b549befb82cc52fb6085edf3cee5d0bd4f9f",
+        "source_fact:v1:66e9144592699652145a46ab04f30b52d19b0b38b3c3e6d213ee38275a6c97ac",
+        "source_fact:v1:a329c695b5d43c3dcc616178c620b835e69136c2a6687b996147ef7c7dca87c2",
+        "source_fact:v1:b6a364e60b1c747a2922237a361ea73e615124d81f47c512edf37745982b627c",
+        "source_fact:v1:b6d41ec2c5d7e1d9828752715ff9ab0637726d665404bbb51c16722ca2a63528",
+        "source_fact:v1:d5370894f3cdc8b7a2549323ae090057fd434b6c447c69fdd47133503717a5dc"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "내년 세수 37%가 법인세…의존도 높아 세수 전망도 '출렁'"
     },
     "link:6826ffb07c1c0b837e62e0cd": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
@@ -35093,6 +35307,26 @@
       "source": "이데일리",
       "title": "中 CXMT까지 참전…치킨게임 공포 엄습하는 낸드플래시"
     },
+    "link:76788473b5a3f4eca966619e": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633077",
+      "source": "이투데이",
+      "source_body_digest": "2d91b453aa746e93baadadc9f21563a8408915f30b437c860f1b79d9f0b3623e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5cd9feb758c837ac492a0fd83fa6f07670b75845465db830f0605580e132fb7",
+      "source_fact_keys": [
+        "source_fact:v1:00ab9ebdb2bfceaff0bfdd24db59e9d8369678ba7ba4469aa8b6be57ee4b29eb",
+        "source_fact:v1:9a0a3993dfb83f200c0f52517c28faa71fe9d9c152513518f3166f198a5b27ee",
+        "source_fact:v1:9c0aeca5954aae4ac7f067fb9ef2f3e58f4b7f3736d3da075ad498c7655dab37",
+        "source_fact:v1:f163edf12bba45ee9259733f9a48c05da057b9273a33518a7252fdfcf22dd115"
+      ],
+      "source_published_kst": "2026-10-07T06:59+09:00",
+      "title": "트럼프 “관세 낮추려는 한국에 대가 지급해야 한다 말해”"
+    },
     "link:7681eca19a67a196e331494f": {
       "first_seen_kst": "2026-10-06T22:21:21+09:00",
       "lanes": {
@@ -35424,6 +35658,21 @@
       "source": "뉴시스",
       "source_event_identity": "",
       "title": "美 9월 고용 2만9000명, 예상 3분의 1…10월 금리동결 확률 82.8%"
+    },
+    "link:786df18d2e7650aeba558b30": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100705552643103",
+      "source": "머니투데이",
+      "source_body_digest": "78d9a90320d9436035952cc86cfff38407a26e384914dc96fac885607ea8c1c7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T06:35+09:00",
+      "title": "\"한국산 경유, 제재 선박에 실려 러시아로\"…우크라 \"제재와 상반\" 비판"
     },
     "link:7879792fdc1dee242c32fd25": {
       "first_seen_kst": "2026-10-03T07:04:42+09:00",
@@ -37114,6 +37363,21 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-04T06:33+09:00",
       "title": "[발사D-3] 누리호, 7일 우주로…15개 위성 어떻게 올리나 | 연합뉴스"
+    },
+    "link:88bbed87e486bbe29cd5c93d": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006102700017",
+      "source": "연합뉴스",
+      "source_body_digest": "15bd91e6ff69862dea0a5ba1bf9c40804c387d3a89d03409477821f631490553",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T06:33+09:00",
+      "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다 | 연합뉴스"
     },
     "link:88c487647f8187da0c68362a": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -46748,6 +47012,30 @@
       "source_published_kst": "2026-10-06T11:37+09:00",
       "title": "통일부, 北지뢰 조사결과에 \"필요조치 검토…평화해법 마련 노력\" | 연합뉴스"
     },
+    "link:da750930a7fcb3b228604c9c": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645610624",
+      "source": "이데일리",
+      "source_body_digest": "7e8c297d1cfd641c52cc4355e76a1e6306c5c1c0a08194f761ff23438681263d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1efec00a1446342b587ed6364f7704976e409890915f13bb3d4b3ee7aed85cb0",
+      "source_fact_keys": [
+        "source_fact:v1:321aa5bad737ecf0ece30af1247ab9de94a97c68f94c40cadbd3f1fe075ac1dc",
+        "source_fact:v1:471c267e38d9efab7e0a277be275cd26915183184f5631835fa174922ed2eb66",
+        "source_fact:v1:6ccf6c5e60b37279b3815046835c9da2db7b68e6b500b434def1b3d056002c7b",
+        "source_fact:v1:865e6effa1d5fd281a1446e80a13a9b4115263b2e09bb5390992915ae40bcb51",
+        "source_fact:v1:8c3a3f4afed32f1e6f4816eb999afbe0f4163e9c3f6eb0ac04baed7940c7bcbd",
+        "source_fact:v1:91357e1b7e75e2b749145b94590fea29826d48ccf7348a8ec14240c81d5f1ee3",
+        "source_fact:v1:c11f9099117d3880a53bab3df565d88027eae92fb06734a47984f20090b5af62",
+        "source_fact:v1:d5f310c541e43b67487057f0d73e9ac11d56d6587b9d1f600ea5c815cd34191a"
+      ],
+      "source_published_kst": "2026-10-07T06:26+09:00",
+      "title": "美 3년물 국채 입찰금리 4.932%…2006년 이후 최고"
+    },
     "link:da7ee631ce95d0afe0697f60": {
       "first_seen_kst": "2026-10-05T16:51:07+09:00",
       "lanes": {
@@ -52925,6 +53213,21 @@
       "source_published_kst": "2026-10-04T11:38+09:00",
       "title": "광주 도시철도 2호선 공사 지연 반복…시민 불편·예산 부담"
     },
+    "original:11ca8f636912ebc2da962f57": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100705552643103",
+      "source": "머니투데이",
+      "source_body_digest": "78d9a90320d9436035952cc86cfff38407a26e384914dc96fac885607ea8c1c7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T06:35+09:00",
+      "title": "\"한국산 경유, 제재 선박에 실려 러시아로\"…우크라 \"제재와 상반\" 비판"
+    },
     "original:120872a9be5248f6cbbed4a6": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -53124,6 +53427,21 @@
       ],
       "source_published_kst": "2026-10-06T18:00+09:00",
       "title": "박스피 갇힌 코스피, 11월 연말 랠리 올까?"
+    },
+    "original:140ec11c7b7dbbde8f394a6e": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006102700017",
+      "source": "연합뉴스",
+      "source_body_digest": "15bd91e6ff69862dea0a5ba1bf9c40804c387d3a89d03409477821f631490553",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T06:33+09:00",
+      "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다 | 연합뉴스"
     },
     "original:1412c8f4565739047a00cf29": {
       "first_seen_kst": "2026-10-02T09:58:25+09:00",
@@ -53895,6 +54213,30 @@
       "source_published_kst": "2026-10-06T09:29+09:00",
       "title": "노벨티노빌리티, 美 바이오텍에 ADC 후보물질 NN3201 기술이전…총 7443억원"
     },
+    "original:19a33b709547458b2a7190ff": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645610624",
+      "source": "이데일리",
+      "source_body_digest": "7e8c297d1cfd641c52cc4355e76a1e6306c5c1c0a08194f761ff23438681263d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1efec00a1446342b587ed6364f7704976e409890915f13bb3d4b3ee7aed85cb0",
+      "source_fact_keys": [
+        "source_fact:v1:321aa5bad737ecf0ece30af1247ab9de94a97c68f94c40cadbd3f1fe075ac1dc",
+        "source_fact:v1:471c267e38d9efab7e0a277be275cd26915183184f5631835fa174922ed2eb66",
+        "source_fact:v1:6ccf6c5e60b37279b3815046835c9da2db7b68e6b500b434def1b3d056002c7b",
+        "source_fact:v1:865e6effa1d5fd281a1446e80a13a9b4115263b2e09bb5390992915ae40bcb51",
+        "source_fact:v1:8c3a3f4afed32f1e6f4816eb999afbe0f4163e9c3f6eb0ac04baed7940c7bcbd",
+        "source_fact:v1:91357e1b7e75e2b749145b94590fea29826d48ccf7348a8ec14240c81d5f1ee3",
+        "source_fact:v1:c11f9099117d3880a53bab3df565d88027eae92fb06734a47984f20090b5af62",
+        "source_fact:v1:d5f310c541e43b67487057f0d73e9ac11d56d6587b9d1f600ea5c815cd34191a"
+      ],
+      "source_published_kst": "2026-10-07T06:26+09:00",
+      "title": "美 3년물 국채 입찰금리 4.932%…2006년 이후 최고"
+    },
     "original:19ae6e191865e7ce220b1158": {
       "first_seen_kst": "2026-10-06T01:26:06+09:00",
       "lanes": {
@@ -54237,6 +54579,27 @@
       ],
       "source_published_kst": "2026-10-06T15:11+09:00",
       "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\" | 연합뉴스"
+    },
+    "original:1d9435bc71ba84d231c3b989": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633076",
+      "source": "이투데이",
+      "source_body_digest": "4b826ef64630df03b946ac8fc4628fc43a527fca1616441ea3b5ed6f1229fde4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72750cd76c3bed6f225ce309611edfd45862b0b78ef77443c474fc68894cf1e8",
+      "source_fact_keys": [
+        "source_fact:v1:0b2838a1ef8f2c839143ce068e1a1ad82ca7eb072aeff4b6b6d3ead4bd267a4f",
+        "source_fact:v1:24542c437fa70aa1f36f10b704da7b55de07dc89d0beac15593f18a003f13794",
+        "source_fact:v1:c83f9b748926a83e11bb20cb35cef930745b03027ff0a3806e5003924dd286d4",
+        "source_fact:v1:d3bce2ab7b7c4fca7803ea6688b1df7dc219ce841017fa39970aa65d183000f3",
+        "source_fact:v1:e8040ae2efacae761dd24bec0ca8647fc627154b3983e64e85310ebb47a77d0c"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "후티 공습, 사우디 진출 韓 기업 인근까지⋯현장·직원 피해는 아직"
     },
     "original:1d96a54f3824ddb0ff23a284": {
       "first_seen_kst": "2026-10-01T12:53:41+09:00",
@@ -57863,6 +58226,28 @@
       "link": "https://www.mt.co.kr/index.php/world/2026/10/02/2026100207543660805",
       "source": "머니투데이",
       "title": "테슬라, 오늘 밤 3분기 전기차 인도량 발표…전년비 7~9% 감소 예상"
+    },
+    "original:3c8044a828172463d92872e6": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816196",
+      "source": "뉴시스",
+      "source_body_digest": "3c7c4b52bc08ec9281a3d54f8368273647956d4838dca9292f5506a9510bb528",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b02147d0df5148af39afef836219231fa964aaeb92ee9918906302959448407b",
+      "source_fact_keys": [
+        "source_fact:v1:41890aeed3715d90de0205910168b549befb82cc52fb6085edf3cee5d0bd4f9f",
+        "source_fact:v1:66e9144592699652145a46ab04f30b52d19b0b38b3c3e6d213ee38275a6c97ac",
+        "source_fact:v1:a329c695b5d43c3dcc616178c620b835e69136c2a6687b996147ef7c7dca87c2",
+        "source_fact:v1:b6a364e60b1c747a2922237a361ea73e615124d81f47c512edf37745982b627c",
+        "source_fact:v1:b6d41ec2c5d7e1d9828752715ff9ab0637726d665404bbb51c16722ca2a63528",
+        "source_fact:v1:d5370894f3cdc8b7a2549323ae090057fd434b6c447c69fdd47133503717a5dc"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "내년 세수 37%가 법인세…의존도 높아 세수 전망도 '출렁'"
     },
     "original:3c8a95b9128eeae9b9513521": {
       "first_seen_kst": "2026-10-05T07:24:39+09:00",
@@ -63790,6 +64175,28 @@
       ],
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, 르노 '유럽 첫 상용 SDV'에 통합 콕핏 솔루션 공급"
+    },
+    "original:6f3e4555cbbad2e2f664bf1a": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169877",
+      "source": "매일경제",
+      "source_body_digest": "8419a78d5f31b5126c4b42961e7cdf8e2b7db7baab7db18669337559d34a1cdd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7100767b9ca60880b5aae910eac4f3b76328d17421e77d475e4de4a50ab5799",
+      "source_fact_keys": [
+        "source_fact:v1:0fa400e9d0eb11d4b225fc42b92aa76de12c4c2f014d8dbf3000fa49d0d127b7",
+        "source_fact:v1:2063c57dd30ca9deef4c37d8cbe3f8c84ce86b292c73541b5779a13c1e6c7324",
+        "source_fact:v1:b1ae999ee84c2458667b443ed1aaa633fd2d810ed5b9ef4af784a5f546320656",
+        "source_fact:v1:b41e36ae75ab585cca74a763b49e9e08af893b8c02d352b42852a4fffc7d260e",
+        "source_fact:v1:bafbfbdc849e52cf22c3a0bf086ccc61540449f64312688bab0418118eeeb3d8",
+        "source_fact:v1:ced3e10a84e5bb57911764dc525133b92313e31649157917037422ca5794a74d"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
     },
     "original:6f55a6b55721a9bdc55dfbb8": {
       "first_seen_kst": "2026-09-23T10:35:39+09:00",
@@ -74806,6 +75213,26 @@
       "source": "뉴시스",
       "title": "AI 해킹 먹잇감 된 은행권…금융당국도 보안 대응 '비상'"
     },
+    "original:d2e13bf77b8cb05e52356aab": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633077",
+      "source": "이투데이",
+      "source_body_digest": "2d91b453aa746e93baadadc9f21563a8408915f30b437c860f1b79d9f0b3623e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5cd9feb758c837ac492a0fd83fa6f07670b75845465db830f0605580e132fb7",
+      "source_fact_keys": [
+        "source_fact:v1:00ab9ebdb2bfceaff0bfdd24db59e9d8369678ba7ba4469aa8b6be57ee4b29eb",
+        "source_fact:v1:9a0a3993dfb83f200c0f52517c28faa71fe9d9c152513518f3166f198a5b27ee",
+        "source_fact:v1:9c0aeca5954aae4ac7f067fb9ef2f3e58f4b7f3736d3da075ad498c7655dab37",
+        "source_fact:v1:f163edf12bba45ee9259733f9a48c05da057b9273a33518a7252fdfcf22dd115"
+      ],
+      "source_published_kst": "2026-10-07T06:59+09:00",
+      "title": "트럼프 “관세 낮추려는 한국에 대가 지급해야 한다 말해”"
+    },
     "original:d2fac68a81e4d388ba97fe79": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
       "lanes": {
@@ -81707,6 +82134,28 @@
       "source_published_kst": "2026-10-06T18:37+09:00",
       "title": "지하수 부족하다면서 농업용수 사용대금 부과에 손 놓은 제주"
     },
+    "source_fact:0718cab77b936d146b2c53d9": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816196",
+      "source": "뉴시스",
+      "source_body_digest": "3c7c4b52bc08ec9281a3d54f8368273647956d4838dca9292f5506a9510bb528",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b02147d0df5148af39afef836219231fa964aaeb92ee9918906302959448407b",
+      "source_fact_keys": [
+        "source_fact:v1:41890aeed3715d90de0205910168b549befb82cc52fb6085edf3cee5d0bd4f9f",
+        "source_fact:v1:66e9144592699652145a46ab04f30b52d19b0b38b3c3e6d213ee38275a6c97ac",
+        "source_fact:v1:a329c695b5d43c3dcc616178c620b835e69136c2a6687b996147ef7c7dca87c2",
+        "source_fact:v1:b6a364e60b1c747a2922237a361ea73e615124d81f47c512edf37745982b627c",
+        "source_fact:v1:b6d41ec2c5d7e1d9828752715ff9ab0637726d665404bbb51c16722ca2a63528",
+        "source_fact:v1:d5370894f3cdc8b7a2549323ae090057fd434b6c447c69fdd47133503717a5dc"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "내년 세수 37%가 법인세…의존도 높아 세수 전망도 '출렁'"
+    },
     "source_fact:0720b1abfdb402cb5e3efeda": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
@@ -82402,6 +82851,27 @@
       ],
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
+    },
+    "source_fact:0a143d0f66a1c9fd5a14e034": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633076",
+      "source": "이투데이",
+      "source_body_digest": "4b826ef64630df03b946ac8fc4628fc43a527fca1616441ea3b5ed6f1229fde4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72750cd76c3bed6f225ce309611edfd45862b0b78ef77443c474fc68894cf1e8",
+      "source_fact_keys": [
+        "source_fact:v1:0b2838a1ef8f2c839143ce068e1a1ad82ca7eb072aeff4b6b6d3ead4bd267a4f",
+        "source_fact:v1:24542c437fa70aa1f36f10b704da7b55de07dc89d0beac15593f18a003f13794",
+        "source_fact:v1:c83f9b748926a83e11bb20cb35cef930745b03027ff0a3806e5003924dd286d4",
+        "source_fact:v1:d3bce2ab7b7c4fca7803ea6688b1df7dc219ce841017fa39970aa65d183000f3",
+        "source_fact:v1:e8040ae2efacae761dd24bec0ca8647fc627154b3983e64e85310ebb47a77d0c"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "후티 공습, 사우디 진출 韓 기업 인근까지⋯현장·직원 피해는 아직"
     },
     "source_fact:0a514079fa3e9d37f37b8d7d": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -83552,6 +84022,30 @@
       ],
       "source_published_kst": "2026-10-06T16:57+09:00",
       "title": "[BioS]알테오젠, 국민성장펀드 등 2000억 유치..\"新동력 확보\""
+    },
+    "source_fact:0f6f4f5e55720ceb5b762faf": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645610624",
+      "source": "이데일리",
+      "source_body_digest": "7e8c297d1cfd641c52cc4355e76a1e6306c5c1c0a08194f761ff23438681263d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1efec00a1446342b587ed6364f7704976e409890915f13bb3d4b3ee7aed85cb0",
+      "source_fact_keys": [
+        "source_fact:v1:321aa5bad737ecf0ece30af1247ab9de94a97c68f94c40cadbd3f1fe075ac1dc",
+        "source_fact:v1:471c267e38d9efab7e0a277be275cd26915183184f5631835fa174922ed2eb66",
+        "source_fact:v1:6ccf6c5e60b37279b3815046835c9da2db7b68e6b500b434def1b3d056002c7b",
+        "source_fact:v1:865e6effa1d5fd281a1446e80a13a9b4115263b2e09bb5390992915ae40bcb51",
+        "source_fact:v1:8c3a3f4afed32f1e6f4816eb999afbe0f4163e9c3f6eb0ac04baed7940c7bcbd",
+        "source_fact:v1:91357e1b7e75e2b749145b94590fea29826d48ccf7348a8ec14240c81d5f1ee3",
+        "source_fact:v1:c11f9099117d3880a53bab3df565d88027eae92fb06734a47984f20090b5af62",
+        "source_fact:v1:d5f310c541e43b67487057f0d73e9ac11d56d6587b9d1f600ea5c815cd34191a"
+      ],
+      "source_published_kst": "2026-10-07T06:26+09:00",
+      "title": "美 3년물 국채 입찰금리 4.932%…2006년 이후 최고"
     },
     "source_fact:0f6ff7cbfe04feb2bd1df40e": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -88747,6 +89241,26 @@
       "source_published_kst": "2026-10-06T09:47+09:00",
       "title": "중간선거 앞두고 전전긍긍…트럼프 \"농업용 면세유 車사용 한시 유예\""
     },
+    "source_fact:25989cbac75804bf692dbf05": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633077",
+      "source": "이투데이",
+      "source_body_digest": "2d91b453aa746e93baadadc9f21563a8408915f30b437c860f1b79d9f0b3623e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5cd9feb758c837ac492a0fd83fa6f07670b75845465db830f0605580e132fb7",
+      "source_fact_keys": [
+        "source_fact:v1:00ab9ebdb2bfceaff0bfdd24db59e9d8369678ba7ba4469aa8b6be57ee4b29eb",
+        "source_fact:v1:9a0a3993dfb83f200c0f52517c28faa71fe9d9c152513518f3166f198a5b27ee",
+        "source_fact:v1:9c0aeca5954aae4ac7f067fb9ef2f3e58f4b7f3736d3da075ad498c7655dab37",
+        "source_fact:v1:f163edf12bba45ee9259733f9a48c05da057b9273a33518a7252fdfcf22dd115"
+      ],
+      "source_published_kst": "2026-10-07T06:59+09:00",
+      "title": "트럼프 “관세 낮추려는 한국에 대가 지급해야 한다 말해”"
+    },
     "source_fact:25a8dd19279a11a461172129": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -88916,6 +89430,30 @@
       ],
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
+    "source_fact:264e3c10539ef3710f0a0875": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645610624",
+      "source": "이데일리",
+      "source_body_digest": "7e8c297d1cfd641c52cc4355e76a1e6306c5c1c0a08194f761ff23438681263d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1efec00a1446342b587ed6364f7704976e409890915f13bb3d4b3ee7aed85cb0",
+      "source_fact_keys": [
+        "source_fact:v1:321aa5bad737ecf0ece30af1247ab9de94a97c68f94c40cadbd3f1fe075ac1dc",
+        "source_fact:v1:471c267e38d9efab7e0a277be275cd26915183184f5631835fa174922ed2eb66",
+        "source_fact:v1:6ccf6c5e60b37279b3815046835c9da2db7b68e6b500b434def1b3d056002c7b",
+        "source_fact:v1:865e6effa1d5fd281a1446e80a13a9b4115263b2e09bb5390992915ae40bcb51",
+        "source_fact:v1:8c3a3f4afed32f1e6f4816eb999afbe0f4163e9c3f6eb0ac04baed7940c7bcbd",
+        "source_fact:v1:91357e1b7e75e2b749145b94590fea29826d48ccf7348a8ec14240c81d5f1ee3",
+        "source_fact:v1:c11f9099117d3880a53bab3df565d88027eae92fb06734a47984f20090b5af62",
+        "source_fact:v1:d5f310c541e43b67487057f0d73e9ac11d56d6587b9d1f600ea5c815cd34191a"
+      ],
+      "source_published_kst": "2026-10-07T06:26+09:00",
+      "title": "美 3년물 국채 입찰금리 4.932%…2006년 이후 최고"
     },
     "source_fact:26bb954e1df4205b78cf9ec6": {
       "first_seen_kst": "2026-10-06T21:40:57+09:00",
@@ -89230,6 +89768,28 @@
       "source_published_kst": "2026-10-06T13:31+09:00",
       "title": "한미반도체, 삼성전기에 244억원 규모 'MSVP' 반도체 장비 공급"
     },
+    "source_fact:2795344767f80965bd4c8800": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169877",
+      "source": "매일경제",
+      "source_body_digest": "8419a78d5f31b5126c4b42961e7cdf8e2b7db7baab7db18669337559d34a1cdd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7100767b9ca60880b5aae910eac4f3b76328d17421e77d475e4de4a50ab5799",
+      "source_fact_keys": [
+        "source_fact:v1:0fa400e9d0eb11d4b225fc42b92aa76de12c4c2f014d8dbf3000fa49d0d127b7",
+        "source_fact:v1:2063c57dd30ca9deef4c37d8cbe3f8c84ce86b292c73541b5779a13c1e6c7324",
+        "source_fact:v1:b1ae999ee84c2458667b443ed1aaa633fd2d810ed5b9ef4af784a5f546320656",
+        "source_fact:v1:b41e36ae75ab585cca74a763b49e9e08af893b8c02d352b42852a4fffc7d260e",
+        "source_fact:v1:bafbfbdc849e52cf22c3a0bf086ccc61540449f64312688bab0418118eeeb3d8",
+        "source_fact:v1:ced3e10a84e5bb57911764dc525133b92313e31649157917037422ca5794a74d"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
+    },
     "source_fact:27b9bcdfdb6a1a517d1e74ed": {
       "first_seen_kst": "2026-10-06T13:07:20+09:00",
       "lanes": {
@@ -89467,6 +90027,28 @@
       ],
       "source_published_kst": "2026-10-06T22:00+09:00",
       "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
+    },
+    "source_fact:285872d34fdcc8545c79ce30": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816196",
+      "source": "뉴시스",
+      "source_body_digest": "3c7c4b52bc08ec9281a3d54f8368273647956d4838dca9292f5506a9510bb528",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b02147d0df5148af39afef836219231fa964aaeb92ee9918906302959448407b",
+      "source_fact_keys": [
+        "source_fact:v1:41890aeed3715d90de0205910168b549befb82cc52fb6085edf3cee5d0bd4f9f",
+        "source_fact:v1:66e9144592699652145a46ab04f30b52d19b0b38b3c3e6d213ee38275a6c97ac",
+        "source_fact:v1:a329c695b5d43c3dcc616178c620b835e69136c2a6687b996147ef7c7dca87c2",
+        "source_fact:v1:b6a364e60b1c747a2922237a361ea73e615124d81f47c512edf37745982b627c",
+        "source_fact:v1:b6d41ec2c5d7e1d9828752715ff9ab0637726d665404bbb51c16722ca2a63528",
+        "source_fact:v1:d5370894f3cdc8b7a2549323ae090057fd434b6c447c69fdd47133503717a5dc"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "내년 세수 37%가 법인세…의존도 높아 세수 전망도 '출렁'"
     },
     "source_fact:2872325850e5d5567bdf8bd5": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -91244,6 +91826,27 @@
       "source_published_kst": "2026-10-05T21:41+09:00",
       "title": "ESS 테크, NYSE 거래정지·상장폐지 개시..OTC서 GWHT 거래"
     },
+    "source_fact:2fe81b2764b501f3426ddd22": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633076",
+      "source": "이투데이",
+      "source_body_digest": "4b826ef64630df03b946ac8fc4628fc43a527fca1616441ea3b5ed6f1229fde4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72750cd76c3bed6f225ce309611edfd45862b0b78ef77443c474fc68894cf1e8",
+      "source_fact_keys": [
+        "source_fact:v1:0b2838a1ef8f2c839143ce068e1a1ad82ca7eb072aeff4b6b6d3ead4bd267a4f",
+        "source_fact:v1:24542c437fa70aa1f36f10b704da7b55de07dc89d0beac15593f18a003f13794",
+        "source_fact:v1:c83f9b748926a83e11bb20cb35cef930745b03027ff0a3806e5003924dd286d4",
+        "source_fact:v1:d3bce2ab7b7c4fca7803ea6688b1df7dc219ce841017fa39970aa65d183000f3",
+        "source_fact:v1:e8040ae2efacae761dd24bec0ca8647fc627154b3983e64e85310ebb47a77d0c"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "후티 공습, 사우디 진출 韓 기업 인근까지⋯현장·직원 피해는 아직"
+    },
     "source_fact:2ff6713ef964b10ed1eabd08": {
       "first_seen_kst": "2026-10-05T21:03:18+09:00",
       "lanes": {
@@ -91729,6 +92332,26 @@
       ],
       "source_published_kst": "2026-10-06T10:11+09:00",
       "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
+    },
+    "source_fact:318c597c60dad344f593c6db": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633077",
+      "source": "이투데이",
+      "source_body_digest": "2d91b453aa746e93baadadc9f21563a8408915f30b437c860f1b79d9f0b3623e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5cd9feb758c837ac492a0fd83fa6f07670b75845465db830f0605580e132fb7",
+      "source_fact_keys": [
+        "source_fact:v1:00ab9ebdb2bfceaff0bfdd24db59e9d8369678ba7ba4469aa8b6be57ee4b29eb",
+        "source_fact:v1:9a0a3993dfb83f200c0f52517c28faa71fe9d9c152513518f3166f198a5b27ee",
+        "source_fact:v1:9c0aeca5954aae4ac7f067fb9ef2f3e58f4b7f3736d3da075ad498c7655dab37",
+        "source_fact:v1:f163edf12bba45ee9259733f9a48c05da057b9273a33518a7252fdfcf22dd115"
+      ],
+      "source_published_kst": "2026-10-07T06:59+09:00",
+      "title": "트럼프 “관세 낮추려는 한국에 대가 지급해야 한다 말해”"
     },
     "source_fact:31a613f37af32b2a809c5cee": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -94537,6 +95160,28 @@
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "“코스피, 7100만 찍으면 7700까지 간다”…장밋빛 전망 근거는? [오늘 나온 보고서]"
     },
+    "source_fact:3d766666d9bae67b153a9d27": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169877",
+      "source": "매일경제",
+      "source_body_digest": "8419a78d5f31b5126c4b42961e7cdf8e2b7db7baab7db18669337559d34a1cdd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7100767b9ca60880b5aae910eac4f3b76328d17421e77d475e4de4a50ab5799",
+      "source_fact_keys": [
+        "source_fact:v1:0fa400e9d0eb11d4b225fc42b92aa76de12c4c2f014d8dbf3000fa49d0d127b7",
+        "source_fact:v1:2063c57dd30ca9deef4c37d8cbe3f8c84ce86b292c73541b5779a13c1e6c7324",
+        "source_fact:v1:b1ae999ee84c2458667b443ed1aaa633fd2d810ed5b9ef4af784a5f546320656",
+        "source_fact:v1:b41e36ae75ab585cca74a763b49e9e08af893b8c02d352b42852a4fffc7d260e",
+        "source_fact:v1:bafbfbdc849e52cf22c3a0bf086ccc61540449f64312688bab0418118eeeb3d8",
+        "source_fact:v1:ced3e10a84e5bb57911764dc525133b92313e31649157917037422ca5794a74d"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
+    },
     "source_fact:3de24c0b41613838c8b3b8a4": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
       "lanes": {
@@ -95784,6 +96429,28 @@
       ],
       "source_published_kst": "2026-10-06T16:39+09:00",
       "title": "\"10월은 미국보다 한국 주식·채권 투자 최적 시점\""
+    },
+    "source_fact:42f469d0d81edd805073892b": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816196",
+      "source": "뉴시스",
+      "source_body_digest": "3c7c4b52bc08ec9281a3d54f8368273647956d4838dca9292f5506a9510bb528",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b02147d0df5148af39afef836219231fa964aaeb92ee9918906302959448407b",
+      "source_fact_keys": [
+        "source_fact:v1:41890aeed3715d90de0205910168b549befb82cc52fb6085edf3cee5d0bd4f9f",
+        "source_fact:v1:66e9144592699652145a46ab04f30b52d19b0b38b3c3e6d213ee38275a6c97ac",
+        "source_fact:v1:a329c695b5d43c3dcc616178c620b835e69136c2a6687b996147ef7c7dca87c2",
+        "source_fact:v1:b6a364e60b1c747a2922237a361ea73e615124d81f47c512edf37745982b627c",
+        "source_fact:v1:b6d41ec2c5d7e1d9828752715ff9ab0637726d665404bbb51c16722ca2a63528",
+        "source_fact:v1:d5370894f3cdc8b7a2549323ae090057fd434b6c447c69fdd47133503717a5dc"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "내년 세수 37%가 법인세…의존도 높아 세수 전망도 '출렁'"
     },
     "source_fact:430d94efd14d3c06ceddf101": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -99534,6 +100201,30 @@
       "source_published_kst": "2026-10-06T16:55+09:00",
       "title": "이현재 하남시장 \"2030년까지 10조 투자유치 달성할 것\""
     },
+    "source_fact:521e8f28bfa40827cc5de5ea": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645610624",
+      "source": "이데일리",
+      "source_body_digest": "7e8c297d1cfd641c52cc4355e76a1e6306c5c1c0a08194f761ff23438681263d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1efec00a1446342b587ed6364f7704976e409890915f13bb3d4b3ee7aed85cb0",
+      "source_fact_keys": [
+        "source_fact:v1:321aa5bad737ecf0ece30af1247ab9de94a97c68f94c40cadbd3f1fe075ac1dc",
+        "source_fact:v1:471c267e38d9efab7e0a277be275cd26915183184f5631835fa174922ed2eb66",
+        "source_fact:v1:6ccf6c5e60b37279b3815046835c9da2db7b68e6b500b434def1b3d056002c7b",
+        "source_fact:v1:865e6effa1d5fd281a1446e80a13a9b4115263b2e09bb5390992915ae40bcb51",
+        "source_fact:v1:8c3a3f4afed32f1e6f4816eb999afbe0f4163e9c3f6eb0ac04baed7940c7bcbd",
+        "source_fact:v1:91357e1b7e75e2b749145b94590fea29826d48ccf7348a8ec14240c81d5f1ee3",
+        "source_fact:v1:c11f9099117d3880a53bab3df565d88027eae92fb06734a47984f20090b5af62",
+        "source_fact:v1:d5f310c541e43b67487057f0d73e9ac11d56d6587b9d1f600ea5c815cd34191a"
+      ],
+      "source_published_kst": "2026-10-07T06:26+09:00",
+      "title": "美 3년물 국채 입찰금리 4.932%…2006년 이후 최고"
+    },
     "source_fact:5220df5220238da142d2eba5": {
       "first_seen_kst": "2026-10-06T18:34:25+09:00",
       "lanes": {
@@ -100410,6 +101101,27 @@
       "source_published_kst": "2026-10-06T15:25+09:00",
       "title": "임귀현 완주군의원, 친환경 액비 자원화 확대 점검 나서"
     },
+    "source_fact:55f779e7dd3b9dedbd1dcd5a": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633076",
+      "source": "이투데이",
+      "source_body_digest": "4b826ef64630df03b946ac8fc4628fc43a527fca1616441ea3b5ed6f1229fde4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72750cd76c3bed6f225ce309611edfd45862b0b78ef77443c474fc68894cf1e8",
+      "source_fact_keys": [
+        "source_fact:v1:0b2838a1ef8f2c839143ce068e1a1ad82ca7eb072aeff4b6b6d3ead4bd267a4f",
+        "source_fact:v1:24542c437fa70aa1f36f10b704da7b55de07dc89d0beac15593f18a003f13794",
+        "source_fact:v1:c83f9b748926a83e11bb20cb35cef930745b03027ff0a3806e5003924dd286d4",
+        "source_fact:v1:d3bce2ab7b7c4fca7803ea6688b1df7dc219ce841017fa39970aa65d183000f3",
+        "source_fact:v1:e8040ae2efacae761dd24bec0ca8647fc627154b3983e64e85310ebb47a77d0c"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "후티 공습, 사우디 진출 韓 기업 인근까지⋯현장·직원 피해는 아직"
+    },
     "source_fact:5623479559fcc1071ed4b838": {
       "first_seen_kst": "2026-10-06T00:26:07+09:00",
       "lanes": {
@@ -101149,6 +101861,30 @@
       ],
       "source_published_kst": "2026-10-06T15:06+09:00",
       "title": "엠키스코어, AI Festa 26서 검증된 AI Factory 역량 공개… 대규모 구축부터 AI 활용까지"
+    },
+    "source_fact:58713482eddb4d295696d062": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645610624",
+      "source": "이데일리",
+      "source_body_digest": "7e8c297d1cfd641c52cc4355e76a1e6306c5c1c0a08194f761ff23438681263d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1efec00a1446342b587ed6364f7704976e409890915f13bb3d4b3ee7aed85cb0",
+      "source_fact_keys": [
+        "source_fact:v1:321aa5bad737ecf0ece30af1247ab9de94a97c68f94c40cadbd3f1fe075ac1dc",
+        "source_fact:v1:471c267e38d9efab7e0a277be275cd26915183184f5631835fa174922ed2eb66",
+        "source_fact:v1:6ccf6c5e60b37279b3815046835c9da2db7b68e6b500b434def1b3d056002c7b",
+        "source_fact:v1:865e6effa1d5fd281a1446e80a13a9b4115263b2e09bb5390992915ae40bcb51",
+        "source_fact:v1:8c3a3f4afed32f1e6f4816eb999afbe0f4163e9c3f6eb0ac04baed7940c7bcbd",
+        "source_fact:v1:91357e1b7e75e2b749145b94590fea29826d48ccf7348a8ec14240c81d5f1ee3",
+        "source_fact:v1:c11f9099117d3880a53bab3df565d88027eae92fb06734a47984f20090b5af62",
+        "source_fact:v1:d5f310c541e43b67487057f0d73e9ac11d56d6587b9d1f600ea5c815cd34191a"
+      ],
+      "source_published_kst": "2026-10-07T06:26+09:00",
+      "title": "美 3년물 국채 입찰금리 4.932%…2006년 이후 최고"
     },
     "source_fact:588fa73fd27833477188df1a": {
       "first_seen_kst": "2026-10-07T03:17:01+09:00",
@@ -105917,6 +106653,28 @@
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
     },
+    "source_fact:6c8eb94965d14816e5fee700": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169877",
+      "source": "매일경제",
+      "source_body_digest": "8419a78d5f31b5126c4b42961e7cdf8e2b7db7baab7db18669337559d34a1cdd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7100767b9ca60880b5aae910eac4f3b76328d17421e77d475e4de4a50ab5799",
+      "source_fact_keys": [
+        "source_fact:v1:0fa400e9d0eb11d4b225fc42b92aa76de12c4c2f014d8dbf3000fa49d0d127b7",
+        "source_fact:v1:2063c57dd30ca9deef4c37d8cbe3f8c84ce86b292c73541b5779a13c1e6c7324",
+        "source_fact:v1:b1ae999ee84c2458667b443ed1aaa633fd2d810ed5b9ef4af784a5f546320656",
+        "source_fact:v1:b41e36ae75ab585cca74a763b49e9e08af893b8c02d352b42852a4fffc7d260e",
+        "source_fact:v1:bafbfbdc849e52cf22c3a0bf086ccc61540449f64312688bab0418118eeeb3d8",
+        "source_fact:v1:ced3e10a84e5bb57911764dc525133b92313e31649157917037422ca5794a74d"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
+    },
     "source_fact:6ca28c6fcae01953f1271434": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
@@ -109813,6 +110571,26 @@
       "source_published_kst": "2026-10-06T17:12+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 계약…LFP 물량 두 배 넘게 확대"
     },
+    "source_fact:7c09be91b3aeb112f45de25e": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633077",
+      "source": "이투데이",
+      "source_body_digest": "2d91b453aa746e93baadadc9f21563a8408915f30b437c860f1b79d9f0b3623e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5cd9feb758c837ac492a0fd83fa6f07670b75845465db830f0605580e132fb7",
+      "source_fact_keys": [
+        "source_fact:v1:00ab9ebdb2bfceaff0bfdd24db59e9d8369678ba7ba4469aa8b6be57ee4b29eb",
+        "source_fact:v1:9a0a3993dfb83f200c0f52517c28faa71fe9d9c152513518f3166f198a5b27ee",
+        "source_fact:v1:9c0aeca5954aae4ac7f067fb9ef2f3e58f4b7f3736d3da075ad498c7655dab37",
+        "source_fact:v1:f163edf12bba45ee9259733f9a48c05da057b9273a33518a7252fdfcf22dd115"
+      ],
+      "source_published_kst": "2026-10-07T06:59+09:00",
+      "title": "트럼프 “관세 낮추려는 한국에 대가 지급해야 한다 말해”"
+    },
     "source_fact:7c0f73c9945afd7accf9e7ec": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
       "lanes": {
@@ -109915,6 +110693,28 @@
       ],
       "source_published_kst": "2026-10-06T16:23+09:00",
       "title": "日증시, AI·반도체 강세에 상승 마감…닛케이 1.05%↑"
+    },
+    "source_fact:7c8969a366ecf91a26c4f13c": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169877",
+      "source": "매일경제",
+      "source_body_digest": "8419a78d5f31b5126c4b42961e7cdf8e2b7db7baab7db18669337559d34a1cdd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7100767b9ca60880b5aae910eac4f3b76328d17421e77d475e4de4a50ab5799",
+      "source_fact_keys": [
+        "source_fact:v1:0fa400e9d0eb11d4b225fc42b92aa76de12c4c2f014d8dbf3000fa49d0d127b7",
+        "source_fact:v1:2063c57dd30ca9deef4c37d8cbe3f8c84ce86b292c73541b5779a13c1e6c7324",
+        "source_fact:v1:b1ae999ee84c2458667b443ed1aaa633fd2d810ed5b9ef4af784a5f546320656",
+        "source_fact:v1:b41e36ae75ab585cca74a763b49e9e08af893b8c02d352b42852a4fffc7d260e",
+        "source_fact:v1:bafbfbdc849e52cf22c3a0bf086ccc61540449f64312688bab0418118eeeb3d8",
+        "source_fact:v1:ced3e10a84e5bb57911764dc525133b92313e31649157917037422ca5794a74d"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
     },
     "source_fact:7c8eb35c99b6b70b3af4d624": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -116893,6 +117693,30 @@
       "source_published_kst": "2026-10-06T17:46+09:00",
       "title": "메모리 반도체 호황 속 삼성전자 완제품은 '고전'…DX부문 3분기 실적 어떻게"
     },
+    "source_fact:98cc67c7b7905ee3843a5d6c": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645610624",
+      "source": "이데일리",
+      "source_body_digest": "7e8c297d1cfd641c52cc4355e76a1e6306c5c1c0a08194f761ff23438681263d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1efec00a1446342b587ed6364f7704976e409890915f13bb3d4b3ee7aed85cb0",
+      "source_fact_keys": [
+        "source_fact:v1:321aa5bad737ecf0ece30af1247ab9de94a97c68f94c40cadbd3f1fe075ac1dc",
+        "source_fact:v1:471c267e38d9efab7e0a277be275cd26915183184f5631835fa174922ed2eb66",
+        "source_fact:v1:6ccf6c5e60b37279b3815046835c9da2db7b68e6b500b434def1b3d056002c7b",
+        "source_fact:v1:865e6effa1d5fd281a1446e80a13a9b4115263b2e09bb5390992915ae40bcb51",
+        "source_fact:v1:8c3a3f4afed32f1e6f4816eb999afbe0f4163e9c3f6eb0ac04baed7940c7bcbd",
+        "source_fact:v1:91357e1b7e75e2b749145b94590fea29826d48ccf7348a8ec14240c81d5f1ee3",
+        "source_fact:v1:c11f9099117d3880a53bab3df565d88027eae92fb06734a47984f20090b5af62",
+        "source_fact:v1:d5f310c541e43b67487057f0d73e9ac11d56d6587b9d1f600ea5c815cd34191a"
+      ],
+      "source_published_kst": "2026-10-07T06:26+09:00",
+      "title": "美 3년물 국채 입찰금리 4.932%…2006년 이후 최고"
+    },
     "source_fact:98e7135b9e3362e71812cfcc": {
       "first_seen_kst": "2026-10-07T01:07:29+09:00",
       "lanes": {
@@ -117009,6 +117833,30 @@
       ],
       "source_published_kst": "2026-10-07T05:00+09:00",
       "title": "헬스케어 제2의 먹거리…디지털 사업 키우는 제약사들"
+    },
+    "source_fact:99476713487f08011639a45a": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645610624",
+      "source": "이데일리",
+      "source_body_digest": "7e8c297d1cfd641c52cc4355e76a1e6306c5c1c0a08194f761ff23438681263d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1efec00a1446342b587ed6364f7704976e409890915f13bb3d4b3ee7aed85cb0",
+      "source_fact_keys": [
+        "source_fact:v1:321aa5bad737ecf0ece30af1247ab9de94a97c68f94c40cadbd3f1fe075ac1dc",
+        "source_fact:v1:471c267e38d9efab7e0a277be275cd26915183184f5631835fa174922ed2eb66",
+        "source_fact:v1:6ccf6c5e60b37279b3815046835c9da2db7b68e6b500b434def1b3d056002c7b",
+        "source_fact:v1:865e6effa1d5fd281a1446e80a13a9b4115263b2e09bb5390992915ae40bcb51",
+        "source_fact:v1:8c3a3f4afed32f1e6f4816eb999afbe0f4163e9c3f6eb0ac04baed7940c7bcbd",
+        "source_fact:v1:91357e1b7e75e2b749145b94590fea29826d48ccf7348a8ec14240c81d5f1ee3",
+        "source_fact:v1:c11f9099117d3880a53bab3df565d88027eae92fb06734a47984f20090b5af62",
+        "source_fact:v1:d5f310c541e43b67487057f0d73e9ac11d56d6587b9d1f600ea5c815cd34191a"
+      ],
+      "source_published_kst": "2026-10-07T06:26+09:00",
+      "title": "美 3년물 국채 입찰금리 4.932%…2006년 이후 최고"
     },
     "source_fact:994eb342a2809132b9a96aed": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -118051,6 +118899,27 @@
       "source_published_kst": "2026-10-06T11:25+09:00",
       "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
     },
+    "source_fact:9d83afd569d95e02a2c62f33": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633076",
+      "source": "이투데이",
+      "source_body_digest": "4b826ef64630df03b946ac8fc4628fc43a527fca1616441ea3b5ed6f1229fde4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72750cd76c3bed6f225ce309611edfd45862b0b78ef77443c474fc68894cf1e8",
+      "source_fact_keys": [
+        "source_fact:v1:0b2838a1ef8f2c839143ce068e1a1ad82ca7eb072aeff4b6b6d3ead4bd267a4f",
+        "source_fact:v1:24542c437fa70aa1f36f10b704da7b55de07dc89d0beac15593f18a003f13794",
+        "source_fact:v1:c83f9b748926a83e11bb20cb35cef930745b03027ff0a3806e5003924dd286d4",
+        "source_fact:v1:d3bce2ab7b7c4fca7803ea6688b1df7dc219ce841017fa39970aa65d183000f3",
+        "source_fact:v1:e8040ae2efacae761dd24bec0ca8647fc627154b3983e64e85310ebb47a77d0c"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "후티 공습, 사우디 진출 韓 기업 인근까지⋯현장·직원 피해는 아직"
+    },
     "source_fact:9dcf8322e15e1f369c3a3fca": {
       "first_seen_kst": "2026-10-06T19:46:03+09:00",
       "lanes": {
@@ -118345,6 +119214,28 @@
       ],
       "source_published_kst": "2026-10-06T13:44+09:00",
       "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
+    },
+    "source_fact:9f31eba1e96d068a62abc764": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816196",
+      "source": "뉴시스",
+      "source_body_digest": "3c7c4b52bc08ec9281a3d54f8368273647956d4838dca9292f5506a9510bb528",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b02147d0df5148af39afef836219231fa964aaeb92ee9918906302959448407b",
+      "source_fact_keys": [
+        "source_fact:v1:41890aeed3715d90de0205910168b549befb82cc52fb6085edf3cee5d0bd4f9f",
+        "source_fact:v1:66e9144592699652145a46ab04f30b52d19b0b38b3c3e6d213ee38275a6c97ac",
+        "source_fact:v1:a329c695b5d43c3dcc616178c620b835e69136c2a6687b996147ef7c7dca87c2",
+        "source_fact:v1:b6a364e60b1c747a2922237a361ea73e615124d81f47c512edf37745982b627c",
+        "source_fact:v1:b6d41ec2c5d7e1d9828752715ff9ab0637726d665404bbb51c16722ca2a63528",
+        "source_fact:v1:d5370894f3cdc8b7a2549323ae090057fd434b6c447c69fdd47133503717a5dc"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "내년 세수 37%가 법인세…의존도 높아 세수 전망도 '출렁'"
     },
     "source_fact:9f38b780ebff302fecd281f3": {
       "first_seen_kst": "2026-10-06T17:47:23+09:00",
@@ -119553,6 +120444,27 @@
       "source_published_kst": "2026-10-06T17:52+09:00",
       "title": "코스닥, 석달 만에 900 뚫었다…소부장·바이오·배터리주 강세"
     },
+    "source_fact:a425e8a8661f3da8624b38c7": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633076",
+      "source": "이투데이",
+      "source_body_digest": "4b826ef64630df03b946ac8fc4628fc43a527fca1616441ea3b5ed6f1229fde4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72750cd76c3bed6f225ce309611edfd45862b0b78ef77443c474fc68894cf1e8",
+      "source_fact_keys": [
+        "source_fact:v1:0b2838a1ef8f2c839143ce068e1a1ad82ca7eb072aeff4b6b6d3ead4bd267a4f",
+        "source_fact:v1:24542c437fa70aa1f36f10b704da7b55de07dc89d0beac15593f18a003f13794",
+        "source_fact:v1:c83f9b748926a83e11bb20cb35cef930745b03027ff0a3806e5003924dd286d4",
+        "source_fact:v1:d3bce2ab7b7c4fca7803ea6688b1df7dc219ce841017fa39970aa65d183000f3",
+        "source_fact:v1:e8040ae2efacae761dd24bec0ca8647fc627154b3983e64e85310ebb47a77d0c"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "후티 공습, 사우디 진출 韓 기업 인근까지⋯현장·직원 피해는 아직"
+    },
     "source_fact:a445e40ed2eefe4d9e45cfd8": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -120321,6 +121233,30 @@
       ],
       "source_published_kst": "2026-10-06T08:45+09:00",
       "title": "나스닥 사상 최고치…엔비디아 시총 6조달러 눈앞 | 연합뉴스"
+    },
+    "source_fact:a7e447f424b81bdcb6313382": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645610624",
+      "source": "이데일리",
+      "source_body_digest": "7e8c297d1cfd641c52cc4355e76a1e6306c5c1c0a08194f761ff23438681263d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1efec00a1446342b587ed6364f7704976e409890915f13bb3d4b3ee7aed85cb0",
+      "source_fact_keys": [
+        "source_fact:v1:321aa5bad737ecf0ece30af1247ab9de94a97c68f94c40cadbd3f1fe075ac1dc",
+        "source_fact:v1:471c267e38d9efab7e0a277be275cd26915183184f5631835fa174922ed2eb66",
+        "source_fact:v1:6ccf6c5e60b37279b3815046835c9da2db7b68e6b500b434def1b3d056002c7b",
+        "source_fact:v1:865e6effa1d5fd281a1446e80a13a9b4115263b2e09bb5390992915ae40bcb51",
+        "source_fact:v1:8c3a3f4afed32f1e6f4816eb999afbe0f4163e9c3f6eb0ac04baed7940c7bcbd",
+        "source_fact:v1:91357e1b7e75e2b749145b94590fea29826d48ccf7348a8ec14240c81d5f1ee3",
+        "source_fact:v1:c11f9099117d3880a53bab3df565d88027eae92fb06734a47984f20090b5af62",
+        "source_fact:v1:d5f310c541e43b67487057f0d73e9ac11d56d6587b9d1f600ea5c815cd34191a"
+      ],
+      "source_published_kst": "2026-10-07T06:26+09:00",
+      "title": "美 3년물 국채 입찰금리 4.932%…2006년 이후 최고"
     },
     "source_fact:a7fac65820fe6f559ad2f324": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -122107,6 +123043,28 @@
       ],
       "source_published_kst": "2026-10-05T12:57+09:00",
       "title": "우회로 찾는 텍사스 데이터센터…中 배터리도 문 두드린다 [허란의 텍사스 인사이드]"
+    },
+    "source_fact:b02554f738e0443bd0b63bc0": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816196",
+      "source": "뉴시스",
+      "source_body_digest": "3c7c4b52bc08ec9281a3d54f8368273647956d4838dca9292f5506a9510bb528",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b02147d0df5148af39afef836219231fa964aaeb92ee9918906302959448407b",
+      "source_fact_keys": [
+        "source_fact:v1:41890aeed3715d90de0205910168b549befb82cc52fb6085edf3cee5d0bd4f9f",
+        "source_fact:v1:66e9144592699652145a46ab04f30b52d19b0b38b3c3e6d213ee38275a6c97ac",
+        "source_fact:v1:a329c695b5d43c3dcc616178c620b835e69136c2a6687b996147ef7c7dca87c2",
+        "source_fact:v1:b6a364e60b1c747a2922237a361ea73e615124d81f47c512edf37745982b627c",
+        "source_fact:v1:b6d41ec2c5d7e1d9828752715ff9ab0637726d665404bbb51c16722ca2a63528",
+        "source_fact:v1:d5370894f3cdc8b7a2549323ae090057fd434b6c447c69fdd47133503717a5dc"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "내년 세수 37%가 법인세…의존도 높아 세수 전망도 '출렁'"
     },
     "source_fact:b0273e75c53dcbd28e925142": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
@@ -124118,6 +125076,30 @@
       "source_published_kst": "2026-10-06T09:49+09:00",
       "title": "싸이버로지텍, 부산 신항 5부두 AI 항만 안전관제 본격 가동"
     },
+    "source_fact:b7f2ff85198ded70733a6934": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645610624",
+      "source": "이데일리",
+      "source_body_digest": "7e8c297d1cfd641c52cc4355e76a1e6306c5c1c0a08194f761ff23438681263d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1efec00a1446342b587ed6364f7704976e409890915f13bb3d4b3ee7aed85cb0",
+      "source_fact_keys": [
+        "source_fact:v1:321aa5bad737ecf0ece30af1247ab9de94a97c68f94c40cadbd3f1fe075ac1dc",
+        "source_fact:v1:471c267e38d9efab7e0a277be275cd26915183184f5631835fa174922ed2eb66",
+        "source_fact:v1:6ccf6c5e60b37279b3815046835c9da2db7b68e6b500b434def1b3d056002c7b",
+        "source_fact:v1:865e6effa1d5fd281a1446e80a13a9b4115263b2e09bb5390992915ae40bcb51",
+        "source_fact:v1:8c3a3f4afed32f1e6f4816eb999afbe0f4163e9c3f6eb0ac04baed7940c7bcbd",
+        "source_fact:v1:91357e1b7e75e2b749145b94590fea29826d48ccf7348a8ec14240c81d5f1ee3",
+        "source_fact:v1:c11f9099117d3880a53bab3df565d88027eae92fb06734a47984f20090b5af62",
+        "source_fact:v1:d5f310c541e43b67487057f0d73e9ac11d56d6587b9d1f600ea5c815cd34191a"
+      ],
+      "source_published_kst": "2026-10-07T06:26+09:00",
+      "title": "美 3년물 국채 입찰금리 4.932%…2006년 이후 최고"
+    },
     "source_fact:b800a8894904fdea5703a893": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
       "lanes": {
@@ -124602,6 +125584,28 @@
       ],
       "source_published_kst": "2026-10-06T19:12+09:00",
       "title": "'삼전닉스 레버리지' 투자한 개미, 석달 만에 2조3000억 날렸다"
+    },
+    "source_fact:b9524ef2bdd30c668c929044": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816196",
+      "source": "뉴시스",
+      "source_body_digest": "3c7c4b52bc08ec9281a3d54f8368273647956d4838dca9292f5506a9510bb528",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b02147d0df5148af39afef836219231fa964aaeb92ee9918906302959448407b",
+      "source_fact_keys": [
+        "source_fact:v1:41890aeed3715d90de0205910168b549befb82cc52fb6085edf3cee5d0bd4f9f",
+        "source_fact:v1:66e9144592699652145a46ab04f30b52d19b0b38b3c3e6d213ee38275a6c97ac",
+        "source_fact:v1:a329c695b5d43c3dcc616178c620b835e69136c2a6687b996147ef7c7dca87c2",
+        "source_fact:v1:b6a364e60b1c747a2922237a361ea73e615124d81f47c512edf37745982b627c",
+        "source_fact:v1:b6d41ec2c5d7e1d9828752715ff9ab0637726d665404bbb51c16722ca2a63528",
+        "source_fact:v1:d5370894f3cdc8b7a2549323ae090057fd434b6c447c69fdd47133503717a5dc"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "내년 세수 37%가 법인세…의존도 높아 세수 전망도 '출렁'"
     },
     "source_fact:b99b8e70a66992280aa12f12": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -125163,6 +126167,28 @@
       ],
       "source_published_kst": "2026-10-06T06:37+09:00",
       "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
+    },
+    "source_fact:bb9b400a87c9928e3f1c6497": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169877",
+      "source": "매일경제",
+      "source_body_digest": "8419a78d5f31b5126c4b42961e7cdf8e2b7db7baab7db18669337559d34a1cdd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7100767b9ca60880b5aae910eac4f3b76328d17421e77d475e4de4a50ab5799",
+      "source_fact_keys": [
+        "source_fact:v1:0fa400e9d0eb11d4b225fc42b92aa76de12c4c2f014d8dbf3000fa49d0d127b7",
+        "source_fact:v1:2063c57dd30ca9deef4c37d8cbe3f8c84ce86b292c73541b5779a13c1e6c7324",
+        "source_fact:v1:b1ae999ee84c2458667b443ed1aaa633fd2d810ed5b9ef4af784a5f546320656",
+        "source_fact:v1:b41e36ae75ab585cca74a763b49e9e08af893b8c02d352b42852a4fffc7d260e",
+        "source_fact:v1:bafbfbdc849e52cf22c3a0bf086ccc61540449f64312688bab0418118eeeb3d8",
+        "source_fact:v1:ced3e10a84e5bb57911764dc525133b92313e31649157917037422ca5794a74d"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
     },
     "source_fact:bbe9c5e6dfaa8f2f3b93bab9": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
@@ -130836,6 +131862,28 @@
       "source_published_kst": "2026-10-06T23:31+09:00",
       "title": "우크라, '한국의 러 석유공급' 기사 인용해 韓 비판(종합) | 연합뉴스"
     },
+    "source_fact:d38782b527dbd996a98b3ae7": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169877",
+      "source": "매일경제",
+      "source_body_digest": "8419a78d5f31b5126c4b42961e7cdf8e2b7db7baab7db18669337559d34a1cdd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7100767b9ca60880b5aae910eac4f3b76328d17421e77d475e4de4a50ab5799",
+      "source_fact_keys": [
+        "source_fact:v1:0fa400e9d0eb11d4b225fc42b92aa76de12c4c2f014d8dbf3000fa49d0d127b7",
+        "source_fact:v1:2063c57dd30ca9deef4c37d8cbe3f8c84ce86b292c73541b5779a13c1e6c7324",
+        "source_fact:v1:b1ae999ee84c2458667b443ed1aaa633fd2d810ed5b9ef4af784a5f546320656",
+        "source_fact:v1:b41e36ae75ab585cca74a763b49e9e08af893b8c02d352b42852a4fffc7d260e",
+        "source_fact:v1:bafbfbdc849e52cf22c3a0bf086ccc61540449f64312688bab0418118eeeb3d8",
+        "source_fact:v1:ced3e10a84e5bb57911764dc525133b92313e31649157917037422ca5794a74d"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
+    },
     "source_fact:d395f6d5c899951a5dfa156f": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
@@ -131361,6 +132409,26 @@
       ],
       "source_published_kst": "2026-10-06T18:35+09:00",
       "title": "오텍캐리어, 글로벌 캐리어와 협력...\"대용량 냉각수 라인업 확대\""
+    },
+    "source_fact:d5d03ebe4b39e591f9c5f054": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633077",
+      "source": "이투데이",
+      "source_body_digest": "2d91b453aa746e93baadadc9f21563a8408915f30b437c860f1b79d9f0b3623e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5cd9feb758c837ac492a0fd83fa6f07670b75845465db830f0605580e132fb7",
+      "source_fact_keys": [
+        "source_fact:v1:00ab9ebdb2bfceaff0bfdd24db59e9d8369678ba7ba4469aa8b6be57ee4b29eb",
+        "source_fact:v1:9a0a3993dfb83f200c0f52517c28faa71fe9d9c152513518f3166f198a5b27ee",
+        "source_fact:v1:9c0aeca5954aae4ac7f067fb9ef2f3e58f4b7f3736d3da075ad498c7655dab37",
+        "source_fact:v1:f163edf12bba45ee9259733f9a48c05da057b9273a33518a7252fdfcf22dd115"
+      ],
+      "source_published_kst": "2026-10-07T06:59+09:00",
+      "title": "트럼프 “관세 낮추려는 한국에 대가 지급해야 한다 말해”"
     },
     "source_fact:d5fc4cb1818be7eb0fcefc01": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -144087,6 +145155,21 @@
       "source_published_kst": "2026-10-04T11:38+09:00",
       "title": "광주 도시철도 2호선 공사 지연 반복…시민 불편·예산 부담"
     },
+    "title:11ca8f636912ebc2da962f57": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.mt.co.kr/world/2026/10/07/2026100705552643103",
+      "source": "머니투데이",
+      "source_body_digest": "78d9a90320d9436035952cc86cfff38407a26e384914dc96fac885607ea8c1c7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T06:35+09:00",
+      "title": "\"한국산 경유, 제재 선박에 실려 러시아로\"…우크라 \"제재와 상반\" 비판"
+    },
     "title:120872a9be5248f6cbbed4a6": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -144286,6 +145369,21 @@
       ],
       "source_published_kst": "2026-10-06T18:00+09:00",
       "title": "박스피 갇힌 코스피, 11월 연말 랠리 올까?"
+    },
+    "title:140ec11c7b7dbbde8f394a6e": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006102700017",
+      "source": "연합뉴스",
+      "source_body_digest": "15bd91e6ff69862dea0a5ba1bf9c40804c387d3a89d03409477821f631490553",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-07T06:33+09:00",
+      "title": "3주 파업 예고한 삼성바이오 노조…생산·수주 불확실성 커진다 | 연합뉴스"
     },
     "title:1412c8f4565739047a00cf29": {
       "first_seen_kst": "2026-10-02T09:58:25+09:00",
@@ -145057,6 +146155,30 @@
       "source_published_kst": "2026-10-06T09:29+09:00",
       "title": "노벨티노빌리티, 美 바이오텍에 ADC 후보물질 NN3201 기술이전…총 7443억원"
     },
+    "title:19a33b709547458b2a7190ff": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02315686645610624",
+      "source": "이데일리",
+      "source_body_digest": "7e8c297d1cfd641c52cc4355e76a1e6306c5c1c0a08194f761ff23438681263d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1efec00a1446342b587ed6364f7704976e409890915f13bb3d4b3ee7aed85cb0",
+      "source_fact_keys": [
+        "source_fact:v1:321aa5bad737ecf0ece30af1247ab9de94a97c68f94c40cadbd3f1fe075ac1dc",
+        "source_fact:v1:471c267e38d9efab7e0a277be275cd26915183184f5631835fa174922ed2eb66",
+        "source_fact:v1:6ccf6c5e60b37279b3815046835c9da2db7b68e6b500b434def1b3d056002c7b",
+        "source_fact:v1:865e6effa1d5fd281a1446e80a13a9b4115263b2e09bb5390992915ae40bcb51",
+        "source_fact:v1:8c3a3f4afed32f1e6f4816eb999afbe0f4163e9c3f6eb0ac04baed7940c7bcbd",
+        "source_fact:v1:91357e1b7e75e2b749145b94590fea29826d48ccf7348a8ec14240c81d5f1ee3",
+        "source_fact:v1:c11f9099117d3880a53bab3df565d88027eae92fb06734a47984f20090b5af62",
+        "source_fact:v1:d5f310c541e43b67487057f0d73e9ac11d56d6587b9d1f600ea5c815cd34191a"
+      ],
+      "source_published_kst": "2026-10-07T06:26+09:00",
+      "title": "美 3년물 국채 입찰금리 4.932%…2006년 이후 최고"
+    },
     "title:19ae6e191865e7ce220b1158": {
       "first_seen_kst": "2026-10-06T01:26:06+09:00",
       "lanes": {
@@ -145399,6 +146521,27 @@
       ],
       "source_published_kst": "2026-10-06T15:11+09:00",
       "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\" | 연합뉴스"
+    },
+    "title:1d9435bc71ba84d231c3b989": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633076",
+      "source": "이투데이",
+      "source_body_digest": "4b826ef64630df03b946ac8fc4628fc43a527fca1616441ea3b5ed6f1229fde4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:72750cd76c3bed6f225ce309611edfd45862b0b78ef77443c474fc68894cf1e8",
+      "source_fact_keys": [
+        "source_fact:v1:0b2838a1ef8f2c839143ce068e1a1ad82ca7eb072aeff4b6b6d3ead4bd267a4f",
+        "source_fact:v1:24542c437fa70aa1f36f10b704da7b55de07dc89d0beac15593f18a003f13794",
+        "source_fact:v1:c83f9b748926a83e11bb20cb35cef930745b03027ff0a3806e5003924dd286d4",
+        "source_fact:v1:d3bce2ab7b7c4fca7803ea6688b1df7dc219ce841017fa39970aa65d183000f3",
+        "source_fact:v1:e8040ae2efacae761dd24bec0ca8647fc627154b3983e64e85310ebb47a77d0c"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "후티 공습, 사우디 진출 韓 기업 인근까지⋯현장·직원 피해는 아직"
     },
     "title:1d96a54f3824ddb0ff23a284": {
       "first_seen_kst": "2026-10-01T12:53:41+09:00",
@@ -149036,6 +150179,28 @@
       "link": "https://www.mt.co.kr/index.php/world/2026/10/02/2026100207543660805",
       "source": "머니투데이",
       "title": "테슬라, 오늘 밤 3분기 전기차 인도량 발표…전년비 7~9% 감소 예상"
+    },
+    "title:3c8044a828172463d92872e6": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816196",
+      "source": "뉴시스",
+      "source_body_digest": "3c7c4b52bc08ec9281a3d54f8368273647956d4838dca9292f5506a9510bb528",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:b02147d0df5148af39afef836219231fa964aaeb92ee9918906302959448407b",
+      "source_fact_keys": [
+        "source_fact:v1:41890aeed3715d90de0205910168b549befb82cc52fb6085edf3cee5d0bd4f9f",
+        "source_fact:v1:66e9144592699652145a46ab04f30b52d19b0b38b3c3e6d213ee38275a6c97ac",
+        "source_fact:v1:a329c695b5d43c3dcc616178c620b835e69136c2a6687b996147ef7c7dca87c2",
+        "source_fact:v1:b6a364e60b1c747a2922237a361ea73e615124d81f47c512edf37745982b627c",
+        "source_fact:v1:b6d41ec2c5d7e1d9828752715ff9ab0637726d665404bbb51c16722ca2a63528",
+        "source_fact:v1:d5370894f3cdc8b7a2549323ae090057fd434b6c447c69fdd47133503717a5dc"
+      ],
+      "source_published_kst": "2026-10-07T07:00+09:00",
+      "title": "내년 세수 37%가 법인세…의존도 높아 세수 전망도 '출렁'"
     },
     "title:3c8a95b9128eeae9b9513521": {
       "first_seen_kst": "2026-10-05T07:24:39+09:00",
@@ -155019,6 +156184,28 @@
       ],
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, 르노 '유럽 첫 상용 SDV'에 통합 콕핏 솔루션 공급"
+    },
+    "title:6f3e4555cbbad2e2f664bf1a": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.mk.co.kr/news/it/12169877",
+      "source": "매일경제",
+      "source_body_digest": "8419a78d5f31b5126c4b42961e7cdf8e2b7db7baab7db18669337559d34a1cdd",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:a7100767b9ca60880b5aae910eac4f3b76328d17421e77d475e4de4a50ab5799",
+      "source_fact_keys": [
+        "source_fact:v1:0fa400e9d0eb11d4b225fc42b92aa76de12c4c2f014d8dbf3000fa49d0d127b7",
+        "source_fact:v1:2063c57dd30ca9deef4c37d8cbe3f8c84ce86b292c73541b5779a13c1e6c7324",
+        "source_fact:v1:b1ae999ee84c2458667b443ed1aaa633fd2d810ed5b9ef4af784a5f546320656",
+        "source_fact:v1:b41e36ae75ab585cca74a763b49e9e08af893b8c02d352b42852a4fffc7d260e",
+        "source_fact:v1:bafbfbdc849e52cf22c3a0bf086ccc61540449f64312688bab0418118eeeb3d8",
+        "source_fact:v1:ced3e10a84e5bb57911764dc525133b92313e31649157917037422ca5794a74d"
+      ],
+      "source_published_kst": "2026-10-07T06:15+09:00",
+      "title": "AI 에이전트 뜨자 CPU도 부활…AMD 시총 1조달러 돌파"
     },
     "title:6f55a6b55721a9bdc55dfbb8": {
       "first_seen_kst": "2026-09-23T10:35:39+09:00",
@@ -166338,6 +167525,26 @@
       "source": "뉴시스",
       "title": "AI 해킹 먹잇감 된 은행권…금융당국도 보안 대응 '비상'"
     },
+    "title:d2e13bf77b8cb05e52356aab": {
+      "first_seen_kst": "2026-10-07T07:01:10+09:00",
+      "lanes": {
+        "live": "2026-10-07T07:01:10+09:00"
+      },
+      "last_seen_kst": "2026-10-07T07:01:10+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633077",
+      "source": "이투데이",
+      "source_body_digest": "2d91b453aa746e93baadadc9f21563a8408915f30b437c860f1b79d9f0b3623e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d5cd9feb758c837ac492a0fd83fa6f07670b75845465db830f0605580e132fb7",
+      "source_fact_keys": [
+        "source_fact:v1:00ab9ebdb2bfceaff0bfdd24db59e9d8369678ba7ba4469aa8b6be57ee4b29eb",
+        "source_fact:v1:9a0a3993dfb83f200c0f52517c28faa71fe9d9c152513518f3166f198a5b27ee",
+        "source_fact:v1:9c0aeca5954aae4ac7f067fb9ef2f3e58f4b7f3736d3da075ad498c7655dab37",
+        "source_fact:v1:f163edf12bba45ee9259733f9a48c05da057b9273a33518a7252fdfcf22dd115"
+      ],
+      "source_published_kst": "2026-10-07T06:59+09:00",
+      "title": "트럼프 “관세 낮추려는 한국에 대가 지급해야 한다 말해”"
+    },
     "title:d2fac68a81e4d388ba97fe79": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
       "lanes": {
@@ -171675,5 +172882,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T06:41:04+09:00"
+  "updated_at_kst": "2026-10-07T07:01:10+09:00"
 }
