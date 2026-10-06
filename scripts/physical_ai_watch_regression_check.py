@@ -2075,4 +2075,124 @@ assert g == "ms_humanoid_research", (g, s, c)
 assert c.endswith("Humanoid 100 구성·역할 개정"), c
 assert s >= 11, s
 
+# 43) Panasonic humanoid commercialization lane.
+# The Sep-30 Nikkei interview / 2029 manufacturing target is a known baseline.
+# Panasonic Industry component capability and Panasonic Energy battery relevance
+# are not evidence of an already-integrated proprietary humanoid platform.
+panasonic_2029_baseline = make(
+    "Panasonic develops humanoid, aims to manufacture by 2029",
+    (
+        "Panasonic Holdings Group CAIO Akira Sakakibara said Panasonic has begun humanoid R&D "
+        "and aims to manufacture by 2029, initially for factory production lines and warehouses. "
+        "He said there is not yet a concrete result that can be disclosed."
+    ),
+    "Nikkei",
+)
+g, s, c, k = classify(panasonic_2029_baseline)
+assert g == "panasonic_humanoid", (g, s, c)
+assert c.endswith("2029 제조목표 진입 기준선"), c
+assert s < 11, ("Panasonic 2029 entry target is now baseline", s, c)
+
+panasonic_rd_org_baseline = make(
+    "Panasonic establishes AI & Robotics Research Laboratory",
+    (
+        "Panasonic Holdings established the AI & Robotics Research Laboratory led by Group CAIO "
+        "Akira Sakakibara to accelerate Physical AI and robotics R&D."
+    ),
+    "Panasonic Holdings",
+)
+g, s, c, k = classify(panasonic_rd_org_baseline)
+assert g == "panasonic_humanoid", (g, s, c)
+assert c.endswith("AI·로보틱스 연구조직 기준선"), c
+assert s < 11, ("Panasonic AI/robotics R&D organization is baseline", s, c)
+
+panasonic_component_baseline = make(
+    "Panasonic Industry Humanoid Robotics Solution",
+    (
+        "Panasonic Industry presents humanoid robotics technologies including a mechatronics-integrated "
+        "servo motor, EDLC, capacitors and pressure sensors for humanoid systems."
+    ),
+    "Panasonic Industry",
+)
+g, s, c, k = classify(panasonic_component_baseline)
+assert g == "panasonic_humanoid", (g, s, c)
+assert c.endswith("기존 부품·배터리 역량 기준선"), c
+assert s < 11, ("component portfolio is not integrated Panasonic humanoid proof", s, c)
+
+panasonic_proto = make(
+    "Panasonic unveils working humanoid prototype",
+    (
+        "Panasonic Holdings unveiled and demonstrated a working humanoid prototype for factory "
+        "and warehouse tasks."
+    ),
+    "Panasonic Holdings",
+)
+g, s, c, k = classify(panasonic_proto)
+assert g == "panasonic_humanoid", (g, s, c)
+assert c.endswith("실물 시제품·모델 공개"), c
+assert s >= 11, s
+
+panasonic_internal_pilot = make(
+    "Panasonic humanoid enters factory pilot",
+    (
+        "Panasonic deployed 50 humanoid robots at its Osaka factory production line for a field pilot "
+        "and started operations in material handling."
+    ),
+    "Panasonic Holdings",
+)
+g, s, c, k = classify(panasonic_internal_pilot)
+assert g == "panasonic_humanoid", (g, s, c)
+assert c.endswith("자사 공장·창고 현장실증"), c
+assert s >= 11, s
+
+panasonic_battery_integration = make(
+    "Panasonic integrates own battery into humanoid prototype",
+    (
+        "Panasonic's own humanoid integrates a Panasonic Energy 2.4kWh battery pack with 300Wh/kg "
+        "energy density and 6 hours operating time."
+    ),
+    "Panasonic Energy",
+)
+g, s, c, k = classify(panasonic_battery_integration)
+assert g == "panasonic_humanoid", (g, s, c)
+assert c.endswith("자체 배터리 통합"), c
+assert s >= 11, s
+
+panasonic_actuator_integration = make(
+    "Panasonic integrates in-house servo actuator into humanoid",
+    (
+        "Panasonic's own humanoid adopted a Panasonic Industry servo motor actuator rated at 180Nm "
+        "for major joints."
+    ),
+    "Panasonic Industry",
+)
+g, s, c, k = classify(panasonic_actuator_integration)
+assert g == "panasonic_humanoid", (g, s, c)
+assert c.endswith("자체 액추에이터 통합"), c
+assert s >= 11, s
+
+panasonic_external_order = make(
+    "Panasonic signs humanoid supply contract with external logistics customer",
+    (
+        "Panasonic signed a binding supply contract with an external logistics customer for "
+        "1,000 humanoid robots with deliveries starting in 2029."
+    ),
+    "Panasonic Holdings",
+)
+g, s, c, k = classify(panasonic_external_order)
+assert g == "panasonic_humanoid", (g, s, c)
+assert c.endswith("외부 고객 본계약·수주"), c
+assert s >= 11, s
+
+panasonic_unverified_integrated_platform = make(
+    "Panasonic launches high-torque actuator and dedicated battery integrated humanoid platform",
+    (
+        "An unnamed social post says Panasonic officially launched an integrated humanoid platform "
+        "with a high-torque actuator and dedicated battery for commercialization in 2029."
+    ),
+    "Unknown Blog",
+)
+g, s, c, k = classify(panasonic_unverified_integrated_platform)
+assert s < 11, ("unverified integrated-platform claim must stay silent", g, s, c)
+
 print("Physical-AI watcher regression guards: PASS")
