@@ -48,6 +48,19 @@ def fmt_clock(ts: float | None) -> str:
     return dt.datetime.fromtimestamp(ts, KST).strftime("%H:%M:%S")
 
 
+def _display_name(value: Any) -> str:
+    text = re.sub(r"\s+", " ", str(value or "")).strip()
+    if re.fullmatch(r"[가-힣 ]+", text):
+        text = text.replace(" ", "")
+    return text
+
+
+def _is_actionable_theme(name: str) -> bool:
+    compact = name.replace(" ", "").lower()
+    blocked = ("지수", "index", "value-up", "valueup", "밸류업")
+    return bool(compact) and not any(x in compact for x in blocked)
+
+
 def _pace(tr: str) -> None:
     if tr not in _ONE_SEC_TR:
         return
@@ -189,6 +202,7 @@ def _is_real_industry(name: str, code: str) -> bool:
     blocked = (
         "코스피", "KOSPI", "대형주", "중형주", "소형주", "배당", "우선주",
         "200", "100", "50", "시가총액", "스타일", "저변동", "고배당",
+        "제조업", "종합",
     )
     return not any(x in n for x in blocked)
 
@@ -221,7 +235,7 @@ def map_industries(
     industries = industry_master(token)
     filtered = []
     for row in industries:
-        name = str(row.get("hname") or "").strip()
+        name = _display_name(row.get("hname"))
         code = str(row.get("upcode") or "").strip()
         if _is_real_industry(name, code):
             filtered.append((name, code))
@@ -403,7 +417,7 @@ def stock_themes(token: str, shcode: str) -> list[dict[str, str]]:
     )
     out = []
     for row in _rows(data, "t1532OutBlock"):
-        name = str(row.get("tmname") or "").strip()
+        name = _display_name(row.get("tmname"))
         code = str(row.get("tmcode") or "").strip()
         if name:
             out.append({"name": name, "code": code})
@@ -453,6 +467,7 @@ def etf_master(token: str) -> list[dict[str, Any]]:
     return [
         x for x in stock_master(token)
         if str(x.get("etfgubun") or "") == "1"
+        and re.fullmatch(r"\d{6}", str(x.get("shcode") or "").strip())
     ]
 
 
@@ -556,11 +571,21 @@ def _fmt_pct(v: Any) -> str:
 def build_enrichment(
     token: str,
     episode: dict[str, Any],
-    leader: str | None = None,
+    attribution: dict[str, Any] | str | None = None,
 ) -> tuple[str, dict[str, Any]]:
     start_ts = float(episode["start_ts"])
     low_ts = float(episode["low_ts"])
     errors: list[str] = []
+    att = attribution if isinstance(attribution, dict) else {}
+    legacy_leader = str(attribution).strip() if isinstance(attribution, str) else ""
+    spot_leader = str(att.get("spot_leader") or "").strip()
+    futures_leader = str(att.get("futures_leader") or "").strip()
+    confidence = str(att.get("confidence") or "").strip()
+    verdict = str(att.get("verdict") or "").strip()
+    single_leader = bool(
+        att.get("available") and spot_leader and spot_leader == futures_leader
+        and "보류" not in verdict
+    )
 
     master_rows = stock_master(token)
     master = {str(x.get("shcode") or "").strip(): x for x in master_rows}
@@ -628,6 +653,8 @@ def build_enrichment(
         delta = fnum(stock.get("program", {}).get("program_delta")) or 0.0
         for th in themes:
             name = th["name"]
+            if not _is_actionable_theme(name):
+                continue
             bucket = theme_sums.setdefault(name, {"program_delta": 0.0, "stocks": []})
             bucket["program_delta"] += delta
             bucket["stocks"].append(stock["name"])
@@ -704,7 +731,15 @@ def build_enrichment(
             "low_kst": fmt_clock(low_ts),
             "start_price": episode.get("start_price"),
             "low_price": episode.get("low_price"),
-            "leader": leader,
+            "leader": spot_leader if single_leader else None,
+            "market_attribution": {
+                "available": bool(att.get("available")),
+                "spot_leader": spot_leader or None,
+                "futures_leader": futures_leader or None,
+                "confidence": confidence or None,
+                "verdict": verdict or None,
+                "single_leader": single_leader,
+            },
         },
         "stocks": top_stocks,
         "industries": industries,
@@ -727,8 +762,22 @@ def build_enrichment(
         f"• 분석 구간 <b>{fmt_clock(start_ts)} → {fmt_clock(low_ts)}</b>",
         "• 종목 체결·프로그램·ETF는 <b>통합 기준</b> · 선물은 파생시장 기준",
     ]
-    if leader:
-        lines.append(f"• 시장 매도 주도 후보: <b>{html.escape(leader)}</b>")
+    if att.get("available"):
+        if single_leader:
+            lines.append(
+                f"• 시장 매도 주도 후보: <b>{html.escape(spot_leader)}</b>"
+                + (f" · 확신도 {html.escape(confidence)}" if confidence else "")
+            )
+        elif spot_leader or futures_leader:
+            lines.append(
+                f"• 시장 매도주체: 현물 <b>{html.escape(spot_leader or '확인 불가')}</b>"
+                f" / 선물 <b>{html.escape(futures_leader or '확인 불가')}</b> · "
+                "<b>단일 주도자 보류</b>"
+            )
+        else:
+            lines.append("• 시장 매도주체: <b>확정 보류</b>")
+    elif legacy_leader:
+        lines.append(f"• 시장 매도 주도 후보: <b>{html.escape(legacy_leader)}</b>")
 
     lines += ["", "<b>어느 업종이 밀렸나</b>"]
     if industries:
@@ -737,7 +786,7 @@ def build_enrichment(
             stocks_txt = ", ".join(ind.get("stocks", [])[:3])
             lines.append(
                 f"• {i}. <b>{html.escape(ind['name'])}</b> · 업종지수 {_fmt_pct(ret)} · "
-                f"상위 매도종목 프로그램 {_fmt_program(ind.get('program_delta'))} · {html.escape(stocks_txt)}"
+                f"상위 프로그램 매도종목 합계 {_fmt_program(ind.get('program_delta'))} <i>(LS 원값)</i> · {html.escape(stocks_txt)}"
             )
     else:
         lines.append("• 업종 분류 확인 불가")
@@ -748,18 +797,18 @@ def build_enrichment(
             names = ", ".join(th.get("stocks", [])[:3])
             lines.append(
                 f"• {i}. <b>{html.escape(th['name'])}</b> · 상위 구성종목 프로그램 "
-                f"{_fmt_program(th['program_delta'])} · {html.escape(names)}"
+                f"{_fmt_program(th['program_delta'])} <i>(LS 원값)</i> · {html.escape(names)}"
             )
     else:
         lines.append("• 상위 매도종목의 LS 테마 연결 확인 불가")
 
-    lines += ["", "<b>실제 매도 집중 종목</b>"]
+    lines += ["", "<b>프로그램 매도 집중 종목</b>"]
     if top_stocks:
         for i, stock in enumerate(top_stocks[:6], 1):
             pd = stock.get("program", {}).get("program_delta")
             ret = stock.get("price", {}).get("return_pct")
             lines.append(
-                f"• {i}. <b>{html.escape(stock['name'])}</b>({_fmt_program(pd)}) · 구간 {_fmt_pct(ret)}"
+                f"• {i}. <b>{html.escape(stock['name'])}</b> · 프로그램 {_fmt_program(pd)} <i>(LS 원값)</i> · 구간 {_fmt_pct(ret)}"
             )
     else:
         lines.append("• 종목별 프로그램 매도 구간 확인 불가")
@@ -788,7 +837,7 @@ def build_enrichment(
     lines += [
         "",
         "<b>정확성</b>",
-        "• 업종·테마 수치는 <b>통합 종목 프로그램 매도와 구간 가격을 묶은 분해</b>입니다.",
+        "• 업종·테마 수치는 <b>통합 종목 프로그램 매도와 구간 가격을 묶은 분해</b>이며, LS 프로그램 원값은 임의로 억원 환산하지 않습니다.",
         "• 특정 업종·테마의 외국인 직접 순매도액으로 바꿔 쓰지 않습니다.",
         "• ETF는 2차시장 가격과 PDF 겹침을 보여주며, ETF 자금 유출로 단정하지 않습니다.",
     ]
@@ -840,7 +889,11 @@ def latest_kospi_episode(token: str, minutes: int = 10) -> dict[str, Any]:
 
 def run_smoke(token: str) -> dict[str, Any]:
     episode = latest_kospi_episode(token, 10)
-    text, detail = build_enrichment(token, episode, "검증")
+    text, detail = build_enrichment(
+        token, episode,
+        {"available": True, "spot_leader": "외국인", "futures_leader": "외국인",
+         "confidence": "높음", "verdict": "외국인: 현물·선물 모두 최다 매도",}
+    )
     summary = {
         "episode": detail.get("event"),
         "stock_count": len(detail.get("stocks") or []),
