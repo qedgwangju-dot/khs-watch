@@ -43,8 +43,8 @@ jobs:
 
       - name: Validate Telegram route without sending
         env:
-          TELEGRAM_BOT_TOKEN: \${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: \${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import json, os, urllib.request
@@ -123,8 +123,8 @@ jobs:
       - name: Send ABF substrate change to Telegram
         if: hashFiles('out/abf_package_substrate_cycle_alert.html') != ''
         env:
-          TELEGRAM_BOT_TOKEN: \${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: \${{ secrets.HBM_TELEGRAM_CHAT_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.HBM_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.HBM_TELEGRAM_CHAT_ID }}
         run: |
           python - <<'PY'
           import datetime as dt
@@ -266,7 +266,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: abf-package-substrate-cycle-\${{ github.run_id }}
+          name: abf-package-substrate-cycle-${{ github.run_id }}
           path: |
             out/abf_package_substrate_cycle_status.md
             out/abf_package_substrate_cycle_alert.html
