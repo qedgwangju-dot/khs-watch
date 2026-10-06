@@ -41,6 +41,16 @@ class AbfCpuMonetizationParseTests(unittest.TestCase):
         parsed = w.parse_official_update(text, "https://www.ibiden.com/example")
         self.assertTrue(parsed["official_nvidia_cpu_substrate_confirmed"])
 
+    def test_official_ibiden_ai_server_sap_load_indices(self):
+        text = (
+            "Production load of substrate for AI server (Converted by SAP) "
+            "CY24 1.0 Standard CY26 x1.8 CY28 x2.5."
+        )
+        parsed = w.parse_official_update(text, "https://www.ibiden.com/ir/items/en_kessannsetsumeiFY2025.pdf")
+        self.assertEqual(parsed["ibiden_ai_server_sap_load_cy2024_index"], 1.0)
+        self.assertEqual(parsed["ibiden_ai_server_sap_load_cy2026_index"], 1.8)
+        self.assertEqual(parsed["ibiden_ai_server_sap_load_cy2028_index"], 2.5)
+
     def test_area_structure_baseline_uses_area_layers_not_unit_count(self):
         base = w.ABF_AREA_STRUCTURE_BASELINE
         off = base["official"]
@@ -50,14 +60,19 @@ class AbfCpuMonetizationParseTests(unittest.TestCase):
         self.assertEqual(off["ajinomoto_hpc_abf_layers"], 18)
         self.assertEqual(off["ajinomoto_hpc_abf_use_multiple_min"], 10.0)
         self.assertTrue(off["ibiden_area_multilayer_increases_sap_load"])
+        self.assertEqual(off["ibiden_ai_server_sap_load_cy2024_index"], 1.0)
+        self.assertEqual(off["ibiden_ai_server_sap_load_cy2026_index"], 1.8)
+        self.assertEqual(off["ibiden_ai_server_sap_load_cy2028_index"], 2.5)
+        self.assertEqual(base["research_forecast"]["abf_shortfall_2h2026_pct"], 14.0)
         self.assertFalse(base["comparison_guard"]["like_for_like_comparison_confirmed"])
 
     def test_goldman_supply_gap_parser_keeps_source_specific_numbers(self):
         text = (
-            "Goldman Sachs says the ABF substrate supply-demand gap is 34% in 2027 "
-            "and the supply shortfall is 51% in 2028."
+            "Goldman Sachs says the ABF substrate supply-demand gap is 14% in 2H26, "
+            "34% in 2027 and the supply shortfall is 51% in 2028."
         )
         parsed = w.parse_research_update(text, "https://www.skis.com.tw/Report/industry/example.html")
+        self.assertEqual(parsed["goldman_abf_shortfall_2h2026_pct"], 14.0)
         self.assertEqual(parsed["goldman_abf_shortfall_2027_pct"], 34.0)
         self.assertEqual(parsed["goldman_abf_shortfall_2028_pct"], 51.0)
 
@@ -106,6 +121,18 @@ class AbfCpuMonetizationMaterialityTests(unittest.TestCase):
         }]
         self.assertEqual(w.material_events(previous, updates), [])
 
+    def test_goldman_2h2026_five_pp_revision_triggers(self):
+        previous = {**w.BASELINE, "area_structure": w.ABF_AREA_STRUCTURE_BASELINE}
+        updates = [{
+            "url": "https://www.skis.com.tw/Report/industry/example.html",
+            "parsed": {
+                "kind": "research_update",
+                "goldman_abf_shortfall_2h2026_pct": 20.0,
+            },
+        }]
+        ev = w.material_events(previous, updates)
+        self.assertTrue(any(x["type"] == "supply_gap_forecast" and x["key"] == "goldman_abf_shortfall_2h2026_pct" for x in ev))
+
     def test_goldman_2028_five_pp_revision_triggers(self):
         previous = {**w.BASELINE, "area_structure": w.ABF_AREA_STRUCTURE_BASELINE}
         updates = [{
@@ -143,6 +170,8 @@ class AbfCpuMonetizationAlertTests(unittest.TestCase):
         self.assertIn("기판 개수보다 면적×층수·SAP 부하", alert)
         self.assertIn("동일 범위 직접비교 금지", alert)
         self.assertIn("Goldman 2028 전망 51%", alert)
+        self.assertIn("2H26 14% → 2027 34% → 2028 51%", alert)
+        self.assertIn("CY2024 1.0 → CY2026 1.8 → CY2028 2.5", alert)
 
     def test_area_structure_upgrade_event_is_explicit(self):
         state = {**w.BASELINE, "area_structure": w.ABF_AREA_STRUCTURE_BASELINE}
