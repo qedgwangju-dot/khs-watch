@@ -78,7 +78,13 @@ jobs:
           assert "collector_supervisor()" in s, "UBM collector supervisor missing"
           assert "kospi_watcher_restart" in s, "KOSPI watcher restart loop missing"
           assert "WATCH_FAILS" in s, "KOSPI watcher failure counter missing"
+          assert 'WATCH_FAILS" -ge 5' not in s, "KOSPI shift still exits after five transient failures"
+          assert "kospi_watcher_retrying" in s, "KOSPI retry-through-shift loop missing"
           assert "timeout-minutes: 359" in s, "afternoon close coverage timeout missing"
+          collector=Path("scripts/kospi_unified_industry_collector.py").read_text(encoding="utf-8")
+          assert "UBM feed stale >120s during market hours" in collector, "UBM stale-feed restart guard missing"
+          enrichment=Path("scripts/kospi_shock_enrichment.py").read_text(encoding="utf-8")
+          assert "requests.RequestException" in enrichment and "transport error" in enrichment, "enrichment LS transport retry missing"
           print("production_workflow_structure_valid=true")
           PY
 
