@@ -82,9 +82,9 @@ def main() -> None:
     assert materiality.assess(intraday["source_title"], intraday["source_body"])["disposition"] == "keep"
     assert not materiality.us_equity_close_identity(intraday)
     ukraine = next(item for item in latest if "한국의 러 석유공급" in item["source_title"])
-    ukraine_core = radar.verified_alert_core(ukraine, ukraine["source_title"])
+    ukraine_core = radar.source_headline_event_fact(ukraine["source_title"], ukraine["source_body"])
     assert "17만6천t" in ukraine_core and "가디언" in ukraine_core and "포로" not in ukraine_core
-    assert not radar.source_core_fact_errors({**ukraine, "telegram_core_fact": ukraine_core})
+    assert "article_without_headline_market_change_evidence" in radar.source_core_fact_errors({**ukraine, "telegram_core_fact": ukraine_core})
     nasdaq = next(item for item in latest if item["link"] == RECEIPTS[1][2][1])
     nasdaq_core = radar.verified_alert_core(nasdaq, nasdaq["source_title"])
     assert "2만7477.31" in nasdaq_core and "1.05%" in nasdaq_core
@@ -114,7 +114,8 @@ def main() -> None:
             selected = radar.quality_display_alerts(fresh, 20)
         assert {item["link"] for item in skipped} == {proofs[0]["link"], proofs[1]["link"],
                                                        proofs[2]["link"], proofs[3]["link"]} & {item["link"] for item in latest}
-        assert {item["link"] for item in selected} == {ukraine["link"], intraday["link"]}
+        assert materiality.assess(ukraine["source_title"], ukraine["source_body"])["reason"] == "quoted_diplomatic_criticism_without_new_trade_action"
+        assert {item["link"] for item in selected} == {intraday["link"]}
     if args.write_aliases:
         payload = json.loads(ALIAS_PATH.read_text(encoding="utf-8"))
         existing = {(entry.get("run_id"), entry.get("link")): entry for entry in payload["entries"]}
@@ -133,7 +134,7 @@ def main() -> None:
         "intraday_kept": True,
         "source_bound_cores": 2,
         "historical_seen_migrated": bool(args.seen_state),
-        "replayed_unique_selected": 2 if args.seen_state else None,
+        "replayed_unique_selected": len(selected) if args.seen_state else None,
         "alias_entries": len(proofs),
         "aliases_written": args.write_aliases,
     }, ensure_ascii=False))

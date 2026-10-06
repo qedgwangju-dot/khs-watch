@@ -2043,7 +2043,19 @@ class IncrementalNewsTests(unittest.TestCase):
         for value in ('가디언', '7∼8월', '17만6천t', '우크라이나 대통령실', '보도했다'):
             self.assertIn(value, core)
         self.assertNotIn('포로', core)
-        self.assertFalse(radar.source_core_fact_errors({**alert(title, body), 'telegram_core_fact': core}))
+        self.assertIn('article_without_headline_market_change_evidence',
+                      radar.source_core_fact_errors({**alert(title, body), 'telegram_core_fact': core}))
+
+    def test_quoted_diplomatic_criticism_needs_a_new_trade_action(self):
+        title = "우크라, '한국의 러 석유공급' 기사 인용해 韓 비판"
+        body = ("우크라이나 대통령실 보좌관은 한국의 대러 제재 정책을 비판했다. "
+                "가디언은 항만 자료를 토대로 지난 7∼8월 한국에서 러시아로 석유제품 17만6천t이 운송됐다고 보도했다.")
+        result = materiality.assess(title, body)
+        self.assertEqual(result['disposition'], 'exclude')
+        self.assertEqual(result['reason'], 'quoted_diplomatic_criticism_without_new_trade_action')
+        new_action = ("우크라이나 정부는 한국 정유사에 신규 제재를 부과했다고 발표했다. " + body)
+        self.assertNotEqual(materiality.assess(title, new_action)['reason'],
+                            'quoted_diplomatic_criticism_without_new_trade_action')
 
     def test_v100_new_york_close_renderer_accepts_source_date_before_exchange(self):
         title = '뉴욕증시, 국채금리 상승에도 강세⋯나스닥, 사상 최고치 [글로벌마켓 모닝 브리핑]'
