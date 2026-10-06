@@ -4,6 +4,10 @@ on:
   schedule:
     - cron: "10 10 * * 1-5"
       timezone: "Asia/Seoul"
+    - cron: "25 12 * * 1-5"
+      timezone: "Asia/Seoul"
+    - cron: "25 15 * * 1-5"
+      timezone: "Asia/Seoul"
   push:
     branches: [main]
     paths:
@@ -106,6 +110,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
+          EVENT_NAME: ${{ github.event_name }}
         run: |
           python - <<'PY'
           import datetime as dt, json, os, urllib.request
@@ -130,7 +135,34 @@ jobs:
           running=[x for x in active if x[2]=="in_progress"]
           queued=[x for x in active if x[2]=="queued"]
           leader=(running[0] if running else (queued[0] if queued else None))
-          print(f"leader_election_api_valid=true active={[(x[1],x[2]) for x in active]} leader={leader[1] if leader else None}")
+
+          production_jobs=[]
+          for _, run_id, _ in active:
+              jobs_url=f"https://api.github.com/repos/{repo}/actions/runs/{run_id}/jobs?per_page=100"
+              try:
+                  with urllib.request.urlopen(urllib.request.Request(jobs_url,headers=headers),timeout=20) as r:
+                      jobs=json.loads(r.read().decode("utf-8")).get("jobs",[])
+              except Exception:
+                  jobs=[]
+              for job in jobs:
+                  if str(job.get("name") or "") in {"watch","morning","afternoon"} and job.get("status") in {"queued","in_progress"}:
+                      production_jobs.append((run_id,job.get("name"),job.get("status")))
+
+          now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
+          scheduled=os.environ.get("EVENT_NAME")=="schedule"
+          should_be_live=bool(
+              scheduled and now.weekday()<5
+              and dt.time(9,0)<=now.time()<=dt.time(15,32)
+          )
+          if should_be_live:
+              assert production_jobs, (
+                  f"scheduled live validation found no active production job; active={active}"
+              )
+          print(
+              f"leader_election_api_valid=true active={[(x[1],x[2]) for x in active]} "
+              f"leader={leader[1] if leader else None} production_jobs={production_jobs} "
+              f"scheduled_live_required={should_be_live}"
+          )
           PY
 
       - name: Verify LS REST prices and flow snapshot
