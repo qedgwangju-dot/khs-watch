@@ -149,7 +149,8 @@ jobs:
           REPOSITORY: ${{ github.repository }}
         run: |
           python - <<'PY'
-          import json, os, time, urllib.request
+          import datetime as dt, json, os, urllib.request
+          from zoneinfo import ZoneInfo
 
           repo=os.environ["REPOSITORY"]
           token=os.environ["GH_TOKEN"]
@@ -164,34 +165,36 @@ jobs:
               with urllib.request.urlopen(req,timeout=20) as r:
                   return json.loads(r.read().decode("utf-8")).get("workflow_runs",[])
 
+          now=dt.datetime.now(ZoneInfo("Asia/Seoul"))
+          market_window=bool(
+              now.weekday()<5 and dt.time(8,20)<=now.time()<=dt.time(15,20)
+          )
           active=[x for x in list_runs() if x.get("status") in {"queued","in_progress"}]
-          cancelled=[]
-          for run in active:
-              run_id=int(run["id"])
-              req=urllib.request.Request(
-                  f"https://api.github.com/repos/{repo}/actions/runs/{run_id}/cancel",
-                  data=b"", headers=headers, method="POST")
-              try:
-                  with urllib.request.urlopen(req,timeout=20) as r:
-                      cancelled.append((run_id,r.status))
-              except urllib.error.HTTPError as exc:
-                  if exc.code not in {409,422}:
-                      raise
-          deadline=time.time()+60
-          while time.time()<deadline:
-              still=[x for x in list_runs() if x.get("status") in {"queued","in_progress"}]
-              if not still:
-                  break
-              time.sleep(3)
-          else:
-              raise RuntimeError(f"KOSPI rollout cancel timeout: {[(x.get('id'),x.get('status')) for x in still]}")
+
+          # 장중 활성 감시는 절대 강제 취소하지 않는다.
+          # 진행 중 급락 episode/message_id/수급 기준점을 잃는 것보다
+          # 새 코드를 다음 자연 재기동부터 적용하는 편이 정확하다.
+          if active:
+              print(
+                  "kospi_rollout=deferred_active_production "
+                  f"runs={[(x.get('id'),x.get('status')) for x in active]}"
+              )
+              with open(os.environ["GITHUB_ENV"],"a",encoding="utf-8") as fp:
+                  fp.write("KOSPI_REALTIME_WATCH_ACTIVE=1\n")
+              raise SystemExit(0)
+
+          if not market_window:
+              print("kospi_rollout=deferred_outside_market_window")
+              raise SystemExit(0)
 
           body=json.dumps({"ref":"main","inputs":{"mode":"production"}}).encode("utf-8")
-          req=urllib.request.Request(f"{base}/dispatches",data=body,
-                                     headers={**headers,"Content-Type":"application/json"},method="POST")
+          req=urllib.request.Request(
+              f"{base}/dispatches",data=body,
+              headers={**headers,"Content-Type":"application/json"},method="POST"
+          )
           with urllib.request.urlopen(req,timeout=20) as r:
-              print(f"kospi_rollout_cancelled={cancelled} dispatch_status={r.status}")
-          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as fp:
+              print(f"kospi_rollout=dispatched_latest status={r.status}")
+          with open(os.environ["GITHUB_ENV"],"a",encoding="utf-8") as fp:
               fp.write("KOSPI_REALTIME_WATCH_ACTIVE=1\n")
           PY
 
