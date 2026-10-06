@@ -1249,7 +1249,7 @@ def _ppa_stage(text: str, official: bool):
             "전력구매계약 체결", "장기 계약 체결",
         ))
         or bool(re.search(
-            r"\b(?:signs|signed|announces|announced|enters|entered|reaches|reached|strikes|struck|finalizes|finalized|finalises|finalised)\b.{0,100}\b(?:deal|agreement|ppa|power purchase)\b",
+            r"\b(?:signs|signed|announce|announces|announced|enter|enters|entered|reach|reaches|reached|strike|strikes|struck|finalize|finalizes|finalized|finalise|finalises|finalised)\b.{0,100}\b(?:deal|agreement|ppa|power purchase)\b",
             low,
         ))
     )
