@@ -1899,4 +1899,119 @@ robot_chip_rumor = make(
 g, s, c, k = classify(robot_chip_rumor)
 assert s < 11, ("unverified robot-chip rumor must stay silent", g, s, c)
 
+# 41) Physical-AI onboard memory/storage lane.
+# Secondary "HBM next is robot memory" narratives and already-public Samsung/SK
+# products are silent baselines. Named robot customer execution must alert.
+phys_mem_media_baseline = make(
+    "HBM 다음은 로봇 반도체…삼성·SK하이닉스, 피지컬AI 메모리 선점",
+    (
+        "삼성전자와 SK하이닉스가 로봇과 휴머노이드용 저전력 메모리 시장을 준비한다. "
+        "HBM 다음 성장축으로 LPDDR6, LPDDR5X, NAND와 스토리지가 거론된다."
+    ),
+    "뉴스핌",
+)
+g, s, c, k = classify(phys_mem_media_baseline)
+assert g == "physical_ai_memory", (g, s, c)
+assert c.endswith("HBM 이후 로봇수요 기사 기준선"), c
+assert s < 11, ("secondary robot-memory thesis must stay silent", s, c)
+
+sk_robotics_lpddr_baseline = make(
+    "SK hynix shows Auto/Robotics LPDDR5/5X at MWC 2026",
+    (
+        "SK hynix showcased Auto/Robotics LPDDR5/5X and Automotive LPDDR6 "
+        "for robotics, autonomous systems and physical AI."
+    ),
+    "SK hynix",
+)
+g, s, c, k = classify(sk_robotics_lpddr_baseline)
+assert g == "physical_ai_memory", (g, s, c)
+assert c.endswith("기존 제품·로드맵 기준선"), c
+assert s < 11, ("existing SK hynix robotics LPDDR must be baseline", s, c)
+
+samsung_pim_baseline = make(
+    "Samsung LPDDR5X-PIM accelerates Edge AI",
+    (
+        "Samsung Electronics LPDDR5X-PIM delivers up to 8x effective bandwidth, "
+        "up to 3x LLM TPS and up to 2.2x lower runtime for Edge AI."
+    ),
+    "Samsung Electronics",
+)
+g, s, c, k = classify(samsung_pim_baseline)
+assert g == "physical_ai_memory", (g, s, c)
+assert c.endswith("기존 제품·로드맵 기준선"), c
+assert s < 11, ("existing Samsung LPDDR5X-PIM benchmark must be baseline", s, c)
+
+samsung_autossd_baseline = make(
+    "Samsung Detachable AutoSSD targets future humanoid systems",
+    (
+        "Samsung Electronics said Detachable AutoSSD is designed for future autonomous vehicles "
+        "and humanoid robotic systems as physical AI expands."
+    ),
+    "Samsung Electronics",
+)
+g, s, c, k = classify(samsung_autossd_baseline)
+assert g == "physical_ai_memory", (g, s, c)
+assert c.endswith("기존 제품·로드맵 기준선"), c
+assert s < 11, ("future humanoid AutoSSD target is baseline, not a robot design win", s, c)
+
+phys_mem_sample = make(
+    "SK hynix starts LPDDR6 samples for Figure 03 humanoid",
+    (
+        "SK hynix started supplying customer samples of 64GB LPDDR6 to Figure AI "
+        "for Figure 03 humanoid qualification."
+    ),
+    "SK hynix",
+)
+g, s, c, k = classify(phys_mem_sample)
+assert g == "physical_ai_memory", (g, s, c)
+assert c.endswith("로봇 고객 샘플 공급"), c
+assert s >= 11, s
+
+phys_mem_design_win = make(
+    "Boston Dynamics selects Samsung LPDDR6 for Atlas",
+    (
+        "Boston Dynamics selected and adopted Samsung Electronics 96GB LPDDR6 "
+        "for the Atlas humanoid production platform."
+    ),
+    "Samsung Electronics",
+)
+g, s, c, k = classify(phys_mem_design_win)
+assert g == "physical_ai_memory", (g, s, c)
+assert c.endswith("로봇 OEM 채택·디자인윈"), c
+assert s >= 11, s
+
+phys_mem_contract = make(
+    "Agility signs volume memory contract with SK hynix for Digit",
+    (
+        "Agility Robotics signed a binding supply contract with SK hynix for LPDDR6 "
+        "memory for 100,000 Digit humanoid robots."
+    ),
+    "SK hynix",
+)
+g, s, c, k = classify(phys_mem_contract)
+assert g == "physical_ai_memory", (g, s, c)
+assert c.endswith("로봇 OEM 본계약·물량수주"), c
+assert s >= 11, s
+
+phys_mem_content = make(
+    "Figure discloses memory content for Figure 03",
+    (
+        "Figure AI said each Figure 03 humanoid uses 256GB of Samsung LPDDR6 "
+        "and 4TB of onboard storage."
+    ),
+    "Samsung Electronics",
+)
+g, s, c, k = classify(phys_mem_content)
+assert g == "physical_ai_memory", (g, s, c)
+assert c.endswith("로봇 1대당 탑재량 공개"), c
+assert s >= 11, s
+
+phys_mem_rumor = make(
+    "Samsung may win humanoid memory supply",
+    "An unnamed blog says Samsung could supply LPDDR6 memory to a future humanoid robot.",
+    "Unknown Blog",
+)
+g, s, c, k = classify(phys_mem_rumor)
+assert s < 11, ("unverified physical-AI memory rumor must stay silent", g, s, c)
+
 print("Physical-AI watcher regression guards: PASS")
