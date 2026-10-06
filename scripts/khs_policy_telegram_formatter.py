@@ -809,9 +809,13 @@ def presidential_action_timeline_lines(alert: dict) -> list[str]:
             label = "이번 조치 · 행정명령"
             if number:
                 label += f" {number}"
-            label += " 서명·공개"
+            label += " 서명" if signing_day else " 공식 공개"
         elif "presidential memorandum" in doc_type or "presidential determination" in low:
-            label = "이번 조치 · 대통령각서·결정 공개"
+            label = (
+                "이번 조치 · 대통령각서·결정 서명"
+                if signing_day
+                else "이번 조치 · 대통령각서·결정 공식 공개"
+            )
         elif "energy.gov" in link or "department of energy" in source or source.startswith("doe"):
             label = "이번 조치 · DOE 후속 집행 발표"
         else:
