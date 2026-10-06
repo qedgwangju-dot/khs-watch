@@ -2590,6 +2590,17 @@ def reported_issuer_announcement_fact(title: str, body: str) -> str:
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
+    if focus == "commercial_order":
+        contract = re.search(r"([A-Za-z0-9가-힣&·.-]{2,30})(?:이|가)\s+[^.!?\n]{0,50}?['‘]([^'’\n]{2,40})['’](?:\([^)]*\))?(?:와|과)\s*맺은\s*장기공급계약", body)
+        capacity = re.search(r"(\d[\d,.]*\s*(?:GW|MW))\s*규모\s*(?:AI\s*)?데이터센터\s*칠러\s*공급", body, re.I)
+        if contract and capacity and contract.group(1) in title:
+            issuer, customer = contract.groups()
+            fact = (f"{issuer}{korean_topic_particle(issuer)} {customer}와 "
+                    f"{capacity.group(1)} 규모 데이터센터용 칠러 장기공급계약을 맺었다.")
+            if re.search(r"CDU.{0,30}공급\s*품목을\s*확대하는\s*방안을\s*논의", body):
+                fact += " CDU 공급 확대도 논의 중이다."
+            if core_sentence_is_complete(fact):
+                return fact
     target_revision = market_materiality.analyst_target_revision_terms(title, body)
     if target_revision:
         broker, issuer = target_revision["broker"], target_revision["issuer"]

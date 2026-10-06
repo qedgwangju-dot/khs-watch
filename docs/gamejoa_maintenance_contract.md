@@ -273,6 +273,15 @@ Every defect or requested change must follow this sequence:
 - Signed industrial cooperation summaries retain counterparties and actual
   study scope. A joint route/feasibility MOU is not a vessel order, regulatory
   approval or operating launch. A possible future signing is not a signed MOU.
+- Same signed route studies compare issuer, partner, technology, vessel, route,
+  announcement date, stated amounts and revisions across headline variants.
+  Existing successful receipts must be present before historical aliases apply.
+- Quantity-based data-center supply summaries retain the contract counterparty,
+  project capacity and supply stage. Historical half-year order totals must not
+  replace the newly reported agreement, and discussions are not booked orders.
+- Small service promotions and student rental notices are not equity catalysts
+  merely because they say supply, policy, production or nationwide. Separate
+  verified industrial contracts and national housing underwriting stay eligible.
 - Disclosed equipment orders compare issuer, customer, product, disclosure
   date, exact original amount, period and explicit revisions. Never merge
   different amounts using a general rounding tolerance. Rounded historical

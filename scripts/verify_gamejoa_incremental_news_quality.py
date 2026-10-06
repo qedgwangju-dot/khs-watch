@@ -41,6 +41,8 @@ BROKER_FIXTURE = json.loads((ROOT / "data/gamejoa_broker_report_fixtures_2026100
 BROKER_CASES = {case["id"]: case for case in BROKER_FIXTURE["cases"]}
 FINAL_RUNTIME_FIXTURE = json.loads((ROOT / "data/gamejoa_final_runtime_fixtures_20261006.json").read_text(encoding="utf-8"))
 FINAL_RUNTIME_CASES = {case["id"]: case for case in FINAL_RUNTIME_FIXTURE["cases"]}
+FOLLOWON_FIXTURE = json.loads((ROOT / "data/gamejoa_followon_runtime_fixtures_20261006.json").read_text(encoding="utf-8"))
+FOLLOWON_CASES = {case["id"]: case for case in FOLLOWON_FIXTURE["cases"]}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -82,6 +84,100 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def followon_alert(self, key):
+        case = FOLLOWON_CASES[key]
+        return {**alert(case["title"], case["body"], case["url"]), "published": case["published"]}
+
+    def test_followon_seven_full_bodies_keep_five_equity_events_not_two_services(self):
+        self.assertEqual(len(FOLLOWON_CASES), 7)
+        now = NOW.replace(day=6, hour=10)
+        for case in FOLLOWON_CASES.values():
+            with self.subTest(case=case["id"]), patch.object(radar.base, "kst_now", return_value=now):
+                self.assertEqual(hashlib.sha256(case["body"].encode()).hexdigest(), case["full_body_sha256"])
+                item = classify(case, now)
+                selected = radar.quality_display_alerts([item], 30) if item else []
+                self.assertEqual(bool(selected), case["expected_keep"])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+                    self.assertTrue(radar.core_sentence_is_complete(selected[0]["telegram_core_fact"]))
+
+    def test_data_center_contract_core_keeps_counterparty_capacity_and_discussion_stage(self):
+        case = FOLLOWON_CASES["cooling_contract_not_half_year_order_total"]
+        item = self.followon_alert(case["id"])
+        core = radar.verified_alert_core(item, case["title"])
+        for term in ("LG전자", "에어 컨트롤 콘셉트", "5GW", "장기공급계약", "CDU", "논의 중"):
+            self.assertIn(term, core)
+        self.assertNotIn("6000억원", core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        self.assertTrue(radar.source_core_fact_errors({**item, "telegram_core_fact": case["old_core"]}))
+
+    def test_equipment_acronym_description_and_press_release_share_exact_order_identity(self):
+        first = self.runtime_alert("equipment_order_precise_reprint")
+        other = self.followon_alert("equipment_acronym_description_reprint")
+        identity = materiality.source_event_identity(first)
+        self.assertTrue(identity.startswith("source_event:v2:commercial_order:"))
+        self.assertEqual(materiality.source_event_identity(other), identity)
+        self.assertNotEqual(materiality.source_event_identity({**other, "source_body": other["source_body"].replace("삼성전기", "LG이노텍")}), identity)
+
+    def test_route_study_reprint_core_keeps_signed_mou_not_only_country_responsibilities(self):
+        case = FOLLOWON_CASES["industrial_route_study_reprint"]
+        item = self.followon_alert(case["id"])
+        core = radar.verified_alert_core(item, case["title"])
+        for term in ("현대글로비스", "LGL", "SMR", "한미 항로", "공동 검토", "업무협약", "체결"):
+            self.assertIn(term, core)
+        self.assertEqual(radar.source_core_fact_errors({**item, "telegram_core_fact": core}), [])
+        self.assertTrue(radar.source_core_fact_errors({**item, "telegram_core_fact": case["old_core"]}))
+
+    def test_route_study_same_mou_dedupes_across_publisher_and_headline_scope(self):
+        first = self.runtime_alert("industrial_mou_not_sector_aspiration")
+        other = self.followon_alert("industrial_route_study_reprint")
+        identity = materiality.source_event_identity(first)
+        self.assertTrue(identity.startswith("source_event:v2:industrial_route_study:"))
+        self.assertEqual(materiality.source_event_identity(other), identity)
+        now = NOW.replace(day=6, hour=10)
+        with tempfile.TemporaryDirectory() as folder, patch.object(telegram, "SEEN_PATH", Path(folder) / "seen.json"), patch.dict(os.environ, {"RADAR_RUN_MODE": "live"}):
+            telegram.record_seen_alerts([first], now)
+            fresh, skipped = telegram.filter_previously_seen_alerts([other], now, "live")
+            self.assertFalse(fresh)
+            self.assertEqual(len(skipped), 1)
+
+    def test_route_study_changed_partner_date_terms_or_stage_remain_new(self):
+        first = self.followon_alert("industrial_route_study_reprint")
+        identity = materiality.source_event_identity(first)
+        for old, new in (("LGL", "OTHER"), ("6일", "7일"), ("체결했다고", "10억원 규모로 체결했다고"), ("업무협약(MOU)", "추가 협약 업무협약(MOU)")):
+            changed = {**first, "source_body": first["source_body"].replace(old, new)}
+            with self.subTest(term=old):
+                self.assertNotEqual(materiality.source_event_identity(changed), identity)
+        uncertain = first["source_body"].replace("체결했다고", "체결할 가능성이 있다고")
+        self.assertFalse(materiality.industrial_route_study_terms(first["source_title"], uncertain, first["published"]))
+        self.assertFalse(materiality.source_event_identity({**first, "body_verified": False}))
+
+    def test_audited_route_study_alias_uses_existing_receipt_without_seeding_missing_state(self):
+        case = FOLLOWON_CASES["industrial_route_study_reprint"]
+        identity = materiality.source_event_identity(self.followon_alert(case["id"]))
+        proofs = json.loads(telegram.VERIFIED_EVENT_ALIAS_PATH.read_text(encoding="utf-8"))["entries"]
+        proof = next(row for row in proofs if row["link"] == case["url"])
+        self.assertEqual(proof["source_body_sha256"], case["full_body_sha256"])
+        self.assertEqual(proof["source_event_identity"], identity)
+        self.assertEqual(proof["message_id"], FOLLOWON_FIXTURE["message_id"])
+        absent = {"seen": {}}
+        telegram.migrate_seen_verified_event_aliases(absent)
+        self.assertFalse(absent["seen"])
+        state = {"seen": {"old": {"title": case["title"], "link": case["url"], "first_seen_kst": "2026-10-06T09:25:00+09:00"}}}
+        telegram.migrate_seen_verified_event_aliases(state)
+        self.assertIn("event:" + telegram.digest_seen(identity), state["seen"])
+
+    def test_service_promotion_does_not_hide_a_separate_verified_industrial_contract(self):
+        title = "정품인증 스티커 업체, 반도체 신규 공급계약 체결"
+        body = "정품인증 스티커 업체는 반도체 고객사와 100억원 규모의 신규 장비 공급 계약을 체결했다고 밝혔다."
+        self.assertTrue(eligible(title, body))
+
+    def test_student_rental_notice_nationwide_label_is_not_national_housing_underwriting(self):
+        case = FOLLOWON_CASES["student_rental_supply_notice"]
+        self.assertFalse(eligible(case["title"], case["body"]))
+        policy = CASES["housing"]
+        self.assertTrue(eligible(policy["title"], policy["body"]))
+
     def runtime_alert(self, key):
         case = FINAL_RUNTIME_CASES[key]
         return {**alert(case["title"], case["body"], case["url"]), "published": case["published"]}
