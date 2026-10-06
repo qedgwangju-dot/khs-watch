@@ -449,7 +449,24 @@ def parse_federal_register_json(text: str, source: Source) -> list[dict]:
         abstract = clean_text(str(row.get("abstract") or row.get("excerpt") or ""))
         meta = "; ".join(part for part in (doc_type, pres_type, doc_number) if part)
         summary = clean_text(f"{meta}. {abstract}") or "Federal Register presidential document"
-        items.append({"source": source.name, "title": title, "link": link, "summary": summary, "published_kst": published.isoformat() if published else "", "document_number": doc_number})
+        signing_date = clean_text(str(row.get("signing_date") or ""))
+        publication_date = clean_text(str(row.get("publication_date") or ""))
+        executive_order_number = clean_text(str(row.get("executive_order_number") or ""))
+        items.append(
+            {
+                "source": source.name,
+                "title": title,
+                "link": link,
+                "summary": summary,
+                "published_kst": published.isoformat() if published else "",
+                "document_number": doc_number,
+                "document_type": doc_type,
+                "presidential_document_type": pres_type,
+                "executive_order_number": executive_order_number,
+                "signing_date": signing_date,
+                "publication_date": publication_date,
+            }
+        )
     return items
 
 
