@@ -1147,14 +1147,14 @@ def parse_glass_substrate_records(item, body):
             if entity == 'jntc':
                 m_pilot = re.search(r'(?:파일럿\s*라인|pilot\s*line)[^0-9]{0,25}(\d+)\s*(?:개|line)', text, re.I)
                 m_cap = re.search(r'(?:월|monthly)[^0-9]{0,25}(1\s*만|10,?000)\s*[~～-]\s*(1\s*만\s*(?:2\s*천|2000)|12,?000)\s*(?:개|units?)', text, re.I)
-                m_nda = re.search(r'(?:NDA|비밀유지계약)[^0-9]{0,30}(\d+)\s*곳', text, re.I)
+                m_nda = re.search(r'(?:NDA|비밀유지계약)[^0-9]{0,20}(\d+)\s*곳|(\d+)\s*곳(?:과|와)?[^.]{0,20}(?:NDA|비밀유지계약)', text, re.I)
                 m_end = re.search(r'(?:최종\s*수요기업|end\s*customers?)[^0-9]{0,30}(\d+)\s*곳', text, re.I)
                 m_paid = re.search(r'(?:유상\s*샘플|paid\s*samples?)[^0-9]{0,35}(?:전환한\s*고객사도\s*)?(\d+)\s*곳', text, re.I)
                 value.update({
                     'pilot_line_count': int(m_pilot.group(1)) if m_pilot else None,
                     'pilot_capacity_units_per_month_min': 10000 if m_cap else None,
                     'pilot_capacity_units_per_month_max': 12000 if m_cap else None,
-                    'nda_customer_count': int(m_nda.group(1)) if m_nda else None,
+                    'nda_customer_count': int(m_nda.group(1) or m_nda.group(2)) if m_nda else None,
                     'end_customer_count': int(m_end.group(1)) if m_end else None,
                     'paid_sample_customer_count': int(m_paid.group(1)) if m_paid else None,
                     'target_product_thickness_mm': 2 if re.search(r'2027[^.]{0,80}?2\s*mm|2\s*mm[^.]{0,80}?2027', text, re.I) else None,
