@@ -2293,4 +2293,13 @@ assert g == "nvidia_robotics_exec", (g, s, c)
 assert c.endswith("NVIDIA·한국기업 피지컬AI 협력계약·업무협약"), c
 assert s >= 11, s
 
+# 44) Rendering guard: newly added categories must resolve meaning/risk without
+# evaluating legacy dictionary fallbacks that can raise KeyError.
+render_cat = "NVIDIA 로보틱스 · 폭스콘 GB300 로봇 조립 99.5%·사이클타임 목표 달성"
+assert "작업 성공률" in watcher.base.meaning(render_cat), watcher.base.meaning(render_cat)
+assert watcher.base.risk(render_cat), "GB300 risk rendering must not fail"
+render_korea_cat = "NVIDIA 로보틱스 · NVIDIA·한국기업 피지컬AI 협력계약·업무협약"
+assert "협약" in watcher.base.meaning(render_korea_cat), watcher.base.meaning(render_korea_cat)
+assert watcher.base.risk(render_korea_cat), "NVIDIA Korea risk rendering must not fail"
+
 print("Physical-AI watcher regression guards: PASS")
