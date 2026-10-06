@@ -149,16 +149,28 @@ def _is_figure_text(text: str) -> bool:
     )
 
 
-def _make_figure_item(status_id: str, text: str, published: dt.datetime | None) -> dict | None:
+def _make_figure_item(
+    status_id: str,
+    text: str,
+    published: dt.datetime | None,
+    text_integrity: str = 'exact_tweet',
+    fetch_path: str = 'direct',
+) -> dict | None:
     text = legacy._clean_social_text(text)
     if not status_id or not text:
         return None
-    # Brett Adcock's account is no longer Figure-only. Do not infer Figure AI
-    # from the author identity. Ambiguous AI/product-launch posts stay silent
-    # until the text itself contains Figure/Helix/robot/humanoid context.
+    # Brett Adcock's account is no longer Figure-only. The author identity alone
+    # is never enough. For isolated tweet/feed text, an explicit "Figure" mention
+    # is sufficient; broad mirror windows require stronger robot-specific context
+    # and are discovery-only downstream.
     if _is_other_venture_only(text):
         return None
-    if not (_has_figure_robot_context(text) and FIGURE_AI.search(text) and FIGURE_SIGNAL.search(text)):
+    explicit_figure = bool(
+        _has_figure_robot_context(text)
+        or re.search(r'\bFigure\b', text, re.I)
+        or re.search(r'피겨', text, re.I)
+    )
+    if not (explicit_figure and FIGURE_AI.search(text) and FIGURE_SIGNAL.search(text)):
         return None
     if published is None:
         published = legacy._tweet_time_from_id(status_id)
@@ -186,7 +198,10 @@ def _make_figure_item(status_id: str, text: str, published: dt.datetime | None) 
         'published': published.isoformat(),
         'source': FIGURE_X_SOURCE,
         'x_status_id': status_id,
-        'direct_primary': True,
+        'direct_primary': text_integrity in {'exact_tweet', 'feed_item'},
+        'figure_text_integrity': text_integrity,
+        'figure_fetch_path': fetch_path,
+        'discovery_only': text_integrity == 'mirror_context',
     }
 
 
@@ -205,10 +220,14 @@ def _from_figure_x_syndication() -> list[dict]:
             continue
         sid = str(tweet.get('id_str') or tweet.get('id') or '').strip()
         text = str(tweet.get('full_text') or tweet.get('text') or '').strip()
-        item = _make_figure_item(sid, text, legacy._parse_x_date(tweet.get('created_at')))
+        item = _make_figure_item(
+            sid,
+            text,
+            legacy._parse_x_date(tweet.get('created_at')),
+            text_integrity='exact_tweet',
+            fetch_path='x_syndication',
+        )
         if item:
-            item['figure_text_integrity'] = 'exact_tweet'
-            item['figure_fetch_path'] = 'x_syndication'
             out.append(item)
     return out
 
@@ -224,10 +243,14 @@ def _from_figure_nitter(url: str) -> list[dict]:
         m = re.search(r'/adcock_brett/status/(\d+)', f'{link} {guid}', re.I)
         if not m:
             continue
-        item = _make_figure_item(m.group(1), combined, legacy._parse_x_date(node.findtext('pubDate')))
+        item = _make_figure_item(
+            m.group(1),
+            combined,
+            legacy._parse_x_date(node.findtext('pubDate')),
+            text_integrity='feed_item',
+            fetch_path='rss_item',
+        )
         if item:
-            item['figure_text_integrity'] = 'feed_item'
-            item['figure_fetch_path'] = 'rss_item'
             out.append(item)
     return out
 
@@ -242,14 +265,17 @@ def _from_figure_mirror(url: str) -> list[dict]:
         lo = max(0, m.start() - 3500)
         hi = min(len(raw), m.end() + 3500)
         context = legacy._clean_social_text(raw[lo:hi])
-        item = _make_figure_item(sid, context, legacy._tweet_time_from_id(sid))
+        item = _make_figure_item(
+            sid,
+            context,
+            legacy._tweet_time_from_id(sid),
+            text_integrity='mirror_context',
+            fetch_path='profile_mirror',
+        )
         if item:
             # A mirror page is scraped with a broad window around the status id.
             # Neighboring tweets can leak Figure/Helix keywords into an unrelated
             # reply or Hark post. Keep this only for discovery; never alert from it.
-            item['figure_text_integrity'] = 'mirror_context'
-            item['figure_fetch_path'] = 'profile_mirror'
-            item['discovery_only'] = True
             out.append(item)
     return out
 
