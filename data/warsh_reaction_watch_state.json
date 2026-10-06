@@ -22,8 +22,10 @@
       "key": "September 16, 2026"
     }
   },
-  "last_errors": [],
-  "updated_at_utc": "2026-10-02T12:55:16.397058+00:00",
+  "last_errors": [
+    "BEA PCE: HTTP Error 403: Forbidden"
+  ],
+  "updated_at_utc": "2026-10-06T10:33:09.702724+00:00",
   "fomc_korean_translation_v1": {
     "sent": true,
     "key": "September 16, 2026",
