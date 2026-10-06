@@ -967,12 +967,12 @@ def build_enrichment(
     else:
         lines.append("• 업종 분류 확인 불가")
 
-    lines += ["", "<b>상위 프로그램 매도 후보 연결 테마</b>"]
+    lines += ["", "<b>상위 프로그램 매도 후보의 연결 테마 · 중복 허용</b>"]
     if theme_rows:
         for i, th in enumerate(theme_rows[:4], 1):
             names = ", ".join(th.get("stocks", [])[:3])
             lines.append(
-                f"• {i}. <b>{html.escape(th['name'])}</b> · 상위 구성종목 프로그램 "
+                f"• {i}. <b>{html.escape(th['name'])}</b> · 연결 매도후보 종목 프로그램 합계 "
                 f"{_fmt_program(th['program_delta'])} <i>(LS 원값)</i> · {html.escape(names)}"
             )
     else:
@@ -989,7 +989,7 @@ def build_enrichment(
     else:
         lines.append("• 종목별 프로그램 매도 구간 확인 불가")
 
-    lines += ["", "<b>같이 움직인 ETF</b>"]
+    lines += ["", "<b>관련 ETF 구간 반응</b>"]
     usable_etfs = [x for x in etfs if x.get("price", {}).get("available")]
     if usable_etfs:
         for i, etf in enumerate(usable_etfs[:5], 1):
@@ -1014,10 +1014,12 @@ def build_enrichment(
         "",
         "<b>정확성</b>",
         "• '현물 주체가 직접 판 업종'은 사건구간에 현물 순매도인 외국인·기관·개인을 각각 통합 UBM으로 직접 판정합니다. 기준점이 30초를 넘으면 해당 주체·업종 판정을 보류합니다.",
-        "• 프로그램·가격 업종·테마·종목 순위는 장중 프로그램 매도 상위 후보군을 사건구간으로 재검산한 결과이며 전체 상장종목의 완전 전수순위로 표현하지 않습니다.",
+        "• 프로그램·가격 업종·종목 순위는 장중 프로그램 매도 상위 후보군을 사건구간으로 재검산한 결과이며 전체 상장종목의 완전 전수순위로 표현하지 않습니다.",
+        "• 테마는 동일 종목이 여러 테마에 동시에 속하므로 중복 허용 연결정보입니다. 테마별 직접 순매도액이나 상호배타적 시장점유율로 해석하지 않습니다.",
         "• LS 프로그램 원값은 단위를 임의로 억원 환산하지 않습니다.",
         "• 특정 업종·테마의 외국인 직접 순매도액으로 바꿔 쓰지 않습니다.",
         "• ETF는 2차시장 가격과 PDF 겹침을 보여주며, ETF 자금 유출로 단정하지 않습니다.",
+        "• 지수 하락기여 후보는 시가총액×구간수익률 근사치이며 KOSPI 유동시가총액 가중치로 계산한 정확한 지수 포인트 기여도가 아닙니다.",
     ]
     text = "\n".join(lines)
     if len(text) > 3900:
