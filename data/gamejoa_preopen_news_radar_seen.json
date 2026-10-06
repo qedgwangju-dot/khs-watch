@@ -1731,19 +1731,21 @@
     "event:4af0ec859cb52ac4537c1713": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
-        "live": "2026-10-07T01:59:08+09:00"
+        "live": "2026-10-07T02:13:12+09:00"
       },
-      "last_seen_kst": "2026-10-07T01:59:08+09:00",
-      "link": "https://www.mt.co.kr/thebio/2026/10/06/2026100614134596924",
-      "source": "머니투데이",
-      "source_body_digest": "980277b405dcebbb4d231cc173e544b25a74bd5c48d88cec6f6802c0f0235071",
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02637126645610296",
+      "source": "이데일리",
+      "source_body_digest": "feb329ef915f564221dbd8bd2d61d76ba8a3e0e0e211fa67fcfed5195946a0e2",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:4712a98694306836a02820c94574755d68120ecf48fee9e8ada4ac54b45a7292",
+      "source_fact_identity": "source_facts:v1:654439d11002e36872cb46fafa448f6d4317a608189db2cafc9aeaf3424d3047",
       "source_fact_keys": [
-        "source_fact:v1:1c675f6d4567dfb0c884ac6d9da85442713da826875b684312249f753d6272b5"
+        "source_fact:v1:6e498972b92c854d662f36312f216bf4fdb4a4cb5b181e6dbaa90c17a31072e3",
+        "source_fact:v1:7d73a92d3d44d0719994d83b1daaca6ef5c280705b612a7c3c84494e0869846d",
+        "source_fact:v1:8ad562b5f6ecf0987e94f09dd5477b4d01ab0ac11c124727d24b1fc94fb8b1ba"
       ],
-      "source_published_kst": "2026-10-06T14:53+09:00",
-      "title": "동아제약 다시 품은 동아쏘시오…'박카스 현금' 신약·M&A 실탄으로"
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "LIG가 찜한 부품사…“디와이씨, 방산 가치 주가에 안 담겼다”"
     },
     "event:4b6c66ca03796acb2d14c1b0": {
       "first_seen_kst": "2026-10-01T11:18:10+09:00",
@@ -2383,22 +2385,28 @@
     "event:6926adee1d70facd68aecdd5": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
       "lanes": {
-        "live": "2026-10-07T01:59:08+09:00"
+        "live": "2026-10-07T02:13:12+09:00"
       },
-      "last_seen_kst": "2026-10-07T01:59:08+09:00",
-      "link": "https://www.mt.co.kr/index.php/stock/2026/10/06/2026100613232751648",
-      "source": "머니투데이",
-      "source_body_digest": "fc8421d03613f3233155cba5d80622b5c37bbee7b7a2e5f9895b8089f276cbd0",
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.hankyung.com/article/2026100662711",
+      "source": "한국경제",
+      "source_body_digest": "6296ce547395310e986cce68fdd74ad86fe086c305ac02dafd76215740d99af7",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:343067f36b29e4bef13d90c0ce1ecdfc53205ee32992b8d99385fa5f3cfa71c4",
+      "source_fact_identity": "source_facts:v1:725d7f6f179a023173d3ff33d29eedd66380fea4a515d334f82055632e310c47",
       "source_fact_keys": [
-        "source_fact:v1:08008c7067f881ae2b7301b2e3d25fa8e0482621afa9437424994445d87b2d46",
-        "source_fact:v1:7d870156504fd3890828ca1e0e3246bf9c1acc9e179c351811c3ecb2e0220eca",
-        "source_fact:v1:9dba0dbd6423729e5b27a9568e9c5067b771ee91928bb391afcec44b50ebf333",
-        "source_fact:v1:c2cc439ccfd74ff4722c4fa34603edf4c2c20bfdf671fd5557e7a0b930073643"
+        "source_fact:v1:02101f156c2798ba08a58a4dec6b5106e1889860bafcf485d64e2bebf42b1cd3",
+        "source_fact:v1:16e7170898c156eac6a32727cf086eeeaa90cab7bdf99accf14bb5979c68beda",
+        "source_fact:v1:3c3c703c6581f402eceac7f5c193916643fa40f52307ea3cfb85ac08a57bd8cb",
+        "source_fact:v1:3d5117769bfe00d567edaab359fe8a6768f498924cb00ee6fc13c24b6aec14e2",
+        "source_fact:v1:563449904fdf51e5bed04ac019696fc725281c5eb16bc87cebbf23df56e37347",
+        "source_fact:v1:730f1608c1897afa36987557434e8aec3565e82fbe35e55980f382f89fc67be3",
+        "source_fact:v1:a847a71ac710ae891a696f381545158df55927b8da214ec80013d497072da87b",
+        "source_fact:v1:c07b744c88766336973d2634370565ff2abea084c3370b38e1ad6b1119225119",
+        "source_fact:v1:d15a347fd72924eade48ba717e48b8341e7567968894b8a7b2d4e0699fe2598d",
+        "source_fact:v1:da83412235153b696c013a19be0cab0897a50747f210cb2e019a76c4bb7ed8ac"
       ],
-      "source_published_kst": "2026-10-06T13:52+09:00",
-      "title": "'KIWOOM 미국AI테크하이베타 ETF', 마이크론·스페이스X 편입"
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
     },
     "event:6994ec3ec51f16c535c2ebd5": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -4806,19 +4814,19 @@
     "event:c0dbfc97ef978eba5cde2a2c": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
-        "live": "2026-10-07T01:59:08+09:00"
+        "live": "2026-10-07T02:13:12+09:00"
       },
-      "last_seen_kst": "2026-10-07T01:59:08+09:00",
-      "link": "https://www.hankyung.com/article/2026100641636",
-      "source": "한국경제",
-      "source_body_digest": "42a8a2fdda3e22357457963b1d6456bc9de3546549c832b9b9883072a35551ce",
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02466566645610296",
+      "source": "이데일리",
+      "source_body_digest": "2026c15c999c62eaab2d7a09cb2594e105bb4ea982e683d69d494c87af1c0c85",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:660ef1acab119c50eb7e806fba768350a97ef70ba9b7796fa7f49c88c87622a2",
+      "source_fact_identity": "source_facts:v1:8cbb76d1ff910fc69d10fd8be6d05acf0f422ff01972b3915be018cad1146010",
       "source_fact_keys": [
-        "source_fact:v1:03802000c30571d58d73ca98c8c656bc084aba16d58cdba26f2cfb6f88caaa0f"
+        "source_fact:v1:655e65083fa4c3676c801215f924b19623cd6cfcf90adecdfb810d5c641944e8"
       ],
-      "source_published_kst": "2026-10-06T07:26+09:00",
-      "title": "\"리노공업, CPO 수혜주…목표가 10만원으로 상향\"-DS"
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "리노공업, 중장기 주목할 부분은 CPO…목표가↑-DS"
     },
     "event:c0e20fbd626af79e0397b342": {
       "first_seen_kst": "2026-10-06T22:08:07+09:00",
@@ -9385,6 +9393,32 @@
       "source_published_kst": "2026-10-06T00:12+09:00",
       "title": "\"AI 말고는 쳐다볼 게 없다\"…글로벌 투자 지도 바꾸는 '빅머니'"
     },
+    "fact:305578b5382d64ae965f6b54": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.hankyung.com/article/2026100662711",
+      "source": "한국경제",
+      "source_body_digest": "6296ce547395310e986cce68fdd74ad86fe086c305ac02dafd76215740d99af7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:725d7f6f179a023173d3ff33d29eedd66380fea4a515d334f82055632e310c47",
+      "source_fact_keys": [
+        "source_fact:v1:02101f156c2798ba08a58a4dec6b5106e1889860bafcf485d64e2bebf42b1cd3",
+        "source_fact:v1:16e7170898c156eac6a32727cf086eeeaa90cab7bdf99accf14bb5979c68beda",
+        "source_fact:v1:3c3c703c6581f402eceac7f5c193916643fa40f52307ea3cfb85ac08a57bd8cb",
+        "source_fact:v1:3d5117769bfe00d567edaab359fe8a6768f498924cb00ee6fc13c24b6aec14e2",
+        "source_fact:v1:563449904fdf51e5bed04ac019696fc725281c5eb16bc87cebbf23df56e37347",
+        "source_fact:v1:730f1608c1897afa36987557434e8aec3565e82fbe35e55980f382f89fc67be3",
+        "source_fact:v1:a847a71ac710ae891a696f381545158df55927b8da214ec80013d497072da87b",
+        "source_fact:v1:c07b744c88766336973d2634370565ff2abea084c3370b38e1ad6b1119225119",
+        "source_fact:v1:d15a347fd72924eade48ba717e48b8341e7567968894b8a7b2d4e0699fe2598d",
+        "source_fact:v1:da83412235153b696c013a19be0cab0897a50747f210cb2e019a76c4bb7ed8ac"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
+    },
     "fact:30d5b6e6f8daabd16ad9f301": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -10890,6 +10924,23 @@
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "[TODAY엔비디아]개장전 '상승'…월가, 신고가 경신에도 여전히 \"밸류 매력\""
     },
+    "fact:4e9fcddc04ddbc37f33ecdd2": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://core.asiae.co.kr/article/2026100609004134799",
+      "source": "아시아경제",
+      "source_body_digest": "fa8ae236ccae8843a6343a7c12ac1f42efcab9ba7ad40fe7a1af1c1795368f1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b2056db8be3e72608ce3b4d5a00e562da0e10415f69c82ec190b3eeeb2d5173",
+      "source_fact_keys": [
+        "source_fact:v1:d77374c460f0328371463b23d725143cd66b8f78052461aafaeef0af2ab35906"
+      ],
+      "source_published_kst": "2026-10-06T18:00+09:00",
+      "title": "\"美 투자 ETF 사고 미국 가자\"…한투운용, 美대표지수 ETF 매수 이벤트"
+    },
     "fact:4f3cee43967883b9a0571878": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
@@ -11543,6 +11594,23 @@
       ],
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"AI 진화속도 예상 밖\"…정부, 독파모 지원 유지·프론티어 전략 재정비"
+    },
+    "fact:5bc546fa1dec9fe4bd0b3427": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02466566645610296",
+      "source": "이데일리",
+      "source_body_digest": "2026c15c999c62eaab2d7a09cb2594e105bb4ea982e683d69d494c87af1c0c85",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cbb76d1ff910fc69d10fd8be6d05acf0f422ff01972b3915be018cad1146010",
+      "source_fact_keys": [
+        "source_fact:v1:655e65083fa4c3676c801215f924b19623cd6cfcf90adecdfb810d5c641944e8"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "리노공업, 중장기 주목할 부분은 CPO…목표가↑-DS"
     },
     "fact:5d0c511ec5276b9dbd561cc4": {
       "first_seen_kst": "2026-10-07T00:23:09+09:00",
@@ -15053,6 +15121,25 @@
       "source_published_kst": "2026-10-05T20:34+09:00",
       "title": "해로우 헬스, 티르바야 인수 완료..선지급 3000만달러"
     },
+    "fact:9da243ba4b198bff53f8e577": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.fnnews.com/news/202610061044190459",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "0eb6c3b082495fca2f5fcd562f38c035d5cdc8b247f90d53b45bbf6932ddc3f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0612db9c97dfe635b08b3b92baf87bf910ad8c870255162110cb5679151c484",
+      "source_fact_keys": [
+        "source_fact:v1:3ac577fe344bbe5c6d23ede465412fa1765bdf2c4d63dfa44200dc85ec5136c3",
+        "source_fact:v1:3e5ecbf7ea6ed03a04794e2b8f911b80b6628718b3551cb48b9312db0cf808f2",
+        "source_fact:v1:3fa78cab73072cb17a5f2e79b2a7a02e19052905b215d7e420c78e1e5b7f0f9d"
+      ],
+      "source_published_kst": "2026-10-06T10:44+09:00",
+      "title": "유진투자증권, 연말 절세·자산관리 이벤트…최대 200만원 혜택"
+    },
     "fact:9dde05e847ce58d6622b40dc": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -15228,6 +15315,27 @@
       ],
       "source_published_kst": "2026-10-05T18:32+09:00",
       "title": "[단독] 개정 상법에 한전 '소송 리스크'"
+    },
+    "fact:a37066cbebd35295df58cab3": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632715",
+      "source": "이투데이",
+      "source_body_digest": "6ff985b28983f707c21b1148f3a2da655a701828b1ff5f4854468b24c35a274f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ea7d0a0307b4542d19ef23493c82a045031bfa4175c7e777a687278ea790bba",
+      "source_fact_keys": [
+        "source_fact:v1:81e2143a4531fc9b55230c1078cd4ea9584e4272d27c0ba47d322b408c7536be",
+        "source_fact:v1:be706728d907e2f4521f2858b52034c602a1e9e54d6801a1cc09e0cf9f9fc47f",
+        "source_fact:v1:e897fa213153ee4ca57e39e6eb88f1697336264d28c112d6e3a76b4eb3917cd5",
+        "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
+        "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
+      ],
+      "source_published_kst": "2026-10-06T10:25+09:00",
+      "title": "JW중외제약 “당뇨병 신약 ‘엠파가드’, 임상 3상서 우수한 혈당 조절 효과 확인”"
     },
     "fact:a4093b2aedeaa38bc12cae60": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
@@ -18068,6 +18176,23 @@
       "source_published_kst": "2026-10-06T12:32+09:00",
       "title": "\"양자 R&D→상용화로 가속…韓, 산업 연계 강화해야\""
     },
+    "fact:e2f4e1a52c643110e281f616": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170508",
+      "source": "매일경제",
+      "source_body_digest": "2d4fba92b58371e60b10c8bfc158312c2666ba76ea71fd03ec20cf32a5f1a5c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76b12ff9131d82880851d2097289ba0cf33ce982d4de4140734c194e1e67ae5b",
+      "source_fact_keys": [
+        "source_fact:v1:0efb3944cbee41b0a264703ac8c1c3a33a5d8997382edb35366bae88ab0b2989"
+      ],
+      "source_published_kst": "2026-10-07T01:50+09:00",
+      "title": "C.H.로빈슨, RXO 대규모 인수 재무 부담 우려에 약세"
+    },
     "fact:e31ce72cb1f09b6a6f995d5c": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -19506,6 +19631,25 @@
       "source_published_kst": "2026-10-05T11:20+09:00",
       "title": "분기 영업익 100조 '꿈의 숫자' 눈앞…삼성전자 실적 D-3"
     },
+    "fact:ff57b2440b25b9a5fd0c11af": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02637126645610296",
+      "source": "이데일리",
+      "source_body_digest": "feb329ef915f564221dbd8bd2d61d76ba8a3e0e0e211fa67fcfed5195946a0e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:654439d11002e36872cb46fafa448f6d4317a608189db2cafc9aeaf3424d3047",
+      "source_fact_keys": [
+        "source_fact:v1:6e498972b92c854d662f36312f216bf4fdb4a4cb5b181e6dbaa90c17a31072e3",
+        "source_fact:v1:7d73a92d3d44d0719994d83b1daaca6ef5c280705b612a7c3c84494e0869846d",
+        "source_fact:v1:8ad562b5f6ecf0987e94f09dd5477b4d01ab0ac11c124727d24b1fc94fb8b1ba"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "LIG가 찜한 부품사…“디와이씨, 방산 가치 주가에 안 담겼다”"
+    },
     "fact:ff724636bf7294a3aa3287a2": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -20165,6 +20309,25 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T10:19+09:00",
       "title": "삼성바이오·SK바이오팜·한미약품, 아태 10대 바이오거래 선정 | 연합뉴스"
+    },
+    "link:06d9644ec85391d1e8b2e6bc": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02637126645610296",
+      "source": "이데일리",
+      "source_body_digest": "feb329ef915f564221dbd8bd2d61d76ba8a3e0e0e211fa67fcfed5195946a0e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:654439d11002e36872cb46fafa448f6d4317a608189db2cafc9aeaf3424d3047",
+      "source_fact_keys": [
+        "source_fact:v1:6e498972b92c854d662f36312f216bf4fdb4a4cb5b181e6dbaa90c17a31072e3",
+        "source_fact:v1:7d73a92d3d44d0719994d83b1daaca6ef5c280705b612a7c3c84494e0869846d",
+        "source_fact:v1:8ad562b5f6ecf0987e94f09dd5477b4d01ab0ac11c124727d24b1fc94fb8b1ba"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "LIG가 찜한 부품사…“디와이씨, 방산 가치 주가에 안 담겼다”"
     },
     "link:06e2af4b3a1a3d3dde8afa40": {
       "first_seen_kst": "2026-10-05T14:59:09+09:00",
@@ -22828,6 +22991,25 @@
       "source": "연합뉴스",
       "title": "환율, 강달러에 1,366원 찍은 뒤 수출업체 매도에 1,340원대로 | 연합뉴스"
     },
+    "link:1f1e5d967d99aa0b2b1bb506": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.fnnews.com/news/202610061044190459",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "0eb6c3b082495fca2f5fcd562f38c035d5cdc8b247f90d53b45bbf6932ddc3f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0612db9c97dfe635b08b3b92baf87bf910ad8c870255162110cb5679151c484",
+      "source_fact_keys": [
+        "source_fact:v1:3ac577fe344bbe5c6d23ede465412fa1765bdf2c4d63dfa44200dc85ec5136c3",
+        "source_fact:v1:3e5ecbf7ea6ed03a04794e2b8f911b80b6628718b3551cb48b9312db0cf808f2",
+        "source_fact:v1:3fa78cab73072cb17a5f2e79b2a7a02e19052905b215d7e420c78e1e5b7f0f9d"
+      ],
+      "source_published_kst": "2026-10-06T10:44+09:00",
+      "title": "유진투자증권, 연말 절세·자산관리 이벤트…최대 200만원 혜택"
+    },
     "link:1f23505a35aa9b71bf73590d": {
       "first_seen_kst": "2026-10-05T07:34:11+09:00",
       "lanes": {
@@ -25042,6 +25224,23 @@
       ],
       "source_published_kst": "2026-10-06T04:36+09:00",
       "title": "美10년물 국채금리 장중 5.34% 돌파…24년 만에 최고"
+    },
+    "link:31a176378e315987b11b2fb4": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02466566645610296",
+      "source": "이데일리",
+      "source_body_digest": "2026c15c999c62eaab2d7a09cb2594e105bb4ea982e683d69d494c87af1c0c85",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cbb76d1ff910fc69d10fd8be6d05acf0f422ff01972b3915be018cad1146010",
+      "source_fact_keys": [
+        "source_fact:v1:655e65083fa4c3676c801215f924b19623cd6cfcf90adecdfb810d5c641944e8"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "리노공업, 중장기 주목할 부분은 CPO…목표가↑-DS"
     },
     "link:31a7a1b92479e0cb94facb20": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
@@ -32286,6 +32485,23 @@
       "source": "연합뉴스",
       "title": "국고채 금리 혼조세…3년물 연 4.010% | 연합뉴스"
     },
+    "link:706bb730dade1e8e4edbf63b": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://core.asiae.co.kr/article/2026100609004134799",
+      "source": "아시아경제",
+      "source_body_digest": "fa8ae236ccae8843a6343a7c12ac1f42efcab9ba7ad40fe7a1af1c1795368f1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b2056db8be3e72608ce3b4d5a00e562da0e10415f69c82ec190b3eeeb2d5173",
+      "source_fact_keys": [
+        "source_fact:v1:d77374c460f0328371463b23d725143cd66b8f78052461aafaeef0af2ab35906"
+      ],
+      "source_published_kst": "2026-10-06T18:00+09:00",
+      "title": "\"美 투자 ETF 사고 미국 가자\"…한투운용, 美대표지수 ETF 매수 이벤트"
+    },
     "link:7077d8dd87122b9a6d4b5de3": {
       "first_seen_kst": "2026-10-05T17:30:42+09:00",
       "lanes": {
@@ -37609,6 +37825,32 @@
       "source_published_kst": "2026-10-05T18:03+09:00",
       "title": "'빚의 제국 빛을 잃다' 보도 인상적 … 고금리 위험요인 더 짚어달라"
     },
+    "link:a268e46e4d02b846e1506ed4": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.hankyung.com/article/2026100662711",
+      "source": "한국경제",
+      "source_body_digest": "6296ce547395310e986cce68fdd74ad86fe086c305ac02dafd76215740d99af7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:725d7f6f179a023173d3ff33d29eedd66380fea4a515d334f82055632e310c47",
+      "source_fact_keys": [
+        "source_fact:v1:02101f156c2798ba08a58a4dec6b5106e1889860bafcf485d64e2bebf42b1cd3",
+        "source_fact:v1:16e7170898c156eac6a32727cf086eeeaa90cab7bdf99accf14bb5979c68beda",
+        "source_fact:v1:3c3c703c6581f402eceac7f5c193916643fa40f52307ea3cfb85ac08a57bd8cb",
+        "source_fact:v1:3d5117769bfe00d567edaab359fe8a6768f498924cb00ee6fc13c24b6aec14e2",
+        "source_fact:v1:563449904fdf51e5bed04ac019696fc725281c5eb16bc87cebbf23df56e37347",
+        "source_fact:v1:730f1608c1897afa36987557434e8aec3565e82fbe35e55980f382f89fc67be3",
+        "source_fact:v1:a847a71ac710ae891a696f381545158df55927b8da214ec80013d497072da87b",
+        "source_fact:v1:c07b744c88766336973d2634370565ff2abea084c3370b38e1ad6b1119225119",
+        "source_fact:v1:d15a347fd72924eade48ba717e48b8341e7567968894b8a7b2d4e0699fe2598d",
+        "source_fact:v1:da83412235153b696c013a19be0cab0897a50747f210cb2e019a76c4bb7ed8ac"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
+    },
     "link:a278766255537c247e70ed17": {
       "first_seen_kst": "2026-10-01T23:18:12+09:00",
       "lanes": {
@@ -39505,6 +39747,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T09:36+09:00",
       "title": "CJ대한통운, 토스 50만 가맹점 물류 거점으로…생활택배 접점 확대"
+    },
+    "link:b439ba8a2d20fd0f37cbf9cd": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632715",
+      "source": "이투데이",
+      "source_body_digest": "6ff985b28983f707c21b1148f3a2da655a701828b1ff5f4854468b24c35a274f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ea7d0a0307b4542d19ef23493c82a045031bfa4175c7e777a687278ea790bba",
+      "source_fact_keys": [
+        "source_fact:v1:81e2143a4531fc9b55230c1078cd4ea9584e4272d27c0ba47d322b408c7536be",
+        "source_fact:v1:be706728d907e2f4521f2858b52034c602a1e9e54d6801a1cc09e0cf9f9fc47f",
+        "source_fact:v1:e897fa213153ee4ca57e39e6eb88f1697336264d28c112d6e3a76b4eb3917cd5",
+        "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
+        "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
+      ],
+      "source_published_kst": "2026-10-06T10:25+09:00",
+      "title": "JW중외제약 “당뇨병 신약 ‘엠파가드’, 임상 3상서 우수한 혈당 조절 효과 확인”"
     },
     "link:b44b247056d88f6fa86f87c4": {
       "first_seen_kst": "2026-10-02T12:31:36+09:00",
@@ -43175,6 +43438,23 @@
       "link": "https://www.mt.co.kr/world/2026/10/02/2026100208340213181",
       "source": "머니투데이",
       "title": "\"더 시간이 필요할 수도\"...연준 부의장, 추가 금리인상 '신중론'"
+    },
+    "link:d53269087c150e4a17e49e01": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170508",
+      "source": "매일경제",
+      "source_body_digest": "2d4fba92b58371e60b10c8bfc158312c2666ba76ea71fd03ec20cf32a5f1a5c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76b12ff9131d82880851d2097289ba0cf33ce982d4de4140734c194e1e67ae5b",
+      "source_fact_keys": [
+        "source_fact:v1:0efb3944cbee41b0a264703ac8c1c3a33a5d8997382edb35366bae88ab0b2989"
+      ],
+      "source_published_kst": "2026-10-07T01:50+09:00",
+      "title": "C.H.로빈슨, RXO 대규모 인수 재무 부담 우려에 약세"
     },
     "link:d559071a3f4053b016cab12f": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
@@ -51721,6 +52001,32 @@
       "source_published_kst": "2026-10-06T10:45+09:00",
       "title": "기후장관 \"탈탄소 선도국 도약…재생에너지 100GW 조기 달성\" | 연합뉴스"
     },
+    "original:2397b890432f297fc935019b": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.hankyung.com/article/2026100662711",
+      "source": "한국경제",
+      "source_body_digest": "6296ce547395310e986cce68fdd74ad86fe086c305ac02dafd76215740d99af7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:725d7f6f179a023173d3ff33d29eedd66380fea4a515d334f82055632e310c47",
+      "source_fact_keys": [
+        "source_fact:v1:02101f156c2798ba08a58a4dec6b5106e1889860bafcf485d64e2bebf42b1cd3",
+        "source_fact:v1:16e7170898c156eac6a32727cf086eeeaa90cab7bdf99accf14bb5979c68beda",
+        "source_fact:v1:3c3c703c6581f402eceac7f5c193916643fa40f52307ea3cfb85ac08a57bd8cb",
+        "source_fact:v1:3d5117769bfe00d567edaab359fe8a6768f498924cb00ee6fc13c24b6aec14e2",
+        "source_fact:v1:563449904fdf51e5bed04ac019696fc725281c5eb16bc87cebbf23df56e37347",
+        "source_fact:v1:730f1608c1897afa36987557434e8aec3565e82fbe35e55980f382f89fc67be3",
+        "source_fact:v1:a847a71ac710ae891a696f381545158df55927b8da214ec80013d497072da87b",
+        "source_fact:v1:c07b744c88766336973d2634370565ff2abea084c3370b38e1ad6b1119225119",
+        "source_fact:v1:d15a347fd72924eade48ba717e48b8341e7567968894b8a7b2d4e0699fe2598d",
+        "source_fact:v1:da83412235153b696c013a19be0cab0897a50747f210cb2e019a76c4bb7ed8ac"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
+    },
     "original:23a979d3ba80300e3e9b4398": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
       "lanes": {
@@ -52870,6 +53176,23 @@
       "link": "https://www.etoday.co.kr/news/view/2632240",
       "source": "이투데이",
       "title": "[주간증시전망] 다음주 코스피 6500~7500 전망⋯‘삼성전자 실적’이 분수령"
+    },
+    "original:2da38054e7d43249de52a8cc": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02466566645610296",
+      "source": "이데일리",
+      "source_body_digest": "2026c15c999c62eaab2d7a09cb2594e105bb4ea982e683d69d494c87af1c0c85",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cbb76d1ff910fc69d10fd8be6d05acf0f422ff01972b3915be018cad1146010",
+      "source_fact_keys": [
+        "source_fact:v1:655e65083fa4c3676c801215f924b19623cd6cfcf90adecdfb810d5c641944e8"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "리노공업, 중장기 주목할 부분은 CPO…목표가↑-DS"
     },
     "original:2da6b89ed184088e461e6515": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
@@ -55633,6 +55956,23 @@
       "source_published_kst": "2026-10-06T14:46+09:00",
       "title": "중국, ‘물류 데이터 일대일로’ 좌초⋯한중일 협력도 중단"
     },
+    "original:44401850ba6c4f8f14b66b45": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170508",
+      "source": "매일경제",
+      "source_body_digest": "2d4fba92b58371e60b10c8bfc158312c2666ba76ea71fd03ec20cf32a5f1a5c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76b12ff9131d82880851d2097289ba0cf33ce982d4de4140734c194e1e67ae5b",
+      "source_fact_keys": [
+        "source_fact:v1:0efb3944cbee41b0a264703ac8c1c3a33a5d8997382edb35366bae88ab0b2989"
+      ],
+      "source_published_kst": "2026-10-07T01:50+09:00",
+      "title": "C.H.로빈슨, RXO 대규모 인수 재무 부담 우려에 약세"
+    },
     "original:44610a96d64b0b10d0385382": {
       "first_seen_kst": "2026-10-02T09:58:25+09:00",
       "lanes": {
@@ -56961,6 +57301,25 @@
       ],
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
+    },
+    "original:510167e9f1e99e9b05a4b07c": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.fnnews.com/news/202610061044190459",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "0eb6c3b082495fca2f5fcd562f38c035d5cdc8b247f90d53b45bbf6932ddc3f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0612db9c97dfe635b08b3b92baf87bf910ad8c870255162110cb5679151c484",
+      "source_fact_keys": [
+        "source_fact:v1:3ac577fe344bbe5c6d23ede465412fa1765bdf2c4d63dfa44200dc85ec5136c3",
+        "source_fact:v1:3e5ecbf7ea6ed03a04794e2b8f911b80b6628718b3551cb48b9312db0cf808f2",
+        "source_fact:v1:3fa78cab73072cb17a5f2e79b2a7a02e19052905b215d7e420c78e1e5b7f0f9d"
+      ],
+      "source_published_kst": "2026-10-06T10:44+09:00",
+      "title": "유진투자증권, 연말 절세·자산관리 이벤트…최대 200만원 혜택"
     },
     "original:510a97518cd89de6253be0e3": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -64754,6 +65113,23 @@
       "source_published_kst": "2026-10-06T09:57+09:00",
       "title": "네이버 소비자 분쟁 피해구제율 83.6%…“분류체계 세분화 필요\""
     },
+    "original:987c31d91a60a79c125abb16": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://core.asiae.co.kr/article/2026100609004134799",
+      "source": "아시아경제",
+      "source_body_digest": "fa8ae236ccae8843a6343a7c12ac1f42efcab9ba7ad40fe7a1af1c1795368f1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b2056db8be3e72608ce3b4d5a00e562da0e10415f69c82ec190b3eeeb2d5173",
+      "source_fact_keys": [
+        "source_fact:v1:d77374c460f0328371463b23d725143cd66b8f78052461aafaeef0af2ab35906"
+      ],
+      "source_published_kst": "2026-10-06T18:00+09:00",
+      "title": "\"美 투자 ETF 사고 미국 가자\"…한투운용, 美대표지수 ETF 매수 이벤트"
+    },
     "original:9882135cacb3b432d46ee16c": {
       "first_seen_kst": "2026-09-25T10:19:34+09:00",
       "lanes": {
@@ -66881,6 +67257,27 @@
       "link": "https://www.etnews.com/20261001000330",
       "source": "전자신문",
       "title": "“디스플레이 세액 공제 등 정책 지원 확대해야”…업계, 국회에 투자 여건 개선 촉구"
+    },
+    "original:ae35eed04e06fac4f42da875": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632715",
+      "source": "이투데이",
+      "source_body_digest": "6ff985b28983f707c21b1148f3a2da655a701828b1ff5f4854468b24c35a274f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ea7d0a0307b4542d19ef23493c82a045031bfa4175c7e777a687278ea790bba",
+      "source_fact_keys": [
+        "source_fact:v1:81e2143a4531fc9b55230c1078cd4ea9584e4272d27c0ba47d322b408c7536be",
+        "source_fact:v1:be706728d907e2f4521f2858b52034c602a1e9e54d6801a1cc09e0cf9f9fc47f",
+        "source_fact:v1:e897fa213153ee4ca57e39e6eb88f1697336264d28c112d6e3a76b4eb3917cd5",
+        "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
+        "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
+      ],
+      "source_published_kst": "2026-10-06T10:25+09:00",
+      "title": "JW중외제약 “당뇨병 신약 ‘엠파가드’, 임상 3상서 우수한 혈당 조절 효과 확인”"
     },
     "original:ae8f25ed15838ef7f0fc2b46": {
       "first_seen_kst": "2026-10-04T21:15:01+09:00",
@@ -73017,6 +73414,25 @@
       "source": "뉴시스",
       "title": "\"안전한 환경조성 성과\"…한유원, 인증 3개 취득"
     },
+    "original:e6ed0501b094ac91a11d387d": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02637126645610296",
+      "source": "이데일리",
+      "source_body_digest": "feb329ef915f564221dbd8bd2d61d76ba8a3e0e0e211fa67fcfed5195946a0e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:654439d11002e36872cb46fafa448f6d4317a608189db2cafc9aeaf3424d3047",
+      "source_fact_keys": [
+        "source_fact:v1:6e498972b92c854d662f36312f216bf4fdb4a4cb5b181e6dbaa90c17a31072e3",
+        "source_fact:v1:7d73a92d3d44d0719994d83b1daaca6ef5c280705b612a7c3c84494e0869846d",
+        "source_fact:v1:8ad562b5f6ecf0987e94f09dd5477b4d01ab0ac11c124727d24b1fc94fb8b1ba"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "LIG가 찜한 부품사…“디와이씨, 방산 가치 주가에 안 담겼다”"
+    },
     "original:e774a136f4f831b889076817": {
       "first_seen_kst": "2026-10-03T22:18:07+09:00",
       "lanes": {
@@ -76225,6 +76641,23 @@
       ],
       "source_published_kst": "2026-10-05T23:11+09:00",
       "title": "텍사스 로드하우스, 주가 조정 과도...'아웃퍼폼' 상향-에버코어ISI"
+    },
+    "source_fact:02dbb3e2439c84a3148a599a": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://core.asiae.co.kr/article/2026100609004134799",
+      "source": "아시아경제",
+      "source_body_digest": "fa8ae236ccae8843a6343a7c12ac1f42efcab9ba7ad40fe7a1af1c1795368f1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b2056db8be3e72608ce3b4d5a00e562da0e10415f69c82ec190b3eeeb2d5173",
+      "source_fact_keys": [
+        "source_fact:v1:d77374c460f0328371463b23d725143cd66b8f78052461aafaeef0af2ab35906"
+      ],
+      "source_published_kst": "2026-10-06T18:00+09:00",
+      "title": "\"美 투자 ETF 사고 미국 가자\"…한투운용, 美대표지수 ETF 매수 이벤트"
     },
     "source_fact:0323220767bca9e935d6e129": {
       "first_seen_kst": "2026-10-06T02:00:06+09:00",
@@ -81838,6 +82271,32 @@
       "source_published_kst": "2026-10-06T18:39+09:00",
       "title": "“5·18 ‘광주’ 한정, 유공자 명단공개” 이진숙표 법안에 오월단체 “즉각 철회하라”"
     },
+    "source_fact:1ec6cec4a47ca24d494a9516": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.hankyung.com/article/2026100662711",
+      "source": "한국경제",
+      "source_body_digest": "6296ce547395310e986cce68fdd74ad86fe086c305ac02dafd76215740d99af7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:725d7f6f179a023173d3ff33d29eedd66380fea4a515d334f82055632e310c47",
+      "source_fact_keys": [
+        "source_fact:v1:02101f156c2798ba08a58a4dec6b5106e1889860bafcf485d64e2bebf42b1cd3",
+        "source_fact:v1:16e7170898c156eac6a32727cf086eeeaa90cab7bdf99accf14bb5979c68beda",
+        "source_fact:v1:3c3c703c6581f402eceac7f5c193916643fa40f52307ea3cfb85ac08a57bd8cb",
+        "source_fact:v1:3d5117769bfe00d567edaab359fe8a6768f498924cb00ee6fc13c24b6aec14e2",
+        "source_fact:v1:563449904fdf51e5bed04ac019696fc725281c5eb16bc87cebbf23df56e37347",
+        "source_fact:v1:730f1608c1897afa36987557434e8aec3565e82fbe35e55980f382f89fc67be3",
+        "source_fact:v1:a847a71ac710ae891a696f381545158df55927b8da214ec80013d497072da87b",
+        "source_fact:v1:c07b744c88766336973d2634370565ff2abea084c3370b38e1ad6b1119225119",
+        "source_fact:v1:d15a347fd72924eade48ba717e48b8341e7567968894b8a7b2d4e0699fe2598d",
+        "source_fact:v1:da83412235153b696c013a19be0cab0897a50747f210cb2e019a76c4bb7ed8ac"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
+    },
     "source_fact:1ec726fa3184d0cd89a0e6aa": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -86903,6 +87362,25 @@
       "source_published_kst": "2026-10-06T08:25+09:00",
       "title": "한미반도체, 삼성전기와 245억 규모 공급계약"
     },
+    "source_fact:35390b4266145073cd09c95f": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02637126645610296",
+      "source": "이데일리",
+      "source_body_digest": "feb329ef915f564221dbd8bd2d61d76ba8a3e0e0e211fa67fcfed5195946a0e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:654439d11002e36872cb46fafa448f6d4317a608189db2cafc9aeaf3424d3047",
+      "source_fact_keys": [
+        "source_fact:v1:6e498972b92c854d662f36312f216bf4fdb4a4cb5b181e6dbaa90c17a31072e3",
+        "source_fact:v1:7d73a92d3d44d0719994d83b1daaca6ef5c280705b612a7c3c84494e0869846d",
+        "source_fact:v1:8ad562b5f6ecf0987e94f09dd5477b4d01ab0ac11c124727d24b1fc94fb8b1ba"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "LIG가 찜한 부품사…“디와이씨, 방산 가치 주가에 안 담겼다”"
+    },
     "source_fact:353b688c066a13e4d4d2eada": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -88134,6 +88612,27 @@
       "source_published_kst": "2026-10-06T17:02+09:00",
       "title": "엠투클라우드 \"백신 유통 이력 '디지털 관리' 의료기관까지 확대\""
     },
+    "source_fact:3b37ba6a4e49f1e0701fee0b": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632715",
+      "source": "이투데이",
+      "source_body_digest": "6ff985b28983f707c21b1148f3a2da655a701828b1ff5f4854468b24c35a274f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ea7d0a0307b4542d19ef23493c82a045031bfa4175c7e777a687278ea790bba",
+      "source_fact_keys": [
+        "source_fact:v1:81e2143a4531fc9b55230c1078cd4ea9584e4272d27c0ba47d322b408c7536be",
+        "source_fact:v1:be706728d907e2f4521f2858b52034c602a1e9e54d6801a1cc09e0cf9f9fc47f",
+        "source_fact:v1:e897fa213153ee4ca57e39e6eb88f1697336264d28c112d6e3a76b4eb3917cd5",
+        "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
+        "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
+      ],
+      "source_published_kst": "2026-10-06T10:25+09:00",
+      "title": "JW중외제약 “당뇨병 신약 ‘엠파가드’, 임상 3상서 우수한 혈당 조절 효과 확인”"
+    },
     "source_fact:3b640984746be4c629009c66": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -89099,6 +89598,25 @@
       "source_published_kst": "2026-10-06T17:22+09:00",
       "title": "김성환 \"호남 반도체 팹 9개 되면 전력 약 14GW 필요\""
     },
+    "source_fact:40be1233bac92974fb4c37fb": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.fnnews.com/news/202610061044190459",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "0eb6c3b082495fca2f5fcd562f38c035d5cdc8b247f90d53b45bbf6932ddc3f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0612db9c97dfe635b08b3b92baf87bf910ad8c870255162110cb5679151c484",
+      "source_fact_keys": [
+        "source_fact:v1:3ac577fe344bbe5c6d23ede465412fa1765bdf2c4d63dfa44200dc85ec5136c3",
+        "source_fact:v1:3e5ecbf7ea6ed03a04794e2b8f911b80b6628718b3551cb48b9312db0cf808f2",
+        "source_fact:v1:3fa78cab73072cb17a5f2e79b2a7a02e19052905b215d7e420c78e1e5b7f0f9d"
+      ],
+      "source_published_kst": "2026-10-06T10:44+09:00",
+      "title": "유진투자증권, 연말 절세·자산관리 이벤트…최대 200만원 혜택"
+    },
     "source_fact:40ef0773a97118286e63703e": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -89120,23 +89638,23 @@
     "source_fact:412596af907386682d21b848": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
-        "live": "2026-10-06T23:05:07+09:00"
+        "live": "2026-10-07T02:13:12+09:00"
       },
-      "last_seen_kst": "2026-10-06T23:05:07+09:00",
-      "link": "https://www.hankyung.com/article/202610064468P",
-      "source": "한국경제",
-      "source_body_digest": "934ac868ddb20ef4ca2a7edd41bff0c4f69c96d0cf0425b2eab293ebfbe247d5",
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632715",
+      "source": "이투데이",
+      "source_body_digest": "6ff985b28983f707c21b1148f3a2da655a701828b1ff5f4854468b24c35a274f",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:8597dd3654ee738abc8588e1ec9906871210fed7bf4a682ed8ca5fc18f37fbe9",
+      "source_fact_identity": "source_facts:v1:2ea7d0a0307b4542d19ef23493c82a045031bfa4175c7e777a687278ea790bba",
       "source_fact_keys": [
-        "source_fact:v1:0353e49ac6355df42a2c10e6b251a7097ea23c48e7a678aaf19891f81b65de73",
-        "source_fact:v1:b405b46ae7b904060a1908a784616dd0c62aaab415a8222fc93b452e388e2722",
-        "source_fact:v1:ca5b72ba7a74f60e34089b5c98ce8ec11d2dcfe0b0fa977187402d1ac4870010",
+        "source_fact:v1:81e2143a4531fc9b55230c1078cd4ea9584e4272d27c0ba47d322b408c7536be",
+        "source_fact:v1:be706728d907e2f4521f2858b52034c602a1e9e54d6801a1cc09e0cf9f9fc47f",
+        "source_fact:v1:e897fa213153ee4ca57e39e6eb88f1697336264d28c112d6e3a76b4eb3917cd5",
         "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
         "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
       ],
-      "source_published_kst": "2026-10-06T08:57+09:00",
-      "title": "JW중외제약, EASD 2026서 당뇨병 치료제 ‘엠파가드’ 임상 3상 결과 발표"
+      "source_published_kst": "2026-10-06T10:25+09:00",
+      "title": "JW중외제약 “당뇨병 신약 ‘엠파가드’, 임상 3상서 우수한 혈당 조절 효과 확인”"
     },
     "source_fact:41273b5dd5b8bdba79484be8": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
@@ -89459,6 +89977,32 @@
       "source_published_kst": "2026-10-06T09:17+09:00",
       "title": "\"라떼 한 잔도 더 맛있게\" 빽다방, 신메뉴 라인업 강화"
     },
+    "source_fact:421e3724734fddf6d42532b8": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.hankyung.com/article/2026100662711",
+      "source": "한국경제",
+      "source_body_digest": "6296ce547395310e986cce68fdd74ad86fe086c305ac02dafd76215740d99af7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:725d7f6f179a023173d3ff33d29eedd66380fea4a515d334f82055632e310c47",
+      "source_fact_keys": [
+        "source_fact:v1:02101f156c2798ba08a58a4dec6b5106e1889860bafcf485d64e2bebf42b1cd3",
+        "source_fact:v1:16e7170898c156eac6a32727cf086eeeaa90cab7bdf99accf14bb5979c68beda",
+        "source_fact:v1:3c3c703c6581f402eceac7f5c193916643fa40f52307ea3cfb85ac08a57bd8cb",
+        "source_fact:v1:3d5117769bfe00d567edaab359fe8a6768f498924cb00ee6fc13c24b6aec14e2",
+        "source_fact:v1:563449904fdf51e5bed04ac019696fc725281c5eb16bc87cebbf23df56e37347",
+        "source_fact:v1:730f1608c1897afa36987557434e8aec3565e82fbe35e55980f382f89fc67be3",
+        "source_fact:v1:a847a71ac710ae891a696f381545158df55927b8da214ec80013d497072da87b",
+        "source_fact:v1:c07b744c88766336973d2634370565ff2abea084c3370b38e1ad6b1119225119",
+        "source_fact:v1:d15a347fd72924eade48ba717e48b8341e7567968894b8a7b2d4e0699fe2598d",
+        "source_fact:v1:da83412235153b696c013a19be0cab0897a50747f210cb2e019a76c4bb7ed8ac"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
+    },
     "source_fact:42630be558b1bc0e83ac14f2": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -89630,23 +90174,23 @@
     "source_fact:431bcabd29d70c105c446b26": {
       "first_seen_kst": "2026-10-06T23:05:07+09:00",
       "lanes": {
-        "live": "2026-10-06T23:05:07+09:00"
+        "live": "2026-10-07T02:13:12+09:00"
       },
-      "last_seen_kst": "2026-10-06T23:05:07+09:00",
-      "link": "https://www.hankyung.com/article/202610064468P",
-      "source": "한국경제",
-      "source_body_digest": "934ac868ddb20ef4ca2a7edd41bff0c4f69c96d0cf0425b2eab293ebfbe247d5",
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632715",
+      "source": "이투데이",
+      "source_body_digest": "6ff985b28983f707c21b1148f3a2da655a701828b1ff5f4854468b24c35a274f",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:8597dd3654ee738abc8588e1ec9906871210fed7bf4a682ed8ca5fc18f37fbe9",
+      "source_fact_identity": "source_facts:v1:2ea7d0a0307b4542d19ef23493c82a045031bfa4175c7e777a687278ea790bba",
       "source_fact_keys": [
-        "source_fact:v1:0353e49ac6355df42a2c10e6b251a7097ea23c48e7a678aaf19891f81b65de73",
-        "source_fact:v1:b405b46ae7b904060a1908a784616dd0c62aaab415a8222fc93b452e388e2722",
-        "source_fact:v1:ca5b72ba7a74f60e34089b5c98ce8ec11d2dcfe0b0fa977187402d1ac4870010",
+        "source_fact:v1:81e2143a4531fc9b55230c1078cd4ea9584e4272d27c0ba47d322b408c7536be",
+        "source_fact:v1:be706728d907e2f4521f2858b52034c602a1e9e54d6801a1cc09e0cf9f9fc47f",
+        "source_fact:v1:e897fa213153ee4ca57e39e6eb88f1697336264d28c112d6e3a76b4eb3917cd5",
         "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
         "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
       ],
-      "source_published_kst": "2026-10-06T08:57+09:00",
-      "title": "JW중외제약, EASD 2026서 당뇨병 치료제 ‘엠파가드’ 임상 3상 결과 발표"
+      "source_published_kst": "2026-10-06T10:25+09:00",
+      "title": "JW중외제약 “당뇨병 신약 ‘엠파가드’, 임상 3상서 우수한 혈당 조절 효과 확인”"
     },
     "source_fact:433de656bab94446d4f01960": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -92964,6 +93508,27 @@
       ],
       "source_published_kst": "2026-10-06T14:55+09:00",
       "title": "대전시 아이들 밥상 챙긴다…학교급식 식품비 15% 인상"
+    },
+    "source_fact:51ab4a00d5943d4098e9adfc": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632715",
+      "source": "이투데이",
+      "source_body_digest": "6ff985b28983f707c21b1148f3a2da655a701828b1ff5f4854468b24c35a274f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ea7d0a0307b4542d19ef23493c82a045031bfa4175c7e777a687278ea790bba",
+      "source_fact_keys": [
+        "source_fact:v1:81e2143a4531fc9b55230c1078cd4ea9584e4272d27c0ba47d322b408c7536be",
+        "source_fact:v1:be706728d907e2f4521f2858b52034c602a1e9e54d6801a1cc09e0cf9f9fc47f",
+        "source_fact:v1:e897fa213153ee4ca57e39e6eb88f1697336264d28c112d6e3a76b4eb3917cd5",
+        "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
+        "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
+      ],
+      "source_published_kst": "2026-10-06T10:25+09:00",
+      "title": "JW중외제약 “당뇨병 신약 ‘엠파가드’, 임상 3상서 우수한 혈당 조절 효과 확인”"
     },
     "source_fact:51b6e5b5c84ab52f287d5686": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -96342,6 +96907,23 @@
       "source_published_kst": "2026-10-06T06:15+09:00",
       "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
     },
+    "source_fact:5fda86c7624ee5c4c5cbe9fb": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02466566645610296",
+      "source": "이데일리",
+      "source_body_digest": "2026c15c999c62eaab2d7a09cb2594e105bb4ea982e683d69d494c87af1c0c85",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cbb76d1ff910fc69d10fd8be6d05acf0f422ff01972b3915be018cad1146010",
+      "source_fact_keys": [
+        "source_fact:v1:655e65083fa4c3676c801215f924b19623cd6cfcf90adecdfb810d5c641944e8"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "리노공업, 중장기 주목할 부분은 CPO…목표가↑-DS"
+    },
     "source_fact:60269a4a33bd08827053a592": {
       "first_seen_kst": "2026-10-06T18:46:35+09:00",
       "lanes": {
@@ -97023,6 +97605,32 @@
       ],
       "source_published_kst": "2026-10-06T17:48+09:00",
       "title": "알테오젠, 알테오젠바이오로직스 흡수합병…사업 역량 통합"
+    },
+    "source_fact:63784015fb5176d566093ee9": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.hankyung.com/article/2026100662711",
+      "source": "한국경제",
+      "source_body_digest": "6296ce547395310e986cce68fdd74ad86fe086c305ac02dafd76215740d99af7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:725d7f6f179a023173d3ff33d29eedd66380fea4a515d334f82055632e310c47",
+      "source_fact_keys": [
+        "source_fact:v1:02101f156c2798ba08a58a4dec6b5106e1889860bafcf485d64e2bebf42b1cd3",
+        "source_fact:v1:16e7170898c156eac6a32727cf086eeeaa90cab7bdf99accf14bb5979c68beda",
+        "source_fact:v1:3c3c703c6581f402eceac7f5c193916643fa40f52307ea3cfb85ac08a57bd8cb",
+        "source_fact:v1:3d5117769bfe00d567edaab359fe8a6768f498924cb00ee6fc13c24b6aec14e2",
+        "source_fact:v1:563449904fdf51e5bed04ac019696fc725281c5eb16bc87cebbf23df56e37347",
+        "source_fact:v1:730f1608c1897afa36987557434e8aec3565e82fbe35e55980f382f89fc67be3",
+        "source_fact:v1:a847a71ac710ae891a696f381545158df55927b8da214ec80013d497072da87b",
+        "source_fact:v1:c07b744c88766336973d2634370565ff2abea084c3370b38e1ad6b1119225119",
+        "source_fact:v1:d15a347fd72924eade48ba717e48b8341e7567968894b8a7b2d4e0699fe2598d",
+        "source_fact:v1:da83412235153b696c013a19be0cab0897a50747f210cb2e019a76c4bb7ed8ac"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
     },
     "source_fact:6396206163ed13d8642ee596": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
@@ -106333,6 +106941,27 @@
       "source_published_kst": "2026-10-06T23:31+09:00",
       "title": "우크라, '한국의 러 석유공급' 기사 인용해 韓 비판(종합) | 연합뉴스"
     },
+    "source_fact:8c551e3dc3840e2d7675c154": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632715",
+      "source": "이투데이",
+      "source_body_digest": "6ff985b28983f707c21b1148f3a2da655a701828b1ff5f4854468b24c35a274f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ea7d0a0307b4542d19ef23493c82a045031bfa4175c7e777a687278ea790bba",
+      "source_fact_keys": [
+        "source_fact:v1:81e2143a4531fc9b55230c1078cd4ea9584e4272d27c0ba47d322b408c7536be",
+        "source_fact:v1:be706728d907e2f4521f2858b52034c602a1e9e54d6801a1cc09e0cf9f9fc47f",
+        "source_fact:v1:e897fa213153ee4ca57e39e6eb88f1697336264d28c112d6e3a76b4eb3917cd5",
+        "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
+        "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
+      ],
+      "source_published_kst": "2026-10-06T10:25+09:00",
+      "title": "JW중외제약 “당뇨병 신약 ‘엠파가드’, 임상 3상서 우수한 혈당 조절 효과 확인”"
+    },
     "source_fact:8c72b97a7e07cfdda54de15a": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -111859,6 +112488,25 @@
       "source_published_kst": "2026-10-06T16:35+09:00",
       "title": "신세계, 콘텐츠 기업으로 키운다...워너브라더스 인수 1.4조 투자"
     },
+    "source_fact:a6087dfddc41580c32a7c551": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.fnnews.com/news/202610061044190459",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "0eb6c3b082495fca2f5fcd562f38c035d5cdc8b247f90d53b45bbf6932ddc3f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0612db9c97dfe635b08b3b92baf87bf910ad8c870255162110cb5679151c484",
+      "source_fact_keys": [
+        "source_fact:v1:3ac577fe344bbe5c6d23ede465412fa1765bdf2c4d63dfa44200dc85ec5136c3",
+        "source_fact:v1:3e5ecbf7ea6ed03a04794e2b8f911b80b6628718b3551cb48b9312db0cf808f2",
+        "source_fact:v1:3fa78cab73072cb17a5f2e79b2a7a02e19052905b215d7e420c78e1e5b7f0f9d"
+      ],
+      "source_published_kst": "2026-10-06T10:44+09:00",
+      "title": "유진투자증권, 연말 절세·자산관리 이벤트…최대 200만원 혜택"
+    },
     "source_fact:a610462837fe0bf02cd5e468": {
       "first_seen_kst": "2026-10-07T00:09:35+09:00",
       "lanes": {
@@ -113963,6 +114611,25 @@
       ],
       "source_published_kst": "2026-10-06T10:22+09:00",
       "title": "에코프로비엠, 삼성SDI와 '전고체' 개발 협력…상용화 목전"
+    },
+    "source_fact:b0324451938ba51cdf7d547d": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02637126645610296",
+      "source": "이데일리",
+      "source_body_digest": "feb329ef915f564221dbd8bd2d61d76ba8a3e0e0e211fa67fcfed5195946a0e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:654439d11002e36872cb46fafa448f6d4317a608189db2cafc9aeaf3424d3047",
+      "source_fact_keys": [
+        "source_fact:v1:6e498972b92c854d662f36312f216bf4fdb4a4cb5b181e6dbaa90c17a31072e3",
+        "source_fact:v1:7d73a92d3d44d0719994d83b1daaca6ef5c280705b612a7c3c84494e0869846d",
+        "source_fact:v1:8ad562b5f6ecf0987e94f09dd5477b4d01ab0ac11c124727d24b1fc94fb8b1ba"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "LIG가 찜한 부품사…“디와이씨, 방산 가치 주가에 안 담겼다”"
     },
     "source_fact:b06858540fa72b463a372984": {
       "first_seen_kst": "2026-10-07T01:59:08+09:00",
@@ -119043,6 +119710,25 @@
       "source_published_kst": "2026-10-06T13:27+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업서 각형 장비 수주"
     },
+    "source_fact:c6a37974ed41668f2ba4ce0b": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.fnnews.com/news/202610061044190459",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "0eb6c3b082495fca2f5fcd562f38c035d5cdc8b247f90d53b45bbf6932ddc3f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0612db9c97dfe635b08b3b92baf87bf910ad8c870255162110cb5679151c484",
+      "source_fact_keys": [
+        "source_fact:v1:3ac577fe344bbe5c6d23ede465412fa1765bdf2c4d63dfa44200dc85ec5136c3",
+        "source_fact:v1:3e5ecbf7ea6ed03a04794e2b8f911b80b6628718b3551cb48b9312db0cf808f2",
+        "source_fact:v1:3fa78cab73072cb17a5f2e79b2a7a02e19052905b215d7e420c78e1e5b7f0f9d"
+      ],
+      "source_published_kst": "2026-10-06T10:44+09:00",
+      "title": "유진투자증권, 연말 절세·자산관리 이벤트…최대 200만원 혜택"
+    },
     "source_fact:c6a84edccf090ba71e7bcd98": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
       "lanes": {
@@ -119169,6 +119855,32 @@
       ],
       "source_published_kst": "2026-10-06T17:03+09:00",
       "title": "파라다이스, 회사채 수요예측에 3.4배 몰려…2·3년물 온도차(종합) | 연합뉴스"
+    },
+    "source_fact:c71e9e2dd4308969c0f30625": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.hankyung.com/article/2026100662711",
+      "source": "한국경제",
+      "source_body_digest": "6296ce547395310e986cce68fdd74ad86fe086c305ac02dafd76215740d99af7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:725d7f6f179a023173d3ff33d29eedd66380fea4a515d334f82055632e310c47",
+      "source_fact_keys": [
+        "source_fact:v1:02101f156c2798ba08a58a4dec6b5106e1889860bafcf485d64e2bebf42b1cd3",
+        "source_fact:v1:16e7170898c156eac6a32727cf086eeeaa90cab7bdf99accf14bb5979c68beda",
+        "source_fact:v1:3c3c703c6581f402eceac7f5c193916643fa40f52307ea3cfb85ac08a57bd8cb",
+        "source_fact:v1:3d5117769bfe00d567edaab359fe8a6768f498924cb00ee6fc13c24b6aec14e2",
+        "source_fact:v1:563449904fdf51e5bed04ac019696fc725281c5eb16bc87cebbf23df56e37347",
+        "source_fact:v1:730f1608c1897afa36987557434e8aec3565e82fbe35e55980f382f89fc67be3",
+        "source_fact:v1:a847a71ac710ae891a696f381545158df55927b8da214ec80013d497072da87b",
+        "source_fact:v1:c07b744c88766336973d2634370565ff2abea084c3370b38e1ad6b1119225119",
+        "source_fact:v1:d15a347fd72924eade48ba717e48b8341e7567968894b8a7b2d4e0699fe2598d",
+        "source_fact:v1:da83412235153b696c013a19be0cab0897a50747f210cb2e019a76c4bb7ed8ac"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
     },
     "source_fact:c74991e86adbb179f0b3633d": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -121961,6 +122673,25 @@
       "source_published_kst": "2026-10-06T10:11+09:00",
       "title": "세아베스틸, 로봇 감속기용 특수강 국산화…양산 본격화"
     },
+    "source_fact:d3a521fe7b06d5e443ddab7a": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02637126645610296",
+      "source": "이데일리",
+      "source_body_digest": "feb329ef915f564221dbd8bd2d61d76ba8a3e0e0e211fa67fcfed5195946a0e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:654439d11002e36872cb46fafa448f6d4317a608189db2cafc9aeaf3424d3047",
+      "source_fact_keys": [
+        "source_fact:v1:6e498972b92c854d662f36312f216bf4fdb4a4cb5b181e6dbaa90c17a31072e3",
+        "source_fact:v1:7d73a92d3d44d0719994d83b1daaca6ef5c280705b612a7c3c84494e0869846d",
+        "source_fact:v1:8ad562b5f6ecf0987e94f09dd5477b4d01ab0ac11c124727d24b1fc94fb8b1ba"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "LIG가 찜한 부품사…“디와이씨, 방산 가치 주가에 안 담겼다”"
+    },
     "source_fact:d3eec9d0b134c405af600be9": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -122165,6 +122896,23 @@
       ],
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
+    },
+    "source_fact:d4fe636279abab28a3e71ac1": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170508",
+      "source": "매일경제",
+      "source_body_digest": "2d4fba92b58371e60b10c8bfc158312c2666ba76ea71fd03ec20cf32a5f1a5c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76b12ff9131d82880851d2097289ba0cf33ce982d4de4140734c194e1e67ae5b",
+      "source_fact_keys": [
+        "source_fact:v1:0efb3944cbee41b0a264703ac8c1c3a33a5d8997382edb35366bae88ab0b2989"
+      ],
+      "source_published_kst": "2026-10-07T01:50+09:00",
+      "title": "C.H.로빈슨, RXO 대규모 인수 재무 부담 우려에 약세"
     },
     "source_fact:d52930b22ded98ef1a353d34": {
       "first_seen_kst": "2026-10-06T17:59:23+09:00",
@@ -122518,6 +123266,32 @@
       ],
       "source_published_kst": "2026-10-06T11:36+09:00",
       "title": "신보·부산은행, K-콘텐츠 기업에 100억원 협약보증 공급"
+    },
+    "source_fact:d67a727d2e24e0d549506dee": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.hankyung.com/article/2026100662711",
+      "source": "한국경제",
+      "source_body_digest": "6296ce547395310e986cce68fdd74ad86fe086c305ac02dafd76215740d99af7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:725d7f6f179a023173d3ff33d29eedd66380fea4a515d334f82055632e310c47",
+      "source_fact_keys": [
+        "source_fact:v1:02101f156c2798ba08a58a4dec6b5106e1889860bafcf485d64e2bebf42b1cd3",
+        "source_fact:v1:16e7170898c156eac6a32727cf086eeeaa90cab7bdf99accf14bb5979c68beda",
+        "source_fact:v1:3c3c703c6581f402eceac7f5c193916643fa40f52307ea3cfb85ac08a57bd8cb",
+        "source_fact:v1:3d5117769bfe00d567edaab359fe8a6768f498924cb00ee6fc13c24b6aec14e2",
+        "source_fact:v1:563449904fdf51e5bed04ac019696fc725281c5eb16bc87cebbf23df56e37347",
+        "source_fact:v1:730f1608c1897afa36987557434e8aec3565e82fbe35e55980f382f89fc67be3",
+        "source_fact:v1:a847a71ac710ae891a696f381545158df55927b8da214ec80013d497072da87b",
+        "source_fact:v1:c07b744c88766336973d2634370565ff2abea084c3370b38e1ad6b1119225119",
+        "source_fact:v1:d15a347fd72924eade48ba717e48b8341e7567968894b8a7b2d4e0699fe2598d",
+        "source_fact:v1:da83412235153b696c013a19be0cab0897a50747f210cb2e019a76c4bb7ed8ac"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
     },
     "source_fact:d68de7dc7179449ac5d56183": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -125058,6 +125832,32 @@
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "\"AI 병목 구간은 메모리\"… 삼전닉스 담는 새 글로벌ETF"
     },
+    "source_fact:e043218146f2deaedaf12704": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.hankyung.com/article/2026100662711",
+      "source": "한국경제",
+      "source_body_digest": "6296ce547395310e986cce68fdd74ad86fe086c305ac02dafd76215740d99af7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:725d7f6f179a023173d3ff33d29eedd66380fea4a515d334f82055632e310c47",
+      "source_fact_keys": [
+        "source_fact:v1:02101f156c2798ba08a58a4dec6b5106e1889860bafcf485d64e2bebf42b1cd3",
+        "source_fact:v1:16e7170898c156eac6a32727cf086eeeaa90cab7bdf99accf14bb5979c68beda",
+        "source_fact:v1:3c3c703c6581f402eceac7f5c193916643fa40f52307ea3cfb85ac08a57bd8cb",
+        "source_fact:v1:3d5117769bfe00d567edaab359fe8a6768f498924cb00ee6fc13c24b6aec14e2",
+        "source_fact:v1:563449904fdf51e5bed04ac019696fc725281c5eb16bc87cebbf23df56e37347",
+        "source_fact:v1:730f1608c1897afa36987557434e8aec3565e82fbe35e55980f382f89fc67be3",
+        "source_fact:v1:a847a71ac710ae891a696f381545158df55927b8da214ec80013d497072da87b",
+        "source_fact:v1:c07b744c88766336973d2634370565ff2abea084c3370b38e1ad6b1119225119",
+        "source_fact:v1:d15a347fd72924eade48ba717e48b8341e7567968894b8a7b2d4e0699fe2598d",
+        "source_fact:v1:da83412235153b696c013a19be0cab0897a50747f210cb2e019a76c4bb7ed8ac"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
+    },
     "source_fact:e043ba9d25707d984107be82": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -126237,6 +127037,32 @@
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
+    "source_fact:e479f21381868314472a8342": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.hankyung.com/article/2026100662711",
+      "source": "한국경제",
+      "source_body_digest": "6296ce547395310e986cce68fdd74ad86fe086c305ac02dafd76215740d99af7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:725d7f6f179a023173d3ff33d29eedd66380fea4a515d334f82055632e310c47",
+      "source_fact_keys": [
+        "source_fact:v1:02101f156c2798ba08a58a4dec6b5106e1889860bafcf485d64e2bebf42b1cd3",
+        "source_fact:v1:16e7170898c156eac6a32727cf086eeeaa90cab7bdf99accf14bb5979c68beda",
+        "source_fact:v1:3c3c703c6581f402eceac7f5c193916643fa40f52307ea3cfb85ac08a57bd8cb",
+        "source_fact:v1:3d5117769bfe00d567edaab359fe8a6768f498924cb00ee6fc13c24b6aec14e2",
+        "source_fact:v1:563449904fdf51e5bed04ac019696fc725281c5eb16bc87cebbf23df56e37347",
+        "source_fact:v1:730f1608c1897afa36987557434e8aec3565e82fbe35e55980f382f89fc67be3",
+        "source_fact:v1:a847a71ac710ae891a696f381545158df55927b8da214ec80013d497072da87b",
+        "source_fact:v1:c07b744c88766336973d2634370565ff2abea084c3370b38e1ad6b1119225119",
+        "source_fact:v1:d15a347fd72924eade48ba717e48b8341e7567968894b8a7b2d4e0699fe2598d",
+        "source_fact:v1:da83412235153b696c013a19be0cab0897a50747f210cb2e019a76c4bb7ed8ac"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
+    },
     "source_fact:e4a4a195ccb73d759ef73fde": {
       "first_seen_kst": "2026-10-07T01:07:29+09:00",
       "lanes": {
@@ -127250,6 +128076,32 @@
       "source_published_kst": "2026-10-06T06:10+09:00",
       "title": "삼성전자, 자사주 100% 넘게 샀는데 더 매입⋯‘수급 버팀목’ 언제까지?"
     },
+    "source_fact:e9314c807b7cb843a1cb9a83": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.hankyung.com/article/2026100662711",
+      "source": "한국경제",
+      "source_body_digest": "6296ce547395310e986cce68fdd74ad86fe086c305ac02dafd76215740d99af7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:725d7f6f179a023173d3ff33d29eedd66380fea4a515d334f82055632e310c47",
+      "source_fact_keys": [
+        "source_fact:v1:02101f156c2798ba08a58a4dec6b5106e1889860bafcf485d64e2bebf42b1cd3",
+        "source_fact:v1:16e7170898c156eac6a32727cf086eeeaa90cab7bdf99accf14bb5979c68beda",
+        "source_fact:v1:3c3c703c6581f402eceac7f5c193916643fa40f52307ea3cfb85ac08a57bd8cb",
+        "source_fact:v1:3d5117769bfe00d567edaab359fe8a6768f498924cb00ee6fc13c24b6aec14e2",
+        "source_fact:v1:563449904fdf51e5bed04ac019696fc725281c5eb16bc87cebbf23df56e37347",
+        "source_fact:v1:730f1608c1897afa36987557434e8aec3565e82fbe35e55980f382f89fc67be3",
+        "source_fact:v1:a847a71ac710ae891a696f381545158df55927b8da214ec80013d497072da87b",
+        "source_fact:v1:c07b744c88766336973d2634370565ff2abea084c3370b38e1ad6b1119225119",
+        "source_fact:v1:d15a347fd72924eade48ba717e48b8341e7567968894b8a7b2d4e0699fe2598d",
+        "source_fact:v1:da83412235153b696c013a19be0cab0897a50747f210cb2e019a76c4bb7ed8ac"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
+    },
     "source_fact:e932c2d5e5102ece163be9d4": {
       "first_seen_kst": "2026-10-06T19:33:48+09:00",
       "lanes": {
@@ -127909,6 +128761,32 @@
       ],
       "source_published_kst": "2026-10-06T06:15+09:00",
       "title": "[AI프리즘] '3대 메가프로젝트' 피지컬AI…전체 AI 예산 5%도 안돼"
+    },
+    "source_fact:ec68e6be986e203f6ec5dcc8": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.hankyung.com/article/2026100662711",
+      "source": "한국경제",
+      "source_body_digest": "6296ce547395310e986cce68fdd74ad86fe086c305ac02dafd76215740d99af7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:725d7f6f179a023173d3ff33d29eedd66380fea4a515d334f82055632e310c47",
+      "source_fact_keys": [
+        "source_fact:v1:02101f156c2798ba08a58a4dec6b5106e1889860bafcf485d64e2bebf42b1cd3",
+        "source_fact:v1:16e7170898c156eac6a32727cf086eeeaa90cab7bdf99accf14bb5979c68beda",
+        "source_fact:v1:3c3c703c6581f402eceac7f5c193916643fa40f52307ea3cfb85ac08a57bd8cb",
+        "source_fact:v1:3d5117769bfe00d567edaab359fe8a6768f498924cb00ee6fc13c24b6aec14e2",
+        "source_fact:v1:563449904fdf51e5bed04ac019696fc725281c5eb16bc87cebbf23df56e37347",
+        "source_fact:v1:730f1608c1897afa36987557434e8aec3565e82fbe35e55980f382f89fc67be3",
+        "source_fact:v1:a847a71ac710ae891a696f381545158df55927b8da214ec80013d497072da87b",
+        "source_fact:v1:c07b744c88766336973d2634370565ff2abea084c3370b38e1ad6b1119225119",
+        "source_fact:v1:d15a347fd72924eade48ba717e48b8341e7567968894b8a7b2d4e0699fe2598d",
+        "source_fact:v1:da83412235153b696c013a19be0cab0897a50747f210cb2e019a76c4bb7ed8ac"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
     },
     "source_fact:ec7099128cd8fb8e91a61a52": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
@@ -129663,6 +130541,32 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "주담대 금리도 '들썩'…한은 추가 인상에 이자 더 오르나[금리 쇼크③]"
+    },
+    "source_fact:f4001d006cf85b757e5952f0": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.hankyung.com/article/2026100662711",
+      "source": "한국경제",
+      "source_body_digest": "6296ce547395310e986cce68fdd74ad86fe086c305ac02dafd76215740d99af7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:725d7f6f179a023173d3ff33d29eedd66380fea4a515d334f82055632e310c47",
+      "source_fact_keys": [
+        "source_fact:v1:02101f156c2798ba08a58a4dec6b5106e1889860bafcf485d64e2bebf42b1cd3",
+        "source_fact:v1:16e7170898c156eac6a32727cf086eeeaa90cab7bdf99accf14bb5979c68beda",
+        "source_fact:v1:3c3c703c6581f402eceac7f5c193916643fa40f52307ea3cfb85ac08a57bd8cb",
+        "source_fact:v1:3d5117769bfe00d567edaab359fe8a6768f498924cb00ee6fc13c24b6aec14e2",
+        "source_fact:v1:563449904fdf51e5bed04ac019696fc725281c5eb16bc87cebbf23df56e37347",
+        "source_fact:v1:730f1608c1897afa36987557434e8aec3565e82fbe35e55980f382f89fc67be3",
+        "source_fact:v1:a847a71ac710ae891a696f381545158df55927b8da214ec80013d497072da87b",
+        "source_fact:v1:c07b744c88766336973d2634370565ff2abea084c3370b38e1ad6b1119225119",
+        "source_fact:v1:d15a347fd72924eade48ba717e48b8341e7567968894b8a7b2d4e0699fe2598d",
+        "source_fact:v1:da83412235153b696c013a19be0cab0897a50747f210cb2e019a76c4bb7ed8ac"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
     },
     "source_fact:f435bf928aca6aa0a311f7d1": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -136019,6 +136923,32 @@
       "source_published_kst": "2026-10-06T10:45+09:00",
       "title": "기후장관 \"탈탄소 선도국 도약…재생에너지 100GW 조기 달성\" | 연합뉴스"
     },
+    "title:2397b890432f297fc935019b": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.hankyung.com/article/2026100662711",
+      "source": "한국경제",
+      "source_body_digest": "6296ce547395310e986cce68fdd74ad86fe086c305ac02dafd76215740d99af7",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:725d7f6f179a023173d3ff33d29eedd66380fea4a515d334f82055632e310c47",
+      "source_fact_keys": [
+        "source_fact:v1:02101f156c2798ba08a58a4dec6b5106e1889860bafcf485d64e2bebf42b1cd3",
+        "source_fact:v1:16e7170898c156eac6a32727cf086eeeaa90cab7bdf99accf14bb5979c68beda",
+        "source_fact:v1:3c3c703c6581f402eceac7f5c193916643fa40f52307ea3cfb85ac08a57bd8cb",
+        "source_fact:v1:3d5117769bfe00d567edaab359fe8a6768f498924cb00ee6fc13c24b6aec14e2",
+        "source_fact:v1:563449904fdf51e5bed04ac019696fc725281c5eb16bc87cebbf23df56e37347",
+        "source_fact:v1:730f1608c1897afa36987557434e8aec3565e82fbe35e55980f382f89fc67be3",
+        "source_fact:v1:a847a71ac710ae891a696f381545158df55927b8da214ec80013d497072da87b",
+        "source_fact:v1:c07b744c88766336973d2634370565ff2abea084c3370b38e1ad6b1119225119",
+        "source_fact:v1:d15a347fd72924eade48ba717e48b8341e7567968894b8a7b2d4e0699fe2598d",
+        "source_fact:v1:da83412235153b696c013a19be0cab0897a50747f210cb2e019a76c4bb7ed8ac"
+      ],
+      "source_published_kst": "2026-10-06T17:35+09:00",
+      "title": "엔비디아, 이틀째 사상 최고…시총 6조달러 고지 '눈앞'"
+    },
     "title:23a979d3ba80300e3e9b4398": {
       "first_seen_kst": "2026-10-01T21:12:25+09:00",
       "lanes": {
@@ -137168,6 +138098,23 @@
       "link": "https://www.etoday.co.kr/news/view/2632240",
       "source": "이투데이",
       "title": "[주간증시전망] 다음주 코스피 6500~7500 전망⋯‘삼성전자 실적’이 분수령"
+    },
+    "title:2da38054e7d43249de52a8cc": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02466566645610296",
+      "source": "이데일리",
+      "source_body_digest": "2026c15c999c62eaab2d7a09cb2594e105bb4ea982e683d69d494c87af1c0c85",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8cbb76d1ff910fc69d10fd8be6d05acf0f422ff01972b3915be018cad1146010",
+      "source_fact_keys": [
+        "source_fact:v1:655e65083fa4c3676c801215f924b19623cd6cfcf90adecdfb810d5c641944e8"
+      ],
+      "source_published_kst": "2026-10-06T07:42+09:00",
+      "title": "리노공업, 중장기 주목할 부분은 CPO…목표가↑-DS"
     },
     "title:2da6b89ed184088e461e6515": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
@@ -139967,6 +140914,23 @@
       "source_published_kst": "2026-10-06T14:46+09:00",
       "title": "중국, ‘물류 데이터 일대일로’ 좌초⋯한중일 협력도 중단"
     },
+    "title:44401850ba6c4f8f14b66b45": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://stock.mk.co.kr/news/view/1170508",
+      "source": "매일경제",
+      "source_body_digest": "2d4fba92b58371e60b10c8bfc158312c2666ba76ea71fd03ec20cf32a5f1a5c6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:76b12ff9131d82880851d2097289ba0cf33ce982d4de4140734c194e1e67ae5b",
+      "source_fact_keys": [
+        "source_fact:v1:0efb3944cbee41b0a264703ac8c1c3a33a5d8997382edb35366bae88ab0b2989"
+      ],
+      "source_published_kst": "2026-10-07T01:50+09:00",
+      "title": "C.H.로빈슨, RXO 대규모 인수 재무 부담 우려에 약세"
+    },
     "title:44610a96d64b0b10d0385382": {
       "first_seen_kst": "2026-10-02T09:58:25+09:00",
       "lanes": {
@@ -141295,6 +142259,25 @@
       ],
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
+    },
+    "title:510167e9f1e99e9b05a4b07c": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.fnnews.com/news/202610061044190459",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "0eb6c3b082495fca2f5fcd562f38c035d5cdc8b247f90d53b45bbf6932ddc3f2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c0612db9c97dfe635b08b3b92baf87bf910ad8c870255162110cb5679151c484",
+      "source_fact_keys": [
+        "source_fact:v1:3ac577fe344bbe5c6d23ede465412fa1765bdf2c4d63dfa44200dc85ec5136c3",
+        "source_fact:v1:3e5ecbf7ea6ed03a04794e2b8f911b80b6628718b3551cb48b9312db0cf808f2",
+        "source_fact:v1:3fa78cab73072cb17a5f2e79b2a7a02e19052905b215d7e420c78e1e5b7f0f9d"
+      ],
+      "source_published_kst": "2026-10-06T10:44+09:00",
+      "title": "유진투자증권, 연말 절세·자산관리 이벤트…최대 200만원 혜택"
     },
     "title:510a97518cd89de6253be0e3": {
       "first_seen_kst": "2026-10-06T21:28:22+09:00",
@@ -149264,6 +150247,23 @@
       "source_published_kst": "2026-10-06T09:57+09:00",
       "title": "네이버 소비자 분쟁 피해구제율 83.6%…“분류체계 세분화 필요\""
     },
+    "title:987c31d91a60a79c125abb16": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://core.asiae.co.kr/article/2026100609004134799",
+      "source": "아시아경제",
+      "source_body_digest": "fa8ae236ccae8843a6343a7c12ac1f42efcab9ba7ad40fe7a1af1c1795368f1a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:1b2056db8be3e72608ce3b4d5a00e562da0e10415f69c82ec190b3eeeb2d5173",
+      "source_fact_keys": [
+        "source_fact:v1:d77374c460f0328371463b23d725143cd66b8f78052461aafaeef0af2ab35906"
+      ],
+      "source_published_kst": "2026-10-06T18:00+09:00",
+      "title": "\"美 투자 ETF 사고 미국 가자\"…한투운용, 美대표지수 ETF 매수 이벤트"
+    },
     "title:9882135cacb3b432d46ee16c": {
       "first_seen_kst": "2026-09-25T10:19:34+09:00",
       "lanes": {
@@ -151455,6 +152455,27 @@
       "link": "https://www.etnews.com/20261001000330",
       "source": "전자신문",
       "title": "“디스플레이 세액 공제 등 정책 지원 확대해야”…업계, 국회에 투자 여건 개선 촉구"
+    },
+    "title:ae35eed04e06fac4f42da875": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632715",
+      "source": "이투데이",
+      "source_body_digest": "6ff985b28983f707c21b1148f3a2da655a701828b1ff5f4854468b24c35a274f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:2ea7d0a0307b4542d19ef23493c82a045031bfa4175c7e777a687278ea790bba",
+      "source_fact_keys": [
+        "source_fact:v1:81e2143a4531fc9b55230c1078cd4ea9584e4272d27c0ba47d322b408c7536be",
+        "source_fact:v1:be706728d907e2f4521f2858b52034c602a1e9e54d6801a1cc09e0cf9f9fc47f",
+        "source_fact:v1:e897fa213153ee4ca57e39e6eb88f1697336264d28c112d6e3a76b4eb3917cd5",
+        "source_fact:v1:eb3eb06088968b92469ee20a207eacac0f90e8a244e13c69917179fa2474e4e5",
+        "source_fact:v1:f06c5c9bb04a70ddd5e9ea223ff8c1a1bb2bdafb855daa21dbdc39dace80437f"
+      ],
+      "source_published_kst": "2026-10-06T10:25+09:00",
+      "title": "JW중외제약 “당뇨병 신약 ‘엠파가드’, 임상 3상서 우수한 혈당 조절 효과 확인”"
     },
     "title:ae8f25ed15838ef7f0fc2b46": {
       "first_seen_kst": "2026-10-04T21:15:01+09:00",
@@ -157682,6 +158703,25 @@
       "source": "뉴시스",
       "title": "\"안전한 환경조성 성과\"…한유원, 인증 3개 취득"
     },
+    "title:e6ed0501b094ac91a11d387d": {
+      "first_seen_kst": "2026-10-07T02:13:12+09:00",
+      "lanes": {
+        "live": "2026-10-07T02:13:12+09:00"
+      },
+      "last_seen_kst": "2026-10-07T02:13:12+09:00",
+      "link": "https://www.edaily.co.kr/news/read?newsid=02637126645610296",
+      "source": "이데일리",
+      "source_body_digest": "feb329ef915f564221dbd8bd2d61d76ba8a3e0e0e211fa67fcfed5195946a0e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:654439d11002e36872cb46fafa448f6d4317a608189db2cafc9aeaf3424d3047",
+      "source_fact_keys": [
+        "source_fact:v1:6e498972b92c854d662f36312f216bf4fdb4a4cb5b181e6dbaa90c17a31072e3",
+        "source_fact:v1:7d73a92d3d44d0719994d83b1daaca6ef5c280705b612a7c3c84494e0869846d",
+        "source_fact:v1:8ad562b5f6ecf0987e94f09dd5477b4d01ab0ac11c124727d24b1fc94fb8b1ba"
+      ],
+      "source_published_kst": "2026-10-06T08:46+09:00",
+      "title": "LIG가 찜한 부품사…“디와이씨, 방산 가치 주가에 안 담겼다”"
+    },
     "title:e774a136f4f831b889076817": {
       "first_seen_kst": "2026-10-03T22:18:07+09:00",
       "lanes": {
@@ -160251,5 +161291,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T01:59:08+09:00"
+  "updated_at_kst": "2026-10-07T02:13:12+09:00"
 }
