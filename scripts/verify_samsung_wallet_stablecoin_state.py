@@ -165,7 +165,7 @@ def assert_wallet_patent_alerts_once_without_stage_promotion():
     current = topic_state(
         official(
             wallet_patent_us_confirmed=False,
-            wallet_patent_us_crosscheck_confirmed=True,
+            wallet_patent_us_crosscheck_confirmed=False,
             wallet_patent_family_confirmed=True,
             wallet_patent_news_confirmed=True,
         ),
