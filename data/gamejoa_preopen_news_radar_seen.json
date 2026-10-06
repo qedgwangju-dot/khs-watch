@@ -1743,20 +1743,20 @@
     "event:4af0ec859cb52ac4537c1713": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
-        "live": "2026-10-06T21:40:57+09:00"
+        "live": "2026-10-06T22:21:21+09:00"
       },
-      "last_seen_kst": "2026-10-06T21:40:57+09:00",
-      "link": "https://www.mk.co.kr/news/business/12169612",
-      "source": "매일경제",
-      "source_body_digest": "8773ff343f9bc94194f72e4fae11b5eebed12d1f7723d83f41312a1452503172",
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.mt.co.kr/living/2026/10/06/2026100616183727001",
+      "source": "머니투데이",
+      "source_body_digest": "2e348f537e07c6f898e65e23d66f5532d5ef60ef13222f1c8c34faf654a5fa79",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:a9250ccb1b2c588aacbd63aa9853327052077afae7ce432c97a80d932d727e0d",
+      "source_fact_identity": "source_facts:v1:c42a77cebf4d989a2051b3351160734a51536edd084a21ede3371cd12b0ed7aa",
       "source_fact_keys": [
-        "source_fact:v1:12e7f89e64251a8a4635c54efa8b41ba382877355480260f39890c790dc7ccec",
-        "source_fact:v1:d6d4479441b85ed082b32e270291018ca05f977e715b6e4e5abb141da4c8cde6"
+        "source_fact:v1:5bfe27a251b1a4116906683bf6cbce3ab7fc9df5788db1a4100d12a30b7dc352",
+        "source_fact:v1:a496daea31368fb202912e33125eb97ccc4df54d847275aa100c711f30f2366b"
       ],
-      "source_published_kst": "2026-10-06T17:50+09:00",
-      "title": "신세계 '유통·콘텐츠' 시너지"
+      "source_published_kst": "2026-10-06T16:35+09:00",
+      "title": "신세계, 콘텐츠 기업으로 키운다...워너브라더스 인수 1.4조 투자"
     },
     "event:4b6c66ca03796acb2d14c1b0": {
       "first_seen_kst": "2026-10-01T11:18:10+09:00",
@@ -7363,6 +7363,41 @@
       "source_published_kst": "2026-10-06T00:04+09:00",
       "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
     },
+    "fact:145448ffeef8790b975f3041": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/06/2026100620213878838",
+      "source": "머니투데이",
+      "source_body_digest": "d0fed5aa6618ec17b3155d6042f8c8ec808e805fa95992be7ab747a473bf6e7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f31ebddca6f24352e1226ac8e131a6bcfd017924a4b1fbf33020180702cd5e4b",
+      "source_fact_keys": [
+        "source_fact:v1:9c45a3c51105c5b2f9f9f7a9fe62640092d2dc65e2aff1f49a5376db410b2fc6"
+      ],
+      "source_published_kst": "2026-10-06T20:38+09:00",
+      "title": "이 대통령 \"전세사기 피해자 기다리지 않도록\"…보증금 3분의 1 보장"
+    },
+    "fact:145920c3b3800eca2cddf7a5": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633024",
+      "source": "이투데이",
+      "source_body_digest": "eff32d377940860e440f414aee9c7800e3320c9fabc0d9118e6741608eba5add",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e41c8734f0a597a828bae735c7ccebe4dbfefc0b302b258173a1113a3014f8b",
+      "source_fact_keys": [
+        "source_fact:v1:5ce01c4dd57a4481fe5cbc92a0209aa6c97b3747366c9c57195266a08776cb53",
+        "source_fact:v1:7df382e488d94827ca40d6a5c38ee945dbe046e606f158329541dfd1218b5fdc"
+      ],
+      "source_published_kst": "2026-10-06T18:04+09:00",
+      "title": "가을에만 파는데 3000만잔…스타벅스 ‘블글라’ 8년째 흥행"
+    },
     "fact:14922e890d3a425a5f2eb55b": {
       "first_seen_kst": "2026-10-06T00:03:48+09:00",
       "lanes": {
@@ -10484,6 +10519,24 @@
       "source_published_kst": "2026-10-05T09:55+09:00",
       "title": "日라피더스, 삼성·TSMC식 설계동맹 생태계 구축"
     },
+    "fact:5a3f133ab18f3896d3602e08": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.mt.co.kr/living/2026/10/06/2026100616183727001",
+      "source": "머니투데이",
+      "source_body_digest": "2e348f537e07c6f898e65e23d66f5532d5ef60ef13222f1c8c34faf654a5fa79",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c42a77cebf4d989a2051b3351160734a51536edd084a21ede3371cd12b0ed7aa",
+      "source_fact_keys": [
+        "source_fact:v1:5bfe27a251b1a4116906683bf6cbce3ab7fc9df5788db1a4100d12a30b7dc352",
+        "source_fact:v1:a496daea31368fb202912e33125eb97ccc4df54d847275aa100c711f30f2366b"
+      ],
+      "source_published_kst": "2026-10-06T16:35+09:00",
+      "title": "신세계, 콘텐츠 기업으로 키운다...워너브라더스 인수 1.4조 투자"
+    },
     "fact:5b3226a48706e53e0b3d6cbd": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
       "lanes": {
@@ -10864,6 +10917,24 @@
       ],
       "source_published_kst": "2026-10-06T00:10+09:00",
       "title": "\"숫자와 스토리 모두 찾아야\"…월가 트레이더·퀀트 우승자의 투자 전략"
+    },
+    "fact:67425eb6f3164b5c841f6acf": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.fnnews.com/news/202610061810031781",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "a45ac4b1ad446781bbc499da92548309e1b405fc2fc0172933e34433e1f030a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4723563fe74b5515653efe615f97254e0f4216970fd0189baff08c5270fb5f97",
+      "source_fact_keys": [
+        "source_fact:v1:152a428ccc75bef5c18ddca002ea7f0ba5c17cbf2f291f22ecc510046267561a",
+        "source_fact:v1:c439a8a1b58f62f521e06834a6483e30d078946a72f3037d57d0790e40e1ddac"
+      ],
+      "source_published_kst": "2026-10-06T18:10+09:00",
+      "title": "\"알래스카 LNG 전략적 가치 생겼지만… 상업성이 전제\" [李정부 2년차 국감]"
     },
     "fact:6784e420295326ed0f250a2f": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -12617,6 +12688,26 @@
       ],
       "source_published_kst": "2026-10-05T18:03+09:00",
       "title": "'빚의 제국 빛을 잃다' 보도 인상적 … 고금리 위험요인 더 짚어달라"
+    },
+    "fact:90fbad43eaad6efd2ae7f571": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633014",
+      "source": "이투데이",
+      "source_body_digest": "d8bdc3656f26c1022d70332d353f22cf60487944546c9151ba92ab3837048af5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:975c8444cf53a6c17c21c34ab4c51da483ac1586e2d1373e78cd3a74e2c62fa7",
+      "source_fact_keys": [
+        "source_fact:v1:23e2e2bb288c8056eb74c533248ca9db98467c313804153e975420db69811c1e",
+        "source_fact:v1:6f6c27d649d193c3e8a6280b7a516c559e9045dccdf36f24ced305147a2e9383",
+        "source_fact:v1:6f9ae80a18576bb0597d1d05e8e179303f1aa0909674dc2a07eaad85040b0b4b",
+        "source_fact:v1:d4b000fd579ca3ea8be6965928d2c99a3ed0f1775cd7d3bf1dc23e404385ce6e"
+      ],
+      "source_published_kst": "2026-10-06T17:37+09:00",
+      "title": "규제자유특구 문턱 밖 경기…AI기본법 근거로 'AI집적단지' 자체 지정 추진"
     },
     "fact:9129407c827bd7f55536496a": {
       "first_seen_kst": "2026-10-06T08:43:45+09:00",
@@ -16345,6 +16436,26 @@
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "일진전기, 중전기 수주 북미 비중 80% 육박"
     },
+    "fact:e6cc466b500be3cedd54bdd6": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815781",
+      "source": "뉴시스",
+      "source_body_digest": "8aa1c17efe893f1fe0ce6b734708529aba02ec9f5d4345e2f5e15fd65736e4ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d976ec9dc2314787a2e6b77bd3ac5e94619f4f188e97ec4a663c65f46c729e4",
+      "source_fact_keys": [
+        "source_fact:v1:2194f9697ccc1e89eb1c4bbc1ead9cdb17d11639666a0f2535ab5f9aff05fd38",
+        "source_fact:v1:403dd74623211c1b3c3eb562c5826b22d1f3ea3f2f31dfc5b9648e4f75f1663c",
+        "source_fact:v1:8068cd9a834534582d5ad45c0307867680ac969d4e95a4b68583f5057287e7b9",
+        "source_fact:v1:bef51550855d77432f5745198c0c11add1dffec6bf25022b60df697d738219b7"
+      ],
+      "source_published_kst": "2026-10-06T14:59+09:00",
+      "title": "세종시, 액티스코리아와 'AI 데이터센터' 건립…\"1.8조 투입\""
+    },
     "fact:e6e8dbcc70bc275d5bd833b1": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
       "lanes": {
@@ -18025,6 +18136,24 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T14:49+09:00",
       "title": "국힘 \"서울 아파트값 86주 연속 상승, 李 규제 만능주의가 초래\""
+    },
+    "link:06a57af48d37719f110cf1d3": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.mt.co.kr/living/2026/10/06/2026100616183727001",
+      "source": "머니투데이",
+      "source_body_digest": "2e348f537e07c6f898e65e23d66f5532d5ef60ef13222f1c8c34faf654a5fa79",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c42a77cebf4d989a2051b3351160734a51536edd084a21ede3371cd12b0ed7aa",
+      "source_fact_keys": [
+        "source_fact:v1:5bfe27a251b1a4116906683bf6cbce3ab7fc9df5788db1a4100d12a30b7dc352",
+        "source_fact:v1:a496daea31368fb202912e33125eb97ccc4df54d847275aa100c711f30f2366b"
+      ],
+      "source_published_kst": "2026-10-06T16:35+09:00",
+      "title": "신세계, 콘텐츠 기업으로 키운다...워너브라더스 인수 1.4조 투자"
     },
     "link:06a73b3d77d915b765b80f15": {
       "first_seen_kst": "2026-10-05T10:24:46+09:00",
@@ -20593,6 +20722,21 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T17:12+09:00",
       "title": "리사 수 AMD 회장, 7개월 만에 방한…7일 ‘게이머 데이’ 참석"
+    },
+    "link:1fd54fddef33012cfa7cd3a9": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006181200008",
+      "source": "연합뉴스",
+      "source_body_digest": "19ef2c2feaaccc503ed44d054738941e973f7668ceceaebdbf003bacb67e83db",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T18:24+09:00",
+      "title": "티에스모스트 등 3개사, 코스닥 상장예비심사 신청 | 연합뉴스"
     },
     "link:1fd8fd2d2ca93c001989b497": {
       "first_seen_kst": "2026-10-05T17:16:33+09:00",
@@ -25527,6 +25671,24 @@
       "source": "조선비즈",
       "title": "현대차·기아, 3분기 美 역대 최다 기록… 포드 제치고 ‘빅3’ 눈앞"
     },
+    "link:4e351237455d3e81be0b7d01": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633024",
+      "source": "이투데이",
+      "source_body_digest": "eff32d377940860e440f414aee9c7800e3320c9fabc0d9118e6741608eba5add",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e41c8734f0a597a828bae735c7ccebe4dbfefc0b302b258173a1113a3014f8b",
+      "source_fact_keys": [
+        "source_fact:v1:5ce01c4dd57a4481fe5cbc92a0209aa6c97b3747366c9c57195266a08776cb53",
+        "source_fact:v1:7df382e488d94827ca40d6a5c38ee945dbe046e606f158329541dfd1218b5fdc"
+      ],
+      "source_published_kst": "2026-10-06T18:04+09:00",
+      "title": "가을에만 파는데 3000만잔…스타벅스 ‘블글라’ 8년째 흥행"
+    },
     "link:4e38975bd4dd63f6afccb0e2": {
       "first_seen_kst": "2026-10-04T20:25:15+09:00",
       "lanes": {
@@ -27125,6 +27287,23 @@
       "source": "이투데이",
       "title": "우진엔텍, 3개월 공공 입찰참가 제한에 법적 대응…“기존 용역 수행 및 매출 실현과는 무관”"
     },
+    "link:5d91ca2fabdd08c60a0efaa4": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/06/2026100620213878838",
+      "source": "머니투데이",
+      "source_body_digest": "d0fed5aa6618ec17b3155d6042f8c8ec808e805fa95992be7ab747a473bf6e7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f31ebddca6f24352e1226ac8e131a6bcfd017924a4b1fbf33020180702cd5e4b",
+      "source_fact_keys": [
+        "source_fact:v1:9c45a3c51105c5b2f9f9f7a9fe62640092d2dc65e2aff1f49a5376db410b2fc6"
+      ],
+      "source_published_kst": "2026-10-06T20:38+09:00",
+      "title": "이 대통령 \"전세사기 피해자 기다리지 않도록\"…보증금 3분의 1 보장"
+    },
     "link:5da6815bdde0bdadd839cefb": {
       "first_seen_kst": "2026-09-21T08:55:26+09:00",
       "lanes": {
@@ -27811,6 +27990,24 @@
       ],
       "source_published_kst": "2026-10-06T15:16+09:00",
       "title": "요거트 찹쌀떡·피자설기…떡은 어떻게 대박템이 됐을까 [푸드360]"
+    },
+    "link:637ad5e9c4e7b6560c6fab59": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.fnnews.com/news/202610061810031781",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "a45ac4b1ad446781bbc499da92548309e1b405fc2fc0172933e34433e1f030a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4723563fe74b5515653efe615f97254e0f4216970fd0189baff08c5270fb5f97",
+      "source_fact_keys": [
+        "source_fact:v1:152a428ccc75bef5c18ddca002ea7f0ba5c17cbf2f291f22ecc510046267561a",
+        "source_fact:v1:c439a8a1b58f62f521e06834a6483e30d078946a72f3037d57d0790e40e1ddac"
+      ],
+      "source_published_kst": "2026-10-06T18:10+09:00",
+      "title": "\"알래스카 LNG 전략적 가치 생겼지만… 상업성이 전제\" [李정부 2년차 국감]"
     },
     "link:6396b09e6cce5a689cf1e2ab": {
       "first_seen_kst": "2026-09-30T01:58:47+09:00",
@@ -29769,6 +29966,26 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=03768726645582416",
       "source": "이데일리",
       "title": "中 CXMT까지 참전…치킨게임 공포 엄습하는 낸드플래시"
+    },
+    "link:7681eca19a67a196e331494f": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815781",
+      "source": "뉴시스",
+      "source_body_digest": "8aa1c17efe893f1fe0ce6b734708529aba02ec9f5d4345e2f5e15fd65736e4ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d976ec9dc2314787a2e6b77bd3ac5e94619f4f188e97ec4a663c65f46c729e4",
+      "source_fact_keys": [
+        "source_fact:v1:2194f9697ccc1e89eb1c4bbc1ead9cdb17d11639666a0f2535ab5f9aff05fd38",
+        "source_fact:v1:403dd74623211c1b3c3eb562c5826b22d1f3ea3f2f31dfc5b9648e4f75f1663c",
+        "source_fact:v1:8068cd9a834534582d5ad45c0307867680ac969d4e95a4b68583f5057287e7b9",
+        "source_fact:v1:bef51550855d77432f5745198c0c11add1dffec6bf25022b60df697d738219b7"
+      ],
+      "source_published_kst": "2026-10-06T14:59+09:00",
+      "title": "세종시, 액티스코리아와 'AI 데이터센터' 건립…\"1.8조 투입\""
     },
     "link:76b213adbe2fca481cac4b89": {
       "first_seen_kst": "2026-10-03T12:26:15+09:00",
@@ -42583,6 +42800,26 @@
       "source": "매일경제",
       "title": "자사주 거의 다 샀고 … 삼전닉스 주가는요?"
     },
+    "link:f2fb2bf068ac245981f4883b": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633014",
+      "source": "이투데이",
+      "source_body_digest": "d8bdc3656f26c1022d70332d353f22cf60487944546c9151ba92ab3837048af5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:975c8444cf53a6c17c21c34ab4c51da483ac1586e2d1373e78cd3a74e2c62fa7",
+      "source_fact_keys": [
+        "source_fact:v1:23e2e2bb288c8056eb74c533248ca9db98467c313804153e975420db69811c1e",
+        "source_fact:v1:6f6c27d649d193c3e8a6280b7a516c559e9045dccdf36f24ced305147a2e9383",
+        "source_fact:v1:6f9ae80a18576bb0597d1d05e8e179303f1aa0909674dc2a07eaad85040b0b4b",
+        "source_fact:v1:d4b000fd579ca3ea8be6965928d2c99a3ed0f1775cd7d3bf1dc23e404385ce6e"
+      ],
+      "source_published_kst": "2026-10-06T17:37+09:00",
+      "title": "규제자유특구 문턱 밖 경기…AI기본법 근거로 'AI집적단지' 자체 지정 추진"
+    },
     "link:f321802d38198c0cf93adb59": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -52399,6 +52636,23 @@
       "source": "이데일리",
       "title": "美·이란 대화 재개에 나스닥 이틀 연속 사상 최고 [월스트리트in]"
     },
+    "original:52eb5411f7c29dc1adf8ba20": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/06/2026100620213878838",
+      "source": "머니투데이",
+      "source_body_digest": "d0fed5aa6618ec17b3155d6042f8c8ec808e805fa95992be7ab747a473bf6e7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f31ebddca6f24352e1226ac8e131a6bcfd017924a4b1fbf33020180702cd5e4b",
+      "source_fact_keys": [
+        "source_fact:v1:9c45a3c51105c5b2f9f9f7a9fe62640092d2dc65e2aff1f49a5376db410b2fc6"
+      ],
+      "source_published_kst": "2026-10-06T20:38+09:00",
+      "title": "이 대통령 \"전세사기 피해자 기다리지 않도록\"…보증금 3분의 1 보장"
+    },
     "original:52f6bfa75b5118a4035a1a51": {
       "first_seen_kst": "2026-10-02T07:58:50+09:00",
       "lanes": {
@@ -55989,6 +56243,21 @@
       "source_event_identity": "",
       "title": "싸이큐리온, 사상 최대 5500만달러 10년 계약..공공안전 확장 가속"
     },
+    "original:74ff83f7666ac60fa6cfb7e9": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006181200008",
+      "source": "연합뉴스",
+      "source_body_digest": "19ef2c2feaaccc503ed44d054738941e973f7668ceceaebdbf003bacb67e83db",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T18:24+09:00",
+      "title": "티에스모스트 등 3개사, 코스닥 상장예비심사 신청 | 연합뉴스"
+    },
     "original:759c7d0ded476f74254c9ad2": {
       "first_seen_kst": "2026-10-01T08:48:03+09:00",
       "lanes": {
@@ -57271,6 +57540,24 @@
       "source_published_kst": "2026-10-05T22:50+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 해외CB 가격 확정..표면금리 0%"
     },
+    "original:84b835d7f10f1ad8453335d7": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.mt.co.kr/living/2026/10/06/2026100616183727001",
+      "source": "머니투데이",
+      "source_body_digest": "2e348f537e07c6f898e65e23d66f5532d5ef60ef13222f1c8c34faf654a5fa79",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c42a77cebf4d989a2051b3351160734a51536edd084a21ede3371cd12b0ed7aa",
+      "source_fact_keys": [
+        "source_fact:v1:5bfe27a251b1a4116906683bf6cbce3ab7fc9df5788db1a4100d12a30b7dc352",
+        "source_fact:v1:a496daea31368fb202912e33125eb97ccc4df54d847275aa100c711f30f2366b"
+      ],
+      "source_published_kst": "2026-10-06T16:35+09:00",
+      "title": "신세계, 콘텐츠 기업으로 키운다...워너브라더스 인수 1.4조 투자"
+    },
     "original:84f66621e2fbbed0059c1bdb": {
       "first_seen_kst": "2026-10-01T19:16:32+09:00",
       "lanes": {
@@ -57624,6 +57911,26 @@
       ],
       "source_published_kst": "2026-10-06T17:45+09:00",
       "title": "LG전자, 르노에 콕핏 솔루션 … 유럽 최초 상용 SDV에 탑재"
+    },
+    "original:889965e435191e764dffc8a0": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633014",
+      "source": "이투데이",
+      "source_body_digest": "d8bdc3656f26c1022d70332d353f22cf60487944546c9151ba92ab3837048af5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:975c8444cf53a6c17c21c34ab4c51da483ac1586e2d1373e78cd3a74e2c62fa7",
+      "source_fact_keys": [
+        "source_fact:v1:23e2e2bb288c8056eb74c533248ca9db98467c313804153e975420db69811c1e",
+        "source_fact:v1:6f6c27d649d193c3e8a6280b7a516c559e9045dccdf36f24ced305147a2e9383",
+        "source_fact:v1:6f9ae80a18576bb0597d1d05e8e179303f1aa0909674dc2a07eaad85040b0b4b",
+        "source_fact:v1:d4b000fd579ca3ea8be6965928d2c99a3ed0f1775cd7d3bf1dc23e404385ce6e"
+      ],
+      "source_published_kst": "2026-10-06T17:37+09:00",
+      "title": "규제자유특구 문턱 밖 경기…AI기본법 근거로 'AI집적단지' 자체 지정 추진"
     },
     "original:88cef6ab2a1f76c98b4b7439": {
       "first_seen_kst": "2026-10-05T07:24:39+09:00",
@@ -58376,6 +58683,24 @@
       "link": "https://www.fnnews.com/news/202610011654459279",
       "source": "파이낸셜뉴스",
       "title": "바이오협, 바이오기업 31곳 투자유치 지원…투자자 미팅 20건 연계"
+    },
+    "original:8eaa62d88f73367a7267c248": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633024",
+      "source": "이투데이",
+      "source_body_digest": "eff32d377940860e440f414aee9c7800e3320c9fabc0d9118e6741608eba5add",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e41c8734f0a597a828bae735c7ccebe4dbfefc0b302b258173a1113a3014f8b",
+      "source_fact_keys": [
+        "source_fact:v1:5ce01c4dd57a4481fe5cbc92a0209aa6c97b3747366c9c57195266a08776cb53",
+        "source_fact:v1:7df382e488d94827ca40d6a5c38ee945dbe046e606f158329541dfd1218b5fdc"
+      ],
+      "source_published_kst": "2026-10-06T18:04+09:00",
+      "title": "가을에만 파는데 3000만잔…스타벅스 ‘블글라’ 8년째 흥행"
     },
     "original:8eaccd05c34c21b897484d9d": {
       "first_seen_kst": "2026-10-03T01:23:19+09:00",
@@ -67368,6 +67693,26 @@
       "source": "머니투데이",
       "title": "트럼프의 '돈줄 압박'에… 5500억달러 대미투자 속도내는 일본"
     },
+    "original:e90660a93e7ad135eae85544": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815781",
+      "source": "뉴시스",
+      "source_body_digest": "8aa1c17efe893f1fe0ce6b734708529aba02ec9f5d4345e2f5e15fd65736e4ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d976ec9dc2314787a2e6b77bd3ac5e94619f4f188e97ec4a663c65f46c729e4",
+      "source_fact_keys": [
+        "source_fact:v1:2194f9697ccc1e89eb1c4bbc1ead9cdb17d11639666a0f2535ab5f9aff05fd38",
+        "source_fact:v1:403dd74623211c1b3c3eb562c5826b22d1f3ea3f2f31dfc5b9648e4f75f1663c",
+        "source_fact:v1:8068cd9a834534582d5ad45c0307867680ac969d4e95a4b68583f5057287e7b9",
+        "source_fact:v1:bef51550855d77432f5745198c0c11add1dffec6bf25022b60df697d738219b7"
+      ],
+      "source_published_kst": "2026-10-06T14:59+09:00",
+      "title": "세종시, 액티스코리아와 'AI 데이터센터' 건립…\"1.8조 투입\""
+    },
     "original:e938862ffd6de722ceac0987": {
       "first_seen_kst": "2026-10-06T16:09:23+09:00",
       "lanes": {
@@ -67446,6 +67791,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261001036200030",
       "source": "연합뉴스",
       "title": "CJ제일제당, 미국서 '비비고 김밥' 1∼7월 매출 59% 증가 | 연합뉴스"
+    },
+    "original:e9f3ccbee4f8a19a61967f0e": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.fnnews.com/news/202610061810031781",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "a45ac4b1ad446781bbc499da92548309e1b405fc2fc0172933e34433e1f030a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4723563fe74b5515653efe615f97254e0f4216970fd0189baff08c5270fb5f97",
+      "source_fact_keys": [
+        "source_fact:v1:152a428ccc75bef5c18ddca002ea7f0ba5c17cbf2f291f22ecc510046267561a",
+        "source_fact:v1:c439a8a1b58f62f521e06834a6483e30d078946a72f3037d57d0790e40e1ddac"
+      ],
+      "source_published_kst": "2026-10-06T18:10+09:00",
+      "title": "\"알래스카 LNG 전략적 가치 생겼지만… 상업성이 전제\" [李정부 2년차 국감]"
     },
     "original:ea075e3e8b5f8cd3de74e49c": {
       "first_seen_kst": "2026-09-18T08:01:06+09:00",
@@ -74245,6 +74608,26 @@
       "source_published_kst": "2026-10-06T10:09+09:00",
       "title": "씨피시스템 \"글로벌 MLCC 제조사사 장비에 '로보킷' 채택\""
     },
+    "source_fact:1a07035e902d74def470fb0e": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633014",
+      "source": "이투데이",
+      "source_body_digest": "d8bdc3656f26c1022d70332d353f22cf60487944546c9151ba92ab3837048af5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:975c8444cf53a6c17c21c34ab4c51da483ac1586e2d1373e78cd3a74e2c62fa7",
+      "source_fact_keys": [
+        "source_fact:v1:23e2e2bb288c8056eb74c533248ca9db98467c313804153e975420db69811c1e",
+        "source_fact:v1:6f6c27d649d193c3e8a6280b7a516c559e9045dccdf36f24ced305147a2e9383",
+        "source_fact:v1:6f9ae80a18576bb0597d1d05e8e179303f1aa0909674dc2a07eaad85040b0b4b",
+        "source_fact:v1:d4b000fd579ca3ea8be6965928d2c99a3ed0f1775cd7d3bf1dc23e404385ce6e"
+      ],
+      "source_published_kst": "2026-10-06T17:37+09:00",
+      "title": "규제자유특구 문턱 밖 경기…AI기본법 근거로 'AI집적단지' 자체 지정 추진"
+    },
     "source_fact:1a7ab4663f70b3eda77d90c6": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -74416,6 +74799,26 @@
       ],
       "source_published_kst": "2026-10-06T08:42+09:00",
       "title": "SJG세종, 美 조지아주 신규 생산공장 구축…150억 투입"
+    },
+    "source_fact:1b4175b40f527ec0bded92ea": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815781",
+      "source": "뉴시스",
+      "source_body_digest": "8aa1c17efe893f1fe0ce6b734708529aba02ec9f5d4345e2f5e15fd65736e4ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d976ec9dc2314787a2e6b77bd3ac5e94619f4f188e97ec4a663c65f46c729e4",
+      "source_fact_keys": [
+        "source_fact:v1:2194f9697ccc1e89eb1c4bbc1ead9cdb17d11639666a0f2535ab5f9aff05fd38",
+        "source_fact:v1:403dd74623211c1b3c3eb562c5826b22d1f3ea3f2f31dfc5b9648e4f75f1663c",
+        "source_fact:v1:8068cd9a834534582d5ad45c0307867680ac969d4e95a4b68583f5057287e7b9",
+        "source_fact:v1:bef51550855d77432f5745198c0c11add1dffec6bf25022b60df697d738219b7"
+      ],
+      "source_published_kst": "2026-10-06T14:59+09:00",
+      "title": "세종시, 액티스코리아와 'AI 데이터센터' 건립…\"1.8조 투입\""
     },
     "source_fact:1b42ab62934e4322db484a0e": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
@@ -84879,6 +85282,26 @@
       "source_published_kst": "2026-10-05T22:50+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 해외CB 가격 확정..표면금리 0%"
     },
+    "source_fact:512b4309d217d2ae0d57ebad": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633014",
+      "source": "이투데이",
+      "source_body_digest": "d8bdc3656f26c1022d70332d353f22cf60487944546c9151ba92ab3837048af5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:975c8444cf53a6c17c21c34ab4c51da483ac1586e2d1373e78cd3a74e2c62fa7",
+      "source_fact_keys": [
+        "source_fact:v1:23e2e2bb288c8056eb74c533248ca9db98467c313804153e975420db69811c1e",
+        "source_fact:v1:6f6c27d649d193c3e8a6280b7a516c559e9045dccdf36f24ced305147a2e9383",
+        "source_fact:v1:6f9ae80a18576bb0597d1d05e8e179303f1aa0909674dc2a07eaad85040b0b4b",
+        "source_fact:v1:d4b000fd579ca3ea8be6965928d2c99a3ed0f1775cd7d3bf1dc23e404385ce6e"
+      ],
+      "source_published_kst": "2026-10-06T17:37+09:00",
+      "title": "규제자유특구 문턱 밖 경기…AI기본법 근거로 'AI집적단지' 자체 지정 추진"
+    },
     "source_fact:513af5663197375d9fcaaf2e": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -92413,6 +92836,24 @@
       ],
       "source_published_kst": "2026-10-05T12:55+09:00",
       "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
+    },
+    "source_fact:7588e40cf646f8cec9dfa7f3": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.fnnews.com/news/202610061810031781",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "a45ac4b1ad446781bbc499da92548309e1b405fc2fc0172933e34433e1f030a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4723563fe74b5515653efe615f97254e0f4216970fd0189baff08c5270fb5f97",
+      "source_fact_keys": [
+        "source_fact:v1:152a428ccc75bef5c18ddca002ea7f0ba5c17cbf2f291f22ecc510046267561a",
+        "source_fact:v1:c439a8a1b58f62f521e06834a6483e30d078946a72f3037d57d0790e40e1ddac"
+      ],
+      "source_published_kst": "2026-10-06T18:10+09:00",
+      "title": "\"알래스카 LNG 전략적 가치 생겼지만… 상업성이 전제\" [李정부 2년차 국감]"
     },
     "source_fact:75a6d6d0575496ff037a0151": {
       "first_seen_kst": "2026-10-06T10:13:03+09:00",
@@ -100708,6 +101149,26 @@
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "[2026 국감] 호남 반도체 놓고 여야 격돌…김성환 기후부 장관 “전력·용수 공급 가능”"
     },
+    "source_fact:9e460f3b8a467195c15bb633": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815781",
+      "source": "뉴시스",
+      "source_body_digest": "8aa1c17efe893f1fe0ce6b734708529aba02ec9f5d4345e2f5e15fd65736e4ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d976ec9dc2314787a2e6b77bd3ac5e94619f4f188e97ec4a663c65f46c729e4",
+      "source_fact_keys": [
+        "source_fact:v1:2194f9697ccc1e89eb1c4bbc1ead9cdb17d11639666a0f2535ab5f9aff05fd38",
+        "source_fact:v1:403dd74623211c1b3c3eb562c5826b22d1f3ea3f2f31dfc5b9648e4f75f1663c",
+        "source_fact:v1:8068cd9a834534582d5ad45c0307867680ac969d4e95a4b68583f5057287e7b9",
+        "source_fact:v1:bef51550855d77432f5745198c0c11add1dffec6bf25022b60df697d738219b7"
+      ],
+      "source_published_kst": "2026-10-06T14:59+09:00",
+      "title": "세종시, 액티스코리아와 'AI 데이터센터' 건립…\"1.8조 투입\""
+    },
     "source_fact:9e5377f5b0de4d6f2f6ef65a": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
       "lanes": {
@@ -101411,6 +101872,24 @@
       "source_published_kst": "2026-10-06T06:37+09:00",
       "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
     },
+    "source_fact:a15a5e4ba22f5f397bc95a95": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633024",
+      "source": "이투데이",
+      "source_body_digest": "eff32d377940860e440f414aee9c7800e3320c9fabc0d9118e6741608eba5add",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e41c8734f0a597a828bae735c7ccebe4dbfefc0b302b258173a1113a3014f8b",
+      "source_fact_keys": [
+        "source_fact:v1:5ce01c4dd57a4481fe5cbc92a0209aa6c97b3747366c9c57195266a08776cb53",
+        "source_fact:v1:7df382e488d94827ca40d6a5c38ee945dbe046e606f158329541dfd1218b5fdc"
+      ],
+      "source_published_kst": "2026-10-06T18:04+09:00",
+      "title": "가을에만 파는데 3000만잔…스타벅스 ‘블글라’ 8년째 흥행"
+    },
     "source_fact:a167e1407bbf1accee6ea695": {
       "first_seen_kst": "2026-10-06T20:37:39+09:00",
       "lanes": {
@@ -101989,6 +102468,26 @@
       "source_published_kst": "2026-10-05T18:43+09:00",
       "title": "JEDEC, 첫 '실리콘 포토닉스' 신뢰성 표준 발표…AI인프라 변혁 예고"
     },
+    "source_fact:a51314e80703bc8e7e62a4f9": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633014",
+      "source": "이투데이",
+      "source_body_digest": "d8bdc3656f26c1022d70332d353f22cf60487944546c9151ba92ab3837048af5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:975c8444cf53a6c17c21c34ab4c51da483ac1586e2d1373e78cd3a74e2c62fa7",
+      "source_fact_keys": [
+        "source_fact:v1:23e2e2bb288c8056eb74c533248ca9db98467c313804153e975420db69811c1e",
+        "source_fact:v1:6f6c27d649d193c3e8a6280b7a516c559e9045dccdf36f24ced305147a2e9383",
+        "source_fact:v1:6f9ae80a18576bb0597d1d05e8e179303f1aa0909674dc2a07eaad85040b0b4b",
+        "source_fact:v1:d4b000fd579ca3ea8be6965928d2c99a3ed0f1775cd7d3bf1dc23e404385ce6e"
+      ],
+      "source_published_kst": "2026-10-06T17:37+09:00",
+      "title": "규제자유특구 문턱 밖 경기…AI기본법 근거로 'AI집적단지' 자체 지정 추진"
+    },
     "source_fact:a522e9ea9b7223f45706e8f9": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -102191,6 +102690,24 @@
       ],
       "source_published_kst": "2026-10-06T02:28+09:00",
       "title": "아람코 CEO \"세계 석유 공급 이미 압박…비축 최대 2년\""
+    },
+    "source_fact:a60616183ef3cb50e26960c5": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.mt.co.kr/living/2026/10/06/2026100616183727001",
+      "source": "머니투데이",
+      "source_body_digest": "2e348f537e07c6f898e65e23d66f5532d5ef60ef13222f1c8c34faf654a5fa79",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c42a77cebf4d989a2051b3351160734a51536edd084a21ede3371cd12b0ed7aa",
+      "source_fact_keys": [
+        "source_fact:v1:5bfe27a251b1a4116906683bf6cbce3ab7fc9df5788db1a4100d12a30b7dc352",
+        "source_fact:v1:a496daea31368fb202912e33125eb97ccc4df54d847275aa100c711f30f2366b"
+      ],
+      "source_published_kst": "2026-10-06T16:35+09:00",
+      "title": "신세계, 콘텐츠 기업으로 키운다...워너브라더스 인수 1.4조 투자"
     },
     "source_fact:a61cc5d73c68f0f4633de0fd": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -103074,6 +103591,26 @@
       ],
       "source_published_kst": "2026-10-06T13:52+09:00",
       "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
+    "source_fact:ab26e427af24fa14ba9967e9": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633014",
+      "source": "이투데이",
+      "source_body_digest": "d8bdc3656f26c1022d70332d353f22cf60487944546c9151ba92ab3837048af5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:975c8444cf53a6c17c21c34ab4c51da483ac1586e2d1373e78cd3a74e2c62fa7",
+      "source_fact_keys": [
+        "source_fact:v1:23e2e2bb288c8056eb74c533248ca9db98467c313804153e975420db69811c1e",
+        "source_fact:v1:6f6c27d649d193c3e8a6280b7a516c559e9045dccdf36f24ced305147a2e9383",
+        "source_fact:v1:6f9ae80a18576bb0597d1d05e8e179303f1aa0909674dc2a07eaad85040b0b4b",
+        "source_fact:v1:d4b000fd579ca3ea8be6965928d2c99a3ed0f1775cd7d3bf1dc23e404385ce6e"
+      ],
+      "source_published_kst": "2026-10-06T17:37+09:00",
+      "title": "규제자유특구 문턱 밖 경기…AI기본법 근거로 'AI집적단지' 자체 지정 추진"
     },
     "source_fact:ab2b79d56ef4f1d90c69a544": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -105278,6 +105815,26 @@
       "source_published_kst": "2026-10-06T15:11+09:00",
       "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\" | 연합뉴스"
     },
+    "source_fact:b589db2498a13859639e5e15": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815781",
+      "source": "뉴시스",
+      "source_body_digest": "8aa1c17efe893f1fe0ce6b734708529aba02ec9f5d4345e2f5e15fd65736e4ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d976ec9dc2314787a2e6b77bd3ac5e94619f4f188e97ec4a663c65f46c729e4",
+      "source_fact_keys": [
+        "source_fact:v1:2194f9697ccc1e89eb1c4bbc1ead9cdb17d11639666a0f2535ab5f9aff05fd38",
+        "source_fact:v1:403dd74623211c1b3c3eb562c5826b22d1f3ea3f2f31dfc5b9648e4f75f1663c",
+        "source_fact:v1:8068cd9a834534582d5ad45c0307867680ac969d4e95a4b68583f5057287e7b9",
+        "source_fact:v1:bef51550855d77432f5745198c0c11add1dffec6bf25022b60df697d738219b7"
+      ],
+      "source_published_kst": "2026-10-06T14:59+09:00",
+      "title": "세종시, 액티스코리아와 'AI 데이터센터' 건립…\"1.8조 투입\""
+    },
     "source_fact:b5e794cfb8a1e2f112735fd5": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -106677,6 +107234,23 @@
       ],
       "source_published_kst": "2026-10-05T22:05+09:00",
       "title": "LG전자, 북미서 5GW AI 데이터센터 냉각 장기계약…'칠러 1조' 조기 달성"
+    },
+    "source_fact:bcf73a6ed70a379f9c186a7b": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/06/2026100620213878838",
+      "source": "머니투데이",
+      "source_body_digest": "d0fed5aa6618ec17b3155d6042f8c8ec808e805fa95992be7ab747a473bf6e7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f31ebddca6f24352e1226ac8e131a6bcfd017924a4b1fbf33020180702cd5e4b",
+      "source_fact_keys": [
+        "source_fact:v1:9c45a3c51105c5b2f9f9f7a9fe62640092d2dc65e2aff1f49a5376db410b2fc6"
+      ],
+      "source_published_kst": "2026-10-06T20:38+09:00",
+      "title": "이 대통령 \"전세사기 피해자 기다리지 않도록\"…보증금 3분의 1 보장"
     },
     "source_fact:bd5883464545745a6b4e7aac": {
       "first_seen_kst": "2026-10-06T20:12:00+09:00",
@@ -109541,6 +110115,24 @@
       ],
       "source_published_kst": "2026-10-05T20:21+09:00",
       "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
+    },
+    "source_fact:cb891265eec9e91d2a78fbe1": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633024",
+      "source": "이투데이",
+      "source_body_digest": "eff32d377940860e440f414aee9c7800e3320c9fabc0d9118e6741608eba5add",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e41c8734f0a597a828bae735c7ccebe4dbfefc0b302b258173a1113a3014f8b",
+      "source_fact_keys": [
+        "source_fact:v1:5ce01c4dd57a4481fe5cbc92a0209aa6c97b3747366c9c57195266a08776cb53",
+        "source_fact:v1:7df382e488d94827ca40d6a5c38ee945dbe046e606f158329541dfd1218b5fdc"
+      ],
+      "source_published_kst": "2026-10-06T18:04+09:00",
+      "title": "가을에만 파는데 3000만잔…스타벅스 ‘블글라’ 8년째 흥행"
     },
     "source_fact:cba2cf682b6d83cfb9b946d1": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
@@ -114183,6 +114775,24 @@
       "source_published_kst": "2026-10-06T14:00+09:00",
       "title": "제주 초콜릿에서 글로벌 디저트로…제키스, '정책면세점' 타고 세계로"
     },
+    "source_fact:e089da059abdde0313320d8e": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.fnnews.com/news/202610061810031781",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "a45ac4b1ad446781bbc499da92548309e1b405fc2fc0172933e34433e1f030a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4723563fe74b5515653efe615f97254e0f4216970fd0189baff08c5270fb5f97",
+      "source_fact_keys": [
+        "source_fact:v1:152a428ccc75bef5c18ddca002ea7f0ba5c17cbf2f291f22ecc510046267561a",
+        "source_fact:v1:c439a8a1b58f62f521e06834a6483e30d078946a72f3037d57d0790e40e1ddac"
+      ],
+      "source_published_kst": "2026-10-06T18:10+09:00",
+      "title": "\"알래스카 LNG 전략적 가치 생겼지만… 상업성이 전제\" [李정부 2년차 국감]"
+    },
     "source_fact:e0a44a6b37af5fe952fe8b52": {
       "first_seen_kst": "2026-10-05T22:21:29+09:00",
       "lanes": {
@@ -117867,6 +118477,24 @@
       "source_published_kst": "2026-10-06T06:01+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
+    "source_fact:f2430bd25796f53448ade0e2": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.mt.co.kr/living/2026/10/06/2026100616183727001",
+      "source": "머니투데이",
+      "source_body_digest": "2e348f537e07c6f898e65e23d66f5532d5ef60ef13222f1c8c34faf654a5fa79",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c42a77cebf4d989a2051b3351160734a51536edd084a21ede3371cd12b0ed7aa",
+      "source_fact_keys": [
+        "source_fact:v1:5bfe27a251b1a4116906683bf6cbce3ab7fc9df5788db1a4100d12a30b7dc352",
+        "source_fact:v1:a496daea31368fb202912e33125eb97ccc4df54d847275aa100c711f30f2366b"
+      ],
+      "source_published_kst": "2026-10-06T16:35+09:00",
+      "title": "신세계, 콘텐츠 기업으로 키운다...워너브라더스 인수 1.4조 투자"
+    },
     "source_fact:f24dc15a69baafab48334efe": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -118922,6 +119550,26 @@
       ],
       "source_published_kst": "2026-10-06T17:14+09:00",
       "title": "알테오젠, 국민성장펀드 등 2천억원 규모 투자 유치(종합) | 연합뉴스"
+    },
+    "source_fact:f8fd2cd7450703b63022f6df": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815781",
+      "source": "뉴시스",
+      "source_body_digest": "8aa1c17efe893f1fe0ce6b734708529aba02ec9f5d4345e2f5e15fd65736e4ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d976ec9dc2314787a2e6b77bd3ac5e94619f4f188e97ec4a663c65f46c729e4",
+      "source_fact_keys": [
+        "source_fact:v1:2194f9697ccc1e89eb1c4bbc1ead9cdb17d11639666a0f2535ab5f9aff05fd38",
+        "source_fact:v1:403dd74623211c1b3c3eb562c5826b22d1f3ea3f2f31dfc5b9648e4f75f1663c",
+        "source_fact:v1:8068cd9a834534582d5ad45c0307867680ac969d4e95a4b68583f5057287e7b9",
+        "source_fact:v1:bef51550855d77432f5745198c0c11add1dffec6bf25022b60df697d738219b7"
+      ],
+      "source_published_kst": "2026-10-06T14:59+09:00",
+      "title": "세종시, 액티스코리아와 'AI 데이터센터' 건립…\"1.8조 투입\""
     },
     "source_fact:f91d88431eb719a4e923e7b7": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -129174,6 +129822,23 @@
       "source": "이데일리",
       "title": "美·이란 대화 재개에 나스닥 이틀 연속 사상 최고 [월스트리트in]"
     },
+    "title:52eb5411f7c29dc1adf8ba20": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.mt.co.kr/politics/2026/10/06/2026100620213878838",
+      "source": "머니투데이",
+      "source_body_digest": "d0fed5aa6618ec17b3155d6042f8c8ec808e805fa95992be7ab747a473bf6e7a",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:f31ebddca6f24352e1226ac8e131a6bcfd017924a4b1fbf33020180702cd5e4b",
+      "source_fact_keys": [
+        "source_fact:v1:9c45a3c51105c5b2f9f9f7a9fe62640092d2dc65e2aff1f49a5376db410b2fc6"
+      ],
+      "source_published_kst": "2026-10-06T20:38+09:00",
+      "title": "이 대통령 \"전세사기 피해자 기다리지 않도록\"…보증금 3분의 1 보장"
+    },
     "title:52f6bfa75b5118a4035a1a51": {
       "first_seen_kst": "2026-10-02T07:58:50+09:00",
       "lanes": {
@@ -132806,6 +133471,21 @@
       "source_event_identity": "",
       "title": "싸이큐리온, 사상 최대 5500만달러 10년 계약..공공안전 확장 가속"
     },
+    "title:74ff83f7666ac60fa6cfb7e9": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006181200008",
+      "source": "연합뉴스",
+      "source_body_digest": "19ef2c2feaaccc503ed44d054738941e973f7668ceceaebdbf003bacb67e83db",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T18:24+09:00",
+      "title": "티에스모스트 등 3개사, 코스닥 상장예비심사 신청 | 연합뉴스"
+    },
     "title:7540221a649ae5c157b0871a": {
       "first_seen_kst": "2026-10-06T18:16:47+09:00",
       "lanes": {
@@ -134160,6 +134840,24 @@
       "source_published_kst": "2026-10-05T22:50+09:00",
       "title": "유나이티드 마이크로일렉, 18억 달러 해외CB 가격 확정..표면금리 0%"
     },
+    "title:84b835d7f10f1ad8453335d7": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.mt.co.kr/living/2026/10/06/2026100616183727001",
+      "source": "머니투데이",
+      "source_body_digest": "2e348f537e07c6f898e65e23d66f5532d5ef60ef13222f1c8c34faf654a5fa79",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c42a77cebf4d989a2051b3351160734a51536edd084a21ede3371cd12b0ed7aa",
+      "source_fact_keys": [
+        "source_fact:v1:5bfe27a251b1a4116906683bf6cbce3ab7fc9df5788db1a4100d12a30b7dc352",
+        "source_fact:v1:a496daea31368fb202912e33125eb97ccc4df54d847275aa100c711f30f2366b"
+      ],
+      "source_published_kst": "2026-10-06T16:35+09:00",
+      "title": "신세계, 콘텐츠 기업으로 키운다...워너브라더스 인수 1.4조 투자"
+    },
     "title:84f66621e2fbbed0059c1bdb": {
       "first_seen_kst": "2026-10-01T19:16:32+09:00",
       "lanes": {
@@ -134513,6 +135211,26 @@
       ],
       "source_published_kst": "2026-10-06T17:45+09:00",
       "title": "LG전자, 르노에 콕핏 솔루션 … 유럽 최초 상용 SDV에 탑재"
+    },
+    "title:889965e435191e764dffc8a0": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633014",
+      "source": "이투데이",
+      "source_body_digest": "d8bdc3656f26c1022d70332d353f22cf60487944546c9151ba92ab3837048af5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:975c8444cf53a6c17c21c34ab4c51da483ac1586e2d1373e78cd3a74e2c62fa7",
+      "source_fact_keys": [
+        "source_fact:v1:23e2e2bb288c8056eb74c533248ca9db98467c313804153e975420db69811c1e",
+        "source_fact:v1:6f6c27d649d193c3e8a6280b7a516c559e9045dccdf36f24ced305147a2e9383",
+        "source_fact:v1:6f9ae80a18576bb0597d1d05e8e179303f1aa0909674dc2a07eaad85040b0b4b",
+        "source_fact:v1:d4b000fd579ca3ea8be6965928d2c99a3ed0f1775cd7d3bf1dc23e404385ce6e"
+      ],
+      "source_published_kst": "2026-10-06T17:37+09:00",
+      "title": "규제자유특구 문턱 밖 경기…AI기본법 근거로 'AI집적단지' 자체 지정 추진"
     },
     "title:88cef6ab2a1f76c98b4b7439": {
       "first_seen_kst": "2026-10-05T07:24:39+09:00",
@@ -135265,6 +135983,24 @@
       "link": "https://www.fnnews.com/news/202610011654459279",
       "source": "파이낸셜뉴스",
       "title": "바이오협, 바이오기업 31곳 투자유치 지원…투자자 미팅 20건 연계"
+    },
+    "title:8eaa62d88f73367a7267c248": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2633024",
+      "source": "이투데이",
+      "source_body_digest": "eff32d377940860e440f414aee9c7800e3320c9fabc0d9118e6741608eba5add",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6e41c8734f0a597a828bae735c7ccebe4dbfefc0b302b258173a1113a3014f8b",
+      "source_fact_keys": [
+        "source_fact:v1:5ce01c4dd57a4481fe5cbc92a0209aa6c97b3747366c9c57195266a08776cb53",
+        "source_fact:v1:7df382e488d94827ca40d6a5c38ee945dbe046e606f158329541dfd1218b5fdc"
+      ],
+      "source_published_kst": "2026-10-06T18:04+09:00",
+      "title": "가을에만 파는데 3000만잔…스타벅스 ‘블글라’ 8년째 흥행"
     },
     "title:8eaccd05c34c21b897484d9d": {
       "first_seen_kst": "2026-10-03T01:23:19+09:00",
@@ -144404,6 +145140,26 @@
       "source": "머니투데이",
       "title": "트럼프의 '돈줄 압박'에… 5500억달러 대미투자 속도내는 일본"
     },
+    "title:e90660a93e7ad135eae85544": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815781",
+      "source": "뉴시스",
+      "source_body_digest": "8aa1c17efe893f1fe0ce6b734708529aba02ec9f5d4345e2f5e15fd65736e4ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3d976ec9dc2314787a2e6b77bd3ac5e94619f4f188e97ec4a663c65f46c729e4",
+      "source_fact_keys": [
+        "source_fact:v1:2194f9697ccc1e89eb1c4bbc1ead9cdb17d11639666a0f2535ab5f9aff05fd38",
+        "source_fact:v1:403dd74623211c1b3c3eb562c5826b22d1f3ea3f2f31dfc5b9648e4f75f1663c",
+        "source_fact:v1:8068cd9a834534582d5ad45c0307867680ac969d4e95a4b68583f5057287e7b9",
+        "source_fact:v1:bef51550855d77432f5745198c0c11add1dffec6bf25022b60df697d738219b7"
+      ],
+      "source_published_kst": "2026-10-06T14:59+09:00",
+      "title": "세종시, 액티스코리아와 'AI 데이터센터' 건립…\"1.8조 투입\""
+    },
     "title:e938862ffd6de722ceac0987": {
       "first_seen_kst": "2026-10-06T16:09:23+09:00",
       "lanes": {
@@ -144482,6 +145238,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261001036200030",
       "source": "연합뉴스",
       "title": "CJ제일제당, 미국서 '비비고 김밥' 1∼7월 매출 59% 증가 | 연합뉴스"
+    },
+    "title:e9f3ccbee4f8a19a61967f0e": {
+      "first_seen_kst": "2026-10-06T22:21:21+09:00",
+      "lanes": {
+        "live": "2026-10-06T22:21:21+09:00"
+      },
+      "last_seen_kst": "2026-10-06T22:21:21+09:00",
+      "link": "https://www.fnnews.com/news/202610061810031781",
+      "source": "파이낸셜뉴스",
+      "source_body_digest": "a45ac4b1ad446781bbc499da92548309e1b405fc2fc0172933e34433e1f030a6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4723563fe74b5515653efe615f97254e0f4216970fd0189baff08c5270fb5f97",
+      "source_fact_keys": [
+        "source_fact:v1:152a428ccc75bef5c18ddca002ea7f0ba5c17cbf2f291f22ecc510046267561a",
+        "source_fact:v1:c439a8a1b58f62f521e06834a6483e30d078946a72f3037d57d0790e40e1ddac"
+      ],
+      "source_published_kst": "2026-10-06T18:10+09:00",
+      "title": "\"알래스카 LNG 전략적 가치 생겼지만… 상업성이 전제\" [李정부 2년차 국감]"
     },
     "title:ea075e3e8b5f8cd3de74e49c": {
       "first_seen_kst": "2026-09-18T08:01:06+09:00",
@@ -146501,5 +147275,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T22:08:07+09:00"
+  "updated_at_kst": "2026-10-06T22:21:21+09:00"
 }
