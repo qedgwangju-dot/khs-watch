@@ -256,7 +256,13 @@ def _iran_south_unattributed_explosions(row):
         "missile strike", "drone strike", "projectile hit", "projectiles hit",
         "적의 공격", "공습", "미사일 공격", "드론 공격", "발사체 피격", "발사체가 타격",
     ))
-    return south and explosion and not explicit_attack
+    attack_explicitly_unconfirmed = any(x in t for x in (
+        "no hostile projectile", "no projectile strike", "no airstrike",
+        "no hostile projectile or airstrike", "projectile or airstrike was officially confirmed",
+        "발사체·공습 확인 여부", "발사체 피격 확인 전", "공습 확인 전",
+        "원인 미확정 단계",
+    ))
+    return south and explosion and (attack_explicitly_unconfirmed or not explicit_attack)
 
 
 def _israel_oct7_abroad_warning(row):
