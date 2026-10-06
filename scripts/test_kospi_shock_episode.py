@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import time
 from collections import deque
-from kospi_shock_episode_watch import Watch, fmt_clock, ko_subject
+from kospi_shock_episode_watch import Watch, fmt_clock, ko_subject, ls_post
 
 w = Watch.__new__(Watch)
 w.idx = deque(maxlen=30000)
@@ -179,3 +179,38 @@ assert att8["program_crosscheck_ratio_pct"] > 5.0, att8
 assert att8["program_quality"] is False, att8
 assert att8["confidence"] == "중간", att8
 print("program_crosscheck_ratio_regression=true")
+
+
+# Regression: LS transport connection errors are retried instead of killing production immediately.
+import kospi_shock_episode_watch as ks
+class DummyResponse:
+    ok = True
+    status_code = 200
+    text = ""
+    def json(self):
+        return {"rsp_cd": "00000", "ok": True}
+attempts = {"n": 0}
+orig_post = ks.requests.post
+orig_sleep = ks.time.sleep
+def flaky_post(*args, **kwargs):
+    attempts["n"] += 1
+    if attempts["n"] < 3:
+        raise ks.requests.ConnectionError("synthetic disconnect")
+    return DummyResponse()
+try:
+    ks.requests.post = flaky_post
+    ks.time.sleep = lambda *_args, **_kwargs: None
+    out = ls_post("token", "/x", "TEST", {"x": 1})
+    assert out.get("ok") is True, out
+    assert attempts["n"] == 3, attempts
+finally:
+    ks.requests.post = orig_post
+    ks.time.sleep = orig_sleep
+print("ls_transport_retry_regression=true")
+
+# Regression: failure path must save a handoff before re-raising.
+import inspect
+amain_src = inspect.getsource(ks.amain)
+assert "w.save_handoff(handoff_out)" in amain_src, amain_src
+assert "handoff_save_error" in amain_src, amain_src
+print("failure_handoff_regression=true")
