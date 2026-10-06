@@ -1693,21 +1693,22 @@
     "event:513feb3bff03a74f9c842b5f": {
       "first_seen_kst": "2026-10-06T10:04:04+09:00",
       "lanes": {
-        "live": "2026-10-06T14:18:00+09:00"
+        "live": "2026-10-06T14:41:27+09:00"
       },
-      "last_seen_kst": "2026-10-06T14:18:00+09:00",
-      "link": "https://www.fnnews.com/news/202610061128361611",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "563aa72ef5347e7acded864cc48e3fde7db09339809ff896a40eda377a2d8baa",
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006088900003",
+      "source": "연합뉴스",
+      "source_body_digest": "9d2876b8fe5f34101964cf449e7fe7f9c7c0809680e05ef70c5928bdca337112",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:13ec1a20fcf17b7da0cabab48dc5b7d079262e69c90afad4018129815ba3add0",
+      "source_fact_identity": "source_facts:v1:0ef0d0d215ab4a1f53ad95645e42fee774ba76cb84d3cfc0f21e0e420b6ca6a2",
       "source_fact_keys": [
-        "source_fact:v1:1a3961e0dc3de31a07488171735729b040f8866d263982492c19a347a4f9741e",
-        "source_fact:v1:3e6c70436c447f1e2de70e057c4d246c8cc7be9a446a42b3b311ed3f7644f864",
-        "source_fact:v1:44724b03232246e05c92ded9dd5965a6697d13c1d505ef411c51e95327c3677e"
+        "source_fact:v1:0777f90caa1cd5bbf9b6551dd49621c2c3db178efb6665903b09e57825e5d6db",
+        "source_fact:v1:43e16b6ae79f89bc8ca0b0e47998986c22147def15dac0465b3bb149d10f4dfb",
+        "source_fact:v1:63be5539b41c5913d1ef6f5e4254cdd623095568857b2b23bd742d0e8bb67c1d",
+        "source_fact:v1:6a96cb1f4638fa9254dba361486bbe28334ee341be0c0544527de49e9a29efcc"
       ],
-      "source_published_kst": "2026-10-06T11:28+09:00",
-      "title": "삼성전기, 글로벌 기업에 2900억 MLCC 공급…AI부품 수주 '4조 클럽' 돌파"
+      "source_published_kst": "2026-10-06T11:46+09:00",
+      "title": "삼성전기, 글로벌 기업과 2천900억 AI 서버용 MLCC 공급계약 | 연합뉴스"
     },
     "event:515a30f540946889aaa693c1": {
       "first_seen_kst": "2026-10-01T21:43:03+09:00",
@@ -5704,6 +5705,27 @@
       "source_published_kst": "2026-10-05T05:01+09:00",
       "title": "국회 정무위 6일 국감 돌입…금융권 해킹에 5대 은행장 줄소환되나"
     },
+    "fact:0592711f0b204a9175ab3eb8": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000171",
+      "source": "전자신문",
+      "source_body_digest": "957d2ed3a478712fe11d4ef0def8cc0d2878439b9619b4299d877d7ec074f6b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6da784a2d5f6c3a35e563d1e9fe1c550318b91f7b8478f72772f5e3491c60741",
+      "source_fact_keys": [
+        "source_fact:v1:093cd7bb66943cb6a4c4c8e7fe3cc704b2c35d32e7d82ccad8db379333942970",
+        "source_fact:v1:16bb44cbf9cf5aa809086199bf14609718620fc4d30993c4441eefef7cb7e403",
+        "source_fact:v1:206b02f4e9ffaec4f6cfd04a5717b926b766b8f99f9dff654cff051bc53c1367",
+        "source_fact:v1:8ca66ec89483ee9704ff2446ed6261d5c4c32e896abe43bb3ad04411bd312785",
+        "source_fact:v1:c2a080287778dd5d98c4b38be890841283baef39ad5edfb49db68f195e0330c9"
+      ],
+      "source_published_kst": "2026-10-06T11:36+09:00",
+      "title": "신보·부산은행, K-콘텐츠 기업에 100억원 협약보증 공급"
+    },
     "fact:05a0e20af25d126bfb9361fe": {
       "first_seen_kst": "2026-10-06T07:08:46+09:00",
       "lanes": {
@@ -6423,6 +6445,26 @@
       ],
       "source_published_kst": "2026-10-05T08:55+09:00",
       "title": "매크로 공백+SEC 규제완화 효과…8.6만달러 회복[코인 모닝콜]"
+    },
+    "fact:14cdb0176d95d2e48b314c67": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006088900003",
+      "source": "연합뉴스",
+      "source_body_digest": "9d2876b8fe5f34101964cf449e7fe7f9c7c0809680e05ef70c5928bdca337112",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ef0d0d215ab4a1f53ad95645e42fee774ba76cb84d3cfc0f21e0e420b6ca6a2",
+      "source_fact_keys": [
+        "source_fact:v1:0777f90caa1cd5bbf9b6551dd49621c2c3db178efb6665903b09e57825e5d6db",
+        "source_fact:v1:43e16b6ae79f89bc8ca0b0e47998986c22147def15dac0465b3bb149d10f4dfb",
+        "source_fact:v1:63be5539b41c5913d1ef6f5e4254cdd623095568857b2b23bd742d0e8bb67c1d",
+        "source_fact:v1:6a96cb1f4638fa9254dba361486bbe28334ee341be0c0544527de49e9a29efcc"
+      ],
+      "source_published_kst": "2026-10-06T11:46+09:00",
+      "title": "삼성전기, 글로벌 기업과 2천900억 AI 서버용 MLCC 공급계약 | 연합뉴스"
     },
     "fact:15c34bd1a769d14839872339": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
@@ -7766,6 +7808,29 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "기후부 오늘 국감…반도체 전력 공급부터 원전 역할까지 현안 산적"
     },
+    "fact:42973bf4dfb13132e26fa031": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20260930000175",
+      "source": "전자신문",
+      "source_body_digest": "db8a1b7c8870131e4a835316c86dd7eb3d4b900f468f83f4b1a650594d244122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78aa65b961c85633f9f9d561186f6a2ba54441e0f4bf86dfa6a8109dc5c8236a",
+      "source_fact_keys": [
+        "source_fact:v1:35a1cbf80ab98f791f7b3478d5bdefdbfdffa4fd7edf7e16e40f50154d84bad9",
+        "source_fact:v1:3e10468d5453a41448d5c0fd589451aedfbe986442aff5e40b450ca4c65f38a7",
+        "source_fact:v1:4692eaadd7f02e8294af65010bef226222e9e7cc7ad42b2bca06fb9bac7cd9d9",
+        "source_fact:v1:5c354d17470eddb6b59fe8780066d6355ee69d52644d5c07ca64a356430a7920",
+        "source_fact:v1:7e6e3cebba864dbf7eb16b073e1254ff36911846a37582bff678f978ba50c5ae",
+        "source_fact:v1:84ad2ba7d9fe8edd0ae1f29b96a8ec750d1ba2480fca46d4532bb214382b55fd",
+        "source_fact:v1:fee90b70598cff5812ffbff2d7fd4032978890b12225a8026d85e8802ec9bd40"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "직스테크놀로지·한신공영·정도, AI 기반 '데이터센터 스마트 건설' 맞손"
+    },
     "fact:48196e97d386c7c9195d05f4": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
       "lanes": {
@@ -8368,6 +8433,25 @@
       ],
       "source_published_kst": "2026-10-05T09:55+09:00",
       "title": "日라피더스, 삼성·TSMC식 설계동맹 생태계 구축"
+    },
+    "fact:5b3226a48706e53e0b3d6cbd": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.mt.co.kr/index.php/politics/2026/10/06/2026100611034495210",
+      "source": "머니투데이",
+      "source_body_digest": "1ff5e23fa51aba4e87ebed59295c39155cb59362faf90be26aadb1f3e13449eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:75a9de0cf8eab883dc1f4700db63dbcff738439ee1ec149eff71135e2a56c986",
+      "source_fact_keys": [
+        "source_fact:v1:1358521db47c663494575cdecbb55c117e20a1dba5a34c3b614e37c7fb5d8878",
+        "source_fact:v1:2dbe5af0bb924a74e0c1239bb4d96b5cbcb140be76a9c0b0d44e477fc805cc93",
+        "source_fact:v1:d26f62abf8dcffc11e46028956b0c4d035afc27fc707936d3d2865c726970a98"
+      ],
+      "source_published_kst": "2026-10-06T11:49+09:00",
+      "title": "野, '호남 반도체' 공세...김정관 산업장관 \"기업이 먼저 서남권 투자 제안\""
     },
     "fact:5b59cadb30ac5f2d0aa55ad7": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
@@ -9071,6 +9155,27 @@
       ],
       "source_published_kst": "2026-10-05T09:00+09:00",
       "title": "순창군, 대학생 생활비 지원사업 전개…10월6~23일 접수"
+    },
+    "fact:77a805cd20eae5f57c969040": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006087900003?section=economy/all",
+      "source": "연합뉴스",
+      "source_body_digest": "52b474e11224bcbe39a80a7dcbb0ee1131be2e96143ad893ec5a2f694f0161e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b7f4a2c9f4276a2544cdfc2c05444f5a7e695082789c7b534200315940db87b",
+      "source_fact_keys": [
+        "source_fact:v1:0f8a278b835960f945afd1c68015c87de00bc5a07dc859cd048f14b3e3866c39",
+        "source_fact:v1:ab03b2f978b64d2aaeed082fe514eea9a4997eebce646a9a7bc9fcbf1f8d4cd5",
+        "source_fact:v1:afb01fe2c34c895d78cf1f947e7e77bd4a045ea5335cffdbc329b8c2ed85d004",
+        "source_fact:v1:b9b309661c19c28a7c284fb77472cece5e2e9de720a12978d7e30d75cb01e04a",
+        "source_fact:v1:c6085ccd685f280f6f2dc00e5fe8486b91a66a288ed97b749ccffecf1b40e11d"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "정부 \"11월 원유 90% 이상 확보…나프타도 90% 이상\" | 연합뉴스"
     },
     "fact:77bc4700a45c5d14b5933afa": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -10778,6 +10883,24 @@
       "source_published_kst": "2026-10-05T21:50+09:00",
       "title": "크리티컬메탈스, 유러피언리튬 조건부 주식 지급의무 소멸 합의에 투자자 주목"
     },
+    "fact:bd9b681198164964f4727201": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000173",
+      "source": "전자신문",
+      "source_body_digest": "29f75226f0d2c7f472ed9a648bf525fca7d62a17fe6ce933dc87a35210ce07d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:863a99edaaf0ac2585741b0b6664ce95b441852d6179fdf820ad80d8e7922a72",
+      "source_fact_keys": [
+        "source_fact:v1:eaf3d5f73f6acd022f74acfc52e7bdd6f7a5c1c5577f30a25df44d7206be231d",
+        "source_fact:v1:f4e966704fc0b3da418f1432bd39fdd7d8342528870bbc1211284796a227932e"
+      ],
+      "source_published_kst": "2026-10-06T11:38+09:00",
+      "title": "금투협, 글로벌 펀드산업 현안 논의…日 자산운용협회와 협력"
+    },
     "fact:bf245850838f50e6e842b180": {
       "first_seen_kst": "2026-10-05T22:57:49+09:00",
       "lanes": {
@@ -12035,6 +12158,26 @@
       ],
       "source_published_kst": "2026-10-05T22:21+09:00",
       "title": "뉴로원 메디컬 테크놀러지, 4분기 잠정 제품매출 380만달러..38% 증가"
+    },
+    "fact:ec55d6e78ef9281f34bfd3a2": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000175",
+      "source": "전자신문",
+      "source_body_digest": "b88d251d98d586679a2a8b499108e007ee39b07b2443a6e0fb903b624538b749",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c92dda8d05d777353de872d50daffa4c8414d727da5053c0c6d9c4ef2dd6de83",
+      "source_fact_keys": [
+        "source_fact:v1:1572e45cd9f4f68452e66e838636ed9990426a706d5017cbc46778b521e123e3",
+        "source_fact:v1:6bd838079c5ac33dacf9edae01f57ea079b857928824fc9211ebe4c33e5d6f55",
+        "source_fact:v1:bca2ca48ed5bf5ed153e385c7bf8e97d33d00decd2de10b84f0e58caddfe5441",
+        "source_fact:v1:fb67a97f375709f0044420860655e33ef3357fefd33aa31ce7f6d98f5cebb2f1"
+      ],
+      "source_published_kst": "2026-10-06T11:45+09:00",
+      "title": "車 디스플레이 유리 수입 간소화…재생에너지 '다수 대 다수' PPA 허용"
     },
     "fact:ed2a4f20e1835c85d00d1b6d": {
       "first_seen_kst": "2026-10-05T20:38:34+09:00",
@@ -13843,6 +13986,27 @@
       "source": "파이낸셜뉴스",
       "title": "낸드 플래시 호황에 불 붙은 투자유치…韓中日 상장·증설 '총력전'"
     },
+    "link:1245f20b6c47b867319c4dcd": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006087900003?section=economy/all",
+      "source": "연합뉴스",
+      "source_body_digest": "52b474e11224bcbe39a80a7dcbb0ee1131be2e96143ad893ec5a2f694f0161e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b7f4a2c9f4276a2544cdfc2c05444f5a7e695082789c7b534200315940db87b",
+      "source_fact_keys": [
+        "source_fact:v1:0f8a278b835960f945afd1c68015c87de00bc5a07dc859cd048f14b3e3866c39",
+        "source_fact:v1:ab03b2f978b64d2aaeed082fe514eea9a4997eebce646a9a7bc9fcbf1f8d4cd5",
+        "source_fact:v1:afb01fe2c34c895d78cf1f947e7e77bd4a045ea5335cffdbc329b8c2ed85d004",
+        "source_fact:v1:b9b309661c19c28a7c284fb77472cece5e2e9de720a12978d7e30d75cb01e04a",
+        "source_fact:v1:c6085ccd685f280f6f2dc00e5fe8486b91a66a288ed97b749ccffecf1b40e11d"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "정부 \"11월 원유 90% 이상 확보…나프타도 90% 이상\" | 연합뉴스"
+    },
     "link:128869b43cca561d181fe3d7": {
       "first_seen_kst": "2026-10-02T00:28:46+09:00",
       "lanes": {
@@ -14557,6 +14721,27 @@
       "link": "https://biz.heraldcorp.com/article/10887207",
       "source": "헤럴드경제",
       "title": "“블록처럼 연결한다” LG전자, AI 데이터센터용 모듈형 냉각 설루션 첫 공개"
+    },
+    "link:1bbb662e97745e10e32a55c2": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006087900003?section=economy/all",
+      "source": "연합뉴스",
+      "source_body_digest": "52b474e11224bcbe39a80a7dcbb0ee1131be2e96143ad893ec5a2f694f0161e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b7f4a2c9f4276a2544cdfc2c05444f5a7e695082789c7b534200315940db87b",
+      "source_fact_keys": [
+        "source_fact:v1:0f8a278b835960f945afd1c68015c87de00bc5a07dc859cd048f14b3e3866c39",
+        "source_fact:v1:ab03b2f978b64d2aaeed082fe514eea9a4997eebce646a9a7bc9fcbf1f8d4cd5",
+        "source_fact:v1:afb01fe2c34c895d78cf1f947e7e77bd4a045ea5335cffdbc329b8c2ed85d004",
+        "source_fact:v1:b9b309661c19c28a7c284fb77472cece5e2e9de720a12978d7e30d75cb01e04a",
+        "source_fact:v1:c6085ccd685f280f6f2dc00e5fe8486b91a66a288ed97b749ccffecf1b40e11d"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "정부 \"11월 원유 90% 이상 확보…나프타도 90% 이상\" | 연합뉴스"
     },
     "link:1bedbeee3bf40c7dd3126d55": {
       "first_seen_kst": "2026-09-18T09:03:50+09:00",
@@ -18059,6 +18244,24 @@
       "source_published_kst": "2026-10-05T22:15+09:00",
       "title": "삼닉 레버리지 ‘20좌 미만’ 단주 출구 마련"
     },
+    "link:45a51a46c35e0405b9b2e728": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000173",
+      "source": "전자신문",
+      "source_body_digest": "29f75226f0d2c7f472ed9a648bf525fca7d62a17fe6ce933dc87a35210ce07d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:863a99edaaf0ac2585741b0b6664ce95b441852d6179fdf820ad80d8e7922a72",
+      "source_fact_keys": [
+        "source_fact:v1:eaf3d5f73f6acd022f74acfc52e7bdd6f7a5c1c5577f30a25df44d7206be231d",
+        "source_fact:v1:f4e966704fc0b3da418f1432bd39fdd7d8342528870bbc1211284796a227932e"
+      ],
+      "source_published_kst": "2026-10-06T11:38+09:00",
+      "title": "금투협, 글로벌 펀드산업 현안 논의…日 자산운용협회와 협력"
+    },
     "link:45bbec9185d28e28ca4a9538": {
       "first_seen_kst": "2026-10-03T13:09:25+09:00",
       "lanes": {
@@ -19616,6 +19819,27 @@
       "source": "아시아경제",
       "title": "[Why&Next]노스페이스와 맞짱?…네파 품은 K2, '카니발리제이션' 리스크"
     },
+    "link:5707678ebd5be4172532c29b": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000171",
+      "source": "전자신문",
+      "source_body_digest": "957d2ed3a478712fe11d4ef0def8cc0d2878439b9619b4299d877d7ec074f6b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6da784a2d5f6c3a35e563d1e9fe1c550318b91f7b8478f72772f5e3491c60741",
+      "source_fact_keys": [
+        "source_fact:v1:093cd7bb66943cb6a4c4c8e7fe3cc704b2c35d32e7d82ccad8db379333942970",
+        "source_fact:v1:16bb44cbf9cf5aa809086199bf14609718620fc4d30993c4441eefef7cb7e403",
+        "source_fact:v1:206b02f4e9ffaec4f6cfd04a5717b926b766b8f99f9dff654cff051bc53c1367",
+        "source_fact:v1:8ca66ec89483ee9704ff2446ed6261d5c4c32e896abe43bb3ad04411bd312785",
+        "source_fact:v1:c2a080287778dd5d98c4b38be890841283baef39ad5edfb49db68f195e0330c9"
+      ],
+      "source_published_kst": "2026-10-06T11:36+09:00",
+      "title": "신보·부산은행, K-콘텐츠 기업에 100억원 협약보증 공급"
+    },
     "link:574fa33641d6d8bb49144a49": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -20393,6 +20617,25 @@
       "source": "뉴시스",
       "title": "\"10억 모으려 하지 마세요\"…전문가가 말한 노후자금 만드는 법"
     },
+    "link:61c2e4591cdb81ae3d15a262": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.mt.co.kr/index.php/politics/2026/10/06/2026100611034495210",
+      "source": "머니투데이",
+      "source_body_digest": "1ff5e23fa51aba4e87ebed59295c39155cb59362faf90be26aadb1f3e13449eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:75a9de0cf8eab883dc1f4700db63dbcff738439ee1ec149eff71135e2a56c986",
+      "source_fact_keys": [
+        "source_fact:v1:1358521db47c663494575cdecbb55c117e20a1dba5a34c3b614e37c7fb5d8878",
+        "source_fact:v1:2dbe5af0bb924a74e0c1239bb4d96b5cbcb140be76a9c0b0d44e477fc805cc93",
+        "source_fact:v1:d26f62abf8dcffc11e46028956b0c4d035afc27fc707936d3d2865c726970a98"
+      ],
+      "source_published_kst": "2026-10-06T11:49+09:00",
+      "title": "野, '호남 반도체' 공세...김정관 산업장관 \"기업이 먼저 서남권 투자 제안\""
+    },
     "link:61cc252624bda5646e5d1dfa": {
       "first_seen_kst": "2026-10-03T23:23:58+09:00",
       "lanes": {
@@ -20440,6 +20683,26 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "link:62109f144338ef94f4bda59a": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006088900003",
+      "source": "연합뉴스",
+      "source_body_digest": "9d2876b8fe5f34101964cf449e7fe7f9c7c0809680e05ef70c5928bdca337112",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ef0d0d215ab4a1f53ad95645e42fee774ba76cb84d3cfc0f21e0e420b6ca6a2",
+      "source_fact_keys": [
+        "source_fact:v1:0777f90caa1cd5bbf9b6551dd49621c2c3db178efb6665903b09e57825e5d6db",
+        "source_fact:v1:43e16b6ae79f89bc8ca0b0e47998986c22147def15dac0465b3bb149d10f4dfb",
+        "source_fact:v1:63be5539b41c5913d1ef6f5e4254cdd623095568857b2b23bd742d0e8bb67c1d",
+        "source_fact:v1:6a96cb1f4638fa9254dba361486bbe28334ee341be0c0544527de49e9a29efcc"
+      ],
+      "source_published_kst": "2026-10-06T11:46+09:00",
+      "title": "삼성전기, 글로벌 기업과 2천900억 AI 서버용 MLCC 공급계약 | 연합뉴스"
     },
     "link:621a84e26d5f6c9b336236d7": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
@@ -20608,6 +20871,26 @@
       "link": "https://www.asiae.co.kr/article/2026092107451639953",
       "source": "아시아경제",
       "title": "\"SK하이닉스 HBM처럼\"…공대생도 '특허' 배운다"
+    },
+    "link:63fc605e0f1c2f8e736d8652": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000175",
+      "source": "전자신문",
+      "source_body_digest": "b88d251d98d586679a2a8b499108e007ee39b07b2443a6e0fb903b624538b749",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c92dda8d05d777353de872d50daffa4c8414d727da5053c0c6d9c4ef2dd6de83",
+      "source_fact_keys": [
+        "source_fact:v1:1572e45cd9f4f68452e66e838636ed9990426a706d5017cbc46778b521e123e3",
+        "source_fact:v1:6bd838079c5ac33dacf9edae01f57ea079b857928824fc9211ebe4c33e5d6f55",
+        "source_fact:v1:bca2ca48ed5bf5ed153e385c7bf8e97d33d00decd2de10b84f0e58caddfe5441",
+        "source_fact:v1:fb67a97f375709f0044420860655e33ef3357fefd33aa31ce7f6d98f5cebb2f1"
+      ],
+      "source_published_kst": "2026-10-06T11:45+09:00",
+      "title": "車 디스플레이 유리 수입 간소화…재생에너지 '다수 대 다수' PPA 허용"
     },
     "link:640092bf37432ca6f7074668": {
       "first_seen_kst": "2026-09-21T20:40:44+09:00",
@@ -20935,6 +21218,29 @@
       "link": "https://www.mt.co.kr/world/2026/10/01/2026100105483085619",
       "source": "머니투데이",
       "title": "트럼프 \"한국, 관세인하 위해 비용 지불\"…알래스카 대미투자 공식발표"
+    },
+    "link:664584d9e2dc4ef4a49144cc": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20260930000175",
+      "source": "전자신문",
+      "source_body_digest": "db8a1b7c8870131e4a835316c86dd7eb3d4b900f468f83f4b1a650594d244122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78aa65b961c85633f9f9d561186f6a2ba54441e0f4bf86dfa6a8109dc5c8236a",
+      "source_fact_keys": [
+        "source_fact:v1:35a1cbf80ab98f791f7b3478d5bdefdbfdffa4fd7edf7e16e40f50154d84bad9",
+        "source_fact:v1:3e10468d5453a41448d5c0fd589451aedfbe986442aff5e40b450ca4c65f38a7",
+        "source_fact:v1:4692eaadd7f02e8294af65010bef226222e9e7cc7ad42b2bca06fb9bac7cd9d9",
+        "source_fact:v1:5c354d17470eddb6b59fe8780066d6355ee69d52644d5c07ca64a356430a7920",
+        "source_fact:v1:7e6e3cebba864dbf7eb16b073e1254ff36911846a37582bff678f978ba50c5ae",
+        "source_fact:v1:84ad2ba7d9fe8edd0ae1f29b96a8ec750d1ba2480fca46d4532bb214382b55fd",
+        "source_fact:v1:fee90b70598cff5812ffbff2d7fd4032978890b12225a8026d85e8802ec9bd40"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "직스테크놀로지·한신공영·정도, AI 기반 '데이터센터 스마트 건설' 맞손"
     },
     "link:6659b0df79cab115d1e89b5c": {
       "first_seen_kst": "2026-10-02T04:07:06+09:00",
@@ -33902,6 +34208,24 @@
       "source": "연합뉴스",
       "title": "메시, 또 구단주 됐다…스페인 2부 엘덴세도 인수 | 연합뉴스"
     },
+    "original:0131fd302ff1613f8f358a3e": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000173",
+      "source": "전자신문",
+      "source_body_digest": "29f75226f0d2c7f472ed9a648bf525fca7d62a17fe6ce933dc87a35210ce07d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:863a99edaaf0ac2585741b0b6664ce95b441852d6179fdf820ad80d8e7922a72",
+      "source_fact_keys": [
+        "source_fact:v1:eaf3d5f73f6acd022f74acfc52e7bdd6f7a5c1c5577f30a25df44d7206be231d",
+        "source_fact:v1:f4e966704fc0b3da418f1432bd39fdd7d8342528870bbc1211284796a227932e"
+      ],
+      "source_published_kst": "2026-10-06T11:38+09:00",
+      "title": "금투협, 글로벌 펀드산업 현안 논의…日 자산운용협회와 협력"
+    },
     "original:0135ffb31f7cb99ce1227a2d": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
       "lanes": {
@@ -34984,6 +35308,25 @@
       "source_published_kst": "2026-10-05T22:34+09:00",
       "title": "[美특징주]할리데이비슨, 씨티 '매수' 상향에 상승"
     },
+    "original:0e4a355604f6d5b2bb88a08c": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.mt.co.kr/index.php/politics/2026/10/06/2026100611034495210",
+      "source": "머니투데이",
+      "source_body_digest": "1ff5e23fa51aba4e87ebed59295c39155cb59362faf90be26aadb1f3e13449eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:75a9de0cf8eab883dc1f4700db63dbcff738439ee1ec149eff71135e2a56c986",
+      "source_fact_keys": [
+        "source_fact:v1:1358521db47c663494575cdecbb55c117e20a1dba5a34c3b614e37c7fb5d8878",
+        "source_fact:v1:2dbe5af0bb924a74e0c1239bb4d96b5cbcb140be76a9c0b0d44e477fc805cc93",
+        "source_fact:v1:d26f62abf8dcffc11e46028956b0c4d035afc27fc707936d3d2865c726970a98"
+      ],
+      "source_published_kst": "2026-10-06T11:49+09:00",
+      "title": "野, '호남 반도체' 공세...김정관 산업장관 \"기업이 먼저 서남권 투자 제안\""
+    },
     "original:0ea40c6b34003aa700f98314": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
       "lanes": {
@@ -35709,6 +36052,26 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "original:192ab59dfebb1282f48e81be": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006088900003",
+      "source": "연합뉴스",
+      "source_body_digest": "9d2876b8fe5f34101964cf449e7fe7f9c7c0809680e05ef70c5928bdca337112",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ef0d0d215ab4a1f53ad95645e42fee774ba76cb84d3cfc0f21e0e420b6ca6a2",
+      "source_fact_keys": [
+        "source_fact:v1:0777f90caa1cd5bbf9b6551dd49621c2c3db178efb6665903b09e57825e5d6db",
+        "source_fact:v1:43e16b6ae79f89bc8ca0b0e47998986c22147def15dac0465b3bb149d10f4dfb",
+        "source_fact:v1:63be5539b41c5913d1ef6f5e4254cdd623095568857b2b23bd742d0e8bb67c1d",
+        "source_fact:v1:6a96cb1f4638fa9254dba361486bbe28334ee341be0c0544527de49e9a29efcc"
+      ],
+      "source_published_kst": "2026-10-06T11:46+09:00",
+      "title": "삼성전기, 글로벌 기업과 2천900억 AI 서버용 MLCC 공급계약 | 연합뉴스"
     },
     "original:193e546eb603cd5b62ca8e59": {
       "first_seen_kst": "2026-10-01T21:28:22+09:00",
@@ -40432,6 +40795,27 @@
       "link": "https://www.newsis.com/view/NISX20260927_0003804400",
       "source": "뉴시스",
       "title": "국힘, 장외투쟁 신중론…\"국감 등 원내에서 현안 대응 우선\""
+    },
+    "original:4fbfee3295b95409cce05300": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000171",
+      "source": "전자신문",
+      "source_body_digest": "957d2ed3a478712fe11d4ef0def8cc0d2878439b9619b4299d877d7ec074f6b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6da784a2d5f6c3a35e563d1e9fe1c550318b91f7b8478f72772f5e3491c60741",
+      "source_fact_keys": [
+        "source_fact:v1:093cd7bb66943cb6a4c4c8e7fe3cc704b2c35d32e7d82ccad8db379333942970",
+        "source_fact:v1:16bb44cbf9cf5aa809086199bf14609718620fc4d30993c4441eefef7cb7e403",
+        "source_fact:v1:206b02f4e9ffaec4f6cfd04a5717b926b766b8f99f9dff654cff051bc53c1367",
+        "source_fact:v1:8ca66ec89483ee9704ff2446ed6261d5c4c32e896abe43bb3ad04411bd312785",
+        "source_fact:v1:c2a080287778dd5d98c4b38be890841283baef39ad5edfb49db68f195e0330c9"
+      ],
+      "source_published_kst": "2026-10-06T11:36+09:00",
+      "title": "신보·부산은행, K-콘텐츠 기업에 100억원 협약보증 공급"
     },
     "original:4fe68063a2265c5932aca28b": {
       "first_seen_kst": "2026-09-27T08:28:35+09:00",
@@ -49529,6 +49913,29 @@
       "source": "전자신문",
       "title": "외국인 매출 22배 뛴 CJ올리브영…글로벌 뉴스룸 개설"
     },
+    "original:c4216950cfc88d6102d399f6": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20260930000175",
+      "source": "전자신문",
+      "source_body_digest": "db8a1b7c8870131e4a835316c86dd7eb3d4b900f468f83f4b1a650594d244122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78aa65b961c85633f9f9d561186f6a2ba54441e0f4bf86dfa6a8109dc5c8236a",
+      "source_fact_keys": [
+        "source_fact:v1:35a1cbf80ab98f791f7b3478d5bdefdbfdffa4fd7edf7e16e40f50154d84bad9",
+        "source_fact:v1:3e10468d5453a41448d5c0fd589451aedfbe986442aff5e40b450ca4c65f38a7",
+        "source_fact:v1:4692eaadd7f02e8294af65010bef226222e9e7cc7ad42b2bca06fb9bac7cd9d9",
+        "source_fact:v1:5c354d17470eddb6b59fe8780066d6355ee69d52644d5c07ca64a356430a7920",
+        "source_fact:v1:7e6e3cebba864dbf7eb16b073e1254ff36911846a37582bff678f978ba50c5ae",
+        "source_fact:v1:84ad2ba7d9fe8edd0ae1f29b96a8ec750d1ba2480fca46d4532bb214382b55fd",
+        "source_fact:v1:fee90b70598cff5812ffbff2d7fd4032978890b12225a8026d85e8802ec9bd40"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "직스테크놀로지·한신공영·정도, AI 기반 '데이터센터 스마트 건설' 맞손"
+    },
     "original:c43277617276db18b6fd0fcd": {
       "first_seen_kst": "2026-09-18T17:19:16+09:00",
       "lanes": {
@@ -51350,6 +51757,26 @@
       "source": "연합뉴스",
       "title": "SK는 '넓은 부지'·삼성은 '속도전'…호남 반도체 투자의지 | 연합뉴스"
     },
+    "original:d8c91e8079c28c48fbd050f4": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000175",
+      "source": "전자신문",
+      "source_body_digest": "b88d251d98d586679a2a8b499108e007ee39b07b2443a6e0fb903b624538b749",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c92dda8d05d777353de872d50daffa4c8414d727da5053c0c6d9c4ef2dd6de83",
+      "source_fact_keys": [
+        "source_fact:v1:1572e45cd9f4f68452e66e838636ed9990426a706d5017cbc46778b521e123e3",
+        "source_fact:v1:6bd838079c5ac33dacf9edae01f57ea079b857928824fc9211ebe4c33e5d6f55",
+        "source_fact:v1:bca2ca48ed5bf5ed153e385c7bf8e97d33d00decd2de10b84f0e58caddfe5441",
+        "source_fact:v1:fb67a97f375709f0044420860655e33ef3357fefd33aa31ce7f6d98f5cebb2f1"
+      ],
+      "source_published_kst": "2026-10-06T11:45+09:00",
+      "title": "車 디스플레이 유리 수입 간소화…재생에너지 '다수 대 다수' PPA 허용"
+    },
     "original:d8d2667bb2e2a412c0c372b0": {
       "first_seen_kst": "2026-10-05T07:24:39+09:00",
       "lanes": {
@@ -52845,6 +53272,27 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=04920006645585368",
       "source": "이데일리",
       "title": "‘수억원 기대’ 삼전 DS 특별성과급 기준 발표, 10월 초 연기"
+    },
+    "original:eb5013b0129c67017af5796f": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006087900003?section=economy/all",
+      "source": "연합뉴스",
+      "source_body_digest": "52b474e11224bcbe39a80a7dcbb0ee1131be2e96143ad893ec5a2f694f0161e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b7f4a2c9f4276a2544cdfc2c05444f5a7e695082789c7b534200315940db87b",
+      "source_fact_keys": [
+        "source_fact:v1:0f8a278b835960f945afd1c68015c87de00bc5a07dc859cd048f14b3e3866c39",
+        "source_fact:v1:ab03b2f978b64d2aaeed082fe514eea9a4997eebce646a9a7bc9fcbf1f8d4cd5",
+        "source_fact:v1:afb01fe2c34c895d78cf1f947e7e77bd4a045ea5335cffdbc329b8c2ed85d004",
+        "source_fact:v1:b9b309661c19c28a7c284fb77472cece5e2e9de720a12978d7e30d75cb01e04a",
+        "source_fact:v1:c6085ccd685f280f6f2dc00e5fe8486b91a66a288ed97b749ccffecf1b40e11d"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "정부 \"11월 원유 90% 이상 확보…나프타도 90% 이상\" | 연합뉴스"
     },
     "original:eb743bcba3f0c4bf61ef0f85": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
@@ -55536,6 +55984,26 @@
       "source_published_kst": "2026-10-05T18:37+09:00",
       "title": "간만에 테슬라가 순매수 1위…주가 하락하자 샌디스크·메타 매수[서학픽]"
     },
+    "source_fact:095b7423ad6e999c73f99111": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006088900003",
+      "source": "연합뉴스",
+      "source_body_digest": "9d2876b8fe5f34101964cf449e7fe7f9c7c0809680e05ef70c5928bdca337112",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ef0d0d215ab4a1f53ad95645e42fee774ba76cb84d3cfc0f21e0e420b6ca6a2",
+      "source_fact_keys": [
+        "source_fact:v1:0777f90caa1cd5bbf9b6551dd49621c2c3db178efb6665903b09e57825e5d6db",
+        "source_fact:v1:43e16b6ae79f89bc8ca0b0e47998986c22147def15dac0465b3bb149d10f4dfb",
+        "source_fact:v1:63be5539b41c5913d1ef6f5e4254cdd623095568857b2b23bd742d0e8bb67c1d",
+        "source_fact:v1:6a96cb1f4638fa9254dba361486bbe28334ee341be0c0544527de49e9a29efcc"
+      ],
+      "source_published_kst": "2026-10-06T11:46+09:00",
+      "title": "삼성전기, 글로벌 기업과 2천900억 AI 서버용 MLCC 공급계약 | 연합뉴스"
+    },
     "source_fact:096dcd147db55e2ea1d96f5f": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -56116,6 +56584,27 @@
       ],
       "source_published_kst": "2026-10-06T11:36+09:00",
       "title": "지역 일자리 창출·육아휴직 확산…경사노위 6대 과제 윤곽"
+    },
+    "source_fact:0d9aa79d0d3f71ee9d3fbf93": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006087900003?section=economy/all",
+      "source": "연합뉴스",
+      "source_body_digest": "52b474e11224bcbe39a80a7dcbb0ee1131be2e96143ad893ec5a2f694f0161e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b7f4a2c9f4276a2544cdfc2c05444f5a7e695082789c7b534200315940db87b",
+      "source_fact_keys": [
+        "source_fact:v1:0f8a278b835960f945afd1c68015c87de00bc5a07dc859cd048f14b3e3866c39",
+        "source_fact:v1:ab03b2f978b64d2aaeed082fe514eea9a4997eebce646a9a7bc9fcbf1f8d4cd5",
+        "source_fact:v1:afb01fe2c34c895d78cf1f947e7e77bd4a045ea5335cffdbc329b8c2ed85d004",
+        "source_fact:v1:b9b309661c19c28a7c284fb77472cece5e2e9de720a12978d7e30d75cb01e04a",
+        "source_fact:v1:c6085ccd685f280f6f2dc00e5fe8486b91a66a288ed97b749ccffecf1b40e11d"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "정부 \"11월 원유 90% 이상 확보…나프타도 90% 이상\" | 연합뉴스"
     },
     "source_fact:0dac524920a639ee2e28f337": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -57945,6 +58434,26 @@
       ],
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "대신證, “삼성바이오로직스, 3분기 실적 선방⋯4분기엔 반등 전망”"
+    },
+    "source_fact:1e3950515f78e0113b1e7e68": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000175",
+      "source": "전자신문",
+      "source_body_digest": "b88d251d98d586679a2a8b499108e007ee39b07b2443a6e0fb903b624538b749",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c92dda8d05d777353de872d50daffa4c8414d727da5053c0c6d9c4ef2dd6de83",
+      "source_fact_keys": [
+        "source_fact:v1:1572e45cd9f4f68452e66e838636ed9990426a706d5017cbc46778b521e123e3",
+        "source_fact:v1:6bd838079c5ac33dacf9edae01f57ea079b857928824fc9211ebe4c33e5d6f55",
+        "source_fact:v1:bca2ca48ed5bf5ed153e385c7bf8e97d33d00decd2de10b84f0e58caddfe5441",
+        "source_fact:v1:fb67a97f375709f0044420860655e33ef3357fefd33aa31ce7f6d98f5cebb2f1"
+      ],
+      "source_published_kst": "2026-10-06T11:45+09:00",
+      "title": "車 디스플레이 유리 수입 간소화…재생에너지 '다수 대 다수' PPA 허용"
     },
     "source_fact:1e4b7b3dba0af7a503dcb8b1": {
       "first_seen_kst": "2026-10-06T00:49:05+09:00",
@@ -60395,6 +60904,26 @@
       "source_published_kst": "2026-10-05T12:55+09:00",
       "title": "예멘군, 미국·사우디 지원받아 친이란 후티에 총반격 돌입(종합) | 연합뉴스"
     },
+    "source_fact:32868db8768fa0d9b49d1e0b": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006088900003",
+      "source": "연합뉴스",
+      "source_body_digest": "9d2876b8fe5f34101964cf449e7fe7f9c7c0809680e05ef70c5928bdca337112",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ef0d0d215ab4a1f53ad95645e42fee774ba76cb84d3cfc0f21e0e420b6ca6a2",
+      "source_fact_keys": [
+        "source_fact:v1:0777f90caa1cd5bbf9b6551dd49621c2c3db178efb6665903b09e57825e5d6db",
+        "source_fact:v1:43e16b6ae79f89bc8ca0b0e47998986c22147def15dac0465b3bb149d10f4dfb",
+        "source_fact:v1:63be5539b41c5913d1ef6f5e4254cdd623095568857b2b23bd742d0e8bb67c1d",
+        "source_fact:v1:6a96cb1f4638fa9254dba361486bbe28334ee341be0c0544527de49e9a29efcc"
+      ],
+      "source_published_kst": "2026-10-06T11:46+09:00",
+      "title": "삼성전기, 글로벌 기업과 2천900억 AI 서버용 MLCC 공급계약 | 연합뉴스"
+    },
     "source_fact:329038a20c0b672124de426b": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
       "lanes": {
@@ -60542,6 +61071,26 @@
       ],
       "source_published_kst": "2026-10-06T08:07+09:00",
       "title": "[증시키워드] 삼전 실적 대기…HLB 신약 모멘텀에 관심도↑"
+    },
+    "source_fact:3383ce73500194b6070b593a": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006088900003",
+      "source": "연합뉴스",
+      "source_body_digest": "9d2876b8fe5f34101964cf449e7fe7f9c7c0809680e05ef70c5928bdca337112",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ef0d0d215ab4a1f53ad95645e42fee774ba76cb84d3cfc0f21e0e420b6ca6a2",
+      "source_fact_keys": [
+        "source_fact:v1:0777f90caa1cd5bbf9b6551dd49621c2c3db178efb6665903b09e57825e5d6db",
+        "source_fact:v1:43e16b6ae79f89bc8ca0b0e47998986c22147def15dac0465b3bb149d10f4dfb",
+        "source_fact:v1:63be5539b41c5913d1ef6f5e4254cdd623095568857b2b23bd742d0e8bb67c1d",
+        "source_fact:v1:6a96cb1f4638fa9254dba361486bbe28334ee341be0c0544527de49e9a29efcc"
+      ],
+      "source_published_kst": "2026-10-06T11:46+09:00",
+      "title": "삼성전기, 글로벌 기업과 2천900억 AI 서버용 MLCC 공급계약 | 연합뉴스"
     },
     "source_fact:3383d8a5d16c24cc6281da0e": {
       "first_seen_kst": "2026-10-06T01:41:59+09:00",
@@ -60857,6 +61406,27 @@
       ],
       "source_published_kst": "2026-10-05T12:32+09:00",
       "title": "엔씨 '아이온2' 글로벌 정식 출시... 얼리액세스 동접 17만명"
+    },
+    "source_fact:36c57678ea4d5fcc7939b7ce": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000171",
+      "source": "전자신문",
+      "source_body_digest": "957d2ed3a478712fe11d4ef0def8cc0d2878439b9619b4299d877d7ec074f6b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6da784a2d5f6c3a35e563d1e9fe1c550318b91f7b8478f72772f5e3491c60741",
+      "source_fact_keys": [
+        "source_fact:v1:093cd7bb66943cb6a4c4c8e7fe3cc704b2c35d32e7d82ccad8db379333942970",
+        "source_fact:v1:16bb44cbf9cf5aa809086199bf14609718620fc4d30993c4441eefef7cb7e403",
+        "source_fact:v1:206b02f4e9ffaec4f6cfd04a5717b926b766b8f99f9dff654cff051bc53c1367",
+        "source_fact:v1:8ca66ec89483ee9704ff2446ed6261d5c4c32e896abe43bb3ad04411bd312785",
+        "source_fact:v1:c2a080287778dd5d98c4b38be890841283baef39ad5edfb49db68f195e0330c9"
+      ],
+      "source_published_kst": "2026-10-06T11:36+09:00",
+      "title": "신보·부산은행, K-콘텐츠 기업에 100억원 협약보증 공급"
     },
     "source_fact:36d9bdfad73c55691a70796b": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -62449,6 +63019,26 @@
       ],
       "source_published_kst": "2026-10-05T20:05+09:00",
       "title": "마이크로소프트, 기업 보안 수요 확대…투자의견↑-멜리우스"
+    },
+    "source_fact:4441b6ab0650905309e720fa": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000175",
+      "source": "전자신문",
+      "source_body_digest": "b88d251d98d586679a2a8b499108e007ee39b07b2443a6e0fb903b624538b749",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c92dda8d05d777353de872d50daffa4c8414d727da5053c0c6d9c4ef2dd6de83",
+      "source_fact_keys": [
+        "source_fact:v1:1572e45cd9f4f68452e66e838636ed9990426a706d5017cbc46778b521e123e3",
+        "source_fact:v1:6bd838079c5ac33dacf9edae01f57ea079b857928824fc9211ebe4c33e5d6f55",
+        "source_fact:v1:bca2ca48ed5bf5ed153e385c7bf8e97d33d00decd2de10b84f0e58caddfe5441",
+        "source_fact:v1:fb67a97f375709f0044420860655e33ef3357fefd33aa31ce7f6d98f5cebb2f1"
+      ],
+      "source_published_kst": "2026-10-06T11:45+09:00",
+      "title": "車 디스플레이 유리 수입 간소화…재생에너지 '다수 대 다수' PPA 허용"
     },
     "source_fact:44585392ed94f3214910297d": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
@@ -65583,6 +66173,24 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
+    "source_fact:5cf3e589799316a87d5ab316": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000173",
+      "source": "전자신문",
+      "source_body_digest": "29f75226f0d2c7f472ed9a648bf525fca7d62a17fe6ce933dc87a35210ce07d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:863a99edaaf0ac2585741b0b6664ce95b441852d6179fdf820ad80d8e7922a72",
+      "source_fact_keys": [
+        "source_fact:v1:eaf3d5f73f6acd022f74acfc52e7bdd6f7a5c1c5577f30a25df44d7206be231d",
+        "source_fact:v1:f4e966704fc0b3da418f1432bd39fdd7d8342528870bbc1211284796a227932e"
+      ],
+      "source_published_kst": "2026-10-06T11:38+09:00",
+      "title": "금투협, 글로벌 펀드산업 현안 논의…日 자산운용협회와 협력"
+    },
     "source_fact:5cf71cde662227b7e587b3a8": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -67287,6 +67895,24 @@
       ],
       "source_published_kst": "2026-10-05T21:41+09:00",
       "title": "ESS 테크, NYSE 거래정지·상장폐지 개시..OTC서 GWHT 거래"
+    },
+    "source_fact:6dafbef266acd67c4fbe7c76": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000173",
+      "source": "전자신문",
+      "source_body_digest": "29f75226f0d2c7f472ed9a648bf525fca7d62a17fe6ce933dc87a35210ce07d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:863a99edaaf0ac2585741b0b6664ce95b441852d6179fdf820ad80d8e7922a72",
+      "source_fact_keys": [
+        "source_fact:v1:eaf3d5f73f6acd022f74acfc52e7bdd6f7a5c1c5577f30a25df44d7206be231d",
+        "source_fact:v1:f4e966704fc0b3da418f1432bd39fdd7d8342528870bbc1211284796a227932e"
+      ],
+      "source_published_kst": "2026-10-06T11:38+09:00",
+      "title": "금투협, 글로벌 펀드산업 현안 논의…日 자산운용협회와 협력"
     },
     "source_fact:6dafc8893c4ec7c2d978af30": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -69824,6 +70450,29 @@
       "source_published_kst": "2026-10-05T20:21+09:00",
       "title": "퀀티넘과 서호주대학교, 호주의 양자 역량 강화를 위한 파트너십 체결"
     },
+    "source_fact:7fa5054134c8e13dee9cd22f": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20260930000175",
+      "source": "전자신문",
+      "source_body_digest": "db8a1b7c8870131e4a835316c86dd7eb3d4b900f468f83f4b1a650594d244122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78aa65b961c85633f9f9d561186f6a2ba54441e0f4bf86dfa6a8109dc5c8236a",
+      "source_fact_keys": [
+        "source_fact:v1:35a1cbf80ab98f791f7b3478d5bdefdbfdffa4fd7edf7e16e40f50154d84bad9",
+        "source_fact:v1:3e10468d5453a41448d5c0fd589451aedfbe986442aff5e40b450ca4c65f38a7",
+        "source_fact:v1:4692eaadd7f02e8294af65010bef226222e9e7cc7ad42b2bca06fb9bac7cd9d9",
+        "source_fact:v1:5c354d17470eddb6b59fe8780066d6355ee69d52644d5c07ca64a356430a7920",
+        "source_fact:v1:7e6e3cebba864dbf7eb16b073e1254ff36911846a37582bff678f978ba50c5ae",
+        "source_fact:v1:84ad2ba7d9fe8edd0ae1f29b96a8ec750d1ba2480fca46d4532bb214382b55fd",
+        "source_fact:v1:fee90b70598cff5812ffbff2d7fd4032978890b12225a8026d85e8802ec9bd40"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "직스테크놀로지·한신공영·정도, AI 기반 '데이터센터 스마트 건설' 맞손"
+    },
     "source_fact:7fada13fdb5c12748c082d88": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
       "lanes": {
@@ -70892,6 +71541,26 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "산업부 국감 돌입…대미투자·호남 반도체·메가특구 '도마'"
     },
+    "source_fact:8706b94b059a9e18e0f84c7d": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000175",
+      "source": "전자신문",
+      "source_body_digest": "b88d251d98d586679a2a8b499108e007ee39b07b2443a6e0fb903b624538b749",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c92dda8d05d777353de872d50daffa4c8414d727da5053c0c6d9c4ef2dd6de83",
+      "source_fact_keys": [
+        "source_fact:v1:1572e45cd9f4f68452e66e838636ed9990426a706d5017cbc46778b521e123e3",
+        "source_fact:v1:6bd838079c5ac33dacf9edae01f57ea079b857928824fc9211ebe4c33e5d6f55",
+        "source_fact:v1:bca2ca48ed5bf5ed153e385c7bf8e97d33d00decd2de10b84f0e58caddfe5441",
+        "source_fact:v1:fb67a97f375709f0044420860655e33ef3357fefd33aa31ce7f6d98f5cebb2f1"
+      ],
+      "source_published_kst": "2026-10-06T11:45+09:00",
+      "title": "車 디스플레이 유리 수입 간소화…재생에너지 '다수 대 다수' PPA 허용"
+    },
     "source_fact:874608288818910dc79b8356": {
       "first_seen_kst": "2026-10-05T20:22:49+09:00",
       "lanes": {
@@ -71040,6 +71709,25 @@
       ],
       "source_published_kst": "2026-10-06T11:28+09:00",
       "title": "삼성전기, 글로벌 기업에 2900억 MLCC 공급…AI부품 수주 '4조 클럽' 돌파"
+    },
+    "source_fact:88c328d6a84976cbc63048fe": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.mt.co.kr/index.php/politics/2026/10/06/2026100611034495210",
+      "source": "머니투데이",
+      "source_body_digest": "1ff5e23fa51aba4e87ebed59295c39155cb59362faf90be26aadb1f3e13449eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:75a9de0cf8eab883dc1f4700db63dbcff738439ee1ec149eff71135e2a56c986",
+      "source_fact_keys": [
+        "source_fact:v1:1358521db47c663494575cdecbb55c117e20a1dba5a34c3b614e37c7fb5d8878",
+        "source_fact:v1:2dbe5af0bb924a74e0c1239bb4d96b5cbcb140be76a9c0b0d44e477fc805cc93",
+        "source_fact:v1:d26f62abf8dcffc11e46028956b0c4d035afc27fc707936d3d2865c726970a98"
+      ],
+      "source_published_kst": "2026-10-06T11:49+09:00",
+      "title": "野, '호남 반도체' 공세...김정관 산업장관 \"기업이 먼저 서남권 투자 제안\""
     },
     "source_fact:894daca447c162bbb9674b67": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
@@ -71615,6 +72303,26 @@
       ],
       "source_published_kst": "2026-10-05T21:09+09:00",
       "title": "플렉스, 액시엄 20억달러 우선주 유치..가치 375억달러"
+    },
+    "source_fact:8ed6b9de32b39119c026b4eb": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006088900003",
+      "source": "연합뉴스",
+      "source_body_digest": "9d2876b8fe5f34101964cf449e7fe7f9c7c0809680e05ef70c5928bdca337112",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ef0d0d215ab4a1f53ad95645e42fee774ba76cb84d3cfc0f21e0e420b6ca6a2",
+      "source_fact_keys": [
+        "source_fact:v1:0777f90caa1cd5bbf9b6551dd49621c2c3db178efb6665903b09e57825e5d6db",
+        "source_fact:v1:43e16b6ae79f89bc8ca0b0e47998986c22147def15dac0465b3bb149d10f4dfb",
+        "source_fact:v1:63be5539b41c5913d1ef6f5e4254cdd623095568857b2b23bd742d0e8bb67c1d",
+        "source_fact:v1:6a96cb1f4638fa9254dba361486bbe28334ee341be0c0544527de49e9a29efcc"
+      ],
+      "source_published_kst": "2026-10-06T11:46+09:00",
+      "title": "삼성전기, 글로벌 기업과 2천900억 AI 서버용 MLCC 공급계약 | 연합뉴스"
     },
     "source_fact:8ee39840edc9c5a04b0f188b": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -74199,6 +74907,29 @@
       "source_published_kst": "2026-10-04T23:56+09:00",
       "title": "OPEC+, 11월 원유 생산 목표 유지 합의"
     },
+    "source_fact:a530379d6afa2ff84b319761": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20260930000175",
+      "source": "전자신문",
+      "source_body_digest": "db8a1b7c8870131e4a835316c86dd7eb3d4b900f468f83f4b1a650594d244122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78aa65b961c85633f9f9d561186f6a2ba54441e0f4bf86dfa6a8109dc5c8236a",
+      "source_fact_keys": [
+        "source_fact:v1:35a1cbf80ab98f791f7b3478d5bdefdbfdffa4fd7edf7e16e40f50154d84bad9",
+        "source_fact:v1:3e10468d5453a41448d5c0fd589451aedfbe986442aff5e40b450ca4c65f38a7",
+        "source_fact:v1:4692eaadd7f02e8294af65010bef226222e9e7cc7ad42b2bca06fb9bac7cd9d9",
+        "source_fact:v1:5c354d17470eddb6b59fe8780066d6355ee69d52644d5c07ca64a356430a7920",
+        "source_fact:v1:7e6e3cebba864dbf7eb16b073e1254ff36911846a37582bff678f978ba50c5ae",
+        "source_fact:v1:84ad2ba7d9fe8edd0ae1f29b96a8ec750d1ba2480fca46d4532bb214382b55fd",
+        "source_fact:v1:fee90b70598cff5812ffbff2d7fd4032978890b12225a8026d85e8802ec9bd40"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "직스테크놀로지·한신공영·정도, AI 기반 '데이터센터 스마트 건설' 맞손"
+    },
     "source_fact:a53fa03910a56aff690fa4b8": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
       "lanes": {
@@ -74553,6 +75284,27 @@
       "source_published_kst": "2026-10-06T06:00+09:00",
       "title": "외환보유액, 넉 달 만에 감소…대미투자 자산위탁 영향"
     },
+    "source_fact:a803f3a638b4fe2fc89c5bba": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000171",
+      "source": "전자신문",
+      "source_body_digest": "957d2ed3a478712fe11d4ef0def8cc0d2878439b9619b4299d877d7ec074f6b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6da784a2d5f6c3a35e563d1e9fe1c550318b91f7b8478f72772f5e3491c60741",
+      "source_fact_keys": [
+        "source_fact:v1:093cd7bb66943cb6a4c4c8e7fe3cc704b2c35d32e7d82ccad8db379333942970",
+        "source_fact:v1:16bb44cbf9cf5aa809086199bf14609718620fc4d30993c4441eefef7cb7e403",
+        "source_fact:v1:206b02f4e9ffaec4f6cfd04a5717b926b766b8f99f9dff654cff051bc53c1367",
+        "source_fact:v1:8ca66ec89483ee9704ff2446ed6261d5c4c32e896abe43bb3ad04411bd312785",
+        "source_fact:v1:c2a080287778dd5d98c4b38be890841283baef39ad5edfb49db68f195e0330c9"
+      ],
+      "source_published_kst": "2026-10-06T11:36+09:00",
+      "title": "신보·부산은행, K-콘텐츠 기업에 100억원 협약보증 공급"
+    },
     "source_fact:a8443956bf0777a4a89408fb": {
       "first_seen_kst": "2026-10-06T01:51:09+09:00",
       "lanes": {
@@ -74687,6 +75439,27 @@
       ],
       "source_published_kst": "2026-10-06T08:17+09:00",
       "title": "나스닥 사상 최고…비트코인 8만5000달러대[코인 모닝콜]"
+    },
+    "source_fact:a9c4a73ce735088441e9df04": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006087900003?section=economy/all",
+      "source": "연합뉴스",
+      "source_body_digest": "52b474e11224bcbe39a80a7dcbb0ee1131be2e96143ad893ec5a2f694f0161e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b7f4a2c9f4276a2544cdfc2c05444f5a7e695082789c7b534200315940db87b",
+      "source_fact_keys": [
+        "source_fact:v1:0f8a278b835960f945afd1c68015c87de00bc5a07dc859cd048f14b3e3866c39",
+        "source_fact:v1:ab03b2f978b64d2aaeed082fe514eea9a4997eebce646a9a7bc9fcbf1f8d4cd5",
+        "source_fact:v1:afb01fe2c34c895d78cf1f947e7e77bd4a045ea5335cffdbc329b8c2ed85d004",
+        "source_fact:v1:b9b309661c19c28a7c284fb77472cece5e2e9de720a12978d7e30d75cb01e04a",
+        "source_fact:v1:c6085ccd685f280f6f2dc00e5fe8486b91a66a288ed97b749ccffecf1b40e11d"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "정부 \"11월 원유 90% 이상 확보…나프타도 90% 이상\" | 연합뉴스"
     },
     "source_fact:a9dbe901d2dc62198c8045d0": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
@@ -75414,6 +76187,29 @@
       "source_published_kst": "2026-10-05T22:29+09:00",
       "title": "토스뱅크서도 해킹 시도…일부 보험사도 공격 흔적 포착"
     },
+    "source_fact:afc6f5d2b1f2daf88302667d": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20260930000175",
+      "source": "전자신문",
+      "source_body_digest": "db8a1b7c8870131e4a835316c86dd7eb3d4b900f468f83f4b1a650594d244122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78aa65b961c85633f9f9d561186f6a2ba54441e0f4bf86dfa6a8109dc5c8236a",
+      "source_fact_keys": [
+        "source_fact:v1:35a1cbf80ab98f791f7b3478d5bdefdbfdffa4fd7edf7e16e40f50154d84bad9",
+        "source_fact:v1:3e10468d5453a41448d5c0fd589451aedfbe986442aff5e40b450ca4c65f38a7",
+        "source_fact:v1:4692eaadd7f02e8294af65010bef226222e9e7cc7ad42b2bca06fb9bac7cd9d9",
+        "source_fact:v1:5c354d17470eddb6b59fe8780066d6355ee69d52644d5c07ca64a356430a7920",
+        "source_fact:v1:7e6e3cebba864dbf7eb16b073e1254ff36911846a37582bff678f978ba50c5ae",
+        "source_fact:v1:84ad2ba7d9fe8edd0ae1f29b96a8ec750d1ba2480fca46d4532bb214382b55fd",
+        "source_fact:v1:fee90b70598cff5812ffbff2d7fd4032978890b12225a8026d85e8802ec9bd40"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "직스테크놀로지·한신공영·정도, AI 기반 '데이터센터 스마트 건설' 맞손"
+    },
     "source_fact:b00d4410eaafa189ec7f3616": {
       "first_seen_kst": "2026-10-05T21:32:34+09:00",
       "lanes": {
@@ -75925,6 +76721,26 @@
       "source_published_kst": "2026-10-06T08:46+09:00",
       "title": "한미반도체, 삼성전기서 245억원 규모 MSVP 수주…“삼성그룹 환영”"
     },
+    "source_fact:b3025383225d9af54a28984c": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000175",
+      "source": "전자신문",
+      "source_body_digest": "b88d251d98d586679a2a8b499108e007ee39b07b2443a6e0fb903b624538b749",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c92dda8d05d777353de872d50daffa4c8414d727da5053c0c6d9c4ef2dd6de83",
+      "source_fact_keys": [
+        "source_fact:v1:1572e45cd9f4f68452e66e838636ed9990426a706d5017cbc46778b521e123e3",
+        "source_fact:v1:6bd838079c5ac33dacf9edae01f57ea079b857928824fc9211ebe4c33e5d6f55",
+        "source_fact:v1:bca2ca48ed5bf5ed153e385c7bf8e97d33d00decd2de10b84f0e58caddfe5441",
+        "source_fact:v1:fb67a97f375709f0044420860655e33ef3357fefd33aa31ce7f6d98f5cebb2f1"
+      ],
+      "source_published_kst": "2026-10-06T11:45+09:00",
+      "title": "車 디스플레이 유리 수입 간소화…재생에너지 '다수 대 다수' PPA 허용"
+    },
     "source_fact:b30afddc30aaf58bd9ee7dcb": {
       "first_seen_kst": "2026-10-06T07:52:55+09:00",
       "lanes": {
@@ -76342,6 +77158,29 @@
       ],
       "source_published_kst": "2026-10-06T13:06+09:00",
       "title": "美 소비자신뢰지수 12년 최저인데 가계지출 6.1%↑…실질소비도 늘었다"
+    },
+    "source_fact:b758d7abd492534a837f5f08": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20260930000175",
+      "source": "전자신문",
+      "source_body_digest": "db8a1b7c8870131e4a835316c86dd7eb3d4b900f468f83f4b1a650594d244122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78aa65b961c85633f9f9d561186f6a2ba54441e0f4bf86dfa6a8109dc5c8236a",
+      "source_fact_keys": [
+        "source_fact:v1:35a1cbf80ab98f791f7b3478d5bdefdbfdffa4fd7edf7e16e40f50154d84bad9",
+        "source_fact:v1:3e10468d5453a41448d5c0fd589451aedfbe986442aff5e40b450ca4c65f38a7",
+        "source_fact:v1:4692eaadd7f02e8294af65010bef226222e9e7cc7ad42b2bca06fb9bac7cd9d9",
+        "source_fact:v1:5c354d17470eddb6b59fe8780066d6355ee69d52644d5c07ca64a356430a7920",
+        "source_fact:v1:7e6e3cebba864dbf7eb16b073e1254ff36911846a37582bff678f978ba50c5ae",
+        "source_fact:v1:84ad2ba7d9fe8edd0ae1f29b96a8ec750d1ba2480fca46d4532bb214382b55fd",
+        "source_fact:v1:fee90b70598cff5812ffbff2d7fd4032978890b12225a8026d85e8802ec9bd40"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "직스테크놀로지·한신공영·정도, AI 기반 '데이터센터 스마트 건설' 맞손"
     },
     "source_fact:b75e335e21b2ae67fdec54c2": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -77512,6 +78351,25 @@
       "source_published_kst": "2026-10-05T17:23+09:00",
       "title": "AI 해킹 확산에 'AI 방패' 꺼낸 금융당국…'망분리 완화' 해법 될 수 있나"
     },
+    "source_fact:c12925cd2219967b171e7f08": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.mt.co.kr/index.php/politics/2026/10/06/2026100611034495210",
+      "source": "머니투데이",
+      "source_body_digest": "1ff5e23fa51aba4e87ebed59295c39155cb59362faf90be26aadb1f3e13449eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:75a9de0cf8eab883dc1f4700db63dbcff738439ee1ec149eff71135e2a56c986",
+      "source_fact_keys": [
+        "source_fact:v1:1358521db47c663494575cdecbb55c117e20a1dba5a34c3b614e37c7fb5d8878",
+        "source_fact:v1:2dbe5af0bb924a74e0c1239bb4d96b5cbcb140be76a9c0b0d44e477fc805cc93",
+        "source_fact:v1:d26f62abf8dcffc11e46028956b0c4d035afc27fc707936d3d2865c726970a98"
+      ],
+      "source_published_kst": "2026-10-06T11:49+09:00",
+      "title": "野, '호남 반도체' 공세...김정관 산업장관 \"기업이 먼저 서남권 투자 제안\""
+    },
     "source_fact:c1914d5f82a4f9ac3e48b0d1": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -77781,6 +78639,27 @@
       ],
       "source_published_kst": "2026-10-05T09:39+09:00",
       "title": "“20좌 안 되면 못 파나”…단일종목 레버리지 ‘단주 출구’ 만든다"
+    },
+    "source_fact:c3c30a6dd2ff05b6d04634f4": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006087900003?section=economy/all",
+      "source": "연합뉴스",
+      "source_body_digest": "52b474e11224bcbe39a80a7dcbb0ee1131be2e96143ad893ec5a2f694f0161e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b7f4a2c9f4276a2544cdfc2c05444f5a7e695082789c7b534200315940db87b",
+      "source_fact_keys": [
+        "source_fact:v1:0f8a278b835960f945afd1c68015c87de00bc5a07dc859cd048f14b3e3866c39",
+        "source_fact:v1:ab03b2f978b64d2aaeed082fe514eea9a4997eebce646a9a7bc9fcbf1f8d4cd5",
+        "source_fact:v1:afb01fe2c34c895d78cf1f947e7e77bd4a045ea5335cffdbc329b8c2ed85d004",
+        "source_fact:v1:b9b309661c19c28a7c284fb77472cece5e2e9de720a12978d7e30d75cb01e04a",
+        "source_fact:v1:c6085ccd685f280f6f2dc00e5fe8486b91a66a288ed97b749ccffecf1b40e11d"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "정부 \"11월 원유 90% 이상 확보…나프타도 90% 이상\" | 연합뉴스"
     },
     "source_fact:c3d1721b1f6abde9f62f3371": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
@@ -79271,6 +80150,29 @@
       "source_published_kst": "2026-10-06T06:37+09:00",
       "title": "호르무즈 당장 열려도 끝 아냐…아람코 CEO \"석유 재고 회복에 2년\""
     },
+    "source_fact:d17bbf35a22d1dd03ba47679": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20260930000175",
+      "source": "전자신문",
+      "source_body_digest": "db8a1b7c8870131e4a835316c86dd7eb3d4b900f468f83f4b1a650594d244122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78aa65b961c85633f9f9d561186f6a2ba54441e0f4bf86dfa6a8109dc5c8236a",
+      "source_fact_keys": [
+        "source_fact:v1:35a1cbf80ab98f791f7b3478d5bdefdbfdffa4fd7edf7e16e40f50154d84bad9",
+        "source_fact:v1:3e10468d5453a41448d5c0fd589451aedfbe986442aff5e40b450ca4c65f38a7",
+        "source_fact:v1:4692eaadd7f02e8294af65010bef226222e9e7cc7ad42b2bca06fb9bac7cd9d9",
+        "source_fact:v1:5c354d17470eddb6b59fe8780066d6355ee69d52644d5c07ca64a356430a7920",
+        "source_fact:v1:7e6e3cebba864dbf7eb16b073e1254ff36911846a37582bff678f978ba50c5ae",
+        "source_fact:v1:84ad2ba7d9fe8edd0ae1f29b96a8ec750d1ba2480fca46d4532bb214382b55fd",
+        "source_fact:v1:fee90b70598cff5812ffbff2d7fd4032978890b12225a8026d85e8802ec9bd40"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "직스테크놀로지·한신공영·정도, AI 기반 '데이터센터 스마트 건설' 맞손"
+    },
     "source_fact:d1afd21e5b99771be575ae1a": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -79332,6 +80234,27 @@
       ],
       "source_published_kst": "2026-10-06T08:03+09:00",
       "title": "일진전기, 중전기 수주 북미 비중 80% 육박"
+    },
+    "source_fact:d20459d4fc1a2042839cc2b3": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006087900003?section=economy/all",
+      "source": "연합뉴스",
+      "source_body_digest": "52b474e11224bcbe39a80a7dcbb0ee1131be2e96143ad893ec5a2f694f0161e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b7f4a2c9f4276a2544cdfc2c05444f5a7e695082789c7b534200315940db87b",
+      "source_fact_keys": [
+        "source_fact:v1:0f8a278b835960f945afd1c68015c87de00bc5a07dc859cd048f14b3e3866c39",
+        "source_fact:v1:ab03b2f978b64d2aaeed082fe514eea9a4997eebce646a9a7bc9fcbf1f8d4cd5",
+        "source_fact:v1:afb01fe2c34c895d78cf1f947e7e77bd4a045ea5335cffdbc329b8c2ed85d004",
+        "source_fact:v1:b9b309661c19c28a7c284fb77472cece5e2e9de720a12978d7e30d75cb01e04a",
+        "source_fact:v1:c6085ccd685f280f6f2dc00e5fe8486b91a66a288ed97b749ccffecf1b40e11d"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "정부 \"11월 원유 90% 이상 확보…나프타도 90% 이상\" | 연합뉴스"
     },
     "source_fact:d20824f5a7465f62395052bf": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -79802,6 +80725,27 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "반도체 소부장 랠리 … ETF 출시도 잇따라"
+    },
+    "source_fact:d66fe6a7ccb0d0c922548137": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000171",
+      "source": "전자신문",
+      "source_body_digest": "957d2ed3a478712fe11d4ef0def8cc0d2878439b9619b4299d877d7ec074f6b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6da784a2d5f6c3a35e563d1e9fe1c550318b91f7b8478f72772f5e3491c60741",
+      "source_fact_keys": [
+        "source_fact:v1:093cd7bb66943cb6a4c4c8e7fe3cc704b2c35d32e7d82ccad8db379333942970",
+        "source_fact:v1:16bb44cbf9cf5aa809086199bf14609718620fc4d30993c4441eefef7cb7e403",
+        "source_fact:v1:206b02f4e9ffaec4f6cfd04a5717b926b766b8f99f9dff654cff051bc53c1367",
+        "source_fact:v1:8ca66ec89483ee9704ff2446ed6261d5c4c32e896abe43bb3ad04411bd312785",
+        "source_fact:v1:c2a080287778dd5d98c4b38be890841283baef39ad5edfb49db68f195e0330c9"
+      ],
+      "source_published_kst": "2026-10-06T11:36+09:00",
+      "title": "신보·부산은행, K-콘텐츠 기업에 100억원 협약보증 공급"
     },
     "source_fact:d68de7dc7179449ac5d56183": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -80615,6 +81559,46 @@
       ],
       "source_published_kst": "2026-10-05T18:21+09:00",
       "title": "솔리다임 美상장… \"SK하닉 가치 재평가\" vs \"주주 피해\" [어떻게 생각하십니까]"
+    },
+    "source_fact:db7d32369e6977e8d39fac56": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006087900003?section=economy/all",
+      "source": "연합뉴스",
+      "source_body_digest": "52b474e11224bcbe39a80a7dcbb0ee1131be2e96143ad893ec5a2f694f0161e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b7f4a2c9f4276a2544cdfc2c05444f5a7e695082789c7b534200315940db87b",
+      "source_fact_keys": [
+        "source_fact:v1:0f8a278b835960f945afd1c68015c87de00bc5a07dc859cd048f14b3e3866c39",
+        "source_fact:v1:ab03b2f978b64d2aaeed082fe514eea9a4997eebce646a9a7bc9fcbf1f8d4cd5",
+        "source_fact:v1:afb01fe2c34c895d78cf1f947e7e77bd4a045ea5335cffdbc329b8c2ed85d004",
+        "source_fact:v1:b9b309661c19c28a7c284fb77472cece5e2e9de720a12978d7e30d75cb01e04a",
+        "source_fact:v1:c6085ccd685f280f6f2dc00e5fe8486b91a66a288ed97b749ccffecf1b40e11d"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "정부 \"11월 원유 90% 이상 확보…나프타도 90% 이상\" | 연합뉴스"
+    },
+    "source_fact:dbc7eba597c5f2dd2d16ce88": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.mt.co.kr/index.php/politics/2026/10/06/2026100611034495210",
+      "source": "머니투데이",
+      "source_body_digest": "1ff5e23fa51aba4e87ebed59295c39155cb59362faf90be26aadb1f3e13449eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:75a9de0cf8eab883dc1f4700db63dbcff738439ee1ec149eff71135e2a56c986",
+      "source_fact_keys": [
+        "source_fact:v1:1358521db47c663494575cdecbb55c117e20a1dba5a34c3b614e37c7fb5d8878",
+        "source_fact:v1:2dbe5af0bb924a74e0c1239bb4d96b5cbcb140be76a9c0b0d44e477fc805cc93",
+        "source_fact:v1:d26f62abf8dcffc11e46028956b0c4d035afc27fc707936d3d2865c726970a98"
+      ],
+      "source_published_kst": "2026-10-06T11:49+09:00",
+      "title": "野, '호남 반도체' 공세...김정관 산업장관 \"기업이 먼저 서남권 투자 제안\""
     },
     "source_fact:dc6857ad1b734c76597f4bcb": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
@@ -83111,6 +84095,29 @@
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "[통합시 100일] ③ '800조 반도체' 유치…초광역 산업생태계 구축 | 연합뉴스"
     },
+    "source_fact:f078b655fc1170dda45547fe": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20260930000175",
+      "source": "전자신문",
+      "source_body_digest": "db8a1b7c8870131e4a835316c86dd7eb3d4b900f468f83f4b1a650594d244122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78aa65b961c85633f9f9d561186f6a2ba54441e0f4bf86dfa6a8109dc5c8236a",
+      "source_fact_keys": [
+        "source_fact:v1:35a1cbf80ab98f791f7b3478d5bdefdbfdffa4fd7edf7e16e40f50154d84bad9",
+        "source_fact:v1:3e10468d5453a41448d5c0fd589451aedfbe986442aff5e40b450ca4c65f38a7",
+        "source_fact:v1:4692eaadd7f02e8294af65010bef226222e9e7cc7ad42b2bca06fb9bac7cd9d9",
+        "source_fact:v1:5c354d17470eddb6b59fe8780066d6355ee69d52644d5c07ca64a356430a7920",
+        "source_fact:v1:7e6e3cebba864dbf7eb16b073e1254ff36911846a37582bff678f978ba50c5ae",
+        "source_fact:v1:84ad2ba7d9fe8edd0ae1f29b96a8ec750d1ba2480fca46d4532bb214382b55fd",
+        "source_fact:v1:fee90b70598cff5812ffbff2d7fd4032978890b12225a8026d85e8802ec9bd40"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "직스테크놀로지·한신공영·정도, AI 기반 '데이터센터 스마트 건설' 맞손"
+    },
     "source_fact:f091c66219b40ebf83967c2d": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
@@ -83689,6 +84696,27 @@
       "source_published_kst": "2026-10-05T20:34+09:00",
       "title": "해로우 헬스, 티르바야 인수 완료..선지급 3000만달러"
     },
+    "source_fact:f6879b792281d57e65ae1428": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000171",
+      "source": "전자신문",
+      "source_body_digest": "957d2ed3a478712fe11d4ef0def8cc0d2878439b9619b4299d877d7ec074f6b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6da784a2d5f6c3a35e563d1e9fe1c550318b91f7b8478f72772f5e3491c60741",
+      "source_fact_keys": [
+        "source_fact:v1:093cd7bb66943cb6a4c4c8e7fe3cc704b2c35d32e7d82ccad8db379333942970",
+        "source_fact:v1:16bb44cbf9cf5aa809086199bf14609718620fc4d30993c4441eefef7cb7e403",
+        "source_fact:v1:206b02f4e9ffaec4f6cfd04a5717b926b766b8f99f9dff654cff051bc53c1367",
+        "source_fact:v1:8ca66ec89483ee9704ff2446ed6261d5c4c32e896abe43bb3ad04411bd312785",
+        "source_fact:v1:c2a080287778dd5d98c4b38be890841283baef39ad5edfb49db68f195e0330c9"
+      ],
+      "source_published_kst": "2026-10-06T11:36+09:00",
+      "title": "신보·부산은행, K-콘텐츠 기업에 100억원 협약보증 공급"
+    },
     "source_fact:f70e8a3e359896e8114f0f03": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
       "lanes": {
@@ -83882,6 +84910,27 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "대신證 \"삼성바이오, 3분기 실적 컨센서스 부합…4분기 성장폭 확대\""
+    },
+    "source_fact:f9971c609f53813d2292e532": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000171",
+      "source": "전자신문",
+      "source_body_digest": "957d2ed3a478712fe11d4ef0def8cc0d2878439b9619b4299d877d7ec074f6b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6da784a2d5f6c3a35e563d1e9fe1c550318b91f7b8478f72772f5e3491c60741",
+      "source_fact_keys": [
+        "source_fact:v1:093cd7bb66943cb6a4c4c8e7fe3cc704b2c35d32e7d82ccad8db379333942970",
+        "source_fact:v1:16bb44cbf9cf5aa809086199bf14609718620fc4d30993c4441eefef7cb7e403",
+        "source_fact:v1:206b02f4e9ffaec4f6cfd04a5717b926b766b8f99f9dff654cff051bc53c1367",
+        "source_fact:v1:8ca66ec89483ee9704ff2446ed6261d5c4c32e896abe43bb3ad04411bd312785",
+        "source_fact:v1:c2a080287778dd5d98c4b38be890841283baef39ad5edfb49db68f195e0330c9"
+      ],
+      "source_published_kst": "2026-10-06T11:36+09:00",
+      "title": "신보·부산은행, K-콘텐츠 기업에 100억원 협약보증 공급"
     },
     "source_fact:fa0de5e477c5a21c122e6b22": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -84478,6 +85527,29 @@
       ],
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
+    "source_fact:fcf76c10b2cc928253db98d1": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20260930000175",
+      "source": "전자신문",
+      "source_body_digest": "db8a1b7c8870131e4a835316c86dd7eb3d4b900f468f83f4b1a650594d244122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78aa65b961c85633f9f9d561186f6a2ba54441e0f4bf86dfa6a8109dc5c8236a",
+      "source_fact_keys": [
+        "source_fact:v1:35a1cbf80ab98f791f7b3478d5bdefdbfdffa4fd7edf7e16e40f50154d84bad9",
+        "source_fact:v1:3e10468d5453a41448d5c0fd589451aedfbe986442aff5e40b450ca4c65f38a7",
+        "source_fact:v1:4692eaadd7f02e8294af65010bef226222e9e7cc7ad42b2bca06fb9bac7cd9d9",
+        "source_fact:v1:5c354d17470eddb6b59fe8780066d6355ee69d52644d5c07ca64a356430a7920",
+        "source_fact:v1:7e6e3cebba864dbf7eb16b073e1254ff36911846a37582bff678f978ba50c5ae",
+        "source_fact:v1:84ad2ba7d9fe8edd0ae1f29b96a8ec750d1ba2480fca46d4532bb214382b55fd",
+        "source_fact:v1:fee90b70598cff5812ffbff2d7fd4032978890b12225a8026d85e8802ec9bd40"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "직스테크놀로지·한신공영·정도, AI 기반 '데이터센터 스마트 건설' 맞손"
     },
     "source_fact:fd11f55f0294146ce2c2654f": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -85141,6 +86213,24 @@
       "link": "https://www.yna.co.kr/view/AKR20261002023700007",
       "source": "연합뉴스",
       "title": "메시, 또 구단주 됐다…스페인 2부 엘덴세도 인수 | 연합뉴스"
+    },
+    "title:0131fd302ff1613f8f358a3e": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000173",
+      "source": "전자신문",
+      "source_body_digest": "29f75226f0d2c7f472ed9a648bf525fca7d62a17fe6ce933dc87a35210ce07d5",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:863a99edaaf0ac2585741b0b6664ce95b441852d6179fdf820ad80d8e7922a72",
+      "source_fact_keys": [
+        "source_fact:v1:eaf3d5f73f6acd022f74acfc52e7bdd6f7a5c1c5577f30a25df44d7206be231d",
+        "source_fact:v1:f4e966704fc0b3da418f1432bd39fdd7d8342528870bbc1211284796a227932e"
+      ],
+      "source_published_kst": "2026-10-06T11:38+09:00",
+      "title": "금투협, 글로벌 펀드산업 현안 논의…日 자산운용협회와 협력"
     },
     "title:0135ffb31f7cb99ce1227a2d": {
       "first_seen_kst": "2026-10-06T07:30:15+09:00",
@@ -86224,6 +87314,25 @@
       "source_published_kst": "2026-10-05T22:34+09:00",
       "title": "[美특징주]할리데이비슨, 씨티 '매수' 상향에 상승"
     },
+    "title:0e4a355604f6d5b2bb88a08c": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.mt.co.kr/index.php/politics/2026/10/06/2026100611034495210",
+      "source": "머니투데이",
+      "source_body_digest": "1ff5e23fa51aba4e87ebed59295c39155cb59362faf90be26aadb1f3e13449eb",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:75a9de0cf8eab883dc1f4700db63dbcff738439ee1ec149eff71135e2a56c986",
+      "source_fact_keys": [
+        "source_fact:v1:1358521db47c663494575cdecbb55c117e20a1dba5a34c3b614e37c7fb5d8878",
+        "source_fact:v1:2dbe5af0bb924a74e0c1239bb4d96b5cbcb140be76a9c0b0d44e477fc805cc93",
+        "source_fact:v1:d26f62abf8dcffc11e46028956b0c4d035afc27fc707936d3d2865c726970a98"
+      ],
+      "source_published_kst": "2026-10-06T11:49+09:00",
+      "title": "野, '호남 반도체' 공세...김정관 산업장관 \"기업이 먼저 서남권 투자 제안\""
+    },
     "title:0ea40c6b34003aa700f98314": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
       "lanes": {
@@ -86949,6 +88058,26 @@
       ],
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
+    },
+    "title:192ab59dfebb1282f48e81be": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006088900003",
+      "source": "연합뉴스",
+      "source_body_digest": "9d2876b8fe5f34101964cf449e7fe7f9c7c0809680e05ef70c5928bdca337112",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:0ef0d0d215ab4a1f53ad95645e42fee774ba76cb84d3cfc0f21e0e420b6ca6a2",
+      "source_fact_keys": [
+        "source_fact:v1:0777f90caa1cd5bbf9b6551dd49621c2c3db178efb6665903b09e57825e5d6db",
+        "source_fact:v1:43e16b6ae79f89bc8ca0b0e47998986c22147def15dac0465b3bb149d10f4dfb",
+        "source_fact:v1:63be5539b41c5913d1ef6f5e4254cdd623095568857b2b23bd742d0e8bb67c1d",
+        "source_fact:v1:6a96cb1f4638fa9254dba361486bbe28334ee341be0c0544527de49e9a29efcc"
+      ],
+      "source_published_kst": "2026-10-06T11:46+09:00",
+      "title": "삼성전기, 글로벌 기업과 2천900억 AI 서버용 MLCC 공급계약 | 연합뉴스"
     },
     "title:193e546eb603cd5b62ca8e59": {
       "first_seen_kst": "2026-10-01T21:28:22+09:00",
@@ -91693,6 +92822,27 @@
       "link": "https://www.newsis.com/view/NISX20260927_0003804400",
       "source": "뉴시스",
       "title": "국힘, 장외투쟁 신중론…\"국감 등 원내에서 현안 대응 우선\""
+    },
+    "title:4fbfee3295b95409cce05300": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000171",
+      "source": "전자신문",
+      "source_body_digest": "957d2ed3a478712fe11d4ef0def8cc0d2878439b9619b4299d877d7ec074f6b9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:6da784a2d5f6c3a35e563d1e9fe1c550318b91f7b8478f72772f5e3491c60741",
+      "source_fact_keys": [
+        "source_fact:v1:093cd7bb66943cb6a4c4c8e7fe3cc704b2c35d32e7d82ccad8db379333942970",
+        "source_fact:v1:16bb44cbf9cf5aa809086199bf14609718620fc4d30993c4441eefef7cb7e403",
+        "source_fact:v1:206b02f4e9ffaec4f6cfd04a5717b926b766b8f99f9dff654cff051bc53c1367",
+        "source_fact:v1:8ca66ec89483ee9704ff2446ed6261d5c4c32e896abe43bb3ad04411bd312785",
+        "source_fact:v1:c2a080287778dd5d98c4b38be890841283baef39ad5edfb49db68f195e0330c9"
+      ],
+      "source_published_kst": "2026-10-06T11:36+09:00",
+      "title": "신보·부산은행, K-콘텐츠 기업에 100억원 협약보증 공급"
     },
     "title:4fe68063a2265c5932aca28b": {
       "first_seen_kst": "2026-09-27T08:28:35+09:00",
@@ -100908,6 +102058,29 @@
       "source": "전자신문",
       "title": "외국인 매출 22배 뛴 CJ올리브영…글로벌 뉴스룸 개설"
     },
+    "title:c4216950cfc88d6102d399f6": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20260930000175",
+      "source": "전자신문",
+      "source_body_digest": "db8a1b7c8870131e4a835316c86dd7eb3d4b900f468f83f4b1a650594d244122",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:78aa65b961c85633f9f9d561186f6a2ba54441e0f4bf86dfa6a8109dc5c8236a",
+      "source_fact_keys": [
+        "source_fact:v1:35a1cbf80ab98f791f7b3478d5bdefdbfdffa4fd7edf7e16e40f50154d84bad9",
+        "source_fact:v1:3e10468d5453a41448d5c0fd589451aedfbe986442aff5e40b450ca4c65f38a7",
+        "source_fact:v1:4692eaadd7f02e8294af65010bef226222e9e7cc7ad42b2bca06fb9bac7cd9d9",
+        "source_fact:v1:5c354d17470eddb6b59fe8780066d6355ee69d52644d5c07ca64a356430a7920",
+        "source_fact:v1:7e6e3cebba864dbf7eb16b073e1254ff36911846a37582bff678f978ba50c5ae",
+        "source_fact:v1:84ad2ba7d9fe8edd0ae1f29b96a8ec750d1ba2480fca46d4532bb214382b55fd",
+        "source_fact:v1:fee90b70598cff5812ffbff2d7fd4032978890b12225a8026d85e8802ec9bd40"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "직스테크놀로지·한신공영·정도, AI 기반 '데이터센터 스마트 건설' 맞손"
+    },
     "title:c43277617276db18b6fd0fcd": {
       "first_seen_kst": "2026-09-18T17:19:16+09:00",
       "lanes": {
@@ -102740,6 +103913,26 @@
       "source": "연합뉴스",
       "title": "SK는 '넓은 부지'·삼성은 '속도전'…호남 반도체 투자의지 | 연합뉴스"
     },
+    "title:d8c91e8079c28c48fbd050f4": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.etnews.com/20261006000175",
+      "source": "전자신문",
+      "source_body_digest": "b88d251d98d586679a2a8b499108e007ee39b07b2443a6e0fb903b624538b749",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c92dda8d05d777353de872d50daffa4c8414d727da5053c0c6d9c4ef2dd6de83",
+      "source_fact_keys": [
+        "source_fact:v1:1572e45cd9f4f68452e66e838636ed9990426a706d5017cbc46778b521e123e3",
+        "source_fact:v1:6bd838079c5ac33dacf9edae01f57ea079b857928824fc9211ebe4c33e5d6f55",
+        "source_fact:v1:bca2ca48ed5bf5ed153e385c7bf8e97d33d00decd2de10b84f0e58caddfe5441",
+        "source_fact:v1:fb67a97f375709f0044420860655e33ef3357fefd33aa31ce7f6d98f5cebb2f1"
+      ],
+      "source_published_kst": "2026-10-06T11:45+09:00",
+      "title": "車 디스플레이 유리 수입 간소화…재생에너지 '다수 대 다수' PPA 허용"
+    },
     "title:d8d2667bb2e2a412c0c372b0": {
       "first_seen_kst": "2026-10-05T07:24:39+09:00",
       "lanes": {
@@ -104255,6 +105448,27 @@
       "link": "https://www.federalregister.gov/documents/2026/09/24/2026-19537/measures-to-restrict-stockpiling-of-polysilicon-and-polysilicon-derivatives-under-proclamation-11052",
       "source": "Federal Register",
       "title": "미 상무부, 폴리실리콘 사재기 차단 규칙 시행"
+    },
+    "title:eb5013b0129c67017af5796f": {
+      "first_seen_kst": "2026-10-06T14:41:27+09:00",
+      "lanes": {
+        "live": "2026-10-06T14:41:27+09:00"
+      },
+      "last_seen_kst": "2026-10-06T14:41:27+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006087900003?section=economy/all",
+      "source": "연합뉴스",
+      "source_body_digest": "52b474e11224bcbe39a80a7dcbb0ee1131be2e96143ad893ec5a2f694f0161e9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3b7f4a2c9f4276a2544cdfc2c05444f5a7e695082789c7b534200315940db87b",
+      "source_fact_keys": [
+        "source_fact:v1:0f8a278b835960f945afd1c68015c87de00bc5a07dc859cd048f14b3e3866c39",
+        "source_fact:v1:ab03b2f978b64d2aaeed082fe514eea9a4997eebce646a9a7bc9fcbf1f8d4cd5",
+        "source_fact:v1:afb01fe2c34c895d78cf1f947e7e77bd4a045ea5335cffdbc329b8c2ed85d004",
+        "source_fact:v1:b9b309661c19c28a7c284fb77472cece5e2e9de720a12978d7e30d75cb01e04a",
+        "source_fact:v1:c6085ccd685f280f6f2dc00e5fe8486b91a66a288ed97b749ccffecf1b40e11d"
+      ],
+      "source_published_kst": "2026-10-06T11:44+09:00",
+      "title": "정부 \"11월 원유 90% 이상 확보…나프타도 90% 이상\" | 연합뉴스"
     },
     "title:eb743bcba3f0c4bf61ef0f85": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
@@ -105811,5 +107025,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T14:18:00+09:00"
+  "updated_at_kst": "2026-10-06T14:41:27+09:00"
 }
