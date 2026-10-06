@@ -2049,6 +2049,17 @@ def render(change, rate=None):
     if r['axis'] == 'glass_panel_yield':
         lines.append('• TGV 홀 단일 불량률과 전체 패널 전기수율은 다른 지표입니다. 패널·양산 수율만 이 축에서 비교합니다.')
         lines.append('• ±5%p 또는 85%·90% 기준선 돌파/이탈 시 재알림합니다.')
+    if r['axis'] == 'glass_process_cycle_time':
+        v = r['value']
+        lines.append('• 12시간=720분으로 환산합니다. “분 단위”만으로 개선 후 정확한 분 수나 속도배수를 임의 계산하지 않습니다.')
+        if v.get('process_name') == 'unverified_core_process':
+            lines.append('• 공정명이 직접 확인되기 전에는 도금·식각·레이저 중 특정 공정으로 단정하지 않습니다.')
+        if v.get('after_minutes_exact') is not None and v.get('before_minutes'):
+            speed = float(v['before_minutes']) / float(v['after_minutes_exact'])
+            lines.append(f"• 직접 확인 숫자 기준 공정시간 단축배수: {speed:.1f}배")
+    if r['axis'] == 'glass_capex':
+        lines.append('• 설비투자 총액과 라인 수를 실제 월 생산장수로 치환하지 않습니다. 토지·건물·기계장치·공통설비가 섞일 수 있습니다.')
+        lines.append('• 투자액·라인수와 실제 양산 수율·월 생산능력·고객 매출은 별도 상태로 추적합니다.')
     if r['axis'] == 'glass_hvm_stage':
         lines.append('• 샘플→고객 검증→정식 발주 대기→정식 수주→파일럿→양산을 구분하며 기사상 기대감을 양산매출로 승격하지 않습니다.')
         v = r['value']
@@ -2153,7 +2164,7 @@ def main():
         )
         structured_glass = (
             any(k in text for k in ('glass substrate','glass core','glass panel','glass interposer','tgv','유리기판','유리 기판','유리 인터포저','글라스 코어'))
-            and any(k in text for k in ('510x515','510×515','515x510','515×510','copos','yield','수율','sample','샘플','customer evaluation','customer validation','고객 평가','고객 검증','purchase order','po ','pilot','양산','samsung','삼성전자'))
+            and any(k in text for k in ('510x515','510×515','515x510','515×510','copos','yield','수율','sample','샘플','customer evaluation','customer validation','고객 평가','고객 검증','purchase order','po ','pilot','양산','samsung','삼성전자','12시간','분 단위','cycle time','공정시간','3470억','김천','설비투자','investment'))
         )
         structured_foundry_recovery = (
             ('samsung' in text or '삼성' in text)
