@@ -688,3 +688,5 @@ def test_same_committee_event_never_realerts_from_new_publisher():
         seen_events={"12th-plan|committee-governance|member-disclosure": 0},
     )
     assert notify == []
+
+# live-regression-20261006-v4
