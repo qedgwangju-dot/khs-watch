@@ -623,28 +623,85 @@ jobs:
           if [ ! -f data/crypto_liquidity_watch_state.json ]; then
             exit 0
           fi
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/crypto_liquidity_watch_state.json
-          if [ -f data/samsung_wallet_stablecoin_watch_state.json ]; then
-            git add data/samsung_wallet_stablecoin_watch_state.json
-          fi
-          if [ -f data/coinbase_stablecoin_catalyst_state.json ]; then
-            git add data/coinbase_stablecoin_catalyst_state.json
-          fi
-          if git diff --cached --quiet; then
-            echo "Crypto liquidity state unchanged"
-          else
+
+          desired_dir="$(mktemp -d)"
+          for file in             crypto_liquidity_watch_state.json             samsung_wallet_stablecoin_watch_state.json             coinbase_stablecoin_catalyst_state.json
+          do
+            if [ -f "data/$file" ]; then
+              cp "data/$file" "$desired_dir/$file"
+            fi
+          done
+
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+
+            DESIRED_DIR="$desired_dir" python - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import shutil
+
+          root = pathlib.Path(".")
+          desired_dir = pathlib.Path(os.environ["DESIRED_DIR"])
+          names = [
+              "crypto_liquidity_watch_state.json",
+              "samsung_wallet_stablecoin_watch_state.json",
+              "coinbase_stablecoin_catalyst_state.json",
+          ]
+
+          def parse_ts(data):
+              raw = str(data.get("updated_at_kst") or data.get("last_checked_kst") or "")
+              if not raw:
+                  return None
+              try:
+                  return dt.datetime.fromisoformat(raw)
+              except Exception:
+                  return None
+
+          for name in names:
+              desired = desired_dir / name
+              if not desired.exists():
+                  continue
+              target = root / "data" / name
+              use_desired = True
+              try:
+                  desired_data = json.loads(desired.read_text(encoding="utf-8"))
+                  current_data = json.loads(target.read_text(encoding="utf-8")) if target.exists() else {}
+                  desired_ts = parse_ts(desired_data)
+                  current_ts = parse_ts(current_data)
+                  if desired_ts and current_ts and current_ts > desired_ts:
+                      use_desired = False
+                      print(f"state_keep_newer_origin=true file={name} origin={current_ts.isoformat()} desired={desired_ts.isoformat()}")
+              except Exception as exc:
+                  print(f"state_timestamp_compare_warning file={name} error={exc}")
+
+              if use_desired:
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copy2(desired, target)
+                  print(f"state_apply_desired=true file={name}")
+          PY
+
+            git add data/crypto_liquidity_watch_state.json
+            [ ! -f data/samsung_wallet_stablecoin_watch_state.json ] || git add data/samsung_wallet_stablecoin_watch_state.json
+            [ ! -f data/coinbase_stablecoin_catalyst_state.json ] || git add data/coinbase_stablecoin_catalyst_state.json
+
+            if git diff --cached --quiet; then
+              echo "Crypto liquidity state unchanged after newest-state merge"
+              exit 0
+            fi
+
             git commit -m "Update crypto liquidity watch state"
-            for attempt in 1 2 3; do
-              if git pull --rebase origin main && git push; then
-                exit 0
-              fi
-              git rebase --abort 2>/dev/null || true
-              sleep $((attempt * 3))
-            done
-            exit 1
-          fi
+            if git push origin HEAD:main; then
+              exit 0
+            fi
+            sleep $((attempt * 3))
+          done
+          exit 1
 
       - name: Upload verification artifacts
         if: always()
