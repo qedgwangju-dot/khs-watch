@@ -207,6 +207,8 @@ def _from_figure_x_syndication() -> list[dict]:
         text = str(tweet.get('full_text') or tweet.get('text') or '').strip()
         item = _make_figure_item(sid, text, legacy._parse_x_date(tweet.get('created_at')))
         if item:
+            item['figure_text_integrity'] = 'exact_tweet'
+            item['figure_fetch_path'] = 'x_syndication'
             out.append(item)
     return out
 
@@ -224,6 +226,8 @@ def _from_figure_nitter(url: str) -> list[dict]:
             continue
         item = _make_figure_item(m.group(1), combined, legacy._parse_x_date(node.findtext('pubDate')))
         if item:
+            item['figure_text_integrity'] = 'feed_item'
+            item['figure_fetch_path'] = 'rss_item'
             out.append(item)
     return out
 
@@ -240,6 +244,12 @@ def _from_figure_mirror(url: str) -> list[dict]:
         context = legacy._clean_social_text(raw[lo:hi])
         item = _make_figure_item(sid, context, legacy._tweet_time_from_id(sid))
         if item:
+            # A mirror page is scraped with a broad window around the status id.
+            # Neighboring tweets can leak Figure/Helix keywords into an unrelated
+            # reply or Hark post. Keep this only for discovery; never alert from it.
+            item['figure_text_integrity'] = 'mirror_context'
+            item['figure_fetch_path'] = 'profile_mirror'
+            item['discovery_only'] = True
             out.append(item)
     return out
 
@@ -254,9 +264,19 @@ def _fetch_figure_founder_x() -> list[dict]:
     ]
     for label, fn in sources:
         try:
-            for item in fn():
-                gathered[item['x_status_id']] = item
-            if gathered:
+            batch = fn()
+            for item in batch:
+                sid = item['x_status_id']
+                prev = gathered.get(sid)
+                # Prefer an exact tweet/feed item over a broad mirror context.
+                if prev is None or (
+                    prev.get('discovery_only')
+                    and not item.get('discovery_only')
+                ):
+                    gathered[sid] = item
+            # Stop only after a source yields at least one alert-eligible item.
+            # Mirror-context discovery must never block a later exact source.
+            if any(not x.get('discovery_only') for x in batch):
                 break
         except Exception as exc:
             errors.append(f'{label}: {type(exc).__name__}: {exc}')
@@ -338,13 +358,22 @@ def topic_group(text: str) -> str | None:
 
 
 def _is_figure_direct(item: dict) -> bool:
-    return bool(item.get('x_status_id') and item.get('source') == FIGURE_X_SOURCE)
+    return bool(
+        item.get('x_status_id')
+        and item.get('source') == FIGURE_X_SOURCE
+        and not item.get('discovery_only')
+        and item.get('figure_text_integrity') in {'exact_tweet', 'feed_item'}
+    )
 
 
 def score(item: dict) -> int:
     text = f"{item.get('title','')} {item.get('description','')} {item.get('source','')}"
     if topic_group(text) != 'figure_ai':
         return _orig_score(item)
+    # Never emit a Telegram alert from broad mirror context. The post text must
+    # come from an isolated X syndication object or a single RSS item.
+    if item.get('discovery_only') or item.get('figure_text_integrity') == 'mirror_context':
+        return 0
     s = 19
     if base.NUMERIC.search(text):
         s += 3
@@ -419,7 +448,9 @@ def verification(item: dict, group: str, text: str) -> str:
     if group != 'figure_ai':
         return _orig_verification(item, group, text)
     if _is_figure_direct(item):
-        return '브렛 애드콕 엑스(X) 1차 자료 · 실제 공개 내용은 피겨 AI 공식자료로 후속 확인'
+        return '브렛 애드콕 엑스(X) 개별 게시물 본문 확인 · 피겨/Helix/로봇 직접 문맥 확인'
+    if item.get('figure_text_integrity') == 'mirror_context':
+        return '프로필 미러 주변문맥만 확인 · 단독 알림 금지, 개별 게시물 본문 재확인 필요'
     if item.get('source') in {'Figure', 'Figure AI', 'Figure Robotics'}:
         return '피겨 AI 공식자료'
     if item.get('source') in base.TRUSTED:
