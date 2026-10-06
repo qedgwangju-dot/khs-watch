@@ -1782,6 +1782,33 @@
       "source": "파이낸셜뉴스",
       "title": "키움증권, ISA 계좌 ETF 거래 이벤트...9개사 참여"
     },
+    "event:4ba92d539128333cf55740c9": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815653",
+      "source": "뉴시스",
+      "source_body_digest": "799a60f6a4be1c2a24e272301be0bcf2fb3f411dd2bd351e8c397385cee65c1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:326fe6c2dffcb1ecf5f22d18acfe986e5290c24d5f04890b6b82ae51f28722c3",
+      "source_fact_keys": [
+        "source_fact:v1:5e30c33e7044530c876567e4a52c23de4cd144d767912b80ff16f1101a9fa0a9",
+        "source_fact:v1:7b317ca1449e79ca09fcdeac85c0dab405ba5fb579fbfab079ec5d4da5ea3ea6",
+        "source_fact:v1:87767d1cbfeb13f54ea9438658a9781cf6123a22a68a193c115039d21c5264e7",
+        "source_fact:v1:9a729cb6b50f0aa93ed51cf5ae2f8512de8f2d7231a88461335f8408fe14a6d8",
+        "source_fact:v1:9b5336881837590150f899f1b3446d6ce61b1dac3af88f9fc56ab791b87dd0e9",
+        "source_fact:v1:a8d58ecb6f0bd6bba8e32c7290bd2e275a9b71979e3ac2999208581ff87eac30",
+        "source_fact:v1:cafc4434957e93b453fec79e75522ab10c4e974cabb2b9c795a5f9c2e269e05c",
+        "source_fact:v1:e38e417c16b838a69d4445ca6e094d781966f41f34c983e18170348ad7512f34",
+        "source_fact:v1:ee62db8a70e925362ade6f67b245a142b02b157b24992167d516077b890cfbc9",
+        "source_fact:v1:f177d2837aa3037f4e454d9b3b43ca74ca2c747c7ea974ee0f5175f657e233fe",
+        "source_fact:v1:fd74f00d76f77db49a67fd1d86e5b66db930a7e16f430fa944e7bb99825cca6a"
+      ],
+      "source_published_kst": "2026-10-07T06:01+09:00",
+      "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
+    },
     "event:4c60ef5885703c4873ef90e7": {
       "first_seen_kst": "2026-10-05T07:03:44+09:00",
       "lanes": {
@@ -5511,26 +5538,22 @@
     "event:d3f7bb7a19ba6c2f88d9f346": {
       "first_seen_kst": "2026-10-07T05:13:11+09:00",
       "lanes": {
-        "live": "2026-10-07T05:13:11+09:00"
+        "live": "2026-10-07T06:12:17+09:00"
       },
-      "last_seen_kst": "2026-10-07T05:13:11+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2632913",
-      "source": "이투데이",
-      "source_body_digest": "3584e8d16aa70624dc851cd4d6cf10c216442818344ad295751239c1241a9033",
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169872",
+      "source": "매일경제",
+      "source_body_digest": "ecc2d1314640e5209b5d577f95002cd72a945139f9711fa71a4e2026fbcb75a4",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:42aa80b938eba81baf35befd29035492a99eb12be4179b6aa713fe2097f77a17",
+      "source_fact_identity": "source_facts:v1:fc847d42b26a2a9bbd950b2f19348374a7011899e30d7fb2ea77cef05e521b38",
       "source_fact_keys": [
-        "source_fact:v1:93e2046dd244160c8ef4cda85ec9229027e402c72662fd5bd53f8567cc143444",
-        "source_fact:v1:ab624149ce97a9360d51c79a57cdcc9e7757dc3266be20df44133a6b7dab1311",
-        "source_fact:v1:b3668d30731d033cef03603ba90b5740533ee95ee1d4070aad2edfc7a38c22fd",
-        "source_fact:v1:b3ad4b4a2470c9febba60cebd552a0ecb511f4315c489047cfde3adf5cbeb12e",
-        "source_fact:v1:df04c59a3cbf40a0c535d513ffec9716082163f188c2b9a1c0edc9284298da46",
-        "source_fact:v1:e5aab5be96ac23e32d53dbae93f03882decf74e2eef6d1dbfb272cc7d2d5c96f",
-        "source_fact:v1:eff506d2bc6ddbfeaf47a3d2e2c7a202945d6bda77d027e93ad45b6ed48ca4cf",
-        "source_fact:v1:f18d4bb579fff2225f4182505c6b712641e2a9e9b5f0df8d2101d8afeb8e94c2"
+        "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
+        "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8",
+        "source_fact:v1:c963e0380b2ddc280cdf35cfcaced8087631b22eb185795190e6ef9aea88f546"
       ],
-      "source_published_kst": "2026-10-07T05:00+09:00",
-      "title": "테마 쪼개고 채권 섞고…ETF 신상품 설계 다변화 [ETF 지형도 변화]②"
+      "source_published_kst": "2026-10-07T05:57+09:00",
+      "title": "삼전 ‘영업익 100조’ 예고에도 주가는 영…8일도 심상치않다는데"
     },
     "event:d43896e2f11c4711cdda0b39": {
       "first_seen_kst": "2026-10-02T13:38:43+09:00",
@@ -5798,27 +5821,22 @@
     "event:dd87cc13e30f19c890aebcd1": {
       "first_seen_kst": "2026-10-07T03:30:59+09:00",
       "lanes": {
-        "live": "2026-10-07T03:30:59+09:00"
+        "live": "2026-10-07T06:12:17+09:00"
       },
-      "last_seen_kst": "2026-10-07T03:30:59+09:00",
-      "link": "https://www.mt.co.kr/industry/2026/10/07/2026100618381313969",
-      "source": "머니투데이",
-      "source_body_digest": "9e192ab79f7a30551688dc5498580bb6424db148be0294be70a79f31906b3893",
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816116",
+      "source": "뉴시스",
+      "source_body_digest": "82cb5bfcb631afdfe6121d5d7b48df8969ea359624ed89e8d5e59830c486ad92",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:436ddddb90dc0724b8302656b3e4e58c75b0b7bec36768b38e0d1337b9df1341",
+      "source_fact_identity": "source_facts:v1:e28c7adfbe279b7978f533790b16bb41afa120276f8e6104d1e6168f3084fc6e",
       "source_fact_keys": [
-        "source_fact:v1:5dd20e99cfcbe1aa0310b9e645fc53aebc28f7f5924ce6539fec9bdf05f742d8",
-        "source_fact:v1:7ec58b219f12eea3591294c17369a0a91c10c959864a5a500ffe45f070a0500f",
-        "source_fact:v1:8c348e112bfbf85e9e5d82acc12714a8ee5286ce3f316c2b5ffc4c1462d4dd0d",
-        "source_fact:v1:9b6305e9c4140325d5648e939cc47785f47501f4468037208fe4d0b235052cac",
-        "source_fact:v1:b0ebec59ab9d3c54c077f9a3e64cc599dba3b3f629e56a02ac81e91bdb6c374c",
-        "source_fact:v1:bfb152146efe2eb623f35055de3bee73cf9bf0b88ee0649f35a8713c721d452e",
-        "source_fact:v1:c420eb612d082c4b333a340861d6d7bb8dfa13e67d5a6028b007a379db5f2f0b",
-        "source_fact:v1:f26efc1480c27fab786dc046119b13301a8e170c7bd076c64832124b6d8322e0",
-        "source_fact:v1:fc1d65a3e9171f8ead34bb3abebfbe03a5fa98d5fa017d22eb40d05919d12d71"
+        "source_fact:v1:3c998abf5db41e550c5bfe07e96180f8816aa22201ceb533d834a26fab9748a1",
+        "source_fact:v1:6fab7cf21a2e901ab72c9ac4eb103299239daf4131145b6f23b6bb153c2525c0",
+        "source_fact:v1:7532226f47c91d67f04ef375ed0f83072471f8bfaeae5d0413330090ff7f538a",
+        "source_fact:v1:d8eaf6588bf06b924acbbb5cb3a301f3177c3f80f2ea0766ac6cb7113d436171"
       ],
-      "source_published_kst": "2026-10-07T03:11+09:00",
-      "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
+      "source_published_kst": "2026-10-07T06:06+09:00",
+      "title": "분기 영업익 200조 목전…삼전·닉스 기대치 높이는 증권가"
     },
     "event:de5909e789cfafa27b6823bd": {
       "first_seen_kst": "2026-09-19T07:23:13+09:00",
@@ -10304,6 +10322,23 @@
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
+    "fact:3783a34502fa0449fc115624": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006186600001",
+      "source": "연합뉴스",
+      "source_body_digest": "ab2bca53a385aa7be3d34f6aa759fa50fdfc3c528519dcaa69017bdc8174cca0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fab47500f976d273060619944985bfd597839dcb7b0cccc64ab85bbf7090ffe9",
+      "source_fact_keys": [
+        "source_fact:v1:4d24e6e51a1395f1ba7004bb6fd0afba3c6a48182c99ebd30309e28adef5c9f9"
+      ],
+      "source_published_kst": "2026-10-07T06:00+09:00",
+      "title": "최수진 \"강원랜드, 영업이익 급감에도 성과급 195％…방만경영\" | 연합뉴스"
+    },
     "fact:37bbfcafd80af7d65503125b": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
       "lanes": {
@@ -11374,6 +11409,26 @@
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "[TODAY엔비디아]개장전 '상승'…월가, 신고가 경신에도 여전히 \"밸류 매력\""
     },
+    "fact:4e991205cd0f1080904ea4cc": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169872",
+      "source": "매일경제",
+      "source_body_digest": "ecc2d1314640e5209b5d577f95002cd72a945139f9711fa71a4e2026fbcb75a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc847d42b26a2a9bbd950b2f19348374a7011899e30d7fb2ea77cef05e521b38",
+      "source_fact_keys": [
+        "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
+        "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8",
+        "source_fact:v1:c963e0380b2ddc280cdf35cfcaced8087631b22eb185795190e6ef9aea88f546"
+      ],
+      "source_published_kst": "2026-10-07T05:57+09:00",
+      "title": "삼전 ‘영업익 100조’ 예고에도 주가는 영…8일도 심상치않다는데"
+    },
     "fact:4e9fcddc04ddbc37f33ecdd2": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
       "lanes": {
@@ -11961,6 +12016,30 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "fact:57c3fff96d31dc4057481c1d": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169545",
+      "source": "매일경제",
+      "source_body_digest": "860aad54bfc6b8dfaa482e04a670a838993d1547bf9ddeaf37adbf4708dd15f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8121af7aeebe850d4d878723a23bd33753f38ab124137a1c28cb00cdcb6410c4",
+      "source_fact_keys": [
+        "source_fact:v1:10589118e3d7335a09aee2ede1e037514eb05567e3abb82f26fabb2a2527d011",
+        "source_fact:v1:1ef68e653813f6735b766ad65dc7e25195dae26bdc35d97ae0b41ab9bc290ace",
+        "source_fact:v1:830b6ac5e4c1a36f9f708d76368043e8183705c3b9fc309d22fb734a1b1ad452",
+        "source_fact:v1:a4edc686bd40529cfc0f16831355629853be63255f6bc516bd3ffa23bae1ecac",
+        "source_fact:v1:bbbb0a64758a177106d3d8709b8011a32a3976013fd79a602144270d17ac8154",
+        "source_fact:v1:bcee94a59705e85d51ee60821f974158e02fa2dcb2dd77b13caa480b2e3418fd",
+        "source_fact:v1:bdc57be3615b574ed7cb67fc206e54ded9cdb0ef9b1995622ad6b7c3679b6e9e",
+        "source_fact:v1:c81117f42beb017ba9ce5d70ac2a1177135d4fa1b84bdf44777baf8b3e8f0d4a"
+      ],
+      "source_published_kst": "2026-10-06T22:00+09:00",
+      "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
     },
     "fact:58738a6d70181b241619210d": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
@@ -14088,6 +14167,26 @@
       "source_published_kst": "2026-10-05T14:48+09:00",
       "title": "예멘 정부군 \"후티 군사시설 1122곳 공격…1747명 사망\""
     },
+    "fact:80b26a9b0430dba1a26d535b": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816116",
+      "source": "뉴시스",
+      "source_body_digest": "82cb5bfcb631afdfe6121d5d7b48df8969ea359624ed89e8d5e59830c486ad92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28c7adfbe279b7978f533790b16bb41afa120276f8e6104d1e6168f3084fc6e",
+      "source_fact_keys": [
+        "source_fact:v1:3c998abf5db41e550c5bfe07e96180f8816aa22201ceb533d834a26fab9748a1",
+        "source_fact:v1:6fab7cf21a2e901ab72c9ac4eb103299239daf4131145b6f23b6bb153c2525c0",
+        "source_fact:v1:7532226f47c91d67f04ef375ed0f83072471f8bfaeae5d0413330090ff7f538a",
+        "source_fact:v1:d8eaf6588bf06b924acbbb5cb3a301f3177c3f80f2ea0766ac6cb7113d436171"
+      ],
+      "source_published_kst": "2026-10-07T06:06+09:00",
+      "title": "분기 영업익 200조 목전…삼전·닉스 기대치 높이는 증권가"
+    },
     "fact:815e4379ef9c1290d918f370": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
       "lanes": {
@@ -14299,6 +14398,24 @@
       ],
       "source_published_kst": "2026-10-06T11:07+09:00",
       "title": "쌍용건설, 8천65억원 규모 남부내륙철도 제9공구 수주 | 연합뉴스"
+    },
+    "fact:847f22f17edb0d481cfee777": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02145126645610624",
+      "source": "이데일리",
+      "source_body_digest": "bbbdca11d67a3ca08c4d95fc2c2fede9725d46a26416799613999788f60c7747",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:93f79c2da64e0350c958ef20baec916cdabee3bf5854cbd17108e3cae3d2c130",
+      "source_fact_keys": [
+        "source_fact:v1:9d62866fe06511d84579a3020550a530bfb350390503b6399b2678ba02876202",
+        "source_fact:v1:cfb11d974f6c56ae982f86b8b3ef86774ab435a251218b0c77421773cd7ffafd"
+      ],
+      "source_published_kst": "2026-10-07T06:00+09:00",
+      "title": "롯데하이마트, 물류센터에 ‘휴머노이드 로봇’ 투입…2028년 실증"
     },
     "fact:84c27cfd1cfdcf7bb4a10974": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -14842,6 +14959,26 @@
       ],
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, 유럽 첫 상용 SDV에 통합 콕핏 솔루션 공급"
+    },
+    "fact:8eb743fa44e65ee63869f50b": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/06/2026100611119626039",
+      "source": "머니투데이",
+      "source_body_digest": "e6bee20e8088040e501e95eee2f983df8bfb558ac7fc36139737db8cfd930a25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38f607d494f8432d5ca59d5cfeaf397ab39485bb0700aea157c90cdcf49692dc",
+      "source_fact_keys": [
+        "source_fact:v1:1692a32e0c7ca90fe1e93b010bb45b77969f88f63ff32a7987c26705f2ed4783",
+        "source_fact:v1:4f1e10b2879aa3f5b985df1064a272afac214de494cfac9d5af1014f08f27d11",
+        "source_fact:v1:5b87585161041b664370bb45c1058995f29b2d2bd31834454eedf043b979ab1a",
+        "source_fact:v1:e5ed55290260683bcd3fa00258933fd599d0a1da3de0c54758aeb570f64b405f"
+      ],
+      "source_published_kst": "2026-10-06T11:15+09:00",
+      "title": "[더벨]네오리진, 글로벌 AI 추론 기업 'NOVA'에 50만달러 투자"
     },
     "fact:8f6be8e4d786f9c623741804": {
       "first_seen_kst": "2026-10-05T21:53:16+09:00",
@@ -16090,6 +16227,33 @@
       ],
       "source_published_kst": "2026-10-05T21:32+09:00",
       "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
+    },
+    "fact:a0eb1a275863143728c66c7d": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815653",
+      "source": "뉴시스",
+      "source_body_digest": "799a60f6a4be1c2a24e272301be0bcf2fb3f411dd2bd351e8c397385cee65c1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:326fe6c2dffcb1ecf5f22d18acfe986e5290c24d5f04890b6b82ae51f28722c3",
+      "source_fact_keys": [
+        "source_fact:v1:5e30c33e7044530c876567e4a52c23de4cd144d767912b80ff16f1101a9fa0a9",
+        "source_fact:v1:7b317ca1449e79ca09fcdeac85c0dab405ba5fb579fbfab079ec5d4da5ea3ea6",
+        "source_fact:v1:87767d1cbfeb13f54ea9438658a9781cf6123a22a68a193c115039d21c5264e7",
+        "source_fact:v1:9a729cb6b50f0aa93ed51cf5ae2f8512de8f2d7231a88461335f8408fe14a6d8",
+        "source_fact:v1:9b5336881837590150f899f1b3446d6ce61b1dac3af88f9fc56ab791b87dd0e9",
+        "source_fact:v1:a8d58ecb6f0bd6bba8e32c7290bd2e275a9b71979e3ac2999208581ff87eac30",
+        "source_fact:v1:cafc4434957e93b453fec79e75522ab10c4e974cabb2b9c795a5f9c2e269e05c",
+        "source_fact:v1:e38e417c16b838a69d4445ca6e094d781966f41f34c983e18170348ad7512f34",
+        "source_fact:v1:ee62db8a70e925362ade6f67b245a142b02b157b24992167d516077b890cfbc9",
+        "source_fact:v1:f177d2837aa3037f4e454d9b3b43ca74ca2c747c7ea974ee0f5175f657e233fe",
+        "source_fact:v1:fd74f00d76f77db49a67fd1d86e5b66db930a7e16f430fa944e7bb99825cca6a"
+      ],
+      "source_published_kst": "2026-10-07T06:01+09:00",
+      "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
     },
     "fact:a14041fe1ec4c3cce65d47e7": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -22658,6 +22822,26 @@
       "source_published_kst": "2026-10-06T18:46+09:00",
       "title": "알테오젠, 알테오젠바이오로직스 흡수합병"
     },
+    "link:10c738baca42a2350f70ef15": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/06/2026100611119626039",
+      "source": "머니투데이",
+      "source_body_digest": "e6bee20e8088040e501e95eee2f983df8bfb558ac7fc36139737db8cfd930a25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38f607d494f8432d5ca59d5cfeaf397ab39485bb0700aea157c90cdcf49692dc",
+      "source_fact_keys": [
+        "source_fact:v1:1692a32e0c7ca90fe1e93b010bb45b77969f88f63ff32a7987c26705f2ed4783",
+        "source_fact:v1:4f1e10b2879aa3f5b985df1064a272afac214de494cfac9d5af1014f08f27d11",
+        "source_fact:v1:5b87585161041b664370bb45c1058995f29b2d2bd31834454eedf043b979ab1a",
+        "source_fact:v1:e5ed55290260683bcd3fa00258933fd599d0a1da3de0c54758aeb570f64b405f"
+      ],
+      "source_published_kst": "2026-10-06T11:15+09:00",
+      "title": "[더벨]네오리진, 글로벌 AI 추론 기업 'NOVA'에 50만달러 투자"
+    },
     "link:110a1e2f409edae424fe8b71": {
       "first_seen_kst": "2026-10-02T07:42:52+09:00",
       "lanes": {
@@ -25884,6 +26068,24 @@
       "source_published_kst": "2026-10-07T00:55+09:00",
       "title": "국제 유가·美 국채 수익률 동반 하락…뉴욕 증시 사상 최고"
     },
+    "link:2bf8c99f09d168b62bf70476": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02145126645610624",
+      "source": "이데일리",
+      "source_body_digest": "bbbdca11d67a3ca08c4d95fc2c2fede9725d46a26416799613999788f60c7747",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:93f79c2da64e0350c958ef20baec916cdabee3bf5854cbd17108e3cae3d2c130",
+      "source_fact_keys": [
+        "source_fact:v1:9d62866fe06511d84579a3020550a530bfb350390503b6399b2678ba02876202",
+        "source_fact:v1:cfb11d974f6c56ae982f86b8b3ef86774ab435a251218b0c77421773cd7ffafd"
+      ],
+      "source_published_kst": "2026-10-07T06:00+09:00",
+      "title": "롯데하이마트, 물류센터에 ‘휴머노이드 로봇’ 투입…2028년 실증"
+    },
     "link:2c24bcc7645c66f33bbf2fac": {
       "first_seen_kst": "2026-10-02T06:33:23+09:00",
       "lanes": {
@@ -28502,6 +28704,26 @@
       ],
       "source_published_kst": "2026-10-06T10:00+09:00",
       "title": "LG전자, '유럽 첫 상용 SDV' 르노그룹 신차에 통합 콕핏 솔루션 공급"
+    },
+    "link:40eecdabeaea1a0f28e720cf": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816116",
+      "source": "뉴시스",
+      "source_body_digest": "82cb5bfcb631afdfe6121d5d7b48df8969ea359624ed89e8d5e59830c486ad92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28c7adfbe279b7978f533790b16bb41afa120276f8e6104d1e6168f3084fc6e",
+      "source_fact_keys": [
+        "source_fact:v1:3c998abf5db41e550c5bfe07e96180f8816aa22201ceb533d834a26fab9748a1",
+        "source_fact:v1:6fab7cf21a2e901ab72c9ac4eb103299239daf4131145b6f23b6bb153c2525c0",
+        "source_fact:v1:7532226f47c91d67f04ef375ed0f83072471f8bfaeae5d0413330090ff7f538a",
+        "source_fact:v1:d8eaf6588bf06b924acbbb5cb3a301f3177c3f80f2ea0766ac6cb7113d436171"
+      ],
+      "source_published_kst": "2026-10-07T06:06+09:00",
+      "title": "분기 영업익 200조 목전…삼전·닉스 기대치 높이는 증권가"
     },
     "link:41086bf1a5f61817faed826b": {
       "first_seen_kst": "2026-10-03T11:19:18+09:00",
@@ -36938,6 +37160,30 @@
       "source_published_kst": "2026-10-04T18:14+09:00",
       "title": "\"러시아군 우크라戰 누적 전상자 154만명\"…3일 하루 1750명"
     },
+    "link:8b2143a5c053e135c9932f84": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169545",
+      "source": "매일경제",
+      "source_body_digest": "860aad54bfc6b8dfaa482e04a670a838993d1547bf9ddeaf37adbf4708dd15f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8121af7aeebe850d4d878723a23bd33753f38ab124137a1c28cb00cdcb6410c4",
+      "source_fact_keys": [
+        "source_fact:v1:10589118e3d7335a09aee2ede1e037514eb05567e3abb82f26fabb2a2527d011",
+        "source_fact:v1:1ef68e653813f6735b766ad65dc7e25195dae26bdc35d97ae0b41ab9bc290ace",
+        "source_fact:v1:830b6ac5e4c1a36f9f708d76368043e8183705c3b9fc309d22fb734a1b1ad452",
+        "source_fact:v1:a4edc686bd40529cfc0f16831355629853be63255f6bc516bd3ffa23bae1ecac",
+        "source_fact:v1:bbbb0a64758a177106d3d8709b8011a32a3976013fd79a602144270d17ac8154",
+        "source_fact:v1:bcee94a59705e85d51ee60821f974158e02fa2dcb2dd77b13caa480b2e3418fd",
+        "source_fact:v1:bdc57be3615b574ed7cb67fc206e54ded9cdb0ef9b1995622ad6b7c3679b6e9e",
+        "source_fact:v1:c81117f42beb017ba9ce5d70ac2a1177135d4fa1b84bdf44777baf8b3e8f0d4a"
+      ],
+      "source_published_kst": "2026-10-06T22:00+09:00",
+      "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
+    },
     "link:8b2a5ac527b832bed6c1b023": {
       "first_seen_kst": "2026-10-01T21:17:39+09:00",
       "lanes": {
@@ -39581,6 +39827,26 @@
       "source": "연합뉴스",
       "title": "'마이크론·반도체 수출' 훈풍에 7천피 턱밑…코스닥 4.48% 급등(종합) | 연합뉴스"
     },
+    "link:a2c523de4ec0d8431e0a7a4f": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169872",
+      "source": "매일경제",
+      "source_body_digest": "ecc2d1314640e5209b5d577f95002cd72a945139f9711fa71a4e2026fbcb75a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc847d42b26a2a9bbd950b2f19348374a7011899e30d7fb2ea77cef05e521b38",
+      "source_fact_keys": [
+        "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
+        "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8",
+        "source_fact:v1:c963e0380b2ddc280cdf35cfcaced8087631b22eb185795190e6ef9aea88f546"
+      ],
+      "source_published_kst": "2026-10-07T05:57+09:00",
+      "title": "삼전 ‘영업익 100조’ 예고에도 주가는 영…8일도 심상치않다는데"
+    },
     "link:a2e876b3f878ee66cceaebc2": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
       "lanes": {
@@ -40034,6 +40300,23 @@
       ],
       "source_published_kst": "2026-10-06T01:21+09:00",
       "title": "페라리, 자사주 2600만 유로 매입..3차 한도 41% 소진"
+    },
+    "link:a6f7187af40b11676fec4a38": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006186600001",
+      "source": "연합뉴스",
+      "source_body_digest": "ab2bca53a385aa7be3d34f6aa759fa50fdfc3c528519dcaa69017bdc8174cca0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fab47500f976d273060619944985bfd597839dcb7b0cccc64ab85bbf7090ffe9",
+      "source_fact_keys": [
+        "source_fact:v1:4d24e6e51a1395f1ba7004bb6fd0afba3c6a48182c99ebd30309e28adef5c9f9"
+      ],
+      "source_published_kst": "2026-10-07T06:00+09:00",
+      "title": "최수진 \"강원랜드, 영업이익 급감에도 성과급 195％…방만경영\" | 연합뉴스"
     },
     "link:a700fb05834536b8a03686bb": {
       "first_seen_kst": "2026-10-02T16:06:36+09:00",
@@ -42810,6 +43093,33 @@
       "link": "https://www.yna.co.kr/view/AKR20261002126900008",
       "source": "연합뉴스",
       "title": "[특징주] 일진전기, 1천800억원대 추가 수주에 약 4% 상승 | 연합뉴스"
+    },
+    "link:bef186eafb8e7e6a35e5b7cb": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815653",
+      "source": "뉴시스",
+      "source_body_digest": "799a60f6a4be1c2a24e272301be0bcf2fb3f411dd2bd351e8c397385cee65c1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:326fe6c2dffcb1ecf5f22d18acfe986e5290c24d5f04890b6b82ae51f28722c3",
+      "source_fact_keys": [
+        "source_fact:v1:5e30c33e7044530c876567e4a52c23de4cd144d767912b80ff16f1101a9fa0a9",
+        "source_fact:v1:7b317ca1449e79ca09fcdeac85c0dab405ba5fb579fbfab079ec5d4da5ea3ea6",
+        "source_fact:v1:87767d1cbfeb13f54ea9438658a9781cf6123a22a68a193c115039d21c5264e7",
+        "source_fact:v1:9a729cb6b50f0aa93ed51cf5ae2f8512de8f2d7231a88461335f8408fe14a6d8",
+        "source_fact:v1:9b5336881837590150f899f1b3446d6ce61b1dac3af88f9fc56ab791b87dd0e9",
+        "source_fact:v1:a8d58ecb6f0bd6bba8e32c7290bd2e275a9b71979e3ac2999208581ff87eac30",
+        "source_fact:v1:cafc4434957e93b453fec79e75522ab10c4e974cabb2b9c795a5f9c2e269e05c",
+        "source_fact:v1:e38e417c16b838a69d4445ca6e094d781966f41f34c983e18170348ad7512f34",
+        "source_fact:v1:ee62db8a70e925362ade6f67b245a142b02b157b24992167d516077b890cfbc9",
+        "source_fact:v1:f177d2837aa3037f4e454d9b3b43ca74ca2c747c7ea974ee0f5175f657e233fe",
+        "source_fact:v1:fd74f00d76f77db49a67fd1d86e5b66db930a7e16f430fa944e7bb99825cca6a"
+      ],
+      "source_published_kst": "2026-10-07T06:01+09:00",
+      "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
     },
     "link:bf10ba45c0d66e28aaf50a36": {
       "first_seen_kst": "2026-09-25T17:39:25+09:00",
@@ -52211,6 +52521,26 @@
       "source": "매일경제",
       "title": "“퇴근 후 2시간 동안 더 많이 법니다”…저녁 거래대금, 하루 4조 넘어"
     },
+    "original:10edcd684b77c2a51cf5edc6": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/06/2026100611119626039",
+      "source": "머니투데이",
+      "source_body_digest": "e6bee20e8088040e501e95eee2f983df8bfb558ac7fc36139737db8cfd930a25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38f607d494f8432d5ca59d5cfeaf397ab39485bb0700aea157c90cdcf49692dc",
+      "source_fact_keys": [
+        "source_fact:v1:1692a32e0c7ca90fe1e93b010bb45b77969f88f63ff32a7987c26705f2ed4783",
+        "source_fact:v1:4f1e10b2879aa3f5b985df1064a272afac214de494cfac9d5af1014f08f27d11",
+        "source_fact:v1:5b87585161041b664370bb45c1058995f29b2d2bd31834454eedf043b979ab1a",
+        "source_fact:v1:e5ed55290260683bcd3fa00258933fd599d0a1da3de0c54758aeb570f64b405f"
+      ],
+      "source_published_kst": "2026-10-06T11:15+09:00",
+      "title": "[더벨]네오리진, 글로벌 AI 추론 기업 'NOVA'에 50만달러 투자"
+    },
     "original:1110e6d23600809f31a283c3": {
       "first_seen_kst": "2026-10-05T06:49:20+09:00",
       "lanes": {
@@ -55124,6 +55454,33 @@
       "source_published_kst": "2026-10-06T13:44+09:00",
       "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
     },
+    "original:2b8269c64f7c08c4743f8aa3": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815653",
+      "source": "뉴시스",
+      "source_body_digest": "799a60f6a4be1c2a24e272301be0bcf2fb3f411dd2bd351e8c397385cee65c1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:326fe6c2dffcb1ecf5f22d18acfe986e5290c24d5f04890b6b82ae51f28722c3",
+      "source_fact_keys": [
+        "source_fact:v1:5e30c33e7044530c876567e4a52c23de4cd144d767912b80ff16f1101a9fa0a9",
+        "source_fact:v1:7b317ca1449e79ca09fcdeac85c0dab405ba5fb579fbfab079ec5d4da5ea3ea6",
+        "source_fact:v1:87767d1cbfeb13f54ea9438658a9781cf6123a22a68a193c115039d21c5264e7",
+        "source_fact:v1:9a729cb6b50f0aa93ed51cf5ae2f8512de8f2d7231a88461335f8408fe14a6d8",
+        "source_fact:v1:9b5336881837590150f899f1b3446d6ce61b1dac3af88f9fc56ab791b87dd0e9",
+        "source_fact:v1:a8d58ecb6f0bd6bba8e32c7290bd2e275a9b71979e3ac2999208581ff87eac30",
+        "source_fact:v1:cafc4434957e93b453fec79e75522ab10c4e974cabb2b9c795a5f9c2e269e05c",
+        "source_fact:v1:e38e417c16b838a69d4445ca6e094d781966f41f34c983e18170348ad7512f34",
+        "source_fact:v1:ee62db8a70e925362ade6f67b245a142b02b157b24992167d516077b890cfbc9",
+        "source_fact:v1:f177d2837aa3037f4e454d9b3b43ca74ca2c747c7ea974ee0f5175f657e233fe",
+        "source_fact:v1:fd74f00d76f77db49a67fd1d86e5b66db930a7e16f430fa944e7bb99825cca6a"
+      ],
+      "source_published_kst": "2026-10-07T06:01+09:00",
+      "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
+    },
     "original:2b85ba648de1c13a2d2f871d": {
       "first_seen_kst": "2026-10-03T22:33:30+09:00",
       "lanes": {
@@ -55358,6 +55715,26 @@
       "link": "https://www.etoday.co.kr/news/view/2632257",
       "source": "이투데이",
       "title": "트럼프 “한국과 합의 더욱 좋아져⋯석유 프로젝트에 84억달러 투자”"
+    },
+    "original:2cebaccd6ab9333d80013003": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169872",
+      "source": "매일경제",
+      "source_body_digest": "ecc2d1314640e5209b5d577f95002cd72a945139f9711fa71a4e2026fbcb75a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc847d42b26a2a9bbd950b2f19348374a7011899e30d7fb2ea77cef05e521b38",
+      "source_fact_keys": [
+        "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
+        "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8",
+        "source_fact:v1:c963e0380b2ddc280cdf35cfcaced8087631b22eb185795190e6ef9aea88f546"
+      ],
+      "source_published_kst": "2026-10-07T05:57+09:00",
+      "title": "삼전 ‘영업익 100조’ 예고에도 주가는 영…8일도 심상치않다는데"
     },
     "original:2cef9a92103fd919081c3dee": {
       "first_seen_kst": "2026-09-24T14:25:32+09:00",
@@ -67539,6 +67916,30 @@
       "source": "머니투데이",
       "title": "반도체가 半했다… 한국수출 사상 첫 1조달러 시대 눈앞"
     },
+    "original:968b5a49967c6c496e66afa5": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169545",
+      "source": "매일경제",
+      "source_body_digest": "860aad54bfc6b8dfaa482e04a670a838993d1547bf9ddeaf37adbf4708dd15f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8121af7aeebe850d4d878723a23bd33753f38ab124137a1c28cb00cdcb6410c4",
+      "source_fact_keys": [
+        "source_fact:v1:10589118e3d7335a09aee2ede1e037514eb05567e3abb82f26fabb2a2527d011",
+        "source_fact:v1:1ef68e653813f6735b766ad65dc7e25195dae26bdc35d97ae0b41ab9bc290ace",
+        "source_fact:v1:830b6ac5e4c1a36f9f708d76368043e8183705c3b9fc309d22fb734a1b1ad452",
+        "source_fact:v1:a4edc686bd40529cfc0f16831355629853be63255f6bc516bd3ffa23bae1ecac",
+        "source_fact:v1:bbbb0a64758a177106d3d8709b8011a32a3976013fd79a602144270d17ac8154",
+        "source_fact:v1:bcee94a59705e85d51ee60821f974158e02fa2dcb2dd77b13caa480b2e3418fd",
+        "source_fact:v1:bdc57be3615b574ed7cb67fc206e54ded9cdb0ef9b1995622ad6b7c3679b6e9e",
+        "source_fact:v1:c81117f42beb017ba9ce5d70ac2a1177135d4fa1b84bdf44777baf8b3e8f0d4a"
+      ],
+      "source_published_kst": "2026-10-06T22:00+09:00",
+      "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
+    },
     "original:96b8cfd8b85f747a5bd0873d": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -75554,6 +75955,24 @@
       "source_published_kst": "2026-10-05T12:59+09:00",
       "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
     },
+    "original:df747bc8ede00631d6ea5d9d": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02145126645610624",
+      "source": "이데일리",
+      "source_body_digest": "bbbdca11d67a3ca08c4d95fc2c2fede9725d46a26416799613999788f60c7747",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:93f79c2da64e0350c958ef20baec916cdabee3bf5854cbd17108e3cae3d2c130",
+      "source_fact_keys": [
+        "source_fact:v1:9d62866fe06511d84579a3020550a530bfb350390503b6399b2678ba02876202",
+        "source_fact:v1:cfb11d974f6c56ae982f86b8b3ef86774ab435a251218b0c77421773cd7ffafd"
+      ],
+      "source_published_kst": "2026-10-07T06:00+09:00",
+      "title": "롯데하이마트, 물류센터에 ‘휴머노이드 로봇’ 투입…2028년 실증"
+    },
     "original:df7cb6b95b264bd9da1d3b3b": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
       "lanes": {
@@ -75697,6 +76116,26 @@
       ],
       "source_published_kst": "2026-10-07T03:11+09:00",
       "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
+    },
+    "original:e13e192fe29460a31f0f46bc": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816116",
+      "source": "뉴시스",
+      "source_body_digest": "82cb5bfcb631afdfe6121d5d7b48df8969ea359624ed89e8d5e59830c486ad92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28c7adfbe279b7978f533790b16bb41afa120276f8e6104d1e6168f3084fc6e",
+      "source_fact_keys": [
+        "source_fact:v1:3c998abf5db41e550c5bfe07e96180f8816aa22201ceb533d834a26fab9748a1",
+        "source_fact:v1:6fab7cf21a2e901ab72c9ac4eb103299239daf4131145b6f23b6bb153c2525c0",
+        "source_fact:v1:7532226f47c91d67f04ef375ed0f83072471f8bfaeae5d0413330090ff7f538a",
+        "source_fact:v1:d8eaf6588bf06b924acbbb5cb3a301f3177c3f80f2ea0766ac6cb7113d436171"
+      ],
+      "source_published_kst": "2026-10-07T06:06+09:00",
+      "title": "분기 영업익 200조 목전…삼전·닉스 기대치 높이는 증권가"
     },
     "original:e15353b43ffe66fb5fc185bf": {
       "first_seen_kst": "2026-10-02T06:33:23+09:00",
@@ -77940,6 +78379,23 @@
       "source": "이데일리",
       "title": "대미투자 한미 이견 와중에…트럼프 \"11조원 석유 프로젝트도 추진\""
     },
+    "original:f44483f4e2387ef793d7dcde": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006186600001",
+      "source": "연합뉴스",
+      "source_body_digest": "ab2bca53a385aa7be3d34f6aa759fa50fdfc3c528519dcaa69017bdc8174cca0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fab47500f976d273060619944985bfd597839dcb7b0cccc64ab85bbf7090ffe9",
+      "source_fact_keys": [
+        "source_fact:v1:4d24e6e51a1395f1ba7004bb6fd0afba3c6a48182c99ebd30309e28adef5c9f9"
+      ],
+      "source_published_kst": "2026-10-07T06:00+09:00",
+      "title": "최수진 \"강원랜드, 영업이익 급감에도 성과급 195％…방만경영\" | 연합뉴스"
+    },
     "original:f460498acdfc1a9237ef5467": {
       "first_seen_kst": "2026-09-21T04:13:31+09:00",
       "lanes": {
@@ -79402,6 +79858,30 @@
       ],
       "source_published_kst": "2026-10-06T14:14+09:00",
       "title": "\"이종이식 사업화 속도\"…옵티팜, cGMP 시설인수"
+    },
+    "source_fact:01b79a2115556923db42a886": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169545",
+      "source": "매일경제",
+      "source_body_digest": "860aad54bfc6b8dfaa482e04a670a838993d1547bf9ddeaf37adbf4708dd15f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8121af7aeebe850d4d878723a23bd33753f38ab124137a1c28cb00cdcb6410c4",
+      "source_fact_keys": [
+        "source_fact:v1:10589118e3d7335a09aee2ede1e037514eb05567e3abb82f26fabb2a2527d011",
+        "source_fact:v1:1ef68e653813f6735b766ad65dc7e25195dae26bdc35d97ae0b41ab9bc290ace",
+        "source_fact:v1:830b6ac5e4c1a36f9f708d76368043e8183705c3b9fc309d22fb734a1b1ad452",
+        "source_fact:v1:a4edc686bd40529cfc0f16831355629853be63255f6bc516bd3ffa23bae1ecac",
+        "source_fact:v1:bbbb0a64758a177106d3d8709b8011a32a3976013fd79a602144270d17ac8154",
+        "source_fact:v1:bcee94a59705e85d51ee60821f974158e02fa2dcb2dd77b13caa480b2e3418fd",
+        "source_fact:v1:bdc57be3615b574ed7cb67fc206e54ded9cdb0ef9b1995622ad6b7c3679b6e9e",
+        "source_fact:v1:c81117f42beb017ba9ce5d70ac2a1177135d4fa1b84bdf44777baf8b3e8f0d4a"
+      ],
+      "source_published_kst": "2026-10-06T22:00+09:00",
+      "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
     },
     "source_fact:01c89754907a416159a6fb96": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -81821,27 +82301,26 @@
     "source_fact:0c662b41e4a48c57fa484c95": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
       "lanes": {
-        "live": "2026-10-06T20:12:00+09:00"
+        "live": "2026-10-07T06:12:17+09:00"
       },
-      "last_seen_kst": "2026-10-06T20:12:00+09:00",
-      "link": "https://magazine.hankyung.com/business/article/202610066252b",
-      "source": "한국경제",
-      "source_body_digest": "553da8caac46530509e62ff00e3401b3a11ab0cc2f5e6668c6125769297fc23c",
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169545",
+      "source": "매일경제",
+      "source_body_digest": "860aad54bfc6b8dfaa482e04a670a838993d1547bf9ddeaf37adbf4708dd15f4",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:7eb50cc61ca8c72ffca376db5f9ac7d1e881afa46bd9c3f4ae518daae642436a",
+      "source_fact_identity": "source_facts:v1:8121af7aeebe850d4d878723a23bd33753f38ab124137a1c28cb00cdcb6410c4",
       "source_fact_keys": [
-        "source_fact:v1:52e871069b1f7078736e4ca59fac4d1743720e289b177ee282324c42e7741d5c",
-        "source_fact:v1:57364f27514067e0f131d14792d803ec29dcf6643defbad929835aff9ba8b1a6",
-        "source_fact:v1:63d45634c150af6d3a7e1233aa8b24ff6c2c72948039d1656436b5a5b78f6952",
-        "source_fact:v1:96b595a7a28be90726e18af708a505c07e6779afee1a5a7a7fee0334fdf370f7",
-        "source_fact:v1:aead1b3b5411373436b1569fb6756be29abe3daefb493c98fc3678f7d65bbf68",
-        "source_fact:v1:aedc46f7f73d7d7e38675294f3566598e607dea9e73b778e7a6bbc6a713c604a",
+        "source_fact:v1:10589118e3d7335a09aee2ede1e037514eb05567e3abb82f26fabb2a2527d011",
+        "source_fact:v1:1ef68e653813f6735b766ad65dc7e25195dae26bdc35d97ae0b41ab9bc290ace",
+        "source_fact:v1:830b6ac5e4c1a36f9f708d76368043e8183705c3b9fc309d22fb734a1b1ad452",
+        "source_fact:v1:a4edc686bd40529cfc0f16831355629853be63255f6bc516bd3ffa23bae1ecac",
+        "source_fact:v1:bbbb0a64758a177106d3d8709b8011a32a3976013fd79a602144270d17ac8154",
         "source_fact:v1:bcee94a59705e85d51ee60821f974158e02fa2dcb2dd77b13caa480b2e3418fd",
-        "source_fact:v1:c2b61b5579f052600ef21301764109caaf8fa340f3d87f399174db25cb67ce0e",
-        "source_fact:v1:c6536d1c271402c97f497825d308dc4412c99512e910bbdec2a1ca2d6826626d"
+        "source_fact:v1:bdc57be3615b574ed7cb67fc206e54ded9cdb0ef9b1995622ad6b7c3679b6e9e",
+        "source_fact:v1:c81117f42beb017ba9ce5d70ac2a1177135d4fa1b84bdf44777baf8b3e8f0d4a"
       ],
-      "source_published_kst": "2026-10-06T17:24+09:00",
-      "title": "포스코퓨처엠, 삼성SDI에 LFP 양극재 6조원어치 공급"
+      "source_published_kst": "2026-10-06T22:00+09:00",
+      "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
     },
     "source_fact:0c72452c0b1f6dd6b48a0cec": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -84768,6 +85247,33 @@
       "source_published_kst": "2026-10-06T17:37+09:00",
       "title": "규제자유특구 문턱 밖 경기…AI기본법 근거로 'AI집적단지' 자체 지정 추진"
     },
+    "source_fact:1a2be53d28fbddbf5d910bed": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815653",
+      "source": "뉴시스",
+      "source_body_digest": "799a60f6a4be1c2a24e272301be0bcf2fb3f411dd2bd351e8c397385cee65c1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:326fe6c2dffcb1ecf5f22d18acfe986e5290c24d5f04890b6b82ae51f28722c3",
+      "source_fact_keys": [
+        "source_fact:v1:5e30c33e7044530c876567e4a52c23de4cd144d767912b80ff16f1101a9fa0a9",
+        "source_fact:v1:7b317ca1449e79ca09fcdeac85c0dab405ba5fb579fbfab079ec5d4da5ea3ea6",
+        "source_fact:v1:87767d1cbfeb13f54ea9438658a9781cf6123a22a68a193c115039d21c5264e7",
+        "source_fact:v1:9a729cb6b50f0aa93ed51cf5ae2f8512de8f2d7231a88461335f8408fe14a6d8",
+        "source_fact:v1:9b5336881837590150f899f1b3446d6ce61b1dac3af88f9fc56ab791b87dd0e9",
+        "source_fact:v1:a8d58ecb6f0bd6bba8e32c7290bd2e275a9b71979e3ac2999208581ff87eac30",
+        "source_fact:v1:cafc4434957e93b453fec79e75522ab10c4e974cabb2b9c795a5f9c2e269e05c",
+        "source_fact:v1:e38e417c16b838a69d4445ca6e094d781966f41f34c983e18170348ad7512f34",
+        "source_fact:v1:ee62db8a70e925362ade6f67b245a142b02b157b24992167d516077b890cfbc9",
+        "source_fact:v1:f177d2837aa3037f4e454d9b3b43ca74ca2c747c7ea974ee0f5175f657e233fe",
+        "source_fact:v1:fd74f00d76f77db49a67fd1d86e5b66db930a7e16f430fa944e7bb99825cca6a"
+      ],
+      "source_published_kst": "2026-10-07T06:01+09:00",
+      "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
+    },
     "source_fact:1a7ab4663f70b3eda77d90c6": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -86224,6 +86730,33 @@
       "source_published_kst": "2026-10-05T14:48+09:00",
       "title": "예멘 정부군 \"후티 군사시설 1122곳 공격…1747명 사망\""
     },
+    "source_fact:2068c37abebf33e772045bdf": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815653",
+      "source": "뉴시스",
+      "source_body_digest": "799a60f6a4be1c2a24e272301be0bcf2fb3f411dd2bd351e8c397385cee65c1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:326fe6c2dffcb1ecf5f22d18acfe986e5290c24d5f04890b6b82ae51f28722c3",
+      "source_fact_keys": [
+        "source_fact:v1:5e30c33e7044530c876567e4a52c23de4cd144d767912b80ff16f1101a9fa0a9",
+        "source_fact:v1:7b317ca1449e79ca09fcdeac85c0dab405ba5fb579fbfab079ec5d4da5ea3ea6",
+        "source_fact:v1:87767d1cbfeb13f54ea9438658a9781cf6123a22a68a193c115039d21c5264e7",
+        "source_fact:v1:9a729cb6b50f0aa93ed51cf5ae2f8512de8f2d7231a88461335f8408fe14a6d8",
+        "source_fact:v1:9b5336881837590150f899f1b3446d6ce61b1dac3af88f9fc56ab791b87dd0e9",
+        "source_fact:v1:a8d58ecb6f0bd6bba8e32c7290bd2e275a9b71979e3ac2999208581ff87eac30",
+        "source_fact:v1:cafc4434957e93b453fec79e75522ab10c4e974cabb2b9c795a5f9c2e269e05c",
+        "source_fact:v1:e38e417c16b838a69d4445ca6e094d781966f41f34c983e18170348ad7512f34",
+        "source_fact:v1:ee62db8a70e925362ade6f67b245a142b02b157b24992167d516077b890cfbc9",
+        "source_fact:v1:f177d2837aa3037f4e454d9b3b43ca74ca2c747c7ea974ee0f5175f657e233fe",
+        "source_fact:v1:fd74f00d76f77db49a67fd1d86e5b66db930a7e16f430fa944e7bb99825cca6a"
+      ],
+      "source_published_kst": "2026-10-07T06:01+09:00",
+      "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
+    },
     "source_fact:2084c799ee002385bc33804c": {
       "first_seen_kst": "2026-10-07T01:07:29+09:00",
       "lanes": {
@@ -87082,6 +87615,26 @@
       "source_published_kst": "2026-10-07T01:15+09:00",
       "title": "캐나다 8월 무역흑자 4년만에 최대…관세 앞두고 대미수출 급증 | 연합뉴스"
     },
+    "source_fact:243268bad464225754f5d9c0": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/06/2026100611119626039",
+      "source": "머니투데이",
+      "source_body_digest": "e6bee20e8088040e501e95eee2f983df8bfb558ac7fc36139737db8cfd930a25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38f607d494f8432d5ca59d5cfeaf397ab39485bb0700aea157c90cdcf49692dc",
+      "source_fact_keys": [
+        "source_fact:v1:1692a32e0c7ca90fe1e93b010bb45b77969f88f63ff32a7987c26705f2ed4783",
+        "source_fact:v1:4f1e10b2879aa3f5b985df1064a272afac214de494cfac9d5af1014f08f27d11",
+        "source_fact:v1:5b87585161041b664370bb45c1058995f29b2d2bd31834454eedf043b979ab1a",
+        "source_fact:v1:e5ed55290260683bcd3fa00258933fd599d0a1da3de0c54758aeb570f64b405f"
+      ],
+      "source_published_kst": "2026-10-06T11:15+09:00",
+      "title": "[더벨]네오리진, 글로벌 AI 추론 기업 'NOVA'에 50만달러 투자"
+    },
     "source_fact:24366dc521f8bdaeaf02f08d": {
       "first_seen_kst": "2026-10-06T03:45:53+09:00",
       "lanes": {
@@ -87318,6 +87871,26 @@
       ],
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
+    },
+    "source_fact:254d13addc4c5d8799587c62": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816116",
+      "source": "뉴시스",
+      "source_body_digest": "82cb5bfcb631afdfe6121d5d7b48df8969ea359624ed89e8d5e59830c486ad92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28c7adfbe279b7978f533790b16bb41afa120276f8e6104d1e6168f3084fc6e",
+      "source_fact_keys": [
+        "source_fact:v1:3c998abf5db41e550c5bfe07e96180f8816aa22201ceb533d834a26fab9748a1",
+        "source_fact:v1:6fab7cf21a2e901ab72c9ac4eb103299239daf4131145b6f23b6bb153c2525c0",
+        "source_fact:v1:7532226f47c91d67f04ef375ed0f83072471f8bfaeae5d0413330090ff7f538a",
+        "source_fact:v1:d8eaf6588bf06b924acbbb5cb3a301f3177c3f80f2ea0766ac6cb7113d436171"
+      ],
+      "source_published_kst": "2026-10-07T06:06+09:00",
+      "title": "분기 영업익 200조 목전…삼전·닉스 기대치 높이는 증권가"
     },
     "source_fact:25578142a84ffa64da361745": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -88120,6 +88693,30 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
     },
+    "source_fact:283ba73f00c847fa68bb90cd": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169545",
+      "source": "매일경제",
+      "source_body_digest": "860aad54bfc6b8dfaa482e04a670a838993d1547bf9ddeaf37adbf4708dd15f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8121af7aeebe850d4d878723a23bd33753f38ab124137a1c28cb00cdcb6410c4",
+      "source_fact_keys": [
+        "source_fact:v1:10589118e3d7335a09aee2ede1e037514eb05567e3abb82f26fabb2a2527d011",
+        "source_fact:v1:1ef68e653813f6735b766ad65dc7e25195dae26bdc35d97ae0b41ab9bc290ace",
+        "source_fact:v1:830b6ac5e4c1a36f9f708d76368043e8183705c3b9fc309d22fb734a1b1ad452",
+        "source_fact:v1:a4edc686bd40529cfc0f16831355629853be63255f6bc516bd3ffa23bae1ecac",
+        "source_fact:v1:bbbb0a64758a177106d3d8709b8011a32a3976013fd79a602144270d17ac8154",
+        "source_fact:v1:bcee94a59705e85d51ee60821f974158e02fa2dcb2dd77b13caa480b2e3418fd",
+        "source_fact:v1:bdc57be3615b574ed7cb67fc206e54ded9cdb0ef9b1995622ad6b7c3679b6e9e",
+        "source_fact:v1:c81117f42beb017ba9ce5d70ac2a1177135d4fa1b84bdf44777baf8b3e8f0d4a"
+      ],
+      "source_published_kst": "2026-10-06T22:00+09:00",
+      "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
+    },
     "source_fact:2872325850e5d5567bdf8bd5": {
       "first_seen_kst": "2026-10-06T20:54:05+09:00",
       "lanes": {
@@ -88552,6 +89149,26 @@
       ],
       "source_published_kst": "2026-10-06T08:30+09:00",
       "title": "환율 12% 빠지자…순이익 쇼크 주의보 떴다"
+    },
+    "source_fact:2a804bddf15cdd34f5fe629a": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169872",
+      "source": "매일경제",
+      "source_body_digest": "ecc2d1314640e5209b5d577f95002cd72a945139f9711fa71a4e2026fbcb75a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc847d42b26a2a9bbd950b2f19348374a7011899e30d7fb2ea77cef05e521b38",
+      "source_fact_keys": [
+        "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
+        "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8",
+        "source_fact:v1:c963e0380b2ddc280cdf35cfcaced8087631b22eb185795190e6ef9aea88f546"
+      ],
+      "source_published_kst": "2026-10-07T05:57+09:00",
+      "title": "삼전 ‘영업익 100조’ 예고에도 주가는 영…8일도 심상치않다는데"
     },
     "source_fact:2a844ddffbfef69242d37ddb": {
       "first_seen_kst": "2026-10-06T23:29:45+09:00",
@@ -89130,6 +89747,24 @@
       ],
       "source_published_kst": "2026-10-06T17:45+09:00",
       "title": "삼성전기, MLCC 또 장기계약"
+    },
+    "source_fact:2c97bfde7fd3b164ce289a97": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02145126645610624",
+      "source": "이데일리",
+      "source_body_digest": "bbbdca11d67a3ca08c4d95fc2c2fede9725d46a26416799613999788f60c7747",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:93f79c2da64e0350c958ef20baec916cdabee3bf5854cbd17108e3cae3d2c130",
+      "source_fact_keys": [
+        "source_fact:v1:9d62866fe06511d84579a3020550a530bfb350390503b6399b2678ba02876202",
+        "source_fact:v1:cfb11d974f6c56ae982f86b8b3ef86774ab435a251218b0c77421773cd7ffafd"
+      ],
+      "source_published_kst": "2026-10-07T06:00+09:00",
+      "title": "롯데하이마트, 물류센터에 ‘휴머노이드 로봇’ 투입…2028년 실증"
     },
     "source_fact:2cab51eb5a6188fcdee9665f": {
       "first_seen_kst": "2026-10-06T02:31:07+09:00",
@@ -90198,6 +90833,33 @@
       "source_published_kst": "2026-10-06T17:10+09:00",
       "title": "데이터센터 전력수요 급증 전망에 기후장관"
     },
+    "source_fact:3125514574b7ae6e4f7df43e": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815653",
+      "source": "뉴시스",
+      "source_body_digest": "799a60f6a4be1c2a24e272301be0bcf2fb3f411dd2bd351e8c397385cee65c1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:326fe6c2dffcb1ecf5f22d18acfe986e5290c24d5f04890b6b82ae51f28722c3",
+      "source_fact_keys": [
+        "source_fact:v1:5e30c33e7044530c876567e4a52c23de4cd144d767912b80ff16f1101a9fa0a9",
+        "source_fact:v1:7b317ca1449e79ca09fcdeac85c0dab405ba5fb579fbfab079ec5d4da5ea3ea6",
+        "source_fact:v1:87767d1cbfeb13f54ea9438658a9781cf6123a22a68a193c115039d21c5264e7",
+        "source_fact:v1:9a729cb6b50f0aa93ed51cf5ae2f8512de8f2d7231a88461335f8408fe14a6d8",
+        "source_fact:v1:9b5336881837590150f899f1b3446d6ce61b1dac3af88f9fc56ab791b87dd0e9",
+        "source_fact:v1:a8d58ecb6f0bd6bba8e32c7290bd2e275a9b71979e3ac2999208581ff87eac30",
+        "source_fact:v1:cafc4434957e93b453fec79e75522ab10c4e974cabb2b9c795a5f9c2e269e05c",
+        "source_fact:v1:e38e417c16b838a69d4445ca6e094d781966f41f34c983e18170348ad7512f34",
+        "source_fact:v1:ee62db8a70e925362ade6f67b245a142b02b157b24992167d516077b890cfbc9",
+        "source_fact:v1:f177d2837aa3037f4e454d9b3b43ca74ca2c747c7ea974ee0f5175f657e233fe",
+        "source_fact:v1:fd74f00d76f77db49a67fd1d86e5b66db930a7e16f430fa944e7bb99825cca6a"
+      ],
+      "source_published_kst": "2026-10-07T06:01+09:00",
+      "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
+    },
     "source_fact:312ac73866f4768f1952650d": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
       "lanes": {
@@ -90605,6 +91267,33 @@
       ],
       "source_published_kst": "2026-10-05T19:24+09:00",
       "title": "ZTO 익스프레스, 자사주 14만주 매입..268만 달러 규모"
+    },
+    "source_fact:32d77c103d797dfcb489f286": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815653",
+      "source": "뉴시스",
+      "source_body_digest": "799a60f6a4be1c2a24e272301be0bcf2fb3f411dd2bd351e8c397385cee65c1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:326fe6c2dffcb1ecf5f22d18acfe986e5290c24d5f04890b6b82ae51f28722c3",
+      "source_fact_keys": [
+        "source_fact:v1:5e30c33e7044530c876567e4a52c23de4cd144d767912b80ff16f1101a9fa0a9",
+        "source_fact:v1:7b317ca1449e79ca09fcdeac85c0dab405ba5fb579fbfab079ec5d4da5ea3ea6",
+        "source_fact:v1:87767d1cbfeb13f54ea9438658a9781cf6123a22a68a193c115039d21c5264e7",
+        "source_fact:v1:9a729cb6b50f0aa93ed51cf5ae2f8512de8f2d7231a88461335f8408fe14a6d8",
+        "source_fact:v1:9b5336881837590150f899f1b3446d6ce61b1dac3af88f9fc56ab791b87dd0e9",
+        "source_fact:v1:a8d58ecb6f0bd6bba8e32c7290bd2e275a9b71979e3ac2999208581ff87eac30",
+        "source_fact:v1:cafc4434957e93b453fec79e75522ab10c4e974cabb2b9c795a5f9c2e269e05c",
+        "source_fact:v1:e38e417c16b838a69d4445ca6e094d781966f41f34c983e18170348ad7512f34",
+        "source_fact:v1:ee62db8a70e925362ade6f67b245a142b02b157b24992167d516077b890cfbc9",
+        "source_fact:v1:f177d2837aa3037f4e454d9b3b43ca74ca2c747c7ea974ee0f5175f657e233fe",
+        "source_fact:v1:fd74f00d76f77db49a67fd1d86e5b66db930a7e16f430fa944e7bb99825cca6a"
+      ],
+      "source_published_kst": "2026-10-07T06:01+09:00",
+      "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
     },
     "source_fact:32e46a0b7585e0266d68ca7f": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -94609,22 +95298,22 @@
     "source_fact:445b3a31077452b6f402f438": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
       "lanes": {
-        "live": "2026-10-06T21:05:27+09:00"
+        "live": "2026-10-07T06:12:17+09:00"
       },
-      "last_seen_kst": "2026-10-06T21:05:27+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12169500",
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169872",
       "source": "매일경제",
-      "source_body_digest": "f16adaa6531f4632313a04b2bde925f976ce4c69ebb57d5cab1c9208493f244c",
+      "source_body_digest": "ecc2d1314640e5209b5d577f95002cd72a945139f9711fa71a4e2026fbcb75a4",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:05c3a21122777f3b6a4f7099409d0c25a4ddf9a5754e75d5b8887ddd02d49a6b",
+      "source_fact_identity": "source_facts:v1:fc847d42b26a2a9bbd950b2f19348374a7011899e30d7fb2ea77cef05e521b38",
       "source_fact_keys": [
         "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
-        "source_fact:v1:5887f95945fb471d3617205a6a5d6b086871d33c6fead636b7ed56c0c82c8e28",
         "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
-        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8"
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8",
+        "source_fact:v1:c963e0380b2ddc280cdf35cfcaced8087631b22eb185795190e6ef9aea88f546"
       ],
-      "source_published_kst": "2026-10-06T17:29+09:00",
-      "title": "삼성전자 '꿈의 영업이익' 눈앞 … 100조 훌쩍 넘나, 살짝 넘나"
+      "source_published_kst": "2026-10-07T05:57+09:00",
+      "title": "삼전 ‘영업익 100조’ 예고에도 주가는 영…8일도 심상치않다는데"
     },
     "source_fact:44747d07bd5171405d474305": {
       "first_seen_kst": "2026-10-06T16:52:01+09:00",
@@ -96481,6 +97170,26 @@
       ],
       "source_published_kst": "2026-10-06T17:29+09:00",
       "title": "HK이노엔 도입 비만약, 청소년에서도 효과…“20주 체중 최대 12.1%↓”"
+    },
+    "source_fact:4b6200feddff0b1843a3c050": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/06/2026100611119626039",
+      "source": "머니투데이",
+      "source_body_digest": "e6bee20e8088040e501e95eee2f983df8bfb558ac7fc36139737db8cfd930a25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38f607d494f8432d5ca59d5cfeaf397ab39485bb0700aea157c90cdcf49692dc",
+      "source_fact_keys": [
+        "source_fact:v1:1692a32e0c7ca90fe1e93b010bb45b77969f88f63ff32a7987c26705f2ed4783",
+        "source_fact:v1:4f1e10b2879aa3f5b985df1064a272afac214de494cfac9d5af1014f08f27d11",
+        "source_fact:v1:5b87585161041b664370bb45c1058995f29b2d2bd31834454eedf043b979ab1a",
+        "source_fact:v1:e5ed55290260683bcd3fa00258933fd599d0a1da3de0c54758aeb570f64b405f"
+      ],
+      "source_published_kst": "2026-10-06T11:15+09:00",
+      "title": "[더벨]네오리진, 글로벌 AI 추론 기업 'NOVA'에 50만달러 투자"
     },
     "source_fact:4bb23f724bcaa0286f0a4a3f": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -102797,6 +103506,30 @@
       "source_published_kst": "2026-10-06T19:18+09:00",
       "title": "“발전공기업 최초”…남부발전, 한국형 녹색분류체계 기반 녹색여신 약정 체결"
     },
+    "source_fact:655fb472438d5ec7da2766ea": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169545",
+      "source": "매일경제",
+      "source_body_digest": "860aad54bfc6b8dfaa482e04a670a838993d1547bf9ddeaf37adbf4708dd15f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8121af7aeebe850d4d878723a23bd33753f38ab124137a1c28cb00cdcb6410c4",
+      "source_fact_keys": [
+        "source_fact:v1:10589118e3d7335a09aee2ede1e037514eb05567e3abb82f26fabb2a2527d011",
+        "source_fact:v1:1ef68e653813f6735b766ad65dc7e25195dae26bdc35d97ae0b41ab9bc290ace",
+        "source_fact:v1:830b6ac5e4c1a36f9f708d76368043e8183705c3b9fc309d22fb734a1b1ad452",
+        "source_fact:v1:a4edc686bd40529cfc0f16831355629853be63255f6bc516bd3ffa23bae1ecac",
+        "source_fact:v1:bbbb0a64758a177106d3d8709b8011a32a3976013fd79a602144270d17ac8154",
+        "source_fact:v1:bcee94a59705e85d51ee60821f974158e02fa2dcb2dd77b13caa480b2e3418fd",
+        "source_fact:v1:bdc57be3615b574ed7cb67fc206e54ded9cdb0ef9b1995622ad6b7c3679b6e9e",
+        "source_fact:v1:c81117f42beb017ba9ce5d70ac2a1177135d4fa1b84bdf44777baf8b3e8f0d4a"
+      ],
+      "source_published_kst": "2026-10-06T22:00+09:00",
+      "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
+    },
     "source_fact:6628a7a455edee40bcd94457": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
@@ -103421,22 +104154,22 @@
     "source_fact:6866e260949ba097d2efbf53": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
       "lanes": {
-        "live": "2026-10-06T21:05:27+09:00"
+        "live": "2026-10-07T06:12:17+09:00"
       },
-      "last_seen_kst": "2026-10-06T21:05:27+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12169500",
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169872",
       "source": "매일경제",
-      "source_body_digest": "f16adaa6531f4632313a04b2bde925f976ce4c69ebb57d5cab1c9208493f244c",
+      "source_body_digest": "ecc2d1314640e5209b5d577f95002cd72a945139f9711fa71a4e2026fbcb75a4",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:05c3a21122777f3b6a4f7099409d0c25a4ddf9a5754e75d5b8887ddd02d49a6b",
+      "source_fact_identity": "source_facts:v1:fc847d42b26a2a9bbd950b2f19348374a7011899e30d7fb2ea77cef05e521b38",
       "source_fact_keys": [
         "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
-        "source_fact:v1:5887f95945fb471d3617205a6a5d6b086871d33c6fead636b7ed56c0c82c8e28",
         "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
-        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8"
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8",
+        "source_fact:v1:c963e0380b2ddc280cdf35cfcaced8087631b22eb185795190e6ef9aea88f546"
       ],
-      "source_published_kst": "2026-10-06T17:29+09:00",
-      "title": "삼성전자 '꿈의 영업이익' 눈앞 … 100조 훌쩍 넘나, 살짝 넘나"
+      "source_published_kst": "2026-10-07T05:57+09:00",
+      "title": "삼전 ‘영업익 100조’ 예고에도 주가는 영…8일도 심상치않다는데"
     },
     "source_fact:68840e77515711ccb8e25497": {
       "first_seen_kst": "2026-10-06T09:21:20+09:00",
@@ -103791,6 +104524,26 @@
       ],
       "source_published_kst": "2026-10-06T06:25+09:00",
       "title": "국제유가, 중동 원유 수출 증가ㆍG7 재고 방출에 하락⋯WTI 1.84%↓ [상보]"
+    },
+    "source_fact:69e94adabcdbd742c5633181": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816116",
+      "source": "뉴시스",
+      "source_body_digest": "82cb5bfcb631afdfe6121d5d7b48df8969ea359624ed89e8d5e59830c486ad92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28c7adfbe279b7978f533790b16bb41afa120276f8e6104d1e6168f3084fc6e",
+      "source_fact_keys": [
+        "source_fact:v1:3c998abf5db41e550c5bfe07e96180f8816aa22201ceb533d834a26fab9748a1",
+        "source_fact:v1:6fab7cf21a2e901ab72c9ac4eb103299239daf4131145b6f23b6bb153c2525c0",
+        "source_fact:v1:7532226f47c91d67f04ef375ed0f83072471f8bfaeae5d0413330090ff7f538a",
+        "source_fact:v1:d8eaf6588bf06b924acbbb5cb3a301f3177c3f80f2ea0766ac6cb7113d436171"
+      ],
+      "source_published_kst": "2026-10-07T06:06+09:00",
+      "title": "분기 영업익 200조 목전…삼전·닉스 기대치 높이는 증권가"
     },
     "source_fact:6a2a412fad09dd8164365d36": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -104374,22 +105127,22 @@
     "source_fact:6d8fc4c3f26521596553b76c": {
       "first_seen_kst": "2026-10-06T21:05:27+09:00",
       "lanes": {
-        "live": "2026-10-06T21:05:27+09:00"
+        "live": "2026-10-07T06:12:17+09:00"
       },
-      "last_seen_kst": "2026-10-06T21:05:27+09:00",
-      "link": "https://www.mk.co.kr/news/stock/12169500",
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169872",
       "source": "매일경제",
-      "source_body_digest": "f16adaa6531f4632313a04b2bde925f976ce4c69ebb57d5cab1c9208493f244c",
+      "source_body_digest": "ecc2d1314640e5209b5d577f95002cd72a945139f9711fa71a4e2026fbcb75a4",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:05c3a21122777f3b6a4f7099409d0c25a4ddf9a5754e75d5b8887ddd02d49a6b",
+      "source_fact_identity": "source_facts:v1:fc847d42b26a2a9bbd950b2f19348374a7011899e30d7fb2ea77cef05e521b38",
       "source_fact_keys": [
         "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
-        "source_fact:v1:5887f95945fb471d3617205a6a5d6b086871d33c6fead636b7ed56c0c82c8e28",
         "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
-        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8"
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8",
+        "source_fact:v1:c963e0380b2ddc280cdf35cfcaced8087631b22eb185795190e6ef9aea88f546"
       ],
-      "source_published_kst": "2026-10-06T17:29+09:00",
-      "title": "삼성전자 '꿈의 영업이익' 눈앞 … 100조 훌쩍 넘나, 살짝 넘나"
+      "source_published_kst": "2026-10-07T05:57+09:00",
+      "title": "삼전 ‘영업익 100조’ 예고에도 주가는 영…8일도 심상치않다는데"
     },
     "source_fact:6d914d90de5e4f95af06665f": {
       "first_seen_kst": "2026-10-06T23:19:02+09:00",
@@ -112440,6 +113193,30 @@
       "source_published_kst": "2026-10-06T15:11+09:00",
       "title": "\"중국 문샷, 내년 1분기 홍콩 상장 추진\" | 연합뉴스"
     },
+    "source_fact:8e645c3619ae5e9862363aa0": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169545",
+      "source": "매일경제",
+      "source_body_digest": "860aad54bfc6b8dfaa482e04a670a838993d1547bf9ddeaf37adbf4708dd15f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8121af7aeebe850d4d878723a23bd33753f38ab124137a1c28cb00cdcb6410c4",
+      "source_fact_keys": [
+        "source_fact:v1:10589118e3d7335a09aee2ede1e037514eb05567e3abb82f26fabb2a2527d011",
+        "source_fact:v1:1ef68e653813f6735b766ad65dc7e25195dae26bdc35d97ae0b41ab9bc290ace",
+        "source_fact:v1:830b6ac5e4c1a36f9f708d76368043e8183705c3b9fc309d22fb734a1b1ad452",
+        "source_fact:v1:a4edc686bd40529cfc0f16831355629853be63255f6bc516bd3ffa23bae1ecac",
+        "source_fact:v1:bbbb0a64758a177106d3d8709b8011a32a3976013fd79a602144270d17ac8154",
+        "source_fact:v1:bcee94a59705e85d51ee60821f974158e02fa2dcb2dd77b13caa480b2e3418fd",
+        "source_fact:v1:bdc57be3615b574ed7cb67fc206e54ded9cdb0ef9b1995622ad6b7c3679b6e9e",
+        "source_fact:v1:c81117f42beb017ba9ce5d70ac2a1177135d4fa1b84bdf44777baf8b3e8f0d4a"
+      ],
+      "source_published_kst": "2026-10-06T22:00+09:00",
+      "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
+    },
     "source_fact:8e871bcf805b104b4ce2fd13": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -112844,6 +113621,33 @@
       ],
       "source_published_kst": "2026-10-06T10:56+09:00",
       "title": "스타벅스 '블글라' 누적 3000만잔 돌파"
+    },
+    "source_fact:8fd1372b9fc2ea0ff456af97": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815653",
+      "source": "뉴시스",
+      "source_body_digest": "799a60f6a4be1c2a24e272301be0bcf2fb3f411dd2bd351e8c397385cee65c1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:326fe6c2dffcb1ecf5f22d18acfe986e5290c24d5f04890b6b82ae51f28722c3",
+      "source_fact_keys": [
+        "source_fact:v1:5e30c33e7044530c876567e4a52c23de4cd144d767912b80ff16f1101a9fa0a9",
+        "source_fact:v1:7b317ca1449e79ca09fcdeac85c0dab405ba5fb579fbfab079ec5d4da5ea3ea6",
+        "source_fact:v1:87767d1cbfeb13f54ea9438658a9781cf6123a22a68a193c115039d21c5264e7",
+        "source_fact:v1:9a729cb6b50f0aa93ed51cf5ae2f8512de8f2d7231a88461335f8408fe14a6d8",
+        "source_fact:v1:9b5336881837590150f899f1b3446d6ce61b1dac3af88f9fc56ab791b87dd0e9",
+        "source_fact:v1:a8d58ecb6f0bd6bba8e32c7290bd2e275a9b71979e3ac2999208581ff87eac30",
+        "source_fact:v1:cafc4434957e93b453fec79e75522ab10c4e974cabb2b9c795a5f9c2e269e05c",
+        "source_fact:v1:e38e417c16b838a69d4445ca6e094d781966f41f34c983e18170348ad7512f34",
+        "source_fact:v1:ee62db8a70e925362ade6f67b245a142b02b157b24992167d516077b890cfbc9",
+        "source_fact:v1:f177d2837aa3037f4e454d9b3b43ca74ca2c747c7ea974ee0f5175f657e233fe",
+        "source_fact:v1:fd74f00d76f77db49a67fd1d86e5b66db930a7e16f430fa944e7bb99825cca6a"
+      ],
+      "source_published_kst": "2026-10-07T06:01+09:00",
+      "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
     },
     "source_fact:8fda5296eb48fb5c3724b31e": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
@@ -113752,6 +114556,26 @@
       "source_published_kst": "2026-10-06T06:38+09:00",
       "title": "美 재무부 \"'이란 거래' 외국 금융기관, 사전 통보 없이 제재 부과\""
     },
+    "source_fact:93c4152482e922d25de047f2": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816116",
+      "source": "뉴시스",
+      "source_body_digest": "82cb5bfcb631afdfe6121d5d7b48df8969ea359624ed89e8d5e59830c486ad92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28c7adfbe279b7978f533790b16bb41afa120276f8e6104d1e6168f3084fc6e",
+      "source_fact_keys": [
+        "source_fact:v1:3c998abf5db41e550c5bfe07e96180f8816aa22201ceb533d834a26fab9748a1",
+        "source_fact:v1:6fab7cf21a2e901ab72c9ac4eb103299239daf4131145b6f23b6bb153c2525c0",
+        "source_fact:v1:7532226f47c91d67f04ef375ed0f83072471f8bfaeae5d0413330090ff7f538a",
+        "source_fact:v1:d8eaf6588bf06b924acbbb5cb3a301f3177c3f80f2ea0766ac6cb7113d436171"
+      ],
+      "source_published_kst": "2026-10-07T06:06+09:00",
+      "title": "분기 영업익 200조 목전…삼전·닉스 기대치 높이는 증권가"
+    },
     "source_fact:93c4f182e734571fd40a06a0": {
       "first_seen_kst": "2026-10-06T15:03:09+09:00",
       "lanes": {
@@ -114546,6 +115370,26 @@
       ],
       "source_published_kst": "2026-10-06T09:53+09:00",
       "title": "예멘 후티군 사우디 전역 미사일 무인기공격.. 사우디 군은 홍해 승리 주장"
+    },
+    "source_fact:9724d825842f8dd51f55d52f": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/06/2026100611119626039",
+      "source": "머니투데이",
+      "source_body_digest": "e6bee20e8088040e501e95eee2f983df8bfb558ac7fc36139737db8cfd930a25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38f607d494f8432d5ca59d5cfeaf397ab39485bb0700aea157c90cdcf49692dc",
+      "source_fact_keys": [
+        "source_fact:v1:1692a32e0c7ca90fe1e93b010bb45b77969f88f63ff32a7987c26705f2ed4783",
+        "source_fact:v1:4f1e10b2879aa3f5b985df1064a272afac214de494cfac9d5af1014f08f27d11",
+        "source_fact:v1:5b87585161041b664370bb45c1058995f29b2d2bd31834454eedf043b979ab1a",
+        "source_fact:v1:e5ed55290260683bcd3fa00258933fd599d0a1da3de0c54758aeb570f64b405f"
+      ],
+      "source_published_kst": "2026-10-06T11:15+09:00",
+      "title": "[더벨]네오리진, 글로벌 AI 추론 기업 'NOVA'에 50만달러 투자"
     },
     "source_fact:973f688f0a323c8a085bc433": {
       "first_seen_kst": "2026-10-06T21:17:11+09:00",
@@ -118699,6 +119543,33 @@
       "source_published_kst": "2026-10-06T17:38+09:00",
       "title": "[미국 주식 돋보기] 데이터센터 전력 구원투수 '비코' 고공행진"
     },
+    "source_fact:a997d4c96c3d81ea4c48ea2c": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815653",
+      "source": "뉴시스",
+      "source_body_digest": "799a60f6a4be1c2a24e272301be0bcf2fb3f411dd2bd351e8c397385cee65c1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:326fe6c2dffcb1ecf5f22d18acfe986e5290c24d5f04890b6b82ae51f28722c3",
+      "source_fact_keys": [
+        "source_fact:v1:5e30c33e7044530c876567e4a52c23de4cd144d767912b80ff16f1101a9fa0a9",
+        "source_fact:v1:7b317ca1449e79ca09fcdeac85c0dab405ba5fb579fbfab079ec5d4da5ea3ea6",
+        "source_fact:v1:87767d1cbfeb13f54ea9438658a9781cf6123a22a68a193c115039d21c5264e7",
+        "source_fact:v1:9a729cb6b50f0aa93ed51cf5ae2f8512de8f2d7231a88461335f8408fe14a6d8",
+        "source_fact:v1:9b5336881837590150f899f1b3446d6ce61b1dac3af88f9fc56ab791b87dd0e9",
+        "source_fact:v1:a8d58ecb6f0bd6bba8e32c7290bd2e275a9b71979e3ac2999208581ff87eac30",
+        "source_fact:v1:cafc4434957e93b453fec79e75522ab10c4e974cabb2b9c795a5f9c2e269e05c",
+        "source_fact:v1:e38e417c16b838a69d4445ca6e094d781966f41f34c983e18170348ad7512f34",
+        "source_fact:v1:ee62db8a70e925362ade6f67b245a142b02b157b24992167d516077b890cfbc9",
+        "source_fact:v1:f177d2837aa3037f4e454d9b3b43ca74ca2c747c7ea974ee0f5175f657e233fe",
+        "source_fact:v1:fd74f00d76f77db49a67fd1d86e5b66db930a7e16f430fa944e7bb99825cca6a"
+      ],
+      "source_published_kst": "2026-10-07T06:01+09:00",
+      "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
+    },
     "source_fact:a9c4a73ce735088441e9df04": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
       "lanes": {
@@ -120614,6 +121485,33 @@
       ],
       "source_published_kst": "2026-10-06T15:59+09:00",
       "title": "자사주 매입 막바지·솔리다임 상장설 악재? 삼전닉스 1~3%대↓(종합) | 연합뉴스"
+    },
+    "source_fact:b18374ca7843f9eed04097f5": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815653",
+      "source": "뉴시스",
+      "source_body_digest": "799a60f6a4be1c2a24e272301be0bcf2fb3f411dd2bd351e8c397385cee65c1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:326fe6c2dffcb1ecf5f22d18acfe986e5290c24d5f04890b6b82ae51f28722c3",
+      "source_fact_keys": [
+        "source_fact:v1:5e30c33e7044530c876567e4a52c23de4cd144d767912b80ff16f1101a9fa0a9",
+        "source_fact:v1:7b317ca1449e79ca09fcdeac85c0dab405ba5fb579fbfab079ec5d4da5ea3ea6",
+        "source_fact:v1:87767d1cbfeb13f54ea9438658a9781cf6123a22a68a193c115039d21c5264e7",
+        "source_fact:v1:9a729cb6b50f0aa93ed51cf5ae2f8512de8f2d7231a88461335f8408fe14a6d8",
+        "source_fact:v1:9b5336881837590150f899f1b3446d6ce61b1dac3af88f9fc56ab791b87dd0e9",
+        "source_fact:v1:a8d58ecb6f0bd6bba8e32c7290bd2e275a9b71979e3ac2999208581ff87eac30",
+        "source_fact:v1:cafc4434957e93b453fec79e75522ab10c4e974cabb2b9c795a5f9c2e269e05c",
+        "source_fact:v1:e38e417c16b838a69d4445ca6e094d781966f41f34c983e18170348ad7512f34",
+        "source_fact:v1:ee62db8a70e925362ade6f67b245a142b02b157b24992167d516077b890cfbc9",
+        "source_fact:v1:f177d2837aa3037f4e454d9b3b43ca74ca2c747c7ea974ee0f5175f657e233fe",
+        "source_fact:v1:fd74f00d76f77db49a67fd1d86e5b66db930a7e16f430fa944e7bb99825cca6a"
+      ],
+      "source_published_kst": "2026-10-07T06:01+09:00",
+      "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
     },
     "source_fact:b1d3b079cdd9bfc5c92ee008": {
       "first_seen_kst": "2026-10-07T02:24:39+09:00",
@@ -125508,6 +126406,26 @@
       "source_published_kst": "2026-10-06T08:42+09:00",
       "title": "SJG세종, 美 조지아주 신규 생산공장 구축…150억 투입"
     },
+    "source_fact:c5c73a99b032157facb728d2": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816116",
+      "source": "뉴시스",
+      "source_body_digest": "82cb5bfcb631afdfe6121d5d7b48df8969ea359624ed89e8d5e59830c486ad92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28c7adfbe279b7978f533790b16bb41afa120276f8e6104d1e6168f3084fc6e",
+      "source_fact_keys": [
+        "source_fact:v1:3c998abf5db41e550c5bfe07e96180f8816aa22201ceb533d834a26fab9748a1",
+        "source_fact:v1:6fab7cf21a2e901ab72c9ac4eb103299239daf4131145b6f23b6bb153c2525c0",
+        "source_fact:v1:7532226f47c91d67f04ef375ed0f83072471f8bfaeae5d0413330090ff7f538a",
+        "source_fact:v1:d8eaf6588bf06b924acbbb5cb3a301f3177c3f80f2ea0766ac6cb7113d436171"
+      ],
+      "source_published_kst": "2026-10-07T06:06+09:00",
+      "title": "분기 영업익 200조 목전…삼전·닉스 기대치 높이는 증권가"
+    },
     "source_fact:c5ddc310370e4ee7a6b07c65": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -126575,6 +127493,33 @@
       "source_published_kst": "2026-10-06T09:41+09:00",
       "title": "[美공시]테라울프, 증가하는 고객 수요에 대응해 머스키 데이터 캠퍼스의 발전 용량을 1GW로 확대"
     },
+    "source_fact:cacaed2ebf359cbfddc47d7f": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815653",
+      "source": "뉴시스",
+      "source_body_digest": "799a60f6a4be1c2a24e272301be0bcf2fb3f411dd2bd351e8c397385cee65c1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:326fe6c2dffcb1ecf5f22d18acfe986e5290c24d5f04890b6b82ae51f28722c3",
+      "source_fact_keys": [
+        "source_fact:v1:5e30c33e7044530c876567e4a52c23de4cd144d767912b80ff16f1101a9fa0a9",
+        "source_fact:v1:7b317ca1449e79ca09fcdeac85c0dab405ba5fb579fbfab079ec5d4da5ea3ea6",
+        "source_fact:v1:87767d1cbfeb13f54ea9438658a9781cf6123a22a68a193c115039d21c5264e7",
+        "source_fact:v1:9a729cb6b50f0aa93ed51cf5ae2f8512de8f2d7231a88461335f8408fe14a6d8",
+        "source_fact:v1:9b5336881837590150f899f1b3446d6ce61b1dac3af88f9fc56ab791b87dd0e9",
+        "source_fact:v1:a8d58ecb6f0bd6bba8e32c7290bd2e275a9b71979e3ac2999208581ff87eac30",
+        "source_fact:v1:cafc4434957e93b453fec79e75522ab10c4e974cabb2b9c795a5f9c2e269e05c",
+        "source_fact:v1:e38e417c16b838a69d4445ca6e094d781966f41f34c983e18170348ad7512f34",
+        "source_fact:v1:ee62db8a70e925362ade6f67b245a142b02b157b24992167d516077b890cfbc9",
+        "source_fact:v1:f177d2837aa3037f4e454d9b3b43ca74ca2c747c7ea974ee0f5175f657e233fe",
+        "source_fact:v1:fd74f00d76f77db49a67fd1d86e5b66db930a7e16f430fa944e7bb99825cca6a"
+      ],
+      "source_published_kst": "2026-10-07T06:01+09:00",
+      "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
+    },
     "source_fact:cb0e0170c4dd1e430e858b49": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -127384,6 +128329,33 @@
       "source_published_kst": "2026-10-06T12:17+09:00",
       "title": "이형일 \"대미 원전 100억달러, 상업적 합리성 검증돼야 송금\"[2026국감]"
     },
+    "source_fact:ce6bcfd18d353b2c4e4205d8": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815653",
+      "source": "뉴시스",
+      "source_body_digest": "799a60f6a4be1c2a24e272301be0bcf2fb3f411dd2bd351e8c397385cee65c1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:326fe6c2dffcb1ecf5f22d18acfe986e5290c24d5f04890b6b82ae51f28722c3",
+      "source_fact_keys": [
+        "source_fact:v1:5e30c33e7044530c876567e4a52c23de4cd144d767912b80ff16f1101a9fa0a9",
+        "source_fact:v1:7b317ca1449e79ca09fcdeac85c0dab405ba5fb579fbfab079ec5d4da5ea3ea6",
+        "source_fact:v1:87767d1cbfeb13f54ea9438658a9781cf6123a22a68a193c115039d21c5264e7",
+        "source_fact:v1:9a729cb6b50f0aa93ed51cf5ae2f8512de8f2d7231a88461335f8408fe14a6d8",
+        "source_fact:v1:9b5336881837590150f899f1b3446d6ce61b1dac3af88f9fc56ab791b87dd0e9",
+        "source_fact:v1:a8d58ecb6f0bd6bba8e32c7290bd2e275a9b71979e3ac2999208581ff87eac30",
+        "source_fact:v1:cafc4434957e93b453fec79e75522ab10c4e974cabb2b9c795a5f9c2e269e05c",
+        "source_fact:v1:e38e417c16b838a69d4445ca6e094d781966f41f34c983e18170348ad7512f34",
+        "source_fact:v1:ee62db8a70e925362ade6f67b245a142b02b157b24992167d516077b890cfbc9",
+        "source_fact:v1:f177d2837aa3037f4e454d9b3b43ca74ca2c747c7ea974ee0f5175f657e233fe",
+        "source_fact:v1:fd74f00d76f77db49a67fd1d86e5b66db930a7e16f430fa944e7bb99825cca6a"
+      ],
+      "source_published_kst": "2026-10-07T06:01+09:00",
+      "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
+    },
     "source_fact:ce737a65f1561a8ab49f72a4": {
       "first_seen_kst": "2026-10-07T03:04:14+09:00",
       "lanes": {
@@ -127470,6 +128442,33 @@
       ],
       "source_published_kst": "2026-10-06T11:22+09:00",
       "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
+    "source_fact:cee122b8f0bb489829529260": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815653",
+      "source": "뉴시스",
+      "source_body_digest": "799a60f6a4be1c2a24e272301be0bcf2fb3f411dd2bd351e8c397385cee65c1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:326fe6c2dffcb1ecf5f22d18acfe986e5290c24d5f04890b6b82ae51f28722c3",
+      "source_fact_keys": [
+        "source_fact:v1:5e30c33e7044530c876567e4a52c23de4cd144d767912b80ff16f1101a9fa0a9",
+        "source_fact:v1:7b317ca1449e79ca09fcdeac85c0dab405ba5fb579fbfab079ec5d4da5ea3ea6",
+        "source_fact:v1:87767d1cbfeb13f54ea9438658a9781cf6123a22a68a193c115039d21c5264e7",
+        "source_fact:v1:9a729cb6b50f0aa93ed51cf5ae2f8512de8f2d7231a88461335f8408fe14a6d8",
+        "source_fact:v1:9b5336881837590150f899f1b3446d6ce61b1dac3af88f9fc56ab791b87dd0e9",
+        "source_fact:v1:a8d58ecb6f0bd6bba8e32c7290bd2e275a9b71979e3ac2999208581ff87eac30",
+        "source_fact:v1:cafc4434957e93b453fec79e75522ab10c4e974cabb2b9c795a5f9c2e269e05c",
+        "source_fact:v1:e38e417c16b838a69d4445ca6e094d781966f41f34c983e18170348ad7512f34",
+        "source_fact:v1:ee62db8a70e925362ade6f67b245a142b02b157b24992167d516077b890cfbc9",
+        "source_fact:v1:f177d2837aa3037f4e454d9b3b43ca74ca2c747c7ea974ee0f5175f657e233fe",
+        "source_fact:v1:fd74f00d76f77db49a67fd1d86e5b66db930a7e16f430fa944e7bb99825cca6a"
+      ],
+      "source_published_kst": "2026-10-07T06:01+09:00",
+      "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
     },
     "source_fact:cf015d9c81186f669ba3f9bb": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -128969,6 +129968,33 @@
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
     },
+    "source_fact:d4f9b4c68187063f655a56c1": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815653",
+      "source": "뉴시스",
+      "source_body_digest": "799a60f6a4be1c2a24e272301be0bcf2fb3f411dd2bd351e8c397385cee65c1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:326fe6c2dffcb1ecf5f22d18acfe986e5290c24d5f04890b6b82ae51f28722c3",
+      "source_fact_keys": [
+        "source_fact:v1:5e30c33e7044530c876567e4a52c23de4cd144d767912b80ff16f1101a9fa0a9",
+        "source_fact:v1:7b317ca1449e79ca09fcdeac85c0dab405ba5fb579fbfab079ec5d4da5ea3ea6",
+        "source_fact:v1:87767d1cbfeb13f54ea9438658a9781cf6123a22a68a193c115039d21c5264e7",
+        "source_fact:v1:9a729cb6b50f0aa93ed51cf5ae2f8512de8f2d7231a88461335f8408fe14a6d8",
+        "source_fact:v1:9b5336881837590150f899f1b3446d6ce61b1dac3af88f9fc56ab791b87dd0e9",
+        "source_fact:v1:a8d58ecb6f0bd6bba8e32c7290bd2e275a9b71979e3ac2999208581ff87eac30",
+        "source_fact:v1:cafc4434957e93b453fec79e75522ab10c4e974cabb2b9c795a5f9c2e269e05c",
+        "source_fact:v1:e38e417c16b838a69d4445ca6e094d781966f41f34c983e18170348ad7512f34",
+        "source_fact:v1:ee62db8a70e925362ade6f67b245a142b02b157b24992167d516077b890cfbc9",
+        "source_fact:v1:f177d2837aa3037f4e454d9b3b43ca74ca2c747c7ea974ee0f5175f657e233fe",
+        "source_fact:v1:fd74f00d76f77db49a67fd1d86e5b66db930a7e16f430fa944e7bb99825cca6a"
+      ],
+      "source_published_kst": "2026-10-07T06:01+09:00",
+      "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
+    },
     "source_fact:d4fe636279abab28a3e71ac1": {
       "first_seen_kst": "2026-10-07T02:13:12+09:00",
       "lanes": {
@@ -129317,6 +130343,26 @@
       ],
       "source_published_kst": "2026-10-06T15:44+09:00",
       "title": "원·달러 환율, 0.4원 내린 1343.6원 마감"
+    },
+    "source_fact:d66f3de9cbcb92e2ffab7eb9": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/06/2026100611119626039",
+      "source": "머니투데이",
+      "source_body_digest": "e6bee20e8088040e501e95eee2f983df8bfb558ac7fc36139737db8cfd930a25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38f607d494f8432d5ca59d5cfeaf397ab39485bb0700aea157c90cdcf49692dc",
+      "source_fact_keys": [
+        "source_fact:v1:1692a32e0c7ca90fe1e93b010bb45b77969f88f63ff32a7987c26705f2ed4783",
+        "source_fact:v1:4f1e10b2879aa3f5b985df1064a272afac214de494cfac9d5af1014f08f27d11",
+        "source_fact:v1:5b87585161041b664370bb45c1058995f29b2d2bd31834454eedf043b979ab1a",
+        "source_fact:v1:e5ed55290260683bcd3fa00258933fd599d0a1da3de0c54758aeb570f64b405f"
+      ],
+      "source_published_kst": "2026-10-06T11:15+09:00",
+      "title": "[더벨]네오리진, 글로벌 AI 추론 기업 'NOVA'에 50만달러 투자"
     },
     "source_fact:d66fe6a7ccb0d0c922548137": {
       "first_seen_kst": "2026-10-06T14:41:27+09:00",
@@ -129875,6 +130921,30 @@
       ],
       "source_published_kst": "2026-10-06T07:32+09:00",
       "title": "\"공급이 못 따라간다\"…수퍼사이클 탄 AI반도체 기판 3인방 비교분석"
+    },
+    "source_fact:d7becd7d68e9cea89471d34d": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169545",
+      "source": "매일경제",
+      "source_body_digest": "860aad54bfc6b8dfaa482e04a670a838993d1547bf9ddeaf37adbf4708dd15f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8121af7aeebe850d4d878723a23bd33753f38ab124137a1c28cb00cdcb6410c4",
+      "source_fact_keys": [
+        "source_fact:v1:10589118e3d7335a09aee2ede1e037514eb05567e3abb82f26fabb2a2527d011",
+        "source_fact:v1:1ef68e653813f6735b766ad65dc7e25195dae26bdc35d97ae0b41ab9bc290ace",
+        "source_fact:v1:830b6ac5e4c1a36f9f708d76368043e8183705c3b9fc309d22fb734a1b1ad452",
+        "source_fact:v1:a4edc686bd40529cfc0f16831355629853be63255f6bc516bd3ffa23bae1ecac",
+        "source_fact:v1:bbbb0a64758a177106d3d8709b8011a32a3976013fd79a602144270d17ac8154",
+        "source_fact:v1:bcee94a59705e85d51ee60821f974158e02fa2dcb2dd77b13caa480b2e3418fd",
+        "source_fact:v1:bdc57be3615b574ed7cb67fc206e54ded9cdb0ef9b1995622ad6b7c3679b6e9e",
+        "source_fact:v1:c81117f42beb017ba9ce5d70ac2a1177135d4fa1b84bdf44777baf8b3e8f0d4a"
+      ],
+      "source_published_kst": "2026-10-06T22:00+09:00",
+      "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
     },
     "source_fact:d7cf8e9867a45575af01d7d9": {
       "first_seen_kst": "2026-10-06T20:24:46+09:00",
@@ -132057,30 +133127,26 @@
     "source_fact:e065d2adcc6710ca8ec224be": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
       "lanes": {
-        "live": "2026-10-06T19:21:45+09:00"
+        "live": "2026-10-07T06:12:17+09:00"
       },
-      "last_seen_kst": "2026-10-06T19:21:45+09:00",
-      "link": "https://www.etoday.co.kr/news/view/2633000",
-      "source": "이투데이",
-      "source_body_digest": "52862f915d3e225919144af42e999a95b21358363607d3107f70367975738e21",
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169545",
+      "source": "매일경제",
+      "source_body_digest": "860aad54bfc6b8dfaa482e04a670a838993d1547bf9ddeaf37adbf4708dd15f4",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d0a3f41b58c7d30c550797c4e06e9aaf64a669958b902b52956bec8e273aa624",
+      "source_fact_identity": "source_facts:v1:8121af7aeebe850d4d878723a23bd33753f38ab124137a1c28cb00cdcb6410c4",
       "source_fact_keys": [
-        "source_fact:v1:0dd0b70dbdce5981ee4c70609b4fd4fe408c844f905fa22c4e61f52fc101e3c2",
-        "source_fact:v1:28d6cdd28b6d906709678b17b852f0675c5c06f46ad6055092fcaa26ca63fbce",
-        "source_fact:v1:41a59321ebcc7f8d20fb2edfb5ca61477fd5e6d4db709d8d479dba28ce80ebc4",
-        "source_fact:v1:432ab0ce1749ef0f1349c9a8d4ab840adcfc162b0d275d1229c694c8ae5ce36b",
-        "source_fact:v1:46e43dce0c39e3eec12e2138ba4c146ecf66630b598b48cecdca50568979729b",
-        "source_fact:v1:5517d30bfdfdfeeb955419caa7dea7f5e83a7d3efcf0b1041f66ac6a8f5415e3",
-        "source_fact:v1:6aac61b2420f1c2ed6a9de62d24b0e616d3eeb9e29b0f73004f1878166ff3ec3",
+        "source_fact:v1:10589118e3d7335a09aee2ede1e037514eb05567e3abb82f26fabb2a2527d011",
+        "source_fact:v1:1ef68e653813f6735b766ad65dc7e25195dae26bdc35d97ae0b41ab9bc290ace",
         "source_fact:v1:830b6ac5e4c1a36f9f708d76368043e8183705c3b9fc309d22fb734a1b1ad452",
-        "source_fact:v1:b323def2c04c03872bd5c91b9b958bca91e007986c1db3536505f29d10a49217",
-        "source_fact:v1:cd5760fe1a4240b23691c09d98e7f5967608d0951e3659430dbf3d3193a1a444",
-        "source_fact:v1:ce540c97fcd81029d48fdd344a1cf1a6b899fbf83bb35afd5208356b2aad7a22",
-        "source_fact:v1:e8e695b791e379ee241e15fb61472bad38a0028a4dd710e2bf3d151f726d8658"
+        "source_fact:v1:a4edc686bd40529cfc0f16831355629853be63255f6bc516bd3ffa23bae1ecac",
+        "source_fact:v1:bbbb0a64758a177106d3d8709b8011a32a3976013fd79a602144270d17ac8154",
+        "source_fact:v1:bcee94a59705e85d51ee60821f974158e02fa2dcb2dd77b13caa480b2e3418fd",
+        "source_fact:v1:bdc57be3615b574ed7cb67fc206e54ded9cdb0ef9b1995622ad6b7c3679b6e9e",
+        "source_fact:v1:c81117f42beb017ba9ce5d70ac2a1177135d4fa1b84bdf44777baf8b3e8f0d4a"
       ],
-      "source_published_kst": "2026-10-06T17:12+09:00",
-      "title": "포스코퓨처엠, 삼성SDI와 6조 계약…LFP 물량 두 배 넘게 확대"
+      "source_published_kst": "2026-10-06T22:00+09:00",
+      "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
     },
     "source_fact:e069acd1ccc3b5a3f5e6f627": {
       "first_seen_kst": "2026-10-06T16:09:23+09:00",
@@ -132547,6 +133613,30 @@
       ],
       "source_published_kst": "2026-10-06T17:12+09:00",
       "title": "포스코퓨처엠, 삼성SDI와 6조 계약…LFP 물량 두 배 넘게 확대"
+    },
+    "source_fact:e2158371b459ed4a07c600e5": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169545",
+      "source": "매일경제",
+      "source_body_digest": "860aad54bfc6b8dfaa482e04a670a838993d1547bf9ddeaf37adbf4708dd15f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8121af7aeebe850d4d878723a23bd33753f38ab124137a1c28cb00cdcb6410c4",
+      "source_fact_keys": [
+        "source_fact:v1:10589118e3d7335a09aee2ede1e037514eb05567e3abb82f26fabb2a2527d011",
+        "source_fact:v1:1ef68e653813f6735b766ad65dc7e25195dae26bdc35d97ae0b41ab9bc290ace",
+        "source_fact:v1:830b6ac5e4c1a36f9f708d76368043e8183705c3b9fc309d22fb734a1b1ad452",
+        "source_fact:v1:a4edc686bd40529cfc0f16831355629853be63255f6bc516bd3ffa23bae1ecac",
+        "source_fact:v1:bbbb0a64758a177106d3d8709b8011a32a3976013fd79a602144270d17ac8154",
+        "source_fact:v1:bcee94a59705e85d51ee60821f974158e02fa2dcb2dd77b13caa480b2e3418fd",
+        "source_fact:v1:bdc57be3615b574ed7cb67fc206e54ded9cdb0ef9b1995622ad6b7c3679b6e9e",
+        "source_fact:v1:c81117f42beb017ba9ce5d70ac2a1177135d4fa1b84bdf44777baf8b3e8f0d4a"
+      ],
+      "source_published_kst": "2026-10-06T22:00+09:00",
+      "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
     },
     "source_fact:e21708cfe794fccc75b17c9a": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
@@ -133908,6 +134998,24 @@
       ],
       "source_published_kst": "2026-10-05T09:45+09:00",
       "title": "LG유플러스, 해외 AI 서비스 ‘유독’에 들여온다…11월 첫 상품 출시"
+    },
+    "source_fact:e7275f4dee709aab2c4b0169": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02145126645610624",
+      "source": "이데일리",
+      "source_body_digest": "bbbdca11d67a3ca08c4d95fc2c2fede9725d46a26416799613999788f60c7747",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:93f79c2da64e0350c958ef20baec916cdabee3bf5854cbd17108e3cae3d2c130",
+      "source_fact_keys": [
+        "source_fact:v1:9d62866fe06511d84579a3020550a530bfb350390503b6399b2678ba02876202",
+        "source_fact:v1:cfb11d974f6c56ae982f86b8b3ef86774ab435a251218b0c77421773cd7ffafd"
+      ],
+      "source_published_kst": "2026-10-07T06:00+09:00",
+      "title": "롯데하이마트, 물류센터에 ‘휴머노이드 로봇’ 투입…2028년 실증"
     },
     "source_fact:e7426e41b4aade086bcde964": {
       "first_seen_kst": "2026-10-06T19:58:43+09:00",
@@ -135626,6 +136734,23 @@
       ],
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
+    "source_fact:edfe33ca4fe8b03040e41472": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006186600001",
+      "source": "연합뉴스",
+      "source_body_digest": "ab2bca53a385aa7be3d34f6aa759fa50fdfc3c528519dcaa69017bdc8174cca0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fab47500f976d273060619944985bfd597839dcb7b0cccc64ab85bbf7090ffe9",
+      "source_fact_keys": [
+        "source_fact:v1:4d24e6e51a1395f1ba7004bb6fd0afba3c6a48182c99ebd30309e28adef5c9f9"
+      ],
+      "source_published_kst": "2026-10-07T06:00+09:00",
+      "title": "최수진 \"강원랜드, 영업이익 급감에도 성과급 195％…방만경영\" | 연합뉴스"
     },
     "source_fact:ee0b07d86e2ef6c69d21729d": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -141676,6 +142801,26 @@
       "source": "매일경제",
       "title": "“퇴근 후 2시간 동안 더 많이 법니다”…저녁 거래대금, 하루 4조 넘어"
     },
+    "title:10edcd684b77c2a51cf5edc6": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mt.co.kr/stock/2026/10/06/2026100611119626039",
+      "source": "머니투데이",
+      "source_body_digest": "e6bee20e8088040e501e95eee2f983df8bfb558ac7fc36139737db8cfd930a25",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38f607d494f8432d5ca59d5cfeaf397ab39485bb0700aea157c90cdcf49692dc",
+      "source_fact_keys": [
+        "source_fact:v1:1692a32e0c7ca90fe1e93b010bb45b77969f88f63ff32a7987c26705f2ed4783",
+        "source_fact:v1:4f1e10b2879aa3f5b985df1064a272afac214de494cfac9d5af1014f08f27d11",
+        "source_fact:v1:5b87585161041b664370bb45c1058995f29b2d2bd31834454eedf043b979ab1a",
+        "source_fact:v1:e5ed55290260683bcd3fa00258933fd599d0a1da3de0c54758aeb570f64b405f"
+      ],
+      "source_published_kst": "2026-10-06T11:15+09:00",
+      "title": "[더벨]네오리진, 글로벌 AI 추론 기업 'NOVA'에 50만달러 투자"
+    },
     "title:1110e6d23600809f31a283c3": {
       "first_seen_kst": "2026-10-05T06:49:20+09:00",
       "lanes": {
@@ -144589,6 +145734,33 @@
       "source_published_kst": "2026-10-06T13:44+09:00",
       "title": "완성차 불황에 '군용차'로 눈 돌린다…기아·포드·GM·르노 방산 공략"
     },
+    "title:2b8269c64f7c08c4743f8aa3": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815653",
+      "source": "뉴시스",
+      "source_body_digest": "799a60f6a4be1c2a24e272301be0bcf2fb3f411dd2bd351e8c397385cee65c1e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:326fe6c2dffcb1ecf5f22d18acfe986e5290c24d5f04890b6b82ae51f28722c3",
+      "source_fact_keys": [
+        "source_fact:v1:5e30c33e7044530c876567e4a52c23de4cd144d767912b80ff16f1101a9fa0a9",
+        "source_fact:v1:7b317ca1449e79ca09fcdeac85c0dab405ba5fb579fbfab079ec5d4da5ea3ea6",
+        "source_fact:v1:87767d1cbfeb13f54ea9438658a9781cf6123a22a68a193c115039d21c5264e7",
+        "source_fact:v1:9a729cb6b50f0aa93ed51cf5ae2f8512de8f2d7231a88461335f8408fe14a6d8",
+        "source_fact:v1:9b5336881837590150f899f1b3446d6ce61b1dac3af88f9fc56ab791b87dd0e9",
+        "source_fact:v1:a8d58ecb6f0bd6bba8e32c7290bd2e275a9b71979e3ac2999208581ff87eac30",
+        "source_fact:v1:cafc4434957e93b453fec79e75522ab10c4e974cabb2b9c795a5f9c2e269e05c",
+        "source_fact:v1:e38e417c16b838a69d4445ca6e094d781966f41f34c983e18170348ad7512f34",
+        "source_fact:v1:ee62db8a70e925362ade6f67b245a142b02b157b24992167d516077b890cfbc9",
+        "source_fact:v1:f177d2837aa3037f4e454d9b3b43ca74ca2c747c7ea974ee0f5175f657e233fe",
+        "source_fact:v1:fd74f00d76f77db49a67fd1d86e5b66db930a7e16f430fa944e7bb99825cca6a"
+      ],
+      "source_published_kst": "2026-10-07T06:01+09:00",
+      "title": "글로벌 공급기지 된 K-제약사들…잇단 수출계약"
+    },
     "title:2b85ba648de1c13a2d2f871d": {
       "first_seen_kst": "2026-10-03T22:33:30+09:00",
       "lanes": {
@@ -144823,6 +145995,26 @@
       "link": "https://www.etoday.co.kr/news/view/2632257",
       "source": "이투데이",
       "title": "트럼프 “한국과 합의 더욱 좋아져⋯석유 프로젝트에 84억달러 투자”"
+    },
+    "title:2cebaccd6ab9333d80013003": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169872",
+      "source": "매일경제",
+      "source_body_digest": "ecc2d1314640e5209b5d577f95002cd72a945139f9711fa71a4e2026fbcb75a4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fc847d42b26a2a9bbd950b2f19348374a7011899e30d7fb2ea77cef05e521b38",
+      "source_fact_keys": [
+        "source_fact:v1:2dee003d7213d16dcf97cd9bc77a187682790ad8f652dd6cf1c428c242fe5f4d",
+        "source_fact:v1:922f2ad45b43fad83dcb9ad8cf87ced02e291be2150fdc11aa5b0df96dd3f28e",
+        "source_fact:v1:a4d472d50bf49ec2a8b84c8e7197bc883f9b40b74717bccd09f489d8272146b8",
+        "source_fact:v1:c963e0380b2ddc280cdf35cfcaced8087631b22eb185795190e6ef9aea88f546"
+      ],
+      "source_published_kst": "2026-10-07T05:57+09:00",
+      "title": "삼전 ‘영업익 100조’ 예고에도 주가는 영…8일도 심상치않다는데"
     },
     "title:2cef9a92103fd919081c3dee": {
       "first_seen_kst": "2026-09-24T14:25:32+09:00",
@@ -157216,6 +158408,30 @@
       "source": "머니투데이",
       "title": "반도체가 半했다… 한국수출 사상 첫 1조달러 시대 눈앞"
     },
+    "title:968b5a49967c6c496e66afa5": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169545",
+      "source": "매일경제",
+      "source_body_digest": "860aad54bfc6b8dfaa482e04a670a838993d1547bf9ddeaf37adbf4708dd15f4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8121af7aeebe850d4d878723a23bd33753f38ab124137a1c28cb00cdcb6410c4",
+      "source_fact_keys": [
+        "source_fact:v1:10589118e3d7335a09aee2ede1e037514eb05567e3abb82f26fabb2a2527d011",
+        "source_fact:v1:1ef68e653813f6735b766ad65dc7e25195dae26bdc35d97ae0b41ab9bc290ace",
+        "source_fact:v1:830b6ac5e4c1a36f9f708d76368043e8183705c3b9fc309d22fb734a1b1ad452",
+        "source_fact:v1:a4edc686bd40529cfc0f16831355629853be63255f6bc516bd3ffa23bae1ecac",
+        "source_fact:v1:bbbb0a64758a177106d3d8709b8011a32a3976013fd79a602144270d17ac8154",
+        "source_fact:v1:bcee94a59705e85d51ee60821f974158e02fa2dcb2dd77b13caa480b2e3418fd",
+        "source_fact:v1:bdc57be3615b574ed7cb67fc206e54ded9cdb0ef9b1995622ad6b7c3679b6e9e",
+        "source_fact:v1:c81117f42beb017ba9ce5d70ac2a1177135d4fa1b84bdf44777baf8b3e8f0d4a"
+      ],
+      "source_published_kst": "2026-10-06T22:00+09:00",
+      "title": "포스코퓨처엠·삼성SDI … LFP 양극재 6조원 계약"
+    },
     "title:96b8cfd8b85f747a5bd0873d": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -165360,6 +166576,24 @@
       "source_published_kst": "2026-10-05T12:59+09:00",
       "title": "슈나이더 일렉트릭, 산업용 소프트웨어 그룹 200억달러 인수 계약 임박"
     },
+    "title:df747bc8ede00631d6ea5d9d": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=02145126645610624",
+      "source": "이데일리",
+      "source_body_digest": "bbbdca11d67a3ca08c4d95fc2c2fede9725d46a26416799613999788f60c7747",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:93f79c2da64e0350c958ef20baec916cdabee3bf5854cbd17108e3cae3d2c130",
+      "source_fact_keys": [
+        "source_fact:v1:9d62866fe06511d84579a3020550a530bfb350390503b6399b2678ba02876202",
+        "source_fact:v1:cfb11d974f6c56ae982f86b8b3ef86774ab435a251218b0c77421773cd7ffafd"
+      ],
+      "source_published_kst": "2026-10-07T06:00+09:00",
+      "title": "롯데하이마트, 물류센터에 ‘휴머노이드 로봇’ 투입…2028년 실증"
+    },
     "title:df7cb6b95b264bd9da1d3b3b": {
       "first_seen_kst": "2026-10-06T22:37:02+09:00",
       "lanes": {
@@ -165529,6 +166763,26 @@
       ],
       "source_published_kst": "2026-10-07T03:11+09:00",
       "title": "\"지금 폰 바꿀까?\" AI 서버가 D램 싹쓸이…스마트폰값 더 비싸진다"
+    },
+    "title:e13e192fe29460a31f0f46bc": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816116",
+      "source": "뉴시스",
+      "source_body_digest": "82cb5bfcb631afdfe6121d5d7b48df8969ea359624ed89e8d5e59830c486ad92",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e28c7adfbe279b7978f533790b16bb41afa120276f8e6104d1e6168f3084fc6e",
+      "source_fact_keys": [
+        "source_fact:v1:3c998abf5db41e550c5bfe07e96180f8816aa22201ceb533d834a26fab9748a1",
+        "source_fact:v1:6fab7cf21a2e901ab72c9ac4eb103299239daf4131145b6f23b6bb153c2525c0",
+        "source_fact:v1:7532226f47c91d67f04ef375ed0f83072471f8bfaeae5d0413330090ff7f538a",
+        "source_fact:v1:d8eaf6588bf06b924acbbb5cb3a301f3177c3f80f2ea0766ac6cb7113d436171"
+      ],
+      "source_published_kst": "2026-10-07T06:06+09:00",
+      "title": "분기 영업익 200조 목전…삼전·닉스 기대치 높이는 증권가"
     },
     "title:e15353b43ffe66fb5fc185bf": {
       "first_seen_kst": "2026-10-02T06:33:23+09:00",
@@ -167823,6 +169077,23 @@
       "source": "이데일리",
       "title": "대미투자 한미 이견 와중에…트럼프 \"11조원 석유 프로젝트도 추진\""
     },
+    "title:f44483f4e2387ef793d7dcde": {
+      "first_seen_kst": "2026-10-07T06:12:17+09:00",
+      "lanes": {
+        "live": "2026-10-07T06:12:17+09:00"
+      },
+      "last_seen_kst": "2026-10-07T06:12:17+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006186600001",
+      "source": "연합뉴스",
+      "source_body_digest": "ab2bca53a385aa7be3d34f6aa759fa50fdfc3c528519dcaa69017bdc8174cca0",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fab47500f976d273060619944985bfd597839dcb7b0cccc64ab85bbf7090ffe9",
+      "source_fact_keys": [
+        "source_fact:v1:4d24e6e51a1395f1ba7004bb6fd0afba3c6a48182c99ebd30309e28adef5c9f9"
+      ],
+      "source_published_kst": "2026-10-07T06:00+09:00",
+      "title": "최수진 \"강원랜드, 영업이익 급감에도 성과급 195％…방만경영\" | 연합뉴스"
+    },
     "title:f460498acdfc1a9237ef5467": {
       "first_seen_kst": "2026-09-21T04:13:31+09:00",
       "lanes": {
@@ -169000,5 +170271,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-07T05:59:02+09:00"
+  "updated_at_kst": "2026-10-07T06:12:17+09:00"
 }
