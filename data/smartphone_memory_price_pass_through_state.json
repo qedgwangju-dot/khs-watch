@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at_kst": "2026-10-06T07:37:33+09:00",
+  "updated_at_kst": "2026-10-06T11:31:43+09:00",
   "initial_alert_sent": true,
   "seen": [
     "0476c77ae806a2663597a257",
@@ -31,6 +31,7 @@
     "6b5f72f7c89007cc71925f36",
     "6f044c97230596fbacb8bc30",
     "784e19ddff6e23faa79234b6",
+    "7c51514490ca48f3f5e60020",
     "8c998efb7e725880dff1daa0",
     "8e5cf73dadcf4d4744061885",
     "909f4dc4a93b55ac334d1e69",
@@ -45,6 +46,7 @@
     "ab1bf058c322102770113df8",
     "aded79cdd9430373589246ab",
     "b810aae3c52b4431c39ab399",
+    "b8fdf3e06d6993066846dfbf",
     "ba3a239134b1b2bf1c22eb4a",
     "c12651a360ca79e9b3eb0c6b",
     "c279ae5d554efd3aa7833543",
@@ -54,6 +56,8 @@
     "da9ccef98ac9c153a716deb5",
     "dd4ea7bf412e70ef1874f135",
     "ddc0f888057d92966aa54c9d",
+    "de3ee04fe6aabd82b042a253",
+    "df525e617e1d8275e885d546",
     "e08838709c465343c8f72bc7",
     "e0bae3007e10f059ea9a908f",
     "e6609fc8fe4b117d17a2390b",
@@ -85,8 +89,8 @@
     "dram_2027": "TrendForce 공식: 타이트한 모바일 DRAM 공급·높은 비용 압력",
     "nand_2h27": "TrendForce 공식: 2027 하반기 NAND 공급 완화 가능성"
   },
-  "last_scan_items": 43,
-  "last_signal_count": 1,
+  "last_scan_items": 42,
+  "last_signal_count": 0,
   "last_alert": {
     "at_kst": "2026-10-06T07:37:33+09:00",
     "kind": "change"
