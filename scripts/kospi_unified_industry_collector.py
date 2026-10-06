@@ -163,7 +163,9 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
                 break
             if test_seconds is None and now.time() >= until:
                 break
-            live_window = now.weekday() < 5 and dt.time(9, 0) <= now.time() < until
+            # 15:20~15:30은 종가 단일가 호가접수 구간이라 체결/수급 payload가
+            # 장중처럼 연속 발생하지 않을 수 있다. stale 재접속은 연속매매 구간만 적용한다.
+            live_window = now.weekday() < 5 and dt.time(9, 0) <= now.time() < dt.time(15, 20)
             if live_window and elapsed >= 90:
                 stale_for = None if last_payload_ts is None else time.time() - last_payload_ts
                 if last_payload_ts is None or (stale_for is not None and stale_for > 120):
@@ -175,10 +177,18 @@ async def main(out_path: Path, until: dt.time, test_seconds: int | None = None) 
 
         fp.flush()
         fp.close()
-        market_hours = dt.datetime.now(KST).weekday() < 5 and dt.time(9, 0) <= dt.datetime.now(KST).time() <= dt.time(15, 32)
-        print(f"ubm_collector_finished=true records={written} market_hours={str(market_hours).lower()}", flush=True)
-        if test_seconds is not None and market_hours and written <= 0:
-            raise RuntimeError("UBM collector received no investor-industry payload during market hours")
+        now_done = dt.datetime.now(KST)
+        continuous_market_hours = (
+            now_done.weekday() < 5
+            and dt.time(9, 0) <= now_done.time() < dt.time(15, 20)
+        )
+        print(
+            f"ubm_collector_finished=true records={written} "
+            f"continuous_market_hours={str(continuous_market_hours).lower()}",
+            flush=True,
+        )
+        if test_seconds is not None and continuous_market_hours and written <= 0:
+            raise RuntimeError("UBM collector received no investor-industry payload during continuous market hours")
         return 0
     finally:
         for tr, key in registrations:
