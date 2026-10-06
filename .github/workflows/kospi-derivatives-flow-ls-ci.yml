@@ -280,3 +280,82 @@ jobs:
             out/kospi_industry_flow_ci.jsonl
           if-no-files-found: ignore
           retention-days: 7
+
+
+  handoff_producer:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check --quiet requests
+      - name: Create production-format handoff
+        run: |
+          mkdir -p out
+          PYTHONPATH=scripts python - <<'PY'
+          import time
+          from collections import deque
+          from kospi_shock_episode_watch import Watch
+          w=Watch("dummy", [], "dummy", True)
+          now=time.time()
+          w.flows.append({
+              "ts": now-5,
+              "현물": {"외국인": -10.0, "기관": -20.0, "개인": 30.0},
+              "선물": {"외국인": -40.0, "기관": 10.0, "개인": 30.0},
+              "프로그램": {
+                  "전체": -50.0, "차익": -10.0, "비차익": -40.0,
+                  "베이시스": 0.0, "sample_ts": now-5,
+              },
+          })
+          w.episode={
+              "start_ts": now-120,
+              "start_price": 7000.0,
+              "low_ts": now-10,
+              "low_price": 6960.0,
+              "sent_drop": 0.57,
+              "alerted": True,
+          }
+          w.msg_ids=[901]
+          w.save_handoff("out/kospi_shock_handoff_ci.json")
+          print("handoff_producer_valid=true")
+          PY
+      - name: Upload handoff
+        uses: actions/upload-artifact@v4
+        with:
+          name: kospi-handoff-ci-${{ github.run_id }}
+          path: out/kospi_shock_handoff_ci.json
+          retention-days: 1
+
+  handoff_consumer:
+    needs: handoff_producer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download handoff
+        uses: actions/download-artifact@v4
+        with:
+          name: kospi-handoff-ci-${{ github.run_id }}
+          path: out
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check --quiet requests
+      - name: Verify production-format handoff after artifact transfer
+        run: |
+          PYTHONPATH=scripts python - <<'PY'
+          from kospi_shock_episode_watch import Watch
+          w=Watch("dummy", [], "dummy", True)
+          w.load_handoff("out/kospi_shock_handoff_ci.json")
+          assert len(w.flows)==1, len(w.flows)
+          assert w.episode and w.episode["start_price"]==7000.0, w.episode
+          assert 901 in w.msg_ids, w.msg_ids
+          print("handoff_artifact_transfer_valid=true")
+          PY
