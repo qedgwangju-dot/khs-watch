@@ -245,6 +245,36 @@ GOLDMAN_STRUCTURAL_MEMORY_BASELINE = {
     "source_rank": 2,
 }
 
+YMTC_NAND_DURATION_TRACK_VERSION = 1
+YMTC_NAND_DURATION_BASELINE = {
+    "shortage_scope": "global memory (YMTC 익명 직원 발언; NAND 전용 공식 전망으로 해석 금지)",
+    "shortage_through_year": 2029,
+    "shortage_duration_years_from_2026": 3,
+    "shortage_official_guidance": False,
+    "anonymous_employee_source": True,
+    "price_increase_reported": True,
+    "capacity_shift_high_margin_reported": True,
+    "q2_2026_nand_shipment_share_pct": 14.0,
+    "q2_2026_nand_shipment_rank": 3,
+    "q2_2026_essd_bit_share_pct": 48.0,
+    "q2_2025_essd_bit_share_pct": 26.0,
+    "consumer_nand_supply_short": True,
+    "trendforce_nand_easing_year": 2027,
+    "trendforce_nand_easing_half": "2H",
+    "trendforce_2026_nand_deficit_min_pct": 4.0,
+    "trendforce_2026_nand_deficit_max_pct": 5.0,
+    "trendforce_china_nand_bit_output_share_2027_pct": 19.0,
+    "micron_memory_tight_through_year": 2028,
+    "source": "The Wire China / YMTC 익명 직원",
+    "source_kind": "The Wire China 원문 공개영역 + 복수 2차 재인용; 회사 공식 가이던스 아님",
+    "source_url": "https://www.thewirechina.com/2026/10/04/the-survivor/",
+    "secondary_source_url": "https://www.tweaktown.com/news/113914/chinas-ymtc-raises-chip-prices-as-it-braces-for-three-more-years-of-memory-shortages/index.html",
+    "counterpoint_url": "https://counterpointresearch.com/default.htm/insights/server-led-essds-hit-48-percent-of-nand-shipments",
+    "trendforce_url": "https://www.trendforce.com/presscenter/news/20260721-13148.html",
+    "as_of": "2026-10-06",
+    "source_rank": 2,
+}
+
 TREND_PINNED_PRESS_URLS = [
     "https://www.trendforce.com/presscenter/news/20260930-13258.html",
     "https://www.trendforce.com/presscenter/news/20260929-13255.html",
@@ -280,6 +310,9 @@ QUERIES = [
     ("ko", '골드만삭스 메모리 DRAM NAND 기업용 SSD 4분기 평균판매단가 전망 삼성전자 SK하이닉스'),
     ("ko", 'Goldman Sachs DRAM NAND 공급부족 2026 2027 2028 5.0 5.9 3.9 4.4 4.6 3.0'),
     ("ko", '골드만삭스 DRAM NAND 2029 2030 공급 부족 AI 에이전트 토큰 24배'),
+    ("ko", 'YMTC 낸드 메모리 공급부족 2029 가격 인상 고수익 제품 생산능력'),
+    ("ko", 'YMTC 2026 2분기 NAND 출하량 점유율 14% 3위 기업용 SSD 48% Counterpoint'),
+    ("ko", 'YMTC 낸드 2027 하반기 수급 완화 TrendForce 중국 증산 19%'),
     ("ko", 'Goldman Sachs AI agent token 2030 24배 120 quadrillion 메모리'),
     ("ko", 'Micron CEO 2027 메모리 공급 75% committed 계약 SCA'),
     ("ko", '마이크론 2027 공급 75% 확약 장기계약 메모리 CEO'),
@@ -306,6 +339,9 @@ QUERIES = [
     ("en", 'Goldman Sachs storage price eSSD enterprise SSD Q4 ASP Samsung SK hynix'),
     ("en", 'Goldman Sachs DRAM NAND undersupply 2026 2027 2028 5.0 5.9 3.9 4.4 4.6 3.0'),
     ("en", 'Goldman Sachs DRAM NAND undersupply 2029 2030 token consumption 24x'),
+    ("en", 'YMTC memory shortage 2029 raises prices higher-margin products capacity The Wire China'),
+    ("en", 'YMTC NAND Q2 2026 shipment share 14% third enterprise SSD 48% Counterpoint'),
+    ("en", 'YMTC NAND 2027 supply balance 2H27 TrendForce China bit output 19%'),
     ("en", 'Goldman Sachs agentic AI token consumption 24 times 2030 120 quadrillion memory'),
     ("en", 'Micron CEO 2027 output 75% committed memory supply SCA'),
     ("en", 'Micron 2027 memory supply committed 75 percent strategic customer agreements'),
@@ -342,6 +378,7 @@ HIGH_SIGNAL = {
     "reuters", "bloomberg", "citi", "ubs", "micron", "samsung", "sk hynix", "sk하이닉스",
     "삼성전자", "nvidia", "엔비디아", "broadcom", "브로드컴", "google", "구글", "amd",
     "applied materials", "amat", "어플라이드 머티어리얼즈", "citi tmt",
+    "ymtc", "yangtze memory", "长江存储", "counterpoint", "the wire china",
 }
 CRITICAL_MARKERS = {
     "sufficiency", "공급 충족", "under supply", "undersupply", "shortage", "공급부족",
@@ -612,6 +649,11 @@ ARTICLE_DETAIL_HOSTS = (
     "itmedia.co.jp",
     "computerbase.de",
     "wallstreetcn.com",
+    "thewirechina.com",
+    "tweaktown.com",
+    "xenospectrum.com",
+    "hwupgrade.it",
+    "counterpointresearch.com",
 )
 
 
@@ -1584,6 +1626,178 @@ def _micron_supply_commitment_changes(old: dict, new: dict) -> list[str]:
 
 
 
+def _ymtc_nand_source_rank(item: dict) -> int:
+    source = str(item.get("source") or "").lower()
+    link = str(item.get("link") or "")
+    host = urllib.parse.urlparse(link).netloc.lower()
+    if "counterpointresearch.com" in host or "trendforce.com" in host:
+        return 3
+    if "ymtc.com" in host:
+        return 3
+    trusted_hosts = (
+        "thewirechina.com", "tweaktown.com", "xenospectrum.com",
+        "hwupgrade.it", "techpowerup.com", "tomshardware.com",
+    )
+    if any(host == h or host.endswith("." + h) for h in trusted_hosts):
+        return 2
+    if any(k in source for k in (
+        "the wire china", "tweaktown", "xenospectrum", "hwupgrade",
+        "techpowerup", "tom's hardware", "tom’s hardware", "counterpoint", "trendforce",
+    )):
+        return 2
+    return 0
+
+
+def _is_ymtc_nand_duration_item(item: dict) -> bool:
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    ymtc = any(k in low or k in text for k in (
+        "ymtc", "yangtze memory", "长江存储", "長江存儲",
+    ))
+    if not ymtc:
+        return False
+    structural = any(k in low or k in text for k in (
+        "2029", "three more years", "3 more years",
+        "shortage", "undersupply", "supply shortage",
+        "raised prices", "raises prices", "price increase", "higher-margin", "higher margin",
+        "shipment share", "market share", "top three", "top 3",
+        "enterprise ssd", "essd", "48%", "14%",
+        "공급 부족", "공급부족", "가격 인상", "고수익", "점유율", "출하량",
+    ))
+    return bool(structural)
+
+
+def _extract_ymtc_nand_duration(item: dict) -> dict | None:
+    if not _is_ymtc_nand_duration_item(item):
+        return None
+    rank = _ymtc_nand_source_rank(item)
+    if rank < 2:
+        return None
+
+    text = _clean(f"{item.get('title','')} {item.get('description','')}")
+    low = text.lower()
+    host = urllib.parse.urlparse(str(item.get("link") or "")).netloc.lower()
+    obs: dict = {}
+
+    duration_signal = bool(
+        (
+            ("2029" in text or re.search(r"three\s+more\s+years|3\s+more\s+years|another\s+three\s+years", low))
+            and any(k in low for k in ("shortage", "undersupply", "supply"))
+        )
+        or ("2029" in text and ("공급 부족" in text or "공급부족" in text))
+    )
+    if duration_signal:
+        obs["shortage_through_year"] = 2029
+        obs["shortage_duration_years_from_2026"] = 3
+        # The Wire China reporting is based on an unnamed employee, not company guidance.
+        anonymous = any(k in low for k in (
+            "anonymous", "condition of anonymity", "unnamed employee", "company employee",
+        )) or any(k in text for k in ("익명", "내부 관계자", "직원"))
+        if "thewirechina.com" in host or any(k in low for k in ("the wire china", "wire china")):
+            anonymous = True
+        obs["anonymous_employee_source"] = anonymous
+        obs["shortage_official_guidance"] = bool("ymtc.com" in host and not anonymous)
+        if "nand shortage" in low or "nand flash shortage" in low or "낸드 공급" in text:
+            obs["shortage_scope"] = "NAND Flash"
+        else:
+            obs["shortage_scope"] = "global memory (NAND 전용 공식 전망으로 해석 금지)"
+
+    if any(k in low for k in (
+        "raised prices", "raises prices", "increased prices", "price increase",
+        "charging more", "가격을 인상", "가격 인상",
+    )):
+        obs["price_increase_reported"] = True
+    if any(k in low for k in ("price cut", "cuts prices", "lowered prices", "가격 인하")):
+        obs["price_increase_reported"] = False
+
+    if any(k in low for k in (
+        "higher-margin products", "higher margin products", "high-margin products",
+        "shifted capacity", "moved production capacity", "reallocated",
+        "고수익 제품", "고마진 제품", "생산능력을 고수익",
+    )):
+        obs["capacity_shift_high_margin_reported"] = True
+
+    # Counterpoint Q2 2026 official tracker metrics.
+    if ("q2" in low or "second quarter" in low or "2분기" in text) and "2026" in text:
+        m_share = re.search(r"(?:ymtc[^.%]{0,100}?|share[^.%]{0,60}?)(14(?:\.0)?)\s*%", low, re.I)
+        if not m_share:
+            m_share = re.search(r"(14(?:\.0)?)\s*%[^.]{0,100}?ymtc", low, re.I)
+        if m_share:
+            obs["q2_2026_nand_shipment_share_pct"] = float(m_share.group(1))
+        if any(k in low for k in ("third", "top three", "top 3")) or "3위" in text:
+            obs["q2_2026_nand_shipment_rank"] = 3
+
+    m_essd = re.search(r"(?:enterprise\s+ssd|essd)[^.%]{0,160}?(48(?:\.0)?)\s*%", low, re.I)
+    if not m_essd:
+        m_essd = re.search(r"(48(?:\.0)?)\s*%[^.]{0,160}?(?:enterprise\s+ssd|essd)", low, re.I)
+    if m_essd:
+        obs["q2_2026_essd_bit_share_pct"] = float(m_essd.group(1))
+    if re.search(r"(26(?:\.0)?)\s*%[^.]{0,100}?(?:year earlier|a year earlier|전년)", low, re.I):
+        obs["q2_2025_essd_bit_share_pct"] = 26.0
+
+    if any(k in low for k in (
+        "consumer supply short", "consumer products faced a supply shortage",
+        "consumer shortage", "소비자용 제품은 공급 부족",
+    )):
+        obs["consumer_nand_supply_short"] = True
+
+    # Never infer an official YMTC guidance from a secondary headline.
+    if not obs:
+        return None
+    obs.update({
+        "source": item.get("source") or urllib.parse.urlparse(str(item.get("link") or "")).netloc or "출처 미표시",
+        "source_url": item.get("link") or "",
+        "as_of": (item.get("published_kst") or "")[:10] or "",
+        "source_rank": rank,
+    })
+    return obs
+
+
+def _ymtc_nand_duration_changes(old: dict, new: dict) -> list[str]:
+    changes: list[str] = []
+    a, b = old.get("shortage_through_year"), new.get("shortage_through_year")
+    if b is not None:
+        if a is None:
+            changes.append(f"YMTC발 메모리 공급부족 종료 시점: {int(b)}년 신규 확인")
+        elif int(a) != int(b):
+            changes.append(f"YMTC발 메모리 공급부족 종료 시점: {int(a)}→{int(b)}년")
+
+    a, b = old.get("shortage_official_guidance"), new.get("shortage_official_guidance")
+    if b is not None and a is not None and bool(a) != bool(b):
+        changes.append(
+            "YMTC 2029 전망 공식성: "
+            + ("공식" if a else "익명·보도") + "→" + ("공식" if b else "익명·보도")
+        )
+
+    for key, label in (
+        ("price_increase_reported", "YMTC NAND 가격 인상 상태"),
+        ("capacity_shift_high_margin_reported", "YMTC 고수익 제품 우선배정"),
+    ):
+        a, b = old.get(key), new.get(key)
+        if b is not None and a is not None and bool(a) != bool(b):
+            changes.append(f"{label}: {'확인' if a else '미확인'}→{'확인' if b else '미확인'}")
+
+    a, b = old.get("q2_2026_nand_shipment_share_pct"), new.get("q2_2026_nand_shipment_share_pct")
+    if b is not None:
+        if a is None:
+            changes.append(f"YMTC NAND 출하량 점유율: {float(b):.1f}% 신규 확인")
+        elif abs(float(b) - float(a)) >= 2.0:
+            changes.append(f"YMTC NAND 출하량 점유율: {float(a):.1f}%→{float(b):.1f}%")
+
+    a, b = old.get("q2_2026_nand_shipment_rank"), new.get("q2_2026_nand_shipment_rank")
+    if b is not None and a is not None and int(a) != int(b):
+        changes.append(f"YMTC NAND 출하량 순위: {int(a)}위→{int(b)}위")
+
+    a, b = old.get("q2_2026_essd_bit_share_pct"), new.get("q2_2026_essd_bit_share_pct")
+    if b is not None:
+        if a is None:
+            changes.append(f"기업용 SSD의 NAND 비트 출하비중: {float(b):.0f}% 신규 확인")
+        elif abs(float(b) - float(a)) >= 5.0:
+            changes.append(f"기업용 SSD의 NAND 비트 출하비중: {float(a):.0f}%→{float(b):.0f}%")
+
+    return changes
+
+
 def _goldman_structural_memory_source_rank(item: dict) -> int:
     source = str(item.get("source") or "").lower()
     link = str(item.get("link") or "")
@@ -2486,6 +2700,12 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         goldman_structural_state = _merge_typed_state(GOLDMAN_STRUCTURAL_MEMORY_BASELINE, goldman_structural_state)
         state["goldman_structural_memory_track_version"] = GOLDMAN_STRUCTURAL_MEMORY_TRACK_VERSION
 
+    ymtc_nand_state = dict(state.get("ymtc_nand_duration") or {})
+    if int(state.get("ymtc_nand_duration_track_version") or 0) < YMTC_NAND_DURATION_TRACK_VERSION:
+        ymtc_nand_state = _merge_typed_state(YMTC_NAND_DURATION_BASELINE, ymtc_nand_state)
+        state["ymtc_nand_duration_track_version"] = YMTC_NAND_DURATION_TRACK_VERSION
+    ymtc_nand_alert_pending = bool(state.get("ymtc_nand_duration_alert_pending"))
+
     bernstein_state = dict(state.get("bernstein_memory_cycle") or {})
     if int(state.get("bernstein_memory_cycle_track_version") or 0) < BERNSTEIN_MEMORY_CYCLE_TRACK_VERSION:
         bernstein_state = _merge_bernstein_memory_cycle(bernstein_state, BERNSTEIN_MEMORY_CYCLE_BASELINE)
@@ -2602,6 +2822,22 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
                 or goldman_structural_source_url
             )
 
+    ymtc_nand_changes: list[str] = []
+    ymtc_nand_source_url = ""
+    if ymtc_nand_alert_pending:
+        ymtc_nand_changes.append("YMTC발 메모리 공급부족 2029·가격인상·고수익 제품 우선배정 축 신규")
+        ymtc_nand_source_url = ymtc_nand_state.get("source_url") or YMTC_NAND_DURATION_BASELINE["source_url"]
+    for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
+        obs = _extract_ymtc_nand_duration(item)
+        if not obs:
+            continue
+        merged = _merge_typed_state(ymtc_nand_state, obs)
+        changes = _ymtc_nand_duration_changes(ymtc_nand_state, merged)
+        ymtc_nand_state = merged
+        if changes:
+            ymtc_nand_changes.extend(changes)
+            ymtc_nand_source_url = ymtc_nand_state.get("source_url") or obs.get("source_url") or ymtc_nand_source_url
+
     bernstein_changes: list[str] = []
     bernstein_source_url = ""
     for item in sorted(items, key=lambda x: x.get("published_kst") or ""):
@@ -2662,6 +2898,8 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
             continue
         if _extract_goldman_structural_memory(x) or _is_goldman_structural_memory_item(x):
             continue
+        if _extract_ymtc_nand_duration(x) or _is_ymtc_nand_duration_item(x):
+            continue
         if _extract_trendforce_4q26_revision(x):
             continue
         if _extract_nand_divergence(x) or _extract_legacy_dram_state(x):
@@ -2707,6 +2945,9 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         "dgx_spark_memory_price": dgx_spark_state,
         "goldman_structural_memory_track_version": GOLDMAN_STRUCTURAL_MEMORY_TRACK_VERSION,
         "goldman_structural_memory": goldman_structural_state,
+        "ymtc_nand_duration_track_version": YMTC_NAND_DURATION_TRACK_VERSION,
+        "ymtc_nand_duration_alert_pending": False if ymtc_nand_changes else ymtc_nand_alert_pending,
+        "ymtc_nand_duration": ymtc_nand_state,
         "trendforce_4q26_revision_track_version": TREND_4Q26_REVISION_TRACK_VERSION,
         "trendforce_4q26_revision": trend_4q26_state,
         "trendforce_3q4q_pace_track_version": TREND_3Q4Q_PACE_TRACK_VERSION,
@@ -2740,6 +2981,7 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         f"- Micron 2027 공급 확약 변화: {len(micron_supply_changes)}건",
         f"- NVIDIA DGX Spark 메모리·가격 전가 변화: {len(dgx_spark_changes)}건",
         f"- Goldman 장기 DRAM·NAND 수급 변화: {len(goldman_structural_changes)}건",
+        f"- YMTC NAND·메모리 공급기간 변화: {len(ymtc_nand_changes)}건",
         f"- TrendForce 4Q26 전망 리비전 변화: {len(trend_4q26_changes)}건",
         f"- TrendForce 3Q→4Q 가격속도 변화: {len(trend_3q4q_changes)}건",
         f"- NAND 소비자↔기업용 eSSD 양극화 변화: {len(divergence_changes)}건",
@@ -2752,11 +2994,11 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
 
     if ALERT_PATH.exists():
         ALERT_PATH.unlink()
-    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
+    if not prepared_items and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
         return
 
     lines = ["<b>[메모리 수급 변화 감지]</b>"]
-    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(legacy_changes)
+    typed_changes = len(market_changes) + len(bernstein_changes) + len(korea_earnings_changes) + len(micron_supply_changes) + len(dgx_spark_changes) + len(goldman_structural_changes) + len(ymtc_nand_changes) + len(trend_4q26_changes) + len(trend_3q4q_changes) + len(divergence_changes) + len(legacy_changes)
     total_visible = typed_changes + len(prepared_items)
     lines.append(f"조회 {now.strftime('%Y-%m-%d %H:%M')} KST · 핵심 변화 {total_visible}건")
     if trend_4q26_changes:
@@ -2777,6 +3019,9 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
     elif dgx_spark_changes:
         one = dgx_spark_changes[0]
+        lines.append("한눈에: <b>" + html.escape(one) + "</b>")
+    elif ymtc_nand_changes:
+        one = ymtc_nand_changes[0]
         lines.append("한눈에: <b>" + html.escape(one) + "</b>")
     elif goldman_structural_changes:
         one = goldman_structural_changes[0]
@@ -2988,6 +3233,79 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         if prior_source:
             lines.append('  <a href="' + html.escape(str(prior_source), quote=True) + '">NVIDIA 공식 2026-02 가격변경 공지</a>')
 
+    if ymtc_nand_changes:
+        lines.append("• <b>YMTC NAND·메모리 공급부족 기간·제품배정 변화</b>")
+        for change in list(dict.fromkeys(ymtc_nand_changes)):
+            lines.append("  " + html.escape(change))
+        ys = ymtc_nand_state
+        if ys.get("shortage_through_year") is not None:
+            officiality = (
+                "YMTC 공식 가이던스"
+                if ys.get("shortage_official_guidance")
+                else "The Wire China의 익명 YMTC 직원 발언 · 회사 공식 가이던스 아님"
+            )
+            lines.append(
+                f"  기간: <b>{int(ys['shortage_through_year'])}년 전후까지</b> 공급부족 가능성 · "
+                + html.escape(officiality)
+            )
+        lines.append(
+            "  범위 주의: 원보도의 '3년'은 <b>global memory shortage</b> 문맥으로 재인용되며, "
+            "YMTC의 NAND 전용 공식 수급 가이던스로 승격하지 않음"
+        )
+        if ys.get("price_increase_reported"):
+            lines.append("  현재 행동: YMTC 가격 인상 보도 확인")
+        if ys.get("capacity_shift_high_margin_reported"):
+            lines.append("  생산배정: 제한된 생산능력을 고수익 제품으로 우선 전환했다는 보도 확인")
+        share = ys.get("q2_2026_nand_shipment_share_pct")
+        rank = ys.get("q2_2026_nand_shipment_rank")
+        if share is not None:
+            lines.append(
+                f"  Counterpoint 공식: 2Q26 NAND <b>비트 출하량 점유율 {float(share):.0f}%"
+                + (f" · 글로벌 {int(rank)}위" if rank is not None else "")
+                + "</b>"
+            )
+        essd = ys.get("q2_2026_essd_bit_share_pct")
+        essd_prior = ys.get("q2_2025_essd_bit_share_pct")
+        if essd is not None:
+            line = f"  수요축: 기업용 SSD가 2Q26 전체 NAND 비트 출하량의 <b>{float(essd):.0f}%</b>"
+            if essd_prior is not None:
+                line += f" · 전년 <b>{float(essd_prior):.0f}%</b>에서 확대"
+            lines.append(line)
+        lines.append(
+            "  반대 전망: TrendForce는 2026 NAND 공급부족을 <b>4~5%</b>로 보지만 "
+            "<b>2H27부터 중국 증산·공정전환으로 수급 완화</b>를 전망 — YMTC 2029 발언과 정면 충돌"
+        )
+        lines.append(
+            "  비교: Micron은 2027·2028에도 메모리 수요가 공급을 웃돌 것으로 보지만, "
+            "2029까지라는 YMTC 익명 발언을 공식 확인한 것은 아님"
+        )
+        lines.append(
+            "  의미: 중국 증산이 곧바로 저가 NAND로 풀리는지보다, 신규 비트가 <b>eSSD·고수익 제품에 우선 배정되는지</b>가 "
+            "Samsung·SK hynix/Solidigm·Micron·Kioxia의 ASP와 소비자 SSD 가격을 좌우"
+        )
+        lines.append(
+            "  실패 경로: 중국 신규 장비·고단 적층 전환이 빠르게 램프되고 소비자 수요가 약하면 "
+            "TrendForce 시나리오처럼 2H27부터 공급부족이 완화될 수 있음"
+        )
+        lines.append(
+            "  다음 확인: YMTC 공식 가이던스 여부 · 가격 추가 인상/인하 · eSSD 제품혼합 · "
+            "Counterpoint 분기 출하점유율 · 중국 NAND 비트 생산능력 · TrendForce 수급균형 시점"
+        )
+        if ymtc_nand_source_url:
+            lines.append('  <a href="' + html.escape(str(ymtc_nand_source_url), quote=True) + '">이번 변화 근거</a>')
+        cp = ys.get("counterpoint_url") or YMTC_NAND_DURATION_BASELINE.get("counterpoint_url")
+        tf = ys.get("trendforce_url") or YMTC_NAND_DURATION_BASELINE.get("trendforce_url")
+        src = ys.get("source_url") or YMTC_NAND_DURATION_BASELINE.get("source_url")
+        secondary = ys.get("secondary_source_url") or YMTC_NAND_DURATION_BASELINE.get("secondary_source_url")
+        if src:
+            lines.append('  <a href="' + html.escape(str(src), quote=True) + '">The Wire China 원문</a>')
+        if secondary:
+            lines.append('  <a href="' + html.escape(str(secondary), quote=True) + '">익명 발언 재인용 교차확인</a>')
+        if cp:
+            lines.append('  <a href="' + html.escape(str(cp), quote=True) + '">Counterpoint NAND 출하 구조</a>')
+        if tf:
+            lines.append('  <a href="' + html.escape(str(tf), quote=True) + '">TrendForce 2H27 완화 전망</a>')
+
     if goldman_structural_changes:
         lines.append("• <b>Goldman Sachs 장기 DRAM·NAND 수급 기간 변화</b>")
         for change in list(dict.fromkeys(goldman_structural_changes)):
@@ -3116,13 +3434,13 @@ def write_outputs(items: list[dict], errors: list[str]) -> None:
         emitted += 1
 
     # If all generic paid-price sheets were filtered, do not send an empty shell.
-    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
+    if emitted == 0 and not market_changes and not bernstein_changes and not korea_earnings_changes and not micron_supply_changes and not dgx_spark_changes and not goldman_structural_changes and not ymtc_nand_changes and not trend_4q26_changes and not trend_3q4q_changes and not divergence_changes and not legacy_changes:
         if ALERT_PATH.exists():
             ALERT_PATH.unlink()
         return
 
     if legacy_changes:
-        has_other_content = bool(market_changes or bernstein_changes or korea_earnings_changes or micron_supply_changes or dgx_spark_changes or goldman_structural_changes or divergence_changes or prepared_items)
+        has_other_content = bool(market_changes or bernstein_changes or korea_earnings_changes or micron_supply_changes or dgx_spark_changes or goldman_structural_changes or ymtc_nand_changes or divergence_changes or prepared_items)
         if has_other_content:
             lines.append("<<<TELEGRAM_MESSAGE_BREAK>>>")
         else:
