@@ -13,6 +13,7 @@ from scripts.korea_energy_mix_watch import (
     event_key,
     event_level,
     korean_date,
+    display_title,
     parse_rss,
     render,
     topic_match,
@@ -380,3 +381,98 @@ def test_multirow_render_has_one_article_interpretation_per_row(monkeypatch):
     second_section = body[second_start:]
     assert first_section.count("<b>원문 본문 해석</b>") == 1
     assert second_section.count("<b>원문 본문 해석</b>") == 1
+
+
+def test_committee_disclosure_dispute_is_one_suppressed_event():
+    rows = [
+        {
+            "title": '"전기본 위원 명단 왜 공개 안하나" 야당 집중 공세…기후장관 "민원 때문"',
+            "publisher": "머니투데이",
+            "official": False,
+            "published": "Tue, 06 Oct 2026 02:59:00 GMT",
+            "plan_stage": "발표·공개",
+        },
+        {
+            "title": '"전기본 위원 공개하라"·"尹정부도 안해"…국힘·김성환 충돌',
+            "publisher": "연합뉴스",
+            "official": False,
+            "published": "Tue, 06 Oct 2026 03:00:00 GMT",
+            "plan_stage": "발표·공개",
+        },
+        {
+            "title": '김성환 "전기본 위원 비공개, 외부 잡음 때문…주요 쟁점은 공개"',
+            "publisher": "뉴시스",
+            "official": False,
+            "published": "Tue, 06 Oct 2026 03:01:00 GMT",
+            "plan_stage": "발표·공개",
+        },
+    ]
+    assert {semantic_event_key(row) for row in rows} == {"12th-plan|committee-governance|member-disclosure"}
+    assert all(semantic_event_level(row) == 0 for row in rows)
+
+
+def test_honam_semiconductor_power_water_reports_are_one_event():
+    a = {
+        "title": '김성환 "호남 반도체 팹 9기면 14GW 필요…전력망 계획 원점 점검"(종합) - 뉴시스',
+        "publisher": "뉴시스",
+        "official": False,
+        "published": "Tue, 06 Oct 2026 08:14:00 GMT",
+        "plan_stage": "장관 국감 발언",
+        "category": "전력수요·산단 인프라",
+        "stage": 6,
+        "id": "honam-a",
+        "url": "https://example.com/a",
+    }
+    b = {
+        "title": '기후장관 "호남 반도체산단에 전기 6.3GW·용수 65만t 공급가능" - 연합뉴스',
+        "publisher": "연합뉴스",
+        "official": False,
+        "published": "Tue, 06 Oct 2026 06:01:00 GMT",
+        "plan_stage": "장관 국감 발언",
+        "category": "전력수요·산단 인프라",
+        "stage": 6,
+        "id": "honam-b",
+        "url": "https://example.com/b",
+    }
+    assert semantic_event_key(a) == "12th-plan|honam-semiconductor|power-water-grid-review"
+    assert semantic_event_key(b) == "12th-plan|honam-semiconductor|power-water-grid-review"
+    assert semantic_event_level(a) == 1
+    assert semantic_event_level(b) == 1
+
+    original_key = energy_runner.watch.event_key
+    original_level = energy_runner.watch.event_level
+    try:
+        energy_runner.watch.event_key = semantic_event_key
+        energy_runner.watch.event_level = semantic_event_level
+        collapsed = collapse_events([a, b])
+    finally:
+        energy_runner.watch.event_key = original_key
+        energy_runner.watch.event_level = original_level
+
+    assert len(collapsed) == 1
+    assert collapsed[0]["evidence_count"] == 2
+    assert set(collapsed[0]["evidence_publishers"]) == {"뉴시스", "연합뉴스"}
+
+
+def test_power_plan_delay_is_distinct_material_schedule_event():
+    row = {
+        "title": "[2026 국감] 12차 전기본 지연…'원전공론화 3개월' 놓고 여야 공방",
+        "publisher": "전자신문",
+        "official": False,
+        "published": "Tue, 06 Oct 2026 08:01:00 GMT",
+        "plan_stage": "일정 변경",
+    }
+    assert semantic_event_key(row) == "12th-plan|schedule|government-draft-delay"
+    assert semantic_event_level(row) == 1
+
+
+def test_duplicate_publisher_suffix_is_removed():
+    assert display_title(
+        '"전기본 위원 명단 왜 공개 안하나" - 머니투데이 - 머니투데이',
+        "머니투데이",
+    ) == '"전기본 위원 명단 왜 공개 안하나"'
+
+
+def test_google_news_decoder_import_is_available():
+    from googlenewsdecoder import gnewsdecoder
+    assert callable(gnewsdecoder)
