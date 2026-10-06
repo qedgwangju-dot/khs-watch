@@ -1,13 +1,19 @@
 {
   "initialized": true,
   "version": 1,
-  "last_checked_kst": "2026-10-06T19:40:10+09:00",
+  "source_version": 3,
+  "ray_pipeline_verified": false,
+  "last_checked_kst": "2026-10-06T19:51:58+09:00",
   "nobel_2026_verified": true,
   "seen_event_keys": [
     "d3e43c74900cbe45ced82930",
     "b1cc89521f331c60687c52a6",
     "04e42a53cc7c2d6238d6b466",
-    "5cd11afbac5793bf83427fb4"
+    "5cd11afbac5793bf83427fb4",
+    "c86d41ca8fb34c35eec7ea49",
+    "518319b133f8374c9c1ae187",
+    "c5a24b19156b204bb494d543",
+    "00ed4a9deda349c6d10d12e3"
   ],
   "trial_snapshots": {
     "NCT06460844": {
@@ -88,8 +94,8 @@
     }
   },
   "cns_trial_ids": [],
-  "relevant_press_events": 4,
+  "relevant_press_events": 8,
   "source_errors": [
-    "Ray Therapeutics: HTTPError"
+    "Ray Therapeutics pipeline: HTTPError"
   ]
 }
