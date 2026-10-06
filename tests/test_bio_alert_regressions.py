@@ -8,6 +8,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import bio_korean_guard_strict_v2 as guard
+import bio_single_runner as bio_runner
 import jemperli_altb4_watch as jem_base
 import jemperli_altb4_watch_v2 as jem
 import qlex_wac_ir_watch_v2 as wac
@@ -83,7 +84,16 @@ class BioAlertRegressionTests(unittest.TestCase):
     def test_bio_schedule_avoids_top_of_hour_load(self):
         source = (ROOT / ".github" / "workflows" / "bio-qlex-intismeran-watch.yml").read_text(encoding="utf-8")
         self.assertIn('cron: "7,22,37,52 * * * *"', source)
+        self.assertIn('cron: "12,27,42,57 * * * *"', source)
         self.assertNotIn('cron: "*/15 * * * *"', source)
+
+    def test_bio_runner_timeout_returns_structured_rc(self):
+        rc, log = bio_runner.run(
+            [sys.executable, "-c", "import time; time.sleep(0.2)"],
+            timeout=0.05,
+        )
+        self.assertEqual(rc, 124)
+        self.assertIn("TimeoutExpired", log)
 
     def test_bio_runner_handles_timeout_without_aborting_all_state_work(self):
         source = (ROOT / "scripts" / "bio_single_runner.py").read_text(encoding="utf-8")
