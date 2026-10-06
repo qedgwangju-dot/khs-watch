@@ -761,6 +761,7 @@ def presidential_action_timeline_lines(alert: dict) -> list[str]:
     # Official lineage verified from White House and DOE primary sources.
     if grid_dpa:
         add("2025-01-20", "기반 · Executive Order 14156 국가 에너지 비상사태 선언")
+        add("2026-03-13", "권한 위임 · Executive Order 14391 DPA 권한 위임 조정")
         add("2026-04-20", "법적 근거 · DPA 제303조 전력망·전력기기·공급망 대통령 결정")
     if beluga and dpa:
         add(
