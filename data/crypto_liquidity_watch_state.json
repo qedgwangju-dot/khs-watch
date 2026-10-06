@@ -1,5 +1,5 @@
 {
-  "updated_at_kst": "2026-10-06T10:09:02+09:00",
+  "updated_at_kst": "2026-10-06T10:10:27+09:00",
   "buyback": {
     "sha256": "3e691d164254d161d0d814e87c0eb3b88203e8985bb2f046aff70278f43ae5d4",
     "bytes": 14234,
@@ -75,7 +75,7 @@
     "treasury_buyback_xml": "https://home.treasury.gov/system/files/221/Tentative-Buyback-Schedule.xml",
     "treasury_buyback_page": "https://www.treasurydirect.gov/auctions/announcements-data-results/buy-backs/",
     "treasury_rates": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?field_tdr_date_value=2026&type=daily_treasury_yield_curve",
-    "farside_btc_etf": "https://farside.co.uk/bitcoin-etf-flow-all-data/"
+    "farside_btc_etf": "https://farside.co.uk/btc/"
   },
   "errors": []
 }
