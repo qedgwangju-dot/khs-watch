@@ -365,7 +365,7 @@ def _samsung_stage(text: str) -> str:
 def topic_group(text: str) -> str | None:
     if _is_korea_policy(text):
         return 'korea_robot_scale_policy'
-    if _is_robot_compute(text):
+    if _is_robot_compute(text) and _robot_compute_stage(text) != 'monitor':
         return 'robot_compute_semiconductor'
     if _is_samsung_robot(text):
         return 'samsung_robot_scale'
