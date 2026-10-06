@@ -9034,6 +9034,21 @@ def semantic_event_theme(alert: dict) -> str:
             )
         )
     )
+    dpa_grid = (
+        ("defense production act" in text or re.search(r"\bdpa\b", text) is not None)
+        and any(term in text for term in (
+            "grid", "전력망", "transmission", "송전", "transformer", "변압기",
+            "substation", "변전소", "section 303", "제303조",
+        ))
+    )
+    if dpa_grid and any(term in text for term in (
+        "beluga-healy", "beluga healy", "alaska railbelt",
+    )):
+        return "us-grid-dpa-beluga-healy-funding-2026-10-05"
+    if dpa_grid and any(term in text for term in (
+        "section 303", "제303조", "50 u.s.c. 4533",
+    )):
+        return "us-grid-dpa-section303-base-2026-04-20"
     if (
         "polysilicon" in text
         and "11052" in text
