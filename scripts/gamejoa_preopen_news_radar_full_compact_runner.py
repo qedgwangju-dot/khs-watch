@@ -2596,6 +2596,26 @@ def source_headline_event_fact(title: str, body: str) -> str:
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
     # Render and validate the same source observation used for event identity.
+    remittance = market_materiality.conditional_remittance_observation(title, source)
+    if remittance:
+        conditions = '상업적 합리성 검토와 ' if remittance['commercial_review'] else ''
+        conditions += '국회 절차를 포함한 국내법 절차' if remittance['parliamentary_process'] else '국내법 절차'
+        return (f"{remittance['speaker']} 부총리는 {remittance['project']} {remittance['amount_display']} 선급금을 "
+                f'{conditions}를 거쳐야 지급할 수 있다고 밝혔다.')
+    ruling = market_materiality.listing_suspension_observation(title, source)
+    if ruling:
+        return (f"{ruling['court']}은 {ruling['day']}일 {ruling['kospi']}와 {ruling['kosdaq']}의 "
+                '상장폐지 효력정지 가처분 신청을 각각 받아들였다.')
+    market_outlook = market_materiality.measured_market_outlook_observation(title, source)
+    if market_outlook:
+        return (f"외국인은 {market_outlook['period']} 코스피에서 {market_outlook['amount']}을 {market_outlook['direction']}했다. "
+                f"{market_outlook['provider']} {market_outlook['speaker']} 연구원은 메모리 공급 부족과 주주환원책이 "
+                '실적 발표에서 확인되면 11월 이후 연말 랠리를 기대할 만하다고 전망했다.')
+    index_close = market_materiality.new_york_index_close_observation(title, source)
+    if index_close:
+        direction = '상승' if index_close['direction'] == '오른' else '하락'
+        return (f"{index_close['day']}일(현지시간) 나스닥종합지수는 {index_close['percent']}% "
+                f"{direction}한 {index_close['level']}로 마감해 사상 최고치를 기록했다.")
     agreement = market_materiality.dated_supply_agreement_observation(title, source)
     if agreement:
         action = {'signed': '체결했다', 'agreement': '합의했다', 'planned': '추진한다고 밝혔다'}[agreement['stage']]

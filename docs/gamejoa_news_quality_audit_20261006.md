@@ -140,3 +140,46 @@ removed one duplicate and excluded two non-catalysts. Applying the actual
 acknowledged history left zero fresh events. No Telegram API call or production
 history mutation was made by those local audits. This is local verification,
 not yet production execution or new delivery proof.
+
+## Version 96 Production Review And Follow-Up
+
+Run 37458416534 checked out version 96 and passed 389 remote quality checks.
+Telegram acknowledged message 2330. All seven article link entities, both
+payload hashes, artifact-history replay and current-main-history replay passed.
+Current main retained all selected keys and replayed zero fresh articles.
+These are transmission and persistence results, not a content-quality pass.
+
+Direct review of all seven complete bodies FAILED content QA: the truncated
+project-safety headline again selected an old factory target; conditional nuclear
+remittance omitted its amount and prerequisites; the court injunction summary
+replaced named interim rulings with the old threshold; the market outlook omitted
+observed flows; and a retrospective public-career inventory was treated as new
+technical execution. The index-close source also contained a grammatical error.
+The NVDA close itself was source-aligned. All seven bodies are retained, hashed
+and linked to receipt 2330 in the primary-summary fixture, not reused as live news.
+
+Version 97 binds the safety assessment even when the reprint title is truncated,
+and preserves the attack claim versus the issuer's no-damage assessment. It
+binds requested project payment, amount and legal/commercial prerequisites,
+separately from an already executed gas-project remittance. Court summaries
+retain the named companies, ruling date and interim effect suspension, not a
+general repeal. Market outlooks keep observed period/flow and the named broker's
+conditional view separate. Index-close prose retains the actual session and
+measurement without copying the malformed source clause. Retrospective career
+inventories without new technical or legal execution are withheld.
+
+New primary-event history aliases require matching canonical source-body digests
+in existing acknowledged history. Missing or altered body receipts cannot be
+upgraded. Corrected old news is replayed locally, never resent as a new article.
+Production content verification for version 97 remains pending.
+
+## Version 97 Local Verification
+
+The final tree passed all 397 quality regressions, all eleven operational
+contracts, and all 25 whole-source audit groups covering 187 retained bodies.
+The seven-body primary-summary packet retained six eligible source-bound events
+and withheld the retrospective career inventory. Exact acknowledged-history
+replay left zero fresh events. Three new primary-event aliases were proved
+against receipt 2330 and matching stored body digests. These audits made no
+Telegram API call and did not modify production history. Live verification
+remains separate and is recorded only after execution.

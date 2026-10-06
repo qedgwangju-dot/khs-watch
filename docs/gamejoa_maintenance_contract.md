@@ -555,3 +555,14 @@ Every defect or requested change must follow this sequence:
   Quantified turnover declines, committed hardware purchases, foundry shares
   and actual memory customer adoption retain independent positive controls.
   Supply advocacy ending in "늘려야" is not an implementation decision.
+- Truncated reprint headlines can still bind an exact sourced project-safety
+  assessment. Keep attack claim, target, issuer response and response date,
+  rather than an older factory capacity target. Changed targets remain distinct.
+- Requested project payments retain amount, commercial review and legal or
+  parliamentary prerequisites; another project's actual remittance is separate.
+  Court injunctions retain named issuers, ruling date and interim status.
+- Market outlook cores retain observed flows and their period before attributed
+  conditional forecasts. Historical career inventories are not new technical
+  validation. Numeric index closes are rendered as complete source-bound prose.
+- New primary-event receipt aliases require matching stored source-body digests;
+  absent history or altered source bodies cannot be promoted into sent events.

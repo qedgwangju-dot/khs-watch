@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 96
+VERSION = 97
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -33,6 +33,7 @@ BACKGROUND = re.compile(
 )
 PAST_ACTION = re.compile(r"지난\s*(?:\d{1,2}월|달|해)|과거\s*\d{4}년", re.I)
 HISTORICAL_ACTION = re.compile(
+    r"(?:작년|지난해|과거).{0,80}(?:착공\s*당시|당시).{0,160}(?:목표를\s*제시|계획을\s*발표)|"
     r"(?:발표|체결|합의|확정|도입|방출|공급|출시)(?:한|했던)\s*바\s*있|"
     r"(?:올해|금년)\s*초.{0,160}(?:계획을\s*발표|계약을\s*체결).{0,20}(?:바\s*있|당시)|"
     r"최근\s*몇\s*년간.{0,100}(?:안정|회복).{0,80}자산가치", re.I,
@@ -1247,7 +1248,7 @@ def quarterly_consensus_observation(title: str, body: str) -> dict:
 
 
 def project_safety_observation(title: str, body: str) -> dict:
-    if not re.search(r'(?:공장|건설현장).{0,30}피해\s*없', title):
+    if not re.search(r'공장|건설현장|공격', title):
         return {}
     source = source_reported_body(body)
     response = re.search(r'(?P<issuer>[A-Za-z가-힣]+)\[\d{6}\]\s*관계자는\s*(?P<day>\d{1,2})일[^.!?]{0,70}'
@@ -1256,7 +1257,77 @@ def project_safety_observation(title: str, body: str) -> dict:
                        r'정유시설[^.!?]{0,30}공격했다고\s*주장했다', source)
     if not response or not attack or response['issuer'] not in title:
         return {}
-    return {**response.groupdict(), **attack.groupdict()}
+    target = re.search(r'([A-Za-z가-힣]{2,30}의\s*[A-Za-z가-힣]{2,30}\s*정유시설)', attack[0])
+    attack_day = re.search(r'(\d{1,2})일\(현지시간\)', attack[0])
+    if not target or not attack_day:
+        return {}
+    return {**response.groupdict(), **attack.groupdict(), 'target': canonical_source_fact(target[1]),
+            'attack_day': attack_day[1], 'stage': 'claimed_attack_issuer_reports_no_damage'}
+
+
+def conditional_remittance_observation(title: str, body: str) -> dict:
+    """Bind the requested project payment and its prerequisites, not other remittances."""
+    if not (re.search(r'원전|발전소|전략투자', title) and re.search(r'선급금|송금|지급', title)):
+        return {}
+    rows = source_sentences(source_reported_body(body))
+    speaker = re.search(r'([가-힣]{2,5})\s*부총리', ' '.join(rows[:6]))
+    payment = next((row for row in rows if '선급금' in row and '국내법' in row
+                    and re.search(r'완비|완료|거쳐', row) and re.search(r'줄\s*수|송금|지급', row)), '')
+    amount = re.search(SOURCE_MONEY, payment)
+    if not (speaker and speaker[1] in title and amount and '원전' in payment):
+        return {}
+    value = korean_amount_value(amount[1])
+    if not value:
+        return {}
+    return {'speaker': speaker[1], 'project': '한미 원전 프로젝트',
+            'amount': [amount[2], value], 'amount_display': amount[0].strip(),
+            'parliamentary_process': '국회' in payment, 'domestic_process': True,
+            'commercial_review': bool(re.search(r'각\s*프로젝트에\s*대한\s*상업적\s*합리성을\s*검토', ' '.join(rows))),
+            'stage': 'conditional_payment_not_executed', 'source_excerpt': payment}
+
+
+def listing_suspension_observation(title: str, body: str) -> dict:
+    """An injunction for named issuers is not abolition of all delisting rules."""
+    if not ('상장폐지' in title and re.search(r'법원|가처분|효력정지', title)):
+        return {}
+    source = source_reported_body(body)
+    ruling = next((row for row in source_sentences(source) if '법' in row and '상장폐지' in row
+                   and '가처분 신청' in row and re.search(r'받아들였|인용했', row)), '')
+    match = re.search(r'(?P<court>[가-힣]+지법)은\s*(?:지난\s*)?(?P<day>\d{1,2})일\s*'
+                      r'코스피\s*상장사\s*(?P<kospi>[A-Za-z가-힣0-9]+)와\s*'
+                      r'코스닥\s*상장사\s*(?P<kosdaq>[A-Za-z가-힣0-9]+?)(?:이|가)\s*한국거래소', ruling)
+    if not match or '효력정지' not in ruling:
+        return {}
+    return {**match.groupdict(), 'stage': 'interim_effect_suspension', 'source_excerpt': ruling}
+
+
+def measured_market_outlook_observation(title: str, body: str) -> dict:
+    """Keep observed flow and named conditional outlook distinct."""
+    if not ('코스피' in title and re.search(r'랠리|전망|반등', title)):
+        return {}
+    source = source_reported_body(body)
+    flows = re.search(r'외국인은\s*(?P<period>\d{1,2}[~∼\-]\d{1,2}월)\s*코스피에서\s*'
+                      r'(?P<amount>\d[\d,.조억만천백십]*원)을\s*(?P<direction>순매도|순매수)', source)
+    analyst = re.search(r'(?P<speaker>[가-힣]{2,5})\s*(?P<provider>[A-Za-z가-힣]+증권)\s*연구원', source)
+    outlook = next((row for row in source_sentences(source) if '연구원' in row and '전망했다' in row
+                    and '실적' in row and '주주환원' in row and '확인' in row and '11월 이후' in row), '')
+    if not (flows and analyst and outlook):
+        return {}
+    return {**flows.groupdict(), **analyst.groupdict(), 'stage': 'observed_flow_with_conditional_outlook',
+            'source_excerpt': outlook}
+
+
+def new_york_index_close_observation(title: str, body: str) -> dict:
+    if not ('나스닥' in title and re.search(r'뉴욕마감|마감|최고치', title)):
+        return {}
+    source = source_reported_body(body)
+    day = re.search(r'뉴욕증시[^.!?]{0,40}?(\d{1,2})일\(현지시간\)', source)
+    close = re.search(r'나스닥종합지수가\s*전장보다\s*(?P<points>\d[\d,.]*)포인트'
+                      r'\((?P<percent>\d+(?:\.\d+)?)%\)\s*(?P<direction>오른|내린)\s*'
+                      r'(?P<level>\d[\d,.만]*)로\s*사상\s*최고치를\s*기록했다', source)
+    if not (day and close):
+        return {}
+    return {**close.groupdict(), 'day': day[1], 'stage': 'observed_close'}
 
 
 def premium_ap_share_forecast_observation(title: str, body: str) -> dict:
@@ -2296,6 +2367,17 @@ def source_event_identity(alert: dict) -> str:
             digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
             return f'source_event:v2:{event}:{digest}'
     if re.match(r"20\d{2}-\d{2}-\d{2}", published):
+        for event, observation in (
+            ('project_safety_assessment', project_safety_observation(title, body)),
+            ('conditional_remittance', conditional_remittance_observation(title, body)),
+            ('listing_suspension_ruling', listing_suspension_observation(title, body)),
+        ):
+            if observation:
+                terms = {key: value for key, value in observation.items()
+                         if key not in {'source_excerpt', 'amount_display', 'day'}}
+                terms['event_date'] = published[:8] + observation.get('day', published[8:10]).zfill(2)
+                digest = hashlib.sha256(json.dumps(terms, ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()
+                return f'source_event:v2:{event}:{digest}'
         site_mou = quantified_site_mou_observation(title, body)
         if site_mou:
             terms = {key: site_mou[key] for key in ('parties', 'city', 'amount', 'facility', 'until_year', 'stage', 'explicit_revision')}
@@ -2410,7 +2492,10 @@ RULES = (
     ('project_funding_execution', ('earnings', 'timeline'),
      r'(?:발전소|원전|데이터센터).{0,90}(?:건설|투자)', r'송금했|송금한\s*사실|집행했다|집행됐'),
     ('conditional_funding_timeline', ('earnings', 'timeline'),
-     r'투자금.{0,100}송금', r'국내법(?:상)?\s*절차.{0,30}완료.{0,40}(?:가능|송금)'),
+     r'(?:원전|발전소|투자금|선급금).{0,100}(?:송금|지급|줄\s*수)',
+     r'국내법(?:상)?\s*절차.{0,40}(?:완료|완비|거쳐야).{0,40}(?:가능|송금|지급|줄\s*수)'),
+    ('listing_court_injunction', ('flows', 'timeline'),
+     r'상장폐지\s*효력정지\s*가처분', r'받아들였|인용했'),
     ("public_compute_allocation", ("earnings", "timeline"),
      r"GPU.{0,100}신청|GPU.{0,60}배정", r"지원됐다|배정됐다|배정했다"),
     ("business_investment_observation", ("earnings", "discount_rate"),
@@ -2918,6 +3003,11 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
     ):
         return {'eligible': False, 'reason': 'annual_crypto_adoption_survey_without_equity_catalyst'}
     source_rows = source_sentences(source_reported_body(body))
+    career_inventory = (re.search(r'이직|인력\s*이동', title) and re.search(r'의원실|경력\s*정보|링크드인', body)
+                        and re.search(r'평균\s*재직\s*기간|이미\s*회사를\s*떠난', body))
+    if career_inventory and not re.search(r'기술\s*유출.{0,40}(?:판결|유죄|확인)|전직\s*금지.{0,30}(?:인용|명령)|'
+                                         r'채용\s*계약.{0,25}(?:체결했다|확정했다)', body):
+        return {'eligible': False, 'reason': 'retrospective_career_inventory_not_current_technical_execution'}
     foreground = ' '.join(row for row in source_rows if re.search(r'[.!?]$', row))[:1400]
     theme_recap = (re.search(r'ETF', title, re.I) and re.search(r'병목|테마|새\s*글로벌', title)
                    and re.search(r'테마\s*찾기|새로\s*등장한\s*테마|새로운\s*테마', foreground))

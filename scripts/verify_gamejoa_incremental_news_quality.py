@@ -83,6 +83,8 @@ ACTUAL_MARKET_FIXTURE = json.loads((ROOT / 'data/gamejoa_actual_market_scope_fix
 ACTUAL_MARKET_CASES = {case['id']: case for case in ACTUAL_MARKET_FIXTURE['cases']}
 SOURCE_BINDING_FIXTURE = json.loads((ROOT / 'data/gamejoa_source_binding_fixtures_20261006.json').read_text(encoding='utf-8'))
 SOURCE_BINDING_CASES = {case['id']: case for case in SOURCE_BINDING_FIXTURE['cases']}
+PRIMARY_SUMMARY_FIXTURE = json.loads((ROOT / 'data/gamejoa_primary_summary_fixtures_20261006.json').read_text(encoding='utf-8'))
+PRIMARY_SUMMARY_CASES = {case['id']: case for case in PRIMARY_SUMMARY_FIXTURE['cases']}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -124,6 +126,115 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def primary_summary_alert(self, key):
+        case = PRIMARY_SUMMARY_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_v96_complete_packet_is_source_hashed_and_replayed(self):
+        now = NOW.replace(day=6, hour=21)
+        items = []
+        for case in PRIMARY_SUMMARY_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                item = classify(case, now)
+                publication = radar.source_market_materiality(item) if item else {}
+                self.assertEqual(bool(item and publication.get('disposition') == 'keep'
+                                      and publication.get('priority', 0) >= 2), case['expected_keep'])
+                if item and case['expected_keep']:
+                    core = radar.verified_alert_core(item, case['title'])
+                    self.assertTrue(radar.core_sentence_is_complete(core), core)
+                    self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+                    items.append(item)
+        with patch.object(radar.base, 'kst_now', return_value=now):
+            self.assertEqual(len(radar.quality_display_alerts(items, 30)), 6)
+
+    def test_truncated_project_safety_title_is_not_a_new_capacity_event(self):
+        item = self.primary_summary_alert('truncated_project_safety')
+        original = self.foreign_sales_alert('project_safety_denial')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('후티', '공격 주장', '현대차', '6일', '직원 피해', '파악했다고'):
+            self.assertIn(term, core)
+        self.assertNotIn('작년', core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+        key = materiality.source_event_identity(item)
+        self.assertTrue(key.startswith('source_event:v2:project_safety_assessment:'))
+        self.assertEqual(key, materiality.source_event_identity(original))
+        changed = {**item, 'source_body': item['source_body'].replace('라빅의 아람코', '다른지역의 다른회사')}
+        self.assertNotEqual(key, materiality.source_event_identity(changed))
+
+    def test_conditional_project_payment_retains_amount_and_prerequisites(self):
+        item = self.primary_summary_alert('conditional_nuclear_remittance')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('이형일', '한미 원전', '100억 달러', '선급금', '상업적 합리성', '국회 절차', '거쳐야', '지급할 수'):
+            self.assertIn(term, core)
+        self.assertNotIn('24억', core)
+        self.assertNotIn('송금했다', core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+        self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace('100억', '24억')}))
+        identity = materiality.source_event_identity(item)
+        self.assertTrue(identity.startswith('source_event:v2:conditional_remittance:'))
+        revised = {**item, 'source_body': item['source_body'].replace('100억 달러', '120억 달러')}
+        self.assertNotEqual(identity, materiality.source_event_identity(revised))
+
+    def test_court_injunction_retains_named_companies_and_interim_stage(self):
+        item = self.primary_summary_alert('listing_suspension_ruling')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('서울남부지법', '2일', '주연테크', '케이엠제약', '효력정지 가처분', '각각 받아들였다'):
+            self.assertIn(term, core)
+        self.assertNotIn('300억', core)
+        self.assertNotIn('기준을 폐지', core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+        self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace('효력정지 가처분', '최종 취소')}))
+        self.assertTrue(materiality.source_event_identity(item).startswith('source_event:v2:listing_suspension_ruling:'))
+
+    def test_market_outlook_keeps_actual_flow_and_forecast_attribution(self):
+        item = self.primary_summary_alert('kospi_flow_outlook')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('9~10월', '21조6000억원', '순매도', '현대차증권', '김재승', '확인되면', '11월 이후', '전망했다'):
+            self.assertIn(term, core)
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_retrospective_public_careers_are_not_new_technical_validation(self):
+        case = PRIMARY_SUMMARY_CASES['retrospective_career_survey']
+        self.assertFalse(eligible(case['title'], case['body']))
+        assessment = materiality.assess(case['title'], case['body'])
+        self.assertEqual(assessment['equity_publication']['reason'], 'retrospective_career_inventory_not_current_technical_execution')
+        self.assertTrue(eligible('반도체기업, HBM 대역폭 30% 향상 검증',
+                                 '반도체기업은 6일 HBM 벤치마크 결과 대역폭이 기존 제품보다 30% 향상됐다고 발표했다.'))
+
+    def test_market_close_is_complete_prose_not_a_source_grammar_error(self):
+        item = self.primary_summary_alert('new_york_market_close')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('5일(현지시간)', '나스닥종합지수', '1.05%', '2만7477.31', '사상 최고치'):
+            self.assertIn(term, core)
+        self.assertNotIn('매도세를 이어지면서', core)
+        self.assertTrue(radar.core_sentence_is_complete(core))
+        self.assertFalse(radar.source_core_fact_errors({**item, 'telegram_core_fact': core}))
+
+    def test_new_primary_aliases_require_existing_matching_body_receipts(self):
+        for key in ('truncated_project_safety', 'conditional_nuclear_remittance', 'listing_suspension_ruling'):
+            item = self.primary_summary_alert(key)
+            event_key = 'event:' + telegram.digest_seen(materiality.source_event_identity(item))
+            entry = {'title': item['source_title'], 'link': item['link'],
+                     'first_seen_kst': '2026-10-06T20:54:05+09:00',
+                     'source_body_digest': materiality.verified_source_body_digest(item)}
+            for digest in (None, '0' * 64):
+                altered = {**entry}
+                if digest is None:
+                    altered.pop('source_body_digest')
+                else:
+                    altered['source_body_digest'] = digest
+                state = {'seen': {'legacy_receipt': altered}}
+                telegram.migrate_seen_verified_event_aliases(state)
+                self.assertNotIn(event_key, state['seen'])
+            state = {'seen': {'legacy_receipt': entry}}
+            telegram.migrate_seen_verified_event_aliases(state)
+            self.assertIn(event_key, state['seen'])
+            self.assertEqual(state['seen'][event_key]['event_alias_evidence_message_id'], 2330)
+
     def source_binding_alert(self, key):
         case = SOURCE_BINDING_CASES[key]
         return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
