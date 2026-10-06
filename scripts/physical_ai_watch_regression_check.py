@@ -1777,4 +1777,36 @@ assert g == "us_autonomous_warfare", (g, s, c)
 assert c.endswith("Agility Digit 국방 조달·수주"), c
 assert s >= 11, s
 
+# 39) Figure X mirror-context contamination guard.
+# A broad profile mirror may place a genuine Figure teaser next to an unrelated
+# reply/post. Such context is discovery-only and must never trigger Telegram.
+mirror_context_item = figure_lane._make_figure_item(
+    "2107256785694609428",
+    (
+        "@is_OwenLewis Hour "
+        "Nearby profile context: We’ve had an AI breakthrough at Figure and will be showcasing this tomorrow"
+    ),
+    watcher.base.NOW,
+)
+assert mirror_context_item is not None, "test fixture should classify before provenance gate"
+mirror_context_item["figure_text_integrity"] = "mirror_context"
+mirror_context_item["figure_fetch_path"] = "profile_mirror"
+mirror_context_item["discovery_only"] = True
+g, s, c, k = classify(mirror_context_item)
+assert g == "figure_ai", (g, s, c)
+assert s < 11, ("mirror-context Figure contamination must stay silent", s, c)
+
+exact_figure_teaser = figure_lane._make_figure_item(
+    "2107220541400814028",
+    "We’ve had an AI breakthrough at Figure and will be showcasing this tomorrow",
+    watcher.base.NOW,
+)
+assert exact_figure_teaser is not None
+exact_figure_teaser["figure_text_integrity"] = "exact_tweet"
+exact_figure_teaser["figure_fetch_path"] = "x_syndication"
+g, s, c, k = classify(exact_figure_teaser)
+assert g == "figure_ai", (g, s, c)
+assert c.endswith("공식 사전예고·공개 시간표"), c
+assert s >= 11, s
+
 print("Physical-AI watcher regression guards: PASS")
