@@ -1164,6 +1164,38 @@ def parse_glass_substrate_records(item, body):
                 '유리기판·유리 인터포저 고객검증·장비발주·파일럿·양산 단계',
                 as_of=asof, scope=scope))
 
+        if entity == 'jntc' and re.search(r'12\s*시간|12\s*hours?|720\s*분|분\s*단위|cycle\s*time|공정\s*시간', text, re.I):
+            before_minutes = 720 if re.search(r'12\s*시간|12\s*hours?', text, re.I) else None
+            after_minutes = None
+            after_class = None
+            m_after = re.search(
+                r'(?:단축|shorten|reduce|현재|개선)[^0-9]{0,60}([0-9]+(?:\.[0-9]+)?)\s*(?:분|minutes?)',
+                text, re.I)
+            if not m_after:
+                m_after = re.search(
+                    r'([0-9]+(?:\.[0-9]+)?)\s*(?:분|minutes?)[^.]{0,60}?(?:단축|shorten|reduce|소요|걸리)',
+                    text, re.I)
+            if m_after:
+                after_minutes = float(m_after.group(1))
+                after_class = 'exact_minutes'
+            elif re.search(r'분\s*단위|minute[- ]?scale|within\s+minutes', text, re.I):
+                after_class = 'minute_scale'
+            process_name = 'unverified_core_process'
+            if re.search(r'metalliz|plating|도금|금속화', text, re.I):
+                process_name = 'metallization'
+            elif re.search(r'etch|식각', text, re.I):
+                process_name = 'etching'
+            elif re.search(r'laser|레이저|홀\s*가공|via\s*drill', text, re.I):
+                process_name = 'via_formation'
+            rows.append(make_record(
+                'glass_process_cycle_time', ['jntc','current'],
+                {'process_name':process_name, 'before_minutes':before_minutes,
+                 'after_minutes_exact':after_minutes, 'after_time_class':after_class,
+                 'body_direct_verified':bool(process_name != 'unverified_core_process' and (after_minutes is not None or after_class))},
+                'minutes,stage', 'current', item,
+                '제이앤티씨 TGV 유리기판 핵심공정 시간 단축',
+                as_of=asof, scope='cycle_time_exact_after_minutes_required_for_speedup_math'))
+
     return rows
 
 
