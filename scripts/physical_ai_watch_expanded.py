@@ -1100,6 +1100,8 @@ def verification(item: dict, group: str, text: str) -> str:
         if stage == 'timeline_change':
             return 'NVIDIA/Jensen 직접 인용이 포함된 신뢰 자료 · 기존 near-term 기준선 대비 시간표 변경'
         if stage in {'factory_kpi_initial','factory_kpi_measured','factory_kpi_change','factory_target_achieved'}:
+            if item.get('direct_recovery'):
+                return 'Focus Taiwan/CNA의 작업 성공률·목표 수치 + Tech Times의 현재 버스바 약 160초 교차확인 · 제3자 감사 아님 · 전체 제조수율과 구분'
             if source in base.OFFICIAL_OR_PRIMARY or re.search(r'NVIDIA', source, re.I):
                 return 'NVIDIA 기술자료 기반 · Foxconn GB300 테스터트레이 작업 성공률·사이클타임 확인 · 전체 제조수율과 구분'
             if re.search(r'Focus\s*Taiwan|Central\s*News\s*Agency|\bCNA\b', source, re.I):
