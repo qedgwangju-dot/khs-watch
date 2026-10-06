@@ -2168,21 +2168,21 @@
     "event:6926adee1d70facd68aecdd5": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
       "lanes": {
-        "live": "2026-10-06T15:44:02+09:00"
+        "live": "2026-10-06T15:55:43+09:00"
       },
-      "last_seen_kst": "2026-10-06T15:44:02+09:00",
-      "link": "https://view.asiae.co.kr/article/2026100612171161589",
-      "source": "아시아경제",
-      "source_body_digest": "8c7132bdcd2cbf924158527dde03e31f20496f4fb9697a73692250a1bdcb6c49",
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.hankyung.com/article/2026100645236",
+      "source": "한국경제",
+      "source_body_digest": "9c4734ff876199e8ee221a7f1382ce9d3e2cfec3eb902d49ba5ed8d2723ab562",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:bcf661174a258e48c9e5204100591c63559391a84688c7e3006bcab5a939f9ce",
+      "source_fact_identity": "source_facts:v1:8611120808fa7b22d97bf01f2ff95bf9f101cb7f3f96ac5556a71d7ec1d1f6a9",
       "source_fact_keys": [
-        "source_fact:v1:4d88426b2494729159c5463bc84cd948b6cf4e63d98288fe7d82bd2ee0525dff",
-        "source_fact:v1:5f0e14874ca2632d73e6db6072a8cb45c49e71c3d510d88a4800379b246b415b",
-        "source_fact:v1:ee00f14ad1d28a44b57f4cd178ac175d29fd3612e33608307bea27b5f00c9421"
+        "source_fact:v1:1c9a8b95eed56356e13b5f66cd6eef496a763e424bb5d5b7c2e28459075a4a6b",
+        "source_fact:v1:35a98959586fb4acb387c834344b1a863db6228b377f210895208d5f4d50676e",
+        "source_fact:v1:4ddb0459505504b7ef3c9a8cc93ec709a0309e6212debc945ab5534a51b434db"
       ],
-      "source_published_kst": "2026-10-06T12:17+09:00",
-      "title": "이형일 \"대미 원전 100억달러, 상업적 합리성 검증돼야 송금\"[2026국감]"
+      "source_published_kst": "2026-10-06T09:32+09:00",
+      "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
     },
     "event:6994ec3ec51f16c535c2ebd5": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -6934,6 +6934,24 @@
       "source_published_kst": "2026-10-05T17:19+09:00",
       "title": "4대 과기원 수시 지원자 최다 … AI·반도체 열풍에 3만명 몰려"
     },
+    "fact:1ee3285d2d0f27c7aec91f1c": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01653126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b4e6bdf7b959274bf4fdb472000d22a8975f1c5602310a5f2904ba878ca565f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e3d9aafbc47fa206c356a947ce6d4fc693ea9dd9c29f0109d6df8bda2c60f27",
+      "source_fact_keys": [
+        "source_fact:v1:af73a4fd12a544df3e4b38dbe4bdfd78d77f8ae71c7bbb39e2c4d48c0b5a07f9",
+        "source_fact:v1:d63a69b562920a7a2d01450589a8e41d7ed1ba12722adf0c3c1170d2b671f143"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "광주 군공항 이전 속도전…트럼프 美공장 압박 빌미될라"
+    },
     "fact:1fc2e1b2ea9be8578db7485f": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
       "lanes": {
@@ -7768,6 +7786,25 @@
       ],
       "source_published_kst": "2026-10-05T17:30+09:00",
       "title": "이란, 호르무즈 공격 재개 … 중동 원유 수출 회복세에 '찬물'"
+    },
+    "fact:39d18d5dd186fa78ad02a978": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.hankyung.com/article/2026100645236",
+      "source": "한국경제",
+      "source_body_digest": "9c4734ff876199e8ee221a7f1382ce9d3e2cfec3eb902d49ba5ed8d2723ab562",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8611120808fa7b22d97bf01f2ff95bf9f101cb7f3f96ac5556a71d7ec1d1f6a9",
+      "source_fact_keys": [
+        "source_fact:v1:1c9a8b95eed56356e13b5f66cd6eef496a763e424bb5d5b7c2e28459075a4a6b",
+        "source_fact:v1:35a98959586fb4acb387c834344b1a863db6228b377f210895208d5f4d50676e",
+        "source_fact:v1:4ddb0459505504b7ef3c9a8cc93ec709a0309e6212debc945ab5534a51b434db"
+      ],
+      "source_published_kst": "2026-10-06T09:32+09:00",
+      "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
     },
     "fact:3aaa85a21aa1134a42ca5dbb": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
@@ -10164,6 +10201,23 @@
       "source_published_kst": "2026-10-06T08:34+09:00",
       "title": "한투증권, 산일전기 목표가↑…\"美·유럽, 중국산 규제 수혜\" | 연합뉴스"
     },
+    "fact:91445e61861fdc3c653ac144": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.yna.co.kr/view/PYH20261006086600013",
+      "source": "연합뉴스",
+      "source_body_digest": "aa8d834bc8fe715d8e84d7b0cc557a7131588fb45a828cef14d8cc515070803d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae3129a9af41a89a4e38ef2f017d6bcded8d1d278bd98a2946516901898dc0b0",
+      "source_fact_keys": [
+        "source_fact:v1:b8698cfe9eb6cd92ae5ee1dd429ce09066abd915c4d7ce66e567843b1be68df8"
+      ],
+      "source_published_kst": "2026-10-06T11:18+09:00",
+      "title": "디스플레이 규제합리화 브리핑하는 김민성 부단장 | 연합뉴스"
+    },
     "fact:9147b9159366c054842ba243": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
       "lanes": {
@@ -10873,6 +10927,25 @@
       ],
       "source_published_kst": "2026-10-05T10:20+09:00",
       "title": "[반도체 라이징 스타]<6>엑시나, 스스로 계산하는 메모리로 AI 인프라 비용 낮춘다"
+    },
+    "fact:a72186872134d4ae8d0d52ca": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630509",
+      "source": "이투데이",
+      "source_body_digest": "b80f60453d25532a4ab536db0035a578b00aec368a098cdfc8832d3996afa9ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3e1d8b7401b731bd89ff979bad14dc08f71529eda560c59659a7ac55671a6550",
+      "source_fact_keys": [
+        "source_fact:v1:36d07583f696313e84ef0c10f614232bc646ba8ff5efeb10889af70b6c4874c1",
+        "source_fact:v1:65fdc0c6bacafff6ce5465a7cbae61927597545681c034a4526ebea112044f7f",
+        "source_fact:v1:ff8cb7b91665fa6e3ea9e76a804d7413c957d223c12ab120248c831d848b51fe"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "서울에는 GPU, 지방에는 공장…AI가 벌리는 ‘산업 수도권 격차’ [AI 신계급사회]"
     },
     "fact:a92b236ee4a6b15b6192c7c8": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -11829,6 +11902,26 @@
       "source_published_kst": "2026-10-05T14:28+09:00",
       "title": "폭스바겐 ‘판매왕’에서 모빌리티 창업가로…차봇, 해외로 영토 확장"
     },
+    "fact:c8f7368c11dec0c2b9a68af9": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168731",
+      "source": "매일경제",
+      "source_body_digest": "21eb2bd0000fc5ff9c9de4912b6948605cd6605d4a85b97aef8f95aee5dcc465",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8b7150ef87ab2dd45c65709fecd4669bafa2d8fd81bc9f6489841ee2cbb6dfb",
+      "source_fact_keys": [
+        "source_fact:v1:3cf0f2815e90ca7a9d3238ed6bda0130a0f671cf9380ff402e8b635a0a0fb0ee",
+        "source_fact:v1:469d7265b0acf17324fe446ed5035f35bbcb7f0379056d44b1cc073b3ddc30a8",
+        "source_fact:v1:52eaa536967ef65d0b6011d191c3c59e8c40b348b33c9426e59b52d42d6aa493",
+        "source_fact:v1:60a1cb04e585590f6e3ec2d313a42cdee409aa72046c343ebc8b8b4da8e2f68a"
+      ],
+      "source_published_kst": "2026-10-05T21:23+09:00",
+      "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
+    },
     "fact:cb67e7f4494ecfe19dbcfccf": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -12480,6 +12573,24 @@
       "source_published_kst": "2026-10-06T11:14+09:00",
       "title": "JW중외제약, 유럽당뇨병학회서 '엠파가드' 임상 3상 발표…3제 요법 유효성 입증"
     },
+    "fact:e3de902488de631fa2c96170": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815485",
+      "source": "뉴시스",
+      "source_body_digest": "d4f8f94e063f2ba8b9cc5387e8395b385bbd7f5aa459eb7703890134648ac9ef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61f351ccdc41c30fa9dd9f8dac465033a066431ed3acc7cd0ae8d2f28e43b7af",
+      "source_fact_keys": [
+        "source_fact:v1:3bf558d7bb3e81afff1ed0c98021fdc820a7f5d4a5388aae987fb3473420a2bf",
+        "source_fact:v1:684ab64d54bbc107a79d17de84666ee088dfdc228e03f619aee74e80bfac5595"
+      ],
+      "source_published_kst": "2026-10-06T13:55+09:00",
+      "title": "금투협, IIFA 총회 참여…\"글로벌 펀드산업 현안 논의\""
+    },
     "fact:e400513bab26c86eb16ee8c4": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -12843,6 +12954,33 @@
       ],
       "source_published_kst": "2026-10-05T20:22+09:00",
       "title": "스트라타시스, 방산 전문가 데이비드 친 이사 후보 지명"
+    },
+    "fact:eda7e37aefce0a9e02f368d5": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632780",
+      "source": "이투데이",
+      "source_body_digest": "661398629fff17e155104143a0fde3e723da4b1676f724b524e900c9c1abb046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd5be35a3ef198901b4e5e479c40c458a7c75c0defdfaea38ffe1de93a8dca72",
+      "source_fact_keys": [
+        "source_fact:v1:19b69f7df8cdb005a2ee0e35a46c8d31dd56ff0125e7de1aae34f9110be86398",
+        "source_fact:v1:39c28282a1b673d140ca0ed02ae5208f1975276706fd6fa359fe8d024a68a4fc",
+        "source_fact:v1:3b1a0a669ee26ae3be574484923a5a0ab5a06bf8dae6e1365234e00ca9151edb",
+        "source_fact:v1:3f78f70802c0ae0730afef4a855473144ec4448a6765ebff0b158e72bae40de4",
+        "source_fact:v1:845cb3c0e69a687e329166fc0e36caa326656221f45d51f02711ba0e732e4509",
+        "source_fact:v1:93c88bf042672ae4fa7f45037885a005c377f6e736ecf0b205a8dc197a4b1ac9",
+        "source_fact:v1:c84f6015b8888501e8034cb2f36bd6245d9788770e3081e852c48d134950c2a7",
+        "source_fact:v1:e199e2360e4932691c27d9da839f07c9598b3ef5f818ef916431bbae9c8951e2",
+        "source_fact:v1:e1f54749d2a401321082dadc56899dcb47e2f0b2060d777268cd1465077cce1c",
+        "source_fact:v1:ea0521ad84c4acb5b1cac439654c888a372a69e371858af778bdcb61ab2eada0",
+        "source_fact:v1:ea41d71f1edff0b21a6e73b71034ee93bdaf318a6c27f7fc50170ff06bb5ec43"
+      ],
+      "source_published_kst": "2026-10-06T13:52+09:00",
+      "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
     },
     "fact:ee44a8767d1112c319e9edf9": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
@@ -21755,6 +21893,33 @@
       "source_published_kst": "2026-10-04T09:00+09:00",
       "title": "신한은행"
     },
+    "link:6335b79fd85e9916f45a0e74": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632780",
+      "source": "이투데이",
+      "source_body_digest": "661398629fff17e155104143a0fde3e723da4b1676f724b524e900c9c1abb046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd5be35a3ef198901b4e5e479c40c458a7c75c0defdfaea38ffe1de93a8dca72",
+      "source_fact_keys": [
+        "source_fact:v1:19b69f7df8cdb005a2ee0e35a46c8d31dd56ff0125e7de1aae34f9110be86398",
+        "source_fact:v1:39c28282a1b673d140ca0ed02ae5208f1975276706fd6fa359fe8d024a68a4fc",
+        "source_fact:v1:3b1a0a669ee26ae3be574484923a5a0ab5a06bf8dae6e1365234e00ca9151edb",
+        "source_fact:v1:3f78f70802c0ae0730afef4a855473144ec4448a6765ebff0b158e72bae40de4",
+        "source_fact:v1:845cb3c0e69a687e329166fc0e36caa326656221f45d51f02711ba0e732e4509",
+        "source_fact:v1:93c88bf042672ae4fa7f45037885a005c377f6e736ecf0b205a8dc197a4b1ac9",
+        "source_fact:v1:c84f6015b8888501e8034cb2f36bd6245d9788770e3081e852c48d134950c2a7",
+        "source_fact:v1:e199e2360e4932691c27d9da839f07c9598b3ef5f818ef916431bbae9c8951e2",
+        "source_fact:v1:e1f54749d2a401321082dadc56899dcb47e2f0b2060d777268cd1465077cce1c",
+        "source_fact:v1:ea0521ad84c4acb5b1cac439654c888a372a69e371858af778bdcb61ab2eada0",
+        "source_fact:v1:ea41d71f1edff0b21a6e73b71034ee93bdaf318a6c27f7fc50170ff06bb5ec43"
+      ],
+      "source_published_kst": "2026-10-06T13:52+09:00",
+      "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
     "link:635c7b3b0fc25c3388e9e134": {
       "first_seen_kst": "2026-10-05T22:12:53+09:00",
       "lanes": {
@@ -22385,6 +22550,25 @@
       "source": "연합뉴스",
       "title": "유로존 지난달 물가 3.8% 상승…3년 만에 최고치 | 연합뉴스"
     },
+    "link:68c4c34dee6d612afd9b874e": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630509",
+      "source": "이투데이",
+      "source_body_digest": "b80f60453d25532a4ab536db0035a578b00aec368a098cdfc8832d3996afa9ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3e1d8b7401b731bd89ff979bad14dc08f71529eda560c59659a7ac55671a6550",
+      "source_fact_keys": [
+        "source_fact:v1:36d07583f696313e84ef0c10f614232bc646ba8ff5efeb10889af70b6c4874c1",
+        "source_fact:v1:65fdc0c6bacafff6ce5465a7cbae61927597545681c034a4526ebea112044f7f",
+        "source_fact:v1:ff8cb7b91665fa6e3ea9e76a804d7413c957d223c12ab120248c831d848b51fe"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "서울에는 GPU, 지방에는 공장…AI가 벌리는 ‘산업 수도권 격차’ [AI 신계급사회]"
+    },
     "link:691f21cbb3586cf22ee7d31b": {
       "first_seen_kst": "2026-10-02T13:38:43+09:00",
       "lanes": {
@@ -22999,6 +23183,24 @@
       "link": "https://www.mk.co.kr/news/stock/12165174",
       "source": "매일경제",
       "title": "잘나가는 반도체 ETF … '소부장' 듬뿍 담았네"
+    },
+    "link:702a35d4b2a4ad205806446f": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01653126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b4e6bdf7b959274bf4fdb472000d22a8975f1c5602310a5f2904ba878ca565f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e3d9aafbc47fa206c356a947ce6d4fc693ea9dd9c29f0109d6df8bda2c60f27",
+      "source_fact_keys": [
+        "source_fact:v1:af73a4fd12a544df3e4b38dbe4bdfd78d77f8ae71c7bbb39e2c4d48c0b5a07f9",
+        "source_fact:v1:d63a69b562920a7a2d01450589a8e41d7ed1ba12722adf0c3c1170d2b671f143"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "광주 군공항 이전 속도전…트럼프 美공장 압박 빌미될라"
     },
     "link:7038cc53034fa27e137e9b93": {
       "first_seen_kst": "2026-10-05T22:02:54+09:00",
@@ -28061,6 +28263,26 @@
       "source_published_kst": "2026-10-06T05:00+09:00",
       "title": "납품단가 다음은 ‘데이터’⋯AI 시대 대기업·中企 ‘新 갑을관계’ 탄생하나 [AI 신계급사회]"
     },
+    "link:aad7196a7885a2a31e466909": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168731",
+      "source": "매일경제",
+      "source_body_digest": "21eb2bd0000fc5ff9c9de4912b6948605cd6605d4a85b97aef8f95aee5dcc465",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8b7150ef87ab2dd45c65709fecd4669bafa2d8fd81bc9f6489841ee2cbb6dfb",
+      "source_fact_keys": [
+        "source_fact:v1:3cf0f2815e90ca7a9d3238ed6bda0130a0f671cf9380ff402e8b635a0a0fb0ee",
+        "source_fact:v1:469d7265b0acf17324fe446ed5035f35bbcb7f0379056d44b1cc073b3ddc30a8",
+        "source_fact:v1:52eaa536967ef65d0b6011d191c3c59e8c40b348b33c9426e59b52d42d6aa493",
+        "source_fact:v1:60a1cb04e585590f6e3ec2d313a42cdee409aa72046c343ebc8b8b4da8e2f68a"
+      ],
+      "source_published_kst": "2026-10-05T21:23+09:00",
+      "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
+    },
     "link:aada2c8d2f5f3df46d7fc63c": {
       "first_seen_kst": "2026-09-30T06:14:07+09:00",
       "lanes": {
@@ -31883,6 +32105,24 @@
       "source": "아시아경제",
       "title": "SBVA, 글로벌 AI 기업 데이터브릭스에 투자…50억달러 규모 라운드"
     },
+    "link:d6107222210b34a7f450c146": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815485",
+      "source": "뉴시스",
+      "source_body_digest": "d4f8f94e063f2ba8b9cc5387e8395b385bbd7f5aa459eb7703890134648ac9ef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61f351ccdc41c30fa9dd9f8dac465033a066431ed3acc7cd0ae8d2f28e43b7af",
+      "source_fact_keys": [
+        "source_fact:v1:3bf558d7bb3e81afff1ed0c98021fdc820a7f5d4a5388aae987fb3473420a2bf",
+        "source_fact:v1:684ab64d54bbc107a79d17de84666ee088dfdc228e03f619aee74e80bfac5595"
+      ],
+      "source_published_kst": "2026-10-06T13:55+09:00",
+      "title": "금투협, IIFA 총회 참여…\"글로벌 펀드산업 현안 논의\""
+    },
     "link:d619a82f75f0fd211ba9bc77": {
       "first_seen_kst": "2026-10-05T07:24:39+09:00",
       "lanes": {
@@ -32102,6 +32342,23 @@
       "link": "https://www.yna.co.kr/view/AKR20260923101000051",
       "source": "연합뉴스",
       "title": "부산시의회, 29일부터 기관장 인사청문회…'송곳 검증' 예고 | 연합뉴스"
+    },
+    "link:d92c3a96fe896b2be00c99ea": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.yna.co.kr/view/PYH20261006086600013",
+      "source": "연합뉴스",
+      "source_body_digest": "aa8d834bc8fe715d8e84d7b0cc557a7131588fb45a828cef14d8cc515070803d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae3129a9af41a89a4e38ef2f017d6bcded8d1d278bd98a2946516901898dc0b0",
+      "source_fact_keys": [
+        "source_fact:v1:b8698cfe9eb6cd92ae5ee1dd429ce09066abd915c4d7ce66e567843b1be68df8"
+      ],
+      "source_published_kst": "2026-10-06T11:18+09:00",
+      "title": "디스플레이 규제합리화 브리핑하는 김민성 부단장 | 연합뉴스"
     },
     "link:d9a60f86ab010817a81333e2": {
       "first_seen_kst": "2026-10-06T14:18:00+09:00",
@@ -33759,6 +34016,25 @@
       ],
       "source_published_kst": "2026-10-06T06:28+09:00",
       "title": "트럼프, 면세 경유 사용처 제한 완화…기름값 낮추려 안간힘"
+    },
+    "link:ec4a10be259def29b2483610": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.hankyung.com/article/2026100645236",
+      "source": "한국경제",
+      "source_body_digest": "9c4734ff876199e8ee221a7f1382ce9d3e2cfec3eb902d49ba5ed8d2723ab562",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8611120808fa7b22d97bf01f2ff95bf9f101cb7f3f96ac5556a71d7ec1d1f6a9",
+      "source_fact_keys": [
+        "source_fact:v1:1c9a8b95eed56356e13b5f66cd6eef496a763e424bb5d5b7c2e28459075a4a6b",
+        "source_fact:v1:35a98959586fb4acb387c834344b1a863db6228b377f210895208d5f4d50676e",
+        "source_fact:v1:4ddb0459505504b7ef3c9a8cc93ec709a0309e6212debc945ab5534a51b434db"
+      ],
+      "source_published_kst": "2026-10-06T09:32+09:00",
+      "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
     },
     "link:ec68090b2fbc5250fa4ba59d": {
       "first_seen_kst": "2026-10-02T17:56:05+09:00",
@@ -35943,18 +36219,18 @@
     "original:05155b469a16eeeb0d0a4280": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
-        "live": "2026-10-06T14:52:12+09:00"
+        "live": "2026-10-06T15:55:43+09:00"
       },
-      "last_seen_kst": "2026-10-06T14:52:12+09:00",
-      "link": "https://www.yna.co.kr/view/PYH20261006087100013",
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.yna.co.kr/view/PYH20261006086600013",
       "source": "연합뉴스",
-      "source_body_digest": "42c7122b9c574671406093644d08fbd8458981478dfebedf2d1e5df26f206efa",
+      "source_body_digest": "aa8d834bc8fe715d8e84d7b0cc557a7131588fb45a828cef14d8cc515070803d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6b982b6d171954dc030ff0e30ea5170bf0dff1bdafe7a8c18c9722fca02e9dd7",
+      "source_fact_identity": "source_facts:v1:ae3129a9af41a89a4e38ef2f017d6bcded8d1d278bd98a2946516901898dc0b0",
       "source_fact_keys": [
-        "source_fact:v1:f1c30177730ef39341be1f4d6b40ca9dd6ee3f093d26c4516b90d7e180da4445"
+        "source_fact:v1:b8698cfe9eb6cd92ae5ee1dd429ce09066abd915c4d7ce66e567843b1be68df8"
       ],
-      "source_published_kst": "2026-10-06T11:19+09:00",
+      "source_published_kst": "2026-10-06T11:18+09:00",
       "title": "디스플레이 규제합리화 브리핑하는 김민성 부단장 | 연합뉴스"
     },
     "original:054cf01e789ed535c32012b6": {
@@ -37024,6 +37300,25 @@
       ],
       "source_published_kst": "2026-10-06T09:18+09:00",
       "title": "정부 GPU 4224장 풀었더니 1만3712장 신청…70%가 못 받아"
+    },
+    "original:142feff57a1ea3dbe6459ee2": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.hankyung.com/article/2026100645236",
+      "source": "한국경제",
+      "source_body_digest": "9c4734ff876199e8ee221a7f1382ce9d3e2cfec3eb902d49ba5ed8d2723ab562",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8611120808fa7b22d97bf01f2ff95bf9f101cb7f3f96ac5556a71d7ec1d1f6a9",
+      "source_fact_keys": [
+        "source_fact:v1:1c9a8b95eed56356e13b5f66cd6eef496a763e424bb5d5b7c2e28459075a4a6b",
+        "source_fact:v1:35a98959586fb4acb387c834344b1a863db6228b377f210895208d5f4d50676e",
+        "source_fact:v1:4ddb0459505504b7ef3c9a8cc93ec709a0309e6212debc945ab5534a51b434db"
+      ],
+      "source_published_kst": "2026-10-06T09:32+09:00",
+      "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
     },
     "original:1453cb8398713cd829f7d2f0": {
       "first_seen_kst": "2026-10-03T19:11:40+09:00",
@@ -43244,6 +43539,24 @@
       "source_published_kst": "2026-10-06T12:16+09:00",
       "title": "기후부, '에너지 대전환' 속도…2030년 재생e 100GW·석탄발전 2040년 퇴출"
     },
+    "original:5cbcc4c9dbf1e6dc621e5a50": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815485",
+      "source": "뉴시스",
+      "source_body_digest": "d4f8f94e063f2ba8b9cc5387e8395b385bbd7f5aa459eb7703890134648ac9ef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61f351ccdc41c30fa9dd9f8dac465033a066431ed3acc7cd0ae8d2f28e43b7af",
+      "source_fact_keys": [
+        "source_fact:v1:3bf558d7bb3e81afff1ed0c98021fdc820a7f5d4a5388aae987fb3473420a2bf",
+        "source_fact:v1:684ab64d54bbc107a79d17de84666ee088dfdc228e03f619aee74e80bfac5595"
+      ],
+      "source_published_kst": "2026-10-06T13:55+09:00",
+      "title": "금투협, IIFA 총회 참여…\"글로벌 펀드산업 현안 논의\""
+    },
     "original:5cc462e991340d78daff1f7f": {
       "first_seen_kst": "2026-10-01T20:00:14+09:00",
       "lanes": {
@@ -44692,18 +45005,21 @@
     "original:6e66c87cc7dede4232798458": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
-        "live": "2026-10-05T23:28:38+09:00"
+        "live": "2026-10-06T15:55:43+09:00"
       },
-      "last_seen_kst": "2026-10-05T23:28:38+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169805",
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168731",
       "source": "매일경제",
-      "source_body_digest": "7d6a2438b970cf042a02d7187943e95e23128722c3eb772d3a1864db54860e99",
+      "source_body_digest": "21eb2bd0000fc5ff9c9de4912b6948605cd6605d4a85b97aef8f95aee5dcc465",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d734354030ddbba326d927854ad7cfe6230f3fd4bdc2339397498e71fd6790af",
+      "source_fact_identity": "source_facts:v1:e8b7150ef87ab2dd45c65709fecd4669bafa2d8fd81bc9f6489841ee2cbb6dfb",
       "source_fact_keys": [
+        "source_fact:v1:3cf0f2815e90ca7a9d3238ed6bda0130a0f671cf9380ff402e8b635a0a0fb0ee",
+        "source_fact:v1:469d7265b0acf17324fe446ed5035f35bbcb7f0379056d44b1cc073b3ddc30a8",
+        "source_fact:v1:52eaa536967ef65d0b6011d191c3c59e8c40b348b33c9426e59b52d42d6aa493",
         "source_fact:v1:60a1cb04e585590f6e3ec2d313a42cdee409aa72046c343ebc8b8b4da8e2f68a"
       ],
-      "source_published_kst": "2026-10-05T21:22+09:00",
+      "source_published_kst": "2026-10-05T21:23+09:00",
       "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
     },
     "original:6e7bb498f905d04ab9f0c060": {
@@ -48277,6 +48593,24 @@
       "source": "이투데이",
       "title": "고려대, 바이오플라스틱 탄소감축 효과 규명⋯온실가스 91.5%↓"
     },
+    "original:965f60fecc20397ba152811c": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01653126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b4e6bdf7b959274bf4fdb472000d22a8975f1c5602310a5f2904ba878ca565f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e3d9aafbc47fa206c356a947ce6d4fc693ea9dd9c29f0109d6df8bda2c60f27",
+      "source_fact_keys": [
+        "source_fact:v1:af73a4fd12a544df3e4b38dbe4bdfd78d77f8ae71c7bbb39e2c4d48c0b5a07f9",
+        "source_fact:v1:d63a69b562920a7a2d01450589a8e41d7ed1ba12722adf0c3c1170d2b671f143"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "광주 군공항 이전 속도전…트럼프 美공장 압박 빌미될라"
+    },
     "original:966a30edd402a5b17dc374e6": {
       "first_seen_kst": "2026-09-29T01:18:16+09:00",
       "lanes": {
@@ -48504,6 +48838,25 @@
       "source": "뉴시스",
       "source_event_identity": "",
       "title": "美 9월 고용 2만9000명, 예상 3분의 1…10월 금리동결 확률 82.8%"
+    },
+    "original:99d95c9b2b6c2a764755e0d4": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630509",
+      "source": "이투데이",
+      "source_body_digest": "b80f60453d25532a4ab536db0035a578b00aec368a098cdfc8832d3996afa9ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3e1d8b7401b731bd89ff979bad14dc08f71529eda560c59659a7ac55671a6550",
+      "source_fact_keys": [
+        "source_fact:v1:36d07583f696313e84ef0c10f614232bc646ba8ff5efeb10889af70b6c4874c1",
+        "source_fact:v1:65fdc0c6bacafff6ce5465a7cbae61927597545681c034a4526ebea112044f7f",
+        "source_fact:v1:ff8cb7b91665fa6e3ea9e76a804d7413c957d223c12ab120248c831d848b51fe"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "서울에는 GPU, 지방에는 공장…AI가 벌리는 ‘산업 수도권 격차’ [AI 신계급사회]"
     },
     "original:99de6d9e73fc3cda894f571c": {
       "first_seen_kst": "2026-10-06T01:16:46+09:00",
@@ -53521,6 +53874,33 @@
       "source_published_kst": "2026-10-05T21:32+09:00",
       "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
     },
+    "original:d736fb0d26c723d10f61cfdf": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632780",
+      "source": "이투데이",
+      "source_body_digest": "661398629fff17e155104143a0fde3e723da4b1676f724b524e900c9c1abb046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd5be35a3ef198901b4e5e479c40c458a7c75c0defdfaea38ffe1de93a8dca72",
+      "source_fact_keys": [
+        "source_fact:v1:19b69f7df8cdb005a2ee0e35a46c8d31dd56ff0125e7de1aae34f9110be86398",
+        "source_fact:v1:39c28282a1b673d140ca0ed02ae5208f1975276706fd6fa359fe8d024a68a4fc",
+        "source_fact:v1:3b1a0a669ee26ae3be574484923a5a0ab5a06bf8dae6e1365234e00ca9151edb",
+        "source_fact:v1:3f78f70802c0ae0730afef4a855473144ec4448a6765ebff0b158e72bae40de4",
+        "source_fact:v1:845cb3c0e69a687e329166fc0e36caa326656221f45d51f02711ba0e732e4509",
+        "source_fact:v1:93c88bf042672ae4fa7f45037885a005c377f6e736ecf0b205a8dc197a4b1ac9",
+        "source_fact:v1:c84f6015b8888501e8034cb2f36bd6245d9788770e3081e852c48d134950c2a7",
+        "source_fact:v1:e199e2360e4932691c27d9da839f07c9598b3ef5f818ef916431bbae9c8951e2",
+        "source_fact:v1:e1f54749d2a401321082dadc56899dcb47e2f0b2060d777268cd1465077cce1c",
+        "source_fact:v1:ea0521ad84c4acb5b1cac439654c888a372a69e371858af778bdcb61ab2eada0",
+        "source_fact:v1:ea41d71f1edff0b21a6e73b71034ee93bdaf318a6c27f7fc50170ff06bb5ec43"
+      ],
+      "source_published_kst": "2026-10-06T13:52+09:00",
+      "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
     "original:d757ef5c13ff0c151e353814": {
       "first_seen_kst": "2026-10-05T16:27:40+09:00",
       "lanes": {
@@ -56985,6 +57365,25 @@
       "source_published_kst": "2026-10-05T19:02+09:00",
       "title": "세제·부동산·대미투자… 李정부 2년차 정책 검증 '경제 국감' [국정감사 핫이슈]"
     },
+    "source_fact:013b88bf8b979d9829ffc1c0": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630509",
+      "source": "이투데이",
+      "source_body_digest": "b80f60453d25532a4ab536db0035a578b00aec368a098cdfc8832d3996afa9ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3e1d8b7401b731bd89ff979bad14dc08f71529eda560c59659a7ac55671a6550",
+      "source_fact_keys": [
+        "source_fact:v1:36d07583f696313e84ef0c10f614232bc646ba8ff5efeb10889af70b6c4874c1",
+        "source_fact:v1:65fdc0c6bacafff6ce5465a7cbae61927597545681c034a4526ebea112044f7f",
+        "source_fact:v1:ff8cb7b91665fa6e3ea9e76a804d7413c957d223c12ab120248c831d848b51fe"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "서울에는 GPU, 지방에는 공장…AI가 벌리는 ‘산업 수도권 격차’ [AI 신계급사회]"
+    },
     "source_fact:0145dc73c18a1eb66bfb84e8": {
       "first_seen_kst": "2026-10-06T00:33:34+09:00",
       "lanes": {
@@ -57111,6 +57510,24 @@
       ],
       "source_published_kst": "2026-10-05T20:02+09:00",
       "title": "사이언스 바이오메디컬, 美 이보가인 생산 위해 베누비아와 제조계약"
+    },
+    "source_fact:01f0b7d51068868e7b5f2abd": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01653126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b4e6bdf7b959274bf4fdb472000d22a8975f1c5602310a5f2904ba878ca565f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e3d9aafbc47fa206c356a947ce6d4fc693ea9dd9c29f0109d6df8bda2c60f27",
+      "source_fact_keys": [
+        "source_fact:v1:af73a4fd12a544df3e4b38dbe4bdfd78d77f8ae71c7bbb39e2c4d48c0b5a07f9",
+        "source_fact:v1:d63a69b562920a7a2d01450589a8e41d7ed1ba12722adf0c3c1170d2b671f143"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "광주 군공항 이전 속도전…트럼프 美공장 압박 빌미될라"
     },
     "source_fact:0212ff55899228fba4c446e5": {
       "first_seen_kst": "2026-10-06T00:18:21+09:00",
@@ -59189,6 +59606,26 @@
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
+    "source_fact:11835ddadb90d3f179468b86": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168731",
+      "source": "매일경제",
+      "source_body_digest": "21eb2bd0000fc5ff9c9de4912b6948605cd6605d4a85b97aef8f95aee5dcc465",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8b7150ef87ab2dd45c65709fecd4669bafa2d8fd81bc9f6489841ee2cbb6dfb",
+      "source_fact_keys": [
+        "source_fact:v1:3cf0f2815e90ca7a9d3238ed6bda0130a0f671cf9380ff402e8b635a0a0fb0ee",
+        "source_fact:v1:469d7265b0acf17324fe446ed5035f35bbcb7f0379056d44b1cc073b3ddc30a8",
+        "source_fact:v1:52eaa536967ef65d0b6011d191c3c59e8c40b348b33c9426e59b52d42d6aa493",
+        "source_fact:v1:60a1cb04e585590f6e3ec2d313a42cdee409aa72046c343ebc8b8b4da8e2f68a"
+      ],
+      "source_published_kst": "2026-10-05T21:23+09:00",
+      "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
+    },
     "source_fact:118ec1c69855c7715fb8605a": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -59797,6 +60234,33 @@
       "source_published_kst": "2026-10-05T05:18+09:00",
       "title": "“국산 AI반도체, 실험실 넘어 전력현장으로”…K-Perf 첫 적용"
     },
+    "source_fact:15b5249d27227df1b44c777b": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632780",
+      "source": "이투데이",
+      "source_body_digest": "661398629fff17e155104143a0fde3e723da4b1676f724b524e900c9c1abb046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd5be35a3ef198901b4e5e479c40c458a7c75c0defdfaea38ffe1de93a8dca72",
+      "source_fact_keys": [
+        "source_fact:v1:19b69f7df8cdb005a2ee0e35a46c8d31dd56ff0125e7de1aae34f9110be86398",
+        "source_fact:v1:39c28282a1b673d140ca0ed02ae5208f1975276706fd6fa359fe8d024a68a4fc",
+        "source_fact:v1:3b1a0a669ee26ae3be574484923a5a0ab5a06bf8dae6e1365234e00ca9151edb",
+        "source_fact:v1:3f78f70802c0ae0730afef4a855473144ec4448a6765ebff0b158e72bae40de4",
+        "source_fact:v1:845cb3c0e69a687e329166fc0e36caa326656221f45d51f02711ba0e732e4509",
+        "source_fact:v1:93c88bf042672ae4fa7f45037885a005c377f6e736ecf0b205a8dc197a4b1ac9",
+        "source_fact:v1:c84f6015b8888501e8034cb2f36bd6245d9788770e3081e852c48d134950c2a7",
+        "source_fact:v1:e199e2360e4932691c27d9da839f07c9598b3ef5f818ef916431bbae9c8951e2",
+        "source_fact:v1:e1f54749d2a401321082dadc56899dcb47e2f0b2060d777268cd1465077cce1c",
+        "source_fact:v1:ea0521ad84c4acb5b1cac439654c888a372a69e371858af778bdcb61ab2eada0",
+        "source_fact:v1:ea41d71f1edff0b21a6e73b71034ee93bdaf318a6c27f7fc50170ff06bb5ec43"
+      ],
+      "source_published_kst": "2026-10-06T13:52+09:00",
+      "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
     "source_fact:15b94b3b5c49931abd257695": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
       "lanes": {
@@ -60090,6 +60554,33 @@
       ],
       "source_published_kst": "2026-10-06T09:42+09:00",
       "title": "레디로버스트머신 '리마스터 하이브리드 굴착기' 베트남 상륙…현지기업 RCE와 맞손"
+    },
+    "source_fact:183b0bddab8433b7409fe26f": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632780",
+      "source": "이투데이",
+      "source_body_digest": "661398629fff17e155104143a0fde3e723da4b1676f724b524e900c9c1abb046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd5be35a3ef198901b4e5e479c40c458a7c75c0defdfaea38ffe1de93a8dca72",
+      "source_fact_keys": [
+        "source_fact:v1:19b69f7df8cdb005a2ee0e35a46c8d31dd56ff0125e7de1aae34f9110be86398",
+        "source_fact:v1:39c28282a1b673d140ca0ed02ae5208f1975276706fd6fa359fe8d024a68a4fc",
+        "source_fact:v1:3b1a0a669ee26ae3be574484923a5a0ab5a06bf8dae6e1365234e00ca9151edb",
+        "source_fact:v1:3f78f70802c0ae0730afef4a855473144ec4448a6765ebff0b158e72bae40de4",
+        "source_fact:v1:845cb3c0e69a687e329166fc0e36caa326656221f45d51f02711ba0e732e4509",
+        "source_fact:v1:93c88bf042672ae4fa7f45037885a005c377f6e736ecf0b205a8dc197a4b1ac9",
+        "source_fact:v1:c84f6015b8888501e8034cb2f36bd6245d9788770e3081e852c48d134950c2a7",
+        "source_fact:v1:e199e2360e4932691c27d9da839f07c9598b3ef5f818ef916431bbae9c8951e2",
+        "source_fact:v1:e1f54749d2a401321082dadc56899dcb47e2f0b2060d777268cd1465077cce1c",
+        "source_fact:v1:ea0521ad84c4acb5b1cac439654c888a372a69e371858af778bdcb61ab2eada0",
+        "source_fact:v1:ea41d71f1edff0b21a6e73b71034ee93bdaf318a6c27f7fc50170ff06bb5ec43"
+      ],
+      "source_published_kst": "2026-10-06T13:52+09:00",
+      "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
     },
     "source_fact:184aaa58fee3a71e534184e9": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
@@ -62064,6 +62555,25 @@
       "source_published_kst": "2026-10-05T16:40+09:00",
       "title": "아시아증시, 미 10월 금리인상 전망 후퇴에 상승⋯닛케이 2.4%↑"
     },
+    "source_fact:275e418ef77df63effba4f64": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.hankyung.com/article/2026100645236",
+      "source": "한국경제",
+      "source_body_digest": "9c4734ff876199e8ee221a7f1382ce9d3e2cfec3eb902d49ba5ed8d2723ab562",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8611120808fa7b22d97bf01f2ff95bf9f101cb7f3f96ac5556a71d7ec1d1f6a9",
+      "source_fact_keys": [
+        "source_fact:v1:1c9a8b95eed56356e13b5f66cd6eef496a763e424bb5d5b7c2e28459075a4a6b",
+        "source_fact:v1:35a98959586fb4acb387c834344b1a863db6228b377f210895208d5f4d50676e",
+        "source_fact:v1:4ddb0459505504b7ef3c9a8cc93ec709a0309e6212debc945ab5534a51b434db"
+      ],
+      "source_published_kst": "2026-10-06T09:32+09:00",
+      "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
+    },
     "source_fact:276ad4afe6ae2be2ae1e579f": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
       "lanes": {
@@ -63240,6 +63750,33 @@
       "source_published_kst": "2026-10-05T07:26+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가 | 연합뉴스"
     },
+    "source_fact:311014be288817ed6ab2c164": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632780",
+      "source": "이투데이",
+      "source_body_digest": "661398629fff17e155104143a0fde3e723da4b1676f724b524e900c9c1abb046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd5be35a3ef198901b4e5e479c40c458a7c75c0defdfaea38ffe1de93a8dca72",
+      "source_fact_keys": [
+        "source_fact:v1:19b69f7df8cdb005a2ee0e35a46c8d31dd56ff0125e7de1aae34f9110be86398",
+        "source_fact:v1:39c28282a1b673d140ca0ed02ae5208f1975276706fd6fa359fe8d024a68a4fc",
+        "source_fact:v1:3b1a0a669ee26ae3be574484923a5a0ab5a06bf8dae6e1365234e00ca9151edb",
+        "source_fact:v1:3f78f70802c0ae0730afef4a855473144ec4448a6765ebff0b158e72bae40de4",
+        "source_fact:v1:845cb3c0e69a687e329166fc0e36caa326656221f45d51f02711ba0e732e4509",
+        "source_fact:v1:93c88bf042672ae4fa7f45037885a005c377f6e736ecf0b205a8dc197a4b1ac9",
+        "source_fact:v1:c84f6015b8888501e8034cb2f36bd6245d9788770e3081e852c48d134950c2a7",
+        "source_fact:v1:e199e2360e4932691c27d9da839f07c9598b3ef5f818ef916431bbae9c8951e2",
+        "source_fact:v1:e1f54749d2a401321082dadc56899dcb47e2f0b2060d777268cd1465077cce1c",
+        "source_fact:v1:ea0521ad84c4acb5b1cac439654c888a372a69e371858af778bdcb61ab2eada0",
+        "source_fact:v1:ea41d71f1edff0b21a6e73b71034ee93bdaf318a6c27f7fc50170ff06bb5ec43"
+      ],
+      "source_published_kst": "2026-10-06T13:52+09:00",
+      "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
     "source_fact:3121941c5a603ab71e848707": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
       "lanes": {
@@ -64325,6 +64862,23 @@
       "source_published_kst": "2026-10-05T20:40+09:00",
       "title": "중동 원유수출 회복세에 '찬물'…이란 호르무즈 공격 다시 증가(종합) | 연합뉴스"
     },
+    "source_fact:376a5e4dc02c752c34ba089a": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.yna.co.kr/view/PYH20261006086600013",
+      "source": "연합뉴스",
+      "source_body_digest": "aa8d834bc8fe715d8e84d7b0cc557a7131588fb45a828cef14d8cc515070803d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:ae3129a9af41a89a4e38ef2f017d6bcded8d1d278bd98a2946516901898dc0b0",
+      "source_fact_keys": [
+        "source_fact:v1:b8698cfe9eb6cd92ae5ee1dd429ce09066abd915c4d7ce66e567843b1be68df8"
+      ],
+      "source_published_kst": "2026-10-06T11:18+09:00",
+      "title": "디스플레이 규제합리화 브리핑하는 김민성 부단장 | 연합뉴스"
+    },
     "source_fact:3792cab43c7e37302eace50a": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
       "lanes": {
@@ -65214,6 +65768,25 @@
       ],
       "source_published_kst": "2026-10-05T05:01+09:00",
       "title": "국회 정무위 6일 국감 돌입…금융권 해킹에 5대 은행장 줄소환되나"
+    },
+    "source_fact:3ed355efbc54d847364b05f3": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.hankyung.com/article/2026100645236",
+      "source": "한국경제",
+      "source_body_digest": "9c4734ff876199e8ee221a7f1382ce9d3e2cfec3eb902d49ba5ed8d2723ab562",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8611120808fa7b22d97bf01f2ff95bf9f101cb7f3f96ac5556a71d7ec1d1f6a9",
+      "source_fact_keys": [
+        "source_fact:v1:1c9a8b95eed56356e13b5f66cd6eef496a763e424bb5d5b7c2e28459075a4a6b",
+        "source_fact:v1:35a98959586fb4acb387c834344b1a863db6228b377f210895208d5f4d50676e",
+        "source_fact:v1:4ddb0459505504b7ef3c9a8cc93ec709a0309e6212debc945ab5534a51b434db"
+      ],
+      "source_published_kst": "2026-10-06T09:32+09:00",
+      "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
     },
     "source_fact:3f14dee6527c221906d763b6": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
@@ -69565,6 +70138,33 @@
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
     },
+    "source_fact:5f87ec0e9f85979dc9c24897": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632780",
+      "source": "이투데이",
+      "source_body_digest": "661398629fff17e155104143a0fde3e723da4b1676f724b524e900c9c1abb046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd5be35a3ef198901b4e5e479c40c458a7c75c0defdfaea38ffe1de93a8dca72",
+      "source_fact_keys": [
+        "source_fact:v1:19b69f7df8cdb005a2ee0e35a46c8d31dd56ff0125e7de1aae34f9110be86398",
+        "source_fact:v1:39c28282a1b673d140ca0ed02ae5208f1975276706fd6fa359fe8d024a68a4fc",
+        "source_fact:v1:3b1a0a669ee26ae3be574484923a5a0ab5a06bf8dae6e1365234e00ca9151edb",
+        "source_fact:v1:3f78f70802c0ae0730afef4a855473144ec4448a6765ebff0b158e72bae40de4",
+        "source_fact:v1:845cb3c0e69a687e329166fc0e36caa326656221f45d51f02711ba0e732e4509",
+        "source_fact:v1:93c88bf042672ae4fa7f45037885a005c377f6e736ecf0b205a8dc197a4b1ac9",
+        "source_fact:v1:c84f6015b8888501e8034cb2f36bd6245d9788770e3081e852c48d134950c2a7",
+        "source_fact:v1:e199e2360e4932691c27d9da839f07c9598b3ef5f818ef916431bbae9c8951e2",
+        "source_fact:v1:e1f54749d2a401321082dadc56899dcb47e2f0b2060d777268cd1465077cce1c",
+        "source_fact:v1:ea0521ad84c4acb5b1cac439654c888a372a69e371858af778bdcb61ab2eada0",
+        "source_fact:v1:ea41d71f1edff0b21a6e73b71034ee93bdaf318a6c27f7fc50170ff06bb5ec43"
+      ],
+      "source_published_kst": "2026-10-06T13:52+09:00",
+      "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
     "source_fact:5f87f137ba191291f516c6f3": {
       "first_seen_kst": "2026-10-06T11:41:27+09:00",
       "lanes": {
@@ -69706,6 +70306,25 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
+    },
+    "source_fact:615df80cbfffeb05b3edceaf": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.hankyung.com/article/2026100645236",
+      "source": "한국경제",
+      "source_body_digest": "9c4734ff876199e8ee221a7f1382ce9d3e2cfec3eb902d49ba5ed8d2723ab562",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8611120808fa7b22d97bf01f2ff95bf9f101cb7f3f96ac5556a71d7ec1d1f6a9",
+      "source_fact_keys": [
+        "source_fact:v1:1c9a8b95eed56356e13b5f66cd6eef496a763e424bb5d5b7c2e28459075a4a6b",
+        "source_fact:v1:35a98959586fb4acb387c834344b1a863db6228b377f210895208d5f4d50676e",
+        "source_fact:v1:4ddb0459505504b7ef3c9a8cc93ec709a0309e6212debc945ab5534a51b434db"
+      ],
+      "source_published_kst": "2026-10-06T09:32+09:00",
+      "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
     },
     "source_fact:617a3f8f1caa78c11ce5f70c": {
       "first_seen_kst": "2026-10-06T15:44:02+09:00",
@@ -70715,6 +71334,26 @@
       "source_published_kst": "2026-10-06T13:35+09:00",
       "title": "조준희 KOSA 회장 \"AI 수요·공급기업 한자리에…실제 사업으로 연결\""
     },
+    "source_fact:69be3405b9d9c74ffdd3df62": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168731",
+      "source": "매일경제",
+      "source_body_digest": "21eb2bd0000fc5ff9c9de4912b6948605cd6605d4a85b97aef8f95aee5dcc465",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8b7150ef87ab2dd45c65709fecd4669bafa2d8fd81bc9f6489841ee2cbb6dfb",
+      "source_fact_keys": [
+        "source_fact:v1:3cf0f2815e90ca7a9d3238ed6bda0130a0f671cf9380ff402e8b635a0a0fb0ee",
+        "source_fact:v1:469d7265b0acf17324fe446ed5035f35bbcb7f0379056d44b1cc073b3ddc30a8",
+        "source_fact:v1:52eaa536967ef65d0b6011d191c3c59e8c40b348b33c9426e59b52d42d6aa493",
+        "source_fact:v1:60a1cb04e585590f6e3ec2d313a42cdee409aa72046c343ebc8b8b4da8e2f68a"
+      ],
+      "source_published_kst": "2026-10-05T21:23+09:00",
+      "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
+    },
     "source_fact:69e88c8be7a4ad9ae3d321a6": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
       "lanes": {
@@ -70808,18 +71447,21 @@
     "source_fact:6a83f2b774dfb061d6ef13aa": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
-        "live": "2026-10-05T23:28:38+09:00"
+        "live": "2026-10-06T15:55:43+09:00"
       },
-      "last_seen_kst": "2026-10-05T23:28:38+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169805",
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168731",
       "source": "매일경제",
-      "source_body_digest": "7d6a2438b970cf042a02d7187943e95e23128722c3eb772d3a1864db54860e99",
+      "source_body_digest": "21eb2bd0000fc5ff9c9de4912b6948605cd6605d4a85b97aef8f95aee5dcc465",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d734354030ddbba326d927854ad7cfe6230f3fd4bdc2339397498e71fd6790af",
+      "source_fact_identity": "source_facts:v1:e8b7150ef87ab2dd45c65709fecd4669bafa2d8fd81bc9f6489841ee2cbb6dfb",
       "source_fact_keys": [
+        "source_fact:v1:3cf0f2815e90ca7a9d3238ed6bda0130a0f671cf9380ff402e8b635a0a0fb0ee",
+        "source_fact:v1:469d7265b0acf17324fe446ed5035f35bbcb7f0379056d44b1cc073b3ddc30a8",
+        "source_fact:v1:52eaa536967ef65d0b6011d191c3c59e8c40b348b33c9426e59b52d42d6aa493",
         "source_fact:v1:60a1cb04e585590f6e3ec2d313a42cdee409aa72046c343ebc8b8b4da8e2f68a"
       ],
-      "source_published_kst": "2026-10-05T21:22+09:00",
+      "source_published_kst": "2026-10-05T21:23+09:00",
       "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
     },
     "source_fact:6ad796ed553763c7fd5ac065": {
@@ -73175,6 +73817,25 @@
       "source_published_kst": "2026-10-06T10:59+09:00",
       "title": "엠플러스, 유럽 글로벌 배터리 기업에 각형 장비 공급"
     },
+    "source_fact:7b4b9328db1853042959fe59": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630509",
+      "source": "이투데이",
+      "source_body_digest": "b80f60453d25532a4ab536db0035a578b00aec368a098cdfc8832d3996afa9ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3e1d8b7401b731bd89ff979bad14dc08f71529eda560c59659a7ac55671a6550",
+      "source_fact_keys": [
+        "source_fact:v1:36d07583f696313e84ef0c10f614232bc646ba8ff5efeb10889af70b6c4874c1",
+        "source_fact:v1:65fdc0c6bacafff6ce5465a7cbae61927597545681c034a4526ebea112044f7f",
+        "source_fact:v1:ff8cb7b91665fa6e3ea9e76a804d7413c957d223c12ab120248c831d848b51fe"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "서울에는 GPU, 지방에는 공장…AI가 벌리는 ‘산업 수도권 격차’ [AI 신계급사회]"
+    },
     "source_fact:7be082036b951e9eee45a9ea": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
       "lanes": {
@@ -74221,6 +74882,33 @@
       ],
       "source_published_kst": "2026-10-06T04:20+09:00",
       "title": "[美특징주]에스티로더, 성장 회복 기대에 월가 투자의견 ‘매수’ 상향…주가 2%↑"
+    },
+    "source_fact:82afd745683ae0347fed3a1d": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632780",
+      "source": "이투데이",
+      "source_body_digest": "661398629fff17e155104143a0fde3e723da4b1676f724b524e900c9c1abb046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd5be35a3ef198901b4e5e479c40c458a7c75c0defdfaea38ffe1de93a8dca72",
+      "source_fact_keys": [
+        "source_fact:v1:19b69f7df8cdb005a2ee0e35a46c8d31dd56ff0125e7de1aae34f9110be86398",
+        "source_fact:v1:39c28282a1b673d140ca0ed02ae5208f1975276706fd6fa359fe8d024a68a4fc",
+        "source_fact:v1:3b1a0a669ee26ae3be574484923a5a0ab5a06bf8dae6e1365234e00ca9151edb",
+        "source_fact:v1:3f78f70802c0ae0730afef4a855473144ec4448a6765ebff0b158e72bae40de4",
+        "source_fact:v1:845cb3c0e69a687e329166fc0e36caa326656221f45d51f02711ba0e732e4509",
+        "source_fact:v1:93c88bf042672ae4fa7f45037885a005c377f6e736ecf0b205a8dc197a4b1ac9",
+        "source_fact:v1:c84f6015b8888501e8034cb2f36bd6245d9788770e3081e852c48d134950c2a7",
+        "source_fact:v1:e199e2360e4932691c27d9da839f07c9598b3ef5f818ef916431bbae9c8951e2",
+        "source_fact:v1:e1f54749d2a401321082dadc56899dcb47e2f0b2060d777268cd1465077cce1c",
+        "source_fact:v1:ea0521ad84c4acb5b1cac439654c888a372a69e371858af778bdcb61ab2eada0",
+        "source_fact:v1:ea41d71f1edff0b21a6e73b71034ee93bdaf318a6c27f7fc50170ff06bb5ec43"
+      ],
+      "source_published_kst": "2026-10-06T13:52+09:00",
+      "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
     },
     "source_fact:82d8f26422039973e5ede439": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -77160,6 +77848,24 @@
       "source_published_kst": "2026-10-05T21:05+09:00",
       "title": "SS 이노베이션스 인터내셔, 2분기 매출 1390만 달러 39%↑·영업적자 전환"
     },
+    "source_fact:999ebe82b0addbdcf5c128d7": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815485",
+      "source": "뉴시스",
+      "source_body_digest": "d4f8f94e063f2ba8b9cc5387e8395b385bbd7f5aa459eb7703890134648ac9ef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61f351ccdc41c30fa9dd9f8dac465033a066431ed3acc7cd0ae8d2f28e43b7af",
+      "source_fact_keys": [
+        "source_fact:v1:3bf558d7bb3e81afff1ed0c98021fdc820a7f5d4a5388aae987fb3473420a2bf",
+        "source_fact:v1:684ab64d54bbc107a79d17de84666ee088dfdc228e03f619aee74e80bfac5595"
+      ],
+      "source_published_kst": "2026-10-06T13:55+09:00",
+      "title": "금투협, IIFA 총회 참여…\"글로벌 펀드산업 현안 논의\""
+    },
     "source_fact:99b619f440f0a0e186f31393": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -78378,6 +79084,24 @@
       "source_published_kst": "2026-10-06T11:02+09:00",
       "title": "메드팩토, 뼈질환 치료제 ‘MP2021’ 호주 임상 1상 승인"
     },
+    "source_fact:a3ca308dd0496a32693e3f44": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815485",
+      "source": "뉴시스",
+      "source_body_digest": "d4f8f94e063f2ba8b9cc5387e8395b385bbd7f5aa459eb7703890134648ac9ef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61f351ccdc41c30fa9dd9f8dac465033a066431ed3acc7cd0ae8d2f28e43b7af",
+      "source_fact_keys": [
+        "source_fact:v1:3bf558d7bb3e81afff1ed0c98021fdc820a7f5d4a5388aae987fb3473420a2bf",
+        "source_fact:v1:684ab64d54bbc107a79d17de84666ee088dfdc228e03f619aee74e80bfac5595"
+      ],
+      "source_published_kst": "2026-10-06T13:55+09:00",
+      "title": "금투협, IIFA 총회 참여…\"글로벌 펀드산업 현안 논의\""
+    },
     "source_fact:a3f4c04b37c8cd5d155f0dd4": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
@@ -79265,6 +79989,33 @@
       "source_published_kst": "2026-10-05T22:07+09:00",
       "title": "최대 시장 북미서 통했다…LG전자, 5GW 수주로 '냉각 경쟁력' 입증"
     },
+    "source_fact:aaf7b0baf5706f267a49adf6": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632780",
+      "source": "이투데이",
+      "source_body_digest": "661398629fff17e155104143a0fde3e723da4b1676f724b524e900c9c1abb046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd5be35a3ef198901b4e5e479c40c458a7c75c0defdfaea38ffe1de93a8dca72",
+      "source_fact_keys": [
+        "source_fact:v1:19b69f7df8cdb005a2ee0e35a46c8d31dd56ff0125e7de1aae34f9110be86398",
+        "source_fact:v1:39c28282a1b673d140ca0ed02ae5208f1975276706fd6fa359fe8d024a68a4fc",
+        "source_fact:v1:3b1a0a669ee26ae3be574484923a5a0ab5a06bf8dae6e1365234e00ca9151edb",
+        "source_fact:v1:3f78f70802c0ae0730afef4a855473144ec4448a6765ebff0b158e72bae40de4",
+        "source_fact:v1:845cb3c0e69a687e329166fc0e36caa326656221f45d51f02711ba0e732e4509",
+        "source_fact:v1:93c88bf042672ae4fa7f45037885a005c377f6e736ecf0b205a8dc197a4b1ac9",
+        "source_fact:v1:c84f6015b8888501e8034cb2f36bd6245d9788770e3081e852c48d134950c2a7",
+        "source_fact:v1:e199e2360e4932691c27d9da839f07c9598b3ef5f818ef916431bbae9c8951e2",
+        "source_fact:v1:e1f54749d2a401321082dadc56899dcb47e2f0b2060d777268cd1465077cce1c",
+        "source_fact:v1:ea0521ad84c4acb5b1cac439654c888a372a69e371858af778bdcb61ab2eada0",
+        "source_fact:v1:ea41d71f1edff0b21a6e73b71034ee93bdaf318a6c27f7fc50170ff06bb5ec43"
+      ],
+      "source_published_kst": "2026-10-06T13:52+09:00",
+      "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
     "source_fact:ab2b79d56ef4f1d90c69a544": {
       "first_seen_kst": "2026-10-05T22:30:10+09:00",
       "lanes": {
@@ -79661,6 +80412,24 @@
       ],
       "source_published_kst": "2026-10-06T08:57+09:00",
       "title": "LH, 서울대에 기숙사형 전세임대 200가구 공급…전국 500가구 공모"
+    },
+    "source_fact:ad048190f5c6a5df44bef30a": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01653126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b4e6bdf7b959274bf4fdb472000d22a8975f1c5602310a5f2904ba878ca565f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e3d9aafbc47fa206c356a947ce6d4fc693ea9dd9c29f0109d6df8bda2c60f27",
+      "source_fact_keys": [
+        "source_fact:v1:af73a4fd12a544df3e4b38dbe4bdfd78d77f8ae71c7bbb39e2c4d48c0b5a07f9",
+        "source_fact:v1:d63a69b562920a7a2d01450589a8e41d7ed1ba12722adf0c3c1170d2b671f143"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "광주 군공항 이전 속도전…트럼프 美공장 압박 빌미될라"
     },
     "source_fact:ad60dee9dd63e894a9412073": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -83190,6 +83959,33 @@
       "source_published_kst": "2026-10-06T05:30+09:00",
       "title": "車 부품 보던 AI, 로봇 관절 '가상검증' 나선다"
     },
+    "source_fact:c7d905815b8d07f63d824e5e": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632780",
+      "source": "이투데이",
+      "source_body_digest": "661398629fff17e155104143a0fde3e723da4b1676f724b524e900c9c1abb046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd5be35a3ef198901b4e5e479c40c458a7c75c0defdfaea38ffe1de93a8dca72",
+      "source_fact_keys": [
+        "source_fact:v1:19b69f7df8cdb005a2ee0e35a46c8d31dd56ff0125e7de1aae34f9110be86398",
+        "source_fact:v1:39c28282a1b673d140ca0ed02ae5208f1975276706fd6fa359fe8d024a68a4fc",
+        "source_fact:v1:3b1a0a669ee26ae3be574484923a5a0ab5a06bf8dae6e1365234e00ca9151edb",
+        "source_fact:v1:3f78f70802c0ae0730afef4a855473144ec4448a6765ebff0b158e72bae40de4",
+        "source_fact:v1:845cb3c0e69a687e329166fc0e36caa326656221f45d51f02711ba0e732e4509",
+        "source_fact:v1:93c88bf042672ae4fa7f45037885a005c377f6e736ecf0b205a8dc197a4b1ac9",
+        "source_fact:v1:c84f6015b8888501e8034cb2f36bd6245d9788770e3081e852c48d134950c2a7",
+        "source_fact:v1:e199e2360e4932691c27d9da839f07c9598b3ef5f818ef916431bbae9c8951e2",
+        "source_fact:v1:e1f54749d2a401321082dadc56899dcb47e2f0b2060d777268cd1465077cce1c",
+        "source_fact:v1:ea0521ad84c4acb5b1cac439654c888a372a69e371858af778bdcb61ab2eada0",
+        "source_fact:v1:ea41d71f1edff0b21a6e73b71034ee93bdaf318a6c27f7fc50170ff06bb5ec43"
+      ],
+      "source_published_kst": "2026-10-06T13:52+09:00",
+      "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
     "source_fact:c800083cfb9a5e05002b3855": {
       "first_seen_kst": "2026-10-06T15:14:29+09:00",
       "lanes": {
@@ -83234,6 +84030,26 @@
       ],
       "source_published_kst": "2026-10-06T05:59+09:00",
       "title": "가상자산 거래소 장애인고용 '미달'…5년여간 부담금 13억 | 연합뉴스"
+    },
+    "source_fact:c8962910d841f949ff8d96fa": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168731",
+      "source": "매일경제",
+      "source_body_digest": "21eb2bd0000fc5ff9c9de4912b6948605cd6605d4a85b97aef8f95aee5dcc465",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:e8b7150ef87ab2dd45c65709fecd4669bafa2d8fd81bc9f6489841ee2cbb6dfb",
+      "source_fact_keys": [
+        "source_fact:v1:3cf0f2815e90ca7a9d3238ed6bda0130a0f671cf9380ff402e8b635a0a0fb0ee",
+        "source_fact:v1:469d7265b0acf17324fe446ed5035f35bbcb7f0379056d44b1cc073b3ddc30a8",
+        "source_fact:v1:52eaa536967ef65d0b6011d191c3c59e8c40b348b33c9426e59b52d42d6aa493",
+        "source_fact:v1:60a1cb04e585590f6e3ec2d313a42cdee409aa72046c343ebc8b8b4da8e2f68a"
+      ],
+      "source_published_kst": "2026-10-05T21:23+09:00",
+      "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
     },
     "source_fact:c8bb6c74c16bcde7d871847b": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
@@ -84469,6 +85285,33 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "삼닉 레버리지 '20좌 미만' 출구 마련"
+    },
+    "source_fact:d2a34081dcd16c0a0d0c9cd1": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632780",
+      "source": "이투데이",
+      "source_body_digest": "661398629fff17e155104143a0fde3e723da4b1676f724b524e900c9c1abb046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd5be35a3ef198901b4e5e479c40c458a7c75c0defdfaea38ffe1de93a8dca72",
+      "source_fact_keys": [
+        "source_fact:v1:19b69f7df8cdb005a2ee0e35a46c8d31dd56ff0125e7de1aae34f9110be86398",
+        "source_fact:v1:39c28282a1b673d140ca0ed02ae5208f1975276706fd6fa359fe8d024a68a4fc",
+        "source_fact:v1:3b1a0a669ee26ae3be574484923a5a0ab5a06bf8dae6e1365234e00ca9151edb",
+        "source_fact:v1:3f78f70802c0ae0730afef4a855473144ec4448a6765ebff0b158e72bae40de4",
+        "source_fact:v1:845cb3c0e69a687e329166fc0e36caa326656221f45d51f02711ba0e732e4509",
+        "source_fact:v1:93c88bf042672ae4fa7f45037885a005c377f6e736ecf0b205a8dc197a4b1ac9",
+        "source_fact:v1:c84f6015b8888501e8034cb2f36bd6245d9788770e3081e852c48d134950c2a7",
+        "source_fact:v1:e199e2360e4932691c27d9da839f07c9598b3ef5f818ef916431bbae9c8951e2",
+        "source_fact:v1:e1f54749d2a401321082dadc56899dcb47e2f0b2060d777268cd1465077cce1c",
+        "source_fact:v1:ea0521ad84c4acb5b1cac439654c888a372a69e371858af778bdcb61ab2eada0",
+        "source_fact:v1:ea41d71f1edff0b21a6e73b71034ee93bdaf318a6c27f7fc50170ff06bb5ec43"
+      ],
+      "source_published_kst": "2026-10-06T13:52+09:00",
+      "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
     },
     "source_fact:d2bae35564b76d2ec79739bb": {
       "first_seen_kst": "2026-10-06T12:10:48+09:00",
@@ -87222,6 +88065,33 @@
       "source_published_kst": "2026-10-04T22:38+09:00",
       "title": "\"사우디, 2034 월드컵 경기장 '네옴 스타디움' 건설 계획 보류\" | 연합뉴스"
     },
+    "source_fact:e6943e58cd31baaaa8bea56e": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632780",
+      "source": "이투데이",
+      "source_body_digest": "661398629fff17e155104143a0fde3e723da4b1676f724b524e900c9c1abb046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd5be35a3ef198901b4e5e479c40c458a7c75c0defdfaea38ffe1de93a8dca72",
+      "source_fact_keys": [
+        "source_fact:v1:19b69f7df8cdb005a2ee0e35a46c8d31dd56ff0125e7de1aae34f9110be86398",
+        "source_fact:v1:39c28282a1b673d140ca0ed02ae5208f1975276706fd6fa359fe8d024a68a4fc",
+        "source_fact:v1:3b1a0a669ee26ae3be574484923a5a0ab5a06bf8dae6e1365234e00ca9151edb",
+        "source_fact:v1:3f78f70802c0ae0730afef4a855473144ec4448a6765ebff0b158e72bae40de4",
+        "source_fact:v1:845cb3c0e69a687e329166fc0e36caa326656221f45d51f02711ba0e732e4509",
+        "source_fact:v1:93c88bf042672ae4fa7f45037885a005c377f6e736ecf0b205a8dc197a4b1ac9",
+        "source_fact:v1:c84f6015b8888501e8034cb2f36bd6245d9788770e3081e852c48d134950c2a7",
+        "source_fact:v1:e199e2360e4932691c27d9da839f07c9598b3ef5f818ef916431bbae9c8951e2",
+        "source_fact:v1:e1f54749d2a401321082dadc56899dcb47e2f0b2060d777268cd1465077cce1c",
+        "source_fact:v1:ea0521ad84c4acb5b1cac439654c888a372a69e371858af778bdcb61ab2eada0",
+        "source_fact:v1:ea41d71f1edff0b21a6e73b71034ee93bdaf318a6c27f7fc50170ff06bb5ec43"
+      ],
+      "source_published_kst": "2026-10-06T13:52+09:00",
+      "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
     "source_fact:e698b0cc572c99c9922821a3": {
       "first_seen_kst": "2026-10-06T04:56:19+09:00",
       "lanes": {
@@ -87275,6 +88145,25 @@
       ],
       "source_published_kst": "2026-10-05T20:03+09:00",
       "title": "인스메드, CFO 10월 30일 사임…연간 매출 가이던스 유지"
+    },
+    "source_fact:e6bb09e76a3e62c86eb77f93": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630509",
+      "source": "이투데이",
+      "source_body_digest": "b80f60453d25532a4ab536db0035a578b00aec368a098cdfc8832d3996afa9ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3e1d8b7401b731bd89ff979bad14dc08f71529eda560c59659a7ac55671a6550",
+      "source_fact_keys": [
+        "source_fact:v1:36d07583f696313e84ef0c10f614232bc646ba8ff5efeb10889af70b6c4874c1",
+        "source_fact:v1:65fdc0c6bacafff6ce5465a7cbae61927597545681c034a4526ebea112044f7f",
+        "source_fact:v1:ff8cb7b91665fa6e3ea9e76a804d7413c957d223c12ab120248c831d848b51fe"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "서울에는 GPU, 지방에는 공장…AI가 벌리는 ‘산업 수도권 격차’ [AI 신계급사회]"
     },
     "source_fact:e6ce2cb68ba5552e37117c55": {
       "first_seen_kst": "2026-10-05T23:56:11+09:00",
@@ -88743,6 +89632,33 @@
       "source_published_kst": "2026-10-05T03:42+09:00",
       "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
     },
+    "source_fact:f1de3e97a81d615354fe651c": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632780",
+      "source": "이투데이",
+      "source_body_digest": "661398629fff17e155104143a0fde3e723da4b1676f724b524e900c9c1abb046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd5be35a3ef198901b4e5e479c40c458a7c75c0defdfaea38ffe1de93a8dca72",
+      "source_fact_keys": [
+        "source_fact:v1:19b69f7df8cdb005a2ee0e35a46c8d31dd56ff0125e7de1aae34f9110be86398",
+        "source_fact:v1:39c28282a1b673d140ca0ed02ae5208f1975276706fd6fa359fe8d024a68a4fc",
+        "source_fact:v1:3b1a0a669ee26ae3be574484923a5a0ab5a06bf8dae6e1365234e00ca9151edb",
+        "source_fact:v1:3f78f70802c0ae0730afef4a855473144ec4448a6765ebff0b158e72bae40de4",
+        "source_fact:v1:845cb3c0e69a687e329166fc0e36caa326656221f45d51f02711ba0e732e4509",
+        "source_fact:v1:93c88bf042672ae4fa7f45037885a005c377f6e736ecf0b205a8dc197a4b1ac9",
+        "source_fact:v1:c84f6015b8888501e8034cb2f36bd6245d9788770e3081e852c48d134950c2a7",
+        "source_fact:v1:e199e2360e4932691c27d9da839f07c9598b3ef5f818ef916431bbae9c8951e2",
+        "source_fact:v1:e1f54749d2a401321082dadc56899dcb47e2f0b2060d777268cd1465077cce1c",
+        "source_fact:v1:ea0521ad84c4acb5b1cac439654c888a372a69e371858af778bdcb61ab2eada0",
+        "source_fact:v1:ea41d71f1edff0b21a6e73b71034ee93bdaf318a6c27f7fc50170ff06bb5ec43"
+      ],
+      "source_published_kst": "2026-10-06T13:52+09:00",
+      "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
     "source_fact:f22cdb3a91e716169f93b039": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
       "lanes": {
@@ -89170,6 +90086,33 @@
       ],
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
+    "source_fact:f60a753186edf9db3d040a30": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632780",
+      "source": "이투데이",
+      "source_body_digest": "661398629fff17e155104143a0fde3e723da4b1676f724b524e900c9c1abb046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd5be35a3ef198901b4e5e479c40c458a7c75c0defdfaea38ffe1de93a8dca72",
+      "source_fact_keys": [
+        "source_fact:v1:19b69f7df8cdb005a2ee0e35a46c8d31dd56ff0125e7de1aae34f9110be86398",
+        "source_fact:v1:39c28282a1b673d140ca0ed02ae5208f1975276706fd6fa359fe8d024a68a4fc",
+        "source_fact:v1:3b1a0a669ee26ae3be574484923a5a0ab5a06bf8dae6e1365234e00ca9151edb",
+        "source_fact:v1:3f78f70802c0ae0730afef4a855473144ec4448a6765ebff0b158e72bae40de4",
+        "source_fact:v1:845cb3c0e69a687e329166fc0e36caa326656221f45d51f02711ba0e732e4509",
+        "source_fact:v1:93c88bf042672ae4fa7f45037885a005c377f6e736ecf0b205a8dc197a4b1ac9",
+        "source_fact:v1:c84f6015b8888501e8034cb2f36bd6245d9788770e3081e852c48d134950c2a7",
+        "source_fact:v1:e199e2360e4932691c27d9da839f07c9598b3ef5f818ef916431bbae9c8951e2",
+        "source_fact:v1:e1f54749d2a401321082dadc56899dcb47e2f0b2060d777268cd1465077cce1c",
+        "source_fact:v1:ea0521ad84c4acb5b1cac439654c888a372a69e371858af778bdcb61ab2eada0",
+        "source_fact:v1:ea41d71f1edff0b21a6e73b71034ee93bdaf318a6c27f7fc50170ff06bb5ec43"
+      ],
+      "source_published_kst": "2026-10-06T13:52+09:00",
+      "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
     },
     "source_fact:f66b0d1f25af4c66a1fcca49": {
       "first_seen_kst": "2026-10-05T20:53:37+09:00",
@@ -91110,18 +92053,18 @@
     "title:05155b469a16eeeb0d0a4280": {
       "first_seen_kst": "2026-10-06T14:52:12+09:00",
       "lanes": {
-        "live": "2026-10-06T14:52:12+09:00"
+        "live": "2026-10-06T15:55:43+09:00"
       },
-      "last_seen_kst": "2026-10-06T14:52:12+09:00",
-      "link": "https://www.yna.co.kr/view/PYH20261006087100013",
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.yna.co.kr/view/PYH20261006086600013",
       "source": "연합뉴스",
-      "source_body_digest": "42c7122b9c574671406093644d08fbd8458981478dfebedf2d1e5df26f206efa",
+      "source_body_digest": "aa8d834bc8fe715d8e84d7b0cc557a7131588fb45a828cef14d8cc515070803d",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:6b982b6d171954dc030ff0e30ea5170bf0dff1bdafe7a8c18c9722fca02e9dd7",
+      "source_fact_identity": "source_facts:v1:ae3129a9af41a89a4e38ef2f017d6bcded8d1d278bd98a2946516901898dc0b0",
       "source_fact_keys": [
-        "source_fact:v1:f1c30177730ef39341be1f4d6b40ca9dd6ee3f093d26c4516b90d7e180da4445"
+        "source_fact:v1:b8698cfe9eb6cd92ae5ee1dd429ce09066abd915c4d7ce66e567843b1be68df8"
       ],
-      "source_published_kst": "2026-10-06T11:19+09:00",
+      "source_published_kst": "2026-10-06T11:18+09:00",
       "title": "디스플레이 규제합리화 브리핑하는 김민성 부단장 | 연합뉴스"
     },
     "title:054cf01e789ed535c32012b6": {
@@ -92191,6 +93134,25 @@
       ],
       "source_published_kst": "2026-10-06T09:18+09:00",
       "title": "정부 GPU 4224장 풀었더니 1만3712장 신청…70%가 못 받아"
+    },
+    "title:142feff57a1ea3dbe6459ee2": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.hankyung.com/article/2026100645236",
+      "source": "한국경제",
+      "source_body_digest": "9c4734ff876199e8ee221a7f1382ce9d3e2cfec3eb902d49ba5ed8d2723ab562",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:8611120808fa7b22d97bf01f2ff95bf9f101cb7f3f96ac5556a71d7ec1d1f6a9",
+      "source_fact_keys": [
+        "source_fact:v1:1c9a8b95eed56356e13b5f66cd6eef496a763e424bb5d5b7c2e28459075a4a6b",
+        "source_fact:v1:35a98959586fb4acb387c834344b1a863db6228b377f210895208d5f4d50676e",
+        "source_fact:v1:4ddb0459505504b7ef3c9a8cc93ec709a0309e6212debc945ab5534a51b434db"
+      ],
+      "source_published_kst": "2026-10-06T09:32+09:00",
+      "title": "LG전자, 美 AI 데이터센터 냉각 솔루션 공급 계약에 '급등'"
     },
     "title:1453cb8398713cd829f7d2f0": {
       "first_seen_kst": "2026-10-03T19:11:40+09:00",
@@ -98453,6 +99415,24 @@
       "source_published_kst": "2026-10-06T12:16+09:00",
       "title": "기후부, '에너지 대전환' 속도…2030년 재생e 100GW·석탄발전 2040년 퇴출"
     },
+    "title:5cbcc4c9dbf1e6dc621e5a50": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815485",
+      "source": "뉴시스",
+      "source_body_digest": "d4f8f94e063f2ba8b9cc5387e8395b385bbd7f5aa459eb7703890134648ac9ef",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:61f351ccdc41c30fa9dd9f8dac465033a066431ed3acc7cd0ae8d2f28e43b7af",
+      "source_fact_keys": [
+        "source_fact:v1:3bf558d7bb3e81afff1ed0c98021fdc820a7f5d4a5388aae987fb3473420a2bf",
+        "source_fact:v1:684ab64d54bbc107a79d17de84666ee088dfdc228e03f619aee74e80bfac5595"
+      ],
+      "source_published_kst": "2026-10-06T13:55+09:00",
+      "title": "금투협, IIFA 총회 참여…\"글로벌 펀드산업 현안 논의\""
+    },
     "title:5cc462e991340d78daff1f7f": {
       "first_seen_kst": "2026-10-01T20:00:14+09:00",
       "lanes": {
@@ -99911,18 +100891,21 @@
     "title:6e66c87cc7dede4232798458": {
       "first_seen_kst": "2026-10-05T23:28:38+09:00",
       "lanes": {
-        "live": "2026-10-05T23:28:38+09:00"
+        "live": "2026-10-06T15:55:43+09:00"
       },
-      "last_seen_kst": "2026-10-05T23:28:38+09:00",
-      "link": "https://stock.mk.co.kr/news/view/1169805",
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12168731",
       "source": "매일경제",
-      "source_body_digest": "7d6a2438b970cf042a02d7187943e95e23128722c3eb772d3a1864db54860e99",
+      "source_body_digest": "21eb2bd0000fc5ff9c9de4912b6948605cd6605d4a85b97aef8f95aee5dcc465",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:d734354030ddbba326d927854ad7cfe6230f3fd4bdc2339397498e71fd6790af",
+      "source_fact_identity": "source_facts:v1:e8b7150ef87ab2dd45c65709fecd4669bafa2d8fd81bc9f6489841ee2cbb6dfb",
       "source_fact_keys": [
+        "source_fact:v1:3cf0f2815e90ca7a9d3238ed6bda0130a0f671cf9380ff402e8b635a0a0fb0ee",
+        "source_fact:v1:469d7265b0acf17324fe446ed5035f35bbcb7f0379056d44b1cc073b3ddc30a8",
+        "source_fact:v1:52eaa536967ef65d0b6011d191c3c59e8c40b348b33c9426e59b52d42d6aa493",
         "source_fact:v1:60a1cb04e585590f6e3ec2d313a42cdee409aa72046c343ebc8b8b4da8e2f68a"
       ],
-      "source_published_kst": "2026-10-05T21:22+09:00",
+      "source_published_kst": "2026-10-05T21:23+09:00",
       "title": "테라울프, 머스키 전력 1GW로 2배 확대..2단계 1년 앞당겨"
     },
     "title:6e7bb498f905d04ab9f0c060": {
@@ -103547,6 +104530,24 @@
       "source": "이투데이",
       "title": "고려대, 바이오플라스틱 탄소감축 효과 규명⋯온실가스 91.5%↓"
     },
+    "title:965f60fecc20397ba152811c": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=01653126645610296",
+      "source": "이데일리",
+      "source_body_digest": "b4e6bdf7b959274bf4fdb472000d22a8975f1c5602310a5f2904ba878ca565f9",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e3d9aafbc47fa206c356a947ce6d4fc693ea9dd9c29f0109d6df8bda2c60f27",
+      "source_fact_keys": [
+        "source_fact:v1:af73a4fd12a544df3e4b38dbe4bdfd78d77f8ae71c7bbb39e2c4d48c0b5a07f9",
+        "source_fact:v1:d63a69b562920a7a2d01450589a8e41d7ed1ba12722adf0c3c1170d2b671f143"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "광주 군공항 이전 속도전…트럼프 美공장 압박 빌미될라"
+    },
     "title:966a30edd402a5b17dc374e6": {
       "first_seen_kst": "2026-09-29T01:18:16+09:00",
       "lanes": {
@@ -103774,6 +104775,25 @@
       "source": "뉴시스",
       "source_event_identity": "",
       "title": "美 9월 고용 2만9000명, 예상 3분의 1…10월 금리동결 확률 82.8%"
+    },
+    "title:99d95c9b2b6c2a764755e0d4": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2630509",
+      "source": "이투데이",
+      "source_body_digest": "b80f60453d25532a4ab536db0035a578b00aec368a098cdfc8832d3996afa9ea",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:3e1d8b7401b731bd89ff979bad14dc08f71529eda560c59659a7ac55671a6550",
+      "source_fact_keys": [
+        "source_fact:v1:36d07583f696313e84ef0c10f614232bc646ba8ff5efeb10889af70b6c4874c1",
+        "source_fact:v1:65fdc0c6bacafff6ce5465a7cbae61927597545681c034a4526ebea112044f7f",
+        "source_fact:v1:ff8cb7b91665fa6e3ea9e76a804d7413c957d223c12ab120248c831d848b51fe"
+      ],
+      "source_published_kst": "2026-10-06T05:00+09:00",
+      "title": "서울에는 GPU, 지방에는 공장…AI가 벌리는 ‘산업 수도권 격차’ [AI 신계급사회]"
     },
     "title:99de6d9e73fc3cda894f571c": {
       "first_seen_kst": "2026-10-06T01:16:46+09:00",
@@ -108859,6 +109879,33 @@
       "source_published_kst": "2026-10-05T21:32+09:00",
       "title": "에볼루션 메탈스 앤 테크, 포항 희토류 자석공장 12월 17일 개장..연 1만t 확대 추진"
     },
+    "title:d736fb0d26c723d10f61cfdf": {
+      "first_seen_kst": "2026-10-06T15:55:43+09:00",
+      "lanes": {
+        "live": "2026-10-06T15:55:43+09:00"
+      },
+      "last_seen_kst": "2026-10-06T15:55:43+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632780",
+      "source": "이투데이",
+      "source_body_digest": "661398629fff17e155104143a0fde3e723da4b1676f724b524e900c9c1abb046",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:fd5be35a3ef198901b4e5e479c40c458a7c75c0defdfaea38ffe1de93a8dca72",
+      "source_fact_keys": [
+        "source_fact:v1:19b69f7df8cdb005a2ee0e35a46c8d31dd56ff0125e7de1aae34f9110be86398",
+        "source_fact:v1:39c28282a1b673d140ca0ed02ae5208f1975276706fd6fa359fe8d024a68a4fc",
+        "source_fact:v1:3b1a0a669ee26ae3be574484923a5a0ab5a06bf8dae6e1365234e00ca9151edb",
+        "source_fact:v1:3f78f70802c0ae0730afef4a855473144ec4448a6765ebff0b158e72bae40de4",
+        "source_fact:v1:845cb3c0e69a687e329166fc0e36caa326656221f45d51f02711ba0e732e4509",
+        "source_fact:v1:93c88bf042672ae4fa7f45037885a005c377f6e736ecf0b205a8dc197a4b1ac9",
+        "source_fact:v1:c84f6015b8888501e8034cb2f36bd6245d9788770e3081e852c48d134950c2a7",
+        "source_fact:v1:e199e2360e4932691c27d9da839f07c9598b3ef5f818ef916431bbae9c8951e2",
+        "source_fact:v1:e1f54749d2a401321082dadc56899dcb47e2f0b2060d777268cd1465077cce1c",
+        "source_fact:v1:ea0521ad84c4acb5b1cac439654c888a372a69e371858af778bdcb61ab2eada0",
+        "source_fact:v1:ea41d71f1edff0b21a6e73b71034ee93bdaf318a6c27f7fc50170ff06bb5ec43"
+      ],
+      "source_published_kst": "2026-10-06T13:52+09:00",
+      "title": "거래소 “코스닥 체질 개선 노력⋯법원 제동 건 ‘시총 미달 상폐’ 후속 조치 예정”"
+    },
     "title:d757ef5c13ff0c151e353814": {
       "first_seen_kst": "2026-10-05T16:27:40+09:00",
       "lanes": {
@@ -112258,5 +113305,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T15:44:02+09:00"
+  "updated_at_kst": "2026-10-06T15:55:43+09:00"
 }
