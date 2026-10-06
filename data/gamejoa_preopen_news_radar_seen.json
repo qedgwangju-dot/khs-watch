@@ -2328,24 +2328,23 @@
     "event:6926adee1d70facd68aecdd5": {
       "first_seen_kst": "2026-10-06T06:44:01+09:00",
       "lanes": {
-        "live": "2026-10-06T18:34:25+09:00"
+        "live": "2026-10-06T19:46:03+09:00"
       },
-      "last_seen_kst": "2026-10-06T18:34:25+09:00",
-      "link": "https://www.fnnews.com/news/202610061552292418",
-      "source": "파이낸셜뉴스",
-      "source_body_digest": "4a6803a22bc90c11448239bc4626948286f0cece4b38a0e5a48f5e3a6d79ade2",
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169502",
+      "source": "매일경제",
+      "source_body_digest": "0435efa9a3a008318e36eaf583b06ac62935798a0546374ae873092de420f8e2",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:ff8ac608adcb39955d08bd53b43f0520ff1ad0962e7997afbdfc69eb845b5327",
+      "source_fact_identity": "source_facts:v1:65c9974871e36484a0feb9df083d3f9820ea72ca27b61fb7d0d811db7bc353fd",
       "source_fact_keys": [
-        "source_fact:v1:27bc08ad61f7b95de5e5575d9e090c7400b88b2f5d21dc97a18392bda0f26912",
-        "source_fact:v1:2af96484cc2335f9e989bd83b61e1a858ab9f3a76393d0fe2f373ab75e659424",
-        "source_fact:v1:7733c70bdfb340be657506d3006b3b5be455ba8ed18b05b55fbd1a4749207124",
-        "source_fact:v1:90d73d90ed9b835d893c5237ac12f544707fa4c03d0eab78a45997d85bd8b8b2",
-        "source_fact:v1:aaa921d17575e9d746c54345b47d1985b59e49aec86b6b4bf5fdef1d2372febd",
-        "source_fact:v1:d2923e581e70635d21179e0e397b51e17883300c512d1bf462567ba92b303307"
+        "source_fact:v1:58b817798d405f8361e0d5e1769944d282c9ce2a2017cefd0b07899722241c25",
+        "source_fact:v1:8261edcc042d15bcba350fe767b588ea6eb13cc20c174aed0d163acd33c10d50",
+        "source_fact:v1:8b45d0e41fca9dab8b2ef99ba81f6e1b4c0bd9bde90e3bf77fc1a1cb53b5fc53",
+        "source_fact:v1:bd97858c173a9df7fa65d8fde27649f318f23ba1e319f286a847508954d25a39",
+        "source_fact:v1:da2778e605f5fbd463d772deff02396516ca667b973fa3352b4801f4bdd46465"
       ],
-      "source_published_kst": "2026-10-06T15:52+09:00",
-      "title": "국내 주식형 ETF 리밸런싱 8일 집중…\"삼전 비중축소 전망\""
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "\"AI 병목 구간은 메모리\"… 삼전닉스 담는 새 글로벌ETF"
     },
     "event:6994ec3ec51f16c535c2ebd5": {
       "first_seen_kst": "2026-09-28T15:47:59+09:00",
@@ -6042,6 +6041,27 @@
       "source_published_kst": "2026-10-05T21:21+09:00",
       "title": "C.H. 로빈슨, RXO 58억 달러 인수 합의…3억 달러 시너지 목표"
     },
+    "fact:019ea6b2fc0fdcb96e470fe7": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816156",
+      "source": "뉴시스",
+      "source_body_digest": "364f8e31b6efd0c414b6fa1a87fc332a33ed8559ff22254eb0f7f3f2beea6d42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90f335b4a305fc515a9a107d9d6202a26af8a9fc7d503e7ae5a9eea1c21348ef",
+      "source_fact_keys": [
+        "source_fact:v1:1a129a72b6e6be54f5d9b5a73acbd465541549e41e42b41e5984d7c773392c44",
+        "source_fact:v1:40c78b59b3ed8a5f626bba49440a09f0b07a5e7010ba602cab63080788b6fa55",
+        "source_fact:v1:c2b3191b5b8a60cb50491cfec59431527156b38abd1393fb2512a85e3d7fcb44",
+        "source_fact:v1:c9e6874e91095326ee76bbbdd04bdd6a59e4e8c73da7f8ea61f92cb2bff073d4",
+        "source_fact:v1:f7e5c406c15af3bea34555fa95a3e0156597e45a4823ff7931bce38c6b1a71df"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "구미시·MSDI, 방위산업 맞손…\"미사일 방산 거점으로\""
+    },
     "fact:02003ea881d16f0d401c1545": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -6206,6 +6226,26 @@
       ],
       "source_published_kst": "2026-10-05T03:42+09:00",
       "title": "\"호르무즈 해협서 또 유조선 피격\"…이달에만 최소 4차례 | 연합뉴스"
+    },
+    "fact:05e8de9232c527090deab601": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816169",
+      "source": "뉴시스",
+      "source_body_digest": "f2d53cd23d95bcaa8583455cf72cf6df5c302515bfd1d9ec922f71cf752cad4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6c330c0e856e62af039850c5c22bc1cbf7d145a5f1bebef6fbc892073c8a74f",
+      "source_fact_keys": [
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4f282e6fc85f2b7be2c69685002896b6aaf4cd42150fdd7b80694a9bf68dcbc5",
+        "source_fact:v1:734550f1d450192f667f14b66cfa5fac26003eb2e3245dd0d2aa2b889794de03",
+        "source_fact:v1:86dda6431a51dee59825151f60a11948786316502bebd3ec92f6771c4929cb72"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급 계약…\"배터리 동맹 강화\""
     },
     "fact:0606ed57d3ff91b9097a6ae9": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -6637,6 +6677,27 @@
       ],
       "source_published_kst": "2026-10-06T09:00+09:00",
       "title": "한미반도체, 삼성전기서 245억 장비 수주…곽동신 “삼성그룹 환영”"
+    },
+    "fact:0d5e039fd67b5d27329c6826": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169502",
+      "source": "매일경제",
+      "source_body_digest": "0435efa9a3a008318e36eaf583b06ac62935798a0546374ae873092de420f8e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65c9974871e36484a0feb9df083d3f9820ea72ca27b61fb7d0d811db7bc353fd",
+      "source_fact_keys": [
+        "source_fact:v1:58b817798d405f8361e0d5e1769944d282c9ce2a2017cefd0b07899722241c25",
+        "source_fact:v1:8261edcc042d15bcba350fe767b588ea6eb13cc20c174aed0d163acd33c10d50",
+        "source_fact:v1:8b45d0e41fca9dab8b2ef99ba81f6e1b4c0bd9bde90e3bf77fc1a1cb53b5fc53",
+        "source_fact:v1:bd97858c173a9df7fa65d8fde27649f318f23ba1e319f286a847508954d25a39",
+        "source_fact:v1:da2778e605f5fbd463d772deff02396516ca667b973fa3352b4801f4bdd46465"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "\"AI 병목 구간은 메모리\"… 삼전닉스 담는 새 글로벌ETF"
     },
     "fact:0d901159d6d2f7f3f0f7747a": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -9042,6 +9103,25 @@
       ],
       "source_published_kst": "2026-10-06T14:33+09:00",
       "title": "SK이노베이션, 윤활기유·배터리 성장 전망…\"올해 첫 연간 영업익 10조 노린다\""
+    },
+    "fact:44a3a1982217d28ade8eb5b6": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006171200003",
+      "source": "연합뉴스",
+      "source_body_digest": "246c8fb0ebe3db48045408a994a9ad8167e6a4f01dd77d484e9406a075368e3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53fb7eca21990370266dd942f39042457f780b7548097b310d10bccaf15e1a05",
+      "source_fact_keys": [
+        "source_fact:v1:971e47059ebdd8744a3a8d86e1b06a0978cdc5fe7e0bea32476eb7bd08448211",
+        "source_fact:v1:aa812886f85901ec8b475cdfe7d730a98e936398d0d33a1248f67c3758b15941",
+        "source_fact:v1:e59f88be6bf336d3af01a47c67b491f829ff021d4dda4f07651ed5a64547bea6"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급계약 | 연합뉴스"
     },
     "fact:46c001b758a14523fa412abe": {
       "first_seen_kst": "2026-10-06T19:21:45+09:00",
@@ -14271,6 +14351,24 @@
       "source_published_kst": "2026-10-06T07:05+09:00",
       "title": "한강신도시 때도 그러더니⋯반복되는 ‘교통난’ [교통지옥 김포②]"
     },
+    "fact:d260664485635dfcf3ee8486": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169464",
+      "source": "매일경제",
+      "source_body_digest": "6310389c607c2ab625dd8d1acbe4add4e5e3fdbb5e24a3c162281b2c8b14f97e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c7c75528801b57a515d09baba8066114dd12973aa001f78f9f022d14dfde231d",
+      "source_fact_keys": [
+        "source_fact:v1:3fdccee4ff93f1cd9618d8463aa99d314606810202c0e680a515b1f9cb70343e",
+        "source_fact:v1:df25ded0a722581e202d835eefd28d3a960be33ce10458a24f0e1edb1f503030"
+      ],
+      "source_published_kst": "2026-10-06T17:15+09:00",
+      "title": "태블릿·이어폰·위치추적기까지…‘갤럭시 생태계’ 힘주는 삼성전자"
+    },
     "fact:d38afa3894708fd1720bcb0e": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -17129,6 +17227,27 @@
       "link": "https://www.yna.co.kr/view/AKR20261002183900009",
       "source": "연합뉴스",
       "title": "뉴욕증시, 비농업 고용지표 소화하며 상승 출발 | 연합뉴스"
+    },
+    "link:0e17eb19cfa0c664b14f6e05": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816156",
+      "source": "뉴시스",
+      "source_body_digest": "364f8e31b6efd0c414b6fa1a87fc332a33ed8559ff22254eb0f7f3f2beea6d42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90f335b4a305fc515a9a107d9d6202a26af8a9fc7d503e7ae5a9eea1c21348ef",
+      "source_fact_keys": [
+        "source_fact:v1:1a129a72b6e6be54f5d9b5a73acbd465541549e41e42b41e5984d7c773392c44",
+        "source_fact:v1:40c78b59b3ed8a5f626bba49440a09f0b07a5e7010ba602cab63080788b6fa55",
+        "source_fact:v1:c2b3191b5b8a60cb50491cfec59431527156b38abd1393fb2512a85e3d7fcb44",
+        "source_fact:v1:c9e6874e91095326ee76bbbdd04bdd6a59e4e8c73da7f8ea61f92cb2bff073d4",
+        "source_fact:v1:f7e5c406c15af3bea34555fa95a3e0156597e45a4823ff7931bce38c6b1a71df"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "구미시·MSDI, 방위산업 맞손…\"미사일 방산 거점으로\""
     },
     "link:0e1afca5ac2997f1720f0964": {
       "first_seen_kst": "2026-10-06T09:42:55+09:00",
@@ -26389,6 +26508,24 @@
       "source": "뉴시스",
       "title": "中상무부, 美 무역장벽 조사 연말까지 연장"
     },
+    "link:6beb58076a8feb6861e0d592": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169464",
+      "source": "매일경제",
+      "source_body_digest": "6310389c607c2ab625dd8d1acbe4add4e5e3fdbb5e24a3c162281b2c8b14f97e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c7c75528801b57a515d09baba8066114dd12973aa001f78f9f022d14dfde231d",
+      "source_fact_keys": [
+        "source_fact:v1:3fdccee4ff93f1cd9618d8463aa99d314606810202c0e680a515b1f9cb70343e",
+        "source_fact:v1:df25ded0a722581e202d835eefd28d3a960be33ce10458a24f0e1edb1f503030"
+      ],
+      "source_published_kst": "2026-10-06T17:15+09:00",
+      "title": "태블릿·이어폰·위치추적기까지…‘갤럭시 생태계’ 힘주는 삼성전자"
+    },
     "link:6c043d0876e7e8de4460766a": {
       "first_seen_kst": "2026-10-05T07:24:39+09:00",
       "lanes": {
@@ -26766,6 +26903,26 @@
       "source": "연합뉴스",
       "title": "한화에어로, 미국 아칸소주에 탄약 생산거점…7년간 3조원 투자 | 연합뉴스"
     },
+    "link:6efc23033e1b32a2d2154b65": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816169",
+      "source": "뉴시스",
+      "source_body_digest": "f2d53cd23d95bcaa8583455cf72cf6df5c302515bfd1d9ec922f71cf752cad4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6c330c0e856e62af039850c5c22bc1cbf7d145a5f1bebef6fbc892073c8a74f",
+      "source_fact_keys": [
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4f282e6fc85f2b7be2c69685002896b6aaf4cd42150fdd7b80694a9bf68dcbc5",
+        "source_fact:v1:734550f1d450192f667f14b66cfa5fac26003eb2e3245dd0d2aa2b889794de03",
+        "source_fact:v1:86dda6431a51dee59825151f60a11948786316502bebd3ec92f6771c4929cb72"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급 계약…\"배터리 동맹 강화\""
+    },
     "link:6f126eb10d6c21d13e0a2c0e": {
       "first_seen_kst": "2026-09-18T16:49:31+09:00",
       "lanes": {
@@ -26785,6 +26942,21 @@
       "link": "https://www.yna.co.kr/view/AKR20260930156351008",
       "source": "연합뉴스",
       "title": "상품공급 부족했나…'조각투자' 신종증권시장 개장 연기(종합) | 연합뉴스"
+    },
+    "link:6fd45b551092b7e331cbcf7b": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816146",
+      "source": "뉴시스",
+      "source_body_digest": "86166da0366b42d2e846c42b4cb3d09765680d29596018fba4cb2b5d21f04286",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:28+09:00",
+      "title": "금리 뛰자 매수자들 계약가 다시 깎는다…美상업용 부동산 재협상 확산"
     },
     "link:6feaa47a845f093907b91fe3": {
       "first_seen_kst": "2026-10-01T16:31:12+09:00",
@@ -29577,6 +29749,25 @@
       "link": "https://www.mt.co.kr/world/2026/09/29/2026092910213917655",
       "source": "머니투데이",
       "title": "연준 3연속 금리인상?…\"AI 생산성 효과 불확실, 인플레 장기화\""
+    },
+    "link:8e6ff80cb8ef1df6b7ae8f66": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006171200003",
+      "source": "연합뉴스",
+      "source_body_digest": "246c8fb0ebe3db48045408a994a9ad8167e6a4f01dd77d484e9406a075368e3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53fb7eca21990370266dd942f39042457f780b7548097b310d10bccaf15e1a05",
+      "source_fact_keys": [
+        "source_fact:v1:971e47059ebdd8744a3a8d86e1b06a0978cdc5fe7e0bea32476eb7bd08448211",
+        "source_fact:v1:aa812886f85901ec8b475cdfe7d730a98e936398d0d33a1248f67c3758b15941",
+        "source_fact:v1:e59f88be6bf336d3af01a47c67b491f829ff021d4dda4f07651ed5a64547bea6"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급계약 | 연합뉴스"
     },
     "link:8e785e51654706cc887861cf": {
       "first_seen_kst": "2026-10-05T11:24:20+09:00",
@@ -36344,6 +36535,27 @@
       "source_published_kst": "2026-10-06T10:57+09:00",
       "title": "오텍캐리어, AI 데이터센터용 CDU 제품 라인업 강화"
     },
+    "link:d3834fb4977799e7ba0a4d08": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169502",
+      "source": "매일경제",
+      "source_body_digest": "0435efa9a3a008318e36eaf583b06ac62935798a0546374ae873092de420f8e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65c9974871e36484a0feb9df083d3f9820ea72ca27b61fb7d0d811db7bc353fd",
+      "source_fact_keys": [
+        "source_fact:v1:58b817798d405f8361e0d5e1769944d282c9ce2a2017cefd0b07899722241c25",
+        "source_fact:v1:8261edcc042d15bcba350fe767b588ea6eb13cc20c174aed0d163acd33c10d50",
+        "source_fact:v1:8b45d0e41fca9dab8b2ef99ba81f6e1b4c0bd9bde90e3bf77fc1a1cb53b5fc53",
+        "source_fact:v1:bd97858c173a9df7fa65d8fde27649f318f23ba1e319f286a847508954d25a39",
+        "source_fact:v1:da2778e605f5fbd463d772deff02396516ca667b973fa3352b4801f4bdd46465"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "\"AI 병목 구간은 메모리\"… 삼전닉스 담는 새 글로벌ETF"
+    },
     "link:d3889a19bb005b7ae68bcecf": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -40433,6 +40645,21 @@
       "source": "연합뉴스",
       "title": "美아파트 임대업자 대출 10년간 2천475조원 만기…차환 비상 | 연합뉴스"
     },
+    "link:fe06d2641f700f107c68379b": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815963",
+      "source": "뉴시스",
+      "source_body_digest": "a30e55c551f6946ea57213a1f2041045d89c3212fbb91df6065feac6caef7bdc",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:28+09:00",
+      "title": "\"비축유 44년 만에 바닥인데\"…트럼프, 4000만배럴 또 푼다"
+    },
     "link:fe09b95db51456a330f73a2e": {
       "first_seen_kst": "2026-10-03T15:38:33+09:00",
       "lanes": {
@@ -41035,6 +41262,27 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T12:22+09:00",
       "title": "기업 에너지효율 투자 부담↓…정책융자 금리 2%로 인하"
+    },
+    "original:02be7fd9916d437c779f81ab": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816156",
+      "source": "뉴시스",
+      "source_body_digest": "364f8e31b6efd0c414b6fa1a87fc332a33ed8559ff22254eb0f7f3f2beea6d42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90f335b4a305fc515a9a107d9d6202a26af8a9fc7d503e7ae5a9eea1c21348ef",
+      "source_fact_keys": [
+        "source_fact:v1:1a129a72b6e6be54f5d9b5a73acbd465541549e41e42b41e5984d7c773392c44",
+        "source_fact:v1:40c78b59b3ed8a5f626bba49440a09f0b07a5e7010ba602cab63080788b6fa55",
+        "source_fact:v1:c2b3191b5b8a60cb50491cfec59431527156b38abd1393fb2512a85e3d7fcb44",
+        "source_fact:v1:c9e6874e91095326ee76bbbdd04bdd6a59e4e8c73da7f8ea61f92cb2bff073d4",
+        "source_fact:v1:f7e5c406c15af3bea34555fa95a3e0156597e45a4823ff7931bce38c6b1a71df"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "구미시·MSDI, 방위산업 맞손…\"미사일 방산 거점으로\""
     },
     "original:02f1044ce541f8fb4fabaed9": {
       "first_seen_kst": "2026-10-01T07:43:35+09:00",
@@ -43958,6 +44206,24 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T14:51+09:00",
       "title": "충남 기업 김, 1만2600달러 中수출…\"10만 달러도 가능\""
+    },
+    "original:235616334dc04e6dbe6d4dd1": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169464",
+      "source": "매일경제",
+      "source_body_digest": "6310389c607c2ab625dd8d1acbe4add4e5e3fdbb5e24a3c162281b2c8b14f97e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c7c75528801b57a515d09baba8066114dd12973aa001f78f9f022d14dfde231d",
+      "source_fact_keys": [
+        "source_fact:v1:3fdccee4ff93f1cd9618d8463aa99d314606810202c0e680a515b1f9cb70343e",
+        "source_fact:v1:df25ded0a722581e202d835eefd28d3a960be33ce10458a24f0e1edb1f503030"
+      ],
+      "source_published_kst": "2026-10-06T17:15+09:00",
+      "title": "태블릿·이어폰·위치추적기까지…‘갤럭시 생태계’ 힘주는 삼성전자"
     },
     "original:235ca65f2d352d36a38b410b": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -56158,6 +56424,25 @@
       "source": "전자신문",
       "title": "로보락, 글로벌 로봇청소기 시장 1위…점유율 23.7%"
     },
+    "original:a41136216b45f5347f6e9f6e": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006171200003",
+      "source": "연합뉴스",
+      "source_body_digest": "246c8fb0ebe3db48045408a994a9ad8167e6a4f01dd77d484e9406a075368e3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53fb7eca21990370266dd942f39042457f780b7548097b310d10bccaf15e1a05",
+      "source_fact_keys": [
+        "source_fact:v1:971e47059ebdd8744a3a8d86e1b06a0978cdc5fe7e0bea32476eb7bd08448211",
+        "source_fact:v1:aa812886f85901ec8b475cdfe7d730a98e936398d0d33a1248f67c3758b15941",
+        "source_fact:v1:e59f88be6bf336d3af01a47c67b491f829ff021d4dda4f07651ed5a64547bea6"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급계약 | 연합뉴스"
+    },
     "original:a4331d348e5a004d3cfd2afb": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -59392,6 +59677,27 @@
       "source": "뉴시스",
       "title": "삼성전기, 환율 하락에도 실적 기대감↑…AI 서버 부품이 견인"
     },
+    "original:c9d9ab7ef3c62f6a4a813a8b": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169502",
+      "source": "매일경제",
+      "source_body_digest": "0435efa9a3a008318e36eaf583b06ac62935798a0546374ae873092de420f8e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65c9974871e36484a0feb9df083d3f9820ea72ca27b61fb7d0d811db7bc353fd",
+      "source_fact_keys": [
+        "source_fact:v1:58b817798d405f8361e0d5e1769944d282c9ce2a2017cefd0b07899722241c25",
+        "source_fact:v1:8261edcc042d15bcba350fe767b588ea6eb13cc20c174aed0d163acd33c10d50",
+        "source_fact:v1:8b45d0e41fca9dab8b2ef99ba81f6e1b4c0bd9bde90e3bf77fc1a1cb53b5fc53",
+        "source_fact:v1:bd97858c173a9df7fa65d8fde27649f318f23ba1e319f286a847508954d25a39",
+        "source_fact:v1:da2778e605f5fbd463d772deff02396516ca667b973fa3352b4801f4bdd46465"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "\"AI 병목 구간은 메모리\"… 삼전닉스 담는 새 글로벌ETF"
+    },
     "original:c9e10a0f12562bea2b0ada17": {
       "first_seen_kst": "2026-10-03T22:08:29+09:00",
       "lanes": {
@@ -60959,6 +61265,26 @@
       "source_published_kst": "2026-10-06T07:29+09:00",
       "title": "부산 청년기업, 국내 최초 디지털제품여권 상용화"
     },
+    "original:d7d05592ca2385e4b58dfd65": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816169",
+      "source": "뉴시스",
+      "source_body_digest": "f2d53cd23d95bcaa8583455cf72cf6df5c302515bfd1d9ec922f71cf752cad4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6c330c0e856e62af039850c5c22bc1cbf7d145a5f1bebef6fbc892073c8a74f",
+      "source_fact_keys": [
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4f282e6fc85f2b7be2c69685002896b6aaf4cd42150fdd7b80694a9bf68dcbc5",
+        "source_fact:v1:734550f1d450192f667f14b66cfa5fac26003eb2e3245dd0d2aa2b889794de03",
+        "source_fact:v1:86dda6431a51dee59825151f60a11948786316502bebd3ec92f6771c4929cb72"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급 계약…\"배터리 동맹 강화\""
+    },
     "original:d7d97121b5293dc389a823fe": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -61126,6 +61452,21 @@
       "source": "전자신문",
       "title": "앰코, 韓 패키지 본딩 기술 'R-LTC' 美 시장 전면 배치"
     },
+    "original:d93b60bb1832b9d4703a19b2": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816146",
+      "source": "뉴시스",
+      "source_body_digest": "86166da0366b42d2e846c42b4cb3d09765680d29596018fba4cb2b5d21f04286",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:28+09:00",
+      "title": "금리 뛰자 매수자들 계약가 다시 깎는다…美상업용 부동산 재협상 확산"
+    },
     "original:d95d569dce4024f170b3d583": {
       "first_seen_kst": "2026-10-05T06:25:21+09:00",
       "lanes": {
@@ -61245,6 +61586,21 @@
       ],
       "source_published_kst": "2026-10-06T11:27+09:00",
       "title": "스페이스X, AI 사업 기대감에 날아 올랐다"
+    },
+    "original:da836e7b73156e5e6b12e952": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815963",
+      "source": "뉴시스",
+      "source_body_digest": "a30e55c551f6946ea57213a1f2041045d89c3212fbb91df6065feac6caef7bdc",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:28+09:00",
+      "title": "\"비축유 44년 만에 바닥인데\"…트럼프, 4000만배럴 또 푼다"
     },
     "original:dabb152573373f7a95c7fb89": {
       "first_seen_kst": "2026-09-19T06:33:14+09:00",
@@ -65007,6 +65363,27 @@
       "source_published_kst": "2026-10-05T22:55+09:00",
       "title": "美국채금리 5.3%에 다우 ‘주춤’… 뉴욕증시 혼조 출발"
     },
+    "source_fact:021f6b68a331bd3fbdbc4780": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169502",
+      "source": "매일경제",
+      "source_body_digest": "0435efa9a3a008318e36eaf583b06ac62935798a0546374ae873092de420f8e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65c9974871e36484a0feb9df083d3f9820ea72ca27b61fb7d0d811db7bc353fd",
+      "source_fact_keys": [
+        "source_fact:v1:58b817798d405f8361e0d5e1769944d282c9ce2a2017cefd0b07899722241c25",
+        "source_fact:v1:8261edcc042d15bcba350fe767b588ea6eb13cc20c174aed0d163acd33c10d50",
+        "source_fact:v1:8b45d0e41fca9dab8b2ef99ba81f6e1b4c0bd9bde90e3bf77fc1a1cb53b5fc53",
+        "source_fact:v1:bd97858c173a9df7fa65d8fde27649f318f23ba1e319f286a847508954d25a39",
+        "source_fact:v1:da2778e605f5fbd463d772deff02396516ca667b973fa3352b4801f4bdd46465"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "\"AI 병목 구간은 메모리\"… 삼전닉스 담는 새 글로벌ETF"
+    },
     "source_fact:022a2ae909b53fe0a5810362": {
       "first_seen_kst": "2026-10-06T08:36:05+09:00",
       "lanes": {
@@ -65922,6 +66299,26 @@
       ],
       "source_published_kst": "2026-10-06T09:54+09:00",
       "title": "올해 청약 경쟁률 작년 절반으로 '뚝'…서울·3기신도시는 100대1"
+    },
+    "source_fact:0720b1abfdb402cb5e3efeda": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816169",
+      "source": "뉴시스",
+      "source_body_digest": "f2d53cd23d95bcaa8583455cf72cf6df5c302515bfd1d9ec922f71cf752cad4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6c330c0e856e62af039850c5c22bc1cbf7d145a5f1bebef6fbc892073c8a74f",
+      "source_fact_keys": [
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4f282e6fc85f2b7be2c69685002896b6aaf4cd42150fdd7b80694a9bf68dcbc5",
+        "source_fact:v1:734550f1d450192f667f14b66cfa5fac26003eb2e3245dd0d2aa2b889794de03",
+        "source_fact:v1:86dda6431a51dee59825151f60a11948786316502bebd3ec92f6771c4929cb72"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급 계약…\"배터리 동맹 강화\""
     },
     "source_fact:073595d1f10eab0f3f99db88": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
@@ -68031,6 +68428,27 @@
       ],
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
+    },
+    "source_fact:12fa8d9fc5821ae0eacab73f": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169502",
+      "source": "매일경제",
+      "source_body_digest": "0435efa9a3a008318e36eaf583b06ac62935798a0546374ae873092de420f8e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65c9974871e36484a0feb9df083d3f9820ea72ca27b61fb7d0d811db7bc353fd",
+      "source_fact_keys": [
+        "source_fact:v1:58b817798d405f8361e0d5e1769944d282c9ce2a2017cefd0b07899722241c25",
+        "source_fact:v1:8261edcc042d15bcba350fe767b588ea6eb13cc20c174aed0d163acd33c10d50",
+        "source_fact:v1:8b45d0e41fca9dab8b2ef99ba81f6e1b4c0bd9bde90e3bf77fc1a1cb53b5fc53",
+        "source_fact:v1:bd97858c173a9df7fa65d8fde27649f318f23ba1e319f286a847508954d25a39",
+        "source_fact:v1:da2778e605f5fbd463d772deff02396516ca667b973fa3352b4801f4bdd46465"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "\"AI 병목 구간은 메모리\"… 삼전닉스 담는 새 글로벌ETF"
     },
     "source_fact:1327ee7960a4782f20731a38": {
       "first_seen_kst": "2026-10-06T17:35:32+09:00",
@@ -71564,6 +71982,27 @@
       "source_published_kst": "2026-10-06T08:26+09:00",
       "title": "외국인·명품 소비에 비용 절감까지…백화점 3사, 3분기 실적 ‘청신호’"
     },
+    "source_fact:28b1ab2375c726f7ada0d5e0": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816156",
+      "source": "뉴시스",
+      "source_body_digest": "364f8e31b6efd0c414b6fa1a87fc332a33ed8559ff22254eb0f7f3f2beea6d42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90f335b4a305fc515a9a107d9d6202a26af8a9fc7d503e7ae5a9eea1c21348ef",
+      "source_fact_keys": [
+        "source_fact:v1:1a129a72b6e6be54f5d9b5a73acbd465541549e41e42b41e5984d7c773392c44",
+        "source_fact:v1:40c78b59b3ed8a5f626bba49440a09f0b07a5e7010ba602cab63080788b6fa55",
+        "source_fact:v1:c2b3191b5b8a60cb50491cfec59431527156b38abd1393fb2512a85e3d7fcb44",
+        "source_fact:v1:c9e6874e91095326ee76bbbdd04bdd6a59e4e8c73da7f8ea61f92cb2bff073d4",
+        "source_fact:v1:f7e5c406c15af3bea34555fa95a3e0156597e45a4823ff7931bce38c6b1a71df"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "구미시·MSDI, 방위산업 맞손…\"미사일 방산 거점으로\""
+    },
     "source_fact:28c485bc4de70d8e5770172f": {
       "first_seen_kst": "2026-10-06T09:00:21+09:00",
       "lanes": {
@@ -74690,6 +75129,27 @@
       ],
       "source_published_kst": "2026-10-06T14:29+09:00",
       "title": "에스넷시스템, 델 사업 성장세…실적 확대 견인"
+    },
+    "source_fact:3aea33b847ee4a62056bb05b": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816156",
+      "source": "뉴시스",
+      "source_body_digest": "364f8e31b6efd0c414b6fa1a87fc332a33ed8559ff22254eb0f7f3f2beea6d42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90f335b4a305fc515a9a107d9d6202a26af8a9fc7d503e7ae5a9eea1c21348ef",
+      "source_fact_keys": [
+        "source_fact:v1:1a129a72b6e6be54f5d9b5a73acbd465541549e41e42b41e5984d7c773392c44",
+        "source_fact:v1:40c78b59b3ed8a5f626bba49440a09f0b07a5e7010ba602cab63080788b6fa55",
+        "source_fact:v1:c2b3191b5b8a60cb50491cfec59431527156b38abd1393fb2512a85e3d7fcb44",
+        "source_fact:v1:c9e6874e91095326ee76bbbdd04bdd6a59e4e8c73da7f8ea61f92cb2bff073d4",
+        "source_fact:v1:f7e5c406c15af3bea34555fa95a3e0156597e45a4823ff7931bce38c6b1a71df"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "구미시·MSDI, 방위산업 맞손…\"미사일 방산 거점으로\""
     },
     "source_fact:3af4b997b3016cf79316d5a9": {
       "first_seen_kst": "2026-10-05T19:37:20+09:00",
@@ -78236,6 +78696,25 @@
       ],
       "source_published_kst": "2026-10-06T13:55+09:00",
       "title": "제약바이오협회, 'R&D·임상·RA 역량강화' 세미나"
+    },
+    "source_fact:4f969292e4b2a7ed4de8bc1a": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006171200003",
+      "source": "연합뉴스",
+      "source_body_digest": "246c8fb0ebe3db48045408a994a9ad8167e6a4f01dd77d484e9406a075368e3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53fb7eca21990370266dd942f39042457f780b7548097b310d10bccaf15e1a05",
+      "source_fact_keys": [
+        "source_fact:v1:971e47059ebdd8744a3a8d86e1b06a0978cdc5fe7e0bea32476eb7bd08448211",
+        "source_fact:v1:aa812886f85901ec8b475cdfe7d730a98e936398d0d33a1248f67c3758b15941",
+        "source_fact:v1:e59f88be6bf336d3af01a47c67b491f829ff021d4dda4f07651ed5a64547bea6"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급계약 | 연합뉴스"
     },
     "source_fact:4f9dbb6e421cd7419c441208": {
       "first_seen_kst": "2026-10-05T21:42:22+09:00",
@@ -82323,6 +82802,25 @@
       "source_published_kst": "2026-10-06T09:47+09:00",
       "title": "중간선거 앞두고 전전긍긍…트럼프 \"농업용 면세유 車사용 한시 유예\""
     },
+    "source_fact:6682aa6061c2cb05da77d589": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006171200003",
+      "source": "연합뉴스",
+      "source_body_digest": "246c8fb0ebe3db48045408a994a9ad8167e6a4f01dd77d484e9406a075368e3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53fb7eca21990370266dd942f39042457f780b7548097b310d10bccaf15e1a05",
+      "source_fact_keys": [
+        "source_fact:v1:971e47059ebdd8744a3a8d86e1b06a0978cdc5fe7e0bea32476eb7bd08448211",
+        "source_fact:v1:aa812886f85901ec8b475cdfe7d730a98e936398d0d33a1248f67c3758b15941",
+        "source_fact:v1:e59f88be6bf336d3af01a47c67b491f829ff021d4dda4f07651ed5a64547bea6"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급계약 | 연합뉴스"
+    },
     "source_fact:66855d2a919a8f6819e80ef4": {
       "first_seen_kst": "2026-10-05T19:17:41+09:00",
       "lanes": {
@@ -82580,6 +83078,27 @@
       "source_published_kst": "2026-10-06T08:18+09:00",
       "title": "[단독]\"100억 넘게 번다더니 겨우 1억\"…95%가 이랬다, 코스닥 특례상장 왜[코스닥 뻥튀기 상장]①"
     },
+    "source_fact:67ee3e167c1c0fcad2e96203": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816156",
+      "source": "뉴시스",
+      "source_body_digest": "364f8e31b6efd0c414b6fa1a87fc332a33ed8559ff22254eb0f7f3f2beea6d42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90f335b4a305fc515a9a107d9d6202a26af8a9fc7d503e7ae5a9eea1c21348ef",
+      "source_fact_keys": [
+        "source_fact:v1:1a129a72b6e6be54f5d9b5a73acbd465541549e41e42b41e5984d7c773392c44",
+        "source_fact:v1:40c78b59b3ed8a5f626bba49440a09f0b07a5e7010ba602cab63080788b6fa55",
+        "source_fact:v1:c2b3191b5b8a60cb50491cfec59431527156b38abd1393fb2512a85e3d7fcb44",
+        "source_fact:v1:c9e6874e91095326ee76bbbdd04bdd6a59e4e8c73da7f8ea61f92cb2bff073d4",
+        "source_fact:v1:f7e5c406c15af3bea34555fa95a3e0156597e45a4823ff7931bce38c6b1a71df"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "구미시·MSDI, 방위산업 맞손…\"미사일 방산 거점으로\""
+    },
     "source_fact:6805bfa6b3979eb5ac07b94c": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -82777,6 +83296,27 @@
       ],
       "source_published_kst": "2026-10-05T21:36+09:00",
       "title": "엑스 컴퓨트, 조지아 AI 클러스터 인수..고객계약 5년 연장"
+    },
+    "source_fact:690a2c7052949bbe9ac432c7": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169502",
+      "source": "매일경제",
+      "source_body_digest": "0435efa9a3a008318e36eaf583b06ac62935798a0546374ae873092de420f8e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65c9974871e36484a0feb9df083d3f9820ea72ca27b61fb7d0d811db7bc353fd",
+      "source_fact_keys": [
+        "source_fact:v1:58b817798d405f8361e0d5e1769944d282c9ce2a2017cefd0b07899722241c25",
+        "source_fact:v1:8261edcc042d15bcba350fe767b588ea6eb13cc20c174aed0d163acd33c10d50",
+        "source_fact:v1:8b45d0e41fca9dab8b2ef99ba81f6e1b4c0bd9bde90e3bf77fc1a1cb53b5fc53",
+        "source_fact:v1:bd97858c173a9df7fa65d8fde27649f318f23ba1e319f286a847508954d25a39",
+        "source_fact:v1:da2778e605f5fbd463d772deff02396516ca667b973fa3352b4801f4bdd46465"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "\"AI 병목 구간은 메모리\"… 삼전닉스 담는 새 글로벌ETF"
     },
     "source_fact:6917dc00610539ff397cca63": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -84781,6 +85321,26 @@
       ],
       "source_published_kst": "2026-10-06T14:46+09:00",
       "title": "두산에너빌, 스페이스XAI에 가스터빈 1호 출하…첫 해외 수출 | 연합뉴스"
+    },
+    "source_fact:7368f792cedaa8e7138bf10b": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816169",
+      "source": "뉴시스",
+      "source_body_digest": "f2d53cd23d95bcaa8583455cf72cf6df5c302515bfd1d9ec922f71cf752cad4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6c330c0e856e62af039850c5c22bc1cbf7d145a5f1bebef6fbc892073c8a74f",
+      "source_fact_keys": [
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4f282e6fc85f2b7be2c69685002896b6aaf4cd42150fdd7b80694a9bf68dcbc5",
+        "source_fact:v1:734550f1d450192f667f14b66cfa5fac26003eb2e3245dd0d2aa2b889794de03",
+        "source_fact:v1:86dda6431a51dee59825151f60a11948786316502bebd3ec92f6771c4929cb72"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급 계약…\"배터리 동맹 강화\""
     },
     "source_fact:738ebdba685bc01302a1e208": {
       "first_seen_kst": "2026-10-06T06:01:11+09:00",
@@ -88104,6 +88664,27 @@
       "source_published_kst": "2026-10-06T11:11+09:00",
       "title": "컨테이너 일일이 안 묶어도 된다…HD현대, 세계 첫 ‘래싱프리 컨테이너선’ 인도"
     },
+    "source_fact:84c6e09f78ab7112d2a12226": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816156",
+      "source": "뉴시스",
+      "source_body_digest": "364f8e31b6efd0c414b6fa1a87fc332a33ed8559ff22254eb0f7f3f2beea6d42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90f335b4a305fc515a9a107d9d6202a26af8a9fc7d503e7ae5a9eea1c21348ef",
+      "source_fact_keys": [
+        "source_fact:v1:1a129a72b6e6be54f5d9b5a73acbd465541549e41e42b41e5984d7c773392c44",
+        "source_fact:v1:40c78b59b3ed8a5f626bba49440a09f0b07a5e7010ba602cab63080788b6fa55",
+        "source_fact:v1:c2b3191b5b8a60cb50491cfec59431527156b38abd1393fb2512a85e3d7fcb44",
+        "source_fact:v1:c9e6874e91095326ee76bbbdd04bdd6a59e4e8c73da7f8ea61f92cb2bff073d4",
+        "source_fact:v1:f7e5c406c15af3bea34555fa95a3e0156597e45a4823ff7931bce38c6b1a71df"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "구미시·MSDI, 방위산업 맞손…\"미사일 방산 거점으로\""
+    },
     "source_fact:84cb41af8ea390df4f18d934": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
       "lanes": {
@@ -88372,6 +88953,26 @@
       ],
       "source_published_kst": "2026-10-06T00:04+09:00",
       "title": "엔진·배터리·공조… AI 데이터센터, 제조업 신시장을 열다"
+    },
+    "source_fact:85c33fea4687314e7245a9fb": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816169",
+      "source": "뉴시스",
+      "source_body_digest": "f2d53cd23d95bcaa8583455cf72cf6df5c302515bfd1d9ec922f71cf752cad4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6c330c0e856e62af039850c5c22bc1cbf7d145a5f1bebef6fbc892073c8a74f",
+      "source_fact_keys": [
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4f282e6fc85f2b7be2c69685002896b6aaf4cd42150fdd7b80694a9bf68dcbc5",
+        "source_fact:v1:734550f1d450192f667f14b66cfa5fac26003eb2e3245dd0d2aa2b889794de03",
+        "source_fact:v1:86dda6431a51dee59825151f60a11948786316502bebd3ec92f6771c4929cb72"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급 계약…\"배터리 동맹 강화\""
     },
     "source_fact:85d6dad647c07e28005f4472": {
       "first_seen_kst": "2026-10-06T06:27:01+09:00",
@@ -89221,6 +89822,24 @@
       ],
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
+    },
+    "source_fact:8b342a3530cc8e86b9b29a7e": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169464",
+      "source": "매일경제",
+      "source_body_digest": "6310389c607c2ab625dd8d1acbe4add4e5e3fdbb5e24a3c162281b2c8b14f97e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c7c75528801b57a515d09baba8066114dd12973aa001f78f9f022d14dfde231d",
+      "source_fact_keys": [
+        "source_fact:v1:3fdccee4ff93f1cd9618d8463aa99d314606810202c0e680a515b1f9cb70343e",
+        "source_fact:v1:df25ded0a722581e202d835eefd28d3a960be33ce10458a24f0e1edb1f503030"
+      ],
+      "source_published_kst": "2026-10-06T17:15+09:00",
+      "title": "태블릿·이어폰·위치추적기까지…‘갤럭시 생태계’ 힘주는 삼성전자"
     },
     "source_fact:8b4478b3fa79fe414606014b": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
@@ -92601,6 +93220,26 @@
       "source_published_kst": "2026-10-06T11:25+09:00",
       "title": "[속보]삼성전기, 2900억 규모 AI 서버용 MLCC 공급계약 체결"
     },
+    "source_fact:9dcf8322e15e1f369c3a3fca": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816169",
+      "source": "뉴시스",
+      "source_body_digest": "f2d53cd23d95bcaa8583455cf72cf6df5c302515bfd1d9ec922f71cf752cad4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6c330c0e856e62af039850c5c22bc1cbf7d145a5f1bebef6fbc892073c8a74f",
+      "source_fact_keys": [
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4f282e6fc85f2b7be2c69685002896b6aaf4cd42150fdd7b80694a9bf68dcbc5",
+        "source_fact:v1:734550f1d450192f667f14b66cfa5fac26003eb2e3245dd0d2aa2b889794de03",
+        "source_fact:v1:86dda6431a51dee59825151f60a11948786316502bebd3ec92f6771c4929cb72"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급 계약…\"배터리 동맹 강화\""
+    },
     "source_fact:9e040961808e685e175616c0": {
       "first_seen_kst": "2026-10-06T10:31:08+09:00",
       "lanes": {
@@ -95312,6 +95951,27 @@
       ],
       "source_published_kst": "2026-10-06T11:22+09:00",
       "title": "\"2028년 전력 대란 온다\" 경고…잘나가던 삼전닉스 '빨간불'"
+    },
+    "source_fact:ad9c3ef65692104a470e67c3": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169502",
+      "source": "매일경제",
+      "source_body_digest": "0435efa9a3a008318e36eaf583b06ac62935798a0546374ae873092de420f8e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65c9974871e36484a0feb9df083d3f9820ea72ca27b61fb7d0d811db7bc353fd",
+      "source_fact_keys": [
+        "source_fact:v1:58b817798d405f8361e0d5e1769944d282c9ce2a2017cefd0b07899722241c25",
+        "source_fact:v1:8261edcc042d15bcba350fe767b588ea6eb13cc20c174aed0d163acd33c10d50",
+        "source_fact:v1:8b45d0e41fca9dab8b2ef99ba81f6e1b4c0bd9bde90e3bf77fc1a1cb53b5fc53",
+        "source_fact:v1:bd97858c173a9df7fa65d8fde27649f318f23ba1e319f286a847508954d25a39",
+        "source_fact:v1:da2778e605f5fbd463d772deff02396516ca667b973fa3352b4801f4bdd46465"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "\"AI 병목 구간은 메모리\"… 삼전닉스 담는 새 글로벌ETF"
     },
     "source_fact:add4fc3a3ad824be02527115": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
@@ -101755,6 +102415,24 @@
       "source_published_kst": "2026-10-05T17:54+09:00",
       "title": "24년來 최고 금리도 AI 기세 못막아…나스닥 사상 최고[월스트리트in]"
     },
+    "source_fact:d32c4c11635dd94fbea7074c": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169464",
+      "source": "매일경제",
+      "source_body_digest": "6310389c607c2ab625dd8d1acbe4add4e5e3fdbb5e24a3c162281b2c8b14f97e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c7c75528801b57a515d09baba8066114dd12973aa001f78f9f022d14dfde231d",
+      "source_fact_keys": [
+        "source_fact:v1:3fdccee4ff93f1cd9618d8463aa99d314606810202c0e680a515b1f9cb70343e",
+        "source_fact:v1:df25ded0a722581e202d835eefd28d3a960be33ce10458a24f0e1edb1f503030"
+      ],
+      "source_published_kst": "2026-10-06T17:15+09:00",
+      "title": "태블릿·이어폰·위치추적기까지…‘갤럭시 생태계’ 힘주는 삼성전자"
+    },
     "source_fact:d32d28a767e20d2181edaede": {
       "first_seen_kst": "2026-10-06T13:41:31+09:00",
       "lanes": {
@@ -104237,6 +104915,27 @@
       "source_published_kst": "2026-10-06T06:27+09:00",
       "title": "뉴욕 증시, 국채 금리 급등에도 나스닥 사상 최고치"
     },
+    "source_fact:e0209a6dc3162f49a3367c87": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169502",
+      "source": "매일경제",
+      "source_body_digest": "0435efa9a3a008318e36eaf583b06ac62935798a0546374ae873092de420f8e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65c9974871e36484a0feb9df083d3f9820ea72ca27b61fb7d0d811db7bc353fd",
+      "source_fact_keys": [
+        "source_fact:v1:58b817798d405f8361e0d5e1769944d282c9ce2a2017cefd0b07899722241c25",
+        "source_fact:v1:8261edcc042d15bcba350fe767b588ea6eb13cc20c174aed0d163acd33c10d50",
+        "source_fact:v1:8b45d0e41fca9dab8b2ef99ba81f6e1b4c0bd9bde90e3bf77fc1a1cb53b5fc53",
+        "source_fact:v1:bd97858c173a9df7fa65d8fde27649f318f23ba1e319f286a847508954d25a39",
+        "source_fact:v1:da2778e605f5fbd463d772deff02396516ca667b973fa3352b4801f4bdd46465"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "\"AI 병목 구간은 메모리\"… 삼전닉스 담는 새 글로벌ETF"
+    },
     "source_fact:e043ba9d25707d984107be82": {
       "first_seen_kst": "2026-10-05T20:12:05+09:00",
       "lanes": {
@@ -105640,6 +106339,25 @@
       "source_published_kst": "2026-10-06T15:02+09:00",
       "title": "전남광주시, '장성 데이터센터' 첫 출자…48억 지분투자"
     },
+    "source_fact:e83602ac8a74038759959cb3": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006171200003",
+      "source": "연합뉴스",
+      "source_body_digest": "246c8fb0ebe3db48045408a994a9ad8167e6a4f01dd77d484e9406a075368e3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53fb7eca21990370266dd942f39042457f780b7548097b310d10bccaf15e1a05",
+      "source_fact_keys": [
+        "source_fact:v1:971e47059ebdd8744a3a8d86e1b06a0978cdc5fe7e0bea32476eb7bd08448211",
+        "source_fact:v1:aa812886f85901ec8b475cdfe7d730a98e936398d0d33a1248f67c3758b15941",
+        "source_fact:v1:e59f88be6bf336d3af01a47c67b491f829ff021d4dda4f07651ed5a64547bea6"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급계약 | 연합뉴스"
+    },
     "source_fact:e840aa96d1ef6ef8767bcc84": {
       "first_seen_kst": "2026-10-06T16:09:23+09:00",
       "lanes": {
@@ -106253,6 +106971,27 @@
       ],
       "source_published_kst": "2026-10-05T16:51+09:00",
       "title": "AI株 숨고르기 반사익…美바이오 ETF 순풍"
+    },
+    "source_fact:ebb5ce6485af3229b86d4fcd": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816156",
+      "source": "뉴시스",
+      "source_body_digest": "364f8e31b6efd0c414b6fa1a87fc332a33ed8559ff22254eb0f7f3f2beea6d42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90f335b4a305fc515a9a107d9d6202a26af8a9fc7d503e7ae5a9eea1c21348ef",
+      "source_fact_keys": [
+        "source_fact:v1:1a129a72b6e6be54f5d9b5a73acbd465541549e41e42b41e5984d7c773392c44",
+        "source_fact:v1:40c78b59b3ed8a5f626bba49440a09f0b07a5e7010ba602cab63080788b6fa55",
+        "source_fact:v1:c2b3191b5b8a60cb50491cfec59431527156b38abd1393fb2512a85e3d7fcb44",
+        "source_fact:v1:c9e6874e91095326ee76bbbdd04bdd6a59e4e8c73da7f8ea61f92cb2bff073d4",
+        "source_fact:v1:f7e5c406c15af3bea34555fa95a3e0156597e45a4823ff7931bce38c6b1a71df"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "구미시·MSDI, 방위산업 맞손…\"미사일 방산 거점으로\""
     },
     "source_fact:ebf8a00914d657f214316c71": {
       "first_seen_kst": "2026-10-06T05:21:17+09:00",
@@ -110206,6 +110945,27 @@
       "source_published_kst": "2026-10-05T12:22+09:00",
       "title": "기업 에너지효율 투자 부담↓…정책융자 금리 2%로 인하"
     },
+    "title:02be7fd9916d437c779f81ab": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816156",
+      "source": "뉴시스",
+      "source_body_digest": "364f8e31b6efd0c414b6fa1a87fc332a33ed8559ff22254eb0f7f3f2beea6d42",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:90f335b4a305fc515a9a107d9d6202a26af8a9fc7d503e7ae5a9eea1c21348ef",
+      "source_fact_keys": [
+        "source_fact:v1:1a129a72b6e6be54f5d9b5a73acbd465541549e41e42b41e5984d7c773392c44",
+        "source_fact:v1:40c78b59b3ed8a5f626bba49440a09f0b07a5e7010ba602cab63080788b6fa55",
+        "source_fact:v1:c2b3191b5b8a60cb50491cfec59431527156b38abd1393fb2512a85e3d7fcb44",
+        "source_fact:v1:c9e6874e91095326ee76bbbdd04bdd6a59e4e8c73da7f8ea61f92cb2bff073d4",
+        "source_fact:v1:f7e5c406c15af3bea34555fa95a3e0156597e45a4823ff7931bce38c6b1a71df"
+      ],
+      "source_published_kst": "2026-10-06T17:33+09:00",
+      "title": "구미시·MSDI, 방위산업 맞손…\"미사일 방산 거점으로\""
+    },
     "title:02f1044ce541f8fb4fabaed9": {
       "first_seen_kst": "2026-10-01T07:43:35+09:00",
       "lanes": {
@@ -113128,6 +113888,24 @@
       "source_fact_keys": [],
       "source_published_kst": "2026-10-06T14:51+09:00",
       "title": "충남 기업 김, 1만2600달러 中수출…\"10만 달러도 가능\""
+    },
+    "title:235616334dc04e6dbe6d4dd1": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.mk.co.kr/news/business/12169464",
+      "source": "매일경제",
+      "source_body_digest": "6310389c607c2ab625dd8d1acbe4add4e5e3fdbb5e24a3c162281b2c8b14f97e",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:c7c75528801b57a515d09baba8066114dd12973aa001f78f9f022d14dfde231d",
+      "source_fact_keys": [
+        "source_fact:v1:3fdccee4ff93f1cd9618d8463aa99d314606810202c0e680a515b1f9cb70343e",
+        "source_fact:v1:df25ded0a722581e202d835eefd28d3a960be33ce10458a24f0e1edb1f503030"
+      ],
+      "source_published_kst": "2026-10-06T17:15+09:00",
+      "title": "태블릿·이어폰·위치추적기까지…‘갤럭시 생태계’ 힘주는 삼성전자"
     },
     "title:235ca65f2d352d36a38b410b": {
       "first_seen_kst": "2026-10-06T12:35:44+09:00",
@@ -125501,6 +126279,25 @@
       "source": "전자신문",
       "title": "로보락, 글로벌 로봇청소기 시장 1위…점유율 23.7%"
     },
+    "title:a41136216b45f5347f6e9f6e": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006171200003",
+      "source": "연합뉴스",
+      "source_body_digest": "246c8fb0ebe3db48045408a994a9ad8167e6a4f01dd77d484e9406a075368e3d",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:53fb7eca21990370266dd942f39042457f780b7548097b310d10bccaf15e1a05",
+      "source_fact_keys": [
+        "source_fact:v1:971e47059ebdd8744a3a8d86e1b06a0978cdc5fe7e0bea32476eb7bd08448211",
+        "source_fact:v1:aa812886f85901ec8b475cdfe7d730a98e936398d0d33a1248f67c3758b15941",
+        "source_fact:v1:e59f88be6bf336d3af01a47c67b491f829ff021d4dda4f07651ed5a64547bea6"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급계약 | 연합뉴스"
+    },
     "title:a4331d348e5a004d3cfd2afb": {
       "first_seen_kst": "2026-10-05T21:23:54+09:00",
       "lanes": {
@@ -128780,6 +129577,27 @@
       "source": "뉴시스",
       "title": "삼성전기, 환율 하락에도 실적 기대감↑…AI 서버 부품이 견인"
     },
+    "title:c9d9ab7ef3c62f6a4a813a8b": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.mk.co.kr/news/stock/12169502",
+      "source": "매일경제",
+      "source_body_digest": "0435efa9a3a008318e36eaf583b06ac62935798a0546374ae873092de420f8e2",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:65c9974871e36484a0feb9df083d3f9820ea72ca27b61fb7d0d811db7bc353fd",
+      "source_fact_keys": [
+        "source_fact:v1:58b817798d405f8361e0d5e1769944d282c9ce2a2017cefd0b07899722241c25",
+        "source_fact:v1:8261edcc042d15bcba350fe767b588ea6eb13cc20c174aed0d163acd33c10d50",
+        "source_fact:v1:8b45d0e41fca9dab8b2ef99ba81f6e1b4c0bd9bde90e3bf77fc1a1cb53b5fc53",
+        "source_fact:v1:bd97858c173a9df7fa65d8fde27649f318f23ba1e319f286a847508954d25a39",
+        "source_fact:v1:da2778e605f5fbd463d772deff02396516ca667b973fa3352b4801f4bdd46465"
+      ],
+      "source_published_kst": "2026-10-06T17:29+09:00",
+      "title": "\"AI 병목 구간은 메모리\"… 삼전닉스 담는 새 글로벌ETF"
+    },
     "title:c9e10a0f12562bea2b0ada17": {
       "first_seen_kst": "2026-10-03T22:08:29+09:00",
       "lanes": {
@@ -130358,6 +131176,26 @@
       "source_published_kst": "2026-10-06T07:29+09:00",
       "title": "부산 청년기업, 국내 최초 디지털제품여권 상용화"
     },
+    "title:d7d05592ca2385e4b58dfd65": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816169",
+      "source": "뉴시스",
+      "source_body_digest": "f2d53cd23d95bcaa8583455cf72cf6df5c302515bfd1d9ec922f71cf752cad4b",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:d6c330c0e856e62af039850c5c22bc1cbf7d145a5f1bebef6fbc892073c8a74f",
+      "source_fact_keys": [
+        "source_fact:v1:3fde38c702628e9aa4d099dba8974ce63fd91cd8106168fe8ec89a8b1ece09b8",
+        "source_fact:v1:4f282e6fc85f2b7be2c69685002896b6aaf4cd42150fdd7b80694a9bf68dcbc5",
+        "source_fact:v1:734550f1d450192f667f14b66cfa5fac26003eb2e3245dd0d2aa2b889794de03",
+        "source_fact:v1:86dda6431a51dee59825151f60a11948786316502bebd3ec92f6771c4929cb72"
+      ],
+      "source_published_kst": "2026-10-06T17:40+09:00",
+      "title": "포스코퓨처엠, 삼성SDI와 6조 규모 LFP 양극재 공급 계약…\"배터리 동맹 강화\""
+    },
     "title:d7d97121b5293dc389a823fe": {
       "first_seen_kst": "2026-10-06T17:24:43+09:00",
       "lanes": {
@@ -130525,6 +131363,21 @@
       "source": "전자신문",
       "title": "앰코, 韓 패키지 본딩 기술 'R-LTC' 美 시장 전면 배치"
     },
+    "title:d93b60bb1832b9d4703a19b2": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003816146",
+      "source": "뉴시스",
+      "source_body_digest": "86166da0366b42d2e846c42b4cb3d09765680d29596018fba4cb2b5d21f04286",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:28+09:00",
+      "title": "금리 뛰자 매수자들 계약가 다시 깎는다…美상업용 부동산 재협상 확산"
+    },
     "title:d95cc8b1f263e8ed81fce253": {
       "first_seen_kst": "2026-10-02T17:56:05+09:00",
       "lanes": {
@@ -130654,6 +131507,21 @@
       ],
       "source_published_kst": "2026-10-06T11:27+09:00",
       "title": "스페이스X, AI 사업 기대감에 날아 올랐다"
+    },
+    "title:da836e7b73156e5e6b12e952": {
+      "first_seen_kst": "2026-10-06T19:46:03+09:00",
+      "lanes": {
+        "live": "2026-10-06T19:46:03+09:00"
+      },
+      "last_seen_kst": "2026-10-06T19:46:03+09:00",
+      "link": "https://www.newsis.com/view/NISX20261006_0003815963",
+      "source": "뉴시스",
+      "source_body_digest": "a30e55c551f6946ea57213a1f2041045d89c3212fbb91df6065feac6caef7bdc",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T17:28+09:00",
+      "title": "\"비축유 44년 만에 바닥인데\"…트럼프, 4000만배럴 또 푼다"
     },
     "title:dabb152573373f7a95c7fb89": {
       "first_seen_kst": "2026-09-19T06:33:14+09:00",
@@ -134125,5 +134993,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T19:33:48+09:00"
+  "updated_at_kst": "2026-10-06T19:46:03+09:00"
 }
