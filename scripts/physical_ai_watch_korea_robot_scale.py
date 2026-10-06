@@ -59,6 +59,21 @@ New alerts require a robotics-specific execution change: named robot OEM/sample,
 qualification/design win, binding volume contract, dedicated robot-memory product,
 per-robot memory/storage content disclosure, mass production/shipment, price/ASP,
 reliability qualification, or reversal.
+
+Lane E — Morgan Stanley humanoid research benchmark
+Baseline locked from Morgan Stanley's 2025 Humanoid 100 / humanoid-economy work:
+- global humanoid market around $5tn by 2050 and nearly 1bn units in use;
+- roughly 4bn global workers × about $10k average annual wage = ~$40tn global
+  labor market TAM (labor pool, not robot revenue);
+- $5/hour humanoid replacing two $25/hour workers supports about $200k NPV per
+  humanoid in Morgan Stanley's illustrative economics;
+- Humanoid 100 maps public companies into Brain / Body / Integrators; inclusion
+  is not proof of a current customer/order. The original report says 52% were
+  currently involved and 48% were competitors/potential future participants.
+
+Repeated summaries, reposted videos and thematic beneficiary lists are silent.
+New alerts require an official Morgan Stanley revision to the unit/market/economic
+assumptions, or a new Humanoid 100 version that adds/removes/reclassifies a company.
 """
 from __future__ import annotations
 
@@ -94,6 +109,8 @@ for q in [
     '(삼성전자 OR "Samsung Electronics" OR SK하이닉스 OR "SK hynix" OR Micron) (피지컬AI OR "physical AI" OR 로봇 OR robotics OR robot OR 휴머노이드 OR humanoid) (LPDDR5X OR LPDDR6 OR PIM OR UFS OR AutoSSD OR SSD OR DRAM OR NAND OR memory OR storage OR 메모리 OR D램 OR 낸드 OR 저장장치) (고객 OR 샘플 OR 검증 OR 채택 OR 탑재 OR 공급 OR 계약 OR 양산 OR 출하 OR 용량 OR GB OR TB)',
     '(SK하이닉스 OR "SK hynix") ("Auto/Robotics LPDDR5/5x" OR "Auto Robotics LPDDR5" OR robotics memory OR 로봇 메모리) (고객 OR sample OR qualification OR design win OR supply OR shipment OR production)',
     '(삼성전자 OR "Samsung Electronics") ("Detachable AutoSSD" OR "LPDDR5X-PIM" OR LPDDR6) (휴머노이드 OR humanoid OR robotics OR robot OR 로봇 OR "physical AI") (고객 OR sample OR qualification OR 채택 OR 탑재 OR 계약 OR 양산 OR 출하)',
+    '("Morgan Stanley" OR 모건스탠리) ("Humanoid 100" OR humanoid OR 휴머노이드) (2050 OR "1 billion" OR 10억 OR "$5 trillion" OR 5조달러 OR "$40 trillion" OR 40조달러 OR NPV OR "$200,000" OR 20만달러)',
+    '("Morgan Stanley" OR 모건스탠리) ("Humanoid 100") (update OR revised OR revision OR add OR added OR remove OR removed OR reclassify OR 편입 OR 제외 OR 변경 OR 개정)',
 ]:
     if q not in base.QUERIES:
         base.QUERIES.append(q)
@@ -105,6 +122,7 @@ base.OFFICIAL_OR_PRIMARY.update({
     'NVIDIA', 'AMD', 'Advanced Micro Devices', 'Arm', 'Arm Holdings',
     'Google', 'Google DeepMind', 'Boston Dynamics',
     'SK하이닉스', 'SK hynix', 'SK hynix Newsroom', 'Micron', 'Micron Technology',
+    'Morgan Stanley', 'Morgan Stanley Research',
 })
 base.TRUSTED.update({
     '연합뉴스', '뉴시스', '전자신문', '한국경제', '매일경제', '머니투데이',
@@ -381,6 +399,58 @@ PHYS_MEM_REVERSE = re.compile(
 )
 
 
+MS_HUMANOID = re.compile(r'Morgan\s+Stanley|모건스탠리', re.I)
+MS_H100 = re.compile(r'Humanoid\s*100|휴머노이드\s*100', re.I)
+MS_HUMANOID_CTX = re.compile(r'humanoid|robotics?|embodied\s*AI|휴머노이드|로봇|피지컬\s*AI', re.I)
+MS_BASELINE_1B = re.compile(
+    r'(?:2050.{0,80}(?:1\s*billion|one\s*billion|10\s*억)|'
+    r'(?:1\s*billion|one\s*billion|10\s*억).{0,80}2050)',
+    re.I,
+)
+MS_BASELINE_5T = re.compile(
+    r'(?:\$?\s*5\s*trillion|5\s*조\s*달러).{0,100}(?:2050|humanoid|휴머노이드)|'
+    r'(?:2050|humanoid|휴머노이드).{0,100}(?:\$?\s*5\s*trillion|5\s*조\s*달러)',
+    re.I,
+)
+MS_BASELINE_40T = re.compile(
+    r'(?:4\s*billion|4\s*bn|40\s*억).{0,120}(?:\$?\s*10,?000|10,?000\s*dollars?|1\s*만\s*달러).{0,140}'
+    r'(?:\$?\s*40\s*trillion|40\s*조\s*달러)|'
+    r'(?:\$?\s*40\s*trillion|40\s*조\s*달러).{0,180}(?:global\s+labor|노동\s*시장)',
+    re.I | re.S,
+)
+MS_BASELINE_NPV = re.compile(
+    r'(?:\$?\s*5\s*(?:/|per\s*)?\s*hour|시간당\s*\$?\s*5).{0,180}'
+    r'(?:two|2|두).{0,50}(?:\$?\s*25|25\s*dollars?|25달러).{0,180}'
+    r'(?:\$?\s*200,?000|200\s*thousand|20\s*만\s*달러).{0,80}(?:NPV|순현재가치)?',
+    re.I | re.S,
+)
+MS_H100_STRUCTURE = re.compile(
+    r'(?:Humanoid\s*100|휴머노이드\s*100).{0,220}'
+    r'(?:Brain|Body|Integrators?|브레인|바디|통합|완성체)',
+    re.I | re.S,
+)
+MS_H100_INVOLVEMENT = re.compile(
+    r'52\s*%.{0,120}(?:currently\s+involved|현재\s*참여)|'
+    r'48\s*%.{0,140}(?:competitor|potential|잠재|경쟁)',
+    re.I | re.S,
+)
+MS_REVISION = re.compile(
+    r'revis(?:e|ed|ion)|update(?:d)?|raise(?:d)?|lower(?:ed)?|increase(?:d)?|decrease(?:d)?|'
+    r'상향|하향|수정|개정|변경|업데이트',
+    re.I,
+)
+MS_H100_CHANGE = re.compile(
+    r'add(?:ed|s)?|remove(?:d|s)?|reclassif(?:y|ied)|new\s+version|updated\s+list|'
+    r'편입|추가|제외|삭제|재분류|새\s*버전|목록\s*개정',
+    re.I,
+)
+MS_FORECAST_NUMBER = re.compile(
+    r'\d+(?:\.\d+)?\s*(?:billion|million|trillion|bn|tn|억|조)|'
+    r'\$\s*\d[\d,.]*(?:\s*(?:billion|million|trillion|bn|tn))?',
+    re.I,
+)
+
+
 def _is_korea_policy(text: str) -> bool:
     execution = (
         KOREA_POLICY.search(text) or PROC_NOTICE.search(text) or PROC_AWARD.search(text)
@@ -406,6 +476,51 @@ def _is_korea_policy(text: str) -> bool:
 
 def _is_samsung_robot(text: str) -> bool:
     return bool(SAMSUNG.search(text) and SAMSUNG_ROBOT.search(text))
+
+
+def _is_ms_humanoid_research(text: str) -> bool:
+    return bool(MS_HUMANOID.search(text) and MS_HUMANOID_CTX.search(text) and (
+        MS_H100.search(text)
+        or MS_BASELINE_1B.search(text)
+        or MS_BASELINE_5T.search(text)
+        or MS_BASELINE_40T.search(text)
+        or MS_BASELINE_NPV.search(text)
+    ))
+
+
+def _ms_humanoid_stage(text: str, source: str = '') -> str:
+    if not _is_ms_humanoid_research(text):
+        return ''
+    if MS_H100.search(text) and MS_H100_CHANGE.search(text) and MS_REVISION.search(text):
+        return 'humanoid100_revision'
+    if MS_REVISION.search(text) and MS_FORECAST_NUMBER.search(text):
+        # Exact legacy values repeated with "update" in a repost still remain baseline
+        # unless the text clearly states a changed figure.
+        known = bool(
+            MS_BASELINE_1B.search(text)
+            or MS_BASELINE_5T.search(text)
+            or MS_BASELINE_40T.search(text)
+            or MS_BASELINE_NPV.search(text)
+        )
+        changed_values = re.search(
+            r'(?:2050.{0,80}(?:\d+(?:\.\d+)?\s*(?:billion|million|억))|'
+            r'(?:market|시장).{0,80}\$?\s*\d+(?:\.\d+)?\s*trillion|'
+            r'(?:NPV|순현재가치).{0,80}\$?\s*\d[\d,]+)',
+            text,
+            re.I,
+        )
+        if changed_values and (not known or re.search(r'from|to|기존|종전|→|에서.{0,30}로', text, re.I)):
+            return 'forecast_revision'
+    if (
+        MS_BASELINE_1B.search(text)
+        or MS_BASELINE_5T.search(text)
+        or MS_BASELINE_40T.search(text)
+        or MS_BASELINE_NPV.search(text)
+        or MS_H100_STRUCTURE.search(text)
+        or MS_H100_INVOLVEMENT.search(text)
+    ):
+        return 'known_baseline'
+    return 'monitor'
 
 
 def _is_physical_ai_memory(text: str) -> bool:
@@ -564,6 +679,8 @@ def _samsung_stage(text: str) -> str:
 def topic_group(text: str) -> str | None:
     if _is_korea_policy(text):
         return 'korea_robot_scale_policy'
+    if _is_ms_humanoid_research(text) and _ms_humanoid_stage(text) != 'monitor':
+        return 'ms_humanoid_research'
     if _is_physical_ai_memory(text) and _physical_ai_memory_stage(text) != 'monitor':
         return 'physical_ai_memory'
     if _is_robot_compute(text) and _robot_compute_stage(text) != 'monitor':
@@ -621,6 +738,22 @@ def score(item: dict) -> int:
             'supplier_award': 13,
             'reverse': 14,
         }.get(stage, 0)
+        return s
+
+    if group == 'ms_humanoid_research':
+        src = item.get('source') or ''
+        stage = _ms_humanoid_stage(text, src)
+        if stage in {'known_baseline', 'monitor'}:
+            return 0
+        if PRICE_ONLY.search(title):
+            return -20
+        # Research revisions only alert from Morgan Stanley itself. Secondary
+        # media and social summaries are discovery-only to avoid false upgrades.
+        if src not in {'Morgan Stanley', 'Morgan Stanley Research'}:
+            return 0
+        s = 28
+        if base.NUMERIC.search(text): s += 4
+        s += {'forecast_revision': 16, 'humanoid100_revision': 14}.get(stage, 0)
         return s
 
     if group == 'physical_ai_memory':
@@ -705,6 +838,13 @@ def category(text: str, group: str) -> str:
             'reverse': '삼성전자 로봇 · 일정·안전·신뢰성 후퇴',
         }.get(_samsung_stage(text), '삼성전자 로봇 · 사업 단계 변화')
 
+    if group == 'ms_humanoid_research':
+        return {
+            'known_baseline': '모건스탠리 휴머노이드 · 2025 장기전망·Humanoid 100 기준선',
+            'forecast_revision': '모건스탠리 휴머노이드 · 2050 보급·시장·경제성 전망 수정',
+            'humanoid100_revision': '모건스탠리 휴머노이드 · Humanoid 100 구성·역할 개정',
+        }.get(_ms_humanoid_stage(text), '모건스탠리 휴머노이드 · 후속 연구 변화')
+
     if group == 'physical_ai_memory':
         return {
             'media_thesis_baseline': '피지컬AI 메모리 · HBM 이후 로봇수요 기사 기준선',
@@ -764,6 +904,14 @@ def meaning(cat: str) -> str:
             '일정·안전·신뢰성 후퇴': '로봇 양산·현장배치가 신뢰성·안전·사고·개발지연 때문에 뒤로 밀리는 역방향 신호입니다. 실패 원인과 새 일정, 보증·보험 영향을 확인합니다.',
         }.get(raw, 'RX사업추진실의 제조→가정 전략, 수백만대 잠재력, 99.99% 필요 수준, World Action Models·Human Motion Retargeting은 현재 기준선이며 반복 보도는 침묵합니다.')
 
+
+    if cat.startswith('모건스탠리 휴머노이드'):
+        raw = cat.split(' · ', 1)[-1]
+        return {
+            '2025 장기전망·Humanoid 100 기준선': 'Morgan Stanley의 2050년 약 10억대·약 5조달러 휴머노이드 시장, 약 40조달러 글로벌 노동시장, 약 20만달러/대 NPV와 Humanoid 100은 현재 기준선입니다. 40조달러는 로봇 매출이 아니라 노동시장 잠재주소시장입니다. Humanoid 100 편입도 직접 고객·수주를 뜻하지 않습니다.',
+            '2050 보급·시장·경제성 전망 수정': 'Morgan Stanley가 장기 보급대수·시장규모·대당 경제성 가정을 실제로 바꾼 경우입니다. 기존 수치와 새 수치의 방향·변경폭을 분리해 공급망 총량 가정을 다시 계산합니다.',
+            'Humanoid 100 구성·역할 개정': 'Morgan Stanley가 Humanoid 100의 편입·제외·Brain/Body/Integrator 역할을 공식 개정한 신호입니다. 단순 테마 편입과 실제 고객·수주·양산은 별도로 검증합니다.',
+        }.get(raw, 'Morgan Stanley 휴머노이드 장기전망의 실제 수정 여부를 추적합니다.')
 
     if cat.startswith('피지컬AI 메모리'):
         raw = cat.split(' · ', 1)[-1]
@@ -832,6 +980,14 @@ def risk(cat: str) -> str:
         return '수백만대는 잠재시장 표현이지 판매가이던스가 아닙니다. 공장별 실제 배치대수와 양산제품·가격·외부판매를 별도로 확인합니다.'
 
 
+    if cat.startswith('모건스탠리 휴머노이드'):
+        raw = cat.split(' · ', 1)[-1]
+        if raw == '2025 장기전망·Humanoid 100 기준선':
+            return '가장 큰 오판은 40조달러 노동시장 TAM을 휴머노이드 매출시장으로 읽거나 Humanoid 100 편입사를 확정 공급사로 보는 것입니다. 원 보고서는 52%만 현재 관여, 48%는 경쟁사·잠재 참여사로 분류했습니다.'
+        if raw == '2050 보급·시장·경제성 전망 수정':
+            return '2050 장기전망은 가격하락·안전·규제·신뢰성·사회수용성에 민감합니다. 2030·2040 중간 보급경로와 실제 연간 출하가 먼저 깨지는지 확인합니다.'
+        return '리서치 분류 변경은 실적 이벤트가 아닙니다. 기업 공시·고객사 발표·실제 수주·출하가 확인돼야 직접 사업 단계로 승격합니다.'
+
     if cat.startswith('피지컬AI 메모리'):
         raw = cat.split(' · ', 1)[-1]
         if raw == 'HBM 이후 로봇수요 기사 기준선':
@@ -869,6 +1025,13 @@ def verification(item: dict, group: str, text: str) -> str:
         if src in base.OFFICIAL_OR_PRIMARY:
             return '삼성전자·삼성 AI Forum 공식자료'
         return '신뢰 매체 보도 · 삼성전자 공식자료와 실제 공장·제품 단계 교차확인'
+    if group == 'ms_humanoid_research':
+        stage = _ms_humanoid_stage(text, src)
+        if stage == 'known_baseline':
+            return 'Morgan Stanley 공식 Research/Insights 기준선 · 2차 요약·재배포는 신규 사건 아님'
+        if src in {'Morgan Stanley', 'Morgan Stanley Research'}:
+            return 'Morgan Stanley 공식 Research/Insights · 기존 전망/목록과 직접 비교'
+        return '2차 요약·보도 단계 · Morgan Stanley 공식 원문 확인 전 단독 알림 금지'
     if group == 'physical_ai_memory':
         stage = _physical_ai_memory_stage(text, src)
         if stage == 'media_thesis_baseline':
@@ -927,6 +1090,17 @@ def key(item: dict) -> str:
             f"samsung-robot-scale|{stage}|{','.join(anchors)}|{_sig_numbers(text)}".encode()
         ).hexdigest()
 
+
+    if group == 'ms_humanoid_research':
+        stage = _ms_humanoid_stage(text, item.get('source') or '')
+        if stage == 'known_baseline':
+            return hashlib.sha256(b'morgan-stanley|humanoid|2025|1b-5tn-40tn-200k-h100').hexdigest()
+        nums = '|'.join(sorted(set(re.findall(
+            r'\$?\s*\d[\d,.]*\s*(?:billion|million|trillion|bn|tn|억|조|달러)?',
+            text,
+            re.I,
+        )))[:10])
+        return hashlib.sha256(f'morgan-stanley|humanoid|{stage}|{nums}'.encode()).hexdigest()
 
     if group == 'physical_ai_memory':
         stage = _physical_ai_memory_stage(text, item.get('source') or '')
@@ -1002,6 +1176,8 @@ def tag_for(group: str) -> str:
         return '한국로봇정책'
     if group == 'samsung_robot_scale':
         return '삼성전자로봇'
+    if group == 'ms_humanoid_research':
+        return 'MS휴머노이드'
     if group == 'physical_ai_memory':
         return '피지컬AI메모리'
     if group == 'robot_compute_semiconductor':
@@ -1032,6 +1208,11 @@ def clean_title(title: str, source: str) -> str:
             'supplier_award': '삼성전자 로봇 핵심부품 공급사·발주 확인',
             'reverse': '삼성전자 로봇, 일정·안전·신뢰성 역방향 변화',
         }.get(_samsung_stage(text), _orig_clean_title(title, source))
+    if _is_ms_humanoid_research(text) and _ms_humanoid_stage(text, source) != 'monitor':
+        return {
+            'forecast_revision': '모건스탠리, 휴머노이드 2050 보급·시장·경제성 전망 수정',
+            'humanoid100_revision': '모건스탠리, Humanoid 100 구성·역할 공식 개정',
+        }.get(_ms_humanoid_stage(text, source), _orig_clean_title(title, source))
     if _is_physical_ai_memory(text) and _physical_ai_memory_stage(text, source) != 'monitor':
         return {
             'robot_customer_sample': '피지컬AI 메모리, 로봇 고객 샘플 공급 확인',
@@ -1062,7 +1243,7 @@ def clean_title(title: str, source: str) -> str:
 def select_diverse(items: list[dict], seen: set[str], force: bool, limit: int) -> list[dict]:
     chosen = _orig_select_diverse(items, seen, force, limit)
     candidates = items if force else [x for x in items if x.get('key') not in seen]
-    for group in ('korea_robot_scale_policy', 'samsung_robot_scale', 'physical_ai_memory', 'robot_compute_semiconductor'):
+    for group in ('korea_robot_scale_policy', 'samsung_robot_scale', 'physical_ai_memory', 'robot_compute_semiconductor', 'ms_humanoid_research'):
         hit = next((x for x in candidates if x.get('group') == group), None)
         if not hit or any(x.get('key') == hit.get('key') for x in chosen):
             continue
