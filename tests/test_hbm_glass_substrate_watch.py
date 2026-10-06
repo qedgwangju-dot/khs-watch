@@ -189,7 +189,7 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         item = {"title":"JNTC glass process update","description":"","source":"디일렉",
                 "published_at_kst":"2026-10-06T10:00:00+09:00",
                 "direct_link":"https://thelec.kr/news/articleView.html?idxno=63298"}
-        body = "핵심 공정은 기존 12시간에서 분 단위로 단축됐다. 별도로 레이저 가공, 식각, 금속화 공정을 모두 내재화했다."
+        body = "제이앤티씨 TGV 유리기판 핵심 공정은 기존 12시간에서 분 단위로 단축됐다. 별도로 레이저 가공, 식각, 금속화 공정을 모두 내재화했다."
         rows = w.parse_glass_substrate_records(item, body)
         rec = next(x for x in rows if x["axis"] == "glass_process_cycle_time")
         self.assertEqual(rec["value"]["process_name"], "unverified_core_process")
