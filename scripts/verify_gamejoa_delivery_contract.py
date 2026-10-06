@@ -378,6 +378,49 @@ def main() -> int:
     production = importlib.import_module(PRODUCTION_RUNNER)
     compact = importlib.import_module(LOCKED_TELEGRAM_MODULE)
     runtime_delivery = importlib.import_module("verify_gamejoa_delivery_result")
+    timeline_alert = {
+        "news": "미국 전력망 DPA 후속 집행",
+        "source_title": "Energy Department Announces Alaska Railbelt Transmission Project to Receive Defense Production Act Funding",
+        "original_news": "Energy Department Announces Alaska Railbelt Transmission Project to Receive Defense Production Act Funding",
+        "source": "DOE news",
+        "publisher": "U.S. Department of Energy",
+        "link": "https://www.energy.gov/articles/energy-department-announces-alaska-railbelt-transmission-project-receive-defense",
+        "published": "2026-10-05T00:00:00+09:00",
+        "published_kst": "2026-10-05T00:00:00+09:00",
+        "body_verified": True,
+        "source_body": "Defense Production Act Section 303 grid infrastructure. Beluga-Healy Transmission Project in the Alaska Railbelt.",
+        "policy_plain_summary": "DOE가 Beluga-Healy 송전사업에 DPA 자금을 투입할 의향을 발표했습니다.",
+        "impacts": ["돈 버는 능력", "시간표"],
+        "paths": ["전력망 투자", "정책 타임라인"],
+        "sectors": ["데이터센터/전력망/전력기기"],
+        "policy_timeline": [
+            {"date": "2025-01-20", "stage": "기반", "detail": "Executive Order 14156 국가 에너지 비상사태 선언"},
+            {"date": "2026-04-20", "stage": "법적 근거", "detail": "DPA 제303조 전력망·전력기기·공급망 대통령 결정"},
+            {"date": "2026-10-05", "stage": "이번 집행", "detail": "DOE, Beluga-Healy 송전사업 DPA 자금 투입 의향 발표"},
+        ],
+    }
+    timeline_block = compact.compact_alert(
+        timeline_alert,
+        1,
+        dt.datetime(2026, 10, 6, 18, 0, tzinfo=dt.timezone(dt.timedelta(hours=9))),
+        {},
+        {},
+    )
+    for marker in (
+        "- 타임라인:",
+        "2025년 1월 20일",
+        "Executive Order 14156",
+        "2026년 4월 20일",
+        "DPA 제303조",
+        "2026년 10월 5일",
+        "Beluga-Healy",
+    ):
+        if marker not in timeline_block:
+            errors.append(f"GAMEJOA presidential timeline missing marker: {marker}")
+    timeline_block_errors = compact.compact_alert_block_errors(timeline_block)
+    if timeline_block_errors:
+        errors.append(f"GAMEJOA presidential timeline block failed: {timeline_block_errors}")
+
     seen_merge = importlib.import_module("merge_gamejoa_preopen_news_radar_seen")
     merged_seen = seen_merge.merge_states(
         {
