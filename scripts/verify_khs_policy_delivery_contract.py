@@ -334,6 +334,34 @@ def assert_presidential_policy_timeline_contract() -> None:
         raise AssertionError("executive-order alert without timeline was not blocked")
 
 
+    whitehouse = {
+        "source": "White House executive orders",
+        "title": "Example Energy Infrastructure Action",
+        "source_title": "Example Energy Infrastructure Action",
+        "link": "https://www.whitehouse.gov/presidential-actions/2026/10/example-energy-infrastructure-action/",
+        "document_type": "Executive Order",
+        "presidential_document_type": "Executive Order",
+        "published_kst": "2026-10-06T00:00:00+09:00",
+        "importance": "상",
+        "status": "확정",
+        "impacts": ["시간표"],
+        "paths": ["정책 타임라인"],
+        "sectors": ["전력망/전력기기"],
+    }
+    federal_register = {
+        **whitehouse,
+        "source": "Federal Register presidential documents",
+        "link": "https://www.federalregister.gov/documents/2026/10/07/example-energy-infrastructure-action",
+        "document_type": "Presidential Document",
+        "presidential_document_type": "Executive Order",
+        "publication_date": "2026-10-07",
+        "signing_date": "2026-10-06",
+    }
+    merged = khs_policy_alert_router.dedupe_alerts([whitehouse, federal_register])
+    if len(merged) != 1:
+        raise AssertionError("same executive order from White House and Federal Register was not deduplicated")
+
+
 def main() -> int:
     OUT_DIR.mkdir(exist_ok=True)
     khs_policy_watch._self_test_doe_grid_dpa_event_model()
