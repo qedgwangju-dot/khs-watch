@@ -40,20 +40,37 @@
     "event:0299202f202670e087ceb126": {
       "first_seen_kst": "2026-10-06T07:00:19+09:00",
       "lanes": {
-        "live": "2026-10-06T14:18:00+09:00"
+        "live": "2026-10-06T17:59:23+09:00"
       },
-      "last_seen_kst": "2026-10-06T14:18:00+09:00",
-      "link": "https://www.hankyung.com/article/202610065198L",
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.hankyung.com/article/2026100647151",
       "source": "한국경제",
-      "source_body_digest": "d3fcbdbb76184e995a04d9b02ec37bfd8203b3fcc117b51c0c6ea38847e32720",
+      "source_body_digest": "f9ef754344c2ec9db8ee37d39d4637764e3eb1b083b8c13e3effeab3ee3dba65",
       "source_event_identity": "",
-      "source_fact_identity": "source_facts:v1:8d15c3272ca655b40135a370c446a699bcff761e5d9d9d5d8b124f7d3f78e7c8",
+      "source_fact_identity": "source_facts:v1:38b5ba3f11bac1a3a3de29091e1e0c10b182b2073234f8a9275af926c2f23c96",
       "source_fact_keys": [
-        "source_fact:v1:e12c41e50185fbe795d72d7305ef7550509bd1307c49d8388ba8827625181880",
-        "source_fact:v1:e5449cf8e9522273799fac2071628ccbad51cf47ba96666e5558d0454e67366f"
+        "source_fact:v1:30012c072d71da1ea2ec2396d8f67e6b973cb35ab0a3030a833672c320b19aa0",
+        "source_fact:v1:aa1719b6293dad27f484b27676cddb4b805a51b0e7464aa0cbab0c19d0f91954",
+        "source_fact:v1:d2a13f7b8ca3e9226a1644c5bf361a8b8f76e70d380a5a571a75b84526c038b9",
+        "source_fact:v1:f303bae00a6de5ca9aacde0aae4132b1c6ca8334df6a70d73d713e6ab9c5564d"
       ],
-      "source_published_kst": "2026-10-06T11:19+09:00",
-      "title": "넥스틴 수주공시 - Wafer Inspection System 공급계약 254.4억원 (매출액대비 38.02 %)"
+      "source_published_kst": "2026-10-06T15:45+09:00",
+      "title": "NH투자증권, 기업금융·투자수익 두 토끼…IMA로 잡는다"
+    },
+    "event:02d60295bf23df1b9743049a": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.etnews.com/20261006000365",
+      "source": "전자신문",
+      "source_body_digest": "db3e240d18d379d72b90ba78a73b2963e2e2ede144064cf0c57bc2c992d9f988",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "[2026 국감]정부, 반도체 생태계 확장 사활…메가프로젝트 입지 논란은 여전"
     },
     "event:033917d192b9a4d16c4f65fd": {
       "first_seen_kst": "2026-09-19T08:53:16+09:00",
@@ -6066,6 +6083,26 @@
       "source_published_kst": "2026-10-06T08:07+09:00",
       "title": "[증시키워드] 삼전 실적 대기…HLB 신약 모멘텀에 관심도↑"
     },
+    "fact:078008db8780ff3d1c08082f": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.hankyung.com/article/2026100647151",
+      "source": "한국경제",
+      "source_body_digest": "f9ef754344c2ec9db8ee37d39d4637764e3eb1b083b8c13e3effeab3ee3dba65",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38b5ba3f11bac1a3a3de29091e1e0c10b182b2073234f8a9275af926c2f23c96",
+      "source_fact_keys": [
+        "source_fact:v1:30012c072d71da1ea2ec2396d8f67e6b973cb35ab0a3030a833672c320b19aa0",
+        "source_fact:v1:aa1719b6293dad27f484b27676cddb4b805a51b0e7464aa0cbab0c19d0f91954",
+        "source_fact:v1:d2a13f7b8ca3e9226a1644c5bf361a8b8f76e70d380a5a571a75b84526c038b9",
+        "source_fact:v1:f303bae00a6de5ca9aacde0aae4132b1c6ca8334df6a70d73d713e6ab9c5564d"
+      ],
+      "source_published_kst": "2026-10-06T15:45+09:00",
+      "title": "NH투자증권, 기업금융·투자수익 두 토끼…IMA로 잡는다"
+    },
     "fact:0800e69c81117652619f8305": {
       "first_seen_kst": "2026-10-05T19:27:09+09:00",
       "lanes": {
@@ -11026,6 +11063,23 @@
       "source_published_kst": "2026-10-06T15:07+09:00",
       "title": "\"K-콘텐츠 금융지원\"…부산은행·신보, 100억원 보증지원"
     },
+    "fact:92459c37a6a67057266990ce": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632935",
+      "source": "이투데이",
+      "source_body_digest": "3f99184fc5369b3b54ea8b580b9a7e4c5bf219fc67955577fdc3e512a690311f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7007f6456b3987f5c5b9a5ef2288dc334364045e5d9b47753d7263482f803bd5",
+      "source_fact_keys": [
+        "source_fact:v1:515543557f4e71468b8552bc89112d293f0fafd9d107830fa1df3dac76f7825c"
+      ],
+      "source_published_kst": "2026-10-06T15:54+09:00",
+      "title": "모던 트레저리, 美 국립신탁은행 설립 추진∙∙∙스테이블코인 결제∙수탁 확대"
+    },
     "fact:92e46059009c5c5b1611beed": {
       "first_seen_kst": "2026-10-06T17:01:47+09:00",
       "lanes": {
@@ -11462,6 +11516,23 @@
       ],
       "source_published_kst": "2026-10-05T21:34+09:00",
       "title": "北지뢰에 '대북 사이버 독자제재' 내부 검토…외교부·통일부 이견"
+    },
+    "fact:9a55d93b396afe724363b014": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04264006645610296",
+      "source": "이데일리",
+      "source_body_digest": "65a295c281cc8482a980cf33647135c2bcd4ab9a110a6e5ef26024de0f657ce6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9308a8edf91f12719d5188e440298013d44ab1a7b4ef786733a258e887646d6a",
+      "source_fact_keys": [
+        "source_fact:v1:61bf2a73465ed1b5f5ba898f83db3ca55ebfd240ac9eda354975bc225db3f118"
+      ],
+      "source_published_kst": "2026-10-06T15:51+09:00",
+      "title": "이형일 \"119만호 추가 공급…2030년까지 착공 노력\""
     },
     "fact:9ac19269ba4bf07c2430ff71": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
@@ -14478,6 +14549,24 @@
       "source_published_kst": "2026-10-05T12:00+09:00",
       "title": "\"30개 테스트공장 풀가동\" SK엔무브 고급 윤활기유 1위 만든 R&D"
     },
+    "fact:f6b41f086e15c69c5ce102e1": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006138400089",
+      "source": "연합뉴스",
+      "source_body_digest": "65b1ded518a515feea80328265cfeb0cdd6b1b1d8f7eb13259b2db7f3d04e8c4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e03599ade332eaf499f93e106ff2a66cc2234d1bb50422f1f28fe0d14363bbb",
+      "source_fact_keys": [
+        "source_fact:v1:0709ab02d6b502b9f446f41ccebf4d970f1e8868fb7e382449cd3dfa47119b57",
+        "source_fact:v1:2640cdd91ec815117fe67aece95b0ced23489ec07cfbe8a5b40a0b9f4c1c8d88"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "'에너지안보 강화' 중국, 지하 6천m 사막유전서 원유·가스 생산 | 연합뉴스"
+    },
     "fact:f6d2fdf22cc59e8544847b7a": {
       "first_seen_kst": "2026-10-05T22:39:48+09:00",
       "lanes": {
@@ -14748,6 +14837,23 @@
       ],
       "source_published_kst": "2026-10-06T07:45+09:00",
       "title": "\"지금이 매수 기회\" 화장품株 급락했는데, 수출 29% 급증"
+    },
+    "fact:fe3eeac81a412bbb245fc822": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.etnews.com/20261006000174",
+      "source": "전자신문",
+      "source_body_digest": "edfddb8b588fc10925a21ad26b47b7d2fffbb5c0acf046e7915a08cbea4da7ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a7f9827dea6214dc9efe94199b5ab4201a38bb952d4d1ddc3946a535a59a205",
+      "source_fact_keys": [
+        "source_fact:v1:05c870dbcd9f740190e660c98aad9c0db862494ba9604eb3d0c03937072f6241"
+      ],
+      "source_published_kst": "2026-10-06T11:41+09:00",
+      "title": "한미약품, 오픈이노베이션 전략 통했다…기술수출 성과 목전"
     },
     "fact:ff4d615e58fc5d7ecdadb822": {
       "first_seen_kst": "2026-10-05T18:49:55+09:00",
@@ -16568,6 +16674,26 @@
       "source_event_identity": "",
       "source_published_kst": "2026-10-05T08:01+09:00",
       "title": "[단독]브레인온 ‘세라큐’, 주요 거래처 거래 중단 통보…‘업계 퇴출 수순’"
+    },
+    "link:14e3cda41d649d82d4eedc22": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.hankyung.com/article/2026100647151",
+      "source": "한국경제",
+      "source_body_digest": "f9ef754344c2ec9db8ee37d39d4637764e3eb1b083b8c13e3effeab3ee3dba65",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38b5ba3f11bac1a3a3de29091e1e0c10b182b2073234f8a9275af926c2f23c96",
+      "source_fact_keys": [
+        "source_fact:v1:30012c072d71da1ea2ec2396d8f67e6b973cb35ab0a3030a833672c320b19aa0",
+        "source_fact:v1:aa1719b6293dad27f484b27676cddb4b805a51b0e7464aa0cbab0c19d0f91954",
+        "source_fact:v1:d2a13f7b8ca3e9226a1644c5bf361a8b8f76e70d380a5a571a75b84526c038b9",
+        "source_fact:v1:f303bae00a6de5ca9aacde0aae4132b1c6ca8334df6a70d73d713e6ab9c5564d"
+      ],
+      "source_published_kst": "2026-10-06T15:45+09:00",
+      "title": "NH투자증권, 기업금융·투자수익 두 토끼…IMA로 잡는다"
     },
     "link:15065f98612a36116d1b9172": {
       "first_seen_kst": "2026-10-06T04:08:54+09:00",
@@ -18920,6 +19046,23 @@
       "source": "연합뉴스",
       "title": "브이아이운용, 첫 공모 OCIO 펀드 출시…\"퇴직연금 등 타깃\" | 연합뉴스"
     },
+    "link:2da8d5351f5fc3b0d7948943": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04264006645610296",
+      "source": "이데일리",
+      "source_body_digest": "65a295c281cc8482a980cf33647135c2bcd4ab9a110a6e5ef26024de0f657ce6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9308a8edf91f12719d5188e440298013d44ab1a7b4ef786733a258e887646d6a",
+      "source_fact_keys": [
+        "source_fact:v1:61bf2a73465ed1b5f5ba898f83db3ca55ebfd240ac9eda354975bc225db3f118"
+      ],
+      "source_published_kst": "2026-10-06T15:51+09:00",
+      "title": "이형일 \"119만호 추가 공급…2030년까지 착공 노력\""
+    },
     "link:2dd6d77cf139923246ec9235": {
       "first_seen_kst": "2026-10-03T19:34:33+09:00",
       "lanes": {
@@ -21244,6 +21387,21 @@
       "source": "연합뉴스",
       "title": "LG전자, 엔비디아 'AI 데이터센터 냉각' 공식 파트너 선정 | 연합뉴스"
     },
+    "link:475c493040d829546cbb3eed": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006084900063",
+      "source": "연합뉴스",
+      "source_body_digest": "27f32684779a34af95351947b8ede7c006a20cfa07f2874eb509f96dc6d84fb7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T11:33+09:00",
+      "title": "김기재 당진시장 \"전 시민 1인당 30만원 경제회복지원금 재추진\" | 연합뉴스"
+    },
     "link:477f46cabc4ea53eff3fd207": {
       "first_seen_kst": "2026-10-04T19:09:35+09:00",
       "lanes": {
@@ -21815,6 +21973,23 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=06297606645608984",
       "source": "이데일리",
       "title": "마이크론, 호실적에 목표주가 상향…펀더멘털 고점 우려 해소-DA데이비슨"
+    },
+    "link:4d1003bc7aec7e7049c912ec": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632935",
+      "source": "이투데이",
+      "source_body_digest": "3f99184fc5369b3b54ea8b580b9a7e4c5bf219fc67955577fdc3e512a690311f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7007f6456b3987f5c5b9a5ef2288dc334364045e5d9b47753d7263482f803bd5",
+      "source_fact_keys": [
+        "source_fact:v1:515543557f4e71468b8552bc89112d293f0fafd9d107830fa1df3dac76f7825c"
+      ],
+      "source_published_kst": "2026-10-06T15:54+09:00",
+      "title": "모던 트레저리, 美 국립신탁은행 설립 추진∙∙∙스테이블코인 결제∙수탁 확대"
     },
     "link:4d1b7ff5f2495d1a664493f0": {
       "first_seen_kst": "2026-10-01T22:26:11+09:00",
@@ -34601,6 +34776,24 @@
       "source_published_kst": "2026-10-05T22:29+09:00",
       "title": "토스뱅크서도 해킹 시도…일부 보험사도 공격 흔적 포착"
     },
+    "link:d57e5b3e39d56e7e76c80b6b": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006138400089",
+      "source": "연합뉴스",
+      "source_body_digest": "65b1ded518a515feea80328265cfeb0cdd6b1b1d8f7eb13259b2db7f3d04e8c4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e03599ade332eaf499f93e106ff2a66cc2234d1bb50422f1f28fe0d14363bbb",
+      "source_fact_keys": [
+        "source_fact:v1:0709ab02d6b502b9f446f41ccebf4d970f1e8868fb7e382449cd3dfa47119b57",
+        "source_fact:v1:2640cdd91ec815117fe67aece95b0ced23489ec07cfbe8a5b40a0b9f4c1c8d88"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "'에너지안보 강화' 중국, 지하 6천m 사막유전서 원유·가스 생산 | 연합뉴스"
+    },
     "link:d588fc8bbe53b6021326d7e1": {
       "first_seen_kst": "2026-09-29T10:17:19+09:00",
       "lanes": {
@@ -36785,6 +36978,21 @@
       "source": "뉴시스",
       "title": "원·달러 환율, 7.8원 내린 1350.6원 마감(종합)"
     },
+    "link:ecd03d8d880b27e14c09697a": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.etnews.com/20261006000365",
+      "source": "전자신문",
+      "source_body_digest": "db3e240d18d379d72b90ba78a73b2963e2e2ede144064cf0c57bc2c992d9f988",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "[2026 국감]정부, 반도체 생태계 확장 사활…메가프로젝트 입지 논란은 여전"
+    },
     "link:ecd8d460e6949d3bf9fd1969": {
       "first_seen_kst": "2026-10-06T08:12:20+09:00",
       "lanes": {
@@ -37841,6 +38049,23 @@
       ],
       "source_published_kst": "2026-10-06T14:48+09:00",
       "title": "'7개월 만에 재방한' 리사 수 AMD CEO…AI 서버 확대 속 韓 반도체 협력 주목"
+    },
+    "link:f83b487106971cd363ae16c1": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.etnews.com/20261006000174",
+      "source": "전자신문",
+      "source_body_digest": "edfddb8b588fc10925a21ad26b47b7d2fffbb5c0acf046e7915a08cbea4da7ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a7f9827dea6214dc9efe94199b5ab4201a38bb952d4d1ddc3946a535a59a205",
+      "source_fact_keys": [
+        "source_fact:v1:05c870dbcd9f740190e660c98aad9c0db862494ba9604eb3d0c03937072f6241"
+      ],
+      "source_published_kst": "2026-10-06T11:41+09:00",
+      "title": "한미약품, 오픈이노베이션 전략 통했다…기술수출 성과 목전"
     },
     "link:f88144c304036c7b893e6afa": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -42896,6 +43121,23 @@
       "source_published_kst": "2026-10-06T11:00+09:00",
       "title": "'한국형 인큐텔' 도입 탄력…與 오세희, '新안보 혁신기업 특별법' 발의"
     },
+    "original:31948550592dd2b01250c67d": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.etnews.com/20261006000174",
+      "source": "전자신문",
+      "source_body_digest": "edfddb8b588fc10925a21ad26b47b7d2fffbb5c0acf046e7915a08cbea4da7ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a7f9827dea6214dc9efe94199b5ab4201a38bb952d4d1ddc3946a535a59a205",
+      "source_fact_keys": [
+        "source_fact:v1:05c870dbcd9f740190e660c98aad9c0db862494ba9604eb3d0c03937072f6241"
+      ],
+      "source_published_kst": "2026-10-06T11:41+09:00",
+      "title": "한미약품, 오픈이노베이션 전략 통했다…기술수출 성과 목전"
+    },
     "original:3196446f176a69f036cfd37b": {
       "first_seen_kst": "2026-09-21T17:35:34+09:00",
       "lanes": {
@@ -43254,6 +43496,23 @@
       "link": "https://www.mt.co.kr/stock/2026/09/18/2026091810570167529",
       "source": "머니투데이",
       "title": "키움운용, 'KIWOOM 200TR ETF' 총보수 연 0.010%로 인하"
+    },
+    "original:36339e6e59d0efddfb296c00": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04264006645610296",
+      "source": "이데일리",
+      "source_body_digest": "65a295c281cc8482a980cf33647135c2bcd4ab9a110a6e5ef26024de0f657ce6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9308a8edf91f12719d5188e440298013d44ab1a7b4ef786733a258e887646d6a",
+      "source_fact_keys": [
+        "source_fact:v1:61bf2a73465ed1b5f5ba898f83db3ca55ebfd240ac9eda354975bc225db3f118"
+      ],
+      "source_published_kst": "2026-10-06T15:51+09:00",
+      "title": "이형일 \"119만호 추가 공급…2030년까지 착공 노력\""
     },
     "original:36574dea428006a7960f85ba": {
       "first_seen_kst": "2026-10-02T23:58:50+09:00",
@@ -46797,6 +47056,21 @@
       "source": "연합뉴스",
       "title": "고양대곡지식융합·의왕오전왕곡 지구계획 착수…2029년 착공 | 연합뉴스"
     },
+    "original:5b31973bbc827de6e9e919df": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006084900063",
+      "source": "연합뉴스",
+      "source_body_digest": "27f32684779a34af95351947b8ede7c006a20cfa07f2874eb509f96dc6d84fb7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T11:33+09:00",
+      "title": "김기재 당진시장 \"전 시민 1인당 30만원 경제회복지원금 재추진\" | 연합뉴스"
+    },
     "original:5bf50ed79a1b109798d11901": {
       "first_seen_kst": "2026-10-03T19:34:33+09:00",
       "lanes": {
@@ -49722,6 +49996,24 @@
       "link": "https://www.etnews.com/20261002000207",
       "source": "전자신문",
       "title": "최태원 SK 회장, 9440억원 규모 그룹 지분 매각 추진"
+    },
+    "original:7b7155fecd8123848ac1ee75": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006138400089",
+      "source": "연합뉴스",
+      "source_body_digest": "65b1ded518a515feea80328265cfeb0cdd6b1b1d8f7eb13259b2db7f3d04e8c4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e03599ade332eaf499f93e106ff2a66cc2234d1bb50422f1f28fe0d14363bbb",
+      "source_fact_keys": [
+        "source_fact:v1:0709ab02d6b502b9f446f41ccebf4d970f1e8868fb7e382449cd3dfa47119b57",
+        "source_fact:v1:2640cdd91ec815117fe67aece95b0ced23489ec07cfbe8a5b40a0b9f4c1c8d88"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "'에너지안보 강화' 중국, 지하 6천m 사막유전서 원유·가스 생산 | 연합뉴스"
     },
     "original:7b883d3afd62cef3ef261cf3": {
       "first_seen_kst": "2026-10-03T22:55:30+09:00",
@@ -55421,6 +55713,23 @@
       "source_published_kst": "2026-10-05T21:34+09:00",
       "title": "北지뢰에 '대북 사이버 독자제재' 내부 검토…외교부·통일부 이견"
     },
+    "original:bcb251e1df7f08de36a96a38": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632935",
+      "source": "이투데이",
+      "source_body_digest": "3f99184fc5369b3b54ea8b580b9a7e4c5bf219fc67955577fdc3e512a690311f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7007f6456b3987f5c5b9a5ef2288dc334364045e5d9b47753d7263482f803bd5",
+      "source_fact_keys": [
+        "source_fact:v1:515543557f4e71468b8552bc89112d293f0fafd9d107830fa1df3dac76f7825c"
+      ],
+      "source_published_kst": "2026-10-06T15:54+09:00",
+      "title": "모던 트레저리, 美 국립신탁은행 설립 추진∙∙∙스테이블코인 결제∙수탁 확대"
+    },
     "original:bcf627f64a743b4a36e685a4": {
       "first_seen_kst": "2026-10-02T00:28:46+09:00",
       "lanes": {
@@ -55818,6 +56127,26 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=02259926645584056",
       "source": "이데일리",
       "title": "‘경영권 분쟁’ 고려아연 회사채 시장 ‘노크’…최대 3000억 조달"
+    },
+    "original:c36c66cd47cff7c1a523058f": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.hankyung.com/article/2026100647151",
+      "source": "한국경제",
+      "source_body_digest": "f9ef754344c2ec9db8ee37d39d4637764e3eb1b083b8c13e3effeab3ee3dba65",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38b5ba3f11bac1a3a3de29091e1e0c10b182b2073234f8a9275af926c2f23c96",
+      "source_fact_keys": [
+        "source_fact:v1:30012c072d71da1ea2ec2396d8f67e6b973cb35ab0a3030a833672c320b19aa0",
+        "source_fact:v1:aa1719b6293dad27f484b27676cddb4b805a51b0e7464aa0cbab0c19d0f91954",
+        "source_fact:v1:d2a13f7b8ca3e9226a1644c5bf361a8b8f76e70d380a5a571a75b84526c038b9",
+        "source_fact:v1:f303bae00a6de5ca9aacde0aae4132b1c6ca8334df6a70d73d713e6ab9c5564d"
+      ],
+      "source_published_kst": "2026-10-06T15:45+09:00",
+      "title": "NH투자증권, 기업금융·투자수익 두 토끼…IMA로 잡는다"
     },
     "original:c3a09ea3eee183e81b160118": {
       "first_seen_kst": "2026-10-01T21:06:52+09:00",
@@ -57183,6 +57512,21 @@
       ],
       "source_published_kst": "2026-10-06T12:40+09:00",
       "title": "이형일 \"대미 원전 100억달러, 국내법 절차 완료 후 가능\""
+    },
+    "original:d3873ae6e0004c784a97b61d": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.etnews.com/20261006000365",
+      "source": "전자신문",
+      "source_body_digest": "db3e240d18d379d72b90ba78a73b2963e2e2ede144064cf0c57bc2c992d9f988",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "[2026 국감]정부, 반도체 생태계 확장 사활…메가프로젝트 입지 논란은 여전"
     },
     "original:d3c14fae4ab385fbc43a4696": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -62473,6 +62817,26 @@
       "source_published_kst": "2026-10-06T15:25+09:00",
       "title": "유류세 5년 인하…“온실가스 400만t 감축 기회 놓쳤다”"
     },
+    "source_fact:068a569583e98083bb906b96": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.hankyung.com/article/2026100647151",
+      "source": "한국경제",
+      "source_body_digest": "f9ef754344c2ec9db8ee37d39d4637764e3eb1b083b8c13e3effeab3ee3dba65",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38b5ba3f11bac1a3a3de29091e1e0c10b182b2073234f8a9275af926c2f23c96",
+      "source_fact_keys": [
+        "source_fact:v1:30012c072d71da1ea2ec2396d8f67e6b973cb35ab0a3030a833672c320b19aa0",
+        "source_fact:v1:aa1719b6293dad27f484b27676cddb4b805a51b0e7464aa0cbab0c19d0f91954",
+        "source_fact:v1:d2a13f7b8ca3e9226a1644c5bf361a8b8f76e70d380a5a571a75b84526c038b9",
+        "source_fact:v1:f303bae00a6de5ca9aacde0aae4132b1c6ca8334df6a70d73d713e6ab9c5564d"
+      ],
+      "source_published_kst": "2026-10-06T15:45+09:00",
+      "title": "NH투자증권, 기업금융·투자수익 두 토끼…IMA로 잡는다"
+    },
     "source_fact:06b7620e042aec29bad2e654": {
       "first_seen_kst": "2026-10-05T23:46:36+09:00",
       "lanes": {
@@ -63765,6 +64129,23 @@
       ],
       "source_published_kst": "2026-10-06T11:09+09:00",
       "title": "폭염·AI에 日 전력난 비상… 노후 화력발전 수명연장 검토 | 연합뉴스"
+    },
+    "source_fact:0ebad2fb2d13da53d0a0aecb": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632935",
+      "source": "이투데이",
+      "source_body_digest": "3f99184fc5369b3b54ea8b580b9a7e4c5bf219fc67955577fdc3e512a690311f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7007f6456b3987f5c5b9a5ef2288dc334364045e5d9b47753d7263482f803bd5",
+      "source_fact_keys": [
+        "source_fact:v1:515543557f4e71468b8552bc89112d293f0fafd9d107830fa1df3dac76f7825c"
+      ],
+      "source_published_kst": "2026-10-06T15:54+09:00",
+      "title": "모던 트레저리, 美 국립신탁은행 설립 추진∙∙∙스테이블코인 결제∙수탁 확대"
     },
     "source_fact:0ecc0797727b6e898987ad78": {
       "first_seen_kst": "2026-10-06T14:02:15+09:00",
@@ -69874,6 +70255,26 @@
       "source_published_kst": "2026-10-06T11:31+09:00",
       "title": "[2026 국감]산업부, 대미투자 국익 최우선 추진…호남 반도체 등 1600조 속도전"
     },
+    "source_fact:365b640c61cfde081831b05b": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.hankyung.com/article/2026100647151",
+      "source": "한국경제",
+      "source_body_digest": "f9ef754344c2ec9db8ee37d39d4637764e3eb1b083b8c13e3effeab3ee3dba65",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38b5ba3f11bac1a3a3de29091e1e0c10b182b2073234f8a9275af926c2f23c96",
+      "source_fact_keys": [
+        "source_fact:v1:30012c072d71da1ea2ec2396d8f67e6b973cb35ab0a3030a833672c320b19aa0",
+        "source_fact:v1:aa1719b6293dad27f484b27676cddb4b805a51b0e7464aa0cbab0c19d0f91954",
+        "source_fact:v1:d2a13f7b8ca3e9226a1644c5bf361a8b8f76e70d380a5a571a75b84526c038b9",
+        "source_fact:v1:f303bae00a6de5ca9aacde0aae4132b1c6ca8334df6a70d73d713e6ab9c5564d"
+      ],
+      "source_published_kst": "2026-10-06T15:45+09:00",
+      "title": "NH투자증권, 기업금융·투자수익 두 토끼…IMA로 잡는다"
+    },
     "source_fact:36880bd023dad2554b204286": {
       "first_seen_kst": "2026-10-05T23:14:24+09:00",
       "lanes": {
@@ -70589,6 +70990,26 @@
       ],
       "source_published_kst": "2026-10-06T11:01+09:00",
       "title": "자동차 화면용 강화유리 수입승인 없앤다…디스플레이 규제 개선"
+    },
+    "source_fact:3a72a93b361b8c1250b12f82": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.hankyung.com/article/2026100647151",
+      "source": "한국경제",
+      "source_body_digest": "f9ef754344c2ec9db8ee37d39d4637764e3eb1b083b8c13e3effeab3ee3dba65",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38b5ba3f11bac1a3a3de29091e1e0c10b182b2073234f8a9275af926c2f23c96",
+      "source_fact_keys": [
+        "source_fact:v1:30012c072d71da1ea2ec2396d8f67e6b973cb35ab0a3030a833672c320b19aa0",
+        "source_fact:v1:aa1719b6293dad27f484b27676cddb4b805a51b0e7464aa0cbab0c19d0f91954",
+        "source_fact:v1:d2a13f7b8ca3e9226a1644c5bf361a8b8f76e70d380a5a571a75b84526c038b9",
+        "source_fact:v1:f303bae00a6de5ca9aacde0aae4132b1c6ca8334df6a70d73d713e6ab9c5564d"
+      ],
+      "source_published_kst": "2026-10-06T15:45+09:00",
+      "title": "NH투자증권, 기업금융·투자수익 두 토끼…IMA로 잡는다"
     },
     "source_fact:3a8f2e20cd38931bd57b2fe3": {
       "first_seen_kst": "2026-10-06T16:43:37+09:00",
@@ -76300,6 +76721,24 @@
       ],
       "source_published_kst": "2026-10-06T08:02+09:00",
       "title": "美 국채금리 급등에도 나스닥 사상 최고치…AI 실적 기대가 부담 상쇄[뉴스새벽배송]"
+    },
+    "source_fact:5cd930aff88e007d6d08bdbc": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006138400089",
+      "source": "연합뉴스",
+      "source_body_digest": "65b1ded518a515feea80328265cfeb0cdd6b1b1d8f7eb13259b2db7f3d04e8c4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e03599ade332eaf499f93e106ff2a66cc2234d1bb50422f1f28fe0d14363bbb",
+      "source_fact_keys": [
+        "source_fact:v1:0709ab02d6b502b9f446f41ccebf4d970f1e8868fb7e382449cd3dfa47119b57",
+        "source_fact:v1:2640cdd91ec815117fe67aece95b0ced23489ec07cfbe8a5b40a0b9f4c1c8d88"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "'에너지안보 강화' 중국, 지하 6천m 사막유전서 원유·가스 생산 | 연합뉴스"
     },
     "source_fact:5ce597d7695075b0e00f2d39": {
       "first_seen_kst": "2026-10-06T16:09:23+09:00",
@@ -91292,6 +91731,23 @@
       "source_published_kst": "2026-10-06T14:00+09:00",
       "title": "제주 초콜릿에서 글로벌 디저트로…제키스, '정책면세점' 타고 세계로"
     },
+    "source_fact:ba19ac7b72ec0581786ab560": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04264006645610296",
+      "source": "이데일리",
+      "source_body_digest": "65a295c281cc8482a980cf33647135c2bcd4ab9a110a6e5ef26024de0f657ce6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9308a8edf91f12719d5188e440298013d44ab1a7b4ef786733a258e887646d6a",
+      "source_fact_keys": [
+        "source_fact:v1:61bf2a73465ed1b5f5ba898f83db3ca55ebfd240ac9eda354975bc225db3f118"
+      ],
+      "source_published_kst": "2026-10-06T15:51+09:00",
+      "title": "이형일 \"119만호 추가 공급…2030년까지 착공 노력\""
+    },
     "source_fact:ba3a9dcc8714d98ca777bfd1": {
       "first_seen_kst": "2026-10-06T10:41:31+09:00",
       "lanes": {
@@ -95365,6 +95821,26 @@
       ],
       "source_published_kst": "2026-10-05T17:00+09:00",
       "title": "[주간수급리포트] 외국인, 삼전닉스 7.5조 던졌다⋯‘자사주+개인’이 방어"
+    },
+    "source_fact:d52930b22ded98ef1a353d34": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.hankyung.com/article/2026100647151",
+      "source": "한국경제",
+      "source_body_digest": "f9ef754344c2ec9db8ee37d39d4637764e3eb1b083b8c13e3effeab3ee3dba65",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38b5ba3f11bac1a3a3de29091e1e0c10b182b2073234f8a9275af926c2f23c96",
+      "source_fact_keys": [
+        "source_fact:v1:30012c072d71da1ea2ec2396d8f67e6b973cb35ab0a3030a833672c320b19aa0",
+        "source_fact:v1:aa1719b6293dad27f484b27676cddb4b805a51b0e7464aa0cbab0c19d0f91954",
+        "source_fact:v1:d2a13f7b8ca3e9226a1644c5bf361a8b8f76e70d380a5a571a75b84526c038b9",
+        "source_fact:v1:f303bae00a6de5ca9aacde0aae4132b1c6ca8334df6a70d73d713e6ab9c5564d"
+      ],
+      "source_published_kst": "2026-10-06T15:45+09:00",
+      "title": "NH투자증권, 기업금융·투자수익 두 토끼…IMA로 잡는다"
     },
     "source_fact:d52c6236bed4e95e7e83a937": {
       "first_seen_kst": "2026-10-06T09:53:40+09:00",
@@ -100428,6 +100904,24 @@
       "source_published_kst": "2026-10-05T17:44+09:00",
       "title": "환율 하락에 영업이익 늘어도 순이익 뚝…외화 자산 평가손익에 영향"
     },
+    "source_fact:f4ac6334b0b5c9fe99c1ef1b": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006138400089",
+      "source": "연합뉴스",
+      "source_body_digest": "65b1ded518a515feea80328265cfeb0cdd6b1b1d8f7eb13259b2db7f3d04e8c4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e03599ade332eaf499f93e106ff2a66cc2234d1bb50422f1f28fe0d14363bbb",
+      "source_fact_keys": [
+        "source_fact:v1:0709ab02d6b502b9f446f41ccebf4d970f1e8868fb7e382449cd3dfa47119b57",
+        "source_fact:v1:2640cdd91ec815117fe67aece95b0ced23489ec07cfbe8a5b40a0b9f4c1c8d88"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "'에너지안보 강화' 중국, 지하 6천m 사막유전서 원유·가스 생산 | 연합뉴스"
+    },
     "source_fact:f4b685d9cd151c3fb9e63833": {
       "first_seen_kst": "2026-10-06T16:09:23+09:00",
       "lanes": {
@@ -101823,6 +102317,23 @@
       ],
       "source_published_kst": "2026-10-05T08:00+09:00",
       "title": "\"일주일새 12% 올랐다\"…전고체 ETF 뛰는데 뭉칫돈 향한 곳은"
+    },
+    "source_fact:fe2f5ffc9ff911fefdce9adc": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.etnews.com/20261006000174",
+      "source": "전자신문",
+      "source_body_digest": "edfddb8b588fc10925a21ad26b47b7d2fffbb5c0acf046e7915a08cbea4da7ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a7f9827dea6214dc9efe94199b5ab4201a38bb952d4d1ddc3946a535a59a205",
+      "source_fact_keys": [
+        "source_fact:v1:05c870dbcd9f740190e660c98aad9c0db862494ba9604eb3d0c03937072f6241"
+      ],
+      "source_published_kst": "2026-10-06T11:41+09:00",
+      "title": "한미약품, 오픈이노베이션 전략 통했다…기술수출 성과 목전"
     },
     "source_fact:fe37505b340724f92848ff43": {
       "first_seen_kst": "2026-10-05T21:13:33+09:00",
@@ -106698,6 +107209,23 @@
       "source_published_kst": "2026-10-06T11:00+09:00",
       "title": "'한국형 인큐텔' 도입 탄력…與 오세희, '新안보 혁신기업 특별법' 발의"
     },
+    "title:31948550592dd2b01250c67d": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.etnews.com/20261006000174",
+      "source": "전자신문",
+      "source_body_digest": "edfddb8b588fc10925a21ad26b47b7d2fffbb5c0acf046e7915a08cbea4da7ed",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:4a7f9827dea6214dc9efe94199b5ab4201a38bb952d4d1ddc3946a535a59a205",
+      "source_fact_keys": [
+        "source_fact:v1:05c870dbcd9f740190e660c98aad9c0db862494ba9604eb3d0c03937072f6241"
+      ],
+      "source_published_kst": "2026-10-06T11:41+09:00",
+      "title": "한미약품, 오픈이노베이션 전략 통했다…기술수출 성과 목전"
+    },
     "title:3196446f176a69f036cfd37b": {
       "first_seen_kst": "2026-09-21T17:35:34+09:00",
       "lanes": {
@@ -107068,6 +107596,23 @@
       "link": "https://www.mt.co.kr/stock/2026/09/18/2026091810570167529",
       "source": "머니투데이",
       "title": "키움운용, 'KIWOOM 200TR ETF' 총보수 연 0.010%로 인하"
+    },
+    "title:36339e6e59d0efddfb296c00": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.edaily.co.kr/News/Read?newsId=04264006645610296",
+      "source": "이데일리",
+      "source_body_digest": "65a295c281cc8482a980cf33647135c2bcd4ab9a110a6e5ef26024de0f657ce6",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:9308a8edf91f12719d5188e440298013d44ab1a7b4ef786733a258e887646d6a",
+      "source_fact_keys": [
+        "source_fact:v1:61bf2a73465ed1b5f5ba898f83db3ca55ebfd240ac9eda354975bc225db3f118"
+      ],
+      "source_published_kst": "2026-10-06T15:51+09:00",
+      "title": "이형일 \"119만호 추가 공급…2030년까지 착공 노력\""
     },
     "title:36574dea428006a7960f85ba": {
       "first_seen_kst": "2026-10-02T23:58:50+09:00",
@@ -110641,6 +111186,21 @@
       "source": "연합뉴스",
       "title": "고양대곡지식융합·의왕오전왕곡 지구계획 착수…2029년 착공 | 연합뉴스"
     },
+    "title:5b31973bbc827de6e9e919df": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006084900063",
+      "source": "연합뉴스",
+      "source_body_digest": "27f32684779a34af95351947b8ede7c006a20cfa07f2874eb509f96dc6d84fb7",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T11:33+09:00",
+      "title": "김기재 당진시장 \"전 시민 1인당 30만원 경제회복지원금 재추진\" | 연합뉴스"
+    },
     "title:5bf50ed79a1b109798d11901": {
       "first_seen_kst": "2026-10-03T19:34:33+09:00",
       "lanes": {
@@ -113587,6 +114147,24 @@
       "link": "https://www.etnews.com/20261002000207",
       "source": "전자신문",
       "title": "최태원 SK 회장, 9440억원 규모 그룹 지분 매각 추진"
+    },
+    "title:7b7155fecd8123848ac1ee75": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.yna.co.kr/view/AKR20261006138400089",
+      "source": "연합뉴스",
+      "source_body_digest": "65b1ded518a515feea80328265cfeb0cdd6b1b1d8f7eb13259b2db7f3d04e8c4",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7e03599ade332eaf499f93e106ff2a66cc2234d1bb50422f1f28fe0d14363bbb",
+      "source_fact_keys": [
+        "source_fact:v1:0709ab02d6b502b9f446f41ccebf4d970f1e8868fb7e382449cd3dfa47119b57",
+        "source_fact:v1:2640cdd91ec815117fe67aece95b0ced23489ec07cfbe8a5b40a0b9f4c1c8d88"
+      ],
+      "source_published_kst": "2026-10-06T15:44+09:00",
+      "title": "'에너지안보 강화' 중국, 지하 6천m 사막유전서 원유·가스 생산 | 연합뉴스"
     },
     "title:7b883d3afd62cef3ef261cf3": {
       "first_seen_kst": "2026-10-03T22:55:30+09:00",
@@ -119383,6 +119961,23 @@
       "source_published_kst": "2026-10-05T21:34+09:00",
       "title": "北지뢰에 '대북 사이버 독자제재' 내부 검토…외교부·통일부 이견"
     },
+    "title:bcb251e1df7f08de36a96a38": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.etoday.co.kr/news/view/2632935",
+      "source": "이투데이",
+      "source_body_digest": "3f99184fc5369b3b54ea8b580b9a7e4c5bf219fc67955577fdc3e512a690311f",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:7007f6456b3987f5c5b9a5ef2288dc334364045e5d9b47753d7263482f803bd5",
+      "source_fact_keys": [
+        "source_fact:v1:515543557f4e71468b8552bc89112d293f0fafd9d107830fa1df3dac76f7825c"
+      ],
+      "source_published_kst": "2026-10-06T15:54+09:00",
+      "title": "모던 트레저리, 美 국립신탁은행 설립 추진∙∙∙스테이블코인 결제∙수탁 확대"
+    },
     "title:bcf627f64a743b4a36e685a4": {
       "first_seen_kst": "2026-10-02T00:28:46+09:00",
       "lanes": {
@@ -119780,6 +120375,26 @@
       "link": "https://www.edaily.co.kr/News/Read?newsId=02259926645584056",
       "source": "이데일리",
       "title": "‘경영권 분쟁’ 고려아연 회사채 시장 ‘노크’…최대 3000억 조달"
+    },
+    "title:c36c66cd47cff7c1a523058f": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.hankyung.com/article/2026100647151",
+      "source": "한국경제",
+      "source_body_digest": "f9ef754344c2ec9db8ee37d39d4637764e3eb1b083b8c13e3effeab3ee3dba65",
+      "source_event_identity": "",
+      "source_fact_identity": "source_facts:v1:38b5ba3f11bac1a3a3de29091e1e0c10b182b2073234f8a9275af926c2f23c96",
+      "source_fact_keys": [
+        "source_fact:v1:30012c072d71da1ea2ec2396d8f67e6b973cb35ab0a3030a833672c320b19aa0",
+        "source_fact:v1:aa1719b6293dad27f484b27676cddb4b805a51b0e7464aa0cbab0c19d0f91954",
+        "source_fact:v1:d2a13f7b8ca3e9226a1644c5bf361a8b8f76e70d380a5a571a75b84526c038b9",
+        "source_fact:v1:f303bae00a6de5ca9aacde0aae4132b1c6ca8334df6a70d73d713e6ab9c5564d"
+      ],
+      "source_published_kst": "2026-10-06T15:45+09:00",
+      "title": "NH투자증권, 기업금융·투자수익 두 토끼…IMA로 잡는다"
     },
     "title:c3a09ea3eee183e81b160118": {
       "first_seen_kst": "2026-10-01T21:06:52+09:00",
@@ -121156,6 +121771,21 @@
       ],
       "source_published_kst": "2026-10-06T12:40+09:00",
       "title": "이형일 \"대미 원전 100억달러, 국내법 절차 완료 후 가능\""
+    },
+    "title:d3873ae6e0004c784a97b61d": {
+      "first_seen_kst": "2026-10-06T17:59:23+09:00",
+      "lanes": {
+        "live": "2026-10-06T17:59:23+09:00"
+      },
+      "last_seen_kst": "2026-10-06T17:59:23+09:00",
+      "link": "https://www.etnews.com/20261006000365",
+      "source": "전자신문",
+      "source_body_digest": "db3e240d18d379d72b90ba78a73b2963e2e2ede144064cf0c57bc2c992d9f988",
+      "source_event_identity": "",
+      "source_fact_identity": "",
+      "source_fact_keys": [],
+      "source_published_kst": "2026-10-06T15:34+09:00",
+      "title": "[2026 국감]정부, 반도체 생태계 확장 사활…메가프로젝트 입지 논란은 여전"
     },
     "title:d3c14fae4ab385fbc43a4696": {
       "first_seen_kst": "2026-10-06T05:44:59+09:00",
@@ -125414,5 +126044,5 @@
       "title": "CJ대한통운·토스, 동네 상점 택배 취급점으로 활용한다"
     }
   },
-  "updated_at_kst": "2026-10-06T17:47:23+09:00"
+  "updated_at_kst": "2026-10-06T17:59:23+09:00"
 }
