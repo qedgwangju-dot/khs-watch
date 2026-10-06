@@ -278,7 +278,12 @@ def _is_samsung_robot(text: str) -> bool:
 
 
 def _is_robot_compute(text: str) -> bool:
-    if ROBOT_COMPUTE_RAIBERT_BASELINE.search(text):
+    if (
+        ROBOT_COMPUTE_RAIBERT_BASELINE.search(text)
+        or ROBOT_COMPUTE_NVIDIA_BASELINE.search(text)
+        or ROBOT_COMPUTE_AMD_BASELINE.search(text)
+        or ROBOT_COMPUTE_ARM_BASELINE.search(text)
+    ):
         return True
     return bool(
         ROBOT_COMPUTE_ACTOR.search(text)
