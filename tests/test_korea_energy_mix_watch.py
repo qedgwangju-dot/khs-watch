@@ -17,6 +17,7 @@ from scripts.korea_energy_mix_watch import (
     plan_stage,
     parse_rss,
     render,
+    select_notify_rows,
     topic_match,
 )
 from scripts.korea_energy_mix_watch_runner import headline_match, interpret_article_body, semantic_event_key, semantic_event_level
@@ -542,3 +543,148 @@ def test_committee_disclosure_never_notifies_even_when_unseen():
     assert semantic_event_level(row) == 0
 
 # live-regression-20261006-v3
+
+
+
+def _production_select(rows, seen_events=None, seen_ids=None):
+    original_key = energy_runner.watch.event_key
+    original_level = energy_runner.watch.event_level
+    try:
+        energy_runner.watch.event_key = semantic_event_key
+        energy_runner.watch.event_level = semantic_event_level
+        collapsed = energy_runner.watch.collapse_events(rows)
+        notify, next_ids, next_events = select_notify_rows(
+            collapsed,
+            set(seen_ids or set()),
+            dict(seen_events or {}),
+        )
+        return notify, next_ids, next_events
+    finally:
+        energy_runner.watch.event_key = original_key
+        energy_runner.watch.event_level = original_level
+
+
+def test_exact_20261006_committee_batch_produces_zero_notifications():
+    rows = [
+        {
+            "title": '"전기본 위원 명단 왜 공개 안하나" 야당 집중 공세…기후장관 "민원 때문" - 머니투데이',
+            "publisher": "머니투데이",
+            "official": False,
+            "published": "Tue, 06 Oct 2026 02:59:00 GMT",
+            "plan_stage": "발표·공개",
+            "category": "전기본 운영·거버넌스",
+            "stage": 1,
+            "id": "committee-mt",
+            "url": "https://example.com/mt",
+        },
+        {
+            "title": '"전기본 위원 공개하라"·"尹정부도 안해"…국힘·김성환 충돌 - 연합뉴스',
+            "publisher": "연합뉴스",
+            "official": False,
+            "published": "Tue, 06 Oct 2026 03:00:00 GMT",
+            "plan_stage": "발표·공개",
+            "category": "전기본 운영·거버넌스",
+            "stage": 1,
+            "id": "committee-yna",
+            "url": "https://example.com/yna",
+        },
+        {
+            "title": '김성환 "전기본 위원 비공개, 외부 잡음 때문…주요 쟁점은 공개" - 뉴시스',
+            "publisher": "뉴시스",
+            "official": False,
+            "published": "Tue, 06 Oct 2026 03:01:00 GMT",
+            "plan_stage": "발표·공개",
+            "category": "전기본 운영·거버넌스",
+            "stage": 1,
+            "id": "committee-newsis",
+            "url": "https://example.com/newsis",
+        },
+    ]
+    notify, _, next_events = _production_select(rows)
+    assert notify == []
+    assert next_events["12th-plan|committee-governance|member-disclosure"] == 0
+
+
+def test_exact_20261006_evening_batch_only_honam_14gw_notifies():
+    rows = [
+        {
+            "title": '김성환 "호남 반도체 팹 9기면 14GW 필요…전력망 계획 원점 점검"(종합) - 뉴시스',
+            "publisher": "뉴시스",
+            "official": False,
+            "published": "Tue, 06 Oct 2026 08:14:00 GMT",
+            "plan_stage": "장관 국감 발언",
+            "category": "전력수요·산단 인프라",
+            "stage": 6,
+            "id": "honam-14gw",
+            "url": "https://example.com/honam",
+        },
+        {
+            "title": "[2026 국감] 12차 전기본 도마에…전문위원 명단·구성 놓고 공방 - 전자신문",
+            "publisher": "전자신문",
+            "official": False,
+            "published": "Tue, 06 Oct 2026 08:20:00 GMT",
+            "plan_stage": "전기본 관련",
+            "category": "전기본 운영·거버넌스",
+            "stage": 1,
+            "id": "committee-et",
+            "url": "https://example.com/et",
+        },
+        {
+            "title": '"왜 숨기나" 12차 전기본 위원 공개 놓고 충돌…기후장관 "비공개 원칙" - 뉴스1',
+            "publisher": "뉴스1",
+            "official": False,
+            "published": "Tue, 06 Oct 2026 08:21:00 GMT",
+            "plan_stage": "발표·공개",
+            "category": "전기본 운영·거버넌스",
+            "stage": 1,
+            "id": "committee-news1",
+            "url": "https://example.com/news1",
+        },
+    ]
+    notify, _, next_events = _production_select(rows)
+    assert len(notify) == 1
+    assert notify[0]["event_key"] == "12th-plan|honam-semiconductor|nine-fab-14gw-grid-review"
+    assert next_events["12th-plan|committee-governance|member-disclosure"] == 0
+    assert next_events["12th-plan|honam-semiconductor|nine-fab-14gw-grid-review"] == 1
+
+
+def test_four_fab_baseline_does_not_suppress_new_nine_fab_14gw_event():
+    baseline_key = "12th-plan|honam-semiconductor|four-fab-6.3gw-water65-supply"
+    rows = [
+        {
+            "title": '김성환 "호남 반도체 팹 9기면 14GW 필요…전력망 계획 원점 점검"(종합) - 뉴시스',
+            "publisher": "뉴시스",
+            "official": False,
+            "published": "Tue, 06 Oct 2026 08:14:00 GMT",
+            "plan_stage": "장관 국감 발언",
+            "category": "전력수요·산단 인프라",
+            "stage": 6,
+            "id": "honam-14gw-new",
+            "url": "https://example.com/honam-new",
+        }
+    ]
+    notify, _, next_events = _production_select(rows, seen_events={baseline_key: 1})
+    assert len(notify) == 1
+    assert notify[0]["event_key"] == "12th-plan|honam-semiconductor|nine-fab-14gw-grid-review"
+    assert next_events[baseline_key] == 1
+
+
+def test_same_committee_event_never_realerts_from_new_publisher():
+    rows = [
+        {
+            "title": '김성환 "전기본 위원 비공개 원칙" - 뉴시스',
+            "publisher": "뉴시스",
+            "official": False,
+            "published": "Tue, 06 Oct 2026 09:00:00 GMT",
+            "plan_stage": "발표·공개",
+            "category": "전기본 운영·거버넌스",
+            "stage": 1,
+            "id": "committee-new-publisher",
+            "url": "https://example.com/new",
+        }
+    ]
+    notify, _, _ = _production_select(
+        rows,
+        seen_events={"12th-plan|committee-governance|member-disclosure": 0},
+    )
+    assert notify == []
