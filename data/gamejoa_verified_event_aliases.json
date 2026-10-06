@@ -584,6 +584,42 @@
         "additional_execution": []
       },
       "equivalence_note": "Full bodies confirm the same sixth annual MLCC contract disclosed Oct 6, KRW 290 billion, Jan 1-Dec 31 2027. An anonymous customer label alone is never enough; changed terms, ordinal, filing day or additional execution do not match."
+    },
+    {
+      "source_title": "두산로보틱스, '한국형 피지컬 AI' 시동…989억 국책과제 수주",
+      "link": "https://www.newsis.com/view/NISX20261006_0003814993",
+      "source_published_kst": "2026-10-06T10:05+09:00",
+      "source_body_sha256": "f6d923afbb1c9595328bb90611892a4639626d1ea8fb88bdc5e8869e1ad88e7a",
+      "source_event_identity": "source_event:v2:research_award:169d221bdc7ca69eb2b32d7d7bc344d9b31981c746506681871b8148b96507df",
+      "run_id": 37472158800,
+      "message_id": 2339
+    },
+    {
+      "source_title": "고금리 공포에도…나스닥·엔비디아 '사상 최고가'",
+      "link": "https://www.hankyung.com/article/202610065899i",
+      "source_published_kst": "2026-10-06T15:57+09:00",
+      "source_body_sha256": "46b213afaacd29f91b7520db217ff5ee3a25f49f390b311342fb3d7facc19590",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-05:nasdaq=27477.31:change=1.05",
+      "run_id": 37472158800,
+      "message_id": 2339
+    },
+    {
+      "source_title": "두산로보틱스, 989억 규모 피지컬 AI 국책과제 수주",
+      "link": "https://www.etoday.co.kr/news/view/2632636",
+      "source_published_kst": "2026-10-06T09:18+09:00",
+      "source_body_sha256": "0b2fba9b28787ff153a28a98eac296c96576f9a390a962b9a3d91c390cd06e0f",
+      "source_event_identity": "source_event:v2:research_award:169d221bdc7ca69eb2b32d7d7bc344d9b31981c746506681871b8148b96507df",
+      "run_id": 37480540629,
+      "message_id": 2343
+    },
+    {
+      "source_title": "뉴욕증시, 국채금리 상승에도 강세⋯나스닥, 사상 최고치 [글로벌마켓 모닝 브리핑]",
+      "link": "https://www.etoday.co.kr/news/view/2632544",
+      "source_published_kst": "2026-10-06T08:03+09:00",
+      "source_body_sha256": "697bf257ec610b934abd9b7ec912d93e781ab1bb9f61f234ce295d9bcf798d56",
+      "source_event_identity": "source_event:v1:us:equity_close:2026-10-05:nasdaq=27477.31:change=1.05",
+      "run_id": 37480540629,
+      "message_id": 2343
     }
   ]
 }

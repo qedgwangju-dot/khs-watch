@@ -1954,6 +1954,125 @@ class IncrementalNewsTests(unittest.TestCase):
         self.assertNotEqual(materiality.source_event_identity(item), materiality.source_event_identity({
             **item, 'source_body': item['source_body'].replace('989억원', '1089억원')}))
 
+    def test_v100_actual_research_award_cross_publisher_and_changed_terms(self):
+        newsis = alert("두산로보틱스, '한국형 피지컬 AI' 시동…989억 국책과제 수주",
+                       "두산로보틱스는 산업통상부와 한국산업기술기획평가원이 공동 주관한 'K온디바이스 AI 반도체 기술개발사업'과 '로봇산업 기술개발사업'에서 제안한 과제 2건이 국책과제로 선정됐다고 6일 밝혔다.\n"
+                       "두 과제의 총 연구개발비는 약 989억원으로, 이 가운데 정부 지원금은 약 681억원이다.",
+                       "https://www.newsis.com/view/NISX20261006_0003814993")
+        etoday = alert("두산로보틱스, 989억 규모 피지컬 AI 국책과제 수주",
+                       "두산로보틱스는 산업통상부와 한국산업기술기획평가원이 주관하는 ‘K-온디바이스 AI 반도체 기술개발사업’과 ‘로봇산업 기술개발사업’에서 제안한 2개 과제가 국책과제로 선정됐다고 6일 밝혔다.\n"
+                       "두 과제의 총 연구개발비는 약 989억원이며 이 가운데 정부 지원금은 약 681억원이다.",
+                       "https://www.etoday.co.kr/news/view/2632636")
+        for item in (newsis, etoday):
+            item['published'] = '2026-10-06T10:05+09:00'
+        identity = materiality.source_event_identity(newsis)
+        self.assertEqual(identity, materiality.source_event_identity(etoday))
+        self.assertTrue(identity.startswith('source_event:v2:research_award:'))
+        core = radar.verified_alert_core(etoday, etoday['source_title'])
+        for value in ('K온디바이스', '로봇산업 기술개발사업', '2건에 선정됐다고', '전체 과제', '989억원', '681억원'):
+            self.assertIn(value, core)
+        self.assertNotIn('두산로보틱스 매출', core)
+        self.assertFalse(radar.source_core_fact_errors({**etoday, 'telegram_core_fact': core}))
+        for old, new in (('989억원', '1089억원'), ('681억원', '700억원'), ('로봇산업 기술개발사업', '드론산업 기술개발사업'),
+                         ('6일 밝혔다', '7일 밝혔다')):
+            changed = {**etoday, 'source_body': etoday['source_body'].replace(old, new)}
+            self.assertNotEqual(identity, materiality.source_event_identity(changed))
+
+    def test_v100_nasdaq_close_same_session_but_intraday_and_new_session_survive(self):
+        hankyung = alert("고금리 공포에도…나스닥·엔비디아 '사상 최고가'",
+                         "엔비디아와 나스닥이 5일(현지시간) 사상 최고가를 기록했다.\n"
+                         "이날 나스닥은 전 거래일 대비 286.45포인트(1.05%) 오른 2만7477.31에 거래를 마쳤다.")
+        etoday = alert("뉴욕증시, 국채금리 상승에도 강세⋯나스닥, 사상 최고치",
+                       "5일(현지시간) 뉴욕증권거래소에서 다우지수는 상승했다. S&P500지수는 51.23포인트(0.66%) 상승한 7773.95에, 기술주 중심의 나스닥지수는 286.45포인트(1.05%) 오른 2만7477.31에 마감했다.")
+        for item in (hankyung, etoday):
+            item['published'] = '2026-10-06T15:57+09:00'
+        identity = materiality.source_event_identity(hankyung)
+        self.assertEqual(identity, materiality.source_event_identity(etoday))
+        self.assertEqual(identity, 'source_event:v1:us:equity_close:2026-10-05:nasdaq=27477.31:change=1.05')
+        self.assertNotEqual(identity, materiality.source_event_identity({**etoday, 'source_body': etoday['source_body'].replace('5일(현지시간)', '6일(현지시간)')}))
+        self.assertNotEqual(identity, materiality.source_event_identity({**etoday, 'source_body': etoday['source_body'].replace('2만7477.31', '2만7500.00')}))
+        intraday = alert('유가·美 국채 내리자…S&P500·나스닥 사상 최고치 돌파',
+                         '미 동부 시간으로 6일 오전 10시에 S&P500은 0.75% 오른 7832.17을 기록했다. 나스닥은 이 날도 0.73% 올랐다.')
+        self.assertFalse(materiality.us_equity_close_identity(intraday))
+        self.assertNotEqual(materiality.assess(intraday['source_title'], intraday['source_body'])['reason'],
+                            'us_equity_close_session_unverified')
+
+    def test_v100_undated_close_and_conflicting_metric_wait_for_source_check(self):
+        roundup = ('[뉴스프레소] 나스닥 사상 최고가…고금리도 못막은 AI 랠리',
+                   '미국 10년물 금리가 5.31%로 마감했음에도 나스닥과 S&P500은 상승 마감했습니다. 나스닥은 1%, S&P500은 0.66% 상승했습니다.')
+        german = ('8월 독일 산업생산 10.6% 급감…"대형수주 기저효과"',
+                  '독일 연방통계청은 6일 8월 산업생산 지수가 10.6% 급락했다고 발표했다. 산업생산은 예상보다 낮았다. '
+                  '8월 산업수주 급감은 대형수주 기저효과다. 산업수주 통계가 축소됐다. 산업수주 증가율은 둔화했다. '
+                  '산업수주가 감소했다. 산업수주가 변동성을 보였다. 산업수주 관련 제조업 매출은 보합이다.')
+        self.assertEqual(materiality.assess(*roundup)['reason'], 'us_equity_close_session_unverified')
+        self.assertEqual(materiality.assess(*german)['reason'], 'source_primary_metric_conflict_production_vs_orders')
+        self.assertNotEqual(materiality.assess('독일 산업생산 10.6% 급감',
+                            '독일 연방통계청은 6일 8월 산업생산이 전월 대비 10.6% 감소했다고 발표했다.')['reason'],
+                            'source_primary_metric_conflict_production_vs_orders')
+
+    def test_v100_aliases_upgrade_only_existing_acknowledged_articles(self):
+        payload = json.loads((ROOT / 'data/gamejoa_verified_event_aliases.json').read_text(encoding='utf-8'))
+        proofs = [entry for entry in payload['entries'] if entry.get('run_id') in {37472158800, 37480540629}
+                  and entry.get('link') in {
+                      'https://www.newsis.com/view/NISX20261006_0003814993',
+                      'https://www.hankyung.com/article/202610065899i',
+                      'https://www.etoday.co.kr/news/view/2632636',
+                      'https://www.etoday.co.kr/news/view/2632544'}]
+        self.assertEqual(len(proofs), 4)
+        absent = {'seen': {}}
+        telegram.migrate_seen_verified_event_aliases(absent)
+        self.assertFalse(absent['seen'])
+        original = [proof for proof in proofs if proof['run_id'] == 37472158800]
+        state = {'seen': {str(index): {
+            'title': proof['source_title'], 'link': proof['link'],
+            'first_seen_kst': '2026-10-06T22:51:44+09:00', 'source_event_identity': '',
+        } for index, proof in enumerate(original)}}
+        telegram.migrate_seen_verified_event_aliases(state)
+        for proof in original:
+            key = 'event:' + telegram.digest_seen(proof['source_event_identity'])
+            self.assertEqual(state['seen'][key]['event_alias_evidence_message_id'], 2339)
+        self.assertEqual(sum(key.startswith('event:') for key in state['seen']), 2)
+
+    def test_v100_attributed_oil_report_core_uses_shipment_not_unrelated_dispute(self):
+        title = "우크라, '한국의 러 석유공급' 기사 인용해 韓 비판(종합)"
+        body = ("블라디슬라우 블라시우크 우크라이나 대통령실 제재 담당 보좌관은 6일(현지시간) "
+                "한국이 러시아에 경유 등을 공급했다는 기사 내용을 인용하며 한국의 대러시아 제재 정책과 극명하게 대비된다고 밝혔다.\n"
+                "영국 일간 가디언은 이날 항만 기록과 선박 추적 데이터 분석을 토대로 지난 7∼8월 유조선 7척이 "
+                "14차례에 나눠 한국 항구에서 실은 총 17만6천t 이상의 석유제품을 러시아 극동 지역에 실어 날랐다고 보도했다.")
+        core = radar.source_headline_event_fact(title, body)
+        for value in ('가디언', '7∼8월', '17만6천t', '우크라이나 대통령실', '보도했다'):
+            self.assertIn(value, core)
+        self.assertNotIn('포로', core)
+        self.assertFalse(radar.source_core_fact_errors({**alert(title, body), 'telegram_core_fact': core}))
+
+    def test_v100_new_york_close_renderer_accepts_source_date_before_exchange(self):
+        title = '뉴욕증시, 국채금리 상승에도 강세⋯나스닥, 사상 최고치 [글로벌마켓 모닝 브리핑]'
+        body = ('5일(현지시간) 뉴욕증권거래소에서 다우지수는 전 거래일 대비 90.94포인트(0.18%) 오른 5만1267.90에 거래를 마쳤다. '
+                'S&P500지수는 51.23포인트(0.66%) 상승한 7773.95에, 기술주 중심의 나스닥지수는 286.45포인트(1.05%) 오른 2만7477.31에 마감했다. '
+                '나스닥지수는 사상 최고치를 경신했다.')
+        observation = materiality.new_york_index_close_observation(title, body)
+        self.assertEqual((observation['day'], observation['level'], observation['percent']), ('5', '2만7477.31', '1.05'))
+        core = radar.source_headline_event_fact(title, body)
+        for value in ('5일(현지시간)', '나스닥종합지수', '1.05%', '2만7477.31', '사상 최고치'):
+            self.assertIn(value, core)
+        self.assertFalse(radar.source_core_fact_errors({**alert(title, body), 'telegram_core_fact': core}))
+
+    def test_v100_personal_ai_product_spec_alone_is_not_market_scale(self):
+        title = '엔비디아, DGX 스파크 64GB 공개…로컬 AI 확장 지원'
+        body = ('엔비디아가 개인용 AI 슈퍼컴퓨터 DGX 스파크의 64GB 구성을 공개했다. '
+                '두 대를 연결하면 통합 메모리 128GB로 최대 2000억 파라미터 모델을 로컬에서 실행할 수 있다. '
+                '오는 23일 출시하며 가격은 4999달러부터다.')
+        result = materiality.equity_publication_assessment(title, [{
+            'kind': 'model_operating_specification', 'source_excerpt': body,
+        }], body=body)
+        self.assertFalse(result['eligible'])
+        self.assertEqual(result['reason'], 'personal_ai_product_spec_without_verified_market_scale')
+        scaled = materiality.equity_publication_assessment(title, [{
+            'kind': 'model_operating_specification', 'source_excerpt': body,
+        }, {'kind': 'commercial_order', 'source_excerpt': '엔비디아는 고객사와 공급 계약을 체결했다.'}],
+            body=body + ' 엔비디아는 고객사와 공급 계약을 체결했다.')
+        self.assertTrue(scaled['eligible'])
+
     def test_construction_core_separates_project_total_issuer_share_and_duration(self):
         item = self.program_scope_alert('construction_total_not_company_share')
         core = radar.verified_alert_core(item, item['source_title'])

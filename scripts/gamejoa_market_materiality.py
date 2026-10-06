@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 99
+VERSION = 100
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|후티|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -779,37 +779,44 @@ def us_equity_close_identity(alert: dict) -> str:
     """Identify an observed US session close across publishers, not an intraday quote."""
     title = str(alert.get("source_title") or alert.get("news") or "")
     body = str(alert.get("source_body") or "") if alert.get("body_verified") else ""
-    if not re.search(r"뉴욕마감|뉴욕증시|월가", title) or not body:
+    if not re.search(r"뉴욕마감|뉴욕증시|월가|나스닥", title) or not body:
         return ""
     session = re.search(
-        r"뉴욕(?:증시|주식시장)[^.!?]{0,40}?(?:(\d{1,2})월\s*)?(\d{1,2})일\s*\(현지(?:시간)?\)", body,
+        r"(?:(?P<month_before>\d{1,2})월\s*)?(?P<day_before>\d{1,2})일\s*\(현지(?:시간)?\)"
+        r"(?=[^.!?\n]{0,80}(?:뉴욕증권거래소|뉴욕증시|나스닥))|"
+        r"(?:뉴욕증시|뉴욕주식시장|나스닥)[^.!?\n]{0,90}?"
+        r"(?:(?P<month_after>\d{1,2})월\s*)?(?P<day_after>\d{1,2})일\s*\(현지(?:시간)?\)", body,
     )
     close = re.search(
-        r"나스닥(?:종합)?지수(?:는|가|이)?[^!?]{0,80}?\(([+-]?\d+(?:\.\d+)?)%\)\s*"
-        r"(오른|뛴|상승한|내린|하락한|떨어진)\s*(\d[\d,]*(?:만[\d,]+)?(?:\.\d+)?)\s*"
-        r"(?:에|로)?\s*(?:마감했다|거래를\s*끝냈다)", body,
+        r"나스닥(?:종합)?(?:지수)?(?:는|가|이)?[^!?\n]{0,100}?"
+        r"\((?P<rate>[+-]?\d+(?:\.\d+)?)%\)\s*"
+        r"(?P<direction>오른|뛴|상승한|내린|하락한|떨어진)\s*"
+        r"(?P<level>\d[\d,]*(?:만[\d,]+)?(?:\.\d+)?)\s*(?:에|로)\s*"
+        r"(?:마감했다|거래를\s*(?:마쳤다|끝냈다))", body,
     )
     try:
         published = dt.datetime.fromisoformat(str(alert.get("published") or "").replace("Z", "+00:00"))
         if not session or not close or not published.tzinfo:
             return ""
         published = published.astimezone(dt.timezone(dt.timedelta(hours=9))).date()
-        month = int(session.group(1)) if session.group(1) else published.month
+        month_token = session.group('month_before') or session.group('month_after')
+        session_day = int(session.group('day_before') or session.group('day_after'))
+        month = int(month_token) if month_token else published.month
         year = published.year
-        if not session.group(1) and int(session.group(2)) > published.day:
+        if not month_token and session_day > published.day:
             previous_month = published.replace(day=1) - dt.timedelta(days=1)
             year, month = previous_month.year, previous_month.month
         elif month > published.month:
             year -= 1
-        day = dt.date(year, month, int(session.group(2)))
+        day = dt.date(year, month, session_day)
         if not dt.timedelta() <= published - day <= dt.timedelta(days=7):
             return ""
-        value = close.group(3).replace(',', '')
+        value = close.group('level').replace(',', '')
         level = float(value.split('만')[0]) * 10000 + float(value.split('만')[1]) if '만' in value else float(value)
-        rate = abs(float(close.group(1)))
-        if close.group(2) in {"내린", "하락한", "떨어진"}:
+        rate = abs(float(close.group('rate')))
+        if close.group('direction') in {"내린", "하락한", "떨어진"}:
             rate = -rate
-        elif float(close.group(1)) < 0:
+        elif float(close.group('rate')) < 0:
             return ""
         return f"source_event:v1:us:equity_close:{day.isoformat()}:nasdaq={level:.12g}:change={rate:.12g}"
     except (TypeError, ValueError):
@@ -1426,6 +1433,8 @@ def new_york_index_close_observation(title: str, body: str) -> dict:
         return {}
     source = source_reported_body(body)
     day = re.search(r'(?:뉴욕증시|엔비디아와\s*나스닥)[^.!?]{0,40}?(\d{1,2})일\(현지시간\)', source)
+    if not day:
+        day = re.search(r'(\d{1,2})일\(현지시간\)\s*뉴욕증권거래소', source)
     close = re.search(r'나스닥종합지수가\s*전장보다\s*(?P<points>\d[\d,.]*)포인트'
                       r'\((?P<percent>\d+(?:\.\d+)?)%\)\s*(?P<direction>오른|내린)\s*'
                       r'(?P<level>\d[\d,.만]*)로\s*사상\s*최고치를\s*기록했다', source)
@@ -1433,10 +1442,14 @@ def new_york_index_close_observation(title: str, body: str) -> dict:
         close = re.search(r'나스닥(?:종합지수)?(?:은|는)\s*전\s*거래일\s*대비\s*'
                           r'(?P<points>\d[\d,.]*)포인트\((?P<percent>\d+(?:\.\d+)?)%\)\s*'
                           r'(?P<direction>오른|내린)\s*(?P<level>\d[\d,.만]*)에\s*거래를\s*마쳤다', source)
+    if not close:
+        close = re.search(r'나스닥(?:종합)?지수(?:는|가)\s*(?P<points>\d[\d,.]*)포인트'
+                          r'\((?P<percent>\d+(?:\.\d+)?)%\)\s*'
+                          r'(?P<direction>오른|내린)\s*(?P<level>\d[\d,.만]*)에\s*마감했다', source)
     if not (day and close):
         return {}
     record = bool(re.search(r'사상\s*최고(?:치|가)', close[0]) or re.search(
-        r'(?:나스닥(?:종합지수)?(?:은|는|가)|엔비디아와\s*나스닥이)[^!?]{0,100}'
+        r'(?:나스닥(?:(?:종합)?지수)?(?:은|는|가|이)|엔비디아와\s*나스닥이)[^!?]{0,100}'
         r'사상\s*최고(?:치|가)', source))
     return {**close.groupdict(), 'day': day[1], 'stage': 'observed_close', 'record_high': record}
 
@@ -1842,19 +1855,30 @@ def research_program_award_observation(title: str, body: str) -> dict[str, str]:
     rows = source_sentences(source_reported_body(body))
     statement = next((row for row in rows if re.search(r"국책과제\s*\d+건.{0,20}(?:수주|선정)", row)
                       and re.search(r"\d{1,2}일\s*밝혔다", row) and not PAST_ACTION.search(row)), "")
+    if not statement:
+        statement = next((row for row in rows if re.search(r"(?:과제\s*\d+건|\d+개\s*과제).{0,30}국책과제로\s*선정됐다고", row)
+                          and re.search(r"\d{1,2}일\s*밝혔다", row) and not PAST_ACTION.search(row)), "")
     issuer = re.search(r"([A-Za-z0-9가-힣&·.-]{2,30})(?:\([^)]*\))?(?:은|는)\s", statement)
-    count = re.search(r"국책과제\s*(\d+)건", statement)
+    count = re.search(r"국책과제\s*(\d+)건|과제\s*(\d+)건|(\d+)개\s*과제", statement)
     day = re.search(r"(?<!\d)(\d{1,2})일\s*밝혔다", statement)
     tasks = next((match for row in rows if (match := re.search(
         r"각각\s*제안한\s*([^.!?]{2,40}?)\s*과제와\s*([^.!?]{2,40}?)\s*과제가", row))), None)
+    task_names = tasks.group(1) + "·" + tasks.group(2) if tasks else ""
+    if not task_names:
+        programs = re.findall(r"['‘]([^'’]{2,80}?기술개발사업)['’]", statement)
+        if len(programs) == 2:
+            task_names = "·".join(re.sub(r"\bK-?온디바이스", "K온디바이스", name) for name in programs)
     budget = next((row for row in rows if re.search(r"(?:두|전체|총)\s*과제의\s*총\s*연구개발비", row)), "")
     total = re.search(rf"총\s*연구개발비는\s*(?:약\s*)?(?P<amount>{SOURCE_MONEY})", budget)
     grant = re.search(rf"정부\s*지원금은\s*(?:약\s*)?(?P<amount>{SOURCE_MONEY})", budget)
-    if not (issuer and count and day and tasks and total and grant and issuer.group(1) in title):
+    if not (issuer and count and day and task_names and total and grant and issuer.group(1) in title):
         return {}
-    return {"issuer": issuer.group(1), "count": count.group(1), "day": day.group(1),
-            "tasks": tasks.group(1) + "·" + tasks.group(2), "total_budget": total.group("amount"),
-            "government_support": grant.group("amount"), "source_excerpt": statement}
+    observation = {"issuer": issuer.group(1), "count": next(group for group in count.groups() if group),
+                   "day": day.group(1), "tasks": task_names, "total_budget": total.group("amount"),
+                   "government_support": grant.group("amount"), "source_excerpt": statement}
+    if not tasks:
+        observation["stage"] = "selected"
+    return observation
 
 
 def industrial_development_mou_observation(title: str, body: str) -> dict[str, str]:
@@ -3171,6 +3195,11 @@ def equity_publication_assessment(title: str, evidence: list[dict], *, body: str
         return {'eligible': False, 'reason': 'no_verified_economic_change'}
     execution = any(NEW_EXECUTION.search(item['source_excerpt']) for item in evidence)
     lead = " ".join(source_sentences(source_reported_body(body))[:5])
+    if (kinds == {'model_operating_specification'}
+            and re.search(r'개인용|로컬|데스크톱|desktop|personal', title + ' ' + lead, re.I)
+            and not re.search(r'수주|공급\s*계약|납품\s*계약|판매량|연결\s*매출|영업이익|commercial order|revenue',
+                              title + ' ' + lead, re.I)):
+        return {'eligible': False, 'reason': 'personal_ai_product_spec_without_verified_market_scale'}
     economic_execution = any(
         not PAST_ACTION.search(item['source_excerpt']) and item['kind'] in {
             'commercial_order', 'customer_supply_start', 'procurement_execution_stage',
@@ -3473,6 +3502,18 @@ def assess(title: str, body: str, *, source_url: str = "") -> dict:
     result = {"version": VERSION, "disposition": "review", "priority": 1, "axes": [], "evidence": []}
     if not title or not body:
         result["reason"] = "source_evidence_unavailable"
+        return result
+    production_mentions = len(re.findall(r"산업생산", body))
+    orders_mentions = len(re.findall(r"산업수주", body))
+    if ("산업생산" in title and production_mentions >= 1 and orders_mentions >= 5
+            and orders_mentions > production_mentions and re.search(r"산업수주\s*(?:급감|감소|증가|통계)", body)):
+        result["reason"] = "source_primary_metric_conflict_production_vs_orders"
+        return result
+    if (re.search(r"나스닥.*(?:마감|최고(?:치|가))|(?:마감|최고(?:치|가)).*나스닥", title)
+            and not re.search(r"장중|돌파", title)
+            and re.search(r"나스닥[^!?]{0,120}마감|마감[^!?]{0,120}나스닥", body[:2000])
+            and not re.search(r"\d{1,2}일\s*\(현지(?:시간)?\)", body[:3000])):
+        result["reason"] = "us_equity_close_session_unverified"
         return result
     political_poll = bool(re.search(r"지지율|국정\s*수행|정당\s*지지|political approval|approval rating", title, re.I)
                           and re.search(r"여론조사|응답자|유권자|poll|respondents|voters", body[:1600], re.I))

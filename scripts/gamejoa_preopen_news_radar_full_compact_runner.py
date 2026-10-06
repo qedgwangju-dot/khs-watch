@@ -2597,6 +2597,17 @@ def source_headline_event_fact(title: str, body: str) -> str:
     focus = market_materiality.focus_kind(title)
     source = market_materiality.source_reported_body(body)
     rows = market_materiality.source_sentences(source)
+    if re.search(r'한국.*러.*석유\s*공급|한국의\s*러\s*석유공급', title):
+        shipping = next((row for row in rows if '가디언' in row and '선박 추적' in row
+                         and '석유제품' in row and '보도했다' in row), '')
+        period = re.search(r'지난\s*(\d{1,2}\s*[∼~\-]\s*\d{1,2}월)', shipping)
+        volume = re.search(r'총\s*(\d[\d만천백십]*t)\s*이상의\s*석유제품', shipping)
+        if (period and volume and re.search(r'우크라이나 대통령실 제재 담당 보좌관', source)
+                and re.search(r'제재\s*정책과\s*극명하게\s*대비', source)):
+            fact = (f"가디언은 항만·선박 추적 자료를 토대로 지난 {period[1]} 한국 항구에서 "
+                    f"러시아로 석유제품 {volume[1]} 이상이 운송됐다고 보도했다. "
+                    "우크라이나 대통령실 제재 담당 보좌관은 이를 한국의 대러 제재정책과 대비된다며 비판했다.")
+            return fact if core_sentence_is_complete(fact) else ''
     # Render and validate the same source observation used for event identity.
     fixing = market_materiality.won_dollar_fixing_observation(title, source)
     if fixing:
@@ -3024,8 +3035,10 @@ def source_headline_event_fact(title: str, body: str) -> str:
         return fact if core_sentence_is_complete(fact) else ""
     research = market_materiality.research_program_award_observation(title, body)
     if research:
+        action = (f"{research['count']}건에 선정됐다고" if research.get('stage') == 'selected'
+                  else f"{research['count']}건을 수주했다고")
         fact = (f"{research['issuer']}{korean_topic_particle(research['issuer'])} {research['tasks']} 국책과제 "
-                f"{research['count']}건을 수주했다고 {research['day']}일 밝혔다. "
+                f"{action} {research['day']}일 밝혔다. "
                 f"전체 과제의 총 연구개발비는 약 {research['total_budget']}이며 정부 지원금은 약 {research['government_support']}이다.")
         return fact if core_sentence_is_complete(fact) else ""
     expansion = market_materiality.order_expansion_target_observation(title, body)
