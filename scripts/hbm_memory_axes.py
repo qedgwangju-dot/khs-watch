@@ -1715,7 +1715,7 @@ def update_state(state, records, now, seeds=None):
             state['foundry_pricing_range_track_version'] = FOUNDRY_PRICING_RANGE_TRACK_VERSION
         if int(state.get('glass_substrate_track_version') or 0) < GLASS_SUBSTRATE_TRACK_VERSION:
             for r in seeds:
-                if r.get('axis') in ('glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage'):
+                if r.get('axis') in ('glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage','glass_process_cycle_time','glass_capex'):
                     state['last_notified'][r['key']] = copy.deepcopy(r)
                     state['latest'][r['key']] = copy.deepcopy(r)
                     state['pending'].pop(r['key'], None)
@@ -1742,7 +1742,7 @@ def update_state(state, records, now, seeds=None):
         if r['as_of'][:10] > now.date().isoformat():
             continue
         grouped.setdefault(r['key'], []).append(r)
-    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'hbm_generation_pricing', 'hbm_market_pricing'}
+    sparse_axes = {'foundry_base_die_allocation', 'foundry_pricing', 'foundry_hbm5_2nm', 'foundry_loss_outlook', 'foundry_external_2nm', 'foundry_taylor_schedule', 'glass_panel_standard', 'glass_tsmc_roadmap', 'glass_panel_yield', 'glass_hvm_stage', 'glass_process_cycle_time', 'glass_capex', 'hbm_generation_pricing', 'hbm_market_pricing'}
     for key, rows in grouped.items():
         rows.sort(key=lambda x: (x['as_of'], RANK.get(x['evidence'], 0)))
         prior = state['latest'].get(key) or state['last_notified'].get(key)
@@ -2259,7 +2259,7 @@ def main():
     if chosen:
         rate, basis = legacy.fx_quote()
         foundry_axes = {'foundry_loss_outlook','foundry_external_2nm','foundry_taylor_schedule','foundry_base_die_allocation','foundry_node_expansion','foundry_pricing','foundry_hbm5_2nm'}
-        glass_axes = {'glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage'}
+        glass_axes = {'glass_panel_standard','glass_tsmc_roadmap','glass_panel_yield','glass_hvm_stage','glass_process_cycle_time','glass_capex'}
         generation_price_axes = {'hbm_generation_pricing'}
         regular = [k for k in chosen if state['pending'][k]['record']['axis'] not in foundry_axes | glass_axes | generation_price_axes]
         foundry = [k for k in chosen if state['pending'][k]['record']['axis'] in foundry_axes]
