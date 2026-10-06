@@ -63,6 +63,8 @@ EXECUTION_SCOPE_FIXTURE = json.loads((ROOT / "data/gamejoa_execution_scope_fixtu
 EXECUTION_SCOPE_CASES = {case["id"]: case for case in EXECUTION_SCOPE_FIXTURE["cases"]}
 FOREGROUND_TERMS_FIXTURE = json.loads((ROOT / 'data/gamejoa_foreground_terms_fixtures_20261006.json').read_text(encoding='utf-8'))
 FOREGROUND_TERMS_CASES = {case['id']: case for case in FOREGROUND_TERMS_FIXTURE['cases']}
+MATERIAL_EXECUTION_FIXTURE = json.loads((ROOT / 'data/gamejoa_material_execution_fixtures_20261006.json').read_text(encoding='utf-8'))
+MATERIAL_EXECUTION_CASES = {case['id']: case for case in MATERIAL_EXECUTION_FIXTURE['cases']}
 LIVE_NOW = NOW.replace(hour=19)
 CONTRACT_BODY = "AMD는 삼성전자와 2027년 데이터센터용 인공지능(AI) 반도체 공동개발을 위한 100억원 규모의 공급 계약을 체결했다고 밝혔다."
 ADDITIONAL_FACT = " AMD는 해당 공급 계약을 위한 반도체 설비투자 예산 500억원을 확정했다고 공시했다."
@@ -104,6 +106,89 @@ def replay():
 
 
 class IncrementalNewsTests(unittest.TestCase):
+    def material_execution_alert(self, key):
+        case = MATERIAL_EXECUTION_CASES[key]
+        return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],
+                'telegram_core_fact': case['old_core']}
+
+    def test_version89_all_seven_bodies_replay_material_execution(self):
+        now = NOW.replace(day=6, hour=15)
+        for case in MATERIAL_EXECUTION_CASES.values():
+            with self.subTest(case=case['id']), patch.object(radar.base, 'kst_now', return_value=now):
+                self.assertEqual(hashlib.sha256(case['body'].encode()).hexdigest(), case['full_body_sha256'])
+                candidate = classify(case, now)
+                selected = radar.quality_display_alerts([candidate], 30) if candidate else []
+                self.assertEqual(bool(selected), case['expected_keep'])
+                if selected:
+                    self.assertFalse(radar.source_core_fact_errors(selected[0]))
+
+    def test_past_shared_political_statement_is_not_current_price_or_earnings(self):
+        item = self.material_execution_alert('retail_survey_not_prior_speech')
+        for kind in ('selling_price_or_cost', 'earnings_or_guidance'):
+            self.assertFalse(materiality.evidence_is_new_event(kind, item['telegram_core_fact']))
+        self.assertFalse(eligible(item['source_title'], item['source_body']))
+        self.assertTrue(eligible('교촌에프앤비, 3분기 영업이익 20% 증가',
+                                 '교촌에프앤비는 3분기 매출 1500억원, 영업이익 120억원으로 전년 대비 20% 증가했다고 공시했다.'))
+
+    def test_popup_target_attainment_is_not_company_earnings_but_new_capex_survives(self):
+        case = MATERIAL_EXECUTION_CASES['popup_not_material_issuer_earnings']
+        self.assertFalse(eligible(case['title'], case['body']))
+        self.assertTrue(eligible('현대백화점, 신규 물류센터에 500억원 투자 확정',
+                                 '현대백화점은 신규 물류센터 건설에 500억원을 투자하기로 확정했다고 6일 공시했다.'))
+
+    def test_structured_filing_core_retains_client_exact_amount_and_period(self):
+        item = self.material_execution_alert('structured_wafer_inspection_contract')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('넥스틴', 'SK하이닉스', '254.4억원', '웨이퍼 검사 시스템', '2026년 10월 03일', '2027년 11월 25일', '38.02%'):
+            self.assertIn(term, core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+        self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace('254.4억원', '254억원')}))
+
+    def test_structured_contract_terms_do_not_merge_nearby_amount_or_new_customer(self):
+        item = self.material_execution_alert('structured_wafer_inspection_contract')
+        identity = materiality.source_event_identity(item)
+        self.assertTrue(identity.startswith('source_event:v2:commercial_order:'))
+        for before, after in (('254.4억원', '254억원'), ('SK하이닉스', '삼성전자'), ('2027년 11월 25일', '2028년 11월 25일')):
+            self.assertNotEqual(identity, materiality.source_event_identity({**item, 'source_body': item['source_body'].replace(before, after)}))
+
+    def test_data_center_core_retains_actual_stop_authority_operator_and_reason(self):
+        item = self.material_execution_alert('data_center_permit_stop')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('지난주', '인도네시아', '서부 자바 주', 'BDx', '공사 중단', '인허가 미발급'):
+            self.assertIn(term, core)
+        self.assertNotIn('전문가들은', core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+        self.assertTrue(radar.is_actionable_local_dc_policy({**item, 'telegram_core_fact': core, 'local_dc_policy': True}))
+        self.assertFalse(radar.is_actionable_local_dc_policy({**item, 'body_verified': False, 'local_dc_policy': True}))
+
+    def test_lta_core_distinguishes_new_contract_from_cumulative_bookings(self):
+        item = self.material_execution_alert('mlcc_contract_and_cumulative_lta')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('2027년 1~12월', '약 2900억 원', '올해 5월', '공시한 LTA 합계', '약 3조 9000억 원'):
+            self.assertIn(term, core)
+        self.assertNotIn('4조', core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+        changed = {**item, 'source_body': item['source_body'].replace('올해 5월', '지난해 8월')}
+        changed_core = radar.verified_alert_core(changed, changed['source_title'])
+        self.assertIn('지난해 8월부터', changed_core)
+        self.assertNotIn('올해 5월', changed_core)
+
+    def test_fund_core_separates_policy_support_private_matching_and_applicants(self):
+        item = self.material_execution_alert('fund_matching_execution')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('최소 3000억원', '1926억원', '민간자금 1074억원', '추가 확보해야', '지원 운용사는 1곳'):
+            self.assertIn(term, core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+
+    def test_clinical_core_retains_comparator_duration_and_not_approval(self):
+        item = self.material_execution_alert('clinical_result_not_only_conference')
+        core = radar.verified_alert_core(item, item['source_title'])
+        for term in ('JW중외제약', '엠파가드', '24주', '0.81%', '0.24%', '55.7%', '25.5%', '대조군'):
+            self.assertIn(term, core)
+        self.assertNotIn('승인', core)
+        self.assertTrue(radar.source_core_fact_errors(item))
+        self.assertTrue(radar.source_core_fact_errors({**item, 'telegram_core_fact': core.replace('0.81%', '0.24%')}))
+
     def foreground_terms_alert(self, key):
         case = FOREGROUND_TERMS_CASES[key]
         return {**alert(case['title'], case['body'], case['url']), 'published': case['published'],

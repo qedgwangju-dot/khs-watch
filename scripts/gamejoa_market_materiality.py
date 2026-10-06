@@ -13,7 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 
-VERSION = 89
+VERSION = 90
 OIL_PRICE = r"(?<![가-힣])(?:국제|고|저)?유가(?!증권)"
 ENERGY_SUBJECT = (
     rf"원유|비축유|{OIL_PRICE}|브렌트|천연가스|운임|호르무즈|홍해|중동|이란|이스라엘|우크라이나|러시아|구리|리튬|"
@@ -1745,6 +1745,17 @@ def commercial_order_terms(title: str, body: str, published: str = "") -> dict[s
     if focus_kind(title) != "commercial_order":
         return {}
     source = source_reported_body(body)
+    structured = structured_supply_contract_observation(title, source)
+    if structured and re.match(r"20\d{2}-\d{2}-\d{2}", published):
+        amount_value = korean_amount_value(structured['amount'].removesuffix('원'))
+        if not amount_value:
+            return {}
+        return {'issuer': structured['issuer'], 'customer': structured['customer'],
+                'product': canonical_source_fact(structured['product']),
+                'amount': ['원', amount_value],
+                'disclosure_date': published[:10], 'stage': 'signed',
+                'contract_period': canonical_source_fact(structured['period']),
+                'explicit_revision': bool(re.search(r'계약\s*(?:정정|변경|수정)|추가\s*수주', title))}
     lead = next((sentence for sentence in source_sentences(source)
                  if not PAST_ACTION.search(sentence) and re.search(r"공시했다|공시했다고|수주했다고\s*\d{1,2}일\s*밝혔다", sentence)
                  and re.search(r"수주했|계약.{0,20}체결했", sentence)), "")
@@ -1772,6 +1783,23 @@ def commercial_order_terms(title: str, body: str, published: str = "") -> dict[s
     if revision:
         terms["revision_excerpt"] = canonical_source_fact(lead)
     return terms
+
+
+def structured_supply_contract_observation(title: str, body: str) -> dict[str, str]:
+    """Read split filing fields rather than a content-free disclosure sentence."""
+    if focus_kind(title) != 'commercial_order':
+        return {}
+    source = source_reported_body(body)
+    issuer = re.search(r'([A-Za-z가-힣&·.-]{2,30})\(\d{6}\)(?:은|는)', source)
+    fields = re.search(r'계약\s*상대방은\s*([^,!?.\n]{2,40})이고,\s*계약금액은\s*([\d,.]+억원)', source)
+    product = re.search(r'\)\s*(?:은|는)\s*([^.!?\n]{2,70}?)\s*공급계약에\s*관한', source)
+    period = re.search(r'이번\s*계약의\s*기간은\s*(20\d{2}년\s*\d{1,2}월\s*\d{1,2}일)\s*부터\s*(20\d{2}년\s*\d{1,2}월\s*\d{1,2}일까지)', source)
+    share = re.search(r'최근[^.!?\n]{0,60}매출액[^\n]{0,60}?대비\s*약\s*(\d+(?:\.\d+)?)\s*%', source)
+    if not (issuer and issuer[1] in title and fields and product and period):
+        return {}
+    return {'issuer': issuer[1], 'customer': fields[1].strip(), 'amount': fields[2],
+            'product': product[1].strip(), 'period': period[1] + '부터 ' + period[2],
+            'revenue_share': share[1] if share else ''}
 
 
 def industrial_route_study_terms(title: str, body: str, published: str = "") -> dict[str, object]:
@@ -2151,6 +2179,10 @@ COMPILED_RULES = tuple(
 def evidence_is_new_event(kind: str, sentence: str) -> bool:
     """Do not promote service descriptions or event support into transactions."""
     if COMPANY_PROFILE.search(sentence) or ACCOUNTING_NOTE.search(sentence):
+        return False
+    if PAST_ACTION.search(sentence) and re.search(r'보도를\s*공유|점검해\s*보겠다|당시.{0,30}(?:언급|발언)', sentence):
+        return False
+    if kind == 'earnings_or_guidance' and re.search(r'목표\s*매출.{0,25}%\s*초과\s*달성', sentence):
         return False
     if kind == "business_investment_observation":
         return bool(business_investment_observation(sentence))

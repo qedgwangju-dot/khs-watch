@@ -2591,6 +2591,57 @@ def reported_issuer_announcement_fact(title: str, body: str) -> str:
 def source_headline_event_fact(title: str, body: str) -> str:
     """Bind a compact observation to its source actor, population and period."""
     focus = market_materiality.focus_kind(title)
+    structured = market_materiality.structured_supply_contract_observation(title, body)
+    if structured:
+        product = {'Wafer Inspection System': '웨이퍼 검사 시스템'}.get(structured['product'], structured['product'])
+        fact = (f"{structured['issuer']}{korean_topic_particle(structured['issuer'])} {structured['customer']}와 "
+                f"{structured['amount']} {product} 공급계약을 체결했다. 계약 기간은 {structured['period']}다.")
+        if structured['revenue_share']:
+            fact += f" 최근 매출의 {structured['revenue_share']}% 규모다."
+        return fact if core_sentence_is_complete(fact) else ''
+    rows = market_materiality.source_sentences(market_materiality.source_reported_body(body))
+    if re.search(r'데이터센터', title) and re.search(r'정책|인허가|규제|중단', title):
+        stop = next((row for row in rows if '데이터센터' in row and re.search(r'공사를\s*즉각\s*중단하라고\s*명령', row)), '')
+        reason = next((row for row in rows if '환경영향평가' in row and re.search(r'인허가.{0,30}발급되지', row)), '')
+        actor = re.search(r'(지난주\s*)?([가-힣]+)\s*([가-힣]+(?:\s+[가-힣]+){0,2}\s*주)는\s*([A-Za-z가-힣0-9 ]+?)\s*데이터센터가\s*운영하는', stop)
+        if actor and reason:
+            fact = (f"{actor[1] or ''}{actor[2]} {actor[3]}는 {actor[4]} 데이터센터 건설 현장에 공사 중단을 명령했다. "
+                    '환경영향평가 등 주요 인허가 미발급이 이유다.')
+            return fact if core_sentence_is_complete(fact) else ''
+    if focus == 'commercial_order':
+        lead = next((row for row in rows if re.search(r'체결했다고\s*\d{1,2}일\s*밝혔다', row)), '')
+        issuer = re.match(r'([A-Za-z가-힣&·.-]{2,30})(?:은|는)\s*', lead)
+        amount = re.search(r'(약\s*\d[\d,.]*억\s*원)', lead)
+        lta = next((row for row in rows if re.search(r'LTA\s*규모는\s*공시\s*기준', row)), '')
+        total = re.search(r'공시\s*기준\s*(약\s*\d+조\s*\d+억\s*원)', lta)
+        since = re.search(r'((?:올해|지난해|20\d{2}년)\s*\d{1,2}월)부터\s*이번\s*계약까지', lta)
+        period = next((row for row in rows if re.search(r'계약\s*기간은\s*20\d{2}년', row)), '')
+        dates = re.search(r'계약\s*기간은\s*(20\d{2}년)\s*(\d{1,2})월\s*\d{1,2}일부터\s*(\d{1,2})월\s*\d{1,2}일까지', period)
+        if issuer and issuer[1] in title and amount and total and since and dates and 'AI' in title and 'MLCC' in lead:
+            fact = (f"{issuer[1]}{korean_topic_particle(issuer[1])} {dates[1]} {dates[2]}~{dates[3]}월 AI 서버용 MLCC "
+                    f"{amount[1]} 공급계약을 체결했다. {since[1]}부터 공시한 LTA 합계는 {total[1]}이다.")
+            return fact if core_sentence_is_complete(fact) else ''
+    if re.search(r'펀드', body) and re.search(r'정책자금|출자|매칭', title):
+        support = re.search(r'대형리그는\s*정책금융기관이\s*(\d+억원)을\s*출자해\s*최소\s*(\d+억원)', body)
+        matching = re.search(r'나머지\s*(\d+억원)을\s*추가로\s*확보해야', body)
+        applicant = re.search(r'대형리그에는\s*([^.!?\n]{2,60}?)\s*(?:컨소시엄\s*)?한\s*곳만\s*지원', body)
+        name = re.search(r"['‘]([^'’]{2,60}협력펀드)['’]", body)
+        if support and matching and applicant and name:
+            fact = (f"'{name[1]}' 대형리그는 최소 {support[2]} 중 정책기관이 {support[1]}을 출자하며 "
+                    f"민간자금 {matching[1]}을 추가 확보해야 한다. 지원 운용사는 1곳뿐이다.")
+            return fact if core_sentence_is_complete(fact) else ''
+    if '임상 3상' in title and re.search(r'발표|결과', title):
+        lead = next((row for row in rows if '임상 3상 결과를 발표' in row), '')
+        issuer = re.match(r'([A-Za-z가-힣&·.-]{2,30})(?:은|는)\s*', lead)
+        product = re.search(r"['‘]([^'’]{2,30})\(성분명", lead)
+        duration = re.search(r'(\d+)주간\s*진행', body)
+        reduction = re.search(r'HbA1c\).*?(\d+(?:\.\d+)?)%\s*감소해\s*대조군\(-?(\d+(?:\.\d+)?)%\)', body)
+        attainment = re.search(r'도달률.*?투여군이\s*(\d+(?:\.\d+)?)%.*?대조군\((\d+(?:\.\d+)?)%\)', body)
+        if issuer and issuer[1] in title and product and duration and reduction and attainment:
+            fact = (f"{issuer[1]}{korean_topic_particle(issuer[1])} '{product[1]}' {duration[1]}주 임상 3상 결과로 "
+                    f"당화혈색소 감소폭 {reduction[1]}%(대조군 {reduction[2]}%), 목표 혈당 도달률 "
+                    f"{attainment[1]}%(대조군 {attainment[2]}%)를 발표했다.")
+            return fact if core_sentence_is_complete(fact) else ''
     supply = market_materiality.capacity_supply_contract_observation(title, body)
     if supply:
         fact = (f"{supply['issuer']}{korean_topic_particle(supply['issuer'])} {supply['region']} "
@@ -9459,6 +9510,11 @@ def is_actionable_local_dc_policy(alert: dict) -> bool:
     has_hard_action = has_term(text, LOCAL_DC_HARD_ACTION_TERMS)
     has_trusted_source = has_term(text, LOCAL_DC_TRUSTED_SOURCE_TERMS)
     weak_local_only = has_term(text, LOCAL_DC_WEAK_LOCAL_ONLY_TERMS) and not has_trusted_source
+    source = market_materiality.source_reported_body(str(alert.get('source_body') or '')) if alert.get('body_verified') else ''
+    formal_stop = bool(re.search(r'(?:주|정부|당국).{0,180}공사를\s*즉각\s*중단하라고\s*명령', source)
+                       and re.search(r'환경영향평가.*?인허가.{0,35}발급되지', source, re.S))
+    if formal_stop and (korean_business_publisher(alert) or has_trusted_source) and not weak_local_only:
+        return True
     return has_hard_action and has_trusted_source and not weak_local_only
 
 

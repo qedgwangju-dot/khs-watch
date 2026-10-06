@@ -446,3 +446,13 @@ Every defect or requested change must follow this sequence:
 - Scholarly policy advice without new legislative, budgetary or implementation
   action is not a primary radar item. Actual current bill execution is checked
   independently rather than excluded by a discussion-oriented title.
+- A historical shared SNS statement is not current selling-price or earnings
+  evidence. A popup exceeding its own sales target is not issuer earnings.
+  New disclosed investment, earnings or binding commercial terms remain eligible.
+- Split filing fields retain named counterparty, exact amount, contract period
+  and revenue share. Rounded nearby amounts cannot create automatic equivalence.
+  Contract amount and cumulative LTA bookings are different quantities.
+  The cumulative start period must come from the source, never a fixed month.
+- Data-center policy cores prefer verified stop orders and permitting reasons
+  over generic expert commentary. Trial-result cores retain duration, comparator
+  and reported measurements without claiming approval or inferring medical units.
