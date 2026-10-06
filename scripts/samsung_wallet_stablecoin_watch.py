@@ -346,6 +346,7 @@ def topic_state(official: dict, candidates: list[dict], previous: dict | None = 
         and (
             official.get("wallet_patent_us_confirmed")
             or official.get("wallet_patent_us_crosscheck_confirmed")
+            or official.get("wallet_patent_news_confirmed")
         )
     )
     smart_contract_wallet_patent_confirmed = (
