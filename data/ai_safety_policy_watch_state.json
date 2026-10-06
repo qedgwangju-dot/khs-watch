@@ -3,8 +3,8 @@
   "last_collection": {
     "errors": [],
     "material_items": 0,
-    "new_articles": 0,
-    "new_events": 0,
+    "new_articles": 1,
+    "new_events": 1,
     "raw_items": 23
   },
   "official_pages": {
@@ -33,11 +33,11 @@
       "url": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/SECURITY.md"
     },
     "NVIDIA OpenShell 지원정책": {
-      "candidate_count": 5,
-      "candidate_digest": "798c4aafed3a1f45178e9fb274e5406b46643b44343c7f3d5249d3d1a531742d",
-      "candidate_first_seen_at": "2026-10-06T04:25:47.224626+00:00",
-      "digest": "0a651d7e14acdc1985fddb0fd3fadedf9fdd2e99a2a9105e9e3d05ae7583205a",
-      "updated_at": "2026-10-05T14:33:10.439617+00:00",
+      "candidate_count": 0,
+      "candidate_digest": null,
+      "candidate_first_seen_at": null,
+      "digest": "798c4aafed3a1f45178e9fb274e5406b46643b44343c7f3d5249d3d1a531742d",
+      "updated_at": "2026-10-06T04:37:11.906738+00:00",
       "url": "https://raw.githubusercontent.com/NVIDIA/OpenShell/main/docs/about/support-matrix.mdx"
     },
     "OpenAI 프런티어 학습 Safety Case": {
@@ -79,7 +79,7 @@
     "digest": "5f9bfa5118c4d2f0814c64eea4cb33b3e2af12cf63ba0eb919836c86322336e6",
     "name": "2026-08-10.md",
     "title": "샌드박스 생성 556,389건 · 생성 실패율 12.0% · 행동 차단 4,220,436건 · 네트워크 이벤트 27,077,441건",
-    "updated_at": "2026-10-06T04:31:20.297633+00:00",
+    "updated_at": "2026-10-06T04:37:11.906738+00:00",
     "url": "https://github.com/NVIDIA/OpenShell/blob/main/telemetry/2026-08-10.md"
   },
   "seen": {
@@ -139,5 +139,5 @@
       "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1nUGFNdklnZVhSemdadTI5cXB6R0NocDk1SjBUbEVfZk51YlVrOEhoc2hyeWJwSXZ5OE9UbU1pcGRpRER3RVF5cVk2SDhWUQ?oc=5"
     }
   },
-  "updated_at_kst": "2026-10-06T13:31:20+09:00"
+  "updated_at_kst": "2026-10-06T13:37:11+09:00"
 }
