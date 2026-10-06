@@ -185,6 +185,53 @@ class GlassSubstrateWatchTests(unittest.TestCase):
         self.assertEqual(v["end_customer_count"], 7)
         self.assertEqual(v["paid_sample_customer_count"], 7)
 
+    def test_jntc_copper_fill_minute_scale_is_verified_but_exact_minutes_stay_unknown(self):
+        item = {"title":"12시간을 분 단위로 단축…제이앤티씨, 유리기판 핵심기술 개발","description":"","source":"디일렉",
+                "published_at_kst":"2026-10-06T10:00:00+09:00",
+                "direct_link":"https://thelec.kr/news/articleView.html?idxno=63298"}
+        body = "제이앤티씨는 510×515mm 크기, 2mm 두께 TGV 유리기판의 구리 충진 시간을 분 단위로 줄이는데 성공했다."
+        rows = w.parse_glass_substrate_records(item, body)
+        rec = next(x for x in rows if x["axis"] == "glass_process_cycle_time")
+        self.assertEqual(rec["value"]["process_name"], "copper_fill_metallization")
+        self.assertEqual(rec["value"]["after_time_class"], "minute_scale")
+        self.assertIsNone(rec["value"]["after_minutes_exact"])
+        self.assertTrue(rec["value"]["body_direct_verified"])
+
+    def test_jntc_enriched_customer_validation_milestones_are_material(self):
+        old = {"axis":"glass_hvm_stage","value":{"stage":"customer_evaluation","mass_production_target_year":2027}}
+        new = {"axis":"glass_hvm_stage","value":{
+            "stage":"customer_evaluation","mass_production_target_year":2027,
+            "us_semiconductor_customer_validation_completed":True,
+            "taiwan_end_customer_validation_ongoing":True,
+            "additional_us_bigtech_collaboration_requested":True,
+            "additional_us_bigtech_quality_recognized":True,
+        }}
+        reasons = w.comparison(old, new)
+        self.assertTrue(any("미국 반도체 고객사 제품 검증 완료" in x for x in reasons))
+        self.assertTrue(any("대만 최종 고객사 2mm 검증 진행" in x for x in reasons))
+        self.assertTrue(any("추가 미국 빅테크 기술협력 요청" in x for x in reasons))
+
+    def test_glass_v4_migration_promotes_current_jntc_baselines_without_pending_alert(self):
+        seeds = [
+            x for x in __import__("json").loads(
+                (pathlib.Path(__file__).resolve().parents[1] / "data" / "hbm_memory_baselines.json").read_text(encoding="utf-8")
+            )["records"]
+            if x["key"] in ("glass_hvm_stage|jntc|current","glass_process_cycle_time|jntc|current","glass_capex|jntc|gimcheon")
+        ]
+        old_state = {
+            "glass_substrate_track_version": 3,
+            "last_notified": {},
+            "latest": {},
+            "pending": {},
+            "coverage": {},
+        }
+        state = w.update_state(old_state, [], __import__("datetime").datetime(2026,10,6,19,0,0), seeds)
+        self.assertEqual(state["glass_substrate_track_version"], 4)
+        self.assertEqual(state["latest"]["glass_hvm_stage|jntc|current"]["value"]["paid_sample_customer_count"], 7)
+        self.assertEqual(state["latest"]["glass_process_cycle_time|jntc|current"]["value"]["process_name"], "copper_fill_metallization")
+        self.assertEqual(state["latest"]["glass_capex|jntc|gimcheon"]["value"]["investment_krw"], 347000000000)
+        self.assertEqual(state["pending"], {})
+
     def test_jntc_cycle_process_not_inferred_from_other_sentences(self):
         item = {"title":"JNTC glass process update","description":"","source":"디일렉",
                 "published_at_kst":"2026-10-06T10:00:00+09:00",

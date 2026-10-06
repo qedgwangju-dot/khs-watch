@@ -19,7 +19,7 @@ VERSION = 1
 FOUNDRY_TRACK_VERSION = 1
 FOUNDRY_RECOVERY_TRACK_VERSION = 1
 FOUNDRY_PRICING_RANGE_TRACK_VERSION = 1
-GLASS_SUBSTRATE_TRACK_VERSION = 3
+GLASS_SUBSTRATE_TRACK_VERSION = 4
 HBM_GENERATION_PRICE_TRACK_VERSION = 1
 MARKET_PRICING_TRACK_VERSION = 1
 EXTRA_QUERIES = [
@@ -1220,8 +1220,8 @@ def parse_glass_substrate_records(item, body):
             elif re.search(r'분\s*단위|minute[- ]?scale|within\s+minutes', cycle_text, re.I):
                 after_class = 'minute_scale'
             process_hits = []
-            if re.search(r'metalliz|plating|도금|금속화', cycle_text, re.I):
-                process_hits.append('metallization')
+            if re.search(r'metalliz|plating|copper\s*(?:fill|filling)|도금|금속화|구리\s*(?:충진|채움)', cycle_text, re.I):
+                process_hits.append('copper_fill_metallization')
             if re.search(r'etch|식각', cycle_text, re.I):
                 process_hits.append('etching')
             if re.search(r'laser|레이저|홀\s*가공|via\s*drill', cycle_text, re.I):
@@ -1588,6 +1588,10 @@ def comparison(old, new):
             if av != bv and bv:
                 reasons.append(f"{label} {av or '미확인'}→{bv}")
         for field, label in (
+            ('us_semiconductor_customer_validation_completed','미국 반도체 고객사 제품 검증 완료'),
+            ('taiwan_end_customer_validation_ongoing','대만 최종 고객사 2mm 검증 진행'),
+            ('additional_us_bigtech_collaboration_requested','추가 미국 빅테크 기술협력 요청'),
+            ('additional_us_bigtech_quality_recognized','추가 미국 빅테크 샘플 품질 인정'),
             ('embedding_preliminary_evaluation_passed','Embedding 예비평가 통과'),
             ('embedding_reliability_evaluation_ongoing','Embedding 신뢰성 평가 진행'),
             ('non_embedding_supplier_selection_ongoing','Non-Embedding 공급사 선정 진행'),
@@ -1958,7 +1962,14 @@ def render(change, rate=None):
                 after = "분 단위(정확한 분 수 미공개)"
             else:
                 after = "개선 후 미확인"
-            return f"{v.get('process_name') or '공정 미확인'} / {before}→{after}"
+            process_label = {
+                'copper_fill_metallization': '구리 충진·금속화',
+                'metallization': '금속화',
+                'etching': '식각',
+                'via_formation': '비아 형성',
+                'unverified_core_process': '핵심공정(세부 공정 미확인)',
+            }.get(v.get('process_name'), v.get('process_name') or '공정 미확인')
+            return f"{process_label} / {before}→{after}"
         if record['axis'] == 'glass_capex':
             parts = []
             if v.get('investment_krw') is not None:
@@ -1998,6 +2009,12 @@ def render(change, rate=None):
                 text += f" / 유상샘플 {int(v['paid_sample_customer_count'])}곳"
             if v.get('nda_customer_count') is not None:
                 text += f" / NDA {int(v['nda_customer_count'])}곳"
+            if v.get('us_semiconductor_customer_validation_completed'):
+                text += " / 미국 반도체 고객 검증 완료(실명 미공개)"
+            if v.get('taiwan_end_customer_validation_ongoing'):
+                text += " / 대만 최종 고객 2mm 검증 중"
+            if v.get('additional_us_bigtech_collaboration_requested'):
+                text += " / 추가 미국 빅테크 기술협력 요청"
             return text
         if record['axis'] == 'foundry_loss_outlook':
             parts = []

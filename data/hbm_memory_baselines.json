@@ -621,7 +621,12 @@
         "initial_line_count_min": 2,
         "initial_line_count_max": 3,
         "initial_customer_commercialization_period": "2028_mid",
-        "mass_ramp_line_count_min": 10
+        "mass_ramp_line_count_min": 10,
+        "us_semiconductor_customer_validation_completed": true,
+        "taiwan_end_customer_validation_ongoing": true,
+        "additional_us_bigtech_collaboration_requested": true,
+        "additional_us_bigtech_quality_recognized": true,
+        "named_end_customers_confirmed": []
       },
       "unit": "stage,year",
       "period": "current",
@@ -630,8 +635,8 @@
       "source_url": "https://www.thelec.kr/news/articleView.html?idxno=63298",
       "source_title": "12시간을 분 단위로 단축…제이앤티씨, 유리기판 핵심기술 개발",
       "source": "디일렉(THE ELEC)",
-      "scope": "reported_customer_evaluation_paid_samples_pilot_capacity_and_2027_mass_supply_target",
-      "excerpt": "디일렉 보도: 파일럿 1개 라인 월 1만~1만2000개, NDA 27곳·최종 수요기업 7곳·유상샘플 전환 7곳. 2027년 2mm 제품 양산 공급 목표, 김천은 2027년 하반기 착공 후 2~3개 라인을 우선 구축하고 2028년 중반 고객 상용화 초기 물량 대응, 대량 양산 시 10개 이상으로 확대 계획."
+      "scope": "reported_customer_evaluation_paid_samples_pilot_capacity_customer_validation_and_2027_mass_supply_target",
+      "excerpt": "디일렉 보도: 미국 반도체 고객사 제품 검증 완료, 대만 최종 고객사 2mm 제품 검증 진행, 또 다른 미국 빅테크의 기술협력 요청 및 샘플 품질 인정. 파일럿 1개 라인 월 1만~1만2000개, NDA 27곳·최종 수요기업 7곳·유상샘플 전환 7곳. 고객 실명·PO·양산계약은 미확정."
     },
     {
       "key": "glass_hvm_stage|philoptics|current",
@@ -725,11 +730,11 @@
       "key": "glass_process_cycle_time|jntc|current",
       "axis": "glass_process_cycle_time",
       "value": {
-        "process_name": "unverified_core_process",
+        "process_name": "copper_fill_metallization",
         "before_minutes": 720,
         "after_minutes_exact": null,
         "after_time_class": "minute_scale",
-        "body_direct_verified": false
+        "body_direct_verified": true
       },
       "unit": "minutes,stage",
       "period": "current",
@@ -738,8 +743,8 @@
       "source_url": "https://www.thelec.kr/news/articleView.html?idxno=63298",
       "source_title": "12시간을 분 단위로 단축…제이앤티씨, 유리기판 핵심기술 개발",
       "source": "디일렉(THE ELEC)",
-      "scope": "headline_reports_12_hours_to_minute_scale_exact_process_and_after_minutes_not_confirmed",
-      "excerpt": "제목상 기존 12시간 공정을 분 단위로 단축. 12시간은 720분으로 환산하되, 개선 후 정확한 분 수와 해당 단축이 어느 개별 공정인지 직접 문구가 확인되기 전에는 속도배수와 공정명을 확정하지 않음."
+      "scope": "headline_12h_body_confirms_copper_fill_minute_scale_exact_after_minutes_not_disclosed",
+      "excerpt": "디일렉 본문은 510×515mm·2mm TGV 유리기판의 구리 충진 시간을 분 단위로 줄였다고 명시. 제목의 개선 전 12시간은 720분으로 환산하되 개선 후 정확한 분 수는 공개되지 않아 속도배수는 계산하지 않음."
     },
     {
       "key": "glass_capex|jntc|gimcheon",
