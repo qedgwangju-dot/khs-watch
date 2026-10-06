@@ -2352,6 +2352,9 @@ def trump_story_profile(title: str) -> dict[str, object] | None:
     """Return a source-faithful Korean profile for supported Trump headlines."""
     cleaned = clean_story_title(title)
     low = cleaned.lower()
+    # SIF/AI 차르 단계 프로필은 제목의 의미 상태키를 사용한다.
+    # 함수 내부에서 정의되지 않은 semantic_key를 참조하면 전체 정책 전달 검증이 중단된다.
+    semantic_key = semantic_policy_event_key({"title": cleaned})
     common = {
         "priced_in": "낮음~중간. 대통령 발언은 즉시 반영될 수 있지만, 공식 문서나 실제 지표가 없으면 되돌림도 빠릅니다.",
         "counter": "대통령 발언만으로는 시행 주체, 적용 범위, 실제 이행 여부가 확정되지 않았습니다.",
