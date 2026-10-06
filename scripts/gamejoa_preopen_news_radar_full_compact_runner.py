@@ -8995,7 +8995,46 @@ def sanctions_exemption_event_theme(alert: dict) -> str:
     return f"sanctions_exemption:{authorities[authority.group(1)]}:russia:sakhalin-2:korea:{expiry[0]:04d}-{expiry[1]:02d}-{expiry[2]:02d}"
 
 
+
+def dpa_grid_event_theme(alert: dict) -> str:
+    text = base.norm(
+        " ".join(
+            str(alert.get(key) or "")
+            for key in (
+                "news",
+                "original_news",
+                "source_title",
+                "policy_plain_summary",
+                "telegram_core_fact",
+                "source_abstract",
+                "source_body",
+            )
+        )
+    )
+    dpa_grid = (
+        ("defense production act" in text or re.search(r"\bdpa\b", text) is not None)
+        and any(term in text for term in (
+            "grid", "전력망", "transmission", "송전", "transformer", "변압기",
+            "substation", "변전소", "section 303", "제303조",
+        ))
+    )
+    if not dpa_grid:
+        return ""
+    if any(term in text for term in (
+        "beluga-healy", "beluga healy", "alaska railbelt",
+    )):
+        return "us-grid-dpa-beluga-healy-funding-2026-10-05"
+    if any(term in text for term in (
+        "section 303", "제303조", "50 u.s.c. 4533",
+    )):
+        return "us-grid-dpa-section303-base-2026-04-20"
+    return ""
+
+
 def semantic_event_theme(alert: dict) -> str:
+    dpa_theme = dpa_grid_event_theme(alert)
+    if dpa_theme:
+        return dpa_theme
     source_identity = market_materiality.source_event_identity(alert)
     if source_identity:
         return source_identity
@@ -9034,21 +9073,6 @@ def semantic_event_theme(alert: dict) -> str:
             )
         )
     )
-    dpa_grid = (
-        ("defense production act" in text or re.search(r"\bdpa\b", text) is not None)
-        and any(term in text for term in (
-            "grid", "전력망", "transmission", "송전", "transformer", "변압기",
-            "substation", "변전소", "section 303", "제303조",
-        ))
-    )
-    if dpa_grid and any(term in text for term in (
-        "beluga-healy", "beluga healy", "alaska railbelt",
-    )):
-        return "us-grid-dpa-beluga-healy-funding-2026-10-05"
-    if dpa_grid and any(term in text for term in (
-        "section 303", "제303조", "50 u.s.c. 4533",
-    )):
-        return "us-grid-dpa-section303-base-2026-04-20"
     if (
         "polysilicon" in text
         and "11052" in text
@@ -9101,6 +9125,9 @@ def semantic_event_theme(alert: dict) -> str:
 
 
 def alert_dedup_key(alert: dict) -> tuple[str, str]:
+    dpa_theme = dpa_grid_event_theme(alert)
+    if dpa_theme:
+        return (dpa_theme, "event")
     source_identity = market_materiality.source_event_identity(alert)
     if source_identity:
         return (source_identity, "event")
