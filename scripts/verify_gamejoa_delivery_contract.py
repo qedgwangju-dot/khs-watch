@@ -474,6 +474,36 @@ def main() -> int:
     if compact.alert_dedup_key(dpa_base_a) == compact.alert_dedup_key(dpa_exec_a):
         errors.append("DPA legal baseline and Beluga-Healy execution stage were incorrectly collapsed")
 
+    presidential_title = (
+        "Presidential Determination Pursuant to Section 303 of the Defense Production Act "
+        "on Grid Infrastructure, Equipment, and Supply Chain Capacity"
+    )
+    wh_determination = {
+        "source": "White House presidential memoranda",
+        "title": presidential_title,
+        "source_title": presidential_title,
+        "link": "https://www.whitehouse.gov/presidential-actions/example-dpa-grid/",
+        "document_type": "Presidential Memorandum",
+        "presidential_document_type": "Presidential Memorandum",
+        "published_kst": "2026-04-20T00:00:00+09:00",
+        "importance": "상",
+        "status": "확정",
+        "impacts": ["시간표"],
+        "paths": ["정책 타임라인"],
+        "sectors": ["전력망/전력기기"],
+    }
+    fr_determination = {
+        **wh_determination,
+        "source": "Federal Register presidential documents",
+        "link": "https://www.federalregister.gov/documents/example-dpa-grid",
+        "document_type": "Presidential Document",
+        "presidential_document_type": "Presidential Determination",
+        "publication_date": "2026-04-22",
+        "signing_date": "2026-04-20",
+    }
+    if len(policy_router.dedupe_alerts([wh_determination, fr_determination])) != 1:
+        errors.append("same presidential determination was not deduplicated across official sources")
+
 
     seen_merge = importlib.import_module("merge_gamejoa_preopen_news_radar_seen")
     merged_seen = seen_merge.merge_states(
