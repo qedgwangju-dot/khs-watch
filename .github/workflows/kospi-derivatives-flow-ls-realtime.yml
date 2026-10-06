@@ -141,12 +141,10 @@ jobs:
             [ "$WATCH_RC" -eq 0 ] && break
             WATCH_FAILS=$((WATCH_FAILS + 1))
             echo "kospi_watcher_restart rc=$WATCH_RC consecutive_failures=$WATCH_FAILS"
-            if [ "$WATCH_FAILS" -ge 5 ]; then
-              kill "$COLLECTOR_PID" 2>/dev/null || true
-              wait "$COLLECTOR_PID" 2>/dev/null || true
-              exit "$WATCH_RC"
-            fi
-            sleep $((WATCH_FAILS * 10))
+            BACKOFF=$((WATCH_FAILS * 10))
+            [ "$BACKOFF" -gt 60 ] && BACKOFF=60
+            echo "kospi_watcher_retrying backoff_seconds=$BACKOFF"
+            sleep "$BACKOFF"
           done
 
           if kill -0 "$COLLECTOR_PID" 2>/dev/null; then
@@ -241,12 +239,10 @@ jobs:
             [ "$WATCH_RC" -eq 0 ] && break
             WATCH_FAILS=$((WATCH_FAILS + 1))
             echo "kospi_watcher_restart rc=$WATCH_RC consecutive_failures=$WATCH_FAILS"
-            if [ "$WATCH_FAILS" -ge 5 ]; then
-              kill "$COLLECTOR_PID" 2>/dev/null || true
-              wait "$COLLECTOR_PID" 2>/dev/null || true
-              exit "$WATCH_RC"
-            fi
-            sleep $((WATCH_FAILS * 10))
+            BACKOFF=$((WATCH_FAILS * 10))
+            [ "$BACKOFF" -gt 60 ] && BACKOFF=60
+            echo "kospi_watcher_retrying backoff_seconds=$BACKOFF"
+            sleep "$BACKOFF"
           done
 
           if kill -0 "$COLLECTOR_PID" 2>/dev/null; then
