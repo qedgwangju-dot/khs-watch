@@ -96,6 +96,35 @@ jobs:
           print(f"ai_policy_chat_resolved=true route={route}")
           PY
 
+      - name: Remove duplicate SIF verification alert
+        if: github.event_name == 'push'
+        env:
+          RESOLVED_CHAT_ID: ${{ steps.telegram.outputs.chat_id }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.error, urllib.parse, urllib.request
+          token=(os.environ.get("TELEGRAM_BOT_TOKEN") or "").strip()
+          chat_id=(os.environ.get("RESOLVED_CHAT_ID") or "").strip()
+          message_id="417"
+          if not token or not chat_id:
+              raise RuntimeError("SIF duplicate cleanup route unresolved")
+          payload=urllib.parse.urlencode({"chat_id":chat_id,"message_id":message_id}).encode()
+          req=urllib.request.Request(f"https://api.telegram.org/bot{token}/deleteMessage",data=payload,method="POST")
+          try:
+              with urllib.request.urlopen(req,timeout=25) as r:
+                  result=json.loads(r.read().decode("utf-8"))
+          except urllib.error.HTTPError as e:
+              body=e.read().decode("utf-8",errors="replace")
+              if "message to delete not found" in body.lower():
+                  print(f"sif_duplicate_cleanup=already_absent message_id={message_id}")
+              else:
+                  raise
+          else:
+              if not result.get("ok"):
+                  raise RuntimeError(f"Telegram deleteMessage rejected: {result}")
+              print(f"sif_duplicate_cleanup=deleted message_id={message_id}")
+          PY
+
       - name: Validate watcher
         run: python -m py_compile scripts/ai_safety_policy_watch.py
 
@@ -447,7 +476,7 @@ jobs:
               st,key=stage(row)
               if st=="ignore" or not key:
                   continue
-              digest=hashlib.sha256(("sif-semantic-v2:"+key).encode()).hexdigest()[:24]
+              digest=hashlib.sha256(("sif-semantic-v1:"+key).encode()).hexdigest()[:24]
               if digest in seen:
                   continue
               candidates.append((st,key,digest,row))
