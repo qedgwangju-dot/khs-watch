@@ -2275,7 +2275,7 @@ assert s < 11, s
 
 madison_official = make(
     "NVIDIA confirms Madison Huang at AI Day Seoul",
-    "NVIDIA confirmed Madison Huang will attend AI Day Seoul in Seoul on November 9-10 for physical AI and robotics.",
+    "NVIDIA confirmed Madison Huang will attend NVIDIA AI Day Seoul 2026 in Seoul on November 9-10 for physical AI and robotics.",
     "NVIDIA",
 )
 g, s, c, k = classify(madison_official)
