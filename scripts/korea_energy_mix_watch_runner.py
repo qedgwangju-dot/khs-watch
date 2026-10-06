@@ -54,13 +54,14 @@ def semantic_event_key(row: dict[str, Any]) -> str:
     ):
         return "12th-plan|committee-governance|member-disclosure"
 
-    # 호남 반도체 전력·용수 수요 재산정과 전력망 재검토는 하나의 국감 사건으로 묶는다.
-    if (
-        "호남" in title
-        and "반도체" in title
-        and any(term in title for term in ("14gw", "6.3gw", "65만", "팹 9기", "팹9기", "전력망 계획", "전력·용수", "전기 6.3gw"))
-    ):
-        return "12th-plan|honam-semiconductor|power-water-grid-review"
+    # 호남 반도체는 '현재 4팹 공급 가능성'과 '9팹 확대 가정·14GW·전력망 원점 재검토'를
+    # 서로 다른 상태 사건으로 관리한다. 앞선 6.3GW/65만t 보도가 뒤의 14GW 재검토 신호를
+    # 중복으로 눌러버리면 안 된다.
+    if "호남" in title and "반도체" in title:
+        if any(term in title for term in ("14gw", "팹 9기", "팹9기", "9개", "전력망 계획 원점", "원점 점검", "원점 재검토")):
+            return "12th-plan|honam-semiconductor|nine-fab-14gw-grid-review"
+        if any(term in title for term in ("6.3gw", "65만", "전력·용수", "전기 6.3gw", "공급 가능")):
+            return "12th-plan|honam-semiconductor|four-fab-6.3gw-water65-supply"
 
     # 원전 공론화로 전기본 정부안 시점이 실제로 늦어진 것은 공론화 '개시'와 별도 시간표 사건이다.
     if (
@@ -172,8 +173,12 @@ def semantic_event_level(row: dict[str, Any]) -> int:
         if not material_change:
             return 0
 
-    # 호남 반도체 9기·14GW/6.3GW·65만t 및 전력망 원점점검은 실제 수요·망계획 변경 신호.
-    if key == "12th-plan|honam-semiconductor|power-water-grid-review":
+    # 호남 반도체 현재 공급 가능성과 9팹 확대 가정의 14GW·전력망 재검토는 모두 중요하지만
+    # 별개 상태로 기록한다.
+    if key in {
+        "12th-plan|honam-semiconductor|four-fab-6.3gw-water65-supply",
+        "12th-plan|honam-semiconductor|nine-fab-14gw-grid-review",
+    }:
         return 2 if bool(row.get("official")) else 1
 
     # 정부안 일정이 2~3개월 늦어지는 것은 정책 시간표 변화.
@@ -615,7 +620,10 @@ def interpret_article_body(row: dict[str, Any], body: str, error: str) -> str:
             "<b>원문 본문 해석</b>",
             f"원문 본문 직접 확인 실패 ({html.escape(error or '접근 제한')})",
         ]
-        if key == "12th-plan|honam-semiconductor|power-water-grid-review":
+        if key in {
+            "12th-plan|honam-semiconductor|four-fab-6.3gw-water65-supply",
+            "12th-plan|honam-semiconductor|nine-fab-14gw-grid-review",
+        }:
             lines.extend([
                 "• 제목에서 직접 확인되는 범위: <b>팹 9기 가정 시 14GW 필요</b>·<b>전력망 계획 원점 점검</b>",
                 "• 9기 자체는 확대 가정이므로 확정 팹 수로 표현하지 않음",
