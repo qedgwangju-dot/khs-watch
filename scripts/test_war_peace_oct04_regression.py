@@ -399,4 +399,40 @@ check(
     and "승무원이 선박에 불을 붙였" not in reuters_tanker_ko,
 )
 
+# 13) 10/7 추가 실운영 보강: MT On Peace 상세 피해와 원인 미확정 이란 남부 폭발.
+on_peace = row(
+    "호르무즈서 파나마 유조선 피격…인도 '12명 부상'",
+    source="연합뉴스",
+    description=(
+        "호르무즈 해협을 통과하던 파나마 선적 유조선 MT On Peace가 발사체에 피격됐다. "
+        "선원 12명이 부상했고 이 중 11명은 인도인으로, 오만으로 이송돼 치료를 받았다."
+    ),
+)
+on_peace["published"] = "Tue, 06 Oct 2026 20:07:00 +0000"
+s, tags = mod.score_item(on_peace, dt.datetime.now(mod.watch.KST))
+check("oct07-on-peace-specific-detected", mod._hormuz_on_peace_attack(on_peace))
+check("oct07-on-peace-red", mod.final_color(on_peace) == "red" and "선원12명부상" in tags)
+check("oct07-on-peace-topic", mod.topic_label(on_peace) == "이란·호르무즈 · MT On Peace 피격")
+check("oct07-on-peace-title", "선원 12명 부상" in on_peace["title_ko"] and "공격 주체 미확정" in on_peace["title_ko"])
+check("oct07-on-peace-canonical-id", mod.item_id(on_peace) == "f3d52391fbf7d500afa0")
+
+iran_unknown = row(
+    "Explosions heard in Sirik, Qeshm and Minab in southern Iran",
+    source="Walter Bloomberg",
+    description="Multiple explosions were heard in Sirik, Qeshm and Minab; no hostile projectile or airstrike was officially confirmed.",
+)
+iran_unknown["published"] = "Tue, 06 Oct 2026 17:24:00 +0000"
+s, tags = mod.score_item(iran_unknown, dt.datetime.now(mod.watch.KST))
+check("oct07-iran-south-unattributed-detected", mod._iran_south_unattributed_explosions(iran_unknown))
+check("oct07-iran-south-unattributed-yellow", mod.final_color(iran_unknown) == "yellow" and "확전" not in tags and "원인미확정" in tags)
+check("oct07-iran-south-unattributed-topic", mod.topic_label(iran_unknown) == "이란 남부 · 폭발 원인 미확정")
+check("oct07-iran-south-unattributed-id", mod.item_id(iran_unknown) == "a8ced052d8f58315ce10")
+
+iran_projectile = row(
+    "Hostile projectiles hit Sirik after explosions in southern Iran",
+    source="IRNA",
+    description="Several areas in Sirik were hit by hostile projectiles.",
+)
+check("oct07-iran-south-confirmed-projectile-not-yellow", not mod._iran_south_unattributed_explosions(iran_projectile))
+
 print("WAR_PEACE_OCT04_REGRESSION_OK")
