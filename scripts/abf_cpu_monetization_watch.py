@@ -416,8 +416,10 @@ def parse_research_update(text: str, url: str) -> dict:
         # Goldman September 2026 public recaps specify a 2H26 figure separately
         # from full-year 2026 estimates published by other firms. Keep that scope explicit.
         for pat in (
-            r"(?:2H\s*26|2H\s*2026|2026\s*년\s*하반기|2026年下半年)[^0-9%]{0,40}?(\d{1,2}(?:\.\d+)?)\s*%",
-            r"(\d{1,2}(?:\.\d+)?)\s*%[^.;]{0,35}?(?:2H\s*26|2H\s*2026|2026\s*년\s*하반기|2026年下半年)",
+            # English recaps often write "14% in 2H26"; prefer this form first so
+            # a later "34% in 2027" cannot be pulled backward into the 2H26 slot.
+            r"(\d{1,2}(?:\.\d+)?)\s*%[^,.;]{0,35}?(?:2H\s*26|2H\s*2026|2026\s*년\s*하반기|2026年下半年)",
+            r"(?:2H\s*26|2H\s*2026|2026\s*년\s*하반기|2026年下半年)[^,.;0-9%]{0,40}?(\d{1,2}(?:\.\d+)?)\s*%",
         ):
             m = re.search(pat, text, re.I)
             if m:
