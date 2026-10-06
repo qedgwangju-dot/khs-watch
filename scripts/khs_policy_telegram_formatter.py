@@ -765,7 +765,7 @@ def presidential_action_timeline_lines(alert: dict) -> list[str]:
     if beluga and dpa:
         add(
             "2026-10-05",
-            "이번 집행 · DOE, Beluga-Healy 송전사업에 DPA 최대 1.5억달러 투입 의향 발표",
+            "이번 집행 · DOE, Beluga-Healy 송전사업에 DPA 자금 투입 의향 발표",
         )
 
     # Explicit earlier Executive Orders cited by the current official body.
