@@ -310,7 +310,7 @@
     "ffa5760e161f37610a025582"
   ],
   "last_monthly_digest": "2026-09",
-  "updated_at_kst": "2026-10-06T18:26:01+09:00",
+  "updated_at_kst": "2026-10-06T19:57:45+09:00",
   "last_event_count": 0,
   "last_fresh_new_count": 0,
   "last_send_event_count": 0,
@@ -1134,17 +1134,35 @@
         "axis": "glass_hvm_stage",
         "value": {
           "stage": "customer_evaluation",
-          "mass_production_target_year": 2027
+          "mass_production_target_year": 2027,
+          "pilot_line_count": 1,
+          "pilot_capacity_units_per_month_min": 10000,
+          "pilot_capacity_units_per_month_max": 12000,
+          "nda_customer_count": 27,
+          "end_customer_count": 7,
+          "paid_sample_customer_count": 7,
+          "target_product_thickness_mm": 2,
+          "next_product_thickness_mm": 3,
+          "gimcheon_groundbreaking_period": "2027H2",
+          "initial_line_count_min": 2,
+          "initial_line_count_max": 3,
+          "initial_customer_commercialization_period": "2028_mid",
+          "mass_ramp_line_count_min": 10,
+          "us_semiconductor_customer_validation_completed": true,
+          "taiwan_end_customer_validation_ongoing": true,
+          "additional_us_bigtech_collaboration_requested": true,
+          "additional_us_bigtech_quality_recognized": true,
+          "named_end_customers_confirmed": []
         },
         "unit": "stage,year",
         "period": "current",
-        "as_of": "2026-07-13",
+        "as_of": "2026-10-06",
         "evidence": "reported",
-        "source_url": "https://en.edaily.co.kr/news/eda202607135464/",
-        "source_title": "JNTC, 글로벌 고객 평가 진행·2027년 TGV 유리기판 양산 목표",
-        "source": "이데일리·JNTC 회사 설명",
-        "scope": "stage_transition_customer_evaluation_to_hvm",
-        "excerpt": "글로벌 반도체·패키징 고객 평가를 진행 중이며 2027년 양산 개시를 목표. 현재 단계는 고객 평가로 저장."
+        "source_url": "https://www.thelec.kr/news/articleView.html?idxno=63298",
+        "source_title": "12시간을 분 단위로 단축…제이앤티씨, 유리기판 핵심기술 개발",
+        "source": "디일렉(THE ELEC)",
+        "scope": "reported_customer_evaluation_paid_samples_pilot_capacity_customer_validation_and_2027_mass_supply_target",
+        "excerpt": "디일렉 보도: 미국 반도체 고객사 제품 검증 완료, 대만 최종 고객사 2mm 제품 검증 진행, 또 다른 미국 빅테크의 기술협력 요청 및 샘플 품질 인정. 파일럿 1개 라인 월 1만~1만2000개, NDA 27곳·최종 수요기업 7곳·유상샘플 전환 7곳. 고객 실명·PO·양산계약은 미확정."
       },
       "glass_hvm_stage|philoptics|current": {
         "key": "glass_hvm_stage|philoptics|current",
@@ -1238,11 +1256,11 @@
         "key": "glass_process_cycle_time|jntc|current",
         "axis": "glass_process_cycle_time",
         "value": {
-          "process_name": "unverified_core_process",
+          "process_name": "copper_fill_metallization",
           "before_minutes": 720,
           "after_minutes_exact": null,
           "after_time_class": "minute_scale",
-          "body_direct_verified": false
+          "body_direct_verified": true
         },
         "unit": "minutes,stage",
         "period": "current",
@@ -1251,8 +1269,8 @@
         "source_url": "https://www.thelec.kr/news/articleView.html?idxno=63298",
         "source_title": "12시간을 분 단위로 단축…제이앤티씨, 유리기판 핵심기술 개발",
         "source": "디일렉(THE ELEC)",
-        "scope": "headline_reports_12_hours_to_minute_scale_exact_process_and_after_minutes_not_confirmed",
-        "excerpt": "제목상 기존 12시간 공정을 분 단위로 단축. 12시간은 720분으로 환산하되, 개선 후 정확한 분 수와 해당 단축이 어느 개별 공정인지 직접 문구가 확인되기 전에는 속도배수와 공정명을 확정하지 않음."
+        "scope": "headline_12h_body_confirms_copper_fill_minute_scale_exact_after_minutes_not_disclosed",
+        "excerpt": "디일렉 본문은 510×515mm·2mm TGV 유리기판의 구리 충진 시간을 분 단위로 줄였다고 명시. 제목의 개선 전 12시간은 720분으로 환산하되 개선 후 정확한 분 수는 공개되지 않아 속도배수는 계산하지 않음."
       },
       "glass_capex|jntc|gimcheon": {
         "key": "glass_capex|jntc|gimcheon",
@@ -1943,17 +1961,35 @@
         "axis": "glass_hvm_stage",
         "value": {
           "stage": "customer_evaluation",
-          "mass_production_target_year": 2027
+          "mass_production_target_year": 2027,
+          "pilot_line_count": 1,
+          "pilot_capacity_units_per_month_min": 10000,
+          "pilot_capacity_units_per_month_max": 12000,
+          "nda_customer_count": 27,
+          "end_customer_count": 7,
+          "paid_sample_customer_count": 7,
+          "target_product_thickness_mm": 2,
+          "next_product_thickness_mm": 3,
+          "gimcheon_groundbreaking_period": "2027H2",
+          "initial_line_count_min": 2,
+          "initial_line_count_max": 3,
+          "initial_customer_commercialization_period": "2028_mid",
+          "mass_ramp_line_count_min": 10,
+          "us_semiconductor_customer_validation_completed": true,
+          "taiwan_end_customer_validation_ongoing": true,
+          "additional_us_bigtech_collaboration_requested": true,
+          "additional_us_bigtech_quality_recognized": true,
+          "named_end_customers_confirmed": []
         },
         "unit": "stage,year",
         "period": "current",
-        "as_of": "2026-07-13",
+        "as_of": "2026-10-06",
         "evidence": "reported",
-        "source_url": "https://en.edaily.co.kr/news/eda202607135464/",
-        "source_title": "JNTC, 글로벌 고객 평가 진행·2027년 TGV 유리기판 양산 목표",
-        "source": "이데일리·JNTC 회사 설명",
-        "scope": "stage_transition_customer_evaluation_to_hvm",
-        "excerpt": "글로벌 반도체·패키징 고객 평가를 진행 중이며 2027년 양산 개시를 목표. 현재 단계는 고객 평가로 저장."
+        "source_url": "https://www.thelec.kr/news/articleView.html?idxno=63298",
+        "source_title": "12시간을 분 단위로 단축…제이앤티씨, 유리기판 핵심기술 개발",
+        "source": "디일렉(THE ELEC)",
+        "scope": "reported_customer_evaluation_paid_samples_pilot_capacity_customer_validation_and_2027_mass_supply_target",
+        "excerpt": "디일렉 보도: 미국 반도체 고객사 제품 검증 완료, 대만 최종 고객사 2mm 제품 검증 진행, 또 다른 미국 빅테크의 기술협력 요청 및 샘플 품질 인정. 파일럿 1개 라인 월 1만~1만2000개, NDA 27곳·최종 수요기업 7곳·유상샘플 전환 7곳. 고객 실명·PO·양산계약은 미확정."
       },
       "glass_hvm_stage|philoptics|current": {
         "key": "glass_hvm_stage|philoptics|current",
@@ -2047,11 +2083,11 @@
         "key": "glass_process_cycle_time|jntc|current",
         "axis": "glass_process_cycle_time",
         "value": {
-          "process_name": "unverified_core_process",
+          "process_name": "copper_fill_metallization",
           "before_minutes": 720,
           "after_minutes_exact": null,
           "after_time_class": "minute_scale",
-          "body_direct_verified": false
+          "body_direct_verified": true
         },
         "unit": "minutes,stage",
         "period": "current",
@@ -2060,8 +2096,8 @@
         "source_url": "https://www.thelec.kr/news/articleView.html?idxno=63298",
         "source_title": "12시간을 분 단위로 단축…제이앤티씨, 유리기판 핵심기술 개발",
         "source": "디일렉(THE ELEC)",
-        "scope": "headline_reports_12_hours_to_minute_scale_exact_process_and_after_minutes_not_confirmed",
-        "excerpt": "제목상 기존 12시간 공정을 분 단위로 단축. 12시간은 720분으로 환산하되, 개선 후 정확한 분 수와 해당 단축이 어느 개별 공정인지 직접 문구가 확인되기 전에는 속도배수와 공정명을 확정하지 않음."
+        "scope": "headline_12h_body_confirms_copper_fill_minute_scale_exact_after_minutes_not_disclosed",
+        "excerpt": "디일렉 본문은 510×515mm·2mm TGV 유리기판의 구리 충진 시간을 분 단위로 줄였다고 명시. 제목의 개선 전 12시간은 720분으로 환산하되 개선 후 정확한 분 수는 공개되지 않아 속도배수는 계산하지 않음."
       },
       "glass_capex|jntc|gimcheon": {
         "key": "glass_capex|jntc|gimcheon",
@@ -2114,7 +2150,7 @@
     },
     "pending": {},
     "coverage": {
-      "last_checked_at_kst": "2026-10-06T18:26:01+09:00",
+      "last_checked_at_kst": "2026-10-06T19:57:45+09:00",
       "gaps": [
         "RDIMM 동일 규격·기준기간의 현물/고정거래 가격 쌍 미확보: 실시간 프리미엄 계산 보류"
       ],
@@ -2169,7 +2205,7 @@
     "market_pricing_track_version": 1,
     "foundry_recovery_track_version": 1,
     "foundry_pricing_range_track_version": 1,
-    "glass_substrate_track_version": 3,
+    "glass_substrate_track_version": 4,
     "hbm_generation_price_track_version": 1
   },
   "memory_axes_version": 1,
@@ -2186,7 +2222,7 @@
     "payload_hash": "9349c5f56a103cdf0c4057067982fe1d19e3f6c79c48a163d0f37f2b5e61d00f"
   },
   "delivery_check": {
-    "checked_at_kst": "2026-10-06T18:26:39+09:00",
+    "checked_at_kst": "2026-10-06T19:58:25+09:00",
     "status": "no_message_due"
   },
   "malaysia_hsk10_weight_kg": null,
